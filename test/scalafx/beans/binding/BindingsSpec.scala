@@ -25,13 +25,19 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+package scalafx.beans.binding
 
-object ReadOnlyBooleanProperty {
-  implicit def sfxReadOnlyBooleanProperty2jfx(dp: ReadOnlyBooleanProperty) = dp.wrappedReadOnlyBooleanProperty
-}
+import org.scalatest.FlatSpec
+import org.scalatest.matchers.ShouldMatchers._
 
-class ReadOnlyBooleanProperty(val wrappedReadOnlyBooleanProperty:javafx.beans.property.ReadOnlyBooleanProperty) extends ReadOnlyProperty[Boolean, java.lang.Boolean] {
-  override def wrappedProperty = wrappedReadOnlyBooleanProperty
-  override def value = wrappedReadOnlyBooleanProperty.get
+class BindingsSpec extends FlatSpec {
+  "Bindings" should "support min, max" is (pending)
+
+  it should "support when .. then .. otherwise" is (pending)
+
+  it should "support that select* funk..." is (pending)
+
+  it should "support raw javafx mixing (make sure all the implicits are in place)" is (pending)
+
+  it should "support boolean operations (&&, ||, etc.) -- well, maybe not -- this is really a boolean thing" is (pending)
 }

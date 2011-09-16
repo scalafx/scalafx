@@ -1,3 +1,5 @@
+package scalafx.beans.property
+
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -25,13 +27,19 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+import scalafx.beans.binding.NumberExpression
+import javafx.beans.property.ReadOnlyIntegerPropertyBase
 
-object ReadOnlyBooleanProperty {
-  implicit def sfxReadOnlyBooleanProperty2jfx(dp: ReadOnlyBooleanProperty) = dp.wrappedReadOnlyBooleanProperty
+object ReadOnlyIntegerProperty {
+  implicit def sfxReadOnlyIntegerProperty2jfx(dp: ReadOnlyIntegerProperty) = dp.wrappedReadOnlyIntegerProperty
 }
 
-class ReadOnlyBooleanProperty(val wrappedReadOnlyBooleanProperty:javafx.beans.property.ReadOnlyBooleanProperty) extends ReadOnlyProperty[Boolean, java.lang.Boolean] {
-  override def wrappedProperty = wrappedReadOnlyBooleanProperty
-  override def value = wrappedReadOnlyBooleanProperty.get
+class ReadOnlyIntegerProperty(val wrappedReadOnlyIntegerProperty:javafx.beans.property.ReadOnlyIntegerProperty) extends NumberExpression(wrappedReadOnlyIntegerProperty) with ReadOnlyProperty[Int, Number] {
+  override def wrappedProperty = wrappedReadOnlyIntegerProperty
+  def this(bean:Object, name:String, value:Int) = this(new ReadOnlyIntegerPropertyBase() {
+    def getBean = bean
+    def getName = name
+    def get = value
+  })
+  override def value = wrappedReadOnlyIntegerProperty.get
 }

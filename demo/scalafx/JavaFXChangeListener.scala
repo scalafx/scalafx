@@ -40,7 +40,7 @@ object JavaFXChangeListener extends Application {
     y = 40
     width = 100
     height = 100
-    fill bind (when (hover) then Color.GREEN otherwise Color.RED)
+    fill <== when (hover) then Color.GREEN otherwise Color.RED
   }
   stage = new Stage {
     title = "Hello Stage"

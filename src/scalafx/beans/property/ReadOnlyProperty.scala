@@ -27,12 +27,14 @@
 
 package scalafx.beans.property
 
-abstract class ReadOnlyProperty[T](val wrappedReadOnlyProperty:javafx.beans.property.ReadOnlyProperty[T]) {
-  def name = wrappedReadOnlyProperty.getName
+trait ReadOnlyProperty[@specialized(Int, Long, Float, Double, Boolean) T, J] {
+  def wrappedProperty:javafx.beans.property.ReadOnlyProperty[J]
 
-  def bean = wrappedReadOnlyProperty.getBean
+  def name = wrappedProperty.getName
 
-  def value = wrappedReadOnlyProperty.getValue
+  def bean = wrappedProperty.getBean
+
+  def value:T
 
   def apply() = value
 }

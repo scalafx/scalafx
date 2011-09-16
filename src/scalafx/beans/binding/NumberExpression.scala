@@ -28,42 +28,53 @@
 package scalafx.beans.binding
 
 import javafx.beans.value.ObservableNumberValue
+import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
 
-trait NumberExpression {
-  def wrappedNumberExpression: javafx.beans.binding.NumberExpression
+object NumberExpression {
+  implicit def sfxNumberExpression2jfx(ne: NumberExpression) = ne.wrappedNumberExpression
+  implicit def jfxNumberExpression2sfx(ne: NumberExpression) = new NumberExpression(ne)
+  case class VariablePrecisionNumber(number:Double, var precision:Double = 0) {
+    def +-(p:Double):VariablePrecisionNumber = {
+      precision = p
+      this
+    }
+  }
+}
 
-  def +(v: Int) = wrappedNumberExpression.add(v)
-  def +(v: Long) = wrappedNumberExpression.add(v)
-  def +(v: Float) = wrappedNumberExpression.add(v)
-  def +(v: Double) = wrappedNumberExpression.add(v)
-  def +(v: ObservableNumberValue) = wrappedNumberExpression.add(v)
-  def +(v: NumberExpression) = wrappedNumberExpression.add(v.wrappedNumberExpression)
+class NumberExpression(val wrappedNumberExpression: javafx.beans.binding.NumberExpression) {
+  def +(v: Int) = new NumberExpression(wrappedNumberExpression.add(v))
+  def +(v: Long) = new NumberExpression(wrappedNumberExpression.add(v))
+  def +(v: Float) = new NumberExpression(wrappedNumberExpression.add(v))
+  def +(v: Double) = new NumberExpression(wrappedNumberExpression.add(v))
+  def +(v: ObservableNumberValue) = new NumberExpression(wrappedNumberExpression.add(v))
+  def +(v: NumberExpression) = new NumberExpression(wrappedNumberExpression.add(v.wrappedNumberExpression))
 
-  def -(v: Int) = wrappedNumberExpression.subtract(v)
-  def -(v: Long) = wrappedNumberExpression.subtract(v)
-  def -(v: Float) = wrappedNumberExpression.subtract(v)
-  def -(v: Double) = wrappedNumberExpression.subtract(v)
-  def -(v: ObservableNumberValue) = wrappedNumberExpression.subtract(v)
-  def -(v: NumberExpression) = wrappedNumberExpression.subtract(v.wrappedNumberExpression)
+  def -(v: Int) = new NumberExpression(wrappedNumberExpression.subtract(v))
+  def -(v: Long) = new NumberExpression(wrappedNumberExpression.subtract(v))
+  def -(v: Float) = new NumberExpression(wrappedNumberExpression.subtract(v))
+  def -(v: Double) = new NumberExpression(wrappedNumberExpression.subtract(v))
+  def -(v: ObservableNumberValue) = new NumberExpression(wrappedNumberExpression.subtract(v))
+  def -(v: NumberExpression) = new NumberExpression(wrappedNumberExpression.subtract(v.wrappedNumberExpression))
 
-  def *(v: Int) = wrappedNumberExpression.multiply(v)
-  def *(v: Long) = wrappedNumberExpression.multiply(v)
-  def *(v: Float) = wrappedNumberExpression.multiply(v)
-  def *(v: Double) = wrappedNumberExpression.multiply(v)
-  def *(v: ObservableNumberValue) = wrappedNumberExpression.multiply(v)
-  def *(v: NumberExpression) = wrappedNumberExpression.multiply(v.wrappedNumberExpression)
+  def *(v: Int) = new NumberExpression(wrappedNumberExpression.multiply(v))
+  def *(v: Long) = new NumberExpression(wrappedNumberExpression.multiply(v))
+  def *(v: Float) = new NumberExpression(wrappedNumberExpression.multiply(v))
+  def *(v: Double) = new NumberExpression(wrappedNumberExpression.multiply(v))
+  def *(v: ObservableNumberValue) = new NumberExpression(wrappedNumberExpression.multiply(v))
+  def *(v: NumberExpression) = new NumberExpression(wrappedNumberExpression.multiply(v.wrappedNumberExpression))
 
-  def /(v: Int) = wrappedNumberExpression.divide(v)
-  def /(v: Long) = wrappedNumberExpression.divide(v)
-  def /(v: Float) = wrappedNumberExpression.divide(v)
-  def /(v: Double) = wrappedNumberExpression.divide(v)
-  def /(v: ObservableNumberValue) = wrappedNumberExpression.divide(v)
-  def /(v: NumberExpression) = wrappedNumberExpression.divide(v.wrappedNumberExpression)
+  def /(v: Int) = new NumberExpression(wrappedNumberExpression.divide(v))
+  def /(v: Long) = new NumberExpression(wrappedNumberExpression.divide(v))
+  def /(v: Float) = new NumberExpression(wrappedNumberExpression.divide(v))
+  def /(v: Double) = new NumberExpression(wrappedNumberExpression.divide(v))
+  def /(v: ObservableNumberValue) = new NumberExpression(wrappedNumberExpression.divide(v))
+  def /(v: NumberExpression) = new NumberExpression(wrappedNumberExpression.divide(v.wrappedNumberExpression))
 
   def ==(v: Int) = wrappedNumberExpression.isEqualTo(v)
   def ==(v: Long) = wrappedNumberExpression.isEqualTo(v)
   def ==(v: Float) = wrappedNumberExpression.isEqualTo(v, 0)
   def ==(v: Double) = wrappedNumberExpression.isEqualTo(v, 0)
+  def ==(v: VariablePrecisionNumber) = wrappedNumberExpression.isEqualTo(v.number, v.precision)
   def ==(v: ObservableNumberValue) = wrappedNumberExpression.isEqualTo(v)
   def ==(v: NumberExpression) = wrappedNumberExpression.isEqualTo(v.wrappedNumberExpression)
 
@@ -71,6 +82,7 @@ trait NumberExpression {
   def !=(v: Long) = wrappedNumberExpression.isNotEqualTo(v)
   def !=(v: Float) = wrappedNumberExpression.isNotEqualTo(v, 0)
   def !=(v: Double) = wrappedNumberExpression.isNotEqualTo(v, 0)
+  def !=(v: VariablePrecisionNumber) = wrappedNumberExpression.isNotEqualTo(v.number, v.precision)
   def !=(v: ObservableNumberValue) = wrappedNumberExpression.isNotEqualTo(v)
   def !=(v: NumberExpression) = wrappedNumberExpression.isNotEqualTo(v.wrappedNumberExpression)
 

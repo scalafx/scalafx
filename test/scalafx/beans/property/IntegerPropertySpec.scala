@@ -31,265 +31,265 @@ import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers._
 import scalafx.beans.binding.Bindings._
 
-class DoublePropertySpec extends FlatSpec {
+class IntegerPropertySpec extends FlatSpec {
   val bean = new Object()
-  var doubleProperty = new DoubleProperty(bean, "Test Double")
-  var doubleProperty2 = new DoubleProperty(bean, "Test Double 2")
-  var doubleProperty3 = new DoubleProperty(bean, "Test Double 3")
+  var integerProperty = new IntegerProperty(bean, "Test Integer")
+  var integerProperty2 = new IntegerProperty(bean, "Test Integer 2")
+  var integerProperty3 = new IntegerProperty(bean, "Test Integer 3")
   var booleanProperty = new BooleanProperty(bean, "Test Boolean")
 
-  "A Double Property" should "have a default value of 0" in {
-    doubleProperty.value should equal (0)
+  "A Integer Property" should "have a default value of 0" in {
+    integerProperty.value should equal (0)
   }
 
   it should "be assignable using update" in {
-    doubleProperty() = 500
-    doubleProperty.value should equal (500)
+    integerProperty() = 500
+    integerProperty.value should equal (500)
   }
 
   it should "return its value using apply" in {
-    doubleProperty() should equal (500)
+    integerProperty() should equal (500)
   }
 
   it should "know its name" in {
-    doubleProperty.name should equal ("Test Double")
+    integerProperty.name should equal ("Test Integer")
   }
 
   it should "know its bean" in {
-    doubleProperty.bean should equal (bean)
+    integerProperty.bean should equal (bean)
   }
 
-  it should "be bindable to another Double Property" in {
-    doubleProperty <== doubleProperty2
-    doubleProperty2() = 1000
-    doubleProperty() should equal (1000)
-    doubleProperty.unbind()
+  it should "be bindable to another Integer Property" in {
+    integerProperty <== integerProperty2
+    integerProperty2() = 1000
+    integerProperty() should equal (1000)
+    integerProperty.unbind()
   }
 
-  it should "support unbinding from another Double Property" in {
-    doubleProperty <== doubleProperty2
-    doubleProperty2() = 2000
-    doubleProperty.unbind()
-    doubleProperty2() = 3000
-    doubleProperty() should equal (2000)
+  it should "support unbinding from another Integer Property" in {
+    integerProperty <== integerProperty2
+    integerProperty2() = 2000
+    integerProperty.unbind()
+    integerProperty2() = 3000
+    integerProperty() should equal (2000)
   }
 
-  it should "be bidirectionally bindable to another Double Property" in {
-    doubleProperty <==> doubleProperty2
-    doubleProperty() = 13
-    doubleProperty2() should equal (13)
-    doubleProperty2() = 51
-    doubleProperty() should equal (51)
-    doubleProperty unbind doubleProperty2
+  it should "be bidirectionally bindable to another Integer Property" in {
+    integerProperty <==> integerProperty2
+    integerProperty() = 13
+    integerProperty2() should equal (13)
+    integerProperty2() = 51
+    integerProperty() should equal (51)
+    integerProperty unbind integerProperty2
   }
 
-  it should "support bidirectional unbinding from another Double Property" in {
-    doubleProperty <==> doubleProperty2
-    doubleProperty() = 16
-    doubleProperty unbind doubleProperty2
-    doubleProperty() = 12
-    doubleProperty2() should equal (16)
+  it should "support bidirectional unbinding from another Integer Property" in {
+    integerProperty <==> integerProperty2
+    integerProperty() = 16
+    integerProperty unbind integerProperty2
+    integerProperty() = 12
+    integerProperty2() should equal (16)
   }
 
   it should "support bindable infix addition of a property" in {
-    doubleProperty3 <== doubleProperty + doubleProperty2
-    doubleProperty() = 21
-    doubleProperty2() = 35
-    doubleProperty3() should equal (56)
-    doubleProperty3.unbind()
+    integerProperty3 <== integerProperty + integerProperty2
+    integerProperty() = 21
+    integerProperty2() = 35
+    integerProperty3() should equal (56)
+    integerProperty3.unbind()
   }
 
   it should "support bindable infix addition of constants" in {
-    doubleProperty3 <== doubleProperty + 35 + 35l + 35f + 35d
-    doubleProperty() = 21
-    doubleProperty3() should equal (161)
-    doubleProperty3.unbind()
+    integerProperty3 <== integerProperty + 35 + 35l + 35f + 35d
+    integerProperty() = 21
+    integerProperty3() should equal (161)
+    integerProperty3.unbind()
   }
 
   it should "support bindable infix subtraction of a property" in {
-    doubleProperty3 <== doubleProperty - doubleProperty2
-    doubleProperty() = 40
-    doubleProperty2() = 12
-    doubleProperty3() should equal (28)
-    doubleProperty3.unbind()
+    integerProperty3 <== integerProperty - integerProperty2
+    integerProperty() = 40
+    integerProperty2() = 12
+    integerProperty3() should equal (28)
+    integerProperty3.unbind()
   }
 
   it should "support bindable infix subtraction of constants" in {
-    doubleProperty3 <== doubleProperty - 12 - 12l - 12f - 12d
-    doubleProperty() = 40
-    doubleProperty3() should equal (-8)
-    doubleProperty3.unbind()
+    integerProperty3 <== integerProperty - 12 - 12l - 12f - 12d
+    integerProperty() = 40
+    integerProperty3() should equal (-8)
+    integerProperty3.unbind()
   }
 
   it should "support bindable infix multiplication of a property" in {
-    doubleProperty3 <== doubleProperty * doubleProperty2
-    doubleProperty() = 5
-    doubleProperty2() = 6
-    doubleProperty3() should equal (30)
-    doubleProperty3.unbind()
+    integerProperty3 <== integerProperty * integerProperty2
+    integerProperty() = 5
+    integerProperty2() = 6
+    integerProperty3() should equal (30)
+    integerProperty3.unbind()
   }
 
   it should "support bindable infix multiplication of constants" in {
-    doubleProperty3 <== doubleProperty * 2 * 2l * 2f * 2d
-    doubleProperty() = 5
-    doubleProperty3() should equal (80)
-    doubleProperty3.unbind()
+    integerProperty3 <== integerProperty * 2 * 2l * 2f * 2d
+    integerProperty() = 5
+    integerProperty3() should equal (80)
+    integerProperty3.unbind()
   }
 
   it should "support bindable infix division of a property" in {
-    doubleProperty3 <== doubleProperty / doubleProperty2
-    doubleProperty() = 100
-    doubleProperty2() = 10
-    doubleProperty3() should equal (10)
-    doubleProperty3.unbind()
+    integerProperty3 <== integerProperty / integerProperty2
+    integerProperty() = 100
+    integerProperty2() = 10
+    integerProperty3() should equal (10)
+    integerProperty3.unbind()
   }
 
   it should "support bindable infix division of constants" in {
-    doubleProperty3 <== doubleProperty / 2 / 2l / 5f / 5d
-    doubleProperty() = 100
-    doubleProperty3() should equal (1)
-    doubleProperty3.unbind()
+    integerProperty3 <== integerProperty / 2 / 2l / 5f / 5d
+    integerProperty() = 100
+    integerProperty3() should equal (1)
+    integerProperty3.unbind()
   }
 
   it should "support bindable prefix negation" in {
-    doubleProperty3 <== -doubleProperty
-    doubleProperty() = 32
-    doubleProperty3() should equal (-32)
-    doubleProperty3.unbind()
+    integerProperty3 <== -integerProperty
+    integerProperty() = 32
+    integerProperty3() should equal (-32)
+    integerProperty3.unbind()
   }
 
   it should "support bindable infix equality with a property" in {
-    booleanProperty <== doubleProperty == doubleProperty2
-    doubleProperty() = 532
-    doubleProperty2() = 321
+    booleanProperty <== integerProperty == integerProperty2
+    integerProperty() = 532
+    integerProperty2() = 321
     booleanProperty() should equal (false)
-    doubleProperty2() = 532
+    integerProperty2() = 532
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix equality with a constant" in {
-    booleanProperty <== doubleProperty == 532
-    doubleProperty() = 321
+    booleanProperty <== integerProperty == 532
+    integerProperty() = 321
     booleanProperty() should equal (false)
-    doubleProperty() = 532
+    integerProperty() = 532
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a property" in {
-    booleanProperty <== doubleProperty != doubleProperty2
-    doubleProperty() = 231
-    doubleProperty2() = 981
+    booleanProperty <== integerProperty != integerProperty2
+    integerProperty() = 231
+    integerProperty2() = 981
     booleanProperty() should equal (true)
-    doubleProperty2() = 231
+    integerProperty2() = 231
     booleanProperty() should equal (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a constant" in {
-    booleanProperty <== doubleProperty != 231
-    doubleProperty() = 981
+    booleanProperty <== integerProperty != 231
+    integerProperty() = 981
     booleanProperty() should equal (true)
-    doubleProperty() = 231
+    integerProperty() = 231
     booleanProperty() should equal (false)
     booleanProperty.unbind()
   }
 
   it should "support variable precision equality via +- operator" in {
-    booleanProperty <== doubleProperty == 532+-.1
-    doubleProperty() = 533
+    booleanProperty <== integerProperty == 532+-1.1
+    integerProperty() = 534
     booleanProperty() should equal (false)
-    doubleProperty() = 532.09
+    integerProperty() = 533
     booleanProperty() should equal (true)
-    doubleProperty() = 531.91
+    integerProperty() = 531
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }
 
   it should "support variable precision inequality via +- operator" in {
-    booleanProperty <== doubleProperty != 532+-.1
-    doubleProperty() = 533
+    booleanProperty <== integerProperty != 532+-1.1
+    integerProperty() = 534
     booleanProperty() should equal (true)
-    doubleProperty() = 532.09
+    integerProperty() = 533
     booleanProperty() should equal (false)
-    doubleProperty() = 531.91
+    integerProperty() = 531
     booleanProperty() should equal (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a property" in {
-    booleanProperty <== doubleProperty < doubleProperty2
-    doubleProperty() = 51
-    doubleProperty2() = 234
+    booleanProperty <== integerProperty < integerProperty2
+    integerProperty() = 51
+    integerProperty2() = 234
     booleanProperty() should equal (true)
-    doubleProperty2() = 12
+    integerProperty2() = 12
     booleanProperty() should equal (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a constant" in {
-    booleanProperty <== doubleProperty < 51
-    doubleProperty() = 234
+    booleanProperty <== integerProperty < 51
+    integerProperty() = 234
     booleanProperty() should equal (false)
-    doubleProperty() = 12
+    integerProperty() = 12
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a property" in {
-    booleanProperty <== doubleProperty <= doubleProperty2
-    doubleProperty() = 234
-    doubleProperty2() = 512
+    booleanProperty <== integerProperty <= integerProperty2
+    integerProperty() = 234
+    integerProperty2() = 512
     booleanProperty() should equal (true)
-    doubleProperty2() = 93
+    integerProperty2() = 93
     booleanProperty() should equal (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
-    booleanProperty <== doubleProperty <= 234
-    doubleProperty() = 512
+    booleanProperty <== integerProperty <= 234
+    integerProperty() = 512
     booleanProperty() should equal (false)
-    doubleProperty() = 93
+    integerProperty() = 93
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a property" in {
-    booleanProperty <== doubleProperty > doubleProperty2
-    doubleProperty() = 5000
-    doubleProperty2() = 1000
+    booleanProperty <== integerProperty > integerProperty2
+    integerProperty() = 5000
+    integerProperty2() = 1000
     booleanProperty() should equal (true)
-    doubleProperty2() = 6000
+    integerProperty2() = 6000
     booleanProperty() should equal (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a constant" in {
-    booleanProperty <== doubleProperty > 5000
-    doubleProperty() = 1000
+    booleanProperty <== integerProperty > 5000
+    integerProperty() = 1000
     booleanProperty() should equal (false)
-    doubleProperty() = 6000
+    integerProperty() = 6000
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a property" in {
-    booleanProperty <== doubleProperty >= doubleProperty2
-    doubleProperty() = 18349
-    doubleProperty2() = 4985
+    booleanProperty <== integerProperty >= integerProperty2
+    integerProperty() = 18349
+    integerProperty2() = 4985
     booleanProperty() should equal (true)
-    doubleProperty2() = 234564
+    integerProperty2() = 234564
     booleanProperty() should equal (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
-    booleanProperty <== doubleProperty >= 18349
-    doubleProperty() = 4985
+    booleanProperty <== integerProperty >= 18349
+    integerProperty() = 4985
     booleanProperty() should equal (false)
-    doubleProperty() = 234564
+    integerProperty() = 234564
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }

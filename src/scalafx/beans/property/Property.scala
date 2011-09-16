@@ -46,32 +46,32 @@ object Property {
   }
 }
 
-abstract class Property[T](val wrappedProperty:javafx.beans.property.Property[T]) extends ReadOnlyProperty[T](wrappedProperty) {
-  def value_=(v:T) {
-    wrappedProperty.setValue(v)
-  }
+trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends ReadOnlyProperty[T, J] {
+  override def wrappedProperty:javafx.beans.property.Property[J]
+
+  def value_=(v:T)
 
   def update(v:T) {
     value_=(v)
   }
 
-  def bind(v:ObservableValue[_ <: T]) {
+  def <==(v:ObservableValue[_ <: J]) {
     wrappedProperty.bind(v)
   }
 
-  def bind(t:when[_ <: T]) {
+  def <==(t:when[_ <: J]) {
     wrappedProperty.bind(new When(t.ov).then(t._then).otherwise(t._else))
+  }
+
+  def <==>(v:Property[T, J]) {
+    wrappedProperty.bindBidirectional(v.wrappedProperty)
   }
 
   def unbind() {
     wrappedProperty.unbind()
   }
 
-  def bibind(v:Property[T]) {
-    wrappedProperty.bindBidirectional(v.wrappedProperty)
-  }
-
-  def biunbind(v:Property[T]) {
+  def unbind(v:Property[T, J]) {
     wrappedProperty.unbindBidirectional(v.wrappedProperty)
   }
 }

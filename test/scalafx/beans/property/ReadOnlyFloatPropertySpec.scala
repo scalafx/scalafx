@@ -31,265 +31,211 @@ import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers._
 import scalafx.beans.binding.Bindings._
 
-class DoublePropertySpec extends FlatSpec {
+class ReadOnlyFloatPropertySpec extends FlatSpec {
   val bean = new Object()
-  var doubleProperty = new DoubleProperty(bean, "Test Double")
-  var doubleProperty2 = new DoubleProperty(bean, "Test Double 2")
-  var doubleProperty3 = new DoubleProperty(bean, "Test Double 3")
+  var readOnlyFloatProperty = new ReadOnlyFloatProperty(bean, "Test Read-only Float", 50)
+  var floatProperty1 = new FloatProperty(bean, "Test Float 2")
+  var floatProperty2 = new FloatProperty(bean, "Test Float 3")
   var booleanProperty = new BooleanProperty(bean, "Test Boolean")
 
-  "A Double Property" should "have a default value of 0" in {
-    doubleProperty.value should equal (0)
-  }
-
-  it should "be assignable using update" in {
-    doubleProperty() = 500
-    doubleProperty.value should equal (500)
+  "A Float Property" should "start with the value we gave it" in {
+    readOnlyFloatProperty.value should equal (50)
   }
 
   it should "return its value using apply" in {
-    doubleProperty() should equal (500)
+    readOnlyFloatProperty() should equal (50)
   }
 
   it should "know its name" in {
-    doubleProperty.name should equal ("Test Double")
+    readOnlyFloatProperty.name should equal ("Test Read-only Float")
   }
 
   it should "know its bean" in {
-    doubleProperty.bean should equal (bean)
+    readOnlyFloatProperty.bean should equal (bean)
   }
 
-  it should "be bindable to another Double Property" in {
-    doubleProperty <== doubleProperty2
-    doubleProperty2() = 1000
-    doubleProperty() should equal (1000)
-    doubleProperty.unbind()
-  }
-
-  it should "support unbinding from another Double Property" in {
-    doubleProperty <== doubleProperty2
-    doubleProperty2() = 2000
-    doubleProperty.unbind()
-    doubleProperty2() = 3000
-    doubleProperty() should equal (2000)
-  }
-
-  it should "be bidirectionally bindable to another Double Property" in {
-    doubleProperty <==> doubleProperty2
-    doubleProperty() = 13
-    doubleProperty2() should equal (13)
-    doubleProperty2() = 51
-    doubleProperty() should equal (51)
-    doubleProperty unbind doubleProperty2
-  }
-
-  it should "support bidirectional unbinding from another Double Property" in {
-    doubleProperty <==> doubleProperty2
-    doubleProperty() = 16
-    doubleProperty unbind doubleProperty2
-    doubleProperty() = 12
-    doubleProperty2() should equal (16)
+  it should "be bindable to another Float Property" in {
+    floatProperty1 <== readOnlyFloatProperty
+    floatProperty1() should equal (50)
+    floatProperty1.unbind()
   }
 
   it should "support bindable infix addition of a property" in {
-    doubleProperty3 <== doubleProperty + doubleProperty2
-    doubleProperty() = 21
-    doubleProperty2() = 35
-    doubleProperty3() should equal (56)
-    doubleProperty3.unbind()
+    floatProperty2 <== readOnlyFloatProperty + floatProperty1
+    floatProperty1() = 35
+    floatProperty2() should equal (85)
+    floatProperty2.unbind()
   }
 
   it should "support bindable infix addition of constants" in {
-    doubleProperty3 <== doubleProperty + 35 + 35l + 35f + 35d
-    doubleProperty() = 21
-    doubleProperty3() should equal (161)
-    doubleProperty3.unbind()
+    floatProperty2 <== readOnlyFloatProperty + 35 + 35l + 35f + 35d
+    floatProperty2() should equal (190)
+    floatProperty2.unbind()
   }
 
   it should "support bindable infix subtraction of a property" in {
-    doubleProperty3 <== doubleProperty - doubleProperty2
-    doubleProperty() = 40
-    doubleProperty2() = 12
-    doubleProperty3() should equal (28)
-    doubleProperty3.unbind()
+    floatProperty2 <== readOnlyFloatProperty - floatProperty1
+    floatProperty1() = 12
+    floatProperty2() should equal (38)
+    floatProperty2.unbind()
   }
 
   it should "support bindable infix subtraction of constants" in {
-    doubleProperty3 <== doubleProperty - 12 - 12l - 12f - 12d
-    doubleProperty() = 40
-    doubleProperty3() should equal (-8)
-    doubleProperty3.unbind()
+    floatProperty2 <== readOnlyFloatProperty - 12 - 12l - 12f - 12d
+    floatProperty2() should equal (2)
+    floatProperty2.unbind()
   }
 
   it should "support bindable infix multiplication of a property" in {
-    doubleProperty3 <== doubleProperty * doubleProperty2
-    doubleProperty() = 5
-    doubleProperty2() = 6
-    doubleProperty3() should equal (30)
-    doubleProperty3.unbind()
+    floatProperty2 <== readOnlyFloatProperty * floatProperty1
+    floatProperty1() = 6
+    floatProperty2() should equal (300)
+    floatProperty2.unbind()
   }
 
   it should "support bindable infix multiplication of constants" in {
-    doubleProperty3 <== doubleProperty * 2 * 2l * 2f * 2d
-    doubleProperty() = 5
-    doubleProperty3() should equal (80)
-    doubleProperty3.unbind()
+    floatProperty2 <== readOnlyFloatProperty * 2 * 2l * 2f * 2d
+    floatProperty2() should equal (800)
+    floatProperty2.unbind()
   }
 
   it should "support bindable infix division of a property" in {
-    doubleProperty3 <== doubleProperty / doubleProperty2
-    doubleProperty() = 100
-    doubleProperty2() = 10
-    doubleProperty3() should equal (10)
-    doubleProperty3.unbind()
+    floatProperty2 <== readOnlyFloatProperty / floatProperty1
+    floatProperty1() = 10
+    floatProperty2() should equal (5)
+    floatProperty2.unbind()
   }
 
   it should "support bindable infix division of constants" in {
-    doubleProperty3 <== doubleProperty / 2 / 2l / 5f / 5d
-    doubleProperty() = 100
-    doubleProperty3() should equal (1)
-    doubleProperty3.unbind()
+    floatProperty2 <== readOnlyFloatProperty / 2 / 2l / 5f / 5d
+    floatProperty2() should equal (.5)
+    floatProperty2.unbind()
   }
 
   it should "support bindable prefix negation" in {
-    doubleProperty3 <== -doubleProperty
-    doubleProperty() = 32
-    doubleProperty3() should equal (-32)
-    doubleProperty3.unbind()
+    floatProperty2 <== -readOnlyFloatProperty
+    floatProperty2() should equal (-50)
+    floatProperty2.unbind()
   }
 
   it should "support bindable infix equality with a property" in {
-    booleanProperty <== doubleProperty == doubleProperty2
-    doubleProperty() = 532
-    doubleProperty2() = 321
+    booleanProperty <== readOnlyFloatProperty == floatProperty1
+    floatProperty1() = 23
     booleanProperty() should equal (false)
-    doubleProperty2() = 532
+    floatProperty1() = 50
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix equality with a constant" in {
-    booleanProperty <== doubleProperty == 532
-    doubleProperty() = 321
+    booleanProperty <== readOnlyFloatProperty == 532
     booleanProperty() should equal (false)
-    doubleProperty() = 532
+    booleanProperty <== readOnlyFloatProperty == 50
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a property" in {
-    booleanProperty <== doubleProperty != doubleProperty2
-    doubleProperty() = 231
-    doubleProperty2() = 981
+    booleanProperty <== readOnlyFloatProperty != floatProperty1
+    floatProperty1() = 35
     booleanProperty() should equal (true)
-    doubleProperty2() = 231
+    floatProperty1() = 50
     booleanProperty() should equal (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a constant" in {
-    booleanProperty <== doubleProperty != 231
-    doubleProperty() = 981
+    booleanProperty <== readOnlyFloatProperty != 231
     booleanProperty() should equal (true)
-    doubleProperty() = 231
+    booleanProperty <== readOnlyFloatProperty != 50
     booleanProperty() should equal (false)
     booleanProperty.unbind()
   }
 
   it should "support variable precision equality via +- operator" in {
-    booleanProperty <== doubleProperty == 532+-.1
-    doubleProperty() = 533
+    booleanProperty <== readOnlyFloatProperty == 55+-1.1
     booleanProperty() should equal (false)
-    doubleProperty() = 532.09
+    booleanProperty <== readOnlyFloatProperty == 51+-1.1
     booleanProperty() should equal (true)
-    doubleProperty() = 531.91
+    booleanProperty <== readOnlyFloatProperty == 49+-1.1
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }
 
   it should "support variable precision inequality via +- operator" in {
-    booleanProperty <== doubleProperty != 532+-.1
-    doubleProperty() = 533
+    booleanProperty <== readOnlyFloatProperty != 55+-1.1
     booleanProperty() should equal (true)
-    doubleProperty() = 532.09
+    booleanProperty <== readOnlyFloatProperty != 51+-1.1
     booleanProperty() should equal (false)
-    doubleProperty() = 531.91
+    booleanProperty <== readOnlyFloatProperty != 49+-1.1
     booleanProperty() should equal (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a property" in {
-    booleanProperty <== doubleProperty < doubleProperty2
-    doubleProperty() = 51
-    doubleProperty2() = 234
+    booleanProperty <== readOnlyFloatProperty < floatProperty1
+    floatProperty1() = 234
     booleanProperty() should equal (true)
-    doubleProperty2() = 12
+    floatProperty1() = 12
     booleanProperty() should equal (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a constant" in {
-    booleanProperty <== doubleProperty < 51
-    doubleProperty() = 234
+    booleanProperty <== readOnlyFloatProperty < 49
     booleanProperty() should equal (false)
-    doubleProperty() = 12
+    booleanProperty <== readOnlyFloatProperty < 51
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a property" in {
-    booleanProperty <== doubleProperty <= doubleProperty2
-    doubleProperty() = 234
-    doubleProperty2() = 512
+    booleanProperty <== readOnlyFloatProperty <= floatProperty1
+    floatProperty1() = 512
     booleanProperty() should equal (true)
-    doubleProperty2() = 93
+    floatProperty1() = 34
     booleanProperty() should equal (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
-    booleanProperty <== doubleProperty <= 234
-    doubleProperty() = 512
+    booleanProperty <== readOnlyFloatProperty <= 34
     booleanProperty() should equal (false)
-    doubleProperty() = 93
+    booleanProperty <== readOnlyFloatProperty <= 512
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a property" in {
-    booleanProperty <== doubleProperty > doubleProperty2
-    doubleProperty() = 5000
-    doubleProperty2() = 1000
+    booleanProperty <== readOnlyFloatProperty > floatProperty1
+    floatProperty1() = 40
     booleanProperty() should equal (true)
-    doubleProperty2() = 6000
+    floatProperty1() = 60
     booleanProperty() should equal (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a constant" in {
-    booleanProperty <== doubleProperty > 5000
-    doubleProperty() = 1000
+    booleanProperty <== readOnlyFloatProperty > 51
     booleanProperty() should equal (false)
-    doubleProperty() = 6000
+    booleanProperty <== readOnlyFloatProperty > 49
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a property" in {
-    booleanProperty <== doubleProperty >= doubleProperty2
-    doubleProperty() = 18349
-    doubleProperty2() = 4985
+    booleanProperty <== readOnlyFloatProperty >= floatProperty1
+    floatProperty1() = 49
     booleanProperty() should equal (true)
-    doubleProperty2() = 234564
+    floatProperty1() = 51
     booleanProperty() should equal (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
-    booleanProperty <== doubleProperty >= 18349
-    doubleProperty() = 4985
+    booleanProperty <== readOnlyFloatProperty >= 18349
     booleanProperty() should equal (false)
-    doubleProperty() = 234564
+    booleanProperty <== readOnlyFloatProperty >= 13
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }

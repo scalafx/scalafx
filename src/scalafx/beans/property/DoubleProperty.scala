@@ -35,13 +35,14 @@ object DoubleProperty {
   implicit def sfxDoubleProperty2jfx(dp: DoubleProperty) = dp.wrappedDoubleProperty
 }
 
-class DoubleProperty(val wrappedDoubleProperty:JFXDoubleProperty) extends Property[Number](wrappedDoubleProperty) with NumberExpression {
+class DoubleProperty(val wrappedDoubleProperty:JFXDoubleProperty) extends NumberExpression(wrappedDoubleProperty) with Property[Double, Number] {
+  override def wrappedProperty = wrappedDoubleProperty
   def this(bean:Object, name:String) = this(new DoublePropertyBase() {
     def getBean = bean
     def getName = name
   })
-  override def wrappedNumberExpression = wrappedDoubleProperty
   override def value = wrappedDoubleProperty.get
+  def value2:Double = wrappedDoubleProperty.get
   def value_=(v: Double) {
     wrappedDoubleProperty.set(v)
   }

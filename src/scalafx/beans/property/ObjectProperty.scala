@@ -27,5 +27,10 @@
 
 package scalafx.beans.property
 
-class ObjectProperty[T](val wrappedObjectProperty:javafx.beans.property.ObjectProperty[T]) extends Property[T](wrappedObjectProperty) {
+class ObjectProperty[T <: Object](val wrappedObjectProperty:javafx.beans.property.ObjectProperty[T]) extends Property[T, T] {
+  def wrappedProperty = wrappedObjectProperty
+  def value_=(v: T) {
+    wrappedObjectProperty.set(v)
+  }
+  def value = wrappedObjectProperty.get()
 }

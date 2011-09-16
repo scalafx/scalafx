@@ -27,11 +27,19 @@
 
 package scalafx.beans.property
 
-object ReadOnlyBooleanProperty {
-  implicit def sfxReadOnlyBooleanProperty2jfx(dp: ReadOnlyBooleanProperty) = dp.wrappedReadOnlyBooleanProperty
+import scalafx.beans.binding.NumberExpression
+import javafx.beans.property.ReadOnlyLongPropertyBase
+
+object ReadOnlyLongProperty {
+  implicit def sfxReadOnlyLongProperty2jfx(dp: ReadOnlyLongProperty) = dp.wrappedReadOnlyLongProperty
 }
 
-class ReadOnlyBooleanProperty(val wrappedReadOnlyBooleanProperty:javafx.beans.property.ReadOnlyBooleanProperty) extends ReadOnlyProperty[Boolean, java.lang.Boolean] {
-  override def wrappedProperty = wrappedReadOnlyBooleanProperty
-  override def value = wrappedReadOnlyBooleanProperty.get
+class ReadOnlyLongProperty(val wrappedReadOnlyLongProperty:javafx.beans.property.ReadOnlyLongProperty) extends NumberExpression(wrappedReadOnlyLongProperty) with ReadOnlyProperty[Long, Number] {
+  override def wrappedProperty = wrappedReadOnlyLongProperty
+  def this(bean:Object, name:String, value:Long) = this(new ReadOnlyLongPropertyBase() {
+    def getBean = bean
+    def getName = name
+    def get = value
+  })
+  override def value = wrappedReadOnlyLongProperty.get
 }

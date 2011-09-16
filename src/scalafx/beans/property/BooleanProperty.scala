@@ -34,7 +34,8 @@ object BooleanProperty {
   implicit def sfxBooleanProperty2jfx(dp: BooleanProperty) = dp.wrappedBooleanProperty
 }
 
-class BooleanProperty(val wrappedBooleanProperty:JFXBooleanProperty) extends Property[java.lang.Boolean](wrappedBooleanProperty) {
+class BooleanProperty(val wrappedBooleanProperty:JFXBooleanProperty) extends Property[Boolean, java.lang.Boolean] {
+  override def wrappedProperty = wrappedBooleanProperty
   def this(bean:Object, name:String) = this(new BooleanPropertyBase() {
     def getBean = bean
     def getName = name
