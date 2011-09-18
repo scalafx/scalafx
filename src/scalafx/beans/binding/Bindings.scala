@@ -28,7 +28,34 @@
 package scalafx.beans.binding
 
 import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
+import javafx.beans.{InvalidationListener, Observable => JFXObservable}
+import javafx.beans.value.{ChangeListener, ObservableValue => JFXObservableValue, ObservableBooleanValue}
 
 object Bindings {
   implicit def double2VariablePrecisionNumber(d:Double) = VariablePrecisionNumber(d)
+
+  implicit def closure2InvalidationListener(il: JFXObservable => Unit) = new InvalidationListener {
+    def invalidated(observable: JFXObservable) {
+      il(observable)
+    }
+  }
+
+  implicit def closure2ChangedListener[P](cl: (JFXObservableValue[_ <: P], P, P) => Unit) = new ChangeListener[P]() {
+    def changed(observable: JFXObservableValue[_ <: P], oldValue: P, newValue: P) {
+      cl(observable, oldValue, newValue)
+    }
+  }
+
+  case class when[T](ov:ObservableBooleanValue) {
+    var _then:T = _
+    def then(v:T) = {
+      _then = v
+      this
+    }
+    var _else:T = _
+    def otherwise(v:T) = {
+      _else = v
+      this
+    }
+  }
 }

@@ -36,7 +36,7 @@ object LongProperty {
 }
 
 class LongProperty(val wrappedLongProperty:JFXLongProperty) extends NumberExpression(wrappedLongProperty) with Property[Long, Number] {
-  override def wrappedProperty = wrappedLongProperty
+  override private[beans] def wrappedProperty = wrappedLongProperty
   def this(bean:Object, name:String) = this(new LongPropertyBase() {
     def getBean = bean
     def getName = name

@@ -27,14 +27,16 @@
 
 package scalafx.beans.property
 
-trait ReadOnlyProperty[@specialized(Int, Long, Float, Double, Boolean) T, J] {
-  def wrappedProperty:javafx.beans.property.ReadOnlyProperty[J]
+import scalafx.beans.value.ObservableValue
+
+object ReadOnlyProperty {
+  implicit def sfxReadOnlyProperty2jfx[T, J](rop:ReadOnlyProperty[T, J]) = rop.wrappedProperty
+}
+
+trait ReadOnlyProperty[T, J] extends ObservableValue[T, J] {
+  override private[beans] def wrappedProperty:javafx.beans.property.ReadOnlyProperty[J]
 
   def name = wrappedProperty.getName
 
   def bean = wrappedProperty.getBean
-
-  def value:T
-
-  def apply() = value
 }

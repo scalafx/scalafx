@@ -35,7 +35,7 @@ object ReadOnlyDoubleProperty {
 }
 
 class ReadOnlyDoubleProperty(val wrappedReadOnlyDoubleProperty:javafx.beans.property.ReadOnlyDoubleProperty) extends NumberExpression(wrappedReadOnlyDoubleProperty) with ReadOnlyProperty[Double, Number] {
-  override def wrappedProperty = wrappedReadOnlyDoubleProperty
+  override private[beans] def wrappedProperty = wrappedReadOnlyDoubleProperty
   def this(bean:Object, name:String, value:Double) = this(new ReadOnlyDoublePropertyBase() {
     def getBean = bean
     def getName = name

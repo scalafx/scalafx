@@ -32,6 +32,6 @@ object ReadOnlyBooleanProperty {
 }
 
 class ReadOnlyBooleanProperty(val wrappedReadOnlyBooleanProperty:javafx.beans.property.ReadOnlyBooleanProperty) extends ReadOnlyProperty[Boolean, java.lang.Boolean] {
-  override def wrappedProperty = wrappedReadOnlyBooleanProperty
+  override private[beans] def wrappedProperty = wrappedReadOnlyBooleanProperty
   override def value = wrappedReadOnlyBooleanProperty.get
 }

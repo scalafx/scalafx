@@ -36,7 +36,7 @@ object IntegerProperty {
 }
 
 class IntegerProperty(val wrappedIntegerProperty:JFXIntegerProperty) extends NumberExpression(wrappedIntegerProperty) with Property[Int, Number] {
-  override def wrappedProperty = wrappedIntegerProperty
+  override private[beans] def wrappedProperty = wrappedIntegerProperty
   def this(bean:Object, name:String) = this(new IntegerPropertyBase() {
     def getBean = bean
     def getName = name

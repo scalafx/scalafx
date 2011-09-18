@@ -25,25 +25,35 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+package scalafx.beans.value
 
-import scalafx.beans.binding.NumberExpression
-import javafx.beans.property.{FloatProperty => JFXFloatProperty}
-import javafx.beans.property.FloatPropertyBase
+import javafx.beans.value.{ObservableValue => JFXObservableValue, ChangeListener}
+import scalafx.beans.Observable
 
-object FloatProperty {
-  implicit def sfxFloatProperty2jfx(dp: FloatProperty) = dp.wrappedFloatProperty
+object ObservableValue {
+  implicit def sfxObservableValue2jfx[T, J](ov:ObservableValue[T, J]) = ov.wrappedProperty
 }
 
-class FloatProperty(val wrappedFloatProperty:JFXFloatProperty) extends NumberExpression(wrappedFloatProperty) with Property[Float, Number] {
-  override private[beans] def wrappedProperty = wrappedFloatProperty
-  def this(bean:Object, name:String) = this(new FloatPropertyBase() {
-    def getBean = bean
-    def getName = name
-  })
-  override def value = wrappedFloatProperty.get
-  def value2:Float = wrappedFloatProperty.get
-  def value_=(v: Float) {
-    wrappedFloatProperty.set(v)
+trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J] extends Observable {
+  override private[beans] def wrappedProperty: JFXObservableValue[J]
+
+  def value: T
+
+  def apply() = value
+
+  def onChange[J1 >: J](op: (JFXObservableValue[_ <: J1], J1, J1) => Unit) {
+    wrappedProperty.addListener(new ChangeListener[J1] {
+      def changed(observable: JFXObservableValue[_ <: J1], oldValue: J1, newValue: J1) {
+        op(observable, oldValue, newValue)
+      }
+    })
+  }
+
+  def onChange(op: => Unit) {
+    wrappedProperty.addListener(new ChangeListener[J] {
+      def changed(observable: JFXObservableValue[_ <: J], oldValue: J, newValue: J) {
+        op
+      }
+    })
   }
 }

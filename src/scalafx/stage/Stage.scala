@@ -30,7 +30,7 @@ package scalafx.stage
 import scalafx.scene.Scene
 import scalafx.application.Application
 
-class Stage {
+class Stage() {
   var wrappedStage: javafx.stage.Stage = Application.STAGE
 
   def title: String = wrappedStage.getTitle

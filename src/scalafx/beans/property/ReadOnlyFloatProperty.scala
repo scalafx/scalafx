@@ -35,7 +35,7 @@ object ReadOnlyFloatProperty {
 }
 
 class ReadOnlyFloatProperty(val wrappedReadOnlyFloatProperty:javafx.beans.property.ReadOnlyFloatProperty) extends NumberExpression(wrappedReadOnlyFloatProperty) with ReadOnlyProperty[Float, Number] {
-  override def wrappedProperty = wrappedReadOnlyFloatProperty
+  override private[beans] def wrappedProperty = wrappedReadOnlyFloatProperty
   def this(bean:Object, name:String, value:Float) = this(new ReadOnlyFloatPropertyBase() {
     def getBean = bean
     def getName = name

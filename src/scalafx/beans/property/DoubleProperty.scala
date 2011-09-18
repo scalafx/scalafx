@@ -36,7 +36,7 @@ object DoubleProperty {
 }
 
 class DoubleProperty(val wrappedDoubleProperty:JFXDoubleProperty) extends NumberExpression(wrappedDoubleProperty) with Property[Double, Number] {
-  override def wrappedProperty = wrappedDoubleProperty
+  override private[beans] def wrappedProperty = wrappedDoubleProperty
   def this(bean:Object, name:String) = this(new DoublePropertyBase() {
     def getBean = bean
     def getName = name

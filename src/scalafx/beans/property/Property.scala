@@ -27,27 +27,16 @@
 
 package scalafx.beans.property
 
-import scalafx.beans.property.Property.when
 import javafx.beans.binding.When
-import javafx.beans.value.{ObservableBooleanValue, ObservableValue}
+import javafx.beans.value.ObservableValue
+import scalafx.beans.binding.Bindings.when
 
 object Property {
-  case class when[T](ov:ObservableBooleanValue) {
-    var _then:T = _
-    def then(v:T) = {
-      _then = v
-      this
-    }
-    var _else:T = _
-    def otherwise(v:T) = {
-      _else = v
-      this
-    }
-  }
+  implicit def sfxProperty2jfx(p:Property[_, _]) = p.wrappedProperty
 }
 
 trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends ReadOnlyProperty[T, J] {
-  override def wrappedProperty:javafx.beans.property.Property[J]
+  override private[beans] def wrappedProperty:javafx.beans.property.Property[J]
 
   def value_=(v:T)
 

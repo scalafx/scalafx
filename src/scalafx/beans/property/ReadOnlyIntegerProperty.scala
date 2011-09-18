@@ -35,7 +35,7 @@ object ReadOnlyIntegerProperty {
 }
 
 class ReadOnlyIntegerProperty(val wrappedReadOnlyIntegerProperty:javafx.beans.property.ReadOnlyIntegerProperty) extends NumberExpression(wrappedReadOnlyIntegerProperty) with ReadOnlyProperty[Int, Number] {
-  override def wrappedProperty = wrappedReadOnlyIntegerProperty
+  override private[beans] def wrappedProperty = wrappedReadOnlyIntegerProperty
   def this(bean:Object, name:String, value:Int) = this(new ReadOnlyIntegerPropertyBase() {
     def getBean = bean
     def getName = name

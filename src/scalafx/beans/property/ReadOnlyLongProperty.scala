@@ -35,7 +35,7 @@ object ReadOnlyLongProperty {
 }
 
 class ReadOnlyLongProperty(val wrappedReadOnlyLongProperty:javafx.beans.property.ReadOnlyLongProperty) extends NumberExpression(wrappedReadOnlyLongProperty) with ReadOnlyProperty[Long, Number] {
-  override def wrappedProperty = wrappedReadOnlyLongProperty
+  override private[beans] def wrappedProperty = wrappedReadOnlyLongProperty
   def this(bean:Object, name:String, value:Long) = this(new ReadOnlyLongPropertyBase() {
     def getBean = bean
     def getName = name

@@ -25,25 +25,30 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+package scalafx.beans
 
-import scalafx.beans.binding.NumberExpression
-import javafx.beans.property.{FloatProperty => JFXFloatProperty}
-import javafx.beans.property.FloatPropertyBase
+import javafx.beans.{InvalidationListener, Observable => JFXObservable}
 
-object FloatProperty {
-  implicit def sfxFloatProperty2jfx(dp: FloatProperty) = dp.wrappedFloatProperty
+object Observable {
+  implicit def sfxObservable2jfx(o: Observable) = o.wrappedProperty
 }
 
-class FloatProperty(val wrappedFloatProperty:JFXFloatProperty) extends NumberExpression(wrappedFloatProperty) with Property[Float, Number] {
-  override private[beans] def wrappedProperty = wrappedFloatProperty
-  def this(bean:Object, name:String) = this(new FloatPropertyBase() {
-    def getBean = bean
-    def getName = name
-  })
-  override def value = wrappedFloatProperty.get
-  def value2:Float = wrappedFloatProperty.get
-  def value_=(v: Float) {
-    wrappedFloatProperty.set(v)
+trait Observable {
+  private[beans] def wrappedProperty: JFXObservable
+
+  def onInvalidate(op: (JFXObservable) => Unit) {
+    wrappedProperty.addListener(new InvalidationListener {
+      def invalidated(observable: JFXObservable) {
+        op(observable)
+      }
+    })
+  }
+
+  def onInvalidate(op: => Unit) {
+    wrappedProperty.addListener(new InvalidationListener {
+      def invalidated(observable: JFXObservable) {
+        op
+      }
+    })
   }
 }
