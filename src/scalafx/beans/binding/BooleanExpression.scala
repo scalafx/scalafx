@@ -28,6 +28,7 @@
 package scalafx.beans.binding
 
 import javafx.beans.binding.{BooleanExpression => JFXBooleanExpression}
+import javafx.beans.value.ObservableBooleanValue
 
 object BooleanExpression {
   implicit def sfxBooleanExpression2jfx(be: BooleanExpression) = be.delegate
@@ -36,11 +37,19 @@ object BooleanExpression {
 }
 
 class BooleanExpression(val delegate: JFXBooleanExpression) {
+  def ==(v: ObservableBooleanValue) = new BooleanExpression(delegate.isEqualTo(v))
+
   def ==(v: BooleanExpression) = new BooleanExpression(delegate.isEqualTo(v.delegate))
+
+  def !=(v: ObservableBooleanValue) = new BooleanExpression(delegate.isNotEqualTo(v))
 
   def !=(v: BooleanExpression) = new BooleanExpression(delegate.isNotEqualTo(v.delegate))
 
+  def &&(v: ObservableBooleanValue) = new BooleanExpression(delegate.and(v))
+
   def &&(v: BooleanExpression) = new BooleanExpression(delegate.and(v.delegate))
+
+  def ||(v: ObservableBooleanValue) = new BooleanExpression(delegate.or(v))
 
   def ||(v: BooleanExpression) = new BooleanExpression(delegate.or(v.delegate))
 

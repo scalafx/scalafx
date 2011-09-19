@@ -35,21 +35,19 @@ import scalafx.stage.Stage
 import javafx.scene.paint.Color
 
 object JavaFXChangeListener extends Application {
-  def rect = new Rectangle {
-    x = 25
-    y = 40
-    width = 100
-    height = 100
-    fill <== when(hover) then Color.GREEN otherwise Color.RED
-  }
-
   stage = new Stage {
     title = "Hello Stage"
     width = 600
     height = 450
     scene = new Scene {
       fill = Color.LIGHTGREEN
-      content = List(rect)
+      content = List(new Rectangle {
+        x = 25
+        y = 40
+        width = 100
+        height = 100
+        fill <== when(hover) then Color.GREEN otherwise Color.RED
+      })
     }
     visible = true
   }

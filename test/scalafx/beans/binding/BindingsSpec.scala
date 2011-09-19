@@ -27,17 +27,110 @@
 
 package scalafx.beans.binding
 
-import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers._
+import scalafx.beans.binding.Bindings._
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import scalafx.beans.property._
+import java.lang.Object
 
-class BindingsSpec extends FlatSpec {
+class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
+  def bean = new Object()
+  var booleanProperty1:BooleanProperty = null
+  var booleanProperty2:BooleanProperty = null
+  var booleanProperty3:BooleanProperty = null
+  var integerProperty1:IntegerProperty = null
+  var longProperty1:LongProperty = null
+  var floatProperty1:FloatProperty = null
+  var doubleProperty1:DoubleProperty = null
+  var doubleProperty2:DoubleProperty = null
+  var doubleProperty3:DoubleProperty = null
+  var objectProperty1:ObjectProperty[Object] = null
+  var objectProperty2:ObjectProperty[Object] = null
+  var objectProperty3:ObjectProperty[Object] = null
+
+  override protected def beforeEach() {
+    booleanProperty1 = new BooleanProperty(null, "Boolean Property 1")
+    booleanProperty2 = new BooleanProperty(null, "Boolean Property 2")
+    booleanProperty3 = new BooleanProperty(null, "Boolean Property 3")
+    integerProperty1 = new IntegerProperty(null, "Integer Property 1")
+    longProperty1 = new LongProperty(null, "Long Property 1")
+    floatProperty1 = new FloatProperty(null, "Float Property 1")
+    doubleProperty1 = new DoubleProperty(null, "Double Property 1")
+    doubleProperty2 = new DoubleProperty(null, "Double Property 2")
+    doubleProperty3 = new DoubleProperty(null, "Double Property 3")
+    objectProperty1 = new ObjectProperty[Object](null, "Object Property 1")
+    objectProperty2 = new ObjectProperty[Object](null, "Object Property 2")
+    objectProperty3 = new ObjectProperty[Object](null, "Object Property 3")
+  }
+
   "Bindings" should "support min, max" is (pending)
 
-  it should "support when .. then .. otherwise" is (pending)
+  it should "support when .. then .. otherwise with all numeric property types" in {
+    integerProperty1() = 5
+    longProperty1() = 10
+    floatProperty1() = 15
+    doubleProperty1() = 30
+    doubleProperty2 <== when(booleanProperty1) then 31 otherwise integerProperty1
+    doubleProperty2() should be(5)
+    doubleProperty2 <== when(booleanProperty1) then 31 otherwise longProperty1
+    doubleProperty2() should be(10)
+    doubleProperty2 <== when(booleanProperty1) then 31 otherwise floatProperty1
+    doubleProperty2() should be(15)
+    doubleProperty2 <== when(booleanProperty1) then 31 otherwise doubleProperty1
+    doubleProperty2() should be(30)
+  }
+
+  it should "support when .. then .. otherwise with all number/property combinations" in {
+    doubleProperty2() = 15
+    doubleProperty3() = 30
+    doubleProperty1 <== when(booleanProperty1) then doubleProperty2 otherwise doubleProperty3
+    doubleProperty1() should be(30)
+    doubleProperty1 <== when(booleanProperty1) then doubleProperty2 otherwise 15d
+    doubleProperty1() should be(15)
+    doubleProperty1 <== when(booleanProperty1) then 25d otherwise doubleProperty3
+    doubleProperty1() should be(30)
+  }
+
+  it should "support when .. then .. otherwise with all different number primitives" in {
+    doubleProperty1 <== when(booleanProperty1) then 25d otherwise 15d
+    doubleProperty1() should be(15)
+    doubleProperty1 <== when(booleanProperty1) then 25 otherwise 16
+    doubleProperty1() should be(16)
+    doubleProperty1 <== when(booleanProperty1) then 25l otherwise 17l
+    doubleProperty1() should be(17)
+    doubleProperty1 <== when(booleanProperty1) then 25f otherwise 18f
+    doubleProperty1() should be(18)
+  }
+
+  it should "support when .. then .. otherwise with boolean types" in {
+    booleanProperty3() = true
+    booleanProperty1 <== when(booleanProperty2) then booleanProperty2 otherwise booleanProperty3
+    booleanProperty1() should be(true)
+    booleanProperty1 <== when(booleanProperty2) then booleanProperty2 otherwise false
+    booleanProperty1() should be(false)
+    booleanProperty1 <== when(booleanProperty2) then true otherwise booleanProperty3
+    booleanProperty1() should be(true)
+  }
+
+  it should "support when .. then .. otherwise with string types" in {
+
+  }
+
+  it should "support when .. then .. otherwise with object types" in {
+    val obj1 = new Object()
+    val obj2 = new Object()
+    val obj3 = new Object()
+    objectProperty2() = obj2
+    objectProperty3() = obj3
+    objectProperty1 <== when(booleanProperty1) then objectProperty2 otherwise objectProperty3
+    objectProperty1() should be(obj3)
+    objectProperty1 <== when(booleanProperty1) then obj1 otherwise objectProperty2
+    objectProperty1() should be(obj2)
+    objectProperty1 <== when(booleanProperty1) then objectProperty2 otherwise obj1
+    objectProperty1() should be(obj1)
+  }
 
   it should "support that select* funk..." is (pending)
 
   it should "support raw javafx mixing (make sure all the implicits are in place)" is (pending)
-
-  it should "support boolean operations (&&, ||, etc.) -- well, maybe not -- this is really a boolean thing" is (pending)
 }

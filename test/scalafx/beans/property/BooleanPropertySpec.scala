@@ -103,8 +103,26 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should equal(true)
   }
 
+  it should "support bindable infix equality (==) with a jfx property" in {
+    booleanProperty <== booleanProperty2 == booleanProperty3.delegate
+    booleanProperty2() = true
+    booleanProperty3() = false
+    booleanProperty() should equal(false)
+    booleanProperty3() = true
+    booleanProperty() should equal(true)
+  }
+
   it should "support bindable infix inequality (!=) with a property" in {
     booleanProperty <== booleanProperty2 != booleanProperty3
+    booleanProperty2() = true
+    booleanProperty3() = false
+    booleanProperty() should equal(true)
+    booleanProperty3() = true
+    booleanProperty() should equal(false)
+  }
+
+  it should "support bindable infix inequality (!=) with a jfx property" in {
+    booleanProperty <== booleanProperty2 != booleanProperty3.delegate
     booleanProperty2() = true
     booleanProperty3() = false
     booleanProperty() should equal(true)
@@ -121,8 +139,26 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should equal(true)
   }
 
+  it should "support bindable infix and (&&) with a jfx property" in {
+    booleanProperty <== booleanProperty2 && booleanProperty3.delegate
+    booleanProperty2() = true
+    booleanProperty3() = false
+    booleanProperty() should equal(false)
+    booleanProperty3() = true
+    booleanProperty() should equal(true)
+  }
+
   it should "support bindable infix or (||) with a property" in {
     booleanProperty <== booleanProperty2 || booleanProperty3
+    booleanProperty2() = true
+    booleanProperty3() = false
+    booleanProperty() should equal(true)
+    booleanProperty2() = false
+    booleanProperty() should equal(false)
+  }
+
+  it should "support bindable infix or (||) with a jfx property" in {
+    booleanProperty <== booleanProperty2 || booleanProperty3.delegate
     booleanProperty2() = true
     booleanProperty3() = false
     booleanProperty() should equal(true)

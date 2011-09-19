@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ScalaFX.iml" filepath="$PROJECT_DIR$/ScalaFX.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ScalaTest.iml" filepath="$PROJECT_DIR$/ScalaTest.iml" />
     </modules>
   </component>
 </project>

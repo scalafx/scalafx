@@ -27,10 +27,8 @@
 
 package scalafx.beans.property
 
-import javafx.beans.binding.When
 import javafx.beans.value.ObservableValue
 import javafx.beans.property.{Property => JFXProperty}
-import scalafx.beans.binding.Bindings.when
 
 object Property {
   implicit def sfxProperty2jfx(p: Property[_, _]) = p.delegate
@@ -47,10 +45,6 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends Rea
 
   def <==(v: ObservableValue[_ <: J]) {
     delegate.bind(v)
-  }
-
-  def <==(t: when[_ <: J]) {
-    delegate.bind(new When(t.ov).then(t._then).otherwise(t._else))
   }
 
   def <==>(v: Property[T, J]) {
