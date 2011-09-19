@@ -28,22 +28,22 @@
 package scalafx.beans.property
 
 import scalafx.beans.binding.NumberExpression
-import javafx.beans.property.{IntegerProperty => JFXIntegerProperty}
-import javafx.beans.property.IntegerPropertyBase
+import javafx.beans.property.{IntegerPropertyBase, IntegerProperty => JFXIntegerProperty}
 
 object IntegerProperty {
-  implicit def sfxIntegerProperty2jfx(dp: IntegerProperty) = dp.wrappedIntegerProperty
+  implicit def sfxIntegerProperty2jfx(dp: IntegerProperty) = dp.delegate
 }
 
-class IntegerProperty(val wrappedIntegerProperty:JFXIntegerProperty) extends NumberExpression(wrappedIntegerProperty) with Property[Int, Number] {
-  override private[beans] def wrappedProperty = wrappedIntegerProperty
-  def this(bean:Object, name:String) = this(new IntegerPropertyBase() {
+class IntegerProperty(override val delegate: JFXIntegerProperty) extends NumberExpression(delegate) with Property[Int, Number] {
+  def this(bean: Object, name: String) = this (new IntegerPropertyBase() {
     def getBean = bean
+
     def getName = name
   })
-  override def value = wrappedIntegerProperty.get
-  def value2:Int = wrappedIntegerProperty.get
+
+  override def value = delegate.get
+
   def value_=(v: Int) {
-    wrappedIntegerProperty.set(v)
+    delegate.set(v)
   }
 }

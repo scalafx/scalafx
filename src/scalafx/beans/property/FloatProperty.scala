@@ -28,22 +28,22 @@
 package scalafx.beans.property
 
 import scalafx.beans.binding.NumberExpression
-import javafx.beans.property.{FloatProperty => JFXFloatProperty}
-import javafx.beans.property.FloatPropertyBase
+import javafx.beans.property.{FloatPropertyBase, FloatProperty => JFXFloatProperty}
 
 object FloatProperty {
-  implicit def sfxFloatProperty2jfx(dp: FloatProperty) = dp.wrappedFloatProperty
+  implicit def sfxFloatProperty2jfx(dp: FloatProperty) = dp.delegate
 }
 
-class FloatProperty(val wrappedFloatProperty:JFXFloatProperty) extends NumberExpression(wrappedFloatProperty) with Property[Float, Number] {
-  override private[beans] def wrappedProperty = wrappedFloatProperty
-  def this(bean:Object, name:String) = this(new FloatPropertyBase() {
+class FloatProperty(override val delegate: JFXFloatProperty) extends NumberExpression(delegate) with Property[Float, Number] {
+  def this(bean: Object, name: String) = this (new FloatPropertyBase() {
     def getBean = bean
+
     def getName = name
   })
-  override def value = wrappedFloatProperty.get
-  def value2:Float = wrappedFloatProperty.get
+
+  override def value = delegate.get
+
   def value_=(v: Float) {
-    wrappedFloatProperty.set(v)
+    delegate.set(v)
   }
 }

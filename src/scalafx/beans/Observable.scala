@@ -28,24 +28,25 @@
 package scalafx.beans
 
 import javafx.beans.{InvalidationListener, Observable => JFXObservable}
+import scalafx.util.SFXDelegate
 
 object Observable {
-  implicit def sfxObservable2jfx(o: Observable) = o.wrappedProperty
+  implicit def sfxObservable2jfx(o: Observable) = o.delegate
 }
 
-trait Observable {
-  private[beans] def wrappedProperty: JFXObservable
+trait Observable extends SFXDelegate {
+  override def delegate:JFXObservable
 
-  def onInvalidate(op: (JFXObservable) => Unit) {
-    wrappedProperty.addListener(new InvalidationListener {
+  def onInvalidate(op: Observable => Unit) {
+    delegate.addListener(new InvalidationListener {
       def invalidated(observable: JFXObservable) {
-        op(observable)
+        op(Observable.this)
       }
     })
   }
 
   def onInvalidate(op: => Unit) {
-    wrappedProperty.addListener(new InvalidationListener {
+    delegate.addListener(new InvalidationListener {
       def invalidated(observable: JFXObservable) {
         op
       }

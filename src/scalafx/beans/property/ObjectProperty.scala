@@ -27,14 +27,16 @@
 
 package scalafx.beans.property
 
+import javafx.beans.property.{ObjectProperty => JFXObjectProperty}
+
 object ObjectProperty {
-  implicit def sfxObjectProperty2jfx[T <: Object](op:ObjectProperty[T]) = op.wrappedObjectProperty
+  implicit def sfxObjectProperty2jfx[T <: Object](op: ObjectProperty[T]) = op.delegate
 }
 
-class ObjectProperty[T <: Object](private val wrappedObjectProperty:javafx.beans.property.ObjectProperty[T]) extends Property[T, T] {
-  override private[beans] def wrappedProperty = wrappedObjectProperty
+class ObjectProperty[T <: Object](val delegate: JFXObjectProperty[T]) extends Property[T, T] {
   def value_=(v: T) {
-    wrappedObjectProperty.set(v)
+    delegate.set(v)
   }
-  def value = wrappedObjectProperty.get()
+
+  def value = delegate.get()
 }

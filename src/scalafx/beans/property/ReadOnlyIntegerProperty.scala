@@ -28,18 +28,20 @@ package scalafx.beans.property
  */
 
 import scalafx.beans.binding.NumberExpression
-import javafx.beans.property.ReadOnlyIntegerPropertyBase
+import javafx.beans.property.{ReadOnlyIntegerPropertyBase, ReadOnlyIntegerProperty => JFXReadOnlyIntegerProperty}
 
 object ReadOnlyIntegerProperty {
-  implicit def sfxReadOnlyIntegerProperty2jfx(dp: ReadOnlyIntegerProperty) = dp.wrappedReadOnlyIntegerProperty
+  implicit def sfxReadOnlyIntegerProperty2jfx(dp: ReadOnlyIntegerProperty) = dp.delegate
 }
 
-class ReadOnlyIntegerProperty(val wrappedReadOnlyIntegerProperty:javafx.beans.property.ReadOnlyIntegerProperty) extends NumberExpression(wrappedReadOnlyIntegerProperty) with ReadOnlyProperty[Int, Number] {
-  override private[beans] def wrappedProperty = wrappedReadOnlyIntegerProperty
-  def this(bean:Object, name:String, value:Int) = this(new ReadOnlyIntegerPropertyBase() {
+class ReadOnlyIntegerProperty(override val delegate: JFXReadOnlyIntegerProperty) extends NumberExpression(delegate) with ReadOnlyProperty[Int, Number] {
+  def this(bean: Object, name: String, value: Int) = this (new ReadOnlyIntegerPropertyBase() {
     def getBean = bean
+
     def getName = name
+
     def get = value
   })
-  override def value = wrappedReadOnlyIntegerProperty.get
+
+  override def value = delegate.get
 }

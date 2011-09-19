@@ -31,26 +31,26 @@ import javafx.beans.value.{ObservableValue => JFXObservableValue, ChangeListener
 import scalafx.beans.Observable
 
 object ObservableValue {
-  implicit def sfxObservableValue2jfx[T, J](ov:ObservableValue[T, J]) = ov.wrappedProperty
+  implicit def sfxObservableValue2jfx[T, J](ov: ObservableValue[T, J]) = ov.delegate
 }
 
 trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J] extends Observable {
-  override private[beans] def wrappedProperty: JFXObservableValue[J]
+  override def delegate:JFXObservableValue[J]
 
   def value: T
 
   def apply() = value
 
-  def onChange[J1 >: J](op: (JFXObservableValue[_ <: J1], J1, J1) => Unit) {
-    wrappedProperty.addListener(new ChangeListener[J1] {
+  def onChange[J1 >: J](op: (ObservableValue[T, J], J1, J1) => Unit) {
+    delegate.addListener(new ChangeListener[J1] {
       def changed(observable: JFXObservableValue[_ <: J1], oldValue: J1, newValue: J1) {
-        op(observable, oldValue, newValue)
+        op(ObservableValue.this, oldValue, newValue)
       }
     })
   }
 
   def onChange(op: => Unit) {
-    wrappedProperty.addListener(new ChangeListener[J] {
+    delegate.addListener(new ChangeListener[J] {
       def changed(observable: JFXObservableValue[_ <: J], oldValue: J, newValue: J) {
         op
       }

@@ -31,7 +31,7 @@ import javafx.beans.value.ObservableNumberValue
 import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
 
 object NumberExpression {
-  implicit def sfxNumberExpression2jfx(ne: NumberExpression) = ne.wrappedNumberExpression
+  implicit def sfxNumberExpression2jfx(ne: NumberExpression) = ne.delegate
   implicit def jfxNumberExpression2sfx(ne: NumberExpression) = new NumberExpression(ne)
   case class VariablePrecisionNumber(number:Double, var precision:Double = 0) {
     def +-(p:Double):VariablePrecisionNumber = {
@@ -41,83 +41,83 @@ object NumberExpression {
   }
 }
 
-class NumberExpression(val wrappedNumberExpression: javafx.beans.binding.NumberExpression) {
-  def +(v: Int) = new NumberExpression(wrappedNumberExpression.add(v))
-  def +(v: Long) = new NumberExpression(wrappedNumberExpression.add(v))
-  def +(v: Float) = new NumberExpression(wrappedNumberExpression.add(v))
-  def +(v: Double) = new NumberExpression(wrappedNumberExpression.add(v))
-  def +(v: ObservableNumberValue) = new NumberExpression(wrappedNumberExpression.add(v))
-  def +(v: NumberExpression) = new NumberExpression(wrappedNumberExpression.add(v.wrappedNumberExpression))
+class NumberExpression(val delegate: javafx.beans.binding.NumberExpression) {
+  def +(v: Int) = new NumberExpression(delegate.add(v))
+  def +(v: Long) = new NumberExpression(delegate.add(v))
+  def +(v: Float) = new NumberExpression(delegate.add(v))
+  def +(v: Double) = new NumberExpression(delegate.add(v))
+  def +(v: ObservableNumberValue) = new NumberExpression(delegate.add(v))
+  def +(v: NumberExpression) = new NumberExpression(delegate.add(v.delegate))
 
-  def -(v: Int) = new NumberExpression(wrappedNumberExpression.subtract(v))
-  def -(v: Long) = new NumberExpression(wrappedNumberExpression.subtract(v))
-  def -(v: Float) = new NumberExpression(wrappedNumberExpression.subtract(v))
-  def -(v: Double) = new NumberExpression(wrappedNumberExpression.subtract(v))
-  def -(v: ObservableNumberValue) = new NumberExpression(wrappedNumberExpression.subtract(v))
-  def -(v: NumberExpression) = new NumberExpression(wrappedNumberExpression.subtract(v.wrappedNumberExpression))
+  def -(v: Int) = new NumberExpression(delegate.subtract(v))
+  def -(v: Long) = new NumberExpression(delegate.subtract(v))
+  def -(v: Float) = new NumberExpression(delegate.subtract(v))
+  def -(v: Double) = new NumberExpression(delegate.subtract(v))
+  def -(v: ObservableNumberValue) = new NumberExpression(delegate.subtract(v))
+  def -(v: NumberExpression) = new NumberExpression(delegate.subtract(v.delegate))
 
-  def *(v: Int) = new NumberExpression(wrappedNumberExpression.multiply(v))
-  def *(v: Long) = new NumberExpression(wrappedNumberExpression.multiply(v))
-  def *(v: Float) = new NumberExpression(wrappedNumberExpression.multiply(v))
-  def *(v: Double) = new NumberExpression(wrappedNumberExpression.multiply(v))
-  def *(v: ObservableNumberValue) = new NumberExpression(wrappedNumberExpression.multiply(v))
-  def *(v: NumberExpression) = new NumberExpression(wrappedNumberExpression.multiply(v.wrappedNumberExpression))
+  def *(v: Int) = new NumberExpression(delegate.multiply(v))
+  def *(v: Long) = new NumberExpression(delegate.multiply(v))
+  def *(v: Float) = new NumberExpression(delegate.multiply(v))
+  def *(v: Double) = new NumberExpression(delegate.multiply(v))
+  def *(v: ObservableNumberValue) = new NumberExpression(delegate.multiply(v))
+  def *(v: NumberExpression) = new NumberExpression(delegate.multiply(v.delegate))
 
-  def /(v: Int) = new NumberExpression(wrappedNumberExpression.divide(v))
-  def /(v: Long) = new NumberExpression(wrappedNumberExpression.divide(v))
-  def /(v: Float) = new NumberExpression(wrappedNumberExpression.divide(v))
-  def /(v: Double) = new NumberExpression(wrappedNumberExpression.divide(v))
-  def /(v: ObservableNumberValue) = new NumberExpression(wrappedNumberExpression.divide(v))
-  def /(v: NumberExpression) = new NumberExpression(wrappedNumberExpression.divide(v.wrappedNumberExpression))
+  def /(v: Int) = new NumberExpression(delegate.divide(v))
+  def /(v: Long) = new NumberExpression(delegate.divide(v))
+  def /(v: Float) = new NumberExpression(delegate.divide(v))
+  def /(v: Double) = new NumberExpression(delegate.divide(v))
+  def /(v: ObservableNumberValue) = new NumberExpression(delegate.divide(v))
+  def /(v: NumberExpression) = new NumberExpression(delegate.divide(v.delegate))
 
-  def ==(v: Int) = wrappedNumberExpression.isEqualTo(v)
-  def ==(v: Long) = wrappedNumberExpression.isEqualTo(v)
-  def ==(v: Float) = wrappedNumberExpression.isEqualTo(v, 0)
-  def ==(v: Double) = wrappedNumberExpression.isEqualTo(v, 0)
-  def ==(v: VariablePrecisionNumber) = wrappedNumberExpression.isEqualTo(v.number, v.precision)
-  def ==(v: ObservableNumberValue) = wrappedNumberExpression.isEqualTo(v)
-  def ==(v: NumberExpression) = wrappedNumberExpression.isEqualTo(v.wrappedNumberExpression)
+  def ==(v: Int) = delegate.isEqualTo(v)
+  def ==(v: Long) = delegate.isEqualTo(v)
+  def ==(v: Float) = delegate.isEqualTo(v, 0)
+  def ==(v: Double) = delegate.isEqualTo(v, 0)
+  def ==(v: VariablePrecisionNumber) = delegate.isEqualTo(v.number, v.precision)
+  def ==(v: ObservableNumberValue) = delegate.isEqualTo(v)
+  def ==(v: NumberExpression) = delegate.isEqualTo(v.delegate)
 
-  def !=(v: Int) = wrappedNumberExpression.isNotEqualTo(v)
-  def !=(v: Long) = wrappedNumberExpression.isNotEqualTo(v)
-  def !=(v: Float) = wrappedNumberExpression.isNotEqualTo(v, 0)
-  def !=(v: Double) = wrappedNumberExpression.isNotEqualTo(v, 0)
-  def !=(v: VariablePrecisionNumber) = wrappedNumberExpression.isNotEqualTo(v.number, v.precision)
-  def !=(v: ObservableNumberValue) = wrappedNumberExpression.isNotEqualTo(v)
-  def !=(v: NumberExpression) = wrappedNumberExpression.isNotEqualTo(v.wrappedNumberExpression)
+  def !=(v: Int) = delegate.isNotEqualTo(v)
+  def !=(v: Long) = delegate.isNotEqualTo(v)
+  def !=(v: Float) = delegate.isNotEqualTo(v, 0)
+  def !=(v: Double) = delegate.isNotEqualTo(v, 0)
+  def !=(v: VariablePrecisionNumber) = delegate.isNotEqualTo(v.number, v.precision)
+  def !=(v: ObservableNumberValue) = delegate.isNotEqualTo(v)
+  def !=(v: NumberExpression) = delegate.isNotEqualTo(v.delegate)
 
-  def <(v: Int) = wrappedNumberExpression.lessThan(v)
-  def <(v: Long) = wrappedNumberExpression.lessThan(v)
-  def <(v: Float) = wrappedNumberExpression.lessThan(v)
-  def <(v: Double) = wrappedNumberExpression.lessThan(v)
-  def <(v: ObservableNumberValue) = wrappedNumberExpression.lessThan(v)
-  def <(v: NumberExpression) = wrappedNumberExpression.lessThan(v.wrappedNumberExpression)
+  def <(v: Int) = delegate.lessThan(v)
+  def <(v: Long) = delegate.lessThan(v)
+  def <(v: Float) = delegate.lessThan(v)
+  def <(v: Double) = delegate.lessThan(v)
+  def <(v: ObservableNumberValue) = delegate.lessThan(v)
+  def <(v: NumberExpression) = delegate.lessThan(v.delegate)
 
-  def >(v: Int) = wrappedNumberExpression.greaterThan(v)
-  def >(v: Long) = wrappedNumberExpression.greaterThan(v)
-  def >(v: Float) = wrappedNumberExpression.greaterThan(v)
-  def >(v: Double) = wrappedNumberExpression.greaterThan(v)
-  def >(v: ObservableNumberValue) = wrappedNumberExpression.greaterThan(v)
-  def >(v: NumberExpression) = wrappedNumberExpression.greaterThan(v.wrappedNumberExpression)
+  def >(v: Int) = delegate.greaterThan(v)
+  def >(v: Long) = delegate.greaterThan(v)
+  def >(v: Float) = delegate.greaterThan(v)
+  def >(v: Double) = delegate.greaterThan(v)
+  def >(v: ObservableNumberValue) = delegate.greaterThan(v)
+  def >(v: NumberExpression) = delegate.greaterThan(v.delegate)
 
-  def <=(v: Int) = wrappedNumberExpression.lessThanOrEqualTo(v)
-  def <=(v: Long) = wrappedNumberExpression.lessThanOrEqualTo(v)
-  def <=(v: Float) = wrappedNumberExpression.lessThanOrEqualTo(v)
-  def <=(v: Double) = wrappedNumberExpression.lessThanOrEqualTo(v)
-  def <=(v: ObservableNumberValue) = wrappedNumberExpression.lessThanOrEqualTo(v)
-  def <=(v: NumberExpression) = wrappedNumberExpression.lessThanOrEqualTo(v.wrappedNumberExpression)
+  def <=(v: Int) = delegate.lessThanOrEqualTo(v)
+  def <=(v: Long) = delegate.lessThanOrEqualTo(v)
+  def <=(v: Float) = delegate.lessThanOrEqualTo(v)
+  def <=(v: Double) = delegate.lessThanOrEqualTo(v)
+  def <=(v: ObservableNumberValue) = delegate.lessThanOrEqualTo(v)
+  def <=(v: NumberExpression) = delegate.lessThanOrEqualTo(v.delegate)
 
-  def >=(v: Int) = wrappedNumberExpression.greaterThanOrEqualTo(v)
-  def >=(v: Long) = wrappedNumberExpression.greaterThanOrEqualTo(v)
-  def >=(v: Float) = wrappedNumberExpression.greaterThanOrEqualTo(v)
-  def >=(v: Double) = wrappedNumberExpression.greaterThanOrEqualTo(v)
-  def >=(v: ObservableNumberValue) = wrappedNumberExpression.greaterThanOrEqualTo(v)
-  def >=(v: NumberExpression) = wrappedNumberExpression.greaterThanOrEqualTo(v.wrappedNumberExpression)
+  def >=(v: Int) = delegate.greaterThanOrEqualTo(v)
+  def >=(v: Long) = delegate.greaterThanOrEqualTo(v)
+  def >=(v: Float) = delegate.greaterThanOrEqualTo(v)
+  def >=(v: Double) = delegate.greaterThanOrEqualTo(v)
+  def >=(v: ObservableNumberValue) = delegate.greaterThanOrEqualTo(v)
+  def >=(v: NumberExpression) = delegate.greaterThanOrEqualTo(v.delegate)
 
-  def unary_- = wrappedNumberExpression.negate()
+  def unary_- = delegate.negate()
 
-  def toInt = wrappedNumberExpression.intValue
-  def toLong = wrappedNumberExpression.longValue
-  def toFloat = wrappedNumberExpression.floatValue
-  def toDouble = wrappedNumberExpression.doubleValue
+  def toInt = delegate.intValue
+  def toLong = delegate.longValue
+  def toFloat = delegate.floatValue
+  def toDouble = delegate.doubleValue
 }

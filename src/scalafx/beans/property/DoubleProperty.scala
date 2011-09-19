@@ -28,22 +28,22 @@
 package scalafx.beans.property
 
 import scalafx.beans.binding.NumberExpression
-import javafx.beans.property.{DoubleProperty => JFXDoubleProperty}
-import javafx.beans.property.DoublePropertyBase
+import javafx.beans.property.{DoublePropertyBase, DoubleProperty => JFXDoubleProperty}
 
 object DoubleProperty {
-  implicit def sfxDoubleProperty2jfx(dp: DoubleProperty) = dp.wrappedDoubleProperty
+  implicit def sfxDoubleProperty2jfx(dp: DoubleProperty) = dp.delegate
 }
 
-class DoubleProperty(val wrappedDoubleProperty:JFXDoubleProperty) extends NumberExpression(wrappedDoubleProperty) with Property[Double, Number] {
-  override private[beans] def wrappedProperty = wrappedDoubleProperty
-  def this(bean:Object, name:String) = this(new DoublePropertyBase() {
+class DoubleProperty(override val delegate: JFXDoubleProperty) extends NumberExpression(delegate) with Property[Double, Number] {
+  def this(bean: Object, name: String) = this (new DoublePropertyBase() {
     def getBean = bean
+
     def getName = name
   })
-  override def value = wrappedDoubleProperty.get
-  def value2:Double = wrappedDoubleProperty.get
+
+  override def value = delegate.get
+
   def value_=(v: Double) {
-    wrappedDoubleProperty.set(v)
+    delegate.set(v)
   }
 }

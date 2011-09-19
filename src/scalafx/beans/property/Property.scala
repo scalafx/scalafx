@@ -29,38 +29,39 @@ package scalafx.beans.property
 
 import javafx.beans.binding.When
 import javafx.beans.value.ObservableValue
+import javafx.beans.property.{Property => JFXProperty}
 import scalafx.beans.binding.Bindings.when
 
 object Property {
-  implicit def sfxProperty2jfx(p:Property[_, _]) = p.wrappedProperty
+  implicit def sfxProperty2jfx(p: Property[_, _]) = p.delegate
 }
 
 trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends ReadOnlyProperty[T, J] {
-  override private[beans] def wrappedProperty:javafx.beans.property.Property[J]
+  override def delegate:JFXProperty[J]
 
-  def value_=(v:T)
+  def value_=(v: T)
 
-  def update(v:T) {
+  def update(v: T) {
     value_=(v)
   }
 
-  def <==(v:ObservableValue[_ <: J]) {
-    wrappedProperty.bind(v)
+  def <==(v: ObservableValue[_ <: J]) {
+    delegate.bind(v)
   }
 
-  def <==(t:when[_ <: J]) {
-    wrappedProperty.bind(new When(t.ov).then(t._then).otherwise(t._else))
+  def <==(t: when[_ <: J]) {
+    delegate.bind(new When(t.ov).then(t._then).otherwise(t._else))
   }
 
-  def <==>(v:Property[T, J]) {
-    wrappedProperty.bindBidirectional(v.wrappedProperty)
+  def <==>(v: Property[T, J]) {
+    delegate.bindBidirectional(v.delegate)
   }
 
   def unbind() {
-    wrappedProperty.unbind()
+    delegate.unbind()
   }
 
-  def unbind(v:Property[T, J]) {
-    wrappedProperty.unbindBidirectional(v.wrappedProperty)
+  def unbind(v: Property[T, J]) {
+    delegate.unbindBidirectional(v.delegate)
   }
 }

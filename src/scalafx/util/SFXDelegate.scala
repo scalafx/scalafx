@@ -1,3 +1,5 @@
+package scalafx.util
+
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -25,22 +27,17 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+trait SFXDelegate {
+  def delegate: AnyRef
 
-import javafx.beans.property.{ReadOnlyBooleanPropertyBase, ReadOnlyBooleanProperty => JFXReadOnlyBooleanProperty}
+  override def toString = "[SFX]" + delegate.toString
 
-object ReadOnlyBooleanProperty {
-  implicit def sfxReadOnlyBooleanProperty2jfx(dp: ReadOnlyBooleanProperty) = dp.delegate
-}
+  override def equals(ref: Any):Boolean = {
+    ref match {
+      case sfxd:SFXDelegate => delegate.equals(sfxd.delegate)
+      case _ => delegate.equals(ref)
+    }
+  }
 
-class ReadOnlyBooleanProperty(val delegate: JFXReadOnlyBooleanProperty) extends ReadOnlyProperty[Boolean, java.lang.Boolean] {
-  def this(bean: Object, name: String, value: Boolean) = this (new ReadOnlyBooleanPropertyBase() {
-    def getBean = bean
-
-    def getName = name
-
-    def get = value
-  })
-
-  override def value = delegate.get
+  override def hashCode = delegate.hashCode
 }

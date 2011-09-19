@@ -27,21 +27,22 @@
 
 package scalafx.beans.property
 
-import javafx.beans.property.{BooleanProperty => JFXBooleanProperty}
-import javafx.beans.property.BooleanPropertyBase
+import javafx.beans.property.{BooleanPropertyBase, BooleanProperty => JFXBooleanProperty}
 
 object BooleanProperty {
-  implicit def sfxBooleanProperty2jfx(dp: BooleanProperty) = dp.wrappedBooleanProperty
+  implicit def sfxBooleanProperty2jfx(dp: BooleanProperty) = dp.delegate
 }
 
-class BooleanProperty(val wrappedBooleanProperty:JFXBooleanProperty) extends Property[Boolean, java.lang.Boolean] {
-  override private[beans] def wrappedProperty = wrappedBooleanProperty
-  def this(bean:Object, name:String) = this(new BooleanPropertyBase() {
+class BooleanProperty(val delegate: JFXBooleanProperty) extends Property[Boolean, java.lang.Boolean] {
+  def this(bean: Object, name: String) = this (new BooleanPropertyBase() {
     def getBean = bean
+
     def getName = name
   })
-  override def value = wrappedBooleanProperty.get
+
+  override def value = delegate.get
+
   def value_=(v: Boolean) {
-    wrappedBooleanProperty.set(v)
+    delegate.set(v)
   }
 }

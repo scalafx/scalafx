@@ -28,22 +28,22 @@
 package scalafx.beans.property
 
 import scalafx.beans.binding.NumberExpression
-import javafx.beans.property.{LongProperty => JFXLongProperty}
-import javafx.beans.property.LongPropertyBase
+import javafx.beans.property.{LongPropertyBase, LongProperty => JFXLongProperty}
 
 object LongProperty {
-  implicit def sfxLongProperty2jfx(dp: LongProperty) = dp.wrappedLongProperty
+  implicit def sfxLongProperty2jfx(dp: LongProperty) = dp.delegate
 }
 
-class LongProperty(val wrappedLongProperty:JFXLongProperty) extends NumberExpression(wrappedLongProperty) with Property[Long, Number] {
-  override private[beans] def wrappedProperty = wrappedLongProperty
-  def this(bean:Object, name:String) = this(new LongPropertyBase() {
+class LongProperty(override val delegate: JFXLongProperty) extends NumberExpression(delegate) with Property[Long, Number] {
+  def this(bean: Object, name: String) = this (new LongPropertyBase() {
     def getBean = bean
+
     def getName = name
   })
-  override def value = wrappedLongProperty.get
-  def value2:Long = wrappedLongProperty.get
+
+  override def value = delegate.get
+
   def value_=(v: Long) {
-    wrappedLongProperty.set(v)
+    delegate.set(v)
   }
 }

@@ -1,3 +1,5 @@
+package scalafx.util
+
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -25,22 +27,29 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+import org.scalatest.FlatSpec
+import org.scalatest.matchers.ShouldMatchers._
+import scalafx.beans.property.DoubleProperty
 
-import javafx.beans.property.{ReadOnlyBooleanPropertyBase, ReadOnlyBooleanProperty => JFXReadOnlyBooleanProperty}
+class SFXDelegateSpec extends FlatSpec {
+  val doubleProperty = new DoubleProperty(null, "double property")
+  val doublePropertyWithSameName = new DoubleProperty(null, "double property")
+  val doublePropertyWithDifferentName = new DoubleProperty(null, "double property (with different name)")
 
-object ReadOnlyBooleanProperty {
-  implicit def sfxReadOnlyBooleanProperty2jfx(dp: ReadOnlyBooleanProperty) = dp.delegate
-}
+  "SFXDelegate" should "delegate toString" in {
+    doubleProperty.toString should be("[SFX]DoubleProperty [name: double property, value: 0.0]")
+  }
 
-class ReadOnlyBooleanProperty(val delegate: JFXReadOnlyBooleanProperty) extends ReadOnlyProperty[Boolean, java.lang.Boolean] {
-  def this(bean: Object, name: String, value: Boolean) = this (new ReadOnlyBooleanPropertyBase() {
-    def getBean = bean
+  it should "delegate equals" in {
+    doubleProperty should be === doublePropertyWithSameName
+    doubleProperty should not(be === doublePropertyWithDifferentName)
+  }
 
-    def getName = name
+  it should "delegate hashCode" in {
+    doubleProperty.hashCode should be === 2073312533
+  }
 
-    def get = value
-  })
-
-  override def value = delegate.get
+  it should "have a public delegate property" in {
+    doubleProperty.delegate should not(be(null))
+  }
 }
