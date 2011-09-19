@@ -27,6 +27,7 @@
 
 package scalafx.beans.binding
 
+import javafx.beans.binding.{NumberExpression => JFXNumberExpression}
 import javafx.beans.value.ObservableNumberValue
 import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
 
@@ -41,7 +42,7 @@ object NumberExpression {
   }
 }
 
-class NumberExpression(val delegate: javafx.beans.binding.NumberExpression) {
+class NumberExpression(val delegate: JFXNumberExpression) {
   def +(v: Int) = new NumberExpression(delegate.add(v))
   def +(v: Long) = new NumberExpression(delegate.add(v))
   def +(v: Float) = new NumberExpression(delegate.add(v))

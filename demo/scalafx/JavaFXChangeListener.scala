@@ -32,9 +32,7 @@ import scalafx.beans.binding.Bindings._
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.Scene
 import scalafx.stage.Stage
-import javafx.beans.Observable
-import javafx.beans.value.ObservableValue
-import javafx.scene.paint.{Paint, Color}
+import javafx.scene.paint.Color
 
 object JavaFXChangeListener extends Application {
   def rect = new Rectangle {
@@ -43,25 +41,6 @@ object JavaFXChangeListener extends Application {
     width = 100
     height = 100
     fill <== when(hover) then Color.GREEN otherwise Color.RED
-    fill onChange print("changed")
-    fill onChange {
-      (prop, oldVal, newVal) =>
-        println(" " + prop + " from " + oldVal + " to " + newVal)
-    }
-    fill onInvalidate print("invalidated")
-    fill onInvalidate {
-      prop =>
-        println(" " + prop)
-    }
-    fill.addListener(
-      (obs: Observable) => println("addListener worked on invalidate")
-    )
-    fill.addListener(
-      (obs: ObservableValue[_ <: Paint], oldV: Paint, newV: Paint) => println("addListener worked on changed")
-    )
-    fill.addListener(
-      (obs: ObservableValue[_ <: Object], oldV: Object, newV: Object) => println("change listener worked on super type")
-    )
   }
 
   stage = new Stage {

@@ -27,16 +27,23 @@
 
 package scalafx.beans.property
 
-import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers._
 import scalafx.beans.binding.Bindings._
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
-class DoublePropertySpec extends FlatSpec {
+class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var doubleProperty = new DoubleProperty(bean, "Test Double")
-  var doubleProperty2 = new DoubleProperty(bean, "Test Double 2")
-  var doubleProperty3 = new DoubleProperty(bean, "Test Double 3")
-  var booleanProperty = new BooleanProperty(bean, "Test Boolean")
+  var doubleProperty:DoubleProperty = null
+  var doubleProperty2:DoubleProperty = null
+  var doubleProperty3:DoubleProperty = null
+  var booleanProperty:BooleanProperty = null
+
+  override def beforeEach() {
+    doubleProperty = new DoubleProperty(bean, "Test Double")
+    doubleProperty2 = new DoubleProperty(bean, "Test Double 2")
+    doubleProperty3 = new DoubleProperty(bean, "Test Double 3")
+    booleanProperty = new BooleanProperty(bean, "Test Boolean")
+  }
 
   "A Double Property" should "have a default value of 0" in {
     doubleProperty.value should equal (0)
@@ -48,6 +55,7 @@ class DoublePropertySpec extends FlatSpec {
   }
 
   it should "return its value using apply" in {
+    doubleProperty() = 500
     doubleProperty() should equal (500)
   }
 
@@ -63,7 +71,6 @@ class DoublePropertySpec extends FlatSpec {
     doubleProperty <== doubleProperty2
     doubleProperty2() = 1000
     doubleProperty() should equal (1000)
-    doubleProperty.unbind()
   }
 
   it should "support unbinding from another Double Property" in {
@@ -80,7 +87,6 @@ class DoublePropertySpec extends FlatSpec {
     doubleProperty2() should equal (13)
     doubleProperty2() = 51
     doubleProperty() should equal (51)
-    doubleProperty unbind doubleProperty2
   }
 
   it should "support bidirectional unbinding from another Double Property" in {
@@ -96,14 +102,12 @@ class DoublePropertySpec extends FlatSpec {
     doubleProperty() = 21
     doubleProperty2() = 35
     doubleProperty3() should equal (56)
-    doubleProperty3.unbind()
   }
 
   it should "support bindable infix addition of constants" in {
     doubleProperty3 <== doubleProperty + 35 + 35l + 35f + 35d
     doubleProperty() = 21
     doubleProperty3() should equal (161)
-    doubleProperty3.unbind()
   }
 
   it should "support bindable infix subtraction of a property" in {
@@ -111,14 +115,12 @@ class DoublePropertySpec extends FlatSpec {
     doubleProperty() = 40
     doubleProperty2() = 12
     doubleProperty3() should equal (28)
-    doubleProperty3.unbind()
   }
 
   it should "support bindable infix subtraction of constants" in {
     doubleProperty3 <== doubleProperty - 12 - 12l - 12f - 12d
     doubleProperty() = 40
     doubleProperty3() should equal (-8)
-    doubleProperty3.unbind()
   }
 
   it should "support bindable infix multiplication of a property" in {
@@ -126,36 +128,31 @@ class DoublePropertySpec extends FlatSpec {
     doubleProperty() = 5
     doubleProperty2() = 6
     doubleProperty3() should equal (30)
-    doubleProperty3.unbind()
   }
 
   it should "support bindable infix multiplication of constants" in {
     doubleProperty3 <== doubleProperty * 2 * 2l * 2f * 2d
     doubleProperty() = 5
     doubleProperty3() should equal (80)
-    doubleProperty3.unbind()
   }
 
   it should "support bindable infix division of a property" in {
+    doubleProperty2() = 10
     doubleProperty3 <== doubleProperty / doubleProperty2
     doubleProperty() = 100
-    doubleProperty2() = 10
     doubleProperty3() should equal (10)
-    doubleProperty3.unbind()
   }
 
   it should "support bindable infix division of constants" in {
     doubleProperty3 <== doubleProperty / 2 / 2l / 5f / 5d
     doubleProperty() = 100
     doubleProperty3() should equal (1)
-    doubleProperty3.unbind()
   }
 
   it should "support bindable prefix negation" in {
     doubleProperty3 <== -doubleProperty
     doubleProperty() = 32
     doubleProperty3() should equal (-32)
-    doubleProperty3.unbind()
   }
 
   it should "support bindable infix equality with a property" in {
@@ -165,7 +162,6 @@ class DoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     doubleProperty2() = 532
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix equality with a constant" in {
@@ -174,7 +170,6 @@ class DoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     doubleProperty() = 532
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a property" in {
@@ -184,7 +179,6 @@ class DoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     doubleProperty2() = 231
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a constant" in {
@@ -193,7 +187,6 @@ class DoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     doubleProperty() = 231
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support variable precision equality via +- operator" in {
@@ -204,7 +197,6 @@ class DoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     doubleProperty() = 531.91
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support variable precision inequality via +- operator" in {
@@ -215,7 +207,6 @@ class DoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     doubleProperty() = 531.91
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a property" in {
@@ -225,7 +216,6 @@ class DoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     doubleProperty2() = 12
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a constant" in {
@@ -234,7 +224,6 @@ class DoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     doubleProperty() = 12
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a property" in {
@@ -244,7 +233,6 @@ class DoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     doubleProperty2() = 93
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
@@ -253,7 +241,6 @@ class DoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     doubleProperty() = 93
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a property" in {
@@ -263,7 +250,6 @@ class DoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     doubleProperty2() = 6000
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a constant" in {
@@ -272,7 +258,6 @@ class DoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     doubleProperty() = 6000
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a property" in {
@@ -282,7 +267,6 @@ class DoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     doubleProperty2() = 234564
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
@@ -291,6 +275,5 @@ class DoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     doubleProperty() = 234564
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 }

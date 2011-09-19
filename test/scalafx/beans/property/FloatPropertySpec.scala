@@ -27,16 +27,23 @@
 
 package scalafx.beans.property
 
-import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers._
 import scalafx.beans.binding.Bindings._
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
-class FloatPropertySpec extends FlatSpec {
+class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var floatProperty = new FloatProperty(bean, "Test Float")
-  var floatProperty2 = new FloatProperty(bean, "Test Float 2")
-  var floatProperty3 = new FloatProperty(bean, "Test Float 3")
-  var booleanProperty = new BooleanProperty(bean, "Test Boolean")
+  var floatProperty:FloatProperty = null
+  var floatProperty2:FloatProperty = null
+  var floatProperty3:FloatProperty = null
+  var booleanProperty:BooleanProperty = null
+
+  override def beforeEach() {
+    floatProperty = new FloatProperty(bean, "Test Float")
+    floatProperty2 = new FloatProperty(bean, "Test Float 2")
+    floatProperty3 = new FloatProperty(bean, "Test Float 3")
+    booleanProperty = new BooleanProperty(bean, "Test Boolean")
+  }
 
   "A Float Property" should "have a default value of 0" in {
     floatProperty.value should equal (0)
@@ -48,6 +55,7 @@ class FloatPropertySpec extends FlatSpec {
   }
 
   it should "return its value using apply" in {
+    floatProperty() = 500
     floatProperty() should equal (500)
   }
 
@@ -63,7 +71,6 @@ class FloatPropertySpec extends FlatSpec {
     floatProperty <== floatProperty2
     floatProperty2() = 1000
     floatProperty() should equal (1000)
-    floatProperty.unbind()
   }
 
   it should "support unbinding from another Float Property" in {
@@ -137,9 +144,9 @@ class FloatPropertySpec extends FlatSpec {
   }
 
   it should "support bindable infix division of a property" in {
+    floatProperty2() = 10
     floatProperty3 <== floatProperty / floatProperty2
     floatProperty() = 100
-    floatProperty2() = 10
     floatProperty3() should equal (10)
     floatProperty3.unbind()
   }

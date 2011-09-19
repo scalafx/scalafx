@@ -27,18 +27,25 @@
 
 package scalafx.beans.property
 
-import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers._
 import scalafx.beans.binding.Bindings._
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
-class ReadOnlyIntegerPropertySpec extends FlatSpec {
+class ReadOnlyIntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var readOnlyIntegerProperty = new ReadOnlyIntegerProperty(bean, "Test Read-only Integer", 50)
-  var integerProperty1 = new IntegerProperty(bean, "Test Integer 2")
-  var integerProperty2 = new IntegerProperty(bean, "Test Integer 3")
-  var booleanProperty = new BooleanProperty(bean, "Test Boolean")
+  var readOnlyIntegerProperty:ReadOnlyIntegerProperty = null
+  var integerProperty1:IntegerProperty = null
+  var integerProperty2:IntegerProperty = null
+  var booleanProperty:BooleanProperty = null
 
-  "A Integer Property" should "start with the value we gave it" in {
+  override def beforeEach() {
+    readOnlyIntegerProperty = new ReadOnlyIntegerProperty(bean, "Test Read-only Integer", 50)
+    integerProperty1 = new IntegerProperty(bean, "Test Integer 1")
+    integerProperty2 = new IntegerProperty(bean, "Test Integer 2")
+    booleanProperty = new BooleanProperty(bean, "Test Boolean")
+  }
+
+  "A Read-only Integer Property" should "start with the value we gave it" in {
     readOnlyIntegerProperty.value should equal (50)
   }
 
@@ -100,8 +107,8 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
   }
 
   it should "support bindable infix division of a property" in {
-    integerProperty2 <== readOnlyIntegerProperty / integerProperty1
     integerProperty1() = 10
+    integerProperty2 <== readOnlyIntegerProperty / integerProperty1
     integerProperty2() should equal (5)
     integerProperty2.unbind()
   }
@@ -124,7 +131,6 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     integerProperty1() = 50
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix equality with a constant" in {
@@ -132,7 +138,6 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     booleanProperty <== readOnlyIntegerProperty == 50
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a property" in {
@@ -141,7 +146,6 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     integerProperty1() = 50
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a constant" in {
@@ -149,7 +153,6 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     booleanProperty <== readOnlyIntegerProperty != 50
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support variable precision equality via +- operator" in {
@@ -159,7 +162,6 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     booleanProperty <== readOnlyIntegerProperty == 49+-1.1
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support variable precision inequality via +- operator" in {
@@ -169,7 +171,6 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     booleanProperty <== readOnlyIntegerProperty != 49+-1.1
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a property" in {
@@ -178,7 +179,6 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     integerProperty1() = 12
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a constant" in {
@@ -186,7 +186,6 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     booleanProperty <== readOnlyIntegerProperty < 51
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a property" in {
@@ -195,7 +194,6 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     integerProperty1() = 34
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
@@ -203,7 +201,6 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     booleanProperty <== readOnlyIntegerProperty <= 512
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a property" in {
@@ -212,7 +209,6 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     integerProperty1() = 60
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a constant" in {
@@ -220,7 +216,6 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     booleanProperty <== readOnlyIntegerProperty > 49
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a property" in {
@@ -229,7 +224,6 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     integerProperty1() = 51
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
@@ -237,6 +231,5 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     booleanProperty <== readOnlyIntegerProperty >= 13
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 }

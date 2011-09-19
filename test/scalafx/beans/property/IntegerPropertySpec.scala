@@ -27,16 +27,23 @@
 
 package scalafx.beans.property
 
-import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers._
 import scalafx.beans.binding.Bindings._
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
-class IntegerPropertySpec extends FlatSpec {
+class IntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var integerProperty = new IntegerProperty(bean, "Test Integer")
-  var integerProperty2 = new IntegerProperty(bean, "Test Integer 2")
-  var integerProperty3 = new IntegerProperty(bean, "Test Integer 3")
-  var booleanProperty = new BooleanProperty(bean, "Test Boolean")
+  var integerProperty:IntegerProperty = null
+  var integerProperty2:IntegerProperty = null
+  var integerProperty3:IntegerProperty = null
+  var booleanProperty:BooleanProperty = null
+
+  override def beforeEach() {
+    integerProperty = new IntegerProperty(bean, "Test Integer")
+    integerProperty2 = new IntegerProperty(bean, "Test Integer 2")
+    integerProperty3 = new IntegerProperty(bean, "Test Integer 3")
+    booleanProperty = new BooleanProperty(bean, "Test Boolean")
+  }
 
   "A Integer Property" should "have a default value of 0" in {
     integerProperty.value should equal (0)
@@ -48,6 +55,7 @@ class IntegerPropertySpec extends FlatSpec {
   }
 
   it should "return its value using apply" in {
+    integerProperty() = 500
     integerProperty() should equal (500)
   }
 
@@ -63,7 +71,6 @@ class IntegerPropertySpec extends FlatSpec {
     integerProperty <== integerProperty2
     integerProperty2() = 1000
     integerProperty() should equal (1000)
-    integerProperty.unbind()
   }
 
   it should "support unbinding from another Integer Property" in {
@@ -137,9 +144,9 @@ class IntegerPropertySpec extends FlatSpec {
   }
 
   it should "support bindable infix division of a property" in {
+    integerProperty2() = 10
     integerProperty3 <== integerProperty / integerProperty2
     integerProperty() = 100
-    integerProperty2() = 10
     integerProperty3() should equal (10)
     integerProperty3.unbind()
   }
@@ -165,7 +172,6 @@ class IntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     integerProperty2() = 532
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix equality with a constant" in {
@@ -174,7 +180,6 @@ class IntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     integerProperty() = 532
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a property" in {
@@ -184,7 +189,6 @@ class IntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     integerProperty2() = 231
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a constant" in {
@@ -193,7 +197,6 @@ class IntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     integerProperty() = 231
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support variable precision equality via +- operator" in {
@@ -204,7 +207,6 @@ class IntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     integerProperty() = 531
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support variable precision inequality via +- operator" in {
@@ -215,7 +217,6 @@ class IntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     integerProperty() = 531
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a property" in {
@@ -225,7 +226,6 @@ class IntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     integerProperty2() = 12
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a constant" in {
@@ -234,7 +234,6 @@ class IntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     integerProperty() = 12
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a property" in {
@@ -244,7 +243,6 @@ class IntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     integerProperty2() = 93
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
@@ -253,7 +251,6 @@ class IntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     integerProperty() = 93
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a property" in {
@@ -263,7 +260,6 @@ class IntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     integerProperty2() = 6000
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a constant" in {
@@ -272,7 +268,6 @@ class IntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     integerProperty() = 6000
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a property" in {
@@ -282,7 +277,6 @@ class IntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     integerProperty2() = 234564
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
@@ -291,6 +285,5 @@ class IntegerPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     integerProperty() = 234564
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 }

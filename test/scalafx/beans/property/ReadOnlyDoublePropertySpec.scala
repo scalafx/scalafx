@@ -27,18 +27,25 @@
 
 package scalafx.beans.property
 
-import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers._
 import scalafx.beans.binding.Bindings._
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
-class ReadOnlyDoublePropertySpec extends FlatSpec {
+class ReadOnlyDoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var readOnlyDoubleProperty = new ReadOnlyDoubleProperty(bean, "Test Read-only Double", 50)
-  var doubleProperty1 = new DoubleProperty(bean, "Test Double 2")
-  var doubleProperty2 = new DoubleProperty(bean, "Test Double 3")
-  var booleanProperty = new BooleanProperty(bean, "Test Boolean")
+  var readOnlyDoubleProperty:ReadOnlyDoubleProperty = null
+  var doubleProperty1:DoubleProperty = null
+  var doubleProperty2:DoubleProperty = null
+  var booleanProperty:BooleanProperty = null
 
-  "A Double Property" should "start with the value we gave it" in {
+  override def beforeEach() {
+    readOnlyDoubleProperty = new ReadOnlyDoubleProperty(bean, "Test Read-only Double", 50)
+    doubleProperty1 = new DoubleProperty(bean, "Test Double 1")
+    doubleProperty2 = new DoubleProperty(bean, "Test Double 2")
+    booleanProperty = new BooleanProperty(bean, "Test Boolean")
+  }
+
+  "A Read-only Double Property" should "start with the value we gave it" in {
     readOnlyDoubleProperty.value should equal (50)
   }
 
@@ -100,8 +107,8 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
   }
 
   it should "support bindable infix division of a property" in {
-    doubleProperty2 <== readOnlyDoubleProperty / doubleProperty1
     doubleProperty1() = 10
+    doubleProperty2 <== readOnlyDoubleProperty / doubleProperty1
     doubleProperty2() should equal (5)
     doubleProperty2.unbind()
   }
@@ -124,7 +131,6 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     doubleProperty1() = 50
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix equality with a constant" in {
@@ -132,7 +138,6 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     booleanProperty <== readOnlyDoubleProperty == 50
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a property" in {
@@ -141,7 +146,6 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     doubleProperty1() = 50
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a constant" in {
@@ -149,7 +153,6 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     booleanProperty <== readOnlyDoubleProperty != 50
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support variable precision equality via +- operator" in {
@@ -159,7 +162,6 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     booleanProperty <== readOnlyDoubleProperty == 49+-1.1
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support variable precision inequality via +- operator" in {
@@ -169,7 +171,6 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     booleanProperty <== readOnlyDoubleProperty != 49+-1.1
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a property" in {
@@ -178,7 +179,6 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     doubleProperty1() = 12
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a constant" in {
@@ -186,7 +186,6 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     booleanProperty <== readOnlyDoubleProperty < 51
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a property" in {
@@ -195,7 +194,6 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     doubleProperty1() = 34
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
@@ -203,7 +201,6 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     booleanProperty <== readOnlyDoubleProperty <= 512
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a property" in {
@@ -212,7 +209,6 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     doubleProperty1() = 60
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a constant" in {
@@ -220,7 +216,6 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     booleanProperty <== readOnlyDoubleProperty > 49
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a property" in {
@@ -229,7 +224,6 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     doubleProperty1() = 51
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
@@ -237,6 +231,5 @@ class ReadOnlyDoublePropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     booleanProperty <== readOnlyDoubleProperty >= 13
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 }

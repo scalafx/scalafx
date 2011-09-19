@@ -25,25 +25,24 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+package scalafx.beans.binding
 
-import javafx.beans.property.{BooleanPropertyBase, BooleanProperty => JFXBooleanProperty}
-import scalafx.beans.binding.BooleanExpression
+import javafx.beans.binding.{BooleanExpression => JFXBooleanExpression}
 
-object BooleanProperty {
-  implicit def sfxBooleanProperty2jfx(dp: BooleanProperty) = dp.delegate
+object BooleanExpression {
+  implicit def sfxBooleanExpression2jfx(be: BooleanExpression) = be.delegate
+
+  implicit def jfxBooleanExpression2sfx(be: BooleanExpression) = new BooleanExpression(be)
 }
 
-class BooleanProperty(override val delegate: JFXBooleanProperty) extends BooleanExpression(delegate) with Property[Boolean, java.lang.Boolean] {
-  def this(bean: Object, name: String) = this (new BooleanPropertyBase() {
-    def getBean = bean
+class BooleanExpression(val delegate: JFXBooleanExpression) {
+  def ==(v: BooleanExpression) = new BooleanExpression(delegate.isEqualTo(v.delegate))
 
-    def getName = name
-  })
+  def !=(v: BooleanExpression) = new BooleanExpression(delegate.isNotEqualTo(v.delegate))
 
-  override def value = delegate.get
+  def &&(v: BooleanExpression) = new BooleanExpression(delegate.and(v.delegate))
 
-  def value_=(v: Boolean) {
-    delegate.set(v)
-  }
+  def ||(v: BooleanExpression) = new BooleanExpression(delegate.or(v.delegate))
+
+  def unary_!() = new BooleanExpression(delegate.not())
 }

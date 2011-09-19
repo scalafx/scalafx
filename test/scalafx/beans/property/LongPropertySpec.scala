@@ -27,16 +27,23 @@
 
 package scalafx.beans.property
 
-import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers._
 import scalafx.beans.binding.Bindings._
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
-class LongPropertySpec extends FlatSpec {
+class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var longProperty = new LongProperty(bean, "Test Long")
-  var longProperty2 = new LongProperty(bean, "Test Long 2")
-  var longProperty3 = new LongProperty(bean, "Test Long 3")
-  var booleanProperty = new BooleanProperty(bean, "Test Boolean")
+  var longProperty:LongProperty = null
+  var longProperty2:LongProperty = null
+  var longProperty3:LongProperty = null
+  var booleanProperty:BooleanProperty = null
+
+  override def beforeEach() {
+    longProperty = new LongProperty(bean, "Test Long")
+    longProperty2 = new LongProperty(bean, "Test Long 2")
+    longProperty3 = new LongProperty(bean, "Test Long 3")
+    booleanProperty = new BooleanProperty(bean, "Test Boolean")
+  }
 
   "A Long Property" should "have a default value of 0" in {
     longProperty.value should equal (0)
@@ -48,6 +55,7 @@ class LongPropertySpec extends FlatSpec {
   }
 
   it should "return its value using apply" in {
+    longProperty() = 500
     longProperty() should equal (500)
   }
 
@@ -63,7 +71,6 @@ class LongPropertySpec extends FlatSpec {
     longProperty <== longProperty2
     longProperty2() = 1000
     longProperty() should equal (1000)
-    longProperty.unbind()
   }
 
   it should "support unbinding from another Long Property" in {
@@ -137,9 +144,9 @@ class LongPropertySpec extends FlatSpec {
   }
 
   it should "support bindable infix division of a property" in {
+    longProperty2() = 10
     longProperty3 <== longProperty / longProperty2
     longProperty() = 100
-    longProperty2() = 10
     longProperty3() should equal (10)
     longProperty3.unbind()
   }
@@ -165,7 +172,6 @@ class LongPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     longProperty2() = 532
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix equality with a constant" in {
@@ -174,7 +180,6 @@ class LongPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     longProperty() = 532
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a property" in {
@@ -184,7 +189,6 @@ class LongPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     longProperty2() = 231
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a constant" in {
@@ -193,7 +197,6 @@ class LongPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     longProperty() = 231
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support variable precision equality via +- operator" in {
@@ -204,7 +207,6 @@ class LongPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     longProperty() = 531
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support variable precision inequality via +- operator" in {
@@ -215,7 +217,6 @@ class LongPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     longProperty() = 531
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a property" in {
@@ -225,7 +226,6 @@ class LongPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     longProperty2() = 12
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a constant" in {
@@ -234,7 +234,6 @@ class LongPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     longProperty() = 12
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a property" in {
@@ -244,7 +243,6 @@ class LongPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     longProperty2() = 93
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
@@ -253,7 +251,6 @@ class LongPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     longProperty() = 93
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a property" in {
@@ -263,7 +260,6 @@ class LongPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     longProperty2() = 6000
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a constant" in {
@@ -272,7 +268,6 @@ class LongPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     longProperty() = 6000
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a property" in {
@@ -282,7 +277,6 @@ class LongPropertySpec extends FlatSpec {
     booleanProperty() should equal (true)
     longProperty2() = 234564
     booleanProperty() should equal (false)
-    booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
@@ -291,6 +285,5 @@ class LongPropertySpec extends FlatSpec {
     booleanProperty() should equal (false)
     longProperty() = 234564
     booleanProperty() should equal (true)
-    booleanProperty.unbind()
   }
 }

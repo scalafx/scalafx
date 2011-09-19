@@ -27,8 +27,8 @@
 
 package scalafx.beans.property
 
-import scalafx.beans.binding.NumberExpression
 import javafx.beans.property.{ReadOnlyDoublePropertyBase, ReadOnlyDoubleProperty => JFXReadOnlyDoubleProperty}
+import scalafx.beans.binding.NumberExpression
 
 object ReadOnlyDoubleProperty {
   implicit def sfxReadOnlyDoubleProperty2jfx(dp: ReadOnlyDoubleProperty) = dp.delegate

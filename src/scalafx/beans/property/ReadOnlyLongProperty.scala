@@ -27,8 +27,8 @@
 
 package scalafx.beans.property
 
-import scalafx.beans.binding.NumberExpression
 import javafx.beans.property.{ReadOnlyLongPropertyBase, ReadOnlyLongProperty => JFXReadOnlyLongProperty}
+import scalafx.beans.binding.NumberExpression
 
 object ReadOnlyLongProperty {
   implicit def sfxReadOnlyLongProperty2jfx(dp: ReadOnlyLongProperty) = dp.delegate
