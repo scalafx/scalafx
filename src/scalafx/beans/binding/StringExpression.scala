@@ -33,7 +33,6 @@ import javafx.beans.value.ObservableStringValue
 
 object StringExpression {
   implicit def sfxStringExpression2jfx(se: StringExpression) = se.delegate
-
   implicit def jfxStringExpression2sfx(se: JFXStringExpression) = new StringExpression(se)
 }
 
@@ -78,7 +77,7 @@ class StringExpression(val delegate: JFXStringExpression) {
   def >=(v: ObservableStringValue) = new BooleanBinding(delegate.greaterThanOrEqualTo(v))
   def >=(v: StringExpression) = new BooleanBinding(delegate.greaterThanOrEqualTo(v.delegate))
 
-  // todo - file a javafx bug - this should be a StringBinding just like numerics
+  // Kind of an odd case that concat is not observable, but this is how it is coded in JavaFX
   def +(v: Null) = new StringExpression(delegate.concat(v.asInstanceOf))
   def +(v: ObservableStringValue) = new StringExpression(delegate.concat(v))
   def +[T, J](v: ObservableValue[T, J]) = new StringExpression(delegate.concat(v.delegate))
