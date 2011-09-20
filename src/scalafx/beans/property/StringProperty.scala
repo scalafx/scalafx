@@ -31,13 +31,12 @@ import javafx.beans.property.{StringPropertyBase, StringProperty => JFXStringPro
 import scalafx.beans.binding.StringExpression
 
 object StringProperty {
-  implicit def sfxStringProperty2jfx(dp: StringProperty) = dp.delegate
+  implicit def sfxStringProperty2jfx(sp: StringProperty) = sp.delegate
 }
 
 class StringProperty(override val delegate: JFXStringProperty) extends StringExpression(delegate) with Property[String, String] {
   def this(bean: Object, name: String) = this (new StringPropertyBase() {
     def getBean = bean
-
     def getName = name
   })
 

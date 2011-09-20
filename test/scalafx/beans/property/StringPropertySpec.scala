@@ -465,6 +465,4 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     stringProperty3() = "World"
     stringProperty() should equal ("HellonullWorld15")
   }
-
-  it should "support comparisons to other property types" is (pending)
 }

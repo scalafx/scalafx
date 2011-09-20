@@ -31,13 +31,12 @@ import javafx.beans.property.{BooleanPropertyBase, BooleanProperty => JFXBoolean
 import scalafx.beans.binding.BooleanExpression
 
 object BooleanProperty {
-  implicit def sfxBooleanProperty2jfx(dp: BooleanProperty) = dp.delegate
+  implicit def sfxBooleanProperty2jfx(bp: BooleanProperty) = bp.delegate
 }
 
 class BooleanProperty(override val delegate: JFXBooleanProperty) extends BooleanExpression(delegate) with Property[Boolean, java.lang.Boolean] {
   def this(bean: Object, name: String) = this (new BooleanPropertyBase() {
     def getBean = bean
-
     def getName = name
   })
 

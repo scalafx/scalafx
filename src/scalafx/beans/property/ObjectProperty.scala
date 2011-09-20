@@ -37,7 +37,6 @@ object ObjectProperty {
 class ObjectProperty[T <: Object](override val delegate: JFXObjectProperty[T]) extends ObjectExpression[T](delegate) with Property[T, T] {
   def this(bean: Object, name: String) = this (new ObjectPropertyBase[T]() {
     def getBean = bean
-
     def getName = name
   })
 

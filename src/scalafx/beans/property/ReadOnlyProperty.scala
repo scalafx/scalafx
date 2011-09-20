@@ -35,7 +35,7 @@ object ReadOnlyProperty {
 }
 
 trait ReadOnlyProperty[T, J] extends ObservableValue[T, J] {
-  override def delegate:JFXReadOnlyProperty[J]
+  override def delegate: JFXReadOnlyProperty[J]
 
   def name = delegate.getName
 

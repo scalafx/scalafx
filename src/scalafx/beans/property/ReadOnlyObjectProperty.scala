@@ -31,11 +31,11 @@ import scalafx.beans.binding.ObjectExpression
 import javafx.beans.property.{ReadOnlyObjectPropertyBase, ReadOnlyObjectProperty => JFXReadOnlyObjectProperty}
 
 object ReadOnlyObjectProperty {
-  implicit def sfxReadOnlyObjectProperty2jfx[T <: Object](op: ReadOnlyObjectProperty[T]) = op.delegate
+  implicit def sfxReadOnlyObjectProperty2jfx[T <: Object](roop: ReadOnlyObjectProperty[T]) = roop.delegate
 }
 
-class ReadOnlyObjectProperty[T <: Object](override val delegate:JFXReadOnlyObjectProperty[T]) extends ObjectExpression[T](delegate) with ReadOnlyProperty[T,T]{
-  def this(bean:Object, name:String, value:T) = this(new ReadOnlyObjectPropertyBase[T]() {
+class ReadOnlyObjectProperty[T <: Object](override val delegate: JFXReadOnlyObjectProperty[T]) extends ObjectExpression[T](delegate) with ReadOnlyProperty[T, T] {
+  def this(bean: Object, name: String, value: T) = this (new ReadOnlyObjectPropertyBase[T]() {
     def getBean = bean
     def getName = name
     override def get = value

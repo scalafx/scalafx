@@ -31,15 +31,13 @@ import javafx.beans.property.{ReadOnlyFloatPropertyBase, ReadOnlyFloatProperty =
 import scalafx.beans.binding.NumberExpression
 
 object ReadOnlyFloatProperty {
-  implicit def sfxReadOnlyFloatProperty2jfx(dp: ReadOnlyFloatProperty) = dp.delegate
+  implicit def sfxReadOnlyFloatProperty2jfx(rofp: ReadOnlyFloatProperty) = rofp.delegate
 }
 
 class ReadOnlyFloatProperty(override val delegate: JFXReadOnlyFloatProperty) extends NumberExpression(delegate) with ReadOnlyProperty[Float, Number] {
   def this(bean: Object, name: String, value: Float) = this (new ReadOnlyFloatPropertyBase() {
     def getBean = bean
-
     def getName = name
-
     def get = value
   })
 

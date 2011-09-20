@@ -31,13 +31,12 @@ import scalafx.beans.binding.NumberExpression
 import javafx.beans.property.{FloatPropertyBase, FloatProperty => JFXFloatProperty}
 
 object FloatProperty {
-  implicit def sfxFloatProperty2jfx(dp: FloatProperty) = dp.delegate
+  implicit def sfxFloatProperty2jfx(fp: FloatProperty) = fp.delegate
 }
 
 class FloatProperty(override val delegate: JFXFloatProperty) extends NumberExpression(delegate) with Property[Float, Number] {
   def this(bean: Object, name: String) = this (new FloatPropertyBase() {
     def getBean = bean
-
     def getName = name
   })
 

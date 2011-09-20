@@ -35,7 +35,7 @@ object Property {
 }
 
 trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends ReadOnlyProperty[T, J] {
-  override def delegate:JFXProperty[J]
+  override def delegate: JFXProperty[J]
 
   def value_=(v: T)
 

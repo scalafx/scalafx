@@ -37,7 +37,6 @@ object DoubleProperty {
 class DoubleProperty(override val delegate: JFXDoubleProperty) extends NumberExpression(delegate) with Property[Double, Number] {
   def this(bean: Object, name: String) = this (new DoublePropertyBase() {
     def getBean = bean
-
     def getName = name
   })
 

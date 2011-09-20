@@ -27,22 +27,19 @@
 
 package scalafx.beans.property
 
-import scalafx.beans.binding.NumberExpression
-import javafx.beans.property.{IntegerPropertyBase, IntegerProperty => JFXIntegerProperty}
+import scalafx.beans.binding.StringExpression
+import javafx.beans.property.{ReadOnlyStringPropertyBase, ReadOnlyStringProperty => JFXReadOnlyStringProperty}
 
-object IntegerProperty {
-  implicit def sfxIntegerProperty2jfx(ip: IntegerProperty) = ip.delegate
+object ReadOnlyStringProperty {
+  implicit def sfxReadOnlyStringProperty2jfx(rosp: ReadOnlyStringProperty) = rosp.delegate
 }
 
-class IntegerProperty(override val delegate: JFXIntegerProperty) extends NumberExpression(delegate) with Property[Int, Number] {
-  def this(bean: Object, name: String) = this (new IntegerPropertyBase() {
+class ReadOnlyStringProperty(override val delegate: JFXReadOnlyStringProperty) extends StringExpression(delegate) with ReadOnlyProperty[String, String] {
+  def this(bean: Object, name: String, value: String) = this (new ReadOnlyStringPropertyBase() {
     def getBean = bean
     def getName = name
+    override def get = value
   })
 
-  override def value = delegate.get
-
-  def value_=(v: Int) {
-    delegate.set(v)
-  }
+  def value = delegate.get
 }
