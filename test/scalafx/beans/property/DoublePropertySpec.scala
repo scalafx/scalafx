@@ -159,122 +159,122 @@ class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty <== doubleProperty == doubleProperty2
     doubleProperty() = 532
     doubleProperty2() = 321
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     doubleProperty2() = 532
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix equality with a constant" in {
     booleanProperty <== doubleProperty == 532
     doubleProperty() = 321
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     doubleProperty() = 532
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix inequality with a property" in {
     booleanProperty <== doubleProperty != doubleProperty2
     doubleProperty() = 231
     doubleProperty2() = 981
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     doubleProperty2() = 231
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix inequality with a constant" in {
     booleanProperty <== doubleProperty != 231
     doubleProperty() = 981
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     doubleProperty() = 231
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support variable precision equality via +- operator" in {
     booleanProperty <== doubleProperty == 532+-.1
     doubleProperty() = 533
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     doubleProperty() = 532.09
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     doubleProperty() = 531.91
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support variable precision inequality via +- operator" in {
     booleanProperty <== doubleProperty != 532+-.1
     doubleProperty() = 533
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     doubleProperty() = 532.09
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     doubleProperty() = 531.91
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than with a property" in {
     booleanProperty <== doubleProperty < doubleProperty2
     doubleProperty() = 51
     doubleProperty2() = 234
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     doubleProperty2() = 12
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than with a constant" in {
     booleanProperty <== doubleProperty < 51
     doubleProperty() = 234
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     doubleProperty() = 12
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix less than or equal to with a property" in {
     booleanProperty <== doubleProperty <= doubleProperty2
     doubleProperty() = 234
     doubleProperty2() = 512
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     doubleProperty2() = 93
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
     booleanProperty <== doubleProperty <= 234
     doubleProperty() = 512
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     doubleProperty() = 93
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix greater than with a property" in {
     booleanProperty <== doubleProperty > doubleProperty2
     doubleProperty() = 5000
     doubleProperty2() = 1000
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     doubleProperty2() = 6000
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix greater than with a constant" in {
     booleanProperty <== doubleProperty > 5000
     doubleProperty() = 1000
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     doubleProperty() = 6000
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix greater than or equal to with a property" in {
     booleanProperty <== doubleProperty >= doubleProperty2
     doubleProperty() = 18349
     doubleProperty2() = 4985
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     doubleProperty2() = 234564
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
     booleanProperty <== doubleProperty >= 18349
     doubleProperty() = 4985
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     doubleProperty() = 234564
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support invalidate/change triggers on binding expressions" in {
@@ -288,10 +288,10 @@ class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
       changeCount += 1
     }
     doubleProperty() = 1
-    invalidateCount should be (0)
-    changeCount should be (0)
+    invalidateCount should equal (0)
+    changeCount should equal (0)
     doubleProperty2() = 5
-    invalidateCount should be (1)
-    changeCount should be (1)
+    invalidateCount should equal (1)
+    changeCount should equal (1)
   }
 }

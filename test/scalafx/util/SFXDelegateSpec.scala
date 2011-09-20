@@ -37,19 +37,19 @@ class SFXDelegateSpec extends FlatSpec {
   val doublePropertyWithDifferentName = new DoubleProperty(null, "double property (with different name)")
 
   "SFXDelegate" should "delegate toString" in {
-    doubleProperty.toString should be("[SFX]DoubleProperty [name: double property, value: 0.0]")
+    doubleProperty.toString should be ("[SFX]DoubleProperty [name: double property, value: 0.0]")
   }
 
   it should "delegate equals" in {
-    doubleProperty should be === doublePropertyWithSameName
-    doubleProperty should not(be === doublePropertyWithDifferentName)
+    doubleProperty should equal (doublePropertyWithSameName)
+    doubleProperty should not (equal (doublePropertyWithDifferentName))
   }
 
   it should "delegate hashCode" in {
-    doubleProperty.hashCode should be === 2073312533
+    doubleProperty.hashCode should equal (2073312533)
   }
 
   it should "have a public delegate property" in {
-    doubleProperty.delegate should not(be(null))
+    doubleProperty.delegate should not (be (null))
   }
 }

@@ -43,31 +43,31 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   "A Boolean Property" should "have a default value of false" in {
-    booleanProperty.value should equal(false)
+    booleanProperty.value should be (false)
   }
 
   it should "be assignable using update" in {
     booleanProperty() = true
-    booleanProperty.value should equal(true)
+    booleanProperty.value should be (true)
   }
 
   it should "return its value using apply" in {
     booleanProperty() = true
-    booleanProperty() should equal(true)
+    booleanProperty() should be (true)
   }
 
   it should "know its name" in {
-    booleanProperty.name should equal("Test Boolean")
+    booleanProperty.name should equal ("Test Boolean")
   }
 
   it should "know its bean" in {
-    booleanProperty.bean should equal(bean)
+    booleanProperty.bean should equal (bean)
   }
 
   it should "be bindable to another Boolean Property" in {
     booleanProperty <== booleanProperty2
     booleanProperty2() = true
-    booleanProperty() should equal(true)
+    booleanProperty() should be (true)
   }
 
   it should "support unbinding from another Boolean Property" in {
@@ -75,15 +75,15 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty2() = true
     booleanProperty.unbind()
     booleanProperty2() = false
-    booleanProperty() should equal(true)
+    booleanProperty() should be (true)
   }
 
   it should "be bidirectionally bindable to another Boolean Property" in {
     booleanProperty <==> booleanProperty2
     booleanProperty() = true
-    booleanProperty2() should equal(true)
+    booleanProperty2() should be (true)
     booleanProperty2() = false
-    booleanProperty() should equal(false)
+    booleanProperty() should be (false)
   }
 
   it should "support bidirectional unbinding from another Boolean Property" in {
@@ -91,87 +91,87 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() = true
     booleanProperty unbind booleanProperty2
     booleanProperty() = false
-    booleanProperty2() should equal(true)
+    booleanProperty2() should be (true)
   }
 
   it should "support bindable infix equality (==) with a property" in {
     booleanProperty <== booleanProperty2 == booleanProperty3
     booleanProperty2() = true
     booleanProperty3() = false
-    booleanProperty() should equal(false)
+    booleanProperty() should be (false)
     booleanProperty3() = true
-    booleanProperty() should equal(true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix equality (==) with a jfx property" in {
     booleanProperty <== booleanProperty2 == booleanProperty3.delegate
     booleanProperty2() = true
     booleanProperty3() = false
-    booleanProperty() should equal(false)
+    booleanProperty() should be (false)
     booleanProperty3() = true
-    booleanProperty() should equal(true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix inequality (!=) with a property" in {
     booleanProperty <== booleanProperty2 != booleanProperty3
     booleanProperty2() = true
     booleanProperty3() = false
-    booleanProperty() should equal(true)
+    booleanProperty() should be (true)
     booleanProperty3() = true
-    booleanProperty() should equal(false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix inequality (!=) with a jfx property" in {
     booleanProperty <== booleanProperty2 != booleanProperty3.delegate
     booleanProperty2() = true
     booleanProperty3() = false
-    booleanProperty() should equal(true)
+    booleanProperty() should be (true)
     booleanProperty3() = true
-    booleanProperty() should equal(false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix and (&&) with a property" in {
     booleanProperty <== booleanProperty2 && booleanProperty3
     booleanProperty2() = true
     booleanProperty3() = false
-    booleanProperty() should equal(false)
+    booleanProperty() should be (false)
     booleanProperty3() = true
-    booleanProperty() should equal(true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix and (&&) with a jfx property" in {
     booleanProperty <== booleanProperty2 && booleanProperty3.delegate
     booleanProperty2() = true
     booleanProperty3() = false
-    booleanProperty() should equal(false)
+    booleanProperty() should be (false)
     booleanProperty3() = true
-    booleanProperty() should equal(true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix or (||) with a property" in {
     booleanProperty <== booleanProperty2 || booleanProperty3
     booleanProperty2() = true
     booleanProperty3() = false
-    booleanProperty() should equal(true)
+    booleanProperty() should be (true)
     booleanProperty2() = false
-    booleanProperty() should equal(false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix or (||) with a jfx property" in {
     booleanProperty <== booleanProperty2 || booleanProperty3.delegate
     booleanProperty2() = true
     booleanProperty3() = false
-    booleanProperty() should equal(true)
+    booleanProperty() should be (true)
     booleanProperty2() = false
-    booleanProperty() should equal(false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable prefix not (!)" in {
     booleanProperty <== !booleanProperty2
     booleanProperty2() = true
-    booleanProperty() should equal(false)
+    booleanProperty() should be (false)
     booleanProperty2() = false
-    booleanProperty() should equal(true)
+    booleanProperty() should be (true)
   }
 
   it should "do the right thing with order of operations" in {
@@ -179,16 +179,16 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty <== !booleanProperty3 == booleanProperty2 || !booleanProperty2 && !booleanProperty3
     booleanProperty2() = false
     booleanProperty3() = false
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty2() = true
     booleanProperty3() = false
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty2() = true
     booleanProperty3() = true
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty2() = false
     booleanProperty3() = true
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support invalidate/change triggers on binding expressions" in {
@@ -202,10 +202,10 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
       changeCount += 1
     }
     booleanProperty2() = true
-    invalidateCount should be (1)
-    changeCount should be (1)
+    invalidateCount should equal (1)
+    changeCount should equal (1)
     booleanProperty3() = true
-    invalidateCount should be (1)
-    changeCount should be (1)
+    invalidateCount should equal (1)
+    changeCount should equal (1)
   }
 }

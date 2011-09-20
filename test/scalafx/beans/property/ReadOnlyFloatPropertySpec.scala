@@ -128,109 +128,109 @@ class ReadOnlyFloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   it should "support bindable infix equality with a property" in {
     booleanProperty <== readOnlyFloatProperty == floatProperty1
     floatProperty1() = 23
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     floatProperty1() = 50
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix equality with a constant" in {
     booleanProperty <== readOnlyFloatProperty == 532
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty <== readOnlyFloatProperty == 50
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix inequality with a property" in {
     booleanProperty <== readOnlyFloatProperty != floatProperty1
     floatProperty1() = 35
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     floatProperty1() = 50
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix inequality with a constant" in {
     booleanProperty <== readOnlyFloatProperty != 231
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty <== readOnlyFloatProperty != 50
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support variable precision equality via +- operator" in {
     booleanProperty <== readOnlyFloatProperty == 55+-1.1
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty <== readOnlyFloatProperty == 51+-1.1
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty <== readOnlyFloatProperty == 49+-1.1
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support variable precision inequality via +- operator" in {
     booleanProperty <== readOnlyFloatProperty != 55+-1.1
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty <== readOnlyFloatProperty != 51+-1.1
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty <== readOnlyFloatProperty != 49+-1.1
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than with a property" in {
     booleanProperty <== readOnlyFloatProperty < floatProperty1
     floatProperty1() = 234
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     floatProperty1() = 12
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than with a constant" in {
     booleanProperty <== readOnlyFloatProperty < 49
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty <== readOnlyFloatProperty < 51
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix less than or equal to with a property" in {
     booleanProperty <== readOnlyFloatProperty <= floatProperty1
     floatProperty1() = 512
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     floatProperty1() = 34
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
     booleanProperty <== readOnlyFloatProperty <= 34
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty <== readOnlyFloatProperty <= 512
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix greater than with a property" in {
     booleanProperty <== readOnlyFloatProperty > floatProperty1
     floatProperty1() = 40
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     floatProperty1() = 60
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix greater than with a constant" in {
     booleanProperty <== readOnlyFloatProperty > 51
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty <== readOnlyFloatProperty > 49
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix greater than or equal to with a property" in {
     booleanProperty <== readOnlyFloatProperty >= floatProperty1
     floatProperty1() = 49
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     floatProperty1() = 51
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
     booleanProperty <== readOnlyFloatProperty >= 18349
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty <== readOnlyFloatProperty >= 13
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support invalidate/change triggers on binding expressions" in {
@@ -244,10 +244,10 @@ class ReadOnlyFloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
       changeCount += 1
     }
     floatProperty2() = 1
-    invalidateCount should be (1)
-    changeCount should be (1)
+    invalidateCount should equal (1)
+    changeCount should equal (1)
     floatProperty2() = 5
-    invalidateCount should be (2)
-    changeCount should be (2)
+    invalidateCount should equal (2)
+    changeCount should equal (2)
   }
 }

@@ -70,69 +70,69 @@ class ReadOnlyBooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   "A Read-only Boolean Property" should "return a fixed value" in {
-    readOnlyBooleanProperty.value should equal(true)
+    readOnlyBooleanProperty.value should be (true)
   }
 
   it should "return its value using apply" in {
-    readOnlyBooleanProperty() should equal(true)
+    readOnlyBooleanProperty() should be (true)
   }
 
   it should "know its name" in {
-    readOnlyBooleanProperty.name should equal("Test Read-only Boolean")
+    readOnlyBooleanProperty.name should equal ("Test Read-only Boolean")
   }
 
   it should "know its bean" in {
-    readOnlyBooleanProperty.bean should equal(bean)
+    readOnlyBooleanProperty.bean should equal (bean)
   }
 
   it should "be bindable to another Boolean Property" in {
     booleanProperty1 <== readOnlyBooleanProperty
-    booleanProperty1() should equal(true)
+    booleanProperty1() should be (true)
   }
 
   it should "support unbinding from another Boolean Property" in {
     booleanProperty1 <== readOnlyBooleanProperty
-    booleanProperty1() should equal(true)
+    booleanProperty1() should be (true)
     booleanProperty1.unbind()
     booleanProperty1() = false
-    booleanProperty1() should equal(false)
+    booleanProperty1() should be (false)
   }
 
   it should "support bindable infix equality (==) with a property" in {
     booleanProperty1 <== readOnlyBooleanProperty == booleanProperty2
     booleanProperty2() = false
-    booleanProperty1() should equal(false)
+    booleanProperty1() should be (false)
     booleanProperty2() = true
-    booleanProperty1() should equal(true)
+    booleanProperty1() should be (true)
   }
 
   it should "support bindable infix inequality (!=) with a property" in {
     booleanProperty1 <== readOnlyBooleanProperty != booleanProperty2
     booleanProperty2() = false
-    booleanProperty1() should equal(true)
+    booleanProperty1() should be (true)
     booleanProperty2() = true
-    booleanProperty1() should equal(false)
+    booleanProperty1() should be (false)
   }
 
   it should "support bindable infix and (&&) with a property" in {
     booleanProperty1 <== readOnlyBooleanProperty && booleanProperty2
     booleanProperty2() = false
-    booleanProperty1() should equal(false)
+    booleanProperty1() should be (false)
     booleanProperty2() = true
-    booleanProperty1() should equal(true)
+    booleanProperty1() should be (true)
   }
 
   it should "support bindable infix or (||) with a property" in {
     booleanProperty1 <== readOnlyBooleanProperty || booleanProperty2
     booleanProperty2() = false
-    booleanProperty1() should equal(true)
+    booleanProperty1() should be (true)
     booleanProperty2() = true
-    booleanProperty1() should equal(true)
+    booleanProperty1() should be (true)
   }
 
   it should "support bindable prefix not (!)" in {
     booleanProperty1 <== !readOnlyBooleanProperty
-    booleanProperty1() should equal(false)
+    booleanProperty1() should be (false)
   }
 
   it should "support invalidate/change triggers on binding expressions" in {
@@ -146,10 +146,10 @@ class ReadOnlyBooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
       changeCount += 1
     }
     booleanProperty1() = true
-    invalidateCount should be (1)
-    changeCount should be (1)
+    invalidateCount should equal (1)
+    changeCount should equal (1)
     booleanProperty2() = true
-    invalidateCount should be (1)
-    changeCount should be (1)
+    invalidateCount should equal (1)
+    changeCount should equal (1)
   }
 }

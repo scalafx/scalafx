@@ -128,109 +128,109 @@ class ReadOnlyDoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   it should "support bindable infix equality with a property" in {
     booleanProperty <== readOnlyDoubleProperty == doubleProperty1
     doubleProperty1() = 23
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     doubleProperty1() = 50
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix equality with a constant" in {
     booleanProperty <== readOnlyDoubleProperty == 532
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty <== readOnlyDoubleProperty == 50
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix inequality with a property" in {
     booleanProperty <== readOnlyDoubleProperty != doubleProperty1
     doubleProperty1() = 35
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     doubleProperty1() = 50
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix inequality with a constant" in {
     booleanProperty <== readOnlyDoubleProperty != 231
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty <== readOnlyDoubleProperty != 50
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support variable precision equality via +- operator" in {
     booleanProperty <== readOnlyDoubleProperty == 55+-1.1
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty <== readOnlyDoubleProperty == 51+-1.1
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty <== readOnlyDoubleProperty == 49+-1.1
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support variable precision inequality via +- operator" in {
     booleanProperty <== readOnlyDoubleProperty != 55+-1.1
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty <== readOnlyDoubleProperty != 51+-1.1
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty <== readOnlyDoubleProperty != 49+-1.1
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than with a property" in {
     booleanProperty <== readOnlyDoubleProperty < doubleProperty1
     doubleProperty1() = 234
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     doubleProperty1() = 12
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than with a constant" in {
     booleanProperty <== readOnlyDoubleProperty < 49
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty <== readOnlyDoubleProperty < 51
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix less than or equal to with a property" in {
     booleanProperty <== readOnlyDoubleProperty <= doubleProperty1
     doubleProperty1() = 512
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     doubleProperty1() = 34
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
     booleanProperty <== readOnlyDoubleProperty <= 34
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty <== readOnlyDoubleProperty <= 512
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix greater than with a property" in {
     booleanProperty <== readOnlyDoubleProperty > doubleProperty1
     doubleProperty1() = 40
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     doubleProperty1() = 60
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix greater than with a constant" in {
     booleanProperty <== readOnlyDoubleProperty > 51
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty <== readOnlyDoubleProperty > 49
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix greater than or equal to with a property" in {
     booleanProperty <== readOnlyDoubleProperty >= doubleProperty1
     doubleProperty1() = 49
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     doubleProperty1() = 51
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
     booleanProperty <== readOnlyDoubleProperty >= 18349
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty <== readOnlyDoubleProperty >= 13
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support invalidate/change triggers on binding expressions" in {
@@ -244,10 +244,10 @@ class ReadOnlyDoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
       changeCount += 1
     }
     doubleProperty2() = 1
-    invalidateCount should be (1)
-    changeCount should be (1)
+    invalidateCount should equal (1)
+    changeCount should equal (1)
     doubleProperty2() = 5
-    invalidateCount should be (2)
-    changeCount should be (2)
+    invalidateCount should equal (2)
+    changeCount should equal (2)
   }
 }
