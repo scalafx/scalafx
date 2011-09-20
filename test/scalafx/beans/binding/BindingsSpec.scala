@@ -77,7 +77,13 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
     doubleProperty1() should equal (25)
   }
 
-  it should "support max" is (pending)
+  "Bindings" should "support max" in {
+    doubleProperty1 <== max(doubleProperty2, doubleProperty3, 25, 26l, 27f, 28d)
+    doubleProperty1() should equal (28)
+    doubleProperty2() = 50
+    doubleProperty3() = 43
+    doubleProperty1() should equal (50)
+  }
 
   it should "support when .. then .. otherwise with all numeric property types" in {
     integerProperty1() = 5

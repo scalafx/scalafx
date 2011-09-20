@@ -45,7 +45,7 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   "A String Property" should "have a default value of null" in {
-    stringProperty.value should equal (null)
+    stringProperty.value should be (null)
   }
 
   it should "be assignable using update" in {

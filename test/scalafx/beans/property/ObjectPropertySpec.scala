@@ -27,18 +27,24 @@
 
 package scalafx.beans.property
 
-import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers._
 import scalafx.beans.binding.Bindings._
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
-class ObjectPropertySpec extends FlatSpec {
+class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var objectProperty = new ObjectProperty[String](bean, "Test Object")
-  var objectProperty2 = new ObjectProperty[String](bean, "Test Object 2")
-  var booleanProperty = new BooleanProperty(bean, "Test Boolean")
+  var objectProperty: ObjectProperty[String] = null
+  var objectProperty2: ObjectProperty[String] = null
+  var booleanProperty: BooleanProperty = null
+
+  override protected def beforeEach() {
+    objectProperty = new ObjectProperty[String](bean, "Test Object")
+    objectProperty2 = new ObjectProperty[String](bean, "Test Object 2")
+    booleanProperty = new BooleanProperty(bean, "Test Boolean")
+  }
 
   "An Object Property" should "have a default value of null" in {
-    objectProperty.value should equal (null)
+    objectProperty.value should be (null)
   }
 
   it should "be assignable using update" in {
@@ -47,6 +53,7 @@ class ObjectPropertySpec extends FlatSpec {
   }
 
   it should "return its value using apply" in {
+    objectProperty() = "Update"
     objectProperty() should equal ("Update")
   }
 
@@ -77,39 +84,93 @@ class ObjectPropertySpec extends FlatSpec {
     booleanProperty <== objectProperty == objectProperty2
     objectProperty() = "One"
     objectProperty2() = "Two"
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     objectProperty2() = "One"
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
+    booleanProperty.unbind()
+  }
+  
+  it should "support bindable infix equality with a jfx property" in {
+    booleanProperty <== objectProperty == objectProperty2.delegate
+    objectProperty() = "One"
+    objectProperty2() = "Two"
+    booleanProperty() should be (false)
+    objectProperty2() = "One"
+    booleanProperty() should be (true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix equality with a constant" in {
     booleanProperty <== objectProperty == "One"
     objectProperty() = "Two"
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     objectProperty() = "One"
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty.unbind()
+  }
+
+  it should "support null comparisons for equal to (==)" in {
+    booleanProperty <== objectProperty == null
+    objectProperty() = "clearly not null"
+    booleanProperty() should be (false)
+    objectProperty() = null
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix inequality with a property" in {
     booleanProperty <== objectProperty != objectProperty2
     objectProperty() = "One"
     objectProperty2() = "Two"
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     objectProperty2() = "One"
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
+    booleanProperty.unbind()
+  }
+
+  it should "support bindable infix inequality with a jfx property" in {
+    booleanProperty <== objectProperty != objectProperty2.delegate
+    objectProperty() = "One"
+    objectProperty2() = "Two"
+    booleanProperty() should be (true)
+    objectProperty2() = "One"
+    booleanProperty() should be (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a constant" in {
     booleanProperty <== objectProperty != "One"
     objectProperty() = "Two"
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     objectProperty() = "One"
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty.unbind()
   }
-  
 
+  it should "support null comparisons for not equal to (!=)" in {
+    booleanProperty <== objectProperty != null
+    objectProperty() = "clearly not null"
+    booleanProperty() should be (true)
+    objectProperty() = null
+    booleanProperty() should be (false)
+  }
+
+  it should "support invalidate/change triggers on binding expressions" in {
+    var invalidateCount = 0
+    var changeCount = 0
+    val binding = objectProperty == objectProperty2
+    binding onInvalidate {
+      invalidateCount += 1
+    }
+    binding onChange {
+      changeCount += 1
+    }
+    objectProperty() = "new value"
+    invalidateCount should equal (1)
+    changeCount should equal (1)
+    objectProperty2() = "new value"
+    invalidateCount should equal (2)
+    changeCount should equal (2)
+  }
+
+  it should "support implicit conversion to a String Binding" is (pending)
 }

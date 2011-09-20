@@ -28,9 +28,7 @@
 package scalafx.beans.binding
 
 import javafx.beans.binding.{ObjectExpression=>JFXObjectExpression}
-import scalafx.beans.value.ObservableValue
-
-import javafx.beans.property.ReadOnlyObjectPropertyBase
+import javafx.beans.value.ObservableObjectValue
 
 object ObjectExpression {
   implicit def sfxObjectExpression2jfx[T <: Object](oe: ObjectExpression[T]) = oe.delegate
@@ -38,10 +36,13 @@ object ObjectExpression {
 }
 
 class ObjectExpression[T <: Object](val delegate: JFXObjectExpression[T]) {
-  def ==(v: ObjectExpression[_]) = new BooleanExpression(delegate.isEqualTo(v.delegate))
-  def ==(v: T) = new BooleanExpression(delegate.isEqualTo(v))
+  def ==(v: Null) = new BooleanBinding(delegate.isNull)
+  def ==(v: ObservableObjectValue[_]) = new BooleanBinding(delegate.isEqualTo(v))
+  def ==(v: ObjectExpression[_]) = new BooleanBinding(delegate.isEqualTo(v.delegate))
+  def ==(v: T) = new BooleanBinding(delegate.isEqualTo(v))
     
-  def !=(v: ObjectExpression[_]) = new BooleanExpression(delegate.isNotEqualTo(v.delegate))
-  def !=(v: T) = new BooleanExpression(delegate.isNotEqualTo(v))
+  def !=(v: Null) = new BooleanBinding(delegate.isNotNull)
+  def !=(v: ObservableObjectValue[_]) = new BooleanBinding(delegate.isNotEqualTo(v))
+  def !=(v: ObjectExpression[_]) = new BooleanBinding(delegate.isNotEqualTo(v.delegate))
+  def !=(v: T) = new BooleanBinding(delegate.isNotEqualTo(v))
 }
- 
