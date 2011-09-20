@@ -25,25 +25,23 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+package scalafx.beans.binding
 
-import javafx.beans.property.{ObjectPropertyBase, ObjectProperty => JFXObjectProperty}
-import scalafx.beans.binding.ObjectExpression
+import javafx.beans.binding.{ObjectExpression=>JFXObjectExpression}
+import scalafx.beans.value.ObservableValue
 
-object ObjectProperty {
-  implicit def sfxObjectProperty2jfx[T <: Object](op: ObjectProperty[T]) = op.delegate
+import javafx.beans.property.ReadOnlyObjectPropertyBase
+
+object ObjectExpression {
+  //implicit def sfxObjectExpression2jfx[T <: Object](oe: ObjectExpression[T]) = oe.delegate
+  implicit def jfxObjectExpression2sfx[T <: Object](oe: JFXObjectExpression[T]) = new ObjectExpression[T](oe)
 }
 
-class ObjectProperty[T <: Object](override val delegate: JFXObjectProperty[T]) extends ObjectExpression[T](delegate) with Property[T, T] {
-  def this(bean: Object, name: String) = this (new ObjectPropertyBase[T]() {
-    def getBean = bean
-
-    def getName = name
-  })
-
-  def value_=(v: T) {
-    delegate.set(v)
-  }
-
-  def value = delegate.get()
+class ObjectExpression[T <: Object](val delegate: JFXObjectExpression[T]) {
+  def ==(v: ObjectExpression[_]) = new BooleanExpression(delegate.isEqualTo(v.delegate))
+  def ==(v: T) = new BooleanExpression(delegate.isEqualTo(v))
+    
+  def !=(v: ObjectExpression[_]) = new BooleanExpression(delegate.isNotEqualTo(v.delegate))
+  def !=(v: T) = new BooleanExpression(delegate.isNotEqualTo(v))
 }
+ 

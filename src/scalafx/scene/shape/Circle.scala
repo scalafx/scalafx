@@ -25,25 +25,30 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+package scalafx.scene.shape
 
-import javafx.beans.property.{ObjectPropertyBase, ObjectProperty => JFXObjectProperty}
-import scalafx.beans.binding.ObjectExpression
+import scalafx.beans.property.DoubleProperty
 
-object ObjectProperty {
-  implicit def sfxObjectProperty2jfx[T <: Object](op: ObjectProperty[T]) = op.delegate
-}
+class Circle extends Shape {
+  override val node = new javafx.scene.shape.Circle()
+  
+  lazy val _centerXProperty = new DoubleProperty(node.centerXProperty())
 
-class ObjectProperty[T <: Object](override val delegate: JFXObjectProperty[T]) extends ObjectExpression[T](delegate) with Property[T, T] {
-  def this(bean: Object, name: String) = this (new ObjectPropertyBase[T]() {
-    def getBean = bean
-
-    def getName = name
-  })
-
-  def value_=(v: T) {
-    delegate.set(v)
+  def centerX = _centerXProperty
+  def centerX_=(v:Double) {
+    centerX() = v
   }
 
-  def value = delegate.get()
+  lazy val _centerYProperty = new DoubleProperty(node.centerYProperty())
+  def centerY = _centerYProperty
+  def centerY_=(v:Double) {
+    centerY() = v
+  }
+
+  lazy val _radiusProperty = new DoubleProperty(node.radiusProperty())
+  def radius = _radiusProperty
+  def radius_=(v:Double) {
+    radius() = v
+  }  
+  
 }

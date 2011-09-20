@@ -25,25 +25,55 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+package scalafx.scene.shape
 
-import javafx.beans.property.{ObjectPropertyBase, ObjectProperty => JFXObjectProperty}
-import scalafx.beans.binding.ObjectExpression
+import javafx.scene.shape.ArcType
 
-object ObjectProperty {
-  implicit def sfxObjectProperty2jfx[T <: Object](op: ObjectProperty[T]) = op.delegate
-}
+import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 
-class ObjectProperty[T <: Object](override val delegate: JFXObjectProperty[T]) extends ObjectExpression[T](delegate) with Property[T, T] {
-  def this(bean: Object, name: String) = this (new ObjectPropertyBase[T]() {
-    def getBean = bean
-
-    def getName = name
-  })
-
-  def value_=(v: T) {
-    delegate.set(v)
+class Arc extends Shape {
+  override val node = new javafx.scene.shape.Arc()
+  
+  lazy val _centerXProperty = new DoubleProperty(node.centerXProperty())
+  def centerX = _centerXProperty
+  def centerX_=(v:Double) {
+    centerX() = v
   }
 
-  def value = delegate.get()
+  lazy val _centerYProperty = new DoubleProperty(node.centerYProperty())
+  def centerY = _centerYProperty
+  def centerY_=(v:Double) {
+    centerY() = v
+  }
+ 
+  lazy val _lengthProperty = new DoubleProperty(node.lengthProperty())
+  def length = _lengthProperty
+  def length_=(v:Double) {
+    length() = v
+  }
+
+  lazy val _radiusXProperty = new DoubleProperty(node.radiusXProperty())
+  def radiusX = _radiusXProperty
+  def radiusX_=(v:Double) {
+    radiusX() = v
+  }
+
+  lazy val _radiusYProperty = new DoubleProperty(node.radiusYProperty())
+  def radiusY = _radiusYProperty
+  def radiusY_=(v:Double) {
+    radiusY() = v
+  }
+
+  lazy val _startAngleProperty = new DoubleProperty(node.startAngleProperty())
+  def startAngle = _startAngleProperty
+  def startAngle_=(v:Double) {
+    startAngle() = v
+  }
+
+  lazy val _typeProperty = new ObjectProperty[ArcType](node.typeProperty())
+  def `type` = _typeProperty
+  def `type_=`(v:ArcType) {
+    `type`() = v
+  }
+  
 }

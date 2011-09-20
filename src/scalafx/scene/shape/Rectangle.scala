@@ -31,7 +31,7 @@ import javafx.scene.paint.Paint
 import scalafx.scene.Node
 import scalafx.beans.property.{ObjectProperty, DoubleProperty}
 
-class Rectangle extends Node {
+class Rectangle extends Shape {
   val rectangle = new javafx.scene.shape.Rectangle()
   override val node = rectangle
 
@@ -58,10 +58,5 @@ class Rectangle extends Node {
   def height_=(v:Double) {
     height() = v
   }
-
-  lazy val _fillProperty = new ObjectProperty[Paint](rectangle.fillProperty())
-  def fill = _fillProperty
-  def fill_=(v: Paint) {
-    fill() = v
-  }
+  
 }
