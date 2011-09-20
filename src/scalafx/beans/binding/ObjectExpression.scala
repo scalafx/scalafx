@@ -33,7 +33,7 @@ import scalafx.beans.value.ObservableValue
 import javafx.beans.property.ReadOnlyObjectPropertyBase
 
 object ObjectExpression {
-  //implicit def sfxObjectExpression2jfx[T <: Object](oe: ObjectExpression[T]) = oe.delegate
+  implicit def sfxObjectExpression2jfx[T <: Object](oe: ObjectExpression[T]) = oe.delegate
   implicit def jfxObjectExpression2sfx[T <: Object](oe: JFXObjectExpression[T]) = new ObjectExpression[T](oe)
 }
 
