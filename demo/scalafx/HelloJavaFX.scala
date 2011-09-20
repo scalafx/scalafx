@@ -29,9 +29,12 @@ package scalafx
 
 import scalafx.application.Application
 import scalafx.scene.Scene
+import scalafx.scene.shape.Arc
+import scalafx.scene.shape.Circle
 import scalafx.scene.shape.Rectangle
 import scalafx.stage.Stage
 import javafx.scene.paint.Color
+import javafx.scene.shape.ArcType
 
 object HelloJavaFX extends Application {
   stage = new Stage {
@@ -45,6 +48,24 @@ object HelloJavaFX extends Application {
         width = 100
         height = 50
         fill = Color.RED
+        stroke = Color.BLUE
+        strokeWidth = 5
+      }, new Circle {
+        centerX = 30
+        centerY = 50
+        radius = 25
+        fill = Color.BLUE
+        stroke = Color.BLUE.brighter()
+        strokeWidth = 3
+      }, new Arc {
+        centerX = 100
+        centerY = 50
+        radiusX = 25
+        radiusY = 50
+        startAngle = 135
+        fill = Color.BLACK
+        stroke = Color.YELLOW
+        strokeWidth = 3
       })
     }
     visible = true
