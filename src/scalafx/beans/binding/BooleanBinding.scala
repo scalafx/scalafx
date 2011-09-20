@@ -31,9 +31,8 @@ import scalafx.beans.value.ObservableValue
 import javafx.beans.binding.{BooleanBinding => JFXBooleanBinding}
 
 object BooleanBinding {
-  implicit def sfxBooleanBinding2jfx(be: BooleanBinding) = be.delegate
-
-  implicit def jfxBooleanBinding2sfx(be: JFXBooleanBinding) = new BooleanBinding(be)
+  implicit def sfxBooleanBinding2jfx(bb: BooleanBinding) = bb.delegate
+  implicit def jfxBooleanBinding2sfx(bb: JFXBooleanBinding) = new BooleanBinding(bb)
 }
 
 class BooleanBinding(override val delegate: JFXBooleanBinding) extends BooleanExpression(delegate) with ObservableValue[Boolean, java.lang.Boolean] {

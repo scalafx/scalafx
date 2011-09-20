@@ -32,7 +32,6 @@ import javafx.beans.binding.{NumberBinding => JFXNumberBinding}
 
 object NumberBinding {
   implicit def sfxNumberBinding2jfx(nb: NumberBinding) = nb.delegate
-
   implicit def jfxNumberBinding2sfx(nb: JFXNumberBinding) = new NumberBinding(nb)
 }
 
