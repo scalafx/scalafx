@@ -286,4 +286,22 @@ class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
     longProperty() = 234564
     booleanProperty() should equal (true)
   }
+
+  it should "support invalidate/change triggers on binding expressions" in {
+    var invalidateCount = 0
+    var changeCount = 0
+    val binding = longProperty * longProperty2
+    binding onInvalidate {
+      invalidateCount += 1
+    }
+    binding onChange {
+      changeCount += 1
+    }
+    longProperty() = 1
+    invalidateCount should be (0)
+    changeCount should be (0)
+    longProperty2() = 5
+    invalidateCount should be (1)
+    changeCount should be (1)
+  }
 }

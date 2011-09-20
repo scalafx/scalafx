@@ -27,31 +27,15 @@
 
 package scalafx.beans.binding
 
-import javafx.beans.binding.{BooleanExpression => JFXBooleanExpression}
-import javafx.beans.value.ObservableBooleanValue
+import scalafx.beans.value.ObservableValue
+import javafx.beans.binding.{NumberBinding => JFXNumberBinding}
 
-object BooleanExpression {
-  implicit def sfxBooleanExpression2jfx(bb: BooleanExpression) = bb.delegate
+object NumberBinding {
+  implicit def sfxNumberBinding2jfx(nb: NumberBinding) = nb.delegate
 
-  implicit def jfxBooleanExpression2sfx(bb: JFXBooleanExpression) = new BooleanExpression(bb)
+  implicit def jfxNumberBinding2sfx(nb: JFXNumberBinding) = new NumberBinding(nb)
 }
 
-class BooleanExpression(val delegate: JFXBooleanExpression) {
-  def ==(v: ObservableBooleanValue) = new BooleanBinding(delegate.isEqualTo(v))
-
-  def ==(v: BooleanExpression) = new BooleanBinding(delegate.isEqualTo(v.delegate))
-
-  def !=(v: ObservableBooleanValue) = new BooleanBinding(delegate.isNotEqualTo(v))
-
-  def !=(v: BooleanExpression) = new BooleanBinding(delegate.isNotEqualTo(v.delegate))
-
-  def &&(v: ObservableBooleanValue) = new BooleanBinding(delegate.and(v))
-
-  def &&(v: BooleanExpression) = new BooleanBinding(delegate.and(v.delegate))
-
-  def ||(v: ObservableBooleanValue) = new BooleanBinding(delegate.or(v))
-
-  def ||(v: BooleanExpression) = new BooleanBinding(delegate.or(v.delegate))
-
-  def unary_!() = new BooleanBinding(delegate.not())
+class NumberBinding(override val delegate: JFXNumberBinding) extends NumberExpression(delegate) with ObservableValue[Number, Number] {
+  def value = delegate.getValue
 }

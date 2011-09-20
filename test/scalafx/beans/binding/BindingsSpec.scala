@@ -44,6 +44,9 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
   var doubleProperty1:DoubleProperty = null
   var doubleProperty2:DoubleProperty = null
   var doubleProperty3:DoubleProperty = null
+  var stringProperty1:StringProperty = null
+  var stringProperty2:StringProperty = null
+  var stringProperty3:StringProperty = null
   var objectProperty1:ObjectProperty[Object] = null
   var objectProperty2:ObjectProperty[Object] = null
   var objectProperty3:ObjectProperty[Object] = null
@@ -58,6 +61,9 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
     doubleProperty1 = new DoubleProperty(null, "Double Property 1")
     doubleProperty2 = new DoubleProperty(null, "Double Property 2")
     doubleProperty3 = new DoubleProperty(null, "Double Property 3")
+    stringProperty1 = new StringProperty(null, "String Property 1")
+    stringProperty2 = new StringProperty(null, "String Property 2")
+    stringProperty3 = new StringProperty(null, "String Property 3")
     objectProperty1 = new ObjectProperty[Object](null, "Object Property 1")
     objectProperty2 = new ObjectProperty[Object](null, "Object Property 2")
     objectProperty3 = new ObjectProperty[Object](null, "Object Property 3")
@@ -113,7 +119,14 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support when .. then .. otherwise with string types" in {
-
+    stringProperty2() = "Hello"
+    stringProperty3() = "World"
+    stringProperty1 <== when (booleanProperty1) then stringProperty3 otherwise stringProperty2
+    stringProperty1() should be("Hello")
+    stringProperty1 <== when (booleanProperty1) then "string before" otherwise stringProperty3
+    stringProperty1() should be("World")
+    stringProperty1 <== when (booleanProperty1) then stringProperty2 otherwise "string after"
+    stringProperty1() should be("string after")
   }
 
   it should "support when .. then .. otherwise with object types" in {

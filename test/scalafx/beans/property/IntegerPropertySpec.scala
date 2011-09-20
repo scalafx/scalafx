@@ -286,4 +286,22 @@ class IntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
     integerProperty() = 234564
     booleanProperty() should equal (true)
   }
+
+  it should "support invalidate/change triggers on binding expressions" in {
+    var invalidateCount = 0
+    var changeCount = 0
+    val binding = integerProperty * integerProperty2
+    binding onInvalidate {
+      invalidateCount += 1
+    }
+    binding onChange {
+      changeCount += 1
+    }
+    integerProperty() = 1
+    invalidateCount should be (0)
+    changeCount should be (0)
+    integerProperty2() = 5
+    invalidateCount should be (1)
+    changeCount should be (1)
+  }
 }

@@ -134,4 +134,22 @@ class ReadOnlyBooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty1 <== !readOnlyBooleanProperty
     booleanProperty1() should equal(false)
   }
+
+  it should "support invalidate/change triggers on binding expressions" in {
+    var invalidateCount = 0
+    var changeCount = 0
+    val binding = booleanProperty1 || booleanProperty1
+    binding onInvalidate {
+      invalidateCount += 1
+    }
+    binding onChange {
+      changeCount += 1
+    }
+    booleanProperty1() = true
+    invalidateCount should be (1)
+    changeCount should be (1)
+    booleanProperty2() = true
+    invalidateCount should be (1)
+    changeCount should be (1)
+  }
 }

@@ -122,6 +122,23 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should equal(true)
   }
 
+  it should "support null/empty-string comparisons for equals (==)" in {
+    booleanProperty <== stringProperty == null
+    stringProperty() = "clearly not null"
+    booleanProperty() should equal(false)
+    stringProperty() = null
+    booleanProperty() should equal(true)
+    stringProperty() = ""
+    booleanProperty() should equal(false)
+    booleanProperty <== stringProperty == ""
+    stringProperty() = "clearly not empty"
+    booleanProperty() should equal(false)
+    stringProperty() = null
+    booleanProperty() should equal(true)
+    stringProperty() = ""
+    booleanProperty() should equal(true)
+  }
+
   it should "support bindable infix inequality (!=) with a property" in {
     booleanProperty <== stringProperty != stringProperty2
     stringProperty() = "something"
@@ -145,6 +162,23 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     stringProperty() = "something else"
     booleanProperty() should equal(true)
     stringProperty() = "something"
+    booleanProperty() should equal(false)
+  }
+
+  it should "support null/empty-string comparisons for not equals (!=)" in {
+    booleanProperty <== stringProperty != null
+    stringProperty() = "clearly not null"
+    booleanProperty() should equal(true)
+    stringProperty() = null
+    booleanProperty() should equal(false)
+    stringProperty() = ""
+    booleanProperty() should equal(true)
+    booleanProperty <== stringProperty != ""
+    stringProperty() = "clearly not empty"
+    booleanProperty() should equal(true)
+    stringProperty() = null
+    booleanProperty() should equal(false)
+    stringProperty() = ""
     booleanProperty() should equal(false)
   }
 
@@ -174,6 +208,23 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should equal(true)
   }
 
+  it should "support null/empty-string comparisons for case-insensitive equals (==~)" in {
+    booleanProperty <== stringProperty ==~ null
+    stringProperty() = "clearly not null"
+    booleanProperty() should equal(false)
+    stringProperty() = null
+    booleanProperty() should equal(true)
+    stringProperty() = ""
+    booleanProperty() should equal(false)
+    booleanProperty <== stringProperty ==~ ""
+    stringProperty() = "clearly not empty"
+    booleanProperty() should equal(false)
+    stringProperty() = null
+    booleanProperty() should equal(true)
+    stringProperty() = ""
+    booleanProperty() should equal(true)
+  }
+
   it should "support bindable infix, case-insensitive inequality (!=~) with a property" in {
     booleanProperty <== stringProperty !=~ stringProperty2
     stringProperty() = "something"
@@ -200,10 +251,220 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should equal(false)
   }
 
+  it should "support null/empty-string comparisons for case-insensitive not equals (!=)" in {
+    booleanProperty <== stringProperty !=~ null
+    stringProperty() = "clearly not null"
+    booleanProperty() should equal(true)
+    stringProperty() = null
+    booleanProperty() should equal(false)
+    stringProperty() = ""
+    booleanProperty() should equal(true)
+    booleanProperty <== stringProperty !=~ ""
+    stringProperty() = "clearly not empty"
+    booleanProperty() should equal(true)
+    stringProperty() = null
+    booleanProperty() should equal(false)
+    stringProperty() = ""
+    booleanProperty() should equal(false)
+  }
+
+  it should "support bindable infix less than (<) with a property" in {
+    booleanProperty <== stringProperty < stringProperty2
+    stringProperty() = "beta"
+    stringProperty2() = "cappa"
+    booleanProperty() should equal(true)
+    stringProperty2() = "alpha"
+    booleanProperty() should equal(false)
+  }
+
+  it should "support bindable infix less than (<) with a jfx property" in {
+    booleanProperty <== stringProperty < stringProperty2.delegate
+    stringProperty() = "beta"
+    stringProperty2() = "cappa"
+    booleanProperty() should equal(true)
+    stringProperty2() = "alpha"
+    booleanProperty() should equal(false)
+  }
+
+  it should "support bindable infix less than (<) with a string" in {
+    booleanProperty <== stringProperty < "beta"
+    stringProperty() = "alpha"
+    booleanProperty() should equal(true)
+    stringProperty() = "cappa"
+    booleanProperty() should equal(false)
+  }
+
+  it should "support null/empty-string comparisons for less than (<)" in {
+    booleanProperty <== stringProperty < null
+    stringProperty() = "clearly not null"
+    booleanProperty() should equal(false)
+    stringProperty() = null
+    booleanProperty() should equal(false)
+    stringProperty() = ""
+    booleanProperty() should equal(false)
+    booleanProperty <== stringProperty < ""
+    stringProperty() = "clearly not empty"
+    booleanProperty() should equal(false)
+    stringProperty() = null
+    booleanProperty() should equal(false)
+    stringProperty() = ""
+    booleanProperty() should equal(false)
+  }
+
+  it should "support bindable infix less than or equal to (<=) with a property" in {
+    booleanProperty <== stringProperty <= stringProperty2
+    stringProperty() = "beta"
+    stringProperty2() = "cappa"
+    booleanProperty() should equal(true)
+    stringProperty2() = "beta"
+    booleanProperty() should equal(true)
+    stringProperty2() = "alpha"
+    booleanProperty() should equal(false)
+  }
+
+  it should "support bindable infix less than or equal to (<=) with a jfx property" in {
+    booleanProperty <== stringProperty <= stringProperty2.delegate
+    stringProperty() = "beta"
+    stringProperty2() = "cappa"
+    booleanProperty() should equal(true)
+    stringProperty2() = "beta"
+    booleanProperty() should equal(true)
+    stringProperty2() = "alpha"
+    booleanProperty() should equal(false)
+  }
+
+  it should "support bindable infix less than or equal to (<=) with a string" in {
+    booleanProperty <== stringProperty <= "beta"
+    stringProperty() = "alpha"
+    booleanProperty() should equal(true)
+    stringProperty() = "beta"
+    booleanProperty() should equal(true)
+    stringProperty() = "cappa"
+    booleanProperty() should equal(false)
+  }
+
+  it should "support null/empty-string comparisons for less than or equal to (<=)" in {
+    booleanProperty <== stringProperty <= null
+    stringProperty() = "clearly not null"
+    booleanProperty() should equal(false)
+    stringProperty() = null
+    booleanProperty() should equal(true)
+    stringProperty() = ""
+    booleanProperty() should equal(true)
+    booleanProperty <== stringProperty <= ""
+    stringProperty() = "clearly not empty"
+    booleanProperty() should equal(false)
+    stringProperty() = null
+    booleanProperty() should equal(true)
+    stringProperty() = ""
+    booleanProperty() should equal(true)
+  }
+
+  it should "support bindable infix greater than (>) with a property" in {
+    booleanProperty <== stringProperty > stringProperty2
+    stringProperty() = "beta"
+    stringProperty2() = "cappa"
+    booleanProperty() should equal(false)
+    stringProperty2() = "alpha"
+    booleanProperty() should equal(true)
+  }
+
+  it should "support bindable infix greater than (>) with a jfx property" in {
+    booleanProperty <== stringProperty > stringProperty2.delegate
+    stringProperty() = "beta"
+    stringProperty2() = "cappa"
+    booleanProperty() should equal(false)
+    stringProperty2() = "alpha"
+    booleanProperty() should equal(true)
+  }
+
+  it should "support bindable infix greater than (>) with a string" in {
+    booleanProperty <== stringProperty > "beta"
+    stringProperty() = "alpha"
+    booleanProperty() should equal(false)
+    stringProperty() = "cappa"
+    booleanProperty() should equal(true)
+  }
+
+  it should "support null/empty-string comparisons for greater than (>)" in {
+    booleanProperty <== stringProperty > null
+    stringProperty() = "clearly not null"
+    booleanProperty() should equal(true)
+    stringProperty() = null
+    booleanProperty() should equal(false)
+    stringProperty() = ""
+    booleanProperty() should equal(false)
+    booleanProperty <== stringProperty > ""
+    stringProperty() = "clearly not empty"
+    booleanProperty() should equal(true)
+    stringProperty() = null
+    booleanProperty() should equal(false)
+    stringProperty() = ""
+    booleanProperty() should equal(false)
+  }
+
+  it should "support bindable infix greater than or equal to (>=) with a property" in {
+    booleanProperty <== stringProperty >= stringProperty2
+    stringProperty() = "beta"
+    stringProperty2() = "cappa"
+    booleanProperty() should equal(false)
+    stringProperty2() = "beta"
+    booleanProperty() should equal(true)
+    stringProperty2() = "alpha"
+    booleanProperty() should equal(true)
+  }
+
+  it should "support bindable infix greater than or equal to (>=) with a jfx property" in {
+    booleanProperty <== stringProperty >= stringProperty2.delegate
+    stringProperty() = "beta"
+    stringProperty2() = "cappa"
+    booleanProperty() should equal(false)
+    stringProperty2() = "beta"
+    booleanProperty() should equal(true)
+    stringProperty2() = "alpha"
+    booleanProperty() should equal(true)
+  }
+
+  it should "support bindable infix greater than or equal to (>=) with a string" in {
+    booleanProperty <== stringProperty >= "beta"
+    stringProperty() = "alpha"
+    booleanProperty() should equal(false)
+    stringProperty() = "beta"
+    booleanProperty() should equal(true)
+    stringProperty() = "cappa"
+    booleanProperty() should equal(true)
+  }
+
+  it should "support null/empty-string comparisons for greater than or equal to (>=)" in {
+    booleanProperty <== stringProperty >= null
+    stringProperty() = "clearly not null"
+    booleanProperty() should equal(true)
+    stringProperty() = null
+    booleanProperty() should equal(true)
+    stringProperty() = ""
+    booleanProperty() should equal(true)
+    booleanProperty <== stringProperty >= ""
+    stringProperty() = "clearly not empty"
+    booleanProperty() should equal(true)
+    stringProperty() = null
+    booleanProperty() should equal(true)
+    stringProperty() = ""
+    booleanProperty() should equal(true)
+  }
+
   it should "support concatenation" in {
     stringProperty <== stringProperty2 + " " + stringProperty3
     stringProperty2() = "Hello"
     stringProperty3() = "World"
     stringProperty() should equal("Hello World")
   }
+
+  it should "support concatenation of nulls/primitives" in {
+    stringProperty <== stringProperty2 + null + stringProperty3 + 15
+    stringProperty2() = "Hello"
+    stringProperty3() = "World"
+    stringProperty() should equal("HellonullWorld15")
+  }
+
+  it should "support comparisons to other property types" is (pending)
 }

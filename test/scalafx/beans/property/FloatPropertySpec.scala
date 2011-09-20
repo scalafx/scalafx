@@ -300,4 +300,22 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should equal (true)
     booleanProperty.unbind()
   }
+
+  it should "support invalidate/change triggers on binding expressions" in {
+    var invalidateCount = 0
+    var changeCount = 0
+    val binding = floatProperty * floatProperty2
+    binding onInvalidate {
+      invalidateCount += 1
+    }
+    binding onChange {
+      changeCount += 1
+    }
+    floatProperty() = 1
+    invalidateCount should be (0)
+    changeCount should be (0)
+    floatProperty2() = 5
+    invalidateCount should be (1)
+    changeCount should be (1)
+  }
 }

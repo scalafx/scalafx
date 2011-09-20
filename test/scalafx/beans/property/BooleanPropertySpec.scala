@@ -190,4 +190,22 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty3() = true
     booleanProperty() should equal (true)
   }
+
+  it should "support invalidate/change triggers on binding expressions" in {
+    var invalidateCount = 0
+    var changeCount = 0
+    val binding = booleanProperty2 || booleanProperty3
+    binding onInvalidate {
+      invalidateCount += 1
+    }
+    binding onChange {
+      changeCount += 1
+    }
+    booleanProperty2() = true
+    invalidateCount should be (1)
+    changeCount should be (1)
+    booleanProperty3() = true
+    invalidateCount should be (1)
+    changeCount should be (1)
+  }
 }
