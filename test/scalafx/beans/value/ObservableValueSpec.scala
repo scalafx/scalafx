@@ -45,9 +45,9 @@ class ObservableValueSpec extends FlatSpec with BeforeAndAfterEach {
     property onChange {
       invalidateCalled = true
     }
-    invalidateCalled should be(false)
+    invalidateCalled should be (false)
     property() = 100
-    invalidateCalled should be(true)
+    invalidateCalled should be (true)
   }
 
   it should "support anonymous change listeners with parameters" in {
@@ -55,11 +55,11 @@ class ObservableValueSpec extends FlatSpec with BeforeAndAfterEach {
     property onChange {
       (obs, oldV, newV) =>
         invalidateCalled = true
-        obs should be(property)
+        obs should equal (property)
     }
-    invalidateCalled should be(false)
+    invalidateCalled should be (false)
     property() = 100
-    invalidateCalled should be(true)
+    invalidateCalled should be (true)
   }
 
   it should "support adding explicit listeners as a clojure" in {
@@ -67,26 +67,26 @@ class ObservableValueSpec extends FlatSpec with BeforeAndAfterEach {
     property addListener {
       (obs: JFXObservableValue[_ <: Number], oldV:Number, newV:Number) =>
         invalidateCalled = true
-        obs should be(property.delegate)
-        oldV should be(0)
-        newV should be(100)
+        obs should equal (property.delegate)
+        oldV should equal (0)
+        newV should equal (100)
     }
-    invalidateCalled should be(false)
+    invalidateCalled should be (false)
     property() = 100
-    invalidateCalled should be(true)
+    invalidateCalled should be (true)
   }
 
   it should "support removing explict listeners" in {
     var invalidateCalled = false
     val listener = (obs: JFXObservableValue[_ <: Number], oldV:Number, newV:Number) => invalidateCalled = true
     property addListener listener
-    invalidateCalled should be(false)
+    invalidateCalled should be (false)
     property() = 100
-    invalidateCalled should be(true)
+    invalidateCalled should be (true)
     property removeListener listener
     invalidateCalled = false
     property() = 200
     // todo: report bug in removing listeners (appears to be in the jfx source)
-    //invalidateCalled should be(false)
+    //invalidateCalled should be (false)
   }
 }

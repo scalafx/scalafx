@@ -169,122 +169,122 @@ class IntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty <== integerProperty == integerProperty2
     integerProperty() = 532
     integerProperty2() = 321
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     integerProperty2() = 532
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix equality with a constant" in {
     booleanProperty <== integerProperty == 532
     integerProperty() = 321
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     integerProperty() = 532
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix inequality with a property" in {
     booleanProperty <== integerProperty != integerProperty2
     integerProperty() = 231
     integerProperty2() = 981
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     integerProperty2() = 231
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix inequality with a constant" in {
     booleanProperty <== integerProperty != 231
     integerProperty() = 981
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     integerProperty() = 231
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support variable precision equality via +- operator" in {
     booleanProperty <== integerProperty == 532+-1.1
     integerProperty() = 534
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     integerProperty() = 533
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     integerProperty() = 531
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support variable precision inequality via +- operator" in {
     booleanProperty <== integerProperty != 532+-1.1
     integerProperty() = 534
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     integerProperty() = 533
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     integerProperty() = 531
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than with a property" in {
     booleanProperty <== integerProperty < integerProperty2
     integerProperty() = 51
     integerProperty2() = 234
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     integerProperty2() = 12
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than with a constant" in {
     booleanProperty <== integerProperty < 51
     integerProperty() = 234
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     integerProperty() = 12
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix less than or equal to with a property" in {
     booleanProperty <== integerProperty <= integerProperty2
     integerProperty() = 234
     integerProperty2() = 512
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     integerProperty2() = 93
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
     booleanProperty <== integerProperty <= 234
     integerProperty() = 512
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     integerProperty() = 93
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix greater than with a property" in {
     booleanProperty <== integerProperty > integerProperty2
     integerProperty() = 5000
     integerProperty2() = 1000
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     integerProperty2() = 6000
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix greater than with a constant" in {
     booleanProperty <== integerProperty > 5000
     integerProperty() = 1000
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     integerProperty() = 6000
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix greater than or equal to with a property" in {
     booleanProperty <== integerProperty >= integerProperty2
     integerProperty() = 18349
     integerProperty2() = 4985
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     integerProperty2() = 234564
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
     booleanProperty <== integerProperty >= 18349
     integerProperty() = 4985
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     integerProperty() = 234564
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support invalidate/change triggers on binding expressions" in {
@@ -298,10 +298,10 @@ class IntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
       changeCount += 1
     }
     integerProperty() = 1
-    invalidateCount should be (0)
-    changeCount should be (0)
+    invalidateCount should equal (0)
+    changeCount should equal (0)
     integerProperty2() = 5
-    invalidateCount should be (1)
-    changeCount should be (1)
+    invalidateCount should equal (1)
+    changeCount should equal (1)
   }
 }

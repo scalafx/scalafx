@@ -169,122 +169,122 @@ class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty <== longProperty == longProperty2
     longProperty() = 532
     longProperty2() = 321
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     longProperty2() = 532
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix equality with a constant" in {
     booleanProperty <== longProperty == 532
     longProperty() = 321
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     longProperty() = 532
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix inequality with a property" in {
     booleanProperty <== longProperty != longProperty2
     longProperty() = 231
     longProperty2() = 981
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     longProperty2() = 231
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix inequality with a constant" in {
     booleanProperty <== longProperty != 231
     longProperty() = 981
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     longProperty() = 231
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support variable precision equality via +- operator" in {
     booleanProperty <== longProperty == 532+-1.1
     longProperty() = 534
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     longProperty() = 533
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     longProperty() = 531
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support variable precision inequality via +- operator" in {
     booleanProperty <== longProperty != 532+-1.1
     longProperty() = 534
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     longProperty() = 533
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     longProperty() = 531
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than with a property" in {
     booleanProperty <== longProperty < longProperty2
     longProperty() = 51
     longProperty2() = 234
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     longProperty2() = 12
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than with a constant" in {
     booleanProperty <== longProperty < 51
     longProperty() = 234
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     longProperty() = 12
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix less than or equal to with a property" in {
     booleanProperty <== longProperty <= longProperty2
     longProperty() = 234
     longProperty2() = 512
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     longProperty2() = 93
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
     booleanProperty <== longProperty <= 234
     longProperty() = 512
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     longProperty() = 93
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix greater than with a property" in {
     booleanProperty <== longProperty > longProperty2
     longProperty() = 5000
     longProperty2() = 1000
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     longProperty2() = 6000
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix greater than with a constant" in {
     booleanProperty <== longProperty > 5000
     longProperty() = 1000
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     longProperty() = 6000
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support bindable infix greater than or equal to with a property" in {
     booleanProperty <== longProperty >= longProperty2
     longProperty() = 18349
     longProperty2() = 4985
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     longProperty2() = 234564
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
     booleanProperty <== longProperty >= 18349
     longProperty() = 4985
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     longProperty() = 234564
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
   }
 
   it should "support invalidate/change triggers on binding expressions" in {
@@ -298,10 +298,10 @@ class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
       changeCount += 1
     }
     longProperty() = 1
-    invalidateCount should be (0)
-    changeCount should be (0)
+    invalidateCount should equal (0)
+    changeCount should equal (0)
     longProperty2() = 5
-    invalidateCount should be (1)
-    changeCount should be (1)
+    invalidateCount should equal (1)
+    changeCount should equal (1)
   }
 }

@@ -169,18 +169,18 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty <== floatProperty == floatProperty2
     floatProperty() = 532
     floatProperty2() = 321
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     floatProperty2() = 532
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix equality with a constant" in {
     booleanProperty <== floatProperty == 532
     floatProperty() = 321
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     floatProperty() = 532
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty.unbind()
   }
 
@@ -188,40 +188,40 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty <== floatProperty != floatProperty2
     floatProperty() = 231
     floatProperty2() = 981
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     floatProperty2() = 231
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a constant" in {
     booleanProperty <== floatProperty != 231
     floatProperty() = 981
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     floatProperty() = 231
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty.unbind()
   }
 
   it should "support variable precision equality via +- operator" in {
     booleanProperty <== floatProperty == 532+-.1
     floatProperty() = 533
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     floatProperty() = 532.09f
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     floatProperty() = 531.91f
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty.unbind()
   }
 
   it should "support variable precision inequality via +- operator" in {
     booleanProperty <== floatProperty != 532+-.1
     floatProperty() = 533
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     floatProperty() = 532.09f
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     floatProperty() = 531.91f
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty.unbind()
   }
 
@@ -229,18 +229,18 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty <== floatProperty < floatProperty2
     floatProperty() = 51
     floatProperty2() = 234
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     floatProperty2() = 12
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix less than with a constant" in {
     booleanProperty <== floatProperty < 51
     floatProperty() = 234
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     floatProperty() = 12
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty.unbind()
   }
 
@@ -248,18 +248,18 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty <== floatProperty <= floatProperty2
     floatProperty() = 234
     floatProperty2() = 512
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     floatProperty2() = 93
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
     booleanProperty <== floatProperty <= 234
     floatProperty() = 512
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     floatProperty() = 93
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty.unbind()
   }
 
@@ -267,18 +267,18 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty <== floatProperty > floatProperty2
     floatProperty() = 5000
     floatProperty2() = 1000
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     floatProperty2() = 6000
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than with a constant" in {
     booleanProperty <== floatProperty > 5000
     floatProperty() = 1000
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     floatProperty() = 6000
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty.unbind()
   }
 
@@ -286,18 +286,18 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty <== floatProperty >= floatProperty2
     floatProperty() = 18349
     floatProperty2() = 4985
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     floatProperty2() = 234564
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
     booleanProperty <== floatProperty >= 18349
     floatProperty() = 4985
-    booleanProperty() should equal (false)
+    booleanProperty() should be (false)
     floatProperty() = 234564
-    booleanProperty() should equal (true)
+    booleanProperty() should be (true)
     booleanProperty.unbind()
   }
 
@@ -312,10 +312,10 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
       changeCount += 1
     }
     floatProperty() = 1
-    invalidateCount should be (0)
-    changeCount should be (0)
+    invalidateCount should equal (0)
+    changeCount should equal (0)
     floatProperty2() = 5
-    invalidateCount should be (1)
-    changeCount should be (1)
+    invalidateCount should equal (1)
+    changeCount should equal (1)
   }
 }

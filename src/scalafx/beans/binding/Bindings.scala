@@ -29,11 +29,12 @@ package scalafx.beans.binding
 
 import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
 import javafx.beans.{InvalidationListener, Observable => JFXObservable}
-import javafx.beans.binding.When
 import javafx.beans.value.{ObservableStringValue, ObservableObjectValue, ObservableNumberValue, ChangeListener, ObservableValue => JFXObservableValue, ObservableBooleanValue}
 import scalafx.beans.value.ObservableValue
+import javafx.beans.binding.{DoubleBinding, LongBinding, FloatBinding, IntegerBinding, Bindings => JFXBindings, When}
 
 object Bindings {
+  // todo - shouldn't this work for other primitive types?
   implicit def double2VariablePrecisionNumber(d: Double) = VariablePrecisionNumber(d)
 
   implicit def closure2InvalidationListener(il: JFXObservable => Unit) = new InvalidationListener {
@@ -47,6 +48,26 @@ object Bindings {
       cl(observable, oldValue, newValue)
     }
   }
+
+  implicit def integer2ObservableNumberValue(i: Int) = new IntegerBinding {
+    def computeValue() = i
+  }
+
+  implicit def long2ObservableNumberValue(i: Long) = new LongBinding {
+    def computeValue() = i
+  }
+
+  implicit def float2ObservableNumberValue(i: Float) = new FloatBinding {
+    def computeValue() = i
+  }
+
+  implicit def double2ObservableNumberValue(i: Double) = new DoubleBinding {
+    def computeValue() = i
+  }
+
+  def min(v1:ObservableNumberValue, values: ObservableNumberValue*) = (v1 /: values)(JFXBindings.min)
+
+  def max(v1:ObservableNumberValue, values: ObservableNumberValue*) = (v1 /: values)(JFXBindings.max)
 
   def when(condition: => ObservableBooleanValue) = new ConditionBuilder(new When(condition))
 

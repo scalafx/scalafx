@@ -69,7 +69,15 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
     objectProperty3 = new ObjectProperty[Object](null, "Object Property 3")
   }
 
-  "Bindings" should "support min, max" is (pending)
+  "Bindings" should "support min" in {
+    doubleProperty1 <== min(doubleProperty2, doubleProperty3, 25, 26l, 27f, 28d)
+    doubleProperty1() should equal (0)
+    doubleProperty2() = 50
+    doubleProperty3() = 43
+    doubleProperty1() should equal (25)
+  }
+
+  it should "support max" is (pending)
 
   it should "support when .. then .. otherwise with all numeric property types" in {
     integerProperty1() = 5
@@ -77,56 +85,56 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
     floatProperty1() = 15
     doubleProperty1() = 30
     doubleProperty2 <== when(booleanProperty1) then 31 otherwise integerProperty1
-    doubleProperty2() should be(5)
+    doubleProperty2() should equal (5)
     doubleProperty2 <== when(booleanProperty1) then 31 otherwise longProperty1
-    doubleProperty2() should be(10)
+    doubleProperty2() should equal (10)
     doubleProperty2 <== when(booleanProperty1) then 31 otherwise floatProperty1
-    doubleProperty2() should be(15)
+    doubleProperty2() should equal (15)
     doubleProperty2 <== when(booleanProperty1) then 31 otherwise doubleProperty1
-    doubleProperty2() should be(30)
+    doubleProperty2() should equal (30)
   }
 
   it should "support when .. then .. otherwise with all number/property combinations" in {
     doubleProperty2() = 15
     doubleProperty3() = 30
     doubleProperty1 <== when(booleanProperty1) then doubleProperty2 otherwise doubleProperty3
-    doubleProperty1() should be(30)
+    doubleProperty1() should equal (30)
     doubleProperty1 <== when(booleanProperty1) then doubleProperty2 otherwise 15d
-    doubleProperty1() should be(15)
+    doubleProperty1() should equal (15)
     doubleProperty1 <== when(booleanProperty1) then 25d otherwise doubleProperty3
-    doubleProperty1() should be(30)
+    doubleProperty1() should equal (30)
   }
 
   it should "support when .. then .. otherwise with all different number primitives" in {
     doubleProperty1 <== when(booleanProperty1) then 25d otherwise 15d
-    doubleProperty1() should be(15)
+    doubleProperty1() should equal (15)
     doubleProperty1 <== when(booleanProperty1) then 25 otherwise 16
-    doubleProperty1() should be(16)
+    doubleProperty1() should equal (16)
     doubleProperty1 <== when(booleanProperty1) then 25l otherwise 17l
-    doubleProperty1() should be(17)
+    doubleProperty1() should equal (17)
     doubleProperty1 <== when(booleanProperty1) then 25f otherwise 18f
-    doubleProperty1() should be(18)
+    doubleProperty1() should equal (18)
   }
 
   it should "support when .. then .. otherwise with boolean types" in {
     booleanProperty3() = true
     booleanProperty1 <== when(booleanProperty2) then booleanProperty2 otherwise booleanProperty3
-    booleanProperty1() should be(true)
+    booleanProperty1() should be (true)
     booleanProperty1 <== when(booleanProperty2) then booleanProperty2 otherwise false
-    booleanProperty1() should be(false)
+    booleanProperty1() should be (false)
     booleanProperty1 <== when(booleanProperty2) then true otherwise booleanProperty3
-    booleanProperty1() should be(true)
+    booleanProperty1() should be (true)
   }
 
   it should "support when .. then .. otherwise with string types" in {
     stringProperty2() = "Hello"
     stringProperty3() = "World"
     stringProperty1 <== when (booleanProperty1) then stringProperty3 otherwise stringProperty2
-    stringProperty1() should be("Hello")
+    stringProperty1() should equal ("Hello")
     stringProperty1 <== when (booleanProperty1) then "string before" otherwise stringProperty3
-    stringProperty1() should be("World")
+    stringProperty1() should equal ("World")
     stringProperty1 <== when (booleanProperty1) then stringProperty2 otherwise "string after"
-    stringProperty1() should be("string after")
+    stringProperty1() should equal ("string after")
   }
 
   it should "support when .. then .. otherwise with object types" in {
@@ -136,14 +144,18 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
     objectProperty2() = obj2
     objectProperty3() = obj3
     objectProperty1 <== when(booleanProperty1) then objectProperty2 otherwise objectProperty3
-    objectProperty1() should be(obj3)
+    objectProperty1() should equal (obj3)
     objectProperty1 <== when(booleanProperty1) then obj1 otherwise objectProperty2
-    objectProperty1() should be(obj2)
+    objectProperty1() should equal (obj2)
     objectProperty1 <== when(booleanProperty1) then objectProperty2 otherwise obj1
-    objectProperty1() should be(obj1)
+    objectProperty1() should equal (obj1)
   }
 
   it should "support that select* funk..." is (pending)
+
+  it should "support string conversions from everything..." is (pending)
+
+  it should "support null checks from everything..." is (pending)
 
   it should "support raw javafx mixing (make sure all the implicits are in place)" is (pending)
 }
