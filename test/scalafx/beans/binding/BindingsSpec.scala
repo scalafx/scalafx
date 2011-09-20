@@ -161,7 +161,7 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
 
   it should "support string conversions from everything..." is (pending)
 
-  it should "support null checks from everything..." is (pending)
+  it should "support implicit upconversions to expressions..." is (pending)
 
   it should "support raw javafx mixing (make sure all the implicits are in place)" is (pending)
 }
