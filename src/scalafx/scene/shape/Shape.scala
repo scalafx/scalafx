@@ -97,7 +97,7 @@ abstract class Shape extends Node {
   // todo - replace this with a little SFX collection conversion
   private[this] lazy val _strokeDashArrayList = delegate.getStrokeDashArray
   def strokeDashArray = _strokeDashArrayList
-  def strokeDashArray_=(c: List[java.lang.Double]) {
+  def strokeDashArray_=(c: Iterable[java.lang.Double]) {
     strokeDashArray.setAll(c)
   }
 }

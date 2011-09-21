@@ -41,7 +41,7 @@ object JavaFXChangeListener extends Application {
     height = 450
     scene = new Scene {
       fill = Color.LIGHTGREEN
-      content = List(new Rectangle {
+      content = Seq(new Rectangle {
         x = 25
         y = 40
         width = 100

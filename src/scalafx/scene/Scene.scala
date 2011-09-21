@@ -44,7 +44,7 @@ class Scene(val root: Parent = new javafx.scene.Group()) extends SFXDelegate {
     case _ => throw new IllegalStateException("Cannot access children of root: " + root + "\nUse a class that extends Group or Pane, or override the getChildren method.")
   }
   def content = getChildren
-  def content_=(c: List[Node]) {
+  def content_=(c: Iterable[Node]) {
     getChildren.setAll(c.map(_.delegate))
   }
 

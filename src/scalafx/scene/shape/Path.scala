@@ -44,7 +44,7 @@ class Path extends Shape {
   private[this] lazy val _elementsList = delegate.getElements
   def elements = _elementsList
   // todo - implement an SFX version of PathElements
-  def elements_=(c: List[PathElement]) {
+  def elements_=(c: Iterable[PathElement]) {
     elements.setAll(c)
   }
 }
