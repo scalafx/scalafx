@@ -32,48 +32,47 @@ import javafx.scene.shape.ArcType
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 
 class Arc extends Shape {
-  override val node = new javafx.scene.shape.Arc()
-  
-  private[this] lazy val _centerXProperty = new DoubleProperty(node.centerXProperty())
+  override val delegate = new javafx.scene.shape.Arc()
+
+  private[this] lazy val _centerXProperty = new DoubleProperty(delegate.centerXProperty())
   def centerX = _centerXProperty
-  def centerX_=(v:Double) {
+  def centerX_=(v: Double) {
     centerX() = v
   }
 
-  private[this] lazy val _centerYProperty = new DoubleProperty(node.centerYProperty())
+  private[this] lazy val _centerYProperty = new DoubleProperty(delegate.centerYProperty())
   def centerY = _centerYProperty
-  def centerY_=(v:Double) {
+  def centerY_=(v: Double) {
     centerY() = v
   }
- 
-  private[this] lazy val _lengthProperty = new DoubleProperty(node.lengthProperty())
+
+  private[this] lazy val _lengthProperty = new DoubleProperty(delegate.lengthProperty())
   def length = _lengthProperty
-  def length_=(v:Double) {
+  def length_=(v: Double) {
     length() = v
   }
 
-  private[this] lazy val _radiusXProperty = new DoubleProperty(node.radiusXProperty())
+  private[this] lazy val _radiusXProperty = new DoubleProperty(delegate.radiusXProperty())
   def radiusX = _radiusXProperty
-  def radiusX_=(v:Double) {
+  def radiusX_=(v: Double) {
     radiusX() = v
   }
 
-  private[this] lazy val _radiusYProperty = new DoubleProperty(node.radiusYProperty())
+  private[this] lazy val _radiusYProperty = new DoubleProperty(delegate.radiusYProperty())
   def radiusY = _radiusYProperty
-  def radiusY_=(v:Double) {
+  def radiusY_=(v: Double) {
     radiusY() = v
   }
 
-  private[this] lazy val _startAngleProperty = new DoubleProperty(node.startAngleProperty())
+  private[this] lazy val _startAngleProperty = new DoubleProperty(delegate.startAngleProperty())
   def startAngle = _startAngleProperty
-  def startAngle_=(v:Double) {
+  def startAngle_=(v: Double) {
     startAngle() = v
   }
 
-  private[this] lazy val _typeProperty = new ObjectProperty[ArcType](node.typeProperty())
+  private[this] lazy val _typeProperty = new ObjectProperty[ArcType](delegate.typeProperty())
   def `type` = _typeProperty
-  def `type_=`(v:ArcType) {
+  def `type_=`(v: ArcType) {
     `type`() = v
   }
-  
 }

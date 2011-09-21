@@ -32,9 +32,9 @@ trait SFXDelegate {
 
   override def toString = "[SFX]" + delegate.toString
 
-  override def equals(ref: Any):Boolean = {
+  override def equals(ref: Any): Boolean = {
     ref match {
-      case sfxd:SFXDelegate => delegate.equals(sfxd.delegate)
+      case sfxd: SFXDelegate => delegate.equals(sfxd.delegate)
       case _ => delegate.equals(ref)
     }
   }

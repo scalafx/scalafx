@@ -32,13 +32,11 @@ import javafx.scene.shape.FillRule
 import scalafx.beans.property.ObjectProperty
 
 class Path extends Shape {
-  override val node = new javafx.scene.shape.Path()
-    
-  
-  private[this] lazy val _fillRuleProperty = new ObjectProperty[FillRule](node.fillRuleProperty())
+  override val delegate = new javafx.scene.shape.Path()
+
+  private[this] lazy val _fillRuleProperty = new ObjectProperty[FillRule](delegate.fillRuleProperty())
   def fillRule = _fillRuleProperty
-  def fillRule_=(v:FillRule) {
+  def fillRule_=(v: FillRule) {
     fillRule() = v
   }
-
 }

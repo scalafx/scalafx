@@ -30,25 +30,25 @@ package scalafx.scene.shape
 import scalafx.beans.property.DoubleProperty
 
 class Circle extends Shape {
-  override val node = new javafx.scene.shape.Circle()
-  
-  private[this] lazy val _centerXProperty = new DoubleProperty(node.centerXProperty())
+  override val delegate = new javafx.scene.shape.Circle()
+
+  private[this] lazy val _centerXProperty = new DoubleProperty(delegate.centerXProperty())
 
   def centerX = _centerXProperty
-  def centerX_=(v:Double) {
+  def centerX_=(v: Double) {
     centerX() = v
   }
 
-  private[this] lazy val _centerYProperty = new DoubleProperty(node.centerYProperty())
+  private[this] lazy val _centerYProperty = new DoubleProperty(delegate.centerYProperty())
   def centerY = _centerYProperty
-  def centerY_=(v:Double) {
+  def centerY_=(v: Double) {
     centerY() = v
   }
 
-  private[this] lazy val _radiusProperty = new DoubleProperty(node.radiusProperty())
+  private[this] lazy val _radiusProperty = new DoubleProperty(delegate.radiusProperty())
   def radius = _radiusProperty
-  def radius_=(v:Double) {
+  def radius_=(v: Double) {
     radius() = v
-  }  
-  
+  }
+
 }

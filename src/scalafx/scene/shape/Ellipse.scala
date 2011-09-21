@@ -30,29 +30,29 @@ package scalafx.scene.shape
 import scalafx.beans.property.DoubleProperty
 
 class Ellipse extends Shape {
-  override val node = new javafx.scene.shape.Ellipse()
+  override val delegate = new javafx.scene.shape.Ellipse()
 
-  private[this] lazy val _centerXProperty = new DoubleProperty(node.centerXProperty())
+  private[this] lazy val _centerXProperty = new DoubleProperty(delegate.centerXProperty())
   def centerX = _centerXProperty
-  def centerX_=(v:Double) {
+  def centerX_=(v: Double) {
     centerX() = v
   }
 
-  private[this] lazy val _centerYProperty = new DoubleProperty(node.centerYProperty())
+  private[this] lazy val _centerYProperty = new DoubleProperty(delegate.centerYProperty())
   def centerY = _centerYProperty
-  def centerY_=(v:Double) {
+  def centerY_=(v: Double) {
     centerY() = v
   }
 
-  private[this] lazy val _radiusXProperty = new DoubleProperty(node.radiusXProperty())
+  private[this] lazy val _radiusXProperty = new DoubleProperty(delegate.radiusXProperty())
   def radiusX = _radiusXProperty
-  def radiusX_=(v:Double) {
+  def radiusX_=(v: Double) {
     radiusX() = v
   }
 
-  private[this] lazy val _radiusYProperty = new DoubleProperty(node.radiusYProperty())
+  private[this] lazy val _radiusYProperty = new DoubleProperty(delegate.radiusYProperty())
   def radiusY = _radiusYProperty
-  def radiusY_=(v:Double) {
+  def radiusY_=(v: Double) {
     radiusY() = v
-  }  
+  }
 }

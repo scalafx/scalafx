@@ -30,42 +30,41 @@ package scalafx.scene.shape
 import scalafx.beans.property.DoubleProperty
 
 class Rectangle extends Shape {
-  val rectangle = new javafx.scene.shape.Rectangle()
-  override val node = rectangle
+  override val delegate = new javafx.scene.shape.Rectangle()
 
-  private[this] lazy val _xProperty = new DoubleProperty(rectangle.xProperty())
+  private[this] lazy val _xProperty = new DoubleProperty(delegate.xProperty())
   def x = _xProperty
-  def x_=(v:Double) {
+  def x_=(v: Double) {
     x() = v
   }
 
-  private[this] lazy val _yProperty = new DoubleProperty(rectangle.yProperty())
+  private[this] lazy val _yProperty = new DoubleProperty(delegate.yProperty())
   def y = _yProperty
-  def y_=(v:Double) {
+  def y_=(v: Double) {
     y() = v
   }
 
-  private[this] lazy val _widthProperty = new DoubleProperty(rectangle.widthProperty())
+  private[this] lazy val _widthProperty = new DoubleProperty(delegate.widthProperty())
   def width = _widthProperty
-  def width_=(v:Double) {
+  def width_=(v: Double) {
     width() = v
   }
 
-  private[this] lazy val _heightProperty = new DoubleProperty(rectangle.heightProperty())
+  private[this] lazy val _heightProperty = new DoubleProperty(delegate.heightProperty())
   def height = _heightProperty
-  def height_=(v:Double) {
+  def height_=(v: Double) {
     height() = v
   }
 
-  private[this] lazy val _arcWidthProperty = new DoubleProperty(rectangle.arcWidthProperty())
+  private[this] lazy val _arcWidthProperty = new DoubleProperty(delegate.arcWidthProperty())
   def arcWidth = _arcWidthProperty
-  def arcWidth_=(v:Double) {
+  def arcWidth_=(v: Double) {
     arcWidth() = v
   }
 
-  private[this] lazy val _arcHeightProperty = new DoubleProperty(rectangle.arcHeightProperty())
+  private[this] lazy val _arcHeightProperty = new DoubleProperty(delegate.arcHeightProperty())
   def arcHeight = _arcHeightProperty
-  def arcHeight_=(v:Double) {
+  def arcHeight_=(v: Double) {
     arcHeight() = v
   }
 }

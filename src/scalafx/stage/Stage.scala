@@ -51,7 +51,7 @@ class Stage() {
     wrappedStage.setHeight(h)
   }
 
-  private var _scene:Scene = null
+  private var _scene: Scene = null
 
   def scene: Scene = _scene
 
@@ -60,7 +60,7 @@ class Stage() {
     wrappedStage.setScene(s.scene)
   }
 
-  private var _visible:Boolean = false
+  private var _visible: Boolean = false
 
   def visible: Boolean = _visible
 

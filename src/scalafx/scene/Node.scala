@@ -37,67 +37,68 @@ import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.util.SFXDelegate
 
-abstract class Node {
-  val node: javafx.scene.Node
+abstract class Node extends SFXDelegate {
+  override val delegate: javafx.scene.Node
 
-  private[this] lazy val _blendModeProperty = new ObjectProperty[BlendMode](node.blendModeProperty())
+  private[this] lazy val _blendModeProperty = new ObjectProperty[BlendMode](delegate.blendModeProperty())
   def blendMode = _blendModeProperty
   def blendMode_=(v: BlendMode) {
     blendMode() = v
-  }    
-  
-  private[this] lazy val _boundsInLocalProperty = new ReadOnlyObjectProperty[Bounds](node.boundsInLocalProperty())
+  }
+
+  private[this] lazy val _boundsInLocalProperty = new ReadOnlyObjectProperty[Bounds](delegate.boundsInLocalProperty())
   def boundsInLocal = _boundsInLocalProperty
 
-  private[this] lazy val _boundsInParentProperty = new ReadOnlyObjectProperty[Bounds](node.boundsInParentProperty())
+  private[this] lazy val _boundsInParentProperty = new ReadOnlyObjectProperty[Bounds](delegate.boundsInParentProperty())
   def boundsInParent = _boundsInParentProperty
-   
-  private[this] lazy val _cacheHintProperty = new ObjectProperty[CacheHint](node.cacheHintProperty())
+
+  private[this] lazy val _cacheHintProperty = new ObjectProperty[CacheHint](delegate.cacheHintProperty())
   def cacheHint = _cacheHintProperty
   def cacheHint_=(v: CacheHint) {
     cacheHint() = v
   }
 
-  private[this] lazy val _cacheProperty = new BooleanProperty(node.cacheProperty())
+  private[this] lazy val _cacheProperty = new BooleanProperty(delegate.cacheProperty())
   def cache = _cacheProperty
   def cache_=(v: Boolean) {
     cache() = v
   }
- 
-  private[this] lazy val _clipProperty = new ObjectProperty[javafx.scene.Node](node.clipProperty())
+
+  private[this] lazy val _clipProperty = new ObjectProperty[javafx.scene.Node](delegate.clipProperty())
   def clip = _clipProperty
   def clip_=(v: javafx.scene.Node) {
     clip() = v
   }
-  
-  private[this] lazy val _cursorProperty = new ObjectProperty[Cursor](node.cursorProperty())
+
+  private[this] lazy val _cursorProperty = new ObjectProperty[Cursor](delegate.cursorProperty())
   def cursor = _cursorProperty
   def cursor_=(v: Cursor) {
     cursor() = v
-  }  
-  
-  private[this] lazy val _depthTestProperty = new ObjectProperty[DepthTest](node.depthTestProperty())
+  }
+
+  private[this] lazy val _depthTestProperty = new ObjectProperty[DepthTest](delegate.depthTestProperty())
   def depthTest = _depthTestProperty
   def depthTest_=(v: DepthTest) {
     depthTest() = v
-  }  
- 
-  private[this] lazy val _disabledProperty = new ReadOnlyBooleanProperty(node.disabledProperty())
+  }
+
+  private[this] lazy val _disabledProperty = new ReadOnlyBooleanProperty(delegate.disabledProperty())
   def disabled = _disabledProperty
- 
-  private[this] lazy val _disableProperty = new BooleanProperty(node.disableProperty())
+
+  private[this] lazy val _disableProperty = new BooleanProperty(delegate.disableProperty())
   def disable = _disableProperty
   def disable_=(v: Boolean) {
     disable() = v
   }
-  
-  private[this] lazy val _effectProperty = new ObjectProperty[Effect](node.effectProperty())
+
+  private[this] lazy val _effectProperty = new ObjectProperty[Effect](delegate.effectProperty())
   def effect = _effectProperty
   def effect_=(v: Effect) {
     effect() = v
-  } 
-  
-  private[this] lazy val _hoverProperty = new ReadOnlyBooleanProperty(node.hoverProperty())
+  }
+
+  private[this] lazy val _hoverProperty = new ReadOnlyBooleanProperty(delegate.hoverProperty())
   def hover = _hoverProperty
 }
