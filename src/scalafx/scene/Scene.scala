@@ -53,14 +53,16 @@ class Scene(val rootVal: Parent = new scalafx.scene.Group()) extends SFXDelegate
   def root_=(v: javafx.scene.Parent) {
     root() = v
   }   
-  
 
   // todo - replace this with a little SFX collection conversion
-  def getChildren = root match {
+  def getChildren = root.value match {
     case group: scalafx.scene.Group => group.delegate.getChildren
     case pane: scalafx.scene.layout.Pane => pane.delegate.getChildren
+    case jfxgroup: javafx.scene.Group => jfxgroup.getChildren
+    case jfxpane: javafx.scene.layout.Pane => jfxpane.getChildren
     case _ => throw new IllegalStateException("Cannot access children of root: " + root + "\nUse a class that extends Group or Pane, or override the getChildren method.")
   }
+  
   def content = getChildren
   def content_=(c: Iterable[Node]) {
     getChildren.setAll(c.map(_.delegate))
