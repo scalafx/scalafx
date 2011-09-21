@@ -62,6 +62,7 @@ object HelloJavaFX extends Application {
         radiusX = 25
         radiusY = 50
         startAngle = 135
+        length = 45
         fill = Color.BLACK
         stroke = Color.YELLOW
         strokeWidth = 3
