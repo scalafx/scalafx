@@ -40,55 +40,55 @@ import scalafx.beans.property.ObjectProperty
 abstract class Shape extends Node {
   override val node: javafx.scene.shape.Shape
   
-  lazy val _fillProperty = new ObjectProperty[Paint](node.fillProperty())
+  private[this] lazy val _fillProperty = new ObjectProperty[Paint](node.fillProperty())
   def fill = _fillProperty
   def fill_=(v: Paint) {
     fill() = v
   }
   
-  lazy val _smoothProperty = new BooleanProperty(node.smoothProperty())
+  private[this] lazy val _smoothProperty = new BooleanProperty(node.smoothProperty())
   def smooth = _smoothProperty
   def smooth_=(v: Boolean) {
     smooth() = v
   }  
 
-  lazy val _strokeDashOffsetProperty = new DoubleProperty(node.strokeDashOffsetProperty())
+  private[this] lazy val _strokeDashOffsetProperty = new DoubleProperty(node.strokeDashOffsetProperty())
   def strokeDashOffset = _strokeDashOffsetProperty
   def strokeDashOffset_=(v: Double) {
     strokeDashOffset() = v
   }  
   
-  lazy val _strokeLineCapProperty = new ObjectProperty[StrokeLineCap](node.strokeLineCapProperty())
+  private[this] lazy val _strokeLineCapProperty = new ObjectProperty[StrokeLineCap](node.strokeLineCapProperty())
   def strokeLineCap = _strokeLineCapProperty
   def strokeLineCap_=(v: StrokeLineCap) {
     strokeLineCap() = v
   }  
   
-  lazy val _strokeLineJoinProperty = new ObjectProperty[StrokeLineJoin](node.strokeLineJoinProperty())
+  private[this] lazy val _strokeLineJoinProperty = new ObjectProperty[StrokeLineJoin](node.strokeLineJoinProperty())
   def strokeLineJoin = _strokeLineJoinProperty
   def strokeLineJoin_=(v: StrokeLineJoin) {
     strokeLineJoin() = v
   }  
 
-  lazy val _strokeMiterLimitProperty = new DoubleProperty(node.strokeMiterLimitProperty())
+  private[this] lazy val _strokeMiterLimitProperty = new DoubleProperty(node.strokeMiterLimitProperty())
   def strokeMiterLimit = _strokeMiterLimitProperty
   def strokeMiterLimit_=(v: Double) {
     strokeMiterLimit() = v
   }
   
-  lazy val _strokeProperty = new ObjectProperty[Paint](node.strokeProperty())
+  private[this] lazy val _strokeProperty = new ObjectProperty[Paint](node.strokeProperty())
   def stroke = _strokeProperty
   def stroke_=(v: Paint) {
     stroke() = v
   }  
   
-  lazy val _strokeTypeProperty = new ObjectProperty[StrokeType](node.strokeTypeProperty())
+  private[this] lazy val _strokeTypeProperty = new ObjectProperty[StrokeType](node.strokeTypeProperty())
   def strokeType = _strokeTypeProperty
   def strokeType_=(v: StrokeType) {
     strokeType() = v
   }  
 
-  lazy val _strokeWidthProperty = new DoubleProperty(node.strokeWidthProperty())
+  private[this] lazy val _strokeWidthProperty = new DoubleProperty(node.strokeWidthProperty())
   def strokeWidth = _strokeWidthProperty
   def strokeWidth_=(v: Double) {
     strokeWidth() = v
