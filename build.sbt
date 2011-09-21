@@ -6,7 +6,7 @@ version := "1.0"
 organization := "org.scalafx"
 
 // set the Scala version used for the project
-scalaVersion := "2.9.0"
+scalaVersion := "2.9.0-1"
 
 // set the main Scala source directory to be <base>/src
 //scalaSource in Compile <<= baseDirectory(_ / "src")
@@ -130,7 +130,7 @@ parallelExecution in Test := false
 javaHome := Some(file("/usr/lib/jvm/sun-jdk-1.6"))
 
 // Use Scala from a directory on the filesystem instead of retrieving from a repository
-scalaHome := Some(file("/Users/Sven/scala-2.9.0.1/"))
+// scalaHome := Some(file("/Users/Sven/scala-2.9.0.1/"))
 
 // don't aggregate clean (See FullConfiguration for aggregation details)
 aggregate in clean := false
@@ -154,7 +154,7 @@ traceLevel := 10
 traceLevel := 0
 
 // add JavaFX 2.0 to the unmanaged classpath
-unmanagedJars in Compile += Attributed.blank(file("/Users/Sven/javafx-sdk2.0-ea/b44/rt/lib/jfxrt.jar"))
+unmanagedJars in Compile += Attributed.blank(file("/Users/sjc/dev/javafx-sdk2.0-beta/rt/lib/jfxrt.jar"))
 
 // publish test jar, sources, and docs
 publishArtifact in Test := false
