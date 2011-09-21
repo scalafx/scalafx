@@ -8,6 +8,8 @@ organization := "org.scalafx"
 // set the Scala version used for the project
 scalaVersion := "2.9.0-1"
 
+resolvers += "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository"
+
 // set the main Scala source directory to be <base>/src
 //scalaSource in Compile <<= baseDirectory(_ / "src")
 
@@ -18,7 +20,6 @@ unmanagedSourceDirectories in Compile <++= baseDirectory { base =>
   )
 }
 
-
 // set the Scala test source directory to be <base>/test
 scalaSource in Test <<= baseDirectory(_ / "test")
 
@@ -26,10 +27,9 @@ scalaSource in Test <<= baseDirectory(_ / "test")
 //libraryDependencies += "org.scala-tools.testing" %% "scalacheck" % "1.8" % "test"
 
 // add compile dependencies on some dispatch modules
-//libraryDependencies ++= Seq(
-//    "net.databinder" %% "dispatch-meetup" % "0.7.8",
-//    "net.databinder" %% "dispatch-twitter" % "0.7.8"
-//)
+libraryDependencies ++= Seq(
+    "com.oracle" % "javafx-runtime" % "2.0-beta"
+)
 
 // Set a dependency based partially on a val.
 //{
@@ -68,7 +68,7 @@ initialCommands := """
 
 // set the main class for the main 'run' task
 // change Compile to Test to set it for 'test:run'
-//mainClass in (Compile, run) := Some("myproject.MyMain")
+mainClass in (Compile, run) := Some("scalafx.ColorfulCircles")
 
 // add <base>/input to the files that '~' triggers on
 watchSources <+= baseDirectory map { _ / "input" }
@@ -127,7 +127,7 @@ parallelExecution in Test := false
 
 // set the location of the JDK to use for compiling Java code.
 // if 'fork' is true, this is used for 'run' as well
-javaHome := Some(file("/usr/lib/jvm/sun-jdk-1.6"))
+javaHome := Some(file("/Library/Java/JavaVirtualMachines/1.6.0_24-b07-330.jdk/Contents/Home"))
 
 // Use Scala from a directory on the filesystem instead of retrieving from a repository
 // scalaHome := Some(file("/Users/Sven/scala-2.9.0.1/"))
@@ -154,7 +154,7 @@ traceLevel := 10
 traceLevel := 0
 
 // add JavaFX 2.0 to the unmanaged classpath
-unmanagedJars in Compile += Attributed.blank(file("/Users/sjc/dev/javafx-sdk2.0-beta/rt/lib/jfxrt.jar"))
+//unmanagedJars in Compile += Attributed.blank(file("/Users/Sven/javafx-sdk2.0-ea/b44/rt/lib/jfxrt.jar"))
 
 // publish test jar, sources, and docs
 publishArtifact in Test := false
