@@ -29,45 +29,53 @@ package scalafx.stage
 
 import scalafx.scene.Scene
 import scalafx.application.Application
+import scalafx.util.SFXDelegate
+import scalafx.beans.property._
 
-class Stage() {
-  var wrappedStage: javafx.stage.Stage = Application.STAGE
+class Stage extends SFXDelegate {
+  override val delegate: javafx.stage.Stage = Application.STAGE
 
-  def title: String = wrappedStage.getTitle
+  private[this] lazy val _fullScreenProperty = new ReadOnlyBooleanProperty(delegate.fullScreenProperty())
+  def fullScreen = _fullScreenProperty
 
-  def title_=(t: String) {
-    wrappedStage.setTitle(t)
+  private[this] lazy val _titleProperty = new StringProperty(delegate.titleProperty())
+  def title = _titleProperty
+  def title_=(v: String) {
+    title() = v
   }
 
-  def width: Double = wrappedStage.getWidth
+  private[this] lazy val _iconifiedProperty = new ReadOnlyBooleanProperty(delegate.iconifiedProperty())
+  def iconified = _iconifiedProperty
 
+  private[this] lazy val _resizableProperty = new BooleanProperty(delegate.resizableProperty())
+  def resizable = _resizableProperty
+  def resizable_=(v: Boolean) {
+    resizable() = v
+  }
+
+  def width: Double = delegate.getWidth
   def width_=(w: Double) {
-    wrappedStage.setWidth(w)
+    delegate.setWidth(w)
   }
 
-  def height: Double = wrappedStage.getHeight
-
+  def height: Double = delegate.getHeight
   def height_=(h: Double) {
-    wrappedStage.setHeight(h)
+    delegate.setHeight(h)
   }
 
-  private var _scene: Scene = null
-
+  private[this] var _scene: Scene = null
   def scene: Scene = _scene
-
   def scene_=(s: Scene) {
     _scene = s
-    wrappedStage.setScene(s.scene)
+    delegate.setScene(s.delegate)
   }
 
-  private var _visible: Boolean = false
-
+  private[this] var _visible: Boolean = false
   def visible: Boolean = _visible
-
   def visible_=(v: Boolean) {
     if (v) {
       _visible = v
-      wrappedStage.show()
+      delegate.show()
     } else {
       throw new IllegalStateException("Cannot hide scene by setting visible back to false (limitation in JavaFX APIs)");
     }
