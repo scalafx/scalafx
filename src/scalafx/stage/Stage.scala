@@ -53,6 +53,15 @@ class Stage extends SFXDelegate {
     resizable() = v
   }
 
+  private[this] var _scene: Scene = null
+  def scene: Scene = _scene
+  def scene_=(s: Scene) {
+    _scene = s
+    delegate.setScene(s.delegate)
+  }
+
+  // The following methods are strictly speaking not properties...  but it is convenient to treat them as such.  :)
+
   def width: Double = delegate.getWidth
   def width_=(w: Double) {
     delegate.setWidth(w)
@@ -63,21 +72,14 @@ class Stage extends SFXDelegate {
     delegate.setHeight(h)
   }
 
-  private[this] var _scene: Scene = null
-  def scene: Scene = _scene
-  def scene_=(s: Scene) {
-    _scene = s
-    delegate.setScene(s.delegate)
-  }
-
   private[this] var _visible: Boolean = false
   def visible: Boolean = _visible
   def visible_=(v: Boolean) {
+    _visible = v
     if (v) {
-      _visible = v
       delegate.show()
     } else {
-      throw new IllegalStateException("Cannot hide scene by setting visible back to false (limitation in JavaFX APIs)");
+      delegate.hide()
     }
   }
 }

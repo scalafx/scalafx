@@ -34,7 +34,6 @@ import scalafx.scene.shape.Circle
 import scalafx.scene.shape.Rectangle
 import scalafx.stage.Stage
 import javafx.scene.paint.Color
-import javafx.scene.shape.ArcType
 
 object HelloJavaFX extends Application {
   stage = new Stage {
