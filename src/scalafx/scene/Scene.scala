@@ -27,24 +27,25 @@
 
 package scalafx.scene
 
+import collection.JavaConversions._
 import javafx.scene.paint.Paint
+import javafx.scene.Parent
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.util.SFXDelegate
-import javafx.scene.Parent
-import javafx.collections.ObservableList
 
 class Scene(val root: Parent = new javafx.scene.Group()) extends SFXDelegate {
   override val delegate = new javafx.scene.Scene(root)
 
-  def getChildren:ObservableList[javafx.scene.Node] = root match {
+  // todo - replace this with a little SFX collection conversion
+  def getChildren = root match {
     case group: javafx.scene.Group => group.getChildren
     case pane: javafx.scene.layout.Pane => pane.getChildren
     case _ => throw new IllegalStateException("Cannot access children of root: " + root + "\nUse a class that extends Group or Pane, or override the getChildren method.")
   }
-  def content: ObservableList[javafx.scene.Node] = getChildren
-  def content_=[T <: Node](c: List[T]) {
-    getChildren.setAll(java.util.Arrays.asList(c.map(n => n.delegate).toArray: _*))
+  def content = getChildren
+  def content_=(c: List[Node]) {
+    getChildren.setAll(c.map(_.delegate))
   }
 
   private[this] lazy val _fillProperty = new ObjectProperty[Paint](delegate.fillProperty())

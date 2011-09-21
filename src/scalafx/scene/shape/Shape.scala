@@ -27,11 +27,11 @@
 
 package scalafx.scene.shape
 
+import collection.JavaConversions._
 import javafx.scene.paint.Paint
 import javafx.scene.shape.StrokeLineCap
 import javafx.scene.shape.StrokeLineJoin
 import javafx.scene.shape.StrokeType
-
 import scalafx.scene.Node
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
@@ -94,4 +94,10 @@ abstract class Shape extends Node {
     strokeWidth() = v
   }  
   
+  // todo - replace this with a little SFX collection conversion
+  private[this] lazy val _strokeDashArrayList = delegate.getStrokeDashArray
+  def strokeDashArray = _strokeDashArrayList
+  def strokeDashArray_=(c: List[java.lang.Double]) {
+    strokeDashArray.setAll(c)
+  }
 }

@@ -35,4 +35,8 @@ class PathSpec extends FlatSpec with PropertyComparator {
   "A Path" should "implement all the JavaFX properties" in {
     compareProperties(classOf[javafx.scene.shape.Path], classOf[Path])
   }
+
+  "A Path" should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[javafx.scene.shape.PathBuilder[_]], classOf[Path])
+  }
 }

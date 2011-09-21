@@ -35,4 +35,8 @@ class EllipseSpec extends FlatSpec with PropertyComparator {
   "An Ellipse" should "implement all the JavaFX properties" in {
     compareProperties(classOf[javafx.scene.shape.Ellipse], classOf[Ellipse])
   }
+
+  "An Ellipse" should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[javafx.scene.shape.EllipseBuilder[_]], classOf[Ellipse])
+  }
 }

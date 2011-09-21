@@ -35,4 +35,8 @@ class CircleSpec extends FlatSpec with PropertyComparator {
   "A Circle" should "implement all the JavaFX properties" in {
     compareProperties(classOf[javafx.scene.shape.Circle], classOf[Circle])
   }
+
+  "A Circle" should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[javafx.scene.shape.CircleBuilder[_]], classOf[Circle])
+  }
 }

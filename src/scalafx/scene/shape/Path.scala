@@ -27,8 +27,8 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.shape.FillRule
-
+import collection.JavaConversions._
+import javafx.scene.shape.{PathElement, FillRule}
 import scalafx.beans.property.ObjectProperty
 
 class Path extends Shape {
@@ -38,5 +38,13 @@ class Path extends Shape {
   def fillRule = _fillRuleProperty
   def fillRule_=(v: FillRule) {
     fillRule() = v
+  }
+
+  // todo - replace this with a little SFX collection conversion
+  private[this] lazy val _elementsList = delegate.getElements
+  def elements = _elementsList
+  // todo - implement an SFX version of PathElements
+  def elements_=(c: List[PathElement]) {
+    elements.setAll(c)
   }
 }

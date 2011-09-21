@@ -35,4 +35,8 @@ class LineSpec extends FlatSpec with PropertyComparator {
   "A Line" should "implement all the JavaFX properties" in {
     compareProperties(classOf[javafx.scene.shape.Line], classOf[Line])
   }
+
+  "A Line" should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[javafx.scene.shape.LineBuilder[_]], classOf[Line])
+  }
 }

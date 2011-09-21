@@ -27,24 +27,38 @@
 
 package scalafx.testutil
 
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Assertions._
+import java.lang.reflect.Modifier
 
 trait PropertyComparator {
-  def compareProperties(javafxClass:Class[_], scalafxClass:Class[_]) {
-    val javafxRegex = """(.*)Property""".r
-    val scalafxRegex = """_(.*)Property""".r
-    val javafxProperties = javafxClass.getDeclaredMethods()
-      .filterNot(m => m.getName.startsWith("impl_"))
-      .map(m => javafxRegex.findFirstMatchIn(m.getName))
-      .flatMap(x => x)
-      .map(m => m.group(1))
-      .toSet
-    val scalafxProperties = scalafxClass.getDeclaredMethods()
+  private def getScalaFXProperties(scalafxClass:Class[_]) = {
+    val scalafxRegex = """_(.*)(Property|List|Map)""".r
+    scalafxClass.getDeclaredMethods()
       .map(m => scalafxRegex.findFirstMatchIn(m.getName))
       .flatMap(x => x)
-      .map(m => m.group(1))
+      .map(_.group(1))
       .toSet
-    withClue("Missing Properties: ") { (javafxProperties diff scalafxProperties) should be ('empty) }
-    withClue("Extra Properties: ") { (scalafxProperties diff javafxProperties) should be ('empty) }
+  }
+
+  def compareProperties(javafxClass:Class[_], scalafxClass:Class[_]) {
+    val javafxRegex = """(.*)Property""".r
+    val javafxProperties = javafxClass.getDeclaredMethods()
+      .filter(m => Modifier.isPublic(m.getModifiers))
+      .map(m => javafxRegex.findFirstMatchIn(m.getName))
+      .flatMap(x => x)
+      .map(_.group(1))
+      .toSet
+    val diff = javafxProperties diff getScalaFXProperties(scalafxClass)
+    assert(diff.isEmpty, "Missing Properties: " + diff.mkString(", "))
+  }
+
+  def compareBuilderProperties(javafxClassBuilder:Class[_], scalafxClass:Class[_]) {
+    val javafxBuilderProperties = javafxClassBuilder.getDeclaredMethods()
+      .filter(m => Modifier.isPublic(m.getModifiers))
+      .map(_.getName)
+      .filterNot(n => n == "applyTo" || n == "create" || n == "build")
+      .toSet
+    val diff = javafxBuilderProperties diff getScalaFXProperties(scalafxClass)
+    assert(diff.isEmpty, "Missing Properties: " + diff.mkString(", "))
   }
 }

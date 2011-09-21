@@ -35,4 +35,8 @@ class ShapeSpec extends FlatSpec with PropertyComparator {
   "A Shape" should "implement all the JavaFX properties" in {
     compareProperties(classOf[javafx.scene.shape.Shape], classOf[Shape])
   }
+
+  "A Shape" should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[javafx.scene.shape.ShapeBuilder[_]], classOf[Shape])
+  }
 }

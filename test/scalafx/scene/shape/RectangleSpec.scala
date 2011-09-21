@@ -35,4 +35,8 @@ class RectangleSpec extends FlatSpec with PropertyComparator {
   "A Rectangle" should "implement all the JavaFX properties" in {
     compareProperties(classOf[javafx.scene.shape.Rectangle], classOf[Rectangle])
   }
+
+  "A Rectangle" should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[javafx.scene.shape.RectangleBuilder[_]], classOf[Rectangle])
+  }
 }

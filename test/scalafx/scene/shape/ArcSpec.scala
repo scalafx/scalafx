@@ -35,4 +35,8 @@ class ArcSpec extends FlatSpec with PropertyComparator {
   "An Arc" should "implement all the JavaFX properties" in {
     compareProperties(classOf[javafx.scene.shape.Arc], classOf[Arc])
   }
+
+  "An Arc" should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[javafx.scene.shape.ArcBuilder[_]], classOf[Arc])
+  }
 }
