@@ -35,25 +35,25 @@ class Rectangle extends Shape {
   val rectangle = new javafx.scene.shape.Rectangle()
   override val node = rectangle
 
-  lazy val _xProperty = new DoubleProperty(rectangle.xProperty())
+  private[this] lazy val _xProperty = new DoubleProperty(rectangle.xProperty())
   def x = _xProperty
   def x_=(v:Double) {
     x() = v
   }
 
-  lazy val _yProperty = new DoubleProperty(rectangle.yProperty())
+  private[this] lazy val _yProperty = new DoubleProperty(rectangle.yProperty())
   def y = _yProperty
   def y_=(v:Double) {
     y() = v
   }
 
-  lazy val _widthProperty = new DoubleProperty(rectangle.widthProperty())
+  private[this] lazy val _widthProperty = new DoubleProperty(rectangle.widthProperty())
   def width = _widthProperty
   def width_=(v:Double) {
     width() = v
   }
 
-  lazy val _heightProperty = new DoubleProperty(rectangle.heightProperty())
+  private[this] lazy val _heightProperty = new DoubleProperty(rectangle.heightProperty())
   def height = _heightProperty
   def height_=(v:Double) {
     height() = v

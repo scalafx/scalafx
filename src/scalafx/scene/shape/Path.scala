@@ -35,7 +35,7 @@ class Path extends Shape {
   override val node = new javafx.scene.shape.Path()
     
   
-  lazy val _fillRuleProperty = new ObjectProperty[FillRule](node.fillRuleProperty())
+  private[this] lazy val _fillRuleProperty = new ObjectProperty[FillRule](node.fillRuleProperty())
   def fillRule = _fillRuleProperty
   def fillRule_=(v:FillRule) {
     fillRule() = v

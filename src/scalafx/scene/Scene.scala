@@ -28,6 +28,9 @@
 package scalafx.scene
 
 import javafx.scene.paint.Paint
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyDoubleProperty
 
 class Scene {
   val root = new javafx.scene.Group()
@@ -42,9 +45,15 @@ class Scene {
     root.getChildren.setAll(java.util.Arrays.asList(c.map(n => n.node).toArray: _*))
   }
 
-  def fill: Paint = scene.getFill
-
-  def fill_=(f: Paint) {
-    scene.setFill(f)
+  private[this] lazy val _fillProperty = new ObjectProperty[Paint](scene.fillProperty())
+  def fill = _fillProperty
+  def fill_=(v: Paint) {
+    fill() = v
   }
+  
+  private[this] lazy val _heightProperty = new ReadOnlyDoubleProperty(scene.heightProperty())
+  def height = _heightProperty
+
+  private[this] lazy val _widthProperty = new ReadOnlyDoubleProperty(scene.widthProperty())
+  def width = _widthProperty
 }

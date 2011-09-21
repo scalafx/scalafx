@@ -32,25 +32,25 @@ import scalafx.beans.property.DoubleProperty
 class Line extends Shape {
   override val node = new javafx.scene.shape.Line()
   
-  lazy val _endXProperty = new DoubleProperty(node.endXProperty())
+  private[this] lazy val _endXProperty = new DoubleProperty(node.endXProperty())
   def endX = _endXProperty
   def endX_=(v:Double) {
     endX() = v
   }
   
-  lazy val _endYProperty = new DoubleProperty(node.endYProperty())
+  private[this] lazy val _endYProperty = new DoubleProperty(node.endYProperty())
   def endY = _endYProperty
   def endY_=(v:Double) {
     endY() = v
   }
   
-  lazy val _startXProperty = new DoubleProperty(node.startXProperty())
+  private[this] lazy val _startXProperty = new DoubleProperty(node.startXProperty())
   def startX = _startXProperty
   def startX_=(v:Double) {
     startX() = v
   }
   
-  lazy val _startYProperty = new DoubleProperty(node.startYProperty())
+  private[this] lazy val _startYProperty = new DoubleProperty(node.startYProperty())
   def startY = _startYProperty
   def startY_=(v:Double) {
     startY() = v

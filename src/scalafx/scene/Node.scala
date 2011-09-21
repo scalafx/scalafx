@@ -41,63 +41,63 @@ import scalafx.beans.property.ReadOnlyBooleanProperty
 abstract class Node {
   val node: javafx.scene.Node
 
-  lazy val _blendModeProperty = new ObjectProperty[BlendMode](node.blendModeProperty())
+  private[this] lazy val _blendModeProperty = new ObjectProperty[BlendMode](node.blendModeProperty())
   def blendMode = _blendModeProperty
   def blendMode_=(v: BlendMode) {
     blendMode() = v
   }    
   
-  lazy val _boundsInLocalProperty = new ReadOnlyObjectProperty[Bounds](node.boundsInLocalProperty())
+  private[this] lazy val _boundsInLocalProperty = new ReadOnlyObjectProperty[Bounds](node.boundsInLocalProperty())
   def boundsInLocal = _boundsInLocalProperty
 
-  lazy val _boundsInParentProperty = new ReadOnlyObjectProperty[Bounds](node.boundsInParentProperty())
+  private[this] lazy val _boundsInParentProperty = new ReadOnlyObjectProperty[Bounds](node.boundsInParentProperty())
   def boundsInParent = _boundsInParentProperty
    
-  lazy val _cacheHintProperty = new ObjectProperty[CacheHint](node.cacheHintProperty())
+  private[this] lazy val _cacheHintProperty = new ObjectProperty[CacheHint](node.cacheHintProperty())
   def cacheHint = _cacheHintProperty
   def cacheHint_=(v: CacheHint) {
     cacheHint() = v
   }
 
-  lazy val _cacheProperty = new BooleanProperty(node.cacheProperty())
+  private[this] lazy val _cacheProperty = new BooleanProperty(node.cacheProperty())
   def cache = _cacheProperty
   def cache_=(v: Boolean) {
     cache() = v
   }
  
-  lazy val _clipProperty = new ObjectProperty[javafx.scene.Node](node.clipProperty())
+  private[this] lazy val _clipProperty = new ObjectProperty[javafx.scene.Node](node.clipProperty())
   def clip = _clipProperty
   def clip_=(v: javafx.scene.Node) {
     clip() = v
   }
   
-  lazy val _cursorProperty = new ObjectProperty[Cursor](node.cursorProperty())
+  private[this] lazy val _cursorProperty = new ObjectProperty[Cursor](node.cursorProperty())
   def cursor = _cursorProperty
   def cursor_=(v: Cursor) {
     cursor() = v
   }  
   
-  lazy val _depthTestProperty = new ObjectProperty[DepthTest](node.depthTestProperty())
+  private[this] lazy val _depthTestProperty = new ObjectProperty[DepthTest](node.depthTestProperty())
   def depthTest = _depthTestProperty
   def depthTest_=(v: DepthTest) {
     depthTest() = v
   }  
  
-  lazy val _disabledProperty = new ReadOnlyBooleanProperty(node.disabledProperty())
+  private[this] lazy val _disabledProperty = new ReadOnlyBooleanProperty(node.disabledProperty())
   def disabled = _disabledProperty
  
-  lazy val _disableProperty = new BooleanProperty(node.disableProperty())
+  private[this] lazy val _disableProperty = new BooleanProperty(node.disableProperty())
   def disable = _disableProperty
   def disable_=(v: Boolean) {
     disable() = v
   }
   
-  lazy val _effectProperty = new ObjectProperty[Effect](node.effectProperty())
+  private[this] lazy val _effectProperty = new ObjectProperty[Effect](node.effectProperty())
   def effect = _effectProperty
   def effect_=(v: Effect) {
     effect() = v
   } 
   
-  lazy val _hoverProperty = new ReadOnlyBooleanProperty(node.hoverProperty())
+  private[this] lazy val _hoverProperty = new ReadOnlyBooleanProperty(node.hoverProperty())
   def hover = _hoverProperty
 }
