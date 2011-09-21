@@ -43,10 +43,11 @@ trait PropertyComparator {
   def compareProperties(javafxClass:Class[_], scalafxClass:Class[_]) {
     val javafxRegex = """(.*)Property""".r
     val javafxProperties = javafxClass.getDeclaredMethods()
-      .filter(m => Modifier.isPublic(m.getModifiers))
-      .map(m => javafxRegex.findFirstMatchIn(m.getName))
+      .filter(m => Modifier.isPublic(m.getModifiers) )
+      .map(m => javafxRegex.findFirstMatchIn(m.getName))      
       .flatMap(x => x)
       .map(_.group(1))
+      .filterNot(n => n.startsWith("impl_"))
       .toSet
     val diff = javafxProperties diff getScalaFXProperties(scalafxClass)
     assert(diff.isEmpty, "Missing Properties: " + diff.mkString(", "))
@@ -56,7 +57,7 @@ trait PropertyComparator {
     val javafxBuilderProperties = javafxClassBuilder.getDeclaredMethods()
       .filter(m => Modifier.isPublic(m.getModifiers))
       .map(_.getName)
-      .filterNot(n => n == "applyTo" || n == "create" || n == "build")
+      .filterNot(n => n == "applyTo" || n == "create" || n == "build" || n.startsWith("impl_") || n == "children")
       .toSet
     val diff = javafxBuilderProperties diff getScalaFXProperties(scalafxClass)
     assert(diff.isEmpty, "Missing Properties: " + diff.mkString(", "))

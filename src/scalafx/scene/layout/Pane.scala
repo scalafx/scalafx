@@ -25,29 +25,20 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene.shape
+package scalafx.scene.layout
 
-import scalafx.beans.property.DoubleProperty
+import collection.JavaConversions._
+import scalafx.scene.Node
 
-class Circle extends Shape {
-  override val delegate = new javafx.scene.shape.Circle()
-
-  private[this] lazy val _centerXProperty = new DoubleProperty(delegate.centerXProperty())
-  def centerX = _centerXProperty
-  def centerX_=(v: Double) {
-    centerX() = v
-  }
-
-  private[this] lazy val _centerYProperty = new DoubleProperty(delegate.centerYProperty())
-  def centerY = _centerYProperty
-  def centerY_=(v: Double) {
-    centerY() = v
-  }
-
-  private[this] lazy val _radiusProperty = new DoubleProperty(delegate.radiusProperty())
-  def radius = _radiusProperty
-  def radius_=(v: Double) {
-    radius() = v
-  }
-
+class Pane extends Region {
+  override val delegate = new javafx.scene.layout.Pane()
+  
+  def getChildren = delegate.getChildren
+  def children = getChildren
+  
+  var _content:List[_ <: Node] = Nil
+  def content = getChildren
+  def content_=(c: Iterable[Node]) {
+    getChildren.setAll(c.map(_.delegate))
+  }   
 }
