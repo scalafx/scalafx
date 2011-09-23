@@ -49,9 +49,9 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J] exte
     })
   }
 
-  def onChange(op: => Unit) {
-    delegate.addListener(new ChangeListener[J] {
-      def changed(observable: JFXObservableValue[_ <: J], oldValue: J, newValue: J) {
+  def onChange[J1 >: J](op: => Unit) {
+    delegate.addListener(new ChangeListener[J1] {
+      def changed(observable: JFXObservableValue[_ <: J1], oldValue: J1, newValue: J1) {
         op
       }
     })
