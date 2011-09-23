@@ -27,14 +27,13 @@
 
 package scalafx.beans.binding
 
+import javafx.beans.{binding => jfxbb}
 import scalafx.beans.value.ObservableValue
-import javafx.beans.binding.{ObjectBinding => JFXObjectBinding}
 
 object ObjectBinding {
-  implicit def sfxObjectBinding2jfx[T <: Object](ob: ObjectBinding[T]) = ob.delegate
-  implicit def jfxObjectBinding2sfx[T <: Object](ob: JFXObjectBinding[T]) = new ObjectBinding[T](ob)
+  implicit def sfxObjectBinding2jfx[T](ob: ObjectBinding[T]) = ob.delegate
 }
 
-class ObjectBinding[T <: Object](override val delegate: JFXObjectBinding[T]) extends ObjectExpression[T](delegate) with ObservableValue[T, T] {
+class ObjectBinding[T](override val delegate: jfxbb.ObjectBinding[T]) extends ObjectExpression[T](delegate) with ObservableValue[T, T] {
   def value = delegate.get
 }

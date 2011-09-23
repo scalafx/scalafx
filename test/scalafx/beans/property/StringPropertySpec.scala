@@ -29,19 +29,23 @@ package scalafx.beans.property
 
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import javafx.beans.{property => jfxbp}
+import scalafx.Includes._
 
 class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var booleanProperty: BooleanProperty = null
-  var stringProperty: StringProperty = null
-  var stringProperty2: StringProperty = null
-  var stringProperty3: StringProperty = null
+  var booleanProperty: jfxbp.BooleanProperty = null
+  var stringProperty: jfxbp.StringProperty = null
+  var stringProperty2: jfxbp.StringProperty = null
+  var stringProperty3: jfxbp.StringProperty = null
+  var sfxStringProperty: StringProperty = null
 
   override def beforeEach() {
     booleanProperty = new BooleanProperty(bean, "Test Boolean")
     stringProperty = new StringProperty(bean, "Test String")
     stringProperty2 = new StringProperty(bean, "Test String 2")
     stringProperty3 = new StringProperty(bean, "Test String 3")
+    sfxStringProperty = new StringProperty(bean, "Test SFX String")
   }
 
   "A String Property" should "have a default value of null" in {
@@ -96,8 +100,8 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     stringProperty2() should equal ("bi-unbound")
   }
 
-  it should "support bindable infix equality (==) with a property" in {
-    booleanProperty <== stringProperty == stringProperty2
+  it should "support bindable infix equality (===) with a property" in {
+    booleanProperty <== stringProperty === stringProperty2
     stringProperty() = "something"
     stringProperty2() = "something else"
     booleanProperty() should be (false)
@@ -105,32 +109,32 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should be (true)
   }
 
-  it should "support bindable infix equality (==) with a jfx property" in {
-    booleanProperty <== stringProperty == stringProperty2.delegate
+  it should "support bindable infix equality (===) with an sfx property" in {
+    booleanProperty <== stringProperty === sfxStringProperty
     stringProperty() = "something"
-    stringProperty2() = "something else"
+    sfxStringProperty() = "something else"
     booleanProperty() should be (false)
-    stringProperty2() = "something"
+    sfxStringProperty() = "something"
     booleanProperty() should be (true)
   }
 
-  it should "support bindable infix equality (==) with a string" in {
-    booleanProperty <== stringProperty == "something"
+  it should "support bindable infix equality (===) with a string" in {
+    booleanProperty <== stringProperty === "something"
     stringProperty() = "something else"
     booleanProperty() should be (false)
     stringProperty() = "something"
     booleanProperty() should be (true)
   }
 
-  it should "support null/empty-string comparisons for equals (==)" in {
-    booleanProperty <== stringProperty == null
+  it should "support null/empty-string comparisons for equals (===)" in {
+    booleanProperty <== stringProperty === null
     stringProperty() = "clearly not null"
     booleanProperty() should be (false)
     stringProperty() = null
     booleanProperty() should be (true)
     stringProperty() = ""
     booleanProperty() should be (false)
-    booleanProperty <== stringProperty == ""
+    booleanProperty <== stringProperty === ""
     stringProperty() = "clearly not empty"
     booleanProperty() should be (false)
     stringProperty() = null
@@ -139,8 +143,8 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should be (true)
   }
 
-  it should "support bindable infix inequality (!=) with a property" in {
-    booleanProperty <== stringProperty != stringProperty2
+  it should "support bindable infix inequality (=!=) with a property" in {
+    booleanProperty <== stringProperty =!= stringProperty2
     stringProperty() = "something"
     stringProperty2() = "something else"
     booleanProperty() should be (true)
@@ -148,32 +152,32 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should be (false)
   }
 
-  it should "support bindable infix inequality (!=) with a jfx property" in {
-    booleanProperty <== stringProperty != stringProperty2.delegate
+  it should "support bindable infix inequality (=!=) with an sfx property" in {
+    booleanProperty <== stringProperty =!= sfxStringProperty
     stringProperty() = "something"
-    stringProperty2() = "something else"
+    sfxStringProperty() = "something else"
     booleanProperty() should be (true)
-    stringProperty2() = "something"
+    sfxStringProperty() = "something"
     booleanProperty() should be (false)
   }
 
-  it should "support bindable infix inequality (!=) with a string" in {
-    booleanProperty <== stringProperty != "something"
+  it should "support bindable infix inequality (=!=) with a string" in {
+    booleanProperty <== stringProperty =!= "something"
     stringProperty() = "something else"
     booleanProperty() should be (true)
     stringProperty() = "something"
     booleanProperty() should be (false)
   }
 
-  it should "support null/empty-string comparisons for not equals (!=)" in {
-    booleanProperty <== stringProperty != null
+  it should "support null/empty-string comparisons for not equals (=!=)" in {
+    booleanProperty <== stringProperty =!= null
     stringProperty() = "clearly not null"
     booleanProperty() should be (true)
     stringProperty() = null
     booleanProperty() should be (false)
     stringProperty() = ""
     booleanProperty() should be (true)
-    booleanProperty <== stringProperty != ""
+    booleanProperty <== stringProperty =!= ""
     stringProperty() = "clearly not empty"
     booleanProperty() should be (true)
     stringProperty() = null
@@ -191,12 +195,12 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should be (true)
   }
 
-  it should "support bindable infix, case-insensitive equality (==~) with a jfx property" in {
-    booleanProperty <== stringProperty ==~ stringProperty2.delegate
+  it should "support bindable infix, case-insensitive equality (==~) with an sfx property" in {
+    booleanProperty <== stringProperty ==~ sfxStringProperty
     stringProperty() = "something"
-    stringProperty2() = "something else"
+    sfxStringProperty() = "something else"
     booleanProperty() should be (false)
-    stringProperty2() = "SOMETHING"
+    sfxStringProperty() = "SOMETHING"
     booleanProperty() should be (true)
   }
 
@@ -234,12 +238,12 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should be (false)
   }
 
-  it should "support bindable infix, case-insensitive inequality (!=~) with a jfx property" in {
-    booleanProperty <== stringProperty !=~ stringProperty2.delegate
+  it should "support bindable infix, case-insensitive inequality (!=~) with an sfx property" in {
+    booleanProperty <== stringProperty !=~ sfxStringProperty
     stringProperty() = "something"
-    stringProperty2() = "something else"
+    sfxStringProperty() = "something else"
     booleanProperty() should be (true)
-    stringProperty2() = "SOMETHING"
+    sfxStringProperty() = "SOMETHING"
     booleanProperty() should be (false)
   }
 
@@ -251,7 +255,7 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should be (false)
   }
 
-  it should "support null/empty-string comparisons for case-insensitive not equals (!=)" in {
+  it should "support null/empty-string comparisons for case-insensitive not equals (=!=)" in {
     booleanProperty <== stringProperty !=~ null
     stringProperty() = "clearly not null"
     booleanProperty() should be (true)
@@ -277,12 +281,12 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should be (false)
   }
 
-  it should "support bindable infix less than (<) with a jfx property" in {
-    booleanProperty <== stringProperty < stringProperty2.delegate
+  it should "support bindable infix less than (<) with an sfx property" in {
+    booleanProperty <== stringProperty < sfxStringProperty
     stringProperty() = "beta"
-    stringProperty2() = "cappa"
+    sfxStringProperty() = "cappa"
     booleanProperty() should be (true)
-    stringProperty2() = "alpha"
+    sfxStringProperty() = "alpha"
     booleanProperty() should be (false)
   }
 
@@ -322,14 +326,14 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should be (false)
   }
 
-  it should "support bindable infix less than or equal to (<=) with a jfx property" in {
-    booleanProperty <== stringProperty <= stringProperty2.delegate
+  it should "support bindable infix less than or equal to (<=) with an sfx property" in {
+    booleanProperty <== stringProperty <= sfxStringProperty
     stringProperty() = "beta"
-    stringProperty2() = "cappa"
+    sfxStringProperty() = "cappa"
     booleanProperty() should be (true)
-    stringProperty2() = "beta"
+    sfxStringProperty() = "beta"
     booleanProperty() should be (true)
-    stringProperty2() = "alpha"
+    sfxStringProperty() = "alpha"
     booleanProperty() should be (false)
   }
 
@@ -369,12 +373,12 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should be (true)
   }
 
-  it should "support bindable infix greater than (>) with a jfx property" in {
-    booleanProperty <== stringProperty > stringProperty2.delegate
+  it should "support bindable infix greater than (>) with an sfx property" in {
+    booleanProperty <== stringProperty > sfxStringProperty
     stringProperty() = "beta"
-    stringProperty2() = "cappa"
+    sfxStringProperty() = "cappa"
     booleanProperty() should be (false)
-    stringProperty2() = "alpha"
+    sfxStringProperty() = "alpha"
     booleanProperty() should be (true)
   }
 
@@ -414,14 +418,14 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should be (true)
   }
 
-  it should "support bindable infix greater than or equal to (>=) with a jfx property" in {
-    booleanProperty <== stringProperty >= stringProperty2.delegate
+  it should "support bindable infix greater than or equal to (>=) with an sfx property" in {
+    booleanProperty <== stringProperty >= sfxStringProperty
     stringProperty() = "beta"
-    stringProperty2() = "cappa"
+    sfxStringProperty() = "cappa"
     booleanProperty() should be (false)
-    stringProperty2() = "beta"
+    sfxStringProperty() = "beta"
     booleanProperty() should be (true)
-    stringProperty2() = "alpha"
+    sfxStringProperty() = "alpha"
     booleanProperty() should be (true)
   }
 
@@ -465,4 +469,6 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
     stringProperty3() = "World"
     stringProperty() should equal ("HellonullWorld15")
   }
+
+  it should "support concatenation starting with nulls/primitives/strings" is (pending)
 }

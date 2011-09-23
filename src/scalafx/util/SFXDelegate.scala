@@ -27,14 +27,14 @@ package scalafx.util
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-trait SFXDelegate {
-  def delegate: AnyRef
+trait SFXDelegate[+D <: Object] extends AnyRef {
+  def delegate: D
 
   override def toString = "[SFX]" + delegate.toString
 
   override def equals(ref: Any): Boolean = {
     ref match {
-      case sfxd: SFXDelegate => delegate.equals(sfxd.delegate)
+      case sfxd: SFXDelegate[_] => delegate.equals(sfxd.delegate)
       case _ => delegate.equals(ref)
     }
   }

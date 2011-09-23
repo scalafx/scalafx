@@ -31,7 +31,7 @@ import javafx.beans.{Observable => JFXObservable}
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 import org.scalatest.matchers.ShouldMatchers._
 import property.DoubleProperty
-import scalafx.beans.binding.Bindings._
+import scalafx.beans.binding.BindingIncludes._
 
 class ObservableSpec extends FlatSpec with BeforeAndAfterEach {
   var property: DoubleProperty = null

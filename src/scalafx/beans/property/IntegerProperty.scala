@@ -27,14 +27,15 @@
 
 package scalafx.beans.property
 
-import scalafx.beans.binding.NumberExpression
 import javafx.beans.property.{IntegerPropertyBase, IntegerProperty => JFXIntegerProperty}
+import scalafx.beans.binding.NumberExpression
+import scalafx.util.SFXDelegate
 
 object IntegerProperty {
   implicit def sfxIntegerProperty2jfx(ip: IntegerProperty) = ip.delegate
 }
 
-class IntegerProperty(override val delegate: JFXIntegerProperty) extends NumberExpression(delegate) with Property[Int, Number] {
+class IntegerProperty(override val delegate: JFXIntegerProperty) extends NumberExpression(delegate) with Property[Int, Number] with SFXDelegate[JFXIntegerProperty] {
   def this(bean: Object, name: String) = this (new IntegerPropertyBase() {
     def getBean = bean
     def getName = name

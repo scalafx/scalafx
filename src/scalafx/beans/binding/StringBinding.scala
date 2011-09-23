@@ -27,14 +27,13 @@
 
 package scalafx.beans.binding
 
+import javafx.beans.{binding => jfxbb}
 import scalafx.beans.value.ObservableValue
-import javafx.beans.binding.{StringBinding => JFXStringBinding}
 
 object StringBinding {
   implicit def sfxStringBinding2jfx(sb: StringBinding) = sb.delegate
-  implicit def jfxStringBinding2sfx(sb: JFXStringBinding) = new StringBinding(sb)
 }
 
-class StringBinding(override val delegate: JFXStringBinding) extends StringExpression(delegate) with ObservableValue[String, String] {
+class StringBinding(override val delegate: jfxbb.StringBinding) extends StringExpression(delegate) with ObservableValue[String, String] {
   def value = delegate.get
 }

@@ -34,9 +34,7 @@ object Observable {
   implicit def sfxObservable2jfx(o: Observable) = o.delegate
 }
 
-trait Observable extends SFXDelegate {
-  override def delegate:JFXObservable
-
+trait Observable extends SFXDelegate[JFXObservable] {
   def onInvalidate(op: Observable => Unit) {
     delegate.addListener(new InvalidationListener {
       def invalidated(observable: JFXObservable) {

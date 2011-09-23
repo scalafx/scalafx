@@ -27,29 +27,30 @@
 
 package scalafx.beans.binding
 
-import org.scalatest.matchers.ShouldMatchers._
-import scalafx.beans.binding.Bindings._
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
-import scalafx.beans.property._
 import java.lang.Object
+import javafx.beans.{property => jfxbp}
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import scalafx.Includes._
+import scalafx.beans.property._
 
 class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
   def bean = new Object()
-  var booleanProperty1:BooleanProperty = null
-  var booleanProperty2:BooleanProperty = null
-  var booleanProperty3:BooleanProperty = null
-  var integerProperty1:IntegerProperty = null
-  var longProperty1:LongProperty = null
-  var floatProperty1:FloatProperty = null
-  var doubleProperty1:DoubleProperty = null
-  var doubleProperty2:DoubleProperty = null
-  var doubleProperty3:DoubleProperty = null
-  var stringProperty1:StringProperty = null
-  var stringProperty2:StringProperty = null
-  var stringProperty3:StringProperty = null
-  var objectProperty1:ObjectProperty[Object] = null
-  var objectProperty2:ObjectProperty[Object] = null
-  var objectProperty3:ObjectProperty[Object] = null
+  var booleanProperty1: jfxbp.BooleanProperty = null
+  var booleanProperty2: jfxbp.BooleanProperty = null
+  var booleanProperty3: jfxbp.BooleanProperty = null
+  var integerProperty1: jfxbp.IntegerProperty = null
+  var longProperty1: jfxbp.LongProperty = null
+  var floatProperty1: jfxbp.FloatProperty = null
+  var doubleProperty1: jfxbp.DoubleProperty = null
+  var doubleProperty2: jfxbp.DoubleProperty = null
+  var doubleProperty3: jfxbp.DoubleProperty = null
+  var stringProperty1: jfxbp.StringProperty = null
+  var stringProperty2: jfxbp.StringProperty = null
+  var stringProperty3: jfxbp.StringProperty = null
+  var objectProperty1: jfxbp.ObjectProperty[Object] = null
+  var objectProperty2: jfxbp.ObjectProperty[Object] = null
+  var objectProperty3: jfxbp.ObjectProperty[Object] = null
 
   override protected def beforeEach() {
     booleanProperty1 = new BooleanProperty(null, "Boolean Property 1")
@@ -69,7 +70,7 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
     objectProperty3 = new ObjectProperty[Object](null, "Object Property 3")
   }
 
-  "Bindings" should "support min" in {
+  "BindingIncludes" should "support min" in {
     doubleProperty1 <== min(doubleProperty2, doubleProperty3, 25, 26l, 27f, 28d)
     doubleProperty1() should equal (0)
     doubleProperty2() = 50
@@ -77,7 +78,7 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
     doubleProperty1() should equal (25)
   }
 
-  "Bindings" should "support max" in {
+  "BindingIncludes" should "support max" in {
     doubleProperty1 <== max(doubleProperty2, doubleProperty3, 25, 26l, 27f, 28d)
     doubleProperty1() should equal (28)
     doubleProperty2() = 50
@@ -164,4 +165,6 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
   it should "support implicit upconversions to expressions..." is (pending)
 
   it should "support raw javafx mixing (make sure all the implicits are in place)" is (pending)
+
+  it should "test the SFX 'any' special cases" is (pending)
 }

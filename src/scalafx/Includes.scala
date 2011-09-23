@@ -25,25 +25,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+package scalafx
 
-import javafx.beans.property.{StringPropertyBase, StringProperty => JFXStringProperty}
-import scalafx.beans.binding.StringExpression
-import scalafx.util.SFXDelegate
+import beans.BeanIncludes
 
-object StringProperty {
-  implicit def sfxStringProperty2jfx(sp: StringProperty) = sp.delegate
-}
+/*** Include file that contains all the necessary declarations for jfx->sfx implicit conversions
+   * and other syntactic sugar.
+   *
+   * This file is tiered both for modularity and to prioritize the implicits
+   * (the order of the withs matter a lot!)
+   */
+object Includes extends Includes
 
-class StringProperty(override val delegate: JFXStringProperty) extends StringExpression(delegate) with Property[String, String] with SFXDelegate[JFXStringProperty] {
-  def this(bean: Object, name: String) = this (new StringPropertyBase() {
-    def getBean = bean
-    def getName = name
-  })
-
-  override def value = delegate.get
-
-  def value_=(v: String) {
-    delegate.set(v)
-  }
-}
+trait Includes extends BeanIncludes

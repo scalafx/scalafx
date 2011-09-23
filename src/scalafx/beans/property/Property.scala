@@ -27,28 +27,36 @@
 
 package scalafx.beans.property
 
-import javafx.beans.value.ObservableValue
+import javafx.beans.value.{ObservableValue => JFXObservableValue}
 import javafx.beans.property.{Property => JFXProperty}
+import scalafx.beans.value.ObservableValue
+import scalafx.util.SFXDelegate
 
 object Property {
   implicit def sfxProperty2jfx(p: Property[_, _]) = p.delegate
 }
 
-trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends ReadOnlyProperty[T, J] {
-  override def delegate: JFXProperty[J]
-
+trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends ReadOnlyProperty[T, J] with SFXDelegate[JFXProperty[J]] {
   def value_=(v: T)
 
   def update(v: T) {
     value_=(v)
   }
 
-  def <==(v: ObservableValue[_ <: J]) {
+  def <==(v: JFXObservableValue[_ <: J]) {
     delegate.bind(v)
+  }
+
+  def <==(v: ObservableValue[_ <: T, _ <: J]) {
+    delegate.bind(v.delegate)
   }
 
   def <==>(v: Property[T, J]) {
     delegate.bindBidirectional(v.delegate)
+  }
+
+  def <==>(v: JFXProperty[J]) {
+    delegate.bindBidirectional(v)
   }
 
   def unbind() {
@@ -57,5 +65,9 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends Rea
 
   def unbind(v: Property[T, J]) {
     delegate.unbindBidirectional(v.delegate)
+  }
+
+  def unbind(v: JFXProperty[J]) {
+    delegate.unbindBidirectional(v)
   }
 }

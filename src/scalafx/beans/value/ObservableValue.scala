@@ -27,31 +27,39 @@
 
 package scalafx.beans.value
 
-import javafx.beans.value.{ObservableValue => JFXObservableValue, ChangeListener}
+import javafx.beans.{value => jfxbv}
 import scalafx.beans.Observable
+import scalafx.util.SFXDelegate
 
 object ObservableValue {
   implicit def sfxObservableValue2jfx[T, J](ov: ObservableValue[T, J]) = ov.delegate
+  // Conversions to JavaFX Marker classes (no need for these in scala, due to specialized classes)
+  implicit def sfxObservableValue2jfxIntegerValue(ov: ObservableValue[Int, Number]) = ov.delegate.asInstanceOf[jfxbv.ObservableIntegerValue]
+  implicit def sfxObservableValue2jfxLongValue(ov: ObservableValue[Long, Number]) = ov.delegate.asInstanceOf[jfxbv.ObservableLongValue]
+  implicit def sfxObservableValue2jfxFloatValue(ov: ObservableValue[Float, Number]) = ov.delegate.asInstanceOf[jfxbv.ObservableFloatValue]
+  implicit def sfxObservableValue2jfxDoubleValue(ov: ObservableValue[Double, Number]) = ov.delegate.asInstanceOf[jfxbv.ObservableDoubleValue]
+  implicit def sfxObservableValue2jfxBooleanValue(ov: ObservableValue[Boolean, java.lang.Boolean]) = ov.delegate.asInstanceOf[jfxbv.ObservableBooleanValue]
+  implicit def sfxObservableValue2jfxStringValue(ov: ObservableValue[String, String]) = ov.delegate.asInstanceOf[jfxbv.ObservableStringValue]
+  implicit def sfxObservableValue2jfxObjectValue[T](ov: ObservableValue[T, T]) = ov.delegate.asInstanceOf[jfxbv.ObservableObjectValue[T]]
+  implicit def sfxObservableValue2jfxNumberValue(ov: ObservableValue[Number, Number]) = ov.delegate.asInstanceOf[jfxbv.ObservableNumberValue]
 }
 
-trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J] extends Observable {
-  override def delegate:JFXObservableValue[J]
-
+trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J] extends Observable with SFXDelegate[jfxbv.ObservableValue[J]] {
   def value: T
 
   def apply() = value
 
   def onChange[J1 >: J](op: (ObservableValue[T, J], J1, J1) => Unit) {
-    delegate.addListener(new ChangeListener[J1] {
-      def changed(observable: JFXObservableValue[_ <: J1], oldValue: J1, newValue: J1) {
+    delegate.addListener(new jfxbv.ChangeListener[J1] {
+      def changed(observable: jfxbv.ObservableValue[_ <: J1], oldValue: J1, newValue: J1) {
         op(ObservableValue.this, oldValue, newValue)
       }
     })
   }
 
   def onChange[J1 >: J](op: => Unit) {
-    delegate.addListener(new ChangeListener[J1] {
-      def changed(observable: JFXObservableValue[_ <: J1], oldValue: J1, newValue: J1) {
+    delegate.addListener(new jfxbv.ChangeListener[J1] {
+      def changed(observable: jfxbv.ObservableValue[_ <: J1], oldValue: J1, newValue: J1) {
         op
       }
     })

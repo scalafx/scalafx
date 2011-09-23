@@ -32,8 +32,8 @@ import scalafx.application.Application
 import scalafx.util.SFXDelegate
 import scalafx.beans.property._
 
-class Stage extends SFXDelegate {
-  override val delegate: javafx.stage.Stage = Application.STAGE
+class Stage extends SFXDelegate[javafx.stage.Stage] {
+  override val delegate = Application.STAGE
 
   private[this] lazy val _fullScreenProperty = new ReadOnlyBooleanProperty(delegate.fullScreenProperty())
   def fullScreen = _fullScreenProperty

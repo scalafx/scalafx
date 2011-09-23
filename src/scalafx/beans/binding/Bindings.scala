@@ -27,113 +27,58 @@
 
 package scalafx.beans.binding
 
-import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
-import javafx.beans.{InvalidationListener, Observable => JFXObservable}
-import javafx.beans.value.{ObservableStringValue, ObservableObjectValue, ObservableNumberValue, ChangeListener, ObservableValue => JFXObservableValue, ObservableBooleanValue}
+import javafx.beans.{binding => jfxbb, value => jfxbv}
 import scalafx.beans.value.ObservableValue
-import javafx.beans.binding.{DoubleBinding, LongBinding, FloatBinding, IntegerBinding, Bindings => JFXBindings, When}
 
-object Bindings {
-  // todo - shouldn't this work for other primitive types?
-  implicit def double2VariablePrecisionNumber(d: Double) = VariablePrecisionNumber(d)
+object Bindings extends Bindings
 
-  implicit def closure2InvalidationListener(il: JFXObservable => Unit) = new InvalidationListener {
-    def invalidated(observable: JFXObservable) {
-      il(observable)
-    }
-  }
+trait Bindings {
+  def min(v1:jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values)(jfxbb.Bindings.min)
+  def max(v1:jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values)(jfxbb.Bindings.max)
 
-  implicit def closure2ChangedListener[P](cl: (JFXObservableValue[_ <: P], P, P) => Unit) = new ChangeListener[P]() {
-    def changed(observable: JFXObservableValue[_ <: P], oldValue: P, newValue: P) {
-      cl(observable, oldValue, newValue)
-    }
-  }
+  def when(condition: => jfxbv.ObservableBooleanValue) = new ConditionBuilder(new jfxbb.When(condition))
 
-  implicit def integer2ObservableNumberValue(i: Int) = new IntegerBinding {
-    def computeValue() = i
-  }
-
-  implicit def long2ObservableNumberValue(i: Long) = new LongBinding {
-    def computeValue() = i
-  }
-
-  implicit def float2ObservableNumberValue(i: Float) = new FloatBinding {
-    def computeValue() = i
-  }
-
-  implicit def double2ObservableNumberValue(i: Double) = new DoubleBinding {
-    def computeValue() = i
-  }
-
-  def min(v1:ObservableNumberValue, values: ObservableNumberValue*) = (v1 /: values)(JFXBindings.min)
-
-  def max(v1:ObservableNumberValue, values: ObservableNumberValue*) = (v1 /: values)(JFXBindings.max)
-
-  def when(condition: => ObservableBooleanValue) = new ConditionBuilder(new When(condition))
-
-  protected class ConditionBuilder(whenBuilder: When) {
-    def then[T](thenExpression: ObservableValue[T, Number]) = new NumberConditionBuilder(whenBuilder.then(thenExpression.delegate.asInstanceOf[ObservableNumberValue]))
-
-    def then(thenExpression: ObservableNumberValue) = new NumberConditionBuilder(whenBuilder.then(thenExpression))
-
+  protected class ConditionBuilder(whenBuilder: jfxbb.When) {
+    def then(thenExpression: jfxbv.ObservableNumberValue) = new NumberConditionBuilder(whenBuilder.then(thenExpression))
     def then(thenExpression: Int) = new NumberConditionBuilder(whenBuilder.then(thenExpression))
-
     def then(thenExpression: Long) = new NumberConditionBuilder(whenBuilder.then(thenExpression))
-
     def then(thenExpression: Float) = new NumberConditionBuilder(whenBuilder.then(thenExpression))
-
     def then(thenExpression: Double) = new NumberConditionBuilder(whenBuilder.then(thenExpression))
 
-    def then[T](thenExpression: ObservableValue[Boolean, java.lang.Boolean]) = new BooleanConditionBuilder(whenBuilder.then(thenExpression.delegate.asInstanceOf[ObservableBooleanValue]))
-
-    def then[T](thenExpression: ObservableBooleanValue) = new BooleanConditionBuilder(whenBuilder.then(thenExpression))
-
+    def then[T](thenExpression: jfxbv.ObservableBooleanValue) = new BooleanConditionBuilder(whenBuilder.then(thenExpression))
     def then[T](thenExpression: Boolean) = new BooleanConditionBuilder(whenBuilder.then(thenExpression))
 
-    def then[T](thenExpression: ObservableStringValue) = new StringConditionBuilder(whenBuilder.then(thenExpression))
-
+    def then[T](thenExpression: jfxbv.ObservableStringValue) = new StringConditionBuilder(whenBuilder.then(thenExpression))
     def then[T](thenExpression: String) = new StringConditionBuilder(whenBuilder.then(thenExpression))
 
-    def then[T](thenExpression: ObservableValue[T, T]) = new ObjectConditionBuilder[T](whenBuilder.then(thenExpression.delegate.asInstanceOf[ObservableObjectValue[T]]))
-
-    def then[T](thenExpression: ObservableObjectValue[T]) = new ObjectConditionBuilder[T](whenBuilder.then(thenExpression))
-
+    // explicit conversion needed due to T(Any) typed method
+    def then[T](thenExpression: ObservableValue[T, T]) = new ObjectConditionBuilder[T](whenBuilder.then(ObservableValue.sfxObservableValue2jfxObjectValue[T](thenExpression)))
+    def then[T](thenExpression: jfxbv.ObservableObjectValue[T]) = new ObjectConditionBuilder[T](whenBuilder.then(thenExpression))
     def then[T](thenExpression: T) = new ObjectConditionBuilder[T](whenBuilder.then(thenExpression))
   }
 
-  protected class NumberConditionBuilder(whenBuilder: When#NumberConditionBuilder) {
-    def otherwise[T](otherwiseExpression: ObservableValue[T, Number]) = whenBuilder.otherwise(otherwiseExpression.delegate.asInstanceOf[ObservableNumberValue])
-
-    def otherwise(otherwiseExpression: ObservableNumberValue) = whenBuilder.otherwise(otherwiseExpression)
-
+  protected class NumberConditionBuilder(whenBuilder: jfxbb.When#NumberConditionBuilder) {
+    def otherwise(otherwiseExpression: jfxbv.ObservableNumberValue) = whenBuilder.otherwise(otherwiseExpression)
     def otherwise(otherwiseExpression: Int) = whenBuilder.otherwise(otherwiseExpression)
-
     def otherwise(otherwiseExpression: Long) = whenBuilder.otherwise(otherwiseExpression)
-
     def otherwise(otherwiseExpression: Float) = whenBuilder.otherwise(otherwiseExpression)
-
     def otherwise(otherwiseExpression: Double) = whenBuilder.otherwise(otherwiseExpression)
   }
 
-  protected class BooleanConditionBuilder(whenBuilder: When#BooleanConditionBuilder) {
-    def otherwise(otherwiseExpression: ObservableValue[Boolean, java.lang.Boolean]) = whenBuilder.otherwise(otherwiseExpression.delegate.asInstanceOf[ObservableBooleanValue])
-
-    def otherwise(otherwiseExpression: ObservableBooleanValue) = whenBuilder.otherwise(otherwiseExpression)
-
+  protected class BooleanConditionBuilder(whenBuilder: jfxbb.When#BooleanConditionBuilder) {
+    def otherwise(otherwiseExpression: jfxbv.ObservableBooleanValue) = whenBuilder.otherwise(otherwiseExpression)
     def otherwise(otherwiseExpression: Boolean) = whenBuilder.otherwise(otherwiseExpression)
   }
 
-  protected class StringConditionBuilder(whenBuilder: When#StringConditionBuilder) {
-    def otherwise(otherwiseExpression: ObservableStringValue) = whenBuilder.otherwise(otherwiseExpression)
-
+  protected class StringConditionBuilder(whenBuilder: jfxbb.When#StringConditionBuilder) {
+    def otherwise(otherwiseExpression: jfxbv.ObservableStringValue) = whenBuilder.otherwise(otherwiseExpression)
     def otherwise(otherwiseExpression: String) = whenBuilder.otherwise(otherwiseExpression)
   }
 
-  protected class ObjectConditionBuilder[T](whenBuilder: When#ObjectConditionBuilder[T]) {
-    def otherwise(otherwiseExpression: ObservableValue[T, T]) = whenBuilder.otherwise(otherwiseExpression.delegate.asInstanceOf[ObservableObjectValue[T]])
-
-    def otherwise(otherwiseExpression: ObservableObjectValue[T]) = whenBuilder.otherwise(otherwiseExpression)
-
+  protected class ObjectConditionBuilder[T](whenBuilder: jfxbb.When#ObjectConditionBuilder[T]) {
+    // explicit conversion needed due to T(Any) typed method
+    def otherwise(otherwiseExpression: ObservableValue[T, T]) = whenBuilder.otherwise(ObservableValue.sfxObservableValue2jfxObjectValue[T](otherwiseExpression))
+    def otherwise(otherwiseExpression: jfxbv.ObservableObjectValue[T]) = whenBuilder.otherwise(otherwiseExpression)
     def otherwise(otherwiseExpression: T) = whenBuilder.otherwise(otherwiseExpression)
   }
 }

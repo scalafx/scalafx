@@ -28,15 +28,16 @@
 package scalafx.beans.property
 
 import org.scalatest.matchers.ShouldMatchers._
-import scalafx.beans.binding.Bindings._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import javafx.beans.{property => jfxbp}
+import scalafx.Includes._
 
 class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var longProperty:LongProperty = null
-  var longProperty2:LongProperty = null
-  var longProperty3:LongProperty = null
-  var booleanProperty:BooleanProperty = null
+  var longProperty: jfxbp.LongProperty = null
+  var longProperty2: jfxbp.LongProperty = null
+  var longProperty3: jfxbp.LongProperty = null
+  var booleanProperty: jfxbp.BooleanProperty = null
 
   override def beforeEach() {
     longProperty = new LongProperty(bean, "Test Long")
@@ -166,7 +167,7 @@ class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix equality with a property" in {
-    booleanProperty <== longProperty == longProperty2
+    booleanProperty <== longProperty === longProperty2
     longProperty() = 532
     longProperty2() = 321
     booleanProperty() should be (false)
@@ -175,7 +176,7 @@ class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix equality with a constant" in {
-    booleanProperty <== longProperty == 532
+    booleanProperty <== longProperty === 532
     longProperty() = 321
     booleanProperty() should be (false)
     longProperty() = 532
@@ -183,7 +184,7 @@ class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix inequality with a property" in {
-    booleanProperty <== longProperty != longProperty2
+    booleanProperty <== longProperty =!= longProperty2
     longProperty() = 231
     longProperty2() = 981
     booleanProperty() should be (true)
@@ -192,7 +193,7 @@ class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix inequality with a constant" in {
-    booleanProperty <== longProperty != 231
+    booleanProperty <== longProperty =!= 231
     longProperty() = 981
     booleanProperty() should be (true)
     longProperty() = 231
@@ -200,7 +201,7 @@ class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support variable precision equality via +- operator" in {
-    booleanProperty <== longProperty == 532+-1.1
+    booleanProperty <== longProperty === 532+-1.1
     longProperty() = 534
     booleanProperty() should be (false)
     longProperty() = 533
@@ -210,7 +211,7 @@ class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support variable precision inequality via +- operator" in {
-    booleanProperty <== longProperty != 532+-1.1
+    booleanProperty <== longProperty =!= 532+-1.1
     longProperty() = 534
     booleanProperty() should be (true)
     longProperty() = 533

@@ -28,15 +28,16 @@
 package scalafx.beans.property
 
 import org.scalatest.matchers.ShouldMatchers._
-import scalafx.beans.binding.Bindings._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import javafx.beans.{property => jfxbp}
+import scalafx.Includes._
 
 class ReadOnlyFloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var readOnlyFloatProperty:ReadOnlyFloatProperty = null
-  var floatProperty1:FloatProperty = null
-  var floatProperty2:FloatProperty = null
-  var booleanProperty:BooleanProperty = null
+  var readOnlyFloatProperty: jfxbp.ReadOnlyFloatProperty = null
+  var floatProperty1: jfxbp.FloatProperty = null
+  var floatProperty2: jfxbp.FloatProperty = null
+  var booleanProperty: jfxbp.BooleanProperty = null
 
   override def beforeEach() {
     readOnlyFloatProperty = new ReadOnlyFloatProperty(bean, "Test Read-only Float", 50)
@@ -126,7 +127,7 @@ class ReadOnlyFloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix equality with a property" in {
-    booleanProperty <== readOnlyFloatProperty == floatProperty1
+    booleanProperty <== readOnlyFloatProperty === floatProperty1
     floatProperty1() = 23
     booleanProperty() should be (false)
     floatProperty1() = 50
@@ -134,14 +135,14 @@ class ReadOnlyFloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix equality with a constant" in {
-    booleanProperty <== readOnlyFloatProperty == 532
+    booleanProperty <== readOnlyFloatProperty === 532
     booleanProperty() should be (false)
-    booleanProperty <== readOnlyFloatProperty == 50
+    booleanProperty <== readOnlyFloatProperty === 50
     booleanProperty() should be (true)
   }
 
   it should "support bindable infix inequality with a property" in {
-    booleanProperty <== readOnlyFloatProperty != floatProperty1
+    booleanProperty <== readOnlyFloatProperty =!= floatProperty1
     floatProperty1() = 35
     booleanProperty() should be (true)
     floatProperty1() = 50
@@ -149,27 +150,27 @@ class ReadOnlyFloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix inequality with a constant" in {
-    booleanProperty <== readOnlyFloatProperty != 231
+    booleanProperty <== readOnlyFloatProperty =!= 231
     booleanProperty() should be (true)
-    booleanProperty <== readOnlyFloatProperty != 50
+    booleanProperty <== readOnlyFloatProperty =!= 50
     booleanProperty() should be (false)
   }
 
   it should "support variable precision equality via +- operator" in {
-    booleanProperty <== readOnlyFloatProperty == 55+-1.1
+    booleanProperty <== readOnlyFloatProperty === 55+-1.1
     booleanProperty() should be (false)
-    booleanProperty <== readOnlyFloatProperty == 51+-1.1
+    booleanProperty <== readOnlyFloatProperty === 51+-1.1
     booleanProperty() should be (true)
-    booleanProperty <== readOnlyFloatProperty == 49+-1.1
+    booleanProperty <== readOnlyFloatProperty === 49+-1.1
     booleanProperty() should be (true)
   }
 
   it should "support variable precision inequality via +- operator" in {
-    booleanProperty <== readOnlyFloatProperty != 55+-1.1
+    booleanProperty <== readOnlyFloatProperty =!= 55+-1.1
     booleanProperty() should be (true)
-    booleanProperty <== readOnlyFloatProperty != 51+-1.1
+    booleanProperty <== readOnlyFloatProperty =!= 51+-1.1
     booleanProperty() should be (false)
-    booleanProperty <== readOnlyFloatProperty != 49+-1.1
+    booleanProperty <== readOnlyFloatProperty =!= 49+-1.1
     booleanProperty() should be (false)
   }
 

@@ -27,19 +27,23 @@
 
 package scalafx.beans.property
 
+import javafx.beans.{property => jfxbp}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import scalafx.Includes._
 
 class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var booleanProperty: BooleanProperty = null
-  var booleanProperty2: BooleanProperty = null
-  var booleanProperty3: BooleanProperty = null
+  var booleanProperty: jfxbp.BooleanProperty = null
+  var booleanProperty2: jfxbp.BooleanProperty = null
+  var booleanProperty3: jfxbp.BooleanProperty = null
+  var sfxBooleanProperty: BooleanProperty = null
 
   override def beforeEach() {
     booleanProperty = new BooleanProperty(bean, "Test Boolean")
     booleanProperty2 = new BooleanProperty(bean, "Test Boolean 2")
     booleanProperty3 = new BooleanProperty(bean, "Test Boolean 3")
+    sfxBooleanProperty = new BooleanProperty(bean, "Test SFX Boolean")
   }
 
   "A Boolean Property" should "have a default value of false" in {
@@ -94,8 +98,8 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty2() should be (true)
   }
 
-  it should "support bindable infix equality (==) with a property" in {
-    booleanProperty <== booleanProperty2 == booleanProperty3
+  it should "support bindable infix equality (===) with a property" in {
+    booleanProperty <== booleanProperty2 === booleanProperty3
     booleanProperty2() = true
     booleanProperty3() = false
     booleanProperty() should be (false)
@@ -103,17 +107,17 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should be (true)
   }
 
-  it should "support bindable infix equality (==) with a jfx property" in {
-    booleanProperty <== booleanProperty2 == booleanProperty3.delegate
+  it should "support bindable infix equality (===) with an sfx property" in {
+    booleanProperty <== booleanProperty2 === sfxBooleanProperty
     booleanProperty2() = true
-    booleanProperty3() = false
+    sfxBooleanProperty() = false
     booleanProperty() should be (false)
-    booleanProperty3() = true
+    sfxBooleanProperty() = true
     booleanProperty() should be (true)
   }
 
-  it should "support bindable infix inequality (!=) with a property" in {
-    booleanProperty <== booleanProperty2 != booleanProperty3
+  it should "support bindable infix inequality (=!=) with a property" in {
+    booleanProperty <== booleanProperty2 =!= booleanProperty3
     booleanProperty2() = true
     booleanProperty3() = false
     booleanProperty() should be (true)
@@ -121,12 +125,12 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should be (false)
   }
 
-  it should "support bindable infix inequality (!=) with a jfx property" in {
-    booleanProperty <== booleanProperty2 != booleanProperty3.delegate
+  it should "support bindable infix inequality (=!=) with an sfx property" in {
+    booleanProperty <== booleanProperty2 =!= sfxBooleanProperty
     booleanProperty2() = true
-    booleanProperty3() = false
+    sfxBooleanProperty() = false
     booleanProperty() should be (true)
-    booleanProperty3() = true
+    sfxBooleanProperty() = true
     booleanProperty() should be (false)
   }
 
@@ -139,12 +143,12 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should be (true)
   }
 
-  it should "support bindable infix and (&&) with a jfx property" in {
-    booleanProperty <== booleanProperty2 && booleanProperty3.delegate
+  it should "support bindable infix and (&&) with an sfx property" in {
+    booleanProperty <== booleanProperty2 && sfxBooleanProperty
     booleanProperty2() = true
-    booleanProperty3() = false
+    sfxBooleanProperty() = false
     booleanProperty() should be (false)
-    booleanProperty3() = true
+    sfxBooleanProperty() = true
     booleanProperty() should be (true)
   }
 
@@ -157,10 +161,10 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty() should be (false)
   }
 
-  it should "support bindable infix or (||) with a jfx property" in {
-    booleanProperty <== booleanProperty2 || booleanProperty3.delegate
+  it should "support bindable infix or (||) with an sfx property" in {
+    booleanProperty <== booleanProperty2 || sfxBooleanProperty
     booleanProperty2() = true
-    booleanProperty3() = false
+    sfxBooleanProperty() = false
     booleanProperty() should be (true)
     booleanProperty2() = false
     booleanProperty() should be (false)
@@ -176,7 +180,7 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
 
   it should "do the right thing with order of operations" in {
     // order of operations should be ! > && > || > ==
-    booleanProperty <== !booleanProperty3 == booleanProperty2 || !booleanProperty2 && !booleanProperty3
+    booleanProperty <== !booleanProperty3 === booleanProperty2 || !booleanProperty2 && !booleanProperty3
     booleanProperty2() = false
     booleanProperty3() = false
     booleanProperty() should be (true)
@@ -208,4 +212,6 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
     invalidateCount should equal (1)
     changeCount should equal (1)
   }
+
+  it should "support comparison starting with boolean constants" is (pending)
 }

@@ -27,14 +27,13 @@
 
 package scalafx.beans.binding
 
+import javafx.beans.{binding => jfxbb}
 import scalafx.beans.value.ObservableValue
-import javafx.beans.binding.{NumberBinding => JFXNumberBinding}
 
 object NumberBinding {
   implicit def sfxNumberBinding2jfx(nb: NumberBinding) = nb.delegate
-  implicit def jfxNumberBinding2sfx(nb: JFXNumberBinding) = new NumberBinding(nb)
 }
 
-class NumberBinding(override val delegate: JFXNumberBinding) extends NumberExpression(delegate) with ObservableValue[Number, Number] {
+class NumberBinding(override val delegate: jfxbb.NumberBinding) extends NumberExpression(delegate) with ObservableValue[Number, Number] {
   def value = delegate.getValue
 }

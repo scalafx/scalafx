@@ -1,5 +1,3 @@
-package scalafx.beans.property
-
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -27,14 +25,17 @@ package scalafx.beans.property
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+package scalafx.beans.property
+
 import javafx.beans.property.{ReadOnlyIntegerPropertyBase, ReadOnlyIntegerProperty => JFXReadOnlyIntegerProperty}
 import scalafx.beans.binding.NumberExpression
+import scalafx.util.SFXDelegate
 
 object ReadOnlyIntegerProperty {
   implicit def sfxReadOnlyIntegerProperty2jfx(roip: ReadOnlyIntegerProperty) = roip.delegate
 }
 
-class ReadOnlyIntegerProperty(override val delegate: JFXReadOnlyIntegerProperty) extends NumberExpression(delegate) with ReadOnlyProperty[Int, Number] {
+class ReadOnlyIntegerProperty(override val delegate: JFXReadOnlyIntegerProperty) extends NumberExpression(delegate) with ReadOnlyProperty[Int, Number] with SFXDelegate[JFXReadOnlyIntegerProperty] {
   def this(bean: Object, name: String, value: Int) = this (new ReadOnlyIntegerPropertyBase() {
     def getBean = bean
     def getName = name

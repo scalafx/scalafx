@@ -27,59 +27,48 @@
 
 package scalafx.beans.binding
 
-import javafx.beans.binding.{StringExpression => JFXStringExpression}
-import scalafx.beans.value.ObservableValue
+import javafx.beans.{binding => jfxbb}
 import javafx.beans.value.ObservableStringValue
 
 object StringExpression {
   implicit def sfxStringExpression2jfx(se: StringExpression) = se.delegate
-  implicit def jfxStringExpression2sfx(se: JFXStringExpression) = new StringExpression(se)
 }
 
-class StringExpression(val delegate: JFXStringExpression) {
-  def ==(v: Null) = new BooleanBinding(delegate.isNull)
-  def ==(v: String) = new BooleanBinding(delegate.isEqualTo(v))
-  def ==(v: ObservableStringValue) = new BooleanBinding(delegate.isEqualTo(v))
-  def ==(v: StringExpression) = new BooleanBinding(delegate.isEqualTo(v.delegate))
+class StringExpression(val delegate: jfxbb.StringExpression) {
+  def ===(v: Null) = delegate.isNull
+  def ===(v: String) = delegate.isEqualTo(v)
+  def ===(v: ObservableStringValue) = delegate.isEqualTo(v)
 
-  def !=(v: Null) = new BooleanBinding(delegate.isNotNull)
-  def !=(v: String) = new BooleanBinding(delegate.isNotEqualTo(v))
-  def !=(v: ObservableStringValue) = new BooleanBinding(delegate.isNotEqualTo(v))
-  def !=(v: StringExpression) = new BooleanBinding(delegate.isNotEqualTo(v.delegate))
+  def =!=(v: Null) = delegate.isNotNull
+  def =!=(v: String) = delegate.isNotEqualTo(v)
+  def =!=(v: ObservableStringValue) = delegate.isNotEqualTo(v)
 
-  def ==~(v: Null) = new BooleanBinding(delegate.isNull)
-  def ==~(v: String) = new BooleanBinding(delegate.isEqualToIgnoreCase(v))
-  def ==~(v: ObservableStringValue) = new BooleanBinding(delegate.isEqualToIgnoreCase(v))
-  def ==~(v: StringExpression) = new BooleanBinding(delegate.isEqualToIgnoreCase(v.delegate))
+  def ==~(v: Null) = delegate.isNull
+  def ==~(v: String) = delegate.isEqualToIgnoreCase(v)
+  def ==~(v: ObservableStringValue) = delegate.isEqualToIgnoreCase(v)
 
-  def !=~(v: Null) = new BooleanBinding(delegate.isNotNull)
-  def !=~(v: String) = new BooleanBinding(delegate.isNotEqualToIgnoreCase(v))
-  def !=~(v: ObservableStringValue) = new BooleanBinding(delegate.isNotEqualToIgnoreCase(v))
-  def !=~(v: StringExpression) = new BooleanBinding(delegate.isNotEqualToIgnoreCase(v.delegate))
+  def !=~(v: Null) = delegate.isNotNull
+  def !=~(v: String) = delegate.isNotEqualToIgnoreCase(v)
+  def !=~(v: ObservableStringValue) = delegate.isNotEqualToIgnoreCase(v)
 
-  def <(v: Null) = new BooleanBinding(delegate.lessThan(v.asInstanceOf[String]))
-  def <(v: String) = new BooleanBinding(delegate.lessThan(v))
-  def <(v: ObservableStringValue) = new BooleanBinding(delegate.lessThan(v))
-  def <(v: StringExpression) = new BooleanBinding(delegate.lessThan(v.delegate))
+  def <(v: Null) = delegate.lessThan(v.asInstanceOf[String])
+  def <(v: String) = delegate.lessThan(v)
+  def <(v: ObservableStringValue) = delegate.lessThan(v)
 
-  def <=(v: Null) = new BooleanBinding(delegate.lessThanOrEqualTo(v.asInstanceOf[String]))
-  def <=(v: String) = new BooleanBinding(delegate.lessThanOrEqualTo(v))
-  def <=(v: ObservableStringValue) = new BooleanBinding(delegate.lessThanOrEqualTo(v))
-  def <=(v: StringExpression) = new BooleanBinding(delegate.lessThanOrEqualTo(v.delegate))
+  def <=(v: Null) = delegate.lessThanOrEqualTo(v.asInstanceOf[String])
+  def <=(v: String) = delegate.lessThanOrEqualTo(v)
+  def <=(v: ObservableStringValue) = delegate.lessThanOrEqualTo(v)
 
-  def >(v: Null) = new BooleanBinding(delegate.greaterThan(v.asInstanceOf[String]))
-  def >(v: String) = new BooleanBinding(delegate.greaterThan(v))
-  def >(v: ObservableStringValue) = new BooleanBinding(delegate.greaterThan(v))
-  def >(v: StringExpression) = new BooleanBinding(delegate.greaterThan(v.delegate))
+  def >(v: Null) = delegate.greaterThan(v.asInstanceOf[String])
+  def >(v: String) = delegate.greaterThan(v)
+  def >(v: ObservableStringValue) = delegate.greaterThan(v)
 
-  def >=(v: Null) = new BooleanBinding(delegate.greaterThanOrEqualTo(v.asInstanceOf[String]))
-  def >=(v: String) = new BooleanBinding(delegate.greaterThanOrEqualTo(v))
-  def >=(v: ObservableStringValue) = new BooleanBinding(delegate.greaterThanOrEqualTo(v))
-  def >=(v: StringExpression) = new BooleanBinding(delegate.greaterThanOrEqualTo(v.delegate))
+  def >=(v: Null) = delegate.greaterThanOrEqualTo(v.asInstanceOf[String])
+  def >=(v: String) = delegate.greaterThanOrEqualTo(v)
+  def >=(v: ObservableStringValue) = delegate.greaterThanOrEqualTo(v)
 
   // Kind of an odd case that concat is not observable, but this is how it is coded in JavaFX
-  def +(v: Null) = new StringExpression(delegate.concat(v.asInstanceOf))
-  def +(v: ObservableStringValue) = new StringExpression(delegate.concat(v))
-  def +[T, J](v: ObservableValue[T, J]) = new StringExpression(delegate.concat(v.delegate))
-  def +(v: Any) = new StringExpression(delegate.concat(v))
+  def +(v: Null) = delegate.concat(v.asInstanceOf)
+  def +(v: ObservableStringValue) = delegate.concat(v)
+  def +(v: Any) = delegate.concat(v)
 }

@@ -28,15 +28,16 @@
 package scalafx.beans.property
 
 import org.scalatest.matchers.ShouldMatchers._
-import scalafx.beans.binding.Bindings._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import javafx.beans.{property => jfxbp}
+import scalafx.Includes._
 
 class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var doubleProperty:DoubleProperty = null
-  var doubleProperty2:DoubleProperty = null
-  var doubleProperty3:DoubleProperty = null
-  var booleanProperty:BooleanProperty = null
+  var doubleProperty: jfxbp.DoubleProperty = null
+  var doubleProperty2: jfxbp.DoubleProperty = null
+  var doubleProperty3: jfxbp.DoubleProperty = null
+  var booleanProperty: jfxbp.BooleanProperty = null
 
   override def beforeEach() {
     doubleProperty = new DoubleProperty(bean, "Test Double")
@@ -156,7 +157,7 @@ class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix equality with a property" in {
-    booleanProperty <== doubleProperty == doubleProperty2
+    booleanProperty <== doubleProperty === doubleProperty2
     doubleProperty() = 532
     doubleProperty2() = 321
     booleanProperty() should be (false)
@@ -165,7 +166,7 @@ class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix equality with a constant" in {
-    booleanProperty <== doubleProperty == 532
+    booleanProperty <== doubleProperty === 532
     doubleProperty() = 321
     booleanProperty() should be (false)
     doubleProperty() = 532
@@ -173,7 +174,7 @@ class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix inequality with a property" in {
-    booleanProperty <== doubleProperty != doubleProperty2
+    booleanProperty <== doubleProperty =!= doubleProperty2
     doubleProperty() = 231
     doubleProperty2() = 981
     booleanProperty() should be (true)
@@ -182,7 +183,7 @@ class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix inequality with a constant" in {
-    booleanProperty <== doubleProperty != 231
+    booleanProperty <== doubleProperty =!= 231
     doubleProperty() = 981
     booleanProperty() should be (true)
     doubleProperty() = 231
@@ -190,7 +191,7 @@ class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support variable precision equality via +- operator" in {
-    booleanProperty <== doubleProperty == 532+-.1
+    booleanProperty <== doubleProperty === 532+-.1
     doubleProperty() = 533
     booleanProperty() should be (false)
     doubleProperty() = 532.09
@@ -200,7 +201,7 @@ class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support variable precision inequality via +- operator" in {
-    booleanProperty <== doubleProperty != 532+-.1
+    booleanProperty <== doubleProperty =!= 532+-.1
     doubleProperty() = 533
     booleanProperty() should be (true)
     doubleProperty() = 532.09

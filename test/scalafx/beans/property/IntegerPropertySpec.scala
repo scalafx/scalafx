@@ -28,15 +28,16 @@
 package scalafx.beans.property
 
 import org.scalatest.matchers.ShouldMatchers._
-import scalafx.beans.binding.Bindings._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import javafx.beans.{property => jfxbp}
+import scalafx.Includes._
 
 class IntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var integerProperty:IntegerProperty = null
-  var integerProperty2:IntegerProperty = null
-  var integerProperty3:IntegerProperty = null
-  var booleanProperty:BooleanProperty = null
+  var integerProperty: jfxbp.IntegerProperty = null
+  var integerProperty2: jfxbp.IntegerProperty = null
+  var integerProperty3: jfxbp.IntegerProperty = null
+  var booleanProperty: jfxbp.BooleanProperty = null
 
   override def beforeEach() {
     integerProperty = new IntegerProperty(bean, "Test Integer")
@@ -166,7 +167,7 @@ class IntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix equality with a property" in {
-    booleanProperty <== integerProperty == integerProperty2
+    booleanProperty <== integerProperty === integerProperty2
     integerProperty() = 532
     integerProperty2() = 321
     booleanProperty() should be (false)
@@ -175,7 +176,7 @@ class IntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix equality with a constant" in {
-    booleanProperty <== integerProperty == 532
+    booleanProperty <== integerProperty === 532
     integerProperty() = 321
     booleanProperty() should be (false)
     integerProperty() = 532
@@ -183,7 +184,7 @@ class IntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix inequality with a property" in {
-    booleanProperty <== integerProperty != integerProperty2
+    booleanProperty <== integerProperty =!= integerProperty2
     integerProperty() = 231
     integerProperty2() = 981
     booleanProperty() should be (true)
@@ -192,7 +193,7 @@ class IntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix inequality with a constant" in {
-    booleanProperty <== integerProperty != 231
+    booleanProperty <== integerProperty =!= 231
     integerProperty() = 981
     booleanProperty() should be (true)
     integerProperty() = 231
@@ -200,7 +201,7 @@ class IntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support variable precision equality via +- operator" in {
-    booleanProperty <== integerProperty == 532+-1.1
+    booleanProperty <== integerProperty === 532+-1.1
     integerProperty() = 534
     booleanProperty() should be (false)
     integerProperty() = 533
@@ -210,7 +211,7 @@ class IntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support variable precision inequality via +- operator" in {
-    booleanProperty <== integerProperty != 532+-1.1
+    booleanProperty <== integerProperty =!= 532+-1.1
     integerProperty() = 534
     booleanProperty() should be (true)
     integerProperty() = 533

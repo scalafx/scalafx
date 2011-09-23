@@ -27,13 +27,12 @@
 
 package scalafx.beans.binding
 
-import javafx.beans.binding.{NumberExpression => JFXNumberExpression}
+import javafx.beans.{binding => jfxbb}
 import javafx.beans.value.ObservableNumberValue
 import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
 
 object NumberExpression {
   implicit def sfxNumberExpression2jfx(ne: NumberExpression) = ne.delegate
-  implicit def jfxNumberExpression2sfx(ne: JFXNumberExpression) = new NumberExpression(ne)
   case class VariablePrecisionNumber(number:Double, var precision:Double = 0) {
     def +-(p:Double):VariablePrecisionNumber = {
       precision = p
@@ -42,80 +41,70 @@ object NumberExpression {
   }
 }
 
-class NumberExpression(val delegate: JFXNumberExpression) {
-  def +(v: Int) = new NumberBinding(delegate.add(v))
-  def +(v: Long) = new NumberBinding(delegate.add(v))
-  def +(v: Float) = new NumberBinding(delegate.add(v))
-  def +(v: Double) = new NumberBinding(delegate.add(v))
-  def +(v: ObservableNumberValue) = new NumberBinding(delegate.add(v))
-  def +(v: NumberExpression) = new NumberBinding(delegate.add(v.delegate))
+class NumberExpression(val delegate: jfxbb.NumberExpression) {
+  def +(v: Int) = delegate.add(v)
+  def +(v: Long) = delegate.add(v)
+  def +(v: Float) = delegate.add(v)
+  def +(v: Double) = delegate.add(v)
+  def +(v: ObservableNumberValue) = delegate.add(v)
 
-  def -(v: Int) = new NumberBinding(delegate.subtract(v))
-  def -(v: Long) = new NumberBinding(delegate.subtract(v))
-  def -(v: Float) = new NumberBinding(delegate.subtract(v))
-  def -(v: Double) = new NumberBinding(delegate.subtract(v))
-  def -(v: ObservableNumberValue) = new NumberBinding(delegate.subtract(v))
-  def -(v: NumberExpression) = new NumberBinding(delegate.subtract(v.delegate))
+  def -(v: Int) = delegate.subtract(v)
+  def -(v: Long) = delegate.subtract(v)
+  def -(v: Float) = delegate.subtract(v)
+  def -(v: Double) = delegate.subtract(v)
+  def -(v: ObservableNumberValue) = delegate.subtract(v)
 
-  def *(v: Int) = new NumberBinding(delegate.multiply(v))
-  def *(v: Long) = new NumberBinding(delegate.multiply(v))
-  def *(v: Float) = new NumberBinding(delegate.multiply(v))
-  def *(v: Double) = new NumberBinding(delegate.multiply(v))
-  def *(v: ObservableNumberValue) = new NumberBinding(delegate.multiply(v))
-  def *(v: NumberExpression) = new NumberBinding(delegate.multiply(v.delegate))
+  def *(v: Int) = delegate.multiply(v)
+  def *(v: Long) = delegate.multiply(v)
+  def *(v: Float) = delegate.multiply(v)
+  def *(v: Double) = delegate.multiply(v)
+  def *(v: ObservableNumberValue) = delegate.multiply(v)
 
-  def /(v: Int) = new NumberBinding(delegate.divide(v))
-  def /(v: Long) = new NumberBinding(delegate.divide(v))
-  def /(v: Float) = new NumberBinding(delegate.divide(v))
-  def /(v: Double) = new NumberBinding(delegate.divide(v))
-  def /(v: ObservableNumberValue) = new NumberBinding(delegate.divide(v))
-  def /(v: NumberExpression) = new NumberBinding(delegate.divide(v.delegate))
+  def /(v: Int) = delegate.divide(v)
+  def /(v: Long) = delegate.divide(v)
+  def /(v: Float) = delegate.divide(v)
+  def /(v: Double) = delegate.divide(v)
+  def /(v: ObservableNumberValue) = delegate.divide(v)
 
-  def ==(v: Int) = new BooleanBinding(delegate.isEqualTo(v))
-  def ==(v: Long) = new BooleanBinding(delegate.isEqualTo(v))
-  def ==(v: Float) = new BooleanBinding(delegate.isEqualTo(v, 0))
-  def ==(v: Double) = new BooleanBinding(delegate.isEqualTo(v, 0))
-  def ==(v: VariablePrecisionNumber) = new BooleanBinding(delegate.isEqualTo(v.number, v.precision))
-  def ==(v: ObservableNumberValue) = new BooleanBinding(delegate.isEqualTo(v))
-  def ==(v: NumberExpression) = new BooleanBinding(delegate.isEqualTo(v.delegate))
+  def ===(v: Int) = delegate.isEqualTo(v)
+  def ===(v: Long) = delegate.isEqualTo(v)
+  def ===(v: Float) = delegate.isEqualTo(v, 0)
+  def ===(v: Double) = delegate.isEqualTo(v, 0)
+  def ===(v: VariablePrecisionNumber) = delegate.isEqualTo(v.number, v.precision)
+  def ===(v: ObservableNumberValue) = delegate.isEqualTo(v)
 
-  def !=(v: Int) = new BooleanBinding(delegate.isNotEqualTo(v))
-  def !=(v: Long) = new BooleanBinding(delegate.isNotEqualTo(v))
-  def !=(v: Float) = new BooleanBinding(delegate.isNotEqualTo(v, 0))
-  def !=(v: Double) = new BooleanBinding(delegate.isNotEqualTo(v, 0))
-  def !=(v: VariablePrecisionNumber) = new BooleanBinding(delegate.isNotEqualTo(v.number, v.precision))
-  def !=(v: ObservableNumberValue) = new BooleanBinding(delegate.isNotEqualTo(v))
-  def !=(v: NumberExpression) = new BooleanBinding(delegate.isNotEqualTo(v.delegate))
+  def =!=(v: Int) = delegate.isNotEqualTo(v)
+  def =!=(v: Long) = delegate.isNotEqualTo(v)
+  def =!=(v: Float) = delegate.isNotEqualTo(v, 0)
+  def =!=(v: Double) = delegate.isNotEqualTo(v, 0)
+  def =!=(v: VariablePrecisionNumber) = delegate.isNotEqualTo(v.number, v.precision)
+  def =!=(v: ObservableNumberValue) = delegate.isNotEqualTo(v)
 
-  def <(v: Int) = new BooleanBinding(delegate.lessThan(v))
-  def <(v: Long) = new BooleanBinding(delegate.lessThan(v))
-  def <(v: Float) = new BooleanBinding(delegate.lessThan(v))
-  def <(v: Double) = new BooleanBinding(delegate.lessThan(v))
-  def <(v: ObservableNumberValue) = new BooleanBinding(delegate.lessThan(v))
-  def <(v: NumberExpression) = new BooleanBinding(delegate.lessThan(v.delegate))
+  def <(v: Int) = delegate.lessThan(v)
+  def <(v: Long) = delegate.lessThan(v)
+  def <(v: Float) = delegate.lessThan(v)
+  def <(v: Double) = delegate.lessThan(v)
+  def <(v: ObservableNumberValue) = delegate.lessThan(v)
 
-  def >(v: Int) = new BooleanBinding(delegate.greaterThan(v))
-  def >(v: Long) = new BooleanBinding(delegate.greaterThan(v))
-  def >(v: Float) = new BooleanBinding(delegate.greaterThan(v))
-  def >(v: Double) = new BooleanBinding(delegate.greaterThan(v))
-  def >(v: ObservableNumberValue) = new BooleanBinding(delegate.greaterThan(v))
-  def >(v: NumberExpression) = new BooleanBinding(delegate.greaterThan(v.delegate))
+  def >(v: Int) = delegate.greaterThan(v)
+  def >(v: Long) = delegate.greaterThan(v)
+  def >(v: Float) = delegate.greaterThan(v)
+  def >(v: Double) = delegate.greaterThan(v)
+  def >(v: ObservableNumberValue) = delegate.greaterThan(v)
 
-  def <=(v: Int) = new BooleanBinding(delegate.lessThanOrEqualTo(v))
-  def <=(v: Long) = new BooleanBinding(delegate.lessThanOrEqualTo(v))
-  def <=(v: Float) = new BooleanBinding(delegate.lessThanOrEqualTo(v))
-  def <=(v: Double) = new BooleanBinding(delegate.lessThanOrEqualTo(v))
-  def <=(v: ObservableNumberValue) = new BooleanBinding(delegate.lessThanOrEqualTo(v))
-  def <=(v: NumberExpression) = new BooleanBinding(delegate.lessThanOrEqualTo(v.delegate))
+  def <=(v: Int) = delegate.lessThanOrEqualTo(v)
+  def <=(v: Long) = delegate.lessThanOrEqualTo(v)
+  def <=(v: Float) = delegate.lessThanOrEqualTo(v)
+  def <=(v: Double) = delegate.lessThanOrEqualTo(v)
+  def <=(v: ObservableNumberValue) = delegate.lessThanOrEqualTo(v)
 
-  def >=(v: Int) = new BooleanBinding(delegate.greaterThanOrEqualTo(v))
-  def >=(v: Long) = new BooleanBinding(delegate.greaterThanOrEqualTo(v))
-  def >=(v: Float) = new BooleanBinding(delegate.greaterThanOrEqualTo(v))
-  def >=(v: Double) = new BooleanBinding(delegate.greaterThanOrEqualTo(v))
-  def >=(v: ObservableNumberValue) = new BooleanBinding(delegate.greaterThanOrEqualTo(v))
-  def >=(v: NumberExpression) = new BooleanBinding(delegate.greaterThanOrEqualTo(v.delegate))
+  def >=(v: Int) = delegate.greaterThanOrEqualTo(v)
+  def >=(v: Long) = delegate.greaterThanOrEqualTo(v)
+  def >=(v: Float) = delegate.greaterThanOrEqualTo(v)
+  def >=(v: Double) = delegate.greaterThanOrEqualTo(v)
+  def >=(v: ObservableNumberValue) = delegate.greaterThanOrEqualTo(v)
 
-  def unary_- = new NumberBinding(delegate.negate())
+  def unary_- = delegate.negate()
 
   def toInt = delegate.intValue
   def toLong = delegate.longValue

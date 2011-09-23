@@ -25,25 +25,24 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+package scalafx.beans
 
-import javafx.beans.property.{StringPropertyBase, StringProperty => JFXStringProperty}
-import scalafx.beans.binding.StringExpression
-import scalafx.util.SFXDelegate
+import javafx.{beans => jfxb}
+import javafx.beans.{value => jfxbv}
+import binding.BindingIncludes
+import property.PropertyIncludes
+import value.ObservableValue
 
-object StringProperty {
-  implicit def sfxStringProperty2jfx(sp: StringProperty) = sp.delegate
-}
+object BeanIncludes extends BeanIncludes
 
-class StringProperty(override val delegate: JFXStringProperty) extends StringExpression(delegate) with Property[String, String] with SFXDelegate[JFXStringProperty] {
-  def this(bean: Object, name: String) = this (new StringPropertyBase() {
-    def getBean = bean
-    def getName = name
-  })
+trait BeanIncludes extends PropertyIncludes with BindingIncludes with LowerPriorityIncludes
 
-  override def value = delegate.get
-
-  def value_=(v: String) {
-    delegate.set(v)
+trait LowerPriorityIncludes {
+  implicit def jfxObservable2sfx(o: jfxb.Observable) = new Observable {
+    override def delegate = o
+  }
+  implicit def jfxObservableValue2sfx[T](ov: jfxbv.ObservableValue[T]) = new ObservableValue[T, T] {
+    override def delegate = ov
+    override def value = delegate.getValue
   }
 }

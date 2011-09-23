@@ -28,18 +28,21 @@
 package scalafx.beans.property
 
 import org.scalatest.matchers.ShouldMatchers._
-import scalafx.beans.binding.Bindings._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import javafx.beans.{property => jfxbp}
+import scalafx.Includes._
 
 class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var objectProperty: ObjectProperty[String] = null
-  var objectProperty2: ObjectProperty[String] = null
-  var booleanProperty: BooleanProperty = null
+  var objectProperty: jfxbp.ObjectProperty[String] = null
+  var objectProperty2: jfxbp.ObjectProperty[String] = null
+  var sfxObjectProperty: ObjectProperty[String] = null
+  var booleanProperty: jfxbp.BooleanProperty = null
 
   override protected def beforeEach() {
     objectProperty = new ObjectProperty[String](bean, "Test Object")
     objectProperty2 = new ObjectProperty[String](bean, "Test Object 2")
+    sfxObjectProperty = new ObjectProperty[String](bean, "SFX Test Object")
     booleanProperty = new BooleanProperty(bean, "Test Boolean")
   }
 
@@ -81,7 +84,7 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
   
   it should "support bindable infix equality with a property" in {
-    booleanProperty <== objectProperty == objectProperty2
+    booleanProperty <== objectProperty === objectProperty2
     objectProperty() = "One"
     objectProperty2() = "Two"
     booleanProperty() should be (false)
@@ -90,18 +93,18 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty.unbind()
   }
   
-  it should "support bindable infix equality with a jfx property" in {
-    booleanProperty <== objectProperty == objectProperty2.delegate
+  it should "support bindable infix equality with an sfx property" in {
+    booleanProperty <== objectProperty === sfxObjectProperty
     objectProperty() = "One"
-    objectProperty2() = "Two"
+    sfxObjectProperty() = "Two"
     booleanProperty() should be (false)
-    objectProperty2() = "One"
+    sfxObjectProperty() = "One"
     booleanProperty() should be (true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix equality with a constant" in {
-    booleanProperty <== objectProperty == "One"
+    booleanProperty <== objectProperty === "One"
     objectProperty() = "Two"
     booleanProperty() should be (false)
     objectProperty() = "One"
@@ -109,8 +112,8 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty.unbind()
   }
 
-  it should "support null comparisons for equal to (==)" in {
-    booleanProperty <== objectProperty == null
+  it should "support null comparisons for equal to (===)" in {
+    booleanProperty <== objectProperty === null
     objectProperty() = "clearly not null"
     booleanProperty() should be (false)
     objectProperty() = null
@@ -118,7 +121,7 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix inequality with a property" in {
-    booleanProperty <== objectProperty != objectProperty2
+    booleanProperty <== objectProperty =!= objectProperty2
     objectProperty() = "One"
     objectProperty2() = "Two"
     booleanProperty() should be (true)
@@ -127,18 +130,18 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty.unbind()
   }
 
-  it should "support bindable infix inequality with a jfx property" in {
-    booleanProperty <== objectProperty != objectProperty2.delegate
+  it should "support bindable infix inequality with an sfx property" in {
+    booleanProperty <== objectProperty =!= sfxObjectProperty
     objectProperty() = "One"
-    objectProperty2() = "Two"
+    sfxObjectProperty() = "Two"
     booleanProperty() should be (true)
-    objectProperty2() = "One"
+    sfxObjectProperty() = "One"
     booleanProperty() should be (false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a constant" in {
-    booleanProperty <== objectProperty != "One"
+    booleanProperty <== objectProperty =!= "One"
     objectProperty() = "Two"
     booleanProperty() should be (true)
     objectProperty() = "One"
@@ -146,8 +149,8 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty.unbind()
   }
 
-  it should "support null comparisons for not equal to (!=)" in {
-    booleanProperty <== objectProperty != null
+  it should "support null comparisons for not equal to (=!=)" in {
+    booleanProperty <== objectProperty =!= null
     objectProperty() = "clearly not null"
     booleanProperty() should be (true)
     objectProperty() = null
@@ -157,7 +160,7 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
   it should "support invalidate/change triggers on binding expressions" in {
     var invalidateCount = 0
     var changeCount = 0
-    val binding = objectProperty == objectProperty2
+    val binding = objectProperty === objectProperty2
     binding onInvalidate {
       invalidateCount += 1
     }

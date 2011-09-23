@@ -69,7 +69,7 @@ class Region extends Parent {
   def padding_=(v: Insets) {
     padding() = v
   }
-  
+
   private[this] lazy val _prefHeightProperty = new DoubleProperty(delegate.prefHeightProperty())
   def prefHeight = _prefHeightProperty
   def prefHeight_=(v: Double) {

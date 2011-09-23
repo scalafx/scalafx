@@ -27,12 +27,12 @@
 
 package scalafx
 
-import scalafx.application.Application
-import scalafx.beans.binding.Bindings._
-import scalafx.scene.shape.Rectangle
-import scalafx.scene.Scene
-import scalafx.stage.Stage
 import javafx.scene.paint.Color
+import scalafx.Includes._
+import scalafx.application.Application
+import scalafx.scene.Scene
+import scalafx.scene.shape.Rectangle
+import scalafx.stage.Stage
 
 object JavaFXChangeListener extends Application {
   stage = new Stage {
@@ -41,13 +41,13 @@ object JavaFXChangeListener extends Application {
     height = 450
     scene = new Scene {
       fill = Color.LIGHTGREEN
-      content = Seq(new Rectangle {
+      content = new Rectangle {
         x = 25
         y = 40
         width = 100
         height = 100
-        fill <== when(hover) then Color.GREEN otherwise Color.RED
-      })
+        fill <== when (hover) then Color.GREEN otherwise Color.RED
+      }
     }
     visible = true
   }

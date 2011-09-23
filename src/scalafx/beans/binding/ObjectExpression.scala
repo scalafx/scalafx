@@ -27,22 +27,24 @@
 
 package scalafx.beans.binding
 
-import javafx.beans.binding.{ObjectExpression=>JFXObjectExpression}
+import javafx.beans.{binding => jfxbb}
 import javafx.beans.value.ObservableObjectValue
+import scalafx.beans.value.ObservableValue
 
 object ObjectExpression {
-  implicit def sfxObjectExpression2jfx[T <: Object](oe: ObjectExpression[T]) = oe.delegate
-  implicit def jfxObjectExpression2sfx[T <: Object](oe: JFXObjectExpression[T]) = new ObjectExpression[T](oe)
+  implicit def sfxObjectExpression2jfx[J](oe: ObjectExpression[J]) = oe.delegate
 }
 
-class ObjectExpression[T <: Object](val delegate: JFXObjectExpression[T]) {
-  def ==(v: Null) = new BooleanBinding(delegate.isNull)
-  def ==(v: ObservableObjectValue[_]) = new BooleanBinding(delegate.isEqualTo(v))
-  def ==(v: ObjectExpression[_]) = new BooleanBinding(delegate.isEqualTo(v.delegate))
-  def ==(v: T) = new BooleanBinding(delegate.isEqualTo(v))
-    
-  def !=(v: Null) = new BooleanBinding(delegate.isNotNull)
-  def !=(v: ObservableObjectValue[_]) = new BooleanBinding(delegate.isNotEqualTo(v))
-  def !=(v: ObjectExpression[_]) = new BooleanBinding(delegate.isNotEqualTo(v.delegate))
-  def !=(v: T) = new BooleanBinding(delegate.isNotEqualTo(v))
+class ObjectExpression[J](val delegate: jfxbb.ObjectExpression[J]) {
+  def ===(v: Null) = delegate.isNull
+  def ===(v: ObservableObjectValue[_]) = delegate.isEqualTo(v)
+  // explicit conversion needed due to AnyRef typed method
+  def ===[T](v: ObservableValue[T, T]) = delegate.isEqualTo(ObservableValue.sfxObservableValue2jfxObjectValue[T](v))
+  def ===(v: AnyRef) = delegate.isEqualTo(v)
+
+  def =!=(v: Null) = delegate.isNotNull
+  def =!=(v: ObservableObjectValue[_]) = delegate.isNotEqualTo(v)
+  // explicit conversion needed due to AnyRef typed method
+  def =!=[T](v: ObservableValue[T, T]) = delegate.isNotEqualTo(ObservableValue.sfxObservableValue2jfxObjectValue[T](v))
+  def =!=(v: AnyRef) = delegate.isNotEqualTo(v)
 }

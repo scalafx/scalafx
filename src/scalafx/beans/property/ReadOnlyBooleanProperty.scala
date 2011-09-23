@@ -29,12 +29,13 @@ package scalafx.beans.property
 
 import javafx.beans.property.{ReadOnlyBooleanPropertyBase, ReadOnlyBooleanProperty => JFXReadOnlyBooleanProperty}
 import scalafx.beans.binding.BooleanExpression
+import scalafx.util.SFXDelegate
 
 object ReadOnlyBooleanProperty {
   implicit def sfxReadOnlyBooleanProperty2jfx(robp: ReadOnlyBooleanProperty) = robp.delegate
 }
 
-class ReadOnlyBooleanProperty(override val delegate: JFXReadOnlyBooleanProperty) extends BooleanExpression(delegate) with ReadOnlyProperty[Boolean, java.lang.Boolean] {
+class ReadOnlyBooleanProperty(override val delegate: JFXReadOnlyBooleanProperty) extends BooleanExpression(delegate) with ReadOnlyProperty[Boolean, java.lang.Boolean] with SFXDelegate[JFXReadOnlyBooleanProperty] {
   def this(bean: Object, name: String, value: Boolean) = this (new ReadOnlyBooleanPropertyBase() {
     def getBean = bean
     def getName = name

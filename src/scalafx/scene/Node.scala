@@ -39,9 +39,7 @@ import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.util.SFXDelegate
 
-abstract class Node extends SFXDelegate {
-  override val delegate: javafx.scene.Node
-
+abstract class Node extends SFXDelegate[javafx.scene.Node] {
   private[this] lazy val _blendModeProperty = new ObjectProperty[BlendMode](delegate.blendModeProperty())
   def blendMode = _blendModeProperty
   def blendMode_=(v: BlendMode) {

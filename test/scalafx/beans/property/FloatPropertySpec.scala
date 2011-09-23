@@ -28,15 +28,16 @@
 package scalafx.beans.property
 
 import org.scalatest.matchers.ShouldMatchers._
-import scalafx.beans.binding.Bindings._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import javafx.beans.{property => jfxbp}
+import scalafx.Includes._
 
 class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var floatProperty:FloatProperty = null
-  var floatProperty2:FloatProperty = null
-  var floatProperty3:FloatProperty = null
-  var booleanProperty:BooleanProperty = null
+  var floatProperty: jfxbp.FloatProperty = null
+  var floatProperty2: jfxbp.FloatProperty = null
+  var floatProperty3: jfxbp.FloatProperty = null
+  var booleanProperty: jfxbp.BooleanProperty = null
 
   override def beforeEach() {
     floatProperty = new FloatProperty(bean, "Test Float")
@@ -166,7 +167,7 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix equality with a property" in {
-    booleanProperty <== floatProperty == floatProperty2
+    booleanProperty <== floatProperty === floatProperty2
     floatProperty() = 532
     floatProperty2() = 321
     booleanProperty() should be (false)
@@ -176,7 +177,7 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix equality with a constant" in {
-    booleanProperty <== floatProperty == 532
+    booleanProperty <== floatProperty === 532
     floatProperty() = 321
     booleanProperty() should be (false)
     floatProperty() = 532
@@ -185,7 +186,7 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix inequality with a property" in {
-    booleanProperty <== floatProperty != floatProperty2
+    booleanProperty <== floatProperty =!= floatProperty2
     floatProperty() = 231
     floatProperty2() = 981
     booleanProperty() should be (true)
@@ -195,7 +196,7 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix inequality with a constant" in {
-    booleanProperty <== floatProperty != 231
+    booleanProperty <== floatProperty =!= 231
     floatProperty() = 981
     booleanProperty() should be (true)
     floatProperty() = 231
@@ -204,7 +205,7 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support variable precision equality via +- operator" in {
-    booleanProperty <== floatProperty == 532+-.1
+    booleanProperty <== floatProperty === 532+-.1
     floatProperty() = 533
     booleanProperty() should be (false)
     floatProperty() = 532.09f
@@ -215,7 +216,7 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support variable precision inequality via +- operator" in {
-    booleanProperty <== floatProperty != 532+-.1
+    booleanProperty <== floatProperty =!= 532+-.1
     floatProperty() = 533
     booleanProperty() should be (true)
     floatProperty() = 532.09f
