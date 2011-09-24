@@ -27,12 +27,12 @@
 
 package scalafx.scene
 
-import scalafx.beans.property.ReadOnlyBooleanProperty
+object Parent {
+  implicit def sfxParent2jfx(v: Parent) = v.delegate
+}
 
 abstract class Parent extends Node {
   override val delegate: javafx.scene.Parent
-  
-  private[this] lazy val _needsLayoutProperty = new ReadOnlyBooleanProperty(delegate.needsLayoutProperty())
-  def needsLayout = _needsLayoutProperty    
 
+  def needsLayout = delegate.needsLayoutProperty
 }

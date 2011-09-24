@@ -32,8 +32,8 @@ import java.lang.reflect.Modifier
 
 trait PropertyComparator {
   private def getScalaFXProperties(scalafxClass:Class[_]) = {
-    val scalafxRegex = """_(.*)(Property|List|Map)""".r
-    scalafxClass.getDeclaredMethods()
+    val scalafxRegex = """(.*)""".r
+    scalafxClass.getDeclaredMethods
       .map(m => scalafxRegex.findFirstMatchIn(m.getName))
       .flatMap(x => x)
       .map(_.group(1))
@@ -42,7 +42,7 @@ trait PropertyComparator {
 
   def compareProperties(javafxClass:Class[_], scalafxClass:Class[_]) {
     val javafxRegex = """(.*)Property""".r
-    val javafxProperties = javafxClass.getDeclaredMethods()
+    val javafxProperties = javafxClass.getDeclaredMethods
       .filter(m => Modifier.isPublic(m.getModifiers) )
       .map(m => javafxRegex.findFirstMatchIn(m.getName))      
       .flatMap(x => x)
@@ -54,7 +54,7 @@ trait PropertyComparator {
   }
 
   def compareBuilderProperties(javafxClassBuilder:Class[_], scalafxClass:Class[_]) {
-    val javafxBuilderProperties = javafxClassBuilder.getDeclaredMethods()
+    val javafxBuilderProperties = javafxClassBuilder.getDeclaredMethods
       .filter(m => Modifier.isPublic(m.getModifiers))
       .map(_.getName)
       .filterNot(n => n == "applyTo" || n == "create" || n == "build" || n.startsWith("impl_") || n == "children")

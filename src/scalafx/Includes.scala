@@ -30,11 +30,11 @@ package scalafx
 import beans.BeanIncludes
 
 /*** Include file that contains all the necessary declarations for jfx->sfx implicit conversions
-   * and other syntactic sugar.
-   *
-   * This file is tiered both for modularity and to prioritize the implicits
-   * (the order of the withs matter a lot!)
-   */
+ * and other syntactic sugar.
+ *
+ * This file is tiered both for modularity and to prioritize the implicits
+ * (the order of the withs matter a lot!)
+ */
 object Includes extends Includes
 
 trait Includes extends BeanIncludes

@@ -33,8 +33,8 @@ import scalafx.beans.value.ObservableValue
 object Bindings extends Bindings
 
 trait Bindings {
-  def min(v1:jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values)(jfxbb.Bindings.min)
-  def max(v1:jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values)(jfxbb.Bindings.max)
+  def min(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values)(jfxbb.Bindings.min)
+  def max(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values)(jfxbb.Bindings.max)
 
   def when(condition: => jfxbv.ObservableBooleanValue) = new ConditionBuilder(new jfxbb.When(condition))
 
@@ -81,4 +81,5 @@ trait Bindings {
     def otherwise(otherwiseExpression: jfxbv.ObservableObjectValue[T]) = whenBuilder.otherwise(otherwiseExpression)
     def otherwise(otherwiseExpression: T) = whenBuilder.otherwise(otherwiseExpression)
   }
+
 }

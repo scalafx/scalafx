@@ -27,7 +27,7 @@
 
 package scalafx.beans.property
 
-import javafx.beans.property.{LongPropertyBase, LongProperty => JFXLongProperty}
+import javafx.beans.{property => jfxbp}
 import scalafx.beans.binding.NumberExpression
 import scalafx.util.SFXDelegate
 
@@ -35,8 +35,8 @@ object LongProperty {
   implicit def sfxLongProperty2jfx(lp: LongProperty) = lp.delegate
 }
 
-class LongProperty(override val delegate: JFXLongProperty) extends NumberExpression(delegate) with Property[Long, Number] with SFXDelegate[JFXLongProperty] {
-  def this(bean: Object, name: String) = this (new LongPropertyBase() {
+class LongProperty(override val delegate: jfxbp.LongProperty) extends NumberExpression(delegate) with Property[Long, Number] with SFXDelegate[jfxbp.LongProperty] {
+  def this(bean: Object, name: String) = this (new jfxbp.LongPropertyBase() {
     def getBean = bean
     def getName = name
   })

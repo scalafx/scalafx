@@ -27,31 +27,31 @@
 
 package scalafx.scene.shape
 
-import scalafx.beans.property.DoubleProperty
+import scalafx.Includes._
+
+object Ellipse {
+  implicit def sfxEllipse2jfx(v: Ellipse) = v.delegate
+}
 
 class Ellipse extends Shape {
   override val delegate = new javafx.scene.shape.Ellipse()
 
-  private[this] lazy val _centerXProperty = new DoubleProperty(delegate.centerXProperty())
-  def centerX = _centerXProperty
+  def centerX = delegate.centerXProperty
   def centerX_=(v: Double) {
     centerX() = v
   }
 
-  private[this] lazy val _centerYProperty = new DoubleProperty(delegate.centerYProperty())
-  def centerY = _centerYProperty
+  def centerY = delegate.centerYProperty
   def centerY_=(v: Double) {
     centerY() = v
   }
 
-  private[this] lazy val _radiusXProperty = new DoubleProperty(delegate.radiusXProperty())
-  def radiusX = _radiusXProperty
+  def radiusX = delegate.radiusXProperty
   def radiusX_=(v: Double) {
     radiusX() = v
   }
 
-  private[this] lazy val _radiusYProperty = new DoubleProperty(delegate.radiusYProperty())
-  def radiusY = _radiusYProperty
+  def radiusY = delegate.radiusYProperty
   def radiusY_=(v: Double) {
     radiusY() = v
   }

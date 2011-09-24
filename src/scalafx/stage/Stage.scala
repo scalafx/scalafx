@@ -27,59 +27,53 @@
 
 package scalafx.stage
 
-import scalafx.scene.Scene
+import javafx.{stage => jfxs}
+import scalafx.Includes._
 import scalafx.application.Application
 import scalafx.util.SFXDelegate
-import scalafx.beans.property._
+import scalafx.scene.Scene
 
-class Stage extends SFXDelegate[javafx.stage.Stage] {
+object Stage {
+  implicit def sfxStage2jfx(v: Stage) = v.delegate
+}
+
+class Stage extends SFXDelegate[jfxs.Stage] {
   override val delegate = Application.STAGE
 
-  private[this] lazy val _fullScreenProperty = new ReadOnlyBooleanProperty(delegate.fullScreenProperty())
-  def fullScreen = _fullScreenProperty
+  def fullScreen = delegate.fullScreenProperty
 
-  private[this] lazy val _titleProperty = new StringProperty(delegate.titleProperty())
-  def title = _titleProperty
+  def title = delegate.titleProperty
   def title_=(v: String) {
     title() = v
   }
 
-  private[this] lazy val _iconifiedProperty = new ReadOnlyBooleanProperty(delegate.iconifiedProperty())
-  def iconified = _iconifiedProperty
+  def iconified = delegate.iconifiedProperty
 
-  private[this] lazy val _resizableProperty = new BooleanProperty(delegate.resizableProperty())
-  def resizable = _resizableProperty
+  def resizable = delegate.resizableProperty
   def resizable_=(v: Boolean) {
     resizable() = v
   }
 
-  private[this] var _scene: Scene = null
-  def scene: Scene = _scene
+  def scene = delegate.getScene
   def scene_=(s: Scene) {
-    _scene = s
     delegate.setScene(s.delegate)
   }
 
-  // The following methods are strictly speaking not properties...  but it is convenient to treat them as such.  :)
-
-  def width: Double = delegate.getWidth
+  def width = delegate.getWidth
   def width_=(w: Double) {
     delegate.setWidth(w)
   }
 
-  def height: Double = delegate.getHeight
+  def height = delegate.getHeight
   def height_=(h: Double) {
     delegate.setHeight(h)
   }
 
-  private[this] var _visible: Boolean = false
-  def visible: Boolean = _visible
+  def visible = delegate.isShowing
   def visible_=(v: Boolean) {
-    _visible = v
-    if (v) {
-      delegate.show()
-    } else {
-      delegate.hide()
+    v match {
+      case true => delegate.show()
+      case false => delegate.hide()
     }
   }
 }

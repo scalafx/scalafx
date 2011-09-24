@@ -36,7 +36,7 @@ import scalafx.stage.Stage
 
 object JavaFXChangeListener extends Application {
   stage = new Stage {
-    title = "Hello Stage"
+    title.value = "Hello Stage"
     width = 600
     height = 450
     scene = new Scene {

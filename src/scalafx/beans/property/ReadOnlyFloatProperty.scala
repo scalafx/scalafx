@@ -27,7 +27,7 @@
 
 package scalafx.beans.property
 
-import javafx.beans.property.{ReadOnlyFloatPropertyBase, ReadOnlyFloatProperty => JFXReadOnlyFloatProperty}
+import javafx.beans.{property => jfxbp}
 import scalafx.beans.binding.NumberExpression
 import scalafx.util.SFXDelegate
 
@@ -35,8 +35,8 @@ object ReadOnlyFloatProperty {
   implicit def sfxReadOnlyFloatProperty2jfx(rofp: ReadOnlyFloatProperty) = rofp.delegate
 }
 
-class ReadOnlyFloatProperty(override val delegate: JFXReadOnlyFloatProperty) extends NumberExpression(delegate) with ReadOnlyProperty[Float, Number] with SFXDelegate[JFXReadOnlyFloatProperty] {
-  def this(bean: Object, name: String, value: Float) = this (new ReadOnlyFloatPropertyBase() {
+class ReadOnlyFloatProperty(override val delegate: jfxbp.ReadOnlyFloatProperty) extends NumberExpression(delegate) with ReadOnlyProperty[Float, Number] with SFXDelegate[jfxbp.ReadOnlyFloatProperty] {
+  def this(bean: Object, name: String, value: Float) = this (new jfxbp.ReadOnlyFloatPropertyBase() {
     def getBean = bean
     def getName = name
     def get = value

@@ -46,9 +46,12 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
   def newBuilder[T]: Builder[T, ObservableBuffer[T]] = new ObservableBuffer
 
   trait Change
+
   case class Add[T](position: Int, added: Traversable[T]) extends Change
+
   case class Remove[T](position: Int, removed: Traversable[T]) extends Change
-  case class Reorder(start: Int, end: Int, permutation:(Int => Int)) extends Change
+
+  case class Reorder(start: Int, end: Int, permutation: (Int => Int)) extends Change
 
 }
 
@@ -111,7 +114,9 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] with csj
             changes += Add(c.getFrom, c.getAddedSubList)
           }
           if (c.wasPermutated()) {
-            changes += Reorder(c.getFrom, c.getTo, {x => c.getPermutation(x)})
+            changes += Reorder(c.getFrom, c.getTo, {
+              x => c.getPermutation(x)
+            })
           }
         }
         op(ObservableBuffer.this, changes)

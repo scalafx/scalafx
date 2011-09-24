@@ -27,7 +27,7 @@
 
 package scalafx.beans.property
 
-import javafx.beans.property.{ReadOnlyProperty => JFXReadOnlyProperty}
+import javafx.beans.{property => jfxbp}
 import scalafx.beans.value.ObservableValue
 import scalafx.util.SFXDelegate
 
@@ -35,7 +35,7 @@ object ReadOnlyProperty {
   implicit def sfxReadOnlyProperty2jfx[T, J](rop: ReadOnlyProperty[T, J]) = rop.delegate
 }
 
-trait ReadOnlyProperty[T, J] extends ObservableValue[T, J] with SFXDelegate[JFXReadOnlyProperty[J]] {
+trait ReadOnlyProperty[T, J] extends ObservableValue[T, J] with SFXDelegate[jfxbp.ReadOnlyProperty[J]] {
   def name = delegate.getName
 
   def bean = delegate.getBean

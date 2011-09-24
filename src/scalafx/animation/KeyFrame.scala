@@ -30,6 +30,6 @@ package scalafx.animation
 import javafx.util.Duration
 import javafx.event.{ActionEvent, EventHandler}
 
-class KeyFrame(val time: Long, val onFinished:EventHandler[ActionEvent] = null, val values:List[KeyValue] = null) {
+class KeyFrame(val time: Long, val onFinished: EventHandler[ActionEvent] = null, val values: List[KeyValue] = null) {
   val keyFrame = new javafx.animation.KeyFrame(new Duration(time), onFinished, values.map(kv => kv.keyValue).toArray: _*)
 }

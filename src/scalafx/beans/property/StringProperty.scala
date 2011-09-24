@@ -27,7 +27,7 @@
 
 package scalafx.beans.property
 
-import javafx.beans.property.{StringPropertyBase, StringProperty => JFXStringProperty}
+import javafx.beans.{property => jfxbp}
 import scalafx.beans.binding.StringExpression
 import scalafx.util.SFXDelegate
 
@@ -35,8 +35,8 @@ object StringProperty {
   implicit def sfxStringProperty2jfx(sp: StringProperty) = sp.delegate
 }
 
-class StringProperty(override val delegate: JFXStringProperty) extends StringExpression(delegate) with Property[String, String] with SFXDelegate[JFXStringProperty] {
-  def this(bean: Object, name: String) = this (new StringPropertyBase() {
+class StringProperty(override val delegate: jfxbp.StringProperty) extends StringExpression(delegate) with Property[String, String] with SFXDelegate[jfxbp.StringProperty] {
+  def this(bean: Object, name: String) = this (new jfxbp.StringPropertyBase() {
     def getBean = bean
     def getName = name
   })

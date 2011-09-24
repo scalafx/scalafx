@@ -27,7 +27,7 @@
 
 package scalafx.beans.property
 
-import javafx.beans.property.{ObjectPropertyBase, ObjectProperty => JFXObjectProperty}
+import javafx.beans.{property => jfxbp}
 import scalafx.beans.binding.ObjectExpression
 import scalafx.util.SFXDelegate
 
@@ -35,8 +35,8 @@ object ObjectProperty {
   implicit def sfxObjectProperty2jfx[J <: Object](op: ObjectProperty[J]) = op.delegate
 }
 
-class ObjectProperty[J](override val delegate: JFXObjectProperty[J]) extends ObjectExpression[J](delegate) with Property[J, J] with SFXDelegate[JFXObjectProperty[J]] {
-  def this(bean: Object, name: String) = this (new ObjectPropertyBase[J]() {
+class ObjectProperty[J](override val delegate: jfxbp.ObjectProperty[J]) extends ObjectExpression[J](delegate) with Property[J, J] with SFXDelegate[jfxbp.ObjectProperty[J]] {
+  def this(bean: Object, name: String) = this (new jfxbp.ObjectPropertyBase[J]() {
     def getBean = bean
     def getName = name
   })

@@ -28,50 +28,46 @@
 package scalafx.scene.shape
 
 import javafx.scene.shape.ArcType
+import scalafx.Includes._
 
-import scalafx.beans.property.{DoubleProperty, ObjectProperty}
+object Arc {
+  implicit def sfxArc2jfx(v: Arc) = v.delegate
+}
 
 class Arc extends Shape {
   override val delegate = new javafx.scene.shape.Arc()
 
-  private[this] lazy val _centerXProperty = new DoubleProperty(delegate.centerXProperty())
-  def centerX = _centerXProperty
+  def centerX = delegate.centerXProperty
   def centerX_=(v: Double) {
     centerX() = v
   }
 
-  private[this] lazy val _centerYProperty = new DoubleProperty(delegate.centerYProperty())
-  def centerY = _centerYProperty
+  def centerY = delegate.centerYProperty
   def centerY_=(v: Double) {
     centerY() = v
   }
 
-  private[this] lazy val _lengthProperty = new DoubleProperty(delegate.lengthProperty())
-  def length = _lengthProperty
+  def length = delegate.lengthProperty
   def length_=(v: Double) {
     length() = v
   }
 
-  private[this] lazy val _radiusXProperty = new DoubleProperty(delegate.radiusXProperty())
-  def radiusX = _radiusXProperty
+  def radiusX = delegate.radiusXProperty
   def radiusX_=(v: Double) {
     radiusX() = v
   }
 
-  private[this] lazy val _radiusYProperty = new DoubleProperty(delegate.radiusYProperty())
-  def radiusY = _radiusYProperty
+  def radiusY = delegate.radiusYProperty
   def radiusY_=(v: Double) {
     radiusY() = v
   }
 
-  private[this] lazy val _startAngleProperty = new DoubleProperty(delegate.startAngleProperty())
-  def startAngle = _startAngleProperty
+  def startAngle = delegate.startAngleProperty
   def startAngle_=(v: Double) {
     startAngle() = v
   }
 
-  private[this] lazy val _typeProperty = new ObjectProperty[ArcType](delegate.typeProperty())
-  def `type` = _typeProperty
+  def `type` = delegate.typeProperty
   def `type_=`(v: ArcType) {
     `type`() = v
   }

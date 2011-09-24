@@ -28,7 +28,7 @@
 package scalafx.beans.property
 
 import javafx.beans.value.{ObservableValue => JFXObservableValue}
-import javafx.beans.property.{Property => JFXProperty}
+import javafx.beans.{property => jfxbp}
 import scalafx.beans.value.ObservableValue
 import scalafx.util.SFXDelegate
 
@@ -36,7 +36,7 @@ object Property {
   implicit def sfxProperty2jfx(p: Property[_, _]) = p.delegate
 }
 
-trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends ReadOnlyProperty[T, J] with SFXDelegate[JFXProperty[J]] {
+trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends ReadOnlyProperty[T, J] with SFXDelegate[jfxbp.Property[J]] {
   def value_=(v: T)
 
   def update(v: T) {
@@ -55,7 +55,7 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends Rea
     delegate.bindBidirectional(v.delegate)
   }
 
-  def <==>(v: JFXProperty[J]) {
+  def <==>(v: jfxbp.Property[J]) {
     delegate.bindBidirectional(v)
   }
 
@@ -67,7 +67,7 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends Rea
     delegate.unbindBidirectional(v.delegate)
   }
 
-  def unbind(v: JFXProperty[J]) {
+  def unbind(v: jfxbp.Property[J]) {
     delegate.unbindBidirectional(v)
   }
 }

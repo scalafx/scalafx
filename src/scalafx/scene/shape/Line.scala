@@ -27,31 +27,31 @@
 
 package scalafx.scene.shape
 
-import scalafx.beans.property.DoubleProperty
+import scalafx.Includes._
+
+object Line {
+  implicit def sfxLine2jfx(v: Line) = v.delegate
+}
 
 class Line extends Shape {
   override val delegate = new javafx.scene.shape.Line()
 
-  private[this] lazy val _endXProperty = new DoubleProperty(delegate.endXProperty())
-  def endX = _endXProperty
+  def endX = delegate.endXProperty
   def endX_=(v: Double) {
     endX() = v
   }
 
-  private[this] lazy val _endYProperty = new DoubleProperty(delegate.endYProperty())
-  def endY = _endYProperty
+  def endY = delegate.endYProperty
   def endY_=(v: Double) {
     endY() = v
   }
 
-  private[this] lazy val _startXProperty = new DoubleProperty(delegate.startXProperty())
-  def startX = _startXProperty
+  def startX = delegate.startXProperty
   def startX_=(v: Double) {
     startX() = v
   }
 
-  private[this] lazy val _startYProperty = new DoubleProperty(delegate.startYProperty())
-  def startY = _startYProperty
+  def startY = delegate.startYProperty
   def startY_=(v: Double) {
     startY() = v
   }

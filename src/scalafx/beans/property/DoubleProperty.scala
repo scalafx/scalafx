@@ -27,7 +27,7 @@
 
 package scalafx.beans.property
 
-import javafx.beans.property.{DoublePropertyBase, DoubleProperty => JFXDoubleProperty}
+import javafx.beans.{property => jfxbp}
 import scalafx.beans.binding.NumberExpression
 import scalafx.util.SFXDelegate
 
@@ -35,8 +35,8 @@ object DoubleProperty {
   implicit def sfxDoubleProperty2jfx(dp: DoubleProperty) = dp.delegate
 }
 
-class DoubleProperty(override val delegate: JFXDoubleProperty) extends NumberExpression(delegate) with Property[Double, Number] with SFXDelegate[JFXDoubleProperty] {
-  def this(bean: Object, name: String) = this (new DoublePropertyBase() {
+class DoubleProperty(override val delegate: jfxbp.DoubleProperty) extends NumberExpression(delegate) with Property[Double, Number] with SFXDelegate[jfxbp.DoubleProperty] {
+  def this(bean: Object, name: String) = this (new jfxbp.DoublePropertyBase() {
     def getBean = bean
     def getName = name
   })

@@ -27,6 +27,6 @@
 
 package scalafx.animation
 
-class KeyValue(target:AnyRef, propRefVal:Int) {
+class KeyValue(target: AnyRef, propRefVal: Int) {
   val keyValue = new javafx.animation.KeyValue(null, null)
 }

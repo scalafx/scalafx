@@ -28,66 +28,57 @@
 package scalafx.scene.layout
 
 import javafx.geometry.Insets
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.Includes._
 import scalafx.scene.Parent
+
+object Region {
+  implicit def sfxRegion2jfx(v: Region) = v.delegate
+}
 
 class Region extends Parent {
   override val delegate = new javafx.scene.layout.Region()
-  
-  private[this] lazy val _heightProperty = new ReadOnlyDoubleProperty(delegate.heightProperty())
-  def height = _heightProperty
 
-  private[this] lazy val _maxHeightProperty = new DoubleProperty(delegate.maxHeightProperty())
-  def maxHeight = _maxHeightProperty
+  def height = delegate.heightProperty
+
+  def maxHeight = delegate.maxHeightProperty
   def maxHeight_=(v: Double) {
     maxHeight() = v
   }
-  
-  private[this] lazy val _maxWidthProperty = new DoubleProperty(delegate.maxWidthProperty())
-  def maxWidth = _maxWidthProperty
+
+  def maxWidth = delegate.maxWidthProperty
   def maxWidth_=(v: Double) {
     maxWidth() = v
   }
-  
-  private[this] lazy val _minHeightProperty = new DoubleProperty(delegate.minHeightProperty())
-  def minHeight = _minHeightProperty
+
+  def minHeight = delegate.minHeightProperty
   def minHeight_=(v: Double) {
     minHeight() = v
   }
-  
-  private[this] lazy val _minWidthProperty = new DoubleProperty(delegate.minWidthProperty())
-  def minWidth = _minWidthProperty
+
+  def minWidth = delegate.minWidthProperty
   def minWidth_=(v: Double) {
     minWidth() = v
   }
 
-  private[this] lazy val _paddingProperty = new ObjectProperty[Insets](delegate.paddingProperty())
-  def padding = _paddingProperty
+  def padding = delegate.paddingProperty
   def padding_=(v: Insets) {
     padding() = v
   }
 
-  private[this] lazy val _prefHeightProperty = new DoubleProperty(delegate.prefHeightProperty())
-  def prefHeight = _prefHeightProperty
+  def prefHeight = delegate.prefHeightProperty
   def prefHeight_=(v: Double) {
     prefHeight() = v
   }
-  
-  private[this] lazy val _prefWidthProperty = new DoubleProperty(delegate.prefWidthProperty())
-  def prefWidth = _prefWidthProperty
+
+  def prefWidth = delegate.prefWidthProperty
   def prefWidth_=(v: Double) {
     prefWidth() = v
   }
-  
-  private[this] lazy val _snapToPixelProperty = new BooleanProperty(delegate.snapToPixelProperty())
-  def snapToPixel = _snapToPixelProperty
+
+  def snapToPixel = delegate.snapToPixelProperty
   def snapToPixel_=(v: Boolean) {
     snapToPixel() = v
-  } 
+  }
 
-  private[this] lazy val _widthProperty = new ReadOnlyDoubleProperty(delegate.widthProperty())
-  def width = _widthProperty
+  def width = delegate.widthProperty
 }

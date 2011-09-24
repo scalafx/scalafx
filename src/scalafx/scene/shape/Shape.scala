@@ -32,71 +32,63 @@ import javafx.scene.paint.Paint
 import javafx.scene.shape.StrokeLineCap
 import javafx.scene.shape.StrokeLineJoin
 import javafx.scene.shape.StrokeType
+import scalafx.Includes._
 import scalafx.scene.Node
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+
+object Shape {
+  implicit def sfxShape2jfx(v: Shape) = v.delegate
+}
 
 abstract class Shape extends Node {
   override val delegate: javafx.scene.shape.Shape
-  
-  private[this] lazy val _fillProperty = new ObjectProperty[Paint](delegate.fillProperty())
-  def fill = _fillProperty
+
+  def fill = delegate.fillProperty
   def fill_=(v: Paint) {
     fill() = v
   }
-  
-  private[this] lazy val _smoothProperty = new BooleanProperty(delegate.smoothProperty())
-  def smooth = _smoothProperty
+
+  def smooth = delegate.smoothProperty
   def smooth_=(v: Boolean) {
     smooth() = v
-  }  
+  }
 
-  private[this] lazy val _strokeDashOffsetProperty = new DoubleProperty(delegate.strokeDashOffsetProperty())
-  def strokeDashOffset = _strokeDashOffsetProperty
+  def strokeDashOffset = delegate.strokeDashOffsetProperty
   def strokeDashOffset_=(v: Double) {
     strokeDashOffset() = v
-  }  
-  
-  private[this] lazy val _strokeLineCapProperty = new ObjectProperty[StrokeLineCap](delegate.strokeLineCapProperty())
-  def strokeLineCap = _strokeLineCapProperty
+  }
+
+  def strokeLineCap = delegate.strokeLineCapProperty
   def strokeLineCap_=(v: StrokeLineCap) {
     strokeLineCap() = v
-  }  
-  
-  private[this] lazy val _strokeLineJoinProperty = new ObjectProperty[StrokeLineJoin](delegate.strokeLineJoinProperty())
-  def strokeLineJoin = _strokeLineJoinProperty
+  }
+
+  def strokeLineJoin = delegate.strokeLineJoinProperty
   def strokeLineJoin_=(v: StrokeLineJoin) {
     strokeLineJoin() = v
-  }  
+  }
 
-  private[this] lazy val _strokeMiterLimitProperty = new DoubleProperty(delegate.strokeMiterLimitProperty())
-  def strokeMiterLimit = _strokeMiterLimitProperty
+  def strokeMiterLimit = delegate.strokeMiterLimitProperty
   def strokeMiterLimit_=(v: Double) {
     strokeMiterLimit() = v
   }
-  
-  private[this] lazy val _strokeProperty = new ObjectProperty[Paint](delegate.strokeProperty())
-  def stroke = _strokeProperty
+
+  def stroke = delegate.strokeProperty
   def stroke_=(v: Paint) {
     stroke() = v
-  }  
-  
-  private[this] lazy val _strokeTypeProperty = new ObjectProperty[StrokeType](delegate.strokeTypeProperty())
-  def strokeType = _strokeTypeProperty
+  }
+
+  def strokeType = delegate.strokeTypeProperty
   def strokeType_=(v: StrokeType) {
     strokeType() = v
-  }  
+  }
 
-  private[this] lazy val _strokeWidthProperty = new DoubleProperty(delegate.strokeWidthProperty())
-  def strokeWidth = _strokeWidthProperty
+  def strokeWidth = delegate.strokeWidthProperty
   def strokeWidth_=(v: Double) {
     strokeWidth() = v
-  }  
-  
+  }
+
   // todo - replace this with a little SFX collection conversion
-  private[this] lazy val _strokeDashArrayList = delegate.getStrokeDashArray
-  def strokeDashArray = _strokeDashArrayList
+  def strokeDashArray = delegate.getStrokeDashArray
   def strokeDashArray_=(c: Iterable[java.lang.Double]) {
     strokeDashArray.setAll(c)
   }

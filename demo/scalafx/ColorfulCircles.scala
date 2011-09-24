@@ -47,6 +47,8 @@ import javafx.scene.shape.StrokeType
 
 import javafx.util.Duration
 
+import scalafx.Includes._
+
 import scalafx.animation.Timeline
 import scala.collection.immutable.VectorBuilder
 import scalafx.animation.KeyFrame

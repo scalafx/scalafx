@@ -33,12 +33,14 @@ import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
 
 object NumberExpression {
   implicit def sfxNumberExpression2jfx(ne: NumberExpression) = ne.delegate
-  case class VariablePrecisionNumber(number:Double, var precision:Double = 0) {
-    def +-(p:Double):VariablePrecisionNumber = {
+
+  case class VariablePrecisionNumber(number: Double, var precision: Double = 0) {
+    def +-(p: Double): VariablePrecisionNumber = {
       precision = p
       this
     }
   }
+
 }
 
 class NumberExpression(val delegate: jfxbb.NumberExpression) {

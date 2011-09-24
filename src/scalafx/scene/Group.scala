@@ -28,24 +28,26 @@
 package scalafx.scene
 
 import collection.JavaConversions._
-import scalafx.beans.property.BooleanProperty
+import scalafx.Includes._
+
+object Group {
+  implicit def sfxGroup2jfx(v: Group) = v.delegate
+}
 
 class Group extends Parent {
   override val delegate = new javafx.scene.Group()
 
   def getChildren = delegate.getChildren
   def children = getChildren
-  
-  var _content:List[_ <: Node] = Nil
+
+  var _content: List[_ <: Node] = Nil
   def content = getChildren
   def content_=(c: Iterable[Node]) {
     getChildren.setAll(c.map(_.delegate))
-  }  
-  
-  private[this] lazy val _autoSizeChildrenProperty = new BooleanProperty(delegate.autoSizeChildrenProperty())
-  def autoSizeChildren = _autoSizeChildrenProperty
+  }
+
+  def autoSizeChildren = delegate.autoSizeChildrenProperty
   def autoSizeChildren_=(v: Boolean) {
     autoSizeChildren() = v
   }
-
 }

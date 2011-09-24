@@ -75,6 +75,13 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
     objectProperty.unbind()
   }
 
+  it should "be bindable to another SFX Object Property" in {
+    objectProperty <== sfxObjectProperty
+    sfxObjectProperty() = "Other value"
+    objectProperty() should equal ("Other value")
+    objectProperty.unbind()
+  }
+
   it should "support unbinding from another Object Property" in {
     objectProperty <== objectProperty2
     objectProperty2() = "Yet another value"
