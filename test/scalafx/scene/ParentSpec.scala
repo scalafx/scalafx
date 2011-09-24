@@ -27,8 +27,10 @@
 
 package scalafx.scene
 
+import javafx.{scene => jfxs}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
+import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class ParentSpec extends FlatSpec with PropertyComparator {
@@ -36,7 +38,21 @@ class ParentSpec extends FlatSpec with PropertyComparator {
     compareProperties(classOf[javafx.scene.Parent], classOf[Parent])
   }
 
-  "A Parent" should "implement all the JavaFX builder properties" in {
+  it should "implement all the JavaFX builder properties" in {
     compareBuilderProperties(classOf[javafx.scene.ParentBuilder[_]], classOf[Parent])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxParent = new Parent() {
+      override val delegate = new jfxs.Group()
+    }
+    val jfxParent: jfxs.Parent = sfxParent
+    jfxParent should be(sfxParent.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxParent = new jfxs.Parent() {}
+    val sfxParent: Parent = jfxParent
+    sfxParent.delegate should be(jfxParent)
   }
 }

@@ -27,8 +27,10 @@
 
 package scalafx.scene
 
+import javafx.{scene => jfxs}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
+import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class GroupSpec extends FlatSpec with PropertyComparator {
@@ -36,7 +38,19 @@ class GroupSpec extends FlatSpec with PropertyComparator {
     compareProperties(classOf[javafx.scene.Group], classOf[Group])
   }
 
-  "A Group" should "implement all the JavaFX builder properties" in {
+  it should "implement all the JavaFX builder properties" in {
     compareBuilderProperties(classOf[javafx.scene.GroupBuilder[_]], classOf[Group])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxGroup = new Group()
+    val jfxGroup: jfxs.Group = sfxGroup
+    jfxGroup should be (sfxGroup.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxGroup = new jfxs.Group()
+    val sfxGroup: Group = jfxGroup
+    sfxGroup.delegate should be (jfxGroup)
   }
 }

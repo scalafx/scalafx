@@ -27,8 +27,10 @@
 
 package scalafx.scene
 
+import javafx.{scene => jfxs}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
+import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class SceneSpec extends FlatSpec with PropertyComparator {
@@ -36,7 +38,21 @@ class SceneSpec extends FlatSpec with PropertyComparator {
     compareProperties(classOf[javafx.scene.Scene], classOf[Scene])
   }
 
-  "A Scene" should "implement all the JavaFX builder properties" in {
+  it should "implement all the JavaFX builder properties" in {
     compareBuilderProperties(classOf[javafx.scene.SceneBuilder[_]], classOf[Scene])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    // creating a new JavaFX scene is annoying due to their thread checks, but this is good enough to check types
+    val sfxScene = new Scene(null)
+    val jfxScene: jfxs.Scene = sfxScene
+    jfxScene should be (sfxScene.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    // creating a new JavaFX scene is annoying due to their thread checks, but this is good enough to check types
+    val jfxScene: jfxs.Scene = null
+    val sfxScene: Scene = jfxScene
+    sfxScene.delegate should be (jfxScene)
   }
 }

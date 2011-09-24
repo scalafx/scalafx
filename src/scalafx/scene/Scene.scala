@@ -28,16 +28,10 @@
 package scalafx.scene
 
 import collection.JavaConversions._
-import javafx.event.EventDispatcher
-import javafx.event.EventHandler
+import javafx.{event => jfxse}
 import javafx.{scene => jfxs}
-import javafx.scene.Camera
-import javafx.scene.Cursor
-import javafx.scene.input.DragEvent
-import javafx.scene.input.InputMethodEvent
-import javafx.scene.input.KeyEvent
-import javafx.scene.input.MouseEvent
-import javafx.scene.paint.Paint
+import jfxs.{input => jfxsi}
+import jfxs.{paint => jfxsp}
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
@@ -45,19 +39,15 @@ object Scene {
   implicit def sfxScene2jfx(v: Scene) = v.delegate
 }
 
-class Scene(val rootVal: Parent = new scalafx.scene.Group()) extends SFXDelegate[javafx.scene.Scene] {
-  override val delegate = new javafx.scene.Scene(rootVal.delegate)
-
+class Scene(override val delegate:jfxs.Scene = new jfxs.Scene(new jfxs.Group())) extends SFXDelegate[jfxs.Scene] {
   def root = delegate.rootProperty
   def root_=(v: jfxs.Parent) {
     root() = v
   }
 
   def getChildren = root.value match {
-    case group: scalafx.scene.Group => group.delegate.getChildren
-    case pane: scalafx.scene.layout.Pane => pane.delegate.getChildren
-    case jfxgroup: javafx.scene.Group => jfxgroup.getChildren
-    case jfxpane: javafx.scene.layout.Pane => jfxpane.getChildren
+    case group: jfxs.Group => group.getChildren
+    case pane: jfxs.layout.Pane => pane.getChildren
     case _ => throw new IllegalStateException("Cannot access children of root: " + root + "\nUse a class that extends Group or Pane, or override the getChildren method.")
   }
   def content = getChildren
@@ -70,22 +60,22 @@ class Scene(val rootVal: Parent = new scalafx.scene.Group()) extends SFXDelegate
   }
 
   def camera = delegate.cameraProperty
-  def camera_=(v: Camera) {
+  def camera_=(v: jfxs.Camera) {
     camera() = v
   }
 
   def cursor = delegate.cursorProperty
-  def cursor_=(v: Cursor) {
+  def cursor_=(v: jfxs.Cursor) {
     cursor() = v
   }
 
   def eventDispatcher = delegate.eventDispatcherProperty
-  def eventDispatcher_=(v: EventDispatcher) {
+  def eventDispatcher_=(v: jfxse.EventDispatcher) {
     eventDispatcher() = v
   }
 
   def fill = delegate.fillProperty
-  def fill_=(v: Paint) {
+  def fill_=(v: jfxsp.Paint) {
     fill() = v
   }
 
@@ -94,87 +84,87 @@ class Scene(val rootVal: Parent = new scalafx.scene.Group()) extends SFXDelegate
   def width = delegate.widthProperty
 
   def onDragDetected = delegate.onDragDetectedProperty
-  def onDragDetected_=(v: EventHandler[_ >: MouseEvent]) {
+  def onDragDetected_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
     onDragDetected() = v
   }
 
   def onDragDone = delegate.onDragDoneProperty
-  def onDragDone_=(v: EventHandler[_ >: DragEvent]) {
+  def onDragDone_=(v: jfxse.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragDone() = v
   }
 
   def onDragDropped = delegate.onDragDroppedProperty
-  def onDragDropped_=(v: EventHandler[_ >: DragEvent]) {
+  def onDragDropped_=(v: jfxse.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragDropped() = v
   }
 
   def onDragEntered = delegate.onDragEnteredProperty
-  def onDragEntered_=(v: EventHandler[_ >: DragEvent]) {
+  def onDragEntered_=(v: jfxse.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragEntered() = v
   }
 
   def onDragExited = delegate.onDragExitedProperty
-  def onDragExited_=(v: EventHandler[_ >: DragEvent]) {
+  def onDragExited_=(v: jfxse.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragExited() = v
   }
 
   def onDragOver = delegate.onDragOverProperty
-  def onDragOver_=(v: EventHandler[_ >: DragEvent]) {
+  def onDragOver_=(v: jfxse.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragOver() = v
   }
 
   def onInputMethodTextChanged = delegate.onInputMethodTextChangedProperty
-  def onInputMethodTextChanged_=(v: EventHandler[_ >: InputMethodEvent]) {
+  def onInputMethodTextChanged_=(v: jfxse.EventHandler[_ >: jfxsi.InputMethodEvent]) {
     onInputMethodTextChanged() = v
   }
 
   def onKeyPressed = delegate.onKeyPressedProperty
-  def onKeyPressed_=(v: EventHandler[_ >: KeyEvent]) {
+  def onKeyPressed_=(v: jfxse.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyPressed() = v
   }
 
   def onKeyReleased = delegate.onKeyReleasedProperty
-  def onKeyReleased_=(v: EventHandler[_ >: KeyEvent]) {
+  def onKeyReleased_=(v: jfxse.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyReleased() = v
   }
 
   def onKeyTyped = delegate.onKeyTypedProperty
-  def onKeyTyped_=(v: EventHandler[_ >: KeyEvent]) {
+  def onKeyTyped_=(v: jfxse.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyTyped() = v
   }
 
   def onMouseClicked = delegate.onMouseClickedProperty
-  def onMouseClicked_=(v: EventHandler[_ >: MouseEvent]) {
+  def onMouseClicked_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseClicked() = v
   }
 
   def onMouseDragged = delegate.onMouseDraggedProperty
-  def onMouseDragged_=(v: EventHandler[_ >: MouseEvent]) {
+  def onMouseDragged_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragged() = v
   }
 
   def onMouseEntered = delegate.onMouseEnteredProperty
-  def onMouseEntered_=(v: EventHandler[_ >: MouseEvent]) {
+  def onMouseEntered_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseEntered() = v
   }
 
   def onMouseExited = delegate.onMouseExitedProperty
-  def onMouseExited_=(v: EventHandler[_ >: MouseEvent]) {
+  def onMouseExited_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseExited() = v
   }
 
   def onMouseMoved = delegate.onMouseMovedProperty
-  def onMouseMoved_=(v: EventHandler[_ >: MouseEvent]) {
+  def onMouseMoved_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseMoved() = v
   }
 
   def onMousePressed = delegate.onMousePressedProperty
-  def onMousePressed_=(v: EventHandler[_ >: MouseEvent]) {
+  def onMousePressed_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMousePressed() = v
   }
 
   def onMouseReleased = delegate.onMouseReleasedProperty
-  def onMouseReleased_=(v: EventHandler[_ >: MouseEvent]) {
+  def onMouseReleased_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseReleased() = v
   }
 

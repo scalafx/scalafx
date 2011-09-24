@@ -28,8 +28,10 @@
 package scalafx
 
 import beans.BeanIncludes
+import scene.SceneIncludes
 
-/*** Include file that contains all the necessary declarations for jfx->sfx implicit conversions
+/**
+ * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
  * and other syntactic sugar.
  *
  * This file is tiered both for modularity and to prioritize the implicits
@@ -37,4 +39,4 @@ import beans.BeanIncludes
  */
 object Includes extends Includes
 
-trait Includes extends BeanIncludes
+trait Includes extends SceneIncludes with BeanIncludes

@@ -27,61 +27,16 @@
 
 package scalafx.scene
 
-import scalafx.Includes._
 import javafx.{scene => jfxs}
-import jfxs.{effect => jfxse}
-import scalafx.util.SFXDelegate
 
-object Node {
-  implicit def sfxNode2jfx(v: Node) = v.delegate
-}
+object SceneIncludes extends SceneIncludes
 
-abstract class Node extends SFXDelegate[jfxs.Node] {
-  def blendMode = delegate.blendModeProperty
-  def blendMode_=(v: jfxse.BlendMode) {
-    blendMode() = v
+trait SceneIncludes extends LowerPriorityIncludes
+
+trait LowerPriorityIncludes {
+  implicit def jfxGroup2sfx(v: jfxs.Group) = new Group(v)
+  implicit def jfxParent2sfx(v: jfxs.Parent) = new Parent() {
+    override val delegate = v
   }
-
-  def boundsInLocal = delegate.boundsInLocalProperty
-
-  def boundsInParent = delegate.boundsInParentProperty
-
-  def cacheHint = delegate.cacheHintProperty
-  def cacheHint_=(v: jfxs.CacheHint) {
-    cacheHint() = v
-  }
-
-  def cache = delegate.cacheProperty
-  def cache_=(v: Boolean) {
-    cache() = v
-  }
-
-  def clip = delegate.clipProperty
-  def clip_=(v: jfxs.Node) {
-    clip() = v
-  }
-
-  def cursor = delegate.cursorProperty
-  def cursor_=(v: jfxs.Cursor) {
-    cursor() = v
-  }
-
-  def depthTest = delegate.depthTestProperty
-  def depthTest_=(v: jfxs.DepthTest) {
-    depthTest() = v
-  }
-
-  def disabled = delegate.disabledProperty
-
-  def disable = delegate.disableProperty
-  def disable_=(v: Boolean) {
-    disable() = v
-  }
-
-  def effect = delegate.effectProperty
-  def effect_=(v: jfxse.Effect) {
-    effect() = v
-  }
-
-  def hover = delegate.hoverProperty
+  implicit def jfxScene2sfx(v: jfxs.Scene) = new Scene(v)
 }
