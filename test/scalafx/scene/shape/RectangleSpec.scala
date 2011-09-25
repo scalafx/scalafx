@@ -27,16 +27,30 @@
 
 package scalafx.scene.shape
 
+import javafx.scene.{shape => jfxss}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
+import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class RectangleSpec extends FlatSpec with PropertyComparator {
   "A Rectangle" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[javafx.scene.shape.Rectangle], classOf[Rectangle])
+    compareProperties(classOf[jfxss.Rectangle], classOf[Rectangle])
   }
 
-  "A Rectangle" should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[javafx.scene.shape.RectangleBuilder[_]], classOf[Rectangle])
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxss.RectangleBuilder[_]], classOf[Rectangle])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxRectangle = new Rectangle()
+    val jfxRectangle: jfxss.Rectangle = sfxRectangle
+    jfxRectangle should be (sfxRectangle.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxRectangle = new jfxss.Rectangle()
+    val sfxRectangle: Rectangle = jfxRectangle
+    sfxRectangle.delegate should be (jfxRectangle)
   }
 }

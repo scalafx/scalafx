@@ -28,14 +28,13 @@
 package scalafx.scene.shape
 
 import scalafx.Includes._
+import javafx.scene.{shape => jfxss}
 
 object Rectangle {
   implicit def sfxRectangle2jfx(v: Rectangle) = v.delegate
 }
 
-class Rectangle extends Shape {
-  override val delegate = new javafx.scene.shape.Rectangle()
-
+class Rectangle(override val delegate:jfxss.Rectangle = new jfxss.Rectangle()) extends Shape {
   def x = delegate.xProperty
   def x_=(v: Double) {
     x() = v
