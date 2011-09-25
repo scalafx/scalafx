@@ -53,4 +53,10 @@ class GroupSpec extends FlatSpec with PropertyComparator {
     val sfxGroup: Group = jfxGroup
     sfxGroup.delegate should be (jfxGroup)
   }
+
+  it should "provide scala-like capabilties for the list" in {
+    val group = new Group()
+    group.children += new Group()
+    group.children should have length (1)
+  }
 }

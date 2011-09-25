@@ -28,6 +28,7 @@
 package scalafx
 
 import beans.BeanIncludes
+import collections.CollectionIncludes
 import scene.SceneIncludes
 
 /**
@@ -39,4 +40,4 @@ import scene.SceneIncludes
  */
 object Includes extends Includes
 
-trait Includes extends SceneIncludes with BeanIncludes
+trait Includes extends CollectionIncludes with SceneIncludes with BeanIncludes

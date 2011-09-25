@@ -46,13 +46,9 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
   def newBuilder[T]: Builder[T, ObservableBuffer[T]] = new ObservableBuffer
 
   trait Change
-
   case class Add[T](position: Int, added: Traversable[T]) extends Change
-
   case class Remove[T](position: Int, removed: Traversable[T]) extends Change
-
   case class Reorder(start: Int, end: Int, permutation: (Int => Int)) extends Change
-
 }
 
 class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] with csjc.SortableList[T] = new csjc.ObservableListWrapper[T](new ArrayList[T]())) extends Buffer[T] with BufferLike[T, ObservableBuffer[T]] with GenericTraversableTemplate[T, ObservableBuffer] with Observable with Builder[T, ObservableBuffer[T]] {
