@@ -25,20 +25,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene
+package scalafx.scene.layout
 
-import javafx.{scene => jfxs}
-import layout.LayoutIncludes
-import shape.ShapeIncludes
+import javafx.scene.{layout => jfxsl}
 
-object SceneIncludes extends SceneIncludes
+object LayoutIncludes extends LayoutIncludes
 
-trait SceneIncludes extends LayoutIncludes with ShapeIncludes with LowerPriorityIncludes
-
-trait LowerPriorityIncludes {
-  implicit def jfxGroup2sfx(v: jfxs.Group) = new Group(v)
-  implicit def jfxParent2sfx(v: jfxs.Parent) = new Parent() {
-    override val delegate = v
-  }
-  implicit def jfxScene2sfx(v: jfxs.Scene) = new Scene(v)
+trait LayoutIncludes {
+  implicit def jfxRegion2sfx(r: jfxsl.Region) = new Region(r)
 }

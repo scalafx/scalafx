@@ -26,16 +26,30 @@
  */
 package scalafx.scene.layout
 
+import javafx.scene.{layout => jfxsl}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
+import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
-class RegionSpec  extends FlatSpec with PropertyComparator {
+class RegionSpec extends FlatSpec with PropertyComparator {
   "A Region" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[javafx.scene.layout.Region], classOf[Region])
+    compareProperties(classOf[jfxsl.Region], classOf[Region])
   }
 
-  "A Region" should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[javafx.scene.layout.RegionBuilder[_]], classOf[Region])
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxsl.RegionBuilder[_]], classOf[Region])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxRegion = new Region()
+    val jfxRegion: jfxsl.Region = sfxRegion
+    jfxRegion should be (sfxRegion.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxRegion = new jfxsl.Region()
+    val sfxRegion: Region = jfxRegion
+    sfxRegion.delegate should be (jfxRegion)
   }
 }

@@ -27,7 +27,8 @@
 
 package scalafx.scene.layout
 
-import javafx.geometry.Insets
+import javafx.{geometry => jfxg}
+import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.scene.Parent
 
@@ -35,10 +36,9 @@ object Region {
   implicit def sfxRegion2jfx(v: Region) = v.delegate
 }
 
-class Region extends Parent {
-  override val delegate = new javafx.scene.layout.Region()
-
+class Region(override val delegate:jfxsl.Region = new jfxsl.Region()) extends Parent {
   def height = delegate.heightProperty
+  def width = delegate.widthProperty
 
   def maxHeight = delegate.maxHeightProperty
   def maxHeight_=(v: Double) {
@@ -61,7 +61,7 @@ class Region extends Parent {
   }
 
   def padding = delegate.paddingProperty
-  def padding_=(v: Insets) {
+  def padding_=(v: jfxg.Insets) {
     padding() = v
   }
 
@@ -79,6 +79,4 @@ class Region extends Parent {
   def snapToPixel_=(v: Boolean) {
     snapToPixel() = v
   }
-
-  def width = delegate.widthProperty
 }
