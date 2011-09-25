@@ -28,25 +28,21 @@
 package scalafx.scene.shape
 
 import collection.JavaConversions._
-import javafx.scene.shape.{PathElement, FillRule}
+import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 
 object Path {
   implicit def sfxPath2jfx(v: Path) = v.delegate
 }
 
-class Path extends Shape {
-  override val delegate = new javafx.scene.shape.Path()
-
+class Path(override val delegate:jfxss.Path = new jfxss.Path()) extends Shape {
   def fillRule = delegate.fillRuleProperty
-  def fillRule_=(v: FillRule) {
+  def fillRule_=(v: jfxss.FillRule) {
     fillRule() = v
   }
 
-  // todo - replace this with a little SFX collection conversion
   def elements = delegate.getElements
-  // todo - implement an SFX version of PathElements
-  def elements_=(c: Iterable[PathElement]) {
+  def elements_=(c: Iterable[jfxss.PathElement]) {
     elements.setAll(c)
   }
 }

@@ -27,16 +27,30 @@
 
 package scalafx.scene.shape
 
+import javafx.scene.{shape => jfxss}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
+import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class PathSpec extends FlatSpec with PropertyComparator {
   "A Path" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[javafx.scene.shape.Path], classOf[Path])
+    compareProperties(classOf[jfxss.Path], classOf[Path])
   }
 
-  "A Path" should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[javafx.scene.shape.PathBuilder[_]], classOf[Path])
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxss.PathBuilder[_]], classOf[Path])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxPath = new Path()
+    val jfxPath: jfxss.Path = sfxPath
+    jfxPath should be (sfxPath.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxPath = new jfxss.Path()
+    val sfxPath: Path = jfxPath
+    sfxPath.delegate should be (jfxPath)
   }
 }
