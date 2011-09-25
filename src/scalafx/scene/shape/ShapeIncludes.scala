@@ -32,6 +32,7 @@ import javafx.scene.{shape => jfxss}
 object ShapeIncludes extends ShapeIncludes
 
 trait ShapeIncludes {
+  implicit def jfxArc2sfx(r: jfxss.Arc) = new Arc(r)
   implicit def jfxCircle2sfx(r: jfxss.Circle) = new Circle(r)
   implicit def jfxEllipse2sfx(r: jfxss.Ellipse) = new Ellipse(r)
   implicit def jfxLine2sfx(r: jfxss.Line) = new Line(r)

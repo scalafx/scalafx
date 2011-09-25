@@ -27,16 +27,30 @@
 
 package scalafx.scene.shape
 
+import javafx.scene.{shape => jfxss}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
+import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class ArcSpec extends FlatSpec with PropertyComparator {
-  "An Arc" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[javafx.scene.shape.Arc], classOf[Arc])
+  "A Arc" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxss.Arc], classOf[Arc])
   }
 
-  "An Arc" should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[javafx.scene.shape.ArcBuilder[_]], classOf[Arc])
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxss.ArcBuilder[_]], classOf[Arc])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxArc = new Arc()
+    val jfxArc: jfxss.Arc = sfxArc
+    jfxArc should be (sfxArc.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxArc = new jfxss.Arc()
+    val sfxArc: Arc = jfxArc
+    sfxArc.delegate should be (jfxArc)
   }
 }

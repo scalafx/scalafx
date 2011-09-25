@@ -27,16 +27,14 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.shape.ArcType
+import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 
 object Arc {
   implicit def sfxArc2jfx(v: Arc) = v.delegate
 }
 
-class Arc extends Shape {
-  override val delegate = new javafx.scene.shape.Arc()
-
+class Arc(override val delegate:jfxss.Arc = new jfxss.Arc()) extends Shape {
   def centerX = delegate.centerXProperty
   def centerX_=(v: Double) {
     centerX() = v
@@ -68,7 +66,7 @@ class Arc extends Shape {
   }
 
   def `type` = delegate.typeProperty
-  def `type_=`(v: ArcType) {
+  def `type_=`(v: jfxss.ArcType) {
     `type`() = v
   }
 }
