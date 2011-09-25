@@ -35,11 +35,11 @@ import scalafx.testutil.PropertyComparator
 
 class SceneSpec extends FlatSpec with PropertyComparator {
   "A Scene" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[javafx.scene.Scene], classOf[Scene])
+    compareProperties(classOf[jfxs.Scene], classOf[Scene])
   }
 
   it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[javafx.scene.SceneBuilder[_]], classOf[Scene])
+    compareBuilderProperties(classOf[jfxs.SceneBuilder[_]], classOf[Scene])
   }
 
   it should "have an implicit conversion from SFX to JFX" in {

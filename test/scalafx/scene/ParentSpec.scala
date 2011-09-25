@@ -35,11 +35,11 @@ import scalafx.testutil.PropertyComparator
 
 class ParentSpec extends FlatSpec with PropertyComparator {
   "A Parent" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[javafx.scene.Parent], classOf[Parent])
+    compareProperties(classOf[jfxs.Parent], classOf[Parent])
   }
 
   it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[javafx.scene.ParentBuilder[_]], classOf[Parent])
+    compareBuilderProperties(classOf[jfxs.ParentBuilder[_]], classOf[Parent])
   }
 
   it should "have an implicit conversion from SFX to JFX" in {

@@ -27,16 +27,32 @@
 
 package scalafx.scene.shape
 
+import javafx.scene.{shape => jfxss}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
+import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class ShapeSpec extends FlatSpec with PropertyComparator {
   "A Shape" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[javafx.scene.shape.Shape], classOf[Shape])
+    compareProperties(classOf[jfxss.Shape], classOf[Shape])
   }
 
-  "A Shape" should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[javafx.scene.shape.ShapeBuilder[_]], classOf[Shape])
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxss.ShapeBuilder[_]], classOf[Shape])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxShape = new Shape() {
+      override val delegate = new jfxss.Rectangle()
+    }
+    val jfxShape: jfxss.Shape = sfxShape
+    jfxShape should be (sfxShape.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxShape = new jfxss.Rectangle()
+    val sfxShape: Shape = jfxShape
+    sfxShape.delegate should be (jfxShape)
   }
 }

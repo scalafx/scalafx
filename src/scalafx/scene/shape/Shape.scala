@@ -28,10 +28,8 @@
 package scalafx.scene.shape
 
 import collection.JavaConversions._
-import javafx.scene.paint.Paint
-import javafx.scene.shape.StrokeLineCap
-import javafx.scene.shape.StrokeLineJoin
-import javafx.scene.shape.StrokeType
+import javafx.scene.{paint => jfxsp}
+import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.scene.Node
 
@@ -43,7 +41,7 @@ abstract class Shape extends Node {
   override val delegate: javafx.scene.shape.Shape
 
   def fill = delegate.fillProperty
-  def fill_=(v: Paint) {
+  def fill_=(v: jfxsp.Paint) {
     fill() = v
   }
 
@@ -58,12 +56,12 @@ abstract class Shape extends Node {
   }
 
   def strokeLineCap = delegate.strokeLineCapProperty
-  def strokeLineCap_=(v: StrokeLineCap) {
+  def strokeLineCap_=(v: jfxss.StrokeLineCap) {
     strokeLineCap() = v
   }
 
   def strokeLineJoin = delegate.strokeLineJoinProperty
-  def strokeLineJoin_=(v: StrokeLineJoin) {
+  def strokeLineJoin_=(v: jfxss.StrokeLineJoin) {
     strokeLineJoin() = v
   }
 
@@ -73,12 +71,12 @@ abstract class Shape extends Node {
   }
 
   def stroke = delegate.strokeProperty
-  def stroke_=(v: Paint) {
+  def stroke_=(v: jfxsp.Paint) {
     stroke() = v
   }
 
   def strokeType = delegate.strokeTypeProperty
-  def strokeType_=(v: StrokeType) {
+  def strokeType_=(v: jfxss.StrokeType) {
     strokeType() = v
   }
 
@@ -87,7 +85,6 @@ abstract class Shape extends Node {
     strokeWidth() = v
   }
 
-  // todo - replace this with a little SFX collection conversion
   def strokeDashArray = delegate.getStrokeDashArray
   def strokeDashArray_=(c: Iterable[java.lang.Double]) {
     strokeDashArray.setAll(c)

@@ -35,11 +35,11 @@ import scalafx.testutil.PropertyComparator
 
 class GroupSpec extends FlatSpec with PropertyComparator {
   "A Group" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[javafx.scene.Group], classOf[Group])
+    compareProperties(classOf[jfxs.Group], classOf[Group])
   }
 
   it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[javafx.scene.GroupBuilder[_]], classOf[Group])
+    compareBuilderProperties(classOf[jfxs.GroupBuilder[_]], classOf[Group])
   }
 
   it should "have an implicit conversion from SFX to JFX" in {
