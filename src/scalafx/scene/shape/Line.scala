@@ -35,7 +35,7 @@ object Line {
   implicit def sfxLine2jfx(v: Line) = v.delegate
 }
 
-class Line(override val delegate:jfxss.Line = new jfxss.Line()) extends Shape with SFXDelegate[jfxss.Arc] {
+class Line(override val delegate:jfxss.Line = new jfxss.Line()) extends Shape with SFXDelegate[jfxss.Line] {
   def endX = delegate.endXProperty
   def endX_=(v: Double) {
     endX() = v

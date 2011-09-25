@@ -25,44 +25,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx
+package scalafx.util
 
-import javafx.scene.paint.Color
-import scalafx.Includes._
-import scalafx.animation.{KeyValue, KeyFrame, Timeline}
-import scalafx.application.Application
-import scalafx.scene.Scene
-import scalafx.scene.shape.Rectangle
-import scalafx.stage.Stage
+import scalafx.util.Duration.DurationHelper
 
-object JavaFXAnimation extends Application {
-  val rect1 = new Rectangle {
-    width = 100
-    height = 100
-    fill = Color.RED
-  }
-  val rect2 = new Rectangle {
-    width = 50
-    height = 50
-    fill = Color.LIGHTGREEN
-  }
-  val timeline = new Timeline {
-    cycleCount = Timeline.INDEFINITE
-    autoReverse = true
-    keyFrames = List(
-      KeyFrame(5 s, values = List(
-          KeyValue(rect1.x, 300d),
-          KeyValue(rect2.x, 500d),
-          KeyValue(rect2.y, 150d)
-        )
-      )
-    )
-  }
-  timeline.play()
-  stage = new Stage {
-    scene = new Scene {
-      content = List(rect1, rect2)
-      visible = true
-    }
-  }
+object UtilIncludes extends UtilIncludes
+
+trait UtilIncludes {
+  implicit def double2DurationHelper(d: Double) = new DurationHelper(d)
 }

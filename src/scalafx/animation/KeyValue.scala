@@ -27,6 +27,18 @@
 
 package scalafx.animation
 
-class KeyValue(target: AnyRef, propRefVal: Int) {
-  val keyValue = new javafx.animation.KeyValue(null, null)
+import javafx.{animation => jfxa}
+import javafx.beans.{value => jfxbv}
+import scalafx.util.SFXDelegate
+
+object KeyValue {
+  implicit def sfxKeyValue2jfx(v: KeyValue[_]) = v.delegate
+
+  def apply(target: jfxbv.WritableValue[Number], endValue: Int) = new KeyValue[Int](new jfxa.KeyValue(target, int2Integer(endValue)))
+  def apply(target: jfxbv.WritableValue[Number], endValue: Long) = new KeyValue[Long](new jfxa.KeyValue(target, long2Long(endValue)))
+  def apply(target: jfxbv.WritableValue[Number], endValue: Float) = new KeyValue[Float](new jfxa.KeyValue(target, float2Float(endValue)))
+  def apply(target: jfxbv.WritableValue[Number], endValue: Double) = new KeyValue[Double](new jfxa.KeyValue(target, double2Double(endValue)))
+  def apply[T <: AnyRef](target: jfxbv.WritableValue[T], endValue: T) = new KeyValue[T](new jfxa.KeyValue(target, endValue))
 }
+
+class KeyValue[T](override val delegate: jfxa.KeyValue) extends SFXDelegate[jfxa.KeyValue]

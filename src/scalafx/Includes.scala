@@ -30,6 +30,7 @@ package scalafx
 import beans.BeanIncludes
 import collections.CollectionIncludes
 import scene.SceneIncludes
+import util.UtilIncludes
 
 /**
  * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
@@ -40,4 +41,4 @@ import scene.SceneIncludes
  */
 object Includes extends Includes
 
-trait Includes extends CollectionIncludes with SceneIncludes with BeanIncludes
+trait Includes extends CollectionIncludes with SceneIncludes with BeanIncludes with UtilIncludes

@@ -38,7 +38,7 @@ object Shape {
   implicit def sfxShape2jfx(v: Shape) = v.delegate
 }
 
-abstract class Shape extends Node with SFXDelegate[jfxss.Arc] {
+abstract class Shape extends Node with SFXDelegate[jfxss.Shape] {
   override val delegate: javafx.scene.shape.Shape
 
   def fill = delegate.fillProperty

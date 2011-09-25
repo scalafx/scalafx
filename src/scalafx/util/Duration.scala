@@ -25,44 +25,23 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx
+package scalafx.util
 
-import javafx.scene.paint.Color
-import scalafx.Includes._
-import scalafx.animation.{KeyValue, KeyFrame, Timeline}
-import scalafx.application.Application
-import scalafx.scene.Scene
-import scalafx.scene.shape.Rectangle
-import scalafx.stage.Stage
+import javafx.{util => jfxu}
 
-object JavaFXAnimation extends Application {
-  val rect1 = new Rectangle {
-    width = 100
-    height = 100
-    fill = Color.RED
+object Duration {
+  implicit def sfxDuration2jfx(d: Duration) = d.delegate
+
+  def apply(millis: Double) = jfxu.Duration.millis(millis)
+
+  class DurationHelper(d: Double) {
+    def ms = apply(d)
+    def s = jfxu.Duration.seconds(d)
+    def m = jfxu.Duration.minutes(d)
+    def h = jfxu.Duration.hours(d)
   }
-  val rect2 = new Rectangle {
-    width = 50
-    height = 50
-    fill = Color.LIGHTGREEN
-  }
-  val timeline = new Timeline {
-    cycleCount = Timeline.INDEFINITE
-    autoReverse = true
-    keyFrames = List(
-      KeyFrame(5 s, values = List(
-          KeyValue(rect1.x, 300d),
-          KeyValue(rect2.x, 500d),
-          KeyValue(rect2.y, 150d)
-        )
-      )
-    )
-  }
-  timeline.play()
-  stage = new Stage {
-    scene = new Scene {
-      content = List(rect1, rect2)
-      visible = true
-    }
-  }
+}
+
+class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Duration] {
+  // todo - implement all the operators
 }

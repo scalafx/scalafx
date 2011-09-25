@@ -27,29 +27,18 @@
 
 package scalafx.animation
 
-class Timeline {
-  val INDEFINITE = -1;
-  val timeline = new javafx.animation.Timeline()
+import collection.JavaConversions._
+import javafx.{animation => jfxa}
+import scalafx.Includes._
+import scalafx.util.SFXDelegate
 
-  def cycleCount: Int = 1
+object Timeline extends AnimationStatics {
+  implicit def sfxTimeline2jfx(v: Timeline) = v.delegate
+}
 
-  def cycleCount_=(r: Int) {
-    timeline.setCycleCount(r)
-  }
-
-  def autoReverse: Boolean = false
-
-  def autoReverse_=(ar: Boolean) {
-    timeline.setAutoReverse(ar)
-  }
-
-  def play() {
-    timeline.play();
-  }
-
-  def keyFrames: List[_ <: KeyFrame] = Nil
-
+class Timeline(override val delegate:jfxa.Timeline = new jfxa.Timeline()) extends Animation with SFXDelegate[jfxa.Timeline] {
+  def keyFrames = delegate.getKeyFrames
   def keyFrames_=(kf: List[_ <: KeyFrame]) {
-    timeline.getKeyFrames.setAll(java.util.Arrays.asList(kf.map(f => f.keyFrame).toArray: _*))
+    keyFrames.setAll(kf.map(_.delegate))
   }
 }
