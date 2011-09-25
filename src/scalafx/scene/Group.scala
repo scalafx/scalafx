@@ -30,12 +30,13 @@ package scalafx.scene
 import collection.JavaConversions._
 import javafx.{scene => jfxs}
 import scalafx.Includes._
+import scalafx.util.SFXDelegate
 
 object Group {
   implicit def sfxGroup2jfx(v: Group) = v.delegate
 }
 
-class Group(override val delegate:jfxs.Group = new jfxs.Group()) extends Parent {
+class Group(override val delegate:jfxs.Group = new jfxs.Group()) extends Parent with SFXDelegate[jfxs.Group] {
   def children = delegate.getChildren
   def children_=(c: Iterable[Node]) {
     children.setAll(c.map(_.delegate))

@@ -29,12 +29,13 @@ package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
+import scalafx.util.SFXDelegate
 
 object Ellipse {
   implicit def sfxEllipse2jfx(v: Ellipse) = v.delegate
 }
 
-class Ellipse(override val delegate:jfxss.Ellipse = new jfxss.Ellipse()) extends Shape {
+class Ellipse(override val delegate:jfxss.Ellipse = new jfxss.Ellipse()) extends Shape with SFXDelegate[jfxss.Arc] {
   def centerX = delegate.centerXProperty
   def centerX_=(v: Double) {
     centerX() = v

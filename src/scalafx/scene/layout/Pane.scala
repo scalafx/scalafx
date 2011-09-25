@@ -30,12 +30,13 @@ package scalafx.scene.layout
 import collection.JavaConversions._
 import javafx.scene.{layout => jfxsl}
 import scalafx.scene.Node
+import scalafx.util.SFXDelegate
 
 object Pane {
   implicit def sfxPane2jfx(v: Pane) = v.delegate
 }
 
-class Pane(override val delegate:jfxsl.Pane = new jfxsl.Pane()) extends Region {
+class Pane(override val delegate:jfxsl.Pane = new jfxsl.Pane()) extends Region with SFXDelegate[jfxsl.Pane] {
   def getChildren = delegate.getChildren
   def children = getChildren
 

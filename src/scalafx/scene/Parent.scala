@@ -27,11 +27,14 @@
 
 package scalafx.scene
 
+import javafx.{scene => jfxs}
+import scalafx.util.SFXDelegate
+
 object Parent {
   implicit def sfxParent2jfx(v: Parent) = v.delegate
 }
 
-abstract class Parent extends Node {
+abstract class Parent extends Node with SFXDelegate[jfxs.Parent] {
   override val delegate: javafx.scene.Parent
 
   def needsLayout = delegate.needsLayoutProperty

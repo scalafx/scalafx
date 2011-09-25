@@ -30,12 +30,13 @@ package scalafx.scene.shape
 import collection.JavaConversions._
 import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
+import scalafx.util.SFXDelegate
 
 object Path {
   implicit def sfxPath2jfx(v: Path) = v.delegate
 }
 
-class Path(override val delegate:jfxss.Path = new jfxss.Path()) extends Shape {
+class Path(override val delegate:jfxss.Path = new jfxss.Path()) extends Shape with SFXDelegate[jfxss.Arc] {
   def fillRule = delegate.fillRuleProperty
   def fillRule_=(v: jfxss.FillRule) {
     fillRule() = v

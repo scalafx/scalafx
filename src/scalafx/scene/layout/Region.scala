@@ -31,12 +31,13 @@ import javafx.{geometry => jfxg}
 import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.scene.Parent
+import scalafx.util.SFXDelegate
 
 object Region {
   implicit def sfxRegion2jfx(v: Region) = v.delegate
 }
 
-class Region(override val delegate:jfxsl.Region = new jfxsl.Region()) extends Parent {
+class Region(override val delegate:jfxsl.Region = new jfxsl.Region()) extends Parent with SFXDelegate[jfxsl.Region] {
   def height = delegate.heightProperty
   def width = delegate.widthProperty
 

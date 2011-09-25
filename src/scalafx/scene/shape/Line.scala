@@ -29,12 +29,13 @@ package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
+import scalafx.util.SFXDelegate
 
 object Line {
   implicit def sfxLine2jfx(v: Line) = v.delegate
 }
 
-class Line(override val delegate:jfxss.Line = new jfxss.Line()) extends Shape {
+class Line(override val delegate:jfxss.Line = new jfxss.Line()) extends Shape with SFXDelegate[jfxss.Arc] {
   def endX = delegate.endXProperty
   def endX_=(v: Double) {
     endX() = v

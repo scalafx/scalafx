@@ -32,12 +32,13 @@ import javafx.scene.{paint => jfxsp}
 import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.scene.Node
+import scalafx.util.SFXDelegate
 
 object Shape {
   implicit def sfxShape2jfx(v: Shape) = v.delegate
 }
 
-abstract class Shape extends Node {
+abstract class Shape extends Node with SFXDelegate[jfxss.Arc] {
   override val delegate: javafx.scene.shape.Shape
 
   def fill = delegate.fillProperty
