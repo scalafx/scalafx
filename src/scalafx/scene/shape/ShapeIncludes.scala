@@ -38,4 +38,5 @@ trait ShapeIncludes {
   implicit def jfxRectangle2sfx(r: jfxss.Rectangle) = new Rectangle(r)
   implicit def jfxPath2sfx(r: jfxss.Path) = new Path(r)
   implicit def jfxLine2sfx(r: jfxss.Line) = new Line(r)
+  implicit def jfxEllipse2sfx(r: jfxss.Ellipse) = new Ellipse(r)
 }

@@ -27,16 +27,30 @@
 
 package scalafx.scene.shape
 
+import javafx.scene.{shape => jfxss}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
+import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class EllipseSpec extends FlatSpec with PropertyComparator {
-  "An Ellipse" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[javafx.scene.shape.Ellipse], classOf[Ellipse])
+  "A Ellipse" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxss.Ellipse], classOf[Ellipse])
   }
 
-  "An Ellipse" should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[javafx.scene.shape.EllipseBuilder[_]], classOf[Ellipse])
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxss.EllipseBuilder[_]], classOf[Ellipse])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxEllipse = new Ellipse()
+    val jfxEllipse: jfxss.Ellipse = sfxEllipse
+    jfxEllipse should be (sfxEllipse.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxEllipse = new jfxss.Ellipse()
+    val sfxEllipse: Ellipse = jfxEllipse
+    sfxEllipse.delegate should be (jfxEllipse)
   }
 }
