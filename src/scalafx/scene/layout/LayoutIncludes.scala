@@ -32,5 +32,6 @@ import javafx.scene.{layout => jfxsl}
 object LayoutIncludes extends LayoutIncludes
 
 trait LayoutIncludes {
+  implicit def jfxPane2sfx(r: jfxsl.Pane) = new Pane(r)
   implicit def jfxRegion2sfx(r: jfxsl.Region) = new Region(r)
 }

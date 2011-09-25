@@ -27,16 +27,30 @@
 
 package scalafx.scene.layout
 
+import javafx.scene.{layout => jfxsl}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
+import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
-class PaneSpec  extends FlatSpec with PropertyComparator {
+class PaneSpec extends FlatSpec with PropertyComparator {
   "A Pane" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[javafx.scene.layout.Pane], classOf[Pane])
+    compareProperties(classOf[jfxsl.Pane], classOf[Pane])
   }
 
-  "A Pane" should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[javafx.scene.layout.PaneBuilder[_]], classOf[Pane])
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxsl.PaneBuilder[_]], classOf[Pane])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxPane = new Pane()
+    val jfxPane: jfxsl.Pane = sfxPane
+    jfxPane should be (sfxPane.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxPane = new jfxsl.Pane()
+    val sfxPane: Pane = jfxPane
+    sfxPane.delegate should be (jfxPane)
   }
 }

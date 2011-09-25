@@ -28,21 +28,19 @@
 package scalafx.scene.layout
 
 import collection.JavaConversions._
+import javafx.scene.{layout => jfxsl}
 import scalafx.scene.Node
 
 object Pane {
   implicit def sfxPane2jfx(v: Pane) = v.delegate
 }
 
-class Pane extends Region {
-  override val delegate = new javafx.scene.layout.Pane()
-
+class Pane(override val delegate:jfxsl.Pane = new jfxsl.Pane()) extends Region {
   def getChildren = delegate.getChildren
   def children = getChildren
 
-  var _content: List[_ <: Node] = Nil
   def content = getChildren
   def content_=(c: Iterable[Node]) {
-    getChildren.setAll(c.map(_.delegate))
+    content.setAll(c.map(_.delegate))
   }
 }
