@@ -27,16 +27,30 @@
 
 package scalafx.scene.shape
 
+import javafx.scene.{shape => jfxss}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
+import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class CircleSpec extends FlatSpec with PropertyComparator {
   "A Circle" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[javafx.scene.shape.Circle], classOf[Circle])
+    compareProperties(classOf[jfxss.Circle], classOf[Circle])
   }
 
-  "A Circle" should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[javafx.scene.shape.CircleBuilder[_]], classOf[Circle])
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxss.CircleBuilder[_]], classOf[Circle])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxCircle = new Circle()
+    val jfxCircle: jfxss.Circle = sfxCircle
+    jfxCircle should be (sfxCircle.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxCircle = new jfxss.Circle()
+    val sfxCircle: Circle = jfxCircle
+    sfxCircle.delegate should be (jfxCircle)
   }
 }

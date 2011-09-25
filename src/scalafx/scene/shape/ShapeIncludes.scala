@@ -32,11 +32,12 @@ import javafx.scene.{shape => jfxss}
 object ShapeIncludes extends ShapeIncludes
 
 trait ShapeIncludes {
+  implicit def jfxCircle2sfx(r: jfxss.Circle) = new Circle(r)
+  implicit def jfxEllipse2sfx(r: jfxss.Ellipse) = new Ellipse(r)
+  implicit def jfxLine2sfx(r: jfxss.Line) = new Line(r)
+  implicit def jfxPath2sfx(r: jfxss.Path) = new Path(r)
+  implicit def jfxRectangle2sfx(r: jfxss.Rectangle) = new Rectangle(r)
   implicit def jfxShape2sfx(s: jfxss.Shape) = new Shape {
     override val delegate = s
   }
-  implicit def jfxRectangle2sfx(r: jfxss.Rectangle) = new Rectangle(r)
-  implicit def jfxPath2sfx(r: jfxss.Path) = new Path(r)
-  implicit def jfxLine2sfx(r: jfxss.Line) = new Line(r)
-  implicit def jfxEllipse2sfx(r: jfxss.Ellipse) = new Ellipse(r)
 }

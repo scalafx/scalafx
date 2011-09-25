@@ -27,15 +27,14 @@
 
 package scalafx.scene.shape
 
+import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 
 object Circle {
   implicit def sfxCircle2jfx(v: Circle) = v.delegate
 }
 
-class Circle extends Shape {
-  override val delegate = new javafx.scene.shape.Circle()
-
+class Circle(override val delegate:jfxss.Circle = new jfxss.Circle()) extends Shape {
   def centerX = delegate.centerXProperty
   def centerX_=(v: Double) {
     centerX() = v
@@ -50,5 +49,4 @@ class Circle extends Shape {
   def radius_=(v: Double) {
     radius() = v
   }
-
 }
