@@ -27,16 +27,30 @@
 
 package scalafx.scene.shape
 
+import javafx.scene.{shape => jfxss}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
+import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class LineSpec extends FlatSpec with PropertyComparator {
   "A Line" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[javafx.scene.shape.Line], classOf[Line])
+    compareProperties(classOf[jfxss.Line], classOf[Line])
   }
 
-  "A Line" should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[javafx.scene.shape.LineBuilder[_]], classOf[Line])
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxss.LineBuilder[_]], classOf[Line])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxLine = new Line()
+    val jfxLine: jfxss.Line = sfxLine
+    jfxLine should be (sfxLine.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxLine = new jfxss.Line()
+    val sfxLine: Line = jfxLine
+    sfxLine.delegate should be (jfxLine)
   }
 }
