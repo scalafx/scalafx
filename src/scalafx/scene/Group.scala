@@ -36,9 +36,9 @@ object Group {
 }
 
 class Group(override val delegate:jfxs.Group = new jfxs.Group()) extends Parent {
-  def children = getChildren
+  def children = delegate.getChildren
   def children_=(c: Iterable[Node]) {
-    getChildren.setAll(c.map(_.delegate))
+    children.setAll(c.map(_.delegate))
   }
 
   def autoSizeChildren = delegate.autoSizeChildrenProperty
