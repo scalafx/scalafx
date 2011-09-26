@@ -27,6 +27,7 @@
 
 package scalafx
 
+import animation.AnimationIncludes
 import beans.BeanIncludes
 import collections.CollectionIncludes
 import scene.SceneIncludes
@@ -41,4 +42,4 @@ import util.UtilIncludes
  */
 object Includes extends Includes
 
-trait Includes extends CollectionIncludes with SceneIncludes with BeanIncludes with UtilIncludes
+trait Includes extends AnimationIncludes with CollectionIncludes with SceneIncludes with BeanIncludes with UtilIncludes

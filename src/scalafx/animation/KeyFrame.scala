@@ -36,9 +36,14 @@ import scalafx.util.SFXDelegate
 object KeyFrame {
   implicit def sfxKeyFrame2jfx(v: KeyFrame) = v.delegate
 
-  def apply(time: Duration, name: String = null, onFinished: jfxe.EventHandler[jfxe.ActionEvent] = null, values: List[KeyValue[_]] = null) = {
+  def apply(time: Duration, name: String = null, onFinished: jfxe.EventHandler[jfxe.ActionEvent] = null, values: Set[_ <: KeyValue[_]] = Set.empty) = {
     new KeyFrame(new jfxa.KeyFrame(time, name, onFinished, values.map(_.delegate)))
   }
 }
 
-class KeyFrame(override val delegate:jfxa.KeyFrame) extends SFXDelegate[jfxa.KeyFrame]
+class KeyFrame(override val delegate:jfxa.KeyFrame) extends SFXDelegate[jfxa.KeyFrame] {
+  def time = delegate.getTime
+  def name = delegate.getName
+  def onFinished = delegate.getOnFinished
+  def values = delegate.getValues
+}
