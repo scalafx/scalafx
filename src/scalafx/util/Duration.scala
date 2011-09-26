@@ -34,7 +34,7 @@ object Duration {
 
   def apply(millis: Double) = jfxu.Duration.millis(millis)
 
-  class DurationHelper(d: Double) {
+  private[util] class DurationHelper(d: Double) {
     def ms = apply(d)
     def s = jfxu.Duration.seconds(d)
     def m = jfxu.Duration.minutes(d)
@@ -47,6 +47,28 @@ object Duration {
   def ZERO = jfxu.Duration.ZERO
 }
 
-class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Duration] {
-  // todo - implement all the operators
+class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Duration] with Ordered[Duration] {
+  def +(d: jfxu.Duration) = delegate.add(d)
+  def -(d: jfxu.Duration) = delegate.subtract(d)
+
+  def *(d: Double) = delegate.multiply(d)
+  // Note: We are intentionally *not* supporting this...  there is no use case for multiplication with disregard to units
+  // def *(d: jfxu.Duration) = delegate.multiply(d)
+
+  def /(d: Double) = delegate.divide(d)
+  // Note: This is a "fixed" function...  rather than returning a duration we properly cancel units and return a Double
+  def /(d: jfxu.Duration) = delegate.divide(d).toMillis
+
+  override def compare(that: Duration) = delegate.compareTo(that)
+  def <(d: jfxu.Duration) = delegate.lessThan(d)
+  def <=(d: jfxu.Duration) = delegate.lessThanOrEqualTo(d)
+  def >(d: jfxu.Duration) = delegate.greaterThan(d)
+  def >=(d: jfxu.Duration) = delegate.greaterThanOrEqualTo(d)
+
+  def ==(d: jfxu.Duration) = delegate.equals(d)
+  def !=(d: jfxu.Duration) = !delegate.equals(d)
+  def ===(d: jfxu.Duration) = delegate.equals(d)
+  def =!=(d: jfxu.Duration) = !delegate.equals(d)
+
+  def unary_-() = delegate.negate()
 }

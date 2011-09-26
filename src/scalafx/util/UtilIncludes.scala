@@ -27,10 +27,12 @@
 
 package scalafx.util
 
+import javafx.{util => jfxu}
 import scalafx.util.Duration.DurationHelper
 
 object UtilIncludes extends UtilIncludes
 
 trait UtilIncludes {
   implicit def double2DurationHelper(d: Double) = new DurationHelper(d)
+  implicit def jfxDuration2sfx(d: jfxu.Duration) = new Duration(d)
 }

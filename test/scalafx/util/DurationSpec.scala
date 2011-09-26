@@ -50,4 +50,84 @@ class DurationSpec extends FlatSpec {
     Duration.UNKNOWN should equal (jfxu.Duration.UNKNOWN)
     Duration.ZERO should equal (jfxu.Duration.ZERO)
   }
+
+  it should "support addition" in {
+    (500 ms) + (500 ms) should equal (1 s)
+  }
+
+  it should "support subtraction" in {
+    (1 s) - (.5 s) should equal (500 ms)
+  }
+
+  it should "support multiplication" in {
+    (5 m) * 12 should equal (1 h)
+  }
+
+  it should "*not* support multiplication of Durations" in {
+    // the semantics for multiplying durations is just stupid...  the second test case shows why we are not supporting this
+    // (100 ms) * (100 ms) should equal (10000 ms)
+    // (5 s) * (5 s) should equal (25000 s) // WTF??? - oh yeah, we are just multiplying milliseconds and ignoring units :(
+  }
+
+  it should "support division" in {
+    (1 h) / 3 should equal (20 m)
+  }
+
+  it should "support proper division of Durations" in {
+    // the semantics for dividing durations is equally stupid...  fortunately we can fix it by cancelling units
+    (1000 ms) / (100 ms) should equal (10)
+    (5 s) / (2.5 s) should equal (2)
+  }
+
+  it should "support less than" in {
+    (5 ms) < (5 s) should be (true)
+    (5 s) < (5 s) should be (false)
+    (5 s) < (5 ms) should be (false)
+  }
+
+  it should "support less than or equal" in {
+    (5 ms) <= (5 s) should be (true)
+    (5 s) <= (5 s) should be (true)
+    (5 s) <= (5 ms) should be (false)
+  }
+
+  it should "support greater than" in {
+    (5 s) > (5 ms) should be (true)
+    (5 s) > (5 s) should be (false)
+    (5 ms) > (5 s) should be (false)
+  }
+
+  it should "support greater than or equal" in {
+    (5 s) >= (5 ms) should be (true)
+    (5 s) >= (5 s) should be (true)
+    (5 ms) >= (5 s) should be (false)
+  }
+
+  it should "support equal to" in {
+    (5 s) == (5 ms) should be (false)
+    (5 s) == (5 s) should be (true)
+    (5 ms) == (5 s) should be (false)
+  }
+
+  it should "support equal to with triple op (===)" in {
+    (5 s) === (5 ms) should be (false)
+    (5 s) === (5 s) should be (true)
+    (5 ms) === (5 s) should be (false)
+  }
+
+  it should "support not equal to" in {
+    (5 s) != (5 ms) should be (true)
+    (5 s) != (5 s) should be (false)
+    (5 ms) != (5 s) should be (true)
+  }
+
+  it should "support not equal to with triple op (=!=)" in {
+    (5 s) =!= (5 ms) should be (true)
+    (5 s) =!= (5 s) should be (false)
+    (5 ms) =!= (5 s) should be (true)
+  }
+
+  it should "support unary negation" in {
+    -(5 s) should equal (-5 s)
+  }
 }
