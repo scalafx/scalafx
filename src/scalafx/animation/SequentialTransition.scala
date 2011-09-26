@@ -27,28 +27,24 @@
 
 package scalafx.animation
 
+import collection.JavaConversions._
 import javafx.{animation => jfxa}
-import javafx.util.Duration
+import scalafx.Includes._
+import scalafx.util.SFXDelegate
+import scalafx.scene.Node
 
-object AnimationIncludes extends AnimationIncludes
+object SequentialTransition extends AnimationStatics {
+  implicit def sfxSequentialTransition2jfx(v: SequentialTransition) = v.delegate
+}
 
-trait AnimationIncludes {
-  def at(time: Duration)(value: => KeyValue[_, _]) = KeyFrame(time, values = Set(value))
-  implicit def jfxAnimation2sfx(v: jfxa.Animation) = new Animation() {
-    override def delegate = v
+class SequentialTransition(override val delegate:jfxa.SequentialTransition = new jfxa.SequentialTransition()) extends Transition with SFXDelegate[jfxa.SequentialTransition] {
+  def node = delegate.nodeProperty
+  def node_=(n: Node) {
+    node() = n
   }
-  implicit def jfxFadeTransition2sfx(v: jfxa.FadeTransition) = new FadeTransition(v)
-  implicit def jfxFillTransition2sfx(v: jfxa.FillTransition) = new FillTransition(v)
-  implicit def jfxKeyFrame2sfx(v: jfxa.KeyFrame) = new KeyFrame(v)
-  implicit def jfxKeyValue2sfx(v: jfxa.KeyValue) = new KeyValue(v)
-  implicit def jfxParallelTransition2sfx(v: jfxa.ParallelTransition) = new ParallelTransition(v)
-  implicit def jfxPathTransition2sfx(v: jfxa.PathTransition) = new PathTransition(v)
-  implicit def jfxPauseTransition2sfx(v: jfxa.PauseTransition) = new PauseTransition(v)
-  implicit def jfxRotateTransition2sfx(v: jfxa.RotateTransition) = new RotateTransition(v)
-  implicit def jfxScaleTransition2sfx(v: jfxa.ScaleTransition) = new ScaleTransition(v)
-  implicit def jfxSequentialTransition2sfx(v: jfxa.SequentialTransition) = new SequentialTransition(v)
-  implicit def jfxTimeline2sfx(v: jfxa.Timeline) = new Timeline(v)
-  implicit def jfxTransition2sfx(v: jfxa.Transition) = new Transition() {
-    override def delegate = v
+
+  def children = delegate.getChildren
+  def children_=(c: Iterable[Animation]) {
+    children.setAll(c.map(_.delegate))
   }
 }
