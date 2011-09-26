@@ -25,41 +25,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.testutil
+package scalafx.animation
 
-import org.scalatest.Assertions._
-import java.lang.reflect.Modifier
+import javafx.{animation => jfxa}
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
+import scalafx.Includes._
+import scalafx.testutil.PropertyComparator
 
-trait PropertyComparator {
-  private def getScalaFXProperties(scalafxClass:Class[_]) = {
-    val scalafxRegex = """(.*)""".r
-    scalafxClass.getMethods
-      .map(m => scalafxRegex.findFirstMatchIn(m.getName))
-      .flatMap(x => x)
-      .map(_.group(1))
-      .toSet
+class ParallelTransitionSpec extends FlatSpec with PropertyComparator {
+  "An ParallelTransition" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxa.ParallelTransition], classOf[ParallelTransition])
   }
 
-  def compareProperties(javafxClass:Class[_], scalafxClass:Class[_]) {
-    val javafxRegex = """(.*)Property""".r
-    val javafxProperties = javafxClass.getDeclaredMethods
-      .filter(m => Modifier.isPublic(m.getModifiers) )
-      .map(m => javafxRegex.findFirstMatchIn(m.getName))      
-      .flatMap(x => x)
-      .map(_.group(1))
-      .filterNot(n => n.startsWith("impl_"))
-      .toSet
-    val diff = javafxProperties diff getScalaFXProperties(scalafxClass)
-    assert(diff.isEmpty, "Missing Properties: " + diff.mkString(", "))
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxa.ParallelTransitionBuilder], classOf[ParallelTransition])
   }
 
-  def compareBuilderProperties(javafxClassBuilder:Class[_], scalafxClass:Class[_]) {
-    val javafxBuilderProperties = javafxClassBuilder.getDeclaredMethods // todo - this eventually needs to use: getMethods
-      .filter(m => Modifier.isPublic(m.getModifiers))
-      .map(_.getName)
-      .filterNot(n => n == "applyTo" || n == "create" || n == "build" || n.startsWith("impl_"))
-      .toSet
-    val diff = javafxBuilderProperties diff getScalaFXProperties(scalafxClass)
-    assert(diff.isEmpty, "Missing Properties: " + diff.mkString(", "))
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxParallelTransition = new ParallelTransition()
+    val jfxParallelTransition: jfxa.ParallelTransition = sfxParallelTransition
+    jfxParallelTransition should be (sfxParallelTransition.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxParallelTransition = new jfxa.ParallelTransition()
+    val sfxParallelTransition: ParallelTransition = jfxParallelTransition
+    sfxParallelTransition.delegate should be (jfxParallelTransition)
   }
 }
