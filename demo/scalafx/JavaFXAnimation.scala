@@ -50,12 +50,11 @@ object JavaFXAnimation extends Application {
     cycleCount = Timeline.INDEFINITE
     autoReverse = true
     keyFrames = Seq(
-      KeyFrame(5 s, values = Set(
-          rect1.x -> 300d,
-          rect2.x -> 500d,
-          rect2.y -> 150d
-        )
-      )
+      at (2 s) {rect1.x -> 200d},
+      at (4 s) {rect1.x -> 300d},
+      at (3 s) {rect2.y -> 100d},
+      at (4 s) {rect2.y -> 300d},
+      at (4 s) {rect2.width -> 300d}
     )
   }
   timeline.play()

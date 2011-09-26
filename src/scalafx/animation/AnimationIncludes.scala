@@ -28,10 +28,12 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa}
+import javafx.util.Duration
 
 object AnimationIncludes extends AnimationIncludes
 
 trait AnimationIncludes {
+  def at(time: Duration)(value: => KeyValue[_, _]) = KeyFrame(time, values = Set(value))
   implicit def jfxKeyFrame2sfx(kf: jfxa.KeyFrame) = new KeyFrame(kf)
   implicit def jfxKeyValue2sfx(kv: jfxa.KeyValue) = new KeyValue(kv)
 }
