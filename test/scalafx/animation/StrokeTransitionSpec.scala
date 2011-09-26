@@ -66,7 +66,7 @@ class StrokeTransitionSpec extends FlatSpec with PropertyComparator {
   }
 
   it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxa.StrokeTransitionBuilder[_]], classOf[StrokeTransition])
+    compareBuilderProperties(classOf[jfxa.StrokeTransitionBuilder], classOf[StrokeTransition])
   }
 
   it should "have an implicit conversion from SFX to JFX" in {

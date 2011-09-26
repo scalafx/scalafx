@@ -39,7 +39,7 @@ class FillTransitionSpec extends FlatSpec with PropertyComparator {
   }
 
   it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxa.FillTransitionBuilder[_]], classOf[FillTransition])
+    compareBuilderProperties(classOf[jfxa.FillTransitionBuilder], classOf[FillTransition])
   }
 
   it should "have an implicit conversion from SFX to JFX" in {
