@@ -33,4 +33,5 @@ object AnimationIncludes extends AnimationIncludes
 
 trait AnimationIncludes {
   implicit def jfxKeyFrame2sfx(kf: jfxa.KeyFrame) = new KeyFrame(kf)
+  implicit def jfxKeyValue2sfx(kv: jfxa.KeyValue) = new KeyValue(kv)
 }

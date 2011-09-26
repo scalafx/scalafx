@@ -36,7 +36,7 @@ import scalafx.util.SFXDelegate
 object KeyFrame {
   implicit def sfxKeyFrame2jfx(v: KeyFrame) = v.delegate
 
-  def apply(time: Duration, name: String = null, onFinished: jfxe.EventHandler[jfxe.ActionEvent] = null, values: Set[_ <: KeyValue[_]] = Set.empty) = {
+  def apply(time: Duration, name: String = null, onFinished: jfxe.EventHandler[jfxe.ActionEvent] = null, values: Set[_ <: KeyValue[_, _]] = Set.empty) = {
     new KeyFrame(new jfxa.KeyFrame(time, name, onFinished, values.map(_.delegate)))
   }
 }

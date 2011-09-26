@@ -33,7 +33,7 @@ import scalafx.beans.value.ObservableValue
 import scalafx.util.SFXDelegate
 
 object Property {
-  implicit def sfxProperty2jfx(p: Property[_, _]) = p.delegate
+  implicit def sfxProperty2jfx[T, J](p: Property[T, J]) = p.delegate
 }
 
 trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends ReadOnlyProperty[T, J] with SFXDelegate[jfxbp.Property[J]] {
