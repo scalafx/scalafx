@@ -28,28 +28,33 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa}
+import javafx.scene.paint.Color
 import javafx.util.Duration
+import scalafx.Includes._
+import scalafx.util.SFXDelegate
+import scalafx.scene.shape.Shape
 
-object AnimationIncludes extends AnimationIncludes
+object StrokeTransition extends AnimationStatics {
+  implicit def sfxStrokeTransition2jfx(v: StrokeTransition) = v.delegate
+}
 
-trait AnimationIncludes {
-  def at(time: Duration)(value: => KeyValue[_, _]) = KeyFrame(time, values = Set(value))
-  implicit def jfxAnimation2sfx(v: jfxa.Animation) = new Animation() {
-    override def delegate = v
+class StrokeTransition(override val delegate:jfxa.StrokeTransition = new jfxa.StrokeTransition()) extends Transition with SFXDelegate[jfxa.StrokeTransition] {
+  def shape = delegate.shapeProperty
+  def shape_=(s: Shape) {
+    shape() = s
   }
-  implicit def jfxFadeTransition2sfx(v: jfxa.FadeTransition) = new FadeTransition(v)
-  implicit def jfxFillTransition2sfx(v: jfxa.FillTransition) = new FillTransition(v)
-  implicit def jfxKeyFrame2sfx(v: jfxa.KeyFrame) = new KeyFrame(v)
-  implicit def jfxKeyValue2sfx(v: jfxa.KeyValue) = new KeyValue(v)
-  implicit def jfxParallelTransition2sfx(v: jfxa.ParallelTransition) = new ParallelTransition(v)
-  implicit def jfxPathTransition2sfx(v: jfxa.PathTransition) = new PathTransition(v)
-  implicit def jfxPauseTransition2sfx(v: jfxa.PauseTransition) = new PauseTransition(v)
-  implicit def jfxRotateTransition2sfx(v: jfxa.RotateTransition) = new RotateTransition(v)
-  implicit def jfxScaleTransition2sfx(v: jfxa.ScaleTransition) = new ScaleTransition(v)
-  implicit def jfxSequentialTransition2sfx(v: jfxa.SequentialTransition) = new SequentialTransition(v)
-  implicit def jfxStrokeTransition2sfx(v: jfxa.StrokeTransition) = new StrokeTransition(v)
-  implicit def jfxTimeline2sfx(v: jfxa.Timeline) = new Timeline(v)
-  implicit def jfxTransition2sfx(v: jfxa.Transition) = new Transition() {
-    override def delegate = v
+
+  def duration = delegate.durationProperty
+  def duration_=(d: Duration) {
+    duration() = d
+  }
+
+  def fromValue = delegate.fromValueProperty
+  def fromValue_=(from: Color) {
+    fromValue() = from
+  }
+  def toValue = delegate.toValueProperty
+  def toValue_=(to: Color) {
+    toValue() = to
   }
 }
