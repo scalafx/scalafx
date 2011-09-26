@@ -28,25 +28,26 @@
 package scalafx.util
 
 import javafx.{util => jfxu}
+import org.scalatest.FlatSpec
+import org.scalatest.matchers.ShouldMatchers._
+import scalafx.Includes._
 
-object Duration {
-  implicit def sfxDuration2jfx(d: Duration) = d.delegate
-
-  def apply(millis: Double) = jfxu.Duration.millis(millis)
-
-  class DurationHelper(d: Double) {
-    def ms = apply(d)
-    def s = jfxu.Duration.seconds(d)
-    def m = jfxu.Duration.minutes(d)
-    def h = jfxu.Duration.hours(d)
+class DurationSpec extends FlatSpec {
+  "A Duration" should "be constructable from apply" in {
+    Duration(500) should equal (new jfxu.Duration(500))
   }
 
-  def INDEFINITE = jfxu.Duration.INDEFINITE
-  def ONE = jfxu.Duration.ONE
-  def UNKNOWN = jfxu.Duration.UNKNOWN
-  def ZERO = jfxu.Duration.ZERO
-}
+  it should "be constructable from ms, s, m, and h" in {
+    (500 ms) should equal (Duration(500))
+    (5 s) should equal (Duration(5000))
+    (10 m) should equal (Duration(600000))
+    (1 h) should equal (Duration(3600000))
+  }
 
-class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Duration] {
-  // todo - implement all the operators
+  it should "expose INDEFINITE, ONE, UNKNOWN, and ZERO" in {
+    Duration.INDEFINITE should equal (jfxu.Duration.INDEFINITE)
+    Duration.ONE should equal (jfxu.Duration.ONE)
+    Duration.UNKNOWN should equal (jfxu.Duration.UNKNOWN)
+    Duration.ZERO should equal (jfxu.Duration.ZERO)
+  }
 }
