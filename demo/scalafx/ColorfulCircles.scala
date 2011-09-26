@@ -31,9 +31,9 @@
  */
 package scalafx;
 
-import java.lang.Math.random
+import scala.math.random
 
-import javafx.animation.Animation
+import scalafx.Includes._
 
 import javafx.collections.FXCollections
 import javafx.collections.ObservableList
@@ -46,8 +46,6 @@ import javafx.scene.paint.Stop
 import javafx.scene.shape.StrokeType
 
 import javafx.util.Duration
-
-import scalafx.Includes._
 
 import scalafx.animation.Timeline
 import scala.collection.immutable.VectorBuilder
@@ -71,8 +69,8 @@ import collection.JavaConversions._
  */
 object ColorfulCircles extends Application {
 
-  implicit def seqToList[T](c: scala.collection.immutable.IndexedSeq[T]):List[T] = c.toList
-  
+  implicit def seqToList[T](c: scala.collection.immutable.IndexedSeq[T]):List[T] = c.toList 
+
   val circlesToAnimate = new VectorBuilder[Circle]()
   
   stage = new Stage {
@@ -80,15 +78,14 @@ object ColorfulCircles extends Application {
     height = 600
     scene = new Scene {
       fill = Color.BLACK
-      content = List(new Group {
-          blendMode = BlendMode.OVERLAY
-          content = List(new Group {
-              content = List(new Rectangle {
-                  width = 800 //scene.width
-                  height = 600 //scene.height
+      content = List(new Group {          
+          children = List(new Group {
+              children = List(new Rectangle {
+                  width = 800 // <== scene.width
+                  height = 600 // <== scene.height
                   fill = Color.BLACK
                 }, new Group {
-                  content = for(i <- 0 until 15) yield {
+                  children = for(i <- 0 until 15) yield {
                     val circle = new Circle {
                       radius = 200
                       fill = Color.web("white", 0.05)
@@ -100,8 +97,8 @@ object ColorfulCircles extends Application {
                     circle
                   }
                   effect = new BoxBlur(30,30,3)
-                },new Group {
-                  content = for(i <- 0 until 20) yield {
+                }, new Group {
+                  children = for(i <- 0 until 20) yield {
                     val circle = new Circle {
                       radius = 70
                       fill = Color.web("white", 0.05)
@@ -114,7 +111,7 @@ object ColorfulCircles extends Application {
                   }
                   effect = new BoxBlur(2,2,2)
                 },new Group {
-                  content = for(i <- 0 until 10) yield {
+                  children = for(i <- 0 until 10) yield {
                     val circle = new Circle {
                       radius = 150
                       fill = Color.web("white", 0.05)
@@ -128,8 +125,8 @@ object ColorfulCircles extends Application {
                   effect = new BoxBlur(10,10,3)
                 })
             }, new Rectangle {
-              width = 800 //scene.width
-              height = 600 //scene.height
+              width = 800 // <== scene.width
+              height = 600 //<== scene.height
               fill = new LinearGradient(0f,1f,1f,0f,true, CycleMethod.NO_CYCLE,
                                         new Stop(0,Color.web("#f8bd55")),
                                         new Stop(0.14f,Color.web("#c0fe56")),
@@ -139,30 +136,26 @@ object ColorfulCircles extends Application {
                                         new Stop(0.71f,Color.web("#ed5fc2")),
                                         new Stop(0.85f,Color.web("#ef504c")),
                                         new Stop(1,Color.web("#f2660f")))
+              blendMode = BlendMode.OVERLAY
             })
         })
     }
     visible = true
   }
   
-//  def timeline = new Timeline {
-//    cycleCount = INDEFINITE
-//    autoReverse = true
-//    keyFrames = 
-//      for(circle <- circlesToAnimate.result) yield {
-//        new KeyFrame(0, values = List( // set start position at 0s
-//            new KeyValue(circle.centerX, random * 800D intValue),
-//            new KeyValue(circle.centerY, random * 600D intValue)
-//          )
-//        )
-//        new KeyFrame(40000, values = List( // set end position at 40s
-//            new KeyValue(circle.centerX, random * 800D intValue),
-//            new KeyValue(circle.centerY, random * 600D intValue)
-//          )
-//        )      
-//      }
-//  }     
-//  
-//  timeline.play();      
+  def timeline = new Timeline {
+    cycleCount = Timeline.INDEFINITE
+    autoReverse = true
+    keyFrames = (for(circle <- circlesToAnimate.result) yield {
+        Seq(
+          at(0 s) {circle.centerX -> random * 800}, 
+          at(0 s) {circle.centerY -> random * 600},
+          at(40 s) {circle.centerX -> random * 800}, 
+          at(40 s) {circle.centerY -> random * 600}
+        )
+      }).flatten
+  }     
+  
+  timeline.play();      
   
 }
