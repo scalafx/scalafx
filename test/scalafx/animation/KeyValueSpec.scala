@@ -141,8 +141,24 @@ class KeyValueSpec extends FlatSpec with PropertyComparator {
 
   it should "have a convenient creation syntax using the -> operator" in {
     val doubleProperty = new DoubleProperty(null, "test")
-    val keyValue = doubleProperty -> 50
-    keyValue.target should equal (doubleProperty.delegate)
-    keyValue.endValue should equal (50)
+    val kv = doubleProperty -> 50
+    kv.target should equal (doubleProperty.delegate)
+    kv.endValue should equal (50)
+  }
+
+  it should "support interpolators" in {
+    val doubleProperty = new DoubleProperty(null, "test")
+    val kv = KeyValue(doubleProperty, 50d, jfxa.Interpolator.EASE_BOTH)
+    kv.target should equal (doubleProperty.delegate)
+    kv.endValue should equal (50d)
+    kv.interpolator should equal (jfxa.Interpolator.EASE_BOTH)
+  }
+
+  it should "support interpolators with the ->/tween operator" in {
+    val doubleProperty = new DoubleProperty(null, "test")
+    val kv = doubleProperty -> 50 tween Interpolator.EASE_BOTH
+    kv.target should equal (doubleProperty.delegate)
+    kv.endValue should equal (50d)
+    kv.interpolator should equal (jfxa.Interpolator.EASE_BOTH)
   }
 }

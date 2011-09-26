@@ -27,19 +27,18 @@
 
 package scalafx.animation
 
-import collection.JavaConversions._
 import javafx.{animation => jfxa}
-import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import javafx.util.Duration
 
-object Timeline extends AnimationStatics {
-  implicit def sfxTimeline2jfx(v: Timeline) = v.delegate
-}
+// really no point wrapping the JavaFX interpolator class, so this just exposes the statics
+object Interpolator {
+  def DISCRETE = jfxa.Interpolator.DISCRETE
+  def EASE_BOTH = jfxa.Interpolator.EASE_BOTH
+  def EASE_IN = jfxa.Interpolator.EASE_IN
+  def EASE_OUT = jfxa.Interpolator.EASE_OUT
+  def LINEAR = jfxa.Interpolator.LINEAR
 
-class Timeline(override val delegate:jfxa.Timeline = new jfxa.Timeline()) extends Animation with SFXDelegate[jfxa.Timeline] {
-  def this(targetFramerate: Double) = this(new jfxa.Timeline(targetFramerate))
-  def keyFrames = delegate.getKeyFrames
-  def keyFrames_=(kf: Seq[_ <: KeyFrame]) {
-    keyFrames.setAll(kf.map(_.delegate))
-  }
+  def SPLINE(x1: Double, x2: Double, x3: Double, x4: Double) = jfxa.Interpolator.SPLINE(x1, x2, x3, x4)
+  def TANGENT(t: Duration, v: Double) = jfxa.Interpolator.TANGENT(t, v)
+  def TANGENT(t1: Duration, v1: Double, t2: Duration, v2: Double) = jfxa.Interpolator.TANGENT(t1, v1, t2, v2)
 }

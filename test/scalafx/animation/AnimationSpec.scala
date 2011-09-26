@@ -25,53 +25,37 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+package scalafx.animation
 
-import javafx.beans.value.{ObservableValue => JFXObservableValue}
-import javafx.beans.{property => jfxbp}
+import javafx.{animation => jfxa}
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.beans.value.ObservableValue
-import scalafx.util.SFXDelegate
-import scalafx.animation.Tweenable
+import scalafx.testutil.PropertyComparator
 
-object Property {
-  implicit def sfxProperty2jfx[T, J <: AnyRef](p: Property[T, J]) = p.delegate
-}
-
-trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: AnyRef] extends ReadOnlyProperty[T, J] with SFXDelegate[jfxbp.Property[J]] {
-  def value_=(v: T)
-
-  def update(v: T) {
-    value_=(v)
+class AnimationSpec extends FlatSpec with PropertyComparator {
+  "An Animation" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxa.Animation], classOf[Animation])
   }
 
-  def <==(v: JFXObservableValue[_ <: J]) {
-    delegate.bind(v)
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxa.AnimationBuilder[_]], classOf[Animation])
   }
 
-  def <==(v: ObservableValue[_ <: T, _ <: J]) {
-    delegate.bind(v.delegate)
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxAnimation = new Animation() {
+      override val delegate = new jfxa.Timeline()
+    }
+    val jfxAnimation: jfxa.Animation = sfxAnimation
+    jfxAnimation should be (sfxAnimation.delegate)
   }
 
-  def <==>(v: Property[T, J]) {
-    delegate.bindBidirectional(v.delegate)
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxAnimation = new jfxa.Animation() {
+      def impl_playTo(p1: Long, p2: Long) {}
+      def impl_jumpTo(p1: Long, p2: Long) {}
+    }
+    val sfxAnimation: Animation = jfxAnimation
+    sfxAnimation.delegate should be (jfxAnimation)
   }
-
-  def <==>(v: jfxbp.Property[J]) {
-    delegate.bindBidirectional(v)
-  }
-
-  def unbind() {
-    delegate.unbind()
-  }
-
-  def unbind(v: Property[T, J]) {
-    delegate.unbindBidirectional(v.delegate)
-  }
-
-  def unbind(v: jfxbp.Property[J]) {
-    delegate.unbindBidirectional(v)
-  }
-
-  def ->(endVal: J) = new Tweenable[T, J](this, endVal)
 }

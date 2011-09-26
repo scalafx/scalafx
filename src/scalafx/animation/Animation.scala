@@ -28,8 +28,9 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa}
+import javafx.{event => jfxe}
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.util.{Duration, SFXDelegate}
 
 trait AnimationStatics {
   def INDEFINITE = jfxa.Animation.INDEFINITE
@@ -45,8 +46,35 @@ abstract class Animation extends SFXDelegate[jfxa.Animation] {
     autoReverse() = ar
   }
 
+  def currentRate = delegate.currentRateProperty
+
+  def currentTime = delegate.currentTimeProperty
+
   def cycleCount = delegate.cycleCountProperty
   def cycleCount_=(r: Int) {
     cycleCount() = r
   }
+
+  def cycleDuration = delegate.cycleDurationProperty
+
+  def delay = delegate.delayProperty
+  def delay_=(d: Duration) {
+    delay() = d
+  }
+
+  def onFinished = delegate.onFinishedProperty
+  def onFinished_=(handler: jfxe.EventHandler[jfxe.ActionEvent]) {
+    onFinished() = handler
+  }
+
+  def rate = delegate.rateProperty
+  def rate_=(r: Double) {
+    rate() = r
+  }
+
+  def status = delegate.statusProperty
+
+  def totalDuration = delegate.totalDurationProperty
+
+  def targetFramerate = delegate.getTargetFramerate
 }

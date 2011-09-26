@@ -33,7 +33,7 @@ import java.lang.reflect.Modifier
 trait PropertyComparator {
   private def getScalaFXProperties(scalafxClass:Class[_]) = {
     val scalafxRegex = """(.*)""".r
-    scalafxClass.getDeclaredMethods
+    scalafxClass.getMethods
       .map(m => scalafxRegex.findFirstMatchIn(m.getName))
       .flatMap(x => x)
       .map(_.group(1))

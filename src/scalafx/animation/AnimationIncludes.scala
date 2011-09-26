@@ -34,6 +34,10 @@ object AnimationIncludes extends AnimationIncludes
 
 trait AnimationIncludes {
   def at(time: Duration)(value: => KeyValue[_, _]) = KeyFrame(time, values = Set(value))
+  implicit def jfxAnimation2sfx(kv: jfxa.Animation) = new Animation() {
+    override def delegate = kv
+  }
   implicit def jfxKeyFrame2sfx(kf: jfxa.KeyFrame) = new KeyFrame(kf)
   implicit def jfxKeyValue2sfx(kv: jfxa.KeyValue) = new KeyValue(kv)
+  implicit def jfxTimeline2sfx(kv: jfxa.Timeline) = new Timeline(kv)
 }
