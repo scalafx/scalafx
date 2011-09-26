@@ -28,20 +28,38 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa}
+import scalafx.Includes._
+import scalafx.util.SFXDelegate
+import scalafx.scene.Node
 import javafx.util.Duration
 
-object AnimationIncludes extends AnimationIncludes
+object FadeTransition extends AnimationStatics {
+  implicit def sfxFadeTransition2jfx(v: FadeTransition) = v.delegate
+}
 
-trait AnimationIncludes {
-  def at(time: Duration)(value: => KeyValue[_, _]) = KeyFrame(time, values = Set(value))
-  implicit def jfxAnimation2sfx(v: jfxa.Animation) = new Animation() {
-    override def delegate = v
+class FadeTransition(override val delegate:jfxa.FadeTransition = new jfxa.FadeTransition()) extends Transition with SFXDelegate[jfxa.FadeTransition] {
+  def byValue = delegate.byValueProperty
+  def byValue_=(by: Double) {
+    byValue() = by
   }
-  implicit def jfxFadeTransition2sfx(v: jfxa.FadeTransition) = new FadeTransition(v)
-  implicit def jfxKeyFrame2sfx(v: jfxa.KeyFrame) = new KeyFrame(v)
-  implicit def jfxKeyValue2sfx(v: jfxa.KeyValue) = new KeyValue(v)
-  implicit def jfxTimeline2sfx(v: jfxa.Timeline) = new Timeline(v)
-  implicit def jfxTransition2sfx(v: jfxa.Transition) = new Transition() {
-    override def delegate = v
+
+  def duration = delegate.durationProperty
+  def duration_=(d: Duration) {
+    duration() = d
+  }
+
+  def fromValue = delegate.fromValueProperty
+  def fromValue_=(from: Double) {
+    fromValue() = from
+  }
+
+  def node = delegate.nodeProperty
+  def node_=(n: Node) {
+    node() = n
+  }
+
+  def toValue = delegate.toValueProperty
+  def toValue_=(to: Double) {
+    toValue() = to
   }
 }

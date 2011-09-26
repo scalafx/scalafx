@@ -28,20 +28,16 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa}
-import javafx.util.Duration
+import scalafx.Includes._
+import scalafx.util.SFXDelegate
 
-object AnimationIncludes extends AnimationIncludes
+object Transition extends AnimationStatics {
+  implicit def sfxTransition2jfx(v: Transition) = v.delegate
+}
 
-trait AnimationIncludes {
-  def at(time: Duration)(value: => KeyValue[_, _]) = KeyFrame(time, values = Set(value))
-  implicit def jfxAnimation2sfx(v: jfxa.Animation) = new Animation() {
-    override def delegate = v
-  }
-  implicit def jfxFadeTransition2sfx(v: jfxa.FadeTransition) = new FadeTransition(v)
-  implicit def jfxKeyFrame2sfx(v: jfxa.KeyFrame) = new KeyFrame(v)
-  implicit def jfxKeyValue2sfx(v: jfxa.KeyValue) = new KeyValue(v)
-  implicit def jfxTimeline2sfx(v: jfxa.Timeline) = new Timeline(v)
-  implicit def jfxTransition2sfx(v: jfxa.Transition) = new Transition() {
-    override def delegate = v
+abstract class Transition extends Animation with SFXDelegate[jfxa.Transition] {
+  def interpolator = delegate.interpolatorProperty
+  def interpolator_=(i: jfxa.Interpolator) {
+    interpolator() = i
   }
 }
