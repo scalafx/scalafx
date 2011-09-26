@@ -68,6 +68,26 @@ class KeyFrameSpec extends FlatSpec with PropertyComparator {
     KeyFrame(10 ms, onFinished = finishHandler).onFinished should equal (finishHandler)
   }
 
+  it should "have a simpler syntax for finish handlers" in {
+    var callCount = 0
+    val finishHandler = {
+      callCount += 1
+    }
+    KeyFrame(10 ms, onFinished = finishHandler).onFinished.handle(null)
+    callCount should equal (1)
+  }
+
+  it should "have a simpler syntax for finish handlers with events" in {
+    var callCount = 0
+    val actionEvent = new jfxe.ActionEvent()
+    val finishHandler = {event: jfxe.ActionEvent =>
+      callCount += 1
+      event should equal (actionEvent)
+    }
+    KeyFrame(10 ms, onFinished = finishHandler).onFinished.handle(actionEvent)
+    callCount should equal (1)
+  }
+
   it should "have a convenient apply construction format and property access for values" in {
     val doubleProperty = new DoubleProperty(null, "sample")
     val frames = Set(
