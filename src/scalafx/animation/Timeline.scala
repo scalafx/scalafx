@@ -38,7 +38,7 @@ object Timeline extends AnimationStatics {
 
 class Timeline(override val delegate:jfxa.Timeline = new jfxa.Timeline()) extends Animation with SFXDelegate[jfxa.Timeline] {
   def keyFrames = delegate.getKeyFrames
-  def keyFrames_=(kf: List[_ <: KeyFrame]) {
+  def keyFrames_=(kf: Seq[_ <: KeyFrame]) {
     keyFrames.setAll(kf.map(_.delegate))
   }
 }

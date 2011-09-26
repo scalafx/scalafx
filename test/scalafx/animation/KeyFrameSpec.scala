@@ -41,6 +41,18 @@ class KeyFrameSpec extends FlatSpec with PropertyComparator {
     compareProperties(classOf[jfxa.KeyFrame], classOf[KeyFrame])
   }
 
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxKeyFrame = KeyFrame(5 s)
+    val jfxKeyFrame: jfxa.KeyFrame = sfxKeyFrame
+    jfxKeyFrame should be (sfxKeyFrame.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxKeyFrame = new jfxa.KeyFrame(5 s)
+    val sfxKeyFrame: KeyFrame = jfxKeyFrame
+    sfxKeyFrame.delegate should be (jfxKeyFrame)
+  }
+
   it should "have a convenient apply construction format and property access for time" in {
     KeyFrame(10 ms).time should equal (10 ms)
   }
@@ -59,20 +71,8 @@ class KeyFrameSpec extends FlatSpec with PropertyComparator {
   it should "have a convenient apply construction format and property access for values" in {
     val doubleProperty = new DoubleProperty(null, "sample")
     val frames = Set(
-      KeyValue(doubleProperty, 50)
+      KeyValue(doubleProperty, 50d)
     )
     KeyFrame(10 ms, values = frames).values should equal (setAsJavaSet(frames.map(_.delegate)))
-  }
-
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxKeyFrame = KeyFrame(5 s)
-    val jfxKeyFrame: jfxa.KeyFrame = sfxKeyFrame
-    jfxKeyFrame should be (sfxKeyFrame.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxKeyFrame = new jfxa.KeyFrame(5 s)
-    val sfxKeyFrame: KeyFrame = jfxKeyFrame
-    sfxKeyFrame.delegate should be (jfxKeyFrame)
   }
 }

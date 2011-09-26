@@ -31,12 +31,13 @@ import javafx.beans.value.{ObservableValue => JFXObservableValue}
 import javafx.beans.{property => jfxbp}
 import scalafx.beans.value.ObservableValue
 import scalafx.util.SFXDelegate
+import scalafx.animation.KeyValue
 
 object Property {
-  implicit def sfxProperty2jfx[T, J](p: Property[T, J]) = p.delegate
+  implicit def sfxProperty2jfx[T, J <: AnyRef](p: Property[T, J]) = p.delegate
 }
 
-trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends ReadOnlyProperty[T, J] with SFXDelegate[jfxbp.Property[J]] {
+trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: AnyRef] extends ReadOnlyProperty[T, J] with SFXDelegate[jfxbp.Property[J]] {
   def value_=(v: T)
 
   def update(v: T) {
@@ -70,4 +71,6 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J] extends Rea
   def unbind(v: jfxbp.Property[J]) {
     delegate.unbindBidirectional(v)
   }
+
+  def ->(endVal: J) = KeyValue[T, J](this, endVal)
 }

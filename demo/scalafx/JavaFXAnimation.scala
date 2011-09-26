@@ -29,7 +29,7 @@ package scalafx
 
 import javafx.scene.paint.Color
 import scalafx.Includes._
-import scalafx.animation.{KeyValue, KeyFrame, Timeline}
+import scalafx.animation.{KeyFrame, Timeline}
 import scalafx.application.Application
 import scalafx.scene.Scene
 import scalafx.scene.shape.Rectangle
@@ -49,11 +49,11 @@ object JavaFXAnimation extends Application {
   val timeline = new Timeline {
     cycleCount = Timeline.INDEFINITE
     autoReverse = true
-    keyFrames = List(
+    keyFrames = Seq(
       KeyFrame(5 s, values = Set(
-          KeyValue(rect1.x, 300d),
-          KeyValue(rect2.x, 500d),
-          KeyValue(rect2.y, 150d)
+          rect1.x -> 300d,
+          rect2.x -> 500d,
+          rect2.y -> 150d
         )
       )
     )

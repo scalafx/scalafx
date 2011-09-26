@@ -27,9 +27,7 @@
 
 package scalafx.animation
 
-import collection.JavaConversions._
 import javafx.{animation => jfxa}
-import javafx.{event => jfxe}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.Includes._
@@ -39,41 +37,6 @@ import scalafx.beans.property._
 class KeyValueSpec extends FlatSpec with PropertyComparator {
   "A KeyValue" should "implement all the JavaFX properties" in {
     compareProperties(classOf[jfxa.KeyValue], classOf[KeyValue[_, _]])
-  }
-
-  it should "have a convenient apply construction format for integers" in {
-    val integerProperty = new IntegerProperty(null, "test")
-    val kv = KeyValue(integerProperty, 50)
-    kv.target should equal (integerProperty.delegate)
-    kv.endValue should equal (50)
-  }
-
-  it should "have a convenient apply construction format for longs" in {
-    val longProperty = new LongProperty(null, "test")
-    val kv = KeyValue(longProperty, 50l)
-    kv.target should equal (longProperty.delegate)
-    kv.endValue should equal (50l)
-  }
-
-  it should "have a convenient apply construction format for floats" in {
-    val floatProperty = new FloatProperty(null, "test")
-    val kv = KeyValue(floatProperty, 50f)
-    kv.target should equal (floatProperty.delegate)
-    kv.endValue should equal (50f)
-  }
-
-  it should "have a convenient apply construction format for doubles" in {
-    val doubleProperty = new DoubleProperty(null, "test")
-    val kv = KeyValue(doubleProperty, 50d)
-    kv.target should equal (doubleProperty.delegate)
-    kv.endValue should equal (50d)
-  }
-
-  it should "have a convenient apply construction format for booleans" in {
-    val booleanProperty = new BooleanProperty(null, "test")
-    val kv = KeyValue(booleanProperty, true)
-    kv.target should equal (booleanProperty.delegate)
-    kv.endValue should equal (true)
   }
 
   it should "have an implicit conversion from SFX to JFX" in {
@@ -88,5 +51,98 @@ class KeyValueSpec extends FlatSpec with PropertyComparator {
     val jfxKeyValue = new jfxa.KeyValue(doubleProperty, double2Double(50))
     val sfxKeyValue: KeyValue[_, _] = jfxKeyValue
     sfxKeyValue.delegate should be (jfxKeyValue)
+  }
+
+  it should "have a convenient apply construction format for integers" in {
+    val integerProperty = new IntegerProperty(null, "test")
+    val kv = KeyValue(integerProperty, 50)
+    kv.target should equal (integerProperty.delegate)
+    kv.endValue should equal (50)
+  }
+
+  it should "have a convenient apply construction format for jfx integers" in {
+    val integerProperty = new IntegerProperty(null, "test").delegate
+    val kv = KeyValue(integerProperty, 50)
+    kv.target should equal (integerProperty.delegate)
+    kv.endValue should equal (50)
+  }
+
+  it should "have a convenient apply construction format for longs" in {
+    val longProperty = new LongProperty(null, "test")
+    val kv = KeyValue(longProperty, 50l)
+    kv.target should equal (longProperty.delegate)
+    kv.endValue should equal (50l)
+  }
+
+  it should "have a convenient apply construction format for jfx longs" in {
+    val longProperty = new LongProperty(null, "test").delegate
+    val kv = KeyValue(longProperty, 50l)
+    kv.target should equal (longProperty.delegate)
+    kv.endValue should equal (50l)
+  }
+
+  it should "have a convenient apply construction format for floats" in {
+    val floatProperty = new FloatProperty(null, "test")
+    val kv = KeyValue(floatProperty, 50f)
+    kv.target should equal (floatProperty.delegate)
+    kv.endValue should equal (50f)
+  }
+
+  it should "have a convenient apply construction format for jfx floats" in {
+    val floatProperty = new FloatProperty(null, "test").delegate
+    val kv = KeyValue(floatProperty, 50f)
+    kv.target should equal (floatProperty.delegate)
+    kv.endValue should equal (50f)
+  }
+
+  it should "have a convenient apply construction format for doubles" in {
+    val doubleProperty = new DoubleProperty(null, "test")
+    val kv = KeyValue(doubleProperty, 50d)
+    kv.target should equal (doubleProperty.delegate)
+    kv.endValue should equal (50d)
+  }
+
+  it should "have a convenient apply construction format for jfx doubles" in {
+    val doubleProperty = new DoubleProperty(null, "test").delegate
+    val kv = KeyValue(doubleProperty, 50d)
+    kv.target should equal (doubleProperty.delegate)
+    kv.endValue should equal (50d)
+  }
+
+  it should "have a convenient apply construction format for booleans" in {
+    val booleanProperty = new BooleanProperty(null, "test")
+    val kv = KeyValue(booleanProperty, true)
+    kv.target should equal (booleanProperty.delegate)
+    kv.endValue should equal (true)
+  }
+
+  it should "have a convenient apply construction format for jfx booleans" in {
+    val booleanProperty = new BooleanProperty(null, "test").delegate
+    val kv = KeyValue(booleanProperty, true)
+    kv.target should equal (booleanProperty.delegate)
+    kv.endValue should equal (true)
+  }
+
+  it should "have a convenient apply construction format for Objects" in {
+    val objectProperty = new ObjectProperty[Object](null, "test")
+    val endObj = new Object()
+    val kv = KeyValue(objectProperty, endObj)
+    kv.target should equal (objectProperty.delegate)
+    kv.endValue should equal (endObj)
+  }
+
+  it should "have a convenient apply construction format for jfx Objects" in {
+    val objectProperty = new ObjectProperty[Object](null, "test").delegate
+    val endObj = new Object()
+    val kv = KeyValue(objectProperty, endObj)
+    kv.target should equal (objectProperty.delegate)
+    kv.endValue should equal (endObj)
+  }
+
+  it should "have a convenient creation syntax using the -> operator" in {
+    val doubleProperty = new DoubleProperty(null, "test")
+    val keyValue = doubleProperty -> 50
+    keyValue.target should equal (doubleProperty.delegate)
+    keyValue.endValue should equal (50)
   }
 }

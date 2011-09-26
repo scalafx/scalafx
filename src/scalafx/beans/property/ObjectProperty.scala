@@ -32,10 +32,10 @@ import scalafx.beans.binding.ObjectExpression
 import scalafx.util.SFXDelegate
 
 object ObjectProperty {
-  implicit def sfxObjectProperty2jfx[J <: Object](op: ObjectProperty[J]) = op.delegate
+  implicit def sfxObjectProperty2jfx[J <: AnyRef](op: ObjectProperty[J]) = op.delegate
 }
 
-class ObjectProperty[J](override val delegate: jfxbp.ObjectProperty[J]) extends ObjectExpression[J](delegate) with Property[J, J] with SFXDelegate[jfxbp.ObjectProperty[J]] {
+class ObjectProperty[J <: AnyRef](override val delegate: jfxbp.ObjectProperty[J]) extends ObjectExpression[J](delegate) with Property[J, J] with SFXDelegate[jfxbp.ObjectProperty[J]] {
   def this(bean: Object, name: String) = this (new jfxbp.ObjectPropertyBase[J]() {
     def getBean = bean
     def getName = name
