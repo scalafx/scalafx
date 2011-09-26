@@ -29,25 +29,67 @@ package scalafx.animation
 
 import javafx.{animation => jfxa}
 import javafx.util.Duration
+import scalafx.Includes._
+import scalafx.util.SFXDelegate
+import scalafx.scene.Node
 
-object AnimationIncludes extends AnimationIncludes
+object ScaleTransition extends AnimationStatics {
+  implicit def sfxScaleTransition2jfx(v: ScaleTransition) = v.delegate
+}
 
-trait AnimationIncludes {
-  def at(time: Duration)(value: => KeyValue[_, _]) = KeyFrame(time, values = Set(value))
-  implicit def jfxAnimation2sfx(v: jfxa.Animation) = new Animation() {
-    override def delegate = v
+class ScaleTransition(override val delegate:jfxa.ScaleTransition = new jfxa.ScaleTransition()) extends Transition with SFXDelegate[jfxa.ScaleTransition] {
+  def duration = delegate.durationProperty
+  def duration_=(d: Duration) {
+    duration() = d
   }
-  implicit def jfxFadeTransition2sfx(v: jfxa.FadeTransition) = new FadeTransition(v)
-  implicit def jfxFillTransition2sfx(v: jfxa.FillTransition) = new FillTransition(v)
-  implicit def jfxKeyFrame2sfx(v: jfxa.KeyFrame) = new KeyFrame(v)
-  implicit def jfxKeyValue2sfx(v: jfxa.KeyValue) = new KeyValue(v)
-  implicit def jfxParallelTransition2sfx(v: jfxa.ParallelTransition) = new ParallelTransition(v)
-  implicit def jfxPathTransition2sfx(v: jfxa.PathTransition) = new PathTransition(v)
-  implicit def jfxPauseTransition2sfx(v: jfxa.PauseTransition) = new PauseTransition(v)
-  implicit def jfxRotateTransition2sfx(v: jfxa.RotateTransition) = new RotateTransition(v)
-  implicit def jfxScaleTransition2sfx(v: jfxa.ScaleTransition) = new ScaleTransition(v)
-  implicit def jfxTimeline2sfx(v: jfxa.Timeline) = new Timeline(v)
-  implicit def jfxTransition2sfx(v: jfxa.Transition) = new Transition() {
-    override def delegate = v
+
+  def node = delegate.nodeProperty
+  def node_=(n: Node) {
+    node() = n
+  }
+
+  def byX = delegate.byXProperty
+  def byX_=(x: Double) {
+    byX() = x
+  }
+
+  def byY = delegate.byYProperty
+  def byY_=(y: Double) {
+    byY() = y
+  }
+
+  def byZ = delegate.byZProperty
+  def byZ_=(z: Double) {
+    byZ() = z
+  }
+
+  def fromX = delegate.fromXProperty
+  def fromX_=(x: Double) {
+    fromX() = x
+  }
+
+  def fromY = delegate.fromYProperty
+  def fromY_=(y: Double) {
+    fromY() = y
+  }
+
+  def fromZ = delegate.fromZProperty
+  def fromZ_=(z: Double) {
+    fromZ() = z
+  }
+
+  def toX = delegate.toXProperty
+  def toX_=(x: Double) {
+    toX() = x
+  }
+
+  def toY = delegate.toYProperty
+  def toY_=(y: Double) {
+    toY() = y
+  }
+
+  def toZ = delegate.toZProperty
+  def toZ_=(z: Double) {
+    toZ() = z
   }
 }
