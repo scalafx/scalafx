@@ -28,20 +28,17 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
-import scalafx.beans.binding.BooleanExpression
 import scalafx.util.SFXDelegate
 
 object BooleanProperty {
   implicit def sfxBooleanProperty2jfx(bp: BooleanProperty) = bp.delegate
 }
 
-class BooleanProperty(override val delegate: jfxbp.BooleanProperty) extends BooleanExpression(delegate) with Property[Boolean, java.lang.Boolean] with SFXDelegate[jfxbp.BooleanProperty] {
+class BooleanProperty(override val delegate: jfxbp.BooleanProperty) extends ReadOnlyBooleanProperty(delegate) with Property[Boolean, java.lang.Boolean] with SFXDelegate[jfxbp.BooleanProperty] {
   def this(bean: Object, name: String) = this (new jfxbp.BooleanPropertyBase() {
     def getBean = bean
     def getName = name
   })
-
-  override def value = delegate.get
 
   def value_=(v: Boolean) {
     delegate.set(v)

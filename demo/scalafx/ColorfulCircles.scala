@@ -60,8 +60,8 @@ object ColorfulCircles extends Application {
         new Group {
           children = Seq(
             new Rectangle {
-              width <== scene selectDouble "width"
-              height <== scene selectDouble "height"
+              width <== scene.width
+              height <== scene.height
               fill = Color.BLACK
             },
             new Group {

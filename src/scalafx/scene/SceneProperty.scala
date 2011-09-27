@@ -27,21 +27,17 @@
 
 package scalafx.scene
 
+import javafx.beans.{binding => jfxbb}
 import javafx.beans.{property => jfxbp}
 import javafx.{scene => jfxs}
-import layout.LayoutIncludes
-import paint.PaintIncludes
-import shape.ShapeIncludes
+import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.util.SFXDelegate
 
-object SceneIncludes extends SceneIncludes
+object SceneProperty {
+  implicit def sfxSceneProperty2jfx(p: SceneProperty) = p.delegate
+}
 
-trait SceneIncludes extends LayoutIncludes with PaintIncludes with ShapeIncludes with LowerPriorityIncludes
-
-trait LowerPriorityIncludes {
-  implicit def jfxGroup2sfx(v: jfxs.Group) = new Group(v)
-  implicit def jfxParent2sfx(v: jfxs.Parent) = new Parent() {
-    override val delegate = v
-  }
-  implicit def jfxScene2sfx(v: jfxs.Scene) = new Scene(v)
-  implicit def jfxSceneProperty2sfx(p: jfxbp.ReadOnlyObjectProperty[jfxs.Scene]) = new SceneProperty(p)
+class SceneProperty(override val delegate: jfxbp.ReadOnlyObjectProperty[jfxs.Scene]) extends ReadOnlyObjectProperty[jfxs.Scene](delegate) with SFXDelegate[jfxbp.ReadOnlyObjectProperty[jfxs.Scene]] {
+  def width = jfxbb.Bindings.selectDouble(delegate, "width")
+  def height = jfxbb.Bindings.selectDouble(delegate, "height")
 }

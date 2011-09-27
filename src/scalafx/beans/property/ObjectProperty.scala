@@ -28,14 +28,13 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
-import scalafx.beans.binding.ObjectExpression
 import scalafx.util.SFXDelegate
 
 object ObjectProperty {
   implicit def sfxObjectProperty2jfx[J <: AnyRef](op: ObjectProperty[J]) = op.delegate
 }
 
-class ObjectProperty[J <: AnyRef](override val delegate: jfxbp.ObjectProperty[J]) extends ObjectExpression[J](delegate) with Property[J, J] with SFXDelegate[jfxbp.ObjectProperty[J]] {
+class ObjectProperty[J <: AnyRef](override val delegate: jfxbp.ObjectProperty[J]) extends ReadOnlyObjectProperty[J](delegate) with Property[J, J] with SFXDelegate[jfxbp.ObjectProperty[J]] {
   def this(bean: Object, name: String) = this (new jfxbp.ObjectPropertyBase[J]() {
     def getBean = bean
     def getName = name
@@ -44,6 +43,4 @@ class ObjectProperty[J <: AnyRef](override val delegate: jfxbp.ObjectProperty[J]
   def value_=(v: J) {
     delegate.set(v)
   }
-
-  def value = delegate.get
 }

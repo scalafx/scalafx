@@ -28,20 +28,17 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
-import scalafx.beans.binding.NumberExpression
 import scalafx.util.SFXDelegate
 
 object LongProperty {
   implicit def sfxLongProperty2jfx(lp: LongProperty) = lp.delegate
 }
 
-class LongProperty(override val delegate: jfxbp.LongProperty) extends NumberExpression(delegate) with Property[Long, Number] with SFXDelegate[jfxbp.LongProperty] {
+class LongProperty(override val delegate: jfxbp.LongProperty) extends ReadOnlyLongProperty(delegate) with Property[Long, Number] with SFXDelegate[jfxbp.LongProperty] {
   def this(bean: Object, name: String) = this (new jfxbp.LongPropertyBase() {
     def getBean = bean
     def getName = name
   })
-
-  override def value = delegate.get
 
   def value_=(v: Long) {
     delegate.set(v)
