@@ -28,13 +28,15 @@
 package scalafx.scene.paint
 
 import javafx.scene.{paint => jfxsp}
+import scalafx.util.SFXDelegate
 
-object PaintIncludes extends PaintIncludes
+object Stop {
+  implicit def sfxStop2jfx(s:Stop) = s.delegate
+  
+  def apply(offset: Double, color: jfxsp.Color) = new Stop(new jfxsp.Stop(offset, color))
+}
 
-trait PaintIncludes {
-  implicit def string2sfxColor(s: String) = Color.web(s)
-  implicit def string2jfxColor(s: String) = jfxsp.Color.web(s)
-
-  implicit def jfxColor2sfx(c: jfxsp.Color) = new Color(c)
-  implicit def jfxStop2sfx(c: jfxsp.Stop) = new Stop(c)
+class Stop(override val delegate: jfxsp.Stop) extends SFXDelegate[jfxsp.Stop] {
+  def offset = delegate.getOffset
+  def color = delegate.getColor
 }

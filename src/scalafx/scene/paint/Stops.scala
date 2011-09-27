@@ -29,12 +29,6 @@ package scalafx.scene.paint
 
 import javafx.scene.{paint => jfxsp}
 
-object PaintIncludes extends PaintIncludes
-
-trait PaintIncludes {
-  implicit def string2sfxColor(s: String) = Color.web(s)
-  implicit def string2jfxColor(s: String) = jfxsp.Color.web(s)
-
-  implicit def jfxColor2sfx(c: jfxsp.Color) = new Color(c)
-  implicit def jfxStop2sfx(c: jfxsp.Stop) = new Stop(c)
+object Stops {
+  def apply(colors: Color*) = colors.toSeq.map(c => new jfxsp.Stop(colors.indexOf(c).toDouble / colors.length, c))
 }

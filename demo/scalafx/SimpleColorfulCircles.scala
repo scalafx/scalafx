@@ -27,6 +27,7 @@
 
 package scalafx
 
+import collection.JavaConversions._
 import javafx.scene.effect._
 import javafx.scene.paint._
 import javafx.scene.shape.StrokeType
@@ -35,6 +36,7 @@ import scalafx.Includes._
 import scalafx.animation.Timeline
 import scalafx.application.Application
 import scalafx.scene._
+import scalafx.scene.paint.Stops
 import scalafx.scene.shape._
 import scalafx.stage.Stage
 
@@ -64,14 +66,7 @@ object SimpleColorfulCircles extends Application {
           width <== scene.width
           height <== scene.height
           fill = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
-            new Stop(0, "#f8bd55"),
-            new Stop(0.14f, "#c0fe56"),
-            new Stop(0.28f, "#5dfbc1"),
-            new Stop(0.43f, "#64c2f8"),
-            new Stop(0.57f, "#be4af7"),
-            new Stop(0.71f, "#ed5fc2"),
-            new Stop(0.85f, "#ef504c"),
-            new Stop(1, "#f2660f"))
+            Stops("#f8bd55", "#c0fe56", "#5dfbc1", "#64c2f8", "#be4af7", "#ed5fc2", "#ef504c", "#f2660f"))
           blendMode = BlendMode.OVERLAY
         }
       )
