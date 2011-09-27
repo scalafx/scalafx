@@ -47,4 +47,12 @@ class ObjectExpression[J](val delegate: jfxbb.ObjectExpression[J]) {
   // explicit conversion needed due to AnyRef typed method
   def =!=[T](v: ObservableValue[T, T]) = delegate.isNotEqualTo(ObservableValue.sfxObservableValue2jfxObjectValue[T](v))
   def =!=(v: AnyRef) = delegate.isNotEqualTo(v)
+
+  def selectDouble(s: String) = jfxbb.Bindings.selectDouble(this, s)
+  def selectBoolean(s: String) = jfxbb.Bindings.selectBoolean(this, s)
+  def selectFloat(s: String) = jfxbb.Bindings.selectFloat(this, s)
+  def selectInteger(s: String) = jfxbb.Bindings.selectInteger(this, s)
+  def selectLong(s: String) = jfxbb.Bindings.selectLong(this, s)
+  def selectString(s: String) = jfxbb.Bindings.selectString(this, s)
+  def select[T](s: String) = jfxbb.Bindings.select[T](this, s)
 }

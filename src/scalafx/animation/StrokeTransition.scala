@@ -53,6 +53,7 @@ class StrokeTransition(override val delegate:jfxa.StrokeTransition = new jfxa.St
   def fromValue_=(from: Color) {
     fromValue() = from
   }
+  
   def toValue = delegate.toValueProperty
   def toValue_=(to: Color) {
     toValue() = to

@@ -25,21 +25,15 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene
+package scalafx.scene.paint
 
-import javafx.{scene => jfxs}
-import layout.LayoutIncludes
-import paint.PaintIncludes
-import shape.ShapeIncludes
+import javafx.scene.{paint => jfxsp}
 
-object SceneIncludes extends SceneIncludes
+object PaintIncludes extends PaintIncludes
 
-trait SceneIncludes extends LayoutIncludes with PaintIncludes with ShapeIncludes with LowerPriorityIncludes
+trait PaintIncludes {
+  implicit def string2sfxColor(s: String) = Color.web(s)
+  implicit def string2jfxColor(s: String) = jfxsp.Color.web(s)
 
-trait LowerPriorityIncludes {
-  implicit def jfxGroup2sfx(v: jfxs.Group) = new Group(v)
-  implicit def jfxParent2sfx(v: jfxs.Parent) = new Parent() {
-    override val delegate = v
-  }
-  implicit def jfxScene2sfx(v: jfxs.Scene) = new Scene(v)
+  implicit def jfxColor2sfx(c: jfxsp.Color) = new Color(c)
 }

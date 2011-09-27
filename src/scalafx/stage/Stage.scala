@@ -54,7 +54,7 @@ class Stage extends SFXDelegate[jfxs.Stage] {
     resizable() = v
   }
 
-  def scene = delegate.getScene
+  def scene = delegate.sceneProperty
   def scene_=(s: Scene) {
     delegate.setScene(s.delegate)
   }
