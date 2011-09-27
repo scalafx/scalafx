@@ -27,8 +27,6 @@
 
 package scalafx;
 
-import scala.math.random
-
 import javafx.scene.effect.BlendMode
 import javafx.scene.effect.BoxBlur
 import javafx.scene.paint.Color
@@ -37,6 +35,7 @@ import javafx.scene.paint.LinearGradient
 import javafx.scene.paint.Stop
 import javafx.scene.shape.StrokeType
 import scala.collection.immutable.VectorBuilder
+import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Timeline
 import scalafx.application.Application
@@ -57,47 +56,52 @@ object ColorfulCircles extends Application {
     height = 600
     scene = new Scene {
       fill = Color.BLACK
-      content = Seq(new Group {
-        children = Seq(new Group {
-          children = Seq(new Rectangle {
-            width <== scene selectDouble "width"
-            height <== scene selectDouble "height"
-            fill = Color.BLACK
-          }, new Group {
-            val circles = for (i <- 0 until 15) yield new Circle {
-              radius = 200
-              fill = "white" opacity 0.05
-              stroke = "white" opacity 0.2
-              strokeWidth = 4
-              strokeType = StrokeType.OUTSIDE
-            }
-            children = circles
-            circlesToAnimate ++= circles
-            effect = new BoxBlur(30, 30, 3)
-          }, new Group {
-            val circles = for (i <- 0 until 20) yield new Circle {
-              radius = 70
-              fill = "white" opacity 0.05
-              stroke = "white" opacity 0.1
-              strokeWidth = 2
-              strokeType = StrokeType.OUTSIDE
-            }
-            children = circles
-            circlesToAnimate ++= circles
-            effect = new BoxBlur(2, 2, 2)
-          }, new Group {
-            val circles = for (i <- 0 until 10) yield new Circle {
-              radius = 150
-              fill = "white" opacity 0.05
-              stroke = "white" opacity 0.16
-              strokeWidth = 4
-              strokeType = StrokeType.OUTSIDE
-            }
-            children = circles
-            circlesToAnimate ++= circles
-            effect = new BoxBlur(10, 10, 3)
-          })
-        }, new Rectangle {
+      content = Seq(
+        new Group {
+          children = Seq(
+            new Rectangle {
+              width <== scene selectDouble "width"
+              height <== scene selectDouble "height"
+              fill = Color.BLACK
+            },
+            new Group {
+              val circles = for (i <- 0 until 15) yield new Circle {
+                radius = 200
+                fill = "white" opacity 0.05
+                stroke = "white" opacity 0.2
+                strokeWidth = 4
+                strokeType = StrokeType.OUTSIDE
+              }
+              children = circles
+              circlesToAnimate ++= circles
+              effect = new BoxBlur(30, 30, 3)
+            },
+            new Group {
+              val circles = for (i <- 0 until 20) yield new Circle {
+                radius = 70
+                fill = "white" opacity 0.05
+                stroke = "white" opacity 0.1
+                strokeWidth = 2
+                strokeType = StrokeType.OUTSIDE
+              }
+              children = circles
+              circlesToAnimate ++= circles
+              effect = new BoxBlur(2, 2, 2)
+            },
+            new Group {
+              val circles = for (i <- 0 until 10) yield new Circle {
+                radius = 150
+                fill = "white" opacity 0.05
+                stroke = "white" opacity 0.16
+                strokeWidth = 4
+                strokeType = StrokeType.OUTSIDE
+              }
+              children = circles
+              circlesToAnimate ++= circles
+              effect = new BoxBlur(10, 10, 3)
+            })
+        },
+        new Rectangle {
           width <== scene selectDouble "width"
           height <== scene selectDouble "height"
           fill = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
@@ -110,8 +114,8 @@ object ColorfulCircles extends Application {
             new Stop(0.85f, "#ef504c"),
             new Stop(1, "#f2660f"))
           blendMode = BlendMode.OVERLAY
-        })
-      })
+        }
+      )
     }
     visible = true
   }
