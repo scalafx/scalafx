@@ -68,6 +68,5 @@ object HelloJavaFX extends Application {
         strokeWidth = 3
       })
     }
-    visible = true
   }
 }

@@ -71,7 +71,6 @@ object SimpleColorfulCircles extends Application {
         }
       )
     }
-    visible = true
   }
   val timeline = new Timeline {
     cycleCount = Timeline.INDEFINITE

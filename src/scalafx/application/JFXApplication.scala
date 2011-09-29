@@ -29,7 +29,10 @@ package scalafx.application
 
 class JFXApplication extends javafx.application.Application {
   def start(stage: javafx.stage.Stage) {
-    Application.STAGE = stage;
-    Application.ACTIVE_APP.init();
+    Application.STAGE = stage
+    Application.ACTIVE_APP.init()
+    if (Application.AUTO_SHOW) {
+      Application.STAGE.show()
+    }
   }
 }

@@ -25,31 +25,33 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.animation
+package scalafx
 
-import collection.JavaConversions._
-import javafx.{animation => jfxa}
-import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import javafx.scene.effect._
+import javafx.scene.paint.Color._
+import scala.math.random
+import scalafx.application.Application
+import scalafx.scene._
+import scalafx.scene.shape._
+import scalafx.stage.Stage
 
-object Timeline extends AnimationStatics {
-  implicit def sfxTimeline2jfx(v: Timeline) = v.delegate
-
-  def apply(keyFrames: Seq[_ <: KeyFrame]) = {
-    def kf = keyFrames
-    new Timeline {
-      keyFrames = kf
+/**
+ * Vanishing Circles Basic
+ */
+object VanishingCircles_basic extends Application {
+  stage = new Stage {
+    title = "Vanishing Circles"
+    width = 800
+    height = 600
+    scene = new Scene {
+      fill = BLACK
+      content = for (i <- 0 until 50) yield new Circle {
+        centerX = random * 800
+        centerY = random * 600
+        radius = 150
+        fill = color(random, random, random, .2)
+        effect = new BoxBlur(10, 10, 3)
+      }
     }
-  }
-}
-
-class Timeline(override val delegate:jfxa.Timeline = new jfxa.Timeline()) extends Animation with SFXDelegate[jfxa.Timeline] {
-  def this(targetFramerate: Double) = this(new jfxa.Timeline(targetFramerate))
-  def keyFrames = delegate.getKeyFrames
-  def keyFrames_=(kfs: Seq[_ <: KeyFrame]) {
-    keyFrames.setAll(kfs.map(_.delegate))
-  }
-  def play() {
-    delegate.play()
   }
 }

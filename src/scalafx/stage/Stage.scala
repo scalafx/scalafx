@@ -69,8 +69,8 @@ class Stage extends SFXDelegate[jfxs.Stage] {
     delegate.setHeight(h)
   }
 
-  def visible = delegate.isShowing
-  def visible_=(v: Boolean) {
+  def showing = delegate.isShowing
+  def showing_=(v: Boolean) {
     v match {
       case true => delegate.show()
       case false => delegate.hide()

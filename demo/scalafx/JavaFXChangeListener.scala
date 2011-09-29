@@ -49,6 +49,5 @@ object JavaFXChangeListener extends Application {
         fill <== when (hover) then Color.GREEN otherwise Color.RED
       }
     }
-    visible = true
   }
 }

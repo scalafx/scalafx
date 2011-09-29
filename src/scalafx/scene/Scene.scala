@@ -28,10 +28,8 @@
 package scalafx.scene
 
 import collection.JavaConversions._
-import javafx.{event => jfxse}
-import javafx.{scene => jfxs}
-import jfxs.{input => jfxsi}
-import jfxs.{paint => jfxsp}
+import javafx.{event => jfxe, scene => jfxs}
+import jfxs.{input => jfxsi, paint => jfxsp}
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
@@ -70,7 +68,7 @@ class Scene(override val delegate:jfxs.Scene = new jfxs.Scene(new jfxs.Group()))
   }
 
   def eventDispatcher = delegate.eventDispatcherProperty
-  def eventDispatcher_=(v: jfxse.EventDispatcher) {
+  def eventDispatcher_=(v: jfxe.EventDispatcher) {
     eventDispatcher() = v
   }
 
@@ -84,87 +82,87 @@ class Scene(override val delegate:jfxs.Scene = new jfxs.Scene(new jfxs.Group()))
   def width = delegate.widthProperty
 
   def onDragDetected = delegate.onDragDetectedProperty
-  def onDragDetected_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onDragDetected_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onDragDetected() = v
   }
 
   def onDragDone = delegate.onDragDoneProperty
-  def onDragDone_=(v: jfxse.EventHandler[_ >: jfxsi.DragEvent]) {
+  def onDragDone_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragDone() = v
   }
 
   def onDragDropped = delegate.onDragDroppedProperty
-  def onDragDropped_=(v: jfxse.EventHandler[_ >: jfxsi.DragEvent]) {
+  def onDragDropped_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragDropped() = v
   }
 
   def onDragEntered = delegate.onDragEnteredProperty
-  def onDragEntered_=(v: jfxse.EventHandler[_ >: jfxsi.DragEvent]) {
+  def onDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragEntered() = v
   }
 
   def onDragExited = delegate.onDragExitedProperty
-  def onDragExited_=(v: jfxse.EventHandler[_ >: jfxsi.DragEvent]) {
+  def onDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragExited() = v
   }
 
   def onDragOver = delegate.onDragOverProperty
-  def onDragOver_=(v: jfxse.EventHandler[_ >: jfxsi.DragEvent]) {
+  def onDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragOver() = v
   }
 
   def onInputMethodTextChanged = delegate.onInputMethodTextChangedProperty
-  def onInputMethodTextChanged_=(v: jfxse.EventHandler[_ >: jfxsi.InputMethodEvent]) {
+  def onInputMethodTextChanged_=(v: jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]) {
     onInputMethodTextChanged() = v
   }
 
   def onKeyPressed = delegate.onKeyPressedProperty
-  def onKeyPressed_=(v: jfxse.EventHandler[_ >: jfxsi.KeyEvent]) {
+  def onKeyPressed_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyPressed() = v
   }
 
   def onKeyReleased = delegate.onKeyReleasedProperty
-  def onKeyReleased_=(v: jfxse.EventHandler[_ >: jfxsi.KeyEvent]) {
+  def onKeyReleased_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyReleased() = v
   }
 
   def onKeyTyped = delegate.onKeyTypedProperty
-  def onKeyTyped_=(v: jfxse.EventHandler[_ >: jfxsi.KeyEvent]) {
+  def onKeyTyped_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyTyped() = v
   }
 
   def onMouseClicked = delegate.onMouseClickedProperty
-  def onMouseClicked_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseClicked_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseClicked() = v
   }
 
   def onMouseDragged = delegate.onMouseDraggedProperty
-  def onMouseDragged_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseDragged_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragged() = v
   }
 
   def onMouseEntered = delegate.onMouseEnteredProperty
-  def onMouseEntered_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseEntered() = v
   }
 
   def onMouseExited = delegate.onMouseExitedProperty
-  def onMouseExited_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseExited() = v
   }
 
   def onMouseMoved = delegate.onMouseMovedProperty
-  def onMouseMoved_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseMoved_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseMoved() = v
   }
 
   def onMousePressed = delegate.onMousePressedProperty
-  def onMousePressed_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMousePressed_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMousePressed() = v
   }
 
   def onMouseReleased = delegate.onMouseReleasedProperty
-  def onMouseReleased_=(v: jfxse.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseReleased() = v
   }
 

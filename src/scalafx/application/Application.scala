@@ -32,6 +32,7 @@ import scalafx.stage.Stage
 object Application {
   var STAGE: javafx.stage.Stage = null
   var ACTIVE_APP: Application = null
+  var AUTO_SHOW = true
 }
 
 class Application extends DelayedInit {

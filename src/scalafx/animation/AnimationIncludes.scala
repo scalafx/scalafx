@@ -33,7 +33,12 @@ import javafx.util.Duration
 object AnimationIncludes extends AnimationIncludes
 
 trait AnimationIncludes {
-  def at(time: Duration)(value: => KeyValue[_, _]) = KeyFrame(time, values = Set(value))
+  def at(time: Duration)(v: => Set[KeyValue[_, _ <: Object]]) = KeyFrame(time, values = v)
+  implicit def wrapKeyValueInSet[T, J <: Object](kv: KeyValue[T, J]) = Set[KeyValue[_, _ <: Object]](kv)
+  implicit def wrapTweenableInSet[T, J <: Object](t: Tweenable[T, J]) = Set[KeyValue[_, _ <: Object]](t.linear)
+  implicit def tweenableSet2KeyValueSet(ts: Set[Tweenable[_, _ <: Object]]) = ts.map(_.linear)
+  implicit def wrapKeyFrameInSeq[T <: KeyFrame](kf: T) = Seq[T](kf)
+
   implicit def jfxAnimation2sfx(v: jfxa.Animation) = new Animation() {
     override def delegate = v
   }

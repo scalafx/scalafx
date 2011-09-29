@@ -117,9 +117,7 @@ object ColorfulCircles extends Application {
         }
       )
     }
-    visible = true
   }
-
   val timeline = new Timeline {
     cycleCount = Timeline.INDEFINITE
     autoReverse = true

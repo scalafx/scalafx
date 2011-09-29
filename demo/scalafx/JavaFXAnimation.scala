@@ -61,7 +61,6 @@ object JavaFXAnimation extends Application {
   stage = new Stage {
     scene = new Scene {
       content = List(rect1, rect2)
-      visible = true
     }
   }
 }
