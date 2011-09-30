@@ -44,13 +44,13 @@ import scalafx.scene.Scene
 import scalafx.scene.shape.Circle
 import scalafx.scene.shape.Rectangle
 import scalafx.stage.Stage
+import scene.paint.Stops
 
 /**
  * ColorfulCircles
  */
 object ColorfulCircles extends Application {
   val circlesToAnimate = new VectorBuilder[Circle]()
-
   stage = new Stage {
     width = 800
     height = 600
@@ -104,21 +104,14 @@ object ColorfulCircles extends Application {
         new Rectangle {
           width <== scene.width
           height <== scene.height
-          fill = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
-            new Stop(0, "#f8bd55"),
-            new Stop(0.14f, "#c0fe56"),
-            new Stop(0.28f, "#5dfbc1"),
-            new Stop(0.43f, "#64c2f8"),
-            new Stop(0.57f, "#be4af7"),
-            new Stop(0.71f, "#ed5fc2"),
-            new Stop(0.85f, "#ef504c"),
-            new Stop(1, "#f2660f"))
+          fill = new LinearGradient(0, 1, 1, 0, true, CycleMethod.NO_CYCLE,
+            Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f))
           blendMode = BlendMode.OVERLAY
         }
       )
     }
   }
-  val timeline = new Timeline {
+  new Timeline {
     cycleCount = Timeline.INDEFINITE
     autoReverse = true
     keyFrames = (for (circle <- circlesToAnimate.result) yield Seq(
@@ -127,7 +120,5 @@ object ColorfulCircles extends Application {
         at(40 s) {Set(circle.centerX -> random * 800,
                       circle.centerY -> random * 600)}
     )).flatten
-  }
-
-  timeline.play();
+  }.play();
 }
