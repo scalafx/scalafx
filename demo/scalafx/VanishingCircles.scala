@@ -60,7 +60,7 @@ object VanishingCircles extends Application {
         stroke = WHITE
         // add this for event listeners:
         onMouseClicked = {
-          Timeline(keyFrames=at (3 s) {radius -> 0}).play()
+          Timeline(at (3 s) {radius -> 0}).play()
         }
       }
       content = circles
