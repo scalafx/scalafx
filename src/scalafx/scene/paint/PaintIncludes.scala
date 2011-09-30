@@ -34,6 +34,8 @@ object PaintIncludes extends PaintIncludes
 trait PaintIncludes {
   implicit def string2sfxColor(s: String) = Color.web(s)
   implicit def string2jfxColor(s: String) = jfxsp.Color.web(s)
+  implicit def hex2sfxColor(h: Int) = Color.rgb(h >>> 16 & 0xFF, h >>> 8 & 0xFF, h & 0xFF)
+  implicit def hex2jfxColor(h: Int) = jfxsp.Color.rgb(h >>> 16 & 0xFF, h >>> 8 & 0xFF, h & 0xFF)
 
   implicit def jfxColor2sfx(c: jfxsp.Color) = new Color(c)
   implicit def jfxStop2sfx(c: jfxsp.Stop) = new Stop(c)

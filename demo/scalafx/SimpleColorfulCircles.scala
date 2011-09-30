@@ -65,7 +65,7 @@ object SimpleColorfulCircles extends Application {
         width <== scene.width
         height <== scene.height
         fill = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
-          Stops("#f8bd55", "#c0fe56", "#5dfbc1", "#64c2f8", "#be4af7", "#ed5fc2", "#ef504c", "#f2660f"))
+          Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f))
         blendMode = BlendMode.OVERLAY
       }
     }
