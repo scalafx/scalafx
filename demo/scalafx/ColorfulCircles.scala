@@ -122,10 +122,10 @@ object ColorfulCircles extends Application {
     cycleCount = Timeline.INDEFINITE
     autoReverse = true
     keyFrames = (for (circle <- circlesToAnimate.result) yield Seq(
-      at(0 s) {circle.centerX -> random * 800},
-      at(0 s) {circle.centerY -> random * 600},
-      at(40 s) {circle.centerX -> random * 800},
-      at(40 s) {circle.centerY -> random * 600}
+        at(0 s) {Set(circle.centerX -> random * 800,
+                     circle.centerY -> random * 600)},
+        at(40 s) {Set(circle.centerX -> random * 800,
+                      circle.centerY -> random * 600)}
     )).flatten
   }
 
