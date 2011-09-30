@@ -79,5 +79,5 @@ object Tweenable {
 
 class Tweenable[T <: Any, J <: AnyRef](target: jfxbv.WritableValue[J], endValue: J) {
   def tween(interpolator: jfxa.Interpolator) = KeyValue[J](target, endValue, interpolator)
-  def linear = KeyValue[J](target, endValue)
+  def linear:KeyValue[J, J] = KeyValue[J](target, endValue)
 }
