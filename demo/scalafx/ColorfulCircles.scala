@@ -28,7 +28,7 @@
 package scalafx;
 
 import collection.JavaConversions._
-import javafx.scene.effect.BlendMode
+import javafx.scene.effect.BlendMode._
 import javafx.scene.effect.BoxBlur
 import javafx.scene.paint.Color
 import javafx.scene.paint.CycleMethod
@@ -38,6 +38,7 @@ import scala.collection.immutable.VectorBuilder
 import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Timeline
+import scalafx.animation.Timeline._
 import scalafx.application.Application
 import scalafx.scene.Group
 import scalafx.scene.Scene
@@ -106,13 +107,13 @@ object ColorfulCircles extends Application {
           height <== scene.height
           fill = new LinearGradient(0, 1, 1, 0, true, CycleMethod.NO_CYCLE,
             Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f))
-          blendMode = BlendMode.OVERLAY
+          blendMode = OVERLAY
         }
       )
     }
   }
   new Timeline {
-    cycleCount = Timeline.INDEFINITE
+    cycleCount = INDEFINITE
     autoReverse = true
     keyFrames = (for (circle <- circlesToAnimate.result) yield Seq(
         at(0 s) {Set(circle.centerX -> random * 800,
