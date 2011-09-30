@@ -27,12 +27,12 @@
 
 package scalafx;
 
+import collection.JavaConversions._
 import javafx.scene.effect.BlendMode
 import javafx.scene.effect.BoxBlur
 import javafx.scene.paint.Color
 import javafx.scene.paint.CycleMethod
 import javafx.scene.paint.LinearGradient
-import javafx.scene.paint.Stop
 import javafx.scene.shape.StrokeType
 import scala.collection.immutable.VectorBuilder
 import scala.math.random
