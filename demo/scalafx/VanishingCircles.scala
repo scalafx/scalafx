@@ -67,7 +67,7 @@ object VanishingCircles extends Application {
     }
   }
   // add this for animation:
-  val timeline = new Timeline {
+  new Timeline {
     cycleCount = INDEFINITE
     autoReverse = true
     keyFrames = for (circle <- circles) yield at (40 s) {
@@ -76,6 +76,5 @@ object VanishingCircles extends Application {
         circle.centerY -> random * stage.height
       )
     }
-  }
-  timeline.play();
+  }.play();
 }
