@@ -30,10 +30,10 @@ package scalafx;
 import collection.JavaConversions._
 import javafx.scene.effect.BlendMode._
 import javafx.scene.effect.BoxBlur
-import javafx.scene.paint.Color
-import javafx.scene.paint.CycleMethod
+import javafx.scene.paint.Color._
+import javafx.scene.paint.CycleMethod._
 import javafx.scene.paint.LinearGradient
-import javafx.scene.shape.StrokeType
+import javafx.scene.shape.StrokeType._
 import scala.collection.immutable.VectorBuilder
 import scala.math.random
 import scalafx.Includes._
@@ -56,22 +56,22 @@ object ColorfulCircles extends Application {
     width = 800
     height = 600
     scene = new Scene {
-      fill = Color.BLACK
+      fill = BLACK
       content = Seq(
         new Group {
           children = Seq(
             new Rectangle {
               width <== scene.width
               height <== scene.height
-              fill = Color.BLACK
+              fill = BLACK
             },
             new Group {
               val circles = for (i <- 0 until 15) yield new Circle {
                 radius = 200
-                fill = "white" opacity 0.05
-                stroke = "white" opacity 0.2
+                fill = WHITE opacity 0.05
+                stroke = WHITE opacity 0.2
                 strokeWidth = 4
-                strokeType = StrokeType.OUTSIDE
+                strokeType = OUTSIDE
               }
               children = circles
               circlesToAnimate ++= circles
@@ -80,10 +80,10 @@ object ColorfulCircles extends Application {
             new Group {
               val circles = for (i <- 0 until 20) yield new Circle {
                 radius = 70
-                fill = "white" opacity 0.05
-                stroke = "white" opacity 0.1
+                fill = WHITE opacity 0.05
+                stroke = WHITE opacity 0.1
                 strokeWidth = 2
-                strokeType = StrokeType.OUTSIDE
+                strokeType = OUTSIDE
               }
               children = circles
               circlesToAnimate ++= circles
@@ -92,10 +92,10 @@ object ColorfulCircles extends Application {
             new Group {
               val circles = for (i <- 0 until 10) yield new Circle {
                 radius = 150
-                fill = "white" opacity 0.05
-                stroke = "white" opacity 0.16
+                fill = WHITE opacity 0.05
+                stroke = WHITE opacity 0.16
                 strokeWidth = 4
-                strokeType = StrokeType.OUTSIDE
+                strokeType = OUTSIDE
               }
               children = circles
               circlesToAnimate ++= circles
@@ -105,7 +105,7 @@ object ColorfulCircles extends Application {
         new Rectangle {
           width <== scene.width
           height <== scene.height
-          fill = new LinearGradient(0, 1, 1, 0, true, CycleMethod.NO_CYCLE,
+          fill = new LinearGradient(0, 1, 1, 0, true, NO_CYCLE,
             Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f))
           blendMode = OVERLAY
         }
