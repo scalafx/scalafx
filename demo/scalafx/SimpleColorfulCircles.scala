@@ -38,7 +38,7 @@ import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Timeline
 import scalafx.animation.Timeline._
-import scalafx.application.Application
+import scalafx.application.JFXApp
 import scalafx.scene._
 import scalafx.scene.paint.Stops
 import scalafx.scene.shape._
@@ -47,7 +47,7 @@ import scalafx.stage.Stage
 /**
  * SimpleColorfulCircles
  */
-object SimpleColorfulCircles extends Application {
+object SimpleColorfulCircles extends JFXApp {
   var circles: Seq[Circle] = null
   stage = new Stage {
     width = 800

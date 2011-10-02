@@ -29,18 +29,18 @@ package scalafx.application
 
 import scalafx.stage.Stage
 
-object Application {
+object JFXApp {
   var STAGE: javafx.stage.Stage = null
-  var ACTIVE_APP: Application = null
+  var ACTIVE_APP: JFXApp = null
   var AUTO_SHOW = true
 }
 
-class Application extends DelayedInit {
+class JFXApp extends DelayedInit {
   var stage: Stage = null
 
   def main(args: Array[String]) {
-    Application.ACTIVE_APP = this
-    javafx.application.Application.launch(classOf[JFXApplication], args)
+    JFXApp.ACTIVE_APP = this
+    javafx.application.Application.launch(classOf[AppHelper], args)
   }
 
   var init: () => Unit = null

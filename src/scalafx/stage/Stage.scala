@@ -29,7 +29,7 @@ package scalafx.stage
 
 import javafx.{stage => jfxs}
 import scalafx.Includes._
-import scalafx.application.Application
+import scalafx.application.JFXApp
 import scalafx.util.SFXDelegate
 import scalafx.scene.Scene
 
@@ -38,7 +38,7 @@ object Stage {
 }
 
 class Stage extends SFXDelegate[jfxs.Stage] {
-  override val delegate = Application.STAGE
+  override val delegate = JFXApp.STAGE
 
   def fullScreen = delegate.fullScreenProperty
 

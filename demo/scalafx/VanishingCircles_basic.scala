@@ -30,7 +30,7 @@ package scalafx
 import javafx.scene.effect._
 import javafx.scene.paint.Color._
 import scala.math.random
-import scalafx.application.Application
+import scalafx.application.JFXApp
 import scalafx.scene._
 import scalafx.scene.shape._
 import scalafx.stage.Stage
@@ -38,7 +38,7 @@ import scalafx.stage.Stage
 /**
  * Vanishing Circles Basic
  */
-object VanishingCircles_basic extends Application {
+object VanishingCircles_basic extends JFXApp {
   stage = new Stage {
     title = "Vanishing Circles"
     width = 800

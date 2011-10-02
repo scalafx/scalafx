@@ -27,7 +27,7 @@
 
 package scalafx
 
-import scalafx.application.Application
+import scalafx.application.JFXApp
 import scalafx.scene.Scene
 import scalafx.scene.shape.Arc
 import scalafx.scene.shape.Circle
@@ -35,7 +35,7 @@ import scalafx.scene.shape.Rectangle
 import scalafx.stage.Stage
 import javafx.scene.paint.Color
 
-object HelloJavaFX extends Application {
+object HelloJavaFX extends JFXApp {
   stage = new Stage {
     width = 600
     height = 450

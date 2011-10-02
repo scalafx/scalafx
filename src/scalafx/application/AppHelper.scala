@@ -27,12 +27,12 @@
 
 package scalafx.application
 
-class JFXApplication extends javafx.application.Application {
+private[application] class AppHelper extends javafx.application.Application {
   def start(stage: javafx.stage.Stage) {
-    Application.STAGE = stage
-    Application.ACTIVE_APP.init()
-    if (Application.AUTO_SHOW) {
-      Application.STAGE.show()
+    JFXApp.STAGE = stage
+    JFXApp.ACTIVE_APP.init()
+    if (JFXApp.AUTO_SHOW) {
+      JFXApp.STAGE.show()
     }
   }
 }

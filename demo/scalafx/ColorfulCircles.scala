@@ -39,7 +39,7 @@ import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Timeline
 import scalafx.animation.Timeline._
-import scalafx.application.Application
+import scalafx.application.JFXApp
 import scalafx.scene.Group
 import scalafx.scene.Scene
 import scalafx.scene.shape.Circle
@@ -50,7 +50,7 @@ import scene.paint.Stops
 /**
  * ColorfulCircles
  */
-object ColorfulCircles extends Application {
+object ColorfulCircles extends JFXApp {
   val circlesToAnimate = new VectorBuilder[Circle]()
   stage = new Stage {
     width = 800

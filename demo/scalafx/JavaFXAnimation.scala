@@ -30,12 +30,12 @@ package scalafx
 import animation.{Interpolator, KeyFrame, Timeline}
 import javafx.scene.paint.Color
 import scalafx.Includes._
-import scalafx.application.Application
+import scalafx.application.JFXApp
 import scalafx.scene.Scene
 import scalafx.scene.shape.Rectangle
 import scalafx.stage.Stage
 
-object JavaFXAnimation extends Application {
+object JavaFXAnimation extends JFXApp {
   val rect1 = new Rectangle {
     width = 100
     height = 100
