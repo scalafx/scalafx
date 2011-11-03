@@ -42,5 +42,18 @@ class NodeSpec extends FlatSpec with PropertyComparator {
     compareBuilderProperties(classOf[jfxs.NodeBuilder[_]], classOf[Node])
   }
 
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxNode = new Node() {
+      override val delegate = new jfxs.Group()
+    }
+    val jfxNode: jfxs.Node = sfxNode
+    jfxNode should be(sfxNode.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxNode = new jfxs.Group()
+    val sfxNode: Node = jfxNode
+    sfxNode.delegate should be(jfxNode)
+  }
 }
 

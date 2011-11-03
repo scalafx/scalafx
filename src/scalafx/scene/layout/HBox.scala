@@ -25,25 +25,31 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene
+package scalafx.scene.layout
 
-import collection.JavaConversions._
-import javafx.{scene => jfxs}
+import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
+import javafx.geometry.Pos
 
-object Group {
-  implicit def sfxGroup2jfx(v: Group) = v.delegate
+object HBox {
+  implicit def sfxHBox2jfx(v: HBox) = v.delegate
 }
 
-class Group(override val delegate:jfxs.Group = new jfxs.Group()) extends Parent with SFXDelegate[jfxs.Group] {
-  def children = delegate.getChildren
-  def children_=(c: Iterable[Node]) { // todo - figure out why this can't be a jfxs.Node
-    children.setAll(c.map(_.delegate))
+class HBox(override val delegate:jfxsl.HBox = new jfxsl.HBox()) extends Pane with SFXDelegate[jfxsl.HBox] {
+
+  def spacing = delegate.spacingProperty
+  def spacing_=(v: Double) {
+    spacing() = v
   }
 
-  def autoSizeChildren = delegate.autoSizeChildrenProperty
-  def autoSizeChildren_=(v: Boolean) {
-    autoSizeChildren() = v
+  def alignment = delegate.alignmentProperty
+  def alignment_=(v: Pos) {
+    alignment() = v
+  }
+
+  def fillHeight = delegate.fillHeightProperty
+  def fillHeight_=(v: Boolean) {
+    fillHeight() = v
   }
 }

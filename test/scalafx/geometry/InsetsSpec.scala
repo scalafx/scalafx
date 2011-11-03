@@ -25,25 +25,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene
+package scalafx.geometry
 
-import collection.JavaConversions._
-import javafx.{scene => jfxs}
+import javafx.{geometry => jfxg}
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.testutil.PropertyComparator
 
-object Group {
-  implicit def sfxGroup2jfx(v: Group) = v.delegate
-}
-
-class Group(override val delegate:jfxs.Group = new jfxs.Group()) extends Parent with SFXDelegate[jfxs.Group] {
-  def children = delegate.getChildren
-  def children_=(c: Iterable[Node]) { // todo - figure out why this can't be a jfxs.Node
-    children.setAll(c.map(_.delegate))
+class InsetsSpec extends FlatSpec with PropertyComparator {
+  "An Insets" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxg.Insets], classOf[Insets])
   }
 
-  def autoSizeChildren = delegate.autoSizeChildrenProperty
-  def autoSizeChildren_=(v: Boolean) {
-    autoSizeChildren() = v
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxg.InsetsBuilder[_]], classOf[Insets])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxInsets = Insets(10)
+    val jfxInsets: jfxg.Insets = sfxInsets
+    jfxInsets should be (sfxInsets.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxInsets = new jfxg.Insets(10)
+    val sfxInsets: Insets = jfxInsets
+    sfxInsets.delegate should be (jfxInsets)
   }
 }

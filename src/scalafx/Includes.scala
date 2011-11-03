@@ -31,6 +31,7 @@ import animation.AnimationIncludes
 import beans.BeanIncludes
 import collections.CollectionIncludes
 import event.EventIncludes
+import geometry.GeometryIncludes
 import scene.SceneIncludes
 import util.UtilIncludes
 
@@ -43,4 +44,4 @@ import util.UtilIncludes
  */
 object Includes extends Includes
 
-trait Includes extends AnimationIncludes with CollectionIncludes with EventIncludes with SceneIncludes with BeanIncludes with UtilIncludes
+trait Includes extends AnimationIncludes with CollectionIncludes with EventIncludes with SceneIncludes with BeanIncludes with UtilIncludes with GeometryIncludes

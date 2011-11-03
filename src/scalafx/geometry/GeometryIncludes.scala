@@ -25,15 +25,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene.layout
+package scalafx.geometry
 
-import javafx.scene.{layout => jfxsl}
+import javafx.{geometry => jfxg}
 
-object LayoutIncludes extends LayoutIncludes
+object GeometryIncludes extends GeometryIncludes
 
-trait LayoutIncludes {
-  implicit def jfxPane2sfx(v: jfxsl.Pane) = new Pane(v)
-  implicit def jfxRegion2sfx(v: jfxsl.Region) = new Region(v)
-  implicit def jfxHBox2sfx(v: jfxsl.HBox) = new HBox(v)
-  implicit def jfxVBox2sfx(v: jfxsl.VBox) = new VBox(v)
+trait GeometryIncludes {
+  implicit def jfxInsets2sfx(v: jfxg.Insets) = new Insets(v)
 }

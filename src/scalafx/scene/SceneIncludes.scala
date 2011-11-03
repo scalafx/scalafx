@@ -42,6 +42,9 @@ trait LowerPriorityIncludes {
   implicit def jfxParent2sfx(v: jfxs.Parent) = new Parent() {
     override val delegate = v
   }
+  implicit def jfxNode2sfx(v: jfxs.Node) = new Node() {
+    override val delegate = v
+  }
   implicit def jfxScene2sfx(v: jfxs.Scene) = new Scene(v)
   implicit def jfxSceneProperty2sfx(p: jfxbp.ReadOnlyObjectProperty[jfxs.Scene]) = new SceneProperty(p)
 }

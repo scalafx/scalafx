@@ -25,25 +25,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene
+package scalafx.scene.layout
 
-import collection.JavaConversions._
-import javafx.{scene => jfxs}
+import javafx.scene.{layout => jfxsl}
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.testutil.PropertyComparator
 
-object Group {
-  implicit def sfxGroup2jfx(v: Group) = v.delegate
-}
-
-class Group(override val delegate:jfxs.Group = new jfxs.Group()) extends Parent with SFXDelegate[jfxs.Group] {
-  def children = delegate.getChildren
-  def children_=(c: Iterable[Node]) { // todo - figure out why this can't be a jfxs.Node
-    children.setAll(c.map(_.delegate))
+class VBoxSpec extends FlatSpec with PropertyComparator {
+  "A VBox" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxsl.VBox], classOf[VBox])
   }
 
-  def autoSizeChildren = delegate.autoSizeChildrenProperty
-  def autoSizeChildren_=(v: Boolean) {
-    autoSizeChildren() = v
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxsl.VBoxBuilder[_]], classOf[VBox])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxVBox = new VBox()
+    val jfxVBox: jfxsl.VBox = sfxVBox
+    jfxVBox should be (sfxVBox.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxVBox = new jfxsl.VBox()
+    val sfxVBox: VBox = jfxVBox
+    sfxVBox.delegate should be (jfxVBox)
   }
 }

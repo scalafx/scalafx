@@ -25,25 +25,21 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene
+package scalafx.geometry
 
-import collection.JavaConversions._
-import javafx.{scene => jfxs}
-import scalafx.Includes._
+import javafx.{geometry => jfxg}
 import scalafx.util.SFXDelegate
 
-object Group {
-  implicit def sfxGroup2jfx(v: Group) = v.delegate
+object Insets {
+  implicit def sfxInsets2jfx(i: Insets) = i.delegate
+
+  def apply(topRightBottomLeft: Int) = new jfxg.Insets(topRightBottomLeft)
+  def apply(top: Int, right: Int, bottom: Int, left: Int) = new jfxg.Insets(top, right, bottom, left)
 }
 
-class Group(override val delegate:jfxs.Group = new jfxs.Group()) extends Parent with SFXDelegate[jfxs.Group] {
-  def children = delegate.getChildren
-  def children_=(c: Iterable[Node]) { // todo - figure out why this can't be a jfxs.Node
-    children.setAll(c.map(_.delegate))
-  }
-
-  def autoSizeChildren = delegate.autoSizeChildrenProperty
-  def autoSizeChildren_=(v: Boolean) {
-    autoSizeChildren() = v
-  }
+class Insets(override val delegate:jfxg.Insets) extends SFXDelegate[jfxg.Insets] {
+  def top = delegate.getTop
+  def right = delegate.getRight
+  def bottom = delegate.getBottom
+  def left = delegate.getLeft
 }

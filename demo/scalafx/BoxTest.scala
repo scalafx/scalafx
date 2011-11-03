@@ -25,15 +25,52 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene.layout
+package scalafx
 
-import javafx.scene.{layout => jfxsl}
+import geometry.Insets
+import scalafx.Includes._
+import scalafx.application.JFXApp
+import scalafx.scene.Scene
+import scalafx.scene.shape.Arc
+import scalafx.scene.shape.Circle
+import scalafx.scene.shape.Rectangle
+import scalafx.stage.Stage
+import javafx.scene.paint.Color
+import scene.layout.{VBox, HBox}
 
-object LayoutIncludes extends LayoutIncludes
-
-trait LayoutIncludes {
-  implicit def jfxPane2sfx(v: jfxsl.Pane) = new Pane(v)
-  implicit def jfxRegion2sfx(v: jfxsl.Region) = new Region(v)
-  implicit def jfxHBox2sfx(v: jfxsl.HBox) = new HBox(v)
-  implicit def jfxVBox2sfx(v: jfxsl.VBox) = new VBox(v)
+object BoxTest extends JFXApp {
+  stage = new Stage {
+    width = 600
+    height = 450
+    scene = new Scene {
+      fill = Color.LIGHTGREEN
+      content = new HBox {
+        spacing = 10
+        content = List(new Rectangle {
+          width = 100
+          height = 50
+          fill = Color.RED
+          stroke = Color.BLUE
+          strokeWidth = 5
+          margin = Insets(10)
+        }, new VBox {
+          spacing = 10
+          content = for (i <- 0 until 3) yield new Circle {
+            radius = 25
+            fill = Color.BLUE
+            stroke = Color.BLUE.brighter()
+            strokeWidth = 3
+          }
+        }, new Arc {
+          radiusX = 25
+          radiusY = 50
+          startAngle = 135
+          length = 45
+          fill = Color.BLACK
+          stroke = Color.YELLOW
+          strokeWidth = 3
+        })
+      }
+    }
+  }
 }

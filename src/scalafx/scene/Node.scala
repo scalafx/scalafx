@@ -27,11 +27,12 @@
 
 package scalafx.scene
 
+import collection.JavaConversions._
+import javafx.{event => jfxe, geometry => jfxg, scene => jfxs}
+import jfxs.{input => jfxsi, layout => jfxsl, effect => jfxse, transform => jfxst}
 import scalafx.Includes._
-import javafx.{scene => jfxs}
-import javafx.{event => jfxe}
-import jfxs.{input => jfxsi, effect => jfxse}
 import scalafx.util.SFXDelegate
+import scalafx.geometry.Insets
 
 object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
@@ -84,9 +85,63 @@ abstract class Node extends SFXDelegate[jfxs.Node] {
     effect() = v
   }
 
-  def rotate = delegate.rotateProperty
-  def rotate_=(v: Double) {
-    rotate() = v
+  def eventDispatcher = delegate.eventDispatcherProperty
+  def eventDispatcher_=(v: jfxe.EventDispatcher) {
+    eventDispatcher() = v
+  }
+
+  def focused = delegate.focusedProperty
+
+  def focusTraversable = delegate.focusTraversableProperty
+  def focusTraversable_=(v: Boolean) {
+    focusTraversable() = v
+  }
+
+  def hover = delegate.hoverProperty
+
+  def id = delegate.idProperty
+  def id_=(v: String) {
+    id() = v
+  }
+
+  def inputMethodRequests = delegate.inputMethodRequestsProperty
+  def inputMethodRequests_=(v: jfxsi.InputMethodRequests) {
+    inputMethodRequests() = v
+  }
+
+  def layoutBounds = delegate.layoutBoundsProperty
+
+  def layoutX = delegate.layoutXProperty
+  def layoutX_=(v: Double) {
+    layoutX() = v
+  }
+
+  def layoutY = delegate.layoutYProperty
+  def layoutY_=(v: Double) {
+    layoutY() = v
+  }
+
+  def managed = delegate.managedProperty
+  def managed_=(v: Boolean) {
+    managed() = v
+  }
+
+  def margin = delegate.getProperties().get("margin")
+  def margin_=(i: Insets) {
+    delegate.getProperties().put("margin", i)
+    // for compatibility with layouts, which all use different keys
+    jfxsl.BorderPane.setMargin(delegate, i)
+    jfxsl.FlowPane.setMargin(delegate, i)
+    jfxsl.GridPane.setMargin(delegate, i)
+    jfxsl.HBox.setMargin(delegate, i)
+    jfxsl.StackPane.setMargin(delegate, i)
+    jfxsl.TilePane.setMargin(delegate, i)
+    jfxsl.VBox.setMargin(delegate, i)
+  }
+
+  def mouseTransparent = delegate.mouseTransparentProperty
+  def mouseTransparent_=(v: Boolean) {
+    mouseTransparent() = v
   }
 
   def onDragDetected = delegate.onDragDetectedProperty
@@ -174,10 +229,81 @@ abstract class Node extends SFXDelegate[jfxs.Node] {
     onMouseReleased() = v
   }
 
-  def mouseTransparent = delegate.mouseTransparentProperty
-  def mouseTransparent_=(v: Boolean) {
-    mouseTransparent() = v
+  def opacity = delegate.opacityProperty
+
+  def parent = delegate.parentProperty
+
+  def pickOnBounds = delegate.pickOnBoundsProperty
+  def pickOnBounds_=(v: Boolean) {
+    pickOnBounds() = v
   }
 
-  def hover = delegate.hoverProperty
+  def pressed = delegate.pressedProperty
+
+  def rotate = delegate.rotateProperty
+  def rotate_=(v: Double) {
+    rotate() = v
+  }
+
+  def rotationAxis = delegate.rotationAxisProperty
+  def rotationAxis_=(v: jfxg.Point3D) {
+    rotationAxis() = v
+  }
+
+  def scaleX = delegate.scaleXProperty
+  def scaleX_=(v: Double) {
+    scaleX() = v
+  }
+
+  def scaleY = delegate.scaleYProperty
+  def scaleY_=(v: Double) {
+    scaleY() = v
+  }
+
+  def scaleZ = delegate.scaleZProperty
+  def scaleZ_=(v: Double) {
+    scaleZ() = v
+  }
+
+  def scene = delegate.sceneProperty
+
+  def style = delegate.styleProperty
+  def style_=(v: String) {
+    style() = v
+  }
+
+  def styleClass = delegate.getStyleClass
+  def styleClass_=(c: Iterable[String]) {
+    styleClass.setAll(c)
+  }
+
+  def transforms = delegate.getTransforms
+  def transforms_=(c: Iterable[jfxst.Transform]) {
+    transforms.setAll(c)
+  }
+
+  def translateX = delegate.translateXProperty
+  def translateX_=(v: Double) {
+    translateX() = v
+  }
+
+  def translateY = delegate.translateYProperty
+  def translateY_=(v: Double) {
+    translateY() = v
+  }
+
+  def translateZ = delegate.translateZProperty
+  def translateZ_=(v: Double) {
+    translateZ() = v
+  }
+
+  def userData = delegate.getUserData
+  def userData_=(v: AnyRef) {
+    delegate.setUserData(v)
+  }
+
+  def visible = delegate.visibleProperty
+  def visible_=(v: Boolean) {
+    visible() = v
+  }
 }

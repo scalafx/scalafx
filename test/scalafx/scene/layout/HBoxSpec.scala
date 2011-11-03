@@ -25,25 +25,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene
+package scalafx.scene.layout
 
-import collection.JavaConversions._
-import javafx.{scene => jfxs}
+import javafx.scene.{layout => jfxsl}
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.testutil.PropertyComparator
 
-object Group {
-  implicit def sfxGroup2jfx(v: Group) = v.delegate
-}
-
-class Group(override val delegate:jfxs.Group = new jfxs.Group()) extends Parent with SFXDelegate[jfxs.Group] {
-  def children = delegate.getChildren
-  def children_=(c: Iterable[Node]) { // todo - figure out why this can't be a jfxs.Node
-    children.setAll(c.map(_.delegate))
+class HBoxSpec extends FlatSpec with PropertyComparator {
+  "A HBox" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxsl.HBox], classOf[HBox])
   }
 
-  def autoSizeChildren = delegate.autoSizeChildrenProperty
-  def autoSizeChildren_=(v: Boolean) {
-    autoSizeChildren() = v
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxsl.HBoxBuilder[_]], classOf[HBox])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxHBox = new HBox()
+    val jfxHBox: jfxsl.HBox = sfxHBox
+    jfxHBox should be (sfxHBox.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxHBox = new jfxsl.HBox()
+    val sfxHBox: HBox = jfxHBox
+    sfxHBox.delegate should be (jfxHBox)
   }
 }
