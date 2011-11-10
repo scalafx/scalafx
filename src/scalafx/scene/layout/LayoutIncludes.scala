@@ -34,8 +34,9 @@ object LayoutIncludes extends LayoutIncludes
 trait LayoutIncludes {
   implicit def jfxBorderPane2sfx(v: jfxsl.BorderPane) = new BorderPane(v)
   implicit def jfxFlowPane2sfx(v: jfxsl.FlowPane) = new FlowPane(v)
+  implicit def jfxHBox2sfx(v: jfxsl.HBox) = new HBox(v)
   implicit def jfxPane2sfx(v: jfxsl.Pane) = new Pane(v)
   implicit def jfxRegion2sfx(v: jfxsl.Region) = new Region(v)
-  implicit def jfxHBox2sfx(v: jfxsl.HBox) = new HBox(v)
+  implicit def jfxStackPane2sfx(v: jfxsl.StackPane) = new StackPane(v)
   implicit def jfxVBox2sfx(v: jfxsl.VBox) = new VBox(v)
 }
