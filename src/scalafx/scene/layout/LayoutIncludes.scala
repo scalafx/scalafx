@@ -38,5 +38,6 @@ trait LayoutIncludes {
   implicit def jfxPane2sfx(v: jfxsl.Pane) = new Pane(v)
   implicit def jfxRegion2sfx(v: jfxsl.Region) = new Region(v)
   implicit def jfxStackPane2sfx(v: jfxsl.StackPane) = new StackPane(v)
+  implicit def jfxTilePane2sfx(v: jfxsl.TilePane) = new TilePane(v)
   implicit def jfxVBox2sfx(v: jfxsl.VBox) = new VBox(v)
 }
