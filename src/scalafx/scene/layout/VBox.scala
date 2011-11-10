@@ -27,10 +27,10 @@ package scalafx.scene.layout
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+import javafx.{geometry => jfxg}
 import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
-import javafx.geometry.Pos
 
 object VBox {
   implicit def sfxVBox2jfx(v: VBox) = v.delegate
@@ -43,9 +43,12 @@ class VBox(override val delegate:jfxsl.VBox = new jfxsl.VBox()) extends Pane wit
     spacing() = v
   }
 
-  def alignment = delegate.alignmentProperty
-  def alignment_=(v: Pos) {
-    alignment() = v
+  /**
+   * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node
+   */
+  def innerAlignment = delegate.alignmentProperty
+  def innerAlignment_=(v: jfxg.Pos) {
+    innerAlignment() = v
   }
 
   def fillWidth = delegate.fillWidthProperty

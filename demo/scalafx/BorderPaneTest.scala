@@ -25,17 +25,41 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene.layout
+package scalafx
 
-import javafx.scene.{layout => jfxsl}
+import scalafx.application.JFXApp
+import scalafx.scene.Scene
+import scalafx.stage.Stage
+import javafx.scene.paint.Color
+import scene.layout.BorderPane
+import scene.shape.Circle
 
-object LayoutIncludes extends LayoutIncludes
-
-trait LayoutIncludes {
-  implicit def jfxBorderPane2sfx(v: jfxsl.BorderPane) = new BorderPane(v)
-  implicit def jfxFlowPane2sfx(v: jfxsl.FlowPane) = new FlowPane(v)
-  implicit def jfxPane2sfx(v: jfxsl.Pane) = new Pane(v)
-  implicit def jfxRegion2sfx(v: jfxsl.Region) = new Region(v)
-  implicit def jfxHBox2sfx(v: jfxsl.HBox) = new HBox(v)
-  implicit def jfxVBox2sfx(v: jfxsl.VBox) = new VBox(v)
+object BorderPaneTest extends JFXApp {
+  stage = new Stage {
+    scene = new Scene {
+      fill = Color.LIGHTGRAY
+      content = new BorderPane {
+        top = new Circle {
+          fill = Color.RED
+          radius = 120
+        }
+        bottom = new Circle {
+          fill = Color.GREEN
+          radius = 120
+        }
+        left = new Circle {
+          fill = Color.YELLOW
+          radius = 40
+        }
+        right = new Circle {
+          fill = Color.ORANGE
+          radius = 40
+        }
+        center = new Circle {
+          fill = Color.BLUE
+          radius = 40
+        }
+      }
+    }
+  }
 }

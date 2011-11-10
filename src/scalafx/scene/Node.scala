@@ -39,6 +39,7 @@ object Node {
 }
 
 abstract class Node extends SFXDelegate[jfxs.Node] {
+
   def blendMode = delegate.blendModeProperty
   def blendMode_=(v: jfxse.BlendMode) {
     blendMode() = v
@@ -124,19 +125,6 @@ abstract class Node extends SFXDelegate[jfxs.Node] {
   def managed = delegate.managedProperty
   def managed_=(v: Boolean) {
     managed() = v
-  }
-
-  def margin = delegate.getProperties().get("margin")
-  def margin_=(i: Insets) {
-    delegate.getProperties().put("margin", i)
-    // for compatibility with layouts, which all use different keys
-    jfxsl.BorderPane.setMargin(delegate, i)
-    jfxsl.FlowPane.setMargin(delegate, i)
-    jfxsl.GridPane.setMargin(delegate, i)
-    jfxsl.HBox.setMargin(delegate, i)
-    jfxsl.StackPane.setMargin(delegate, i)
-    jfxsl.TilePane.setMargin(delegate, i)
-    jfxsl.VBox.setMargin(delegate, i)
   }
 
   def mouseTransparent = delegate.mouseTransparentProperty
@@ -305,5 +293,49 @@ abstract class Node extends SFXDelegate[jfxs.Node] {
   def visible = delegate.visibleProperty
   def visible_=(v: Boolean) {
     visible() = v
+  }
+
+  // layout pseudo-properties:
+
+  def alignment = delegate.getProperties().get("alignment").asInstanceOf[jfxg.Pos]
+  def alignment_=(p: jfxg.Pos) {
+    delegate.getProperties().put("alignment", p)
+    delegate.getProperties().put("halignment", p.getHpos)
+    delegate.getProperties().put("valignment", p.getVpos)
+    // for compatibility with layouts, which all use different keys
+    jfxsl.BorderPane.setAlignment(delegate, p)
+    jfxsl.GridPane.setHalignment(delegate, p.getHpos)
+    jfxsl.GridPane.setValignment(delegate, p.getVpos)
+    jfxsl.StackPane.setAlignment(delegate, p)
+    jfxsl.TilePane.setAlignment(delegate, p)
+  }
+
+  def margin = delegate.getProperties().get("margin").asInstanceOf[Insets]
+  def margin_=(i: Insets) {
+    delegate.getProperties().put("margin", i)
+    // for compatibility with layouts, which all use different keys
+    jfxsl.BorderPane.setMargin(delegate, i)
+    jfxsl.FlowPane.setMargin(delegate, i)
+    jfxsl.GridPane.setMargin(delegate, i)
+    jfxsl.HBox.setMargin(delegate, i)
+    jfxsl.StackPane.setMargin(delegate, i)
+    jfxsl.TilePane.setMargin(delegate, i)
+    jfxsl.VBox.setMargin(delegate, i)
+  }
+
+  def hgrow = delegate.getProperties().get("hgrow").asInstanceOf[jfxsl.Priority]
+  def hgrow_=(p: jfxsl.Priority) {
+    delegate.getProperties().put("hgrow", p)
+    // for compatibility with layouts, which all use different keys
+    jfxsl.GridPane.setHgrow(delegate, p)
+    jfxsl.HBox.setHgrow(delegate, p)
+  }
+
+  def vgrow = delegate.getProperties().get("vgrow").asInstanceOf[jfxsl.Priority]
+  def vgrow_=(p: jfxsl.Priority) {
+    delegate.getProperties().put("vgrow", p)
+    // for compatibility with layouts, which all use different keys
+    jfxsl.GridPane.setVgrow(delegate, p)
+    jfxsl.VBox.setVgrow(delegate, p)
   }
 }

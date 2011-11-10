@@ -27,32 +27,38 @@
 
 package scalafx.scene.layout
 
-import javafx.{geometry => jfxg}
 import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
+import scalafx.scene.Node
 
-object HBox {
-  implicit def sfxHBox2jfx(v: HBox) = v.delegate
+object BorderPane {
+  implicit def sfxBorderPane2jfx(v: BorderPane) = v.delegate
 }
 
-class HBox(override val delegate:jfxsl.HBox = new jfxsl.HBox()) extends Pane with SFXDelegate[jfxsl.HBox] {
-
-  def spacing = delegate.spacingProperty
-  def spacing_=(v: Double) {
-    spacing() = v
+class BorderPane(override val delegate:jfxsl.BorderPane = new jfxsl.BorderPane()) extends Pane with SFXDelegate[jfxsl.BorderPane] {
+  def bottom = delegate.bottomProperty()
+  def bottom_=(v: Node) {
+    bottom() = v
+  }
+  
+  def center = delegate.centerProperty()
+  def center_=(v: Node) {
+    center() = v
   }
 
-  /**
-   * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node
-   */
-  def innerAlignment = delegate.alignmentProperty
-  def innerAlignment_=(v: jfxg.Pos) {
-    innerAlignment() = v
+  def left = delegate.leftProperty()
+  def left_=(v: Node) {
+    left() = v
   }
 
-  def fillHeight = delegate.fillHeightProperty
-  def fillHeight_=(v: Boolean) {
-    fillHeight() = v
+  def right = delegate.rightProperty()
+  def right_=(v: Node) {
+    right() = v
+  }
+
+  def top = delegate.topProperty()
+  def top_=(v: Node) {
+    top() = v
   }
 }

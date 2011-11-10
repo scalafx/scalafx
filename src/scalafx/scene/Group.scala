@@ -38,7 +38,7 @@ object Group {
 
 class Group(override val delegate:jfxs.Group = new jfxs.Group()) extends Parent with SFXDelegate[jfxs.Group] {
   def children = delegate.getChildren
-  def children_=(c: Iterable[Node]) { // todo - figure out why this can't be a jfxs.Node
+  def children_=(c: Iterable[Node]) {
     children.setAll(c.map(_.delegate))
   }
 

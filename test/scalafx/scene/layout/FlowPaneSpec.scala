@@ -27,32 +27,30 @@
 
 package scalafx.scene.layout
 
-import javafx.{geometry => jfxg}
 import javafx.scene.{layout => jfxsl}
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.testutil.PropertyComparator
 
-object HBox {
-  implicit def sfxHBox2jfx(v: HBox) = v.delegate
-}
-
-class HBox(override val delegate:jfxsl.HBox = new jfxsl.HBox()) extends Pane with SFXDelegate[jfxsl.HBox] {
-
-  def spacing = delegate.spacingProperty
-  def spacing_=(v: Double) {
-    spacing() = v
+class FlowPaneSpec extends FlatSpec with PropertyComparator {
+  "A FlowPane" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxsl.FlowPane], classOf[FlowPane])
   }
 
-  /**
-   * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node
-   */
-  def innerAlignment = delegate.alignmentProperty
-  def innerAlignment_=(v: jfxg.Pos) {
-    innerAlignment() = v
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxsl.FlowPaneBuilder[_]], classOf[FlowPane])
   }
 
-  def fillHeight = delegate.fillHeightProperty
-  def fillHeight_=(v: Boolean) {
-    fillHeight() = v
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxFlowPane = new FlowPane()
+    val jfxFlowPane: jfxsl.FlowPane = sfxFlowPane
+    jfxFlowPane should be (sfxFlowPane.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxFlowPane = new jfxsl.FlowPane()
+    val sfxFlowPane: FlowPane = jfxFlowPane
+    sfxFlowPane.delegate should be (jfxFlowPane)
   }
 }

@@ -27,32 +27,30 @@
 
 package scalafx.scene.layout
 
-import javafx.{geometry => jfxg}
 import javafx.scene.{layout => jfxsl}
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.testutil.PropertyComparator
 
-object HBox {
-  implicit def sfxHBox2jfx(v: HBox) = v.delegate
-}
-
-class HBox(override val delegate:jfxsl.HBox = new jfxsl.HBox()) extends Pane with SFXDelegate[jfxsl.HBox] {
-
-  def spacing = delegate.spacingProperty
-  def spacing_=(v: Double) {
-    spacing() = v
+class BorderPaneSpec extends FlatSpec with PropertyComparator {
+  "A BorderPane" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxsl.BorderPane], classOf[BorderPane])
   }
 
-  /**
-   * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node
-   */
-  def innerAlignment = delegate.alignmentProperty
-  def innerAlignment_=(v: jfxg.Pos) {
-    innerAlignment() = v
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxsl.BorderPaneBuilder[_]], classOf[BorderPane])
   }
 
-  def fillHeight = delegate.fillHeightProperty
-  def fillHeight_=(v: Boolean) {
-    fillHeight() = v
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxBorderPane = new BorderPane()
+    val jfxBorderPane: jfxsl.BorderPane = sfxBorderPane
+    jfxBorderPane should be (sfxBorderPane.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxBorderPane = new jfxsl.BorderPane()
+    val sfxBorderPane: BorderPane = jfxBorderPane
+    sfxBorderPane.delegate should be (jfxBorderPane)
   }
 }

@@ -32,17 +32,11 @@ import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
-object HBox {
-  implicit def sfxHBox2jfx(v: HBox) = v.delegate
+object FlowPane {
+  implicit def sfxFlowPane2jfx(v: FlowPane) = v.delegate
 }
 
-class HBox(override val delegate:jfxsl.HBox = new jfxsl.HBox()) extends Pane with SFXDelegate[jfxsl.HBox] {
-
-  def spacing = delegate.spacingProperty
-  def spacing_=(v: Double) {
-    spacing() = v
-  }
-
+class FlowPane(override val delegate:jfxsl.FlowPane = new jfxsl.FlowPane()) extends Pane with SFXDelegate[jfxsl.FlowPane] {
   /**
    * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node
    */
@@ -51,8 +45,33 @@ class HBox(override val delegate:jfxsl.HBox = new jfxsl.HBox()) extends Pane wit
     innerAlignment() = v
   }
 
-  def fillHeight = delegate.fillHeightProperty
-  def fillHeight_=(v: Boolean) {
-    fillHeight() = v
+  def columnHalignment = delegate.columnHalignmentProperty
+  def columnHalignment_=(v: jfxg.HPos) {
+    columnHalignment() = v
+  }
+
+  def hgap = delegate.hgapProperty
+  def hgap_=(v: Double) {
+    hgap() = v
+  }
+
+  def orientation = delegate.orientationProperty
+  def orientation_=(v: jfxg.Orientation) {
+    orientation() = v
+  }
+
+  def prefWrapLength = delegate.prefWrapLengthProperty
+  def prefWrapLength_=(v: Double) {
+    prefWrapLength() = v
+  }
+
+  def rowValignment = delegate.rowValignmentProperty
+  def rowValignment_=(v: jfxg.VPos) {
+    rowValignment() = v
+  }
+
+  def vgap = delegate.vgapProperty
+  def vgap_=(v: Double) {
+    vgap() = v
   }
 }
