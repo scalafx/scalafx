@@ -33,24 +33,24 @@ import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
-class StackPaneSpec extends FlatSpec with PropertyComparator {
-  "A StackPane" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsl.StackPane], classOf[StackPane])
+class GridPaneSpec extends FlatSpec with PropertyComparator {
+  "A GridPane" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxsl.GridPane], classOf[GridPane])
   }
 
   it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsl.StackPaneBuilder[_]], classOf[StackPane])
+    compareBuilderProperties(classOf[jfxsl.GridPaneBuilder[_]], classOf[GridPane])
   }
 
   it should "have an implicit conversion from SFX to JFX" in {
-    val sfxStackPane = new StackPane()
-    val jfxStackPane: jfxsl.StackPane = sfxStackPane
-    jfxStackPane should be (sfxStackPane.delegate)
+    val sfxGridPane = new GridPane()
+    val jfxGridPane: jfxsl.GridPane = sfxGridPane
+    jfxGridPane should be (sfxGridPane.delegate)
   }
 
   it should "have an implicit conversion from JFX to SFX" in {
-    val jfxStackPane = new jfxsl.StackPane()
-    val sfxStackPane: StackPane = jfxStackPane
-    sfxStackPane.delegate should be (jfxStackPane)
+    val jfxGridPane = new jfxsl.GridPane()
+    val sfxGridPane: GridPane = jfxGridPane
+    sfxGridPane.delegate should be (jfxGridPane)
   }
 }

@@ -27,30 +27,14 @@
 
 package scalafx.scene.layout
 
+import javafx.{geometry => jfxg}
 import javafx.scene.{layout => jfxsl}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import scalafx.util.SFXDelegate
 
-class StackPaneSpec extends FlatSpec with PropertyComparator {
-  "A StackPane" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsl.StackPane], classOf[StackPane])
-  }
+object ColumnConstraints {
+  implicit def sfxColumnConstraints2jfx(v: ColumnConstraints) = v.delegate
+}
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsl.StackPaneBuilder[_]], classOf[StackPane])
-  }
-
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxStackPane = new StackPane()
-    val jfxStackPane: jfxsl.StackPane = sfxStackPane
-    jfxStackPane should be (sfxStackPane.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxStackPane = new jfxsl.StackPane()
-    val sfxStackPane: StackPane = jfxStackPane
-    sfxStackPane.delegate should be (jfxStackPane)
-  }
+class ColumnConstraints(override val delegate:jfxsl.ColumnConstraints = new jfxsl.ColumnConstraints()) extends ConstraintsBase(delegate) with SFXDelegate[jfxsl.ColumnConstraints] {
 }

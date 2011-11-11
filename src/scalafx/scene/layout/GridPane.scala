@@ -27,30 +27,47 @@
 
 package scalafx.scene.layout
 
+import collection.JavaConversions._
+import javafx.{geometry => jfxg}
 import javafx.scene.{layout => jfxsl}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import scalafx.util.SFXDelegate
 
-class StackPaneSpec extends FlatSpec with PropertyComparator {
-  "A StackPane" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsl.StackPane], classOf[StackPane])
+object GridPane {
+  implicit def sfxGridPane2jfx(v: GridPane) = v.delegate
+}
+
+class GridPane(override val delegate:jfxsl.GridPane = new jfxsl.GridPane()) extends Pane with SFXDelegate[jfxsl.GridPane] {
+  /**
+   * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node
+   */
+  def innerAlignment = delegate.alignmentProperty
+  def innerAlignment_=(v: jfxg.Pos) {
+    innerAlignment() = v
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsl.StackPaneBuilder[_]], classOf[StackPane])
+  def gridLinesVisible = delegate.gridLinesVisibleProperty
+  def gridLinesVisible_=(v: Boolean) {
+    gridLinesVisible() = v
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxStackPane = new StackPane()
-    val jfxStackPane: jfxsl.StackPane = sfxStackPane
-    jfxStackPane should be (sfxStackPane.delegate)
+  def hgap = delegate.hgapProperty
+  def hgap_=(v: Double) {
+    hgap() = v
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxStackPane = new jfxsl.StackPane()
-    val sfxStackPane: StackPane = jfxStackPane
-    sfxStackPane.delegate should be (jfxStackPane)
+  def vgap = delegate.vgapProperty
+  def vgap_=(v: Double) {
+    vgap() = v
+  }
+
+  def columnConstraints = delegate.getColumnConstraints
+  def columnConstraints_=(c: Iterable[ColumnConstraints]) {
+    columnConstraints.setAll(c.map(_.delegate))
+  }
+
+  def rowConstraints = delegate.getRowConstraints
+  def rowConstraints_=(c: Iterable[RowConstraints]) {
+    rowConstraints.setAll(c.map(_.delegate))
   }
 }
