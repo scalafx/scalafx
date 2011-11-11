@@ -34,7 +34,7 @@ import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class SequentialTransitionSpec extends FlatSpec with PropertyComparator {
-  "An SequentialTransition" should "implement all the JavaFX properties" in {
+  "A SequentialTransition" should "implement all the JavaFX properties" in {
     compareProperties(classOf[jfxa.SequentialTransition], classOf[SequentialTransition])
   }
 

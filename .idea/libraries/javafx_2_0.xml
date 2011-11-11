@@ -1,10 +1,10 @@
 <component name="libraryTable">
   <library name="javafx-2.0">
     <CLASSES>
-      <root url="jar://C:/Program Files/Oracle/JavaFX Runtime 2.0/lib/jfxrt.jar!/" />
+      <root url="jar://$JavaFX_SDK$/rt/lib/jfxrt.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="file://C:/Program Files/Oracle/JavaFX 2.0 SDK/docs/api" />
+      <root url="file://$JavaFX_SDK$/docs/api" />
     </JAVADOC>
     <SOURCES />
   </library>

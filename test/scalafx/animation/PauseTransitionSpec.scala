@@ -34,7 +34,7 @@ import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class PauseTransitionSpec extends FlatSpec with PropertyComparator {
-  "An PauseTransition" should "implement all the JavaFX properties" in {
+  "A PauseTransition" should "implement all the JavaFX properties" in {
     compareProperties(classOf[jfxa.PauseTransition], classOf[PauseTransition])
   }
 

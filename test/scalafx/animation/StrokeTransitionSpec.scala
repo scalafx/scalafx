@@ -61,7 +61,7 @@ import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class StrokeTransitionSpec extends FlatSpec with PropertyComparator {
-  "An StrokeTransition" should "implement all the JavaFX properties" in {
+  "A StrokeTransition" should "implement all the JavaFX properties" in {
     compareProperties(classOf[jfxa.StrokeTransition], classOf[StrokeTransition])
   }
 

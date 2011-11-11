@@ -34,7 +34,7 @@ import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class RotateTransitionSpec extends FlatSpec with PropertyComparator {
-  "An RotateTransition" should "implement all the JavaFX properties" in {
+  "A RotateTransition" should "implement all the JavaFX properties" in {
     compareProperties(classOf[jfxa.RotateTransition], classOf[RotateTransition])
   }
 

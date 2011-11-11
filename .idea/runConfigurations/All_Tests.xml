@@ -5,7 +5,6 @@
     <setting name="package" value="scalafx" />
     <setting name="vmparams" value="" />
     <setting name="params" value="" />
-    <setting name="version" value="true" />
     <setting name="workingDirectory" value="$PROJECT_DIR$" />
     <RunnerSettings RunnerId="Debug">
       <option name="DEBUG_PORT" value="52940" />

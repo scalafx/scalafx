@@ -34,7 +34,7 @@ import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class ArcSpec extends FlatSpec with PropertyComparator {
-  "A Arc" should "implement all the JavaFX properties" in {
+  "An Arc" should "implement all the JavaFX properties" in {
     compareProperties(classOf[jfxss.Arc], classOf[Arc])
   }
 

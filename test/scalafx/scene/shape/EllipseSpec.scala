@@ -34,7 +34,7 @@ import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class EllipseSpec extends FlatSpec with PropertyComparator {
-  "A Ellipse" should "implement all the JavaFX properties" in {
+  "An Ellipse" should "implement all the JavaFX properties" in {
     compareProperties(classOf[jfxss.Ellipse], classOf[Ellipse])
   }
 

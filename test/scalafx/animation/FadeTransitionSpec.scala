@@ -34,7 +34,7 @@ import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class FadeTransitionSpec extends FlatSpec with PropertyComparator {
-  "An FadeTransition" should "implement all the JavaFX properties" in {
+  "A FadeTransition" should "implement all the JavaFX properties" in {
     compareProperties(classOf[jfxa.FadeTransition], classOf[FadeTransition])
   }
 

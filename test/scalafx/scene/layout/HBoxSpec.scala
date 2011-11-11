@@ -34,7 +34,7 @@ import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 
 class HBoxSpec extends FlatSpec with PropertyComparator {
-  "A HBox" should "implement all the JavaFX properties" in {
+  "An HBox" should "implement all the JavaFX properties" in {
     compareProperties(classOf[jfxsl.HBox], classOf[HBox])
   }
 

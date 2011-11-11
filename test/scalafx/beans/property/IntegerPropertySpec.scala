@@ -46,7 +46,7 @@ class IntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
     booleanProperty = new BooleanProperty(bean, "Test Boolean")
   }
 
-  "A Integer Property" should "have a default value of 0" in {
+  "An Integer Property" should "have a default value of 0" in {
     integerProperty.value should equal (0)
   }
 
