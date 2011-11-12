@@ -27,12 +27,25 @@
 
 package scalafx
 
-import javafx.scene.paint.Color
+//             ________                                __                   ________    __    __
+//           /   _____/\                             /  /\                /   _____/\ /__/\ /  /\
+//          /  /\_____\/  ________     _______      /  / /   ________    /  /\_____\/ \  \ /  / /
+//         /  /_/___    /   _____/\  /_____   /\   /  / /  /_____   /\  /  /_/__       \  /  / /
+//        /_____   /\  /  /\_____\/  \____/  / /  /  / /   \____/  / / /   ____/\       \/  / /
+//        \_____/ / / /  / /       /  ___   / /  /  / /  /  ___   / / /  /\____\/       /  / /\
+//       ______/ / / /  /_/___    /  /__/  / /  /  / /  /  /__/  / / /  / /            /  / /\ \
+//     /________/ / /________/\  /________/ /  /__/ /  /________/ / /__/ /            /__/ /  \ \
+//     \________\/  \________\/  \________\/   \__\/   \________\/  \__\/             \__\/ \__\/
+//
+//                                  ScalaFX Programming Library
+//                                   author XXX XXXXXXXXX 2011
+//
 
 import scalafx.Includes._
 
 import scalafx.animation.Timeline
 import scalafx.application.JFXApp
+import javafx.scene.paint.Color
 import scalafx.scene.Scene
 import scalafx.scene.shape.{Circle, Rectangle}
 import scalafx.stage.Stage
@@ -41,84 +54,70 @@ import scalafx.stage.Stage
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
  */
 object Constants {
-
-  /////////////
-  // general //
-  /////////////
-
-  val TITLE = "Jumping Frogs Puzzle"
-
-  val SCALE = 2
-
-  val TIME = 2.0
-
-  ///////////
-  // model //
-  ///////////
-
   //
   // absolute
   //
-
+  // model
+  //
   val NUMBER_OF_FROGS = 3
-
   //
-  // relative
+  // view
   //
-
-  val NUMBER_OF_STONES = NUMBER_OF_FROGS * 2 + 1
-
-  val STONE_NUMBER_LIST = (0 to NUMBER_OF_STONES - 1).toList
-
-  //////////
-  // view //
-  //////////
-
+  val TITLE = "Jumping Frogs Puzzle"
+  val TIME = 2.0
+  val SCALE = 2
   //
-  // absolute
+  // absolute (up to SCALE)
   //
-
+  //
+  // view
+  //
   // stones
-
+  //
   val STONE_WIDTH = SCALE * 30
   val STONE_STROKE_WIDTH = SCALE * 1
   val STONE_GAP = SCALE * 6
   val STONE_HEIGHT = SCALE * 10
   val STONE_FILL = Color.WHITE
   val STONE_STROKE = Color.BLUE
-
+  //
   // frogs
-
+  //
   val FROG_RADIUS = SCALE * 6
   val GREEN_FROG_FILL = Color.DARKGREEN
   val RED_FROG_FILL = Color.DARKRED
-
+  //
   // canvas
-
+  //
   val CANVAS_HEIGHT = SCALE * 100
   val CANVAS_FILL = Color.LIGHTGRAY;
-
   //
   // relative
   //
-
+  // model
+  //
+  val NUMBER_OF_STONES = NUMBER_OF_FROGS * 2 + 1
+  val STONE_NUMBER_LIST = (0 to NUMBER_OF_STONES - 1).toList
+  //
+  // view
+  //
   // stones
-
+  //
   val STONE_TOTAL_WIDTH = STONE_WIDTH + 2 * STONE_STROKE_WIDTH
-  val FIRST_STONE_TX = STONE_TOTAL_WIDTH / 2
-  val STONE_STEP = STONE_TOTAL_WIDTH + STONE_GAP
   val STONE_TOTAL_HEIGHT = STONE_HEIGHT + 2 * STONE_STROKE_WIDTH
-  val STONE_TY = CANVAS_HEIGHT - STONE_TOTAL_HEIGHT
-
+  val FIRST_STONE_X = STONE_TOTAL_WIDTH / 2
+  val STONE_Y = CANVAS_HEIGHT - STONE_TOTAL_HEIGHT
+  val STONE_STEP = STONE_TOTAL_WIDTH + STONE_GAP
+  //
   // frogs
-
-  val FIRST_FROG_TX = STONE_TOTAL_WIDTH
-  val FROG_TY = STONE_TY - FROG_RADIUS
-
+  //
+  val FIRST_FROG_CENTER_X = STONE_TOTAL_WIDTH
+  val FROG_CENTER_Y = STONE_Y - FROG_RADIUS
+  //
   // canvas
-
+  //
   val CANVAS_WIDTH = (NUMBER_OF_STONES + 1) * STONE_TOTAL_WIDTH + (NUMBER_OF_STONES - 1) * STONE_GAP
-
+  //
 }
 
 import Constants._
@@ -127,101 +126,115 @@ import Constants._
 // model //
 ///////////
 
+//
+// frog
+//
 trait Frog {
   def isGreen: Boolean
 
   def isRed: Boolean
 }
 
-case class GreenFrog() extends Frog {
+class GreenFrog() extends Frog {
   def isGreen = true
 
   def isRed = false
 }
 
-case class RedFrog() extends Frog {
+class RedFrog() extends Frog {
   def isGreen = false
 
   def isRed = true
 }
 
-case object TheDummyFrog extends Frog {
+case object theDummyFrog extends Frog {
   def isGreen = false
 
   def isRed = false
 }
 
-class Model(private[this] var frogMap: Map[Int, Frog], val view: View) {
-  view.setOnMouseClicked(this)
-
-  private def isAtRight(position: Int) =
-    position == NUMBER_OF_STONES - 1
-
-  private def isAtRightOrOneButRight(position: Int) =
-    position == NUMBER_OF_STONES - 1 || position == NUMBER_OF_STONES - 2
-
-  private def isAtLeft(position: Int) =
-    position == 0
-
-  private def isAtLeftOrOneButLeft(position: Int) =
-    position == 0 || position == 1
-
-  private def moveUsing(move: Int => Int)(position: Int) {
-    frogMap = (for {
+//
+// values
+//
+object theModelValues {
+  val optionalFrogMap =
+    (for {
       i <- STONE_NUMBER_LIST
     } yield {
-      if (i == position) {
-        (i, TheDummyFrog)
-      } else if (i == move(position)) {
-        (i, frogMap(position))
+      if (i < NUMBER_OF_FROGS) {
+        i -> Some(new GreenFrog())
+      } else if (i == NUMBER_OF_FROGS) {
+        i -> None
       } else {
-        (i, frogMap(i))
+        i -> Some(new RedFrog())
       }
     }).toMap
-    view.setOnMouseClicked(this)
-  }
-
-  def canMoveOneRightAt(position: Int) =
-    !isAtRight(position) &&
-      frogMap(position + 1) == TheDummyFrog
-
-  def canMoveTwoRightAt(position: Int) =
-    !isAtRightOrOneButRight(position) &&
-      frogMap(position + 1).isRed &&
-      frogMap(position + 2) == TheDummyFrog
-
-  def canMoveOneLeftAt(position: Int) =
-    !isAtLeft(position) &&
-      frogMap(position - 1) == TheDummyFrog
-
-  def canMoveTwoLeftAt(position: Int) =
-    !isAtLeftOrOneButLeft(position) &&
-      frogMap(position - 1).isGreen &&
-      frogMap(position - 2) == TheDummyFrog
-
-  def moveOneRightAt: Int => Unit =
-    moveUsing(_ + 1)
-
-  def moveTwoRightAt: Int => Unit =
-    moveUsing(_ + 2)
-
-  def moveOneLeftAt: Int => Unit =
-    moveUsing(_ - 1)
-
-  def moveTwoLeftAt: Int => Unit =
-    moveUsing(_ - 2)
 }
 
-object TheModelValues {
-  val frogs = for {
-    i <- STONE_NUMBER_LIST
-  } yield {
-    if (i < NUMBER_OF_FROGS) {
-      i -> GreenFrog()
-    } else if (i == NUMBER_OF_FROGS) {
-      i -> TheDummyFrog
-    } else {
-      i -> RedFrog()
+//
+// model
+//
+class Model(var optionalFrogMap: Map[Int, Option[Frog]]) {
+  private def isAtRight(i: Int) =
+    i == NUMBER_OF_STONES - 1
+
+  private def isAtRightOrOneButRight(i: Int) =
+    i == NUMBER_OF_STONES - 1 || i == NUMBER_OF_STONES - 2
+
+  private def isAtLeft(i: Int) =
+    i == 0
+
+  private def isAtLeftOrOneButLeft(i: Int) =
+    i == 0 || i == 1
+
+  private def canMoveOneRightAt(i: Int) =
+    !isAtRight(i) &&
+      optionalFrogMap(i + 1) == None
+
+  private def canMoveTwoRightAt(i: Int) =
+    !isAtRightOrOneButRight(i) &&
+      optionalFrogMap(i + 1).get.isRed &&
+      optionalFrogMap(i + 2) == None
+
+  private def canMoveOneLeftAt(i: Int) =
+    !isAtLeft(i) &&
+      optionalFrogMap(i - 1) == None
+
+  private def canMoveTwoLeftAt(i: Int) =
+    !isAtLeftOrOneButLeft(i) &&
+      optionalFrogMap(i - 1).get.isGreen &&
+      optionalFrogMap(i - 2) == None
+
+  def positionOf(frog: Frog) =
+    (for {
+      (i, optionalFrog) <- optionalFrogMap
+      if (optionalFrog == Some(frog))
+    } yield i).head
+
+  def canJumpOneRight(frog: Frog) =
+    canMoveOneRightAt(positionOf(frog))
+
+  def canJumpTwoRight(frog: Frog) =
+    canMoveTwoRightAt(positionOf(frog))
+
+  def canJumpOneLeft(frog: Frog) =
+    canMoveOneLeftAt(positionOf(frog))
+
+  def canJumpTwoLeft(frog: Frog) =
+    canMoveTwoLeftAt(positionOf(frog))
+
+  def update(next: Int => Int)(frog: Frog) {
+    val j = positionOf(frog)
+    optionalFrogMap = for {
+      entry@(i, _) <- optionalFrogMap
+    } yield {
+      if (i == j) {
+        (i, None)
+      } else if (i == next(j)) {
+        (i, optionalFrogMap(j))
+      } else {
+        entry
+      }
     }
   }
 }
@@ -230,11 +243,21 @@ object TheModelValues {
 // view //
 //////////
 
-class CanvasShape extends Rectangle
+//
+// canvas shape
+//
+case object theCanvasShape extends Rectangle {
+  width = CANVAS_WIDTH
+  height = CANVAS_HEIGHT
+  fill = CANVAS_FILL
+}
 
+//
+// stone shape
+//
 case class StoneShape(position: Int) extends Rectangle {
-  x = FIRST_STONE_TX + STONE_STEP * position
-  y = STONE_TY
+  x = FIRST_STONE_X + STONE_STEP * position
+  y = STONE_Y
   width = STONE_WIDTH
   height = STONE_HEIGHT
   fill = STONE_FILL
@@ -242,185 +265,159 @@ case class StoneShape(position: Int) extends Rectangle {
   strokeWidth = STONE_STROKE_WIDTH
 }
 
-class FrogShape(private[this] var position: Int) extends Circle {
-
-  private def moveOneRight() {
-    position = position + 1
-  }
-
-  private def moveTwoRight() {
-    position = position + 2
-  }
-
-  private def moveOneLeft() {
-    position = position - 1
-  }
-
-  private def moveTwoLeft() {
-    position = position - 2
-  }
-
-  private def playTimeLine(length: Int, to: (Double, Double) => Double) {
-    val currentCenterX = FIRST_FROG_TX + STONE_STEP * position
-    val currentCenterY = FROG_TY
-
-    Timeline(Seq(
-      at(length * TIME s) {
-        centerY -> {
-          currentCenterY - length * STONE_STEP / 2
-        }
-      },
-      at(length * TIME s) {
-        centerX -> {
-          to(currentCenterX, length * STONE_STEP / 2)
-        }
-      },
-      at(2 * length * TIME s) {
-        centerY -> {
-          currentCenterY
-        }
-      },
-      at(2 * length * TIME s) {
-        centerX -> {
-          to(currentCenterX, length * STONE_STEP)
-        }
-      }
-    )).play()
-  }
-
-  private def jump(length: Int, to: (Double, Double) => Double, moveAt: (Model, Int) => Unit, move: FrogShape => Unit)(model: Model) {
-    moveAt(model, position)
-    playTimeLine(length, to)
-    move(this)
-  }
-
-  def canJumpOneRight(model: Model) =
-    model.canMoveOneRightAt(position)
-
-  def canJumpTwoRight(model: Model) =
-    model.canMoveTwoRightAt(position)
-
-  def canJumpOneLeft(model: Model) =
-    model.canMoveOneLeftAt(position)
-
-  def canJumpTwoLeft(model: Model) =
-    model.canMoveTwoLeftAt(position)
-
-  def jumpOneRight: Model => Unit =
-    jump(1, _ + _, _.moveOneRightAt(_), _.moveOneRight())
-
-  def jumpTwoRight: Model => Unit =
-    jump(2, _ + _, _.moveTwoRightAt(_), _.moveTwoRight())
-
-  def jumpOneLeft: Model => Unit =
-    jump(1, _ - _, _.moveOneLeftAt(_), _.moveOneLeft())
-
-  def jumpTwoLeft: Model => Unit =
-    jump(2, _ - _, _.moveTwoLeftAt(_), _.moveTwoLeft())
-
-}
-
-class RealFrogShape(position: Int) extends FrogShape(position) {
-  centerX = FIRST_FROG_TX + STONE_STEP * position
-  centerY = FROG_TY
+//
+// frog shape
+//
+abstract class FrogShape(startPosition: Int, frog: Frog) extends Circle {
+  val getFrog = frog
+  centerX = FIRST_FROG_CENTER_X + STONE_STEP * startPosition
+  centerY = FROG_CENTER_Y
   radius = FROG_RADIUS
 }
 
-case class GreenFrogShape(position: Int) extends RealFrogShape(position) {
+class GreenFrogShape(startPosition: Int, frog: Frog) extends FrogShape(startPosition, frog) {
   fill = GREEN_FROG_FILL
 }
 
-case class RedFrogShape(position: Int) extends RealFrogShape(position) {
+class RedFrogShape(startPosition: Int, frog: Frog) extends FrogShape(startPosition, frog) {
   fill = RED_FROG_FILL
 }
 
-case object TheDummyFrogShape extends FrogShape(0) {
-  centerX = 0
-  centerY = 0
-  radius = 0
-  fill = CANVAS_FILL
-}
+case object theDummyFrogShape extends FrogShape(-1, theDummyFrog)
 
-case class View(canvasShape: CanvasShape, stoneShapes: List[StoneShape], frogShapes: List[FrogShape]) {
-  def setOnMouseClicked(model: Model) {
-    frogShapes.foreach {
-      case frogShape@GreenFrogShape(_) => frogShape.onMouseClicked =
-        if (frogShape.canJumpOneRight(model)) {
-          frogShape.jumpOneRight(model)
-        } else if (frogShape.canJumpTwoRight(model)) {
-          frogShape.jumpTwoRight(model)
-        }
-      case frogShape@RedFrogShape(_) => frogShape.onMouseClicked =
-        if (frogShape.canJumpOneLeft(model)) {
-          frogShape.jumpOneLeft(model)
-        } else if (frogShape.canJumpTwoLeft(model)) {
-          frogShape.jumpTwoLeft(model)
-        }
-      case frogShape@TheDummyFrogShape =>
-    }
-  }
-}
+//
+// values
+//
+object theViewValues {
+  val canvasShape =
+    theCanvasShape
 
-object TheViewValues {
-  val canvasShape = new CanvasShape {
-    width = CANVAS_WIDTH
-    height = CANVAS_HEIGHT
-    fill = CANVAS_FILL
-  }
-
-  val stoneShapes = {
+  val stoneShapes =
     for {
       i <- STONE_NUMBER_LIST
     } yield StoneShape(i)
-  }
 
-  val frogShapes = {
+  val dummyFrogShape =
+    theDummyFrogShape
+
+  import theModelValues.optionalFrogMap
+
+  val optionalFrogShapes =
     for {
       i <- STONE_NUMBER_LIST
     } yield {
       if (i < NUMBER_OF_FROGS) {
-        GreenFrogShape(i)
+        Some(new GreenFrogShape(i, optionalFrogMap(i).get))
       } else if (i == NUMBER_OF_FROGS) {
-        TheDummyFrogShape
+        None
       } else {
-        RedFrogShape(i)
+        Some(new RedFrogShape(i, optionalFrogMap(i).get))
       }
+    }
+}
+
+//
+// view
+//
+class View(model: Model, optionalFrogShapes: List[Option[FrogShape]]) {
+  setOnMouseClicked()
+
+  import theViewValues.dummyFrogShape
+
+  val frogShapes =
+    for {
+      optionalFrogShape <- optionalFrogShapes
+    } yield {
+      optionalFrogShape match {
+        case Some(frogShape) => frogShape
+        case None => dummyFrogShape
+      }
+    }
+
+  private def jump(length: Int, next: (Double, Double) => Double)(frogShape: FrogShape) {
+    val frogShapeCenterX = FIRST_FROG_CENTER_X + STONE_STEP * model.positionOf(frogShape.getFrog)
+    val frogShapeCenterY = FROG_CENTER_Y
+
+    Timeline(Seq(
+      at(length * TIME s) {
+        frogShape.centerY -> (frogShapeCenterY - length * STONE_STEP / 2)
+      },
+      at(length * TIME s) {
+        frogShape.centerX -> next(frogShapeCenterX, length * STONE_STEP / 2)
+      },
+      at(2 * length * TIME s) {
+        frogShape.centerY -> frogShapeCenterY
+      },
+      at(2 * length * TIME s) {
+        frogShape.centerX -> next(frogShapeCenterX, length * STONE_STEP)
+      }
+    )).play()
+  }
+
+  private def jumpOneRight(frogShape: FrogShape) {
+    jump(1, _ + _)(frogShape)
+    model.update(_ + 1)(frogShape.getFrog)
+    setOnMouseClicked()
+  }
+
+  private def jumpTwoRight(frogShape: FrogShape) {
+    jump(2, _ + _)(frogShape)
+    model.update(_ + 2)(frogShape.getFrog)
+    setOnMouseClicked()
+  }
+
+  private def jumpOneLeft(frogShape: FrogShape) {
+    jump(1, _ - _)(frogShape)
+    model.update(_ - 1)(frogShape.getFrog)
+    setOnMouseClicked()
+  }
+
+  private def jumpTwoLeft(frogShape: FrogShape) {
+    jump(2, _ - _)(frogShape)
+    model.update(_ - 2)(frogShape.getFrog)
+    setOnMouseClicked()
+  }
+
+  private def setOnMouseClicked() {
+    optionalFrogShapes.foreach {
+      case Some(frogShape) => frogShape.onMouseClicked =
+        if (model.canJumpOneRight(frogShape.getFrog)) {
+          jumpOneRight(frogShape)
+        } else if (model.canJumpTwoRight(frogShape.getFrog)) {
+          jumpTwoRight(frogShape)
+        } else if (model.canJumpOneLeft(frogShape.getFrog)) {
+          jumpOneLeft(frogShape)
+        } else if (model.canJumpTwoLeft(frogShape.getFrog)) {
+          jumpTwoLeft(frogShape)
+        }
+      case None =>
     }
   }
 }
 
-///////////////
-// the model //
-///////////////
+import theModelValues.optionalFrogMap
 
-import TheModelValues.frogs
+object theModel extends Model(optionalFrogMap)
 
-object TheModel extends Model(frogs.toMap, TheView)
+import theViewValues.optionalFrogShapes
 
-//////////////
-// the view //
-//////////////
+object theView extends View(theModel, optionalFrogShapes)
 
-import TheViewValues.canvasShape
-import TheViewValues.stoneShapes
-import TheViewValues.frogShapes
-
-object TheView extends View(canvasShape, stoneShapes, frogShapes)
-
-//////////////////////////////////
-// the jumping frogs puzzle app //
-//////////////////////////////////
-
-import TheModel.view
+//////////////////////////
+// jumping frogs puzzle //
+//////////////////////////
 
 object JumpingFrogsPuzzle extends JFXApp {
+
+  import theViewValues.canvasShape
+  import theViewValues.stoneShapes
+  import theView.frogShapes
+
   stage = new Stage {
     title = TITLE
     scene = new Scene {
       content =
-        view.canvasShape ::
-          view.stoneShapes :::
-          view.frogShapes
+        canvasShape :: stoneShapes ::: frogShapes
     }
   }
 }
