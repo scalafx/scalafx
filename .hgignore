@@ -1,0 +1,5 @@
+target
+nbproject
+lib_managed
+.scala_dependencies
+bin.jar

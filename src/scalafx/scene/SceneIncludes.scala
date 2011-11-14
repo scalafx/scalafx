@@ -32,10 +32,11 @@ import javafx.{scene => jfxs}
 import layout.LayoutIncludes
 import paint.PaintIncludes
 import shape.ShapeIncludes
+import control.ControlIncludes
 
 object SceneIncludes extends SceneIncludes
 
-trait SceneIncludes extends LayoutIncludes with PaintIncludes with ShapeIncludes with LowerPriorityIncludes
+trait SceneIncludes extends LayoutIncludes with PaintIncludes with ShapeIncludes with LowerPriorityIncludes with ControlIncludes
 
 trait LowerPriorityIncludes {
   implicit def jfxGroup2sfx(v: jfxs.Group) = new Group(v)
