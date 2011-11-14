@@ -40,7 +40,7 @@ class JFXApp extends DelayedInit {
 
   def main(args: Array[String]) {
     JFXApp.ACTIVE_APP = this
-    javafx.application.Application.launch(classOf[AppHelper], args)
+    javafx.application.Application.launch(classOf[AppHelper], args:_*)
   }
 
   var init: () => Unit = null

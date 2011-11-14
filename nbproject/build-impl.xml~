@@ -245,7 +245,7 @@ is divided into following sections:
                             <pathelement location="${build.classes.dir}"/>
                         </path>
                     </classpath>
-                    <customize/>
+                    <customize/>  
                 </scalac>
             </sequential>
         </macrodef>
