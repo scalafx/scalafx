@@ -43,9 +43,7 @@ class ParentSpec extends FlatSpec with PropertyComparator {
   }
 
   it should "have an implicit conversion from SFX to JFX" in {
-    val sfxParent = new Parent() {
-      override val delegate = new jfxs.Group()
-    }
+    val sfxParent = new Parent(new jfxs.Group()) {}
     val jfxParent: jfxs.Parent = sfxParent
     jfxParent should be(sfxParent.delegate)
   }

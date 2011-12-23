@@ -38,7 +38,5 @@ trait ShapeIncludes {
   implicit def jfxLine2sfx(r: jfxss.Line) = new Line(r)
   implicit def jfxPath2sfx(r: jfxss.Path) = new Path(r)
   implicit def jfxRectangle2sfx(r: jfxss.Rectangle) = new Rectangle(r)
-  implicit def jfxShape2sfx(s: jfxss.Shape) = new Shape {
-    override val delegate = s
-  }
+  implicit def jfxShape2sfx(s: jfxss.Shape) = new Shape(s) {}
 }

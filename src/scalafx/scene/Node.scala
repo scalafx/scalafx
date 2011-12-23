@@ -38,8 +38,7 @@ object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
 }
 
-abstract class Node extends SFXDelegate[jfxs.Node] {
-
+abstract class Node(override val delegate: jfxs.Node) extends SFXDelegate[jfxs.Node] {
   def blendMode = delegate.blendModeProperty
   def blendMode_=(v: jfxse.BlendMode) {
     blendMode() = v

@@ -36,5 +36,5 @@ object ConstraintsBase {
   implicit def sfxConstraintsBase2jfx(v: ConstraintsBase) = v.delegate
 }
 
-class ConstraintsBase(override val delegate:jfxsl.ConstraintsBase) extends SFXDelegate[jfxsl.ConstraintsBase] {
+abstract class ConstraintsBase(override val delegate:jfxsl.ConstraintsBase) extends SFXDelegate[jfxsl.ConstraintsBase] {
 }

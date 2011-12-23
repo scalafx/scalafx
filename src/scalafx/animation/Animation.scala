@@ -40,7 +40,7 @@ object Animation extends AnimationStatics {
   implicit def sfxAnimation2jfx(v: Animation) = v.delegate
 }
 
-abstract class Animation extends SFXDelegate[jfxa.Animation] {
+abstract class Animation(override val delegate: jfxa.Animation) extends SFXDelegate[jfxa.Animation] {
   def autoReverse = delegate.autoReverseProperty
   def autoReverse_=(ar: Boolean) {
     autoReverse() = ar

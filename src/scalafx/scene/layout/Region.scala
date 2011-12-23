@@ -37,7 +37,7 @@ object Region {
   implicit def sfxRegion2jfx(v: Region) = v.delegate
 }
 
-class Region(override val delegate:jfxsl.Region = new jfxsl.Region()) extends Parent with SFXDelegate[jfxsl.Region] {
+class Region(override val delegate:jfxsl.Region = new jfxsl.Region()) extends Parent(delegate) with SFXDelegate[jfxsl.Region] {
   def height = delegate.heightProperty
   def width = delegate.widthProperty
 

@@ -34,8 +34,6 @@ object Parent {
   implicit def sfxParent2jfx(v: Parent) = v.delegate
 }
 
-abstract class Parent extends Node with SFXDelegate[jfxs.Parent] {
-  override val delegate: javafx.scene.Parent
-
+abstract class Parent(override val delegate: jfxs.Parent) extends Node(delegate) with SFXDelegate[jfxs.Parent] {
   def needsLayout = delegate.needsLayoutProperty
 }

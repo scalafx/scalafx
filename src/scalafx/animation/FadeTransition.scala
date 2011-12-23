@@ -37,7 +37,7 @@ object FadeTransition extends AnimationStatics {
   implicit def sfxFadeTransition2jfx(v: FadeTransition) = v.delegate
 }
 
-class FadeTransition(override val delegate:jfxa.FadeTransition = new jfxa.FadeTransition()) extends Transition with SFXDelegate[jfxa.FadeTransition] {
+class FadeTransition(override val delegate:jfxa.FadeTransition = new jfxa.FadeTransition()) extends Transition(delegate) with SFXDelegate[jfxa.FadeTransition] {
   def byValue = delegate.byValueProperty
   def byValue_=(by: Double) {
     byValue() = by

@@ -37,4 +37,38 @@ object ColumnConstraints {
 }
 
 class ColumnConstraints(override val delegate:jfxsl.ColumnConstraints = new jfxsl.ColumnConstraints()) extends ConstraintsBase(delegate) with SFXDelegate[jfxsl.ColumnConstraints] {
+  def fillWidth = delegate.fillWidthProperty
+  def fillWidth_=(v: Boolean) {
+    fillWidth() = v
+  }
+
+  def halignment = delegate.halignmentProperty
+  def halignment_=(v: jfxsl.Priority) {
+    hgrow() = v
+  }
+
+  def hgrow = delegate.hgrowProperty
+  def hgrow_=(v: jfxsl.Priority) {
+    hgrow() = v
+  }
+
+  def maxWidth = delegate.maxWidthProperty
+  def maxWidth_=(v: Double) {
+    maxWidth() = v
+  }
+
+  def minWidth = delegate.minWidthProperty
+  def minWidth_=(v: Double) {
+    minWidth() = v
+  }
+
+  def percentWidth = delegate.percentWidthProperty
+  def percentWidth_=(v: Double) {
+    percentWidth() = v
+  }
+  
+  def prefWidth = delegate.prefWidthProperty
+  def prefWidth_=(v: Double) {
+    prefWidth() = v
+  }
 }

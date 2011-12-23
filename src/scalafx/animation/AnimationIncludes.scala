@@ -39,9 +39,7 @@ trait AnimationIncludes {
   implicit def tweenableSet2KeyValueSet(ts: Set[Tweenable[_, _ <: Object]]) = ts.map(_.linear)
   implicit def wrapKeyFrameInSeq[T <: KeyFrame](kf: T) = Seq[T](kf)
 
-  implicit def jfxAnimation2sfx(v: jfxa.Animation) = new Animation() {
-    override def delegate = v
-  }
+  implicit def jfxAnimation2sfx(v: jfxa.Animation) = new Animation(v) {}
   implicit def jfxFadeTransition2sfx(v: jfxa.FadeTransition) = new FadeTransition(v)
   implicit def jfxFillTransition2sfx(v: jfxa.FillTransition) = new FillTransition(v)
   implicit def jfxKeyFrame2sfx(v: jfxa.KeyFrame) = new KeyFrame(v)
@@ -54,8 +52,6 @@ trait AnimationIncludes {
   implicit def jfxSequentialTransition2sfx(v: jfxa.SequentialTransition) = new SequentialTransition(v)
   implicit def jfxStrokeTransition2sfx(v: jfxa.StrokeTransition) = new StrokeTransition(v)
   implicit def jfxTimeline2sfx(v: jfxa.Timeline) = new Timeline(v)
-  implicit def jfxTransition2sfx(v: jfxa.Transition) = new Transition() {
-    override def delegate = v
-  }
+  implicit def jfxTransition2sfx(v: jfxa.Transition) = new Transition(v) {}
   implicit def jfxTranslateTransition2sfx(v: jfxa.TranslateTransition) = new TranslateTransition(v)
 }

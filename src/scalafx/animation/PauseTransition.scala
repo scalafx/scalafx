@@ -36,7 +36,7 @@ object PauseTransition extends AnimationStatics {
   implicit def sfxPauseTransition2jfx(v: PauseTransition) = v.delegate
 }
 
-class PauseTransition(override val delegate:jfxa.PauseTransition = new jfxa.PauseTransition()) extends Transition with SFXDelegate[jfxa.PauseTransition] {
+class PauseTransition(override val delegate:jfxa.PauseTransition = new jfxa.PauseTransition()) extends Transition(delegate) with SFXDelegate[jfxa.PauseTransition] {
   def duration = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d

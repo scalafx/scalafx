@@ -35,7 +35,7 @@ object Arc {
   implicit def sfxArc2jfx(v: Arc) = v.delegate
 }
 
-class Arc(override val delegate:jfxss.Arc = new jfxss.Arc()) extends Shape with SFXDelegate[jfxss.Arc] {
+class Arc(override val delegate:jfxss.Arc = new jfxss.Arc()) extends Shape(delegate) with SFXDelegate[jfxss.Arc] {
   def centerX = delegate.centerXProperty
   def centerX_=(v: Double) {
     centerX() = v

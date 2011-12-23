@@ -37,7 +37,7 @@ object ParallelTransition extends AnimationStatics {
   implicit def sfxParallelTransition2jfx(v: ParallelTransition) = v.delegate
 }
 
-class ParallelTransition(override val delegate:jfxa.ParallelTransition = new jfxa.ParallelTransition()) extends Transition with SFXDelegate[jfxa.ParallelTransition] {
+class ParallelTransition(override val delegate:jfxa.ParallelTransition = new jfxa.ParallelTransition()) extends Transition(delegate) with SFXDelegate[jfxa.ParallelTransition] {
   def node = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n

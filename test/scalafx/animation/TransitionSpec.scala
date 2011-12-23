@@ -43,11 +43,9 @@ class TransitionSpec extends FlatSpec with PropertyComparator {
   }
 
   it should "have an implicit conversion from SFX to JFX" in {
-    val sfxTransition = new Transition() {
-      override val delegate = new jfxa.Transition() {
-        def interpolate(p1: Double) {}
-      }
-    }
+    val sfxTransition = new Transition(new jfxa.Transition() {
+      def interpolate(p1: Double) {}
+    }) {}
     val jfxTransition: jfxa.Transition = sfxTransition
     jfxTransition should be (sfxTransition.delegate)
   }

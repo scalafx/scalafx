@@ -35,7 +35,7 @@ object Rectangle {
   implicit def sfxRectangle2jfx(v: Rectangle) = v.delegate
 }
 
-class Rectangle(override val delegate:jfxss.Rectangle = new jfxss.Rectangle()) extends Shape with SFXDelegate[jfxss.Rectangle] {
+class Rectangle(override val delegate:jfxss.Rectangle = new jfxss.Rectangle()) extends Shape(delegate) with SFXDelegate[jfxss.Rectangle] {
   def x = delegate.xProperty
   def x_=(v: Double) {
     x() = v

@@ -25,34 +25,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene.shape
+package scalafx.scene.layout
 
-import javafx.scene.{shape => jfxss}
+import javafx.scene.{layout => jfxsl}
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.testutil.PropertyComparator
 
-object Line {
-  implicit def sfxLine2jfx(v: Line) = v.delegate
-}
-
-class Line(override val delegate:jfxss.Line = new jfxss.Line()) extends Shape(delegate) with SFXDelegate[jfxss.Line] {
-  def endX = delegate.endXProperty
-  def endX_=(v: Double) {
-    endX() = v
+class RowConstraintsSpec extends FlatSpec with PropertyComparator {
+  "A RowConstraints" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxsl.RowConstraints], classOf[RowConstraints])
   }
 
-  def endY = delegate.endYProperty
-  def endY_=(v: Double) {
-    endY() = v
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxsl.RowConstraintsBuilder[_]], classOf[RowConstraints])
   }
 
-  def startX = delegate.startXProperty
-  def startX_=(v: Double) {
-    startX() = v
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxRowConstraints = new RowConstraints()
+    val jfxRowConstraints: jfxsl.RowConstraints = sfxRowConstraints
+    jfxRowConstraints should be (sfxRowConstraints.delegate)
   }
 
-  def startY = delegate.startYProperty
-  def startY_=(v: Double) {
-    startY() = v
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxRowConstraints = new jfxsl.RowConstraints()
+    val sfxRowConstraints: RowConstraints = jfxRowConstraints
+    sfxRowConstraints.delegate should be (jfxRowConstraints)
   }
 }

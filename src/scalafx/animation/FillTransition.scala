@@ -38,7 +38,7 @@ object FillTransition extends AnimationStatics {
   implicit def sfxFillTransition2jfx(v: FillTransition) = v.delegate
 }
 
-class FillTransition(override val delegate:jfxa.FillTransition = new jfxa.FillTransition()) extends Transition with SFXDelegate[jfxa.FillTransition] {
+class FillTransition(override val delegate:jfxa.FillTransition = new jfxa.FillTransition()) extends Transition(delegate) with SFXDelegate[jfxa.FillTransition] {
   def shape = delegate.shapeProperty
   def shape_=(s: Shape) {
     shape() = s

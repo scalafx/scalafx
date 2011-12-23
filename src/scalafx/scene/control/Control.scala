@@ -37,8 +37,7 @@ object Control {
   implicit def sfxControl2jfx(v: Node) = v.delegate
 }
 
-abstract class Control extends Node with SFXDelegate[jfxsc.Control] {
-   
+abstract class Control(override val delegate: jfxsc.Control) extends Node(delegate) with SFXDelegate[jfxsc.Control] {
   def contextMenu = delegate.contextMenuProperty
   def contextMenu_=(v: jfxsc.ContextMenu) {
     contextMenu() = v

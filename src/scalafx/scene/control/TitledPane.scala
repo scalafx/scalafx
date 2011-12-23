@@ -23,7 +23,7 @@ object TitledPane {
 
  */
 
-class TitledPane (override val delegate:jfxsc.TitledPane = new jfxsc.TitledPane) extends Control with SFXDelegate[jfxsc.TitledPane] {
+class TitledPane (override val delegate:jfxsc.TitledPane = new jfxsc.TitledPane) extends Control(delegate) with SFXDelegate[jfxsc.TitledPane] {
 
   def animated = delegate.animatedProperty
   def animated_=(v:Boolean) {

@@ -38,7 +38,7 @@ object PathTransition extends AnimationStatics {
   implicit def sfxPathTransition2jfx(v: PathTransition) = v.delegate
 }
 
-class PathTransition(override val delegate:jfxa.PathTransition = new jfxa.PathTransition()) extends Transition with SFXDelegate[jfxa.PathTransition] {
+class PathTransition(override val delegate:jfxa.PathTransition = new jfxa.PathTransition()) extends Transition(delegate) with SFXDelegate[jfxa.PathTransition] {
   def node = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n

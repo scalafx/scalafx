@@ -43,9 +43,7 @@ class AnimationSpec extends FlatSpec with PropertyComparator {
   }
 
   it should "have an implicit conversion from SFX to JFX" in {
-    val sfxAnimation = new Animation() {
-      override val delegate = new jfxa.Timeline()
-    }
+    val sfxAnimation = new Animation(new jfxa.Timeline()) {}
     val jfxAnimation: jfxa.Animation = sfxAnimation
     jfxAnimation should be (sfxAnimation.delegate)
   }

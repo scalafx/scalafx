@@ -37,7 +37,7 @@ object SequentialTransition extends AnimationStatics {
   implicit def sfxSequentialTransition2jfx(v: SequentialTransition) = v.delegate
 }
 
-class SequentialTransition(override val delegate:jfxa.SequentialTransition = new jfxa.SequentialTransition()) extends Transition with SFXDelegate[jfxa.SequentialTransition] {
+class SequentialTransition(override val delegate:jfxa.SequentialTransition = new jfxa.SequentialTransition()) extends Transition(delegate) with SFXDelegate[jfxa.SequentialTransition] {
   def node = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n

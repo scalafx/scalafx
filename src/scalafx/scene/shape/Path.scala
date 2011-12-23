@@ -36,7 +36,7 @@ object Path {
   implicit def sfxPath2jfx(v: Path) = v.delegate
 }
 
-class Path(override val delegate:jfxss.Path = new jfxss.Path()) extends Shape with SFXDelegate[jfxss.Path] {
+class Path(override val delegate:jfxss.Path = new jfxss.Path()) extends Shape(delegate) with SFXDelegate[jfxss.Path] {
   def fillRule = delegate.fillRuleProperty
   def fillRule_=(v: jfxss.FillRule) {
     fillRule() = v

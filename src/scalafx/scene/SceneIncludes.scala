@@ -40,12 +40,8 @@ trait SceneIncludes extends LayoutIncludes with PaintIncludes with ShapeIncludes
 
 trait LowerPriorityIncludes {
   implicit def jfxGroup2sfx(v: jfxs.Group) = new Group(v)
-  implicit def jfxParent2sfx(v: jfxs.Parent) = new Parent() {
-    override val delegate = v
-  }
-  implicit def jfxNode2sfx(v: jfxs.Node) = new Node() {
-    override val delegate = v
-  }
+  implicit def jfxParent2sfx(v: jfxs.Parent) = new Parent(v) {}
+  implicit def jfxNode2sfx(v: jfxs.Node) = new Node(v) {}
   implicit def jfxScene2sfx(v: jfxs.Scene) = new Scene(v)
   implicit def jfxSceneProperty2sfx(p: jfxbp.ReadOnlyObjectProperty[jfxs.Scene]) = new SceneProperty(p)
 }

@@ -13,7 +13,5 @@ trait ControlIncludes {
   implicit def jfxTitledPane2sfx(r: jfxsc.TitledPane) = new TitledPane(r)
   
   
-  implicit def jfxControl2sfx(s: jfxsc.Control) = new Control {
-    override val delegate = s
-  }
+  implicit def jfxControl2sfx(s: jfxsc.Control) = new Control(s) {}
 }

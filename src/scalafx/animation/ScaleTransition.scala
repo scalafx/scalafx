@@ -37,7 +37,7 @@ object ScaleTransition extends AnimationStatics {
   implicit def sfxScaleTransition2jfx(v: ScaleTransition) = v.delegate
 }
 
-class ScaleTransition(override val delegate:jfxa.ScaleTransition = new jfxa.ScaleTransition()) extends Transition with SFXDelegate[jfxa.ScaleTransition] {
+class ScaleTransition(override val delegate:jfxa.ScaleTransition = new jfxa.ScaleTransition()) extends Transition(delegate) with SFXDelegate[jfxa.ScaleTransition] {
   def duration = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d

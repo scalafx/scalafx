@@ -37,7 +37,7 @@ object TranslateTransition extends AnimationStatics {
   implicit def sfxTranslateTransition2jfx(v: TranslateTransition) = v.delegate
 }
 
-class TranslateTransition(override val delegate:jfxa.TranslateTransition = new jfxa.TranslateTransition()) extends Transition with SFXDelegate[jfxa.TranslateTransition] {
+class TranslateTransition(override val delegate:jfxa.TranslateTransition = new jfxa.TranslateTransition()) extends Transition(delegate) with SFXDelegate[jfxa.TranslateTransition] {
   def duration = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d

@@ -43,9 +43,7 @@ class ShapeSpec extends FlatSpec with PropertyComparator {
   }
 
   it should "have an implicit conversion from SFX to JFX" in {
-    val sfxShape = new Shape() {
-      override val delegate = new jfxss.Rectangle()
-    }
+    val sfxShape = new Shape(new jfxss.Rectangle()) {}
     val jfxShape: jfxss.Shape = sfxShape
     jfxShape should be (sfxShape.delegate)
   }

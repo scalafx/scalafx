@@ -38,7 +38,7 @@ object StrokeTransition extends AnimationStatics {
   implicit def sfxStrokeTransition2jfx(v: StrokeTransition) = v.delegate
 }
 
-class StrokeTransition(override val delegate:jfxa.StrokeTransition = new jfxa.StrokeTransition()) extends Transition with SFXDelegate[jfxa.StrokeTransition] {
+class StrokeTransition(override val delegate:jfxa.StrokeTransition = new jfxa.StrokeTransition()) extends Transition(delegate) with SFXDelegate[jfxa.StrokeTransition] {
   def shape = delegate.shapeProperty
   def shape_=(s: Shape) {
     shape() = s

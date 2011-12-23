@@ -35,7 +35,7 @@ object Transition extends AnimationStatics {
   implicit def sfxTransition2jfx(v: Transition) = v.delegate
 }
 
-abstract class Transition extends Animation with SFXDelegate[jfxa.Transition] {
+abstract class Transition(override val delegate: jfxa.Transition) extends Animation(delegate) with SFXDelegate[jfxa.Transition] {
   def interpolator = delegate.interpolatorProperty
   def interpolator_=(i: jfxa.Interpolator) {
     interpolator() = i

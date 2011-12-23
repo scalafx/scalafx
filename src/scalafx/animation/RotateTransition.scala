@@ -38,7 +38,7 @@ object RotateTransition extends AnimationStatics {
   implicit def sfxRotateTransition2jfx(v: RotateTransition) = v.delegate
 }
 
-class RotateTransition(override val delegate:jfxa.RotateTransition = new jfxa.RotateTransition()) extends Transition with SFXDelegate[jfxa.RotateTransition] {
+class RotateTransition(override val delegate:jfxa.RotateTransition = new jfxa.RotateTransition()) extends Transition(delegate) with SFXDelegate[jfxa.RotateTransition] {
   def duration = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d

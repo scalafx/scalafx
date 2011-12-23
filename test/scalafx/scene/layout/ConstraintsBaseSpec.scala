@@ -25,34 +25,30 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene.shape
+package scalafx.scene.layout
 
-import javafx.scene.{shape => jfxss}
+import javafx.scene.{layout => jfxsl}
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.testutil.PropertyComparator
 
-object Line {
-  implicit def sfxLine2jfx(v: Line) = v.delegate
-}
-
-class Line(override val delegate:jfxss.Line = new jfxss.Line()) extends Shape(delegate) with SFXDelegate[jfxss.Line] {
-  def endX = delegate.endXProperty
-  def endX_=(v: Double) {
-    endX() = v
+class ConstraintsBaseSpec extends FlatSpec with PropertyComparator {
+  "A ConstraintsBase" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxsl.ConstraintsBase], classOf[ConstraintsBase])
   }
 
-  def endY = delegate.endYProperty
-  def endY_=(v: Double) {
-    endY() = v
+  // No builder for ConstraintsBase
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxConstraintsBase = new ConstraintsBase(new jfxsl.RowConstraints()) {}
+    val jfxConstraintsBase: jfxsl.ConstraintsBase = sfxConstraintsBase
+    jfxConstraintsBase should be (sfxConstraintsBase.delegate)
   }
 
-  def startX = delegate.startXProperty
-  def startX_=(v: Double) {
-    startX() = v
-  }
-
-  def startY = delegate.startYProperty
-  def startY_=(v: Double) {
-    startY() = v
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxConstraintsBase = new jfxsl.RowConstraints()
+    val sfxConstraintsBase: ConstraintsBase = jfxConstraintsBase
+    sfxConstraintsBase.delegate should be (jfxConstraintsBase)
   }
 }
