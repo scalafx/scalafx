@@ -31,7 +31,7 @@ package scalafx
 //           /   _____/\                             /  /\                /   _____/\ /__/\ /  /\
 //          /  /\_____\/  ________     _______      /  / /   ________    /  /\_____\/ \  \ /  / /
 //         /  /_/___    /   _____/\  /_____   /\   /  / /  /_____   /\  /  /_/__       \  /  / /
-//        /_____   /\  /  /\_____\/  \____/  / /  /  / /   \____/  / / /   ____/\       \/  / /
+//        /______  /\  /  /\_____\/  \____/  / /  /  / /   \____/  / / /   ____/\       \/  / /
 //        \_____/ / / /  / /       /  ___   / /  /  / /  /  ___   / / /  /\____\/       /  / /\
 //       ______/ / / /  /_/___    /  /__/  / /  /  / /  /  /__/  / / /  / /            /  / /\ \
 //     /________/ / /________/\  /________/ /  /__/ /  /________/ / /__/ /            /__/ /  \ \
@@ -64,8 +64,11 @@ object Constants {
   // view
   //
   val TITLE = "Jumping Frogs Puzzle"
-  val TIME = 2.0
   val SCALE = 2
+  //
+  // control
+  //
+  val TIME = 2.0
   //
   // absolute (up to SCALE)
   //
@@ -130,27 +133,27 @@ import Constants._
 // frog
 //
 trait Frog {
-  def isGreen: Boolean
+  def movesToRight: Boolean
 
-  def isRed: Boolean
+  def movesToLeft: Boolean
 }
 
-class GreenFrog() extends Frog {
-  def isGreen = true
+class LeftFrog() extends Frog {
+  def movesToRight = true
 
-  def isRed = false
+  def movesToLeft = false
 }
 
-class RedFrog() extends Frog {
-  def isGreen = false
+class RightFrog() extends Frog {
+  def movesToRight = false
 
-  def isRed = true
+  def movesToLeft = true
 }
 
 case object theDummyFrog extends Frog {
-  def isGreen = false
+  def movesToRight = false
 
-  def isRed = false
+  def movesToLeft = false
 }
 
 //
@@ -162,11 +165,11 @@ object theModelValues {
       i <- STONE_NUMBER_LIST
     } yield {
       if (i < NUMBER_OF_FROGS) {
-        i -> Some(new GreenFrog())
+        i -> Some(new LeftFrog())
       } else if (i == NUMBER_OF_FROGS) {
         i -> None
       } else {
-        i -> Some(new RedFrog())
+        i -> Some(new RightFrog())
       }
     }).toMap
 }
@@ -193,7 +196,7 @@ class Model(var optionalFrogMap: Map[Int, Option[Frog]]) {
 
   private def canMoveTwoRightAt(i: Int) =
     !isAtRightOrOneButRight(i) &&
-      optionalFrogMap(i + 1).get.isRed &&
+      optionalFrogMap(i + 1).get.movesToLeft &&
       optionalFrogMap(i + 2) == None
 
   private def canMoveOneLeftAt(i: Int) =
@@ -202,7 +205,7 @@ class Model(var optionalFrogMap: Map[Int, Option[Frog]]) {
 
   private def canMoveTwoLeftAt(i: Int) =
     !isAtLeftOrOneButLeft(i) &&
-      optionalFrogMap(i - 1).get.isGreen &&
+      optionalFrogMap(i - 1).get.movesToRight &&
       optionalFrogMap(i - 2) == None
 
   def positionOf(frog: Frog) =
@@ -319,22 +322,10 @@ object theViewValues {
 //
 // view
 //
-class View(model: Model, optionalFrogShapes: List[Option[FrogShape]]) {
-  setOnMouseClicked()
+class View(model: Model, control: Control, val optionalFrogShapes: List[Option[FrogShape]]) {
+  control.update(model, this)
 
-  import theViewValues.dummyFrogShape
-
-  val frogShapes =
-    for {
-      optionalFrogShape <- optionalFrogShapes
-    } yield {
-      optionalFrogShape match {
-        case Some(frogShape) => frogShape
-        case None => dummyFrogShape
-      }
-    }
-
-  private def jump(length: Int, next: (Double, Double) => Double)(frogShape: FrogShape) {
+  private def update(length: Int, next: (Double, Double) => Double)(frogShape: FrogShape) {
     val frogShapeCenterX = FIRST_FROG_CENTER_X + STONE_STEP * model.positionOf(frogShape.getFrog)
     val frogShapeCenterY = FROG_CENTER_Y
 
@@ -354,54 +345,70 @@ class View(model: Model, optionalFrogShapes: List[Option[FrogShape]]) {
     )).play()
   }
 
-  private def jumpOneRight(frogShape: FrogShape) {
-    jump(1, _ + _)(frogShape)
+  def jumpOneRight(frogShape: FrogShape) {
+    update(1, _ + _)(frogShape)
     model.update(_ + 1)(frogShape.getFrog)
-    setOnMouseClicked()
+    control.update(model, this)
   }
 
-  private def jumpTwoRight(frogShape: FrogShape) {
-    jump(2, _ + _)(frogShape)
+  def jumpTwoRight(frogShape: FrogShape) {
+    update(2, _ + _)(frogShape)
     model.update(_ + 2)(frogShape.getFrog)
-    setOnMouseClicked()
+    control.update(model, this)
   }
 
-  private def jumpOneLeft(frogShape: FrogShape) {
-    jump(1, _ - _)(frogShape)
+  def jumpOneLeft(frogShape: FrogShape) {
+    update(1, _ - _)(frogShape)
     model.update(_ - 1)(frogShape.getFrog)
-    setOnMouseClicked()
+    control.update(model, this)
   }
 
-  private def jumpTwoLeft(frogShape: FrogShape) {
-    jump(2, _ - _)(frogShape)
+  def jumpTwoLeft(frogShape: FrogShape) {
+    update(2, _ - _)(frogShape)
     model.update(_ - 2)(frogShape.getFrog)
-    setOnMouseClicked()
+    control.update(model, this)
   }
+}
 
-  private def setOnMouseClicked() {
-    optionalFrogShapes.foreach {
+/////////////
+// control //
+/////////////
+
+//
+// control
+//
+
+class Control {
+  def update(model: Model, view: View) {
+    view.optionalFrogShapes.foreach {
       case Some(frogShape) => frogShape.onMouseClicked =
         if (model.canJumpOneRight(frogShape.getFrog)) {
-          jumpOneRight(frogShape)
+          view.jumpOneRight(frogShape)
         } else if (model.canJumpTwoRight(frogShape.getFrog)) {
-          jumpTwoRight(frogShape)
+          view.jumpTwoRight(frogShape)
         } else if (model.canJumpOneLeft(frogShape.getFrog)) {
-          jumpOneLeft(frogShape)
+          view.jumpOneLeft(frogShape)
         } else if (model.canJumpTwoLeft(frogShape.getFrog)) {
-          jumpTwoLeft(frogShape)
+          view.jumpTwoLeft(frogShape)
         }
       case None =>
     }
   }
 }
 
+/////////
+// mvc //
+/////////
+
 import theModelValues.optionalFrogMap
 
 object theModel extends Model(optionalFrogMap)
 
+object theControl extends Control
+
 import theViewValues.optionalFrogShapes
 
-object theView extends View(theModel, optionalFrogShapes)
+object theView extends View(theModel, theControl, optionalFrogShapes)
 
 //////////////////////////
 // jumping frogs puzzle //
@@ -411,7 +418,18 @@ object JumpingFrogsPuzzle extends JFXApp {
 
   import theViewValues.canvasShape
   import theViewValues.stoneShapes
-  import theView.frogShapes
+  import theViewValues.dummyFrogShape
+  import theView.optionalFrogShapes
+
+  val frogShapes =
+    for {
+      optionalFrogShape <- optionalFrogShapes
+    } yield {
+      optionalFrogShape match {
+        case Some(frogShape) => frogShape
+        case None => dummyFrogShape
+      }
+    }
 
   stage = new Stage {
     title = TITLE
