@@ -310,7 +310,7 @@ abstract class Node(override val delegate: jfxs.Node) extends SFXDelegate[jfxs.N
   }
 
   def margin = delegate.getProperties().get("margin").asInstanceOf[Insets]
-  def margin_=(i: Insets) {
+  def margin_=(i: jfxg.Insets) {
     delegate.getProperties().put("margin", i)
     // for compatibility with layouts, which all use different keys
     jfxsl.BorderPane.setMargin(delegate, i)

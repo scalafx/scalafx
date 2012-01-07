@@ -29,7 +29,7 @@ package scalafx.scene
 
 import collection.JavaConversions._
 import javafx.{event => jfxe, scene => jfxs}
-import jfxs.{input => jfxsi, paint => jfxsp}
+import jfxs.{input => jfxsi, paint => jfxsp, layout => jfxsl}
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
@@ -37,7 +37,7 @@ object Scene {
   implicit def sfxScene2jfx(v: Scene) = v.delegate
 }
 
-class Scene(override val delegate:jfxs.Scene = new jfxs.Scene(new jfxs.Group())) extends SFXDelegate[jfxs.Scene] {
+class Scene(override val delegate:jfxs.Scene = new jfxs.Scene(new jfxsl.StackPane())) extends SFXDelegate[jfxs.Scene] {
   def root = delegate.rootProperty
   def root_=(v: jfxs.Parent) {
     root() = v
@@ -45,7 +45,7 @@ class Scene(override val delegate:jfxs.Scene = new jfxs.Scene(new jfxs.Group()))
 
   def getChildren = root.value match {
     case group: jfxs.Group => group.getChildren
-    case pane: jfxs.layout.Pane => pane.getChildren
+    case pane: jfxsl.Pane => pane.getChildren
     case _ => throw new IllegalStateException("Cannot access children of root: " + root + "\nUse a class that extends Group or Pane, or override the getChildren method.")
   }
   def content = getChildren

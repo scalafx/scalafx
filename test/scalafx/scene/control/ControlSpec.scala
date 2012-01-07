@@ -43,4 +43,16 @@ class ControlSpec extends FlatSpec with PropertyComparator {
   it should "implement all the JavaFX builder properties" in {
     compareBuilderProperties(classOf[jfxsc.ControlBuilder[_]], classOf[Control])
   }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxControl = new Control(new Label()) {}
+    val jfxControl: jfxsc.Control = sfxControl
+    jfxControl should be (sfxControl.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxControl = new jfxsc.Control() {}
+    val sfxControl: Control = jfxControl
+    sfxControl.delegate should be (jfxControl)
+  }
 }

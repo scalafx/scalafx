@@ -8,10 +8,9 @@ import javafx.scene.{control => jfxsc}
 
 object ControlIncludes extends ControlIncludes
 trait ControlIncludes {
-  
-  implicit def jfxAccordion2sfx(r: jfxsc.Accordion) = new Accordion(r)
-  implicit def jfxTitledPane2sfx(r: jfxsc.TitledPane) = new TitledPane(r)
-  
-  
-  implicit def jfxControl2sfx(s: jfxsc.Control) = new Control(s) {}
+  implicit def jfxAccordion2sfx(a: jfxsc.Accordion) = new Accordion(a)
+  implicit def jfxControl2sfx(c: jfxsc.Control) = new Control(c) {}
+  implicit def jfxLabel2sfx(l: jfxsc.Label) = new Label(l)
+  implicit def jfxLabeled2sfx(l: jfxsc.Labeled) = new Labeled(l) {}
+  implicit def jfxTitledPane2sfx(t: jfxsc.TitledPane) = new TitledPane(t)
 }

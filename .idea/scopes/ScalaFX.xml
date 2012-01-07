@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="ScalaFX" pattern="scalafx..*" />
+</component>
