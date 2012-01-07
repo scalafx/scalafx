@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,63 +28,30 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import scalafx.testutil.PropertyComparator
 
-object Control {
-  implicit def sfxControl2jfx(v: Control) = v.delegate
+class LabelSpec extends FlatSpec with PropertyComparator {
+  "A Label" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxsc.Label], classOf[Label])
+  }
+
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxsc.LabelBuilder[_]], classOf[Label])
+  }
+
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxLabel = new Label()
+    val jfxLabel: jfxsc.Label = sfxLabel
+    jfxLabel should be (sfxLabel.delegate)
+  }
+
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxLabel = new jfxsc.Label()
+    val sfxLabel: Label = jfxLabel
+    sfxLabel.delegate should be (jfxLabel)
+  }
 }
 
-abstract class Control(override val delegate: jfxsc.Control) extends Node(delegate) with SFXDelegate[jfxsc.Control] {
-  def contextMenu = delegate.contextMenuProperty
-  def contextMenu_=(v: jfxsc.ContextMenu) {
-    contextMenu() = v
-  }
-  
-  def height = delegate.heightProperty
-
-  def maxHeight = delegate.maxHeightProperty
-  def maxHeight_=(v: Double) {
-    maxHeight() = v
-  }
-
-  def maxWidth = delegate.maxWidthProperty
-  def maxWidth_=(v: Double) {
-    maxWidth() = v
-  }
-
-  def minHeight = delegate.minHeightProperty
-  def minHeight_=(v: Double) {
-    minHeight() = v
-  }
-
-  def minWidth = delegate.minWidthProperty
-  def minWidth_=(v: Double) {
-    minWidth() = v
-  }
-  
-  def prefHeight = delegate.prefHeightProperty
-  def prefHeight_=(v: Double) {
-    prefHeight() = v
-  }
-
-  def prefWidth = delegate.prefWidthProperty
-  def prefWidth_=(v: Double) {
-    prefWidth() = v
-  }
-  
-  def skin = delegate.skinProperty
-  def skin_=(v: jfxsc.Skin[_ <: jfxsc.Skinnable]) {
-    skin() = v
-  }
-
-  def tooltip = delegate.tooltipProperty
-  def tooltip_=(v: jfxsc.Tooltip) {
-    tooltip() = v
-  }
-
-  def width = delegate.widthProperty
-  
-}
