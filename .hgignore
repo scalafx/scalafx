@@ -3,3 +3,6 @@ nbproject
 lib_managed
 .scala_dependencies
 bin.jar
+out
+project
+\.idea/workspace\.xml
