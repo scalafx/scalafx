@@ -39,7 +39,7 @@ object ScrollPane {
   implicit def sfxScrollPane2jfx(v: ScrollPane) = v.delegate
 }
 
-class ScrollPane(override val delegate:jfxsc.ScrollPane = new jfxsc.ScrollPane) extends SFXDelegate[jfxsc.ScrollPane] {
+class ScrollPane(override val delegate:jfxsc.ScrollPane = new jfxsc.ScrollPane) extends Control(delegate) with SFXDelegate[jfxsc.ScrollPane] {
 
   def content = delegate.contentProperty
   def content_= (v: jfxs.Node) {
