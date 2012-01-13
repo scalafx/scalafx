@@ -28,7 +28,6 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import javafx.{scene => jfxs}
 import scalafx.util.SFXDelegate
 
 object TextField {
@@ -39,13 +38,21 @@ class TextField(override val delegate: jfxsc.TextField = new jfxsc.TextField)
   extends Control(delegate) with SFXDelegate[jfxsc.TextField] {
 
   def promptText = delegate.promptTextProperty()
+
   def promptText_=(v: String) {
     promptText.setValue(v)
   }
 
   def prefColumnCount = delegate.prefColumnCountProperty()
-  def prefColumnCount_=(v:Int) {
+
+  def prefColumnCount_=(v: Int) {
     prefColumnCount.set(v)
+  }
+
+  def onAction = delegate.onActionProperty()
+
+  def onAction_=(v: javafx.event.EventHandler[javafx.event.ActionEvent]) {
+    onAction.set(v)
   }
 
 }
