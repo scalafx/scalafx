@@ -35,8 +35,8 @@ import scalafx.scene.shape.Arc
 import scalafx.scene.shape.Circle
 import scalafx.scene.shape.Rectangle
 import scalafx.stage.Stage
-import javafx.scene.paint.Color
 import scene.layout.{VBox, HBox}
+import scene.paint.Color
 
 object BoxTest extends JFXApp {
   stage = new Stage {
