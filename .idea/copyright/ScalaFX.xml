@@ -1,9 +1,0 @@
-<component name="CopyrightManager">
-  <copyright>
-    <option name="notice" value="Copyright (c) &amp;#36;today.year, ScalaFX Project&#10;All rights reserved.&#10;&#10;Redistribution and use in source and binary forms, with or without&#10;modification, are permitted provided that the following conditions are met:&#10;    * Redistributions of source code must retain the above copyright&#10;      notice, this list of conditions and the following disclaimer.&#10;    * Redistributions in binary form must reproduce the above copyright&#10;      notice, this list of conditions and the following disclaimer in the&#10;      documentation and/or other materials provided with the distribution.&#10;    * Neither the name of the ScalaFX Project nor the&#10;      names of its contributors may be used to endorse or promote products&#10;      derived from this software without specific prior written permission.&#10;&#10;THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND&#10;ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED&#10;WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE&#10;DISCLAIMED. IN NO EVENT SHALL THE SCALAFX PROJECT OR ITS CONTRIBUTORS BE LIABLE&#10;FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL&#10;DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR&#10;SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED&#10;AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT&#10;(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS&#10;SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
-    <option name="keyword" value="Copyright" />
-    <option name="allowReplaceKeyword" value="" />
-    <option name="myName" value="ScalaFX" />
-    <option name="myLocal" value="true" />
-  </copyright>
-</component>
