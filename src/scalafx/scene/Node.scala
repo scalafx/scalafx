@@ -131,6 +131,11 @@ abstract class Node(override val delegate: jfxs.Node) extends SFXDelegate[jfxs.N
     mouseTransparent() = v
   }
 
+  def onContextMenuRequested = delegate.onContextMenuRequestedProperty
+  def onContextMenuRequested_=(v: jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]) {
+    onContextMenuRequested() = v
+  }
+
   def onDragDetected = delegate.onDragDetectedProperty
   def onDragDetected_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onDragDetected() = v
@@ -191,6 +196,26 @@ abstract class Node(override val delegate: jfxs.Node) extends SFXDelegate[jfxs.N
     onMouseDragged() = v
   }
 
+  def onMouseDragEntered = delegate.onMouseDragEnteredProperty
+  def onMouseDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+    onMouseDragEntered() = v
+  }
+
+  def onMouseDragExited = delegate.onMouseDragExitedProperty
+  def onMouseDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+    onMouseDragExited() = v
+  }
+
+  def onMouseDragOver = delegate.onMouseDragOverProperty
+  def onMouseDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+    onMouseDragOver() = v
+  }
+
+  def onMouseDragReleased = delegate.onMouseDragReleasedProperty
+  def onMouseDragReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+    onMouseDragReleased() = v
+  }
+
   def onMouseEntered = delegate.onMouseEnteredProperty
   def onMouseEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseEntered() = v
@@ -214,6 +239,11 @@ abstract class Node(override val delegate: jfxs.Node) extends SFXDelegate[jfxs.N
   def onMouseReleased = delegate.onMouseReleasedProperty
   def onMouseReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseReleased() = v
+  }
+
+  def onScroll = delegate.onScrollProperty
+  def onScroll_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]) {
+    onScroll() = v
   }
 
   def opacity = delegate.opacityProperty

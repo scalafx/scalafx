@@ -37,4 +37,39 @@ object RowConstraints {
 }
 
 class RowConstraints(override val delegate:jfxsl.RowConstraints = new jfxsl.RowConstraints()) extends ConstraintsBase(delegate) with SFXDelegate[jfxsl.RowConstraints] {
+
+  def fillHeight = delegate.fillHeightProperty
+  def fillHeight_= (v: Boolean) {
+    fillHeight() = v
+  }
+
+  def maxHeight = delegate.maxHeightProperty
+  def maxHeight_= (v: Double) {
+    maxHeight() = v
+  }
+
+  def minHeight = delegate.minHeightProperty
+  def minHeight_= (v: Double) {
+    minHeight() = v
+  }
+
+  def percentHeight = delegate.percentHeightProperty
+  def percentHeight_= (v: Double) {
+    percentHeight() = v
+  }
+
+  def prefHeight = delegate.prefHeightProperty
+  def prefHeight_= (v: Double) {
+    prefHeight() = v
+  }
+
+  def valignment = delegate.valignmentProperty
+  def valignment_= (v: jfxg.VPos) {
+    valignment() = v
+  }
+
+  def vgrow = delegate.vgrowProperty
+  def vgrow_= (v: jfxsl.Priority) {
+    vgrow() = v
+  }
 }

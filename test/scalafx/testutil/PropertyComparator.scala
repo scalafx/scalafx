@@ -73,7 +73,7 @@ trait PropertyComparator {
    * a javafx class. This should never actually be necessary, as "compareProperties" above will find all of the
    * property names that need to be implemented, and all other instance methods should be handled via implicit
    * conversions. However, having written the code, I'm leaving it in, in case it might prove useful as a way of
-   * exploring the method signatires of a javafx class.
+   * exploring the method signatures of a javafx class.
    */
   def compareDeclaredMethods(jfxClass:Class[_], sfxClass:Class[_]) {
     val sfxMethods = sfxClass.getDeclaredMethods.filter(m => Modifier.isPublic(m.getModifiers))
@@ -91,6 +91,9 @@ trait PropertyComparator {
     assert(diff.isEmpty, "Missing Methods: " + diff.toList.sorted.mkString(", "))
   }
 
+  /**Similar to "compareProperties", the following compares the static methods in a javafx class
+   * to the methods defined on a scalafx object.
+   */
   def compareStaticMethods(jfxClass:Class[_], sfxObject:Class[_]) {
     val jfxStaticMethods = jfxClass.getDeclaredMethods
       .filter(m => Modifier.isStatic(m.getModifiers) && Modifier.isPublic(m.getModifiers))
