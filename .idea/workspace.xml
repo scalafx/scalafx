@@ -58,28 +58,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SceneSpec.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/scalafx/scene/SceneSpec.scala">
+      <file leaf-file-name="ImageSpec.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/scalafx/scene/image/ImageSpec.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="29" selection-start="2337" selection-end="2337" vertical-scroll-proportion="0.0">
+            <state line="33" column="25" selection-start="1813" selection-end="1813" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Scene.scala" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/scalafx/scene/Scene.scala">
+      <file leaf-file-name="Image.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scalafx/scene/image/Image.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="111" selection-start="1660" selection-end="1660" vertical-scroll-proportion="0.09483961">
+            <state line="46" column="1" selection-start="2130" selection-end="2130" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScalaFX_Scene_Graph_App_01.scala" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo/scalafx/imaginej/ScalaFX_Scene_Graph_App_01.scala">
+      <file leaf-file-name="ImageViewSpec.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/scalafx/scene/image/ImageViewSpec.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="16" selection-start="3023" selection-end="3023" vertical-scroll-proportion="0.0">
+            <state line="33" column="25" selection-start="1813" selection-end="1813" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SceneIncludes.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scalafx/scene/SceneIncludes.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="26" selection-start="1750" selection-end="1750" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScalaFX_Layout_Panes_05.scala" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/demo/scalafx/imaginej/ScalaFX_Layout_Panes_05.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="110" column="71" selection-start="4386" selection-end="4386" vertical-scroll-proportion="0.26195425">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GridPane.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scalafx/scene/layout/GridPane.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="49" selection-start="1954" selection-end="1954" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -100,12 +127,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/Main.scala" />
-        <option value="$PROJECT_DIR$/scalafx.iml" />
-        <option value="$PROJECT_DIR$/demo/scalafx/imaginej/ScalaFX_Scene_Graph_App_01.scala" />
-        <option value="$PROJECT_DIR$/demo/scalafx/imaginej/JumpingFrogsPuzzle.scala" />
-        <option value="$PROJECT_DIR$/src/scalafx/scene/Scene.scala" />
-        <option value="$PROJECT_DIR$/test/scalafx/scene/SceneSpec.scala" />
+        <option value="$PROJECT_DIR$/demo/scalafx/imaginej/ScalaFX_Layout_Panes_01.scala" />
+        <option value="$PROJECT_DIR$/demo/scalafx/imaginej/ScalaFX_Layout_Panes_02.scala" />
+        <option value="$PROJECT_DIR$/src/scalafx/scene/control/ControlIncludes.scala" />
+        <option value="$PROJECT_DIR$/src/scalafx/scene/control/ButtonBase.scala" />
+        <option value="$PROJECT_DIR$/src/scalafx/scene/control/Button.scala" />
+        <option value="$PROJECT_DIR$/test/scalafx/scene/control/ButtonBaseSpec.scala" />
+        <option value="$PROJECT_DIR$/demo/scalafx/imaginej/ScalaFX_Layout_Panes_03.scala" />
+        <option value="$PROJECT_DIR$/demo/scalafx/imaginej/ScalaFX_Layout_Panes_04.scala" />
+        <option value="$PROJECT_DIR$/demo/scalafx/imaginej/ScalaFX_Layout_Panes_05.scala" />
+        <option value="$PROJECT_DIR$/test/scalafx/scene/image/Image.scala" />
+        <option value="$PROJECT_DIR$/test/scalafx/scene/image/ImageView.scala" />
+        <option value="$PROJECT_DIR$/test/scalafx/scene/image/ImageIncludes.scala" />
+        <option value="$PROJECT_DIR$/src/scalafx/scene/SceneIncludes.scala" />
+        <option value="$PROJECT_DIR$/src/scalafx/scene/layout/GridPane.scala" />
+        <option value="$PROJECT_DIR$/test/scalafx/scene/image/ImageSpec.scala" />
+        <option value="$PROJECT_DIR$/test/scalafx/scene/image/ImageViewSpec.scala" />
       </list>
     </option>
   </component>
@@ -211,6 +248,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scene" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="image" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -277,7 +340,119 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Scene.scala" />
+              <option name="myItemId" value="SceneIncludes.scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scene" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scene" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GridPane.scala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scene" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="image" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scalafx" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scene" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="image" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Image.scala" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -346,11 +521,17 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="scalafx.imaginej" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Data\data\programming\scalafx\clone\scalafx\demo\scalafx\imaginej" />
+      <recent name="C:\Data\data\programming\scalafx\clone\scalafx\test\scalafx\scene" />
+      <recent name="C:\Data\data\programming\scalafx\clone\scalafx\test\scalafx\scene\control" />
+      <recent name="C:\Data\data\programming\scalafx\clone\scalafx\src\scalafx\scene\control" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.ScalaFX_Scene_Graph_App_01">
-    <configuration default="false" name="SceneSpec" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true">
+  <component name="RunManager" selected="Application.ScalaFX_Layout_Panes_05">
+    <configuration default="false" name="ButtonSpec" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true">
       <module name="scalafx" />
-      <setting name="path" value="scalafx.scene.SceneSpec" />
+      <setting name="path" value="scalafx.scene.control.ButtonSpec" />
       <setting name="package" value="" />
       <setting name="vmparams" value="" />
       <setting name="params" value="" />
@@ -362,66 +543,56 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="All in scalafx" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="scalafx" />
+    <configuration default="false" name="ScalaFX_Layout_Panes_03" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="scalafx.imaginej.ScalaFX_Layout_Panes_03" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
+      <module name="scalafx" />
       <envs />
-      <patterns />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="scalafx in scalafx" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="scalafx" />
+    <configuration default="false" name="ScalaFX_Layout_Panes_04" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="scalafx.imaginej.ScalaFX_Layout_Panes_04" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="scalafx" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="AnimationSpec" type="ScalaTestRunConfiguration" factoryName="ScalaTest" temporary="true">
       <module name="scalafx" />
-      <setting name="path" value="scalafx.animation.AnimationSpec" />
-      <setting name="package" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workingDirectory" value="$PROJECT_DIR$" />
-      <setting name="searchForTest" value="Across module dependencies" />
-      <setting name="testName" value="" />
-      <setting name="testKind" value="Class" />
+      <envs />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="ScalaFX_Scene_Graph_App_01" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="scalafx.imaginej.ScalaFX_Scene_Graph_App_01" />
+    <configuration default="false" name="ScalaFX_Properties_And_Binding_05" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="scalafx.imaginej.ScalaFX_Properties_And_Binding_05" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="scalafx" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ScalaFX_Layout_Panes_05" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="scalafx.imaginej.ScalaFX_Layout_Panes_05" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -571,11 +742,11 @@
       </method>
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="ScalaTest.SceneSpec" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.All in scalafx" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.scalafx in scalafx" />
-      <item index="3" class="java.lang.String" itemvalue="ScalaTest.AnimationSpec" />
-      <item index="4" class="java.lang.String" itemvalue="Application.ScalaFX_Scene_Graph_App_01" />
+      <item index="0" class="java.lang.String" itemvalue="ScalaTest.ButtonSpec" />
+      <item index="1" class="java.lang.String" itemvalue="Application.ScalaFX_Layout_Panes_03" />
+      <item index="2" class="java.lang.String" itemvalue="Application.ScalaFX_Layout_Panes_04" />
+      <item index="3" class="java.lang.String" itemvalue="Application.ScalaFX_Properties_And_Binding_05" />
+      <item index="4" class="java.lang.String" itemvalue="Application.ScalaFX_Layout_Panes_05" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -626,7 +797,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24951644" sideWeight="0.67107004" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32893" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -690,45 +861,112 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Main.scala">
+    <entry file="file://$PROJECT_DIR$/src/scalafx/scene/control/ButtonBase.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="38" selection-start="221" selection-end="221" vertical-scroll-proportion="0.21205822" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scalafx/scene/Node.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="115" selection-start="1961" selection-end="1961" vertical-scroll-proportion="0.30273974" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scalafx.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="74" selection-start="309" selection-end="309" vertical-scroll-proportion="0.13972603" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/scalafx/imaginej/JumpingFrogsPuzzle.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="72" selection-start="2569" selection-end="2569" vertical-scroll-proportion="0.0">
+        <state line="34" column="3" selection-start="1764" selection-end="1764" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo/scalafx/imaginej/ScalaFX_Scene_Graph_App_01.scala">
+    <entry file="file://$PROJECT_DIR$/src/scalafx/scene/control/Button.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="16" selection-start="3023" selection-end="3023" vertical-scroll-proportion="0.0">
+        <state line="33" column="3" selection-start="1734" selection-end="1734" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/scalafx/scene/SceneSpec.scala">
+    <entry file="file://$PROJECT_DIR$/demo/scalafx/imaginej/ScalaFX_Layout_Panes_02.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="29" selection-start="2337" selection-end="2337" vertical-scroll-proportion="0.0">
+        <state line="61" column="7" selection-start="3036" selection-end="3036" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scalafx/scene/Scene.scala">
+    <entry file="file://$PROJECT_DIR$/test/scalafx/scene/control/ButtonBaseSpec.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="111" selection-start="1660" selection-end="1660" vertical-scroll-proportion="0.09483961">
+        <state line="35" column="6" selection-start="1825" selection-end="1825" vertical-scroll-proportion="0.39452055">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/scalafx/imaginej/ScalaFX_Layout_Panes_03.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="7" selection-start="3139" selection-end="3139" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/scalafx/imaginej/ScalaFX_Layout_Panes_04.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="0" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scalafx/scene/image/ImageIncludes.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="1" selection-start="1868" selection-end="1868" vertical-scroll-proportion="0.84823287">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scalafx/scene/image/ImageView.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="1" selection-start="2751" selection-end="2751" vertical-scroll-proportion="0.92931396">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scalafx/scene/control/ControlIncludes.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="96" selection-start="374" selection-end="374" vertical-scroll-proportion="0.2827443">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scalafx/scene/SceneIncludes.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="26" selection-start="1750" selection-end="1750" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/scalafx/imaginej/icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scalafx/scene/layout/GridPane.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="49" selection-start="1954" selection-end="1954" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/scalafx/scene/image/ImageSpec.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="25" selection-start="1813" selection-end="1813" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scalafx/scene/image/Image.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="1" selection-start="2130" selection-end="2130" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/scalafx/scene/image/ImageViewSpec.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="25" selection-start="1813" selection-end="1813" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/scalafx/imaginej/ScalaFX_Layout_Panes_05.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="71" selection-start="4386" selection-end="4386" vertical-scroll-proportion="0.26195425">
           <folding />
         </state>
       </provider>

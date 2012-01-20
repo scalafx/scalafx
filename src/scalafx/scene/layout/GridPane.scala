@@ -30,11 +30,15 @@ package scalafx.scene.layout
 import collection.JavaConversions._
 import javafx.{geometry => jfxg}
 import javafx.scene.{layout => jfxsl}
+import scalafx.{scene => sfxs }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
 object GridPane {
   implicit def sfxGridPane2jfx(v: GridPane) = v.delegate
+  // added object method (is this a good practice?)
+  def setVAlignment(node: sfxs.Node, vp: jfxg.VPos) = javafx.scene.layout.GridPane.setValignment(node, vp)
+  
 }
 
 class GridPane(override val delegate:jfxsl.GridPane = new jfxsl.GridPane()) extends Pane with SFXDelegate[jfxsl.GridPane] {
