@@ -44,8 +44,6 @@ import javafx.scene.paint.Color
 import javafx.scene.text.FontWeight
 import javafx.geometry.{VPos, Pos}
 
-// import javafx.scene.image.Image
-
 import scalafx.application.JFXApp
 import scalafx.stage.Stage
 import scalafx.scene.Scene
@@ -56,8 +54,6 @@ import scalafx.scene.text.Text
 import scalafx.scene.text.Font
 import scalafx.scene.layout._
 import scalafx.scene.image.{Image, ImageView}
-
-// import ImageIncludes.jfxImage2sfx
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
@@ -147,7 +143,7 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   }
 
   val iconImageView = new ImageView {
-    image = new Image(this, "icon.png")
+    image = new Image(this, "images/icon.png")
   }
 
   val oldAndNewText = new Text {
@@ -163,7 +159,7 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   }
 
   val newImageView = new ImageView {
-    image = new Image(this, "new.png")
+    image = new Image(this, "images/new.png")
   }
 
   val gridPane = new GridPane {

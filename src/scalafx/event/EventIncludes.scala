@@ -33,6 +33,7 @@ object EventIncludes extends EventIncludes
 
 trait EventIncludes {
   implicit def eventClosureWrapper[T <: jfxe.Event](handler: => Unit) = new jfxe.EventHandler[T] {
+    println("conversion from lazy block to javfx event handler happened")
     def handle(event: T) {
       handler
     }
