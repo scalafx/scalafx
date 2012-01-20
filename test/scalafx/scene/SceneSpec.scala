@@ -44,7 +44,7 @@ class SceneSpec extends FlatSpec with PropertyComparator {
 
   it should "have an implicit conversion from SFX to JFX" in {
     // creating a new JavaFX scene is annoying due to their thread checks, but this is good enough to check types
-    val sfxScene = new Scene(null)
+    val sfxScene = new Scene()
     val jfxScene: jfxs.Scene = sfxScene
     jfxScene should be (sfxScene.delegate)
   }

@@ -37,8 +37,15 @@ object Scene {
   implicit def sfxScene2jfx(v: Scene) = v.delegate
 }
 
-class Scene(override val delegate:jfxs.Scene = new jfxs.Scene(new jfxsl.StackPane())) extends SFXDelegate[jfxs.Scene] {
+class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())) extends SFXDelegate[jfxs.Scene] {
+  def this(width: Double, height: Double) = this (new jfxs.Scene(new jfxs.Group(), width, height))
+
+  def this(stackPane: jfxsl.StackPane) = this (new jfxs.Scene(stackPane))
+
+  def this(stackPane: jfxsl.StackPane, width: Double, height: Double) = this (new jfxs.Scene(stackPane, width, height))
+
   def root = delegate.rootProperty
+
   def root_=(v: jfxs.Parent) {
     root() = v
   }
@@ -48,31 +55,38 @@ class Scene(override val delegate:jfxs.Scene = new jfxs.Scene(new jfxsl.StackPan
     case pane: jfxsl.Pane => pane.getChildren
     case _ => throw new IllegalStateException("Cannot access children of root: " + root + "\nUse a class that extends Group or Pane, or override the getChildren method.")
   }
+
   def content = getChildren
+
   def content_=(c: Iterable[Node]) {
     getChildren.setAll(c.map(_.delegate))
   }
+
   def content_=(n: Node) {
     getChildren.clear()
     getChildren.add(n)
   }
 
   def camera = delegate.cameraProperty
+
   def camera_=(v: jfxs.Camera) {
     camera() = v
   }
 
   def cursor = delegate.cursorProperty
+
   def cursor_=(v: jfxs.Cursor) {
     cursor() = v
   }
 
   def eventDispatcher = delegate.eventDispatcherProperty
+
   def eventDispatcher_=(v: jfxe.EventDispatcher) {
     eventDispatcher() = v
   }
 
   def fill = delegate.fillProperty
+
   def fill_=(v: jfxsp.Paint) {
     fill() = v
   }
@@ -82,116 +96,139 @@ class Scene(override val delegate:jfxs.Scene = new jfxs.Scene(new jfxsl.StackPan
   def width = delegate.widthProperty
 
   def onContextMenuRequested = delegate.onContextMenuRequestedProperty
+
   def onContextMenuRequested_=(v: jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]) {
     onContextMenuRequested() = v
   }
 
   def onDragDetected = delegate.onDragDetectedProperty
+
   def onDragDetected_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onDragDetected() = v
   }
 
   def onDragDone = delegate.onDragDoneProperty
+
   def onDragDone_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragDone() = v
   }
 
   def onDragDropped = delegate.onDragDroppedProperty
+
   def onDragDropped_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragDropped() = v
   }
 
   def onDragEntered = delegate.onDragEnteredProperty
+
   def onDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragEntered() = v
   }
 
   def onDragExited = delegate.onDragExitedProperty
+
   def onDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragExited() = v
   }
 
   def onDragOver = delegate.onDragOverProperty
+
   def onDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragOver() = v
   }
 
   def onInputMethodTextChanged = delegate.onInputMethodTextChangedProperty
+
   def onInputMethodTextChanged_=(v: jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]) {
     onInputMethodTextChanged() = v
   }
 
   def onKeyPressed = delegate.onKeyPressedProperty
+
   def onKeyPressed_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyPressed() = v
   }
 
   def onKeyReleased = delegate.onKeyReleasedProperty
+
   def onKeyReleased_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyReleased() = v
   }
 
   def onKeyTyped = delegate.onKeyTypedProperty
+
   def onKeyTyped_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyTyped() = v
   }
 
   def onMouseClicked = delegate.onMouseClickedProperty
+
   def onMouseClicked_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseClicked() = v
   }
 
   def onMouseDragged = delegate.onMouseDraggedProperty
+
   def onMouseDragged_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragged() = v
   }
 
   def onMouseDragEntered = delegate.onMouseDragEnteredProperty
+
   def onMouseDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragEntered() = v
   }
 
   def onMouseDragExited = delegate.onMouseDragExitedProperty
+
   def onMouseDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragExited() = v
   }
 
   def onMouseDragOver = delegate.onMouseDragOverProperty
+
   def onMouseDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragOver() = v
   }
 
   def onMouseDragReleased = delegate.onMouseDragReleasedProperty
+
   def onMouseDragReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragReleased() = v
   }
 
   def onMouseEntered = delegate.onMouseEnteredProperty
+
   def onMouseEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseEntered() = v
   }
 
   def onMouseExited = delegate.onMouseExitedProperty
+
   def onMouseExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseExited() = v
   }
 
   def onMouseMoved = delegate.onMouseMovedProperty
+
   def onMouseMoved_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseMoved() = v
   }
 
   def onMousePressed = delegate.onMousePressedProperty
+
   def onMousePressed_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMousePressed() = v
   }
 
   def onMouseReleased = delegate.onMouseReleasedProperty
+
   def onMouseReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseReleased() = v
   }
 
   def onScroll = delegate.onScrollProperty
+
   def onScroll_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]) {
     onScroll() = v
   }
@@ -205,6 +242,7 @@ class Scene(override val delegate:jfxs.Scene = new jfxs.Scene(new jfxsl.StackPan
   def depthBuffer = delegate.isDepthBuffer
 
   def stylesheets = delegate.getStylesheets
+
   def stylesheets_=(c: Iterable[String]) {
     stylesheets.addAll(c)
   }

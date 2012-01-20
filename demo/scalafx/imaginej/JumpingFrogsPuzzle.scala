@@ -37,8 +37,7 @@ package scalafx.imaginej
 //     /________/ / /________/\  /________/ /  /__/ /  /________/ / /__/ /           /__/ /  \ \
 //     \________\/  \________\/  \________\/   \__\/   \________\/  \__\/            \__\/ \__\/
 //
-//                                  ScalaFX Programming Library
-//                                   author XXX XXXXXXXXX 2011
+//                                  ScalaFX Programming Library Examples
 //
 
 import scalafx.Includes._
