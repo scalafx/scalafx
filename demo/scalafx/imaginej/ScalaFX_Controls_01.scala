@@ -40,21 +40,19 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import javafx.scene.text.{TextAlignment, FontWeight}
+import javafx.scene.{text => jfxst }
 
 import scalafx.application.JFXApp
 import scalafx.stage.Stage
 import scalafx.scene.Scene
 import scalafx.scene.paint.Color
-import scalafx.scene.shape.Rectangle
 import scalafx.scene.layout.HBox
-import scalafx.geometry.Insets
 import scalafx.scene.control.Label
 import scalafx.scene.image.ImageView._
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.text.Font
-import scalafx.event.EventIncludes.eventClosureWrapper
-
+import scalafx.scene.input.MouseEvent
+import scalafx.event.EventIncludes.mouseEventClosureWrapper
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
@@ -74,7 +72,7 @@ object ScalaFX_Controls_01 extends JFXApp {
     graphic = labelsImageView
     font = Font.font("Arial", 30)
     textFill = Color.web("#0076a3")
-    textAlignment = TextAlignment.JUSTIFY
+    textAlignment = jfxst.TextAlignment.JUSTIFY
   }
   val valuesLabel = new Label {
     text = "Values"
@@ -87,13 +85,11 @@ object ScalaFX_Controls_01 extends JFXApp {
     wrapText = true
     translateY = 50
     prefWidth = 100
-    onMouseEntered = {
-      println("mouse entered")
+    onMouseEntered = { (_: MouseEvent) =>
       scaleX = 1.5
       scaleY = 1.5
     }
-    onMouseExited = {
-      println("mouse exited")
+    onMouseExited = { (_: MouseEvent) =>
       scaleX = 1
       scaleY = 1
     }
@@ -108,7 +104,7 @@ object ScalaFX_Controls_01 extends JFXApp {
   }
   stage = new Stage {
     title = "ScalaFX Controls 01"
-    width = 400
+    width = 500
     height = 180
     scene = new Scene {
       content = hBox

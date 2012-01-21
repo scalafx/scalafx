@@ -28,18 +28,32 @@
 package scalafx.event
 
 import javafx.{event => jfxe}
+import javafx.scene.{input => jfxsi}
 
-object EventIncludes extends EventIncludes
+import scalafx.scene.{input => sfxsi}
+
+object EventIncludes extends EventIncludes {
+  implicit def jfxMouseEvent2sfx(me: jfxsi.MouseEvent) = new sfxsi.MouseEvent(me)
+}
 
 trait EventIncludes {
   implicit def eventClosureWrapper[T <: jfxe.Event](handler: => Unit) = new jfxe.EventHandler[T] {
-    println("conversion from lazy block to javfx event handler happened")
     def handle(event: T) {
       handler
     }
   }
+
   implicit def eventClosureWrapperWithParam[T <: jfxe.Event](handler: (T) => Unit) = new jfxe.EventHandler[T] {
     def handle(event: T) {
+      handler(event)
+    }
+  }
+
+  implicit def mouseEventClosureWrapper(handler: (sfxsi.MouseEvent) => Unit) = new jfxe.EventHandler[jfxsi.MouseEvent] {
+
+    import EventIncludes.jfxMouseEvent2sfx
+
+    def handle(event: jfxsi.MouseEvent) {
       handler(event)
     }
   }
