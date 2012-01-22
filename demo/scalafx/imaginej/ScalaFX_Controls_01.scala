@@ -40,7 +40,7 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import javafx.scene.{text => jfxst }
+import javafx.scene.{text => jfxst}
 
 import scalafx.application.JFXApp
 import scalafx.stage.Stage
@@ -85,13 +85,15 @@ object ScalaFX_Controls_01 extends JFXApp {
     wrapText = true
     translateY = 50
     prefWidth = 100
-    onMouseEntered = { (_: MouseEvent) =>
-      scaleX = 1.5
-      scaleY = 1.5
+    onMouseEntered = {
+      (_: MouseEvent) =>
+        scaleX = 1.5
+        scaleY = 1.5
     }
-    onMouseExited = { (_: MouseEvent) =>
-      scaleX = 1
-      scaleY = 1
+    onMouseExited = {
+      (_: MouseEvent) =>
+        scaleX = 1
+        scaleY = 1
     }
   }
   val hBox = new HBox {
@@ -111,24 +113,3 @@ object ScalaFX_Controls_01 extends JFXApp {
     }
   }
 }
-
-/*
-    Label label1 = new Label("Search");
-    label1.setGraphic(new ImageView(image));
-    label1.setFont(new Font("Arial", 30));
-    label1.setTextFill(Color.web("#0076a3"));
-    label1.setTextAlignment(TextAlignment.JUSTIFY);
-
-
-    Label label2 = new Label("Values");
-    label2.setFont(Font.font("Cambria", 32));
-    label2.setRotate(270);
-    label2.setTranslateY(50);
-
-    label3.setWrapText(true);
-    label3.setTranslateY(50);
-    label3.setPrefWidth(100);
-
-
-
-*/

@@ -27,12 +27,12 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{control => jfxsc, input => jfxsi}
 import javafx.{event => jfxe}
 
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
-// import collection.JavaConversions._
+import scalafx.scene.input.MouseEvent
 
 object ButtonBase {
   implicit def sfxButtonBase2jfx(v: ButtonBase) = v.delegate
@@ -46,4 +46,27 @@ class ButtonBase(override val delegate: jfxsc.ButtonBase) extends Labeled(delega
   def onAction_=(aeh: jfxe.EventHandler[jfxe.ActionEvent]) {
     onAction() = aeh
   }
+
+  // for now only a few examples
+
+  def addOnMouseEnteredHandler(handler: (MouseEvent) => Unit) {
+    delegate.addEventHandler(jfxsi.MouseEvent.MOUSE_ENTERED,
+      new jfxe.EventHandler[jfxsi.MouseEvent]() {
+        @Override
+        def handle(me: jfxsi.MouseEvent) {
+          handler(new MouseEvent(me))
+        }
+      })
+  }
+
+  def addOnMouseExitedHandler(handler: (MouseEvent) => Unit) {
+    delegate.addEventHandler(jfxsi.MouseEvent.MOUSE_EXITED,
+      new jfxe.EventHandler[jfxsi.MouseEvent]() {
+        @Override
+        def handle(me: jfxsi.MouseEvent) {
+          handler(new MouseEvent(me))
+        }
+      })
+  }
+
 }

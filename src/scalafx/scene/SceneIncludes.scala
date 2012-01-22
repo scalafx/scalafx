@@ -35,10 +35,11 @@ import paint.PaintIncludes
 import shape.ShapeIncludes
 import control.ControlIncludes
 import text.TextIncludes
+import effect.EffectIncludes
 
 object SceneIncludes extends SceneIncludes
 
-trait SceneIncludes extends LayoutIncludes with PaintIncludes with ShapeIncludes with TextIncludes with ImageIncludes with LowerPriorityIncludes with ControlIncludes
+trait SceneIncludes extends LayoutIncludes with PaintIncludes with ShapeIncludes with TextIncludes with ImageIncludes with EffectIncludes with LowerPriorityIncludes with ControlIncludes
 
 trait LowerPriorityIncludes {
   implicit def jfxGroup2sfx(v: jfxs.Group) = new Group(v)
