@@ -69,8 +69,13 @@ object ScalaFX_Controls_02 extends JFXApp {
     font = Font.font("Times New Roman", 22)
     textFill = Color.web("#464646")
   }
+
   val okImageView = new ImageView {
     image = new Image(this, "images/ok.png")
+  }
+
+  val koImageView = new ImageView {
+    image = new Image(this, "images/ko.png")
   }
 
   val okButton1 = new Button {
@@ -101,13 +106,11 @@ object ScalaFX_Controls_02 extends JFXApp {
 
   koButton1 addOnMouseEnteredHandler {
     (_: MouseEvent) =>
-      println("entered")
       koButton1.effect = new DropShadow()
   }
 
   koButton1 addOnMouseExitedHandler {
     (_: MouseEvent) =>
-      println("exited")
       koButton1.effect = null
   }
 
@@ -121,13 +124,39 @@ object ScalaFX_Controls_02 extends JFXApp {
     )
   }
 
+  val okButton3 = new Button {
+    graphic = okImageView
+    onAction = {
+      (_: ActionEvent) =>
+        label.text = "Accepted"
+    }
+  }
+
+
+  val koButton2 = new Button {
+    graphic = koImageView
+    onAction = {
+      (_: ActionEvent) =>
+        label.text = "Declined"
+    }
+  }
+
+  val hBox2 = new HBox {
+    spacing = 25
+    content = List(
+      okButton3,
+      koButton2
+    )
+  }
+
   val vBox = new VBox {
     layoutX = 20
     layoutY = 20
     spacing = 10
     content = List(
       okButton1,
-      hBox1
+      hBox1,
+      hBox2
     )
   }
   stage = new Stage {
@@ -139,3 +168,4 @@ object ScalaFX_Controls_02 extends JFXApp {
     }
   }
 }
+

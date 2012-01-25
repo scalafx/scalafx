@@ -37,12 +37,6 @@ object Accordion {
   implicit def sfxAccordion2jfx(v: Accordion) = v.delegate
 }
 
-/*
- - should implement all the JavaFX properties *** FAILED ***
-[info]   Missing Properties: expandedPane (PropertyComparator.scala:50)
-[info] - should implement all the JavaFX builder properties *** FAILED ***
-[info]   Missing Properties: expandedPaneProperty, getExpandedPane, getPanes, setExpandedPane (PropertyComparator.scala:60)
- */
 class Accordion(override val delegate:jfxsc.Accordion = new jfxsc.Accordion) extends Control(delegate) with SFXDelegate[jfxsc.Accordion] {
   
   def expandedPane = delegate.expandedPaneProperty
@@ -54,6 +48,5 @@ class Accordion(override val delegate:jfxsc.Accordion = new jfxsc.Accordion) ext
   def panes_=(c: Iterable[TitledPane]) {
     panes.setAll(c.map(_.delegate))
   }
-  
-  
+
 }

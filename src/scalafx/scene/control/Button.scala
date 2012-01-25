@@ -31,13 +31,14 @@ import javafx.scene.{control => jfxsc}
 
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
+
 // import collection.JavaConversions._
 
 object Button {
   implicit def sfxButton2jfx(v: Button) = v.delegate
 }
 
-class Button(override val delegate:jfxsc.Button = new jfxsc.Button) extends ButtonBase(delegate) with SFXDelegate[jfxsc.Button] {
+class Button(override val delegate: jfxsc.Button = new jfxsc.Button) extends ButtonBase(delegate) with SFXDelegate[jfxsc.Button] {
 
   def cancelButton = delegate.cancelButtonProperty
 
@@ -51,6 +52,5 @@ class Button(override val delegate:jfxsc.Button = new jfxsc.Button) extends Butt
   def defaultButton_=(b: Boolean) {
     defaultButton() = b
   }
-
 
 }
