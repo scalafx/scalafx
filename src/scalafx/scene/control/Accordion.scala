@@ -37,14 +37,16 @@ object Accordion {
   implicit def sfxAccordion2jfx(v: Accordion) = v.delegate
 }
 
-class Accordion(override val delegate:jfxsc.Accordion = new jfxsc.Accordion) extends Control(delegate) with SFXDelegate[jfxsc.Accordion] {
-  
+class Accordion(override val delegate: jfxsc.Accordion = new jfxsc.Accordion) extends Control(delegate) with SFXDelegate[jfxsc.Accordion] {
+
   def expandedPane = delegate.expandedPaneProperty
-  def expandedPane_= (v: TitledPane) {
+
+  def expandedPane_=(v: TitledPane) {
     expandedPane() = v
   }
-  
+
   def panes = delegate.getPanes
+
   def panes_=(c: Iterable[TitledPane]) {
     panes.setAll(c.map(_.delegate))
   }
