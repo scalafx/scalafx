@@ -14,6 +14,7 @@ trait ControlIncludes {
   implicit def jfxRadioButton2sfx(rb: jfxsc.RadioButton) = new RadioButton(rb)
   implicit def jfxButton2sfx(b: jfxsc.Button) = new Button(b)
   implicit def jfxChoiceBox2sfx[J <: AnyRef](cb: jfxsc.ChoiceBox[J]) = new ChoiceBox[J](cb)
+  implicit def jfxCheckBox2sfx(c: jfxsc.CheckBox) = new CheckBox(c)
   implicit def jfxControl2sfx(c: jfxsc.Control) = new Control(c) {}
   implicit def jfxLabel2sfx(l: jfxsc.Label) = new Label(l)
   implicit def jfxLabeled2sfx(l: jfxsc.Labeled) = new Labeled(l) {}
