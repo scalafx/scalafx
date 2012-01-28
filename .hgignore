@@ -1,0 +1,6 @@
+syntax: glob
+
+*.class
+build/
+out/
+.settings/

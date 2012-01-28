@@ -20,4 +20,6 @@ trait ControlIncludes {
   implicit def jfxLabeled2sfx(l: jfxsc.Labeled) = new Labeled(l) {}
   implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s) {}
   implicit def jfxTitledPane2sfx(t: jfxsc.TitledPane) = new TitledPane(t)
+  implicit def jfxSeparator2sfx(s: jfxsc.Separator) = new Separator(s)
+  implicit def jfxTextArea2sfx(t: jfxsc.TextArea) = new TextArea(t)
 }
