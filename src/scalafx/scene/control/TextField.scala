@@ -37,7 +37,7 @@ object TextField {
 }
 
 class TextField(override val delegate: jfxsc.TextField = new jfxsc.TextField)
-  extends Control(delegate) with SFXDelegate[jfxsc.TextField] {
+  extends TextInputControl(delegate) with SFXDelegate[jfxsc.TextField] {
 
   def onAction = delegate.onActionProperty
   def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]) {

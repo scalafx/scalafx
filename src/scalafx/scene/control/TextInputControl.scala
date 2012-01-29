@@ -31,37 +31,51 @@ import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
-object TextArea {
-  implicit def sfxTextArea2jfx(v: TextArea) = v.delegate
+object TextInputControl {
+  implicit def sfxTextInputControl2jfx(v: TextInputControl) = v.delegate
 }
 
-class TextArea(override val delegate: jfxsc.TextArea = new jfxsc.TextArea) extends TextInputControl(delegate) with SFXDelegate[jfxsc.TextArea] {
+abstract class TextInputControl(override val delegate: jfxsc.TextInputControl) extends Control(delegate) with SFXDelegate[jfxsc.TextInputControl] {
 
-  def prefColumnCount = delegate.prefColumnCountProperty()
-  def prefColumnCount_=(v: Int) {
-    prefColumnCount() = v
+  /**
+   * The anchor of the text selection.
+   */
+  def anchor = delegate.anchorProperty
+
+  /**
+   * The current position of the caret within the text.
+   */
+  def caretPosition = delegate.caretPositionProperty
+
+  /**
+   * Indicates whether this TextInputControl can be edited by the user.
+   */
+  def editable = delegate.editableProperty()
+  def editable_=(v: Boolean) {
+    editable() = v
   }
 
-  def prefRowCount = delegate.prefRowCountProperty()
-  def prefRowCount_=(v: Int) {
-    prefRowCount() = v
-  }
+  /**
+   * The number of characters in the text input.
+   */
+  def length = delegate.lengthProperty
 
-  def scrollLeft = delegate.scrollLeftProperty()
-  def scrollLeft_=(v: Double) {
-    scrollLeft() = v
-  }
+  /**
+   * Defines the characters in the TextInputControl which are selected
+   */
+  def selectedText = delegate.selectedTextProperty
 
-  def scrollTop = delegate.scrollTopProperty()
-  def scrollTop_=(v: Double) {
-    scrollTop() = v
-  }
+  /**
+   * The current selection.
+   */
+  def selection = delegate.selectionProperty
 
-  def wrapText = delegate.wrapTextProperty()
-  def wrapText_=(v: Boolean) {
-    wrapText() = v
+  /**
+   * The textual content of this TextInputControl.
+   */
+  def text = delegate.textProperty()
+  def text_=(v: String) {
+    text() = v
   }
-
-  def paragraphs = delegate.getParagraphs()
 
 }

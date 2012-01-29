@@ -28,40 +28,44 @@ package scalafx.scene.control
  */
 
 import javafx.scene.{ control => jfxsc }
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-object TextArea {
-  implicit def sfxTextArea2jfx(v: TextArea) = v.delegate
-}
+@RunWith(classOf[JUnitRunner])
+class TextInputControlSpec extends FlatSpec with PropertyComparator {
 
-class TextArea(override val delegate: jfxsc.TextArea = new jfxsc.TextArea) extends TextInputControl(delegate) with SFXDelegate[jfxsc.TextArea] {
-
-  def prefColumnCount = delegate.prefColumnCountProperty()
-  def prefColumnCount_=(v: Int) {
-    prefColumnCount() = v
+  "A TextInputControl" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxsc.TextInputControl], classOf[TextInputControl])
   }
 
-  def prefRowCount = delegate.prefRowCountProperty()
-  def prefRowCount_=(v: Int) {
-    prefRowCount() = v
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxsc.TextInputControlBuilder[_]], classOf[TextInputControl])
   }
 
-  def scrollLeft = delegate.scrollLeftProperty()
-  def scrollLeft_=(v: Double) {
-    scrollLeft() = v
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxTextInputControl = new TextField
+    val jfxTextInputControl: jfxsc.TextInputControl = sfxTextInputControl
+    jfxTextInputControl should be(sfxTextInputControl.delegate)
   }
 
-  def scrollTop = delegate.scrollTopProperty()
-  def scrollTop_=(v: Double) {
-    scrollTop() = v
+  /*
+   * In sfxTextInputControl definition line we have compile error:
+   * "type mismatch;  found   : javafx.scene.control.TextField  required: scalafx.scene.control.TextInputControl"
+   * If I make a cast to TextInputControl like 
+   * val sfxTextInputControl: TextInputControl = jfxTextInputControl.asInstanceOf[TextInputControl]
+   * I have a ClassCastException "javafx.scene.control.TextField cannot be cast to scalafx.scene.control.TextInputControl"
+   * 
+   * TODO: How to correct this
+   */
+  /*
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxTextInputControl = new jfxsc.TextField
+    val sfxTextInputControl: TextInputControl = jfxTextInputControl.asInstanceOf[TextInputControl]
+    sfxTextInputControl.delegate should be(jfxTextInputControl)
   }
-
-  def wrapText = delegate.wrapTextProperty()
-  def wrapText_=(v: Boolean) {
-    wrapText() = v
-  }
-
-  def paragraphs = delegate.getParagraphs()
-
+*/
 }
