@@ -29,33 +29,30 @@ package scalafx.controls
 
 import javafx.geometry.Pos
 import javafx.scene.layout.Priority
-import scalafx.Includes.jfxDoubleProperty2sfx
-import scalafx.Includes.jfxSceneProperty2sfx
+import scalafx.Includes._
 import scalafx.application.JFXApp
-import scalafx.scene.control.TextField
-import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.FlowPane
-import scalafx.scene.layout.VBox
-import scalafx.scene.paint.Color.sfxColor2jfx
-import scalafx.scene.paint.Color
+import scalafx.scene.layout._
+import scalafx.scene.paint.Color._
 import scalafx.scene.Scene
 import scalafx.stage.Stage
+import scalafx.scene.control._
+import scalafx.scene.paint.Color
 
-object TextFieldTest extends JFXApp {
+object PasswordFieldTest extends JFXApp {
 
-  val textField = new TextField
+  val passwordField = new PasswordField
 
   val controlsPane = new VBox {
     spacing = 5
     fillWidth = true
     innerAlignment = Pos.CENTER
     hgrow = Priority.NEVER
-    content = List(new TextFieldControls(textField), new TextInputControlControls(textField))
+    content = List(new PasswordFieldControls(passwordField), new TextFieldControls(passwordField), new TextInputControlControls(passwordField))
   }
 
   val mainPane = new BorderPane {
     top = new FlowPane {
-      content = List(textField)
+      content = List(passwordField)
     }
     center = controlsPane
     vgrow = Priority.ALWAYS
@@ -63,7 +60,7 @@ object TextFieldTest extends JFXApp {
   }
 
   stage = new Stage {
-    title = "TextField Test"
+    title = "passwordField Test"
     width = 300
     height = 380
     scene = new Scene {
@@ -74,3 +71,28 @@ object TextFieldTest extends JFXApp {
 
 }
 
+class PasswordFieldControls(target: PasswordField) extends TitledPane {
+
+  val btnCopy = new Button {
+    text = "Copy"
+    onAction = (target.copy)
+  }
+
+  val btnCut = new Button {
+    text = "Cut"
+    onAction = (target.cut)
+  }
+
+  val controlsPane = new GridPane {
+    hgap = 5
+    vgap = 5
+    hgrow = Priority.NEVER
+  }
+  controlsPane.add(btnCopy, 0, 0)
+  controlsPane.add(btnCut, 1, 0)
+
+  // TODO: Make TiledPane a Labeled subclass and use text property directly
+  delegate.text = "PasswordField Properties"
+  content = controlsPane
+
+}

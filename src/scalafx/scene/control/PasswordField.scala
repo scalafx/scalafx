@@ -34,14 +34,9 @@ object PasswordField {
   implicit def sfxPasswordField2jfx(v: PasswordField) = v.delegate
 }
 
-class PasswordField(override val delegate: jfxsc.PasswordField = new jfxsc.PasswordField()) extends Control(delegate) with SFXDelegate[jfxsc.PasswordField] {
+class PasswordField(override val delegate: jfxsc.PasswordField = new jfxsc.PasswordField()) extends TextField(delegate) with SFXDelegate[jfxsc.PasswordField] {
   def cut = delegate.cut()
 
   def copy = delegate.copy()
 
-  def promptText = delegate.promptTextProperty()
-
-  def promptText_=(v: String) {
-    promptText.set(v)
-  }
 }
