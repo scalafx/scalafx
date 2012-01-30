@@ -29,14 +29,19 @@ package scalafx.controls
 
 import javafx.geometry.Pos
 import javafx.scene.layout.Priority
-import scalafx.Includes._
+import scalafx.Includes.eventClosureWrapper
+import scalafx.Includes.jfxStringProperty2sfx
 import scalafx.application.JFXApp
-import scalafx.scene.layout._
-import scalafx.scene.paint.Color._
+import scalafx.scene.control.Button
+import scalafx.scene.control.Label
+import scalafx.scene.control.PasswordField
+import scalafx.scene.layout.BorderPane
+import scalafx.scene.layout.FlowPane
+import scalafx.scene.layout.VBox
+import scalafx.scene.paint.Color.sfxColor2jfx
+import scalafx.scene.paint.Color
 import scalafx.scene.Scene
 import scalafx.stage.Stage
-import scalafx.scene.control._
-import scalafx.scene.paint.Color
 
 object PasswordFieldTest extends JFXApp {
 
@@ -71,8 +76,16 @@ object PasswordFieldTest extends JFXApp {
 
 }
 
-class PasswordFieldControls(target: PasswordField) extends TitledPane {
+class PasswordFieldControls(target: PasswordField) extends PropertiesNodes[PasswordField](target, "PasswordField Properties") {
 
+  val lblText = new Label {
+    text <== target.text
+  }
+
+  /**
+   * It is not really working. Probably because when the button is clicked, password field lose its focus. To make Copy and cut work a possibility could be use
+   * a keyboard shortcut. And they must be different Ctrl + C and Ctrl + X to not confuse with traditional shortcuts.
+   */
   val btnCopy = new Button {
     text = "Copy"
     onAction = (target.copy)
@@ -83,16 +96,7 @@ class PasswordFieldControls(target: PasswordField) extends TitledPane {
     onAction = (target.cut)
   }
 
-  val controlsPane = new GridPane {
-    hgap = 5
-    vgap = 5
-    hgrow = Priority.NEVER
-  }
-  controlsPane.add(btnCopy, 0, 0)
-  controlsPane.add(btnCut, 1, 0)
-
-  // TODO: Make TiledPane a Labeled subclass and use text property directly
-  delegate.text = "PasswordField Properties"
-  content = controlsPane
+  super.addNode("Typed Text", lblText)
+  super.addNodes(btnCopy, btnCut)
 
 }

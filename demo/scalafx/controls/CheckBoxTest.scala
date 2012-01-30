@@ -27,13 +27,19 @@
 
 package scalafx.controls
 
-import scalafx.application.JFXApp
-import javafx.event.ActionEvent
 import javafx.event.EventHandler
+import javafx.event.ActionEvent
+import javafx.geometry.Pos
+import javafx.scene.layout.Priority
 import scalafx.Includes._
-import scalafx.beans.Observable._
-import scalafx.scene.control._
-import scalafx.scene.layout.GridPane
+import scalafx.application.JFXApp
+import scalafx.scene.control.Button
+import scalafx.scene.control.CheckBox
+import scalafx.scene.control.Label
+import scalafx.scene.control.TextField
+import scalafx.scene.layout.BorderPane
+import scalafx.scene.layout.VBox
+import scalafx.scene.paint.Color._
 import scalafx.scene.paint.Color
 import scalafx.scene.Scene
 import scalafx.stage.Stage
@@ -43,23 +49,48 @@ object CheckBoxTest extends JFXApp {
   val check = new CheckBox {
     text = "CheckBox"
   }
-  check.onAction = new EventHandler[ActionEvent] {
-    def handle(event: ActionEvent) {
-      lblCheckState.text = if (check.indeterminate.get) "Indeterminate" else check.selected.get().toString()
+00
+  val controlsPane = new VBox {
+    spacing = 5
+    fillWidth = true
+    innerAlignment = Pos.CENTER
+    hgrow = Priority.NEVER
+    content = List(new CheckBoxControls(check))
+  }
+
+  val mainPane = new BorderPane {
+    top = check
+    center = controlsPane
+    vgrow = Priority.ALWAYS
+    hgrow = Priority.ALWAYS
+  }
+
+  stage = new Stage {
+    title = "CheckBox Test"
+    width = 300
+    height = 200
+    scene = new Scene {
+      fill = Color.LIGHTGRAY
+      content = mainPane
     }
   }
 
-  val lblCheckState = new Label {
+}
+
+class CheckBoxControls(check: CheckBox) extends PropertiesNodes[CheckBox](check, "CheckBox Properties") {
+
+  val lblSelected = new Label {
     text = check.selected.get().toString()
+  }
+  check.onAction = new EventHandler[ActionEvent] {
+    def handle(event: ActionEvent) {
+      lblSelected.text = if (check.indeterminate.get) "Indeterminate" else check.selected.get().toString()
+    }
   }
 
   val btnAllowIndeterminate = new Button {
     text = "Allow Indeterminate"
-  }
-  btnAllowIndeterminate.onAction = new EventHandler[ActionEvent] {
-    def handle(event: ActionEvent) {
-      check.allowIndeterminate = !check.allowIndeterminate.get()
-    }
+    onAction = (check.allowIndeterminate = !check.allowIndeterminate.get())
   }
 
   val lblAllowIndeterminate = new Label {
@@ -68,35 +99,16 @@ object CheckBoxTest extends JFXApp {
 
   val btnFire = new Button {
     text = "Fire!"
-  }
-  btnFire.onAction = new EventHandler[ActionEvent] {
-    def handle(event: ActionEvent) {
-      check.fire
-    }
+    onAction = check.fire
   }
 
-  val txfText = new TextField 
-  txfText.delegate.textProperty.bindBidirectional(check.text)
-
-  val grid = new GridPane {
-    hgap = 5
-    vgap = 5
-  }
-  grid.add(check, 0, 0)
-  grid.add(lblCheckState, 1, 0)
-  grid.add(btnAllowIndeterminate, 0, 1)
-  grid.add(lblAllowIndeterminate, 1, 1)
-  grid.add(btnFire, 0, 2)
-  grid.add(txfText, 1, 2)
-
-  stage = new Stage {
-    title = "CheckBox Test"
-    width = 300
-    height = 120
-    scene = new Scene {
-      fill = Color.LIGHTGRAY
-      content = grid
-    }
+  val txfText = new TextField {
+    text <==> check.text
   }
 
+  super.addNode("Selected", lblSelected)
+  super.addNodes(btnAllowIndeterminate, lblAllowIndeterminate)
+  super.addNode(btnFire)
+  super.addNode("Text", txfText)
+  
 }

@@ -31,28 +31,20 @@ import javafx.beans.value.ObservableValue
 import javafx.beans.value.ChangeListener
 import javafx.geometry.Pos
 import javafx.scene.layout.Priority
-import javafx.scene.text.TextAlignment
 import scalafx.Includes.jfxBooleanProperty2sfx
 import scalafx.Includes.jfxDoubleProperty2sfx
-import scalafx.Includes.jfxLabeled2sfx
 import scalafx.Includes.jfxSceneProperty2sfx
 import scalafx.Includes.observableList2ObservableBuffer
 import scalafx.application.JFXApp
 import scalafx.collections.ObservableBuffer
-import scalafx.scene.Node.sfxNode2jfx
-import scalafx.scene.control.Control.sfxControl2jfx
 import scalafx.scene.control.CheckBox
 import scalafx.scene.control.ChoiceBox
 import scalafx.scene.control.Label
 import scalafx.scene.control.TextArea
-import scalafx.scene.control.TitledPane
-import scalafx.scene.layout.GridPane.sfxGridPane2jfx
 import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.GridPane
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.paint.Color
-import scalafx.scene.Node
 import scalafx.scene.Scene
 import scalafx.stage.Stage
 
@@ -92,7 +84,7 @@ object TextAreaTest extends JFXApp {
 
 }
 
-class TextAreaControls(target: TextArea) extends TitledPane {
+class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](target, "TextArea Properties") {
   // TODO: ChoiceBoxes are not really working. In JavaFX 2.1, bind their respectives values with TextArea properties. 
 
   val chbPrefColumnCount = new ChoiceBox[Int] {
@@ -144,50 +136,11 @@ class TextAreaControls(target: TextArea) extends TitledPane {
   val lblParagraphs = new Label
   target.paragraphs.onChange(lblParagraphs.text = target.paragraphs.size.toString)
 
-  val controlsPane = new GridPane {
-    hgap = 5
-    vgap = 5
-    hgrow = Priority.NEVER
-  }
-  controlsPane.add(new Label {
-    labelFor = chbWrap
-    text = "Wrapped"
-    textAlignment = TextAlignment.RIGHT
-  }.asInstanceOf[Node], 0, 0)
-  controlsPane.add(chbWrap, 1, 0)
-  controlsPane.add(new Label {
-    labelFor = chbPrefColumnCount
-    text = "Pref Column Count"
-    textAlignment = TextAlignment.RIGHT
-  }.asInstanceOf[Node], 0, 1)
-  controlsPane.add(chbPrefColumnCount, 1, 1)
-  controlsPane.add(new Label {
-    labelFor = chbPrefRowCount
-    text = "Pref Row Count"
-    textAlignment = TextAlignment.RIGHT
-  }.asInstanceOf[Node], 0, 2)
-  controlsPane.add(chbPrefRowCount, 1, 2)
-  controlsPane.add(new Label {
-    labelFor = chbScrollLeft
-    text = "Scroll Left"
-    textAlignment = TextAlignment.RIGHT
-  }.asInstanceOf[Node], 0, 3)
-  controlsPane.add(chbScrollLeft, 1, 3)
-  controlsPane.add(new Label {
-    labelFor = chbScrollTop
-    text = "Scroll Top"
-    textAlignment = TextAlignment.RIGHT
-  }.asInstanceOf[Node], 0, 4)
-  controlsPane.add(chbScrollTop, 1, 4)
-  controlsPane.add(new Label {
-    labelFor = lblParagraphs
-    text = "Paragraphs"
-    textAlignment = TextAlignment.RIGHT
-  }.asInstanceOf[Node], 0, 5)
-  controlsPane.add(lblParagraphs, 1, 5)
-
-  // TODO: Make TiledPane a Labeled subclass and use text property directly
-  delegate.text = "TextAreaProperties"
-  content = controlsPane
+  super.addNode("Wrapped", chbWrap)
+  super.addNode("Pref Column Count", chbPrefColumnCount)
+  super.addNode("Pref Row Count", chbPrefRowCount)
+  super.addNode("Scroll Left", chbScrollLeft)
+  super.addNode("Scroll Top", chbScrollTop)
+  super.addNode("Paragraphs", lblParagraphs)
 
 }

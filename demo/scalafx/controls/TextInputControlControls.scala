@@ -45,7 +45,7 @@ import scalafx.scene.layout.GridPane.sfxGridPane2jfx
 import scalafx.scene.layout.GridPane
 import scalafx.scene.Node
 
-class TextInputControlControls(target: TextInputControl) extends TitledPane {
+class TextInputControlControls(target: TextInputControl) extends PropertiesNodes[TextInputControl](target, "TextInputControl Properties") {
 
   val chbEditable = new CheckBox {
     selected <==> target.editable
@@ -70,45 +70,10 @@ class TextInputControlControls(target: TextInputControl) extends TitledPane {
   val lblSelection = new Label
   target.selection.onChange(lblSelection.text = target.selection.value.toString)
 
-  val controlsPane = new GridPane {
-    hgap = 5
-    vgap = 5
-    hgrow = Priority.NEVER
-  }
+  super.addNode("Anchor", lblAnchor)
+  super.addNode("Caret Position", lblCaretPosition)
+  super.addNode("Length", lblLength)
+  super.addNode("Selected Text Length", lblSelectedTextLength)
+  super.addNode("Selection", lblSelection)
 
-  controlsPane.add(chbEditable, 0, 0, 2, 1)
-  controlsPane.add(new Label {
-    labelFor = lblAnchor
-    text = "Anchor"
-    textAlignment = TextAlignment.RIGHT
-  }.asInstanceOf[Node], 0, 1)
-  controlsPane.add(lblAnchor, 1, 1)
-  controlsPane.add(new Label {
-    labelFor = lblCaretPosition
-    text = "Caret Position"
-    textAlignment = TextAlignment.RIGHT
-  }.asInstanceOf[Node], 0, 2)
-  controlsPane.add(lblCaretPosition, 1, 2)
-  controlsPane.add(new Label {
-    labelFor = lblLength
-    text = "Lenght"
-    textAlignment = TextAlignment.RIGHT
-  }.asInstanceOf[Node], 0, 3)
-  controlsPane.add(lblLength, 1, 3)
-  controlsPane.add(new Label {
-    labelFor = lblLength
-    text = "Selected Text Lenght"
-    textAlignment = TextAlignment.RIGHT
-  }.asInstanceOf[Node], 0, 4)
-  controlsPane.add(lblSelectedTextLength, 1, 4)
-  controlsPane.add(new Label {
-    labelFor = lblSelection
-    text = "Selection"
-    textAlignment = TextAlignment.RIGHT
-  }.asInstanceOf[Node], 0, 5)
-  controlsPane.add(lblSelection, 1, 5)
-
-  // TODO: Make TiledPane a Labeled subclass and use text property directly
-  delegate.text = "TextInputControl Properties"
-  content = controlsPane
 }

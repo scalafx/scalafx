@@ -29,23 +29,12 @@ package scalafx.controls
 
 import javafx.beans.value.ObservableValue
 import javafx.beans.value.ChangeListener
-import javafx.scene.layout.Priority
-import javafx.scene.text.TextAlignment
-import scalafx.Includes.jfxLabeled2sfx
 import scalafx.Includes.jfxStringProperty2sfx
 import scalafx.collections.ObservableBuffer
-import scalafx.scene.Node.sfxNode2jfx
-import scalafx.scene.control.ChoiceBox.sfxChoiceBox2jfx
-import scalafx.scene.control.TextField.sfxTextField2jfx
 import scalafx.scene.control.ChoiceBox
-import scalafx.scene.control.Label
 import scalafx.scene.control.TextField
-import scalafx.scene.control.TitledPane
-import scalafx.scene.layout.GridPane.sfxGridPane2jfx
-import scalafx.scene.layout.GridPane
-import scalafx.scene.Node
 
-class TextFieldControls(target: TextField) extends TitledPane {
+class TextFieldControls(target: TextField) extends PropertiesNodes[TextField](target, "TextField Properties") {
 
   val txfPromptText = new TextField {
     text <==> target.promptText
@@ -61,26 +50,7 @@ class TextFieldControls(target: TextField) extends TitledPane {
     }
   })
 
-  val controlsPane = new GridPane {
-    hgap = 5
-    vgap = 5
-    hgrow = Priority.NEVER
-  }
-  controlsPane.add(new Label {
-    labelFor = txfPromptText
-    text = "Prompt Text"
-    textAlignment = TextAlignment.RIGHT
-  }.asInstanceOf[Node], 0, 0)
-  controlsPane.add(txfPromptText, 1, 0)
-  controlsPane.add(new Label {
-    labelFor = txfPromptText
-    text = "Text columns"
-    textAlignment = TextAlignment.RIGHT
-  }.asInstanceOf[Node], 0, 1)
-  controlsPane.add(chbPrefColumnCount, 1, 1)
-
-  // TODO: Make TiledPane a Labeled subclass and use text property directly
-  delegate.text = "TextField Properties"
-  content = controlsPane
+  super.addNode("Prompt Text", txfPromptText)
+  super.addNode("Text columns", chbPrefColumnCount)
 
 }
