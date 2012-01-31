@@ -49,7 +49,7 @@ object CheckBoxTest extends JFXApp {
   val check = new CheckBox {
     text = "CheckBox"
   }
-00
+
   val controlsPane = new VBox {
     spacing = 5
     fillWidth = true
