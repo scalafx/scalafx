@@ -53,6 +53,7 @@ import scalafx.beans.property.PropertyIncludes.jfxReadOnlyIntegerProperty2sfx
 import scalafx.scene.control.{ChoiceBox, Label}
 import scalafx.collections.ObservableBuffer
 import scalafx.beans.value.ObservableValue
+import ObservableBuffer.observableBuffer2ObservableList
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
@@ -65,7 +66,7 @@ import scalafx.beans.value.ObservableValue
 
 object ScalaFX_Controls_06 extends JFXApp {
 
-  val languages = new ObservableBuffer[String]()
+  val languages: ObservableBuffer[String] = new ObservableBuffer[String]()
 
   languages.setAll(
     "English",
@@ -76,7 +77,7 @@ object ScalaFX_Controls_06 extends JFXApp {
   )
 
   val languageChoiceBox = new ChoiceBox {
-    items = languages.asInstanceOf[ObservableBuffer[Nothing]] // ???
+    items = languages.asInstanceOf[ObservableBuffer[Nothing]]
     tooltip = new Tooltip("Select the language")
   }
 
@@ -105,7 +106,7 @@ object ScalaFX_Controls_06 extends JFXApp {
   )
 
   languageChoiceBox.selectionModel().selectedIndexProperty onChange {
-    (_: ObservableValue[Int, java.lang.Number], _: java.lang.Number, newIndex: java.lang.Number) =>
+    (_: ObservableValue[Int, Number], _: Number, newIndex: Number) =>
       helloLabel.text = greetings(newIndex.intValue())
   }
 

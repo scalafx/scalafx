@@ -45,6 +45,12 @@ trait EventIncludes {
     }
   }
 
+  implicit def eventClosureWrapperWithUnitParam[T <: jfxe.Event](handler: Unit => Unit) = new jfxe.EventHandler[T] {
+    def handle(event: T) {
+      handler()
+    }
+  }
+
   implicit def eventClosureWrapperWithParam[T <: jfxe.Event](handler: (T) => Unit) = new jfxe.EventHandler[T] {
     def handle(event: T) {
       handler(event)

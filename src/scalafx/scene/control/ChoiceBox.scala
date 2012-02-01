@@ -27,7 +27,7 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.{util => jfxu}
+import javafx.{util => jfxu, collections => jfxc}
 import javafx.scene.{control => jfxsc}
 import scalafx.util.SFXDelegate
 import scalafx.collections.ObservableBuffer
