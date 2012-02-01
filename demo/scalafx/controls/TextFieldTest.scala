@@ -1,7 +1,5 @@
-package scalafx.scene.control
-
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,43 +25,52 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.{util => jfxu, collections => jfxc}
-import javafx.scene.{control => jfxsc}
-import scalafx.util.SFXDelegate
-import scalafx.collections.ObservableBuffer
-import scalafx.Includes._
+package scalafx.controls
 
-object ChoiceBox {
-  implicit def sfxChoiceBox2jfx[J <: Any](cb: ChoiceBox[J]) = cb.delegate
+import javafx.geometry.Pos
+import javafx.scene.layout.Priority
+import scalafx.Includes.jfxDoubleProperty2sfx
+import scalafx.Includes.jfxSceneProperty2sfx
+import scalafx.application.JFXApp
+import scalafx.scene.control.TextField
+import scalafx.scene.layout.BorderPane
+import scalafx.scene.layout.FlowPane
+import scalafx.scene.layout.VBox
+import scalafx.scene.paint.Color.sfxColor2jfx
+import scalafx.scene.paint.Color
+import scalafx.scene.Scene
+import scalafx.stage.Stage
+
+object TextFieldTest extends JFXApp {
+
+  val textField = new TextField
+
+  val controlsPane = new VBox {
+    spacing = 5
+    fillWidth = true
+    innerAlignment = Pos.CENTER
+    hgrow = Priority.NEVER
+    content = List(new TextFieldControls(textField), new TextInputControlControls(textField))
+  }
+
+  val mainPane = new BorderPane {
+    top = new FlowPane {
+      content = List(textField)
+    }
+    center = controlsPane
+    vgrow = Priority.ALWAYS
+    hgrow = Priority.ALWAYS
+  }
+
+  stage = new Stage {
+    title = "TextField Test"
+    width = 300
+    height = 380
+    scene = new Scene {
+      fill = Color.LIGHTGRAY
+      content = mainPane
+    }
+  }
+
 }
 
-class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.ChoiceBox[J]()) extends Control(delegate) with SFXDelegate[jfxsc.ChoiceBox[J]] {
-
-  def converter = delegate.converterProperty
-
-  def converter_=(v: jfxu.StringConverter[J]) {
-    converter() = v
-  }
-
-  def items = delegate.itemsProperty
-
-  def items_=(v: ObservableBuffer[J]) {
-    items() = v
-  }
-
-  def selectionModel = delegate.selectionModelProperty
-
-  def selectionModel_=(v: jfxsc.SingleSelectionModel[J]) {
-    selectionModel() = v
-  }
-
-  def showing = delegate.showingProperty
-
-  def value = delegate.valueProperty
-
-  def value_=(v: J) {
-    value() = v
-  }
-
-
-}

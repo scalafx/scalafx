@@ -1,7 +1,7 @@
 package scalafx.scene.control
 
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,43 +27,41 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.{util => jfxu, collections => jfxc}
-import javafx.scene.{control => jfxsc}
-import scalafx.util.SFXDelegate
-import scalafx.collections.ObservableBuffer
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
+import scalafx.util.SFXDelegate
 
-object ChoiceBox {
-  implicit def sfxChoiceBox2jfx[J <: Any](cb: ChoiceBox[J]) = cb.delegate
+object TextArea {
+  implicit def sfxTextArea2jfx(v: TextArea) = v.delegate
 }
 
-class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.ChoiceBox[J]()) extends Control(delegate) with SFXDelegate[jfxsc.ChoiceBox[J]] {
+class TextArea(override val delegate: jfxsc.TextArea = new jfxsc.TextArea) extends TextInputControl(delegate) with SFXDelegate[jfxsc.TextArea] {
 
-  def converter = delegate.converterProperty
-
-  def converter_=(v: jfxu.StringConverter[J]) {
-    converter() = v
+  def prefColumnCount = delegate.prefColumnCountProperty()
+  def prefColumnCount_=(v: Int) {
+    prefColumnCount() = v
   }
 
-  def items = delegate.itemsProperty
-
-  def items_=(v: ObservableBuffer[J]) {
-    items() = v
+  def prefRowCount = delegate.prefRowCountProperty()
+  def prefRowCount_=(v: Int) {
+    prefRowCount() = v
   }
 
-  def selectionModel = delegate.selectionModelProperty
-
-  def selectionModel_=(v: jfxsc.SingleSelectionModel[J]) {
-    selectionModel() = v
+  def scrollLeft = delegate.scrollLeftProperty()
+  def scrollLeft_=(v: Double) {
+    scrollLeft() = v
   }
 
-  def showing = delegate.showingProperty
-
-  def value = delegate.valueProperty
-
-  def value_=(v: J) {
-    value() = v
+  def scrollTop = delegate.scrollTopProperty()
+  def scrollTop_=(v: Double) {
+    scrollTop() = v
   }
 
+  def wrapText = delegate.wrapTextProperty()
+  def wrapText_=(v: Boolean) {
+    wrapText() = v
+  }
+
+  def paragraphs = delegate.getParagraphs()
 
 }

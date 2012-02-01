@@ -1,7 +1,7 @@
 package scalafx.scene.control
 
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,43 +27,34 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.{util => jfxu, collections => jfxc}
 import javafx.scene.{control => jfxsc}
-import scalafx.util.SFXDelegate
-import scalafx.collections.ObservableBuffer
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
+import scalafx.testutil.PropertyComparator
 
-object ChoiceBox {
-  implicit def sfxChoiceBox2jfx[J <: Any](cb: ChoiceBox[J]) = cb.delegate
-}
+@RunWith(classOf[JUnitRunner])
+class TextAreaSpec extends FlatSpec with PropertyComparator {
 
-class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.ChoiceBox[J]()) extends Control(delegate) with SFXDelegate[jfxsc.ChoiceBox[J]] {
-
-  def converter = delegate.converterProperty
-
-  def converter_=(v: jfxu.StringConverter[J]) {
-    converter() = v
+ "A TextArea" should "implement all the JavaFX properties" in {
+    compareProperties(classOf[jfxsc.TextArea], classOf[TextArea])
   }
 
-  def items = delegate.itemsProperty
-
-  def items_=(v: ObservableBuffer[J]) {
-    items() = v
+  it should "implement all the JavaFX builder properties" in {
+    compareBuilderProperties(classOf[jfxsc.TextAreaBuilder[_]], classOf[TextArea])
   }
 
-  def selectionModel = delegate.selectionModelProperty
-
-  def selectionModel_=(v: jfxsc.SingleSelectionModel[J]) {
-    selectionModel() = v
+  it should "have an implicit conversion from SFX to JFX" in {
+    val sfxTextArea = new TextArea(new jfxsc.TextArea())
+    val jfxTextArea: jfxsc.TextArea = sfxTextArea
+    jfxTextArea should be(sfxTextArea.delegate)
   }
 
-  def showing = delegate.showingProperty
-
-  def value = delegate.valueProperty
-
-  def value_=(v: J) {
-    value() = v
+  it should "have an implicit conversion from JFX to SFX" in {
+    val jfxTextArea = new jfxsc.TextArea()
+    val sfxTextArea: TextArea = jfxTextArea
+    sfxTextArea.delegate should be(jfxTextArea)
   }
-
-
 }

@@ -1,7 +1,5 @@
-package scalafx.scene.control
-
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,43 +25,34 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.{util => jfxu, collections => jfxc}
-import javafx.scene.{control => jfxsc}
-import scalafx.util.SFXDelegate
-import scalafx.collections.ObservableBuffer
-import scalafx.Includes._
+package scalafx.scene.control
 
-object ChoiceBox {
-  implicit def sfxChoiceBox2jfx[J <: Any](cb: ChoiceBox[J]) = cb.delegate
+import javafx.scene.{ control => jfxsc }
+
+import scalafx.Includes._
+import scalafx.util.SFXDelegate
+
+object CheckBox {
+  implicit def sfxCheckBox2jfx(v: CheckBox) = v.delegate
 }
 
-class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.ChoiceBox[J]()) extends Control(delegate) with SFXDelegate[jfxsc.ChoiceBox[J]] {
+class CheckBox(override val delegate: jfxsc.CheckBox = new jfxsc.CheckBox) extends ButtonBase(delegate) with SFXDelegate[jfxsc.CheckBox] {
 
-  def converter = delegate.converterProperty
-
-  def converter_=(v: jfxu.StringConverter[J]) {
-    converter() = v
+  def allowIndeterminate = delegate.allowIndeterminateProperty
+  def allowIndeterminate_=(b: Boolean) {
+    allowIndeterminate() = b
   }
 
-  def items = delegate.itemsProperty
-
-  def items_=(v: ObservableBuffer[J]) {
-    items() = v
+  def indeterminate = delegate.indeterminateProperty
+  def indeterminate_=(b: Boolean) {
+    indeterminate() = b
   }
 
-  def selectionModel = delegate.selectionModelProperty
-
-  def selectionModel_=(v: jfxsc.SingleSelectionModel[J]) {
-    selectionModel() = v
+  def selected = delegate.selectedProperty
+  def selected_=(b: Boolean) {
+    selected() = b
   }
 
-  def showing = delegate.showingProperty
-
-  def value = delegate.valueProperty
-
-  def value_=(v: J) {
-    value() = v
-  }
-
+  def fire = delegate.fire
 
 }

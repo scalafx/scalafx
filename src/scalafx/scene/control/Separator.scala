@@ -1,7 +1,5 @@
-package scalafx.scene.control
-
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,43 +25,33 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.{util => jfxu, collections => jfxc}
-import javafx.scene.{control => jfxsc}
-import scalafx.util.SFXDelegate
-import scalafx.collections.ObservableBuffer
-import scalafx.Includes._
+package scalafx.scene.control
 
-object ChoiceBox {
-  implicit def sfxChoiceBox2jfx[J <: Any](cb: ChoiceBox[J]) = cb.delegate
+import javafx.scene.{ control => jfxsc }
+import javafx.{ geometry => jfxg }
+
+import scalafx.Includes._
+import scalafx.util.SFXDelegate
+
+object Separator {
+  implicit def sfxSeparator2jfx(v: Separator) = v.delegate
 }
 
-class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.ChoiceBox[J]()) extends Control(delegate) with SFXDelegate[jfxsc.ChoiceBox[J]] {
+class Separator(override val delegate: jfxsc.Separator = new jfxsc.Separator) extends Control(delegate) with SFXDelegate[jfxsc.Separator] {
 
-  def converter = delegate.converterProperty
-
-  def converter_=(v: jfxu.StringConverter[J]) {
-    converter() = v
+  def halignment = delegate.halignmentProperty
+  def halignment_=(v: jfxg.HPos) {
+    halignment() = v
   }
 
-  def items = delegate.itemsProperty
-
-  def items_=(v: ObservableBuffer[J]) {
-    items() = v
+  def valignment = delegate.valignmentProperty
+  def valignment_=(v: jfxg.VPos) {
+    valignment() = v
   }
 
-  def selectionModel = delegate.selectionModelProperty
-
-  def selectionModel_=(v: jfxsc.SingleSelectionModel[J]) {
-    selectionModel() = v
+  def orientation = delegate.orientationProperty
+  def orientation_=(v: jfxg.Orientation) {
+    orientation() = v
   }
-
-  def showing = delegate.showingProperty
-
-  def value = delegate.valueProperty
-
-  def value_=(v: J) {
-    value() = v
-  }
-
 
 }
