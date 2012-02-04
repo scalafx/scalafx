@@ -27,30 +27,29 @@
 
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
+import javafx.{ geometry => jfxg }
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
+import scalafx.testutil.AbstractSFXDelegateSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-class InsetsSpec extends FlatSpec with PropertyComparator {
-  "An Insets" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxg.Insets], classOf[Insets])
+@RunWith(classOf[JUnitRunner])
+class InsetsSpec extends AbstractSFXDelegateSpec[jfxg.Insets, Insets, jfxg.InsetsBuilder[_]](classOf[jfxg.Insets], classOf[Insets], classOf[jfxg.InsetsBuilder[_]]) {
+
+  protected def getScalaClassInstance = Insets(10)
+
+  protected def convertScalaClassToJavaClass(sfxObject: Insets) = {
+    val jfxInsets: jfxg.Insets = sfxObject
+    jfxInsets
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxg.InsetsBuilder[_]], classOf[Insets])
-  }
+  protected def getJavaClassInstance = new jfxg.Insets(10)
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxInsets = Insets(10)
-    val jfxInsets: jfxg.Insets = sfxInsets
-    jfxInsets should be (sfxInsets.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxInsets = new jfxg.Insets(10)
-    val sfxInsets: Insets = jfxInsets
-    sfxInsets.delegate should be (jfxInsets)
+  protected def convertJavaClassToScalaClass(jfxObject: jfxg.Insets) = {
+    val sfxInsets: Insets = jfxObject
+    sfxInsets
   }
 }

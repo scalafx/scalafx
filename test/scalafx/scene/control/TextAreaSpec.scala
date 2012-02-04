@@ -28,33 +28,32 @@ package scalafx.scene.control
  */
 
 import javafx.scene.{control => jfxsc}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import scalafx.testutil.AbstractSFXDelegateSpec
 
 @RunWith(classOf[JUnitRunner])
-class TextAreaSpec extends FlatSpec with PropertyComparator {
+/**
+ * TextArea Spec tests.
+ * 
+ * @author rafael.afonso
+ *
+ */
+class TextAreaSpec extends AbstractSFXDelegateSpec[jfxsc.TextArea, TextArea, jfxsc.TextAreaBuilder[_]](classOf[jfxsc.TextArea], classOf[TextArea], classOf[jfxsc.TextAreaBuilder[_]]) {
 
- "A TextArea" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsc.TextArea], classOf[TextArea])
+  protected def getScalaClassInstance = new TextArea(new jfxsc.TextArea)
+
+  protected def convertScalaClassToJavaClass(sfxControl: TextArea) = {
+    val jfxTextArea: jfxsc.TextArea = sfxControl
+    jfxTextArea
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsc.TextAreaBuilder[_]], classOf[TextArea])
+  protected def getJavaClassInstance = new jfxsc.TextArea
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TextArea) = {
+    val sfxTextArea: TextArea = jfxControl
+    sfxTextArea
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxTextArea = new TextArea(new jfxsc.TextArea())
-    val jfxTextArea: jfxsc.TextArea = sfxTextArea
-    jfxTextArea should be(sfxTextArea.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxTextArea = new jfxsc.TextArea()
-    val sfxTextArea: TextArea = jfxTextArea
-    sfxTextArea.delegate should be(jfxTextArea)
-  }
 }

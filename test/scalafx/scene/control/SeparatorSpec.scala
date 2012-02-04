@@ -27,34 +27,33 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.scene.{control => jfxsc}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ control => jfxsc }
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import scalafx.testutil.AbstractSFXDelegateSpec
 
 @RunWith(classOf[JUnitRunner])
-class SeparatorSpec extends FlatSpec with PropertyComparator {
-  "A Separator" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsc.Separator], classOf[Separator])
+/**
+ * Separator Spec tests.
+ * 
+ * @author rafael.afonso
+ *
+ */
+class SeparatorSpec extends AbstractSFXDelegateSpec[jfxsc.Separator, Separator, jfxsc.SeparatorBuilder[_]](classOf[jfxsc.Separator], classOf[Separator], classOf[jfxsc.SeparatorBuilder[_]]) {
+
+  protected def getScalaClassInstance = new Separator(new jfxsc.Separator)
+
+  protected def convertScalaClassToJavaClass(sfxControl: Separator) = {
+    val jfxSeparator: jfxsc.Separator = sfxControl
+    jfxSeparator
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsc.SeparatorBuilder[_]], classOf[Separator])
-  }
+  protected def getJavaClassInstance = new jfxsc.Separator
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxSeparator = new Separator(new jfxsc.Separator())
-    val jfxSeparator: jfxsc.Separator = sfxSeparator
-    jfxSeparator should be(sfxSeparator.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxSeparator = new jfxsc.Separator()
-    val sfxSeparator: Separator = jfxSeparator
-    sfxSeparator.delegate should be(jfxSeparator)
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Separator) = {
+    val sfxSeparator: Separator = jfxControl
+    sfxSeparator
   }
 
 }

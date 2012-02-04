@@ -27,36 +27,32 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+import javafx.scene.{ control => jfxsc }
 import org.junit.runner.RunWith
-import org.scalatest.matchers.ShouldMatchers.be
-import org.scalatest.matchers.ShouldMatchers.convertToAnyRefShouldWrapper
-import org.scalatest.FlatSpec
-import javafx.scene.{control => jfxsc}
-import scalafx.Includes.jfxCheckBox2sfx
-import scalafx.scene.control.CheckBox.sfxCheckBox2jfx
-import scalafx.testutil.PropertyComparator
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
 
 @RunWith(classOf[JUnitRunner])
-class CheckBoxSpec extends FlatSpec with PropertyComparator {
-  "A CheckBox" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsc.CheckBox], classOf[CheckBox])
+/**
+ * CheckBox Spec tests.
+ * 
+ * @author rafael.afonso
+ */
+class CheckBoxSpec extends AbstractSFXDelegateSpec[jfxsc.CheckBox, CheckBox, jfxsc.CheckBoxBuilder[_]](classOf[jfxsc.CheckBox], classOf[CheckBox], classOf[jfxsc.CheckBoxBuilder[_]]) {
+
+  protected def getScalaClassInstance = new CheckBox(new jfxsc.CheckBox)
+
+  protected def convertScalaClassToJavaClass(sfxControl: CheckBox) = {
+    val jfxCheckBox: jfxsc.CheckBox = sfxControl
+    jfxCheckBox
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsc.CheckBoxBuilder[_]], classOf[CheckBox])
-  }
+  protected def getJavaClassInstance = new jfxsc.CheckBox
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxCheckBox = new CheckBox(new jfxsc.CheckBox())
-    val jfxCheckBox: jfxsc.CheckBox = sfxCheckBox
-    jfxCheckBox should be(sfxCheckBox.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxCheckBox = new jfxsc.CheckBox()
-    val sfxCheckBox: CheckBox = jfxCheckBox
-    sfxCheckBox.delegate should be(jfxCheckBox)
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.CheckBox) = {
+    val sfxCheckBox: CheckBox = jfxControl
+    sfxCheckBox
   }
 
 }
