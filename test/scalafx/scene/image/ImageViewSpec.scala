@@ -32,25 +32,30 @@ import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.testutil.PropertyComparator
 import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-class ImageViewSpec extends FlatSpec with PropertyComparator {
-  "A ImageView" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsi.ImageView], classOf[ImageView])
+@RunWith(classOf[JUnitRunner])
+/**
+ * ImageView Spec tests.
+ * 
+ *
+ */
+class ImageViewSpec extends AbstractSFXDelegateSpec[jfxsi.ImageView, ImageView, jfxsi.ImageViewBuilder[_]](classOf[jfxsi.ImageView], classOf[ImageView], classOf[jfxsi.ImageViewBuilder[_]]) {
+
+  protected def getScalaClassInstance = new ImageView(new jfxsi.ImageView)
+
+  protected def convertScalaClassToJavaClass(sfxControl: ImageView) = {
+    val jfxImageView: jfxsi.ImageView = sfxControl
+    jfxImageView
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsi.ImageViewBuilder[_]], classOf[ImageView])
+  protected def getJavaClassInstance = new jfxsi.ImageView
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsi.ImageView) = {
+    val sfxImageView: ImageView = jfxControl
+    sfxImageView
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxImageView = new ImageView(new jfxsi.ImageView()) {}
-    val jfxImageView: jfxsi.ImageView = sfxImageView
-    jfxImageView should be(sfxImageView.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxImageView = new jfxsi.ImageView()
-    val sfxImageView: ImageView = jfxImageView
-    sfxImageView.delegate should be(jfxImageView)
-  }
 }

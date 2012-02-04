@@ -4,26 +4,30 @@ import javafx.scene.{effect => jfxse}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import scalafx.testutil.AbstractSFXDelegateSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-class DropShadowSpec extends FlatSpec with PropertyComparator {
-  "An DropShadow" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxse.DropShadow], classOf[DropShadow])
+@RunWith(classOf[JUnitRunner])
+/**
+ * DropShadow Spec tests.
+ * 
+ *
+ */
+class DropShadowSpec extends AbstractSFXDelegateSpec[jfxse.DropShadow, DropShadow, jfxse.DropShadowBuilder[_]](classOf[jfxse.DropShadow], classOf[DropShadow], classOf[jfxse.DropShadowBuilder[_]]) {
+
+  protected def getScalaClassInstance = new DropShadow(new jfxse.DropShadow)
+
+  protected def convertScalaClassToJavaClass(sfxObject: DropShadow) = {
+    val jfxDropShadow: jfxse.DropShadow = sfxObject
+    jfxDropShadow
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxse.DropShadowBuilder[_]], classOf[DropShadow])
+  protected def getJavaClassInstance = new jfxse.DropShadow
+
+  protected def convertJavaClassToScalaClass(jfxObject: jfxse.DropShadow) = {
+    val sfxDropShadow: DropShadow = jfxObject
+    sfxDropShadow
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxDropShadow = new DropShadow() {}
-    val jfxDropShadow: jfxse.DropShadow = sfxDropShadow
-    jfxDropShadow should be (sfxDropShadow.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxDropShadow = new jfxse.DropShadow() {}
-    val sfxDropShadow: DropShadow = jfxDropShadow
-    sfxDropShadow.delegate should be (jfxDropShadow)
-  }
 }

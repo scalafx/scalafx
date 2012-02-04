@@ -32,25 +32,30 @@ import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
+import scalafx.testutil.AbstractSFXDelegateSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-class ToggleButtonSpec extends FlatSpec with PropertyComparator {
-  "A ToggleButton" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsc.ToggleButton], classOf[ToggleButton])
+@RunWith(classOf[JUnitRunner])
+/**
+ * ToggleButton Spec tests.
+ * 
+ *
+ */
+class ToggleToggleButtonSpec extends AbstractSFXDelegateSpec[jfxsc.ToggleButton, ToggleButton, jfxsc.ToggleButtonBuilder[_]](classOf[jfxsc.ToggleButton], classOf[ToggleButton], classOf[jfxsc.ToggleButtonBuilder[_]]) {
+
+  protected def getScalaClassInstance = new ToggleButton(new jfxsc.ToggleButton)
+
+  protected def convertScalaClassToJavaClass(sfxControl: ToggleButton) = {
+    val jfxToggleButton: jfxsc.ToggleButton = sfxControl
+    jfxToggleButton
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsc.ToggleButtonBuilder[_]], classOf[ToggleButton])
+  protected def getJavaClassInstance = new jfxsc.ToggleButton
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ToggleButton) = {
+    val sfxToggleButton: ToggleButton = jfxControl
+    sfxToggleButton
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxToggleButton = new ToggleButton()
-    val jfxToggleButton: jfxsc.ToggleButton = sfxToggleButton
-    jfxToggleButton should be(sfxToggleButton.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxToggleButton = new jfxsc.ToggleButton()
-    val sfxToggleButton: ToggleButton = jfxToggleButton
-    sfxToggleButton.delegate should be(jfxToggleButton)
-  }
 }

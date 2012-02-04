@@ -27,30 +27,34 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
-import javafx.scene.{control => jfxsc}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
-import scalafx.testutil.PropertyComparator
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
+import javafx.scene.{control => jfxsc}
+import scalafx.testutil.PropertyComparator
+import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.Includes._
 
 @RunWith(classOf[JUnitRunner])
-class PasswordFieldSpec extends FlatSpec with PropertyComparator {
+/**
+ * PasswordField Spec tests.
+ *
+ */
+class PasswordFieldSpec extends AbstractSFXDelegateSpec[jfxsc.PasswordField, PasswordField, jfxsc.PasswordFieldBuilder[_]](classOf[jfxsc.PasswordField], classOf[PasswordField], classOf[jfxsc.PasswordFieldBuilder[_]]) {
 
-  val sfxPassswordField: PasswordField = new PasswordField
-  val jfxPassswordField: jfxsc.PasswordField = sfxPassswordField
+  protected def getScalaClassInstance = new PasswordField(new jfxsc.PasswordField)
 
-  "A PasswordField" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsc.PasswordField], classOf[PasswordField])
+  protected def convertScalaClassToJavaClass(sfxControl: PasswordField) = {
+    val jfxPasswordField: jfxsc.PasswordField = sfxControl
+    jfxPasswordField
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    jfxPassswordField should be(sfxPassswordField.delegate)
+  protected def getJavaClassInstance = new jfxsc.PasswordField
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.PasswordField) = {
+    val sfxPasswordField: PasswordField = jfxControl
+    sfxPasswordField
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    sfxPassswordField.delegate should be(jfxPassswordField)
-  }
 }
-

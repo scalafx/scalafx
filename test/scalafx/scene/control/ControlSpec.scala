@@ -29,30 +29,34 @@ package scalafx.scene.control
 
 import javafx.{scene => jfxs}
 import jfxs.{control => jfxsc}
-
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class ControlSpec extends FlatSpec with PropertyComparator {
-  "A Control" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsc.Control], classOf[Control])
-  }
+@RunWith(classOf[JUnitRunner])
+/**
+ * Control Spec tests.
+ * 
+ *
+ */
+class ControlSpec extends AbstractSFXDelegateSpec[jfxsc.Control, Control, jfxsc.ControlBuilder[_]](classOf[jfxsc.Control], classOf[Control], classOf[jfxsc.ControlBuilder[_]]) {
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsc.ControlBuilder[_]], classOf[Control])
-  }
+  protected def getScalaClassInstance = new Control(new jfxsc.Label) {}
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxControl = new Control(new Label()) {}
+  protected def convertScalaClassToJavaClass(sfxControl: Control) = {
     val jfxControl: jfxsc.Control = sfxControl
-    jfxControl should be (sfxControl.delegate)
+    jfxControl
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxControl = new jfxsc.Control() {}
+  protected def getJavaClassInstance = new jfxsc.Control() {}
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Control) = {
     val sfxControl: Control = jfxControl
-    sfxControl.delegate should be (jfxControl)
+    sfxControl
   }
+
 }

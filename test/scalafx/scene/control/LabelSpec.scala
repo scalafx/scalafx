@@ -32,26 +32,30 @@ import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
+import scalafx.testutil.AbstractSFXDelegateSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-class LabelSpec extends FlatSpec with PropertyComparator {
-  "A Label" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsc.Label], classOf[Label])
+@RunWith(classOf[JUnitRunner])
+/**
+ * Label Spec tests.
+ * 
+ *
+ */
+class LabelSpec extends AbstractSFXDelegateSpec[jfxsc.Label, Label, jfxsc.LabelBuilder[_]](classOf[jfxsc.Label], classOf[Label], classOf[jfxsc.LabelBuilder[_]]) {
+
+  protected def getScalaClassInstance = new Label(new jfxsc.Label)
+
+  protected def convertScalaClassToJavaClass(sfxControl: Label) = {
+    val jfxLabel: jfxsc.Label = sfxControl
+    jfxLabel
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsc.LabelBuilder[_]], classOf[Label])
+  protected def getJavaClassInstance = new jfxsc.Label
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Label) = {
+    val sfxLabel: Label = jfxControl
+    sfxLabel
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxLabel = new Label()
-    val jfxLabel: jfxsc.Label = sfxLabel
-    jfxLabel should be (sfxLabel.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxLabel = new jfxsc.Label()
-    val sfxLabel: Label = jfxLabel
-    sfxLabel.delegate should be (jfxLabel)
-  }
 }
-

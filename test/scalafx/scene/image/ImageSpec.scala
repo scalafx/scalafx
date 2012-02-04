@@ -32,7 +32,16 @@ import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.testutil.PropertyComparator
 import scalafx.Includes._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
+/**
+ * Image Spec tests.
+ * 
+ *
+ */
+// Can not be converted to AbstractSFXDelegateSpec subclass because Image has not its own Builder.
 class ImageSpec extends FlatSpec with PropertyComparator {
   "A Image" should "implement all the JavaFX properties" in {
     compareProperties(classOf[jfxsi.Image], classOf[Image])

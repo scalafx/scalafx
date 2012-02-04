@@ -32,25 +32,30 @@ import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class AccordionSpec extends FlatSpec with PropertyComparator {
-  "A Accordion" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsc.Accordion], classOf[Accordion])
+@RunWith(classOf[JUnitRunner])
+/**
+ * Accordion Spec tests.
+ * 
+ *
+ */
+class AccordionSpec extends AbstractSFXDelegateSpec[jfxsc.Accordion, Accordion, jfxsc.AccordionBuilder[_]](classOf[jfxsc.Accordion], classOf[Accordion], classOf[jfxsc.AccordionBuilder[_]]) {
+
+  protected def getScalaClassInstance = new Accordion(new jfxsc.Accordion)
+
+  protected def convertScalaClassToJavaClass(sfxControl: Accordion) = {
+    val jfxAccordion: jfxsc.Accordion = sfxControl
+    jfxAccordion
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsc.AccordionBuilder[_]], classOf[Accordion])
+  protected def getJavaClassInstance = new jfxsc.Accordion
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Accordion) = {
+    val sfxAccordion: Accordion = jfxControl
+    sfxAccordion
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxAccordion = new Accordion()
-    val jfxAccordion: jfxsc.Accordion = sfxAccordion
-    jfxAccordion should be (sfxAccordion.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxAccordion = new jfxsc.Accordion()
-    val sfxAccordion: Accordion = jfxAccordion
-    sfxAccordion.delegate should be (jfxAccordion)
-  }
 }

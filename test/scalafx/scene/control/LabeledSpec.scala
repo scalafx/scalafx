@@ -27,31 +27,35 @@
 
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class LabeledSpec extends FlatSpec with PropertyComparator {
-  "A Labeled" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsc.Labeled], classOf[Labeled])
+@RunWith(classOf[JUnitRunner]) 
+/**
+ * Labeled Spec tests.
+ * 
+ *
+ */
+class LabeledSpec extends AbstractSFXDelegateSpec[jfxsc.Labeled, Labeled, jfxsc.LabeledBuilder[_]](classOf[jfxsc.Labeled], classOf[Labeled], classOf[jfxsc.LabeledBuilder[_]]) {
+
+  protected def getScalaClassInstance = new Labeled(new Label) {}
+
+  protected def convertScalaClassToJavaClass(sfxControl: Labeled) = {
+    val jfxLabeled: jfxsc.Labeled = sfxControl
+    jfxLabeled
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsc.LabeledBuilder[_]], classOf[Labeled])
+  protected def getJavaClassInstance = new jfxsc.Labeled {}
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Labeled) = {
+    val sfxLabeled: Labeled = jfxControl
+    sfxLabeled
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxLabeled = new Labeled(new Label()) {}
-    val jfxLabeled: jfxsc.Labeled = sfxLabeled
-    jfxLabeled should be (sfxLabeled.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxLabeled = new jfxsc.Labeled() {}
-    val sfxLabeled: Labeled = jfxLabeled
-    sfxLabeled.delegate should be (jfxLabeled)
-  }
 }
-

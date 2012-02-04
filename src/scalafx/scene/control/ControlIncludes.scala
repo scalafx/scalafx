@@ -21,5 +21,8 @@ trait ControlIncludes {
   implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s) {}
   implicit def jfxTitledPane2sfx(t: jfxsc.TitledPane) = new TitledPane(t)
   implicit def jfxSeparator2sfx(s: jfxsc.Separator) = new Separator(s)
+  implicit def jfxPasswordField2sfx(v: jfxsc.PasswordField) = new PasswordField(v)
+  implicit def jfxTextField2sfx(v: jfxsc.TextField) = new TextField(v)
   implicit def jfxTextArea2sfx(t: jfxsc.TextArea) = new TextArea(t)
+  implicit def jfxTextInputControl2sfx(t: jfxsc.TextInputControl) = new TextInputControl(t) {}
 }

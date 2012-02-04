@@ -27,30 +27,35 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.scene.{control => jfxsc}
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
+
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.testutil.PropertyComparator
 
-class ChoiceBoxSpec[J <: AnyRef] extends FlatSpec with PropertyComparator {
-  "A ChoiceBox" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsc.ChoiceBox[J]], classOf[ChoiceBox[J]])
+@RunWith(classOf[JUnitRunner])
+/**
+ * ChoiceBox Spec tests.
+ * 
+ */
+class ChoiceBoxSpec[J <: AnyRef] extends AbstractSFXDelegateSpec[jfxsc.ChoiceBox[J], ChoiceBox[J], jfxsc.ChoiceBoxBuilder[J, _]](classOf[jfxsc.ChoiceBox[J]], classOf[ChoiceBox[J]], classOf[jfxsc.ChoiceBoxBuilder[J, _]]) {
+
+  protected def getScalaClassInstance = new ChoiceBox[J](new jfxsc.ChoiceBox[J])
+
+  protected def convertScalaClassToJavaClass(sfxControl: ChoiceBox[J]) = {
+    val jfxChoiceBox: jfxsc.ChoiceBox[J] = sfxControl
+    jfxChoiceBox
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsc.ChoiceBoxBuilder[J, _]], classOf[ChoiceBox[J]])
+  protected def getJavaClassInstance = new jfxsc.ChoiceBox[J]
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ChoiceBox[J]) = {
+    val sfxChoiceBox: ChoiceBox[J] = jfxControl
+    sfxChoiceBox
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxChoiceBox = new ChoiceBox[J]()
-    val jfxChoiceBox: jfxsc.ChoiceBox[J] = sfxChoiceBox
-    jfxChoiceBox should be(sfxChoiceBox.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxChoiceBox = new jfxsc.ChoiceBox[J]()
-    val sfxChoiceBox: ChoiceBox[J] = jfxChoiceBox
-    sfxChoiceBox.delegate should be(jfxChoiceBox)
-  }
 }

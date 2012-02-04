@@ -32,25 +32,30 @@ import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
+import scalafx.testutil.AbstractSFXDelegateSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-class ToggleGroupSpec extends FlatSpec with PropertyComparator {
-  "A ToggleGroup" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsc.ToggleGroup], classOf[ToggleGroup])
+@RunWith(classOf[JUnitRunner])
+/**
+ * ToggleGroup Spec tests.
+ * 
+ *
+ */
+class ToggleGroupSpec extends AbstractSFXDelegateSpec[jfxsc.ToggleGroup, ToggleGroup, jfxsc.ToggleGroupBuilder[_]](classOf[jfxsc.ToggleGroup], classOf[ToggleGroup], classOf[jfxsc.ToggleGroupBuilder[_]]) {
+
+  protected def getScalaClassInstance = new ToggleGroup(new jfxsc.ToggleGroup)
+
+  protected def convertScalaClassToJavaClass(sfxControl: ToggleGroup) = {
+    val jfxToggleGroup: jfxsc.ToggleGroup = sfxControl
+    jfxToggleGroup
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsc.ToggleGroupBuilder[_]], classOf[ToggleGroup])
+  protected def getJavaClassInstance = new jfxsc.ToggleGroup
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ToggleGroup) = {
+    val sfxToggleGroup: ToggleGroup = jfxControl
+    sfxToggleGroup
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxToggleGroup = new ToggleGroup()
-    val jfxToggleGroup: jfxsc.ToggleGroup = sfxToggleGroup
-    jfxToggleGroup should be(sfxToggleGroup.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxToggleGroup = new jfxsc.ToggleGroup()
-    val sfxToggleGroup: ToggleGroup = jfxToggleGroup
-    sfxToggleGroup.delegate should be(jfxToggleGroup)
-  }
 }

@@ -32,7 +32,15 @@ import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
+/**
+ * ButtonBase Spec tests.
+ * 
+ * Not possible convert to AbstractSFXDelegateSpec subclass
+ */
 class ButtonBaseSpec extends FlatSpec with PropertyComparator {
   "A ButtonBase" should "implement all the JavaFX properties" in {
     compareProperties(classOf[jfxsc.ButtonBase], classOf[ButtonBase])

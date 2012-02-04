@@ -32,25 +32,30 @@ import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class ButtonSpec extends FlatSpec with PropertyComparator {
-  "A Button" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsc.Button], classOf[Button])
+@RunWith(classOf[JUnitRunner])
+/**
+ * Button Spec tests.
+ * 
+ *
+ */
+class ButtonSpec extends AbstractSFXDelegateSpec[jfxsc.Button, Button, jfxsc.ButtonBuilder[_]](classOf[jfxsc.Button], classOf[Button], classOf[jfxsc.ButtonBuilder[_]]) {
+
+  protected def getScalaClassInstance = new Button(new jfxsc.Button)
+
+  protected def convertScalaClassToJavaClass(sfxControl: Button) = {
+    val jfxButton: jfxsc.Button = sfxControl
+    jfxButton
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsc.ButtonBuilder[_]], classOf[Button])
+  protected def getJavaClassInstance = new jfxsc.Button
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Button) = {
+    val sfxButton: Button = jfxControl
+    sfxButton
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxButton = new Button()
-    val jfxButton: jfxsc.Button = sfxButton
-    jfxButton should be(sfxButton.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxButton = new jfxsc.Button()
-    val sfxButton: Button = jfxButton
-    sfxButton.delegate should be(jfxButton)
-  }
 }
