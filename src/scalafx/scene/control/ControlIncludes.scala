@@ -12,6 +12,7 @@ trait ControlIncludes {
   implicit def jfxToggleGroup2sfx(tg: jfxsc.ToggleGroup) = new ToggleGroup(tg)
   implicit def jfxToggleButton2sfx(tb: jfxsc.ToggleButton) = new ToggleButton(tb)
   implicit def jfxRadioButton2sfx(rb: jfxsc.RadioButton) = new RadioButton(rb)
+  implicit def jfxButtonBase2sfx(b: jfxsc.ButtonBase) = new ButtonBase(b)
   implicit def jfxButton2sfx(b: jfxsc.Button) = new Button(b)
   implicit def jfxChoiceBox2sfx[J <: AnyRef](cb: jfxsc.ChoiceBox[J]) = new ChoiceBox[J](cb)
   implicit def jfxCheckBox2sfx(c: jfxsc.CheckBox) = new CheckBox(c)

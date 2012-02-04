@@ -27,13 +27,15 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.scene.{control => jfxsc}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
-import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
+
+import javafx.scene.{control => jfxsc}
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.PropertyComparator
 
 @RunWith(classOf[JUnitRunner])
 /**
@@ -41,24 +43,20 @@ import org.scalatest.junit.JUnitRunner
  * 
  * Not possible convert to AbstractSFXDelegateSpec subclass
  */
-class ButtonBaseSpec extends FlatSpec with PropertyComparator {
-  "A ButtonBase" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsc.ButtonBase], classOf[ButtonBase])
+class ButtonBaseSpec extends AbstractSFXDelegateSpec[jfxsc.ButtonBase, ButtonBase, jfxsc.ButtonBaseBuilder[_]](classOf[jfxsc.ButtonBase], classOf[ButtonBase], classOf[jfxsc.ButtonBaseBuilder[_]]) {
+
+  protected def getScalaClassInstance = new ButtonBase(new jfxsc.Button)
+
+  protected def convertScalaClassToJavaClass(sfxControl: ButtonBase) = {
+    val jfxChoiceBox: jfxsc.ButtonBase = sfxControl
+    jfxChoiceBox
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsc.ButtonBaseBuilder[_]], classOf[ButtonBase])
+  protected def getJavaClassInstance = new jfxsc.Button
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ButtonBase) = {
+    val sfxChoiceBox: ButtonBase = jfxControl
+    sfxChoiceBox
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxButtonBase = new ButtonBase(new jfxsc.Button())
-    val jfxButtonBase: jfxsc.ButtonBase = sfxButtonBase
-    jfxButtonBase should be(sfxButtonBase.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxButtonBase = new jfxsc.Button()
-    val sfxButtonBase: ButtonBase = jfxButtonBase
-    sfxButtonBase.delegate should be(jfxButtonBase)
-  }
 }
