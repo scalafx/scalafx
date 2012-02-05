@@ -1,4 +1,4 @@
-package scalafx.controls
+package scalafx.controls.controls
 
 import scalafx.Includes.eventClosureWrapper
 import scalafx.Includes.jfxStringProperty2sfx

@@ -29,9 +29,9 @@ package scalafx.controls
 
 import javafx.geometry.Pos
 import javafx.scene.layout.Priority
-import scalafx.Includes.jfxDoubleProperty2sfx
-import scalafx.Includes.jfxSceneProperty2sfx
 import scalafx.application.JFXApp
+import scalafx.controls.controls.TextFieldControls
+import scalafx.controls.controls.TextInputControlControls
 import scalafx.scene.control.TextField
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.FlowPane

@@ -8,6 +8,7 @@ import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.paint.Color
 import scalafx.scene.Scene
 import scalafx.stage.Stage
+import scalafx.controls.controls.ProgressIndicatorControls
 
 object ProgressIndicatorTest extends JFXApp {
 

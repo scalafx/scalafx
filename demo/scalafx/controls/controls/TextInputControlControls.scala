@@ -25,7 +25,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.controls
+package scalafx.controls.controls
 
 import javafx.scene.layout.Priority
 import javafx.scene.text.TextAlignment

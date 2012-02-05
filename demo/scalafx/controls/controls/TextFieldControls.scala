@@ -25,7 +25,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.controls
+package scalafx.controls.controls
 
 import javafx.beans.value.ObservableValue
 import javafx.beans.value.ChangeListener

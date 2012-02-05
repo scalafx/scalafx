@@ -1,4 +1,4 @@
-package scalafx.controls
+package scalafx.controls.controls
 
 import javafx.scene.layout.Priority
 import javafx.scene.text.TextAlignment

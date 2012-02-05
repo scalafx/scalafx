@@ -37,6 +37,8 @@ import scalafx.Includes.jfxSceneProperty2sfx
 import scalafx.Includes.observableList2ObservableBuffer
 import scalafx.application.JFXApp
 import scalafx.collections.ObservableBuffer
+import scalafx.controls.controls.PropertiesNodes
+import scalafx.controls.controls.TextInputControlControls
 import scalafx.scene.control.CheckBox
 import scalafx.scene.control.ChoiceBox
 import scalafx.scene.control.Label
