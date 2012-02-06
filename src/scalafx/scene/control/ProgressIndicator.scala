@@ -1,10 +1,8 @@
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
-import collection.JavaConversions._
 
 object ProgressIndicator {
   implicit def sfxProgressIndicator2jfx(v: ProgressIndicator) = v.delegate
