@@ -229,12 +229,10 @@ class StringConverterSpec extends FlatSpec {
   }
 
   private def testDoubleSimpleConverter {
-    val str = "7631251" + decimalSeparator + "0"
-    val value = 7631251d //.871
+    val str = "7631251.789"
+    val value = 7631251.789
 
-    // TODO: Why is DoubleSimpleConverter not working?
-    //    testConversion(doubleSimpleConverter, str, value, "doubleSimpleConverter", "Double")
-    "doubleSimpleConverter" should "convert '%s' in %f and vice-versa, but it is not. Why?".format(str, value) in {}
+    testConversion(doubleSimpleConverter, str, value, "doubleSimpleConverter", "Double")
     testIrregularStringConvertion(doubleSimpleConverter, true)
     testNullStringConvertion(doubleSimpleConverter, false)
   }
