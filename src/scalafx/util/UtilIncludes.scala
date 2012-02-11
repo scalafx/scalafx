@@ -35,4 +35,8 @@ object UtilIncludes extends UtilIncludes
 trait UtilIncludes {
   implicit def double2DurationHelper(d: Double) = new DurationHelper(d)
   implicit def jfxDuration2sfx(d: jfxu.Duration) = new Duration(d)
+  implicit def jfxStringConverter2sfx[T](c: jfxu.StringConverter[T]) = new StringConverter[T] {
+    def fromString(string: String): T = c.fromString(string)
+    def toString(t: T): String = c.toString(t)
+  }
 }
