@@ -1,18 +1,20 @@
 package scalafx.controls.controls
 
 import javafx.scene.layout.Priority
+import javafx.scene.text.FontWeight
 import javafx.scene.text.TextAlignment
 import scalafx.Includes.jfxLabeled2sfx
+import scalafx.beans.property._
 import scalafx.scene.Node.sfxNode2jfx
-import scalafx.scene.Node
-import scalafx.scene.control.Label
-import scalafx.scene.control.TitledPane
 import scalafx.scene.control.TitledPane._
+import scalafx.scene.control.Label
+import scalafx.scene.control.TextField
+import scalafx.scene.control.TitledPane
 import scalafx.scene.layout.GridPane.sfxGridPane2jfx
 import scalafx.scene.layout.GridPane
-import scalafx.scene.Node
 import scalafx.scene.text.Font._
-import javafx.scene.text.FontWeight
+import scalafx.scene.Node
+import scalafx.scene.Node
 
 /**
  * Basic class to control a control properties
@@ -34,9 +36,9 @@ abstract class PropertiesNodes[N <: Node](target: N, title: String) extends Titl
 
   /**
    * Add a Control Node with its respective title
-   * 
+   *
    * @param title Control Node title
-   * @param control Control Node 
+   * @param control Control Node
    */
   protected def addNode(title: String, control: Node) {
     controlsPane.add(new Label {
@@ -51,7 +53,7 @@ abstract class PropertiesNodes[N <: Node](target: N, title: String) extends Titl
 
   /**
    * Add a Control Node occupying 2 columns
-   * 
+   *
    * @param control Control Node
    */
   protected def addNode(control: Node) {
@@ -61,7 +63,7 @@ abstract class PropertiesNodes[N <: Node](target: N, title: String) extends Titl
 
   /**
    * Add 2 Controls Nodes to occupy a row.
-   * 
+   *
    * @param control1 Control Node 1
    * @param control2 Control Node 2
    */
@@ -71,15 +73,45 @@ abstract class PropertiesNodes[N <: Node](target: N, title: String) extends Titl
     index += 1
   }
 
+  protected def fillDoublePropertyFromText(property: DoubleProperty, field: TextField, cleanAfterAction: Boolean = true, onError: () => Unit = () => ()) {
+    try {
+      val txt = field.text.get
+      property.value = txt.toDouble
+    } catch {
+      case t: NumberFormatException => onError
+    }
+
+    if(cleanAfterAction) {
+      field.text = ""
+    }
+    
+  }
+  
+  protected def fillIntPropertyFromText(property: IntegerProperty, field: TextField, cleanAfterAction: Boolean = true, onError: () => Unit = () => ()) {
+    try {
+      val txt = field.text.get
+      property.value = txt.toInt
+    } catch {
+      case t: NumberFormatException => onError
+    }
+
+    if(cleanAfterAction) {
+      field.text = ""
+    }
+    
+  }
+  
+
+
   delegate.text = title
   content = controlsPane
 
 }
 
 object PropertiesNodes {
-  
+
   private val lblBase = new Label
   private val fontBase = lblBase.font.get()
-  
+
   val TitleFont = font(fontBase.getFamily, FontWeight.BOLD, fontBase.getSize)
 }

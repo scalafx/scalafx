@@ -1,27 +1,15 @@
 package scalafx.controls.controls
 
 import scalafx.Includes.eventClosureWrapper
-import scalafx.Includes.jfxStringProperty2sfx
+import scalafx.Includes._
 import scalafx.scene.control.Label
 import scalafx.scene.control.ProgressIndicator
 import scalafx.scene.control.TextField
 
 class ProgressIndicatorControls(target: ProgressIndicator) extends PropertiesNodes[ProgressIndicator](target, target.getClass().getSimpleName() + " Properties") {
 
-  val txfValue = new TextField {
-    onAction = setProgress
-  }
-
-  def setProgress {
-    try {
-      val txt = txfValue.text.get
-      target.progress = txt.toDouble
-    } catch {
-      case t: NumberFormatException => target.progress = ProgressIndicator.INDETERMINATE_PROGRESS
-    }
-    
-    txfValue.text = ""
-  }
+  val txfValue = new TextField 
+  txfValue.onAction = fillDoublePropertyFromText(target.progress, txfValue, true, () => (target.progress = ProgressIndicator.INDETERMINATE_PROGRESS)) 
 
   val lblRealValue = new Label {
     text <== target.progress.asString()

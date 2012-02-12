@@ -1,3 +1,5 @@
+package scalafx.scene.control
+
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -25,53 +27,35 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.controls
+import javafx.scene.{control => jfxsc}
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
+import scalafx.testutil.PropertyComparator
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-import javafx.geometry.Pos
-import javafx.scene.layout.Priority
-import scalafx.application.JFXApp
-import scalafx.controls.controls.TextFieldControls
-import scalafx.controls.controls.TextInputControlControls
-import scalafx.scene.control.TextField
-import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.FlowPane
-import scalafx.scene.layout.VBox
-import scalafx.scene.paint.Color.sfxColor2jfx
-import scalafx.scene.paint.Color
-import scalafx.scene.Scene
-import scalafx.stage.Stage
-import scalafx.controls.controls.ControlControls
+@RunWith(classOf[JUnitRunner])
+/**
+ * Slider Spec tests.
+ * 
+ *
+ */
+class SliderSpec extends AbstractSFXDelegateSpec[jfxsc.Slider, Slider, jfxsc.SliderBuilder[_]](classOf[jfxsc.Slider], classOf[Slider], classOf[jfxsc.SliderBuilder[_]]) {
 
-object TextFieldTest extends JFXApp {
+  protected def getScalaClassInstance = new Slider(new jfxsc.Slider)
 
-  val textField = new TextField
-
-  val controlsPane = new VBox {
-    spacing = 5
-    fillWidth = true
-    innerAlignment = Pos.CENTER
-    hgrow = Priority.NEVER
-    content = List(new TextFieldControls(textField), new TextInputControlControls(textField), new ControlControls(textField))
+  protected def convertScalaClassToJavaClass(sfxControl: Slider) = {
+    val jfxSlider: jfxsc.Slider = sfxControl
+    jfxSlider
   }
 
-  val mainPane = new BorderPane {
-    top = new FlowPane {
-      content = List(textField)
-    }
-    center = controlsPane
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
-  }
+  protected def getJavaClassInstance = new jfxsc.Slider
 
-  stage = new Stage {
-    title = "TextField Test"
-    width = 300
-    height = 380
-    scene = new Scene {
-      fill = Color.LIGHTGRAY
-      content = mainPane
-    }
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Slider) = {
+    val sfxSlider: Slider = jfxControl
+    sfxSlider
   }
 
 }
-
