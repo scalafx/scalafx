@@ -3,11 +3,11 @@ package scalafx.controls.controls
 import javafx.scene.layout.Priority
 import javafx.scene.text.FontWeight
 import javafx.scene.text.TextAlignment
-import scalafx.Includes.jfxLabeled2sfx
+import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.scene.Node.sfxNode2jfx
 import scalafx.scene.control.TitledPane._
-import scalafx.scene.control.Label
+import scalafx.scene.control._
 import scalafx.scene.control.TextField
 import scalafx.scene.control.TitledPane
 import scalafx.scene.layout.GridPane.sfxGridPane2jfx
@@ -15,6 +15,7 @@ import scalafx.scene.layout.GridPane
 import scalafx.scene.text.Font._
 import scalafx.scene.Node
 import scalafx.scene.Node
+import javafx.geometry.Pos
 
 /**
  * Basic class to control a control properties
@@ -24,9 +25,17 @@ import scalafx.scene.Node
  *  @param target Node to be manipulated
  *  @param title TitledPane titled
  */
-abstract class PropertiesNodes[N <: Node](target: N, title: String) extends TitledPane {
+abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
 
   private var index = 0
+
+  protected def resetProperties = {}
+
+  protected val btnReset = new Button {
+    text = "Reset"
+    onAction = resetProperties
+    alignment = Pos.CENTER
+  }
 
   private val controlsPane = new GridPane {
     hgap = 5
@@ -81,12 +90,12 @@ abstract class PropertiesNodes[N <: Node](target: N, title: String) extends Titl
       case t: NumberFormatException => onError
     }
 
-    if(cleanAfterAction) {
+    if (cleanAfterAction) {
       field.text = ""
     }
-    
+
   }
-  
+
   protected def fillIntPropertyFromText(property: IntegerProperty, field: TextField, cleanAfterAction: Boolean = true, onError: () => Unit = () => ()) {
     try {
       val txt = field.text.get
@@ -95,13 +104,11 @@ abstract class PropertiesNodes[N <: Node](target: N, title: String) extends Titl
       case t: NumberFormatException => onError
     }
 
-    if(cleanAfterAction) {
+    if (cleanAfterAction) {
       field.text = ""
     }
-    
-  }
-  
 
+  }
 
   delegate.text = title
   content = controlsPane

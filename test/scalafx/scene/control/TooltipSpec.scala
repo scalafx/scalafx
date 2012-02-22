@@ -1,5 +1,6 @@
 package scalafx.scene.control
 
+
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -31,31 +32,32 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
-
-import javafx.scene.{control => jfxsc}
-import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import javafx.scene.{ control => jfxsc }
 import scalafx.testutil.PropertyComparator
+import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.Includes._
+import scalafx.scene.control._
 
-@RunWith(classOf[JUnitRunner])
+@RunWith(classOf[JUnitRunner]) 
 /**
- * ButtonBase Spec tests.
- * 
+ * Tooltip Spec tests.
+ * <b>CAUTION: IT IS NOT POSSIBLE RUN THIS TEST CORRECTLY! WHEN IT IS DONE "new javafx.scene.control.Tooltip" IT IS THROWN A ILLEGALSTATEEXCEPTION WITH MESSAGE: 
+ * "Not on FX application thread; currentThread = main"! JavaFX does not allow instantiate a Tooltip instance outside FX application thread.</b> 
  */
-class ButtonBaseSpec extends AbstractSFXDelegateSpec[jfxsc.ButtonBase, ButtonBase, jfxsc.ButtonBaseBuilder[_]](classOf[jfxsc.ButtonBase], classOf[ButtonBase], classOf[jfxsc.ButtonBaseBuilder[_]]) {
+class TooltipSpec extends AbstractSFXDelegateSpec[jfxsc.Tooltip, Tooltip, jfxsc.TooltipBuilder[_]](classOf[jfxsc.Tooltip], classOf[Tooltip], classOf[jfxsc.TooltipBuilder[_]]) {
 
-  protected def getScalaClassInstance = new ButtonBase(new jfxsc.Button)
+  protected def getScalaClassInstance = new Tooltip(new jfxsc.Tooltip)
 
-  protected def convertScalaClassToJavaClass(sfxControl: ButtonBase) = {
-    val jfxChoiceBox: jfxsc.ButtonBase = sfxControl
-    jfxChoiceBox
+  protected def convertScalaClassToJavaClass(sfxControl: Tooltip) = {
+    val jfxTooltip: jfxsc.Tooltip = sfxControl
+    jfxTooltip
   }
 
-  protected def getJavaClassInstance = new jfxsc.Button
+  protected def getJavaClassInstance = new jfxsc.Tooltip
 
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ButtonBase) = {
-    val sfxChoiceBox: ButtonBase = jfxControl
-    sfxChoiceBox
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Tooltip) = {
+    val sfxTooltip: Tooltip = jfxControl
+    sfxTooltip
   }
 
 }

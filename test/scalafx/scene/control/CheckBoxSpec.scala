@@ -37,7 +37,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 /**
  * CheckBox Spec tests.
  * 
- * @author rafael.afonso
  */
 class CheckBoxSpec extends AbstractSFXDelegateSpec[jfxsc.CheckBox, CheckBox, jfxsc.CheckBoxBuilder[_]](classOf[jfxsc.CheckBox], classOf[CheckBox], classOf[jfxsc.CheckBoxBuilder[_]]) {
 

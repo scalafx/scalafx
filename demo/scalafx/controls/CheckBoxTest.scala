@@ -32,14 +32,16 @@ import javafx.event.ActionEvent
 import javafx.geometry.Pos
 import javafx.scene.layout.Priority
 import scalafx.Includes.eventClosureWrapper
+import scalafx.Includes.jfxBooleanProperty2sfx
 import scalafx.Includes.jfxStringProperty2sfx
-import scalafx.Includes.when
 import scalafx.application.JFXApp
+import scalafx.controls.controls.ControlControls
 import scalafx.controls.controls.PropertiesNodes
 import scalafx.scene.control.Button
 import scalafx.scene.control.CheckBox
 import scalafx.scene.control.Label
 import scalafx.scene.control.TextField
+import scalafx.scene.control.ToggleButton
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color.sfxColor2jfx
@@ -58,7 +60,7 @@ object CheckBoxTest extends JFXApp {
     fillWidth = true
     innerAlignment = Pos.CENTER
     hgrow = Priority.NEVER
-    content = List(new CheckBoxControls(check))
+    content = List(new CheckBoxControls(check), new ControlControls(check))
   }
 
   val mainPane = new BorderPane {
@@ -71,7 +73,7 @@ object CheckBoxTest extends JFXApp {
   stage = new Stage {
     title = "CheckBox Test"
     width = 300
-    height = 200
+    height = 500
     scene = new Scene {
       fill = Color.LIGHTGRAY
       content = mainPane
@@ -91,13 +93,9 @@ class CheckBoxControls(check: CheckBox) extends PropertiesNodes[CheckBox](check,
     }
   }
 
-  val btnAllowIndeterminate = new Button {
+  val btnAllowIndeterminate = new ToggleButton {
     text = "Allow Indeterminate"
-    onAction = (check.allowIndeterminate = !check.allowIndeterminate.get())
-  }
-
-  val lblAllowIndeterminate = new Label {
-    text <== when(check.allowIndeterminate) then "Can be Indeterminate" otherwise "Can not be Indeterminate"
+    selected <==> check.allowIndeterminate
   }
 
   val btnFire = new Button {
@@ -110,8 +108,7 @@ class CheckBoxControls(check: CheckBox) extends PropertiesNodes[CheckBox](check,
   }
 
   super.addNode("Selected", lblSelected)
-  super.addNodes(btnAllowIndeterminate, lblAllowIndeterminate)
-  super.addNode(btnFire)
+  super.addNodes(btnAllowIndeterminate, btnFire)
   super.addNode("Text", txfText)
-  
+
 }

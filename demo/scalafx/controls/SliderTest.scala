@@ -55,7 +55,7 @@ object SliderTest extends JFXApp {
 
 class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Slider Properties") {
 
-  private def resetValues {
+  override protected def resetProperties {
     target.value = originalValue
     target.blockIncrement = originalBlockIncrement
     txfLabelFormatter.text = null
@@ -152,12 +152,6 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   target.orientation.onChange(rdbHorizontal.selected = (target.orientation.get() == Orientation.HORIZONTAL))
   tggOrientation.selectedToggle.onChange {
     target.orientation = if (rdbHorizontal.selected.get) Orientation.HORIZONTAL else Orientation.VERTICAL
-  }
-
-  val btnReset = new Button {
-    text = "Reset"
-    onAction = resetValues
-    alignment = Pos.CENTER
   }
 
   super.addNode("Value", txfValue)

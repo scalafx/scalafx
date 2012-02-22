@@ -45,6 +45,7 @@ import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.paint.Color
 import scalafx.scene.Scene
 import scalafx.stage.Stage
+import controls.ControlControls
 
 object PasswordFieldTest extends JFXApp {
 
@@ -55,7 +56,7 @@ object PasswordFieldTest extends JFXApp {
     fillWidth = true
     innerAlignment = Pos.CENTER
     hgrow = Priority.NEVER
-    content = List(new PasswordFieldControls(passwordField), new TextFieldControls(passwordField), new TextInputControlControls(passwordField))
+    content = List(new PasswordFieldControls(passwordField), new TextFieldControls(passwordField), new TextInputControlControls(passwordField), new ControlControls(passwordField))
   }
 
   val mainPane = new BorderPane {

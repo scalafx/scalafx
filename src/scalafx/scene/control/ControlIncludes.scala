@@ -26,7 +26,9 @@ trait ControlIncludes {
   implicit def jfxProgressIndicator2sfx(p: jfxsc.ProgressIndicator) = new ProgressIndicator(p)
   implicit def jfxProgressBar2sfx(p: jfxsc.ProgressBar) = new ProgressBar(p)
   implicit def jfxPasswordField2sfx(v: jfxsc.PasswordField) = new PasswordField(v)
+  implicit def jfxPopupControl2sfx(v: jfxsc.PopupControl) = new PopupControl(v)
   implicit def jfxTextField2sfx(v: jfxsc.TextField) = new TextField(v)
   implicit def jfxTextArea2sfx(t: jfxsc.TextArea) = new TextArea(t)
   implicit def jfxTextInputControl2sfx(t: jfxsc.TextInputControl) = new TextInputControl(t) {}
+  implicit def jfxTooltip2sfx(t: jfxsc.Tooltip) = new Tooltip(t) {}
 }

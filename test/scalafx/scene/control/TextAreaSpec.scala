@@ -37,8 +37,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 /**
  * TextArea Spec tests.
  * 
- * @author rafael.afonso
- *
  */
 class TextAreaSpec extends AbstractSFXDelegateSpec[jfxsc.TextArea, TextArea, jfxsc.TextAreaBuilder[_]](classOf[jfxsc.TextArea], classOf[TextArea], classOf[jfxsc.TextAreaBuilder[_]]) {
 

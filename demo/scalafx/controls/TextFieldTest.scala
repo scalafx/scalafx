@@ -41,6 +41,7 @@ import scalafx.scene.paint.Color
 import scalafx.scene.Scene
 import scalafx.stage.Stage
 import scalafx.controls.controls.ControlControls
+import scalafx.Includes._
 
 object TextFieldTest extends JFXApp {
 
@@ -66,12 +67,15 @@ object TextFieldTest extends JFXApp {
   stage = new Stage {
     title = "TextField Test"
     width = 300
-    height = 380
+    height = 400
     scene = new Scene {
       fill = Color.LIGHTGRAY
       content = mainPane
     }
   }
+  mainPane.prefHeight <== stage.scene.height
+  mainPane.prefWidth <== stage.scene.width
+  
 
 }
 

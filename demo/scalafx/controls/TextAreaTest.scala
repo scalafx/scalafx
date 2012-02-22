@@ -49,13 +49,14 @@ import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.paint.Color
 import scalafx.scene.Scene
 import scalafx.stage.Stage
+import scalafx.controls.controls.ControlControls
 
 object TextAreaTest extends JFXApp {
 
   lazy val textArea = new TextArea {
     prefColumnCount = 20
-    prefHeight <== scene.height
-    hgrow = Priority.ALWAYS
+//    prefHeight <== scene.height
+//    hgrow = Priority.ALWAYS
   }
 
   val controlsPane = new VBox {
@@ -64,14 +65,14 @@ object TextAreaTest extends JFXApp {
     innerAlignment = Pos.CENTER
     prefHeight <== scene.height
     hgrow = Priority.NEVER
-    content = List(new TextAreaControls(textArea), new TextInputControlControls(textArea))
+    content = List(new TextAreaControls(textArea), new TextInputControlControls(textArea), new ControlControls(textArea))
   }
 
   val mainPane = new BorderPane {
-    center = textArea
-    right = controlsPane
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
+    top = textArea
+    center = controlsPane
+//    vgrow = Priority.ALWAYS
+//    hgrow = Priority.ALWAYS
   }
 
   stage = new Stage {

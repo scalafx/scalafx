@@ -32,30 +32,37 @@ import org.scalatest.junit.JUnitRunner
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.testutil.PropertyComparator
+import scalafx.scene.control._
 
-@RunWith(classOf[JUnitRunner])
+@RunWith(classOf[JUnitRunner]) 
 /**
- * ButtonBase Spec tests.
- * 
+ * PopupControl Spec tests.
+ * <b>CAUTION: IT IS NOT POSSIBLE RUN THIS TEST CORRECTLY! WHEN IT IS DONE "new javafx.scene.control.PopupControl" IT IS THROWN A ILLEGALSTATEEXCEPTION WITH MESSAGE: 
+ * "Not on FX application thread; currentThread = main"! JavaFX does not allow instantiate a PopupControl instance outside FX application thread.</b> 
  */
-class ButtonBaseSpec extends AbstractSFXDelegateSpec[jfxsc.ButtonBase, ButtonBase, jfxsc.ButtonBaseBuilder[_]](classOf[jfxsc.ButtonBase], classOf[ButtonBase], classOf[jfxsc.ButtonBaseBuilder[_]]) {
+class PopupControlSpec extends AbstractSFXDelegateSpec[jfxsc.PopupControl, PopupControl, jfxsc.PopupControlBuilder[_]](classOf[jfxsc.PopupControl], classOf[PopupControl], classOf[jfxsc.PopupControlBuilder[_]]) {
 
-  protected def getScalaClassInstance = new ButtonBase(new jfxsc.Button)
+  protected def getScalaClassInstance = new PopupControl(getJavaClassInstance)
 
-  protected def convertScalaClassToJavaClass(sfxControl: ButtonBase) = {
-    val jfxChoiceBox: jfxsc.ButtonBase = sfxControl
-    jfxChoiceBox
+  protected def convertScalaClassToJavaClass(sfxControl: PopupControl) = {
+    val jfxPopupControl: jfxsc.PopupControl = sfxControl
+    jfxPopupControl
   }
 
-  protected def getJavaClassInstance = new jfxsc.Button
+  protected def getJavaClassInstance = {
+    val label = new jfxsc.Label
+    label.setTooltip(new jfxsc.Tooltip)
+    val popupControl: PopupControl = label.getTooltip()
+    popupControl
+  }
 
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ButtonBase) = {
-    val sfxChoiceBox: ButtonBase = jfxControl
-    sfxChoiceBox
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.PopupControl) = {
+    val sfxPopupControl: PopupControl = jfxControl
+    sfxPopupControl
   }
 
 }
