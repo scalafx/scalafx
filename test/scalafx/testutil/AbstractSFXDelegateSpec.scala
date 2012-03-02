@@ -27,15 +27,11 @@ package scalafx.testutil
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import org.scalatest.matchers.ShouldMatchers.be
-import org.scalatest.matchers.ShouldMatchers.convertToAnyShouldWrapper
-import org.scalatest.FlatSpec
-
 import javafx.util.Builder
 import scalafx.util.SFXDelegate
 
 /**
- * Abstract class for SFXDelegate controls Spec tests.
+ * Abstract class for SFXDelegate controls Spec tests with Builder subclasses tests.
  *
  * @tparam J JavaFX class
  * @tparam S SFXDelegate subclass related with JavaFX class
@@ -45,71 +41,15 @@ import scalafx.util.SFXDelegate
  * @param scalaClass SFXDelegate subclass related with JavaFX class
  * @param javaBuilderClass Builder subclass related with JavaFX class
  *
- * @todo If B is made like a javafx.util.Builder (B <: javafx.util.Builder[_]) scala compiler shows message: "type arguments 
- * [javafx.scene.control.CheckBox,scalafx.scene.control.CheckBox,javafx.scene. control.CheckBoxBuilder[_]] do not conform to class AbstractSFXDelegateSpec's 
- * type parameter bounds [J <: java.lang.Object,S <: scalafx.util.SFXDelegate[J],B <: javafx.util.Builder[_]]". Only when remove B binding with Builder 
+ * @todo If B is made like a javafx.util.Builder (B <: javafx.util.Builder[_]) scala compiler shows message: "type arguments
+ * [javafx.scene.control.CheckBox,scalafx.scene.control.CheckBox,javafx.scene. control.CheckBoxBuilder[_]] do not conform to class AbstractSFXDelegateSpec's
+ * type parameter bounds [J <: java.lang.Object,S <: scalafx.util.SFXDelegate[J],B <: javafx.util.Builder[_]]". Only when remove B binding with Builder
  * compiler problems disappear. So it must be finded a way to put bind beetween B and Builder without create problems with compiler.
  */
-abstract class AbstractSFXDelegateSpec[J <: Object, S <: SFXDelegate[J], B](javaClass: Class[J], scalaClass: Class[S], javaBuilderClass: Class[B]) extends FlatSpec with PropertyComparator {
-
-  /**
-   * Returns a new SFXDelegate subclass instance:
-   * {{{
-   * protected def getScalaClassInstance = new Separator(new jfxsc.Separator())
-   * }}}
-   */
-  protected def getScalaClassInstance: S
-
-  /**
-   * Returns a SFXDelegate instance as JavaFX object
-   * {{{
-   * protected def convertScalaClassToJavaClass(sfxControl: Separator) = {
-   *   val jfxSeparator: jfxsc.Separator = sfxControl
-   *   jfxSeparator
-   * }
-   * }}}
-   */
-  protected def convertScalaClassToJavaClass(sfxObject: S): J
-
-  /**
-   * Returns a new JavaFX class instance:
-   * {{{
-   * protected def getJavaClassInstance = new jfxsc.Separator
-   * }}}
-   */
-  protected def getJavaClassInstance: J
-
-  /**
-   * Returns a JavaFX instance as a SFXDelegate object
-   * {{{
-   * protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Separator) = {
-   *   val sfxSeparator: Separator = jfxControl
-   *   sfxSeparator
-   * }
-   * }}}
-   */
-  protected def convertJavaClassToScalaClass(jfxObject: J): S
-
-  "A %s".format(scalaClass.getSimpleName) should "implement all the JavaFX properties" in {
-    compareProperties(javaClass, scalaClass)
-  }
+abstract class AbstractSFXDelegateSpec[J <: Object, S <: SFXDelegate[J], B](javaClass: Class[J], scalaClass: Class[S], javaBuilderClass: Class[B]) extends SimpleSFXDelegateSpec[J, S](javaClass, scalaClass) {
 
   it should "implement all the JavaFX builder properties" in {
     compareBuilderProperties(javaBuilderClass.asInstanceOf[Class[Builder[_]]], scalaClass)
-  }
-
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxObject = getScalaClassInstance
-    val jfxObject: J = convertScalaClassToJavaClass(sfxObject)
-
-    jfxObject should be(sfxObject.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxObject = getJavaClassInstance
-    val sfxObject: S = convertJavaClassToScalaClass(jfxObject)
-
-    sfxObject.delegate should be(jfxObject)
   }
 
 }

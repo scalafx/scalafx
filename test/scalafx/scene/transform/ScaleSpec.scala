@@ -1,3 +1,5 @@
+package scalafx.scene.transform
+
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -25,13 +27,36 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.geometry
+import javafx.scene.{ transform => jfxst }
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
+import scalafx.Includes._
+import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
-import javafx.{geometry => jfxg}
+@RunWith(classOf[JUnitRunner])
+/**
+ * Scale Spec tests.
+ * 
+ *
+ */
+class ScaleSpec extends AbstractSFXDelegateSpec[jfxst.Scale, Scale, jfxst.ScaleBuilder[_]](classOf[jfxst.Scale], classOf[Scale], classOf[jfxst.ScaleBuilder[_]]) {
 
-object GeometryIncludes extends GeometryIncludes
+  protected def getScalaClassInstance = new Scale(new jfxst.Scale) 
 
-trait GeometryIncludes {
-  implicit def jfxInsets2sfx(v: jfxg.Insets) = new Insets(v)
-  implicit def jfxPoint3D2sfx(p: jfxg.Point3D) = new Point3D(p.getX(), p.getY(), p.getZ())
+  protected def convertScalaClassToJavaClass(sfxControl: Scale) = {
+    val jfxScale: jfxst.Scale = sfxControl
+    jfxScale
+  }
+
+  protected def getJavaClassInstance = new jfxst.Scale 
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxst.Scale) = {
+    val sfxScale: Scale = jfxControl
+    sfxScale
+  }
+
 }

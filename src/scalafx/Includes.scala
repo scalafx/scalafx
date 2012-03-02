@@ -34,6 +34,7 @@ import event.EventIncludes
 import geometry.GeometryIncludes
 import scene.SceneIncludes
 import util.UtilIncludes
+import scalafx.scene.transform.TransformIncludes
 
 /**
  * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
@@ -44,4 +45,4 @@ import util.UtilIncludes
  */
 object Includes extends Includes
 
-trait Includes extends AnimationIncludes with CollectionIncludes with EventIncludes with SceneIncludes with BeanIncludes with UtilIncludes with GeometryIncludes
+trait Includes extends AnimationIncludes with CollectionIncludes with EventIncludes with SceneIncludes with BeanIncludes with UtilIncludes with GeometryIncludes with TransformIncludes

@@ -1,3 +1,5 @@
+package scalafx.scene.transform
+
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -25,13 +27,35 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.geometry
+import org.junit.runner.RunWith
+import javafx.scene.{ transform => jfxst }
+import scalafx.Includes.jfxTransform2sfx
+import scalafx.scene.transform.Transform.sfxTransform2jfx
+import scalafx.testutil.SimpleSFXDelegateSpec
+import org.scalatest.junit.JUnitRunner
 
-import javafx.{geometry => jfxg}
+@RunWith(classOf[JUnitRunner]) /**
+ * Transform Spec tests.
+ * 
+ *
+ */
+class TransformSpec extends SimpleSFXDelegateSpec[jfxst.Transform, Transform](classOf[jfxst.Transform], classOf[Transform]) {
 
-object GeometryIncludes extends GeometryIncludes
+  protected def getScalaClassInstance = new Transform(getJavaClassInstance) {}
 
-trait GeometryIncludes {
-  implicit def jfxInsets2sfx(v: jfxg.Insets) = new Insets(v)
-  implicit def jfxPoint3D2sfx(p: jfxg.Point3D) = new Point3D(p.getX(), p.getY(), p.getZ())
+  protected def convertScalaClassToJavaClass(sfxControl: Transform) = {
+    val jfxTransform: jfxst.Transform = sfxControl
+    jfxTransform
+  }
+
+  protected def getJavaClassInstance = new jfxst.Transform {
+    // This is a implementation of a abstract deprecated method in original class. Probably ot will be removed in future versions.
+    override def impl_apply(affine: com.sun.javafx.geom.transform.Affine3D) {}
+  }
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxst.Transform) = {
+    val sfxTransform: Transform = jfxControl
+    sfxTransform
+  }
+
 }

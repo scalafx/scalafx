@@ -1,3 +1,5 @@
+package scalafx.scene.transform
+
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -25,13 +27,35 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.geometry
+import javafx.scene.{ transform => jfxst }
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
+import scalafx.Includes._
+import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-import javafx.{geometry => jfxg}
+@RunWith(classOf[JUnitRunner])
+/**
+ * Translate Spec tests.
+ * 
+ *
+ */
+class TranslateSpec extends AbstractSFXDelegateSpec[jfxst.Translate, Translate, jfxst.TranslateBuilder[_]](classOf[jfxst.Translate], classOf[Translate], classOf[jfxst.TranslateBuilder[_]]) {
 
-object GeometryIncludes extends GeometryIncludes
+  protected def getScalaClassInstance = new Translate(new jfxst.Translate) 
 
-trait GeometryIncludes {
-  implicit def jfxInsets2sfx(v: jfxg.Insets) = new Insets(v)
-  implicit def jfxPoint3D2sfx(p: jfxg.Point3D) = new Point3D(p.getX(), p.getY(), p.getZ())
+  protected def convertScalaClassToJavaClass(sfxControl: Translate) = {
+    val jfxTranslate: jfxst.Translate = sfxControl
+    jfxTranslate
+  }
+
+  protected def getJavaClassInstance = new jfxst.Translate 
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxst.Translate) = {
+    val sfxTranslate: Translate = jfxControl
+    sfxTranslate
+  }
+
 }

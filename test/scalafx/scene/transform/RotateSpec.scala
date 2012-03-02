@@ -1,3 +1,4 @@
+package scalafx.scene.transform
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -25,13 +26,34 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.geometry
+import javafx.scene.{ transform => jfxst }
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
+import scalafx.Includes._
+import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-import javafx.{geometry => jfxg}
+@RunWith(classOf[JUnitRunner]) /**
+ * Rotate Spec tests.
+ * 
+ *
+ */
+class RotateSpec extends AbstractSFXDelegateSpec[jfxst.Rotate, Rotate, jfxst.RotateBuilder[_]](classOf[jfxst.Rotate], classOf[Rotate], classOf[jfxst.RotateBuilder[_]]) {
 
-object GeometryIncludes extends GeometryIncludes
+  protected def getScalaClassInstance = new Rotate(new jfxst.Rotate)
 
-trait GeometryIncludes {
-  implicit def jfxInsets2sfx(v: jfxg.Insets) = new Insets(v)
-  implicit def jfxPoint3D2sfx(p: jfxg.Point3D) = new Point3D(p.getX(), p.getY(), p.getZ())
+  protected def convertScalaClassToJavaClass(sfxControl: Rotate) = {
+    val jfxRotate: jfxst.Rotate = sfxControl
+    jfxRotate
+  }
+
+  protected def getJavaClassInstance = new jfxst.Rotate
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxst.Rotate) = {
+    val sfxRotate: Rotate = jfxControl
+    sfxRotate
+  }
+
 }

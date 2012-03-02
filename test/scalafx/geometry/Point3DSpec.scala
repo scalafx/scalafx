@@ -27,11 +27,29 @@
 
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
+import javafx.{ geometry => jfxg }
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
+import scalafx.Includes._
+import scalafx.testutil.PropertyComparator
+import scalafx.testutil.AbstractSFXDelegateSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-object GeometryIncludes extends GeometryIncludes
+@RunWith(classOf[JUnitRunner])
+class Point3DSpec extends AbstractSFXDelegateSpec[jfxg.Point3D, Point3D, jfxg.Point3DBuilder[_]](classOf[jfxg.Point3D], classOf[Point3D], classOf[jfxg.Point3DBuilder[_]]) {
 
-trait GeometryIncludes {
-  implicit def jfxInsets2sfx(v: jfxg.Insets) = new Insets(v)
-  implicit def jfxPoint3D2sfx(p: jfxg.Point3D) = new Point3D(p.getX(), p.getY(), p.getZ())
+  protected def getScalaClassInstance = new Point3D(0, 0, 0)
+
+  protected def convertScalaClassToJavaClass(sfxObject: Point3D) = {
+    val jfxPoint3D: jfxg.Point3D = sfxObject
+    jfxPoint3D
+  }
+
+  protected def getJavaClassInstance = new jfxg.Point3D(0, 0, 0)
+
+  protected def convertJavaClassToScalaClass(jfxObject: jfxg.Point3D) = {
+    val sfxPoint3D: Point3D = jfxObject
+    sfxPoint3D
+  }
 }
