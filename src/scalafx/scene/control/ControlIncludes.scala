@@ -19,6 +19,7 @@ trait ControlIncludes {
   implicit def jfxControl2sfx(c: jfxsc.Control) = new Control(c) {}
   implicit def jfxLabel2sfx(l: jfxsc.Label) = new Label(l)
   implicit def jfxLabeled2sfx(l: jfxsc.Labeled) = new Labeled(l) {}
+  implicit def jfxMultipleSelectionModel2sfx[T](v: jfxsc.MultipleSelectionModel[T]) = new MultipleSelectionModel[T](v){}
   implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s) {}
   implicit def jfxSlider2sfx(s: jfxsc.Slider) = new Slider(s)
   implicit def jfxTitledPane2sfx(t: jfxsc.TitledPane) = new TitledPane(t)
@@ -27,6 +28,10 @@ trait ControlIncludes {
   implicit def jfxProgressBar2sfx(p: jfxsc.ProgressBar) = new ProgressBar(p)
   implicit def jfxPasswordField2sfx(v: jfxsc.PasswordField) = new PasswordField(v)
   implicit def jfxPopupControl2sfx(v: jfxsc.PopupControl) = new PopupControl(v)
+  implicit def jfxSelectionModel2sfx[T](v: jfxsc.SelectionModel[T]) = new SelectionModel[T](v){}
+  implicit def jfxSingleSelectionModel2sfx[T](v: jfxsc.SingleSelectionModel[T]) = new SingleSelectionModel[T](v){}
+  implicit def jfxTab2sfx(v: jfxsc.Tab) = new Tab(v)
+  implicit def jfxTabPane2sfx(v: jfxsc.TabPane) = new TabPane(v)
   implicit def jfxTextField2sfx(v: jfxsc.TextField) = new TextField(v)
   implicit def jfxTextArea2sfx(t: jfxsc.TextArea) = new TextArea(t)
   implicit def jfxTextInputControl2sfx(t: jfxsc.TextInputControl) = new TextInputControl(t) {}
