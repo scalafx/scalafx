@@ -34,8 +34,8 @@ import scalafx.scene.{input => sfxsi}
 
 object EventIncludes extends EventIncludes {
   implicit def jfxMouseEvent2sfx(me: jfxsi.MouseEvent) = new sfxsi.MouseEvent(me)
-
   implicit def jfxActionEvent2sfx(ae: jfxe.ActionEvent) = new ActionEvent(ae)
+  implicit def jfxEvent2sfx(e: jfxe.Event) = new Event(e)
 }
 
 trait EventIncludes {

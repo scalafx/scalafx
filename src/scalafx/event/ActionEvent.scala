@@ -30,12 +30,14 @@ package scalafx.event
 import javafx.{event => jfxe }
 import scalafx.util.SFXDelegate
 
-// so far ony minimal stuff
-
 object ActionEvent {
   implicit def sfxActionEvent2jfx(ie: ActionEvent) = ie.delegate
+  
+  val Action = jfxe.ActionEvent.ACTION
 }
 
-class ActionEvent(override val delegate: jfxe.ActionEvent) extends Event(delegate) with SFXDelegate[jfxe.ActionEvent] {
+class ActionEvent(override val delegate: jfxe.ActionEvent = new jfxe.ActionEvent) extends Event(delegate) with SFXDelegate[jfxe.ActionEvent] {
+
+  def this(source: Any, target: jfxe.EventTarget) = this(new jfxe.ActionEvent(source, target))
 
 }

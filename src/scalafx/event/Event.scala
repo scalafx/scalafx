@@ -27,15 +27,32 @@
 
 package scalafx.event
 
-import javafx.{event => jfxe }
+import javafx.{ event => jfxe }
 import scalafx.util.SFXDelegate
-
-// so far ony minimal stuff
 
 object Event {
   implicit def sfxEvent2jfx(e: Event) = e.delegate
+  
+  def apply[T <: jfxe.Event](eventType: jfxe.EventType[T]) = new Event(new jfxe.Event(eventType))
+
+  def fireEvent(eventTarget: jfxe.EventTarget, event: Event) = jfxe.Event.fireEvent(eventTarget, event)
+
+  val Any = jfxe.Event.ANY
+
+  val NullSourceTarget = jfxe.Event.NULL_SOURCE_TARGET
+
 }
 
 class Event(override val delegate: jfxe.Event) extends SFXDelegate[jfxe.Event] {
+  
+  def consume = delegate.consume
+
+  def copyFor(newSource: AnyRef, newTarget: jfxe.EventTarget) = new Event(delegate.copyFor(newSource, newTarget))
+
+  def eventType = delegate.getEventType
+
+  def target = delegate.getTarget
+
+  def consumed = delegate.isConsumed
 
 }
