@@ -1,3 +1,5 @@
+package scalafx.scene.input 
+
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -25,25 +27,33 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx
+import org.junit.runner.RunWith
+import javafx.scene.{input => jfxsi}
+import scalafx.Includes._
+import scalafx.scene.input.DataFormat._
+import scalafx.testutil.SimpleSFXDelegateSpec
+import org.scalatest.junit.JUnitRunner
 
-import animation.AnimationIncludes
-import beans.BeanIncludes
-import collections.CollectionIncludes
-import event.EventIncludes
-import geometry.GeometryIncludes
-import scene.SceneIncludes
-import util.UtilIncludes
-import scalafx.scene.transform.TransformIncludes
-import scalafx.scene.input.InputIncludes
-
+@RunWith(classOf[JUnitRunner])
 /**
- * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
- * and other syntactic sugar.
+ * DataFormat Spec tests.
+ * 
  *
- * This file is tiered both for modularity and to prioritize the implicits
- * (the order of the withs matter a lot!)
  */
-object Includes extends Includes
+class DataFormatSpec extends SimpleSFXDelegateSpec[jfxsi.DataFormat, DataFormat](classOf[jfxsi.DataFormat], classOf[DataFormat]) {
 
-trait Includes extends AnimationIncludes with CollectionIncludes with EventIncludes with SceneIncludes with BeanIncludes with UtilIncludes with GeometryIncludes with TransformIncludes with InputIncludes
+  protected def getScalaClassInstance = new DataFormat(new jfxsi.DataFormat)
+
+  protected def convertScalaClassToJavaClass(sfxControl: DataFormat) = {
+    val jfxDataFormat: jfxsi.DataFormat = sfxControl
+    jfxDataFormat
+  }
+
+  protected def getJavaClassInstance = new jfxsi.DataFormat
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsi.DataFormat) = {
+    val sfxDataFormat: DataFormat = jfxControl
+    sfxDataFormat
+  }
+
+}

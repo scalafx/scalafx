@@ -1,3 +1,5 @@
+package scalafx.scene.input
+
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -25,25 +27,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx
+import org.junit.runner.RunWith
+import javafx.scene.{ input => jfxsi }
+import scalafx.Includes._
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-import animation.AnimationIncludes
-import beans.BeanIncludes
-import collections.CollectionIncludes
-import event.EventIncludes
-import geometry.GeometryIncludes
-import scene.SceneIncludes
-import util.UtilIncludes
-import scalafx.scene.transform.TransformIncludes
-import scalafx.scene.input.InputIncludes
-
+@RunWith(classOf[JUnitRunner]) 
 /**
- * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
- * and other syntactic sugar.
+ * ClipboardContent Spec tests.
+ * 
  *
- * This file is tiered both for modularity and to prioritize the implicits
- * (the order of the withs matter a lot!)
  */
-object Includes extends Includes
+class ClipboardContentSpec extends AbstractSFXDelegateSpec[jfxsi.ClipboardContent, ClipboardContent, jfxsi.ClipboardContentBuilder[_]](classOf[jfxsi.ClipboardContent], classOf[ClipboardContent], classOf[jfxsi.ClipboardContentBuilder[_]]) {
 
-trait Includes extends AnimationIncludes with CollectionIncludes with EventIncludes with SceneIncludes with BeanIncludes with UtilIncludes with GeometryIncludes with TransformIncludes with InputIncludes
+  protected def getScalaClassInstance = new ClipboardContent(new jfxsi.ClipboardContent)
+
+  protected def convertScalaClassToJavaClass(sfxControl: ClipboardContent) = {
+    val jfxClipboardContent: jfxsi.ClipboardContent = sfxControl
+    jfxClipboardContent
+  }
+
+  protected def getJavaClassInstance = new jfxsi.ClipboardContent
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsi.ClipboardContent) = {
+    val sfxClipboardContent: ClipboardContent = jfxControl
+    sfxClipboardContent
+  }
+
+}

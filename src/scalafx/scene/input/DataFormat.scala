@@ -28,22 +28,54 @@
 package scalafx.scene.input
 
 import javafx.scene.{ input => jfxsi }
-import javafx.{ event => jfxe }
 import scalafx.util.SFXDelegate
 import scalafx.event.Event
+import scala.collection._
+import scala.collection.JavaConversions._
 
-// so far ony minimal stuff
+object DataFormat {
 
-object InputEvent {
-  implicit def sfxInputEvent2jfx(ie: InputEvent) = ie.delegate
+  implicit def sfxDataFormat2jfx(ie: DataFormat) = ie.delegate
 
-  val Any: jfxe.EventType[jfxsi.InputEvent] = jfxsi.InputEvent.ANY
+  /**
+   * Represents a List of Files.
+   */
+  val Files = jfxsi.DataFormat.FILES
+
+  /**
+   * Represents an HTML formatted string.
+   */
+  val Html = jfxsi.DataFormat.HTML
+
+  /**
+   * A special platform specific image type, such as is commonly used on the clipboard and interoperates widely with other applications.
+   */
+  val Image = jfxsi.DataFormat.IMAGE
+
+  /**
+   * Represents a plain text string.
+   */
+  val PlainText = jfxsi.DataFormat.PLAIN_TEXT
+
+  /**
+   * Represents an RTF formatted string
+   */
+  val Rtf = jfxsi.DataFormat.RTF
+
+  /**
+   * Represents a URL, encoded as a String
+   */
+  val Url = jfxsi.DataFormat.URL
+
 }
 
-class InputEvent(override val delegate: jfxsi.InputEvent) extends Event(delegate) with SFXDelegate[jfxsi.InputEvent] {
+class DataFormat(override val delegate: jfxsi.DataFormat = new jfxsi.DataFormat) extends SFXDelegate[jfxsi.DataFormat] {
 
-  def this(eventType: jfxe.EventType[jfxsi.InputEvent]) = this(new jfxsi.InputEvent(eventType))
+  def this(ids: String*) = this(new jfxsi.DataFormat(ids: _*))
 
-  def this(source: AnyRef, target: jfxe.EventTarget, eventType: jfxe.EventType[jfxsi.InputEvent]) = this(new jfxsi.InputEvent(source, target, eventType))
+  /**
+   * Gets the unmodifiable set of identifiers for this DataFormat.
+   */
+  def identifiers: Set[String] = delegate.getIdentifiers
 
 }
