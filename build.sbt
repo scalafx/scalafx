@@ -151,7 +151,7 @@ traceLevel := 10
 traceLevel := 0
 
 // add JavaFX 2.0 to the unmanaged classpath
-unmanagedJars in Compile += Attributed.blank(file(System.getenv("$JAVAFX_HOME") + "/rt/lib/jfxrt.jar"))
+unmanagedJars in Compile += Attributed.blank(file(System.getenv("JAVAFX_HOME") + "/rt/lib/jfxrt.jar"))
 
 // publish test jar, sources, and docs
 publishArtifact in Test := false
