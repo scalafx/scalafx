@@ -1,3 +1,5 @@
+// Important - Set the JAVAFX_HOME environment variable to the root of your JavaFX installation for this script to work
+
 // set the name of the project
 name := "ScalaFX"
 
@@ -25,11 +27,6 @@ scalaSource in Test <<= baseDirectory(_ / "test")
 
 // add a test dependency on ScalaCheck
 //libraryDependencies += "org.scala-tools.testing" %% "scalacheck" % "1.8" % "test"
-
-// add compile dependencies on some dispatch modules
-libraryDependencies ++= Seq(
-    "com.oracle" % "javafx-runtime" % "2.0-beta"
-)
 
 // Set a dependency based partially on a val.
 //{
@@ -154,7 +151,7 @@ traceLevel := 10
 traceLevel := 0
 
 // add JavaFX 2.0 to the unmanaged classpath
-//unmanagedJars in Compile += Attributed.blank(file("/Users/Sven/javafx-sdk2.0-ea/b44/rt/lib/jfxrt.jar"))
+unmanagedJars in Compile += Attributed.blank(file(System.getenv("$JAVAFX_HOME") + "/rt/lib/jfxrt.jar"))
 
 // publish test jar, sources, and docs
 publishArtifact in Test := false
