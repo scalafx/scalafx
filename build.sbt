@@ -27,9 +27,9 @@ scalaSource in Test <<= baseDirectory(_ / "test")
 //libraryDependencies += "org.scala-tools.testing" %% "scalacheck" % "1.8" % "test"
 
 // add compile dependencies on some dispatch modules
-//libraryDependencies ++= Seq(
-//    "com.oracle" % "javafx-runtime" % "2.0-beta"
-//)
+libraryDependencies ++= Seq(
+    "com.oracle" % "javafx-runtime" % "2.0-beta"
+)
 
 // Set a dependency based partially on a val.
 //{
