@@ -127,7 +127,7 @@ parallelExecution in Test := false
 
 // set the location of the JDK to use for compiling Java code.
 // if 'fork' is true, this is used for 'run' as well
-javaHome := Some(file("/Library/Java/JavaVirtualMachines/1.6.0_24-b07-330.jdk/Contents/Home"))
+// javaHome := Some(file("/Library/Java/JavaVirtualMachines/1.6.0_24-b07-330.jdk/Contents/Home"))
 
 // Use Scala from a directory on the filesystem instead of retrieving from a repository
 // scalaHome := Some(file("/Users/Sven/scala-2.9.0.1/"))
