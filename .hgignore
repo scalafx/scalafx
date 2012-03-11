@@ -6,3 +6,8 @@ out/
 .settings/
 .cache
 \.idea/workspace\.xml
+\.idea/tasks\.xml
+\.idea/dictionaries
+target
+lib_managed
+project/boot

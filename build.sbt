@@ -1,19 +1,14 @@
 // Important - Set the JAVAFX_HOME environment variable to the root of your JavaFX installation for this script to work
 
-// set the name of the project
 name := "ScalaFX"
 
 version := "1.0"
 
 organization := "org.scalafx"
 
-// set the Scala version used for the project
-scalaVersion := "2.9.0-1"
+scalaVersion := "2.9.1"
 
 resolvers += "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository"
-
-// set the main Scala source directory to be <base>/src
-//scalaSource in Compile <<= baseDirectory(_ / "src")
 
 unmanagedSourceDirectories in Compile <++= baseDirectory { base =>
   Seq(
@@ -25,14 +20,7 @@ unmanagedSourceDirectories in Compile <++= baseDirectory { base =>
 // set the Scala test source directory to be <base>/test
 scalaSource in Test <<= baseDirectory(_ / "test")
 
-// add a test dependency on ScalaCheck
-//libraryDependencies += "org.scala-tools.testing" %% "scalacheck" % "1.8" % "test"
-
-// Set a dependency based partially on a val.
-//{
-//  val libosmVersion = "2.5.2-RC1"
-//  libraryDependencies += "net.sf.travelingsales" % "osmlib" % libosmVersion from "http://downloads.sourceforge.net/project/travelingsales/libosm/"+libosmVersion+"/libosm-"+libosmVersion+".jar"
-//}
+testListeners <<= target.map(t => Seq(new eu.henkelmann.sbt.JUnitXmlTestsListener(t.getAbsolutePath)))
 
 // reduce the maximum number of errors shown by the Scala compiler
 maxErrors := 20
@@ -55,26 +43,12 @@ initialCommands := """
   }
 """
 
-// set the initial commands when entering 'console' only
-// initialCommands in console := "import myproject._"
-
-// set the main class for packaging the main jar
-// 'run' will still auto-detect and prompt
-// change Compile to Test to set it for the test jar
-//mainClass in (Compile, packageBin) := Some("myproject.MyMain")
-
 // set the main class for the main 'run' task
 // change Compile to Test to set it for 'test:run'
 mainClass in (Compile, run) := Some("scalafx.ColorfulCircles")
 
 // add <base>/input to the files that '~' triggers on
 watchSources <+= baseDirectory map { _ / "input" }
-
-// add a maven-style repository
-// resolvers += "name" at "url"
-
-// add a sequence of maven-style repositories
-// resolvers ++= Seq("name" at "url")
 
 // define the repository to publish to
 // publishTo := Some("name" at "url")
