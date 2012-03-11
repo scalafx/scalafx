@@ -313,10 +313,10 @@ class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
       changeCount += 1
     }
     floatProperty() = 1
-    invalidateCount should equal (0)
+    invalidateCount should equal (1)
     changeCount should equal (0)
     floatProperty2() = 5
-    invalidateCount should equal (1)
+    invalidateCount should equal (2)
     changeCount should equal (1)
   }
 }
