@@ -27,6 +27,7 @@
 
 package scalafx.scene
 
+import collection.JavaConversions._
 import javafx.{scene => jfxs}
 import scalafx.util.SFXDelegate
 
@@ -36,4 +37,10 @@ object Parent {
 
 abstract class Parent(override val delegate: jfxs.Parent) extends Node(delegate) with SFXDelegate[jfxs.Parent] {
   def needsLayout = delegate.needsLayoutProperty
+
+  def stylesheets = delegate.getStylesheets
+
+  def stylesheets_=(c: Iterable[String]) {
+    stylesheets.addAll(c)
+  }
 }
