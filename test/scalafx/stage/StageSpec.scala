@@ -34,6 +34,5 @@ import scalafx.testutil.PropertyComparator
 class StageSpec extends FlatSpec with PropertyComparator {
   "A Stage" should "implement all the JavaFX properties" in {
     compareProperties(classOf[javafx.stage.Stage], classOf[Stage])
-    fail // intentionally breaking the build to test e-mail notification
   }
 }
