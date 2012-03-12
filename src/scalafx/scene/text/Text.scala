@@ -56,6 +56,11 @@ class Text(override val delegate: jfxst.Text) extends Shape(delegate) with SFXDe
     font() = v
   }
 
+  def fontSmoothingType = delegate.fontSmoothingTypeProperty
+  def fontSmoothingType_= (v: jfxst.FontSmoothingType) {
+    fontSmoothingType() = v
+  }
+
   def strikethrough = delegate.strikethroughProperty
   def strikethrough_= (v: Boolean) {
     strikethrough = v
