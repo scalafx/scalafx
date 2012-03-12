@@ -1,4 +1,8 @@
 // Important - Set the JAVAFX_HOME environment variable to the root of your JavaFX installation for this script to work
+//
+// You can also set your scala or java home if necessary like this:
+// javaHome := Some(file("/Library/Java/JavaVirtualMachines/1.6.0_24-b07-330.jdk/Contents/Home"))
+// scalaHome := Some(file("/Users/Sven/scala-2.9.1/"))
 
 name := "ScalaFX"
 
@@ -21,12 +25,6 @@ unmanagedSourceDirectories in Compile <++= baseDirectory { base =>
 scalaSource in Test <<= baseDirectory(_ / "test")
 
 testListeners <<= target.map(t => Seq(new eu.henkelmann.sbt.JUnitXmlTestsListener(t.getAbsolutePath)))
-
-// reduce the maximum number of errors shown by the Scala compiler
-maxErrors := 20
-
-// increase the time between polling for file changes when using continuous execution
-pollInterval := 1000
 
 // append several options to the list of options passed to the Java compiler
 javacOptions ++= Seq("-source", "1.5", "-target", "1.5")
@@ -52,9 +50,6 @@ watchSources <+= baseDirectory map { _ / "input" }
 
 // define the repository to publish to
 // publishTo := Some("name" at "url")
-
-// set Ivy logging to be at the highest level
-ivyLoggingLevel := UpdateLogging.Full
 
 // disable updating dynamic revisions (including -SNAPSHOT versions)
 offline := true
@@ -95,34 +90,6 @@ parallelExecution := false
 // Execute tests in the current project serially
 //   Tests from other projects may still run concurrently.
 parallelExecution in Test := false
-
-// set the location of the JDK to use for compiling Java code.
-// if 'fork' is true, this is used for 'run' as well
-// javaHome := Some(file("/Library/Java/JavaVirtualMachines/1.6.0_24-b07-330.jdk/Contents/Home"))
-
-// Use Scala from a directory on the filesystem instead of retrieving from a repository
-// scalaHome := Some(file("/Users/Sven/scala-2.9.0.1/"))
-
-// don't aggregate clean (See FullConfiguration for aggregation details)
-aggregate in clean := false
-
-// only show warnings and errors on the screen for compilations.
-//  this applies to both test:compile and compile and is Info by default
-logLevel in compile := Level.Debug
-
-// only show warnings and errors on the screen for all tasks (the default is Info)
-//  individual tasks can then be more verbose using the previous setting
-logLevel := Level.Debug
-
-// only store messages at info and above (the default is Debug)
-//   this is the logging level for replaying logging with 'last'
-persistLogLevel := Level.Debug
-
-// only show 10 lines of stack traces
-traceLevel := 10
-
-// only show stack traces up to the first sbt stack frame
-traceLevel := 0
 
 // add JavaFX 2.0 to the unmanaged classpath
 unmanagedJars in Compile += Attributed.blank(file(System.getenv("JAVAFX_HOME") + "/rt/lib/jfxrt.jar"))
