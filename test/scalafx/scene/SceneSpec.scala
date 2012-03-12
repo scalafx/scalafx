@@ -31,9 +31,9 @@ import javafx.{scene => jfxs}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import scalafx.testutil.{RunOnApplicationThread, PropertyComparator}
 
-class SceneSpec extends FlatSpec with PropertyComparator {
+class SceneSpec extends FlatSpec with RunOnApplicationThread with PropertyComparator {
   "A Scene" should "implement all the JavaFX properties" in {
     compareProperties(classOf[jfxs.Scene], classOf[Scene])
   }

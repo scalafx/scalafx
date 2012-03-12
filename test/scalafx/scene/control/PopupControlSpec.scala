@@ -29,22 +29,13 @@ package scalafx.scene.control
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
-import scalafx.testutil.PropertyComparator
-import scalafx.scene.control._
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 @RunWith(classOf[JUnitRunner]) 
-/**
- * PopupControl Spec tests.
- * <b>CAUTION: IT IS NOT POSSIBLE RUN THIS TEST CORRECTLY! WHEN IT IS DONE "new javafx.scene.control.PopupControl" IT IS THROWN A ILLEGALSTATEEXCEPTION WITH MESSAGE: 
- * "Not on FX application thread; currentThread = main"! JavaFX does not allow instantiate a PopupControl instance outside FX application thread.</b> 
- */
-class PopupControlSpec extends AbstractSFXDelegateSpec[jfxsc.PopupControl, PopupControl, jfxsc.PopupControlBuilder[_]](classOf[jfxsc.PopupControl], classOf[PopupControl], classOf[jfxsc.PopupControlBuilder[_]]) {
+class PopupControlSpec extends AbstractSFXDelegateSpec[jfxsc.PopupControl, PopupControl, jfxsc.PopupControlBuilder[_]](classOf[jfxsc.PopupControl], classOf[PopupControl], classOf[jfxsc.PopupControlBuilder[_]]) with RunOnApplicationThread {
 
   protected def getScalaClassInstance = new PopupControl(getJavaClassInstance)
 

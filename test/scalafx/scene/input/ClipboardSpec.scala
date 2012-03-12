@@ -31,16 +31,11 @@ import org.junit.runner.RunWith
 import javafx.scene.{input => jfxsi}
 import scalafx.Includes._
 import scalafx.scene.input.Clipboard._
-import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 @RunWith(classOf[JUnitRunner])
-/**
- * Clipboard Spec tests.
- * 
- *
- */
-class ClipboardSpec extends SimpleSFXDelegateSpec[jfxsi.Clipboard, Clipboard](classOf[jfxsi.Clipboard], classOf[Clipboard]) {
+class ClipboardSpec extends SimpleSFXDelegateSpec[jfxsi.Clipboard, Clipboard](classOf[jfxsi.Clipboard], classOf[Clipboard]) with RunOnApplicationThread {
 
   protected def getScalaClassInstance = new Clipboard(getJavaClassInstance)
 

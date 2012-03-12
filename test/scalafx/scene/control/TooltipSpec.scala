@@ -30,21 +30,12 @@ package scalafx.scene.control
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import javafx.scene.{ control => jfxsc }
-import scalafx.testutil.PropertyComparator
-import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.Includes._
-import scalafx.scene.control._
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 @RunWith(classOf[JUnitRunner]) 
-/**
- * Tooltip Spec tests.
- * <b>CAUTION: IT IS NOT POSSIBLE RUN THIS TEST CORRECTLY! WHEN IT IS DONE "new javafx.scene.control.Tooltip" IT IS THROWN A ILLEGALSTATEEXCEPTION WITH MESSAGE: 
- * "Not on FX application thread; currentThread = main"! JavaFX does not allow instantiate a Tooltip instance outside FX application thread.</b> 
- */
-class TooltipSpec extends AbstractSFXDelegateSpec[jfxsc.Tooltip, Tooltip, jfxsc.TooltipBuilder[_]](classOf[jfxsc.Tooltip], classOf[Tooltip], classOf[jfxsc.TooltipBuilder[_]]) {
+class TooltipSpec extends AbstractSFXDelegateSpec[jfxsc.Tooltip, Tooltip, jfxsc.TooltipBuilder[_]](classOf[jfxsc.Tooltip], classOf[Tooltip], classOf[jfxsc.TooltipBuilder[_]]) with RunOnApplicationThread {
 
   protected def getScalaClassInstance = new Tooltip(new jfxsc.Tooltip)
 
