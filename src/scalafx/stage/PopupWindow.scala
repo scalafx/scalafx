@@ -25,92 +25,77 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene.control
+package scalafx.stage
 
-import javafx.scene.{ control => jfxsc }
+import javafx.{event => jfxe}
+import javafx.{stage => jfxs}
 import scalafx.Includes._
-import scalafx.stage.PopupWindow
+import scalafx.scene.Node._
+import scalafx.scene.Node
+import scalafx.stage.Window._
 import scalafx.util.SFXDelegate
 
-object PopupControl {
-  implicit def sfxPopupControl2jfx(v: PopupControl) = v.delegate
+object PopupWindow {
+  implicit def sfxPopupWindow2jfx(v: PopupWindow) = v.delegate
 }
 
-class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupControl) extends PopupWindow(delegate) with SFXDelegate[jfxsc.PopupControl] {
+abstract class PopupWindow(override val delegate: jfxs.PopupWindow) extends Window(delegate) with SFXDelegate[jfxs.PopupWindow] {
 
   /**
-   * The id of this Node.
+   * This convenience variable indicates whether, when the popup is shown, it should automatically correct its position such that it doesn't end up positioned off the screen.
    */
-  def id = delegate.idProperty
-  def id_=(v: String) {
-    id = v
+  def autoFix = delegate.autoFixProperty
+  def autoFix_=(v: Boolean) {
+    autoFix() = v
   }
 
   /**
-   * Property for overriding the control's computed maximum height.
+   * Specifies whether Popups should auto hide.
    */
-  def maxHeight = delegate.maxHeightProperty
-  def maxHeight_=(v: Double) {
-    maxHeight = v
+  def autoHide = delegate.autoHideProperty
+  def autoHide_=(v: Boolean) {
+    autoHide() = v
   }
 
   /**
-   * Property for overriding the control's computed maximum width.
+   * Specifies whether the PopupWindow should be hidden when an unhandled escape key is pressed while the popup has focus.
    */
-  def maxWidth = delegate.maxWidthProperty
-  def maxWidth_=(v: Double) {
-    maxWidth = v
+  def hideOnEscape = delegate.hideOnEscapeProperty
+  def hideOnEscape_=(v: Boolean) {
+    hideOnEscape() = v
   }
 
   /**
-   * Property for overriding the control's computed minimum height.
+   * Called after autoHide is run.
    */
-  def minHeight = delegate.minHeightProperty
-  def minHeight_=(v: Double) {
-    minHeight = v
+  def onAutoHide = delegate.onAutoHideProperty
+  def onAutoHide_=(v: jfxe.EventHandler[jfxe.Event]) {
+    onAutoHide() = v
   }
 
   /**
-   * Property for overriding the control's computed minimum width.
-   */
-  def minWidth = delegate.minWidthProperty
-  def minWidth_=(v: Double) {
-    minWidth = v
-  }
-
-  /**
-   * Property for overriding the control's computed preferred height.
+   * The window which is the parent of this popup.
    *
    */
-  def prefHeight = delegate.prefHeightProperty
-  def prefHeight_=(v: Double) {
-    prefHeight = v
-  }
+  def ownerWindow = delegate.ownerWindowProperty
 
   /**
-   * Property for overriding the control's computed preferred width.
+   * The node which is the owner of this popup.
    */
-  def prefWidth = delegate.prefWidthProperty
-  def prefWidth_=(v: Double) {
-    prefWidth = v
-  }
+  def ownerNode = delegate.ownerNodeProperty
 
   /**
-   * Skin is responsible for rendering this PopupControl.
+   * Show the Popup at the specified x,y location relative to the screen
    */
-  def skin = delegate.skinProperty
-  def skin_=(v: jfxsc.Skin[_]) {
-    skin = v
-  }
+  def show(owner: Node, screenX: Double, screenY: Double) = delegate.show(owner, screenX, screenY)
 
   /**
-   * A string representation of the CSS style associated with this specific Node.
+   * Show the popup.
    */
-  def style = delegate.styleProperty
-  def style_=(v: String) {
-    style = v
-  }
-  
-  def styleClass = delegate.getStyleClass
+  def show(owner: Window) = delegate.show(owner)
 
+  /**
+   * Show the Popup at the specified x,y location relative to the screen
+   */
+  def show(owner: Window, screenX: Double, screenY: Double) = delegate.show(owner, screenX, screenY)
 }
