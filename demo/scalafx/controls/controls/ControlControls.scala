@@ -8,7 +8,9 @@ import scalafx.scene.control.Control
 import scalafx.scene.control.Label
 import scalafx.scene.control.TextField
 
-class ControlControls(target: Control) extends PropertiesNodes[Control](target, "Control Properties") {
+class ControlControls(target: Control, val maxMinHeight: Double = 100.0, val maxMaxHeight: Double = 100.0, val maxPrefHeight: Double = 100.0,
+  val maxMinWidth: Double = 100.0, val maxMaxWidth: Double = 100.0, val maxPrefWidth: Double = 100.0)
+  extends PropertiesNodes[Control](target, "Control Properties") {
 
   val lblHeight = new Label {
     text <== target.height.asString()
@@ -21,31 +23,37 @@ class ControlControls(target: Control) extends PropertiesNodes[Control](target, 
   val originalMaxHeight = target.maxHeight
   val sldMaxHeight = new SliderLabelControl(target.maxHeight) {
     min = -10
+    max = maxMaxHeight
   }
 
   val originalPrefHeight = target.prefHeight
   val sldPrefHeight = new SliderLabelControl(target.prefHeight) {
     min = -10
+    max = maxPrefHeight
   }
 
   val originalMinHeight = target.minHeight
-  val sldinHeight = new SliderLabelControl(target.minHeight) {
+  val sldMinHeight = new SliderLabelControl(target.minHeight) {
     min = -10
+    max = maxMinHeight
   }
 
   val originalMinWidth = target.minWidth
   val sldMinWidth = new SliderLabelControl(target.minWidth) {
     min = -10
+    max = maxMinWidth
   }
 
   val originalPrefWidth = target.prefWidth
   val sldPrefWidth = new SliderLabelControl(target.prefWidth) {
     min = -10
+    max = maxPrefWidth
   }
 
   val originalMaxWidth = target.maxWidth
   val sldMaxWidth = new SliderLabelControl(target.maxWidth) {
     min = -10
+    max = maxMaxWidth
   }
 
   val txfTootip = new TextField
@@ -55,14 +63,14 @@ class ControlControls(target: Control) extends PropertiesNodes[Control](target, 
 
   super.addNode("Max Height", sldMaxHeight)
   super.addNode("Pref Height", sldPrefHeight)
-  super.addNode("Min Height", sldinHeight)
+  super.addNode("Min Height", sldMinHeight)
   super.addNode("Max Width", sldMaxWidth)
   super.addNode("Pref Width", sldPrefWidth)
   super.addNode("Min Width", sldMinWidth)
   super.addNode("Tooltip", txfTootip)
   super.addNode("Height", lblHeight)
   super.addNode("Width", lblWidth)
-//  super.addNode(btnReset)
+  //  super.addNode(btnReset)
 
   override def resetProperties {
     target.maxHeight = originalMaxHeight.get
