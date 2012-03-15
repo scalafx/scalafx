@@ -31,38 +31,32 @@ import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
-object ArcTo {
-  implicit def sfxArcTo2jfx(v: ArcTo) = v.delegate
+object CubicCurveTo {
+  implicit def sfxCubicCurveTo2jfx(v: CubicCurve) = v.delegate
 }
 
-class ArcTo(override val delegate:jfxss.ArcTo = new jfxss.ArcTo()) extends PathElement(delegate) with SFXDelegate[jfxss.ArcTo] {
-
-  def this(radiusX: Double, radiusY: Double, xAxisRotation: Double, x: Double, y: Double, largeArcFlag: Boolean, sweepFlag: Boolean) = 
-    this(new jfxss.ArcTo(radiusX, radiusY, xAxisRotation, x, y , largeArcFlag, sweepFlag))
-	
-  def XAxisRotation = delegate.XAxisRotationProperty
-  def XAxisRotation_=(v: Double) {
-    XAxisRotation() = v
+class CubicCurveTo(override val delegate:jfxss.CubicCurveTo = new jfxss.CubicCurveTo()) extends PathElement(delegate) with SFXDelegate[jfxss.CubicCurveTo] {
+  def this(controlX1: Double, controlY1: Double, controlX2: Double, controlY2: Double, x: Double, y: Double) = 
+    this(new jfxss.CubicCurveTo(controlX1, controlY1, controlX2, controlY2, x, y))
+  
+  def controlX1 = delegate.controlX1Property
+  def controlX1_=(v: Double) {
+    controlX1() = v
   }
 
-  def sweepFlag = delegate.sweepFlagProperty
-  def sweepFlag_=(v: Boolean) {
-    sweepFlag() = v
+  def controlX2 = delegate.controlX2Property
+  def controlX2_=(v: Double) {
+    controlX2() = v
   }
 
-  def radiusY = delegate.radiusYProperty
-  def radiusY_=(v: Double) {
-    radiusY() = v
+  def controlY1 = delegate.controlY1Property
+  def controlY1_=(v: Double) {
+    controlY1() = v
   }
 
-  def radiusX = delegate.radiusXProperty
-  def radiusX_=(v: Double) {
-    radiusX() = v
-  }
-
-  def largeArcFlag = delegate.largeArcFlagProperty
-  def largeArcFlag_=(v: Boolean) {
-    largeArcFlag() = v
+  def controlY2 = delegate.controlY2Property
+  def controlY2_=(v: Double) {
+    controlY2() = v
   }
 
   def x = delegate.xProperty
