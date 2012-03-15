@@ -31,13 +31,43 @@ import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
-object MoveTo {
-  implicit def sfxMoveTo2jfx(v: MoveTo) = v.delegate
+object ArcTo {
+  implicit def sfxLineTo2jfx(v: ArcTo) = v.delegate
 }
 
-class MoveTo(override val delegate:jfxss.MoveTo = new jfxss.MoveTo()) extends PathElement(delegate) with SFXDelegate[jfxss.MoveTo] {
-	def this(x: Double, y: Double) = this(new jfxssMoveTo(x, y))
+class ArcTo(override val delegate:jfxss.ArcTo = new jfxss.ArcTo()) 
+extends PathElement(delegate) with SFXDelegate[jfxss.ArcTo] {
+
+  def this(radiusX: Double, radiusY: Double, xAxisRotation: Double, 
+      x: Double, y: Double, largeArcFlag: Boolean, sweepFlag: Boolean) {
+    this(new jfxss.ArcTo(radiusX, radiusY, xAxisRotation, x, y , largeArcFlag, sweepFlag))
+  }
 	
+  def XAxisRotation = delegate.XAxisRotationProperty
+  def XAxisRotation_=(v: Double) {
+    XAxisRotation() = v
+  }
+
+  def sweepFlag = delegate.sweepFlagProperty
+  def sweepFlag_=(v: Boolean) {
+    sweepFlag() = v
+  }
+
+  def radiusY = delegate.radiusYProperty
+  def radiusY_=(v: Double) {
+    radiusY() = v
+  }
+
+  def radiusX = delegate.radiusXProperty
+  def radiusX_=(v: Double) {
+    radiusX() = v
+  }
+
+  def largeArcFlag = delegate.largeArcFlagProperty
+  def largeArcFlag_=(v: Boolean) {
+    largeArcFlag() = v
+  }
+
   def x = delegate.xProperty
   def x_=(v: Double) {
     x() = v
