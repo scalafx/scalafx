@@ -36,7 +36,7 @@ object MoveTo {
 }
 
 class MoveTo(override val delegate:jfxss.MoveTo = new jfxss.MoveTo()) extends PathElement(delegate) with SFXDelegate[jfxss.MoveTo] {
-	def this(x: Double, y: Double) = this(new jfxssMoveTo(x, y))
+	def this(x: Double, y: Double) = this(new jfxss.MoveTo(x, y))
 	
   def x = delegate.xProperty
   def x_=(v: Double) {

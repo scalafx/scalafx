@@ -32,14 +32,12 @@ import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
 object ArcTo {
-  implicit def sfxLineTo2jfx(v: ArcTo) = v.delegate
+  implicit def sfxArcTo2jfx(v: ArcTo) = v.delegate
 }
 
-class ArcTo(override val delegate:jfxss.ArcTo = new jfxss.ArcTo()) 
-extends PathElement(delegate) with SFXDelegate[jfxss.ArcTo] {
+class ArcTo(override val delegate:jfxss.ArcTo = new jfxss.ArcTo()) extends PathElement(delegate) with SFXDelegate[jfxss.ArcTo] {
 
-  def this(radiusX: Double, radiusY: Double, xAxisRotation: Double, 
-      x: Double, y: Double, largeArcFlag: Boolean, sweepFlag: Boolean) {
+  def this(radiusX: Double, radiusY: Double, xAxisRotation: Double, x: Double, y: Double, largeArcFlag: Boolean, sweepFlag: Boolean) {
     this(new jfxss.ArcTo(radiusX, radiusY, xAxisRotation, x, y , largeArcFlag, sweepFlag))
   }
 	
