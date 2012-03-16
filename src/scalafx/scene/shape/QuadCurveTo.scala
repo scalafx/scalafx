@@ -31,32 +31,22 @@ import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
-object CubicCurveTo {
-  implicit def sfxCubicCurveTo2jfx(v: CubicCurveTo) = v.delegate
+object QuadCurveTo {
+  implicit def sfxQuadCurveTo2jfx(v: QuadCurveTo) = v.delegate
 }
 
-class CubicCurveTo(override val delegate:jfxss.CubicCurveTo = new jfxss.CubicCurveTo()) extends PathElement(delegate) with SFXDelegate[jfxss.CubicCurveTo] {
-  def this(controlX1: Double, controlY1: Double, controlX2: Double, controlY2: Double, x: Double, y: Double) = 
-    this(new jfxss.CubicCurveTo(controlX1, controlY1, controlX2, controlY2, x, y))
+class QuadCurveTo(override val delegate:jfxss.QuadCurveTo = new jfxss.QuadCurveTo()) extends PathElement(delegate) with SFXDelegate[jfxss.QuadCurveTo] {
+  def this(controlX: Double, controlY: Double, x: Double, y: Double) = 
+    this(new jfxss.QuadCurveTo(controlX, controlY, x, y))
   
-  def controlX1 = delegate.controlX1Property
-  def controlX1_=(v: Double) {
-    controlX1() = v
+  def controlX = delegate.controlXProperty
+  def controlX_=(v: Double) {
+    controlX() = v
   }
 
-  def controlX2 = delegate.controlX2Property
-  def controlX2_=(v: Double) {
-    controlX2() = v
-  }
-
-  def controlY1 = delegate.controlY1Property
-  def controlY1_=(v: Double) {
-    controlY1() = v
-  }
-
-  def controlY2 = delegate.controlY2Property
-  def controlY2_=(v: Double) {
-    controlY2() = v
+  def controlY = delegate.controlYProperty
+  def controlY_=(v: Double) {
+    controlY() = v
   }
 
   def x = delegate.xProperty
