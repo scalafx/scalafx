@@ -31,15 +31,12 @@ import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
-object HLineTo {
-  implicit def sfxHLineTo2jfx(v: HLineTo) = v.delegate
+object Polygon {
+  implicit def sfxPolygon2jfx(v: Polygon) = v.delegate
 }
 
-class HLineTo(override val delegate:jfxss.HLineTo = new jfxss.HLineTo()) extends PathElement(delegate) with SFXDelegate[jfxss.HLineTo] {
-  def this(x: Double) = this(new jfxss.HLineTo(x))
-	
-  def x = delegate.xProperty
-  def x_=(v: Double) {
-    x() = v
-  }
+class Polygon(override val delegate:jfxss.Polygon = new jfxss.Polygon()) extends Shape(delegate) with SFXDelegate[jfxss.Polygon] {
+  def this(points: Double*) = this(new jfxss.Polygon(points: _*))
+  
+  def getPoints = delegate.getPoints
 }
