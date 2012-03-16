@@ -196,7 +196,9 @@ object Color {
   val YELLOWGREEN = new Color(jfxsp.Color.YELLOWGREEN)
 }
 
-class Color(override val delegate:jfxsp.Color) extends SFXDelegate[jfxsp.Color] {
+class Color(override val delegate:jfxsp.Color) extends Paint(delegate) with SFXDelegate[jfxsp.Color] {
+  def this(red: Double, green: Double, blue: Double, opacity: Double) = this(new jfxsp.Color(red, green, blue, opacity))
+  
   def red = delegate.getRed
   def green = delegate.getGreen
   def blue = delegate.getBlue
@@ -207,4 +209,13 @@ class Color(override val delegate:jfxsp.Color) extends SFXDelegate[jfxsp.Color] 
   def brightness = delegate.getBrightness
 
   def opacity(o: Double) = jfxsp.Color.color(red, green, blue, o)
+
+  def brighter = delegate.brighter
+  def darker = delegate.darker
+  def deriveColor(hueShift: Double, saturationFactor: Double, brightnessFactor: Double, opacityFactor: Double) = delegate.deriveColor(hueShift, saturationFactor, brightnessFactor, opacityFactor)
+  def desaturate = delegate.desaturate
+  def grayscale = delegate.grayscale
+  def interpolate(endValue: Color, t: Double) = delegate.interpolate(endValue, t)
+  def invert = delegate.invert
+  def saturate = delegate.saturate
 }
