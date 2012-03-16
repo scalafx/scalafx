@@ -29,6 +29,7 @@ package scalafx.scene.shape
 
 import scalafx.Includes._
 import javafx.scene.{shape => jfxss}
+import scalafx.scene.paint._
 import scalafx.util.SFXDelegate
 
 object Rectangle {
@@ -36,6 +37,10 @@ object Rectangle {
 }
 
 class Rectangle(override val delegate:jfxss.Rectangle = new jfxss.Rectangle()) extends Shape(delegate) with SFXDelegate[jfxss.Rectangle] {
+  def this(width: Double, height: Double) = this(new jfxss.Rectangle(width, height))
+  def this(x: Double, y: Double, width: Double, height: Double) = this(new jfxss.Rectangle(x, y, width, height))
+  def this(width: Double, height: Double, fill: Paint) = this(new jfxss.Rectangle(width, height, fill))
+  
   def x = delegate.xProperty
   def x_=(v: Double) {
     x() = v
