@@ -30,13 +30,13 @@ package scalafx.geometry
 import javafx.{ geometry => jfxg }
 import scalafx.util.SFXDelegate
 
-object Point3D {
-  implicit def sfxPoint3D2jfx(p: Point3D) = p.delegate
+object Point2D {
+  implicit def sfxPoint2D2jfx(p: Point2D) = p.delegate
 }
 
-class Point3D(override val delegate: jfxg.Point3D) extends SFXDelegate[jfxg.Point3D] {
+class Point2D(override val delegate: jfxg.Point2D) extends SFXDelegate[jfxg.Point2D] {
 
-  def this(x: Double, y: Double, z: Double) = this(new jfxg.Point3D(x, y, z))
+  def this(x: Double, y: Double) = this(new jfxg.Point2D(x, y))
 
   /**
    * The x coordinate.
@@ -49,18 +49,13 @@ class Point3D(override val delegate: jfxg.Point3D) extends SFXDelegate[jfxg.Poin
   def y = delegate.getX
 
   /**
-   * The z coordinate.
+   * Computes the distance between this point and point (x1, y1).
    */
-  def z = delegate.getX
-
-  /**
-   * Computes the distance between this point and point (x1, y1, z1).
-   */
-  def distance(x1: Double, y1: Double, z1: Double) = delegate.distance(x1, y1, z1)
+  def distance(x1: Double, y1: Double) = delegate.distance(x1, y1)
 
   /**
    * Computes the distance between this point and point p.
    */
-  def distance(p: Point3D) = delegate.distance(p)
+  def distance(p: Point2D) = delegate.distance(p)
 
 }

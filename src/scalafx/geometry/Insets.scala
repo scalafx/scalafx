@@ -27,19 +27,28 @@
 
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
+import javafx.{ geometry => jfxg }
 import scalafx.util.SFXDelegate
 
 object Insets {
   implicit def sfxInsets2jfx(i: Insets) = i.delegate
 
+  val Empty = jfxg.Insets.EMPTY
+
   def apply(topRightBottomLeft: Int) = new jfxg.Insets(topRightBottomLeft)
+
   def apply(top: Int, right: Int, bottom: Int, left: Int) = new jfxg.Insets(top, right, bottom, left)
+
 }
 
-class Insets(override val delegate:jfxg.Insets) extends SFXDelegate[jfxg.Insets] {
+class Insets(override val delegate: jfxg.Insets) extends SFXDelegate[jfxg.Insets] {
+
   def top = delegate.getTop
+
   def right = delegate.getRight
+
   def bottom = delegate.getBottom
+
   def left = delegate.getLeft
+
 }

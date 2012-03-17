@@ -30,37 +30,20 @@ package scalafx.geometry
 import javafx.{ geometry => jfxg }
 import scalafx.util.SFXDelegate
 
-object Point3D {
-  implicit def sfxPoint3D2jfx(p: Point3D) = p.delegate
+object BoundingBox {
+  implicit def sfxBoundingBox2jfx(b: BoundingBox) = b.delegate
 }
 
-class Point3D(override val delegate: jfxg.Point3D) extends SFXDelegate[jfxg.Point3D] {
-
-  def this(x: Double, y: Double, z: Double) = this(new jfxg.Point3D(x, y, z))
+class BoundingBox(override val delegate: jfxg.BoundingBox) extends Bounds(delegate) with SFXDelegate[jfxg.BoundingBox] {
 
   /**
-   * The x coordinate.
+   * Creates a new instance of 2D BoundingBox.
    */
-  def x = delegate.getX
+  def this(minX: Double, minY: Double, width: Double, height: Double) = this(new jfxg.BoundingBox(minX, minY, width, height))
 
   /**
-   * The y coordinate.
+   * Creates a new instance of 3D BoundingBox.
    */
-  def y = delegate.getX
-
-  /**
-   * The z coordinate.
-   */
-  def z = delegate.getX
-
-  /**
-   * Computes the distance between this point and point (x1, y1, z1).
-   */
-  def distance(x1: Double, y1: Double, z1: Double) = delegate.distance(x1, y1, z1)
-
-  /**
-   * Computes the distance between this point and point p.
-   */
-  def distance(p: Point3D) = delegate.distance(p)
+  def this(minX: Double, minY: Double, minZ: Double, width: Double, height: Double, depth: Double) = this(new jfxg.BoundingBox(minX, minY, minZ, width, height, depth))
 
 }

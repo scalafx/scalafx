@@ -28,39 +28,29 @@
 package scalafx.geometry
 
 import javafx.{ geometry => jfxg }
-import scalafx.util.SFXDelegate
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-object Point3D {
-  implicit def sfxPoint3D2jfx(p: Point3D) = p.delegate
-}
+@RunWith(classOf[JUnitRunner]) 
+/**
+ * Rectangle2D Spec tests.
+ * 
+ */
+class Rectangle2DSpec extends AbstractSFXDelegateSpec[jfxg.Rectangle2D, Rectangle2D, jfxg.Rectangle2DBuilder[_]](classOf[jfxg.Rectangle2D], classOf[Rectangle2D], classOf[jfxg.Rectangle2DBuilder[_]]) {
 
-class Point3D(override val delegate: jfxg.Point3D) extends SFXDelegate[jfxg.Point3D] {
+  protected def getScalaClassInstance = new Rectangle2D(0, 0, 0, 0)
 
-  def this(x: Double, y: Double, z: Double) = this(new jfxg.Point3D(x, y, z))
+  protected def convertScalaClassToJavaClass(sfxObject: Rectangle2D) = {
+    val jfxRectangle2D: jfxg.Rectangle2D = sfxObject
+    jfxRectangle2D
+  }
 
-  /**
-   * The x coordinate.
-   */
-  def x = delegate.getX
+  protected def getJavaClassInstance = new jfxg.Rectangle2D(0, 0, 0, 0)
 
-  /**
-   * The y coordinate.
-   */
-  def y = delegate.getX
-
-  /**
-   * The z coordinate.
-   */
-  def z = delegate.getX
-
-  /**
-   * Computes the distance between this point and point (x1, y1, z1).
-   */
-  def distance(x1: Double, y1: Double, z1: Double) = delegate.distance(x1, y1, z1)
-
-  /**
-   * Computes the distance between this point and point p.
-   */
-  def distance(p: Point3D) = delegate.distance(p)
-
+  protected def convertJavaClassToScalaClass(jfxObject: jfxg.Rectangle2D) = {
+    val sfxRectangle2D: Rectangle2D = jfxObject
+    sfxRectangle2D
+  }
 }
