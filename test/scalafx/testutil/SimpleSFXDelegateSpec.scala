@@ -108,9 +108,5 @@ abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]](javaClass
     sfxObject.delegate should be(jfxObject)
   }
 
-  it should "declare all public static methods of " + javaClass.getName in {
-    compareStaticMethods(javaClass, scalaClass)
-  }
-
   // Tests - End
 }
