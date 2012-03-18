@@ -3,7 +3,7 @@ package scalafx.scene.control
 import javafx.scene.control.ContentDisplay
 import javafx.scene.control.OverrunStyle
 import javafx.scene.text.TextAlignment
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes.jfxBooleanProperty2sfx
 import scalafx.Includes.jfxDoubleProperty2sfx
 import scalafx.Includes.jfxObjectProperty2sfx
@@ -18,6 +18,10 @@ object Tooltip {
 
   implicit def sfxTooltip2jfx(v: Tooltip) = v.delegate
 
+  def apply(string: String) = new Tooltip {
+    text = string
+  }
+
   /**
    * Generates a Simple Tooltip with defaul properties from a text.
    *
@@ -30,7 +34,7 @@ object Tooltip {
   class TooltipInstaller(node: Node) {
 
     /**
-     * Associates the given Tooltip with a given Node. The tooltip can then behave similar to when it is set on any Control. 
+     * Associates the given Tooltip with a given Node. The tooltip can then behave similar to when it is set on any Control.
      * A single tooltip can be associated with multiple nodes.
      */
     def installTooltip(tooltip: Tooltip) {
@@ -120,6 +124,5 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip) extends 
   def wrapText_=(v: Boolean) {
     wrapText() = v
   }
-  
 
 }
