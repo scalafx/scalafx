@@ -44,7 +44,7 @@ class TextSpec extends FlatSpec with PropertyComparator with SeveredStackTraces 
   }
 
   it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxs.TextBuilder], sfxClass)
+    compareBuilderProperties(classOf[jfxs.TextBuilder[Any]], sfxClass)
   }
 
   it should "declare all public methods of " + jfxClass.getName in {

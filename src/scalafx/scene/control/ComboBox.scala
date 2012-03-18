@@ -71,7 +71,7 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    * The selection model for the ComboBox.
    */
   def selectionModel = delegate.selectionModelProperty
-  def selectionModel_=(v: SelectionModel[T]) {
+  def selectionModel_=(v: SingleSelectionModel[T]) {
     selectionModel() = v.delegate
   }
 
@@ -96,7 +96,7 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
   }
 
   /**
-   * Remove a item at end of list of items
+   * Remove a item in list of items
    *
    * @param item Item to be removed.
    * @return Combobox itself
