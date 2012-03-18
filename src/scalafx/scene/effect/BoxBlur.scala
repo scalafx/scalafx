@@ -1,5 +1,3 @@
-package scalafx.scene.effect
-
 /*
 * Copyright (c) 2012, ScalaFX Project
 * All rights reserved.
@@ -27,13 +25,53 @@ package scalafx.scene.effect
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import javafx.scene.{ effect => jfxe }
+package scalafx.scene.effect
+
+import scalafx.Includes._
+import javafx.scene.{ effect => jfxse }
 import scalafx.util.SFXDelegate
 
-object Effect {
-  implicit def sfxEffect2jfx(e: Effect) = e.delegate
+object BoxBlur {
+  implicit def sfxBoxBlur2jfx(bb: BoxBlur) = bb.delegate
 }
 
-abstract class Effect protected (override val delegate: jfxe.Effect) extends SFXDelegate[jfxe.Effect] {
+class BoxBlur(override val delegate: jfxse.BoxBlur = new jfxse.BoxBlur) extends Effect(delegate) with SFXDelegate[jfxse.BoxBlur] {
+
+  /**
+   * Creates a new instance of BoxBlur with specified width, height and iterations.
+   */
+  def this(width: Double, height: Double, iterations: Int) = this(new jfxse.BoxBlur(width, height, iterations))
+
+  /**
+   * The vertical dimension of the blur effect.
+   */
+  def height = delegate.heightProperty
+  def height_=(v: Double) {
+    height() = v
+  }
+
+  /**
+   * The input for this Effect.
+   */
+  def input = delegate.inputProperty
+  def input_=(v: Effect) {
+    input() = v
+  }
+
+  /**
+   * The number of times to iterate the blur effect to improve its "quality" or "smoothness".
+   */
+  def iterations = delegate.iterationsProperty
+  def iterations_=(v: Int) {
+    iterations() = v
+  }
+
+  /**
+   * The horizontal dimension of the blur effect.
+   */
+  def width = delegate.widthProperty
+  def width_=(v: Double) {
+    width() = v
+  }
 
 }

@@ -1,5 +1,3 @@
-package scalafx.scene.effect
-
 /*
 * Copyright (c) 2012, ScalaFX Project
 * All rights reserved.
@@ -27,13 +25,37 @@ package scalafx.scene.effect
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import javafx.scene.{ effect => jfxe }
+package scalafx.scene.effect
+
+import scalafx.Includes._
+import javafx.scene.{ effect => jfxse }
 import scalafx.util.SFXDelegate
 
-object Effect {
-  implicit def sfxEffect2jfx(e: Effect) = e.delegate
+object Bloom {
+  implicit def sfxBloom2jfx(b: Bloom) = b.delegate
 }
 
-abstract class Effect protected (override val delegate: jfxe.Effect) extends SFXDelegate[jfxe.Effect] {
+class Bloom(override val delegate: jfxse.Bloom = new jfxse.Bloom) extends Effect(delegate) with SFXDelegate[jfxse.Bloom] {
+
+  /**
+   * Creates a new instance of Bloom with the specified threshold.
+   */
+  def this(threshold: Double) = this(new jfxse.Bloom(threshold))
+
+  /**
+   * The input for this Effect.
+   */
+  def input = delegate.inputProperty
+  def input_=(v: Effect) {
+    input() = v
+  }
+
+  /**
+   * The threshold value controls the minimum luminosity value of the pixels that will be made to glow.
+   */
+  def threshold = delegate.thresholdProperty
+  def threshold_=(v: Double) {
+    threshold() = v
+  }
 
 }

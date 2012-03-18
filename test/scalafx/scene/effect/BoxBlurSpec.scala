@@ -1,5 +1,3 @@
-package scalafx.scene.effect
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,16 +24,34 @@ package scalafx.scene.effect
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-object EffectIncludes extends EffectIncludes
+/**
+ * BoxBlur Spec tests.
+ * 
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class BoxBlurSpec extends AbstractSFXDelegateSpec[jfxse.BoxBlur, BoxBlur, jfxse.BoxBlurBuilder[_]](classOf[jfxse.BoxBlur], classOf[BoxBlur], classOf[jfxse.BoxBlurBuilder[_]]) {
 
-trait EffectIncludes {
-  implicit def jfxBlend2sfx(b: jfxse.Blend) = new Blend(b)
-  implicit def jfxBloom2sfx(b: jfxse.Bloom) = new Bloom(b)
-  implicit def jfxBoxBlur2sfx(bb: jfxse.BoxBlur) = new BoxBlur(bb)
-  implicit def jfxEffect2sfx(e: jfxse.Effect) = new Effect(e) {}
-  implicit def jfxDropShadow2sfx(ds: jfxse.DropShadow) = new DropShadow(ds)
+  protected def getScalaClassInstance = new BoxBlur(new jfxse.BoxBlur)
+
+  protected def convertScalaClassToJavaClass(sfxObject: BoxBlur) = {
+    val jfxBoxBlur: jfxse.BoxBlur = sfxObject
+    jfxBoxBlur
+  }
+
+  protected def getJavaClassInstance = new jfxse.BoxBlur
+
+  protected def convertJavaClassToScalaClass(jfxObject: jfxse.BoxBlur) = {
+    val sfxBoxBlur: BoxBlur = jfxObject
+    sfxBoxBlur
+  }
 
 }

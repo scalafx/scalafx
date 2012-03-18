@@ -1,5 +1,3 @@
-package scalafx.scene.effect
-
 /*
 * Copyright (c) 2012, ScalaFX Project
 * All rights reserved.
@@ -27,13 +25,58 @@ package scalafx.scene.effect
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import javafx.scene.{ effect => jfxe }
+package scalafx.scene.effect
+
+import scalafx.Includes._
+import javafx.scene.{ effect => jfxse}
 import scalafx.util.SFXDelegate
 
-object Effect {
-  implicit def sfxEffect2jfx(e: Effect) = e.delegate
+object Blend {
+  implicit def sfxBlend2jfx(b: Blend) = b.delegate
 }
 
-abstract class Effect protected (override val delegate: jfxe.Effect) extends SFXDelegate[jfxe.Effect] {
+class Blend(override val delegate: jfxse.Blend = new jfxse.Blend) extends Effect(delegate) with SFXDelegate[jfxse.Blend] {
+
+  /**
+   * Creates a new instance of Blend with the specified mode.
+   */
+  def this(mode: jfxse.BlendMode) = this(new jfxse.Blend(mode))
+
+  /**
+   * Creates a new instance of Blend with the specified mode and bottom and top inputs.
+   */
+  def this(mode: jfxse.BlendMode, bottomInput: Effect, topInput: Effect) = this(new jfxse.Blend(mode, bottomInput, topInput))
+
+  /**
+   * The bottom input for this Blend operation.
+   */
+  def bottomInput = delegate.bottomInputProperty
+  def bottomInput_=(v: Effect) {
+    bottomInput() = v
+  }
+
+  /**
+   * The BlendMode used to blend the two inputs together.
+   */
+  def mode = delegate.modeProperty
+  def mode_=(v: jfxse.BlendMode) {
+    mode() = v
+  }
+
+  /**
+   * The opacity value, which is modulated with the top input prior to blending.
+   */
+  def opacity = delegate.opacityProperty
+  def opacity_=(v: Double) {
+    opacity() = v
+  }
+
+  /**
+   * The top input for this Blend operation.
+   */
+  def topInput = delegate.topInputProperty
+  def topInput_=(v: Effect) {
+    topInput() = v
+  }
 
 }
