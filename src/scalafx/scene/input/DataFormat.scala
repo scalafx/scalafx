@@ -38,6 +38,11 @@ object DataFormat {
   implicit def sfxDataFormat2jfx(ie: DataFormat) = ie.delegate
 
   /**
+   * Looks for the DataFormat which has been previously created with the given mime type as one of its ids.
+   */
+  def lookupMimeType(mimeType: String) = jfxsi.DataFormat.lookupMimeType(mimeType)
+
+  /**
    * Represents a List of Files.
    */
   val Files = jfxsi.DataFormat.FILES

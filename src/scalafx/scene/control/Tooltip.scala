@@ -1,14 +1,10 @@
 package scalafx.scene.control
 
-import javafx.scene.control.ContentDisplay
-import javafx.scene.control.OverrunStyle
-import javafx.scene.text.TextAlignment
+import javafx.scene.{ text => jfxst}
 import javafx.scene.{ control => jfxsc }
-import scalafx.Includes.jfxBooleanProperty2sfx
-import scalafx.Includes.jfxDoubleProperty2sfx
-import scalafx.Includes.jfxObjectProperty2sfx
-import scalafx.Includes.jfxStringProperty2sfx
-import scalafx.scene.Node.sfxNode2jfx
+import javafx.{scene => jfxs }
+import scalafx.Includes._
+import scalafx.scene.Node._
 import scalafx.scene.text.Font.sfxFont2jfx
 import scalafx.scene.text.Font
 import scalafx.scene.Node
@@ -31,26 +27,17 @@ object Tooltip {
     text() = string
   }
 
-  class TooltipInstaller(node: Node) {
+  /**
+   * Associates the given Tooltip with a given Node. The tooltip can then behave similar to when it is set on any Control.
+   * A single tooltip can be associated with multiple nodes.
+   */
+  def install(node: jfxs.Node, tooltip: jfxsc.Tooltip) = jfxsc.Tooltip.install(node, tooltip)
 
-    /**
-     * Associates the given Tooltip with a given Node. The tooltip can then behave similar to when it is set on any Control.
-     * A single tooltip can be associated with multiple nodes.
-     */
-    def installTooltip(tooltip: Tooltip) {
-      jfxsc.Tooltip.install(node, tooltip)
-    }
+  /**
+   * Removes the association of the given Tooltip on a specified Node. Hence hovering on the node will no longer result in showing of the tooltip.
+   */
+  def uninstall(node: jfxs.Node, tooltip: jfxsc.Tooltip) = jfxsc.Tooltip.uninstall(node, tooltip)
 
-    /**
-     * Removes the association of the given Tooltip on a specified Node. Hence hovering on the node will no longer result in showing of the tooltip.
-     */
-    def uninstallTooltip(tooltip: Tooltip) {
-      jfxsc.Tooltip.uninstall(node, tooltip)
-    }
-
-  }
-
-  implicit def nodeToTooltipInstaller(node: Node) = new TooltipInstaller(node)
 }
 
 class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip) extends PopupControl(delegate) with SFXDelegate[jfxsc.Tooltip] {
@@ -64,7 +51,7 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip) extends 
    * Specifies the positioning of the graphic relative to the text.
    */
   def contentDisplay = delegate.contentDisplayProperty
-  def contentDisplay_=(v: ContentDisplay) {
+  def contentDisplay_=(v: jfxsc.ContentDisplay) {
     contentDisplay() = v
   }
 
@@ -97,7 +84,7 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip) extends 
    * this setting only affects multiple lines of text relative to the text bounds.
    */
   def textAlignment = delegate.textAlignmentProperty
-  def textAlignment_=(v: TextAlignment) {
+  def textAlignment_=(v: jfxst.TextAlignment) {
     textAlignment() = v
   }
 
@@ -105,7 +92,7 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip) extends 
    * Specifies the behavior to use if the text of the Tooltip exceeds the available space for rendering the text.
    */
   def textOverrun = delegate.textOverrunProperty
-  def textOverrun_=(v: OverrunStyle) {
+  def textOverrun_=(v: jfxsc.OverrunStyle) {
     textOverrun() = v
   }
 
