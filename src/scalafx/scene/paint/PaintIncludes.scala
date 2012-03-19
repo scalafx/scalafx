@@ -27,7 +27,7 @@
 
 package scalafx.scene.paint
 
-import javafx.scene.{paint => jfxsp}
+import javafx.scene.{ paint => jfxsp }
 
 object PaintIncludes extends PaintIncludes
 
@@ -38,5 +38,8 @@ trait PaintIncludes {
   implicit def hex2jfxColor(h: Int) = jfxsp.Color.rgb(h >>> 16 & 0xFF, h >>> 8 & 0xFF, h & 0xFF)
 
   implicit def jfxColor2sfx(c: jfxsp.Color) = new Color(c)
+  implicit def jfxLinearGradient2sfx(lg: jfxsp.LinearGradient) = new LinearGradient(lg)
+  implicit def jfxRadialGradient2sfx(rg: jfxsp.RadialGradient) = new RadialGradient(rg)
   implicit def jfxStop2sfx(c: jfxsp.Stop) = new Stop(c)
+
 }

@@ -1,5 +1,7 @@
+package scalafx.scene.paint
+
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,27 +27,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene.paint
-
 import javafx.scene.{ paint => jfxsp }
-import scalafx.util.SFXDelegate
+import scalafx.Includes._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-object Stop {
-  implicit def sfxStop2jfx(s: Stop) = s.delegate
+/**
+ * Color Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class ColorSpec extends AbstractSFXDelegateSpec[jfxsp.Color, Color, jfxsp.ColorBuilder[_]](classOf[jfxsp.Color], classOf[Color], classOf[jfxsp.ColorBuilder[_]]) {
 
-  def apply(offset: Double, color: Color) = new Stop(new jfxsp.Stop(offset, color))
+  protected def getScalaClassInstance = Color.color(0, 0, 0, 0)
 
-}
+  protected def convertScalaClassToJavaClass(sfxControl: Color) = {
+    val jfxColor: jfxsp.Color = sfxControl
+    jfxColor
+  }
 
-class Stop(override val delegate: jfxsp.Stop) extends SFXDelegate[jfxsp.Stop] {
+  protected def getJavaClassInstance = new jfxsp.Color(0, 0, 0, 0)
 
-  /**
-   * Gets a number ranging from 0 to 1 that indicates where this gradient stop is placed.
-   */
-  def offset = delegate.getOffset
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsp.Color) = {
+    val sfxColor: Color = jfxControl
+    sfxColor
+  }
 
-  /**
-   * Gets the color of the gradient at this offset.
-   */
-  def color = delegate.getColor
 }

@@ -27,24 +27,77 @@
 
 package scalafx.scene.paint
 
-import javafx.scene.{paint => jfxsp}
+import javafx.scene.{ paint => jfxsp }
 import scalafx.util.SFXDelegate
 
 object Color {
   implicit def sfxColor2jfx(c: Color) = c.delegate
 
+  /**
+   * Creates an RGB color specified with hexadecimal notation or color name.
+   */
   def web(color: String) = new Color(jfxsp.Color.web(color))
+
+  /**
+   * Creates an RGB color specified with hexadecimal notation or color name.
+   */
   def web(color: String, opacity: Double) = new Color(jfxsp.Color.web(color, opacity))
+
+  /**
+   * Creates an opaque sRGB color with the specified RGB values in the range 0-255.
+   */
   def rgb(red: Int, green: Int, blue: Int) = new Color(jfxsp.Color.rgb(red, green, blue))
+
+  /**
+   * *
+   * Creates an sRGB color with the specified RGB values in the range 0-255, and a given opacity.
+   */
   def rgb(red: Int, green: Int, blue: Int, opacity: Double) = new Color(jfxsp.Color.rgb(red, green, blue, opacity))
+
+  /**
+   * Creates an opaque Color based on the specified values in the HSB color model.
+   */
   def hsb(hue: Double, saturation: Double, brightness: Double) = new Color(jfxsp.Color.hsb(hue, saturation, brightness))
+
+  /**
+   * Creates a Color based on the specified values in the HSB color model, and a given opacity.
+   */
   def hsb(hue: Double, saturation: Double, brightness: Double, opacity: Double) = new Color(jfxsp.Color.hsb(hue, saturation, brightness, opacity))
+
+  /**
+   * Creates an opaque sRGB color with the specified red, green and blue values in the range 0.0-1.0.
+   */
   def color(red: Double, green: Double, blue: Double) = new Color(jfxsp.Color.color(red, green, blue))
+
+  /**
+   * Creates an sRGB color with the specified red, green and blue values in the range 0.0-1.0, and a given opacity.
+   */
   def color(red: Double, green: Double, blue: Double, opacity: Double) = new Color(jfxsp.Color.color(red, green, blue, opacity))
+
+  /**
+   * Creates an opaque grey color.
+   */
   def gray(gray: Double) = new Color(jfxsp.Color.gray(gray))
+
+  /**
+   * Creates a grey color.
+   */
   def gray(gray: Double, opacity: Double) = new Color(jfxsp.Color.gray(gray, opacity))
+
+  /**
+   * This is a shortcut for rgb(gray, gray, gray).
+   */
   def grayRgb(gray: Int) = new Color(jfxsp.Color.gray(gray))
+
+  /**
+   * This is a shortcut for rgb(gray, gray, gray, opacity).
+   */
   def grayRgb(gray: Int, opacity: Double) = new Color(jfxsp.Color.gray(gray, opacity))
+
+  /**
+   * Creates a color value from a string representation.  The format of the string representation is the same as in web(String).
+   */
+  def valueOf(value: String) = new Color(jfxsp.Color.valueOf(value))
 
   val ALICEBLUE = new Color(jfxsp.Color.ALICEBLUE)
   val ANTIQUEWHITE = new Color(jfxsp.Color.ANTIQUEWHITE)
@@ -196,15 +249,81 @@ object Color {
   val YELLOWGREEN = new Color(jfxsp.Color.YELLOWGREEN)
 }
 
-class Color(override val delegate:jfxsp.Color) extends SFXDelegate[jfxsp.Color] {
+class Color(override val delegate: jfxsp.Color) extends Paint(delegate) with SFXDelegate[jfxsp.Color] {
+
+  /**
+   * The red component of the Color, in the range 0.0-1.0.
+   */
   def red = delegate.getRed
+
+  /**
+   * The green component of the Color, in the range 0.0-1.0.
+   */
   def green = delegate.getGreen
+
+  /**
+   * The blue component of the Color, in the range 0.0-1.0.
+   */
   def blue = delegate.getBlue
+
+  /**
+   * The opacity of the Color, in the range 0.0-1.0.
+   */
   def opacity = delegate.getOpacity
-  
+
+  /**
+   * Gets the hue component of this Color.
+   */
   def hue = delegate.getHue
+
+  /**
+   * Gets the saturation component of this Color.
+   */
   def saturation = delegate.getSaturation
+
+  /**
+   * Gets the brightness component of this Color.
+   */
   def brightness = delegate.getBrightness
 
+  /*
+   * Does someone uses this method?  
+   */
   def opacity(o: Double) = jfxsp.Color.color(red, green, blue, o)
+
+  /**
+   * Creates a new Color that is a darker version of this Color.
+   */
+  def darker = delegate.darker
+
+  /**
+   * Creates a new Color based on this Color with hue, saturation, brightness and opacity values altered.
+   */
+  def deriveColor(hueShift: Double, saturationFactor: Double, brightnessFactor: Double, opacityFactor: Double) = delegate.deriveColor(hueShift, saturationFactor, brightnessFactor, opacityFactor)
+
+  /**
+   * Creates a new Color that is a less saturated version of this Color.
+   */
+  def desaturate = delegate.desaturate
+
+  /**
+   * Creates a new Color that is grayscale equivalent of this Color.
+   */
+  def grayscale = delegate.grayscale
+
+  /**
+   * The function calculates an interpolated value along the fraction t between 0.0 and 1.0.
+   */
+  def interpolate(endValue: Color, t: Double) = delegate.interpolate(endValue, t)
+
+  /**
+   * Creates a new Color that is inversion of this Color.
+   */
+  def invert = delegate.invert
+
+  /**
+   * Creates a new Color that is a more saturated version of this Color.
+   */
+  def saturate = delegate.saturate
+
 }

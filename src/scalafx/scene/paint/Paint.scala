@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,22 +30,17 @@ package scalafx.scene.paint
 import javafx.scene.{ paint => jfxsp }
 import scalafx.util.SFXDelegate
 
-object Stop {
-  implicit def sfxStop2jfx(s: Stop) = s.delegate
+object Paint {
+  implicit def sfxPaint2jfx(p: Paint) = p.delegate
 
-  def apply(offset: Double, color: Color) = new Stop(new jfxsp.Stop(offset, color))
+  /**
+   * Creates a paint value from a string representation.  Recognizes strings representing Color, RadialGradient or LinearGradient. String specifying
+   * LinearGradient must begin with linear-gradient keyword and string specifying RadialGradient must begin with radial-gradient.
+   */
+  def valueOf(value: String) = jfxsp.Paint.valueOf(value)
 
 }
 
-class Stop(override val delegate: jfxsp.Stop) extends SFXDelegate[jfxsp.Stop] {
+abstract class Paint(override val delegate: jfxsp.Paint) extends SFXDelegate[jfxsp.Paint] {
 
-  /**
-   * Gets a number ranging from 0 to 1 that indicates where this gradient stop is placed.
-   */
-  def offset = delegate.getOffset
-
-  /**
-   * Gets the color of the gradient at this offset.
-   */
-  def color = delegate.getColor
 }

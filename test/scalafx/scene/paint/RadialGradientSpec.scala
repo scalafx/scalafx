@@ -1,5 +1,7 @@
+package scalafx.scene.paint
+
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,27 +27,33 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene.paint
-
 import javafx.scene.{ paint => jfxsp }
-import scalafx.util.SFXDelegate
+import scalafx.Includes._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
+import scala.collection.JavaConversions._
 
-object Stop {
-  implicit def sfxStop2jfx(s: Stop) = s.delegate
+/**
+ * RadialGradient Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class RadialGradientSpec extends AbstractSFXDelegateSpec[jfxsp.RadialGradient, RadialGradient, jfxsp.RadialGradientBuilder](classOf[jfxsp.RadialGradient], classOf[RadialGradient], classOf[jfxsp.RadialGradientBuilder]) {
 
-  def apply(offset: Double, color: Color) = new Stop(new jfxsp.Stop(offset, color))
+  protected def getScalaClassInstance = new RadialGradient(0, 0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)
 
-}
+  protected def convertScalaClassToJavaClass(sfxControl: RadialGradient) = {
+    val jfxRadialGradient: jfxsp.RadialGradient = sfxControl
+    jfxRadialGradient
+  }
 
-class Stop(override val delegate: jfxsp.Stop) extends SFXDelegate[jfxsp.Stop] {
+  protected def getJavaClassInstance = new jfxsp.RadialGradient(0, 0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)
 
-  /**
-   * Gets a number ranging from 0 to 1 that indicates where this gradient stop is placed.
-   */
-  def offset = delegate.getOffset
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsp.RadialGradient) = {
+    val sfxRadialGradient: RadialGradient = jfxControl
+    sfxRadialGradient
+  }
 
-  /**
-   * Gets the color of the gradient at this offset.
-   */
-  def color = delegate.getColor
 }
