@@ -32,10 +32,26 @@ import scalafx.util.SFXDelegate
 
 object LinearGradient {
   implicit def sfxLinearGradient2jfx(c: LinearGradient) = c.delegate
+  
+  def apply(startX: Double, startY: Double, endX: Double, endY: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: List[Stop]) { 
+    val stopsList = new java.util.ArrayList[jfxsp.Stop](stops.length)
+    for (stop <- stops) stopsList.add(stop)
+    new LinearGradient(new jfxsp.LinearGradient(startX, startY, endX, endY, proportional, cycleMethod, stopsList))
+  }
+
+  def apply(startX: Double, startY: Double, endX: Double, endY: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*) {
+    val stopsList = new java.util.ArrayList[jfxsp.Stop](stops.length)
+    for (stop <- stops) stopsList.add(stop)
+    new LinearGradient(new jfxsp.LinearGradient(startX, startY, endX, endY, proportional, cycleMethod, stopsList))
+  }
 }
 
 class LinearGradient(override val delegate:jfxsp.LinearGradient) extends Paint(delegate) with SFXDelegate[jfxsp.LinearGradient] {
-//  def this(startX: Double, startY: Double, endX: Double, endY: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: List[Stop]) = this(new jfxsp.LinearGradient(startX, startY, endX, endY, proportional, cycleMethod, stops))
-//  def this(startX: Double, startY: Double, endX: Double, endY: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*) = this(new jfxsp.LinearGradient(startX, startY, endX, endY, proportional, cycleMethod, stops))
-  
+  def cycleMethod = delegate.getCycleMethod
+  def endX = delegate.getEndX
+  def endY = delegate.getEndY
+  def startX = delegate.getStartX
+  def startY = delegate.getStartY
+  def stops = delegate.getStops
+  def proportional = delegate.isProportional
 }
