@@ -33,13 +33,12 @@ import scalafx.util.SFXDelegate
 
 object ArcTo {
   implicit def sfxArcTo2jfx(v: ArcTo) = v.delegate
+
+  def apply(radiusX: Double, radiusY: Double, xAxisRotation: Double, x: Double, y: Double, largeArcFlag: Boolean, sweepFlag: Boolean) = 
+    new ArcTo(new jfxss.ArcTo(radiusX, radiusY, xAxisRotation, x, y , largeArcFlag, sweepFlag))
 }
 
 class ArcTo(override val delegate:jfxss.ArcTo = new jfxss.ArcTo()) extends PathElement(delegate) with SFXDelegate[jfxss.ArcTo] {
-
-  def this(radiusX: Double, radiusY: Double, xAxisRotation: Double, x: Double, y: Double, largeArcFlag: Boolean, sweepFlag: Boolean) = 
-    this(new jfxss.ArcTo(radiusX, radiusY, xAxisRotation, x, y , largeArcFlag, sweepFlag))
-	
   def XAxisRotation = delegate.XAxisRotationProperty
   def XAxisRotation_=(v: Double) {
     XAxisRotation() = v

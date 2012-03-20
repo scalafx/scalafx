@@ -34,13 +34,15 @@ import scalafx.util.SFXDelegate
 
 object Rectangle {
   implicit def sfxRectangle2jfx(v: Rectangle) = v.delegate
+
+  def apply(width: Double, height: Double) = new Rectangle(new jfxss.Rectangle(width, height))
+  def apply(x: Double, y: Double, width: Double, height: Double) = 
+    new Rectangle(new jfxss.Rectangle(x, y, width, height))
+  def apply(width: Double, height: Double, fill: Paint) = 
+    new Rectangle(new jfxss.Rectangle(width, height, fill))
 }
 
 class Rectangle(override val delegate:jfxss.Rectangle = new jfxss.Rectangle()) extends Shape(delegate) with SFXDelegate[jfxss.Rectangle] {
-  def this(width: Double, height: Double) = this(new jfxss.Rectangle(width, height))
-  def this(x: Double, y: Double, width: Double, height: Double) = this(new jfxss.Rectangle(x, y, width, height))
-  def this(width: Double, height: Double, fill: Paint) = this(new jfxss.Rectangle(width, height, fill))
-  
   def x = delegate.xProperty
   def x_=(v: Double) {
     x() = v

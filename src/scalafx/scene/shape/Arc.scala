@@ -33,6 +33,9 @@ import scalafx.util.SFXDelegate
 
 object Arc {
   implicit def sfxArc2jfx(v: Arc) = v.delegate
+  
+  def apply(centerX: Double, centerY: Double, radiusX: Double, radiusY: Double, startAngle: Double, length: Double) = 
+    new Arc(new jfxss.Arc(centerX, centerY, radiusX, radiusY, startAngle, length))
 }
 
 class Arc(override val delegate:jfxss.Arc = new jfxss.Arc()) extends Shape(delegate) with SFXDelegate[jfxss.Arc] {

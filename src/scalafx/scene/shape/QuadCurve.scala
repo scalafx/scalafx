@@ -33,12 +33,12 @@ import scalafx.util.SFXDelegate
 
 object QuadCurve {
   implicit def sfxQuadCurve2jfx(v: QuadCurve) = v.delegate
+
+  def apply(startX: Double, startY: Double, controlX: Double, controlY: Double, endX: Double, endY: Double) = 
+    new QuadCurve(new jfxss.QuadCurve(startX, startY, controlX, controlY, endX, endY))
 }
 
 class QuadCurve(override val delegate:jfxss.QuadCurve = new jfxss.QuadCurve()) extends Shape(delegate) with SFXDelegate[jfxss.QuadCurve] {
-  def this(startX: Double, startY: Double, controlX: Double, controlY: Double, endX: Double, endY: Double) = 
-    this(new jfxss.QuadCurve(startX, startY, controlX, controlY, endX, endY))
-
   def controlX = delegate.controlXProperty
   def controlX_=(v: Double) {
     controlX() = v

@@ -33,6 +33,9 @@ import scalafx.util.SFXDelegate
 
 object Line {
   implicit def sfxLine2jfx(v: Line) = v.delegate
+  
+  def apply(startX: Double, startY: Double, endX: Double, endY: Double) = 
+    new Line(new jfxss.Line(startX, startY, endX, endY))
 }
 
 class Line(override val delegate:jfxss.Line = new jfxss.Line()) extends Shape(delegate) with SFXDelegate[jfxss.Line] {

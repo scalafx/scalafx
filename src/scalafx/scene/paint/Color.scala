@@ -33,6 +33,8 @@ import scalafx.util.SFXDelegate
 object Color {
   implicit def sfxColor2jfx(c: Color) = c.delegate
 
+  def apply(red: Double, green: Double, blue: Double, opacity: Double) = new Color(new jfxsp.Color(red, green, blue, opacity))
+  
   def web(color: String) = new Color(jfxsp.Color.web(color))
   def web(color: String, opacity: Double) = new Color(jfxsp.Color.web(color, opacity))
   def rgb(red: Int, green: Int, blue: Int) = new Color(jfxsp.Color.rgb(red, green, blue))
@@ -197,8 +199,6 @@ object Color {
 }
 
 class Color(override val delegate:jfxsp.Color) extends Paint(delegate) with SFXDelegate[jfxsp.Color] {
-  def this(red: Double, green: Double, blue: Double, opacity: Double) = this(new jfxsp.Color(red, green, blue, opacity))
-  
   def red = delegate.getRed
   def green = delegate.getGreen
   def blue = delegate.getBlue

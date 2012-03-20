@@ -33,10 +33,10 @@ import scalafx.util.SFXDelegate
 
 object Polyline {
   implicit def sfxPolyline2jfx(v: Polyline) = v.delegate
+
+  def apply(points: Double*) = new Polyline(new jfxss.Polyline(points.toArray))
 }
 
 class Polyline(override val delegate:jfxss.Polyline = new jfxss.Polyline()) extends Shape(delegate) with SFXDelegate[jfxss.Polyline] {
-  def this(points: Double*) = this(new jfxss.Polyline(points.toArray))
-  
   def getPoints = delegate.getPoints
 }

@@ -33,10 +33,10 @@ import scalafx.util.SFXDelegate
 
 object Polygon {
   implicit def sfxPolygon2jfx(v: Polygon) = v.delegate
+
+  def apply(points: Double*) = new Polygon(new jfxss.Polygon(points: _*))
 }
 
 class Polygon(override val delegate:jfxss.Polygon = new jfxss.Polygon()) extends Shape(delegate) with SFXDelegate[jfxss.Polygon] {
-  def this(points: Double*) = this(new jfxss.Polygon(points: _*))
-  
   def getPoints = delegate.getPoints
 }

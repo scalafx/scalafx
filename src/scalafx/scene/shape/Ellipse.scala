@@ -33,6 +33,10 @@ import scalafx.util.SFXDelegate
 
 object Ellipse {
   implicit def sfxEllipse2jfx(v: Ellipse) = v.delegate
+  
+  def apply(radiusX: Double, radiusY: Double) = new Ellipse(new jfxss.Ellipse(radiusX, radiusY))
+  def apply(centerX: Double, centerY: Double, radiusX: Double, radiusY: Double) = 
+    new Ellipse(new jfxss.Ellipse(centerX, centerY, radiusX, radiusY))
 }
 
 class Ellipse(override val delegate:jfxss.Ellipse = new jfxss.Ellipse()) extends Shape(delegate) with SFXDelegate[jfxss.Ellipse] {

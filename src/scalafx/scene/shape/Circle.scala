@@ -28,11 +28,20 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
+import scalafx.scene.paint.Paint
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
 object Circle {
   implicit def sfxCircle2jfx(v: Circle) = v.delegate
+  
+  def apply(radius: Double) = new Circle(new jfxss.Circle(radius))
+  def apply(centerX: Double, centerY: Double, radius: Double) = 
+    new Circle(new jfxss.Circle(centerX, centerY, radius))
+  def apply(centerX: Double, centerY: Double, radius: Double, fill: Paint) = 
+    new Circle(new jfxss.Circle(centerX, centerY, radius, fill))
+  def apply(radius: Double, fill: Paint) = 
+    new Circle(new jfxss.Circle(radius, fill))
 }
 
 class Circle(override val delegate:jfxss.Circle = new jfxss.Circle()) extends Shape(delegate) with SFXDelegate[jfxss.Circle] {

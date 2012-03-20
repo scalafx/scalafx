@@ -33,12 +33,12 @@ import scalafx.util.SFXDelegate
 
 object CubicCurveTo {
   implicit def sfxCubicCurveTo2jfx(v: CubicCurveTo) = v.delegate
+
+  def apply(controlX1: Double, controlY1: Double, controlX2: Double, controlY2: Double, x: Double, y: Double) = 
+    new CubicCurveTo(new jfxss.CubicCurveTo(controlX1, controlY1, controlX2, controlY2, x, y))
 }
 
 class CubicCurveTo(override val delegate:jfxss.CubicCurveTo = new jfxss.CubicCurveTo()) extends PathElement(delegate) with SFXDelegate[jfxss.CubicCurveTo] {
-  def this(controlX1: Double, controlY1: Double, controlX2: Double, controlY2: Double, x: Double, y: Double) = 
-    this(new jfxss.CubicCurveTo(controlX1, controlY1, controlX2, controlY2, x, y))
-  
   def controlX1 = delegate.controlX1Property
   def controlX1_=(v: Double) {
     controlX1() = v

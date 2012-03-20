@@ -33,11 +33,11 @@ import scalafx.util.SFXDelegate
 
 object HLineTo {
   implicit def sfxHLineTo2jfx(v: HLineTo) = v.delegate
+
+  def apply(x: Double) = new HLineTo(new jfxss.HLineTo(x))
 }
 
 class HLineTo(override val delegate:jfxss.HLineTo = new jfxss.HLineTo()) extends PathElement(delegate) with SFXDelegate[jfxss.HLineTo] {
-  def this(x: Double) = this(new jfxss.HLineTo(x))
-	
   def x = delegate.xProperty
   def x_=(v: Double) {
     x() = v
