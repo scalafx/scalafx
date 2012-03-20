@@ -30,33 +30,34 @@ package scalafx.scene.paint
 import javafx.scene.{paint => jfxsp}
 import scalafx.util.SFXDelegate
 
-object LinearGradient {
-  implicit def sfxLinearGradient2jfx(c: LinearGradient) = c.delegate
+object RadialGradient {
+  implicit def sfxRadialGradient2jfx(c: RadialGradient) = c.delegate
   
-  def apply(startX: Double, startY: Double, endX: Double, endY: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: List[Stop]) { 
+  def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: List[Stop]) { 
     val stopsList = new java.util.ArrayList[jfxsp.Stop](stops.length)
     for (stop <- stops) stopsList.add(stop)
-    new LinearGradient(new jfxsp.LinearGradient(startX, startY, endX, endY, proportional, cycleMethod, stopsList))
+    new RadialGradient(new jfxsp.RadialGradient(focusAngle, focusDistance, centerX, centerY, radius, proportional, cycleMethod, stopsList))
   }
 
 /* This should work but it looks like it calls the constructor that 
  * uses List instead of the one that uses variable arguments
-  def apply(startX: Double, startY: Double, endX: Double, endY: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*) =
-    new LinearGradient(new jfxsp.LinearGradient(startX, startY, endX, endY, proportional, cycleMethod, stops: _*))
+  def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*) =
+    new RadialGradient(new jfxsp.RadialGradient(focusAngle, focusDistance, centerX, centerY, radius, proportional, cycleMethod, stops: _*))
  */
-  def apply(startX: Double, startY: Double, endX: Double, endY: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*) {
+  def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*) { 
     val stopsList = new java.util.ArrayList[jfxsp.Stop](stops.length)
     for (stop <- stops) stopsList.add(stop)
-    new LinearGradient(new jfxsp.LinearGradient(startX, startY, endX, endY, proportional, cycleMethod, stopsList))
+    new RadialGradient(new jfxsp.RadialGradient(focusAngle, focusDistance, centerX, centerY, radius, proportional, cycleMethod, stopsList))
   }
 }
 
-class LinearGradient(override val delegate:jfxsp.LinearGradient) extends Paint(delegate) with SFXDelegate[jfxsp.LinearGradient] {
+class RadialGradient(override val delegate:jfxsp.RadialGradient) extends Paint(delegate) with SFXDelegate[jfxsp.RadialGradient] {
+  def centerX = delegate.getCenterX
+  def centerY = delegate.getCenterY
   def cycleMethod = delegate.getCycleMethod
-  def endX = delegate.getEndX
-  def endY = delegate.getEndY
-  def startX = delegate.getStartX
-  def startY = delegate.getStartY
+  def focusAngle = delegate.getFocusAngle
+  def focusDistance = delegate.getFocusDistance
+  def radius = delegate.getRadius
   def stops = delegate.getStops
   def proportional = delegate.isProportional
 }
