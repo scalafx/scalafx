@@ -1,5 +1,3 @@
-package scalafx.scene.effect
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,19 +24,34 @@ package scalafx.scene.effect
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.effect
 
-import javafx.scene.{effect => jfxse}
+import javafx.scene.{ effect => jfxse }
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-object EffectIncludes extends EffectIncludes
+/**
+ * ColorInput Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class ColorInputSpec extends AbstractSFXDelegateSpec[jfxse.ColorInput, ColorInput, jfxse.ColorInputBuilder[_]](classOf[jfxse.ColorInput], classOf[ColorInput], classOf[jfxse.ColorInputBuilder[_]]) {
 
-trait EffectIncludes {
-  implicit def jfxBlend2sfx(b: jfxse.Blend) = new Blend(b)
-  implicit def jfxBloom2sfx(b: jfxse.Bloom) = new Bloom(b)
-  implicit def jfxBoxBlur2sfx(bb: jfxse.BoxBlur) = new BoxBlur(bb)
-  implicit def jfxColorAdjust2sfx(ca: jfxse.ColorAdjust) = new ColorAdjust(ca)
-  implicit def jfxColorInput2sfx(ci: jfxse.ColorInput) = new ColorInput(ci)
-  implicit def jfxDisplacementMap2sfx(dm: jfxse.DisplacementMap) = new DisplacementMap(dm)
-  implicit def jfxEffect2sfx(e: jfxse.Effect) = new Effect(e) {}
-  implicit def jfxDropShadow2sfx(ds: jfxse.DropShadow) = new DropShadow(ds)
-  implicit def jfxFloatMap2sfx(fm: jfxse.FloatMap) = new FloatMap(fm)
+  protected def getScalaClassInstance = new ColorInput
+
+  protected def convertScalaClassToJavaClass(sfxObject: ColorInput) = {
+    val jfxColorInput: jfxse.ColorInput = sfxObject
+    jfxColorInput
+  }
+
+  protected def getJavaClassInstance = new jfxse.ColorInput
+
+  protected def convertJavaClassToScalaClass(jfxObject: jfxse.ColorInput) = {
+    val sfxColorInput: ColorInput = jfxObject
+    sfxColorInput
+  }
+
 }
