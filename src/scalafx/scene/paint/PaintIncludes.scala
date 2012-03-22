@@ -38,5 +38,6 @@ trait PaintIncludes {
   implicit def hex2jfxColor(h: Int) = jfxsp.Color.rgb(h >>> 16 & 0xFF, h >>> 8 & 0xFF, h & 0xFF)
 
   implicit def jfxColor2sfx(c: jfxsp.Color) = new Color(c)
+  implicit def jfxLinearGradient2sfx(c: jfxsp.LinearGradient) = new LinearGradient(c)
   implicit def jfxStop2sfx(c: jfxsp.Stop) = new Stop(c)
 }
