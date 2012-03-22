@@ -41,5 +41,4 @@ trait PaintIncludes {
   implicit def jfxLinearGradient2sfx(lg: jfxsp.LinearGradient) = new LinearGradient(lg)
   implicit def jfxRadialGradient2sfx(rg: jfxsp.RadialGradient) = new RadialGradient(rg)
   implicit def jfxStop2sfx(c: jfxsp.Stop) = new Stop(c)
-
 }

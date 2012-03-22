@@ -46,7 +46,7 @@ class LinearGradient(override val delegate: jfxsp.LinearGradient) extends Paint(
   /**
    * Creates a new instance of LinearGradient.
    */
-  def this(startX: Double, startY: Double, endX: Double, endY: Double, proportional: Boolean, cycleMethod: jfxsp.CycleMethod, stops: Seq[jfxsp.Stop]) =
+  def this(startX: Double = 0, startY: Double = 0, endX: Double = 1, endY: Double = 1, proportional: Boolean = true, cycleMethod: jfxsp.CycleMethod = jfxsp.CycleMethod.NO_CYCLE, stops: Seq[jfxsp.Stop] = Nil) =
     this(new jfxsp.LinearGradient(startX, startY, endX, endY, proportional, cycleMethod, stops))
 
   /**

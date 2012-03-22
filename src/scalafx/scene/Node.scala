@@ -33,6 +33,7 @@ import jfxs.{input => jfxsi, layout => jfxsl, effect => jfxse, transform => jfxs
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 import scalafx.geometry.Insets
+import scalafx.scene.effect.Effect
 
 object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
@@ -81,7 +82,7 @@ abstract class Node(override val delegate: jfxs.Node) extends SFXDelegate[jfxs.N
   }
 
   def effect = delegate.effectProperty
-  def effect_=(v: jfxse.Effect) {
+  def effect_=(v: Effect) {
     effect() = v
   }
 
