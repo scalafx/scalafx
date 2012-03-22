@@ -35,12 +35,14 @@ object ColorAdjust {
   implicit def sfxColorAdjust2jfx(ca: ColorAdjust) = ca.delegate
 }
 
-class ColorAdjust(override val delegate: jfxse.ColorAdjust = new jfxse.ColorAdjust) extends Effect(delegate) with SFXDelegate[jfxse.ColorAdjust] {
+class ColorAdjust(override val delegate: jfxse.ColorAdjust = new jfxse.ColorAdjust) extends Effect(delegate) with InputedEffect with SFXDelegate[jfxse.ColorAdjust] {
 
   /**
    * Creates a new instance of ColorAdjust with the specified hue, saturation, brightness, and contrast.
    */
   def this(hue: Double, saturation: Double, brightness: Double, contrast: Double) = this(new jfxse.ColorAdjust(hue, saturation, brightness, contrast))
+
+  def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
   /**
    * The brightness adjustment value.
@@ -64,14 +66,6 @@ class ColorAdjust(override val delegate: jfxse.ColorAdjust = new jfxse.ColorAdju
   def hue = delegate.hueProperty
   def hue_=(v: Double) {
     hue() = v
-  }
-
-  /**
-   * The input for this Effect.
-   */
-  def input = delegate.inputProperty
-  def input_=(v: Effect) {
-    input() = v
   }
 
   /**

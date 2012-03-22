@@ -35,20 +35,14 @@ object Bloom {
   implicit def sfxBloom2jfx(b: Bloom) = b.delegate
 }
 
-class Bloom(override val delegate: jfxse.Bloom = new jfxse.Bloom) extends Effect(delegate) with SFXDelegate[jfxse.Bloom] {
+class Bloom(override val delegate: jfxse.Bloom = new jfxse.Bloom) extends Effect(delegate) with InputedEffect with SFXDelegate[jfxse.Bloom] {
 
   /**
    * Creates a new instance of Bloom with the specified threshold.
    */
   def this(threshold: Double) = this(new jfxse.Bloom(threshold))
 
-  /**
-   * The input for this Effect.
-   */
-  def input = delegate.inputProperty
-  def input_=(v: Effect) {
-    input() = v
-  }
+  def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
   /**
    * The threshold value controls the minimum luminosity value of the pixels that will be made to glow.
