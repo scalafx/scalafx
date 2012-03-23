@@ -157,7 +157,7 @@ object Light {
 
 }
 
-abstract class Light protected (override val delegate: jfxse.Light) extends SFXDelegate[jfxse.Light] {
+abstract class Light protected (override val delegate: jfxse.Light)  extends SFXDelegate[jfxse.Light] {
 
   /**
    * The color of the light source.

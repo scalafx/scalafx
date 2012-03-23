@@ -8,9 +8,11 @@ import scalafx.scene.layout.HBox
 import scalafx.scene.paint.Color._
 import scalafx.scene.Scene
 import scalafx.stage.Stage
-import scene.effect.DropShadow
-import scene.paint.{Stops, LinearGradient}
+import scene.effect._
+import scene.effect.GaussianBlur._
+import scene.paint.{ Stops, LinearGradient }
 import scene.text.Text
+import javafx.scene.{ effect => jfxse }
 
 object HelloScalaFX extends JFXApp {
   stage = new Stage {
@@ -20,27 +22,35 @@ object HelloScalaFX extends JFXApp {
     scene = new Scene {
       fill = BLACK
       content = new HBox {
-        padding = Insets(80)
+//        padding = Insets(5)
         content = Seq(new Text {
           text = "Scala"
-          style = "-fx-font-size: 80pt"
+          style = "-fx-font-size: 100pt"
           fill = new LinearGradient(
             endX = 0,
-            stops = Stops(PALEGREEN, SEAGREEN)
-          )
+            stops = Stops(PALEGREEN, SEAGREEN))
         }, new Text {
           text = "FX"
-          style = "-fx-font-size: 80pt"
+          style = "-fx-font-size: 100pt"
           fill = new LinearGradient(
             endX = 0,
-            stops = Stops(CYAN, DODGERBLUE)
-          )
+            stops = Stops(CYAN, DODGERBLUE))
           effect = new DropShadow {
             color = DODGERBLUE
             radius = 25
             spread = 0.25
           }
         })
+        effect = new Reflection {
+          fraction = 0.5
+          topOffset = -5.0
+          bottomOpacity = 0.75
+          input = new Lighting {
+            light = new Light.Distant {
+              elevation = 60
+            }
+          }
+        }
       }
     }
   }

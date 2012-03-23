@@ -35,7 +35,7 @@ object GaussianBlur {
   implicit def sfxGaussianBlur2jfx(gb: GaussianBlur) = gb.delegate
 }
 
-class GaussianBlur(override val delegate: jfxse.GaussianBlur = new jfxse.GaussianBlur) extends InputedEffect with SFXDelegate[jfxse.GaussianBlur] {
+class GaussianBlur(override val delegate: jfxse.GaussianBlur = new jfxse.GaussianBlur) extends Effect(delegate) with InputedEffect with SFXDelegate[jfxse.GaussianBlur] {
 
   def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
