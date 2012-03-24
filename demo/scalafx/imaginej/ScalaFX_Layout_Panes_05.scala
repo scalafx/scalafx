@@ -166,7 +166,6 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
     hgap = 10
     vgap = 10
     padding = Insets(0, 0, 0, 10)
-    gridLinesVisible = true
   }
 
   gridPane.add(iconImageView, 0, 0, 1, 2)
