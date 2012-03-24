@@ -27,23 +27,21 @@
 package scalafx.scene.web
 
 import javafx.scene.{ web => jfxsw }
+
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
 
 /**
  * WebView Spec tests.
- * IMPLEMENTATION NOTE: It should be a AbstractSFXDelegateSpec because it has its own Builder.
- * But this Builder has methods for confirmHandler, createPopupHandler, location, onAlert,
- * onResized, onStatusChanged, onVisibilityChanged and promptHandler, that are not WebView
- * properties but from WebEngine. So Builder test went wrong. For this motive It must use
- * SimpleSFXDelegateSpec.
  *
  */
 @RunWith(classOf[JUnitRunner])
-class WebViewSpec extends SimpleSFXDelegateSpec[jfxsw.WebView, WebView](classOf[jfxsw.WebView], classOf[WebView]) with RunOnApplicationThread {
+class WebViewSpec
+  extends AbstractSFXDelegateSpec[jfxsw.WebView, WebView, jfxsw.WebViewBuilder](classOf[jfxsw.WebView], classOf[WebView], classOf[jfxsw.WebViewBuilder])
+  with RunOnApplicationThread {
 
   protected def getScalaClassInstance = new WebView
 
