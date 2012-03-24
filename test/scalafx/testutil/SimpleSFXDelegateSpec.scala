@@ -88,7 +88,7 @@ abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]](javaClass
 
   // Protected methods - End
 
-  // Tests - Being
+  // Tests - Begin
 
   "A %s".format(scalaClass.getSimpleName) should "implement all the JavaFX properties" in {
     compareProperties(javaClass, scalaClass)
