@@ -107,12 +107,12 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
 
   // Indirect WebEngine methods / properties.
 
-  def engine = delegate.getEngine
+  def engine: WebEngine = delegate.getEngine
 
   /**
    * JavaScript confirm handler property.
    */
-  def confirmHandler = delegate.engine.confirmHandlerProperty
+  def confirmHandler = delegate.engine.confirmHandler
   def confirmHandler_=(f: String => Boolean) {
     delegate.engine.confirmHandler = f
   }
@@ -120,7 +120,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
   /**
    * JavaScript popup handler property.
    */
-  def createPopupHandler = delegate.engine.createPopupHandlerProperty
+  def createPopupHandler = delegate.engine.createPopupHandler
   def createPopupHandler_=(f: jfxsw.PopupFeatures => WebEngine) {
     delegate.engine.createPopupHandler = f
   }
@@ -128,12 +128,12 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
   /**
    * URL of the current Web page.
    */
-  def location = delegate.engine.getLocation
+  def location = delegate.engine.location
 
   /**
    * JavaScript alert handler property.
    */
-  def onAlert = delegate.engine.onAlertProperty
+  def onAlert = delegate.engine.onAlert
   def onAlert_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]) {
     delegate.engine.onAlert = v
   }
@@ -141,7 +141,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
   /**
    * JavaScript window resize handler property.
    */
-  def onResized = delegate.engine.onResizedProperty
+  def onResized = delegate.engine.onResized
   def onResized_=(v: jfxe.EventHandler[jfxsw.WebEvent[jfxg.Rectangle2D]]) {
     delegate.engine.onResized = v
   }
@@ -149,7 +149,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
   /**
    * JavaScript status handler property.
    */
-  def onStatusChanged = delegate.engine.onStatusChangedProperty
+  def onStatusChanged = delegate.engine.onStatusChanged
   def onStatusChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]) {
     delegate.engine.onStatusChanged = v
   }
@@ -157,7 +157,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
   /**
    * JavaScript window visibility handler property.
    */
-  def onVisibilityChanged = delegate.engine.onVisibilityChangedProperty
+  def onVisibilityChanged = delegate.engine.onVisibilityChanged
   def onVisibilityChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]]) {
     delegate.engine.onVisibilityChanged = v
   }
@@ -165,7 +165,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
   /**
    * JavaScript prompt handler property.
    */
-  def promptHandler = delegate.engine.promptHandlerProperty
+  def promptHandler = delegate.engine.promptHandler
   def promptHandler_=(f: jfxsw.PromptData => String) {
     delegate.engine.promptHandler = f
   }
