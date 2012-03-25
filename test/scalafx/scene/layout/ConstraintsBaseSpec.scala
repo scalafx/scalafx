@@ -28,27 +28,31 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.SimpleSFXDelegateSpec
 
-class ConstraintsBaseSpec extends FlatSpec with PropertyComparator {
-  "A ConstraintsBase" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsl.ConstraintsBase], classOf[ConstraintsBase])
+/**
+ * ConstraintsBase Spec tests.
+ * 
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class ConstraintsBaseSpec extends SimpleSFXDelegateSpec[jfxsl.ConstraintsBase, ConstraintsBase](classOf[jfxsl.ConstraintsBase], classOf[ConstraintsBase]) {
+
+  protected def getScalaClassInstance = new RowConstraints
+
+  protected def convertScalaClassToJavaClass(sfxControl: ConstraintsBase) = {
+    val jfxConstraintsBase: jfxsl.ConstraintsBase = sfxControl
+    jfxConstraintsBase
   }
 
-  // No builder for ConstraintsBase
+  protected def getJavaClassInstance = new jfxsl.RowConstraints
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxConstraintsBase = new ConstraintsBase(new jfxsl.RowConstraints()) {}
-    val jfxConstraintsBase: jfxsl.ConstraintsBase = sfxConstraintsBase
-    jfxConstraintsBase should be (sfxConstraintsBase.delegate)
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.ConstraintsBase) = {
+    val sfxConstraintsBase: ConstraintsBase = jfxControl
+    sfxConstraintsBase
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxConstraintsBase = new jfxsl.RowConstraints()
-    val sfxConstraintsBase: ConstraintsBase = jfxConstraintsBase
-    sfxConstraintsBase.delegate should be (jfxConstraintsBase)
-  }
 }

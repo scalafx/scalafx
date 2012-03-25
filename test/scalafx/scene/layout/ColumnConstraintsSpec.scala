@@ -28,29 +28,31 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class ColumnConstraintsSpec extends FlatSpec with PropertyComparator {
-  "A ColumnConstraints" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsl.ColumnConstraints], classOf[ColumnConstraints])
+/**
+ * ColumnConstraints Spec tests.
+ * 
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class ColumnConstraintsSpec extends AbstractSFXDelegateSpec[jfxsl.ColumnConstraints, ColumnConstraints, jfxsl.ColumnConstraintsBuilder[_]](classOf[jfxsl.ColumnConstraints], classOf[ColumnConstraints], classOf[jfxsl.ColumnConstraintsBuilder[_]]) {
+
+  protected def getScalaClassInstance = new ColumnConstraints(new jfxsl.ColumnConstraints)
+
+  protected def convertScalaClassToJavaClass(sfxControl: ColumnConstraints) = {
+    val jfxColumnConstraints: jfxsl.ColumnConstraints = sfxControl
+    jfxColumnConstraints
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsl.ColumnConstraintsBuilder[_]], classOf[ColumnConstraints])
+  protected def getJavaClassInstance = new jfxsl.ColumnConstraints
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.ColumnConstraints) = {
+    val sfxColumnConstraints: ColumnConstraints = jfxControl
+    sfxColumnConstraints
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxColumnConstraints = new ColumnConstraints()
-    val jfxColumnConstraints: jfxsl.ColumnConstraints = sfxColumnConstraints
-    jfxColumnConstraints should be (sfxColumnConstraints.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxColumnConstraints = new jfxsl.ColumnConstraints()
-    val sfxColumnConstraints: ColumnConstraints = jfxColumnConstraints
-    sfxColumnConstraints.delegate should be (jfxColumnConstraints)
-  }
 }

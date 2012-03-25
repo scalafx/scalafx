@@ -28,21 +28,31 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
+import scalafx.Includes._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-object LayoutIncludes extends LayoutIncludes
+/**
+ * AnchorPane Spec tests.
+ * 
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class AnchorPaneSpec extends AbstractSFXDelegateSpec[jfxsl.AnchorPane, AnchorPane, jfxsl.AnchorPaneBuilder[_]](classOf[jfxsl.AnchorPane], classOf[AnchorPane], classOf[jfxsl.AnchorPaneBuilder[_]]) {
 
-trait LayoutIncludes {
-  implicit def jfxAnchorPane2sfx(a: jfxsl.AnchorPane) = new AnchorPane(a)
-  implicit def jfxBorderPane2sfx(v: jfxsl.BorderPane) = new BorderPane(v)
-  implicit def jfxColumnConstraints2sfx(v: jfxsl.ColumnConstraints) = new ColumnConstraints(v)
-  implicit def jfxConstraintsBase2sfx(v: jfxsl.ConstraintsBase) = new ConstraintsBase(v) {}
-  implicit def jfxFlowPane2sfx(v: jfxsl.FlowPane) = new FlowPane(v)
-  implicit def jfxGridPane2sfx(v: jfxsl.GridPane) = new GridPane(v)
-  implicit def jfxHBox2sfx(v: jfxsl.HBox) = new HBox(v)
-  implicit def jfxPane2sfx(v: jfxsl.Pane) = new Pane(v)
-  implicit def jfxRegion2sfx(v: jfxsl.Region) = new Region(v)
-  implicit def jfxRowConstraints2sfx(v: jfxsl.RowConstraints) = new RowConstraints(v)
-  implicit def jfxStackPane2sfx(v: jfxsl.StackPane) = new StackPane(v)
-  implicit def jfxTilePane2sfx(v: jfxsl.TilePane) = new TilePane(v)
-  implicit def jfxVBox2sfx(v: jfxsl.VBox) = new VBox(v)
+  protected def getScalaClassInstance = new AnchorPane(new jfxsl.AnchorPane)
+
+  protected def convertScalaClassToJavaClass(sfxControl: AnchorPane) = {
+    val jfxAnchorPane: jfxsl.AnchorPane = sfxControl
+    jfxAnchorPane
+  }
+
+  protected def getJavaClassInstance = new jfxsl.AnchorPane
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.AnchorPane) = {
+    val sfxAnchorPane: AnchorPane = jfxControl
+    sfxAnchorPane
+  }
+
 }

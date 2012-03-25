@@ -28,29 +28,31 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class FlowPaneSpec extends FlatSpec with PropertyComparator {
-  "A FlowPane" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsl.FlowPane], classOf[FlowPane])
+/**
+ * FlowPane Spec tests.
+ * 
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class FlowPaneSpec extends AbstractSFXDelegateSpec[jfxsl.FlowPane, FlowPane, jfxsl.FlowPaneBuilder[_]](classOf[jfxsl.FlowPane], classOf[FlowPane], classOf[jfxsl.FlowPaneBuilder[_]]) {
+
+  protected def getScalaClassInstance = new FlowPane(new jfxsl.FlowPane)
+
+  protected def convertScalaClassToJavaClass(sfxControl: FlowPane) = {
+    val jfxFlowPane: jfxsl.FlowPane = sfxControl
+    jfxFlowPane
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsl.FlowPaneBuilder[_]], classOf[FlowPane])
+  protected def getJavaClassInstance = new jfxsl.FlowPane
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.FlowPane) = {
+    val sfxFlowPane: FlowPane = jfxControl
+    sfxFlowPane
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxFlowPane = new FlowPane()
-    val jfxFlowPane: jfxsl.FlowPane = sfxFlowPane
-    jfxFlowPane should be (sfxFlowPane.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxFlowPane = new jfxsl.FlowPane()
-    val sfxFlowPane: FlowPane = jfxFlowPane
-    sfxFlowPane.delegate should be (jfxFlowPane)
-  }
 }
