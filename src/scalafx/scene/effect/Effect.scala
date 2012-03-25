@@ -34,6 +34,6 @@ object Effect {
   implicit def sfxEffect2jfx(e: Effect) = e.delegate
 }
 
-class Effect(override val delegate: jfxe.Effect) extends SFXDelegate[jfxe.Effect] {
+abstract class Effect protected (override val delegate: jfxe.Effect) extends SFXDelegate[jfxe.Effect] {
 
 }

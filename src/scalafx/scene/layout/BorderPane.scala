@@ -27,38 +27,88 @@
 
 package scalafx.scene.layout
 
+import javafx.{geometry => jfxg}
 import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.geometry.Insets._
+import scalafx.geometry.Insets
+import scalafx.scene.Node._
 import scalafx.scene.Node
+import scalafx.util.SFXDelegate
 
 object BorderPane {
   implicit def sfxBorderPane2jfx(v: BorderPane) = v.delegate
+
+  /**
+   * Removes all borderpane constraints from the child node.
+   */
+  def clearConstraints(child: javafx.scene.Node) = jfxsl.BorderPane.clearConstraints(child)
+
+  /**
+   * Returns the child's alignment constraint if set.
+   */
+  def getAlignment(child: Node) = jfxsl.BorderPane.getAlignment(child)
+
+  /**
+   * Returns the child's margin constraint if set.
+   */
+  def getMargin(child: Node): Insets = jfxsl.BorderPane.getMargin(child)
+
+  /**
+   * Sets the alignment for the child when contained by a borderpane.
+   */
+  def setAlignment(child: Node, value: jfxg.Pos) = jfxsl.BorderPane.setAlignment(child, value)
+
+  /**
+   * Sets the margin for the child when contained by a borderpane.
+   */
+  def setMargin(child: Node, value: Insets) = jfxsl.BorderPane.setMargin(child, value)
 }
 
-class BorderPane(override val delegate:jfxsl.BorderPane = new jfxsl.BorderPane()) extends Pane with SFXDelegate[jfxsl.BorderPane] {
+class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane()) extends Pane(delegate) with SFXDelegate[jfxsl.BorderPane] {
+
+  /**
+   * The node placed on the bottom edge of this border pane.
+   */
   def bottom = delegate.bottomProperty()
   def bottom_=(v: Node) {
     bottom() = v
   }
-  
+
+  /**
+   * The node placed in the center of this border pane.
+   */
   def center = delegate.centerProperty()
   def center_=(v: Node) {
     center() = v
   }
 
+  /**
+   * The node placed on the left edge of this border pane.
+   */
   def left = delegate.leftProperty()
   def left_=(v: Node) {
     left() = v
   }
 
+  /**
+   * The node placed on the right edge of this border pane.
+   */
   def right = delegate.rightProperty()
   def right_=(v: Node) {
     right() = v
   }
 
+  /**
+   * The node placed on the top edge of this border pane.
+   */
   def top = delegate.topProperty()
   def top_=(v: Node) {
     top() = v
   }
+
+  /**
+   * Returns the orientation of a node's resizing bias for layout purposes.
+   */
+  def contentBias = delegate.getContentBias
 }

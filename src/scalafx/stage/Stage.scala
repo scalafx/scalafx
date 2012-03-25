@@ -69,6 +69,26 @@ class Stage extends SFXDelegate[jfxs.Stage] {
     delegate.setHeight(h)
   }
 
+  def minWidth = delegate.getMinWidth
+  def minWidth_=(w: Double) {
+    delegate.setMinWidth(w)
+  }
+
+  def minHeight = delegate.getMinHeight
+  def minHeight_=(h: Double) {
+    delegate.setMinHeight(h)
+  }
+
+  def maxWidth = delegate.getMaxWidth
+  def maxWidth_=(w: Double) {
+    delegate.setMaxWidth(w)
+  }
+
+  def maxHeight = delegate.getMaxHeight
+  def maxHeight_=(h: Double) {
+    delegate.setMaxHeight(h)
+  }
+
   def showing = delegate.isShowing
   def showing_=(v: Boolean) {
     v match {

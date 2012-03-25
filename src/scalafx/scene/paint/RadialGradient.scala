@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,18 @@
 
 package scalafx.scene.paint
 
-import javafx.scene.{paint => jfxsp}
+import javafx.scene.{ paint => jfxsp }
+import scala.collection.JavaConversions._
 import scalafx.util.SFXDelegate
 
 object RadialGradient {
-  implicit def sfxRadialGradient2jfx(c: RadialGradient) = c.delegate
-  
+  implicit def sfxRadialGradient2jfx(rg: RadialGradient) = rg.delegate
+
+  /**
+   * Creates a radial gradient value from a string representation.
+   */
+  def valueOf(value: String) = jfxsp.RadialGradient.valueOf(value)
+
   def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: List[Stop]) { 
     val stopsList = new java.util.ArrayList[jfxsp.Stop](stops.length)
     for (stop <- stops) stopsList.add(stop)
@@ -51,13 +57,49 @@ object RadialGradient {
   }
 }
 
-class RadialGradient(override val delegate:jfxsp.RadialGradient) extends Paint(delegate) with SFXDelegate[jfxsp.RadialGradient] {
+class RadialGradient(override val delegate: jfxsp.RadialGradient) extends Paint(delegate) with SFXDelegate[jfxsp.RadialGradient] {
+
+  def this(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: jfxsp.CycleMethod, stops: Seq[jfxsp.Stop]) =
+    this(new jfxsp.RadialGradient(focusAngle, focusDistance, centerX, centerY, radius, proportional, cycleMethod, stops))
+
+  /**
+   * Defines the X coordinate of the center point of the circle defining the gradient.
+   */
   def centerX = delegate.getCenterX
+
+  /**
+   * Defines the Y coordinate of the center point of the circle defining the gradient.
+   */
   def centerY = delegate.getCenterY
+
+  /**
+   * Defines which of the follwing cycle method is applied to the LinearGradient: CycleMethod.NO_CYCLE, CycleMethod.REFLECT, or CycleMethod.REPEAT.
+   */
   def cycleMethod = delegate.getCycleMethod
+
+  /**
+   * Defines the angle in degrees from the center of the gradient to the focus point to which the first color is mapped.
+   */
   def focusAngle = delegate.getFocusAngle
+
+  /**
+   * Defines the distance from the center of the gradient to the focus point to which the first color is mapped.
+   */
   def focusDistance = delegate.getFocusDistance
-  def radius = delegate.getRadius
-  def stops = delegate.getStops
+
+  /**
+   * Indicates whether the center and radius values are proportional or absolute.
+   */
   def proportional = delegate.isProportional
+
+  /**
+   * Specifies the radius of the circle defining the extents of the color gradient.
+   */
+  def radius = delegate.getRadius
+
+  /**
+   * A sequence of 2 or more Stop values specifying how to distribute the colors along the gradient.
+   */
+  def stops = delegate.getStops
+
 }

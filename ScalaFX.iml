@@ -19,8 +19,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="scala-library-2.9.1" level="application" />
     <orderEntry type="library" name="jfxrt" level="application" />
-    <orderEntry type="library" scope="TEST" name="junit-4.9" level="application" />
-    <orderEntry type="library" scope="TEST" name="scalatest-1.6.1" level="application" />
+    <orderEntry type="library" scope="TEST" name="junit-4.9" level="project" />
+    <orderEntry type="library" scope="TEST" name="scalatest-1.7.1" level="project" />
   </component>
 </module>
 

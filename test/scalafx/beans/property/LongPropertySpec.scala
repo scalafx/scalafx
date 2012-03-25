@@ -299,10 +299,10 @@ class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
       changeCount += 1
     }
     longProperty() = 1
-    invalidateCount should equal (0)
+    invalidateCount should equal (1)
     changeCount should equal (0)
     longProperty2() = 5
-    invalidateCount should equal (1)
+    invalidateCount should equal (2)
     changeCount should equal (1)
   }
 }

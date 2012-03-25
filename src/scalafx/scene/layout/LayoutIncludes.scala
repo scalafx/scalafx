@@ -32,6 +32,7 @@ import javafx.scene.{layout => jfxsl}
 object LayoutIncludes extends LayoutIncludes
 
 trait LayoutIncludes {
+  implicit def jfxAnchorPane2sfx(a: jfxsl.AnchorPane) = new AnchorPane(a)
   implicit def jfxBorderPane2sfx(v: jfxsl.BorderPane) = new BorderPane(v)
   implicit def jfxColumnConstraints2sfx(v: jfxsl.ColumnConstraints) = new ColumnConstraints(v)
   implicit def jfxConstraintsBase2sfx(v: jfxsl.ConstraintsBase) = new ConstraintsBase(v) {}

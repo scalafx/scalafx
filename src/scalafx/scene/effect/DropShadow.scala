@@ -28,57 +28,70 @@ package scalafx.scene.effect
 */
 
 import scalafx.Includes._
-import javafx.scene.{effect => jfxse, paint => jfxsp}
+import javafx.scene.{ effect => jfxse, paint => jfxsp }
+import scalafx.scene.paint.Color
 import scalafx.util.SFXDelegate
 
 object DropShadow {
   implicit def sfxDropShadow2jfx(ds: DropShadow) = ds.delegate
 }
 
-class DropShadow(override val delegate: jfxse.DropShadow = new jfxse.DropShadow()) extends Effect(delegate) with SFXDelegate[jfxse.DropShadow] {
+class DropShadow(override val delegate: jfxse.DropShadow = new jfxse.DropShadow()) extends Effect(delegate) with InputedEffect with SFXDelegate[jfxse.DropShadow] {
+
+  /**
+   * Creates a new instance of DropShadow with the specified blurType, color, radius, spread, offsetX and offsetY.
+   */
+  def this(blurType: jfxse.BlurType, color: Color, radius: Double, spread: Double, offsetX: Double, offsetY: Double) = this(new jfxse.DropShadow(blurType, color, radius, spread, offsetX, offsetY))
+
+  /**
+   * Creates a new instance of DropShadow with specified radius and color.
+   */
+  def this(radius: Double, color: Color) = this(new jfxse.DropShadow(radius, color))
+
+  /**
+   * Creates a new instance of DropShadow with the specified radius, offsetX, offsetY and color.
+   */
+  def this(radius: Double, offsetX: Double, offsetY: Double, color: Color) = this(new jfxse.DropShadow(radius, offsetX, offsetY, color))
+
+  def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
   def color = delegate.colorProperty
-  def color_= (c: jfxsp.Color) {
+  def color_=(c: Color) {
     color() = c
   }
 
   def blurType = delegate.blurTypeProperty
-  def blurType_= (bt: jfxse.BlurType) {
+  def blurType_=(bt: jfxse.BlurType) {
     blurType() = bt
   }
 
   def height = delegate.heightProperty
-  def height_= (d: Double) {
+  def height_=(d: Double) {
     height() = d
   }
 
-  def input = delegate.inputProperty
-  def input_= (e: jfxse.Effect) {
-    input() = e
-  }
-
   def offsetX = delegate.offsetXProperty
-  def offsetX_= (d: Double) {
+  def offsetX_=(d: Double) {
     offsetX() = d
   }
 
   def offsetY = delegate.offsetYProperty
-  def offsetY_= (d: Double) {
+  def offsetY_=(d: Double) {
     offsetY() = d
   }
 
   def radius = delegate.radiusProperty
-  def radius_= (d: Double) {
+  def radius_=(d: Double) {
     radius() = d
   }
 
   def spread = delegate.spreadProperty
-  def spread_= (d: Double) {
+  def spread_=(d: Double) {
     spread() = d
   }
 
   def width = delegate.widthProperty
-  def width_= (d: Double) {
+  def width_=(d: Double) {
     width() = d
   }
 }

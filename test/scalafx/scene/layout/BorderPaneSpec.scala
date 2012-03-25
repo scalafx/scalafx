@@ -28,29 +28,31 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class BorderPaneSpec extends FlatSpec with PropertyComparator {
-  "A BorderPane" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsl.BorderPane], classOf[BorderPane])
+/**
+ * BorderPane Spec tests.
+ * 
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class BorderPaneSpec extends AbstractSFXDelegateSpec[jfxsl.BorderPane, BorderPane, jfxsl.BorderPaneBuilder[_]](classOf[jfxsl.BorderPane], classOf[BorderPane], classOf[jfxsl.BorderPaneBuilder[_]]) {
+
+  protected def getScalaClassInstance = new BorderPane(new jfxsl.BorderPane)
+
+  protected def convertScalaClassToJavaClass(sfxControl: BorderPane) = {
+    val jfxBorderPane: jfxsl.BorderPane = sfxControl
+    jfxBorderPane
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsl.BorderPaneBuilder[_]], classOf[BorderPane])
+  protected def getJavaClassInstance = new jfxsl.BorderPane
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.BorderPane) = {
+    val sfxBorderPane: BorderPane = jfxControl
+    sfxBorderPane
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxBorderPane = new BorderPane()
-    val jfxBorderPane: jfxsl.BorderPane = sfxBorderPane
-    jfxBorderPane should be (sfxBorderPane.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxBorderPane = new jfxsl.BorderPane()
-    val sfxBorderPane: BorderPane = jfxBorderPane
-    sfxBorderPane.delegate should be (jfxBorderPane)
-  }
 }

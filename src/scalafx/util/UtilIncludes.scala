@@ -33,6 +33,24 @@ import scalafx.util.Duration.DurationHelper
 object UtilIncludes extends UtilIncludes
 
 trait UtilIncludes {
+  /**
+   * Convert a Callback JavaFX to a Function1.
+   */
+  implicit def jfxCallbackToFunction1[P, R](c: jfxu.Callback[P, R]) = (param: P) => c.call(param)
+  /**
+   * Convert a Function1 to a Callback JavaFX.
+   */
+  implicit def function12jfxCallback[P, R](f: Function1[P, R]) = new jfxu.Callback[P, R] {
+    def call(param: P) = f(param)
+  }
+  /**
+   * Convert a Pair JavaFX to a Tuple2.
+   */
+  implicit def jfxPair2Tuple2[K, V](p: jfxu.Pair[K, V]) = (p.getKey(), p.getValue())
+  /**
+   * Convert a Tuple2 to a Pair JavaFX.
+   */
+  implicit def tuple22jfxPAir[K, V](t: (K, V)) = new jfxu.Pair[K, V](t._1, t._2)
   implicit def double2DurationHelper(d: Double) = new DurationHelper(d)
   implicit def jfxDuration2sfx(d: jfxu.Duration) = new Duration(d)
   implicit def jfxStringConverter2sfx[T](c: jfxu.StringConverter[T]) = new StringConverter[T] {

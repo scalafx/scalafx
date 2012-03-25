@@ -27,11 +27,16 @@
 
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
+import javafx.{ geometry => jfxg }
 
 object GeometryIncludes extends GeometryIncludes
 
 trait GeometryIncludes {
-  implicit def jfxInsets2sfx(v: jfxg.Insets) = new Insets(v)
-  implicit def jfxPoint3D2sfx(p: jfxg.Point3D) = new Point3D(p.getX(), p.getY(), p.getZ())
+  implicit def jfxBounds2sfx(b: jfxg.Bounds) = new Bounds(b) {}
+  implicit def jfxBoundingBox2sfx(b: jfxg.BoundingBox) = new BoundingBox(b)
+  implicit def jfxDimension2D2sfx(d: jfxg.Dimension2D) = new Dimension2D(d)
+  implicit def jfxInsets2sfx(i: jfxg.Insets) = new Insets(i)
+  implicit def jfxPoint2D2sfx(p: jfxg.Point2D) = new Point2D(p)
+  implicit def jfxPoint3D2sfx(p: jfxg.Point3D) = new Point3D(p)
+  implicit def jfxRectangle2D2sfx(r: jfxg.Rectangle2D) = new Rectangle2D(r)
 }

@@ -27,16 +27,25 @@
 
 package scalafx.scene.paint
 
-import javafx.scene.{paint => jfxsp}
+import javafx.scene.{ paint => jfxsp }
 import scalafx.util.SFXDelegate
 
 object Stop {
-  implicit def sfxStop2jfx(s:Stop) = s.delegate
-  
-  def apply(offset: Double, color: jfxsp.Color) = new Stop(new jfxsp.Stop(offset, color))
+  implicit def sfxStop2jfx(s: Stop) = s.delegate
+
+  def apply(offset: Double, color: Color) = new Stop(new jfxsp.Stop(offset, color))
+
 }
 
 class Stop(override val delegate: jfxsp.Stop) extends SFXDelegate[jfxsp.Stop] {
+
+  /**
+   * Gets a number ranging from 0 to 1 that indicates where this gradient stop is placed.
+   */
   def offset = delegate.getOffset
+
+  /**
+   * Gets the color of the gradient at this offset.
+   */
   def color = delegate.getColor
 }

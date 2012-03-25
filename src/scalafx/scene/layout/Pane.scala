@@ -36,7 +36,7 @@ object Pane {
   implicit def sfxPane2jfx(v: Pane) = v.delegate
 }
 
-class Pane(override val delegate:jfxsl.Pane = new jfxsl.Pane()) extends Region with SFXDelegate[jfxsl.Pane] {
+class Pane(override val delegate:jfxsl.Pane = new jfxsl.Pane()) extends Region(delegate) with SFXDelegate[jfxsl.Pane] {
   def getChildren = delegate.getChildren
   def children = getChildren
 

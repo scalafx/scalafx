@@ -1,5 +1,3 @@
-package scalafx.scene.image
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,8 +24,9 @@ package scalafx.scene.image
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.image
 
-import javafx.scene.{image => jfxsi}
+import javafx.scene.{ image => jfxsi }
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.testutil.PropertyComparator
@@ -36,12 +35,12 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 /**
  * ImageView Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner]) 
 class ImageViewSpec extends AbstractSFXDelegateSpec[jfxsi.ImageView, ImageView, jfxsi.ImageViewBuilder[_]](classOf[jfxsi.ImageView], classOf[ImageView], classOf[jfxsi.ImageViewBuilder[_]]) {
 
   protected def getScalaClassInstance = new ImageView(new jfxsi.ImageView)

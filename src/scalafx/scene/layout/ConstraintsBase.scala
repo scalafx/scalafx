@@ -27,14 +27,19 @@
 
 package scalafx.scene.layout
 
-import javafx.{geometry => jfxg}
-import javafx.scene.{layout => jfxsl}
+import javafx.{ geometry => jfxg }
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
 object ConstraintsBase {
   implicit def sfxConstraintsBase2jfx(v: ConstraintsBase) = v.delegate
+
+  /**
+   * If set as max value indicates that the pref value should be used as the max.
+   */
+  val CONSTRAIN_TO_PREF = jfxsl.ConstraintsBase.CONSTRAIN_TO_PREF
 }
 
-abstract class ConstraintsBase(override val delegate:jfxsl.ConstraintsBase) extends SFXDelegate[jfxsl.ConstraintsBase] {
+abstract class ConstraintsBase(override val delegate: jfxsl.ConstraintsBase) extends SFXDelegate[jfxsl.ConstraintsBase] {
 }

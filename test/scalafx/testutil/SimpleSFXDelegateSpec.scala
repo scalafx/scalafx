@@ -88,7 +88,7 @@ abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]](javaClass
 
   // Protected methods - End
 
-  // Tests - Being
+  // Tests - Begin
 
   "A %s".format(scalaClass.getSimpleName) should "implement all the JavaFX properties" in {
     compareProperties(javaClass, scalaClass)
@@ -106,6 +106,10 @@ abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]](javaClass
     val sfxObject: S = convertJavaClassToScalaClass(jfxObject)
 
     sfxObject.delegate should be(jfxObject)
+  }
+
+  it should "declare all public static methods of " + javaClass.getName in {
+    compareStaticMethods(javaClass, scalaClass)
   }
 
   // Tests - End

@@ -27,12 +27,32 @@ package scalafx.scene.effect
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.scene.{effect => jfxse}
+import javafx.scene.{ effect => jfxse }
 
 object EffectIncludes extends EffectIncludes
 
 trait EffectIncludes {
-  implicit def jfxEffect2sfx(e: jfxse.Effect) = new Effect(e)
+  implicit def jfxBlend2sfx(b: jfxse.Blend) = new Blend(b)
+  implicit def jfxBloom2sfx(b: jfxse.Bloom) = new Bloom(b)
+  implicit def jfxBoxBlur2sfx(bb: jfxse.BoxBlur) = new BoxBlur(bb)
+  implicit def jfxColorAdjust2sfx(ca: jfxse.ColorAdjust) = new ColorAdjust(ca)
+  implicit def jfxColorInput2sfx(ci: jfxse.ColorInput) = new ColorInput(ci)
+  implicit def jfxDisplacementMap2sfx(dm: jfxse.DisplacementMap) = new DisplacementMap(dm)
+  implicit def jfxEffect2sfx(e: jfxse.Effect) = new Effect(e) {}
   implicit def jfxDropShadow2sfx(ds: jfxse.DropShadow) = new DropShadow(ds)
-
+  implicit def jfxFloatMap2sfx(fm: jfxse.FloatMap) = new FloatMap(fm)
+  implicit def jfxGaussianBlur2sfx(gb: jfxse.GaussianBlur) = new GaussianBlur(gb)
+  implicit def jfxGlow2sfx(g: jfxse.Glow) = new Glow(g)
+  implicit def jfxImageInput2sfx(ii: jfxse.ImageInput) = new ImageInput(ii)
+  implicit def jfxInnerShadow2sfx(ii: jfxse.InnerShadow) = new InnerShadow(ii)
+  implicit def jfxLight2sfx(l: jfxse.Light) = new Light(l) {}
+  implicit def jfxLightDistant2sfx(d: jfxse.Light.Distant) = new Light.Distant(d)
+  implicit def jfxLightPoint2sfx(p: jfxse.Light.Point) = new Light.Point(p)
+  implicit def jfxLightSpot2sfx(s: jfxse.Light.Spot) = new Light.Spot(s)
+  implicit def jfxLighting2sfx(l: jfxse.Lighting) = new Lighting(l)
+  implicit def jfxMotionBlur2sfx(mb: jfxse.MotionBlur) = new MotionBlur(mb)
+  implicit def jfxPerspectiveTransform2sfx(pt: jfxse.PerspectiveTransform) = new PerspectiveTransform(pt)
+  implicit def jfxReflection2sfx(r: jfxse.Reflection) = new Reflection(r)
+  implicit def jfxSepiaTone2sfx(st: jfxse.SepiaTone) = new SepiaTone(st)
+  implicit def jfxShadow2sfx(s: jfxse.Shadow) = new Shadow(s)
 }
