@@ -27,57 +27,117 @@
 
 package scalafx.scene.layout
 
-import javafx.{geometry => jfxg}
-import javafx.scene.{layout => jfxsl}
+import javafx.{ geometry => jfxg }
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import scalafx.scene.Parent
 import scalafx.util.SFXDelegate
 
 object Region {
   implicit def sfxRegion2jfx(v: Region) = v.delegate
+
+  /**
+   * Sentinel value which can be passed to a region's minWidth, minHeight, prefWidth, prefHeight,
+   * maxWidth, maxHeight properties to reset the region's size constraint back to it's intrinsic
+   * size returned by computeMinWidth(), computeMinHeight(), computePrefWidth(),
+   * computePrefHeight(), computeMaxWidth(), or computeMaxHeight().
+   */
+  val USE_COMPUTED_SIZE = jfxsl.Region.USE_COMPUTED_SIZE
+
+  /**
+   * Sentinel value which can be passed to a region's minWidth, minHeight, prefWidth, prefHeight,
+   * maxWidth, maxHeight properties to indicate that the preferred dimension should be used for
+   * that max and/or min constraint.
+   */
+  val USE_PREF_SIZE = jfxsl.Region.USE_PREF_SIZE
+
 }
 
-class Region(override val delegate:jfxsl.Region = new jfxsl.Region()) extends Parent(delegate) with SFXDelegate[jfxsl.Region] {
+class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends Parent(delegate) with SFXDelegate[jfxsl.Region] {
+
+  /**
+   * The height of this resizable node.
+   */
   def height = delegate.heightProperty
+
+  /**
+   * The width of this resizable node.
+   */
   def width = delegate.widthProperty
 
+  /**
+   * Property for overriding the region's computed maximum height.
+   */
   def maxHeight = delegate.maxHeightProperty
   def maxHeight_=(v: Double) {
     maxHeight() = v
   }
 
+  /**
+   * Property for overriding the region's computed maximum width.
+   */
   def maxWidth = delegate.maxWidthProperty
   def maxWidth_=(v: Double) {
     maxWidth() = v
   }
 
+  /**
+   * Property for overriding the region's computed minimum height.
+   */
   def minHeight = delegate.minHeightProperty
   def minHeight_=(v: Double) {
     minHeight() = v
   }
 
+  /**
+   * Property for overriding the region's computed minimum width.
+   */
   def minWidth = delegate.minWidthProperty
   def minWidth_=(v: Double) {
     minWidth() = v
   }
 
+  /**
+   * The top,right,bottom,left padding around the region's content.
+   */
   def padding = delegate.paddingProperty
   def padding_=(v: jfxg.Insets) {
     padding() = v
   }
 
+  /**
+   * Property for overriding the region's computed preferred height.
+   */
   def prefHeight = delegate.prefHeightProperty
   def prefHeight_=(v: Double) {
     prefHeight() = v
   }
 
+  /**
+   * Property for overriding the region's computed preferred width.
+   */
   def prefWidth = delegate.prefWidthProperty
   def prefWidth_=(v: Double) {
     prefWidth() = v
   }
 
+  /**
+   * Defines whether this region rounds position/spacing and ceils size values to pixel boundaries
+   * when laying out its children.
+   */
   def snapToPixel = delegate.snapToPixelProperty
   def snapToPixel_=(v: Boolean) {
     snapToPixel() = v
   }
+
+  /**
+   * Returns true since all Regions are resizable.
+   */
+  def resize = delegate.isResizable
+
+  /**
+   * Invoked by the region's parent during layout to set the region's width and height.
+   */
+  def resize(width: Double, height: Double) = delegate.resize(width, height)
+
 }

@@ -27,32 +27,85 @@ package scalafx.scene.layout
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.{geometry => jfxg}
-import javafx.scene.{layout => jfxsl}
+import javafx.{ geometry => jfxg }
+import javafx.{ scene => jfxs }
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
+import scalafx.geometry.Insets
+import scalafx.scene.Node
 
 object VBox {
   implicit def sfxVBox2jfx(v: VBox) = v.delegate
+
+  /**
+   * Removes all hbox constraints from the child node.
+   */
+  def clearConstraints(child: jfxs.Node) = jfxsl.VBox.clearConstraints(child)
+
+  /**
+   * Returns the child's margin constraint if set.
+   */
+  def getMargin(child: Node) = jfxsl.VBox.getMargin(child)
+
+  /**
+   * Sets the margin for the child when contained by an hbox.
+   */
+  def setMargin(child: Node, value: Insets) = jfxsl.VBox.setMargin(child, value)
+
+  /**
+   * Returns the child's vgrow constraint if set.
+   */
+  def getVgrow(child: Node) = jfxsl.VBox.getVgrow(child)
+
+  /**
+   * Sets the vertical grow priority for the child when contained by an hbox.
+   */
+  def setVgrow(child: Node, value: jfxsl.Priority) = jfxsl.VBox.setVgrow(child, value)
+
 }
 
-class VBox(override val delegate:jfxsl.VBox = new jfxsl.VBox()) extends Pane with SFXDelegate[jfxsl.VBox] {
+class VBox(override val delegate: jfxsl.VBox = new jfxsl.VBox) extends Pane(delegate) with SFXDelegate[jfxsl.VBox] {
 
+  /**
+   * Creates a VBox layout with the specified spacing between children.
+   */
+  def this(spacing: Double) = this(new jfxsl.VBox(spacing))
+
+  /**
+   * The amount of vertical space between each child in the vbox.
+   */
   def spacing = delegate.spacingProperty
   def spacing_=(v: Double) {
     spacing() = v
   }
 
   /**
-   * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node
+   * The overall alignment of children within the vbox's width and height.
+   * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node.
    */
   def innerAlignment = delegate.alignmentProperty
   def innerAlignment_=(v: jfxg.Pos) {
     innerAlignment() = v
   }
 
+  /**
+   * Whether or not resizable children will be resized to fill the full width of the vbox or be
+   * kept to their preferred width and aligned according to the alignment hpos value.
+   */
   def fillWidth = delegate.fillWidthProperty
   def fillWidth_=(v: Boolean) {
     fillWidth() = v
   }
+
+  /**
+   * Returns the orientation of a node's resizing bias for layout purposes.
+   */
+  def getContentBias = delegate.getContentBias
+
+  /**
+   * Requests a layout pass to be performed before the next scene is rendered.
+   */
+  def requestLayout = delegate.requestLayout
+
 }

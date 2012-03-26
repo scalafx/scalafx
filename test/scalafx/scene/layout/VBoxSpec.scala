@@ -27,30 +27,32 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class VBoxSpec extends FlatSpec with PropertyComparator {
-  "A VBox" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsl.VBox], classOf[VBox])
+/**
+ * VBox Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class VBoxSpec extends AbstractSFXDelegateSpec[jfxsl.VBox, VBox, jfxsl.VBoxBuilder[_]](classOf[jfxsl.VBox], classOf[VBox], classOf[jfxsl.VBoxBuilder[_]]) {
+
+  protected def getScalaClassInstance = new VBox
+
+  protected def convertScalaClassToJavaClass(sfxControl: VBox) = {
+    val jfxVBox: jfxsl.VBox = sfxControl
+    jfxVBox
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsl.VBoxBuilder[_]], classOf[VBox])
+  protected def getJavaClassInstance = new jfxsl.VBox
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.VBox) = {
+    val sfxVBox: VBox = jfxControl
+    sfxVBox
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxVBox = new VBox()
-    val jfxVBox: jfxsl.VBox = sfxVBox
-    jfxVBox should be (sfxVBox.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxVBox = new jfxsl.VBox()
-    val sfxVBox: VBox = jfxVBox
-    sfxVBox.delegate should be (jfxVBox)
-  }
 }

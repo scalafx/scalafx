@@ -27,30 +27,32 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class PaneSpec extends FlatSpec with PropertyComparator {
-  "A Pane" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsl.Pane], classOf[Pane])
+/**
+ * Pane Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class PaneSpec extends AbstractSFXDelegateSpec[jfxsl.Pane, Pane, jfxsl.PaneBuilder[_]](classOf[jfxsl.Pane], classOf[Pane], classOf[jfxsl.PaneBuilder[_]]) {
+
+  protected def getScalaClassInstance = new Pane
+
+  protected def convertScalaClassToJavaClass(sfxControl: Pane) = {
+    val jfxPane: jfxsl.Pane = sfxControl
+    jfxPane
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsl.PaneBuilder[_]], classOf[Pane])
+  protected def getJavaClassInstance = new jfxsl.Pane
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.Pane) = {
+    val sfxPane: Pane = jfxControl
+    sfxPane
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxPane = new Pane()
-    val jfxPane: jfxsl.Pane = sfxPane
-    jfxPane should be (sfxPane.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxPane = new jfxsl.Pane()
-    val sfxPane: Pane = jfxPane
-    sfxPane.delegate should be (jfxPane)
-  }
 }

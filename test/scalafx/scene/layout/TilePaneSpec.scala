@@ -27,30 +27,32 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class TilePaneSpec extends FlatSpec with PropertyComparator {
-  "A TilePane" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsl.TilePane], classOf[TilePane])
+/**
+ * TilePane Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class TilePaneSpec extends AbstractSFXDelegateSpec[jfxsl.TilePane, TilePane, jfxsl.TilePaneBuilder[_]](classOf[jfxsl.TilePane], classOf[TilePane], classOf[jfxsl.TilePaneBuilder[_]]) {
+
+  protected def getScalaClassInstance = new TilePane
+
+  protected def convertScalaClassToJavaClass(sfxControl: TilePane) = {
+    val jfxTilePane: jfxsl.TilePane = sfxControl
+    jfxTilePane
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsl.TilePaneBuilder[_]], classOf[TilePane])
+  protected def getJavaClassInstance = new jfxsl.TilePane
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.TilePane) = {
+    val sfxTilePane: TilePane = jfxControl
+    sfxTilePane
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxTilePane = new TilePane()
-    val jfxTilePane: jfxsl.TilePane = sfxTilePane
-    jfxTilePane should be (sfxTilePane.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxTilePane = new jfxsl.TilePane()
-    val sfxTilePane: TilePane = jfxTilePane
-    sfxTilePane.delegate should be (jfxTilePane)
-  }
 }
