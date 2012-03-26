@@ -172,10 +172,10 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   gridPane.add(salesText, 1, 0)
   gridPane.add(yearText, 2, 0)
   gridPane.add(oldAndNewText, 1, 1, 2, 1);
-  GridPane.setVAlignment(oldText, VPos.BOTTOM)
+  GridPane.setValignment(oldText, VPos.BOTTOM)
   gridPane.add(oldText, 0, 2)
   gridPane.add(newImageView, 1, 2, 2, 1)
-  GridPane.setVAlignment(newText, VPos.TOP)
+  GridPane.setValignment(newText, VPos.TOP)
   gridPane.add(newText, 3, 2)
 
 
