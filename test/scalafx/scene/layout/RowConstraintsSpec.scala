@@ -27,30 +27,32 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class RowConstraintsSpec extends FlatSpec with PropertyComparator {
-  "A RowConstraints" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsl.RowConstraints], classOf[RowConstraints])
+/**
+ * RowConstraints Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class RowConstraintsSpec extends AbstractSFXDelegateSpec[jfxsl.RowConstraints, RowConstraints, jfxsl.RowConstraintsBuilder[_]](classOf[jfxsl.RowConstraints], classOf[RowConstraints], classOf[jfxsl.RowConstraintsBuilder[_]]) {
+
+  protected def getScalaClassInstance = new RowConstraints
+
+  protected def convertScalaClassToJavaClass(sfxControl: RowConstraints) = {
+    val jfxRowConstraints: jfxsl.RowConstraints = sfxControl
+    jfxRowConstraints
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsl.RowConstraintsBuilder[_]], classOf[RowConstraints])
+  protected def getJavaClassInstance = new jfxsl.RowConstraints
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.RowConstraints) = {
+    val sfxRowConstraints: RowConstraints = jfxControl
+    sfxRowConstraints
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxRowConstraints = new RowConstraints()
-    val jfxRowConstraints: jfxsl.RowConstraints = sfxRowConstraints
-    jfxRowConstraints should be (sfxRowConstraints.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxRowConstraints = new jfxsl.RowConstraints()
-    val sfxRowConstraints: RowConstraints = jfxRowConstraints
-    sfxRowConstraints.delegate should be (jfxRowConstraints)
-  }
 }

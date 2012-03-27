@@ -27,8 +27,8 @@
 
 package scalafx.scene.layout
 
-import javafx.{geometry => jfxg}
-import javafx.scene.{layout => jfxsl}
+import javafx.{ geometry => jfxg }
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
@@ -36,40 +36,79 @@ object RowConstraints {
   implicit def sfxRowConstraints2jfx(v: RowConstraints) = v.delegate
 }
 
-class RowConstraints(override val delegate:jfxsl.RowConstraints = new jfxsl.RowConstraints()) extends ConstraintsBase(delegate) with SFXDelegate[jfxsl.RowConstraints] {
+class RowConstraints(override val delegate: jfxsl.RowConstraints = new jfxsl.RowConstraints) extends ConstraintsBase(delegate) with SFXDelegate[jfxsl.RowConstraints] {
 
+  /**
+   * Creates a row constraint object with a fixed height.
+   */
+  def this(height: Double) = this(new jfxsl.RowConstraints(height))
+
+  /**
+   * Creates a row constraint object with a fixed size range.
+   */
+  def this(height: Double, prefHeight: Double, maxHeight: Double) =
+    this(new jfxsl.RowConstraints(height, prefHeight, maxHeight))
+
+  /**
+   * Creates a row constraint object with a fixed size range, vertical grow priority, vertical 
+   * alignment, and vertical fill behavior.
+   */
+  def this(height: Double, prefHeight: Double, maxHeight: Double, vgrow: jfxsl.Priority, valignment: jfxg.VPos, fillHeight: Boolean) =
+    this(new jfxsl.RowConstraints(height, prefHeight, maxHeight, vgrow, valignment, fillHeight))
+
+  /**
+   * The vertical fill policy for the row.
+   */
   def fillHeight = delegate.fillHeightProperty
-  def fillHeight_= (v: Boolean) {
+  def fillHeight_=(v: Boolean) {
     fillHeight() = v
   }
 
+  /**
+   * The maximum height for the row.
+   */
   def maxHeight = delegate.maxHeightProperty
-  def maxHeight_= (v: Double) {
+  def maxHeight_=(v: Double) {
     maxHeight() = v
   }
 
+  /**
+   * The minimum height for the row.
+   */
   def minHeight = delegate.minHeightProperty
-  def minHeight_= (v: Double) {
+  def minHeight_=(v: Double) {
     minHeight() = v
   }
 
+  /**
+   * The height percentage of the row.
+   */
   def percentHeight = delegate.percentHeightProperty
-  def percentHeight_= (v: Double) {
+  def percentHeight_=(v: Double) {
     percentHeight() = v
   }
 
+  /**
+   * The preferred height for the row.
+   */
   def prefHeight = delegate.prefHeightProperty
-  def prefHeight_= (v: Double) {
+  def prefHeight_=(v: Double) {
     prefHeight() = v
   }
 
+  /**
+   * The vertical alignment for the row.
+   */
   def valignment = delegate.valignmentProperty
-  def valignment_= (v: jfxg.VPos) {
+  def valignment_=(v: jfxg.VPos) {
     valignment() = v
   }
 
+  /**
+   * The vertical grow priority for the row.
+   */
   def vgrow = delegate.vgrowProperty
-  def vgrow_= (v: jfxsl.Priority) {
+  def vgrow_=(v: jfxsl.Priority) {
     vgrow() = v
   }
 }

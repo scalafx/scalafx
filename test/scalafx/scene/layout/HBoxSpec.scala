@@ -27,30 +27,32 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class HBoxSpec extends FlatSpec with PropertyComparator {
-  "An HBox" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsl.HBox], classOf[HBox])
+/**
+ * HBox Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class HBoxSpec extends AbstractSFXDelegateSpec[jfxsl.HBox, HBox, jfxsl.HBoxBuilder[_]](classOf[jfxsl.HBox], classOf[HBox], classOf[jfxsl.HBoxBuilder[_]]) {
+
+  protected def getScalaClassInstance = new HBox(new jfxsl.HBox)
+
+  protected def convertScalaClassToJavaClass(sfxControl: HBox) = {
+    val jfxHBox: jfxsl.HBox = sfxControl
+    jfxHBox
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsl.HBoxBuilder[_]], classOf[HBox])
+  protected def getJavaClassInstance = new jfxsl.HBox
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.HBox) = {
+    val sfxHBox: HBox = jfxControl
+    sfxHBox
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxHBox = new HBox()
-    val jfxHBox: jfxsl.HBox = sfxHBox
-    jfxHBox should be (sfxHBox.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxHBox = new jfxsl.HBox()
-    val sfxHBox: HBox = jfxHBox
-    sfxHBox.delegate should be (jfxHBox)
-  }
 }

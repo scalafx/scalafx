@@ -27,30 +27,32 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class StackPaneSpec extends FlatSpec with PropertyComparator {
-  "A StackPane" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsl.StackPane], classOf[StackPane])
+/**
+ * StackPane Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class StackPaneSpec extends AbstractSFXDelegateSpec[jfxsl.StackPane, StackPane, jfxsl.StackPaneBuilder[_]](classOf[jfxsl.StackPane], classOf[StackPane], classOf[jfxsl.StackPaneBuilder[_]]) {
+
+  protected def getScalaClassInstance = new StackPane
+
+  protected def convertScalaClassToJavaClass(sfxControl: StackPane) = {
+    val jfxStackPane: jfxsl.StackPane = sfxControl
+    jfxStackPane
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsl.StackPaneBuilder[_]], classOf[StackPane])
+  protected def getJavaClassInstance = new jfxsl.StackPane
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.StackPane) = {
+    val sfxStackPane: StackPane = jfxControl
+    sfxStackPane
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxStackPane = new StackPane()
-    val jfxStackPane: jfxsl.StackPane = sfxStackPane
-    jfxStackPane should be (sfxStackPane.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxStackPane = new jfxsl.StackPane()
-    val sfxStackPane: StackPane = jfxStackPane
-    sfxStackPane.delegate should be (jfxStackPane)
-  }
 }

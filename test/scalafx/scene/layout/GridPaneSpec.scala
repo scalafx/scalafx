@@ -24,33 +24,34 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class GridPaneSpec extends FlatSpec with PropertyComparator {
-  "A GridPane" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsl.GridPane], classOf[GridPane])
+/**
+ * GridPane Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class GridPaneSpec extends AbstractSFXDelegateSpec[jfxsl.GridPane, GridPane, jfxsl.GridPaneBuilder[_]](classOf[jfxsl.GridPane], classOf[GridPane], classOf[jfxsl.GridPaneBuilder[_]]) {
+
+  protected def getScalaClassInstance = new GridPane(new jfxsl.GridPane)
+
+  protected def convertScalaClassToJavaClass(sfxControl: GridPane) = {
+    val jfxGridPane: jfxsl.GridPane = sfxControl
+    jfxGridPane
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxsl.GridPaneBuilder[_]], classOf[GridPane])
+  protected def getJavaClassInstance = new jfxsl.GridPane
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.GridPane) = {
+    val sfxGridPane: GridPane = jfxControl
+    sfxGridPane
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxGridPane = new GridPane()
-    val jfxGridPane: jfxsl.GridPane = sfxGridPane
-    jfxGridPane should be (sfxGridPane.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxGridPane = new jfxsl.GridPane()
-    val sfxGridPane: GridPane = jfxGridPane
-    sfxGridPane.delegate should be (jfxGridPane)
-  }
 }
