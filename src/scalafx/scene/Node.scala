@@ -27,181 +27,315 @@
 
 package scalafx.scene
 
-import collection.JavaConversions._
-import javafx.{event => jfxe, geometry => jfxg, scene => jfxs}
-import jfxs.{input => jfxsi, layout => jfxsl, effect => jfxse, transform => jfxst}
+import scala.collection.JavaConversions.asJavaCollection
+
+import javafx.scene.{effect => jfxse}
+import javafx.scene.{input => jfxsi}
+import javafx.scene.{layout => jfxsl}
+import javafx.scene.{transform => jfxst}
+import javafx.{event => jfxe}
+import javafx.{geometry => jfxg}
+import javafx.{scene => jfxs}
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.event.Event._
+import scalafx.event.Event
+import scalafx.geometry.Point2D._
 import scalafx.geometry.Insets
+import scalafx.geometry.Point2D
+import scalafx.scene.Cursor._
+import scalafx.scene.Node._
+import scalafx.scene.effect.Effect._
 import scalafx.scene.effect.Effect
+import scalafx.util.SFXDelegate
 
 object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
 }
 
-abstract class Node(override val delegate: jfxs.Node) extends SFXDelegate[jfxs.Node] {
+abstract class Node protected(override val delegate: jfxs.Node) extends SFXDelegate[jfxs.Node] {
+  
+  /**
+   * The BlendMode used to blend this individual node into the scene behind it.
+   */
   def blendMode = delegate.blendModeProperty
   def blendMode_=(v: jfxse.BlendMode) {
     blendMode() = v
   }
 
+  /**
+   * The rectangular bounds of this Node in the node's untransformed local coordinate space.
+   */
   def boundsInLocal = delegate.boundsInLocalProperty
 
+  /**
+   * The rectangular bounds of this Node which include its transforms.
+   */
   def boundsInParent = delegate.boundsInParentProperty
 
+  /**
+   * Additional hint for controlling bitmap caching.
+   */
   def cacheHint = delegate.cacheHintProperty
   def cacheHint_=(v: jfxs.CacheHint) {
     cacheHint() = v
   }
 
+  /**
+   * A performance hint to the system to indicate that this Node should be cached as a bitmap.
+   */
   def cache = delegate.cacheProperty
   def cache_=(v: Boolean) {
     cache() = v
   }
 
+  /**
+   * Specifies a Node to use to define the the clipping shape for this Node.
+   */
   def clip = delegate.clipProperty
-  def clip_=(v: jfxs.Node) {
+  def clip_=(v: Node) {
     clip() = v
   }
 
+  /**
+   * Defines the mouse cursor for this Node and subnodes.
+   */
   def cursor = delegate.cursorProperty
-  def cursor_=(v: jfxs.Cursor) {
+  def cursor_=(v: Cursor) {
     cursor() = v
   }
 
+  /**
+   * Indicates whether depth testing is used when rendering this node.
+   */
   def depthTest = delegate.depthTestProperty
   def depthTest_=(v: jfxs.DepthTest) {
     depthTest() = v
   }
 
+  /**
+   * Indicates whether or not this Node is disabled.
+   */
   def disabled = delegate.disabledProperty
 
+  /**
+   * Sets the individual disabled state of this Node.
+   */
   def disable = delegate.disableProperty
   def disable_=(v: Boolean) {
     disable() = v
   }
 
+  /**
+   * Specifies an effect to apply to this Node.
+   */
   def effect = delegate.effectProperty
   def effect_=(v: Effect) {
     effect() = v
   }
 
+  /**
+   * Specifies the event dispatcher for this node.
+   */
   def eventDispatcher = delegate.eventDispatcherProperty
   def eventDispatcher_=(v: jfxe.EventDispatcher) {
     eventDispatcher() = v
   }
 
+  /**
+   * Indicates whether this Node currently has the input focus.
+   */
   def focused = delegate.focusedProperty
 
+  /**
+   * Specifies whether this Node should be a part of focus traversal cycle.
+   */
   def focusTraversable = delegate.focusTraversableProperty
   def focusTraversable_=(v: Boolean) {
     focusTraversable() = v
   }
 
+  /**
+   * Whether or not this Node is being hovered over.
+   */
   def hover = delegate.hoverProperty
 
+  /**
+   * The id of this Node.
+   */
   def id = delegate.idProperty
   def id_=(v: String) {
     id() = v
   }
 
+  /**
+   * Property holding InputMethodRequests.
+   */
   def inputMethodRequests = delegate.inputMethodRequestsProperty
   def inputMethodRequests_=(v: jfxsi.InputMethodRequests) {
     inputMethodRequests() = v
   }
 
+  /**
+   * The rectangular bounds that should be used for layout calculations for this node.
+   */
   def layoutBounds = delegate.layoutBoundsProperty
 
+  /**
+   * Defines the x coordinate of the translation that is added to this Node's transform for the 
+   * purpose of layout.
+   */
   def layoutX = delegate.layoutXProperty
   def layoutX_=(v: Double) {
     layoutX() = v
   }
 
+  /**
+   * Defines the y coordinate of the translation that is added to this Node's transform for the 
+   * purpose of layout.
+   */
   def layoutY = delegate.layoutYProperty
   def layoutY_=(v: Double) {
     layoutY() = v
   }
 
+  /**
+   * Defines whether or not this node's layout will be managed by it's parent.
+   */
   def managed = delegate.managedProperty
   def managed_=(v: Boolean) {
     managed() = v
   }
 
+  /**
+   * If true, this node (together with all its children) is completely transparent to mouse events.
+   */
   def mouseTransparent = delegate.mouseTransparentProperty
   def mouseTransparent_=(v: Boolean) {
     mouseTransparent() = v
   }
 
+  /**
+   * Defines a function to be called when a context menu has been requested on this Node.
+   */
   def onContextMenuRequested = delegate.onContextMenuRequestedProperty
   def onContextMenuRequested_=(v: jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]) {
     onContextMenuRequested() = v
   }
 
+  /**
+   * Defines a function to be called when drag gesture has been detected.
+   */
   def onDragDetected = delegate.onDragDetectedProperty
   def onDragDetected_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onDragDetected() = v
   }
 
+  /**
+   * Defines a function to be called when this Node is a drag and drop gesture source after its 
+   * data has been dropped on a drop target.
+   */
   def onDragDone = delegate.onDragDoneProperty
   def onDragDone_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragDone() = v
   }
 
+  /**
+   * Defines a function to be called when the mouse button is released on this Node during drag 
+   * and drop gesture.
+   */
   def onDragDropped = delegate.onDragDroppedProperty
   def onDragDropped_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragDropped() = v
   }
 
+  /**
+   * Defines a function to be called when drag gesture enters this Node.
+   */
   def onDragEntered = delegate.onDragEnteredProperty
   def onDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragEntered() = v
   }
 
+  /**
+   * Defines a function to be called when drag gesture exits this Node.
+   */
   def onDragExited = delegate.onDragExitedProperty
   def onDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragExited() = v
   }
 
+  /**
+   * Defines a function to be called when drag gesture progresses within this Node.
+   */
   def onDragOver = delegate.onDragOverProperty
   def onDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragOver() = v
   }
 
+  /**
+   * Defines a function to be called when this Node has input focus and the input method text has 
+   * changed.
+   */
   def onInputMethodTextChanged = delegate.onInputMethodTextChangedProperty
   def onInputMethodTextChanged_=(v: jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]) {
     onInputMethodTextChanged() = v
   }
 
+  /**
+   * Defines a function to be called when this Node or its child Node has input focus and a key 
+   * has been pressed.
+   */
   def onKeyPressed = delegate.onKeyPressedProperty
   def onKeyPressed_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyPressed() = v
   }
 
+  /**
+   * Defines a function to be called when this Node or its child Node has input focus and a key 
+   * has been released.
+   */
   def onKeyReleased = delegate.onKeyReleasedProperty
   def onKeyReleased_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyReleased() = v
   }
 
+  /**
+   * Defines a function to be called when this Node or its child Node has input focus and a key 
+   * has been typed.
+   */
   def onKeyTyped = delegate.onKeyTypedProperty
   def onKeyTyped_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyTyped() = v
   }
 
+  /**
+   * Defines a function to be called when a mouse button has been clicked (pressed and released) 
+   * on this Node.
+   */
   def onMouseClicked = delegate.onMouseClickedProperty
   def onMouseClicked_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseClicked() = v
   }
 
+  /**
+   *Defines a function to be called when a mouse button is pressed on this Node and then dragged.
+   */
   def onMouseDragged = delegate.onMouseDraggedProperty
   def onMouseDragged_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragged() = v
   }
 
+  /**
+   * Defines a function to be called when a full press-drag-release gesture enters this Node.
+   */
   def onMouseDragEntered = delegate.onMouseDragEnteredProperty
   def onMouseDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragEntered() = v
   }
 
+  /**
+   * Defines a function to be called when a full press-drag-release gesture leaves this Node.
+   */
   def onMouseDragExited = delegate.onMouseDragExitedProperty
   def onMouseDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragExited() = v
@@ -212,16 +346,26 @@ abstract class Node(override val delegate: jfxs.Node) extends SFXDelegate[jfxs.N
     onMouseDragOver() = v
   }
 
+  /**
+   * Defines a function to be called when a full press-drag-release gesture progresses within this 
+   * Node.
+   */
   def onMouseDragReleased = delegate.onMouseDragReleasedProperty
   def onMouseDragReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragReleased() = v
   }
 
+  /**
+   * Defines a function to be called when the mouse enters this Node.
+   */
   def onMouseEntered = delegate.onMouseEnteredProperty
   def onMouseEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseEntered() = v
   }
 
+  /**
+   * Defines a function to be called when the mouse exits this Node.
+   */
   def onMouseExited = delegate.onMouseExitedProperty
   def onMouseExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseExited() = v
@@ -232,94 +376,163 @@ abstract class Node(override val delegate: jfxs.Node) extends SFXDelegate[jfxs.N
     onMouseMoved() = v
   }
 
+  /**
+   * Defines a function to be called when a mouse button has been pressed on this Node.
+   */
   def onMousePressed = delegate.onMousePressedProperty
   def onMousePressed_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMousePressed() = v
   }
 
+  /**
+   * Defines a function to be called when a mouse button has been released on this Node.
+   */
   def onMouseReleased = delegate.onMouseReleasedProperty
   def onMouseReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseReleased() = v
   }
 
+  /**
+   * Defines a function to be called when user performs a scrolling action.
+   */
   def onScroll = delegate.onScrollProperty
   def onScroll_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]) {
     onScroll() = v
   }
 
+  /**
+   * Specifies how opaque (that is, solid) the Node appears.
+   */
   def opacity = delegate.opacityProperty
 
+  /**
+   * The parent of this Node.
+   */
   def parent = delegate.parentProperty
 
+  /**
+   * Defines how the picking computation is done for this node when triggered by a MouseEvent or a 
+   * contains function call.
+   */
   def pickOnBounds = delegate.pickOnBoundsProperty
   def pickOnBounds_=(v: Boolean) {
     pickOnBounds() = v
   }
 
+  /**
+   * Whether or not the Node is pressed.
+   */
   def pressed = delegate.pressedProperty
 
+  /**
+   * Defines the angle of rotation about the Node's center, measured in degrees.
+   */
   def rotate = delegate.rotateProperty
   def rotate_=(v: Double) {
     rotate() = v
   }
 
+  /**
+   * Defines the axis of rotation of this Node.
+   */
   def rotationAxis = delegate.rotationAxisProperty
   def rotationAxis_=(v: jfxg.Point3D) {
     rotationAxis() = v
   }
 
+  /**
+   * Defines the factor by which coordinates are scaled about the center of the object along 
+   * the X axis of this Node.
+   */
   def scaleX = delegate.scaleXProperty
   def scaleX_=(v: Double) {
     scaleX() = v
   }
 
+  /**
+   * Defines the factor by which coordinates are scaled about the center of the object along the 
+   * Y axis of this Node.
+   */
   def scaleY = delegate.scaleYProperty
   def scaleY_=(v: Double) {
     scaleY() = v
   }
 
+  /**
+   * Defines the factor by which coordinates are scaled about the center of the object along the 
+   * Z axis of this Node.
+   */
   def scaleZ = delegate.scaleZProperty
   def scaleZ_=(v: Double) {
     scaleZ() = v
   }
 
+  /**
+   * The Scene that this Node is part of.
+   */
   def scene = delegate.sceneProperty
 
+  /**
+   * A string representation of the CSS style associated with this specific Node.
+   */
   def style = delegate.styleProperty
   def style_=(v: String) {
     style() = v
   }
 
+  /**
+   * 
+   */
   def styleClass = delegate.getStyleClass
   def styleClass_=(c: Iterable[String]) {
     styleClass.setAll(c)
   }
 
+  /**
+   * Defines the ObservableList of Transform objects to be applied to this Node.
+   */
   def transforms = delegate.getTransforms
   def transforms_=(c: Iterable[jfxst.Transform]) {
     transforms.setAll(c)
   }
 
+  /**
+   * Defines the x coordinate of the translation that is added to this Node's transform.
+   */
   def translateX = delegate.translateXProperty
   def translateX_=(v: Double) {
     translateX() = v
   }
 
+  /**
+   * Defines the y coordinate of the translation that is added to this Node's transform.
+   */
   def translateY = delegate.translateYProperty
   def translateY_=(v: Double) {
     translateY() = v
   }
 
+  /**
+   * Defines the Z coordinate of the translation that is added to the transformed coordinates of 
+   * this Node.
+   */
   def translateZ = delegate.translateZProperty
   def translateZ_=(v: Double) {
     translateZ() = v
   }
 
+  /**
+   * Returns a previously set Object property, or null if no such property has been set using the 
+   * setUserData(AnyRef) method.
+   */
   def userData = delegate.getUserData
   def userData_=(v: AnyRef) {
     delegate.setUserData(v)
   }
 
+  /**
+   * Specifies whether this Node and any subnodes should be rendered as part of the scene graph.
+   */
   def visible = delegate.visibleProperty
   def visible_=(v: Boolean) {
     visible() = v
@@ -368,4 +581,136 @@ abstract class Node(override val delegate: jfxs.Node) extends SFXDelegate[jfxs.N
     jfxsl.GridPane.setVgrow(delegate, p)
     jfxsl.VBox.setVgrow(delegate, p)
   }
+  
+//  def addEventFilter[T <: jfxe.Event](eventType: jfxe.EventType[jfxe.Event], eventFilter: jfxe.EventHandler[_ >: T]) = delegate.addEventFilter(eventType, eventFilter)
+  
+//  def addEventHandler[T <: jfxe.Event](eventType: jfxe.EventType[jfxe.Event], eventFilter: jfxe.EventHandler[_ >: T]) = delegate.addEventHandler(eventType, eventFilter)
+  
+  /**
+   * If the node is resizable, will set its layout bounds to its current preferred width and height.
+   */
+  def autosize = delegate.autosize
+  
+  /**
+   * Returns true if the given point (specified in the local coordinate space of this Node) is 
+   * contained within the shape of this Node.
+   */
+  def contains(localX: Double, localY: Double) = delegate.contains(localX, localY)
+  
+  /**
+   * Returns true if the given point (specified in the local coordinate space of this Node) is 
+   * contained within the shape of this Node.
+   */
+  def contains(localPoint: Point2D) = delegate.contains(localPoint)
+  
+  /**
+   * Fires the specified event.
+   */
+  def fireEvent(event: Event) = delegate.fireEvent(event)
+  
+  /**
+   * The 'alphabetic' (or 'roman') baseline offset from the node's layoutBounds.minY location 
+   * that should be used when this node is being vertically aligned by baseline with other nodes.
+   */
+  def baselineOffset = delegate.getBaselineOffset
+  
+  /**
+   * Returns true if the given bounds (specified in the local coordinate space of this Node) 
+   * intersects the shape of this Node.
+   */
+  def intersects(localBounds: jfxg.Bounds) = delegate.intersects(localBounds)
+  
+  /**
+   * Returns true if the given rectangle (specified in the local coordinate space of this Node) 
+   * intersects the shape of this Node.
+   */
+  def intersects(localX: Double, localY: Double, localWidth: Double, localHeight: Double) = 
+    delegate.intersects(localX, localY, localWidth, localHeight)
 }
+/*
+Bounds	localToParent(Bounds localBounds)
+Transforms a bounds from the local coordinate space of this Node into the coordinate space of its parent.
+
+Point2D	localToParent(double localX, double localY)
+Transforms a point from the local coordinate space of this Node into the coordinate space of its parent.
+
+Point2D	localToParent(Point2D localPoint)
+Transforms a point from the local coordinate space of this Node into the coordinate space of its parent.
+
+Bounds	localToScene(Bounds localBounds)
+Transforms a bounds from the local coordinate space of this Node into the coordinate space of its Scene.
+
+Point2D	localToScene(double localX, double localY)
+Transforms a point from the local coordinate space of this Node into the coordinate space of its Scene.
+
+Point2D	localToScene(Point2D localPoint)
+Transforms a point from the local coordinate space of this Node into the coordinate space of its Scene.
+
+Node	lookup(java.lang.String selector)
+Finds this Node, or the first sub-node, based on the given CSS selector.
+
+java.util.Set<Node>	lookupAll(java.lang.String selector)
+Finds all Nodes, including this one and any children, which match the given CSS selector.
+
+double	maxHeight(double width)
+Returns the node's maximum height for use in layout calculations.
+
+double	maxWidth(double height)
+Returns the node's maximum width for use in layout calculations.
+
+double	minHeight(double width)
+Returns the node's minimum height for use in layout calculations.
+
+double	minWidth(double height)
+Returns the node's minimum width for use in layout calculations.
+
+Bounds	parentToLocal(Bounds parentBounds)
+Transforms a rectangle from the coordinate space of the parent into the local coordinate space of this Node.
+
+Point2D	parentToLocal(double parentX, double parentY)
+Transforms a point from the coordinate space of the parent into the local coordinate space of this Node.
+
+Point2D	parentToLocal(Point2D parentPoint)
+Transforms a point from the coordinate space of the parent into the local coordinate space of this Node.
+
+void	relocate(double x, double y)
+Sets the node's layoutX and layoutY translation properties in order to relocate this node to the x,y location in the parent.
+
+<T extends Event> 
+void	removeEventFilter(EventType<T> eventType, EventHandler<? super T> eventFilter)
+Unregisters a previously registered event filter from this node.
+
+<T extends Event> 
+void	removeEventHandler(EventType<T> eventType, EventHandler<? super T> eventHandler)
+Unregisters a previously registered event handler from this node.
+
+void	requestFocus()
+Requests that this Node get the input focus, and that this Node's top-level ancestor become the focused window.
+
+void	resize(double width, double height)
+If the node is resizable, will set its layout bounds to the specified width and height.
+
+void	resizeRelocate(double x, double y, double width, double height)
+If the node is resizable, will set its layout bounds to the specified width and height.
+
+Bounds	sceneToLocal(Bounds sceneBounds)
+Transforms a rectangle from the coordinate space of the Scene into the local coordinate space of this Node.
+
+Point2D	sceneToLocal(double sceneX, double sceneY)
+Transforms a point from the coordinate space of the Scene into the local coordinate space of this Node.
+
+Point2D	sceneToLocal(Point2D scenePoint)
+Transforms a point from the coordinate space of the Scene into the local coordinate space of this Node.
+
+Dragboard	startDragAndDrop(TransferMode... transferModes)
+Confirms a potential drag and drop gesture that is recognized over this Node.
+
+void	startFullDrag()
+Starts a full press-drag-release gesture with this node as gesture source.
+
+void	toBack()
+Moves this Node to the back of its sibling nodes in terms of z-order.
+
+void	toFront()
+Moves this Node to the front of its sibling nodes in terms of z-order.
+*/

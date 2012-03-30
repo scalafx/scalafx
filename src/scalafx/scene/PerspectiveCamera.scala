@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,29 +27,23 @@
 
 package scalafx.scene
 
-import javafx.beans.{property => jfxbp}
-import javafx.{scene => jfxs}
-import layout.LayoutIncludes
-import image.ImageIncludes
-import paint.PaintIncludes
-import shape.ShapeIncludes
-import control.ControlIncludes
-import text.TextIncludes
-import effect.EffectIncludes
+import javafx.{ scene => jfxs }
+import scalafx.Includes._
+import scalafx.util.SFXDelegate
 
-object SceneIncludes extends SceneIncludes
+object PerspectiveCamera {
+  implicit def sfxPerspectiveCamera2jfx(c: PerspectiveCamera) = c.delegate
+}
 
-trait SceneIncludes extends LayoutIncludes with PaintIncludes with ShapeIncludes with TextIncludes with ImageIncludes with EffectIncludes with LowerPriorityIncludes with ControlIncludes
+class PerspectiveCamera(override val delegate: jfxs.PerspectiveCamera = new jfxs.PerspectiveCamera)
+  extends Camera(delegate) with SFXDelegate[jfxs.PerspectiveCamera] {
 
-trait LowerPriorityIncludes {
-  implicit def jfxCamera2sfx(v: jfxs.Camera) = new Camera(v) {}
-  implicit def jfxCursor2sfx(v: jfxs.Cursor) = new Cursor(v) {}
-  implicit def jfxGroup2sfx(v: jfxs.Group) = new Group(v)
-  implicit def jfxImageCursor2sfx(ic: jfxs.ImageCursor) = new ImageCursor(ic)
-  implicit def jfxNode2sfx(v: jfxs.Node) = new Node(v) {}
-  implicit def jfxParallelCamera2sfx(v: jfxs.ParallelCamera) = new ParallelCamera(v)
-  implicit def jfxParent2sfx(v: jfxs.Parent) = new Parent(v) {}
-  implicit def jfxPerspectiveCamera2sfx(v: jfxs.PerspectiveCamera) = new PerspectiveCamera(v)
-  implicit def jfxScene2sfx(v: jfxs.Scene) = new Scene(v)
-  implicit def jfxSceneProperty2sfx(p: jfxbp.ReadOnlyObjectProperty[jfxs.Scene]) = new SceneProperty(p)
+  /**
+   * Specifies the vertical angle of the camera's projection.
+   */
+  def fieldOfView = delegate.fieldOfViewProperty
+  def fieldOfView_=(v: Double) {
+    fieldOfView() = v
+  }
+
 }

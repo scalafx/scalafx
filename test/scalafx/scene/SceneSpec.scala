@@ -27,32 +27,33 @@
 
 package scalafx.scene
 
-import javafx.{scene => jfxs}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ scene => jfxs }
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, PropertyComparator}
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.RunOnApplicationThread
 
-class SceneSpec extends FlatSpec with RunOnApplicationThread with PropertyComparator {
-  "A Scene" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxs.Scene], classOf[Scene])
+/**
+ * Scene Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class SceneSpec extends AbstractSFXDelegateSpec[jfxs.Scene, Scene, jfxs.SceneBuilder[_]](classOf[jfxs.Scene], classOf[Scene], classOf[jfxs.SceneBuilder[_]]) with RunOnApplicationThread {
+
+  protected def getScalaClassInstance = new Scene(getJavaClassInstance)
+
+  protected def convertScalaClassToJavaClass(sfxControl: Scene) = {
+    val jfxScene: jfxs.Scene = sfxControl
+    jfxScene
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxs.SceneBuilder[_]], classOf[Scene])
+  protected def getJavaClassInstance = new jfxs.Scene(new jfxs.Group)
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxs.Scene) = {
+    val sfxScene: Scene = jfxControl
+    sfxScene
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    // creating a new JavaFX scene is annoying due to their thread checks, but this is good enough to check types
-    val sfxScene = new Scene()
-    val jfxScene: jfxs.Scene = sfxScene
-    jfxScene should be (sfxScene.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    // creating a new JavaFX scene is annoying due to their thread checks, but this is good enough to check types
-    val jfxScene: jfxs.Scene = null
-    val sfxScene: Scene = jfxScene
-    sfxScene.delegate should be (jfxScene)
-  }
 }

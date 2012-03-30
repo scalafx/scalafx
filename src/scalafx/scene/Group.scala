@@ -28,7 +28,7 @@
 package scalafx.scene
 
 import collection.JavaConversions._
-import javafx.{scene => jfxs}
+import javafx.{ scene => jfxs }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
@@ -36,12 +36,22 @@ object Group {
   implicit def sfxGroup2jfx(v: Group) = v.delegate
 }
 
-class Group(override val delegate:jfxs.Group = new jfxs.Group()) extends Parent(delegate) with SFXDelegate[jfxs.Group] {
+class Group(override val delegate: jfxs.Group = new jfxs.Group()) extends Parent(delegate) with SFXDelegate[jfxs.Group] {
+
+  /**
+   * Constructs a group consisting of children.
+   */
+  def this(children: jfxs.Node*) = this(new jfxs.Group(children: _*))
+
   def children = delegate.getChildren
   def children_=(c: Iterable[Node]) {
     children.setAll(c.map(_.delegate))
   }
 
+  /**
+   * Controls whether or not this Group will automatically resize any managed resizable children
+   * to their preferred sizes during the layout pass.
+   */
   def autoSizeChildren = delegate.autoSizeChildrenProperty
   def autoSizeChildren_=(v: Boolean) {
     autoSizeChildren() = v

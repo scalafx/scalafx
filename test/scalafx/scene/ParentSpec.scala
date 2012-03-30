@@ -27,30 +27,32 @@
 
 package scalafx.scene
 
-import javafx.{scene => jfxs}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ scene => jfxs }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class ParentSpec extends FlatSpec with PropertyComparator {
-  "A Parent" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxs.Parent], classOf[Parent])
+/**
+ * Parent Spec tests.
+ * 
+ *
+ */
+@RunWith(classOf[JUnitRunner]) 
+class ParentSpec extends AbstractSFXDelegateSpec[jfxs.Parent, Parent, jfxs.ParentBuilder[_]](classOf[jfxs.Parent], classOf[Parent], classOf[jfxs.ParentBuilder[_]]) {
+
+  protected def getScalaClassInstance = new Parent(getJavaClassInstance) {}
+
+  protected def convertScalaClassToJavaClass(sfxControl: Parent) = {
+    val jfxParent: jfxs.Parent = sfxControl
+    jfxParent
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxs.ParentBuilder[_]], classOf[Parent])
+  protected def getJavaClassInstance = new jfxs.Group
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxs.Parent) = {
+    val sfxParent: Parent = jfxControl
+    sfxParent
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxParent = new Parent(new jfxs.Group()) {}
-    val jfxParent: jfxs.Parent = sfxParent
-    jfxParent should be(sfxParent.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxParent = new jfxs.Parent() {}
-    val sfxParent: Parent = jfxParent
-    sfxParent.delegate should be(jfxParent)
-  }
 }

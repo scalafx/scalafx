@@ -27,31 +27,34 @@
 
 package scalafx.scene
 
-import javafx.{scene => jfxs}
+import javafx.{ scene => jfxs }
 import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class GroupSpec extends FlatSpec with PropertyComparator {
-  "A Group" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxs.Group], classOf[Group])
+/**
+ * Group Spec tests.
+ * 
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class GroupSpec extends AbstractSFXDelegateSpec[jfxs.Group, Group, jfxs.GroupBuilder[_]](classOf[jfxs.Group], classOf[Group], classOf[jfxs.GroupBuilder[_]]) {
+
+  protected def getScalaClassInstance = new Group(new jfxs.Group)
+
+  protected def convertScalaClassToJavaClass(sfxControl: Group) = {
+    val jfxGroup: jfxs.Group = sfxControl
+    jfxGroup
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxs.GroupBuilder[_]], classOf[Group])
-  }
+  protected def getJavaClassInstance = new jfxs.Group
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxGroup = new Group()
-    val jfxGroup: jfxs.Group = sfxGroup
-    jfxGroup should be (sfxGroup.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxGroup = new jfxs.Group()
-    val sfxGroup: Group = jfxGroup
-    sfxGroup.delegate should be (jfxGroup)
+  protected def convertJavaClassToScalaClass(jfxControl: jfxs.Group) = {
+    val sfxGroup: Group = jfxControl
+    sfxGroup
   }
 
   it should "provide scala-like capabilties for the list" in {

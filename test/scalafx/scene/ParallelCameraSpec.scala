@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,29 +27,32 @@
 
 package scalafx.scene
 
-import javafx.beans.{property => jfxbp}
-import javafx.{scene => jfxs}
-import layout.LayoutIncludes
-import image.ImageIncludes
-import paint.PaintIncludes
-import shape.ShapeIncludes
-import control.ControlIncludes
-import text.TextIncludes
-import effect.EffectIncludes
+import javafx.{ scene => jfxs }
+import scalafx.Includes._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.SimpleSFXDelegateSpec
 
-object SceneIncludes extends SceneIncludes
+/**
+ * ParallelCamera Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class ParallelCameraSpec extends SimpleSFXDelegateSpec[jfxs.ParallelCamera, ParallelCamera](classOf[jfxs.ParallelCamera], classOf[ParallelCamera]) {
 
-trait SceneIncludes extends LayoutIncludes with PaintIncludes with ShapeIncludes with TextIncludes with ImageIncludes with EffectIncludes with LowerPriorityIncludes with ControlIncludes
+  protected def getScalaClassInstance = new ParallelCamera
 
-trait LowerPriorityIncludes {
-  implicit def jfxCamera2sfx(v: jfxs.Camera) = new Camera(v) {}
-  implicit def jfxCursor2sfx(v: jfxs.Cursor) = new Cursor(v) {}
-  implicit def jfxGroup2sfx(v: jfxs.Group) = new Group(v)
-  implicit def jfxImageCursor2sfx(ic: jfxs.ImageCursor) = new ImageCursor(ic)
-  implicit def jfxNode2sfx(v: jfxs.Node) = new Node(v) {}
-  implicit def jfxParallelCamera2sfx(v: jfxs.ParallelCamera) = new ParallelCamera(v)
-  implicit def jfxParent2sfx(v: jfxs.Parent) = new Parent(v) {}
-  implicit def jfxPerspectiveCamera2sfx(v: jfxs.PerspectiveCamera) = new PerspectiveCamera(v)
-  implicit def jfxScene2sfx(v: jfxs.Scene) = new Scene(v)
-  implicit def jfxSceneProperty2sfx(p: jfxbp.ReadOnlyObjectProperty[jfxs.Scene]) = new SceneProperty(p)
+  protected def convertScalaClassToJavaClass(sfxControl: ParallelCamera) = {
+    val jfxParallelCamera: jfxs.ParallelCamera = sfxControl
+    jfxParallelCamera
+  }
+
+  protected def getJavaClassInstance = new jfxs.ParallelCamera
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxs.ParallelCamera) = {
+    val sfxParallelCamera: ParallelCamera = jfxControl
+    sfxParallelCamera
+  }
+
 }

@@ -27,31 +27,32 @@
 
 package scalafx.scene
 
-import javafx.{scene => jfxs}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ scene => jfxs }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class NodeSpec extends FlatSpec with PropertyComparator {
-  "A Node" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxs.Node], classOf[Node])
+/**
+ * Node Spec tests.
+ * 
+ *
+ */
+@RunWith(classOf[JUnitRunner]) 
+class NodeSpec extends AbstractSFXDelegateSpec[jfxs.Node, Node, jfxs.NodeBuilder[_]](classOf[jfxs.Node], classOf[Node], classOf[jfxs.NodeBuilder[_]]) {
+
+  protected def getScalaClassInstance = new Node(getJavaClassInstance) {}
+
+  protected def convertScalaClassToJavaClass(sfxControl: Node) = {
+    val jfxNode: jfxs.Node = sfxControl
+    jfxNode
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxs.NodeBuilder[_]], classOf[Node])
+  protected def getJavaClassInstance = new jfxs.Group
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxs.Node) = {
+    val sfxNode: Node = jfxControl
+    sfxNode
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxNode = new Node(new jfxs.Group()) {}
-    val jfxNode: jfxs.Node = sfxNode
-    jfxNode should be(sfxNode.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxNode = new jfxs.Group()
-    val sfxNode: Node = jfxNode
-    sfxNode.delegate should be(jfxNode)
-  }
 }
-
