@@ -27,23 +27,50 @@
 
 package scalafx.event
 
-import javafx.{event => jfxe }
+import javafx.{ event => jfxe }
 import scalafx.util.SFXDelegate
+import scalafx.event.EventIncludes._
 
-object ActionEvent {
-  implicit def sfxActionEvent2jfx(ie: ActionEvent) = ie.delegate
-  
+object EventType {
+  implicit def sfxEventType2jfx[T <: jfxe.Event](et: EventType[T]) = et.delegate
+
   /**
-   * The only valid EventType for the ActionEvent.
+   * The root event type. All other event types are eighter direct or indirect sub types of it.
+   * It is also the only event type which has its super event type set to null.
    */
-  val ACTION = jfxe.ActionEvent.ACTION
+  val ROOT = jfxe.EventType.ROOT
 }
 
-class ActionEvent(override val delegate: jfxe.ActionEvent = new jfxe.ActionEvent) extends Event(delegate) with SFXDelegate[jfxe.ActionEvent] {
+class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T] = new jfxe.EventType[T]) extends SFXDelegate[jfxe.EventType[T]] {
+  /*
+   * COMPILER ERROR MESSAGE:
+	- overloaded method constructor EventType with alternatives: 
+	(javafx.event.EventType[_ >: T(in class EventType)(in class EventType)])javafx.event.EventType[T(in class EventType)(in class EventType)]  <and> 
+	(java.lang.String)javafx.event.EventType[T(in class EventType)(in class EventType)] cannot be applied to (T(in class EventType)(in class EventType))
+   */
+  //  def this(superType: T) = this(new jfxe.EventType(superType))
+
+  /*
+   * COMPILER ERROR MESSAGE:
+   * type mismatch; found : T required: javafx.event.EventType[_ >: ?]
+   */
+  //  def this(superType: T, name: String) = this(new jfxe.EventType(superType, name))
 
   /**
-   * Construct a new ActionEvent with the specified event source and target.
+   * Constructs a new EventType with the specified name and the EventType.ROOT as its super type.
+   *
+   * @param The name
    */
-  def this(source: Any, target: jfxe.EventTarget) = this(new jfxe.ActionEvent(source, target))
+  def this(name: String) = this(new jfxe.EventType[T](name))
+
+  /**
+   * Gets the name of this event type.
+   */
+  def name = delegate.getName
+
+  /**
+   * Gets the super type of this event type.
+   */
+  def superType = delegate.getSuperType
 
 }

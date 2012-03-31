@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,52 +24,34 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.event
 
-import javafx.scene.{input => jfxsi}
-import javafx.{event => jfxe}
+import javafx.{ event => jfxe }
 import scalafx.Includes._
-import scalafx.scene.{input => sfxsi}
+import scalafx.testutil.SimpleSFXDelegateSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-object EventIncludes extends EventIncludes
+/**
+ * Event Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class EventSpec extends SimpleSFXDelegateSpec[jfxe.Event, Event](classOf[jfxe.Event], classOf[Event]) {
 
-trait EventIncludes {
-  implicit def jfxActionEvent2sfx(ae: jfxe.ActionEvent) = new ActionEvent(ae)
-  implicit def jfxEvent2sfx(e: jfxe.Event) = new Event(e)
-  implicit def jfxEventType2sfx[T <: jfxe.Event](e: jfxe.EventType[T]) = new EventType[T](e)
+  protected def getScalaClassInstance = Event(Event.ANY)
 
-  implicit def eventClosureWrapper[T <: jfxe.Event](handler: => Unit) = new jfxe.EventHandler[T] {
-    def handle(event: T) {
-      handler
-    }
+  protected def convertScalaClassToJavaClass(sfxObject: Event) = {
+    val jfxEvent: jfxe.Event = sfxObject
+    jfxEvent
   }
 
-  implicit def eventClosureWrapperWithUnitParam[T <: jfxe.Event](handler: Unit => Unit) = new jfxe.EventHandler[T] {
-    def handle(event: T) {
-      handler()
-    }
+  protected def getJavaClassInstance = new jfxe.Event(jfxe.Event.ANY)
+
+  protected def convertJavaClassToScalaClass(jfxObject: jfxe.Event) = {
+    val sfxEvent: Event = jfxObject
+    sfxEvent
   }
 
-  implicit def eventClosureWrapperWithParam[T <: jfxe.Event](handler: (T) => Unit) = new jfxe.EventHandler[T] {
-    def handle(event: T) {
-      handler(event)
-    }
-  }
-
-  implicit def mouseEventClosureWrapper(handler: (sfxsi.MouseEvent) => Unit) = new jfxe.EventHandler[jfxsi.MouseEvent] {
-
-    def handle(event: jfxsi.MouseEvent) {
-      handler(event)
-    }
-  }
-
-  implicit def actionEventClosureWrapper(handler: (ActionEvent) => Unit) = new jfxe.EventHandler[jfxe.ActionEvent] {
-
-    import EventIncludes.jfxActionEvent2sfx
-
-    def handle(event: jfxe.ActionEvent) {
-      handler(event)
-    }
-  }
 }

@@ -35,24 +35,48 @@ object Event {
   
   def apply[T <: jfxe.Event](eventType: jfxe.EventType[T]) = new Event(new jfxe.Event(eventType))
 
-  def fireEvent(eventTarget: jfxe.EventTarget, event: Event) = jfxe.Event.fireEvent(eventTarget, event)
+  /**
+   * Fires the specified event.
+   */
+  def fireEvent(eventTarget: jfxe.EventTarget, event: jfxe.Event) = jfxe.Event.fireEvent(eventTarget, event)
 
-  val Any = jfxe.Event.ANY
+  /**
+   * Common supertype for all event types.
+   */
+  val ANY = jfxe.Event.ANY
 
-  val NullSourceTarget = jfxe.Event.NULL_SOURCE_TARGET
+  /**
+   * The constant which represents an unknown event source / target.
+   */
+  val NULL_SOURCE_TARGET = jfxe.Event.NULL_SOURCE_TARGET
 
 }
 
 class Event(override val delegate: jfxe.Event) extends SFXDelegate[jfxe.Event] {
   
+  /**
+   * Marks this Event as consumed.
+   */
   def consume = delegate.consume
 
+  /**
+   * Creates and returns a copy of this event with the specified event source and target.
+   */
   def copyFor(newSource: AnyRef, newTarget: jfxe.EventTarget) = new Event(delegate.copyFor(newSource, newTarget))
 
+  /**
+   * Gets the event type of this event.
+   */
   def eventType = delegate.getEventType
 
+  /**
+   * Returns the event target of this event.
+   */
   def target = delegate.getTarget
 
+  /**
+   * Indicates whether this Event has been consumed by any filter or handler.
+   */
   def consumed = delegate.isConsumed
 
 }
