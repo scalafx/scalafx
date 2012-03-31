@@ -138,6 +138,6 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
   /**
    * Invoked by the region's parent during layout to set the region's width and height.
    */
-  def resize(width: Double, height: Double) = delegate.resize(width, height)
+  override def resize(width: Double, height: Double) = delegate.resize(width, height)
 
 }
