@@ -54,6 +54,7 @@ import scalafx.scene.text.Text
 import scalafx.scene.text.Font
 import scalafx.scene.layout._
 import scalafx.scene.image.{Image, ImageView}
+import scalafx.Includes._
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>

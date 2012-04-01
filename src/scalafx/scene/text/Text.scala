@@ -27,10 +27,10 @@
 
 package scalafx.scene.text
 
-import javafx.scene.text.{FontWeight, FontPosture}
+import javafx.scene.text.{ FontWeight, FontPosture }
 import scalafx.util.SFXDelegate
 import scalafx.Includes._
-import javafx.scene.{text => jfxst}
+import javafx.scene.{ text => jfxst }
 import javafx.geometry.VPos
 import scalafx.scene.shape.Shape
 
@@ -38,66 +38,111 @@ object Text {
   implicit def sfxText2jfx(v: Text) = v.delegate
 }
 
-class Text(override val delegate: jfxst.Text) extends Shape(delegate) with SFXDelegate[jfxst.Text]{
+class Text(override val delegate: jfxst.Text = new jfxst.Text) extends Shape(delegate) with SFXDelegate[jfxst.Text] {
 
-  def this() = this(new jfxst.Text)
+  /**
+   * Creates an instance of Text containing the given string.
+   */
   def this(t: String) = this(new jfxst.Text(t))
+
+  /**
+   * Creates an instance of Text on the given coordinates containing the given string.
+   */
   def this(x: Double, y: Double, t: String) = this(new jfxst.Text(x, y, t))
 
-  def baselineOffset = delegate.baselineOffsetProperty
+  /**
+   * The 'alphabetic' (or roman) baseline offset from the Text node's layoutBounds.minY location.
+   *
+   */
+  // NOTE IMPLEMENTATION: Added "Property" suffix to not conflict with Node.baselineOffset() method.
+  def baselineOffsetProperty = delegate.baselineOffsetProperty
 
+  /**
+   * Determines how the bounds of the text node are calculated.
+   */
   def boundsType = delegate.boundsTypeProperty
-  def boundsType_= (v: jfxst.TextBoundsType) {
+  def boundsType_=(v: jfxst.TextBoundsType) {
     boundsType() = v
   }
 
+  /**
+   * Defines the font of text.
+   */
   def font = delegate.fontProperty
-  def font_= (v: jfxst.Font) {
+  def font_=(v: Font) {
     font() = v
   }
 
+  /**
+   * Specifies a requested font smoothing type : gray or LCD.
+   */
   def fontSmoothingType = delegate.fontSmoothingTypeProperty
-  def fontSmoothingType_= (v: jfxst.FontSmoothingType) {
+  def fontSmoothingType_=(v: jfxst.FontSmoothingType) {
     fontSmoothingType() = v
   }
 
+  /**
+   * Defines if each line of text should have a line through it.
+   */
   def strikethrough = delegate.strikethroughProperty
-  def strikethrough_= (v: Boolean) {
+  def strikethrough_=(v: Boolean) {
     strikethrough = v
   }
 
+  /**
+   * Defines text string that is to be displayed.
+   */
   def text = delegate.textProperty
-  def text_= (v: String) {
+  def text_=(v: String) {
     text() = v
   }
 
+  /**
+   * Defines horizontal text alignment in the bounding box.
+   */
   def textAlignment = delegate.textAlignmentProperty
-  def textAlignment_= (v: jfxst.TextAlignment) {
+  def textAlignment_=(v: jfxst.TextAlignment) {
     textAlignment() = v
   }
 
+  /**
+   * Defines the origin of text coordinate system in local coordinates.
+   */
   def textOrigin = delegate.textOriginProperty
-  def textOrigin_= (v: VPos) {
+  def textOrigin_=(v: VPos) {
     textOrigin() = v
   }
 
+  /**
+   * Defines if each line of text should have a line below it.
+   */
   def underline = delegate.underlineProperty
-  def underline_= (v: Boolean) {
+  def underline_=(v: Boolean) {
     underline() = v
   }
 
+  /**
+   * Defines a width constraint for the text in user space coordinates, e.g. pixels, not glyph or
+   * character count.
+   */
   def wrappingWidth = delegate.wrappingWidthProperty
-  def wrappingWidth_= (v: Double) {
+  def wrappingWidth_=(v: Double) {
     wrappingWidth() = v
   }
 
+  /**
+   * Defines the X coordinate of text origin.
+   */
   def x = delegate.xProperty
-  def x_= (v: Double) {
+  def x_=(v: Double) {
     x() = v
   }
 
+  /**
+   * Defines the Y coordinate of text origin.
+   */
   def y = delegate.yProperty
-  def y_= (v: Double) {
+  def y_=(v: Double) {
     y() = v
   }
 }

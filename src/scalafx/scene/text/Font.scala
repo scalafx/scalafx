@@ -29,37 +29,100 @@ package scalafx.scene.text
 
 import scala.collection.JavaConversions._
 
-import javafx.scene.{text => jfxst}
-import javafx.scene.text.{FontWeight, FontPosture}
+import javafx.scene.{ text => jfxst }
+import javafx.scene.text.{ FontWeight, FontPosture }
 import scalafx.util.SFXDelegate
 
 object Font {
   implicit def sfxFont2jfx(v: Font) = v.delegate
 
-  def	default = jfxst.Font.getDefault
+  /**
+   * Gets the default font which will be from the family "System", and typically the style
+   * "Regular", and be of a size consistent with the user's desktop environment, to the extent
+   * that can be determined.
+   */
+  def default = jfxst.Font.getDefault
 
+  /**
+   * Gets all the font families installed on the user's system, including any application fonts
+   * or SDK fonts.
+   */
   def families = jfxst.Font.getFamilies.toSeq
 
-  def	font(family: String, size: Double) = jfxst.Font.font(family, size)
-  def	font(family: String, posture: FontPosture, size: Double) = jfxst.Font.font(family, posture, size)
-  def	font(family: String, weight: FontWeight, size: Double) = jfxst.Font.font(family, weight, size)
-  def	font(family: String, weight: FontWeight, posture: FontPosture, size: Double) = jfxst.Font.font(family, weight, posture, size)
+  /**
+   * Searches for an appropriate font based on the font family name and size.
+   */
+  def font(family: String, size: Double) = jfxst.Font.font(family, size)
 
+  /**
+   * Searches for an appropriate font based on the font family name and posture style.
+   */
+  def font(family: String, posture: FontPosture, size: Double) =
+    jfxst.Font.font(family, posture, size)
+
+  /**
+   * Searches for an appropriate font based on the font family name and weight style.
+   */
+  def font(family: String, weight: FontWeight, size: Double) = jfxst.Font.font(family, weight, size)
+
+  /**
+   * Searches for an appropriate font based on the font family name and weight and posture style.
+   */
+  def font(family: String, weight: FontWeight, posture: FontPosture, size: Double) =
+    jfxst.Font.font(family, weight, posture, size)
+
+  /**
+   * Gets the names of all fonts that are installed on the users system, including any application
+   * fonts and SDK fonts.
+   */
   def fontNames = jfxst.Font.getFontNames.toSeq
+
+  /**
+   * Gets the names of all fonts in the specified font family that are installed on the users
+   * system, including any application fonts and SDK fonts.
+   */
   def fontNames(family: String) = jfxst.Font.getFontNames(family).toSeq
 
-  def	loadFont(in: java.io.InputStream, size: Double) = jfxst.Font.loadFont(in, size)
-  def	loadFont(urlStr: String, size: Double) = jfxst.Font.loadFont(urlStr, size)
+  /**
+   * Loads a font resource from the specified input stream.
+   */
+  def loadFont(in: java.io.InputStream, size: Double) = jfxst.Font.loadFont(in, size)
+
+  /**
+   * Loads a font resource from the specified URL.
+   */
+  def loadFont(urlStr: String, size: Double) = jfxst.Font.loadFont(urlStr, size)
 }
 
-class Font(val delegate: jfxst.Font) extends SFXDelegate[jfxst.Font]{
+class Font(val delegate: jfxst.Font) extends SFXDelegate[jfxst.Font] {
 
+  /**
+   * Constructs a font using the default face "System".
+   */
   def this(size: Double) = this(new jfxst.Font(size))
 
+  /**
+   * Constructs a font using the specified full face name and size
+   */
   def this(name: String, size: Double) = this(new jfxst.Font(name, size))
 
+  /**
+   * Returns the family of this font.
+   */
   def family = delegate.getFamily
+
+  /**
+   * The full font name.
+   */
   def name = delegate.getName
+
+  /**
+   * The point size for this font.
+   */
   def size = delegate.getSize
+
+  /**
+   * The font specified string describing the style within the font family.
+   */
   def style = delegate.getStyle
 }

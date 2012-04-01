@@ -27,35 +27,32 @@
 
 package scalafx.scene.text
 
-import javafx.scene.{text => jfxs}
-import org.scalatest.matchers.ShouldMatchers._
+import javafx.scene.{text => jfxst}
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
-import org.scalatest.{SeveredStackTraces, FlatSpec}
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class FontSpec extends FlatSpec with PropertyComparator with SeveredStackTraces {
+/**
+ * Font Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class FontSpec extends AbstractSFXDelegateSpec[jfxst.Font, Font, jfxst.FontBuilder](classOf[jfxst.Font], classOf[Font], classOf[jfxst.FontBuilder]) {
 
-  val jfxClass = classOf[jfxs.Font]
-  val sfxClass = classOf[Font]
+  protected def getScalaClassInstance = Font.default
 
-  "A " + sfxClass.getName should "implement all the JavaFX properties" in {
-    compareProperties(jfxClass, sfxClass)
+  protected def convertScalaClassToJavaClass(sfxControl: Font) = {
+    val jfxFont: jfxst.Font = sfxControl
+    jfxFont
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxs.FontBuilder], sfxClass)
+  protected def getJavaClassInstance = jfxst.Font.getDefault
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxst.Font) = {
+    val sfxFont: Font = jfxControl
+    sfxFont
   }
 
-  it should "declare all public methods of " + jfxClass.getName in {
-    compareDeclaredMethods(jfxClass, sfxClass)
-  }
-
-  it should "have implicit conversions between SFX <-> JFX" in {
-    val sfxOriginalInstance: Font = new Font(12)
-    val jfxInstance: jfxs.Font = sfxOriginalInstance
-    val sfxInstance: Font = jfxInstance
-
-    sfxOriginalInstance.delegate should be (jfxInstance)
-    jfxInstance should be (sfxInstance.delegate)
-  }
 }

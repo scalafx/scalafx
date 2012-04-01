@@ -27,40 +27,32 @@
 
 package scalafx.scene.text
 
-import javafx.scene.{text => jfxs}
-import org.scalatest.matchers.ShouldMatchers._
+import javafx.scene.{text => jfxst}
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
-import org.scalatest.{SeveredStackTraces, FlatSpec}
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class TextSpec extends FlatSpec with PropertyComparator with SeveredStackTraces {
+/**
+ * Text Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class TextSpec extends AbstractSFXDelegateSpec[jfxst.Text, Text, jfxst.TextBuilder[_]](classOf[jfxst.Text], classOf[Text], classOf[jfxst.TextBuilder[_]]) {
 
-  val jfxClass = classOf[jfxs.Text]
-  val sfxClass = classOf[Text]
-  val sfxObject = Class.forName("scalafx.scene.text.Text$")
+  protected def getScalaClassInstance = new Text
 
-  "A " + sfxClass.getName should "implement all the JavaFX properties" in {
-    compareProperties(jfxClass, sfxClass)
+  protected def convertScalaClassToJavaClass(sfxControl: Text) = {
+    val jfxText: jfxst.Text = sfxControl
+    jfxText
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxs.TextBuilder[Any]], sfxClass)
+  protected def getJavaClassInstance = new jfxst.Text
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxst.Text) = {
+    val sfxText: Text = jfxControl
+    sfxText
   }
 
-  it should "declare all public methods of " + jfxClass.getName in {
-    compareDeclaredMethods(jfxClass, sfxClass)
-  }
-
-  it should "declare all public static methods of " + jfxClass.getName in {
-    compareStaticMethods(jfxClass, sfxObject)
-  }
-
-  it should "have implicit conversions between SFX <-> JFX" in {
-    val sfxOriginalInstance = new Text()
-    val jfxInstance: jfxs.Text = sfxOriginalInstance
-    val sfxInstance: Text = jfxInstance
-
-    sfxOriginalInstance.delegate should be (jfxInstance)
-    jfxInstance should be (sfxInstance.delegate)
-  }
 }

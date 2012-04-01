@@ -52,6 +52,7 @@ import scalafx.scene.control.Button
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.text.Text
 import scalafx.scene.text.Font
+import scalafx.Includes._
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>

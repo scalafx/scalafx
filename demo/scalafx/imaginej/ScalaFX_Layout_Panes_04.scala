@@ -53,6 +53,7 @@ import scalafx.scene.shape.Rectangle
 import scalafx.scene.text.Text
 import scalafx.scene.text.Font
 import scalafx.scene.layout.{StackPane, VBox, HBox, BorderPane}
+import scalafx.Includes._
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
