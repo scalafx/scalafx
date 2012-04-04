@@ -36,7 +36,7 @@ object MediaPlayer {
   implicit def sfxMediaPlayer2jfx(mp: MediaPlayer) = mp.delegate
 }
 
-class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[jfxsm.MediaPlayer] {
+final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[jfxsm.MediaPlayer] {
 
   /**
    * Create a player for a specific media.

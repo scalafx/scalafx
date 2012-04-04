@@ -40,7 +40,7 @@ object AudioClip {
 
 }
 
-class AudioClip(override val delegate: jfxsm.AudioClip) extends SFXDelegate[jfxsm.AudioClip] {
+final class AudioClip(override val delegate: jfxsm.AudioClip) extends SFXDelegate[jfxsm.AudioClip] {
 
   /**
    * Create an AudioClip loaded from the supplied source URL

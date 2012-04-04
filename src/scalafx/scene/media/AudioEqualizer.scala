@@ -39,7 +39,7 @@ object AudioEqualizer {
   val MAX_NUM_BANDS = jfxsm.AudioEqualizer.MAX_NUM_BANDS
 }
 
-class AudioEqualizer(override val delegate: jfxsm.AudioEqualizer) extends SFXDelegate[jfxsm.AudioEqualizer] {
+final class AudioEqualizer(override val delegate: jfxsm.AudioEqualizer) extends SFXDelegate[jfxsm.AudioEqualizer] {
 
   /**
    * Whether the AudioEqualizer is enabled.
