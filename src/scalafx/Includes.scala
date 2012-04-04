@@ -32,12 +32,13 @@ import beans.BeanIncludes
 import collections.CollectionIncludes
 import event.EventIncludes
 import geometry.GeometryIncludes
+import scene.input.InputIncludes
+import scene.media.MediaIncludes
+import scene.transform.TransformIncludes
+import scene.web.WebIncludes
+import stage.StageIncludes
 import scene.SceneIncludes
 import util.UtilIncludes
-import scalafx.scene.transform.TransformIncludes
-import scalafx.scene.input.InputIncludes
-import scalafx.stage.StageIncludes
-import scalafx.scene.web.WebIncludes
 
 /**
  * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
@@ -48,4 +49,16 @@ import scalafx.scene.web.WebIncludes
  */
 object Includes extends Includes
 
-trait Includes extends AnimationIncludes with CollectionIncludes with EventIncludes with SceneIncludes with BeanIncludes with UtilIncludes with GeometryIncludes with TransformIncludes with InputIncludes with StageIncludes with WebIncludes
+trait Includes
+  extends AnimationIncludes 
+  with CollectionIncludes 
+  with EventIncludes 
+  with SceneIncludes 
+  with BeanIncludes 
+  with UtilIncludes 
+  with GeometryIncludes 
+  with TransformIncludes 
+  with InputIncludes 
+  with StageIncludes 
+  with WebIncludes 
+  with MediaIncludes
