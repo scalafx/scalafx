@@ -60,7 +60,7 @@ class ImageView(override val delegate: jfxsi.ImageView = new jfxsi.ImageView()) 
   def preserveRatio = delegate.preserveRatioProperty
 
   def preserveRatio_=(v: Boolean) {
-    smooth() = v
+    preserveRatio() = v
   }
 
   def smooth = delegate.smoothProperty
