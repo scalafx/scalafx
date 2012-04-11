@@ -36,6 +36,7 @@ trait ConverterIncludes {
   implicit def jfxBooleanStringConverter2sfx(c: jfxuc.BooleanStringConverter) = new BooleanStringConverter(c)
   implicit def jfxByteStringConverter2sfx(c: jfxuc.ByteStringConverter) = new ByteStringConverter(c)
   implicit def jfxCharacterStringConverter2sfx(c: jfxuc.CharacterStringConverter) = new CharStringConverter(c)
+  implicit def jfxCurrencyStringConverter2sfx(c: jfxuc.CurrencyStringConverter) = new CurrencyStringConverter(c)
   implicit def jfxDateStringConverter2sfx(c: jfxuc.DateStringConverter) = new DateStringConverter(c)
   implicit def jfxDateTimeStringConverter2sfx(c: jfxuc.DateTimeStringConverter) = new DateTimeStringConverter(c)
   implicit def jfxDefaultStringConverter2sfx(c: jfxuc.DefaultStringConverter) = new DefaultStringConverter(c)
