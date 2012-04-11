@@ -74,6 +74,10 @@ abstract class Animation(override val delegate: jfxa.Animation) extends SFXDeleg
 
   def status = delegate.statusProperty
 
+  def stop() {
+    delegate.stop()
+  }
+
   def totalDuration = delegate.totalDurationProperty
 
   def targetFramerate = delegate.getTargetFramerate

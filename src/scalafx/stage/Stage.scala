@@ -37,8 +37,8 @@ object Stage {
   implicit def sfxStage2jfx(v: Stage) = v.delegate
 }
 
-class Stage extends SFXDelegate[jfxs.Stage] {
-  override val delegate = JFXApp.STAGE
+class Stage(override val delegate: jfxs.Stage = JFXApp.STAGE) extends SFXDelegate[jfxs.Stage] {
+  
 
   def fullScreen = delegate.fullScreenProperty
 
