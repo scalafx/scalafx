@@ -33,4 +33,4 @@ object DefaultStringConverter {
 }
 
 class DefaultStringConverter(delegate: jfxuc.DefaultStringConverter = new jfxuc.DefaultStringConverter)
-  extends StringConverterDelegate[String, jfxuc.DefaultStringConverter](new jfxuc.DefaultStringConverter)
+  extends StringConverterDelegate[String, jfxuc.DefaultStringConverter](delegate)
