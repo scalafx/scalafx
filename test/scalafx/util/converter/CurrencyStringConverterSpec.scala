@@ -26,24 +26,33 @@
  */
 package scalafx.util.converter
 
-import java.text.DateFormat
-import java.util.Locale
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-import javafx.util.{ converter => jfxuc }
+import javafx.util.{converter => jfxuc}
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
-object DateTimeStringConverter {
-  implicit def sfxDateTimeStringConverter2jfx(c: DateTimeStringConverter) = c.delegate
-}
+/**
+ * CurrencyStringConverter Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class CurrencyStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.CurrencyStringConverter, CurrencyStringConverter](classOf[jfxuc.CurrencyStringConverter], classOf[CurrencyStringConverter]) {
 
-class DateTimeStringConverter(delegate: jfxuc.DateTimeStringConverter = new jfxuc.DateTimeStringConverter)
-  extends DateTimeStringConverterDelegate[jfxuc.DateTimeStringConverter](delegate) {
+  protected def getScalaClassInstance = new CurrencyStringConverter
 
-  def this(locale: Locale) = this(new jfxuc.DateTimeStringConverter(locale))
+  protected def convertScalaClassToJavaClass(sfxControl: CurrencyStringConverter) = {
+    val jfxCurrencyStringConverter: jfxuc.CurrencyStringConverter = sfxControl
+    jfxCurrencyStringConverter
+  }
 
-  def this(locale: Locale, pattern: String) = this(new jfxuc.DateTimeStringConverter(locale, pattern))
+  protected def getJavaClassInstance = new jfxuc.CurrencyStringConverter
 
-  def this(dateFormat: DateFormat) = this(new jfxuc.DateTimeStringConverter(dateFormat))
-
-  def this(pattern: String) = this(new jfxuc.DateTimeStringConverter(pattern))
+  protected def convertJavaClassToScalaClass(jfxControl: jfxuc.CurrencyStringConverter) = {
+    val sfxCurrencyStringConverter: CurrencyStringConverter = jfxControl
+    sfxCurrencyStringConverter
+  }
 
 }

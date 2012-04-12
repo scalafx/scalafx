@@ -26,24 +26,33 @@
  */
 package scalafx.util.converter
 
-import java.text.DateFormat
-import java.util.Locale
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-import javafx.util.{ converter => jfxuc }
+import javafx.util.{converter => jfxuc}
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
-object DateTimeStringConverter {
-  implicit def sfxDateTimeStringConverter2jfx(c: DateTimeStringConverter) = c.delegate
-}
+/**
+ * PercentageStringConverter Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class PercentageStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.PercentageStringConverter, PercentageStringConverter](classOf[jfxuc.PercentageStringConverter], classOf[PercentageStringConverter]) {
 
-class DateTimeStringConverter(delegate: jfxuc.DateTimeStringConverter = new jfxuc.DateTimeStringConverter)
-  extends DateTimeStringConverterDelegate[jfxuc.DateTimeStringConverter](delegate) {
+  protected def getScalaClassInstance = new PercentageStringConverter
 
-  def this(locale: Locale) = this(new jfxuc.DateTimeStringConverter(locale))
+  protected def convertScalaClassToJavaClass(sfxControl: PercentageStringConverter) = {
+    val jfxPercentageStringConverter: jfxuc.PercentageStringConverter = sfxControl
+    jfxPercentageStringConverter
+  }
 
-  def this(locale: Locale, pattern: String) = this(new jfxuc.DateTimeStringConverter(locale, pattern))
+  protected def getJavaClassInstance = new jfxuc.PercentageStringConverter
 
-  def this(dateFormat: DateFormat) = this(new jfxuc.DateTimeStringConverter(dateFormat))
-
-  def this(pattern: String) = this(new jfxuc.DateTimeStringConverter(pattern))
+  protected def convertJavaClassToScalaClass(jfxControl: jfxuc.PercentageStringConverter) = {
+    val sfxPercentageStringConverter: PercentageStringConverter = jfxControl
+    sfxPercentageStringConverter
+  }
 
 }

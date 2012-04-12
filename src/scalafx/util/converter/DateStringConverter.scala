@@ -36,7 +36,7 @@ object DateStringConverter {
 }
 
 class DateStringConverter(override val delegate: jfxuc.DateStringConverter = new jfxuc.DateStringConverter)
-  extends DateTimeStringConverter(delegate) {
+  extends DateTimeStringConverterDelegate[jfxuc.DateStringConverter](delegate) {
 
   def this(locale: Locale) = this(new jfxuc.DateStringConverter(locale))
 

@@ -26,24 +26,8 @@
  */
 package scalafx.util.converter
 
-import java.text.DateFormat
-import java.util.Locale
-
 import javafx.util.{ converter => jfxuc }
+import scalafx.util.StringConverter
+import scalafx.util.SFXDelegate
 
-object DateTimeStringConverter {
-  implicit def sfxDateTimeStringConverter2jfx(c: DateTimeStringConverter) = c.delegate
-}
-
-class DateTimeStringConverter(delegate: jfxuc.DateTimeStringConverter = new jfxuc.DateTimeStringConverter)
-  extends DateTimeStringConverterDelegate[jfxuc.DateTimeStringConverter](delegate) {
-
-  def this(locale: Locale) = this(new jfxuc.DateTimeStringConverter(locale))
-
-  def this(locale: Locale, pattern: String) = this(new jfxuc.DateTimeStringConverter(locale, pattern))
-
-  def this(dateFormat: DateFormat) = this(new jfxuc.DateTimeStringConverter(dateFormat))
-
-  def this(pattern: String) = this(new jfxuc.DateTimeStringConverter(pattern))
-
-}
+private[converter] abstract class NumberStringConverterDelegate[C <: jfxuc.NumberStringConverter] protected (delegate: C) extends StringConverterDelegate[Number, C](delegate)

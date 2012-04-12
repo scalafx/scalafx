@@ -36,7 +36,7 @@ object PercentageStringConverter {
 }
 
 class PercentageStringConverter(delegate: jfxuc.PercentageStringConverter = new jfxuc.PercentageStringConverter)
-  extends NumberStringConverter(delegate) {
+  extends NumberStringConverterDelegate[jfxuc.PercentageStringConverter](delegate) {
 
   def this(locale: Locale) = this(new jfxuc.PercentageStringConverter(locale))
 

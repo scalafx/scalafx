@@ -36,7 +36,7 @@ object TimeStringConverter {
 }
 
 class TimeStringConverter(delegate: jfxuc.TimeStringConverter = new jfxuc.TimeStringConverter)
-  extends DateTimeStringConverter(delegate) {
+  extends DateTimeStringConverterDelegate[jfxuc.TimeStringConverter](delegate) {
 
   def this(locale: Locale) = this(new jfxuc.TimeStringConverter(locale))
 

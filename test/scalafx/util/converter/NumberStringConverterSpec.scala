@@ -26,24 +26,32 @@
  */
 package scalafx.util.converter
 
-import java.text.DateFormat
-import java.util.Locale
+import org.junit.runner.RunWith
+import javafx.util.{converter => jfxuc}
+import scalafx.Includes.jfxNumberStringConverter2sfx
+import scalafx.testutil.SimpleSFXDelegateSpec
+import org.scalatest.junit.JUnitRunner
 
-import javafx.util.{ converter => jfxuc }
+/**
+ * NumberStringConverter Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class NumberStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.NumberStringConverter, NumberStringConverter](classOf[jfxuc.NumberStringConverter], classOf[NumberStringConverter]) {
 
-object DateTimeStringConverter {
-  implicit def sfxDateTimeStringConverter2jfx(c: DateTimeStringConverter) = c.delegate
-}
+  protected def getScalaClassInstance = new NumberStringConverter
 
-class DateTimeStringConverter(delegate: jfxuc.DateTimeStringConverter = new jfxuc.DateTimeStringConverter)
-  extends DateTimeStringConverterDelegate[jfxuc.DateTimeStringConverter](delegate) {
+  protected def convertScalaClassToJavaClass(sfxControl: NumberStringConverter) = {
+    val jfxNumberStringConverter: jfxuc.NumberStringConverter = sfxControl
+    jfxNumberStringConverter
+  }
 
-  def this(locale: Locale) = this(new jfxuc.DateTimeStringConverter(locale))
+  protected def getJavaClassInstance = new jfxuc.NumberStringConverter
 
-  def this(locale: Locale, pattern: String) = this(new jfxuc.DateTimeStringConverter(locale, pattern))
-
-  def this(dateFormat: DateFormat) = this(new jfxuc.DateTimeStringConverter(dateFormat))
-
-  def this(pattern: String) = this(new jfxuc.DateTimeStringConverter(pattern))
+  protected def convertJavaClassToScalaClass(jfxControl: jfxuc.NumberStringConverter) = {
+    val sfxNumberStringConverter: NumberStringConverter = jfxControl
+    sfxNumberStringConverter
+  }
 
 }
