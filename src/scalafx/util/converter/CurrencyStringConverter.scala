@@ -35,7 +35,7 @@ object CurrencyStringConverter {
   implicit def sfxCurrencyStringConverter2jfx(c: CurrencyStringConverter) = c.delegate
 }
 
-class CurrencyStringConverter (delegate: jfxuc.CurrencyStringConverter = new jfxuc.CurrencyStringConverter)
+class CurrencyStringConverter(override val delegate: jfxuc.CurrencyStringConverter = new jfxuc.CurrencyStringConverter)
   extends NumberStringConverter(delegate) {
 
   def this(locale: Locale) = this(new jfxuc.CurrencyStringConverter(locale))
