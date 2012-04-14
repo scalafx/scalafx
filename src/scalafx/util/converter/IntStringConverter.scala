@@ -33,4 +33,4 @@ object IntStringConverter {
 }
 
 class IntStringConverter(delegate: jfxuc.IntegerStringConverter = new jfxuc.IntegerStringConverter)
-  extends StringConverterDelegate[java.lang.Integer, jfxuc.IntegerStringConverter](delegate)
+  extends StringConverterDelegate[java.lang.Integer, Int, jfxuc.IntegerStringConverter](delegate)

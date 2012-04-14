@@ -33,4 +33,4 @@ object BigDecimalStringConverter {
 }
 
 class BigDecimalStringConverter(delegate: jfxuc.BigDecimalStringConverter = new jfxuc.BigDecimalStringConverter)
-  extends StringConverterDelegate[java.math.BigDecimal, jfxuc.BigDecimalStringConverter](delegate)
+  extends StringConverterDelegate[java.math.BigDecimal, BigDecimal, jfxuc.BigDecimalStringConverter](delegate)

@@ -33,4 +33,4 @@ object BooleanStringConverter {
 }
 
 class BooleanStringConverter(delegate: jfxuc.BooleanStringConverter = new jfxuc.BooleanStringConverter)
-  extends StringConverterDelegate[java.lang.Boolean, jfxuc.BooleanStringConverter](delegate)
+  extends StringConverterDelegate[java.lang.Boolean, Boolean, jfxuc.BooleanStringConverter](delegate)

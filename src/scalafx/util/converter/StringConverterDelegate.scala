@@ -27,18 +27,42 @@
 package scalafx.util.converter
 
 import javafx.{ util => jfxu }
-import scalafx.util.StringConverter
 import scalafx.util.SFXDelegate
+import scalafx.util.StringConverter
 
 /**
+ * Class responsable for wrap a StringConverter from a Java type to a Scala type (eg:
+ * java.lang.Integer to Int, java.lang.Character to Char). Eventually Java and Scala types can be
+ * the same (like java.util.Date or java.lang.Number), so it must be used
+ * StringConverterJavaToJavaDelegate class.
  *
+ * @tparam J Java Class (e.g. java.lang.Integer, java.lang.Number, java.util.BigInteger, java.util.Date)
+ * @tparam S Scala CLass (e.g. Int, BigInt)
+ * @tparam C JavaFX StringConverter using type J (e.g. javafx.util.converter.IntegerStringConverter,
+ * javafx.util.converter.BigIntegerStringConverter, javafx.util.converter.DateStringConverter)
+ *
+ * @param delegate JavaFx StringConverter to be wrapped.
  */
-abstract class StringConverterDelegate[T, C <: jfxu.StringConverter[T]] protected (override val delegate: C)
-  extends StringConverter[T]
+abstract class StringConverterDelegate[J, S, C <: jfxu.StringConverter[J]] protected (override val delegate: C)
+  extends StringConverter[S]
   with SFXDelegate[C] {
 
-  def fromString(string: String): T = delegate.fromString(string)
+  def fromString(string: String): S = delegate.fromString(string).asInstanceOf[S]
 
-  def toString(t: T): String = delegate.toString(t)
+  def toString(s: S): String = delegate.toString(s.asInstanceOf[J])
 
 }
+
+/**
+ * Class responsable for wrap a StringConverter from and to a Java type(eg: java.util.Date or
+ * java.lang.Number).
+ *
+ * @tparam J Java Class (e.g. java.lang.Number, java.util.Date)
+ * @tparam C JavaFX StringConverter using type J (e.g. javafx.util.converter.IntegerStringConverter,
+ * javafx.util.converter.NumberStringConverter, javafx.util.converter.BigIntegerStringConverter,
+ * javafx.util.converter.DateStringConverter)
+ *
+ * @param delegate JavaFx StringConverter to be wrapped.
+ */
+abstract class StringConverterJavaToJavaDelegate[J, C <: jfxu.StringConverter[J]] protected (override val delegate: C)
+  extends StringConverterDelegate[J, J, C](delegate)

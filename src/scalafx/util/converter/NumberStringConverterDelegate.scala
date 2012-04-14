@@ -30,4 +30,5 @@ import javafx.util.{ converter => jfxuc }
 import scalafx.util.StringConverter
 import scalafx.util.SFXDelegate
 
-private[converter] abstract class NumberStringConverterDelegate[C <: jfxuc.NumberStringConverter] protected (delegate: C) extends StringConverterDelegate[Number, C](delegate)
+private[converter] abstract class NumberStringConverterDelegate[C <: jfxuc.NumberStringConverter] protected (delegate: C)
+  extends StringConverterJavaToJavaDelegate[Number, C](delegate)

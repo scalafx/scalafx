@@ -30,4 +30,5 @@ import java.util.Date
 
 import javafx.util.{ converter => jfxuc }
 
-private[converter] abstract class DateTimeStringConverterDelegate[C <: jfxuc.DateTimeStringConverter] protected (delegate: C) extends StringConverterDelegate[Date, C](delegate)
+private[converter] abstract class DateTimeStringConverterDelegate[C <: jfxuc.DateTimeStringConverter] protected (delegate: C)
+  extends StringConverterJavaToJavaDelegate[Date, C](delegate)

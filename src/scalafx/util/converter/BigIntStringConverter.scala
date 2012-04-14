@@ -33,4 +33,4 @@ object BigIntStringConverter {
 }
 
 class BigIntStringConverter(delegate: jfxuc.BigIntegerStringConverter = new jfxuc.BigIntegerStringConverter)
-  extends StringConverterDelegate[java.math.BigInteger, jfxuc.BigIntegerStringConverter](delegate)
+  extends StringConverterDelegate[java.math.BigInteger, BigInt, jfxuc.BigIntegerStringConverter](delegate)
