@@ -26,20 +26,23 @@
  */
 package scalafx.util.converter
 
-
 import javafx.util.{ converter => jfxuc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.SimpleSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner])
 /**
  * BigIntegerStringConverter Spec tests.
- * 
+ *
  *
  */
-class BigIntegerStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.BigIntegerStringConverter, BigIntStringConverter](classOf[jfxuc.BigIntegerStringConverter], classOf[BigIntStringConverter])  {
+@RunWith(classOf[JUnitRunner])
+class BigIntegerStringConverterSpec
+  extends AbstractStringConverterDelegateSpec[java.math.BigInteger, jfxuc.BigIntegerStringConverter, BigInt, BigIntStringConverter](classOf[jfxuc.BigIntegerStringConverter], classOf[BigIntStringConverter], classOf[BigInt]) {
+
+  override val examples = List((BigInt(0), "0"), (BigInt(12345), "12345"),
+    (BigInt(-12345), "-12345"))
 
   protected def getScalaClassInstance = new BigIntStringConverter
 
@@ -47,8 +50,6 @@ class BigIntegerStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.BigInteg
     val jfxBigIntegerStringConverter: jfxuc.BigIntegerStringConverter = sfxControl
     jfxBigIntegerStringConverter
   }
-
-  protected def getJavaClassInstance = new jfxuc.BigIntegerStringConverter
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxuc.BigIntegerStringConverter) = {
     val sfxBigIntegerStringConverter: BigIntStringConverter = jfxControl

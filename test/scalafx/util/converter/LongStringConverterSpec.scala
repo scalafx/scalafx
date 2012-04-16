@@ -27,9 +27,8 @@
 package scalafx.util.converter
 
 import org.junit.runner.RunWith
-import javafx.util.{converter => jfxuc}
-import scalafx.Includes.jfxLongStringConverter2sfx
-import scalafx.testutil.SimpleSFXDelegateSpec
+import javafx.util.{ converter => jfxuc }
+import scalafx.Includes._
 import org.scalatest.junit.JUnitRunner
 
 /**
@@ -38,7 +37,11 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class LongStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.LongStringConverter, LongStringConverter](classOf[jfxuc.LongStringConverter], classOf[LongStringConverter]) {
+class LongStringConverterSpec
+  extends AbstractStringConverterDelegateSpec[java.lang.Long, jfxuc.LongStringConverter, Long, LongStringConverter](classOf[jfxuc.LongStringConverter], classOf[LongStringConverter], classOf[Long]) {
+
+  override val examples = List((0L, "0"), (123L, "123"), (-123L, "-123"),
+    (Long.MaxValue, Long.MaxValue.toString), (Long.MinValue, Long.MinValue.toString))
 
   protected def getScalaClassInstance = new LongStringConverter
 
@@ -46,8 +49,6 @@ class LongStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.LongStringConv
     val jfxLongStringConverter: jfxuc.LongStringConverter = sfxControl
     jfxLongStringConverter
   }
-
-  protected def getJavaClassInstance = new jfxuc.LongStringConverter
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxuc.LongStringConverter) = {
     val sfxLongStringConverter: LongStringConverter = jfxControl

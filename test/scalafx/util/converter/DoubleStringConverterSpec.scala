@@ -26,10 +26,9 @@
  */
 package scalafx.util.converter
 
+import javafx.util.{ converter => jfxuc }
+import scalafx.Includes._
 import org.junit.runner.RunWith
-import javafx.util.{converter => jfxuc}
-import scalafx.Includes.jfxDoubleStringConverter2sfx
-import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
 
 /**
@@ -38,7 +37,11 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class DoubleStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.DoubleStringConverter, DoubleStringConverter](classOf[jfxuc.DoubleStringConverter], classOf[DoubleStringConverter]) {
+class DoubleStringConverterSpec
+  extends AbstractStringConverterDelegateSpec[java.lang.Double, jfxuc.DoubleStringConverter, Double, DoubleStringConverter](classOf[jfxuc.DoubleStringConverter], classOf[DoubleStringConverter], classOf[Double]) {
+
+  override val examples = List((0.0, "0.0"), (123.09, "123.09"), (-123.45, "-123.45"),
+    (Double.MaxValue, Double.MaxValue.toString), (Double.MinValue, Double.MinValue.toString))
 
   protected def getScalaClassInstance = new DoubleStringConverter
 
@@ -46,8 +49,6 @@ class DoubleStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.DoubleString
     val jfxDoubleStringConverter: jfxuc.DoubleStringConverter = sfxControl
     jfxDoubleStringConverter
   }
-
-  protected def getJavaClassInstance = new jfxuc.DoubleStringConverter
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxuc.DoubleStringConverter) = {
     val sfxDoubleStringConverter: DoubleStringConverter = jfxControl

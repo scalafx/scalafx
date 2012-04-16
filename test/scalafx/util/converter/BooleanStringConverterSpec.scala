@@ -26,20 +26,21 @@
  */
 package scalafx.util.converter
 
-
-import javafx.util.{ converter => jfxuc }
-import scalafx.Includes._
 import org.junit.runner.RunWith
+import javafx.util.{converter => jfxuc}
+import scalafx.Includes._
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.SimpleSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner])
 /**
  * BooleanStringConverter Spec tests.
- * 
+ *
  *
  */
-class BooleanStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.BooleanStringConverter, BooleanStringConverter](classOf[jfxuc.BooleanStringConverter], classOf[BooleanStringConverter])  {
+@RunWith(classOf[JUnitRunner])
+class BooleanStringConverterSpec
+  extends AbstractStringConverterDelegateSpec[java.lang.Boolean, jfxuc.BooleanStringConverter, Boolean, BooleanStringConverter](classOf[jfxuc.BooleanStringConverter], classOf[BooleanStringConverter], classOf[Boolean]) {
+
+  override val examples = List((true, "true"), (false, "false"))
 
   protected def getScalaClassInstance = new BooleanStringConverter
 
@@ -47,8 +48,6 @@ class BooleanStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.BooleanStri
     val jfxBooleanStringConverter: jfxuc.BooleanStringConverter = sfxControl
     jfxBooleanStringConverter
   }
-
-  protected def getJavaClassInstance = new jfxuc.BooleanStringConverter
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxuc.BooleanStringConverter) = {
     val sfxBooleanStringConverter: BooleanStringConverter = jfxControl

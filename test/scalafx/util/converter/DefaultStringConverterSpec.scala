@@ -26,10 +26,9 @@
  */
 package scalafx.util.converter
 
+import javafx.util.{ converter => jfxuc }
+import scalafx.Includes._
 import org.junit.runner.RunWith
-import javafx.util.{converter => jfxuc}
-import scalafx.Includes.jfxDefaultStringConverter2sfx
-import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
 
 /**
@@ -38,7 +37,10 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class DefaultStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.DefaultStringConverter, DefaultStringConverter](classOf[jfxuc.DefaultStringConverter], classOf[DefaultStringConverter]) {
+class DefaultStringConverterSpec
+  extends AbstractStringConverterDelegateSpec[java.lang.String, jfxuc.DefaultStringConverter, String, DefaultStringConverter](classOf[jfxuc.DefaultStringConverter], classOf[DefaultStringConverter], classOf[String]) {
+
+  override val examples = List(("alpha", "alpha"), ("ação", "ação"), ("", ""))
 
   protected def getScalaClassInstance = new DefaultStringConverter
 
@@ -46,8 +48,6 @@ class DefaultStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.DefaultStri
     val jfxDefaultStringConverter: jfxuc.DefaultStringConverter = sfxControl
     jfxDefaultStringConverter
   }
-
-  protected def getJavaClassInstance = new jfxuc.DefaultStringConverter
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxuc.DefaultStringConverter) = {
     val sfxDefaultStringConverter: DefaultStringConverter = jfxControl

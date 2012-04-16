@@ -26,20 +26,22 @@
  */
 package scalafx.util.converter
 
-
+import org.junit.runner.RunWith
 import javafx.util.{ converter => jfxuc }
 import scalafx.Includes._
-import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.SimpleSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner])
 /**
  * BigDecimalStringConverter Spec tests.
- * 
+ *
  *
  */
-class BigDecimalStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.BigDecimalStringConverter, BigDecimalStringConverter](classOf[jfxuc.BigDecimalStringConverter], classOf[BigDecimalStringConverter])  {
+@RunWith(classOf[JUnitRunner])
+class BigDecimalStringConverterSpec
+  extends AbstractStringConverterDelegateSpec[java.math.BigDecimal, jfxuc.BigDecimalStringConverter, BigDecimal, BigDecimalStringConverter](classOf[jfxuc.BigDecimalStringConverter], classOf[BigDecimalStringConverter], classOf[BigDecimal]) {
+
+  override val examples = List((BigDecimal(0), "0"), (BigDecimal(12345), "12345"),
+    (BigDecimal(-12345), "-12345"), (BigDecimal(12.345), "12.345"))
 
   protected def getScalaClassInstance = new BigDecimalStringConverter
 
@@ -47,8 +49,6 @@ class BigDecimalStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.BigDecim
     val jfxBigDecimalStringConverter: jfxuc.BigDecimalStringConverter = sfxControl
     jfxBigDecimalStringConverter
   }
-
-  protected def getJavaClassInstance = new jfxuc.BigDecimalStringConverter
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxuc.BigDecimalStringConverter) = {
     val sfxBigDecimalStringConverter: BigDecimalStringConverter = jfxControl

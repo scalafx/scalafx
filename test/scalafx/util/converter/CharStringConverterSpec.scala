@@ -26,20 +26,21 @@
  */
 package scalafx.util.converter
 
-
 import javafx.util.{ converter => jfxuc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.SimpleSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner])
 /**
  * CharacterStringConverter Spec tests.
- * 
+ *
  *
  */
-class CharStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.CharacterStringConverter, CharStringConverter](classOf[jfxuc.CharacterStringConverter], classOf[CharStringConverter])  {
+@RunWith(classOf[JUnitRunner])
+class CharStringConverterSpec
+  extends AbstractStringConverterDelegateSpec[java.lang.Character, jfxuc.CharacterStringConverter, Char, CharStringConverter](classOf[jfxuc.CharacterStringConverter], classOf[CharStringConverter], classOf[Char]) {
+
+  override val examples = List((Char.MaxValue, Char.MaxValue.toString), ('ã', "ã"), ('T', "T"))
 
   protected def getScalaClassInstance = new CharStringConverter
 
@@ -47,8 +48,6 @@ class CharStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.CharacterStrin
     val jfxCharacterStringConverter: jfxuc.CharacterStringConverter = sfxControl
     jfxCharacterStringConverter
   }
-
-  protected def getJavaClassInstance = new jfxuc.CharacterStringConverter
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxuc.CharacterStringConverter) = {
     val sfxCharacterStringConverter: CharStringConverter = jfxControl

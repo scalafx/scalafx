@@ -30,7 +30,6 @@ import javafx.util.{ converter => jfxuc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * IntStringConverter Spec tests.
@@ -38,7 +37,11 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class IntStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.IntegerStringConverter, IntStringConverter](classOf[jfxuc.IntegerStringConverter], classOf[IntStringConverter]) {
+class IntStringConverterSpec
+  extends AbstractStringConverterDelegateSpec[java.lang.Integer, jfxuc.IntegerStringConverter, Int, IntStringConverter](classOf[jfxuc.IntegerStringConverter], classOf[IntStringConverter], classOf[Int]) {
+
+  override val examples = List((0, "0"), (123, "123"), (-123, "-123"),
+    (Int.MaxValue, Int.MaxValue.toString), (Int.MinValue, Int.MinValue.toString))
 
   protected def getScalaClassInstance = new IntStringConverter
 
@@ -46,8 +49,6 @@ class IntStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.IntegerStringCo
     val jfxIntegerStringConverter: jfxuc.IntegerStringConverter = sfxControl
     jfxIntegerStringConverter
   }
-
-  protected def getJavaClassInstance = new jfxuc.IntegerStringConverter
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxuc.IntegerStringConverter) = {
     val sfxIntegerStringConverter: IntStringConverter = jfxControl

@@ -27,9 +27,8 @@
 package scalafx.util.converter
 
 import org.junit.runner.RunWith
-import javafx.util.{converter => jfxuc}
-import scalafx.Includes.jfxShortStringConverter2sfx
-import scalafx.testutil.SimpleSFXDelegateSpec
+import javafx.util.{ converter => jfxuc }
+import scalafx.Includes._
 import org.scalatest.junit.JUnitRunner
 
 /**
@@ -38,7 +37,11 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ShortStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.ShortStringConverter, ShortStringConverter](classOf[jfxuc.ShortStringConverter], classOf[ShortStringConverter]) {
+class ShortStringConverterSpec
+  extends AbstractStringConverterDelegateSpec[java.lang.Short, jfxuc.ShortStringConverter, Short, ShortStringConverter](classOf[jfxuc.ShortStringConverter], classOf[ShortStringConverter], classOf[Short]) {
+
+  override val examples = List((0.toShort, "0"), (123.toShort, "123"), (-123.toShort, "-123"),
+    (Short.MaxValue, Short.MaxValue.toString), (Short.MinValue, Short.MinValue.toString))
 
   protected def getScalaClassInstance = new ShortStringConverter
 
@@ -46,8 +49,6 @@ class ShortStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.ShortStringCo
     val jfxShortStringConverter: jfxuc.ShortStringConverter = sfxControl
     jfxShortStringConverter
   }
-
-  protected def getJavaClassInstance = new jfxuc.ShortStringConverter
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxuc.ShortStringConverter) = {
     val sfxShortStringConverter: ShortStringConverter = jfxControl

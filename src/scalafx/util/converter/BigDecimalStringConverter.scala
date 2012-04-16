@@ -26,6 +26,9 @@
  */
 package scalafx.util.converter
 
+import java.{math => jm}
+import scala.math.BigDecimal._
+
 import javafx.util.{ converter => jfxuc }
 
 object BigDecimalStringConverter {
@@ -33,4 +36,10 @@ object BigDecimalStringConverter {
 }
 
 class BigDecimalStringConverter(delegate: jfxuc.BigDecimalStringConverter = new jfxuc.BigDecimalStringConverter)
-  extends StringConverterDelegate[java.math.BigDecimal, BigDecimal, jfxuc.BigDecimalStringConverter](delegate)
+  extends StringConverterDelegate[jm.BigDecimal, BigDecimal, jfxuc.BigDecimalStringConverter](delegate) {
+
+  override def toString(b: BigDecimal): String = delegate.toString(b.bigDecimal)
+  
+  override def fromString(s: String): BigDecimal = BigDecimal(delegate.fromString(s))
+
+}

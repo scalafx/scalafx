@@ -27,8 +27,8 @@
 package scalafx.util.converter
 
 import org.junit.runner.RunWith
-import javafx.util.{converter => jfxuc}
-import scalafx.Includes.jfxFloatStringConverter2sfx
+import javafx.util.{ converter => jfxuc }
+import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
 
@@ -38,7 +38,11 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class FloatStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.FloatStringConverter, FloatStringConverter](classOf[jfxuc.FloatStringConverter], classOf[FloatStringConverter]) {
+class FloatStringConverterSpec
+  extends AbstractStringConverterDelegateSpec[java.lang.Float, jfxuc.FloatStringConverter, Float, FloatStringConverter](classOf[jfxuc.FloatStringConverter], classOf[FloatStringConverter], classOf[Float]) {
+
+  override val examples = List((0.0f, "0.0"), (123.45f, "123.45"), (-123.45f, "-123.45"),
+    (Float.MaxValue, Float.MaxValue.toString), (Float.MinValue, Float.MinValue.toString))
 
   protected def getScalaClassInstance = new FloatStringConverter
 
@@ -46,8 +50,6 @@ class FloatStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.FloatStringCo
     val jfxFloatStringConverter: jfxuc.FloatStringConverter = sfxControl
     jfxFloatStringConverter
   }
-
-  protected def getJavaClassInstance = new jfxuc.FloatStringConverter
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxuc.FloatStringConverter) = {
     val sfxFloatStringConverter: FloatStringConverter = jfxControl

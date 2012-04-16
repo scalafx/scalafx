@@ -26,17 +26,40 @@
  */
 package scalafx.util.converter
 
+import javafx.{ util => jfxu }
 import javafx.util.{ converter => jfxuc }
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.util.SFXDelegate
+import org.scalatest.matchers.ShouldMatchers._
 
-object BigIntStringConverter {
-  implicit def sfxBigIntStringConverter2jfx(c: BigIntStringConverter) = c.delegate
-}
+/**
+ *
+ *
+ *
+ */
+abstract class AbstractStringConverterDelegateSpec[J <: java.lang.Object, C <: jfxu.StringConverter[J], S <: Any, D <: StringConverterDelegate[_, S, C]](
+  javaConverterClass: Class[C],
+  scalaConverterClass: Class[D],
+  scalaClass: Class[S])
+  extends SimpleSFXDelegateSpec[C, D](javaConverterClass, scalaConverterClass) {
 
-class BigIntStringConverter(delegate: jfxuc.BigIntegerStringConverter = new jfxuc.BigIntegerStringConverter)
-  extends StringConverterDelegate[java.math.BigInteger, BigInt, jfxuc.BigIntegerStringConverter](delegate) {
+  private def runConverterForExamples[S <: Any, D <: StringConverterDelegate[_, S, _]](converter: D, examples: List[(S, String)]) {
 
-  override def fromString(s: String) = new BigInt(delegate.fromString(s))
+    def runConversionsForExamples(s: S, string: String) = {
+      converter.toString(s) should be(string)
+      converter.fromString(string) should be(s)
+    }
 
-  override def toString(b: BigInt) = delegate.toString(b.bigInteger)
+    examples.foreach(example => runConversionsForExamples(example._1, example._2))
+  }
+
+  protected val examples: List[(S, String)] = Nil
+
+  protected def getJavaClassInstance = javaConverterClass.newInstance
+
+  it should "convert %s to String and vice-versa".format(scalaClass) in {
+    this.runConverterForExamples(this.getScalaClassInstance, examples)
+  }
 
 }
