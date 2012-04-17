@@ -40,7 +40,7 @@ import org.scalatest.junit.JUnitRunner
 class DefaultStringConverterSpec
   extends AbstractStringConverterDelegateSpec[java.lang.String, jfxuc.DefaultStringConverter, String, DefaultStringConverter](classOf[jfxuc.DefaultStringConverter], classOf[DefaultStringConverter], classOf[String]) {
 
-  override val examples = List(("alpha", "alpha"), ("ação", "ação"), ("", ""))
+  val examples = List(("alpha", "alpha"), ("ação", "ação"), ("", ""))
 
   protected def getScalaClassInstance = new DefaultStringConverter
 

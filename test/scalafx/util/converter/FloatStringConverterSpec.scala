@@ -27,10 +27,9 @@
 package scalafx.util.converter
 
 import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import javafx.util.{ converter => jfxuc }
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
-import org.scalatest.junit.JUnitRunner
 
 /**
  * FloatStringConverter Spec tests.
@@ -41,7 +40,7 @@ import org.scalatest.junit.JUnitRunner
 class FloatStringConverterSpec
   extends AbstractStringConverterDelegateSpec[java.lang.Float, jfxuc.FloatStringConverter, Float, FloatStringConverter](classOf[jfxuc.FloatStringConverter], classOf[FloatStringConverter], classOf[Float]) {
 
-  override val examples = List((0.0f, "0.0"), (123.45f, "123.45"), (-123.45f, "-123.45"),
+  val examples = List((0.0f, "0.0"), (123.45f, "123.45"), (-123.45f, "-123.45"),
     (Float.MaxValue, Float.MaxValue.toString), (Float.MinValue, Float.MinValue.toString))
 
   protected def getScalaClassInstance = new FloatStringConverter

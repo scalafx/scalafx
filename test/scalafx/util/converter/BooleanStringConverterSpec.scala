@@ -27,9 +27,9 @@
 package scalafx.util.converter
 
 import org.junit.runner.RunWith
-import javafx.util.{converter => jfxuc}
-import scalafx.Includes._
 import org.scalatest.junit.JUnitRunner
+import javafx.util.{ converter => jfxuc }
+import scalafx.Includes._
 
 /**
  * BooleanStringConverter Spec tests.
@@ -40,7 +40,7 @@ import org.scalatest.junit.JUnitRunner
 class BooleanStringConverterSpec
   extends AbstractStringConverterDelegateSpec[java.lang.Boolean, jfxuc.BooleanStringConverter, Boolean, BooleanStringConverter](classOf[jfxuc.BooleanStringConverter], classOf[BooleanStringConverter], classOf[Boolean]) {
 
-  override val examples = List((true, "true"), (false, "false"))
+  val examples = List((true, "true"), (false, "false"))
 
   protected def getScalaClassInstance = new BooleanStringConverter
 

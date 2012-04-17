@@ -28,10 +28,10 @@ package scalafx.util.converter
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-
-import javafx.util.{converter => jfxuc}
+import javafx.util.{ converter => jfxuc }
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import java.util.Locale
+import java.util.Date
 
 /**
  * TimeStringConverter Spec tests.
@@ -39,7 +39,11 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class TimeStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.TimeStringConverter, TimeStringConverter](classOf[jfxuc.TimeStringConverter], classOf[TimeStringConverter]) {
+class TimeStringConverterSpec 
+  extends AbstractStringConverterDelegateSpec[Date, jfxuc.TimeStringConverter, Date, TimeStringConverter](classOf[jfxuc.TimeStringConverter], classOf[TimeStringConverter], classOf[Date]) {
+
+  val examples = List((dateFormat.parse("1970-01-01 12:34:56"), "12:34:56"), 
+      (dateFormat.parse("1970-01-01 00:00:00"), "00:00:00"))
 
   protected def getScalaClassInstance = new TimeStringConverter
 
@@ -47,8 +51,6 @@ class TimeStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.TimeStringConv
     val jfxTimeStringConverter: jfxuc.TimeStringConverter = sfxControl.delegate
     jfxTimeStringConverter
   }
-
-  protected def getJavaClassInstance = new jfxuc.TimeStringConverter
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxuc.TimeStringConverter) = {
     val sfxTimeStringConverter: TimeStringConverter = jfxControl

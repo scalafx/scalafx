@@ -28,10 +28,9 @@ package scalafx.util.converter
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-
-import javafx.util.{converter => jfxuc}
+import javafx.util.{ converter => jfxuc }
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import java.util.Locale
 
 /**
  * PercentageStringConverter Spec tests.
@@ -39,7 +38,11 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class PercentageStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.PercentageStringConverter, PercentageStringConverter](classOf[jfxuc.PercentageStringConverter], classOf[PercentageStringConverter]) {
+class PercentageStringConverterSpec
+  extends AbstractStringConverterDelegateSpec[Number, jfxuc.PercentageStringConverter, Number, PercentageStringConverter](classOf[jfxuc.PercentageStringConverter], classOf[PercentageStringConverter], classOf[Number]) {
+
+  val examples = List((new java.lang.Integer(10), "1.000%"), (new java.lang.Integer(0), "0%"),
+    (new java.lang.Integer(-10), "-1.000%"))
 
   protected def getScalaClassInstance = new PercentageStringConverter
 
@@ -47,8 +50,6 @@ class PercentageStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.Percenta
     val jfxPercentageStringConverter: jfxuc.PercentageStringConverter = sfxControl
     jfxPercentageStringConverter
   }
-
-  protected def getJavaClassInstance = new jfxuc.PercentageStringConverter
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxuc.PercentageStringConverter) = {
     val sfxPercentageStringConverter: PercentageStringConverter = jfxControl

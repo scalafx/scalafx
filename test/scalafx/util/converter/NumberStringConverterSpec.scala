@@ -27,10 +27,10 @@
 package scalafx.util.converter
 
 import org.junit.runner.RunWith
-import javafx.util.{converter => jfxuc}
-import scalafx.Includes.jfxNumberStringConverter2sfx
-import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
+import javafx.util.{ converter => jfxuc }
+import scalafx.Includes._
+import java.util.Locale
 
 /**
  * NumberStringConverter Spec tests.
@@ -38,7 +38,11 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class NumberStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.NumberStringConverter, NumberStringConverter](classOf[jfxuc.NumberStringConverter], classOf[NumberStringConverter]) {
+class NumberStringConverterSpec 
+  extends AbstractStringConverterDelegateSpec[Number, jfxuc.NumberStringConverter, Number, NumberStringConverter](classOf[jfxuc.NumberStringConverter], classOf[NumberStringConverter], classOf[Number]) {
+
+  val examples = List((new java.lang.Integer(10), "10"), (new java.lang.Integer(0), "0"),
+    (new java.lang.Integer(-10), "-10"))
 
   protected def getScalaClassInstance = new NumberStringConverter
 
@@ -46,8 +50,6 @@ class NumberStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.NumberString
     val jfxNumberStringConverter: jfxuc.NumberStringConverter = sfxControl
     jfxNumberStringConverter
   }
-
-  protected def getJavaClassInstance = new jfxuc.NumberStringConverter
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxuc.NumberStringConverter) = {
     val sfxNumberStringConverter: NumberStringConverter = jfxControl

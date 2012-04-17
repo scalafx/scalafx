@@ -28,10 +28,9 @@ package scalafx.util.converter
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-
-import javafx.util.{converter => jfxuc}
+import javafx.util.{ converter => jfxuc }
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import java.util.Locale
 
 /**
  * CurrencyStringConverter Spec tests.
@@ -39,7 +38,13 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class CurrencyStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.CurrencyStringConverter, CurrencyStringConverter](classOf[jfxuc.CurrencyStringConverter], classOf[CurrencyStringConverter]) {
+class CurrencyStringConverterSpec
+  extends AbstractStringConverterDelegateSpec[Number, jfxuc.CurrencyStringConverter, Number, CurrencyStringConverter](classOf[jfxuc.CurrencyStringConverter], classOf[CurrencyStringConverter], classOf[Number]) {
+
+  override protected def getConverterForExample = new CurrencyStringConverter(Locale.US)
+
+  val examples = List((new java.lang.Long(123), "$123.00"), (new java.lang.Long(0), "$0.00"),
+    (new java.lang.Long(-123), "($123.00)"))
 
   protected def getScalaClassInstance = new CurrencyStringConverter
 
@@ -47,8 +52,6 @@ class CurrencyStringConverterSpec extends SimpleSFXDelegateSpec[jfxuc.CurrencySt
     val jfxCurrencyStringConverter: jfxuc.CurrencyStringConverter = sfxControl
     jfxCurrencyStringConverter
   }
-
-  protected def getJavaClassInstance = new jfxuc.CurrencyStringConverter
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxuc.CurrencyStringConverter) = {
     val sfxCurrencyStringConverter: CurrencyStringConverter = jfxControl

@@ -27,9 +27,9 @@
 package scalafx.util.converter
 
 import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import javafx.util.{ converter => jfxuc }
 import scalafx.Includes._
-import org.scalatest.junit.JUnitRunner
 
 /**
  * LongStringConverter Spec tests.
@@ -40,7 +40,7 @@ import org.scalatest.junit.JUnitRunner
 class LongStringConverterSpec
   extends AbstractStringConverterDelegateSpec[java.lang.Long, jfxuc.LongStringConverter, Long, LongStringConverter](classOf[jfxuc.LongStringConverter], classOf[LongStringConverter], classOf[Long]) {
 
-  override val examples = List((0L, "0"), (123L, "123"), (-123L, "-123"),
+  val examples = List((0L, "0"), (123L, "123"), (-123L, "-123"),
     (Long.MaxValue, Long.MaxValue.toString), (Long.MinValue, Long.MinValue.toString))
 
   protected def getScalaClassInstance = new LongStringConverter

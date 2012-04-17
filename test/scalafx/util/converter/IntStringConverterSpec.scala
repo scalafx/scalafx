@@ -26,10 +26,10 @@
  */
 package scalafx.util.converter
 
-import javafx.util.{ converter => jfxuc }
-import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import javafx.util.{ converter => jfxuc }
+import scalafx.Includes._
 
 /**
  * IntStringConverter Spec tests.
@@ -40,7 +40,7 @@ import org.scalatest.junit.JUnitRunner
 class IntStringConverterSpec
   extends AbstractStringConverterDelegateSpec[java.lang.Integer, jfxuc.IntegerStringConverter, Int, IntStringConverter](classOf[jfxuc.IntegerStringConverter], classOf[IntStringConverter], classOf[Int]) {
 
-  override val examples = List((0, "0"), (123, "123"), (-123, "-123"),
+  val examples = List((0, "0"), (123, "123"), (-123, "-123"),
     (Int.MaxValue, Int.MaxValue.toString), (Int.MinValue, Int.MinValue.toString))
 
   protected def getScalaClassInstance = new IntStringConverter

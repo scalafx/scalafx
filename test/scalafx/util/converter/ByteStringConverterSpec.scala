@@ -26,10 +26,10 @@
  */
 package scalafx.util.converter
 
-import javafx.util.{ converter => jfxuc }
-import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import javafx.util.{ converter => jfxuc }
+import scalafx.Includes._
 
 /**
  * ByteStringConverter Spec tests.
@@ -40,7 +40,7 @@ import org.scalatest.junit.JUnitRunner
 class ByteStringConverterSpec
   extends AbstractStringConverterDelegateSpec[java.lang.Byte, jfxuc.ByteStringConverter, Byte, ByteStringConverter](classOf[jfxuc.ByteStringConverter], classOf[ByteStringConverter], classOf[Byte]) {
 
-  override val examples = List((0.toByte, "0"), (12.toByte, "12"), (-12.toByte, "-12"),
+  val examples = List((0.toByte, "0"), (12.toByte, "12"), (-12.toByte, "-12"),
     (Byte.MaxValue, Byte.MaxValue.toString), (Byte.MinValue, Byte.MinValue.toString))
 
   protected def getScalaClassInstance = new ByteStringConverter

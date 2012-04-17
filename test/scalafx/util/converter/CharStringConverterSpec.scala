@@ -26,10 +26,10 @@
  */
 package scalafx.util.converter
 
-import javafx.util.{ converter => jfxuc }
-import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import javafx.util.{ converter => jfxuc }
+import scalafx.Includes._
 
 /**
  * CharacterStringConverter Spec tests.
@@ -40,7 +40,7 @@ import org.scalatest.junit.JUnitRunner
 class CharStringConverterSpec
   extends AbstractStringConverterDelegateSpec[java.lang.Character, jfxuc.CharacterStringConverter, Char, CharStringConverter](classOf[jfxuc.CharacterStringConverter], classOf[CharStringConverter], classOf[Char]) {
 
-  override val examples = List((Char.MaxValue, Char.MaxValue.toString), ('ã', "ã"), ('T', "T"))
+  val examples = List((Char.MaxValue, Char.MaxValue.toString), ('ã', "ã"), ('T', "T"))
 
   protected def getScalaClassInstance = new CharStringConverter
 

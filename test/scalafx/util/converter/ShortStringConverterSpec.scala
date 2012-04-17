@@ -27,9 +27,9 @@
 package scalafx.util.converter
 
 import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import javafx.util.{ converter => jfxuc }
 import scalafx.Includes._
-import org.scalatest.junit.JUnitRunner
 
 /**
  * ShortStringConverter Spec tests.
@@ -40,7 +40,7 @@ import org.scalatest.junit.JUnitRunner
 class ShortStringConverterSpec
   extends AbstractStringConverterDelegateSpec[java.lang.Short, jfxuc.ShortStringConverter, Short, ShortStringConverter](classOf[jfxuc.ShortStringConverter], classOf[ShortStringConverter], classOf[Short]) {
 
-  override val examples = List((0.toShort, "0"), (123.toShort, "123"), (-123.toShort, "-123"),
+  val examples = List((0.toShort, "0"), (123.toShort, "123"), (-123.toShort, "-123"),
     (Short.MaxValue, Short.MaxValue.toString), (Short.MinValue, Short.MinValue.toString))
 
   protected def getScalaClassInstance = new ShortStringConverter

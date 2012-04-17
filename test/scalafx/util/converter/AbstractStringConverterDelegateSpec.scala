@@ -26,6 +26,7 @@
  */
 package scalafx.util.converter
 
+import java.text.SimpleDateFormat
 import javafx.{ util => jfxu }
 import javafx.util.{ converter => jfxuc }
 import scalafx.Includes._
@@ -35,31 +36,42 @@ import org.scalatest.matchers.ShouldMatchers._
 
 /**
  *
+ * @tparam J Java Class (e.g. java.lang.Integer, java.lang.Number, java.util.BigInteger, java.util.Date)
+ * @tparam C JavaFX StringConverter using type J (e.g. javafx.util.converter.IntegerStringConverter,
+ * javafx.util.converter.BigIntegerStringConverter, javafx.util.converter.DateStringConverter)
+ * @tparam S Scala Class (e.g. Int, BigInt)
+ * @tparam D Scala StringConverter who wraps type C using type S
  *
- *
+ * @param javaConverterClass C class, to be send to superclass
+ * @param scalaConverterClass D class, to be send to superclass
+ * @param scalaClass S class
  */
-abstract class AbstractStringConverterDelegateSpec[J <: java.lang.Object, C <: jfxu.StringConverter[J], S <: Any, D <: StringConverterDelegate[_, S, C]](
-  javaConverterClass: Class[C],
-  scalaConverterClass: Class[D],
-  scalaClass: Class[S])
+abstract private[converter] class AbstractStringConverterDelegateSpec[J <: java.lang.Object, C <: jfxu.StringConverter[J], S <: Any, D <: StringConverterDelegate[_, S, C]] protected (javaConverterClass: Class[C], scalaConverterClass: Class[D], scalaClass: Class[S])
   extends SimpleSFXDelegateSpec[C, D](javaConverterClass, scalaConverterClass) {
 
-  private def runConverterForExamples[S <: Any, D <: StringConverterDelegate[_, S, _]](converter: D, examples: List[(S, String)]) {
+  private def runConverterForExamples {
+
+    val converter = this.getConverterForExample
 
     def runConversionsForExamples(s: S, string: String) = {
       converter.toString(s) should be(string)
-      converter.fromString(string) should be(s)
+      val result = converter.fromString(string)
+      result should equal(s)
     }
 
     examples.foreach(example => runConversionsForExamples(example._1, example._2))
   }
 
-  protected val examples: List[(S, String)] = Nil
+  protected val dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+
+  protected val examples: List[(S, String)]
+
+  protected def getConverterForExample = this.getScalaClassInstance
 
   protected def getJavaClassInstance = javaConverterClass.newInstance
 
   it should "convert %s to String and vice-versa".format(scalaClass) in {
-    this.runConverterForExamples(this.getScalaClassInstance, examples)
+    this.runConverterForExamples
   }
 
 }
