@@ -1,12 +1,12 @@
 package scalafx.controls
 
 import controls._
+import javafx.geometry.Orientation
 import javafx.geometry.Pos
 import javafx.scene.layout.Priority
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.controls.controls.PropertiesNodes
-import scalafx.controls.controls.TextFieldControls
 import scalafx.scene.control._
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.FlowPane
@@ -14,9 +14,7 @@ import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 import scalafx.scene.Scene
 import scalafx.stage.Stage
-import scalafx.util.StringConverter
-import javafx.geometry.Orientation
-import scalafx.collections.ObservableBuffer
+import scalafx.util.converter.DoubleStringConverter
 
 object SliderTest extends JFXApp {
 
@@ -87,7 +85,7 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
     if (txfLabelFormatter.text.get.isEmpty()) {
       target.labelFormatter = null
     } else {
-      target.labelFormatter = StringConverter.doubleFormatterConverter(txfLabelFormatter.text.get)
+      target.labelFormatter = new DoubleStringConverter
     })
 
   val originalMajorTickUnit = target.majorTickUnit.get()

@@ -14,6 +14,8 @@ import scalafx.util.StringConverter
 import scalafx.application.JFXApp
 import scalafx.stage.Stage
 import scalafx.scene.Scene
+import scalafx.util.converter.NumberStringConverter
+import scalafx.util.converter.DoubleStringConverter
 
 /**
  * @author rafael
@@ -33,7 +35,7 @@ class SliderLabelControl(property: DoubleProperty) extends FlowPane {
   val slider = new Slider {
     value <==> property
     hgrow = Priority.ALWAYS
-    labelFormatter = doubleFormatterConverter(originalPattern)
+    labelFormatter = new DoubleStringConverter()
   }
 
   val lblValue = new Label {
@@ -46,7 +48,7 @@ class SliderLabelControl(property: DoubleProperty) extends FlowPane {
   }
 
   def pattern_=(v: String) {
-    slider.labelFormatter = doubleFormatterConverter(v)
+    slider.labelFormatter = new DoubleStringConverter
     lblValue.text <== slider.value.asString(v)
   }
 
