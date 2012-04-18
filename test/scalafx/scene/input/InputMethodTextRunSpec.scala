@@ -33,12 +33,12 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 /**
  * InputMethodTextRun Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner])
 class InputMethodTextRunSpec extends SimpleSFXDelegateSpec[jfxsi.InputMethodTextRun, InputMethodTextRun](classOf[jfxsi.InputMethodTextRun], classOf[InputMethodTextRun]) {
 
   protected def getScalaClassInstance = new InputMethodTextRun(getJavaClassInstance)
@@ -47,8 +47,6 @@ class InputMethodTextRunSpec extends SimpleSFXDelegateSpec[jfxsi.InputMethodText
     val jfxInputMethodTextRun: jfxsi.InputMethodTextRun = sfxControl
     jfxInputMethodTextRun
   }
-
-  protected def getJavaClassInstance = new jfxsi.InputMethodTextRun
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsi.InputMethodTextRun) = {
     val sfxInputMethodTextRun: InputMethodTextRun = jfxControl

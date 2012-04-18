@@ -48,8 +48,6 @@ class WebEngineSpec extends AbstractSFXDelegateSpec[jfxsw.WebEngine, WebEngine, 
     jfxWebEngine
   }
 
-  protected def getJavaClassInstance = new jfxsw.WebEngine
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsw.WebEngine) = {
     val sfxWebEngine: WebEngine = jfxControl
     sfxWebEngine

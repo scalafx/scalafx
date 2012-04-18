@@ -47,8 +47,6 @@ class EqualizerBandSpec extends SimpleSFXDelegateSpec[jfxsm.EqualizerBand, Equal
     jfxEqualizerBand
   }
 
-  protected def getJavaClassInstance = new jfxsm.EqualizerBand
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsm.EqualizerBand) = {
     val sfxEqualizerBand: EqualizerBand = jfxControl
     sfxEqualizerBand

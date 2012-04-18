@@ -48,8 +48,6 @@ class TilePaneSpec extends AbstractSFXDelegateSpec[jfxsl.TilePane, TilePane, jfx
     jfxTilePane
   }
 
-  protected def getJavaClassInstance = new jfxsl.TilePane
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsl.TilePane) = {
     val sfxTilePane: TilePane = jfxControl
     sfxTilePane

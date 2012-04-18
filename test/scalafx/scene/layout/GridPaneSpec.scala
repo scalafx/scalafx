@@ -47,8 +47,6 @@ class GridPaneSpec extends AbstractSFXDelegateSpec[jfxsl.GridPane, GridPane, jfx
     jfxGridPane
   }
 
-  protected def getJavaClassInstance = new jfxsl.GridPane
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsl.GridPane) = {
     val sfxGridPane: GridPane = jfxControl
     sfxGridPane

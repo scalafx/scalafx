@@ -33,11 +33,11 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner])
 /**
  * Tab Spec tests.
  * 
  */
+@RunWith(classOf[JUnitRunner])
 class TabSpec extends AbstractSFXDelegateSpec[jfxsc.Tab, Tab, jfxsc.TabBuilder[_]](classOf[jfxsc.Tab], classOf[Tab], classOf[jfxsc.TabBuilder[_]]) {
 
   protected def getScalaClassInstance = new Tab(new jfxsc.Tab)
@@ -46,8 +46,6 @@ class TabSpec extends AbstractSFXDelegateSpec[jfxsc.Tab, Tab, jfxsc.TabBuilder[_
     val jfxTab: jfxsc.Tab = sfxControl
     jfxTab
   }
-
-  protected def getJavaClassInstance = new jfxsc.Tab
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Tab) = {
     val sfxTab: Tab = jfxControl

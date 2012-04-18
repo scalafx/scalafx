@@ -49,7 +49,7 @@ class SceneSpec extends AbstractSFXDelegateSpec[jfxs.Scene, Scene, jfxs.SceneBui
     jfxScene
   }
 
-  protected def getJavaClassInstance = new jfxs.Scene(new jfxs.Group)
+  override protected def getJavaClassInstance = new jfxs.Scene(new jfxs.Group)
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxs.Scene) = {
     val sfxScene: Scene = jfxControl

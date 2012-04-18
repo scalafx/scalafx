@@ -75,8 +75,6 @@ class RotateSpec extends AbstractSFXDelegateSpec[jfxst.Rotate, Rotate, jfxst.Rot
     jfxRotate
   }
 
-  protected def getJavaClassInstance = new jfxst.Rotate
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxst.Rotate) = {
     val sfxRotate: Rotate = jfxControl
     sfxRotate

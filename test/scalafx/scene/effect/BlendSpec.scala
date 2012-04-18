@@ -47,8 +47,6 @@ class BlendSpec extends AbstractSFXDelegateSpec[jfxse.Blend, Blend, jfxse.BlendB
     jfxBlend
   }
 
-  protected def getJavaClassInstance = new jfxse.Blend
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.Blend) = {
     val sfxBlend: Blend = jfxObject
     sfxBlend

@@ -36,12 +36,12 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner])
 /**
  * Button Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner])
 class ButtonSpec extends AbstractSFXDelegateSpec[jfxsc.Button, Button, jfxsc.ButtonBuilder[_]](classOf[jfxsc.Button], classOf[Button], classOf[jfxsc.ButtonBuilder[_]]) {
 
   protected def getScalaClassInstance = new Button(new jfxsc.Button)
@@ -50,8 +50,6 @@ class ButtonSpec extends AbstractSFXDelegateSpec[jfxsc.Button, Button, jfxsc.But
     val jfxButton: jfxsc.Button = sfxControl
     jfxButton
   }
-
-  protected def getJavaClassInstance = new jfxsc.Button
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Button) = {
     val sfxButton: Button = jfxControl

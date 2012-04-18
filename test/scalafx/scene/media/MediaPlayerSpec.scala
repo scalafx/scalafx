@@ -47,7 +47,7 @@ class MediaPlayerPlayerSpec extends AbstractSFXDelegateSpec[jfxsm.MediaPlayer, M
     jfxMediaPlayer
   }
 
-  protected def getJavaClassInstance = new jfxsm.MediaPlayer(new jfxsm.Media(url))
+  override protected def getJavaClassInstance = new jfxsm.MediaPlayer(new jfxsm.Media(url))
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsm.MediaPlayer) = {
     val sfxMediaPlayer: MediaPlayer = jfxControl

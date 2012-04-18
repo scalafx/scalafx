@@ -47,8 +47,6 @@ class DisplacementMapSpec extends AbstractSFXDelegateSpec[jfxse.DisplacementMap,
     jfxDisplacementMap
   }
 
-  protected def getJavaClassInstance = new jfxse.DisplacementMap
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.DisplacementMap) = {
     val sfxDisplacementMap: DisplacementMap = jfxObject
     sfxDisplacementMap

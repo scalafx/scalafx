@@ -48,8 +48,6 @@ class ImageCursorSpec extends AbstractSFXDelegateSpec[jfxs.ImageCursor, ImageCur
     jfxImageCursor
   }
 
-  protected def getJavaClassInstance = new jfxs.ImageCursor
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxs.ImageCursor) = {
     val sfxImageCursor: ImageCursor = jfxControl
     sfxImageCursor

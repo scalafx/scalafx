@@ -34,11 +34,12 @@ import scalafx.scene.transform.Transform.sfxTransform2jfx
 import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner]) /**
+/**
  * Transform Spec tests.
- * 
+ *
  *
  */
+@RunWith(classOf[JUnitRunner])
 class TransformSpec extends SimpleSFXDelegateSpec[jfxst.Transform, Transform](classOf[jfxst.Transform], classOf[Transform]) {
 
   protected def getScalaClassInstance = new Transform(getJavaClassInstance) {}
@@ -48,7 +49,7 @@ class TransformSpec extends SimpleSFXDelegateSpec[jfxst.Transform, Transform](cl
     jfxTransform
   }
 
-  protected def getJavaClassInstance = new jfxst.Transform {
+  override protected def getJavaClassInstance = new jfxst.Transform {
     // This is a implementation of a abstract deprecated method in original class. Probably ot will be removed in future versions.
     override def impl_apply(affine: com.sun.javafx.geom.transform.Affine3D) {}
   }

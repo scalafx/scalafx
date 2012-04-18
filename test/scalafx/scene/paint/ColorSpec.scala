@@ -48,7 +48,7 @@ class ColorSpec extends AbstractSFXDelegateSpec[jfxsp.Color, Color, jfxsp.ColorB
     jfxColor
   }
 
-  protected def getJavaClassInstance = new jfxsp.Color(0, 0, 0, 0)
+  override protected def getJavaClassInstance = new jfxsp.Color(0, 0, 0, 0)
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsp.Color) = {
     val sfxColor: Color = jfxControl

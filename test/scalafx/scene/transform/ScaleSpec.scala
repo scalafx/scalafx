@@ -36,12 +36,12 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.testutil.SimpleSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner])
 /**
  * Scale Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner])
 class ScaleSpec extends AbstractSFXDelegateSpec[jfxst.Scale, Scale, jfxst.ScaleBuilder[_]](classOf[jfxst.Scale], classOf[Scale], classOf[jfxst.ScaleBuilder[_]]) {
 
   protected def getScalaClassInstance = new Scale(new jfxst.Scale) 
@@ -50,8 +50,6 @@ class ScaleSpec extends AbstractSFXDelegateSpec[jfxst.Scale, Scale, jfxst.ScaleB
     val jfxScale: jfxst.Scale = sfxControl
     jfxScale
   }
-
-  protected def getJavaClassInstance = new jfxst.Scale 
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxst.Scale) = {
     val sfxScale: Scale = jfxControl

@@ -47,7 +47,7 @@ class MnemonicSpec extends AbstractSFXDelegateSpec[jfxsi.Mnemonic, Mnemonic, jfx
     jfxMnemonic
   }
 
-  protected def getJavaClassInstance = new jfxsi.Mnemonic(null, null)
+  override protected def getJavaClassInstance = new jfxsi.Mnemonic(null, null)
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsi.Mnemonic) = {
     val sfxMnemonic: Mnemonic = jfxControl

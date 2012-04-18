@@ -47,8 +47,6 @@ class ReflectionSpec extends AbstractSFXDelegateSpec[jfxse.Reflection, Reflectio
     jfxReflection
   }
 
-  protected def getJavaClassInstance = new jfxse.Reflection
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.Reflection) = {
     val sfxReflection: Reflection = jfxObject
     sfxReflection

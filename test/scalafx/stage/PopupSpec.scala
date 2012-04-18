@@ -34,13 +34,13 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
 
-@RunWith(classOf[JUnitRunner]) 
 /**
  * Popup Spec tests.
- * 
+ *
  *
  */
-class PopupSpec extends SimpleSFXDelegateSpec[jfxs.Popup, Popup](classOf[jfxs.Popup], classOf[Popup])  with RunOnApplicationThread { 
+@RunWith(classOf[JUnitRunner])
+class PopupSpec extends SimpleSFXDelegateSpec[jfxs.Popup, Popup](classOf[jfxs.Popup], classOf[Popup]) with RunOnApplicationThread {
 
   protected def getScalaClassInstance = new Popup(this.getJavaClassInstance)
 
@@ -48,8 +48,6 @@ class PopupSpec extends SimpleSFXDelegateSpec[jfxs.Popup, Popup](classOf[jfxs.Po
     val jfxPopup: jfxs.Popup = sfxControl
     jfxPopup
   }
-
-  protected def getJavaClassInstance = new jfxs.Popup
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxs.Popup) = {
     val sfxPopup: Popup = jfxControl

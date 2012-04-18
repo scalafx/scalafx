@@ -34,12 +34,12 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
 
-@RunWith(classOf[JUnitRunner]) 
 /**
  * DirectoryChooser Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner])
 class DirectoryChooserSpec extends AbstractSFXDelegateSpec[jfxs.DirectoryChooser, DirectoryChooser, jfxs.DirectoryChooserBuilder](classOf[jfxs.DirectoryChooser], classOf[DirectoryChooser], classOf[jfxs.DirectoryChooserBuilder]) with RunOnApplicationThread {
 
   protected def getScalaClassInstance = new DirectoryChooser(this.getJavaClassInstance)
@@ -48,8 +48,6 @@ class DirectoryChooserSpec extends AbstractSFXDelegateSpec[jfxs.DirectoryChooser
     val jfxDirectoryChooser: jfxs.DirectoryChooser = sfxControl
     jfxDirectoryChooser
   }
-
-  protected def getJavaClassInstance = new jfxs.DirectoryChooser
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxs.DirectoryChooser) = {
     val sfxDirectoryChooser: DirectoryChooser = jfxControl

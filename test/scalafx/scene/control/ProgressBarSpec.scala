@@ -36,11 +36,11 @@ import scalafx.testutil.PropertyComparator
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.Includes._
 
-@RunWith(classOf[JUnitRunner]) 
 /**
  * ProgressBar Spec tests.
  *
  */
+@RunWith(classOf[JUnitRunner]) 
 class ProgressBarSpec extends AbstractSFXDelegateSpec[jfxsc.ProgressBar, ProgressBar, jfxsc.ProgressBarBuilder[_]](classOf[jfxsc.ProgressBar], classOf[ProgressBar], classOf[jfxsc.ProgressBarBuilder[_]]) {
 
   protected def getScalaClassInstance = new ProgressBar(new jfxsc.ProgressBar)
@@ -49,8 +49,6 @@ class ProgressBarSpec extends AbstractSFXDelegateSpec[jfxsc.ProgressBar, Progres
     val jfxProgressBar: jfxsc.ProgressBar = sfxControl
     jfxProgressBar
   }
-
-  protected def getJavaClassInstance = new jfxsc.ProgressBar
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ProgressBar) = {
     val sfxProgressBar: ProgressBar = jfxControl

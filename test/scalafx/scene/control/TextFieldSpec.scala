@@ -36,12 +36,11 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 /**
  * TextField Spec tests.
  * 
- *
  */
+@RunWith(classOf[JUnitRunner])
 class TextFieldSpec extends AbstractSFXDelegateSpec[jfxsc.TextField, TextField, jfxsc.TextFieldBuilder[_]](classOf[jfxsc.TextField], classOf[TextField], classOf[jfxsc.TextFieldBuilder[_]]) {
 
   protected def getScalaClassInstance = new TextField(new jfxsc.TextField)
@@ -50,8 +49,6 @@ class TextFieldSpec extends AbstractSFXDelegateSpec[jfxsc.TextField, TextField, 
     val jfxTextField: jfxsc.TextField = sfxControl
     jfxTextField
   }
-
-  protected def getJavaClassInstance = new jfxsc.TextField
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TextField) = {
     val sfxTextField: TextField = jfxControl

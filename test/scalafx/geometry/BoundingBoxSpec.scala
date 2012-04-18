@@ -33,11 +33,11 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 /**
  * BoundingBox Spec tests.
  * 
  */
+@RunWith(classOf[JUnitRunner])
 class BoundingBoxSpec extends AbstractSFXDelegateSpec[jfxg.BoundingBox, BoundingBox, jfxg.BoundingBoxBuilder[_]](classOf[jfxg.BoundingBox], classOf[BoundingBox], classOf[jfxg.BoundingBoxBuilder[_]]) {
 
   protected def getScalaClassInstance = new BoundingBox(0, 0, 0, 0)
@@ -47,7 +47,7 @@ class BoundingBoxSpec extends AbstractSFXDelegateSpec[jfxg.BoundingBox, Bounding
     jfxBoundingBox
   }
 
-  protected def getJavaClassInstance = new jfxg.BoundingBox(0, 0, 0, 0)
+  override protected def getJavaClassInstance = new jfxg.BoundingBox(0, 0, 0, 0)
 
   protected def convertJavaClassToScalaClass(jfxObject: jfxg.BoundingBox) = {
     val sfxBoundingBox: BoundingBox = jfxObject

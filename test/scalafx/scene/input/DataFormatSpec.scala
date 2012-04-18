@@ -34,12 +34,12 @@ import scalafx.scene.input.DataFormat._
 import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 /**
  * DataFormat Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner])
 class DataFormatSpec extends SimpleSFXDelegateSpec[jfxsi.DataFormat, DataFormat](classOf[jfxsi.DataFormat], classOf[DataFormat]) {
 
   protected def getScalaClassInstance = new DataFormat(new jfxsi.DataFormat)
@@ -49,7 +49,7 @@ class DataFormatSpec extends SimpleSFXDelegateSpec[jfxsi.DataFormat, DataFormat]
     jfxDataFormat
   }
 
-  protected def getJavaClassInstance = new jfxsi.DataFormat
+  override protected def getJavaClassInstance = new jfxsi.DataFormat
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsi.DataFormat) = {
     val sfxDataFormat: DataFormat = jfxControl

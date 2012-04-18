@@ -48,8 +48,6 @@ class VBoxSpec extends AbstractSFXDelegateSpec[jfxsl.VBox, VBox, jfxsl.VBoxBuild
     jfxVBox
   }
 
-  protected def getJavaClassInstance = new jfxsl.VBox
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsl.VBox) = {
     val sfxVBox: VBox = jfxControl
     sfxVBox

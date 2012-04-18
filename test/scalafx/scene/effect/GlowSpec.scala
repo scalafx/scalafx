@@ -47,8 +47,6 @@ class GlowSpec extends AbstractSFXDelegateSpec[jfxse.Glow, Glow, jfxse.GlowBuild
     jfxGlow
   }
 
-  protected def getJavaClassInstance = new jfxse.Glow
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.Glow) = {
     val sfxGlow: Glow = jfxObject
     sfxGlow

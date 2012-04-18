@@ -34,12 +34,12 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
 
-@RunWith(classOf[JUnitRunner]) 
 /**
  * FileChooser Spec tests.
- * 
+ *
  *
  */
+@RunWith(classOf[JUnitRunner])
 class FileChooserSpec extends AbstractSFXDelegateSpec[jfxs.FileChooser, FileChooser, jfxs.FileChooserBuilder](classOf[jfxs.FileChooser], classOf[FileChooser], classOf[jfxs.FileChooserBuilder]) with RunOnApplicationThread {
 
   protected def getScalaClassInstance = new FileChooser(this.getJavaClassInstance)
@@ -48,8 +48,6 @@ class FileChooserSpec extends AbstractSFXDelegateSpec[jfxs.FileChooser, FileChoo
     val jfxFileChooser: jfxs.FileChooser = sfxControl
     jfxFileChooser
   }
-
-  protected def getJavaClassInstance = new jfxs.FileChooser
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxs.FileChooser) = {
     val sfxFileChooser: FileChooser = jfxControl

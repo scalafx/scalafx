@@ -33,11 +33,11 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner]) 
 /**
  * Rectangle2D Spec tests.
- * 
+ *
  */
+@RunWith(classOf[JUnitRunner])
 class Rectangle2DSpec extends AbstractSFXDelegateSpec[jfxg.Rectangle2D, Rectangle2D, jfxg.Rectangle2DBuilder[_]](classOf[jfxg.Rectangle2D], classOf[Rectangle2D], classOf[jfxg.Rectangle2DBuilder[_]]) {
 
   protected def getScalaClassInstance = new Rectangle2D(0, 0, 0, 0)
@@ -47,7 +47,7 @@ class Rectangle2DSpec extends AbstractSFXDelegateSpec[jfxg.Rectangle2D, Rectangl
     jfxRectangle2D
   }
 
-  protected def getJavaClassInstance = new jfxg.Rectangle2D(0, 0, 0, 0)
+  override protected def getJavaClassInstance = new jfxg.Rectangle2D(0, 0, 0, 0)
 
   protected def convertJavaClassToScalaClass(jfxObject: jfxg.Rectangle2D) = {
     val sfxRectangle2D: Rectangle2D = jfxObject

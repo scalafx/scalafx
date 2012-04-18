@@ -33,11 +33,11 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner])
 /**
  * CheckBox Spec tests.
  * 
  */
+@RunWith(classOf[JUnitRunner])
 class CheckBoxSpec extends AbstractSFXDelegateSpec[jfxsc.CheckBox, CheckBox, jfxsc.CheckBoxBuilder[_]](classOf[jfxsc.CheckBox], classOf[CheckBox], classOf[jfxsc.CheckBoxBuilder[_]]) {
 
   protected def getScalaClassInstance = new CheckBox(new jfxsc.CheckBox)
@@ -46,8 +46,6 @@ class CheckBoxSpec extends AbstractSFXDelegateSpec[jfxsc.CheckBox, CheckBox, jfx
     val jfxCheckBox: jfxsc.CheckBox = sfxControl
     jfxCheckBox
   }
-
-  protected def getJavaClassInstance = new jfxsc.CheckBox
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.CheckBox) = {
     val sfxCheckBox: CheckBox = jfxControl

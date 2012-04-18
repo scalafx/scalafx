@@ -48,8 +48,6 @@ class PerspectiveCameraSpec extends AbstractSFXDelegateSpec[jfxs.PerspectiveCame
     jfxPerspectiveCamera
   }
 
-  protected def getJavaClassInstance = new jfxs.PerspectiveCamera
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxs.PerspectiveCamera) = {
     val sfxPerspectiveCamera: PerspectiveCamera = jfxControl
     sfxPerspectiveCamera

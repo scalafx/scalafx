@@ -48,7 +48,7 @@ class NodeSpec extends AbstractSFXDelegateSpec[jfxs.Node, Node, jfxs.NodeBuilder
     jfxNode
   }
 
-  protected def getJavaClassInstance = new jfxs.Group
+  override protected def getJavaClassInstance = new jfxs.Group
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxs.Node) = {
     val sfxNode: Node = jfxControl

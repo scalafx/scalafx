@@ -33,12 +33,12 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner])
 /**
  * Window Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner])
 class WindowSpec extends AbstractSFXDelegateSpec[jfxs.Window, Window, jfxs.WindowBuilder[_]](classOf[jfxs.Window], classOf[Window], classOf[jfxs.WindowBuilder[_]]) {
 
   protected def getScalaClassInstance = new Window(this.getJavaClassInstance) {}
@@ -48,7 +48,7 @@ class WindowSpec extends AbstractSFXDelegateSpec[jfxs.Window, Window, jfxs.Windo
     jfxWindow
   }
 
-  protected def getJavaClassInstance = new jfxs.Window {}
+  override protected def getJavaClassInstance = new jfxs.Window {}
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxs.Window) = {
     val sfxWindow: Window = jfxControl

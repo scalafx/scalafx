@@ -30,7 +30,10 @@ package scalafx.stage
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
 class StageSpec extends FlatSpec with PropertyComparator {
   "A Stage" should "implement all the JavaFX properties" in {
     compareProperties(classOf[javafx.stage.Stage], classOf[Stage])

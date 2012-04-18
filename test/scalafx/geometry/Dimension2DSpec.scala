@@ -33,11 +33,11 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 /**
  * Dimension2D Spec tests.
  * 
  */
+@RunWith(classOf[JUnitRunner])
 class Dimension2DSpec extends AbstractSFXDelegateSpec[jfxg.Dimension2D, Dimension2D, jfxg.Dimension2DBuilder[_]](classOf[jfxg.Dimension2D], classOf[Dimension2D], classOf[jfxg.Dimension2DBuilder[_]]) {
 
   protected def getScalaClassInstance = new Dimension2D(0, 0)
@@ -47,7 +47,7 @@ class Dimension2DSpec extends AbstractSFXDelegateSpec[jfxg.Dimension2D, Dimensio
     jfxDimension2D
   }
 
-  protected def getJavaClassInstance = new jfxg.Dimension2D(0, 0)
+  override protected def getJavaClassInstance = new jfxg.Dimension2D(0, 0)
 
   protected def convertJavaClassToScalaClass(jfxObject: jfxg.Dimension2D) = {
     val sfxDimension2D: Dimension2D = jfxObject

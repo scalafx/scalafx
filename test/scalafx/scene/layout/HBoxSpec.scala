@@ -48,8 +48,6 @@ class HBoxSpec extends AbstractSFXDelegateSpec[jfxsl.HBox, HBox, jfxsl.HBoxBuild
     jfxHBox
   }
 
-  protected def getJavaClassInstance = new jfxsl.HBox
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsl.HBox) = {
     val sfxHBox: HBox = jfxControl
     sfxHBox

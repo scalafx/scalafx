@@ -33,11 +33,11 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner])
 /**
  * TextArea Spec tests.
  * 
  */
+@RunWith(classOf[JUnitRunner])
 class TextAreaSpec extends AbstractSFXDelegateSpec[jfxsc.TextArea, TextArea, jfxsc.TextAreaBuilder[_]](classOf[jfxsc.TextArea], classOf[TextArea], classOf[jfxsc.TextAreaBuilder[_]]) {
 
   protected def getScalaClassInstance = new TextArea(new jfxsc.TextArea)
@@ -46,8 +46,6 @@ class TextAreaSpec extends AbstractSFXDelegateSpec[jfxsc.TextArea, TextArea, jfx
     val jfxTextArea: jfxsc.TextArea = sfxControl
     jfxTextArea
   }
-
-  protected def getJavaClassInstance = new jfxsc.TextArea
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TextArea) = {
     val sfxTextArea: TextArea = jfxControl

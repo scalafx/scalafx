@@ -30,26 +30,29 @@ package scalafx.util
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers._
 import scalafx.beans.property.DoubleProperty
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
 class SFXDelegateSpec extends FlatSpec {
   val doubleProperty = new DoubleProperty(null, "double property")
   val doublePropertyWithSameName = new DoubleProperty(null, "double property")
   val doublePropertyWithDifferentName = new DoubleProperty(null, "double property (with different name)")
 
   "SFXDelegate" should "delegate toString" in {
-    doubleProperty.toString should be ("[SFX]DoubleProperty [name: double property, value: 0.0]")
+    doubleProperty.toString should be("[SFX]DoubleProperty [name: double property, value: 0.0]")
   }
 
   it should "delegate equals" in {
-    doubleProperty should equal (doublePropertyWithSameName)
-    doubleProperty should not (equal (doublePropertyWithDifferentName))
+    doubleProperty should equal(doublePropertyWithSameName)
+    doubleProperty should not(equal(doublePropertyWithDifferentName))
   }
 
   it should "delegate hashCode" in {
-    doubleProperty.hashCode should equal (2073312533)
+    doubleProperty.hashCode should equal(2073312533)
   }
 
   it should "have a public delegate property" in {
-    doubleProperty.delegate should not (be (null))
+    doubleProperty.delegate should not(be(null))
   }
 }

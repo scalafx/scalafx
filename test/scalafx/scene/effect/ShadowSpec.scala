@@ -47,8 +47,6 @@ class ShadowSpec extends AbstractSFXDelegateSpec[jfxse.Shadow, Shadow, jfxse.Sha
     jfxShadow
   }
 
-  protected def getJavaClassInstance = new jfxse.Shadow
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.Shadow) = {
     val sfxShadow: Shadow = jfxObject
     sfxShadow

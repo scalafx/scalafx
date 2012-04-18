@@ -48,8 +48,6 @@ class HTMLEditorSpec extends AbstractSFXDelegateSpec[jfxsw.HTMLEditor, HTMLEdito
     jfxHTMLEditor
   }
 
-  protected def getJavaClassInstance = new jfxsw.HTMLEditor
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsw.HTMLEditor) = {
     val sfxHTMLEditor: HTMLEditor = jfxControl
     sfxHTMLEditor

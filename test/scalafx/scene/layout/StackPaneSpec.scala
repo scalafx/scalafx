@@ -48,8 +48,6 @@ class StackPaneSpec extends AbstractSFXDelegateSpec[jfxsl.StackPane, StackPane, 
     jfxStackPane
   }
 
-  protected def getJavaClassInstance = new jfxsl.StackPane
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsl.StackPane) = {
     val sfxStackPane: StackPane = jfxControl
     sfxStackPane

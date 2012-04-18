@@ -47,8 +47,6 @@ class GaussianBlurSpec extends AbstractSFXDelegateSpec[jfxse.GaussianBlur, Gauss
     jfxGaussianBlur
   }
 
-  protected def getJavaClassInstance = new jfxse.GaussianBlur
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.GaussianBlur) = {
     val sfxGaussianBlur: GaussianBlur = jfxObject
     sfxGaussianBlur

@@ -47,8 +47,6 @@ class SepiaToneSpec extends AbstractSFXDelegateSpec[jfxse.SepiaTone, SepiaTone, 
     jfxSepiaTone
   }
 
-  protected def getJavaClassInstance = new jfxse.SepiaTone
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.SepiaTone) = {
     val sfxSepiaTone: SepiaTone = jfxObject
     sfxSepiaTone

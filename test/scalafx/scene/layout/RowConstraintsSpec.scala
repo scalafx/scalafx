@@ -48,8 +48,6 @@ class RowConstraintsSpec extends AbstractSFXDelegateSpec[jfxsl.RowConstraints, R
     jfxRowConstraints
   }
 
-  protected def getJavaClassInstance = new jfxsl.RowConstraints
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsl.RowConstraints) = {
     val sfxRowConstraints: RowConstraints = jfxControl
     sfxRowConstraints

@@ -50,8 +50,6 @@ class WebViewSpec
     jfxWebView
   }
 
-  protected def getJavaClassInstance = new jfxsw.WebView
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsw.WebView) = {
     val sfxWebView: WebView = jfxControl
     sfxWebView

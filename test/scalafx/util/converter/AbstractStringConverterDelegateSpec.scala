@@ -68,8 +68,6 @@ abstract private[converter] class AbstractStringConverterDelegateSpec[J <: java.
 
   protected def getConverterForExample = this.getScalaClassInstance
 
-  protected def getJavaClassInstance = javaConverterClass.newInstance
-
   it should "convert %s to String and vice-versa".format(scalaClass) in {
     this.runConverterForExamples
   }

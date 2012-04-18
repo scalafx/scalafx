@@ -50,8 +50,6 @@ class GroupSpec extends AbstractSFXDelegateSpec[jfxs.Group, Group, jfxs.GroupBui
     jfxGroup
   }
 
-  protected def getJavaClassInstance = new jfxs.Group
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxs.Group) = {
     val sfxGroup: Group = jfxControl
     sfxGroup

@@ -48,8 +48,6 @@ class ParallelCameraSpec extends SimpleSFXDelegateSpec[jfxs.ParallelCamera, Para
     jfxParallelCamera
   }
 
-  protected def getJavaClassInstance = new jfxs.ParallelCamera
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxs.ParallelCamera) = {
     val sfxParallelCamera: ParallelCamera = jfxControl
     sfxParallelCamera

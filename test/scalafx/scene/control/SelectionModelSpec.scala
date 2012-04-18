@@ -33,11 +33,11 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner]) 
 /**
  * SelectionModel[T] Spec tests.
  * 
  */
+@RunWith(classOf[JUnitRunner]) 
 class SelectionModelSpec[T] extends SimpleSFXDelegateSpec[jfxsc.SelectionModel[T], SelectionModel[T]](classOf[jfxsc.SelectionModel[T]], classOf[SelectionModel[T]]) {
 
   protected def getScalaClassInstance = new SelectionModel[T](getJavaClassInstance) {}
@@ -48,7 +48,7 @@ class SelectionModelSpec[T] extends SimpleSFXDelegateSpec[jfxsc.SelectionModel[T
   }
 
   // How SelectionModelSpec is a abstract class, it is done a basic implementation
-  protected def getJavaClassInstance = new jfxsc.SelectionModel[T] {
+  override protected def getJavaClassInstance = new jfxsc.SelectionModel[T] {
     def selectLast {}
     def selectFirst {}
     def selectNext {}

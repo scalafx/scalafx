@@ -49,7 +49,7 @@ class LinearGradientSpec extends AbstractSFXDelegateSpec[jfxsp.LinearGradient, L
     jfxLinearGradient
   }
 
-  protected def getJavaClassInstance = new jfxsp.LinearGradient(0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)
+  override protected def getJavaClassInstance = new jfxsp.LinearGradient(0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsp.LinearGradient) = {
     val sfxLinearGradient: LinearGradient = jfxControl

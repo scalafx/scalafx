@@ -49,7 +49,7 @@ class RadialGradientSpec extends AbstractSFXDelegateSpec[jfxsp.RadialGradient, R
     jfxRadialGradient
   }
 
-  protected def getJavaClassInstance = new jfxsp.RadialGradient(0, 0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)
+  override protected def getJavaClassInstance = new jfxsp.RadialGradient(0, 0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsp.RadialGradient) = {
     val sfxRadialGradient: RadialGradient = jfxControl

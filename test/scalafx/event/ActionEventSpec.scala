@@ -47,8 +47,6 @@ class ActionEventSpec extends SimpleSFXDelegateSpec[jfxe.ActionEvent, ActionEven
     jfxActionEvent
   }
 
-  protected def getJavaClassInstance = new jfxe.ActionEvent
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxe.ActionEvent) = {
     val sfxActionEvent: ActionEvent = jfxObject
     sfxActionEvent

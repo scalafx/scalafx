@@ -47,8 +47,6 @@ class ColorAdjustSpec extends AbstractSFXDelegateSpec[jfxse.ColorAdjust, ColorAd
     jfxColorAdjust
   }
 
-  protected def getJavaClassInstance = new jfxse.ColorAdjust
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.ColorAdjust) = {
     val sfxColorAdjust: ColorAdjust = jfxObject
     sfxColorAdjust

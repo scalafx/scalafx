@@ -48,7 +48,7 @@ class FontSpec extends AbstractSFXDelegateSpec[jfxst.Font, Font, jfxst.FontBuild
     jfxFont
   }
 
-  protected def getJavaClassInstance = jfxst.Font.getDefault
+  override protected def getJavaClassInstance = jfxst.Font.getDefault
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxst.Font) = {
     val sfxFont: Font = jfxControl

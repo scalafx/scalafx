@@ -47,8 +47,6 @@ class PerspectiveTransformSpec extends AbstractSFXDelegateSpec[jfxse.Perspective
     jfxPerspectiveTransform
   }
 
-  protected def getJavaClassInstance = new jfxse.PerspectiveTransform
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.PerspectiveTransform) = {
     val sfxPerspectiveTransform: PerspectiveTransform = jfxObject
     sfxPerspectiveTransform

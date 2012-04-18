@@ -48,7 +48,7 @@ class ConstraintsBaseSpec extends SimpleSFXDelegateSpec[jfxsl.ConstraintsBase, C
     jfxConstraintsBase
   }
 
-  protected def getJavaClassInstance = new jfxsl.RowConstraints
+  override protected def getJavaClassInstance = new jfxsl.RowConstraints
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsl.ConstraintsBase) = {
     val sfxConstraintsBase: ConstraintsBase = jfxControl

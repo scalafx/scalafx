@@ -47,8 +47,6 @@ class InnerShadowSpec extends AbstractSFXDelegateSpec[jfxse.InnerShadow, InnerSh
     jfxInnerShadow
   }
 
-  protected def getJavaClassInstance = new jfxse.InnerShadow
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.InnerShadow) = {
     val sfxInnerShadow: InnerShadow = jfxObject
     sfxInnerShadow

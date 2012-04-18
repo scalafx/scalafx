@@ -47,8 +47,6 @@ class BoxBlurSpec extends AbstractSFXDelegateSpec[jfxse.BoxBlur, BoxBlur, jfxse.
     jfxBoxBlur
   }
 
-  protected def getJavaClassInstance = new jfxse.BoxBlur
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.BoxBlur) = {
     val sfxBoxBlur: BoxBlur = jfxObject
     sfxBoxBlur

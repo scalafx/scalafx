@@ -47,8 +47,6 @@ class BloomSpec extends AbstractSFXDelegateSpec[jfxse.Bloom, Bloom, jfxse.BloomB
     jfxBloom
   }
 
-  protected def getJavaClassInstance = new jfxse.Bloom
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.Bloom) = {
     val sfxBloom: Bloom = jfxObject
     sfxBloom

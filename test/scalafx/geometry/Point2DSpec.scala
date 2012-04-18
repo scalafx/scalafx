@@ -33,11 +33,11 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner]) 
 /**
  * Point2D Spec tests.
  * 
  */
+@RunWith(classOf[JUnitRunner]) 
 class Point2DSpec extends AbstractSFXDelegateSpec[jfxg.Point2D, Point2D, jfxg.Point2DBuilder[_]](classOf[jfxg.Point2D], classOf[Point2D], classOf[jfxg.Point2DBuilder[_]]) {
 
   protected def getScalaClassInstance = new Point2D(0, 0)
@@ -47,7 +47,7 @@ class Point2DSpec extends AbstractSFXDelegateSpec[jfxg.Point2D, Point2D, jfxg.Po
     jfxPoint2D
   }
 
-  protected def getJavaClassInstance = new jfxg.Point2D(0, 0)
+  override protected def getJavaClassInstance = new jfxg.Point2D(0, 0)
 
   protected def convertJavaClassToScalaClass(jfxObject: jfxg.Point2D) = {
     val sfxPoint2D: Point2D = jfxObject

@@ -33,11 +33,11 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner]) 
 /**
  * MultipleSelectionModel[T] Spec tests.
  * 
  */
+@RunWith(classOf[JUnitRunner]) 
 class MultipleMultipleSelectionModelSpec[T] extends AbstractSFXDelegateSpec[jfxsc.MultipleSelectionModel[T], MultipleSelectionModel[T], jfxsc.MultipleSelectionModelBuilder[T, _]](classOf[jfxsc.MultipleSelectionModel[T]], classOf[MultipleSelectionModel[T]], classOf[jfxsc.MultipleSelectionModelBuilder[T, _]]) {
 
   protected def getScalaClassInstance = new MultipleSelectionModel[T](getJavaClassInstance) {}
@@ -47,7 +47,7 @@ class MultipleMultipleSelectionModelSpec[T] extends AbstractSFXDelegateSpec[jfxs
     jfxMultipleSelectionModel
   }
 
-  protected def getJavaClassInstance = new SimpleMultipleSelectionModel[T].asInstanceOf[jfxsc.MultipleSelectionModel[T]]
+  override protected def getJavaClassInstance = new SimpleMultipleSelectionModel[T].asInstanceOf[jfxsc.MultipleSelectionModel[T]]
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.MultipleSelectionModel[T]) = {
     val sfxMultipleSelectionModel: MultipleSelectionModel[T] = jfxControl

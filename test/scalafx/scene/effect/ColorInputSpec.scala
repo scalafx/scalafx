@@ -47,8 +47,6 @@ class ColorInputSpec extends AbstractSFXDelegateSpec[jfxse.ColorInput, ColorInpu
     jfxColorInput
   }
 
-  protected def getJavaClassInstance = new jfxse.ColorInput
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.ColorInput) = {
     val sfxColorInput: ColorInput = jfxObject
     sfxColorInput

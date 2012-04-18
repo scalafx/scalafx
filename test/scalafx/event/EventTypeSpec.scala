@@ -47,8 +47,6 @@ class EventTypeSpec[T <: jfxe.Event] extends SimpleSFXDelegateSpec[jfxe.EventTyp
     jfxEventType
   }
 
-  protected def getJavaClassInstance = new jfxe.EventType[T]
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxe.EventType[T]) = {
     val sfxEventType: EventType[T] = jfxObject
     sfxEventType

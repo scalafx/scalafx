@@ -50,8 +50,6 @@ class ImageViewSpec extends AbstractSFXDelegateSpec[jfxsi.ImageView, ImageView, 
     jfxImageView
   }
 
-  protected def getJavaClassInstance = new jfxsi.ImageView
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsi.ImageView) = {
     val sfxImageView: ImageView = jfxControl
     sfxImageView

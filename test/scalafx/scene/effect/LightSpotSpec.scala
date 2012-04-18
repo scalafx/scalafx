@@ -47,8 +47,6 @@ class LightSpotSpec extends SimpleSFXDelegateSpec[jfxse.Light.Spot, Light.Spot](
     jfxLightSpot
   }
 
-  protected def getJavaClassInstance = new jfxse.Light.Spot
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.Light.Spot) = {
     val sfxLightSpot: Light.Spot = jfxObject
     sfxLightSpot

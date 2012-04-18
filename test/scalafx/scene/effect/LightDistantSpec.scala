@@ -47,8 +47,6 @@ class LightDistantSpec extends SimpleSFXDelegateSpec[jfxse.Light.Distant, Light.
     jfxLightDistant
   }
 
-  protected def getJavaClassInstance = new jfxse.Light.Distant
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.Light.Distant) = {
     val sfxLightDistant: Light.Distant = jfxObject
     sfxLightDistant

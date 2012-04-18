@@ -36,11 +36,11 @@ import scalafx.testutil.PropertyComparator
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.Includes._
 
-@RunWith(classOf[JUnitRunner])
 /**
  * PasswordField Spec tests.
  *
  */
+@RunWith(classOf[JUnitRunner])
 class PasswordFieldSpec extends AbstractSFXDelegateSpec[jfxsc.PasswordField, PasswordField, jfxsc.PasswordFieldBuilder[_]](classOf[jfxsc.PasswordField], classOf[PasswordField], classOf[jfxsc.PasswordFieldBuilder[_]]) {
 
   protected def getScalaClassInstance = new PasswordField(new jfxsc.PasswordField)
@@ -49,8 +49,6 @@ class PasswordFieldSpec extends AbstractSFXDelegateSpec[jfxsc.PasswordField, Pas
     val jfxPasswordField: jfxsc.PasswordField = sfxControl
     jfxPasswordField
   }
-
-  protected def getJavaClassInstance = new jfxsc.PasswordField
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.PasswordField) = {
     val sfxPasswordField: PasswordField = jfxControl

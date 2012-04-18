@@ -48,8 +48,6 @@ class ColumnConstraintsSpec extends AbstractSFXDelegateSpec[jfxsl.ColumnConstrai
     jfxColumnConstraints
   }
 
-  protected def getJavaClassInstance = new jfxsl.ColumnConstraints
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsl.ColumnConstraints) = {
     val sfxColumnConstraints: ColumnConstraints = jfxControl
     sfxColumnConstraints

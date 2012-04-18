@@ -48,8 +48,6 @@ class AnchorPaneSpec extends AbstractSFXDelegateSpec[jfxsl.AnchorPane, AnchorPan
     jfxAnchorPane
   }
 
-  protected def getJavaClassInstance = new jfxsl.AnchorPane
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsl.AnchorPane) = {
     val sfxAnchorPane: AnchorPane = jfxControl
     sfxAnchorPane

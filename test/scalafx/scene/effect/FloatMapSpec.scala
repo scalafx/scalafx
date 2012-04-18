@@ -47,8 +47,6 @@ class FloatMapSpec extends AbstractSFXDelegateSpec[jfxse.FloatMap, FloatMap, jfx
     jfxFloatMap
   }
 
-  protected def getJavaClassInstance = new jfxse.FloatMap
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.FloatMap) = {
     val sfxFloatMap: FloatMap = jfxObject
     sfxFloatMap

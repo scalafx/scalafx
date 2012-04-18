@@ -37,11 +37,11 @@ import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.testutil.PropertyComparator
 
-@RunWith(classOf[JUnitRunner])
 /**
  * ButtonBase Spec tests.
  * 
  */
+@RunWith(classOf[JUnitRunner])
 class ButtonBaseSpec extends AbstractSFXDelegateSpec[jfxsc.ButtonBase, ButtonBase, jfxsc.ButtonBaseBuilder[_]](classOf[jfxsc.ButtonBase], classOf[ButtonBase], classOf[jfxsc.ButtonBaseBuilder[_]]) {
 
   protected def getScalaClassInstance = new ButtonBase(new jfxsc.Button)
@@ -51,7 +51,7 @@ class ButtonBaseSpec extends AbstractSFXDelegateSpec[jfxsc.ButtonBase, ButtonBas
     jfxChoiceBox
   }
 
-  protected def getJavaClassInstance = new jfxsc.Button
+  override protected def getJavaClassInstance = new jfxsc.Button
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ButtonBase) = {
     val sfxChoiceBox: ButtonBase = jfxControl

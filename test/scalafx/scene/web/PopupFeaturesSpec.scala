@@ -47,7 +47,7 @@ class PopupFeaturesSpec extends SimpleSFXDelegateSpec[jfxsw.PopupFeatures, Popup
     jfxPopupFeatures
   }
 
-  protected def getJavaClassInstance = new jfxsw.PopupFeatures(true, true, true, true)
+  override protected def getJavaClassInstance = new jfxsw.PopupFeatures(true, true, true, true)
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsw.PopupFeatures) = {
     val sfxPopupFeatures: PopupFeatures = jfxControl

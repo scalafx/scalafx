@@ -48,8 +48,6 @@ class FlowPaneSpec extends AbstractSFXDelegateSpec[jfxsl.FlowPane, FlowPane, jfx
     jfxFlowPane
   }
 
-  protected def getJavaClassInstance = new jfxsl.FlowPane
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsl.FlowPane) = {
     val sfxFlowPane: FlowPane = jfxControl
     sfxFlowPane

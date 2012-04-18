@@ -47,8 +47,6 @@ class RegionSpec extends AbstractSFXDelegateSpec[jfxsl.Region, Region, jfxsl.Reg
     jfxRegion
   }
 
-  protected def getJavaClassInstance = new jfxsl.Region
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsl.Region) = {
     val sfxRegion: Region = jfxControl
     sfxRegion

@@ -34,12 +34,12 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 /**
  * DropShadow Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner])
 class DropShadowSpec extends AbstractSFXDelegateSpec[jfxse.DropShadow, DropShadow, jfxse.DropShadowBuilder[_]](classOf[jfxse.DropShadow], classOf[DropShadow], classOf[jfxse.DropShadowBuilder[_]]) {
 
   protected def getScalaClassInstance = new DropShadow(new jfxse.DropShadow)
@@ -48,8 +48,6 @@ class DropShadowSpec extends AbstractSFXDelegateSpec[jfxse.DropShadow, DropShado
     val jfxDropShadow: jfxse.DropShadow = sfxObject
     jfxDropShadow
   }
-
-  protected def getJavaClassInstance = new jfxse.DropShadow
 
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.DropShadow) = {
     val sfxDropShadow: DropShadow = jfxObject

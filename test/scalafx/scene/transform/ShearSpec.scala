@@ -35,12 +35,12 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner])
 /**
  * Shear Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner])
 class ShearSpec extends AbstractSFXDelegateSpec[jfxst.Shear, Shear, jfxst.ShearBuilder[_]](classOf[jfxst.Shear], classOf[Shear], classOf[jfxst.ShearBuilder[_]]) {
 
   protected def getScalaClassInstance = new Shear(new jfxst.Shear) 
@@ -49,8 +49,6 @@ class ShearSpec extends AbstractSFXDelegateSpec[jfxst.Shear, Shear, jfxst.ShearB
     val jfxShear: jfxst.Shear = sfxControl
     jfxShear
   }
-
-  protected def getJavaClassInstance = new jfxst.Shear 
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxst.Shear) = {
     val sfxShear: Shear = jfxControl

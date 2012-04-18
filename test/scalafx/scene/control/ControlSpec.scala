@@ -37,12 +37,12 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner])
 /**
  * Control Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner])
 class ControlSpec extends AbstractSFXDelegateSpec[jfxsc.Control, Control, jfxsc.ControlBuilder[_]](classOf[jfxsc.Control], classOf[Control], classOf[jfxsc.ControlBuilder[_]]) {
 
   protected def getScalaClassInstance = new Control(new jfxsc.Label) {}
@@ -52,7 +52,7 @@ class ControlSpec extends AbstractSFXDelegateSpec[jfxsc.Control, Control, jfxsc.
     jfxControl
   }
 
-  protected def getJavaClassInstance = new jfxsc.Control() {}
+  override protected def getJavaClassInstance = new jfxsc.Control() {}
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Control) = {
     val sfxControl: Control = jfxControl

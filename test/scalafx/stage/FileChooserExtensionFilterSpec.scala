@@ -34,12 +34,12 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
 
-@RunWith(classOf[JUnitRunner]) 
 /**
  * FileChooser.ExtensionFilter Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner]) 
 class FileChooserExtensionFilterSpec extends SimpleSFXDelegateSpec[jfxs.FileChooser.ExtensionFilter, FileChooser.ExtensionFilter](classOf[jfxs.FileChooser.ExtensionFilter], classOf[FileChooser.ExtensionFilter]) { 
 
   protected def getScalaClassInstance = new FileChooser.ExtensionFilter(this.getJavaClassInstance)
@@ -49,7 +49,7 @@ class FileChooserExtensionFilterSpec extends SimpleSFXDelegateSpec[jfxs.FileChoo
     jfxFileChooserExtensionFilter
   }
 
-  protected def getJavaClassInstance = new jfxs.FileChooser.ExtensionFilter("Description", "txt")
+  override protected def getJavaClassInstance = new jfxs.FileChooser.ExtensionFilter("Description", "txt")
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxs.FileChooser.ExtensionFilter) = {
     val sfxFileChooserExtensionFilter: FileChooser.ExtensionFilter = jfxControl

@@ -48,8 +48,6 @@ class PaneSpec extends AbstractSFXDelegateSpec[jfxsl.Pane, Pane, jfxsl.PaneBuild
     jfxPane
   }
 
-  protected def getJavaClassInstance = new jfxsl.Pane
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsl.Pane) = {
     val sfxPane: Pane = jfxControl
     sfxPane

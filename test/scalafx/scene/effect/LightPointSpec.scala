@@ -47,8 +47,6 @@ class LightPointSpec extends SimpleSFXDelegateSpec[jfxse.Light.Point, Light.Poin
     jfxLightPoint
   }
 
-  protected def getJavaClassInstance = new jfxse.Light.Point
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.Light.Point) = {
     val sfxLightPoint: Light.Point = jfxObject
     sfxLightPoint

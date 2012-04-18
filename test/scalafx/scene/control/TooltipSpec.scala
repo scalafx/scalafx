@@ -34,6 +34,11 @@ import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
+/**
+ * Tooltip Spec tests.
+ * 
+ *
+ */
 @RunWith(classOf[JUnitRunner]) 
 class TooltipSpec extends AbstractSFXDelegateSpec[jfxsc.Tooltip, Tooltip, jfxsc.TooltipBuilder[_]](classOf[jfxsc.Tooltip], classOf[Tooltip], classOf[jfxsc.TooltipBuilder[_]]) with RunOnApplicationThread {
 
@@ -43,8 +48,6 @@ class TooltipSpec extends AbstractSFXDelegateSpec[jfxsc.Tooltip, Tooltip, jfxsc.
     val jfxTooltip: jfxsc.Tooltip = sfxControl
     jfxTooltip
   }
-
-  protected def getJavaClassInstance = new jfxsc.Tooltip
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Tooltip) = {
     val sfxTooltip: Tooltip = jfxControl

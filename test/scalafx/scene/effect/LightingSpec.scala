@@ -47,8 +47,6 @@ class LightingSpec extends AbstractSFXDelegateSpec[jfxse.Lighting, Lighting, jfx
     jfxLighting
   }
 
-  protected def getJavaClassInstance = new jfxse.Lighting
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.Lighting) = {
     val sfxLighting: Lighting = jfxObject
     sfxLighting

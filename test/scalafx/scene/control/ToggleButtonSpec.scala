@@ -36,12 +36,12 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 /**
  * ToggleButton Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner])
 class ToggleToggleButtonSpec extends AbstractSFXDelegateSpec[jfxsc.ToggleButton, ToggleButton, jfxsc.ToggleButtonBuilder[_]](classOf[jfxsc.ToggleButton], classOf[ToggleButton], classOf[jfxsc.ToggleButtonBuilder[_]]) {
 
   protected def getScalaClassInstance = new ToggleButton(new jfxsc.ToggleButton)
@@ -50,8 +50,6 @@ class ToggleToggleButtonSpec extends AbstractSFXDelegateSpec[jfxsc.ToggleButton,
     val jfxToggleButton: jfxsc.ToggleButton = sfxControl
     jfxToggleButton
   }
-
-  protected def getJavaClassInstance = new jfxsc.ToggleButton
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ToggleButton) = {
     val sfxToggleButton: ToggleButton = jfxControl

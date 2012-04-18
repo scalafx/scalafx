@@ -48,8 +48,6 @@ class TextSpec extends AbstractSFXDelegateSpec[jfxst.Text, Text, jfxst.TextBuild
     jfxText
   }
 
-  protected def getJavaClassInstance = new jfxst.Text
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxst.Text) = {
     val sfxText: Text = jfxControl
     sfxText

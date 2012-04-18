@@ -18,7 +18,7 @@ import java.text.ParseException
 import java.text.DecimalFormatSymbols
 
 /**
- * @author rafael
+ * StringConverter Spec tests.
  *
  */
 @RunWith(classOf[JUnitRunner])

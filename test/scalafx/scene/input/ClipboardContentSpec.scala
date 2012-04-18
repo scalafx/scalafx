@@ -33,12 +33,12 @@ import scalafx.Includes._
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner]) 
 /**
  * ClipboardContent Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner]) 
 class ClipboardContentSpec extends AbstractSFXDelegateSpec[jfxsi.ClipboardContent, ClipboardContent, jfxsi.ClipboardContentBuilder[_]](classOf[jfxsi.ClipboardContent], classOf[ClipboardContent], classOf[jfxsi.ClipboardContentBuilder[_]]) {
 
   protected def getScalaClassInstance = new ClipboardContent(new jfxsi.ClipboardContent)
@@ -47,8 +47,6 @@ class ClipboardContentSpec extends AbstractSFXDelegateSpec[jfxsi.ClipboardConten
     val jfxClipboardContent: jfxsi.ClipboardContent = sfxControl
     jfxClipboardContent
   }
-
-  protected def getJavaClassInstance = new jfxsi.ClipboardContent
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsi.ClipboardContent) = {
     val sfxClipboardContent: ClipboardContent = jfxControl

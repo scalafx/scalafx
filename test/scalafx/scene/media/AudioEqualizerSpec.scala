@@ -48,7 +48,7 @@ class AudioEqualizerSpec extends SimpleSFXDelegateSpec[jfxsm.AudioEqualizer, Aud
     jfxAudioEqualizer
   }
 
-  protected def getJavaClassInstance = new jfxsm.MediaPlayer(new jfxsm.Media(url)).getAudioEqualizer
+  override protected def getJavaClassInstance = new jfxsm.MediaPlayer(new jfxsm.Media(url)).getAudioEqualizer
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsm.AudioEqualizer) = {
     val sfxAudioEqualizer: AudioEqualizer = jfxControl

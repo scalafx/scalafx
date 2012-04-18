@@ -34,6 +34,11 @@ import scalafx.scene.input.Clipboard._
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
+/**
+ * KeyCharacterCombination Spec tests.
+ * 
+ *
+ */
 @RunWith(classOf[JUnitRunner])
 class ClipboardSpec extends SimpleSFXDelegateSpec[jfxsi.Clipboard, Clipboard](classOf[jfxsi.Clipboard], classOf[Clipboard]) with RunOnApplicationThread {
 
@@ -44,7 +49,7 @@ class ClipboardSpec extends SimpleSFXDelegateSpec[jfxsi.Clipboard, Clipboard](cl
     jfxClipboard
   }
 
-  protected def getJavaClassInstance = jfxsi.Clipboard.getSystemClipboard
+  override protected def getJavaClassInstance = jfxsi.Clipboard.getSystemClipboard
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsi.Clipboard) = {
     val sfxClipboard: Clipboard = jfxControl

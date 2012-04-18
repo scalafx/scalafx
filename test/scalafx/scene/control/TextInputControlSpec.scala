@@ -39,12 +39,12 @@ import scalafx.scene.control.TextField.sfxTextField2jfx
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.testutil.PropertyComparator
 
-@RunWith(classOf[JUnitRunner])
 /**
  * TextInputControl Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner])
 class TextInputControlSpec extends AbstractSFXDelegateSpec[jfxsc.TextInputControl, TextInputControl, jfxsc.TextInputControlBuilder[_]](classOf[jfxsc.TextInputControl], classOf[TextInputControl], classOf[jfxsc.TextInputControlBuilder[_]]) {
 
   protected def getScalaClassInstance = new TextField
@@ -54,7 +54,7 @@ class TextInputControlSpec extends AbstractSFXDelegateSpec[jfxsc.TextInputContro
     jfxChoiceBox
   }
 
-  protected def getJavaClassInstance = new jfxsc.TextField
+  override protected def getJavaClassInstance = new jfxsc.TextField
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TextInputControl) = {
     val sfxChoiceBox: TextInputControl = jfxControl

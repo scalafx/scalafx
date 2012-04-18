@@ -36,6 +36,10 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
+/**
+ * Insets Spec tests.
+ * 
+ */
 @RunWith(classOf[JUnitRunner])
 class InsetsSpec extends AbstractSFXDelegateSpec[jfxg.Insets, Insets, jfxg.InsetsBuilder[_]](classOf[jfxg.Insets], classOf[Insets], classOf[jfxg.InsetsBuilder[_]]) {
 
@@ -46,7 +50,7 @@ class InsetsSpec extends AbstractSFXDelegateSpec[jfxg.Insets, Insets, jfxg.Inset
     jfxInsets
   }
 
-  protected def getJavaClassInstance = new jfxg.Insets(10)
+  override protected def getJavaClassInstance = new jfxg.Insets(10)
 
   protected def convertJavaClassToScalaClass(jfxObject: jfxg.Insets) = {
     val sfxInsets: Insets = jfxObject

@@ -48,7 +48,7 @@ class ParentSpec extends AbstractSFXDelegateSpec[jfxs.Parent, Parent, jfxs.Paren
     jfxParent
   }
 
-  protected def getJavaClassInstance = new jfxs.Group
+  override protected def getJavaClassInstance = new jfxs.Group
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxs.Parent) = {
     val sfxParent: Parent = jfxControl

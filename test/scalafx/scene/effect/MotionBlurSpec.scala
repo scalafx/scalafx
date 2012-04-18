@@ -47,8 +47,6 @@ class MotionBlurSpec extends AbstractSFXDelegateSpec[jfxse.MotionBlur, MotionBlu
     jfxMotionBlur
   }
 
-  protected def getJavaClassInstance = new jfxse.MotionBlur
-
   protected def convertJavaClassToScalaClass(jfxObject: jfxse.MotionBlur) = {
     val sfxMotionBlur: MotionBlur = jfxObject
     sfxMotionBlur

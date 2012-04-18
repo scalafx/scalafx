@@ -37,8 +37,8 @@ import scalafx.util.SFXDelegate
  * Abstract class for SFXDelegate controls Spec tests.
  *
  *
- * @tparam J JavaFX class
- * @tparam S SFXDelegate subclass related with JavaFX class
+ * @tparam J JavaFX class to be wrapped by SFXDelegate class
+ * @tparam S SFXDelegate subclass who will wrap JavaFX class
  *
  * @param javaClass JavaFX class
  * @param scalaClass SFXDelegate subclass related with JavaFX class
@@ -68,12 +68,13 @@ abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]](javaClass
   protected def convertScalaClassToJavaClass(sfxObject: S): J
 
   /**
-   * Returns a new JavaFX class instance:
+   * Returns a new JavaFX class instance. By default calls newInstance method from javaClass. If 
+   * this class has no default constructor, this method must be overrided:
    * {{{
-   * protected def getJavaClassInstance = new jfxsc.Separator
+   * override protected def getJavaClassInstance = new jfxg.BoundingBox(0, 0, 0, 0, 0, 0)
    * }}}
    */
-  protected def getJavaClassInstance: J
+  protected def getJavaClassInstance: J = javaClass.newInstance
 
   /**
    * Returns a JavaFX instance as a SFXDelegate object

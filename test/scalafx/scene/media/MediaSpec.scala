@@ -47,7 +47,7 @@ class MediaSpec extends AbstractSFXDelegateSpec[jfxsm.Media, Media, jfxsm.MediaB
     jfxMedia
   }
 
-  protected def getJavaClassInstance = new jfxsm.Media(url)
+  override protected def getJavaClassInstance = new jfxsm.Media(url)
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsm.Media) = {
     val sfxMedia: Media = jfxControl

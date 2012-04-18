@@ -48,8 +48,6 @@ class BorderPaneSpec extends AbstractSFXDelegateSpec[jfxsl.BorderPane, BorderPan
     jfxBorderPane
   }
 
-  protected def getJavaClassInstance = new jfxsl.BorderPane
-
   protected def convertJavaClassToScalaClass(jfxControl: jfxsl.BorderPane) = {
     val sfxBorderPane: BorderPane = jfxControl
     sfxBorderPane

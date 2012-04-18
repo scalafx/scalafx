@@ -36,11 +36,11 @@ import scalafx.testutil.PropertyComparator
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.Includes._
 
-@RunWith(classOf[JUnitRunner])
 /**
  * ProgressIndicator Spec tests.
  *
  */
+@RunWith(classOf[JUnitRunner])
 class ProgressIndicatorSpec extends AbstractSFXDelegateSpec[jfxsc.ProgressIndicator, ProgressIndicator, jfxsc.ProgressIndicatorBuilder[_]](classOf[jfxsc.ProgressIndicator], classOf[ProgressIndicator], classOf[jfxsc.ProgressIndicatorBuilder[_]]) {
 
   protected def getScalaClassInstance = new ProgressIndicator(new jfxsc.ProgressIndicator)
@@ -49,8 +49,6 @@ class ProgressIndicatorSpec extends AbstractSFXDelegateSpec[jfxsc.ProgressIndica
     val jfxProgressIndicator: jfxsc.ProgressIndicator = sfxControl
     jfxProgressIndicator
   }
-
-  protected def getJavaClassInstance = new jfxsc.ProgressIndicator
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ProgressIndicator) = {
     val sfxProgressIndicator: ProgressIndicator = jfxControl

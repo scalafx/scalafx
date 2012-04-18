@@ -36,12 +36,12 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 /**
  * Label Spec tests.
  * 
  *
  */
+@RunWith(classOf[JUnitRunner])
 class LabelSpec extends AbstractSFXDelegateSpec[jfxsc.Label, Label, jfxsc.LabelBuilder[_]](classOf[jfxsc.Label], classOf[Label], classOf[jfxsc.LabelBuilder[_]]) {
 
   protected def getScalaClassInstance = new Label(new jfxsc.Label)
@@ -50,8 +50,6 @@ class LabelSpec extends AbstractSFXDelegateSpec[jfxsc.Label, Label, jfxsc.LabelB
     val jfxLabel: jfxsc.Label = sfxControl
     jfxLabel
   }
-
-  protected def getJavaClassInstance = new jfxsc.Label
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Label) = {
     val sfxLabel: Label = jfxControl

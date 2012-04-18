@@ -27,19 +27,17 @@
 package scalafx.scene.transform
 
 import javafx.scene.{ transform => jfxst }
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 
-@RunWith(classOf[JUnitRunner]) /**
+/**
  * Translate Spec tests.
- * 
+ *
  *
  */
+@RunWith(classOf[JUnitRunner])
 class TranslateSpec extends AbstractSFXDelegateSpec[jfxst.Translate, Translate, jfxst.TranslateBuilder[_]](classOf[jfxst.Translate], classOf[Translate], classOf[jfxst.TranslateBuilder[_]]) {
 
   protected def getScalaClassInstance = new Translate(new jfxst.Translate)
@@ -48,8 +46,6 @@ class TranslateSpec extends AbstractSFXDelegateSpec[jfxst.Translate, Translate, 
     val jfxTranslate: jfxst.Translate = sfxControl
     jfxTranslate
   }
-
-  protected def getJavaClassInstance = new jfxst.Translate
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxst.Translate) = {
     val sfxTranslate: Translate = jfxControl
