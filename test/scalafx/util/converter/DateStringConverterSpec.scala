@@ -47,7 +47,7 @@ class DateStringConverterSpec
   val examples = List((dateFormat.parse("2012-04-01 00:00:00"), "01/04/2012"), 
       (dateFormat.parse("2000-02-29 00:00:00"), "29/02/2000"))
 
-  protected def getScalaClassInstance = new DateStringConverter
+  protected def getScalaClassInstance = new DateStringConverter(locale)
 
   protected def convertScalaClassToJavaClass(sfxControl: DateStringConverter) = {
     val jfxDateStringConverter: jfxuc.DateStringConverter = sfxControl.delegate

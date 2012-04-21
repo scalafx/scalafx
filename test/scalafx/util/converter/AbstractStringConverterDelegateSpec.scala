@@ -33,6 +33,7 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.util.SFXDelegate
 import org.scalatest.matchers.ShouldMatchers._
+import java.util.Locale
 
 /**
  *
@@ -49,6 +50,8 @@ import org.scalatest.matchers.ShouldMatchers._
 abstract private[converter] class AbstractStringConverterDelegateSpec[J <: java.lang.Object, C <: jfxu.StringConverter[J], S <: Any, D <: StringConverterDelegate[_, S, C]] protected (javaConverterClass: Class[C], scalaConverterClass: Class[D], scalaClass: Class[S])
   extends SimpleSFXDelegateSpec[C, D](javaConverterClass, scalaConverterClass) {
 
+  protected val locale = Locale.US
+  
   private def runConverterForExamples {
 
     val converter = this.getConverterForExample

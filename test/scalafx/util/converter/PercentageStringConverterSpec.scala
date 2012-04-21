@@ -41,10 +41,10 @@ import java.util.Locale
 class PercentageStringConverterSpec
   extends AbstractStringConverterDelegateSpec[Number, jfxuc.PercentageStringConverter, Number, PercentageStringConverter](classOf[jfxuc.PercentageStringConverter], classOf[PercentageStringConverter], classOf[Number]) {
 
-  val examples = List((new java.lang.Integer(10), "1.000%"), (new java.lang.Integer(0), "0%"),
-    (new java.lang.Integer(-10), "-1.000%"))
+  val examples = List((new java.lang.Integer(10), "1,000%"), (new java.lang.Integer(0), "0%"),
+    (new java.lang.Integer(-10), "-1,000%"))
 
-  protected def getScalaClassInstance = new PercentageStringConverter
+  protected def getScalaClassInstance = new PercentageStringConverter(locale)
 
   protected def convertScalaClassToJavaClass(sfxControl: PercentageStringConverter) = {
     val jfxPercentageStringConverter: jfxuc.PercentageStringConverter = sfxControl
