@@ -7,6 +7,7 @@ package scalafx.scene.control
 import javafx.scene.{ control => jfxsc }
 
 object ControlIncludes extends ControlIncludes
+
 trait ControlIncludes {
   implicit def jfxAccordion2sfx(a: jfxsc.Accordion) = new Accordion(a)
   implicit def jfxToggleGroup2sfx(tg: jfxsc.ToggleGroup) = new ToggleGroup(tg)
@@ -19,8 +20,11 @@ trait ControlIncludes {
   implicit def jfxControl2sfx(c: jfxsc.Control) = new Control(c) {}
   implicit def jfxComboBoxBase2sfx[T](v: jfxsc.ComboBoxBase[T]) = new ComboBoxBase[T](v) {}
   implicit def jfxComboBox2sfx[T](v: jfxsc.ComboBox[T]) = new ComboBox[T](v)
+  implicit def jfxFocusModel2sfx[T](v: jfxsc.FocusModel[T]) = new FocusModel[T](v) {}
+  implicit def jfxHyperlink2sfx(h: jfxsc.Hyperlink) = new Hyperlink(h)
   implicit def jfxLabel2sfx(l: jfxsc.Label) = new Label(l)
   implicit def jfxLabeled2sfx(l: jfxsc.Labeled) = new Labeled(l) {}
+  implicit def jfxMenuItem2sfx(m: jfxsc.MenuItem) = new MenuItem(m)
   implicit def jfxMultipleSelectionModel2sfx[T](v: jfxsc.MultipleSelectionModel[T]) = new MultipleSelectionModel[T](v) {}
   implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s) {}
   implicit def jfxSlider2sfx(s: jfxsc.Slider) = new Slider(s)
@@ -32,6 +36,8 @@ trait ControlIncludes {
   implicit def jfxPopupControl2sfx(v: jfxsc.PopupControl) = new PopupControl(v)
   implicit def jfxSelectionModel2sfx[T](v: jfxsc.SelectionModel[T]) = new SelectionModel[T](v) {}
   implicit def jfxSingleSelectionModel2sfx[T](v: jfxsc.SingleSelectionModel[T]) = new SingleSelectionModel[T](v) {}
+  implicit def jfxSplitPane2sfx(s: jfxsc.SplitPane) = new SplitPane(s)
+  implicit def jfxSplitPaneDivider2sfx(d: jfxsc.SplitPane.Divider) = new SplitPane.Divider(d)
   implicit def jfxTab2sfx(v: jfxsc.Tab) = new Tab(v)
   implicit def jfxTabPane2sfx(v: jfxsc.TabPane) = new TabPane(v)
   implicit def jfxTextField2sfx(v: jfxsc.TextField) = new TextField(v)
