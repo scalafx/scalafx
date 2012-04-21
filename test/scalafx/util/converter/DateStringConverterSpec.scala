@@ -26,12 +26,11 @@
  */
 package scalafx.util.converter
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import javafx.util.{ converter => jfxuc }
-import scalafx.Includes._
-import java.util.Locale
 import java.util.Date
+import org.junit.runner.RunWith
+import javafx.util.{converter => jfxuc}
+import scalafx.Includes._
+import org.scalatest.junit.JUnitRunner
 
 /**
  * DateStringConverter Spec tests.
@@ -42,12 +41,12 @@ import java.util.Date
 class DateStringConverterSpec
   extends AbstractStringConverterDelegateSpec[Date, jfxuc.DateStringConverter, Date, DateStringConverter](classOf[jfxuc.DateStringConverter], classOf[DateStringConverter], classOf[Date]) {
 
-  override protected def getConverterForExample = new DateStringConverter(Locale.US)
+  val examples = List((dateFormat.parse("2012-04-01 00:00:00"), "01/04/2012"),
+    (dateFormat.parse("2000-02-29 00:00:00"), "29/02/2000"))
 
-  val examples = List((dateFormat.parse("2012-04-01 00:00:00"), "01/04/2012"), 
-      (dateFormat.parse("2000-02-29 00:00:00"), "29/02/2000"))
+  override protected def getConverterForExample = new DateStringConverter("dd/MM/yyyy")
 
-  protected def getScalaClassInstance = new DateStringConverter(locale)
+  protected def getScalaClassInstance = new DateStringConverter
 
   protected def convertScalaClassToJavaClass(sfxControl: DateStringConverter) = {
     val jfxDateStringConverter: jfxuc.DateStringConverter = sfxControl.delegate

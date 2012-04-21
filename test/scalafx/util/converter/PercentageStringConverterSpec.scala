@@ -26,11 +26,12 @@
  */
 package scalafx.util.converter
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import javafx.util.{ converter => jfxuc }
-import scalafx.Includes._
+import java.lang.Number
 import java.util.Locale
+import org.junit.runner.RunWith
+import javafx.util.{converter => jfxuc}
+import scalafx.Includes._
+import org.scalatest.junit.JUnitRunner
 
 /**
  * PercentageStringConverter Spec tests.
@@ -44,7 +45,7 @@ class PercentageStringConverterSpec
   val examples = List((new java.lang.Integer(10), "1,000%"), (new java.lang.Integer(0), "0%"),
     (new java.lang.Integer(-10), "-1,000%"))
 
-  protected def getScalaClassInstance = new PercentageStringConverter(locale)
+  protected def getScalaClassInstance = new PercentageStringConverter(Locale.US)
 
   protected def convertScalaClassToJavaClass(sfxControl: PercentageStringConverter) = {
     val jfxPercentageStringConverter: jfxuc.PercentageStringConverter = sfxControl

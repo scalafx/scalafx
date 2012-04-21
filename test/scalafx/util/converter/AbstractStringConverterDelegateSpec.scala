@@ -50,16 +50,16 @@ import java.util.Locale
 abstract private[converter] class AbstractStringConverterDelegateSpec[J <: java.lang.Object, C <: jfxu.StringConverter[J], S <: Any, D <: StringConverterDelegate[_, S, C]] protected (javaConverterClass: Class[C], scalaConverterClass: Class[D], scalaClass: Class[S])
   extends SimpleSFXDelegateSpec[C, D](javaConverterClass, scalaConverterClass) {
 
-  protected val locale = Locale.US
-  
   private def runConverterForExamples {
 
-    val converter = this.getConverterForExample
+    val converter = getConverterForExample
 
     def runConversionsForExamples(s: S, string: String) = {
-      converter.toString(s) should be(string)
-      val result = converter.fromString(string)
-      result should equal(s)
+      val sToString = converter.toString(s)
+      sToString should be(string)
+
+      val stringToS = converter.fromString(string)
+      stringToS should equal(s)
     }
 
     examples.foreach(example => runConversionsForExamples(example._1, example._2))
