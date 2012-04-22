@@ -27,30 +27,31 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class ArcSpec extends FlatSpec with PropertyComparator {
-  "An Arc" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxss.Arc], classOf[Arc])
-  }
+/**
+ * Arc Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class ArcSpec
+  extends AbstractSFXDelegateSpec[jfxss.Arc, Arc, jfxss.ArcBuilder[_]](classOf[jfxss.Arc], classOf[Arc], classOf[jfxss.ArcBuilder[_]]) {
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxss.ArcBuilder[_]], classOf[Arc])
-  }
+  protected def getScalaClassInstance = new Arc
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxArc = new Arc()
+  protected def convertScalaClassToJavaClass(sfxArc: Arc) = {
     val jfxArc: jfxss.Arc = sfxArc
-    jfxArc should be (sfxArc.delegate)
+    jfxArc
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxArc = new jfxss.Arc()
+  protected def convertJavaClassToScalaClass(jfxArc: jfxss.Arc) = {
     val sfxArc: Arc = jfxArc
-    sfxArc.delegate should be (jfxArc)
+    sfxArc
   }
+
 }

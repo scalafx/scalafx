@@ -28,14 +28,30 @@
 package scalafx.scene.shape
 
 import collection.JavaConversions._
-import javafx.scene.{paint => jfxsp}
-import javafx.scene.{shape => jfxss}
+import javafx.scene.{ paint => jfxsp }
+import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
 import scalafx.scene.Node
 import scalafx.util.SFXDelegate
 
 object Shape {
   implicit def sfxShape2jfx(v: Shape) = v.delegate
+
+  /**
+   * Returns a new Shape which is created as an intersection of the specified input shapes.
+   */
+  def intersect(shape1: jfxss.Shape, shape2: jfxss.Shape) = jfxss.Shape.intersect(shape1, shape2)
+
+  /**
+   * Returns a new Shape which is created by subtracting the specified second shape from the first shape.
+   */
+  def subtract(shape1: jfxss.Shape, shape2: jfxss.Shape) = jfxss.Shape.subtract(shape1, shape2)
+
+  /**
+   * Returns a new Shape which is created as a union of the specified input shapes.
+   */
+  def union(shape1: jfxss.Shape, shape2: jfxss.Shape) = jfxss.Shape.union(shape1, shape2)
+
 }
 
 abstract class Shape(override val delegate: jfxss.Shape) extends Node(delegate) with SFXDelegate[jfxss.Shape] {

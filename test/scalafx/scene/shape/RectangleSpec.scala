@@ -27,30 +27,31 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class RectangleSpec extends FlatSpec with PropertyComparator {
-  "A Rectangle" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxss.Rectangle], classOf[Rectangle])
-  }
+/**
+ * Rectangle Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class RectangleSpec 
+  extends AbstractSFXDelegateSpec[jfxss.Rectangle, Rectangle, jfxss.RectangleBuilder[_]](classOf[jfxss.Rectangle], classOf[Rectangle], classOf[jfxss.RectangleBuilder[_]]) {
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxss.RectangleBuilder[_]], classOf[Rectangle])
-  }
+  protected def getScalaClassInstance = new Rectangle
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxRectangle = new Rectangle()
+  protected def convertScalaClassToJavaClass(sfxRectangle: Rectangle) = {
     val jfxRectangle: jfxss.Rectangle = sfxRectangle
-    jfxRectangle should be (sfxRectangle.delegate)
+    jfxRectangle
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxRectangle = new jfxss.Rectangle()
+  protected def convertJavaClassToScalaClass(jfxRectangle: jfxss.Rectangle) = {
     val sfxRectangle: Rectangle = jfxRectangle
-    sfxRectangle.delegate should be (jfxRectangle)
+    sfxRectangle
   }
+
 }

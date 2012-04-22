@@ -27,30 +27,31 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class EllipseSpec extends FlatSpec with PropertyComparator {
-  "An Ellipse" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxss.Ellipse], classOf[Ellipse])
-  }
+/**
+ * Ellipse Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class EllipseSpec
+  extends AbstractSFXDelegateSpec[jfxss.Ellipse, Ellipse, jfxss.EllipseBuilder[_]](classOf[jfxss.Ellipse], classOf[Ellipse], classOf[jfxss.EllipseBuilder[_]]) {
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxss.EllipseBuilder[_]], classOf[Ellipse])
-  }
+  protected def getScalaClassInstance = new Ellipse
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxEllipse = new Ellipse()
+  protected def convertScalaClassToJavaClass(sfxEllipse: Ellipse) = {
     val jfxEllipse: jfxss.Ellipse = sfxEllipse
-    jfxEllipse should be (sfxEllipse.delegate)
+    jfxEllipse
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxEllipse = new jfxss.Ellipse()
+  protected def convertJavaClassToScalaClass(jfxEllipse: jfxss.Ellipse) = {
     val sfxEllipse: Ellipse = jfxEllipse
-    sfxEllipse.delegate should be (jfxEllipse)
+    sfxEllipse
   }
+
 }

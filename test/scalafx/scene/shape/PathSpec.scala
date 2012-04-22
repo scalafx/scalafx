@@ -27,30 +27,31 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class PathSpec extends FlatSpec with PropertyComparator {
-  "A Path" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxss.Path], classOf[Path])
-  }
+/**
+ * Path Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class PathSpec
+  extends AbstractSFXDelegateSpec[jfxss.Path, Path, jfxss.PathBuilder[_]](classOf[jfxss.Path], classOf[Path], classOf[jfxss.PathBuilder[_]]) {
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxss.PathBuilder[_]], classOf[Path])
-  }
+  protected def getScalaClassInstance = new Path
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxPath = new Path()
+  protected def convertScalaClassToJavaClass(sfxPath: Path) = {
     val jfxPath: jfxss.Path = sfxPath
-    jfxPath should be (sfxPath.delegate)
+    jfxPath
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxPath = new jfxss.Path()
+  protected def convertJavaClassToScalaClass(jfxPath: jfxss.Path) = {
     val sfxPath: Path = jfxPath
-    sfxPath.delegate should be (jfxPath)
+    sfxPath
   }
+
 }

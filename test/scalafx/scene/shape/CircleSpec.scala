@@ -27,30 +27,31 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class CircleSpec extends FlatSpec with PropertyComparator {
-  "A Circle" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxss.Circle], classOf[Circle])
-  }
+/**
+ * Circle Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class CircleSpec
+  extends AbstractSFXDelegateSpec[jfxss.Circle, Circle, jfxss.CircleBuilder[_]](classOf[jfxss.Circle], classOf[Circle], classOf[jfxss.CircleBuilder[_]]) {
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxss.CircleBuilder[_]], classOf[Circle])
-  }
+  protected def getScalaClassInstance = new Circle
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxCircle = new Circle()
+  protected def convertScalaClassToJavaClass(sfxCircle: Circle) = {
     val jfxCircle: jfxss.Circle = sfxCircle
-    jfxCircle should be (sfxCircle.delegate)
+    jfxCircle
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxCircle = new jfxss.Circle()
+  protected def convertJavaClassToScalaClass(jfxCircle: jfxss.Circle) = {
     val sfxCircle: Circle = jfxCircle
-    sfxCircle.delegate should be (jfxCircle)
+    sfxCircle
   }
+
 }

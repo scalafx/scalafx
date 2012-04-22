@@ -27,30 +27,31 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class LineSpec extends FlatSpec with PropertyComparator {
-  "A Line" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxss.Line], classOf[Line])
-  }
+/**
+ * Line Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class LineSpec
+  extends AbstractSFXDelegateSpec[jfxss.Line, Line, jfxss.LineBuilder[_]](classOf[jfxss.Line], classOf[Line], classOf[jfxss.LineBuilder[_]]) {
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxss.LineBuilder[_]], classOf[Line])
-  }
+  protected def getScalaClassInstance = new Line
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxLine = new Line()
+  protected def convertScalaClassToJavaClass(sfxLine: Line) = {
     val jfxLine: jfxss.Line = sfxLine
-    jfxLine should be (sfxLine.delegate)
+    jfxLine
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxLine = new jfxss.Line()
+  protected def convertJavaClassToScalaClass(jfxLine: jfxss.Line) = {
     val sfxLine: Line = jfxLine
-    sfxLine.delegate should be (jfxLine)
+    sfxLine
   }
+
 }
