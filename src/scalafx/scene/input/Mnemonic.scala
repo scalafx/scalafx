@@ -27,28 +27,26 @@
 
 package scalafx.scene.input
 
-import javafx.scene.{input => jfxsi}
+import javafx.scene.{ input => jfxsi }
 import scalafx.Includes._
-import scalafx.scene.Node._
-import scalafx.scene.input.KeyCombination._
 import scalafx.scene.Node
 import scalafx.util.SFXDelegate
+import scalafx.util.FireDelegate
 
 object Mnemonic {
   implicit def sfxMnemonic2jfx(m: Mnemonic) = m.delegate
 }
 
-class Mnemonic(override val delegate: jfxsi.Mnemonic) extends SFXDelegate[jfxsi.Mnemonic] {
+class Mnemonic(override val delegate: jfxsi.Mnemonic)
+  extends SFXDelegate[jfxsi.Mnemonic]
+  with FireDelegate[jfxsi.Mnemonic] {
+
+  def firedDelegate = delegate
 
   /**
    * Constructs a Mnemonic with the specified target Node and trigger KeyCombination.
    */
   def this(node: Node, keyCombination: KeyCombination) = this(new jfxsi.Mnemonic(node, keyCombination))
-
-  /**
-   * Fire the ActionEvent
-   */
-  def fire = delegate.fire
 
   /**
    * The KeyCombination

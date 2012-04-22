@@ -27,25 +27,46 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.scene.{control => jfxsc, input => jfxsi}
-import javafx.{event => jfxe}
-
+import javafx.scene.{ control => jfxsc, input => jfxsi }
+import javafx.{ event => jfxe }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
+import scalafx.util.FireDelegate
 import scalafx.scene.input.MouseEvent
 
 object ButtonBase {
   implicit def sfxButtonBase2jfx(v: ButtonBase) = v.delegate
 }
 
-class ButtonBase(override val delegate: jfxsc.ButtonBase) extends Labeled(delegate) with SFXDelegate[jfxsc.ButtonBase] {
+class ButtonBase(override val delegate: jfxsc.ButtonBase)
+  extends Labeled(delegate)
+  with SFXDelegate[jfxsc.ButtonBase]
+  with FireDelegate[jfxsc.ButtonBase] {
+
+  def firedDelegate = delegate
+
+  /**
+   * Indicates that the button has been "armed" such that a mouse release will cause the button's action to be invoked.
+   */
   def armed = delegate.armedProperty
 
+  /**
+   * The button's action, which is invoked whenever the button is fired.
+   */
   def onAction = delegate.onActionProperty
-
   def onAction_=(aeh: jfxe.EventHandler[jfxe.ActionEvent]) {
     onAction() = aeh
   }
+
+  /**
+   * Arms the button.
+   */
+  def arm = delegate.arm
+
+  /**
+   * Disarms the button.
+   */
+  def disarm = delegate.disarm
 
   // for now only a few examples
 

@@ -36,23 +36,38 @@ object CheckBox {
   implicit def sfxCheckBox2jfx(v: CheckBox) = v.delegate
 }
 
-class CheckBox(override val delegate: jfxsc.CheckBox = new jfxsc.CheckBox) extends ButtonBase(delegate) with SFXDelegate[jfxsc.CheckBox] {
+class CheckBox(override val delegate: jfxsc.CheckBox = new jfxsc.CheckBox)
+  extends ButtonBase(delegate)
+  with SFXDelegate[jfxsc.CheckBox] {
 
+  /**
+   * Creates a check box with the specified text as its label.
+   */
+  def this(text: String) = this(new jfxsc.CheckBox(text))
+
+  /**
+   * Determines whether the user toggling the CheckBox should cycle through all three states: 
+   * checked, unchecked, and undefined.
+   */
   def allowIndeterminate = delegate.allowIndeterminateProperty
   def allowIndeterminate_=(b: Boolean) {
     allowIndeterminate() = b
   }
 
+  /**
+   * Determines whether the CheckBox is in the indeterminate state.
+   */
   def indeterminate = delegate.indeterminateProperty
   def indeterminate_=(b: Boolean) {
     indeterminate() = b
   }
 
+  /**
+   * Indicates whether this CheckBox is checked.
+   */
   def selected = delegate.selectedProperty
   def selected_=(b: Boolean) {
     selected() = b
   }
-
-  def fire = delegate.fire
 
 }

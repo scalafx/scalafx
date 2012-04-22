@@ -27,26 +27,42 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.scene.{control => jfxsc}
-
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
+import scalafx.scene.Node
 import scalafx.util.SFXDelegate
 
 object ToggleButton {
   implicit def sfxToggleButton2jfx(v: ToggleButton) = v.delegate
 }
 
-class ToggleButton(override val delegate: jfxsc.ToggleButton = new jfxsc.ToggleButton) extends ButtonBase(delegate) with SFXDelegate[jfxsc.ToggleButton] {
+class ToggleButton(override val delegate: jfxsc.ToggleButton = new jfxsc.ToggleButton)
+  extends ButtonBase(delegate)
+  with SFXDelegate[jfxsc.ToggleButton] {
 
+  /**
+   * Creates a toggle button with the specified text as its label.
+   */
+  def this(text: String) = this(new jfxsc.ToggleButton(text))
+
+  /**
+   * Creates a toggle button with the specified text and icon for its label.
+   */
+  def this(text: String, graphic: Node) = this(new jfxsc.ToggleButton(text, graphic))
+
+  /**
+   * Indicates whether this toggle button is selected.
+   */
   def selected = delegate.selectedProperty
-
   def selected_=(b: Boolean) {
     selected() = b
   }
 
+  /**
+   * The ToggleGroup to which this ToggleButton belongs.
+   */
   def toggleGroup = delegate.toggleGroupProperty
-
-  def toggleGroup_=(tg: jfxsc.ToggleGroup) {
+  def toggleGroup_=(tg: ToggleGroup) {
     toggleGroup() = tg
   }
 

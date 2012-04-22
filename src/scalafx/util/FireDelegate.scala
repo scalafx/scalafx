@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,44 +24,28 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.util
 
-import javafx.scene.{ control => jfxsc }
-import scalafx.Includes._
-import scalafx.util.SFXDelegate
-import scalafx.scene.Node
-
-object Button {
-  implicit def sfxButton2jfx(v: Button) = v.delegate
-}
-
-class Button(override val delegate: jfxsc.Button = new jfxsc.Button) extends ButtonBase(delegate) with SFXDelegate[jfxsc.Button] {
+/**
+ * Unify classes that contains a fire() method that has no return (void)
+ */
+trait FireDelegate[+D <: Object] {
 
   /**
-   * Creates a button with the specified text as its label.
+   * Defines a Type that contains a fire() method that has no return (void)
    */
-  def this(text: String) = this(new jfxsc.Button(text))
-
-  /**
-   * Creates a button with the specified text and icon for its label.
-   */
-  def this(text: String, graphic: Node) = this(new jfxsc.Button(text, graphic))
-
-  /**
-   * A Cancel Button is the button that receives a keyboard VK_ESC press, if no other node in the
-   * scene consumes it.
-   */
-  def cancelButton = delegate.cancelButtonProperty
-  def cancelButton_=(b: Boolean) {
-    cancelButton() = b
+  type Fired = {
+    def fire: Unit
   }
 
   /**
-   * A default Button is the button that receives a keyboard VK_ENTER press, if no other node in the
-   * scene consumes it.
+   * JavaFX class that contains a fire() method that has no return (void)
    */
-  def defaultButton = delegate.defaultButtonProperty
-  def defaultButton_=(b: Boolean) {
-    defaultButton() = b
-  }
+  protected def firedDelegate: Fired
+
+  /**
+   * Fires some kind of event.
+   */
+  def fire = firedDelegate.fire
 
 }

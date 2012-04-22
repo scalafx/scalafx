@@ -32,6 +32,7 @@ import javafx.scene.{ control => jfxsc }
 import javafx.{ event => jfxe }
 import javafx.scene.Node
 import scalafx.scene.input.KeyCombination
+import scalafx.util.FireDelegate
 
 object MenuItem {
   implicit def sfxMenuItem2jfx(m: MenuItem) = m.delegate
@@ -39,6 +40,7 @@ object MenuItem {
 
 class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   extends SFXDelegate[jfxsc.MenuItem]
+  with FireDelegate[jfxsc.MenuItem]
   with jfxe.EventTarget {
 
   /**
@@ -51,6 +53,8 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    * Node to the given node.
    */
   def this(text: String, graphic: Node) = this(new jfxsc.MenuItem(text, graphic))
+
+  def firedDelegate = delegate
 
   /**
    *
@@ -144,11 +148,6 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    * Construct an event dispatch chain for this target.
    */
   def buildEventDispatchChain(tail: jfxe.EventDispatchChain) = delegate.buildEventDispatchChain(tail)
-
-  /**
-   * Fires a new ActionEvent.
-   */
-  def fire = delegate.fire
 
   /**
    * Returns an observable map of properties on this menu item for use primarily by application

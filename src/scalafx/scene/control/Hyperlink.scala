@@ -57,6 +57,4 @@ class Hyperlink(override val delegate: jfxsc.Hyperlink = new jfxsc.Hyperlink)
     visited() = v
   }
 
-  def fire = delegate.fire
-
 }
