@@ -29,46 +29,33 @@ package scalafx.scene.shape
 
 import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import scalafx.util.PositionDelegate
-import scalafx.util.SFXDelegate
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.PositionDelegateSpec
 
-object ArcTo {
-  implicit def sfxArcTo2jfx(v: ArcTo) = v.delegate
+/**
+ * LineTo Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class LineToSpec
+  extends AbstractSFXDelegateSpec[jfxss.LineTo, LineTo, jfxss.LineToBuilder[_]](classOf[jfxss.LineTo], classOf[LineTo], classOf[jfxss.LineToBuilder[_]])
+  with PositionDelegateSpec[LineTo] {
 
-  def apply(radiusX: Double, radiusY: Double, xAxisRotation: Double, x: Double, y: Double, largeArcFlag: Boolean, sweepFlag: Boolean) =
-    new ArcTo(new jfxss.ArcTo(radiusX, radiusY, xAxisRotation, x, y, largeArcFlag, sweepFlag))
-}
+  val positionDelegate = getScalaClassInstance
 
-class ArcTo(override val delegate: jfxss.ArcTo = new jfxss.ArcTo)
-  extends PathElement(delegate)
-  with PositionDelegate
-  with SFXDelegate[jfxss.ArcTo] {
+  protected def getScalaClassInstance = new LineTo
 
-  def positionedDelegate = delegate.asInstanceOf[Positioned]
-
-  def XAxisRotation = delegate.XAxisRotationProperty
-  def XAxisRotation_=(v: Double) {
-    XAxisRotation() = v
+  protected def convertScalaClassToJavaClass(sfxLineTo: LineTo) = {
+    val jfxLineTo: jfxss.LineTo = sfxLineTo
+    jfxLineTo
   }
 
-  def sweepFlag = delegate.sweepFlagProperty
-  def sweepFlag_=(v: Boolean) {
-    sweepFlag() = v
-  }
-
-  def radiusY = delegate.radiusYProperty
-  def radiusY_=(v: Double) {
-    radiusY() = v
-  }
-
-  def radiusX = delegate.radiusXProperty
-  def radiusX_=(v: Double) {
-    radiusX() = v
-  }
-
-  def largeArcFlag = delegate.largeArcFlagProperty
-  def largeArcFlag_=(v: Boolean) {
-    largeArcFlag() = v
+  protected def convertJavaClassToScalaClass(jfxLineTo: jfxss.LineTo) = {
+    val sfxLineTo: LineTo = jfxLineTo
+    sfxLineTo
   }
 
 }

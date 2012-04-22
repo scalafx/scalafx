@@ -29,46 +29,31 @@ package scalafx.scene.shape
 
 import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import scalafx.util.PositionDelegate
-import scalafx.util.SFXDelegate
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-object ArcTo {
-  implicit def sfxArcTo2jfx(v: ArcTo) = v.delegate
+/**
+ * PathElement Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class PathElementSpec 
+  extends AbstractSFXDelegateSpec[jfxss.PathElement, PathElement, jfxss.PathElementBuilder[_]](classOf[jfxss.PathElement], classOf[PathElement], classOf[jfxss.PathElementBuilder[_]]) {
 
-  def apply(radiusX: Double, radiusY: Double, xAxisRotation: Double, x: Double, y: Double, largeArcFlag: Boolean, sweepFlag: Boolean) =
-    new ArcTo(new jfxss.ArcTo(radiusX, radiusY, xAxisRotation, x, y, largeArcFlag, sweepFlag))
-}
+  protected def getScalaClassInstance = new ClosePath
 
-class ArcTo(override val delegate: jfxss.ArcTo = new jfxss.ArcTo)
-  extends PathElement(delegate)
-  with PositionDelegate
-  with SFXDelegate[jfxss.ArcTo] {
-
-  def positionedDelegate = delegate.asInstanceOf[Positioned]
-
-  def XAxisRotation = delegate.XAxisRotationProperty
-  def XAxisRotation_=(v: Double) {
-    XAxisRotation() = v
+  protected def convertScalaClassToJavaClass(sfxPathElement: PathElement) = {
+    val jfxPathElement: jfxss.PathElement = sfxPathElement
+    jfxPathElement
   }
 
-  def sweepFlag = delegate.sweepFlagProperty
-  def sweepFlag_=(v: Boolean) {
-    sweepFlag() = v
-  }
-
-  def radiusY = delegate.radiusYProperty
-  def radiusY_=(v: Double) {
-    radiusY() = v
-  }
-
-  def radiusX = delegate.radiusXProperty
-  def radiusX_=(v: Double) {
-    radiusX() = v
-  }
-
-  def largeArcFlag = delegate.largeArcFlagProperty
-  def largeArcFlag_=(v: Boolean) {
-    largeArcFlag() = v
+  override def getJavaClassInstance = new jfxss.ClosePath
+  
+  protected def convertJavaClassToScalaClass(jfxPathElement: jfxss.PathElement) = {
+    val sfxPathElement: PathElement = jfxPathElement
+    sfxPathElement
   }
 
 }

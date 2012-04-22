@@ -27,24 +27,25 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
+import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
+import scalafx.util.PositionDelegate
 
 object MoveTo {
   implicit def sfxMoveTo2jfx(v: MoveTo) = v.delegate
 
-	def apply(x: Double, y: Double) = new MoveTo(new jfxss.MoveTo(x, y))
+  def apply(x: Double, y: Double) = new MoveTo(new jfxss.MoveTo(x, y))
 }
 
-class MoveTo(override val delegate:jfxss.MoveTo = new jfxss.MoveTo()) extends PathElement(delegate) with SFXDelegate[jfxss.MoveTo] {
-  def x = delegate.xProperty
-  def x_=(v: Double) {
-    x() = v
-  }
+class MoveTo(override val delegate: jfxss.MoveTo = new jfxss.MoveTo())
+  extends PathElement(delegate)
+  with PositionDelegate
+  with SFXDelegate[jfxss.MoveTo] {
 
-  def y = delegate.yProperty
-  def y_=(v: Double) {
-    y() = v
-  }
+  /**
+   * Defines the X and Y coordinates.
+   */
+  def positionedDelegate = delegate.asInstanceOf[Positioned]
+
 }

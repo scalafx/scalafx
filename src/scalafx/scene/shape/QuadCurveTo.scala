@@ -27,18 +27,28 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
+import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
+import scalafx.util.PositionDelegate
 import scalafx.util.SFXDelegate
 
 object QuadCurveTo {
   implicit def sfxQuadCurveTo2jfx(v: QuadCurveTo) = v.delegate
 
-  def apply(controlX: Double, controlY: Double, x: Double, y: Double) = 
+  def apply(controlX: Double, controlY: Double, x: Double, y: Double) =
     new QuadCurveTo(new jfxss.QuadCurveTo(controlX, controlY, x, y))
 }
 
-class QuadCurveTo(override val delegate:jfxss.QuadCurveTo = new jfxss.QuadCurveTo()) extends PathElement(delegate) with SFXDelegate[jfxss.QuadCurveTo] {
+class QuadCurveTo(override val delegate: jfxss.QuadCurveTo = new jfxss.QuadCurveTo())
+  extends PathElement(delegate)
+  with PositionDelegate
+  with SFXDelegate[jfxss.QuadCurveTo] {
+
+  /**
+   * Defines the X and Y coordinates of the final end point.
+   */
+  def positionedDelegate = delegate.asInstanceOf[Positioned]
+
   def controlX = delegate.controlXProperty
   def controlX_=(v: Double) {
     controlX() = v
@@ -49,13 +59,4 @@ class QuadCurveTo(override val delegate:jfxss.QuadCurveTo = new jfxss.QuadCurveT
     controlY() = v
   }
 
-  def x = delegate.xProperty
-  def x_=(v: Double) {
-    x() = v
-  }
-
-  def y = delegate.yProperty
-  def y_=(v: Double) {
-    y() = v
-  }
 }

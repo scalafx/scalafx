@@ -29,46 +29,32 @@ package scalafx.scene.shape
 
 import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import scalafx.util.PositionDelegate
-import scalafx.util.SFXDelegate
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.PositionDelegateSpec
 
-object ArcTo {
-  implicit def sfxArcTo2jfx(v: ArcTo) = v.delegate
+/**
+ * HLineTo Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class HLineToSpec
+  extends AbstractSFXDelegateSpec[jfxss.HLineTo, HLineTo, jfxss.HLineToBuilder[_]](classOf[jfxss.HLineTo], classOf[HLineTo], classOf[jfxss.HLineToBuilder[_]]) {
 
-  def apply(radiusX: Double, radiusY: Double, xAxisRotation: Double, x: Double, y: Double, largeArcFlag: Boolean, sweepFlag: Boolean) =
-    new ArcTo(new jfxss.ArcTo(radiusX, radiusY, xAxisRotation, x, y, largeArcFlag, sweepFlag))
-}
+  val positionDelegate = getScalaClassInstance
 
-class ArcTo(override val delegate: jfxss.ArcTo = new jfxss.ArcTo)
-  extends PathElement(delegate)
-  with PositionDelegate
-  with SFXDelegate[jfxss.ArcTo] {
+  protected def getScalaClassInstance = new HLineTo
 
-  def positionedDelegate = delegate.asInstanceOf[Positioned]
-
-  def XAxisRotation = delegate.XAxisRotationProperty
-  def XAxisRotation_=(v: Double) {
-    XAxisRotation() = v
+  protected def convertScalaClassToJavaClass(sfxHLineTo: HLineTo) = {
+    val jfxHLineTo: jfxss.HLineTo = sfxHLineTo
+    jfxHLineTo
   }
 
-  def sweepFlag = delegate.sweepFlagProperty
-  def sweepFlag_=(v: Boolean) {
-    sweepFlag() = v
-  }
-
-  def radiusY = delegate.radiusYProperty
-  def radiusY_=(v: Double) {
-    radiusY() = v
-  }
-
-  def radiusX = delegate.radiusXProperty
-  def radiusX_=(v: Double) {
-    radiusX() = v
-  }
-
-  def largeArcFlag = delegate.largeArcFlagProperty
-  def largeArcFlag_=(v: Boolean) {
-    largeArcFlag() = v
+  protected def convertJavaClassToScalaClass(jfxHLineTo: jfxss.HLineTo) = {
+    val sfxHLineTo: HLineTo = jfxHLineTo
+    sfxHLineTo
   }
 
 }

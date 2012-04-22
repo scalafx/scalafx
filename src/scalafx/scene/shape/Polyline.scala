@@ -27,7 +27,7 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
+import javafx.scene.{ shape => jfxss }
 import scala.collection.JavaConversions._
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
@@ -38,6 +38,10 @@ object Polyline {
   def apply(points: Double*) = new Polyline(new jfxss.Polyline(points: _*))
 }
 
-class Polyline(override val delegate:jfxss.Polyline = new jfxss.Polyline()) extends Shape(delegate) with SFXDelegate[jfxss.Polyline] {
-  def getPoints = delegate.getPoints
+class Polyline(override val delegate: jfxss.Polyline = new jfxss.Polyline) extends Shape(delegate) with SFXDelegate[jfxss.Polyline] {
+
+  /**
+   * Gets the coordinates of the PolyLine segments.
+   */
+  def points = delegate.getPoints
 }

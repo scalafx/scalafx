@@ -33,10 +33,23 @@ object ShapeIncludes extends ShapeIncludes
 
 trait ShapeIncludes {
   implicit def jfxArc2sfx(r: jfxss.Arc) = new Arc(r)
+  implicit def jfxArcTo2sfx(a: jfxss.ArcTo) = new ArcTo(a)
   implicit def jfxCircle2sfx(r: jfxss.Circle) = new Circle(r)
+  implicit def jfxClosePath2sfx(c: jfxss.ClosePath) = new ClosePath(c)
+  implicit def jfxCubicCurve2sfx(c: jfxss.CubicCurve) = new CubicCurve(c)
   implicit def jfxEllipse2sfx(r: jfxss.Ellipse) = new Ellipse(r)
+  implicit def jfxHLineTo2sfx(h: jfxss.HLineTo) = new HLineTo(h)
   implicit def jfxLine2sfx(r: jfxss.Line) = new Line(r)
+  implicit def jfxLineTo2sfx(l: jfxss.LineTo) = new LineTo(l)
+  implicit def jfxMoveTo2sfx(l: jfxss.MoveTo) = new MoveTo(l)
   implicit def jfxPath2sfx(r: jfxss.Path) = new Path(r)
+  implicit def jfxPathElement2sfx(e: jfxss.PathElement) = new PathElement(e) {}
+  implicit def jfxPolygon2sfx(p: jfxss.Polygon) = new Polygon(p)
+  implicit def jfxPolyline2sfx(p: jfxss.Polyline) = new Polyline(p)
+  implicit def jfxQuadCurve2sfx(q: jfxss.QuadCurve) = new QuadCurve(q)
+  implicit def jfxQuadCurveTo2sfx(q: jfxss.QuadCurveTo) = new QuadCurveTo(q)
   implicit def jfxRectangle2sfx(r: jfxss.Rectangle) = new Rectangle(r)
   implicit def jfxShape2sfx(s: jfxss.Shape) = new Shape(s) {}
+  implicit def jfxSVGPath2sfx(s: jfxss.SVGPath) = new SVGPath(s)
+  implicit def jfxVLineTo2sfx(v: jfxss.VLineTo) = new VLineTo(v)
 }

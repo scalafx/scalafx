@@ -27,9 +27,10 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
+import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
+import scalafx.util.PositionDelegate
 
 object LineTo {
   implicit def sfxLineTo2jfx(v: LineTo) = v.delegate
@@ -37,14 +38,14 @@ object LineTo {
   def apply(x: Double, y: Double) = new LineTo(new jfxss.LineTo(x, y))
 }
 
-class LineTo(override val delegate:jfxss.LineTo = new jfxss.LineTo()) extends PathElement(delegate) with SFXDelegate[jfxss.LineTo] {
-  def x = delegate.xProperty
-  def x_=(v: Double) {
-    x() = v
-  }
+class LineTo(override val delegate: jfxss.LineTo = new jfxss.LineTo())
+  extends PathElement(delegate)
+  with PositionDelegate
+  with SFXDelegate[jfxss.LineTo] {
 
-  def y = delegate.yProperty
-  def y_=(v: Double) {
-    y() = v
-  }
+  /**
+   * Defines the X and Y coordinates.
+   */
+  def positionedDelegate = delegate.asInstanceOf[Positioned]
+
 }
