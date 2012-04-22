@@ -24,36 +24,47 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.effect
+package scalafx.testutil
 
-import javafx.scene.{ effect => jfxse }
-import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.PositionDelegateSpec
+import org.scalatest.matchers.ShouldMatchers.be
+import org.scalatest.matchers.ShouldMatchers.convertToAnyShouldWrapper
+import org.scalatest.FlatSpec
+
+import scalafx.Includes.jfxDoubleProperty2sfx
+import scalafx.beans.property.DoubleProperty
+import scalafx.util.PositionDelegate
 
 /**
- * ImageInput Spec tests.
- *
- *
+ * Trait to test Position2DDelegate subclasses
  */
-@RunWith(classOf[JUnitRunner])
-class ImageInputSpec extends AbstractSFXDelegateSpec[jfxse.ImageInput, ImageInput, jfxse.ImageInputBuilder[_]](classOf[jfxse.ImageInput], classOf[ImageInput], classOf[jfxse.ImageInputBuilder[_]])
-  with PositionDelegateSpec[ImageInput] {
+trait PositionDelegateSpec[D <: PositionDelegate] extends FlatSpec {
 
-  val positionDelegate = new ImageInput
+  /**
+   * 
+   */
+  val positionDelegate: D
 
-  protected def getScalaClassInstance = new ImageInput
+  private def testDeslocation(testedProperty: DoubleProperty, propertyName: String) {
+    var moved = false
+    val observerDouble = new DoubleProperty(positionDelegate, propertyName)
 
-  protected def convertScalaClassToJavaClass(sfxObject: ImageInput) = {
-    val jfxImageInput: jfxse.ImageInput = sfxObject
-    jfxImageInput
+    testedProperty.value = -10.0
+
+    testedProperty.onChange(moved = true)
+    observerDouble <== testedProperty 
+
+    testedProperty.value = +101.0
+
+    moved should be(true)
+    observerDouble.value should be(+101)
   }
 
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.ImageInput) = {
-    val sfxImageInput: ImageInput = jfxObject
-    sfxImageInput
+  it should "have its X Coordinate observed when it is changed" in {
+    testDeslocation(positionDelegate.x, "X Property")
+  }
+
+  it should "have its Y Coordinate observed when it is changed" in {
+    testDeslocation(positionDelegate.y, "Y Property")
   }
 
 }

@@ -3,12 +3,16 @@ package scalafx.scene.transform
 import javafx.scene.{ transform => jfxst }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
+import scalafx.util.PositionDelegate
 
 object Scale {
   implicit def sfxScale2jfx(v: Scale) = v.delegate
 }
 
-class Scale(override val delegate: jfxst.Scale = new jfxst.Scale) extends Transform(delegate) with SFXDelegate[jfxst.Scale] {
+class Scale(override val delegate: jfxst.Scale = new jfxst.Scale)
+  extends Transform(delegate)
+  with PositionDelegate
+  with SFXDelegate[jfxst.Scale] {
 
   def this(x: Double, y: Double) = this(new jfxst.Scale(x, y))
 
@@ -17,6 +21,11 @@ class Scale(override val delegate: jfxst.Scale = new jfxst.Scale) extends Transf
   def this(x: Double, y: Double, pivotX: Double, pivotY: Double) = this(new jfxst.Scale(x, y, pivotX, pivotY))
 
   def this(x: Double, y: Double, z: Double, pivotX: Double, pivotY: Double, pivotZ: Double) = this(new jfxst.Scale(x, y, z, pivotX, pivotY, pivotZ))
+
+  /**
+   * Indicates the factor by which coordinates are scaled along the X, Y axis directions.
+   */
+  def positionedDelegate = delegate.asInstanceOf[Positioned]
 
   /**
    * Defines the X coordinate about which point the scale occurs.
@@ -40,22 +49,6 @@ class Scale(override val delegate: jfxst.Scale = new jfxst.Scale) extends Transf
   def pivotZ = delegate.pivotZProperty()
   def pivotZ_=(v: Double) {
     pivotZ() = v
-  }
-
-  /**
-   * Defines the factor by which coordinates are scaled along the X axis direction.
-   */
-  def x = delegate.xProperty()
-  def x_=(v: Double) {
-    x() = v
-  }
-
-  /**
-   * Defines the factor by which coordinates are scaled along the Y axis direction.
-   */
-  def y = delegate.yProperty()
-  def y_=(v: Double) {
-    y() = v
   }
 
   /**

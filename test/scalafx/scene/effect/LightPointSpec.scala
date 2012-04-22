@@ -31,6 +31,7 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.PositionDelegateSpec
 
 /**
  * Light.Point Spec tests.
@@ -38,7 +39,11 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class LightPointSpec extends SimpleSFXDelegateSpec[jfxse.Light.Point, Light.Point](classOf[jfxse.Light.Point], classOf[Light.Point]) {
+class LightPointSpec
+  extends SimpleSFXDelegateSpec[jfxse.Light.Point, Light.Point](classOf[jfxse.Light.Point], classOf[Light.Point])
+  with PositionDelegateSpec[Light.Point] {
+
+  val positionDelegate = new Light.Point
 
   protected def getScalaClassInstance = new Light.Point
 

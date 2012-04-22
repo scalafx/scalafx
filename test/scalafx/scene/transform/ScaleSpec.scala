@@ -34,17 +34,21 @@ import scalafx.testutil.PropertyComparator
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.testutil.PositionDelegateSpec
 
 /**
  * Scale Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ScaleSpec extends AbstractSFXDelegateSpec[jfxst.Scale, Scale, jfxst.ScaleBuilder[_]](classOf[jfxst.Scale], classOf[Scale], classOf[jfxst.ScaleBuilder[_]]) {
+class ScaleSpec
+  extends AbstractSFXDelegateSpec[jfxst.Scale, Scale, jfxst.ScaleBuilder[_]](classOf[jfxst.Scale], classOf[Scale], classOf[jfxst.ScaleBuilder[_]])
+  with PositionDelegateSpec[Scale] {
 
-  protected def getScalaClassInstance = new Scale(new jfxst.Scale) 
+  val positionDelegate = new Scale(new jfxst.Scale)
+  
+  protected def getScalaClassInstance = new Scale(new jfxst.Scale)
 
   protected def convertScalaClassToJavaClass(sfxControl: Scale) = {
     val jfxScale: jfxst.Scale = sfxControl

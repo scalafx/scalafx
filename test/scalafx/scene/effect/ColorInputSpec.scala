@@ -31,6 +31,7 @@ import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.PositionDelegateSpec
 
 /**
  * ColorInput Spec tests.
@@ -38,7 +39,11 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ColorInputSpec extends AbstractSFXDelegateSpec[jfxse.ColorInput, ColorInput, jfxse.ColorInputBuilder[_]](classOf[jfxse.ColorInput], classOf[ColorInput], classOf[jfxse.ColorInputBuilder[_]]) {
+class ColorInputSpec
+  extends AbstractSFXDelegateSpec[jfxse.ColorInput, ColorInput, jfxse.ColorInputBuilder[_]](classOf[jfxse.ColorInput], classOf[ColorInput], classOf[jfxse.ColorInputBuilder[_]])
+  with PositionDelegateSpec[ColorInput] {
+
+  val positionDelegate = new ColorInput
 
   protected def getScalaClassInstance = new ColorInput
 

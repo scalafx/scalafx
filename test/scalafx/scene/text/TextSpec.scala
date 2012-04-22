@@ -27,11 +27,12 @@
 
 package scalafx.scene.text
 
-import javafx.scene.{text => jfxst}
+import javafx.scene.{ text => jfxst }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.PositionDelegateSpec
 
 /**
  * Text Spec tests.
@@ -39,7 +40,11 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class TextSpec extends AbstractSFXDelegateSpec[jfxst.Text, Text, jfxst.TextBuilder[_]](classOf[jfxst.Text], classOf[Text], classOf[jfxst.TextBuilder[_]]) {
+class TextSpec
+  extends AbstractSFXDelegateSpec[jfxst.Text, Text, jfxst.TextBuilder[_]](classOf[jfxst.Text], classOf[Text], classOf[jfxst.TextBuilder[_]])
+  with PositionDelegateSpec[Text] {
+
+  val positionDelegate = new Text
 
   protected def getScalaClassInstance = new Text
 

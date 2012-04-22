@@ -34,16 +34,21 @@ import scalafx.testutil.PropertyComparator
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.PositionDelegateSpec
 
 /**
  * Shear Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ShearSpec extends AbstractSFXDelegateSpec[jfxst.Shear, Shear, jfxst.ShearBuilder[_]](classOf[jfxst.Shear], classOf[Shear], classOf[jfxst.ShearBuilder[_]]) {
+class ShearSpec
+  extends AbstractSFXDelegateSpec[jfxst.Shear, Shear, jfxst.ShearBuilder[_]](classOf[jfxst.Shear], classOf[Shear], classOf[jfxst.ShearBuilder[_]])
+  with PositionDelegateSpec[Shear] {
 
-  protected def getScalaClassInstance = new Shear(new jfxst.Shear) 
+  val positionDelegate = getScalaClassInstance
+
+  protected def getScalaClassInstance = new Shear(new jfxst.Shear)
 
   protected def convertScalaClassToJavaClass(sfxControl: Shear) = {
     val jfxShear: jfxst.Shear = sfxControl

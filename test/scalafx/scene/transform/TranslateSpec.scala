@@ -31,6 +31,7 @@ import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.PositionDelegateSpec
 
 /**
  * Translate Spec tests.
@@ -38,7 +39,11 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class TranslateSpec extends AbstractSFXDelegateSpec[jfxst.Translate, Translate, jfxst.TranslateBuilder[_]](classOf[jfxst.Translate], classOf[Translate], classOf[jfxst.TranslateBuilder[_]]) {
+class TranslateSpec
+  extends AbstractSFXDelegateSpec[jfxst.Translate, Translate, jfxst.TranslateBuilder[_]](classOf[jfxst.Translate], classOf[Translate], classOf[jfxst.TranslateBuilder[_]])
+  with PositionDelegateSpec[Translate] {
+
+  val positionDelegate = getScalaClassInstance
 
   protected def getScalaClassInstance = new Translate(new jfxst.Translate)
 

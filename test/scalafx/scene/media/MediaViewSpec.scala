@@ -31,14 +31,18 @@ import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.PositionDelegateSpec
 
 /**
  * MediaView Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class MediaViewSpec extends AbstractSFXDelegateSpec[jfxsm.MediaView, MediaView, jfxsm.MediaViewBuilder[_]](classOf[jfxsm.MediaView], classOf[MediaView], classOf[jfxsm.MediaViewBuilder[_]]) {
+class MediaViewSpec extends AbstractSFXDelegateSpec[jfxsm.MediaView, MediaView, jfxsm.MediaViewBuilder[_]](classOf[jfxsm.MediaView], classOf[MediaView], classOf[jfxsm.MediaViewBuilder[_]])
+  with PositionDelegateSpec[MediaView] {
+
+  val positionDelegate = new MediaView
 
   protected def getScalaClassInstance = new MediaView
 

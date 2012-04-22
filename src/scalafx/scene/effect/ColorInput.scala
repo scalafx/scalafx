@@ -31,12 +31,18 @@ import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
 import scalafx.scene.paint._
 import scalafx.util.SFXDelegate
+import scalafx.util.PositionDelegate
 
 object ColorInput {
   implicit def sfxColorInput2jfx(ci: ColorInput) = ci.delegate
 }
 
-class ColorInput(override val delegate: jfxse.ColorInput = new jfxse.ColorInput) extends Effect(delegate) with SFXDelegate[jfxse.ColorInput] {
+class ColorInput(override val delegate: jfxse.ColorInput = new jfxse.ColorInput)
+  extends Effect(delegate)
+  with PositionDelegate
+  with SFXDelegate[jfxse.ColorInput] {
+
+  def positionedDelegate = delegate.asInstanceOf[Positioned]
 
   /**
    * Creates a new instance of ColorInput with the specified x, y, width, height, and paint.
@@ -65,22 +71,6 @@ class ColorInput(override val delegate: jfxse.ColorInput = new jfxse.ColorInput)
   def width = delegate.widthProperty
   def width_=(v: Double) {
     width() = v
-  }
-
-  /**
-   * Sets the x location of the region to be flooded, relative to the local coordinate space of the content Node.
-   */
-  def x = delegate.xProperty
-  def x_=(v: Double) {
-    x() = v
-  }
-
-  /**
-   * Sets the y location of the region to be flooded, relative to the local coordinate space of the content Node.
-   */
-  def y = delegate.yProperty
-  def y_=(v: Double) {
-    y() = v
   }
 
 }

@@ -33,12 +33,16 @@ import scalafx.Includes._
 import javafx.scene.{ text => jfxst }
 import javafx.geometry.VPos
 import scalafx.scene.shape.Shape
+import scalafx.util.PositionDelegate
 
 object Text {
   implicit def sfxText2jfx(v: Text) = v.delegate
 }
 
-class Text(override val delegate: jfxst.Text = new jfxst.Text) extends Shape(delegate) with SFXDelegate[jfxst.Text] {
+class Text(override val delegate: jfxst.Text = new jfxst.Text)
+  extends Shape(delegate)
+  with PositionDelegate
+  with SFXDelegate[jfxst.Text] {
 
   /**
    * Creates an instance of Text containing the given string.
@@ -49,6 +53,12 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text) extends Shape(del
    * Creates an instance of Text on the given coordinates containing the given string.
    */
   def this(x: Double, y: Double, t: String) = this(new jfxst.Text(x, y, t))
+
+  /**
+   * Indicates the current x and y coordinates of the text origin.
+   *
+   */
+  def positionedDelegate = delegate.asInstanceOf[Positioned]
 
   /**
    * The 'alphabetic' (or roman) baseline offset from the Text node's layoutBounds.minY location.
@@ -130,19 +140,4 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text) extends Shape(del
     wrappingWidth() = v
   }
 
-  /**
-   * Defines the X coordinate of text origin.
-   */
-  def x = delegate.xProperty
-  def x_=(v: Double) {
-    x() = v
-  }
-
-  /**
-   * Defines the Y coordinate of text origin.
-   */
-  def y = delegate.yProperty
-  def y_=(v: Double) {
-    y() = v
-  }
 }

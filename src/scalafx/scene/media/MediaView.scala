@@ -33,17 +33,26 @@ import scalafx.util.Duration
 import scalafx.util.SFXDelegate
 import scalafx.scene.Node
 import scalafx.geometry.Rectangle2D
+import scalafx.util.PositionDelegate
 
 object MediaView {
   implicit def sfxMediaView2jfx(mv: MediaView) = mv.delegate
 }
 
-class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView) extends Node(delegate) with SFXDelegate[jfxsm.MediaView] {
+class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
+  extends Node(delegate)
+  with PositionDelegate
+  with SFXDelegate[jfxsm.MediaView] {
 
   /**
    * Creates a MediaView instance associated with the specified MediaPlayer.
    */
   def this(mediaPlayer: MediaPlayer) = this(new jfxsm.MediaView(mediaPlayer))
+
+  /**
+   * Indicates the current x and y coordinates of the MediaView origin.
+   */
+  def positionedDelegate = delegate.asInstanceOf[Positioned]
 
   /**
    * Determines the height of the bounding box within which the source media is resized as
@@ -103,22 +112,6 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView) ex
   def viewport = delegate.viewportProperty
   def viewport_=(v: Rectangle2D) {
     viewport() = v
-  }
-
-  /**
-   * Defines the current x coordinate of the MediaView origin.
-   */
-  def x = delegate.xProperty
-  def x_=(v: Double) {
-    x() = v
-  }
-
-  /**
-   * Defines the current y coordinate of the MediaView origin.
-   */
-  def y = delegate.yProperty
-  def y_=(v: Double) {
-    y() = v
   }
 
 }

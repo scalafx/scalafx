@@ -24,46 +24,45 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+package scalafx.util
 
-package scalafx.scene.effect
-
+import javafx.beans.{ property => jfxbp }
+import scalafx.beans.property.DoubleProperty
 import scalafx.Includes._
-import javafx.scene.{ effect => jfxse }
-import javafx.scene.{ image => jfxsi }
-import scalafx.util.SFXDelegate
-import scalafx.scene.image.Image
-import scalafx.util.PositionDelegate
 
-object ImageInput {
-  implicit def sfxImageInput2jfx(ii: ImageInput) = ii.delegate
-}
+/**
+ * Trait that unifies JavaFX classes that contains properties indicating localization in 2 
+ * dimensions, represented by xProperty and y yProperty and their respectives getter and setters.  
+ *  
+ */
+trait PositionDelegate {
 
-class ImageInput(override val delegate: jfxse.ImageInput = new jfxse.ImageInput)
-  extends Effect(delegate)
-  with PositionDelegate
-  with SFXDelegate[jfxse.ImageInput] {
+  type Positioned = {
+    def getX: java.lang.Double
+    def setX(x: java.lang.Double): Unit
+    def xProperty: jfxbp.DoubleProperty
+
+    def getY: java.lang.Double
+    def setY(y: java.lang.Double): Unit
+    def yProperty: jfxbp.DoubleProperty
+  }
+
+  def positionedDelegate: Positioned
+  
+  /**
+   * X Position
+   */
+  def x = positionedDelegate.xProperty
+  def x_=(v: Double) {
+    x() = v
+  }
 
   /**
-   * Indicates the x and y location of the source image, relative to the local coordinate space of the content Node. 
+   * Y Position
    */
-  def positionedDelegate = delegate.asInstanceOf[Positioned]
-
-  /**
-   * Creates a new instance of ImageInput with the specified source.
-   */
-  def this(source: Image) = this(new jfxse.ImageInput(source))
-
-  /**
-   * Creates a new instance of ImageInput with the specified source, x and y.
-   */
-  def this(source: Image, x: Double, y: Double) = this(new jfxse.ImageInput(source, x, y))
-
-  /**
-   * The source Image.
-   */
-  def source = delegate.sourceProperty
-  def source_=(v: Image) {
-    source() = v
+  def y = positionedDelegate.yProperty
+  def y_=(v: Double) {
+    y() = v
   }
 
 }

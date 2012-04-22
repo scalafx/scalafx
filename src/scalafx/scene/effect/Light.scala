@@ -31,6 +31,7 @@ import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
 import scalafx.util.SFXDelegate
 import scalafx.scene.paint.Color
+import scalafx.util.PositionDelegate
 
 object Light {
   implicit def sfxLight2jfx(l: Light) = l.delegate
@@ -74,25 +75,17 @@ object Light {
     implicit def sfxPoint2jfx(p: Point) = p.delegate
   }
 
-  class Point(override val delegate: jfxse.Light.Point = new jfxse.Light.Point) extends Light(delegate) with SFXDelegate[jfxse.Light.Point] {
+  class Point(override val delegate: jfxse.Light.Point = new jfxse.Light.Point)
+    extends Light(delegate)
+    with PositionDelegate
+    with SFXDelegate[jfxse.Light.Point] {
 
     def this(x: Double, y: Double, z: Double, color: Color) = this(new jfxse.Light.Point(x, y, z, color))
 
     /**
-     * The x coordinate of the light position.
+     * Indicates the x and y coordinates of the light position.
      */
-    def x = delegate.xProperty
-    def x_=(v: Double) {
-      x() = v
-    }
-
-    /**
-     * The y coordinate of the light position.
-     */
-    def y = delegate.yProperty
-    def y_=(v: Double) {
-      y() = v
-    }
+    def positionedDelegate = delegate.asInstanceOf[Positioned]
 
     /**
      * The z coordinate of the light position.
@@ -157,7 +150,7 @@ object Light {
 
 }
 
-abstract class Light protected (override val delegate: jfxse.Light)  extends SFXDelegate[jfxse.Light] {
+abstract class Light protected (override val delegate: jfxse.Light) extends SFXDelegate[jfxse.Light] {
 
   /**
    * The color of the light source.
