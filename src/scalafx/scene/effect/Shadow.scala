@@ -31,12 +31,17 @@ import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
 import scalafx.util.SFXDelegate
 import scalafx.scene.paint.Color
+import scalafx.util.DimensionDelegate
 
 object Shadow {
   implicit def sfxShadow2jfx(s: Shadow) = s.delegate
 }
 
-class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow) extends Effect(delegate) with InputedEffect with SFXDelegate[jfxse.Shadow] {
+class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
+  extends Effect(delegate)
+  with InputedEffect
+  with DimensionDelegate
+  with SFXDelegate[jfxse.Shadow] {
 
   /**
    * Creates a new instance of Shadow with the specified blurType, color, radius.
@@ -47,6 +52,11 @@ class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow) extends Eff
    * Creates a new instance of Shadow with specified radius and color.
    */
   def this(radius: Double, color: Color) = this(new jfxse.Shadow(radius, color))
+
+  /**
+   * The vertical and horizontal size of the shadow blur kernel.
+   */
+  def dimensionedDelegate = delegate.asInstanceOf[Dimensioned]
 
   def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
@@ -67,27 +77,11 @@ class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow) extends Eff
   }
 
   /**
-   * The vertical size of the shadow blur kernel.
-   */
-  def height = delegate.heightProperty
-  def height_=(v: Double) {
-    height() = v
-  }
-
-  /**
    * The radius of the shadow blur kernel.
    */
   def radius = delegate.radiusProperty
   def radius_=(v: Double) {
     radius() = v
-  }
-
-  /**
-   * The horizontal size of the shadow blur kernel.
-   */
-  def width = delegate.widthProperty
-  def width_=(v: Double) {
-    width() = v
   }
 
 }

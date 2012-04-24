@@ -29,18 +29,28 @@ package scalafx.scene.effect
 
 import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
-import scalafx.util.SFXDelegate
 import scalafx.scene.paint.Color
+import scalafx.util.DimensionDelegate
+import scalafx.util.SFXDelegate
 
 object InnerShadow {
   implicit def sfxInnerShadow2jfx(ii: InnerShadow) = ii.delegate
 }
 
-class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShadow) extends Effect(delegate) with InputedEffect with SFXDelegate[jfxse.InnerShadow] {
+class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShadow)
+  extends Effect(delegate)
+  with InputedEffect
+  with DimensionDelegate
+  with SFXDelegate[jfxse.InnerShadow] {
 
   def this(blurType: jfxse.BlurType, color: Color, radius: Double, choke: Double, offsetX: Double, offsetY: Double) = this(new jfxse.InnerShadow(blurType, color, radius, choke, offsetX, offsetY))
 
   def this(radius: Double, color: Color) = this(new jfxse.InnerShadow(radius, color))
+
+  /**
+   * The vertical and horizontal size of the shadow blur kernel.
+   */
+  def dimensionedDelegate = delegate.asInstanceOf[Dimensioned]
 
   def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
@@ -69,14 +79,6 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
   }
 
   /**
-   * The vertical size of the shadow blur kernel.
-   */
-  def height = delegate.heightProperty
-  def height_=(v: Double) {
-    height() = v
-  }
-
-  /**
    * The shadow offset in the x direction, in pixels.
    */
   def offsetX = delegate.offsetXProperty
@@ -98,14 +100,6 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
   def radius = delegate.radiusProperty
   def radius_=(v: Double) {
     radius() = v
-  }
-
-  /**
-   * The horizontal size of the shadow blur kernel.
-   */
-  def width = delegate.widthProperty
-  def width_=(v: Double) {
-    width() = v
   }
 
 }

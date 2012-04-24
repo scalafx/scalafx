@@ -28,40 +28,39 @@
 package scalafx.scene.shape
 
 import scalafx.Includes._
-import javafx.scene.{shape => jfxss}
+import javafx.scene.{ shape => jfxss }
 import scalafx.scene.paint._
 import scalafx.util.SFXDelegate
+import scalafx.util.PositionDelegate
+import scalafx.util.DimensionDelegate
 
 object Rectangle {
   implicit def sfxRectangle2jfx(v: Rectangle) = v.delegate
 
   def apply(width: Double, height: Double) = new Rectangle(new jfxss.Rectangle(width, height))
-  def apply(x: Double, y: Double, width: Double, height: Double) = 
+
+  def apply(x: Double, y: Double, width: Double, height: Double) =
     new Rectangle(new jfxss.Rectangle(x, y, width, height))
-  def apply(width: Double, height: Double, fill: Paint) = 
+
+  def apply(width: Double, height: Double, fill: Paint) =
     new Rectangle(new jfxss.Rectangle(width, height, fill))
 }
 
-class Rectangle(override val delegate:jfxss.Rectangle = new jfxss.Rectangle()) extends Shape(delegate) with SFXDelegate[jfxss.Rectangle] {
-  def x = delegate.xProperty
-  def x_=(v: Double) {
-    x() = v
-  }
+class Rectangle(override val delegate: jfxss.Rectangle = new jfxss.Rectangle())
+  extends Shape(delegate)
+  with SFXDelegate[jfxss.Rectangle]
+  with PositionDelegate
+  with DimensionDelegate {
 
-  def y = delegate.yProperty
-  def y_=(v: Double) {
-    y() = v
-  }
+  /**
+   * Defines the height and width of the rectangle.
+   */
+  def dimensionedDelegate = delegate.asInstanceOf[Dimensioned]
 
-  def width = delegate.widthProperty
-  def width_=(v: Double) {
-    width() = v
-  }
-
-  def height = delegate.heightProperty
-  def height_=(v: Double) {
-    height() = v
-  }
+  /**
+   * Defines the X and Y coordinates of the upper-left corner of the rectangle.
+   */
+  def positionedDelegate = delegate.asInstanceOf[Positioned]
 
   def arcWidth = delegate.arcWidthProperty
   def arcWidth_=(v: Double) {

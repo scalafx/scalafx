@@ -24,37 +24,47 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.effect
+package scalafx.testutil
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import javafx.scene.{ effect => jfxse }
-import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
-import scalafx.testutil.DimensionDelegateSpec
+import org.scalatest.matchers.ShouldMatchers.be
+import org.scalatest.matchers.ShouldMatchers.convertToAnyShouldWrapper
+import org.scalatest.FlatSpec
+import scalafx.Includes.jfxDoubleProperty2sfx
+import scalafx.beans.property.DoubleProperty
+import scalafx.util.PositionDelegate
+import scalafx.util.DimensionDelegate
 
 /**
- * BoxBlur Spec tests.
- *
- *
+ * Trait to test DimensionDelegate subclasses
  */
-@RunWith(classOf[JUnitRunner])
-class BoxBlurSpec
-  extends AbstractSFXDelegateSpec[jfxse.BoxBlur, BoxBlur, jfxse.BoxBlurBuilder[_]](classOf[jfxse.BoxBlur], classOf[BoxBlur], classOf[jfxse.BoxBlurBuilder[_]])
-  with DimensionDelegateSpec[BoxBlur] {
+trait DimensionDelegateSpec[D <: DimensionDelegate] extends FlatSpec {
 
-  val dimensionDelegate = getScalaClassInstance
+  /**
+   * 
+   */
+  val dimensionDelegate: D
 
-  protected def getScalaClassInstance = new BoxBlur(new jfxse.BoxBlur)
+  private def testDeslocation(testedProperty: DoubleProperty, propertyName: String) {
+    var moved = false
+    val observerDouble = new DoubleProperty(dimensionDelegate, propertyName)
 
-  protected def convertScalaClassToJavaClass(sfxObject: BoxBlur) = {
-    val jfxBoxBlur: jfxse.BoxBlur = sfxObject
-    jfxBoxBlur
+    testedProperty.value = -10.0
+
+    testedProperty.onChange(moved = true)
+    observerDouble <== testedProperty 
+
+    testedProperty.value = +101.0
+
+    moved should be(true)
+    observerDouble.value should be(+101)
   }
 
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.BoxBlur) = {
-    val sfxBoxBlur: BoxBlur = jfxObject
-    sfxBoxBlur
+  it should "have its Height observed when it is changed" in {
+    testDeslocation(dimensionDelegate.height, "Height Property")
+  }
+
+  it should "have its Width observed when it is changed" in {
+    testDeslocation(dimensionDelegate.width, "Width Property")
   }
 
 }

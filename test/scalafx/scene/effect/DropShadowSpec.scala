@@ -26,23 +26,28 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{effect => jfxse}
+import javafx.scene.{ effect => jfxse }
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.DimensionDelegateSpec
 
 /**
  * DropShadow Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class DropShadowSpec extends AbstractSFXDelegateSpec[jfxse.DropShadow, DropShadow, jfxse.DropShadowBuilder[_]](classOf[jfxse.DropShadow], classOf[DropShadow], classOf[jfxse.DropShadowBuilder[_]]) {
+class DropShadowSpec
+  extends AbstractSFXDelegateSpec[jfxse.DropShadow, DropShadow, jfxse.DropShadowBuilder[_]](classOf[jfxse.DropShadow], classOf[DropShadow], classOf[jfxse.DropShadowBuilder[_]])
+  with DimensionDelegateSpec[DropShadow] {
 
-  protected def getScalaClassInstance = new DropShadow(new jfxse.DropShadow)
+  val dimensionDelegate = getScalaClassInstance
+
+  protected def getScalaClassInstance = new DropShadow
 
   protected def convertScalaClassToJavaClass(sfxObject: DropShadow) = {
     val jfxDropShadow: jfxse.DropShadow = sfxObject

@@ -31,6 +31,7 @@ import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.DimensionDelegateSpec
 
 /**
  * Shadow Spec tests.
@@ -38,7 +39,11 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ShadowSpec extends AbstractSFXDelegateSpec[jfxse.Shadow, Shadow, jfxse.ShadowBuilder[_]](classOf[jfxse.Shadow], classOf[Shadow], classOf[jfxse.ShadowBuilder[_]]) {
+class ShadowSpec
+  extends AbstractSFXDelegateSpec[jfxse.Shadow, Shadow, jfxse.ShadowBuilder[_]](classOf[jfxse.Shadow], classOf[Shadow], classOf[jfxse.ShadowBuilder[_]])
+  with DimensionDelegateSpec[Shadow] {
+
+  val dimensionDelegate = getScalaClassInstance
 
   protected def getScalaClassInstance = new Shadow
 
