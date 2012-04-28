@@ -406,6 +406,9 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Specifies how opaque (that is, solid) the Node appears.
    */
   def opacity = delegate.opacityProperty
+  def opacity_=(v: Double) {
+    opacity() = v
+  }
 
   /**
    * The parent of this Node.

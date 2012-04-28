@@ -40,7 +40,9 @@ object Window {
   implicit def sfxWindow2jfx(v: Window) = v.delegate
 }
 
-class Window protected (override val delegate: jfxs.Window) extends SFXDelegate[jfxs.Window] with jfxe.EventTarget {
+class Window protected (override val delegate: jfxs.Window)
+  extends SFXDelegate[jfxs.Window]
+  with jfxe.EventTarget {
 
   /**
    * Specifies the event dispatcher for this node.
@@ -59,6 +61,9 @@ class Window protected (override val delegate: jfxs.Window) extends SFXDelegate[
    * The height of this Stage.
    */
   def height = delegate.heightProperty
+  def height_=(h: Double) {
+    delegate.setHeight(h)
+  }
 
   /**
    * Called when there is an external request to close this Window.
@@ -122,6 +127,9 @@ class Window protected (override val delegate: jfxs.Window) extends SFXDelegate[
    * The width of this Stage.
    */
   def width = delegate.widthProperty
+  def width_=(w: Double) {
+    delegate.setWidth(w)
+  }
 
   /**
    * The horizontal location of this Stage on the screen.
@@ -136,57 +144,56 @@ class Window protected (override val delegate: jfxs.Window) extends SFXDelegate[
   /*
    * Registers an event filter to this node.
    */
-//  def addEventFilter[T <: Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[_]) = delegate.addEventFilter(eventType.asInstanceOf[jfxe.EventType[jfxe.Event]], eventFilter)
-  
+  //  def addEventFilter[T <: Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[_]) = delegate.addEventFilter(eventType.asInstanceOf[jfxe.EventType[jfxe.Event]], eventFilter)
+
   /*
    * Registers an event handler to this node.
    */
-//  def addEventHandler[T <: Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[_])  = delegate.addEventHandler(eventType.asInstanceOf[jfxe.EventType[jfxe.Event]], eventFilter)
+  //  def addEventHandler[T <: Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[_])  = delegate.addEventHandler(eventType.asInstanceOf[jfxe.EventType[jfxe.Event]], eventFilter)
 
   /**
    * Construct an event dispatch chain for this stage.
    */
   def buildEventDispatchChain(tail: EventDispatchChain) = delegate.buildEventDispatchChain(tail)
-  
+
   /**
    * Sets x and y properties on this Window so that it is centered on the screen.
    */
   def centerOnScreen = delegate.centerOnScreen
-  
+
   /**
    * Whether or not this Window has the keyboard or input focus.
    */
   def fireEvent(event: Event) = delegate.fireEvent(event)
-  
+
   /**
    * Attempts to hide this Window by setting the visibility to false.
    */
   def hide = delegate.hide
-  
+
   /*
    * Unregisters a previously registered event filter from this node.
    */
-//  def removeEventFilter[T <: Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[_]) = delegate.removeEventFilter(eventType.asInstanceOf[jfxe.EventType[jfxe.Event]], eventFilter)
-  
+  //  def removeEventFilter[T <: Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[_]) = delegate.removeEventFilter(eventType.asInstanceOf[jfxe.EventType[jfxe.Event]], eventFilter)
+
   /*
    * Unregisters a previously registered event handler from this node.
    */
-//  def removeEventHandler[T <: Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[_])  = delegate.removeEventHandler(eventType.asInstanceOf[jfxe.EventType[jfxe.Event]], eventFilter)
+  //  def removeEventHandler[T <: Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[_])  = delegate.removeEventHandler(eventType.asInstanceOf[jfxe.EventType[jfxe.Event]], eventFilter)
 
   /**
    * Requests that this Window get the input focus.
    */
-  def requestFocus= delegate.requestFocus
-  
+  def requestFocus = delegate.requestFocus
+
   /*
    * Attempts to show this Window by setting visibility to true
    */
-//  protected def show = delegate.show
-  
+  //  protected def show = delegate.show
+
   /**
    * Set the width and height of this Window to match the size of the content of this Window's Scene.
    */
   def sizeToScene = delegate.sizeToScene
-  
-  
+
 }
