@@ -55,6 +55,11 @@ class Stage(override val delegate: jfxs.Stage = JFXApp.STAGE)
   }
 
   /**
+   * Gets the icon images to be used in the window decorations and when minimized.
+   */
+  def icons = delegate.getIcons
+
+  /**
    * Defines whether the Stage is iconified or not.
    */
   def iconified = delegate.iconifiedProperty
@@ -115,4 +120,10 @@ class Stage(override val delegate: jfxs.Stage = JFXApp.STAGE)
       case false => delegate.hide()
     }
   }
+
+  /**
+   * Retrieves the style attribute for this stage.
+   */
+  def style = delegate.getStyle
+
 }

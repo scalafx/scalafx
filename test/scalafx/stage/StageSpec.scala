@@ -27,15 +27,35 @@
 
 package scalafx.stage
 
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
-import scalafx.testutil.PropertyComparator
+import javafx.{ stage => jfxs }
+import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.RunOnApplicationThread
 
+/**
+ * Stage Spec tests.
+ *
+ *
+ */
 @RunWith(classOf[JUnitRunner])
-class StageSpec extends FlatSpec with PropertyComparator {
-  "A Stage" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[javafx.stage.Stage], classOf[Stage])
+class StageSpec
+  extends AbstractSFXDelegateSpec[jfxs.Stage, Stage, jfxs.StageBuilder[_]](classOf[jfxs.Stage], classOf[Stage], classOf[jfxs.StageBuilder[_]]) 
+  with RunOnApplicationThread {
+
+  protected def getScalaClassInstance = new Stage
+
+  protected def convertScalaClassToJavaClass(sfxControl: Stage) = {
+    val jfxStage: jfxs.Stage = sfxControl
+    jfxStage
   }
+
+  override protected def getJavaClassInstance = new jfxs.Stage
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxs.Stage) = {
+    val sfxStage: Stage = jfxControl
+    sfxStage
+  }
+
 }
