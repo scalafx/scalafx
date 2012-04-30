@@ -67,8 +67,8 @@ class ColumnConstraints(override val delegate: jfxsl.ColumnConstraints = new jfx
    * The horizontal alignment for the column.
    */
   def halignment = delegate.halignmentProperty
-  def halignment_=(v: jfxsl.Priority) {
-    hgrow() = v
+  def halignment_=(v: jfxg.HPos) {
+    halignment() = v
   }
 
   /**

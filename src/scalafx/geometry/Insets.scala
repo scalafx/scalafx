@@ -33,22 +33,44 @@ import scalafx.util.SFXDelegate
 object Insets {
   implicit def sfxInsets2jfx(i: Insets) = i.delegate
 
+  /**
+   * Empty insets. An Insets instance with all offsets equal to zero.
+   */
   val Empty = jfxg.Insets.EMPTY
 
-  def apply(topRightBottomLeft: Int) = new jfxg.Insets(topRightBottomLeft)
+  /**
+   * Constructs a new Insets instance with same value for all four offsets.
+   */
+  def apply(topRightBottomLeft: Double) = new jfxg.Insets(topRightBottomLeft)
 
-  def apply(top: Int, right: Int, bottom: Int, left: Int) = new jfxg.Insets(top, right, bottom, left)
+  /**
+   * Constructs a new Insets instance with four different offsets.
+   */
+  def apply(top: Double, right: Double, bottom: Double, left: Double) =
+    new jfxg.Insets(top, right, bottom, left)
 
 }
 
 class Insets(override val delegate: jfxg.Insets) extends SFXDelegate[jfxg.Insets] {
 
+  /**
+   * The inset on the top side
+   */
   def top = delegate.getTop
 
+  /**
+   * The inset on the right side
+   */
   def right = delegate.getRight
 
+  /**
+   * The inset on the bottom side
+   */
   def bottom = delegate.getBottom
 
+  /**
+   * The inset on the left side
+   */
   def left = delegate.getLeft
 
 }
