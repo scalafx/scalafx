@@ -15,6 +15,7 @@ trait ControlIncludes {
   implicit def jfxRadioButton2sfx(rb: jfxsc.RadioButton) = new RadioButton(rb)
   implicit def jfxButtonBase2sfx(b: jfxsc.ButtonBase) = new ButtonBase(b)
   implicit def jfxButton2sfx(b: jfxsc.Button) = new Button(b)
+  implicit def jfxCell2sfx[T](c: jfxsc.Cell[T]) = new Cell[T](c)
   implicit def jfxChoiceBox2sfx[J <: AnyRef](cb: jfxsc.ChoiceBox[J]) = new ChoiceBox[J](cb)
   implicit def jfxCheckBox2sfx(c: jfxsc.CheckBox) = new CheckBox(c)
   implicit def jfxControl2sfx(c: jfxsc.Control) = new Control(c) {}
@@ -22,6 +23,8 @@ trait ControlIncludes {
   implicit def jfxComboBox2sfx[T](v: jfxsc.ComboBox[T]) = new ComboBox[T](v)
   implicit def jfxFocusModel2sfx[T](v: jfxsc.FocusModel[T]) = new FocusModel[T](v) {}
   implicit def jfxHyperlink2sfx(h: jfxsc.Hyperlink) = new Hyperlink(h)
+  implicit def jfxIndexedCell2sfx[T](c: jfxsc.IndexedCell[T]) = new IndexedCell[T](c)
+  implicit def jfxIndexRange2sfx(r: jfxsc.IndexRange) = new IndexRange(r)
   implicit def jfxLabel2sfx(l: jfxsc.Label) = new Label(l)
   implicit def jfxLabeled2sfx(l: jfxsc.Labeled) = new Labeled(l) {}
   implicit def jfxMenuItem2sfx(m: jfxsc.MenuItem) = new MenuItem(m)
