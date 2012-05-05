@@ -29,9 +29,12 @@ package scalafx.scene.control
 
 import scala.annotation.implicitNotFound
 
-import javafx.scene.{control => jfxsc}
-import javafx.{collections => jfxc}
+import javafx.scene.{ control => jfxsc }
+import javafx.{ collections => jfxc }
 import scalafx.Includes._
+import scalafx.Includes._
+import scalafx.collections.ObservableBuffer._
+import scalafx.collections.ObservableBuffer
 import scalafx.util.StringConverter._
 import scalafx.util.SFXDelegate
 import scalafx.util.StringConverter
@@ -40,7 +43,21 @@ object ComboBox {
   implicit def sfxComboBox2jfx[T](cb: ComboBox[T]) = cb.delegate
 }
 
-class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[T]) extends ComboBoxBase(delegate) with SFXDelegate[jfxsc.ComboBox[T]] {
+class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[T])
+  extends ComboBoxBase(delegate)
+  with SFXDelegate[jfxsc.ComboBox[T]] {
+
+  /**
+   * Creates a default ComboBox instance from a [[scalafx.collections.ObservableBuffer]]
+   * with the provided items list and a default selection model.
+   */
+  def this(items: ObservableBuffer[T]) = this(new jfxsc.ComboBox[T](items))
+
+  /**
+   * Creates a default ComboBox instance from a [[scala.Seq]]
+   * with the provided items list and a default selection model.
+   */
+  def this(items: Seq[T]) = this(new jfxsc.ComboBox[T](ObservableBuffer.empty ++ items))
 
   /**
    * Providing a custom cell factory allows for complete customization of the rendering of items in the ComboBox.

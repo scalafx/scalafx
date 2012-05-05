@@ -43,7 +43,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class ComboBoxSpec[J] extends AbstractSFXDelegateSpec[jfxsc.ComboBox[J], ComboBox[J], jfxsc.ComboBoxBuilder[J, _]](classOf[jfxsc.ComboBox[J]], classOf[ComboBox[J]], classOf[jfxsc.ComboBoxBuilder[J, _]]) {
 
-  protected def getScalaClassInstance = new ComboBox[J](getJavaClassInstance) {}
+  protected def getScalaClassInstance = new ComboBox[J]
 
   protected def convertScalaClassToJavaClass(sfxControl: ComboBox[J]) = {
     val jfxComboBox: jfxsc.ComboBox[J] = sfxControl
