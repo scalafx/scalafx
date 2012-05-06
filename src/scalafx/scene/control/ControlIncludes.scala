@@ -27,6 +27,9 @@ trait ControlIncludes {
   implicit def jfxIndexRange2sfx(r: jfxsc.IndexRange) = new IndexRange(r)
   implicit def jfxLabel2sfx(l: jfxsc.Label) = new Label(l)
   implicit def jfxLabeled2sfx(l: jfxsc.Labeled) = new Labeled(l) {}
+  implicit def jfxListCell[T](l: jfxsc.ListCell[T]) = new ListCell(l)
+  implicit def jfxListView2sfx[T](l: jfxsc.ListView[T]) = new ListView(l)
+  implicit def jfxListViewEditEvent2sfx[T](l: jfxsc.ListView.EditEvent[T]) = new ListView.EditEvent(l)
   implicit def jfxMenuItem2sfx(m: jfxsc.MenuItem) = new MenuItem(m)
   implicit def jfxMultipleSelectionModel2sfx[T](v: jfxsc.MultipleSelectionModel[T]) = new MultipleSelectionModel[T](v) {}
   implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s) {}
