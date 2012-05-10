@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,39 +27,26 @@
 
 package scalafx.scene.control
 
+import org.junit.runner.RunWith
 import javafx.scene.{control => jfxsc}
-import scalafx.util.SFXDelegate
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.Includes._
-import collection.JavaConversions._
 
-object MenuBar {
-  implicit def sfxMenuBar2jfx(cb: MenuBar) = cb.delegate
-}
+@RunWith(classOf[JUnitRunner])
+class MenuSpec extends AbstractSFXDelegateSpec[jfxsc.Menu, Menu, jfxsc.MenuBuilder[_]](classOf[jfxsc.Menu], classOf[Menu], classOf[jfxsc.MenuBuilder[_]]) {
+  protected def getScalaClassInstance = new Menu(new jfxsc.Menu("default"))
 
-class MenuBar(override val delegate: jfxsc.MenuBar = new jfxsc.MenuBar()) extends Control(delegate) with SFXDelegate[jfxsc.MenuBar] {
-
-  /**
-   * Gets the list of Menus for this instance.
-   */
-  def menus = delegate.getMenus
-
-  /**
-   * Sets the list of Menus for this instance.
-   */
-  def menus_=(v: Iterable[Menu]) = {
-    menus.setAll(v.map(_.delegate))
+  protected def convertScalaClassToJavaClass(sfxControl: Menu) = {
+    val jfxMenu: jfxsc.Menu = sfxControl
+    jfxMenu
   }
 
-  /**
-   * Gets the useSystemMenuBar for this instance.
-   */
-  def useSystemMenuBar = delegate.useSystemMenuBarProperty
+  override protected def getJavaClassInstance = new jfxsc.Menu("default")
 
-  /**
-   * Sets the useSystemMenuBar for this instance.
-   */
-  def useSystemMenuBar_=(v: Boolean) {
-    useSystemMenuBar() = v
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Menu) = {
+    val sfxMenu: Menu = jfxControl
+    sfxMenu
   }
 
 }

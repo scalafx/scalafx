@@ -30,6 +30,8 @@ trait ControlIncludes {
   implicit def jfxListCell[T](l: jfxsc.ListCell[T]) = new ListCell(l)
   implicit def jfxListView2sfx[T](l: jfxsc.ListView[T]) = new ListView(l)
   implicit def jfxListViewEditEvent2sfx[T](l: jfxsc.ListView.EditEvent[T]) = new ListView.EditEvent(l)
+  implicit def jfxMenu2sfx(h: jfxsc.Menu) = new Menu(h)
+  implicit def jfxMenuBar2sfx(h: jfxsc.MenuBar) = new MenuBar(h)
   implicit def jfxMenuItem2sfx(m: jfxsc.MenuItem) = new MenuItem(m)
   implicit def jfxMultipleSelectionModel2sfx[T](v: jfxsc.MultipleSelectionModel[T]) = new MultipleSelectionModel[T](v) {}
   implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s) {}
