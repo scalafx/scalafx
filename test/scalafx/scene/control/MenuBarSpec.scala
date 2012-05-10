@@ -38,13 +38,13 @@ class MenuBarSpec extends AbstractSFXDelegateSpec[jfxsc.MenuBar, MenuBar, jfxsc.
   protected def getScalaClassInstance = new MenuBar(new jfxsc.MenuBar())
 
   protected def convertScalaClassToJavaClass(sfxControl: MenuBar) = {
-    val jfxMenu: jfxsc.MenuBar = sfxControl
-    jfxMenu
+    val jfxMenuBar: jfxsc.MenuBar = sfxControl
+    jfxMenuBar
   }
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.MenuBar) = {
-    val sfxMenu: MenuBar = jfxControl
-    sfxMenu
+    val sfxMenuBar: MenuBar = jfxControl
+    sfxMenuBar
   }
 
 }
