@@ -27,7 +27,7 @@
 
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
 
 import scalafx.Includes._
 import scalafx.scene.Node
@@ -35,56 +35,106 @@ import scalafx.util.SFXDelegate
 
 object Control {
   implicit def sfxControl2jfx(v: Control) = v.delegate
+
+  /**
+   * Sentinel value which can be passed to a control's setMinWidth(), setMinHeight(), 
+   * setPrefWidth(), setPrefHeight(), setMaxWidth(), setMaxHeight() methods to reset the 
+   * control's size constraint back to it's intrinsic size returned by computeMinWidth(), 
+   * computeMinHeight(), computePrefWidth(), computePrefHeight(), computeMaxWidth(), or 
+   * computeMaxHeight().
+   */
+  val USE_COMPUTED_SIZE = jfxsc.Control.USE_COMPUTED_SIZE
+
+  /**
+   * Sentinel value which can be passed to a control's setMinWidth(), setMinHeight(), 
+   * setMaxWidth() or setMaxHeight() methods to indicate that the preferred dimension 
+   * should be used for that max and/or min constraint.
+   */
+  val USE_PREF_SIZE = jfxsc.Control.USE_PREF_SIZE
 }
 
 abstract class Control(override val delegate: jfxsc.Control) extends Node(delegate) with SFXDelegate[jfxsc.Control] {
+  
+  /**
+   * The ContextMenu to show for this control.
+   */
   def contextMenu = delegate.contextMenuProperty
   def contextMenu_=(v: jfxsc.ContextMenu) {
     contextMenu() = v
   }
-  
+
+  /**
+   * The height of this control.
+   */
   def height = delegate.heightProperty
 
+  /**
+   * Property for overriding the control's computed maximum height.
+   */
   def maxHeight = delegate.maxHeightProperty
   def maxHeight_=(v: Double) {
     maxHeight() = v
   }
 
+  /**
+   * Property for overriding the control's computed maximum width.
+   */
   def maxWidth = delegate.maxWidthProperty
   def maxWidth_=(v: Double) {
     maxWidth() = v
   }
 
+  /**
+   * Property for overriding the control's computed minimum height.
+   */
   def minHeight = delegate.minHeightProperty
   def minHeight_=(v: Double) {
     minHeight() = v
   }
 
+  /**
+   * Property for overriding the control's computed minimum width.
+   */
   def minWidth = delegate.minWidthProperty
   def minWidth_=(v: Double) {
     minWidth() = v
   }
-  
+
+  /**
+   * Property for overriding the control's computed preferred height.
+   */
   def prefHeight = delegate.prefHeightProperty
   def prefHeight_=(v: Double) {
     prefHeight() = v
   }
 
+  /**
+   * Property for overriding the control's computed preferred width.
+   */
   def prefWidth = delegate.prefWidthProperty
   def prefWidth_=(v: Double) {
     prefWidth() = v
   }
-  
+
+  /**
+   * Skin is responsible for rendering this Control.
+   */
   def skin = delegate.skinProperty
   def skin_=(v: jfxsc.Skin[_ <: jfxsc.Skinnable]) {
     skin() = v
   }
 
+  /**
+   * The ToolTip for this control.
+   */
   def tooltip = delegate.tooltipProperty
   def tooltip_=(v: jfxsc.Tooltip) {
     tooltip() = v
   }
 
+  /**
+   * The width of this control.
+   */
   def width = delegate.widthProperty
-  
+
 }
