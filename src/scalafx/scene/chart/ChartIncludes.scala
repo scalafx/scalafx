@@ -1,5 +1,6 @@
+package scalafx.scene.chart
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,32 +26,24 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene
+import javafx.scene.{ chart => jfxsc }
 
-import javafx.beans.{property => jfxbp}
-import javafx.{scene => jfxs}
-import chart.ChartIncludes
-import layout.LayoutIncludes
-import image.ImageIncludes
-import paint.PaintIncludes
-import shape.ShapeIncludes
-import control.ControlIncludes
-import text.TextIncludes
-import effect.EffectIncludes
+object ChartIncludes extends ChartIncludes
 
-object SceneIncludes extends SceneIncludes
-
-trait SceneIncludes extends ChartIncludes with LayoutIncludes with PaintIncludes with ShapeIncludes with TextIncludes with ImageIncludes with EffectIncludes with LowerPriorityIncludes with ControlIncludes
-
-trait LowerPriorityIncludes {
-  implicit def jfxCamera2sfx(v: jfxs.Camera) = new Camera(v) {}
-  implicit def jfxCursor2sfx(v: jfxs.Cursor) = new Cursor(v) {}
-  implicit def jfxGroup2sfx(v: jfxs.Group) = new Group(v)
-  implicit def jfxImageCursor2sfx(ic: jfxs.ImageCursor) = new ImageCursor(ic)
-  implicit def jfxNode2sfx(v: jfxs.Node) = new Node(v) {}
-  implicit def jfxParallelCamera2sfx(v: jfxs.ParallelCamera) = new ParallelCamera(v)
-  implicit def jfxParent2sfx(v: jfxs.Parent) = new Parent(v) {}
-  implicit def jfxPerspectiveCamera2sfx(v: jfxs.PerspectiveCamera) = new PerspectiveCamera(v)
-  implicit def jfxScene2sfx(v: jfxs.Scene) = new Scene(v)
-  implicit def jfxSceneProperty2sfx(p: jfxbp.ReadOnlyObjectProperty[jfxs.Scene]) = new SceneProperty(p)
+trait ChartIncludes {
+  implicit def jfxAreaChart2sfx[X, Y](b: jfxsc.AreaChart[X, Y]) = new AreaChart[X, Y](b)
+  implicit def jfxBarChart2sfx[X, Y](b: jfxsc.BarChart[X, Y]) = new BarChart[X, Y](b)
+  implicit def jfxBubbleChart2sfx[X, Y](b: jfxsc.BubbleChart[X, Y]) = new BubbleChart[X, Y](b)
+  implicit def jfxLineChart2sfx[X, Y](b: jfxsc.LineChart[X, Y]) = new LineChart[X, Y](b)
+  implicit def jfxPieChart2sfx(b: jfxsc.PieChart) = new PieChart(b)
+  implicit def jfxPieChartData2sfx(b: jfxsc.PieChart.Data) = new PieChart.Data(b)
+  implicit def jfxScatterChart2sfx[X, Y](b: jfxsc.ScatterChart[X, Y]) = new ScatterChart[X, Y](b)
+  implicit def jfxStackedAreaChart2sfx[X, Y](b: jfxsc.StackedAreaChart[X, Y]) = new StackedAreaChart[X, Y](b)
+  implicit def jfxStackedBarChart2sfx[X, Y](b: jfxsc.StackedBarChart[X, Y]) = new StackedBarChart[X, Y](b)
+  implicit def jfxAxisTickMark2sfx[T](b: jfxsc.Axis.TickMark[T]) = new Axis.TickMark[T](b)
+  implicit def jfxCategoryAxis2sfx(b: jfxsc.CategoryAxis) = new CategoryAxis(b)
+  implicit def jfxNumberAxis2sfx(b: jfxsc.NumberAxis) = new NumberAxis(b)
+  implicit def jfxNumberAxisDefaultFormatter2sfx(b: jfxsc.NumberAxis.DefaultFormatter) = new NumberAxis.DefaultFormatter(b)
+  implicit def jfxXYChartData2sfx[X, Y](b: jfxsc.XYChart.Data[X, Y]) = new XYChart.Data[X, Y](b)
+  implicit def jfxXYChartSeries2sfx[X, Y](b: jfxsc.XYChart.Series[X, Y]) = new XYChart.Series[X, Y](b)
 }
