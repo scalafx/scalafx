@@ -62,12 +62,54 @@ object StringConverter {
 
   }
 
+  /**
+   * Convenience method that will create a StringConverter implementation that just makes
+   * conversion from object to String. [[fromString]] Method will throw a
+   * [[scala.UnsupportedOperationException]].
+   *
+   * @tparam T Type to convert
+   *
+   * @param toStringFunction Function that converts a T instance to a new String
+   */
+  def toStringConverter[T](toStringFunction: T => String) = new StringConverter[T] {
+
+    def fromString(string: String): T =
+      throw new UnsupportedOperationException("Convertsior from String not supported. Consider create a new StringConverter impletentation that support it.")
+
+    def toString(t: T): String = toStringFunction(t)
+
+  }
+
+  /**
+   * Convenience method that will create a StringConverter implementation that just makes
+   * conversion from String to object. [[toString]] Method will throw a
+   * [[scala.UnsupportedOperationException]].
+   *
+   * @tparam T Type to convert
+   *
+   * @param fromStringFunction Function that converts a String to a new T instance
+   */
+  def fromStringConverter[T](fromStringFunction: String => T) = new StringConverter[T] {
+
+    def fromString(string: String): T = fromStringFunction(string)
+
+    def toString(t: T): String =
+      throw new UnsupportedOperationException("Convertsior to String not supported. Consider create a new StringConverter impletentation that support it.")
+
+  }
+
 }
 
 abstract class StringConverter[T] {
 
+  /**
+   * Converts the string provided into an object defined by the specific converter.
+   */
   def fromString(string: String): T
 
+  /**
+   * Converts the object provided into its string form.
+   */
   def toString(t: T): String
 
 }

@@ -1,7 +1,5 @@
-
-
 /*
- * Copyright (c) 2011-2012, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,26 +24,58 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
-package scalafx.scene.shape
-
-import javafx.scene.{shape => jfxss}
+import javafx.scene.{ control => jfxsc }
 import scalafx.util.SFXDelegate
 
-//I think it might be better to implemented this way rather than extending Enumeration
-object StrokeLineCap {
-  implicit def sfxStrokeLineCap2jfx(c: StrokeLineCap) = c.delegate
-  
-  val BUTT = new StrokeLineCap(jfxss.StrokeLineCap.BUTT)
-  val ROUND = new StrokeLineCap(jfxss.StrokeLineCap.ROUND)
-  val SQUARE = new StrokeLineCap(jfxss.StrokeLineCap.SQUARE)
-  
-  def valueOf(name: String) = name match {
-    case "BUTT" => BUTT
-    case "ROUND" => ROUND
-    case "SQUARE" => SQUARE
-  }
-  def values = List(BUTT, ROUND, SQUARE)
+object IndexRange {
+  implicit def sfxIndexeRange(r: IndexRange) = r.delegate
+
+  /**
+   * Index range value delimiter.
+   */
+  val VALUE_DELIMITER = jfxsc.IndexRange.VALUE_DELIMITER
+
+  /**
+   * Convenience method to create an IndexRange instance that has the smaller value as the start
+   * index, and the larger value as the end index.
+   */
+  def normalize(v1: Int, v2: Int): IndexRange = new IndexRange(jfxsc.IndexRange.normalize(v1, v2))
+
+  /**
+   * Convenience method to parse in a String of the form '2,6', which will create an IndexRange
+   * instance with a start value of 2, and an end value of 6.
+   */
+  def valueOf(value: String): IndexRange = new IndexRange(jfxsc.IndexRange.valueOf(value))
+
 }
 
-class StrokeLineCap(override val delegate:jfxss.StrokeLineCap) extends SFXDelegate[jfxss.StrokeLineCap]
+class IndexRange(override val delegate: jfxsc.IndexRange) extends SFXDelegate[jfxsc.IndexRange] {
+
+  /**
+   * Creates an instance of IndexRange by copying the values from the given IndexRange object.
+   */
+  def this(range: IndexRange) = this(new jfxsc.IndexRange(range))
+
+  /**
+   * Creates an instance of IndexRange representing the range between start and end.
+   */
+  def this(start: Int, end: Int) = this(new jfxsc.IndexRange(start, end))
+
+  /**
+   * Returns the start position of the range.
+   */
+  def start = delegate.getStart
+
+  /**
+   * Returns the end position of the range (exclusive).
+   */
+  def end = delegate.getEnd
+
+  /**
+   * Returns the length of the range.
+   */
+  def length = delegate.getLength
+
+}

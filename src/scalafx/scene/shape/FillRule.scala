@@ -1,7 +1,7 @@
 
 
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene.paint
+package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
 import scalafx.util.SFXDelegate

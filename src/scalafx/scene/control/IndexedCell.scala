@@ -1,7 +1,5 @@
-
-
 /*
- * Copyright (c) 2011-2012, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,26 +24,22 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
-package scalafx.scene.shape
-
-import javafx.scene.{shape => jfxss}
+import javafx.scene.{ control => jfxsc }
 import scalafx.util.SFXDelegate
 
-//I think it might be better to implemented this way rather than extending Enumeration
-object StrokeLineCap {
-  implicit def sfxStrokeLineCap2jfx(c: StrokeLineCap) = c.delegate
-  
-  val BUTT = new StrokeLineCap(jfxss.StrokeLineCap.BUTT)
-  val ROUND = new StrokeLineCap(jfxss.StrokeLineCap.ROUND)
-  val SQUARE = new StrokeLineCap(jfxss.StrokeLineCap.SQUARE)
-  
-  def valueOf(name: String) = name match {
-    case "BUTT" => BUTT
-    case "ROUND" => ROUND
-    case "SQUARE" => SQUARE
-  }
-  def values = List(BUTT, ROUND, SQUARE)
+object IndexedCell {
+  implicit def sfxIndexedCell2jfx[T](c: IndexedCell[T]) = c.delegate
 }
 
-class StrokeLineCap(override val delegate:jfxss.StrokeLineCap) extends SFXDelegate[jfxss.StrokeLineCap]
+class IndexedCell[T](override val delegate: jfxsc.IndexedCell[T] = new jfxsc.IndexedCell[T])
+  extends Labeled(delegate)
+  with SFXDelegate[jfxsc.IndexedCell[T]] {
+
+  /**
+   * The location of this cell in the virtualized control (e.g: ListView, TreeView, TableView, etc).
+   */
+  def index = delegate.indexProperty
+
+}

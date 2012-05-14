@@ -1,7 +1,5 @@
-
-
 /*
- * Copyright (c) 2011-2012, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,26 +24,27 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
-package scalafx.scene.shape
-
-import javafx.scene.{shape => jfxss}
+import javafx.scene.{control => jfxsc}
 import scalafx.util.SFXDelegate
 
-//I think it might be better to implemented this way rather than extending Enumeration
-object StrokeLineCap {
-  implicit def sfxStrokeLineCap2jfx(c: StrokeLineCap) = c.delegate
-  
-  val BUTT = new StrokeLineCap(jfxss.StrokeLineCap.BUTT)
-  val ROUND = new StrokeLineCap(jfxss.StrokeLineCap.ROUND)
-  val SQUARE = new StrokeLineCap(jfxss.StrokeLineCap.SQUARE)
-  
-  def valueOf(name: String) = name match {
-    case "BUTT" => BUTT
-    case "ROUND" => ROUND
-    case "SQUARE" => SQUARE
-  }
-  def values = List(BUTT, ROUND, SQUARE)
+object ListCell {
+  implicit def sfxListCell2jfx[T](l: ListCell[T]) = l.delegate
 }
 
-class StrokeLineCap(override val delegate:jfxss.StrokeLineCap) extends SFXDelegate[jfxss.StrokeLineCap]
+class ListCell[T](override val delegate: jfxsc.ListCell[T] = new jfxsc.ListCell[T])
+  extends Cell(delegate)
+  with SFXDelegate[jfxsc.ListCell[T]] {
+
+  /**
+   * The ListView associated with this Cell.
+   */
+  def listView = delegate.listViewProperty
+
+  /**
+   * Updates the ListView associated with this Cell.
+   */
+  def updateListView(listView: ListView[T]) = delegate.updateListView(listView)
+
+}
