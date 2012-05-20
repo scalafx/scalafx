@@ -44,8 +44,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class AccordionSpec extends AbstractSFXDelegateSpec[jfxsc.Accordion, Accordion, jfxsc.AccordionBuilder[_]](classOf[jfxsc.Accordion], classOf[Accordion], classOf[jfxsc.AccordionBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Accordion(new jfxsc.Accordion)
-
   protected def convertScalaClassToJavaClass(sfxControl: Accordion) = {
     val jfxAccordion: jfxsc.Accordion = sfxControl
     jfxAccordion

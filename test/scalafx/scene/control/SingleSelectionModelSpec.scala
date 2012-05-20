@@ -40,7 +40,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 @RunWith(classOf[JUnitRunner]) 
 class SingleSingleSelectionModelSpec[T] extends SimpleSFXDelegateSpec[jfxsc.SingleSelectionModel[T], SingleSelectionModel[T]](classOf[jfxsc.SingleSelectionModel[T]], classOf[SingleSelectionModel[T]]) {
 
-  protected def getScalaClassInstance = new SingleSelectionModel[T](getJavaClassInstance) {}
+  override protected def getScalaClassInstance = new SingleSelectionModel[T](getJavaClassInstance) {}
 
   protected def convertScalaClassToJavaClass(sfxControl: SingleSelectionModel[T]) = {
     val jfxSingleSelectionModel: jfxsc.SingleSelectionModel[T] = sfxControl.delegate

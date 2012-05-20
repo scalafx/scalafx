@@ -42,15 +42,13 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 class ListViewEditEventEditEventSpec[T <: Any]
   extends SimpleSFXDelegateSpec[jfxsc.ListView.EditEvent[T], ListView.EditEvent[T]](classOf[jfxsc.ListView.EditEvent[T]], classOf[ListView.EditEvent[T]]) {
 
-  protected def getScalaClassInstance = new ListView.EditEvent[T](getJavaClassInstance)
-
   protected def convertScalaClassToJavaClass(sfxControl: ListView.EditEvent[T]) = {
     val jfxEditEvent: jfxsc.ListView.EditEvent[T] = sfxControl
     jfxEditEvent
   }
   
   /*
-   * In third argument, I it was used simply null compiler thros a error qith message: 
+   * In third argument, I it was used simply null compiler throws a error qith message: 
    * "type mismatch;  found   : Null(null)  required: T". Solution found was make a cast from 
    * null to type T. 
    */

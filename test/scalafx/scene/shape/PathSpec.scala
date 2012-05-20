@@ -42,8 +42,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class PathSpec
   extends AbstractSFXDelegateSpec[jfxss.Path, Path, jfxss.PathBuilder[_]](classOf[jfxss.Path], classOf[Path], classOf[jfxss.PathBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Path
-
   protected def convertScalaClassToJavaClass(sfxPath: Path) = {
     val jfxPath: jfxss.Path = sfxPath
     jfxPath

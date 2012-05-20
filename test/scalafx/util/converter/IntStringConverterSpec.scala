@@ -43,8 +43,6 @@ class IntStringConverterSpec
   val examples = List((0, "0"), (123, "123"), (-123, "-123"),
     (Int.MaxValue, Int.MaxValue.toString), (Int.MinValue, Int.MinValue.toString))
 
-  protected def getScalaClassInstance = new IntStringConverter
-
   protected def convertScalaClassToJavaClass(sfxControl: IntStringConverter) = {
     val jfxIntegerStringConverter: jfxuc.IntegerStringConverter = sfxControl
     jfxIntegerStringConverter

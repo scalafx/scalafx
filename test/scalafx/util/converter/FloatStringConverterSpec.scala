@@ -43,8 +43,6 @@ class FloatStringConverterSpec
   val examples = List((0.0f, "0.0"), (123.45f, "123.45"), (-123.45f, "-123.45"),
     (Float.MaxValue, Float.MaxValue.toString), (Float.MinValue, Float.MinValue.toString))
 
-  protected def getScalaClassInstance = new FloatStringConverter
-
   protected def convertScalaClassToJavaClass(sfxControl: FloatStringConverter) = {
     val jfxFloatStringConverter: jfxuc.FloatStringConverter = sfxControl
     jfxFloatStringConverter

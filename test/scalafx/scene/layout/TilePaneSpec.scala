@@ -41,8 +41,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class TilePaneSpec extends AbstractSFXDelegateSpec[jfxsl.TilePane, TilePane, jfxsl.TilePaneBuilder[_]](classOf[jfxsl.TilePane], classOf[TilePane], classOf[jfxsl.TilePaneBuilder[_]]) {
 
-  protected def getScalaClassInstance = new TilePane
-
   protected def convertScalaClassToJavaClass(sfxControl: TilePane) = {
     val jfxTilePane: jfxsl.TilePane = sfxControl
     jfxTilePane

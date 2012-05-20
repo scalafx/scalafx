@@ -43,8 +43,6 @@ class ByteStringConverterSpec
   val examples = List((0.toByte, "0"), (12.toByte, "12"), (-12.toByte, "-12"),
     (Byte.MaxValue, Byte.MaxValue.toString), (Byte.MinValue, Byte.MinValue.toString))
 
-  protected def getScalaClassInstance = new ByteStringConverter
-
   protected def convertScalaClassToJavaClass(sfxControl: ByteStringConverter) = {
     val jfxByteStringConverter: jfxuc.ByteStringConverter = sfxControl
     jfxByteStringConverter

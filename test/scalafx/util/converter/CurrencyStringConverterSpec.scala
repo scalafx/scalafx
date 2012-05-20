@@ -46,8 +46,6 @@ class CurrencyStringConverterSpec
   val examples = List((new java.lang.Long(123), "$123.00"), (new java.lang.Long(0), "$0.00"),
     (new java.lang.Long(-123), "($123.00)"))
 
-  protected def getScalaClassInstance = new CurrencyStringConverter
-
   protected def convertScalaClassToJavaClass(sfxControl: CurrencyStringConverter) = {
     val jfxCurrencyStringConverter: jfxuc.CurrencyStringConverter = sfxControl
     jfxCurrencyStringConverter

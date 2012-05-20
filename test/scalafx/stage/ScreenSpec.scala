@@ -42,8 +42,6 @@ import scalafx.testutil.RunOnApplicationThread
 @RunWith(classOf[JUnitRunner]) 
 class ScreenSpec extends SimpleSFXDelegateSpec[jfxs.Screen, Screen](classOf[jfxs.Screen], classOf[Screen]) { 
 
-  protected def getScalaClassInstance = new Screen(this.getJavaClassInstance)
-
   protected def convertScalaClassToJavaClass(sfxControl: Screen) = {
     val jfxScreen: jfxs.Screen = sfxControl
     jfxScreen

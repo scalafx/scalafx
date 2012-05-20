@@ -41,8 +41,6 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class HyperlinkSpec extends AbstractSFXDelegateSpec[jfxsc.Hyperlink, Hyperlink, jfxsc.HyperlinkBuilder[_]](classOf[jfxsc.Hyperlink], classOf[Hyperlink], classOf[jfxsc.HyperlinkBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Hyperlink(new jfxsc.Hyperlink)
-
   protected def convertScalaClassToJavaClass(sfxControl: Hyperlink) = {
     val jfxHyperlink: jfxsc.Hyperlink = sfxControl
     jfxHyperlink

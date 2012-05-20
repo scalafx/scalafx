@@ -40,8 +40,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class RegionSpec extends AbstractSFXDelegateSpec[jfxsl.Region, Region, jfxsl.RegionBuilder[_]](classOf[jfxsl.Region], classOf[Region], classOf[jfxsl.RegionBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Region
-
   protected def convertScalaClassToJavaClass(sfxControl: Region) = {
     val jfxRegion: jfxsl.Region = sfxControl
     jfxRegion

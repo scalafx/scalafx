@@ -41,8 +41,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class ImageCursorSpec extends AbstractSFXDelegateSpec[jfxs.ImageCursor, ImageCursor, jfxs.ImageCursorBuilder[_]](classOf[jfxs.ImageCursor], classOf[ImageCursor], classOf[jfxs.ImageCursorBuilder[_]]) {
 
-  protected def getScalaClassInstance = new ImageCursor
-
   protected def convertScalaClassToJavaClass(sfxControl: ImageCursor) = {
     val jfxImageCursor: jfxs.ImageCursor = sfxControl
     jfxImageCursor

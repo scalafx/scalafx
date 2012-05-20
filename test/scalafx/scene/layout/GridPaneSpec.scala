@@ -40,8 +40,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class GridPaneSpec extends AbstractSFXDelegateSpec[jfxsl.GridPane, GridPane, jfxsl.GridPaneBuilder[_]](classOf[jfxsl.GridPane], classOf[GridPane], classOf[jfxsl.GridPaneBuilder[_]]) {
 
-  protected def getScalaClassInstance = new GridPane(new jfxsl.GridPane)
-
   protected def convertScalaClassToJavaClass(sfxControl: GridPane) = {
     val jfxGridPane: jfxsl.GridPane = sfxControl
     jfxGridPane

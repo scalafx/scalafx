@@ -43,8 +43,6 @@ class BigDecimalStringConverterSpec
   val examples = List((BigDecimal(0), "0"), (BigDecimal(12345), "12345"),
     (BigDecimal(-12345), "-12345"), (BigDecimal(12.345), "12.345"))
 
-  protected def getScalaClassInstance = new BigDecimalStringConverter
-
   protected def convertScalaClassToJavaClass(sfxControl: BigDecimalStringConverter) = {
     val jfxBigDecimalStringConverter: jfxuc.BigDecimalStringConverter = sfxControl
     jfxBigDecimalStringConverter

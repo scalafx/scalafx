@@ -40,8 +40,6 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class SepiaToneSpec extends AbstractSFXDelegateSpec[jfxse.SepiaTone, SepiaTone, jfxse.SepiaToneBuilder[_]](classOf[jfxse.SepiaTone], classOf[SepiaTone], classOf[jfxse.SepiaToneBuilder[_]]) {
 
-  protected def getScalaClassInstance = new SepiaTone
-
   protected def convertScalaClassToJavaClass(sfxObject: SepiaTone) = {
     val jfxSepiaTone: jfxse.SepiaTone = sfxObject
     jfxSepiaTone

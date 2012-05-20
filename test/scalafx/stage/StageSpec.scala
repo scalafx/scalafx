@@ -44,14 +44,10 @@ class StageSpec
   extends AbstractSFXDelegateSpec[jfxs.Stage, Stage, jfxs.StageBuilder[_]](classOf[jfxs.Stage], classOf[Stage], classOf[jfxs.StageBuilder[_]]) 
   with RunOnApplicationThread {
 
-  protected def getScalaClassInstance = new Stage
-
   protected def convertScalaClassToJavaClass(sfxControl: Stage) = {
     val jfxStage: jfxs.Stage = sfxControl
     jfxStage
   }
-
-  override protected def getJavaClassInstance = new jfxs.Stage
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxs.Stage) = {
     val sfxStage: Stage = jfxControl

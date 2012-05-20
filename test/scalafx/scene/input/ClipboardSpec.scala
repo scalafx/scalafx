@@ -42,8 +42,6 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 @RunWith(classOf[JUnitRunner])
 class ClipboardSpec extends SimpleSFXDelegateSpec[jfxsi.Clipboard, Clipboard](classOf[jfxsi.Clipboard], classOf[Clipboard]) with RunOnApplicationThread {
 
-  protected def getScalaClassInstance = new Clipboard(getJavaClassInstance)
-
   protected def convertScalaClassToJavaClass(sfxControl: Clipboard) = {
     val jfxClipboard: jfxsi.Clipboard = sfxControl
     jfxClipboard

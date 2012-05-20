@@ -40,7 +40,7 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner]) 
 class BoundsSpec extends SimpleSFXDelegateSpec[jfxg.Bounds, Bounds](classOf[jfxg.Bounds], classOf[Bounds]) {
 
-  protected def getScalaClassInstance = new Bounds(getJavaClassInstance) {}
+  override protected def getScalaClassInstance = new Bounds(getJavaClassInstance) {}
 
   protected def convertScalaClassToJavaClass(sfxObject: Bounds) = {
     val jfxBounds: jfxg.Bounds = sfxObject

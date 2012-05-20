@@ -42,14 +42,12 @@ import scalafx.testutil.DimensionDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class ColorInputSpec
   extends AbstractSFXDelegateSpec[jfxse.ColorInput, ColorInput, jfxse.ColorInputBuilder[_]](classOf[jfxse.ColorInput], classOf[ColorInput], classOf[jfxse.ColorInputBuilder[_]])
-  with PositionDelegateSpec[ColorInput]
+//  with PositionDelegateSpec[ColorInput]
   with DimensionDelegateSpec[ColorInput] {
 
-  val positionDelegate = getScalaClassInstance
+//  val positionDelegate = getScalaClassInstance
 
   val dimensionDelegate = getScalaClassInstance
-
-  protected def getScalaClassInstance = new ColorInput
 
   protected def convertScalaClassToJavaClass(sfxObject: ColorInput) = {
     val jfxColorInput: jfxse.ColorInput = sfxObject

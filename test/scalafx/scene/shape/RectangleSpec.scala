@@ -50,8 +50,6 @@ class RectangleSpec
 
   val dimensionDelegate = getScalaClassInstance
 
-  protected def getScalaClassInstance = new Rectangle
-
   protected def convertScalaClassToJavaClass(sfxRectangle: Rectangle) = {
     val jfxRectangle: jfxss.Rectangle = sfxRectangle
     jfxRectangle

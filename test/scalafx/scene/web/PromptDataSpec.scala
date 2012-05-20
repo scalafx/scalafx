@@ -40,7 +40,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class PromptDataSpec extends AbstractSFXDelegateSpec[jfxsw.PromptData, PromptData, jfxsw.PromptDataBuilder[_]](classOf[jfxsw.PromptData], classOf[PromptData], classOf[jfxsw.PromptDataBuilder[_]]) { 
 
-  protected def getScalaClassInstance = new PromptData("", "")
+  override protected def getScalaClassInstance = new PromptData("", "")
 
   protected def convertScalaClassToJavaClass(sfxControl: PromptData) = {
     val jfxPromptData: jfxsw.PromptData = sfxControl

@@ -43,8 +43,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class GroupSpec extends AbstractSFXDelegateSpec[jfxs.Group, Group, jfxs.GroupBuilder[_]](classOf[jfxs.Group], classOf[Group], classOf[jfxs.GroupBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Group(new jfxs.Group)
-
   protected def convertScalaClassToJavaClass(sfxControl: Group) = {
     val jfxGroup: jfxs.Group = sfxControl
     jfxGroup

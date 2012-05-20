@@ -44,17 +44,22 @@ import scalafx.util.SFXDelegate
  * @param scalaClass SFXDelegate subclass related with JavaFX class
  *
  */
-abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]](javaClass: Class[J], scalaClass: Class[S]) extends FlatSpec with PropertyComparator {
+abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (javaClass: Class[J], scalaClass: Class[S])
+  extends FlatSpec
+  with PropertyComparator {
 
   // Protected methods - Begin
 
   /**
-   * Returns a new SFXDelegate subclass instance:
+   * Returns a new SFXDelegate subclass instance. By default calls scalaClass constructor that
+   * uses delegated class instance. If it was possible use this constructor, this method must 
+   * be overrided.
    * {{{
-   * protected def getScalaClassInstance = new Separator(new jfxsc.Separator())
+   * override protected def getScalaClassInstance = new BoundingBox(0, 0, 0, 0)
    * }}}
    */
-  protected def getScalaClassInstance: S
+  protected def getScalaClassInstance: S =
+    scalaClass.getConstructor(javaClass).newInstance(this.getJavaClassInstance)
 
   /**
    * Returns a SFXDelegate instance as JavaFX object
@@ -68,7 +73,7 @@ abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]](javaClass
   protected def convertScalaClassToJavaClass(sfxObject: S): J
 
   /**
-   * Returns a new JavaFX class instance. By default calls newInstance method from javaClass. If 
+   * Returns a new JavaFX class instance. By default calls newInstance method from javaClass. If
    * this class has no default constructor, this method must be overrided:
    * {{{
    * override protected def getJavaClassInstance = new jfxg.BoundingBox(0, 0, 0, 0, 0, 0)

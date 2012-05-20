@@ -45,8 +45,6 @@ class BoxBlurSpec
 
   val dimensionDelegate = getScalaClassInstance
 
-  protected def getScalaClassInstance = new BoxBlur(new jfxse.BoxBlur)
-
   protected def convertScalaClassToJavaClass(sfxObject: BoxBlur) = {
     val jfxBoxBlur: jfxse.BoxBlur = sfxObject
     jfxBoxBlur

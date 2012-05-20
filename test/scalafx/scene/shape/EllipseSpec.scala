@@ -42,8 +42,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class EllipseSpec
   extends AbstractSFXDelegateSpec[jfxss.Ellipse, Ellipse, jfxss.EllipseBuilder[_]](classOf[jfxss.Ellipse], classOf[Ellipse], classOf[jfxss.EllipseBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Ellipse
-
   protected def convertScalaClassToJavaClass(sfxEllipse: Ellipse) = {
     val jfxEllipse: jfxss.Ellipse = sfxEllipse
     jfxEllipse

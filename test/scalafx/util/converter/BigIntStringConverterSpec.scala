@@ -42,8 +42,6 @@ class BigIntegerStringConverterSpec
 
   val examples = List((BigInt(0), "0"), (BigInt(12345), "12345"), (BigInt(-12345), "-12345"))
 
-  protected def getScalaClassInstance = new BigIntStringConverter
-
   protected def convertScalaClassToJavaClass(sfxControl: BigIntStringConverter) = {
     val jfxBigIntegerStringConverter: jfxuc.BigIntegerStringConverter = sfxControl
     jfxBigIntegerStringConverter

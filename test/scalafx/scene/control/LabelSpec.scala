@@ -44,8 +44,6 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class LabelSpec extends AbstractSFXDelegateSpec[jfxsc.Label, Label, jfxsc.LabelBuilder[_]](classOf[jfxsc.Label], classOf[Label], classOf[jfxsc.LabelBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Label(new jfxsc.Label)
-
   protected def convertScalaClassToJavaClass(sfxControl: Label) = {
     val jfxLabel: jfxsc.Label = sfxControl
     jfxLabel

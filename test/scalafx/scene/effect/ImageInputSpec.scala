@@ -44,8 +44,6 @@ class ImageInputSpec extends AbstractSFXDelegateSpec[jfxse.ImageInput, ImageInpu
 
   val positionDelegate = new ImageInput
 
-  protected def getScalaClassInstance = new ImageInput
-
   protected def convertScalaClassToJavaClass(sfxObject: ImageInput) = {
     val jfxImageInput: jfxse.ImageInput = sfxObject
     jfxImageInput

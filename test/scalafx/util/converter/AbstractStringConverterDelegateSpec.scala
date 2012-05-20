@@ -27,13 +27,11 @@
 package scalafx.util.converter
 
 import java.text.SimpleDateFormat
-import javafx.{ util => jfxu }
-import javafx.util.{ converter => jfxuc }
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
-import scalafx.util.SFXDelegate
+
 import org.scalatest.matchers.ShouldMatchers._
-import java.util.Locale
+
+import javafx.{util => jfxu}
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  *
@@ -56,7 +54,7 @@ abstract private[converter] class AbstractStringConverterDelegateSpec[J <: java.
 
     def runConversionsForExamples(s: S, string: String) = {
       val sToString = converter.toString(s)
-      sToString should be(string)
+      sToString should equal(string)
 
       val stringToS = converter.fromString(string)
       stringToS should equal(s)
@@ -70,7 +68,7 @@ abstract private[converter] class AbstractStringConverterDelegateSpec[J <: java.
   protected val examples: List[(S, String)]
 
   protected def getConverterForExample = this.getScalaClassInstance
-
+  
   it should "convert %s to String and vice-versa".format(scalaClass) in {
     this.runConverterForExamples
   }

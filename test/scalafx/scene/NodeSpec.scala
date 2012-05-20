@@ -41,7 +41,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner]) 
 class NodeSpec extends AbstractSFXDelegateSpec[jfxs.Node, Node, jfxs.NodeBuilder[_]](classOf[jfxs.Node], classOf[Node], classOf[jfxs.NodeBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Node(getJavaClassInstance) {}
+  override protected def getScalaClassInstance = new Node(getJavaClassInstance) {}
 
   protected def convertScalaClassToJavaClass(sfxControl: Node) = {
     val jfxNode: jfxs.Node = sfxControl

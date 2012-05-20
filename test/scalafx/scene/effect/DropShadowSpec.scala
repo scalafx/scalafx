@@ -47,8 +47,6 @@ class DropShadowSpec
 
   val dimensionDelegate = getScalaClassInstance
 
-  protected def getScalaClassInstance = new DropShadow
-
   protected def convertScalaClassToJavaClass(sfxObject: DropShadow) = {
     val jfxDropShadow: jfxse.DropShadow = sfxObject
     jfxDropShadow

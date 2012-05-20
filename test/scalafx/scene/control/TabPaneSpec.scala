@@ -40,8 +40,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class TabPanePaneSpec extends AbstractSFXDelegateSpec[jfxsc.TabPane, TabPane, jfxsc.TabPaneBuilder[_]](classOf[jfxsc.TabPane], classOf[TabPane], classOf[jfxsc.TabPaneBuilder[_]]) {
 
-  protected def getScalaClassInstance = new TabPane(new jfxsc.TabPane)
-
   protected def convertScalaClassToJavaClass(sfxControl: TabPane) = {
     val jfxTabPane: jfxsc.TabPane = sfxControl
     jfxTabPane

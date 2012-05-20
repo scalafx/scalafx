@@ -41,8 +41,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class RowConstraintsSpec extends AbstractSFXDelegateSpec[jfxsl.RowConstraints, RowConstraints, jfxsl.RowConstraintsBuilder[_]](classOf[jfxsl.RowConstraints], classOf[RowConstraints], classOf[jfxsl.RowConstraintsBuilder[_]]) {
 
-  protected def getScalaClassInstance = new RowConstraints
-
   protected def convertScalaClassToJavaClass(sfxControl: RowConstraints) = {
     val jfxRowConstraints: jfxsl.RowConstraints = sfxControl
     jfxRowConstraints

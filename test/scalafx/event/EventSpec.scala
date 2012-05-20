@@ -40,8 +40,6 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class EventSpec extends SimpleSFXDelegateSpec[jfxe.Event, Event](classOf[jfxe.Event], classOf[Event]) {
 
-  protected def getScalaClassInstance = Event(Event.ANY)
-
   protected def convertScalaClassToJavaClass(sfxObject: Event) = {
     val jfxEvent: jfxe.Event = sfxObject
     jfxEvent

@@ -40,8 +40,6 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class PerspectiveTransformSpec extends AbstractSFXDelegateSpec[jfxse.PerspectiveTransform, PerspectiveTransform, jfxse.PerspectiveTransformBuilder[_]](classOf[jfxse.PerspectiveTransform], classOf[PerspectiveTransform], classOf[jfxse.PerspectiveTransformBuilder[_]]) {
 
-  protected def getScalaClassInstance = new PerspectiveTransform
-
   protected def convertScalaClassToJavaClass(sfxObject: PerspectiveTransform) = {
     val jfxPerspectiveTransform: jfxse.PerspectiveTransform = sfxObject
     jfxPerspectiveTransform

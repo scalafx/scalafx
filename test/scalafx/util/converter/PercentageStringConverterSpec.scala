@@ -45,7 +45,7 @@ class PercentageStringConverterSpec
   val examples = List((new java.lang.Integer(10), "1,000%"), (new java.lang.Integer(0), "0%"),
     (new java.lang.Integer(-10), "-1,000%"))
 
-  protected def getScalaClassInstance = new PercentageStringConverter(Locale.US)
+  override protected def getScalaClassInstance = new PercentageStringConverter(Locale.US)
 
   protected def convertScalaClassToJavaClass(sfxControl: PercentageStringConverter) = {
     val jfxPercentageStringConverter: jfxuc.PercentageStringConverter = sfxControl

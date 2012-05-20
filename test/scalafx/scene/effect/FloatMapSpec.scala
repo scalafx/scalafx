@@ -40,8 +40,6 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class FloatMapSpec extends AbstractSFXDelegateSpec[jfxse.FloatMap, FloatMap, jfxse.FloatMapBuilder[_]](classOf[jfxse.FloatMap], classOf[FloatMap], classOf[jfxse.FloatMapBuilder[_]]) {
 
-  protected def getScalaClassInstance = new FloatMap
-
   protected def convertScalaClassToJavaClass(sfxObject: FloatMap) = {
     val jfxFloatMap: jfxse.FloatMap = sfxObject
     jfxFloatMap

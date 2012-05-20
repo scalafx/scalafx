@@ -42,8 +42,6 @@ class BooleanStringConverterSpec
 
   val examples = List((true, "true"), (false, "false"))
 
-  protected def getScalaClassInstance = new BooleanStringConverter
-
   protected def convertScalaClassToJavaClass(sfxControl: BooleanStringConverter) = {
     val jfxBooleanStringConverter: jfxuc.BooleanStringConverter = sfxControl
     jfxBooleanStringConverter

@@ -45,8 +45,6 @@ class ShadowSpec
 
   val dimensionDelegate = getScalaClassInstance
 
-  protected def getScalaClassInstance = new Shadow
-
   protected def convertScalaClassToJavaClass(sfxObject: Shadow) = {
     val jfxShadow: jfxse.Shadow = sfxObject
     jfxShadow

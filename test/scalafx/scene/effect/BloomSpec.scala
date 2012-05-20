@@ -40,8 +40,6 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class BloomSpec extends AbstractSFXDelegateSpec[jfxse.Bloom, Bloom, jfxse.BloomBuilder[_]](classOf[jfxse.Bloom], classOf[Bloom], classOf[jfxse.BloomBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Bloom(new jfxse.Bloom)
-
   protected def convertScalaClassToJavaClass(sfxObject: Bloom) = {
     val jfxBloom: jfxse.Bloom = sfxObject
     jfxBloom

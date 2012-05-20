@@ -42,7 +42,7 @@ import org.scalatest.junit.JUnitRunner
 class IndexRangeSpec
   extends AbstractSFXDelegateSpec[jfxsc.IndexRange, IndexRange, jfxsc.IndexRangeBuilder](classOf[jfxsc.IndexRange], classOf[IndexRange], classOf[jfxsc.IndexRangeBuilder]) {
 
-  protected def getScalaClassInstance = new IndexRange(1, 2)
+  override protected def getScalaClassInstance = new IndexRange(1, 2)
 
   protected def convertScalaClassToJavaClass(sfxControl: IndexRange) = {
     val jfxIndexRange: jfxsc.IndexRange = sfxControl

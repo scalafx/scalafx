@@ -45,8 +45,6 @@ class HLineToSpec
 
   val positionDelegate = getScalaClassInstance
 
-  protected def getScalaClassInstance = new HLineTo
-
   protected def convertScalaClassToJavaClass(sfxHLineTo: HLineTo) = {
     val jfxHLineTo: jfxss.HLineTo = sfxHLineTo
     jfxHLineTo

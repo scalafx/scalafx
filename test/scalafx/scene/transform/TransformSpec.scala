@@ -42,8 +42,8 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class TransformSpec extends SimpleSFXDelegateSpec[jfxst.Transform, Transform](classOf[jfxst.Transform], classOf[Transform]) {
 
-  protected def getScalaClassInstance = new Transform(getJavaClassInstance) {}
-
+  override def getScalaClassInstance = new Transform(getJavaClassInstance) {}
+  
   protected def convertScalaClassToJavaClass(sfxControl: Transform) = {
     val jfxTransform: jfxst.Transform = sfxControl
     jfxTransform

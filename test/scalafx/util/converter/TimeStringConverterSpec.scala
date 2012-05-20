@@ -46,8 +46,6 @@ class TimeStringConverterSpec
 
   override protected def getConverterForExample = new TimeStringConverter("HH:mm:ss")
 
-  protected def getScalaClassInstance = new TimeStringConverter
-
   protected def convertScalaClassToJavaClass(sfxControl: TimeStringConverter) = {
     val jfxTimeStringConverter: jfxuc.TimeStringConverter = sfxControl.delegate
     jfxTimeStringConverter

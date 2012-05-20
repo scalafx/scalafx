@@ -42,8 +42,6 @@ import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 @RunWith(classOf[JUnitRunner]) 
 class TooltipSpec extends AbstractSFXDelegateSpec[jfxsc.Tooltip, Tooltip, jfxsc.TooltipBuilder[_]](classOf[jfxsc.Tooltip], classOf[Tooltip], classOf[jfxsc.TooltipBuilder[_]]) with RunOnApplicationThread {
 
-  protected def getScalaClassInstance = new Tooltip(new jfxsc.Tooltip)
-
   protected def convertScalaClassToJavaClass(sfxControl: Tooltip) = {
     val jfxTooltip: jfxsc.Tooltip = sfxControl
     jfxTooltip

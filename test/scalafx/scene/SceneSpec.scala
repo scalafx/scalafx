@@ -42,7 +42,7 @@ import scalafx.testutil.RunOnApplicationThread
 @RunWith(classOf[JUnitRunner])
 class SceneSpec extends AbstractSFXDelegateSpec[jfxs.Scene, Scene, jfxs.SceneBuilder[_]](classOf[jfxs.Scene], classOf[Scene], classOf[jfxs.SceneBuilder[_]]) with RunOnApplicationThread {
 
-  protected def getScalaClassInstance = new Scene(getJavaClassInstance)
+  override protected def getScalaClassInstance = new Scene(getJavaClassInstance)
 
   protected def convertScalaClassToJavaClass(sfxControl: Scene) = {
     val jfxScene: jfxs.Scene = sfxControl

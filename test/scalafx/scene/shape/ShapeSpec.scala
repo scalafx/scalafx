@@ -42,7 +42,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class ShapeSpec
   extends AbstractSFXDelegateSpec[jfxss.Shape, Shape, jfxss.ShapeBuilder[_]](classOf[jfxss.Shape], classOf[Shape], classOf[jfxss.ShapeBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Rectangle
+  override protected def getScalaClassInstance = new Rectangle
 
   protected def convertScalaClassToJavaClass(sfxShape: Shape) = {
     val jfxShape: jfxss.Shape = sfxShape

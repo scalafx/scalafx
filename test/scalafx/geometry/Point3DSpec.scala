@@ -43,7 +43,7 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class Point3DSpec extends AbstractSFXDelegateSpec[jfxg.Point3D, Point3D, jfxg.Point3DBuilder[_]](classOf[jfxg.Point3D], classOf[Point3D], classOf[jfxg.Point3DBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Point3D(0, 0, 0)
+  override protected def getScalaClassInstance = new Point3D(0, 0, 0)
 
   protected def convertScalaClassToJavaClass(sfxObject: Point3D) = {
     val jfxPoint3D: jfxg.Point3D = sfxObject

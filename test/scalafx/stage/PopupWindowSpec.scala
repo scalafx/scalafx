@@ -42,7 +42,7 @@ import scalafx.testutil.RunOnApplicationThread
 @RunWith(classOf[JUnitRunner])
 class PopupPopupWindowSpec extends AbstractSFXDelegateSpec[jfxs.PopupWindow, PopupWindow, jfxs.PopupWindowBuilder[_]](classOf[jfxs.PopupWindow], classOf[PopupWindow], classOf[jfxs.PopupWindowBuilder[_]]) with RunOnApplicationThread {
 
-  protected def getScalaClassInstance = new PopupWindow(this.getJavaClassInstance) {}
+  override protected def getScalaClassInstance = new PopupWindow(this.getJavaClassInstance) {}
 
   protected def convertScalaClassToJavaClass(sfxControl: PopupWindow) = {
     val jfxPopupWindow: jfxs.PopupWindow = sfxControl

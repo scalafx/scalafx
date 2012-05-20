@@ -45,8 +45,6 @@ class LightPointSpec
 
   val positionDelegate = new Light.Point
 
-  protected def getScalaClassInstance = new Light.Point
-
   protected def convertScalaClassToJavaClass(sfxObject: Light.Point) = {
     val jfxLightPoint: jfxse.Light.Point = sfxObject
     jfxLightPoint

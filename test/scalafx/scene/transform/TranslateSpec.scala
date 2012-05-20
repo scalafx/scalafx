@@ -45,8 +45,6 @@ class TranslateSpec
 
   val positionDelegate = getScalaClassInstance
 
-  protected def getScalaClassInstance = new Translate(new jfxst.Translate)
-
   protected def convertScalaClassToJavaClass(sfxControl: Translate) = {
     val jfxTranslate: jfxst.Translate = sfxControl
     jfxTranslate

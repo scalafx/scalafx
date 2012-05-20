@@ -40,7 +40,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class PopupFeaturesSpec extends SimpleSFXDelegateSpec[jfxsw.PopupFeatures, PopupFeatures](classOf[jfxsw.PopupFeatures], classOf[PopupFeatures]) {
 
-  protected def getScalaClassInstance = new PopupFeatures(true, true, true, true)
+  override protected def getScalaClassInstance = new PopupFeatures(true, true, true, true)
 
   protected def convertScalaClassToJavaClass(sfxControl: PopupFeatures) = {
     val jfxPopupFeatures: jfxsw.PopupFeatures = sfxControl

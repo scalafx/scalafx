@@ -44,7 +44,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner]) 
 class LabeledSpec extends AbstractSFXDelegateSpec[jfxsc.Labeled, Labeled, jfxsc.LabeledBuilder[_]](classOf[jfxsc.Labeled], classOf[Labeled], classOf[jfxsc.LabeledBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Labeled(new Label) {}
+  override protected def getScalaClassInstance = new Labeled(new Label) {}
 
   protected def convertScalaClassToJavaClass(sfxControl: Labeled) = {
     val jfxLabeled: jfxsc.Labeled = sfxControl

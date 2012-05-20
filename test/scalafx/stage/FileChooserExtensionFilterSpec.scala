@@ -42,8 +42,6 @@ import scalafx.testutil.RunOnApplicationThread
 @RunWith(classOf[JUnitRunner]) 
 class FileChooserExtensionFilterSpec extends SimpleSFXDelegateSpec[jfxs.FileChooser.ExtensionFilter, FileChooser.ExtensionFilter](classOf[jfxs.FileChooser.ExtensionFilter], classOf[FileChooser.ExtensionFilter]) { 
 
-  protected def getScalaClassInstance = new FileChooser.ExtensionFilter(this.getJavaClassInstance)
-
   protected def convertScalaClassToJavaClass(sfxControl: FileChooser.ExtensionFilter) = {
     val jfxFileChooserExtensionFilter: jfxs.FileChooser.ExtensionFilter = sfxControl
     jfxFileChooserExtensionFilter

@@ -40,8 +40,6 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class DisplacementMapSpec extends AbstractSFXDelegateSpec[jfxse.DisplacementMap, DisplacementMap, jfxse.DisplacementMapBuilder[_]](classOf[jfxse.DisplacementMap], classOf[DisplacementMap], classOf[jfxse.DisplacementMapBuilder[_]]) {
 
-  protected def getScalaClassInstance = new DisplacementMap
-
   protected def convertScalaClassToJavaClass(sfxObject: DisplacementMap) = {
     val jfxDisplacementMap: jfxse.DisplacementMap = sfxObject
     jfxDisplacementMap

@@ -42,8 +42,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class ClosePathSpec 
   extends AbstractSFXDelegateSpec[jfxss.ClosePath, ClosePath, jfxss.ClosePathBuilder[_]](classOf[jfxss.ClosePath], classOf[ClosePath], classOf[jfxss.ClosePathBuilder[_]]) {
 
-  protected def getScalaClassInstance = new ClosePath
-
   protected def convertScalaClassToJavaClass(sfxClosePath: ClosePath) = {
     val jfxClosePath: jfxss.ClosePath = sfxClosePath
     jfxClosePath

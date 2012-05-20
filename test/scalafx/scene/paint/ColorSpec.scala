@@ -41,7 +41,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class ColorSpec extends AbstractSFXDelegateSpec[jfxsp.Color, Color, jfxsp.ColorBuilder[_]](classOf[jfxsp.Color], classOf[Color], classOf[jfxsp.ColorBuilder[_]]) {
 
-  protected def getScalaClassInstance = Color.color(0, 0, 0, 0)
+  override protected def getScalaClassInstance = Color.color(0, 0, 0, 0)
 
   protected def convertScalaClassToJavaClass(sfxControl: Color) = {
     val jfxColor: jfxsp.Color = sfxControl

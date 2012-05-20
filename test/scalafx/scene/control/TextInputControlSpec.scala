@@ -47,7 +47,7 @@ import scalafx.testutil.PropertyComparator
 @RunWith(classOf[JUnitRunner])
 class TextInputControlSpec extends AbstractSFXDelegateSpec[jfxsc.TextInputControl, TextInputControl, jfxsc.TextInputControlBuilder[_]](classOf[jfxsc.TextInputControl], classOf[TextInputControl], classOf[jfxsc.TextInputControlBuilder[_]]) {
 
-  protected def getScalaClassInstance = new TextField
+  override protected def getScalaClassInstance = new TextField
 
   protected def convertScalaClassToJavaClass(sfxControl: TextInputControl) = {
     val jfxChoiceBox: jfxsc.TextInputControl = sfxControl

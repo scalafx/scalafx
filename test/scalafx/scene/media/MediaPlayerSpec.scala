@@ -40,7 +40,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class MediaPlayerPlayerSpec extends AbstractSFXDelegateSpec[jfxsm.MediaPlayer, MediaPlayer, jfxsm.MediaPlayerBuilder](classOf[jfxsm.MediaPlayer], classOf[MediaPlayer], classOf[jfxsm.MediaPlayerBuilder]) {
 
-  protected def getScalaClassInstance = new MediaPlayer(new Media(url))
+  override protected def getScalaClassInstance = new MediaPlayer(new Media(url))
 
   protected def convertScalaClassToJavaClass(sfxControl: MediaPlayer) = {
     val jfxMediaPlayer: jfxsm.MediaPlayer = sfxControl

@@ -41,7 +41,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class ConstraintsBaseSpec extends SimpleSFXDelegateSpec[jfxsl.ConstraintsBase, ConstraintsBase](classOf[jfxsl.ConstraintsBase], classOf[ConstraintsBase]) {
 
-  protected def getScalaClassInstance = new RowConstraints
+  override protected def getScalaClassInstance = new RowConstraints
 
   protected def convertScalaClassToJavaClass(sfxControl: ConstraintsBase) = {
     val jfxConstraintsBase: jfxsl.ConstraintsBase = sfxControl

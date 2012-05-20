@@ -42,8 +42,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class ArcSpec
   extends AbstractSFXDelegateSpec[jfxss.Arc, Arc, jfxss.ArcBuilder[_]](classOf[jfxss.Arc], classOf[Arc], classOf[jfxss.ArcBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Arc
-
   protected def convertScalaClassToJavaClass(sfxArc: Arc) = {
     val jfxArc: jfxss.Arc = sfxArc
     jfxArc

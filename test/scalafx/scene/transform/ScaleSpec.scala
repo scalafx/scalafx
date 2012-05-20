@@ -48,8 +48,6 @@ class ScaleSpec
 
   val positionDelegate = new Scale(new jfxst.Scale)
   
-  protected def getScalaClassInstance = new Scale(new jfxst.Scale)
-
   protected def convertScalaClassToJavaClass(sfxControl: Scale) = {
     val jfxScale: jfxst.Scale = sfxControl
     jfxScale

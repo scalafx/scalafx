@@ -46,8 +46,6 @@ class LineToSpec
 
   val positionDelegate = getScalaClassInstance
 
-  protected def getScalaClassInstance = new LineTo
-
   protected def convertScalaClassToJavaClass(sfxLineTo: LineTo) = {
     val jfxLineTo: jfxss.LineTo = sfxLineTo
     jfxLineTo

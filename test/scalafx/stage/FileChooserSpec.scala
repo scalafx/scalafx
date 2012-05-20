@@ -42,8 +42,6 @@ import scalafx.testutil.RunOnApplicationThread
 @RunWith(classOf[JUnitRunner])
 class FileChooserSpec extends AbstractSFXDelegateSpec[jfxs.FileChooser, FileChooser, jfxs.FileChooserBuilder](classOf[jfxs.FileChooser], classOf[FileChooser], classOf[jfxs.FileChooserBuilder]) with RunOnApplicationThread {
 
-  protected def getScalaClassInstance = new FileChooser(this.getJavaClassInstance)
-
   protected def convertScalaClassToJavaClass(sfxControl: FileChooser) = {
     val jfxFileChooser: jfxs.FileChooser = sfxControl
     jfxFileChooser

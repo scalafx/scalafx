@@ -42,8 +42,6 @@ class CharStringConverterSpec
 
   val examples = List((Char.MaxValue, Char.MaxValue.toString), ('ã', "ã"), ('T', "T"))
 
-  protected def getScalaClassInstance = new CharStringConverter
-
   protected def convertScalaClassToJavaClass(sfxControl: CharStringConverter) = {
     val jfxCharacterStringConverter: jfxuc.CharacterStringConverter = sfxControl
     jfxCharacterStringConverter

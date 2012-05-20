@@ -41,7 +41,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner]) 
 class ParentSpec extends AbstractSFXDelegateSpec[jfxs.Parent, Parent, jfxs.ParentBuilder[_]](classOf[jfxs.Parent], classOf[Parent], classOf[jfxs.ParentBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Parent(getJavaClassInstance) {}
+  override protected def getScalaClassInstance = new Parent(getJavaClassInstance) {}
 
   protected def convertScalaClassToJavaClass(sfxControl: Parent) = {
     val jfxParent: jfxs.Parent = sfxControl

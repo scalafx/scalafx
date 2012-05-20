@@ -42,8 +42,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class CubicCurveSpec 
   extends AbstractSFXDelegateSpec[jfxss.CubicCurve, CubicCurve, jfxss.CubicCurveBuilder[_]](classOf[jfxss.CubicCurve], classOf[CubicCurve], classOf[jfxss.CubicCurveBuilder[_]]) {
 
-  protected def getScalaClassInstance = new CubicCurve
-
   protected def convertScalaClassToJavaClass(sfxCubicCurve: CubicCurve) = {
     val jfxCubicCurve: jfxss.CubicCurve = sfxCubicCurve
     jfxCubicCurve

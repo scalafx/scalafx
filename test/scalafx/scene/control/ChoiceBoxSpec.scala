@@ -44,8 +44,6 @@ import scalafx.testutil.PropertyComparator
 @RunWith(classOf[JUnitRunner])
 class ChoiceBoxSpec[J <: AnyRef] extends AbstractSFXDelegateSpec[jfxsc.ChoiceBox[J], ChoiceBox[J], jfxsc.ChoiceBoxBuilder[J, _]](classOf[jfxsc.ChoiceBox[J]], classOf[ChoiceBox[J]], classOf[jfxsc.ChoiceBoxBuilder[J, _]]) {
 
-  protected def getScalaClassInstance = new ChoiceBox[J](new jfxsc.ChoiceBox[J])
-
   protected def convertScalaClassToJavaClass(sfxControl: ChoiceBox[J]) = {
     val jfxChoiceBox: jfxsc.ChoiceBox[J] = sfxControl
     jfxChoiceBox

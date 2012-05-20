@@ -42,8 +42,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class SVGPathSpec
   extends AbstractSFXDelegateSpec[jfxss.SVGPath, SVGPath, jfxss.SVGPathBuilder[_]](classOf[jfxss.SVGPath], classOf[SVGPath], classOf[jfxss.SVGPathBuilder[_]]) {
 
-  protected def getScalaClassInstance = new SVGPath
-
   protected def convertScalaClassToJavaClass(sfxSVGPath: SVGPath) = {
     val jfxSVGPath: jfxss.SVGPath = sfxSVGPath
     jfxSVGPath

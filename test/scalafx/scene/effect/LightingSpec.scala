@@ -40,8 +40,6 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class LightingSpec extends AbstractSFXDelegateSpec[jfxse.Lighting, Lighting, jfxse.LightingBuilder[_]](classOf[jfxse.Lighting], classOf[Lighting], classOf[jfxse.LightingBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Lighting
-
   protected def convertScalaClassToJavaClass(sfxObject: Lighting) = {
     val jfxLighting: jfxse.Lighting = sfxObject
     jfxLighting

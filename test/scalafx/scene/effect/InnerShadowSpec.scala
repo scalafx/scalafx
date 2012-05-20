@@ -45,8 +45,6 @@ class InnerShadowSpec
 
   val dimensionDelegate = getScalaClassInstance
 
-  protected def getScalaClassInstance = new InnerShadow
-
   protected def convertScalaClassToJavaClass(sfxObject: InnerShadow) = {
     val jfxInnerShadow: jfxse.InnerShadow = sfxObject
     jfxInnerShadow

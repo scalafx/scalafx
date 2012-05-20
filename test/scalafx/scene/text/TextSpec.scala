@@ -46,8 +46,6 @@ class TextSpec
 
   val positionDelegate = new Text
 
-  protected def getScalaClassInstance = new Text
-
   protected def convertScalaClassToJavaClass(sfxControl: Text) = {
     val jfxText: jfxst.Text = sfxControl
     jfxText

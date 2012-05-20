@@ -44,7 +44,7 @@ import scalafx.testutil.PropertyComparator
 @RunWith(classOf[JUnitRunner])
 class ComboBoxBaseSpec[J] extends AbstractSFXDelegateSpec[jfxsc.ComboBoxBase[J], ComboBoxBase[J], jfxsc.ComboBoxBaseBuilder[J, _]](classOf[jfxsc.ComboBoxBase[J]], classOf[ComboBoxBase[J]], classOf[jfxsc.ComboBoxBaseBuilder[J, _]]) {
 
-  protected def getScalaClassInstance = new ComboBoxBase[J](getJavaClassInstance) {}
+  override protected def getScalaClassInstance = new ComboBoxBase[J](getJavaClassInstance) {}
 
   protected def convertScalaClassToJavaClass(sfxControl: ComboBoxBase[J]) = {
     val jfxComboBoxBase: jfxsc.ComboBoxBase[J] = sfxControl

@@ -43,8 +43,6 @@ class DoubleStringConverterSpec
   val examples = List((0.0, "0.0"), (123.09, "123.09"), (-123.45, "-123.45"),
     (Double.MaxValue, Double.MaxValue.toString), (Double.MinValue, Double.MinValue.toString))
 
-  protected def getScalaClassInstance = new DoubleStringConverter
-
   protected def convertScalaClassToJavaClass(sfxControl: DoubleStringConverter) = {
     val jfxDoubleStringConverter: jfxuc.DoubleStringConverter = sfxControl
     jfxDoubleStringConverter

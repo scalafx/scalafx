@@ -46,8 +46,6 @@ class MoveToSpec
 
   val positionDelegate = getScalaClassInstance
 
-  protected def getScalaClassInstance = new MoveTo
-
   protected def convertScalaClassToJavaClass(sfxMoveTo: MoveTo) = {
     val jfxMoveTo: jfxss.MoveTo = sfxMoveTo
     jfxMoveTo

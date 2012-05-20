@@ -44,8 +44,6 @@ class MediaViewSpec extends AbstractSFXDelegateSpec[jfxsm.MediaView, MediaView, 
 
   val positionDelegate = new MediaView
 
-  protected def getScalaClassInstance = new MediaView
-
   protected def convertScalaClassToJavaClass(sfxControl: MediaView) = {
     val jfxMediaView: jfxsm.MediaView = sfxControl
     jfxMediaView

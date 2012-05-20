@@ -40,8 +40,6 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class GlowSpec extends AbstractSFXDelegateSpec[jfxse.Glow, Glow, jfxse.GlowBuilder[_]](classOf[jfxse.Glow], classOf[Glow], classOf[jfxse.GlowBuilder[_]]) {
 
-  protected def getScalaClassInstance = new Glow
-
   protected def convertScalaClassToJavaClass(sfxObject: Glow) = {
     val jfxGlow: jfxse.Glow = sfxObject
     jfxGlow
