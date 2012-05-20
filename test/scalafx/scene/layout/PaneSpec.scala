@@ -39,7 +39,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class PaneSpec extends AbstractSFXDelegateSpec[jfxsl.Pane, Pane, jfxsl.PaneBuilder[_]](classOf[jfxsl.Pane], classOf[Pane], classOf[jfxsl.PaneBuilder[_]]) {
+class PaneSpec
+  extends AbstractSFXDelegateSpec[jfxsl.Pane, Pane, jfxsl.PaneBuilder[_]](classOf[jfxsl.Pane], classOf[Pane], classOf[jfxsl.PaneBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: Pane) = {
     val jfxPane: jfxsl.Pane = sfxControl

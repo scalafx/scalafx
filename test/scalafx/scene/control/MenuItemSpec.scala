@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
@@ -39,7 +38,8 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class MenuItemSpec extends AbstractSFXDelegateSpec[jfxsc.MenuItem, MenuItem, jfxsc.MenuItemBuilder[_]](classOf[jfxsc.MenuItem], classOf[MenuItem], classOf[jfxsc.MenuItemBuilder[_]]) {
+class MenuItemSpec
+  extends AbstractSFXDelegateSpec[jfxsc.MenuItem, MenuItem, jfxsc.MenuItemBuilder[_]](classOf[jfxsc.MenuItem], classOf[MenuItem], classOf[jfxsc.MenuItemBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: MenuItem) = {
     val jfxMenuItem: jfxsc.MenuItem = sfxControl

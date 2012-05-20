@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -26,23 +24,22 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
 import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 /**
  * ToggleButton Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ToggleToggleButtonSpec extends AbstractSFXDelegateSpec[jfxsc.ToggleButton, ToggleButton, jfxsc.ToggleButtonBuilder[_]](classOf[jfxsc.ToggleButton], classOf[ToggleButton], classOf[jfxsc.ToggleButtonBuilder[_]]) {
+class ToggleToggleButtonSpec
+  extends AbstractSFXDelegateSpec[jfxsc.ToggleButton, ToggleButton, jfxsc.ToggleButtonBuilder[_]](classOf[jfxsc.ToggleButton], classOf[ToggleButton], classOf[jfxsc.ToggleButtonBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: ToggleButton) = {
     val jfxToggleButton: jfxsc.ToggleButton = sfxControl

@@ -1,4 +1,4 @@
-package scalafx.scene.input 
+package scalafx.scene.input
 
 /*
  * Copyright (c) 2011, ScalaFX Project
@@ -28,7 +28,7 @@ package scalafx.scene.input
  */
 
 import org.junit.runner.RunWith
-import javafx.scene.{input => jfxsi}
+import javafx.scene.{ input => jfxsi }
 import scalafx.Includes._
 import scalafx.scene.input.DataFormat._
 import scalafx.testutil.SimpleSFXDelegateSpec
@@ -36,11 +36,12 @@ import org.scalatest.junit.JUnitRunner
 
 /**
  * DataFormat Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class DataFormatSpec extends SimpleSFXDelegateSpec[jfxsi.DataFormat, DataFormat](classOf[jfxsi.DataFormat], classOf[DataFormat]) {
+class DataFormatSpec
+  extends SimpleSFXDelegateSpec[jfxsi.DataFormat, DataFormat](classOf[jfxsi.DataFormat], classOf[DataFormat]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: DataFormat) = {
     val jfxDataFormat: jfxsi.DataFormat = sfxControl

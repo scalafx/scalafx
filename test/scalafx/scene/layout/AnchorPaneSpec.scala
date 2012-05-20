@@ -27,7 +27,7 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -35,11 +35,12 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * AnchorPane Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class AnchorPaneSpec extends AbstractSFXDelegateSpec[jfxsl.AnchorPane, AnchorPane, jfxsl.AnchorPaneBuilder[_]](classOf[jfxsl.AnchorPane], classOf[AnchorPane], classOf[jfxsl.AnchorPaneBuilder[_]]) {
+class AnchorPaneSpec
+  extends AbstractSFXDelegateSpec[jfxsl.AnchorPane, AnchorPane, jfxsl.AnchorPaneBuilder[_]](classOf[jfxsl.AnchorPane], classOf[AnchorPane], classOf[jfxsl.AnchorPaneBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: AnchorPane) = {
     val jfxAnchorPane: jfxsl.AnchorPane = sfxControl

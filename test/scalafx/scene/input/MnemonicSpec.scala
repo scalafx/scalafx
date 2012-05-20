@@ -38,7 +38,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class MnemonicSpec extends AbstractSFXDelegateSpec[jfxsi.Mnemonic, Mnemonic, jfxsi.MnemonicBuilder[_]](classOf[jfxsi.Mnemonic], classOf[Mnemonic], classOf[jfxsi.MnemonicBuilder[_]]) {
+class MnemonicSpec
+  extends AbstractSFXDelegateSpec[jfxsi.Mnemonic, Mnemonic, jfxsi.MnemonicBuilder[_]](classOf[jfxsi.Mnemonic], classOf[Mnemonic], classOf[jfxsi.MnemonicBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: Mnemonic) = {
     val jfxMnemonic: jfxsi.Mnemonic = sfxControl

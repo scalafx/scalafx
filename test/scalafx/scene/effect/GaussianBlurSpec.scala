@@ -38,7 +38,8 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class GaussianBlurSpec extends AbstractSFXDelegateSpec[jfxse.GaussianBlur, GaussianBlur, jfxse.GaussianBlurBuilder[_]](classOf[jfxse.GaussianBlur], classOf[GaussianBlur], classOf[jfxse.GaussianBlurBuilder[_]]) {
+class GaussianBlurSpec
+  extends AbstractSFXDelegateSpec[jfxse.GaussianBlur, GaussianBlur, jfxse.GaussianBlurBuilder[_]](classOf[jfxse.GaussianBlur], classOf[GaussianBlur], classOf[jfxse.GaussianBlurBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxObject: GaussianBlur) = {
     val jfxGaussianBlur: jfxse.GaussianBlur = sfxObject

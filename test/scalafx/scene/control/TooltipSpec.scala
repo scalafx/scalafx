@@ -1,6 +1,3 @@
-package scalafx.scene.control
-
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -28,19 +25,22 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+package scalafx.scene.control
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{ RunOnApplicationThread, AbstractSFXDelegateSpec }
 
 /**
  * Tooltip Spec tests.
- * 
+ *
  *
  */
-@RunWith(classOf[JUnitRunner]) 
-class TooltipSpec extends AbstractSFXDelegateSpec[jfxsc.Tooltip, Tooltip, jfxsc.TooltipBuilder[_]](classOf[jfxsc.Tooltip], classOf[Tooltip], classOf[jfxsc.TooltipBuilder[_]]) with RunOnApplicationThread {
+@RunWith(classOf[JUnitRunner])
+class TooltipSpec
+  extends AbstractSFXDelegateSpec[jfxsc.Tooltip, Tooltip, jfxsc.TooltipBuilder[_]](classOf[jfxsc.Tooltip], classOf[Tooltip], classOf[jfxsc.TooltipBuilder[_]]) with RunOnApplicationThread {
 
   protected def convertScalaClassToJavaClass(sfxControl: Tooltip) = {
     val jfxTooltip: jfxsc.Tooltip = sfxControl

@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,13 +24,11 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import javafx.scene.{ control => jfxsc }
-import scalafx.testutil.PropertyComparator
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.Includes._
 
@@ -40,8 +36,9 @@ import scalafx.Includes._
  * ProgressBar Spec tests.
  *
  */
-@RunWith(classOf[JUnitRunner]) 
-class ProgressBarSpec extends AbstractSFXDelegateSpec[jfxsc.ProgressBar, ProgressBar, jfxsc.ProgressBarBuilder[_]](classOf[jfxsc.ProgressBar], classOf[ProgressBar], classOf[jfxsc.ProgressBarBuilder[_]]) {
+@RunWith(classOf[JUnitRunner])
+class ProgressBarSpec
+  extends AbstractSFXDelegateSpec[jfxsc.ProgressBar, ProgressBar, jfxsc.ProgressBarBuilder[_]](classOf[jfxsc.ProgressBar], classOf[ProgressBar], classOf[jfxsc.ProgressBarBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: ProgressBar) = {
     val jfxProgressBar: jfxsc.ProgressBar = sfxControl

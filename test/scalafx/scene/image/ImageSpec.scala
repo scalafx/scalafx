@@ -30,10 +30,10 @@ package scalafx.scene.image
 import javafx.scene.{image => jfxsi}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
-import scalafx.testutil.PropertyComparator
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.PropertyComparator
 
 @RunWith(classOf[JUnitRunner])
 /**

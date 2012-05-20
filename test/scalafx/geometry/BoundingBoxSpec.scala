@@ -35,10 +35,11 @@ import org.scalatest.junit.JUnitRunner
 
 /**
  * BoundingBox Spec tests.
- * 
+ *
  */
 @RunWith(classOf[JUnitRunner])
-class BoundingBoxSpec extends AbstractSFXDelegateSpec[jfxg.BoundingBox, BoundingBox, jfxg.BoundingBoxBuilder[_]](classOf[jfxg.BoundingBox], classOf[BoundingBox], classOf[jfxg.BoundingBoxBuilder[_]]) {
+class BoundingBoxSpec
+  extends AbstractSFXDelegateSpec[jfxg.BoundingBox, BoundingBox, jfxg.BoundingBoxBuilder[_]](classOf[jfxg.BoundingBox], classOf[BoundingBox], classOf[jfxg.BoundingBoxBuilder[_]]) {
 
   override protected def getScalaClassInstance = new BoundingBox(0, 0, 0, 0)
 

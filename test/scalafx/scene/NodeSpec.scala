@@ -35,11 +35,12 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * Node Spec tests.
- * 
+ *
  *
  */
-@RunWith(classOf[JUnitRunner]) 
-class NodeSpec extends AbstractSFXDelegateSpec[jfxs.Node, Node, jfxs.NodeBuilder[_]](classOf[jfxs.Node], classOf[Node], classOf[jfxs.NodeBuilder[_]]) {
+@RunWith(classOf[JUnitRunner])
+class NodeSpec
+  extends AbstractSFXDelegateSpec[jfxs.Node, Node, jfxs.NodeBuilder[_]](classOf[jfxs.Node], classOf[Node], classOf[jfxs.NodeBuilder[_]]) {
 
   override protected def getScalaClassInstance = new Node(getJavaClassInstance) {}
 

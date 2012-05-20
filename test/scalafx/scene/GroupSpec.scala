@@ -24,24 +24,23 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene
 
 import javafx.{ scene => jfxs }
 import org.scalatest.matchers.ShouldMatchers._
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * Group Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class GroupSpec extends AbstractSFXDelegateSpec[jfxs.Group, Group, jfxs.GroupBuilder[_]](classOf[jfxs.Group], classOf[Group], classOf[jfxs.GroupBuilder[_]]) {
+class GroupSpec
+  extends AbstractSFXDelegateSpec[jfxs.Group, Group, jfxs.GroupBuilder[_]](classOf[jfxs.Group], classOf[Group], classOf[jfxs.GroupBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: Group) = {
     val jfxGroup: jfxs.Group = sfxControl

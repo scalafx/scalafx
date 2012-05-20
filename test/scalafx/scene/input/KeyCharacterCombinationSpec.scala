@@ -34,11 +34,12 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * KeyCharacterCombination Spec tests.
- * 
+ *
  *
  */
-@RunWith(classOf[JUnitRunner]) 
-class KeyCharacterCombinationSpec extends AbstractSFXDelegateSpec[jfxsi.KeyCharacterCombination, KeyCharacterCombination, jfxsi.KeyCharacterCombinationBuilder](classOf[jfxsi.KeyCharacterCombination], classOf[KeyCharacterCombination], classOf[jfxsi.KeyCharacterCombinationBuilder]) {
+@RunWith(classOf[JUnitRunner])
+class KeyCharacterCombinationSpec
+  extends AbstractSFXDelegateSpec[jfxsi.KeyCharacterCombination, KeyCharacterCombination, jfxsi.KeyCharacterCombinationBuilder](classOf[jfxsi.KeyCharacterCombination], classOf[KeyCharacterCombination], classOf[jfxsi.KeyCharacterCombinationBuilder]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: KeyCharacterCombination) = {
     val jfxKeyCharacterCombination: jfxsi.KeyCharacterCombination = sfxControl

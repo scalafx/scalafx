@@ -26,7 +26,7 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{effect => jfxse}
+import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
@@ -34,11 +34,12 @@ import org.scalatest.junit.JUnitRunner
 
 /**
  * Bloom Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class BloomSpec extends AbstractSFXDelegateSpec[jfxse.Bloom, Bloom, jfxse.BloomBuilder[_]](classOf[jfxse.Bloom], classOf[Bloom], classOf[jfxse.BloomBuilder[_]]) {
+class BloomSpec
+  extends AbstractSFXDelegateSpec[jfxse.Bloom, Bloom, jfxse.BloomBuilder[_]](classOf[jfxse.Bloom], classOf[Bloom], classOf[jfxse.BloomBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxObject: Bloom) = {
     val jfxBloom: jfxse.Bloom = sfxObject

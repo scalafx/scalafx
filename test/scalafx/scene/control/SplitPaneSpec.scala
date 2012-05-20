@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
@@ -39,7 +38,8 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class SplitPaneSpec extends AbstractSFXDelegateSpec[jfxsc.SplitPane, SplitPane, jfxsc.SplitPaneBuilder[_]](classOf[jfxsc.SplitPane], classOf[SplitPane], classOf[jfxsc.SplitPaneBuilder[_]]) {
+class SplitPaneSpec
+  extends AbstractSFXDelegateSpec[jfxsc.SplitPane, SplitPane, jfxsc.SplitPaneBuilder[_]](classOf[jfxsc.SplitPane], classOf[SplitPane], classOf[jfxsc.SplitPaneBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: SplitPane) = {
     val jfxSplitPane: jfxsc.SplitPane = sfxControl

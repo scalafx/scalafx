@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,8 +24,9 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
@@ -35,10 +34,11 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * TextArea Spec tests.
- * 
+ *
  */
 @RunWith(classOf[JUnitRunner])
-class TextAreaSpec extends AbstractSFXDelegateSpec[jfxsc.TextArea, TextArea, jfxsc.TextAreaBuilder[_]](classOf[jfxsc.TextArea], classOf[TextArea], classOf[jfxsc.TextAreaBuilder[_]]) {
+class TextAreaSpec
+  extends AbstractSFXDelegateSpec[jfxsc.TextArea, TextArea, jfxsc.TextAreaBuilder[_]](classOf[jfxsc.TextArea], classOf[TextArea], classOf[jfxsc.TextAreaBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: TextArea) = {
     val jfxTextArea: jfxsc.TextArea = sfxControl

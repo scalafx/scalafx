@@ -38,7 +38,8 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class MotionBlurSpec extends AbstractSFXDelegateSpec[jfxse.MotionBlur, MotionBlur, jfxse.MotionBlurBuilder[_]](classOf[jfxse.MotionBlur], classOf[MotionBlur], classOf[jfxse.MotionBlurBuilder[_]]) {
+class MotionBlurSpec
+  extends AbstractSFXDelegateSpec[jfxse.MotionBlur, MotionBlur, jfxse.MotionBlurBuilder[_]](classOf[jfxse.MotionBlur], classOf[MotionBlur], classOf[jfxse.MotionBlurBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxObject: MotionBlur) = {
     val jfxMotionBlur: jfxse.MotionBlur = sfxObject

@@ -39,7 +39,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class PerspectiveCameraSpec extends AbstractSFXDelegateSpec[jfxs.PerspectiveCamera, PerspectiveCamera, jfxs.PerspectiveCameraBuilder[_]](classOf[jfxs.PerspectiveCamera], classOf[PerspectiveCamera], classOf[jfxs.PerspectiveCameraBuilder[_]]) {
+class PerspectiveCameraSpec
+  extends AbstractSFXDelegateSpec[jfxs.PerspectiveCamera, PerspectiveCamera, jfxs.PerspectiveCameraBuilder[_]](classOf[jfxs.PerspectiveCamera], classOf[PerspectiveCamera], classOf[jfxs.PerspectiveCameraBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: PerspectiveCamera) = {
     val jfxPerspectiveCamera: jfxs.PerspectiveCamera = sfxControl

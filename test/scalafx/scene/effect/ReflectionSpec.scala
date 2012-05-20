@@ -38,7 +38,8 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ReflectionSpec extends AbstractSFXDelegateSpec[jfxse.Reflection, Reflection, jfxse.ReflectionBuilder[_]](classOf[jfxse.Reflection], classOf[Reflection], classOf[jfxse.ReflectionBuilder[_]]) {
+class ReflectionSpec
+  extends AbstractSFXDelegateSpec[jfxse.Reflection, Reflection, jfxse.ReflectionBuilder[_]](classOf[jfxse.Reflection], classOf[Reflection], classOf[jfxse.ReflectionBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxObject: Reflection) = {
     val jfxReflection: jfxse.Reflection = sfxObject

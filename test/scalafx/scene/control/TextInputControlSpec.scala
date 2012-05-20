@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,26 +24,25 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers.be
-import org.scalatest.matchers.ShouldMatchers.convertHasIntGetLengthMethodToLengthShouldWrapper
 import org.scalatest.FlatSpec
 
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.scene.control.TextField.sfxTextField2jfx
 import scalafx.testutil.AbstractSFXDelegateSpec
-import scalafx.testutil.PropertyComparator
 
 /**
  * TextInputControl Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class TextInputControlSpec extends AbstractSFXDelegateSpec[jfxsc.TextInputControl, TextInputControl, jfxsc.TextInputControlBuilder[_]](classOf[jfxsc.TextInputControl], classOf[TextInputControl], classOf[jfxsc.TextInputControlBuilder[_]]) {
+class TextInputControlSpec
+  extends AbstractSFXDelegateSpec[jfxsc.TextInputControl, TextInputControl, jfxsc.TextInputControlBuilder[_]](classOf[jfxsc.TextInputControl], classOf[TextInputControl], classOf[jfxsc.TextInputControlBuilder[_]]) {
 
   override protected def getScalaClassInstance = new TextField
 

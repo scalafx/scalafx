@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -27,10 +25,9 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.scene.{control => jfxsc}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
-import scalafx.testutil.PropertyComparator
+package scalafx.scene.control
+
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
@@ -38,10 +35,11 @@ import org.scalatest.junit.JUnitRunner
 
 /**
  * TextField Spec tests.
- * 
+ *
  */
 @RunWith(classOf[JUnitRunner])
-class TextFieldSpec extends AbstractSFXDelegateSpec[jfxsc.TextField, TextField, jfxsc.TextFieldBuilder[_]](classOf[jfxsc.TextField], classOf[TextField], classOf[jfxsc.TextFieldBuilder[_]]) {
+class TextFieldSpec
+  extends AbstractSFXDelegateSpec[jfxsc.TextField, TextField, jfxsc.TextFieldBuilder[_]](classOf[jfxsc.TextField], classOf[TextField], classOf[jfxsc.TextFieldBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: TextField) = {
     val jfxTextField: jfxsc.TextField = sfxControl

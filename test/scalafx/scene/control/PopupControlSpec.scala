@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,20 +24,23 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{ RunOnApplicationThread, AbstractSFXDelegateSpec }
 
 /**
  * PopupControl Spec tests.
  *
  */
-@RunWith(classOf[JUnitRunner]) 
-class PopupControlSpec extends AbstractSFXDelegateSpec[jfxsc.PopupControl, PopupControl, jfxsc.PopupControlBuilder[_]](classOf[jfxsc.PopupControl], classOf[PopupControl], classOf[jfxsc.PopupControlBuilder[_]]) with RunOnApplicationThread {
+@RunWith(classOf[JUnitRunner])
+class PopupControlSpec
+  extends AbstractSFXDelegateSpec[jfxsc.PopupControl, PopupControl, jfxsc.PopupControlBuilder[_]](classOf[jfxsc.PopupControl], classOf[PopupControl], classOf[jfxsc.PopupControlBuilder[_]]) 
+  with RunOnApplicationThread {
 
   protected def convertScalaClassToJavaClass(sfxControl: PopupControl) = {
     val jfxPopupControl: jfxsc.PopupControl = sfxControl

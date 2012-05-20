@@ -26,10 +26,11 @@
  */
 package scalafx.event
 
-import javafx.{ event => jfxe }
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
+import javafx.{event => jfxe}
+import scalafx.Includes.jfxEventType2sfx
+import scalafx.event.EventType.sfxEventType2jfx
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
 
 /**
@@ -38,7 +39,8 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class EventTypeSpec[T <: jfxe.Event] extends SimpleSFXDelegateSpec[jfxe.EventType[T], EventType[T]](classOf[jfxe.EventType[T]], classOf[EventType[T]]) {
+class EventTypeSpec[T <: jfxe.Event]
+  extends SimpleSFXDelegateSpec[jfxe.EventType[T], EventType[T]](classOf[jfxe.EventType[T]], classOf[EventType[T]]) {
 
   protected def convertScalaClassToJavaClass(sfxObject: EventType[T]) = {
     val jfxEventType: jfxe.EventType[T] = sfxObject

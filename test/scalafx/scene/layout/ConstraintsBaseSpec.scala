@@ -27,7 +27,7 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -35,11 +35,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ConstraintsBase Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ConstraintsBaseSpec extends SimpleSFXDelegateSpec[jfxsl.ConstraintsBase, ConstraintsBase](classOf[jfxsl.ConstraintsBase], classOf[ConstraintsBase]) {
+class ConstraintsBaseSpec
+  extends SimpleSFXDelegateSpec[jfxsl.ConstraintsBase, ConstraintsBase](classOf[jfxsl.ConstraintsBase], classOf[ConstraintsBase]) {
 
   override protected def getScalaClassInstance = new RowConstraints
 

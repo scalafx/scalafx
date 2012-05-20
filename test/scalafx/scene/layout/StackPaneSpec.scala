@@ -39,7 +39,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class StackPaneSpec extends AbstractSFXDelegateSpec[jfxsl.StackPane, StackPane, jfxsl.StackPaneBuilder[_]](classOf[jfxsl.StackPane], classOf[StackPane], classOf[jfxsl.StackPaneBuilder[_]]) {
+class StackPaneSpec
+  extends AbstractSFXDelegateSpec[jfxsl.StackPane, StackPane, jfxsl.StackPaneBuilder[_]](classOf[jfxsl.StackPane], classOf[StackPane], classOf[jfxsl.StackPaneBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: StackPane) = {
     val jfxStackPane: jfxsl.StackPane = sfxControl

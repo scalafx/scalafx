@@ -27,8 +27,6 @@
 package scalafx.scene.effect
 
 import javafx.scene.{ effect => jfxse }
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith

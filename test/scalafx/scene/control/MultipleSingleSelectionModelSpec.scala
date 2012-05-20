@@ -1,7 +1,5 @@
-package scalafx.scene.control
-
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +24,7 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import org.junit.runner.RunWith
@@ -35,10 +34,11 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * MultipleSelectionModel[T] Spec tests.
- * 
+ *
  */
-@RunWith(classOf[JUnitRunner]) 
-class MultipleMultipleSelectionModelSpec[T] extends AbstractSFXDelegateSpec[jfxsc.MultipleSelectionModel[T], MultipleSelectionModel[T], jfxsc.MultipleSelectionModelBuilder[T, _]](classOf[jfxsc.MultipleSelectionModel[T]], classOf[MultipleSelectionModel[T]], classOf[jfxsc.MultipleSelectionModelBuilder[T, _]]) {
+@RunWith(classOf[JUnitRunner])
+class MultipleMultipleSelectionModelSpec[T]
+  extends AbstractSFXDelegateSpec[jfxsc.MultipleSelectionModel[T], MultipleSelectionModel[T], jfxsc.MultipleSelectionModelBuilder[T, _]](classOf[jfxsc.MultipleSelectionModel[T]], classOf[MultipleSelectionModel[T]], classOf[jfxsc.MultipleSelectionModelBuilder[T, _]]) {
 
   override protected def getScalaClassInstance = new MultipleSelectionModel[T](getJavaClassInstance) {}
 

@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -27,22 +25,22 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.scene.{control => jfxsc}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+package scalafx.scene.control
+
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
 import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 /**
  * ToggleGroup Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ToggleGroupSpec extends AbstractSFXDelegateSpec[jfxsc.ToggleGroup, ToggleGroup, jfxsc.ToggleGroupBuilder[_]](classOf[jfxsc.ToggleGroup], classOf[ToggleGroup], classOf[jfxsc.ToggleGroupBuilder[_]]) {
+class ToggleGroupSpec
+  extends AbstractSFXDelegateSpec[jfxsc.ToggleGroup, ToggleGroup, jfxsc.ToggleGroupBuilder[_]](classOf[jfxsc.ToggleGroup], classOf[ToggleGroup], classOf[jfxsc.ToggleGroupBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: ToggleGroup) = {
     val jfxToggleGroup: jfxsc.ToggleGroup = sfxControl

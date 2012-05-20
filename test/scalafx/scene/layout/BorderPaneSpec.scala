@@ -27,7 +27,7 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -35,11 +35,12 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * BorderPane Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class BorderPaneSpec extends AbstractSFXDelegateSpec[jfxsl.BorderPane, BorderPane, jfxsl.BorderPaneBuilder[_]](classOf[jfxsl.BorderPane], classOf[BorderPane], classOf[jfxsl.BorderPaneBuilder[_]]) {
+class BorderPaneSpec
+  extends AbstractSFXDelegateSpec[jfxsl.BorderPane, BorderPane, jfxsl.BorderPaneBuilder[_]](classOf[jfxsl.BorderPane], classOf[BorderPane], classOf[jfxsl.BorderPaneBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: BorderPane) = {
     val jfxBorderPane: jfxsl.BorderPane = sfxControl

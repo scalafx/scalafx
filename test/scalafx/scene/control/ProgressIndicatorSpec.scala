@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,13 +24,11 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
-import javafx.scene.{control => jfxsc}
-import scalafx.testutil.PropertyComparator
+import javafx.scene.{ control => jfxsc }
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.Includes._
 
@@ -41,7 +37,8 @@ import scalafx.Includes._
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ProgressIndicatorSpec extends AbstractSFXDelegateSpec[jfxsc.ProgressIndicator, ProgressIndicator, jfxsc.ProgressIndicatorBuilder[_]](classOf[jfxsc.ProgressIndicator], classOf[ProgressIndicator], classOf[jfxsc.ProgressIndicatorBuilder[_]]) {
+class ProgressIndicatorSpec
+  extends AbstractSFXDelegateSpec[jfxsc.ProgressIndicator, ProgressIndicator, jfxsc.ProgressIndicatorBuilder[_]](classOf[jfxsc.ProgressIndicator], classOf[ProgressIndicator], classOf[jfxsc.ProgressIndicatorBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: ProgressIndicator) = {
     val jfxProgressIndicator: jfxsc.ProgressIndicator = sfxControl

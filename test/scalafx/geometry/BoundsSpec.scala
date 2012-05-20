@@ -35,10 +35,11 @@ import org.scalatest.junit.JUnitRunner
 
 /**
  * Bounds Spec tests.
- * 
+ *
  */
-@RunWith(classOf[JUnitRunner]) 
-class BoundsSpec extends SimpleSFXDelegateSpec[jfxg.Bounds, Bounds](classOf[jfxg.Bounds], classOf[Bounds]) {
+@RunWith(classOf[JUnitRunner])
+class BoundsSpec
+  extends SimpleSFXDelegateSpec[jfxg.Bounds, Bounds](classOf[jfxg.Bounds], classOf[Bounds]) {
 
   override protected def getScalaClassInstance = new Bounds(getJavaClassInstance) {}
 

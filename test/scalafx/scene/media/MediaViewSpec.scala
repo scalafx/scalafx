@@ -39,7 +39,8 @@ import scalafx.testutil.PositionDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class MediaViewSpec extends AbstractSFXDelegateSpec[jfxsm.MediaView, MediaView, jfxsm.MediaViewBuilder[_]](classOf[jfxsm.MediaView], classOf[MediaView], classOf[jfxsm.MediaViewBuilder[_]])
+class MediaViewSpec
+  extends AbstractSFXDelegateSpec[jfxsm.MediaView, MediaView, jfxsm.MediaViewBuilder[_]](classOf[jfxsm.MediaView], classOf[MediaView], classOf[jfxsm.MediaViewBuilder[_]])
   with PositionDelegateSpec[MediaView] {
 
   val positionDelegate = new MediaView

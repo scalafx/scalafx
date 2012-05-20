@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -26,23 +24,22 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * Button Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ButtonSpec extends AbstractSFXDelegateSpec[jfxsc.Button, Button, jfxsc.ButtonBuilder[_]](classOf[jfxsc.Button], classOf[Button], classOf[jfxsc.ButtonBuilder[_]]) {
+class ButtonSpec
+  extends AbstractSFXDelegateSpec[jfxsc.Button, Button, jfxsc.ButtonBuilder[_]](classOf[jfxsc.Button], classOf[Button], classOf[jfxsc.ButtonBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: Button) = {
     val jfxButton: jfxsc.Button = sfxControl

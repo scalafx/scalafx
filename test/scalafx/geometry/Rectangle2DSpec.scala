@@ -38,7 +38,8 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class Rectangle2DSpec extends AbstractSFXDelegateSpec[jfxg.Rectangle2D, Rectangle2D, jfxg.Rectangle2DBuilder[_]](classOf[jfxg.Rectangle2D], classOf[Rectangle2D], classOf[jfxg.Rectangle2DBuilder[_]]) {
+class Rectangle2DSpec
+  extends AbstractSFXDelegateSpec[jfxg.Rectangle2D, Rectangle2D, jfxg.Rectangle2DBuilder[_]](classOf[jfxg.Rectangle2D], classOf[Rectangle2D], classOf[jfxg.Rectangle2DBuilder[_]]) {
 
   override protected def getScalaClassInstance = new Rectangle2D(0, 0, 0, 0)
 

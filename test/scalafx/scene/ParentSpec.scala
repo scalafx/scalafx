@@ -35,11 +35,12 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * Parent Spec tests.
- * 
+ *
  *
  */
-@RunWith(classOf[JUnitRunner]) 
-class ParentSpec extends AbstractSFXDelegateSpec[jfxs.Parent, Parent, jfxs.ParentBuilder[_]](classOf[jfxs.Parent], classOf[Parent], classOf[jfxs.ParentBuilder[_]]) {
+@RunWith(classOf[JUnitRunner])
+class ParentSpec
+  extends AbstractSFXDelegateSpec[jfxs.Parent, Parent, jfxs.ParentBuilder[_]](classOf[jfxs.Parent], classOf[Parent], classOf[jfxs.ParentBuilder[_]]) {
 
   override protected def getScalaClassInstance = new Parent(getJavaClassInstance) {}
 

@@ -39,7 +39,8 @@ import scalafx.testutil.RunOnApplicationThread
  *
  */
 @RunWith(classOf[JUnitRunner])
-class AudioEqualizerSpec extends SimpleSFXDelegateSpec[jfxsm.AudioEqualizer, AudioEqualizer](classOf[jfxsm.AudioEqualizer], classOf[AudioEqualizer]) {
+class AudioEqualizerSpec
+  extends SimpleSFXDelegateSpec[jfxsm.AudioEqualizer, AudioEqualizer](classOf[jfxsm.AudioEqualizer], classOf[AudioEqualizer]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: AudioEqualizer) = {
     val jfxAudioEqualizer: jfxsm.AudioEqualizer = sfxControl

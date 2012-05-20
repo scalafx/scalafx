@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,6 +24,7 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import org.junit.runner.RunWith
@@ -38,7 +37,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class TabPanePaneSpec extends AbstractSFXDelegateSpec[jfxsc.TabPane, TabPane, jfxsc.TabPaneBuilder[_]](classOf[jfxsc.TabPane], classOf[TabPane], classOf[jfxsc.TabPaneBuilder[_]]) {
+class TabPanePaneSpec
+  extends AbstractSFXDelegateSpec[jfxsc.TabPane, TabPane, jfxsc.TabPaneBuilder[_]](classOf[jfxsc.TabPane], classOf[TabPane], classOf[jfxsc.TabPaneBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: TabPane) = {
     val jfxTabPane: jfxsc.TabPane = sfxControl

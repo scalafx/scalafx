@@ -34,11 +34,12 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * Affine Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class AffineSpec extends AbstractSFXDelegateSpec[jfxst.Affine, Affine, jfxst.AffineBuilder[_]](classOf[jfxst.Affine], classOf[Affine], classOf[jfxst.AffineBuilder[_]]) {
+class AffineSpec
+  extends AbstractSFXDelegateSpec[jfxst.Affine, Affine, jfxst.AffineBuilder[_]](classOf[jfxst.Affine], classOf[Affine], classOf[jfxst.AffineBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: Affine) = {
     val jfxAffine: jfxst.Affine = sfxControl

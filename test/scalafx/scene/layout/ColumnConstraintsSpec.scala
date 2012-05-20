@@ -27,7 +27,7 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -35,11 +35,12 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * ColumnConstraints Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ColumnConstraintsSpec extends AbstractSFXDelegateSpec[jfxsl.ColumnConstraints, ColumnConstraints, jfxsl.ColumnConstraintsBuilder[_]](classOf[jfxsl.ColumnConstraints], classOf[ColumnConstraints], classOf[jfxsl.ColumnConstraintsBuilder[_]]) {
+class ColumnConstraintsSpec
+  extends AbstractSFXDelegateSpec[jfxsl.ColumnConstraints, ColumnConstraints, jfxsl.ColumnConstraintsBuilder[_]](classOf[jfxsl.ColumnConstraints], classOf[ColumnConstraints], classOf[jfxsl.ColumnConstraintsBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: ColumnConstraints) = {
     val jfxColumnConstraints: jfxsl.ColumnConstraints = sfxControl

@@ -35,10 +35,11 @@ import org.scalatest.junit.JUnitRunner
 
 /**
  * Point2D Spec tests.
- * 
+ *
  */
-@RunWith(classOf[JUnitRunner]) 
-class Point2DSpec extends AbstractSFXDelegateSpec[jfxg.Point2D, Point2D, jfxg.Point2DBuilder[_]](classOf[jfxg.Point2D], classOf[Point2D], classOf[jfxg.Point2DBuilder[_]]) {
+@RunWith(classOf[JUnitRunner])
+class Point2DSpec
+  extends AbstractSFXDelegateSpec[jfxg.Point2D, Point2D, jfxg.Point2DBuilder[_]](classOf[jfxg.Point2D], classOf[Point2D], classOf[jfxg.Point2DBuilder[_]]) {
 
   override protected def getScalaClassInstance = new Point2D(0, 0)
 

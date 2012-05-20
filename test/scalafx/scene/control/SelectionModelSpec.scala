@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -27,6 +25,8 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+package scalafx.scene.control
+
 import javafx.scene.{ control => jfxsc }
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -35,10 +35,11 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * SelectionModel[T] Spec tests.
- * 
+ *
  */
-@RunWith(classOf[JUnitRunner]) 
-class SelectionModelSpec[T] extends SimpleSFXDelegateSpec[jfxsc.SelectionModel[T], SelectionModel[T]](classOf[jfxsc.SelectionModel[T]], classOf[SelectionModel[T]]) {
+@RunWith(classOf[JUnitRunner])
+class SelectionModelSpec[T]
+  extends SimpleSFXDelegateSpec[jfxsc.SelectionModel[T], SelectionModel[T]](classOf[jfxsc.SelectionModel[T]], classOf[SelectionModel[T]]) {
 
   override protected def getScalaClassInstance = new SelectionModel[T](getJavaClassInstance) {}
 

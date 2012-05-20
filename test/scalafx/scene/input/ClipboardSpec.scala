@@ -1,4 +1,4 @@
-package scalafx.scene.input 
+package scalafx.scene.input
 
 /*
  * Copyright (c) 2011, ScalaFX Project
@@ -28,19 +28,20 @@ package scalafx.scene.input
  */
 
 import org.junit.runner.RunWith
-import javafx.scene.{input => jfxsi}
+import javafx.scene.{ input => jfxsi }
 import scalafx.Includes._
 import scalafx.scene.input.Clipboard._
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
+import scalafx.testutil.{ RunOnApplicationThread, SimpleSFXDelegateSpec }
 
 /**
  * KeyCharacterCombination Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ClipboardSpec extends SimpleSFXDelegateSpec[jfxsi.Clipboard, Clipboard](classOf[jfxsi.Clipboard], classOf[Clipboard]) with RunOnApplicationThread {
+class ClipboardSpec
+  extends SimpleSFXDelegateSpec[jfxsi.Clipboard, Clipboard](classOf[jfxsi.Clipboard], classOf[Clipboard]) with RunOnApplicationThread {
 
   protected def convertScalaClassToJavaClass(sfxControl: Clipboard) = {
     val jfxClipboard: jfxsi.Clipboard = sfxControl

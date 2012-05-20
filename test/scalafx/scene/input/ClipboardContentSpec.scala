@@ -35,11 +35,12 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * ClipboardContent Spec tests.
- * 
+ *
  *
  */
-@RunWith(classOf[JUnitRunner]) 
-class ClipboardContentSpec extends AbstractSFXDelegateSpec[jfxsi.ClipboardContent, ClipboardContent, jfxsi.ClipboardContentBuilder[_]](classOf[jfxsi.ClipboardContent], classOf[ClipboardContent], classOf[jfxsi.ClipboardContentBuilder[_]]) {
+@RunWith(classOf[JUnitRunner])
+class ClipboardContentSpec
+  extends AbstractSFXDelegateSpec[jfxsi.ClipboardContent, ClipboardContent, jfxsi.ClipboardContentBuilder[_]](classOf[jfxsi.ClipboardContent], classOf[ClipboardContent], classOf[jfxsi.ClipboardContentBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: ClipboardContent) = {
     val jfxClipboardContent: jfxsi.ClipboardContent = sfxControl

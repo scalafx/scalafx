@@ -1,5 +1,3 @@
-package scalafx.scene.transform
-
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -26,6 +24,7 @@ package scalafx.scene.transform
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.transform
 
 import org.junit.runner.RunWith
 import javafx.scene.{ transform => jfxst }
@@ -40,17 +39,19 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class TransformSpec extends SimpleSFXDelegateSpec[jfxst.Transform, Transform](classOf[jfxst.Transform], classOf[Transform]) {
+class TransformSpec
+  extends SimpleSFXDelegateSpec[jfxst.Transform, Transform](classOf[jfxst.Transform], classOf[Transform]) {
 
   override def getScalaClassInstance = new Transform(getJavaClassInstance) {}
-  
+
   protected def convertScalaClassToJavaClass(sfxControl: Transform) = {
     val jfxTransform: jfxst.Transform = sfxControl
     jfxTransform
   }
 
   override protected def getJavaClassInstance = new jfxst.Transform {
-    // This is a implementation of a abstract deprecated method in original class. Probably ot will be removed in future versions.
+    // This is a implementation of a abstract deprecated method in original class. 
+    //Probably ot will be removed in future versions.
     override def impl_apply(affine: com.sun.javafx.geom.transform.Affine3D) {}
   }
 

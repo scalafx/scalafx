@@ -28,20 +28,18 @@
 package scalafx.geometry
 
 import javafx.{ geometry => jfxg }
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
 import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 /**
  * Point3D Spec tests.
- * 
+ *
  */
 @RunWith(classOf[JUnitRunner])
-class Point3DSpec extends AbstractSFXDelegateSpec[jfxg.Point3D, Point3D, jfxg.Point3DBuilder[_]](classOf[jfxg.Point3D], classOf[Point3D], classOf[jfxg.Point3DBuilder[_]]) {
+class Point3DSpec
+  extends AbstractSFXDelegateSpec[jfxg.Point3D, Point3D, jfxg.Point3DBuilder[_]](classOf[jfxg.Point3D], classOf[Point3D], classOf[jfxg.Point3DBuilder[_]]) {
 
   override protected def getScalaClassInstance = new Point3D(0, 0, 0)
 

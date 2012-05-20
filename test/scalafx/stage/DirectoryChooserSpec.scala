@@ -36,11 +36,13 @@ import scalafx.testutil.RunOnApplicationThread
 
 /**
  * DirectoryChooser Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class DirectoryChooserSpec extends AbstractSFXDelegateSpec[jfxs.DirectoryChooser, DirectoryChooser, jfxs.DirectoryChooserBuilder](classOf[jfxs.DirectoryChooser], classOf[DirectoryChooser], classOf[jfxs.DirectoryChooserBuilder]) with RunOnApplicationThread {
+class DirectoryChooserSpec
+  extends AbstractSFXDelegateSpec[jfxs.DirectoryChooser, DirectoryChooser, jfxs.DirectoryChooserBuilder](classOf[jfxs.DirectoryChooser], classOf[DirectoryChooser], classOf[jfxs.DirectoryChooserBuilder])
+  with RunOnApplicationThread {
 
   protected def convertScalaClassToJavaClass(sfxControl: DirectoryChooser) = {
     val jfxDirectoryChooser: jfxs.DirectoryChooser = sfxControl

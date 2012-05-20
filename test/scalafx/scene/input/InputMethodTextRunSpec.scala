@@ -28,18 +28,19 @@ package scalafx.scene.input
  */
 
 import org.junit.runner.RunWith
-import javafx.scene.{input => jfxsi}
+import javafx.scene.{ input => jfxsi }
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
 
 /**
  * InputMethodTextRun Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class InputMethodTextRunSpec extends SimpleSFXDelegateSpec[jfxsi.InputMethodTextRun, InputMethodTextRun](classOf[jfxsi.InputMethodTextRun], classOf[InputMethodTextRun]) {
+class InputMethodTextRunSpec
+  extends SimpleSFXDelegateSpec[jfxsi.InputMethodTextRun, InputMethodTextRun](classOf[jfxsi.InputMethodTextRun], classOf[InputMethodTextRun]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: InputMethodTextRun) = {
     val jfxInputMethodTextRun: jfxsi.InputMethodTextRun = sfxControl

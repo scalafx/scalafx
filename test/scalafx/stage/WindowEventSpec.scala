@@ -35,11 +35,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Window Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class WindowEventSpec extends SimpleSFXDelegateSpec[jfxs.WindowEvent, WindowEvent](classOf[jfxs.WindowEvent], classOf[WindowEvent])  {
+class WindowEventSpec
+  extends SimpleSFXDelegateSpec[jfxs.WindowEvent, WindowEvent](classOf[jfxs.WindowEvent], classOf[WindowEvent]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: WindowEvent) = {
     val jfxWindowEvent: jfxs.WindowEvent = sfxControl

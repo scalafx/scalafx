@@ -1,6 +1,3 @@
-package scalafx.scene.control
-
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -28,22 +25,22 @@ package scalafx.scene.control
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.scene.{control => jfxsc}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+package scalafx.scene.control
+
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
 import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 /**
  * TitledPane Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class TitledPaneSpec extends AbstractSFXDelegateSpec[jfxsc.TitledPane, TitledPane, jfxsc.TitledPaneBuilder[_]](classOf[jfxsc.TitledPane], classOf[TitledPane], classOf[jfxsc.TitledPaneBuilder[_]]) {
+class TitledPaneSpec
+  extends AbstractSFXDelegateSpec[jfxsc.TitledPane, TitledPane, jfxsc.TitledPaneBuilder[_]](classOf[jfxsc.TitledPane], classOf[TitledPane], classOf[jfxsc.TitledPaneBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: TitledPane) = {
     val jfxTitledPane: jfxsc.TitledPane = sfxControl

@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,12 +24,10 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
-
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
@@ -41,7 +37,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ComboBoxSpec[J] extends AbstractSFXDelegateSpec[jfxsc.ComboBox[J], ComboBox[J], jfxsc.ComboBoxBuilder[J, _]](classOf[jfxsc.ComboBox[J]], classOf[ComboBox[J]], classOf[jfxsc.ComboBoxBuilder[J, _]]) {
+class ComboBoxSpec[J]
+  extends AbstractSFXDelegateSpec[jfxsc.ComboBox[J], ComboBox[J], jfxsc.ComboBoxBuilder[J, _]](classOf[jfxsc.ComboBox[J]], classOf[ComboBox[J]], classOf[jfxsc.ComboBoxBuilder[J, _]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: ComboBox[J]) = {
     val jfxComboBox: jfxsc.ComboBox[J] = sfxControl

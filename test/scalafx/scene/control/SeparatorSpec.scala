@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,6 +24,7 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import org.junit.runner.RunWith
@@ -35,11 +34,12 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * Separator Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class SeparatorSpec extends AbstractSFXDelegateSpec[jfxsc.Separator, Separator, jfxsc.SeparatorBuilder[_]](classOf[jfxsc.Separator], classOf[Separator], classOf[jfxsc.SeparatorBuilder[_]]) {
+class SeparatorSpec
+  extends AbstractSFXDelegateSpec[jfxsc.Separator, Separator, jfxsc.SeparatorBuilder[_]](classOf[jfxsc.Separator], classOf[Separator], classOf[jfxsc.SeparatorBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: Separator) = {
     val jfxSeparator: jfxsc.Separator = sfxControl

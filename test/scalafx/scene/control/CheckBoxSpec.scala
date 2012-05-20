@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,6 +24,7 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import org.junit.runner.RunWith
@@ -35,10 +34,11 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * CheckBox Spec tests.
- * 
+ *
  */
 @RunWith(classOf[JUnitRunner])
-class CheckBoxSpec extends AbstractSFXDelegateSpec[jfxsc.CheckBox, CheckBox, jfxsc.CheckBoxBuilder[_]](classOf[jfxsc.CheckBox], classOf[CheckBox], classOf[jfxsc.CheckBoxBuilder[_]]) {
+class CheckBoxSpec
+  extends AbstractSFXDelegateSpec[jfxsc.CheckBox, CheckBox, jfxsc.CheckBoxBuilder[_]](classOf[jfxsc.CheckBox], classOf[CheckBox], classOf[jfxsc.CheckBoxBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: CheckBox) = {
     val jfxCheckBox: jfxsc.CheckBox = sfxControl

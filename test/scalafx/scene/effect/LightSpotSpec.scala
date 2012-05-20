@@ -38,7 +38,8 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class LightSpotSpec extends SimpleSFXDelegateSpec[jfxse.Light.Spot, Light.Spot](classOf[jfxse.Light.Spot], classOf[Light.Spot]) {
+class LightSpotSpec
+  extends SimpleSFXDelegateSpec[jfxse.Light.Spot, Light.Spot](classOf[jfxse.Light.Spot], classOf[Light.Spot]) {
 
   protected def convertScalaClassToJavaClass(sfxObject: Light.Spot) = {
     val jfxLightSpot: jfxse.Light.Spot = sfxObject

@@ -24,14 +24,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
 import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -42,8 +38,8 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class CellSpec[T] 
-extends AbstractSFXDelegateSpec[jfxsc.Cell[T], Cell[T], jfxsc.CellBuilder[T, _]](classOf[jfxsc.Cell[T]], classOf[Cell[T]], classOf[jfxsc.CellBuilder[T, _]]) {
+class CellSpec[T]
+  extends AbstractSFXDelegateSpec[jfxsc.Cell[T], Cell[T], jfxsc.CellBuilder[T, _]](classOf[jfxsc.Cell[T]], classOf[Cell[T]], classOf[jfxsc.CellBuilder[T, _]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: Cell[T]) = {
     val jfxCell: jfxsc.Cell[T] = sfxControl

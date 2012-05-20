@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
@@ -39,7 +38,8 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class HyperlinkSpec extends AbstractSFXDelegateSpec[jfxsc.Hyperlink, Hyperlink, jfxsc.HyperlinkBuilder[_]](classOf[jfxsc.Hyperlink], classOf[Hyperlink], classOf[jfxsc.HyperlinkBuilder[_]]) {
+class HyperlinkSpec
+  extends AbstractSFXDelegateSpec[jfxsc.Hyperlink, Hyperlink, jfxsc.HyperlinkBuilder[_]](classOf[jfxsc.Hyperlink], classOf[Hyperlink], classOf[jfxsc.HyperlinkBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: Hyperlink) = {
     val jfxHyperlink: jfxsc.Hyperlink = sfxControl

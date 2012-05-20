@@ -27,7 +27,7 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -35,11 +35,12 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * FlowPane Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class FlowPaneSpec extends AbstractSFXDelegateSpec[jfxsl.FlowPane, FlowPane, jfxsl.FlowPaneBuilder[_]](classOf[jfxsl.FlowPane], classOf[FlowPane], classOf[jfxsl.FlowPaneBuilder[_]]) {
+class FlowPaneSpec
+  extends AbstractSFXDelegateSpec[jfxsl.FlowPane, FlowPane, jfxsl.FlowPaneBuilder[_]](classOf[jfxsl.FlowPane], classOf[FlowPane], classOf[jfxsl.FlowPaneBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: FlowPane) = {
     val jfxFlowPane: jfxsl.FlowPane = sfxControl

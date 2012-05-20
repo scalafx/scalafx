@@ -39,7 +39,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class VBoxSpec extends AbstractSFXDelegateSpec[jfxsl.VBox, VBox, jfxsl.VBoxBuilder[_]](classOf[jfxsl.VBox], classOf[VBox], classOf[jfxsl.VBoxBuilder[_]]) {
+class VBoxSpec
+  extends AbstractSFXDelegateSpec[jfxsl.VBox, VBox, jfxsl.VBoxBuilder[_]](classOf[jfxsl.VBox], classOf[VBox], classOf[jfxsl.VBoxBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: VBox) = {
     val jfxVBox: jfxsl.VBox = sfxControl

@@ -24,17 +24,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
 import org.junit.runner.RunWith
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.Includes._
 
 @RunWith(classOf[JUnitRunner])
-class MenuBarSpec extends AbstractSFXDelegateSpec[jfxsc.MenuBar, MenuBar, jfxsc.MenuBarBuilder[_]](classOf[jfxsc.MenuBar], classOf[MenuBar], classOf[jfxsc.MenuBarBuilder[_]]) {
+class MenuBarSpec
+  extends AbstractSFXDelegateSpec[jfxsc.MenuBar, MenuBar, jfxsc.MenuBarBuilder[_]](classOf[jfxsc.MenuBar], classOf[MenuBar], classOf[jfxsc.MenuBarBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: MenuBar) = {
     val jfxMenuBar: jfxsc.MenuBar = sfxControl

@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,6 +24,7 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import org.junit.runner.RunWith
@@ -35,10 +34,11 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * SingleSelectionModel[T] Spec tests.
- * 
+ *
  */
-@RunWith(classOf[JUnitRunner]) 
-class SingleSingleSelectionModelSpec[T] extends SimpleSFXDelegateSpec[jfxsc.SingleSelectionModel[T], SingleSelectionModel[T]](classOf[jfxsc.SingleSelectionModel[T]], classOf[SingleSelectionModel[T]]) {
+@RunWith(classOf[JUnitRunner])
+class SingleSingleSelectionModelSpec[T]
+  extends SimpleSFXDelegateSpec[jfxsc.SingleSelectionModel[T], SingleSelectionModel[T]](classOf[jfxsc.SingleSelectionModel[T]], classOf[SingleSelectionModel[T]]) {
 
   override protected def getScalaClassInstance = new SingleSelectionModel[T](getJavaClassInstance) {}
 
@@ -51,9 +51,9 @@ class SingleSingleSelectionModelSpec[T] extends SimpleSFXDelegateSpec[jfxsc.Sing
   override protected def getJavaClassInstance = new jfxsc.SingleSelectionModel[T] {
     def clearSingleSelection {}
     def clearSingleSelection(index: Int) {}
-    def getItemCount = {0}
+    def getItemCount = { 0 }
     def getModelItem(index: Int) = { null.asInstanceOf[T] }
-    
+
   }
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxsc.SingleSelectionModel[T]) = {

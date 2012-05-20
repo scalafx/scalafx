@@ -28,20 +28,18 @@
 package scalafx.geometry
 
 import javafx.{ geometry => jfxg }
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
 import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 /**
  * Insets Spec tests.
- * 
+ *
  */
 @RunWith(classOf[JUnitRunner])
-class InsetsSpec extends AbstractSFXDelegateSpec[jfxg.Insets, Insets, jfxg.InsetsBuilder[_]](classOf[jfxg.Insets], classOf[Insets], classOf[jfxg.InsetsBuilder[_]]) {
+class InsetsSpec
+  extends AbstractSFXDelegateSpec[jfxg.Insets, Insets, jfxg.InsetsBuilder[_]](classOf[jfxg.Insets], classOf[Insets], classOf[jfxg.InsetsBuilder[_]]) {
 
   override protected def getScalaClassInstance = Insets(10)
 

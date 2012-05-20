@@ -24,18 +24,18 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
 import org.junit.runner.RunWith
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.Includes._
 
 @RunWith(classOf[JUnitRunner])
-class MenuSpec extends AbstractSFXDelegateSpec[jfxsc.Menu, Menu, jfxsc.MenuBuilder[_]](classOf[jfxsc.Menu], classOf[Menu], classOf[jfxsc.MenuBuilder[_]]) {
-  
+class MenuSpec
+  extends AbstractSFXDelegateSpec[jfxsc.Menu, Menu, jfxsc.MenuBuilder[_]](classOf[jfxsc.Menu], classOf[Menu], classOf[jfxsc.MenuBuilder[_]]) {
+
   override protected def getScalaClassInstance = new Menu(new jfxsc.Menu("default"))
 
   protected def convertScalaClassToJavaClass(sfxControl: Menu) = {

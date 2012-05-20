@@ -27,9 +27,6 @@
 package scalafx.scene.image
 
 import javafx.scene.{ image => jfxsi }
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
-import scalafx.testutil.PropertyComparator
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
@@ -37,11 +34,12 @@ import org.scalatest.junit.JUnitRunner
 
 /**
  * ImageView Spec tests.
- * 
+ *
  *
  */
-@RunWith(classOf[JUnitRunner]) 
-class ImageViewSpec extends AbstractSFXDelegateSpec[jfxsi.ImageView, ImageView, jfxsi.ImageViewBuilder[_]](classOf[jfxsi.ImageView], classOf[ImageView], classOf[jfxsi.ImageViewBuilder[_]]) {
+@RunWith(classOf[JUnitRunner])
+class ImageViewSpec
+  extends AbstractSFXDelegateSpec[jfxsi.ImageView, ImageView, jfxsi.ImageViewBuilder[_]](classOf[jfxsi.ImageView], classOf[ImageView], classOf[jfxsi.ImageViewBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: ImageView) = {
     val jfxImageView: jfxsi.ImageView = sfxControl

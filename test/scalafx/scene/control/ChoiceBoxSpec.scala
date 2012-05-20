@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -26,23 +24,21 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
-
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
-import scalafx.testutil.PropertyComparator
 
 /**
  * ChoiceBox Spec tests.
- * 
+ *
  */
 @RunWith(classOf[JUnitRunner])
-class ChoiceBoxSpec[J <: AnyRef] extends AbstractSFXDelegateSpec[jfxsc.ChoiceBox[J], ChoiceBox[J], jfxsc.ChoiceBoxBuilder[J, _]](classOf[jfxsc.ChoiceBox[J]], classOf[ChoiceBox[J]], classOf[jfxsc.ChoiceBoxBuilder[J, _]]) {
+class ChoiceBoxSpec[J <: AnyRef]
+  extends AbstractSFXDelegateSpec[jfxsc.ChoiceBox[J], ChoiceBox[J], jfxsc.ChoiceBoxBuilder[J, _]](classOf[jfxsc.ChoiceBox[J]], classOf[ChoiceBox[J]], classOf[jfxsc.ChoiceBoxBuilder[J, _]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: ChoiceBox[J]) = {
     val jfxChoiceBox: jfxsc.ChoiceBox[J] = sfxControl

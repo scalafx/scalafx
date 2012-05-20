@@ -24,25 +24,22 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * Labeled Spec tests.
- * 
+ *
  *
  */
-@RunWith(classOf[JUnitRunner]) 
-class LabeledSpec extends AbstractSFXDelegateSpec[jfxsc.Labeled, Labeled, jfxsc.LabeledBuilder[_]](classOf[jfxsc.Labeled], classOf[Labeled], classOf[jfxsc.LabeledBuilder[_]]) {
+@RunWith(classOf[JUnitRunner])
+class LabeledSpec
+  extends AbstractSFXDelegateSpec[jfxsc.Labeled, Labeled, jfxsc.LabeledBuilder[_]](classOf[jfxsc.Labeled], classOf[Labeled], classOf[jfxsc.LabeledBuilder[_]]) {
 
   override protected def getScalaClassInstance = new Labeled(new Label) {}
 

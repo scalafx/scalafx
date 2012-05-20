@@ -24,11 +24,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
 import org.junit.runner.RunWith
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
@@ -39,7 +38,8 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class SplitPaneDividerSpec extends SimpleSFXDelegateSpec[jfxsc.SplitPane.Divider, SplitPane.Divider](classOf[jfxsc.SplitPane.Divider], classOf[SplitPane.Divider]) {
+class SplitPaneDividerSpec
+  extends SimpleSFXDelegateSpec[jfxsc.SplitPane.Divider, SplitPane.Divider](classOf[jfxsc.SplitPane.Divider], classOf[SplitPane.Divider]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: SplitPane.Divider) = {
     val jfxDivider: jfxsc.SplitPane.Divider = sfxControl
