@@ -26,11 +26,9 @@
  */
 package scalafx.scene.control
 
+import javafx.scene.{ control => jfxsc }
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.FlatSpec
-
-import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.scene.control.TextField.sfxTextField2jfx
 import scalafx.testutil.AbstractSFXDelegateSpec

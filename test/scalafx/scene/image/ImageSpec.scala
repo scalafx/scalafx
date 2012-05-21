@@ -1,7 +1,5 @@
-package scalafx.scene.image
-
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,40 +24,34 @@ package scalafx.scene.image
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.image
 
-import javafx.scene.{image => jfxsi}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
-import scalafx.Includes._
 import org.junit.runner.RunWith
+import javafx.scene.{ image => jfxsi }
+import scalafx.Includes.jfxImage2sfx
+import scalafx.scene.image.Image.sfxImage2jfx
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.PropertyComparator
 
-@RunWith(classOf[JUnitRunner])
 /**
  * Image Spec tests.
- * 
+ *
  *
  */
-// Can not be converted to AbstractSFXDelegateSpec subclass because Image has not its own Builder.
-class ImageSpec extends FlatSpec with PropertyComparator {
-  "A Image" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxsi.Image], classOf[Image])
-  }
+@RunWith(classOf[JUnitRunner])
+class ImageSpec
+  extends SimpleSFXDelegateSpec[jfxsi.Image, Image](classOf[jfxsi.Image], classOf[Image]) {
 
-  //  it should "implement all the JavaFX builder properties" in {
-  //    compareBuilderProperties(classOf[jfxsi.ImageBuilder[_]], classOf[Image])
-  //  }
-
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxImage = new Image(new jfxsi.Image(this.getClass().getResourceAsStream(""))) {}
+  protected def convertScalaClassToJavaClass(sfxImage: Image) = {
     val jfxImage: jfxsi.Image = sfxImage
-    jfxImage should be(sfxImage.delegate)
+    jfxImage
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxImage = new jfxsi.Image(this.getClass().getResourceAsStream(""))
+  override protected def getJavaClassInstance = new jfxsi.Image(this.getClass().getResourceAsStream(""))
+
+  protected def convertJavaClassToScalaClass(jfxImage: jfxsi.Image) = {
     val sfxImage: Image = jfxImage
-    sfxImage.delegate should be(jfxImage)
+    sfxImage
   }
+
 }
