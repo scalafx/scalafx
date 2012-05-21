@@ -24,33 +24,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class FillTransitionSpec extends FlatSpec with PropertyComparator {
-  "A FillTransition" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxa.FillTransition], classOf[FillTransition])
+/**
+ * FillTransition Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class FillTransitionSpec
+  extends AbstractSFXDelegateSpec[jfxa.FillTransition, FillTransition, jfxa.FillTransitionBuilder](classOf[jfxa.FillTransition], classOf[FillTransition], classOf[jfxa.FillTransitionBuilder]) {
+
+  protected def convertScalaClassToJavaClass(sfxControl: FillTransition) = {
+    val jfxFillTransition: jfxa.FillTransition = sfxControl
+    jfxFillTransition
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxa.FillTransitionBuilder], classOf[FillTransition])
+  protected def convertJavaClassToScalaClass(jfxControl: jfxa.FillTransition) = {
+    val sfxFillTransition: FillTransition = jfxControl
+    sfxFillTransition
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxFillTransition = new FillTransition()
-    val jfxFillTransition: jfxa.FillTransition = sfxFillTransition
-    jfxFillTransition should be (sfxFillTransition.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxFillTransition = new jfxa.FillTransition()
-    val sfxFillTransition: FillTransition = jfxFillTransition
-    sfxFillTransition.delegate should be (jfxFillTransition)
-  }
 }

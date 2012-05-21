@@ -24,33 +24,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class PathTransitionSpec extends FlatSpec with PropertyComparator {
-  "A PathTransition" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxa.PathTransition], classOf[PathTransition])
+/**
+ * PathTransition Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class PathTransitionSpec 
+  extends AbstractSFXDelegateSpec[jfxa.PathTransition, PathTransition, jfxa.PathTransitionBuilder](classOf[jfxa.PathTransition], classOf[PathTransition], classOf[jfxa.PathTransitionBuilder]) {
+
+  protected def convertScalaClassToJavaClass(sfxControl: PathTransition) = {
+    val jfxPathTransition: jfxa.PathTransition = sfxControl
+    jfxPathTransition
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxa.PathTransitionBuilder], classOf[PathTransition])
+  protected def convertJavaClassToScalaClass(jfxControl: jfxa.PathTransition) = {
+    val sfxPathTransition: PathTransition = jfxControl
+    sfxPathTransition
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxPathTransition = new PathTransition()
-    val jfxPathTransition: jfxa.PathTransition = sfxPathTransition
-    jfxPathTransition should be (sfxPathTransition.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxPathTransition = new jfxa.PathTransition()
-    val sfxPathTransition: PathTransition = jfxPathTransition
-    sfxPathTransition.delegate should be (jfxPathTransition)
-  }
 }

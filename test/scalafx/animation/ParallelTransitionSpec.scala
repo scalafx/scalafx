@@ -24,33 +24,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class ParallelTransitionSpec extends FlatSpec with PropertyComparator {
-  "A ParallelTransition" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxa.ParallelTransition], classOf[ParallelTransition])
+/**
+ * ParallelTransition Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class ParallelTransitionSpec 
+  extends AbstractSFXDelegateSpec[jfxa.ParallelTransition, ParallelTransition, jfxa.ParallelTransitionBuilder](classOf[jfxa.ParallelTransition], classOf[ParallelTransition], classOf[jfxa.ParallelTransitionBuilder]) {
+
+  protected def convertScalaClassToJavaClass(sfxControl: ParallelTransition) = {
+    val jfxParallelTransition: jfxa.ParallelTransition = sfxControl
+    jfxParallelTransition
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxa.ParallelTransitionBuilder], classOf[ParallelTransition])
+  protected def convertJavaClassToScalaClass(jfxControl: jfxa.ParallelTransition) = {
+    val sfxParallelTransition: ParallelTransition = jfxControl
+    sfxParallelTransition
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxParallelTransition = new ParallelTransition()
-    val jfxParallelTransition: jfxa.ParallelTransition = sfxParallelTransition
-    jfxParallelTransition should be (sfxParallelTransition.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxParallelTransition = new jfxa.ParallelTransition()
-    val sfxParallelTransition: ParallelTransition = jfxParallelTransition
-    sfxParallelTransition.delegate should be (jfxParallelTransition)
-  }
 }

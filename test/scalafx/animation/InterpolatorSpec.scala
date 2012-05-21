@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
 import javafx.{animation => jfxa}
@@ -33,7 +32,15 @@ import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.testutil.PropertyComparator
 import scalafx.beans.property._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+/**
+ * FadeTransition Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
 class InterpolatorSpec extends FlatSpec with PropertyComparator {
   "Interpolators" should "support all the built-in interpolators" in {
     val doubleProperty = new DoubleProperty(null, "test")

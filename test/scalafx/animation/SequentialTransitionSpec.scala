@@ -24,33 +24,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class SequentialTransitionSpec extends FlatSpec with PropertyComparator {
-  "A SequentialTransition" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxa.SequentialTransition], classOf[SequentialTransition])
+/**
+ * SequentialTransition Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class SequentialTransitionSpec 
+  extends AbstractSFXDelegateSpec[jfxa.SequentialTransition, SequentialTransition, jfxa.SequentialTransitionBuilder](classOf[jfxa.SequentialTransition], classOf[SequentialTransition], classOf[jfxa.SequentialTransitionBuilder]) {
+
+  protected def convertScalaClassToJavaClass(sfxControl: SequentialTransition) = {
+    val jfxSequentialTransition: jfxa.SequentialTransition = sfxControl
+    jfxSequentialTransition
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxa.SequentialTransitionBuilder], classOf[SequentialTransition])
+  protected def convertJavaClassToScalaClass(jfxControl: jfxa.SequentialTransition) = {
+    val sfxSequentialTransition: SequentialTransition = jfxControl
+    sfxSequentialTransition
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxSequentialTransition = new SequentialTransition()
-    val jfxSequentialTransition: jfxa.SequentialTransition = sfxSequentialTransition
-    jfxSequentialTransition should be (sfxSequentialTransition.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxSequentialTransition = new jfxa.SequentialTransition()
-    val sfxSequentialTransition: SequentialTransition = jfxSequentialTransition
-    sfxSequentialTransition.delegate should be (jfxSequentialTransition)
-  }
 }

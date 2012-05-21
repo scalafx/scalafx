@@ -24,33 +24,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class ScaleTransitionSpec extends FlatSpec with PropertyComparator {
-  "A ScaleTransition" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxa.ScaleTransition], classOf[ScaleTransition])
+/**
+ * ScaleTransition Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class ScaleTransitionSpec 
+  extends AbstractSFXDelegateSpec[jfxa.ScaleTransition, ScaleTransition, jfxa.ScaleTransitionBuilder](classOf[jfxa.ScaleTransition], classOf[ScaleTransition], classOf[jfxa.ScaleTransitionBuilder]) {
+
+  protected def convertScalaClassToJavaClass(sfxControl: ScaleTransition) = {
+    val jfxScaleTransition: jfxa.ScaleTransition = sfxControl
+    jfxScaleTransition
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxa.ScaleTransitionBuilder], classOf[ScaleTransition])
+  protected def convertJavaClassToScalaClass(jfxControl: jfxa.ScaleTransition) = {
+    val sfxScaleTransition: ScaleTransition = jfxControl
+    sfxScaleTransition
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxScaleTransition = new ScaleTransition()
-    val jfxScaleTransition: jfxa.ScaleTransition = sfxScaleTransition
-    jfxScaleTransition should be (sfxScaleTransition.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxScaleTransition = new jfxa.ScaleTransition()
-    val sfxScaleTransition: ScaleTransition = jfxScaleTransition
-    sfxScaleTransition.delegate should be (jfxScaleTransition)
-  }
 }

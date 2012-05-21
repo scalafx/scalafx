@@ -24,33 +24,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class TranslateTransitionSpec extends FlatSpec with PropertyComparator {
-  "A TranslateTransition" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxa.TranslateTransition], classOf[TranslateTransition])
+/**
+ * TranslateTransition Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class TranslateTransitionSpec
+  extends AbstractSFXDelegateSpec[jfxa.TranslateTransition, TranslateTransition, jfxa.TranslateTransitionBuilder](classOf[jfxa.TranslateTransition], classOf[TranslateTransition], classOf[jfxa.TranslateTransitionBuilder]) {
+
+  protected def convertScalaClassToJavaClass(sfxControl: TranslateTransition) = {
+    val jfxTranslateTransition: jfxa.TranslateTransition = sfxControl
+    jfxTranslateTransition
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxa.TranslateTransitionBuilder], classOf[TranslateTransition])
+  protected def convertJavaClassToScalaClass(jfxControl: jfxa.TranslateTransition) = {
+    val sfxTranslateTransition: TranslateTransition = jfxControl
+    sfxTranslateTransition
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxTranslateTransition = new TranslateTransition()
-    val jfxTranslateTransition: jfxa.TranslateTransition = sfxTranslateTransition
-    jfxTranslateTransition should be (sfxTranslateTransition.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxTranslateTransition = new jfxa.TranslateTransition()
-    val sfxTranslateTransition: TranslateTransition = jfxTranslateTransition
-    sfxTranslateTransition.delegate should be (jfxTranslateTransition)
-  }
 }

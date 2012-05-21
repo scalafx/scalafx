@@ -24,48 +24,54 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
 import collection.JavaConversions._
-import javafx.{animation => jfxa}
-import javafx.{event => jfxe}
+import javafx.{ animation => jfxa }
+import javafx.{ event => jfxe }
 import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
 import scalafx.beans.property.DoubleProperty
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.SimpleSFXDelegateSpec
 
-class KeyFrameSpec extends FlatSpec with PropertyComparator {
-  "A KeyFrame" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxa.KeyFrame], classOf[KeyFrame])
+/**
+ * KeyFrame Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class KeyFrameSpec
+  extends SimpleSFXDelegateSpec[jfxa.KeyFrame, KeyFrame](classOf[jfxa.KeyFrame], classOf[KeyFrame]) {
+  
+  override protected def getScalaClassInstance = KeyFrame(5 s)
+
+  protected def convertScalaClassToJavaClass(sfxKeyFrame: KeyFrame) = {
+    val jfxAnimation: jfxa.KeyFrame = sfxKeyFrame
+    jfxAnimation
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxKeyFrame = KeyFrame(5 s)
-    val jfxKeyFrame: jfxa.KeyFrame = sfxKeyFrame
-    jfxKeyFrame should be (sfxKeyFrame.delegate)
-  }
+  override def getJavaClassInstance = new jfxa.KeyFrame(5 s)
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxKeyFrame = new jfxa.KeyFrame(5 s)
-    val sfxKeyFrame: KeyFrame = jfxKeyFrame
-    sfxKeyFrame.delegate should be (jfxKeyFrame)
+  protected def convertJavaClassToScalaClass(jfxKeyFrame: jfxa.KeyFrame) = {
+    val sfxAnimation: KeyFrame = jfxKeyFrame
+    sfxAnimation
   }
 
   it should "have a convenient apply construction format and property access for time" in {
-    KeyFrame(10 ms).time should equal (10 ms)
+    KeyFrame(10 ms).time should equal(10 ms)
   }
 
   it should "have a convenient apply construction format and property access for name" in {
-    KeyFrame(10 ms, name = "sample").name should equal ("sample")
+    KeyFrame(10 ms, name = "sample").name should equal("sample")
   }
 
   it should "have a convenient apply construction format and property access for finish handlers" in {
     val finishHandler = new jfxe.EventHandler[jfxe.ActionEvent] {
       def handle(p1: jfxe.ActionEvent) {}
     }
-    KeyFrame(10 ms, onFinished = finishHandler).onFinished should equal (finishHandler)
+    KeyFrame(10 ms, onFinished = finishHandler).onFinished should equal(finishHandler)
   }
 
   it should "have a simpler syntax for finish handlers" in {
@@ -74,32 +80,32 @@ class KeyFrameSpec extends FlatSpec with PropertyComparator {
       callCount += 1
     }
     KeyFrame(10 ms, onFinished = finishHandler).onFinished.handle(null)
-    callCount should equal (1)
+    callCount should equal(1)
   }
 
   it should "have a simpler syntax for finish handlers with events" in {
     var callCount = 0
     val actionEvent = new jfxe.ActionEvent()
-    val finishHandler = {event: jfxe.ActionEvent =>
+    val finishHandler = { event: jfxe.ActionEvent =>
       callCount += 1
-      event should equal (actionEvent)
+      event should equal(actionEvent)
     }
     KeyFrame(10 ms, onFinished = finishHandler).onFinished.handle(actionEvent)
-    callCount should equal (1)
+    callCount should equal(1)
   }
 
   it should "have a convenient apply construction format and property access for values" in {
     val doubleProperty = new DoubleProperty(null, "sample")
     val frames = Set(
-      KeyValue(doubleProperty, 50d)
-    )
-    KeyFrame(10 ms, values = frames).values should equal (setAsJavaSet(frames.map(_.delegate)))
+      KeyValue(doubleProperty, 50d))
+    KeyFrame(10 ms, values = frames).values should equal(setAsJavaSet(frames.map(_.delegate)))
   }
 
   it should "support the at(duration) {value} syntax" in {
     val doubleProperty = new DoubleProperty(null, "sample")
-    val keyFrame = at(5 s) {doubleProperty -> 20}
-    keyFrame.time should equal (5 s)
+    val keyFrame = at(5 s) { doubleProperty -> 20 }
+    keyFrame.time should equal(5 s)
     keyFrame.values should have size (1)
   }
+  
 }

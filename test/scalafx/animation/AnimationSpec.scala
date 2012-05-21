@@ -24,36 +24,38 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class AnimationSpec extends FlatSpec with PropertyComparator {
-  "An Animation" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxa.Animation], classOf[Animation])
+/**
+ * Animation Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class AnimationSpec
+  extends AbstractSFXDelegateSpec[jfxa.Animation, Animation, jfxa.AnimationBuilder[_]](classOf[jfxa.Animation], classOf[Animation], classOf[jfxa.AnimationBuilder[_]]) {
+
+  override protected def getScalaClassInstance = new Animation(new jfxa.Timeline) {}
+
+  protected def convertScalaClassToJavaClass(sfxControl: Animation) = {
+    val jfxAnimation: jfxa.Animation = sfxControl
+    jfxAnimation
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxa.AnimationBuilder[_]], classOf[Animation])
+  override def getJavaClassInstance = new jfxa.Animation {
+    def impl_playTo(p1: Long, p2: Long) {}
+    def impl_jumpTo(p1: Long, p2: Long) {}
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxAnimation = new Animation(new jfxa.Timeline()) {}
-    val jfxAnimation: jfxa.Animation = sfxAnimation
-    jfxAnimation should be (sfxAnimation.delegate)
+  protected def convertJavaClassToScalaClass(jfxControl: jfxa.Animation) = {
+    val sfxAnimation: Animation = jfxControl
+    sfxAnimation
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxAnimation = new jfxa.Animation() {
-      def impl_playTo(p1: Long, p2: Long) {}
-      def impl_jumpTo(p1: Long, p2: Long) {}
-    }
-    val sfxAnimation: Animation = jfxAnimation
-    sfxAnimation.delegate should be (jfxAnimation)
-  }
 }

@@ -24,37 +24,39 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class TransitionSpec extends FlatSpec with PropertyComparator {
-  "A Transition" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxa.Transition], classOf[Transition])
+/**
+ * Transition Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class TransitionSpec
+  extends AbstractSFXDelegateSpec[jfxa.Transition, Transition, jfxa.TransitionBuilder[_]](classOf[jfxa.Transition], classOf[Transition], classOf[jfxa.TransitionBuilder[_]]) {
+
+  override protected def getScalaClassInstance = new Transition(new jfxa.Transition() {
+    def interpolate(p1: Double) {}
+  }) {}
+
+  protected def convertScalaClassToJavaClass(sfxControl: Transition) = {
+    val jfxTransition: jfxa.Transition = sfxControl
+    jfxTransition
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxa.TransitionBuilder[_]], classOf[Transition])
+  override def getJavaClassInstance = new jfxa.Transition() {
+    def interpolate(p1: Double) {}
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxTransition = new Transition(new jfxa.Transition() {
-      def interpolate(p1: Double) {}
-    }) {}
-    val jfxTransition: jfxa.Transition = sfxTransition
-    jfxTransition should be (sfxTransition.delegate)
+  protected def convertJavaClassToScalaClass(jfxControl: jfxa.Transition) = {
+    val sfxTransition: Transition = jfxControl
+    sfxTransition
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxTransition = new jfxa.Transition() {
-      def interpolate(p1: Double) {}
-    }
-    val sfxTransition: Transition = jfxTransition
-    sfxTransition.delegate should be (jfxTransition)
-  }
 }

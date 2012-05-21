@@ -24,33 +24,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class RotateTransitionSpec extends FlatSpec with PropertyComparator {
-  "A RotateTransition" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxa.RotateTransition], classOf[RotateTransition])
+/**
+ * RotateTransition Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class RotateTransitionSpec 
+  extends AbstractSFXDelegateSpec[jfxa.RotateTransition, RotateTransition, jfxa.RotateTransitionBuilder](classOf[jfxa.RotateTransition], classOf[RotateTransition], classOf[jfxa.RotateTransitionBuilder]) {
+
+  protected def convertScalaClassToJavaClass(sfxControl: RotateTransition) = {
+    val jfxRotateTransition: jfxa.RotateTransition = sfxControl
+    jfxRotateTransition
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxa.RotateTransitionBuilder], classOf[RotateTransition])
+  protected def convertJavaClassToScalaClass(jfxControl: jfxa.RotateTransition) = {
+    val sfxRotateTransition: RotateTransition = jfxControl
+    sfxRotateTransition
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxRotateTransition = new RotateTransition()
-    val jfxRotateTransition: jfxa.RotateTransition = sfxRotateTransition
-    jfxRotateTransition should be (sfxRotateTransition.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxRotateTransition = new jfxa.RotateTransition()
-    val sfxRotateTransition: RotateTransition = jfxRotateTransition
-    sfxRotateTransition.delegate should be (jfxRotateTransition)
-  }
 }

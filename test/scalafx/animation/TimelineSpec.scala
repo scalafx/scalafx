@@ -24,33 +24,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class TimelineSpec extends FlatSpec with PropertyComparator {
-  "A Timeline" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxa.Timeline], classOf[Timeline])
+/**
+ * Timeline Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class TimelineSpec 
+  extends AbstractSFXDelegateSpec[jfxa.Timeline, Timeline, jfxa.TimelineBuilder](classOf[jfxa.Timeline], classOf[Timeline], classOf[jfxa.TimelineBuilder]) {
+
+  protected def convertScalaClassToJavaClass(sfxControl: Timeline) = {
+    val jfxTimeline: jfxa.Timeline = sfxControl
+    jfxTimeline
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxa.TimelineBuilder], classOf[Timeline])
+  protected def convertJavaClassToScalaClass(jfxControl: jfxa.Timeline) = {
+    val sfxTimeline: Timeline = jfxControl
+    sfxTimeline
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxTimeline = new Timeline()
-    val jfxTimeline: jfxa.Timeline = sfxTimeline
-    jfxTimeline should be (sfxTimeline.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxTimeline = new jfxa.Timeline()
-    val sfxTimeline: Timeline = jfxTimeline
-    sfxTimeline.delegate should be (jfxTimeline)
-  }
 }

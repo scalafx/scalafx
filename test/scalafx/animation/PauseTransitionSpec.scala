@@ -24,33 +24,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-class PauseTransitionSpec extends FlatSpec with PropertyComparator {
-  "A PauseTransition" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxa.PauseTransition], classOf[PauseTransition])
+/**
+ * PauseTransition Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class PauseTransitionSpec 
+  extends AbstractSFXDelegateSpec[jfxa.PauseTransition, PauseTransition, jfxa.PauseTransitionBuilder](classOf[jfxa.PauseTransition], classOf[PauseTransition], classOf[jfxa.PauseTransitionBuilder]) {
+
+  protected def convertScalaClassToJavaClass(sfxControl: PauseTransition) = {
+    val jfxPauseTransition: jfxa.PauseTransition = sfxControl
+    jfxPauseTransition
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxa.PauseTransitionBuilder], classOf[PauseTransition])
+  protected def convertJavaClassToScalaClass(jfxControl: jfxa.PauseTransition) = {
+    val sfxPauseTransition: PauseTransition = jfxControl
+    sfxPauseTransition
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxPauseTransition = new PauseTransition()
-    val jfxPauseTransition: jfxa.PauseTransition = sfxPauseTransition
-    jfxPauseTransition should be (sfxPauseTransition.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxPauseTransition = new jfxa.PauseTransition()
-    val sfxPauseTransition: PauseTransition = jfxPauseTransition
-    sfxPauseTransition.delegate should be (jfxPauseTransition)
-  }
 }
