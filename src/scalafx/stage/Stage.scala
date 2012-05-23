@@ -27,7 +27,7 @@
 
 package scalafx.stage
 
-import javafx.{ stage => jfxs }
+import javafx.{stage => jfxs}
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.util.SFXDelegate
@@ -37,9 +37,13 @@ object Stage {
   implicit def sfxStage2jfx(v: Stage) = v.delegate
 }
 
-class Stage(override val delegate: jfxs.Stage = JFXApp.STAGE)
-  extends Window(delegate)
+class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
+  extends Window(d)
   with SFXDelegate[jfxs.Stage] {
+
+  def this(style: jfxs.StageStyle) = this(new jfxs.Stage(style))
+
+  override val delegate: jfxs.Stage = d
 
   /**
    * Specifies whether this Stage should be a full-screen, undecorated window.
@@ -50,6 +54,7 @@ class Stage(override val delegate: jfxs.Stage = JFXApp.STAGE)
    * Defines the title of the Stage.
    */
   def title = delegate.titleProperty
+
   def title_=(v: String) {
     title() = v
   }
@@ -68,6 +73,7 @@ class Stage(override val delegate: jfxs.Stage = JFXApp.STAGE)
    * Defines whether the Stage is resizable or not by the user.
    */
   def resizable = delegate.resizableProperty
+
   def resizable_=(v: Boolean) {
     resizable() = v
   }
@@ -83,6 +89,7 @@ class Stage(override val delegate: jfxs.Stage = JFXApp.STAGE)
    * Defines the minimum width of this Stage.
    */
   def minWidth = delegate.getMinWidth
+
   def minWidth_=(w: Double) {
     delegate.setMinWidth(w)
   }
@@ -91,6 +98,7 @@ class Stage(override val delegate: jfxs.Stage = JFXApp.STAGE)
    * Defines the minimum height of this Stage.
    */
   def minHeight = delegate.getMinHeight
+
   def minHeight_=(h: Double) {
     delegate.setMinHeight(h)
   }
@@ -99,6 +107,7 @@ class Stage(override val delegate: jfxs.Stage = JFXApp.STAGE)
    * Defines the maximum width of this Stage.
    */
   def maxWidth = delegate.getMaxWidth
+
   def maxWidth_=(w: Double) {
     delegate.setMaxWidth(w)
   }
@@ -107,6 +116,7 @@ class Stage(override val delegate: jfxs.Stage = JFXApp.STAGE)
    * Defines the maximum height of this Stage.
    */
   def maxHeight = delegate.getMaxHeight
+
   def maxHeight_=(h: Double) {
     delegate.setMaxHeight(h)
   }
