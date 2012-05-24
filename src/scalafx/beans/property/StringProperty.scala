@@ -32,6 +32,13 @@ import scalafx.util.SFXDelegate
 
 object StringProperty {
   implicit def sfxStringProperty2jfx(sp: StringProperty) = sp.delegate
+
+  /**
+   * Creates a new StringProperty instance using the SimpleStringProperty as the target observable.
+   * @param value the initial value
+   * @return      the StringProperty instance
+   */
+  implicit def apply(value:String) = new StringProperty(new jfxbp.SimpleStringProperty(value))
 }
 
 class StringProperty(override val delegate: jfxbp.StringProperty) extends ReadOnlyStringProperty(delegate) with Property[String, String] with SFXDelegate[jfxbp.StringProperty] {

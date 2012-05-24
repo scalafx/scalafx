@@ -27,9 +27,7 @@
 
 package scalafx.event
 
-import javafx.{ event => jfxe }
-import scalafx.util.SFXDelegate
-import scalafx.event.EventIncludes._
+import javafx.{event => jfxe}
 
 object EventHandler {
 
@@ -37,10 +35,21 @@ object EventHandler {
    * Generates a new [[javafx.event.EventHandler]] from a simple function that neither receives 
    * parameter either return value (just [[scala.Unit]]).  
    */
-  implicit def function2jfxEventHandler[E <: jfxe.Event, H <: jfxe.EventHandler[E]](op: => Unit) = new jfxe.EventHandler[E] {
-    def handle(event: E) {
-      op
+  implicit def function2jfxEventHandler[E <: jfxe.Event, H <: jfxe.EventHandler[E]](op: => Unit) =
+    new jfxe.EventHandler[E] {
+      def handle(event: E) {
+        op
+      }
     }
-  }
 
+  /**
+   * Generates a new [[javafx.event.EventHandler]] from a simple function that neither receives
+   * parameter either return value (just [[scala.Unit]]).
+   */
+  implicit def function2jfxEventHandler[E <: jfxe.Event, H <: jfxe.EventHandler[E]](op: (E) => Unit) =
+    new jfxe.EventHandler[E] {
+      def handle(event: E) {
+        op(event)
+      }
+    }
 }

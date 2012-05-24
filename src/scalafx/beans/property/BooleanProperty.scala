@@ -32,6 +32,14 @@ import scalafx.util.SFXDelegate
 
 object BooleanProperty {
   implicit def sfxBooleanProperty2jfx(bp: BooleanProperty) = bp.delegate
+
+  /**
+   * Creates a new BooleanProperty instance using the SimpleBooleanProperty as the target.
+   * @param value the initial value
+   * @return      the observable instance
+   */
+  def apply(value:Boolean) =
+    new BooleanProperty(new jfxbp.SimpleBooleanProperty(value))
 }
 
 class BooleanProperty(override val delegate: jfxbp.BooleanProperty) extends ReadOnlyBooleanProperty(delegate) with Property[Boolean, java.lang.Boolean] with SFXDelegate[jfxbp.BooleanProperty] {
