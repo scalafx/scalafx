@@ -24,43 +24,33 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc}
+import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
-import scalafx.geometry.Side
-import scalafx.scene.layout.Region
-import scalafx.util.SFXDelegate
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-object Chart {
-  implicit def sfxChart2jfx(v: Chart) = v.delegate
-}
+/**
+ * ScatterChart Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class ScatterChartSpec
+  extends AbstractSFXDelegateSpec[jfxsc.ScatterChart[Number, Number], ScatterChart[Number, Number], jfxsc.ScatterChartBuilder[Number, Number, _]](classOf[jfxsc.ScatterChart[Number, Number]], classOf[ScatterChart[Number, Number]], classOf[jfxsc.ScatterChartBuilder[Number, Number, _]]) {
 
-abstract class Chart(override val delegate:jfxsc.Chart) extends Region(delegate) with SFXDelegate[jfxsc.Chart] {
-  def animated = delegate.animatedProperty
-  def animated_= (v: Boolean) {
-    animated() = v
+  protected def convertScalaClassToJavaClass(sfxScatterChart: ScatterChart[Number, Number]) = {
+    val jfxScatterChart: jfxsc.ScatterChart[Number, Number] = sfxScatterChart
+    jfxScatterChart
   }
+  
+  override def getJavaClassInstance = new jfxsc.ScatterChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
 
-  def legendSide = delegate.legendSideProperty
-  def legendSide_= (v: Side) {
-    legendSide() = v
-  }
-
-  def legendVisible = delegate.legendVisibleProperty
-  def legendVisible_= (v: Boolean) {
-    legendVisible() = v
-  }
-
-  def title = delegate.titleProperty
-  def title_= (v: String) {
-    title() = v
-  }
-
-  def titleSide = delegate.titleSideProperty
-  def titleSide_= (v: Side) {
-    titleSide() = v
+  protected def convertJavaClassToScalaClass(jfxScatterChart: jfxsc.ScatterChart[Number, Number]) = {
+    val sfxScatterChart: ScatterChart[Number, Number] = jfxScatterChart
+    sfxScatterChart
   }
 
 }
