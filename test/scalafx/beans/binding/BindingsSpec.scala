@@ -33,7 +33,15 @@ import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 import scalafx.Includes._
 import scalafx.beans.property._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+/**
+ * Bindings Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
 class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
   def bean = new Object()
   var booleanProperty1: jfxbp.BooleanProperty = null

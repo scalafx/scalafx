@@ -31,7 +31,15 @@ import javafx.beans.{property => jfxbp}
 import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 import scalafx.Includes._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+/**
+ * BooleanProperty Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
 class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
   var booleanProperty: jfxbp.BooleanProperty = null
