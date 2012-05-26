@@ -27,8 +27,8 @@
 
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import javafx.beans.{value => jfxbv}
+import javafx.{ animation => jfxa }
+import javafx.beans.{ value => jfxbv }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 import scalafx.beans.property.Property
@@ -66,18 +66,59 @@ object KeyValue {
   def apply[T <: Any](target: jfxbv.WritableValue[T], endValue: T, interpolator: jfxa.Interpolator) = new KeyValue[T, T](new jfxa.KeyValue(target, endValue, interpolator))
 }
 
-class KeyValue[T, J](override val delegate: jfxa.KeyValue) extends SFXDelegate[jfxa.KeyValue] {
+/**
+ * Defines a key value to be interpolated for a particular interval along the animation.
+ * A KeyFrame, which defines a specific point on a timeline, can hold multiple KeyValues.
+ * KeyValue is an immutable class.
+ *
+ * @tparam T Indicates Scala type that will be returned for this property.
+ * @tparam J Indicates Java type to be wrapped by T. Eventually T and J could be the same.
+ */
+class KeyValue[T, J](override val delegate: jfxa.KeyValue)
+  extends SFXDelegate[jfxa.KeyValue] {
   // need to fix the types on these returns since JavaFX KeyValue is not genericized
+
+  /**
+   * Returns the end value of this KeyValue
+   */
   def endValue: J = delegate.getEndValue.asInstanceOf[J]
+
+  /**
+   * Returns the target of this KeyValue
+   */
   def target: jfxbv.WritableValue[T] = delegate.getTarget.asInstanceOf[jfxbv.WritableValue[T]]
+
+  /**
+   * Interpolator to be used for calculating the key value along the particular interval.
+   */
   def interpolator = delegate.getInterpolator
+
 }
 
 object Tweenable {
   implicit def tweenable2KeyFrame[T <: Any, J <: AnyRef](t: Tweenable[T, J]) = t.linear
 }
 
+/**
+ * Class factory for new [[KeyValue]]s.
+ *
+ * @tparam T Indicates Scala type that will be returned for this property.
+ * @tparam J Indicates Java type to be wrapped by T. Eventually T and J could be the same.
+ *
+ * @param KeyFrame target.
+ * @param KeyFrame end value.
+ */
 class Tweenable[T <: Any, J <: AnyRef](target: jfxbv.WritableValue[J], endValue: J) {
+
+  /**
+   * Returns a new [[KeyValue]] with a determinate Interpolator.
+   *
+   * @param interpolator Interpolator to be used in KeyFrame.
+   */
   def tween(interpolator: jfxa.Interpolator) = KeyValue[J](target, endValue, interpolator)
-  def linear:KeyValue[J, J] = KeyValue[J](target, endValue)
+
+  /**
+   * Returns a new [[KeyValue]] with [[Interpolator.LINEAR]] Interpolator.
+   */
+  def linear: KeyValue[J, J] = KeyValue[J](target, endValue)
 }
