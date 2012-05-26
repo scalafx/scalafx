@@ -24,21 +24,32 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
+import javafx.beans.{ property => jfxbp }
 import scalafx.util.SFXDelegate
 
 object FloatProperty {
   implicit def sfxFloatProperty2jfx(fp: FloatProperty) = fp.delegate
+
+  /**
+   * Creates a new FloatProperty instance using the SimpleFloatProperty as the target.
+   * 
+   * @param value the initial value
+   * @return      the observable instance
+   */
+  def apply(value: Float) = new FloatProperty(new jfxbp.SimpleFloatProperty(value))
 }
 
-class FloatProperty(override val delegate: jfxbp.FloatProperty) extends ReadOnlyFloatProperty(delegate) with Property[Float, Number] with SFXDelegate[jfxbp.FloatProperty] {
-  def this(bean: Object, name: String) = this (new jfxbp.FloatPropertyBase() {
-    def getBean = bean
-    def getName = name
-  })
+class FloatProperty(override val delegate: jfxbp.FloatProperty = new jfxbp.SimpleFloatProperty)
+  extends ReadOnlyFloatProperty(delegate)
+  with Property[Float, Number]
+  with SFXDelegate[jfxbp.FloatProperty] {
+
+  def this(bean: Object, name: String) = this(new jfxbp.SimpleFloatProperty(bean, name))
+
+  def this(bean: Object, name: String, initialValue: Float) =
+    this(new jfxbp.SimpleFloatProperty(bean, name, initialValue))
 
   def value_=(v: Float) {
     delegate.set(v)

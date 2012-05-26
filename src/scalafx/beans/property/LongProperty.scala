@@ -24,21 +24,32 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
+import javafx.beans.{ property => jfxbp }
 import scalafx.util.SFXDelegate
 
 object LongProperty {
   implicit def sfxLongProperty2jfx(lp: LongProperty) = lp.delegate
+
+  /**
+   * Creates a new LongProperty instance using the SimpleLongProperty as the target.
+   * 
+   * @param value the initial value
+   * @return      the observable instance
+   */
+  def apply(value: Int) = new LongProperty(new jfxbp.SimpleLongProperty(value))
 }
 
-class LongProperty(override val delegate: jfxbp.LongProperty) extends ReadOnlyLongProperty(delegate) with Property[Long, Number] with SFXDelegate[jfxbp.LongProperty] {
-  def this(bean: Object, name: String) = this (new jfxbp.LongPropertyBase() {
-    def getBean = bean
-    def getName = name
-  })
+class LongProperty(override val delegate: jfxbp.LongProperty = new jfxbp.SimpleLongProperty)
+  extends ReadOnlyLongProperty(delegate)
+  with Property[Long, Number]
+  with SFXDelegate[jfxbp.LongProperty] {
+
+  def this(bean: Object, name: String) = this(new jfxbp.SimpleLongProperty(bean, name))
+
+  def this(bean: Object, name: String, initialValue: Long) =
+    this(new jfxbp.SimpleLongProperty(bean, name, initialValue))
 
   def value_=(v: Long) {
     delegate.set(v)

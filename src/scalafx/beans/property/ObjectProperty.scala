@@ -24,21 +24,32 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
+import javafx.beans.{ property => jfxbp }
 import scalafx.util.SFXDelegate
 
 object ObjectProperty {
   implicit def sfxObjectProperty2jfx[J <: AnyRef](op: ObjectProperty[J]) = op.delegate
+
+  /**
+   * Creates a new ObjectProperty instance using the SimpleObjectProperty as the target.
+   * 
+   * @param value the initial value
+   * @return      the observable instance
+   */
+  def apply[J <: AnyRef](value: J) = new ObjectProperty[J](new jfxbp.SimpleObjectProperty[J](value))
 }
 
-class ObjectProperty[J <: AnyRef](override val delegate: jfxbp.ObjectProperty[J]) extends ReadOnlyObjectProperty[J](delegate) with Property[J, J] with SFXDelegate[jfxbp.ObjectProperty[J]] {
-  def this(bean: Object, name: String) = this (new jfxbp.ObjectPropertyBase[J]() {
-    def getBean = bean
-    def getName = name
-  })
+class ObjectProperty[J <: AnyRef](override val delegate: jfxbp.ObjectProperty[J] = new jfxbp.SimpleObjectProperty[J])
+  extends ReadOnlyObjectProperty[J](delegate)
+  with Property[J, J]
+  with SFXDelegate[jfxbp.ObjectProperty[J]] {
+
+  def this(bean: Object, name: String) = this(new jfxbp.SimpleObjectProperty[J](bean, name))
+
+  def this(bean: Object, name: String, initialValue: J) =
+    this(new jfxbp.SimpleObjectProperty[J](bean, name, initialValue))
 
   def value_=(v: J) {
     delegate.set(v)

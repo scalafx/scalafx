@@ -24,10 +24,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
+import javafx.beans.{ property => jfxbp }
 import scalafx.util.SFXDelegate
 
 object StringProperty {
@@ -35,17 +34,22 @@ object StringProperty {
 
   /**
    * Creates a new StringProperty instance using the SimpleStringProperty as the target observable.
+   * 
    * @param value the initial value
    * @return      the StringProperty instance
    */
-  implicit def apply(value:String) = new StringProperty(new jfxbp.SimpleStringProperty(value))
+  implicit def apply(value: String) = new StringProperty(new jfxbp.SimpleStringProperty(value))
 }
 
-class StringProperty(override val delegate: jfxbp.StringProperty) extends ReadOnlyStringProperty(delegate) with Property[String, String] with SFXDelegate[jfxbp.StringProperty] {
-  def this(bean: Object, name: String) = this (new jfxbp.StringPropertyBase() {
-    def getBean = bean
-    def getName = name
-  })
+class StringProperty(override val delegate: jfxbp.StringProperty = new jfxbp.SimpleStringProperty)
+  extends ReadOnlyStringProperty(delegate)
+  with Property[String, String]
+  with SFXDelegate[jfxbp.StringProperty] {
+
+  def this(bean: Object, name: String) = this(new jfxbp.SimpleStringProperty(bean, name))
+
+  def this(bean: Object, name: String, initialValue: String) =
+    this(new jfxbp.SimpleStringProperty(bean, name, initialValue))
 
   def value_=(v: String) {
     delegate.set(v)

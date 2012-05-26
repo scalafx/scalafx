@@ -24,21 +24,32 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
+import javafx.beans.{ property => jfxbp }
 import scalafx.util.SFXDelegate
 
 object DoubleProperty {
   implicit def sfxDoubleProperty2jfx(dp: DoubleProperty) = dp.delegate
+
+  /**
+   * Creates a new DoubleProperty instance using the SimpleDoubleProperty as the target.
+   * 
+   * @param value the initial value
+   * @return      the observable instance
+   */
+  def apply(value: Double) = new DoubleProperty(new jfxbp.SimpleDoubleProperty(value))
 }
 
-class DoubleProperty(override val delegate: jfxbp.DoubleProperty) extends ReadOnlyDoubleProperty(delegate) with Property[Double, Number] with SFXDelegate[jfxbp.DoubleProperty] {
-  def this(bean: Object, name: String) = this (new jfxbp.DoublePropertyBase() {
-    def getBean = bean
-    def getName = name
-  })
+class DoubleProperty(override val delegate: jfxbp.DoubleProperty = new jfxbp.SimpleDoubleProperty)
+  extends ReadOnlyDoubleProperty(delegate)
+  with Property[Double, Number]
+  with SFXDelegate[jfxbp.DoubleProperty] {
+
+  def this(bean: Object, name: String) = this(new jfxbp.SimpleDoubleProperty(bean, name))
+
+  def this(bean: Object, name: String, initialValue: Double) = 
+    this(new jfxbp.SimpleDoubleProperty(bean, name, initialValue))
 
   def value_=(v: Double) {
     delegate.set(v)
