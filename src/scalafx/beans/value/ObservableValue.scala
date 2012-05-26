@@ -71,7 +71,7 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
    * method from ChangeListener.
    *
    * @param op Function that receives a [[ObservableValue]], the old value and the new value.
-   * It wiil be called when value changes.
+   * It will be called when value changes.
    */
   def onChange[J1 >: J](op: (ObservableValue[T, J], J1, J1) => Unit) {
     delegate.addListener(new jfxbv.ChangeListener[J1] {
@@ -83,9 +83,9 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
 
   /**
    * Adds a function as a [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html ChangeListener]].
-   * This function has no arguments because it will not handle values changed..
+   * This function has no arguments because it will not handle values changed.
    *
-   * @param op a Function with no arguments. It wiil be called when value changes.
+   * @param op A Function with no arguments. It will be called when value changes.
    */
   def onChange[J1 >: J](op: => Unit) {
     delegate.addListener(new jfxbv.ChangeListener[J1] {

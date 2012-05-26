@@ -24,10 +24,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
+import javafx.beans.{ property => jfxbp }
 import scalafx.beans.value.ObservableValue
 import scalafx.util.SFXDelegate
 
@@ -35,8 +34,25 @@ object ReadOnlyProperty {
   implicit def sfxReadOnlyProperty2jfx[T, J](rop: ReadOnlyProperty[T, J]) = rop.delegate
 }
 
-trait ReadOnlyProperty[T, J] extends ObservableValue[T, J] with SFXDelegate[jfxbp.ReadOnlyProperty[J]] {
+/**
+ * Generic trait that defines the methods common to all readable properties independent of their
+ * type.
+ *
+ * @tparam T Indicates Scala type that will be returned for this property.
+ * @tparam J Indicates Java type to be wrapped by T. Eventually T and J could be the same.
+ */
+trait ReadOnlyProperty[T, J]
+  extends ObservableValue[T, J]
+  with SFXDelegate[jfxbp.ReadOnlyProperty[J]] {
+
+  /**
+   * Returns the name of this property.
+   */
   def name = delegate.getName
 
+  /**
+   * Returns the Object that contains this property.
+   */
   def bean = delegate.getBean
+
 }

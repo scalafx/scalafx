@@ -27,7 +27,7 @@
 
 package scalafx.beans
 
-import javafx.{beans => jfxb}
+import javafx.{ beans => jfxb }
 import scalafx.util.SFXDelegate
 
 object Observable {
@@ -35,6 +35,15 @@ object Observable {
 }
 
 trait Observable extends SFXDelegate[jfxb.Observable] {
+
+  /**
+   * Adds a function as a [[http://docs.oracle.com/javafx/2/api/javafx/beans/InvalidationListener.html InvalidationListener]].
+   * This function has all arguments from
+   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/InvalidationListener.html#invalidated(javafx.beans.Observable) invalidated]]
+   * method from InvalidationListener.
+   *
+   * @param op Function that receives a [[Observable]]. It will be called when value was invalidated.
+   */
   def onInvalidate(op: Observable => Unit) {
     delegate.addListener(new jfxb.InvalidationListener {
       def invalidated(observable: jfxb.Observable) {
@@ -43,6 +52,12 @@ trait Observable extends SFXDelegate[jfxb.Observable] {
     })
   }
 
+  /**
+   * Adds a function as a [[http://docs.oracle.com/javafx/2/api/javafx/beans/InvalidationListener.html InvalidationListener]].
+   * This function has no arguments because it will not handle values Invalidated.
+   *
+   * @param op A Function with no arguments. It will be called when value was invalidated.
+   */
   def onInvalidate(op: => Unit) {
     delegate.addListener(new jfxb.InvalidationListener {
       def invalidated(observable: jfxb.Observable) {
