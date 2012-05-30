@@ -38,7 +38,8 @@ object StringProperty {
    * @param value the initial value
    * @return      the StringProperty instance
    */
-  implicit def apply(value:String) = new StringProperty(new jfxbp.SimpleStringProperty(value))
+  implicit def fromString(value:String) =
+    new StringProperty(new jfxbp.SimpleStringProperty(value))
 }
 
 class StringProperty(override val delegate: jfxbp.StringProperty) extends ReadOnlyStringProperty(delegate) with Property[String, String] with SFXDelegate[jfxbp.StringProperty] {
