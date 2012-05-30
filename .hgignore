@@ -5,6 +5,7 @@ build/
 out/
 .settings/
 .cache
+.metadata/
 .idea/
 .idea/*
 target

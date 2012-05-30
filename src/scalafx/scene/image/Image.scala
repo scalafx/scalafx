@@ -29,13 +29,16 @@ package scalafx.scene.image
 
 import javafx.scene.{image => jfxsi}
 import scalafx.util.SFXDelegate
+import java.io.InputStream
 
 object Image {
   implicit def sfxImage2jfx(i: Image) = i.delegate
 }
 
 class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image] {
-  def this(that: AnyRef, imagePath: String) = this (new jfxsi.Image(that.getClass().getResourceAsStream(imagePath)))
+  def this(that: AnyRef, imagePath: String) = this(new jfxsi.Image(that.getClass().getResourceAsStream(imagePath)))
+
+  def this(inputStream: InputStream) = this(new jfxsi.Image(inputStream: InputStream))
 
   def error = delegate.errorProperty
 
