@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,43 +24,35 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc}
+import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
-import scalafx.geometry.Side
-import scalafx.scene.layout.Region
-import scalafx.util.SFXDelegate
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-object Chart {
-  implicit def sfxChart2jfx(v: Chart) = v.delegate
-}
+/**
+ * 	Chart Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class XYChartSpec
+  extends AbstractSFXDelegateSpec[jfxsc.XYChart[Number, Number], XYChart[Number, Number], jfxsc.XYChartBuilder[Number, Number, _]](classOf[jfxsc.XYChart[Number, Number]], classOf[XYChart[Number, Number]], classOf[jfxsc.XYChartBuilder[Number, Number, _]]) {
 
-abstract class Chart(override val delegate:jfxsc.Chart) extends Region(delegate) with SFXDelegate[jfxsc.Chart] {
-  def animated = delegate.animatedProperty
-  def animated_= (v: Boolean) {
-    animated() = v
+  override def getScalaClassInstance = new XYChart[Number, Number](getJavaClassInstance) {}
+  
+  protected def convertScalaClassToJavaClass(sfxXYChart: XYChart[Number, Number]) = {
+    val jfxXYChart: jfxsc.XYChart[Number, Number] = sfxXYChart
+    jfxXYChart
   }
+  
+  override def getJavaClassInstance = new jfxsc.LineChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
 
-  def legendSide = delegate.legendSideProperty
-  def legendSide_= (v: Side) {
-    legendSide() = v
-  }
-
-  def legendVisible = delegate.legendVisibleProperty
-  def legendVisible_= (v: Boolean) {
-    legendVisible() = v
-  }
-
-  def title = delegate.titleProperty
-  def title_= (v: String) {
-    title() = v
-  }
-
-  def titleSide = delegate.titleSideProperty
-  def titleSide_= (v: Side) {
-    titleSide() = v
+  protected def convertJavaClassToScalaClass(jfxXYChart: jfxsc.XYChart[Number, Number]) = {
+    val sfxXYChart: XYChart[Number, Number] = jfxXYChart
+    sfxXYChart
   }
 
 }

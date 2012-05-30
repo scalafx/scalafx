@@ -24,21 +24,32 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
+import javafx.beans.{ property => jfxbp }
 import scalafx.util.SFXDelegate
 
 object IntegerProperty {
   implicit def sfxIntegerProperty2jfx(ip: IntegerProperty) = ip.delegate
+
+  /**
+   * Creates a new IntegerProperty instance using the SimpleIntegerProperty as the target.
+   * 
+   * @param value the initial value
+   * @return      the observable instance
+   */
+  def apply(value: Int) = new IntegerProperty(new jfxbp.SimpleIntegerProperty(value))
 }
 
-class IntegerProperty(override val delegate: jfxbp.IntegerProperty) extends ReadOnlyIntegerProperty(delegate) with Property[Int, Number] with SFXDelegate[jfxbp.IntegerProperty] {
-  def this(bean: Object, name: String) = this (new jfxbp.IntegerPropertyBase() {
-    def getBean = bean
-    def getName = name
-  })
+class IntegerProperty(override val delegate: jfxbp.IntegerProperty = new jfxbp.SimpleIntegerProperty)
+  extends ReadOnlyIntegerProperty(delegate)
+  with Property[Int, Number]
+  with SFXDelegate[jfxbp.IntegerProperty] {
+
+  def this(bean: Object, name: String) = this(new jfxbp.SimpleIntegerProperty(bean, name))
+
+  def this(bean: Object, name: String, initialValue: Int) =
+    this(new jfxbp.SimpleIntegerProperty(bean, name, initialValue))
 
   def value_=(v: Int) {
     delegate.set(v)

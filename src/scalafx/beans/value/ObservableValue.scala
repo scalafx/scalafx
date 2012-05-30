@@ -27,7 +27,7 @@
 
 package scalafx.beans.value
 
-import javafx.beans.{value => jfxbv}
+import javafx.beans.{ value => jfxbv }
 import scalafx.beans.Observable
 import scalafx.util.SFXDelegate
 
@@ -44,11 +44,35 @@ object ObservableValue {
   implicit def sfxObservableValue2jfxNumberValue(ov: ObservableValue[Number, Number]) = ov.delegate.asInstanceOf[jfxbv.ObservableNumberValue]
 }
 
-trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J] extends Observable with SFXDelegate[jfxbv.ObservableValue[J]] {
+/**
+ * An ObservableValue is an entity that wraps a value and allows to observe the value for changes.
+ *
+ * @tparam T Indicates Scala type that will be returned for this Observable.
+ * @tparam J Indicates Java type to be wrapped by T. Eventually T and J could be the same.
+ */
+trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
+  extends Observable
+  with SFXDelegate[jfxbv.ObservableValue[J]] {
+
+  /**
+   * Returns the current value of this ObservableValue
+   */
   def value: T
 
+  /**
+   * Returns the current value of this ObservableValue
+   */
   def apply() = value
 
+  /**
+   * Adds a function as a [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html ChangeListener]].
+   * This function has all arguments from
+   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html#changed(javafx.beans.value.ObservableValue, T, T) changed]]
+   * method from ChangeListener.
+   *
+   * @param op Function that receives a [[ObservableValue]], the old value and the new value.
+   * It will be called when value changes.
+   */
   def onChange[J1 >: J](op: (ObservableValue[T, J], J1, J1) => Unit) {
     delegate.addListener(new jfxbv.ChangeListener[J1] {
       def changed(observable: jfxbv.ObservableValue[_ <: J1], oldValue: J1, newValue: J1) {
@@ -57,6 +81,12 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J] exte
     })
   }
 
+  /**
+   * Adds a function as a [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html ChangeListener]].
+   * This function has no arguments because it will not handle values changed.
+   *
+   * @param op A Function with no arguments. It will be called when value changes.
+   */
   def onChange[J1 >: J](op: => Unit) {
     delegate.addListener(new jfxbv.ChangeListener[J1] {
       def changed(observable: jfxbv.ObservableValue[_ <: J1], oldValue: J1, newValue: J1) {

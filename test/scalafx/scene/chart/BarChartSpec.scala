@@ -24,43 +24,35 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc}
+import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
-import scalafx.geometry.Side
-import scalafx.scene.layout.Region
-import scalafx.util.SFXDelegate
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-object Chart {
-  implicit def sfxChart2jfx(v: Chart) = v.delegate
-}
+/**
+ * BarChart Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class BarChartSpec 
+  extends AbstractSFXDelegateSpec[jfxsc.BarChart[String, Number], BarChart[String, Number], jfxsc.BarChartBuilder[String, Number, _]](classOf[jfxsc.BarChart[String, Number]], classOf[BarChart[String, Number]], classOf[jfxsc.BarChartBuilder[String, Number, _]]) {
 
-abstract class Chart(override val delegate:jfxsc.Chart) extends Region(delegate) with SFXDelegate[jfxsc.Chart] {
-  def animated = delegate.animatedProperty
-  def animated_= (v: Boolean) {
-    animated() = v
+  override def getScalaClassInstance = new BarChart[String, Number](getJavaClassInstance)
+  
+  protected def convertScalaClassToJavaClass(sfxBarChart: BarChart[String, Number]) = {
+    val jfxBarChart: jfxsc.BarChart[String, Number] = sfxBarChart
+    jfxBarChart
   }
+  
+  override def getJavaClassInstance = new jfxsc.BarChart[String, Number](new jfxsc.CategoryAxis, new jfxsc.NumberAxis)
 
-  def legendSide = delegate.legendSideProperty
-  def legendSide_= (v: Side) {
-    legendSide() = v
-  }
-
-  def legendVisible = delegate.legendVisibleProperty
-  def legendVisible_= (v: Boolean) {
-    legendVisible() = v
-  }
-
-  def title = delegate.titleProperty
-  def title_= (v: String) {
-    title() = v
-  }
-
-  def titleSide = delegate.titleSideProperty
-  def titleSide_= (v: Side) {
-    titleSide() = v
+  protected def convertJavaClassToScalaClass(jfxBarChart: jfxsc.BarChart[String, Number]) = {
+    val sfxBarChart: BarChart[String, Number] = jfxBarChart
+    sfxBarChart
   }
 
 }

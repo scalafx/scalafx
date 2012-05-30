@@ -24,43 +24,47 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc}
+import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
-import scalafx.geometry.Side
-import scalafx.scene.layout.Region
-import scalafx.util.SFXDelegate
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.SimpleSFXDelegateSpec
 
-object Chart {
-  implicit def sfxChart2jfx(v: Chart) = v.delegate
-}
+/**
+ * Axis Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class AxisSpec[T]
+  extends SimpleSFXDelegateSpec[jfxsc.Axis[T], Axis[T]](classOf[jfxsc.Axis[T]], classOf[Axis[T]]) {
 
-abstract class Chart(override val delegate:jfxsc.Chart) extends Region(delegate) with SFXDelegate[jfxsc.Chart] {
-  def animated = delegate.animatedProperty
-  def animated_= (v: Boolean) {
-    animated() = v
+  override def getScalaClassInstance = new Axis[T](getJavaClassInstance) {}
+
+  protected def convertScalaClassToJavaClass(sfxAxis: Axis[T]) = {
+    val jfxAxis: jfxsc.Axis[T] = sfxAxis
+    jfxAxis
   }
 
-  def legendSide = delegate.legendSideProperty
-  def legendSide_= (v: Side) {
-    legendSide() = v
+  override def getJavaClassInstance = new jfxsc.Axis[T] {
+    protected def autoRange(length: Double) = null
+    protected def calculateTickValues(length: Double, range: Any) = new java.util.ArrayList[T]
+    protected def getDisplayPosition(value: T) = 0.0
+    protected def getRange = null
+    protected def getTickMarkLabel(value: T) = ""
+    protected def getValueForDisplay(displayPosition: Double) = null.asInstanceOf[T]
+    protected def getZeroPosition = 0.0
+    protected def isValueOnAxis(value: T) = false
+    protected def setRange(range: Any, animate: Boolean) {}
+    protected def toNumericValue(value: T) = 0.0
+    protected def toRealValue(value: Double) = null.asInstanceOf[T]
   }
 
-  def legendVisible = delegate.legendVisibleProperty
-  def legendVisible_= (v: Boolean) {
-    legendVisible() = v
-  }
-
-  def title = delegate.titleProperty
-  def title_= (v: String) {
-    title() = v
-  }
-
-  def titleSide = delegate.titleSideProperty
-  def titleSide_= (v: Side) {
-    titleSide() = v
+  protected def convertJavaClassToScalaClass(jfxAxis: jfxsc.Axis[T]) = {
+    val sfxAxis: Axis[T] = jfxAxis
+    sfxAxis
   }
 
 }

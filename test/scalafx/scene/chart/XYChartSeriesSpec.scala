@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,43 +24,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc}
+import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
-import scalafx.geometry.Side
-import scalafx.scene.layout.Region
-import scalafx.util.SFXDelegate
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.SimpleSFXDelegateSpec
 
-object Chart {
-  implicit def sfxChart2jfx(v: Chart) = v.delegate
-}
+/**
+ * XYChart.Data Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class XYChartData
+  extends SimpleSFXDelegateSpec[jfxsc.XYChart.Data[Int, Int], XYChart.Data[Int, Int]](classOf[jfxsc.XYChart.Data[Int, Int]], classOf[XYChart.Data[Int, Int]]) {
 
-abstract class Chart(override val delegate:jfxsc.Chart) extends Region(delegate) with SFXDelegate[jfxsc.Chart] {
-  def animated = delegate.animatedProperty
-  def animated_= (v: Boolean) {
-    animated() = v
+  protected def convertScalaClassToJavaClass(sfxAxisTickMark: XYChart.Data[Int, Int]) = {
+    val jfxAxisTickMark: jfxsc.XYChart.Data[Int, Int] = sfxAxisTickMark
+    jfxAxisTickMark
   }
 
-  def legendSide = delegate.legendSideProperty
-  def legendSide_= (v: Side) {
-    legendSide() = v
-  }
-
-  def legendVisible = delegate.legendVisibleProperty
-  def legendVisible_= (v: Boolean) {
-    legendVisible() = v
-  }
-
-  def title = delegate.titleProperty
-  def title_= (v: String) {
-    title() = v
-  }
-
-  def titleSide = delegate.titleSideProperty
-  def titleSide_= (v: Side) {
-    titleSide() = v
+  protected def convertJavaClassToScalaClass(jfxAxisTickMark: jfxsc.XYChart.Data[Int, Int]) = {
+    val sfxAxisTickMark: XYChart.Data[Int, Int] = jfxAxisTickMark
+    sfxAxisTickMark
   }
 
 }

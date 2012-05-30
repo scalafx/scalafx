@@ -32,8 +32,10 @@ object ChartIncludes extends ChartIncludes
 
 trait ChartIncludes {
   implicit def jfxAreaChart2sfx[X, Y](b: jfxsc.AreaChart[X, Y]) = new AreaChart[X, Y](b)
+  implicit def jfxAxis2sfx[X](a: jfxsc.Axis[X]) = new Axis[X](a) {}
   implicit def jfxBarChart2sfx[X, Y](b: jfxsc.BarChart[X, Y]) = new BarChart[X, Y](b)
   implicit def jfxBubbleChart2sfx[X, Y](b: jfxsc.BubbleChart[X, Y]) = new BubbleChart[X, Y](b)
+  implicit def jfxChart2sfx(c: jfxsc.Chart) = new Chart(c) {}
   implicit def jfxLineChart2sfx[X, Y](b: jfxsc.LineChart[X, Y]) = new LineChart[X, Y](b)
   implicit def jfxPieChart2sfx(b: jfxsc.PieChart) = new PieChart(b)
   implicit def jfxPieChartData2sfx(b: jfxsc.PieChart.Data) = new PieChart.Data(b)
@@ -44,6 +46,8 @@ trait ChartIncludes {
   implicit def jfxCategoryAxis2sfx(b: jfxsc.CategoryAxis) = new CategoryAxis(b)
   implicit def jfxNumberAxis2sfx(b: jfxsc.NumberAxis) = new NumberAxis(b)
   implicit def jfxNumberAxisDefaultFormatter2sfx(b: jfxsc.NumberAxis.DefaultFormatter) = new NumberAxis.DefaultFormatter(b)
+  implicit def jfxValueAxis2sfx[X <: Number](a: jfxsc.ValueAxis[X]) = new ValueAxis[X](a) {}
+  implicit def jfxXYChart2sfx[X, Y](c: jfxsc.XYChart[X, Y]) = new XYChart[X, Y](c) {}
   implicit def jfxXYChartData2sfx[X, Y](b: jfxsc.XYChart.Data[X, Y]) = new XYChart.Data[X, Y](b)
   implicit def jfxXYChartSeries2sfx[X, Y](b: jfxsc.XYChart.Series[X, Y]) = new XYChart.Series[X, Y](b)
 }

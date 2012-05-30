@@ -24,43 +24,35 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc}
+import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
-import scalafx.geometry.Side
-import scalafx.scene.layout.Region
-import scalafx.util.SFXDelegate
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-object Chart {
-  implicit def sfxChart2jfx(v: Chart) = v.delegate
-}
+/**
+ * AreaChart Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class AreaChartSpec
+  extends AbstractSFXDelegateSpec[jfxsc.AreaChart[Number, Number], AreaChart[Number, Number], jfxsc.AreaChartBuilder[Number, Number, _]](classOf[jfxsc.AreaChart[Number, Number]], classOf[AreaChart[Number, Number]], classOf[jfxsc.AreaChartBuilder[Number, Number, _]]) {
 
-abstract class Chart(override val delegate:jfxsc.Chart) extends Region(delegate) with SFXDelegate[jfxsc.Chart] {
-  def animated = delegate.animatedProperty
-  def animated_= (v: Boolean) {
-    animated() = v
+  override def getScalaClassInstance = new AreaChart[Number, Number](getJavaClassInstance)
+  
+  protected def convertScalaClassToJavaClass(sfxAreaChart: AreaChart[Number, Number]) = {
+    val jfxAreaChart: jfxsc.AreaChart[Number, Number] = sfxAreaChart
+    jfxAreaChart
   }
+  
+  override def getJavaClassInstance = new jfxsc.AreaChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
 
-  def legendSide = delegate.legendSideProperty
-  def legendSide_= (v: Side) {
-    legendSide() = v
-  }
-
-  def legendVisible = delegate.legendVisibleProperty
-  def legendVisible_= (v: Boolean) {
-    legendVisible() = v
-  }
-
-  def title = delegate.titleProperty
-  def title_= (v: String) {
-    title() = v
-  }
-
-  def titleSide = delegate.titleSideProperty
-  def titleSide_= (v: Side) {
-    titleSide() = v
+  protected def convertJavaClassToScalaClass(jfxAreaChart: jfxsc.AreaChart[Number, Number]) = {
+    val sfxAreaChart: AreaChart[Number, Number] = jfxAreaChart
+    sfxAreaChart
   }
 
 }

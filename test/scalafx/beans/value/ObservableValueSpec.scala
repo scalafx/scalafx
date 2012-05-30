@@ -32,7 +32,15 @@ import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 import org.scalatest.matchers.ShouldMatchers._
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.binding.BindingIncludes._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
+/**
+ * ObservableValue Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
 class ObservableValueSpec extends FlatSpec with BeforeAndAfterEach {
   var property: DoubleProperty = null
 

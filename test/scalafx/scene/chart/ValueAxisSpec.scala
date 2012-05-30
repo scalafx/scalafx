@@ -24,43 +24,41 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc}
+import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
-import scalafx.geometry.Side
-import scalafx.scene.layout.Region
-import scalafx.util.SFXDelegate
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.SimpleSFXDelegateSpec
 
-object Chart {
-  implicit def sfxChart2jfx(v: Chart) = v.delegate
-}
+/**
+ * ValueAxis Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class ValueAxisSpec[T <: Number]
+  extends SimpleSFXDelegateSpec[jfxsc.ValueAxis[T], ValueAxis[T]](classOf[jfxsc.ValueAxis[T]], classOf[ValueAxis[T]]) {
 
-abstract class Chart(override val delegate:jfxsc.Chart) extends Region(delegate) with SFXDelegate[jfxsc.Chart] {
-  def animated = delegate.animatedProperty
-  def animated_= (v: Boolean) {
-    animated() = v
+  override def getScalaClassInstance = new ValueAxis[T](getJavaClassInstance) {}
+
+  protected def convertScalaClassToJavaClass(sfxValueAxis: ValueAxis[T]) = {
+    val jfxValueAxis: jfxsc.ValueAxis[T] = sfxValueAxis
+    jfxValueAxis
   }
 
-  def legendSide = delegate.legendSideProperty
-  def legendSide_= (v: Side) {
-    legendSide() = v
+  override def getJavaClassInstance = new jfxsc.ValueAxis[T] {
+    protected def calculateMinorTickMarks = new java.util.ArrayList[T]
+    protected def calculateTickValues(length: Double, range: Any) = new java.util.ArrayList[T]
+    protected def getRange = null
+    protected def getTickMarkLabel(value: T) = ""
+    protected def setRange(range: Any, animate: Boolean) {}
   }
 
-  def legendVisible = delegate.legendVisibleProperty
-  def legendVisible_= (v: Boolean) {
-    legendVisible() = v
-  }
-
-  def title = delegate.titleProperty
-  def title_= (v: String) {
-    title() = v
-  }
-
-  def titleSide = delegate.titleSideProperty
-  def titleSide_= (v: Side) {
-    titleSide() = v
+  protected def convertJavaClassToScalaClass(jfxValueAxis: jfxsc.ValueAxis[T]) = {
+    val sfxValueAxis: ValueAxis[T] = jfxValueAxis
+    sfxValueAxis
   }
 
 }
