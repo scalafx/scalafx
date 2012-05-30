@@ -54,7 +54,7 @@ class ButtonBase(override val delegate: jfxsc.ButtonBase)
    * The button's action, which is invoked whenever the button is fired.
    */
   def onAction = delegate.onActionProperty
-  def onAction_=(aeh: jfxe.EventHandler[jfxe.ActionEvent]) {
+  def onAction_=(implicit aeh: jfxe.EventHandler[jfxe.ActionEvent]) {
     onAction() = aeh
   }
 

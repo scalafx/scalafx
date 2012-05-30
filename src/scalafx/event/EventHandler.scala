@@ -46,7 +46,7 @@ object EventHandler {
    * Generates a new [[javafx.event.EventHandler]] from a simple function that neither receives
    * parameter either return value (just [[scala.Unit]]).
    */
-  implicit def function2jfxEventHandler[E <: jfxe.Event, H <: jfxe.EventHandler[E]](op: (E) => Unit) =
+  implicit def function2jfxEventHandlerWithParam[E <: jfxe.Event, H <: jfxe.EventHandler[E]](op: (E) => Unit) =
     new jfxe.EventHandler[E] {
       def handle(event: E) {
         op(event)
