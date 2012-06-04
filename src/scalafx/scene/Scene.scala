@@ -40,9 +40,13 @@ object Scene {
 class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())) extends SFXDelegate[jfxs.Scene] {
   def this(width: Double, height: Double) = this (new jfxs.Scene(new jfxs.Group(), width, height))
 
-  def this(stackPane: jfxsl.StackPane) = this (new jfxs.Scene(stackPane))
+  def this(parent: jfxs.Parent) = this(new jfxs.Scene(parent))
 
-  def this(stackPane: jfxsl.StackPane, width: Double, height: Double) = this (new jfxs.Scene(stackPane, width, height))
+  def this(parent: jfxs.Parent, width: Double, height: Double) = this(new jfxs.Scene(parent, width, height))
+
+  //def this(stackPane: jfxsl.StackPane) = this (new jfxs.Scene(stackPane))
+
+  //def this(stackPane: jfxsl.StackPane, width: Double, height: Double) = this (new jfxs.Scene(stackPane, width, height))
 
   def root = delegate.rootProperty
 
