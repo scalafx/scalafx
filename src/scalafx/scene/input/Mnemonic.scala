@@ -64,6 +64,6 @@ class Mnemonic(override val delegate: jfxsi.Mnemonic)
   /**
    * Sets the Node
    */
-  def setNode = delegate.setNode
+  def setNode_=(node: Node) { delegate.setNode(node) }
 
 }
