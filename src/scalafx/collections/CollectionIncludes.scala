@@ -27,12 +27,12 @@
 
 package scalafx.collections
 
-import javafx.collections.ObservableList
+import javafx.{collections => jfxc}
 import com.sun.javafx.collections.SortableList
 
 object CollectionIncludes extends CollectionIncludes
 
 trait CollectionIncludes {
-  // we cheat on types here, because the JavaFX collections implementation use an underlying SortableList
-  implicit def observableList2ObservableBuffer[T](ol: ObservableList[T]) = new ObservableBuffer[T](ol.asInstanceOf[ObservableList[T] with SortableList[T]])
+  implicit def observableList2ObservableBuffer[T](ol: jfxc.ObservableList[T]) = new ObservableBuffer[T](ol)
+  implicit def jfxObservableMap2sfxObservableMap[K, V](ob: jfxc.ObservableMap[K, V]) = new ObservableMap[K, V](ob)
 }
