@@ -60,10 +60,9 @@ class Mnemonic(override val delegate: jfxsi.Mnemonic)
    * Returns the Node
    */
   def node: Node = delegate.getNode
-
-  /**
-   * Sets the Node
-   */
-  def node_=(n: Node) { delegate.setNode(n) }
+  def node_=(n: Node) {
+    // TODO: When in JavaFX 2.2, add node argument.
+    delegate.setNode //(n)
+  }
 
 }
