@@ -27,13 +27,14 @@
 
 package scalafx.collections
 
+import scala.collection.JavaConversions.mapAsScalaMap
+
 import javafx.{collections => jfxc}
-import com.sun.javafx.collections.SortableList
 
 object CollectionIncludes extends CollectionIncludes
 
 trait CollectionIncludes {
   implicit def observableList2ObservableBuffer[T](ol: jfxc.ObservableList[T]) = new ObservableBuffer[T](ol)
-  implicit def jfxObservableMap2sfxObservableMap[K, V](ob: jfxc.ObservableMap[K, V]) = new ObservableMap[K, V](ob)
+  implicit def jfxObservableMap2sfxObservableMap[K, V](om: jfxc.ObservableMap[K, V]) = ObservableMap(om)
   implicit def jfxObservableSet2sfxObservableSet[T](os: jfxc.ObservableSet[T]) = new ObservableHashSet[T](os)
 }
