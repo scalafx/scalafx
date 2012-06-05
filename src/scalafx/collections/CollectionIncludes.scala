@@ -35,4 +35,5 @@ object CollectionIncludes extends CollectionIncludes
 trait CollectionIncludes {
   implicit def observableList2ObservableBuffer[T](ol: jfxc.ObservableList[T]) = new ObservableBuffer[T](ol)
   implicit def jfxObservableMap2sfxObservableMap[K, V](ob: jfxc.ObservableMap[K, V]) = new ObservableMap[K, V](ob)
+  implicit def jfxObservableSet2sfxObservableSet[T](os: jfxc.ObservableSet[T]) = new ObservableHashSet[T](os)
 }
