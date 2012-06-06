@@ -38,7 +38,7 @@ import scalafx.beans.Observable
 import scalafx.util.SFXDelegate
 
 /**
- * Companion Object for [[ObservableSet]]. 
+ * Companion Object for [[ObservableSet]].
  */
 object ObservableSet extends MutableSetFactory[ObservableSet] {
   implicit def sfxObservableSet2sfxObservableSet[T](os: ObservableSet[T]) = os.delegate
@@ -73,7 +73,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
    * Creates a new ObservableSet from a [[scala.Seq Sequence]].
    *
    * @param elems Sequence source of Set
-   * @param new [[ObservableHashSet]] generated from elems
+   * @return new [[ObservableHashSet]] generated from elems
    */
   def apply[T](elems: Seq[T]): ObservableSet[T] =
     new ObservableHashSet[T](jfxc.FXCollections.observableSet(elems: _*))
@@ -81,10 +81,13 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
   /**
    * Creates a new ObservableSet from a [[scala.collection.mutable.Set Mutable Set]].
    *
-   * @param set Mutable Set to be wrapped. 
+   * @param set Mutable Set to be wrapped.
+   * @return new [[ObservableHashSet]] wrapping ''set''
    */
   def apply[T](set: Set[T]): ObservableSet[T] =
-    new ObservableHashSet[T](jfxc.FXCollections.observableSet(mutableSetAsJavaSet(set)))
+    new ObservableSet[T] {
+      override val delegate = jfxc.FXCollections.observableSet(mutableSetAsJavaSet(set))
+    }
 
 }
 
@@ -102,8 +105,6 @@ trait ObservableSet[T]
   with Observable
   with SFXDelegate[jfxc.ObservableSet[T]] {
 
-  import ObservableSet._
-
   /**
    * The result when this set is used as a builder
    */
@@ -111,14 +112,14 @@ trait ObservableSet[T]
 
   /**
    * Generates a empty ObservableSet
-   * 
+   *
    * @return A empty [[ObservableHashSet]]
    */
   override def empty = new ObservableHashSet[T]
 
   /**
    * Adds a single element to the set.
-   * 
+   *
    * @param elem the element to be added.
    * @return The set itself
    */
@@ -129,7 +130,7 @@ trait ObservableSet[T]
 
   /**
    * Removes a single element from this mutable set.
-   * 
+   *
    * @param elem the element to be removed.
    * @return The set itself
    */
@@ -139,15 +140,14 @@ trait ObservableSet[T]
   }
 
   /**
-   * Tests if some element is contained in this set.
-   * 
-   * @param elem the element to test for membership.
-   * @return `true` if `elem` is contained in this set, `false` otherwise.
+   * Removes all elements from the set. After this operation has completed, the set will be empty.
    */
-  def contains(elem: T) = delegate.contains(elem)
+  override def clear = delegate.clear
 
   /**
-   * @return `Iterator` of this ObservableSet
+   * Creates a new iterator over elements of this set
+   *
+   * @returns the new iterator
    */
   def iterator = new Iterator[T] {
     val it = delegate.iterator
@@ -156,14 +156,19 @@ trait ObservableSet[T]
   }
 
   /**
-   * @return This set's size. 
+   * @return This set's size.
    */
   override def size = delegate.size
 
   /**
-   * Removes all elements from the set. After this operation has completed, the set will be empty.
+   * Tests if some element is contained in this set.
+   *
+   * @param elem the element to test for membership.
+   * @return `true` if `elem` is contained in this set, `false` otherwise.
    */
-  override def clear = delegate.clear
+  def contains(elem: T) = delegate.contains(elem)
+
+  import ObservableSet._
 
   /**
    * Add a listener function to set's changes. This function will handle this
