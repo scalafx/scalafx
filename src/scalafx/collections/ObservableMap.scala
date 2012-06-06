@@ -150,7 +150,7 @@ trait ObservableMap[K, V]
    * @param the key/value pair.
    * @returns the map itself
    */
-  override def +=(kv: (K, V)) = {
+  def +=(kv: (K, V)) = {
     delegate.put(kv._1, kv._2)
     this
   }
@@ -167,15 +167,6 @@ trait ObservableMap[K, V]
   }
 
   /**
-   * Optionally returns the value associated with a key.
-   *
-   * @param key the key value
-   * @returns an option value containing the value associated with key in this map, or None if
-   * none exists.
-   */
-  def get(key: K) = if (delegate.containsKey(key)) Option(delegate.get(key)) else None
-
-  /**
    * Removes all elements from the map. After this operation has completed, the map will be empty.
    */
   override def clear = delegate.clear
@@ -187,10 +178,24 @@ trait ObservableMap[K, V]
    */
   def iterator = new Iterator[(K, V)] {
     // Definition copied from JavaConversions.JMapWrapperLike.iterator
-    val ui = delegate.entrySet.iterator
-    def hasNext = ui.hasNext
-    def next() = { val e = ui.next; (e.getKey, e.getValue) }
+    val it = delegate.entrySet.iterator
+    def hasNext = it.hasNext
+    def next = { val e = it.next; (e.getKey, e.getValue) }
   }
+
+  /**
+   * @return This set's size.
+   */
+  override def size = delegate.size
+
+  /**
+   * Optionally returns the value associated with a key.
+   *
+   * @param key the key value
+   * @returns an option value containing the value associated with key in this map, or None if
+   * none exists.
+   */
+  def get(key: K) = if (delegate.containsKey(key)) Option(delegate.get(key)) else None
 
   import ObservableMap._
 

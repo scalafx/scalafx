@@ -58,9 +58,9 @@ class ObservableMapSpec[K, V]
   private def compareInstances(generatedMap: Map[Int, String],
     originalMap: ObservableMap[Int, String], shouldBeTheSame: Boolean) {
     if (shouldBeTheSame) {
-      generatedMap should be(originalMap)
+      generatedMap should be theSameInstanceAs(originalMap)
     } else {
-      generatedMap should not be (originalMap)
+      generatedMap should not be theSameInstanceAs(originalMap)
       generatedMap.getClass.getInterfaces.contains(classOf[ObservableMap[Int, String]]) should be(true)
     }
   }

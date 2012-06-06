@@ -232,10 +232,10 @@ class ObservableSetSpec[T]
     }
 
     // Execution
-    set += (1, 10, 3, 8, 5)
-    set -= (10, 9, 3)
-    set += 11
-    set += (-1, 15)
+    compareInstances(set += (1, 10, 3, 8, 5), set, true)
+    compareInstances(set -= (10, 9, 3), set, true)
+    compareInstances(set += 11, set, true)
+    compareInstances(set += (-1, 15), set, true)
 
     // Verification
     set.toList should equal(List(1, 8, 5, 11, -1, 15))
