@@ -32,7 +32,7 @@ import scalafx.util.SFXDelegate
 
 object Event {
   implicit def sfxEvent2jfx(e: Event) = e.delegate
-  
+
   def apply[T <: jfxe.Event](eventType: jfxe.EventType[T]) = new Event(new jfxe.Event(eventType))
 
   /**
@@ -52,8 +52,28 @@ object Event {
 
 }
 
+/**
+ * Wrapper class for [[http://docs.oracle.com/javafx/2/api/javafx/event/Event.html Event]].
+ */
 class Event(override val delegate: jfxe.Event) extends SFXDelegate[jfxe.Event] {
-  
+
+  /**
+   * Construct a new Event with the specified event type.
+   *
+   * @param eventType The event type
+   */
+  def this(eventType: EventType[_ <: Event]) = this(new Event(eventType))
+
+  /**
+   * Construct a new Event with the specified event source, target and type.
+   *
+   * @param source the event source which sent the event
+   * @param target the event target to associate with the event
+   * @param eventType The event type
+   */
+  def this(source: Any, target: jfxe.EventTarget, eventType: EventType[_ <: Event]) =
+    this(new Event(source, target, eventType))
+
   /**
    * Marks this Event as consumed.
    */
@@ -62,7 +82,8 @@ class Event(override val delegate: jfxe.Event) extends SFXDelegate[jfxe.Event] {
   /**
    * Creates and returns a copy of this event with the specified event source and target.
    */
-  def copyFor(newSource: AnyRef, newTarget: jfxe.EventTarget) = new Event(delegate.copyFor(newSource, newTarget))
+  def copyFor(newSource: AnyRef, newTarget: jfxe.EventTarget) = 
+    new Event(delegate.copyFor(newSource, newTarget))
 
   /**
    * Gets the event type of this event.
