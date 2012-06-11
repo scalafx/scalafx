@@ -40,6 +40,7 @@ import stage.StageIncludes
 import scene.SceneIncludes
 import util.UtilIncludes
 import util.converter.ConverterIncludes
+import concurrent.ConcurrentIncludes
 
 /**
  * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
@@ -64,3 +65,4 @@ trait Includes
   with WebIncludes 
   with MediaIncludes
   with ConverterIncludes
+  with ConcurrentIncludes 
