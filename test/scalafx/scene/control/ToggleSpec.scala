@@ -26,27 +26,33 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import javafx.scene.{ control => jfxsc }
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-object ToggleButton {
-  implicit def sfxToggleButton2jfx(v: ToggleButton) = v.delegate
-}
+/**
+ * Toggle Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class ToggleSpec
+  extends SimpleSFXDelegateSpec[jfxsc.Toggle, Toggle](classOf[jfxsc.Toggle], classOf[Toggle]) {
 
-class ToggleButton(override val delegate: jfxsc.ToggleButton = new jfxsc.ToggleButton)
-  extends ButtonBase(delegate)
-  with Toggle
-  with SFXDelegate[jfxsc.ToggleButton] {
+  override def getScalaClassInstance = new ToggleButton
 
-  /**
-   * Creates a toggle button with the specified text as its label.
-   */
-  def this(text: String) = this(new jfxsc.ToggleButton(text))
+  protected def convertScalaClassToJavaClass(sfxControl: Toggle) = {
+    val jfxToggle: jfxsc.Toggle = sfxControl
+    jfxToggle
+  }
 
-  /**
-   * Creates a toggle button with the specified text and icon for its label.
-   */
-  def this(text: String, graphic: Node) = this(new jfxsc.ToggleButton(text, graphic))
+  override def getJavaClassInstance = new jfxsc.ToggleButton
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Toggle) = {
+    val sfxToggle: Toggle = jfxControl
+    sfxToggle
+  }
 
 }

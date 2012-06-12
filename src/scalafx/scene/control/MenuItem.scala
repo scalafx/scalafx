@@ -164,8 +164,8 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    * Returns a previously set Object property, or null if no such property has been set using the
    * setUserData(java.lang.Object) method.
    */
-  def userData = delegate.getUserData
-  def userData_=(v: Any) {
+  def userData: AnyRef = delegate.getUserData
+  def userData_=(v: AnyRef) {
     delegate.setUserData(v)
   }
 

@@ -27,26 +27,42 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import scalafx.scene.Node
+import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
-object ToggleButton {
-  implicit def sfxToggleButton2jfx(v: ToggleButton) = v.delegate
+object Toggle {
+  implicit def sfxToggle2jfx(t: Toggle) = t.delegate
 }
 
-class ToggleButton(override val delegate: jfxsc.ToggleButton = new jfxsc.ToggleButton)
-  extends ButtonBase(delegate)
-  with Toggle
-  with SFXDelegate[jfxsc.ToggleButton] {
+/**
+ * Wrapper trait to [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/Toggle.html Toggle]]
+ * interface.
+ */
+trait Toggle extends SFXDelegate[jfxsc.Toggle] {
 
   /**
-   * Creates a toggle button with the specified text as its label.
+   * The selected state for this Toggle. Indicates whether this Control is selected.
    */
-  def this(text: String) = this(new jfxsc.ToggleButton(text))
+  def selected = delegate.selectedProperty
+  def selected_=(v: Boolean) {
+    selected() = v
+  }
 
   /**
-   * Creates a toggle button with the specified text and icon for its label.
+   * The [[ToggleGroup]] to which this Toggle belongs.
    */
-  def this(text: String, graphic: Node) = this(new jfxsc.ToggleButton(text, graphic))
+  def toggleGroup = delegate.toggleGroupProperty
+  def toggleGroup_=(v: ToggleGroup) {
+    toggleGroup() = v
+  }
+
+  def userData: AnyRef
+  def userData_=(v: AnyRef)
+
+  /**
+   * Returns an observable map of properties on this toggle for use primarily by application
+   * developers.
+   */
+  def properties = delegate.getProperties
 
 }

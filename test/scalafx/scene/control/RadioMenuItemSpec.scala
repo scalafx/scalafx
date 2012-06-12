@@ -26,27 +26,31 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import javafx.scene.{ control => jfxsc }
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-object ToggleButton {
-  implicit def sfxToggleButton2jfx(v: ToggleButton) = v.delegate
-}
+/**
+ * RadioMenuItem Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class RadioMenuItemSpec
+  extends AbstractSFXDelegateSpec[jfxsc.RadioMenuItem, RadioMenuItem, jfxsc.RadioMenuItemBuilder[_]](classOf[jfxsc.RadioMenuItem], classOf[RadioMenuItem], classOf[jfxsc.RadioMenuItemBuilder[_]]) {
 
-class ToggleButton(override val delegate: jfxsc.ToggleButton = new jfxsc.ToggleButton)
-  extends ButtonBase(delegate)
-  with Toggle
-  with SFXDelegate[jfxsc.ToggleButton] {
+  protected def convertScalaClassToJavaClass(sfxControl: RadioMenuItem) = {
+    val jfxRadioMenuItem: jfxsc.RadioMenuItem = sfxControl
+    jfxRadioMenuItem
+  }
+  
+  override def getJavaClassInstance = new jfxsc.RadioMenuItem("")
 
-  /**
-   * Creates a toggle button with the specified text as its label.
-   */
-  def this(text: String) = this(new jfxsc.ToggleButton(text))
-
-  /**
-   * Creates a toggle button with the specified text and icon for its label.
-   */
-  def this(text: String, graphic: Node) = this(new jfxsc.ToggleButton(text, graphic))
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.RadioMenuItem) = {
+    val sfxRadioMenuItem: RadioMenuItem = jfxControl
+    sfxRadioMenuItem
+  }
 
 }

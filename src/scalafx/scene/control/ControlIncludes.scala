@@ -37,11 +37,19 @@ trait ControlIncludes {
   implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s) {}
   implicit def jfxSlider2sfx(s: jfxsc.Slider) = new Slider(s)
   implicit def jfxTitledPane2sfx(t: jfxsc.TitledPane) = new TitledPane(t)
+  implicit def jfxToggle2sfx(t: jfxsc.Toggle) = new Toggle {
+    override val delegate = t
+    def userData: AnyRef = delegate.getUserData()
+    def userData_=(v: AnyRef) {
+      delegate.setUserData(v)
+    }
+  }
   implicit def jfxSeparator2sfx(s: jfxsc.Separator) = new Separator(s)
   implicit def jfxProgressIndicator2sfx(p: jfxsc.ProgressIndicator) = new ProgressIndicator(p)
   implicit def jfxProgressBar2sfx(p: jfxsc.ProgressBar) = new ProgressBar(p)
   implicit def jfxPasswordField2sfx(v: jfxsc.PasswordField) = new PasswordField(v)
   implicit def jfxPopupControl2sfx(v: jfxsc.PopupControl) = new PopupControl(v)
+  implicit def jfxRadioMenuItem2sfx(m: jfxsc.RadioMenuItem) = new RadioMenuItem(m)
   implicit def jfxSelectionModel2sfx[T](v: jfxsc.SelectionModel[T]) = new SelectionModel[T](v) {}
   implicit def jfxSingleSelectionModel2sfx[T](v: jfxsc.SingleSelectionModel[T]) = new SingleSelectionModel[T](v) {}
   implicit def jfxSplitPane2sfx(s: jfxsc.SplitPane) = new SplitPane(s)

@@ -1,7 +1,5 @@
-package scalafx.scene.control
-
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,16 +24,22 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-
-import scalafx.Includes._
+import javafx.scene.{ control => jfxsc }
 import scalafx.util.SFXDelegate
 
 object RadioButton {
   implicit def sfxRadioButton2jfx(rb: RadioButton) = rb.delegate
 }
 
-class RadioButton(override val delegate: jfxsc.RadioButton = new jfxsc.RadioButton) extends ToggleButton(delegate) with SFXDelegate[jfxsc.RadioButton] {
+class RadioButton(override val delegate: jfxsc.RadioButton = new jfxsc.RadioButton)
+  extends ToggleButton(delegate)
+  with SFXDelegate[jfxsc.RadioButton] {
+
+  /**
+   * Creates a radio button with the specified text as its label.
+   */
+  def this(text: String) = this(new jfxsc.RadioButton(text))
 
 }

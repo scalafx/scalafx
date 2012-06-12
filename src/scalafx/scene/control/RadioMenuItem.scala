@@ -26,27 +26,39 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import scalafx.scene.Node
+import javafx.scene.{ control => jfxsc }
+import scalafx.Includes._
 import scalafx.util.SFXDelegate
+import scalafx.scene.Node
 
-object ToggleButton {
-  implicit def sfxToggleButton2jfx(v: ToggleButton) = v.delegate
+object RadioMenuItem {
+  implicit def sfxRadioMenuItem2jfx(m: RadioMenuItem) = m.delegate
 }
 
-class ToggleButton(override val delegate: jfxsc.ToggleButton = new jfxsc.ToggleButton)
-  extends ButtonBase(delegate)
+/**
+ * Wrapper class for [[RadioMenuItem]]
+ *
+ */
+class RadioMenuItem(override val delegate: jfxsc.RadioMenuItem)
+  extends MenuItem(delegate)
   with Toggle
-  with SFXDelegate[jfxsc.ToggleButton] {
+  with SFXDelegate[jfxsc.RadioMenuItem] {
 
   /**
-   * Creates a toggle button with the specified text as its label.
+   * Constructs a RadioMenuItem and sets the display text with the specified text.
    */
-  def this(text: String) = this(new jfxsc.ToggleButton(text))
+  def this(text: String) = this(new jfxsc.RadioMenuItem(text))
 
   /**
-   * Creates a toggle button with the specified text and icon for its label.
+   * Constructs a RadioMenuItem and sets the display text with the specified text and sets the
+   * graphic [[scalafx.scene.Node]] to the given node.
    */
-  def this(text: String, graphic: Node) = this(new jfxsc.ToggleButton(text, graphic))
+  def this(text: String, graphic: Node) = this(new jfxsc.RadioMenuItem(text, graphic))
+  
+  override def properties = delegate.getProperties
+//  def userData: AnyRef = delegate.getUserData()
+//  def userData_=(v: AnyRef) {
+//    delegate.setUserData(v)
+//  }
 
 }
