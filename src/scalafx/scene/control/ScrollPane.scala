@@ -34,6 +34,7 @@ import javafx.geometry.Bounds
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 import javafx.{scene => jfxs}
+import scalafx.scene.Node
 
 object ScrollPane {
   implicit def sfxScrollPane2jfx(v: ScrollPane) = v.delegate
@@ -42,8 +43,13 @@ object ScrollPane {
 class ScrollPane(override val delegate:jfxsc.ScrollPane = new jfxsc.ScrollPane) extends Control(delegate) with SFXDelegate[jfxsc.ScrollPane] {
 
   def content = delegate.contentProperty
+
   def content_= (v: jfxs.Node) {
     content() = v
+  }
+
+  def content_= (v: Node) {
+    content() = v.delegate
   }
 
   def fitToHeight = delegate.fitToHeightProperty
