@@ -29,6 +29,7 @@ package scalafx.scene.shape
 
 import scalafx.Includes._
 import javafx.scene.{ shape => jfxss }
+import scalafx.beans.property.DoubleProperty
 import scalafx.scene.paint._
 import scalafx.util.SFXDelegate
 import scalafx.util.PositionDelegate
@@ -62,12 +63,12 @@ class Rectangle(override val delegate: jfxss.Rectangle = new jfxss.Rectangle())
    */
   def positionedDelegate = delegate.asInstanceOf[Positioned]
 
-  def arcWidth = delegate.arcWidthProperty
+  def arcWidth :DoubleProperty = delegate.arcWidthProperty
   def arcWidth_=(v: Double) {
     arcWidth() = v
   }
 
-  def arcHeight = delegate.arcHeightProperty
+  def arcHeight :DoubleProperty = delegate.arcHeightProperty
   def arcHeight_=(v: Double) {
     arcHeight() = v
   }

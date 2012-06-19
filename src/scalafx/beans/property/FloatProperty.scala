@@ -54,4 +54,7 @@ class FloatProperty(override val delegate: jfxbp.FloatProperty = new jfxbp.Simpl
   def value_=(v: Float) {
     delegate.set(v)
   }
+  def value_=(v: Number) {
+    delegate.set(v.floatValue)
+  }
 }

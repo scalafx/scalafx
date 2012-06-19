@@ -27,8 +27,8 @@
 package scalafx.util
 
 import javafx.beans.{ property => jfxbp }
-import scalafx.beans.property.DoubleProperty
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
 
 /**
  * Trait that unifies JavaFX classes that contains properties indicating localization in 2 
@@ -52,7 +52,7 @@ trait PositionDelegate {
   /**
    * X Position
    */
-  def x = positionedDelegate.xProperty
+  def x :DoubleProperty = positionedDelegate.xProperty
   def x_=(v: Double) {
     x() = v
   }
@@ -60,7 +60,7 @@ trait PositionDelegate {
   /**
    * Y Position
    */
-  def y = positionedDelegate.yProperty
+  def y :DoubleProperty = positionedDelegate.yProperty
   def y_=(v: Double) {
     y() = v
   }

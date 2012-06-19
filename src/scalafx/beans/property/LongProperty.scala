@@ -54,4 +54,7 @@ class LongProperty(override val delegate: jfxbp.LongProperty = new jfxbp.SimpleL
   def value_=(v: Long) {
     delegate.set(v)
   }
+  def value_=(v: Number) {
+    delegate.set(v.longValue)
+  }
 }

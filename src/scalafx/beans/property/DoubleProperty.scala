@@ -54,4 +54,7 @@ class DoubleProperty(override val delegate: jfxbp.DoubleProperty = new jfxbp.Sim
   def value_=(v: Double) {
     delegate.set(v)
   }
+  def value_=(v: Number) {
+    delegate.set(v.doubleValue)
+  }
 }

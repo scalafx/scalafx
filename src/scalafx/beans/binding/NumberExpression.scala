@@ -44,29 +44,29 @@ object NumberExpression {
 }
 
 class NumberExpression(val delegate: jfxbb.NumberExpression) {
-  def +(v: Int) = delegate.add(v)
-  def +(v: Long) = delegate.add(v)
-  def +(v: Float) = delegate.add(v)
-  def +(v: Double) = delegate.add(v)
-  def +(v: ObservableNumberValue) = delegate.add(v)
+  def +(v: Int) = new NumberBinding(delegate.add(v))
+  def +(v: Long) = new NumberBinding(delegate.add(v))
+  def +(v: Float) = new NumberBinding(delegate.add(v))
+  def +(v: Double) = new NumberBinding(delegate.add(v))
+  def +(v: ObservableNumberValue) = new NumberBinding(delegate.add(v))
 
-  def -(v: Int) = delegate.subtract(v)
-  def -(v: Long) = delegate.subtract(v)
-  def -(v: Float) = delegate.subtract(v)
-  def -(v: Double) = delegate.subtract(v)
-  def -(v: ObservableNumberValue) = delegate.subtract(v)
+  def -(v: Int) = new NumberBinding(delegate.subtract(v))
+  def -(v: Long) = new NumberBinding(delegate.subtract(v))
+  def -(v: Float) = new NumberBinding(delegate.subtract(v))
+  def -(v: Double) = new NumberBinding(delegate.subtract(v))
+  def -(v: ObservableNumberValue) = new NumberBinding(delegate.subtract(v))
 
-  def *(v: Int) = delegate.multiply(v)
-  def *(v: Long) = delegate.multiply(v)
-  def *(v: Float) = delegate.multiply(v)
-  def *(v: Double) = delegate.multiply(v)
-  def *(v: ObservableNumberValue) = delegate.multiply(v)
+  def *(v: Int) = new NumberBinding(delegate.multiply(v))
+  def *(v: Long) = new NumberBinding(delegate.multiply(v))
+  def *(v: Float) = new NumberBinding(delegate.multiply(v))
+  def *(v: Double) = new NumberBinding(delegate.multiply(v))
+  def *(v: ObservableNumberValue) = new NumberBinding(delegate.multiply(v))
 
-  def /(v: Int) = delegate.divide(v)
-  def /(v: Long) = delegate.divide(v)
-  def /(v: Float) = delegate.divide(v)
-  def /(v: Double) = delegate.divide(v)
-  def /(v: ObservableNumberValue) = delegate.divide(v)
+  def /(v: Int) = new NumberBinding(delegate.divide(v))
+  def /(v: Long) = new NumberBinding(delegate.divide(v))
+  def /(v: Float) = new NumberBinding(delegate.divide(v))
+  def /(v: Double) = new NumberBinding(delegate.divide(v))
+  def /(v: ObservableNumberValue) = new NumberBinding(delegate.divide(v))
 
   def ===(v: Int) = delegate.isEqualTo(v)
   def ===(v: Long) = delegate.isEqualTo(v)
@@ -106,7 +106,7 @@ class NumberExpression(val delegate: jfxbb.NumberExpression) {
   def >=(v: Double) = delegate.greaterThanOrEqualTo(v)
   def >=(v: ObservableNumberValue) = delegate.greaterThanOrEqualTo(v)
 
-  def unary_- = delegate.negate()
+  def unary_- = new NumberBinding(delegate.negate())
 
   def toInt = delegate.intValue
   def toLong = delegate.longValue

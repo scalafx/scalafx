@@ -37,6 +37,10 @@ import javafx.{event => jfxe}
 import javafx.{geometry => jfxg}
 import javafx.{scene => jfxs}
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.StringProperty
 import scalafx.event.Event._
 import scalafx.event.Event
 import scalafx.geometry.Bounds._
@@ -59,7 +63,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * The BlendMode used to blend this individual node into the scene behind it.
    */
-  def blendMode = delegate.blendModeProperty
+  def blendMode :ObjectProperty[jfxse.BlendMode] = delegate.blendModeProperty
   def blendMode_=(v: jfxse.BlendMode) {
     blendMode() = v
   }
@@ -77,7 +81,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Additional hint for controlling bitmap caching.
    */
-  def cacheHint = delegate.cacheHintProperty
+  def cacheHint :ObjectProperty[jfxs.CacheHint] = delegate.cacheHintProperty
   def cacheHint_=(v: jfxs.CacheHint) {
     cacheHint() = v
   }
@@ -85,7 +89,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * A performance hint to the system to indicate that this Node should be cached as a bitmap.
    */
-  def cache = delegate.cacheProperty
+  def cache :BooleanProperty = delegate.cacheProperty
   def cache_=(v: Boolean) {
     cache() = v
   }
@@ -93,7 +97,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Specifies a Node to use to define the the clipping shape for this Node.
    */
-  def clip = delegate.clipProperty
+  def clip :ObjectProperty[jfxs.Node] = delegate.clipProperty
   def clip_=(v: Node) {
     clip() = v
   }
@@ -101,7 +105,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Defines the mouse cursor for this Node and subnodes.
    */
-  def cursor = delegate.cursorProperty
+  def cursor :ObjectProperty[jfxs.Cursor] = delegate.cursorProperty
   def cursor_=(v: Cursor) {
     cursor() = v
   }
@@ -109,7 +113,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Indicates whether depth testing is used when rendering this node.
    */
-  def depthTest = delegate.depthTestProperty
+  def depthTest :ObjectProperty[jfxs.DepthTest] = delegate.depthTestProperty
   def depthTest_=(v: jfxs.DepthTest) {
     depthTest() = v
   }
@@ -122,7 +126,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Sets the individual disabled state of this Node.
    */
-  def disable = delegate.disableProperty
+  def disable :BooleanProperty = delegate.disableProperty
   def disable_=(v: Boolean) {
     disable() = v
   }
@@ -130,7 +134,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Specifies an effect to apply to this Node.
    */
-  def effect = delegate.effectProperty
+  def effect :ObjectProperty[jfxse.Effect] = delegate.effectProperty
   def effect_=(v: Effect) {
     effect() = v
   }
@@ -138,7 +142,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Specifies the event dispatcher for this node.
    */
-  def eventDispatcher = delegate.eventDispatcherProperty
+  def eventDispatcher :ObjectProperty[jfxe.EventDispatcher] = delegate.eventDispatcherProperty
   def eventDispatcher_=(v: jfxe.EventDispatcher) {
     eventDispatcher() = v
   }
@@ -164,7 +168,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * The id of this Node.
    */
-  def id = delegate.idProperty
+  def id :StringProperty = delegate.idProperty
   def id_=(v: String) {
     id() = v
   }
@@ -172,7 +176,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Property holding InputMethodRequests.
    */
-  def inputMethodRequests = delegate.inputMethodRequestsProperty
+  def inputMethodRequests :ObjectProperty[jfxsi.InputMethodRequests] = delegate.inputMethodRequestsProperty
   def inputMethodRequests_=(v: jfxsi.InputMethodRequests) {
     inputMethodRequests() = v
   }
@@ -419,7 +423,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines how the picking computation is done for this node when triggered by a MouseEvent or a
    * contains function call.
    */
-  def pickOnBounds = delegate.pickOnBoundsProperty
+  def pickOnBounds :BooleanProperty = delegate.pickOnBoundsProperty
   def pickOnBounds_=(v: Boolean) {
     pickOnBounds() = v
   }
@@ -432,7 +436,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Defines the angle of rotation about the Node's center, measured in degrees.
    */
-  def rotate = delegate.rotateProperty
+  def rotate :DoubleProperty = delegate.rotateProperty
   def rotate_=(v: Double) {
     rotate() = v
   }
@@ -449,7 +453,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines the factor by which coordinates are scaled about the center of the object along
    * the X axis of this Node.
    */
-  def scaleX = delegate.scaleXProperty
+  def scaleX :DoubleProperty = delegate.scaleXProperty
   def scaleX_=(v: Double) {
     scaleX() = v
   }
@@ -458,7 +462,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines the factor by which coordinates are scaled about the center of the object along the
    * Y axis of this Node.
    */
-  def scaleY = delegate.scaleYProperty
+  def scaleY :DoubleProperty = delegate.scaleYProperty
   def scaleY_=(v: Double) {
     scaleY() = v
   }
@@ -467,7 +471,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines the factor by which coordinates are scaled about the center of the object along the
    * Z axis of this Node.
    */
-  def scaleZ = delegate.scaleZProperty
+  def scaleZ :DoubleProperty = delegate.scaleZProperty
   def scaleZ_=(v: Double) {
     scaleZ() = v
   }
@@ -480,7 +484,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * A string representation of the CSS style associated with this specific Node.
    */
-  def style = delegate.styleProperty
+  def style :StringProperty = delegate.styleProperty
   def style_=(v: String) {
     style() = v
   }
@@ -504,7 +508,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Defines the x coordinate of the translation that is added to this Node's transform.
    */
-  def translateX = delegate.translateXProperty
+  def translateX :DoubleProperty = delegate.translateXProperty
   def translateX_=(v: Double) {
     translateX() = v
   }
@@ -512,7 +516,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Defines the y coordinate of the translation that is added to this Node's transform.
    */
-  def translateY = delegate.translateYProperty
+  def translateY :DoubleProperty = delegate.translateYProperty
   def translateY_=(v: Double) {
     translateY() = v
   }
@@ -521,7 +525,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines the Z coordinate of the translation that is added to the transformed coordinates of
    * this Node.
    */
-  def translateZ = delegate.translateZProperty
+  def translateZ :DoubleProperty = delegate.translateZProperty
   def translateZ_=(v: Double) {
     translateZ() = v
   }
@@ -538,7 +542,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Specifies whether this Node and any subnodes should be rendered as part of the scene graph.
    */
-  def visible = delegate.visibleProperty
+  def visible :BooleanProperty = delegate.visibleProperty
   def visible_=(v: Boolean) {
     visible() = v
   }

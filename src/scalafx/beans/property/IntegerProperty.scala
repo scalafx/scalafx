@@ -54,4 +54,7 @@ class IntegerProperty(override val delegate: jfxbp.IntegerProperty = new jfxbp.S
   def value_=(v: Int) {
     delegate.set(v)
   }
+  def value_=(v: Number) {
+    delegate.set(v.intValue)
+  }
 }

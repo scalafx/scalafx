@@ -31,8 +31,12 @@ import collection.JavaConversions._
 import javafx.scene.{ paint => jfxsp }
 import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
 import scalafx.scene.Node
 import scalafx.util.SFXDelegate
+import scalafx.collections.ObservableBuffer
 
 object Shape {
   implicit def sfxShape2jfx(v: Shape) = v.delegate
@@ -55,52 +59,52 @@ object Shape {
 }
 
 abstract class Shape(override val delegate: jfxss.Shape) extends Node(delegate) with SFXDelegate[jfxss.Shape] {
-  def fill = delegate.fillProperty
+  def fill :ObjectProperty[jfxsp.Paint] = delegate.fillProperty
   def fill_=(v: jfxsp.Paint) {
     fill() = v
   }
 
-  def smooth = delegate.smoothProperty
+  def smooth :BooleanProperty = delegate.smoothProperty
   def smooth_=(v: Boolean) {
     smooth() = v
   }
 
-  def strokeDashOffset = delegate.strokeDashOffsetProperty
+  def strokeDashOffset :DoubleProperty = delegate.strokeDashOffsetProperty
   def strokeDashOffset_=(v: Double) {
     strokeDashOffset() = v
   }
 
-  def strokeLineCap = delegate.strokeLineCapProperty
+  def strokeLineCap :ObjectProperty[jfxss.StrokeLineCap] = delegate.strokeLineCapProperty
   def strokeLineCap_=(v: jfxss.StrokeLineCap) {
     strokeLineCap() = v
   }
 
-  def strokeLineJoin = delegate.strokeLineJoinProperty
+  def strokeLineJoin :ObjectProperty[jfxss.StrokeLineJoin] = delegate.strokeLineJoinProperty
   def strokeLineJoin_=(v: jfxss.StrokeLineJoin) {
     strokeLineJoin() = v
   }
 
-  def strokeMiterLimit = delegate.strokeMiterLimitProperty
+  def strokeMiterLimit :DoubleProperty = delegate.strokeMiterLimitProperty
   def strokeMiterLimit_=(v: Double) {
     strokeMiterLimit() = v
   }
 
-  def stroke = delegate.strokeProperty
+  def stroke :ObjectProperty[jfxsp.Paint] = delegate.strokeProperty
   def stroke_=(v: jfxsp.Paint) {
     stroke() = v
   }
 
-  def strokeType = delegate.strokeTypeProperty
+  def strokeType :ObjectProperty[jfxss.StrokeType] = delegate.strokeTypeProperty
   def strokeType_=(v: jfxss.StrokeType) {
     strokeType() = v
   }
 
-  def strokeWidth = delegate.strokeWidthProperty
+  def strokeWidth :DoubleProperty = delegate.strokeWidthProperty
   def strokeWidth_=(v: Double) {
     strokeWidth() = v
   }
 
-  def strokeDashArray = delegate.getStrokeDashArray
+  def strokeDashArray :ObservableBuffer[java.lang.Double] = delegate.getStrokeDashArray
   def strokeDashArray_=(c: Iterable[java.lang.Double]) {
     strokeDashArray.setAll(c)
   }
