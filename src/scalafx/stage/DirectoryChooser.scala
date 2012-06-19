@@ -27,15 +27,12 @@
 
 package scalafx.stage
 
-import javafx.{ stage => jfxs }
-import javafx.{ event => jfxe }
-import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.util.SFXDelegate
-import scalafx.scene.Scene
-import scalafx.event._
-import javafx.event.EventDispatchChain
 import java.io.File
+import javafx.{ stage => jfxs }
+import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.StringProperty
+import scalafx.util.SFXDelegate
 
 object DirectoryChooser {
   implicit def sfxDirectoryChooser2jfx(dc: DirectoryChooser) = dc.delegate
@@ -46,7 +43,7 @@ class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.D
   /**
    * The initial directory for the displayed dialog.
    */
-  def initialDirectory = delegate.initialDirectoryProperty
+  def initialDirectory :ObjectProperty[File] = delegate.initialDirectoryProperty
   def initialDirectory_=(v: File) {
     initialDirectory() = v
   }
@@ -54,7 +51,7 @@ class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.D
   /**
    * The title of the displayed dialog.
    */
-  def title = delegate.titleProperty
+  def title :StringProperty = delegate.titleProperty
   def title_=(v: String) {
     title() = v
   }

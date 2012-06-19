@@ -80,4 +80,5 @@ class ImageView(override val delegate: jfxsi.ImageView = new jfxsi.ImageView()) 
     viewport() = v
   }
 
+  def positionedDelegate = delegate.asInstanceOf[Positioned]
 }

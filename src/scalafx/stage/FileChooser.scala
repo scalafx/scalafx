@@ -32,6 +32,8 @@ import java.io.File
 import scala.collection.JavaConversions._
 import javafx.{stage => jfxs}
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.StringProperty
 import scalafx.util.SFXDelegate
 
 object FileChooser {
@@ -70,7 +72,7 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
   /**
    * The initial directory for the displayed dialog.
    */
-  def initialDirectory = delegate.initialDirectoryProperty
+  def initialDirectory :ObjectProperty[File] = delegate.initialDirectoryProperty
   def initialDirectory_=(v: File) {
     initialDirectory() = v
   }
@@ -78,7 +80,7 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
   /**
    * The title of the displayed dialog.
    */
-  def title = delegate.titleProperty
+  def title :StringProperty = delegate.titleProperty
   def title_=(v: String) {
     title() = v
   }
