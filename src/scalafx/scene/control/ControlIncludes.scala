@@ -60,4 +60,5 @@ trait ControlIncludes {
   implicit def jfxTextArea2sfx(t: jfxsc.TextArea) = new TextArea(t)
   implicit def jfxTextInputControl2sfx(t: jfxsc.TextInputControl) = new TextInputControl(t) {}
   implicit def jfxTooltip2sfx(t: jfxsc.Tooltip) = new Tooltip(t) {}
+  implicit def jfxToolBar2sfx(t: jfxsc.ToolBar) = new ToolBar(t) {}
 }
