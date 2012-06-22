@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,31 +26,51 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import javafx.scene.{control => jfxsc}
+import javafx.{collections => jfxc}
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
- * MultipleSelectionModel[T] Spec tests.
+ * MultipleSelectionModel Spec tests.
  *
  */
 @RunWith(classOf[JUnitRunner])
 class MultipleMultipleSelectionModelSpec[T]
   extends AbstractSFXDelegateSpec[jfxsc.MultipleSelectionModel[T], MultipleSelectionModel[T], jfxsc.MultipleSelectionModelBuilder[T, _]](classOf[jfxsc.MultipleSelectionModel[T]], classOf[MultipleSelectionModel[T]], classOf[jfxsc.MultipleSelectionModelBuilder[T, _]]) {
 
+  class SimpleMultipleSelectionModel[T] extends jfxsc.MultipleSelectionModel[T] {
+    def getSelectedIndices: jfxc.ObservableList[java.lang.Integer] = null
+    def getSelectedItems: jfxc.ObservableList[T] = null
+    def selectAll: Unit = {}
+    def selectFirst: Unit = {}
+    def selectIndices(index: Int, indices: Int*): Unit = {}
+    def selectLast: Unit = {}
+    def clearAndSelect(index: Int): Unit = {}
+    def clearSelection: Unit = {}
+    def clearSelection(index: Int): Unit = {}
+    def isEmpty: Boolean = false
+    def isSelected(index: Int): Boolean = false
+    def select(index: Int): Unit = {}
+    def select(obj: T): Unit = {}
+    def selectNext: Unit = {}
+    def selectPrevious: Unit = {}
+  }
+
   override protected def getScalaClassInstance = new MultipleSelectionModel[T](getJavaClassInstance) {}
 
-  protected def convertScalaClassToJavaClass(sfxControl: MultipleSelectionModel[T]) = {
-    val jfxMultipleSelectionModel: jfxsc.MultipleSelectionModel[T] = sfxControl.delegate
+  protected def convertScalaClassToJavaClass(sfxModel: MultipleSelectionModel[T]) = {
+    val jfxMultipleSelectionModel: jfxsc.MultipleSelectionModel[T] = sfxModel
     jfxMultipleSelectionModel
   }
 
-  override protected def getJavaClassInstance = new SimpleMultipleSelectionModel[T].asInstanceOf[jfxsc.MultipleSelectionModel[T]]
+  override protected def getJavaClassInstance = new SimpleMultipleSelectionModel[T]
 
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.MultipleSelectionModel[T]) = {
-    val sfxMultipleSelectionModel: MultipleSelectionModel[T] = jfxControl
+  protected def convertJavaClassToScalaClass(jfxModel: jfxsc.MultipleSelectionModel[T]) = {
+    val sfxMultipleSelectionModel: MultipleSelectionModel[T] = jfxModel
     sfxMultipleSelectionModel
   }
 
