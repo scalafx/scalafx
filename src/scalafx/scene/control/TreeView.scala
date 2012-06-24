@@ -31,24 +31,34 @@ import scalafx.Includes._
 import javafx.scene.{ control => jfxsc }
 import scalafx.util.SFXDelegate
 import javafx.{ event => jfxe }
-import javafx.{ geometry => jfxg }
 import scalafx.scene.Node
 import collection.JavaConversions._
+import scalafx.beans.property.ObjectProperty
 
-object ToolBar {
-	implicit def sfxToolBarTojfx(v: ToolBar) = v.delegate
+object TreeView {
+	implicit def sfxTreeViewTojfx[T <: AnyRef](v: TreeView[T]) = v.delegate
 }
 
-class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar) extends Control(delegate) with SFXDelegate[jfxsc.ToolBar] {
+class TreeView[T <: AnyRef](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[T]) extends Control(delegate) with SFXDelegate[jfxsc.TreeView[T]] {
 
-	def items = delegate.getItems
-	def content = items
-	def content_=(c: Iterable[Node]) {
-		content.setAll(c.map(_.delegate))
+	def this(rootItem: TreeItem[T]) {
+		this
+		root = rootItem
 	}
 
-	def orientation = delegate.orientationProperty
-	def orientation_=(v: jfxg.Orientation) {
-		orientation() = v
+	def editable = delegate.editableProperty
+	def editable_=(v: Boolean) {
+		editable() = v
 	}
+
+	def showRoot = delegate.showRootProperty
+	def showRoot_=(v: Boolean) {
+		showRoot() = v
+	}
+
+	def root = delegate.rootProperty
+	def root_=(v: TreeItem[T]) {
+		root() = v
+	}
+
 }
