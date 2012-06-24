@@ -73,4 +73,6 @@ trait ControlIncludes {
   implicit def jfxTextInputControl2sfx(t: jfxsc.TextInputControl) = new TextInputControl(t) {}
   implicit def jfxTooltip2sfx(t: jfxsc.Tooltip) = new Tooltip(t) {}
   implicit def jfxToolBar2sfx(t: jfxsc.ToolBar) = new ToolBar(t) {}
+  implicit def jfxTreeView2sfx[T <: AnyRef](t: jfxsc.TreeView[T]) = new TreeView[T](t) {}
+  implicit def jfxTreeItem2sfx[T <: AnyRef](t: jfxsc.TreeItem[T]) = new TreeItem[T](t) {}
 }

@@ -34,21 +34,35 @@ import javafx.{ event => jfxe }
 import javafx.{ geometry => jfxg }
 import scalafx.scene.Node
 import collection.JavaConversions._
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 
-object ToolBar {
-	implicit def sfxToolBarTojfx(v: ToolBar) = v.delegate
+object TreeItem {
+	implicit def sfxTreeItemTojfx[T <: AnyRef](v: TreeItem[T]) = v.delegate
 }
 
-class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar) extends Control(delegate) with SFXDelegate[jfxsc.ToolBar] {
+class TreeItem[T <: AnyRef](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[T])
+		extends SFXDelegate[jfxsc.TreeItem[T]] {
 
-	def items = delegate.getItems
-	def content = items
-	def content_=(c: Iterable[Node]) {
-		content.setAll(c.map(_.delegate))
+	def this(treeItemValue: T) = {
+		this()
+		value = treeItemValue
 	}
 
-	def orientation = delegate.orientationProperty
-	def orientation_=(v: jfxg.Orientation) {
-		orientation() = v
+	def expanded = delegate.expandedProperty
+	def expanded_=(v: Boolean) {
+		expanded() = v
 	}
+
+	def graphic = delegate.graphicProperty
+	def graphic_=(v: Node) {
+		graphic() = v
+	}
+
+	def value = delegate.valueProperty
+	def value_=(v: T) {
+		value() = v
+	}
+
 }
