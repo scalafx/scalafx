@@ -24,10 +24,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.util
 
-import javafx.{util => jfxu}
+import javafx.beans.{ property => jfxbp }
+import javafx.{ util => jfxu }
+import scalafx.beans.property.ObjectProperty
 import scalafx.util.Duration.DurationHelper
 
 object UtilIncludes extends UtilIncludes
@@ -50,11 +51,27 @@ trait UtilIncludes {
   /**
    * Convert a Tuple2 to a Pair JavaFX.
    */
-  implicit def tuple22jfxPAir[K, V](t: (K, V)) = new jfxu.Pair[K, V](t._1, t._2)
+  implicit def tuple22jfxPair[K, V](t: (K, V)) = new jfxu.Pair[K, V](t._1, t._2)
   implicit def double2DurationHelper(d: Double) = new DurationHelper(d)
   implicit def jfxDuration2sfx(d: jfxu.Duration) = new Duration(d)
+  /**
+   * Converts a [[javafx.util.StringConverter JavaFX StringConverter]] to its 
+   * ScalaFX version. 
+   */
   implicit def jfxStringConverter2sfx[T](c: jfxu.StringConverter[T]) = new StringConverter[T] {
     def fromString(string: String): T = c.fromString(string)
     def toString(t: T): String = c.toString(t)
   }
+  /**
+   * Converts a Scala's [[scalafx.beans.property.ObjectProperty]] that wraps a
+   * [[SFXDelegate]] to a Java's [[javafx.beans.property.ObjectProperty]].
+   *
+   *  @tparam D Type wrapped by SFXDelegate
+   *  @tparam S A SFXDelegate subtype that wraps D.
+   *  @param obj ObjectProperty that a wraps Scala`s SFXDelegate
+   *  @return A new Java's ObjectProperty
+   */
+  implicit def sfxObjectPropertyWithSFXDelegate2jfxObjectProperty[D <: Object, S <: SFXDelegate[D]](obj: ObjectProperty[S]): jfxbp.ObjectProperty[D] =
+    new jfxbp.SimpleObjectProperty[D](obj.get.delegate)
+
 }
