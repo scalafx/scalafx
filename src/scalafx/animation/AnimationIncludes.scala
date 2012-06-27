@@ -27,7 +27,7 @@
 
 package scalafx.animation
 
-import javafx.{animation => jfxa}
+import javafx.{ animation => jfxa }
 import javafx.util.Duration
 
 object AnimationIncludes extends AnimationIncludes
@@ -38,8 +38,21 @@ trait AnimationIncludes {
   implicit def wrapTweenableInSet[T, J <: Object](t: Tweenable[T, J]) = Set[KeyValue[_, _ <: Object]](t.linear)
   implicit def tweenableSet2KeyValueSet(ts: Set[Tweenable[_, _ <: Object]]) = ts.map(_.linear)
   implicit def wrapKeyFrameInSeq[T <: KeyFrame](kf: T) = Seq[T](kf)
+  /**
+   * Converts a [[javafx.animation.Interpolatable]] to a [[scala.Function2]]
+   */
+  implicit def jfxInterpolatable2sfxFunction2[T](i: jfxa.Interpolatable[T]): ((T, Double) => T) =
+    (endValue: T, t: Double) => i.interpolate(endValue, t)
+  /**
+   * Converts a [[scala.Function2]] to a [[javafx.animation.Interpolatable]]
+   * Implementation.
+   */
+  implicit def sfxFunction2jfxInterpolatable[T](f: ((T, Double) => T)): jfxa.Interpolatable[T] = new jfxa.Interpolatable[T] {
+    def interpolate(endValue: T, t: Double): T = f(endValue, t)
+  }
 
   implicit def jfxAnimation2sfx(v: jfxa.Animation) = new Animation(v) {}
+  implicit def jfxAnimationTimer2sfx(at: jfxa.AnimationTimer) = new AnimationTimer(at) {}
   implicit def jfxFadeTransition2sfx(v: jfxa.FadeTransition) = new FadeTransition(v)
   implicit def jfxFillTransition2sfx(v: jfxa.FillTransition) = new FillTransition(v)
   implicit def jfxKeyFrame2sfx(v: jfxa.KeyFrame) = new KeyFrame(v)
