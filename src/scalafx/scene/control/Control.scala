@@ -37,24 +37,27 @@ object Control {
   implicit def sfxControl2jfx(v: Control) = v.delegate
 
   /**
-   * Sentinel value which can be passed to a control's setMinWidth(), setMinHeight(), 
-   * setPrefWidth(), setPrefHeight(), setMaxWidth(), setMaxHeight() methods to reset the 
-   * control's size constraint back to it's intrinsic size returned by computeMinWidth(), 
-   * computeMinHeight(), computePrefWidth(), computePrefHeight(), computeMaxWidth(), or 
+   * Sentinel value which can be passed to a control's setMinWidth(), setMinHeight(),
+   * setPrefWidth(), setPrefHeight(), setMaxWidth(), setMaxHeight() methods to reset the
+   * control's size constraint back to it's intrinsic size returned by computeMinWidth(),
+   * computeMinHeight(), computePrefWidth(), computePrefHeight(), computeMaxWidth(), or
    * computeMaxHeight().
    */
   val USE_COMPUTED_SIZE = jfxsc.Control.USE_COMPUTED_SIZE
 
   /**
-   * Sentinel value which can be passed to a control's setMinWidth(), setMinHeight(), 
-   * setMaxWidth() or setMaxHeight() methods to indicate that the preferred dimension 
+   * Sentinel value which can be passed to a control's setMinWidth(), setMinHeight(),
+   * setMaxWidth() or setMaxHeight() methods to indicate that the preferred dimension
    * should be used for that max and/or min constraint.
    */
   val USE_PREF_SIZE = jfxsc.Control.USE_PREF_SIZE
 }
 
-abstract class Control(override val delegate: jfxsc.Control) extends Node(delegate) with SFXDelegate[jfxsc.Control] {
-  
+abstract class Control(override val delegate: jfxsc.Control)
+  extends Node(delegate)
+  with Skinnable
+  with SFXDelegate[jfxsc.Control] {
+
   /**
    * The ContextMenu to show for this control.
    */
@@ -114,14 +117,6 @@ abstract class Control(override val delegate: jfxsc.Control) extends Node(delega
   def prefWidth = delegate.prefWidthProperty
   def prefWidth_=(v: Double) {
     prefWidth() = v
-  }
-
-  /**
-   * Skin is responsible for rendering this Control.
-   */
-  def skin = delegate.skinProperty
-  def skin_=(v: jfxsc.Skin[_ <: jfxsc.Skinnable]) {
-    skin() = v
   }
 
   /**

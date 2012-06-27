@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,53 +24,41 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
-package scalafx
-
-import geometry.Insets
+import javafx.scene.{ control => jfxsc }
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.scene.Scene
-import scalafx.scene.shape.Arc
-import scalafx.scene.shape.Circle
-import scalafx.scene.shape.Rectangle
-import scalafx.stage.Stage
-import scene.layout.{VBox, HBox}
-import scene.paint.Color
+import scalafx.testutil.SimpleSFXDelegateSpec
 
-object BoxTest extends JFXApp {
-  stage = new Stage {
-    width = 600
-    height = 450
-    scene = new Scene {
-      fill = Color.LIGHTGREEN
-      content = new HBox {
-        spacing = 10
-        content = List(new Rectangle {
-          width = 100
-          height = 50
-          fill = Color.RED
-          stroke = Color.BLUE
-          strokeWidth = 5
-          margin = Insets(10)
-        }, new VBox {
-          spacing = 10
-          content = for (i <- 0 until 3) yield new Circle {
-            radius = 25
-            fill = Color.BLUE
-            stroke = Color.BLUE.brighter
-            strokeWidth = 3
-          }
-        }, new Arc {
-          radiusX = 25
-          radiusY = 50
-          startAngle = 135
-          length = 45
-          fill = Color.BLACK
-          stroke = Color.YELLOW
-          strokeWidth = 3
-        })
-      }
-    }
+/**
+ * Skin[T] Spec tests.
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class SingleSkinSpec[T <: jfxsc.Skinnable]
+  extends SimpleSFXDelegateSpec[jfxsc.Skin[T], Skin[T]](classOf[jfxsc.Skin[T]], classOf[Skin[T]]) {
+
+  override protected def getScalaClassInstance = new Skin[T] {
+    override val delegate = getJavaClassInstance
   }
+
+  protected def convertScalaClassToJavaClass(sfxControl: Skin[T]) = {
+    val jfxSkin: jfxsc.Skin[T] = sfxControl.delegate
+    jfxSkin
+  }
+
+  // How Skin is a abstract class, it is done a basic implementation
+  override protected def getJavaClassInstance = new jfxsc.Skin[T] {
+    def dispose {}
+    def getNode = null
+    def getSkinnable = null.asInstanceOf[T]
+  }
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Skin[T]) = {
+    val sfxSkin: Skin[T] = jfxControl
+    sfxSkin
+  }
+
 }

@@ -45,6 +45,18 @@ trait ControlIncludes {
     }
   }
   implicit def jfxSeparator2sfx(s: jfxsc.Separator) = new Separator(s)
+  /**
+   * Converts a JavaFX's Skin to a ScalaFX's [[Skinnable]]
+   */
+  implicit def jfxSkin2sfxSkin[C <: jfxsc.Skinnable](s: jfxsc.Skin[C]) = new Skin[C] {
+    override val delegate = s
+  }
+  /**
+   * Converts a JavaFX's Skinnable to a ScalaFX's [[Skinnable]]
+   */
+  implicit def jfxSkinnable2sfxSkinnable(s: jfxsc.Skinnable) = new Skinnable {
+    override val delegate = s
+  }
   implicit def jfxProgressIndicator2sfx(p: jfxsc.ProgressIndicator) = new ProgressIndicator(p)
   implicit def jfxProgressBar2sfx(p: jfxsc.ProgressBar) = new ProgressBar(p)
   implicit def jfxPasswordField2sfx(v: jfxsc.PasswordField) = new PasswordField(v)

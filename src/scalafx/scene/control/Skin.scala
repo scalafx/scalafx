@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,53 +24,36 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
-package scalafx
-
-import geometry.Insets
+import javafx.scene.{ control => jfxsc }
+import scalafx.Includes.jfxObjectProperty2sfx
+import scalafx.util.SFXDelegate
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.scene.Scene
-import scalafx.scene.shape.Arc
-import scalafx.scene.shape.Circle
-import scalafx.scene.shape.Rectangle
-import scalafx.stage.Stage
-import scene.layout.{VBox, HBox}
-import scene.paint.Color
+import scalafx.scene.Node
 
-object BoxTest extends JFXApp {
-  stage = new Stage {
-    width = 600
-    height = 450
-    scene = new Scene {
-      fill = Color.LIGHTGREEN
-      content = new HBox {
-        spacing = 10
-        content = List(new Rectangle {
-          width = 100
-          height = 50
-          fill = Color.RED
-          stroke = Color.BLUE
-          strokeWidth = 5
-          margin = Insets(10)
-        }, new VBox {
-          spacing = 10
-          content = for (i <- 0 until 3) yield new Circle {
-            radius = 25
-            fill = Color.BLUE
-            stroke = Color.BLUE.brighter
-            strokeWidth = 3
-          }
-        }, new Arc {
-          radiusX = 25
-          radiusY = 50
-          startAngle = 135
-          length = 45
-          fill = Color.BLACK
-          stroke = Color.YELLOW
-          strokeWidth = 3
-        })
-      }
-    }
-  }
+object Skin {
+  implicit def sfxSkin2jfx[C <: jfxsc.Skinnable](s: Skin[C]) = s.delegate
+}
+
+/**
+ * Wraps [[javafx.scene.control.Skinnable]] interface.
+ */
+trait Skin[C <: jfxsc.Skinnable] extends SFXDelegate[jfxsc.Skin[C]] {
+
+  /**
+   * Called by a Skinnable when the Skin is replaced on the Skinnable.
+   */
+  def dispose: Unit = delegate.dispose
+
+  /**
+   * Gets the Node which represents this Skin.
+   */
+  def node: Node = delegate.getNode
+
+  /**
+   * Gets the Skinnable to which this Skin is assigned.
+   */
+  def skinnable: C = delegate.getSkinnable
+
 }

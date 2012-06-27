@@ -36,7 +36,10 @@ object PopupControl {
   implicit def sfxPopupControl2jfx(v: PopupControl) = v.delegate
 }
 
-class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupControl) extends PopupWindow(delegate) with SFXDelegate[jfxsc.PopupControl] {
+class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupControl)
+  extends PopupWindow(delegate)
+  with Skinnable
+  with SFXDelegate[jfxsc.PopupControl] {
 
   /**
    * The id of this Node.
@@ -96,21 +99,13 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
   }
 
   /**
-   * Skin is responsible for rendering this PopupControl.
-   */
-  def skin = delegate.skinProperty
-  def skin_=(v: jfxsc.Skin[_]) {
-    skin = v
-  }
-
-  /**
    * A string representation of the CSS style associated with this specific Node.
    */
   def style = delegate.styleProperty
   def style_=(v: String) {
     style = v
   }
-  
+
   def styleClass = delegate.getStyleClass
 
 }
