@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,6 +35,7 @@ import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.scene.Node
+import scalafx.scene.paint.Paint
 import scalafx.util.SFXDelegate
 import scalafx.collections.ObservableBuffer
 
@@ -60,8 +61,8 @@ object Shape {
 
 abstract class Shape(override val delegate: jfxss.Shape) extends Node(delegate) with SFXDelegate[jfxss.Shape] {
   def fill :ObjectProperty[jfxsp.Paint] = delegate.fillProperty
-  def fill_=(v: jfxsp.Paint) {
-    fill() = v
+  def fill_=(v: Paint) {
+    fill() = v.delegate
   }
 
   def smooth :BooleanProperty = delegate.smoothProperty
@@ -90,8 +91,8 @@ abstract class Shape(override val delegate: jfxss.Shape) extends Node(delegate) 
   }
 
   def stroke :ObjectProperty[jfxsp.Paint] = delegate.strokeProperty
-  def stroke_=(v: jfxsp.Paint) {
-    stroke() = v
+  def stroke_=(v: Paint) {
+    stroke() = v.delegate
   }
 
   def strokeType :ObjectProperty[jfxss.StrokeType] = delegate.strokeTypeProperty
