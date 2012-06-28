@@ -32,6 +32,7 @@ import scalafx.util.SFXDelegate
 
 object Color {
   implicit def sfxColor2jfx(c: Color) = c.delegate
+  implicit def jfxColor2sfx(c: jfxsp.Color) = new Color(c)
 
   def apply(red: Double, green: Double, blue: Double, opacity: Double) = new Color(new jfxsp.Color(red, green, blue, opacity))
   

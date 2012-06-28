@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 
 package scalafx.scene.text
 
-import javafx.scene.text.{ FontWeight, FontPosture }
 import scalafx.util.SFXDelegate
 import scalafx.Includes._
 import javafx.scene.{ text => jfxst }
