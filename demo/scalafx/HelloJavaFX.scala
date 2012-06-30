@@ -29,12 +29,12 @@ package scalafx
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
-import scalafx.scene.Scene
-import scalafx.scene.shape.Arc
+import scalafx.scene.paint.Color
 import scalafx.scene.shape.Circle
 import scalafx.scene.shape.Rectangle
+import scalafx.scene.Scene
 import scalafx.stage.Stage
-import javafx.scene.paint.Color
+import scalafx.scene.shape.Arc
 
 object HelloJavaFX extends JFXApp {
   stage = new Stage {
@@ -55,7 +55,7 @@ object HelloJavaFX extends JFXApp {
         centerY = 50
         radius = 25
         fill = Color.BLUE
-        stroke = Color.BLUE.brighter()
+        stroke = Color.BLUE.brighter
         strokeWidth = 3
       }, new Arc {
         centerX = 100

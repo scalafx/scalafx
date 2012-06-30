@@ -28,7 +28,7 @@
 package scalafx
 
 import animation.{Interpolator, KeyFrame, Timeline}
-import javafx.scene.paint.Color
+import scalafx.scene.paint.Color
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.scene.Scene

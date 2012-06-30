@@ -27,21 +27,26 @@
 
 package scalafx
 
-import collection.JavaConversions._
-import javafx.scene.effect._
-import javafx.scene.effect.BlendMode._
-import javafx.scene.paint._
-import javafx.scene.paint.Color._
-import javafx.scene.paint.CycleMethod._
-import javafx.scene.shape.StrokeType._
+import scala.collection.JavaConversions.seqAsJavaList
 import scala.math.random
+
+import javafx.scene.effect.BlendMode.OVERLAY
+import javafx.scene.effect.BoxBlur
+import javafx.scene.paint.CycleMethod.NO_CYCLE
+import javafx.scene.paint.LinearGradient
+import javafx.scene.shape.StrokeType.OUTSIDE
 import scalafx.Includes._
+import scalafx.animation.Timeline.INDEFINITE
+import scalafx.animation.Tweenable.tweenable2KeyFrame
 import scalafx.animation.Timeline
-import scalafx.animation.Timeline._
 import scalafx.application.JFXApp
-import scalafx.scene._
+import scalafx.scene.paint.Color.BLACK
+import scalafx.scene.paint.Color.WHITE
+import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.paint.Stops
-import scalafx.scene.shape._
+import scalafx.scene.shape.Circle
+import scalafx.scene.shape.Rectangle
+import scalafx.scene.Scene
 import scalafx.stage.Stage
 
 /**

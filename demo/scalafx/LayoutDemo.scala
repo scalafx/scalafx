@@ -28,21 +28,20 @@
 package scalafx
 
 import application.JFXApp
-import scene.control.Accordion._
-import scene.control.Labeled._
-import scene.control.TitledPane._
-import scene.control.{Label, ScrollPane, TitledPane, Accordion}
-import scene.layout.Pane._
-import scene.layout.{VBox, HBox}
-import scene.Scene
-import scene.Scene._
+import javafx.geometry.Pos
+import javafx.geometry.VPos
+import scalafx.scene.paint.Color._
+import scalafx.scene.paint.Color
+import scene.control.Accordion
+import scene.control.Label
+import scene.control.ScrollPane
+import scene.control.TitledPane
+import scene.layout.HBox
 import scene.shape.Circle
-import scene.shape.Circle._
-import scene.text.{Font, Text}
+import scene.text.Font
+import scene.text.Text
+import scene.Scene
 import stage.Stage
-import stage.Stage._
-import javafx.scene.paint.Color
-import javafx.geometry.{Pos, VPos}
 
 object LayoutDemo extends JFXApp {
   val hello = new Accordion {

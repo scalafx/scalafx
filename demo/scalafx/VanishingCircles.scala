@@ -27,15 +27,17 @@
 
 package scalafx
 
-import animation.Timeline
-import javafx.animation.Animation._
-import javafx.scene.effect._
-import javafx.scene.paint.Color._
 import scala.math.random
+
+import animation.Timeline
+import javafx.animation.Animation.INDEFINITE
+import javafx.scene.effect.BoxBlur
 import scalafx.Includes._
+import scalafx.animation.Tweenable.tweenable2KeyFrame
 import scalafx.application.JFXApp
-import scalafx.scene._
-import scalafx.scene.shape._
+import scalafx.scene.paint.Color._
+import scalafx.scene.shape.Circle
+import scalafx.scene.Scene
 import scalafx.stage.Stage
 
 /**

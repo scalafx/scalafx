@@ -6,15 +6,13 @@
 package scalafx
 
 
-import javafx.scene.paint.Color
 import scalafx.application.JFXApp
 import scalafx.scene.Scene
-
 import scalafx.scene.control._
 import scalafx.stage.Stage
 import scalafx.scene.shape._
 import scalafx.scene.layout._
-import scalafx.Includes._
+import scalafx.scene.paint.Color
 
 object AccordionTest extends JFXApp {
 
