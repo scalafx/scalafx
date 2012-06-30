@@ -24,31 +24,30 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import javafx.scene.{control => jfxsc}
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
- * ToolBar Spec tests.
+ * TreeItem Spec tests.
  *
  */
 @RunWith(classOf[JUnitRunner])
 class TreeItemSpec[T <: AnyRef]
-		extends AbstractSFXDelegateSpec[jfxsc.TreeItem[T], TreeItem[T], AnyRef](classOf[jfxsc.TreeItem[T]], classOf[TreeItem[T]], null) {
+  extends AbstractSFXDelegateSpec[jfxsc.TreeItem[T], TreeItem[T], jfxsc.TreeItemBuilder[T, _]](classOf[jfxsc.TreeItem[T]], classOf[TreeItem[T]], classOf[jfxsc.TreeItemBuilder[T, _]]) {
 
-	protected def convertScalaClassToJavaClass(sfxControl: TreeItem[T]) = {
-		val jfxTreeView: jfxsc.TreeItem[T] = sfxControl.delegate
-		jfxTreeView
-	}
+  protected def convertScalaClassToJavaClass(sfxControl: TreeItem[T]) = {
+    val jfxTreeView: jfxsc.TreeItem[T] = sfxControl
+    jfxTreeView
+  }
 
-	protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TreeItem[T]) = {
-		val sfxtoolBar: TreeItem[T] = jfxControl
-		sfxtoolBar
-	}
+  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TreeItem[T]) = {
+    val sfxtoolBar: TreeItem[T] = jfxControl
+    sfxtoolBar
+  }
 
 }

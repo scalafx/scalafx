@@ -27,42 +27,153 @@
 
 package scalafx.scene.control
 
-import scalafx.Includes._
 import javafx.scene.{ control => jfxsc }
-import scalafx.util.SFXDelegate
 import javafx.{ event => jfxe }
-import javafx.{ geometry => jfxg }
+import scalafx.Includes._
 import scalafx.scene.Node
-import collection.JavaConversions._
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyBooleanProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.util.SFXDelegate
+import scalafx.collections.ObservableBuffer
 
 object TreeItem {
-	implicit def sfxTreeItemTojfx[T <: AnyRef](v: TreeItem[T]) = v.delegate
+  implicit def sfxTreeItemTojfx[T](v: TreeItem[T]) = v.delegate
+
+  /**
+   * An EventType used when the TreeItem receives a modification to its
+   * expanded property, such that the TreeItem is now in the collapsed state.
+   */
+  def branchCollapsedEvent = jfxsc.TreeItem.branchCollapsedEvent
+
+  /**
+   * An EventType used when the TreeItem receives a modification to its
+   * expanded property, such that the TreeItem is now in the expanded state.
+   */
+  def branchExpandedEvent = jfxsc.TreeItem.branchExpandedEvent
+
+  /**
+   * An EventType used when the TreeItem receives a direct modification to its
+   * children list.
+   */
+  def childrenModificationEvent = jfxsc.TreeItem.childrenModificationEvent
+
+  /**
+   * An EventType used when the TreeItem receives a modification to its
+   * graphic property.
+   */
+  def graphicChangedEvent = jfxsc.TreeItem.graphicChangedEvent
+
+  /**
+   * The general EventType used when the TreeItem receives a modification that
+   *  results in the number of children being visible changes.
+   */
+  def treeItemCountChangeEvent = jfxsc.TreeItem.treeItemCountChangeEvent
+
+  /**
+   * The base EventType used to indicate that an event has occurred within a
+   *  TreeItem.
+   */
+  def treeNotificationEvent = jfxsc.TreeItem.treeNotificationEvent
+
+  /**
+   * An EventType used when the TreeItem receives a modification to its value
+   *  property.
+   */
+  def valueChangedEvent = jfxsc.TreeItem.valueChangedEvent
+
 }
 
-class TreeItem[T <: AnyRef](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[T])
-		extends SFXDelegate[jfxsc.TreeItem[T]] {
+/**
+ * Wraps [[javafx.scene.control.TreeItem]] class.
+ */
+class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[T])
+  extends SFXDelegate[jfxsc.TreeItem[T]] {
 
-	def this(treeItemValue: T) = {
-		this()
-		value = treeItemValue
-	}
+  /**
+   * Creates a TreeItem with the value property set to the provided object.
+   */
+  def this(value: T) = this(new jfxsc.TreeItem[T](value))
 
-	def expanded = delegate.expandedProperty
-	def expanded_=(v: Boolean) {
-		expanded() = v
-	}
+  /**
+   * Creates a TreeItem with the value property set to the provided object,
+   * and the graphic set to the provided Node.
+   */
+  def this(value: T, graphic: Node) = this(new jfxsc.TreeItem[T](value, graphic))
 
-	def graphic = delegate.graphicProperty
-	def graphic_=(v: Node) {
-		graphic() = v
-	}
+  /**
+   * The expanded state of this TreeItem.
+   */
+  def expanded = delegate.expandedProperty
+  def expanded_=(v: Boolean) {
+    expanded() = v
+  }
 
-	def value = delegate.valueProperty
-	def value_=(v: T) {
-		value() = v
-	}
+  /**
+   * The node that is generally shown to the left of the value property.
+   */
+  def graphic = delegate.graphicProperty
+  def graphic_=(v: Node) {
+    graphic() = v
+  }
+
+  /**
+   * Represents the TreeItem leaf property, which is true if the TreeItem has no children.
+   */
+  def leaf = delegate.leafProperty
+
+  /**
+   * A property that represents the parent of this TreeItem.
+   */
+  def parent = delegate.parentProperty
+
+  /**
+   * A property representing the application-specific data contained within
+   * this TreeItem.
+   */
+  def value = delegate.valueProperty
+  def value_=(v: T) {
+    value.set(v)
+  }
+
+  /**
+   * Registers an event handler to this TreeItem.
+   */
+  def addEventHandler[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) =
+    delegate.addEventHandler(eventType, eventFilter)
+
+  /**
+   * Unregisters a previously registered event handler from this TreeItem.
+   */
+  def removeEventHandler[T <: jfxe.Event](eventType: jfxe.EventType[T], eventHandler: jfxe.EventHandler[T]) =
+    delegate.removeEventHandler(eventType, eventHandler)
+
+  /**
+   * Construct an event dispatch chain for this target.
+   */
+  def buildEventDispatchChain(tail: jfxe.EventDispatchChain) =
+    delegate.buildEventDispatchChain(tail)
+
+  /**
+   * The children of this TreeItem.
+   */
+  def children: ObservableBuffer[jfxsc.TreeItem[T]] = delegate.getChildren
+
+  /**
+   * Returns the next sibling of the TreeItem.
+   */
+  def nextSibling = delegate.nextSibling
+
+  /**
+   * Returns the next sibling after the given node.
+   */
+  def nextSibling(afterNode: TreeItem[T]) = delegate.nextSibling(afterNode)
+
+  /**
+   * Returns the previous sibling of the TreeItem.
+   */
+  def previousSibling = delegate.previousSibling
+
+  /**
+   * Returns the previous sibling previous the given node.
+   */
+  def previousSibling(afterNode: TreeItem[T]) = delegate.previousSibling(afterNode)
 
 }
