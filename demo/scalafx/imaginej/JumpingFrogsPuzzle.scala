@@ -40,16 +40,16 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
+import Constants._
+import javafx.scene.paint.Color
 import scalafx.Includes._
-
-import scala._
 import scalafx.animation.Timeline
 import scalafx.application.JFXApp
-import scalafx.stage.Stage
-import scalafx.scene.Scene
-import javafx.scene.paint.Color
-import scalafx.scene.shape.{Circle, Rectangle}
 import scalafx.scene.input.MouseEvent
+import scalafx.scene.shape.Circle
+import scalafx.scene.shape.Rectangle
+import scalafx.scene.Scene
+import scalafx.stage.Stage
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
@@ -124,8 +124,6 @@ object Constants {
   val CANVAS_WIDTH = (NUMBER_OF_STONES + 1) * STONE_TOTAL_WIDTH + (NUMBER_OF_STONES - 1) * STONE_GAP
   //
 }
-
-import Constants._
 
 ///////////
 // model //

@@ -40,9 +40,6 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import javafx.scene.paint.Color
-
-import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.stage.Stage
 import scalafx.scene.Scene
@@ -50,6 +47,7 @@ import scalafx.geometry.Insets
 import scalafx.scene.layout.{HBox, BorderPane}
 import scalafx.scene.control.Button
 import scalafx.scene.shape.Rectangle
+import scalafx.scene.paint.Color
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>

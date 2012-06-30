@@ -40,7 +40,7 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import javafx.scene.paint.Color
+import scalafx.scene.paint.Color
 import javafx.scene.text.FontWeight
 
 import scalafx.application.JFXApp
