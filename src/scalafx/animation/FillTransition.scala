@@ -27,18 +27,21 @@
 
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import javafx.scene.paint.Color
 import javafx.util.Duration
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.scene.paint.Color
 import scalafx.scene.shape.Shape
+import scalafx.util.SFXDelegate
 
 object FillTransition extends AnimationStatics {
   implicit def sfxFillTransition2jfx(v: FillTransition) = v.delegate
 }
 
-class FillTransition(override val delegate:jfxa.FillTransition = new jfxa.FillTransition()) extends Transition(delegate) with SFXDelegate[jfxa.FillTransition] {
+class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillTransition())
+  extends Transition(delegate)
+  with SFXDelegate[jfxa.FillTransition] {
+
   def shape = delegate.shapeProperty
   def shape_=(s: Shape) {
     shape() = s
@@ -53,6 +56,7 @@ class FillTransition(override val delegate:jfxa.FillTransition = new jfxa.FillTr
   def fromValue_=(from: Color) {
     fromValue() = from
   }
+  
   def toValue = delegate.toValueProperty
   def toValue_=(to: Color) {
     toValue() = to

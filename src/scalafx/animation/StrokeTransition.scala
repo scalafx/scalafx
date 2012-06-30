@@ -27,18 +27,21 @@
 
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import javafx.scene.paint.Color
 import javafx.util.Duration
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.scene.paint.Color
 import scalafx.scene.shape.Shape
+import scalafx.util.SFXDelegate
 
 object StrokeTransition extends AnimationStatics {
   implicit def sfxStrokeTransition2jfx(v: StrokeTransition) = v.delegate
 }
 
-class StrokeTransition(override val delegate:jfxa.StrokeTransition = new jfxa.StrokeTransition()) extends Transition(delegate) with SFXDelegate[jfxa.StrokeTransition] {
+class StrokeTransition(override val delegate: jfxa.StrokeTransition = new jfxa.StrokeTransition())
+  extends Transition(delegate)
+  with SFXDelegate[jfxa.StrokeTransition] {
+
   def shape = delegate.shapeProperty
   def shape_=(s: Shape) {
     shape() = s
@@ -53,7 +56,7 @@ class StrokeTransition(override val delegate:jfxa.StrokeTransition = new jfxa.St
   def fromValue_=(from: Color) {
     fromValue() = from
   }
-  
+
   def toValue = delegate.toValueProperty
   def toValue_=(to: Color) {
     toValue() = to
