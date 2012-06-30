@@ -14,6 +14,7 @@ import scalafx.scene.control._
 import scalafx.stage.Stage
 import scalafx.scene.shape._
 import scalafx.scene.layout._
+import scalafx.Includes._
 
 object AccordionTest extends JFXApp {
 

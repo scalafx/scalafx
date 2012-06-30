@@ -27,8 +27,8 @@
 
 package scalafx.controls.controls
 
+import scalafx.Includes._
 import javafx.scene.control.Tooltip
-import scalafx.Includes.eventClosureWrapper
 import scalafx.Includes.jfxDoubleProperty2sfx
 import scalafx.Includes.jfxStringProperty2sfx
 import scalafx.scene.control.Control

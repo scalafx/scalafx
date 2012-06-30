@@ -27,6 +27,7 @@
 
 package scalafx
 
+import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.scene.Scene
 import scalafx.stage.Stage

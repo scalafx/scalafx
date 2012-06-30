@@ -42,6 +42,7 @@ package scalafx.imaginej
 
 import javafx.scene.paint.Color
 
+import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.stage.Stage
 import scalafx.scene.Scene

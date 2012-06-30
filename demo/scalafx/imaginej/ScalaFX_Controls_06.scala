@@ -43,6 +43,7 @@ package scalafx.imaginej
 import javafx.geometry.Pos
 import javafx.scene.control.Tooltip
 
+import scalafx.Includes._
 import scalafx.scene.Scene
 import scalafx.stage.Stage
 import scalafx.application.JFXApp
