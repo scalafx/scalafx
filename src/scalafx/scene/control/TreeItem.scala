@@ -24,18 +24,125 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import javafx.{ event => jfxe }
+import scala.collection.JavaConversions._
+import scala.collection.mutable.Buffer
+
+import javafx.scene.{control => jfxsc}
+import javafx.{event => jfxe}
 import scalafx.Includes._
+import scalafx.collections.ObservableBuffer
+import scalafx.event.Event
+import scalafx.scene.control.TreeItem.sfxTreeItemTojfx
 import scalafx.scene.Node
 import scalafx.util.SFXDelegate
-import scalafx.collections.ObservableBuffer
 
 object TreeItem {
   implicit def sfxTreeItemTojfx[T](v: TreeItem[T]) = v.delegate
+
+  object TreeModificationEvent {
+    implicit def sfxTreeModificationEvent2jfx[T](v: TreeModificationEvent[T]) = v.delegate
+  }
+  
+  class TreeModificationEvent[T](override val delegate: jfxsc.TreeItem.TreeModificationEvent[T])
+    extends Event(delegate)
+    with SFXDelegate[jfxsc.TreeItem.TreeModificationEvent[T]] {
+
+    /**
+     * Constructs a basic TreeModificationEvent - this is useful in situations
+     * where the tree item has not received a new value, has not changed
+     * between expanded/collapsed states, and whose children has not changed.
+     */
+    def this(eventType: jfxe.EventType[_ <: jfxe.Event], treeItem: TreeItem[T]) =
+      this(new jfxsc.TreeItem.TreeModificationEvent[T](eventType, treeItem))
+
+    /**
+     * Constructs a TreeModificationEvent for when the TreeItem has had its
+     * `TreeItem.expandedProperty()` changed.
+     */
+    def this(eventType: jfxe.EventType[_ <: jfxe.Event], treeItem: TreeItem[T], expanded: Boolean) =
+      this(new jfxsc.TreeItem.TreeModificationEvent[T](eventType, treeItem, expanded))
+
+    /**
+     * Constructs a TreeModificationEvent for when the TreeItem has had its
+     * children list changed.
+     */
+    def this(eventType: jfxe.EventType[_ <: jfxe.Event], treeItem: jfxsc.TreeItem[T], added: Buffer[_ <: jfxsc.TreeItem[T]], removed: Buffer[_ <: jfxsc.TreeItem[T]]) =
+      this(new jfxsc.TreeItem.TreeModificationEvent[T](eventType, treeItem, added, removed))
+
+    /**
+     * Constructs a TreeModificationEvent for when the TreeItem has had its
+     * `TreeItem.valueProperty()` changed.
+     */
+    def this(eventType: jfxe.EventType[_ <: jfxe.Event], treeItem: jfxsc.TreeItem[T], newValue: T) =
+      this(new jfxsc.TreeItem.TreeModificationEvent[T](eventType, treeItem, newValue))
+
+    /**
+     * Returns the children added to the TreeItem in this event, or an empty
+     * list if no children were added.
+     */
+    def addedChildren: Buffer[_ <: jfxsc.TreeItem[T]] = delegate.getAddedChildren
+
+    /**
+     * Returns the number of children items that were added in this event, or
+     * zero if no children were added.
+     */
+    def addedSize = delegate.getAddedSize
+
+    /**
+     * If the value of the TreeItem changed, this method will return the new
+     * value.
+     */
+    def newValue = delegate.getNewValue
+
+    /**
+     * Returns the children removed from the TreeItem in this event, or an
+     * empty list if no children were added.
+     */
+    def removedChildren: Buffer[_ <: jfxsc.TreeItem[T]] = delegate.getRemovedChildren
+
+    /**
+     * Returns the number of children items that were removed in this event,
+     * or zero if no children were removed.
+     */
+    def removedSize = delegate.getRemovedSize
+
+    /**
+     * Returns the TreeItem upon which this event occurred.
+     */
+    def source = delegate.getSource
+
+    /**
+     * Returns the TreeItem that this event occurred upon.
+     */
+    def treeItem = delegate.getTreeItem
+
+    /**
+     * Returns true if this event represents a TreeItem event where children
+     * TreeItems were added.
+     */
+    def wasAdded = delegate.wasAdded
+
+    /**
+     * Returns true if this event represents a TreeItem collapse event, and
+     * false if the TreeItem was not collapsed.
+     */
+    def wasCollapsed = delegate.wasCollapsed
+
+    /**
+     * Returns true if this event represents a TreeItem expansion event, and
+     * false if the TreeItem was not expanded.
+     */
+    def wasExpanded = delegate.wasExpanded
+
+    /**
+     * Returns true if this event represents a TreeItem event where children
+     * TreeItems were removed.
+     */
+    def wasRemoved = delegate.wasRemoved
+
+  }
 
   /**
    * An EventType used when the TreeItem receives a modification to its
