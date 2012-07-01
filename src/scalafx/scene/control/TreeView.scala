@@ -24,20 +24,53 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc}
+import javafx.{event => jfxe}
+import javafx.{util => jfxu}
 import scalafx.Includes._
-import javafx.scene.{ control => jfxsc }
-import javafx.{ event => jfxe }
-import javafx.{ util => jfxu }
-import scalafx.scene.Node
+import scalafx.event.Event
 import scalafx.util.SFXDelegate
-import scalafx.beans.property.ObjectProperty
-import collection.JavaConversions._
 
 object TreeView {
   implicit def sfxTreeView2jfx[T](v: TreeView[T]) = v.delegate
+
+  object EditEvent {
+    implicit def sfxTreeViewEditEvent2jfx[T](v: EditEvent[T]) = v.delegate
+  }
+  
+  class EditEvent[T](override val delegate: jfxsc.TreeView.EditEvent[T])
+    extends Event(delegate)
+    with SFXDelegate[jfxsc.TreeView.EditEvent[T]] {
+
+    /**
+     * Creates a new EditEvent instance to represent an edit event.
+     */
+    def this(source: TreeView[T], eventType: jfxe.EventType[_ <: jfxsc.TreeView.EditEvent[T]], treeItem: TreeItem[T], oldValue: T, newValue: T) =
+      this(new jfxsc.TreeView.EditEvent[T](source, eventType, treeItem, oldValue, newValue))
+
+    /**
+     * Returns the new value input into the TreeItem by the end user.
+     */
+    def newValue = delegate.getNewValue
+
+    /**
+     * Returns the old value that existed in the TreeItem prior to the current edit event.
+     */
+    def oldValue = delegate.getOldValue
+
+    /**
+     * Returns the TreeView upon which the edit took place.
+     */
+    def source = delegate.getSource
+
+    /**
+     * Returns the `TreeItem` upon which the edit took place.
+     */
+    def treeItem = delegate.getTreeItem
+
+  }
 
   /**
    * An EventType that indicates some edit event has occurred.
@@ -94,13 +127,6 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
         v(tv)
       }
     }
-    /*
-Description	Resource	Path	Location	Type
-type mismatch;  
-found   : java.lang.Object with javafx.util.Callback[javafx.scene.control.TreeView[T],javafx.scene.control.TreeItem[T]]  
-required:                       javafx.util.Callback[javafx.scene.control.TreeView[T],javafx.scene.control.TreeCell[T]]	
-TreeView.scala	/scalafx/src/scalafx/scene/control	line 92	Scala Problem
-     */
   }
 
   /**

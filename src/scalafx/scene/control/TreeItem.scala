@@ -29,8 +29,8 @@ package scalafx.scene.control
 import scala.collection.JavaConversions._
 import scala.collection.mutable.Buffer
 
-import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe}
+import javafx.scene.{ control => jfxsc }
+import javafx.{ event => jfxe }
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.event.Event
@@ -44,7 +44,7 @@ object TreeItem {
   object TreeModificationEvent {
     implicit def sfxTreeModificationEvent2jfx[T](v: TreeModificationEvent[T]) = v.delegate
   }
-  
+
   class TreeModificationEvent[T](override val delegate: jfxsc.TreeItem.TreeModificationEvent[T])
     extends Event(delegate)
     with SFXDelegate[jfxsc.TreeItem.TreeModificationEvent[T]] {
