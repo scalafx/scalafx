@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
@@ -34,15 +33,15 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 /**
- * ToolBar Spec tests.
+ * TreeView Spec tests.
  *
  */
 @RunWith(classOf[JUnitRunner])
-class TreeViewSpec[T <: AnyRef]
-  extends AbstractSFXDelegateSpec[jfxsc.TreeView[T], TreeView[T], AnyRef](classOf[jfxsc.TreeView[T]], classOf[TreeView[T]], null) {
+class TreeViewSpec[T]
+  extends AbstractSFXDelegateSpec[jfxsc.TreeView[T], TreeView[T], jfxsc.TreeViewBuilder[T, _]](classOf[jfxsc.TreeView[T]], classOf[TreeView[T]], classOf[jfxsc.TreeViewBuilder[T, _]]) {
 
   protected def convertScalaClassToJavaClass(sfxControl: TreeView[T]) = {
-    val jfxTreeView: jfxsc.TreeView[T] = sfxControl.delegate
+    val jfxTreeView: jfxsc.TreeView[T] = sfxControl
     jfxTreeView
   }
 
