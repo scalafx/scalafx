@@ -24,42 +24,56 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
 import scalafx.Includes._
-import scalafx.collections.ObservableBuffer
-import scalafx.util.SFXDelegate
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
 import scalafx.util.converter.StringConverterDelegate
+import scalafx.util.SFXDelegate
 
 object NumberAxis {
   implicit def sfxNumberAxis2jfx(v: NumberAxis) = v.delegate
-  
-  def apply(lowerBound: Double, upperBound: Double, tickUnit: Double) = new NumberAxis(new jfxsc.NumberAxis(lowerBound, upperBound, tickUnit))
-  
-  def apply(axisLabel: String, lowerBound: Double, upperBound: Double, tickUnit: Double) = new NumberAxis(new jfxsc.NumberAxis(axisLabel, lowerBound, upperBound, tickUnit))
-  
+
+  def apply(lowerBound: Double, upperBound: Double, tickUnit: Double) =
+    new NumberAxis(new jfxsc.NumberAxis(lowerBound, upperBound, tickUnit))
+
+  def apply(axisLabel: String, lowerBound: Double, upperBound: Double, tickUnit: Double) =
+    new NumberAxis(new jfxsc.NumberAxis(axisLabel, lowerBound, upperBound, tickUnit))
+
   object DefaultFormatter {
     implicit def sfxDefaultFormatter2jfx(v: DefaultFormatter) = v.delegate
-    
-    def apply(axis: NumberAxis) = new DefaultFormatter(new jfxsc.NumberAxis.DefaultFormatter(axis))
-    
-    def apply(axis: NumberAxis, prefix: String, suffix: String) = new DefaultFormatter(new jfxsc.NumberAxis.DefaultFormatter(axis, prefix, suffix))
+
+    def apply(axis: NumberAxis) =
+      new DefaultFormatter(new jfxsc.NumberAxis.DefaultFormatter(axis))
+
+    def apply(axis: NumberAxis, prefix: String, suffix: String) =
+      new DefaultFormatter(new jfxsc.NumberAxis.DefaultFormatter(axis, prefix, suffix))
   }
-  
-  class DefaultFormatter(override val delegate:jfxsc.NumberAxis.DefaultFormatter) extends StringConverterDelegate[java.lang.Number, Number, jfxsc.NumberAxis.DefaultFormatter](delegate)
+
+  class DefaultFormatter(override val delegate: jfxsc.NumberAxis.DefaultFormatter)
+    extends StringConverterDelegate[java.lang.Number, Number, jfxsc.NumberAxis.DefaultFormatter](delegate)
 }
 
-final class NumberAxis(override val delegate:jfxsc.NumberAxis = new jfxsc.NumberAxis) extends ValueAxis[Number](delegate) with SFXDelegate[jfxsc.NumberAxis] {
-  def forceZeroInRange = delegate.forceZeroInRangeProperty
-  def forceZeroInRange_= (v: Boolean) {
+final class NumberAxis(override val delegate: jfxsc.NumberAxis = new jfxsc.NumberAxis)
+  extends ValueAxis[Number](delegate)
+  with SFXDelegate[jfxsc.NumberAxis] {
+
+  /**
+   * When `true` zero is always included in the visible range.
+   */
+  def forceZeroInRange: BooleanProperty = delegate.forceZeroInRangeProperty
+  def forceZeroInRange_=(v: Boolean) {
     forceZeroInRange() = v
   }
-  
-  def tickUnit = delegate.tickUnitProperty
-  def tickUnit_= (v: Double) {
+
+  /**
+   * The value between each major tick mark in data units.
+   */
+  def tickUnit: DoubleProperty = delegate.tickUnitProperty
+  def tickUnit_=(v: Double) {
     tickUnit() = v
   }
-  
+
 }

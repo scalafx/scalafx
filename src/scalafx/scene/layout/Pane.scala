@@ -36,7 +36,9 @@ object Pane {
   implicit def sfxPane2jfx(v: Pane) = v.delegate
 }
 
-class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane()) extends Region(delegate) with SFXDelegate[jfxsl.Pane] {
+class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
+  extends Region(delegate)
+  with SFXDelegate[jfxsl.Pane] {
 
   /**
    * Gets the list of children of this Parent.
@@ -49,5 +51,11 @@ class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane()) extends Region(
   def content = children
   def content_=(c: Iterable[Node]) {
     content.setAll(c.map(_.delegate))
+  }
+  /**
+   * Adds a simple Node as only content to this Pane.  
+   */
+  def content_=(child: Node) {
+    content = List(child)
   }
 }
