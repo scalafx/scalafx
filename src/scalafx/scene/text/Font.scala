@@ -44,32 +44,35 @@ object Font {
   def default = jfxst.Font.getDefault
 
   /**
-   * Gets all the font families installed on the user's system, including any application fonts
-   * or SDK fonts.
+   * Gets all the font families installed on the user's system, including any
+   *  application fonts or SDK fonts.
    */
   def families = jfxst.Font.getFamilies.toSeq
 
   /**
    * Searches for an appropriate font based on the font family name and size.
    */
-  def font(family: String, size: Double) = jfxst.Font.font(family, size)
+  def font(family: String, size: Double) =
+    new Font(jfxst.Font.font(family, size))
 
   /**
-   * Searches for an appropriate font based on the font family name and posture style.
+   * Searches for an appropriate font based on the font family name and posture
+   * style.
    */
   def font(family: String, posture: FontPosture, size: Double) =
-    jfxst.Font.font(family, posture, size)
+    new Font(jfxst.Font.font(family, posture, size))
 
   /**
    * Searches for an appropriate font based on the font family name and weight style.
    */
-  def font(family: String, weight: FontWeight, size: Double) = jfxst.Font.font(family, weight, size)
+  def font(family: String, weight: FontWeight, size: Double) =
+    new Font(jfxst.Font.font(family, weight, size))
 
   /**
    * Searches for an appropriate font based on the font family name and weight and posture style.
    */
   def font(family: String, weight: FontWeight, posture: FontPosture, size: Double) =
-    jfxst.Font.font(family, weight, posture, size)
+    new Font(jfxst.Font.font(family, weight, posture, size))
 
   /**
    * Gets the names of all fonts that are installed on the users system, including any application

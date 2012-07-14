@@ -28,7 +28,7 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa}
-import javafx.util.Duration
+import scalafx.util.Duration
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 import scalafx.scene.Node

@@ -47,6 +47,9 @@ class Group(override val delegate: jfxs.Group = new jfxs.Group()) extends Parent
   def children_=(c: Iterable[Node]) {
     children.setAll(c.map(_.delegate))
   }
+  def children_=(node: Node) {
+    this.children = List(node)
+  }
 
   /**
    * Controls whether or not this Group will automatically resize any managed resizable children
