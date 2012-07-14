@@ -35,41 +35,39 @@ import scalafx.scene.{input => sfxsi}
 object EventIncludes extends EventIncludes
 
 trait EventIncludes {
-  implicit def jfxActionEvent2sfx(ae: jfxe.ActionEvent) = new ActionEvent(ae)
-  implicit def jfxEvent2sfx(e: jfxe.Event) = new Event(e)
-  implicit def jfxEventType2sfx[T <: jfxe.Event](e: jfxe.EventType[T]) = new EventType[T](e)
+	implicit def jfxActionEvent2sfx(ae: jfxe.ActionEvent) = new ActionEvent(ae)
 
-  implicit def eventClosureWrapper[T <: jfxe.Event](handler: => Unit) = new jfxe.EventHandler[T] {
-    def handle(event: T) {
-      handler
-    }
-  }
+	implicit def jfxEvent2sfx(e: jfxe.Event) = new Event(e)
 
-  implicit def eventClosureWrapperWithUnitParam[T <: jfxe.Event](handler: Unit => Unit) = new jfxe.EventHandler[T] {
-    def handle(event: T) {
-      handler()
-    }
-  }
+	implicit def jfxEventType2sfx[T <: jfxe.Event](e: jfxe.EventType[T]) = new EventType[T](e)
 
-  implicit def eventClosureWrapperWithParam[T <: jfxe.Event](handler: (T) => Unit) = new jfxe.EventHandler[T] {
-    def handle(event: T) {
-      handler(event)
-    }
-  }
+	implicit def eventClosureWrapper[T <: jfxe.Event](handler: => Unit) = new jfxe.EventHandler[T] {
+		def handle(event: T) {
+			handler
+		}
+	}
 
-  implicit def mouseEventClosureWrapper(handler: (sfxsi.MouseEvent) => Unit) = new jfxe.EventHandler[jfxsi.MouseEvent] {
+	implicit def eventClosureWrapperWithUnitParam[T <: jfxe.Event](handler: Unit => Unit) = new jfxe.EventHandler[T] {
+		def handle(event: T) {
+			handler()
+		}
+	}
 
-    def handle(event: jfxsi.MouseEvent) {
-      handler(event)
-    }
-  }
+	implicit def eventClosureWrapperWithParam[T <: jfxe.Event](handler: (T) => Unit) = new jfxe.EventHandler[T] {
+		def handle(event: T) {
+			handler(event)
+		}
+	}
 
-  implicit def actionEventClosureWrapper(handler: (ActionEvent) => Unit) = new jfxe.EventHandler[jfxe.ActionEvent] {
+	implicit def mouseEventClosureWrapper(handler: (sfxsi.MouseEvent) => Unit) = new jfxe.EventHandler[jfxsi.MouseEvent] {
+		def handle(event: jfxsi.MouseEvent) {
+			handler(event)
+		}
+	}
 
-    import EventIncludes.jfxActionEvent2sfx
-
-    def handle(event: jfxe.ActionEvent) {
-      handler(event)
-    }
-  }
+	implicit def actionEventClosureWrapper(handler: (ActionEvent) => Unit) = new jfxe.EventHandler[jfxe.ActionEvent] {
+		def handle(event: jfxe.ActionEvent) {
+			handler(event)
+		}
+	}
 }

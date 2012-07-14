@@ -108,8 +108,6 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    */
   def +=(item: T) {
     this.items.get += item
-
-    this
   }
 
   /**
@@ -120,8 +118,6 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    */
   def -=(item: T) {
     this.items.get -= item
-
-    this
   }
 
 }

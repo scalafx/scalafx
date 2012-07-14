@@ -29,27 +29,34 @@ package scalafx.animation
 
 import collection.JavaConversions._
 import javafx.{animation => jfxa}
-import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
 object Timeline extends AnimationStatics {
-  implicit def sfxTimeline2jfx(v: Timeline) = v.delegate
+	implicit def sfxTimeline2jfx(v: Timeline) = v.delegate
 
-  def apply(keyFrames: Seq[_ <: KeyFrame]) = {
-    def kf = keyFrames
-    new Timeline {
-      keyFrames = kf
-    }
-  }
+	def apply(keyFrames: Seq[_ <: KeyFrame]) = {
+		def kf = keyFrames
+		new Timeline {
+			keyFrames = kf
+		}
+	}
 }
 
-class Timeline(override val delegate:jfxa.Timeline = new jfxa.Timeline()) extends Animation(delegate) with SFXDelegate[jfxa.Timeline] {
-  def this(targetFramerate: Double) = this(new jfxa.Timeline(targetFramerate))
-  def keyFrames = delegate.getKeyFrames
-  def keyFrames_=(kfs: Seq[_ <: KeyFrame]) {
-    keyFrames.setAll(kfs.map(_.delegate))
-  }
-  def play() {
-    delegate.play()
-  }
+class Timeline(override val delegate: jfxa.Timeline = new jfxa.Timeline())
+	extends Animation(delegate)
+	with SFXDelegate[jfxa.Timeline] {
+
+	def this(targetFramerate: Double) =
+		this(new jfxa.Timeline(targetFramerate))
+
+	def keyFrames = delegate.getKeyFrames
+
+	def keyFrames_=(kfs: Seq[_ <: KeyFrame]) {
+		val mapped = kfs.map((x: KeyFrame) => x.delegate)
+		keyFrames.setAll(mapped)
+	}
+
+	def play() {
+		delegate.play()
+	}
 }

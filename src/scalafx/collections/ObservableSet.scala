@@ -26,68 +26,67 @@
  */
 package scalafx.collections
 
+import java.{util => ju}
+import javafx.{collections => jfxc}
 import scala.collection.JavaConversions._
 import scala.collection.generic.MutableSetFactory
 import scala.collection.mutable.Builder
 import scala.collection.mutable.Set
 import scala.collection.mutable.SetLike
-
-import javafx.{ collections => jfxc }
-import java.{ util => ju }
 import scalafx.beans.Observable
 import scalafx.util.SFXDelegate
 
 /**
- * Companion Object for [[ObservableSet]].
+ * Companion Object for [[scalafx.collections.ObservableSet]].
  */
 object ObservableSet extends MutableSetFactory[ObservableSet] {
-  implicit def sfxObservableSet2sfxObservableSet[T](os: ObservableSet[T]) = os.delegate
+	implicit def sfxObservableSet2sfxObservableSet[T](os: ObservableSet[T]) = os.delegate
 
-  /**
-   * Indicates a change in a ObservableSet
-   */
-  trait Change[T]
+	/**
+	 * Indicates a change in a ObservableSet
+	 */
+	trait Change[T]
 
-  /**
-   * Indicates a addition in a ObservableSet
-   *
-   * @param added Added element.
-   */
-  case class Add[T](added: T) extends Change[T]
+	/**
+	 * Indicates a addition in a ObservableSet
+	 *
+	 * @param added Added element.
+	 */
+	case class Add[T](added: T) extends Change[T]
 
-  /**
-   * Indicates a remotion in a ObservableSet
-   *
-   * @param removed Removed element.
-   */
-  case class Remove[T](removed: T) extends Change[T]
+	/**
+	 * Indicates a remotion in a ObservableSet
+	 *
+	 * @param removed Removed element.
+	 */
+	case class Remove[T](removed: T) extends Change[T]
 
-  /**
-   * Creates a empty ObservableSet
-   *
-   * @return a Empty [[ObservableHashSet]]
-   */
-  override def empty[T]: ObservableSet[T] = new ObservableHashSet[T]
+	/**
+	 * Creates a empty ObservableSet
+	 *
+	 * @return a Empty [[scalafx.collections.ObservableHashSet]]
+	 */
+	override def empty[T]: ObservableSet[T] = new ObservableHashSet[T]
 
-  /**
-   * Creates a new ObservableSet from a [[scala.Seq Sequence]].
-   *
-   * @param elems Sequence source of Set
-   * @return new [[ObservableHashSet]] generated from elems
-   */
-  def apply[T](elems: Seq[T]): ObservableSet[T] =
-    new ObservableHashSet[T](jfxc.FXCollections.observableSet(elems: _*))
+	/**
+	 * Creates a new ObservableSet from a [[scala.Seq S e q u e n c e]].
+	 *
+	 * @param elems Sequence source of Set
+	 * @return new [[scalafx.collections.ObservableHashSet]] generated from elems
+	 */
+	def apply[T](elems: Seq[T]): ObservableSet[T] =
+		new ObservableHashSet[T](jfxc.FXCollections.observableSet(elems: _*))
 
-  /**
-   * Creates a new ObservableSet from a [[scala.collection.mutable.Set Mutable Set]].
-   *
-   * @param set Mutable Set to be wrapped.
-   * @return new [[ObservableHashSet]] wrapping ''set''
-   */
-  def apply[T](set: Set[T]): ObservableSet[T] =
-    new ObservableSet[T] {
-      override val delegate = jfxc.FXCollections.observableSet(mutableSetAsJavaSet(set))
-    }
+	/**
+	 * Creates a new ObservableSet from a [[scala.collection.mutable.Set M u t a b l e S e t]].
+	 *
+	 * @param set Mutable Set to be wrapped.
+	 * @return new [[scalafx.collections.ObservableHashSet]] wrapping ''set''
+	 */
+	def apply[T](set: Set[T]): ObservableSet[T] =
+		new ObservableSet[T] {
+			override val delegate = jfxc.FXCollections.observableSet(mutableSetAsJavaSet(set))
+		}
 
 }
 
@@ -99,126 +98,126 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
  *
  */
 trait ObservableSet[T]
-  extends Set[T]
-  with SetLike[T, ObservableSet[T]]
-  with Builder[T, ObservableSet[T]]
-  with Observable
-  with SFXDelegate[jfxc.ObservableSet[T]] {
+	extends Set[T]
+	with SetLike[T, ObservableSet[T]]
+	with Builder[T, ObservableSet[T]]
+	with Observable
+	with SFXDelegate[jfxc.ObservableSet[T]] {
 
-  /**
-   * The result when this set is used as a builder
-   */
-  override def result = this
+	/**
+	 * The result when this set is used as a builder
+	 */
+	override def result = this
 
-  /**
-   * Generates a empty ObservableSet
-   *
-   * @return A empty [[ObservableHashSet]]
-   */
-  override def empty = new ObservableHashSet[T]
+	/**
+	 * Generates a empty ObservableSet
+	 *
+	 * @return A empty [[scalafx.collections.ObservableHashSet]]
+	 */
+	override def empty = new ObservableHashSet[T]
 
-  /**
-   * Adds a single element to the set.
-   *
-   * @param elem the element to be added.
-   * @return The set itself
-   */
-  def +=(elem: T) = {
-    delegate.add(elem)
-    this
-  }
+	/**
+	 * Adds a single element to the set.
+	 *
+	 * @param elem the element to be added.
+	 * @return The set itself
+	 */
+	def +=(elem: T) = {
+		delegate.add(elem)
+		this
+	}
 
-  /**
-   * Removes a single element from this mutable set.
-   *
-   * @param elem the element to be removed.
-   * @return The set itself
-   */
-  def -=(elem: T) = {
-    delegate.remove(elem)
-    this
-  }
+	/**
+	 * Removes a single element from this mutable set.
+	 *
+	 * @param elem the element to be removed.
+	 * @return The set itself
+	 */
+	def -=(elem: T) = {
+		delegate.remove(elem)
+		this
+	}
 
-  /**
-   * Removes all elements from the set. After this operation has completed, the set will be empty.
-   */
-  override def clear = delegate.clear
+	/**
+	 * Removes all elements from the set. After this operation has completed, the set will be empty.
+	 */
+	override def clear = delegate.clear
 
-  /**
-   * Creates a new iterator over elements of this set
-   *
-   * @returns the new iterator
-   */
-  def iterator = new Iterator[T] {
-    val it = delegate.iterator
-    def hasNext = it.hasNext
-    def next = it.next
-  }
+	/**
+	 * Creates a new iterator over elements of this set
+	 */
+	def iterator = new Iterator[T] {
+		val it = delegate.iterator
 
-  /**
-   * @return This set's size.
-   */
-  override def size = delegate.size
+		def hasNext = it.hasNext
 
-  /**
-   * Tests if some element is contained in this set.
-   *
-   * @param elem the element to test for membership.
-   * @return `true` if `elem` is contained in this set, `false` otherwise.
-   */
-  def contains(elem: T) = delegate.contains(elem)
+		def next = it.next
+	}
 
-  import ObservableSet._
+	/**
+	 * @return This set's size.
+	 */
+	override def size = delegate.size
 
-  /**
-   * Add a listener function to set's changes. This function will handle this
-   * [[ObservableSet.Change set's modification data]].
-   *
-   * @param Function that will handle this set's modification data to be activated when
-   * some change was made.
-   */
-  def onChange(op: (ObservableSet[T], Change[T]) => Unit) {
-    delegate.addListener(new jfxc.SetChangeListener[T] {
-      def onChanged(change: jfxc.SetChangeListener.Change[_ <: T]) {
-        val changeEvent = (change.wasAdded, change.wasRemoved) match {
-          case (true, false) => ObservableSet.Add(change.getElementAdded)
-          case (false, true) => ObservableSet.Remove(change.getElementRemoved)
-          case _ => throw new IllegalStateException("Irregular Change. Added: " +
-            change.getElementAdded + ", Removed: " + change.getElementRemoved)
-        }
+	/**
+	 * Tests if some element is contained in this set.
+	 *
+	 * @param elem the element to test for membership.
+	 * @return `true` if `elem` is contained in this set, `false` otherwise.
+	 */
+	def contains(elem: T) = delegate.contains(elem)
 
-        op(ObservableSet.this, changeEvent)
-      }
-    })
-  }
+	import ObservableSet._
 
-  /**
-   * Add a listener function to set's changes. This function will not handle this set's
-   * modification data.
-   *
-   * @param op No-argument function to be activated when some change in this set was made.
-   */
-  def onChange(op: => Unit) {
-    delegate.addListener(new jfxc.SetChangeListener[T] {
-      def onChanged(change: jfxc.SetChangeListener.Change[_ <: T]) {
-        op
-      }
-    })
-  }
+	/**
+	 * Add a listener function to set's changes. This function will handle this
+	 * [[scalafx.collections.ObservableSet.Change s e t ' s m o d i f i c a t i o n d a t a]].
+	 *
+	 * @param op function that will handle this set's modification data to be activated when
+	 *           some change was made.
+	 */
+	def onChange[J >: T](op: (ObservableSet[T], Change[J]) => Unit) {
+		delegate.addListener(new jfxc.SetChangeListener[T] {
+			def onChanged(change: jfxc.SetChangeListener.Change[_ <: T]) {
+				val changeEvent: Change[J] = (change.wasAdded, change.wasRemoved) match {
+					case (true, false) => ObservableSet.Add(change.getElementAdded)
+					case (false, true) => ObservableSet.Remove(change.getElementRemoved)
+					case _ => throw new IllegalStateException("Irregular Change. Added: " +
+						change.getElementAdded + ", Removed: " + change.getElementRemoved)
+				}
+
+				op(ObservableSet.this, changeEvent)
+			}
+		})
+	}
+
+	/**
+	 * Add a listener function to set's changes. This function will not handle this set's
+	 * modification data.
+	 *
+	 * @param op No-argument function to be activated when some change in this set was made.
+	 */
+	def onChange(op: => Unit) {
+		delegate.addListener(new jfxc.SetChangeListener[T] {
+			def onChanged(change: jfxc.SetChangeListener.Change[_ <: T]) {
+				op
+			}
+		})
+	}
 
 }
 
 /**
- * [[ObservableSet]] implementation backed for a
+ * [[scalafx.collections.ObservableSet]] implementation backed for a
  * [[http://docs.oracle.com/javase/7/docs/api/java/util/HashSet.html HashSet]] from Java Collection.
  *
  * @param delegate JavaFX
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableSet.html ObservableSet]]
- * instance to be wrapped by this class. By default it is a
- * [[http://docs.oracle.com/javase/7/docs/api/java/util/HashSet.html HashSet]] wrapped by
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html#observableSet(java.util.Set) observableSet]]
- * method from
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html FXCollections]].
+ *                 [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableSet.html ObservableSet]]
+ *                 instance to be wrapped by this class. By default it is a
+ *                 [[http://docs.oracle.com/javase/7/docs/api/java/util/HashSet.html HashSet]] wrapped by
+ *                 [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html#observableSet(java.util.Set) observableSet]]
+ *                 method from
+ *                 [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html FXCollections]].
  */
 class ObservableHashSet[T](override val delegate: jfxc.ObservableSet[T] = jfxc.FXCollections.observableSet(new ju.HashSet[T]))
-  extends ObservableSet[T] 
+	extends ObservableSet[T]
