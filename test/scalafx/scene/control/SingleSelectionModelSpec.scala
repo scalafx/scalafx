@@ -43,7 +43,7 @@ class SingleSingleSelectionModelSpec[T]
   override protected def getScalaClassInstance = new SingleSelectionModel[T](getJavaClassInstance) {}
 
   protected def convertScalaClassToJavaClass(sfxControl: SingleSelectionModel[T]) = {
-    val jfxSingleSelectionModel: jfxsc.SingleSelectionModel[T] = sfxControl.delegate
+    val jfxSingleSelectionModel: jfxsc.SingleSelectionModel[T] = sfxControl
     jfxSingleSelectionModel
   }
 
