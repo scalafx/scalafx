@@ -48,9 +48,6 @@ import scalafx.geometry.Point2D._
 import scalafx.geometry.Bounds
 import scalafx.geometry.Insets
 import scalafx.geometry.Point2D
-import scalafx.scene.Cursor._
-import scalafx.scene.Node._
-import scalafx.scene.effect.Effect._
 import scalafx.scene.effect.Effect
 import scalafx.util.SFXDelegate
 
@@ -58,12 +55,13 @@ object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
 }
 
-abstract class Node protected (override val delegate: jfxs.Node) extends SFXDelegate[jfxs.Node] {
+abstract class Node protected(override val delegate: jfxs.Node) extends SFXDelegate[jfxs.Node] {
 
   /**
    * The BlendMode used to blend this individual node into the scene behind it.
    */
-  def blendMode :ObjectProperty[jfxse.BlendMode] = delegate.blendModeProperty
+  def blendMode: ObjectProperty[jfxse.BlendMode] = delegate.blendModeProperty
+
   def blendMode_=(v: jfxse.BlendMode) {
     blendMode() = v
   }
@@ -81,7 +79,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Additional hint for controlling bitmap caching.
    */
-  def cacheHint :ObjectProperty[jfxs.CacheHint] = delegate.cacheHintProperty
+  def cacheHint: ObjectProperty[jfxs.CacheHint] = delegate.cacheHintProperty
+
   def cacheHint_=(v: jfxs.CacheHint) {
     cacheHint() = v
   }
@@ -89,7 +88,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * A performance hint to the system to indicate that this Node should be cached as a bitmap.
    */
-  def cache :BooleanProperty = delegate.cacheProperty
+  def cache: BooleanProperty = delegate.cacheProperty
+
   def cache_=(v: Boolean) {
     cache() = v
   }
@@ -97,7 +97,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Specifies a Node to use to define the the clipping shape for this Node.
    */
-  def clip :ObjectProperty[jfxs.Node] = delegate.clipProperty
+  def clip: ObjectProperty[jfxs.Node] = delegate.clipProperty
+
   def clip_=(v: Node) {
     clip() = v
   }
@@ -105,7 +106,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Defines the mouse cursor for this Node and subnodes.
    */
-  def cursor :ObjectProperty[jfxs.Cursor] = delegate.cursorProperty
+  def cursor: ObjectProperty[jfxs.Cursor] = delegate.cursorProperty
+
   def cursor_=(v: Cursor) {
     cursor() = v
   }
@@ -113,7 +115,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Indicates whether depth testing is used when rendering this node.
    */
-  def depthTest :ObjectProperty[jfxs.DepthTest] = delegate.depthTestProperty
+  def depthTest: ObjectProperty[jfxs.DepthTest] = delegate.depthTestProperty
+
   def depthTest_=(v: jfxs.DepthTest) {
     depthTest() = v
   }
@@ -126,7 +129,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Sets the individual disabled state of this Node.
    */
-  def disable :BooleanProperty = delegate.disableProperty
+  def disable: BooleanProperty = delegate.disableProperty
+
   def disable_=(v: Boolean) {
     disable() = v
   }
@@ -134,7 +138,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Specifies an effect to apply to this Node.
    */
-  def effect :ObjectProperty[jfxse.Effect] = delegate.effectProperty
+  def effect: ObjectProperty[jfxse.Effect] = delegate.effectProperty
+
   def effect_=(v: Effect) {
     effect() = v
   }
@@ -142,7 +147,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Specifies the event dispatcher for this node.
    */
-  def eventDispatcher :ObjectProperty[jfxe.EventDispatcher] = delegate.eventDispatcherProperty
+  def eventDispatcher: ObjectProperty[jfxe.EventDispatcher] = delegate.eventDispatcherProperty
+
   def eventDispatcher_=(v: jfxe.EventDispatcher) {
     eventDispatcher() = v
   }
@@ -156,6 +162,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Specifies whether this Node should be a part of focus traversal cycle.
    */
   def focusTraversable = delegate.focusTraversableProperty
+
   def focusTraversable_=(v: Boolean) {
     focusTraversable() = v
   }
@@ -168,7 +175,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * The id of this Node.
    */
-  def id :StringProperty = delegate.idProperty
+  def id: StringProperty = delegate.idProperty
+
   def id_=(v: String) {
     id() = v
   }
@@ -176,7 +184,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Property holding InputMethodRequests.
    */
-  def inputMethodRequests :ObjectProperty[jfxsi.InputMethodRequests] = delegate.inputMethodRequestsProperty
+  def inputMethodRequests: ObjectProperty[jfxsi.InputMethodRequests] = delegate.inputMethodRequestsProperty
+
   def inputMethodRequests_=(v: jfxsi.InputMethodRequests) {
     inputMethodRequests() = v
   }
@@ -191,6 +200,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * purpose of layout.
    */
   def layoutX = delegate.layoutXProperty
+
   def layoutX_=(v: Double) {
     layoutX() = v
   }
@@ -200,6 +210,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * purpose of layout.
    */
   def layoutY = delegate.layoutYProperty
+
   def layoutY_=(v: Double) {
     layoutY() = v
   }
@@ -208,6 +219,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines whether or not this node's layout will be managed by it's parent.
    */
   def managed = delegate.managedProperty
+
   def managed_=(v: Boolean) {
     managed() = v
   }
@@ -216,6 +228,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * If true, this node (together with all its children) is completely transparent to mouse events.
    */
   def mouseTransparent = delegate.mouseTransparentProperty
+
   def mouseTransparent_=(v: Boolean) {
     mouseTransparent() = v
   }
@@ -224,6 +237,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines a function to be called when a context menu has been requested on this Node.
    */
   def onContextMenuRequested = delegate.onContextMenuRequestedProperty
+
   def onContextMenuRequested_=(v: jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]) {
     onContextMenuRequested() = v
   }
@@ -232,6 +246,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines a function to be called when drag gesture has been detected.
    */
   def onDragDetected = delegate.onDragDetectedProperty
+
   def onDragDetected_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onDragDetected() = v
   }
@@ -241,6 +256,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * data has been dropped on a drop target.
    */
   def onDragDone = delegate.onDragDoneProperty
+
   def onDragDone_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragDone() = v
   }
@@ -250,6 +266,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * and drop gesture.
    */
   def onDragDropped = delegate.onDragDroppedProperty
+
   def onDragDropped_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragDropped() = v
   }
@@ -258,6 +275,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines a function to be called when drag gesture enters this Node.
    */
   def onDragEntered = delegate.onDragEnteredProperty
+
   def onDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragEntered() = v
   }
@@ -266,6 +284,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines a function to be called when drag gesture exits this Node.
    */
   def onDragExited = delegate.onDragExitedProperty
+
   def onDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragExited() = v
   }
@@ -274,6 +293,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines a function to be called when drag gesture progresses within this Node.
    */
   def onDragOver = delegate.onDragOverProperty
+
   def onDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
     onDragOver() = v
   }
@@ -283,6 +303,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * changed.
    */
   def onInputMethodTextChanged = delegate.onInputMethodTextChangedProperty
+
   def onInputMethodTextChanged_=(v: jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]) {
     onInputMethodTextChanged() = v
   }
@@ -292,6 +313,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * has been pressed.
    */
   def onKeyPressed = delegate.onKeyPressedProperty
+
   def onKeyPressed_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyPressed() = v
   }
@@ -301,6 +323,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * has been released.
    */
   def onKeyReleased = delegate.onKeyReleasedProperty
+
   def onKeyReleased_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyReleased() = v
   }
@@ -310,6 +333,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * has been typed.
    */
   def onKeyTyped = delegate.onKeyTypedProperty
+
   def onKeyTyped_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
     onKeyTyped() = v
   }
@@ -319,6 +343,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * on this Node.
    */
   def onMouseClicked = delegate.onMouseClickedProperty
+
   def onMouseClicked_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseClicked() = v
   }
@@ -327,6 +352,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines a function to be called when a mouse button is pressed on this Node and then dragged.
    */
   def onMouseDragged = delegate.onMouseDraggedProperty
+
   def onMouseDragged_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragged() = v
   }
@@ -335,6 +361,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines a function to be called when a full press-drag-release gesture enters this Node.
    */
   def onMouseDragEntered = delegate.onMouseDragEnteredProperty
+
   def onMouseDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragEntered() = v
   }
@@ -343,11 +370,13 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines a function to be called when a full press-drag-release gesture leaves this Node.
    */
   def onMouseDragExited = delegate.onMouseDragExitedProperty
+
   def onMouseDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragExited() = v
   }
 
   def onMouseDragOver = delegate.onMouseDragOverProperty
+
   def onMouseDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragOver() = v
   }
@@ -357,6 +386,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Node.
    */
   def onMouseDragReleased = delegate.onMouseDragReleasedProperty
+
   def onMouseDragReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseDragReleased() = v
   }
@@ -365,6 +395,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines a function to be called when the mouse enters this Node.
    */
   def onMouseEntered = delegate.onMouseEnteredProperty
+
   def onMouseEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseEntered() = v
   }
@@ -373,11 +404,13 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines a function to be called when the mouse exits this Node.
    */
   def onMouseExited = delegate.onMouseExitedProperty
+
   def onMouseExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseExited() = v
   }
 
   def onMouseMoved = delegate.onMouseMovedProperty
+
   def onMouseMoved_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseMoved() = v
   }
@@ -386,6 +419,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines a function to be called when a mouse button has been pressed on this Node.
    */
   def onMousePressed = delegate.onMousePressedProperty
+
   def onMousePressed_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMousePressed() = v
   }
@@ -394,6 +428,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines a function to be called when a mouse button has been released on this Node.
    */
   def onMouseReleased = delegate.onMouseReleasedProperty
+
   def onMouseReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
     onMouseReleased() = v
   }
@@ -402,6 +437,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines a function to be called when user performs a scrolling action.
    */
   def onScroll = delegate.onScrollProperty
+
   def onScroll_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]) {
     onScroll() = v
   }
@@ -410,6 +446,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Specifies how opaque (that is, solid) the Node appears.
    */
   def opacity = delegate.opacityProperty
+
   def opacity_=(v: Double) {
     opacity() = v
   }
@@ -423,7 +460,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines how the picking computation is done for this node when triggered by a MouseEvent or a
    * contains function call.
    */
-  def pickOnBounds :BooleanProperty = delegate.pickOnBoundsProperty
+  def pickOnBounds: BooleanProperty = delegate.pickOnBoundsProperty
+
   def pickOnBounds_=(v: Boolean) {
     pickOnBounds() = v
   }
@@ -436,7 +474,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Defines the angle of rotation about the Node's center, measured in degrees.
    */
-  def rotate :DoubleProperty = delegate.rotateProperty
+  def rotate: DoubleProperty = delegate.rotateProperty
+
   def rotate_=(v: Double) {
     rotate() = v
   }
@@ -445,6 +484,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines the axis of rotation of this Node.
    */
   def rotationAxis = delegate.rotationAxisProperty
+
   def rotationAxis_=(v: jfxg.Point3D) {
     rotationAxis() = v
   }
@@ -453,7 +493,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines the factor by which coordinates are scaled about the center of the object along
    * the X axis of this Node.
    */
-  def scaleX :DoubleProperty = delegate.scaleXProperty
+  def scaleX: DoubleProperty = delegate.scaleXProperty
+
   def scaleX_=(v: Double) {
     scaleX() = v
   }
@@ -462,7 +503,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines the factor by which coordinates are scaled about the center of the object along the
    * Y axis of this Node.
    */
-  def scaleY :DoubleProperty = delegate.scaleYProperty
+  def scaleY: DoubleProperty = delegate.scaleYProperty
+
   def scaleY_=(v: Double) {
     scaleY() = v
   }
@@ -471,7 +513,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines the factor by which coordinates are scaled about the center of the object along the
    * Z axis of this Node.
    */
-  def scaleZ :DoubleProperty = delegate.scaleZProperty
+  def scaleZ: DoubleProperty = delegate.scaleZProperty
+
   def scaleZ_=(v: Double) {
     scaleZ() = v
   }
@@ -484,7 +527,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * A string representation of the CSS style associated with this specific Node.
    */
-  def style :StringProperty = delegate.styleProperty
+  def style: StringProperty = delegate.styleProperty
+
   def style_=(v: String) {
     style() = v
   }
@@ -493,6 +537,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    *
    */
   def styleClass = delegate.getStyleClass
+
   def styleClass_=(c: Iterable[String]) {
     styleClass.setAll(c)
   }
@@ -501,6 +546,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines the ObservableList of Transform objects to be applied to this Node.
    */
   def transforms = delegate.getTransforms
+
   def transforms_=(c: Iterable[jfxst.Transform]) {
     transforms.setAll(c)
   }
@@ -508,7 +554,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Defines the x coordinate of the translation that is added to this Node's transform.
    */
-  def translateX :DoubleProperty = delegate.translateXProperty
+  def translateX: DoubleProperty = delegate.translateXProperty
+
   def translateX_=(v: Double) {
     translateX() = v
   }
@@ -516,7 +563,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Defines the y coordinate of the translation that is added to this Node's transform.
    */
-  def translateY :DoubleProperty = delegate.translateYProperty
+  def translateY: DoubleProperty = delegate.translateYProperty
+
   def translateY_=(v: Double) {
     translateY() = v
   }
@@ -525,7 +573,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines the Z coordinate of the translation that is added to the transformed coordinates of
    * this Node.
    */
-  def translateZ :DoubleProperty = delegate.translateZProperty
+  def translateZ: DoubleProperty = delegate.translateZProperty
+
   def translateZ_=(v: Double) {
     translateZ() = v
   }
@@ -535,6 +584,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * setUserData(AnyRef) method.
    */
   def userData = delegate.getUserData
+
   def userData_=(v: AnyRef) {
     delegate.setUserData(v)
   }
@@ -542,7 +592,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Specifies whether this Node and any subnodes should be rendered as part of the scene graph.
    */
-  def visible :BooleanProperty = delegate.visibleProperty
+  def visible: BooleanProperty = delegate.visibleProperty
+
   def visible_=(v: Boolean) {
     visible() = v
   }
@@ -550,6 +601,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   // layout pseudo-properties:
 
   def alignment = delegate.getProperties().get("alignment").asInstanceOf[jfxg.Pos]
+
   def alignment_=(p: jfxg.Pos) {
     delegate.getProperties().put("alignment", p)
     delegate.getProperties().put("halignment", p.getHpos)
@@ -563,6 +615,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   }
 
   def margin = delegate.getProperties().get("margin").asInstanceOf[Insets]
+
   def margin_=(i: jfxg.Insets) {
     delegate.getProperties().put("margin", i)
     // for compatibility with layouts, which all use different keys
@@ -576,6 +629,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   }
 
   def hgrow = delegate.getProperties().get("hgrow").asInstanceOf[jfxsl.Priority]
+
   def hgrow_=(p: jfxsl.Priority) {
     delegate.getProperties().put("hgrow", p)
     // for compatibility with layouts, which all use different keys
@@ -584,6 +638,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   }
 
   def vgrow = delegate.getProperties().get("vgrow").asInstanceOf[jfxsl.Priority]
+
   def vgrow_=(p: jfxsl.Priority) {
     delegate.getProperties().put("vgrow", p)
     // for compatibility with layouts, which all use different keys
@@ -594,14 +649,14 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Registers an event filter to this node.
    */
-  def addEventFilter[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) = 
-  delegate.addEventFilter(eventType, eventFilter)
+  def addEventFilter[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) =
+    delegate.addEventFilter(eventType, eventFilter)
 
   /**
    * Registers an event handler to this node.
    */
-  def addEventHandler[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) = 
-  delegate.addEventHandler(eventType, eventFilter)
+  def addEventHandler[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) =
+    delegate.addEventHandler(eventType, eventFilter)
 
   /**
    * If the node is resizable, will set its layout bounds to its current preferred width and height.
@@ -760,8 +815,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * If the node is resizable, will set its layout bounds to the specified width and height.
    */
-  def resizeRelocate(x: Double, y: Double, width: Double, height: Double) = 
-  delegate.resizeRelocate(x, y, width, height)
+  def resizeRelocate(x: Double, y: Double, width: Double, height: Double) =
+    delegate.resizeRelocate(x, y, width, height)
 
   /**
    * Transforms a rectangle from the coordinate space of the Scene into the local coordinate space 
@@ -784,8 +839,8 @@ of this Node.
   /**
    * Confirms a potential drag and drop gesture that is recognized over this Node.
    */
-  def startDragAndDrop(transferModes: jfxsi.TransferMode*) = 
-  delegate.startDragAndDrop(transferModes: _*)
+  def startDragAndDrop(transferModes: jfxsi.TransferMode*) =
+    delegate.startDragAndDrop(transferModes: _*)
 
   /**
    * Starts a full press-drag-release gesture with this node as gesture source.
