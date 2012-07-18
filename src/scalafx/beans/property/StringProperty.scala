@@ -38,8 +38,7 @@ object StringProperty {
    * @param value the initial value
    * @return      the StringProperty instance
    */
-  implicit def fromString(value:String) =
-    new StringProperty(new jfxbp.SimpleStringProperty(value))
+  implicit def fromString(value:String) = new StringProperty(value)
 }
 
 class StringProperty(override val delegate: jfxbp.StringProperty = new jfxbp.SimpleStringProperty)
@@ -47,6 +46,8 @@ class StringProperty(override val delegate: jfxbp.StringProperty = new jfxbp.Sim
   with Property[String, String]
   with SFXDelegate[jfxbp.StringProperty] {
 
+  def this(initialValue: String) = this(new jfxbp.SimpleStringProperty(initialValue))
+  
   def this(bean: Object, name: String) = this(new jfxbp.SimpleStringProperty(bean, name))
 
   def this(bean: Object, name: String, initialValue: String) =

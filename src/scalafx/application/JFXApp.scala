@@ -24,24 +24,137 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.application
 
+import scala.collection.JavaConversions.mapAsJavaMap
+import scala.collection.JavaConversions.seqAsJavaList
+import scala.collection.mutable.Buffer
+import scala.collection.Map
+import scala.collection.Seq
+import scala.collection.mutable
+
+import javafx.{ application => jfxa }
+import javafx.{ stage => jfxs }
+import scalafx.application.JFXApp.Parameters
 import scalafx.stage.Stage
+import scalafx.util.SFXDelegate
 
 object JFXApp {
-  var STAGE: javafx.stage.Stage = null
+  var STAGE: jfxs.Stage = null
   var ACTIVE_APP: JFXApp = null
   var AUTO_SHOW = true
+
+  /**
+   * Regular expression for parsing name/value parameters. 
+   */
+  private val keyValue = """^--([A-Za-z_][^=]*?)=(.*)$""".r
+
+  object Parameters {
+    implicit def sfxParamaters2jfx(p: Parameters) = p.delegate
+
+    /**
+     * Creates a new instance of Parameters
+     */
+    private[application] def apply(arguments: Seq[String]): Parameters =
+      if (arguments.isEmpty) EmptyParameters else new ParametersImpl(arguments)
+
+  }
+
+  /**
+   * Wraps
+   * [[http://docs.oracle.com/javafx/2/api/javafx/application/Application.Parameters.html Application.Parameters]]
+   * class.
+   */
+  abstract class Parameters extends SFXDelegate[jfxa.Application.Parameters] {
+
+    /**
+     * Retrieves a read-only map of the named parameters.
+     */
+    def named: Map[String, String]
+
+    /**
+     * Retrieves a read-only list of the raw arguments.
+     */
+    def raw: Seq[String]
+
+    /**
+     * Retrieves a read-only list of the unnamed parameters.
+     */
+    def unnamed: Seq[String]
+
+  }
+
+  /**
+   * Default implementation for Parameters class.
+   */
+  private[application] class ParametersImpl(arguments: Seq[String]) extends Parameters {
+
+    private var namedArguments: mutable.Map[String, String] = mutable.Map.empty[String, String]
+    private var unnamedArguments = Buffer.empty[String]
+    private var filled = false
+
+    private def parseArguments {
+      if (!filled) {
+        arguments.foreach(arg =>
+          keyValue.findFirstMatchIn(arg) match {
+            case None          => unnamedArguments += arg
+            case Some(matcher) => namedArguments(matcher.group(1)) = matcher.group(2)
+          })
+        filled = true
+      }
+    }
+
+    def raw = arguments
+
+    def named = {
+      parseArguments
+      namedArguments
+    }
+
+    def unnamed = {
+      parseArguments
+      unnamedArguments
+    }
+
+    lazy val delegate = new jfxa.Application.Parameters {
+      def getRaw = raw
+      def getNamed = named
+      def getUnnamed = unnamed
+    }
+
+  }
+
+  /**
+   * Empty parameters for an application
+   */
+  private[application] object EmptyParameters extends Parameters {
+    def raw = Seq.empty[String]
+    def named = Map.empty[String, String]
+    def unnamed = Seq.empty[String]
+    lazy val delegate = new jfxa.Application.Parameters {
+      def getRaw = raw
+      def getNamed = named
+      def getUnnamed = unnamed
+    }
+  }
+
 }
 
 class JFXApp extends DelayedInit {
   var stage: Stage = null
 
+  private var arguments: Seq[String] = _
+
   def main(args: Array[String]) {
     JFXApp.ACTIVE_APP = this
-    javafx.application.Application.launch(classOf[AppHelper], args:_*)
+    arguments = args
+    jfxa.Application.launch(classOf[AppHelper], args: _*)
   }
+
+  /**
+   *  Set of parameters for an application
+   */
+  protected lazy val parameters: Parameters = Parameters(arguments)
 
   var init: () => Unit = null
 

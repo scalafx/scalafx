@@ -41,6 +41,7 @@ import scene.SceneIncludes
 import util.UtilIncludes
 import util.converter.ConverterIncludes
 import concurrent.ConcurrentIncludes
+import scalafx.application.ApplicationIncludes
 
 /**
  * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
@@ -65,4 +66,5 @@ trait Includes
   with WebIncludes 
   with MediaIncludes
   with ConverterIncludes
-  with ConcurrentIncludes 
+  with ConcurrentIncludes
+  with ApplicationIncludes

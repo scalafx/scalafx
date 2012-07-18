@@ -27,11 +27,17 @@
 
 package scalafx.stage
 
+import javafx.stage.Modality
+import javafx.stage.StageStyle
 import javafx.{stage => jfxs}
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.util.SFXDelegate
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.beans.property.StringProperty
 import scalafx.scene.Scene
+import scalafx.stage.Window.sfxWindow2jfx
+import scalafx.util.SFXDelegate
+import scalafx.application.JFXApp
 
 object Stage {
   implicit def sfxStage2jfx(v: Stage) = v.delegate
@@ -41,6 +47,9 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
   extends Window(d)
   with SFXDelegate[jfxs.Stage] {
 
+  /**
+   * Creates a new instance of Stage.
+   */
   def this(style: jfxs.StageStyle) = this(new jfxs.Stage(style))
 
   override val delegate: jfxs.Stage = d
@@ -48,13 +57,15 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
   /**
    * Specifies whether this Stage should be a full-screen, undecorated window.
    */
-  def fullScreen = delegate.fullScreenProperty
+  def fullScreen: ReadOnlyBooleanProperty = delegate.fullScreenProperty
+  def fullScreen_=(value: Boolean) {
+    delegate.setFullScreen(value)
+  }
 
   /**
    * Defines the title of the Stage.
    */
-  def title = delegate.titleProperty
-
+  def title: StringProperty = delegate.titleProperty
   def title_=(v: String) {
     title() = v
   }
@@ -67,13 +78,12 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
   /**
    * Defines whether the Stage is iconified or not.
    */
-  def iconified = delegate.iconifiedProperty
+  def iconified: ReadOnlyBooleanProperty = delegate.iconifiedProperty
 
   /**
    * Defines whether the Stage is resizable or not by the user.
    */
-  def resizable = delegate.resizableProperty
-
+  def resizable: BooleanProperty = delegate.resizableProperty
   def resizable_=(v: Boolean) {
     resizable() = v
   }
@@ -89,7 +99,6 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
    * Defines the minimum width of this Stage.
    */
   def minWidth = delegate.getMinWidth
-
   def minWidth_=(w: Double) {
     delegate.setMinWidth(w)
   }
@@ -98,7 +107,6 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
    * Defines the minimum height of this Stage.
    */
   def minHeight = delegate.getMinHeight
-
   def minHeight_=(h: Double) {
     delegate.setMinHeight(h)
   }
@@ -107,7 +115,6 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
    * Defines the maximum width of this Stage.
    */
   def maxWidth = delegate.getMaxWidth
-
   def maxWidth_=(w: Double) {
     delegate.setMaxWidth(w)
   }
@@ -116,7 +123,6 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
    * Defines the maximum height of this Stage.
    */
   def maxHeight = delegate.getMaxHeight
-
   def maxHeight_=(h: Double) {
     delegate.setMaxHeight(h)
   }
@@ -126,7 +132,7 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
    */
   def showing_=(v: Boolean) {
     v match {
-      case true => delegate.show()
+      case true  => delegate.show()
       case false => delegate.hide()
     }
   }
@@ -135,5 +141,59 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
    * Retrieves the style attribute for this stage.
    */
   def style = delegate.getStyle
+
+  /**
+   * Closes this Stage.
+   */
+  def close {
+    delegate.close
+  }
+
+  /**
+   * Retrieves the modality attribute for this stage.
+   */
+  def modality = delegate.getModality
+
+  /**
+   * Retrieves a [[scala.Some]] with the owner Window for this stage, or
+   * [[Scala.None]] for an unowned stage.
+   */
+  def owner: Option[Window] = Option(delegate.getOwner)
+
+  /**
+   * Specifies the modality for this stage.
+   */
+  def initModality(modality: Modality) {
+    delegate.initModality(modality)
+  }
+
+  /**
+   * Specifies the owner Window for this stage, or null for a top-level,
+   * unowned stage.
+   */
+  def initOwner(owner: Window) {
+    delegate.initOwner(owner)
+  }
+
+  /**
+   * Specifies the style for this stage.
+   */
+  def initStyle(style: StageStyle) {
+    delegate.initStyle(style)
+  }
+
+  /**
+   * Send the Window to the background.
+   */
+  def toBack {
+    delegate.toBack
+  }
+
+  /**
+   * Bring the Window to the foreground.
+   */
+  def toFront {
+    delegate.toFront
+  }
 
 }

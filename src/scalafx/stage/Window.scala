@@ -27,14 +27,14 @@
 
 package scalafx.stage
 
-import javafx.{ stage => jfxs }
-import javafx.{ event => jfxe }
-import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.util.SFXDelegate
-import scalafx.scene.Scene
-import scalafx.event._
 import javafx.event.EventDispatchChain
+import javafx.{ event => jfxe }
+import javafx.{ stage => jfxs }
+import scalafx.Includes._
+import scalafx.beans.property.ReadOnlyProperty
+import scalafx.event._
+import scalafx.util.SFXDelegate
+import scalafx.beans.property.ReadOnlyDoubleProperty
 
 object Window {
   implicit def sfxWindow2jfx(v: Window) = v.delegate
@@ -134,12 +134,18 @@ class Window protected (override val delegate: jfxs.Window)
   /**
    * The horizontal location of this Stage on the screen.
    */
-  def x = delegate.xProperty
-
+  def x: ReadOnlyDoubleProperty = delegate.xProperty
+  def x_=(value: Double) {
+    delegate.setX(value)
+  }
+  
   /**
    * The vertical location of this Stage on the screen.
    */
-  def y = delegate.yProperty
+  def y: ReadOnlyDoubleProperty = delegate.yProperty
+  def y_=(value: Double) {
+    delegate.setY(value)
+  }
 
   /*
    * Registers an event filter to this node.
