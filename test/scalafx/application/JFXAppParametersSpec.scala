@@ -74,10 +74,6 @@ class JFXAppParameters
     getParameters(Array[String]()).raw should be('empty)
   }
 
-  it should "returns a empty list of parameters from null arguments" in {
-    getParameters(null).raw should be('empty)
-  }
-
   it should "allows raw arguments" in {
     val args = Array("arg1", "arg2")
     val parameters = getParameters(args)
