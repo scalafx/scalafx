@@ -29,28 +29,34 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.ReadOnlyIntegerProperty
+import scalafx.beans.property.ReadOnlyStringProperty
+import scalafx.beans.property.StringProperty
 import scalafx.util.SFXDelegate
 
 object TextInputControl {
   implicit def sfxTextInputControl2jfx(v: TextInputControl) = v.delegate
 }
 
-abstract class TextInputControl(override val delegate: jfxsc.TextInputControl) extends Control(delegate) with SFXDelegate[jfxsc.TextInputControl] {
+abstract class TextInputControl(override val delegate: jfxsc.TextInputControl)
+  extends Control(delegate)
+  with SFXDelegate[jfxsc.TextInputControl] {
 
   /**
    * The anchor of the text selection.
    */
-  def anchor = delegate.anchorProperty
+  def anchor: ReadOnlyIntegerProperty = delegate.anchorProperty
 
   /**
    * The current position of the caret within the text.
    */
-  def caretPosition = delegate.caretPositionProperty
+  def caretPosition: ReadOnlyIntegerProperty = delegate.caretPositionProperty
 
   /**
    * Indicates whether this TextInputControl can be edited by the user.
    */
-  def editable = delegate.editableProperty()
+  def editable: BooleanProperty = delegate.editableProperty
   def editable_=(v: Boolean) {
     editable() = v
   }
@@ -58,12 +64,12 @@ abstract class TextInputControl(override val delegate: jfxsc.TextInputControl) e
   /**
    * The number of characters in the text input.
    */
-  def length = delegate.lengthProperty
+  def length: ReadOnlyIntegerProperty = delegate.lengthProperty
 
   /**
    * Defines the characters in the TextInputControl which are selected
    */
-  def selectedText = delegate.selectedTextProperty
+  def selectedText: ReadOnlyStringProperty = delegate.selectedTextProperty
 
   /**
    * The current selection.
@@ -73,7 +79,7 @@ abstract class TextInputControl(override val delegate: jfxsc.TextInputControl) e
   /**
    * The textual content of this TextInputControl.
    */
-  def text = delegate.textProperty()
+  def text: StringProperty = delegate.textProperty
   def text_=(v: String) {
     text() = v
   }

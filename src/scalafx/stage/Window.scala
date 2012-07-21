@@ -35,6 +35,8 @@ import scalafx.beans.property.ReadOnlyProperty
 import scalafx.event._
 import scalafx.util.SFXDelegate
 import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.beans.property.DoubleProperty
 
 object Window {
   implicit def sfxWindow2jfx(v: Window) = v.delegate
@@ -55,12 +57,12 @@ class Window protected (override val delegate: jfxs.Window)
   /**
    * Whether or not this Window has the keyboard or input focus.
    */
-  def focused = delegate.focusedProperty
+  def focused: ReadOnlyBooleanProperty = delegate.focusedProperty
 
   /**
    * The height of this Stage.
    */
-  def height = delegate.heightProperty
+  def height: ReadOnlyDoubleProperty = delegate.heightProperty
   def height_=(h: Double) {
     delegate.setHeight(h)
   }
@@ -108,7 +110,7 @@ class Window protected (override val delegate: jfxs.Window)
   /**
    * Defines the opacity of the Stage as a value between 0.0 and 1.0.
    */
-  def opacity = delegate.opacityProperty
+  def opacity: DoubleProperty = delegate.opacityProperty
   def opacity_=(v: Double) {
     opacity() = v
   }
@@ -121,12 +123,12 @@ class Window protected (override val delegate: jfxs.Window)
   /**
    * Whether or not this Stage is showing (that is, open on the user's system).
    */
-  def showing = delegate.showingProperty
+  def showing: ReadOnlyBooleanProperty = delegate.showingProperty
 
   /**
    * The width of this Stage.
    */
-  def width = delegate.widthProperty
+  def width: ReadOnlyDoubleProperty = delegate.widthProperty
   def width_=(w: Double) {
     delegate.setWidth(w)
   }
@@ -138,7 +140,7 @@ class Window protected (override val delegate: jfxs.Window)
   def x_=(value: Double) {
     delegate.setX(value)
   }
-  
+
   /**
    * The vertical location of this Stage on the screen.
    */

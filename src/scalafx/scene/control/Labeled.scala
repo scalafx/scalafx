@@ -27,72 +27,81 @@
 
 package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc}
+import javafx.scene.{paint => jfxsp}
+import javafx.scene.{text => jfxst}
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.StringProperty
+import scalafx.scene.Node.sfxNode2jfx
+import scalafx.scene.text.Font.sfxFont2jfx
+import scalafx.scene.text.Font
+import scalafx.scene.Node
 import scalafx.util.SFXDelegate
-import javafx.{scene => jfxs}
-import jfxs.{control => jfxsc}
-import jfxs.{paint => jfxsp}
-import jfxs.{text => jfxst}
 
 object Labeled {
   implicit def sfxLabeled2jfx(v: Labeled) = v.delegate
 }
 
-abstract class Labeled(override val delegate:jfxsc.Labeled) extends Control(delegate) with SFXDelegate[jfxsc.Labeled] {
+abstract class Labeled(override val delegate: jfxsc.Labeled)
+  extends Control(delegate)
+  with SFXDelegate[jfxsc.Labeled] {
+
   def contentDisplay = delegate.contentDisplayProperty
-  def contentDisplay_= (v: jfxsc.ContentDisplay) {
+  def contentDisplay_=(v: jfxsc.ContentDisplay) {
     contentDisplay() = v
   }
 
   def font = delegate.fontProperty
-  def font_= (v: jfxst.Font) {
+  def font_=(v: Font) {
     font() = v
   }
 
   def graphic = delegate.graphicProperty
-  def graphic_= (v: jfxs.Node) {
+  def graphic_=(v: Node) {
     graphic() = v
   }
 
-  def graphicTextGap = delegate.graphicTextGapProperty
-  def graphicTextGap_= (v: Double) {
+  def graphicTextGap: DoubleProperty = delegate.graphicTextGapProperty
+  def graphicTextGap_=(v: Double) {
     graphicTextGap() = v
   }
 
   def labelPadding = delegate.labelPaddingProperty
 
-  def mnemonicParsing = delegate.mnemonicParsingProperty
-  def mnemonicParsing_= (v: Boolean) {
+  def mnemonicParsing: BooleanProperty = delegate.mnemonicParsingProperty
+  def mnemonicParsing_=(v: Boolean) {
     mnemonicParsing() = v
   }
 
-  def text = delegate.textProperty
-  def text_= (v: String) {
+  def text: StringProperty = delegate.textProperty
+  def text_=(v: String) {
     text() = v
   }
 
   def textAlignment = delegate.textAlignmentProperty
-  def textAlignment_= (v: jfxst.TextAlignment) {
+  def textAlignment_=(v: jfxst.TextAlignment) {
     textAlignment() = v
   }
 
   def textFill = delegate.textFillProperty
-  def textFill_= (v: jfxsp.Paint) {
+  def textFill_=(v: jfxsp.Paint) {
     textFill() = v
   }
 
   def textOverrun = delegate.textOverrunProperty
-  def textOverrun_= (v: jfxsc.OverrunStyle) {
+  def textOverrun_=(v: jfxsc.OverrunStyle) {
     textOverrun() = v
   }
 
-  def underline = delegate.underlineProperty
-  def underline_= (v: Boolean) {
+  def underline: BooleanProperty = delegate.underlineProperty
+  def underline_=(v: Boolean) {
     underline() = v
   }
 
-  def wrapText = delegate.wrapTextProperty
-  def wrapText_= (v: Boolean) {
+  def wrapText: BooleanProperty = delegate.wrapTextProperty
+  def wrapText_=(v: Boolean) {
     wrapText() = v
   }
 }

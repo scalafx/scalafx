@@ -27,12 +27,18 @@
 
 package scalafx.scene.text
 
-import scalafx.util.SFXDelegate
-import scalafx.Includes._
-import javafx.scene.{ text => jfxst }
 import javafx.geometry.VPos
+import javafx.scene.{ text => jfxst }
+import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.beans.property.StringProperty
 import scalafx.scene.shape.Shape
+import scalafx.scene.text.Font.sfxFont2jfx
 import scalafx.util.PositionDelegate
+import scalafx.util.SFXDelegate
 
 object Text {
   implicit def sfxText2jfx(v: Text) = v.delegate
@@ -64,12 +70,12 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
    *
    */
   // NOTE IMPLEMENTATION: Added "Property" suffix to not conflict with Node.baselineOffset() method.
-  def baselineOffsetProperty = delegate.baselineOffsetProperty
+  def baselineOffsetProperty: ReadOnlyDoubleProperty = delegate.baselineOffsetProperty
 
   /**
    * Determines how the bounds of the text node are calculated.
    */
-  def boundsType = delegate.boundsTypeProperty
+  def boundsType: ObjectProperty[jfxst.TextBoundsType] = delegate.boundsTypeProperty
   def boundsType_=(v: jfxst.TextBoundsType) {
     boundsType() = v
   }
@@ -85,7 +91,7 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   /**
    * Specifies a requested font smoothing type : gray or LCD.
    */
-  def fontSmoothingType = delegate.fontSmoothingTypeProperty
+  def fontSmoothingType: ObjectProperty[jfxst.FontSmoothingType] = delegate.fontSmoothingTypeProperty
   def fontSmoothingType_=(v: jfxst.FontSmoothingType) {
     fontSmoothingType() = v
   }
@@ -93,7 +99,7 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   /**
    * Defines if each line of text should have a line through it.
    */
-  def strikethrough = delegate.strikethroughProperty
+  def strikethrough: BooleanProperty = delegate.strikethroughProperty
   def strikethrough_=(v: Boolean) {
     strikethrough = v
   }
@@ -101,7 +107,7 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   /**
    * Defines text string that is to be displayed.
    */
-  def text = delegate.textProperty
+  def text: StringProperty = delegate.textProperty
   def text_=(v: String) {
     text() = v
   }
@@ -109,7 +115,7 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   /**
    * Defines horizontal text alignment in the bounding box.
    */
-  def textAlignment = delegate.textAlignmentProperty
+  def textAlignment: ObjectProperty[jfxst.TextAlignment] = delegate.textAlignmentProperty
   def textAlignment_=(v: jfxst.TextAlignment) {
     textAlignment() = v
   }
@@ -117,7 +123,7 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   /**
    * Defines the origin of text coordinate system in local coordinates.
    */
-  def textOrigin = delegate.textOriginProperty
+  def textOrigin: ObjectProperty[VPos] = delegate.textOriginProperty
   def textOrigin_=(v: VPos) {
     textOrigin() = v
   }
@@ -125,7 +131,7 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   /**
    * Defines if each line of text should have a line below it.
    */
-  def underline = delegate.underlineProperty
+  def underline: BooleanProperty = delegate.underlineProperty
   def underline_=(v: Boolean) {
     underline() = v
   }
@@ -134,7 +140,7 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
    * Defines a width constraint for the text in user space coordinates, e.g. pixels, not glyph or
    * character count.
    */
-  def wrappingWidth = delegate.wrappingWidthProperty
+  def wrappingWidth: DoubleProperty = delegate.wrappingWidthProperty
   def wrappingWidth_=(v: Double) {
     wrappingWidth() = v
   }

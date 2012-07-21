@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -26,44 +24,76 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
-import javafx.{util => jfxu, collections => jfxc}
-import javafx.scene.{control => jfxsc}
-import scalafx.util.SFXDelegate
-import scalafx.collections.ObservableBuffer
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.collections.ObservableBuffer.observableBuffer2ObservableList
+import scalafx.collections.ObservableBuffer
+import scalafx.scene.control.SingleSelectionModel.sfxSingleSelectionModel2jfx
+import scalafx.util.StringConverter.sfxStringConverter2jfx
+import scalafx.util.SFXDelegate
+import scalafx.util.StringConverter
 
 object ChoiceBox {
   implicit def sfxChoiceBox2jfx[J <: Any](cb: ChoiceBox[J]) = cb.delegate
 }
 
-class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.ChoiceBox[J]()) extends Control(delegate) with SFXDelegate[jfxsc.ChoiceBox[J]] {
+class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.ChoiceBox[J])
+  extends Control(delegate)
+  with SFXDelegate[jfxsc.ChoiceBox[J]] {
 
+  /**
+   * Create a new ChoiceBox with the given set of items.
+   */
+  def this(items: ObservableBuffer[J]) = this(new jfxsc.ChoiceBox[J](items))
+
+  /**
+   * Allows a way to specify how to represent objects in the items list.
+   */
   def converter = delegate.converterProperty
-
-  def converter_=(v: jfxu.StringConverter[J]) {
+  def converter_=(v: StringConverter[J]) {
     converter() = v
   }
 
+  /**
+   * The items to display in the choice box.
+   */
   def items = delegate.itemsProperty
-
   def items_=(v: ObservableBuffer[J]) {
     items() = v
   }
 
-  def selectionModel = delegate.selectionModelProperty
-
-  def selectionModel_=(v: jfxsc.SingleSelectionModel[J]) {
+  /**
+   * The selection model for the ChoiceBox.
+   */
+  def selectionModel: ObjectProperty[jfxsc.SingleSelectionModel[J]] = delegate.selectionModelProperty
+  def selectionModel_=(v: SingleSelectionModel[J]) {
     selectionModel() = v
   }
 
-  def showing = delegate.showingProperty
+  /**
+   * Indicates whether the drop down is displaying the list of choices to the
+   * user. Although showing be a ReadOnlyBooleanProperty, a setter method is
+   * implemented using `show()` and `hide()` method from ChoiceBox JavaFX.
+   */
+  def showing: ReadOnlyBooleanProperty = delegate.showingProperty
+  def showing_=(show: Boolean) {
+    if (show) delegate.show
+    else delegate.hide
+  }
 
+  /**
+   * The value of this ChoiceBox is defined as the selected item in the
+   * ChoiceBox selection model. TODO: Why it is not Conversion for ScalaFX
+   * ObjectProperty is not working?
+   *
+   */
   def value = delegate.valueProperty
-
   def value_=(v: J) {
     value = v
   }
-
 
 }
