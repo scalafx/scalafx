@@ -27,38 +27,78 @@
 
 package scalafx.animation
 
-import javafx.{animation => jfxa}
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.beans.property.DoubleProperty
 import scalafx.scene.Node
-import javafx.util.Duration
+import scalafx.util.Duration
+import scalafx.util.SFXDelegate
 
 object FadeTransition extends AnimationStatics {
   implicit def sfxFadeTransition2jfx(v: FadeTransition) = v.delegate
 }
 
-class FadeTransition(override val delegate:jfxa.FadeTransition = new jfxa.FadeTransition()) extends Transition(delegate) with SFXDelegate[jfxa.FadeTransition] {
-  def byValue = delegate.byValueProperty
+/**
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/FadeTransition.html FadeTransition]].
+ */
+class FadeTransition(override val delegate: jfxa.FadeTransition = new jfxa.FadeTransition)
+  extends Transition(delegate)
+  with SFXDelegate[jfxa.FadeTransition] {
+
+  /**
+   * The constructor of FadeTransition
+   *
+   * @param duration The duration of the FadeTransition
+   */
+  def this(duration: Duration) = this(new jfxa.FadeTransition(duration))
+
+  /**
+   * The constructor of FadeTransition
+   *
+   * @param duration The duration of the FadeTransition
+   * @param node The node which opacity will be animated
+   */
+  def this(duration: Duration, node: Node) = this(new jfxa.FadeTransition(duration, node))
+
+  /**
+   * Specifies the incremented stop opacity value, from the start, of this
+   *  FadeTransition.
+   */
+  def byValue: DoubleProperty = delegate.byValueProperty
   def byValue_=(by: Double) {
     byValue() = by
   }
 
+  /**
+   * The duration of this FadeTransition. Default Value: 400ms
+   */
   def duration = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
 
-  def fromValue = delegate.fromValueProperty
+  /**
+   * Specifies the start opacity value for this FadeTransition. Default value:
+   * Double.NaN
+   */
+  def fromValue: DoubleProperty = delegate.fromValueProperty
   def fromValue_=(from: Double) {
     fromValue() = from
   }
 
+  /**
+   * The target node of this Transition.
+   */
   def node = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }
 
-  def toValue = delegate.toValueProperty
+  /**
+   * Specifies the stop opacity value for this FadeTransition. Default value:
+   * Double.NaN
+   */
+  def toValue: DoubleProperty = delegate.toValueProperty
   def toValue_=(to: Double) {
     toValue() = to
   }

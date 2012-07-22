@@ -28,7 +28,7 @@
 package scalafx.animation
 
 import collection.JavaConversions._
-import javafx.{animation => jfxa}
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 import scalafx.scene.Node
@@ -37,12 +37,51 @@ object SequentialTransition extends AnimationStatics {
   implicit def sfxSequentialTransition2jfx(v: SequentialTransition) = v.delegate
 }
 
-class SequentialTransition(override val delegate:jfxa.SequentialTransition = new jfxa.SequentialTransition()) extends Transition(delegate) with SFXDelegate[jfxa.SequentialTransition] {
+/**
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/SequentialTransition.html SequentialTransition]].
+ */
+class SequentialTransition(override val delegate: jfxa.SequentialTransition = new jfxa.SequentialTransition)
+  extends Transition(delegate)
+  with SFXDelegate[jfxa.SequentialTransition] {
+
+  /**
+   * The constructor of SequentialTransition.
+   *
+   * @param node The target Node to be used in child Transitions that have no
+   * Node specified themselves
+   * @param children The child Animations of this SequentialTransition
+   */
+  def this(node: Node, children: Seq[Animation]) =
+    this(new jfxa.SequentialTransition(node, children.map(_.delegate): _*))
+
+  /**
+   * The constructor of SequentialTransition.
+   *
+   * @param node The target Node to be used in child Transitions that have no
+   * Node specified themselves
+   */
+  def this(node: Node) = this(new jfxa.SequentialTransition(node))
+
+  /**
+   * The constructor of SequentialTransition.
+   *
+   * @param children The child Animations of this SequentialTransition
+   */
+  def this(children: Seq[Animation]) =
+    this(new jfxa.SequentialTransition(children.map(_.delegate): _*))
+
+  /**
+   * This Node is used in all child Transitions, that do not define a target
+   * Node themselves.
+   */
   def node = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }
 
+  /**
+   * A list of Animations that will be played sequentially.
+   */
   def children = delegate.getChildren
   def children_=(c: Iterable[Animation]) {
     children.setAll(c.map(_.delegate))

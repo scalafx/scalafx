@@ -87,5 +87,5 @@ object SimpleColorfulCircles extends JFXApp {
         circle.centerY -> random * 600
       )
     })
-  }.play();
+  }.play
 }

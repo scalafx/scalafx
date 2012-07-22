@@ -24,10 +24,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
-import javafx.{animation => jfxa}
+import javafx.{ animation => jfxa }
 import javafx.util.Duration
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
@@ -38,24 +37,62 @@ object PathTransition extends AnimationStatics {
   implicit def sfxPathTransition2jfx(v: PathTransition) = v.delegate
 }
 
-class PathTransition(override val delegate:jfxa.PathTransition = new jfxa.PathTransition()) extends Transition(delegate) with SFXDelegate[jfxa.PathTransition] {
+/**
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/PathTransition.html PathTransition]].
+ */
+class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathTransition)
+  extends Transition(delegate)
+  with SFXDelegate[jfxa.PathTransition] {
+
+  /**
+   * The constructor of PathTransition.
+   *
+   * @param duration The duration of this PathTransition
+   * @param path The path of this PathTransition
+   * @param node The node of this PathTransition
+   */
+  def this(duration: Duration, path: Shape, node: Node) =
+    this(new jfxa.PathTransition(duration, path, node))
+
+  /**
+   * The constructor of PathTransition.
+   *
+   * @param duration The duration of this PathTransition
+   * @param path The path of this PathTransition
+   */
+  def this(duration: Duration, path: Shape) =
+    this(new jfxa.PathTransition(duration, path))
+
+  /**
+   * The target node of this PathTransition.
+   */
   def node = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }
 
+  /**
+   * The duration of this Transition.
+   */
   def duration = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
 
+  /**
+   * The shape on which outline the node should be animated.
+   */
   def path = delegate.pathProperty
   def path_=(s: Shape) {
     path() = s
   }
 
+  /**
+   * Specifies the upright orientation of node along the path.
+   */
   def orientation = delegate.orientationProperty
   def orientation_=(o: jfxa.PathTransition.OrientationType) {
     orientation() = o
   }
+
 }

@@ -34,10 +34,10 @@ object AnimationTimer {
   implicit def sfxAnimationTimer2jfx(at: AnimationTimer) = at.delegate
 
   /**
-   * Creates a new [[AnimationTimer]] from a handle function that receives a 
+   * Creates a new [[AnimationTimer]] from a handle function that receives a
    * Long parameter.
-   * 
-   * @param handler function that is called in every frame while the 
+   *
+   * @param handler function that is called in every frame while the
    * AnimationTimer is active.
    * @return a new [[AnimationTimer]].
    */
@@ -48,13 +48,20 @@ object AnimationTimer {
 }
 
 /**
- * Wraps a [[javafx.animation.AnimationTimer]]. 
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.html AnimationTimer]]. 
  */
 abstract class AnimationTimer(override val delegate: jfxa.AnimationTimer)
   extends SFXDelegate[jfxa.AnimationTimer] {
 
   /**
-   * Starts the `AnimationTimers`. 
+   * This method needs to be overridden by extending classes.
+   */
+  def handle(now: Long) {
+    delegate.handle(now)
+  }
+
+  /**
+   * Starts the `AnimationTimers`.
    */
   def start = delegate.start
 

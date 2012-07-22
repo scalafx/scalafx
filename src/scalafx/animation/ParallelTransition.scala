@@ -28,7 +28,7 @@
 package scalafx.animation
 
 import collection.JavaConversions._
-import javafx.{animation => jfxa}
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 import scalafx.scene.Node
@@ -37,12 +37,51 @@ object ParallelTransition extends AnimationStatics {
   implicit def sfxParallelTransition2jfx(v: ParallelTransition) = v.delegate
 }
 
-class ParallelTransition(override val delegate:jfxa.ParallelTransition = new jfxa.ParallelTransition()) extends Transition(delegate) with SFXDelegate[jfxa.ParallelTransition] {
+/**
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/ParallelTransition.html ParallelTransition]].
+ */
+class ParallelTransition(override val delegate: jfxa.ParallelTransition = new jfxa.ParallelTransition)
+  extends Transition(delegate)
+  with SFXDelegate[jfxa.ParallelTransition] {
+
+  /**
+   * The constructor of ParallelTransition.
+   *
+   * @param children  The child Animations of this ParallelTransition
+   */
+  def this(children: Seq[Animation]) =
+    this(new jfxa.ParallelTransition(children.map(_.delegate): _*))
+
+  /**
+   * The constructor of ParallelTransition.
+   *
+   * @param node The target Node to be used in child Transitions that have no
+   * Node specified themselves
+   */
+  def this(node: Node) = this(new jfxa.ParallelTransition(node))
+
+  /**
+   * The constructor of ParallelTransition.
+   *
+   * @param node The target Node to be used in child Transitions that have no
+   * Node specified themselves
+   * @param children  The child Animations of this ParallelTransition
+   */
+  def this(node: Node, children: Seq[Animation]) =
+    this(new jfxa.ParallelTransition(node, children.map(_.delegate): _*))
+
+  /**
+   * This Node is used in all child Transitions, that do not define a target
+   *  Node themselves.
+   */
   def node = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }
 
+  /**
+   * A list of Animations that will be played sequentially.
+   */
   def children = delegate.getChildren
   def children_=(c: Iterable[Animation]) {
     children.setAll(c.map(_.delegate))

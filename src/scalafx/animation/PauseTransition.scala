@@ -24,10 +24,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
-import javafx.{animation => jfxa}
+import javafx.{ animation => jfxa }
 import javafx.util.Duration
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
@@ -36,7 +35,23 @@ object PauseTransition extends AnimationStatics {
   implicit def sfxPauseTransition2jfx(v: PauseTransition) = v.delegate
 }
 
-class PauseTransition(override val delegate:jfxa.PauseTransition = new jfxa.PauseTransition()) extends Transition(delegate) with SFXDelegate[jfxa.PauseTransition] {
+/**
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/PauseTransition.html PauseTransition]].
+ */
+class PauseTransition(override val delegate: jfxa.PauseTransition = new jfxa.PauseTransition)
+  extends Transition(delegate)
+  with SFXDelegate[jfxa.PauseTransition] {
+
+  /**
+   * The constructor of PauseTransition.
+   *
+   * @param  The duration of the PauseTransition
+   */
+  def this(duration: Duration) = this(new jfxa.PauseTransition(duration))
+
+  /**
+   * The duration of this Transition. Default value: 400ms
+   */
   def duration = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d

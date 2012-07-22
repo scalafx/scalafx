@@ -27,7 +27,7 @@
 
 package scalafx.animation
 
-import javafx.{animation => jfxa}
+import javafx.{ animation => jfxa }
 import javafx.scene.paint.Color
 import javafx.util.Duration
 import scalafx.Includes._
@@ -38,21 +38,82 @@ object FillTransition extends AnimationStatics {
   implicit def sfxFillTransition2jfx(v: FillTransition) = v.delegate
 }
 
-class FillTransition(override val delegate:jfxa.FillTransition = new jfxa.FillTransition()) extends Transition(delegate) with SFXDelegate[jfxa.FillTransition] {
+/**
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/FillTransition.html FillTransition]].
+ */
+class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillTransition())
+  extends Transition(delegate)
+  with SFXDelegate[jfxa.FillTransition] {
+
+  /**
+   * The constructor of FillTransition
+   *
+   * @param duration The duration of the FillTransition
+   * @param shape The shape which filling will be animated
+   * @param fromValue The start value of the color-animation
+   * @param toValue The end value of the color-animation
+   */
+  def this(duration: Duration, shape: Shape, fromValue: Color, toValue: Color) =
+    this(new jfxa.FillTransition(duration, shape, fromValue, toValue))
+
+  /**
+   * The constructor of FillTransition
+   *
+   * @param duration The duration of the FillTransition
+   * @param fromValue The start value of the color-animation
+   * @param toValue The end value of the color-animation
+   */
+  def this(duration: Duration, fromValue: Color, toValue: Color) =
+    this(new jfxa.FillTransition(duration, fromValue, toValue))
+
+  /**
+   * The constructor of FillTransition
+   *
+   * @param duration The duration of the FillTransition
+   * @param shape The shape which filling will be animated
+   */
+  def this(duration: Duration, shape: Shape) =
+    this(new jfxa.FillTransition(duration, shape))
+    
+      /**
+   * The constructor of FillTransition
+   *
+   * @param duration The duration of the FillTransition
+   */
+  def this(duration: Duration) = this(new jfxa.FillTransition(duration))
+
+
+
+  /**
+   * The target shape of this `FillTransition`.
+   */
   def shape = delegate.shapeProperty
   def shape_=(s: Shape) {
     shape() = s
   }
 
+  /**
+   * The duration of this `FillTransition`. Default value:
+   * 400ms
+   */
   def duration = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
 
+  /**
+   * Specifies the start color value for this `FillTransition`. Default value:
+   * null
+   */
   def fromValue = delegate.fromValueProperty
   def fromValue_=(from: Color) {
     fromValue() = from
   }
+
+  /**
+   * Specifies the stop color value for this FillTransition. Default value:
+   * null
+   */
   def toValue = delegate.toValueProperty
   def toValue_=(to: Color) {
     toValue() = to

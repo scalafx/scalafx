@@ -27,69 +27,126 @@
 
 package scalafx.animation
 
-import javafx.{animation => jfxa}
+import javafx.{ animation => jfxa }
 import javafx.util.Duration
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 import scalafx.scene.Node
+import scalafx.beans.property.DoubleProperty
 
 object ScaleTransition extends AnimationStatics {
   implicit def sfxScaleTransition2jfx(v: ScaleTransition) = v.delegate
 }
 
-class ScaleTransition(override val delegate:jfxa.ScaleTransition = new jfxa.ScaleTransition()) extends Transition(delegate) with SFXDelegate[jfxa.ScaleTransition] {
+/**
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/ScaleTransition.html ScaleTransition]].
+ */
+class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.ScaleTransition)
+  extends Transition(delegate)
+  with SFXDelegate[jfxa.ScaleTransition] {
+
+  /**
+   * The constructor of ScaleTransition
+   *
+   * @param duration The duration of the ScaleTransition
+   * @param node The node which will be scaled
+   */
+  def this(duration: Duration, node: Node) =
+    this(new jfxa.ScaleTransition(duration, node))
+
+  /**
+   * The constructor of ScaleTransition
+   *
+   * @param duration The duration of the ScaleTransition
+   */
+  def this(duration: Duration) = this(new jfxa.ScaleTransition(duration))
+
+  /**
+   * The duration of this ScaleTransition.
+   */
   def duration = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
 
+  /**
+   * The target node of this ScaleTransition.
+   */
   def node = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }
 
-  def byX = delegate.byXProperty
+  /**
+   * Specifies the incremented stop X scale value, from the start, of this ScaleTransition.
+   */
+  def byX: DoubleProperty = delegate.byXProperty
   def byX_=(x: Double) {
     byX() = x
   }
 
-  def byY = delegate.byYProperty
+  /**
+   * Specifies the incremented stop Y scale value, from the start, of this ScaleTransition.
+   */
+  def byY: DoubleProperty = delegate.byYProperty
   def byY_=(y: Double) {
     byY() = y
   }
 
-  def byZ = delegate.byZProperty
+  /**
+   * Specifies the incremented stop Z scale value, from the start, of this ScaleTransition.
+   */
+  def byZ: DoubleProperty = delegate.byZProperty
   def byZ_=(z: Double) {
     byZ() = z
   }
 
-  def fromX = delegate.fromXProperty
+  /**
+   * Specifies the start X scale value of this ScaleTransition.
+   */
+  def fromX: DoubleProperty = delegate.fromXProperty
   def fromX_=(x: Double) {
     fromX() = x
   }
 
-  def fromY = delegate.fromYProperty
+  /**
+   * Specifies the start Y scale value of this ScaleTransition.
+   */
+  def fromY: DoubleProperty = delegate.fromYProperty
   def fromY_=(y: Double) {
     fromY() = y
   }
 
-  def fromZ = delegate.fromZProperty
+  /**
+   * Specifies the start Z scale value of this ScaleTransition.
+   */
+  def fromZ: DoubleProperty = delegate.fromZProperty
   def fromZ_=(z: Double) {
     fromZ() = z
   }
 
-  def toX = delegate.toXProperty
+  /**
+   * Specifies the stop X scale value of this ScaleTransition.
+   */
+  def toX: DoubleProperty = delegate.toXProperty
   def toX_=(x: Double) {
     toX() = x
   }
 
-  def toY = delegate.toYProperty
+  /**
+   * The stop Y scale value of this ScaleTransition.
+   */
+  def toY: DoubleProperty = delegate.toYProperty
   def toY_=(y: Double) {
     toY() = y
   }
 
-  def toZ = delegate.toZProperty
+  /**
+   * The stop Z scale value of this ScaleTransition.
+   */
+  def toZ: DoubleProperty = delegate.toZProperty
   def toZ_=(z: Double) {
     toZ() = z
   }
+
 }

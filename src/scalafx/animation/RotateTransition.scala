@@ -24,47 +24,91 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
-import javafx.{animation => jfxa}
+import javafx.{ animation => jfxa }
 import javafx.util.Duration
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 import scalafx.scene.Node
 import javafx.geometry.Point3D
+import scalafx.beans.property.DoubleProperty
 
 object RotateTransition extends AnimationStatics {
   implicit def sfxRotateTransition2jfx(v: RotateTransition) = v.delegate
 }
 
-class RotateTransition(override val delegate:jfxa.RotateTransition = new jfxa.RotateTransition()) extends Transition(delegate) with SFXDelegate[jfxa.RotateTransition] {
+/**
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/RotateTransition.html RotateTransition]].
+ */
+class RotateTransition(override val delegate: jfxa.RotateTransition = new jfxa.RotateTransition)
+  extends Transition(delegate)
+  with SFXDelegate[jfxa.RotateTransition] {
+
+  /**
+   * The constructor of RotateTransition
+   *
+   * @param duration The duration of the RotateTransition
+   */
+  def this(duration: Duration) = this(new jfxa.RotateTransition(duration))
+
+  /**
+   * The constructor of RotateTransition
+   *
+   * @param duration The duration of the RotateTransition
+   * @param node The node which will be rotated
+   */
+  def this(duration: Duration, node: Node) =
+    this(new jfxa.RotateTransition(duration, node))
+
+  /**
+   * The duration of this RotateTransition. Default value: 400ms
+   */
   def duration = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
 
-  def byAngle = delegate.byAngleProperty
+  /**
+   * Specifies the incremented stop angle value, from the start, of this 
+   * RotateTransition.
+   */
+  def byAngle: DoubleProperty = delegate.byAngleProperty
   def byAngle_=(by: Double) {
     byAngle() = by
   }
 
-  def toAngle = delegate.toAngleProperty
+  /**
+   * Specifies the stop angle value for this RotateTransition. Default value:
+   * Double.NaN
+   */
+  def toAngle: DoubleProperty = delegate.toAngleProperty
   def toAngle_=(to: Double) {
     toAngle() = to
   }
-  
+
+  /**
+   * The target node of this RotateTransition.
+   */
   def node = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }
 
+  /**
+   * Specifies the axis of rotation for this RotateTransition.Default value:
+   * null
+   */
   def axis = delegate.axisProperty
   def axis_=(p: Point3D) {
     axis() = p
   }
 
-  def fromAngle = delegate.fromAngleProperty
+  /**
+   * Specifies the start angle value for this RotateTransition. Default value:
+   * Double.NaN
+   */
+  def fromAngle: DoubleProperty = delegate.fromAngleProperty
   def fromAngle_=(from: Double) {
     fromAngle() = from
   }

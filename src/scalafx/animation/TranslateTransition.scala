@@ -27,68 +27,127 @@
 
 package scalafx.animation
 
-import javafx.{animation => jfxa}
+import javafx.{ animation => jfxa }
 import scalafx.util.Duration
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 import scalafx.scene.Node
+import scalafx.beans.property.DoubleProperty
 
 object TranslateTransition extends AnimationStatics {
   implicit def sfxTranslateTransition2jfx(v: TranslateTransition) = v.delegate
 }
 
-class TranslateTransition(override val delegate:jfxa.TranslateTransition = new jfxa.TranslateTransition()) extends Transition(delegate) with SFXDelegate[jfxa.TranslateTransition] {
+/**
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/TranslateTransition.html TranslateTransition]].
+ */
+class TranslateTransition(override val delegate: jfxa.TranslateTransition = new jfxa.TranslateTransition())
+  extends Transition(delegate)
+  with SFXDelegate[jfxa.TranslateTransition] {
+
+  /**
+   * The constructor of TranslateTransition
+   *
+   * @param duration The duration of the TranslateTransition
+   */
+  def this(duration: Duration) = this(new jfxa.TranslateTransition(duration))
+
+  /**
+   * The constructor of RotateTransition
+   *
+   * @param duration The duration of the TranslateTransition
+   * @param node The node which will be translated
+   */
+  def this(duration: Duration, node: Node) =
+    this(new jfxa.TranslateTransition(duration, node))
+
+  /**
+   * The duration of this TranslateTransition.
+   */
   def duration = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
 
+  /**
+   * The target node of this TranslateTransition.
+   */
   def node = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }
 
-  def byX = delegate.byXProperty
+  /**
+   * Specifies the incremented stop X coordinate value, from the start, of
+   * this TranslateTransition.
+   */
+  def byX: DoubleProperty = delegate.byXProperty
   def byX_=(x: Double) {
     byX() = x
   }
 
-  def byY = delegate.byYProperty
+  /**
+   * Specifies the incremented stop Y coordinate value, from the start, of
+   * this TranslateTransition.
+   */
+  def byY: DoubleProperty = delegate.byYProperty
   def byY_=(y: Double) {
     byY() = y
   }
 
-  def byZ = delegate.byZProperty
+  /**
+   * Specifies the incremented stop Z coordinate value, from the start, of
+   * this TranslateTransition.
+   */
+  def byZ: DoubleProperty = delegate.byZProperty
   def byZ_=(z: Double) {
     byZ() = z
   }
 
-  def fromX = delegate.fromXProperty
+  /**
+   * Specifies the start X coordinate value of this TranslateTransition.
+   */
+  def fromX: DoubleProperty = delegate.fromXProperty
   def fromX_=(x: Double) {
     fromX() = x
   }
 
-  def fromY = delegate.fromYProperty
+  /**
+   * Specifies the start Y coordinate value of this TranslateTransition.
+   */
+  def fromY: DoubleProperty = delegate.fromYProperty
   def fromY_=(y: Double) {
     fromY() = y
   }
 
-  def fromZ = delegate.fromZProperty
+  /**
+   * Specifies the start Z coordinate value of this TranslateTransition.
+   */
+  def fromZ: DoubleProperty = delegate.fromZProperty
   def fromZ_=(z: Double) {
     fromZ() = z
   }
 
-  def toX = delegate.toXProperty
+  /**
+   * Specifies the stop X coordinate value of this TranslateTransition.
+   */
+  def toX: DoubleProperty = delegate.toXProperty
   def toX_=(x: Double) {
     toX() = x
   }
 
-  def toY = delegate.toYProperty
+  /**
+   * Specifies the stop Y coordinate value of this TranslateTransition.
+   */
+  def toY: DoubleProperty = delegate.toYProperty
   def toY_=(y: Double) {
     toY() = y
   }
 
-  def toZ = delegate.toZProperty
+  /**
+   * Specifies the stop Z coordinate value of this TranslateTransition.
+   */
+  def toZ: DoubleProperty = delegate.toZProperty
   def toZ_=(z: Double) {
     toZ() = z
   }
