@@ -24,11 +24,12 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.shape
 
-import javafx.scene.{ shape => jfxss }
+import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
 import scalafx.util.PositionDelegate
 import scalafx.util.SFXDelegate
 
@@ -46,27 +47,42 @@ class ArcTo(override val delegate: jfxss.ArcTo = new jfxss.ArcTo)
 
   def positionedDelegate = delegate.asInstanceOf[Positioned]
 
-  def XAxisRotation = delegate.XAxisRotationProperty
-  def XAxisRotation_=(v: Double) {
-    XAxisRotation() = v
+  /**
+   * The x-axis rotation in degrees.
+   */
+  def xAxisRotation: DoubleProperty = delegate.XAxisRotationProperty
+  def xAxisRotation_=(v: Double) {
+    xAxisRotation() = v
   }
 
-  def sweepFlag = delegate.sweepFlagProperty
+  /**
+   * The sweep flag
+   */
+  def sweepFlag: BooleanProperty = delegate.sweepFlagProperty
   def sweepFlag_=(v: Boolean) {
     sweepFlag() = v
   }
 
-  def radiusY = delegate.radiusYProperty
+  /**
+   * The vertical radius to use for the arc.
+   */
+  def radiusY: DoubleProperty = delegate.radiusYProperty
   def radiusY_=(v: Double) {
     radiusY() = v
   }
 
-  def radiusX = delegate.radiusXProperty
+  /**
+   * The horizontal radius to use for the arc.
+   */
+  def radiusX: DoubleProperty = delegate.radiusXProperty
   def radiusX_=(v: Double) {
     radiusX() = v
   }
 
-  def largeArcFlag = delegate.largeArcFlagProperty
+  /**
+   * The large arc flag.
+   */
+  def largeArcFlag: BooleanProperty = delegate.largeArcFlagProperty
   def largeArcFlag_=(v: Boolean) {
     largeArcFlag() = v
   }

@@ -31,9 +31,9 @@ import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 
 /**
- * Trait that unifies JavaFX classes that contains properties indicating localization in 2 
- * dimensions, represented by xProperty and y yProperty and their respectives getter and setters.  
- *  
+ * Trait that unifies JavaFX classes that contains properties indicating localization in 2
+ * dimensions, represented by xProperty and y yProperty and their respectives getter and setters.
+ *
  */
 trait PositionDelegate {
 
@@ -48,11 +48,11 @@ trait PositionDelegate {
   }
 
   def positionedDelegate: Positioned
-  
+
   /**
    * X Position
    */
-  def x :DoubleProperty = positionedDelegate.xProperty
+  def x: DoubleProperty = positionedDelegate.xProperty
   def x_=(v: Double) {
     x() = v
   }
@@ -60,7 +60,7 @@ trait PositionDelegate {
   /**
    * Y Position
    */
-  def y :DoubleProperty = positionedDelegate.yProperty
+  def y: DoubleProperty = positionedDelegate.yProperty
   def y_=(v: Double) {
     y() = v
   }

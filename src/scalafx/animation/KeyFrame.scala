@@ -27,30 +27,54 @@
 
 package scalafx.animation
 
-import collection.JavaConversions._
-import javafx.{animation => jfxa}
+import scala.collection.JavaConversions._
+
 import javafx.util.Duration
-import javafx.{event => jfxe}
+import javafx.{ event => jfxe }
+import javafx.{ animation => jfxa }
 import scalafx.util.SFXDelegate
 
 object KeyFrame {
-	implicit def sfxKeyFrame2jfx(v: KeyFrame) = v.delegate
+  implicit def sfxKeyFrame2jfx(v: KeyFrame) = v.delegate
 
-	def apply(time: Duration,
-	          name: String = null,
-	          onFinished: jfxe.EventHandler[jfxe.ActionEvent] = null,
-	          values: Set[_ <: KeyValue[_, _]] = Set.empty) = {
-		val mappedValues: Set[jfxa.KeyValue] = values.map((x: KeyValue[_, _]) => x.delegate)
-		new KeyFrame(new jfxa.KeyFrame(time, name, onFinished, mappedValues))
-	}
+  /**
+   * Creates a new KeyFrame instance
+   *
+   * @param time  the time
+   * @param name the Name
+   * @param onFinished  the onFinished-handler
+   * @param values a ObservableList of KeyValue instances
+   */
+  def apply(time: Duration,
+    name: String = null,
+    onFinished: jfxe.EventHandler[jfxe.ActionEvent] = null,
+    values: Set[_ <: KeyValue[_, _]] = Set.empty) = {
+    val mappedValues: Set[jfxa.KeyValue] = values.map((x: KeyValue[_, _]) => x.delegate)
+    new KeyFrame(new jfxa.KeyFrame(time, name, onFinished, mappedValues))
+  }
+
 }
 
-class KeyFrame(override val delegate: jfxa.KeyFrame) extends SFXDelegate[jfxa.KeyFrame] {
-	def time = delegate.getTime
+class KeyFrame(override val delegate: jfxa.KeyFrame)
+  extends SFXDelegate[jfxa.KeyFrame] {
 
-	def name = delegate.getName
+  /**
+   * Returns the time offset of this KeyFrame.
+   */
+  def time = delegate.getTime
 
-	def onFinished = delegate.getOnFinished
+  /**
+   * Returns the name of this KeyFrame.
+   */
+  def name = delegate.getName
 
-	def values = delegate.getValues
+  /**
+   * Returns the onFinished event handler of this KeyFrame.
+   */
+  def onFinished = delegate.getOnFinished
+
+  /**
+   * Returns an immutable Set of KeyValue instances.
+   */
+  def values = delegate.getValues
 }
