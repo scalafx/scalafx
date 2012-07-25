@@ -28,7 +28,7 @@
 package scalafx.animation
 
 import javafx.{ animation => jfxa }
-import javafx.util.Duration
+import scalafx.util.Duration
 
 object AnimationIncludes extends AnimationIncludes
 

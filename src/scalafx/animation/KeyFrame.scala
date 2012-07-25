@@ -29,9 +29,9 @@ package scalafx.animation
 
 import scala.collection.JavaConversions._
 
-import javafx.util.Duration
 import javafx.{ event => jfxe }
 import javafx.{ animation => jfxa }
+import scalafx.util.Duration
 import scalafx.util.SFXDelegate
 
 object KeyFrame {
