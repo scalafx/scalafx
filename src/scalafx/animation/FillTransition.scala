@@ -27,12 +27,13 @@
 
 package scalafx.animation
 
-import javafx.{ animation => jfxa }
-import javafx.scene.paint.Color
 import javafx.util.Duration
+import javafx.{ animation => jfxa }
+
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.scene.paint.Color
 import scalafx.scene.shape.Shape
+import scalafx.util.SFXDelegate
 
 object FillTransition extends AnimationStatics {
   implicit def sfxFillTransition2jfx(v: FillTransition) = v.delegate
