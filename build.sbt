@@ -3,6 +3,9 @@
 // You can also set your scala or java home if necessary like this:
 // javaHome := Some(file("/Library/Java/JavaVirtualMachines/1.6.0_24-b07-330.jdk/Contents/Home"))
 // scalaHome := Some(file("/Users/Sven/scala-2.9.1/"))
+// javaHome := Some(file("/Library/Java/JavaVirtualMachines/1.7.0.jdk/Contents/Home"))
+
+javaHome := Some(file(System.getenv("JAVA_HOME")))
 
 name := "ScalaFX"
 
@@ -10,7 +13,7 @@ version := "1.0-SNAPSHOT"
 
 organization := "org.scalafx"
 
-scalaVersion := "2.9.1"
+scalaVersion := "2.9.2"
 
 resolvers += "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository"
 
@@ -24,7 +27,7 @@ unmanagedSourceDirectories in Compile <++= baseDirectory { base =>
 // set the Scala test source directory to be <base>/test
 scalaSource in Test <<= baseDirectory(_ / "test")
 
-testListeners <<= target.map(t => Seq(new eu.henkelmann.sbt.JUnitXmlTestsListener(t.getAbsolutePath)))
+// testListeners <<= target.map(t => Seq(new eu.henkelmann.sbt.JUnitXmlTestsListener(t.getAbsolutePath)))
 
 // append several options to the list of options passed to the Java compiler
 javacOptions ++= Seq("-source", "1.5", "-target", "1.5")
@@ -40,6 +43,8 @@ initialCommands := """
     try { f } finally { println("Elapsed: " + (now - start)/1000.0 + " s") }
   }
 """
+
+// libraryDependencies += "com.oracle" % "javafx-runtime" % "2.2"
 
 // set the main class for the main 'run' task
 // change Compile to Test to set it for 'test:run'
@@ -82,7 +87,11 @@ fork := true
 fork in Test := true
 
 // add a JVM option to use when forking a JVM for 'run'
-javaOptions += "-Xmx2G"
+javaOptions ++= Seq (
+  "-Xmx512M" ,
+  "-Djavafx.verbose"
+//  , "-Djava.library.path=lib_managed/jars/com.oracle/javafx-runtime"
+)
 
 // only use a single thread for building
 parallelExecution := false
@@ -92,7 +101,9 @@ parallelExecution := false
 parallelExecution in Test := false
 
 // add JavaFX 2.0 to the unmanaged classpath
-unmanagedJars in Compile += Attributed.blank(file(System.getenv("JAVAFX_HOME") + "/rt/lib/jfxrt.jar"))
+// unmanagedJars in Compile += Attributed.blank(file(System.getenv("JAVAFX_HOME") + "/rt/lib/jfxrt.jar"))
+// For Java 7 update 06 the JFXRT JAR is part of the Java Runtime Environment
+unmanagedJars in Compile += Attributed.blank(file(System.getenv("JAVA_HOME") + "/jre/lib/jfxrt.jar"))
 
 // publish test jar, sources, and docs
 publishArtifact in Test := false
@@ -120,3 +131,6 @@ credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 // Directly specify credentials for publishing.
 credentials += Credentials("Sonatype Nexus Repository Manager", "nexus.scala-tools.org", "admin", "admin123")
 
+publishMavenStyle := true
+
+publishTo := Some(Resolver.file( "file",  new File( Path.userHome + "/.m2/repository" )) )
