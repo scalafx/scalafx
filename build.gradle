@@ -1,0 +1,134 @@
+apply plugin: 'java'
+apply plugin: 'scala'
+apply plugin: 'maven'
+apply plugin: 'signing'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+project.group="org.scalafx"
+project.ext.artifactId="ScalaFX"
+project.version="1.0-SNAPSHOT"
+
+
+group = 'org.scalafx'
+artifactId = "ScalaFX"
+version = 'x.y.z-SNAPSHOT'
+
+buildscript {
+    final javafxHome = System.env['JAVAFX_HOME']
+    if (javafxHome) {
+      ext.javafxJar = "${javafxHome}/rt/lib/jfxrt.jar"
+    } else {
+      final javaHome = System.env['JAVA_HOME']
+      if (javaHome)
+        ext.javafxJar = "${javaHome}/jre/lib/jfxrt.jar"
+    }
+
+    try {
+      println "JavaFX runtime jar: ${ext.javafxJar}"
+      dependencies {
+        classpath files(ext.javafxJar)
+      }
+    } catch (MissingPropertyException mpe) {
+      println """
+                 |  Please set the environment variable JAVAFX_HOME
+                 |  to the directory that contains rt/lib/jfxrt.jar
+                 |  of JavaFX version ${scalafx_requiredJavaFxVersion}.\n""".stripMargin()
+      System.exit 1
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Libraries needed to run the scala tools
+    scalaTools 'org.scala-lang:scala-compiler:2.9.2'
+    scalaTools 'org.scala-lang:scala-library:2.9.2'
+
+    // Libraries needed for scala api
+    compile 'org.scala-lang:scala-library:2.9.2'
+    
+    // We need the JavaFX APIs    
+    compile      files(ext.javafxJar)
+    
+    testCompile 'junit:junit:4.10'
+    testCompile 'org.scalatest:scalatest_2.9.1:1.8'
+}
+
+sourceSets {
+    main {
+        scala {
+            srcDir 'src'
+        }
+        scala {
+            srcDir 'demo'
+        }
+    }
+    test {
+        scala {
+            srcDir 'test'
+        }    
+    }
+}
+
+//apply {
+//  from 'gradle/mavenCentralDeploy.gradle'
+//}
+
+task buildTimestamped(type: Copy, dependsOn: 'build') {
+    from 'build/libs'
+    into 'build/libs/timestamped'
+    include '*.jar'
+    rename { String fileName ->
+        fileName.replace('SNAPSHOT', "SNAPSHOT-${new Date().format('HH-mm-dd-MM-yyyy')}")
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0'
+}
+
+//signArchives.onlyIf {
+//      project.hasProperty('signing.keyId')
+//}
+
+uploadArchives.onlyIf {
+      project.hasProperty('sonatypeUsername') && project.hasProperty('sonatypePassword')
+}
+
+// task copyToLib(type: Copy) {
+//    into "_lib"
+//    from configurations.runtime
+// }
+
+
+task(runOther, dependon: 'classes') {
+    println( "sourceSets.main.runtimeClasspath = "+sourceSets.main.runtimeClasspath )
+    println( "sourceSets.test.runtimeClasspath = "+sourceSets.test.runtimeClasspath )
+//    println( "sourceSets.test.runtimeClasspath.getAsPath() = "+sourceSets.test.runtimeClasspath.getAsPath()  )
+    
+    sourceSets.all {
+        println name
+    }
+}
+
+task(generateRunners, dependon: 'classes') {
+    new File("ColorfulCircles").withWriter { out ->
+        out.println("#!/bin/bash")
+        out.println("scala -cp ${sourceSets.main.runtimeClasspath.getAsPath()}  scalafx.ColorfulCircles")
+    }    
+    "chmod 755 scalafx.ColorfulCircles".execute()
+
+}
+
+task(runColorfulCircles, dependsOn: 'classes', type: JavaExec) {
+    main = 'scalafx.ColorfulCircles'
+    classpath = sourceSets.main.runtimeClasspath
+    args 'mrhaki'
+    systemProperty 'simple.message', 'Hello '
+}
+
+
+// fini
