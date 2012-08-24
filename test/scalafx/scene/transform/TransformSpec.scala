@@ -53,6 +53,8 @@ class TransformSpec
     // This is a implementation of a abstract deprecated method in original class. 
     //Probably ot will be removed in future versions.
     override def impl_apply(affine: com.sun.javafx.geom.transform.Affine3D) {}
+
+    override def impl_copy(): jfxst.Transform = { getJavaClassInstance.impl_copy() }
   }
 
   protected def convertJavaClassToScalaClass(jfxControl: jfxst.Transform) = {

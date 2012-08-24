@@ -103,4 +103,40 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
     delegate.setValue(v)
   }
 
+  /**
+   * Sets the Hidden event handler for this ComboBoxBase type UI object
+   * @since 2.2
+   */
+  def onHidden = delegate.onHiddenProperty()
+  def onHidden_( eventHandler:jfxe.EventHandler[jfxe.Event] ) = {
+    onHidden() = eventHandler
+  }
+
+  /**
+   * Sets the Hiding event handler for this ComboBoxBase type UI object
+   * @since 2.2
+   */
+  def onHiding = delegate.onHidingProperty()
+  def onHiding_( eventHandler:jfxe.EventHandler[jfxe.Event] ) = {
+    onHiding() = eventHandler
+  }
+
+  /**
+   * Sets the Showing event handler for this ComboBoxBase type UI object
+   * @since 2.2
+   */
+  def onShowing = delegate.onShowingProperty()
+  def onShowing_( eventHandler:jfxe.EventHandler[jfxe.Event] ) = {
+    onShowing() = eventHandler
+  }
+
+  /**
+   * Sets the Shown event handler for this ComboBoxBase type UI object
+   * @since 2.2
+   */
+  def onShown = delegate.onShownProperty()
+  def onShown_( eventHandler:jfxe.EventHandler[jfxe.Event] ) = {
+    onShown() = eventHandler
+  }
+
 }

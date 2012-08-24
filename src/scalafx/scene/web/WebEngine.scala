@@ -117,6 +117,26 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) ex
   }
 
   /**
+   * JavaScript enabled handler property.
+   *
+   * @since 2.2
+   */
+  def javaScriptEnabled = delegate.javaScriptEnabledProperty
+  def javaScriptEnabled_=(v: Boolean) {
+    javaScriptEnabled() = v
+  }
+
+  /**
+   * JavaScript enabled handler property.
+   *
+   * @since 2.2
+   */
+  def userStyleSheetLocation = delegate.userStyleSheetLocationProperty
+  def userStyleSheetLocation_=(v: String) {
+    userStyleSheetLocation() = v
+  }
+
+  /**
    * Title of the current Web page.
    */
   def title = delegate.getTitle

@@ -104,4 +104,15 @@ abstract class Labeled(override val delegate: jfxsc.Labeled)
   def wrapText_=(v: Boolean) {
     wrapText() = v
   }
+
+  /**
+   * Specifies the string to display for the ellipsis when text is truncated.
+   * For example it might be "..."
+   *
+   * @since 2.2
+   */
+  def ellipsisString: StringProperty = delegate.ellipsisStringProperty()
+  def ellipsisString_=( v: String ) {
+    ellipsisString() = v
+  }
 }

@@ -32,6 +32,7 @@ import javafx.{ geometry => jfxg }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 import scalafx.scene.Parent
+import javafx.scene.text.FontSmoothingType
 
 object WebView {
   implicit def sfxWebView2jfx(wv: WebView) = wv.delegate
@@ -170,4 +171,23 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
     delegate.engine.promptHandler = f
   }
 
+  /**
+   * Specifies whether context menu is enabled.
+   * @since 2.2
+   */
+  def contextMenuEnabled = delegate.contextMenuEnabledProperty()
+  def contextMenuEnabled_= ( v: Boolean) {
+    contextMenuEnabled() = v
+  }
+
+  /**
+   * Specifies a requested font smoothing type : gray or LCD.
+   * The width of the bounding box is defined by the widest row. Note: LCD mode doesn't apply in numerous cases,
+   * such as various compositing modes, where effects are applied and very large glyphs.
+   * @since 2.2
+   */
+  def fontSmoothingType = delegate.fontSmoothingTypeProperty()
+  def fontSmoothingType_= ( v: FontSmoothingType) {
+    fontSmoothingType() = v
+  }
 }

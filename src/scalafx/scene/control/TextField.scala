@@ -44,11 +44,6 @@ class TextField(override val delegate: jfxsc.TextField = new jfxsc.TextField)
     onAction() = v
   }
 
-  def promptText = delegate.promptTextProperty()
-  def promptText_=(v: String) {
-    promptText() = v
-  }
-
   def prefColumnCount = delegate.prefColumnCountProperty()
   def prefColumnCount_=(v:Int) {
     prefColumnCount() = v

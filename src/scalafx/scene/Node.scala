@@ -53,6 +53,7 @@ import scalafx.scene.Node._
 import scalafx.scene.effect.Effect._
 import scalafx.scene.effect.Effect
 import scalafx.util.SFXDelegate
+import scalafx.scene.transform.Transform
 
 object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
@@ -801,4 +802,184 @@ of this Node.
    * Moves this Node to the front of its sibling nodes in terms of z-order.
    */
   def toFront = delegate.toFront
+
+
+  /**
+   * An affine transform that holds the computed local-to-parent transform.
+   * This is the concatenation of all transforms in this node, including all of the convenience transforms.
+   *
+   * @since 2.2
+   */
+  def localToParentTransform:Transform = delegate.localToParentTransform
+
+  /**
+   * An affine transform that holds the computed local-to-scene transform.
+   * This is the concatenation of all transforms in this node's parents and in this node,
+   * including all of the convenience transforms.
+   *
+   * @since 2.2
+   */
+  def localToSceneTransform:Transform = delegate.localToSceneTransform
+
+  /**
+   * Defines a function to be called when user performs a rotation action.
+   *
+   * @since 2.2
+   */
+  def onRotate = delegate.onRotateProperty
+  def onRotate_= ( v: jfxe.EventHandler[jfxsi.RotateEvent]) {
+    onRotate() = v
+  }
+
+  /**
+   * Defines a function to be called when a rotation gesture ends.
+   *
+   * @since 2.2
+   */
+  def onRotationFinished = delegate.onRotationFinishedProperty()
+  def onRotationFinished_= ( v: jfxe.EventHandler[jfxsi.RotateEvent]) {
+    onRotationFinished() = v
+  }
+
+  /**
+   * Defines a function to be called when a rotation gesture starts.
+   *
+   * @since 2.2
+   */
+  def onRotationStarted = delegate.onRotationFinishedProperty()
+  def onRotationStarted_= ( v: jfxe.EventHandler[jfxsi.RotateEvent]) {
+    onRotationStarted() = v
+  }
+
+  /**
+   * Defines a function to be called when a Scroll gesture ends.
+   *
+   * @since 2.2
+   */
+  def onScrollFinished = delegate.onScrollFinishedProperty()
+  def onScrollFinished_= ( v: jfxe.EventHandler[jfxsi.ScrollEvent]) {
+    onScrollFinished() = v
+  }
+
+  /**
+   * Defines a function to be called when a Scroll gesture starts.
+   *
+   * @since 2.2
+   */
+  def onScrollStarted = delegate.onScrollStartedProperty()
+  def onScrollStarted_= ( v: jfxe.EventHandler[jfxsi.ScrollEvent]) {
+    onScrollStarted() = v
+  }
+
+  /**
+   * Defines a function to be called when a Swipe Down gesture starts.
+   *
+   * @since 2.2
+   */
+  def onSwipeDown = delegate.onSwipeDownProperty()
+  def onSwipeDown_= ( v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+    onSwipeDown() = v
+  }
+
+  /**
+   * Defines a function to be called when a Swipe Down gesture starts.
+   *
+   * @since 2.2
+   */
+  def onSwipeLeft = delegate.onSwipeLeftProperty()
+  def onSwipeLeft_= ( v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+    onSwipeLeft() = v
+  }
+
+  /**
+   * Defines a function to be called when a Swipe Up gesture starts.
+   *
+   * @since 2.2
+   */
+  def onSwipeUp = delegate.onSwipeUpProperty()
+  def onSwipeUp_= ( v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+    onSwipeUp() = v
+  }
+
+  /**
+   * Defines a function to be called when a Swipe Right gesture starts.
+   *
+   * @since 2.2
+   */
+  def onSwipeRight = delegate.onSwipeRightProperty()
+  def onSwipeRight_= ( v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+    onSwipeRight() = v
+  }
+
+  /**
+   * Defines a function to be called when user performs a Touch action.
+   *
+   * @since 2.2
+   */
+  def onZoom = delegate.onZoomProperty()
+  def onZoom_= ( v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
+    onZoom() = v
+  }
+
+
+  /**
+   * Defines a function to be called when a Zoom gesture ends.
+   *
+   * @since 2.2
+   */
+  def onZoomFinished = delegate.onZoomFinishedProperty()
+  def onZoomFinished_= ( v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
+    onZoomFinished() = v
+  }
+
+  /**
+   * Defines a function to be called when a Zoom gesture starts.
+   *
+   * @since 2.2
+   */
+  def onZoomStarted = delegate.onZoomStartedProperty()
+  def onZoomStarted_= ( v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
+    onZoomStarted() = v
+  }
+
+  /**
+   * Defines a function to be called when user performs a Touch Moved action.
+   *
+   * @since 2.2
+   */
+  def onTouchMoved = delegate.onTouchMovedProperty()
+  def onTouchMoved_= ( v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+    onTouchMoved() = v
+  }
+
+  /**
+   * Defines a function to be called when user performs a Touch Pressed action.
+   *
+   * @since 2.2
+   */
+  def onTouchPressed = delegate.onTouchPressedProperty()
+  def onTouchPressed_= ( v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+    onTouchPressed() = v
+  }
+
+  /**
+   * Defines a function to be called when user performs a Touch Released action.
+   *
+   * @since 2.2
+   */
+  def onTouchReleased = delegate.onTouchPressedProperty()
+  def onTouchReleased_= ( v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+    onTouchReleased() = v
+  }
+
+  /**
+   * Defines a function to be called when user performs a Touch Stationary action.
+   *
+   * @since 2.2
+   */
+  def onTouchStationary = delegate.onTouchStationaryProperty()
+  def onTouchStationary_= ( v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+    onTouchStationary() = v
+  }
+
 }

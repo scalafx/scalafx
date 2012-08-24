@@ -84,4 +84,13 @@ abstract class TextInputControl(override val delegate: jfxsc.TextInputControl)
     text() = v
   }
 
+  /**
+   * The prompt text to display in the TextInputControl, or null if no prompt text is displayed.
+   * @since 2.2
+   */
+  def promptText: StringProperty = delegate.promptTextProperty()
+  def promptText_=(v: String) {
+    promptText() = v
+  }
+
 }

@@ -107,4 +107,31 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
     tooltip() = v
   }
 
+  /**
+   * Sets the disabled state of this tab. A disable tab is no longer interactive or traversable,
+   * but the contents remain interactive. A disable tab can be selected using TabPane.getSelectionModel().
+   *
+   * @since 2.2
+   */
+  def disable = delegate.disableProperty()
+  def disable_=( v: Boolean) {
+    disable() = v
+  }
+
+  /**
+   * Indicates whether or not this Tab is disabled. A Tab will become disabled if disable is set to true
+   * on either itself or if the TabPane is disabled.
+   * @since 2.2
+   */
+  def disabled = delegate.disabledProperty()
+
+
+  /**
+   * Set the value of the userData property for the instance constructed by this builder.
+   * @since 2.2
+   */
+  def userData: AnyRef = delegate.userData
+  def userData_=( v: AnyRef ) {
+     delegate.setUserData(v)
+  }
 }

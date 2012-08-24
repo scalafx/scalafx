@@ -101,6 +101,26 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
   }
 
   /**
+   * The button cell is used to render what is shown in the ComboBox 'button' area.
+   * If a cell is set here, it does not change the rendering of the ComboBox popup list -
+   * that rendering is controlled via the cell factory API.
+   *
+   * @since 2.2
+   */
+  def buttonCell = delegate.buttonCellProperty()
+  def buttonCell_=(v:jfxsc.ListCell[T]) {
+    buttonCell() = v
+  }
+
+  /**
+   * The editor for the ComboBox.
+   *
+   * @since 2.2
+   */
+  def editor = delegate.editorProperty()
+
+
+  /**
    * Append a item at end of list of items
    *
    * @param item Item to be added.

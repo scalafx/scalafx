@@ -33,6 +33,7 @@ import javafx.{ event => jfxe }
 import javafx.scene.Node
 import scalafx.scene.input.KeyCombination
 import scalafx.util.FireDelegate
+import scalafx.event.Event
 
 object MenuItem {
   implicit def sfxMenuItem2jfx(m: MenuItem) = m.delegate
@@ -174,5 +175,17 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    */
   def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) =
     delegate.removeEventHandler(eventType, eventHandler)
+
+
+  /**
+   * The event handler that is associated with invocation of an accelerator for a MenuItem.
+   * This can happen when a key sequence for an accelerator is pressed.
+   * The event handler is also invoked when onShowing event handler is called.
+   * @since 2.2
+   */
+  def onMenuValidation = delegate.onMenuValidationProperty()
+  def onMenuValidation_=( eventHandler: jfxe.EventHandler[jfxe.Event] ) {
+    onMenuValidation() = eventHandler
+  }
 
 }
