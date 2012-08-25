@@ -30,18 +30,19 @@ package scalafx
 import animation.AnimationIncludes
 import beans.BeanIncludes
 import collections.CollectionIncludes
+import concurrent.ConcurrentIncludes
 import event.EventIncludes
 import geometry.GeometryIncludes
+import application.ApplicationIncludes
+import scene.canvas.CanvasIncludes
 import scene.input.InputIncludes
 import scene.media.MediaIncludes
 import scene.transform.TransformIncludes
 import scene.web.WebIncludes
-import stage.StageIncludes
 import scene.SceneIncludes
-import util.UtilIncludes
+import stage.StageIncludes
 import util.converter.ConverterIncludes
-import concurrent.ConcurrentIncludes
-import scalafx.application.ApplicationIncludes
+import util.UtilIncludes
 
 /**
  * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
@@ -67,4 +68,5 @@ trait Includes
   with MediaIncludes
   with ConverterIncludes
   with ConcurrentIncludes
+  with CanvasIncludes
   with ApplicationIncludes

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,22 +24,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.canvas
 
-package scalafx.scene.paint
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-import javafx.scene.{ paint => jfxsp }
+import javafx.scene.{canvas => jfxsc}
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-object PaintIncludes extends PaintIncludes
+/**
+ * Canvas Spec tests.
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class CanvasSpec
+  extends AbstractSFXDelegateSpec[jfxsc.Canvas, Canvas, jfxsc.CanvasBuilder[_]](classOf[jfxsc.Canvas], classOf[Canvas], classOf[jfxsc.CanvasBuilder[_]]) {
 
-trait PaintIncludes {
-  implicit def string2sfxColor(s: String) = Color.web(s)
-  implicit def string2jfxColor(s: String) = jfxsp.Color.web(s)
-  implicit def hex2sfxColor(h: Int) = Color.rgb(h >>> 16 & 0xFF, h >>> 8 & 0xFF, h & 0xFF)
-  implicit def hex2jfxColor(h: Int) = jfxsp.Color.rgb(h >>> 16 & 0xFF, h >>> 8 & 0xFF, h & 0xFF)
+  protected def convertScalaClassToJavaClass(sfxCanvas: Canvas) = {
+    val jfxCanvas: jfxsc.Canvas = sfxCanvas
+    jfxCanvas
+  }
 
-  implicit def jfxColor2sfx(c: jfxsp.Color) = new Color(c)
-  implicit def jfxLinearGradient2sfx(lg: jfxsp.LinearGradient) = new LinearGradient(lg)
-  implicit def jfxRadialGradient2sfx(rg: jfxsp.RadialGradient) = new RadialGradient(rg)
-  implicit def jfxStop2sfx(c: jfxsp.Stop) = new Stop(c)
-  implicit def jfxPaint2sfx(p: jfxsp.Paint) = new Paint(p) {}
+  protected def convertJavaClassToScalaClass(jfxCanvas: jfxsc.Canvas) = {
+    val sfxCanvas: Canvas = jfxCanvas
+    sfxCanvas
+  }
+
 }

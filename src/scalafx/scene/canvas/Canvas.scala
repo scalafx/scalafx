@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,22 +24,49 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.canvas
 
-package scalafx.scene.paint
+import javafx.scene.{ canvas => jfxsc }
+import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
+import scalafx.scene.Node
+import scalafx.util.SFXDelegate
 
-import javafx.scene.{ paint => jfxsp }
+object Canvas {
+  implicit def sfxCanvas2jfx(c: Canvas): jfxsc.Canvas = c.delegate
+}
 
-object PaintIncludes extends PaintIncludes
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/canvas/Canvas.html JavaFX Canvas]]
+ */
+class Canvas(override val delegate: jfxsc.Canvas = new jfxsc.Canvas)
+  extends Node(delegate)
+  with SFXDelegate[jfxsc.Canvas] {
 
-trait PaintIncludes {
-  implicit def string2sfxColor(s: String) = Color.web(s)
-  implicit def string2jfxColor(s: String) = jfxsp.Color.web(s)
-  implicit def hex2sfxColor(h: Int) = Color.rgb(h >>> 16 & 0xFF, h >>> 8 & 0xFF, h & 0xFF)
-  implicit def hex2jfxColor(h: Int) = jfxsp.Color.rgb(h >>> 16 & 0xFF, h >>> 8 & 0xFF, h & 0xFF)
+  /**
+   * Creates a new instance of Canvas with the given size.
+   */
+  def this(width: Double, height: Double) = this(new jfxsc.Canvas(width, height))
 
-  implicit def jfxColor2sfx(c: jfxsp.Color) = new Color(c)
-  implicit def jfxLinearGradient2sfx(lg: jfxsp.LinearGradient) = new LinearGradient(lg)
-  implicit def jfxRadialGradient2sfx(rg: jfxsp.RadialGradient) = new RadialGradient(rg)
-  implicit def jfxStop2sfx(c: jfxsp.Stop) = new Stop(c)
-  implicit def jfxPaint2sfx(p: jfxsp.Paint) = new Paint(p) {}
+  /**
+   * Defines the height of the canvas.
+   */
+  def height: DoubleProperty = delegate.heightProperty
+  def height_=(v: Double) {
+    height() = v
+  }
+
+  /**
+   * Defines the width of the canvas.
+   */
+  def width: DoubleProperty = delegate.widthProperty
+  def width_=(v: Double) {
+    width() = v
+  }
+
+  /**
+   * returns the `GraphicsContext` associated with this `Canvas`.
+   */
+  def graphicsContext2D: GraphicsContext = delegate.getGraphicsContext2D
+
 }
