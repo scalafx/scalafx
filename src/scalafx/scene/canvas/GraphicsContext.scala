@@ -30,7 +30,7 @@ import javafx.geometry.VPos
 import javafx.scene.effect.BlendMode
 import javafx.scene.shape.FillRule
 import javafx.scene.text.TextAlignment
-import javafx.scene.{canvas => jfxsc}
+import javafx.scene.{ canvas => jfxsc }
 import scalafx.Includes._
 import scalafx.scene.effect.Effect.sfxEffect2jfx
 import scalafx.scene.effect.Effect
@@ -49,6 +49,7 @@ import scalafx.scene.text.Font
 import scalafx.scene.transform.Affine.sfxAffine2jfx
 import scalafx.scene.transform.Affine
 import scalafx.util.SFXDelegate
+import scala.collection.mutable.ArrayBuffer
 
 object GraphicsContext {
   implicit def sfxGraphicsContext2jfx(gc: GraphicsContext): jfxsc.GraphicsContext = gc.delegate
@@ -59,6 +60,18 @@ object GraphicsContext {
  */
 class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   extends SFXDelegate[jfxsc.GraphicsContext] {
+
+  private def executeWithPoints(action: (Array[Double], Array[Double], Int) => Unit, points: Seq[(Double, Double)]) {
+    val xPoints = new ArrayBuffer[Double](points.size)
+    val yPoints = new ArrayBuffer[Double](points.size)
+
+    points.foreach(p => {
+      xPoints += p._1
+      yPoints += p._2
+    })
+
+    action(xPoints.toArray, yPoints.toArray, points.size)
+  }
 
   /**
    * Appends an SVG Path string to the current path.
@@ -157,29 +170,14 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * Fills a polygon with the given points using the currently set fill paint.
    */
-  def fillPolygon(xPoints: Array[Double], yPoints: Array[Double], nPoints: Int) =
+  def fillPolygon(xPoints: Array[Double], yPoints: Array[Double], nPoints: Int): Unit =
     delegate.fillPolygon(xPoints, yPoints, nPoints)
 
-  /*
+  /**
    * Fills a polygon with the given points using the currently set fill paint.
-   *
-  def fillPolygon(points: (Double, Double)*) {
-    val nPoints = points.size
-    val xPoints = Array[Double](nPoints)
-    val yPoints = Array[Double](nPoints)
+   */
+  def fillPolygon(points: Seq[(Double, Double)]): Unit = executeWithPoints(fillPolygon, points)
 
-    points.zipWithIndex.foreach((pointIndex) => {
-      pointIndex match {
-        case ((x, y), index) => {
-          xPoints(index) = x
-          yPoints(index) = y
-        }
-      }
-    })
-
-    this.fillPolygon(xPoints, yPoints, nPoints)
-  }
-**/
   /**
    * Fills a rectangle using the current fill paint.
    */
@@ -337,14 +335,24 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * Strokes a polygon with the given points using the currently set stroke paint.
    */
-  def strokePolygon(xPoints: Array[Double], yPoints: Array[Double], nPoints: Int) =
+  def strokePolygon(xPoints: Array[Double], yPoints: Array[Double], nPoints: Int): Unit =
     delegate.strokePolygon(xPoints, yPoints, nPoints)
+
+  /**
+   * Strokes a polygon with the given points using the currently set stroke paint.
+   */
+  def strokePolygon(points: Seq[(Double, Double)]): Unit = this.executeWithPoints(strokePolygon, points)
 
   /**
    * Draws a polyline with the given points using the currently set stroke paint attribute.
    */
   def strokePolyline(xPoints: Array[Double], yPoints: Array[Double], nPoints: Int) =
     delegate.strokePolyline(xPoints, yPoints, nPoints)
+
+  /**
+   * Draws a polyline with the given points using the currently set stroke paint attribute.
+   */
+  def strokePolyline(points: Seq[(Double, Double)]): Unit = this.executeWithPoints(strokePolyline, points)
 
   /**
    * Strokes a rectangle using the current stroke paint.
