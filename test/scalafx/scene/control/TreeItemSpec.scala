@@ -28,6 +28,7 @@ package scalafx.scene.control
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec

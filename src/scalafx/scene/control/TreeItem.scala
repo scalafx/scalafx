@@ -29,12 +29,12 @@ package scalafx.scene.control
 import scala.collection.JavaConversions._
 import scala.collection.mutable.Buffer
 
-import javafx.scene.{ control => jfxsc }
-import javafx.{ event => jfxe }
+import javafx.scene.{control => jfxsc}
+import javafx.{event => jfxe}
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.event.Event
-import scalafx.scene.control.TreeItem.sfxTreeItemTojfx
 import scalafx.scene.Node
 import scalafx.util.SFXDelegate
 
@@ -208,7 +208,7 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
   /**
    * The expanded state of this TreeItem.
    */
-  def expanded = delegate.expandedProperty
+  def expanded: BooleanProperty = delegate.expandedProperty
   def expanded_=(v: Boolean) {
     expanded() = v
   }
@@ -262,6 +262,10 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
    * The children of this TreeItem.
    */
   def children: ObservableBuffer[jfxsc.TreeItem[T]] = delegate.getChildren
+  def children_=(items: Seq[TreeItem[T]]) {
+    children.clear
+    items.foreach(children += _)
+  }
 
   /**
    * Returns the next sibling of the TreeItem.

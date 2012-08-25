@@ -1,9 +1,11 @@
 package scalafx.scene.control
 
-import javafx.geometry.Side
-import javafx.scene.control.TabPane.TabClosingPolicy
 import javafx.scene.{control => jfxsc}
+import javafx.{geometry => jfxg}
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
 import scalafx.util.SFXDelegate
 
 object TabPane {
@@ -17,12 +19,14 @@ object TabPane {
 
 }
 
-class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane) extends Control(delegate) with SFXDelegate[jfxsc.TabPane] {
+class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane)
+  extends Control(delegate)
+  with SFXDelegate[jfxsc.TabPane] {
 
   /**
    * The rotatedGraphic state of the tabs in the TabPane.
    */
-  def rotateGraphic = delegate.rotateGraphicProperty
+  def rotateGraphic: BooleanProperty = delegate.rotateGraphicProperty
   def rotateGraphic_=(v: Boolean) {
     rotateGraphic() = v
   }
@@ -38,23 +42,23 @@ class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane) extends 
   /**
    * The position of the tabs in the TabPane.
    */
-  def side = delegate.sideProperty
-  def side_=(v: Side) {
+  def side: ObjectProperty[jfxg.Side] = delegate.sideProperty
+  def side_=(v: jfxg.Side) {
     side() = v
   }
 
   /**
    * The closing policy for the tabs.
    */
-  def tabClosingPolicy = delegate.tabClosingPolicyProperty
-  def tabClosingPolicy_=(v: TabClosingPolicy) {
+  def tabClosingPolicy: ObjectProperty[jfxsc.TabPane.TabClosingPolicy] = delegate.tabClosingPolicyProperty
+  def tabClosingPolicy_=(v: jfxsc.TabPane.TabClosingPolicy) {
     tabClosingPolicy() = v
   }
 
   /**
    * The maximum height of the tabs in the TabPane.
    */
-  def tabMaxHeight = delegate.tabMaxHeightProperty
+  def tabMaxHeight: DoubleProperty = delegate.tabMaxHeightProperty
   def tabMaxHeight_=(v: Double) {
     tabMaxHeight() = v
   }
@@ -62,7 +66,7 @@ class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane) extends 
   /**
    * The maximum width of the tabs in the TabPane.
    */
-  def tabMaxWidth = delegate.tabMaxWidthProperty
+  def tabMaxWidth: DoubleProperty = delegate.tabMaxWidthProperty
   def tabMaxWidth_=(v: Double) {
     tabMaxWidth() = v
   }
@@ -70,7 +74,7 @@ class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane) extends 
   /**
    * The minimum height of the tab.
    */
-  def tabMinHeight = delegate.tabMinHeightProperty
+  def tabMinHeight: DoubleProperty = delegate.tabMinHeightProperty
   def tabMinHeight_=(v: Double) {
     tabMinHeight() = v
   }
@@ -78,7 +82,7 @@ class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane) extends 
   /**
    * The minimum width of the tabs in the TabPane.
    */
-  def tabMinWidth = delegate.tabMinWidthProperty
+  def tabMinWidth: DoubleProperty = delegate.tabMinWidthProperty
   def tabMinWidth_=(v: Double) {
     tabMinWidth() = v
   }
@@ -87,9 +91,13 @@ class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane) extends 
    * The tabs to display in this TabPane.
    */
   def tabs = delegate.getTabs
-  
+  def tabs_=(tabSeq: Seq[Tab]) {
+    delegate.getTabs.clear
+    tabSeq.foreach(this += _)
+  }
+
   /**
-   * Append a new Tab to tabs 
+   * Append a new Tab to tabs
    */
   def +=(tab: Tab) = {
     tabs.add(tab)

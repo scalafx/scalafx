@@ -24,18 +24,18 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
+import javafx.scene.{control => jfxsc}
+import scalafx.Includes.jfxTitledPane2sfx
+import scalafx.scene.control.TitledPane.sfxTitledPane2jfx
+import scalafx.testutil.AbstractSFXDelegateSpec
+
 /**
  * TitledPane Spec tests.
- *
  *
  */
 @RunWith(classOf[JUnitRunner])
