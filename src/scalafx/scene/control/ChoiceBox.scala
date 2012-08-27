@@ -93,7 +93,7 @@ class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.
    */
   def value = delegate.valueProperty
   def value_=(v: J) {
-    value = v
+    value.setValue(v)
   }
 
 }
