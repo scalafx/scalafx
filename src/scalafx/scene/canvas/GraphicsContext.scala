@@ -26,30 +26,25 @@
  */
 package scalafx.scene.canvas
 
+import scala.collection.mutable.ArrayBuffer
+
 import javafx.geometry.VPos
 import javafx.scene.effect.BlendMode
 import javafx.scene.shape.FillRule
 import javafx.scene.text.TextAlignment
 import javafx.scene.{ canvas => jfxsc }
 import scalafx.Includes._
-import scalafx.scene.effect.Effect.sfxEffect2jfx
 import scalafx.scene.effect.Effect
-import scalafx.scene.image.Image.sfxImage2jfx
 import scalafx.scene.image.Image
-import scalafx.scene.paint.Paint.sfxPaint2jfx
 import scalafx.scene.paint.Paint
-import scalafx.scene.shape.ArcType.sfxArcType2jfx
-import scalafx.scene.shape.StrokeLineCap.sfxStrokeLineCap2jfx
-import scalafx.scene.shape.StrokeLineJoin.sfxStrokeLineJoin2jfx
+import scalafx.scene.shape.StrokeLineCap
+import scalafx.scene.shape.StrokeLineJoin
 import scalafx.scene.shape.ArcType
 import scalafx.scene.shape.StrokeLineCap
 import scalafx.scene.shape.StrokeLineJoin
-import scalafx.scene.text.Font.sfxFont2jfx
 import scalafx.scene.text.Font
-import scalafx.scene.transform.Affine.sfxAffine2jfx
 import scalafx.scene.transform.Affine
 import scalafx.util.SFXDelegate
-import scala.collection.mutable.ArrayBuffer
 
 object GraphicsContext {
   implicit def sfxGraphicsContext2jfx(gc: GraphicsContext): jfxsc.GraphicsContext = gc.delegate
@@ -141,6 +136,12 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   def drawImage(img: Image, sx: Double, sy: Double, sw: Double, sh: Double, dx: Double, dy: Double, dw: Double, dh: Double) =
     delegate.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh)
 
+  /*
+   * IMPLEMENTATION NOTE ABOUT EFFECT: Although there is a "getter" and a setter for Effect, the getEffect in JavaFX 
+   * class has a parameter (in this case the Effect to be used) I decided not to use the Scala pattern for getters and 
+   * setters.
+   */
+
   /**
    * Gets a copy of the effect to be applied after the next draw call.
    */
@@ -151,8 +152,21 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
    */
   def setEffect(e: Effect) = delegate.setEffect(e)
 
+  /*
+   * IMPLEMENTATION NOTE ABOUT FILL: In original JavaFX class there is a getter and setter for fill. However, there 
+   * is a method called fill(). Then, in order to use Scala pattern for getter and setter, the fill() method in JavaFX 
+   * class was renamed to fillPath.
+   */
+
+  /**
+   * the current fill attribute.
+   */
+  def fill: Paint = delegate.getFill
+  def fill_=(p: Paint) = delegate.setFill(p)
+
   /**
    * Fills the path with the current fill paint.
+   * This method is correspondent to fill() method in JavaFx class.
    */
   def fillPath = delegate.fill
 
@@ -170,7 +184,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * Fills a polygon with the given points using the currently set fill paint.
    */
-  def fillPolygon(xPoints: Array[Double], yPoints: Array[Double], nPoints: Int): Unit =
+  def fillPolygon(xPoints: Array[Double], yPoints: Array[Double], nPoints: Int) =
     delegate.fillPolygon(xPoints, yPoints, nPoints)
 
   /**
@@ -200,12 +214,6 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   def fillText(text: String, x: Double, y: Double, maxWidth: Double) = delegate.fillText(text, x, y, maxWidth)
 
   /**
-   * the current fill attribute.
-   */
-  def fill: Paint = delegate.getFill
-  def fill_=(p: Paint) = delegate.setFill(p)
-
-  /**
    * the filling rule constant for determining the interior of the path.
    */
   def fillRule = delegate.getFillRule
@@ -215,13 +223,13 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
    * the current Font.
    */
   def font: Font = delegate.getFont
-  def font_(f: Font) = delegate.setFont(f)
+  def font_=(f: Font) = delegate.setFont(f)
 
   /**
    * the current global alpha.
    */
   def globalAlpha = delegate.getGlobalAlpha
-  def globalAlpha_(alpha: Double) = delegate.setGlobalAlpha(alpha)
+  def globalAlpha_=(alpha: Double) = delegate.setGlobalAlpha(alpha)
 
   /**
    * the global blend mode.
@@ -233,13 +241,13 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
    * the current stroke line cap.
    */
   def lineCap: StrokeLineCap = new StrokeLineCap(delegate.getLineCap)
-  def lineCap_(cap: StrokeLineCap) = delegate.setLineCap(cap)
+  def lineCap_=(cap: StrokeLineCap) = delegate.setLineCap(cap)
 
   /**
    * the current stroke line join.
    */
   def lineJoin: StrokeLineJoin = new StrokeLineJoin(delegate.getLineJoin)
-  def lineJoin_(join: StrokeLineJoin) = delegate.setLineJoin(join)
+  def lineJoin_=(join: StrokeLineJoin) = delegate.setLineJoin(join)
 
   /**
    * the current line width.
@@ -309,10 +317,11 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
    * the current stroke.
    */
   def stroke: Paint = delegate.getStroke
-  def stroke_(s: Paint) = delegate.setStroke(s)
+  def stroke_=(s: Paint) = delegate.setStroke(s)
 
   /**
    * Strokes the path with the current stroke paint.
+   * This method is correspondent to stroke() method in JavaFx class.
    */
   def strokePath = delegate.stroke
 
@@ -335,7 +344,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * Strokes a polygon with the given points using the currently set stroke paint.
    */
-  def strokePolygon(xPoints: Array[Double], yPoints: Array[Double], nPoints: Int): Unit =
+  def strokePolygon(xPoints: Array[Double], yPoints: Array[Double], nPoints: Int) =
     delegate.strokePolygon(xPoints, yPoints, nPoints)
 
   /**
@@ -379,21 +388,38 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
    * the current TextAlignment.
    */
   def textAlign = delegate.getTextAlign
-  def textAlign_(align: TextAlignment) = delegate.setTextAlign(align)
+  def textAlign_=(align: TextAlignment) = delegate.setTextAlign(align)
 
   /**
    * the current Text Baseline.
    */
   def textBaseline = delegate.getTextBaseline
-  def textBaseline_(baseline: VPos) = delegate.setTextBaseline(baseline)
+  def textBaseline_=(baseline: VPos) = delegate.setTextBaseline(baseline)
+
+  /*
+   * IMPLEMENTATION NOTE ABOUT TRANSFORM: Although there is more than a getter and setter for Transform. Besides, one
+   * of getters has parameter (in this case the Effect to be used). Furthermore, there is two transform methods in 
+   * original class. So I decided not to use the Scala pattern for getters and setters. 
+   */
 
   /**
-   * the current transform.
+   * Returns a copy of the current transform.
    */
   def getTransform: Affine = delegate.getTransform
+  
+  /**
+   * Sets the current transform.
+   */
   def setTransform(xform: Affine) = delegate.setTransform(xform)
 
+  /**
+   * Returns a copy of the current transform.
+   */
   def getTransform(xform: Affine): Affine = delegate.getTransform(xform)
+
+  /**
+   * Sets the current transform.
+   */
   def setTransform(mxx: Double, myx: Double, mxy: Double, myy: Double, mxt: Double, myt: Double) =
     delegate.setTransform(mxx, myx, mxy, myy, mxt, myt)
 
