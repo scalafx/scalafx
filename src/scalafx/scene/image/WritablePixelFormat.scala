@@ -28,19 +28,22 @@ package scalafx.scene.image
 
 import javafx.scene.{ image => jfxsi }
 import java.nio.Buffer
+import scalafx.util.SFXDelegate
 
-object ImageIncludes extends ImageIncludes
+object WritablePixelFormat {
+  implicit def sfxWritablePixelFormat2jfx[B <: Buffer](wpf: WritablePixelFormat[B]) = wpf.delegate
+}
 
-trait ImageIncludes {
-  implicit def jfxImage2sfx(i: jfxsi.Image) = new Image(i)
-  implicit def jfxImageView2sfx(iv: jfxsi.ImageView) = new ImageView(iv)
-  implicit def jfxPixelFormat2sfx[B <: Buffer](pf: jfxsi.PixelFormat[B]) = new PixelFormat[B](pf) {}
-  implicit def jfxPixelReader2sfx(pr: jfxsi.PixelReader) = new PixelReader {
-    override val delegate = pr
-  }
-  implicit def jfxPixelWriter2sfx(pw: jfxsi.PixelWriter) = new PixelWriter {
-    override val delegate = pw
-  }
-  implicit def jfxWritableImage2sfx(wi: jfxsi.WritableImage) = new WritableImage(wi)
-  implicit def jfxWritablePixelFormat2sfx[B <: Buffer](pf: jfxsi.WritablePixelFormat[B]) = new WritablePixelFormat[B](pf) {}
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/image/WritablePixelFormat.html]]
+ */
+abstract class WritablePixelFormat[B <: Buffer](override val delegate: jfxsi.WritablePixelFormat[B])
+  extends PixelFormat(delegate)
+  with SFXDelegate[jfxsi.WritablePixelFormat[B]] {
+
+  /**
+   * Stores a 32-bit integer representation of the color in the buffer at the specified coordinates.
+   */
+  def setArgb(buf: B, x: Int, y: Int, scanlineStride: Int, argb: Int) = delegate.setArgb(buf, x, y, scanlineStride, argb)
+
 }

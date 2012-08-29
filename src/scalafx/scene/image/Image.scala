@@ -116,6 +116,12 @@ class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image]
   def preserveRatio = delegate.isPreserveRatio
 
   /**
+   * This method returns a Option of [[PixelReader]] that provides access to read the pixels of the image,
+   * if the image is readable.
+   */
+  def pixelReader: Option[PixelReader] = Option(delegate.getPixelReader)
+
+  /**
    * Indicates whether to use a better quality filtering algorithm or a faster
    * one when scaling this image to fit within the bounding box provided by
    * `width` and `height`.

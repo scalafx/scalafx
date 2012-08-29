@@ -26,21 +26,48 @@
  */
 package scalafx.scene.image
 
-import javafx.scene.{ image => jfxsi }
 import java.nio.Buffer
+import java.nio.ByteBuffer
+import java.nio.IntBuffer
 
-object ImageIncludes extends ImageIncludes
+import javafx.scene.{ image => jfxsi }
+import scalafx.Includes._
+import scalafx.util.SFXDelegate
 
-trait ImageIncludes {
-  implicit def jfxImage2sfx(i: jfxsi.Image) = new Image(i)
-  implicit def jfxImageView2sfx(iv: jfxsi.ImageView) = new ImageView(iv)
-  implicit def jfxPixelFormat2sfx[B <: Buffer](pf: jfxsi.PixelFormat[B]) = new PixelFormat[B](pf) {}
-  implicit def jfxPixelReader2sfx(pr: jfxsi.PixelReader) = new PixelReader {
-    override val delegate = pr
-  }
-  implicit def jfxPixelWriter2sfx(pw: jfxsi.PixelWriter) = new PixelWriter {
-    override val delegate = pw
-  }
-  implicit def jfxWritableImage2sfx(wi: jfxsi.WritableImage) = new WritableImage(wi)
-  implicit def jfxWritablePixelFormat2sfx[B <: Buffer](pf: jfxsi.WritablePixelFormat[B]) = new WritablePixelFormat[B](pf) {}
+object PixelFormat {
+  implicit def sfxPixelFormat2jfx[B <: Buffer](pf: PixelFormat[B]) = pf.delegate
+
+  def createByteIndexedInstance(colors: Array[Int]): PixelFormat[ByteBuffer] = jfxsi.PixelFormat.createByteIndexedInstance(colors)
+
+  def createByteIndexedPremultipliedInstance(colors: Array[Int]): PixelFormat[ByteBuffer] = jfxsi.PixelFormat.createByteIndexedPremultipliedInstance(colors)
+
+  def getByteBgraInstance: WritablePixelFormat[ByteBuffer] = jfxsi.PixelFormat.getByteBgraInstance
+
+  def getByteBgraPreInstance: WritablePixelFormat[ByteBuffer] = jfxsi.PixelFormat.getByteBgraPreInstance
+
+  def getByteRgbInstance: PixelFormat[ByteBuffer] = jfxsi.PixelFormat.getByteRgbInstance
+
+  def getIntArgbInstance: WritablePixelFormat[IntBuffer] = jfxsi.PixelFormat.getIntArgbInstance
+
+  def getIntArgbPreInstance: WritablePixelFormat[IntBuffer] = jfxsi.PixelFormat.getIntArgbPreInstance
+
+}
+
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/image/PixelFormat.html]]
+ */
+abstract class PixelFormat[B <: Buffer](override val delegate: jfxsi.PixelFormat[B])
+  extends SFXDelegate[jfxsi.PixelFormat[B]] {
+
+  /**
+   * Reads a 32-bit integer representation of the color from the buffer at the specified coordinates.
+   */
+  def getArgb(buf: B, x: Int, y: Int, scanlineStride: Int): Int = delegate.getArgb(buf, x, y, scanlineStride)
+
+  def getType = delegate.getType
+
+  def premultiplied = delegate.isPremultiplied
+
+  def writable = delegate.isWritable
+
 }

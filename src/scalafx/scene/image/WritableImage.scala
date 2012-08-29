@@ -26,21 +26,39 @@
  */
 package scalafx.scene.image
 
-import javafx.scene.{ image => jfxsi }
-import java.nio.Buffer
+import javafx.scene.{image => jfxsi}
+import scalafx.Includes._
+import scalafx.util.SFXDelegate
 
-object ImageIncludes extends ImageIncludes
+object WritableImage {
+  implicit def sfxWritableImage2jfx(wi: WritableImage) = wi.delegate
+}
 
-trait ImageIncludes {
-  implicit def jfxImage2sfx(i: jfxsi.Image) = new Image(i)
-  implicit def jfxImageView2sfx(iv: jfxsi.ImageView) = new ImageView(iv)
-  implicit def jfxPixelFormat2sfx[B <: Buffer](pf: jfxsi.PixelFormat[B]) = new PixelFormat[B](pf) {}
-  implicit def jfxPixelReader2sfx(pr: jfxsi.PixelReader) = new PixelReader {
-    override val delegate = pr
-  }
-  implicit def jfxPixelWriter2sfx(pw: jfxsi.PixelWriter) = new PixelWriter {
-    override val delegate = pw
-  }
-  implicit def jfxWritableImage2sfx(wi: jfxsi.WritableImage) = new WritableImage(wi)
-  implicit def jfxWritablePixelFormat2sfx[B <: Buffer](pf: jfxsi.WritablePixelFormat[B]) = new WritablePixelFormat[B](pf) {}
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/image/WritableImage.html]]
+ */
+class WritableImage(override val delegate: jfxsi.WritableImage)
+  extends Image(delegate)
+  with SFXDelegate[jfxsi.WritableImage] {
+
+  /**
+   * Construct an empty image of the specified dimensions.
+   */
+  def this(width: Int, height: Int) = this(new jfxsi.WritableImage(width, height))
+
+  /**
+   * Construct an image of the specified dimensions, initialized from the indicated [[PixelReader]].
+   */
+  def this(reader: PixelReader, width: Int, height: Int) = this(new jfxsi.WritableImage(reader, width, height))
+
+  /**
+   * Construct an image of the specified dimensions, initialized from the indicated region of the [[PixelReader]].
+   */
+  def this(reader: PixelReader, x: Int, y: Int, width: Int, height: Int) = this(new jfxsi.WritableImage(reader, x, y, width, height))
+  
+  /**
+   * This method returns a PixelWriter that provides access to write the pixels of the image.
+   */
+  def pixelWrit: PixelWriter = delegate.getPixelWriter
+  
 }
