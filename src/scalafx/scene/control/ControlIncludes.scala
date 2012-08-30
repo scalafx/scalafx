@@ -19,6 +19,7 @@ trait ControlIncludes {
   implicit def jfxChoiceBox2sfx[J <: AnyRef](cb: jfxsc.ChoiceBox[J]) = new ChoiceBox[J](cb)
   implicit def jfxCheckBox2sfx(c: jfxsc.CheckBox) = new CheckBox(c)
   implicit def jfxControl2sfx(c: jfxsc.Control) = new Control(c) {}
+  implicit def jfxColorPicker2sfx(cp: jfxsc.ColorPicker) = new ColorPicker(cp)
   implicit def jfxComboBoxBase2sfx[T](v: jfxsc.ComboBoxBase[T]) = new ComboBoxBase[T](v) {}
   implicit def jfxComboBox2sfx[T](v: jfxsc.ComboBox[T]) = new ComboBox[T](v)
   implicit def jfxFocusModel2sfx[T](v: jfxsc.FocusModel[T]) = new FocusModel[T](v) {}
@@ -34,7 +35,8 @@ trait ControlIncludes {
   implicit def jfxMenuBar2sfx(h: jfxsc.MenuBar) = new MenuBar(h)
   implicit def jfxMenuItem2sfx(m: jfxsc.MenuItem) = new MenuItem(m)
   implicit def jfxMultipleSelectionModel2sfx[T](v: jfxsc.MultipleSelectionModel[T]) = new MultipleSelectionModel[T](v) {}
-  implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s) {}
+  implicit def jfxPagination2sfx(p: jfxsc.Pagination) = new Pagination(p)
+  implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s)
   implicit def jfxSlider2sfx(s: jfxsc.Slider) = new Slider(s)
   implicit def jfxTitledPane2sfx(t: jfxsc.TitledPane) = new TitledPane(t)
   implicit def jfxToggle2sfx(t: jfxsc.Toggle) = new Toggle {
