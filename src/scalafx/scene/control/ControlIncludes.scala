@@ -37,6 +37,7 @@ trait ControlIncludes {
   implicit def jfxMultipleSelectionModel2sfx[T](v: jfxsc.MultipleSelectionModel[T]) = new MultipleSelectionModel[T](v) {}
   implicit def jfxPagination2sfx(p: jfxsc.Pagination) = new Pagination(p)
   implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s)
+  implicit def jfxScrollBar2sfx(s: jfxsc.ScrollBar) = new ScrollBar(s)
   implicit def jfxSlider2sfx(s: jfxsc.Slider) = new Slider(s)
   implicit def jfxTitledPane2sfx(t: jfxsc.TitledPane) = new TitledPane(t)
   implicit def jfxToggle2sfx(t: jfxsc.Toggle) = new Toggle {

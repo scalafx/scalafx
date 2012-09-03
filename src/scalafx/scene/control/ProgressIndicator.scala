@@ -1,7 +1,9 @@
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.util.SFXDelegate
 
 object ProgressIndicator {
@@ -10,11 +12,22 @@ object ProgressIndicator {
   val INDETERMINATE_PROGRESS = jfxsc.ProgressIndicator.INDETERMINATE_PROGRESS
 }
 
-class ProgressIndicator(override val delegate: jfxsc.ProgressIndicator = new jfxsc.ProgressIndicator) extends Control(delegate) with SFXDelegate[jfxsc.ProgressIndicator] {
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/ProgressIndicator.html]]
+ */
+class ProgressIndicator(override val delegate: jfxsc.ProgressIndicator = new jfxsc.ProgressIndicator)
+  extends Control(delegate)
+  with SFXDelegate[jfxsc.ProgressIndicator] {
 
-  def indeterminate = delegate.indeterminateProperty
+  /**
+   * A flag indicating whether it is possible to determine the progress of the ProgressIndicator.
+   */
+  def indeterminate: ReadOnlyBooleanProperty = delegate.indeterminateProperty
 
-  def progress = delegate.progressProperty
+  /**
+   * The actual progress of the ProgressIndicator.
+   */
+  def progress: DoubleProperty = delegate.progressProperty
   def progress_=(v: Double) {
     progress() = v
   }
