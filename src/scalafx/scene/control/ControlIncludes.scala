@@ -27,10 +27,12 @@
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
+import scalafx.scene.control.cell.CellIncludes
 
 object ControlIncludes extends ControlIncludes
 
-trait ControlIncludes {
+trait ControlIncludes
+  extends CellIncludes {
   implicit def jfxAccordion2sfx(a: jfxsc.Accordion) = new Accordion(a)
   implicit def jfxToggleGroup2sfx(tg: jfxsc.ToggleGroup) = new ToggleGroup(tg)
   implicit def jfxToggleButton2sfx(tb: jfxsc.ToggleButton) = new ToggleButton(tb)
@@ -62,7 +64,7 @@ trait ControlIncludes {
   implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s)
   implicit def jfxScrollBar2sfx(s: jfxsc.ScrollBar) = new ScrollBar(s)
   implicit def jfxSlider2sfx(s: jfxsc.Slider) = new Slider(s)
-  
+
   implicit def jfxTableCell2sfx[S, T](tc: jfxsc.TableCell[S, T]) = new TableCell[S, T](tc)
   implicit def jfxTableColumn2sfx[S, T](tc: jfxsc.TableColumn[S, T]) = new TableColumn[S, T](tc)
   implicit def jfxCellDataFeatures2sfx[S, T](cdf: jfxsc.TableColumn.CellDataFeatures[S, T]) = new TableColumn.CellDataFeatures[S, T](cdf)
@@ -71,9 +73,9 @@ trait ControlIncludes {
   implicit def jfxTableRow2sfx[T](tr: jfxsc.TableRow[T]) = new TableRow[T](tr)
   implicit def jfxTableView2sfx[S](tv: jfxsc.TableView[S]) = new TableView[S](tv)
   implicit def jfxResizeFeatures2sfx[S](rf: jfxsc.TableView.ResizeFeatures[S]) = new TableView.ResizeFeatures[S](rf)
-  implicit def jfxTableViewSelectionModel2sfx[S](tvsm: jfxsc.TableView.TableViewSelectionModel[S]) = new TableView.TableViewSelectionModel[S](tvsm){}
+  implicit def jfxTableViewSelectionModel2sfx[S](tvsm: jfxsc.TableView.TableViewSelectionModel[S]) = new TableView.TableViewSelectionModel[S](tvsm) {}
   implicit def jfxTableViewFocusModel2sfx[S](tvfm: jfxsc.TableView.TableViewFocusModel[S]) = new TableView.TableViewFocusModel[S](tvfm)
-  
+
   implicit def jfxTitledPane2sfx(t: jfxsc.TitledPane) = new TitledPane(t)
   implicit def jfxToggle2sfx(t: jfxsc.Toggle) = new Toggle {
     override val delegate = t
