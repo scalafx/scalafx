@@ -41,7 +41,7 @@ import scalafx.util.StringConverter
 object CheckBoxListCell {
   implicit def sfxCheckBoxListCell2jfx[T](cell: CheckBoxListCell[T]) = cell.delegate
 
-  private[cell] implicit def selectedPropertyToGetSelectedProperty[T](selectedProperty: T => ObservableValue[Boolean, java.lang.Boolean]): jfxu.Callback[T, jfxbv.ObservableValue[java.lang.Boolean]] =
+  private[cell] implicit def selectedBooleanPropertyToGetSelectedProperty[T](selectedProperty: T => ObservableValue[Boolean, java.lang.Boolean]): jfxu.Callback[T, jfxbv.ObservableValue[java.lang.Boolean]] =
     new jfxu.Callback[T, jfxbv.ObservableValue[java.lang.Boolean]] {
       def call(x: T) = selectedProperty(x)
     }

@@ -25,11 +25,30 @@
  */
 package scalafx.scene.control.cell
 
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
 import javafx.scene.control.{ cell => jfxscc }
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
 
-object CellIncludes extends CellIncludes
+/**
+ * CheckBoxTableCell Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class CheckBoxCheckBoxTableCellSpec[S, T]
+  extends AbstractSFXDelegateSpec[jfxscc.CheckBoxTableCell[S, T], CheckBoxTableCell[S, T], jfxscc.CheckBoxTableCellBuilder[S, T, _]](classOf[jfxscc.CheckBoxTableCell[S, T]], classOf[CheckBoxTableCell[S, T]], classOf[jfxscc.CheckBoxTableCellBuilder[S, T, _]]) {
 
-trait CellIncludes {
-  implicit def jfxCheckBoxListCell2sfx[T](cell: jfxscc.CheckBoxListCell[T]) = new CheckBoxListCell[T](cell)
-  implicit def jfxCheckBoxTableCell2sfx[S, T](cell: jfxscc.CheckBoxTableCell[S, T]) = new CheckBoxTableCell[S, T](cell)
+  protected def convertScalaClassToJavaClass(sfxControl: CheckBoxTableCell[S, T]) = {
+    val jfxCheckBoxTableCell: jfxscc.CheckBoxTableCell[S, T] = sfxControl
+    jfxCheckBoxTableCell
+  }
+
+  protected def convertJavaClassToScalaClass(jfxControl: jfxscc.CheckBoxTableCell[S, T]) = {
+    val sfxCheckBoxTableCell: CheckBoxTableCell[S, T] = jfxControl
+    sfxCheckBoxTableCell
+  }
+
 }
