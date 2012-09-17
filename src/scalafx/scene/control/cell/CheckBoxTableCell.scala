@@ -116,10 +116,11 @@ object CheckBoxTableCell {
  * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/CheckBoxTableCell.html]]
  */
 class CheckBoxTableCell[S, T](override val delegate: jfxscc.CheckBoxTableCell[S, T] = new jfxscc.CheckBoxTableCell[S, T])
-    extends TableCell[S, T](delegate)
-    with ConvertableCell[jfxscc.CheckBoxTableCell[S, T], T]
-    with UpdatableCell[jfxscc.CheckBoxTableCell[S, T], T]
-    with SFXDelegate[jfxscc.CheckBoxTableCell[S, T]] {
+  extends TableCell[S, T](delegate)
+  with ConvertableCell[jfxscc.CheckBoxTableCell[S, T], T, T]
+  with StateSelectableCell[jfxscc.CheckBoxTableCell[S, T], T, java.lang.Integer]
+  with UpdatableCell[jfxscc.CheckBoxTableCell[S, T], T]
+  with SFXDelegate[jfxscc.CheckBoxTableCell[S, T]] {
 
   /**
    * Creates a default CheckBoxTableCell with a custom `Callback` to retrieve an ObservableValue for a given cell index.
@@ -132,13 +133,5 @@ class CheckBoxTableCell[S, T](override val delegate: jfxscc.CheckBoxTableCell[S,
    */
   def this(selectedProperty: Int => ObservableValue[Boolean, java.lang.Boolean], converter: StringConverter[T]) =
     this(new jfxscc.CheckBoxTableCell[S, T](selectedProperty, converter))
-
-  /**
-   * Property representing the `Callback` that is bound to by the CheckBox shown on screen.
-   */
-  def selectedStateCallback = delegate.selectedStateCallbackProperty
-  def selectedStateCallback_=(v: jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]]) {
-    selectedStateCallback() = v
-  }
 
 }

@@ -27,39 +27,44 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import javafx.beans.{ property => jfxbp }
+import javafx.beans.{ value => jfxbv }
+import javafx.{ collections => jfxc }
 import javafx.{ util => jfxu }
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.util.SFXDelegate
 import scalafx.util.StringConverter
 import scalafx.beans.property.BooleanProperty
+import scalafx.collections.ObservableBuffer
 
 package object cell {
 
   /**
    * Types that contains the method `converterProperty(): jfxbp.ObjectProperty[jfxu.StringConverter[T]]`
+   *
+   * @tparam J Original Java type used by converter.
    */
-  type Convertable[T] = {
-    def converterProperty(): jfxbp.ObjectProperty[jfxu.StringConverter[T]]
+  type Convertable[J] = {
+    def converterProperty(): jfxbp.ObjectProperty[jfxu.StringConverter[J]]
   }
 
   /**
-   * [[javafx.scene.control.Cell]]s that contains the method `converterProperty(): jfxbp.ObjectProperty[jfxu.StringConverter[T]]`
-   */
-  type JfxConvertableCell[T] = jfxsc.Cell[T] with Convertable[T]
-
-  /**
    * Cells which delegate contains the method `converterProperty(): jfxbp.ObjectProperty[jfxu.StringConverter[T]]`
+   *
+   * @tparam T The type of the elements contained within the inner element inside the Cell.
+   * @tparam J Original Java type used by converter.
    */
-  trait ConvertableCell[C <: JfxConvertableCell[T], T]
+  trait ConvertableCell[C <: jfxsc.Cell[T] with Convertable[J], T, J]
     extends SFXDelegate[C] {
+
     /**
      * The `StringConverter` property.
      */
-    def converter: ObjectProperty[StringConverter[T]] = ObjectProperty(delegate.converterProperty.getValue)
-    def converter_=(v: StringConverter[T]) {
+    def converter: ObjectProperty[StringConverter[J]] = ObjectProperty(delegate.converterProperty.getValue)
+    def converter_=(v: StringConverter[J]) {
       converter() = v
     }
+
   }
 
   /**
@@ -70,14 +75,11 @@ package object cell {
   }
 
   /**
-   * [[javafx.scene.control.Cell]]s that contains the method `comboBoxEditableProperty(): jfxbp.BooleanProperty`.
-   */
-  type JfxComboBoxEditableCell[T] = jfxsc.Cell[T] with ComboBoxEditable
-
-  /**
    * Cells which delegate contains the method `comboBoxEditableProperty(): jfxbp.BooleanProperty`.
+   *
+   * @tparam T The type of the elements contained within the inner element inside the Cell.
    */
-  trait ComboBoxEditableCell[C <: JfxComboBoxEditableCell[T], T]
+  trait ComboBoxEditableCell[C <: jfxsc.Cell[T] with ComboBoxEditable, T]
     extends SFXDelegate[C] {
     /**
      * A property representing whether the `ComboBox`, when shown to the user, is editable or not.
@@ -90,6 +92,8 @@ package object cell {
 
   /**
    * Cells which delegate contains the method `updateItem(item: Any, empty: Boolean): Unit`.
+   *
+   * @tparam T The type of the elements contained within the inner element inside the Cell.
    */
   // TODO: Add Implementation note
   trait UpdatableCell[C <: jfxsc.Cell[T], T]
@@ -108,16 +112,6 @@ package object cell {
     def updateItem(item: T, empty: Boolean) = delegate.asInstanceOf[Updated[T]].updateItem(item, empty)
   }
 
-  /*
-   * Types that contains the method `updateItem(item: Any, empty: Boolean): Unit`
-   *
-  type JfxConvertableUpdatableCell[T] = jfxsc.Cell[T] with Convertable[T] with Updated[T]
-
-  trait ConvertableUpdatableCell[C <: JfxConvertableUpdatableCell[T], T]
-    extends SFXDelegate[C]
-    with ConvertableCell[C, T]
-    with UpdatableCell[C, T]
-*/
   /**
    * Types that contains the methods `startEdit(): Unit` and `cancelEdit(): Unit`.
    */
@@ -128,16 +122,81 @@ package object cell {
 
   /**
    * [[javafx.scene.control.Cell]]s that contains the methods `startEdit(): Unit` and `cancelEdit(): Unit`.
+   *
+   * @tparam T The type of the elements contained within the inner element inside the Cell.
    */
   type JfxEditableCell[T] = jfxsc.Cell[T] with Editable
 
   /**
    * Cells which delegate contains the methods `startEdit(): Unit` and `cancelEdit(): Unit`.
+   *
+   * @tparam T The type of the elements contained within the inner element inside the Cell.
    */
   trait EditableCell[C <: jfxsc.Cell[T] with Editable, T]
     extends SFXDelegate[C] {
+
+    /**
+     * Call this function to transition from a non-editing state into an editing state, if the cell is editable.
+     */
     def startEdit = delegate.startEdit
+
+    /**
+     * Call this function to transition from an editing state into a non-editing state, without saving any user input.
+     */
     def cancelEdit = delegate.cancelEdit
+
+  }
+
+  /**
+   * Types that contains the method `getItems(): ObservableList[T]`.
+   *
+   * @tparam T The type of the elements contained within the inner element inside the Cell.
+   */
+  type Itemable[T] = {
+    def getItems(): jfxc.ObservableList[T]
+  }
+
+  /**
+   * [[javafx.scene.control.Cell]]s that contains the method `getItems(): ObservableList[T]`.
+   *
+   * @tparam T The type of the elements contained within the inner element inside the Cell.
+   */
+  trait ItemnableCell[C <: jfxsc.Cell[T] with Itemable[T], T]
+    extends SFXDelegate[C] {
+
+    /**
+     * Returns the items to be displayed in the ChoiceBox when it is showing.
+     */
+    def items: ObservableBuffer[T] = delegate.getItems
+
+  }
+
+  /**
+   * Types that contains the property `selectedStateCallback`.
+   *
+   * @tparam J Original Java type received by Callback
+   */
+  type StateSelectable[J] = {
+    def selectedStateCallbackProperty(): jfxbp.ObjectProperty[jfxu.Callback[J, jfxbv.ObservableValue[java.lang.Boolean]]]
+  }
+
+  /**
+   * Cells which delegate contains the property `selectedStateCallback`.
+   *
+   * @tparam T The type of the elements contained within the inner element inside the Cell.
+   * @tparam J Original Java type received by Callback
+   */
+  trait StateSelectableCell[C <: jfxsc.Cell[T] with StateSelectable[J], T, J]
+    extends SFXDelegate[C] {
+
+    /**
+     * Property representing the Callback that is bound to by the CheckBox shown on screen.
+     */
+    def selectedStateCallback = delegate.selectedStateCallbackProperty
+    def selectedStateCallback_=(v: jfxu.Callback[J, jfxbv.ObservableValue[java.lang.Boolean]]) {
+      selectedStateCallback() = v
+    }
+
   }
 
 }

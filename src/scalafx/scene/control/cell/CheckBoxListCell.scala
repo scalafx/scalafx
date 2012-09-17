@@ -80,7 +80,8 @@ object CheckBoxListCell {
  */
 class CheckBoxListCell[T](override val delegate: jfxscc.CheckBoxListCell[T] = new jfxscc.CheckBoxListCell[T])
   extends ListCell[T](delegate)
-  with ConvertableCell[jfxscc.CheckBoxListCell[T], T]
+  with ConvertableCell[jfxscc.CheckBoxListCell[T], T, T]
+  with StateSelectableCell[jfxscc.CheckBoxListCell[T], T, T]
   with UpdatableCell[jfxscc.CheckBoxListCell[T], T]
   with SFXDelegate[jfxscc.CheckBoxListCell[T]] {
 
@@ -95,13 +96,5 @@ class CheckBoxListCell[T](override val delegate: jfxscc.CheckBoxListCell[T] = ne
    */
   def this(selectedProperty: T => ObservableValue[Boolean, java.lang.Boolean], converter: StringConverter[T]) =
     this(new jfxscc.CheckBoxListCell[T](selectedProperty, converter))
-
-  /**
-   * Property representing the Callback that is bound to by the CheckBox shown on screen.
-   */
-  def selectedStateCallback = delegate.selectedStateCallbackProperty
-  def selectedStateCallback_=(v: jfxu.Callback[T, jfxbv.ObservableValue[java.lang.Boolean]]) {
-    selectedStateCallback() = v
-  }
 
 }
