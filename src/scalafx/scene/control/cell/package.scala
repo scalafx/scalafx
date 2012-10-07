@@ -25,17 +25,18 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
 import javafx.beans.{ property => jfxbp }
 import javafx.beans.{ value => jfxbv }
 import javafx.{ collections => jfxc }
+import javafx.scene.{ control => jfxsc }
 import javafx.{ util => jfxu }
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
+import scalafx.collections.ObservableBuffer
 import scalafx.util.SFXDelegate
 import scalafx.util.StringConverter
-import scalafx.beans.property.BooleanProperty
-import scalafx.collections.ObservableBuffer
+import scalafx.beans.value.ObservableValue
 
 package object cell {
 
@@ -81,6 +82,7 @@ package object cell {
    */
   trait ComboBoxEditableCell[C <: jfxsc.Cell[T] with ComboBoxEditable, T]
     extends SFXDelegate[C] {
+
     /**
      * A property representing whether the `ComboBox`, when shown to the user, is editable or not.
      */
@@ -88,6 +90,7 @@ package object cell {
     def comboBoxEditable_=(v: Boolean) {
       comboBoxEditable() = v
     }
+
   }
 
   /**
@@ -95,9 +98,15 @@ package object cell {
    *
    * @tparam T The type of the elements contained within the inner element inside the Cell.
    */
-  // TODO: Add Implementation note
   trait UpdatableCell[C <: jfxsc.Cell[T], T]
     extends SFXDelegate[C] {
+    /* IMPLEMENTATION NOTE: 
+     * Unlike to what happened with other traits of this package object, it was not possible create a type like 
+     * "type Updated[T] = { def updateItem(item: T, empty: Boolean): Unit }". In this case, the compiler shows this 
+     * error message: "Parameter type in structural refinement may not refer to an abstract type defined outside that 
+     * refinement". The only way for which was possible implement the trait was create an internal type in which 
+     * updateItem method from JavaFX class receive a item of type Any instead type T.
+     */
 
     /**
      * Types that contains the method `updateItem(item: Any, empty: Boolean): Unit`
@@ -110,40 +119,6 @@ package object cell {
      * Updates the item associated with this Cell.
      */
     def updateItem(item: T, empty: Boolean) = delegate.asInstanceOf[Updated[T]].updateItem(item, empty)
-  }
-
-  /**
-   * Types that contains the methods `startEdit(): Unit` and `cancelEdit(): Unit`.
-   */
-  type Editable = {
-    def startEdit(): Unit
-    def cancelEdit(): Unit
-  }
-
-  /**
-   * [[javafx.scene.control.Cell]]s that contains the methods `startEdit(): Unit` and `cancelEdit(): Unit`.
-   *
-   * @tparam T The type of the elements contained within the inner element inside the Cell.
-   */
-  type JfxEditableCell[T] = jfxsc.Cell[T] with Editable
-
-  /**
-   * Cells which delegate contains the methods `startEdit(): Unit` and `cancelEdit(): Unit`.
-   *
-   * @tparam T The type of the elements contained within the inner element inside the Cell.
-   */
-  trait EditableCell[C <: jfxsc.Cell[T] with Editable, T]
-    extends SFXDelegate[C] {
-
-    /**
-     * Call this function to transition from a non-editing state into an editing state, if the cell is editable.
-     */
-    def startEdit = delegate.startEdit
-
-    /**
-     * Call this function to transition from an editing state into a non-editing state, without saving any user input.
-     */
-    def cancelEdit = delegate.cancelEdit
 
   }
 
@@ -172,6 +147,15 @@ package object cell {
   }
 
   /**
+   * Converts a Function of type `T => ObservableValue[Boolean, java.lang.Boolean]` to a JavaFX `Callback` of type 
+   * `[T, javafx.beans.value.ObservableValue[java.lang.Boolean]]` 
+   */
+  private[cell] implicit def selectedBooleanPropertyToGetSelectedProperty[T](selectedProperty: T => ObservableValue[Boolean, java.lang.Boolean]): jfxu.Callback[T, jfxbv.ObservableValue[java.lang.Boolean]] =
+    new jfxu.Callback[T, jfxbv.ObservableValue[java.lang.Boolean]] {
+      def call(x: T) = selectedProperty(x)
+    }
+
+  /**
    * Types that contains the property `selectedStateCallback`.
    *
    * @tparam J Original Java type received by Callback
@@ -183,6 +167,10 @@ package object cell {
   /**
    * Cells which delegate contains the property `selectedStateCallback`.
    *
+   * TODO: Convert selectedStateCallback getter return type from
+   * `jfxbp.ObjectProperty[jfxu.Callback[J, javafx.beans.property.ObservableValue[java.lang.Boolean]]]` to
+   * `ObjectProperty[J => ObservableValue[Boolean, java.lang.Boolean]]`.
+   *
    * @tparam T The type of the elements contained within the inner element inside the Cell.
    * @tparam J Original Java type received by Callback
    */
@@ -190,10 +178,10 @@ package object cell {
     extends SFXDelegate[C] {
 
     /**
-     * Property representing the Callback that is bound to by the CheckBox shown on screen.
+     * Property representing the Callback that is bound to by the element inside the Cell shown on screen.
      */
     def selectedStateCallback = delegate.selectedStateCallbackProperty
-    def selectedStateCallback_=(v: jfxu.Callback[J, jfxbv.ObservableValue[java.lang.Boolean]]) {
+    def selectedStateCallback_=(v: J => ObservableValue[Boolean, java.lang.Boolean]) {
       selectedStateCallback() = v
     }
 

@@ -4,9 +4,9 @@
  * Redistribution and use in source and binary forms or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
- *       notice, this list of conditions and the following disclaimer.
+ *       notice, this Tree of conditions and the following disclaimer.
  *     * Redistributions in binary form must reproduce the above copyright
- *       notice, this list of conditions and the following disclaimer in the
+ *       notice, this Tree of conditions and the following disclaimer in the
  *       documentation and/or other materials provided with the distribution.
  *     * Neither the name of the ScalaFX Project nor the
  *       names of its contributors may be used to endorse or promote products
@@ -33,22 +33,22 @@ import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
- * CheckBoxTreeCell Spec tests.
+ * ChoiceBoxTreeCell Spec tests.
  *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class CheckBoxTreeCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxscc.CheckBoxTreeCell[T], CheckBoxTreeCell[T], jfxscc.CheckBoxTreeCellBuilder[T, _]](classOf[jfxscc.CheckBoxTreeCell[T]], classOf[CheckBoxTreeCell[T]], classOf[jfxscc.CheckBoxTreeCellBuilder[T, _]]) {
+class ChoiceBoxTreeCellSpec[T]
+  extends AbstractSFXDelegateSpec[jfxscc.ChoiceBoxTreeCell[T], ChoiceBoxTreeCell[T], jfxscc.ChoiceBoxTreeCellBuilder[T, _]](classOf[jfxscc.ChoiceBoxTreeCell[T]], classOf[ChoiceBoxTreeCell[T]], classOf[jfxscc.ChoiceBoxTreeCellBuilder[T, _]]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: CheckBoxTreeCell[T]) = {
-    val jfxCheckBoxTreeCell: jfxscc.CheckBoxTreeCell[T] = sfxControl
-    jfxCheckBoxTreeCell
+  protected def convertScalaClassToJavaClass(sfxControl: ChoiceBoxTreeCell[T]) = {
+    val jfxChoiceBoxTreeCell: jfxscc.ChoiceBoxTreeCell[T] = sfxControl
+    jfxChoiceBoxTreeCell
   }
 
-  protected def convertJavaClassToScalaClass(jfxControl: jfxscc.CheckBoxTreeCell[T]) = {
-    val sfxCheckBoxTreeCell: CheckBoxTreeCell[T] = jfxControl
-    sfxCheckBoxTreeCell
+  protected def convertJavaClassToScalaClass(jfxControl: jfxscc.ChoiceBoxTreeCell[T]) = {
+    val sfxChoiceBoxTreeCell: ChoiceBoxTreeCell[T] = jfxControl
+    sfxChoiceBoxTreeCell
   }
 
 }

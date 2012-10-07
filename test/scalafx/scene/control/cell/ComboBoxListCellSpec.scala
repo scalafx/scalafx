@@ -33,22 +33,22 @@ import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
- * CheckBoxTreeCell Spec tests.
+ * ComboBoxListCell Spec tests.
  *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class CheckBoxTreeCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxscc.CheckBoxTreeCell[T], CheckBoxTreeCell[T], jfxscc.CheckBoxTreeCellBuilder[T, _]](classOf[jfxscc.CheckBoxTreeCell[T]], classOf[CheckBoxTreeCell[T]], classOf[jfxscc.CheckBoxTreeCellBuilder[T, _]]) {
+class ComboBoxListCellSpec[T]
+  extends AbstractSFXDelegateSpec[jfxscc.ComboBoxListCell[T], ComboBoxListCell[T], jfxscc.ComboBoxListCellBuilder[T, _]](classOf[jfxscc.ComboBoxListCell[T]], classOf[ComboBoxListCell[T]], classOf[jfxscc.ComboBoxListCellBuilder[T, _]]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: CheckBoxTreeCell[T]) = {
-    val jfxCheckBoxTreeCell: jfxscc.CheckBoxTreeCell[T] = sfxControl
-    jfxCheckBoxTreeCell
+  protected def convertScalaClassToJavaClass(sfxControl: ComboBoxListCell[T]) = {
+    val jfxComboBoxListCell: jfxscc.ComboBoxListCell[T] = sfxControl
+    jfxComboBoxListCell
   }
 
-  protected def convertJavaClassToScalaClass(jfxControl: jfxscc.CheckBoxTreeCell[T]) = {
-    val sfxCheckBoxTreeCell: CheckBoxTreeCell[T] = jfxControl
-    sfxCheckBoxTreeCell
+  protected def convertJavaClassToScalaClass(jfxControl: jfxscc.ComboBoxListCell[T]) = {
+    val sfxComboBoxListCell: ComboBoxListCell[T] = jfxControl
+    sfxComboBoxListCell
   }
 
 }

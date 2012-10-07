@@ -25,30 +25,50 @@
  */
 package scalafx.scene.control.cell
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import javafx.scene.control.{ cell => jfxscc }
+import javafx.{ util => jfxu }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.scene.control.ListCell
+import scalafx.scene.control.ListView
+import scalafx.util.SFXDelegate
+import scalafx.util.StringConverter
+
+object TextFieldListCell {
+  implicit def sfxTextFieldListCell2jfx[T](cell: TextFieldListCell[T]) = cell.delegate
+
+  /**
+   * Creates a TextField cell factory for use in `ListView` controls.
+   */
+  def forListView(): (ListView[String] => ListCell[String]) =
+    (view: ListView[String]) => jfxscc.TextFieldListCell.forListView().call(view)
+
+  /**
+   * Creates a TextField cell factory for use in `ListView` controls.
+   */
+  def forListView[T](converter: StringConverter[T]): (ListView[T] => ListCell[T]) =
+    (view: ListView[T]) => jfxscc.TextFieldListCell.forListView[T](converter).call(view)
+
+  /**
+   * Added to satisfy Spec Texts.
+   */
+  @deprecated(message = "Use forListView[T](StringConverter[T])", since = "1.0")
+  def forListView[T](converter: jfxu.StringConverter[T]) = jfxscc.TextFieldListCell.forListView[T](converter)
+
+}
 
 /**
- * CheckBoxTreeCell Spec tests.
- *
- *
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/TextFieldListCell.html]]
  */
-@RunWith(classOf[JUnitRunner])
-class CheckBoxTreeCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxscc.CheckBoxTreeCell[T], CheckBoxTreeCell[T], jfxscc.CheckBoxTreeCellBuilder[T, _]](classOf[jfxscc.CheckBoxTreeCell[T]], classOf[CheckBoxTreeCell[T]], classOf[jfxscc.CheckBoxTreeCellBuilder[T, _]]) {
+class TextFieldListCell[T](override val delegate: jfxscc.TextFieldListCell[T] = new jfxscc.TextFieldListCell[T])
+  extends ListCell[T](delegate)
+  with ConvertableCell[jfxscc.TextFieldListCell[T], T, T]
+  with UpdatableCell[jfxscc.TextFieldListCell[T], T]
+  with SFXDelegate[jfxscc.TextFieldListCell[T]] {
 
-  protected def convertScalaClassToJavaClass(sfxControl: CheckBoxTreeCell[T]) = {
-    val jfxCheckBoxTreeCell: jfxscc.CheckBoxTreeCell[T] = sfxControl
-    jfxCheckBoxTreeCell
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxscc.CheckBoxTreeCell[T]) = {
-    val sfxCheckBoxTreeCell: CheckBoxTreeCell[T] = jfxControl
-    sfxCheckBoxTreeCell
-  }
+  /**
+   * Creates a `TextFieldListCell` that provides a TextField when put into editing mode that allows editing of the
+   * cell content.
+   */
+  def this(converter: StringConverter[T]) = this(new jfxscc.TextFieldListCell[T](converter))
 
 }
