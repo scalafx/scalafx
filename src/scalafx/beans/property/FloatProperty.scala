@@ -38,7 +38,7 @@ object FloatProperty {
    * @param value the initial value
    * @return      the observable instance
    */
-  def apply(value: Float) = new FloatProperty(new jfxbp.SimpleFloatProperty(value))
+  implicit def apply(value: Float) = new FloatProperty(new jfxbp.SimpleFloatProperty(value))
 }
 
 class FloatProperty(override val delegate: jfxbp.FloatProperty = new jfxbp.SimpleFloatProperty)

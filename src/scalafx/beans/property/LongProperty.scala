@@ -38,7 +38,7 @@ object LongProperty {
    * @param value the initial value
    * @return      the observable instance
    */
-  def apply(value: Int) = new LongProperty(new jfxbp.SimpleLongProperty(value))
+  implicit def apply(value: Int) = new LongProperty(new jfxbp.SimpleLongProperty(value))
 }
 
 class LongProperty(override val delegate: jfxbp.LongProperty = new jfxbp.SimpleLongProperty)

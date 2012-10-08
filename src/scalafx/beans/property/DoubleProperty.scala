@@ -38,7 +38,7 @@ object DoubleProperty {
    * @param value the initial value
    * @return      the observable instance
    */
-  def apply(value: Double) = new DoubleProperty(new jfxbp.SimpleDoubleProperty(value))
+  implicit def apply(value: Double) = new DoubleProperty(new jfxbp.SimpleDoubleProperty(value))
 }
 
 class DoubleProperty(override val delegate: jfxbp.DoubleProperty = new jfxbp.SimpleDoubleProperty)

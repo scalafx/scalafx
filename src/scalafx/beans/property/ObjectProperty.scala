@@ -38,7 +38,7 @@ object ObjectProperty {
    * @param value the initial value
    * @return      the observable instance
    */
-  def apply[J <: AnyRef](value: J) = new ObjectProperty[J](new jfxbp.SimpleObjectProperty[J](value))
+  implicit def apply[J <: AnyRef](value: J) = new ObjectProperty[J](new jfxbp.SimpleObjectProperty[J](value))
 }
 
 class ObjectProperty[J <: AnyRef](override val delegate: jfxbp.ObjectProperty[J] = new jfxbp.SimpleObjectProperty[J])

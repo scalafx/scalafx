@@ -38,7 +38,7 @@ object StringProperty {
    * @param value the initial value
    * @return      the StringProperty instance
    */
-  implicit def fromString(value:String) = new StringProperty(value)
+  implicit def apply(value:String) = new StringProperty(value)
 }
 
 class StringProperty(override val delegate: jfxbp.StringProperty = new jfxbp.SimpleStringProperty)
