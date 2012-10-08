@@ -24,30 +24,19 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.testutil
 
-import org.scalatest.Assertions._
+import java.lang.reflect.Method
 import java.lang.reflect.Modifier
 
+import org.scalatest.Assertions._
+
 trait PropertyComparator {
-  private def getScalaFXProperties(scalafxClass:Class[_]) = {
+
+  private def getScalaFXProperties(scalafxClass: Class[_]) = {
     scalafxClass.getMethods
       .map(m => m.getName)
       .toSet
-  }
-
-  def compareProperties(javafxClass:Class[_], scalafxClass:Class[_]) {
-    val javafxRegex = """(.*)Property""".r
-    val javafxProperties = javafxClass.getDeclaredMethods
-      .filter(m => Modifier.isPublic(m.getModifiers) )
-      .filterNot(m => m.getName.startsWith("impl_"))
-      .map(m => javafxRegex.findFirstMatchIn(m.getName))
-      .flatMap(x => x)
-      .map(_.group(1))
-      .toSet
-    val diff = javafxProperties diff getScalaFXProperties(scalafxClass)
-    assert(diff.isEmpty, "Missing Properties: " + diff.toList.sorted.mkString(", "))
   }
 
   private def scalaizePropertyNames(name: String) =
@@ -59,7 +48,39 @@ trait PropertyComparator {
   /* TODO apply scalaizePropertyNames only to the javafx method names. */
   private def makeMethodSignature(m: java.lang.reflect.Method) = scalaizePropertyNames(m.getName) + m.getParameterTypes.map(_.getName).mkString("(", ",", ")")
 
-  def compareBuilderProperties(javafxClassBuilder:Class[_], scalafxClass:Class[_]) {
+  private def isSpecialMethodName(name: String) = (name == "applyTo") || (name == "create") || (name == "build") ||
+    name.startsWith("impl_") || name.endsWith("Property") ||
+    name.startsWith("get") || name.startsWith("set") || name.startsWith("is")
+
+  private def compareMethods(jfxClass: Class[_], sfxClass: Class[_], jfxMethodFilter: Method => Boolean) = {
+    val sfxSignatures = sfxClass.getDeclaredMethods
+      .filter(m => Modifier.isPublic(m.getModifiers))
+      .map(makeMethodSignature(_))
+      .toSet
+
+    val jfxSignatures = jfxClass.getDeclaredMethods
+      .filter(jfxMethodFilter)
+      .filterNot(m => isSpecialMethodName(m.getName))
+      .map(makeMethodSignature(_))
+      .toSet
+
+    jfxSignatures diff sfxSignatures
+  }
+
+  def compareProperties(javafxClass: Class[_], scalafxClass: Class[_]) {
+    val javafxRegex = """(.*)Property""".r
+    val javafxProperties = javafxClass.getDeclaredMethods
+      .filter(m => Modifier.isPublic(m.getModifiers))
+      .filterNot(m => m.getName.startsWith("impl_"))
+      .map(m => javafxRegex.findFirstMatchIn(m.getName))
+      .flatMap(x => x)
+      .map(_.group(1))
+      .toSet
+    val diff = javafxProperties diff getScalaFXProperties(scalafxClass)
+    assert(diff.isEmpty, "Missing Properties: " + diff.toList.sorted.mkString(", "))
+  }
+
+  def compareBuilderProperties(javafxClassBuilder: Class[_], scalafxClass: Class[_]) {
     val javafxBuilderProperties = javafxClassBuilder.getDeclaredMethods // todo - this eventually needs to use: getMethods
       .filter(m => Modifier.isPublic(m.getModifiers))
       .map(_.getName)
@@ -69,44 +90,26 @@ trait PropertyComparator {
     assert(diff.isEmpty, "Missing Properties: " + diff.toList.sorted.mkString(", "))
   }
 
-  /**This can be used to compare instance methods declared in a scalafx class with instance methods declared in
+  /**
+   * This can be used to compare instance methods declared in a scalafx class with instance methods declared in
    * a javafx class. This should never actually be necessary, as "compareProperties" above will find all of the
    * property names that need to be implemented, and all other instance methods should be handled via implicit
    * conversions. However, having written the code, I'm leaving it in, in case it might prove useful as a way of
    * exploring the method signatures of a javafx class.
    */
-  def compareDeclaredMethods(jfxClass:Class[_], sfxClass:Class[_]) {
-    val sfxMethods = sfxClass.getDeclaredMethods.filter(m => Modifier.isPublic(m.getModifiers))
-    val sfxSignatures = sfxMethods.map(makeMethodSignature(_)).toSet
+  def compareDeclaredMethods(jfxClass: Class[_], sfxClass: Class[_]) {
+    val diff = this.compareMethods(jfxClass, sfxClass, m => !Modifier.isStatic(m.getModifiers) && Modifier.isPublic(m.getModifiers))
 
-    val jfxMethods = jfxClass.getDeclaredMethods
-      .filter(m => Modifier.isPublic(m.getModifiers))
-      .filterNot(m => m.getName == "applyTo" || m.getName == "create" || m.getName == "build"
-      || m.getName.startsWith("impl_") || m.getName.endsWith("Property")
-      || m.getName.startsWith("get") || m.getName.startsWith("set") || m.getName.startsWith("is")
-    )
-    val jfxSignatures = jfxMethods.map(makeMethodSignature(_)).toSet
-
-    val diff = jfxSignatures diff sfxSignatures
     assert(diff.isEmpty, "Missing Methods: " + diff.toList.sorted.mkString(", "))
   }
 
-  /**Similar to "compareProperties", the following compares the static methods in a javafx class
+  /**
+   * Similar to "compareProperties", the following compares the static methods in a javafx class
    * to the methods defined on a scalafx object.
    */
-  def compareStaticMethods(jfxClass:Class[_], sfxObject:Class[_]) {
-    val jfxStaticMethods = jfxClass.getDeclaredMethods
-      .filter(m => Modifier.isStatic(m.getModifiers) && Modifier.isPublic(m.getModifiers))
-    val jfxStaticSigs = jfxStaticMethods
-      .filterNot(m => m.getName == "applyTo" || m.getName == "create" || m.getName == "build"
-      || m.getName.startsWith("impl_") || m.getName.endsWith("Property")
-      || m.getName.startsWith("get") || m.getName.startsWith("set") || m.getName.startsWith("is")
-      ).map(makeMethodSignature(_)).toSet
+  def compareStaticMethods(jfxClass: Class[_], sfxObject: Class[_]) {
+    val diff = this.compareMethods(jfxClass, sfxObject, m => Modifier.isStatic(m.getModifiers) && Modifier.isPublic(m.getModifiers))
 
-    val sfxMethods = sfxObject.getDeclaredMethods.filter(m => Modifier.isPublic(m.getModifiers))
-    val sfxSignatures = sfxMethods.map(makeMethodSignature(_)).toSet
-
-    val diff = jfxStaticSigs diff sfxSignatures
     assert(diff.isEmpty, "Missing Static Methods: " + diff.toList.sorted.mkString(", "))
   }
 }
