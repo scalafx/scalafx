@@ -70,7 +70,7 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
    * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html#changed(javafx.beans.value.ObservableValue, T, T) changed]]
    * method from ChangeListener.
    *
-   * @param op Function that receives a [[ObservableValue]], the old value and the new value.
+   * @param op Function that receives a [[javafx.beans.value.ObservableValue]], the old value and the new value.
    * It will be called when value changes.
    */
   def onChange[J1 >: J](op: (ObservableValue[T, J], J1, J1) => Unit) {
@@ -94,4 +94,6 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
       }
     })
   }
+
+  def change = ChangeEventSource[T, J, ObservableValue[T, J]](this)
 }
