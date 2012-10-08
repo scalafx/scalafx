@@ -42,7 +42,7 @@ trait Observable extends SFXDelegate[jfxb.Observable] {
    * [[http://docs.oracle.com/javafx/2/api/javafx/beans/InvalidationListener.html#invalidated(javafx.beans.Observable) invalidated]]
    * method from InvalidationListener.
    *
-   * @param op Function that receives a [[Observable]]. It will be called when value was invalidated.
+   * @param op Function that receives a [[javafx.beans.Observable]]. It will be called when value was invalidated.
    */
   def onInvalidate(op: Observable => Unit) {
     delegate.addListener(new jfxb.InvalidationListener {
@@ -65,4 +65,6 @@ trait Observable extends SFXDelegate[jfxb.Observable] {
       }
     })
   }
+
+  def invalidate = InvalidateEventSource(this)
 }

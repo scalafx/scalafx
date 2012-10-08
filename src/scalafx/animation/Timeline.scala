@@ -49,8 +49,11 @@ class Timeline(override val delegate: jfxa.Timeline = new jfxa.Timeline())
   def this(targetFramerate: Double) =
     this(new jfxa.Timeline(targetFramerate))
 
-  def this(targetFramerate: Double, keyFrames: Seq[_ <: KeyFrame]) =
-    this(new jfxa.Timeline(targetFramerate, keyFrames.map(_.delegate): _*))
+  def this(targetFramerate: Double, keyFrames: Seq[_ <: KeyFrame]) = {
+    // HACK: for some reason this does not compile with scala 2.10.0-M7
+    // this(new jfxa.Timeline(targetFramerate, keyFrames.map(_.delegate).toArray: _*))
+    this(new jfxa.Timeline(targetFramerate, keyFrames.map((keyFrame:KeyFrame) => keyFrame.delegate).toArray: _*))
+  }
 
     
   def keyFrames = delegate.getKeyFrames
