@@ -3,8 +3,8 @@ package scalafx.event
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.FlatSpec
+import scalafx.Includes._
 import scalafx.beans.property.StringProperty
-import scalafx.beans.Observable
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,10 +21,10 @@ class SubscriptionEventHandler extends FlatSpec {
     val property: StringProperty = ""
     var called = false
 
-    val subscription = property.invalidate.subscribe((observable: Observable) => {
+    val subscription = property onInvalidate {
       called = true
-      assert(observable === property)
-    })
+      ()
+    }
 
     property set "one"
     assert(called === true)
