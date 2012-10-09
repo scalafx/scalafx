@@ -29,6 +29,7 @@ package scalafx.beans
 
 import javafx.{ beans => jfxb }
 import scalafx.util.SFXDelegate
+import scalafx.event.subscriptions.Subscription
 
 object Observable {
   implicit def sfxObservable2jfx(o: Observable) = o.delegate
@@ -44,12 +45,20 @@ trait Observable extends SFXDelegate[jfxb.Observable] {
    *
    * @param op Function that receives a [[javafx.beans.Observable]]. It will be called when value was invalidated.
    */
-  def onInvalidate(op: Observable => Unit) {
-    delegate.addListener(new jfxb.InvalidationListener {
+  def onInvalidate(op: Observable => Unit):Subscription = {
+    val listener = new jfxb.InvalidationListener {
       def invalidated(observable: jfxb.Observable) {
         op(Observable.this)
       }
-    })
+    }
+
+    delegate.addListener(listener)
+
+    new Subscription {
+      def cancel() {
+        delegate.removeListener(listener)
+      }
+    }
   }
 
   /**
@@ -58,13 +67,19 @@ trait Observable extends SFXDelegate[jfxb.Observable] {
    *
    * @param op A Function with no arguments. It will be called when value was invalidated.
    */
-  def onInvalidate(op: => Unit) {
-    delegate.addListener(new jfxb.InvalidationListener {
+  def onInvalidate(op: => Unit):Subscription = {
+    val listener = new jfxb.InvalidationListener {
       def invalidated(observable: jfxb.Observable) {
         op
       }
-    })
-  }
+    }
 
-  def invalidate = InvalidateEventSource(this)
+    delegate.addListener(listener)
+
+    new Subscription {
+      def cancel() {
+        delegate.removeListener(listener)
+      }
+    }
+  }
 }

@@ -27,20 +27,29 @@
 
 package scalafx.beans.value
 
-import javafx.beans.{ value => jfxbv }
+import javafx.beans.{value => jfxbv}
 import scalafx.beans.Observable
 import scalafx.util.SFXDelegate
+import scalafx.event.subscriptions.Subscription
 
 object ObservableValue {
   implicit def sfxObservableValue2jfx[T, J](ov: ObservableValue[T, J]) = ov.delegate
+
   // Conversions to JavaFX Marker classes (no need for these in scala, due to specialized classes)
   implicit def sfxObservableValue2jfxIntegerValue(ov: ObservableValue[Int, Number]) = ov.delegate.asInstanceOf[jfxbv.ObservableIntegerValue]
+
   implicit def sfxObservableValue2jfxLongValue(ov: ObservableValue[Long, Number]) = ov.delegate.asInstanceOf[jfxbv.ObservableLongValue]
+
   implicit def sfxObservableValue2jfxFloatValue(ov: ObservableValue[Float, Number]) = ov.delegate.asInstanceOf[jfxbv.ObservableFloatValue]
+
   implicit def sfxObservableValue2jfxDoubleValue(ov: ObservableValue[Double, Number]) = ov.delegate.asInstanceOf[jfxbv.ObservableDoubleValue]
+
   implicit def sfxObservableValue2jfxBooleanValue(ov: ObservableValue[Boolean, java.lang.Boolean]) = ov.delegate.asInstanceOf[jfxbv.ObservableBooleanValue]
+
   implicit def sfxObservableValue2jfxStringValue(ov: ObservableValue[String, String]) = ov.delegate.asInstanceOf[jfxbv.ObservableStringValue]
+
   implicit def sfxObservableValue2jfxObjectValue[T](ov: ObservableValue[T, T]) = ov.delegate.asInstanceOf[jfxbv.ObservableObjectValue[T]]
+
   implicit def sfxObservableValue2jfxNumberValue(ov: ObservableValue[Number, Number]) = ov.delegate.asInstanceOf[jfxbv.ObservableNumberValue]
 }
 
@@ -71,14 +80,22 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
    * method from ChangeListener.
    *
    * @param op Function that receives a [[javafx.beans.value.ObservableValue]], the old value and the new value.
-   * It will be called when value changes.
+   *           It will be called when value changes.
    */
-  def onChange[J1 >: J](op: (ObservableValue[T, J], J1, J1) => Unit) {
-    delegate.addListener(new jfxbv.ChangeListener[J1] {
+  def onChange[J1 >: J](op: (ObservableValue[T, J], J1, J1) => Unit): Subscription = {
+    val listener = new jfxbv.ChangeListener[J1] {
       def changed(observable: jfxbv.ObservableValue[_ <: J1], oldValue: J1, newValue: J1) {
         op(ObservableValue.this, oldValue, newValue)
       }
-    })
+    }
+
+    delegate.addListener(listener)
+
+    new Subscription {
+      def cancel() {
+        delegate.removeListener(listener)
+      }
+    }
   }
 
   /**
@@ -87,13 +104,19 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
    *
    * @param op A Function with no arguments. It will be called when value changes.
    */
-  def onChange[J1 >: J](op: => Unit) {
-    delegate.addListener(new jfxbv.ChangeListener[J1] {
+  def onChange[J1 >: J](op: => Unit): Subscription = {
+    val listener = new jfxbv.ChangeListener[J1] {
       def changed(observable: jfxbv.ObservableValue[_ <: J1], oldValue: J1, newValue: J1) {
         op
       }
-    })
-  }
+    }
 
-  def change = ChangeEventSource[T, J, ObservableValue[T, J]](this)
+    delegate.addListener(listener)
+
+    new Subscription {
+      def cancel() {
+        delegate.removeListener(listener)
+      }
+    }
+  }
 }

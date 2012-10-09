@@ -38,14 +38,11 @@ import scala.collection.mutable.Builder
 import scala.collection.GenTraversableOnce
 import scala.collection.TraversableOnce
 
-import ObservableBuffer.Add
-import ObservableBuffer.Change
-import ObservableBuffer.Remove
-import ObservableBuffer.Reorder
 import javafx.{collections => jfxc}
 import java.{util => ju}
 import scalafx.beans.Observable
 import scalafx.util.SFXDelegate
+import scalafx.event.subscriptions.Subscription
 
 /**
  * Companion Object for [[ObservableBuffer]].
@@ -107,7 +104,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
   /**
    * Shuffles all elements in the observable list. Fires only '''one''' change notification on
    * the list.
-   * 
+   *
    * @param buffer Buffer to be shuffled
    */
   def shuffle[T](buffer: ObservableBuffer[T]) {
@@ -117,17 +114,17 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
   /**
    * Shuffles all elements in the observable list. Fires only '''one''' change notification on
    * the list.
-   * 
+   *
    * @param buffer Buffer to be shuffled
    * @param rnd the random generator used for shuffling
    */
   def shuffle[T](buffer: ObservableBuffer[T], rnd: ju.Random) {
     jfxc.FXCollections.shuffle(buffer, rnd)
-  } 
+  }
 
   /**
    * Concatenates more observable buffers into one.
-   * 
+   *
    * @param buffers Buffers to concatenate
    */
   def concat[T](buffers: ObservableBuffer[T]*): ObservableBuffer[T] = {
@@ -162,13 +159,13 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
  * Wrapper class to [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableList.html ObservableList]]'s
  * JavaFX.
  *
- *  @tparam T Type of this Buffer
+ * @tparam T Type of this Buffer
  *
- *  @define OB ObservableBuffer
- *  @define ownOB The ObservableBuffer itself.
- *  @define buf Buffer
- *  @define WhyOverride Overrided method to make it behave like wrapped ObservableList.
- *  @define noCL The new $OB won't have Change and Invalidation Listeners from original $buf.
+ * @define OB ObservableBuffer
+ * @define ownOB The ObservableBuffer itself.
+ * @define buf Buffer
+ * @define WhyOverride Overrided method to make it behave like wrapped ObservableList.
+ * @define noCL The new $OB won't have Change and Invalidation Listeners from original $buf.
  *
  */
 class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.FXCollections.observableArrayList[T])
@@ -261,13 +258,13 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
 
   /**
    * Creates a new collection with all the elements of this collection except the two
-   *  or more specified elements. $noCL
+   * or more specified elements. $noCL
    *
    * @param elem1 First element to remove
    * @param elem2 Second element to remove
    * @param elems Other elements to remove
    * @return a new $OB consisting of all the elements of this $buf except `elem1`, `elem2` and
-   * those in `elems`. $noCL
+   *         those in `elems`. $noCL
    */
   override def -(elem1: T, elem2: T, elems: T*) = {
     val xs = Buffer(elem1, elem2) ++= elems
@@ -280,8 +277,8 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * Creates a new $OB with all the elements of this $buf except those provided by
    * the specified traversable object. $noCL
    *
-   *  @param xs The traversable object.
-   *  @return A new $OB with all the elements of this $buf except those in `xs`. $noCL
+   * @param xs The traversable object.
+   * @return A new $OB with all the elements of this $buf except those in `xs`. $noCL
    */
   override def --(xs: GenTraversableOnce[T]) = {
     val ob = new ObservableBuffer[T]
@@ -342,7 +339,9 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    */
   def iterator = new Iterator[T] {
     val it = delegate.iterator
+
     def hasNext = it.hasNext
+
     def next = it.next
   }
 
@@ -352,18 +351,18 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
   def length = delegate.size
 
   /**
-   *  Removes the element at a given index from this $OB.
+   * Removes the element at a given index from this $OB.
    *
-   *  @param n index the index of the element to be removed
-   *  @param Removed element
+   * @param n index the index of the element to be removed
+   * @param Removed element
    */
   def remove(n: Int) = delegate.remove(n)
 
   /**
    * Removes a number of elements from a given index position. $WhyOverride
    *
-   *  @param n  the index which refers to the first element to remove.
-   *  @param count  the number of elements to remove.
+   * @param n  the index which refers to the first element to remove.
+   * @param count  the number of elements to remove.
    */
   override def remove(n: Int, count: Int) {
     delegate.subList(n, n + count).clear()
@@ -371,7 +370,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
 
   /**
    * Replaces element at given index with a new value.
-   * 
+   *
    * @param n the index of the element to replace.
    * @param newelem new value to be positioned at position n.
    */
@@ -425,8 +424,8 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
   /**
    * Sorts this $OB using a Comparator function
    *
-   *  @param lt Comparator function that returns `true` if first element was lesser than second
-   *  or `false` otherwise.
+   * @param lt Comparator function that returns `true` if first element was lesser than second
+   *           or `false` otherwise.
    */
   def sort(lt: (T, T) => Boolean) {
     jfxc.FXCollections.sort(delegate, new ju.Comparator[T] {
@@ -441,10 +440,11 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * modifications data.
    *
    * @param Function that will handle this $OB's modifications data to be activated when
-   * some change was made.
+   *                 some change was made.
+   * @return A subscription object
    */
-  def onChange[T1 >: T](op: (ObservableBuffer[T], Seq[Change]) => Unit) {
-    delegate.addListener(new jfxc.ListChangeListener[T1] {
+  def onChange[T1 >: T](op: (ObservableBuffer[T], Seq[Change]) => Unit): Subscription = {
+    val listener = new jfxc.ListChangeListener[T1] {
       def onChanged(c: jfxc.ListChangeListener.Change[_ <: T1]) {
         var changes = ArrayBuffer.empty[Change]
         while (c.next()) {
@@ -462,7 +462,15 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
         }
         op(ObservableBuffer.this, changes)
       }
-    })
+    }
+
+    delegate.addListener(listener)
+
+    new Subscription {
+      def cancel() {
+        delegate.removeListener(listener)
+      }
+    }
   }
 
   /**
@@ -470,12 +478,21 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * modifications data.
    *
    * @param op No-argument function to be activated when some change in this $OB was made.
+   * @return A subscription object
    */
-  def onChange[T1 >: T](op: => Unit) {
-    delegate.addListener(new jfxc.ListChangeListener[T1] {
+  def onChange[T1 >: T](op: => Unit): Subscription = {
+    val listener = new jfxc.ListChangeListener[T1] {
       def onChanged(c: jfxc.ListChangeListener.Change[_ <: T1]) {
         op
       }
-    })
+    }
+
+    delegate.addListener(listener)
+
+    new Subscription {
+      def cancel() {
+        delegate.removeListener(listener)
+      }
+    }
   }
 }
