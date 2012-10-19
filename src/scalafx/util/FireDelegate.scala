@@ -26,26 +26,28 @@
  */
 package scalafx.util
 
-/**
- * Unify classes that contains a fire() method that has no return (void)
- */
-trait FireDelegate[+D <: Object] {
+import FireDelegate._
+
+object FireDelegate {
 
   /**
    * Defines a Type that contains a fire() method that has no return (void)
    */
   type Fired = {
-    def fire: Unit
+    def fire(): Unit
   }
 
-  /**
-   * JavaFX class that contains a fire() method that has no return (void)
-   */
-  protected def firedDelegate: Fired
+}
+
+/**
+ * Unify classes that contains a fire() method that has no return (void)
+ */
+trait FireDelegate[J <: Object with Fired]
+  extends SFXDelegate[J] {
 
   /**
    * Fires some kind of event.
    */
-  def fire = firedDelegate.fire
+  def fire = delegate.fire
 
 }

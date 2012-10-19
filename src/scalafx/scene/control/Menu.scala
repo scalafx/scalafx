@@ -32,7 +32,6 @@ import javafx.scene.{ control => jfxsc }
 import javafx.{ event => jfxe }
 import scalafx.scene.Node._
 import scalafx.scene.Node
-import scalafx.util.FireDelegate
 import scalafx.util.SFXDelegate
 
 object Menu {
@@ -42,7 +41,6 @@ object Menu {
 class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
   extends MenuItem(delegate)
   with jfxe.EventTarget
-  with FireDelegate[jfxsc.MenuItem]
   with SFXDelegate[jfxsc.Menu] {
 
   /**

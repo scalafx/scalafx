@@ -38,10 +38,8 @@ object Mnemonic {
 }
 
 class Mnemonic(override val delegate: jfxsi.Mnemonic)
-  extends SFXDelegate[jfxsi.Mnemonic]
-  with FireDelegate[jfxsi.Mnemonic] {
-
-  def firedDelegate = delegate
+  extends FireDelegate[jfxsi.Mnemonic]
+  with SFXDelegate[jfxsi.Mnemonic] {
 
   /**
    * Constructs a Mnemonic with the specified target Node and trigger KeyCombination.

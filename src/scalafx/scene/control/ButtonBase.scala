@@ -40,10 +40,8 @@ object ButtonBase {
 
 class ButtonBase(override val delegate: jfxsc.ButtonBase)
   extends Labeled(delegate)
-  with SFXDelegate[jfxsc.ButtonBase]
-  with FireDelegate[jfxsc.ButtonBase] {
-
-  def firedDelegate = delegate
+  with FireDelegate[jfxsc.ButtonBase]
+  with SFXDelegate[jfxsc.ButtonBase] {
 
   /**
    * Indicates that the button has been "armed" such that a mouse release will cause the button's action to be invoked.

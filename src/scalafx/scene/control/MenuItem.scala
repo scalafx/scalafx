@@ -40,9 +40,9 @@ object MenuItem {
 }
 
 class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
-  extends SFXDelegate[jfxsc.MenuItem]
+  extends jfxe.EventTarget
   with FireDelegate[jfxsc.MenuItem]
-  with jfxe.EventTarget {
+  with SFXDelegate[jfxsc.MenuItem] {
 
   /**
    * Constructs a MenuItem and sets the display text with the specified text
@@ -54,8 +54,6 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    * Node to the given node.
    */
   def this(text: String, graphic: Node) = this(new jfxsc.MenuItem(text, graphic))
-
-  def firedDelegate = delegate
 
   /**
    *
@@ -176,7 +174,6 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) =
     delegate.removeEventHandler(eventType, eventHandler)
 
-
   /**
    * The event handler that is associated with invocation of an accelerator for a MenuItem.
    * This can happen when a key sequence for an accelerator is pressed.
@@ -184,7 +181,7 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    * @since 2.2
    */
   def onMenuValidation = delegate.onMenuValidationProperty()
-  def onMenuValidation_=( eventHandler: jfxe.EventHandler[jfxe.Event] ) {
+  def onMenuValidation_=(eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onMenuValidation() = eventHandler
   }
 
