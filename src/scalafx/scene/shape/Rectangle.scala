@@ -47,29 +47,35 @@ object Rectangle {
     new Rectangle(new jfxss.Rectangle(width, height, fill))
 }
 
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/shape/Rectangle.html]]
+ *
+ */
 class Rectangle(override val delegate: jfxss.Rectangle = new jfxss.Rectangle())
   extends Shape(delegate)
-  with SFXDelegate[jfxss.Rectangle]
   with PositionDelegate
-  with DimensionDelegate {
-
-  /**
-   * Defines the height and width of the rectangle.
-   */
-  def dimensionedDelegate = delegate.asInstanceOf[Dimensioned]
+  with DimensionDelegate[jfxss.Rectangle]
+  with SFXDelegate[jfxss.Rectangle] {
 
   /**
    * Defines the X and Y coordinates of the upper-left corner of the rectangle.
    */
   def positionedDelegate = delegate.asInstanceOf[Positioned]
 
-  def arcWidth :DoubleProperty = delegate.arcWidthProperty
+  /**
+   * Defines the vertical diameter of the arc at the four corners of the rectangle.
+   */
+  def arcWidth: DoubleProperty = delegate.arcWidthProperty
   def arcWidth_=(v: Double) {
     arcWidth() = v
   }
 
-  def arcHeight :DoubleProperty = delegate.arcHeightProperty
+  /**
+   * Defines the horizontal diameter of the arc at the four corners of the rectangle.
+   */
+  def arcHeight: DoubleProperty = delegate.arcHeightProperty
   def arcHeight_=(v: Double) {
     arcHeight() = v
   }
+
 }

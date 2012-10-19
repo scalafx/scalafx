@@ -1,5 +1,3 @@
-package scalafx.scene.effect
-
 /*
 * Copyright (c) 2012, ScalaFX Project
 * All rights reserved.
@@ -26,9 +24,10 @@ package scalafx.scene.effect
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{ effect => jfxse, paint => jfxsp }
+import scalafx.Includes._
 import scalafx.scene.paint.Color
 import scalafx.util.SFXDelegate
 import scalafx.util.DimensionDelegate
@@ -40,7 +39,7 @@ object DropShadow {
 class DropShadow(override val delegate: jfxse.DropShadow = new jfxse.DropShadow())
   extends Effect(delegate)
   with InputedEffect
-  with DimensionDelegate
+  with DimensionDelegate[jfxse.DropShadow]
   with SFXDelegate[jfxse.DropShadow] {
 
   /**
@@ -59,11 +58,6 @@ class DropShadow(override val delegate: jfxse.DropShadow = new jfxse.DropShadow(
    */
   def this(radius: Double, offsetX: Double, offsetY: Double, color: Color) =
     this(new jfxse.DropShadow(radius, offsetX, offsetY, color))
-
-  /**
-   * Indicates the vertical and horizontal sizes of the shadow blur kernel.
-   */
-  def dimensionedDelegate = delegate.asInstanceOf[Dimensioned]
 
   /**
    * The input for this Effect.

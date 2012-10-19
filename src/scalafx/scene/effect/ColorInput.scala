@@ -24,11 +24,10 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
+import scalafx.Includes._
 import scalafx.scene.paint._
 import scalafx.util.SFXDelegate
 import scalafx.util.PositionDelegate
@@ -41,16 +40,10 @@ object ColorInput {
 class ColorInput(override val delegate: jfxse.ColorInput = new jfxse.ColorInput)
   extends Effect(delegate)
   with PositionDelegate
-  with DimensionDelegate
+  with DimensionDelegate[jfxse.ColorInput]
   with SFXDelegate[jfxse.ColorInput] {
 
   def positionedDelegate = delegate.asInstanceOf[Positioned]
-
-  /**
-   * Indicates the height and width of the region to be flooded, relative to the local coordinate
-   * space of the content Node.
-   */
-  def dimensionedDelegate = delegate.asInstanceOf[Dimensioned]
 
   /**
    * Creates a new instance of ColorInput with the specified x, y, width, height, and paint.

@@ -24,11 +24,10 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
+import scalafx.Includes._
 import scalafx.scene.paint.Color
 import scalafx.util.DimensionDelegate
 import scalafx.util.SFXDelegate
@@ -37,20 +36,31 @@ object InnerShadow {
   implicit def sfxInnerShadow2jfx(ii: InnerShadow) = ii.delegate
 }
 
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/effect/InnerShadow.html]]
+ */
 class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShadow)
   extends Effect(delegate)
   with InputedEffect
-  with DimensionDelegate
+  with DimensionDelegate[jfxse.InnerShadow]
   with SFXDelegate[jfxse.InnerShadow] {
 
-  def this(blurType: jfxse.BlurType, color: Color, radius: Double, choke: Double, offsetX: Double, offsetY: Double) = this(new jfxse.InnerShadow(blurType, color, radius, choke, offsetX, offsetY))
+  /**
+   * Creates a new instance of InnerShadow with the specified blurType, color, radius, spread, offsetX and offsetY.
+   */
+  def this(blurType: jfxse.BlurType, color: Color, radius: Double, choke: Double, offsetX: Double, offsetY: Double) = 
+    this(new jfxse.InnerShadow(blurType, color, radius, choke, offsetX, offsetY))
 
+  /**
+   * Creates a new instance of InnerShadow with specified radius and color.
+   */
   def this(radius: Double, color: Color) = this(new jfxse.InnerShadow(radius, color))
 
   /**
-   * The vertical and horizontal size of the shadow blur kernel.
+   * Creates a new instance of InnerShadow with specified radius, offsetX, offsetY and color.
    */
-  def dimensionedDelegate = delegate.asInstanceOf[Dimensioned]
+  def this(radius: Double, offsetX: Double, offsetY: Double, color: Color) = 
+    this(new jfxse.InnerShadow(radius, offsetX, offsetY, color))
 
   def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 

@@ -39,18 +39,13 @@ object BoxBlur {
 class BoxBlur(override val delegate: jfxse.BoxBlur = new jfxse.BoxBlur)
   extends Effect(delegate)
   with InputedEffect
-  with DimensionDelegate
+  with DimensionDelegate[jfxse.BoxBlur]
   with SFXDelegate[jfxse.BoxBlur] {
 
   /**
    * Creates a new instance of BoxBlur with specified width, height and iterations.
    */
   def this(width: Double, height: Double, iterations: Int) = this(new jfxse.BoxBlur(width, height, iterations))
-
-  /**
-   * The horizontal and vertical dimensions of the blur effect.
-   */
-  def dimensionedDelegate = delegate.asInstanceOf[Dimensioned]
 
   def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 

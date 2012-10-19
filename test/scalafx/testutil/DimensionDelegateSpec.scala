@@ -26,10 +26,9 @@
  */
 package scalafx.testutil
 
-import org.scalatest.matchers.ShouldMatchers.be
-import org.scalatest.matchers.ShouldMatchers.convertToAnyShouldWrapper
+import org.scalatest.matchers.ShouldMatchers._
 import org.scalatest.FlatSpec
-import scalafx.Includes.jfxDoubleProperty2sfx
+import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.util.PositionDelegate
 import scalafx.util.DimensionDelegate
@@ -37,7 +36,7 @@ import scalafx.util.DimensionDelegate
 /**
  * Trait to test DimensionDelegate subclasses
  */
-trait DimensionDelegateSpec[D <: DimensionDelegate] extends FlatSpec {
+trait DimensionDelegateSpec[D <: DimensionDelegate[_]] extends FlatSpec {
 
   /**
    * 

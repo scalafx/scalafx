@@ -24,23 +24,25 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
-import scalafx.util.SFXDelegate
+import scalafx.Includes._
 import scalafx.scene.paint.Color
+import scalafx.util.SFXDelegate
 import scalafx.util.DimensionDelegate
 
 object Shadow {
   implicit def sfxShadow2jfx(s: Shadow) = s.delegate
 }
 
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/effect/Shadow.html]].
+ */
 class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
   extends Effect(delegate)
   with InputedEffect
-  with DimensionDelegate
+  with DimensionDelegate[jfxse.Shadow]
   with SFXDelegate[jfxse.Shadow] {
 
   /**
@@ -52,11 +54,6 @@ class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
    * Creates a new instance of Shadow with specified radius and color.
    */
   def this(radius: Double, color: Color) = this(new jfxse.Shadow(radius, color))
-
-  /**
-   * The vertical and horizontal size of the shadow blur kernel.
-   */
-  def dimensionedDelegate = delegate.asInstanceOf[Dimensioned]
 
   def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
