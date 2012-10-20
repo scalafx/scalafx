@@ -26,41 +26,33 @@
  */
 package scalafx.scene.shape
 
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
 import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import scalafx.util.PositionDelegate
-import scalafx.util.SFXDelegate
+import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.PositionDelegateSpec
 
-object CubicCurveTo {
-  implicit def sfxCubicCurveTo2jfx(v: CubicCurveTo) = v.delegate
+/**
+ * CubicCurveTo Spec tests.
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class CubicCurveToSpec
+  extends AbstractSFXDelegateSpec[jfxss.CubicCurveTo, CubicCurveTo, jfxss.CubicCurveToBuilder[_]](classOf[jfxss.CubicCurveTo], classOf[CubicCurveTo], classOf[jfxss.CubicCurveToBuilder[_]])
+  with PositionDelegateSpec[CubicCurveTo] {
 
-  def apply(controlX1: Double, controlY1: Double, controlX2: Double, controlY2: Double, x: Double, y: Double) =
-    new CubicCurveTo(new jfxss.CubicCurveTo(controlX1, controlY1, controlX2, controlY2, x, y))
-}
+  val positionDelegate = getScalaClassInstance
 
-class CubicCurveTo(override val delegate: jfxss.CubicCurveTo = new jfxss.CubicCurveTo)
-  extends PathElement(delegate)
-  with PositionDelegate[jfxss.CubicCurveTo]
-  with SFXDelegate[jfxss.CubicCurveTo] {
-
-  def controlX1 = delegate.controlX1Property
-  def controlX1_=(v: Double) {
-    controlX1() = v
+  protected def convertScalaClassToJavaClass(sfxCubicCurveTo: CubicCurveTo) = {
+    val jfxCubicCurveTo: jfxss.CubicCurveTo = sfxCubicCurveTo
+    jfxCubicCurveTo
   }
 
-  def controlX2 = delegate.controlX2Property
-  def controlX2_=(v: Double) {
-    controlX2() = v
-  }
-
-  def controlY1 = delegate.controlY1Property
-  def controlY1_=(v: Double) {
-    controlY1() = v
-  }
-
-  def controlY2 = delegate.controlY2Property
-  def controlY2_=(v: Double) {
-    controlY2() = v
+  protected def convertJavaClassToScalaClass(jfxCubicCurveTo: jfxss.CubicCurveTo) = {
+    val sfxCubicCurveTo: CubicCurveTo = jfxCubicCurveTo
+    sfxCubicCurveTo
   }
 
 }

@@ -37,6 +37,7 @@ trait ShapeIncludes {
   implicit def jfxCircle2sfx(r: jfxss.Circle) = new Circle(r)
   implicit def jfxClosePath2sfx(c: jfxss.ClosePath) = new ClosePath(c)
   implicit def jfxCubicCurve2sfx(c: jfxss.CubicCurve) = new CubicCurve(c)
+  implicit def jfxCubicCurveTo2sfx(c: jfxss.CubicCurveTo) = new CubicCurveTo(c)
   implicit def jfxEllipse2sfx(r: jfxss.Ellipse) = new Ellipse(r)
   implicit def jfxHLineTo2sfx(h: jfxss.HLineTo) = new HLineTo(h)
   implicit def jfxLine2sfx(r: jfxss.Line) = new Line(r)

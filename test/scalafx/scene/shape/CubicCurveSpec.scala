@@ -24,22 +24,22 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.shape
+
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.PositionDelegateSpec
 
 /**
  * CubicCurve Spec tests.
  *
- *
  */
 @RunWith(classOf[JUnitRunner])
-class CubicCurveSpec 
+class CubicCurveSpec
   extends AbstractSFXDelegateSpec[jfxss.CubicCurve, CubicCurve, jfxss.CubicCurveBuilder[_]](classOf[jfxss.CubicCurve], classOf[CubicCurve], classOf[jfxss.CubicCurveBuilder[_]]) {
 
   protected def convertScalaClassToJavaClass(sfxCubicCurve: CubicCurve) = {
