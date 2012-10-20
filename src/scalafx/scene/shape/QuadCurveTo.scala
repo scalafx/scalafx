@@ -41,13 +41,8 @@ object QuadCurveTo {
 
 class QuadCurveTo(override val delegate: jfxss.QuadCurveTo = new jfxss.QuadCurveTo())
   extends PathElement(delegate)
-  with PositionDelegate
+  with PositionDelegate[jfxss.QuadCurveTo] 
   with SFXDelegate[jfxss.QuadCurveTo] {
-
-  /**
-   * Defines the X and Y coordinates of the final end point.
-   */
-  def positionedDelegate = delegate.asInstanceOf[Positioned]
 
   def controlX = delegate.controlXProperty
   def controlX_=(v: Double) {

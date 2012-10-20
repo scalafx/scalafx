@@ -53,14 +53,9 @@ object Rectangle {
  */
 class Rectangle(override val delegate: jfxss.Rectangle = new jfxss.Rectangle())
   extends Shape(delegate)
-  with PositionDelegate
+  with PositionDelegate[jfxss.Rectangle]
   with DimensionDelegate[jfxss.Rectangle]
   with SFXDelegate[jfxss.Rectangle] {
-
-  /**
-   * Defines the X and Y coordinates of the upper-left corner of the rectangle.
-   */
-  def positionedDelegate = delegate.asInstanceOf[Positioned]
 
   /**
    * Defines the vertical diameter of the arc at the four corners of the rectangle.

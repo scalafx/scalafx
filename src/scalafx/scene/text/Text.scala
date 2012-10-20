@@ -46,7 +46,7 @@ object Text {
 
 class Text(override val delegate: jfxst.Text = new jfxst.Text)
   extends Shape(delegate)
-  with PositionDelegate
+  with PositionDelegate[jfxst.Text]
   with SFXDelegate[jfxst.Text] {
 
   /**
@@ -58,12 +58,6 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
    * Creates an instance of Text on the given coordinates containing the given string.
    */
   def this(x: Double, y: Double, t: String) = this(new jfxst.Text(x, y, t))
-
-  /**
-   * Indicates the current x and y coordinates of the text origin.
-   *
-   */
-  def positionedDelegate = delegate.asInstanceOf[Positioned]
 
   /**
    * The 'alphabetic' (or roman) baseline offset from the Text node's layoutBounds.minY location.

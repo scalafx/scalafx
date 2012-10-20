@@ -77,15 +77,10 @@ object Light {
 
   class Point(override val delegate: jfxse.Light.Point = new jfxse.Light.Point)
     extends Light(delegate)
-    with PositionDelegate
+    with PositionDelegate[jfxse.Light.Point] 
     with SFXDelegate[jfxse.Light.Point] {
 
     def this(x: Double, y: Double, z: Double, color: Color) = this(new jfxse.Light.Point(x, y, z, color))
-
-    /**
-     * Indicates the x and y coordinates of the light position.
-     */
-    def positionedDelegate = delegate.asInstanceOf[Positioned]
 
     /**
      * The z coordinate of the light position.

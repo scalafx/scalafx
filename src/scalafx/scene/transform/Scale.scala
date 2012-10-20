@@ -11,7 +11,7 @@ object Scale {
 
 class Scale(override val delegate: jfxst.Scale = new jfxst.Scale)
   extends Transform(delegate)
-  with PositionDelegate
+  with PositionDelegate[jfxst.Scale] 
   with SFXDelegate[jfxst.Scale] {
 
   def this(x: Double, y: Double) = this(new jfxst.Scale(x, y))
@@ -21,11 +21,6 @@ class Scale(override val delegate: jfxst.Scale = new jfxst.Scale)
   def this(x: Double, y: Double, pivotX: Double, pivotY: Double) = this(new jfxst.Scale(x, y, pivotX, pivotY))
 
   def this(x: Double, y: Double, z: Double, pivotX: Double, pivotY: Double, pivotZ: Double) = this(new jfxst.Scale(x, y, z, pivotX, pivotY, pivotZ))
-
-  /**
-   * Indicates the factor by which coordinates are scaled along the X, Y axis directions.
-   */
-  def positionedDelegate = delegate.asInstanceOf[Positioned]
 
   /**
    * Defines the X coordinate about which point the scale occurs.

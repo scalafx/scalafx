@@ -40,12 +40,7 @@ object MoveTo {
 
 class MoveTo(override val delegate: jfxss.MoveTo = new jfxss.MoveTo())
   extends PathElement(delegate)
-  with PositionDelegate
+  with PositionDelegate[jfxss.MoveTo]
   with SFXDelegate[jfxss.MoveTo] {
-
-  /**
-   * Defines the X and Y coordinates.
-   */
-  def positionedDelegate = delegate.asInstanceOf[Positioned]
 
 }

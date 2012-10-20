@@ -29,30 +29,30 @@ package scalafx.util
 import javafx.beans.{ property => jfxbp }
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
+import PositionDelegate._
+
+object PositionDelegate  {
+  
+  type Positioned = {
+    def xProperty(): jfxbp.DoubleProperty
+
+    def yProperty(): jfxbp.DoubleProperty
+  }
+
+}
 
 /**
  * Trait that unifies JavaFX classes that contains properties indicating localization in 2
  * dimensions, represented by xProperty and y yProperty and their respectives getter and setters.
  *
  */
-trait PositionDelegate {
-
-  type Positioned = {
-    def getX: java.lang.Double
-    def setX(x: java.lang.Double): Unit
-    def xProperty: jfxbp.DoubleProperty
-
-    def getY: java.lang.Double
-    def setY(y: java.lang.Double): Unit
-    def yProperty: jfxbp.DoubleProperty
-  }
-
-  def positionedDelegate: Positioned
+trait PositionDelegate[J <: Object with Positioned]
+  extends SFXDelegate[J] { 
 
   /**
    * X Position
    */
-  def x: DoubleProperty = positionedDelegate.xProperty
+  def x: DoubleProperty = delegate.xProperty
   def x_=(v: Double) {
     x() = v
   }
@@ -60,7 +60,7 @@ trait PositionDelegate {
   /**
    * Y Position
    */
-  def y: DoubleProperty = positionedDelegate.yProperty
+  def y: DoubleProperty = delegate.yProperty
   def y_=(v: Double) {
     y() = v
   }

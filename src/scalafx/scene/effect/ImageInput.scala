@@ -40,13 +40,8 @@ object ImageInput {
 
 class ImageInput(override val delegate: jfxse.ImageInput = new jfxse.ImageInput)
   extends Effect(delegate)
-  with PositionDelegate
+  with PositionDelegate[jfxse.ImageInput]
   with SFXDelegate[jfxse.ImageInput] {
-
-  /**
-   * Indicates the x and y location of the source image, relative to the local coordinate space of the content Node. 
-   */
-  def positionedDelegate = delegate.asInstanceOf[Positioned]
 
   /**
    * Creates a new instance of ImageInput with the specified source.

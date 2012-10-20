@@ -42,10 +42,8 @@ object ArcTo {
 
 class ArcTo(override val delegate: jfxss.ArcTo = new jfxss.ArcTo)
   extends PathElement(delegate)
-  with PositionDelegate
+  with PositionDelegate[jfxss.ArcTo]
   with SFXDelegate[jfxss.ArcTo] {
-
-  def positionedDelegate = delegate.asInstanceOf[Positioned]
 
   /**
    * The x-axis rotation in degrees.

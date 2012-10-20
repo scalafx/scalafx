@@ -27,8 +27,8 @@ package scalafx.scene.image
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import javafx.{scene => jfxs, geometry => jfxg}
-import jfxs.{image => jfxsi}
+import javafx.{ scene => jfxs, geometry => jfxg }
+import jfxs.{ image => jfxsi }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 import scalafx.util.PositionDelegate
@@ -41,44 +41,45 @@ object ImageView {
   implicit def sfxImageView2jfx(iv: ImageView) = iv.delegate
 }
 
-class ImageView(override val delegate: jfxsi.ImageView = new jfxsi.ImageView()) extends Node(delegate) 
-    with PositionDelegate with SFXDelegate[jfxsi.ImageView] {
+class ImageView(override val delegate: jfxsi.ImageView = new jfxsi.ImageView())
+  extends Node(delegate)
+  with PositionDelegate[jfxsi.ImageView]
+  with SFXDelegate[jfxsi.ImageView] {
 
-  def fitHeight :DoubleProperty = delegate.fitHeightProperty
+  def fitHeight: DoubleProperty = delegate.fitHeightProperty
 
   def fitHeight_=(v: Double) {
     fitHeight() = v
   }
 
-  def fitWidth :DoubleProperty = delegate.fitWidthProperty
+  def fitWidth: DoubleProperty = delegate.fitWidthProperty
 
   def fitWidth_=(v: Double) {
     fitWidth() = v
   }
 
-  def image :ObjectProperty[jfxsi.Image] = delegate.imageProperty
+  def image: ObjectProperty[jfxsi.Image] = delegate.imageProperty
 
   def image_=(v: jfxsi.Image) {
     image() = v
   }
 
-  def preserveRatio :BooleanProperty = delegate.preserveRatioProperty
+  def preserveRatio: BooleanProperty = delegate.preserveRatioProperty
 
   def preserveRatio_=(v: Boolean) {
     preserveRatio() = v
   }
 
-  def smooth :BooleanProperty = delegate.smoothProperty
+  def smooth: BooleanProperty = delegate.smoothProperty
 
   def smooth_=(v: Boolean) {
     smooth() = v
   }
 
-  def viewport :ObjectProperty[jfxg.Rectangle2D] = delegate.viewportProperty
+  def viewport: ObjectProperty[jfxg.Rectangle2D] = delegate.viewportProperty
 
   def viewport_=(v: jfxg.Rectangle2D) {
     viewport() = v
   }
 
-  def positionedDelegate = delegate.asInstanceOf[Positioned]
 }

@@ -37,7 +37,7 @@ import scalafx.util.PositionDelegate
 /**
  * Trait to test PositionDelegate subclasses
  */
-trait PositionDelegateSpec[D <: PositionDelegate] extends FlatSpec {
+trait PositionDelegateSpec[D <: PositionDelegate[_]] extends FlatSpec {
 
   /**
    * 

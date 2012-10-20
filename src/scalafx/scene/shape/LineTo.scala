@@ -40,12 +40,5 @@ object LineTo {
 
 class LineTo(override val delegate: jfxss.LineTo = new jfxss.LineTo())
   extends PathElement(delegate)
-  with PositionDelegate
-  with SFXDelegate[jfxss.LineTo] {
-
-  /**
-   * Defines the X and Y coordinates.
-   */
-  def positionedDelegate = delegate.asInstanceOf[Positioned]
-
-}
+  with PositionDelegate[jfxss.LineTo]
+  with SFXDelegate[jfxss.LineTo] 

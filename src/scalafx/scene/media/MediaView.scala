@@ -41,18 +41,13 @@ object MediaView {
 
 class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
   extends Node(delegate)
-  with PositionDelegate
+  with PositionDelegate[jfxsm.MediaView]
   with SFXDelegate[jfxsm.MediaView] {
 
   /**
    * Creates a MediaView instance associated with the specified MediaPlayer.
    */
   def this(mediaPlayer: MediaPlayer) = this(new jfxsm.MediaView(mediaPlayer))
-
-  /**
-   * Indicates the current x and y coordinates of the MediaView origin.
-   */
-  def positionedDelegate = delegate.asInstanceOf[Positioned]
 
   /**
    * Determines the height of the bounding box within which the source media is resized as
