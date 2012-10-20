@@ -41,6 +41,7 @@ object Shadow {
  */
 class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
   extends Effect(delegate)
+  with ColorDelegate[jfxse.Shadow]
   with InputDelegate[jfxse.Shadow]
   with DimensionDelegate[jfxse.Shadow]
   with SFXDelegate[jfxse.Shadow] {
@@ -61,14 +62,6 @@ class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
   def blurType = delegate.blurTypeProperty
   def blurType_=(v: jfxse.BlurType) {
     blurType() = v
-  }
-
-  /**
-   * The shadow Color.
-   */
-  def color = delegate.colorProperty
-  def color_=(v: Color) {
-    color() = v
   }
 
   /**

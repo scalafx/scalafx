@@ -26,11 +26,12 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{ effect => jfxse }
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import javafx.scene.{effect => jfxse}
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Light.Distant Spec tests.
@@ -39,7 +40,10 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class LightDistantSpec
-  extends SimpleSFXDelegateSpec[jfxse.Light.Distant, Light.Distant](classOf[jfxse.Light.Distant], classOf[Light.Distant]) {
+  extends SimpleSFXDelegateSpec[jfxse.Light.Distant, Light.Distant](classOf[jfxse.Light.Distant], classOf[Light.Distant])
+  with ColorDelegateSpec[Light.Distant] {
+
+  val colorDelegate = getScalaClassInstance
 
   protected def convertScalaClassToJavaClass(sfxObject: Light.Distant) = {
     val jfxLightDistant: jfxse.Light.Distant = sfxObject

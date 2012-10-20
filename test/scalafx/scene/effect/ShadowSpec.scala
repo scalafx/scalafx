@@ -42,8 +42,11 @@ import scalafx.testutil.DimensionDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class ShadowSpec
   extends AbstractSFXDelegateSpec[jfxse.Shadow, Shadow, jfxse.ShadowBuilder[_]](classOf[jfxse.Shadow], classOf[Shadow], classOf[jfxse.ShadowBuilder[_]])
+  with ColorDelegateSpec[Shadow]
   with DimensionDelegateSpec[Shadow]
   with InputDelegateSpec[Shadow] {
+
+  val colorDelegate = getScalaClassInstance
 
   val inputDelegate = getScalaClassInstance
 

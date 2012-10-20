@@ -24,64 +24,40 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene
+package scalafx.scene.effect
 
-import javafx.beans.{ property => jfxbp }
-import javafx.scene.{ effect => jfxse }
-import javafx.scene.{ paint => jfxsp }
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.scene.paint.Color
-import scalafx.util.SFXDelegate
+import scalafx.beans.property.DoubleProperty
 
 /**
- *
+ * Trait to test InputDelegate subclasses
  */
-package object effect {
+trait InputDelegateSpec[D <: InputDelegate[_]] extends FlatSpec {
 
   /**
-   * Type that indicates a JavaFX class that has the Property `inputProperty` of kind `ObjectProperty[Effect]`
+   *
    */
-  type Inputed = {
-    def inputProperty(): jfxbp.ObjectProperty[jfxse.Effect]
-  }
+  protected val inputDelegate: D
 
-  /**
-   * Trait that unify all Effect subclasses whose Java counterpart have input Property. See type Inputed.
-   */
-  trait InputDelegate[J <: Object with Inputed]
-    extends SFXDelegate[J] {
+  it should "allow observe changes in Input Effect" in {
+    var changed = false
+    val initialInput = new Lighting
+    val finalInput = new ColorInput
 
-    /**
-     * The input for this Effect.
-     */
-    def input = delegate.inputProperty
-    def input_=(v: Effect) {
-      input() = v
-    }
+    inputDelegate.input = initialInput
 
-  }
+    inputDelegate.input.onChange((ov, oldInput, newInput) => {
+      oldInput should be (initialInput.delegate)
+      newInput should be (finalInput.delegate)
+      changed = true
+    })
 
-  /**
-   * Type that indicates a JavaFX class that has the Property `colorProperty` of kind `ObjectProperty[Color]`
-   */
-  type Colored = {
-    def colorProperty(): jfxbp.ObjectProperty[jfxsp.Color]
-  }
+    inputDelegate.input = finalInput
 
-  /**
-   * Trait that unify all Effect subclasses whose Java counterpart have color Property. See type Colored.
-   */
-  trait ColorDelegate[J <: Object with Colored]
-    extends SFXDelegate[J] {
-
-    /**
-     * The Effect's color.
-     */
-    def color = delegate.colorProperty
-    def color_=(c: Color) {
-      color() = c
-    }
-
+    changed should be(true)
+    inputDelegate.input.value should be (finalInput.delegate)
   }
 
 }

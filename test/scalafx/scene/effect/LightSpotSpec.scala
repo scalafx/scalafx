@@ -26,11 +26,12 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{ effect => jfxse }
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import javafx.scene.{effect => jfxse}
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Light.Spot Spec tests.
@@ -39,7 +40,10 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class LightSpotSpec
-  extends SimpleSFXDelegateSpec[jfxse.Light.Spot, Light.Spot](classOf[jfxse.Light.Spot], classOf[Light.Spot]) {
+  extends SimpleSFXDelegateSpec[jfxse.Light.Spot, Light.Spot](classOf[jfxse.Light.Spot], classOf[Light.Spot])
+  with ColorDelegateSpec[Light.Spot] {
+
+  val colorDelegate = getScalaClassInstance
 
   protected def convertScalaClassToJavaClass(sfxObject: Light.Spot) = {
     val jfxLightSpot: jfxse.Light.Spot = sfxObject

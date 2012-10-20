@@ -24,14 +24,13 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
-import scalafx.util.SFXDelegate
+import scalafx.Includes._
 import scalafx.scene.paint.Color
 import scalafx.util.PositionDelegate
+import scalafx.util.SFXDelegate
 
 object Light {
   implicit def sfxLight2jfx(l: Light) = l.delegate
@@ -77,7 +76,7 @@ object Light {
 
   class Point(override val delegate: jfxse.Light.Point = new jfxse.Light.Point)
     extends Light(delegate)
-    with PositionDelegate[jfxse.Light.Point] 
+    with PositionDelegate[jfxse.Light.Point]
     with SFXDelegate[jfxse.Light.Point] {
 
     def this(x: Double, y: Double, z: Double, color: Color) = this(new jfxse.Light.Point(x, y, z, color))
@@ -145,14 +144,6 @@ object Light {
 
 }
 
-abstract class Light protected (override val delegate: jfxse.Light) extends SFXDelegate[jfxse.Light] {
-
-  /**
-   * The color of the light source.
-   */
-  def color = delegate.colorProperty
-  def color_=(v: Color) {
-    color() = v
-  }
-
-}
+abstract class Light protected (override val delegate: jfxse.Light)
+  extends ColorDelegate[jfxse.Light]
+  with SFXDelegate[jfxse.Light] 

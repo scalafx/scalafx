@@ -41,6 +41,7 @@ object InnerShadow {
  */
 class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShadow)
   extends Effect(delegate)
+  with ColorDelegate[jfxse.InnerShadow]
   with DimensionDelegate[jfxse.InnerShadow]
   with InputDelegate[jfxse.InnerShadow]
   with SFXDelegate[jfxse.InnerShadow] {
@@ -48,7 +49,7 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
   /**
    * Creates a new instance of InnerShadow with the specified blurType, color, radius, spread, offsetX and offsetY.
    */
-  def this(blurType: jfxse.BlurType, color: Color, radius: Double, choke: Double, offsetX: Double, offsetY: Double) = 
+  def this(blurType: jfxse.BlurType, color: Color, radius: Double, choke: Double, offsetX: Double, offsetY: Double) =
     this(new jfxse.InnerShadow(blurType, color, radius, choke, offsetX, offsetY))
 
   /**
@@ -59,7 +60,7 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
   /**
    * Creates a new instance of InnerShadow with specified radius, offsetX, offsetY and color.
    */
-  def this(radius: Double, offsetX: Double, offsetY: Double, color: Color) = 
+  def this(radius: Double, offsetX: Double, offsetY: Double, color: Color) =
     this(new jfxse.InnerShadow(radius, offsetX, offsetY, color))
 
   /**
@@ -76,14 +77,6 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
   def choke = delegate.chokeProperty
   def choke_=(v: Double) {
     choke() = v
-  }
-
-  /**
-   * The shadow Color.
-   */
-  def color = delegate.colorProperty
-  def color_=(v: Color) {
-    color() = v
   }
 
   /**

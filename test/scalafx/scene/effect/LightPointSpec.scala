@@ -26,12 +26,13 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{ effect => jfxse }
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import javafx.scene.{effect => jfxse}
+import scalafx.Includes._
 import scalafx.testutil.PositionDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Light.Point Spec tests.
@@ -41,7 +42,10 @@ import scalafx.testutil.PositionDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class LightPointSpec
   extends SimpleSFXDelegateSpec[jfxse.Light.Point, Light.Point](classOf[jfxse.Light.Point], classOf[Light.Point])
-  with PositionDelegateSpec[Light.Point] {
+  with PositionDelegateSpec[Light.Point]
+  with ColorDelegateSpec[Light.Point] {
+
+  val colorDelegate = getScalaClassInstance
 
   val positionDelegate = new Light.Point
 
