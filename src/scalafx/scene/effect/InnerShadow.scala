@@ -41,8 +41,8 @@ object InnerShadow {
  */
 class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShadow)
   extends Effect(delegate)
-  with InputedEffect
   with DimensionDelegate[jfxse.InnerShadow]
+  with InputDelegate[jfxse.InnerShadow]
   with SFXDelegate[jfxse.InnerShadow] {
 
   /**
@@ -61,8 +61,6 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
    */
   def this(radius: Double, offsetX: Double, offsetY: Double, color: Color) = 
     this(new jfxse.InnerShadow(radius, offsetX, offsetY, color))
-
-  def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
   /**
    * The algorithm used to blur the shadow.

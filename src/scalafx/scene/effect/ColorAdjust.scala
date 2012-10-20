@@ -24,25 +24,25 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.scene.effect
 
+import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
-import javafx.scene.{ effect => jfxse }
 import scalafx.util.SFXDelegate
 
 object ColorAdjust {
   implicit def sfxColorAdjust2jfx(ca: ColorAdjust) = ca.delegate
 }
 
-class ColorAdjust(override val delegate: jfxse.ColorAdjust = new jfxse.ColorAdjust) extends Effect(delegate) with InputedEffect with SFXDelegate[jfxse.ColorAdjust] {
+class ColorAdjust(override val delegate: jfxse.ColorAdjust = new jfxse.ColorAdjust)
+  extends Effect(delegate)
+  with InputDelegate[jfxse.ColorAdjust]
+  with SFXDelegate[jfxse.ColorAdjust] {
 
   /**
    * Creates a new instance of ColorAdjust with the specified hue, saturation, brightness, and contrast.
    */
   def this(hue: Double, saturation: Double, brightness: Double, contrast: Double) = this(new jfxse.ColorAdjust(hue, saturation, brightness, contrast))
-
-  def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
   /**
    * The brightness adjustment value.

@@ -26,11 +26,12 @@
  */
 package scalafx.scene.effect
 
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 
 /**
  * SepiaTone Spec tests.
@@ -39,7 +40,10 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class SepiaToneSpec
-  extends AbstractSFXDelegateSpec[jfxse.SepiaTone, SepiaTone, jfxse.SepiaToneBuilder[_]](classOf[jfxse.SepiaTone], classOf[SepiaTone], classOf[jfxse.SepiaToneBuilder[_]]) {
+  extends AbstractSFXDelegateSpec[jfxse.SepiaTone, SepiaTone, jfxse.SepiaToneBuilder[_]](classOf[jfxse.SepiaTone], classOf[SepiaTone], classOf[jfxse.SepiaToneBuilder[_]])
+  with InputDelegateSpec[SepiaTone] {
+
+  val inputDelegate = getScalaClassInstance
 
   protected def convertScalaClassToJavaClass(sfxObject: SepiaTone) = {
     val jfxSepiaTone: jfxse.SepiaTone = sfxObject

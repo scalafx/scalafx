@@ -24,22 +24,25 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.scene.effect
 
+import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
-import javafx.scene.{ effect => jfxse }
-import scalafx.util.SFXDelegate
+import scalafx.beans.property.IntegerProperty
 import scalafx.util.DimensionDelegate
+import scalafx.util.SFXDelegate
 
 object BoxBlur {
   implicit def sfxBoxBlur2jfx(bb: BoxBlur) = bb.delegate
 }
 
+/** 
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/effect/BoxBlur.html]]
+ */
 class BoxBlur(override val delegate: jfxse.BoxBlur = new jfxse.BoxBlur)
   extends Effect(delegate)
-  with InputedEffect
   with DimensionDelegate[jfxse.BoxBlur]
+  with InputDelegate[jfxse.BoxBlur]
   with SFXDelegate[jfxse.BoxBlur] {
 
   /**
@@ -47,12 +50,10 @@ class BoxBlur(override val delegate: jfxse.BoxBlur = new jfxse.BoxBlur)
    */
   def this(width: Double, height: Double, iterations: Int) = this(new jfxse.BoxBlur(width, height, iterations))
 
-  def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
-
   /**
    * The number of times to iterate the blur effect to improve its "quality" or "smoothness".
    */
-  def iterations = delegate.iterationsProperty
+  def iterations: IntegerProperty = delegate.iterationsProperty
   def iterations_=(v: Int) {
     iterations() = v
   }

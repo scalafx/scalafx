@@ -29,8 +29,8 @@ package scalafx.scene.effect
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
 import scalafx.scene.paint.Color
-import scalafx.util.SFXDelegate
 import scalafx.util.DimensionDelegate
+import scalafx.util.SFXDelegate
 
 object Shadow {
   implicit def sfxShadow2jfx(s: Shadow) = s.delegate
@@ -41,7 +41,7 @@ object Shadow {
  */
 class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
   extends Effect(delegate)
-  with InputedEffect
+  with InputDelegate[jfxse.Shadow]
   with DimensionDelegate[jfxse.Shadow]
   with SFXDelegate[jfxse.Shadow] {
 
@@ -54,8 +54,6 @@ class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
    * Creates a new instance of Shadow with specified radius and color.
    */
   def this(radius: Double, color: Color) = this(new jfxse.Shadow(radius, color))
-
-  def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
   /**
    * The algorithm used to blur the shadow.

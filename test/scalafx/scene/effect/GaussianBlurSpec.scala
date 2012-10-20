@@ -26,11 +26,12 @@
  */
 package scalafx.scene.effect
 
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 
 /**
  * GaussianBlur Spec tests.
@@ -39,7 +40,10 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class GaussianBlurSpec
-  extends AbstractSFXDelegateSpec[jfxse.GaussianBlur, GaussianBlur, jfxse.GaussianBlurBuilder[_]](classOf[jfxse.GaussianBlur], classOf[GaussianBlur], classOf[jfxse.GaussianBlurBuilder[_]]) {
+  extends AbstractSFXDelegateSpec[jfxse.GaussianBlur, GaussianBlur, jfxse.GaussianBlurBuilder[_]](classOf[jfxse.GaussianBlur], classOf[GaussianBlur], classOf[jfxse.GaussianBlurBuilder[_]])
+  with InputDelegateSpec[GaussianBlur] {
+
+  val inputDelegate = getScalaClassInstance
 
   protected def convertScalaClassToJavaClass(sfxObject: GaussianBlur) = {
     val jfxGaussianBlur: jfxse.GaussianBlur = sfxObject

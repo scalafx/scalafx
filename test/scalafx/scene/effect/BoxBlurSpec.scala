@@ -28,6 +28,7 @@ package scalafx.scene.effect
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
@@ -41,9 +42,12 @@ import scalafx.testutil.DimensionDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class BoxBlurSpec
   extends AbstractSFXDelegateSpec[jfxse.BoxBlur, BoxBlur, jfxse.BoxBlurBuilder[_]](classOf[jfxse.BoxBlur], classOf[BoxBlur], classOf[jfxse.BoxBlurBuilder[_]])
-  with DimensionDelegateSpec[BoxBlur] {
+  with DimensionDelegateSpec[BoxBlur]
+  with InputDelegateSpec[BoxBlur] {
 
   val dimensionDelegate = getScalaClassInstance
+
+  val inputDelegate = getScalaClassInstance
 
   protected def convertScalaClassToJavaClass(sfxObject: BoxBlur) = {
     val jfxBoxBlur: jfxse.BoxBlur = sfxObject

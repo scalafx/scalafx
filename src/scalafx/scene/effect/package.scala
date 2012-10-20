@@ -24,35 +24,36 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.effect
+package scalafx.scene
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
-import javafx.scene.{effect => jfxse}
+import javafx.beans.{ property => jfxbp }
+import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
-import scalafx.testutil.DimensionDelegateSpec
+import scalafx.util.SFXDelegate
 
 /**
- * ColorInput Spec tests.
- * 
+ *
  */
-@RunWith(classOf[JUnitRunner])
-class ColorInputSpec
-  extends AbstractSFXDelegateSpec[jfxse.ColorInput, ColorInput, jfxse.ColorInputBuilder[_]](classOf[jfxse.ColorInput], classOf[ColorInput], classOf[jfxse.ColorInputBuilder[_]])
-  with DimensionDelegateSpec[ColorInput] {
+package object effect {
 
-  val dimensionDelegate = getScalaClassInstance
-
-  protected def convertScalaClassToJavaClass(sfxObject: ColorInput) = {
-    val jfxColorInput: jfxse.ColorInput = sfxObject
-    jfxColorInput
+  type InputedType = {
+    def inputProperty(): jfxbp.ObjectProperty[jfxse.Effect]
   }
 
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.ColorInput) = {
-    val sfxColorInput: ColorInput = jfxObject
-    sfxColorInput
-  }
+  /**
+   * Trait that unify all Effect subclasses whose Java counterpart have input Property. See type Inputed.
+   */
+  trait InputDelegate[J <: Object with InputedType]
+    extends SFXDelegate[J] {
 
+    /**
+     * The input for this Effect.
+     */
+    def input = delegate.inputProperty
+    def input_=(v: Effect) {
+      input() = v
+    }
+
+  }
+  
 }

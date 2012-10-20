@@ -27,22 +27,23 @@
 
 package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
+import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
 object Glow {
   implicit def sfxGlow2jfx(g: Glow) = g.delegate
 }
 
-class Glow(override val delegate: jfxse.Glow = new jfxse.Glow) extends Effect(delegate) with InputedEffect with SFXDelegate[jfxse.Glow] {
+class Glow(override val delegate: jfxse.Glow = new jfxse.Glow)
+  extends Effect(delegate)
+  with InputDelegate[jfxse.Glow]
+  with SFXDelegate[jfxse.Glow] {
 
   /**
    * Creates a new instance of Glow with specified level.
    */
   def this(level: Double) = this(new jfxse.Glow(level))
-
-  def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
   /**
    * The level value, which controls the intensity of the glow effect.

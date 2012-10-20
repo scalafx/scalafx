@@ -26,20 +26,23 @@
  */
 package scalafx.scene.effect
 
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 
 /**
  * DisplacementMap Spec tests.
  *
- *
  */
 @RunWith(classOf[JUnitRunner])
 class DisplacementMapSpec
-  extends AbstractSFXDelegateSpec[jfxse.DisplacementMap, DisplacementMap, jfxse.DisplacementMapBuilder[_]](classOf[jfxse.DisplacementMap], classOf[DisplacementMap], classOf[jfxse.DisplacementMapBuilder[_]]) {
+  extends AbstractSFXDelegateSpec[jfxse.DisplacementMap, DisplacementMap, jfxse.DisplacementMapBuilder[_]](classOf[jfxse.DisplacementMap], classOf[DisplacementMap], classOf[jfxse.DisplacementMapBuilder[_]])
+  with InputDelegateSpec[DisplacementMap] {
+
+  val inputDelegate = getScalaClassInstance
 
   protected def convertScalaClassToJavaClass(sfxObject: DisplacementMap) = {
     val jfxDisplacementMap: jfxse.DisplacementMap = sfxObject

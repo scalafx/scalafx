@@ -39,7 +39,10 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class ColorAdjustSpec
-  extends AbstractSFXDelegateSpec[jfxse.ColorAdjust, ColorAdjust, jfxse.ColorAdjustBuilder[_]](classOf[jfxse.ColorAdjust], classOf[ColorAdjust], classOf[jfxse.ColorAdjustBuilder[_]]) {
+  extends AbstractSFXDelegateSpec[jfxse.ColorAdjust, ColorAdjust, jfxse.ColorAdjustBuilder[_]](classOf[jfxse.ColorAdjust], classOf[ColorAdjust], classOf[jfxse.ColorAdjustBuilder[_]])
+  with InputDelegateSpec[ColorAdjust] {
+
+  val inputDelegate = getScalaClassInstance
 
   protected def convertScalaClassToJavaClass(sfxObject: ColorAdjust) = {
     val jfxColorAdjust: jfxse.ColorAdjust = sfxObject

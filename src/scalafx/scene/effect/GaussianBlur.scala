@@ -27,28 +27,20 @@
 
 package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
+import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
 object GaussianBlur {
   implicit def sfxGaussianBlur2jfx(gb: GaussianBlur) = gb.delegate
 }
 
-class GaussianBlur(override val delegate: jfxse.GaussianBlur = new jfxse.GaussianBlur) extends Effect(delegate) with InputedEffect with SFXDelegate[jfxse.GaussianBlur] {
-
-  def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
+class GaussianBlur(override val delegate: jfxse.GaussianBlur = new jfxse.GaussianBlur)
+  extends Effect(delegate)
+  with InputDelegate[jfxse.GaussianBlur]
+  with SFXDelegate[jfxse.GaussianBlur] {
 
   def this(radius: Double) = this(new jfxse.GaussianBlur(radius))
-
-  /**
-   * The input for this Effect.
-   *
-   * def input = delegate.inputProperty
-   * def input_=(v: Effect) {
-   * input() = v
-   * }
-   */
 
   /**
    * The radius of the blur kernel.

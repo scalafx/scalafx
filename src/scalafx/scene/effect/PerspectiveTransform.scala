@@ -24,32 +24,32 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
-import scalafx.util.SFXDelegate
-import scalafx.scene.paint.Color
+import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
+import scalafx.scene.paint.Color
+import scalafx.util.SFXDelegate
 
 object PerspectiveTransform {
   implicit def sfxPerspectiveTransform2jfx(pt: PerspectiveTransform) = pt.delegate
 }
 
-class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = new jfxse.PerspectiveTransform) extends Effect(delegate) with InputedEffect with SFXDelegate[jfxse.PerspectiveTransform] {
+class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = new jfxse.PerspectiveTransform)
+  extends Effect(delegate)
+  with InputDelegate[jfxse.PerspectiveTransform]
+  with SFXDelegate[jfxse.PerspectiveTransform] {
 
   /**
    * Creates a new instance of PerspectiveTransform with the specified ulx, uly, urx, ury, lrx, lry, llx, and lly.
    */
   def this(ulx: Double, uly: Double, urx: Double, ury: Double, lrx: Double, lry: Double, llx: Double, lly: Double) = this(new jfxse.PerspectiveTransform(ulx, uly, urx, ury, lrx, lry, llx, lly))
 
-  def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
-
   /**
    * The x coordinate of the output location onto which the lower left corner of the source is mapped.
    */
-  def llx :DoubleProperty = delegate.llxProperty
+  def llx: DoubleProperty = delegate.llxProperty
   def llx_=(v: Double) {
     llx() = v
   }
@@ -57,7 +57,7 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
   /**
    * The y coordinate of the output location onto which the lower left corner of the source is mapped.
    */
-  def lly :DoubleProperty = delegate.llyProperty
+  def lly: DoubleProperty = delegate.llyProperty
   def lly_=(v: Double) {
     lly() = v
   }
@@ -65,7 +65,7 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
   /**
    * The x coordinate of the output location onto which the lower right corner of the source is mapped.
    */
-  def lrx :DoubleProperty = delegate.lrxProperty
+  def lrx: DoubleProperty = delegate.lrxProperty
   def lrx_=(v: Double) {
     lrx() = v
   }
@@ -73,7 +73,7 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
   /**
    * The y coordinate of the output location onto which the lower right corner of the source is mapped.
    */
-  def lry :DoubleProperty = delegate.lryProperty
+  def lry: DoubleProperty = delegate.lryProperty
   def lry_=(v: Double) {
     lry() = v
   }
@@ -81,7 +81,7 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
   /**
    * The x coordinate of the output location onto which the upper left corner of the source is mapped.
    */
-  def ulx :DoubleProperty = delegate.ulxProperty
+  def ulx: DoubleProperty = delegate.ulxProperty
   def ulx_=(v: Double) {
     ulx() = v
   }
@@ -89,7 +89,7 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
   /**
    * The y coordinate of the output location onto which the upper left corner of the source is mapped.
    */
-  def uly :DoubleProperty = delegate.ulyProperty
+  def uly: DoubleProperty = delegate.ulyProperty
   def uly_=(v: Double) {
     uly() = v
   }
@@ -97,7 +97,7 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
   /**
    * The x coordinate of the output location onto which the upper right corner of the source is mapped.
    */
-  def urx :DoubleProperty = delegate.urxProperty
+  def urx: DoubleProperty = delegate.urxProperty
   def urx_=(v: Double) {
     urx() = v
   }
@@ -105,7 +105,7 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
   /**
    * The y coordinate of the output location onto which the upper right corner of the source is mapped.
    */
-  def ury :DoubleProperty = delegate.uryProperty
+  def ury: DoubleProperty = delegate.uryProperty
   def ury_=(v: Double) {
     ury() = v
   }

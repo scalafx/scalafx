@@ -24,25 +24,25 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
+import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
 object MotionBlur {
   implicit def sfxMotionBlur2jfx(mb: MotionBlur) = mb.delegate
 }
 
-class MotionBlur(override val delegate: jfxse.MotionBlur = new jfxse.MotionBlur) extends Effect(delegate) with InputedEffect with SFXDelegate[jfxse.MotionBlur] {
+class MotionBlur(override val delegate: jfxse.MotionBlur = new jfxse.MotionBlur)
+  extends Effect(delegate)
+  with InputDelegate[jfxse.MotionBlur]
+  with SFXDelegate[jfxse.MotionBlur] {
 
   /**
    * Creates a new instance of MotionBlur with the specified angle and radius.
    */
   def this(angle: Double, radius: Double) = this(new jfxse.MotionBlur(angle, radius))
-
-  def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
   /**
    * The angle of the motion effect, in degrees.

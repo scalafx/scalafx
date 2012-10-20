@@ -27,22 +27,23 @@
 
 package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
+import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
 object SepiaTone {
   implicit def sfxSepiaTone2jfx(st: SepiaTone) = st.delegate
 }
 
-class SepiaTone(override val delegate: jfxse.SepiaTone = new jfxse.SepiaTone) extends Effect(delegate) with InputedEffect with SFXDelegate[jfxse.SepiaTone] {
+class SepiaTone(override val delegate: jfxse.SepiaTone = new jfxse.SepiaTone)
+  extends Effect(delegate)
+  with InputDelegate[jfxse.SepiaTone]
+  with SFXDelegate[jfxse.SepiaTone] {
 
   /**
    * Creates a new instance of SepiaTone with the specified level.
    */
   def this(level: Double) = this(new jfxse.SepiaTone(level))
-
-  def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
   /**
    * The level value, which controls the intensity of the sepia effect.

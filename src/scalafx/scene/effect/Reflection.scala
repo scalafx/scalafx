@@ -24,25 +24,25 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
+import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
 object Reflection {
   implicit def sfxReflection2jfx(r: Reflection) = r.delegate
 }
 
-class Reflection(override val delegate: jfxse.Reflection = new jfxse.Reflection) extends Effect(delegate) with InputedEffect with SFXDelegate[jfxse.Reflection] {
+class Reflection(override val delegate: jfxse.Reflection = new jfxse.Reflection)
+  extends Effect(delegate)
+  with InputDelegate[jfxse.Reflection]
+  with SFXDelegate[jfxse.Reflection] {
 
   /**
    * Creates a new instance of Reflection with the specified topOffset, fraction, topOpacity and bottomOpacity.
    */
   def this(topOffset: Double, fraction: Double, topOpacity: Double, bottomOpacity: Double) = this(new jfxse.Reflection(topOffset, fraction, topOpacity, bottomOpacity))
-
-  def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
   /**
    * The bottom opacity value, which is the opacity of the reflection at its bottom extreme.

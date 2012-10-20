@@ -26,11 +26,12 @@
  */
 package scalafx.scene.effect
 
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.DimensionDelegateSpec
 
 /**
@@ -41,7 +42,10 @@ import scalafx.testutil.DimensionDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class ShadowSpec
   extends AbstractSFXDelegateSpec[jfxse.Shadow, Shadow, jfxse.ShadowBuilder[_]](classOf[jfxse.Shadow], classOf[Shadow], classOf[jfxse.ShadowBuilder[_]])
-  with DimensionDelegateSpec[Shadow] {
+  with DimensionDelegateSpec[Shadow]
+  with InputDelegateSpec[Shadow] {
+
+  val inputDelegate = getScalaClassInstance
 
   val dimensionDelegate = getScalaClassInstance
 

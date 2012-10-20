@@ -26,11 +26,12 @@
  */
 package scalafx.scene.effect
 
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 
 /**
  * MotionBlur Spec tests.
@@ -39,7 +40,10 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class MotionBlurSpec
-  extends AbstractSFXDelegateSpec[jfxse.MotionBlur, MotionBlur, jfxse.MotionBlurBuilder[_]](classOf[jfxse.MotionBlur], classOf[MotionBlur], classOf[jfxse.MotionBlurBuilder[_]]) {
+  extends AbstractSFXDelegateSpec[jfxse.MotionBlur, MotionBlur, jfxse.MotionBlurBuilder[_]](classOf[jfxse.MotionBlur], classOf[MotionBlur], classOf[jfxse.MotionBlurBuilder[_]])
+  with InputDelegateSpec[MotionBlur] {
+
+  val inputDelegate = getScalaClassInstance
 
   protected def convertScalaClassToJavaClass(sfxObject: MotionBlur) = {
     val jfxMotionBlur: jfxse.MotionBlur = sfxObject

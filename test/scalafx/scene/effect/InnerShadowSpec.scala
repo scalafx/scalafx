@@ -26,24 +26,26 @@
  */
 package scalafx.scene.effect
 
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.DimensionDelegateSpec
 
 /**
  * InnerShadow Spec tests.
- *
- *
  */
 @RunWith(classOf[JUnitRunner])
 class InnerShadowSpec
   extends AbstractSFXDelegateSpec[jfxse.InnerShadow, InnerShadow, jfxse.InnerShadowBuilder[_]](classOf[jfxse.InnerShadow], classOf[InnerShadow], classOf[jfxse.InnerShadowBuilder[_]])
-  with DimensionDelegateSpec[InnerShadow] {
+  with DimensionDelegateSpec[InnerShadow]
+  with InputDelegateSpec[InnerShadow] {
 
   val dimensionDelegate = getScalaClassInstance
+
+  val inputDelegate = getScalaClassInstance
 
   protected def convertScalaClassToJavaClass(sfxObject: InnerShadow) = {
     val jfxInnerShadow: jfxse.InnerShadow = sfxObject

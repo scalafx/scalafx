@@ -26,11 +26,12 @@
  */
 package scalafx.scene.effect
 
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 
 /**
  * PerspectiveTransform Spec tests.
@@ -39,7 +40,10 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class PerspectiveTransformSpec
-  extends AbstractSFXDelegateSpec[jfxse.PerspectiveTransform, PerspectiveTransform, jfxse.PerspectiveTransformBuilder[_]](classOf[jfxse.PerspectiveTransform], classOf[PerspectiveTransform], classOf[jfxse.PerspectiveTransformBuilder[_]]) {
+  extends AbstractSFXDelegateSpec[jfxse.PerspectiveTransform, PerspectiveTransform, jfxse.PerspectiveTransformBuilder[_]](classOf[jfxse.PerspectiveTransform], classOf[PerspectiveTransform], classOf[jfxse.PerspectiveTransformBuilder[_]])
+  with InputDelegateSpec[PerspectiveTransform] {
+
+  val inputDelegate = getScalaClassInstance
 
   protected def convertScalaClassToJavaClass(sfxObject: PerspectiveTransform) = {
     val jfxPerspectiveTransform: jfxse.PerspectiveTransform = sfxObject

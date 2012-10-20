@@ -38,8 +38,8 @@ object DropShadow {
 
 class DropShadow(override val delegate: jfxse.DropShadow = new jfxse.DropShadow())
   extends Effect(delegate)
-  with InputedEffect
   with DimensionDelegate[jfxse.DropShadow]
+  with InputDelegate[jfxse.DropShadow]
   with SFXDelegate[jfxse.DropShadow] {
 
   /**
@@ -58,11 +58,6 @@ class DropShadow(override val delegate: jfxse.DropShadow = new jfxse.DropShadow(
    */
   def this(radius: Double, offsetX: Double, offsetY: Double, color: Color) =
     this(new jfxse.DropShadow(radius, offsetX, offsetY, color))
-
-  /**
-   * The input for this Effect.
-   */
-  def inputed = delegate.asInstanceOf[jfxse.Effect with Inputed]
 
   def color = delegate.colorProperty
   def color_=(c: Color) {

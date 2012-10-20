@@ -26,20 +26,22 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{ effect => jfxse }
-import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
+import javafx.scene.{ effect => jfxse }
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
+
 /**
  * Glow Spec tests.
- *
- *
  */
 @RunWith(classOf[JUnitRunner])
 class GlowSpec
-  extends AbstractSFXDelegateSpec[jfxse.Glow, Glow, jfxse.GlowBuilder[_]](classOf[jfxse.Glow], classOf[Glow], classOf[jfxse.GlowBuilder[_]]) {
+  extends AbstractSFXDelegateSpec[jfxse.Glow, Glow, jfxse.GlowBuilder[_]](classOf[jfxse.Glow], classOf[Glow], classOf[jfxse.GlowBuilder[_]])
+  with InputDelegateSpec[Glow] {
+
+  val inputDelegate = getScalaClassInstance
 
   protected def convertScalaClassToJavaClass(sfxObject: Glow) = {
     val jfxGlow: jfxse.Glow = sfxObject
