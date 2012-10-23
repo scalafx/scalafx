@@ -44,6 +44,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
 
   def this(parent: jfxs.Parent, width: Double, height: Double) = this(new jfxs.Scene(parent, width, height))
 
+  def this(parent: jfxs.Parent, width: Double, height: Double, depthBuffer: Boolean ) = this(new jfxs.Scene(parent, width, height, depthBuffer ))
   //def this(stackPane: jfxsl.StackPane) = this (new jfxs.Scene(stackPane))
 
   //def this(stackPane: jfxsl.StackPane, width: Double, height: Double) = this (new jfxs.Scene(stackPane, width, height))

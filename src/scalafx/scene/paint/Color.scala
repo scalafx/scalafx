@@ -297,42 +297,42 @@ class Color(override val delegate: jfxsp.Color) extends Paint(delegate) with SFX
   /**
    * Creates a new Color that is a brighter version of this Color.
    */
-  def brighter = delegate.brighter
+  def brighter:Color = delegate.brighter
   
 
   /**
    * Creates a new Color that is a darker version of this Color.
    */
-  def darker = delegate.darker
+  def darker:Color = delegate.darker
 
   /**
    * Creates a new Color based on this Color with hue, saturation, brightness and opacity values altered.
    */
-  def deriveColor(hueShift: Double, saturationFactor: Double, brightnessFactor: Double, opacityFactor: Double) = delegate.deriveColor(hueShift, saturationFactor, brightnessFactor, opacityFactor)
+  def deriveColor(hueShift: Double, saturationFactor: Double, brightnessFactor: Double, opacityFactor: Double):Color = delegate.deriveColor(hueShift, saturationFactor, brightnessFactor, opacityFactor)
 
   /**
    * Creates a new Color that is a less saturated version of this Color.
    */
-  def desaturate = delegate.desaturate
+  def desaturate:Color = delegate.desaturate
 
   /**
    * Creates a new Color that is grayscale equivalent of this Color.
    */
-  def grayscale = delegate.grayscale
+  def grayscale:Color = delegate.grayscale
 
   /**
    * The function calculates an interpolated value along the fraction t between 0.0 and 1.0.
    */
-  def interpolate(endValue: Color, t: Double) = delegate.interpolate(endValue, t)
+  def interpolate(endValue: Color, t: Double):Color = delegate.interpolate(endValue, t)
 
   /**
    * Creates a new Color that is inversion of this Color.
    */
-  def invert = delegate.invert
+  def invert:Color = delegate.invert
 
   /**
    * Creates a new Color that is a more saturated version of this Color.
    */
-  def saturate = delegate.saturate
+  def saturate:Color = delegate.saturate
 
 }

@@ -18,6 +18,18 @@ object Rotate {
 
 class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate) extends Transform(delegate) with SFXDelegate[jfxst.Rotate] {
 
+  def this(angle: Double ) = this( new jfxst.Rotate(angle ))
+
+  def this(angle: Double, pivotX: Double, pivotY: Double ) = this( new jfxst.Rotate(angle, pivotX, pivotY ))
+
+  def this(angle: Double, pivotX: Double, pivotY: Double, pivotZ: Double ) =
+    this( new jfxst.Rotate(angle, pivotX, pivotY, pivotZ ))
+
+  def this(angle: Double, pivotX: Double, pivotY: Double, pivotZ: Double, axis: Point3D ) =
+    this( new jfxst.Rotate(angle, pivotX, pivotY, pivotZ, axis ))
+
+  def this(angle: Double, axis: Point3D ) = this( new jfxst.Rotate(angle, axis ))
+
   /**
    * Defines the angle of rotation measured in degrees.
    */

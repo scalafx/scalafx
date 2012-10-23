@@ -145,7 +145,7 @@ task(generateRunners, dependon: 'classes', description:"generates a UNIX bash sc
         new File("ColorfulCircles").withWriter { out ->
             out.println("#!/bin/bash")
             out.println("scala -cp ${sourceSets.main.runtimeClasspath.getAsPath()}  scalafx.ColorfulCircles")
-        "chmod 755 scalafx.ColorfulCircles".execute()
+            "chmod 755 scalafx.ColorfulCircles".execute()
         }
     }
 }
@@ -156,6 +156,5 @@ task(run, dependsOn: 'classes', type: JavaExec, description:"runs the colorful c
     args 'one', 'two', 'three'
     systemProperty 'simple.message', 'Hello '
 }
-
 
 // fini
