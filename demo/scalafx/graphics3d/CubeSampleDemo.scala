@@ -31,6 +31,7 @@ object CubeSampleDemo extends JFXApp {
 //      height = 600
       scene = new Scene( root, 400, 150, true )
       resizable = false
+      title = "Graphics 3D Cubes Sample Demo in ScalaFX"
     }
 
     root.getTransforms.addAll( new Translate(400 / 2, 150 / 2), new Rotate(180, Rotate.XAxis) )

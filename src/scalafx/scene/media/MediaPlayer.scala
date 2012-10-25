@@ -34,6 +34,8 @@ import scalafx.util.SFXDelegate
 
 object MediaPlayer {
   implicit def sfxMediaPlayer2jfx(mp: MediaPlayer) = mp.delegate
+
+  val Indefinite:Int = jfxsm.MediaPlayer.INDEFINITE
 }
 
 final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[jfxsm.MediaPlayer] {
