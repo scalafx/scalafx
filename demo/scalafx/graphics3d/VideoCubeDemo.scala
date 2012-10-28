@@ -1,5 +1,7 @@
 package scalafx.graphics3d
 
+// JavaFX system properties: -Dprism.printStats=true -Dprism.verbose=true
+
 import scalafx.application.JFXApp
 import scalafx.scene.paint.Color
 import scalafx.scene.{Node, PerspectiveCamera, Scene, Group}
@@ -12,8 +14,10 @@ import scalafx.Includes._
 import java.io.File
 
 /**
- * The type VideoCubeDemo
- * 
+ * The type VideoCubeDemo a demonstration of the JavaOne 2011 key note with
+ * {@link Media}, {@link MediaView}, and {@link MediaPlayer} for
+ * six videos that are displayed as a 3D graphic cube.
+ *
  * @author Peter Pilgrim (peter)
  */
 object VideoCubeDemo extends JFXApp {
@@ -21,7 +25,9 @@ object VideoCubeDemo extends JFXApp {
   var animation: Timeline = _
   var root = new Group
   stage = new Stage {
-    scene = new Scene( root, 800, 600, true )
+    scene = new Scene( root, 800, 600, true )  {
+      fill = Color.BLACK
+    }
     resizable = false
     title = "Graphics 3D Video Cube Demo in ScalaFX"
   }
@@ -33,10 +39,12 @@ object VideoCubeDemo extends JFXApp {
   // to any server, PUBLIC, PROTECTED and PRIVATE without the studio consent ;-))
   // PLEASE DO NOT SHOW THIS PUBLIC LIKE IN A BIG CONFERENCE with consent either
   // This is just for learning and demonstration purposes.
-  // Of course, it will only work my machine!!!!!!!!!!!!!!!!!!!!!! Until you edit the folder and files!
+  // Of course, it will only work my machine!! Until you edit the folder and files!
+  // FIXME: Allow the video folder to be configured with a command line argument
   val folder = new File( "C:\\Users\\peter\\Videos\\Movie-Trailers-2012" )
+  // val folder = new File( "/Users/peterpilgrim/Movies/Movie-Trailers-2012" )
 
-  // You need your video files ;-) Cannot redistribute MOVIE FILES!!!!!!!!!!!!
+  // You need your video files ;-) Cannot redistribute MOVIE FILES!!!
   // Substitute, for example, with your own family and vacation pictures
   val vidFiles = List(
     "FLIGHT Trailer 2012 Denzel Washington Movie - Official [HD].mp4",
@@ -48,20 +56,40 @@ object VideoCubeDemo extends JFXApp {
 
   val mediaPlayers = vidFiles.map {
     filename =>  {
-        val file = new File( folder, filename)
-        val media = new Media( file.toURI().toURL().toExternalForm )
-        val mediaPlayer = new MediaPlayer( media )
-        mediaPlayer.volume = 0.5
-        mediaPlayer.cycleCount = MediaPlayer.Indefinite
-        mediaPlayer
-      }
+      val file = new File( folder, filename)
+      val media = new Media( file.toURI().toURL().toExternalForm )
+      val mediaPlayer = new MediaPlayer( media )
+      mediaPlayer.volume = 0.5
+      mediaPlayer.cycleCount = MediaPlayer.Indefinite
+      mediaPlayer
+    }
   }
 
-  root.getTransforms.addAll( new Translate(400 / 2, 150 / 2), new Rotate(180, Rotate.XAxis) )
+  val cubeSystem = create3dContent()
+  cubeSystem.translateX = 800 / 2
+  cubeSystem.translateY = 600 / 2
+
+  //  cubeSystem.getTransforms.addAll( new Translate(800 / 2, 600 / 2), new Rotate(180, Rotate.XAxis) )
 
   stage.getScene.setCamera( new PerspectiveCamera() )
 
-  root.children.add(create3dContent())
+  val lowX = -75; val lowY = -75; val highX = 900; val highY = 700
+  val starryBackground = new Group {
+    val stars = (1 to 500).map( x => new Rectangle {
+      x =  lowX + scala.math.random * (highX - lowX )
+      y =  lowY + scala.math.random * (highY - lowY )
+      //      printf("x=%5.1f, y=%5.1f\n", x.get(), y.get() )
+      val s = 1 + scala.math.random * 3
+      width = s
+      height = s
+      fill = Color.WHITE
+    } )
+    //    printf("stars=%s\n", stars)
+    children = stars
+    translateZ = 100.0;
+  }
+
+  root.children.addAll( starryBackground, cubeSystem )
 
   def create3dContent():Node = {
     val c1 = new VideoCube(mediaPlayers, 300);
@@ -73,14 +101,21 @@ object VideoCubeDemo extends JFXApp {
     animation = new Timeline {
       cycleCount = Timeline.INDEFINITE
       keyFrames = Seq(
-        at (0 s) { c1.ry.angle -> 0d },
-        at (1 s) { c1.ry.angle -> 360d },
-        at (0 s) { c1.rx.angle -> 0d },
-        at (3 s) { c1.rx.angle -> 360d },
+        //        at (0 s) { c1.ry.angle -> 0d },
+        //        at (1 s) { c1.ry.angle -> 360d },
+        //        at (0 s) { c1.rx.angle -> 0d },
+        //        at (3 s) { c1.rx.angle -> 360d },
+        //        at (0 s) { c1.rz.angle -> 0d },
+        //        at (5 s) { c1.rz.angle -> 360d }
+        at (0 s) { c1.ry.angle -> 0d ; c1.rx.angle -> 0d },
+        at (1 s) { c1.ry.angle -> 360d ; c1.rx.angle -> 180d },
+        at (2 s) { c1.ry.angle -> -360d ; c1.rx.angle -> 520d },
         at (0 s) { c1.rz.angle -> 0d },
         at (5 s) { c1.rz.angle -> 360d }
       )
     }
+
+
 
     return new Group(c1);
   }
@@ -107,41 +142,44 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
   transforms = Seq(rz, ry, rx)
 
   children = Seq(
-    new MediaView( mediaPlayers(0) ) { // back face
+    new MediaViewCubeFace( mediaPlayers(0) ) { // back face
       fitWidth = size; fitHeight = size
       translateX = -0.5*size
       translateY = -0.5*size
       translateZ = 0.5*size
+//      preserveRatio = false
     },
-    new MediaView( mediaPlayers(1) ) { // bottom face
+    new MediaViewCubeFace( mediaPlayers(1) ) { // bottom face
       fitWidth = size ; fitHeight = size
       translateX = -0.5*size
       translateY = 0
       rotationAxis = Rotate.XAxis
       rotate = 90
+//      preserveRatio = false
     },
-    new MediaView( mediaPlayers(2) ) { // right face
+    new MediaViewCubeFace( mediaPlayers(2) ) { // right face
       fitWidth = size ; fitHeight = size
       translateX = -1*size
       translateY = -0.5*size
       rotationAxis = Rotate.YAxis
       rotate = 90
+//      preserveRatio = false
     },
-    new MediaView( mediaPlayers(3) ) { // left face
+    new MediaViewCubeFace( mediaPlayers(3) ) { // left face
       fitWidth = size; fitHeight = size
       translateX = 0
       translateY = -0.5*size
       rotationAxis = Rotate.YAxis
       rotate = 90
     },
-    new MediaView( mediaPlayers(4) ) { // top face
+    new MediaViewCubeFace( mediaPlayers(4) ) { // top face
       fitWidth = size; fitHeight = size
       translateX = -0.5*size
       translateY = -1*size
       rotationAxis = Rotate.XAxis
       rotate = 90
     },
-    new MediaView( mediaPlayers(5) ) { // top face
+    new MediaViewCubeFace( mediaPlayers(5) ) { // top face
       fitWidth = size; fitHeight = size
       translateX = -0.5*size
       translateY = -0.5*size
@@ -149,4 +187,55 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
     }
   )
 
+  /**
+   * This is a custom node that associates a {@link MediaView} with a backing {@link Rectangle}
+   * that represents a cube face
+   * @param mediaPlayer the media player
+   * @param size the square size of the cube face
+   * @param color the colour of the cube face
+   * @param shade the derived colour
+   */
+  class MediaViewCubeFace( val mediaPlayer: MediaPlayer, size: Double, color: Color = Color.DARKBLUE, shade: Double = 1.0 ) extends Group {
+
+    def this( mediaPlayer: MediaPlayer ) = this( mediaPlayer, 0.0 )
+
+    val mediaView = new MediaView( mediaPlayer )
+
+    val backRect = new Rectangle {
+      x = 0
+      y = 0
+      width = size
+      height = size
+      fill = color.deriveColor(0.0, 1.0, (1 - 0.5*shade), 1.0)
+    }
+
+    children = Seq( backRect, mediaView )
+
+    def fitHeight = mediaView.fitHeightProperty
+    def fitHeight_=(v: Double) {
+      fitHeight() = v
+      backRect.height = v
+      mediaView.layoutY = v / 4
+    }
+
+    /**
+     * Determines the width of the bounding box within which the source media is resized as
+     * necessary to fit.
+     */
+    def fitWidth = mediaView.fitWidthProperty
+    def fitWidth_=(v: Double) {
+      fitWidth() = v
+      backRect.width = v
+    }
+
+    def preserveRatio = mediaView.preserveRatioProperty
+    def preserveRatio_=(v: Boolean) {
+      preserveRatio() = v
+    }
+
+    def smooth = mediaView.smoothProperty
+    def smooth_=(v: Boolean) {
+      smooth() = v
+    }
+  }
 }
