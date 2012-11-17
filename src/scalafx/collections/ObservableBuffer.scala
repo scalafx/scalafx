@@ -38,8 +38,8 @@ import scala.collection.mutable.Builder
 import scala.collection.GenTraversableOnce
 import scala.collection.TraversableOnce
 
-import javafx.{collections => jfxc}
-import java.{util => ju}
+import javafx.{ collections => jfxc }
+import java.{ util => ju }
 import scalafx.beans.Observable
 import scalafx.util.SFXDelegate
 import scalafx.event.subscriptions.Subscription
@@ -360,12 +360,29 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
 
   /**
    * Removes a number of elements from a given index position. $WhyOverride
+   * Note: This method conflicts with method with same name in
+   * [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableList.html#remove(int, int) ObservableList]].
+   * There the arguments indicate a range of index of elements to be removed. Here the arguments indicate the first
+   * index of range and the quantity of elements to be removed. If you want a functionality equivalent to JavaFX
+   * ObservableList, use `removeRange`.
    *
    * @param n  the index which refers to the first element to remove.
    * @param count  the number of elements to remove.
    */
   override def remove(n: Int, count: Int) {
     delegate.subList(n, n + count).clear()
+  }
+
+  /**
+   * Remove a range of elements. Use this method if you want a functionality such as
+   * [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableList.html#remove(int, int) the method with
+   * same name in ObservableList]].
+   *
+   * @param from the start of the range to remove (inclusive)
+   * @param to  the end of the range to remove (exclusive)
+   */
+  def removeRange(from: Int, to: Int) {
+    delegate.remove(from, to)
   }
 
   /**
