@@ -29,8 +29,8 @@ package scalafx.collections
 import scala.collection.mutable.Buffer
 import org.junit.runner.RunWith
 import org.scalatest.matchers.ShouldMatchers._
-import javafx.{collections => jfxc}
-import java.{util => ju}
+import javafx.{ collections => jfxc }
+import java.{ util => ju }
 import ObservableBuffer.Add
 import ObservableBuffer.Remove
 import ObservableBuffer.Reorder
@@ -320,6 +320,59 @@ class ObservableBufferSpec[T]
     changeCount should equal(7)
   }
 
+  it should "notify when it is removed a range of elements" in {
+    // Preparation
+    val buffer = ObservableBuffer("a", "b", "c", "d", "e")
+    var changeCount = 0
+    buffer onChange {
+      (list, changes) =>
+        for (change <- changes) change match {
+          case Remove(position, elements) => {
+            changeCount += 1
+            position should equal(1)
+            elements should equal(Seq("b", "c", "d"))
+          }
+          case Add(_, _) =>
+        }
+    }
+
+    // Execution
+    buffer.removeRange(1, 4)
+
+    // Verification
+    changeCount should equal(1)
+    buffer.toList should equal(List("a", "e"))
+  }
+
+  it should "notify a rotation just once" in {
+    // Preparation
+    val buffer = ObservableBuffer("a", "b", "c", "d", "e", "f")
+
+    var changeCount = 0
+    buffer onChange {
+      (list, changes) =>
+        for (change <- changes) change match {
+          case Add(position, elements) => {
+            changeCount += 1
+            position should equal(0)
+            elements should equal(Seq("e", "f", "a", "b", "c", "d"))
+          }
+          case Remove(position, elements) => {
+            changeCount += 1
+            position should equal(0)
+            elements should equal(Seq("a", "b", "c", "d", "e", "f"))
+          }
+        }
+    }
+
+    // Executuion
+    ObservableBuffer.rotate(buffer, 2)
+
+    // Verification
+    changeCount should equal(2)
+    buffer.toList should equal(List("e", "f", "a", "b", "c", "d"))
+  }
+
   it should "notify on replace with a remove and add" in {
     // Preparation
     val buffer = ObservableBuffer("a", "b", "c")
@@ -602,8 +655,8 @@ class ObservableBufferSpec[T]
     buffer.toList should equal(List('e', 'h', 'j', 'r', 't', 'z'))
     addedValues.toList should equal(List('e', 'a', 't', 'r', 'j', 'd', 'z', 'h'))
     removedValues.toList should equal(List('d', 'a'))
-    permutations should have size(1)
-    permutations(0).toList should equal(List((0,3), (1,2), (2,5), (3,0), (4,1), (5,4)))
+    permutations should have size (1)
+    permutations(0).toList should equal(List((0, 3), (1, 2), (2, 5), (3, 0), (4, 1), (5, 4)))
   }
 
 }

@@ -26,7 +26,9 @@
  */
 package scalafx.collections
 
+import scala.collection.GenTraversableOnce
 import scala.collection.JavaConversions._
+import scala.collection.TraversableOnce
 import scala.collection.generic.CanBuildFrom
 import scala.collection.generic.GenericCompanion
 import scala.collection.generic.GenericTraversableTemplate
@@ -35,14 +37,12 @@ import scala.collection.mutable.ArrayBuffer
 import scala.collection.mutable.Buffer
 import scala.collection.mutable.BufferLike
 import scala.collection.mutable.Builder
-import scala.collection.GenTraversableOnce
-import scala.collection.TraversableOnce
 
-import javafx.{ collections => jfxc }
 import java.{ util => ju }
+import javafx.{ collections => jfxc }
 import scalafx.beans.Observable
-import scalafx.util.SFXDelegate
 import scalafx.event.subscriptions.Subscription
+import scalafx.util.SFXDelegate
 
 /**
  * Companion Object for [[ObservableBuffer]].
@@ -62,6 +62,8 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    * The default builder for `ObservableBuffer` objects.
    */
   def newBuilder[T]: Builder[T, ObservableBuffer[T]] = new ObservableBuffer
+
+  // CHANGING INDICATORS - BEGIN
 
   /**
    * Trait that indicates a Change in a ObsevableBuffer
@@ -92,6 +94,10 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    */
   case class Reorder(start: Int, end: Int, permutation: (Int => Int)) extends Change
 
+  // CHANGING INDICATORS - END
+
+  // CREATION METHODS - BEGIN
+
   /**
    * Creates a new Observable Buffer from a sequence of elements.
    *
@@ -100,6 +106,10 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    */
   def apply[T](items: Seq[T]): ObservableBuffer[T] =
     new ObservableBuffer[T](jfxc.FXCollections.observableArrayList[T](items))
+
+  // CREATION METHODS - END
+
+  // HELPER METHODS (ORIGINATED FROM FXCOLLECTIONS) - BEGIN
 
   /**
    * Shuffles all elements in the observable list. Fires only '''one''' change notification on
@@ -152,6 +162,16 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    * @param obj the object to fill the list with
    */
   def fillAll[T](buffer: ObservableBuffer[T], obj: T) = jfxc.FXCollections.fill(buffer, obj)
+
+  /**
+   * Rotates the buffer by distance. Fires only one change notification on the buffer.
+   * 
+   * @param buffer the list to be rotated
+   * @param distance the distance of rotation
+   */
+  def rotate[T](buffer: ObservableBuffer[T], distance: Int) = jfxc.FXCollections.rotate(buffer, distance)
+  
+  // HELPER METHODS - END
 
 }
 

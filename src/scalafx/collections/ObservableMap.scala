@@ -140,7 +140,7 @@ trait ObservableMap[K, V]
   /**
    * The empty map of the same type as this map
    *
-   * @rturns an empty `ObservableMap`.
+   * @return An empty `ObservableMap`.
    */
   override def empty = new ObservableHashMap[K, V]
 
