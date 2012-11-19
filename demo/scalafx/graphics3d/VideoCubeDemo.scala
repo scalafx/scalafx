@@ -12,6 +12,7 @@ import scalafx.animation.Timeline
 import scalafx.stage.Stage
 import scalafx.Includes._
 import java.io.File
+import javafx.scene.DepthTest
 
 /**
  * The type VideoCubeDemo a demonstration of the JavaOne 2011 key note with
@@ -39,10 +40,9 @@ object VideoCubeDemo extends JFXApp {
   // to any server, PUBLIC, PROTECTED and PRIVATE without the studio consent ;-))
   // PLEASE DO NOT SHOW THIS PUBLIC LIKE IN A BIG CONFERENCE with consent either
   // This is just for learning and demonstration purposes.
-  // Of course, it will only work my machine!! Until you edit the folder and files!
-  // FIXME: Allow the video folder to be configured with a command line argument
-  val folder = new File( "C:\\Users\\peter\\Videos\\Movie-Trailers-2012" )
-  // val folder = new File( "/Users/peterpilgrim/Movies/Movie-Trailers-2012" )
+  // Of course, it will only work my machine!!!!!!!!!!!!!!!!!!!!!! Until you edit the folder and files!
+  //  val folder = new File( "C:\\Users\\peter\\Videos\\Movie-Trailers-2012" )
+  val folder = new File( "/Users/peterpilgrim/Movies/Movie-Trailers-2012" )
 
   // You need your video files ;-) Cannot redistribute MOVIE FILES!!!
   // Substitute, for example, with your own family and vacation pictures
@@ -101,12 +101,6 @@ object VideoCubeDemo extends JFXApp {
     animation = new Timeline {
       cycleCount = Timeline.INDEFINITE
       keyFrames = Seq(
-        //        at (0 s) { c1.ry.angle -> 0d },
-        //        at (1 s) { c1.ry.angle -> 360d },
-        //        at (0 s) { c1.rx.angle -> 0d },
-        //        at (3 s) { c1.rx.angle -> 360d },
-        //        at (0 s) { c1.rz.angle -> 0d },
-        //        at (5 s) { c1.rz.angle -> 360d }
         at (0 s) { c1.ry.angle -> 0d ; c1.rx.angle -> 0d },
         at (1 s) { c1.ry.angle -> 360d ; c1.rx.angle -> 180d },
         at (2 s) { c1.ry.angle -> -360d ; c1.rx.angle -> 520d },
@@ -114,8 +108,6 @@ object VideoCubeDemo extends JFXApp {
         at (5 s) { c1.rz.angle -> 360d }
       )
     }
-
-
 
     return new Group(c1);
   }
@@ -195,7 +187,7 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
    * @param color the colour of the cube face
    * @param shade the derived colour
    */
-  class MediaViewCubeFace( val mediaPlayer: MediaPlayer, size: Double, color: Color = Color.DARKBLUE, shade: Double = 1.0 ) extends Group {
+  class MediaViewCubeFace( val mediaPlayer: MediaPlayer, size: Double, color: Color = Color.LIGHTBLUE, shade: Double = 1.0 ) extends Group {
 
     def this( mediaPlayer: MediaPlayer ) = this( mediaPlayer, 0.0 )
 
@@ -204,9 +196,13 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
     val backRect = new Rectangle {
       x = 0
       y = 0
+      translateZ = -.01
       width = size
       height = size
       fill = color.deriveColor(0.0, 1.0, (1 - 0.5*shade), 1.0)
+      depthTest = DepthTest.INHERIT
+      // JavaFX Rendering on 3D with planar surfaces and mediaview will improve
+      // opacity = 0.0
     }
 
     children = Seq( backRect, mediaView )
@@ -239,3 +235,7 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
     }
   }
 }
+
+
+
+// http://code.google.com/p/scalafx/source/browse/
