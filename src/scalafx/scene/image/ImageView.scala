@@ -46,6 +46,16 @@ class ImageView(override val delegate: jfxsi.ImageView = new jfxsi.ImageView())
   with PositionDelegate[jfxsi.ImageView]
   with SFXDelegate[jfxsi.ImageView] {
 
+  /** Allocates a new ImageView object using the given image. */
+  def this(image:Image) {
+    this(new jfxsi.ImageView(image))
+  }
+
+  /** Allocates a new ImageView object with image loaded from the specified URL. */
+  def this(url:String) {
+    this(new jfxsi.ImageView(url))
+  }
+
   def fitHeight: DoubleProperty = delegate.fitHeightProperty
 
   def fitHeight_=(v: Double) {
