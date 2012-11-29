@@ -69,6 +69,13 @@ object GridPane {
   def getHalignment(child: Node) = jfxsl.GridPane.getHalignment(child)
 
   /**
+     * Sets the horizontal alignment for the child when contained by a GridPane.
+     */
+  def setHalignment(node: Node, hp: jfxg.HPos) {
+    jfxsl.GridPane.setHalignment(node, hp)
+  }
+
+  /**
    * Returns the child's hgrow constraint if set.
    */
   def getHgrow(child: Node) = jfxsl.GridPane.getHgrow(child)
