@@ -201,7 +201,7 @@ object TableView {
 /**
  * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableView.html]].
  */
-class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableView)
+class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableView[S])
   extends Control(delegate)
   with SFXDelegate[jfxsc.TableView[S]] {
 

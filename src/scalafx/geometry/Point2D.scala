@@ -46,7 +46,7 @@ class Point2D(override val delegate: jfxg.Point2D) extends SFXDelegate[jfxg.Poin
   /**
    * The y coordinate.
    */
-  def y = delegate.getX
+  def y = delegate.getY
 
   /**
    * Computes the distance between this point and point (x1, y1).
