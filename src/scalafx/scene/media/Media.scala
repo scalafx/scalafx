@@ -57,6 +57,12 @@ final class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.
    */
   def height = delegate.heightProperty
 
+  /** Retrieve the markers defined on this Media instance. */
+  def markers = delegate.getMarkers
+
+  /** Retrieve the metadata contained in this media source. */
+  def metadata = delegate.getMetadata
+
   /**
    * Event handler called when an error occurs.
    */
