@@ -72,7 +72,11 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    */
   def bottom = delegate.bottomProperty()
   def bottom_=(v: Node) {
-    bottom() = v
+    if (null == v) {
+      delegate.setBottom(null)
+    } else {
+      bottom() = v
+    }
   }
 
   /**
@@ -80,7 +84,11 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    */
   def center = delegate.centerProperty()
   def center_=(v: Node) {
-    center() = v
+    if (null == v) {
+      delegate.setCenter(null)
+    } else {
+      center() = v
+    }
   }
 
   /**
@@ -88,7 +96,11 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    */
   def left = delegate.leftProperty()
   def left_=(v: Node) {
-    left() = v
+    if (null == v) {
+      delegate.setLeft(null)
+    } else {
+      left() = v
+    }
   }
 
   /**
@@ -96,7 +108,11 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    */
   def right = delegate.rightProperty()
   def right_=(v: Node) {
-    right() = v
+    if (null == v) {
+      delegate.setRight(null)
+    } else {
+      right() = v
+    }
   }
 
   /**
@@ -104,7 +120,11 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    */
   def top = delegate.topProperty()
   def top_=(v: Node) {
-    top() = v
+    if (null == v) {
+      delegate.setTop(null)
+    } else {
+      top() = v
+    }
   }
 
   /**
