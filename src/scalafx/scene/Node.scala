@@ -28,14 +28,14 @@
 package scalafx.scene
 
 import scala.collection.JavaConversions.asJavaCollection
-
-import javafx.scene.{effect => jfxse}
-import javafx.scene.{input => jfxsi}
-import javafx.scene.{layout => jfxsl}
-import javafx.scene.{transform => jfxst}
-import javafx.{event => jfxe}
-import javafx.{geometry => jfxg}
-import javafx.{scene => jfxs}
+import javafx.scene.{ effect => jfxse }
+import javafx.scene.{ input => jfxsi }
+import javafx.scene.{ layout => jfxsl }
+import javafx.scene.{ transform => jfxst }
+import javafx.{ event => jfxe }
+import javafx.{ geometry => jfxg }
+import javafx.{ scene => jfxs }
+import javafx.{ util => jfxu }
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
@@ -51,12 +51,13 @@ import scalafx.geometry.Point2D
 import scalafx.scene.effect.Effect
 import scalafx.util.SFXDelegate
 import scalafx.scene.transform.Transform
+import scalafx.scene.image.WritableImage
 
 object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
 }
 
-abstract class Node protected(override val delegate: jfxs.Node) extends SFXDelegate[jfxs.Node] {
+abstract class Node protected (override val delegate: jfxs.Node) extends SFXDelegate[jfxs.Node] {
 
   /**
    * The BlendMode used to blend this individual node into the scene behind it.
@@ -820,22 +821,34 @@ abstract class Node protected(override val delegate: jfxs.Node) extends SFXDeleg
     delegate.resizeRelocate(x, y, width, height)
 
   /**
-   * Transforms a rectangle from the coordinate space of the Scene into the local coordinate space 
-of this Node.
+   * Transforms a rectangle from the coordinate space of the Scene into the local coordinate space
+   * of this Node.
    */
   def sceneToLocal(sceneBounds: Bounds) = delegate.sceneToLocal(sceneBounds)
 
   /**
-   * Transforms a point from the coordinate space of the Scene into the local coordinate space 
-of this Node.
+   * Transforms a point from the coordinate space of the Scene into the local coordinate space
+   * of this Node.
    */
   def sceneToLocal(sceneX: Double, sceneY: Double) = delegate.sceneToLocal(sceneX, sceneY)
 
   /**
-   * Transforms a point from the coordinate space of the Scene into the local coordinate space 
-of this Node.
+   * Transforms a point from the coordinate space of the Scene into the local coordinate space
+   * of this Node.
    */
   def sceneToLocal(scenePoint: Point2D) = delegate.sceneToLocal(scenePoint)
+
+  /**
+   * Takes a snapshot of this node and returns the rendered image when it is ready.
+   */
+  def snapshot(params: SnapshotParameters, image: WritableImage): WritableImage =
+    delegate.snapshot(params, image)
+
+  /**
+   * Takes a snapshot of this node at the next frame and calls the specified callback method when the image is ready.
+   */
+  def snapshot(callback: jfxs.SnapshotResult => Unit, params: SnapshotParameters, image: WritableImage): Unit =
+    delegate.snapshot(callback, params, image)
 
   /**
    * Confirms a potential drag and drop gesture that is recognized over this Node.
@@ -858,14 +871,13 @@ of this Node.
    */
   def toFront = delegate.toFront
 
-
   /**
    * An affine transform that holds the computed local-to-parent transform.
    * This is the concatenation of all transforms in this node, including all of the convenience transforms.
    *
    * @since 2.2
    */
-  def localToParentTransform:Transform = delegate.localToParentTransform
+  def localToParentTransform: Transform = delegate.localToParentTransform
 
   /**
    * An affine transform that holds the computed local-to-scene transform.
@@ -874,7 +886,7 @@ of this Node.
    *
    * @since 2.2
    */
-  def localToSceneTransform:Transform = delegate.localToSceneTransform
+  def localToSceneTransform: Transform = delegate.localToSceneTransform
 
   /**
    * Defines a function to be called when user performs a rotation action.
@@ -882,7 +894,7 @@ of this Node.
    * @since 2.2
    */
   def onRotate = delegate.onRotateProperty
-  def onRotate_= ( v: jfxe.EventHandler[jfxsi.RotateEvent]) {
+  def onRotate_=(v: jfxe.EventHandler[jfxsi.RotateEvent]) {
     onRotate() = v
   }
 
@@ -892,7 +904,7 @@ of this Node.
    * @since 2.2
    */
   def onRotationFinished = delegate.onRotationFinishedProperty()
-  def onRotationFinished_= ( v: jfxe.EventHandler[jfxsi.RotateEvent]) {
+  def onRotationFinished_=(v: jfxe.EventHandler[jfxsi.RotateEvent]) {
     onRotationFinished() = v
   }
 
@@ -902,7 +914,7 @@ of this Node.
    * @since 2.2
    */
   def onRotationStarted = delegate.onRotationFinishedProperty()
-  def onRotationStarted_= ( v: jfxe.EventHandler[jfxsi.RotateEvent]) {
+  def onRotationStarted_=(v: jfxe.EventHandler[jfxsi.RotateEvent]) {
     onRotationStarted() = v
   }
 
@@ -912,7 +924,7 @@ of this Node.
    * @since 2.2
    */
   def onScrollFinished = delegate.onScrollFinishedProperty()
-  def onScrollFinished_= ( v: jfxe.EventHandler[jfxsi.ScrollEvent]) {
+  def onScrollFinished_=(v: jfxe.EventHandler[jfxsi.ScrollEvent]) {
     onScrollFinished() = v
   }
 
@@ -922,7 +934,7 @@ of this Node.
    * @since 2.2
    */
   def onScrollStarted = delegate.onScrollStartedProperty()
-  def onScrollStarted_= ( v: jfxe.EventHandler[jfxsi.ScrollEvent]) {
+  def onScrollStarted_=(v: jfxe.EventHandler[jfxsi.ScrollEvent]) {
     onScrollStarted() = v
   }
 
@@ -932,7 +944,7 @@ of this Node.
    * @since 2.2
    */
   def onSwipeDown = delegate.onSwipeDownProperty()
-  def onSwipeDown_= ( v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+  def onSwipeDown_=(v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
     onSwipeDown() = v
   }
 
@@ -942,7 +954,7 @@ of this Node.
    * @since 2.2
    */
   def onSwipeLeft = delegate.onSwipeLeftProperty()
-  def onSwipeLeft_= ( v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+  def onSwipeLeft_=(v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
     onSwipeLeft() = v
   }
 
@@ -952,7 +964,7 @@ of this Node.
    * @since 2.2
    */
   def onSwipeUp = delegate.onSwipeUpProperty()
-  def onSwipeUp_= ( v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+  def onSwipeUp_=(v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
     onSwipeUp() = v
   }
 
@@ -962,7 +974,7 @@ of this Node.
    * @since 2.2
    */
   def onSwipeRight = delegate.onSwipeRightProperty()
-  def onSwipeRight_= ( v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+  def onSwipeRight_=(v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
     onSwipeRight() = v
   }
 
@@ -972,10 +984,9 @@ of this Node.
    * @since 2.2
    */
   def onZoom = delegate.onZoomProperty()
-  def onZoom_= ( v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
+  def onZoom_=(v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
     onZoom() = v
   }
-
 
   /**
    * Defines a function to be called when a Zoom gesture ends.
@@ -983,7 +994,7 @@ of this Node.
    * @since 2.2
    */
   def onZoomFinished = delegate.onZoomFinishedProperty()
-  def onZoomFinished_= ( v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
+  def onZoomFinished_=(v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
     onZoomFinished() = v
   }
 
@@ -993,7 +1004,7 @@ of this Node.
    * @since 2.2
    */
   def onZoomStarted = delegate.onZoomStartedProperty()
-  def onZoomStarted_= ( v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
+  def onZoomStarted_=(v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
     onZoomStarted() = v
   }
 
@@ -1003,7 +1014,7 @@ of this Node.
    * @since 2.2
    */
   def onTouchMoved = delegate.onTouchMovedProperty()
-  def onTouchMoved_= ( v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+  def onTouchMoved_=(v: jfxe.EventHandler[jfxsi.TouchEvent]) {
     onTouchMoved() = v
   }
 
@@ -1013,7 +1024,7 @@ of this Node.
    * @since 2.2
    */
   def onTouchPressed = delegate.onTouchPressedProperty()
-  def onTouchPressed_= ( v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+  def onTouchPressed_=(v: jfxe.EventHandler[jfxsi.TouchEvent]) {
     onTouchPressed() = v
   }
 
@@ -1023,7 +1034,7 @@ of this Node.
    * @since 2.2
    */
   def onTouchReleased = delegate.onTouchPressedProperty()
-  def onTouchReleased_= ( v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+  def onTouchReleased_=(v: jfxe.EventHandler[jfxsi.TouchEvent]) {
     onTouchReleased() = v
   }
 
@@ -1033,7 +1044,7 @@ of this Node.
    * @since 2.2
    */
   def onTouchStationary = delegate.onTouchStationaryProperty()
-  def onTouchStationary_= ( v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+  def onTouchStationary_=(v: jfxe.EventHandler[jfxsi.TouchEvent]) {
     onTouchStationary() = v
   }
 
