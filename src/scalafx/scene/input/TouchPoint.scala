@@ -27,69 +27,86 @@
 package scalafx.scene.input
 
 import javafx.scene.{ input => jfxsi }
+import javafx.{ event => jfxe }
 import scalafx.util.SFXDelegate
 
-object ScrollEvent {
-  implicit def sfxScrollEvent2jfx(se: ScrollEvent) = se.delegate
-
-  /**
-   * Common supertype for all scroll event types.
-   */
-  val ANY = jfxsi.ScrollEvent.ANY
-
-  /**
-   * This event occurs when user performs a scrolling action such as rotating mouse wheel or dragging a finger over
-   * touch screen.
-   */
-  val SCROLL = jfxsi.ScrollEvent.SCROLL
-
-  /**
-   * This event occurs when a scrolling gesture ends.
-   */
-  val SCROLL_FINISHED = jfxsi.ScrollEvent.SCROLL_FINISHED
-
-  /**
-   * This event occurs when a scrolling gesture is detected.
-   */
-  val SCROLL_STARTED = jfxsi.ScrollEvent.SCROLL_STARTED
-
+object TouchPoint {
+  implicit def sfxTouchPoint2jfx(tp: TouchPoint) = tp.delegate
 }
 
-/**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ScrollEvent.html]]
- */
-class ScrollEvent(override val delegate: jfxsi.ScrollEvent)
-  extends GestureEvent(delegate)
-  with SFXDelegate[jfxsi.ScrollEvent] {
+class TouchPoint(override val delegate: jfxsi.TouchPoint)
+  extends SFXDelegate[jfxsi.TouchPoint] {
 
   /**
-   * Gets the horizontal scroll amount.
+   * Distinguishes between touch points targeted to the given node or some of its children from touch points targeted
+   * somewhere else.
    */
-  def deltaX = delegate.getDeltaX
+  def belongsTo(target: jfxe.EventTarget) = delegate.belongsTo(target)
 
   /**
-   * Gets the vertical scroll amount.
+   * Grabs this touch point by current event source.
    */
-  def deltaY = delegate.getDeltaY
+  def grab = delegate.grab
 
   /**
-   * Gets the horizontal text-based scroll amount.
+   * Grabs this touch point by the given target.
    */
-  def textDeltaX = delegate.getTextDeltaX
+  def grab(target: jfxe.EventTarget) = delegate.grab(target)
 
   /**
-   * Gets the horizontal scrolling units for text-based scrolling.
+   * Gets event target which has grabbed this touch point.
    */
-  def textDeltaXUnits = delegate.getTextDeltaXUnits
+  def grabbed = delegate.getGrabbed
 
   /**
-   * Gets the vertical text-based scroll amount.
+   * Gets identifier of this touch point.
    */
-  def textDeltaY = delegate.getTextDeltaY
+  def id = delegate.getId
 
   /**
-   * Gets the vertical scrolling units for text-based scrolling.
+   * Gets the horizontal position of the touch point relative to the origin of the Scene that contains the TouchEvent's
+   * source.
    */
-  def textDeltaYUnits = delegate.getTextDeltaYUnits
+  def sceneX = delegate.getSceneX
 
+  /**
+   * Gets the vertical position of the touch point relative to the origin of the Scene that contains the TouchEvent's
+   * source.
+   */
+  def sceneY = delegate.getSceneY
+
+  /**
+   * Gets the absolute horizontal position of the touch point.
+   */
+  def screenX = delegate.getScreenX
+
+  /**
+   * Gets the absolute vertical position of the touch point.
+   */
+  def screenY = delegate.getScreenY
+
+  /**
+   * Gets state of this touch point
+   */
+  def state = delegate.getState
+
+  /**
+   * Gets event target on which the touch event carrying this touch point is fired.
+   */
+  def target = delegate.getTarget
+
+  /**
+   * Gets the horizontal position of the touch point relative to the origin of the TouchEvent's source.
+   */
+  def x = delegate.getX
+
+  /**
+   * Gets the vertical position of the touch point relative to the origin of the TouchEvent's source.
+   */
+  def y = delegate.getY
+
+  /**
+   *
+   */
+  def ungrab = delegate.ungrab
 }

@@ -25,71 +25,49 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package scalafx.scene.input
-
 import javafx.scene.{ input => jfxsi }
 import scalafx.util.SFXDelegate
 
-object ScrollEvent {
-  implicit def sfxScrollEvent2jfx(se: ScrollEvent) = se.delegate
+object RotateEvent {
+  implicit def sfxRotateEvent2jfx(re: RotateEvent) = re.delegate
 
   /**
-   * Common supertype for all scroll event types.
+   * Common supertype for all rotate event types.
    */
-  val ANY = jfxsi.ScrollEvent.ANY
+  val ANY = jfxsi.RotateEvent.ANY
 
   /**
-   * This event occurs when user performs a scrolling action such as rotating mouse wheel or dragging a finger over
-   * touch screen.
+   * This event occurs when user performs a rotating gesture such as dragging two fingers around each other.
    */
-  val SCROLL = jfxsi.ScrollEvent.SCROLL
+  val ROTATE = jfxsi.RotateEvent.ROTATE
 
   /**
-   * This event occurs when a scrolling gesture ends.
+   * This event occurs when a rotating gesture ends.
    */
-  val SCROLL_FINISHED = jfxsi.ScrollEvent.SCROLL_FINISHED
+  val ROTATION_FINISHED = jfxsi.RotateEvent.ROTATION_FINISHED
 
   /**
-   * This event occurs when a scrolling gesture is detected.
+   * This event occurs when a rotating gesture is detected.
    */
-  val SCROLL_STARTED = jfxsi.ScrollEvent.SCROLL_STARTED
+  val ROTATION_STARTED = jfxsi.RotateEvent.ROTATION_STARTED
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ScrollEvent.html]]
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/RotateEvent.html]]
  */
-class ScrollEvent(override val delegate: jfxsi.ScrollEvent)
-  extends GestureEvent(delegate)
-  with SFXDelegate[jfxsi.ScrollEvent] {
+class RotateEvent(override val delegate: jfxsi.RotateEvent)
+  extends InputEvent(delegate)
+  with SFXDelegate[jfxsi.RotateEvent] {
 
   /**
-   * Gets the horizontal scroll amount.
+   * Gets the rotation angle of this event.
    */
-  def deltaX = delegate.getDeltaX
+  def angle = delegate.getAngle
 
   /**
-   * Gets the vertical scroll amount.
+   * Gets the cumulative rotation angle of this gesture.
    */
-  def deltaY = delegate.getDeltaY
-
-  /**
-   * Gets the horizontal text-based scroll amount.
-   */
-  def textDeltaX = delegate.getTextDeltaX
-
-  /**
-   * Gets the horizontal scrolling units for text-based scrolling.
-   */
-  def textDeltaXUnits = delegate.getTextDeltaXUnits
-
-  /**
-   * Gets the vertical text-based scroll amount.
-   */
-  def textDeltaY = delegate.getTextDeltaY
-
-  /**
-   * Gets the vertical scrolling units for text-based scrolling.
-   */
-  def textDeltaYUnits = delegate.getTextDeltaYUnits
+  def totalAngle = delegate.getTotalAngle
 
 }
