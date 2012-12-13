@@ -28,6 +28,7 @@
 package scalafx.scene.media
 
 import javafx.scene.{ media => jfxsm }
+import javafx.{event => jfxe}
 
 object MediaIncludes extends MediaIncludes
 
@@ -43,4 +44,38 @@ trait MediaIncludes {
   implicit def jfxMediaView2sfx(mv: jfxsm.MediaView) = new MediaView(mv)
   implicit def jfxTrack2sfx(t: jfxsm.Track) = new Track(t) {}
   implicit def jfxVideoTrack2sfx(vt: jfxsm.VideoTrack) = new VideoTrack(vt)
+
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.media.MediaMarkerEvent]]
+   * and returns a [[scala.Unit]] in a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]]
+   * that manipulates a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/media/MediaMarkerEvent.html JavaFX`s MediaMarkerEvent]]
+   *
+   * @param handler function that manipulates a ScalaFX's MediaMarkerEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's MediaMarkerEvent
+   */
+  implicit def mediaMarkerEventClosureWrapper(handler: (MediaMarkerEvent) => Unit) = new jfxe.EventHandler[jfxsm.MediaMarkerEvent] {
+    def handle(event: jfxsm.MediaMarkerEvent) {
+      handler(event)
+    }
+  }
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.media.MediaErrorEvent]]
+   * and returns a [[scala.Unit]] in a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]]
+   * that manipulates a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/media/MediaErrorEvent.html JavaFX`s MediaErrorEvent]]
+   *
+   * @param handler function that manipulates a ScalaFX's MediaErrorEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's MediaErrorEvent
+   */
+  implicit def mediaErrorEventClosureWrapper(handler: (MediaErrorEvent) => Unit) = new jfxe.EventHandler[jfxsm.MediaErrorEvent] {
+    def handle(event: jfxsm.MediaErrorEvent) {
+      handler(event)
+    }
+  }
+
 }
