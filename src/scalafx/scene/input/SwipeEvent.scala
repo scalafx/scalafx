@@ -29,67 +29,46 @@ package scalafx.scene.input
 import javafx.scene.{ input => jfxsi }
 import scalafx.util.SFXDelegate
 
-object ScrollEvent {
-  implicit def sfxScrollEvent2jfx(se: ScrollEvent) = se.delegate
+object SwipeEvent {
+  implicit def sfxSwipeEvent2jfx(se: SwipeEvent) = se.delegate
 
   /**
-   * Common supertype for all scroll event types.
+   * Common supertype for all Swipe event types.
    */
-  val ANY = jfxsi.ScrollEvent.ANY
+  val ANY = jfxsi.SwipeEvent.ANY
 
   /**
-   * This event occurs when user performs a scrolling action such as rotating mouse wheel or dragging a finger over
-   * touch screen.
+   * This event occurs when user performs downward swipe gesture.
    */
-  val SCROLL = jfxsi.ScrollEvent.SCROLL
+  val SWIPE_DOWN = jfxsi.SwipeEvent.SWIPE_DOWN
 
   /**
-   * This event occurs when a scrolling gesture ends.
+   * This event occurs when user performs leftward swipe gesture.
    */
-  val SCROLL_FINISHED = jfxsi.ScrollEvent.SCROLL_FINISHED
+  val SWIPE_LEFT = jfxsi.SwipeEvent.SWIPE_LEFT
 
   /**
-   * This event occurs when a scrolling gesture is detected.
+   * This event occurs when user performs rightward swipe gesture.
    */
-  val SCROLL_STARTED = jfxsi.ScrollEvent.SCROLL_STARTED
+  val SWIPE_RIGHT = jfxsi.SwipeEvent.SWIPE_RIGHT
+
+  /**
+   * This event occurs when user performs upward swipe gesture.
+   */
+  val SWIPE_UP = jfxsi.SwipeEvent.SWIPE_UP
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ScrollEvent.html]]
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/SwipeEvent.html]]
  */
-class ScrollEvent(override val delegate: jfxsi.ScrollEvent)
+class SwipeEvent(override val delegate: jfxsi.SwipeEvent)
   extends GestureEvent(delegate)
-  with SFXDelegate[jfxsi.ScrollEvent] {
+  with SFXDelegate[jfxsi.SwipeEvent] {
 
   /**
-   * Gets the horizontal scroll amount.
+   * Gets number of touch points that caused this event.
    */
-  def deltaX = delegate.getDeltaX
-
-  /**
-   * Gets the vertical scroll amount.
-   */
-  def deltaY = delegate.getDeltaY
-
-  /**
-   * Gets the horizontal text-based scroll amount.
-   */
-  def textDeltaX = delegate.getTextDeltaX
-
-  /**
-   * Gets the horizontal scrolling units for text-based scrolling.
-   */
-  def textDeltaXUnits = delegate.getTextDeltaXUnits
-
-  /**
-   * Gets the vertical text-based scroll amount.
-   */
-  def textDeltaY = delegate.getTextDeltaY
-
-  /**
-   * Gets the vertical scrolling units for text-based scrolling.
-   */
-  def textDeltaYUnits = delegate.getTextDeltaYUnits
+  def touchCount = delegate.getTouchCount
 
 }

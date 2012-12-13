@@ -29,67 +29,46 @@ package scalafx.scene.input
 import javafx.scene.{ input => jfxsi }
 import scalafx.util.SFXDelegate
 
-object ScrollEvent {
-  implicit def sfxScrollEvent2jfx(se: ScrollEvent) = se.delegate
+object ZoomEvent {
+  implicit def sfxZoomEvent2jfx(ze: ZoomEvent) = ze.delegate
 
   /**
-   * Common supertype for all scroll event types.
+   * Common supertype for all Zoom event types.
    */
-  val ANY = jfxsi.ScrollEvent.ANY
+  val ANY = jfxsi.ZoomEvent.ANY
 
   /**
-   * This event occurs when user performs a scrolling action such as rotating mouse wheel or dragging a finger over
-   * touch screen.
+   * This event occurs when user performs a zooming gesture such as dragging two fingers apart.
    */
-  val SCROLL = jfxsi.ScrollEvent.SCROLL
+  def ZOOM = jfxsi.ZoomEvent.ZOOM
 
   /**
-   * This event occurs when a scrolling gesture ends.
+   * This event occurs when a zooming gesture is detected.
    */
-  val SCROLL_FINISHED = jfxsi.ScrollEvent.SCROLL_FINISHED
+  def ZOOM_STARTED = jfxsi.ZoomEvent.ZOOM_STARTED
 
   /**
-   * This event occurs when a scrolling gesture is detected.
+   * This event occurs when a zooming gesture ends.
    */
-  val SCROLL_STARTED = jfxsi.ScrollEvent.SCROLL_STARTED
+  def ZOOM_FINISHED = jfxsi.ZoomEvent.ZOOM_FINISHED
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ScrollEvent.html]]
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ZoomEvent.html]]
  */
-class ScrollEvent(override val delegate: jfxsi.ScrollEvent)
+class ZoomEvent(override val delegate: jfxsi.ZoomEvent)
   extends GestureEvent(delegate)
-  with SFXDelegate[jfxsi.ScrollEvent] {
+  with SFXDelegate[jfxsi.ZoomEvent] {
 
   /**
-   * Gets the horizontal scroll amount.
+   * Gets the zooming amount of this gesture.
    */
-  def deltaX = delegate.getDeltaX
+  def totalZoomFactor = delegate.getTotalZoomFactor()
 
   /**
-   * Gets the vertical scroll amount.
+   * Gets the zooming amount of this event.
    */
-  def deltaY = delegate.getDeltaY
-
-  /**
-   * Gets the horizontal text-based scroll amount.
-   */
-  def textDeltaX = delegate.getTextDeltaX
-
-  /**
-   * Gets the horizontal scrolling units for text-based scrolling.
-   */
-  def textDeltaXUnits = delegate.getTextDeltaXUnits
-
-  /**
-   * Gets the vertical text-based scroll amount.
-   */
-  def textDeltaY = delegate.getTextDeltaY
-
-  /**
-   * Gets the vertical scrolling units for text-based scrolling.
-   */
-  def textDeltaYUnits = delegate.getTextDeltaYUnits
+  def zoomFactor = delegate.getZoomFactor()
 
 }
