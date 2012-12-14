@@ -32,15 +32,14 @@ import javafx.scene.text.FontWeight
 import javafx.scene.text.TextAlignment
 import scalafx.Includes._
 import scalafx.beans.property._
+import scalafx.geometry.Pos
 import scalafx.scene.Node
 import scalafx.scene.Node._
-import scalafx.scene.control._
-import scalafx.scene.control.TitledPane._
 import scalafx.scene.control.TextField
 import scalafx.scene.control.TitledPane
+import scalafx.scene.control._
 import scalafx.scene.layout.GridPane
 import scalafx.scene.text.Font._
-import javafx.geometry.Pos
 
 /**
  * Basic class to control a control properties

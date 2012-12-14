@@ -1,8 +1,8 @@
 package scalafx.scene.media
 
-import javafx.geometry.Pos
 import scalafx.Includes._
 import scalafx.application.{JFXApp, Platform}
+import scalafx.geometry.Pos
 import scalafx.scene.Scene
 import scalafx.scene.control.Label
 import scalafx.scene.layout.StackPane

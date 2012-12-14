@@ -40,21 +40,20 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import scalafx.scene.paint.Color
 import javafx.scene.text.FontWeight
-import javafx.geometry.{VPos, Pos}
-
 import scalafx.application.JFXApp
-import scalafx.stage.Stage
-import scalafx.scene.Scene
 import scalafx.geometry.Insets
+import scalafx.geometry.{VPos, Pos}
+import scalafx.scene.Scene
 import scalafx.scene.control.Button
-import scalafx.scene.shape.Rectangle
-import scalafx.scene.text.Text
-import scalafx.scene.text.Font
-import scalafx.scene.layout._
 import scalafx.scene.image.{Image, ImageView}
-import scalafx.Includes._
+import scalafx.scene.layout._
+import scalafx.scene.paint.Color
+import scalafx.scene.shape.Rectangle
+import scalafx.scene.text.Font
+import scalafx.scene.text.Text
+import scalafx.stage.Stage
+
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>

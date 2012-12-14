@@ -27,25 +27,24 @@
 
 package scalafx.controls
 
-import javafx.geometry.Pos
+import controls.ControlControls
 import javafx.scene.layout.Priority
 import scalafx.Includes.eventClosureWrapper
-import scalafx.Includes.jfxStringProperty2sfx
 import scalafx.application.JFXApp
 import scalafx.controls.controls.PropertiesNodes
 import scalafx.controls.controls.TextFieldControls
 import scalafx.controls.controls.TextInputControlControls
+import scalafx.geometry.Pos
+import scalafx.scene.Scene
 import scalafx.scene.control.Button
 import scalafx.scene.control.Label
 import scalafx.scene.control.PasswordField
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.FlowPane
 import scalafx.scene.layout.VBox
-import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.paint.Color
-import scalafx.scene.Scene
+import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.stage.Stage
-import controls.ControlControls
 
 object PasswordFieldTest extends JFXApp {
 

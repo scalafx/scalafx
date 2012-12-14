@@ -3,18 +3,14 @@
  */
 package scalafx.controls.controls
 
-import scalafx.scene.layout._
-import scalafx.beans.property._
-import scalafx.scene.control._
-import scalafx.Includes._
-import javafx.geometry.Orientation
-import scalafx.util.StringConverter._
 import javafx.scene.layout.Priority
-import scalafx.util.StringConverter
+import scalafx.Includes._
 import scalafx.application.JFXApp
-import scalafx.stage.Stage
+import scalafx.beans.property._
 import scalafx.scene.Scene
-import scalafx.util.converter.NumberStringConverter
+import scalafx.scene.control._
+import scalafx.scene.layout._
+import scalafx.stage.Stage
 import scalafx.util.converter.DoubleStringConverter
 
 /**
