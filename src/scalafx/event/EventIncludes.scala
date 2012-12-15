@@ -109,6 +109,22 @@ trait EventIncludes {
 	}
 
 	/**
+	 * Converts a Function that manipulates a [[scalafx.scene.input.ScrollEvent]] 
+	 * and returns a [[scala.Unit]] in a 
+	 * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
+	 * that manipulates a 
+	 * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ScrollEvent.html JavaFX`s ScrollEvent]]
+	 * 
+	 * @param handler function that manipulates a ScalaFX's ScrollEvent
+	 * @return a JavaFX's EventHandler that manipulates a JavaFX's ScrollEvent
+	 */
+	implicit def scrollEventClosureWrapper(handler: (sfxsi.ScrollEvent) => Unit) = new jfxe.EventHandler[jfxsi.ScrollEvent] {
+		def handle(event: jfxsi.ScrollEvent) {
+			handler(event)
+		}
+	}
+
+	/**
 	 * Converts a Function that manipulates a [[scalafx.event.ActionEvent]] 
 	 * and returns a [[scala.Unit]] in a 
 	 * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
