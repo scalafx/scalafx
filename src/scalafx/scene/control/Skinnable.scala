@@ -27,7 +27,7 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import scalafx.Includes.jfxObjectProperty2sfx
+import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
 object Skinnable {
@@ -40,8 +40,8 @@ trait Skinnable extends SFXDelegate[jfxsc.Skinnable] {
    * Skin is responsible for rendering this `Control`.
    */
   def skin = delegate.skinProperty
-  def skin_=(v: jfxsc.Skin[_]) {
-    skin() = v
+  def skin_=(v: Skin[_]) {
+    skin() = v.delegate
   }
 
 }
