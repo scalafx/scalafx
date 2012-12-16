@@ -57,10 +57,10 @@ class AbstractSFXEnumDelegateSpec[J <: Enum[J], S <: SFXEnumDelegate[J]](javaCla
   with ShouldMatchers
   with PropertyComparator {
 
-  val scalaClassName = scalaClass.getSimpleName
+  val scalaClassName = scalaClass.getName
   val javaClassName = javaClass.getName
 
-  "A %s".format(scalaClassName) should "declare all public static methods of " + javaClassName in {
+  "%s wrapper for JavaFX enum".format(scalaClassName) should "declare all public static methods of " + javaClassName in {
     compareStaticMethods(javaClass, scalaClass)
   }
 

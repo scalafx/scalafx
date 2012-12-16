@@ -29,42 +29,16 @@ package scalafx.geometry
 
 import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
-import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers
-import scalafx.testutil.PropertyComparator
+import scalafx.testutil.AbstractSFXEnumDelegateSpec
 
 /** Tests for [[scalafx.geometry.VPos]]. */
 @RunWith(classOf[JUnitRunner])
-class VPosSpec extends FlatSpec with ShouldMatchers with PropertyComparator {
-
-  val javaClass = classOf[jfxg.VPos]
-  val scalaClass = classOf[VPos]
-
-  "A %s".format(scalaClass.getSimpleName) should "declare all public static methods of " + javaClass.getName in {
-    compareStaticMethods(javaClass, scalaClass)
-  }
-
-  it should "have the same number of values as javafx.geometry.VPos" in {
-    VPos.values.size should equal(jfxg.VPos.values.length)
-  }
-
-  it should "lookup the same values as javafx.geometry.VPos" in {
-    for (v <- jfxg.VPos.values) {
-      val sv: VPos = VPos.valueOf(v.toString)
-      sv should equal(v)
-    }
-
-    for (sv <- VPos.values) {
-      val v = jfxg.VPos.valueOf(sv.toString)
-      v should equal(sv.delegate)
-    }
-  }
-
-  it should "return the same `toString`" in {
-    for (jv <- jfxg.VPos.values) {
-      val sv: VPos = VPos.valueOf(jv.toString)
-      sv.toString should equal(jv.toString)
-    }
-  }
-}
+class VPosSpec extends AbstractSFXEnumDelegateSpec[jfxg.VPos, VPos](
+  javaClass = classOf[jfxg.VPos],
+  scalaClass = classOf[VPos],
+  javaValuesFun = Unit => jfxg.VPos.values,
+  javaValueOfFun = (s: String) => jfxg.VPos.valueOf(s),
+  scalaValuesFun = Unit => VPos.values,
+  scalaValueOfFun = (s: String) => VPos.valueOf(s)
+)
