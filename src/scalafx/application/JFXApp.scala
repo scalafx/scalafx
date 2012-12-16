@@ -161,4 +161,7 @@ class JFXApp extends DelayedInit {
   def delayedInit(x: => Unit) {
     init = () => x
   }
+  
+  def stopApp() {
+  }
 }
