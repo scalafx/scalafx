@@ -125,6 +125,22 @@ trait EventIncludes {
 	}
 
 	/**
+	 * Converts a Function that manipulates a [[scalafx.stage.WindowEvent]] 
+	 * and returns a [[scala.Unit]] in a 
+	 * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
+	 * that manipulates a 
+	 * [[http://docs.oracle.com/javafx/2/api/javafx/stage/WindowEvent.html JavaFX`s WindowEvent]]
+	 * 
+	 * @param handler function that manipulates a ScalaFX's WindowEvent
+	 * @return a JavaFX's EventHandler that manipulates a JavaFX's WindowEvent
+	 */
+	implicit def windowEventClosureWrapper(handler: (scalafx.stage.WindowEvent) => Unit) = new jfxe.EventHandler[javafx.stage.WindowEvent] {
+		def handle(event: javafx.stage.WindowEvent) {
+			handler(event)
+		}
+	}
+
+	/**
 	 * Converts a Function that manipulates a [[scalafx.event.ActionEvent]] 
 	 * and returns a [[scala.Unit]] in a 
 	 * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
