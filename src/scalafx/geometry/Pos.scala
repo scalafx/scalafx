@@ -28,13 +28,11 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
-import scalafx.util.SFXEnumDelegate
+import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+
 
 /** Wrapper for [[javafx.geometry.Pos]] */
-object Pos {
-  implicit def sfxPos2jfx(c: Pos) = c.delegate
-
-  implicit def jfxPos2sfx(c: jfxg.Pos) = Pos(c)
+object Pos extends SFXEnumDelegateCompanion[jfxg.Pos, Pos] {
 
   val BASELINE_CENTER = new Pos(jfxg.Pos.BASELINE_CENTER)
   val BASELINE_LEFT = new Pos(jfxg.Pos.BASELINE_LEFT)
@@ -49,9 +47,7 @@ object Pos {
   val TOP_LEFT = new Pos(jfxg.Pos.TOP_LEFT)
   val TOP_RIGHT = new Pos(jfxg.Pos.TOP_RIGHT)
 
-  def valueOf(name: String): Pos = jfxg.Pos.valueOf(name)
-
-  def values = List(
+  lazy val values = List(
     BASELINE_CENTER, BASELINE_LEFT, BASELINE_RIGHT,
     CENTER,
     BOTTOM_CENTER, BOTTOM_LEFT, BOTTOM_RIGHT,
@@ -60,4 +56,5 @@ object Pos {
   )
 }
 
-case class Pos(override val delegate: jfxg.Pos) extends SFXEnumDelegate[jfxg.Pos]
+
+sealed case class Pos(override val delegate: jfxg.Pos) extends SFXEnumDelegate[jfxg.Pos]
