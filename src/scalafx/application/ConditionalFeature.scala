@@ -28,45 +28,23 @@
 package scalafx.application
 
 import javafx.{application => jfxa}
+import scalafx.util.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 
-/** Application platform support, wrapper for [[javafx.application.Platform]]. */
-object Platform {
+/**
+ * ConditionalFeature
+ */
+/** Wrapper for [[javafx.application.ConditionalFeature]] */
+object ConditionalFeature extends SFXEnumDelegateCompanion[jfxa.ConditionalFeature, ConditionalFeature] {
 
-  /** Causes the JavaFX application to terminate. */
-  def exit() {
-    jfxa.Platform.exit()
-  }
+  val SCENE3D = new ConditionalFeature(jfxa.ConditionalFeature.SCENE3D)
+  val EFFECT = new ConditionalFeature(jfxa.ConditionalFeature.EFFECT)
+  val SHAPE_CLIP = new ConditionalFeature(jfxa.ConditionalFeature.SHAPE_CLIP)
+  val INPUT_METHOD = new ConditionalFeature(jfxa.ConditionalFeature.INPUT_METHOD)
+  val TRANSPARENT_WINDOW = new ConditionalFeature(jfxa.ConditionalFeature.TRANSPARENT_WINDOW)
 
-  /** Returns true if the calling thread is the JavaFX Application Thread. */
-  def isFxApplicationThread: Boolean = jfxa.Platform.isFxApplicationThread
-
-  /** Gets the value of the implicitExit attribute. */
-  def implicitExit: Boolean = jfxa.Platform.isImplicitExit
-
-  /** Sets the implicitExit attribute to the specified value. */
-  def implicitExit_=(implicitExit: Boolean) {
-    jfxa.Platform.setImplicitExit(implicitExit)
-  }
-
-  /** Queries whether a specific conditional feature is supported by the platform. */
-  def isSupported(feature: ConditionalFeature) = jfxa.Platform.isSupported(feature)
-
-  /** Run the specified Runnable on the JavaFX Application Thread at some unspecified time in the future.
-    * Returns immediately.
-    */
-  def runLater(runnable: java.lang.Runnable) {
-    jfxa.Platform.runLater(runnable)
-  }
-
-  /** Run the specified code block on the JavaFX Application Thread at some unspecified time in the future.
-    * Returns immediately.
-    */
-  def runLater(op: => Unit) {
-    runLater(new Runnable {
-      def run() {
-        op
-      }
-    })
-  }
+  lazy val values = List(SCENE3D, EFFECT, SHAPE_CLIP, INPUT_METHOD, TRANSPARENT_WINDOW)
 }
+
+
+sealed case class ConditionalFeature(override val delegate: jfxa.ConditionalFeature) extends SFXEnumDelegate[jfxa.ConditionalFeature]
