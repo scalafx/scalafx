@@ -13,7 +13,7 @@ import scalafx.animation.Timeline
 import scalafx.stage.Stage
 import scalafx.Includes._
 import java.io.File
-import javafx.scene.DepthTest
+import scalafx.scene.DepthTest
 
 /**
  * The type VideoCubeDemo a demonstration of the JavaOne 2011 key note with
