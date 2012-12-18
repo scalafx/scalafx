@@ -28,8 +28,7 @@
 package scalafx.util
 
 
-/** Helper for creating JavaFX enum wrapper companion objects.
-  */
+/** Helper for creating JavaFX enum wrapper companion objects. */
 trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXDelegate[E]] {
   /**
    * Converts a SFXEnumDelegate to its respective JavaFX Enum
