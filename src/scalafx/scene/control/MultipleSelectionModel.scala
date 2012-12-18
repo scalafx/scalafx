@@ -26,7 +26,6 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.control.SelectionMode
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
