@@ -40,7 +40,7 @@ object Side extends SFXEnumDelegateCompanion[jfxg.Side, Side] {
   val RIGHT = new Side(jfxg.Side.RIGHT)
   val TOP = new Side(jfxg.Side.TOP)
 
-  lazy val values = List(BOTTOM, LEFT, RIGHT, TOP)
+  lazy val values = List(TOP, BOTTOM, LEFT, RIGHT)
 }
 
 

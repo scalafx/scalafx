@@ -38,7 +38,7 @@ object HPos extends SFXEnumDelegateCompanion[jfxg.HPos, HPos] {
   val LEFT = new HPos(jfxg.HPos.LEFT)
   val RIGHT = new HPos(jfxg.HPos.RIGHT)
 
-  lazy val values = List(CENTER, LEFT, RIGHT)
+  lazy val values = List(LEFT, CENTER, RIGHT)
 }
 
 
