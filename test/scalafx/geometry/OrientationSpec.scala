@@ -29,42 +29,17 @@ package scalafx.geometry
 
 import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
-import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers
-import scalafx.testutil.PropertyComparator
+import scalafx.testutil.AbstractSFXEnumDelegateSpec
+
 
 /** Tests for [[scalafx.geometry.Orientation]]. */
 @RunWith(classOf[JUnitRunner])
-class OrientationSpec extends FlatSpec with ShouldMatchers with PropertyComparator {
-
-  val javaClass = classOf[jfxg.Orientation]
-  val scalaClass = classOf[Orientation]
-
-  "A %s".format(scalaClass.getSimpleName) should "declare all public static methods of " + javaClass.getName in {
-    compareStaticMethods(javaClass, scalaClass)
-  }
-
-  it should "have the same number of values as javafx.geometry.Orientation" in {
-    Orientation.values.size should equal(jfxg.Orientation.values.length)
-  }
-
-  it should "lookup the same values as javafx.geometry.Orientation" in {
-    for (v <- jfxg.Orientation.values) {
-      val sv = Orientation.valueOf(v.toString)
-      sv should equal(v)
-    }
-
-    for (sv <- Orientation.values) {
-      val v = jfxg.Orientation.valueOf(sv.toString)
-      v should equal(sv.delegate)
-    }
-  }
-
-  it should "return the same `toString`" in {
-    for (jv <- jfxg.Orientation.values) {
-      val sv: Orientation = Orientation.valueOf(jv.toString)
-      sv.toString should equal(jv.toString)
-    }
-  }
-}
+class OrientationSpec extends AbstractSFXEnumDelegateSpec[jfxg.Orientation, Orientation](
+  javaClass = classOf[jfxg.Orientation],
+  scalaClass = classOf[Orientation],
+  javaValuesFun = Unit => jfxg.Orientation.values,
+  javaValueOfFun = (s: String) => jfxg.Orientation.valueOf(s),
+  scalaValuesFun = Unit => Orientation.values,
+  scalaValueOfFun = (s: String) => Orientation.valueOf(s)
+)

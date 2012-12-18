@@ -29,44 +29,17 @@ package scalafx.geometry
 
 import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
-import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers
-import scalafx.testutil.PropertyComparator
+import scalafx.testutil.AbstractSFXEnumDelegateSpec
+
 
 /** Tests for [[scalafx.geometry.Pos]]. */
 @RunWith(classOf[JUnitRunner])
-class PosSpec extends FlatSpec with ShouldMatchers with PropertyComparator {
-
-  val javaClass = classOf[jfxg.Pos]
-  val scalaClass = classOf[Pos]
-
-  "A %s".format(scalaClass.getSimpleName) should "declare all public static methods of " + javaClass.getName in {
-    compareStaticMethods(javaClass, scalaClass)
-  }
-
-  it should "have the same number of values as javafx.geometry.Pos" in {
-    println(" Pos.values.size: " + Pos.values.size)
-    println(" jfxg.Pos.values.length: " + jfxg.Pos.values.length)
-    Pos.values.size should equal(jfxg.Pos.values.length)
-  }
-
-  it should "lookup the same values as javafx.geometry.Pos" in {
-    for (v <- jfxg.Pos.values) {
-      val sv = Pos.valueOf(v.toString)
-      sv should equal(v)
-    }
-
-    for (sv <- Pos.values) {
-      val v = jfxg.Pos.valueOf(sv.toString)
-      v should equal(sv.delegate)
-    }
-  }
-
-  it should "return the same `toString`" in {
-    for (jv <- jfxg.Pos.values) {
-      val sv: Pos = Pos.valueOf(jv.toString)
-      sv.toString should equal(jv.toString)
-    }
-  }
-}
+class PosSpec extends AbstractSFXEnumDelegateSpec[jfxg.Pos, Pos](
+  javaClass = classOf[jfxg.Pos],
+  scalaClass = classOf[Pos],
+  javaValuesFun = Unit => jfxg.Pos.values,
+  javaValueOfFun = (s: String) => jfxg.Pos.valueOf(s),
+  scalaValuesFun = Unit => Pos.values,
+  scalaValueOfFun = (s: String) => Pos.valueOf(s)
+)
