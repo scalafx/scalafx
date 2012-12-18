@@ -68,6 +68,12 @@ class AbstractSFXEnumDelegateSpec[J <: Enum[J], S <: SFXEnumDelegate[J]](javaCla
     scalaValuesFun().size should equal(javaValuesFun().length)
   }
 
+  it should "return values in the same order as " + javaClassName in {
+    for ((sv, jv) <- scalaValuesFun() zip javaValuesFun()) {
+      sv should equal(jv)
+    }
+  }
+
   it should "lookup the same values as " + javaClassName in {
     for (v <- javaValuesFun()) {
       val sv = scalaValueOfFun(v.toString)
