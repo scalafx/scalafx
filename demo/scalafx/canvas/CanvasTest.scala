@@ -29,7 +29,6 @@ package scalafx.canvas
 import scalafx.application.JFXApp
 import scalafx.scene.canvas.Canvas
 import scalafx.scene.effect.DropShadow
-import scalafx.scene.paint.CycleMethod.sfxCycleMethod2jfx
 import scalafx.scene.paint.Stop.sfxStop2jfx
 import scalafx.scene.paint.Color
 import scalafx.scene.paint.CycleMethod

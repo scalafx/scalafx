@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2012, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,18 +28,16 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXEnumDelegateSpec
 
 
-/** Wrapper for [[javafx.scene.shape.FillRule]] */
-object FillRule extends SFXEnumDelegateCompanion[jfxss.FillRule, FillRule] {
-
-  val EVEN_ODD = new FillRule(jfxss.FillRule.EVEN_ODD)
-  val NON_ZERO = new FillRule(jfxss.FillRule.NON_ZERO)
-
-  lazy val values = List(EVEN_ODD, NON_ZERO)
-}
-
-
-sealed case class FillRule(override val delegate: jfxss.FillRule)
-  extends SFXEnumDelegate[jfxss.FillRule]
+/** Test for [[scalafx.scene.shape.FillRule]] */
+@RunWith(classOf[JUnitRunner])
+class FillRuleSpec extends AbstractSFXEnumDelegateSpec[jfxss.FillRule, FillRule](
+  javaClass = classOf[jfxss.FillRule],
+  scalaClass = classOf[FillRule],
+  javaValueOfFun = (s: String) => jfxss.FillRule.valueOf(s),
+  companion = FillRule
+)
