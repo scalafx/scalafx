@@ -24,26 +24,41 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
+import javafx.{ geometry => jfxg }
 import scalafx.util.SFXEnumDelegate
+import scalafx.util.SFXEnumDelegateCompanion
 
-/** Wrapper for [[javafx.geometry.VPos]] */
-object VPos {
-  implicit def sfxVPos2jfx(c: VPos) = c.delegate
+object VPos
+  extends SFXEnumDelegateCompanion[jfxg.VPos, VPos] {
 
-  implicit def jfxVPos2sfx(c: jfxg.VPos) = VPos(c)
-
+  /**
+   * Indicates baseline vertical position.
+   */
   val BASELINE = new VPos(jfxg.VPos.BASELINE)
+  
+  /**
+   * Indicates bottom vertical position.
+   */
   val BOTTOM = new VPos(jfxg.VPos.BOTTOM)
+  
+  /**
+   * Indicates centered vertical position.
+   */
   val CENTER = new VPos(jfxg.VPos.CENTER)
+  
+  /**
+   * Indicates top vertical position.
+   */
   val TOP = new VPos(jfxg.VPos.TOP)
 
-  def valueOf(name: String): VPos = jfxg.VPos.valueOf(name)
+  def getValuesSource = Array(BASELINE, BOTTOM, CENTER, TOP)
 
-  def values = List(BASELINE, BOTTOM, CENTER, TOP)
 }
 
-case class VPos(override val delegate: jfxg.VPos) extends SFXEnumDelegate[jfxg.VPos]
+/**
+ * Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/geometry/VPos.html]]
+ */
+sealed case class VPos(override val delegate: jfxg.VPos)
+  extends SFXEnumDelegate[jfxg.VPos]

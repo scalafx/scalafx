@@ -24,47 +24,29 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
+import javafx.{ geometry => jfxg }
 import org.junit.runner.RunWith
-import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers
-import scalafx.testutil.PropertyComparator
+import scalafx.Includes._
+import scalafx.testutil.SFXEnumDelegateSpec
 
-/** Tests for [[scalafx.geometry.HorizontalDirection]]. */
+/** 
+ * Tests for [[scalafx.geometry.HorizontalDirection]].
+ */
 @RunWith(classOf[JUnitRunner])
-class HorizontalDirectionSpec extends FlatSpec with ShouldMatchers with PropertyComparator {
+class HorizontalDirectionSpec
+  extends SFXEnumDelegateSpec[jfxg.HorizontalDirection, HorizontalDirection](classOf[jfxg.HorizontalDirection], classOf[HorizontalDirection], HorizontalDirection) {
 
-  val javaClass = classOf[jfxg.HorizontalDirection]
-  val scalaClass = classOf[HorizontalDirection]
-
-  "A %s".format(scalaClass.getSimpleName) should "declare all public static methods of " + javaClass.getName in {
-    compareStaticMethods(javaClass, scalaClass)
+  protected def convertScalaClassToJavaClass(sfxEnum: HorizontalDirection) = {
+    val jfxEnum: jfxg.HorizontalDirection = sfxEnum
+    jfxEnum
   }
 
-  it should "have the same number of values as javafx.geometry.HorizontalDirection" in {
-    HorizontalDirection.values.size should equal(jfxg.HorizontalDirection.values.length)
+  protected def convertJavaClassToScalaClass(jfxEnum: jfxg.HorizontalDirection) = {
+    val sfxEnum: HorizontalDirection = jfxEnum
+    sfxEnum
   }
 
-  it should "lookup the same values as javafx.geometry.HorizontalDirection" in {
-    for (v <- jfxg.HorizontalDirection.values) {
-      val sv = HorizontalDirection.valueOf(v.toString)
-      sv.delegate should equal(v)
-    }
-
-    for (sv <- HorizontalDirection.values) {
-      val v = jfxg.HorizontalDirection.valueOf(sv.toString)
-      v should equal(sv.delegate)
-    }
-  }
-
-  it should "return the same `toString`" in {
-    for (jv <- jfxg.HorizontalDirection.values) {
-      val sv: HorizontalDirection = HorizontalDirection.valueOf(jv.toString)
-      sv.toString should equal(jv.toString)
-    }
-  }
 }

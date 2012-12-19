@@ -24,25 +24,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
+import javafx.{ geometry => jfxg }
 import scalafx.util.SFXEnumDelegate
+import scalafx.util.SFXEnumDelegateCompanion
 
-/** Wrapper for [[javafx.geometry.HorizontalDirection]] */
-object HorizontalDirection {
-  implicit def sfxHorizontalDirection2jfx(c: HorizontalDirection) = c.delegate
+object HorizontalDirection
+  extends SFXEnumDelegateCompanion[jfxg.HorizontalDirection, HorizontalDirection] {
 
-  implicit def jfxHorizontalDirection2sfx(c: jfxg.HorizontalDirection) = HorizontalDirection(c)
-
+  /**
+   * A direction to the left
+   */
   val LEFT = new HorizontalDirection(jfxg.HorizontalDirection.LEFT)
+
+  /**
+   * A direction to the right
+   */
   val RIGHT = new HorizontalDirection(jfxg.HorizontalDirection.RIGHT)
 
-  def valueOf(name: String): HorizontalDirection = jfxg.HorizontalDirection.valueOf(name)
+  def getValuesSource = Array(LEFT, RIGHT)
 
-  def values = List(LEFT, RIGHT)
 }
 
-case class HorizontalDirection(override val delegate: jfxg.HorizontalDirection)
+/**
+ * Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/geometry/HorizontalDirection.html]]
+ */
+sealed case class HorizontalDirection(override val delegate: jfxg.HorizontalDirection)
   extends SFXEnumDelegate[jfxg.HorizontalDirection]

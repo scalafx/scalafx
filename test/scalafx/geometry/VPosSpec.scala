@@ -24,47 +24,26 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
+import javafx.{ geometry => jfxg }
 import org.junit.runner.RunWith
-import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers
-import scalafx.testutil.PropertyComparator
+import scalafx.Includes._
+import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.geometry.VPos]]. */
 @RunWith(classOf[JUnitRunner])
-class VPosSpec extends FlatSpec with ShouldMatchers with PropertyComparator {
+class VPosSpec
+  extends SFXEnumDelegateSpec[jfxg.VPos, VPos](classOf[jfxg.VPos], classOf[VPos], VPos) {
 
-  val javaClass = classOf[jfxg.VPos]
-  val scalaClass = classOf[VPos]
-
-  "A %s".format(scalaClass.getSimpleName) should "declare all public static methods of " + javaClass.getName in {
-    compareStaticMethods(javaClass, scalaClass)
+  protected def convertScalaClassToJavaClass(sfxEnum: VPos) = {
+    val jfxEnum: jfxg.VPos = sfxEnum
+    jfxEnum
   }
 
-  it should "have the same number of values as javafx.geometry.VPos" in {
-    VPos.values.size should equal(jfxg.VPos.values.length)
-  }
-
-  it should "lookup the same values as javafx.geometry.VPos" in {
-    for (v <- jfxg.VPos.values) {
-      val sv: VPos = VPos.valueOf(v.toString)
-      sv should equal(v)
-    }
-
-    for (sv <- VPos.values) {
-      val v = jfxg.VPos.valueOf(sv.toString)
-      v should equal(sv.delegate)
-    }
-  }
-
-  it should "return the same `toString`" in {
-    for (jv <- jfxg.VPos.values) {
-      val sv: VPos = VPos.valueOf(jv.toString)
-      sv.toString should equal(jv.toString)
-    }
+  protected def convertJavaClassToScalaClass(jfxEnum: jfxg.VPos) = {
+    val sfxEnum: VPos = jfxEnum
+    sfxEnum
   }
 }
