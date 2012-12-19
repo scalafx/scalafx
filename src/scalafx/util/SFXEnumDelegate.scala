@@ -1,0 +1,83 @@
+/*
+ * Copyright (c) 2012, ScalaFX Project
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of the ScalaFX Project nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE SCALAFX PROJECT OR ITS CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+package scalafx.util
+
+/**
+ * Base trait for all Companion objects [[SFXEnumDelegate]] subclasses. It mirrors static methods for
+ * [[http://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html]]
+ *
+ * @tparam E Original JavaFX `enum`
+ * @tparam S [[SFXEnumDelegate]] that wrappers E
+ */
+trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] {
+  /**
+   * Converts a SFXEnumDelegate to its respective JavaFX Enum
+   */
+  implicit def sfxEnum2jfx(s: S): E = s.delegate
+
+  /**
+   * Converts a JavaFX Enum to its respective SFXEnumDelegate
+   */
+  def jfxEnum2sfx(e: E): S = values.find(_.delegate == e).get
+
+  /**
+   * Contain constants which will be source for `values` List
+   */
+  protected def getValuesSource: Array[S]
+
+  /**
+   * Returns a List containing the constants of this `enum` type, in the order they are declared.
+   */
+  lazy val values: List[S] = getValuesSource.sortWith(_.delegate.ordinal < _.delegate.ordinal).toList
+
+  /**
+   * Returns the `enum` constant of this type with the specified name.
+   */
+  def valueOf(name: String) = values.find(_.name == name) match {
+    case Some(e) => e
+    case None    => throw new IllegalArgumentException("No enum constant %s.%s".format(values.head.getClass().getName, name))
+  }
+
+}
+
+/**
+ * Base trait for JavaFX enums
+ *
+ * @tparam E Original JavaFX `enum`
+ */
+trait SFXEnumDelegate[E <: java.lang.Enum[E]]
+  extends SFXDelegate[E] {
+
+  /**
+   * Return the same string value as `delegate`.
+   *
+   * This is important since we want to be able to look it up using enums `valueOf` method.
+   * Default `toString` provided by the `SFXDelegate` prepends "[SFX]"
+   */
+  override def toString = delegate.toString
+
+}
