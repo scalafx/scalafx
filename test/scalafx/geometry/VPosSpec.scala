@@ -37,8 +37,6 @@ import scalafx.testutil.AbstractSFXEnumDelegateSpec
 class VPosSpec extends AbstractSFXEnumDelegateSpec[jfxg.VPos, VPos](
   javaClass = classOf[jfxg.VPos],
   scalaClass = classOf[VPos],
-  javaValuesFun = Unit => jfxg.VPos.values,
   javaValueOfFun = (s: String) => jfxg.VPos.valueOf(s),
-  scalaValuesFun = Unit => VPos.values,
-  scalaValueOfFun = (s: String) => VPos.valueOf(s)
+  companion = VPos
 )

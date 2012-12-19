@@ -38,8 +38,6 @@ import scalafx.testutil.AbstractSFXEnumDelegateSpec
 class OverrunStyleSpec extends AbstractSFXEnumDelegateSpec[jfxsc.OverrunStyle, OverrunStyle](
   javaClass = classOf[jfxsc.OverrunStyle],
   scalaClass = classOf[OverrunStyle],
-  javaValuesFun = Unit => jfxsc.OverrunStyle.values,
   javaValueOfFun = (s: String) => jfxsc.OverrunStyle.valueOf(s),
-  scalaValuesFun = Unit => OverrunStyle.values,
-  scalaValueOfFun = (s: String) => OverrunStyle.valueOf(s)
+  companion = OverrunStyle
 )

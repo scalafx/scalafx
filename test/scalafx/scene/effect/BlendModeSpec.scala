@@ -38,8 +38,6 @@ import scalafx.testutil.AbstractSFXEnumDelegateSpec
 class BlendModeSpec extends AbstractSFXEnumDelegateSpec[jfxse.BlendMode, BlendMode](
   javaClass = classOf[jfxse.BlendMode],
   scalaClass = classOf[BlendMode],
-  javaValuesFun = Unit => jfxse.BlendMode.values,
   javaValueOfFun = (s: String) => jfxse.BlendMode.valueOf(s),
-  scalaValuesFun = Unit => BlendMode.values,
-  scalaValueOfFun = (s: String) => BlendMode.valueOf(s)
+  companion = BlendMode
 )

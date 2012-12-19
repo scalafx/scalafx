@@ -38,8 +38,6 @@ import scalafx.testutil.AbstractSFXEnumDelegateSpec
 class CacheHintSpec extends AbstractSFXEnumDelegateSpec[jfxs.CacheHint, CacheHint](
   javaClass = classOf[jfxs.CacheHint],
   scalaClass = classOf[CacheHint],
-  javaValuesFun = Unit => jfxs.CacheHint.values,
   javaValueOfFun = (s: String) => jfxs.CacheHint.valueOf(s),
-  scalaValuesFun = Unit => CacheHint.values,
-  scalaValueOfFun = (s: String) => CacheHint.valueOf(s)
+  companion = CacheHint
 )

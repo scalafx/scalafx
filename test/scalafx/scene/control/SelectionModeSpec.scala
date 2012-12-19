@@ -38,8 +38,6 @@ import scalafx.testutil.AbstractSFXEnumDelegateSpec
 class SelectionModeSpec extends AbstractSFXEnumDelegateSpec[jfxsc.SelectionMode, SelectionMode](
   javaClass = classOf[jfxsc.SelectionMode],
   scalaClass = classOf[SelectionMode],
-  javaValuesFun = Unit => jfxsc.SelectionMode.values,
   javaValueOfFun = (s: String) => jfxsc.SelectionMode.valueOf(s),
-  scalaValuesFun = Unit => SelectionMode.values,
-  scalaValueOfFun = (s: String) => SelectionMode.valueOf(s)
+  companion = SelectionMode
 )

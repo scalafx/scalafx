@@ -38,8 +38,6 @@ import scalafx.testutil.AbstractSFXEnumDelegateSpec
 class OrientationSpec extends AbstractSFXEnumDelegateSpec[jfxg.Orientation, Orientation](
   javaClass = classOf[jfxg.Orientation],
   scalaClass = classOf[Orientation],
-  javaValuesFun = Unit => jfxg.Orientation.values,
   javaValueOfFun = (s: String) => jfxg.Orientation.valueOf(s),
-  scalaValuesFun = Unit => Orientation.values,
-  scalaValueOfFun = (s: String) => Orientation.valueOf(s)
+  companion = Orientation
 )

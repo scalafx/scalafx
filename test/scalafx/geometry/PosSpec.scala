@@ -38,8 +38,6 @@ import scalafx.testutil.AbstractSFXEnumDelegateSpec
 class PosSpec extends AbstractSFXEnumDelegateSpec[jfxg.Pos, Pos](
   javaClass = classOf[jfxg.Pos],
   scalaClass = classOf[Pos],
-  javaValuesFun = Unit => jfxg.Pos.values,
   javaValueOfFun = (s: String) => jfxg.Pos.valueOf(s),
-  scalaValuesFun = Unit => Pos.values,
-  scalaValueOfFun = (s: String) => Pos.valueOf(s)
+  companion = Pos
 )

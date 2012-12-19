@@ -27,9 +27,11 @@
 
 package scalafx.testutil
 
+import java.util
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers
-import scalafx.util.SFXEnumDelegate
+import scala.collection.JavaConversions.iterableAsScalaIterable
+import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 
 /** Abstract class that facilitates testing of wrappers for Java enums.
@@ -39,57 +41,39 @@ import scalafx.util.SFXEnumDelegate
   *
   * @param javaClass JavaFX class
   * @param scalaClass SFXDelegate subclass related with JavaFX class
-  * @param javaValuesFun `J.values()` function.
   * @param javaValueOfFun `J.valueOf(String)` function.
-  * @param scalaValuesFun `S.values()` function.
-  * @param scalaValueOfFun `S.valueOf(String)` function.
-  *
-  * @todo It should be possible to shorten the parameter list of the constructor.
-  *       That is, it should be possible to derive some of the parameter values.
+  * @param companion companion object of the ScalaFX wrapper class.
   */
 class AbstractSFXEnumDelegateSpec[J <: Enum[J], S <: SFXEnumDelegate[J]](javaClass: Class[J],
                                                                          scalaClass: Class[S],
-                                                                         javaValuesFun: Unit => Array[J],
                                                                          javaValueOfFun: String => J,
-                                                                         scalaValuesFun: Unit => List[S],
-                                                                         scalaValueOfFun: String => S)
+                                                                         companion: SFXEnumDelegateCompanion[J, S])
   extends FlatSpec
   with ShouldMatchers
   with PropertyComparator {
 
-  val scalaClassName = scalaClass.getName
-  val javaClassName = javaClass.getName
+  private val javaValues = util.EnumSet.allOf(javaClass).toList
+  private val scalaClassName = scalaClass.getName
+  private val javaClassName = javaClass.getName
 
   "%s wrapper for JavaFX enum".format(scalaClassName) should "declare all public static methods of " + javaClassName in {
     compareStaticMethods(javaClass, scalaClass)
   }
 
   it should "have the same number of values as " + javaClassName in {
-    scalaValuesFun().size should equal(javaValuesFun().length)
+    companion.values.size should equal(javaValues.size)
   }
 
   it should "return values in the same order as " + javaClassName in {
-    for ((sv, jv) <- scalaValuesFun() zip javaValuesFun()) {
-      sv should equal(jv)
-    }
+    companion.values zip javaValues foreach {p => p._1 should equal(p._2)}
   }
 
   it should "lookup the same values as " + javaClassName in {
-    for (v <- javaValuesFun()) {
-      val sv = scalaValueOfFun(v.toString)
-      sv.delegate should equal(v)
-    }
-
-    for (sv <- scalaValuesFun()) {
-      val v = javaValueOfFun(sv.toString)
-      v should equal(sv.delegate)
-    }
+    javaValues foreach {jv => companion.valueOf(jv.toString) should equal(jv)}
+    companion.values foreach {sv => javaValueOfFun(sv.toString) should equal(sv.delegate)}
   }
 
   it should "return the same `toString`" in {
-    for (jv <- javaValuesFun()) {
-      val sv = scalaValueOfFun(jv.toString)
-      sv.toString should equal(jv.toString)
-    }
+    javaValues foreach {jv => companion.valueOf(jv.toString).toString should equal(jv.toString)}
   }
 }
