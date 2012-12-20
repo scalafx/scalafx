@@ -38,6 +38,16 @@ object TransferMode extends SFXEnumDelegateCompanion[jfxsi.TransferMode, Transfe
   val MOVE = new TransferMode(jfxsi.TransferMode.MOVE)
   val LINK = new TransferMode(jfxsi.TransferMode.LINK)
 
+  /** Array containing all transfer modes. */
+  val ANY = jfxsi.TransferMode.ANY
+
+  /** Array containing transfer modes COPY and MOVE. */
+  val COPY_OR_MOVE = jfxsi.TransferMode.COPY_OR_MOVE
+
+  /** Empty array of transfer modes. */
+  val NONE = jfxsi.TransferMode.NONE
+
+
   lazy val values = List(COPY, MOVE, LINK)
 }
 
