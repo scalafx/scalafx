@@ -40,7 +40,7 @@ object FontPosture extends SFXEnumDelegateCompanion[jfxst.FontPosture, FontPostu
   lazy val values = List(REGULAR, ITALIC)
 
   /** Returns FontPosture by its name. */
-  def findByName(name: String) = jfxst.FontPosture.findByName(name)
+  def findByName(name: String) : FontPosture = jfxst.FontPosture.findByName(name)
 }
 
 
