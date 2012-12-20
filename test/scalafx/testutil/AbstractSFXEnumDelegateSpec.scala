@@ -36,6 +36,25 @@ import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 /** Abstract class that facilitates testing of wrappers for Java enums.
   *
+  * The extending classes need to also provide implicit conversion tests that utilize `canConvert` method.
+  * Here a complete test implemented using `AbstractSFXEnumDelegateSpec`,
+  * {{{
+  *   class HPosSpec extends AbstractSFXEnumDelegateSpec[jfxg.HPos, HPos](
+  *    javaClass = classOf[jfxg.HPos],
+  *    scalaClass = classOf[HPos],
+  *    javaValueOfFun = (s: String) => jfxg.HPos.valueOf(s),
+  *    companion = HPos) {
+  *
+  *    it should "have implicit conversion JFX to SFX" in {
+  *      canConvert[jfxg.HPos, HPos]() should be(true)
+  *    }
+  *
+  *    it should "have implicit conversion SFX to JFX" in {
+  *      canConvert[HPos, jfxg.HPos]() should be(true)
+  *    }
+  *  }
+  * }}}
+  *
   * @tparam J JavaFX enum type
   * @tparam S ScalaFX wrapper type
   *
@@ -76,4 +95,17 @@ class AbstractSFXEnumDelegateSpec[J <: Enum[J], S <: SFXEnumDelegate[J]](javaCla
   it should "return the same `toString`" in {
     javaValues foreach {jv => companion.valueOf(jv.toString).toString should equal(jv.toString)}
   }
+
+  /**
+   * Implicit conversion checker suggested by [[http://stackoverflow.com/questions/5717868/test-if-implicit-conversion-is-available Moritz]]
+   */
+  def canConvert[A, B]()(implicit f: A => B = noConversion) =
+    (f ne NoConversion)
+
+  private case object NoConversion extends (Any => Nothing) {
+    def apply(x: Any) = sys.error("No conversion")
+  }
+
+  // Just for convenience so NoConversion does not escape the scope.
+  private def noConversion: Any => Nothing = NoConversion
 }
