@@ -30,12 +30,12 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.scene.control.ContentDisplay]]. */
 @RunWith(classOf[JUnitRunner])
-class ContentDisplaySpec extends AbstractSFXEnumDelegateSpec[jfxsc.ContentDisplay, ContentDisplay](
+class ContentDisplaySpec extends SFXEnumDelegateSpec[jfxsc.ContentDisplay, ContentDisplay](
   javaClass = classOf[jfxsc.ContentDisplay],
   scalaClass = classOf[ContentDisplay],
   javaValueOfFun = (s: String) => jfxsc.ContentDisplay.valueOf(s),

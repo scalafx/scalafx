@@ -30,11 +30,11 @@ package scalafx.geometry
 import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.geometry.VPos]]. */
 @RunWith(classOf[JUnitRunner])
-class VPosSpec extends AbstractSFXEnumDelegateSpec[jfxg.VPos, VPos](
+class VPosSpec extends SFXEnumDelegateSpec[jfxg.VPos, VPos](
   javaClass = classOf[jfxg.VPos],
   scalaClass = classOf[VPos],
   javaValueOfFun = (s: String) => jfxg.VPos.valueOf(s),

@@ -30,12 +30,12 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.scene.control.OverrunStyle]]. */
 @RunWith(classOf[JUnitRunner])
-class OverrunStyleSpec extends AbstractSFXEnumDelegateSpec[jfxsc.OverrunStyle, OverrunStyle](
+class OverrunStyleSpec extends SFXEnumDelegateSpec[jfxsc.OverrunStyle, OverrunStyle](
   javaClass = classOf[jfxsc.OverrunStyle],
   scalaClass = classOf[OverrunStyle],
   javaValueOfFun = (s: String) => jfxsc.OverrunStyle.valueOf(s),

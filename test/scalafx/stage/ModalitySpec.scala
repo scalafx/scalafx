@@ -30,12 +30,12 @@ package scalafx.stage
 import javafx.{stage => jfxs}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Test for [[scalafx.stage.Modality]] */
 @RunWith(classOf[JUnitRunner])
-class ModalitySpec extends AbstractSFXEnumDelegateSpec[jfxs.Modality, Modality](
+class ModalitySpec extends SFXEnumDelegateSpec[jfxs.Modality, Modality](
   javaClass = classOf[jfxs.Modality],
   scalaClass = classOf[Modality],
   javaValueOfFun = (s: String) => jfxs.Modality.valueOf(s),

@@ -30,12 +30,12 @@ package scalafx.scene.shape
 import javafx.scene.{shape => jfxss}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Test for [[scalafx.scene.shape.ArcType]] */
 @RunWith(classOf[JUnitRunner])
-class ArcTypeSpec extends AbstractSFXEnumDelegateSpec[jfxss.ArcType, ArcType](
+class ArcTypeSpec extends SFXEnumDelegateSpec[jfxss.ArcType, ArcType](
   javaClass = classOf[jfxss.ArcType],
   scalaClass = classOf[ArcType],
   javaValueOfFun = (s: String) => jfxss.ArcType.valueOf(s),

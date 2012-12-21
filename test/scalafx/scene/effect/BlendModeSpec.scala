@@ -30,12 +30,12 @@ package scalafx.scene.effect
 import javafx.scene.{effect => jfxse}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.scene.effect.BlendMode]]. */
 @RunWith(classOf[JUnitRunner])
-class BlendModeSpec extends AbstractSFXEnumDelegateSpec[jfxse.BlendMode, BlendMode](
+class BlendModeSpec extends SFXEnumDelegateSpec[jfxse.BlendMode, BlendMode](
   javaClass = classOf[jfxse.BlendMode],
   scalaClass = classOf[BlendMode],
   javaValueOfFun = (s: String) => jfxse.BlendMode.valueOf(s),

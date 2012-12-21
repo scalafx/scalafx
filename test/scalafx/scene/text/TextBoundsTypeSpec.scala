@@ -30,12 +30,12 @@ package scalafx.scene.text
 import javafx.scene.{text => jfxst}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Test for [[scalafx.scene.text.TextBoundsType]] */
 @RunWith(classOf[JUnitRunner])
-class TextBoundsTypeSpec extends AbstractSFXEnumDelegateSpec[jfxst.TextBoundsType, TextBoundsType](
+class TextBoundsTypeSpec extends SFXEnumDelegateSpec[jfxst.TextBoundsType, TextBoundsType](
   javaClass = classOf[jfxst.TextBoundsType],
   scalaClass = classOf[TextBoundsType],
   javaValueOfFun = (s: String) => jfxst.TextBoundsType.valueOf(s),

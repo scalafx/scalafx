@@ -30,12 +30,12 @@ package scalafx.scene.input
 import javafx.scene.{input => jfxsi}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.scene.input.TransferMode]]. */
 @RunWith(classOf[JUnitRunner])
-class TransferModeSpec extends AbstractSFXEnumDelegateSpec[jfxsi.TransferMode, TransferMode](
+class TransferModeSpec extends SFXEnumDelegateSpec[jfxsi.TransferMode, TransferMode](
   javaClass = classOf[jfxsi.TransferMode],
   scalaClass = classOf[TransferMode],
   javaValueOfFun = (s: String) => jfxsi.TransferMode.valueOf(s),

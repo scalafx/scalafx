@@ -30,12 +30,12 @@ package scalafx.geometry
 import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.geometry.Orientation]]. */
 @RunWith(classOf[JUnitRunner])
-class OrientationSpec extends AbstractSFXEnumDelegateSpec[jfxg.Orientation, Orientation](
+class OrientationSpec extends SFXEnumDelegateSpec[jfxg.Orientation, Orientation](
   javaClass = classOf[jfxg.Orientation],
   scalaClass = classOf[Orientation],
   javaValueOfFun = (s: String) => jfxg.Orientation.valueOf(s),

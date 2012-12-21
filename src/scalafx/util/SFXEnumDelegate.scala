@@ -28,7 +28,11 @@
 package scalafx.util
 
 
-/** Helper for creating Java enum wrappers. */
+/** Base trait for JavaFX `enum` wrappers.
+  *
+  * @tparam E Original JavaFX `enum`
+  */
+
 trait SFXEnumDelegate[E <: java.lang.Enum[E]] extends SFXDelegate[E] {
 
   /** Return the same string value as `delegate`.

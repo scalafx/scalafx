@@ -30,12 +30,12 @@ package scalafx.scene.input
 import javafx.scene.{input => jfxsi}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.scene.input.KeyCode]]. */
 @RunWith(classOf[JUnitRunner])
-class KeyCodeSpec extends AbstractSFXEnumDelegateSpec[jfxsi.KeyCode, KeyCode](
+class KeyCodeSpec extends SFXEnumDelegateSpec[jfxsi.KeyCode, KeyCode](
   javaClass = classOf[jfxsi.KeyCode],
   scalaClass = classOf[KeyCode],
   javaValueOfFun = (s: String) => jfxsi.KeyCode.valueOf(s),

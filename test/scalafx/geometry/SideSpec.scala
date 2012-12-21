@@ -30,12 +30,12 @@ package scalafx.geometry
 import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.geometry.Side]]. */
 @RunWith(classOf[JUnitRunner])
-class SideSpec extends AbstractSFXEnumDelegateSpec[jfxg.Side, Side](
+class SideSpec extends SFXEnumDelegateSpec[jfxg.Side, Side](
   javaClass = classOf[jfxg.Side],
   scalaClass = classOf[Side],
   javaValueOfFun = (s: String) => jfxg.Side.valueOf(s),

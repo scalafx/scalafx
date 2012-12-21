@@ -30,12 +30,12 @@ package scalafx.scene.shape
 import javafx.scene.{shape => jfxss}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Test for [[scalafx.scene.shape.StrokeType]] */
 @RunWith(classOf[JUnitRunner])
-class StrokeTypeSpec extends AbstractSFXEnumDelegateSpec[jfxss.StrokeType, StrokeType](
+class StrokeTypeSpec extends SFXEnumDelegateSpec[jfxss.StrokeType, StrokeType](
   javaClass = classOf[jfxss.StrokeType],
   scalaClass = classOf[StrokeType],
   javaValueOfFun = (s: String) => jfxss.StrokeType.valueOf(s),

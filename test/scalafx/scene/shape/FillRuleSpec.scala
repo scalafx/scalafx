@@ -30,12 +30,12 @@ package scalafx.scene.shape
 import javafx.scene.{shape => jfxss}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Test for [[scalafx.scene.shape.FillRule]] */
 @RunWith(classOf[JUnitRunner])
-class FillRuleSpec extends AbstractSFXEnumDelegateSpec[jfxss.FillRule, FillRule](
+class FillRuleSpec extends SFXEnumDelegateSpec[jfxss.FillRule, FillRule](
   javaClass = classOf[jfxss.FillRule],
   scalaClass = classOf[FillRule],
   javaValueOfFun = (s: String) => jfxss.FillRule.valueOf(s),

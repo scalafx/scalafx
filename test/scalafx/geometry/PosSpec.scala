@@ -30,12 +30,12 @@ package scalafx.geometry
 import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.geometry.Pos]]. */
 @RunWith(classOf[JUnitRunner])
-class PosSpec extends AbstractSFXEnumDelegateSpec[jfxg.Pos, Pos](
+class PosSpec extends SFXEnumDelegateSpec[jfxg.Pos, Pos](
   javaClass = classOf[jfxg.Pos],
   scalaClass = classOf[Pos],
   javaValueOfFun = (s: String) => jfxg.Pos.valueOf(s),

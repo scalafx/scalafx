@@ -30,12 +30,12 @@ package scalafx.scene
 import javafx.{scene => jfxs}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.scene.CacheHint]]. */
 @RunWith(classOf[JUnitRunner])
-class CacheHintSpec extends AbstractSFXEnumDelegateSpec[jfxs.CacheHint, CacheHint](
+class CacheHintSpec extends SFXEnumDelegateSpec[jfxs.CacheHint, CacheHint](
   javaClass = classOf[jfxs.CacheHint],
   scalaClass = classOf[CacheHint],
   javaValueOfFun = (s: String) => jfxs.CacheHint.valueOf(s),

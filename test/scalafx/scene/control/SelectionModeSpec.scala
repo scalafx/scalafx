@@ -30,12 +30,12 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.scene.control.SelectionMode]]. */
 @RunWith(classOf[JUnitRunner])
-class SelectionModeSpec extends AbstractSFXEnumDelegateSpec[jfxsc.SelectionMode, SelectionMode](
+class SelectionModeSpec extends SFXEnumDelegateSpec[jfxsc.SelectionMode, SelectionMode](
   javaClass = classOf[jfxsc.SelectionMode],
   scalaClass = classOf[SelectionMode],
   javaValueOfFun = (s: String) => jfxsc.SelectionMode.valueOf(s),

@@ -30,12 +30,12 @@ package scalafx.scene.input
 import javafx.scene.{input => jfxsi}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.scene.input.MouseButton]]. */
 @RunWith(classOf[JUnitRunner])
-class MouseButtonSpec extends AbstractSFXEnumDelegateSpec[jfxsi.MouseButton, MouseButton](
+class MouseButtonSpec extends SFXEnumDelegateSpec[jfxsi.MouseButton, MouseButton](
   javaClass = classOf[jfxsi.MouseButton],
   scalaClass = classOf[MouseButton],
   javaValueOfFun = (s: String) => jfxsi.MouseButton.valueOf(s),

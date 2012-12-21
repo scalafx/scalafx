@@ -30,12 +30,12 @@ package scalafx.scene.text
 import javafx.scene.{text => jfxst}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Test for [[scalafx.scene.text.TextAlignment]] */
 @RunWith(classOf[JUnitRunner])
-class TextAlignmentSpec extends AbstractSFXEnumDelegateSpec[jfxst.TextAlignment, TextAlignment](
+class TextAlignmentSpec extends SFXEnumDelegateSpec[jfxst.TextAlignment, TextAlignment](
   javaClass = classOf[jfxst.TextAlignment],
   scalaClass = classOf[TextAlignment],
   javaValueOfFun = (s: String) => jfxst.TextAlignment.valueOf(s),

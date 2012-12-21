@@ -30,12 +30,12 @@ package scalafx.scene
 import javafx.{scene => jfxs}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.scene.DepthTest]]. */
 @RunWith(classOf[JUnitRunner])
-class DepthTestSpec extends AbstractSFXEnumDelegateSpec[jfxs.DepthTest, DepthTest](
+class DepthTestSpec extends SFXEnumDelegateSpec[jfxs.DepthTest, DepthTest](
   javaClass = classOf[jfxs.DepthTest],
   scalaClass = classOf[DepthTest],
   javaValueOfFun = (s: String) => jfxs.DepthTest.valueOf(s),

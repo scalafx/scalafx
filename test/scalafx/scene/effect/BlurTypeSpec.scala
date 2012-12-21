@@ -30,12 +30,12 @@ package scalafx.scene.effect
 import javafx.scene.{effect => jfxse}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.scene.effect.BlurType]]. */
 @RunWith(classOf[JUnitRunner])
-class BlurTypeSpec extends AbstractSFXEnumDelegateSpec[jfxse.BlurType, BlurType](
+class BlurTypeSpec extends SFXEnumDelegateSpec[jfxse.BlurType, BlurType](
   javaClass = classOf[jfxse.BlurType],
   scalaClass = classOf[BlurType],
   javaValueOfFun = (s: String) => jfxse.BlurType.valueOf(s),

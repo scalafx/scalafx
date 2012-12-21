@@ -30,12 +30,12 @@ package scalafx.scene.text
 import javafx.scene.{text => jfxst}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Test for [[scalafx.scene.text.FontWeight]] */
 @RunWith(classOf[JUnitRunner])
-class FontWeightSpec extends AbstractSFXEnumDelegateSpec[jfxst.FontWeight, FontWeight](
+class FontWeightSpec extends SFXEnumDelegateSpec[jfxst.FontWeight, FontWeight](
   javaClass = classOf[jfxst.FontWeight],
   scalaClass = classOf[FontWeight],
   javaValueOfFun = (s: String) => jfxst.FontWeight.valueOf(s),

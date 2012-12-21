@@ -30,12 +30,12 @@ package scalafx.scene.text
 import javafx.scene.{text => jfxst}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Test for [[scalafx.scene.text.FontPosture]] */
 @RunWith(classOf[JUnitRunner])
-class FontPostureSpec extends AbstractSFXEnumDelegateSpec[jfxst.FontPosture, FontPosture](
+class FontPostureSpec extends SFXEnumDelegateSpec[jfxst.FontPosture, FontPosture](
   javaClass = classOf[jfxst.FontPosture],
   scalaClass = classOf[FontPosture],
   javaValueOfFun = (s: String) => jfxst.FontPosture.valueOf(s),

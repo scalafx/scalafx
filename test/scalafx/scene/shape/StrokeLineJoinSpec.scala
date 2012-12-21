@@ -30,12 +30,12 @@ package scalafx.scene.shape
 import javafx.scene.{shape => jfxss}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Test for [[scalafx.scene.shape.StrokeLineJoin]] */
 @RunWith(classOf[JUnitRunner])
-class StrokeLineJoinSpec extends AbstractSFXEnumDelegateSpec[jfxss.StrokeLineJoin, StrokeLineJoin](
+class StrokeLineJoinSpec extends SFXEnumDelegateSpec[jfxss.StrokeLineJoin, StrokeLineJoin](
   javaClass = classOf[jfxss.StrokeLineJoin],
   scalaClass = classOf[StrokeLineJoin],
   javaValueOfFun = (s: String) => jfxss.StrokeLineJoin.valueOf(s),

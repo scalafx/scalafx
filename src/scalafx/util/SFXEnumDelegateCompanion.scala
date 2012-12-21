@@ -27,30 +27,25 @@
 
 package scalafx.util
 
-
-/** Helper for creating JavaFX enum wrapper companion objects. */
-trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXDelegate[E]] {
-  /**
-   * Converts a SFXEnumDelegate to its respective JavaFX Enum
-   */
+/** Base trait for all Companion objects [[scalafx.util.SFXEnumDelegate]] subclasses. It mirrors static methods for
+  * [[http://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html]]
+  *
+  * @tparam E Original JavaFX `enum`
+  * @tparam S [[scalafx.util.SFXEnumDelegate]] that wrappers `E
+  */
+trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] {
+  /** Converts a SFXEnumDelegate to its respective JavaFX Enum */
   implicit def sfxEnum2jfx(s: S): E = s.delegate
 
-  /**
-   * Converts a JavaFX Enum to its respective SFXEnumDelegate
-   */
-  implicit def jfxEnum2sfx(e: E): S = javaEnumToScalaFXEnum(e)
+  /** Converts a JavaFX Enum to its respective SFXEnumDelegate */
+  implicit def jfxEnum2sfx(e: E): S = values.find(_.delegate == e).get
 
-  private lazy val javaEnumToScalaFXEnum = values.map(e => (e.delegate, e)).toMap
-
-  private lazy val nameToEnum = javaEnumToScalaFXEnum.map(e => (e._1.name(), e._2))
-
-  /**
-   * Returns an Traversable containing the constants of this enum type, in the order they are declared.
-   */
+  /** Returns a List containing the constants of this `enum` type, in the order they are declared. */
   val values: List[S]
 
-  /**
-   * Returns the enum constant of this type with the specified name.
-   */
-  def valueOf(name: String) = nameToEnum(name)
+  /** Returns the `enum` constant of this type with the specified name. */
+  def valueOf(name: String) = values.find(_.name == name) match {
+    case Some(e) => e
+    case None => throw new IllegalArgumentException("No enum constant %s.%s".format(values.head.getClass.getName, name))
+  }
 }

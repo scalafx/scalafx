@@ -37,9 +37,9 @@ import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 /** Abstract class that facilitates testing of wrappers for Java enums.
   *
   * The extending classes need to also provide implicit conversion tests that utilize `canConvert` method.
-  * Here a complete test implemented using `AbstractSFXEnumDelegateSpec`,
+  * Here a complete test implemented using `SFXEnumDelegateSpec`,
   * {{{
-  *   class HPosSpec extends AbstractSFXEnumDelegateSpec[jfxg.HPos, HPos](
+  *   class HPosSpec extends SFXEnumDelegateSpec[jfxg.HPos, HPos](
   *    javaClass = classOf[jfxg.HPos],
   *    scalaClass = classOf[HPos],
   *    javaValueOfFun = (s: String) => jfxg.HPos.valueOf(s),
@@ -63,10 +63,10 @@ import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
   * @param javaValueOfFun `J.valueOf(String)` function.
   * @param companion companion object of the ScalaFX wrapper class.
   */
-class AbstractSFXEnumDelegateSpec[J <: Enum[J], S <: SFXEnumDelegate[J]](javaClass: Class[J],
-                                                                         scalaClass: Class[S],
-                                                                         javaValueOfFun: String => J,
-                                                                         companion: SFXEnumDelegateCompanion[J, S])
+class SFXEnumDelegateSpec[J <: Enum[J], S <: SFXEnumDelegate[J]](javaClass: Class[J],
+                                                                 scalaClass: Class[S],
+                                                                 javaValueOfFun: String => J,
+                                                                 companion: SFXEnumDelegateCompanion[J, S])
   extends FlatSpec
   with ShouldMatchers
   with PropertyComparator {
@@ -95,6 +95,19 @@ class AbstractSFXEnumDelegateSpec[J <: Enum[J], S <: SFXEnumDelegate[J]](javaCla
   it should "return the same `toString`" in {
     javaValues foreach {jv => companion.valueOf(jv.toString).toString should equal(jv.toString)}
   }
+
+  it should "not find a non registered name among enum constants" in {
+    intercept[IllegalArgumentException] {
+      companion.valueOf("!@#$%")
+    }
+  }
+
+  it should "thhrow `IllegalArgumentException` if the argument is `null`" in {
+    intercept[IllegalArgumentException] {
+      companion.valueOf(null)
+    }
+  }
+
 
   /**
    * Implicit conversion checker suggested by [[http://stackoverflow.com/questions/5717868/test-if-implicit-conversion-is-available Moritz]]

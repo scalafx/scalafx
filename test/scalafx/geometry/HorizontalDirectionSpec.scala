@@ -30,12 +30,12 @@ package scalafx.geometry
 import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.geometry.HorizontalDirection]]. */
 @RunWith(classOf[JUnitRunner])
-class HorizontalDirectionSpec extends AbstractSFXEnumDelegateSpec[jfxg.HorizontalDirection, HorizontalDirection](
+class HorizontalDirectionSpec extends SFXEnumDelegateSpec[jfxg.HorizontalDirection, HorizontalDirection](
   javaClass = classOf[jfxg.HorizontalDirection],
   scalaClass = classOf[HorizontalDirection],
   javaValueOfFun = (s: String) => jfxg.HorizontalDirection.valueOf(s),

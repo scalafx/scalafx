@@ -30,12 +30,12 @@ package scalafx.stage
 import javafx.{stage => jfxs}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Test for [[scalafx.stage.StageStyle]] */
 @RunWith(classOf[JUnitRunner])
-class StageStyleSpec extends AbstractSFXEnumDelegateSpec[jfxs.StageStyle, StageStyle](
+class StageStyleSpec extends SFXEnumDelegateSpec[jfxs.StageStyle, StageStyle](
   javaClass = classOf[jfxs.StageStyle],
   scalaClass = classOf[StageStyle],
   javaValueOfFun = (s: String) => jfxs.StageStyle.valueOf(s),

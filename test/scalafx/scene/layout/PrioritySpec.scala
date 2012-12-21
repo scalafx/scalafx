@@ -30,12 +30,12 @@ package scalafx.scene.layout
 import javafx.scene.{layout => jfxsl}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Test for [[scalafx.scene.layout.Priority]] */
 @RunWith(classOf[JUnitRunner])
-class PrioritySpec extends AbstractSFXEnumDelegateSpec[jfxsl.Priority, Priority](
+class PrioritySpec extends SFXEnumDelegateSpec[jfxsl.Priority, Priority](
   javaClass = classOf[jfxsl.Priority],
   scalaClass = classOf[Priority],
   javaValueOfFun = (s: String) => jfxsl.Priority.valueOf(s),

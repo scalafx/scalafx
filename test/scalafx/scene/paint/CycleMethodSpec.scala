@@ -30,12 +30,12 @@ package scalafx.scene.paint
 import javafx.scene.{paint => jfxsp}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXEnumDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Test for [[scalafx.scene.paint.CycleMethod]] */
 @RunWith(classOf[JUnitRunner])
-class CycleMethodSpec extends AbstractSFXEnumDelegateSpec[jfxsp.CycleMethod, CycleMethod](
+class CycleMethodSpec extends SFXEnumDelegateSpec[jfxsp.CycleMethod, CycleMethod](
   javaClass = classOf[jfxsp.CycleMethod],
   scalaClass = classOf[CycleMethod],
   javaValueOfFun = (s: String) => jfxsp.CycleMethod.valueOf(s),
