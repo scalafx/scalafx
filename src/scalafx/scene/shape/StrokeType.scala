@@ -1,5 +1,3 @@
-
-
 /*
  * Copyright (c) 2011-2012, ScalaFX Project
  * All rights reserved.
@@ -30,22 +28,19 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import scalafx.util.SFXDelegate
+import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
-//I think it might be better to implemented this way rather than extending Enumeration
-object StrokeType {
-  implicit def sfxStrokeType2jfx(c: StrokeType) = c.delegate
-  
-  val CENTERED = new StrokeType(jfxss.StrokeType.CENTERED)
+
+/** Wrapper for [[javafx.scene.shape.StrokeType]] */
+object StrokeType extends SFXEnumDelegateCompanion[jfxss.StrokeType, StrokeType] {
+
   val INSIDE = new StrokeType(jfxss.StrokeType.INSIDE)
   val OUTSIDE = new StrokeType(jfxss.StrokeType.OUTSIDE)
-  
-  def valueOf(name: String) = name match {
-    case "CENTERED" => CENTERED
-    case "INSIDE" => INSIDE
-    case "OUTSIDE" => OUTSIDE
-  }
-  def values = List(CENTERED, INSIDE, OUTSIDE)
+  val CENTERED = new StrokeType(jfxss.StrokeType.CENTERED)
+
+  protected def unsortedValues: Array[StrokeType] = Array(INSIDE, OUTSIDE, CENTERED)
 }
 
-class StrokeType(override val delegate:jfxss.StrokeType) extends SFXDelegate[jfxss.StrokeType]
+
+sealed case class StrokeType(override val delegate: jfxss.StrokeType)
+  extends SFXEnumDelegate[jfxss.StrokeType]

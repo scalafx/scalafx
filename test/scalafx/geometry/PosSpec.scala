@@ -29,44 +29,24 @@ package scalafx.geometry
 
 import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
-import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers
-import scalafx.testutil.PropertyComparator
+import scalafx.Includes._
+import scalafx.testutil.SFXEnumDelegateSpec
+
 
 /** Tests for [[scalafx.geometry.Pos]]. */
 @RunWith(classOf[JUnitRunner])
-class PosSpec extends FlatSpec with ShouldMatchers with PropertyComparator {
+class PosSpec extends SFXEnumDelegateSpec[jfxg.Pos, Pos](
+  javaClass = classOf[jfxg.Pos],
+  scalaClass = classOf[Pos],
+  javaValueOfFun = (s: String) => jfxg.Pos.valueOf(s),
+  companion = Pos) {
 
-  val javaClass = classOf[jfxg.Pos]
-  val scalaClass = classOf[Pos]
-
-  "A %s".format(scalaClass.getSimpleName) should "declare all public static methods of " + javaClass.getName in {
-    compareStaticMethods(javaClass, scalaClass)
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxg.Pos, Pos]() should be(true)
   }
 
-  it should "have the same number of values as javafx.geometry.Pos" in {
-    println(" Pos.values.size: " + Pos.values.size)
-    println(" jfxg.Pos.values.length: " + jfxg.Pos.values.length)
-    Pos.values.size should equal(jfxg.Pos.values.length)
-  }
-
-  it should "lookup the same values as javafx.geometry.Pos" in {
-    for (v <- jfxg.Pos.values) {
-      val sv = Pos.valueOf(v.toString)
-      sv should equal(v)
-    }
-
-    for (sv <- Pos.values) {
-      val v = jfxg.Pos.valueOf(sv.toString)
-      v should equal(sv.delegate)
-    }
-  }
-
-  it should "return the same `toString`" in {
-    for (jv <- jfxg.Pos.values) {
-      val sv: Pos = Pos.valueOf(jv.toString)
-      sv.toString should equal(jv.toString)
-    }
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[Pos, jfxg.Pos]() should be(true)
   }
 }

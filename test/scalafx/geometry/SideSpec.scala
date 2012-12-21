@@ -29,43 +29,24 @@ package scalafx.geometry
 
 import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
-import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers
-import scalafx.testutil.PropertyComparator
+import scalafx.Includes._
+import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.geometry.Side]]. */
 @RunWith(classOf[JUnitRunner])
-class SideSpec extends FlatSpec with ShouldMatchers with PropertyComparator {
+class SideSpec extends SFXEnumDelegateSpec[jfxg.Side, Side](
+  javaClass = classOf[jfxg.Side],
+  scalaClass = classOf[Side],
+  javaValueOfFun = (s: String) => jfxg.Side.valueOf(s),
+  companion = Side) {
 
-  val javaClass = classOf[jfxg.Side]
-  val scalaClass = classOf[Side]
-
-  "A %s".format(scalaClass.getSimpleName) should "declare all public static methods of " + javaClass.getName in {
-    compareStaticMethods(javaClass, scalaClass)
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxg.Side, Side]() should be(true)
   }
 
-  it should "have the same number of values as javafx.geometry.Side" in {
-    Side.values.size should equal(jfxg.Side.values.length)
-  }
-
-  it should "lookup the same values as javafx.geometry.Side" in {
-    for (v <- jfxg.Side.values) {
-      val sv = Side.valueOf(v.toString)
-      sv should equal(v)
-    }
-
-    for (sv <- Side.values) {
-      val v = jfxg.Side.valueOf(sv.toString)
-      v should equal(sv.delegate)
-    }
-  }
-
-  it should "return the same `toString`" in {
-    for (jv <- jfxg.Side.values) {
-      val sv:Side  = Side.valueOf(jv.toString)
-      sv.toString should equal(jv.toString)
-    }
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[Side, jfxg.Side]() should be(true)
   }
 }

@@ -24,26 +24,29 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.geometry
 
-import javafx.{ geometry => jfxg }
+import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Tests for [[scalafx.geometry.HPos]]. */
 @RunWith(classOf[JUnitRunner])
-class HPosSpec
-  extends SFXEnumDelegateSpec[jfxg.HPos, HPos](classOf[jfxg.HPos], classOf[HPos], HPos) {
+class HPosSpec extends SFXEnumDelegateSpec[jfxg.HPos, HPos](
+  javaClass = classOf[jfxg.HPos],
+  scalaClass = classOf[HPos],
+  javaValueOfFun = (s: String) => jfxg.HPos.valueOf(s),
+  companion = HPos) {
 
-  protected def convertScalaClassToJavaClass(sfxEnum: HPos) = {
-    val jfxEnum: jfxg.HPos = sfxEnum
-    jfxEnum
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxg.HPos, HPos]() should be(true)
   }
 
-  protected def convertJavaClassToScalaClass(jfxEnum: jfxg.HPos) = {
-    val sfxEnum: HPos = jfxEnum
-    sfxEnum
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[HPos, jfxg.HPos]() should be(true)
   }
 }

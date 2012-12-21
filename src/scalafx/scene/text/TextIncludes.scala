@@ -33,5 +33,10 @@ object TextIncludes extends TextIncludes
 
 trait TextIncludes {
   implicit def jfxFont2sfxFont(f: jfxst.Font) = new Font(f)
+  implicit def jfxFontPosture2sfx(e: jfxst.FontPosture) = FontPosture.jfxEnum2sfx(e)
+  implicit def jfxFontSmoothingType2sfx(e: jfxst.FontSmoothingType) = FontSmoothingType.jfxEnum2sfx(e)
+  implicit def jfxFontWeight2sfx(e: jfxst.FontWeight) = FontWeight.jfxEnum2sfx(e)
   implicit def jfxText2sfxText(t: jfxst.Text) = new Text(t)
+  implicit def jfxTextAlignment2sfx(e: jfxst.TextAlignment) = TextAlignment.jfxEnum2sfx(e)
+  implicit def jfxTextBoundsType2sfx(e: jfxst.TextBoundsType) = TextBoundsType.jfxEnum2sfx(e)
 }

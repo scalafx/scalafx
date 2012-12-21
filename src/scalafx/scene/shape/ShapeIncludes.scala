@@ -34,11 +34,13 @@ object ShapeIncludes extends ShapeIncludes
 trait ShapeIncludes {
   implicit def jfxArc2sfx(r: jfxss.Arc) = new Arc(r)
   implicit def jfxArcTo2sfx(a: jfxss.ArcTo) = new ArcTo(a)
+  implicit def jfxArcType2sfx(e: jfxss.ArcType) = ArcType.jfxEnum2sfx(e)
   implicit def jfxCircle2sfx(r: jfxss.Circle) = new Circle(r)
   implicit def jfxClosePath2sfx(c: jfxss.ClosePath) = new ClosePath(c)
   implicit def jfxCubicCurve2sfx(c: jfxss.CubicCurve) = new CubicCurve(c)
   implicit def jfxCubicCurveTo2sfx(c: jfxss.CubicCurveTo) = new CubicCurveTo(c)
   implicit def jfxEllipse2sfx(r: jfxss.Ellipse) = new Ellipse(r)
+  implicit def jfxFillRule2sfx(e: jfxss.FillRule) = FillRule.jfxEnum2sfx(e)
   implicit def jfxHLineTo2sfx(h: jfxss.HLineTo) = new HLineTo(h)
   implicit def jfxLine2sfx(r: jfxss.Line) = new Line(r)
   implicit def jfxLineTo2sfx(l: jfxss.LineTo) = new LineTo(l)
@@ -51,6 +53,9 @@ trait ShapeIncludes {
   implicit def jfxQuadCurveTo2sfx(q: jfxss.QuadCurveTo) = new QuadCurveTo(q)
   implicit def jfxRectangle2sfx(r: jfxss.Rectangle) = new Rectangle(r)
   implicit def jfxShape2sfx(s: jfxss.Shape) = new Shape(s) {}
+  implicit def jfxStrokeLineCap2sfx(e: jfxss.StrokeLineCap) = StrokeLineCap.jfxEnum2sfx(e)
+  implicit def jfxStrokeLineJoin2sfx(e: jfxss.StrokeLineJoin) = StrokeLineJoin.jfxEnum2sfx(e)
+  implicit def jfxStrokeType2sfx(e: jfxss.StrokeType) = StrokeType.jfxEnum2sfx(e)
   implicit def jfxSVGPath2sfx(s: jfxss.SVGPath) = new SVGPath(s)
   implicit def jfxVLineTo2sfx(v: jfxss.VLineTo) = new VLineTo(v)
 }

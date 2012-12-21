@@ -37,8 +37,10 @@ trait StageIncludes {
   implicit def jfxFileChooserExtensionFilter2sfx(ef: jfxs.FileChooser.ExtensionFilter) = new FileChooser.ExtensionFilter(ef)
   implicit def jfxPopupWindow2sfx(pw: jfxs.PopupWindow) = new PopupWindow(pw) {}
   implicit def jfxPopup2sfx(p: jfxs.Popup) = new Popup(p)
+  implicit def jfxModality2sfx(e: jfxs.Modality) = Modality.jfxEnum2sfx(e)
   implicit def jfxScreen2sfx(s: jfxs.Screen) = new Screen(s)
   implicit def jfxStage2sfx(s: jfxs.Stage) = new Stage(s)
+  implicit def jfxStageStyle2sfx(e: jfxs.StageStyle) = StageStyle.jfxEnum2sfx(e)
   implicit def jfxWindow2sfx(w: jfxs.Window) = new Window(w) {}
   implicit def jfxWindowEvent2sfx(we: jfxs.WindowEvent) = new WindowEvent(we) {}
 }

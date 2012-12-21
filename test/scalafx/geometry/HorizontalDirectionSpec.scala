@@ -24,29 +24,29 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.geometry
 
-import javafx.{ geometry => jfxg }
+import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-/** 
- * Tests for [[scalafx.geometry.HorizontalDirection]].
- */
+
+/** Tests for [[scalafx.geometry.HorizontalDirection]]. */
 @RunWith(classOf[JUnitRunner])
-class HorizontalDirectionSpec
-  extends SFXEnumDelegateSpec[jfxg.HorizontalDirection, HorizontalDirection](classOf[jfxg.HorizontalDirection], classOf[HorizontalDirection], HorizontalDirection) {
+class HorizontalDirectionSpec extends SFXEnumDelegateSpec[jfxg.HorizontalDirection, HorizontalDirection](
+  javaClass = classOf[jfxg.HorizontalDirection],
+  scalaClass = classOf[HorizontalDirection],
+  javaValueOfFun = (s: String) => jfxg.HorizontalDirection.valueOf(s),
+  companion = HorizontalDirection) {
 
-  protected def convertScalaClassToJavaClass(sfxEnum: HorizontalDirection) = {
-    val jfxEnum: jfxg.HorizontalDirection = sfxEnum
-    jfxEnum
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxg.HorizontalDirection, HorizontalDirection]() should be(true)
   }
 
-  protected def convertJavaClassToScalaClass(jfxEnum: jfxg.HorizontalDirection) = {
-    val sfxEnum: HorizontalDirection = jfxEnum
-    sfxEnum
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[HorizontalDirection, jfxg.HorizontalDirection]() should be(true)
   }
-
 }

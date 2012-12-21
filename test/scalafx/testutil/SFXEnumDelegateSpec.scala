@@ -24,52 +24,76 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.testutil
 
-import java.util.EnumSet
+import java.util
+import org.scalatest.FlatSpec
+import org.scalatest.matchers.ShouldMatchers
+import scala.collection.JavaConversions.iterableAsScalaIterable
+import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
-import scala.collection.JavaConversions._
 
-import scalafx.util.SFXEnumDelegate
-import scalafx.util.SFXEnumDelegateCompanion
+/** Abstract class that facilitates testing of wrappers for Java enums.
+  *
+  * The extending classes need to also provide implicit conversion tests that utilize `canConvert` method.
+  * Here a complete test implemented using `SFXEnumDelegateSpec`,
+  * {{{
+  *   class HPosSpec extends SFXEnumDelegateSpec[jfxg.HPos, HPos](
+  *    javaClass = classOf[jfxg.HPos],
+  *    scalaClass = classOf[HPos],
+  *    javaValueOfFun = (s: String) => jfxg.HPos.valueOf(s),
+  *    companion = HPos) {
+  *
+  *    it should "have implicit conversion JFX to SFX" in {
+  *      canConvert[jfxg.HPos, HPos]() should be(true)
+  *    }
+  *
+  *    it should "have implicit conversion SFX to JFX" in {
+  *      canConvert[HPos, jfxg.HPos]() should be(true)
+  *    }
+  *  }
+  * }}}
+  *
+  * @tparam J JavaFX enum type
+  * @tparam S ScalaFX wrapper type
+  *
+  * @param javaClass JavaFX class
+  * @param scalaClass SFXDelegate subclass related with JavaFX class
+  * @param javaValueOfFun `J.valueOf(String)` function.
+  * @param companion companion object of the ScalaFX wrapper class.
+  */
+class SFXEnumDelegateSpec[J <: Enum[J], S <: SFXEnumDelegate[J]](javaClass: Class[J],
+                                                                 scalaClass: Class[S],
+                                                                 javaValueOfFun: String => J,
+                                                                 companion: SFXEnumDelegateCompanion[J, S])
+  extends FlatSpec
+  with ShouldMatchers
+  with PropertyComparator {
 
-/**
- * @author Rafael
- *
- */
-abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] protected (javaClass: Class[E], scalaClass: Class[S], companion: SFXEnumDelegateCompanion[E, S])
-  extends SimpleSFXDelegateSpec[E, S](javaClass, scalaClass) {
+  private val javaValues = util.EnumSet.allOf(javaClass).toList
+  private val scalaClassName = scalaClass.getName
+  private val javaClassName = javaClass.getName
 
-  private val javaEnumConstants = EnumSet.allOf(javaClass)
-
-  private def nameIsPresent(name: String) = {
-    try {
-      val scalaEnum = companion.valueOf(name)
-      true
-    } catch {
-      case e: IllegalArgumentException => false
-    }
+  "%s wrapper for JavaFX enum".format(scalaClassName) should "declare all public static methods of " + javaClassName in {
+    compareStaticMethods(javaClass, scalaClass)
   }
 
-  def assertScalaEnumWithOrdinal(s: S, index: Int): Unit =
-    assert(s.delegate.ordinal() == index, "%s - Expected position: %d, actual: %d".format(s, s.delegate.ordinal(), index))
-
-  // Simply it gets the first constant available.
-  override protected def getScalaClassInstance = companion.values.toList.head
-
-  // 
-  override protected def getJavaClassInstance = javaEnumConstants.iterator.next
-
-  it should "presents all constants from its original JavaFX class" in {
-    val diff = javaEnumConstants -- companion.values.map(_.delegate)
-
-    assert(diff.isEmpty, "Missing constants: " + diff.mkString(", "))
+  it should "have the same number of values as " + javaClassName in {
+    companion.values.size should equal(javaValues.size)
   }
 
-  it should "generate all ScalaFX enums from JavaFX enums names" in {
-    val missingJavaEnumNames = javaEnumConstants.map(_.name).filterNot(nameIsPresent(_))
+  it should "return values in the same order as " + javaClassName in {
+    companion.values zip javaValues foreach {p => p._1 should equal(p._2)}
+  }
 
-    assert(missingJavaEnumNames.isEmpty, "Missing constants: " + missingJavaEnumNames.mkString(", "))
+  it should "lookup the same values as " + javaClassName in {
+    javaValues foreach {jv => companion.valueOf(jv.toString) should equal(jv)}
+    companion.values foreach {sv => javaValueOfFun(sv.toString) should equal(sv.delegate)}
+  }
+
+  it should "return the same `toString`" in {
+    javaValues foreach {jv => companion.valueOf(jv.toString).toString should equal(jv.toString)}
   }
 
   it should "not find a non registered name among enum constants" in {
@@ -78,8 +102,23 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
     }
   }
 
-  it should "presents its values at same order as its JavaFX enum ordinal" in {
-    companion.values.zipWithIndex.foreach({ case (s, i) => assertScalaEnumWithOrdinal(s, i) })
+  it should "thhrow `IllegalArgumentException` if the argument is `null`" in {
+    intercept[IllegalArgumentException] {
+      companion.valueOf(null)
+    }
   }
 
+
+  /**
+   * Implicit conversion checker suggested by [[http://stackoverflow.com/questions/5717868/test-if-implicit-conversion-is-available Moritz]]
+   */
+  def canConvert[A, B]()(implicit f: A => B = noConversion) =
+    (f ne NoConversion)
+
+  private case object NoConversion extends (Any => Nothing) {
+    def apply(x: Any) = sys.error("No conversion")
+  }
+
+  // Just for convenience so NoConversion does not escape the scope.
+  private def noConversion: Any => Nothing = NoConversion
 }
