@@ -44,10 +44,12 @@ object FontWeight extends SFXEnumDelegateCompanion[jfxst.FontWeight, FontWeight]
   val EXTRA_BOLD = new FontWeight(jfxst.FontWeight.EXTRA_BOLD)
   val BLACK = new FontWeight(jfxst.FontWeight.BLACK)
 
-  lazy val values = List(THIN, EXTRA_LIGHT, LIGHT, NORMAL, MEDIUM, SEMI_BOLD, BOLD, EXTRA_BOLD, BLACK)
+  protected def unsortedValues: Array[FontWeight] = Array(
+    THIN, EXTRA_LIGHT, LIGHT, NORMAL, MEDIUM, SEMI_BOLD, BOLD, EXTRA_BOLD, BLACK
+  )
 
   /** Returns FontWeight by its name. */
-  def findByName(name: String) : FontWeight = jfxst.FontWeight.findByName(name)
+  def findByName(name: String): FontWeight = jfxst.FontWeight.findByName(name)
 
   /** Returns the closest [[javafx.scene.text.FontWeight]] for a weight value as defined by the CSS
     * and OpenType specifications.

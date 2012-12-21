@@ -38,7 +38,7 @@ object StrokeLineJoin extends SFXEnumDelegateCompanion[jfxss.StrokeLineJoin, Str
   val BEVEL = new StrokeLineJoin(jfxss.StrokeLineJoin.BEVEL)
   val ROUND = new StrokeLineJoin(jfxss.StrokeLineJoin.ROUND)
 
-  lazy val values = List(MITER, BEVEL, ROUND)
+  protected def unsortedValues: Array[StrokeLineJoin] = Array(MITER, BEVEL, ROUND)
 }
 
 

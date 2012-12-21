@@ -37,7 +37,7 @@ object CycleMethod extends SFXEnumDelegateCompanion[jfxsp.CycleMethod, CycleMeth
   val REFLECT = new CycleMethod(jfxsp.CycleMethod.REFLECT)
   val REPEAT = new CycleMethod(jfxsp.CycleMethod.REPEAT)
 
-  val values = List(NO_CYCLE, REFLECT, REPEAT)
+  protected def unsortedValues: Array[CycleMethod] = Array(NO_CYCLE, REFLECT, REPEAT)
 }
 
 sealed case class CycleMethod(override val delegate: jfxsp.CycleMethod) extends SFXEnumDelegate[jfxsp.CycleMethod]

@@ -43,7 +43,9 @@ object ConditionalFeature extends SFXEnumDelegateCompanion[jfxa.ConditionalFeatu
   val INPUT_METHOD = new ConditionalFeature(jfxa.ConditionalFeature.INPUT_METHOD)
   val TRANSPARENT_WINDOW = new ConditionalFeature(jfxa.ConditionalFeature.TRANSPARENT_WINDOW)
 
-  lazy val values = List(SCENE3D, EFFECT, SHAPE_CLIP, INPUT_METHOD, TRANSPARENT_WINDOW)
+  protected def unsortedValues: Array[ConditionalFeature] = Array(
+    SCENE3D, EFFECT, SHAPE_CLIP, INPUT_METHOD, TRANSPARENT_WINDOW
+  )
 }
 
 

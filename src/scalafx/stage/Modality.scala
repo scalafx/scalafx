@@ -38,7 +38,7 @@ object Modality extends SFXEnumDelegateCompanion[jfxs.Modality, Modality] {
   val WINDOW_MODAL = new Modality(jfxs.Modality.WINDOW_MODAL)
   val APPLICATION_MODAL = new Modality(jfxs.Modality.APPLICATION_MODAL)
 
-  lazy val values = List(NONE, WINDOW_MODAL, APPLICATION_MODAL)
+  protected def unsortedValues: Array[Modality] = Array(NONE, WINDOW_MODAL, APPLICATION_MODAL)
 }
 
 

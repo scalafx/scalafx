@@ -37,10 +37,10 @@ object FontPosture extends SFXEnumDelegateCompanion[jfxst.FontPosture, FontPostu
   val REGULAR = new FontPosture(jfxst.FontPosture.REGULAR)
   val ITALIC = new FontPosture(jfxst.FontPosture.ITALIC)
 
-  lazy val values = List(REGULAR, ITALIC)
+  protected def unsortedValues: Array[FontPosture] = Array(REGULAR, ITALIC)
 
   /** Returns FontPosture by its name. */
-  def findByName(name: String) : FontPosture = jfxst.FontPosture.findByName(name)
+  def findByName(name: String): FontPosture = jfxst.FontPosture.findByName(name)
 }
 
 

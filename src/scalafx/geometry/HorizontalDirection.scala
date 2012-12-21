@@ -37,7 +37,7 @@ object HorizontalDirection extends SFXEnumDelegateCompanion[jfxg.HorizontalDirec
   val LEFT = new HorizontalDirection(jfxg.HorizontalDirection.LEFT)
   val RIGHT = new HorizontalDirection(jfxg.HorizontalDirection.RIGHT)
 
-  lazy val values = List(LEFT, RIGHT)
+  protected def unsortedValues: Array[HorizontalDirection] = Array(LEFT, RIGHT)
 }
 
 

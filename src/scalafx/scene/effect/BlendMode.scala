@@ -52,7 +52,7 @@ object BlendMode extends SFXEnumDelegateCompanion[jfxse.BlendMode, BlendMode] {
   val SRC_ATOP = new BlendMode(jfxse.BlendMode.SRC_ATOP)
   val SRC_OVER = new BlendMode(jfxse.BlendMode.SRC_OVER)
 
-  lazy val values = List(
+  protected def unsortedValues: Array[BlendMode] = Array(
     SRC_OVER, SRC_ATOP, ADD, MULTIPLY, SCREEN, OVERLAY, DARKEN, LIGHTEN, COLOR_DODGE, COLOR_BURN,
     HARD_LIGHT, SOFT_LIGHT, DIFFERENCE, EXCLUSION, RED, GREEN, BLUE
   )

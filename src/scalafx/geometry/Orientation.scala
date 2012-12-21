@@ -37,7 +37,7 @@ object Orientation extends SFXEnumDelegateCompanion[jfxg.Orientation, Orientatio
   val HORIZONTAL = new Orientation(jfxg.Orientation.HORIZONTAL)
   val VERTICAL = new Orientation(jfxg.Orientation.VERTICAL)
 
-  lazy val values = List(HORIZONTAL, VERTICAL)
+  protected def unsortedValues: Array[Orientation] = Array(HORIZONTAL, VERTICAL)
 }
 
 

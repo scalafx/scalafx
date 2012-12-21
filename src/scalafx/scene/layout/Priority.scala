@@ -38,7 +38,7 @@ object Priority extends SFXEnumDelegateCompanion[jfxsl.Priority, Priority] {
   val SOMETIMES = new Priority(jfxsl.Priority.SOMETIMES)
   val NEVER = new Priority(jfxsl.Priority.NEVER)
 
-  lazy val values = List(ALWAYS, SOMETIMES, NEVER)
+  protected def unsortedValues: Array[Priority] = Array(ALWAYS, SOMETIMES, NEVER)
 
   /** Convenience method for returning the higher of two priorities. */
   def max(a: jfxsl.Priority, b: jfxsl.Priority) = jfxsl.Priority.max(a.delegate, b.delegate)

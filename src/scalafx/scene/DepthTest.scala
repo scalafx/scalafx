@@ -38,7 +38,7 @@ object DepthTest extends SFXEnumDelegateCompanion[jfxs.DepthTest, DepthTest] {
   val ENABLE = new DepthTest(jfxs.DepthTest.ENABLE)
   val INHERIT = new DepthTest(jfxs.DepthTest.INHERIT)
 
-  lazy val values = List(DISABLE, ENABLE, INHERIT)
+  protected def unsortedValues: Array[DepthTest] = Array(DISABLE, ENABLE, INHERIT)
 }
 
 

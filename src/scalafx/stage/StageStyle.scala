@@ -39,7 +39,7 @@ object StageStyle extends SFXEnumDelegateCompanion[jfxs.StageStyle, StageStyle] 
   val TRANSPARENT = new StageStyle(jfxs.StageStyle.TRANSPARENT)
   val UTILITY = new StageStyle(jfxs.StageStyle.UTILITY)
 
-  lazy val values = List(DECORATED, UNDECORATED, TRANSPARENT, UTILITY)
+  protected def unsortedValues: Array[StageStyle] = Array(DECORATED, UNDECORATED, TRANSPARENT, UTILITY)
 }
 
 

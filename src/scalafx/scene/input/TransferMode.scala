@@ -47,8 +47,7 @@ object TransferMode extends SFXEnumDelegateCompanion[jfxsi.TransferMode, Transfe
   /** Empty array of transfer modes. */
   val NONE = jfxsi.TransferMode.NONE
 
-
-  lazy val values = List(COPY, MOVE, LINK)
+  protected def unsortedValues: Array[TransferMode] = Array(COPY, MOVE, LINK)
 }
 
 

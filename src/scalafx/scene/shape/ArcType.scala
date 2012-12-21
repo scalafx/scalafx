@@ -38,7 +38,7 @@ object ArcType extends SFXEnumDelegateCompanion[jfxss.ArcType, ArcType] {
   val CHORD = new ArcType(jfxss.ArcType.CHORD)
   val ROUND = new ArcType(jfxss.ArcType.ROUND)
 
-  lazy val values = List(OPEN, CHORD, ROUND)
+  protected def unsortedValues: Array[ArcType] = Array(OPEN, CHORD, ROUND)
 }
 
 

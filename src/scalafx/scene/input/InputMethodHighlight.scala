@@ -39,7 +39,9 @@ object InputMethodHighlight extends SFXEnumDelegateCompanion[jfxsi.InputMethodHi
   val UNSELECTED_CONVERTED = new InputMethodHighlight(jfxsi.InputMethodHighlight.UNSELECTED_CONVERTED)
   val SELECTED_CONVERTED = new InputMethodHighlight(jfxsi.InputMethodHighlight.SELECTED_CONVERTED)
 
-  lazy val values = List(UNSELECTED_RAW, SELECTED_RAW, UNSELECTED_CONVERTED, SELECTED_CONVERTED)
+  protected def unsortedValues: Array[InputMethodHighlight] = Array(
+    UNSELECTED_RAW, SELECTED_RAW, UNSELECTED_CONVERTED, SELECTED_CONVERTED
+  )
 }
 
 

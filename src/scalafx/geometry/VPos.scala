@@ -39,7 +39,7 @@ object VPos extends SFXEnumDelegateCompanion[jfxg.VPos, VPos] {
   val CENTER = new VPos(jfxg.VPos.CENTER)
   val TOP = new VPos(jfxg.VPos.TOP)
 
-  lazy val values = List(TOP, CENTER, BASELINE, BOTTOM)
+  protected def unsortedValues: Array[VPos] = Array(TOP, CENTER, BASELINE, BOTTOM)
 }
 
 

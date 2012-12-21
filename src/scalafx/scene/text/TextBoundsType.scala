@@ -37,7 +37,7 @@ object TextBoundsType extends SFXEnumDelegateCompanion[jfxst.TextBoundsType, Tex
   val LOGICAL = new TextBoundsType(jfxst.TextBoundsType.LOGICAL)
   val VISUAL = new TextBoundsType(jfxst.TextBoundsType.VISUAL)
 
-  lazy val values = List(LOGICAL, VISUAL)
+  protected def unsortedValues: Array[TextBoundsType] = Array(LOGICAL, VISUAL)
 }
 
 

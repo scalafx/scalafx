@@ -39,7 +39,7 @@ object MouseButton extends SFXEnumDelegateCompanion[jfxsi.MouseButton, MouseButt
   val MIDDLE = new MouseButton(jfxsi.MouseButton.MIDDLE)
   val SECONDARY = new MouseButton(jfxsi.MouseButton.SECONDARY)
 
-  lazy val values = List(NONE, PRIMARY, MIDDLE, SECONDARY)
+  protected def unsortedValues: Array[MouseButton] = Array(NONE, PRIMARY, MIDDLE, SECONDARY)
 }
 
 

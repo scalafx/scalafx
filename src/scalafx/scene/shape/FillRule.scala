@@ -37,7 +37,7 @@ object FillRule extends SFXEnumDelegateCompanion[jfxss.FillRule, FillRule] {
   val EVEN_ODD = new FillRule(jfxss.FillRule.EVEN_ODD)
   val NON_ZERO = new FillRule(jfxss.FillRule.NON_ZERO)
 
-  lazy val values = List(EVEN_ODD, NON_ZERO)
+  protected def unsortedValues: Array[FillRule] = Array(EVEN_ODD, NON_ZERO)
 }
 
 

@@ -37,7 +37,7 @@ object SelectionMode extends SFXEnumDelegateCompanion[jfxsc.SelectionMode, Selec
   val MULTIPLE = new SelectionMode(jfxsc.SelectionMode.MULTIPLE)
   val SINGLE = new SelectionMode(jfxsc.SelectionMode.SINGLE)
 
-  lazy val values = List(SINGLE, MULTIPLE)
+  protected def unsortedValues: Array[SelectionMode] = Array(SINGLE, MULTIPLE)
 }
 
 

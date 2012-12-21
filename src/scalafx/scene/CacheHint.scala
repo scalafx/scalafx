@@ -41,7 +41,7 @@ object CacheHint extends SFXEnumDelegateCompanion[jfxs.CacheHint, CacheHint] {
   val SCALE_AND_ROTATE = new CacheHint(jfxs.CacheHint.SCALE_AND_ROTATE)
   val SPEED = new CacheHint(jfxs.CacheHint.SPEED)
 
-  lazy val values = List(DEFAULT, SPEED, QUALITY, SCALE, ROTATE, SCALE_AND_ROTATE)
+  protected def unsortedValues: Array[CacheHint] = Array(DEFAULT, SPEED, QUALITY, SCALE, ROTATE, SCALE_AND_ROTATE)
 }
 
 
