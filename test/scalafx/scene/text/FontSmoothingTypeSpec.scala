@@ -30,6 +30,7 @@ package scalafx.scene.text
 import javafx.scene.{text => jfxst}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class FontSmoothingTypeSpec extends SFXEnumDelegateSpec[jfxst.FontSmoothingType,
   javaClass = classOf[jfxst.FontSmoothingType],
   scalaClass = classOf[FontSmoothingType],
   javaValueOfFun = (s: String) => jfxst.FontSmoothingType.valueOf(s),
-  companion = FontSmoothingType
-)
+  companion = FontSmoothingType) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxst.FontSmoothingType, FontSmoothingType]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[FontSmoothingType, jfxst.FontSmoothingType]() should be(true)
+  }
+}
+

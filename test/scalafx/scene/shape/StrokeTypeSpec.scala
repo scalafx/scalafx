@@ -30,6 +30,7 @@ package scalafx.scene.shape
 import javafx.scene.{shape => jfxss}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class StrokeTypeSpec extends SFXEnumDelegateSpec[jfxss.StrokeType, StrokeType](
   javaClass = classOf[jfxss.StrokeType],
   scalaClass = classOf[StrokeType],
   javaValueOfFun = (s: String) => jfxss.StrokeType.valueOf(s),
-  companion = StrokeType
-)
+  companion = StrokeType) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxss.StrokeType, StrokeType]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[StrokeType, jfxss.StrokeType]() should be(true)
+  }
+}
+

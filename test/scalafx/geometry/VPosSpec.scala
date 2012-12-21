@@ -30,6 +30,7 @@ package scalafx.geometry
 import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.geometry.VPos]]. */
@@ -38,5 +39,13 @@ class VPosSpec extends SFXEnumDelegateSpec[jfxg.VPos, VPos](
   javaClass = classOf[jfxg.VPos],
   scalaClass = classOf[VPos],
   javaValueOfFun = (s: String) => jfxg.VPos.valueOf(s),
-  companion = VPos
-)
+  companion = VPos) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxg.VPos, VPos]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[VPos, jfxg.VPos]() should be(true)
+  }
+}

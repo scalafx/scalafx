@@ -28,6 +28,7 @@
 package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
+import scalafx.Includes._
 import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 

@@ -30,6 +30,7 @@ package scalafx.application
 import javafx.{application => jfxa}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class ConditionalFeatureSpec extends SFXEnumDelegateSpec[jfxa.ConditionalFeature
   javaClass = classOf[jfxa.ConditionalFeature],
   scalaClass = classOf[ConditionalFeature],
   javaValueOfFun = (s: String) => jfxa.ConditionalFeature.valueOf(s),
-  companion = ConditionalFeature
-)
+  companion = ConditionalFeature) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxa.ConditionalFeature, ConditionalFeature]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[ConditionalFeature, jfxa.ConditionalFeature]() should be(true)
+  }
+}
+

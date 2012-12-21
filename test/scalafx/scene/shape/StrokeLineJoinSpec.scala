@@ -30,6 +30,7 @@ package scalafx.scene.shape
 import javafx.scene.{shape => jfxss}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class StrokeLineJoinSpec extends SFXEnumDelegateSpec[jfxss.StrokeLineJoin, Strok
   javaClass = classOf[jfxss.StrokeLineJoin],
   scalaClass = classOf[StrokeLineJoin],
   javaValueOfFun = (s: String) => jfxss.StrokeLineJoin.valueOf(s),
-  companion = StrokeLineJoin
-)
+  companion = StrokeLineJoin) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxss.StrokeLineJoin, StrokeLineJoin]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[StrokeLineJoin, jfxss.StrokeLineJoin]() should be(true)
+  }
+}
+

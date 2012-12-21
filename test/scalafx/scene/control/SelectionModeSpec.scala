@@ -30,6 +30,7 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class SelectionModeSpec extends SFXEnumDelegateSpec[jfxsc.SelectionMode, Selecti
   javaClass = classOf[jfxsc.SelectionMode],
   scalaClass = classOf[SelectionMode],
   javaValueOfFun = (s: String) => jfxsc.SelectionMode.valueOf(s),
-  companion = SelectionMode
-)
+  companion = SelectionMode) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxsc.SelectionMode, SelectionMode]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[SelectionMode, jfxsc.SelectionMode]() should be(true)
+  }
+}
+

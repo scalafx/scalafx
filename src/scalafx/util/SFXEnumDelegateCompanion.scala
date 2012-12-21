@@ -38,7 +38,7 @@ trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] 
   implicit def sfxEnum2jfx(s: S): E = s.delegate
 
   /** Converts a JavaFX Enum to its respective SFXEnumDelegate */
-  implicit def jfxEnum2sfx(e: E): S = values.find(_.delegate == e).get
+  def jfxEnum2sfx(e: E): S = values.find(_.delegate == e).get
 
   /** Contain constants which will be source for `values` List  */
   protected def unsortedValues: Array[S]

@@ -30,6 +30,7 @@ package scalafx.scene.shape
 import javafx.scene.{shape => jfxss}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class FillRuleSpec extends SFXEnumDelegateSpec[jfxss.FillRule, FillRule](
   javaClass = classOf[jfxss.FillRule],
   scalaClass = classOf[FillRule],
   javaValueOfFun = (s: String) => jfxss.FillRule.valueOf(s),
-  companion = FillRule
-)
+  companion = FillRule) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxss.FillRule, FillRule]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[FillRule, jfxss.FillRule]() should be(true)
+  }
+}
+

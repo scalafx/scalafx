@@ -30,6 +30,7 @@ package scalafx.geometry
 import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,13 @@ class SideSpec extends SFXEnumDelegateSpec[jfxg.Side, Side](
   javaClass = classOf[jfxg.Side],
   scalaClass = classOf[Side],
   javaValueOfFun = (s: String) => jfxg.Side.valueOf(s),
-  companion = Side
-)
+  companion = Side) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxg.Side, Side]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[Side, jfxg.Side]() should be(true)
+  }
+}

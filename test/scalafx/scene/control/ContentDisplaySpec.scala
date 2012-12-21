@@ -30,6 +30,7 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class ContentDisplaySpec extends SFXEnumDelegateSpec[jfxsc.ContentDisplay, Conte
   javaClass = classOf[jfxsc.ContentDisplay],
   scalaClass = classOf[ContentDisplay],
   javaValueOfFun = (s: String) => jfxsc.ContentDisplay.valueOf(s),
-  companion = ContentDisplay
-)
+  companion = ContentDisplay) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxsc.ContentDisplay, ContentDisplay]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[ContentDisplay, jfxsc.ContentDisplay]() should be(true)
+  }
+}
+

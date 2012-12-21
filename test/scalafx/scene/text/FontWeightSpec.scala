@@ -30,6 +30,7 @@ package scalafx.scene.text
 import javafx.scene.{text => jfxst}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class FontWeightSpec extends SFXEnumDelegateSpec[jfxst.FontWeight, FontWeight](
   javaClass = classOf[jfxst.FontWeight],
   scalaClass = classOf[FontWeight],
   javaValueOfFun = (s: String) => jfxst.FontWeight.valueOf(s),
-  companion = FontWeight
-)
+  companion = FontWeight) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxst.FontWeight, FontWeight]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[FontWeight, jfxst.FontWeight]() should be(true)
+  }
+}
+

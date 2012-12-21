@@ -30,6 +30,7 @@ package scalafx.scene.shape
 import javafx.scene.{shape => jfxss}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class StrokeLineCapSpec extends SFXEnumDelegateSpec[jfxss.StrokeLineCap, StrokeL
   javaClass = classOf[jfxss.StrokeLineCap],
   scalaClass = classOf[StrokeLineCap],
   javaValueOfFun = (s: String) => jfxss.StrokeLineCap.valueOf(s),
-  companion = StrokeLineCap
-)
+  companion = StrokeLineCap) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxss.StrokeLineCap, StrokeLineCap]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[StrokeLineCap, jfxss.StrokeLineCap]() should be(true)
+  }
+}
+

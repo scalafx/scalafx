@@ -41,10 +41,10 @@ object Priority extends SFXEnumDelegateCompanion[jfxsl.Priority, Priority] {
   protected def unsortedValues: Array[Priority] = Array(ALWAYS, SOMETIMES, NEVER)
 
   /** Convenience method for returning the higher of two priorities. */
-  def max(a: jfxsl.Priority, b: jfxsl.Priority) = jfxsl.Priority.max(a.delegate, b.delegate)
+  def max(a: jfxsl.Priority, b: jfxsl.Priority) = jfxsl.Priority.max(a, b)
 
   /** Convenience method for returning the lower of two priorities. */
-  def min(a: jfxsl.Priority, b: jfxsl.Priority) = jfxsl.Priority.min(a.delegate, b.delegate)
+  def min(a: jfxsl.Priority, b: jfxsl.Priority) = jfxsl.Priority.min(a, b)
 }
 
 

@@ -30,6 +30,7 @@ package scalafx.scene.paint
 import javafx.scene.{paint => jfxsp}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class CycleMethodSpec extends SFXEnumDelegateSpec[jfxsp.CycleMethod, CycleMethod
   javaClass = classOf[jfxsp.CycleMethod],
   scalaClass = classOf[CycleMethod],
   javaValueOfFun = (s: String) => jfxsp.CycleMethod.valueOf(s),
-  companion = CycleMethod
-)
+  companion = CycleMethod) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxsp.CycleMethod, CycleMethod]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[CycleMethod, jfxsp.CycleMethod]() should be(true)
+  }
+}
+

@@ -30,6 +30,7 @@ package scalafx.scene.shape
 import javafx.scene.{shape => jfxss}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class ArcTypeSpec extends SFXEnumDelegateSpec[jfxss.ArcType, ArcType](
   javaClass = classOf[jfxss.ArcType],
   scalaClass = classOf[ArcType],
   javaValueOfFun = (s: String) => jfxss.ArcType.valueOf(s),
-  companion = ArcType
-)
+  companion = ArcType) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxss.ArcType, ArcType]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[ArcType, jfxss.ArcType]() should be(true)
+  }
+}
+

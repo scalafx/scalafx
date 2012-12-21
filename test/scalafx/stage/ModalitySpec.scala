@@ -30,6 +30,7 @@ package scalafx.stage
 import javafx.{stage => jfxs}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class ModalitySpec extends SFXEnumDelegateSpec[jfxs.Modality, Modality](
   javaClass = classOf[jfxs.Modality],
   scalaClass = classOf[Modality],
   javaValueOfFun = (s: String) => jfxs.Modality.valueOf(s),
-  companion = Modality
-)
+  companion = Modality) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxs.Modality, Modality]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[Modality, jfxs.Modality]() should be(true)
+  }
+}
+

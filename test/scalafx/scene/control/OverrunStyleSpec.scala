@@ -30,6 +30,7 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class OverrunStyleSpec extends SFXEnumDelegateSpec[jfxsc.OverrunStyle, OverrunSt
   javaClass = classOf[jfxsc.OverrunStyle],
   scalaClass = classOf[OverrunStyle],
   javaValueOfFun = (s: String) => jfxsc.OverrunStyle.valueOf(s),
-  companion = OverrunStyle
-)
+  companion = OverrunStyle) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxsc.OverrunStyle, OverrunStyle]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[OverrunStyle, jfxsc.OverrunStyle]() should be(true)
+  }
+}
+

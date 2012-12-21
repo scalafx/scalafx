@@ -30,6 +30,7 @@ package scalafx.scene.input
 import javafx.scene.{input => jfxsi}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class InputMethodHighlightSpec extends SFXEnumDelegateSpec[jfxsi.InputMethodHigh
   javaClass = classOf[jfxsi.InputMethodHighlight],
   scalaClass = classOf[InputMethodHighlight],
   javaValueOfFun = (s: String) => jfxsi.InputMethodHighlight.valueOf(s),
-  companion = InputMethodHighlight
-)
+  companion = InputMethodHighlight) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxsi.InputMethodHighlight, InputMethodHighlight]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[InputMethodHighlight, jfxsi.InputMethodHighlight]() should be(true)
+  }
+}
+

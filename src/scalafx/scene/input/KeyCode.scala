@@ -28,6 +28,7 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
+import scalafx.Includes._
 import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 

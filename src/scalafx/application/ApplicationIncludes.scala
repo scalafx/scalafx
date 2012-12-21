@@ -14,4 +14,6 @@ trait ApplicationIncludes {
     def unnamed = p.getUnnamed
     def delegate = p
   }
+
+  implicit def jfxConditionalFeature2sfx(e: jfxa.ConditionalFeature) = ConditionalFeature.jfxEnum2sfx(e)
 }

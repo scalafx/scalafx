@@ -30,6 +30,7 @@ package scalafx.stage
 import javafx.{stage => jfxs}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
@@ -39,5 +40,14 @@ class StageStyleSpec extends SFXEnumDelegateSpec[jfxs.StageStyle, StageStyle](
   javaClass = classOf[jfxs.StageStyle],
   scalaClass = classOf[StageStyle],
   javaValueOfFun = (s: String) => jfxs.StageStyle.valueOf(s),
-  companion = StageStyle
-)
+  companion = StageStyle) {
+
+  it should "have implicit conversion JFX to SFX" in {
+    canConvert[jfxs.StageStyle, StageStyle]() should be(true)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    canConvert[StageStyle, jfxs.StageStyle]() should be(true)
+  }
+}
+
