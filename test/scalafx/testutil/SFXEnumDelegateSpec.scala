@@ -69,13 +69,17 @@ class SFXEnumDelegateSpec[J <: Enum[J], S <: SFXEnumDelegate[J]](javaClass: Clas
                                                                  companion: SFXEnumDelegateCompanion[J, S])
   extends FlatSpec
   with ShouldMatchers
-  with PropertyComparator {
+  with EnumComparator {
 
   private val javaValues = util.EnumSet.allOf(javaClass).toList
   private val scalaClassName = scalaClass.getName
   private val javaClassName = javaClass.getName
 
-  "%s wrapper for JavaFX enum".format(scalaClassName) should "declare all public static methods of " + javaClassName in {
+  "%s wrapper for JavaFX enum".format(scalaClassName) should "declare all public methods of " + javaClassName in {
+    compareDeclaredMethods(javaClass, scalaClass)
+  }
+
+  it should "declare all public static methods of " + javaClassName in {
     compareStaticMethods(javaClass, scalaClass)
   }
 

@@ -28,6 +28,8 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
+import scalafx.geometry.GeometryIncludes.jfxHPos2sfx
+import scalafx.geometry.GeometryIncludes.jfxVPos2sfx
 import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 
@@ -56,4 +58,11 @@ object Pos extends SFXEnumDelegateCompanion[jfxg.Pos, Pos] {
 }
 
 
-sealed case class Pos(override val delegate: jfxg.Pos) extends SFXEnumDelegate[jfxg.Pos]
+sealed case class Pos(override val delegate: jfxg.Pos) extends SFXEnumDelegate[jfxg.Pos] {
+
+  /** Returns the horizontal positioning/alignment. */
+  def hpos: HPos = delegate.getHpos
+
+  /** Returns the vertical positioning/alignment. **/
+  def vpos: VPos = delegate.getVpos
+}

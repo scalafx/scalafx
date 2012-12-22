@@ -293,11 +293,12 @@ object KeyCode extends SFXEnumDelegateCompanion[jfxsi.KeyCode, KeyCode] {
 
 sealed case class KeyCode(override val delegate: jfxsi.KeyCode)
   extends SFXEnumDelegate[jfxsi.KeyCode] {
+
   /** Gets name of this key code. */
   def name: String = delegate.getName
 
   /** Left, right, up, down keys (including the keypad arrows) */
-  //  def isArrowKey: Boolean = delegate.isArrowKey
+  def isArrowKey: Boolean = delegate.isArrowKey
 
   /** All Digit keys (including the keypad digits) */
   def isDigitKey: Boolean = delegate.isDigitKey
