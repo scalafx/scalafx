@@ -44,7 +44,7 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
 
   private def nameIsPresent(name: String) = {
     try {
-      val scalaEnum = companion.valueOf(name)
+      val scalaEnum = companion(name)
       true
     } catch {
       case e: IllegalArgumentException => false
@@ -74,7 +74,7 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
 
   it should "not find a non registered name among enum constants" in {
     intercept[IllegalArgumentException] {
-      companion.valueOf("!@#$%")
+      companion("!@#$%")
     }
   }
 

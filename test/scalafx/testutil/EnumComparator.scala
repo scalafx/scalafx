@@ -24,41 +24,19 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.geometry
+package scalafx.testutil
 
-import javafx.{ geometry => jfxg }
-import scalafx.util.SFXEnumDelegate
-import scalafx.util.SFXEnumDelegateCompanion
-
-object VPos
-  extends SFXEnumDelegateCompanion[jfxg.VPos, VPos] {
-
-  /**
-   * Indicates baseline vertical position.
-   */
-  val BASELINE = new VPos(jfxg.VPos.BASELINE)
-  
-  /**
-   * Indicates bottom vertical position.
-   */
-  val BOTTOM = new VPos(jfxg.VPos.BOTTOM)
-  
-  /**
-   * Indicates centered vertical position.
-   */
-  val CENTER = new VPos(jfxg.VPos.CENTER)
-  
-  /**
-   * Indicates top vertical position.
-   */
-  val TOP = new VPos(jfxg.VPos.TOP)
-
-  def unsortedValues = Array(BASELINE, BOTTOM, CENTER, TOP)
-
-}
+import java.lang.reflect.Method
 
 /**
- * Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/geometry/VPos.html]]
+ * Used to test enum wrappers.
+ *
  */
-sealed case class VPos(override val delegate: jfxg.VPos)
-  extends SFXEnumDelegate[jfxg.VPos]
+private[testutil] trait EnumComparator
+  extends AbstractComparator {
+
+  protected def getDesirableMethodName(javaMethod: Method): String = scalaizePropertyNames(javaMethod.getName)
+
+  protected def isSpecialMethodName(name: String) = super.isImplementation(name)
+
+}

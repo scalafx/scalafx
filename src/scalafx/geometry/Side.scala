@@ -42,7 +42,7 @@ object Side
   val RIGHT = new Side(jfxg.Side.RIGHT)
   val TOP = new Side(jfxg.Side.TOP)
 
-  def getValuesSource = Array(BOTTOM, LEFT, RIGHT, TOP)
+  def unsortedValues = Array(BOTTOM, LEFT, RIGHT, TOP)
 }
 
 

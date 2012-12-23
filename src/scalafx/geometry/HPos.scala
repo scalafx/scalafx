@@ -48,7 +48,7 @@ object HPos
    */
   val RIGHT = new HPos(jfxg.HPos.RIGHT)
 
-  def getValuesSource = Array(CENTER, LEFT, RIGHT)
+  def unsortedValues = Array(CENTER, LEFT, RIGHT)
 
 }
 

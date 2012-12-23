@@ -43,7 +43,7 @@ object HorizontalDirection
    */
   val RIGHT = new HorizontalDirection(jfxg.HorizontalDirection.RIGHT)
 
-  def getValuesSource = Array(LEFT, RIGHT)
+  def unsortedValues = Array(LEFT, RIGHT)
 
 }
 

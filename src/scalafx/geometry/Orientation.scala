@@ -39,7 +39,7 @@ object Orientation
   
   val VERTICAL = new Orientation(jfxg.Orientation.VERTICAL)
 
-  def getValuesSource = Array(HORIZONTAL, VERTICAL)
+  def unsortedValues = Array(HORIZONTAL, VERTICAL)
 
 }
 

@@ -46,7 +46,7 @@ object Pos
   val TOP_LEFT = new Pos(jfxg.Pos.TOP_LEFT)
   val TOP_RIGHT = new Pos(jfxg.Pos.TOP_RIGHT)
 
-  def getValuesSource = Array(
+  def unsortedValues = Array(
     BASELINE_CENTER, BASELINE_LEFT, BASELINE_RIGHT,
     CENTER,
     BOTTOM_CENTER, BOTTOM_LEFT, BOTTOM_RIGHT,
