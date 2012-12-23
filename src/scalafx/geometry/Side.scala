@@ -31,24 +31,34 @@ package scalafx.geometry
 
 import javafx.{geometry => jfxg}
 import scalafx.util.SFXEnumDelegate
+import scalafx.util.SFXEnumDelegateCompanion
 
-//I think it might be better to implemented this way rather than extending Enumeration
-object Side {
-  implicit def sfxSide2jfx(c: Side) = c.delegate
-  implicit def jfxSide2sfx(c: jfxg.Side) = Side(c)
+object Side 
+  extends SFXEnumDelegateCompanion[jfxg.Side, Side] {
+
 
   val BOTTOM = new Side(jfxg.Side.BOTTOM)
   val LEFT = new Side(jfxg.Side.LEFT)
   val RIGHT = new Side(jfxg.Side.RIGHT)
   val TOP = new Side(jfxg.Side.TOP)
 
-  def valueOf(name: String) : Side = jfxg.Side.valueOf(name)
-
-  def values = List(BOTTOM, LEFT, RIGHT, TOP)
+  def getValuesSource = Array(BOTTOM, LEFT, RIGHT, TOP)
 }
 
 
-case class Side(override val delegate: jfxg.Side) extends SFXEnumDelegate[jfxg.Side] {
-  def isHorizontal = delegate.isHorizontal
-  def isVertical = delegate.isVertical
+/**
+ * Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/geometry/Side.html]]
+ */
+sealed case class Side(override val delegate: jfxg.Side) extends SFXEnumDelegate[jfxg.Side] {
+  
+  /**
+   * Indicates whether this is horizontal side of a rectangle (returns true for `TOP` and `BOTTOM`).
+   */
+  def horizontal = delegate.isHorizontal
+  
+  /**
+   * Indicates whether this is vertical side of a rectangle (returns true for `LEFT` and `RIGHT`).
+   */
+  def vertical = delegate.isVertical
+
 }

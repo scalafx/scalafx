@@ -24,47 +24,26 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
+import javafx.{ geometry => jfxg }
 import org.junit.runner.RunWith
-import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers
-import scalafx.testutil.PropertyComparator
+import scalafx.Includes._
+import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.geometry.Orientation]]. */
 @RunWith(classOf[JUnitRunner])
-class OrientationSpec extends FlatSpec with ShouldMatchers with PropertyComparator {
+class OrientationSpec 
+  extends SFXEnumDelegateSpec[jfxg.Orientation, Orientation](classOf[jfxg.Orientation], classOf[Orientation], Orientation) {
 
-  val javaClass = classOf[jfxg.Orientation]
-  val scalaClass = classOf[Orientation]
-
-  "A %s".format(scalaClass.getSimpleName) should "declare all public static methods of " + javaClass.getName in {
-    compareStaticMethods(javaClass, scalaClass)
+  protected def convertScalaClassToJavaClass(sfxEnum: Orientation) = {
+    val jfxEnum: jfxg.Orientation = sfxEnum
+    jfxEnum
   }
 
-  it should "have the same number of values as javafx.geometry.Orientation" in {
-    Orientation.values.size should equal(jfxg.Orientation.values.length)
-  }
-
-  it should "lookup the same values as javafx.geometry.Orientation" in {
-    for (v <- jfxg.Orientation.values) {
-      val sv = Orientation.valueOf(v.toString)
-      sv should equal(v)
-    }
-
-    for (sv <- Orientation.values) {
-      val v = jfxg.Orientation.valueOf(sv.toString)
-      v should equal(sv.delegate)
-    }
-  }
-
-  it should "return the same `toString`" in {
-    for (jv <- jfxg.Orientation.values) {
-      val sv: Orientation = Orientation.valueOf(jv.toString)
-      sv.toString should equal(jv.toString)
-    }
+  protected def convertJavaClassToScalaClass(jfxEnum: jfxg.Orientation) = {
+    val sfxEnum: Orientation = jfxEnum
+    sfxEnum
   }
 }

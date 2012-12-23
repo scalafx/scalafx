@@ -38,8 +38,11 @@ trait GeometryIncludes {
   implicit def jfxHorizontalDirection2sfx(h: jfxg.HorizontalDirection) = HorizontalDirection.jfxEnum2sfx(h)
   implicit def jfxHPos2sfx(h: jfxg.HPos) = HPos.jfxEnum2sfx(h)
   implicit def jfxInsets2sfx(i: jfxg.Insets) = new Insets(i)
+  implicit def jfxOrientation2sfx(o: jfxg.Orientation) = Orientation.jfxEnum2sfx(o)
   implicit def jfxPoint2D2sfx(p: jfxg.Point2D) = new Point2D(p)
   implicit def jfxPoint3D2sfx(p: jfxg.Point3D) = new Point3D(p)
+  implicit def jfxPos2sfx(p: jfxg.Pos) = Pos.jfxEnum2sfx(p)
   implicit def jfxRectangle2D2sfx(r: jfxg.Rectangle2D) = new Rectangle2D(r)
+  implicit def jfxSide2sfx(s: jfxg.Side) = Side.jfxEnum2sfx(s)
   implicit def jfxVPos2sfx(v: jfxg.VPos) = VPos.jfxEnum2sfx(v)
 }

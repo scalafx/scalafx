@@ -24,48 +24,26 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
+import javafx.{ geometry => jfxg }
 import org.junit.runner.RunWith
-import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers
-import scalafx.testutil.PropertyComparator
-
+import scalafx.Includes._
+import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.geometry.Side]]. */
 @RunWith(classOf[JUnitRunner])
-class SideSpec extends FlatSpec with ShouldMatchers with PropertyComparator {
+class SideSpec 
+  extends SFXEnumDelegateSpec[jfxg.Side, Side](classOf[jfxg.Side], classOf[Side], Side) {
 
-  val javaClass = classOf[jfxg.Side]
-  val scalaClass = classOf[Side]
-
-  "A %s".format(scalaClass.getSimpleName) should "declare all public static methods of " + javaClass.getName in {
-    compareStaticMethods(javaClass, scalaClass)
+  protected def convertScalaClassToJavaClass(sfxEnum: Side) = {
+    val jfxEnum: jfxg.Side = sfxEnum
+    jfxEnum
   }
 
-  it should "have the same number of values as javafx.geometry.Side" in {
-    Side.values.size should equal(jfxg.Side.values.length)
-  }
-
-  it should "lookup the same values as javafx.geometry.Side" in {
-    for (v <- jfxg.Side.values) {
-      val sv = Side.valueOf(v.toString)
-      sv should equal(v)
-    }
-
-    for (sv <- Side.values) {
-      val v = jfxg.Side.valueOf(sv.toString)
-      v should equal(sv.delegate)
-    }
-  }
-
-  it should "return the same `toString`" in {
-    for (jv <- jfxg.Side.values) {
-      val sv:Side  = Side.valueOf(jv.toString)
-      sv.toString should equal(jv.toString)
-    }
+  protected def convertJavaClassToScalaClass(jfxEnum: jfxg.Side) = {
+    val sfxEnum: Side = jfxEnum
+    sfxEnum
   }
 }

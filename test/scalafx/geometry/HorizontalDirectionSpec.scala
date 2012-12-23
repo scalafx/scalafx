@@ -32,9 +32,7 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-/** 
- * Tests for [[scalafx.geometry.HorizontalDirection]].
- */
+/** Tests for [[scalafx.geometry.HorizontalDirection]]. */
 @RunWith(classOf[JUnitRunner])
 class HorizontalDirectionSpec
   extends SFXEnumDelegateSpec[jfxg.HorizontalDirection, HorizontalDirection](classOf[jfxg.HorizontalDirection], classOf[HorizontalDirection], HorizontalDirection) {
@@ -48,5 +46,4 @@ class HorizontalDirectionSpec
     val sfxEnum: HorizontalDirection = jfxEnum
     sfxEnum
   }
-
 }
