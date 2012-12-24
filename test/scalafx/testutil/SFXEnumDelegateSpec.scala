@@ -38,7 +38,8 @@ import scalafx.util.SFXEnumDelegateCompanion
  *
  */
 abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] protected (javaClass: Class[E], scalaClass: Class[S], companion: SFXEnumDelegateCompanion[E, S])
-  extends SimpleSFXDelegateSpec[E, S](javaClass, scalaClass) {
+  extends SFXDelegateSpec[E, S](javaClass, scalaClass)
+  with EnumComparator {
 
   private val javaEnumConstants = EnumSet.allOf(javaClass)
 
@@ -51,14 +52,22 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
     }
   }
 
-  def assertScalaEnumWithOrdinal(s: S, index: Int): Unit =
+  private def assertScalaEnumWithOrdinal(s: S, index: Int): Unit =
     assert(s.delegate.ordinal() == index, "%s - Expected position: %d, actual: %d".format(s, s.delegate.ordinal(), index))
 
   // Simply it gets the first constant available.
   override protected def getScalaClassInstance = companion.values.toList.head
 
-  // 
+  // Simply it gets the first constant available.
   override protected def getJavaClassInstance = javaEnumConstants.iterator.next
+
+  /////////////////
+  // TESTS - BEGIN 
+  /////////////////
+
+  it should "declare all public declared methods of " + javaClass.getName in {
+    compareDeclaredMethods(javaClass, scalaClass)
+  }
 
   it should "presents all constants from its original JavaFX class" in {
     val diff = javaEnumConstants -- companion.values.map(_.delegate)
@@ -81,5 +90,9 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
   it should "presents its values at same order as its JavaFX enum ordinal" in {
     companion.values.zipWithIndex.foreach({ case (s, i) => assertScalaEnumWithOrdinal(s, i) })
   }
+
+  ///////////////
+  // TESTS - END 
+  ///////////////
 
 }

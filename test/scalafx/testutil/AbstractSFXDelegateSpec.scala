@@ -1,5 +1,3 @@
-package scalafx.testutil
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,6 +24,7 @@ package scalafx.testutil
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.testutil
 
 import javafx.util.Builder
 import scalafx.util.SFXDelegate
@@ -46,7 +45,8 @@ import scalafx.util.SFXDelegate
  * type parameter bounds [J <: java.lang.Object,S <: scalafx.util.SFXDelegate[J],B <: javafx.util.Builder[_]]". Only when remove B binding with Builder
  * compiler problems disappear. So it must be finded a way to put bind beetween B and Builder without create problems with compiler.
  */
-abstract class AbstractSFXDelegateSpec[J <: Object, S <: SFXDelegate[J], B](javaClass: Class[J], scalaClass: Class[S], javaBuilderClass: Class[B]) extends SimpleSFXDelegateSpec[J, S](javaClass, scalaClass) {
+abstract class AbstractSFXDelegateSpec[J <: Object, S <: SFXDelegate[J], B](javaClass: Class[J], scalaClass: Class[S], javaBuilderClass: Class[B])
+  extends SimpleSFXDelegateSpec[J, S](javaClass, scalaClass) {
 
   it should "implement all the JavaFX builder properties" in {
     compareBuilderProperties(javaBuilderClass.asInstanceOf[Class[Builder[_]]], scalaClass)

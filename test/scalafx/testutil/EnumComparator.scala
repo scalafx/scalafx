@@ -35,8 +35,17 @@ import java.lang.reflect.Method
 private[testutil] trait EnumComparator
   extends AbstractComparator {
 
-  protected def getDesirableMethodName(javaMethod: Method): String = scalaizePropertyNames(javaMethod.getName)
+  /*
+   * (non-Javadoc)
+   * @see scalafx.testutil.AbstractComparator#getDesirableMethodName(java.lang.reflect.Method)
+   */
+  protected def getDesirableMethodName(javaMethod: Method): String = 
+    scalaizePropertyNames(javaMethod.getName) 
 
-  protected def isSpecialMethodName(name: String) = super.isImplementation(name)
+  /*
+   * Functionalities from static method "valueOf" (present in all java enums) are being replaced by apply method in 
+   * companions objects. Therefore, "valueOf" is being excluded from methods search.
+   */
+  protected def isSpecialMethodName(name: String) = super.isImplementation(name) || (name == "valueOf") 
 
 }

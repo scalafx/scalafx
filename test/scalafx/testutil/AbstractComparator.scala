@@ -160,7 +160,8 @@ private[testutil] trait AbstractComparator {
   protected def isPublicMethod(method: Method): Boolean = Modifier.isPublic(method.getModifiers)
 
   protected def scalaizePropertyNames(name: String) =
-    if (name.length < 4) name
+    if (name.length < 3) name
+    else if (name.substring(0, 2) == "is") name(2).toLower + name.substring(3)
     else if (name.substring(0, 3) == "get") name(3).toLower + name.substring(4)
     else if (name.substring(0, 3) == "set") name(3).toLower + name.substring(4) + "_="
     else name

@@ -41,7 +41,7 @@ trait PropertyComparator
   protected def getDesirableMethodName(javaMethod: Method): String = javaMethod.getName
 
   protected def isSpecialMethodName(name: String) = super.isImplementation(name) ||
-    (name == "applyTo") || (name == "create") || (name == "build") || (name == "valueOf") || // valueOf is just for enums
+    (name == "applyTo") || (name == "create") || (name == "build") || 
     name.endsWith("Property") || name.startsWith("get") || name.startsWith("set") || name.startsWith("is")
 
   /**

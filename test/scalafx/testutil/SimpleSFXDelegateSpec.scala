@@ -26,10 +26,6 @@
  */
 package scalafx.testutil
 
-import org.scalatest.matchers.ShouldMatchers.be
-import org.scalatest.matchers.ShouldMatchers.convertToAnyShouldWrapper
-import org.scalatest.FlatSpec
-
 import scalafx.util.SFXDelegate
 
 /**
@@ -44,77 +40,13 @@ import scalafx.util.SFXDelegate
  *
  */
 abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (javaClass: Class[J], scalaClass: Class[S])
-  extends FlatSpec
+  extends SFXDelegateSpec[J, S](javaClass, scalaClass)
   with PropertyComparator {
-
-  // Protected methods - Begin
-
-  /**
-   * Returns a new SFXDelegate subclass instance. By default calls scalaClass constructor that
-   * uses delegated class instance. If it was possible use this constructor, this method must 
-   * be overrided.
-   * {{{
-   * override protected def getScalaClassInstance = new BoundingBox(0, 0, 0, 0)
-   * }}}
-   */
-  protected def getScalaClassInstance: S =
-    scalaClass.getConstructor(javaClass).newInstance(this.getJavaClassInstance)
-
-  /**
-   * Returns a SFXDelegate instance as JavaFX object
-   * {{{
-   * protected def convertScalaClassToJavaClass(sfxControl: Separator) = {
-   *   val jfxSeparator: jfxsc.Separator = sfxControl
-   *   jfxSeparator
-   * }
-   * }}}
-   */
-  protected def convertScalaClassToJavaClass(sfxObject: S): J
-
-  /**
-   * Returns a new JavaFX class instance. By default calls newInstance method from javaClass. If
-   * this class has no default constructor, this method must be overrided:
-   * {{{
-   * override protected def getJavaClassInstance = new jfxg.BoundingBox(0, 0, 0, 0, 0, 0)
-   * }}}
-   */
-  protected def getJavaClassInstance: J = javaClass.newInstance
-
-  /**
-   * Returns a JavaFX instance as a SFXDelegate object
-   * {{{
-   * protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Separator) = {
-   *   val sfxSeparator: Separator = jfxControl
-   *   sfxSeparator
-   * }
-   * }}}
-   */
-  protected def convertJavaClassToScalaClass(jfxObject: J): S
-
-  // Protected methods - End
 
   // Tests - Begin
 
-  "A %s".format(scalaClass.getSimpleName) should "implement all the JavaFX properties" in {
+  it should "implement all the JavaFX properties" in {
     compareProperties(javaClass, scalaClass)
-  }
-
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxObject = getScalaClassInstance
-    val jfxObject: J = convertScalaClassToJavaClass(sfxObject)
-
-    jfxObject should be(sfxObject.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxObject = getJavaClassInstance
-    val sfxObject: S = convertJavaClassToScalaClass(jfxObject)
-
-    sfxObject.delegate should be(jfxObject)
-  }
-
-  it should "declare all public static methods of " + javaClass.getName in {
-    compareStaticMethods(javaClass, scalaClass)
   }
 
   // Tests - End

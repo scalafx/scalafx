@@ -26,11 +26,12 @@
  */
 package scalafx.geometry
 
-import javafx.{geometry => jfxg}
+import javafx.{ geometry => jfxg }
 import scalafx.util.SFXEnumDelegate
 import scalafx.util.SFXEnumDelegateCompanion
+import scalafx.Includes._
 
-object Pos 
+object Pos
   extends SFXEnumDelegateCompanion[jfxg.Pos, Pos] {
 
   val BASELINE_CENTER = new Pos(jfxg.Pos.BASELINE_CENTER)
@@ -51,23 +52,23 @@ object Pos
     CENTER,
     BOTTOM_CENTER, BOTTOM_LEFT, BOTTOM_RIGHT,
     CENTER_LEFT, CENTER_RIGHT,
-    TOP_CENTER, TOP_LEFT, TOP_RIGHT
-  )
+    TOP_CENTER, TOP_LEFT, TOP_RIGHT)
 }
 
 /**
  * Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/geometry/Pos.html]]
  */
-sealed case class Pos(override val delegate: jfxg.Pos) extends SFXEnumDelegate[jfxg.Pos] {
-  
+sealed case class Pos(override val delegate: jfxg.Pos)
+  extends SFXEnumDelegate[jfxg.Pos] {
+
   /**
    * Returns the horizontal positioning/alignment.
    */
-  def hPos = delegate.getHpos
-  
+  def hpos: HPos = delegate.getHpos
+
   /**
    * Returns the vertical positioning/alignment.
    */
-  def vPos = delegate.getVpos
-  
+  def vpos: VPos = delegate.getVpos
+
 }
