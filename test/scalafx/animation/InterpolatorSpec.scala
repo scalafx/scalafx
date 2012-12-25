@@ -38,7 +38,7 @@ import org.scalatest.junit.JUnitRunner
 /**
  * FadeTransition Spec tests.
  *
- *
+ * @todo When Interpolator is converted to SFXEnumDelegate, this test should be converted to a SFXEnumDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class InterpolatorSpec extends FlatSpec with PropertyComparator {

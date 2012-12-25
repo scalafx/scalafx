@@ -26,146 +26,151 @@
  */
 package scalafx.animation
 
-import javafx.{animation => jfxa}
+import javafx.{ animation => jfxa }
 import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
 import scalafx.beans.property._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.SimpleSFXDelegateSpec
+import javafx.beans.{ property => jfxbp }
 
 /**
- * FadeTransition Spec tests.
- *
- *
+ * KeyValue Spec tests.
  */
 @RunWith(classOf[JUnitRunner])
-class KeyValueSpec extends FlatSpec with PropertyComparator {
-  "A KeyValue" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxa.KeyValue], classOf[KeyValue[_, _]])
+class KeyValueSpec
+  extends SimpleSFXDelegateSpec[jfxa.KeyValue, KeyValue[_, _]](classOf[jfxa.KeyValue], classOf[KeyValue[_, _]]) {
+
+  //////////////////////////////
+  // PRIVATE VALUES AND METHODS 
+  //////////////////////////////
+
+  private val name = "test"
+
+  private val doubleProperty = new DoubleProperty(null, name)
+
+  private def evaluateFromSfx(property: Property[_, _], endValue: Any, kv: KeyValue[_, _], evaluateInterpoalator: Boolean = false) {
+    kv.target should equal(property.delegate)
+    kv.endValue should equal(endValue)
+    if (evaluateInterpoalator)
+      kv.interpolator should equal(jfxa.Interpolator.EASE_BOTH)
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val doubleProperty = new DoubleProperty(null, "test")
-    val sfxKeyValue = KeyValue(doubleProperty, 50d)
+  private def evaluateFromJfx[S, J](property: jfxbp.Property[J], endValue: S, kv: KeyValue[S, J]) {
+    kv.target should equal(property.delegate)
+    kv.endValue should equal(endValue)
+  }
+
+  //////////////////////////////
+  // OVERRIDE PROTECTED METHODS 
+  //////////////////////////////
+
+  override protected def getScalaClassInstance = KeyValue(doubleProperty, 50d)
+
+  protected def convertScalaClassToJavaClass(sfxKeyValue: KeyValue[_, _]) = {
     val jfxKeyValue: jfxa.KeyValue = sfxKeyValue
-    jfxKeyValue should be (sfxKeyValue.delegate)
+    jfxKeyValue
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
-    val doubleProperty = new DoubleProperty(null, "test")
-    val jfxKeyValue = new jfxa.KeyValue(doubleProperty, double2Double(50))
+  override protected def getJavaClassInstance = new jfxa.KeyValue(doubleProperty, double2Double(50))
+
+  protected def convertJavaClassToScalaClass(jfxKeyValue: jfxa.KeyValue) = {
     val sfxKeyValue: KeyValue[_, _] = jfxKeyValue
-    sfxKeyValue.delegate should be (jfxKeyValue)
+    sfxKeyValue
   }
+
+  /////////
+  // TESTS 
+  /////////
 
   it should "have a convenient apply construction format for integers" in {
-    val integerProperty = new IntegerProperty(null, "test")
-    val kv = KeyValue(integerProperty, 50)
-    kv.target should equal (integerProperty.delegate)
-    kv.endValue should equal (50)
+    val property = new IntegerProperty(null, name)
+    val endValue = 50
+    evaluateFromSfx(property, endValue, KeyValue(property, endValue))
   }
 
   it should "have a convenient apply construction format for jfx integers" in {
-    val integerProperty = new IntegerProperty(null, "test").delegate
-    val kv = KeyValue(integerProperty, 50)
-    kv.target should equal (integerProperty.delegate)
-    kv.endValue should equal (50)
+    val property = new IntegerProperty(null, name).delegate
+    val endValue = 50
+    evaluateFromJfx(property, endValue, KeyValue(property, endValue))
   }
 
   it should "have a convenient apply construction format for longs" in {
-    val longProperty = new LongProperty(null, "test")
-    val kv = KeyValue(longProperty, 50l)
-    kv.target should equal (longProperty.delegate)
-    kv.endValue should equal (50l)
+    val property = new LongProperty(null, name)
+    val endValue = 50l
+    evaluateFromSfx(property, endValue, KeyValue(property, endValue))
   }
 
   it should "have a convenient apply construction format for jfx longs" in {
-    val longProperty = new LongProperty(null, "test").delegate
-    val kv = KeyValue(longProperty, 50l)
-    kv.target should equal (longProperty.delegate)
-    kv.endValue should equal (50l)
+    val property = new LongProperty(null, name).delegate
+    val endValue = 50l
+    evaluateFromJfx(property, endValue, KeyValue(property, endValue))
   }
 
   it should "have a convenient apply construction format for floats" in {
-    val floatProperty = new FloatProperty(null, "test")
-    val kv = KeyValue(floatProperty, 50f)
-    kv.target should equal (floatProperty.delegate)
-    kv.endValue should equal (50f)
+    val property = new FloatProperty(null, name)
+    val endValue = 50f
+    evaluateFromSfx(property, endValue, KeyValue(property, endValue))
   }
 
   it should "have a convenient apply construction format for jfx floats" in {
-    val floatProperty = new FloatProperty(null, "test").delegate
-    val kv = KeyValue(floatProperty, 50f)
-    kv.target should equal (floatProperty.delegate)
-    kv.endValue should equal (50f)
+    val property = new FloatProperty(null, name).delegate
+    val endValue = 50f
+    evaluateFromJfx(property, endValue, KeyValue(property, endValue))
   }
 
   it should "have a convenient apply construction format for doubles" in {
-    val doubleProperty = new DoubleProperty(null, "test")
-    val kv = KeyValue(doubleProperty, 50d)
-    kv.target should equal (doubleProperty.delegate)
-    kv.endValue should equal (50d)
+    val property = new DoubleProperty(null, name)
+    val endValue = 50d
+    evaluateFromSfx(property, endValue, KeyValue(property, endValue))
   }
 
   it should "have a convenient apply construction format for jfx doubles" in {
-    val doubleProperty = new DoubleProperty(null, "test").delegate
-    val kv = KeyValue(doubleProperty, 50d)
-    kv.target should equal (doubleProperty.delegate)
-    kv.endValue should equal (50d)
+    val property = new DoubleProperty(null, name).delegate
+    val endValue = 50d
+    evaluateFromJfx(property, endValue, KeyValue(property, endValue))
   }
 
   it should "have a convenient apply construction format for booleans" in {
-    val booleanProperty = new BooleanProperty(null, "test")
-    val kv = KeyValue(booleanProperty, true)
-    kv.target should equal (booleanProperty.delegate)
-    kv.endValue should equal (true)
+    val property = new BooleanProperty(null, name)
+    val endValue = true
+    evaluateFromSfx(property, endValue, KeyValue(property, endValue))
   }
 
   it should "have a convenient apply construction format for jfx booleans" in {
-    val booleanProperty = new BooleanProperty(null, "test").delegate
-    val kv = KeyValue(booleanProperty, true)
-    kv.target should equal (booleanProperty.delegate)
-    kv.endValue should equal (true)
+    val property = new BooleanProperty(null, name).delegate
+    val endValue = true
+    evaluateFromJfx(property, endValue, KeyValue(property, endValue))
   }
 
   it should "have a convenient apply construction format for Objects" in {
-    val objectProperty = new ObjectProperty[Object](null, "test")
-    val endObj = new Object()
-    val kv = KeyValue(objectProperty, endObj)
-    kv.target should equal (objectProperty.delegate)
-    kv.endValue should equal (endObj)
+    val property = new ObjectProperty[Object](null, name)
+    val endValue = new Object()
+    evaluateFromSfx(property, endValue, KeyValue(property, endValue))
   }
 
   it should "have a convenient apply construction format for jfx Objects" in {
-    val objectProperty = new ObjectProperty[Object](null, "test").delegate
-    val endObj = new Object()
-    val kv = KeyValue(objectProperty, endObj)
-    kv.target should equal (objectProperty.delegate)
-    kv.endValue should equal (endObj)
+    val property = new ObjectProperty[Object](null, name).delegate
+    val endValue = new Object()
+    evaluateFromJfx(property, endValue, KeyValue(property, endValue))
   }
 
   it should "have a convenient creation syntax using the -> operator" in {
-    val doubleProperty = new DoubleProperty(null, "test")
-    val kv = doubleProperty -> 50
-    kv.target should equal (doubleProperty.delegate)
-    kv.endValue should equal (50)
+    val property = new DoubleProperty(null, name)
+    val endValue = 50
+    evaluateFromSfx(property, endValue, property -> endValue)
   }
 
   it should "support interpolators" in {
-    val doubleProperty = new DoubleProperty(null, "test")
-    val kv = KeyValue(doubleProperty, 50d, jfxa.Interpolator.EASE_BOTH)
-    kv.target should equal (doubleProperty.delegate)
-    kv.endValue should equal (50d)
-    kv.interpolator should equal (jfxa.Interpolator.EASE_BOTH)
+    val property = new DoubleProperty(null, name)
+    val endValue = 50d
+    evaluateFromSfx(property, endValue, KeyValue(property, endValue, jfxa.Interpolator.EASE_BOTH), true)
   }
 
   it should "support interpolators with the ->/tween operator" in {
-    val doubleProperty = new DoubleProperty(null, "test")
-    val kv = doubleProperty -> 50 tween Interpolator.EASE_BOTH
-    kv.target should equal (doubleProperty.delegate)
-    kv.endValue should equal (50d)
-    kv.interpolator should equal (jfxa.Interpolator.EASE_BOTH)
+    val property = new DoubleProperty(null, name)
+    val endValue = 50
+    evaluateFromSfx(property, endValue, (property -> endValue tween Interpolator.EASE_BOTH), true)
   }
 }

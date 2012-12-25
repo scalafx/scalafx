@@ -26,38 +26,27 @@
  */
 package scalafx.animation
 
-import javafx.{animation => jfxa}
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FlatSpec
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * FadeTransition Spec tests.
- *
- *
  */
 @RunWith(classOf[JUnitRunner])
-class FadeTransitionSpec extends FlatSpec with PropertyComparator {
-  "A FadeTransition" should "implement all the JavaFX properties" in {
-    compareProperties(classOf[jfxa.FadeTransition], classOf[FadeTransition])
+class FadeTransitionSpec
+  extends AbstractSFXDelegateSpec[jfxa.FadeTransition, FadeTransition, jfxa.FadeTransitionBuilder](classOf[jfxa.FadeTransition], classOf[FadeTransition], classOf[jfxa.FadeTransitionBuilder]) {
+
+  protected def convertScalaClassToJavaClass(sfxControl: FadeTransition) = {
+    val jfxFadeTransition: jfxa.FadeTransition = sfxControl
+    jfxFadeTransition
   }
 
-  it should "implement all the JavaFX builder properties" in {
-    compareBuilderProperties(classOf[jfxa.FadeTransitionBuilder], classOf[FadeTransition])
+  protected def convertJavaClassToScalaClass(jfxControl: jfxa.FadeTransition) = {
+    val sfxFadeTransition: FadeTransition = jfxControl
+    sfxFadeTransition
   }
 
-  it should "have an implicit conversion from SFX to JFX" in {
-    val sfxFadeTransition = new FadeTransition()
-    val jfxFadeTransition: jfxa.FadeTransition = sfxFadeTransition
-    jfxFadeTransition should be (sfxFadeTransition.delegate)
-  }
-
-  it should "have an implicit conversion from JFX to SFX" in {
-    val jfxFadeTransition = new jfxa.FadeTransition()
-    val sfxFadeTransition: FadeTransition = jfxFadeTransition
-    sfxFadeTransition.delegate should be (jfxFadeTransition)
-  }
 }
