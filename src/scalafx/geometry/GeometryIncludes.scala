@@ -27,8 +27,8 @@
 
 package scalafx.geometry
 
-import javafx.{geometry => jfxg, application}
-import scalafx.application.ConditionalFeature
+import javafx.{geometry => jfxg}
+
 
 object GeometryIncludes extends GeometryIncludes
 
