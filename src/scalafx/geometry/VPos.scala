@@ -28,22 +28,34 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
-import scalafx.util.SFXEnumDelegate
+import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+
 
 /** Wrapper for [[javafx.geometry.VPos]] */
-object VPos {
-  implicit def sfxVPos2jfx(c: VPos) = c.delegate
+object VPos extends SFXEnumDelegateCompanion[jfxg.VPos, VPos] {
 
-  implicit def jfxVPos2sfx(c: jfxg.VPos) = VPos(c)
-
+  /**
+    * Indicates baseline vertical position.
+    */
   val BASELINE = new VPos(jfxg.VPos.BASELINE)
+
+  /**
+   * Indicates bottom vertical position.
+   */
   val BOTTOM = new VPos(jfxg.VPos.BOTTOM)
+
+  /**
+   * Indicates centered vertical position.
+   */
   val CENTER = new VPos(jfxg.VPos.CENTER)
+
+  /**
+   * Indicates top vertical position.
+   */
   val TOP = new VPos(jfxg.VPos.TOP)
 
-  def valueOf(name: String): VPos = jfxg.VPos.valueOf(name)
-
-  def values = List(BASELINE, BOTTOM, CENTER, TOP)
+  protected def unsortedValues: Array[VPos] = Array(TOP, CENTER, BASELINE, BOTTOM)
 }
 
-case class VPos(override val delegate: jfxg.VPos) extends SFXEnumDelegate[jfxg.VPos]
+
+sealed case class VPos(override val delegate: jfxg.VPos) extends SFXEnumDelegate[jfxg.VPos]

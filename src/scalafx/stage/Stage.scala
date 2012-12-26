@@ -27,8 +27,6 @@
 
 package scalafx.stage
 
-import javafx.stage.Modality
-import javafx.stage.StageStyle
 import javafx.{stage => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
@@ -163,7 +161,7 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
   /**
    * Specifies the modality for this stage.
    */
-  def initModality(modality: Modality) {
+  def initModality(modality: jfxs.Modality) {
     delegate.initModality(modality)
   }
 
@@ -178,7 +176,7 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
   /**
    * Specifies the style for this stage.
    */
-  def initStyle(style: StageStyle) {
+  def initStyle(style: jfxs.StageStyle) {
     delegate.initStyle(style)
   }
 

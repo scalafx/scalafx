@@ -1,5 +1,3 @@
-
-
 /*
  * Copyright (c) 2011-2012, ScalaFX Project
  * All rights reserved.
@@ -30,22 +28,19 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import scalafx.util.SFXDelegate
+import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
-//I think it might be better to implemented this way rather than extending Enumeration
-object StrokeLineCap {
-  implicit def sfxStrokeLineCap2jfx(c: StrokeLineCap) = c.delegate
-  
+
+/** Wrapper for [[javafx.scene.shape.StrokeLineCap]] */
+object StrokeLineCap extends SFXEnumDelegateCompanion[jfxss.StrokeLineCap, StrokeLineCap] {
+
+  val SQUARE = new StrokeLineCap(jfxss.StrokeLineCap.SQUARE)
   val BUTT = new StrokeLineCap(jfxss.StrokeLineCap.BUTT)
   val ROUND = new StrokeLineCap(jfxss.StrokeLineCap.ROUND)
-  val SQUARE = new StrokeLineCap(jfxss.StrokeLineCap.SQUARE)
-  
-  def valueOf(name: String) = name match {
-    case "BUTT" => BUTT
-    case "ROUND" => ROUND
-    case "SQUARE" => SQUARE
-  }
-  def values = List(BUTT, ROUND, SQUARE)
+
+  protected def unsortedValues: Array[StrokeLineCap] = Array(SQUARE, BUTT, ROUND)
 }
 
-class StrokeLineCap(override val delegate:jfxss.StrokeLineCap) extends SFXDelegate[jfxss.StrokeLineCap]
+
+sealed case class StrokeLineCap(override val delegate: jfxss.StrokeLineCap)
+  extends SFXEnumDelegate[jfxss.StrokeLineCap]

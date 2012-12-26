@@ -28,6 +28,7 @@
 package scalafx.scene.input
 
 import javafx.scene.{ input => jfxsi }
+import scalafx.Includes._
 import scalafx.util.SFXDelegate
 
 object KeyEvent {
@@ -71,7 +72,7 @@ class KeyEvent(override val delegate: jfxsi.KeyEvent) extends InputEvent(delegat
    * The key code associated with the key in this key pressed or key released event.
    *
    */
-  def code = delegate.getCode()
+  def code : KeyCode = delegate.getCode
 
   /**
    * A String describing the key code, such as "HOME", "F1" or "A", for key pressed and key released events.

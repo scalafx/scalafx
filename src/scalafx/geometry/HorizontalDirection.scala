@@ -28,21 +28,25 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
-import scalafx.util.SFXEnumDelegate
+import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+
 
 /** Wrapper for [[javafx.geometry.HorizontalDirection]] */
-object HorizontalDirection {
-  implicit def sfxHorizontalDirection2jfx(c: HorizontalDirection) = c.delegate
+object HorizontalDirection extends SFXEnumDelegateCompanion[jfxg.HorizontalDirection, HorizontalDirection] {
 
-  implicit def jfxHorizontalDirection2sfx(c: jfxg.HorizontalDirection) = HorizontalDirection(c)
-
+  /**
+   * A direction to the left
+   */
   val LEFT = new HorizontalDirection(jfxg.HorizontalDirection.LEFT)
+
+  /**
+   * A direction to the right
+   */
   val RIGHT = new HorizontalDirection(jfxg.HorizontalDirection.RIGHT)
 
-  def valueOf(name: String): HorizontalDirection = jfxg.HorizontalDirection.valueOf(name)
-
-  def values = List(LEFT, RIGHT)
+  protected def unsortedValues: Array[HorizontalDirection] = Array(LEFT, RIGHT)
 }
 
-case class HorizontalDirection(override val delegate: jfxg.HorizontalDirection)
+
+sealed case class HorizontalDirection(override val delegate: jfxg.HorizontalDirection)
   extends SFXEnumDelegate[jfxg.HorizontalDirection]

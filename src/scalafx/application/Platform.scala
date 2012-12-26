@@ -50,7 +50,7 @@ object Platform {
   }
 
   /** Queries whether a specific conditional feature is supported by the platform. */
-  def isSupported(feature: jfxa.ConditionalFeature) = jfxa.Platform.isSupported(feature)
+  def isSupported(feature: ConditionalFeature) = jfxa.Platform.isSupported(feature)
 
   /** Run the specified Runnable on the JavaFX Application Thread at some unspecified time in the future.
     * Returns immediately.

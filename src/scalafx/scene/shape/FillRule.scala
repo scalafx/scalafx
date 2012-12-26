@@ -1,5 +1,3 @@
-
-
 /*
  * Copyright (c) 2011-2012, ScalaFX Project
  * All rights reserved.
@@ -30,20 +28,18 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import scalafx.util.SFXDelegate
+import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
-//I think it might be better to implemented this way rather than extending Enumeration
-object FillRule {
-  implicit def sfxFillRule2jfx(c: FillRule) = c.delegate
-  
+
+/** Wrapper for [[javafx.scene.shape.FillRule]] */
+object FillRule extends SFXEnumDelegateCompanion[jfxss.FillRule, FillRule] {
+
   val EVEN_ODD = new FillRule(jfxss.FillRule.EVEN_ODD)
   val NON_ZERO = new FillRule(jfxss.FillRule.NON_ZERO)
-  
-  def valueOf(name: String) = name match {
-    case "EVEN_ODD" => EVEN_ODD
-    case "NON_ZERO" => NON_ZERO
-  }
-  def values = List(EVEN_ODD, NON_ZERO)
+
+  protected def unsortedValues: Array[FillRule] = Array(EVEN_ODD, NON_ZERO)
 }
 
-class FillRule(override val delegate:jfxss.FillRule) extends SFXDelegate[jfxss.FillRule]
+
+sealed case class FillRule(override val delegate: jfxss.FillRule)
+  extends SFXEnumDelegate[jfxss.FillRule]

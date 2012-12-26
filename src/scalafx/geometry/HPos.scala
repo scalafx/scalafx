@@ -28,21 +28,29 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
-import scalafx.util.SFXEnumDelegate
+import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+
 
 /** Wrapper for [[javafx.geometry.HPos]] */
-object HPos {
-  implicit def sfxHPos2jfx(c: HPos) = c.delegate
+object HPos extends SFXEnumDelegateCompanion[jfxg.HPos, HPos] {
 
-  implicit def jfxHPos2sfx(c: jfxg.HPos) = HPos(c)
-
+  /**
+    * Indicates centered horizontal position.
+    */
   val CENTER = new HPos(jfxg.HPos.CENTER)
+
+  /**
+   * Indicates left horizontal position.
+   */
   val LEFT = new HPos(jfxg.HPos.LEFT)
+
+  /**
+   * Indicates right horizontal position.
+   */
   val RIGHT = new HPos(jfxg.HPos.RIGHT)
 
-  def valueOf(name: String): HPos = jfxg.HPos.valueOf(name)
-
-  def values = List(CENTER, LEFT, RIGHT)
+  protected def unsortedValues: Array[HPos] = Array(LEFT, CENTER, RIGHT)
 }
 
-case class HPos(override val delegate: jfxg.HPos) extends SFXEnumDelegate[jfxg.HPos]
+
+sealed case class HPos(override val delegate: jfxg.HPos) extends SFXEnumDelegate[jfxg.HPos]

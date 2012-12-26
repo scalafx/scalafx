@@ -29,7 +29,6 @@ package scalafx.scene.paint
 import scala.collection.JavaConversions._
 
 import javafx.scene.{ paint => jfxsp }
-import scalafx.scene.paint.CycleMethod.sfxCycleMethod2jfx
 import scalafx.scene.paint.Stop.sfxStop2jfx
 import scalafx.util.SFXDelegate
 

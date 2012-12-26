@@ -1,5 +1,3 @@
-
-
 /*
  * Copyright (c) 2011-2012, ScalaFX Project
  * All rights reserved.
@@ -30,22 +28,19 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import scalafx.util.SFXDelegate
+import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
-//I think it might be better to implemented this way rather than extending Enumeration
-object StrokeLineJoin {
-  implicit def sfxStrokeLineJoin2jfx(c: StrokeLineJoin) = c.delegate
-  
-  val BEVEL = new StrokeLineJoin(jfxss.StrokeLineJoin.BEVEL)
+
+/** Wrapper for [[javafx.scene.shape.StrokeLineJoin]] */
+object StrokeLineJoin extends SFXEnumDelegateCompanion[jfxss.StrokeLineJoin, StrokeLineJoin] {
+
   val MITER = new StrokeLineJoin(jfxss.StrokeLineJoin.MITER)
+  val BEVEL = new StrokeLineJoin(jfxss.StrokeLineJoin.BEVEL)
   val ROUND = new StrokeLineJoin(jfxss.StrokeLineJoin.ROUND)
-  
-  def valueOf(name: String) = name match {
-    case "BEVEL" => BEVEL
-    case "MITER" => MITER
-    case "ROUND" => ROUND
-  }
-  def values = List(BEVEL, MITER, ROUND)
+
+  protected def unsortedValues: Array[StrokeLineJoin] = Array(MITER, BEVEL, ROUND)
 }
 
-class StrokeLineJoin(override val delegate:jfxss.StrokeLineJoin) extends SFXDelegate[jfxss.StrokeLineJoin]
+
+sealed case class StrokeLineJoin(override val delegate: jfxss.StrokeLineJoin)
+  extends SFXEnumDelegate[jfxss.StrokeLineJoin]

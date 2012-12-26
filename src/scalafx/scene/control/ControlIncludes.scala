@@ -28,6 +28,8 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.scene.control.cell.CellIncludes
+import javafx.application
+import scalafx.application.ConditionalFeature
 
 object ControlIncludes extends ControlIncludes
 
@@ -42,6 +44,7 @@ trait ControlIncludes
   implicit def jfxCell2sfx[T](c: jfxsc.Cell[T]) = new Cell[T](c)
   implicit def jfxChoiceBox2sfx[J <: AnyRef](cb: jfxsc.ChoiceBox[J]) = new ChoiceBox[J](cb)
   implicit def jfxCheckBox2sfx(c: jfxsc.CheckBox) = new CheckBox(c)
+  implicit def jfxContentDisplay2sfx(e: jfxsc.ContentDisplay) = ContentDisplay.jfxEnum2sfx(e)
   implicit def jfxContextMenu2sfx(c: jfxsc.ContextMenu) = new ContextMenu(c)
   implicit def jfxControl2sfx(c: jfxsc.Control) = new Control(c) {}
   implicit def jfxColorPicker2sfx(cp: jfxsc.ColorPicker) = new ColorPicker(cp)
@@ -61,9 +64,11 @@ trait ControlIncludes
   implicit def jfxMenuButton2sfx(h: jfxsc.MenuButton) = new MenuButton(h)
   implicit def jfxMenuItem2sfx(m: jfxsc.MenuItem) = new MenuItem(m)
   implicit def jfxMultipleSelectionModel2sfx[T](v: jfxsc.MultipleSelectionModel[T]) = new MultipleSelectionModel[T](v) {}
+  implicit def jfxOverrunStyle2sfx(e: jfxsc.OverrunStyle) = OverrunStyle.jfxEnum2sfx(e)
   implicit def jfxPagination2sfx(p: jfxsc.Pagination) = new Pagination(p)
   implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s)
   implicit def jfxScrollBar2sfx(s: jfxsc.ScrollBar) = new ScrollBar(s)
+  implicit def jfxSelectionMode2sfx(e: jfxsc.SelectionMode) = SelectionMode.jfxEnum2sfx(e)
   implicit def jfxSlider2sfx(s: jfxsc.Slider) = new Slider(s)
   implicit def jfxSplitMenuButton2sfx(h: jfxsc.SplitMenuButton) = new SplitMenuButton(h)
 

@@ -27,16 +27,35 @@
 
 package scalafx.geometry
 
-import javafx.{ geometry => jfxg }
+import javafx.{geometry => jfxg}
+
 
 object GeometryIncludes extends GeometryIncludes
 
 trait GeometryIncludes {
   implicit def jfxBounds2sfx(b: jfxg.Bounds) = new Bounds(b) {}
+
   implicit def jfxBoundingBox2sfx(b: jfxg.BoundingBox) = new BoundingBox(b)
+
   implicit def jfxDimension2D2sfx(d: jfxg.Dimension2D) = new Dimension2D(d)
+
+  implicit def jfxHorizontalDirection2sfx(h: jfxg.HorizontalDirection) = HorizontalDirection.jfxEnum2sfx(h)
+
+  implicit def jfxHPos2sfx(h: jfxg.HPos) = HPos.jfxEnum2sfx(h)
+
   implicit def jfxInsets2sfx(i: jfxg.Insets) = new Insets(i)
+
+  implicit def jfxOrientation2sfx(e: jfxg.Orientation) = Orientation.jfxEnum2sfx(e)
+
   implicit def jfxPoint2D2sfx(p: jfxg.Point2D) = new Point2D(p)
+
   implicit def jfxPoint3D2sfx(p: jfxg.Point3D) = new Point3D(p)
+
+  implicit def jfxPos2sfx(e: jfxg.Pos) = Pos.jfxEnum2sfx(e)
+
   implicit def jfxRectangle2D2sfx(r: jfxg.Rectangle2D) = new Rectangle2D(r)
+
+  implicit def jfxSide2sfx(e: jfxg.Side) = Side.jfxEnum2sfx(e)
+
+  implicit def jfxVPos2sfx(v: jfxg.VPos) = VPos.jfxEnum2sfx(v)
 }

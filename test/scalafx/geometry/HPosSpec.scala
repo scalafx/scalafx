@@ -29,42 +29,15 @@ package scalafx.geometry
 
 import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
-import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers
-import scalafx.testutil.PropertyComparator
+import scalafx.Includes._
+import scalafx.testutil.SFXEnumDelegateSpec
+
 
 /** Tests for [[scalafx.geometry.HPos]]. */
 @RunWith(classOf[JUnitRunner])
-class HPosSpec extends FlatSpec with ShouldMatchers with PropertyComparator {
-
-  val javaClass = classOf[jfxg.HPos]
-  val scalaClass = classOf[HPos]
-
-  "A %s".format(scalaClass.getSimpleName) should "declare all public static methods of " + javaClass.getName in {
-    compareStaticMethods(javaClass, scalaClass)
-  }
-
-  it should "have the same number of values as javafx.geometry.HPos" in {
-    HPos.values.size should equal(jfxg.HPos.values.length)
-  }
-
-  it should "lookup the same values as javafx.geometry.HPos" in {
-    for (v <- jfxg.HPos.values) {
-      val sv = HPos.valueOf(v.toString)
-      sv should equal(v)
-    }
-
-    for (sv <- HPos.values) {
-      val v = jfxg.HPos.valueOf(sv.toString)
-      v should equal(sv.delegate)
-    }
-  }
-
-  it should "return the same `toString`" in {
-    for (jv <- jfxg.HPos.values) {
-      val sv: HPos = HPos.valueOf(jv.toString)
-      sv.toString should equal(jv.toString)
-    }
-  }
-}
+class HPosSpec extends SFXEnumDelegateSpec[jfxg.HPos, HPos](
+  javaClass = classOf[jfxg.HPos],
+  scalaClass = classOf[HPos],
+  javaValueOfFun = (s: String) => jfxg.HPos.valueOf(s),
+  companion = HPos)

@@ -1,5 +1,3 @@
-package scalafx.testutil
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,12 +24,13 @@ package scalafx.testutil
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.testutil
 
+import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers.be
 import org.scalatest.matchers.ShouldMatchers.convertToAnyShouldWrapper
-import org.scalatest.FlatSpec
-
 import scalafx.util.SFXDelegate
+
 
 /**
  * Abstract class for SFXDelegate controls Spec tests.
@@ -44,7 +43,7 @@ import scalafx.util.SFXDelegate
  * @param scalaClass SFXDelegate subclass related with JavaFX class
  *
  */
-abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (javaClass: Class[J], scalaClass: Class[S])
+abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaClass: Class[J], scalaClass: Class[S])
   extends FlatSpec
   with PropertyComparator {
 

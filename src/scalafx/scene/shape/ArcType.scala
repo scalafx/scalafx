@@ -1,5 +1,3 @@
-
-
 /*
  * Copyright (c) 2011-2012, ScalaFX Project
  * All rights reserved.
@@ -30,22 +28,19 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import scalafx.util.SFXDelegate
+import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
-//I think it might be better to implemented this way rather than extending Enumeration
-object ArcType {
-  implicit def sfxArcType2jfx(c: ArcType) = c.delegate
-  
-  val CHORD = new ArcType(jfxss.ArcType.CHORD)
+
+/** Wrapper for [[javafx.scene.shape.ArcType]] */
+object ArcType extends SFXEnumDelegateCompanion[jfxss.ArcType, ArcType] {
+
   val OPEN = new ArcType(jfxss.ArcType.OPEN)
+  val CHORD = new ArcType(jfxss.ArcType.CHORD)
   val ROUND = new ArcType(jfxss.ArcType.ROUND)
-  
-  def valueOf(name: String) = name match {
-    case "CHORD" => CHORD
-    case "OPEN" => OPEN
-    case "ROUND" => ROUND
-  }
-  def values = List(CHORD, OPEN, ROUND)
+
+  protected def unsortedValues: Array[ArcType] = Array(OPEN, CHORD, ROUND)
 }
 
-class ArcType(override val delegate:jfxss.ArcType) extends SFXDelegate[jfxss.ArcType]
+
+sealed case class ArcType(override val delegate: jfxss.ArcType)
+  extends SFXEnumDelegate[jfxss.ArcType]
