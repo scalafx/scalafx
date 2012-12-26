@@ -40,14 +40,4 @@ class OverrunStyleSpec extends SFXEnumDelegateSpec[jfxsc.OverrunStyle, OverrunSt
   javaClass = classOf[jfxsc.OverrunStyle],
   scalaClass = classOf[OverrunStyle],
   javaValueOfFun = (s: String) => jfxsc.OverrunStyle.valueOf(s),
-  companion = OverrunStyle) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxsc.OverrunStyle, OverrunStyle]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[OverrunStyle, jfxsc.OverrunStyle]() should be(true)
-  }
-}
-
+  companion = OverrunStyle)

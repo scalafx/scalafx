@@ -40,14 +40,4 @@ class TextAlignmentSpec extends SFXEnumDelegateSpec[jfxst.TextAlignment, TextAli
   javaClass = classOf[jfxst.TextAlignment],
   scalaClass = classOf[TextAlignment],
   javaValueOfFun = (s: String) => jfxst.TextAlignment.valueOf(s),
-  companion = TextAlignment) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxst.TextAlignment, TextAlignment]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[TextAlignment, jfxst.TextAlignment]() should be(true)
-  }
-}
-
+  companion = TextAlignment)

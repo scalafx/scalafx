@@ -40,14 +40,5 @@ class DepthTestSpec extends SFXEnumDelegateSpec[jfxs.DepthTest, DepthTest](
   javaClass = classOf[jfxs.DepthTest],
   scalaClass = classOf[DepthTest],
   javaValueOfFun = (s: String) => jfxs.DepthTest.valueOf(s),
-  companion = DepthTest) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxs.DepthTest, DepthTest]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[DepthTest, jfxs.DepthTest]() should be(true)
-  }
-}
+  companion = DepthTest)
 

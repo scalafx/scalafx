@@ -40,14 +40,5 @@ class StrokeLineCapSpec extends SFXEnumDelegateSpec[jfxss.StrokeLineCap, StrokeL
   javaClass = classOf[jfxss.StrokeLineCap],
   scalaClass = classOf[StrokeLineCap],
   javaValueOfFun = (s: String) => jfxss.StrokeLineCap.valueOf(s),
-  companion = StrokeLineCap) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxss.StrokeLineCap, StrokeLineCap]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[StrokeLineCap, jfxss.StrokeLineCap]() should be(true)
-  }
-}
+  companion = StrokeLineCap)
 

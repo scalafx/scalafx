@@ -40,13 +40,4 @@ class PrioritySpec extends SFXEnumDelegateSpec[jfxsl.Priority, Priority](
   javaClass = classOf[jfxsl.Priority],
   scalaClass = classOf[Priority],
   javaValueOfFun = (s: String) => jfxsl.Priority.valueOf(s),
-  companion = Priority) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxsl.Priority, Priority]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[Priority, jfxsl.Priority]() should be(true)
-  }
-}
+  companion = Priority)

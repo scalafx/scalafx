@@ -40,14 +40,4 @@ class ModalitySpec extends SFXEnumDelegateSpec[jfxs.Modality, Modality](
   javaClass = classOf[jfxs.Modality],
   scalaClass = classOf[Modality],
   javaValueOfFun = (s: String) => jfxs.Modality.valueOf(s),
-  companion = Modality) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxs.Modality, Modality]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[Modality, jfxs.Modality]() should be(true)
-  }
-}
-
+  companion = Modality)

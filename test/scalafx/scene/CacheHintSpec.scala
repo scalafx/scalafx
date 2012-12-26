@@ -40,14 +40,4 @@ class CacheHintSpec extends SFXEnumDelegateSpec[jfxs.CacheHint, CacheHint](
   javaClass = classOf[jfxs.CacheHint],
   scalaClass = classOf[CacheHint],
   javaValueOfFun = (s: String) => jfxs.CacheHint.valueOf(s),
-  companion = CacheHint) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxs.CacheHint, CacheHint]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[CacheHint, jfxs.CacheHint]() should be(true)
-  }
-}
-
+  companion = CacheHint)

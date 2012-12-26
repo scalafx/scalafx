@@ -40,14 +40,4 @@ class BlurTypeSpec extends SFXEnumDelegateSpec[jfxse.BlurType, BlurType](
   javaClass = classOf[jfxse.BlurType],
   scalaClass = classOf[BlurType],
   javaValueOfFun = (s: String) => jfxse.BlurType.valueOf(s),
-  companion = BlurType) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxse.BlurType, BlurType]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[BlurType, jfxse.BlurType]() should be(true)
-  }
-}
-
+  companion = BlurType)

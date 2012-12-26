@@ -40,14 +40,4 @@ class FontPostureSpec extends SFXEnumDelegateSpec[jfxst.FontPosture, FontPosture
   javaClass = classOf[jfxst.FontPosture],
   scalaClass = classOf[FontPosture],
   javaValueOfFun = (s: String) => jfxst.FontPosture.valueOf(s),
-  companion = FontPosture) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxst.FontPosture, FontPosture]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[FontPosture, jfxst.FontPosture]() should be(true)
-  }
-}
-
+  companion = FontPosture)

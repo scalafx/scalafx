@@ -40,14 +40,4 @@ class CycleMethodSpec extends SFXEnumDelegateSpec[jfxsp.CycleMethod, CycleMethod
   javaClass = classOf[jfxsp.CycleMethod],
   scalaClass = classOf[CycleMethod],
   javaValueOfFun = (s: String) => jfxsp.CycleMethod.valueOf(s),
-  companion = CycleMethod) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxsp.CycleMethod, CycleMethod]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[CycleMethod, jfxsp.CycleMethod]() should be(true)
-  }
-}
-
+  companion = CycleMethod)

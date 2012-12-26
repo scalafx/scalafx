@@ -42,14 +42,6 @@ class TransferModeSpec extends SFXEnumDelegateSpec[jfxsi.TransferMode, TransferM
   javaValueOfFun = (s: String) => jfxsi.TransferMode.valueOf(s),
   companion = TransferMode) {
 
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxsi.TransferMode, TransferMode]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[TransferMode, jfxsi.TransferMode]() should be(true)
-  }
-
   it should "contain all static fields" in {
     TransferMode.ANY should be(jfxsi.TransferMode.ANY)
     TransferMode.COPY_OR_MOVE should be(jfxsi.TransferMode.COPY_OR_MOVE)

@@ -40,14 +40,4 @@ class StrokeLineJoinSpec extends SFXEnumDelegateSpec[jfxss.StrokeLineJoin, Strok
   javaClass = classOf[jfxss.StrokeLineJoin],
   scalaClass = classOf[StrokeLineJoin],
   javaValueOfFun = (s: String) => jfxss.StrokeLineJoin.valueOf(s),
-  companion = StrokeLineJoin) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxss.StrokeLineJoin, StrokeLineJoin]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[StrokeLineJoin, jfxss.StrokeLineJoin]() should be(true)
-  }
-}
-
+  companion = StrokeLineJoin)

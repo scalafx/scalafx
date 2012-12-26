@@ -40,13 +40,4 @@ class HorizontalDirectionSpec extends SFXEnumDelegateSpec[jfxg.HorizontalDirecti
   javaClass = classOf[jfxg.HorizontalDirection],
   scalaClass = classOf[HorizontalDirection],
   javaValueOfFun = (s: String) => jfxg.HorizontalDirection.valueOf(s),
-  companion = HorizontalDirection) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxg.HorizontalDirection, HorizontalDirection]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[HorizontalDirection, jfxg.HorizontalDirection]() should be(true)
-  }
-}
+  companion = HorizontalDirection)

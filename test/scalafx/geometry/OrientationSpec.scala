@@ -40,14 +40,4 @@ class OrientationSpec extends SFXEnumDelegateSpec[jfxg.Orientation, Orientation]
   javaClass = classOf[jfxg.Orientation],
   scalaClass = classOf[Orientation],
   javaValueOfFun = (s: String) => jfxg.Orientation.valueOf(s),
-  companion = Orientation) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxg.Orientation, Orientation]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[Orientation, jfxg.Orientation]() should be(true)
-  }
-}
-
+  companion = Orientation)

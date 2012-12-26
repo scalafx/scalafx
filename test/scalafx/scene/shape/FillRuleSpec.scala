@@ -40,14 +40,5 @@ class FillRuleSpec extends SFXEnumDelegateSpec[jfxss.FillRule, FillRule](
   javaClass = classOf[jfxss.FillRule],
   scalaClass = classOf[FillRule],
   javaValueOfFun = (s: String) => jfxss.FillRule.valueOf(s),
-  companion = FillRule) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxss.FillRule, FillRule]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[FillRule, jfxss.FillRule]() should be(true)
-  }
-}
+  companion = FillRule)
 

@@ -40,14 +40,5 @@ class BlendModeSpec extends SFXEnumDelegateSpec[jfxse.BlendMode, BlendMode](
   javaClass = classOf[jfxse.BlendMode],
   scalaClass = classOf[BlendMode],
   javaValueOfFun = (s: String) => jfxse.BlendMode.valueOf(s),
-  companion = BlendMode) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxse.BlendMode, BlendMode]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[BlendMode, jfxse.BlendMode]() should be(true)
-  }
-}
+  companion = BlendMode)
 

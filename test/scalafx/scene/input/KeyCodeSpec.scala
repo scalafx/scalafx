@@ -40,14 +40,4 @@ class KeyCodeSpec extends SFXEnumDelegateSpec[jfxsi.KeyCode, KeyCode](
   javaClass = classOf[jfxsi.KeyCode],
   scalaClass = classOf[KeyCode],
   javaValueOfFun = (s: String) => jfxsi.KeyCode.valueOf(s),
-  companion = KeyCode) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxsi.KeyCode, KeyCode]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[KeyCode, jfxsi.KeyCode]() should be(true)
-  }
-}
-
+  companion = KeyCode)

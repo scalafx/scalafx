@@ -40,14 +40,4 @@ class FontWeightSpec extends SFXEnumDelegateSpec[jfxst.FontWeight, FontWeight](
   javaClass = classOf[jfxst.FontWeight],
   scalaClass = classOf[FontWeight],
   javaValueOfFun = (s: String) => jfxst.FontWeight.valueOf(s),
-  companion = FontWeight) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxst.FontWeight, FontWeight]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[FontWeight, jfxst.FontWeight]() should be(true)
-  }
-}
-
+  companion = FontWeight)

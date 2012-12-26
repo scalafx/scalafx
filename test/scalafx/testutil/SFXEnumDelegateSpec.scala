@@ -36,23 +36,25 @@ import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 /** Abstract class that facilitates testing of wrappers for Java enums.
   *
-  * The extending classes need to also provide implicit conversion tests that utilize `canConvert` method.
+  * IMPORTANT: the second order parameters jfx2sfx and sfx2jfx have to be left unassigned in the derived class.
+  * If compiler finds implicit conversion between JavaFX and ScalaFx (and back) it will assign the corresponding
+  * implicit functions to those parameters. Make use that you provide implicit conversion include, for instance,
+  * `import scalafx.Includes._`
+  *
   * Here a complete test implemented using `SFXEnumDelegateSpec`,
   * {{{
-  *   class HPosSpec extends SFXEnumDelegateSpec[jfxg.HPos, HPos](
+  *  import javafx.{geometry => jfxg}
+  *  import org.junit.runner.RunWith
+  *  import org.scalatest.junit.JUnitRunner
+  *  import scalafx.Includes._
+  *  import scalafx.testutil.SFXEnumDelegateSpec
+  *
+  *  `@RunWith(classOf[JUnitRunner])`
+  *  class HPosSpec extends SFXEnumDelegateSpec[jfxg.HPos, HPos](
   *    javaClass = classOf[jfxg.HPos],
   *    scalaClass = classOf[HPos],
   *    javaValueOfFun = (s: String) => jfxg.HPos.valueOf(s),
-  *    companion = HPos) {
-  *
-  *    it should "have implicit conversion JFX to SFX" in {
-  *      canConvert[jfxg.HPos, HPos]() should be(true)
-  *    }
-  *
-  *    it should "have implicit conversion SFX to JFX" in {
-  *      canConvert[HPos, jfxg.HPos]() should be(true)
-  *    }
-  *  }
+  *    companion = HPos)
   * }}}
   *
   * @tparam J JavaFX enum type
@@ -66,7 +68,8 @@ import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 class SFXEnumDelegateSpec[J <: Enum[J], S <: SFXEnumDelegate[J]](javaClass: Class[J],
                                                                  scalaClass: Class[S],
                                                                  javaValueOfFun: String => J,
-                                                                 companion: SFXEnumDelegateCompanion[J, S])
+                                                                 companion: SFXEnumDelegateCompanion[J, S]
+                                                                  )(implicit jfx2sfx: J => S = null, sfx2jfx: S => J = null)
   extends FlatSpec
   with ShouldMatchers
   with EnumComparator {
@@ -77,6 +80,14 @@ class SFXEnumDelegateSpec[J <: Enum[J], S <: SFXEnumDelegate[J]](javaClass: Clas
 
   "%s wrapper for JavaFX enum".format(scalaClassName) should "declare all public methods of " + javaClassName in {
     compareDeclaredMethods(javaClass, scalaClass)
+  }
+
+  it should "have implicit conversion JFX to SFX" in {
+    jfx2sfx should not be (null)
+  }
+
+  it should "have implicit conversion SFX to JFX" in {
+    sfx2jfx should not be (null)
   }
 
   it should "declare all public static methods of " + javaClassName in {
@@ -111,18 +122,4 @@ class SFXEnumDelegateSpec[J <: Enum[J], S <: SFXEnumDelegate[J]](javaClass: Clas
       companion.valueOf(null)
     }
   }
-
-
-  /**
-   * Implicit conversion checker suggested by [[http://stackoverflow.com/questions/5717868/test-if-implicit-conversion-is-available Moritz]]
-   */
-  def canConvert[A, B]()(implicit f: A => B = noConversion) =
-    (f ne NoConversion)
-
-  private case object NoConversion extends (Any => Nothing) {
-    def apply(x: Any) = sys.error("No conversion")
-  }
-
-  // Just for convenience so NoConversion does not escape the scope.
-  private def noConversion: Any => Nothing = NoConversion
 }

@@ -40,14 +40,4 @@ class InputMethodHighlightSpec extends SFXEnumDelegateSpec[jfxsi.InputMethodHigh
   javaClass = classOf[jfxsi.InputMethodHighlight],
   scalaClass = classOf[InputMethodHighlight],
   javaValueOfFun = (s: String) => jfxsi.InputMethodHighlight.valueOf(s),
-  companion = InputMethodHighlight) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxsi.InputMethodHighlight, InputMethodHighlight]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[InputMethodHighlight, jfxsi.InputMethodHighlight]() should be(true)
-  }
-}
-
+  companion = InputMethodHighlight)

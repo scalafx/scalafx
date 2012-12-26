@@ -40,13 +40,4 @@ class PosSpec extends SFXEnumDelegateSpec[jfxg.Pos, Pos](
   javaClass = classOf[jfxg.Pos],
   scalaClass = classOf[Pos],
   javaValueOfFun = (s: String) => jfxg.Pos.valueOf(s),
-  companion = Pos) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxg.Pos, Pos]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[Pos, jfxg.Pos]() should be(true)
-  }
-}
+  companion = Pos)

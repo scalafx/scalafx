@@ -40,14 +40,5 @@ class TextBoundsTypeSpec extends SFXEnumDelegateSpec[jfxst.TextBoundsType, TextB
   javaClass = classOf[jfxst.TextBoundsType],
   scalaClass = classOf[TextBoundsType],
   javaValueOfFun = (s: String) => jfxst.TextBoundsType.valueOf(s),
-  companion = TextBoundsType) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxst.TextBoundsType, TextBoundsType]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[TextBoundsType, jfxst.TextBoundsType]() should be(true)
-  }
-}
+  companion = TextBoundsType)
 

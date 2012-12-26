@@ -40,13 +40,4 @@ class HPosSpec extends SFXEnumDelegateSpec[jfxg.HPos, HPos](
   javaClass = classOf[jfxg.HPos],
   scalaClass = classOf[HPos],
   javaValueOfFun = (s: String) => jfxg.HPos.valueOf(s),
-  companion = HPos) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxg.HPos, HPos]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[HPos, jfxg.HPos]() should be(true)
-  }
-}
+  companion = HPos)

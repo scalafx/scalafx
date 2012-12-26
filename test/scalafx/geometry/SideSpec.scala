@@ -40,13 +40,4 @@ class SideSpec extends SFXEnumDelegateSpec[jfxg.Side, Side](
   javaClass = classOf[jfxg.Side],
   scalaClass = classOf[Side],
   javaValueOfFun = (s: String) => jfxg.Side.valueOf(s),
-  companion = Side) {
-
-  it should "have implicit conversion JFX to SFX" in {
-    canConvert[jfxg.Side, Side]() should be(true)
-  }
-
-  it should "have implicit conversion SFX to JFX" in {
-    canConvert[Side, jfxg.Side]() should be(true)
-  }
-}
+  companion = Side)
