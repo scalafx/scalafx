@@ -69,7 +69,7 @@ trait PropertyComparator
   }
 
   def compareBuilderProperties(javafxClassBuilder: Class[_], scalafxClass: Class[_]) {
-    val notAllowed = (n: String) => n == "applyTo" || n == "create" || n == "build" || n.startsWith("impl_")
+    val notAllowed = (n: String) => n == "applyTo" || n == "create" || n == "build" || super.isImplementation(n)
     
     val javaFxBuilderProperties = javafxClassBuilder.getDeclaredMethods // todo - this eventually needs to use: getMethods
       .filter(m => Modifier.isPublic(m.getModifiers))

@@ -5,6 +5,109 @@ import java.lang.reflect.Modifier
 
 private[testutil] trait AbstractComparator {
 
+  private object MethodsComparators {
+
+    /**
+     * Verifies if a method has no parameters
+     *
+     * @param method Method to be analyzed.
+     * @return `true` if scalaMethod has no parameters, `false` otherwise.
+     */
+    private def methodHasNoArgs(method: Method): Boolean = (method.getParameterTypes.length == 0)
+
+    /**
+     * Verifies if a Scala method has as last argument a vararg. To be more precisely, this argument must be a
+     * [[scala.Seq]], because this is the way how varargs are translated by Scala compiler. Notice that even a method
+     * which really has a `Seq` as last argument (not a vararg) can return `true`. Moreover there is no information
+     * about `Seq` type because of compiler erasing.
+     *
+     * @param method Method to be analyzed.
+     * @return `true` if method's last argument is (potentially) vararg (ie, a `Seq`), `false` otherwise.
+     */
+    private def lastArgumentIsVararg(method: Method): Boolean = (method.getParameterTypes.last == classOf[Seq[_]])
+
+    /**
+     * Verifies if a method has only one argument ''and'' this argument is a varagrs.
+     *
+     * @param method Method to be analyzed.
+     * @return `true` if method has only one argument ''and'' this argument is a varagrs, `false` otherwise.
+     */
+    private def methodHasOneArgVararg(method: Method): Boolean =
+      (method.getParameterTypes.length == 1) && lastArgumentIsVararg(method)
+
+    /**
+     * Verifies if the a method arguments combine with
+     */
+    private def findMethodWithManyArgs(argTypes: List[Class[_]])(scalaMethod: Method): Boolean =
+      (scalaMethod.getParameterTypes.length == argTypes.size) && (scalaMethod.getParameterTypes.toList == argTypes)
+
+    /**
+     *
+     */
+    private def findMethodWithManyArgsVarargs(argTypesExceptLast: List[Class[_]])(method: Method): Boolean =
+      (method.getParameterTypes.length == argTypesExceptLast.size + 1) &&
+        (method.getParameterTypes.init.toList == argTypesExceptLast) &&
+        lastArgumentIsVararg(method)
+
+    def getFinderMethod(javaMethod: Method) = (javaMethod.getParameterTypes.size, javaMethod.isVarArgs) match {
+      case (0, _)     => methodHasNoArgs _
+      case (1, true)  => methodHasOneArgVararg _
+      case (_, true)  => findMethodWithManyArgsVarargs(javaMethod.getParameterTypes.toList.init) _
+      case (_, false) => findMethodWithManyArgs(javaMethod.getParameterTypes.toList) _
+    }
+
+    /**
+     * Verifies if a method has a determined name.
+     *
+     * @param methodName Name of method wanted
+     * @param method Method to be analyzed.
+     * @return `true` if scalaMethod has the requested name, `false` otherwise.
+     */
+    def sameName(methodName: String, method: Method): Boolean = (method.getName == methodName)
+
+  }
+
+  protected object JavaBeanEvaluator {
+    import java.lang.Boolean.{ TYPE => JBoolean }
+    import java.lang.Void.{ TYPE => JVoid }
+
+    private val setterPattern = "^set.+$"
+
+    private val getterPattern = "^get.+$"
+
+    private val boolGetterPattern = "^is.+$"
+
+    private def isValid(m: Method, pattern: String, parametersLenght: Int, returnEvaluator: Class[_] => Boolean) =
+      m.getName.matches(pattern) && (m.getParameterTypes.length == parametersLenght) && returnEvaluator(m.getReturnType())
+
+    private def isSetter(m: Method): Boolean = isValid(m, setterPattern, 1, (_ == JVoid))
+
+    private def isBooleanGetter(m: Method): Boolean = isValid(m, boolGetterPattern, 0, (_ == JBoolean))
+
+    private def isGetter(m: Method): Boolean = isValid(m, getterPattern, 0, (_ != JVoid))
+
+    /**
+     * It takes a Java method and, if it fits in Java Beans standards, returns this name "scalaized". Its operation
+     * is as follows:
+     *  - If it is a setter method (starts with `set`, has just one argument and it's a void method), returns the
+     *  property name followed by a "_=". e.g. `public void setFoo(Object o)` returns `foo_=`
+     *  - It it is boolean getter (starts with `is`, has no argument and it's a boolean method), returns the
+     *  property name. e.g. `public boolean isFoo()` returns `foo`
+     *  - It it is general getter (starts with `get`, has no argument and it's a not-void method), returns the
+     *  property name. e.g. `public int getFoo()` returns `foo`
+     *  - Otherwise, returns original method name.
+     */
+    def scalaizePropertyNames(m: Method): String = {
+      val name = m.getName()
+
+      if (isSetter(m)) name(3).toLower + name.substring(4) + "_="
+      else if (isGetter(m)) name(3).toLower + name.substring(4)
+      else if (isBooleanGetter(m)) name(2).toLower + name.substring(3)
+      else name
+    }
+
+  }
+
   /**
    * Takes a Method and generate a String showing the return type, name and parameters type of method.
    *
@@ -54,77 +157,20 @@ private[testutil] trait AbstractComparator {
   }
 
   /**
-   * Verifies if a method has a determined name.
-   *
-   * @param methodName Name of method wanted
-   * @param method Method to be analyzed.
-   * @return `true` if scalaMethod has the requested name, `false` otherwise.
-   */
-  private def sameName(methodName: String, method: Method): Boolean = (method.getName == methodName)
-
-  /**
-   * Verifies if a method has no parameters
-   *
-   * @param method Method to be analyzed.
-   * @return `true` if scalaMethod has no parameters, `false` otherwise.
-   */
-  private def methodHasNoArgs(method: Method): Boolean = (method.getParameterTypes.length == 0)
-
-  /**
-   * Verifies if a Scala method has as last argument a vararg. To be more precisely, this argument must be a
-   * [[scala.Seq]], because this is the way how varargs are translated by Scala compiler. Notice that even a method
-   * which really has a `Seq` as last argument (not a vararg) can return `true`. Moreover there is no information
-   * about `Seq` type because of compiler erasing.
-   *
-   * @param method Method to be analyzed.
-   * @return `true` if method's last argument is (potentially) vararg (ie, a `Seq`), `false` otherwise.
-   */
-  private def lastArgumentIsVararg(method: Method): Boolean = (method.getParameterTypes.last == classOf[Seq[_]])
-
-  /**
-   * Verifies if a method has only one argument ''and'' this argument is a varagrs.
-   *
-   * @param method Method to be analyzed.
-   * @return `true` if method has only one argument ''and'' this argument is a varagrs, `false` otherwise.
-   */
-  private def methodHasOneArgVararg(method: Method): Boolean =
-    (method.getParameterTypes.length == 1) && lastArgumentIsVararg(method)
-
-  /**
-   * Verifies if the a method arguments combine with
-   */
-  private def findMethodWithManyArgs(argTypes: List[Class[_]])(scalaMethod: Method): Boolean =
-    (scalaMethod.getParameterTypes.length == argTypes.size) && (scalaMethod.getParameterTypes.toList == argTypes)
-
-  /**
-   *
-   */
-  private def findMethodWithManyArgsVarargs(argTypesExceptLast: List[Class[_]])(method: Method): Boolean =
-    (method.getParameterTypes.length == argTypesExceptLast.size + 1) &&
-      (method.getParameterTypes.init.toList == argTypesExceptLast) &&
-      lastArgumentIsVararg(method)
-
-  private def getFinderMethod(javaMethod: Method) = (javaMethod.getParameterTypes.size, javaMethod.isVarArgs) match {
-    case (0, _)     => methodHasNoArgs _
-    case (1, true)  => methodHasOneArgVararg _
-    case (_, true)  => findMethodWithManyArgsVarargs(javaMethod.getParameterTypes.toList.init) _
-    case (_, false) => findMethodWithManyArgs(javaMethod.getParameterTypes.toList) _
-  }
-
-  /**
    *
    *
    * @param javaMethods Relation of methods from a Java class
    * @param scalaMethods Relation of methods from a Scala class.
-   * @param javaMethodsNotMirrored Relation of javaMethods that are not reflected in the scalaMethods.
+   * @param javaMethodsNotMirrored Relation of javaMethods that are not reflected in the scalaMethods. Defaul value:
+   * [[scala.Nil]].
    */
   private def compare(javaMethods: List[Method], scalaMethods: List[Method], javaMethodsNotMirrored: List[Method] = Nil): List[Method] = {
     javaMethods match {
       case Nil => javaMethodsNotMirrored
       case javaMethod :: otherMethods => {
-        val finderMethod = this.getFinderMethod(javaMethod)
+        val finderMethod = MethodsComparators.getFinderMethod(javaMethod)
         val desirableName = getDesirableMethodName(javaMethod)
-        val scalaHasMethod = scalaMethods.filter(sameName(desirableName, _)).exists(finderMethod)
+        val scalaHasMethod = scalaMethods.filter(MethodsComparators.sameName(desirableName, _)).exists(finderMethod)
         val javaMethods = if (scalaHasMethod) javaMethodsNotMirrored else javaMethod :: javaMethodsNotMirrored
 
         compare(otherMethods, scalaMethods, javaMethods)
@@ -153,26 +199,39 @@ private[testutil] trait AbstractComparator {
   // HELPER METHODS 
   //////////////////
 
+  /**
+   * Indicates if a Java method name starts with `impl_`, indicating that its is just for internal use of JavaFX API.
+   */
   @inline
   protected def isImplementation(methodName: String) = methodName.startsWith("impl_")
 
+  /**
+   * Convenience method to indicate if a Java method has public visibility.
+   */
   @inline
   protected def isPublicMethod(method: Method): Boolean = Modifier.isPublic(method.getModifiers)
-
-  protected def scalaizePropertyNames(name: String) =
-    if (name.length < 3) name
-    else if (name.substring(0, 2) == "is") name(2).toLower + name.substring(3)
-    else if (name.substring(0, 3) == "get") name(3).toLower + name.substring(4)
-    else if (name.substring(0, 3) == "set") name(3).toLower + name.substring(4) + "_="
-    else name
 
   ////////////////////
   // ABSTRACT METHODS 
   ////////////////////
 
+  /**
+   * Indicates if a method with a determinated name should be used or not in methods comparsion. e.g: Methods which
+   * name starts with `impl_`, or if it is a setter (starts with `set`)
+   *
+   * @param methodName name of method to be evaluated.
+   * @return `true` if it is a special name and consequently must not be used in comparsion; `false` otherwise.
+   */
   protected def isSpecialMethodName(methodName: String): Boolean
 
+  /**
+   * 
+   */
   protected def getDesirableMethodName(javaMethod: Method): String
+
+  //////////////////
+  // PUBLIC METHODS 
+  //////////////////
 
   /**
    * This can be used to compare instance methods declared in a scalafx class with instance methods declared in
