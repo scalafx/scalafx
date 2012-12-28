@@ -64,18 +64,6 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
     scalaClass.getConstructor(javaClass).newInstance(this.getJavaClassInstance)
 
   /**
-   * Returns a SFXDelegate instance as JavaFX object
-   * {{{
-   * protected def convertScalaClassToJavaClass(sfxControl: Separator) = {
-   *   val jfxSeparator: jfxsc.Separator = sfxControl
-   *   jfxSeparator
-   * }
-   * }}}
-   */
-  @deprecated("It must not be used anymore!", "1.0")
-  protected def convertScalaClassToJavaClass(sfxObject: S): J
-
-  /**
    * Returns a new JavaFX class instance. By default calls newInstance method from javaClass. If
    * this class has no default constructor, this method must be overrided:
    * {{{
@@ -83,18 +71,6 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
    * }}}
    */
   protected def getJavaClassInstance: J = javaClass.newInstance
-
-  /**
-   * Returns a JavaFX instance as a SFXDelegate object
-   * {{{
-   * protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Separator) = {
-   *   val sfxSeparator: Separator = jfxControl
-   *   sfxSeparator
-   * }
-   * }}}
-   */
-  @deprecated("It must not be used anymore!", "1.0")
-  protected def convertJavaClassToScalaClass(jfxObject: J): S
 
   ///////////////////////////
   // PROTECTED METHODS - END 
@@ -104,7 +80,7 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
   // TESTS - BEGIN 
   /////////////////
 
-  "A %s".format(scalaClass.getSimpleName) should "have an implicit conversion from SFX to JFX [New Way!]" in {
+  "A %s".format(scalaClass.getSimpleName) should "have an implicit conversion from SFX to JFX" in {
     // Test if the implicit conversion exists
     sfx2jfx should not be (null)
 
@@ -115,7 +91,7 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
     jfxObject should be(sfxObject.delegate)
   }
 
-  it should "have an implicit conversion from JFX to SFX [New Way!]" in {
+  it should "have an implicit conversion from JFX to SFX" in {
     // Test if the implicit conversion exists
     jfx2sfx should not be (null)
 
