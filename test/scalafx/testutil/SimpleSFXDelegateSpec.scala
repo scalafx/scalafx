@@ -37,9 +37,11 @@ import scalafx.util.SFXDelegate
  *
  * @param javaClass JavaFX class
  * @param scalaClass SFXDelegate subclass related with JavaFX class
+ * @param jfx2sfx Implicit conversor from JavaFx to ScalaFX to be repassed to superclass. Its default value is `null`.
+ * @param sfx2jfx Implicit conversor from ScalaFx to JavaFX to be repassed to superclass. Its default value is `null`.
  *
  */
-abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (javaClass: Class[J], scalaClass: Class[S])
+abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (javaClass: Class[J], scalaClass: Class[S]) (implicit jfx2sfx: J => S = null, sfx2jfx: S => J = null)
   extends SFXDelegateSpec[J, S](javaClass, scalaClass)
   with PropertyComparator {
 

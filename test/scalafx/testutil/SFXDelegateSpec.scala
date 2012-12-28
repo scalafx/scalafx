@@ -32,7 +32,7 @@ import org.scalatest.matchers.ShouldMatchers._
 import scalafx.util.SFXDelegate
 
 /**
- * Base class for SFXDelegate controls Spec tests. This spefic class tests if implicit conversion are working and if 
+ * Base class for SFXDelegate controls Spec tests. This spefic class tests if implicit conversion are working and if
  * static methods are being implemented.
  *
  *
@@ -41,18 +41,20 @@ import scalafx.util.SFXDelegate
  *
  * @param javaClass JavaFX class
  * @param scalaClass SFXDelegate subclass related with JavaFX class
+ * @param jfx2sfx Implicit conversor from JavaFx to ScalaFX. Its default value is `null`.
+ * @param sfx2jfx Implicit conversor from ScalaFx to JavaFX. Its default value is `null`.
  *
  */
-abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (javaClass: Class[J], scalaClass: Class[S])
-  extends FlatSpec 
+abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (javaClass: Class[J], scalaClass: Class[S])(implicit jfx2sfx: J => S = null, sfx2jfx: S => J = null)
+  extends FlatSpec
   with AbstractComparator {
-  
+
   /////////////////////////////
   // PROTECTED METHODS - BEGIN 
   /////////////////////////////
 
   /**
-   * Returns a new SFXDelegate subclass instance. By default calls scalaClass constructor that uses delegated class 
+   * Returns a new SFXDelegate subclass instance. By default calls scalaClass constructor that uses delegated class
    * instance. If it is not possible use this constructor, this method must be overrided.
    * {{{
    * override protected def getScalaClassInstance = new BoundingBox(0, 0, 0, 0)
@@ -70,6 +72,7 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
    * }
    * }}}
    */
+  @deprecated("It must not be used anymore!", "1.0")
   protected def convertScalaClassToJavaClass(sfxObject: S): J
 
   /**
@@ -90,25 +93,35 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
    * }
    * }}}
    */
+  @deprecated("It must not be used anymore!", "1.0")
   protected def convertJavaClassToScalaClass(jfxObject: J): S
 
   ///////////////////////////
   // PROTECTED METHODS - END 
   ///////////////////////////
 
+  /////////////////
+  // TESTS - BEGIN 
+  /////////////////
 
-  // Tests - Begin
+  "A %s".format(scalaClass.getSimpleName) should "have an implicit conversion from SFX to JFX [New Way!]" in {
+    // Test if the implicit conversion exists
+    sfx2jfx should not be (null)
 
-  "A %s".format(scalaClass.getSimpleName) should "have an implicit conversion from SFX to JFX" in {
+    // Test if conversion behaves correctly
     val sfxObject = getScalaClassInstance
-    val jfxObject: J = convertScalaClassToJavaClass(sfxObject)
+    val jfxObject: J = sfxObject
 
     jfxObject should be(sfxObject.delegate)
   }
 
-  it should "have an implicit conversion from JFX to SFX" in {
+  it should "have an implicit conversion from JFX to SFX [New Way!]" in {
+    // Test if the implicit conversion exists
+    jfx2sfx should not be (null)
+
+    // Test if conversion behaves correctly
     val jfxObject = getJavaClassInstance
-    val sfxObject: S = convertJavaClassToScalaClass(jfxObject)
+    val sfxObject: S = jfxObject
 
     sfxObject.delegate should be(jfxObject)
   }
@@ -117,6 +130,8 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
     compareStaticMethods(javaClass, scalaClass)
   }
 
-  // Tests - End
+  ///////////////
+  // TESTS - END  
+  ///////////////
 
 }

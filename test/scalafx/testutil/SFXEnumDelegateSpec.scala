@@ -34,10 +34,19 @@ import scalafx.util.SFXEnumDelegate
 import scalafx.util.SFXEnumDelegateCompanion
 
 /**
- * @author Rafael
+ * Abstract class for [[scalafx.util.SFXEnumDelegate]] implementations
+ *
+ * @tparam E JavaFX enum class to be wrapped by SFXDelegate class
+ * @tparam S SFXEnumDelegate subclass who will wrap JavaFX class
+ *
+ * @param javaClass JavaFX Enum class
+ * @param scalaClass SFXEnumDelegate subclass related with JavaFX class
+ * @param scalaClass companion object, derivated from [[scalafx.util.SFXEnumDelegateCompanion]]
+ * @param jfx2sfx Implicit conversor from JavaFx to ScalaFX to be repassed to superclass. Its default value is `null`.
+ * @param sfx2jfx Implicit conversor from ScalaFx to JavaFX to be repassed to superclass. Its default value is `null`.
  *
  */
-abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] protected (javaClass: Class[E], scalaClass: Class[S], companion: SFXEnumDelegateCompanion[E, S])
+abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] protected (javaClass: Class[E], scalaClass: Class[S], companion: SFXEnumDelegateCompanion[E, S])(implicit jfx2sfx: E => S = null, sfx2jfx: S => E = null)
   extends SFXDelegateSpec[E, S](javaClass, scalaClass)
   with EnumComparator {
 
@@ -84,6 +93,12 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
   it should "not find a non registered name among enum constants" in {
     intercept[IllegalArgumentException] {
       companion("!@#$%")
+    }
+  }
+
+  it should "throw `IllegalArgumentException` if the argument is `null`" in {
+    intercept[IllegalArgumentException] {
+      companion(null)
     }
   }
 
