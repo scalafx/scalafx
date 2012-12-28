@@ -83,11 +83,23 @@ class SFXEnumDelegateSpec[J <: Enum[J], S <: SFXEnumDelegate[J]](javaClass: Clas
   }
 
   it should "have implicit conversion JFX to SFX" in {
+    // Test if the implicit conversion exists
     jfx2sfx should not be (null)
+    // Test if the implicit conversion behaves correctly
+    for (jfxObject <- javaValues) {
+      val sfxObject: S = jfxObject
+      sfxObject.delegate should be(jfxObject)
+    }
   }
 
   it should "have implicit conversion SFX to JFX" in {
+    // Test if the implicit conversion exists
     sfx2jfx should not be (null)
+    // Test if the implicit conversion behaves correctly
+    for (sfxObject <- companion.values) {
+      val jfxObject: J = sfxObject
+      jfxObject should be(sfxObject.delegate)
+    }
   }
 
   it should "declare all public static methods of " + javaClassName in {
