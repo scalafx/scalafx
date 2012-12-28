@@ -27,44 +27,6 @@
 package scalafx.util
 
 /**
- * Base trait for all Companion objects [[SFXEnumDelegate]] subclasses. It mirrors static methods for
- * [[http://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html]]
- *
- * @tparam E Original JavaFX `enum`
- * @tparam S [[SFXEnumDelegate]] that wrappers E
- */
-trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] {
-  /**
-   * Converts a SFXEnumDelegate to its respective JavaFX Enum
-   */
-  implicit def sfxEnum2jfx(s: S): E = s.delegate
-
-  /**
-   * Converts a JavaFX Enum to its respective SFXEnumDelegate
-   */
-  def jfxEnum2sfx(e: E): S = values.find(_.delegate == e).get
-
-  /**
-   * Contain constants which will be source for `values` List
-   */
-  protected def unsortedValues: Array[S]
-
-  /**
-   * Returns a List containing the constants of this `enum` type, in the order they are declared.
-   */
-  lazy val values: List[S] = unsortedValues.sortWith(_.delegate.ordinal < _.delegate.ordinal).toList
-
-  /**
-   * Returns the `enum` constant of this type with the specified name.
-   */
-  def apply(name: String) = values.find(_.name == name) match {
-    case Some(e) => e
-    case None    => throw new IllegalArgumentException("No enum constant %s.%s".format(values.head.getClass().getName, name))
-  }
-
-}
-
-/**
  * Base trait for JavaFX enums
  *
  * @tparam E Original JavaFX `enum`
