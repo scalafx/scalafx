@@ -35,7 +35,10 @@ if (isSnapshot) {
 buildscript {
     final javafxHome = System.env['JAVAFX_HOME']
     if (javafxHome) {
-      ext.javafxJar = "${javafxHome}/rt/lib/jfxrt.jar"
+        ext.javafxJar = "${javafxHome}/rt/lib/jfxrt.jar"
+        if ( !new File( ext.javafxJar ).exists() ) {
+            ext.javafxJar = "${javafxHome}/jre/lib/jfxrt.jar"
+        }
     } else {
       final javaHome = System.env['JAVA_HOME']
       if (javaHome)
@@ -51,7 +54,9 @@ buildscript {
       println """
                  |  Please set the environment variable JAVAFX_HOME
                  |  to the directory that contains rt/lib/jfxrt.jar
-                 |  of JavaFX version ${scalafx_requiredJavaFxVersion}.\n""".stripMargin()
+                 |  or e.g set JAVAFX_HOME to the /Library/Java/JavaVirtualMachines/jdk1.7.0_09.jdk/Contents/Home
+                 |  otherwise the current JAVA_HOME will be used
+                 |  with the JavaFX version ${scalafx_requiredJavaFxVersion}.\n""".stripMargin()
       System.exit 1
     }
 }
@@ -147,12 +152,6 @@ task(generateRunners, dependon: 'classes', description:"generates a UNIX bash sc
             out.println("scala -cp ${sourceSets.main.runtimeClasspath.getAsPath()}  scalafx.ColorfulCircles")
             "chmod 755 scalafx.ColorfulCircles".execute()
         }
-
-        new File("VideoCubeDemo").withWriter { out ->
-            out.println("#!/bin/bash")
-            out.println("scala -cp ${sourceSets.main.runtimeClasspath.getAsPath()}  scalafx.graphics3d.VideoCubeDemo")
-            "chmod 755 scalafx.ColorfulCircles".execute()
-        }
     }
 }
 
@@ -161,11 +160,6 @@ task(run, dependsOn: 'classes', type: JavaExec, description:"runs the colorful c
     classpath = sourceSets.main.runtimeClasspath
     args 'one', 'two', 'three'
     systemProperty 'simple.message', 'Hello '
-}
-
-task(runVideoCubeDemo, dependsOn: 'classes', type: JavaExec, description:"runs the colorful circles demo program") {
-    main = 'scalafx.graphics3d.VideoCubeDemo'
-    classpath = sourceSets.main.runtimeClasspath
 }
 
 // fini
