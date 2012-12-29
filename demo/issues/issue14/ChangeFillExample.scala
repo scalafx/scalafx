@@ -25,7 +25,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package issues.issue16
+package issues.issue14
 
 import javafx.scene.{paint => jfxsp}
 import scalafx.Includes._
