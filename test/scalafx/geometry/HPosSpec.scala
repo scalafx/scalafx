@@ -35,15 +35,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 /** Tests for [[scalafx.geometry.HPos]]. */
 @RunWith(classOf[JUnitRunner])
 class HPosSpec
-  extends SFXEnumDelegateSpec[jfxg.HPos, HPos](classOf[jfxg.HPos], classOf[HPos], HPos) {
-
-  protected def convertScalaClassToJavaClass(sfxEnum: HPos) = {
-    val jfxEnum: jfxg.HPos = sfxEnum
-    jfxEnum
-  }
-
-  protected def convertJavaClassToScalaClass(jfxEnum: jfxg.HPos) = {
-    val sfxEnum: HPos = jfxEnum
-    sfxEnum
-  }
-}
+  extends SFXEnumDelegateSpec[jfxg.HPos, HPos](classOf[jfxg.HPos], classOf[HPos], HPos)

@@ -43,15 +43,6 @@ class BoundsSpec
 
   override protected def getScalaClassInstance = new Bounds(getJavaClassInstance) {}
 
-  protected def convertScalaClassToJavaClass(sfxObject: Bounds) = {
-    val jfxBounds: jfxg.Bounds = sfxObject
-    jfxBounds
-  }
-
   override protected def getJavaClassInstance = new jfxg.BoundingBox(0, 0, 0, 0, 0, 0)
 
-  protected def convertJavaClassToScalaClass(jfxObject: jfxg.Bounds) = {
-    val sfxBounds: Bounds = jfxObject
-    sfxBounds
-  }
 }

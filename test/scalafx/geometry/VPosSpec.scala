@@ -35,15 +35,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 /** Tests for [[scalafx.geometry.VPos]]. */
 @RunWith(classOf[JUnitRunner])
 class VPosSpec
-  extends SFXEnumDelegateSpec[jfxg.VPos, VPos](classOf[jfxg.VPos], classOf[VPos], VPos) {
-
-  protected def convertScalaClassToJavaClass(sfxEnum: VPos) = {
-    val jfxEnum: jfxg.VPos = sfxEnum
-    jfxEnum
-  }
-
-  protected def convertJavaClassToScalaClass(jfxEnum: jfxg.VPos) = {
-    val sfxEnum: VPos = jfxEnum
-    sfxEnum
-  }
-}
+  extends SFXEnumDelegateSpec[jfxg.VPos, VPos](classOf[jfxg.VPos], classOf[VPos], VPos)

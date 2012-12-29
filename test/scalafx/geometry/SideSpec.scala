@@ -35,15 +35,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 /** Tests for [[scalafx.geometry.Side]]. */
 @RunWith(classOf[JUnitRunner])
 class SideSpec 
-  extends SFXEnumDelegateSpec[jfxg.Side, Side](classOf[jfxg.Side], classOf[Side], Side) {
-
-  protected def convertScalaClassToJavaClass(sfxEnum: Side) = {
-    val jfxEnum: jfxg.Side = sfxEnum
-    jfxEnum
-  }
-
-  protected def convertJavaClassToScalaClass(jfxEnum: jfxg.Side) = {
-    val sfxEnum: Side = jfxEnum
-    sfxEnum
-  }
-}
+  extends SFXEnumDelegateSpec[jfxg.Side, Side](classOf[jfxg.Side], classOf[Side], Side)

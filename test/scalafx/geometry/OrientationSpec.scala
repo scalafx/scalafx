@@ -35,15 +35,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 /** Tests for [[scalafx.geometry.Orientation]]. */
 @RunWith(classOf[JUnitRunner])
 class OrientationSpec 
-  extends SFXEnumDelegateSpec[jfxg.Orientation, Orientation](classOf[jfxg.Orientation], classOf[Orientation], Orientation) {
-
-  protected def convertScalaClassToJavaClass(sfxEnum: Orientation) = {
-    val jfxEnum: jfxg.Orientation = sfxEnum
-    jfxEnum
-  }
-
-  protected def convertJavaClassToScalaClass(jfxEnum: jfxg.Orientation) = {
-    val sfxEnum: Orientation = jfxEnum
-    sfxEnum
-  }
-}
+  extends SFXEnumDelegateSpec[jfxg.Orientation, Orientation](classOf[jfxg.Orientation], classOf[Orientation], Orientation)

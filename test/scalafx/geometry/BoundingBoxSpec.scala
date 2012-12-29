@@ -43,16 +43,6 @@ class BoundingBoxSpec
 
   override protected def getScalaClassInstance = new BoundingBox(0, 0, 0, 0)
 
-  protected def convertScalaClassToJavaClass(sfxObject: BoundingBox) = {
-    val jfxBoundingBox: jfxg.BoundingBox = sfxObject
-    jfxBoundingBox
-  }
-
   override protected def getJavaClassInstance = new jfxg.BoundingBox(0, 0, 0, 0)
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxg.BoundingBox) = {
-    val sfxBoundingBox: BoundingBox = jfxObject
-    sfxBoundingBox
-  }
 
 }

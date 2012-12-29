@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.geometry
 
 import javafx.{ geometry => jfxg }
@@ -36,15 +35,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 /** Tests for [[scalafx.geometry.Pos]]. */
 @RunWith(classOf[JUnitRunner])
 class PosSpec 
-  extends SFXEnumDelegateSpec[jfxg.Pos, Pos](classOf[jfxg.Pos], classOf[Pos], Pos) {
-
-  protected def convertScalaClassToJavaClass(sfxEnum: Pos) = {
-    val jfxEnum: jfxg.Pos = sfxEnum
-    jfxEnum
-  }
-
-  protected def convertJavaClassToScalaClass(jfxEnum: jfxg.Pos) = {
-    val sfxEnum: Pos = jfxEnum
-    sfxEnum
-  }
-}
+  extends SFXEnumDelegateSpec[jfxg.Pos, Pos](classOf[jfxg.Pos], classOf[Pos], Pos)

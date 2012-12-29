@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.geometry
 
 import javafx.{ geometry => jfxg }
@@ -43,15 +42,6 @@ class Point3DSpec
 
   override protected def getScalaClassInstance = new Point3D(0, 0, 0)
 
-  protected def convertScalaClassToJavaClass(sfxObject: Point3D) = {
-    val jfxPoint3D: jfxg.Point3D = sfxObject
-    jfxPoint3D
-  }
-
   override protected def getJavaClassInstance = new jfxg.Point3D(0, 0, 0)
 
-  protected def convertJavaClassToScalaClass(jfxObject: jfxg.Point3D) = {
-    val sfxPoint3D: Point3D = jfxObject
-    sfxPoint3D
-  }
 }

@@ -35,15 +35,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 /** Tests for [[scalafx.geometry.HorizontalDirection]]. */
 @RunWith(classOf[JUnitRunner])
 class HorizontalDirectionSpec
-  extends SFXEnumDelegateSpec[jfxg.HorizontalDirection, HorizontalDirection](classOf[jfxg.HorizontalDirection], classOf[HorizontalDirection], HorizontalDirection) {
-
-  protected def convertScalaClassToJavaClass(sfxEnum: HorizontalDirection) = {
-    val jfxEnum: jfxg.HorizontalDirection = sfxEnum
-    jfxEnum
-  }
-
-  protected def convertJavaClassToScalaClass(jfxEnum: jfxg.HorizontalDirection) = {
-    val sfxEnum: HorizontalDirection = jfxEnum
-    sfxEnum
-  }
-}
+  extends SFXEnumDelegateSpec[jfxg.HorizontalDirection, HorizontalDirection](classOf[jfxg.HorizontalDirection], classOf[HorizontalDirection], HorizontalDirection)
