@@ -40,20 +40,20 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import javafx.geometry.Pos
-
-import scalafx.scene.Scene
-import scalafx.stage.Stage
-import scalafx.scene.image.{ImageView, Image}
 import scalafx.application.JFXApp
-import scalafx.scene.control.{Label, Button}
-import scalafx.scene.paint.Color
-import scalafx.scene.text.Font
 import scalafx.event.ActionEvent
 import scalafx.event.EventIncludes.actionEventClosureWrapper
-import scalafx.scene.layout.{HBox, VBox}
-import scalafx.scene.input.MouseEvent
+import scalafx.geometry.Pos
+import scalafx.scene.Scene
+import scalafx.scene.control.{Label, Button}
 import scalafx.scene.effect.DropShadow
+import scalafx.scene.image.{ImageView, Image}
+import scalafx.scene.input.MouseEvent
+import scalafx.scene.layout.{HBox, VBox}
+import scalafx.scene.paint.Color
+import scalafx.scene.text.Font
+import scalafx.stage.Stage
+
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>

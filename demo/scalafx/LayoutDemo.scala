@@ -28,10 +28,10 @@
 package scalafx
 
 import application.JFXApp
-import javafx.geometry.Pos
-import javafx.geometry.VPos
-import scalafx.scene.paint.Color._
+import scalafx.geometry.{Pos, VPos}
 import scalafx.scene.paint.Color
+import scalafx.scene.paint.Color._
+import scene.Scene
 import scene.control.Accordion
 import scene.control.Label
 import scene.control.ScrollPane
@@ -40,7 +40,6 @@ import scene.layout.HBox
 import scene.shape.Circle
 import scene.text.Font
 import scene.text.Text
-import scene.Scene
 import stage.Stage
 
 object LayoutDemo extends JFXApp {

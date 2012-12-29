@@ -13,6 +13,11 @@ object Slider {
 
 class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Control(delegate) with SFXDelegate[jfxsc.Slider] {
 
+  /** Constructs a Slider control with the specified slider min, max and current value values. */
+  def this(min:Double, max:Double, value:Double) {
+    this(new jfxsc.Slider(min, max, value))
+  }
+
   /**
    * The amount by which to adjust the slider if the track of the slider is clicked.
    */

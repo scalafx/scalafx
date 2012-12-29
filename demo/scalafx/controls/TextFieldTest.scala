@@ -27,21 +27,21 @@
 
 package scalafx.controls
 
-import javafx.geometry.Pos
 import javafx.scene.layout.Priority
+import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.controls.controls.ControlControls
 import scalafx.controls.controls.TextFieldControls
 import scalafx.controls.controls.TextInputControlControls
+import scalafx.geometry.Pos
+import scalafx.scene.Scene
 import scalafx.scene.control.TextField
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.FlowPane
 import scalafx.scene.layout.VBox
-import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.paint.Color
-import scalafx.scene.Scene
+import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.stage.Stage
-import scalafx.controls.controls.ControlControls
-import scalafx.Includes._
 
 object TextFieldTest extends JFXApp {
 

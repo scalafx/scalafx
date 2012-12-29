@@ -49,7 +49,7 @@ class ArcTo(override val delegate: jfxss.ArcTo = new jfxss.ArcTo)
    * The x-axis rotation in degrees.
    */
   def XAxisRotation: DoubleProperty = delegate.XAxisRotationProperty
-  def xAxisRotation_=(v: Double) {
+  def XAxisRotation_=(v: Double) {
     XAxisRotation() = v
   }
 

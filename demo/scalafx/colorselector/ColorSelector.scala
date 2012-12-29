@@ -1,51 +1,46 @@
 package scalafx.colorselector
 
-import scala.collection.Seq
-
 import colorselector.Max
 import colorselector.doubleToInt
 import javafx.beans.property.SimpleDoubleProperty
 import javafx.event.EventHandler
-import javafx.geometry.HPos
-import javafx.geometry.Pos
-import javafx.geometry.VPos
 import javafx.scene.input.MouseButton
 import javafx.scene.input.MouseEvent
+import javafx.scene.layout.Priority
 import javafx.scene.text.TextAlignment
+import scala.collection.Seq
 import scalafx.Includes.jfxBooleanProperty2sfx
 import scalafx.Includes.jfxDoubleProperty2sfx
 import scalafx.Includes.jfxObjectProperty2sfx
-import scalafx.Includes.jfxStringProperty2sfx
 import scalafx.application.JFXApp
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
-import scalafx.beans.property.DoubleProperty.sfxDoubleProperty2jfx
-import scalafx.beans.property.ObjectProperty.sfxObjectProperty2jfx
-import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.DoubleProperty.sfxDoubleProperty2jfx
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ObjectProperty.sfxObjectProperty2jfx
+import scalafx.collections.ObservableBuffer
 import scalafx.collections.ObservableBuffer.Add
 import scalafx.collections.ObservableBuffer.Change
 import scalafx.collections.ObservableBuffer.Remove
 import scalafx.collections.ObservableBuffer.canBuildFrom
 import scalafx.collections.ObservableBuffer.observableBuffer2ObservableList
-import scalafx.collections.ObservableBuffer
 import scalafx.event.EventHandler.function2jfxEventHandler
-import scalafx.scene.control.CheckBox.sfxCheckBox2jfx
-import scalafx.scene.control.Control.sfxControl2jfx
-import scalafx.scene.control.TextField.sfxTextField2jfx
-import scalafx.scene.control.ComboBox
+import scalafx.geometry.{HPos, Pos, VPos}
+import scalafx.scene.Scene
 import scalafx.scene.control.CheckBox
+import scalafx.scene.control.CheckBox.sfxCheckBox2jfx
+import scalafx.scene.control.ComboBox
 import scalafx.scene.control.Control
+import scalafx.scene.control.Control.sfxControl2jfx
 import scalafx.scene.control.Label
 import scalafx.scene.control.TextField
+import scalafx.scene.control.TextField.sfxTextField2jfx
 import scalafx.scene.effect.Reflection
-import scalafx.scene.paint.Paint.sfxPaint2jfx
+import scalafx.scene.layout._
 import scalafx.scene.paint.Color
-import scalafx.scene.shape.Rectangle
-import scalafx.scene.Scene
 import scalafx.stage.Stage
 import scalafx.util.StringConverter
-import javafx.scene.layout.Priority
-import scalafx.scene.layout._
+
 
 object ColorSelector extends JFXApp {
 

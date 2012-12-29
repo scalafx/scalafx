@@ -58,12 +58,14 @@ trait ControlIncludes
   implicit def jfxListViewEditEvent2sfx[T](l: jfxsc.ListView.EditEvent[T]) = new ListView.EditEvent(l)
   implicit def jfxMenu2sfx(h: jfxsc.Menu) = new Menu(h)
   implicit def jfxMenuBar2sfx(h: jfxsc.MenuBar) = new MenuBar(h)
+  implicit def jfxMenuButton2sfx(h: jfxsc.MenuButton) = new MenuButton(h)
   implicit def jfxMenuItem2sfx(m: jfxsc.MenuItem) = new MenuItem(m)
   implicit def jfxMultipleSelectionModel2sfx[T](v: jfxsc.MultipleSelectionModel[T]) = new MultipleSelectionModel[T](v) {}
   implicit def jfxPagination2sfx(p: jfxsc.Pagination) = new Pagination(p)
   implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s)
   implicit def jfxScrollBar2sfx(s: jfxsc.ScrollBar) = new ScrollBar(s)
   implicit def jfxSlider2sfx(s: jfxsc.Slider) = new Slider(s)
+  implicit def jfxSplitMenuButton2sfx(h: jfxsc.SplitMenuButton) = new SplitMenuButton(h)
 
   implicit def jfxTableCell2sfx[S, T](tc: jfxsc.TableCell[S, T]) = new TableCell[S, T](tc)
   implicit def jfxTableColumn2sfx[S, T](tc: jfxsc.TableColumn[S, T]) = new TableColumn[S, T](tc)

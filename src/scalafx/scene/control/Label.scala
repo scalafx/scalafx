@@ -32,12 +32,24 @@ import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
 import javafx.{scene => jfxs}
+import scalafx.scene.Node
 
 object Label {
   implicit def sfxLabel2jfx(v: Label) = v.delegate
 }
 
 class Label(override val delegate:jfxsc.Label = new jfxsc.Label) extends Labeled(delegate) with SFXDelegate[jfxsc.Label] {
+
+  /** Creates Label with supplied text. */
+  def this( text:String) {
+    this(new jfxsc.Label(text))
+  }
+
+  /** Creates a Label with the supplied text and graphic. */
+  def this( text:String, graphic:Node) {
+    this(new jfxsc.Label(text, graphic))
+  }
+
   def labelFor = delegate.labelForProperty
   def labelFor_= (v: jfxs.Node) {
     labelFor() = v

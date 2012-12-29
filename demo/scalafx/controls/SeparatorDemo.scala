@@ -1,17 +1,17 @@
 package scalafx.controls
 
-import javafx.geometry._
-import scalafx.scene.layout._
+import javafx.scene.layout.Priority
+import javafx.{geometry => jfxg}
 import scalafx.Includes._
+import scalafx.application.JFXApp
 import scalafx.collections.ObservableBuffer
 import scalafx.controls.controls._
+import scalafx.geometry._
+import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout._
-import javafx.scene.layout.Priority
-import scalafx.application.JFXApp
-import scalafx.stage.Stage
-import scalafx.scene.Scene
 import scalafx.scene.paint.Color
+import scalafx.stage.Stage
 
 object SeparatorDemo extends JFXApp {
 
@@ -53,17 +53,18 @@ object SeparatorDemo extends JFXApp {
 
 class SeparatorControls(target: Separator) extends PropertiesNodes[Separator](target, "Separator Controls") {
 
-  val chbHPos = new ChoiceBox[HPos] {
+  val chbHPos = new ChoiceBox[jfxg.HPos] {
     items = ObservableBuffer(HPos.CENTER, HPos.LEFT, HPos.RIGHT)
     value <==> target.halignment
   }
 
-  val chbOrientation = new ChoiceBox[Orientation] {
+  val chbOrientation = new ChoiceBox[jfxg.Orientation] {
     items = ObservableBuffer(Orientation.HORIZONTAL, Orientation.VERTICAL)
     value <==> target.orientation
   }
 
-  val chbVPos = new ChoiceBox[VPos] {
+  // NOTE: The type of ChoiceBox is using javafx.geometry.VPos due to current limitations of binding implementation
+  val chbVPos = new ChoiceBox[jfxg.VPos] {
     items = ObservableBuffer(VPos.BASELINE, VPos.BOTTOM, VPos.CENTER, VPos.TOP)
     value <==> target.valignment
   }

@@ -47,6 +47,8 @@ trait PropertyIncludes extends LowerPriorityIncludes {
   implicit def jfxReadOnlyLongProperty2sfx(p: jfxbp.ReadOnlyLongProperty) = new ReadOnlyLongProperty(p)
   implicit def jfxReadOnlyObjectProperty2sfx[T <: AnyRef](p: jfxbp.ReadOnlyObjectProperty[T]) = new ReadOnlyObjectProperty[T](p)
   implicit def jfxReadOnlyStringProperty2sfx(p: jfxbp.ReadOnlyStringProperty) = new ReadOnlyStringProperty(p)
+
+  implicit def jfxReadOnlyObjectWrapper2sfx[T <: AnyRef](p: jfxbp.ReadOnlyObjectWrapper[T]) = new ReadOnlyObjectWrapper[T](p)
 }
 
 trait LowerPriorityIncludes {

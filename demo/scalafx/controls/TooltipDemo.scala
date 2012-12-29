@@ -2,21 +2,19 @@ package scalafx.controls
 
 import javafx.scene.control.ContentDisplay
 import javafx.scene.control.OverrunStyle
+import javafx.scene.layout.Priority
 import javafx.scene.text.TextAlignment
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.collections.ObservableBuffer
-import scalafx.controls.controls._
 import scalafx.controls.controls.PropertiesNodes
+import scalafx.controls.controls._
+import scalafx.geometry.Pos
+import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout.VBox
-import javafx.scene.layout.Priority
-import javafx.geometry.Pos
-import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.FlowPane
-import scalafx.stage.Stage
-import scalafx.scene.Scene
 import scalafx.scene.paint.Color
+import scalafx.stage.Stage
 
 object TooltipDemo extends JFXApp {
 

@@ -59,6 +59,23 @@ trait EventIncludes {
 		}
 	}
 
+  /**
+ 	 * Converts a Function that manipulates a [[scalafx.scene.input.DragEvent]]
+ 	 * and returns a [[scala.Unit]] in a
+ 	 * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]]
+ 	 * that manipulates a
+ 	 * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/DragEvent.html JavaFX`s DragEvent]]
+ 	 *
+ 	 * @param handler function that manipulates a ScalaFX's DragEvent
+ 	 * @return a JavaFX's EventHandler that manipulates a JavaFX's DragEvent
+ 	 */
+ 	implicit def dragEventClosureWrapper(handler: (sfxsi.DragEvent) => Unit) = new jfxe.EventHandler[jfxsi.DragEvent] {
+ 		def handle(event: jfxsi.DragEvent) {
+ 			handler(event)
+ 		}
+ 	}
+
+
 	/**
 	 * Converts a Function that manipulates a [[scalafx.scene.input.MouseEvent]] 
 	 * and returns a [[scala.Unit]] in a 
@@ -66,8 +83,8 @@ trait EventIncludes {
 	 * that manipulates a 
 	 * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/MouseEvent.html JavaFX`s MouseEvent]]
 	 * 
-	 * @param handler function that manipulates a ScalaFX`s MouseEvent
-	 * @return a JavaFX's EventHandler that manipulates a JavaFX`s MouseEvent
+	 * @param handler function that manipulates a ScalaFX's MouseEvent
+	 * @return a JavaFX's EventHandler that manipulates a JavaFX's MouseEvent
 	 */
 	implicit def mouseEventClosureWrapper(handler: (sfxsi.MouseEvent) => Unit) = new jfxe.EventHandler[jfxsi.MouseEvent] {
 		def handle(event: jfxsi.MouseEvent) {
@@ -82,11 +99,43 @@ trait EventIncludes {
 	 * that manipulates a 
 	 * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/KeyEvent.html JavaFX`s KeyEvent]]
 	 * 
-	 * @param handler function that manipulates a ScalaFX`s KeyEvent
-	 * @return a JavaFX's EventHandler that manipulates a JavaFX`s KeyEvent
+	 * @param handler function that manipulates a ScalaFX's KeyEvent
+	 * @return a JavaFX's EventHandler that manipulates a JavaFX's KeyEvent
 	 */
 	implicit def keyEventClosureWrapper(handler: (sfxsi.KeyEvent) => Unit) = new jfxe.EventHandler[jfxsi.KeyEvent] {
 		def handle(event: jfxsi.KeyEvent) {
+			handler(event)
+		}
+	}
+
+	/**
+	 * Converts a Function that manipulates a [[scalafx.scene.input.ScrollEvent]] 
+	 * and returns a [[scala.Unit]] in a 
+	 * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
+	 * that manipulates a 
+	 * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ScrollEvent.html JavaFX`s ScrollEvent]]
+	 * 
+	 * @param handler function that manipulates a ScalaFX's ScrollEvent
+	 * @return a JavaFX's EventHandler that manipulates a JavaFX's ScrollEvent
+	 */
+	implicit def scrollEventClosureWrapper(handler: (sfxsi.ScrollEvent) => Unit) = new jfxe.EventHandler[jfxsi.ScrollEvent] {
+		def handle(event: jfxsi.ScrollEvent) {
+			handler(event)
+		}
+	}
+
+	/**
+	 * Converts a Function that manipulates a [[scalafx.stage.WindowEvent]] 
+	 * and returns a [[scala.Unit]] in a 
+	 * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
+	 * that manipulates a 
+	 * [[http://docs.oracle.com/javafx/2/api/javafx/stage/WindowEvent.html JavaFX`s WindowEvent]]
+	 * 
+	 * @param handler function that manipulates a ScalaFX's WindowEvent
+	 * @return a JavaFX's EventHandler that manipulates a JavaFX's WindowEvent
+	 */
+	implicit def windowEventClosureWrapper(handler: (scalafx.stage.WindowEvent) => Unit) = new jfxe.EventHandler[javafx.stage.WindowEvent] {
+		def handle(event: javafx.stage.WindowEvent) {
 			handler(event)
 		}
 	}
@@ -98,8 +147,8 @@ trait EventIncludes {
 	 * that manipulates a 
 	 * [[http://docs.oracle.com/javafx/2/api/javafx/event/ActionEvent.html JavaFX`s ActionEvent]]
 	 * 
-	 * @param handler function that manipulates a ScalaFX`s ActionEvent
-	 * @return a JavaFX's EventHandler that manipulates a JavaFX`s ActionEvent
+	 * @param handler function that manipulates a ScalaFX's ActionEvent
+	 * @return a JavaFX's EventHandler that manipulates a JavaFX's ActionEvent
 	 */
 	implicit def actionEventClosureWrapper(handler: (ActionEvent) => Unit) = new jfxe.EventHandler[jfxe.ActionEvent] {
 		def handle(event: jfxe.ActionEvent) {

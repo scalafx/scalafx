@@ -7,6 +7,7 @@ import scalafx.scene.paint.Color
 import scalafx.scene.{Node, PerspectiveCamera, Scene, Group}
 import scalafx.scene.transform.{Translate, Rotate}
 import scalafx.scene.shape.Rectangle
+import scalafx.scene.text.{Text,Font}
 import scalafx.scene.media.{Media,MediaView,MediaPlayer}
 import scalafx.animation.Timeline
 import scalafx.stage.Stage
@@ -41,8 +42,13 @@ object VideoCubeDemo extends JFXApp {
   // PLEASE DO NOT SHOW THIS PUBLIC LIKE IN A BIG CONFERENCE with consent either
   // This is just for learning and demonstration purposes.
   // Of course, it will only work my machine!!!!!!!!!!!!!!!!!!!!!! Until you edit the folder and files!
-  //  val folder = new File( "C:\\Users\\peter\\Videos\\Movie-Trailers-2012" )
-  val folder = new File( "/Users/peterpilgrim/Movies/Movie-Trailers-2012" )
+  val folder = if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+      new File( "C:\\Users\\peter\\Videos\\Movie-Trailers-2012" )
+    }
+    else {
+      new File( "/Users/peterpilgrim/Movies/Movie-Trailers-2012" )
+    }
+  // TODO: +PP+ Dec 2012 - This all should be defined by a preferences (property file) in user home
 
   // You need your video files ;-) Cannot redistribute MOVIE FILES!!!
   // Substitute, for example, with your own family and vacation pictures
@@ -93,19 +99,19 @@ object VideoCubeDemo extends JFXApp {
 
   def create3dContent():Node = {
     val c1 = new VideoCube(mediaPlayers, 300);
-    c1.rx.setAngle(45);
-    c1.ry.setAngle(45);
+    c1.rx.angle = 45;
+    c1.ry.angle = 45;
     c1.translateX = 200
     c1.translateY = -200
 
     animation = new Timeline {
       cycleCount = Timeline.INDEFINITE
       keyFrames = Seq(
-        at (0 s) { c1.ry.angle -> 0d ; c1.rx.angle -> 0d },
-        at (1 s) { c1.ry.angle -> 360d ; c1.rx.angle -> 180d },
-        at (2 s) { c1.ry.angle -> -360d ; c1.rx.angle -> 520d },
-        at (0 s) { c1.rz.angle -> 0d },
-        at (5 s) { c1.rz.angle -> 360d }
+        at (0 s) { c1.ry.angle -> 0d ; c1.rx.angle -> 0d; c1.rz.angle -> 0d },
+        at (4 s) { c1.rx.angle -> 360d ; c1.ry.angle -> 520d; },
+//        at (4 s) { c1.rz.angle -> 0d ; c1.ry.angle -> 720d; }
+        at (7 s) { c1.rx.angle -> 360d ; c1.ry.angle -> 520d },
+        at (10 s) { c1.rz.angle -> 1080d }
       )
     }
 
@@ -140,22 +146,25 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
       translateY = -0.5*size
       translateZ = 0.5*size
 //      preserveRatio = false
+      text = "0"
     },
-    new MediaViewCubeFace( mediaPlayers(1) ) { // bottom face
+    new MediaViewCubeFace( mediaPlayers(1), 0.01  ) { // bottom face
       fitWidth = size ; fitHeight = size
       translateX = -0.5*size
       translateY = 0
       rotationAxis = Rotate.XAxis
       rotate = 90
 //      preserveRatio = false
+      text = "1"
     },
-    new MediaViewCubeFace( mediaPlayers(2) ) { // right face
+    new MediaViewCubeFace( mediaPlayers(2), 0.01 ) { // right face
       fitWidth = size ; fitHeight = size
       translateX = -1*size
       translateY = -0.5*size
       rotationAxis = Rotate.YAxis
       rotate = 90
 //      preserveRatio = false
+      text = "2"
     },
     new MediaViewCubeFace( mediaPlayers(3) ) { // left face
       fitWidth = size; fitHeight = size
@@ -163,6 +172,7 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
       translateY = -0.5*size
       rotationAxis = Rotate.YAxis
       rotate = 90
+      text = "3"
     },
     new MediaViewCubeFace( mediaPlayers(4) ) { // top face
       fitWidth = size; fitHeight = size
@@ -170,12 +180,14 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
       translateY = -1*size
       rotationAxis = Rotate.XAxis
       rotate = 90
+      text = "4"
     },
-    new MediaViewCubeFace( mediaPlayers(5) ) { // top face
+    new MediaViewCubeFace( mediaPlayers(5), 0.01 ) { // top face
       fitWidth = size; fitHeight = size
       translateX = -0.5*size
       translateY = -0.5*size
       translateZ = -0.5*size
+      text = "5"
     }
   )
 
@@ -187,16 +199,26 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
    * @param color the colour of the cube face
    * @param shade the derived colour
    */
-  class MediaViewCubeFace( val mediaPlayer: MediaPlayer, size: Double, color: Color = Color.LIGHTBLUE, shade: Double = 1.0 ) extends Group {
+  class MediaViewCubeFace( val mediaPlayer: MediaPlayer, size: Double, offset: Double = -0.01,
+                           color: Color = Color.LIGHTBLUE, shade: Double = 1.0 ) extends Group {
+
+    def this( mediaPlayer: MediaPlayer, offset: Double ) = this( mediaPlayer, 0.0, offset )
 
     def this( mediaPlayer: MediaPlayer ) = this( mediaPlayer, 0.0 )
+
+    val debugText = new Text {
+      font = new Font("Verdana", 36.0 )
+      fill = Color.ORANGE
+      layoutX = size / 4
+      layoutY = size / 4
+    }
 
     val mediaView = new MediaView( mediaPlayer )
 
     val backRect = new Rectangle {
       x = 0
       y = 0
-      translateZ = -.01
+      translateZ = offset
       width = size
       height = size
       fill = color.deriveColor(0.0, 1.0, (1 - 0.5*shade), 1.0)
@@ -205,13 +227,14 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
       // opacity = 0.0
     }
 
-    children = Seq( backRect, mediaView )
+    children = Seq( backRect, mediaView, debugText )
 
     def fitHeight = mediaView.fitHeightProperty
     def fitHeight_=(v: Double) {
       fitHeight() = v
       backRect.height = v
       mediaView.layoutY = v / 4
+      debugText.layoutY = v / 4
     }
 
     /**
@@ -222,6 +245,7 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
     def fitWidth_=(v: Double) {
       fitWidth() = v
       backRect.width = v
+      debugText.layoutX = v / 4
     }
 
     def preserveRatio = mediaView.preserveRatioProperty
@@ -233,6 +257,12 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
     def smooth_=(v: Boolean) {
       smooth() = v
     }
+
+    def text = debugText.text
+    def text_=(v: String) {
+      debugText.text = v
+    }
+
   }
 }
 

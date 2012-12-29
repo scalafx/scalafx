@@ -46,7 +46,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    */
   def id = delegate.idProperty
   def id_=(v: String) {
-    id = v
+    id() = v
   }
 
   /**
@@ -54,7 +54,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    */
   def maxHeight = delegate.maxHeightProperty
   def maxHeight_=(v: Double) {
-    maxHeight = v
+    maxHeight() = v
   }
 
   /**
@@ -62,7 +62,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    */
   def maxWidth = delegate.maxWidthProperty
   def maxWidth_=(v: Double) {
-    maxWidth = v
+    maxWidth() = v
   }
 
   /**
@@ -70,7 +70,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    */
   def minHeight = delegate.minHeightProperty
   def minHeight_=(v: Double) {
-    minHeight = v
+    minHeight() = v
   }
 
   /**
@@ -78,7 +78,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    */
   def minWidth = delegate.minWidthProperty
   def minWidth_=(v: Double) {
-    minWidth = v
+    minWidth() = v
   }
 
   /**
@@ -87,7 +87,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    */
   def prefHeight = delegate.prefHeightProperty
   def prefHeight_=(v: Double) {
-    prefHeight = v
+    prefHeight() = v
   }
 
   /**
@@ -95,7 +95,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    */
   def prefWidth = delegate.prefWidthProperty
   def prefWidth_=(v: Double) {
-    prefWidth = v
+    prefWidth() = v
   }
 
   /**
@@ -103,7 +103,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    */
   def style = delegate.styleProperty
   def style_=(v: String) {
-    style = v
+    style() = v
   }
 
   def styleClass = delegate.getStyleClass
