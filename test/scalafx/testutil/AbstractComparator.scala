@@ -2,6 +2,7 @@ package scalafx.testutil
 
 import java.lang.reflect.Method
 import java.lang.reflect.Modifier
+import scala.annotation.tailrec
 
 private[testutil] trait AbstractComparator {
 
@@ -164,6 +165,7 @@ private[testutil] trait AbstractComparator {
    * @param javaMethodsNotMirrored Relation of javaMethods that are not reflected in the scalaMethods. Defaul value:
    * [[scala.Nil]].
    */
+  @tailrec
   private def compare(javaMethods: List[Method], scalaMethods: List[Method], javaMethodsNotMirrored: List[Method] = Nil): List[Method] = {
     javaMethods match {
       case Nil => javaMethodsNotMirrored
