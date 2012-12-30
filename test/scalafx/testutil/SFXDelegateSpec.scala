@@ -82,7 +82,7 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
 
   "A %s".format(scalaClass.getSimpleName) should "have an implicit conversion from SFX to JFX" in {
     // Test if the implicit conversion exists
-    sfx2jfx should not be (null)
+    assert(sfx2jfx != null, "There is not conversor from ScalaFX to JavaFX")
 
     // Test if conversion behaves correctly
     val sfxObject = getScalaClassInstance
@@ -93,7 +93,7 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
 
   it should "have an implicit conversion from JFX to SFX" in {
     // Test if the implicit conversion exists
-    jfx2sfx should not be (null)
+    assert(jfx2sfx != null, "There is not conversor from JavaFX to ScalaFX")
 
     // Test if conversion behaves correctly
     val jfxObject = getJavaClassInstance

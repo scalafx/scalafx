@@ -72,7 +72,7 @@ trait PropertyComparator
     val notAllowed = (n: String) => n == "applyTo" || n == "create" || n == "build" || super.isImplementation(n)
     
     val javaFxBuilderProperties = javafxClassBuilder.getDeclaredMethods // todo - this eventually needs to use: getMethods
-      .filter(m => Modifier.isPublic(m.getModifiers))
+      .filter(super.isPublicMethod)
       .map(_.getName)
       .filterNot(notAllowed)
       .toSet
