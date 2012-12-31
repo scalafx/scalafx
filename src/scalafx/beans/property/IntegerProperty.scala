@@ -38,7 +38,7 @@ object IntegerProperty {
    * @param value the initial value
    * @return      the observable instance
    */
-  implicit def apply(value: Int) = new IntegerProperty(new jfxbp.SimpleIntegerProperty(value))
+  def apply(value: Int) = new IntegerProperty(new jfxbp.SimpleIntegerProperty(value))
 }
 
 class IntegerProperty(override val delegate: jfxbp.IntegerProperty = new jfxbp.SimpleIntegerProperty)

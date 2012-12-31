@@ -38,7 +38,7 @@ object ObjectProperty {
    * @param value the initial value
    * @return      the observable instance
    */
-  implicit def apply[J <: AnyRef](value: J) = new ObjectProperty[J](new jfxbp.SimpleObjectProperty[J](value))
+ def apply[J <: AnyRef](value: J) = new ObjectProperty[J](new jfxbp.SimpleObjectProperty[J](value))
 
   /** Prototype solution to Issue 14 [[http://code.google.com/p/scalafx/issues/detail?id=14]].
     *

@@ -35,7 +35,7 @@ object ReadOnlyObjectWrapper {
   implicit def sfxReadOnlyObjectWrapper2jfx[J <: AnyRef](roow: ReadOnlyObjectWrapper[J]) = roow.delegate
 
   /** Creates a new ReadOnlyObjectWrapper instance with a given initial wrapped value. */
-  implicit def apply[J <: AnyRef](value: J) = new ReadOnlyObjectWrapper[J](new jfxbp.ReadOnlyObjectWrapper[J](value))
+  def apply[J <: AnyRef](value: J) = new ReadOnlyObjectWrapper[J](new jfxbp.ReadOnlyObjectWrapper[J](value))
 }
 
 

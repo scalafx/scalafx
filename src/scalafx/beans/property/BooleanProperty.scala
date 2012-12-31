@@ -38,7 +38,7 @@ object BooleanProperty {
    * @param value the initial value
    * @return      the observable instance
    */
-  implicit def apply(value:Boolean) =
+  def apply(value:Boolean) =
     new BooleanProperty(new jfxbp.SimpleBooleanProperty(value))
 }
 
