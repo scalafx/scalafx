@@ -10,6 +10,8 @@ import javafx.scene.paint.Color
 
 /**
  * Example for Issue 16 [[http://code.google.com/p/scalafx/issues/detail?id=16]] provided by "Alain.Fa...@gmail.com".
+ *
+ * When replacing the javafx.scene.paint.Color import by its ScalaFX counterpart, the rectangle will be BLUE forever
  */
 object World extends JFXApp {
   stage = new Stage {
@@ -23,6 +25,8 @@ object World extends JFXApp {
         y = 40
         width = 100
         height = 100
+        fill = Color.BLUE
+        // Problem is with incorrect behviour of the binding here.
         fill <== when(hover) then Color.GREEN otherwise Color.RED
       }
     }
