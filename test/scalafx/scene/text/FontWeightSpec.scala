@@ -39,5 +39,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class FontWeightSpec extends SFXEnumDelegateSpec[jfxst.FontWeight, FontWeight](
   javaClass = classOf[jfxst.FontWeight],
   scalaClass = classOf[FontWeight],
-  javaValueOfFun = (s: String) => jfxst.FontWeight.valueOf(s),
   companion = FontWeight)

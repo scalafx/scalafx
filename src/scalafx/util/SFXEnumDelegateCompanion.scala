@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.util
 
 /** Base trait for all Companion objects [[scalafx.util.SFXEnumDelegate]] subclasses. It mirrors static methods for
@@ -47,8 +46,8 @@ trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] 
   lazy val values: List[S] = unsortedValues.sortWith(_.delegate.ordinal < _.delegate.ordinal).toList
 
   /** Returns the `enum` constant of this type with the specified name. */
-  def valueOf(name: String) = values.find(_.name == name) match {
+  def apply(name: String) = values.find(_.name == name) match {
     case Some(e) => e
-    case None => throw new IllegalArgumentException("No enum constant %s.%s".format(values.head.getClass.getName, name))
+    case None    => throw new IllegalArgumentException("No enum constant %s.%s".format(values.head.getClass.getName, name))
   }
 }

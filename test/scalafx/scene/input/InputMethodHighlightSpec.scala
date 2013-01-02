@@ -39,5 +39,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class InputMethodHighlightSpec extends SFXEnumDelegateSpec[jfxsi.InputMethodHighlight, InputMethodHighlight](
   javaClass = classOf[jfxsi.InputMethodHighlight],
   scalaClass = classOf[InputMethodHighlight],
-  javaValueOfFun = (s: String) => jfxsi.InputMethodHighlight.valueOf(s),
   companion = InputMethodHighlight)

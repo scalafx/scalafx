@@ -43,15 +43,6 @@ class Dimension2DSpec
 
   override protected def getScalaClassInstance = new Dimension2D(0, 0)
 
-  protected def convertScalaClassToJavaClass(sfxObject: Dimension2D) = {
-    val jfxDimension2D: jfxg.Dimension2D = sfxObject
-    jfxDimension2D
-  }
-
   override protected def getJavaClassInstance = new jfxg.Dimension2D(0, 0)
 
-  protected def convertJavaClassToScalaClass(jfxObject: jfxg.Dimension2D) = {
-    val sfxDimension2D: Dimension2D = jfxObject
-    sfxDimension2D
-  }
 }

@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.geometry
 
 import javafx.{ geometry => jfxg }
@@ -43,15 +42,6 @@ class Rectangle2DSpec
 
   override protected def getScalaClassInstance = new Rectangle2D(0, 0, 0, 0)
 
-  protected def convertScalaClassToJavaClass(sfxObject: Rectangle2D) = {
-    val jfxRectangle2D: jfxg.Rectangle2D = sfxObject
-    jfxRectangle2D
-  }
-
   override protected def getJavaClassInstance = new jfxg.Rectangle2D(0, 0, 0, 0)
 
-  protected def convertJavaClassToScalaClass(jfxObject: jfxg.Rectangle2D) = {
-    val sfxRectangle2D: Rectangle2D = jfxObject
-    sfxRectangle2D
-  }
 }

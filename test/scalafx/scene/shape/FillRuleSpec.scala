@@ -39,6 +39,5 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class FillRuleSpec extends SFXEnumDelegateSpec[jfxss.FillRule, FillRule](
   javaClass = classOf[jfxss.FillRule],
   scalaClass = classOf[FillRule],
-  javaValueOfFun = (s: String) => jfxss.FillRule.valueOf(s),
   companion = FillRule)
 

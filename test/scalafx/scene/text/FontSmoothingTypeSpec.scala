@@ -39,5 +39,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class FontSmoothingTypeSpec extends SFXEnumDelegateSpec[jfxst.FontSmoothingType, FontSmoothingType](
   javaClass = classOf[jfxst.FontSmoothingType],
   scalaClass = classOf[FontSmoothingType],
-  javaValueOfFun = (s: String) => jfxst.FontSmoothingType.valueOf(s),
   companion = FontSmoothingType)

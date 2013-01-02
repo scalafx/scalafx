@@ -152,6 +152,12 @@ task(generateRunners, dependon: 'classes', description:"generates a UNIX bash sc
             out.println("scala -cp ${sourceSets.main.runtimeClasspath.getAsPath()}  scalafx.ColorfulCircles")
             "chmod 755 scalafx.ColorfulCircles".execute()
         }
+
+        new File("VideoCubeDemo").withWriter { out ->
+            out.println("#!/bin/bash")
+            out.println("scala -cp ${sourceSets.main.runtimeClasspath.getAsPath()}  scalafx.graphics3d.VideoCubeDemo")
+            "chmod 755 scalafx.ColorfulCircles".execute()
+        }
     }
 }
 
@@ -160,6 +166,11 @@ task(run, dependsOn: 'classes', type: JavaExec, description:"runs the colorful c
     classpath = sourceSets.main.runtimeClasspath
     args 'one', 'two', 'three'
     systemProperty 'simple.message', 'Hello '
+}
+
+task(runVideoCubeDemo, dependsOn: 'classes', type: JavaExec, description:"runs the colorful circles demo program") {
+    main = 'scalafx.graphics3d.VideoCubeDemo'
+    classpath = sourceSets.main.runtimeClasspath
 }
 
 // fini

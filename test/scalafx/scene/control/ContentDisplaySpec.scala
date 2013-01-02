@@ -39,5 +39,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class ContentDisplaySpec extends SFXEnumDelegateSpec[jfxsc.ContentDisplay, ContentDisplay](
   javaClass = classOf[jfxsc.ContentDisplay],
   scalaClass = classOf[ContentDisplay],
-  javaValueOfFun = (s: String) => jfxsc.ContentDisplay.valueOf(s),
   companion = ContentDisplay)

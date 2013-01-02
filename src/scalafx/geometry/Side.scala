@@ -26,7 +26,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
@@ -34,7 +33,9 @@ import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 
 /** Wrapper for [[javafx.geometry.Side]] */
-object Side extends SFXEnumDelegateCompanion[jfxg.Side, Side] {
+object Side
+  extends SFXEnumDelegateCompanion[jfxg.Side, Side] {
+
   val BOTTOM = new Side(jfxg.Side.BOTTOM)
   val LEFT = new Side(jfxg.Side.LEFT)
   val RIGHT = new Side(jfxg.Side.RIGHT)
@@ -44,8 +45,12 @@ object Side extends SFXEnumDelegateCompanion[jfxg.Side, Side] {
 }
 
 
-sealed case class Side(override val delegate: jfxg.Side) extends SFXEnumDelegate[jfxg.Side] {
+sealed case class Side(override val delegate: jfxg.Side)
+  extends SFXEnumDelegate[jfxg.Side] {
+  
+  /** Indicates whether this is horizontal side of a rectangle (returns true for `TOP` and `BOTTOM`). */
   def isHorizontal = delegate.isHorizontal
-
+  
+  /** Indicates whether this is vertical side of a rectangle (returns true for `LEFT` and `RIGHT`). */
   def isVertical = delegate.isVertical
 }

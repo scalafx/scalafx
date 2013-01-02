@@ -39,6 +39,5 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class DepthTestSpec extends SFXEnumDelegateSpec[jfxs.DepthTest, DepthTest](
   javaClass = classOf[jfxs.DepthTest],
   scalaClass = classOf[DepthTest],
-  javaValueOfFun = (s: String) => jfxs.DepthTest.valueOf(s),
   companion = DepthTest)
 

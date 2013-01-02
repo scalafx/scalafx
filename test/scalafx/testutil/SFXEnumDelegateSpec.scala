@@ -24,14 +24,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.testutil
 
-import java.util
-import org.scalatest.FlatSpec
-import org.scalatest.matchers.ShouldMatchers
-import scala.collection.JavaConversions.iterableAsScalaIterable
-import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+import java.lang.reflect.Method
+import java.util.EnumSet
+import scala.collection.JavaConversions._
+import scalafx.util.SFXEnumDelegate
+import scalafx.util.SFXEnumDelegateCompanion
 
 
 /** Abstract class that facilitates testing of wrappers for Java enums.
@@ -53,85 +52,90 @@ import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
   *  class HPosSpec extends SFXEnumDelegateSpec[jfxg.HPos, HPos](
   *    javaClass = classOf[jfxg.HPos],
   *    scalaClass = classOf[HPos],
-  *    javaValueOfFun = (s: String) => jfxg.HPos.valueOf(s),
   *    companion = HPos)
   * }}}
   *
-  * @tparam J JavaFX enum type
-  * @tparam S ScalaFX wrapper type
+  * @tparam E JavaFX enum class to be wrapped by SFXDelegate class
+  * @tparam S SFXEnumDelegate subclass that will wrap JavaFX class
   *
-  * @param javaClass JavaFX class
-  * @param scalaClass SFXDelegate subclass related with JavaFX class
-  * @param javaValueOfFun `J.valueOf(String)` function.
-  * @param companion companion object of the ScalaFX wrapper class.
+  * @param javaClass JavaFX Enum class
+  * @param scalaClass SFXEnumDelegate subclass related with JavaFX class
+  * @param companion companion object of the ScalaFX enum wrapper class.
+  * @param jfx2sfx Implicit conversion from JavaFX to ScalaFX, it should not be assigned,
+  *                it has to be resolved automatically by the compiler.
+  * @param sfx2jfx Implicit conversion from ScalaFX to JavaFX, it should not be assigned,
+  *                it has to be resolved automatically by the compiler.
   */
-class SFXEnumDelegateSpec[J <: Enum[J], S <: SFXEnumDelegate[J]](javaClass: Class[J],
-                                                                 scalaClass: Class[S],
-                                                                 javaValueOfFun: String => J,
-                                                                 companion: SFXEnumDelegateCompanion[J, S]
-                                                                  )(implicit jfx2sfx: J => S = null, sfx2jfx: S => J = null)
-  extends FlatSpec
-  with ShouldMatchers
-  with EnumComparator {
+abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] protected(javaClass: Class[E], scalaClass: Class[S], companion: SFXEnumDelegateCompanion[E, S])(implicit jfx2sfx: E => S = null, sfx2jfx: S => E = null)
+  extends SFXDelegateSpec[E, S](javaClass, scalaClass) {
 
-  private val javaValues = util.EnumSet.allOf(javaClass).toList
-  private val scalaClassName = scalaClass.getName
-  private val javaClassName = javaClass.getName
+  private val javaEnumConstants = EnumSet.allOf(javaClass)
 
-  "%s wrapper for JavaFX enum".format(scalaClassName) should "declare all public methods of " + javaClassName in {
+  private def nameIsPresent(name: String) = {
+    try {
+      val scalaEnum = companion(name)
+      true
+    } catch {
+      case e: IllegalArgumentException => false
+    }
+  }
+
+  private def assertScalaEnumWithOrdinal(s: S, index: Int): Unit =
+    assert(s.delegate.ordinal() == index, "%s - Expected position: %d, actual: %d".format(s, s.delegate.ordinal(), index))
+
+  protected def getDesirableMethodName(javaMethod: Method): String = JavaBeanEvaluator.scalaizePropertyNames(javaMethod)
+
+  /*
+   * Functionalities from static method "valueOf" (present in all java enums) are being replaced by apply method in 
+   * companions objects. Therefore, "valueOf" is being excluded from methods search.
+   */
+  protected def isSpecialMethodName(name: String) = super.isImplementation(name) ||
+    (name == "valueOf") || name.startsWith("is") || name.startsWith("get")
+
+  // Simply it gets the first constant available.
+  override protected def getScalaClassInstance = companion.values.toList.head
+
+  // Simply it gets the first constant available.
+  override protected def getJavaClassInstance = javaEnumConstants.iterator.next
+
+  /////////////////
+  // TESTS - BEGIN 
+  /////////////////
+
+  it should "declare all public declared methods of " + javaClass.getName in {
     compareDeclaredMethods(javaClass, scalaClass)
   }
 
-  it should "have implicit conversion JFX to SFX" in {
-    // Test if the implicit conversion exists
-    jfx2sfx should not be (null)
-    // Test if the implicit conversion behaves correctly
-    for (jfxObject <- javaValues) {
-      val sfxObject: S = jfxObject
-      sfxObject.delegate should be(jfxObject)
-    }
+  it should "presents all constants from its original JavaFX class" in {
+    val diff = javaEnumConstants -- companion.values.map(_.delegate)
+
+    assert(diff.isEmpty, "Missing constants: " + diff.mkString(", "))
   }
 
-  it should "have implicit conversion SFX to JFX" in {
-    // Test if the implicit conversion exists
-    sfx2jfx should not be (null)
-    // Test if the implicit conversion behaves correctly
-    for (sfxObject <- companion.values) {
-      val jfxObject: J = sfxObject
-      jfxObject should be(sfxObject.delegate)
-    }
-  }
+  it should "generate all ScalaFX enums from JavaFX enums names" in {
+    val missingJavaEnumNames = javaEnumConstants.map(_.name).filterNot(nameIsPresent(_))
 
-  it should "declare all public static methods of " + javaClassName in {
-    compareStaticMethods(javaClass, scalaClass)
-  }
-
-  it should "have the same number of values as " + javaClassName in {
-    companion.values.size should equal(javaValues.size)
-  }
-
-  it should "return values in the same order as " + javaClassName in {
-    companion.values zip javaValues foreach {p => p._1 should equal(p._2)}
-  }
-
-  it should "lookup the same values as " + javaClassName in {
-    javaValues foreach {jv => companion.valueOf(jv.toString) should equal(jv)}
-    companion.values foreach {sv => javaValueOfFun(sv.toString) should equal(sv.delegate)}
-  }
-
-  it should "return the same `toString`" in {
-    javaValues foreach {jv => companion.valueOf(jv.toString).toString should equal(jv.toString)}
+    assert(missingJavaEnumNames.isEmpty, "Missing constants: " + missingJavaEnumNames.mkString(", "))
   }
 
   it should "not find a non registered name among enum constants" in {
     intercept[IllegalArgumentException] {
-      companion.valueOf("!@#$%")
+      companion("!@#$%")
     }
   }
 
-  it should "thhrow `IllegalArgumentException` if the argument is `null`" in {
+  it should "throw `IllegalArgumentException` if the argument is `null`" in {
     intercept[IllegalArgumentException] {
-      companion.valueOf(null)
+      companion(null)
     }
   }
+
+  it should "presents its values at same order as its JavaFX enum ordinal" in {
+    companion.values.zipWithIndex.foreach({case (s, i) => assertScalaEnumWithOrdinal(s, i)})
+  }
+
+  ///////////////
+  // TESTS - END 
+  ///////////////
+
 }
