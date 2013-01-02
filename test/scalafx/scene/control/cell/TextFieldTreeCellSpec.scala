@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TextFieldTreeCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxscc.TextFieldTreeCell[T], TextFieldTreeCell[T], jfxscc.TextFieldTreeCellBuilder[T, _]](classOf[jfxscc.TextFieldTreeCell[T]], classOf[TextFieldTreeCell[T]], classOf[jfxscc.TextFieldTreeCellBuilder[T, _]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: TextFieldTreeCell[T]) = {
-    val jfxTextFieldTreeCell: jfxscc.TextFieldTreeCell[T] = sfxControl
-    jfxTextFieldTreeCell
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxscc.TextFieldTreeCell[T]) = {
-    val sfxTextFieldTreeCell: TextFieldTreeCell[T] = jfxControl
-    sfxTextFieldTreeCell
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxscc.TextFieldTreeCell[T], TextFieldTreeCell[T], jfxscc.TextFieldTreeCellBuilder[T, _]](classOf[jfxscc.TextFieldTreeCell[T]], classOf[TextFieldTreeCell[T]], classOf[jfxscc.TextFieldTreeCellBuilder[T, _]])

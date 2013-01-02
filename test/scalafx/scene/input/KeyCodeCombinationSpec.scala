@@ -41,16 +41,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class KeyCodeCombinationSpec
   extends AbstractSFXDelegateSpec[jfxsi.KeyCodeCombination, KeyCodeCombination, jfxsi.KeyCodeCombinationBuilder](classOf[jfxsi.KeyCodeCombination], classOf[KeyCodeCombination], classOf[jfxsi.KeyCodeCombinationBuilder]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: KeyCodeCombination) = {
-    val jfxKeyCodeCombination: jfxsi.KeyCodeCombination = sfxControl
-    jfxKeyCodeCombination
-  }
-
   override protected def getJavaClassInstance = new jfxsi.KeyCodeCombination(jfxsi.KeyCode.A)
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsi.KeyCodeCombination) = {
-    val sfxKeyCodeCombination: KeyCodeCombination = jfxControl
-    sfxKeyCodeCombination
-  }
 
 }

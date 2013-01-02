@@ -44,14 +44,4 @@ class NumberStringConverterSpec
   val examples = List((new java.lang.Integer(10), "10"), (new java.lang.Integer(0), "0"),
     (new java.lang.Integer(-10), "-10"))
 
-  protected def convertScalaClassToJavaClass(sfxControl: NumberStringConverter) = {
-    val jfxNumberStringConverter: jfxuc.NumberStringConverter = sfxControl
-    jfxNumberStringConverter
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxuc.NumberStringConverter) = {
-    val sfxNumberStringConverter: NumberStringConverter = jfxControl
-    sfxNumberStringConverter
-  }
-
 }

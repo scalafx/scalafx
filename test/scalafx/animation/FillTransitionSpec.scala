@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class FillTransitionSpec
-  extends AbstractSFXDelegateSpec[jfxa.FillTransition, FillTransition, jfxa.FillTransitionBuilder](classOf[jfxa.FillTransition], classOf[FillTransition], classOf[jfxa.FillTransitionBuilder]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: FillTransition) = {
-    val jfxFillTransition: jfxa.FillTransition = sfxControl
-    jfxFillTransition
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxa.FillTransition) = {
-    val sfxFillTransition: FillTransition = jfxControl
-    sfxFillTransition
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxa.FillTransition, FillTransition, jfxa.FillTransitionBuilder](classOf[jfxa.FillTransition], classOf[FillTransition], classOf[jfxa.FillTransitionBuilder])

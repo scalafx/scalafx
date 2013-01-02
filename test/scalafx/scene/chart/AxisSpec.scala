@@ -43,11 +43,6 @@ class AxisSpec[T]
 
   override def getScalaClassInstance = new Axis[T](getJavaClassInstance) {}
 
-  protected def convertScalaClassToJavaClass(sfxAxis: Axis[T]) = {
-    val jfxAxis: jfxsc.Axis[T] = sfxAxis
-    jfxAxis
-  }
-
   override def getJavaClassInstance = new jfxsc.Axis[T] {
     protected def autoRange(length: Double) = null
     protected def calculateTickValues(length: Double, range: Any) = new java.util.ArrayList[T]
@@ -60,11 +55,6 @@ class AxisSpec[T]
     protected def setRange(range: Any, animate: Boolean) {}
     protected def toNumericValue(value: T) = 0.0
     protected def toRealValue(value: Double) = null.asInstanceOf[T]
-  }
-
-  protected def convertJavaClassToScalaClass(jfxAxis: jfxsc.Axis[T]) = {
-    val sfxAxis: Axis[T] = jfxAxis
-    sfxAxis
   }
 
 }

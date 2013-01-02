@@ -40,16 +40,4 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ParallelCameraSpec
-  extends SimpleSFXDelegateSpec[jfxs.ParallelCamera, ParallelCamera](classOf[jfxs.ParallelCamera], classOf[ParallelCamera]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ParallelCamera) = {
-    val jfxParallelCamera: jfxs.ParallelCamera = sfxControl
-    jfxParallelCamera
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxs.ParallelCamera) = {
-    val sfxParallelCamera: ParallelCamera = jfxControl
-    sfxParallelCamera
-  }
-
-}
+  extends SimpleSFXDelegateSpec[jfxs.ParallelCamera, ParallelCamera](classOf[jfxs.ParallelCamera], classOf[ParallelCamera])

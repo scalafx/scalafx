@@ -41,16 +41,6 @@ import org.scalatest.junit.JUnitRunner
 class RadioMenuItemSpec
   extends AbstractSFXDelegateSpec[jfxsc.RadioMenuItem, RadioMenuItem, jfxsc.RadioMenuItemBuilder[_]](classOf[jfxsc.RadioMenuItem], classOf[RadioMenuItem], classOf[jfxsc.RadioMenuItemBuilder[_]]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: RadioMenuItem) = {
-    val jfxRadioMenuItem: jfxsc.RadioMenuItem = sfxControl
-    jfxRadioMenuItem
-  }
-  
   override def getJavaClassInstance = new jfxsc.RadioMenuItem("")
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.RadioMenuItem) = {
-    val sfxRadioMenuItem: RadioMenuItem = jfxControl
-    sfxRadioMenuItem
-  }
 
 }

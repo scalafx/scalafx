@@ -45,14 +45,4 @@ class ImageInputSpec
 
   val positionDelegate = new ImageInput
 
-  protected def convertScalaClassToJavaClass(sfxObject: ImageInput) = {
-    val jfxImageInput: jfxse.ImageInput = sfxObject
-    jfxImageInput
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.ImageInput) = {
-    val sfxImageInput: ImageInput = jfxObject
-    sfxImageInput
-  }
-
 }

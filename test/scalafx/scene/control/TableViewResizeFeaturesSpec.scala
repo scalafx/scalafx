@@ -40,16 +40,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 class TableViewResizeFeaturesSpec[S]
   extends SimpleSFXDelegateSpec[jfxsc.TableView.ResizeFeatures[S], TableView.ResizeFeatures[S]](classOf[jfxsc.TableView.ResizeFeatures[S]], classOf[TableView.ResizeFeatures[S]]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: TableView.ResizeFeatures[S]) = {
-    val jfxTableCell: jfxsc.TableView.ResizeFeatures[S] = sfxControl
-    jfxTableCell
-  }
-
   override def getJavaClassInstance = new jfxsc.TableView.ResizeFeatures(null, null, 0)
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TableView.ResizeFeatures[S]) = {
-    val sfxTableCell: TableView.ResizeFeatures[S] = jfxControl
-    sfxTableCell
-  }
 
 }

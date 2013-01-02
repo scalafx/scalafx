@@ -38,16 +38,4 @@ import scalafx.Includes._
  */
 @RunWith(classOf[JUnitRunner])
 class ProgressIndicatorSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ProgressIndicator, ProgressIndicator, jfxsc.ProgressIndicatorBuilder[_]](classOf[jfxsc.ProgressIndicator], classOf[ProgressIndicator], classOf[jfxsc.ProgressIndicatorBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ProgressIndicator) = {
-    val jfxProgressIndicator: jfxsc.ProgressIndicator = sfxControl
-    jfxProgressIndicator
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ProgressIndicator) = {
-    val sfxProgressIndicator: ProgressIndicator = jfxControl
-    sfxProgressIndicator
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.ProgressIndicator, ProgressIndicator, jfxsc.ProgressIndicatorBuilder[_]](classOf[jfxsc.ProgressIndicator], classOf[ProgressIndicator], classOf[jfxsc.ProgressIndicatorBuilder[_]])

@@ -39,16 +39,4 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class XYChartData
-  extends SimpleSFXDelegateSpec[jfxsc.XYChart.Data[Int, Int], XYChart.Data[Int, Int]](classOf[jfxsc.XYChart.Data[Int, Int]], classOf[XYChart.Data[Int, Int]]) {
-
-  protected def convertScalaClassToJavaClass(sfxAxisTickMark: XYChart.Data[Int, Int]) = {
-    val jfxAxisTickMark: jfxsc.XYChart.Data[Int, Int] = sfxAxisTickMark
-    jfxAxisTickMark
-  }
-
-  protected def convertJavaClassToScalaClass(jfxAxisTickMark: jfxsc.XYChart.Data[Int, Int]) = {
-    val sfxAxisTickMark: XYChart.Data[Int, Int] = jfxAxisTickMark
-    sfxAxisTickMark
-  }
-
-}
+  extends SimpleSFXDelegateSpec[jfxsc.XYChart.Data[Int, Int], XYChart.Data[Int, Int]](classOf[jfxsc.XYChart.Data[Int, Int]], classOf[XYChart.Data[Int, Int]])

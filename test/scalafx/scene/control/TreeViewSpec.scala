@@ -38,16 +38,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class TreeViewSpec[T]
-  extends AbstractSFXDelegateSpec[jfxsc.TreeView[T], TreeView[T], jfxsc.TreeViewBuilder[T, _]](classOf[jfxsc.TreeView[T]], classOf[TreeView[T]], classOf[jfxsc.TreeViewBuilder[T, _]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: TreeView[T]) = {
-    val jfxTreeView: jfxsc.TreeView[T] = sfxControl
-    jfxTreeView
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TreeView[T]) = {
-    val sfxtoolBar: TreeView[T] = jfxControl
-    sfxtoolBar
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.TreeView[T], TreeView[T], jfxsc.TreeViewBuilder[T, _]](classOf[jfxsc.TreeView[T]], classOf[TreeView[T]], classOf[jfxsc.TreeViewBuilder[T, _]])

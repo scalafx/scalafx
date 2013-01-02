@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ChoiceBoxListCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxscc.ChoiceBoxListCell[T], ChoiceBoxListCell[T], jfxscc.ChoiceBoxListCellBuilder[T, _]](classOf[jfxscc.ChoiceBoxListCell[T]], classOf[ChoiceBoxListCell[T]], classOf[jfxscc.ChoiceBoxListCellBuilder[T, _]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ChoiceBoxListCell[T]) = {
-    val jfxChoiceBoxListCell: jfxscc.ChoiceBoxListCell[T] = sfxControl
-    jfxChoiceBoxListCell
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxscc.ChoiceBoxListCell[T]) = {
-    val sfxChoiceBoxListCell: ChoiceBoxListCell[T] = jfxControl
-    sfxChoiceBoxListCell
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxscc.ChoiceBoxListCell[T], ChoiceBoxListCell[T], jfxscc.ChoiceBoxListCellBuilder[T, _]](classOf[jfxscc.ChoiceBoxListCell[T]], classOf[ChoiceBoxListCell[T]], classOf[jfxscc.ChoiceBoxListCellBuilder[T, _]])

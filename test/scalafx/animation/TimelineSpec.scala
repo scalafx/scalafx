@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TimelineSpec 
-  extends AbstractSFXDelegateSpec[jfxa.Timeline, Timeline, jfxa.TimelineBuilder](classOf[jfxa.Timeline], classOf[Timeline], classOf[jfxa.TimelineBuilder]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: Timeline) = {
-    val jfxTimeline: jfxa.Timeline = sfxControl
-    jfxTimeline
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxa.Timeline) = {
-    val sfxTimeline: Timeline = jfxControl
-    sfxTimeline
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxa.Timeline, Timeline, jfxa.TimelineBuilder](classOf[jfxa.Timeline], classOf[Timeline], classOf[jfxa.TimelineBuilder])

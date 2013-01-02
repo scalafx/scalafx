@@ -48,15 +48,5 @@ class WritableImageSpec
 
   override protected def getScalaClassInstance = new WritableImage(getJavaClassInstance)
 
-  protected def convertScalaClassToJavaClass(sfxWritableImage: WritableImage) = {
-    val jfxWritableImage: jfxsi.WritableImage = sfxWritableImage
-    jfxWritableImage
-  }
-
   override protected def getJavaClassInstance = new jfxsi.WritableImage(1, 1)
-
-  protected def convertJavaClassToScalaClass(jfxWritableImage: jfxsi.WritableImage) = {
-    val sfxWritableImage: WritableImage = jfxWritableImage
-    sfxWritableImage
-  }
 }

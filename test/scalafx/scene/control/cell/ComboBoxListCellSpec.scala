@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ComboBoxListCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxscc.ComboBoxListCell[T], ComboBoxListCell[T], jfxscc.ComboBoxListCellBuilder[T, _]](classOf[jfxscc.ComboBoxListCell[T]], classOf[ComboBoxListCell[T]], classOf[jfxscc.ComboBoxListCellBuilder[T, _]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ComboBoxListCell[T]) = {
-    val jfxComboBoxListCell: jfxscc.ComboBoxListCell[T] = sfxControl
-    jfxComboBoxListCell
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxscc.ComboBoxListCell[T]) = {
-    val sfxComboBoxListCell: ComboBoxListCell[T] = jfxControl
-    sfxComboBoxListCell
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxscc.ComboBoxListCell[T], ComboBoxListCell[T], jfxscc.ComboBoxListCellBuilder[T, _]](classOf[jfxscc.ComboBoxListCell[T]], classOf[ComboBoxListCell[T]], classOf[jfxscc.ComboBoxListCellBuilder[T, _]])

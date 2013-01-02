@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class SeparatorSpec
-  extends AbstractSFXDelegateSpec[jfxsc.Separator, Separator, jfxsc.SeparatorBuilder[_]](classOf[jfxsc.Separator], classOf[Separator], classOf[jfxsc.SeparatorBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: Separator) = {
-    val jfxSeparator: jfxsc.Separator = sfxControl
-    jfxSeparator
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Separator) = {
-    val sfxSeparator: Separator = jfxControl
-    sfxSeparator
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.Separator, Separator, jfxsc.SeparatorBuilder[_]](classOf[jfxsc.Separator], classOf[Separator], classOf[jfxsc.SeparatorBuilder[_]])

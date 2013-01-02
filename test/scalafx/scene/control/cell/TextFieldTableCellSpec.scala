@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TextFieldTableCellSpec[S, T]
-  extends AbstractSFXDelegateSpec[jfxscc.TextFieldTableCell[S, T], TextFieldTableCell[S, T], jfxscc.TextFieldTableCellBuilder[S, T, _]](classOf[jfxscc.TextFieldTableCell[S, T]], classOf[TextFieldTableCell[S, T]], classOf[jfxscc.TextFieldTableCellBuilder[S, T, _]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: TextFieldTableCell[S, T]) = {
-    val jfxTextFieldTableCell: jfxscc.TextFieldTableCell[S, T] = sfxControl
-    jfxTextFieldTableCell
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxscc.TextFieldTableCell[S, T]) = {
-    val sfxTextFieldTableCell: TextFieldTableCell[S, T] = jfxControl
-    sfxTextFieldTableCell
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxscc.TextFieldTableCell[S, T], TextFieldTableCell[S, T], jfxscc.TextFieldTableCellBuilder[S, T, _]](classOf[jfxscc.TextFieldTableCell[S, T]], classOf[TextFieldTableCell[S, T]], classOf[jfxscc.TextFieldTableCellBuilder[S, T, _]])

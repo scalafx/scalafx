@@ -44,16 +44,6 @@ class PathElementSpec
 
   override protected def getScalaClassInstance = new ClosePath
 
-  protected def convertScalaClassToJavaClass(sfxPathElement: PathElement) = {
-    val jfxPathElement: jfxss.PathElement = sfxPathElement
-    jfxPathElement
-  }
-
   override def getJavaClassInstance = new jfxss.ClosePath
   
-  protected def convertJavaClassToScalaClass(jfxPathElement: jfxss.PathElement) = {
-    val sfxPathElement: PathElement = jfxPathElement
-    sfxPathElement
-  }
-
 }

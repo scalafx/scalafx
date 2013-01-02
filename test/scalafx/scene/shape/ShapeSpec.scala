@@ -44,16 +44,6 @@ class ShapeSpec
 
   override protected def getScalaClassInstance = new Rectangle
 
-  protected def convertScalaClassToJavaClass(sfxShape: Shape) = {
-    val jfxShape: jfxss.Shape = sfxShape
-    jfxShape
-  }
-
   override def getJavaClassInstance = new jfxss.Rectangle
-
-  protected def convertJavaClassToScalaClass(jfxShape: jfxss.Shape) = {
-    val sfxShape: Shape = jfxShape
-    sfxShape
-  }
 
 }

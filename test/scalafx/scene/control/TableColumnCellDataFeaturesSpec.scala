@@ -40,16 +40,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 class TableColumnCellDataFeaturesSpec[S, T]
   extends SimpleSFXDelegateSpec[jfxsc.TableColumn.CellDataFeatures[S, T], TableColumn.CellDataFeatures[S, T]](classOf[jfxsc.TableColumn.CellDataFeatures[S, T]], classOf[TableColumn.CellDataFeatures[S, T]]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: TableColumn.CellDataFeatures[S, T]) = {
-    val jfxTableCell: jfxsc.TableColumn.CellDataFeatures[S, T] = sfxControl
-    jfxTableCell
-  }
-
   override def getJavaClassInstance = new jfxsc.TableColumn.CellDataFeatures(null, null, null.asInstanceOf[S])
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TableColumn.CellDataFeatures[S, T]) = {
-    val sfxTableCell: TableColumn.CellDataFeatures[S, T] = jfxControl
-    sfxTableCell
-  }
 
 }

@@ -46,16 +46,6 @@ class PopupPopupWindowSpec
 
   override protected def getScalaClassInstance = new PopupWindow(this.getJavaClassInstance) {}
 
-  protected def convertScalaClassToJavaClass(sfxControl: PopupWindow) = {
-    val jfxPopupWindow: jfxs.PopupWindow = sfxControl
-    jfxPopupWindow
-  }
-
   override protected def getJavaClassInstance = new jfxs.PopupWindow {}
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxs.PopupWindow) = {
-    val sfxPopupWindow: PopupWindow = jfxControl
-    sfxPopupWindow
-  }
 
 }

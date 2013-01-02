@@ -43,16 +43,6 @@ class PopupFeaturesSpec
 
   override protected def getScalaClassInstance = new PopupFeatures(true, true, true, true)
 
-  protected def convertScalaClassToJavaClass(sfxControl: PopupFeatures) = {
-    val jfxPopupFeatures: jfxsw.PopupFeatures = sfxControl
-    jfxPopupFeatures
-  }
-
   override protected def getJavaClassInstance = new jfxsw.PopupFeatures(true, true, true, true)
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsw.PopupFeatures) = {
-    val sfxPopupFeatures: PopupFeatures = jfxControl
-    sfxPopupFeatures
-  }
 
 }

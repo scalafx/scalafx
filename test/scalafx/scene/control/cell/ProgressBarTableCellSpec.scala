@@ -38,16 +38,4 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ProgressBarTableCellSpec[S]
-  extends SimpleSFXDelegateSpec[jfxscc.ProgressBarTableCell[S], ProgressBarTableCell[S]](classOf[jfxscc.ProgressBarTableCell[S]], classOf[ProgressBarTableCell[S]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ProgressBarTableCell[S]) = {
-    val jfxProgressBarTableCell: jfxscc.ProgressBarTableCell[S] = sfxControl
-    jfxProgressBarTableCell
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxscc.ProgressBarTableCell[S]) = {
-    val sfxProgressBarTableCell: ProgressBarTableCell[S] = jfxControl
-    sfxProgressBarTableCell
-  }
-
-}
+  extends SimpleSFXDelegateSpec[jfxscc.ProgressBarTableCell[S], ProgressBarTableCell[S]](classOf[jfxscc.ProgressBarTableCell[S]], classOf[ProgressBarTableCell[S]])

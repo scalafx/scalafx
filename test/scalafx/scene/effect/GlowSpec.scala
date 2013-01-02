@@ -43,14 +43,4 @@ class GlowSpec
 
   val inputDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxObject: Glow) = {
-    val jfxGlow: jfxse.Glow = sfxObject
-    jfxGlow
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.Glow) = {
-    val sfxGlow: Glow = jfxObject
-    sfxGlow
-  }
-
 }

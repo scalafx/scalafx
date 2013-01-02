@@ -45,14 +45,4 @@ class CubicCurveToSpec
 
   val positionDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxCubicCurveTo: CubicCurveTo) = {
-    val jfxCubicCurveTo: jfxss.CubicCurveTo = sfxCubicCurveTo
-    jfxCubicCurveTo
-  }
-
-  protected def convertJavaClassToScalaClass(jfxCubicCurveTo: jfxss.CubicCurveTo) = {
-    val sfxCubicCurveTo: CubicCurveTo = jfxCubicCurveTo
-    sfxCubicCurveTo
-  }
-
 }

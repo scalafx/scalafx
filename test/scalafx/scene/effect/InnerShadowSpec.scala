@@ -50,14 +50,4 @@ class InnerShadowSpec
 
   val inputDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxObject: InnerShadow) = {
-    val jfxInnerShadow: jfxse.InnerShadow = sfxObject
-    jfxInnerShadow
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.InnerShadow) = {
-    val sfxInnerShadow: InnerShadow = jfxObject
-    sfxInnerShadow
-  }
-
 }

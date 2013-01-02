@@ -43,16 +43,6 @@ import scala.collection.JavaConversions._
 class StopSpec
   extends AbstractSFXDelegateSpec[jfxsp.Stop, Stop, jfxsp.StopBuilder](classOf[jfxsp.Stop], classOf[Stop], classOf[jfxsp.StopBuilder]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: Stop) = {
-    val jfxStop: jfxsp.Stop = sfxControl
-    jfxStop
-  }
-
   override protected def getJavaClassInstance = new jfxsp.Stop(0, 0)
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsp.Stop) = {
-    val sfxStop: Stop = jfxControl
-    sfxStop
-  }
 
 }

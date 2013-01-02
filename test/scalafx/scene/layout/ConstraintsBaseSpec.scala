@@ -44,16 +44,6 @@ class ConstraintsBaseSpec
 
   override protected def getScalaClassInstance = new RowConstraints
 
-  protected def convertScalaClassToJavaClass(sfxControl: ConstraintsBase) = {
-    val jfxConstraintsBase: jfxsl.ConstraintsBase = sfxControl
-    jfxConstraintsBase
-  }
-
   override protected def getJavaClassInstance = new jfxsl.RowConstraints
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.ConstraintsBase) = {
-    val sfxConstraintsBase: ConstraintsBase = jfxControl
-    sfxConstraintsBase
-  }
 
 }

@@ -42,16 +42,6 @@ class ComboBoxBaseSpec[J]
 
   override protected def getScalaClassInstance = new ComboBoxBase[J](getJavaClassInstance) {}
 
-  protected def convertScalaClassToJavaClass(sfxControl: ComboBoxBase[J]) = {
-    val jfxComboBoxBase: jfxsc.ComboBoxBase[J] = sfxControl
-    jfxComboBoxBase
-  }
-
   override protected def getJavaClassInstance = new jfxsc.ComboBoxBase[J] {}
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ComboBoxBase[J]) = {
-    val sfxComboBoxBase: ComboBoxBase[J] = jfxControl
-    sfxComboBoxBase
-  }
 
 }

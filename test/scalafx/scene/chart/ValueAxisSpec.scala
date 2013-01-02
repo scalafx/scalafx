@@ -43,22 +43,12 @@ class ValueAxisSpec[T <: Number]
 
   override def getScalaClassInstance = new ValueAxis[T](getJavaClassInstance) {}
 
-  protected def convertScalaClassToJavaClass(sfxValueAxis: ValueAxis[T]) = {
-    val jfxValueAxis: jfxsc.ValueAxis[T] = sfxValueAxis
-    jfxValueAxis
-  }
-
   override def getJavaClassInstance = new jfxsc.ValueAxis[T] {
     protected def calculateMinorTickMarks = new java.util.ArrayList[T]
     protected def calculateTickValues(length: Double, range: Any) = new java.util.ArrayList[T]
     protected def getRange = null
     protected def getTickMarkLabel(value: T) = ""
     protected def setRange(range: Any, animate: Boolean) {}
-  }
-
-  protected def convertJavaClassToScalaClass(jfxValueAxis: jfxsc.ValueAxis[T]) = {
-    val sfxValueAxis: ValueAxis[T] = jfxValueAxis
-    sfxValueAxis
   }
 
 }

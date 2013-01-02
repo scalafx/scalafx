@@ -45,14 +45,4 @@ class PerspectiveTransformSpec
 
   val inputDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxObject: PerspectiveTransform) = {
-    val jfxPerspectiveTransform: jfxse.PerspectiveTransform = sfxObject
-    jfxPerspectiveTransform
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.PerspectiveTransform) = {
-    val sfxPerspectiveTransform: PerspectiveTransform = jfxObject
-    sfxPerspectiveTransform
-  }
-
 }

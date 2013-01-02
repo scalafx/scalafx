@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class PathTransitionSpec 
-  extends AbstractSFXDelegateSpec[jfxa.PathTransition, PathTransition, jfxa.PathTransitionBuilder](classOf[jfxa.PathTransition], classOf[PathTransition], classOf[jfxa.PathTransitionBuilder]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: PathTransition) = {
-    val jfxPathTransition: jfxa.PathTransition = sfxControl
-    jfxPathTransition
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxa.PathTransition) = {
-    val sfxPathTransition: PathTransition = jfxControl
-    sfxPathTransition
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxa.PathTransition, PathTransition, jfxa.PathTransitionBuilder](classOf[jfxa.PathTransition], classOf[PathTransition], classOf[jfxa.PathTransitionBuilder])

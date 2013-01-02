@@ -47,14 +47,4 @@ class PercentageStringConverterSpec
 
   override protected def getScalaClassInstance = new PercentageStringConverter(Locale.US)
 
-  protected def convertScalaClassToJavaClass(sfxControl: PercentageStringConverter) = {
-    val jfxPercentageStringConverter: jfxuc.PercentageStringConverter = sfxControl
-    jfxPercentageStringConverter
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxuc.PercentageStringConverter) = {
-    val sfxPercentageStringConverter: PercentageStringConverter = jfxControl
-    sfxPercentageStringConverter
-  }
-
 }

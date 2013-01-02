@@ -40,17 +40,6 @@ class MenuButtonSpec
 
   override protected def getScalaClassInstance = new MenuButton(new jfxsc.MenuButton())
 
-  protected def convertScalaClassToJavaClass(sfxControl: MenuButton) = {
-    val jfxMenuButton: jfxsc.MenuButton = sfxControl
-    jfxMenuButton
-  }
-
   override protected def getJavaClassInstance = new jfxsc.MenuButton()
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.MenuButton) = {
-    val sfxMenuButton: MenuButton = jfxControl
-    sfxMenuButton
-  }
-
 
 }

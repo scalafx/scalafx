@@ -40,16 +40,4 @@ import scalafx.testutil.PositionDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class CubicCurveSpec
-  extends AbstractSFXDelegateSpec[jfxss.CubicCurve, CubicCurve, jfxss.CubicCurveBuilder[_]](classOf[jfxss.CubicCurve], classOf[CubicCurve], classOf[jfxss.CubicCurveBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxCubicCurve: CubicCurve) = {
-    val jfxCubicCurve: jfxss.CubicCurve = sfxCubicCurve
-    jfxCubicCurve
-  }
-
-  protected def convertJavaClassToScalaClass(jfxCubicCurve: jfxss.CubicCurve) = {
-    val sfxCubicCurve: CubicCurve = jfxCubicCurve
-    sfxCubicCurve
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxss.CubicCurve, CubicCurve, jfxss.CubicCurveBuilder[_]](classOf[jfxss.CubicCurve], classOf[CubicCurve], classOf[jfxss.CubicCurveBuilder[_]])

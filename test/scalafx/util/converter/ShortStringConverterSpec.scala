@@ -43,14 +43,4 @@ class ShortStringConverterSpec
   val examples = List((0.toShort, "0"), (123.toShort, "123"), (-123.toShort, "-123"),
     (Short.MaxValue, Short.MaxValue.toString), (Short.MinValue, Short.MinValue.toString))
 
-  protected def convertScalaClassToJavaClass(sfxControl: ShortStringConverter) = {
-    val jfxShortStringConverter: jfxuc.ShortStringConverter = sfxControl
-    jfxShortStringConverter
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxuc.ShortStringConverter) = {
-    val sfxShortStringConverter: ShortStringConverter = jfxControl
-    sfxShortStringConverter
-  }
-
 }

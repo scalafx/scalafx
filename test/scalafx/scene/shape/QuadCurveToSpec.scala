@@ -46,14 +46,4 @@ class QuadCurveToSpec
 
   val positionDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxQuadCurveTo: QuadCurveTo) = {
-    val jfxQuadCurveTo: jfxss.QuadCurveTo = sfxQuadCurveTo
-    jfxQuadCurveTo
-  }
-
-  protected def convertJavaClassToScalaClass(jfxQuadCurveTo: jfxss.QuadCurveTo) = {
-    val sfxQuadCurveTo: QuadCurveTo = jfxQuadCurveTo
-    sfxQuadCurveTo
-  }
-
 }

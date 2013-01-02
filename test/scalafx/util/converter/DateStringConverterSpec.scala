@@ -46,14 +46,4 @@ class DateStringConverterSpec
 
   override protected def getConverterForExample = new DateStringConverter("dd/MM/yyyy")
 
-  protected def convertScalaClassToJavaClass(sfxControl: DateStringConverter) = {
-    val jfxDateStringConverter: jfxuc.DateStringConverter = sfxControl.delegate
-    jfxDateStringConverter
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxuc.DateStringConverter) = {
-    val sfxDateStringConverter: DateStringConverter = jfxControl
-    sfxDateStringConverter
-  }
-
 }

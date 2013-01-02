@@ -41,16 +41,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 class WebEventSpec[T]
   extends SimpleSFXDelegateSpec[jfxsw.WebEvent[T], WebEvent[T]](classOf[jfxsw.WebEvent[T]], classOf[WebEvent[T]]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: WebEvent[_]) = {
-    val jfxWebEvent: jfxsw.WebEvent[_] = sfxControl
-    jfxWebEvent
-  }
-
   override protected def getJavaClassInstance = new jfxsw.WebEvent[T](null, null, null.asInstanceOf[T])
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsw.WebEvent[T]) = {
-    val sfxWebEvent: WebEvent[T] = jfxControl
-    sfxWebEvent
-  }
 
 }

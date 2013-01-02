@@ -40,16 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class FlowPaneSpec
-  extends AbstractSFXDelegateSpec[jfxsl.FlowPane, FlowPane, jfxsl.FlowPaneBuilder[_]](classOf[jfxsl.FlowPane], classOf[FlowPane], classOf[jfxsl.FlowPaneBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: FlowPane) = {
-    val jfxFlowPane: jfxsl.FlowPane = sfxControl
-    jfxFlowPane
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.FlowPane) = {
-    val sfxFlowPane: FlowPane = jfxControl
-    sfxFlowPane
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsl.FlowPane, FlowPane, jfxsl.FlowPaneBuilder[_]](classOf[jfxsl.FlowPane], classOf[FlowPane], classOf[jfxsl.FlowPaneBuilder[_]])

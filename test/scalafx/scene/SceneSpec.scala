@@ -46,16 +46,6 @@ class SceneSpec
 
   override protected def getScalaClassInstance = new Scene(getJavaClassInstance)
 
-  protected def convertScalaClassToJavaClass(sfxControl: Scene) = {
-    val jfxScene: jfxs.Scene = sfxControl
-    jfxScene
-  }
-
   override protected def getJavaClassInstance = new jfxs.Scene(new jfxs.Group)
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxs.Scene) = {
-    val sfxScene: Scene = jfxControl
-    sfxScene
-  }
 
 }
