@@ -44,7 +44,7 @@ object HPos
   /** Indicates right horizontal position. */
   val RIGHT = new HPos(jfxg.HPos.RIGHT)
 
-  protected def unsortedValues: Array[HPos] = Array(LEFT, CENTER, RIGHT)
+  protected override def unsortedValues: Array[HPos] = Array(LEFT, CENTER, RIGHT)
 }
 
 

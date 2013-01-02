@@ -41,7 +41,7 @@ object HorizontalDirection
   /** A direction to the right. */
   val RIGHT = new HorizontalDirection(jfxg.HorizontalDirection.RIGHT)
 
-  protected def unsortedValues: Array[HorizontalDirection] = Array(LEFT, RIGHT)
+  protected override def unsortedValues: Array[HorizontalDirection] = Array(LEFT, RIGHT)
 }
 
 

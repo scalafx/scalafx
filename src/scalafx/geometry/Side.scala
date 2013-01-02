@@ -41,7 +41,7 @@ object Side
   val RIGHT = new Side(jfxg.Side.RIGHT)
   val TOP = new Side(jfxg.Side.TOP)
 
-  protected def unsortedValues: Array[Side] = Array(TOP, BOTTOM, LEFT, RIGHT)
+  protected override def unsortedValues: Array[Side] = Array(TOP, BOTTOM, LEFT, RIGHT)
 }
 
 

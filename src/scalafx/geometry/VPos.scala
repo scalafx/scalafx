@@ -46,7 +46,7 @@ object VPos
   /** Indicates top vertical position. */
   val TOP = new VPos(jfxg.VPos.TOP)
 
-  protected def unsortedValues: Array[VPos] = Array(TOP, CENTER, BASELINE, BOTTOM)
+  protected override def unsortedValues: Array[VPos] = Array(TOP, CENTER, BASELINE, BOTTOM)
 }
 
 

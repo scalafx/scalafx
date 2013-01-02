@@ -42,7 +42,9 @@ object ContentDisplay extends SFXEnumDelegateCompanion[jfxsc.ContentDisplay, Con
   val TEXT_ONLY = new ContentDisplay(jfxsc.ContentDisplay.TEXT_ONLY)
   val TOP = new ContentDisplay(jfxsc.ContentDisplay.TOP)
 
-  protected def unsortedValues: Array[ContentDisplay] = Array(TOP, RIGHT, BOTTOM, LEFT, CENTER, GRAPHIC_ONLY, TEXT_ONLY)
+  protected override def unsortedValues: Array[ContentDisplay] = Array(
+    TOP, RIGHT, BOTTOM, LEFT, CENTER, GRAPHIC_ONLY, TEXT_ONLY
+  )
 }
 
 

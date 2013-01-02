@@ -49,7 +49,7 @@ object Pos
   val TOP_LEFT = new Pos(jfxg.Pos.TOP_LEFT)
   val TOP_RIGHT = new Pos(jfxg.Pos.TOP_RIGHT)
 
-  protected def unsortedValues: Array[Pos] = Array(
+  protected override def unsortedValues: Array[Pos] = Array(
     TOP_LEFT, TOP_CENTER, TOP_RIGHT,
     CENTER_LEFT, CENTER, CENTER_RIGHT,
     BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT,

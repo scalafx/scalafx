@@ -42,7 +42,7 @@ object OverrunStyle extends SFXEnumDelegateCompanion[jfxsc.OverrunStyle, Overrun
   val LEADING_WORD_ELLIPSIS = new OverrunStyle(jfxsc.OverrunStyle.LEADING_WORD_ELLIPSIS)
   val WORD_ELLIPSIS = new OverrunStyle(jfxsc.OverrunStyle.WORD_ELLIPSIS)
 
-  protected def unsortedValues: Array[OverrunStyle] = Array(
+  protected override def unsortedValues: Array[OverrunStyle] = Array(
     CLIP, ELLIPSIS, WORD_ELLIPSIS, CENTER_ELLIPSIS, CENTER_WORD_ELLIPSIS, LEADING_ELLIPSIS, LEADING_WORD_ELLIPSIS
   )
 }
