@@ -7,7 +7,7 @@ import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.util.SFXDelegate
 
 object SelectionModel {
-  def sfxSelectionModel2jfx[T](v: SelectionModel[T]) = v.delegate
+  implicit def sfxSelectionModel2jfx[T](v: SelectionModel[T]) = v.delegate
 }
 
 abstract class SelectionModel[T](override val delegate: jfxsc.SelectionModel[T])

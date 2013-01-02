@@ -43,16 +43,6 @@ class PromptDataSpec
 
   override protected def getScalaClassInstance = new PromptData("", "")
 
-  protected def convertScalaClassToJavaClass(sfxControl: PromptData) = {
-    val jfxPromptData: jfxsw.PromptData = sfxControl
-    jfxPromptData
-  }
-
   override protected def getJavaClassInstance = new jfxsw.PromptData("", "")
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsw.PromptData) = {
-    val sfxPromptData: PromptData = jfxControl
-    sfxPromptData
-  }
 
 }

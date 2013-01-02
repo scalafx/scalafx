@@ -47,17 +47,7 @@ class KeyFrameSpec
   
   override protected def getScalaClassInstance = KeyFrame(5 s)
 
-  protected def convertScalaClassToJavaClass(sfxKeyFrame: KeyFrame) = {
-    val jfxAnimation: jfxa.KeyFrame = sfxKeyFrame
-    jfxAnimation
-  }
-
   override def getJavaClassInstance = new jfxa.KeyFrame(5 s)
-
-  protected def convertJavaClassToScalaClass(jfxKeyFrame: jfxa.KeyFrame) = {
-    val sfxAnimation: KeyFrame = jfxKeyFrame
-    sfxAnimation
-  }
 
   it should "have a convenient apply construction format and property access for time" in {
     KeyFrame(10 ms).time should equal(10 ms)

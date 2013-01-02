@@ -45,14 +45,4 @@ class VLineToSpec
 
   val positionDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxVLineTo: VLineTo) = {
-    val jfxVLineTo: jfxss.VLineTo = sfxVLineTo
-    jfxVLineTo
-  }
-
-  protected def convertJavaClassToScalaClass(jfxVLineTo: jfxss.VLineTo) = {
-    val sfxVLineTo: VLineTo = jfxVLineTo
-    sfxVLineTo
-  }
-
 }

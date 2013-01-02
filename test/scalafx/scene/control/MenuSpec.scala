@@ -38,16 +38,6 @@ class MenuSpec
 
   override protected def getScalaClassInstance = new Menu(new jfxsc.Menu("default"))
 
-  protected def convertScalaClassToJavaClass(sfxControl: Menu) = {
-    val jfxMenu: jfxsc.Menu = sfxControl
-    jfxMenu
-  }
-
   override protected def getJavaClassInstance = new jfxsc.Menu("default")
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Menu) = {
-    val sfxMenu: Menu = jfxControl
-    sfxMenu
-  }
 
 }

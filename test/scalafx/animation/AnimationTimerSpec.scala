@@ -44,17 +44,7 @@ class AnimationTimerSpec
 
   override protected def getScalaClassInstance = AnimationTimer((now: Long) => ())
 
-  protected def convertScalaClassToJavaClass(sfxAnimationTimer: AnimationTimer) = {
-    val jfxAnimation: jfxa.AnimationTimer = sfxAnimationTimer
-    jfxAnimation
-  }
-
   override def getJavaClassInstance = new jfxa.AnimationTimer {
     def handle(now: Long) {}
-  }
-
-  protected def convertJavaClassToScalaClass(jfxAnimationTimer: jfxa.AnimationTimer) = {
-    val sfxAnimation: AnimationTimer = jfxAnimationTimer
-    sfxAnimation
   }
 }

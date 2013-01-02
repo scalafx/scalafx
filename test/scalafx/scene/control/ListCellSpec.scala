@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ListCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxsc.ListCell[T], ListCell[T], jfxsc.ListCellBuilder[T, _]](classOf[jfxsc.ListCell[T]], classOf[ListCell[T]], classOf[jfxsc.ListCellBuilder[T, _]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ListCell[T]) = {
-    val jfxListCell: jfxsc.ListCell[T] = sfxControl
-    jfxListCell
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ListCell[T]) = {
-    val sfxListCell: ListCell[T] = jfxControl
-    sfxListCell
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.ListCell[T], ListCell[T], jfxsc.ListCellBuilder[T, _]](classOf[jfxsc.ListCell[T]], classOf[ListCell[T]], classOf[jfxsc.ListCellBuilder[T, _]])

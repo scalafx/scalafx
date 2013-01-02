@@ -38,7 +38,7 @@ object StrokeType extends SFXEnumDelegateCompanion[jfxss.StrokeType, StrokeType]
   val OUTSIDE = new StrokeType(jfxss.StrokeType.OUTSIDE)
   val CENTERED = new StrokeType(jfxss.StrokeType.CENTERED)
 
-  protected def unsortedValues: Array[StrokeType] = Array(INSIDE, OUTSIDE, CENTERED)
+  protected override def unsortedValues: Array[StrokeType] = Array(INSIDE, OUTSIDE, CENTERED)
 }
 
 

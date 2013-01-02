@@ -40,16 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class PathSpec
-  extends AbstractSFXDelegateSpec[jfxss.Path, Path, jfxss.PathBuilder[_]](classOf[jfxss.Path], classOf[Path], classOf[jfxss.PathBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxPath: Path) = {
-    val jfxPath: jfxss.Path = sfxPath
-    jfxPath
-  }
-
-  protected def convertJavaClassToScalaClass(jfxPath: jfxss.Path) = {
-    val sfxPath: Path = jfxPath
-    sfxPath
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxss.Path, Path, jfxss.PathBuilder[_]](classOf[jfxss.Path], classOf[Path], classOf[jfxss.PathBuilder[_]])

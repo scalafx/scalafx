@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TextFieldListCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxscc.TextFieldListCell[T], TextFieldListCell[T], jfxscc.TextFieldListCellBuilder[T, _]](classOf[jfxscc.TextFieldListCell[T]], classOf[TextFieldListCell[T]], classOf[jfxscc.TextFieldListCellBuilder[T, _]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: TextFieldListCell[T]) = {
-    val jfxTextFieldListCell: jfxscc.TextFieldListCell[T] = sfxControl
-    jfxTextFieldListCell
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxscc.TextFieldListCell[T]) = {
-    val sfxTextFieldListCell: TextFieldListCell[T] = jfxControl
-    sfxTextFieldListCell
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxscc.TextFieldListCell[T], TextFieldListCell[T], jfxscc.TextFieldListCellBuilder[T, _]](classOf[jfxscc.TextFieldListCell[T]], classOf[TextFieldListCell[T]], classOf[jfxscc.TextFieldListCellBuilder[T, _]])

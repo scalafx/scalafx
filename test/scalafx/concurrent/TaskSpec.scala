@@ -43,18 +43,8 @@ class TaskSpec[T]
 
   override protected def getScalaClassInstance = Task[T](null.asInstanceOf[T])
 
-  protected def convertScalaClassToJavaClass(sfxObject: Task[T]) = {
-    val jfxcvent: jfxc.Task[T] = sfxObject
-    jfxcvent
-  }
-
   override protected def getJavaClassInstance = new jfxc.Task[T] {
     def call = null.asInstanceOf[T]
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxc.Task[T]) = {
-    val sfxTask: Task[T] = jfxObject
-    sfxTask
   }
 
 }

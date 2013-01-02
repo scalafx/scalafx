@@ -42,19 +42,9 @@ class TableViewTableViewSelectionModelSpec[S]
 
   override def getScalaClassInstance = new TableView.TableViewSelectionModel[S](this.getJavaClassInstance){}
 
-  protected def convertScalaClassToJavaClass(sfxControl: TableView.TableViewSelectionModel[S]) = {
-    val jfxTableCell: jfxsc.TableView.TableViewSelectionModel[S] = sfxControl
-    jfxTableCell
-  }
-
   override def getJavaClassInstance = {
     val jtv = new jfxsc.TableView[S]
     jtv.getSelectionModel
   } 
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TableView.TableViewSelectionModel[S]) = {
-    val sfxTableCell: TableView.TableViewSelectionModel[S] = jfxControl
-    sfxTableCell
-  }
 
 }

@@ -42,16 +42,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 class WindowEventSpec
   extends SimpleSFXDelegateSpec[jfxs.WindowEvent, WindowEvent](classOf[jfxs.WindowEvent], classOf[WindowEvent]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: WindowEvent) = {
-    val jfxWindowEvent: jfxs.WindowEvent = sfxControl
-    jfxWindowEvent
-  }
-
   override protected def getJavaClassInstance = new jfxs.WindowEvent(null, null)
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxs.WindowEvent) = {
-    val sfxWindowEvent: WindowEvent = jfxControl
-    sfxWindowEvent
-  }
 
 }

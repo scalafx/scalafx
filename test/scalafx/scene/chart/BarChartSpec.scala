@@ -43,16 +43,6 @@ class BarChartSpec
 
   override def getScalaClassInstance = new BarChart[String, Number](getJavaClassInstance)
   
-  protected def convertScalaClassToJavaClass(sfxBarChart: BarChart[String, Number]) = {
-    val jfxBarChart: jfxsc.BarChart[String, Number] = sfxBarChart
-    jfxBarChart
-  }
-  
   override def getJavaClassInstance = new jfxsc.BarChart[String, Number](new jfxsc.CategoryAxis, new jfxsc.NumberAxis)
-
-  protected def convertJavaClassToScalaClass(jfxBarChart: jfxsc.BarChart[String, Number]) = {
-    val sfxBarChart: BarChart[String, Number] = jfxBarChart
-    sfxBarChart
-  }
 
 }

@@ -39,16 +39,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class SplitPaneDividerSpec
-  extends SimpleSFXDelegateSpec[jfxsc.SplitPane.Divider, SplitPane.Divider](classOf[jfxsc.SplitPane.Divider], classOf[SplitPane.Divider]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: SplitPane.Divider) = {
-    val jfxDivider: jfxsc.SplitPane.Divider = sfxControl
-    jfxDivider
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.SplitPane.Divider) = {
-    val sfxDivider: SplitPane.Divider = jfxControl
-    sfxDivider
-  }
-
-}
+  extends SimpleSFXDelegateSpec[jfxsc.SplitPane.Divider, SplitPane.Divider](classOf[jfxsc.SplitPane.Divider], classOf[SplitPane.Divider])

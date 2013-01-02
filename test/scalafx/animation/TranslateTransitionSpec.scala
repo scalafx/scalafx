@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TranslateTransitionSpec
-  extends AbstractSFXDelegateSpec[jfxa.TranslateTransition, TranslateTransition, jfxa.TranslateTransitionBuilder](classOf[jfxa.TranslateTransition], classOf[TranslateTransition], classOf[jfxa.TranslateTransitionBuilder]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: TranslateTransition) = {
-    val jfxTranslateTransition: jfxa.TranslateTransition = sfxControl
-    jfxTranslateTransition
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxa.TranslateTransition) = {
-    val sfxTranslateTransition: TranslateTransition = jfxControl
-    sfxTranslateTransition
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxa.TranslateTransition, TranslateTransition, jfxa.TranslateTransitionBuilder](classOf[jfxa.TranslateTransition], classOf[TranslateTransition], classOf[jfxa.TranslateTransitionBuilder])

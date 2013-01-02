@@ -41,16 +41,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 class PieChartDataSpec
   extends SimpleSFXDelegateSpec[jfxsc.PieChart.Data, PieChart.Data](classOf[jfxsc.PieChart.Data], classOf[PieChart.Data]) {
 
-  protected def convertScalaClassToJavaClass(sfxPieChartData: PieChart.Data) = {
-    val jfxPieChartData: jfxsc.PieChart.Data = sfxPieChartData
-    jfxPieChartData
-  }
-
   override def getJavaClassInstance = new jfxsc.PieChart.Data("", 0.0)
-
-  protected def convertJavaClassToScalaClass(jfxPieChartData: jfxsc.PieChart.Data) = {
-    val sfxPieChartData: PieChart.Data = jfxPieChartData
-    sfxPieChartData
-  }
 
 }

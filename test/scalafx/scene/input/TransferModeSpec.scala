@@ -30,6 +30,7 @@ package scalafx.scene.input
 import javafx.scene.{input => jfxsi}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import org.scalatest.matchers.ShouldMatchers._
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
@@ -39,7 +40,6 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class TransferModeSpec extends SFXEnumDelegateSpec[jfxsi.TransferMode, TransferMode](
   javaClass = classOf[jfxsi.TransferMode],
   scalaClass = classOf[TransferMode],
-  javaValueOfFun = (s: String) => jfxsi.TransferMode.valueOf(s),
   companion = TransferMode) {
 
   it should "contain all static fields" in {

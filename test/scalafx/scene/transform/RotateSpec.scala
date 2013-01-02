@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class RotateSpec
-  extends AbstractSFXDelegateSpec[jfxst.Rotate, Rotate, jfxst.RotateBuilder[_]](classOf[jfxst.Rotate], classOf[Rotate], classOf[jfxst.RotateBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: Rotate) = {
-    val jfxRotate: jfxst.Rotate = sfxControl
-    jfxRotate
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxst.Rotate) = {
-    val sfxRotate: Rotate = jfxControl
-    sfxRotate
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxst.Rotate, Rotate, jfxst.RotateBuilder[_]](classOf[jfxst.Rotate], classOf[Rotate], classOf[jfxst.RotateBuilder[_]])

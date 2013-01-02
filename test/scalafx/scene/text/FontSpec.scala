@@ -41,16 +41,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class FontSpec extends AbstractSFXDelegateSpec[jfxst.Font, Font, jfxst.FontBuilder](classOf[jfxst.Font], classOf[Font], classOf[jfxst.FontBuilder]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: Font) = {
-    val jfxFont: jfxst.Font = sfxControl
-    jfxFont
-  }
-
   override protected def getJavaClassInstance = jfxst.Font.getDefault
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxst.Font) = {
-    val sfxFont: Font = jfxControl
-    sfxFont
-  }
 
 }

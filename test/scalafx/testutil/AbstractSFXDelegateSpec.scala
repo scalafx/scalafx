@@ -1,5 +1,3 @@
-package scalafx.testutil
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,12 +24,18 @@ package scalafx.testutil
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.testutil
 
 import javafx.util.Builder
 import scalafx.util.SFXDelegate
 
 /**
  * Abstract class for SFXDelegate controls Spec tests with Builder subclasses tests.
+ *
+ * IMPORTANT: the second order parameters jfx2sfx and sfx2jfx have to be left unassigned in the derived class.
+ * If compiler finds implicit conversion between JavaFX and ScalaFx (and back) it will assign the corresponding
+ * implicit functions to those parameters. Make use that you provide implicit conversion include, for instance,
+ * `import scalafx.Includes._`
  *
  * @tparam J JavaFX class
  * @tparam S SFXDelegate subclass related with JavaFX class
@@ -40,13 +44,18 @@ import scalafx.util.SFXDelegate
  * @param javaClass JavaFX class
  * @param scalaClass SFXDelegate subclass related with JavaFX class
  * @param javaBuilderClass Builder subclass related with JavaFX class
+ * @param jfx2sfx Implicit conversion from JavaFX to ScalaFX, it should not be assigned,
+ *                it has to be resolved automatically by the compiler.
+ * @param sfx2jfx Implicit conversion from ScalaFX to JavaFX, it should not be assigned,
+ *                it has to be resolved automatically by the compiler.
  *
  * @todo If B is made like a javafx.util.Builder (B <: javafx.util.Builder[_]) scala compiler shows message: "type arguments
  * [javafx.scene.control.CheckBox,scalafx.scene.control.CheckBox,javafx.scene. control.CheckBoxBuilder[_]] do not conform to class AbstractSFXDelegateSpec's
  * type parameter bounds [J <: java.lang.Object,S <: scalafx.util.SFXDelegate[J],B <: javafx.util.Builder[_]]". Only when remove B binding with Builder
  * compiler problems disappear. So it must be finded a way to put bind beetween B and Builder without create problems with compiler.
  */
-abstract class AbstractSFXDelegateSpec[J <: Object, S <: SFXDelegate[J], B](javaClass: Class[J], scalaClass: Class[S], javaBuilderClass: Class[B]) extends SimpleSFXDelegateSpec[J, S](javaClass, scalaClass) {
+abstract class AbstractSFXDelegateSpec[J <: Object, S <: SFXDelegate[J], B](javaClass: Class[J], scalaClass: Class[S], javaBuilderClass: Class[B]) (implicit jfx2sfx: J => S = null, sfx2jfx: S => J = null)
+  extends SimpleSFXDelegateSpec[J, S](javaClass, scalaClass) {
 
   it should "implement all the JavaFX builder properties" in {
     compareBuilderProperties(javaBuilderClass.asInstanceOf[Class[Builder[_]]], scalaClass)

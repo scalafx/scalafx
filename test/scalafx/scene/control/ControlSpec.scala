@@ -43,16 +43,6 @@ class ControlSpec extends AbstractSFXDelegateSpec[jfxsc.Control, Control, jfxsc.
 
   override protected def getScalaClassInstance = new Control(new jfxsc.Label) {}
 
-  protected def convertScalaClassToJavaClass(sfxControl: Control) = {
-    val jfxControl: jfxsc.Control = sfxControl
-    jfxControl
-  }
-
   override protected def getJavaClassInstance = new jfxsc.Control() {}
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Control) = {
-    val sfxControl: Control = jfxControl
-    sfxControl
-  }
 
 }

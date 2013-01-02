@@ -41,16 +41,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class StackedAreaChartSpec
   extends AbstractSFXDelegateSpec[jfxsc.StackedAreaChart[Number, Number], StackedAreaChart[Number, Number], jfxsc.StackedAreaChartBuilder[Number, Number, _]](classOf[jfxsc.StackedAreaChart[Number, Number]], classOf[StackedAreaChart[Number, Number]], classOf[jfxsc.StackedAreaChartBuilder[Number, Number, _]]) {
 
-  protected def convertScalaClassToJavaClass(sfxStackedAreaChart: StackedAreaChart[Number, Number]) = {
-    val jfxStackedAreaChart: jfxsc.StackedAreaChart[Number, Number] = sfxStackedAreaChart
-    jfxStackedAreaChart
-  }
-  
   override def getJavaClassInstance = new jfxsc.StackedAreaChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
-
-  protected def convertJavaClassToScalaClass(jfxStackedAreaChart: jfxsc.StackedAreaChart[Number, Number]) = {
-    val sfxStackedAreaChart: StackedAreaChart[Number, Number] = jfxStackedAreaChart
-    sfxStackedAreaChart
-  }
 
 }

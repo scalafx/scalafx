@@ -39,16 +39,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class CellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxsc.Cell[T], Cell[T], jfxsc.CellBuilder[T, _]](classOf[jfxsc.Cell[T]], classOf[Cell[T]], classOf[jfxsc.CellBuilder[T, _]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: Cell[T]) = {
-    val jfxCell: jfxsc.Cell[T] = sfxControl
-    jfxCell
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Cell[T]) = {
-    val sfxCell: Cell[T] = jfxControl
-    sfxCell
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.Cell[T], Cell[T], jfxsc.CellBuilder[T, _]](classOf[jfxsc.Cell[T]], classOf[Cell[T]], classOf[jfxsc.CellBuilder[T, _]])

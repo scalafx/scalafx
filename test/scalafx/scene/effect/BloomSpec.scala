@@ -44,14 +44,4 @@ class BloomSpec
 
   val inputDelegate = getScalaClassInstance
   
-  protected def convertScalaClassToJavaClass(sfxObject: Bloom) = {
-    val jfxBloom: jfxse.Bloom = sfxObject
-    jfxBloom
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.Bloom) = {
-    val sfxBloom: Bloom = jfxObject
-    sfxBloom
-  }
-
 }

@@ -62,16 +62,6 @@ class MultipleMultipleSelectionModelSpec[T]
 
   override protected def getScalaClassInstance = new MultipleSelectionModel[T](getJavaClassInstance) {}
 
-  protected def convertScalaClassToJavaClass(sfxModel: MultipleSelectionModel[T]) = {
-    val jfxMultipleSelectionModel: jfxsc.MultipleSelectionModel[T] = sfxModel
-    jfxMultipleSelectionModel
-  }
-
   override protected def getJavaClassInstance = new SimpleMultipleSelectionModel[T]
-
-  protected def convertJavaClassToScalaClass(jfxModel: jfxsc.MultipleSelectionModel[T]) = {
-    val sfxMultipleSelectionModel: MultipleSelectionModel[T] = jfxModel
-    sfxMultipleSelectionModel
-  }
 
 }

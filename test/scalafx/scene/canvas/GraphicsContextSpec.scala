@@ -42,16 +42,6 @@ class GraphicsContextSpec
 
   override def getScalaClassInstance = (new Canvas).graphicsContext2D
 
-  protected def convertScalaClassToJavaClass(sfxGraphicsContext: GraphicsContext) = {
-    val jfxGraphicsContext: jfxsc.GraphicsContext = sfxGraphicsContext
-    jfxGraphicsContext
-  }
-
   override def getJavaClassInstance = (new jfxsc.Canvas).getGraphicsContext2D
-
-  protected def convertJavaClassToScalaClass(jfxGraphicsContext: jfxsc.GraphicsContext) = {
-    val sfxGraphicsContext: GraphicsContext = jfxGraphicsContext
-    sfxGraphicsContext
-  }
 
 }

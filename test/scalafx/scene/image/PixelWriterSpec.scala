@@ -50,11 +50,6 @@ class PixelWriterSpec
     override val delegate = getJavaClassInstance
   }
 
-  protected def convertScalaClassToJavaClass(sfxPixelWriter: PixelWriter) = {
-    val jfxPixelWriter: jfxsi.PixelWriter = sfxPixelWriter
-    jfxPixelWriter
-  }
-
   override protected def getJavaClassInstance = new jfxsi.PixelWriter {
   def getPixelFormat = null
   def setArgb(x: Int, y: Int, argb: Int) {}
@@ -63,10 +58,5 @@ class PixelWriterSpec
   def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.PixelFormat[java.nio.IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int) {}
   def setPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.PixelFormat[B], buffer: B, scanlineStride: Int) {}
   def setPixels(dstx: Int, dsty: Int, w: Int, h: Int, reader: jfxsi.PixelReader, srcx: Int, srcy: Int) {}
-  }
-
-  protected def convertJavaClassToScalaClass(jfxPixelWriter: jfxsi.PixelWriter) = {
-    val sfxPixelWriter: PixelWriter = jfxPixelWriter
-    sfxPixelWriter
   }
 }

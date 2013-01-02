@@ -260,7 +260,7 @@ object KeyCode extends SFXEnumDelegateCompanion[jfxsi.KeyCode, KeyCode] {
   val COMMAND = new KeyCode(jfxsi.KeyCode.COMMAND)
   val SHORTCUT = new KeyCode(jfxsi.KeyCode.SHORTCUT)
 
-  protected def unsortedValues: Array[KeyCode] = Array(
+  protected override def unsortedValues: Array[KeyCode] = Array(
     ENTER, BACK_SPACE, TAB, CANCEL, CLEAR, SHIFT, CONTROL, ALT, PAUSE, CAPS, ESCAPE, SPACE, PAGE_UP, PAGE_DOWN, END,
     HOME, LEFT, UP, RIGHT, DOWN, COMMA, MINUS, PERIOD, SLASH,
     DIGIT0, DIGIT1, DIGIT2, DIGIT3, DIGIT4, DIGIT5, DIGIT6, DIGIT7, DIGIT8, DIGIT9, SEMICOLON, EQUALS,

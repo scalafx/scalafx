@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ComboBoxTreeCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxscc.ComboBoxTreeCell[T], ComboBoxTreeCell[T], jfxscc.ComboBoxTreeCellBuilder[T, _]](classOf[jfxscc.ComboBoxTreeCell[T]], classOf[ComboBoxTreeCell[T]], classOf[jfxscc.ComboBoxTreeCellBuilder[T, _]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ComboBoxTreeCell[T]) = {
-    val jfxComboBoxTreeCell: jfxscc.ComboBoxTreeCell[T] = sfxControl
-    jfxComboBoxTreeCell
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxscc.ComboBoxTreeCell[T]) = {
-    val sfxComboBoxTreeCell: ComboBoxTreeCell[T] = jfxControl
-    sfxComboBoxTreeCell
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxscc.ComboBoxTreeCell[T], ComboBoxTreeCell[T], jfxscc.ComboBoxTreeCellBuilder[T, _]](classOf[jfxscc.ComboBoxTreeCell[T]], classOf[ComboBoxTreeCell[T]], classOf[jfxscc.ComboBoxTreeCellBuilder[T, _]])

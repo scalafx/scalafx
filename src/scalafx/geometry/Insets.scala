@@ -36,18 +36,18 @@ object Insets {
   /**
    * Empty insets. An Insets instance with all offsets equal to zero.
    */
-  val Empty = jfxg.Insets.EMPTY
+  val Empty: Insets = new Insets(jfxg.Insets.EMPTY)
 
   /**
    * Constructs a new Insets instance with same value for all four offsets.
    */
-  def apply(topRightBottomLeft: Double) = new jfxg.Insets(topRightBottomLeft)
+  def apply(topRightBottomLeft: Double): Insets = new Insets(new jfxg.Insets(topRightBottomLeft))
 
   /**
    * Constructs a new Insets instance with four different offsets.
    */
-  def apply(top: Double, right: Double, bottom: Double, left: Double) =
-    new jfxg.Insets(top, right, bottom, left)
+  def apply(top: Double, right: Double, bottom: Double, left: Double): Insets =
+    new Insets(new jfxg.Insets(top, right, bottom, left))
 
 }
 

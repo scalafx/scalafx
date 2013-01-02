@@ -75,17 +75,7 @@ class ObservableBufferSpec[T]
 
   override def getScalaClassInstance = ObservableBuffer.empty[T]
 
-  protected def convertScalaClassToJavaClass(scalaBuffer: ObservableBuffer[T]) = {
-    val jfxObservableList: jfxc.ObservableList[T] = scalaBuffer
-    jfxObservableList
-  }
-
   override def getJavaClassInstance = jfxc.FXCollections.observableList[T](new ju.ArrayList[T])
-
-  protected def convertJavaClassToScalaClass(javaList: jfxc.ObservableList[T]) = {
-    val sfxObservableBuffer: ObservableBuffer[T] = javaList
-    sfxObservableBuffer
-  }
 
   "An ObservableBuffer" should "support apply" in {
     // Execution

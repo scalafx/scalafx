@@ -40,16 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class CircleSpec
-  extends AbstractSFXDelegateSpec[jfxss.Circle, Circle, jfxss.CircleBuilder[_]](classOf[jfxss.Circle], classOf[Circle], classOf[jfxss.CircleBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxCircle: Circle) = {
-    val jfxCircle: jfxss.Circle = sfxCircle
-    jfxCircle
-  }
-
-  protected def convertJavaClassToScalaClass(jfxCircle: jfxss.Circle) = {
-    val sfxCircle: Circle = jfxCircle
-    sfxCircle
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxss.Circle, Circle, jfxss.CircleBuilder[_]](classOf[jfxss.Circle], classOf[Circle], classOf[jfxss.CircleBuilder[_]])

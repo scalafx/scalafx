@@ -43,16 +43,6 @@ class LabeledSpec
 
   override protected def getScalaClassInstance = new Labeled(new Label) {}
 
-  protected def convertScalaClassToJavaClass(sfxControl: Labeled) = {
-    val jfxLabeled: jfxsc.Labeled = sfxControl
-    jfxLabeled
-  }
-
   protected override def getJavaClassInstance = new jfxsc.Labeled {}
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Labeled) = {
-    val sfxLabeled: Labeled = jfxControl
-    sfxLabeled
-  }
 
 }

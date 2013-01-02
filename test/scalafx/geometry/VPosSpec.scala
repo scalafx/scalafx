@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
@@ -38,5 +37,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class VPosSpec extends SFXEnumDelegateSpec[jfxg.VPos, VPos](
   javaClass = classOf[jfxg.VPos],
   scalaClass = classOf[VPos],
-  javaValueOfFun = (s: String) => jfxg.VPos.valueOf(s),
   companion = VPos)

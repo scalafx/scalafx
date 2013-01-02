@@ -38,16 +38,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class ScrollPaneSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ScrollPane, ScrollPane, jfxsc.ScrollPaneBuilder[_]](classOf[jfxsc.ScrollPane], classOf[ScrollPane], classOf[jfxsc.ScrollPaneBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ScrollPane) = {
-    val jfxScrollPane: jfxsc.ScrollPane = sfxControl
-    jfxScrollPane
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ScrollPane) = {
-    val sfxScrollPane: ScrollPane = jfxControl
-    sfxScrollPane
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.ScrollPane, ScrollPane, jfxsc.ScrollPaneBuilder[_]](classOf[jfxsc.ScrollPane], classOf[ScrollPane], classOf[jfxsc.ScrollPaneBuilder[_]])

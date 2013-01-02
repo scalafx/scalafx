@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class CheckBoxCheckBoxListCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxscc.CheckBoxListCell[T], CheckBoxListCell[T], jfxscc.CheckBoxListCellBuilder[T, _]](classOf[jfxscc.CheckBoxListCell[T]], classOf[CheckBoxListCell[T]], classOf[jfxscc.CheckBoxListCellBuilder[T, _]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: CheckBoxListCell[T]) = {
-    val jfxCheckBoxListCell: jfxscc.CheckBoxListCell[T] = sfxControl
-    jfxCheckBoxListCell
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxscc.CheckBoxListCell[T]) = {
-    val sfxCheckBoxListCell: CheckBoxListCell[T] = jfxControl
-    sfxCheckBoxListCell
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxscc.CheckBoxListCell[T], CheckBoxListCell[T], jfxscc.CheckBoxListCellBuilder[T, _]](classOf[jfxscc.CheckBoxListCell[T]], classOf[CheckBoxListCell[T]], classOf[jfxscc.CheckBoxListCellBuilder[T, _]])

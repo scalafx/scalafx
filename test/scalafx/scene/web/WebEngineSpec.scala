@@ -41,16 +41,4 @@ import scalafx.testutil.RunOnApplicationThread
 @RunWith(classOf[JUnitRunner])
 class WebEngineSpec
   extends AbstractSFXDelegateSpec[jfxsw.WebEngine, WebEngine, jfxsw.WebEngineBuilder](classOf[jfxsw.WebEngine], classOf[WebEngine], classOf[jfxsw.WebEngineBuilder])
-  with RunOnApplicationThread {
-
-  protected def convertScalaClassToJavaClass(sfxControl: WebEngine) = {
-    val jfxWebEngine: jfxsw.WebEngine = sfxControl
-    jfxWebEngine
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsw.WebEngine) = {
-    val sfxWebEngine: WebEngine = jfxControl
-    sfxWebEngine
-  }
-
-}
+  with RunOnApplicationThread

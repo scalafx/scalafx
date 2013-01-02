@@ -38,16 +38,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class SnapshotParametersSpec
-  extends AbstractSFXDelegateSpec[jfxs.SnapshotParameters, SnapshotParameters, jfxs.SnapshotParametersBuilder[_]](classOf[jfxs.SnapshotParameters], classOf[SnapshotParameters], classOf[jfxs.SnapshotParametersBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxSnapshotParameters: SnapshotParameters) = {
-    val jfxSnapshotParameters: jfxs.SnapshotParameters = sfxSnapshotParameters
-    jfxSnapshotParameters
-  }
-
-  protected def convertJavaClassToScalaClass(jfxSnapshotParameters: jfxs.SnapshotParameters) = {
-    val sfxSnapshotParameters: SnapshotParameters = jfxSnapshotParameters
-    sfxSnapshotParameters
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxs.SnapshotParameters, SnapshotParameters, jfxs.SnapshotParametersBuilder[_]](classOf[jfxs.SnapshotParameters], classOf[SnapshotParameters], classOf[jfxs.SnapshotParametersBuilder[_]])

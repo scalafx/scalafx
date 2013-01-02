@@ -34,16 +34,4 @@ import scalafx.Includes._
 
 @RunWith(classOf[JUnitRunner])
 class MenuBarSpec
-  extends AbstractSFXDelegateSpec[jfxsc.MenuBar, MenuBar, jfxsc.MenuBarBuilder[_]](classOf[jfxsc.MenuBar], classOf[MenuBar], classOf[jfxsc.MenuBarBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: MenuBar) = {
-    val jfxMenuBar: jfxsc.MenuBar = sfxControl
-    jfxMenuBar
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.MenuBar) = {
-    val sfxMenuBar: MenuBar = jfxControl
-    sfxMenuBar
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.MenuBar, MenuBar, jfxsc.MenuBarBuilder[_]](classOf[jfxsc.MenuBar], classOf[MenuBar], classOf[jfxsc.MenuBarBuilder[_]])

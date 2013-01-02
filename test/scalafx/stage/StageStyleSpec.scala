@@ -39,6 +39,5 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class StageStyleSpec extends SFXEnumDelegateSpec[jfxs.StageStyle, StageStyle](
   javaClass = classOf[jfxs.StageStyle],
   scalaClass = classOf[StageStyle],
-  javaValueOfFun = (s: String) => jfxs.StageStyle.valueOf(s),
   companion = StageStyle)
 

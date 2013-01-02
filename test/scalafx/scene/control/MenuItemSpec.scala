@@ -39,16 +39,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class MenuItemSpec
-  extends AbstractSFXDelegateSpec[jfxsc.MenuItem, MenuItem, jfxsc.MenuItemBuilder[_]](classOf[jfxsc.MenuItem], classOf[MenuItem], classOf[jfxsc.MenuItemBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: MenuItem) = {
-    val jfxMenuItem: jfxsc.MenuItem = sfxControl
-    jfxMenuItem
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.MenuItem) = {
-    val sfxMenuItem: MenuItem = jfxControl
-    sfxMenuItem
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.MenuItem, MenuItem, jfxsc.MenuItemBuilder[_]](classOf[jfxsc.MenuItem], classOf[MenuItem], classOf[jfxsc.MenuItemBuilder[_]])

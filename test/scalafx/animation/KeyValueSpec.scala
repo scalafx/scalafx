@@ -68,17 +68,7 @@ class KeyValueSpec
 
   override protected def getScalaClassInstance = KeyValue(doubleProperty, 50d)
 
-  protected def convertScalaClassToJavaClass(sfxKeyValue: KeyValue[_, _]) = {
-    val jfxKeyValue: jfxa.KeyValue = sfxKeyValue
-    jfxKeyValue
-  }
-
   override protected def getJavaClassInstance = new jfxa.KeyValue(doubleProperty, double2Double(50))
-
-  protected def convertJavaClassToScalaClass(jfxKeyValue: jfxa.KeyValue) = {
-    val sfxKeyValue: KeyValue[_, _] = jfxKeyValue
-    sfxKeyValue
-  }
 
   /////////
   // TESTS 

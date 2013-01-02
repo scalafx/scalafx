@@ -40,16 +40,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class ToggleGroupSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ToggleGroup, ToggleGroup, jfxsc.ToggleGroupBuilder[_]](classOf[jfxsc.ToggleGroup], classOf[ToggleGroup], classOf[jfxsc.ToggleGroupBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ToggleGroup) = {
-    val jfxToggleGroup: jfxsc.ToggleGroup = sfxControl
-    jfxToggleGroup
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ToggleGroup) = {
-    val sfxToggleGroup: ToggleGroup = jfxControl
-    sfxToggleGroup
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.ToggleGroup, ToggleGroup, jfxsc.ToggleGroupBuilder[_]](classOf[jfxsc.ToggleGroup], classOf[ToggleGroup], classOf[jfxsc.ToggleGroupBuilder[_]])

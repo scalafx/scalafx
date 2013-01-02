@@ -45,14 +45,4 @@ class MotionBlurSpec
 
   val inputDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxObject: MotionBlur) = {
-    val jfxMotionBlur: jfxse.MotionBlur = sfxObject
-    jfxMotionBlur
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.MotionBlur) = {
-    val sfxMotionBlur: MotionBlur = jfxObject
-    sfxMotionBlur
-  }
-
 }

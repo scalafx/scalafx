@@ -32,19 +32,16 @@ import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 
 /** Wrapper for [[javafx.geometry.HorizontalDirection]] */
-object HorizontalDirection extends SFXEnumDelegateCompanion[jfxg.HorizontalDirection, HorizontalDirection] {
+object HorizontalDirection
+  extends SFXEnumDelegateCompanion[jfxg.HorizontalDirection, HorizontalDirection] {
 
-  /**
-   * A direction to the left
-   */
+  /** A direction to the left. */
   val LEFT = new HorizontalDirection(jfxg.HorizontalDirection.LEFT)
 
-  /**
-   * A direction to the right
-   */
+  /** A direction to the right. */
   val RIGHT = new HorizontalDirection(jfxg.HorizontalDirection.RIGHT)
 
-  protected def unsortedValues: Array[HorizontalDirection] = Array(LEFT, RIGHT)
+  protected override def unsortedValues: Array[HorizontalDirection] = Array(LEFT, RIGHT)
 }
 
 

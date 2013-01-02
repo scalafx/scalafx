@@ -41,16 +41,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class LineChartSpec
   extends AbstractSFXDelegateSpec[jfxsc.LineChart[Number, Number], LineChart[Number, Number], jfxsc.LineChartBuilder[Number, Number, _]](classOf[jfxsc.LineChart[Number, Number]], classOf[LineChart[Number, Number]], classOf[jfxsc.LineChartBuilder[Number, Number, _]]) {
 
-  protected def convertScalaClassToJavaClass(sfxLineChart: LineChart[Number, Number]) = {
-    val jfxLineChart: jfxsc.LineChart[Number, Number] = sfxLineChart
-    jfxLineChart
-  }
-  
   override def getJavaClassInstance = new jfxsc.LineChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
-
-  protected def convertJavaClassToScalaClass(jfxLineChart: jfxsc.LineChart[Number, Number]) = {
-    val sfxLineChart: LineChart[Number, Number] = jfxLineChart
-    sfxLineChart
-  }
 
 }

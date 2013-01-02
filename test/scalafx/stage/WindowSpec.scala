@@ -44,16 +44,6 @@ class WindowSpec
 
   override protected def getScalaClassInstance = new Window(this.getJavaClassInstance) {}
 
-  protected def convertScalaClassToJavaClass(sfxControl: Window) = {
-    val jfxWindow: jfxs.Window = sfxControl
-    jfxWindow
-  }
-
   override protected def getJavaClassInstance = new jfxs.Window {}
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxs.Window) = {
-    val sfxWindow: Window = jfxControl
-    sfxWindow
-  }
 
 }

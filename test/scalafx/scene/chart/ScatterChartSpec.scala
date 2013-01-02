@@ -41,16 +41,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class ScatterChartSpec
   extends AbstractSFXDelegateSpec[jfxsc.ScatterChart[Number, Number], ScatterChart[Number, Number], jfxsc.ScatterChartBuilder[Number, Number, _]](classOf[jfxsc.ScatterChart[Number, Number]], classOf[ScatterChart[Number, Number]], classOf[jfxsc.ScatterChartBuilder[Number, Number, _]]) {
 
-  protected def convertScalaClassToJavaClass(sfxScatterChart: ScatterChart[Number, Number]) = {
-    val jfxScatterChart: jfxsc.ScatterChart[Number, Number] = sfxScatterChart
-    jfxScatterChart
-  }
-  
   override def getJavaClassInstance = new jfxsc.ScatterChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
-
-  protected def convertJavaClassToScalaClass(jfxScatterChart: jfxsc.ScatterChart[Number, Number]) = {
-    val sfxScatterChart: ScatterChart[Number, Number] = jfxScatterChart
-    sfxScatterChart
-  }
 
 }

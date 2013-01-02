@@ -39,5 +39,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class MouseButtonSpec extends SFXEnumDelegateSpec[jfxsi.MouseButton, MouseButton](
   javaClass = classOf[jfxsi.MouseButton],
   scalaClass = classOf[MouseButton],
-  javaValueOfFun = (s: String) => jfxsi.MouseButton.valueOf(s),
   companion = MouseButton)

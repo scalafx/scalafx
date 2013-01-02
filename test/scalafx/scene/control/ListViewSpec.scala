@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ListViewSpec[T]
-  extends AbstractSFXDelegateSpec[jfxsc.ListView[T], ListView[T], jfxsc.ListViewBuilder[T, _]](classOf[jfxsc.ListView[T]], classOf[ListView[T]], classOf[jfxsc.ListViewBuilder[T, _]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ListView[T]) = {
-    val jfxListView: jfxsc.ListView[T] = sfxControl
-    jfxListView
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ListView[T]) = {
-    val sfxListView: ListView[T] = jfxControl
-    sfxListView
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.ListView[T], ListView[T], jfxsc.ListViewBuilder[T, _]](classOf[jfxsc.ListView[T]], classOf[ListView[T]], classOf[jfxsc.ListViewBuilder[T, _]])

@@ -26,10 +26,14 @@
  */
 package scalafx.testutil
 
+import org.scalatest.FlatSpec
+import org.scalatest.matchers.ShouldMatchers._
+
 import scalafx.util.SFXDelegate
 
 /**
- * Abstract class for SFXDelegate controls Spec tests.
+ * Base class for SFXDelegate controls Spec tests. This specific class tests if implicit conversion are working and if
+ * static methods are being implemented.
  *
  * IMPORTANT: the second order parameters jfx2sfx and sfx2jfx have to be left unassigned in the derived class.
  * If compiler finds implicit conversion between JavaFX and ScalaFx (and back) it will assign the corresponding
@@ -47,15 +51,69 @@ import scalafx.util.SFXDelegate
  *                it has to be resolved automatically by the compiler.
  *
  */
-abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (javaClass: Class[J], scalaClass: Class[S]) (implicit jfx2sfx: J => S = null, sfx2jfx: S => J = null)
-  extends SFXDelegateSpec[J, S](javaClass, scalaClass)
-  with PropertyComparator {
+abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (javaClass: Class[J], scalaClass: Class[S])(implicit jfx2sfx: J => S = null, sfx2jfx: S => J = null)
+  extends FlatSpec
+  with AbstractComparator {
 
-  // Tests - Begin
+  /////////////////////////////
+  // PROTECTED METHODS - BEGIN 
+  /////////////////////////////
 
-  it should "implement all the JavaFX properties" in {
-    compareProperties(javaClass, scalaClass)
+  /**
+   * Returns a new SFXDelegate subclass instance. By default calls scalaClass constructor that uses delegated class
+   * instance. If it is not possible use this constructor, this method must be overrided.
+   * {{{
+   * override protected def getScalaClassInstance = new BoundingBox(0, 0, 0, 0)
+   * }}}
+   */
+  protected def getScalaClassInstance: S =
+    scalaClass.getConstructor(javaClass).newInstance(this.getJavaClassInstance)
+
+  /**
+   * Returns a new JavaFX class instance. By default calls newInstance method from javaClass. If
+   * this class has no default constructor, this method must be overrided:
+   * {{{
+   * override protected def getJavaClassInstance = new jfxg.BoundingBox(0, 0, 0, 0, 0, 0)
+   * }}}
+   */
+  protected def getJavaClassInstance: J = javaClass.newInstance
+
+  ///////////////////////////
+  // PROTECTED METHODS - END 
+  ///////////////////////////
+
+  /////////////////
+  // TESTS - BEGIN 
+  /////////////////
+
+  "A %s".format(scalaClass.getSimpleName) should "have an implicit conversion from SFX to JFX" in {
+    // Test if the implicit conversion exists
+    assert(sfx2jfx != null, "There is no implicit conversion from ScalaFX to JavaFX")
+
+    // Test if conversion behaves correctly
+    val sfxObject = getScalaClassInstance
+    val jfxObject: J = sfxObject
+
+    jfxObject should be(sfxObject.delegate)
   }
 
-  // Tests - End
+  it should "have an implicit conversion from JFX to SFX" in {
+    // Test if the implicit conversion exists
+    assert(jfx2sfx != null, "There is no implicit conversion from JavaFX to ScalaFX")
+
+    // Test if conversion behaves correctly
+    val jfxObject = getJavaClassInstance
+    val sfxObject: S = jfxObject
+
+    sfxObject.delegate should be(jfxObject)
+  }
+
+  it should "declare all public static methods of " + javaClass.getName in {
+    compareStaticMethods(javaClass, scalaClass)
+  }
+
+  ///////////////
+  // TESTS - END  
+  ///////////////
+
 }

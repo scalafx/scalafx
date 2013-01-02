@@ -45,16 +45,6 @@ class LinearGradientSpec
 
   override protected def getScalaClassInstance = new LinearGradient
   
-  protected def convertScalaClassToJavaClass(sfxControl: LinearGradient) = {
-    val jfxLinearGradient: jfxsp.LinearGradient = sfxControl
-    jfxLinearGradient
-  }
-
   override protected def getJavaClassInstance = new jfxsp.LinearGradient(0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsp.LinearGradient) = {
-    val sfxLinearGradient: LinearGradient = jfxControl
-    sfxLinearGradient
-  }
 
 }

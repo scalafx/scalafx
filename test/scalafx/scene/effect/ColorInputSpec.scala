@@ -45,14 +45,4 @@ class ColorInputSpec
 
   val dimensionDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxObject: ColorInput) = {
-    val jfxColorInput: jfxse.ColorInput = sfxObject
-    jfxColorInput
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.ColorInput) = {
-    val sfxColorInput: ColorInput = jfxObject
-    sfxColorInput
-  }
-
 }

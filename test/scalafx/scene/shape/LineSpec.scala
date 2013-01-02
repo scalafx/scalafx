@@ -40,16 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class LineSpec
-  extends AbstractSFXDelegateSpec[jfxss.Line, Line, jfxss.LineBuilder[_]](classOf[jfxss.Line], classOf[Line], classOf[jfxss.LineBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxLine: Line) = {
-    val jfxLine: jfxss.Line = sfxLine
-    jfxLine
-  }
-
-  protected def convertJavaClassToScalaClass(jfxLine: jfxss.Line) = {
-    val sfxLine: Line = jfxLine
-    sfxLine
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxss.Line, Line, jfxss.LineBuilder[_]](classOf[jfxss.Line], classOf[Line], classOf[jfxss.LineBuilder[_]])
