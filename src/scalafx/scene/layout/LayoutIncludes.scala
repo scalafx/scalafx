@@ -40,6 +40,7 @@ trait LayoutIncludes {
   implicit def jfxGridPane2sfx(v: jfxsl.GridPane) = new GridPane(v)
   implicit def jfxHBox2sfx(v: jfxsl.HBox) = new HBox(v)
   implicit def jfxPane2sfx(v: jfxsl.Pane) = new Pane(v)
+  implicit def jfxPriority2sfx(e: jfxsl.Priority) = Priority.jfxEnum2sfx(e)
   implicit def jfxRegion2sfx(v: jfxsl.Region) = new Region(v)
   implicit def jfxRowConstraints2sfx(v: jfxsl.RowConstraints) = new RowConstraints(v)
   implicit def jfxStackPane2sfx(v: jfxsl.StackPane) = new StackPane(v)

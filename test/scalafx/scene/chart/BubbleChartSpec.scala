@@ -43,16 +43,6 @@ class BubbleChartSpec
 
   override def getScalaClassInstance = new BubbleChart[Number, Number](getJavaClassInstance)
   
-  protected def convertScalaClassToJavaClass(sfxBubbleChart: BubbleChart[Number, Number]) = {
-    val jfxBubbleChart: jfxsc.BubbleChart[Number, Number] = sfxBubbleChart
-    jfxBubbleChart
-  }
-  
   override def getJavaClassInstance = new jfxsc.BubbleChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
-
-  protected def convertJavaClassToScalaClass(jfxBubbleChart: jfxsc.BubbleChart[Number, Number]) = {
-    val sfxBubbleChart: BubbleChart[Number, Number] = jfxBubbleChart
-    sfxBubbleChart
-  }
 
 }

@@ -40,16 +40,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class InputMethodTextRunSpec
-  extends SimpleSFXDelegateSpec[jfxsi.InputMethodTextRun, InputMethodTextRun](classOf[jfxsi.InputMethodTextRun], classOf[InputMethodTextRun]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: InputMethodTextRun) = {
-    val jfxInputMethodTextRun: jfxsi.InputMethodTextRun = sfxControl
-    jfxInputMethodTextRun
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsi.InputMethodTextRun) = {
-    val sfxInputMethodTextRun: InputMethodTextRun = jfxControl
-    sfxInputMethodTextRun
-  }
-
-}
+  extends SimpleSFXDelegateSpec[jfxsi.InputMethodTextRun, InputMethodTextRun](classOf[jfxsi.InputMethodTextRun], classOf[InputMethodTextRun])

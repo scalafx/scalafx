@@ -67,17 +67,7 @@ class ObservableMapSpec[K, V]
 
   override def getScalaClassInstance = ObservableMap.empty
 
-  protected def convertScalaClassToJavaClass(scalaMap: ObservableMap[K, V]) = {
-    val jfxObservableMap: jfxc.ObservableMap[K, V] = scalaMap
-    jfxObservableMap
-  }
-
   override def getJavaClassInstance = jfxc.FXCollections.observableHashMap[K, V]
-
-  protected def convertJavaClassToScalaClass(javaMap: jfxc.ObservableMap[K, V]) = {
-    val sfxObservableMap: ObservableMap[K, V] = javaMap
-    sfxObservableMap
-  }
 
   it should "generate new instances using Companion's apply" in {
     def assertGeneratedMap(map: Map[Int, String]) =

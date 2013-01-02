@@ -42,14 +42,4 @@ class DefaultStringConverterSpec
 
   val examples = List(("alpha", "alpha"), ("ação", "ação"), ("", ""))
 
-  protected def convertScalaClassToJavaClass(sfxControl: DefaultStringConverter) = {
-    val jfxDefaultStringConverter: jfxuc.DefaultStringConverter = sfxControl
-    jfxDefaultStringConverter
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxuc.DefaultStringConverter) = {
-    val sfxDefaultStringConverter: DefaultStringConverter = jfxControl
-    sfxDefaultStringConverter
-  }
-
 }

@@ -46,14 +46,4 @@ class ArcToSpec
 
   val positionDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxArcTo: ArcTo) = {
-    val jfxArcTo: jfxss.ArcTo = sfxArcTo
-    jfxArcTo
-  }
-
-  protected def convertJavaClassToScalaClass(jfxArcTo: jfxss.ArcTo) = {
-    val sfxArcTo: ArcTo = jfxArcTo
-    sfxArcTo
-  }
-
 }

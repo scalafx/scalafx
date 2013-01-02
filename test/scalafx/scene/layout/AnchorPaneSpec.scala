@@ -40,16 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class AnchorPaneSpec
-  extends AbstractSFXDelegateSpec[jfxsl.AnchorPane, AnchorPane, jfxsl.AnchorPaneBuilder[_]](classOf[jfxsl.AnchorPane], classOf[AnchorPane], classOf[jfxsl.AnchorPaneBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: AnchorPane) = {
-    val jfxAnchorPane: jfxsl.AnchorPane = sfxControl
-    jfxAnchorPane
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.AnchorPane) = {
-    val sfxAnchorPane: AnchorPane = jfxControl
-    sfxAnchorPane
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsl.AnchorPane, AnchorPane, jfxsl.AnchorPaneBuilder[_]](classOf[jfxsl.AnchorPane], classOf[AnchorPane], classOf[jfxsl.AnchorPaneBuilder[_]])

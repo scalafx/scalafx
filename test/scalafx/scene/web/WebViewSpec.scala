@@ -41,16 +41,4 @@ import scalafx.testutil.RunOnApplicationThread
 @RunWith(classOf[JUnitRunner])
 class WebViewSpec
   extends AbstractSFXDelegateSpec[jfxsw.WebView, WebView, jfxsw.WebViewBuilder](classOf[jfxsw.WebView], classOf[WebView], classOf[jfxsw.WebViewBuilder])
-  with RunOnApplicationThread {
-
-  protected def convertScalaClassToJavaClass(sfxControl: WebView) = {
-    val jfxWebView: jfxsw.WebView = sfxControl
-    jfxWebView
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsw.WebView) = {
-    val sfxWebView: WebView = jfxControl
-    sfxWebView
-  }
-
-}
+  with RunOnApplicationThread

@@ -33,8 +33,10 @@ object EffectIncludes extends EffectIncludes
 
 trait EffectIncludes {
   implicit def jfxBlend2sfx(b: jfxse.Blend) = new Blend(b)
+  implicit def jfxBlendMode2sfx(e: jfxse.BlendMode) = BlendMode.jfxEnum2sfx(e)
   implicit def jfxBloom2sfx(b: jfxse.Bloom) = new Bloom(b)
   implicit def jfxBoxBlur2sfx(bb: jfxse.BoxBlur) = new BoxBlur(bb)
+  implicit def jfxBlurType2sfx(e: jfxse.BlurType) = BlurType.jfxEnum2sfx(e)
   implicit def jfxColorAdjust2sfx(ca: jfxse.ColorAdjust) = new ColorAdjust(ca)
   implicit def jfxColorInput2sfx(ci: jfxse.ColorInput) = new ColorInput(ci)
   implicit def jfxDisplacementMap2sfx(dm: jfxse.DisplacementMap) = new DisplacementMap(dm)

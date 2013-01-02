@@ -42,16 +42,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class GroupSpec
   extends AbstractSFXDelegateSpec[jfxs.Group, Group, jfxs.GroupBuilder[_]](classOf[jfxs.Group], classOf[Group], classOf[jfxs.GroupBuilder[_]]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: Group) = {
-    val jfxGroup: jfxs.Group = sfxControl
-    jfxGroup
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxs.Group) = {
-    val sfxGroup: Group = jfxControl
-    sfxGroup
-  }
-
   it should "provide scala-like capabilties for the list" in {
     val group = new Group()
     group.children += new Group()

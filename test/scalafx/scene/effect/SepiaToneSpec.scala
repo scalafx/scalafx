@@ -45,14 +45,4 @@ class SepiaToneSpec
 
   val inputDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxObject: SepiaTone) = {
-    val jfxSepiaTone: jfxse.SepiaTone = sfxObject
-    jfxSepiaTone
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.SepiaTone) = {
-    val sfxSepiaTone: SepiaTone = jfxObject
-    sfxSepiaTone
-  }
-
 }

@@ -24,15 +24,19 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.geometry
 
-import javafx.{ geometry => jfxg }
+import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Tests for [[scalafx.geometry.HPos]]. */
 @RunWith(classOf[JUnitRunner])
-class HPosSpec
-  extends SFXEnumDelegateSpec[jfxg.HPos, HPos](classOf[jfxg.HPos], classOf[HPos], HPos)
+class HPosSpec extends SFXEnumDelegateSpec[jfxg.HPos, HPos](
+  javaClass = classOf[jfxg.HPos],
+  scalaClass = classOf[HPos],
+  companion = HPos)

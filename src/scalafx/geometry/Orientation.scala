@@ -27,20 +27,20 @@
 
 package scalafx.geometry
 
-import javafx.{ geometry => jfxg }
-import scalafx.util.SFXEnumDelegate
-import scalafx.util.SFXEnumDelegateCompanion
+import javafx.{geometry => jfxg}
+import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+
 
 /** Wrapper for [[javafx.geometry.Orientation]] */
 object Orientation
   extends SFXEnumDelegateCompanion[jfxg.Orientation, Orientation] {
 
   val HORIZONTAL = new Orientation(jfxg.Orientation.HORIZONTAL)
-  
   val VERTICAL = new Orientation(jfxg.Orientation.VERTICAL)
 
-  def unsortedValues = Array(HORIZONTAL, VERTICAL)
-
+  protected override def unsortedValues: Array[Orientation] = Array(HORIZONTAL, VERTICAL)
 }
 
-sealed case class Orientation(override val delegate: jfxg.Orientation) extends SFXEnumDelegate[jfxg.Orientation]
+
+sealed case class Orientation(override val delegate: jfxg.Orientation)
+  extends SFXEnumDelegate[jfxg.Orientation]

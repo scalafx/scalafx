@@ -24,15 +24,19 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.geometry
 
-import javafx.{ geometry => jfxg }
+import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Tests for [[scalafx.geometry.Orientation]]. */
 @RunWith(classOf[JUnitRunner])
-class OrientationSpec 
-  extends SFXEnumDelegateSpec[jfxg.Orientation, Orientation](classOf[jfxg.Orientation], classOf[Orientation], Orientation)
+class OrientationSpec extends SFXEnumDelegateSpec[jfxg.Orientation, Orientation](
+  javaClass = classOf[jfxg.Orientation],
+  scalaClass = classOf[Orientation],
+  companion = Orientation)

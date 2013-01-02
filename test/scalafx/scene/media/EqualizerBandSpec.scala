@@ -39,16 +39,4 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class EqualizerBandSpec
-  extends SimpleSFXDelegateSpec[jfxsm.EqualizerBand, EqualizerBand](classOf[jfxsm.EqualizerBand], classOf[EqualizerBand]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: EqualizerBand) = {
-    val jfxEqualizerBand: jfxsm.EqualizerBand = sfxControl
-    jfxEqualizerBand
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsm.EqualizerBand) = {
-    val sfxEqualizerBand: EqualizerBand = jfxControl
-    sfxEqualizerBand
-  }
-
-}
+  extends SimpleSFXDelegateSpec[jfxsm.EqualizerBand, EqualizerBand](classOf[jfxsm.EqualizerBand], classOf[EqualizerBand])

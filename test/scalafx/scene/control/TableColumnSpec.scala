@@ -38,16 +38,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TableColumnSpec[S, T]
-  extends AbstractSFXDelegateSpec[jfxsc.TableColumn[S, T], TableColumn[S, T], jfxsc.TableColumnBuilder[S, T, _]](classOf[jfxsc.TableColumn[S, T]], classOf[TableColumn[S, T]], classOf[jfxsc.TableColumnBuilder[S, T, _]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: TableColumn[S, T]) = {
-    val jfxTableColumn: jfxsc.TableColumn[S, T] = sfxControl
-    jfxTableColumn
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TableColumn[S, T]) = {
-    val sfxTableColumn: TableColumn[S, T] = jfxControl
-    sfxTableColumn
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.TableColumn[S, T], TableColumn[S, T], jfxsc.TableColumnBuilder[S, T, _]](classOf[jfxsc.TableColumn[S, T]], classOf[TableColumn[S, T]], classOf[jfxsc.TableColumnBuilder[S, T, _]])

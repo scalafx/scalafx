@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class StrokeTransitionSpec 
-  extends AbstractSFXDelegateSpec[jfxa.StrokeTransition, StrokeTransition, jfxa.StrokeTransitionBuilder](classOf[jfxa.StrokeTransition], classOf[StrokeTransition], classOf[jfxa.StrokeTransitionBuilder]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: StrokeTransition) = {
-    val jfxStrokeTransition: jfxa.StrokeTransition = sfxControl
-    jfxStrokeTransition
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxa.StrokeTransition) = {
-    val sfxStrokeTransition: StrokeTransition = jfxControl
-    sfxStrokeTransition
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxa.StrokeTransition, StrokeTransition, jfxa.StrokeTransitionBuilder](classOf[jfxa.StrokeTransition], classOf[StrokeTransition], classOf[jfxa.StrokeTransitionBuilder])

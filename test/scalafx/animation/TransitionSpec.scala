@@ -45,18 +45,8 @@ class TransitionSpec
     def interpolate(p1: Double) {}
   }) {}
 
-  protected def convertScalaClassToJavaClass(sfxControl: Transition) = {
-    val jfxTransition: jfxa.Transition = sfxControl
-    jfxTransition
-  }
-
   override def getJavaClassInstance = new jfxa.Transition() {
     def interpolate(p1: Double) {}
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxa.Transition) = {
-    val sfxTransition: Transition = jfxControl
-    sfxTransition
   }
 
 }

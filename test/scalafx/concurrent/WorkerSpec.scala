@@ -43,18 +43,8 @@ class WorkerSpec[T]
 
   override protected def getScalaClassInstance = Task[T](null.asInstanceOf[T])
 
-  protected def convertScalaClassToJavaClass(sfxObject: Worker[T]) = {
-    val jfxcWorker: jfxc.Worker[T] = sfxObject
-    jfxcWorker
-  }
-
   override protected def getJavaClassInstance = new jfxc.Task[T] {
     def call = null.asInstanceOf[T]
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxc.Worker[T]) = {
-    val sfxWorker: Worker[T] = jfxObject
-    sfxWorker
   }
 
 }

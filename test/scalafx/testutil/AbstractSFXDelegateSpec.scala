@@ -32,6 +32,11 @@ import scalafx.util.SFXDelegate
 /**
  * Abstract class for SFXDelegate controls Spec tests with Builder subclasses tests.
  *
+ * IMPORTANT: the second order parameters jfx2sfx and sfx2jfx have to be left unassigned in the derived class.
+ * If compiler finds implicit conversion between JavaFX and ScalaFx (and back) it will assign the corresponding
+ * implicit functions to those parameters. Make use that you provide implicit conversion include, for instance,
+ * `import scalafx.Includes._`
+ *
  * @tparam J JavaFX class
  * @tparam S SFXDelegate subclass related with JavaFX class
  * @tparam B JavaFX Builder subclass related with JavaFX class
@@ -39,8 +44,10 @@ import scalafx.util.SFXDelegate
  * @param javaClass JavaFX class
  * @param scalaClass SFXDelegate subclass related with JavaFX class
  * @param javaBuilderClass Builder subclass related with JavaFX class
- * @param jfx2sfx Implicit conversor from JavaFx to ScalaFX to be repassed to superclass. Its default value is `null`.
- * @param sfx2jfx Implicit conversor from ScalaFx to JavaFX to be repassed to superclass. Its default value is `null`.
+ * @param jfx2sfx Implicit conversion from JavaFX to ScalaFX, it should not be assigned,
+ *                it has to be resolved automatically by the compiler.
+ * @param sfx2jfx Implicit conversion from ScalaFX to JavaFX, it should not be assigned,
+ *                it has to be resolved automatically by the compiler.
  *
  * @todo If B is made like a javafx.util.Builder (B <: javafx.util.Builder[_]) scala compiler shows message: "type arguments
  * [javafx.scene.control.CheckBox,scalafx.scene.control.CheckBox,javafx.scene. control.CheckBoxBuilder[_]] do not conform to class AbstractSFXDelegateSpec's

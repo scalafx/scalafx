@@ -38,16 +38,4 @@ import scalafx.Includes._
  */
 @RunWith(classOf[JUnitRunner])
 class ProgressBarSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ProgressBar, ProgressBar, jfxsc.ProgressBarBuilder[_]](classOf[jfxsc.ProgressBar], classOf[ProgressBar], classOf[jfxsc.ProgressBarBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ProgressBar) = {
-    val jfxProgressBar: jfxsc.ProgressBar = sfxControl
-    jfxProgressBar
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ProgressBar) = {
-    val sfxProgressBar: ProgressBar = jfxControl
-    sfxProgressBar
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.ProgressBar, ProgressBar, jfxsc.ProgressBarBuilder[_]](classOf[jfxsc.ProgressBar], classOf[ProgressBar], classOf[jfxsc.ProgressBarBuilder[_]])

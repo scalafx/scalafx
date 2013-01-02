@@ -40,16 +40,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 class TableColumnCellEditEventSpec[S, T]
   extends SimpleSFXDelegateSpec[jfxsc.TableColumn.CellEditEvent[S, T], TableColumn.CellEditEvent[S, T]](classOf[jfxsc.TableColumn.CellEditEvent[S, T]], classOf[TableColumn.CellEditEvent[S, T]]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: TableColumn.CellEditEvent[S, T]) = {
-    val jfxTableCell: jfxsc.TableColumn.CellEditEvent[S, T] = sfxControl
-    jfxTableCell
-  }
-
   override def getJavaClassInstance = new jfxsc.TableColumn.CellEditEvent(new jfxsc.TableView[S], new jfxsc.TablePosition[S, T](null, 0, null), null, null.asInstanceOf[T])
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TableColumn.CellEditEvent[S, T]) = {
-    val sfxTableCell: TableColumn.CellEditEvent[S, T] = jfxControl
-    sfxTableCell
-  }
 
 }

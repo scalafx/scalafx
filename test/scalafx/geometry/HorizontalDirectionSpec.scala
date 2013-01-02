@@ -24,15 +24,19 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.geometry
 
-import javafx.{ geometry => jfxg }
+import javafx.{geometry => jfxg}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Tests for [[scalafx.geometry.HorizontalDirection]]. */
 @RunWith(classOf[JUnitRunner])
-class HorizontalDirectionSpec
-  extends SFXEnumDelegateSpec[jfxg.HorizontalDirection, HorizontalDirection](classOf[jfxg.HorizontalDirection], classOf[HorizontalDirection], HorizontalDirection)
+class HorizontalDirectionSpec extends SFXEnumDelegateSpec[jfxg.HorizontalDirection, HorizontalDirection](
+  javaClass = classOf[jfxg.HorizontalDirection],
+  scalaClass = classOf[HorizontalDirection],
+  companion = HorizontalDirection)

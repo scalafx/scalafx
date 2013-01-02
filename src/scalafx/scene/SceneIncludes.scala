@@ -42,8 +42,10 @@ object SceneIncludes extends SceneIncludes
 trait SceneIncludes extends ChartIncludes with LayoutIncludes with PaintIncludes with ShapeIncludes with TextIncludes with ImageIncludes with EffectIncludes with LowerPriorityIncludes with ControlIncludes
 
 trait LowerPriorityIncludes {
+  implicit def jfxCacheHint2sfx(e: jfxs.CacheHint) = CacheHint.jfxEnum2sfx(e)
   implicit def jfxCamera2sfx(v: jfxs.Camera) = new Camera(v) {}
   implicit def jfxCursor2sfx(v: jfxs.Cursor) = new Cursor(v) {}
+  implicit def jfxDepthTest2sfx(e: jfxs.DepthTest) = DepthTest.jfxEnum2sfx(e)
   implicit def jfxGroup2sfx(v: jfxs.Group) = new Group(v)
   implicit def jfxImageCursor2sfx(ic: jfxs.ImageCursor) = new ImageCursor(ic)
   implicit def jfxNode2sfx(v: jfxs.Node) = new Node(v) {}

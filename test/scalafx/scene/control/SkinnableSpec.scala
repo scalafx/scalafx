@@ -44,21 +44,11 @@ class SingleSkinnableSpec
     override val delegate = getJavaClassInstance
   }
 
-  protected def convertScalaClassToJavaClass(sfxControl: Skinnable) = {
-    val jfxSkinnable: jfxsc.Skinnable = sfxControl.delegate
-    jfxSkinnable
-  }
-
   // How Skinnable is a abstract class, it is done a basic implementation
   override protected def getJavaClassInstance = new jfxsc.Skinnable {
     def skinProperty = null
     def getSkin = null
     def setSkin(s: jfxsc.Skin[_]) {}
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Skinnable) = {
-    val sfxSkinnable: Skinnable = jfxControl
-    sfxSkinnable
   }
 
 }

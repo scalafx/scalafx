@@ -40,16 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class PolylineSpec
-  extends AbstractSFXDelegateSpec[jfxss.Polyline, Polyline, jfxss.PolylineBuilder[_]](classOf[jfxss.Polyline], classOf[Polyline], classOf[jfxss.PolylineBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxPolyline: Polyline) = {
-    val jfxPolyline: jfxss.Polyline = sfxPolyline
-    jfxPolyline
-  }
-
-  protected def convertJavaClassToScalaClass(jfxPolyline: jfxss.Polyline) = {
-    val sfxPolyline: Polyline = jfxPolyline
-    sfxPolyline
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxss.Polyline, Polyline, jfxss.PolylineBuilder[_]](classOf[jfxss.Polyline], classOf[Polyline], classOf[jfxss.PolylineBuilder[_]])

@@ -40,16 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TitledPaneSpec
-  extends AbstractSFXDelegateSpec[jfxsc.TitledPane, TitledPane, jfxsc.TitledPaneBuilder[_]](classOf[jfxsc.TitledPane], classOf[TitledPane], classOf[jfxsc.TitledPaneBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: TitledPane) = {
-    val jfxTitledPane: jfxsc.TitledPane = sfxControl
-    jfxTitledPane
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TitledPane) = {
-    val sfxTitledPane: TitledPane = jfxControl
-    sfxTitledPane
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.TitledPane, TitledPane, jfxsc.TitledPaneBuilder[_]](classOf[jfxsc.TitledPane], classOf[TitledPane], classOf[jfxsc.TitledPaneBuilder[_]])

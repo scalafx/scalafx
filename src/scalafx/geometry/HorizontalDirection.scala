@@ -24,31 +24,26 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.geometry
 
-import javafx.{ geometry => jfxg }
-import scalafx.util.SFXEnumDelegate
-import scalafx.util.SFXEnumDelegateCompanion
+import javafx.{geometry => jfxg}
+import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
+
+/** Wrapper for [[javafx.geometry.HorizontalDirection]] */
 object HorizontalDirection
   extends SFXEnumDelegateCompanion[jfxg.HorizontalDirection, HorizontalDirection] {
 
-  /**
-   * A direction to the left
-   */
+  /** A direction to the left. */
   val LEFT = new HorizontalDirection(jfxg.HorizontalDirection.LEFT)
 
-  /**
-   * A direction to the right
-   */
+  /** A direction to the right. */
   val RIGHT = new HorizontalDirection(jfxg.HorizontalDirection.RIGHT)
 
-  def unsortedValues = Array(LEFT, RIGHT)
-
+  protected override def unsortedValues: Array[HorizontalDirection] = Array(LEFT, RIGHT)
 }
 
-/**
- * Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/geometry/HorizontalDirection.html]]
- */
+
 sealed case class HorizontalDirection(override val delegate: jfxg.HorizontalDirection)
   extends SFXEnumDelegate[jfxg.HorizontalDirection]

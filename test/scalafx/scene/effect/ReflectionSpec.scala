@@ -45,14 +45,4 @@ class ReflectionSpec
 
   val inputDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxObject: Reflection) = {
-    val jfxReflection: jfxse.Reflection = sfxObject
-    jfxReflection
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.Reflection) = {
-    val sfxReflection: Reflection = jfxObject
-    sfxReflection
-  }
-
 }

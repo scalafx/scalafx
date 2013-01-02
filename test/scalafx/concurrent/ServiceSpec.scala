@@ -46,18 +46,8 @@ class ServiceSpec[T]
 
   override protected def getScalaClassInstance = Service[T](null)
 
-  protected def convertScalaClassToJavaClass(sfxObject: Service[T]) = {
-    val jfxcvent: jfxc.Service[T] = sfxObject
-    jfxcvent
-  }
-
   override protected def getJavaClassInstance = new jfxc.Service[T] {
     protected def createTask = null
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxc.Service[T]) = {
-    val sfxService: Service[T] = jfxObject
-    sfxService
   }
 
 }

@@ -28,26 +28,45 @@ package scalafx.testutil
 
 import java.lang.reflect.Method
 import java.util.EnumSet
-
 import scala.collection.JavaConversions._
-
 import scalafx.util.SFXEnumDelegate
 import scalafx.util.SFXEnumDelegateCompanion
 
-/**
- * Abstract class for [[scalafx.util.SFXEnumDelegate]] implementations
- *
- * @tparam E JavaFX enum class to be wrapped by SFXDelegate class
- * @tparam S SFXEnumDelegate subclass who will wrap JavaFX class
- *
- * @param javaClass JavaFX Enum class
- * @param scalaClass SFXEnumDelegate subclass related with JavaFX class
- * @param scalaClass companion object, derivated from [[scalafx.util.SFXEnumDelegateCompanion]]
- * @param jfx2sfx Implicit conversor from JavaFx to ScalaFX to be repassed to superclass. Its default value is `null`.
- * @param sfx2jfx Implicit conversor from ScalaFx to JavaFX to be repassed to superclass. Its default value is `null`.
- *
- */
-abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] protected (javaClass: Class[E], scalaClass: Class[S], companion: SFXEnumDelegateCompanion[E, S])(implicit jfx2sfx: E => S = null, sfx2jfx: S => E = null)
+
+/** Abstract class that facilitates testing of wrappers for Java enums.
+  *
+  * IMPORTANT: the second order parameters jfx2sfx and sfx2jfx have to be left unassigned in the derived class.
+  * If compiler finds implicit conversion between JavaFX and ScalaFx (and back) it will assign the corresponding
+  * implicit functions to those parameters. Make use that you provide implicit conversion include, for instance,
+  * `import scalafx.Includes._`
+  *
+  * Here a complete test implemented using `SFXEnumDelegateSpec`,
+  * {{{
+  *  import javafx.{geometry => jfxg}
+  *  import org.junit.runner.RunWith
+  *  import org.scalatest.junit.JUnitRunner
+  *  import scalafx.Includes._
+  *  import scalafx.testutil.SFXEnumDelegateSpec
+  *
+  *  `@RunWith(classOf[JUnitRunner])`
+  *  class HPosSpec extends SFXEnumDelegateSpec[jfxg.HPos, HPos](
+  *    javaClass = classOf[jfxg.HPos],
+  *    scalaClass = classOf[HPos],
+  *    companion = HPos)
+  * }}}
+  *
+  * @tparam E JavaFX enum class to be wrapped by SFXDelegate class
+  * @tparam S SFXEnumDelegate subclass that will wrap JavaFX class
+  *
+  * @param javaClass JavaFX Enum class
+  * @param scalaClass SFXEnumDelegate subclass related with JavaFX class
+  * @param companion companion object of the ScalaFX enum wrapper class.
+  * @param jfx2sfx Implicit conversion from JavaFX to ScalaFX, it should not be assigned,
+  *                it has to be resolved automatically by the compiler.
+  * @param sfx2jfx Implicit conversion from ScalaFX to JavaFX, it should not be assigned,
+  *                it has to be resolved automatically by the compiler.
+  */
+abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] protected(javaClass: Class[E], scalaClass: Class[S], companion: SFXEnumDelegateCompanion[E, S])(implicit jfx2sfx: E => S = null, sfx2jfx: S => E = null)
   extends SFXDelegateSpec[E, S](javaClass, scalaClass) {
 
   private val javaEnumConstants = EnumSet.allOf(javaClass)
@@ -64,13 +83,14 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
   private def assertScalaEnumWithOrdinal(s: S, index: Int): Unit =
     assert(s.delegate.ordinal() == index, "%s - Expected position: %d, actual: %d".format(s, s.delegate.ordinal(), index))
 
-  protected def getDesirableMethodName(javaMethod: Method): String = JavaBeanEvaluator.scalaizePropertyNames(javaMethod)
+  protected override def getDesirableMethodName(javaMethod: Method): String = JavaBeanEvaluator.scalaizePropertyNames(javaMethod)
 
   /*
    * Functionalities from static method "valueOf" (present in all java enums) are being replaced by apply method in 
    * companions objects. Therefore, "valueOf" is being excluded from methods search.
    */
-  protected def isSpecialMethodName(name: String) = super.isImplementation(name) || (name == "valueOf")
+  protected override def isSpecialMethodName(name: String) = super.isImplementation(name) ||
+    (name == "valueOf") || name.startsWith("is") || name.startsWith("get")
 
   // Simply it gets the first constant available.
   override protected def getScalaClassInstance = companion.values.toList.head
@@ -111,7 +131,7 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
   }
 
   it should "presents its values at same order as its JavaFX enum ordinal" in {
-    companion.values.zipWithIndex.foreach({ case (s, i) => assertScalaEnumWithOrdinal(s, i) })
+    companion.values.zipWithIndex.foreach({case (s, i) => assertScalaEnumWithOrdinal(s, i)})
   }
 
   ///////////////

@@ -42,16 +42,6 @@ class ButtonBaseSpec
 
   override protected def getScalaClassInstance = new ButtonBase(new jfxsc.Button)
 
-  protected def convertScalaClassToJavaClass(sfxControl: ButtonBase) = {
-    val jfxChoiceBox: jfxsc.ButtonBase = sfxControl
-    jfxChoiceBox
-  }
-
   override protected def getJavaClassInstance = new jfxsc.Button
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ButtonBase) = {
-    val sfxChoiceBox: ButtonBase = jfxControl
-    sfxChoiceBox
-  }
 
 }

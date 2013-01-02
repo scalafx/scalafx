@@ -1,5 +1,3 @@
-
-
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -30,22 +28,16 @@
 package scalafx.scene.paint
 
 import javafx.scene.{paint => jfxsp}
-import scalafx.util.SFXDelegate
+import scalafx.util.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-//I think it might be better to implemented this way rather than extending Enumeration
-object CycleMethod {
-  implicit def sfxCycleMethod2jfx(c: CycleMethod) = c.delegate
-  
+/** Wrapper for [[javafx.scene.paint.CycleMethod]] */
+object CycleMethod extends SFXEnumDelegateCompanion[jfxsp.CycleMethod, CycleMethod] {
+
   val NO_CYCLE = new CycleMethod(jfxsp.CycleMethod.NO_CYCLE)
   val REFLECT = new CycleMethod(jfxsp.CycleMethod.REFLECT)
   val REPEAT = new CycleMethod(jfxsp.CycleMethod.REPEAT)
-  
-  def valueOf(name: String) = name match {
-    case "NO_CYCLE" => NO_CYCLE
-    case "REFLECT" => REFLECT
-    case "REPEAT" => REPEAT
-  }
-  def values = List(NO_CYCLE, REFLECT, REPEAT)
+
+  protected override def unsortedValues: Array[CycleMethod] = Array(NO_CYCLE, REFLECT, REPEAT)
 }
 
-class CycleMethod(override val delegate:jfxsp.CycleMethod) extends SFXDelegate[jfxsp.CycleMethod]
+sealed case class CycleMethod(override val delegate: jfxsp.CycleMethod) extends SFXEnumDelegate[jfxsp.CycleMethod]

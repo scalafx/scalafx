@@ -39,16 +39,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class ImageViewSpec
-  extends AbstractSFXDelegateSpec[jfxsi.ImageView, ImageView, jfxsi.ImageViewBuilder[_]](classOf[jfxsi.ImageView], classOf[ImageView], classOf[jfxsi.ImageViewBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ImageView) = {
-    val jfxImageView: jfxsi.ImageView = sfxControl
-    jfxImageView
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsi.ImageView) = {
-    val sfxImageView: ImageView = jfxControl
-    sfxImageView
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsi.ImageView, ImageView, jfxsi.ImageViewBuilder[_]](classOf[jfxsi.ImageView], classOf[ImageView], classOf[jfxsi.ImageViewBuilder[_]])

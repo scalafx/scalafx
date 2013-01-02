@@ -44,14 +44,4 @@ class ColorAdjustSpec
 
   val inputDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxObject: ColorAdjust) = {
-    val jfxColorAdjust: jfxse.ColorAdjust = sfxObject
-    jfxColorAdjust
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.ColorAdjust) = {
-    val sfxColorAdjust: ColorAdjust = jfxObject
-    sfxColorAdjust
-  }
-
 }

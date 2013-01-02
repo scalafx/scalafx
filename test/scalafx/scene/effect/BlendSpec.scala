@@ -39,16 +39,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class BlendSpec
-  extends AbstractSFXDelegateSpec[jfxse.Blend, Blend, jfxse.BlendBuilder[_]](classOf[jfxse.Blend], classOf[Blend], classOf[jfxse.BlendBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxObject: Blend) = {
-    val jfxBlend: jfxse.Blend = sfxObject
-    jfxBlend
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.Blend) = {
-    val sfxBlend: Blend = jfxObject
-    sfxBlend
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxse.Blend, Blend, jfxse.BlendBuilder[_]](classOf[jfxse.Blend], classOf[Blend], classOf[jfxse.BlendBuilder[_]])

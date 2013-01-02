@@ -40,16 +40,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class MediaSpec extends AbstractSFXDelegateSpec[jfxsm.Media, Media, jfxsm.MediaBuilder](classOf[jfxsm.Media], classOf[Media], classOf[jfxsm.MediaBuilder]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: Media) = {
-    val jfxMedia: jfxsm.Media = sfxControl
-    jfxMedia
-  }
-
   override protected def getJavaClassInstance = new jfxsm.Media(url)
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsm.Media) = {
-    val sfxMedia: Media = jfxControl
-    sfxMedia
-  }
 
 }

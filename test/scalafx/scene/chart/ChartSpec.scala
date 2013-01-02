@@ -43,18 +43,8 @@ class ChartSpec
 
   override def getScalaClassInstance = new Chart(getJavaClassInstance) {}
   
-  protected def convertScalaClassToJavaClass(sfxChart: Chart) = {
-    val jfxChart: jfxsc.Chart = sfxChart
-    jfxChart
-  }
-  
   override def getJavaClassInstance = new jfxsc.Chart{
     def layoutChartChildren(top: Double, left: Double, width: Double, height: Double) {}
-  }
-
-  protected def convertJavaClassToScalaClass(jfxChart: jfxsc.Chart) = {
-    val sfxChart: Chart = jfxChart
-    sfxChart
   }
 
 }

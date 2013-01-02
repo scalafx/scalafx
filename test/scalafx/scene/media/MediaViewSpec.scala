@@ -45,14 +45,4 @@ class MediaViewSpec
 
   val positionDelegate = new MediaView
 
-  protected def convertScalaClassToJavaClass(sfxControl: MediaView) = {
-    val jfxMediaView: jfxsm.MediaView = sfxControl
-    jfxMediaView
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsm.MediaView) = {
-    val sfxMediaView: MediaView = jfxControl
-    sfxMediaView
-  }
-
 }

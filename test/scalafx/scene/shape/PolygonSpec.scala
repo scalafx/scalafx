@@ -40,16 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class PolygonSpec
-  extends AbstractSFXDelegateSpec[jfxss.Polygon, Polygon, jfxss.PolygonBuilder[_]](classOf[jfxss.Polygon], classOf[Polygon], classOf[jfxss.PolygonBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxPolygon: Polygon) = {
-    val jfxPolygon: jfxss.Polygon = sfxPolygon
-    jfxPolygon
-  }
-
-  protected def convertJavaClassToScalaClass(jfxPolygon: jfxss.Polygon) = {
-    val sfxPolygon: Polygon = jfxPolygon
-    sfxPolygon
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxss.Polygon, Polygon, jfxss.PolygonBuilder[_]](classOf[jfxss.Polygon], classOf[Polygon], classOf[jfxss.PolygonBuilder[_]])

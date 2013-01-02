@@ -44,16 +44,6 @@ class NodeSpec
 
   override protected def getScalaClassInstance = new Node(getJavaClassInstance) {}
 
-  protected def convertScalaClassToJavaClass(sfxControl: Node) = {
-    val jfxNode: jfxs.Node = sfxControl
-    jfxNode
-  }
-
   override protected def getJavaClassInstance = new jfxs.Group
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxs.Node) = {
-    val sfxNode: Node = jfxControl
-    sfxNode
-  }
 
 }

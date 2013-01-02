@@ -44,14 +44,4 @@ class DisplacementMapSpec
 
   val inputDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxObject: DisplacementMap) = {
-    val jfxDisplacementMap: jfxse.DisplacementMap = sfxObject
-    jfxDisplacementMap
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.DisplacementMap) = {
-    val sfxDisplacementMap: DisplacementMap = jfxObject
-    sfxDisplacementMap
-  }
-
 }

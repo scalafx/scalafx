@@ -26,11 +26,13 @@
  */
 package scalafx.geometry
 
-import javafx.{ geometry => jfxg }
-import scalafx.util.SFXEnumDelegate
-import scalafx.util.SFXEnumDelegateCompanion
-import scalafx.Includes._
+import javafx.{geometry => jfxg}
+import scalafx.geometry.GeometryIncludes.jfxHPos2sfx
+import scalafx.geometry.GeometryIncludes.jfxVPos2sfx
+import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
+
+/** Wrapper for [[javafx.geometry.Pos]] */
 object Pos
   extends SFXEnumDelegateCompanion[jfxg.Pos, Pos] {
 
@@ -47,28 +49,21 @@ object Pos
   val TOP_LEFT = new Pos(jfxg.Pos.TOP_LEFT)
   val TOP_RIGHT = new Pos(jfxg.Pos.TOP_RIGHT)
 
-  def unsortedValues = Array(
-    BASELINE_CENTER, BASELINE_LEFT, BASELINE_RIGHT,
-    CENTER,
-    BOTTOM_CENTER, BOTTOM_LEFT, BOTTOM_RIGHT,
-    CENTER_LEFT, CENTER_RIGHT,
-    TOP_CENTER, TOP_LEFT, TOP_RIGHT)
+  protected override def unsortedValues: Array[Pos] = Array(
+    TOP_LEFT, TOP_CENTER, TOP_RIGHT,
+    CENTER_LEFT, CENTER, CENTER_RIGHT,
+    BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT,
+    BASELINE_LEFT, BASELINE_CENTER, BASELINE_RIGHT
+  )
 }
 
-/**
- * Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/geometry/Pos.html]]
- */
+
 sealed case class Pos(override val delegate: jfxg.Pos)
   extends SFXEnumDelegate[jfxg.Pos] {
 
-  /**
-   * Returns the horizontal positioning/alignment.
-   */
+  /** Returns the horizontal positioning/alignment. */
   def hpos: HPos = delegate.getHpos
 
-  /**
-   * Returns the vertical positioning/alignment.
-   */
+  /** Returns the vertical positioning/alignment. **/
   def vpos: VPos = delegate.getVpos
-
 }

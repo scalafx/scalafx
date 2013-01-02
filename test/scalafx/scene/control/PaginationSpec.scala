@@ -40,16 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class PaginationSpec
-  extends AbstractSFXDelegateSpec[jfxsc.Pagination, Pagination, jfxsc.PaginationBuilder[_]](classOf[jfxsc.Pagination], classOf[Pagination], classOf[jfxsc.PaginationBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: Pagination) = {
-    val jfxPagination: jfxsc.Pagination = sfxControl
-    jfxPagination
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Pagination) = {
-    val sfxPagination: Pagination = jfxControl
-    sfxPagination
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.Pagination, Pagination, jfxsc.PaginationBuilder[_]](classOf[jfxsc.Pagination], classOf[Pagination], classOf[jfxsc.PaginationBuilder[_]])

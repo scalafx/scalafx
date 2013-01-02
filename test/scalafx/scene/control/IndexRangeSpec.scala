@@ -43,16 +43,6 @@ class IndexRangeSpec
 
   override protected def getScalaClassInstance = new IndexRange(1, 2)
 
-  protected def convertScalaClassToJavaClass(sfxControl: IndexRange) = {
-    val jfxIndexRange: jfxsc.IndexRange = sfxControl
-    jfxIndexRange
-  }
-
   protected override def getJavaClassInstance = new jfxsc.IndexRange(1, 2)
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.IndexRange) = {
-    val sfxIndexRange: IndexRange = jfxControl
-    sfxIndexRange
-  }
 
 }

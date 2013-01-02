@@ -40,16 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class BorderPaneSpec
-  extends AbstractSFXDelegateSpec[jfxsl.BorderPane, BorderPane, jfxsl.BorderPaneBuilder[_]](classOf[jfxsl.BorderPane], classOf[BorderPane], classOf[jfxsl.BorderPaneBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: BorderPane) = {
-    val jfxBorderPane: jfxsl.BorderPane = sfxControl
-    jfxBorderPane
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.BorderPane) = {
-    val sfxBorderPane: BorderPane = jfxControl
-    sfxBorderPane
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsl.BorderPane, BorderPane, jfxsl.BorderPaneBuilder[_]](classOf[jfxsl.BorderPane], classOf[BorderPane], classOf[jfxsl.BorderPaneBuilder[_]])

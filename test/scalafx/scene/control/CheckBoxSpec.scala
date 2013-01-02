@@ -38,16 +38,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class CheckBoxSpec
-  extends AbstractSFXDelegateSpec[jfxsc.CheckBox, CheckBox, jfxsc.CheckBoxBuilder[_]](classOf[jfxsc.CheckBox], classOf[CheckBox], classOf[jfxsc.CheckBoxBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: CheckBox) = {
-    val jfxCheckBox: jfxsc.CheckBox = sfxControl
-    jfxCheckBox
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.CheckBox) = {
-    val sfxCheckBox: CheckBox = jfxControl
-    sfxCheckBox
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.CheckBox, CheckBox, jfxsc.CheckBoxBuilder[_]](classOf[jfxsc.CheckBox], classOf[CheckBox], classOf[jfxsc.CheckBoxBuilder[_]])

@@ -41,16 +41,6 @@ import org.scalatest.junit.JUnitRunner
 class WorkerStateEventSpec
   extends SimpleSFXDelegateSpec[jfxc.WorkerStateEvent, WorkerStateEvent](classOf[jfxc.WorkerStateEvent], classOf[WorkerStateEvent]) {
 
-  protected def convertScalaClassToJavaClass(sfxObject: WorkerStateEvent) = {
-    val jfxcWorkerStateEvent: jfxc.WorkerStateEvent = sfxObject
-    jfxcWorkerStateEvent
-  }
-  
   override protected def getJavaClassInstance = new jfxc.WorkerStateEvent(null, null)
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxc.WorkerStateEvent) = {
-    val sfxWorkerStateEvent: WorkerStateEvent = jfxObject
-    sfxWorkerStateEvent
-  }
 
 }

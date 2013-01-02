@@ -30,7 +30,6 @@ package scalafx.scene.text
 import scala.collection.JavaConversions._
 
 import javafx.scene.{ text => jfxst }
-import javafx.scene.text.{ FontWeight, FontPosture }
 import scalafx.util.SFXDelegate
 
 object Font {
@@ -59,19 +58,19 @@ object Font {
    * Searches for an appropriate font based on the font family name and posture
    * style.
    */
-  def font(family: String, posture: FontPosture, size: Double) =
+  def font(family: String, posture: jfxst.FontPosture, size: Double) =
     new Font(jfxst.Font.font(family, posture, size))
 
   /**
    * Searches for an appropriate font based on the font family name and weight style.
    */
-  def font(family: String, weight: FontWeight, size: Double) =
+  def font(family: String, weight: jfxst.FontWeight, size: Double) =
     new Font(jfxst.Font.font(family, weight, size))
 
   /**
    * Searches for an appropriate font based on the font family name and weight and posture style.
    */
-  def font(family: String, weight: FontWeight, posture: FontPosture, size: Double) =
+  def font(family: String, weight: jfxst.FontWeight, posture: jfxst.FontPosture, size: Double) =
     new Font(jfxst.Font.font(family, weight, posture, size))
 
   /**

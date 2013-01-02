@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class SequentialTransitionSpec 
-  extends AbstractSFXDelegateSpec[jfxa.SequentialTransition, SequentialTransition, jfxa.SequentialTransitionBuilder](classOf[jfxa.SequentialTransition], classOf[SequentialTransition], classOf[jfxa.SequentialTransitionBuilder]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: SequentialTransition) = {
-    val jfxSequentialTransition: jfxa.SequentialTransition = sfxControl
-    jfxSequentialTransition
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxa.SequentialTransition) = {
-    val sfxSequentialTransition: SequentialTransition = jfxControl
-    sfxSequentialTransition
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxa.SequentialTransition, SequentialTransition, jfxa.SequentialTransitionBuilder](classOf[jfxa.SequentialTransition], classOf[SequentialTransition], classOf[jfxa.SequentialTransitionBuilder])

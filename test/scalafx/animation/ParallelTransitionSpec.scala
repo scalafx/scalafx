@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ParallelTransitionSpec 
-  extends AbstractSFXDelegateSpec[jfxa.ParallelTransition, ParallelTransition, jfxa.ParallelTransitionBuilder](classOf[jfxa.ParallelTransition], classOf[ParallelTransition], classOf[jfxa.ParallelTransitionBuilder]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ParallelTransition) = {
-    val jfxParallelTransition: jfxa.ParallelTransition = sfxControl
-    jfxParallelTransition
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxa.ParallelTransition) = {
-    val sfxParallelTransition: ParallelTransition = jfxControl
-    sfxParallelTransition
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxa.ParallelTransition, ParallelTransition, jfxa.ParallelTransitionBuilder](classOf[jfxa.ParallelTransition], classOf[ParallelTransition], classOf[jfxa.ParallelTransitionBuilder])

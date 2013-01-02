@@ -34,6 +34,10 @@ import javafx.{util => jfxu}
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
+ * IMPORTANT: the second order parameters jfx2sfx and sfx2jfx have to be left unassigned in the derived class.
+ * If compiler finds implicit conversion between JavaFX and ScalaFx (and back) it will assign the corresponding
+ * implicit functions to those parameters. Make use that you provide implicit conversion include, for instance,
+ * `import scalafx.Includes._`
  *
  * @tparam J Java Class (e.g. java.lang.Integer, java.lang.Number, java.util.BigInteger, java.util.Date)
  * @tparam C JavaFX StringConverter using type J (e.g. javafx.util.converter.IntegerStringConverter,
@@ -44,8 +48,10 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * @param javaConverterClass C class, to be send to superclass
  * @param scalaConverterClass D class, to be send to superclass
  * @param scalaClass S class
- * @param jfx2sfx Implicit conversor from JavaFx to ScalaFX to be repassed to superclass. Its default value is `null`.
- * @param sfx2jfx Implicit conversor from ScalaFx to JavaFX to be repassed to superclass. Its default value is `null`.
+ * @param jfx2sfx Implicit conversion from JavaFX to ScalaFX, it should not be assigned,
+ *                it has to be resolved automatically by the compiler.
+ * @param sfx2jfx Implicit conversion from ScalaFX to JavaFX, it should not be assigned,
+ *                it has to be resolved automatically by the compiler.
  * 
  */
 abstract private[converter] class AbstractStringConverterDelegateSpec[J <: java.lang.Object, C <: jfxu.StringConverter[J], S <: Any, D <: StringConverterDelegate[_, S, C]] protected (javaConverterClass: Class[C], scalaConverterClass: Class[D], scalaClass: Class[S]) (implicit jfx2sfx: C => D = null, sfx2jfx: D => C = null)

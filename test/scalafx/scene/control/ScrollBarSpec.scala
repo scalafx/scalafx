@@ -38,16 +38,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class ScrollBarSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ScrollBar, ScrollBar, jfxsc.ScrollBarBuilder[_]](classOf[jfxsc.ScrollBar], classOf[ScrollBar], classOf[jfxsc.ScrollBarBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ScrollBar) = {
-    val jfxScrollBar: jfxsc.ScrollBar = sfxControl
-    jfxScrollBar
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ScrollBar) = {
-    val sfxScrollBar: ScrollBar = jfxControl
-    sfxScrollBar
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.ScrollBar, ScrollBar, jfxsc.ScrollBarBuilder[_]](classOf[jfxsc.ScrollBar], classOf[ScrollBar], classOf[jfxsc.ScrollBarBuilder[_]])

@@ -42,16 +42,4 @@ import scalafx.testutil.RunOnApplicationThread
 @RunWith(classOf[JUnitRunner])
 class StageSpec
   extends AbstractSFXDelegateSpec[jfxs.Stage, Stage, jfxs.StageBuilder[_]](classOf[jfxs.Stage], classOf[Stage], classOf[jfxs.StageBuilder[_]]) 
-  with RunOnApplicationThread {
-
-  protected def convertScalaClassToJavaClass(sfxControl: Stage) = {
-    val jfxStage: jfxs.Stage = sfxControl
-    jfxStage
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxs.Stage) = {
-    val sfxStage: Stage = jfxControl
-    sfxStage
-  }
-
-}
+  with RunOnApplicationThread

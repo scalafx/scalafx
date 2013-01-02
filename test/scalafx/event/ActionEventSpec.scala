@@ -40,16 +40,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class ActionEventSpec
-  extends SimpleSFXDelegateSpec[jfxe.ActionEvent, ActionEvent](classOf[jfxe.ActionEvent], classOf[ActionEvent]) {
-
-  protected def convertScalaClassToJavaClass(sfxObject: ActionEvent) = {
-    val jfxActionEvent: jfxe.ActionEvent = sfxObject
-    jfxActionEvent
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxe.ActionEvent) = {
-    val sfxActionEvent: ActionEvent = jfxObject
-    sfxActionEvent
-  }
-
-}
+  extends SimpleSFXDelegateSpec[jfxe.ActionEvent, ActionEvent](classOf[jfxe.ActionEvent], classOf[ActionEvent])

@@ -45,14 +45,4 @@ class GaussianBlurSpec
 
   val inputDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxObject: GaussianBlur) = {
-    val jfxGaussianBlur: jfxse.GaussianBlur = sfxObject
-    jfxGaussianBlur
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.GaussianBlur) = {
-    val sfxGaussianBlur: GaussianBlur = jfxObject
-    sfxGaussianBlur
-  }
-
 }

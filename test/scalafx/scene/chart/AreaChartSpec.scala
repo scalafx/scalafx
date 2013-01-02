@@ -43,16 +43,6 @@ class AreaChartSpec
 
   override def getScalaClassInstance = new AreaChart[Number, Number](getJavaClassInstance)
   
-  protected def convertScalaClassToJavaClass(sfxAreaChart: AreaChart[Number, Number]) = {
-    val jfxAreaChart: jfxsc.AreaChart[Number, Number] = sfxAreaChart
-    jfxAreaChart
-  }
-  
   override def getJavaClassInstance = new jfxsc.AreaChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
-
-  protected def convertJavaClassToScalaClass(jfxAreaChart: jfxsc.AreaChart[Number, Number]) = {
-    val sfxAreaChart: AreaChart[Number, Number] = jfxAreaChart
-    sfxAreaChart
-  }
 
 }

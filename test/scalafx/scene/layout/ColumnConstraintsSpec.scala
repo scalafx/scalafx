@@ -40,16 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ColumnConstraintsSpec
-  extends AbstractSFXDelegateSpec[jfxsl.ColumnConstraints, ColumnConstraints, jfxsl.ColumnConstraintsBuilder[_]](classOf[jfxsl.ColumnConstraints], classOf[ColumnConstraints], classOf[jfxsl.ColumnConstraintsBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ColumnConstraints) = {
-    val jfxColumnConstraints: jfxsl.ColumnConstraints = sfxControl
-    jfxColumnConstraints
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsl.ColumnConstraints) = {
-    val sfxColumnConstraints: ColumnConstraints = jfxControl
-    sfxColumnConstraints
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsl.ColumnConstraints, ColumnConstraints, jfxsl.ColumnConstraintsBuilder[_]](classOf[jfxsl.ColumnConstraints], classOf[ColumnConstraints], classOf[jfxsl.ColumnConstraintsBuilder[_]])
