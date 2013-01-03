@@ -16,8 +16,9 @@ object Translate {
  *
  */
 class Translate(override val delegate: jfxst.Translate = new jfxst.Translate)
-  extends SFXDelegate[jfxst.Translate]
-  with PositionDelegate[jfxst.Translate] {
+  extends Transform(delegate)
+  with PositionDelegate[jfxst.Translate]
+  with SFXDelegate[jfxst.Translate] {
 
   def this(x: Double, y: Double) = this(new jfxst.Translate(x, y))
 
