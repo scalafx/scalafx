@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,18 +24,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.transform
+package scalafx.animation
 
+import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import javafx.scene.{ transform => jfxst }
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.SFXEnumDelegateSpec
 
-object TransformIncludes extends TransformIncludes
-
-trait TransformIncludes {
-  implicit def jfxAffine2sfx(v: jfxst.Affine) = new Affine(v)
-  implicit def jfxRotate2sfx(v: jfxst.Rotate) = new Rotate(v)
-  implicit def jfxScale2sfx(v: jfxst.Scale) = new Scale(v)
-  implicit def jfxShear2sfx(v: jfxst.Shear) = new Shear(v)
-  implicit def jfxTransform2sfx(v: jfxst.Transform) = new Transform(v) {}
-  implicit def jfxTranslate2sfx(v: jfxst.Translate) = new Translate(v)
-}
+/** Tests for [[scalafx.PathTransition.PathTransition.OrientationType]]. */
+@RunWith(classOf[JUnitRunner])
+class PathTransitionOrientationTypeSpec extends SFXEnumDelegateSpec[jfxa.PathTransition.OrientationType, PathTransition.OrientationType](
+  classOf[jfxa.PathTransition.OrientationType],
+  classOf[PathTransition.OrientationType],
+  PathTransition.OrientationType)

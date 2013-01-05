@@ -32,9 +32,35 @@ import scalafx.Includes._
 import scalafx.util.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.shape.Shape
+import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 object PathTransition extends AnimationStatics {
   implicit def sfxPathTransition2jfx(v: PathTransition) = v.delegate
+
+  object OrientationType
+    extends SFXEnumDelegateCompanion[jfxa.PathTransition.OrientationType, OrientationType] {
+
+    /**
+     * The targeted node's rotation matrix stays unchange along the geometric path.
+     */
+    val NONE = new OrientationType(jfxa.PathTransition.OrientationType.NONE)
+
+    /**
+     * The targeted node's rotation matrix is set to keep node perpendicular to the path's tangent along the geometric
+     * path.
+     */
+    val ORTHOGONAL_TO_TANGENT = new OrientationType(jfxa.PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT)
+
+    protected override def unsortedValues: Array[OrientationType] = Array(NONE, ORTHOGONAL_TO_TANGENT)
+
+  }
+
+  /**
+   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/animation/PathTransition.OrientationType.html]]
+   */
+  sealed case class OrientationType(override val delegate: jfxa.PathTransition.OrientationType)
+    extends SFXEnumDelegate[jfxa.PathTransition.OrientationType]
+
 }
 
 /**
@@ -91,7 +117,7 @@ class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathT
    * Specifies the upright orientation of node along the path.
    */
   def orientation = delegate.orientationProperty
-  def orientation_=(o: jfxa.PathTransition.OrientationType) {
+  def orientation_=(o: PathTransition.OrientationType) {
     orientation() = o
   }
 

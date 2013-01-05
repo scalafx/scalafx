@@ -52,6 +52,7 @@ trait AnimationIncludes {
   }
 
   implicit def jfxAnimation2sfx(v: jfxa.Animation) = new Animation(v) {}
+  implicit def jfxAnimationStatus2sfx(v: jfxa.Animation.Status) = Animation.Status.jfxEnum2sfx(v)
   implicit def jfxAnimationTimer2sfx(at: jfxa.AnimationTimer) = new AnimationTimer(at) {}
   implicit def jfxFadeTransition2sfx(v: jfxa.FadeTransition) = new FadeTransition(v)
   implicit def jfxFillTransition2sfx(v: jfxa.FillTransition) = new FillTransition(v)
@@ -59,6 +60,7 @@ trait AnimationIncludes {
   implicit def jfxKeyValue2sfx(v: jfxa.KeyValue) = new KeyValue(v)
   implicit def jfxParallelTransition2sfx(v: jfxa.ParallelTransition) = new ParallelTransition(v)
   implicit def jfxPathTransition2sfx(v: jfxa.PathTransition) = new PathTransition(v)
+  implicit def jfxPathTransitionOrientationType2sfx(v: jfxa.PathTransition.OrientationType) = new PathTransition.OrientationType(v)
   implicit def jfxPauseTransition2sfx(v: jfxa.PauseTransition) = new PauseTransition(v)
   implicit def jfxRotateTransition2sfx(v: jfxa.RotateTransition) = new RotateTransition(v)
   implicit def jfxScaleTransition2sfx(v: jfxa.ScaleTransition) = new ScaleTransition(v)

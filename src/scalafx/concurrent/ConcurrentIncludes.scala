@@ -36,5 +36,6 @@ trait ConcurrentIncludes {
   implicit def jfxWorker2sfxWorker[T](w: jfxc.Worker[T]) = new Worker[T] {
     override val delegate = w
   }
+  implicit def jfxWorkerState2sfxWorkerState(s: jfxc.Worker.State) = Worker.State.jfxEnum2sfx(s) 
   implicit def jfxWorkerStateEvent2sfxWorkerStateEvent(w: jfxc.WorkerStateEvent) = new WorkerStateEvent(w)
 }
