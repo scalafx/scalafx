@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,15 +27,14 @@
 package scalafx.concurrent
 
 import javafx.{ concurrent => jfxc }
+import scalafx.Includes._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.SFXEnumDelegateSpec
 
-object ConcurrentIncludes extends ConcurrentIncludes
-
-trait ConcurrentIncludes {
-  implicit def jfxService2sfxService[T](s: jfxc.Service[T]) = new Service[T](s) {}
-  implicit def jfxTask2sfxTask[T](t: jfxc.Task[T]) = new Task[T](t) {}
-  implicit def jfxWorker2sfxWorker[T](w: jfxc.Worker[T]) = new Worker[T] {
-    override val delegate = w
-  }
-  implicit def jfxWorkerState2sfxWorkerState(s: jfxc.Worker.State) = Worker.State.jfxEnum2sfx(s) 
-  implicit def jfxWorkerStateEvent2sfxWorkerStateEvent(w: jfxc.WorkerStateEvent) = new WorkerStateEvent(w)
-}
+/** Tests for [[scalafx.animation.Worker.State]]. */
+@RunWith(classOf[JUnitRunner])
+class WorkerStateSpec extends SFXEnumDelegateSpec[jfxc.Worker.State, Worker.State](
+  classOf[jfxc.Worker.State],
+  classOf[Worker.State],
+  Worker.State)
