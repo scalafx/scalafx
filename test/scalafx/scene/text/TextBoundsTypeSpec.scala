@@ -39,6 +39,5 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class TextBoundsTypeSpec extends SFXEnumDelegateSpec[jfxst.TextBoundsType, TextBoundsType](
   javaClass = classOf[jfxst.TextBoundsType],
   scalaClass = classOf[TextBoundsType],
-  javaValueOfFun = (s: String) => jfxst.TextBoundsType.valueOf(s),
   companion = TextBoundsType)
 

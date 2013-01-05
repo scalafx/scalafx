@@ -40,16 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class QuadCurveSpec 
-  extends AbstractSFXDelegateSpec[jfxss.QuadCurve, QuadCurve, jfxss.QuadCurveBuilder[_]](classOf[jfxss.QuadCurve], classOf[QuadCurve], classOf[jfxss.QuadCurveBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxQuadCurve: QuadCurve) = {
-    val jfxQuadCurve: jfxss.QuadCurve = sfxQuadCurve
-    jfxQuadCurve
-  }
-
-  protected def convertJavaClassToScalaClass(jfxQuadCurve: jfxss.QuadCurve) = {
-    val sfxQuadCurve: QuadCurve = jfxQuadCurve
-    sfxQuadCurve
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxss.QuadCurve, QuadCurve, jfxss.QuadCurveBuilder[_]](classOf[jfxss.QuadCurve], classOf[QuadCurve], classOf[jfxss.QuadCurveBuilder[_]])

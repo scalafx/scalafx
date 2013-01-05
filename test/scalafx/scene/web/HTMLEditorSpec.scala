@@ -41,16 +41,4 @@ import scalafx.testutil.RunOnApplicationThread
 @RunWith(classOf[JUnitRunner])
 class HTMLEditorSpec
   extends AbstractSFXDelegateSpec[jfxsw.HTMLEditor, HTMLEditor, jfxsw.HTMLEditorBuilder[_]](classOf[jfxsw.HTMLEditor], classOf[HTMLEditor], classOf[jfxsw.HTMLEditorBuilder[_]])
-  with RunOnApplicationThread {
-
-  protected def convertScalaClassToJavaClass(sfxControl: HTMLEditor) = {
-    val jfxHTMLEditor: jfxsw.HTMLEditor = sfxControl
-    jfxHTMLEditor
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsw.HTMLEditor) = {
-    val sfxHTMLEditor: HTMLEditor = jfxControl
-    sfxHTMLEditor
-  }
-
-}
+  with RunOnApplicationThread

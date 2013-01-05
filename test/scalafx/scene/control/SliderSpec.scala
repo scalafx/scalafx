@@ -39,16 +39,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class SliderSpec
-  extends AbstractSFXDelegateSpec[jfxsc.Slider, Slider, jfxsc.SliderBuilder[_]](classOf[jfxsc.Slider], classOf[Slider], classOf[jfxsc.SliderBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: Slider) = {
-    val jfxSlider: jfxsc.Slider = sfxControl
-    jfxSlider
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Slider) = {
-    val sfxSlider: Slider = jfxControl
-    sfxSlider
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.Slider, Slider, jfxsc.SliderBuilder[_]](classOf[jfxsc.Slider], classOf[Slider], classOf[jfxsc.SliderBuilder[_]])

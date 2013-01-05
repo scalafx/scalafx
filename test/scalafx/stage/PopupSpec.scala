@@ -42,16 +42,4 @@ import scalafx.testutil.RunOnApplicationThread
 @RunWith(classOf[JUnitRunner])
 class PopupSpec
   extends SimpleSFXDelegateSpec[jfxs.Popup, Popup](classOf[jfxs.Popup], classOf[Popup])
-  with RunOnApplicationThread {
-
-  protected def convertScalaClassToJavaClass(sfxControl: Popup) = {
-    val jfxPopup: jfxs.Popup = sfxControl
-    jfxPopup
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxs.Popup) = {
-    val sfxPopup: Popup = jfxControl
-    sfxPopup
-  }
-
-}
+  with RunOnApplicationThread

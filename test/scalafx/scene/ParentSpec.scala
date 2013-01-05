@@ -44,16 +44,6 @@ class ParentSpec
 
   override protected def getScalaClassInstance = new Parent(getJavaClassInstance) {}
 
-  protected def convertScalaClassToJavaClass(sfxControl: Parent) = {
-    val jfxParent: jfxs.Parent = sfxControl
-    jfxParent
-  }
-
   override protected def getJavaClassInstance = new jfxs.Group
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxs.Parent) = {
-    val sfxParent: Parent = jfxControl
-    sfxParent
-  }
 
 }

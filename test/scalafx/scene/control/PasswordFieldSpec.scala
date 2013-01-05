@@ -38,16 +38,4 @@ import scalafx.Includes._
  */
 @RunWith(classOf[JUnitRunner])
 class PasswordFieldSpec
-  extends AbstractSFXDelegateSpec[jfxsc.PasswordField, PasswordField, jfxsc.PasswordFieldBuilder[_]](classOf[jfxsc.PasswordField], classOf[PasswordField], classOf[jfxsc.PasswordFieldBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: PasswordField) = {
-    val jfxPasswordField: jfxsc.PasswordField = sfxControl
-    jfxPasswordField
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.PasswordField) = {
-    val sfxPasswordField: PasswordField = jfxControl
-    sfxPasswordField
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.PasswordField, PasswordField, jfxsc.PasswordFieldBuilder[_]](classOf[jfxsc.PasswordField], classOf[PasswordField], classOf[jfxsc.PasswordFieldBuilder[_]])

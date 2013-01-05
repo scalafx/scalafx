@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class CategoryAxisSpec
-  extends AbstractSFXDelegateSpec[jfxsc.CategoryAxis, CategoryAxis, jfxsc.CategoryAxisBuilder](classOf[jfxsc.CategoryAxis], classOf[CategoryAxis], classOf[jfxsc.CategoryAxisBuilder]) {
-
-  protected def convertScalaClassToJavaClass(sfxCategoryAxis: CategoryAxis) = {
-    val jfxCategoryAxis: jfxsc.CategoryAxis = sfxCategoryAxis
-    jfxCategoryAxis
-  }
-  
-  protected def convertJavaClassToScalaClass(jfxCategoryAxis: jfxsc.CategoryAxis) = {
-    val sfxCategoryAxis: CategoryAxis = jfxCategoryAxis
-    sfxCategoryAxis
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.CategoryAxis, CategoryAxis, jfxsc.CategoryAxisBuilder](classOf[jfxsc.CategoryAxis], classOf[CategoryAxis], classOf[jfxsc.CategoryAxisBuilder])

@@ -37,16 +37,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class FadeTransitionSpec
-  extends AbstractSFXDelegateSpec[jfxa.FadeTransition, FadeTransition, jfxa.FadeTransitionBuilder](classOf[jfxa.FadeTransition], classOf[FadeTransition], classOf[jfxa.FadeTransitionBuilder]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: FadeTransition) = {
-    val jfxFadeTransition: jfxa.FadeTransition = sfxControl
-    jfxFadeTransition
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxa.FadeTransition) = {
-    val sfxFadeTransition: FadeTransition = jfxControl
-    sfxFadeTransition
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxa.FadeTransition, FadeTransition, jfxa.FadeTransitionBuilder](classOf[jfxa.FadeTransition], classOf[FadeTransition], classOf[jfxa.FadeTransitionBuilder])

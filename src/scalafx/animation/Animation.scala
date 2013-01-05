@@ -36,6 +36,7 @@ import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.util.Duration.sfxDuration2jfx
 import scalafx.util.Duration
 import scalafx.util.SFXDelegate
+import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 trait AnimationStatics {
   def INDEFINITE = jfxa.Animation.INDEFINITE
@@ -43,6 +44,35 @@ trait AnimationStatics {
 
 object Animation extends AnimationStatics {
   implicit def sfxAnimation2jfx(v: Animation) = v.delegate
+
+  object Status
+    extends SFXEnumDelegateCompanion[jfxa.Animation.Status, Status] {
+
+    /**
+     * The paused state.
+     */
+    val PAUSED = new Status(jfxa.Animation.Status.PAUSED)
+
+    /**
+     * The running state.
+     */
+    val RUNNING = new Status(jfxa.Animation.Status.RUNNING)
+
+    /**
+     * The stopped state.
+     */
+    val STOPPED = new Status(jfxa.Animation.Status.STOPPED)
+
+    protected override def unsortedValues: Array[Status] = Array(PAUSED, RUNNING, STOPPED)
+
+  }
+
+  /**
+   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.Status.html]]
+   */
+  sealed case class Status(override val delegate: jfxa.Animation.Status)
+    extends SFXEnumDelegate[jfxa.Animation.Status]
+
 }
 
 /**

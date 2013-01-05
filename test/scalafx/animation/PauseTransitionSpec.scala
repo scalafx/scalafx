@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class PauseTransitionSpec 
-  extends AbstractSFXDelegateSpec[jfxa.PauseTransition, PauseTransition, jfxa.PauseTransitionBuilder](classOf[jfxa.PauseTransition], classOf[PauseTransition], classOf[jfxa.PauseTransitionBuilder]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: PauseTransition) = {
-    val jfxPauseTransition: jfxa.PauseTransition = sfxControl
-    jfxPauseTransition
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxa.PauseTransition) = {
-    val sfxPauseTransition: PauseTransition = jfxControl
-    sfxPauseTransition
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxa.PauseTransition, PauseTransition, jfxa.PauseTransitionBuilder](classOf[jfxa.PauseTransition], classOf[PauseTransition], classOf[jfxa.PauseTransitionBuilder])

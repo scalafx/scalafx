@@ -49,11 +49,6 @@ class PixelReaderSpec
     override val delegate = getJavaClassInstance
   }
 
-  protected def convertScalaClassToJavaClass(sfxPixelReader: PixelReader) = {
-    val jfxPixelReader: jfxsi.PixelReader = sfxPixelReader
-    jfxPixelReader
-  }
-
   override protected def getJavaClassInstance = new jfxsi.PixelReader {
     def getArgb(x: Int, y: Int) = 0
     def getColor(x: Int, y: Int) = null
@@ -61,10 +56,5 @@ class PixelReaderSpec
     def getPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.WritablePixelFormat[ByteBuffer], buffer: Array[Byte], offset: Int, scanlineStride: Int) {}
     def getPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.WritablePixelFormat[IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int) {}
     def getPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.WritablePixelFormat[B], buffer: B, scanlineStride: Int) {}
-  }
-
-  protected def convertJavaClassToScalaClass(jfxPixelReader: jfxsi.PixelReader) = {
-    val sfxPixelReader: PixelReader = jfxPixelReader
-    sfxPixelReader
   }
 }

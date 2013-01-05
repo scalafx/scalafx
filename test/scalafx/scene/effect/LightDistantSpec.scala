@@ -45,14 +45,4 @@ class LightDistantSpec
 
   val colorDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxObject: Light.Distant) = {
-    val jfxLightDistant: jfxse.Light.Distant = sfxObject
-    jfxLightDistant
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.Light.Distant) = {
-    val sfxLightDistant: Light.Distant = jfxObject
-    sfxLightDistant
-  }
-
 }

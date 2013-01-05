@@ -38,16 +38,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TextAreaSpec
-  extends AbstractSFXDelegateSpec[jfxsc.TextArea, TextArea, jfxsc.TextAreaBuilder[_]](classOf[jfxsc.TextArea], classOf[TextArea], classOf[jfxsc.TextAreaBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: TextArea) = {
-    val jfxTextArea: jfxsc.TextArea = sfxControl
-    jfxTextArea
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TextArea) = {
-    val sfxTextArea: TextArea = jfxControl
-    sfxTextArea
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.TextArea, TextArea, jfxsc.TextAreaBuilder[_]](classOf[jfxsc.TextArea], classOf[TextArea], classOf[jfxsc.TextAreaBuilder[_]])

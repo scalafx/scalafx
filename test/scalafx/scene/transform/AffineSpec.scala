@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class AffineSpec
-  extends AbstractSFXDelegateSpec[jfxst.Affine, Affine, jfxst.AffineBuilder[_]](classOf[jfxst.Affine], classOf[Affine], classOf[jfxst.AffineBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: Affine) = {
-    val jfxAffine: jfxst.Affine = sfxControl
-    jfxAffine
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxst.Affine) = {
-    val sfxAffine: Affine = jfxControl
-    sfxAffine
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxst.Affine, Affine, jfxst.AffineBuilder[_]](classOf[jfxst.Affine], classOf[Affine], classOf[jfxst.AffineBuilder[_]])

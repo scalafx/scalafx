@@ -44,16 +44,6 @@ class TextInputControlSpec
 
   override protected def getScalaClassInstance = new TextField
 
-  protected def convertScalaClassToJavaClass(sfxControl: TextInputControl) = {
-    val jfxChoiceBox: jfxsc.TextInputControl = sfxControl
-    jfxChoiceBox
-  }
-
   override protected def getJavaClassInstance = new jfxsc.TextField
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TextInputControl) = {
-    val sfxChoiceBox: TextInputControl = jfxControl
-    sfxChoiceBox
-  }
 
 }

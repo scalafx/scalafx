@@ -39,5 +39,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class ArcTypeSpec extends SFXEnumDelegateSpec[jfxss.ArcType, ArcType](
   javaClass = classOf[jfxss.ArcType],
   scalaClass = classOf[ArcType],
-  javaValueOfFun = (s: String) => jfxss.ArcType.valueOf(s),
   companion = ArcType)

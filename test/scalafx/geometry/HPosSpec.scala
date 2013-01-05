@@ -39,5 +39,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class HPosSpec extends SFXEnumDelegateSpec[jfxg.HPos, HPos](
   javaClass = classOf[jfxg.HPos],
   scalaClass = classOf[HPos],
-  javaValueOfFun = (s: String) => jfxg.HPos.valueOf(s),
   companion = HPos)

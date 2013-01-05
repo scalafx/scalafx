@@ -39,5 +39,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class SideSpec extends SFXEnumDelegateSpec[jfxg.Side, Side](
   javaClass = classOf[jfxg.Side],
   scalaClass = classOf[Side],
-  javaValueOfFun = (s: String) => jfxg.Side.valueOf(s),
   companion = Side)

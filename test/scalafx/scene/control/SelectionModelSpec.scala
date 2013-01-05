@@ -43,11 +43,6 @@ class SelectionModelSpec[T]
 
   override protected def getScalaClassInstance = new SelectionModel[T](getJavaClassInstance) {}
 
-  protected def convertScalaClassToJavaClass(sfxControl: SelectionModel[T]) = {
-    val jfxSelectionModel: jfxsc.SelectionModel[T] = sfxControl.delegate
-    jfxSelectionModel
-  }
-
   // How SelectionModelSpec is a abstract class, it is done a basic implementation
   override protected def getJavaClassInstance = new jfxsc.SelectionModel[T] {
     def selectLast {}
@@ -61,11 +56,6 @@ class SelectionModelSpec[T]
     def select(obj: T) {}
     def select(index: Int) {}
     def clearAndSelect(index: Int) {}
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.SelectionModel[T]) = {
-    val sfxSelectionModel: SelectionModel[T] = jfxControl
-    sfxSelectionModel
   }
 
 }

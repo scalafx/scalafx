@@ -42,16 +42,6 @@ import org.scalatest.junit.JUnitRunner
 class EventSpec
   extends SimpleSFXDelegateSpec[jfxe.Event, Event](classOf[jfxe.Event], classOf[Event]) {
 
-  protected def convertScalaClassToJavaClass(sfxObject: Event) = {
-    val jfxEvent: jfxe.Event = sfxObject
-    jfxEvent
-  }
-
   override protected def getJavaClassInstance = new jfxe.Event(jfxe.Event.ANY)
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxe.Event) = {
-    val sfxEvent: Event = jfxObject
-    sfxEvent
-  }
 
 }

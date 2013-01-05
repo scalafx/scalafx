@@ -41,16 +41,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class StackedBarChartSpec
   extends AbstractSFXDelegateSpec[jfxsc.StackedBarChart[String, Number], StackedBarChart[String, Number], jfxsc.StackedBarChartBuilder[String, Number, _]](classOf[jfxsc.StackedBarChart[String, Number]], classOf[StackedBarChart[String, Number]], classOf[jfxsc.StackedBarChartBuilder[String, Number, _]]) {
 
-  protected def convertScalaClassToJavaClass(sfxStackedBarChart: StackedBarChart[String, Number]) = {
-    val jfxStackedBarChart: jfxsc.StackedBarChart[String, Number] = sfxStackedBarChart
-    jfxStackedBarChart
-  }
-  
   override def getJavaClassInstance = new jfxsc.StackedBarChart[String, Number](new jfxsc.CategoryAxis, new jfxsc.NumberAxis)
-
-  protected def convertJavaClassToScalaClass(jfxStackedBarChart: jfxsc.StackedBarChart[String, Number]) = {
-    val sfxStackedBarChart: StackedBarChart[String, Number] = jfxStackedBarChart
-    sfxStackedBarChart
-  }
 
 }

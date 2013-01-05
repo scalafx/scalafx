@@ -44,16 +44,6 @@ class KeyCombinationSpec
 
   override protected def getScalaClassInstance = KeyCombination.keyCombination("A")
 
-  protected def convertScalaClassToJavaClass(sfxControl: KeyCombination) = {
-    val jfxKeyCombination: jfxsi.KeyCombination = sfxControl
-    jfxKeyCombination
-  }
-
   override protected def getJavaClassInstance = jfxsi.KeyCombination.keyCombination("A")
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsi.KeyCombination) = {
-    val sfxKeyCombination: KeyCombination = jfxControl
-    sfxKeyCombination
-  }
 
 }

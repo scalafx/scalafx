@@ -39,6 +39,5 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class StrokeLineCapSpec extends SFXEnumDelegateSpec[jfxss.StrokeLineCap, StrokeLineCap](
   javaClass = classOf[jfxss.StrokeLineCap],
   scalaClass = classOf[StrokeLineCap],
-  javaValueOfFun = (s: String) => jfxss.StrokeLineCap.valueOf(s),
   companion = StrokeLineCap)
 

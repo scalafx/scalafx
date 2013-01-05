@@ -52,20 +52,10 @@ class JFXAppParameters
 
   override protected def getScalaClassInstance = new JFXApp.ParametersImpl(Seq.empty[String])
 
-  protected def convertScalaClassToJavaClass(sfxParameters: JFXApp.Parameters) = {
-    val jfxParameters: jfxa.Application.Parameters = sfxParameters
-    jfxParameters
-  }
-
   override protected def getJavaClassInstance = new jfxa.Application.Parameters {
     def getRaw = Seq.empty[String]
     def getNamed = Map.empty[String, String]
     def getUnnamed = Seq.empty[String]
-  }
-
-  protected def convertJavaClassToScalaClass(jfxParameters: jfxa.Application.Parameters) = {
-    val sfxParameters: JFXApp.Parameters = jfxParameters
-    sfxParameters
   }
 
   private def getParameters(args: Seq[String]): JFXApp.Parameters = JFXApp.Parameters(args)

@@ -45,14 +45,4 @@ class ShearSpec
 
   val positionDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxControl: Shear) = {
-    val jfxShear: jfxst.Shear = sfxControl
-    jfxShear
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxst.Shear) = {
-    val sfxShear: Shear = jfxControl
-    sfxShear
-  }
-
 }

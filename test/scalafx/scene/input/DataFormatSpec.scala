@@ -43,16 +43,6 @@ import org.scalatest.junit.JUnitRunner
 class DataFormatSpec
   extends SimpleSFXDelegateSpec[jfxsi.DataFormat, DataFormat](classOf[jfxsi.DataFormat], classOf[DataFormat]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: DataFormat) = {
-    val jfxDataFormat: jfxsi.DataFormat = sfxControl
-    jfxDataFormat
-  }
-
   override protected def getJavaClassInstance = new jfxsi.DataFormat
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsi.DataFormat) = {
-    val sfxDataFormat: DataFormat = jfxControl
-    sfxDataFormat
-  }
 
 }

@@ -41,16 +41,4 @@ import scalafx.testutil.RunOnApplicationThread
 @RunWith(classOf[JUnitRunner])
 class ContextMenuSpec
   extends AbstractSFXDelegateSpec[jfxsc.ContextMenu, ContextMenu, jfxsc.ContextMenuBuilder[_]](classOf[jfxsc.ContextMenu], classOf[ContextMenu], classOf[jfxsc.ContextMenuBuilder[_]])
-  with RunOnApplicationThread {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ContextMenu) = {
-    val jfxContextMenu: jfxsc.ContextMenu = sfxControl
-    jfxContextMenu
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ContextMenu) = {
-    val sfxContextMenu: ContextMenu = jfxControl
-    sfxContextMenu
-  }
-
-}
+  with RunOnApplicationThread

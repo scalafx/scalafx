@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class RadioButtonSpec
-  extends AbstractSFXDelegateSpec[jfxsc.RadioButton, RadioButton, jfxsc.RadioButtonBuilder[_]](classOf[jfxsc.RadioButton], classOf[RadioButton], classOf[jfxsc.RadioButtonBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: RadioButton) = {
-    val jfxRadioButton: jfxsc.RadioButton = sfxControl
-    jfxRadioButton
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.RadioButton) = {
-    val sfxRadioButton: RadioButton = jfxControl
-    sfxRadioButton
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.RadioButton, RadioButton, jfxsc.RadioButtonBuilder[_]](classOf[jfxsc.RadioButton], classOf[RadioButton], classOf[jfxsc.RadioButtonBuilder[_]])

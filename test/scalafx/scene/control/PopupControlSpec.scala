@@ -42,21 +42,11 @@ class PopupControlSpec
   extends AbstractSFXDelegateSpec[jfxsc.PopupControl, PopupControl, jfxsc.PopupControlBuilder[_]](classOf[jfxsc.PopupControl], classOf[PopupControl], classOf[jfxsc.PopupControlBuilder[_]]) 
   with RunOnApplicationThread {
 
-  protected def convertScalaClassToJavaClass(sfxControl: PopupControl) = {
-    val jfxPopupControl: jfxsc.PopupControl = sfxControl
-    jfxPopupControl
-  }
-
   override protected def getJavaClassInstance = {
     val label = new jfxsc.Label
     label.setTooltip(new jfxsc.Tooltip)
     val popupControl: PopupControl = label.getTooltip()
     popupControl
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.PopupControl) = {
-    val sfxPopupControl: PopupControl = jfxControl
-    sfxPopupControl
   }
 
 }

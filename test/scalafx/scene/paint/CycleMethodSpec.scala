@@ -39,5 +39,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class CycleMethodSpec extends SFXEnumDelegateSpec[jfxsp.CycleMethod, CycleMethod](
   javaClass = classOf[jfxsp.CycleMethod],
   scalaClass = classOf[CycleMethod],
-  javaValueOfFun = (s: String) => jfxsp.CycleMethod.valueOf(s),
   companion = CycleMethod)

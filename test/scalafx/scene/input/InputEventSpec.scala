@@ -43,16 +43,6 @@ import org.scalatest.junit.JUnitRunner
 class InputEventSpec
   extends SimpleSFXDelegateSpec[jfxsi.InputEvent, InputEvent](classOf[jfxsi.InputEvent], classOf[InputEvent]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: InputEvent) = {
-    val jfxInputEvent: jfxsi.InputEvent = sfxControl
-    jfxInputEvent
-  }
-
   override protected def getJavaClassInstance = new jfxsi.InputEvent(InputEvent.Any)
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsi.InputEvent) = {
-    val sfxInputEvent: InputEvent = jfxControl
-    sfxInputEvent
-  }
 
 }

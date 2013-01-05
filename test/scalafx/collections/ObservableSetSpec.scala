@@ -67,17 +67,7 @@ class ObservableSetSpec[T]
 
   override def getScalaClassInstance = ObservableSet.empty[T]
 
-  protected def convertScalaClassToJavaClass(scalaSet: ObservableSet[T]) = {
-    val jfxObservableSet: jfxc.ObservableSet[T] = scalaSet
-    jfxObservableSet
-  }
-
   override def getJavaClassInstance = jfxc.FXCollections.observableSet[T](new ju.HashSet[T])
-
-  protected def convertJavaClassToScalaClass(javaSet: jfxc.ObservableSet[T]) = {
-    val sfxObservableSet: ObservableSet[T] = javaSet
-    sfxObservableSet
-  }
 
   it should "generate new instances using Companion's apply" in {
 

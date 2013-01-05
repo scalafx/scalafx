@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TreeItemSpec[T <: AnyRef]
-  extends AbstractSFXDelegateSpec[jfxsc.TreeItem[T], TreeItem[T], jfxsc.TreeItemBuilder[T, _]](classOf[jfxsc.TreeItem[T]], classOf[TreeItem[T]], classOf[jfxsc.TreeItemBuilder[T, _]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: TreeItem[T]) = {
-    val jfxTreeView: jfxsc.TreeItem[T] = sfxControl
-    jfxTreeView
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TreeItem[T]) = {
-    val sfxtoolBar: TreeItem[T] = jfxControl
-    sfxtoolBar
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.TreeItem[T], TreeItem[T], jfxsc.TreeItemBuilder[T, _]](classOf[jfxsc.TreeItem[T]], classOf[TreeItem[T]], classOf[jfxsc.TreeItemBuilder[T, _]])

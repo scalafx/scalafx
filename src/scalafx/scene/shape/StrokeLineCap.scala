@@ -38,7 +38,7 @@ object StrokeLineCap extends SFXEnumDelegateCompanion[jfxss.StrokeLineCap, Strok
   val BUTT = new StrokeLineCap(jfxss.StrokeLineCap.BUTT)
   val ROUND = new StrokeLineCap(jfxss.StrokeLineCap.ROUND)
 
-  protected def unsortedValues: Array[StrokeLineCap] = Array(SQUARE, BUTT, ROUND)
+  protected override def unsortedValues: Array[StrokeLineCap] = Array(SQUARE, BUTT, ROUND)
 }
 
 

@@ -43,16 +43,6 @@ class ToggleSpec
 
   override def getScalaClassInstance = new ToggleButton
 
-  protected def convertScalaClassToJavaClass(sfxControl: Toggle) = {
-    val jfxToggle: jfxsc.Toggle = sfxControl
-    jfxToggle
-  }
-
   override def getJavaClassInstance = new jfxsc.ToggleButton
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.Toggle) = {
-    val sfxToggle: Toggle = jfxControl
-    sfxToggle
-  }
 
 }

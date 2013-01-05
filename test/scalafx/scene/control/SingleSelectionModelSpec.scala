@@ -42,11 +42,6 @@ class SingleSingleSelectionModelSpec[T]
 
   override protected def getScalaClassInstance = new SingleSelectionModel[T](getJavaClassInstance) {}
 
-  protected def convertScalaClassToJavaClass(sfxControl: SingleSelectionModel[T]) = {
-    val jfxSingleSelectionModel: jfxsc.SingleSelectionModel[T] = sfxControl
-    jfxSingleSelectionModel
-  }
-
   // How SingleSelectionModel is a abstract class, it is done a basic implementation
   override protected def getJavaClassInstance = new jfxsc.SingleSelectionModel[T] {
     def clearSingleSelection {}
@@ -54,11 +49,6 @@ class SingleSingleSelectionModelSpec[T]
     def getItemCount = { 0 }
     def getModelItem(index: Int) = { null.asInstanceOf[T] }
 
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.SingleSelectionModel[T]) = {
-    val sfxSingleSelectionModel: SingleSelectionModel[T] = jfxControl
-    sfxSingleSelectionModel
   }
 
 }

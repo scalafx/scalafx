@@ -43,15 +43,6 @@ class Point2DSpec
 
   override protected def getScalaClassInstance = new Point2D(0, 0)
 
-  protected def convertScalaClassToJavaClass(sfxObject: Point2D) = {
-    val jfxPoint2D: jfxg.Point2D = sfxObject
-    jfxPoint2D
-  }
-
   override protected def getJavaClassInstance = new jfxg.Point2D(0, 0)
 
-  protected def convertJavaClassToScalaClass(jfxObject: jfxg.Point2D) = {
-    val sfxPoint2D: Point2D = jfxObject
-    sfxPoint2D
-  }
 }

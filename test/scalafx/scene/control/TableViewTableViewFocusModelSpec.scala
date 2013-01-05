@@ -40,16 +40,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 class TableViewTableViewFocusModelSpec[S]
   extends SimpleSFXDelegateSpec[jfxsc.TableView.TableViewFocusModel[S], TableView.TableViewFocusModel[S]](classOf[jfxsc.TableView.TableViewFocusModel[S]], classOf[TableView.TableViewFocusModel[S]]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: TableView.TableViewFocusModel[S]) = {
-    val jfxTableCell: jfxsc.TableView.TableViewFocusModel[S] = sfxControl
-    jfxTableCell
-  }
-
   override def getJavaClassInstance = new jfxsc.TableView.TableViewFocusModel(new jfxsc.TableView[S])
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TableView.TableViewFocusModel[S]) = {
-    val sfxTableCell: TableView.TableViewFocusModel[S] = jfxControl
-    sfxTableCell
-  }
 
 }

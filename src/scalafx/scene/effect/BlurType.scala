@@ -39,7 +39,9 @@ object BlurType extends SFXEnumDelegateCompanion[jfxse.BlurType, BlurType] {
   val THREE_PASS_BOX = new BlurType(jfxse.BlurType.THREE_PASS_BOX)
   val TWO_PASS_BOX = new BlurType(jfxse.BlurType.TWO_PASS_BOX)
 
-  protected def unsortedValues: Array[BlurType] = Array(ONE_PASS_BOX, TWO_PASS_BOX, THREE_PASS_BOX, GAUSSIAN)
+  protected override def unsortedValues: Array[BlurType] = Array(
+    ONE_PASS_BOX, TWO_PASS_BOX, THREE_PASS_BOX, GAUSSIAN
+  )
 }
 
 

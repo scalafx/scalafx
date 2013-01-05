@@ -40,16 +40,6 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class TablePositionSpec[S, T]
   extends AbstractSFXDelegateSpec[jfxsc.TablePosition[S, T], TablePosition[S, T], jfxsc.TablePositionBuilder[S, T, _]](classOf[jfxsc.TablePosition[S, T]], classOf[TablePosition[S, T]], classOf[jfxsc.TablePositionBuilder[S, T, _]]) {
 
-  protected def convertScalaClassToJavaClass(sfxControl: TablePosition[S, T]) = {
-    val jfxTablePosition: jfxsc.TablePosition[S, T] = sfxControl
-    jfxTablePosition
-  }
-
   override def getJavaClassInstance = new jfxsc.TablePosition(null, 0, null)
   
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TablePosition[S, T]) = {
-    val sfxTablePosition: TablePosition[S, T] = jfxControl
-    sfxTablePosition
-  }
-
 }

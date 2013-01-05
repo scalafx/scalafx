@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class NumberAxisSpec
-  extends AbstractSFXDelegateSpec[jfxsc.NumberAxis, NumberAxis, jfxsc.NumberAxisBuilder](classOf[jfxsc.NumberAxis], classOf[NumberAxis], classOf[jfxsc.NumberAxisBuilder]) {
-
-  protected def convertScalaClassToJavaClass(sfxNumberAxis: NumberAxis) = {
-    val jfxNumberAxis: jfxsc.NumberAxis = sfxNumberAxis
-    jfxNumberAxis
-  }
-  
-  protected def convertJavaClassToScalaClass(jfxNumberAxis: jfxsc.NumberAxis) = {
-    val sfxNumberAxis: NumberAxis = jfxNumberAxis
-    sfxNumberAxis
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.NumberAxis, NumberAxis, jfxsc.NumberAxisBuilder](classOf[jfxsc.NumberAxis], classOf[NumberAxis], classOf[jfxsc.NumberAxisBuilder])

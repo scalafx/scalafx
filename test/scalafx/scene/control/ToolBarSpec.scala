@@ -39,16 +39,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class ToolBarSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ToolBar, ToolBar, jfxsc.ToolBarBuilder[_]](classOf[jfxsc.ToolBar], classOf[ToolBar], classOf[jfxsc.ToolBarBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ToolBar) = {
-    val jfxToolBar: jfxsc.ToolBar = sfxControl
-    jfxToolBar
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ToolBar) = {
-    val sfxtoolBar :ToolBar = jfxControl
-    sfxtoolBar
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.ToolBar, ToolBar, jfxsc.ToolBarBuilder[_]](classOf[jfxsc.ToolBar], classOf[ToolBar], classOf[jfxsc.ToolBarBuilder[_]])

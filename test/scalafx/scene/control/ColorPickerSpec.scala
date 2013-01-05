@@ -40,16 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ColorPickerSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ColorPicker, ColorPicker, jfxsc.ColorPickerBuilder[_]](classOf[jfxsc.ColorPicker], classOf[ColorPicker], classOf[jfxsc.ColorPickerBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: ColorPicker) = {
-    val jfxColorPicker: jfxsc.ColorPicker = sfxControl
-    jfxColorPicker
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.ColorPicker) = {
-    val sfxColorPicker: ColorPicker = jfxControl
-    sfxColorPicker
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.ColorPicker, ColorPicker, jfxsc.ColorPickerBuilder[_]](classOf[jfxsc.ColorPicker], classOf[ColorPicker], classOf[jfxsc.ColorPickerBuilder[_]])

@@ -39,5 +39,4 @@ import scalafx.testutil.SFXEnumDelegateSpec
 class SelectionModeSpec extends SFXEnumDelegateSpec[jfxsc.SelectionMode, SelectionMode](
   javaClass = classOf[jfxsc.SelectionMode],
   scalaClass = classOf[SelectionMode],
-  javaValueOfFun = (s: String) => jfxsc.SelectionMode.valueOf(s),
   companion = SelectionMode)

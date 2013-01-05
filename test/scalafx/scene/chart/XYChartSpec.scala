@@ -43,16 +43,6 @@ class XYChartSpec
 
   override def getScalaClassInstance = new XYChart[Number, Number](getJavaClassInstance) {}
   
-  protected def convertScalaClassToJavaClass(sfxXYChart: XYChart[Number, Number]) = {
-    val jfxXYChart: jfxsc.XYChart[Number, Number] = sfxXYChart
-    jfxXYChart
-  }
-  
   override def getJavaClassInstance = new jfxsc.LineChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
-
-  protected def convertJavaClassToScalaClass(jfxXYChart: jfxsc.XYChart[Number, Number]) = {
-    val sfxXYChart: XYChart[Number, Number] = jfxXYChart
-    sfxXYChart
-  }
 
 }

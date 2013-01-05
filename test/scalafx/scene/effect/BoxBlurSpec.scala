@@ -49,14 +49,4 @@ class BoxBlurSpec
 
   val inputDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxObject: BoxBlur) = {
-    val jfxBoxBlur: jfxse.BoxBlur = sfxObject
-    jfxBoxBlur
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.BoxBlur) = {
-    val sfxBoxBlur: BoxBlur = jfxObject
-    sfxBoxBlur
-  }
-
 }

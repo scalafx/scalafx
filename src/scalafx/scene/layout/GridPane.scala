@@ -24,23 +24,33 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.layout
 
 import scala.collection.JavaConversions._
-
-import javafx.scene.{layout => jfxsl}
-import javafx.{geometry => jfxg}
-import javafx.{scene => jfxs}
+import javafx.scene.{ layout => jfxsl }
+import javafx.{ geometry => jfxg }
+import javafx.{ scene => jfxs }
 import scalafx.Includes._
 import scalafx.geometry.Insets._
 import scalafx.geometry.Insets
 import scalafx.scene.Node._
 import scalafx.scene.Node
 import scalafx.util.SFXDelegate
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
+import scalafx.geometry.HPos
+import scalafx.geometry.VPos
+import scalafx.geometry.Pos
+import scalafx.geometry.Orientation
 
 object GridPane {
   implicit def sfxGridPane2jfx(v: GridPane) = v.delegate
+
+  /**
+   * Sentinel value which may be set on a child's row/column span constraint to indicate that it should span the
+   * remaining rows/columns.
+   */
+  val REMAINING = jfxsl.GridPane.REMAINING
 
   /**
    * Removes all gridpane constraints from the child node.
@@ -69,9 +79,9 @@ object GridPane {
   def getHalignment(child: Node) = jfxsl.GridPane.getHalignment(child)
 
   /**
-     * Sets the horizontal alignment for the child when contained by a GridPane.
-     */
-  def setHalignment(node: Node, hp: jfxg.HPos) {
+   * Sets the horizontal alignment for the child when contained by a GridPane.
+   */
+  def setHalignment(node: Node, hp: HPos) {
     jfxsl.GridPane.setHalignment(node, hp)
   }
 
@@ -79,7 +89,7 @@ object GridPane {
    * Returns the child's hgrow constraint if set.
    */
   def getHgrow(child: Node) = jfxsl.GridPane.getHgrow(child)
-  
+
   /**
    * Sets the value of the property hgap.
    */
@@ -126,17 +136,17 @@ object GridPane {
   /**
    * Sets the vertical alignment for the child when contained by a gridpane.
    */
-  def setValignment(node: Node, vp: jfxg.VPos) = jfxsl.GridPane.setValignment(node, vp)
+  def setValignment(node: Node, vp: VPos) = jfxsl.GridPane.setValignment(node, vp)
 
   /**
    * Returns the child's vgrow constraint if set.
    */
   def getVgrow(child: Node) = jfxsl.GridPane.getVgrow(child)
-  
+
   /**
    * Sets the vertical grow priority for the child when contained by a gridpane.
    */
-  def setVgrow(child: Node, value: jfxsl.Priority) = jfxsl.GridPane.setVgrow(child, value)
+  def setVgrow(child: Node, value: Priority) = jfxsl.GridPane.setVgrow(child, value)
 
   /**
    * Sets the column span for the child when contained by a gridpane so that it will span that
@@ -147,7 +157,7 @@ object GridPane {
   /**
    * Sets the column,row indeces for the child when contained in a gridpane.
    */
-  def setConstraints(child: Node, columnIndex: Int, rowIndex: Int) = 
+  def setConstraints(child: Node, columnIndex: Int, rowIndex: Int) =
     jfxsl.GridPane.setConstraints(child, columnIndex, rowIndex)
 
   /**
@@ -160,32 +170,37 @@ object GridPane {
   /**
    * Sets the grid position, spans, and alignment for the child when contained in a gridpane.
    */
-  def setConstraints(child: Node, columnIndex: Int, rowIndex: Int, columnspan: Int, rowspan: Int, halignment: jfxg.HPos, valignment: jfxg.VPos) =
+  def setConstraints(child: Node, columnIndex: Int, rowIndex: Int, columnspan: Int, rowspan: Int, halignment: HPos, valignment: VPos) =
     jfxsl.GridPane.setConstraints(child, columnIndex, rowIndex, columnspan, rowspan, halignment, valignment)
 
   /**
    * Sets the grid position, spans, and alignment for the child when contained in a gridpane.
    */
-  def setConstraints(child: Node, columnIndex: Int, rowIndex: Int, columnspan: Int, rowspan: Int, halignment: jfxg.HPos, valignment: jfxg.VPos, hgrow: jfxsl.Priority, vgrow: jfxsl.Priority) =
+  def setConstraints(child: Node, columnIndex: Int, rowIndex: Int, columnspan: Int, rowspan: Int, halignment: HPos, valignment: VPos, hgrow: Priority, vgrow: Priority) =
     jfxsl.GridPane.setConstraints(child, columnIndex, rowIndex, columnspan, rowspan, halignment, valignment, hgrow, vgrow)
 
   /**
    * Sets the grid position, spans, alignment, grow priorities, and margin for the child when
    * contained in a gridpane.
    */
-  def setConstraints(child: Node, columnIndex: Int, rowIndex: Int, columnspan: Int, rowspan: Int, halignment: jfxg.HPos, valignment: jfxg.VPos, hgrow: jfxsl.Priority, vgrow: jfxsl.Priority, margin: Insets) =
+  def setConstraints(child: Node, columnIndex: Int, rowIndex: Int, columnspan: Int, rowspan: Int, halignment: HPos, valignment: VPos, hgrow: Priority, vgrow: Priority, margin: Insets) =
     jfxsl.GridPane.setConstraints(child, columnIndex, rowIndex, columnspan, rowspan, halignment, valignment, hgrow, vgrow, margin)
 
 }
 
-class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane()) extends Pane(delegate) with SFXDelegate[jfxsl.GridPane] {
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html]]
+ */
+class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane())
+  extends Pane(delegate)
+  with SFXDelegate[jfxsl.GridPane] {
 
   /**
    * The alignment of of the grid within the gridpane's width and height.
    * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node
    */
   def innerAlignment = delegate.alignmentProperty
-  def innerAlignment_=(v: jfxg.Pos) {
+  def innerAlignment_=(v: Pos) {
     innerAlignment() = v
   }
 
@@ -193,7 +208,7 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane()) ext
    * For debug purposes only: controls whether lines are displayed to show the gridpane's rows and
    * columns.
    */
-  def gridLinesVisible = delegate.gridLinesVisibleProperty
+  def gridLinesVisible: BooleanProperty = delegate.gridLinesVisibleProperty
   def gridLinesVisible_=(v: Boolean) {
     gridLinesVisible() = v
   }
@@ -201,7 +216,7 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane()) ext
   /**
    * The width of the horizontal gaps between columns.
    */
-  def hgap = delegate.hgapProperty
+  def hgap: DoubleProperty = delegate.hgapProperty
   def hgap_=(v: Double) {
     hgap() = v
   }
@@ -209,7 +224,7 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane()) ext
   /**
    * The height of the vertical gaps between rows.
    */
-  def vgap = delegate.vgapProperty
+  def vgap: DoubleProperty = delegate.vgapProperty
   def vgap_=(v: Double) {
     vgap() = v
   }
@@ -254,7 +269,7 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane()) ext
   /**
    * Returns the orientation of a node's resizing bias for layout purposes.
    */
-  def contentBias = delegate.getContentBias
+  def contentBias: Orientation = delegate.getContentBias
 
   /**
    * Requests a layout pass to be performed before the next scene is rendered.

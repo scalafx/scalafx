@@ -37,16 +37,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TableViewSpec[S]
-  extends AbstractSFXDelegateSpec[jfxsc.TableView[S], TableView[S], jfxsc.TableViewBuilder[S, _]](classOf[jfxsc.TableView[S]], classOf[TableView[S]], classOf[jfxsc.TableViewBuilder[S, _]]) {
-
-  protected def convertScalaClassToJavaClass(sfxControl: TableView[S]) = {
-    val jfxTableView: jfxsc.TableView[S] = sfxControl
-    jfxTableView
-  }
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.TableView[S]) = {
-    val sfxTableView: TableView[S] = jfxControl
-    sfxTableView
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.TableView[S], TableView[S], jfxsc.TableViewBuilder[S, _]](classOf[jfxsc.TableView[S]], classOf[TableView[S]], classOf[jfxsc.TableViewBuilder[S, _]])

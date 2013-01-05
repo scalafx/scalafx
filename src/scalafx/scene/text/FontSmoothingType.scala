@@ -37,7 +37,7 @@ object FontSmoothingType extends SFXEnumDelegateCompanion[jfxst.FontSmoothingTyp
   val GRAY = new FontSmoothingType(jfxst.FontSmoothingType.GRAY)
   val LCD = new FontSmoothingType(jfxst.FontSmoothingType.LCD)
 
-  protected def unsortedValues: Array[FontSmoothingType] = Array(GRAY, LCD)
+  protected override def unsortedValues: Array[FontSmoothingType] = Array(GRAY, LCD)
 }
 
 

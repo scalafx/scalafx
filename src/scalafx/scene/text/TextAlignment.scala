@@ -39,7 +39,7 @@ object TextAlignment extends SFXEnumDelegateCompanion[jfxst.TextAlignment, TextA
   val RIGHT = new TextAlignment(jfxst.TextAlignment.RIGHT)
   val JUSTIFY = new TextAlignment(jfxst.TextAlignment.JUSTIFY)
 
-  protected def unsortedValues: Array[TextAlignment] = Array(LEFT, CENTER, RIGHT, JUSTIFY)
+  protected override def unsortedValues: Array[TextAlignment] = Array(LEFT, CENTER, RIGHT, JUSTIFY)
 }
 
 

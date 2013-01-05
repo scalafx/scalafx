@@ -42,16 +42,6 @@ import org.scalatest.junit.JUnitRunner
 class ImageSpec
   extends SimpleSFXDelegateSpec[jfxsi.Image, Image](classOf[jfxsi.Image], classOf[Image]) {
 
-  protected def convertScalaClassToJavaClass(sfxImage: Image) = {
-    val jfxImage: jfxsi.Image = sfxImage
-    jfxImage
-  }
-
   override protected def getJavaClassInstance = new jfxsi.Image(this.getClass().getResourceAsStream(""))
-
-  protected def convertJavaClassToScalaClass(jfxImage: jfxsi.Image) = {
-    val sfxImage: Image = jfxImage
-    sfxImage
-  }
 
 }

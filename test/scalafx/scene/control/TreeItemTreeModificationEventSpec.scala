@@ -42,17 +42,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 class TreeItemTreeModificationEventSpec[T]
   extends SimpleSFXDelegateSpec[jfxsc.TreeItem.TreeModificationEvent[T], TreeItem.TreeModificationEvent[T]](classOf[jfxsc.TreeItem.TreeModificationEvent[T]], classOf[TreeItem.TreeModificationEvent[T]]) {
 
-  protected def convertScalaClassToJavaClass(sfxEvent: TreeItem.TreeModificationEvent[T]) = {
-    val jfxEvent: jfxsc.TreeItem.TreeModificationEvent[T] = sfxEvent
-    jfxEvent
-  }
-
   override def getJavaClassInstance =
     new jfxsc.TreeItem.TreeModificationEvent[T](null, new jfxsc.TreeItem[T])
-
-  protected def convertJavaClassToScalaClass(jfxEvent: jfxsc.TreeItem.TreeModificationEvent[T]) = {
-    val sfxEvent: TreeItem.TreeModificationEvent[T] = jfxEvent
-    sfxEvent
-  }
 
 }

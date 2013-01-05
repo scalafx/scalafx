@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class CanvasSpec
-  extends AbstractSFXDelegateSpec[jfxsc.Canvas, Canvas, jfxsc.CanvasBuilder[_]](classOf[jfxsc.Canvas], classOf[Canvas], classOf[jfxsc.CanvasBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxCanvas: Canvas) = {
-    val jfxCanvas: jfxsc.Canvas = sfxCanvas
-    jfxCanvas
-  }
-
-  protected def convertJavaClassToScalaClass(jfxCanvas: jfxsc.Canvas) = {
-    val sfxCanvas: Canvas = jfxCanvas
-    sfxCanvas
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.Canvas, Canvas, jfxsc.CanvasBuilder[_]](classOf[jfxsc.Canvas], classOf[Canvas], classOf[jfxsc.CanvasBuilder[_]])

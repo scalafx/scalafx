@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
@@ -34,7 +33,8 @@ import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 
 /** Wrapper for [[javafx.geometry.Pos]] */
-object Pos extends SFXEnumDelegateCompanion[jfxg.Pos, Pos] {
+object Pos
+  extends SFXEnumDelegateCompanion[jfxg.Pos, Pos] {
 
   val BASELINE_CENTER = new Pos(jfxg.Pos.BASELINE_CENTER)
   val BASELINE_LEFT = new Pos(jfxg.Pos.BASELINE_LEFT)
@@ -49,7 +49,7 @@ object Pos extends SFXEnumDelegateCompanion[jfxg.Pos, Pos] {
   val TOP_LEFT = new Pos(jfxg.Pos.TOP_LEFT)
   val TOP_RIGHT = new Pos(jfxg.Pos.TOP_RIGHT)
 
-  protected def unsortedValues: Array[Pos] = Array(
+  protected override def unsortedValues: Array[Pos] = Array(
     TOP_LEFT, TOP_CENTER, TOP_RIGHT,
     CENTER_LEFT, CENTER, CENTER_RIGHT,
     BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT,
@@ -58,7 +58,8 @@ object Pos extends SFXEnumDelegateCompanion[jfxg.Pos, Pos] {
 }
 
 
-sealed case class Pos(override val delegate: jfxg.Pos) extends SFXEnumDelegate[jfxg.Pos] {
+sealed case class Pos(override val delegate: jfxg.Pos)
+  extends SFXEnumDelegate[jfxg.Pos] {
 
   /** Returns the horizontal positioning/alignment. */
   def hpos: HPos = delegate.getHpos

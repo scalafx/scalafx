@@ -32,13 +32,15 @@ import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 
 /** Wrapper for [[javafx.geometry.Orientation]] */
-object Orientation extends SFXEnumDelegateCompanion[jfxg.Orientation, Orientation] {
+object Orientation
+  extends SFXEnumDelegateCompanion[jfxg.Orientation, Orientation] {
 
   val HORIZONTAL = new Orientation(jfxg.Orientation.HORIZONTAL)
   val VERTICAL = new Orientation(jfxg.Orientation.VERTICAL)
 
-  protected def unsortedValues: Array[Orientation] = Array(HORIZONTAL, VERTICAL)
+  protected override def unsortedValues: Array[Orientation] = Array(HORIZONTAL, VERTICAL)
 }
 
 
-sealed case class Orientation(override val delegate: jfxg.Orientation) extends SFXEnumDelegate[jfxg.Orientation]
+sealed case class Orientation(override val delegate: jfxg.Orientation)
+  extends SFXEnumDelegate[jfxg.Orientation]

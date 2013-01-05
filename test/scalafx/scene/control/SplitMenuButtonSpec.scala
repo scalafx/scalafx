@@ -40,15 +40,5 @@ class SplitMenuButtonSpec
 
   override protected def getScalaClassInstance = new SplitMenuButton(new jfxsc.SplitMenuButton())
 
-  protected def convertScalaClassToJavaClass(sfxControl: SplitMenuButton) = {
-    val jfxSplitMenuButton: jfxsc.SplitMenuButton = sfxControl
-    jfxSplitMenuButton
-  }
-
   override protected def getJavaClassInstance = new jfxsc.SplitMenuButton()
-
-  protected def convertJavaClassToScalaClass(jfxControl: jfxsc.SplitMenuButton) = {
-    val sfxSplitMenuButton: SplitMenuButton = jfxControl
-    sfxSplitMenuButton
-  }
 }

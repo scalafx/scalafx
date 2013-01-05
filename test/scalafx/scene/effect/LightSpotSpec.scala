@@ -45,14 +45,4 @@ class LightSpotSpec
 
   val colorDelegate = getScalaClassInstance
 
-  protected def convertScalaClassToJavaClass(sfxObject: Light.Spot) = {
-    val jfxLightSpot: jfxse.Light.Spot = sfxObject
-    jfxLightSpot
-  }
-
-  protected def convertJavaClassToScalaClass(jfxObject: jfxse.Light.Spot) = {
-    val sfxLightSpot: Light.Spot = jfxObject
-    sfxLightSpot
-  }
-
 }

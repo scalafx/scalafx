@@ -39,16 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class PieChartSpec
-  extends AbstractSFXDelegateSpec[jfxsc.PieChart, PieChart, jfxsc.PieChartBuilder[_]](classOf[jfxsc.PieChart], classOf[PieChart], classOf[jfxsc.PieChartBuilder[_]]) {
-
-  protected def convertScalaClassToJavaClass(sfxPieChart: PieChart) = {
-    val jfxPieChart: jfxsc.PieChart = sfxPieChart
-    jfxPieChart
-  }
-  
-  protected def convertJavaClassToScalaClass(jfxPieChart: jfxsc.PieChart) = {
-    val sfxPieChart: PieChart = jfxPieChart
-    sfxPieChart
-  }
-
-}
+  extends AbstractSFXDelegateSpec[jfxsc.PieChart, PieChart, jfxsc.PieChartBuilder[_]](classOf[jfxsc.PieChart], classOf[PieChart], classOf[jfxsc.PieChartBuilder[_]])
