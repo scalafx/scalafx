@@ -45,6 +45,7 @@ import scalafx.scene.control.TablePosition.sfxTablePosition2jfx
 import scalafx.scene.control.TableView.sfxTableView2jfx
 import scalafx.scene.Node
 import scalafx.util.SFXDelegate
+import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 import scalafx.collections.ObservableBuffer
 
 object TableColumn {
@@ -132,6 +133,23 @@ object TableColumn {
     def tableView: TableView[S] = delegate.getTableView
 
   }
+
+  object SortType
+    extends SFXEnumDelegateCompanion[jfxsc.TableColumn.SortType, SortType] {
+
+    /** Column will be sorted in an ascending order. */
+    val ASCENDING = new SortType(jfxsc.TableColumn.SortType.ASCENDING)
+
+    /** Column will be sorted in a descending order. */
+    val DESCENDING = new SortType(jfxsc.TableColumn.SortType.DESCENDING)
+
+    protected override def unsortedValues: Array[SortType] = Array(ASCENDING, DESCENDING)
+
+  }
+
+  /** Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.SortType.html]] */
+  sealed case class SortType(override val delegate: jfxsc.TableColumn.SortType)
+    extends SFXEnumDelegate[jfxsc.TableColumn.SortType]
 
   /**
    * If no cellFactory is specified on a TableColumn instance, then this one will be used by default.
