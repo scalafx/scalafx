@@ -33,9 +33,59 @@ import java.nio.IntBuffer
 import javafx.scene.{ image => jfxsi }
 import scalafx.Includes._
 import scalafx.util.SFXDelegate
+import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 object PixelFormat {
   implicit def sfxPixelFormat2jfx[B <: Buffer](pf: PixelFormat[B]) = pf.delegate
+
+  object Type 
+    extends SFXEnumDelegateCompanion[jfxsi.PixelFormat.Type, Type] {
+
+    /**
+     * The pixels are stored in adjacent bytes with the non-premultiplied components stored in order of increasing 
+     * index: blue, green, red, alpha.
+     */
+    val BYTE_BGRA = new Type(jfxsi.PixelFormat.Type.BYTE_BGRA)
+
+    /**
+     * The pixels are stored in adjacent bytes with the premultiplied components stored in order of increasing index: 
+     * blue, green, red, alpha.
+     */
+    val BYTE_BGRA_PRE = new Type(jfxsi.PixelFormat.Type.BYTE_BGRA_PRE)
+
+    /**
+     * The pixel colors are referenced by byte indices stored in the pixel array, with the byte interpreted as an 
+     * unsigned index into a list of colors provided by the PixelFormat object.
+     */
+    val BYTE_INDEXED = new Type(jfxsi.PixelFormat.Type.BYTE_INDEXED)
+
+    /**
+     * The opaque pixels are stored in adjacent bytes with the color components stored in order of increasing index: 
+     * red, green, blue.
+     */
+    val BYTE_RGB = new Type(jfxsi.PixelFormat.Type.BYTE_RGB)
+
+    /**
+     * The pixels are stored in 32-bit integers with the non-premultiplied components stored in order, from MSb to LSb: 
+     * alpha, red, green, blue.
+     */
+    val INT_ARGB = new Type(jfxsi.PixelFormat.Type.INT_ARGB)
+
+    /**
+     * The pixels are stored in 32-bit integers with the premultiplied components stored in order, from MSb to LSb: 
+     * alpha, red, green, blue.
+     */
+    val INT_ARGB_PRE = new Type(jfxsi.PixelFormat.Type.INT_ARGB_PRE)
+
+    protected override def unsortedValues: Array[Type] = Array(BYTE_BGRA, BYTE_BGRA_PRE, BYTE_INDEXED, BYTE_RGB, 
+        INT_ARGB, INT_ARGB_PRE)
+  }
+  
+  /**
+   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/image/PixelFormat.Type.html]]
+   */
+  sealed case class Type(override val delegate: jfxsi.PixelFormat.Type)
+    extends SFXEnumDelegate[jfxsi.PixelFormat.Type]
 
   def createByteIndexedInstance(colors: Array[Int]): PixelFormat[ByteBuffer] = jfxsi.PixelFormat.createByteIndexedInstance(colors)
 
@@ -64,7 +114,10 @@ abstract class PixelFormat[B <: Buffer](override val delegate: jfxsi.PixelFormat
    */
   def getArgb(buf: B, x: Int, y: Int, scanlineStride: Int): Int = delegate.getArgb(buf, x, y, scanlineStride)
 
-  def getType = delegate.getType
+  /**
+   * 
+   */
+  def getType: PixelFormat.Type = delegate.getType
 
   def premultiplied = delegate.isPremultiplied
 

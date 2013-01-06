@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,21 +27,15 @@
 package scalafx.scene.image
 
 import javafx.scene.{ image => jfxsi }
-import java.nio.Buffer
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
+import scalafx.testutil.SFXEnumDelegateSpec
 
-object ImageIncludes extends ImageIncludes
-
-trait ImageIncludes {
-  implicit def jfxImage2sfx(i: jfxsi.Image) = new Image(i)
-  implicit def jfxImageView2sfx(iv: jfxsi.ImageView) = new ImageView(iv)
-  implicit def jfxPixelFormat2sfx[B <: Buffer](pf: jfxsi.PixelFormat[B]) = new PixelFormat[B](pf) {}
-  implicit def jfxType2sfx(t: jfxsi.PixelFormat.Type) = PixelFormat.Type.jfxEnum2sfx(t)
-  implicit def jfxPixelReader2sfx(pr: jfxsi.PixelReader) = new PixelReader {
-    override val delegate = pr
-  }
-  implicit def jfxPixelWriter2sfx(pw: jfxsi.PixelWriter) = new PixelWriter {
-    override val delegate = pw
-  }
-  implicit def jfxWritableImage2sfx(wi: jfxsi.WritableImage) = new WritableImage(wi)
-  implicit def jfxWritablePixelFormat2sfx[B <: Buffer](pf: jfxsi.WritablePixelFormat[B]) = new WritablePixelFormat[B](pf) {}
-}
+/** Tests for [[scalafx.scene.image.PixelFormat.Type]]. */
+@RunWith(classOf[JUnitRunner])
+class PixelFormatTypeSpec
+  extends SFXEnumDelegateSpec[jfxsi.PixelFormat.Type, PixelFormat.Type](
+    classOf[jfxsi.PixelFormat.Type],
+    classOf[PixelFormat.Type],
+    PixelFormat.Type)
