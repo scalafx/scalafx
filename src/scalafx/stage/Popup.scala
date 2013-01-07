@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.stage
 
 import javafx.{ stage => jfxs }
@@ -39,7 +38,9 @@ object Popup {
   implicit def sfxPopup2jfx(p: Popup) = p.delegate
 }
 
-class Popup(override val delegate: jfxs.Popup = new jfxs.Popup) extends PopupWindow(delegate) with SFXDelegate[jfxs.Popup] {
+class Popup(override val delegate: jfxs.Popup = new jfxs.Popup)
+  extends PopupWindow(delegate)
+  with SFXDelegate[jfxs.Popup] {
 
   def content = delegate.getContent
 

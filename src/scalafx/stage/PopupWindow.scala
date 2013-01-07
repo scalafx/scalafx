@@ -24,11 +24,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.stage
 
-import javafx.{event => jfxe}
-import javafx.{stage => jfxs}
+import javafx.{ event => jfxe }
+import javafx.{ stage => jfxs }
+import scalafx.beans.property._
 import scalafx.Includes._
 import scalafx.scene.Node._
 import scalafx.scene.Node
@@ -39,12 +39,15 @@ object PopupWindow {
   implicit def sfxPopupWindow2jfx(v: PopupWindow) = v.delegate
 }
 
-abstract class PopupWindow(override val delegate: jfxs.PopupWindow) extends Window(delegate) with SFXDelegate[jfxs.PopupWindow] {
+abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
+  extends Window(delegate)
+  with SFXDelegate[jfxs.PopupWindow] {
 
   /**
-   * This convenience variable indicates whether, when the popup is shown, it should automatically correct its position such that it doesn't end up positioned off the screen.
+   * This convenience variable indicates whether, when the popup is shown, it should automatically correct its position
+   * such that it doesn't end up positioned off the screen.
    */
-  def autoFix = delegate.autoFixProperty
+  def autoFix: BooleanProperty = delegate.autoFixProperty
   def autoFix_=(v: Boolean) {
     autoFix() = v
   }
@@ -52,15 +55,16 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow) extends Wind
   /**
    * Specifies whether Popups should auto hide.
    */
-  def autoHide = delegate.autoHideProperty
+  def autoHide: BooleanProperty = delegate.autoHideProperty
   def autoHide_=(v: Boolean) {
     autoHide() = v
   }
 
   /**
-   * Specifies whether the PopupWindow should be hidden when an unhandled escape key is pressed while the popup has focus.
+   * Specifies whether the PopupWindow should be hidden when an unhandled escape key is pressed while the popup has
+   * focus.
    */
-  def hideOnEscape = delegate.hideOnEscapeProperty
+  def hideOnEscape: BooleanProperty = delegate.hideOnEscapeProperty
   def hideOnEscape_=(v: Boolean) {
     hideOnEscape() = v
   }
@@ -103,8 +107,9 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow) extends Wind
    * Specifies whether the event, which caused the Popup to hide, should be consumed.
    * @since 2.2
    */
-  def consumeAutoHidingEvents = delegate.consumeAutoHidingEventsProperty()
-  def consumeAutoHidingEvents(v:Boolean) {
+  def consumeAutoHidingEvents: BooleanProperty = delegate.consumeAutoHidingEventsProperty
+  def consumeAutoHidingEvents(v: Boolean) {
     consumeAutoHidingEvents() = v
   }
+
 }
