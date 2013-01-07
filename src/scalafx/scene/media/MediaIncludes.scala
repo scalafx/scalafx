@@ -39,6 +39,8 @@ trait MediaIncludes {
   implicit def jfxEqualizerBand2sfx(eb: jfxsm.EqualizerBand) = new EqualizerBand(eb)
   implicit def jfxMedia2sfx(m: jfxsm.Media) = new Media(m)
   implicit def jfxMediaErrorEvent2sfx(mee: jfxsm.MediaErrorEvent) = new MediaErrorEvent(mee)
+  implicit def jfxMediaException2sfx(me: jfxsm.MediaException) = new MediaException(me)
+  implicit def jfxMediaExceptionType2sfx(t: jfxsm.MediaException.Type) = MediaException.Type.jfxEnum2sfx(t)
   implicit def jfxMediaMarkerEvent2sfx(mme: jfxsm.MediaMarkerEvent) = new MediaMarkerEvent(mme)
   implicit def jfxMediaPlayer2sfx(mp: jfxsm.MediaPlayer) = new MediaPlayer(mp)
   implicit def jfxMediaPlayerStatus2sfx(s: jfxsm.MediaPlayer.Status) = MediaPlayer.Status.jfxEnum2sfx(s)
