@@ -1,5 +1,3 @@
-package scalafx.scene.input
-
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -26,6 +24,7 @@ package scalafx.scene.input
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.input
 
 import org.junit.runner.RunWith
 import javafx.scene.{ input => jfxsi }

@@ -18,6 +18,7 @@ trait InputIncludes {
   implicit def jfxInputMethodHighlight2sfx(e: jfxsi.InputMethodHighlight) = InputMethodHighlight.jfxEnum2sfx(e)
   implicit def jfxInputMethodTextRun2sfx(imtr: jfxsi.InputMethodTextRun) = new InputMethodTextRun(imtr)
   implicit def jfxKeyCombination2sfx(kc: jfxsi.KeyCombination) = new KeyCombination(kc) {}
+  implicit def jfxModifierValue2sfx(mv: jfxsi.KeyCombination.ModifierValue) = KeyCombination.ModifierValue.jfxEnum2sfx(mv)
   implicit def jfxKeyCharacterCombination2sfx(kcc: jfxsi.KeyCharacterCombination) = new KeyCharacterCombination(kcc)
   implicit def jfxKeyCode2sfx(e: jfxsi.KeyCode) = KeyCode.jfxEnum2sfx(e)
   implicit def jfxKeyCodeCombination2sfx(kcc: jfxsi.KeyCodeCombination) = new KeyCodeCombination(kcc)
@@ -29,8 +30,11 @@ trait InputIncludes {
   implicit def jfxMouseDragEvent2sfx(mde: jfxsi.MouseDragEvent) = new MouseDragEvent(mde)
   implicit def jfxRotateEvent2sfx(re: jfxsi.RotateEvent) = new RotateEvent(re)
   implicit def jfxScrollEvent2sfx(se: jfxsi.ScrollEvent) = new ScrollEvent(se)
+  implicit def jfxScrollEventHorizontalTextScrollUnits2sfx(h: jfxsi.ScrollEvent.HorizontalTextScrollUnits) = ScrollEvent.HorizontalTextScrollUnits.jfxEnum2sfx(h)
+  implicit def jfxScrollEventVerticalTextScrollUnits2sfx(v: jfxsi.ScrollEvent.VerticalTextScrollUnits) = ScrollEvent.VerticalTextScrollUnits.jfxEnum2sfx(v)
   implicit def jfxSwipeEvent2sfx(se: jfxsi.SwipeEvent) = new SwipeEvent(se)
   implicit def jfxTouchPoint2sfx(tp: jfxsi.TouchPoint) = new TouchPoint(tp)
+  implicit def jfxTouchPointState2sfx(s: jfxsi.TouchPoint.State) = TouchPoint.State.jfxEnum2sfx(s)
   implicit def jfxTransferMode2sfx(e: jfxsi.TransferMode) = TransferMode.jfxEnum2sfx(e)
   implicit def jfxZoomEvent2sfx(ze: jfxsi.ZoomEvent) = new ZoomEvent(ze)
 }
