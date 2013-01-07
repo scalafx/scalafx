@@ -41,6 +41,7 @@ trait MediaIncludes {
   implicit def jfxMediaErrorEvent2sfx(mee: jfxsm.MediaErrorEvent) = new MediaErrorEvent(mee)
   implicit def jfxMediaMarkerEvent2sfx(mme: jfxsm.MediaMarkerEvent) = new MediaMarkerEvent(mme)
   implicit def jfxMediaPlayer2sfx(mp: jfxsm.MediaPlayer) = new MediaPlayer(mp)
+  implicit def jfxMediaPlayerStatus2sfx(s: jfxsm.MediaPlayer.Status) = MediaPlayer.Status.jfxEnum2sfx(s)
   implicit def jfxMediaView2sfx(mv: jfxsm.MediaView) = new MediaView(mv)
   implicit def jfxTrack2sfx(t: jfxsm.Track) = new Track(t) {}
   implicit def jfxVideoTrack2sfx(vt: jfxsm.VideoTrack) = new VideoTrack(vt)

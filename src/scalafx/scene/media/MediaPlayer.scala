@@ -31,11 +31,65 @@ import javafx.{ event => jfxe }
 import scalafx.Includes._
 import scalafx.util.Duration
 import scalafx.util.SFXDelegate
+import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 object MediaPlayer {
   implicit def sfxMediaPlayer2jfx(mp: MediaPlayer) = mp.delegate
 
-  val Indefinite:Int = jfxsm.MediaPlayer.INDEFINITE
+  object Status
+    extends SFXEnumDelegateCompanion[jfxsm.MediaPlayer.Status, Status] {
+
+    /**
+     * State of the player when a critical error has occurred.
+     */
+    val HALTED = new Status(jfxsm.MediaPlayer.Status.HALTED)
+
+    /**
+     * State of the player when playback is paused.
+     */
+    val PAUSED = new Status(jfxsm.MediaPlayer.Status.PAUSED)
+
+    /**
+     * State of the player when it is currently playing.
+     */
+    val PLAYING = new Status(jfxsm.MediaPlayer.Status.PLAYING)
+
+    /**
+     * State of the player once it is prepared to play.
+     */
+    val READY = new Status(jfxsm.MediaPlayer.Status.READY)
+
+    /**
+     * State of the player when data coming into the buffer has slowed or stopped and the playback buffer does not
+     * have enough data to continue playing.
+     */
+    val STALLED = new Status(jfxsm.MediaPlayer.Status.STALLED)
+
+    /**
+     * State of the player when playback has stopped.
+     */
+    val STOPPED = new Status(jfxsm.MediaPlayer.Status.STOPPED)
+
+    /**
+     * State of the player immediately after creation.
+     */
+    val UNKNOWN = new Status(jfxsm.MediaPlayer.Status.UNKNOWN)
+
+    protected override def unsortedValues: Array[Status] = Array(HALTED, PAUSED, PLAYING, READY, STALLED, STOPPED,
+      UNKNOWN)
+
+  }
+
+  /**
+   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/MediaPlayer.Status.html]]
+   */
+  sealed case class Status(override val delegate: jfxsm.MediaPlayer.Status)
+    extends SFXEnumDelegate[jfxsm.MediaPlayer.Status]
+
+  /**
+   * A value representing an effectively infinite number of playback cycles.
+   */
+  val Indefinite: Int = jfxsm.MediaPlayer.INDEFINITE
 }
 
 final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[jfxsm.MediaPlayer] {
