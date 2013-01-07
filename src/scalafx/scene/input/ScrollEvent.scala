@@ -28,9 +28,61 @@ package scalafx.scene.input
 
 import javafx.scene.{ input => jfxsi }
 import scalafx.util.SFXDelegate
+import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 object ScrollEvent {
   implicit def sfxScrollEvent2jfx(se: ScrollEvent) = se.delegate
+
+  object HorizontalTextScrollUnits
+    extends SFXEnumDelegateCompanion[jfxsi.ScrollEvent.HorizontalTextScrollUnits, HorizontalTextScrollUnits] {
+
+    /**
+     * The horizontal text-based scrolling amount is a number of characters to scroll.
+     */
+    val CHARACTERS = new HorizontalTextScrollUnits(jfxsi.ScrollEvent.HorizontalTextScrollUnits.CHARACTERS)
+
+    /**
+     * The horizontal text-based scrolling data is not available (not provided by the underlying platform).
+     */
+    val NONE = new HorizontalTextScrollUnits(jfxsi.ScrollEvent.HorizontalTextScrollUnits.NONE)
+
+    protected override def unsortedValues: Array[HorizontalTextScrollUnits] = Array(NONE, CHARACTERS)
+
+  }
+
+  /**
+   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ScrollEvent.HorizontalTextScrollUnits.html]]
+   */
+  sealed case class HorizontalTextScrollUnits(override val delegate: jfxsi.ScrollEvent.HorizontalTextScrollUnits)
+    extends SFXEnumDelegate[jfxsi.ScrollEvent.HorizontalTextScrollUnits]
+
+  object VerticalTextScrollUnits
+    extends SFXEnumDelegateCompanion[jfxsi.ScrollEvent.VerticalTextScrollUnits, VerticalTextScrollUnits] {
+
+    /**
+     * The vertical text-based scrolling amount is a number of lines to scroll.
+     */
+    val LINES = new VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.LINES)
+
+    /**
+     * The vertical text-based scrolling amount is a number of pages to scroll.
+     */
+    val PAGES = new VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.PAGES)
+
+    /**
+     * The vertical text-based scrolling data is not available (not provided by the underlying platform).
+     */
+    val NONE = new VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.NONE)
+
+    protected override def unsortedValues: Array[VerticalTextScrollUnits] = Array(NONE, LINES, PAGES)
+
+  }
+
+  /**
+   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ScrollEvent.VerticalTextScrollUnits.html]]
+   */
+  sealed case class VerticalTextScrollUnits(override val delegate: jfxsi.ScrollEvent.VerticalTextScrollUnits)
+    extends SFXEnumDelegate[jfxsi.ScrollEvent.VerticalTextScrollUnits]
 
   /**
    * Common supertype for all scroll event types.
@@ -80,7 +132,8 @@ class ScrollEvent(override val delegate: jfxsi.ScrollEvent)
   /**
    * Gets the horizontal scrolling units for text-based scrolling.
    */
-  def textDeltaXUnits = delegate.getTextDeltaXUnits
+  def textDeltaXUnits: ScrollEvent.HorizontalTextScrollUnits = 
+    ScrollEvent.HorizontalTextScrollUnits.jfxEnum2sfx(delegate.getTextDeltaXUnits)
 
   /**
    * Gets the vertical text-based scroll amount.
@@ -90,6 +143,7 @@ class ScrollEvent(override val delegate: jfxsi.ScrollEvent)
   /**
    * Gets the vertical scrolling units for text-based scrolling.
    */
-  def textDeltaYUnits = delegate.getTextDeltaYUnits
+  def textDeltaYUnits: ScrollEvent.VerticalTextScrollUnits = 
+    ScrollEvent.VerticalTextScrollUnits.jfxEnum2sfx(delegate.getTextDeltaYUnits)
 
 }

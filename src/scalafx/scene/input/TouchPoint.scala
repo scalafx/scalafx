@@ -29,9 +29,44 @@ package scalafx.scene.input
 import javafx.scene.{ input => jfxsi }
 import javafx.{ event => jfxe }
 import scalafx.util.SFXDelegate
+import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 object TouchPoint {
   implicit def sfxTouchPoint2jfx(tp: TouchPoint) = tp.delegate
+
+  object State
+    extends SFXEnumDelegateCompanion[jfxsi.TouchPoint.State, State] {
+
+    /**
+     * The touch point has been moved
+     */
+    val MOVED = new State(jfxsi.TouchPoint.State.MOVED)
+
+    /**
+     * The touch point has been moved
+     */
+    val PRESSED = new State(jfxsi.TouchPoint.State.PRESSED)
+
+    /**
+     * The touch point remains pressed and still (without moving)
+     */
+    val STATIONARY = new State(jfxsi.TouchPoint.State.STATIONARY)
+
+    /**
+     * The touch point has been released
+     */
+    val RELEASED = new State(jfxsi.TouchPoint.State.RELEASED)
+
+    protected override def unsortedValues: Array[State] = Array(MOVED, PRESSED, STATIONARY, RELEASED)
+
+  }
+
+  /**
+   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/TouchPoint.State.html]]
+   */
+  sealed case class State(override val delegate: jfxsi.TouchPoint.State)
+    extends SFXEnumDelegate[jfxsi.TouchPoint.State]
+
 }
 
 class TouchPoint(override val delegate: jfxsi.TouchPoint)
@@ -88,7 +123,7 @@ class TouchPoint(override val delegate: jfxsi.TouchPoint)
   /**
    * Gets state of this touch point
    */
-  def state = delegate.getState
+  def state: TouchPoint.State = TouchPoint.State.jfxEnum2sfx(delegate.getState)
 
   /**
    * Gets event target on which the touch event carrying this touch point is fired.
