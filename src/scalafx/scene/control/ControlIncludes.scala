@@ -67,6 +67,7 @@ trait ControlIncludes
   implicit def jfxOverrunStyle2sfx(e: jfxsc.OverrunStyle) = OverrunStyle.jfxEnum2sfx(e)
   implicit def jfxPagination2sfx(p: jfxsc.Pagination) = new Pagination(p)
   implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s)
+  implicit def jfxScrollPaneScrollBarPolicy2sfx(s: jfxsc.ScrollPane.ScrollBarPolicy) = ScrollPane.ScrollBarPolicy.jfxEnum2sfx(s)
   implicit def jfxScrollBar2sfx(s: jfxsc.ScrollBar) = new ScrollBar(s)
   implicit def jfxSelectionMode2sfx(e: jfxsc.SelectionMode) = SelectionMode.jfxEnum2sfx(e)
   implicit def jfxSlider2sfx(s: jfxsc.Slider) = new Slider(s)
@@ -74,6 +75,7 @@ trait ControlIncludes
 
   implicit def jfxTableCell2sfx[S, T](tc: jfxsc.TableCell[S, T]) = new TableCell[S, T](tc)
   implicit def jfxTableColumn2sfx[S, T](tc: jfxsc.TableColumn[S, T]) = new TableColumn[S, T](tc)
+  implicit def jfxSortType2sfx(st: jfxsc.TableColumn.SortType) = TableColumn.SortType.jfxEnum2sfx(st)
   implicit def jfxCellDataFeatures2sfx[S, T](cdf: jfxsc.TableColumn.CellDataFeatures[S, T]) = new TableColumn.CellDataFeatures[S, T](cdf)
   implicit def jfxCellEditEvent2sfx[S, T](cee: jfxsc.TableColumn.CellEditEvent[S, T]) = new TableColumn.CellEditEvent[S, T](cee)
   implicit def jfxTablePosition2sfx[S, T](tp: jfxsc.TablePosition[S, T]) = new TablePosition[S, T](tp)
@@ -115,6 +117,7 @@ trait ControlIncludes
   implicit def jfxSplitPaneDivider2sfx(d: jfxsc.SplitPane.Divider) = new SplitPane.Divider(d)
   implicit def jfxTab2sfx(v: jfxsc.Tab) = new Tab(v)
   implicit def jfxTabPane2sfx(v: jfxsc.TabPane) = new TabPane(v)
+  implicit def jfxTabClosingPolicy2sfx(v: jfxsc.TabPane.TabClosingPolicy) = TabPane.TabClosingPolicy.jfxEnum2sfx(v)
   implicit def jfxTextField2sfx(v: jfxsc.TextField) = new TextField(v)
   implicit def jfxTextArea2sfx(t: jfxsc.TextArea) = new TextArea(t)
   implicit def jfxTextInputControl2sfx(t: jfxsc.TextInputControl) = new TextInputControl(t) {}
