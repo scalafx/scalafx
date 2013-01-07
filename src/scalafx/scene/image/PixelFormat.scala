@@ -79,6 +79,7 @@ object PixelFormat {
 
     protected override def unsortedValues: Array[Type] = Array(BYTE_BGRA, BYTE_BGRA_PRE, BYTE_INDEXED, BYTE_RGB, 
         INT_ARGB, INT_ARGB_PRE)
+
   }
   
   /**

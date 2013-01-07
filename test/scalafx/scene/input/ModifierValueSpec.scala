@@ -29,20 +29,12 @@ package scalafx.scene.input
 import org.junit.runner.RunWith
 import javafx.scene.{ input => jfxsi }
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 import org.scalatest.junit.JUnitRunner
 
-/**
- * KeyCombination Spec tests.
- *
- *
- */
+/** Tests for [[scalafx.scene.input.KeyCombination.ModifierValue]]. */
 @RunWith(classOf[JUnitRunner])
-class KeyCombinationSpec
-  extends SimpleSFXDelegateSpec[jfxsi.KeyCombination, KeyCombination](classOf[jfxsi.KeyCombination], classOf[KeyCombination]) {
-
-  override protected def getScalaClassInstance = KeyCombination.keyCombination("A")
-
-  override protected def getJavaClassInstance = jfxsi.KeyCombination.keyCombination("A")
-
-}
+class ModifierValueSpec extends SFXEnumDelegateSpec[jfxsi.KeyCombination.ModifierValue, KeyCombination.ModifierValue](
+  classOf[jfxsi.KeyCombination.ModifierValue],
+  classOf[KeyCombination.ModifierValue],
+  KeyCombination.ModifierValue)

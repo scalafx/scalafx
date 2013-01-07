@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,15 +34,11 @@ import org.scalatest.junit.JUnitRunner
 
 /**
  * KeyCombination Spec tests.
- *
- *
  */
 @RunWith(classOf[JUnitRunner])
-class KeyCombinationSpec
-  extends SimpleSFXDelegateSpec[jfxsi.KeyCombination, KeyCombination](classOf[jfxsi.KeyCombination], classOf[KeyCombination]) {
+class ModifierSpec
+  extends SimpleSFXDelegateSpec[jfxsi.KeyCombination.Modifier, KeyCombination.Modifier](classOf[jfxsi.KeyCombination.Modifier], classOf[KeyCombination.Modifier]) {
 
-  override protected def getScalaClassInstance = KeyCombination.keyCombination("A")
-
-  override protected def getJavaClassInstance = jfxsi.KeyCombination.keyCombination("A")
+      override protected def getJavaClassInstance = jfxsi.KeyCombination.ALT_ANY
 
 }
