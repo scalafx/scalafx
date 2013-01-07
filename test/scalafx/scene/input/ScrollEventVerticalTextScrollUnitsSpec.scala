@@ -32,10 +32,10 @@ import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 import org.scalatest.junit.JUnitRunner
 
-/** Tests for [[scalafx.scene.input.KeyCombination.ModifierValue]]. */
+/** Tests for [[scalafx.scene.input.ScrollEvent.VerticalTextScrollUnits]]. */
 @RunWith(classOf[JUnitRunner])
-class ModifierValueSpec
-  extends SFXEnumDelegateSpec[jfxsi.KeyCombination.ModifierValue, KeyCombination.ModifierValue](
-    classOf[jfxsi.KeyCombination.ModifierValue],
-    classOf[KeyCombination.ModifierValue],
-    KeyCombination.ModifierValue)
+class ScrollEventVerticalTextScrollUnitsSpec
+  extends SFXEnumDelegateSpec[jfxsi.ScrollEvent.VerticalTextScrollUnits, ScrollEvent.VerticalTextScrollUnits](
+    classOf[jfxsi.ScrollEvent.VerticalTextScrollUnits],
+    classOf[ScrollEvent.VerticalTextScrollUnits],
+    ScrollEvent.VerticalTextScrollUnits)
