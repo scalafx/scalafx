@@ -28,8 +28,8 @@ package scalafx.scene.transform
 
 import javafx.scene.{ transform => jfxst }
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
-import scalafx.util.PositionDelegate
+import scalafx.delegate.SFXDelegate
+import scalafx.delegate.PositionDelegate
 
 object Shear {
   implicit def sfxShear2jfx(v: Shear) = v.delegate

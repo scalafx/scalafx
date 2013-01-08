@@ -31,7 +31,7 @@ import javafx.scene.{ effect => jfxse }
 import javafx.scene.{ paint => jfxsp }
 import scalafx.Includes._
 import scalafx.scene.paint.Color
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 /**
  *

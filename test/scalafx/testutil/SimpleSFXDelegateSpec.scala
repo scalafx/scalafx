@@ -26,7 +26,7 @@
  */
 package scalafx.testutil
 
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 /**
  * Abstract class for SFXDelegate controls Spec tests.

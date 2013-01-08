@@ -28,7 +28,7 @@ package scalafx.scene.web
 
 import javafx.scene.{ web => jfxsw }
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object PromptData {
   implicit def sfxPromptData2jfx(pd: PromptData) = pd.delegate

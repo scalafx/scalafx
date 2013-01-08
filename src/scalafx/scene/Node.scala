@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene
 
 import scala.collection.JavaConversions.asJavaCollection
@@ -49,7 +48,7 @@ import scalafx.geometry.Bounds
 import scalafx.geometry.Insets
 import scalafx.geometry.Point2D
 import scalafx.scene.effect.Effect
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.transform.Transform
 import scalafx.scene.image.WritableImage
 

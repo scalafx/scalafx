@@ -1,4 +1,4 @@
-package scalafx.util
+package scalafx.delegate
 
 /*
  * Copyright (c) 2011, ScalaFX Project
@@ -27,32 +27,17 @@ package scalafx.util
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import org.scalatest.FlatSpec
-import org.scalatest.matchers.ShouldMatchers._
-import scalafx.beans.property.DoubleProperty
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+trait SFXDelegate[+D <: Object] extends AnyRef {
+  def delegate: D
 
-@RunWith(classOf[JUnitRunner])
-class SFXDelegateSpec extends FlatSpec {
-  val doubleProperty = new DoubleProperty(null, "double property")
-  val doublePropertyWithSameName = new DoubleProperty(null, "double property")
-  val doublePropertyWithDifferentName = new DoubleProperty(null, "double property (with different name)")
+  override def toString = "[SFX]" + delegate.toString
 
-  "SFXDelegate" should "delegate toString" in {
-    doubleProperty.toString should be("[SFX]DoubleProperty [name: double property, value: 0.0]")
+  override def equals(ref: Any): Boolean = {
+    ref match {
+      case sfxd: SFXDelegate[_] => delegate.equals(sfxd.delegate)
+      case _ => delegate.equals(ref)
+    }
   }
 
-  it should "delegate equals" in {
-    doubleProperty should equal(doublePropertyWithSameName)
-    doubleProperty should not(equal(doublePropertyWithDifferentName))
-  }
-
-  it should "delegate hashCode" in {
-    doubleProperty.hashCode should equal(2073312533)
-  }
-
-  it should "have a public delegate property" in {
-    doubleProperty.delegate should not(be(null))
-  }
+  override def hashCode = delegate.hashCode
 }

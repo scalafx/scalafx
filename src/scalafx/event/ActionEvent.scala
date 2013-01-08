@@ -24,11 +24,10 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.event
 
 import javafx.{event => jfxe }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object ActionEvent {
   implicit def sfxActionEvent2jfx(ie: ActionEvent) = ie.delegate

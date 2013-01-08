@@ -32,8 +32,8 @@ import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
-import scalafx.util.SFXDelegate
-import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.SFXDelegate
+import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 import scalafx.geometry.Side
 
 object TabPane {

@@ -32,7 +32,7 @@ import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object TableView {
   implicit def sfxTableView2jfx[S](tv: TableView[S]) = tv.delegate

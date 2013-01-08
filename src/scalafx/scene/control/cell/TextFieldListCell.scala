@@ -30,7 +30,7 @@ import javafx.{ util => jfxu }
 import scalafx.Includes._
 import scalafx.scene.control.ListCell
 import scalafx.scene.control.ListView
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
 object TextFieldListCell {

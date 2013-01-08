@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,30 +24,38 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.util
+package scalafx.delegate
 
-import FireDelegate._
+import javafx.beans.{ property => jfxbp }
+import javafx.{ util => jfxu }
+import scalafx.beans.property.{ReadOnlyObjectWrapper, ObjectProperty}
 
-object FireDelegate {
+object DelegateIncludes extends DelegateIncludes 
 
-  /**
-   * Defines a Type that contains a fire() method that has no return (void)
-   */
-  type Fired = {
-    def fire(): Unit
-  }
-
-}
-
-/**
- * Unify classes that contains a fire() method that has no return (void)
- */
-trait FireDelegate[J <: Object with Fired]
-  extends SFXDelegate[J] {
+trait DelegateIncludes {
 
   /**
-   * Fires some kind of event.
+     * Converts a Scala's [[scalafx.beans.property.ObjectProperty]] that wraps a
+     * [[SFXDelegate]] to a Java's [[javafx.beans.property.ObjectProperty]].
+     *
+     *  @tparam D Type wrapped by SFXDelegate
+     *  @tparam S A SFXDelegate subtype that wraps D.
+     *  @param obj ObjectProperty that a wraps Scala's SFXDelegate
+     *  @return A new Java's ObjectProperty
+     */
+    implicit def sfxObjectPropertyWithSFXDelegate2jfxObjectProperty[D <: Object, S <: SFXDelegate[D]](obj: ObjectProperty[S]): jfxbp.ObjectProperty[D] =
+      new jfxbp.SimpleObjectProperty[D](obj.get.delegate)
+
+  /**
+   * Converts a Scala's [[scalafx.beans.property.ReadOnlyObjectWrapper]] that wraps a
+   * [[SFXDelegate]] to a Java's [[javafx.beans.property.ReadOnlyObjectWrapper]].
+   *
+   *  @tparam D Type wrapped by SFXDelegate
+   *  @tparam S A SFXDelegate subtype that wraps D.
+   *  @param obj ObjectProperty that a wraps Scala's SFXDelegate
+   *  @return A new Java's ObjectProperty
    */
-  def fire = delegate.fire
+  implicit def sfxReadOnlyObjectWrapperWithSFXDelegate2jfxReadOnlyObjectWrapper[D <: Object, S <: SFXDelegate[D]](obj: ReadOnlyObjectWrapper[S]): jfxbp.ReadOnlyObjectWrapper[D] =
+    new jfxbp.ReadOnlyObjectWrapper[D](obj.get.delegate)
 
 }

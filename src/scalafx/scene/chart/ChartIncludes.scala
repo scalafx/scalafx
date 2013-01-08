@@ -25,7 +25,6 @@ package scalafx.scene.chart
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 import javafx.scene.{ chart => jfxsc }
 
 object ChartIncludes extends ChartIncludes

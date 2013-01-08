@@ -44,7 +44,7 @@ import scalafx.scene.shape.StrokeLineCap
 import scalafx.scene.shape.StrokeLineJoin
 import scalafx.scene.text.Font
 import scalafx.scene.transform.Affine
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object GraphicsContext {
   implicit def sfxGraphicsContext2jfx(gc: GraphicsContext): jfxsc.GraphicsContext = gc.delegate

@@ -27,12 +27,12 @@
 package scalafx.scene.control
 
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import javafx.scene.{ control => jfxsc }
 import javafx.{ event => jfxe }
 import javafx.scene.Node
 import scalafx.scene.input.KeyCombination
-import scalafx.util.FireDelegate
+import scalafx.delegate.FireDelegate
 import scalafx.event.Event
 
 object MenuItem {

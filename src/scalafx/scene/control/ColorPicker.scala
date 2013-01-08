@@ -31,7 +31,7 @@ import javafx.scene.{paint => jfxsp}
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.paint.Color
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object ColorPicker {
   implicit def sfxColorPicker2jfx(cp: ColorPicker) = cp.delegate

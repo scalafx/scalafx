@@ -27,7 +27,7 @@
 package scalafx.testutil
 
 import javafx.util.Builder
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 /**
  * Abstract class for SFXDelegate controls Spec tests with Builder subclasses tests.

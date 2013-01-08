@@ -24,11 +24,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.geometry
 
 import javafx.{ geometry => jfxg }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Dimension2D {
   implicit def sfxDimension2D2jfx(d: Dimension2D) = d.delegate

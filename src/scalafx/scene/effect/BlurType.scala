@@ -24,12 +24,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
-import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
-
+import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 /** Wrapper for [[scalafx.scene.effect.BlurType]] */
 object BlurType extends SFXEnumDelegateCompanion[jfxse.BlurType, BlurType] {
@@ -43,6 +41,5 @@ object BlurType extends SFXEnumDelegateCompanion[jfxse.BlurType, BlurType] {
     ONE_PASS_BOX, TWO_PASS_BOX, THREE_PASS_BOX, GAUSSIAN
   )
 }
-
 
 sealed case class BlurType(override val delegate: jfxse.BlurType) extends SFXEnumDelegate[jfxse.BlurType]

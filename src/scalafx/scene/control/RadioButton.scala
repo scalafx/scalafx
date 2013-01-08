@@ -27,7 +27,7 @@
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object RadioButton {
   implicit def sfxRadioButton2jfx(rb: RadioButton) = rb.delegate

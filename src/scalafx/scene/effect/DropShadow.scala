@@ -29,8 +29,8 @@ package scalafx.scene.effect
 import javafx.scene.{ effect => jfxse, paint => jfxsp }
 import scalafx.Includes._
 import scalafx.scene.paint.Color
-import scalafx.util.SFXDelegate
-import scalafx.util.DimensionDelegate
+import scalafx.delegate.SFXDelegate
+import scalafx.delegate.DimensionDelegate
 
 object DropShadow {
   implicit def sfxDropShadow2jfx(ds: DropShadow) = ds.delegate

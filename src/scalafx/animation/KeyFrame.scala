@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
 import scala.collection.JavaConversions._
@@ -32,7 +31,7 @@ import scala.collection.JavaConversions._
 import javafx.{ event => jfxe }
 import javafx.{ animation => jfxa }
 import scalafx.util.Duration
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object KeyFrame {
   implicit def sfxKeyFrame2jfx(v: KeyFrame) = v.delegate

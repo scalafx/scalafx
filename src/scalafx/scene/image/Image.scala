@@ -32,7 +32,7 @@ import javafx.scene.{ image => jfxsi }
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Image {
   implicit def sfxImage2jfx(i: Image) = i.delegate

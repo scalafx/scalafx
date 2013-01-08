@@ -35,8 +35,7 @@ import scalafx.beans.property.IntegerProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.util.Duration.sfxDuration2jfx
 import scalafx.util.Duration
-import scalafx.util.SFXDelegate
-import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate._
 
 trait AnimationStatics {
   def INDEFINITE = jfxa.Animation.INDEFINITE

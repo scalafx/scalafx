@@ -1,5 +1,3 @@
-package scalafx.scene.effect
-
 /*
 * Copyright (c) 2012, ScalaFX Project
 * All rights reserved.
@@ -26,9 +24,10 @@ package scalafx.scene.effect
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+package scalafx.scene.effect
 
 import javafx.scene.{ effect => jfxe }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Effect {
   implicit def sfxEffect2jfx(e: Effect) = e.delegate

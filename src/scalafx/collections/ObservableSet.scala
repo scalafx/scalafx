@@ -35,7 +35,7 @@ import scala.collection.mutable.Set
 import scala.collection.mutable.SetLike
 import javafx.{ collections => jfxc }
 import scalafx.beans.Observable
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scala.collection.generic.GenericCompanion
 
 /**

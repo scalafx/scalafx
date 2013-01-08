@@ -29,7 +29,7 @@ package scalafx.scene.control
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object TreeCell {
   implicit def sfxTreeCell2jfx[T](t: TreeCell[T]) = t.delegate

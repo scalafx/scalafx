@@ -28,11 +28,10 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import javafx.geometry.Bounds
-
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.beans.property._
-import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 import javafx.{ scene => jfxs }
 import scalafx.scene.Node
 

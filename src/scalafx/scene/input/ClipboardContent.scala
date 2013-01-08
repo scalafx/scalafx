@@ -24,7 +24,6 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.scene.input
 
 import java.io.File
@@ -36,7 +35,7 @@ import scala.collection.Seq
 import javafx.scene.{input => jfxsi}
 import scalafx.scene.image.Image.sfxImage2jfx
 import scalafx.scene.image.Image
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object ClipboardContent {
   implicit def sfxClipboardContent2jfx(c: ClipboardContent) = c.delegate
