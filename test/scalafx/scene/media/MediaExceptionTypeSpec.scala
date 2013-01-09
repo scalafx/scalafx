@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,24 +24,18 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.stage
+package scalafx.scene.media
 
-import javafx.{ stage => jfxs }
+import javafx.scene.{ media => jfxsm }
+import org.junit.runner.RunWith
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.util.SFXDelegate
-import scalafx.scene.Scene
-import scalafx.event.Event
-import javafx.event.EventType
+import scalafx.testutil.SFXEnumDelegateSpec
+import org.scalatest.junit.JUnitRunner
 
-object Popup {
-  implicit def sfxPopup2jfx(p: Popup) = p.delegate
-}
-
-class Popup(override val delegate: jfxs.Popup = new jfxs.Popup)
-  extends PopupWindow(delegate)
-  with SFXDelegate[jfxs.Popup] {
-
-  def content = delegate.getContent
-
-}
+/** Tests for [[scalafx.scene.media.MediaException.Type]]. */
+@RunWith(classOf[JUnitRunner])
+class MediaExceptionTypeSpec
+  extends SFXEnumDelegateSpec[jfxsm.MediaException.Type, MediaException.Type](
+    classOf[jfxsm.MediaException.Type],
+    classOf[MediaException.Type],
+    MediaException.Type)

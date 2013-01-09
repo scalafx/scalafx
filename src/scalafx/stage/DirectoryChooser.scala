@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.stage
 
 import java.io.File
@@ -38,12 +37,13 @@ object DirectoryChooser {
   implicit def sfxDirectoryChooser2jfx(dc: DirectoryChooser) = dc.delegate
 }
 
-class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.DirectoryChooser) extends SFXDelegate[jfxs.DirectoryChooser] {
+class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.DirectoryChooser)
+  extends SFXDelegate[jfxs.DirectoryChooser] {
 
   /**
    * The initial directory for the displayed dialog.
    */
-  def initialDirectory :ObjectProperty[File] = delegate.initialDirectoryProperty
+  def initialDirectory: ObjectProperty[File] = delegate.initialDirectoryProperty
   def initialDirectory_=(v: File) {
     initialDirectory() = v
   }
@@ -51,7 +51,7 @@ class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.D
   /**
    * The title of the displayed dialog.
    */
-  def title :StringProperty = delegate.titleProperty
+  def title: StringProperty = delegate.titleProperty
   def title_=(v: String) {
     title() = v
   }
@@ -59,5 +59,5 @@ class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.D
   /**
    * Shows a new directory selection dialog.
    */
-  def showDialog(ownerWindow: Window) = delegate.showDialog(ownerWindow)
+  def showDialog(ownerWindow: Window): File = delegate.showDialog(ownerWindow)
 }
