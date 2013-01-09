@@ -24,13 +24,12 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.stage
 
 import java.io.File
 
 import scala.collection.JavaConversions._
-import javafx.{stage => jfxs}
+import javafx.{ stage => jfxs }
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.StringProperty
@@ -58,7 +57,7 @@ object FileChooser {
      * at line XX have same type after erasure: (description: java.lang.String, extensions: Seq)scalafx.stage.FileChooser#ExtensionFilter".
      * So I decided mantain just Seq constructor. 
      */
-//        def this(description: String, extensions: String*) = this(new jfxs.FileChooser.ExtensionFilter(description, extensions: _*))
+    //        def this(description: String, extensions: String*) = this(new jfxs.FileChooser.ExtensionFilter(description, extensions: _*))
 
     def description = delegate.getDescription
 
@@ -67,12 +66,13 @@ object FileChooser {
   }
 }
 
-class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser) extends SFXDelegate[jfxs.FileChooser] {
+class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser)
+  extends SFXDelegate[jfxs.FileChooser] {
 
   /**
    * The initial directory for the displayed dialog.
    */
-  def initialDirectory :ObjectProperty[File] = delegate.initialDirectoryProperty
+  def initialDirectory: ObjectProperty[File] = delegate.initialDirectoryProperty
   def initialDirectory_=(v: File) {
     initialDirectory() = v
   }
@@ -80,7 +80,7 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
   /**
    * The title of the displayed dialog.
    */
-  def title :StringProperty = delegate.titleProperty
+  def title: StringProperty = delegate.titleProperty
   def title_=(v: String) {
     title() = v
   }
@@ -93,15 +93,16 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
   /**
    * Shows a new file open dialog.
    */
-  def showOpenDialog(ownerWindow: Window) = delegate.showOpenDialog(ownerWindow)
+  def showOpenDialog(ownerWindow: Window): File = delegate.showOpenDialog(ownerWindow)
 
   /**
    * Shows a new file open dialog in which multiple files can be selected.
    */
-  def showOpenMultipleDialog(ownerWindow: Window) = delegate.showOpenMultipleDialog(ownerWindow)
+  def showOpenMultipleDialog(ownerWindow: Window): Seq[File] = delegate.showOpenMultipleDialog(ownerWindow)
 
   /**
    * Shows a new file save dialog.
    */
-  def showSaveDialog(ownerWindow: Window) = delegate.showSaveDialog(ownerWindow)
+  def showSaveDialog(ownerWindow: Window): File = delegate.showSaveDialog(ownerWindow)
+
 }
