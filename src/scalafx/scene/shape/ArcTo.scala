@@ -30,8 +30,8 @@ import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
-import scalafx.util.PositionDelegate
-import scalafx.util.SFXDelegate
+import scalafx.delegate.PositionDelegate
+import scalafx.delegate.SFXDelegate
 
 object ArcTo {
   implicit def sfxArcTo2jfx(v: ArcTo) = v.delegate

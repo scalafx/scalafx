@@ -24,12 +24,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
-
+import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 /** Wrapper for [[javafx.scene.shape.StrokeLineJoin]] */
 object StrokeLineJoin extends SFXEnumDelegateCompanion[jfxss.StrokeLineJoin, StrokeLineJoin] {

@@ -36,7 +36,7 @@ import scalafx.beans.property.BooleanProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.event.Event
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object TreeItem {
   implicit def sfxTreeItemTojfx[T](v: TreeItem[T]) = v.delegate

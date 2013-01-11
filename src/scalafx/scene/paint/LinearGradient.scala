@@ -30,7 +30,7 @@ import scala.collection.JavaConversions._
 
 import javafx.scene.{ paint => jfxsp }
 import scalafx.scene.paint.Stop.sfxStop2jfx
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object LinearGradient {
   implicit def sfxLinearGradient2jfx(lg: LinearGradient) = lg.delegate

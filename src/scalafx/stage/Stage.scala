@@ -33,7 +33,7 @@ import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.StringProperty
 import scalafx.scene.Scene
 import scalafx.stage.Window.sfxWindow2jfx
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.application.JFXApp
 
 object Stage {

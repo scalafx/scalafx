@@ -31,7 +31,7 @@ import javafx.{ stage => jfxs }
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.StringProperty
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object DirectoryChooser {
   implicit def sfxDirectoryChooser2jfx(dc: DirectoryChooser) = dc.delegate

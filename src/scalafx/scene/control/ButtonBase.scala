@@ -1,5 +1,3 @@
-package scalafx.scene.control
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,12 +24,13 @@ package scalafx.scene.control
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc, input => jfxsi }
 import javafx.{ event => jfxe }
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
-import scalafx.util.FireDelegate
+import scalafx.delegate.SFXDelegate
+import scalafx.delegate.FireDelegate
 import scalafx.scene.input.MouseEvent
 
 object ButtonBase {

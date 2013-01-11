@@ -32,7 +32,7 @@ import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.control.TableCell
 import scalafx.scene.control.TableColumn
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
 object ChoiceBoxTableCell {

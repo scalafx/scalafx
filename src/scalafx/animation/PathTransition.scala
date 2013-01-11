@@ -29,10 +29,10 @@ package scalafx.animation
 import javafx.{ animation => jfxa }
 import javafx.util.Duration
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.shape.Shape
-import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 object PathTransition extends AnimationStatics {
   implicit def sfxPathTransition2jfx(v: PathTransition) = v.delegate

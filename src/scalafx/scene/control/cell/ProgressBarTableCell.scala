@@ -29,7 +29,7 @@ import javafx.scene.control.{cell => jfxscc}
 import scalafx.Includes._
 import scalafx.scene.control.TableCell
 import scalafx.scene.control.TableColumn
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object ProgressBarTableCell {
     implicit def sfxProgressBarTableCell2jfx[S](cell: ProgressBarTableCell[S]) = cell.delegate

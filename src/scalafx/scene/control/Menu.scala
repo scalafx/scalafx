@@ -32,7 +32,7 @@ import javafx.scene.{ control => jfxsc }
 import javafx.{ event => jfxe }
 import scalafx.scene.Node._
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Menu {
   implicit def sfxMenu2jfx(cb: Menu) = cb.delegate

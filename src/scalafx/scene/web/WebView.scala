@@ -31,7 +31,7 @@ import javafx.scene.{ web => jfxsw }
 import javafx.{ geometry => jfxg }
 import javafx.{ util => jfxu }
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.Parent
 import scalafx.beans.property._
 import scalafx.scene.text.FontSmoothingType

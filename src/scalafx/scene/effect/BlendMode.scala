@@ -24,12 +24,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
-import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
-
+import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 /** Wrapper for [[scalafx.scene.effect.BlendMode]] */
 object BlendMode extends SFXEnumDelegateCompanion[jfxse.BlendMode, BlendMode] {

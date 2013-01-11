@@ -32,7 +32,7 @@ import javafx.{ concurrent => jfxc }
 import javafx.{ event => jfxe }
 import scalafx.Includes._
 import scalafx.event.EventHandlerDelegate
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Service {
   implicit def sfxService2jfx[T](s: Service[T]) = s.delegate

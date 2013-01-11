@@ -27,7 +27,7 @@
 package scalafx.stage
 
 import javafx.{ stage => jfxs }
-import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 object StageStyle
   extends SFXEnumDelegateCompanion[jfxs.StageStyle, StageStyle] {

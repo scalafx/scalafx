@@ -28,8 +28,8 @@ package scalafx.scene.shape
 
 import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import scalafx.util.PositionDelegate
-import scalafx.util.SFXDelegate
+import scalafx.delegate.PositionDelegate
+import scalafx.delegate.SFXDelegate
 
 object CubicCurveTo {
   implicit def sfxCubicCurveTo2jfx(v: CubicCurveTo) = v.delegate

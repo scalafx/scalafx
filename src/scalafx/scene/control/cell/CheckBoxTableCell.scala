@@ -35,7 +35,7 @@ import scalafx.beans.value.ObservableValue
 import scalafx.scene.control.cell.CheckBoxTableCell._
 import scalafx.scene.control.ListCell
 import scalafx.scene.control.ListView
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 import scalafx.scene.control.TableCell
 import scalafx.scene.control.TableColumn

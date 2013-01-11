@@ -24,16 +24,15 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.shape
 
 import scalafx.Includes._
 import javafx.scene.{ shape => jfxss }
 import scalafx.beans.property.DoubleProperty
 import scalafx.scene.paint._
-import scalafx.util.SFXDelegate
-import scalafx.util.PositionDelegate
-import scalafx.util.DimensionDelegate
+import scalafx.delegate.SFXDelegate
+import scalafx.delegate.PositionDelegate
+import scalafx.delegate.DimensionDelegate
 
 object Rectangle {
   implicit def sfxRectangle2jfx(v: Rectangle) = v.delegate

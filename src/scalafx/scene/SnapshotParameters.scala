@@ -31,7 +31,7 @@ import scalafx.Includes._
 import scalafx.geometry.Rectangle2D
 import scalafx.scene.paint.Paint
 import scalafx.scene.transform.Transform
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object SnapshotParameters {
   implicit def sfxSnapshotParameters2jfx(sp: SnapshotParameters) = sp.delegate

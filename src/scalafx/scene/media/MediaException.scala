@@ -30,8 +30,8 @@ import javafx.scene.{ media => jfxsm }
 import javafx.{ event => jfxe }
 import scalafx.Includes._
 import scalafx.util.Duration
-import scalafx.util.SFXDelegate
-import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.SFXDelegate
+import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 object MediaException {
   implicit def sfxMediaException2jfx(me: MediaException) = me.delegate

@@ -32,7 +32,7 @@ import javafx.{ util => jfxu }
 import scalafx.Includes._
 import scalafx.beans.property._
 import javafx.geometry.Rectangle2D
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import org.w3c.dom.Document
 
 object WebEngine {

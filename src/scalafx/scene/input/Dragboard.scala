@@ -24,13 +24,12 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.scene.input
 
 import scala.collection.JavaConversions._
 import scala.collection._
 import javafx.scene.{input => jfxsi}
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Dragboard {
   implicit def sfxDragboard2jfx(d: Dragboard) = d.delegate

@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
@@ -39,7 +38,7 @@ import scalafx.geometry.Side
 import scalafx.scene.paint.Paint
 import scalafx.scene.layout.Region
 import scalafx.scene.text.Font
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Axis {
   implicit def sfxAxis2jfx[T](v: Axis[T]) = v.delegate

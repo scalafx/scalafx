@@ -35,7 +35,7 @@ import scalafx.geometry.Insets._
 import scalafx.geometry.Insets
 import scalafx.scene.Node._
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.geometry.HPos

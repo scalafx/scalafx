@@ -24,50 +24,49 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc}
+import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
 object ValueAxis {
   implicit def sfxValueAxis2jfx[T <: Number](v: ValueAxis[T]) = v.delegate
 }
 
-abstract class ValueAxis[T <: Number](override val delegate:jfxsc.ValueAxis[T]) extends Axis[T](delegate) with SFXDelegate[jfxsc.ValueAxis[T]] {
+abstract class ValueAxis[T <: Number](override val delegate: jfxsc.ValueAxis[T]) extends Axis[T](delegate) with SFXDelegate[jfxsc.ValueAxis[T]] {
   def lowerBound = delegate.lowerBoundProperty
-  def lowerBound_= (v: Double) {
+  def lowerBound_=(v: Double) {
     lowerBound() = v
   }
 
   def minorTickCount = delegate.minorTickCountProperty
-  def minorTickCount_= (v: Int) {
+  def minorTickCount_=(v: Int) {
     minorTickCount() = v
   }
-  
+
   def minorTickLength = delegate.minorTickLengthProperty
-  def minorTickLength_= (v: Double) {
+  def minorTickLength_=(v: Double) {
     minorTickLength() = v
   }
 
   def minorTickVisible = delegate.minorTickVisibleProperty
-  def minorTickVisible_= (v: Boolean) {
+  def minorTickVisible_=(v: Boolean) {
     minorTickVisible() = v
   }
-  
+
   def scale = delegate.scaleProperty
-  
+
   def tickLabelFormatter = delegate.tickLabelFormatterProperty
-  def tickLabelFormatter_= (v: StringConverter[T]) {
+  def tickLabelFormatter_=(v: StringConverter[T]) {
     tickLabelFormatter() = v
   }
-  
+
   def upperBound = delegate.upperBoundProperty
-  def upperBound_= (v: Double) {
+  def upperBound_=(v: Double) {
     upperBound() = v
   }
-  
+
 }

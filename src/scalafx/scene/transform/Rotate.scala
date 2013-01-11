@@ -30,7 +30,7 @@ import javafx.scene.{ transform => jfxst }
 import scalafx.Includes._
 import scalafx.geometry.Point3D._
 import scalafx.geometry.Point3D
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Rotate {
   implicit def sfxRotate2jfx(v: Rotate) = v.delegate

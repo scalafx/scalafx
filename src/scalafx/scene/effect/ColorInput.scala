@@ -29,9 +29,9 @@ package scalafx.scene.effect
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
 import scalafx.scene.paint._
-import scalafx.util.SFXDelegate
-import scalafx.util.PositionDelegate
-import scalafx.util.DimensionDelegate
+import scalafx.delegate.SFXDelegate
+import scalafx.delegate.PositionDelegate
+import scalafx.delegate.DimensionDelegate
 
 object ColorInput {
   implicit def sfxColorInput2jfx(ci: ColorInput) = ci.delegate

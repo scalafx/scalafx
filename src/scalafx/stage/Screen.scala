@@ -31,7 +31,7 @@ import scalafx.Includes._
 import scalafx.geometry.Rectangle2D
 import scalafx.scene.Node._
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Screen {
   implicit def sfxScreen2jfx(v: Screen) = v.delegate

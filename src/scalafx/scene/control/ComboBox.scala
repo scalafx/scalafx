@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
 import scala.annotation.implicitNotFound
@@ -36,7 +35,7 @@ import scalafx.Includes._
 import scalafx.collections.ObservableBuffer._
 import scalafx.collections.ObservableBuffer
 import scalafx.util.StringConverter._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
 object ComboBox {
