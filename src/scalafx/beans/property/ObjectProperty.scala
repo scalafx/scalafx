@@ -26,7 +26,7 @@
  */
 package scalafx.beans.property
 
-import javafx.beans.{ property => jfxbp }
+import javafx.beans.{property => jfxbp}
 import scalafx.delegate.SFXDelegate
 
 object ObjectProperty {
@@ -34,11 +34,11 @@ object ObjectProperty {
 
   /**
    * Creates a new ObjectProperty instance using the SimpleObjectProperty as the target.
-   * 
+   *
    * @param value the initial value
    * @return      the observable instance
    */
-  implicit def apply[J <: AnyRef](value: J) = new ObjectProperty[J](new jfxbp.SimpleObjectProperty[J](value))
+ def apply[J <: AnyRef](value: J) = new ObjectProperty[J](new jfxbp.SimpleObjectProperty[J](value))
 }
 
 class ObjectProperty[J <: AnyRef](override val delegate: jfxbp.ObjectProperty[J] = new jfxbp.SimpleObjectProperty[J])
