@@ -34,7 +34,7 @@ import scalafx.collections.ObservableBuffer.observableBuffer2ObservableList
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.control.SingleSelectionModel.sfxSingleSelectionModel2jfx
 import scalafx.util.StringConverter.sfxStringConverter2jfx
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
 object ChoiceBox {

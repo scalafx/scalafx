@@ -33,7 +33,7 @@ import javafx.{ util => jfxu }
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.event.Event
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object ListView {
   implicit def sfxListView2jfx[T](l: ListView[T]) = l.delegate

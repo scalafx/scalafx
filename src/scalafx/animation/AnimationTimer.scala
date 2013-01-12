@@ -28,7 +28,7 @@ package scalafx.animation
 
 import javafx.{ animation => jfxa }
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object AnimationTimer {
   implicit def sfxAnimationTimer2jfx(at: AnimationTimer) = at.delegate

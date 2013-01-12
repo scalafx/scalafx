@@ -29,8 +29,8 @@ package scalafx.testutil
 import java.lang.reflect.Method
 import java.util.EnumSet
 import scala.collection.JavaConversions._
-import scalafx.util.SFXEnumDelegate
-import scalafx.util.SFXEnumDelegateCompanion
+import scalafx.delegate.SFXEnumDelegate
+import scalafx.delegate.SFXEnumDelegateCompanion
 
 
 /** Abstract class that facilitates testing of wrappers for Java enums.

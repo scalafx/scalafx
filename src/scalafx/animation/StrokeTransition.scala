@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
 import javafx.util.Duration
@@ -32,7 +31,7 @@ import javafx.{ animation => jfxa }
 import scalafx.Includes._
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Shape
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object StrokeTransition extends AnimationStatics {
   implicit def sfxStrokeTransition2jfx(v: StrokeTransition) = v.delegate

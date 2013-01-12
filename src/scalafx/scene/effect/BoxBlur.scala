@@ -29,8 +29,8 @@ package scalafx.scene.effect
 import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
 import scalafx.beans.property.IntegerProperty
-import scalafx.util.DimensionDelegate
-import scalafx.util.SFXDelegate
+import scalafx.delegate.DimensionDelegate
+import scalafx.delegate.SFXDelegate
 
 object BoxBlur {
   implicit def sfxBoxBlur2jfx(bb: BoxBlur) = bb.delegate

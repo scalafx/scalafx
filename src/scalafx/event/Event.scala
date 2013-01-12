@@ -24,11 +24,10 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.event
 
 import javafx.{ event => jfxe }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Event {
   implicit def sfxEvent2jfx(e: Event) = e.delegate
@@ -75,7 +74,7 @@ class Event(override val delegate: jfxe.Event) extends SFXDelegate[jfxe.Event] {
     this(new Event(source, target, eventType))
 
   /**
-   * Marks this Event as consumed.
+   * Marks this Event as consumed. This stops its further propagation.
    */
   def consume = delegate.consume
 

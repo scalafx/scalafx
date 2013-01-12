@@ -29,7 +29,7 @@ package scalafx.animation
 import javafx.{ animation => jfxa }
 import javafx.util.Duration
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import javafx.geometry.Point3D
 import scalafx.beans.property.DoubleProperty

@@ -24,14 +24,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.chart
 
 import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object XYChart {
   implicit def sfxXYChart2jfx[X, Y](v: XYChart[X, Y]) = v.delegate

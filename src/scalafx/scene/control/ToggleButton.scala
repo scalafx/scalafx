@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object ToggleButton {
   implicit def sfxToggleButton2jfx(v: ToggleButton) = v.delegate

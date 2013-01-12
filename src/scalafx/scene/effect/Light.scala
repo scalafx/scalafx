@@ -29,8 +29,8 @@ package scalafx.scene.effect
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
 import scalafx.scene.paint.Color
-import scalafx.util.PositionDelegate
-import scalafx.util.SFXDelegate
+import scalafx.delegate.PositionDelegate
+import scalafx.delegate.SFXDelegate
 
 object Light {
   implicit def sfxLight2jfx(l: Light) = l.delegate

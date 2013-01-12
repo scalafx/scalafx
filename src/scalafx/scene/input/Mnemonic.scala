@@ -24,14 +24,13 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.scene.input
 
 import javafx.scene.{ input => jfxsi }
 import scalafx.Includes._
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
-import scalafx.util.FireDelegate
+import scalafx.delegate.SFXDelegate
+import scalafx.delegate.FireDelegate
 
 object Mnemonic {
   implicit def sfxMnemonic2jfx(m: Mnemonic) = m.delegate

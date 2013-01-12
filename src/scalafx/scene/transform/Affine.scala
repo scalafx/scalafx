@@ -28,7 +28,7 @@ package scalafx.scene.transform
 
 import javafx.scene.{transform => jfxst}
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Affine {
   implicit def sfxAffine2jfx(v: Affine) = v.delegate

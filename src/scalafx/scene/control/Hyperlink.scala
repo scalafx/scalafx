@@ -29,7 +29,7 @@ package scalafx.scene.control
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Hyperlink {
   implicit def sfxHyperlink2jfx(h: Hyperlink) = h.delegate

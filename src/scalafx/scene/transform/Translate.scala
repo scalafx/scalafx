@@ -28,8 +28,8 @@ package scalafx.scene.transform
 
 import scalafx.Includes._
 import javafx.scene.{ transform => jfxst }
-import scalafx.util.SFXDelegate
-import scalafx.util.PositionDelegate
+import scalafx.delegate.SFXDelegate
+import scalafx.delegate.PositionDelegate
 
 object Translate {
   implicit def sfxTranslate2jfx(v: Translate) = v.delegate

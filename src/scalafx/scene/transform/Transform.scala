@@ -28,7 +28,7 @@ package scalafx.scene.transform
 
 import scalafx.Includes._
 import javafx.scene.{ transform => jfxst }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Transform {
 

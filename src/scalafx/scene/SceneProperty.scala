@@ -24,14 +24,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene
 
 import javafx.beans.{binding => jfxbb}
 import javafx.beans.{property => jfxbp}
 import javafx.{scene => jfxs}
 import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object SceneProperty {
   implicit def sfxSceneProperty2jfx(p: SceneProperty) = p.delegate

@@ -31,7 +31,7 @@ import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.DoubleProperty
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object ScrollBar {
   implicit def sfxScrollBar2jfx(sc: ScrollBar) = sc.delegate

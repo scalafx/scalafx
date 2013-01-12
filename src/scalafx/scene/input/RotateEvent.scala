@@ -25,8 +25,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 package scalafx.scene.input
+
 import javafx.scene.{ input => jfxsi }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object RotateEvent {
   implicit def sfxRotateEvent2jfx(re: RotateEvent) = re.delegate

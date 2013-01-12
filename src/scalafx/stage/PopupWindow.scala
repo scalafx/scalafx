@@ -33,7 +33,7 @@ import scalafx.Includes._
 import scalafx.scene.Node._
 import scalafx.scene.Node
 import scalafx.stage.Window._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object PopupWindow {
   implicit def sfxPopupWindow2jfx(v: PopupWindow) = v.delegate

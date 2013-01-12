@@ -44,8 +44,8 @@ import scalafx.scene.control.TableColumn.sfxTableColumn2jfx
 import scalafx.scene.control.TablePosition.sfxTablePosition2jfx
 import scalafx.scene.control.TableView.sfxTableView2jfx
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
-import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.SFXDelegate
+import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 import scalafx.collections.ObservableBuffer
 
 object TableColumn {

@@ -24,12 +24,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene
 
 import collection.JavaConversions._
 import javafx.{scene => jfxs}
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Parent {
   implicit def sfxParent2jfx(v: Parent) = v.delegate

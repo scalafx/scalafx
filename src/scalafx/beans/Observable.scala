@@ -24,11 +24,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.beans
 
 import javafx.{ beans => jfxb }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
 object Observable {

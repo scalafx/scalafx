@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.animation
 
 import javafx.util.Duration
@@ -33,7 +32,7 @@ import javafx.{ animation => jfxa }
 import scalafx.Includes._
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Shape
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object FillTransition extends AnimationStatics {
   implicit def sfxFillTransition2jfx(v: FillTransition) = v.delegate
@@ -75,15 +74,13 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
    */
   def this(duration: Duration, shape: Shape) =
     this(new jfxa.FillTransition(duration, shape))
-    
-      /**
+
+  /**
    * The constructor of FillTransition
    *
    * @param duration The duration of the FillTransition
    */
   def this(duration: Duration) = this(new jfxa.FillTransition(duration))
-
-
 
   /**
    * The target shape of this `FillTransition`.

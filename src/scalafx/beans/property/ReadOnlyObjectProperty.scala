@@ -24,12 +24,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
 import scalafx.beans.binding.ObjectExpression
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object ReadOnlyObjectProperty {
   implicit def sfxReadOnlyObjectProperty2jfx[T <: Object](roop: ReadOnlyObjectProperty[T]) = roop.delegate

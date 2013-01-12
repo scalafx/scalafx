@@ -31,7 +31,7 @@ import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.util.converter.StringConverterDelegate
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object NumberAxis {
   implicit def sfxNumberAxis2jfx(v: NumberAxis) = v.delegate

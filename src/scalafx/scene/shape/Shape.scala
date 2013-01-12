@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.shape
 
 import collection.JavaConversions._
@@ -36,7 +35,7 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.scene.Node
 import scalafx.scene.paint.Paint
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.collections.ObservableBuffer
 
 object Shape {

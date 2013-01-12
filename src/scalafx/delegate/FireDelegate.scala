@@ -24,49 +24,31 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.util
+package scalafx.delegate
 
-import javafx.beans.{ property => jfxbp }
-import scalafx.beans.property.DoubleProperty
-import scalafx.Includes._
-import DimensionDelegate._
+import FireDelegate._
+import java.lang.Object
 
-object DimensionDelegate {
+object FireDelegate {
 
   /**
-   * Types that contains `height` and `width` properties.
+   * Defines a Type that contains a fire() method that has no return (void)
    */
-  type Dimensioned = {
-    
-    def heightProperty(): jfxbp.DoubleProperty
-
-    def widthProperty(): jfxbp.DoubleProperty
+  type Fired = {
+    def fire(): Unit
   }
+
 }
 
 /**
- * Trait that unifies JavaFX classes that contains properties indicating height and width,
- * represented by heightProperty and widthProperty and their respectives getter and setters.
- *
- * @tparam J Original JavaFX type that contains `height` and `width` properties.
+ * Unify classes that contains a fire() method that has no return (void)
  */
-trait DimensionDelegate[J <: Object with Dimensioned]
+trait FireDelegate[J <: Object with Fired]
   extends SFXDelegate[J] {
 
   /**
-   * Indicates the height of object.
+   * Fires some kind of event.
    */
-  def height: DoubleProperty = delegate.heightProperty
-  def height_=(h: Double) {
-    height() = h
-  }
-
-  /**
-   * Indicates the width of object.
-   */
-  def width: DoubleProperty = delegate.widthProperty
-  def width_=(w: Double) {
-    width() = w
-  }
+  def fire = delegate.fire
 
 }

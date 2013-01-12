@@ -24,14 +24,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene
 
 import javafx.scene.{image => jfxsi}
 import javafx.{scene => jfxs}
 import scalafx.scene.image.Image._
 import scalafx.scene.image.Image
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object ImageCursor {
   implicit def sfxImageCursor2jfx(c: ImageCursor) = c.delegate

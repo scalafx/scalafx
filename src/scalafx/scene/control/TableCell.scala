@@ -27,7 +27,7 @@
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object TableCell {
   implicit def sfxTableCell2jfx[S, T](tc: TableCell[S, T]) = tc.delegate
