@@ -28,6 +28,7 @@ package scalafx.beans.binding
 
 import javafx.beans.{binding => jfxbb, value => jfxbv}
 import scalafx.beans.value.ObservableValue
+import scalafx.delegate.SFXDelegate
 
 object Bindings extends Bindings
 
@@ -56,6 +57,11 @@ trait Bindings {
     def then[T](thenExpression: ObservableValue[T, T]) = new ObjectConditionBuilder[T](whenBuilder.then(ObservableValue.sfxObservableValue2jfxObjectValue[T](thenExpression)))
     def then[T](thenExpression: jfxbv.ObservableObjectValue[T]) = new ObjectConditionBuilder[T](whenBuilder.then(thenExpression))
     def then[T](thenExpression: T) = new ObjectConditionBuilder[T](whenBuilder.then(thenExpression))
+    /** Create `ObjectConditionBuilder` with type of the delegate rather than wrapping SFX.
+      *
+      * This is addressing problems pointed in Issue 16 - inability to bind an expression to JFX property
+      * when `thenValue` is a SFX wrapper. */
+    def then[J <: Object](thenExpression: SFXDelegate[J]) = new ObjectConditionBuilder[J](whenBuilder.then(thenExpression.delegate))
   }
 
   protected class NumberConditionBuilder(whenBuilder: jfxbb.When#NumberConditionBuilder) {
@@ -82,5 +88,4 @@ trait Bindings {
     def otherwise(otherwiseExpression: jfxbv.ObservableObjectValue[T]) = whenBuilder.otherwise(otherwiseExpression)
     def otherwise(otherwiseExpression: T) = whenBuilder.otherwise(otherwiseExpression)
   }
-
 }

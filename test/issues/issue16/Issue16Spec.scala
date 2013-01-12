@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,37 +24,44 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.beans.property
 
-import javafx.beans.{ property => jfxbp }
-import scalafx.delegate.SFXDelegate
+package issues.issue16
 
-object DoubleProperty {
-  implicit def sfxDoubleProperty2jfx(dp: DoubleProperty) = dp.delegate
+import javafx.beans.{property => jfxbp}
+import javafx.scene.{paint => jfxsp}
+import org.scalatest.FlatSpec
+import scalafx.Includes._
+import scalafx.beans.property.{ReadOnlyBooleanProperty, ObjectProperty}
+import scalafx.scene.paint.Color
 
-  /**
-   * Creates a new DoubleProperty instance using the SimpleDoubleProperty as the target.
-   * 
-   * @param value the initial value
-   * @return      the observable instance
-   */
-  def apply(value: Double) = new DoubleProperty(new jfxbp.SimpleDoubleProperty(value))
-}
+/**
+ * Verify that code causing Issue 16 behaves correctly after fix.
+ */
+class Issue16Spec extends FlatSpec {
 
-class DoubleProperty(override val delegate: jfxbp.DoubleProperty = new jfxbp.SimpleDoubleProperty)
-  extends ReadOnlyDoubleProperty(delegate)
-  with Property[Double, Number]
-  with SFXDelegate[jfxbp.DoubleProperty] {
+  "Issue 16 - binding" should "respond to changes in `when` condition" in {
 
-  def this(bean: Object, name: String) = this(new jfxbp.SimpleDoubleProperty(bean, name))
+    // Recreate situation in Issue 16 using properties of the same types.
+    val hoverWrapper = new jfxbp.ReadOnlyBooleanWrapper(true)
+    val hover: ReadOnlyBooleanProperty = hoverWrapper.getReadOnlyProperty
+    val fill: ObjectProperty[jfxsp.Color] = ObjectProperty(jfxsp.Color.BLUE)
 
-  def this(bean: Object, name: String, initialValue: Double) = 
-    this(new jfxbp.SimpleDoubleProperty(bean, name, initialValue))
+    // Before binding is created `fill` should have its original value
+    assert(Color.BLUE === fill())
+    assert(true === hover())
 
-  def value_=(v: Double) {
-    delegate.set(v)
-  }
-  def value_=(v: Number) {
-    delegate.set(v.doubleValue)
+    // The problem reported in Issue 16 was that `fill` did not respond to changes in `hover`.
+
+    fill <== when(hover) then Color.GREEN otherwise Color.RED
+    assert(true === hover())
+    assert(Color.GREEN === fill())
+
+    hoverWrapper.set(false)
+    assert(false === hover())
+    assert(Color.RED === fill())
+
+    hoverWrapper.set(true)
+    assert(true === hover())
+    assert(Color.GREEN === fill())
   }
 }
