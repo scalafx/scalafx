@@ -33,7 +33,7 @@ import javafx.{ stage => jfxs }
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.StringProperty
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object FileChooser {
   implicit def sfxFileChooser2jfx(fc: FileChooser) = fc.delegate

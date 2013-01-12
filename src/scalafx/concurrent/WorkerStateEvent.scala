@@ -29,7 +29,7 @@ package scalafx.concurrent
 import javafx.{ concurrent => jfxc }
 import scalafx.event.Event
 import scalafx.event.EventType
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object WorkerStateEvent {
   implicit def sfxWorkerStateEvent2jfx(w: WorkerStateEvent) = w.delegate

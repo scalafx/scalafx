@@ -24,12 +24,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
-
+import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 /** Wrapper for [[scalafx.scene.control.OverrunStyle]] */
 object OverrunStyle extends SFXEnumDelegateCompanion[jfxsc.OverrunStyle, OverrunStyle] {
@@ -46,6 +44,5 @@ object OverrunStyle extends SFXEnumDelegateCompanion[jfxsc.OverrunStyle, Overrun
     CLIP, ELLIPSIS, WORD_ELLIPSIS, CENTER_ELLIPSIS, CENTER_WORD_ELLIPSIS, LEADING_ELLIPSIS, LEADING_WORD_ELLIPSIS
   )
 }
-
 
 sealed case class OverrunStyle(override val delegate: jfxsc.OverrunStyle) extends SFXEnumDelegate[jfxsc.OverrunStyle]

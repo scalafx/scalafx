@@ -32,7 +32,7 @@ import org.scalatest.FlatSpec
 
 import scalafx.Includes.jfxDoubleProperty2sfx
 import scalafx.beans.property.DoubleProperty
-import scalafx.util.PositionDelegate
+import scalafx.delegate.PositionDelegate
 
 /**
  * Trait to test PositionDelegate subclasses

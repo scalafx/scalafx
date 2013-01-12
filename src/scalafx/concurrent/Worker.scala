@@ -29,8 +29,8 @@ package scalafx.concurrent
 import javafx.{ concurrent => jfxc }
 import scalafx.Includes._
 import scalafx.beans.property._
-import scalafx.util.SFXDelegate
-import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.SFXDelegate
+import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 object Worker {
   implicit def sfxWorker2jfx[T](w: Worker[T]) = w.delegate

@@ -29,7 +29,7 @@ package scalafx.scene.input
 import javafx.{ event => jfxe }
 import javafx.scene.{ input => jfxsi }
 import scalafx.event.EventType
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object GestureEvent {
   implicit def sfxGestureEvent2jfx(ge: GestureEvent) = ge.delegate

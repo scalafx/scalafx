@@ -33,7 +33,7 @@ import java.nio.IntBuffer
 import javafx.scene.{image => jfxsi}
 import scalafx.Includes._
 import scalafx.scene.paint.Color
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object PixelReader {
   implicit def sfxPixelReader2jfx(pr: PixelReader) = pr.delegate

@@ -43,6 +43,7 @@ import scene.SceneIncludes
 import stage.StageIncludes
 import util.converter.ConverterIncludes
 import util.UtilIncludes
+import scalafx.delegate.DelegateIncludes
 
 /**
  * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
@@ -54,7 +55,8 @@ import util.UtilIncludes
 object Includes extends Includes
 
 trait Includes
-  extends AnimationIncludes 
+  extends AnimationIncludes
+  with DelegateIncludes
   with CollectionIncludes 
   with EventIncludes 
   with SceneIncludes 

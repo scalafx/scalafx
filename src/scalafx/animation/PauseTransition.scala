@@ -29,7 +29,7 @@ package scalafx.animation
 import javafx.{ animation => jfxa }
 import javafx.util.Duration
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object PauseTransition extends AnimationStatics {
   implicit def sfxPauseTransition2jfx(v: PauseTransition) = v.delegate

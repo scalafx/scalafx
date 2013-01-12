@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Skinnable {
   implicit def sfxSkinnable2jfx(s: Skinnable) = s.delegate

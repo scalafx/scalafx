@@ -31,7 +31,7 @@ import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Pagination {
   implicit def sfxPagination2jfx(p: Pagination) = p.delegate

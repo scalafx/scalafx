@@ -30,7 +30,7 @@ import javafx.{ util => jfxu }
 import scalafx.Includes._
 import scalafx.scene.control.TableCell
 import scalafx.scene.control.TableView
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 import javafx.scene.control.TableColumn
 

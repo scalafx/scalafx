@@ -30,7 +30,7 @@ import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.scene.paint.Color
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object PerspectiveTransform {
   implicit def sfxPerspectiveTransform2jfx(pt: PerspectiveTransform) = pt.delegate

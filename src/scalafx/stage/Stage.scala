@@ -33,7 +33,7 @@ import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.StringProperty
 import scalafx.scene.Scene
 import scalafx.stage.Window.sfxWindow2jfx
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.application.JFXApp
 
 object Stage {
@@ -177,6 +177,13 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
    */
   def initStyle(style: StageStyle) {
     delegate.initStyle(style)
+  }
+
+  /**
+   * Attempts to show this Window by setting visibility to true.
+   */
+  def show {
+    delegate.show
   }
 
   /**

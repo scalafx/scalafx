@@ -24,11 +24,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.paint
 
 import javafx.scene.{ paint => jfxsp }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Color {
   implicit def sfxColor2jfx(c: Color) = c.delegate

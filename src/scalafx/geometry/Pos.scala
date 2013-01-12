@@ -29,8 +29,7 @@ package scalafx.geometry
 import javafx.{geometry => jfxg}
 import scalafx.geometry.GeometryIncludes.jfxHPos2sfx
 import scalafx.geometry.GeometryIncludes.jfxVPos2sfx
-import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
-
+import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 /** Wrapper for [[javafx.geometry.Pos]] */
 object Pos
@@ -56,7 +55,6 @@ object Pos
     BASELINE_LEFT, BASELINE_CENTER, BASELINE_RIGHT
   )
 }
-
 
 sealed case class Pos(override val delegate: jfxg.Pos)
   extends SFXEnumDelegate[jfxg.Pos] {
