@@ -180,6 +180,13 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
   }
 
   /**
+   * Attempts to show this Window by setting visibility to true.
+   */
+  def show {
+    delegate.show
+  }
+
+  /**
    * Send the Window to the background.
    */
   def toBack {
