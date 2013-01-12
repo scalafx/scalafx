@@ -30,7 +30,7 @@ import javafx.scene.{ web => jfxsw }
 import javafx.{ event => jfxe }
 import scalafx.event.Event
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object WebEvent {
   implicit def sfxWebEvent2jfx[T](we: WebEvent[T]) = we.delegate

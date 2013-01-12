@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.layout
 
 import javafx.{geometry => jfxg}
@@ -34,7 +33,7 @@ import scalafx.geometry.Insets._
 import scalafx.geometry.Insets
 import scalafx.scene.Node._
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object BorderPane {
   implicit def sfxBorderPane2jfx(v: BorderPane) = v.delegate

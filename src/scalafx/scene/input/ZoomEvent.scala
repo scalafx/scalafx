@@ -27,7 +27,7 @@
 package scalafx.scene.input
 
 import javafx.scene.{ input => jfxsi }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object ZoomEvent {
   implicit def sfxZoomEvent2jfx(ze: ZoomEvent) = ze.delegate

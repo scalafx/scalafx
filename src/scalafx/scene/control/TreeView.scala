@@ -31,7 +31,7 @@ import javafx.{event => jfxe}
 import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.event.Event
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object TreeView {
   implicit def sfxTreeView2jfx[T](v: TreeView[T]) = v.delegate

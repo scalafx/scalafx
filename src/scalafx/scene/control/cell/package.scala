@@ -34,7 +34,7 @@ import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 import scalafx.beans.value.ObservableValue
 

@@ -24,17 +24,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.stage
 
-import javafx.{ event => jfxe }
 import javafx.{ stage => jfxs }
-import javafx.{ geometry => jfxg }
 import scalafx.Includes._
+import scalafx.geometry.Rectangle2D
 import scalafx.scene.Node._
 import scalafx.scene.Node
-import scalafx.stage.Window._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Screen {
   implicit def sfxScreen2jfx(v: Screen) = v.delegate
@@ -42,43 +39,42 @@ object Screen {
   /**
    * The primary Screen.
    */
-  def primary = jfxs.Screen.getPrimary
-  
+  def primary: Screen = jfxs.Screen.getPrimary
+
   /**
    * The observable list of currently available Screens
    */
   def screens = jfxs.Screen.getScreens
-  
-  /**
-   * Returns a ObservableList of Screens that intersects the provided rectangle.
-   */
-  def screensForRectangle(x: Double, y: Double, width: Double, height: Double) = jfxs.Screen.getScreensForRectangle(x, y, width, height)
-  
-  /**
-   * Returns a ObservableList of Screens that intersects the provided rectangle.
-   */
-  def screensForRectangle(r: jfxg.Rectangle2D) = jfxs.Screen.getScreensForRectangle(r)
 
-  
+  /**
+   * Returns a ObservableList of Screens that intersects the provided rectangle.
+   */
+  def screensForRectangle(x: Double, y: Double, width: Double, height: Double) = 
+    jfxs.Screen.getScreensForRectangle(x, y, width, height)
+
+  /**
+   * Returns a ObservableList of Screens that intersects the provided rectangle.
+   */
+  def screensForRectangle(r: Rectangle2D) = jfxs.Screen.getScreensForRectangle(r)
+
 }
 
-class Screen(override val delegate: jfxs.Screen = new jfxs.Screen) extends SFXDelegate[jfxs.Screen] {
+class Screen(override val delegate: jfxs.Screen = new jfxs.Screen)
+  extends SFXDelegate[jfxs.Screen] {
 
   /**
    * Gets the bounds of this Screen.
-   * TODO: Implements Rectangle2D for ScalaFX
    */
-  def bounds = delegate.getBounds
+  def bounds: Rectangle2D = delegate.getBounds
 
   /**
    * Gets the resolution (dots per inch) of this Screen.
    */
   def dpi = delegate.getDpi
-  
+
   /**
    * Gets the visual bounds of this Screen.
    */
-  def visualBounds = delegate.getVisualBounds
-  
-  
+  def visualBounds: Rectangle2D = delegate.getVisualBounds
+
 }

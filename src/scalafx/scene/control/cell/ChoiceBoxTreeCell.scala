@@ -33,7 +33,7 @@ import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.control.TreeCell
 import scalafx.scene.control.TreeView
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
 object ChoiceBoxTreeCell {

@@ -24,14 +24,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene
 
 import collection.JavaConversions._
 import javafx.{event => jfxe, scene => jfxs}
 import jfxs.{input => jfxsi, paint => jfxsp, layout => jfxsl}
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Scene {
   implicit def sfxScene2jfx(v: Scene) = v.delegate

@@ -42,7 +42,7 @@ import java.{ util => ju }
 import javafx.{ collections => jfxc }
 import scalafx.beans.Observable
 import scalafx.event.subscriptions.Subscription
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 /**
  * Companion Object for [[ObservableBuffer]].

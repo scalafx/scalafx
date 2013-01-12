@@ -24,20 +24,30 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.util
+package scalafx.delegate
 
-
-/** Base trait for JavaFX `enum` wrappers.
+/** Base trait for all Companion objects [[scalafx.util.SFXEnumDelegate]] subclasses. It mirrors static methods for
+  * [[http://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html]]
   *
   * @tparam E Original JavaFX `enum`
+  * @tparam S [[scalafx.util.SFXEnumDelegate]] that wrappers `E`
   */
-trait SFXEnumDelegate[E <: java.lang.Enum[E]]
-  extends SFXDelegate[E] {
+trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] {
+  /** Converts a SFXEnumDelegate to its respective JavaFX Enum */
+  implicit def sfxEnum2jfx(s: S): E = s.delegate
 
-  /** Return the same string value as `delegate`.
-    *
-    * This is important since we want to be able to look it up using enums `valueOf` method.
-    * Default `toString` provided by the `SFXDelegate` prepends "[SFX]"
-    */
-  override def toString = delegate.toString
+  /** Converts a JavaFX Enum to its respective SFXEnumDelegate */
+  def jfxEnum2sfx(e: E): S = values.find(_.delegate == e).get
+
+  /** Contain constants which will be source for `values` List  */
+  protected def unsortedValues: Array[S]
+
+  /** Returns a List containing the constants of this `enum` type, in the order they are declared. */
+  lazy val values: List[S] = unsortedValues.sortWith(_.delegate.ordinal < _.delegate.ordinal).toList
+
+  /** Returns the `enum` constant of this type with the specified name. */
+  def apply(name: String) = values.find(_.name == name) match {
+    case Some(e) => e
+    case None    => throw new IllegalArgumentException("No enum constant %s.%s".format(values.head.getClass.getName, name))
+  }
 }

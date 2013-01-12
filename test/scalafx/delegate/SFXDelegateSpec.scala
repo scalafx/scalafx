@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,30 +24,34 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.util
+package scalafx.delegate
 
-/** Base trait for all Companion objects [[scalafx.util.SFXEnumDelegate]] subclasses. It mirrors static methods for
-  * [[http://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html]]
-  *
-  * @tparam E Original JavaFX `enum`
-  * @tparam S [[scalafx.util.SFXEnumDelegate]] that wrappers `E`
-  */
-trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] {
-  /** Converts a SFXEnumDelegate to its respective JavaFX Enum */
-  implicit def sfxEnum2jfx(s: S): E = s.delegate
+import org.scalatest.FlatSpec
+import org.scalatest.matchers.ShouldMatchers._
+import scalafx.beans.property.DoubleProperty
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-  /** Converts a JavaFX Enum to its respective SFXEnumDelegate */
-  def jfxEnum2sfx(e: E): S = values.find(_.delegate == e).get
+@RunWith(classOf[JUnitRunner])
+class SFXDelegateSpec extends FlatSpec {
+  val doubleProperty = new DoubleProperty(null, "double property")
+  val doublePropertyWithSameName = new DoubleProperty(null, "double property")
+  val doublePropertyWithDifferentName = new DoubleProperty(null, "double property (with different name)")
 
-  /** Contain constants which will be source for `values` List  */
-  protected def unsortedValues: Array[S]
+  "SFXDelegate" should "delegate toString" in {
+    doubleProperty.toString should be("[SFX]DoubleProperty [name: double property, value: 0.0]")
+  }
 
-  /** Returns a List containing the constants of this `enum` type, in the order they are declared. */
-  lazy val values: List[S] = unsortedValues.sortWith(_.delegate.ordinal < _.delegate.ordinal).toList
+  it should "delegate equals" in {
+    doubleProperty should equal(doublePropertyWithSameName)
+    doubleProperty should not(equal(doublePropertyWithDifferentName))
+  }
 
-  /** Returns the `enum` constant of this type with the specified name. */
-  def apply(name: String) = values.find(_.name == name) match {
-    case Some(e) => e
-    case None    => throw new IllegalArgumentException("No enum constant %s.%s".format(values.head.getClass.getName, name))
+  it should "delegate hashCode" in {
+    doubleProperty.hashCode should equal(2073312533)
+  }
+
+  it should "have a public delegate property" in {
+    doubleProperty.delegate should not(be(null))
   }
 }

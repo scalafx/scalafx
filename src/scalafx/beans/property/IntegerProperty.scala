@@ -27,7 +27,7 @@
 package scalafx.beans.property
 
 import javafx.beans.{ property => jfxbp }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object IntegerProperty {
   implicit def sfxIntegerProperty2jfx(ip: IntegerProperty) = ip.delegate

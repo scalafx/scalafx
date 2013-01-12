@@ -29,11 +29,10 @@ package scalafx.scene.image
 import java.nio.Buffer
 import java.nio.ByteBuffer
 import java.nio.IntBuffer
-
 import javafx.scene.{ image => jfxsi }
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
-import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.SFXDelegate
+import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 object PixelFormat {
   implicit def sfxPixelFormat2jfx[B <: Buffer](pf: PixelFormat[B]) = pf.delegate

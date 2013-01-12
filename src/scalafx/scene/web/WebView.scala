@@ -29,21 +29,26 @@ package scalafx.scene.web
 import javafx.{ event => jfxe }
 import javafx.scene.{ web => jfxsw }
 import javafx.{ geometry => jfxg }
+import javafx.{ util => jfxu }
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.Parent
-import javafx.scene.text.FontSmoothingType
+import scalafx.beans.property._
+import scalafx.scene.text.FontSmoothingType
+import javafx.util.Callback
 
 object WebView {
   implicit def sfxWebView2jfx(wv: WebView) = wv.delegate
 }
 
-class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends Parent(delegate) with SFXDelegate[jfxsw.WebView] {
+class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
+  extends Parent(delegate)
+  with SFXDelegate[jfxsw.WebView] {
 
   /**
    * Scale factor applied to font.
    */
-  def fontScale = delegate.fontScaleProperty
+  def fontScale: DoubleProperty = delegate.fontScaleProperty
   def fontScale_=(v: Double) {
     fontScale() = v
   }
@@ -56,7 +61,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
   /**
    * Maximum height property.
    */
-  def maxHeight = delegate.maxHeightProperty
+  def maxHeight: DoubleProperty = delegate.maxHeightProperty
   def maxHeight_=(v: Double) {
     maxHeight() = v
   }
@@ -64,7 +69,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
   /**
    * Maximum width property.
    */
-  def maxWidth = delegate.maxWidthProperty
+  def maxWidth: DoubleProperty = delegate.maxWidthProperty
   def maxWidth_=(v: Double) {
     maxWidth() = v
   }
@@ -72,7 +77,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
   /**
    * Minimum height property.
    */
-  def minHeight = delegate.minHeightProperty
+  def minHeight: DoubleProperty = delegate.minHeightProperty
   def minHeight_=(v: Double) {
     minHeight() = v
   }
@@ -80,7 +85,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
   /**
    * Minimum width property.
    */
-  def minWidth = delegate.minWidthProperty
+  def minWidth: DoubleProperty = delegate.minWidthProperty
   def minWidth_=(v: Double) {
     minWidth() = v
   }
@@ -88,7 +93,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
   /**
    * Preferred height property.
    */
-  def prefHeight = delegate.prefHeightProperty
+  def prefHeight: DoubleProperty = delegate.prefHeightProperty
   def prefHeight_=(v: Double) {
     prefHeight() = v
   }
@@ -96,7 +101,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
   /**
    * Preferred width property.
    */
-  def prefWidth = delegate.prefWidthProperty
+  def prefWidth: DoubleProperty = delegate.prefWidthProperty
   def prefWidth_=(v: Double) {
     prefWidth() = v
   }
@@ -104,7 +109,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
   /**
    * Width of this WebView.
    */
-  def width = delegate.widthProperty
+  def width: ReadOnlyDoubleProperty = delegate.widthProperty
 
   // Indirect WebEngine methods / properties.
 
@@ -129,7 +134,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
   /**
    * URL of the current Web page.
    */
-  def location = delegate.engine.location
+  def location: ReadOnlyStringProperty = delegate.engine.location
 
   /**
    * JavaScript alert handler property.
@@ -167,7 +172,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
    * JavaScript prompt handler property.
    */
   def promptHandler = delegate.engine.promptHandler
-  def promptHandler_=(f: jfxsw.PromptData => String) {
+  def promptHandler_=(f: PromptData => String) {
     delegate.engine.promptHandler = f
   }
 
@@ -175,8 +180,8 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
    * Specifies whether context menu is enabled.
    * @since 2.2
    */
-  def contextMenuEnabled = delegate.contextMenuEnabledProperty()
-  def contextMenuEnabled_= ( v: Boolean) {
+  def contextMenuEnabled: BooleanProperty = delegate.contextMenuEnabledProperty
+  def contextMenuEnabled_=(v: Boolean) {
     contextMenuEnabled() = v
   }
 
@@ -186,8 +191,8 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView) extends 
    * such as various compositing modes, where effects are applied and very large glyphs.
    * @since 2.2
    */
-  def fontSmoothingType = delegate.fontSmoothingTypeProperty()
-  def fontSmoothingType_= ( v: FontSmoothingType) {
+  def fontSmoothingType = delegate.fontSmoothingTypeProperty
+  def fontSmoothingType_=(v: FontSmoothingType) {
     fontSmoothingType() = v
   }
 }

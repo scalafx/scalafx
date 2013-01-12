@@ -28,7 +28,7 @@ package scalafx.scene.media
 
 import javafx.scene.{ media => jfxsm }
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object AudioClip {
   implicit def sfxAudioClip2jfx(ac: AudioClip) = ac.delegate

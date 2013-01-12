@@ -24,24 +24,40 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.stage
 
-import javafx.{stage => jfxs}
-import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+import javafx.{ stage => jfxs }
+import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
+object StageStyle
+  extends SFXEnumDelegateCompanion[jfxs.StageStyle, StageStyle] {
 
-/** Wrapper for [[javafx.stage.StageStyle]] */
-object StageStyle extends SFXEnumDelegateCompanion[jfxs.StageStyle, StageStyle] {
-
+  /**
+   * Defines a normal Stage style with a solid white background and platform decorations.
+   */
   val DECORATED = new StageStyle(jfxs.StageStyle.DECORATED)
+
+  /**
+   * Defines a Stage style with a solid white background and no decorations.
+   */
   val UNDECORATED = new StageStyle(jfxs.StageStyle.UNDECORATED)
+
+  /**
+   * Defines a Stage style with a transparent background and no decorations.
+   */
   val TRANSPARENT = new StageStyle(jfxs.StageStyle.TRANSPARENT)
+
+  /**
+   * Defines a Stage style with a solid white background and minimal platform decorations used for a utility window.
+   */
   val UTILITY = new StageStyle(jfxs.StageStyle.UTILITY)
 
   protected override def unsortedValues: Array[StageStyle] = Array(DECORATED, UNDECORATED, TRANSPARENT, UTILITY)
+
 }
 
-
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/stage/StageStyle.html]]
+ */
 sealed case class StageStyle(override val delegate: jfxs.StageStyle)
   extends SFXEnumDelegate[jfxs.StageStyle]

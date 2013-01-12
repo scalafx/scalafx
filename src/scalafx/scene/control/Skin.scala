@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes.jfxObjectProperty2sfx
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.Includes._
 import scalafx.scene.Node
 

@@ -29,8 +29,8 @@ package scalafx.scene.input
 import javafx.scene.{ input => jfxsi }
 import javafx.{ event => jfxe }
 import scalafx.event.Event
-import scalafx.util.SFXDelegate
-import scalafx.util.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.SFXDelegate
+import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 object KeyCombination {
 

@@ -28,7 +28,7 @@ package scalafx.util
 
 import javafx.beans.{ property => jfxbp }
 import javafx.{ util => jfxu }
-import scalafx.beans.property.{ReadOnlyObjectWrapper, ObjectProperty}
+import scalafx.delegate.SFXDelegate
 import scalafx.util.Duration.DurationHelper
 
 object UtilIncludes extends UtilIncludes
@@ -62,29 +62,5 @@ trait UtilIncludes {
     def fromString(string: String): T = c.fromString(string)
     def toString(t: T): String = c.toString(t)
   }
-  /**
-     * Converts a Scala's [[scalafx.beans.property.ObjectProperty]] that wraps a
-     * [[SFXDelegate]] to a Java's [[javafx.beans.property.ObjectProperty]].
-     *
-     *  @tparam D Type wrapped by SFXDelegate
-     *  @tparam S A SFXDelegate subtype that wraps D.
-     *  @param obj ObjectProperty that a wraps Scala's SFXDelegate
-     *  @return A new Java's ObjectProperty
-     */
-    implicit def sfxObjectPropertyWithSFXDelegate2jfxObjectProperty[D <: Object, S <: SFXDelegate[D]](obj: ObjectProperty[S]): jfxbp.ObjectProperty[D] =
-      new jfxbp.SimpleObjectProperty[D](obj.get.delegate)
-
-  /**
-   * Converts a Scala's [[scalafx.beans.property.ReadOnlyObjectWrapper]] that wraps a
-   * [[SFXDelegate]] to a Java's [[javafx.beans.property.ReadOnlyObjectWrapper]].
-   *
-   *  @tparam D Type wrapped by SFXDelegate
-   *  @tparam S A SFXDelegate subtype that wraps D.
-   *  @param obj ObjectProperty that a wraps Scala's SFXDelegate
-   *  @return A new Java's ObjectProperty
-   */
-  implicit def sfxReadOnlyObjectWrapperWithSFXDelegate2jfxReadOnlyObjectWrapper[D <: Object, S <: SFXDelegate[D]](obj: ReadOnlyObjectWrapper[S]): jfxbp.ReadOnlyObjectWrapper[D] =
-    new jfxbp.ReadOnlyObjectWrapper[D](obj.get.delegate)
-
 
 }

@@ -29,7 +29,7 @@ package scalafx.testutil
 import org.scalatest.FlatSpec
 import org.scalatest.matchers.ShouldMatchers._
 
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 /**
  * Base class for SFXDelegate controls Spec tests. This specific class tests if implicit conversion are working and if

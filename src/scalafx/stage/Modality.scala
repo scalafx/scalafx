@@ -24,23 +24,35 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.stage
 
-import javafx.{stage => jfxs}
-import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
-
+import javafx.{ stage => jfxs }
+import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 /** Wrapper for [[javafx.stage.Modality]] */
-object Modality extends SFXEnumDelegateCompanion[jfxs.Modality, Modality] {
+object Modality
+  extends SFXEnumDelegateCompanion[jfxs.Modality, Modality] {
 
+  /**
+   * Defines a top-level window that is not modal and does not block any other window.
+   */
   val NONE = new Modality(jfxs.Modality.NONE)
+
+  /**
+   * Defines a modal window that block events from being delivered to its entire owner window hierarchy.
+   */
   val WINDOW_MODAL = new Modality(jfxs.Modality.WINDOW_MODAL)
+
+  /**
+   * Defines a modal window that blocks events from being delivered to any other application window.
+   */
   val APPLICATION_MODAL = new Modality(jfxs.Modality.APPLICATION_MODAL)
 
   protected override def unsortedValues: Array[Modality] = Array(NONE, WINDOW_MODAL, APPLICATION_MODAL)
 }
 
-
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/stage/Modality.html]].
+ */
 sealed case class Modality(override val delegate: jfxs.Modality)
   extends SFXEnumDelegate[jfxs.Modality]

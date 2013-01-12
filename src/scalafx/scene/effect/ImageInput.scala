@@ -24,15 +24,14 @@
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 package scalafx.scene.effect
 
 import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
 import javafx.scene.{ image => jfxsi }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.image.Image
-import scalafx.util.PositionDelegate
+import scalafx.delegate.PositionDelegate
 
 object ImageInput {
   implicit def sfxImageInput2jfx(ii: ImageInput) = ii.delegate

@@ -24,12 +24,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
-import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
-
+import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 /** Wrapper for [[javafx.scene.input.TransferMode]] */
 object TransferMode extends SFXEnumDelegateCompanion[jfxsi.TransferMode, TransferMode] {

@@ -30,10 +30,10 @@ import javafx.scene.{ media => jfxsm }
 import javafx.{ event => jfxe }
 import scalafx.Includes._
 import scalafx.util.Duration
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.geometry.Rectangle2D
-import scalafx.util.PositionDelegate
+import scalafx.delegate.PositionDelegate
 
 object MediaView {
   implicit def sfxMediaView2jfx(mv: MediaView) = mv.delegate

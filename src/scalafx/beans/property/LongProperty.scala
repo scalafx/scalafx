@@ -27,7 +27,7 @@
 package scalafx.beans.property
 
 import javafx.beans.{ property => jfxbp }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object LongProperty {
   implicit def sfxLongProperty2jfx(lp: LongProperty) = lp.delegate

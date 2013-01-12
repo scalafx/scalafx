@@ -27,7 +27,7 @@
 package scalafx.scene.input
 
 import javafx.scene.{ input => jfxsi }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object SwipeEvent {
   implicit def sfxSwipeEvent2jfx(se: SwipeEvent) = se.delegate

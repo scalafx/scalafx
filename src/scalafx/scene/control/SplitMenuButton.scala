@@ -24,12 +24,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import scalafx.util.SFXDelegate
-
+import scalafx.delegate.SFXDelegate
 
 object SplitMenuButton {
   implicit def sfxSplitMenuButton2jfx(smb: SplitMenuButton) = smb.delegate

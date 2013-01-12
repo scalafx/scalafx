@@ -1,7 +1,5 @@
-package scalafx.util
-
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,18 +24,19 @@ package scalafx.util
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.delegate
 
-trait SFXDelegate[+D <: Object] extends AnyRef {
-  def delegate: D
+/** Base trait for JavaFX `enum` wrappers.
+  *
+  * @tparam E Original JavaFX `enum`
+  */
+trait SFXEnumDelegate[E <: java.lang.Enum[E]]
+  extends SFXDelegate[E] {
 
-  override def toString = "[SFX]" + delegate.toString
-
-  override def equals(ref: Any): Boolean = {
-    ref match {
-      case sfxd: SFXDelegate[_] => delegate.equals(sfxd.delegate)
-      case _ => delegate.equals(ref)
-    }
-  }
-
-  override def hashCode = delegate.hashCode
+  /** Return the same string value as `delegate`.
+    *
+    * This is important since we want to be able to look it up using enums `valueOf` method.
+    * Default `toString` provided by the `SFXDelegate` prepends "[SFX]"
+    */
+  override def toString = delegate.toString
 }

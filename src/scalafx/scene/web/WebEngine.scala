@@ -30,8 +30,10 @@ import javafx.{ event => jfxe }
 import javafx.scene.{ web => jfxsw }
 import javafx.{ util => jfxu }
 import scalafx.Includes._
+import scalafx.beans.property._
 import javafx.geometry.Rectangle2D
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
+import org.w3c.dom.Document
 
 object WebEngine {
   implicit def sfxWebEngine2jfx(we: WebEngine) = we.delegate
@@ -67,12 +69,12 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) ex
   /**
    * Document object for the current Web page.
    */
-  def document = delegate.getDocument
+  def document: Document = delegate.getDocument
 
   /**
    * URL of the current Web page.
    */
-  def location = delegate.getLocation
+  def location: ReadOnlyStringProperty = delegate.locationProperty
 
   /**
    * JavaScript alert handler property.
@@ -110,7 +112,7 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) ex
    * JavaScript prompt handler property.
    */
   def promptHandler = delegate.promptHandlerProperty
-  def promptHandler_=(f: jfxsw.PromptData => String) {
+  def promptHandler_=(f: PromptData => String) {
     promptHandler() = new jfxu.Callback[jfxsw.PromptData, String] {
       def call(pd: jfxsw.PromptData) = f(pd)
     }
@@ -121,7 +123,7 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) ex
    *
    * @since 2.2
    */
-  def javaScriptEnabled = delegate.javaScriptEnabledProperty
+  def javaScriptEnabled: BooleanProperty = delegate.javaScriptEnabledProperty
   def javaScriptEnabled_=(v: Boolean) {
     javaScriptEnabled() = v
   }
@@ -131,7 +133,7 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) ex
    *
    * @since 2.2
    */
-  def userStyleSheetLocation = delegate.userStyleSheetLocationProperty
+  def userStyleSheetLocation: StringProperty = delegate.userStyleSheetLocationProperty
   def userStyleSheetLocation_=(v: String) {
     userStyleSheetLocation() = v
   }
@@ -139,7 +141,7 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) ex
   /**
    * Title of the current Web page.
    */
-  def title = delegate.getTitle
+  def title: ReadOnlyStringProperty = delegate.titleProperty
 
   /**
    * Loads a Web page into this engine.

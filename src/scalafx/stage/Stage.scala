@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.stage
 
 import javafx.{stage => jfxs}
@@ -34,7 +33,7 @@ import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.StringProperty
 import scalafx.scene.Scene
 import scalafx.stage.Window.sfxWindow2jfx
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.application.JFXApp
 
 object Stage {
@@ -96,7 +95,7 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
   /**
    * Defines the minimum width of this Stage.
    */
-  def minWidth = delegate.getMinWidth
+  def minWidth: Double = delegate.getMinWidth
   def minWidth_=(w: Double) {
     delegate.setMinWidth(w)
   }
@@ -104,7 +103,7 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
   /**
    * Defines the minimum height of this Stage.
    */
-  def minHeight = delegate.getMinHeight
+  def minHeight: Double = delegate.getMinHeight
   def minHeight_=(h: Double) {
     delegate.setMinHeight(h)
   }
@@ -112,7 +111,7 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
   /**
    * Defines the maximum width of this Stage.
    */
-  def maxWidth = delegate.getMaxWidth
+  def maxWidth: Double = delegate.getMaxWidth
   def maxWidth_=(w: Double) {
     delegate.setMaxWidth(w)
   }
@@ -120,7 +119,7 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
   /**
    * Defines the maximum height of this Stage.
    */
-  def maxHeight = delegate.getMaxHeight
+  def maxHeight: Double = delegate.getMaxHeight
   def maxHeight_=(h: Double) {
     delegate.setMaxHeight(h)
   }
@@ -138,7 +137,7 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
   /**
    * Retrieves the style attribute for this stage.
    */
-  def style = delegate.getStyle
+  def style: StageStyle = delegate.getStyle
 
   /**
    * Closes this Stage.
@@ -150,7 +149,7 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
   /**
    * Retrieves the modality attribute for this stage.
    */
-  def modality = delegate.getModality
+  def modality: Modality = delegate.getModality
 
   /**
    * Retrieves a [[scala.Some]] with the owner Window for this stage, or
@@ -161,7 +160,7 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
   /**
    * Specifies the modality for this stage.
    */
-  def initModality(modality: jfxs.Modality) {
+  def initModality(modality: Modality) {
     delegate.initModality(modality)
   }
 
@@ -176,8 +175,15 @@ class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
   /**
    * Specifies the style for this stage.
    */
-  def initStyle(style: jfxs.StageStyle) {
+  def initStyle(style: StageStyle) {
     delegate.initStyle(style)
+  }
+
+  /**
+   * Attempts to show this Window by setting visibility to true.
+   */
+  def show {
+    delegate.show
   }
 
   /**

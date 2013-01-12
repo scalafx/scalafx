@@ -27,7 +27,7 @@
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 import scalafx.Includes._
 import javafx.{ event => jfxe }
 import javafx.{ geometry => jfxg }

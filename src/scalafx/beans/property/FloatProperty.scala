@@ -27,7 +27,7 @@
 package scalafx.beans.property
 
 import javafx.beans.{ property => jfxbp }
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object FloatProperty {
   implicit def sfxFloatProperty2jfx(fp: FloatProperty) = fp.delegate

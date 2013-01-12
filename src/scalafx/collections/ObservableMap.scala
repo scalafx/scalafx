@@ -34,7 +34,7 @@ import scala.collection.mutable.MapLike
 import java.{ util => ju }
 import javafx.{ collections => jfxc }
 import scalafx.beans.Observable
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object ObservableMap extends MutableMapFactory[ObservableMap] {
   implicit def sfxObservableMap2sfxObservableMap[K, V](ob: ObservableMap[K, V]) = ob.delegate

@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
@@ -38,7 +37,7 @@ import scalafx.scene.Node.sfxNode2jfx
 import scalafx.scene.text.Font.sfxFont2jfx
 import scalafx.scene.text.Font
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object Labeled {
   implicit def sfxLabeled2jfx(v: Labeled) = v.delegate

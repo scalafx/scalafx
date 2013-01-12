@@ -30,7 +30,7 @@ import javafx.scene.{control => jfxsc}
 import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.scene.Node
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object SplitPane {
   implicit def sfxSplitPane2jfx(v: SplitPane) = v.delegate

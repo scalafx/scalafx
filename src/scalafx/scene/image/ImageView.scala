@@ -1,5 +1,3 @@
-package scalafx.scene.image
-
 /*
  * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
@@ -26,12 +24,13 @@ package scalafx.scene.image
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.image
 
 import javafx.{ scene => jfxs, geometry => jfxg }
 import jfxs.{ image => jfxsi }
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
-import scalafx.util.PositionDelegate
+import scalafx.delegate.SFXDelegate
+import scalafx.delegate.PositionDelegate
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty

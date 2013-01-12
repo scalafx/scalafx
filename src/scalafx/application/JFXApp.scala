@@ -37,7 +37,7 @@ import javafx.{ application => jfxa }
 import javafx.{ stage => jfxs }
 import scalafx.application.JFXApp.Parameters
 import scalafx.stage.Stage
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object JFXApp {
   var STAGE: jfxs.Stage = null

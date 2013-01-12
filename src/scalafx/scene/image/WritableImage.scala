@@ -28,7 +28,7 @@ package scalafx.scene.image
 
 import javafx.scene.{image => jfxsi}
 import scalafx.Includes._
-import scalafx.util.SFXDelegate
+import scalafx.delegate.SFXDelegate
 
 object WritableImage {
   implicit def sfxWritableImage2jfx(wi: WritableImage) = wi.delegate

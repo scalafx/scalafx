@@ -1,5 +1,3 @@
-
-
 /*
  * Copyright (c) 2011, ScalaFX Project
  * All rights reserved.
@@ -29,8 +27,7 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
-import scalafx.util.{SFXEnumDelegateCompanion, SFXEnumDelegate}
-
+import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 /** Wrapper for [[javafx.geometry.Side]] */
 object Side
@@ -43,7 +40,6 @@ object Side
 
   protected override def unsortedValues: Array[Side] = Array(TOP, BOTTOM, LEFT, RIGHT)
 }
-
 
 sealed case class Side(override val delegate: jfxg.Side)
   extends SFXEnumDelegate[jfxg.Side] {
