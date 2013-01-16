@@ -1,115 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.scalafx</groupId>
-	<artifactId>scalafx</artifactId>
-	<description>ScalaFX</description>
-	<version>1.1-SNAPSHOT</version>
+  <groupId>org.scalafx</groupId>
+  <artifactId>scalafx</artifactId>
+  <version>1.1-SNAPSHOT</version>
 
-    <organization>
-		<name>org.scalafx</name>
-	</organization>
-	<packaging>jar</packaging>
+  <organization>
+    <name>org.scalafx</name>
+    <url>http://scalafx.org/</url>
+  </organization>
+  <packaging>jar</packaging>
 
-	<url>http://code.google.com/p/scalafx/</url>
+  <url>http://code.google.com/p/scalafx/</url>
 
-    <properties>
-        <scala.version>2.10.0-M7</scala.version>
-    </properties>
+  <licenses>
+    <license>
+      <name>The BSD 3-Clause License</name>
+      <url>http://opensource.org/licenses/BSD-3-Clause</url>
+    </license>
+  </licenses>
+  <properties>
+    <scala.version>2.10</scala.version>
+  </properties>
 
-	<repositories>
-		<repository>
-			<id>scala-tools.org</id>
-			<name>Scala-tools Maven2 Repository</name>
-			<url>http://scala-tools.org/repo-releases</url>
-		</repository>
-	</repositories>
+  <dependencies>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>${scala.version}</version>
+    </dependency>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>scala-tools.org</id>
-			<name>Scala-tools Maven2 Repository</name>
-			<url>http://scala-tools.org/repo-releases</url>
-		</pluginRepository>
-	</pluginRepositories>
+    <dependency>
+      <groupId>org.scalatest</groupId>
+      <artifactId>scalatest_${scala.version}</artifactId>
+      <version>2.0.M5</version>
+      <scope>test</scope>
+    </dependency>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.scala-lang</groupId>
-			<artifactId>scala-library</artifactId>
-			<version>${scala.version}</version>
-		</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.10</version>
+      <scope>test</scope>
+    </dependency>
 
-		<dependency>
-			<groupId>javafx</groupId>
-			<artifactId>javafxrt</artifactId>
-			<version>2.1</version>
-			<scope>system</scope>
-			<systemPath>${env.JDK_HOME}/jre/lib/jfxrt.jar</systemPath>
-		</dependency>
+  </dependencies>
 
-		<dependency>
-			<groupId>org.scalatest</groupId>
-			<artifactId>scalatest_${scala.version}</artifactId>
-			<version>2.0.M4-${scala.version}-B1</version>
-			<scope>test</scope>
-		</dependency>
+  <build>
+    <sourceDirectory>src/</sourceDirectory>
+    <testSourceDirectory>test/</testSourceDirectory>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.10</version>
-			<scope>test</scope>
-		</dependency>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <scalaVersion>${scalaVersion}</scalaVersion>
+          <jvmArgs>
+            <jvmArg>-client</jvmArg>
+            <jvmArg>-Xms64m</jvmArg>
+            <jvmArg>-Xmx1024m</jvmArg>
+          </jvmArgs>
+          <args>
+            <!-- <arg>-optimise</arg> -->
+            <!-- <arg>-Xlint</arg> -->
+            <arg>-deprecation</arg>
+            <arg>-dependencyfile</arg>
+            <arg>${project.build.directory}/.scala_dependencies</arg>
+          </args>
+          <recompileMode>incremental</recompileMode>
+        </configuration>
+      </plugin>
 
-	</dependencies>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <skipTests>true</skipTests><!-- disable surefire -->
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.scalatest</groupId>
+        <artifactId>scalatest-maven-plugin</artifactId>
+        <version>1.0-M2</version>
+        <executions>
+          <execution>
+            <id>test</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
 
-	<build>
-		<sourceDirectory>src/</sourceDirectory>
-		<testSourceDirectory>test/</testSourceDirectory>
+      <!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jar-plugin</artifactId> 
+        <version>2.4</version> <executions> <execution> <phase>compile</phase> <goals> 
+        <goal>jar</goal> </goals> </execution> </executions> </plugin> -->
+    </plugins>
+  </build>
 
-		<plugins>
-			<plugin>
-				<groupId>org.scala-tools</groupId>
-				<artifactId>maven-scala-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>scala-compile-first</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>add-source</goal>
-							<goal>compile</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>scala-test-compile</id>
-						<phase>process-test-resources</phase>
-						<goals>
-							<goal>testCompile</goal>
-						</goals>
-					</execution>
-				</executions>
-                <configuration>
-                    <scalaVersion>${scala.version}</scalaVersion>
-                </configuration>
-			</plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-		</plugins>
-	</build>
-
+  <ciManagement>
+    <system>Jenkins</system>
+    <url>http://scalafx.org/jenkins/job/scalafx/</url>
+  </ciManagement>
+  <issueManagement>
+    <url>http://code.google.com/p/scalafx/issues/list</url>
+  </issueManagement>
+  <scm>
+    <url>http://code.google.com/p/scalafx/</url>
+  </scm>
+  <description>ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX 2.0 (not to be confused with Ingo Maier’s great work on Functional Reactive Programming for Swing).
+ This means that every ScalaFX application is also a valid Scala application. By extension it supports full interoperability with Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX 2.0 are supported.</description>
 </project>
