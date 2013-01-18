@@ -164,7 +164,7 @@ relies on Scala SBT.
 If you want to generate artifacts for Maven then you need to manually install at
 the moment. Sorry about that. Here are the necessaey commands:
 
-   % sbt makepom
+   % sbt make-pom
    % mvn install:install-file -DartifactId=scalafx_2.9.2 \
     -DgroupId=org.scalafx \
     -Dpackaging=jar \
