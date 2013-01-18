@@ -269,3 +269,5 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
 
 
 // http://code.google.com/p/scalafx/source/browse/
+
+// http://code.google.com/p/scalafx/source/browse/demo/scalafx/graphics3d/VideoCubeDemo.scala

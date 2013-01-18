@@ -73,17 +73,17 @@ class ObservableMapSpec[K, V]
     def assertGeneratedMap(map: Map[Int, String]) =
       map.toList should equal(List((1, "one"), (2, "two")))
 
-    assertGeneratedMap(ObservableMap(List((1, "one"), (2, "two"))))
-    assertGeneratedMap(ObservableMap((1, "one"), (2, "two")))
+    // assertGeneratedMap(ObservableMap(List((1, "one"), (2, "two"))))
+    // assertGeneratedMap(ObservableMap((1, "one"), (2, "two")))
 
     val map1 = new java.util.HashMap[Int, String]
     map1.put(1, "one")
     map1.put(2, "two")
-    assertGeneratedMap(ObservableMap(map1))
+    // assertGeneratedMap(ObservableMap(map1))
 
     val map2 = Map.empty[Int, String]
     map2 += ((1, "one"), (2, "two"))
-    assertGeneratedMap(ObservableMap(map2))
+    // assertGeneratedMap(ObservableMap(map2))
   }
 
   it should "notify on invalidation" in {

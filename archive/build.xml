@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. See commented blocks below for -->
+<!-- some examples of how to customize the build. -->
+<!-- (If you delete it and reopen the project it will be recreated.) -->
+<project name="scalafx" default="default" basedir=".">
+    <description>Builds, tests, and runs the project scalafx.</description>
+    
+    <property name="scalac.compilerargs" value="-J-Xmx512M"/>
+    
+    <import file="nbproject/build-impl.xml"/>
+    <!--
+
+    There exist several targets which are by default empty and which can be 
+    used for execution of your tasks. These targets are usually executed 
+    before and after some main targets. They are: 
+
+      -pre-init:                 called before initialization of project properties
+      -post-init:                called after initialization of project properties
+      -pre-compile:              called before javac compilation
+      -post-compile:             called after javac compilation
+      -pre-compile-single:       called before javac compilation of single file
+      -post-compile-single:      called after javac compilation of single file
+      -pre-compile-test:         called before javac compilation of JUnit tests
+      -post-compile-test:        called after javac compilation of JUnit tests
+      -pre-compile-test-single:  called before javac compilation of single JUnit test
+      -post-compile-test-single: called after javac compilation of single JUunit test
+      -pre-jar:                  called before JAR building
+      -post-jar:                 called after JAR building
+      -post-clean:               called after cleaning build products
+
+    (Targets beginning with '-' are not intended to be called on their own.)
+
+    Example of inserting an obfuscator after compilation could look like this:
+
+        <target name="-post-compile">
+            <obfuscate>
+                <fileset dir="${build.classes.dir}"/>
+            </obfuscate>
+        </target>
+
+    For list of available properties check the imported 
+    nbproject/build-impl.xml file. 
+
+
+    Another way to customize the build is by overriding existing main targets.
+    The targets of interest are: 
+
+      -init-macrodef-javac:     defines macro for javac compilation
+      -init-macrodef-junit:     defines macro for junit execution
+      -init-macrodef-debug:     defines macro for class debugging
+      -init-macrodef-java:      defines macro for class execution
+      -do-jar-with-manifest:    JAR building (if you are using a manifest)
+      -do-jar-without-manifest: JAR building (if you are not using a manifest)
+      run:                      execution of project 
+      -javadoc-build:           Javadoc generation
+      test-report:              JUnit report generation
+
+    An example of overriding the target for project execution could look like this:
+
+        <target name="run" depends="scalafx-impl.jar">
+            <exec dir="bin" executable="launcher.exe">
+                <arg file="${dist.jar}"/>
+            </exec>
+        </target>
+
+    Notice that the overridden target depends on the jar target and not only on 
+    the compile target as the regular run target does. Again, for a list of available 
+    properties which you can use, check the target you are overriding in the
+    nbproject/build-impl.xml file. 
+
+    -->
+
+    <target name="taskdefscalatest">
+        <taskdef name="scalatest" classname="org.scalatest.tools.ScalaTestAntTask">
+            <classpath>
+                <path>
+                    <pathelement path="${javac.test.classpath}"/>
+                    <fileset dir="${scala.lib}">
+                        <include name="**/*.jar"/>
+                    </fileset>
+                    <pathelement location="${build.classes.dir}"/>
+                </path>            
+            </classpath>
+        </taskdef>
+    </target>
+
+
+    <target depends="init,compile-test,-pre-test-run, taskdefscalatest" if="have.tests" name="-do-test-run">
+        <path id="scalatest.path">
+            <pathelement path="${javac.test.classpath}"/>
+            <fileset dir="${scala.lib}">
+                <include name="**/*.jar"/>
+            </fileset>
+            <pathelement location="${build.classes.dir}"/>
+            <pathelement location="${build.test.classes.dir}"/>
+        </path>            
+        <property name="tp" refid="scalatest.path"/>
+        <scalatest fork="true" runpath="${tp}" parallel="false" haltonfailure="true">
+            <jvmarg value="-XX:MaxPermSize=512m"/>
+            <reporter type="junitxml" directory="${build.test.results.dir}"/>
+            <reporter type="stdout" config="D"/>
+        </scalatest>                
+    </target>
+    
+    <target depends="init,compile-test-single,-pre-test-run-single, taskdefscalatest" if="have.tests" name="-do-test-run-single">
+        <fail unless="test.includes">Must select some files in the IDE or set test.includes</fail>
+        <scalatest fork="true" runpath="${work.dir}" parallel="false" haltonfailure="true">
+            <jvmarg value="-XX:MaxPermSize=512m"/>
+            <reporter type="junitxml" directory="target"/>
+            <reporter type="stdout" config="D"/>
+            <wildcard package="${test.includes}"/>
+        </scalatest>                
+    </target>    
+
+    <target name="-init-macrodef-scalac">
+        <macrodef name="scalac" uri="http://www.netbeans.org/ns/scala-project/1">
+            <attribute default="${src.dir}:${src.demo.dir}" name="srcdir"/>
+            <attribute default="${build.classes.dir}" name="destdir"/>
+            <attribute default="${javac.classpath}" name="classpath"/>
+            <attribute default="${extdirs}" name="extdirs"/>
+            <attribute default="${includes}" name="includes"/>
+            <attribute default="${excludes}" name="excludes"/>
+            <attribute default="${scalac.compilerargs}" name="addparams"/>
+            <attribute default="" name="sourcepath"/>
+            <element name="customize" optional="true"/>
+            <sequential>
+                <scalac addparams="-make:transitive -dependencyfile &quot;${basedir}/${build.dir}/.scala_dependencies&quot; @{addparams}" deprecation="${scalac.deprecation}" destdir="@{destdir}" encoding="${source.encoding}" excludes="@{excludes}" extdirs="@{extdirs}" force="yes" fork="false" includes="@{includes}" sourcepath="@{sourcepath}" srcdir="@{srcdir}" target="jvm-${javac.target}" unchecked="${scalac.unchecked}">
+                    <classpath>
+                        <path>
+                            <pathelement path="@{classpath}"/>
+                            <fileset dir="${scala.lib}">
+                                <include name="**/*.jar"/>
+                            </fileset>
+                            <pathelement location="${build.classes.dir}"/>
+                        </path>
+                    </classpath>
+                    <customize/>  
+                </scalac>
+            </sequential>
+        </macrodef>
+    </target>
+
+</project>
