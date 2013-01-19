@@ -18,10 +18,10 @@ This is the README.txt for ScalaFX
    ------------
    
 ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX
-2.x (not to be confused with Ingo Maier’s great work on Functional Reactive
+2.x (not to be confused with Ingo Maier's great work on Functional Reactive
 Programming for Swing). This means that every ScalaFX application is also a
 valid Scala application. By extension it supports full interoperability with
-Java and can run anywhere t he Java Virtual Machine (JVM) and JavaFX 2.0 are
+Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX 2.0 are
 supported.
 
 ScalaFX was originally created by Stephen Chin, Java Champion, Oracle JavaOne
@@ -85,7 +85,7 @@ The current project structure looks like this:
 
 Where `.' is a the root folder of the project.
 
-The `archive' folder is reserved for remanants of the previous single module
+The `archive' folder is reserved for remnants of the previous single module
 build system.
 
 The `scalafx-core' folder is the sub project for the ScalaFX Core Framework.
