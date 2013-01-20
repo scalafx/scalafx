@@ -142,8 +142,17 @@ Navigate around the Scala SBT multiple modules:
 
 Generate Intellij IDEA project files:
 
+    # sbt eclipse
     sbt> gen-idea
 
+
+Generate Eclipse project files:
+ 
+    # sbt eclipse
+    sbt> eclipse
+
+The Eclipse Plugin generates the files: scalafx-core/.project, scalafx-core/.classpath
+and the files scalafx-demos/.project, scalafx-demos/.classpath
 
 
 Miscellanouse SBT commands:
@@ -174,6 +183,15 @@ execute the `run' task:
 
 This should launch the demonstration ScalaFX program. To exit the application,
 simply close the program using your normal window manager decorations.
+
+What if you want to run the demonstration from the command line? You can do it.
+Let's assume you are in the root directory of the scalafx project. Execute the
+following command line:
+
+    $ sbt scalafx-demos/run
+    
+This should launch the demonstration ScalaFX program.
+
 
 
 6. Publishing SBT Artifacts Locally
