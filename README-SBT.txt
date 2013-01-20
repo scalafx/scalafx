@@ -40,12 +40,20 @@ For Oracle Java SE JDK 7 builds, which are distributed with JavaFX 2.x, the
 build checks for the presence of the `jfxrt.jar', which should be found under
 `${JAVAFX_HOME}/jre/lib/jfxrt.jar' or `${JAVA_HOME}/jre/lib/jfxrt.jar'
 
-In Unix, Mac OS X or Linux, you can define a environment variable like this:
+In Unix, Mac OS X or Linux, you can define a environment variable `JAVAFX_HOME'
+inside the Bash shell init login file at `~/.bash_profile':
 
     # for Bash
-    export JAVAFX_HOME=/Path/To/javafx-sdk2.1.0-beta
+    export JAVAFX_HOME=/opt/java/jdk1.7.0_11
 
-You can place this setting in a `~/.bash_profile'.
+
+Alternatively, for the Bourne shell script, you can place this setting in the
+shell init login file `~/.profile':
+
+    # for Bourne Shell
+    JAVAFX_HOME=/opt/java/jdk1.7.0_11
+    export JAVAFX_HOME
+
 
 For Windows 7 operating systems, you need to define an environment variable in
 the Control Panel in the Systems application.
@@ -80,7 +88,8 @@ Build the software with SBT:
     % sbt clean compile package make-pom package-src
 
 
-This should build the entire code base.
+This should build the entire code base; run the tests; package up the JAR files,
+source and binary files; and generate a Maven POM.
 
 
 4. Using SBT Interatively
@@ -148,7 +157,26 @@ For more information, on Scala SBT and Multi-Module builds, point your favourite
 web browser to:
 http://www.scala-sbt.org/release/docs/Getting-Started/Multi-Project.html
 
-5. Publishing SBT Artifacts Locally
+
+5. Running the Demonstration
+   -------------------------
+   
+The module `scalafx-demos' contains many demonstrations of the ScalaFX core.
+There is one official standard demonstration, which the commiter have used to
+test the build. It is called `scalafx.ColorfulCircles'.
+
+Run Scala SBT, interactively. First switch to the `scalafx-demos' project, then
+execute the `run' task:
+
+    sbt> project scalafx-demos
+    sbt> run
+    
+
+This should launch the demonstration ScalaFX program. To exit the application,
+simply close the program using your normal window manager decorations.
+
+
+6. Publishing SBT Artifacts Locally
    --------------------------------
    
 SBT can publish artifacts to local repository using the task `publish-local'.
@@ -179,7 +207,7 @@ found for Scala SBT. Please note the embedded Scala compiler version in the
 artifact name e.g. `scalafx-core_2.9.2'
 
 
-6. SBT Configuration
+7. SBT Configuration
    -----------------
    
 I found the following SBT launcher bash shell script worked for me under Mac OS
@@ -200,6 +228,16 @@ following example of the `sbt' shell script.
 
 Of course, your mileage will indeed vary on your own workstation.
 
+
+8. SBT Build Files
+   ----------------
+
+Here is a description of the Scala SBT files for the entire build process.
+
+
+./project/build.scala              The build file for ScalaFX lives.
+./project/build.properties         Specifies the Scala SBT version for the build.
+./project/plugin.sbt               Defines additional plug-ins necessary for the build 
 
 
 This documentation was prepared by:

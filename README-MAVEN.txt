@@ -1,8 +1,6 @@
 README    README    README    README    README    README    README    README    README    README
 
 
-
-
   _|_|_|                      _|            _|_|_|_|  _|      _|
 _|          _|_|_|    _|_|_|  _|    _|_|_|  _|          _|  _|
   _|_|    _|        _|    _|  _|  _|    _|  _|_|_|        _|
@@ -10,6 +8,10 @@ _|          _|_|_|    _|_|_|  _|    _|_|_|  _|          _|  _|
 _|_|_|      _|_|_|    _|_|_|  _|    _|_|_|  _|        _|      _|
 
 
+This is the file `README-MAVEN.txt'.
+
+There are two official build systems for ScalaFX, namely Scala SBT and Gradle.
+This document describes how the developers support the Maven repository system.
 
 This project build relies on SBT, but you can get the scalafx-core libraries like this in
 your local repository:
@@ -60,4 +62,3 @@ and for scala 2.10:
 sbt eclipse
 
 happy coding!
-

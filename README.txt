@@ -1,7 +1,6 @@
 README    README    README    README    README    README    README    README    README    README    
 
 
-
                                                                   
   _|_|_|                      _|            _|_|_|_|  _|      _|  
 _|          _|_|_|    _|_|_|  _|    _|_|_|  _|          _|  _|    
@@ -12,7 +11,7 @@ _|_|_|      _|_|_|    _|_|_|  _|    _|_|_|  _|        _|      _|
                                                                   
 
 
-This is the README.txt for ScalaFX 
+This is the `README.txt ' file for ScalaFX 
 
 1. Introduction
    ------------

@@ -1,8 +1,9 @@
-// ======================================================================
+// ========================================================================================
 // ScalaFX 1.0.0 Project Multi-module for Scala Build Tool (SBT)
 // Created by Peter Pilgrim, 16 January 2013
 // peter dot pilgrim at gmail dot com
-// ======================================================================
+// ========================================================================================
+// 
 
 import sbt._
 import Keys._
@@ -50,9 +51,6 @@ object ScalaFXBuild extends Build {
         aggregate = Seq( scalafxCore, scalafxDemos )
     )
     
-    //    testCompile 'junit:junit:4.10'
-    //    testCompile 'org.scalatest:scalatest_2.9.1:1.8'
-
     lazy val scalafxCore = Project(
         id = "scalafx-core",
         base = file("scalafx-core"),
@@ -73,7 +71,15 @@ object ScalaFXBuild extends Build {
                 scalatest % "test",
                 junit % "test" ),
             unmanagedListing,
-            description := "The ScalaFX demonstrations"
+            description := "The ScalaFX demonstrations",
+            // fork a new JVM for 'test:run', but not 'test'
+            fork in run := true,
+            // add a JVM option to use when forking a JVM for 'run'
+            javaOptions ++= Seq(
+              "-Xmx512M",
+              "-Djavafx.verbose"
+            ),
+            mainClass in (Compile, run) := Some("scalafx.ColorfulCircles")
         )
     ) dependsOn (
         scalafxCore % "compile;test->test"
@@ -116,7 +122,7 @@ object ScalaFXBuild extends Build {
         if (version.trim.endsWith("SNAPSHOT"))
             Some(sonatypeNexusSnapshots)
         else
-        Some(sonatypeNexusStaging)
+            Some(sonatypeNexusStaging)
     }
 
     // Things we care about primarily because Maven Central demands them

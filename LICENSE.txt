@@ -1,3 +1,42 @@
+LICENSE   LICENSE   LICENSE   LICENSE   LICENSE   LICENSE   LICENSE   LICENSE   
+
 See http://opensource.org/licenses/BSD-3-Clause
-+PP+: FIXME: Download the full License text
+Here is the download, the full License text
+
+<OWNER> = ScalaFX Open Source Project Committers
+<ORGANIZATION> = The ScalaFX Developer Team, Globally
+<YEAR> = 2013
+
+In the original BSD license, both occurrences of the phrase "COPYRIGHT HOLDERS
+AND CONTRIBUTORS" in the disclaimer read "REGENTS AND CONTRIBUTORS".
+
+Here is the license:
+
+Copyright (c) 2013, ScalaFX Open Source Project Committers, The ScalaFX Developer Team, Globally
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list
+of conditions and the following disclaimer.
+
+Redistributions in binary form must reproduce the above copyright notice, this
+list of conditions and the following disclaimer in the documentation and/or
+other materials provided with the distribution.
+
+Neither the name of the `The ScalaFX Developer Team, nor the names of its
+contributors may be used to endorse or promote products derived from this
+software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
