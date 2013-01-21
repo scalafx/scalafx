@@ -259,6 +259,5 @@ Here is a description of the Scala SBT files for the entire build process.
 
 
 This documentation was prepared by:
-    Peter Pilgrim
+    The ScalaFX Open Source Developer team,
     Friday, 18 January 2013
-    http://www.xenonique.co.uk/blog/

@@ -12,7 +12,8 @@ AND CONTRIBUTORS" in the disclaimer read "REGENTS AND CONTRIBUTORS".
 
 Here is the license:
 
-Copyright (c) 2013, ScalaFX Open Source Project Committers, The ScalaFX Developer Team, Globally
+Copyright (c) 2013, ScalaFX Open Source Project Committers,
+The ScalaFX Developer Team, Globally
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,

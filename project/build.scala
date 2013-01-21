@@ -43,10 +43,10 @@ object ScalaFXBuild extends Build {
     lazy val unmanagedListing = unmanagedJars in Compile += Attributed.blank(file(javaHome.get + "/jre/lib/jfxrt.jar" ))
 
     lazy val scalafxProject = Project(
-        id = "scalafx-project",
+        id = "scalafx",
         base = file("."),
         settings = scalafxSettings ++ doNotPublish ++ Seq(
-            description := "The ScalaFX framework"
+            description := "The ScalaFX framework (root project)"
         ),
         aggregate = Seq( scalafxCore, scalafxDemos )
     )

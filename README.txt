@@ -42,6 +42,10 @@ The official web site for ScalaFX is https://code.google.com/p/scalafx/
 2. Software License
    ----------------
 
+This software licensed under BSD Open Source.
+
+The License text for this software can be found in `LICENSE.txt' in the root
+folder of the project.
 
 
 3. Software Required
@@ -97,20 +101,18 @@ The `project' folder is reserved for Scala SBT.
 4. Miscellanous
    ------------
 
+Any other business section.
 
    
 
 5. Credits
    -------
    
-List of committers are:
+You can say find the full list of committers, developers and contributors in
+the file `MAINTAINERS.txt'.
 
-Stephen Chin; Java Champion; http://www.nighthacking.com/
-Sven Reimers; Netbeans Dream Team; http://wiki.netbeans.org/SvenReimers/
-Peter Pilgrim; Java Champion, Specialist contractor JavaEE7, JavaFX, Scala; http://www.xenononique.co.uk/blog/ 
 
 
 This documentation was prepared by:
-    Peter Pilgrim
+    The ScalaFX Open Source Developer team,
     Friday, 18 January 2013
-    http://www.xenonique.co.uk/blog/
