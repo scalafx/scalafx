@@ -1,0 +1,78 @@
+MAINTAINERS    MAINTAINERS    MAINTAINERS    MAINTAINERS    MAINTAINERS    MAINTAINERS    MAINTAINERS
+
+
+                                                                  
+  _|_|_|                      _|            _|_|_|_|  _|      _|  
+_|          _|_|_|    _|_|_|  _|    _|_|_|  _|          _|  _|    
+  _|_|    _|        _|    _|  _|  _|    _|  _|_|_|        _|      
+      _|  _|        _|    _|  _|  _|    _|  _|          _|  _|    
+_|_|_|      _|_|_|    _|_|_|  _|    _|_|_|  _|        _|      _|  
+                                                                  
+                                                                  
+
+
+This is the `MAINTAINERS.txt ' file for ScalaFX.
+
+This is a list of all of the committers, developer and contributors; large or
+small; who have made a contribution to make ScalaFX the best open source
+framework for JavaFX development work. This file contains information about
+people who are permitted to make changes to various parts of the core framework
+and associated demonstration programs.
+
+	
+Please do not contact the people in this file directly to report problems in
+ScalaFX.
+	
+For general information about ScalaFX, please visit:
+
+        https://code.google.com/p/scalafx
+	
+
+To report problems in ScalaFX, please visit:
+	
+        https://code.google.com/p/scalafx/issues
+
+
+
+This file is designed to be both human and machine readable so please pay
+special attention to the format. The file is divided into sections.
+
+The format for this line:
+
+<First Name> <Last Name>; <Email>; <Blog>; <Extra>
+
+
+Here are some definitions:
+
+Committers are people who have `commit rights' to ScalaFX repository.
+
+Contributors are people who do have `commit rights'.
+
+
+Credit where it is due: inspiration from the famous long running GNU C/C++
+compiler project and their way to doing this administration stuff, see:
+http://gcc.gnu.org/viewcvs/trunk/MAINTAINERS?revision=195089&view=markup
+
+Yours sincerely,
+    The ScalaFX Open Source Developer team,
+    January 2013
+
+
+-- BEGIN -- (PLEASE DO NOT EDIT THIS LINE!)
+
+
+                    *COMMITTERS*        (alphabetical order)
+
+
+Stephen Chin        ;           stephen.chin@oracle.com ;       http://www.nighthacking.com/ ;              Co-creator, Java Champion
+Peter Pilgrim       ;           peter.pilgrim@gmail.com;        http://www.xenononique.co.uk/blog/ ;        Java Champion, independent contractor JavaEE7, JavaFX, Scala
+Sven Reimers        ;           ;                               http://wiki.netbeans.org/SvenReimers/ ;     Co-creator, Netbeans Dream Team
+Jarek Sancha        ;           ;                               ;
+
+
+
+                    *CONTRIBUTORS*       (alphabetical order)
+
+
+
+-- END -- (PLEASE DO NOT EDIT THIS LINE!)
