@@ -31,8 +31,11 @@ import javafx.{ scene => jfxs }
 import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
+import scalafx.delegate.AlignmentDelegate
 import scalafx.geometry.Insets
 import scalafx.scene.Node
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.BooleanProperty
 
 object VBox {
   implicit def sfxVBox2jfx(v: VBox) = v.delegate
@@ -60,11 +63,17 @@ object VBox {
   /**
    * Sets the vertical grow priority for the child when contained by an hbox.
    */
-  def setVgrow(child: Node, value: jfxsl.Priority) = jfxsl.VBox.setVgrow(child, value)
+  def setVgrow(child: Node, value: Priority) = jfxsl.VBox.setVgrow(child, value)
 
 }
 
-class VBox(override val delegate: jfxsl.VBox = new jfxsl.VBox) extends Pane(delegate) with SFXDelegate[jfxsl.VBox] {
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/VBox.html]]
+ */
+class VBox(override val delegate: jfxsl.VBox = new jfxsl.VBox)
+  extends Pane(delegate)
+  with AlignmentDelegate[jfxsl.VBox]
+  with SFXDelegate[jfxsl.VBox] {
 
   /**
    * Creates a VBox layout with the specified spacing between children.
@@ -74,25 +83,16 @@ class VBox(override val delegate: jfxsl.VBox = new jfxsl.VBox) extends Pane(dele
   /**
    * The amount of vertical space between each child in the vbox.
    */
-  def spacing = delegate.spacingProperty
+  def spacing: DoubleProperty = delegate.spacingProperty
   def spacing_=(v: Double) {
     spacing() = v
-  }
-
-  /**
-   * The overall alignment of children within the vbox's width and height.
-   * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node.
-   */
-  def innerAlignment = delegate.alignmentProperty
-  def innerAlignment_=(v: jfxg.Pos) {
-    innerAlignment() = v
   }
 
   /**
    * Whether or not resizable children will be resized to fill the full width of the vbox or be
    * kept to their preferred width and aligned according to the alignment hpos value.
    */
-  def fillWidth = delegate.fillWidthProperty
+  def fillWidth: BooleanProperty = delegate.fillWidthProperty
   def fillWidth_=(v: Boolean) {
     fillWidth() = v
   }

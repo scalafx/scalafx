@@ -31,8 +31,14 @@ import javafx.{ scene => jfxs }
 import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
+import scalafx.delegate.AlignmentDelegate
 import scalafx.geometry.Insets
 import scalafx.scene.Node
+import scalafx.geometry.Pos
+import scalafx.geometry.Orientation
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.beans.property.IntegerProperty
 
 object TilePane {
   implicit def sfxTilePane2jfx(v: TilePane) = v.delegate
@@ -64,21 +70,15 @@ object TilePane {
 
 }
 
-class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane) extends Pane(delegate) with SFXDelegate[jfxsl.TilePane] {
-
-  /**
-   * The overall alignment of the tilepane's content within its width and height.
-   * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node
-   */
-  def innerAlignment = delegate.alignmentProperty
-  def innerAlignment_=(v: jfxg.Pos) {
-    innerAlignment() = v
-  }
+class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane)
+  extends Pane(delegate)
+  with AlignmentDelegate[jfxsl.TilePane]
+  with SFXDelegate[jfxsl.TilePane] {
 
   /**
    * The amount of horizontal space between each tile in a row.
    */
-  def hgap = delegate.hgapProperty
+  def hgap: DoubleProperty = delegate.hgapProperty
   def hgap_=(v: Double) {
     hgap() = v
   }
@@ -87,14 +87,14 @@ class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane) exten
    * The orientation of this tilepane.
    */
   def orientation = delegate.orientationProperty
-  def orientation_=(v: jfxg.Orientation) {
+  def orientation_=(v: Orientation) {
     orientation() = v
   }
 
   /**
    * The preferred number of columns for a horizontal tilepane.
    */
-  def prefColumns = delegate.prefColumnsProperty
+  def prefColumns: IntegerProperty = delegate.prefColumnsProperty
   def prefColumns_=(v: Int) {
     prefColumns() = v
   }
@@ -102,7 +102,7 @@ class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane) exten
   /**
    * The preferred number of rows for a vertical tilepane.
    */
-  def prefRows = delegate.prefRowsProperty
+  def prefRows: IntegerProperty = delegate.prefRowsProperty
   def prefRows_=(v: Int) {
     prefRows() = v
   }
@@ -110,7 +110,7 @@ class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane) exten
   /**
    * The preferred height of each tile.
    */
-  def prefTileHeight = delegate.prefTileHeightProperty
+  def prefTileHeight: DoubleProperty = delegate.prefTileHeightProperty
   def prefTileHeight_=(v: Double) {
     prefTileHeight() = v
   }
@@ -118,7 +118,7 @@ class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane) exten
   /**
    * The preferred width of each tile.
    */
-  def prefTileWidth = delegate.prefTileWidthProperty
+  def prefTileWidth: DoubleProperty = delegate.prefTileWidthProperty
   def prefTileWidth_=(v: Double) {
     prefTileWidth() = v
   }
@@ -127,24 +127,24 @@ class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane) exten
    * The default alignment of each child within its tile.
    */
   def tileAlignment = delegate.tileAlignmentProperty
-  def tileAlignment_=(v: jfxg.Pos) {
+  def tileAlignment_=(v: Pos) {
     tileAlignment() = v
   }
 
   /**
    * The actual height of each tile.
    */
-  def tileHeight = delegate.tileHeightProperty
+  def tileHeight: ReadOnlyDoubleProperty = delegate.tileHeightProperty
 
   /**
    * The actual width of each tile.
    */
-  def tileWidth = delegate.tileWidthProperty
+  def tileWidth: ReadOnlyDoubleProperty = delegate.tileWidthProperty
 
   /**
    * The amount of vertical space between each tile in a column.
    */
-  def vgap = delegate.vgapProperty
+  def vgap: DoubleProperty = delegate.vgapProperty
   def vgap_=(v: Double) {
     vgap() = v
   }
@@ -152,7 +152,7 @@ class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane) exten
   /**
    * Returns the orientation of a node's resizing bias for layout purposes.
    */
-  def getContentBias = delegate.getContentBias
+  def getContentBias: Orientation = delegate.getContentBias
 
   /**
    * Requests a layout pass to be performed before the next scene is rendered.

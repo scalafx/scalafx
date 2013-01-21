@@ -26,15 +26,15 @@
  */
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
-import javafx.{geometry => jfxg}
-import javafx.{scene => jfxs}
-import scalafx.Includes.jfxObjectProperty2sfx
-import scalafx.geometry.Insets.sfxInsets2jfx
-import scalafx.geometry.Insets
-import scalafx.scene.Node.sfxNode2jfx
-import scalafx.scene.Node
+import javafx.{ scene => jfxs }
+import javafx.scene.{ layout => jfxsl }
+import scalafx.delegate.AlignmentDelegate
 import scalafx.delegate.SFXDelegate
+import scalafx.geometry.Insets
+import scalafx.geometry.Insets.sfxInsets2jfx
+import scalafx.geometry.Pos
+import scalafx.scene.Node
+import scalafx.scene.Node.sfxNode2jfx
 
 object StackPane {
   implicit def sfxStackPane2jfx(v: StackPane) = v.delegate
@@ -52,7 +52,7 @@ object StackPane {
   /**
    * Sets the alignment for the child when contained by a stackpane.
    */
-  def setAlignment(child: Node, value: jfxg.Pos) = jfxsl.StackPane.setAlignment(child, value)
+  def setAlignment(child: Node, value: Pos) = jfxsl.StackPane.setAlignment(child, value)
 
   /**
    * Returns the child's margin constraint if set.
@@ -66,16 +66,13 @@ object StackPane {
 
 }
 
-class StackPane(override val delegate: jfxsl.StackPane = new jfxsl.StackPane()) extends Pane(delegate) with SFXDelegate[jfxsl.StackPane] {
-
-  /**
-   * The default alignment of children within the stackpane's width and height.
-   * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node
-   */
-  def innerAlignment = delegate.alignmentProperty
-  def innerAlignment_=(v: jfxg.Pos) {
-    innerAlignment() = v
-  }
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/StackPane.html]]
+ */
+class StackPane(override val delegate: jfxsl.StackPane = new jfxsl.StackPane)
+  extends Pane(delegate)
+  with AlignmentDelegate[jfxsl.StackPane]
+  with SFXDelegate[jfxsl.StackPane] {
 
   /**
    * Returns the orientation of a node's resizing bias for layout purposes.

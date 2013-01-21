@@ -24,7 +24,6 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.layout
 
 import javafx.scene.{ layout => jfxsl }
@@ -32,12 +31,12 @@ import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.AlignmentDelegateSpec
 
 /**
  * FlowPane Spec tests.
- *
- *
  */
 @RunWith(classOf[JUnitRunner])
 class FlowPaneSpec
   extends AbstractSFXDelegateSpec[jfxsl.FlowPane, FlowPane, jfxsl.FlowPaneBuilder[_]](classOf[jfxsl.FlowPane], classOf[FlowPane], classOf[jfxsl.FlowPaneBuilder[_]])
+  with AlignmentDelegateSpec[jfxsl.FlowPane, FlowPane]

@@ -31,15 +31,15 @@ import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.AlignmentDelegateSpec
 
 /**
  * Labeled Spec tests.
- *
- *
  */
 @RunWith(classOf[JUnitRunner])
 class LabeledSpec
-  extends AbstractSFXDelegateSpec[jfxsc.Labeled, Labeled, jfxsc.LabeledBuilder[_]](classOf[jfxsc.Labeled], classOf[Labeled], classOf[jfxsc.LabeledBuilder[_]]) {
+  extends AbstractSFXDelegateSpec[jfxsc.Labeled, Labeled, jfxsc.LabeledBuilder[_]](classOf[jfxsc.Labeled], classOf[Labeled], classOf[jfxsc.LabeledBuilder[_]])
+  with AlignmentDelegateSpec[jfxsc.Labeled, Labeled] {
 
   override protected def getScalaClassInstance = new Labeled(new Label) {}
 

@@ -35,6 +35,9 @@ import scalafx.geometry.Insets
 import scalafx.scene.Node._
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
+import scalafx.delegate.AlignmentDelegate
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.BooleanProperty
 
 object HBox {
   implicit def sfxHBox2jfx(v: HBox) = v.delegate
@@ -66,7 +69,13 @@ object HBox {
 
 }
 
-class HBox(override val delegate: jfxsl.HBox = new jfxsl.HBox) extends Pane(delegate) with SFXDelegate[jfxsl.HBox] {
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/HBox.html]]
+ */
+class HBox(override val delegate: jfxsl.HBox = new jfxsl.HBox)
+  extends Pane(delegate)
+  with AlignmentDelegate[jfxsl.HBox]
+  with SFXDelegate[jfxsl.HBox] {
 
   /**
    * Creates an HBox layout with the specified spacing between children.
@@ -76,26 +85,18 @@ class HBox(override val delegate: jfxsl.HBox = new jfxsl.HBox) extends Pane(dele
   /**
    * The amount of horizontal space between each child in the hbox.
    */
-  def spacing = delegate.spacingProperty
+  def spacing: DoubleProperty = delegate.spacingProperty
   def spacing_=(v: Double) {
     spacing() = v
-  }
-
-  /**
-   * The overall alignment of children within the hbox's width and height..
-   * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node.
-   */
-  def innerAlignment = delegate.alignmentProperty
-  def innerAlignment_=(v: jfxg.Pos) {
-    innerAlignment() = v
   }
 
   /**
    * Whether or not resizable children will be resized to fill the full height of the hbox or be
    * kept to their preferred height and aligned according to the alignment vpos value.
    */
-  def fillHeight = delegate.fillHeightProperty
+  def fillHeight: BooleanProperty = delegate.fillHeightProperty
   def fillHeight_=(v: Boolean) {
     fillHeight() = v
   }
+
 }
