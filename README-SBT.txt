@@ -99,11 +99,16 @@ Start Scala SBT at the command line:
 
     % sbt
     
-List the projects:
+List the individual tree of projects and their version number:
 
-    sbt> versions
-
-(Where `sbt>' represents the Scala SBT interactive command line prompt)
+    sbt> show version
+    [info] scalafx-core/*:version
+    [info] 	1.0-SNAPSHOT
+    [info] scalafx-demos/*:version
+    [info] 	1.0-SNAPSHOT
+    [info] scalafx/*:version
+    [info] 	1.0-SNAPSHOT
+    (Where `sbt>' represents the Scala SBT interactive command line prompt)
     
 
 Clean the build:
@@ -124,8 +129,8 @@ Run the unit tests:
 Navigate around the Scala SBT multiple modules:
 
     # show information about the root module project    
-    sbt>projects
-    sbt>project
+    sbt> projects
+    sbt> project
 
     # navigate to the `scalafx-core' module
     sbt> project scalafx-core
