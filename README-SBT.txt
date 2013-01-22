@@ -254,6 +254,7 @@ following example of the `sbt' shell script.
 Of course, your mileage will indeed vary on your own workstation.
 
 
+
 8. SBT Build Files
    ----------------
 
@@ -264,6 +265,80 @@ Here is a description of the Scala SBT files for the entire build process.
 ./project/build.properties         Specifies the Scala SBT version for the build.
 ./project/plugin.sbt               Defines additional plug-ins necessary for the build 
 
+
+
+9. Cross Versions
+   --------------
+   
+Cross Scala Versions is a feature of the Scala SBT to build against different
+versions of the Scala Libraries. This is enabled in the `project/build.scala'
+file with settings of `crossScalaVersions', which is set to something like this:
+
+    crossScalaVersions := Seq( "2.9.2", "2.10.0" ),
+
+
+You can switch between different Scala build version in interactive mode of
+Scala SBT, using the `++' command.
+
+Here is how to do this, first look at the current build settings for SBT, invoke
+the command:
+
+    sbt> settings
+    # Observe the setting for `scala-version'
+    
+
+Now show the current value for `scala-version', with the command:
+
+    sbt> show scala-version
+    [info] scalafx-core/*:scala-version
+    [info] 	2.9.2
+    [info] scalafx-demos/*:scala-version
+    [info] 	2.9.2
+    [info] scalafx/*:scala-version
+    [info] 	2.9.2    
+    
+
+Now switch to Scala 2.10.0 with the following command:
+
+     sbt> ++ 2.10.0
+
+
+And then build the software from a clean state for Scala 2.10.0 with the
+following commands:
+
+     sbt> clean
+     sbt> package
+     sbt> javafx-demos/run
+
+
+You switch back to the original 2.9.2 build as well with the commands:
+
+     sbt> ++ 2.9.2
+     sbt> javafx-demos/run
+
+
+Now, you should have both working 2.9.2 and 2.10.0 versions of ScalaFX. Exit
+Scala SBT check the `target' folder:
+
+     % ls ~/IdeaProjects/scalafx/target
+     resolution-cache/	   scala-2.10/	   scala-2.9.2/	  streams/
+     % ls ~/IdeaProjects/scalafx/target/scala-2.10/
+     cache/	           scalafx_2.10-1.0-SNAPSHOT.jar
+     % ls ~/Documents/IdeaProjects/scalafx/target/scala-2.9.2/
+     cache/                scalafx_2.9.2-1.0-SNAPSHOT.jar
+
+
+And of course this feature of cross Scala versions scales to more compiler
+libraries, when the Lausanne delivers them, and provided the ScalaFX code all
+compiles, builds and runs against them!
+
+For more information, about cross scala version, see the official documentation
+on Scala SBT:
+http://www.scala-sbt.org/release/docs/Detailed-Topics/Cross-Build.html
+
+
+Have Fun!     
+--
 
 This documentation was prepared by:
     The ScalaFX Open Source Developer team,
