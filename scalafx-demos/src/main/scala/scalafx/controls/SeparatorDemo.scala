@@ -39,7 +39,7 @@ object SeparatorDemo extends JFXApp {
     center = controlsPane
   }
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "Tooltip Test"
     width = 300
     height = 600

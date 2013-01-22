@@ -94,7 +94,7 @@ object SliderLabelControlDemo extends JFXApp {
 
   val sldValue = new SliderLabelControl(value)
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     height = 100
     width = 200
     title = "Slider Label Control Demo"

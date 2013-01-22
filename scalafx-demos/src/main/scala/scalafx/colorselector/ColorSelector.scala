@@ -297,7 +297,7 @@ object ColorSelector extends JFXApp {
   pnlMain0.prefWidth <== (mainScene.width)
   pnlMain0.prefHeight <== (mainScene.height)
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "Color Selector"
     width = 600
     height = 400

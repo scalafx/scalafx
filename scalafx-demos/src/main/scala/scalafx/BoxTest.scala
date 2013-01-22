@@ -39,7 +39,7 @@ import scene.layout.{VBox, HBox}
 import scene.paint.Color
 
 object BoxTest extends JFXApp {
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     width = 600
     height = 450
     scene = new Scene {

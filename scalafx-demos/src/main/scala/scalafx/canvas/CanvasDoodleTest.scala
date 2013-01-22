@@ -59,7 +59,7 @@ object CanvasDoodleTest extends JFXApp {
   val rootPane = new Group
   rootPane.children = List(rect, canvas)
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "Canvas Doodle Test"
     scene = new Scene(400, 400) {
       root = rootPane

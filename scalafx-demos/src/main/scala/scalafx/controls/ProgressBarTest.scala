@@ -22,7 +22,7 @@ object ProgressBarTest extends JFXApp {
     hgrow = Priority.ALWAYS
   }
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "ProgressBar Test"
     width = 300
     height = 225

@@ -56,7 +56,7 @@ import scalafx.scene.Scene
  */
 
 object ScalaFX_Scene_Graph_App_01 extends JFXApp {
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "ScalaFX Scene Graph App 01"
     scene = new Scene(500, 500) {
       fill = Color.BLACK

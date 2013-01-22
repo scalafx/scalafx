@@ -57,7 +57,7 @@ object LayoutDemo extends JFXApp {
   val charm = new Text("charm") { font = new Font(24); alignment = Pos.BASELINE_LEFT; textOrigin = VPos.BASELINE }
   val strange = new Text("strange") { font = new Font(12); alignment = Pos.BASELINE_LEFT; textOrigin = VPos.BASELINE }
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     width = 1024
     height = 768
     scene = new Scene {

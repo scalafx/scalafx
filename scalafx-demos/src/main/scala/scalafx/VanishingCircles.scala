@@ -45,7 +45,7 @@ import scalafx.stage.Stage
  */
 object VanishingCircles extends JFXApp {
   var circles: Seq[Circle] = null
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "Vanishing Circles"
     width = 800
     height = 600

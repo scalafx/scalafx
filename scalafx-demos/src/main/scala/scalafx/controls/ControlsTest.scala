@@ -67,7 +67,7 @@ object ControlsTest extends JFXApp {
         right = controlsPane
       }
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "CheckBox Test"
     width = 800
     height = 600

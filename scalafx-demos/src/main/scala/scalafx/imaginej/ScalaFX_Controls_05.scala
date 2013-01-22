@@ -132,7 +132,7 @@ object ScalaFX_Controls_05 extends JFXApp {
 //      }
 //  }
 //
-//  stage = new Stage {
+//  stage = new Stage(JFXApp.STAGE) {
 //    title = "ScalaFX Controls 05"
 //    width = 250
 //    height = 180

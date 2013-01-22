@@ -411,7 +411,7 @@ object theControl extends Control
 
 object JumpingFrogsPuzzle extends JFXApp {
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = TITLE
     scene = new Scene {
       content =

@@ -56,7 +56,7 @@ import scene.paint.Stops
  */
 object ColorfulCircles extends JFXApp {
   val circlesToAnimate = new VectorBuilder[Circle]()
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     width = 800
     height = 600
     scene = new Scene {

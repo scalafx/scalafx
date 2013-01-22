@@ -67,7 +67,7 @@ object ScalaFX_Scene_Graph_App_03 extends JFXApp {
     height = 250
     fill = Color.BLUE
   }
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "ScalaFX Scene Graph App 03"
     scene = new Scene(500, 500) {
       fill = Color.BLACK

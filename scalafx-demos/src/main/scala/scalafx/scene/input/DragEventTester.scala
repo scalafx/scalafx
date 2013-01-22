@@ -49,7 +49,7 @@ object DragEventTester extends JFXApp {
     content = new Label("Drop things here...")
   }
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "DragEvent Tester"
     scene = new Scene(stackPane, 200, 200) {
       onDragOver = (event: DragEvent) => {

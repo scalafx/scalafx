@@ -67,7 +67,7 @@ object PasswordFieldTest extends JFXApp {
     hgrow = Priority.ALWAYS
   }
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "passwordField Test"
     width = 300
     height = 380

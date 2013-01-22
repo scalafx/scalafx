@@ -75,7 +75,7 @@ object TextAreaTest extends JFXApp {
 //    hgrow = Priority.ALWAYS
   }
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "TextArea Test"
     width = 450
     height = 380

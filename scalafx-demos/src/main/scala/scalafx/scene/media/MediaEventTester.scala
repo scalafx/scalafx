@@ -37,7 +37,7 @@ object MediaEventTester extends JFXApp {
     style = "-fx-background-color: black;"
   }
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "MediaEventTester"
     scene = new Scene(root, 540, 320)
   }

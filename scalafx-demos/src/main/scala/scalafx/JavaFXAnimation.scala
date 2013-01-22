@@ -58,7 +58,7 @@ object JavaFXAnimation extends JFXApp {
     )
   }
   timeline.play()
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     scene = new Scene {
       content = List(rect1, rect2)
     }

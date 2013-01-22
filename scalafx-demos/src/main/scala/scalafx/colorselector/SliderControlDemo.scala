@@ -99,7 +99,7 @@ object SliderControlDemo extends JFXApp {
   box.prefWidth <== mainScene.width
   box.prefHeight <== mainScene.height
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "SliderControl Demo"
     width = 600
     height = 200

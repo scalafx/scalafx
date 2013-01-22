@@ -36,7 +36,7 @@ import scene.shape.Circle
 import scalafx.scene.paint.Color
 
 object BorderPaneTest extends JFXApp {
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     scene = new Scene {
       fill = Color.LIGHTGRAY
       content = new BorderPane {

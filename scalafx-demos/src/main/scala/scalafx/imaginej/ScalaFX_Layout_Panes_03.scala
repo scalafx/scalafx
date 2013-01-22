@@ -92,7 +92,7 @@ object ScalaFX_Layout_Panes_03 extends JFXApp {
       text = "  Costs"
     }
   )
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "ScalaFX Layout Panes 03"
     scene = new Scene {
       content = new BorderPane {

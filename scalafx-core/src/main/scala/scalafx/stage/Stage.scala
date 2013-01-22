@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,16 +40,14 @@ object Stage {
   implicit def sfxStage2jfx(v: Stage) = v.delegate
 }
 
-class Stage(private val d: jfxs.Stage = JFXApp.STAGE)
-  extends Window(d)
+class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
+  extends Window(delegate)
   with SFXDelegate[jfxs.Stage] {
 
   /**
    * Creates a new instance of Stage.
    */
   def this(style: jfxs.StageStyle) = this(new jfxs.Stage(style))
-
-  override val delegate: jfxs.Stage = d
 
   /**
    * Specifies whether this Stage should be a full-screen, undecorated window.

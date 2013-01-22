@@ -20,7 +20,7 @@ import scalafx.stage.Stage
  */
 object SceneRootAssignmentDemo extends JFXApp {
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "Scene.root Assignment Demo"
     scene = new Scene {
       root = new StackPane {

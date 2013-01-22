@@ -59,7 +59,7 @@ object BasicOpsTest extends JFXApp {
   gc.strokePolygon(Seq((60.0, 210), (90, 210), (60, 240), (90, 240)))
   gc.strokePolyline(Seq((110.0, 210), (140, 210), (110, 240), (140, 240)))
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "Drawing Operations Test"
     scene = new Scene {
       content = canvas

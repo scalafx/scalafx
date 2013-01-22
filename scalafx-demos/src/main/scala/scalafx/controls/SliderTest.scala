@@ -38,7 +38,7 @@ object SliderTest extends JFXApp {
     hgrow = Priority.ALWAYS
   }
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "Slider Test"
     width = 300
     height = 380
