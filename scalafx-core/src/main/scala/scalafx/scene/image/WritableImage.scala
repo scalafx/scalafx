@@ -31,7 +31,7 @@ import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object WritableImage {
-  implicit def sfxWritableImage2jfx(wi: WritableImage) = wi.delegate
+  implicit def sfxWritableImage2jfx(wi: WritableImage) = if (null == wi) null else wi.delegate
 }
 
 /**
