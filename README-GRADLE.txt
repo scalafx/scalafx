@@ -154,10 +154,10 @@ The following Gradle command have proven very useful
     # Performs of install of artifacts to a local repository
     
 
-    gradle :scalafx-core:clean
-    gradle :scalafx-core:compileScala
-    gradle :scalafx-core:build
-    gradle :scalafx-core:test
+    % gradle :scalafx-core:clean
+    % gradle :scalafx-core:compileScala
+    % gradle :scalafx-core:build
+    % gradle :scalafx-core:test
     # Project named qualified task only for the `scalafx-core' project.
     
     

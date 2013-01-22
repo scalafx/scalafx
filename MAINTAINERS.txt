@@ -46,7 +46,7 @@ Here are some definitions:
 
 Committers are people who have `commit rights' to ScalaFX repository.
 
-Contributors are people who do have `commit rights'.
+Contributors are people who do not have `commit rights'.
 
 
 Credit where it is due: inspiration from the famous long running GNU C/C++
@@ -63,16 +63,19 @@ Yours sincerely,
 
                     *COMMITTERS*        (alphabetical order)
 
-
+Rafael Afonso       ;           ;                               ; 
+Alain Béarez        ;           A@cua.li                ;       http://cua.li/TI/ ; 
 Stephen Chin        ;           stephen.chin@oracle.com ;       http://www.nighthacking.com/ ;              Co-creator, Java Champion
-Peter Pilgrim       ;           peter.pilgrim@gmail.com;        http://www.xenononique.co.uk/blog/ ;        Java Champion, independent contractor JavaEE7, JavaFX, Scala
+Robert Ladstätter   ;           ;                               ; 
+Peter Pilgrim       ;           peter.pilgrim@gmail.com ;       http://www.xenononique.co.uk/blog/ ;        Java Champion, independent contractor JavaEE7, JavaFX, Scala
 Sven Reimers        ;           ;                               http://wiki.netbeans.org/SvenReimers/ ;     Co-creator, Netbeans Dream Team
-Jarek Sancha        ;           ;                               ;
+Jarek Sacha         ;           ;                               ; 
 
 
 
                     *CONTRIBUTORS*       (alphabetical order)
 
-
+Matthew Pocock      ;           ;                               ; 
+Curtis Stanford     ;           ;                               ; 
 
 -- END -- (PLEASE DO NOT EDIT THIS LINE!)

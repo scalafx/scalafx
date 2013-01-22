@@ -28,7 +28,8 @@ program chair; and Sven Reimers, a member of the Netbeans Dream Team.
 
 There are two official ways to build ScalaFX: using the SBT, which is the
 primary option, and Gradle, the secondary option. For information on building
-with SBT see `README-SBT.txt' and the Gradle operation `README-GRADLE.txt'.
+with SBT see 'README-SBT.txt' and the Gradle operation 'README-GRADLE.txt'.
+For information about using Maven directly, see 'README-MAVEN.txt'.
 
 Since, Thursday, 17th January 2013, ScalaFX has been refactored into
 multi-module project. Peter Pilgrim, Java Champion, was responsible to move
@@ -58,7 +59,7 @@ The following software is needed to build ScalaFX:
   2b) gradle (http://gradle.org/)  v1.3 or better
   3) Scala  (http://www.scala.org/) version 2.9.2 works!
   
-The ScalaFX software can be Java SE 7 from version jdk1.7.0_09 or better. It
+The JavaFX software can be Java SE 7 from version jdk1.7.0_09 or better. It
 works with Windows, MacOS X and Linux ports.
 
 
@@ -98,7 +99,7 @@ The `scalafx-demos' is the sub project for the ScalaFX Demonstrations Framework.
 The `project' folder is reserved for Scala SBT.
 
 
-4. Miscellanous
+4. Miscellaneous
    ------------
 
 Any other business section.
@@ -108,7 +109,7 @@ Any other business section.
 5. Credits
    -------
    
-You can say find the full list of committers, developers and contributors in
+You can find the full list of committers, developers and contributors in
 the file `MAINTAINERS.txt'.
 
 

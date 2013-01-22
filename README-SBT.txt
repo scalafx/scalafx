@@ -36,7 +36,7 @@ Define an environment variable `JAVAFX_HOME' that points to the JDK location, if
 you want to keep JAVA_HOME separate. `JAVAFX_HOME' takes priority over
 `JAVA_HOME' in the Scala SBT build.
 
-For Oracle Java SE JDK 7 builds, which are distributed with JavaFX 2.x, the
+For Oracle Java SE JDK 7 builds, which are distributed with JavaFX 2.2.x, the
 build checks for the presence of the `jfxrt.jar', which should be found under
 `${JAVAFX_HOME}/jre/lib/jfxrt.jar' or `${JAVA_HOME}/jre/lib/jfxrt.jar'
 
@@ -62,7 +62,7 @@ Setting `JAVAFX_HOME' is very useful, if you have more than one JDK installed on
 your development workstation. For example, if you have a beta version of JDK 8
 and still want to use JDK 7 for ScalaFX, then you have settings like this:
 
-   JAVAFX_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_09.jdk/Contents/Home
+   JAVAFX_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Home
    JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home
 
 
@@ -135,27 +135,29 @@ Navigate around the Scala SBT multiple modules:
     sbt> project scalafx-demos
     sbt> projects
 
-    # navigate to back to the root modile again
+    # navigate to back to the root module again
     sbt> project /
     sbt> projects
 
 
-Generate Intellij IDEA project files:
+Generate IntelliJ IDEA project files:
 
-    # sbt eclipse
+    % sbt gen-idea
+or
     sbt> gen-idea
 
 
 Generate Eclipse project files:
  
-    # sbt eclipse
+    % sbt eclipse
+or
     sbt> eclipse
 
 The Eclipse Plugin generates the files: scalafx-core/.project, scalafx-core/.classpath
 and the files scalafx-demos/.project, scalafx-demos/.classpath
 
 
-Miscellanouse SBT commands:
+Miscellaneous SBT commands:
 
     sbt> about
     sbt> show resolvers
@@ -188,7 +190,7 @@ What if you want to run the demonstration from the command line? You can do it.
 Let's assume you are in the root directory of the scalafx project. Execute the
 following command line:
 
-    $ sbt scalafx-demos/run
+    % sbt scalafx-demos/run
     
 This should launch the demonstration ScalaFX program.
 
@@ -200,7 +202,7 @@ This should launch the demonstration ScalaFX program.
 SBT can publish artifacts to local repository using the task `publish-local'.
 Here is the command line:
 
-   % sbt publish-local
+    % sbt publish-local
    
 
 This will push the ScalaFX artifacts to your local Ivy Repository under
@@ -210,8 +212,8 @@ relies on Scala SBT.
 If you want to generate artifacts for Maven then you need to manually install at
 the moment. Sorry about that. Here are the necessaey commands:
 
-   % sbt make-pom
-   % mvn install:install-file -DartifactId=scalafx_2.9.2 \
+    % sbt make-pom
+    % mvn install:install-file -DartifactId=scalafx_2.9.2 \
     -DgroupId=org.scalafx \
     -Dpackaging=jar \
     -DpomFile=scalafx-core_2.9.2-1.0-SNAPSHOT.pom \
@@ -238,7 +240,7 @@ following example of the `sbt' shell script.
     # SBT launch file (Peter Pilgrim)
     # http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html#manual-installation
     # based on SBT 0.12.2
-    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_09.jdk/Contents/Home
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Home
     export PATH=${JAVA_HOME}/bin:${JAVA_HOME}/jre/bin:${PATH}
     java -Xms512M -Xmx1536M -Xss2M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=512M -jar `dirname $0`/sbt-launch.jar "$@"
     # End.
