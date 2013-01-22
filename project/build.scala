@@ -30,11 +30,15 @@ object ScalaFXBuild extends Build {
         var j = System.getenv("JAVAFX_HOME")
         if ( j==null ) {
             j = System.getenv("JAVA_HOME")
+            if (j==null) {
+              throw new RuntimeException(
+                  "SBT Failure: neither JAVAFX_HOME nor JAVA_HOME environment variables have been defined!"
+              )
+            }
         }
         val dir = new File(j) 
         if ( !dir.exists) {
-            throw new RuntimeException(
-                "SBT Failure: neither JAVAFX_HOME nor JAVA_HOME environment variables have been defined!")
+            throw new RuntimeException("SBT Failure: no such directory found: "+ j)
         }
         println("**** detected Java/JDK Home is set to "+dir+"  ****")
         Some(j)
