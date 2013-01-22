@@ -18,3 +18,7 @@ project/target
 *.iml
 *.log
 *.bak
+scalafx-core/.classpath
+scalafx-core/.project
+scalafx-demos/.classpath
+scalafx-demos/.project
