@@ -35,7 +35,7 @@ import scalafx.scene.shape.Rectangle
 import scalafx.stage.Stage
 
 object JavaFXChangeListener extends JFXApp {
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title.value = "Hello Stage"
     width = 600
     height = 450

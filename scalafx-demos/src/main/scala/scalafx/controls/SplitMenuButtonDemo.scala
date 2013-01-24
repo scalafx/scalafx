@@ -39,7 +39,7 @@ import scalafx.stage.Stage
 
 object SplitMenuButtonDemo extends JFXApp {
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     scene = new Scene(200, 200) {
       content = new VBox {
         padding = Insets(10)

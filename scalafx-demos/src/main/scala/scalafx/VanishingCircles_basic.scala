@@ -41,7 +41,7 @@ import scalafx.stage.Stage
  * Vanishing Circles Basic
  */
 object VanishingCircles_basic extends JFXApp {
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "Vanishing Circles"
     width = 800
     height = 600

@@ -89,7 +89,7 @@ object CheckBoxTest extends JFXApp {
   grid.add(btnFire, 0, 2)
   grid.add(txfText, 1, 2)
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "CheckBox Test"
     width = 300
     height = 100

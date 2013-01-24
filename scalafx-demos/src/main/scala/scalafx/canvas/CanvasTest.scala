@@ -96,7 +96,7 @@ object CanvasTest extends JFXApp {
   gc.applyEffect(new DropShadow(20, -20, 0, Color.GREEN))
   gc.applyEffect(new DropShadow(20, 0, -20, Color.RED))
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "Canvas Test"
     scene = new Scene(400, 400) {
       content = canvas

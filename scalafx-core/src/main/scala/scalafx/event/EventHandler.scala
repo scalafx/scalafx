@@ -73,24 +73,16 @@ trait EventHandlerDelegate {
    *
    */
   type EventHandled = {
-    /**
-     * Registers an event handler to this class.
-     */
+    // Registers an event handler to this type.
     def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_])
 
-    /**
-     * Unregisters a previously registered event handler from this class
-     */
+    // Unregisters a previously registered event handler from this type.
     def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_])
 
-    /**
-     * Registers an event filter to this class.
-     */
+    // Registers an event filter to this type.
     def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_])
 
-    /**
-     * Unregisters a previously registered event filter from this class
-     */
+    // Unregisters a previously registered event filter from this type.
     def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_])
   }
 

@@ -137,7 +137,7 @@ object ScalaFX_Layout_Panes_04 extends JFXApp {
     fill = Color.WHITE
   }
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "ScalaFX Layout Panes 04"
     scene = new Scene {
       content = new BorderPane {

@@ -64,7 +64,7 @@ object ChangeFillExample extends JFXApp {
   val Light = Color.LIGHTGRAY
   val Dark = Color.GRAY
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "Change Fill Example"
     scene = new Scene {
       root = new BorderPane {

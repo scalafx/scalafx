@@ -30,7 +30,7 @@ object WebDemo extends JFXApp {
   }
   txfUrl.onAction = (engine.load(txfUrl.text.get))
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "ScalaFX Web Demo"
     width = 800
     height = 600

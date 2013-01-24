@@ -26,7 +26,7 @@ object VideoCubeDemo extends JFXApp {
 
   var animation: Timeline = _
   var root = new Group
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     scene = new Scene( root, 800, 600, true )  {
       fill = Color.BLACK
     }

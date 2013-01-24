@@ -159,7 +159,7 @@ object ScalaFX_Controls_02 extends JFXApp {
       hBox2
     )
   }
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "ScalaFX Controls 02"
     width = 300
     height = 190

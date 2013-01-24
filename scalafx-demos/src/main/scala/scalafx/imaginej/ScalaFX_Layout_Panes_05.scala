@@ -179,7 +179,7 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   gridPane.add(newText, 3, 2)
 
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "ScalaFX Layout Panes 05"
     scene = new Scene {
       content = new BorderPane {

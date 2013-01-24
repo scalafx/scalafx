@@ -16,7 +16,7 @@ import scalafx.scene.paint.Color
 
 object AccordionTest extends JFXApp {
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     width = 600
     height = 450
     scene = new Scene {

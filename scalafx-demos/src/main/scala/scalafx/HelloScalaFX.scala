@@ -15,7 +15,7 @@ import scene.text.Text
 import javafx.scene.{ effect => jfxse }
 
 object HelloScalaFX extends JFXApp {
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "ScalaFX Hello World"
     width = 650
     height = 450

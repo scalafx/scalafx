@@ -85,7 +85,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    *
    * @param keyValues Sequence of tuples
    *
-   * @returns A newly created ObservableMap
+   * @return A newly created ObservableMap
    */
   def apply[K, V](keyValues: Seq[(K, V)]): ObservableMap[K, V] = {
     val map = empty[K, V]
@@ -101,7 +101,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    *
    * @param A Map that backs this ObservableMap
    *
-   * @returns A newly created ObservableMap
+   * @return A newly created ObservableMap
    */
   def apply[K, V](originalMap: Map[K, V]): ObservableMap[K, V] =
     new ObservableMap[K, V] {
@@ -148,7 +148,7 @@ trait ObservableMap[K, V]
    * Adds a new key/value pair to this map.
    *
    * @param the key/value pair.
-   * @returns the map itself
+   * @return the map itself
    */
   def +=(kv: (K, V)) = {
     delegate.put(kv._1, kv._2)
@@ -159,7 +159,7 @@ trait ObservableMap[K, V]
    * Removes a key from this map.
    *
    * @param the key to be removed
-   * @returns the map itself.
+   * @return the map itself.
    */
   def -=(key: K) = {
     delegate.remove(key)
@@ -174,7 +174,7 @@ trait ObservableMap[K, V]
   /**
    * Creates a new iterator over all key/value pairs of this map
    *
-   * @returns the new iterator
+   * @return the new iterator
    */
   def iterator = new Iterator[(K, V)] {
     // Definition copied from JavaConversions.JMapWrapperLike.iterator
@@ -192,7 +192,7 @@ trait ObservableMap[K, V]
    * Optionally returns the value associated with a key.
    *
    * @param key the key value
-   * @returns an option value containing the value associated with key in this map, or None if
+   * @return an option value containing the value associated with key in this map, or None if
    * none exists.
    */
   def get(key: K) = if (delegate.containsKey(key)) Option(delegate.get(key)) else None

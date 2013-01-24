@@ -104,7 +104,7 @@ object ScalaFX_Controls_01 extends JFXApp {
       wrappedLabel
     )
   }
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "ScalaFX Controls 01"
     width = 500
     height = 180

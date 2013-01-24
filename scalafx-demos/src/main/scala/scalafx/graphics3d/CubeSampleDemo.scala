@@ -26,7 +26,7 @@ object CubeSampleDemo extends JFXApp {
 
     var animation: Timeline = _
     var root = new Group
-    stage = new Stage {
+    stage = new Stage(JFXApp.STAGE) {
 //      width = 800
 //      height = 600
       scene = new Scene( root, 400, 150, true )

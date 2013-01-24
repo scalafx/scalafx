@@ -15,7 +15,7 @@ object MenuBarTest extends JFXApp {
        menus.add(new Menu("test"))
      }
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
        title = "MenuBar Test"
        width = 300
        height = 225

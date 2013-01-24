@@ -102,7 +102,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    * Creates a new Observable Buffer from a sequence of elements.
    *
    * @param itens Sequence of elements
-   * @returns new Observable Buffer from items
+   * @return new Observable Buffer from items
    */
   def apply[T](items: Seq[T]): ObservableBuffer[T] =
     new ObservableBuffer[T](jfxc.FXCollections.observableArrayList[T](items))

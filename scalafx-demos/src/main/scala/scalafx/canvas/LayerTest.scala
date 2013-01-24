@@ -98,7 +98,7 @@ object LayerTest extends JFXApp {
   private val root = new Group
   root.children = borderPane
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "Layer Test"
     scene = new Scene(root)
   }

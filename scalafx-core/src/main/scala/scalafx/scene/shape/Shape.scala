@@ -61,9 +61,12 @@ object Shape {
 abstract class Shape(override val delegate: jfxss.Shape) extends Node(delegate) with SFXDelegate[jfxss.Shape] {
   def fill :ObjectProperty[jfxsp.Paint] = delegate.fillProperty
   def fill_=(v: Paint) {
-    fill() = v.delegate
+    if (null == v) {
+      delegate.setFill(null)
+    } else {
+      fill() = v
+    }
   }
-
   def smooth :BooleanProperty = delegate.smoothProperty
   def smooth_=(v: Boolean) {
     smooth() = v

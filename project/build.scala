@@ -17,24 +17,28 @@ object ScalaFXBuild extends Build {
     lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
         organization := "org.scalafx",
         version := "1.0-SNAPSHOT", 
-        crossScalaVersions := Seq("2.9.2"),
+        crossScalaVersions := Seq( "2.9.2", "2.10.0" ),
         scalaVersion <<= (crossScalaVersions) { versions => versions.head },
         scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
         javacOptions ++= Seq("-target", "1.6", "-source", "1.6", "-Xlint:deprecation"),
         manifestSetting,
         publishSetting,
-        resolvers ++= Seq(localMavenRepo, sonatypeNexusSnapshots)
+        resolvers ++= Seq( localMavenRepo, sonatypeNexusSnapshots )
     ) ++ mavenCentralSettings
     
     lazy val javaHome = {
         var j = System.getenv("JAVAFX_HOME")
         if ( j==null ) {
             j = System.getenv("JAVA_HOME")
+            if (j==null) {
+              throw new RuntimeException(
+                  "SBT Failure: neither JAVAFX_HOME nor JAVA_HOME environment variables have been defined!"
+              )
+            }
         }
         val dir = new File(j) 
         if ( !dir.exists) {
-            throw new RuntimeException(
-                "SBT Failure: neither JAVAFX_HOME nor JAVA_HOME environment variables have been defined!")
+            throw new RuntimeException("SBT Failure: no such directory found: "+ j)
         }
         println("**** detected Java/JDK Home is set to "+dir+"  ****")
         Some(j)
@@ -43,10 +47,10 @@ object ScalaFXBuild extends Build {
     lazy val unmanagedListing = unmanagedJars in Compile += Attributed.blank(file(javaHome.get + "/jre/lib/jfxrt.jar" ))
 
     lazy val scalafxProject = Project(
-        id = "scalafx-project",
+        id = "scalafx",
         base = file("."),
         settings = scalafxSettings ++ doNotPublish ++ Seq(
-            description := "The ScalaFX framework"
+            description := "The ScalaFX framework (root project)"
         ),
         aggregate = Seq( scalafxCore, scalafxDemos )
     )

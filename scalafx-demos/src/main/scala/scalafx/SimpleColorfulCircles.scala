@@ -54,7 +54,7 @@ import scalafx.stage.Stage
  */
 object SimpleColorfulCircles extends JFXApp {
   var circles: Seq[Circle] = null
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     width = 800
     height = 600
     scene = new Scene {

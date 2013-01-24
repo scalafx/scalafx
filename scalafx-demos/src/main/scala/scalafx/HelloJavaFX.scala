@@ -37,7 +37,7 @@ import scalafx.stage.Stage
 import scalafx.scene.shape.Arc
 
 object HelloJavaFX extends JFXApp {
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     width = 600
     height = 450
     scene = new Scene {

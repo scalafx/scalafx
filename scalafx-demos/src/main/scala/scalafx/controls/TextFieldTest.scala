@@ -64,7 +64,7 @@ object TextFieldTest extends JFXApp {
     hgrow = Priority.ALWAYS
   }
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "TextField Test"
     width = 300
     height = 400

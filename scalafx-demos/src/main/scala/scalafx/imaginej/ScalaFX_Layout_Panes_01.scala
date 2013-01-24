@@ -57,7 +57,7 @@ import scalafx.scene.paint.Color
  */
 
 object ScalaFX_Layout_Panes_01 extends JFXApp {
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     title = "ScalaFX Layout Panes 01"
     scene = new Scene {
       content = new BorderPane {
