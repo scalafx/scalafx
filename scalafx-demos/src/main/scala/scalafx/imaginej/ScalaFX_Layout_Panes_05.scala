@@ -92,7 +92,7 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
     height = questionText.boundsInLocal.getValue.getHeight() + 10
   }
   val stackPane = new StackPane {
-    innerAlignment = Pos.CENTER
+    alignment = Pos.CENTER
     content = List(questionRectangle, questionText)
   }
   val hBox = new HBox {

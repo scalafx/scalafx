@@ -60,9 +60,9 @@ trait AlignmentDelegate[J <: Object with Aligned]
    * 
    * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node.
    */
-  def innerAlignment = delegate.alignmentProperty
-  def innerAlignment_=(v: Pos) {
-    innerAlignment() = v
+  def alignment = delegate.alignmentProperty
+  def alignment_=(v: Pos) {
+    alignment() = v
   }
 
 }

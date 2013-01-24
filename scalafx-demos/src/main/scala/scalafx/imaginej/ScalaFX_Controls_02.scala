@@ -116,7 +116,7 @@ object ScalaFX_Controls_02 extends JFXApp {
 
   val hBox1 = new HBox {
     spacing = 10
-    innerAlignment = Pos.BOTTOM_CENTER
+    alignment = Pos.BOTTOM_CENTER
     content = List(
       okButton2,
       koButton1,

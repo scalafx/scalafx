@@ -28,7 +28,7 @@ object SeparatorDemo extends JFXApp {
   val controlsPane = new VBox {
     spacing = 5
     fillWidth = true
-    innerAlignment = Pos.CENTER
+    alignment = Pos.CENTER
     alignmentInParent = Pos.TOP_CENTER
     hgrow = Priority.ALWAYS
     content = List(new SeparatorControls(separator), new ControlControls(separator))

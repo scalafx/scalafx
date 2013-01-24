@@ -77,7 +77,7 @@ object ChangeFillExample extends JFXApp {
         }
         bottom = new HBox {
           padding = Insets(10)
-          innerAlignment = Pos.CENTER
+          alignmentInParent = Pos.CENTER
           content = new Button {
             text = "Change Fill"
             onAction = (ae: ActionEvent) => fillPaint() = if (Light == fillPaint()) Dark else Light

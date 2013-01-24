@@ -47,17 +47,17 @@ trait AlignmentDelegateSpec[J <: Object with Aligned, D <: AlignmentDelegate[J]]
     val initialValue = Pos.BASELINE_CENTER
     val finalValue = Pos.CENTER_RIGHT
 
-    delegate.innerAlignment = initialValue
-    val subscription = delegate.innerAlignment.onChange((ov, oldValue, newValue) => {
+    delegate.alignment = initialValue
+    val subscription = delegate.alignment.onChange((ov, oldValue, newValue) => {
       oldValue should be(initialValue.delegate)
       newValue should be(finalValue.delegate)
       changed = true
     })
 
-    delegate.innerAlignment = finalValue
+    delegate.alignment = finalValue
 
     changed should be(true)
-    delegate.innerAlignment.value should be(finalValue.delegate)
+    delegate.alignment.value should be(finalValue.delegate)
 
     subscription.cancel
   }

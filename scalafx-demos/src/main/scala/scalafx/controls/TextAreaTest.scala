@@ -62,7 +62,7 @@ object TextAreaTest extends JFXApp {
   val controlsPane = new VBox {
     spacing = 5
     fillWidth = true
-    innerAlignment = Pos.CENTER
+    alignment = Pos.CENTER
     prefHeight <== scene.height
     hgrow = Priority.NEVER
     content = List(new TextAreaControls(textArea), new TextInputControlControls(textArea), new ControlControls(textArea))

@@ -24,7 +24,7 @@ object SliderTest extends JFXApp {
   val controlsPane = new VBox {
     spacing = 5
     fillWidth = true
-    innerAlignment = Pos.CENTER
+    alignment = Pos.CENTER
     hgrow = Priority.NEVER
     content = List(new SliderControls(slider), new ControlControls(slider))
   }

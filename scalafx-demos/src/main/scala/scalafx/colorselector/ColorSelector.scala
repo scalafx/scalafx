@@ -192,7 +192,7 @@ object ColorSelector extends JFXApp {
   val txfColorValue = new TextField {
     promptText = "Color Value"
     editable = false
-    innerAlignment = Pos.CENTER_LEFT
+    alignment = Pos.CENTER_LEFT
     hgrow = Priority.NEVER
     style = "-fx-font-family: Consolas;"
   }
