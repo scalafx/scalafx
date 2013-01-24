@@ -9,9 +9,7 @@ import javafx.scene.input.MouseEvent
 import javafx.scene.layout.Priority
 import javafx.scene.text.TextAlignment
 import scala.collection.Seq
-import scalafx.Includes.jfxBooleanProperty2sfx
-import scalafx.Includes.jfxDoubleProperty2sfx
-import scalafx.Includes.jfxObjectProperty2sfx
+import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.beans.property.DoubleProperty
@@ -186,7 +184,9 @@ object ColorSelector extends JFXApp {
   val cmbWebColor = new ComboBox[WebColor](WebColor.colors) {
     promptText = "Web Color"
     converter = StringConverter.toStringConverter((wc: WebColor) => wc.name)
-    onAction = webColorSelected
+    onAction =  new EventHandler[javafx.event.ActionEvent] {
+       def handle(event: javafx.event.ActionEvent) = webColorSelected
+    }
   }
 
   val txfColorValue = new TextField {
@@ -201,7 +201,9 @@ object ColorSelector extends JFXApp {
     promptText = "Color Format"
     converter = StringConverter.toStringConverter((f: Formatter) => f.description)
     value = RgbFormatter
-    onAction = formatColor
+    onAction = new EventHandler[javafx.event.ActionEvent] {
+       def handle(event: javafx.event.ActionEvent) = formatColor
+    }
   }
 
   val chbDisableAlpha = new CheckBox {
