@@ -161,7 +161,16 @@ class JFXApp extends DelayedInit {
   def delayedInit(x: => Unit) {
     init = () => x
   }
-  
+
+  /**
+   *  This method is called when the application should stop, and provides a convenient place to prepare
+   *  for application exit and destroy resources.
+   *
+   *  It is called from javafx.Application.stop method.
+   *  The implementation of this method provided by the JFXApp class does nothing.
+   *
+   *  NOTE: This method is called on the JavaFX Application Thread, the same as javafx.Application.stop method.
+   */
   def stopApp() {
   }
 }
