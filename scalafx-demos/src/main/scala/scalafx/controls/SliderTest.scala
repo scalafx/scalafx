@@ -18,7 +18,7 @@ import scalafx.util.converter.DoubleStringConverter
 object SliderTest extends JFXApp {
 
   val slider = new Slider {
-    alignment = Pos.CENTER
+    alignmentInParent = Pos.CENTER
   }
 
   val controlsPane = new VBox {

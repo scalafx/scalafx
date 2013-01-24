@@ -192,7 +192,7 @@ object ColorSelector extends JFXApp {
   val txfColorValue = new TextField {
     promptText = "Color Value"
     editable = false
-    alignment = Pos.CENTER_LEFT
+    innerAlignment = Pos.CENTER_LEFT
     hgrow = Priority.NEVER
     style = "-fx-font-family: Consolas;"
   }
@@ -247,7 +247,7 @@ object ColorSelector extends JFXApp {
 
     add(controlRed, 0, 1)
     add(new Label {
-      alignment = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TOP_RIGHT
       labelFor = cmbWebColor
       text = "Web Color"
       textAlignment = TextAlignment.RIGHT
@@ -257,7 +257,7 @@ object ColorSelector extends JFXApp {
 
     add(controlGreen, 0, 2)
     add(new Label {
-      alignment = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TOP_RIGHT
       labelFor = txfColorValue
       text = "Color Value"
       textAlignment = TextAlignment.RIGHT
@@ -267,7 +267,7 @@ object ColorSelector extends JFXApp {
 
     add(controlBlue, 0, 3)
     add(new Label {
-      alignment = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TOP_RIGHT
       labelFor = cmbColorFormat
       text = "Color Format"
       textAlignment = TextAlignment.RIGHT
@@ -277,7 +277,7 @@ object ColorSelector extends JFXApp {
 
     add(controlAlpha, 0, 4)
     add(new Label {
-      alignment = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TOP_RIGHT
       labelFor = chbDisableAlpha
       text = "Disable Alpha"
       textAlignment = TextAlignment.RIGHT

@@ -602,9 +602,9 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
 
   // layout pseudo-properties:
 
-  def alignment: Pos = delegate.getProperties().get("alignment").asInstanceOf[jfxg.Pos]
+  def alignmentInParent: Pos = delegate.getProperties().get("alignment").asInstanceOf[jfxg.Pos]
 
-  def alignment_=(p: Pos) {
+  def alignmentInParent_=(p: Pos) {
     delegate.getProperties().put("alignment", p.delegate)
     delegate.getProperties().put("halignment", p.hpos.delegate)
     delegate.getProperties().put("valignment", p.vpos.delegate)

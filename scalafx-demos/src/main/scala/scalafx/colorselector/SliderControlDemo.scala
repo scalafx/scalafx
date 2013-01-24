@@ -25,7 +25,7 @@ object SliderControlDemo extends JFXApp {
   val sliderControl = new SliderControl("X")
 
   val txfInputValue = new TextField {
-    alignment = Pos.BASELINE_LEFT
+    alignmentInParent = Pos.BASELINE_LEFT
     promptText = "Enter the value"
     hgrow = Priority.NEVER
     onAction = {
@@ -34,17 +34,17 @@ object SliderControlDemo extends JFXApp {
   }
 
   val lblOutputValue = new Label {
-    alignment = Pos.BASELINE_LEFT
+    alignmentInParent = Pos.BASELINE_LEFT
     text <== sliderControl.realValue.asString("%03.0f")
   }
 
   val chbSelected = new CheckBox {
-    alignment = Pos.BASELINE_LEFT
+    alignmentInParent = Pos.BASELINE_LEFT
     selected <==> sliderControl.selectedControl
   }
 
   val chbEnabled = new CheckBox {
-    alignment = Pos.BASELINE_LEFT
+    alignmentInParent = Pos.BASELINE_LEFT
     selected <==> sliderControl.disable
   }
 

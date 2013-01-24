@@ -29,7 +29,7 @@ object SeparatorDemo extends JFXApp {
     spacing = 5
     fillWidth = true
     innerAlignment = Pos.CENTER
-    alignment = Pos.TOP_CENTER
+    alignmentInParent = Pos.TOP_CENTER
     hgrow = Priority.ALWAYS
     content = List(new SeparatorControls(separator), new ControlControls(separator))
   }

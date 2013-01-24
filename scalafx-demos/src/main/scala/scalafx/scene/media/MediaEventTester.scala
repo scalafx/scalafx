@@ -12,7 +12,7 @@ import scalafx.stage.Stage
 object MediaEventTester extends JFXApp {
 
   val markerText = new Label {
-    alignment = Pos.TOP_CENTER
+    alignmentInParent = Pos.TOP_CENTER
     style = "-fx-padding: 20; -fx-font-size: 24pt; -fx-text-fill: white;"
   }
 
