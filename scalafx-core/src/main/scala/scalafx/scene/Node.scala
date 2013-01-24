@@ -51,6 +51,7 @@ import scalafx.scene.effect.Effect
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.transform.Transform
 import scalafx.scene.image.WritableImage
+import scalafx.geometry.Pos
 
 object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
@@ -601,16 +602,16 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
 
   // layout pseudo-properties:
 
-  def alignment = delegate.getProperties().get("alignment").asInstanceOf[jfxg.Pos]
+  def alignment: Pos = delegate.getProperties().get("alignment").asInstanceOf[jfxg.Pos]
 
-  def alignment_=(p: jfxg.Pos) {
-    delegate.getProperties().put("alignment", p)
-    delegate.getProperties().put("halignment", p.getHpos)
-    delegate.getProperties().put("valignment", p.getVpos)
+  def alignment_=(p: Pos) {
+    delegate.getProperties().put("alignment", p.delegate)
+    delegate.getProperties().put("halignment", p.hpos.delegate)
+    delegate.getProperties().put("valignment", p.vpos.delegate)
     // for compatibility with layouts, which all use different keys
     jfxsl.BorderPane.setAlignment(delegate, p)
-    jfxsl.GridPane.setHalignment(delegate, p.getHpos)
-    jfxsl.GridPane.setValignment(delegate, p.getVpos)
+    jfxsl.GridPane.setHalignment(delegate, p.hpos)
+    jfxsl.GridPane.setValignment(delegate, p.vpos)
     jfxsl.StackPane.setAlignment(delegate, p)
     jfxsl.TilePane.setAlignment(delegate, p)
   }
