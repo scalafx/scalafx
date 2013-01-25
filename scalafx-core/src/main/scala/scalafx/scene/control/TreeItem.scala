@@ -111,7 +111,7 @@ object TreeItem {
     /**
      * Returns the TreeItem upon which this event occurred.
      */
-    def source = delegate.getSource
+    override def source = delegate.getSource
 
     /**
      * Returns the TreeItem that this event occurred upon.

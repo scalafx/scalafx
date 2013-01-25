@@ -56,7 +56,7 @@ object ListView {
     /**
      * Returns the ListView upon which the edit took place.
      */
-    def source = delegate.getSource()
+    override def source = delegate.getSource
 
     /**
      * Returns the value of the new input provided by the end user.

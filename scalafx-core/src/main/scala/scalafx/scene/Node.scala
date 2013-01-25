@@ -363,7 +363,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    */
   def onMouseDragEntered = delegate.onMouseDragEnteredProperty
 
-  def onMouseDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]) {
     onMouseDragEntered() = v
   }
 
@@ -372,23 +372,25 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    */
   def onMouseDragExited = delegate.onMouseDragExitedProperty
 
-  def onMouseDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]) {
     onMouseDragExited() = v
   }
 
+  /**
+   * Defines a function to be called when a full press-drag-release gesture progresses within this Node.
+   */
   def onMouseDragOver = delegate.onMouseDragOverProperty
 
-  def onMouseDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]) {
     onMouseDragOver() = v
   }
 
   /**
-   * Defines a function to be called when a full press-drag-release gesture progresses within this
-   * Node.
+   * Defines a function to be called when a full press-drag-release gesture ends (by releasing mouse button) within this Node.
    */
   def onMouseDragReleased = delegate.onMouseDragReleasedProperty
 
-  def onMouseDragReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseDragReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]) {
     onMouseDragReleased() = v
   }
 

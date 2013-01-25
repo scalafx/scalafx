@@ -76,6 +76,22 @@ trait EventIncludes {
 
 
 	/**
+	 * Converts a Function that manipulates a [[scalafx.scene.input.MouseDragEvent]] 
+	 * and returns a [[scala.Unit]] in a 
+	 * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
+	 * that manipulates a 
+	 * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/MouseDragEvent.html JavaFX`s MouseEvent]]
+	 * 
+	 * @param handler function that manipulates a ScalaFX's MouseDragEvent
+	 * @return a JavaFX's EventHandler that manipulates a JavaFX's MouseDragEvent
+	 */
+	implicit def mouseDragEventClosureWrapper(handler: (sfxsi.MouseDragEvent) => Unit) = new jfxe.EventHandler[jfxsi.MouseDragEvent] {
+		def handle(event: jfxsi.MouseDragEvent) {
+			handler(event)
+		}
+	}
+
+	/**
 	 * Converts a Function that manipulates a [[scalafx.scene.input.MouseEvent]] 
 	 * and returns a [[scala.Unit]] in a 
 	 * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
