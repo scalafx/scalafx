@@ -27,21 +27,21 @@
 
 package scalafx
 
-import scala.math.random
-
 import javafx.scene.effect.BoxBlur
+import scala.math.random
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.Scene
 import scalafx.scene.paint.Color._
 import scalafx.scene.shape.Circle
-import scalafx.scene.Scene
-import scalafx.stage.Stage
+
 
 /**
  * Vanishing Circles Basic
  */
 object VanishingCircles_basic extends JFXApp {
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "Vanishing Circles"
     width = 800
     height = 600

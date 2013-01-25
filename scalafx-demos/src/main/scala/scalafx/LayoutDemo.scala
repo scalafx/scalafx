@@ -28,6 +28,7 @@
 package scalafx
 
 import application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.{Pos, VPos}
 import scalafx.scene.paint.Color
 import scalafx.scene.paint.Color._
@@ -40,7 +41,6 @@ import scene.layout.HBox
 import scene.shape.Circle
 import scene.text.Font
 import scene.text.Text
-import stage.Stage
 
 object LayoutDemo extends JFXApp {
   val hello = new Accordion {
@@ -57,7 +57,7 @@ object LayoutDemo extends JFXApp {
   val charm = new Text("charm") { font = new Font(24); alignmentInParent = Pos.BASELINE_LEFT; textOrigin = VPos.BASELINE }
   val strange = new Text("strange") { font = new Font(12); alignmentInParent = Pos.BASELINE_LEFT; textOrigin = VPos.BASELINE }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     width = 1024
     height = 768
     scene = new Scene {

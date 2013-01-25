@@ -28,19 +28,18 @@ package scalafx.canvas
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.DoubleProperty.sfxDoubleProperty2jfx
-import scalafx.scene.Group.sfxGroup2jfx
+import scalafx.scene.Group
+import scalafx.scene.Scene
 import scalafx.scene.canvas.Canvas
 import scalafx.scene.input.MouseEvent
-import scalafx.scene.paint.Stop.sfxStop2jfx
 import scalafx.scene.paint.Color
 import scalafx.scene.paint.CycleMethod
 import scalafx.scene.paint.LinearGradient
 import scalafx.scene.paint.Stop
+import scalafx.scene.paint.Stop.sfxStop2jfx
 import scalafx.scene.shape.Rectangle
-import scalafx.scene.Group
-import scalafx.scene.Scene
-import scalafx.stage.Stage
 
 /**
  * Example adapted from code showed in [[http://docs.oracle.com/javafx/2/canvas/jfxpub-canvas.htm]].
@@ -59,7 +58,7 @@ object CanvasDoodleTest extends JFXApp {
   val rootPane = new Group
   rootPane.children = List(rect, canvas)
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "Canvas Doodle Test"
     scene = new Scene(400, 400) {
       root = rootPane

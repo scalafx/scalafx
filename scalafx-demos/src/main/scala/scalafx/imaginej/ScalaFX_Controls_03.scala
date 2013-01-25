@@ -41,14 +41,14 @@ package scalafx.imaginej
 //
 
 
-import scalafx.scene.Scene
-import scalafx.stage.Stage
-import scalafx.scene.image.{ImageView, Image}
 import scalafx.application.JFXApp
-import scalafx.scene.layout.{HBox, VBox}
-import scalafx.geometry.Insets
-import scalafx.scene.control.{RadioButton, ToggleGroup}
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectProperty2sfx
+import scalafx.geometry.Insets
+import scalafx.scene.Scene
+import scalafx.scene.control.{RadioButton, ToggleGroup}
+import scalafx.scene.image.{ImageView, Image}
+import scalafx.scene.layout.{HBox, VBox}
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
@@ -112,7 +112,7 @@ object ScalaFX_Controls_03 extends JFXApp {
     )
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "ScalaFX Controls 03"
     width = 250
     height = 150

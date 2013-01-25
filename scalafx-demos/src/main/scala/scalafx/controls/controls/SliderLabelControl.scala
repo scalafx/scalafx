@@ -6,11 +6,11 @@ package scalafx.controls.controls
 import javafx.scene.layout.Priority
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property._
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout._
-import scalafx.stage.Stage
 import scalafx.util.converter.DoubleStringConverter
 
 /**
@@ -94,7 +94,7 @@ object SliderLabelControlDemo extends JFXApp {
 
   val sldValue = new SliderLabelControl(value)
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     height = 100
     width = 200
     title = "Slider Label Control Demo"

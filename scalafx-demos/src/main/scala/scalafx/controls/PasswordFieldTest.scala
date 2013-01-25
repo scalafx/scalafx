@@ -28,9 +28,10 @@
 package scalafx.controls
 
 import controls.ControlControls
-import javafx.scene.layout.Priority
+import scalafx.scene.layout.Priority
 import scalafx.Includes.eventClosureWrapper
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.controls.controls.PropertiesNodes
 import scalafx.controls.controls.TextFieldControls
 import scalafx.controls.controls.TextInputControlControls
@@ -44,7 +45,6 @@ import scalafx.scene.layout.FlowPane
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 import scalafx.scene.paint.Color.sfxColor2jfx
-import scalafx.stage.Stage
 
 object PasswordFieldTest extends JFXApp {
 
@@ -67,7 +67,7 @@ object PasswordFieldTest extends JFXApp {
     hgrow = Priority.ALWAYS
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "passwordField Test"
     width = 300
     height = 380

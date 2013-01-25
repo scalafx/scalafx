@@ -29,10 +29,11 @@ package scalafx.controls
 
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
-import javafx.scene.layout.Priority
+import scalafx.scene.layout.Priority
 import scalafx.Includes.eventClosureWrapper
 import scalafx.Includes.jfxBooleanProperty2sfx
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.controls.controls.ControlControls
 import scalafx.controls.controls.PropertiesNodes
 import scalafx.geometry.Pos
@@ -46,7 +47,6 @@ import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 import scalafx.scene.paint.Color.sfxColor2jfx
-import scalafx.stage.Stage
 
 object CheckBoxTest extends JFXApp {
 
@@ -69,7 +69,7 @@ object CheckBoxTest extends JFXApp {
     hgrow = Priority.ALWAYS
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "CheckBox Test"
     width = 300
     height = 500

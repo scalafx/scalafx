@@ -30,6 +30,7 @@ package scalafx.controls
 import javafx.scene.layout.Priority
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.controls.controls.ControlControls
 import scalafx.controls.controls.TextFieldControls
 import scalafx.controls.controls.TextInputControlControls
@@ -41,7 +42,6 @@ import scalafx.scene.layout.FlowPane
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 import scalafx.scene.paint.Color.sfxColor2jfx
-import scalafx.stage.Stage
 
 object TextFieldTest extends JFXApp {
 
@@ -64,7 +64,7 @@ object TextFieldTest extends JFXApp {
     hgrow = Priority.ALWAYS
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "TextField Test"
     width = 300
     height = 400

@@ -1,12 +1,12 @@
 package scalafx.scene.media
 
 import scalafx.Includes._
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.application.{JFXApp, Platform}
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
 import scalafx.scene.control.Label
 import scalafx.scene.layout.StackPane
-import scalafx.stage.Stage
 
 /** Plays a video an displays text related at set video duration. */
 object MediaEventTester extends JFXApp {
@@ -37,7 +37,7 @@ object MediaEventTester extends JFXApp {
     style = "-fx-background-color: black;"
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "MediaEventTester"
     scene = new Scene(root, 540, 320)
   }

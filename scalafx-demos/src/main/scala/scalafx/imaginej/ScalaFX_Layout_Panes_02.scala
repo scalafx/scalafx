@@ -41,13 +41,13 @@ package scalafx.imaginej
 //
 
 import scalafx.application.JFXApp
-import scalafx.stage.Stage
-import scalafx.scene.Scene
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
-import scalafx.scene.layout.{HBox, BorderPane}
+import scalafx.scene.Scene
 import scalafx.scene.control.Button
-import scalafx.scene.shape.Rectangle
+import scalafx.scene.layout.{HBox, BorderPane}
 import scalafx.scene.paint.Color
+import scalafx.scene.shape.Rectangle
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
@@ -59,7 +59,7 @@ import scalafx.scene.paint.Color
  */
 
 object ScalaFX_Layout_Panes_02 extends JFXApp {
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "ScalaFX Layout Panes 02"
     scene = new Scene {
       content = new BorderPane {

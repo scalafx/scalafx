@@ -27,16 +27,16 @@
 package scalafx.canvas
 
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.Scene
 import scalafx.scene.canvas.Canvas
 import scalafx.scene.effect.DropShadow
-import scalafx.scene.paint.Stop.sfxStop2jfx
 import scalafx.scene.paint.Color
 import scalafx.scene.paint.CycleMethod
 import scalafx.scene.paint.LinearGradient
 import scalafx.scene.paint.RadialGradient
 import scalafx.scene.paint.Stop
-import scalafx.scene.Scene
-import scalafx.stage.Stage
+import scalafx.scene.paint.Stop.sfxStop2jfx
 
 /**
  * Example adapted from code showed in [[http://docs.oracle.com/javafx/2/canvas/jfxpub-canvas.htm]].
@@ -96,7 +96,7 @@ object CanvasTest extends JFXApp {
   gc.applyEffect(new DropShadow(20, -20, 0, Color.GREEN))
   gc.applyEffect(new DropShadow(20, 0, -20, Color.RED))
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "Canvas Test"
     scene = new Scene(400, 400) {
       content = canvas

@@ -29,17 +29,17 @@ package scalafx.controls
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.event.ActionEvent
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.{MenuItem, SplitMenuButton}
 import scalafx.scene.layout.VBox
-import scalafx.stage.Stage
 
 
 object SplitMenuButtonDemo extends JFXApp {
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     scene = new Scene(200, 200) {
       content = new VBox {
         padding = Insets(10)

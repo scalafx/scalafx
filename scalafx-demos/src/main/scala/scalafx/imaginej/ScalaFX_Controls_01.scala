@@ -43,17 +43,17 @@ package scalafx.imaginej
 import javafx.scene.{text => jfxst}
 import scalafx.application.JFXApp
 import scalafx.Includes._
-import scalafx.stage.Stage
-import scalafx.scene.Scene
-import scalafx.scene.paint.Color
-import scalafx.scene.layout.HBox
-import scalafx.scene.control.Label
-import scalafx.scene.image.ImageView._
 import scalafx.scene.image.{Image, ImageView}
-import scalafx.scene.text.Font
+import scalafx.scene.image.ImageView._
 import scalafx.scene.input.MouseEvent
 import scalafx.event.EventIncludes.mouseEventClosureWrapper
 import scalafx.scene.text.TextAlignment
+import scalafx.scene.layout.HBox
+import scalafx.scene.control.Label
+import scalafx.scene.text.Font
+import scalafx.scene.paint.Color
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.Scene
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
@@ -105,7 +105,7 @@ object ScalaFX_Controls_01 extends JFXApp {
       wrappedLabel
     )
   }
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "ScalaFX Controls 01"
     width = 500
     height = 180

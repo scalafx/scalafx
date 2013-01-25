@@ -27,17 +27,16 @@
 
 package scalafx
 
-import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.Scene
 import scalafx.scene.paint.Color
+import scalafx.scene.shape.Arc
 import scalafx.scene.shape.Circle
 import scalafx.scene.shape.Rectangle
-import scalafx.scene.Scene
-import scalafx.stage.Stage
-import scalafx.scene.shape.Arc
 
 object HelloJavaFX extends JFXApp {
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     width = 600
     height = 450
     scene = new Scene {

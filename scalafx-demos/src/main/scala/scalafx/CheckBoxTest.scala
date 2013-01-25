@@ -31,12 +31,11 @@ import application.JFXApp
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
 import scalafx.Includes._
-import scalafx.beans.Observable._
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout.GridPane
 import scalafx.scene.paint.Color
-import scalafx.scene.Scene
-import scalafx.stage.Stage
 
 object CheckBoxTest extends JFXApp {
 
@@ -89,7 +88,7 @@ object CheckBoxTest extends JFXApp {
   grid.add(btnFire, 0, 2)
   grid.add(txfText, 1, 2)
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "CheckBox Test"
     width = 300
     height = 100

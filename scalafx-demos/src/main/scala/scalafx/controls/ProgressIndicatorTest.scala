@@ -1,14 +1,14 @@
 package scalafx.controls
 
-import javafx.scene.layout.Priority
+import scalafx.scene.layout.Priority
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.controls.controls.ProgressIndicatorControls
+import scalafx.scene.Scene
 import scalafx.scene.control.ProgressIndicator
 import scalafx.scene.layout.BorderPane
-import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.paint.Color
-import scalafx.scene.Scene
-import scalafx.stage.Stage
-import scalafx.controls.controls.ProgressIndicatorControls
+import scalafx.scene.paint.Color.sfxColor2jfx
 
 object ProgressIndicatorTest extends JFXApp {
 
@@ -23,7 +23,7 @@ object ProgressIndicatorTest extends JFXApp {
     hgrow = Priority.ALWAYS
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "ProgressIndicator Test"
     width = 300
     height = 225

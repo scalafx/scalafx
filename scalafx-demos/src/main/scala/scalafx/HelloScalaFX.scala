@@ -1,21 +1,17 @@
 package scalafx
 
-import scala.collection.JavaConverters._
+import javafx.scene.{ effect => jfxse }
 import scalafx.application.JFXApp
-import scalafx.geometry.Insets
-import scalafx.Includes._
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.Scene
 import scalafx.scene.layout.HBox
 import scalafx.scene.paint.Color._
-import scalafx.scene.Scene
-import scalafx.stage.Stage
 import scene.effect._
-import scene.effect.GaussianBlur._
 import scene.paint.{ Stops, LinearGradient }
 import scene.text.Text
-import javafx.scene.{ effect => jfxse }
 
 object HelloScalaFX extends JFXApp {
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "ScalaFX Hello World"
     width = 650
     height = 450

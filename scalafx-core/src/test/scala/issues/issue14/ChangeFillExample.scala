@@ -39,6 +39,7 @@ import scalafx.scene.layout.{BorderPane, HBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 import scalafx.stage.Stage
+import scalafx.application.JFXApp.PrimaryStage
 
 
 /** Example for ScalaFX Issue 14 [[http://code.google.com/p/scalafx/issues/detail?id=14]].
@@ -64,7 +65,7 @@ object ChangeFillExample extends JFXApp {
   val Light = Color.LIGHTGRAY
   val Dark = Color.GRAY
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "Change Fill Example"
     scene = new Scene {
       root = new BorderPane {

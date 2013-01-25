@@ -41,6 +41,7 @@ package scalafx.imaginej
 //
 
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.event.ActionEvent
 import scalafx.event.EventIncludes.actionEventClosureWrapper
 import scalafx.geometry.Pos
@@ -52,7 +53,6 @@ import scalafx.scene.input.MouseEvent
 import scalafx.scene.layout.{HBox, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.text.Font
-import scalafx.stage.Stage
 
 
 /**
@@ -159,7 +159,7 @@ object ScalaFX_Controls_02 extends JFXApp {
       hBox2
     )
   }
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "ScalaFX Controls 02"
     width = 300
     height = 190

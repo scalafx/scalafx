@@ -50,6 +50,7 @@ import scalafx.scene.Scene
 import javafx.scene.paint.Color
 import scalafx.scene.shape.{Circle, Rectangle}
 import scalafx.scene.input.MouseEvent
+import scalafx.application.JFXApp.PrimaryStage
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
@@ -411,7 +412,7 @@ object theControl extends Control
 
 object JumpingFrogsPuzzle extends JFXApp {
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = TITLE
     scene = new Scene {
       content =

@@ -30,12 +30,12 @@ package scalafx
 import javafx.scene.paint.Color
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.shape.Rectangle
-import scalafx.stage.Stage
 
 object JavaFXChangeListener extends JFXApp {
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title.value = "Hello Stage"
     width = 600
     height = 450

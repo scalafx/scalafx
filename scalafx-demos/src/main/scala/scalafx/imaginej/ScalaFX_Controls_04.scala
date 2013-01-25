@@ -41,15 +41,15 @@ package scalafx.imaginej
 //
 
 
-import scalafx.scene.Scene
-import scalafx.stage.Stage
 import scalafx.application.JFXApp
-import scalafx.scene.layout.{HBox, VBox}
-import scalafx.geometry.Insets
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectProperty2sfx
-import scalafx.scene.shape.Rectangle
-import scalafx.scene.paint.Color
+import scalafx.geometry.Insets
+import scalafx.scene.Scene
 import scalafx.scene.control.{ToggleButton, Label, ToggleGroup}
+import scalafx.scene.layout.{HBox, VBox}
+import scalafx.scene.paint.Color
+import scalafx.scene.shape.Rectangle
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
@@ -132,7 +132,7 @@ object ScalaFX_Controls_04 extends JFXApp {
       }
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "ScalaFX Controls 04"
     width = 250
     height = 180

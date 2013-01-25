@@ -27,14 +27,14 @@
 
 package scalafx.controls
 
+import scalafx.scene.layout.Priority
 import scalafx.application.JFXApp
-import scalafx.scene.control.ComboBox
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.controls.controls._
-import scalafx.scene.layout.BorderPane
-import javafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
-import scalafx.stage.Stage
 import scalafx.scene.Scene
+import scalafx.scene.control.ComboBox
+import scalafx.scene.layout.BorderPane
+import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 
 
@@ -53,7 +53,7 @@ object ComboBoxDemo extends JFXApp {
     hgrow = Priority.ALWAYS
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "ComboBox Test"
     width = 300
     height = 450

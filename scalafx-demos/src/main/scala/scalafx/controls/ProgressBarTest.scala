@@ -1,12 +1,12 @@
 package scalafx.controls
 
+import scalafx.scene.layout.Priority
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.controls.controls.ProgressIndicatorControls
-import scalafx.scene.layout.BorderPane
-import scalafx.scene.control.ProgressBar
-import scalafx.stage.Stage
-import javafx.scene.layout.Priority
 import scalafx.scene.Scene
+import scalafx.scene.control.ProgressBar
+import scalafx.scene.layout.BorderPane
 import scalafx.scene.paint.Color
 
 object ProgressBarTest extends JFXApp {
@@ -22,7 +22,7 @@ object ProgressBarTest extends JFXApp {
     hgrow = Priority.ALWAYS
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "ProgressBar Test"
     width = 300
     height = 225

@@ -50,13 +50,14 @@ import scalafx.scene.Group
 import scalafx.scene.Scene
 import scalafx.stage.Stage
 import scene.paint.Stops
+import scalafx.application.JFXApp.PrimaryStage
 
 /**
  * ColorfulCircles
  */
 object ColorfulCircles extends JFXApp {
   val circlesToAnimate = new VectorBuilder[Circle]()
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     width = 800
     height = 600
     scene = new Scene {

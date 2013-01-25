@@ -27,13 +27,12 @@
 
 package scalafx.controls
 
+import scalafx.Includes._
 import scalafx.application.JFXApp
-import scalafx.stage._
-import scalafx.scene.paint.Color
-import scalafx.scene.layout._
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control._
-import scalafx.Includes._
+import scalafx.scene.layout._
 
 object ControlsTest extends JFXApp {
 
@@ -67,7 +66,7 @@ object ControlsTest extends JFXApp {
         right = controlsPane
       }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "CheckBox Test"
     width = 800
     height = 600

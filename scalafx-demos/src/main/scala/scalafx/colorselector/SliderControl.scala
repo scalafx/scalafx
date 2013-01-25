@@ -8,7 +8,7 @@ import javafx.beans.property.SimpleBooleanProperty
 import javafx.beans.property.SimpleDoubleProperty
 import javafx.event.EventHandler
 import javafx.scene.input.ScrollEvent
-import javafx.scene.layout.Priority
+import scalafx.scene.layout.Priority
 import scalafx.Includes.jfxBooleanProperty2sfx
 import scalafx.Includes.jfxDoubleProperty2sfx
 import scalafx.Includes.jfxStringProperty2sfx

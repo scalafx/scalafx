@@ -27,11 +27,11 @@
 package scalafx.canvas
 
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.Scene
 import scalafx.scene.canvas.Canvas
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.ArcType
-import scalafx.scene.Scene
-import scalafx.stage.Stage
 
 /**
  * Example adapted from code showed in [[http://docs.oracle.com/javafx/2/canvas/jfxpub-canvas.htm]].
@@ -59,7 +59,7 @@ object BasicOpsTest extends JFXApp {
   gc.strokePolygon(Seq((60.0, 210), (90, 210), (60, 240), (90, 240)))
   gc.strokePolyline(Seq((110.0, 210), (140, 210), (110, 240), (140, 240)))
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "Drawing Operations Test"
     scene = new Scene {
       content = canvas

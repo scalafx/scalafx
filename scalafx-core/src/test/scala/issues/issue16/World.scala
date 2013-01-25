@@ -2,10 +2,10 @@ package issues.issue16
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-import scalafx.stage.Stage
 
 
 /**
@@ -15,7 +15,7 @@ import scalafx.stage.Stage
  * The rectangle should normally be RED, but when mouse hovers above it it should change color to GREEN.
  */
 object World extends JFXApp {
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "Hello World"
     width = 600
     height = 450
