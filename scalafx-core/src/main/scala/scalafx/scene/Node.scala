@@ -52,6 +52,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.scene.transform.Transform
 import scalafx.scene.image.WritableImage
 import scalafx.geometry.Pos
+import scalafx.scene.layout.Priority
 
 object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
@@ -603,26 +604,26 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   // layout pseudo-properties:
 
   /**
-   * Pseudo-property that indicates this Node position inside its respective parent. 
+   * Pseudo-property that indicates this Node position inside its respective parent.
    */
   def alignmentInParent: Pos = delegate.getProperties().get("alignment").asInstanceOf[jfxg.Pos]
 
   /**
-   * Define this Node position inside its respective parent. It sets this node `alignment` property towards 
+   * Define this Node position inside its respective parent. It sets this node `alignment` property towards
    * [[http://docs.oracle.com/javafx/2/api/javafx/scene/Node.html#getProperties() JavaFX Node's getProperties()]] and
-   * `setAlignment` static method from [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/BorderPane.html BorderPane]], 
-   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/StackPane.html StackPane]] and 
-   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/TilePane.html TilePane]]. Furthermore, it is set 
-   * `halignment` and `valignment` property (using JavaFX Node's `getProperties()`) and called 
+   * `setAlignment` static method from [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/BorderPane.html BorderPane]],
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/StackPane.html StackPane]] and
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/TilePane.html TilePane]]. Furthermore, it is set
+   * `halignment` and `valignment` property (using JavaFX Node's `getProperties()`) and called
    * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html#setHalignment(javafx.scene.Node, javafx.geometry.HPos) setHalignment]]
-   * and 
+   * and
    * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html#setValignment(javafx.scene.Node, javafx.geometry.VPos) setValignment]]
-   * static methods from [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html GridPane]]; this time 
+   * static methods from [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html GridPane]]; this time
    * using `hpos` and `vpos` from Pos argument.
-   * 
+   *
    * '''Do not confuse''' with `alignment' property from [[scalafx.delegate.AlignmentDelegate]]! It refers to alignment
-   * ''inside'' element, while `alignmentInParent` refers to element's alignment inside its parent.  
-   * 
+   * ''inside'' element, while `alignmentInParent` refers to element's alignment inside its parent.
+   *
    * @param p New node's Position
    */
   def alignmentInParent_=(p: Pos) {
@@ -638,10 +639,10 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
     jfxsl.TilePane.setAlignment(delegate, p)
   }
 
-  def margin = delegate.getProperties().get("margin").asInstanceOf[Insets]
+  def margin: Insets = delegate.getProperties().get("margin").asInstanceOf[jfxg.Insets]
 
-  def margin_=(i: jfxg.Insets) {
-    delegate.getProperties().put("margin", i)
+  def margin_=(i: Insets) {
+    delegate.getProperties().put("margin", i.delegate)
     // for compatibility with layouts, which all use different keys
     jfxsl.BorderPane.setMargin(delegate, i)
     jfxsl.FlowPane.setMargin(delegate, i)
@@ -652,19 +653,19 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
     jfxsl.VBox.setMargin(delegate, i)
   }
 
-  def hgrow = delegate.getProperties().get("hgrow").asInstanceOf[jfxsl.Priority]
+  def hgrow: Priority = delegate.getProperties().get("hgrow").asInstanceOf[jfxsl.Priority]
 
-  def hgrow_=(p: jfxsl.Priority) {
-    delegate.getProperties().put("hgrow", p)
+  def hgrow_=(p: Priority) {
+    delegate.getProperties().put("hgrow", p.delegate)
     // for compatibility with layouts, which all use different keys
     jfxsl.GridPane.setHgrow(delegate, p)
     jfxsl.HBox.setHgrow(delegate, p)
   }
 
-  def vgrow = delegate.getProperties().get("vgrow").asInstanceOf[jfxsl.Priority]
+  def vgrow: Priority = delegate.getProperties().get("vgrow").asInstanceOf[jfxsl.Priority]
 
-  def vgrow_=(p: jfxsl.Priority) {
-    delegate.getProperties().put("vgrow", p)
+  def vgrow_=(p: Priority) {
+    delegate.getProperties().put("vgrow", p.delegate)
     // for compatibility with layouts, which all use different keys
     jfxsl.GridPane.setVgrow(delegate, p)
     jfxsl.VBox.setVgrow(delegate, p)
