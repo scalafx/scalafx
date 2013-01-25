@@ -7,16 +7,15 @@ package scalafx
 
 
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control._
-import scalafx.stage.Stage
-import scalafx.scene.shape._
-import scalafx.scene.layout._
 import scalafx.scene.paint.Color
+import scalafx.scene.shape._
 
 object AccordionTest extends JFXApp {
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     width = 600
     height = 450
     scene = new Scene {

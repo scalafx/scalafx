@@ -4,6 +4,7 @@ import javafx.scene.layout.Priority
 import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.controls.controls._
 import scalafx.geometry._
@@ -11,7 +12,6 @@ import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout._
 import scalafx.scene.paint.Color
-import scalafx.stage.Stage
 
 object SeparatorDemo extends JFXApp {
 
@@ -39,7 +39,7 @@ object SeparatorDemo extends JFXApp {
     center = controlsPane
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "Tooltip Test"
     width = 300
     height = 600

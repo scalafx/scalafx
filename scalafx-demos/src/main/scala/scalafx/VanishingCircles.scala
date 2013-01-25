@@ -27,25 +27,25 @@
 
 package scalafx
 
-import scala.math.random
-
 import animation.Timeline
 import javafx.animation.Animation.INDEFINITE
 import javafx.scene.effect.BoxBlur
+import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Tweenable.tweenable2KeyFrame
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.Scene
 import scalafx.scene.paint.Color._
 import scalafx.scene.shape.Circle
-import scalafx.scene.Scene
-import scalafx.stage.Stage
+
 
 /**
  * Vanishing Circles
  */
 object VanishingCircles extends JFXApp {
   var circles: Seq[Circle] = null
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "Vanishing Circles"
     width = 800
     height = 600

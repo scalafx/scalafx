@@ -42,6 +42,7 @@ package scalafx.imaginej
 
 import javafx.scene.text.FontWeight
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.geometry.{VPos, Pos}
 import scalafx.scene.Scene
@@ -52,7 +53,6 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
-import scalafx.stage.Stage
 
 
 /**
@@ -179,7 +179,7 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   gridPane.add(newText, 3, 2)
 
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "ScalaFX Layout Panes 05"
     scene = new Scene {
       content = new BorderPane {

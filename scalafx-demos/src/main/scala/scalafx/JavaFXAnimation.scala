@@ -27,13 +27,13 @@
 
 package scalafx
 
-import animation.{Interpolator, KeyFrame, Timeline}
-import scalafx.scene.paint.Color
+import animation.{Interpolator, Timeline}
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
+import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-import scalafx.stage.Stage
 
 object JavaFXAnimation extends JFXApp {
   val rect1 = new Rectangle {
@@ -58,7 +58,7 @@ object JavaFXAnimation extends JFXApp {
     )
   }
   timeline.play()
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     scene = new Scene {
       content = List(rect1, rect2)
     }

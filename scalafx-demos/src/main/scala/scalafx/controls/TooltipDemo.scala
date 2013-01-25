@@ -6,15 +6,14 @@ import javafx.scene.layout.Priority
 import javafx.scene.text.TextAlignment
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.collections.ObservableBuffer
-import scalafx.controls.controls.PropertiesNodes
 import scalafx.controls.controls._
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
-import scalafx.stage.Stage
 
 object TooltipDemo extends JFXApp {
 
@@ -39,7 +38,7 @@ object TooltipDemo extends JFXApp {
     content = List(btnTooltip, controlsPane)
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "Tooltip Test"
     width = 300
     height = 500

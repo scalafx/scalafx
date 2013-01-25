@@ -1,17 +1,15 @@
 package scalafx
 
-import scala.collection.JavaConverters._
 
 import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout._
 import scalafx.scene.paint.Color._
 import scalafx.scene.web._
-import scalafx.stage.Stage
-import scene.effect.GaussianBlur._
 import scene.paint.Color
 
 object WebDemo extends JFXApp {
@@ -30,7 +28,7 @@ object WebDemo extends JFXApp {
   }
   txfUrl.onAction = (engine.load(txfUrl.text.get))
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "ScalaFX Web Demo"
     width = 800
     height = 600

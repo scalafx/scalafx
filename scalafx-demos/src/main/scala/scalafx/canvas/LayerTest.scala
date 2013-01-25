@@ -28,19 +28,18 @@ package scalafx.canvas
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
-import scalafx.beans.property.ObjectProperty.sfxObjectProperty2jfx
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.collections.ObservableBuffer
+import scalafx.scene.Group
 import scalafx.scene.Group.sfxGroup2jfx
+import scalafx.scene.Scene
 import scalafx.scene.canvas.Canvas
-import scalafx.scene.control.SelectionModel
 import scalafx.scene.control.ChoiceBox
+import scalafx.scene.control.SelectionModel
 import scalafx.scene.input.MouseEvent
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.Pane
 import scalafx.scene.paint.Color
-import scalafx.scene.Group
-import scalafx.scene.Scene
-import scalafx.stage.Stage
 
 /**
  * Example adapted from code showed in [[http://docs.oracle.com/javafx/2/canvas/jfxpub-canvas.htm]].
@@ -98,7 +97,7 @@ object LayerTest extends JFXApp {
   private val root = new Group
   root.children = borderPane
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "Layer Test"
     scene = new Scene(root)
   }

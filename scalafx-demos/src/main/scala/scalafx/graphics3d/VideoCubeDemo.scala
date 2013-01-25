@@ -2,18 +2,18 @@ package scalafx.graphics3d
 
 // JavaFX system properties: -Dprism.printStats=true -Dprism.verbose=true
 
+import java.io.File
+import scalafx.Includes._
+import scalafx.animation.Timeline
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.DepthTest
+import scalafx.scene.media.{Media,MediaView,MediaPlayer}
 import scalafx.scene.paint.Color
-import scalafx.scene.{Node, PerspectiveCamera, Scene, Group}
-import scalafx.scene.transform.{Translate, Rotate}
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.text.{Text,Font}
-import scalafx.scene.media.{Media,MediaView,MediaPlayer}
-import scalafx.animation.Timeline
-import scalafx.stage.Stage
-import scalafx.Includes._
-import java.io.File
-import scalafx.scene.DepthTest
+import scalafx.scene.transform.Rotate
+import scalafx.scene.{Node, PerspectiveCamera, Scene, Group}
 
 /**
  * The type VideoCubeDemo a demonstration of the JavaOne 2011 key note with
@@ -26,7 +26,7 @@ object VideoCubeDemo extends JFXApp {
 
   var animation: Timeline = _
   var root = new Group
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     scene = new Scene( root, 800, 600, true )  {
       fill = Color.BLACK
     }

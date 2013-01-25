@@ -1,14 +1,13 @@
 package scalafx.graphics3d
 
-import scalafx.application.JFXApp
+import scalafx.Includes._
 import scalafx.animation._
-import scalafx.stage.Stage
-import scalafx.scene.{Node, PerspectiveCamera, Scene, Group}
-import scalafx.scene.transform.{Rotate, Translate}
+import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-import scalafx.util.Duration
-import scalafx.Includes._
+import scalafx.scene.transform.{Rotate, Translate}
+import scalafx.scene.{Node, PerspectiveCamera, Scene, Group}
 
 /**
  * A port of the JavaFX Ensemble CubeSampleDemo
@@ -26,7 +25,7 @@ object CubeSampleDemo extends JFXApp {
 
     var animation: Timeline = _
     var root = new Group
-    stage = new Stage(JFXApp.STAGE) {
+    stage = new PrimaryStage {
 //      width = 800
 //      height = 600
       scene = new Scene( root, 400, 150, true )

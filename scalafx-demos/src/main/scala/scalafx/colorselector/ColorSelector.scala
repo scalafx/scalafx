@@ -13,6 +13,7 @@ import scalafx.Includes.jfxBooleanProperty2sfx
 import scalafx.Includes.jfxDoubleProperty2sfx
 import scalafx.Includes.jfxObjectProperty2sfx
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.DoubleProperty.sfxDoubleProperty2jfx
@@ -38,7 +39,6 @@ import scalafx.scene.control.TextField.sfxTextField2jfx
 import scalafx.scene.effect.Reflection
 import scalafx.scene.layout._
 import scalafx.scene.paint.Color
-import scalafx.stage.Stage
 import scalafx.util.StringConverter
 
 
@@ -297,7 +297,7 @@ object ColorSelector extends JFXApp {
   pnlMain0.prefWidth <== (mainScene.width)
   pnlMain0.prefHeight <== (mainScene.height)
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "Color Selector"
     width = 600
     height = 400

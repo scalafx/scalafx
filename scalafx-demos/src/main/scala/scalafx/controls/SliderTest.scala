@@ -4,6 +4,7 @@ import controls._
 import javafx.scene.layout.Priority
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.controls.controls.PropertiesNodes
 import scalafx.geometry.{Orientation, Pos}
 import scalafx.scene.Scene
@@ -12,7 +13,6 @@ import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.FlowPane
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
-import scalafx.stage.Stage
 import scalafx.util.converter.DoubleStringConverter
 
 object SliderTest extends JFXApp {
@@ -38,7 +38,7 @@ object SliderTest extends JFXApp {
     hgrow = Priority.ALWAYS
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "Slider Test"
     width = 300
     height = 380

@@ -35,6 +35,7 @@ import scalafx.Includes.jfxDoubleProperty2sfx
 import scalafx.Includes.jfxSceneProperty2sfx
 import scalafx.Includes.observableList2ObservableBuffer
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.controls.controls.ControlControls
 import scalafx.controls.controls.PropertiesNodes
@@ -49,7 +50,6 @@ import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 import scalafx.scene.paint.Color.sfxColor2jfx
-import scalafx.stage.Stage
 
 object TextAreaTest extends JFXApp {
 
@@ -75,7 +75,7 @@ object TextAreaTest extends JFXApp {
 //    hgrow = Priority.ALWAYS
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "TextArea Test"
     width = 450
     height = 380

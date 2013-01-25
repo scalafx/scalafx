@@ -10,13 +10,14 @@ import scalafx.scene.Scene
 import scalafx.scene.control.{Label, Button}
 import scalafx.scene.layout.StackPane
 import scalafx.stage.Stage
+import scalafx.application.JFXApp.PrimaryStage
 
 /**
  * Illustration of problem with creating and showing a second stage using `showAndWait()`.
  */
 object SecondStageExceptionDemo extends JFXApp {
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     scene = new Scene(200, 100) {
       content = new StackPane {
         padding = Insets(20, 20, 20, 20)

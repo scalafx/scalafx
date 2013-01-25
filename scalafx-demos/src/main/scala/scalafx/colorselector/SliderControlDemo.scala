@@ -3,6 +3,7 @@ package scalafx.colorselector
 import javafx.scene.layout.Priority
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.DoubleProperty.sfxDoubleProperty2jfx
 import scalafx.geometry.{HPos, Pos, VPos}
 import scalafx.scene.Scene
@@ -15,7 +16,6 @@ import scalafx.scene.layout.GridPane
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 import scalafx.scene.paint.Color.sfxColor2jfx
-import scalafx.stage.Stage
 
 object SliderControlDemo extends JFXApp {
 
@@ -99,7 +99,7 @@ object SliderControlDemo extends JFXApp {
   box.prefWidth <== mainScene.width
   box.prefHeight <== mainScene.height
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "SliderControl Demo"
     width = 600
     height = 200

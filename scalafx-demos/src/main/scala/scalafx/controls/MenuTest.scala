@@ -1,12 +1,12 @@
 package scalafx.controls
 
-import scalafx.stage.Stage
-import scalafx.scene.Scene
-import scalafx.scene.paint.Color
-import scalafx.application.JFXApp
-import scalafx.scene.control.{Label, MenuItem, Menu, MenuBar}
 import javafx.event.{Event, EventHandler}
+import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.Scene
+import scalafx.scene.control.{Label, MenuItem, Menu, MenuBar}
 import scalafx.scene.layout.{BorderPane, VBox}
+import scalafx.scene.paint.Color
 
 
 object MenuTest extends JFXApp {
@@ -45,7 +45,7 @@ object MenuTest extends JFXApp {
     menus.add(menu)
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "Menu test"
     width = 300
     height = 225

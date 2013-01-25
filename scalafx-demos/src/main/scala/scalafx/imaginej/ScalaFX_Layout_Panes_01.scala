@@ -41,11 +41,11 @@ package scalafx.imaginej
 //
 
 import scalafx.application.JFXApp
-import scalafx.stage.Stage
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.layout.BorderPane
-import scalafx.scene.shape.Rectangle
 import scalafx.scene.paint.Color
+import scalafx.scene.shape.Rectangle
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
@@ -57,7 +57,7 @@ import scalafx.scene.paint.Color
  */
 
 object ScalaFX_Layout_Panes_01 extends JFXApp {
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "ScalaFX Layout Panes 01"
     scene = new Scene {
       content = new BorderPane {

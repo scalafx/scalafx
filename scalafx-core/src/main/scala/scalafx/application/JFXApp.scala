@@ -35,7 +35,7 @@ import scala.collection.mutable
 
 import javafx.{ application => jfxa }
 import javafx.{ stage => jfxs }
-import scalafx.application.JFXApp.Parameters
+import scalafx.application.JFXApp.{PrimaryStage, Parameters}
 import scalafx.stage.Stage
 import scalafx.delegate.SFXDelegate
 
@@ -138,10 +138,60 @@ object JFXApp {
     }
   }
 
+  /** Simple helper class for construction of primary application stages.
+    *
+    * The primary stage has to wrap an instance of a JavaFX primary stage created by JavaFX when application
+    * is initialized.
+    *
+    * {{{
+    *   object SimpleScalaFXApp extends JFXApp {
+    *      stage = new PrimaryStage {
+    *        title = "Simple ScalaFX App"
+    *        scene = new Scene {
+    *          root = new StackPane {
+    *            padding = Insets(20)
+    *            content = new Rectangle {
+    *              width = 200
+    *              height = 200
+    *              fill = Color.DEEPSKYBLUE
+    *            }
+    *          }
+    *        }
+    *      }
+    *   }
+    * }}}
+    */
+  class PrimaryStage extends Stage(JFXApp.STAGE)
 }
 
+/** ScalaFX applications can extend JFXApp to create properly initialized JavaFX applications.
+  *
+  * On the back end `JFXApp` first calls [[javafx.application.Application.launch]] then executes body of its
+  * constructor when [[javafx.application.Application#start(Stage primaryStage)]] is called. Here is an example use:
+  *
+  * {{{
+  *   object SimpleScalaFXApp extends JFXApp {
+  *      stage = new PrimaryStage {
+  *        title = "Simple ScalaFX App"
+  *        scene = new Scene {
+  *          root = new StackPane {
+  *            padding = Insets(20)
+  *            content = new Rectangle {
+  *              width = 200
+  *              height = 200
+  *              fill = Color.DEEPSKYBLUE
+  *            }
+  *          }
+  *        }
+  *      }
+  *   }
+  * }}}
+  *
+ */
 class JFXApp extends DelayedInit {
-  var stage: Stage = null
+  /** JFXApp stage must be an instance of [[scalafx.application.JFXApp.PrimaryStage]] to ensure that it
+    * actually is a proper wrapper for the primary stage supplied by JavaFX. */
+  var stage: PrimaryStage = null
 
   private var arguments: Seq[String] = _
 

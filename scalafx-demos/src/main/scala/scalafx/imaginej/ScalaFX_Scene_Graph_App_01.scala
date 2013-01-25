@@ -40,11 +40,11 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
+import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.Scene
 import scalafx.scene.paint.Color
 
-import scalafx.application.JFXApp
-import scalafx.stage.Stage
-import scalafx.scene.Scene
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
@@ -56,7 +56,7 @@ import scalafx.scene.Scene
  */
 
 object ScalaFX_Scene_Graph_App_01 extends JFXApp {
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "ScalaFX Scene Graph App 01"
     scene = new Scene(500, 500) {
       fill = Color.BLACK

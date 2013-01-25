@@ -7,6 +7,7 @@ import scalafx.scene.layout.StackPane
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 import scalafx.stage.Stage
+import scalafx.application.JFXApp.PrimaryStage
 
 /**
  * Issue 23: Cannot assign a ScalaFX object to "scene.root".
@@ -20,7 +21,7 @@ import scalafx.stage.Stage
  */
 object SceneRootAssignmentDemo extends JFXApp {
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "Scene.root Assignment Demo"
     scene = new Scene {
       root = new StackPane {

@@ -27,16 +27,15 @@
 
 package scalafx
 
-import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
-import scalafx.stage.Stage
+import scalafx.scene.paint.Color
 import scene.layout.BorderPane
 import scene.shape.Circle
-import scalafx.scene.paint.Color
 
 object BorderPaneTest extends JFXApp {
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     scene = new Scene {
       fill = Color.LIGHTGRAY
       content = new BorderPane {

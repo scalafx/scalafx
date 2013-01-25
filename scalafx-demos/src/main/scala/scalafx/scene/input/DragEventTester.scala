@@ -30,11 +30,11 @@ package scalafx.scene.input
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.Label
 import scalafx.scene.layout.StackPane
-import scalafx.stage.Stage
 
 /** Helper for manual testing of DragEvents.
   *
@@ -49,7 +49,7 @@ object DragEventTester extends JFXApp {
     content = new Label("Drop things here...")
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "DragEvent Tester"
     scene = new Scene(stackPane, 200, 200) {
       onDragOver = (event: DragEvent) => {

@@ -40,19 +40,18 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import scalafx.scene.paint.Color
 import javafx.scene.text.FontWeight
-
 import scalafx.application.JFXApp
-import scalafx.stage.Stage
-import scalafx.scene.Scene
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
-import scalafx.scene.layout.{VBox, HBox, BorderPane}
+import scalafx.scene.Scene
 import scalafx.scene.control.Button
+import scalafx.scene.layout.{VBox, HBox, BorderPane}
+import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-import scalafx.scene.text.Text
 import scalafx.scene.text.Font
-import scalafx.Includes._
+import scalafx.scene.text.Text
+
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
@@ -92,7 +91,7 @@ object ScalaFX_Layout_Panes_03 extends JFXApp {
       text = "  Costs"
     }
   )
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new PrimaryStage {
     title = "ScalaFX Layout Panes 03"
     scene = new Scene {
       content = new BorderPane {
