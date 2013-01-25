@@ -40,6 +40,15 @@ object Stage {
   implicit def sfxStage2jfx(v: Stage) = v.delegate
 }
 
+/**
+ * The primary stage for your application has to be created by wrapping the <code>JFXApp.STAGE</code> object.
+ * <pre>
+ * stage = new JFXApp.PrimaryStage {
+ *   // your definitions
+ * }
+ * </pre>
+ * Any further stage would be simply instantiated by the no-arg constructor.
+ */
 class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
   extends Window(delegate)
   with SFXDelegate[jfxs.Stage] {
@@ -151,7 +160,7 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
 
   /**
    * Retrieves a [[scala.Some]] with the owner Window for this stage, or
-   * [[Scala.None]] for an unowned stage.
+   * [[scala.None]] for an unowned stage.
    */
   def owner: Option[Window] = Option(delegate.getOwner)
 

@@ -63,7 +63,7 @@ object TreeView {
     /**
      * Returns the TreeView upon which the edit took place.
      */
-    def source = delegate.getSource
+    override def source = delegate.getSource
 
     /**
      * Returns the `TreeItem` upon which the edit took place.

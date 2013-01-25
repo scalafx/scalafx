@@ -79,6 +79,11 @@ class Event(override val delegate: jfxe.Event) extends SFXDelegate[jfxe.Event] {
   def consume = delegate.consume
 
   /**
+   * Indicates whether this Event has been consumed by any filter or handler.
+   */
+  def consumed = delegate.isConsumed
+
+  /**
    * Creates and returns a copy of this event with the specified event source and target.
    */
   def copyFor(newSource: AnyRef, newTarget: jfxe.EventTarget) = 
@@ -90,13 +95,13 @@ class Event(override val delegate: jfxe.Event) extends SFXDelegate[jfxe.Event] {
   def eventType = delegate.getEventType
 
   /**
+   * Returns the object on which the Event initially occurred.
+   */
+  def source = delegate.getSource
+
+  /**
    * Returns the event target of this event.
    */
   def target = delegate.getTarget
-
-  /**
-   * Indicates whether this Event has been consumed by any filter or handler.
-   */
-  def consumed = delegate.isConsumed
 
 }
