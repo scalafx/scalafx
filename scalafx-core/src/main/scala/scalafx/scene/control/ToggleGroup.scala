@@ -41,8 +41,8 @@ class ToggleGroup(override val delegate: jfxsc.ToggleGroup = new jfxsc.ToggleGro
   def selectedToggle = delegate.selectedToggleProperty
 
   def toggles = delegate.getToggles
-  def toggles_=(c: Iterable[jfxsc.Toggle]) {
-    toggles.setAll(c)
+  def toggles_=(c: Iterable[Toggle]) {
+    toggles.setAll(c.map(_.delegate))
   }
 
 }
