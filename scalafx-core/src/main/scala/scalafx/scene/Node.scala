@@ -553,8 +553,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    */
   def transforms = delegate.getTransforms
 
-  def transforms_=(c: Iterable[jfxst.Transform]) {
-    transforms.setAll(c)
+  def transforms_=(c: Iterable[Transform]) {
+    transforms.setAll(c.map(_.delegate))
   }
 
   /**
