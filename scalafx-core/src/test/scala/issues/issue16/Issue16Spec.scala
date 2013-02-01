@@ -33,10 +33,13 @@ import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.beans.property.{ReadOnlyBooleanProperty, ObjectProperty}
 import scalafx.scene.paint.Color
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
 /**
  * Verify that code causing Issue 16 behaves correctly after fix.
  */
+@RunWith(classOf[JUnitRunner])
 class Issue16Spec extends FlatSpec {
 
   "Issue 16 - binding" should "respond to changes in `when` condition" in {
