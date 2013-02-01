@@ -222,4 +222,37 @@ class ReadOnlyObjectWrapperSpec extends FlatSpec with BeforeAndAfterEach {
     wrapper.value = "New value"
     readOnlyProperty() should equal("New value")
   }
+
+  it should "be able to hold a value type like Double" in {
+
+      val p = ReadOnlyObjectWrapper[Double](42.1)
+      assert(42.1 === p.value)
+      val readOnlyProperty = p.readOnlyProperty
+      assert(42.1 === readOnlyProperty())
+    }
+
+    it should "bind its readOnlyProperty hold a value type like Double" in {
+      val p = ReadOnlyObjectWrapper[Double](42.1)
+      assert(42.1 === p.value)
+      val readOnlyProperty = p.readOnlyProperty
+      assert(42.1 === readOnlyProperty())
+
+      p.value = 13.2
+      assert(13.2 === readOnlyProperty())
+    }
+
+    it should "readOnlyProperty holding a value type like Double should bind to JFX" in {
+      val p = ReadOnlyObjectWrapper[Double](42.1)
+      assert(42.1 === p.value)
+      val readOnlyProperty = p.readOnlyProperty
+      assert(42.1 === readOnlyProperty())
+
+      val jfxProperty = new jfxbp.SimpleObjectProperty[Double](this, "jfx", 224.3)
+      assert(224.3 === jfxProperty())
+
+      jfxProperty <== readOnlyProperty
+      p.value = 13.4
+      assert(13.4 === jfxProperty())
+      assert(13.4 === readOnlyProperty())
+    }
 }

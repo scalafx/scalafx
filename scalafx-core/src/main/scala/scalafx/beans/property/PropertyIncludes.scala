@@ -36,7 +36,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
   implicit def jfxFloatProperty2sfx(p: jfxbp.FloatProperty) = new FloatProperty(p)
   implicit def jfxIntegerProperty2sfx(p: jfxbp.IntegerProperty) = new IntegerProperty(p)
   implicit def jfxLongProperty2sfx(p: jfxbp.LongProperty) = new LongProperty(p)
-  implicit def jfxObjectProperty2sfx[T <: AnyRef](p: jfxbp.ObjectProperty[T]) = new ObjectProperty[T](p)
+  implicit def jfxObjectProperty2sfx[T <: Any](p: jfxbp.ObjectProperty[T]) = new ObjectProperty[T](p)
   implicit def jfxStringProperty2sfx(p: jfxbp.StringProperty) = new StringProperty(p)
 
   implicit def jfxReadOnlyBooleanProperty2sfx(p: jfxbp.ReadOnlyBooleanProperty) = new ReadOnlyBooleanProperty(p)
@@ -44,10 +44,10 @@ trait PropertyIncludes extends LowerPriorityIncludes {
   implicit def jfxReadOnlyFloatProperty2sfx(p: jfxbp.ReadOnlyFloatProperty) = new ReadOnlyFloatProperty(p)
   implicit def jfxReadOnlyIntegerProperty2sfx(p: jfxbp.ReadOnlyIntegerProperty) = new ReadOnlyIntegerProperty(p)
   implicit def jfxReadOnlyLongProperty2sfx(p: jfxbp.ReadOnlyLongProperty) = new ReadOnlyLongProperty(p)
-  implicit def jfxReadOnlyObjectProperty2sfx[T <: AnyRef](p: jfxbp.ReadOnlyObjectProperty[T]) = new ReadOnlyObjectProperty[T](p)
+  implicit def jfxReadOnlyObjectProperty2sfx[T <: Any](p: jfxbp.ReadOnlyObjectProperty[T]) = new ReadOnlyObjectProperty[T](p)
   implicit def jfxReadOnlyStringProperty2sfx(p: jfxbp.ReadOnlyStringProperty) = new ReadOnlyStringProperty(p)
 
-  implicit def jfxReadOnlyObjectWrapper2sfx[T <: AnyRef](p: jfxbp.ReadOnlyObjectWrapper[T]) = new ReadOnlyObjectWrapper[T](p)
+  implicit def jfxReadOnlyObjectWrapper2sfx[T <: Any](p: jfxbp.ReadOnlyObjectWrapper[T]) = new ReadOnlyObjectWrapper[T](p)
 }
 
 trait LowerPriorityIncludes {

@@ -95,29 +95,29 @@ class KeyValue[T, J](override val delegate: jfxa.KeyValue)
 }
 
 object Tweenable {
-  implicit def tweenable2KeyFrame[T <: Any, J <: AnyRef](t: Tweenable[T, J]) = t.linear
+  implicit def tweenable2KeyFrame[T <: Any, J <: Any](t: Tweenable[T, J]) = t.linear
 }
 
 /**
- * Class factory for new [[KeyValue]]s.
+ * Class factory for new [[scalafx.animation.KeyValue]]s.
  *
  * @tparam T Indicates Scala type that will be returned for this property.
  * @tparam J Indicates Java type to be wrapped by T. Eventually T and J could be the same.
  *
- * @param KeyFrame target.
- * @param KeyFrame end value.
+ * @param target target.
+ * @param endValue end value.
  */
-class Tweenable[T <: Any, J <: AnyRef](target: jfxbv.WritableValue[J], endValue: J) {
+class Tweenable[T <: Any, J <: Any](target: jfxbv.WritableValue[J], endValue: J) {
 
   /**
-   * Returns a new [[KeyValue]] with a determinate Interpolator.
+   * Returns a new [[scalafx.animation.KeyValue]] with a determinate Interpolator.
    *
    * @param interpolator Interpolator to be used in KeyFrame.
    */
   def tween(interpolator: jfxa.Interpolator) = KeyValue[J](target, endValue, interpolator)
 
   /**
-   * Returns a new [[KeyValue]] with [[Interpolator.LINEAR]] Interpolator.
+   * Returns a new [[scalafx.animation.KeyValue]] with [[scalafx.animation.Interpolator.LINEAR]] Interpolator.
    */
   def linear: KeyValue[J, J] = KeyValue[J](target, endValue)
 }
