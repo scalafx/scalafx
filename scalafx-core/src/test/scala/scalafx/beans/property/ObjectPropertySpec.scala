@@ -212,4 +212,40 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
 
     javaObjProperty.get should be(scalaObjProperty.get.delegate)
   }
+
+  it should "be able to hold a value type like Double" in {
+
+    val p = new ObjectProperty[Double]
+    p.value = 42.1
+
+    assert(42.1 === p.value)
+  }
+
+  it should "bind SFX <==> JFX holding a value type like Double" in {
+    val sfxProperty = new ObjectProperty[Double](null, "sfx", 13.2)
+    val jfxProperty = new jfxbp.SimpleObjectProperty[Double](this, "jfx", 224.7)
+
+    sfxProperty <==> jfxProperty
+    sfxProperty() = 17.8
+    assert(17.8 === sfxProperty())
+    assert(17.8 === jfxProperty())
+
+    jfxProperty() = 21.2
+    assert(21.2 === sfxProperty())
+    assert(21.2 === jfxProperty())
+  }
+
+  it should "bind JFX <==> SFX holding a value type like Double" in {
+    val sfxProperty = new ObjectProperty[Double](null, "sfx", 13.2)
+    val jfxProperty = new jfxbp.SimpleObjectProperty[Double](this, "jfx", 224.7)
+
+    jfxProperty <==> sfxProperty
+    sfxProperty() = 17.8
+    assert(17.8 === sfxProperty())
+    assert(17.8 === jfxProperty())
+
+    jfxProperty() = 21.1
+    assert(21.1 === sfxProperty())
+    assert(21.1 === jfxProperty())
+  }
 }

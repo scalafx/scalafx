@@ -30,7 +30,7 @@ import javafx.beans.{property => jfxbp}
 import scalafx.delegate.SFXDelegate
 
 object ObjectProperty {
-  implicit def sfxObjectProperty2jfx[J <: AnyRef](op: ObjectProperty[J]) = op.delegate
+  implicit def sfxObjectProperty2jfx[T <: Any](op: ObjectProperty[T]) = op.delegate
 
   /**
    * Creates a new ObjectProperty instance using the SimpleObjectProperty as the target.
@@ -38,20 +38,20 @@ object ObjectProperty {
    * @param value the initial value
    * @return      the observable instance
    */
- def apply[J <: AnyRef](value: J) = new ObjectProperty[J](new jfxbp.SimpleObjectProperty[J](value))
+ def apply[T <: Any](value: T) = new ObjectProperty[T](new jfxbp.SimpleObjectProperty[T](value))
 }
 
-class ObjectProperty[J <: AnyRef](override val delegate: jfxbp.ObjectProperty[J] = new jfxbp.SimpleObjectProperty[J])
-  extends ReadOnlyObjectProperty[J](delegate)
-  with Property[J, J]
-  with SFXDelegate[jfxbp.ObjectProperty[J]] {
+class ObjectProperty[T <: Any](override val delegate: jfxbp.ObjectProperty[T] = new jfxbp.SimpleObjectProperty[T])
+  extends ReadOnlyObjectProperty[T](delegate)
+  with Property[T, T]
+  with SFXDelegate[jfxbp.ObjectProperty[T]] {
 
-  def this(bean: Object, name: String) = this(new jfxbp.SimpleObjectProperty[J](bean, name))
+  def this(bean: Object, name: String) = this(new jfxbp.SimpleObjectProperty[T](bean, name))
 
-  def this(bean: Object, name: String, initialValue: J) =
-    this(new jfxbp.SimpleObjectProperty[J](bean, name, initialValue))
+  def this(bean: Object, name: String, initialValue: T) =
+    this(new jfxbp.SimpleObjectProperty[T](bean, name, initialValue))
 
-  def value_=(v: J) {
+  def value_=(v: T) {
     delegate.set(v)
   }
 }

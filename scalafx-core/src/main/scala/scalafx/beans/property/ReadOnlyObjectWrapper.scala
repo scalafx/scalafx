@@ -31,22 +31,22 @@ import scalafx.delegate.SFXDelegate
 
 
 object ReadOnlyObjectWrapper {
-  implicit def sfxReadOnlyObjectWrapper2jfx[J <: AnyRef](roow: ReadOnlyObjectWrapper[J]) = roow.delegate
+  implicit def sfxReadOnlyObjectWrapper2jfx[T <: Any](roow: ReadOnlyObjectWrapper[T]) = roow.delegate
 
   /** Creates a new ReadOnlyObjectWrapper instance with a given initial wrapped value. */
-  def apply[J <: AnyRef](value: J) = new ReadOnlyObjectWrapper[J](new jfxbp.ReadOnlyObjectWrapper[J](value))
+  def apply[T <: Any](value: T) = new ReadOnlyObjectWrapper[T](new jfxbp.ReadOnlyObjectWrapper[T](value))
 }
 
 
 /** Wrapper for [[javafx.beans.property.ReadOnlyObjectWrapper]] */
-class ReadOnlyObjectWrapper[J <: AnyRef](override val delegate: jfxbp.ReadOnlyObjectWrapper[J])
-  extends ObjectProperty[J](delegate)
-  with SFXDelegate[jfxbp.ReadOnlyObjectWrapper[J]] {
+class ReadOnlyObjectWrapper[T <: Any](override val delegate: jfxbp.ReadOnlyObjectWrapper[T])
+  extends ObjectProperty[T](delegate)
+  with SFXDelegate[jfxbp.ReadOnlyObjectWrapper[T]] {
 
-  def this(bean: Object, name: String) = this(new jfxbp.ReadOnlyObjectWrapper[J](bean, name))
+  def this(bean: Object, name: String) = this(new jfxbp.ReadOnlyObjectWrapper[T](bean, name))
 
-  def this(bean: Object, name: String, initialValue: J) =
-    this(new jfxbp.ReadOnlyObjectWrapper[J](bean, name, initialValue))
+  def this(bean: Object, name: String, initialValue: T) =
+    this(new jfxbp.ReadOnlyObjectWrapper[T](bean, name, initialValue))
 
   def readOnlyProperty = delegate.getReadOnlyProperty
 }

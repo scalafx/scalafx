@@ -34,7 +34,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.animation.Tweenable
 
 object Property {
-  implicit def sfxProperty2jfx[T, J <: AnyRef](p: Property[T, J]) = p.delegate
+  implicit def sfxProperty2jfx[T, J <: Any](p: Property[T, J]) = p.delegate
 }
 
 /**
@@ -44,7 +44,7 @@ object Property {
  * @tparam T Indicates Scala type that will be returned for this property.
  * @tparam J Indicates Java type to be wrapped by T. Eventually T and J could be the same.
  */
-trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: AnyRef]
+trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: Any]
   extends ReadOnlyProperty[T, J]
   with SFXDelegate[jfxbp.Property[J]] {
 
