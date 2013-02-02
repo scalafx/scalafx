@@ -26,9 +26,9 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import javafx.scene.{paint => jfxsp}
-import javafx.scene.{text => jfxst}
+import javafx.scene.{ control => jfxsc }
+import javafx.scene.{ paint => jfxsp }
+import javafx.scene.{ text => jfxst }
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
@@ -38,6 +38,9 @@ import scalafx.scene.text.Font.sfxFont2jfx
 import scalafx.scene.text.Font
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
+import scalafx.delegate.AlignmentDelegate
+import scalafx.scene.paint.Paint
+import scalafx.scene.text.TextAlignment
 
 object Labeled {
   implicit def sfxLabeled2jfx(v: Labeled) = v.delegate
@@ -45,60 +48,99 @@ object Labeled {
 
 abstract class Labeled(override val delegate: jfxsc.Labeled)
   extends Control(delegate)
+  with AlignmentDelegate[jfxsc.Labeled]
   with SFXDelegate[jfxsc.Labeled] {
 
+  /**
+   * Specifies the positioning of the graphic relative to the text.
+   */
   def contentDisplay = delegate.contentDisplayProperty
-  def contentDisplay_=(v: jfxsc.ContentDisplay) {
+  def contentDisplay_=(v: ContentDisplay) {
     contentDisplay() = v
   }
 
+  /**
+   * The default font to use for text in the Labeled.
+   */
   def font = delegate.fontProperty
   def font_=(v: Font) {
     font() = v
   }
 
+  /**
+   * An optional icon for the Labeled.
+   */
   def graphic = delegate.graphicProperty
   def graphic_=(v: Node) {
     graphic() = v
   }
 
+  /**
+   * The amount of space between the graphic and text.
+   */
   def graphicTextGap: DoubleProperty = delegate.graphicTextGapProperty
   def graphicTextGap_=(v: Double) {
     graphicTextGap() = v
   }
 
+  /**
+   * The padding around the Labeled's text and graphic content.
+   */
   def labelPadding = delegate.labelPaddingProperty
 
+  /**
+   * MnemonicParsing property to enable/disable text parsing.
+   */
   def mnemonicParsing: BooleanProperty = delegate.mnemonicParsingProperty
   def mnemonicParsing_=(v: Boolean) {
     mnemonicParsing() = v
   }
 
+  /**
+   * The text to display in the label.
+   */
   def text: StringProperty = delegate.textProperty
   def text_=(v: String) {
     text() = v
   }
 
+  /**
+   * Specifies the behavior for lines of text 'when text is multiline' Unlike `Labeled.contentDisplay` which affects
+   * the graphic and text, this setting only affects multiple lines of text relative to the text bounds.
+   */
   def textAlignment = delegate.textAlignmentProperty
-  def textAlignment_=(v: jfxst.TextAlignment) {
+  def textAlignment_=(v: TextAlignment) {
     textAlignment() = v
   }
 
+  /**
+   * The [[scalafx.scene.paint.Paint]] used to fill the text.
+   */
   def textFill = delegate.textFillProperty
-  def textFill_=(v: jfxsp.Paint) {
+  def textFill_=(v: Paint) {
     textFill() = v
   }
 
+  /**
+   * Specifies the behavior to use if the text of the `Labeled` exceeds the available space for rendering the text.
+   */
   def textOverrun = delegate.textOverrunProperty
-  def textOverrun_=(v: jfxsc.OverrunStyle) {
+  def textOverrun_=(v: OverrunStyle) {
     textOverrun() = v
   }
 
+  /**
+   * Whether all text should be underlined.
+   */
   def underline: BooleanProperty = delegate.underlineProperty
   def underline_=(v: Boolean) {
     underline() = v
   }
 
+  /**
+   * If a run of text exceeds the width of the `Labeled`, then this variable indicates whether the text should wrap onto
+   * another line.
+   */
   def wrapText: BooleanProperty = delegate.wrapTextProperty
   def wrapText_=(v: Boolean) {
     wrapText() = v
@@ -111,7 +153,8 @@ abstract class Labeled(override val delegate: jfxsc.Labeled)
    * @since 2.2
    */
   def ellipsisString: StringProperty = delegate.ellipsisStringProperty()
-  def ellipsisString_=( v: String ) {
+  def ellipsisString_=(v: String) {
     ellipsisString() = v
   }
+
 }

@@ -28,7 +28,7 @@
 package scalafx.controls
 
 import controls.ControlControls
-import javafx.scene.layout.Priority
+import scalafx.scene.layout.Priority
 import scalafx.Includes.eventClosureWrapper
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -53,7 +53,7 @@ object PasswordFieldTest extends JFXApp {
   val controlsPane = new VBox {
     spacing = 5
     fillWidth = true
-    innerAlignment = Pos.CENTER
+    alignment = Pos.CENTER
     hgrow = Priority.NEVER
     content = List(new PasswordFieldControls(passwordField), new TextFieldControls(passwordField), new TextInputControlControls(passwordField), new ControlControls(passwordField))
   }

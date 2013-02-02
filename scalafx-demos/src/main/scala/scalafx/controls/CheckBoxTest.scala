@@ -29,7 +29,7 @@ package scalafx.controls
 
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
-import javafx.scene.layout.Priority
+import scalafx.scene.layout.Priority
 import scalafx.Includes.eventClosureWrapper
 import scalafx.Includes.jfxBooleanProperty2sfx
 import scalafx.application.JFXApp
@@ -57,7 +57,7 @@ object CheckBoxTest extends JFXApp {
   val controlsPane = new VBox {
     spacing = 5
     fillWidth = true
-    innerAlignment = Pos.CENTER
+    alignment = Pos.CENTER
     hgrow = Priority.NEVER
     content = List(new CheckBoxControls(check), new ControlControls(check))
   }

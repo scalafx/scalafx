@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,44 +24,42 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.testutil
 
-package scalafx.controls
+import scalafx.Includes._
+import scalafx.geometry.Pos
+import scalafx.beans.property.ObjectProperty
+import scalafx.delegate.AlignmentDelegate
+import scalafx.delegate.AlignmentDelegate._
 
-import scalafx.scene.layout.Priority
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.controls.controls._
-import scalafx.scene.Scene
-import scalafx.scene.control.ComboBox
-import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.VBox
-import scalafx.scene.paint.Color
+import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.FlatSpec
 
+/**
+ * Trait to test AlignmentDelegate subclasses
+ */
+trait AlignmentDelegateSpec[J <: Object with Aligned, D <: AlignmentDelegate[J]] 
+	extends SFXDelegateSpec[J, D] {
 
-object ComboBoxDemo extends JFXApp {
+  it should "have its Alignment observed when changed" in {
+    var changed = false
+    val delegate = getScalaClassInstance
+    val initialValue = Pos.BASELINE_CENTER
+    val finalValue = Pos.CENTER_RIGHT
 
-  val comboBox = new ComboBox[String]
-  
-  val comboBoxControls = new ComboBoxControls(comboBox)
-  
-    val mainPane = new BorderPane {
-    top = comboBox
-    center = new VBox {
-      content = List(comboBoxControls, new ComboBoxBaseControls[String](comboBox), new ControlControls(comboBox))
-    }
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
+    delegate.alignment = initialValue
+    val subscription = delegate.alignment.onChange((ov, oldValue, newValue) => {
+      oldValue should be(initialValue.delegate)
+      newValue should be(finalValue.delegate)
+      changed = true
+    })
+
+    delegate.alignment = finalValue
+
+    changed should be(true)
+    delegate.alignment.value should be(finalValue.delegate)
+
+    subscription.cancel
   }
-
-  stage = new PrimaryStage {
-    title = "ComboBox Test"
-    width = 300
-    height = 450
-    scene = new Scene {
-      fill = Color.LIGHTGRAY
-      content = mainPane
-    }
-  }
-
 
 }

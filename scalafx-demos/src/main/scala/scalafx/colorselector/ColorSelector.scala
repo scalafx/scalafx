@@ -9,9 +9,7 @@ import javafx.scene.input.MouseEvent
 import javafx.scene.layout.Priority
 import javafx.scene.text.TextAlignment
 import scala.collection.Seq
-import scalafx.Includes.jfxBooleanProperty2sfx
-import scalafx.Includes.jfxDoubleProperty2sfx
-import scalafx.Includes.jfxObjectProperty2sfx
+import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
@@ -186,7 +184,9 @@ object ColorSelector extends JFXApp {
   val cmbWebColor = new ComboBox[WebColor](WebColor.colors) {
     promptText = "Web Color"
     converter = StringConverter.toStringConverter((wc: WebColor) => wc.name)
-    onAction = webColorSelected
+    onAction =  new EventHandler[javafx.event.ActionEvent] {
+       def handle(event: javafx.event.ActionEvent) = webColorSelected
+    }
   }
 
   val txfColorValue = new TextField {
@@ -201,7 +201,9 @@ object ColorSelector extends JFXApp {
     promptText = "Color Format"
     converter = StringConverter.toStringConverter((f: Formatter) => f.description)
     value = RgbFormatter
-    onAction = formatColor
+    onAction = new EventHandler[javafx.event.ActionEvent] {
+       def handle(event: javafx.event.ActionEvent) = formatColor
+    }
   }
 
   val chbDisableAlpha = new CheckBox {
@@ -245,7 +247,7 @@ object ColorSelector extends JFXApp {
 
     add(controlRed, 0, 1)
     add(new Label {
-      alignment = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TOP_RIGHT
       labelFor = cmbWebColor
       text = "Web Color"
       textAlignment = TextAlignment.RIGHT
@@ -255,7 +257,7 @@ object ColorSelector extends JFXApp {
 
     add(controlGreen, 0, 2)
     add(new Label {
-      alignment = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TOP_RIGHT
       labelFor = txfColorValue
       text = "Color Value"
       textAlignment = TextAlignment.RIGHT
@@ -265,7 +267,7 @@ object ColorSelector extends JFXApp {
 
     add(controlBlue, 0, 3)
     add(new Label {
-      alignment = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TOP_RIGHT
       labelFor = cmbColorFormat
       text = "Color Format"
       textAlignment = TextAlignment.RIGHT
@@ -275,7 +277,7 @@ object ColorSelector extends JFXApp {
 
     add(controlAlpha, 0, 4)
     add(new Label {
-      alignment = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TOP_RIGHT
       labelFor = chbDisableAlpha
       text = "Disable Alpha"
       textAlignment = TextAlignment.RIGHT

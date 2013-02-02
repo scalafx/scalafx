@@ -50,7 +50,7 @@ object TextFieldTest extends JFXApp {
   val controlsPane = new VBox {
     spacing = 5
     fillWidth = true
-    innerAlignment = Pos.CENTER
+    alignment = Pos.CENTER
     hgrow = Priority.NEVER
     content = List(new TextFieldControls(textField), new TextInputControlControls(textField), new ControlControls(textField))
   }

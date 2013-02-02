@@ -1,6 +1,6 @@
 package scalafx.controls
 
-import javafx.scene.layout.Priority
+import scalafx.scene.layout.Priority
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.controls.controls.ProgressIndicatorControls

@@ -31,12 +31,12 @@ import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.AlignmentDelegateSpec
 
 /**
  * GridPane Spec tests.
- *
- *
  */
 @RunWith(classOf[JUnitRunner])
 class GridPaneSpec
   extends AbstractSFXDelegateSpec[jfxsl.GridPane, GridPane, jfxsl.GridPaneBuilder[_]](classOf[jfxsl.GridPane], classOf[GridPane], classOf[jfxsl.GridPaneBuilder[_]])
+  with AlignmentDelegateSpec[jfxsl.GridPane, GridPane]

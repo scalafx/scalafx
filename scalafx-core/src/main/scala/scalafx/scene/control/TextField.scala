@@ -27,24 +27,34 @@
 package scalafx.scene.control
 
 import scalafx.Includes._
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
 import scalafx.delegate.SFXDelegate
-import javafx.{event => jfxe}
+import scalafx.delegate.AlignmentDelegate
+import javafx.{ event => jfxe }
+import scalafx.beans.property.IntegerProperty
 
 object TextField {
   implicit def sfxTextField2jfx(v: TextField) = v.delegate
 }
 
 class TextField(override val delegate: jfxsc.TextField = new jfxsc.TextField)
-  extends TextInputControl(delegate) with SFXDelegate[jfxsc.TextField] {
+  extends TextInputControl(delegate)
+  with AlignmentDelegate[jfxsc.TextField]
+  with SFXDelegate[jfxsc.TextField] {
 
+  /**
+   * The action handler associated with this text field, or null if no action handler is assigned.
+   */
   def onAction = delegate.onActionProperty
   def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]) {
     onAction() = v
   }
 
-  def prefColumnCount = delegate.prefColumnCountProperty()
-  def prefColumnCount_=(v:Int) {
+  /**
+   * The preferred number of text columns.
+   */
+  def prefColumnCount: IntegerProperty = delegate.prefColumnCountProperty
+  def prefColumnCount_=(v: Int) {
     prefColumnCount() = v
   }
 

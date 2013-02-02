@@ -36,6 +36,7 @@ import scalafx.geometry.Insets
 import scalafx.scene.Node._
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
+import scalafx.delegate.AlignmentDelegate
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.geometry.HPos
@@ -191,18 +192,10 @@ object GridPane {
 /**
  * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html]]
  */
-class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane())
+class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
   extends Pane(delegate)
+  with AlignmentDelegate[jfxsl.GridPane]
   with SFXDelegate[jfxsl.GridPane] {
-
-  /**
-   * The alignment of of the grid within the gridpane's width and height.
-   * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node
-   */
-  def innerAlignment = delegate.alignmentProperty
-  def innerAlignment_=(v: Pos) {
-    innerAlignment() = v
-  }
 
   /**
    * For debug purposes only: controls whether lines are displayed to show the gridpane's rows and
@@ -275,4 +268,5 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane())
    * Requests a layout pass to be performed before the next scene is rendered.
    */
   def requestLayout = delegate.requestLayout
+  
 }

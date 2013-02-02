@@ -51,6 +51,8 @@ import scalafx.scene.effect.Effect
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.transform.Transform
 import scalafx.scene.image.WritableImage
+import scalafx.geometry.Pos
+import scalafx.scene.layout.Priority
 
 object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
@@ -386,7 +388,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   }
 
   /**
-   * Defines a function to be called when a full press-drag-release gesture ends (by releasing mouse button) within this Node.
+   * Defines a function to be called when a full press-drag-release gesture ends (by releasing mouse button) within 
+   * this Node.
    */
   def onMouseDragReleased = delegate.onMouseDragReleasedProperty
 
@@ -603,24 +606,62 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
 
   // layout pseudo-properties:
 
-  def alignment = delegate.getProperties().get("alignment").asInstanceOf[jfxg.Pos]
+  /**
+   * Pseudo-property that indicates this Node position inside its respective parent.
+   */
+  def alignmentInParent: Pos = delegate.getProperties().get("alignment").asInstanceOf[jfxg.Pos]
 
-  def alignment_=(p: jfxg.Pos) {
-    delegate.getProperties().put("alignment", p)
-    delegate.getProperties().put("halignment", p.getHpos)
-    delegate.getProperties().put("valignment", p.getVpos)
+  /**
+   * Sets this Node's alignment constraint inside its Parent. If set, will override the Parent's default alignment.
+   * Setting the value to `null` will remove the constraint.
+   * Internally it calls `setAlignment(Node, Pos)` static method JavaFX's
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/BorderPane.html BorderPane]],
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/StackPane.html StackPane]] and
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/TilePane.html TilePane]]. Furthermore, it is set
+   * `halignment` and `valignment` property (using JavaFX Node's `getProperties()`) and called
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html#setHalignment(javafx.scene.Node, javafx.geometry.HPos) setHalignment]]
+   * and
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html#setValignment(javafx.scene.Node, javafx.geometry.VPos) setValignment]]
+   * static methods from [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html GridPane]]; this time
+   * using `hpos` and `vpos` from Pos argument. Besides, it sets this node `alignment` property towards
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/Node.html#getProperties() JavaFX Node's getProperties()]] and
+   * `setAlignment` static method from
+   *
+   * '''Do not confuse''' with `alignment' property from [[scalafx.delegate.AlignmentDelegate]]! It refers to alignment
+   * ''inside'' element, while `alignmentInParent` refers to element's alignment inside its parent.
+   *
+   * @param p New node's Position
+   */
+  def alignmentInParent_=(p: Pos) {
+    val delegateProperties = delegate.getProperties
+    delegateProperties("alignment") = p.delegate
+    delegateProperties("halignment") = p.hpos.delegate
+    delegateProperties("valignment") = p.vpos.delegate
     // for compatibility with layouts, which all use different keys
     jfxsl.BorderPane.setAlignment(delegate, p)
-    jfxsl.GridPane.setHalignment(delegate, p.getHpos)
-    jfxsl.GridPane.setValignment(delegate, p.getVpos)
+    jfxsl.GridPane.setHalignment(delegate, p.hpos)
+    jfxsl.GridPane.setValignment(delegate, p.vpos)
     jfxsl.StackPane.setAlignment(delegate, p)
     jfxsl.TilePane.setAlignment(delegate, p)
   }
 
-  def margin = delegate.getProperties().get("margin").asInstanceOf[Insets]
+  /**
+   * Pseudo-property that returns this Node's margin constraint inside its Parent if set.
+   *
+   * @return this Node's margin constraint inside its Parent or `null` if no margin was set.
+   */
+  def margin: Insets = delegate.getProperties().get("margin").asInstanceOf[jfxg.Insets]
 
-  def margin_=(i: jfxg.Insets) {
-    delegate.getProperties().put("margin", i)
+  /**
+   * Sets this Node's margin constraint inside its Parent if set. If set, the parent will layout the child with the
+   * margin space around it. Setting the value to `null` will remove the constraint.
+   * Internally it calls `setMargin(Node, Insets)` static method from JavaFX's `BorderPane`, `FlowPane`,
+   * `GridPane`, `HBox`, `StackPane` and `VBox` besides fill this Node's "margin" property.
+   *
+   * @param The margin of space around this Node inside its parent.
+   */
+  def margin_=(i: Insets) {
+    delegate.getProperties().put("margin", i.delegate)
     // for compatibility with layouts, which all use different keys
     jfxsl.BorderPane.setMargin(delegate, i)
     jfxsl.FlowPane.setMargin(delegate, i)
@@ -631,19 +672,45 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
     jfxsl.VBox.setMargin(delegate, i)
   }
 
-  def hgrow = delegate.getProperties().get("hgrow").asInstanceOf[jfxsl.Priority]
+  /**
+   * Pseudo-property that returns this Node's hgrow constraint if set.
+   *
+   * @return the horizontal grow priority for the child or `null` if no priority was set
+   */
+  def hgrow: Priority = delegate.getProperties().get("hgrow").asInstanceOf[jfxsl.Priority]
 
-  def hgrow_=(p: jfxsl.Priority) {
-    delegate.getProperties().put("hgrow", p)
+  /**
+   * Sets the horizontal grow priority for this Node inside its parent. Setting the value to `null` will remove
+   * the constraint.
+   * Internally it calls `setHgrow(Node, Priority)` static method from JavaFX's `GridPane` and `HBox` besides fill
+   * this Node's "hgrow" property.
+   *
+   * @param p the horizontal grow priority for this Node
+   */
+  def hgrow_=(p: Priority) {
+    delegate.getProperties("hgrow") = p.delegate
     // for compatibility with layouts, which all use different keys
     jfxsl.GridPane.setHgrow(delegate, p)
     jfxsl.HBox.setHgrow(delegate, p)
   }
 
-  def vgrow = delegate.getProperties().get("vgrow").asInstanceOf[jfxsl.Priority]
+  /**
+   * Pseudo-property that returns this Node's vgrow constraint if set.
+   *
+   * @return the vertical grow priority for the child or `null` if no priority was set
+   */
+  def vgrow: Priority = delegate.getProperties().get("vgrow").asInstanceOf[jfxsl.Priority]
 
-  def vgrow_=(p: jfxsl.Priority) {
-    delegate.getProperties().put("vgrow", p)
+  /**
+   * Sets the vertical grow priority for this Node inside its parent. Setting the value to `null` will remove
+   * the constraint.
+   * Internally it calls `setVgrow(Node, Priority)` static method from JavaFX's `GridPane` and `VBox` besides fill
+   * this Node's "vgrow" property.
+   *
+   * @param p the vertical grow priority for this Node
+   */
+  def vgrow_=(p: Priority) {
+    delegate.getProperties("vgrow") = p.delegate
     // for compatibility with layouts, which all use different keys
     jfxsl.GridPane.setVgrow(delegate, p)
     jfxsl.VBox.setVgrow(delegate, p)

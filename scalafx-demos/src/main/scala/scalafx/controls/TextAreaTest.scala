@@ -29,7 +29,7 @@ package scalafx.controls
 
 import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
-import javafx.scene.layout.Priority
+import scalafx.scene.layout.Priority
 import scalafx.Includes.jfxBooleanProperty2sfx
 import scalafx.Includes.jfxDoubleProperty2sfx
 import scalafx.Includes.jfxSceneProperty2sfx
@@ -62,7 +62,7 @@ object TextAreaTest extends JFXApp {
   val controlsPane = new VBox {
     spacing = 5
     fillWidth = true
-    innerAlignment = Pos.CENTER
+    alignment = Pos.CENTER
     prefHeight <== scene.height
     hgrow = Priority.NEVER
     content = List(new TextAreaControls(textArea), new TextInputControlControls(textArea), new ControlControls(textArea))

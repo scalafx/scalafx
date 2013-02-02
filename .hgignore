@@ -22,3 +22,4 @@ scalafx-core/.classpath
 scalafx-core/.project
 scalafx-demos/.classpath
 scalafx-demos/.project
+*.orig

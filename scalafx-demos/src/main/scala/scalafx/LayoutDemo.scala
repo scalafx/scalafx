@@ -54,8 +54,8 @@ object LayoutDemo extends JFXApp {
   val hbox1 = new HBox { content=List(hello, new Label { text = "Goodbye" }) }
   val hbox2 = new HBox { content=List(new Circle { radius=20 }, new Label { text = "Strange" }) }
 
-  val charm = new Text("charm") { font = new Font(24); alignment = Pos.BASELINE_LEFT; textOrigin = VPos.BASELINE }
-  val strange = new Text("strange") { font = new Font(12); alignment = Pos.BASELINE_LEFT; textOrigin = VPos.BASELINE }
+  val charm = new Text("charm") { font = new Font(24); alignmentInParent = Pos.BASELINE_LEFT; textOrigin = VPos.BASELINE }
+  val strange = new Text("strange") { font = new Font(12); alignmentInParent = Pos.BASELINE_LEFT; textOrigin = VPos.BASELINE }
 
   stage = new PrimaryStage {
     width = 1024
@@ -63,7 +63,7 @@ object LayoutDemo extends JFXApp {
     scene = new Scene {
       content = new ScrollPane {
         content = new HBox {
-          alignment = Pos.BASELINE_LEFT
+          alignmentInParent = Pos.BASELINE_LEFT
           fill = Color.BLUE
           content = List(charm, strange)
         }
