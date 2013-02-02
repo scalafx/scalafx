@@ -63,8 +63,8 @@ object StringConverter {
 
   /**
    * Convenience method that will create a StringConverter implementation that just makes
-   * conversion from object to String. [[fromString]] Method will throw a
-   * [[scala.UnsupportedOperationException]].
+   * conversion from object to String. [[scalafx.util.StringConverter#fromString]] method will throw a
+   * [[java.lang.UnsupportedOperationException]].
    *
    * @tparam T Type to convert
    *
@@ -81,8 +81,8 @@ object StringConverter {
 
   /**
    * Convenience method that will create a StringConverter implementation that just makes
-   * conversion from String to object. [[toString]] Method will throw a
-   * [[scala.UnsupportedOperationException]].
+   * conversion from String to object. [[scalafx.util.StringConverter#toString]] method will throw a
+   * [[java.lang.UnsupportedOperationException]].
    *
    * @tparam T Type to convert
    *

@@ -47,12 +47,14 @@ class WritableImage(override val delegate: jfxsi.WritableImage)
   def this(width: Int, height: Int) = this(new jfxsi.WritableImage(width, height))
 
   /**
-   * Construct an image of the specified dimensions, initialized from the indicated [[PixelReader]].
+   * Construct an image of the specified dimensions, initialized from the indicated
+   * [[scalafx.scene.image.PixelReader]].
    */
   def this(reader: PixelReader, width: Int, height: Int) = this(new jfxsi.WritableImage(reader, width, height))
 
   /**
-   * Construct an image of the specified dimensions, initialized from the indicated region of the [[PixelReader]].
+   * Construct an image of the specified dimensions, initialized from the indicated region of the
+   * [[scalafx.scene.image.PixelReader]].
    */
   def this(reader: PixelReader, x: Int, y: Int, width: Int, height: Int) = this(new jfxsi.WritableImage(reader, x, y, width, height))
   

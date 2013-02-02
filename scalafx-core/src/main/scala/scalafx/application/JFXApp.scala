@@ -167,7 +167,7 @@ object JFXApp {
 /** ScalaFX applications can extend JFXApp to create properly initialized JavaFX applications.
   *
   * On the back end `JFXApp` first calls [[javafx.application.Application.launch]] then executes body of its
-  * constructor when [[javafx.application.Application#start(Stage primaryStage)]] is called. Here is an example use:
+  * constructor when [[javafx.application.Application#start(primaryStage:Stage)]] is called. Here is an example use:
   *
   * {{{
   *   object SimpleScalaFXApp extends JFXApp {

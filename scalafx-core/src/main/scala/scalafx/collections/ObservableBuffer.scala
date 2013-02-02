@@ -45,7 +45,7 @@ import scalafx.event.subscriptions.Subscription
 import scalafx.delegate.SFXDelegate
 
 /**
- * Companion Object for [[ObservableBuffer]].
+ * Companion Object for [[scalafx.collections.ObservableBuffer]].
  */
 object ObservableBuffer extends SeqFactory[ObservableBuffer] {
 
@@ -66,12 +66,12 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
   // CHANGING INDICATORS - BEGIN
 
   /**
-   * Trait that indicates a Change in a ObsevableBuffer
+   * Trait that indicates a Change in a ObservableBuffer
    */
   trait Change
 
   /**
-   * Indicates a Addition in a ObsevableBuffer
+   * Indicates a Addition in a ObservableBuffer
    *
    * @param position Position from where new elements were added
    * @param added elements added
@@ -79,18 +79,15 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
   case class Add[T](position: Int, added: Traversable[T]) extends Change
 
   /**
-   * Indicates a Removing in a ObsevableBuffer
+   * Indicates a Removing in a ObservableBuffer
    *
    * @param position Position from where elements were removed
-   * @param added elements removed
+   * @param removed elements removed
    */
   case class Remove[T](position: Int, removed: Traversable[T]) extends Change
 
   /**
    * Indicates a Removing in a ObsevableBuffer
-   *
-   * @param position Position from where elements were removed
-   * @param added elements removed
    */
   case class Reorder(start: Int, end: Int, permutation: (Int => Int)) extends Change
 
@@ -101,7 +98,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
   /**
    * Creates a new Observable Buffer from a sequence of elements.
    *
-   * @param itens Sequence of elements
+   * @param items Sequence of elements
    * @return new Observable Buffer from items
    */
   def apply[T](items: Seq[T]): ObservableBuffer[T] =
@@ -245,7 +242,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
   /**
    * Adds all elements produced by a TraversableOnce to this $OB. $WhyOverride
    *
-   * @param the traversable object.
+   * @param xs traversable object.
    * @return $ownOB
    */
   override def ++=(xs: TraversableOnce[T]) = {

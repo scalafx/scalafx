@@ -38,10 +38,10 @@ object Service {
   implicit def sfxService2jfx[T](s: Service[T]) = s.delegate
 
   /**
-   * Create a new [[Service]] with a operation to be invoked after this was started on the JavaFX
+   * Create a new [[scalafx.concurrent.Service]] with a operation to be invoked after this was started on the JavaFX
    * Application Thread.
    *
-   * @param op [[scala.Function]] that returns a [[Task]] to be invoked after this was started on
+   * @param op [[scala.Function]] that returns a [[scalafx.concurrent.Task]] to be invoked after this was started on
    * the JavaFX Application Thread.
    */
   def apply[T](op: => jfxc.Task[T]) = new Service[T](new jfxc.Service[T] {

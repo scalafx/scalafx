@@ -34,12 +34,12 @@ object AnimationTimer {
   implicit def sfxAnimationTimer2jfx(at: AnimationTimer) = at.delegate
 
   /**
-   * Creates a new [[AnimationTimer]] from a handle function that receives a
+   * Creates a new [[scalafx.animation.AnimationTimer]] from a handle function that receives a
    * Long parameter.
    *
    * @param handler function that is called in every frame while the
    * AnimationTimer is active.
-   * @return a new [[AnimationTimer]].
+   * @return a new [[scalafx.animation.AnimationTimer]].
    */
   def apply(handler: Long => Unit): AnimationTimer = new AnimationTimer(new jfxa.AnimationTimer {
     def handle(now: Long) = handler(now)

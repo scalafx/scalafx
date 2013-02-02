@@ -27,7 +27,6 @@
 package scalafx.delegate
 
 import javafx.beans.{ property => jfxbp }
-import javafx.{ util => jfxu }
 import scalafx.beans.property.{ReadOnlyObjectWrapper, ObjectProperty}
 
 object DelegateIncludes extends DelegateIncludes 
@@ -36,7 +35,7 @@ trait DelegateIncludes {
 
   /**
      * Converts a Scala's [[scalafx.beans.property.ObjectProperty]] that wraps a
-     * [[SFXDelegate]] to a Java's [[javafx.beans.property.ObjectProperty]].
+     * [[scalafx.delegate.SFXDelegate]] to a Java's [[javafx.beans.property.ObjectProperty]].
      *
      *  @tparam D Type wrapped by SFXDelegate
      *  @tparam S A SFXDelegate subtype that wraps D.
@@ -48,7 +47,7 @@ trait DelegateIncludes {
 
   /**
    * Converts a Scala's [[scalafx.beans.property.ReadOnlyObjectWrapper]] that wraps a
-   * [[SFXDelegate]] to a Java's [[javafx.beans.property.ReadOnlyObjectWrapper]].
+   * [[scalafx.delegate.SFXDelegate]] to a Java's [[javafx.beans.property.ReadOnlyObjectWrapper]].
    *
    *  @tparam D Type wrapped by SFXDelegate
    *  @tparam S A SFXDelegate subtype that wraps D.

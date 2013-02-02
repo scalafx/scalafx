@@ -55,8 +55,7 @@ trait UtilIncludes {
   implicit def double2DurationHelper(d: Double) = new DurationHelper(d)
   implicit def jfxDuration2sfx(d: jfxu.Duration) = new Duration(d)
   /**
-   * Converts a [[javafx.util.StringConverter JavaFX StringConverter]] to its 
-   * ScalaFX version. 
+   * Converts a JavaFX [[javafx.util.StringConverter]] to its ScalaFX version.
    */
   implicit def jfxStringConverter2sfx[T](c: jfxu.StringConverter[T]) = new StringConverter[T] {
     def fromString(string: String): T = c.fromString(string)

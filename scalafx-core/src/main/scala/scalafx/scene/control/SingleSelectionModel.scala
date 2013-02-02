@@ -28,14 +28,13 @@ package scalafx.scene.control
 
 import scalafx.delegate.SFXDelegate
 import javafx.scene.{ control => jfxsc }
-import javafx.{ collections => jfxc }
 import scalafx.Includes._
 
 object SingleSelectionModel {
   implicit def sfxSingleSelectionModel2jfx[T](v: SingleSelectionModel[T]) = v.delegate
 
   /**
-   * Creates a new [[SingleSelectionModel]] from functions that defines a data
+   * Creates a new [[scalafx.scene.control.SingleSelectionModel]] from functions that defines a data
    * model and quantity of items. This method was created to supply necessity
    * to override protected methods
    * [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/SingleSelectionModel.html#getItemCount() getItemCount()]]
