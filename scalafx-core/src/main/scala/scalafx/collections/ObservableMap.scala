@@ -200,12 +200,11 @@ trait ObservableMap[K, V]
   import ObservableMap._
 
   /**
-   * Add a listener function to map's changes. This function will handle this
-   * [[ObservableMap.Change map's modification data]].
+   * Add a change listener.
    *
-   * @param Function that will handle this map's modification data to be activated when
+   * @param op Function that will handle this map's modification data to be activated when
    * some change was made.
-   */
+  */
   def onChange(op: (ObservableMap[K, V], Change[K, V]) => Unit) {
     delegate.addListener(new jfxc.MapChangeListener[K, V] {
       def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]) {
@@ -238,7 +237,7 @@ trait ObservableMap[K, V]
 }
 
 /**
- * [[ObservableMap]] implementation backed for a
+ * [[scalafx.collections.ObservableMap]] implementation backed for a
  * [[http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html HashMap]] from Java Collection.
  *
  * @param delegate JavaFX

@@ -36,7 +36,7 @@ object Task {
   implicit def sfxTask2jfx[T](t: Task[T]) = t.delegate
 
   /**
-   * Creates a new [[Task]] with a operation that actually performs the background thread logic. 
+   * Creates a new [[scalafx.concurrent.Task]] with a operation that actually performs the background thread logic.
    */
   def apply[T](op: => T) = new Task[T](new jfxc.Task[T] {
     def call = op

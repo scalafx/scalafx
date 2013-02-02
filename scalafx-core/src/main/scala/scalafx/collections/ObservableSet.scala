@@ -59,7 +59,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
   case class Add[T](added: T) extends Change[T]
 
   /**
-   * Indicates a remotion in a ObservableSet
+   * Indicates removal of an item.
    *
    * @param removed Removed element.
    */
@@ -77,7 +77,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
   override def empty[T]: ObservableSet[T] = new ObservableHashSet[T]
 
   /**
-   * Creates a new ObservableSet from a [[scala.Seq Sequence]].
+   * Creates a new ObservableSet from a sequence.
    *
    * @param elems Sequence source of Set
    * @return new [[scalafx.collections.ObservableHashSet]] generated from elems
@@ -86,7 +86,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
     new ObservableHashSet[T](jfxc.FXCollections.observableSet(elems: _*))
 
   /**
-   * Creates a new ObservableSet from a [[scala.collection.mutable.Set MutableSet]].
+   * Creates a new ObservableSet from a mutable [[scala.collection.mutable.Set]].
    *
    * @param set Mutable Set to be wrapped.
    * @return new [[scalafx.collections.ObservableHashSet]] wrapping ''set''
@@ -186,8 +186,7 @@ trait ObservableSet[T]
   import ObservableSet._
 
   /**
-   * Add a listener function to set's changes. This function will handle this
-   * [[scalafx.collections.ObservableSet.Change set's modification data]].
+   * Add a change listener.
    *
    * @param op function that will handle this set's modification data to be activated when
    *           some change was made.

@@ -49,7 +49,7 @@ trait Toggle extends SFXDelegate[jfxsc.Toggle] {
   }
 
   /**
-   * The [[ToggleGroup]] to which this Toggle belongs.
+   * The [[scalafx.scene.control.ToggleGroup]] to which this Toggle belongs.
    */
   def toggleGroup = delegate.toggleGroupProperty
   def toggleGroup_=(v: ToggleGroup) {

@@ -59,7 +59,7 @@ object EventHandler {
 
 /**
  * Trait used for handle events manipulation. JavaFX class wrapped must have methods defined in
- * [[EventHandlerDelegate.EventHandled]] Type:
+ * [[scalafx.event.EventHandlerDelegate.EventHandled]] Type:
  * {{{
  * def addEventHandler   [E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E])
  * def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E])
@@ -87,7 +87,7 @@ trait EventHandlerDelegate {
   }
 
   /**
-   * Returns a object that implements [[EventHandled]].
+   * Returns a object that implements [[scalafx.event.EventHandlerDelegate.EventHandled]].
    */
   protected def eventHandlerDelegate: EventHandled
 

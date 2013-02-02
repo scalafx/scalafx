@@ -95,13 +95,13 @@ trait ControlIncludes
   }
   implicit def jfxSeparator2sfx(s: jfxsc.Separator) = new Separator(s)
   /**
-   * Converts a JavaFX's Skin to a ScalaFX's [[Skinnable]]
+   * Converts a JavaFX's Skin to a ScalaFX's [[scalafx.scene.control.Skinnable]]
    */
   implicit def jfxSkin2sfxSkin[C <: jfxsc.Skinnable](s: jfxsc.Skin[C]) = new Skin[C] {
     override val delegate = s
   }
   /**
-   * Converts a JavaFX's Skinnable to a ScalaFX's [[Skinnable]]
+   * Converts a JavaFX's Skinnable to a ScalaFX's [[scalafx.scene.control.Skinnable]]
    */
   implicit def jfxSkinnable2sfxSkinnable(s: jfxsc.Skinnable) = new Skinnable {
     override val delegate = s
