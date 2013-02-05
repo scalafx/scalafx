@@ -30,7 +30,6 @@ import javafx.beans.{ property => jfxbp }
 import javafx.{ geometry => jfxg }
 import scalafx.Includes._
 import scalafx.geometry.Pos
-import scalafx.beans.property.ObjectProperty
 import AlignmentDelegate._
 
 object AlignmentDelegate {
@@ -40,8 +39,8 @@ object AlignmentDelegate {
    */
   type Aligned = {
 
-    /**
-     * The overall alignment of children (or text) within the components's width and height
+    /*
+     * The overall alignment of children (or text) within the component's width and height
      */
     def alignmentProperty(): jfxbp.ObjectProperty[jfxg.Pos]
 
@@ -50,13 +49,13 @@ object AlignmentDelegate {
 }
 /**
  * Trait that unifies JavaFX classes that contains properties indicating component's internal alignment, 
- * represented by alignmentProperty and its respectives getter and setters.
+ * represented by alignmentProperty and its respective getter and setters.
  */
 trait AlignmentDelegate[J <: Object with Aligned]
   extends SFXDelegate[J] {
 
   /**
-   * The overall alignment of children (or text) within the components's width and height.
+   * The overall alignment of children (or text) within the component's width and height.
    * 
    * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node.
    */
