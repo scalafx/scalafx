@@ -194,6 +194,15 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
   }
 
   /**
+   * Shows this stage and waits for it to be hidden (closed) before returning to the caller.
+   * This method temporarily blocks processing of the current event, and starts a nested event loop to handle other events.
+   * This method must be called on the FX Application thread.
+   */
+  def showAndWait {
+    delegate.showAndWait
+  }
+
+  /**
    * Send the Window to the background.
    */
   def toBack {
