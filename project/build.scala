@@ -142,9 +142,34 @@ object ScalaFXBuild extends Build {
             </scm>
             <developers>
                 <developer>
+                    <id>rafael.afonso</id>
+                    <name>Rafael Afonso</name>
+                </developer>
+                <developer>
+                    <id>Alain.Fagot.Bearez</id>
+                    <name>Alain Béarez</name>
+                    <url>http://cua.li/TI/</url>
+                </developer>
+                <developer>
                     <id>steveonjava</id>
                     <name>Stephen Chin</name>
                     <url>http://www.nighthacking.com/</url>
+                </developer>
+                <developer>
+                    <id>akauppi</id>
+                    <name>Asko Kauppi</name>
+                </developer>
+                <developer>
+                    <id>rladstaetter</id>
+                    <name>Robert Ladstätter</name>
+                </developer>
+                <developer>
+                    <id>peter.pilgrim</id>
+                    <name>Peter Pilgrim</name>
+                    <url>http://www.xenonique.co.uk/blog/</url>
+                </developer>
+                <developer>
+                    <name>Matthew Pocock</name>
                 </developer>
                 <developer>
                     <id>sven.reimers</id>
@@ -152,9 +177,11 @@ object ScalaFXBuild extends Build {
                     <url>http://wiki.netbeans.org/SvenReimers/</url>
                 </developer>
                 <developer>
-                    <id>peter.pilgrim</id>
-                    <name>Peter Pilgrim</name>
-                    <url>http://www.xenonique.co.uk/blog/</url>
+                    <id>jpsacha</id>
+                    <name>Jarek Sacha</name>
+                 </developer>
+                <developer>
+                    <name>Curtis Stanford</name>
                 </developer>
             </developers>
         )}
