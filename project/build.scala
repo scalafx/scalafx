@@ -47,23 +47,23 @@ object ScalaFXBuild extends Build {
     lazy val unmanagedListing = unmanagedJars in Compile += Attributed.blank(file(javaHome.get + "/jre/lib/jfxrt.jar" ))
 
     lazy val scalafxProject = Project(
-        id = "scalafx",
+        id = "scalafx-project",
         base = file("."),
         settings = scalafxSettings ++ doNotPublish ++ Seq(
             description := "The ScalaFX framework (root project)"
         ),
-        aggregate = Seq( scalafxCore, scalafxDemos )
+        aggregate = Seq( scalafx, scalafxDemos )
     )
     
-    lazy val scalafxCore = Project(
-        id = "scalafx-core",
+    lazy val scalafx = Project(
+        id = "scalafx",
         base = file("scalafx-core"),
         settings = scalafxSettings ++ Seq(
             libraryDependencies ++= Seq(
                 scalatest % "test",
                 junit % "test" ),
             unmanagedListing,
-            description := "The core ScalaFX framework"
+            description := "The ScalaFX framework"
         )
      )
     
@@ -86,7 +86,7 @@ object ScalaFXBuild extends Build {
             mainClass in (Compile, run) := Some("scalafx.ColorfulCircles")
         )
     ) dependsOn (
-        scalafxCore % "compile;test->test"
+        scalafx % "compile;test->test"
     )
     
     
