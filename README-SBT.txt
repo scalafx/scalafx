@@ -102,11 +102,11 @@ Start Scala SBT at the command line:
 List the individual tree of projects and their version number:
 
     sbt> show version
-    [info] scalafx-core/*:version
+    [info] scalafx/*:version
     [info] 	1.0-SNAPSHOT
     [info] scalafx-demos/*:version
     [info] 	1.0-SNAPSHOT
-    [info] scalafx/*:version
+    [info] scalafx-project/*:version
     [info] 	1.0-SNAPSHOT
     (Where `sbt>' represents the Scala SBT interactive command line prompt)
     
@@ -132,11 +132,11 @@ Navigate around the Scala SBT multiple modules:
     sbt> projects
     sbt> project
 
-    # navigate to the `scalafx-core' module
-    sbt> project scalafx-core
+    # navigate to the `scalafx' module
+    sbt> project scalafx
     sbt> projects
 
-    # navigate to the `scalafx-core' module
+    # navigate to the `scalafx-demos' module
     sbt> project scalafx-demos
     sbt> projects
 
@@ -158,7 +158,7 @@ Generate Eclipse project files:
 or
     sbt> eclipse
 
-The Eclipse Plugin generates the files: scalafx-core/.project, scalafx-core/.classpath
+The Eclipse Plugin generates the files: scalafx/.project, scalafx/.classpath
 and the files scalafx-demos/.project, scalafx-demos/.classpath
 
 
@@ -177,7 +177,7 @@ http://www.scala-sbt.org/release/docs/Getting-Started/Multi-Project.html
 5. Running the Demonstration
    -------------------------
    
-The module `scalafx-demos' contains many demonstrations of the ScalaFX core.
+The module `scalafx-demos' contains many demonstrations of the ScalaFX Framework.
 There is one official standard demonstration, which the commiter have used to
 test the build. It is called `scalafx.ColorfulCircles'.
 
@@ -221,15 +221,15 @@ the moment. Sorry about that. Here are the necessaey commands:
     % mvn install:install-file -DartifactId=scalafx_2.9.2 \
     -DgroupId=org.scalafx \
     -Dpackaging=jar \
-    -DpomFile=scalafx-core_2.9.2-1.0-SNAPSHOT.pom \
-    -Dfile=scalafx-core_2.9.2-1.0-SNAPSHOT.jar \
+    -DpomFile=scalafx_2.9.2-1.0-SNAPSHOT.pom \
+    -Dfile=scalafx_2.9.2-1.0-SNAPSHOT.jar \
     -Dversion=1.0-SNAPSHOT \
-    -Dsources=scalafx-core_2.9.2-1.0-SNAPSHOT-sources.jar
+    -Dsources=scalafx_2.9.2-1.0-SNAPSHOT-sources.jar
 
 
 Sadly, you will to repeat this for all the modules, until an automated method is
 found for Scala SBT. Please note the embedded Scala compiler version in the
-artifact name e.g. `scalafx-core_2.9.2'
+artifact name e.g. `scalafx_2.9.2'
 
 
 7. SBT Configuration
@@ -290,11 +290,11 @@ the command:
 Now show the current value for `scala-version', with the command:
 
     sbt> show scala-version
-    [info] scalafx-core/*:scala-version
+    [info] scalafx/*:scala-version
     [info] 	2.9.2
     [info] scalafx-demos/*:scala-version
     [info] 	2.9.2
-    [info] scalafx/*:scala-version
+    [info] scalafx-project/*:scala-version
     [info] 	2.9.2    
     
 

@@ -57,7 +57,7 @@ object ScalaFXBuild extends Build {
     
     lazy val scalafx = Project(
         id = "scalafx",
-        base = file("scalafx-core"),
+        base = file("scalafx"),
         settings = scalafxSettings ++ Seq(
             libraryDependencies ++= Seq(
                 scalatest % "test",

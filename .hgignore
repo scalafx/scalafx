@@ -18,8 +18,8 @@ project/target
 *.iml
 *.log
 *.bak
-scalafx-core/.classpath
-scalafx-core/.project
+scalafx/.classpath
+scalafx/.project
 scalafx-demos/.classpath
 scalafx-demos/.project
 *.orig

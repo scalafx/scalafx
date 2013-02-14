@@ -70,14 +70,14 @@ The current project structure looks like this:
 
 ./archive
 ./project
-./scalafx-core
-./scalafx-core/src
-./scalafx-core/src/main
-./scalafx-core/src/main/scala
-./scalafx-core/src/main/resources
-./scalafx-core/src/test
-./scalafx-core/src/test/resources
-./scalafx-core/src/test/scala
+./scalafx
+./scalafx/src
+./scalafx/src/main
+./scalafx/src/main/scala
+./scalafx/src/main/resources
+./scalafx/src/test
+./scalafx/src/test/resources
+./scalafx/src/test/scala
 ./scalafx-demos
 ./scalafx-demos/src
 ./scalafx-demos/src/main
@@ -92,9 +92,9 @@ Where `.' is a the root folder of the project.
 The `archive' folder is reserved for remnants of the previous single module
 build system.
 
-The `scalafx-core' folder is the sub project for the ScalaFX Core Framework.
+The `scalafx' folder is the sub project for the ScalaFX Framework.
 
-The `scalafx-demos' is the sub project for the ScalaFX Demonstrations Framework.
+The `scalafx-demos' is the sub project for the ScalaFX Framework Demonstrations.
 
 The `project' folder is reserved for Scala SBT.
 

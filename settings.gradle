@@ -1,2 +1,2 @@
 // Gradle multi-project builds
-include 'scalafx-core', 'scalafx-demos'
+include 'scalafx', 'scalafx-demos'

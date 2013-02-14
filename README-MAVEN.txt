@@ -13,7 +13,7 @@ This is the file `README-MAVEN.txt'.
 There are two official build systems for ScalaFX, namely Scala SBT and Gradle.
 This document describes how the developers support the Maven repository system.
 
-This project build relies on SBT, but you can get the scalafx-core libraries like this in
+This project build relies on SBT, but you can get the scalafx libraries like this in
 your local repository:
 
 # execute this commands on the command line
@@ -23,19 +23,19 @@ sbt clean compile package make-pom package-src make-pom
 mvn install:install-file -DartifactId=scalafx_2.10 \
     -DgroupId=org.scalafx \
     -Dpackaging=jar \
-    -DpomFile=scalafx-core/target/scala-2.10/scalafx-core_2.10-1.0-SNAPSHOT.pom \
-    -Dfile=scalafx-core/target/scala-2.10/scalafx-core_2.10-1.0-SNAPSHOT.jar \
+    -DpomFile=scalafx/target/scala-2.10/scalafx_2.10-1.0-SNAPSHOT.pom \
+    -Dfile=scalafx/target/scala-2.10/scalafx_2.10-1.0-SNAPSHOT.jar \
     -Dversion=1.0-SNAPSHOT \
-    -Dsources=scalafx-core/target/scala-2.10/scalafx-core_2.10-1.0-SNAPSHOT-sources.jar
+    -Dsources=scalafx/target/scala-2.10/scalafx_2.10-1.0-SNAPSHOT-sources.jar
 
 # or, if you work with scala 2.9.2 (officially supported)
 mvn install:install-file -DartifactId=scalafx_2.9.2 \
     -DgroupId=org.scalafx \
     -Dpackaging=jar \
-    -DpomFile=scalafx-core/target/scala-2.9.2/scalafx-core_2.9.2-1.0-SNAPSHOT.pom \
-    -Dfile=scalafx-core/target/scala-2.9.2/scalafx-core_2.9.2-1.0-SNAPSHOT.jar \
+    -DpomFile=scalafx/target/scala-2.9.2/scalafx_2.9.2-1.0-SNAPSHOT.pom \
+    -Dfile=scalafx/target/scala-2.9.2/scalafx_2.9.2-1.0-SNAPSHOT.jar \
     -Dversion=1.0-SNAPSHOT \
-    -Dsources=scalafx-core/target/scala-2.9.2/scalafx-core_2.9.2-1.0-SNAPSHOT-sources.jar
+    -Dsources=scalafx/target/scala-2.9.2/scalafx_2.9.2-1.0-SNAPSHOT-sources.jar
 
 You can change the scala version in project/build.scala, search for scalaversion variable.
 
