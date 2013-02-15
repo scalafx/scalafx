@@ -27,38 +27,34 @@
 
 package scalafx
 
-import application.JFXApp
-import javafx.event.ActionEvent
-import javafx.event.EventHandler
+import scalafx.application.JFXApp
+import scalafx.event.ActionEvent
 import scalafx.Includes._
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout.GridPane
 import scalafx.scene.paint.Color
+import scalafx.geometry.Insets
 
 object CheckBoxTest extends JFXApp {
 
   val check = new CheckBox {
     text = "CheckBox"
   }
-  check.onAction = new EventHandler[ActionEvent] {
-    def handle(event: ActionEvent) {
-      lblCheckState.text = if (check.indeterminate.get) "Indeterminate" else check.selected.get().toString()
-    }
+  check.onAction = (event: ActionEvent) => {
+      lblCheckState.text = if (check.indeterminate.get) "Indeterminate" else check.selected.get().toString
   }
 
   val lblCheckState = new Label {
-    text = check.selected.get().toString()
+    text = check.selected.get().toString
   }
 
   val btnAllowIndeterminate = new scalafx.scene.control.Button {
     text = "Allow Indeterminate"
   }
-  btnAllowIndeterminate.onAction = new EventHandler[ActionEvent] {
-    def handle(event: ActionEvent) {
+  btnAllowIndeterminate.onAction = (event: ActionEvent) => {
       check.allowIndeterminate = !check.allowIndeterminate.get()
-    }
   }
 
   val lblAllowIndeterminate = new Label {
@@ -68,16 +64,13 @@ object CheckBoxTest extends JFXApp {
   val btnFire = new Button {
     text = "Fire!"
   }
-  btnFire.onAction = new EventHandler[ActionEvent] {
-    def handle(event: ActionEvent) {
-      check.fire
-    }
-  }
+  btnFire.onAction = (event: ActionEvent) =>  check.fire
 
   val txfText = new TextField 
   txfText.delegate.textProperty.bindBidirectional(check.text)
 
   val grid = new GridPane {
+    padding = Insets(10)
     hgap = 5
     vgap = 5
   }
@@ -90,8 +83,6 @@ object CheckBoxTest extends JFXApp {
 
   stage = new PrimaryStage {
     title = "CheckBox Test"
-    width = 300
-    height = 100
     scene = new Scene {
       fill = Color.LIGHTGRAY
       content = grid

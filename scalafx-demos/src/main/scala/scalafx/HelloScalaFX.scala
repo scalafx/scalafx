@@ -1,6 +1,5 @@
 package scalafx
 
-import javafx.scene.{ effect => jfxse }
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene

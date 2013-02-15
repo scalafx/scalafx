@@ -27,12 +27,11 @@
 
 package scalafx
 
-import javafx.scene.effect.BoxBlur
 import scala.math.random
-import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
+import scalafx.scene.effect.BoxBlur
 import scalafx.scene.paint.Color._
 import scalafx.scene.shape.Circle
 

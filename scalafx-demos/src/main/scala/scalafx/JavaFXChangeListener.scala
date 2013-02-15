@@ -27,11 +27,11 @@
 
 package scalafx
 
-import javafx.scene.paint.Color
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
+import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
 object JavaFXChangeListener extends JFXApp {

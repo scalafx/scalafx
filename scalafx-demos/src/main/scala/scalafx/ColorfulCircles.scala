@@ -27,30 +27,22 @@
 
 package scalafx
 
-import scala.collection.JavaConversions.seqAsJavaList
 import scala.collection.immutable.VectorBuilder
 import scala.math.random
-
-import javafx.scene.effect.BoxBlur
-import javafx.scene.paint.CycleMethod.NO_CYCLE
-import javafx.scene.paint.LinearGradient
-import javafx.scene.shape.StrokeType.OUTSIDE
 import scalafx.Includes._
-import scalafx.animation.Timeline.INDEFINITE
-import scalafx.animation.Tweenable.tweenable2KeyFrame
 import scalafx.animation.Timeline
+import scalafx.animation.Timeline.INDEFINITE
 import scalafx.application.JFXApp
-import scalafx.scene.effect.BlendMode.OVERLAY
-import scalafx.scene.paint.Color.BLACK
-import scalafx.scene.paint.Color.WHITE
-import scalafx.scene.paint.Color.sfxColor2jfx
-import scalafx.scene.shape.Circle
-import scalafx.scene.shape.Rectangle
-import scalafx.scene.Group
-import scalafx.scene.Scene
-import scalafx.stage.Stage
-import scene.paint.Stops
 import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.effect.BlendMode.OVERLAY
+import scalafx.scene.effect.BoxBlur
+import scalafx.scene.paint.Color.{BLACK, WHITE}
+import scalafx.scene.paint.CycleMethod.NO_CYCLE
+import scalafx.scene.paint.{LinearGradient, Stops}
+import scalafx.scene.shape.StrokeType.OUTSIDE
+import scalafx.scene.shape.{Circle, Rectangle}
+import scalafx.scene.{Group, Scene}
+
 
 /**
  * ColorfulCircles

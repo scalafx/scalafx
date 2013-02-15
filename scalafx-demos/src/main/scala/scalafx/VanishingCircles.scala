@@ -27,15 +27,15 @@
 
 package scalafx
 
-import animation.Timeline
-import javafx.animation.Animation.INDEFINITE
-import javafx.scene.effect.BoxBlur
 import scala.math.random
 import scalafx.Includes._
+import scalafx.animation.Animation.INDEFINITE
+import scalafx.animation.Timeline
 import scalafx.animation.Tweenable.tweenable2KeyFrame
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
+import scalafx.scene.effect.BoxBlur
 import scalafx.scene.paint.Color._
 import scalafx.scene.shape.Circle
 

@@ -1,7 +1,5 @@
 package scalafx
 
-
-import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -34,7 +32,7 @@ object WebDemo extends JFXApp {
     height = 600
     scene = new Scene {
       fill = Color.LIGHTGRAY
-      content = new BorderPane {
+      root = new BorderPane {
         hgrow = Priority.ALWAYS
         vgrow = Priority.ALWAYS
         top = txfUrl
