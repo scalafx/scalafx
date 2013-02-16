@@ -30,6 +30,8 @@ import javafx.{ geometry => jfxg }
 import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import scalafx.scene.Parent
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Region {
@@ -67,7 +69,7 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
   /**
    * Property for overriding the region's computed maximum height.
    */
-  def maxHeight = delegate.maxHeightProperty
+  def maxHeight: DoubleProperty = delegate.maxHeightProperty
   def maxHeight_=(v: Double) {
     maxHeight() = v
   }
@@ -75,7 +77,7 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
   /**
    * Property for overriding the region's computed maximum width.
    */
-  def maxWidth = delegate.maxWidthProperty
+  def maxWidth: DoubleProperty = delegate.maxWidthProperty
   def maxWidth_=(v: Double) {
     maxWidth() = v
   }
@@ -83,7 +85,7 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
   /**
    * Property for overriding the region's computed minimum height.
    */
-  def minHeight = delegate.minHeightProperty
+  def minHeight: DoubleProperty = delegate.minHeightProperty
   def minHeight_=(v: Double) {
     minHeight() = v
   }
@@ -91,7 +93,7 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
   /**
    * Property for overriding the region's computed minimum width.
    */
-  def minWidth = delegate.minWidthProperty
+  def minWidth: DoubleProperty = delegate.minWidthProperty
   def minWidth_=(v: Double) {
     minWidth() = v
   }
@@ -107,7 +109,7 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
   /**
    * Property for overriding the region's computed preferred height.
    */
-  def prefHeight = delegate.prefHeightProperty
+  def prefHeight: DoubleProperty = delegate.prefHeightProperty
   def prefHeight_=(v: Double) {
     prefHeight() = v
   }
@@ -115,7 +117,7 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
   /**
    * Property for overriding the region's computed preferred width.
    */
-  def prefWidth = delegate.prefWidthProperty
+  def prefWidth: DoubleProperty = delegate.prefWidthProperty
   def prefWidth_=(v: Double) {
     prefWidth() = v
   }
@@ -124,7 +126,7 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
    * Defines whether this region rounds position/spacing and ceils size values to pixel boundaries
    * when laying out its children.
    */
-  def snapToPixel = delegate.snapToPixelProperty
+  def snapToPixel: BooleanProperty = delegate.snapToPixelProperty
   def snapToPixel_=(v: Boolean) {
     snapToPixel() = v
   }

@@ -84,7 +84,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    */
   def cacheHint: ObjectProperty[jfxs.CacheHint] = delegate.cacheHintProperty
 
-  def cacheHint_=(v: jfxs.CacheHint) {
+  def cacheHint_=(v: CacheHint) {
     cacheHint() = v
   }
 
@@ -451,7 +451,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Specifies how opaque (that is, solid) the Node appears.
    */
-  def opacity = delegate.opacityProperty
+  def opacity: DoubleProperty = delegate.opacityProperty
 
   def opacity_=(v: Double) {
     opacity() = v

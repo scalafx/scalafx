@@ -30,6 +30,7 @@ import javafx.scene.{ control => jfxsc }
 
 import scalafx.Includes._
 import scalafx.scene.Node
+import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Control {
@@ -73,7 +74,7 @@ abstract class Control(override val delegate: jfxsc.Control)
   /**
    * Property for overriding the control's computed maximum height.
    */
-  def maxHeight = delegate.maxHeightProperty
+  def maxHeight: DoubleProperty = delegate.maxHeightProperty
   def maxHeight_=(v: Double) {
     maxHeight() = v
   }
@@ -81,7 +82,7 @@ abstract class Control(override val delegate: jfxsc.Control)
   /**
    * Property for overriding the control's computed maximum width.
    */
-  def maxWidth = delegate.maxWidthProperty
+  def maxWidth: DoubleProperty = delegate.maxWidthProperty
   def maxWidth_=(v: Double) {
     maxWidth() = v
   }
@@ -89,7 +90,7 @@ abstract class Control(override val delegate: jfxsc.Control)
   /**
    * Property for overriding the control's computed minimum height.
    */
-  def minHeight = delegate.minHeightProperty
+  def minHeight: DoubleProperty = delegate.minHeightProperty
   def minHeight_=(v: Double) {
     minHeight() = v
   }
@@ -97,7 +98,7 @@ abstract class Control(override val delegate: jfxsc.Control)
   /**
    * Property for overriding the control's computed minimum width.
    */
-  def minWidth = delegate.minWidthProperty
+  def minWidth: DoubleProperty = delegate.minWidthProperty
   def minWidth_=(v: Double) {
     minWidth() = v
   }
@@ -105,7 +106,7 @@ abstract class Control(override val delegate: jfxsc.Control)
   /**
    * Property for overriding the control's computed preferred height.
    */
-  def prefHeight = delegate.prefHeightProperty
+  def prefHeight: DoubleProperty = delegate.prefHeightProperty
   def prefHeight_=(v: Double) {
     prefHeight() = v
   }
@@ -113,7 +114,7 @@ abstract class Control(override val delegate: jfxsc.Control)
   /**
    * Property for overriding the control's computed preferred width.
    */
-  def prefWidth = delegate.prefWidthProperty
+  def prefWidth: DoubleProperty = delegate.prefWidthProperty
   def prefWidth_=(v: Double) {
     prefWidth() = v
   }
