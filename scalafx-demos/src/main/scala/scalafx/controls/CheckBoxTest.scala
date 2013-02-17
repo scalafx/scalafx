@@ -27,15 +27,12 @@
 
 package scalafx.controls
 
-import javafx.event.ActionEvent
-import javafx.event.EventHandler
-import scalafx.scene.layout.Priority
-import scalafx.Includes.eventClosureWrapper
-import scalafx.Includes.jfxBooleanProperty2sfx
+import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.controls.controls.ControlControls
 import scalafx.controls.controls.PropertiesNodes
+import scalafx.event.ActionEvent
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
@@ -44,9 +41,9 @@ import scalafx.scene.control.Label
 import scalafx.scene.control.TextField
 import scalafx.scene.control.ToggleButton
 import scalafx.scene.layout.BorderPane
+import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
-import scalafx.scene.paint.Color.sfxColor2jfx
 
 object CheckBoxTest extends JFXApp {
 
@@ -84,13 +81,12 @@ object CheckBoxTest extends JFXApp {
 class CheckBoxControls(check: CheckBox) extends PropertiesNodes[CheckBox](check, "CheckBox Properties") {
 
   val lblSelected = new Label {
-    text = check.selected.get().toString()
+    text = check.selected().toString
   }
-  check.onAction = new EventHandler[ActionEvent] {
-    def handle(event: ActionEvent) {
-      lblSelected.text = if (check.indeterminate.get) "Indeterminate" else check.selected.get().toString()
-    }
+  check.onAction = (event: ActionEvent) => {
+    lblSelected.text = if (check.indeterminate()) "Indeterminate" else check.selected().toString
   }
+
 
   val btnAllowIndeterminate = new ToggleButton {
     text = "Allow Indeterminate"

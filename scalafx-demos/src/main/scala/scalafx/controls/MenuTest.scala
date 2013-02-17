@@ -1,6 +1,6 @@
 package scalafx.controls
 
-import javafx.event.{Event, EventHandler}
+import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
@@ -13,28 +13,22 @@ object MenuTest extends JFXApp {
 
   val menu = new Menu("File") {
 
-    items.add(new MenuItem("Open"))
-    items.add(new MenuItem("Close"))
+    items = List(
+      new MenuItem("Open"),
+      new MenuItem("Close")
+    )
 
     onShowing = printEvent("on showing")
     onShown = printEvent("on shown")
     onHiding = printEvent("on hiding")
     onHidden = printEvent("on hidden")
-
-    implicit def fun2EventHandler(n: (Event) => Boolean) = new EventHandler[Event] {
-      def handle(event: Event) {
-        n(event)
-      }
-    }
   }
 
-  def printEvent(eventStr: String) = {
-    {
-      event: Event =>
-        history.content.add(new Label {
-          text = eventStr
-        }.delegate)
+  def printEvent(eventStr: String)() {
+    val label = new Label {
+      text = eventStr
     }
+    history.content += label
   }
 
   val history = new VBox
