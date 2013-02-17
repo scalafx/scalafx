@@ -110,7 +110,7 @@ object ScalaFXBuild extends Build {
         (title, version, vendor) =>
             Package.ManifestAttributes(
                 "Created-By" -> "Simple Build Tool",
-                "Built-By" -> System.getProperty("user.name"),
+                "Built-By" -> Option(System.getenv("JAR_BUILT_BY")).getOrElse(System.getProperty("user.name")),
                 "Build-Jdk" -> System.getProperty("java.version"),
                 "Specification-Title" -> title,
                 "Specification-Version" -> version,
