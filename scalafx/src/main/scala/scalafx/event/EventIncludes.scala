@@ -52,11 +52,11 @@ trait EventIncludes {
 		}
 	}
 
-	implicit def eventClosureWrapperWithParam[T <: jfxe.Event](handler: (T) => Unit) = new jfxe.EventHandler[T] {
-		def handle(event: T) {
-			handler(event)
-		}
-	}
+  implicit def eventClosureWrapperWithParam[J <: jfxe.Event](handler: (Event) => Unit) = new jfxe.EventHandler[J] {
+ 		def handle(event: J) {
+ 			handler(event)
+ 		}
+ 	}
 
   /**
  	 * Converts a Function that manipulates a [[scalafx.scene.input.DragEvent]]

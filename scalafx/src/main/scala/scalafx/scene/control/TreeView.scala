@@ -158,7 +158,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * This event handler will be fired when the user cancels editing a cell.
    */
   def onEditCancel = delegate.onEditCancelProperty
-  def onEditCancel_=(v: (jfxsc.TreeView.EditEvent[T]) => Unit) {
+  def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
     onEditCancel() = v
   }
 
@@ -166,7 +166,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * This event handler will be fired when the user commits editing a cell.
    */
   def onEditCommit = delegate.onEditCommitProperty
-  def onEditCommit_=(v: (jfxsc.TreeView.EditEvent[T]) => Unit) {
+  def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
     onEditCommit() = v
   }
 
@@ -174,7 +174,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * This event handler will be fired when the user starts editing a cell.
    */
   def onEditStart = delegate.onEditStartProperty
-  def onEditStart_=(v: (jfxsc.TreeView.EditEvent[T]) => Unit) {
+  def onEditStart_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
     onEditStart() = v
   }
 

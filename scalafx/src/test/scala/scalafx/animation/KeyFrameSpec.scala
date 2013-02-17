@@ -29,11 +29,12 @@ package scalafx.animation
 import collection.JavaConversions._
 import javafx.{ animation => jfxa }
 import javafx.{ event => jfxe }
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import org.scalatest.matchers.ShouldMatchers._
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+import scalafx.event.ActionEvent
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
@@ -76,7 +77,7 @@ class KeyFrameSpec
   it should "have a simpler syntax for finish handlers with events" in {
     var callCount = 0
     val actionEvent = new jfxe.ActionEvent()
-    val finishHandler = { event: jfxe.ActionEvent =>
+    val finishHandler = { (event: ActionEvent) =>
       callCount += 1
       event should equal(actionEvent)
     }
