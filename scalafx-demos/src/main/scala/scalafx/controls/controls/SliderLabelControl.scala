@@ -3,7 +3,6 @@
  */
 package scalafx.controls.controls
 
-import javafx.scene.layout.Priority
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage

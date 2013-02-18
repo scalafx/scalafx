@@ -1,10 +1,8 @@
 package scalafx.colorselector
 
-import javafx.scene.layout.Priority
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.beans.property.DoubleProperty.sfxDoubleProperty2jfx
 import scalafx.geometry.{HPos, Pos, VPos}
 import scalafx.scene.Scene
 import scalafx.scene.control.CheckBox
@@ -13,12 +11,11 @@ import scalafx.scene.control.TextField
 import scalafx.scene.layout.AnchorPane
 import scalafx.scene.layout.ColumnConstraints
 import scalafx.scene.layout.GridPane
+import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
-import scalafx.scene.paint.Color.sfxColor2jfx
 
 object SliderControlDemo extends JFXApp {
-
 
   var initialized = false
 

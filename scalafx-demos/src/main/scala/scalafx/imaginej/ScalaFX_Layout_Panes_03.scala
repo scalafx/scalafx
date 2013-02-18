@@ -40,7 +40,6 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import javafx.scene.text.FontWeight
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
@@ -50,6 +49,7 @@ import scalafx.scene.layout.{VBox, HBox, BorderPane}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.text.Font
+import scalafx.scene.text.FontWeight
 import scalafx.scene.text.Text
 
 

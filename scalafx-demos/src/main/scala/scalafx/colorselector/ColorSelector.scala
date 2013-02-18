@@ -2,41 +2,30 @@ package scalafx.colorselector
 
 import colorselector.Max
 import colorselector.doubleToInt
-import javafx.beans.property.SimpleDoubleProperty
-import javafx.event.EventHandler
-import javafx.scene.input.MouseButton
-import javafx.scene.input.MouseEvent
-import javafx.scene.layout.Priority
-import javafx.scene.text.TextAlignment
 import scala.collection.Seq
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.DoubleProperty.sfxDoubleProperty2jfx
 import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ObjectProperty.sfxObjectProperty2jfx
 import scalafx.collections.ObservableBuffer
 import scalafx.collections.ObservableBuffer.Add
 import scalafx.collections.ObservableBuffer.Change
 import scalafx.collections.ObservableBuffer.Remove
-import scalafx.collections.ObservableBuffer.canBuildFrom
-import scalafx.collections.ObservableBuffer.observableBuffer2ObservableList
-import scalafx.event.EventHandler.function2jfxEventHandler
+import scalafx.event.ActionEvent
 import scalafx.geometry.{HPos, Pos, VPos}
 import scalafx.scene.Scene
 import scalafx.scene.control.CheckBox
-import scalafx.scene.control.CheckBox.sfxCheckBox2jfx
 import scalafx.scene.control.ComboBox
 import scalafx.scene.control.Control
-import scalafx.scene.control.Control.sfxControl2jfx
 import scalafx.scene.control.Label
 import scalafx.scene.control.TextField
-import scalafx.scene.control.TextField.sfxTextField2jfx
 import scalafx.scene.effect.Reflection
+import scalafx.scene.input.MouseButton
+import scalafx.scene.input.MouseEvent
 import scalafx.scene.layout._
 import scalafx.scene.paint.Color
+import scalafx.scene.text.TextAlignment
 import scalafx.util.StringConverter
 
 
@@ -49,7 +38,7 @@ object ColorSelector extends JFXApp {
   val currentColor = new ObjectProperty[Color](Color.WHITE, "Color")
   currentColor.onChange(colorChanged)
 
-  val synchronizedValue = new DoubleProperty(new SimpleDoubleProperty)
+  val synchronizedValue = new DoubleProperty()
 
   val synchronizedControls = new ObservableBuffer[SliderControl]
   synchronizedControls.onChange((buffer, changes) => synchronizeValues(buffer, changes))
@@ -102,13 +91,13 @@ object ColorSelector extends JFXApp {
   }
 
   private def formatColor {
-    this.txfColorValue.text() = this.cmbColorFormat.value.get.format(this.currentColor.get, !this.chbDisableAlpha.selected.get)
+    this.txfColorValue.text() = this.cmbColorFormat.value.get.format(this.currentColor(), !this.chbDisableAlpha.selected.get)
   }
 
   private def getForegroundColor(d: Double) = if (d > Max / 2) Color.BLACK else Color.WHITE
 
   private def verifyWebColor {
-    cmbWebColor.value() = WebColor.colors.find(_.sameColor(currentColor.get)).orNull
+    cmbWebColor.value() = WebColor.colors.find(_.sameColor(currentColor())).orNull
   }
 
   private def webColorSelected {
@@ -126,13 +115,11 @@ object ColorSelector extends JFXApp {
     effect = new Reflection {
       fraction = 0.45
     }
-    onMouseClicked = new EventHandler[MouseEvent] {
-      def handle(event: MouseEvent) {
-        if ((event.getClickCount == 2) && (event.getButton() == MouseButton.PRIMARY)) {
+    onMouseClicked = (event: MouseEvent) => {
+        if ((event.getClickCount == 2) && (event.button == MouseButton.PRIMARY)) {
           randomizeColors
         }
       }
-    }
   }
 
   currentColor.onChange(rectangleRegion.setStyle("-fx-background-color: " + RgbFormatter.format(currentColor(), !this.chbDisableAlpha.selected.get)))
@@ -184,9 +171,7 @@ object ColorSelector extends JFXApp {
   val cmbWebColor = new ComboBox[WebColor](WebColor.colors) {
     promptText = "Web Color"
     converter = StringConverter.toStringConverter((wc: WebColor) => wc.name)
-    onAction =  new EventHandler[javafx.event.ActionEvent] {
-       def handle(event: javafx.event.ActionEvent) = webColorSelected
-    }
+    onAction =  (event: ActionEvent) => webColorSelected
   }
 
   val txfColorValue = new TextField {
@@ -201,9 +186,7 @@ object ColorSelector extends JFXApp {
     promptText = "Color Format"
     converter = StringConverter.toStringConverter((f: Formatter) => f.description)
     value = RgbFormatter
-    onAction = new EventHandler[javafx.event.ActionEvent] {
-       def handle(event: javafx.event.ActionEvent) = formatColor
-    }
+    onAction =(event: ActionEvent) => formatColor
   }
 
   val chbDisableAlpha = new CheckBox {

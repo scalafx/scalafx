@@ -27,24 +27,22 @@
 
 package scalafx.controls.controls
 
-import javafx.scene.layout.Priority
-import javafx.scene.text.FontWeight
-import javafx.scene.text.TextAlignment
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.geometry.Pos
 import scalafx.scene.Node
 import scalafx.scene.Node._
-import scalafx.scene.control.TextField
-import scalafx.scene.control.TitledPane
 import scalafx.scene.control._
 import scalafx.scene.layout.GridPane
+import scalafx.scene.layout.Priority
 import scalafx.scene.text.Font._
+import scalafx.scene.text.FontWeight
+import scalafx.scene.text.TextAlignment
 
 /**
  * Basic class to control a control properties
  *
- *  @tparam N scalafx.scene.Node subclass
+ *  @tparam T scalafx.scene.Node subclass
  *
  *  @param target Node to be manipulated
  *  @param title TitledPane titled

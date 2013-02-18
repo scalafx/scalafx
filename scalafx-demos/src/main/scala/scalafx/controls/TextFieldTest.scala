@@ -27,7 +27,6 @@
 
 package scalafx.controls
 
-import javafx.scene.layout.Priority
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -37,11 +36,8 @@ import scalafx.controls.controls.TextInputControlControls
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
 import scalafx.scene.control.TextField
-import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.FlowPane
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{Priority, BorderPane, FlowPane, VBox}
 import scalafx.scene.paint.Color
-import scalafx.scene.paint.Color.sfxColor2jfx
 
 object TextFieldTest extends JFXApp {
 

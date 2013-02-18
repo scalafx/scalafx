@@ -28,12 +28,7 @@
 package scalafx.controls.controls
 
 import scalafx.Includes._
-import javafx.scene.control.Tooltip
-import scalafx.Includes.jfxDoubleProperty2sfx
-import scalafx.Includes.jfxStringProperty2sfx
-import scalafx.scene.control.Control
-import scalafx.scene.control.Label
-import scalafx.scene.control.TextField
+import scalafx.scene.control.{Tooltip, Control, Label, TextField}
 
 class ControlControls(target: Control) extends PropertiesNodes[Control](target, "Control Properties") {
 
@@ -77,7 +72,7 @@ class ControlControls(target: Control) extends PropertiesNodes[Control](target, 
 
   val txfTootip = new TextField
   txfTootip.text.onChange {
-    target.tooltip = if (txfTootip.text.get.isEmpty) null else new Tooltip(txfTootip.text.get)
+    target.tooltip = if (txfTootip.text.get.isEmpty) null else Tooltip(txfTootip.text())
   }
 
   super.addNode("Max Height", sldMaxHeight)

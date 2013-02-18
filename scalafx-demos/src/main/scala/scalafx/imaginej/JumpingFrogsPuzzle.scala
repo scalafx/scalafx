@@ -40,17 +40,17 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import scalafx.Includes._
-
+import Constants._
 import scala._
+import scalafx.Includes._
 import scalafx.animation.Timeline
 import scalafx.application.JFXApp
-import scalafx.stage.Stage
-import scalafx.scene.Scene
-import javafx.scene.paint.Color
-import scalafx.scene.shape.{Circle, Rectangle}
-import scalafx.scene.input.MouseEvent
 import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.Scene
+import scalafx.scene.input.MouseEvent
+import scalafx.scene.paint.Color
+import scalafx.scene.shape.{Circle, Rectangle}
+
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
@@ -96,7 +96,7 @@ object Constants {
   // canvas
   //
   val CANVAS_HEIGHT = SCALE * 100
-  val CANVAS_FILL = Color.LIGHTGRAY;
+  val CANVAS_FILL = Color.LIGHTGRAY
   //
   // relative
   //
@@ -126,7 +126,6 @@ object Constants {
   //
 }
 
-import Constants._
 
 ///////////
 // model //

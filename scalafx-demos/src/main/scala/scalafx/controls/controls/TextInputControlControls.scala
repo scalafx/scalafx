@@ -27,23 +27,10 @@
 
 package scalafx.controls.controls
 
-import javafx.scene.layout.Priority
-import javafx.scene.text.TextAlignment
-import scalafx.Includes.jfxBooleanProperty2sfx
-import scalafx.Includes.jfxLabeled2sfx
-import scalafx.Includes.jfxReadOnlyObjectProperty2sfx
-import scalafx.Includes.jfxReadOnlyStringProperty2sfx
-import scalafx.Includes.jfxStringProperty2sfx
-import scalafx.scene.Node.sfxNode2jfx
-import scalafx.scene.control.CheckBox.sfxCheckBox2jfx
-import scalafx.scene.control.Label.sfxLabel2jfx
+import scalafx.Includes._
 import scalafx.scene.control.CheckBox
 import scalafx.scene.control.Label
 import scalafx.scene.control.TextInputControl
-import scalafx.scene.control.TitledPane
-import scalafx.scene.layout.GridPane.sfxGridPane2jfx
-import scalafx.scene.layout.GridPane
-import scalafx.scene.Node
 
 class TextInputControlControls(target: TextInputControl) extends PropertiesNodes[TextInputControl](target, "TextInputControl Properties") {
 

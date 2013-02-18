@@ -1,7 +1,6 @@
 package scalafx.controls
 
 import controls._
-import javafx.scene.layout.Priority
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -9,9 +8,7 @@ import scalafx.controls.controls.PropertiesNodes
 import scalafx.geometry.{Orientation, Pos}
 import scalafx.scene.Scene
 import scalafx.scene.control._
-import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.FlowPane
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{Priority, BorderPane, FlowPane, VBox}
 import scalafx.scene.paint.Color
 import scalafx.util.converter.DoubleStringConverter
 
@@ -153,7 +150,7 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
 
   super.addNode("Value", txfValue)
   super.addNode("Block Increment", txfBlockIncrement)
-  super.addNode("Pattern Formmater", txfLabelFormatter)
+  super.addNode("Pattern Formatter", txfLabelFormatter)
   super.addNode("Min", txfMin)
   super.addNode("Max", txfMax)
   super.addNode("Minor Tick Count ", txfMinorTickCount)

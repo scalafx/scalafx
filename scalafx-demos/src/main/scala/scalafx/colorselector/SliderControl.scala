@@ -2,30 +2,23 @@ package scalafx.colorselector
 
 import colorselector.Max
 import colorselector.Min
-import colorselector.insets
 import colorselector.doubleToInt
-import javafx.beans.property.SimpleBooleanProperty
-import javafx.beans.property.SimpleDoubleProperty
-import javafx.event.EventHandler
-import javafx.scene.input.ScrollEvent
-import scalafx.scene.layout.Priority
+import scalafx.Includes._
+import scalafx.scene.text.FontWeight
 import scalafx.Includes.jfxBooleanProperty2sfx
 import scalafx.Includes.jfxDoubleProperty2sfx
-import scalafx.Includes.jfxStringProperty2sfx
-import scalafx.beans.property.DoubleProperty.sfxDoubleProperty2jfx
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.DoubleProperty.sfxDoubleProperty2jfx
+import scalafx.beans.property.StringProperty
 import scalafx.scene.control.CheckBox
 import scalafx.scene.control.Label
 import scalafx.scene.control.Slider
 import scalafx.scene.layout.HBox
-import scalafx.beans.property.ObjectProperty
-import javafx.beans.property.SimpleObjectProperty
-import scalafx.beans.property.StringProperty
-import javafx.beans.property.SimpleStringProperty
+import scalafx.scene.layout.Priority
 import scalafx.scene.paint.Color
 import scalafx.scene.text.Font
-import javafx.scene.text.FontWeight
+import scalafx.scene.input.ScrollEvent
 
 /**
  * @author Rafael
@@ -36,10 +29,10 @@ class SliderControl(title: String) extends HBox {
   private val strBackground = "-fx-background-color: rgb(%d, %d, %d);"
   private val strForeground = "-fx-text-fill: rgb(%d, %d, %d);"
 
-  private val cssBackground = new StringProperty(new SimpleStringProperty)
-  private val cssForeground = new StringProperty(new SimpleStringProperty)
+  private val cssBackground = new StringProperty()
+  private val cssForeground = new StringProperty()
 
-  val realValue = new DoubleProperty(new SimpleDoubleProperty)
+  val realValue = new DoubleProperty()
   def value = this.realValue
   def value_=(d: Double) {
     if (d < Min) {
@@ -51,7 +44,7 @@ class SliderControl(title: String) extends HBox {
     }
   }
 
-  val selectedControl = new BooleanProperty(new SimpleBooleanProperty)
+  val selectedControl = new BooleanProperty()
 
   val chbSelected = new CheckBox {
     id = "chbSelected"
@@ -63,7 +56,7 @@ class SliderControl(title: String) extends HBox {
     text = title
     style <== cssForeground
   }
-  lblTitle.font = Font.font(lblTitle.font.get().getFamily(), FontWeight.BOLD, lblTitle.font.get().getSize())
+  lblTitle.font = Font.font(lblTitle.font().family, FontWeight.BOLD, lblTitle.font().size)
 
   val sldValue = new Slider {
     id = "sldValue"
@@ -86,7 +79,7 @@ class SliderControl(title: String) extends HBox {
     hgrow = Priority.NEVER
     style <== cssForeground
   }
-  lblValue.font = Font.font(lblValue.font.get().getFamily(), FontWeight.BOLD, lblValue.font.get().getSize())
+  lblValue.font = Font.font(lblValue.font().family, FontWeight.BOLD, lblValue.font().size)
 
   content = List(chbSelected, lblTitle, sldValue, lblValue)
 
@@ -94,18 +87,16 @@ class SliderControl(title: String) extends HBox {
 
   style <== cssBackground
 
-  onScroll = new EventHandler[ScrollEvent] {
-    def handle(event: ScrollEvent) {
+  onScroll =(event: ScrollEvent) => {
 
       if (event.getEventType == ScrollEvent.SCROLL) {
-        val multiplier = if (event.isControlDown()) 10 else 1
+        val multiplier = if (event.isControlDown) 10 else 1
         val delta = -(event.getDeltaY.toInt / 10)
 
         value = (value.get + multiplier * delta)
       }
     }
 
-  }
 
   def changeColor(backgroundColor: Color, foregroundColor: Color) {
     this.cssBackground() = strBackground.format(doubleToInt(backgroundColor.red),
