@@ -1,6 +1,5 @@
 package scalafx.controls.controls
 
-import scalafx.Includes.eventClosureWrapper
 import scalafx.Includes._
 import scalafx.scene.control.Label
 import scalafx.scene.control.ProgressIndicator

@@ -40,11 +40,10 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import scalafx.application.JFXApp
 import scalafx.Includes._
+import scalafx.application.JFXApp
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.input.MouseEvent
-import scalafx.event.EventIncludes.mouseEventClosureWrapper
 import scalafx.scene.text.TextAlignment
 import scalafx.scene.layout.HBox
 import scalafx.scene.control.Label

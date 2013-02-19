@@ -28,8 +28,8 @@
 package scalafx.controls
 
 import controls.ControlControls
+import scalafx.Includes._
 import scalafx.scene.layout.Priority
-import scalafx.Includes.eventClosureWrapper
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.controls.controls.PropertiesNodes

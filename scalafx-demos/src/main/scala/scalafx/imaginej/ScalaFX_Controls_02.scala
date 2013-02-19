@@ -40,10 +40,10 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
+import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.event.ActionEvent
-import scalafx.event.EventIncludes.actionEventClosureWrapper
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
 import scalafx.scene.control.{Label, Button}
