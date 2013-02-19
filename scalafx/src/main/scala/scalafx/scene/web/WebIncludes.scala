@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.web
 
+import javafx.{ event => jfxe }
 import javafx.scene.{ web => jfxsw }
 
 object WebIncludes extends WebIncludes
@@ -37,4 +38,21 @@ trait WebIncludes {
   implicit def jfxWebEngine2sfx(we: jfxsw.WebEngine) = new WebEngine(we)
   implicit def jfxWebEvent2sfx[T](we: jfxsw.WebEvent[T]) = new WebEvent(we)
   implicit def jfxWebView2sfx(wv: jfxsw.WebView) = new WebView(wv)
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.web.WebEvent]]
+   * and returns a [[scala.Any]] into a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]]
+   * that manipulates a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/web/WebEvent.html JavaFX`s WebEvent]]
+   *
+   * @param handler function that manipulates a ScalaFX's WebEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's WebEvent
+   */
+  implicit def webEventClosureWrapper[T](handler: (WebEvent[T]) => Any) = new jfxe.EventHandler[jfxsw.WebEvent[T]] {
+    def handle(event: jfxsw.WebEvent[T]) {
+      handler(event)
+    }
+  }
+
 }

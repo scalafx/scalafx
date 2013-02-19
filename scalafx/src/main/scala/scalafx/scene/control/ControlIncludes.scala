@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.control
 
+import javafx.{ event => jfxe }
 import javafx.scene.{ control => jfxsc }
 import scalafx.scene.control.cell.CellIncludes
 import javafx.application
@@ -128,4 +129,37 @@ trait ControlIncludes
   implicit def jfxTreeModificationEvent2sfx[T](tmi: jfxsc.TreeItem.TreeModificationEvent[T]) = new TreeItem.TreeModificationEvent[T](tmi)
   implicit def jfxTreeView2sfx[T](t: jfxsc.TreeView[T]) = new TreeView[T](t)
   implicit def jfxTreeViewEditEvent2sfx[T](t: jfxsc.TreeView.EditEvent[T]) = new TreeView.EditEvent[T](t)
+  
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.control.ListView.EditEvent]]
+   * and returns a [[scala.Any]] into a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]]
+   * that manipulates a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/ListView.EditEvent.html JavaFX`s ListView.EditEvent]]
+   *
+   * @param handler function that manipulates a ScalaFX's ListView.EditEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's ListView.EditEvent
+   */
+  implicit def listViewEditEventClosureWrapper[T](handler: (ListView.EditEvent[T]) => Any) = new jfxe.EventHandler[jfxsc.ListView.EditEvent[T]] {
+    def handle(event: jfxsc.ListView.EditEvent[T]) {
+      handler(event)
+    }
+  }
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.control.TableColumn.CellEditEvent]]
+   * and returns a [[scala.Any]] into a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]]
+   * that manipulates a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.CellEditEvent.html JavaFX`s TableColumn.CellEditEvent]]
+   *
+   * @param handler function that manipulates a ScalaFX's TableColumn.CellEditEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's TableColumn.CellEditEvent
+   */
+  implicit def tableColumnCellEditEventClosureWrapper[S, T](handler: (TableColumn.CellEditEvent[S, T]) => Any) = new jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]] {
+    def handle(event: jfxsc.TableColumn.CellEditEvent[S, T]) {
+      handler(event)
+    }
+  }
+
 }

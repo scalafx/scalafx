@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,28 +33,6 @@ import javafx.{ event => jfxe }
  * interface.
  */
 object EventHandler {
-
-  /**
-   * Generates a new [[javafx.event.EventHandler]] from a simple function that neither receives
-   * parameter either return value (just [[scala.Unit]]).
-   */
-  implicit def function2jfxEventHandler[E <: jfxe.Event, H <: jfxe.EventHandler[E]](op: => Unit) =
-    new jfxe.EventHandler[E] {
-      def handle(event: E) {
-        op
-      }
-    }
-
-  /**
-   * Generates a new [[javafx.event.EventHandler]] from a simple function that neither receives
-   * parameter either return value (just [[scala.Unit]]).
-   */
-  implicit def function2jfxEventHandlerWithParam[E <: jfxe.Event, H <: jfxe.EventHandler[E]](op: (E) => Unit) =
-    new jfxe.EventHandler[E] {
-      def handle(event: E) {
-        op(event)
-      }
-    }
 }
 
 /**
@@ -144,7 +122,7 @@ trait EventHandlerDelegate {
    * @param eventHandler  the handler to unregister
    */
   def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) =
-    eventHandlerDelegate.addEventHandler(eventType, eventHandler)
+    eventHandlerDelegate.removeEventHandler(eventType, eventHandler)
 
   /**
    * Registers an event filter to this task. Registered event filters get an event before any
@@ -197,6 +175,6 @@ trait EventHandlerDelegate {
    * @param eventFilter the filter to unregister
    */
   def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) =
-    eventHandlerDelegate.addEventFilter(eventType, eventHandler)
+    eventHandlerDelegate.removeEventFilter(eventType, eventHandler)
 
 }

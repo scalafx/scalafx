@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@ trait MediaIncludes {
 
   /**
    * Converts a Function that manipulates a [[scalafx.scene.media.MediaMarkerEvent]]
-   * and returns a [[scala.Unit]] in a
+   * and returns a [[scala.Any]] into a
    * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]]
    * that manipulates a
    * [[http://docs.oracle.com/javafx/2/api/javafx/scene/media/MediaMarkerEvent.html JavaFX`s MediaMarkerEvent]]
@@ -58,7 +58,7 @@ trait MediaIncludes {
    * @param handler function that manipulates a ScalaFX's MediaMarkerEvent
    * @return a JavaFX's EventHandler that manipulates a JavaFX's MediaMarkerEvent
    */
-  implicit def mediaMarkerEventClosureWrapper(handler: (MediaMarkerEvent) => Unit) = new jfxe.EventHandler[jfxsm.MediaMarkerEvent] {
+  implicit def mediaMarkerEventClosureWrapper(handler: (MediaMarkerEvent) => Any) = new jfxe.EventHandler[jfxsm.MediaMarkerEvent] {
     def handle(event: jfxsm.MediaMarkerEvent) {
       handler(event)
     }
@@ -66,7 +66,7 @@ trait MediaIncludes {
 
   /**
    * Converts a Function that manipulates a [[scalafx.scene.media.MediaErrorEvent]]
-   * and returns a [[scala.Unit]] in a
+   * and returns a [[scala.Any]] into a
    * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]]
    * that manipulates a
    * [[http://docs.oracle.com/javafx/2/api/javafx/scene/media/MediaErrorEvent.html JavaFX`s MediaErrorEvent]]
@@ -74,7 +74,7 @@ trait MediaIncludes {
    * @param handler function that manipulates a ScalaFX's MediaErrorEvent
    * @return a JavaFX's EventHandler that manipulates a JavaFX's MediaErrorEvent
    */
-  implicit def mediaErrorEventClosureWrapper(handler: (MediaErrorEvent) => Unit) = new jfxe.EventHandler[jfxsm.MediaErrorEvent] {
+  implicit def mediaErrorEventClosureWrapper(handler: (MediaErrorEvent) => Any) = new jfxe.EventHandler[jfxsm.MediaErrorEvent] {
     def handle(event: jfxsm.MediaErrorEvent) {
       handler(event)
     }

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
 */
 package scalafx.scene.input
 
+import javafx.{ event => jfxe }
 import javafx.scene.{ input => jfxsi }
 import scalafx.delegate.SFXDelegate
 
@@ -59,8 +60,186 @@ trait InputIncludes {
   implicit def jfxScrollEventHorizontalTextScrollUnits2sfx(h: jfxsi.ScrollEvent.HorizontalTextScrollUnits) = ScrollEvent.HorizontalTextScrollUnits.jfxEnum2sfx(h)
   implicit def jfxScrollEventVerticalTextScrollUnits2sfx(v: jfxsi.ScrollEvent.VerticalTextScrollUnits) = ScrollEvent.VerticalTextScrollUnits.jfxEnum2sfx(v)
   implicit def jfxSwipeEvent2sfx(se: jfxsi.SwipeEvent) = new SwipeEvent(se)
+  implicit def jfxTouchEvent2sfx(te: jfxsi.TouchEvent) = new TouchEvent(te)
   implicit def jfxTouchPoint2sfx(tp: jfxsi.TouchPoint) = new TouchPoint(tp)
   implicit def jfxTouchPointState2sfx(s: jfxsi.TouchPoint.State) = TouchPoint.State.jfxEnum2sfx(s)
   implicit def jfxTransferMode2sfx(e: jfxsi.TransferMode) = TransferMode.jfxEnum2sfx(e)
   implicit def jfxZoomEvent2sfx(ze: jfxsi.ZoomEvent) = new ZoomEvent(ze)
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.input.ContextMenuEvent]]
+   * and returns a [[scala.Any]] into a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]]
+   * that manipulates a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ContextMenuEvent.html JavaFX`s ContextMenuEvent]]
+   *
+   * @param handler function that manipulates a ScalaFX's ContextMenuEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's ContextMenuEvent
+   */
+  implicit def contextMenuEventClosureWrapper(handler: (ContextMenuEvent) => Any) = new jfxe.EventHandler[jfxsi.ContextMenuEvent] {
+    def handle(event: jfxsi.ContextMenuEvent) {
+      handler(event)
+    }
+  }
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.input.DragEvent]]
+   * and returns a [[scala.Any]] into a
+    * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]]
+    * that manipulates a
+    * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/DragEvent.html JavaFX`s DragEvent]]
+    *
+    * @param handler function that manipulates a ScalaFX's DragEvent
+    * @return a JavaFX's EventHandler that manipulates a JavaFX's DragEvent
+    */
+   implicit def dragEventClosureWrapper(handler: (DragEvent) => Any) = new jfxe.EventHandler[jfxsi.DragEvent] {
+     def handle(event: jfxsi.DragEvent) {
+       handler(event)
+     }
+   }
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.input.InputMethodEvent]]
+   * and returns a [[scala.Any]] into a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]]
+   * that manipulates a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/InputMethodEvent.html JavaFX`s InputMethodEvent]]
+   *
+   * @param handler function that manipulates a ScalaFX's InputMethodEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's InputMethodEvent
+   */
+  implicit def inputMethodEventClosureWrapper(handler: (InputMethodEvent) => Any) = new jfxe.EventHandler[jfxsi.InputMethodEvent] {
+    def handle(event: jfxsi.InputMethodEvent) {
+      handler(event)
+    }
+  }
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.input.KeyEvent]] 
+   * and returns a [[scala.Any]] into a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
+   * that manipulates a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/KeyEvent.html JavaFX`s KeyEvent]]
+   * 
+   * @param handler function that manipulates a ScalaFX's KeyEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's KeyEvent
+   */
+  implicit def keyEventClosureWrapper(handler: (KeyEvent) => Any) = new jfxe.EventHandler[jfxsi.KeyEvent] {
+    def handle(event: jfxsi.KeyEvent) {
+      handler(event)
+    }
+  }
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.input.MouseDragEvent]] 
+   * and returns a [[scala.Any]] into a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
+   * that manipulates a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/MouseDragEvent.html JavaFX`s MouseEvent]]
+   * 
+   * @param handler function that manipulates a ScalaFX's MouseDragEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's MouseDragEvent
+   */
+  implicit def mouseDragEventClosureWrapper(handler: (MouseDragEvent) => Any) = new jfxe.EventHandler[jfxsi.MouseDragEvent] {
+    def handle(event: jfxsi.MouseDragEvent) {
+      handler(event)
+    }
+  }
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.input.MouseEvent]] 
+   * and returns a [[scala.Any]] into a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
+   * that manipulates a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/MouseEvent.html JavaFX`s MouseEvent]]
+   * 
+   * @param handler function that manipulates a ScalaFX's MouseEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's MouseEvent
+   */
+  implicit def mouseEventClosureWrapper(handler: (MouseEvent) => Any) = new jfxe.EventHandler[jfxsi.MouseEvent] {
+    def handle(event: jfxsi.MouseEvent) {
+      handler(event)
+    }
+  }
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.input.RotateEvent]] 
+   * and returns a [[scala.Any]] into a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
+   * that manipulates a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/RotateEvent.html JavaFX`s RotateEvent]]
+   * 
+   * @param handler function that manipulates a ScalaFX's RotateEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's RotateEvent
+   */
+  implicit def rotateEventClosureWrapper(handler: (RotateEvent) => Any) = new jfxe.EventHandler[jfxsi.RotateEvent] {
+    def handle(event: jfxsi.RotateEvent) {
+      handler(event)
+    }
+  }
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.input.ScrollEvent]] 
+   * and returns a [[scala.Any]] into a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
+   * that manipulates a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ScrollEvent.html JavaFX`s ScrollEvent]]
+   * 
+   * @param handler function that manipulates a ScalaFX's ScrollEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's ScrollEvent
+   */
+  implicit def scrollEventClosureWrapper(handler: (ScrollEvent) => Any) = new jfxe.EventHandler[jfxsi.ScrollEvent] {
+    def handle(event: jfxsi.ScrollEvent) {
+      handler(event)
+    }
+  }
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.input.SwipeEvent]] 
+   * and returns a [[scala.Any]] into a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
+   * that manipulates a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/SwipeEvent.html JavaFX`s SwipeEvent]]
+   * 
+   * @param handler function that manipulates a ScalaFX's SwipeEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's SwipeEvent
+   */
+  implicit def swipeEventClosureWrapper(handler: (SwipeEvent) => Any) = new jfxe.EventHandler[jfxsi.SwipeEvent] {
+    def handle(event: jfxsi.SwipeEvent) {
+      handler(event)
+    }
+  }
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.input.TouchEvent]] 
+   * and returns a [[scala.Any]] into a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
+   * that manipulates a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ZoomEvent.html JavaFX`s TouchEvent]]
+   * 
+   * @param handler function that manipulates a ScalaFX's TouchEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's TouchEvent
+   */
+  implicit def touchEventClosureWrapper(handler: (TouchEvent) => Any) = new jfxe.EventHandler[jfxsi.TouchEvent] {
+    def handle(event: jfxsi.TouchEvent) {
+      handler(event)
+    }
+  }
+
+  /**
+   * Converts a Function that manipulates a [[scalafx.scene.input.ZoomEvent]] 
+   * and returns a [[scala.Any]] into a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html JavaFX`s EventHandler]] 
+   * that manipulates a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ZoomEvent.html JavaFX`s ZoomEvent]]
+   * 
+   * @param handler function that manipulates a ScalaFX's ZoomEvent
+   * @return a JavaFX's EventHandler that manipulates a JavaFX's ZoomEvent
+   */
+  implicit def zoomEventClosureWrapper(handler: (ZoomEvent) => Any) = new jfxe.EventHandler[jfxsi.ZoomEvent] {
+    def handle(event: jfxsi.ZoomEvent) {
+      handler(event)
+    }
+  }
+
 }
