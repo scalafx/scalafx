@@ -55,7 +55,7 @@ class Issue16Spec extends FlatSpec {
 
     // The problem reported in Issue 16 was that `fill` did not respond to changes in `hover`.
 
-    fill <== when(hover) then Color.GREEN otherwise Color.RED
+    fill <== when(hover) choose Color.GREEN otherwise Color.RED
     assert(true === hover())
     assert(Color.GREEN === fill())
 

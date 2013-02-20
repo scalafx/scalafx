@@ -55,7 +55,7 @@ object TooltipDemo extends JFXApp {
 class TooltipControls(target: Tooltip) extends PropertiesNodes[Tooltip](target, "Tooltip Properties") {
 
   val lblActivated = new Label {
-    text <== when(target.activated) then "Activated" otherwise "Desactivated"
+    text <== when(target.activated) choose "Activated" otherwise "Deactivated"
   }
 
   val originalContentDisplay = target.contentDisplay

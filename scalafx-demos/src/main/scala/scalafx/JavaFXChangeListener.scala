@@ -46,7 +46,7 @@ object JavaFXChangeListener extends JFXApp {
         y = 40
         width = 100
         height = 100
-        fill <== when (hover) then Color.GREEN otherwise Color.RED
+        fill <== when (hover) choose Color.GREEN otherwise Color.RED
       }
     }
   }

@@ -38,7 +38,7 @@ class ComboBoxBaseControls[T](target: ComboBoxBase[T]) extends PropertiesNodes[C
   super.addNode("Editable", super.getCheckBox(target.editable))
   super.addNode("Prompt Text", super.getTextField(target.promptText))
   super.addNode("Showing", new Label {
-    text <== when(target.showing) then "Showing" otherwise "Not Showing"
+    text <== when(target.showing) choose "Showing" otherwise "Not Showing"
   })
 
 }
