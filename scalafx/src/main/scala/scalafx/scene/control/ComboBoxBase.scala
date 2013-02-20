@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,9 @@ package scalafx.scene.control
 import javafx.scene.{ control => jfxsc }
 import javafx.{ event => jfxe }
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.StringProperty
 import scalafx.delegate.SFXDelegate
 
 object ComboBoxBase {
@@ -45,7 +48,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   /**
    * Indicates that the ComboBox has been "armed" such that a mouse release will cause the ComboBox show() method to be invoked.
    */
-  def armed = delegate.armedProperty
+  def armed: BooleanProperty = delegate.armedProperty
   def armed_=(v: Boolean) {
     armed() = v
   }
@@ -58,7 +61,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   /**
    * Specifies whether the ComboBox allows for user input.
    */
-  def editable = delegate.editableProperty
+  def editable: BooleanProperty = delegate.editableProperty
   def editable_=(v: Boolean) {
     editable() = v
   }
@@ -79,7 +82,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   /**
    * The ComboBox prompt text to display, or null if no prompt text is displayed.
    */
-  def promptText = delegate.promptTextProperty
+  def promptText: StringProperty = delegate.promptTextProperty
   def promptText_=(v: String) {
     promptText() = v
   }
@@ -97,9 +100,9 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   /**
    * The value of this ComboBox is defined as the selected item if the input is not editable, or if it is editable, the most recent user action: either the value input by the user, or the last selected item.
    */
-  def value = delegate.valueProperty
+  def value: ObjectProperty[T] = delegate.valueProperty
   def value_=(v: T) {
-    delegate.setValue(v)
+    value() = v
   }
 
   /**

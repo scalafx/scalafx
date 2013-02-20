@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,10 +30,7 @@ import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyBooleanProperty
-import scalafx.collections.ObservableBuffer.observableBuffer2ObservableList
 import scalafx.collections.ObservableBuffer
-import scalafx.scene.control.SingleSelectionModel.sfxSingleSelectionModel2jfx
-import scalafx.util.StringConverter.sfxStringConverter2jfx
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
@@ -87,13 +84,12 @@ class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.
 
   /**
    * The value of this ChoiceBox is defined as the selected item in the
-   * ChoiceBox selection model. TODO: Why it is not Conversion for ScalaFX
-   * ObjectProperty is not working?
+   * ChoiceBox selection model.
    *
    */
-  def value = delegate.valueProperty
+  def value: ObjectProperty[J] = delegate.valueProperty
   def value_=(v: J) {
-    value.setValue(v)
+    value() = v
   }
 
 }

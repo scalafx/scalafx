@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,8 +30,11 @@ import scala.annotation.implicitNotFound
 
 import javafx.scene.{ control => jfxsc }
 import javafx.{ collections => jfxc }
+import javafx.{ util => jfxu }
 import scalafx.Includes._
 import scalafx.Includes._
+import scalafx.beans.property.IntegerProperty
+import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer._
 import scalafx.collections.ObservableBuffer
 import scalafx.util.StringConverter._
@@ -60,11 +63,15 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
 
   /**
    * Providing a custom cell factory allows for complete customization of the rendering of items in the ComboBox.
-   * TODO: Replace ListView and ListCell from JavaFX for their respectives version in ScalaFX.
    */
-  def cellFactory = delegate.cellFactoryProperty
-  def cellFactory_=(v: jfxsc.ListView[T] => jfxsc.ListCell[T]) {
-    cellFactory() = v
+  def cellFactory: ObjectProperty[ListView[T] => ListCell[T]] =
+    ObjectProperty((view: ListView[T]) => new ListCell(delegate.cellFactoryProperty.getValue.call(view)))
+  def cellFactory_=(f: ListView[T] => ListCell[T]) {
+    delegate.cellFactoryProperty.setValue(new jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] {
+      def call(v: jfxsc.ListView[T]): jfxsc.ListCell[T] = {
+        f(v)
+      }
+    })
   }
 
   /**
@@ -79,14 +86,14 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    * The list of items to show within the ComboBox popup.
    */
   def items = delegate.itemsProperty
-  def items_=(v: jfxc.ObservableList[T]) {
+  def items_=(v: ObservableBuffer[T]) {
     items() = v
   }
 
   /**
    * The selection model for the ComboBox.
    */
-  def selectionModel = delegate.selectionModelProperty
+  def selectionModel: ObjectProperty[jfxsc.SingleSelectionModel[T]] = delegate.selectionModelProperty
   def selectionModel_=(v: SingleSelectionModel[T]) {
     selectionModel() = v.delegate
   }
@@ -94,7 +101,7 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
   /**
    * The maximum number of rows to be visible in the ComboBox popup when it is showing.
    */
-  def visibleRowCount = delegate.visibleRowCountProperty
+  def visibleRowCount: IntegerProperty = delegate.visibleRowCountProperty
   def visibleRowCount_=(v: Int) {
     visibleRowCount() = v
   }
@@ -106,8 +113,8 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    *
    * @since 2.2
    */
-  def buttonCell = delegate.buttonCellProperty()
-  def buttonCell_=(v:jfxsc.ListCell[T]) {
+  def buttonCell: ObjectProperty[jfxsc.ListCell[T]] = delegate.buttonCellProperty()
+  def buttonCell_=(v: ListCell[T]) {
     buttonCell() = v
   }
 

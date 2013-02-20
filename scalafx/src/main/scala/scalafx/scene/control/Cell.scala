@@ -90,8 +90,8 @@ class Cell[T](override val delegate: jfxsc.Cell[T] = new jfxsc.Cell[T])
    * Call this function to transition from a non-editing state into an editing state, if the cell 
    * is editable.
    */
-  def statrEdit = delegate.startEdit
+  def startEdit = delegate.startEdit
   
-  // TODO: implment updateItem(T item, boolean empty)
-  
+  // TODO: implement updateItem(T item, boolean empty)
+  // might be difficult since updateItem is a protected method which needs to be defined in the delegate's class
 }

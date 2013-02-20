@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,19 +30,16 @@ import scala.math.Ordering
 import javafx.beans.{ value => jfxbv }
 import javafx.scene.{ control => jfxsc }
 import javafx.{ event => jfxe }
+import javafx.{ util => jfxu }
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.beans.property.StringProperty
+import scalafx.beans.value.ObservableValue
+import scalafx.beans.value.ObservableValue.sfxObservableValue2jfxObjectValue
 import scalafx.event.Event
-import scalafx.scene.Node.sfxNode2jfx
-import scalafx.scene.control.ContextMenu.sfxContextMenu2jfx
-import scalafx.scene.control.TableColumn.CellDataFeatures.sfxCellDataFeatures2jfx
-import scalafx.scene.control.TableColumn.sfxTableColumn2jfx
-import scalafx.scene.control.TablePosition.sfxTablePosition2jfx
-import scalafx.scene.control.TableView.sfxTableView2jfx
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
@@ -203,17 +200,25 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    */
   def cellFactory: ObjectProperty[TableColumn[S, T] => TableCell[S, T]] =
     ObjectProperty((column: TableColumn[S, T]) => new TableCell(delegate.cellFactoryProperty.getValue.call(column)))
-  def cellFactory_=(v: TableColumn[S, T] => TableCell[S, T]) {
-    cellFactory() = v
+  def cellFactory_=(f: TableColumn[S, T] => TableCell[S, T]) {
+    delegate.cellFactoryProperty.setValue(new jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] {
+      def call(v: jfxsc.TableColumn[S, T]): jfxsc.TableCell[S, T] = {
+        f(v)
+      }
+    })
   }
 
   /**
    * The cell value factory needs to be set to specify how to populate all cells within a single TableColumn.
    */
-  def cellValueFactory: ObjectProperty[TableColumn.CellDataFeatures[S, T] => jfxbv.ObservableValue[T]] =
+  def cellValueFactory: ObjectProperty[TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]] =
     ObjectProperty((features: TableColumn.CellDataFeatures[S, T]) => delegate.cellValueFactoryProperty.getValue.call(features))
-  def cellValueFactory_=(v: TableColumn.CellDataFeatures[S, T] => jfxbv.ObservableValue[T]) {
-    cellValueFactory() = v
+  def cellValueFactory_=(f: TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]) {
+    delegate.cellValueFactoryProperty.setValue(new jfxu.Callback[jfxsc.TableColumn.CellDataFeatures[S, T], jfxbv.ObservableValue[T]] {
+      def call(v: jfxsc.TableColumn.CellDataFeatures[S, T]): jfxbv.ObservableValue[T] = {
+        sfxObservableValue2jfxObjectValue(f(v))
+      }
+    })
   }
 
   /**
@@ -232,7 +237,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * This menu will be shown whenever the user right clicks within the header area of this TableColumn.
    */
-  def contextMenu = delegate.contextMenuProperty
+  def contextMenu: ObjectProperty[jfxsc.ContextMenu] = delegate.contextMenuProperty
   def contextMenu_=(v: ContextMenu) {
     contextMenu() = v
   }
