@@ -2,13 +2,12 @@ package issues.issue09
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.{Ignore, FlatSpec}
+import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 
 /** Verify that code causing Issue 9 behaves correctly after fix. */
 @RunWith(classOf[JUnitRunner])
-@Ignore
 class Issue09Spec extends FlatSpec {
 
   "Issue 9 fix" should "run HeronsFormulaExample without exceptions" in {
