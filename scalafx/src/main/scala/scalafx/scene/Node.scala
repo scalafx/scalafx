@@ -47,12 +47,14 @@ import scalafx.geometry.Point2D._
 import scalafx.geometry.Bounds
 import scalafx.geometry.Insets
 import scalafx.geometry.Point2D
+import scalafx.geometry.Point3D
 import scalafx.scene.effect.Effect
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.transform.Transform
 import scalafx.scene.image.WritableImage
 import scalafx.geometry.Pos
 import scalafx.scene.layout.Priority
+import scalafx.scene.effect.BlendMode
 
 object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
@@ -65,7 +67,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    */
   def blendMode: ObjectProperty[jfxse.BlendMode] = delegate.blendModeProperty
 
-  def blendMode_=(v: jfxse.BlendMode) {
+  def blendMode_=(v: BlendMode) {
     blendMode() = v
   }
 
@@ -120,7 +122,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    */
   def depthTest: ObjectProperty[jfxs.DepthTest] = delegate.depthTestProperty
 
-  def depthTest_=(v: jfxs.DepthTest) {
+  def depthTest_=(v: DepthTest) {
     depthTest() = v
   }
 
@@ -489,9 +491,9 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Defines the axis of rotation of this Node.
    */
-  def rotationAxis = delegate.rotationAxisProperty
+  def rotationAxis: ObjectProperty[jfxg.Point3D] = delegate.rotationAxisProperty
 
-  def rotationAxis_=(v: jfxg.Point3D) {
+  def rotationAxis_=(v: Point3D) {
     rotationAxis() = v
   }
 

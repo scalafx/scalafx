@@ -78,12 +78,12 @@ abstract class Shape(override val delegate: jfxss.Shape) extends Node(delegate) 
   }
 
   def strokeLineCap :ObjectProperty[jfxss.StrokeLineCap] = delegate.strokeLineCapProperty
-  def strokeLineCap_=(v: jfxss.StrokeLineCap) {
+  def strokeLineCap_=(v: StrokeLineCap) {
     strokeLineCap() = v
   }
 
   def strokeLineJoin :ObjectProperty[jfxss.StrokeLineJoin] = delegate.strokeLineJoinProperty
-  def strokeLineJoin_=(v: jfxss.StrokeLineJoin) {
+  def strokeLineJoin_=(v: StrokeLineJoin) {
     strokeLineJoin() = v
   }
 
@@ -98,7 +98,7 @@ abstract class Shape(override val delegate: jfxss.Shape) extends Node(delegate) 
   }
 
   def strokeType :ObjectProperty[jfxss.StrokeType] = delegate.strokeTypeProperty
-  def strokeType_=(v: jfxss.StrokeType) {
+  def strokeType_=(v: StrokeType) {
     strokeType() = v
   }
 

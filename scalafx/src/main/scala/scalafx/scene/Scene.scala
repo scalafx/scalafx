@@ -30,6 +30,8 @@ import collection.JavaConversions._
 import javafx.{event => jfxe, scene => jfxs}
 import jfxs.{input => jfxsi, paint => jfxsp, layout => jfxsl}
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
+import scalafx.scene.paint.Paint
 import scalafx.delegate.SFXDelegate
 
 object Scene {
@@ -39,23 +41,19 @@ object Scene {
 class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())) extends SFXDelegate[jfxs.Scene] {
   def this(width: Double, height: Double) = this (new jfxs.Scene(new jfxs.Group(), width, height))
 
-  def this(parent: jfxs.Parent) = this(new jfxs.Scene(parent))
+  def this(parent: Parent) = this(new jfxs.Scene(parent))
 
-  def this(parent: jfxs.Parent, width: Double, height: Double) = this(new jfxs.Scene(parent, width, height))
+  def this(parent: Parent, width: Double, height: Double) = this(new jfxs.Scene(parent, width, height))
 
-  def this(parent: jfxs.Parent, width: Double, height: Double, depthBuffer: Boolean ) = this(new jfxs.Scene(parent, width, height, depthBuffer ))
+  def this(parent: Parent, width: Double, height: Double, depthBuffer: Boolean ) = this(new jfxs.Scene(parent, width, height, depthBuffer ))
   //def this(stackPane: jfxsl.StackPane) = this (new jfxs.Scene(stackPane))
 
   //def this(stackPane: jfxsl.StackPane, width: Double, height: Double) = this (new jfxs.Scene(stackPane, width, height))
 
-  def root = delegate.rootProperty
-
-  def root_=(v: jfxs.Parent) {
-    root() = v
-  }
+  def root: ObjectProperty[jfxs.Parent] = delegate.rootProperty
 
   def root_=(v: Parent) {
-    root() = v.delegate
+    root() = v
   }
 
   def getChildren = root.value match {
@@ -75,15 +73,15 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
     getChildren.add(n)
   }
 
-  def camera = delegate.cameraProperty
+  def camera: ObjectProperty[jfxs.Camera] = delegate.cameraProperty
 
-  def camera_=(v: jfxs.Camera) {
+  def camera_=(v: Camera) {
     camera() = v
   }
 
-  def cursor = delegate.cursorProperty
+  def cursor: ObjectProperty[jfxs.Cursor] = delegate.cursorProperty
 
-  def cursor_=(v: jfxs.Cursor) {
+  def cursor_=(v: Cursor) {
     cursor() = v
   }
 
@@ -93,9 +91,9 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
     eventDispatcher() = v
   }
 
-  def fill = delegate.fillProperty
+  def fill: ObjectProperty[jfxsp.Paint] = delegate.fillProperty
 
-  def fill_=(v: jfxsp.Paint) {
+  def fill_=(v: Paint) {
     fill() = v
   }
 

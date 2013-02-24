@@ -29,6 +29,7 @@ package scalafx.scene.shape
 import collection.JavaConversions._
 import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object Path {
@@ -36,8 +37,8 @@ object Path {
 }
 
 class Path(override val delegate:jfxss.Path = new jfxss.Path()) extends Shape(delegate) with SFXDelegate[jfxss.Path] {
-  def fillRule = delegate.fillRuleProperty
-  def fillRule_=(v: jfxss.FillRule) {
+  def fillRule: ObjectProperty[jfxss.FillRule] = delegate.fillRuleProperty
+  def fillRule_=(v: FillRule) {
     fillRule() = v
   }
 

@@ -34,6 +34,7 @@ import scalafx.delegate.PositionDelegate
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
+import scalafx.geometry.Rectangle2D
 import scalafx.scene.Node
 
 object ImageView {
@@ -69,7 +70,7 @@ class ImageView(override val delegate: jfxsi.ImageView = new jfxsi.ImageView())
 
   def image: ObjectProperty[jfxsi.Image] = delegate.imageProperty
 
-  def image_=(v: jfxsi.Image) {
+  def image_=(v: Image) {
     image() = v
   }
 
@@ -87,7 +88,7 @@ class ImageView(override val delegate: jfxsi.ImageView = new jfxsi.ImageView())
 
   def viewport: ObjectProperty[jfxg.Rectangle2D] = delegate.viewportProperty
 
-  def viewport_=(v: jfxg.Rectangle2D) {
+  def viewport_=(v: Rectangle2D) {
     viewport() = v
   }
 

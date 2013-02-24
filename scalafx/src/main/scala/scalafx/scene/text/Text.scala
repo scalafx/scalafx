@@ -69,7 +69,7 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
    * Determines how the bounds of the text node are calculated.
    */
   def boundsType: ObjectProperty[jfxst.TextBoundsType] = delegate.boundsTypeProperty
-  def boundsType_=(v: jfxst.TextBoundsType) {
+  def boundsType_=(v: TextBoundsType) {
     boundsType() = v
   }
 
@@ -85,7 +85,7 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
    * Specifies a requested font smoothing type : gray or LCD.
    */
   def fontSmoothingType: ObjectProperty[jfxst.FontSmoothingType] = delegate.fontSmoothingTypeProperty
-  def fontSmoothingType_=(v: jfxst.FontSmoothingType) {
+  def fontSmoothingType_=(v: FontSmoothingType) {
     fontSmoothingType() = v
   }
 
@@ -109,7 +109,7 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
    * Defines horizontal text alignment in the bounding box.
    */
   def textAlignment: ObjectProperty[jfxst.TextAlignment] = delegate.textAlignmentProperty
-  def textAlignment_=(v: jfxst.TextAlignment) {
+  def textAlignment_=(v: TextAlignment) {
     textAlignment() = v
   }
 

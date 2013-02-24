@@ -29,6 +29,10 @@ package scalafx.scene.layout
 import javafx.{ geometry => jfxg }
 import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.geometry.VPos
 import scalafx.delegate.SFXDelegate
 
 object RowConstraints {
@@ -58,7 +62,7 @@ class RowConstraints(override val delegate: jfxsl.RowConstraints = new jfxsl.Row
   /**
    * The vertical fill policy for the row.
    */
-  def fillHeight = delegate.fillHeightProperty
+  def fillHeight: BooleanProperty = delegate.fillHeightProperty
   def fillHeight_=(v: Boolean) {
     fillHeight() = v
   }
@@ -66,7 +70,7 @@ class RowConstraints(override val delegate: jfxsl.RowConstraints = new jfxsl.Row
   /**
    * The maximum height for the row.
    */
-  def maxHeight = delegate.maxHeightProperty
+  def maxHeight: DoubleProperty = delegate.maxHeightProperty
   def maxHeight_=(v: Double) {
     maxHeight() = v
   }
@@ -74,7 +78,7 @@ class RowConstraints(override val delegate: jfxsl.RowConstraints = new jfxsl.Row
   /**
    * The minimum height for the row.
    */
-  def minHeight = delegate.minHeightProperty
+  def minHeight: DoubleProperty = delegate.minHeightProperty
   def minHeight_=(v: Double) {
     minHeight() = v
   }
@@ -82,7 +86,7 @@ class RowConstraints(override val delegate: jfxsl.RowConstraints = new jfxsl.Row
   /**
    * The height percentage of the row.
    */
-  def percentHeight = delegate.percentHeightProperty
+  def percentHeight: DoubleProperty = delegate.percentHeightProperty
   def percentHeight_=(v: Double) {
     percentHeight() = v
   }
@@ -90,7 +94,7 @@ class RowConstraints(override val delegate: jfxsl.RowConstraints = new jfxsl.Row
   /**
    * The preferred height for the row.
    */
-  def prefHeight = delegate.prefHeightProperty
+  def prefHeight: DoubleProperty = delegate.prefHeightProperty
   def prefHeight_=(v: Double) {
     prefHeight() = v
   }
@@ -98,16 +102,16 @@ class RowConstraints(override val delegate: jfxsl.RowConstraints = new jfxsl.Row
   /**
    * The vertical alignment for the row.
    */
-  def valignment = delegate.valignmentProperty
-  def valignment_=(v: jfxg.VPos) {
+  def valignment: ObjectProperty[jfxg.VPos] = delegate.valignmentProperty
+  def valignment_=(v: VPos) {
     valignment() = v
   }
 
   /**
    * The vertical grow priority for the row.
    */
-  def vgrow = delegate.vgrowProperty
-  def vgrow_=(v: jfxsl.Priority) {
+  def vgrow: ObjectProperty[jfxsl.Priority] = delegate.vgrowProperty
+  def vgrow_=(v: Priority) {
     vgrow() = v
   }
 }
