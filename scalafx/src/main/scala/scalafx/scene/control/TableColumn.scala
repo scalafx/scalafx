@@ -186,7 +186,7 @@ object TableColumn {
 /**
  * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.html]].
  */
-class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfxsc.TableColumn)
+class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfxsc.TableColumn[S, T]())
   extends SFXDelegate[jfxsc.TableColumn[S, T]] {
 
   /**

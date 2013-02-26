@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,4 +38,14 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TableColumnSpec[S, T]
-  extends AbstractSFXDelegateSpec[jfxsc.TableColumn[S, T], TableColumn[S, T], jfxsc.TableColumnBuilder[S, T, _]](classOf[jfxsc.TableColumn[S, T]], classOf[TableColumn[S, T]], classOf[jfxsc.TableColumnBuilder[S, T, _]])
+  extends AbstractSFXDelegateSpec[jfxsc.TableColumn[S, T], TableColumn[S, T], jfxsc.TableColumnBuilder[S, T, _]](
+    classOf[jfxsc.TableColumn[S, T]], classOf[TableColumn[S, T]], classOf[jfxsc.TableColumnBuilder[S, T, _]]) {
+
+  it should " have parametrized default constructor - Issue 40" in {
+    // Without correctly parametrized default constructor following line was throwing exception:
+    //   error: polymorphic expression cannot be instantiated to expected type;
+    //   found   : [S, T]javafx.scene.control.TableColumn[Nothing,Nothing]
+    //   required: javafx.scene.control.TableColumn[String,String]
+    new TableColumn[String, String]()
+  }
+}
