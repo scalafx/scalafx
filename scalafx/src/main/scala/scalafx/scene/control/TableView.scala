@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.control
 
+import javafx.{collections => jfxc}
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
@@ -210,7 +211,7 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   /**
    * The TableColumns that are part of this TableView.
    */
-  def columns = delegate.getColumns.map(new TableColumn(_))
+  def columns : jfxc.ObservableList[jfxsc.TableColumn[S,_]] = delegate.getColumns
 
   /**
    * This is the function called when the user completes a column-resize operation.
