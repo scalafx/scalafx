@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,8 @@ import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe}
 import javafx.{util => jfxu}
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.ObjectProperty
 import scalafx.event.Event
 import scalafx.delegate.SFXDelegate
 
@@ -134,7 +136,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * the TreeCells within it are both editable will a TreeCell be able to go
    * into their editing state.
    */
-  def editable = delegate.editableProperty
+  def editable: BooleanProperty = delegate.editableProperty
   def editable_=(v: Boolean) {
     editable() = v
   }
@@ -181,7 +183,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   /**
    * Property representing the root node of the TreeView.
    */
-  def root = delegate.rootProperty
+  def root: ObjectProperty[jfxsc.TreeItem[T]] = delegate.rootProperty
   def root_=(v: TreeItem[T]) {
     root() = v
   }
@@ -197,7 +199,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   /**
    * Property that represents whether or not the TreeView root node is visible.
    */
-  def showRoot = delegate.showRootProperty
+  def showRoot: BooleanProperty = delegate.showRootProperty
   def showRoot_=(v: Boolean) {
     showRoot() = v
   }

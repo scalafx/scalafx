@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,6 +32,8 @@ import scalafx.Includes._
 import scalafx.scene.Parent
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.geometry.Insets
 import scalafx.delegate.SFXDelegate
 
 object Region {
@@ -101,8 +103,8 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
   /**
    * The top,right,bottom,left padding around the region's content.
    */
-  def padding = delegate.paddingProperty
-  def padding_=(v: jfxg.Insets) {
+  def padding: ObjectProperty[jfxg.Insets] = delegate.paddingProperty
+  def padding_=(v: Insets) {
     padding() = v
   }
 

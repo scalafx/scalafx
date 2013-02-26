@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,10 @@ import javafx.scene.{ control => jfxsc }
 import javafx.{ geometry => jfxg }
 
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
+import scalafx.geometry.HPos
+import scalafx.geometry.Orientation
+import scalafx.geometry.VPos
 import scalafx.delegate.SFXDelegate
 
 object Separator {
@@ -38,18 +42,18 @@ object Separator {
 
 class Separator(override val delegate: jfxsc.Separator = new jfxsc.Separator) extends Control(delegate) with SFXDelegate[jfxsc.Separator] {
 
-  def halignment = delegate.halignmentProperty
-  def halignment_=(v: jfxg.HPos) {
+  def halignment: ObjectProperty[jfxg.HPos] = delegate.halignmentProperty
+  def halignment_=(v: HPos) {
     halignment() = v
   }
 
-  def valignment = delegate.valignmentProperty
-  def valignment_=(v: jfxg.VPos) {
+  def valignment: ObjectProperty[jfxg.VPos] = delegate.valignmentProperty
+  def valignment_=(v: VPos) {
     valignment() = v
   }
 
-  def orientation = delegate.orientationProperty
-  def orientation_=(v: jfxg.Orientation) {
+  def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
+  def orientation_=(v: Orientation) {
     orientation() = v
   }
 

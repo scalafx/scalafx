@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,6 +31,9 @@ import javafx.{ event => jfxe }
 import javafx.{ geometry => jfxg }
 import javafx.{ util => jfxu }
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.geometry.Orientation
 import scalafx.collections.ObservableBuffer
 import scalafx.event.Event
 import scalafx.delegate.SFXDelegate
@@ -131,7 +134,7 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * Specifies whether this ListView is editable - only if the ListView and the ListCells within
    * it are both editable will a ListCell be able to go into their editing state.
    */
-  def editable = delegate.editableProperty
+  def editable: BooleanProperty = delegate.editableProperty
   def editable_=(v: Boolean) {
     editable() = v
   }
@@ -146,7 +149,7 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * The FocusModel provides the API through which it is possible to both get and set the focus on
    * a single item within a ListView.
    */
-  def focusModel = delegate.focusModelProperty
+  def focusModel: ObjectProperty[jfxsc.FocusModel[T]] = delegate.focusModelProperty
   def focusModel_=(v: FocusModel[T]) {
     focusModel() = v
   }
@@ -187,8 +190,8 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
   /**
    * The orientation of the ListView - this can either be horizontal or vertical.
    */
-  def orientation = delegate.orientationProperty
-  def orientation_=(v: jfxg.Orientation) {
+  def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
+  def orientation_=(v: Orientation) {
     orientation() = v
   }
 
@@ -196,9 +199,9 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * The SelectionModel provides the API through which it is possible to select single or multiple
    * items within a ListView, as well as inspect which items have been selected by the user.
    */
-  def selectionModel = delegate.selectionModelProperty
+  def selectionModel: ObjectProperty[jfxsc.MultipleSelectionModel[T]] = delegate.selectionModelProperty
   def selectionModel_=(v: MultipleSelectionModel[T]) {
-    selectionModel() = v.delegate
+    selectionModel() = v
   }
 
   /**

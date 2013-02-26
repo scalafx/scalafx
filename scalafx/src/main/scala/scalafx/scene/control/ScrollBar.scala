@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,8 +29,9 @@ package scalafx.scene.control
 import javafx.{geometry => jfxg}
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.geometry.Orientation
 import scalafx.delegate.SFXDelegate
 
 object ScrollBar {
@@ -71,7 +72,7 @@ class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
    * The orientation of the ScrollBar can either be HORIZONTAL or VERTICAL.
    */
   def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
-  def orientation_=(v: jfxg.Orientation) {
+  def orientation_=(v: Orientation) {
     orientation() = v
   }
 

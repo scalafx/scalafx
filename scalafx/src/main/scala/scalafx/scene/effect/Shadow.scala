@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,8 @@ package scalafx.scene.effect
 
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
 import scalafx.scene.paint.Color
 import scalafx.delegate.DimensionDelegate
 import scalafx.delegate.SFXDelegate
@@ -49,7 +51,7 @@ class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
   /**
    * Creates a new instance of Shadow with the specified blurType, color, radius.
    */
-  def this(blurType: jfxse.BlurType, color: Color, radius: Double) = this(new jfxse.Shadow(blurType, color, radius))
+  def this(blurType: BlurType, color: Color, radius: Double) = this(new jfxse.Shadow(blurType, color, radius))
 
   /**
    * Creates a new instance of Shadow with specified radius and color.
@@ -59,15 +61,15 @@ class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
   /**
    * The algorithm used to blur the shadow.
    */
-  def blurType = delegate.blurTypeProperty
-  def blurType_=(v: jfxse.BlurType) {
+  def blurType: ObjectProperty[jfxse.BlurType] = delegate.blurTypeProperty
+  def blurType_=(v: BlurType) {
     blurType() = v
   }
 
   /**
    * The radius of the shadow blur kernel.
    */
-  def radius = delegate.radiusProperty
+  def radius: DoubleProperty = delegate.radiusProperty
   def radius_=(v: Double) {
     radius() = v
   }
