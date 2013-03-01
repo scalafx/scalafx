@@ -224,7 +224,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * This enables support for nested columns, which can be useful to group together related data.
    */
-  def columns: ObservableBuffer[TableColumn[S, _]] = ObservableBuffer(delegate.getColumns.map(new TableColumn(_)))
+  def columns: ObservableBuffer[jfxsc.TableColumn[S, _]] = delegate.getColumns
 
   /**
    * Comparator function used when sorting this TableColumn.

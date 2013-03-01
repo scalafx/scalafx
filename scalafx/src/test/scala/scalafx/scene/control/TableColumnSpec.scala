@@ -32,6 +32,7 @@ import org.scalatest.junit.JUnitRunner
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
+import org.scalatest.matchers.ShouldMatchers._
 
 /**
  * TableColumnSpec tests.
@@ -47,5 +48,19 @@ class TableColumnSpec[S, T]
     //   found   : [S, T]javafx.scene.control.TableColumn[Nothing,Nothing]
     //   required: javafx.scene.control.TableColumn[String,String]
     new TableColumn[String, String]()
+  }
+
+  it should "not drop nested columns - Issue 44" in {
+    val firstTC = new TableColumn[String, String]("First")
+    val lastTC = new TableColumn[String, String]("Last")
+
+    val nameTC = new TableColumn[String, String]{"Name"}
+    nameTC.columns.size should (equal(0))
+
+    nameTC.columns +=(firstTC, lastTC)
+    nameTC.columns.size should (equal(2))
+
+    nameTC.columns.clear()
+    nameTC.columns.size should (equal(0))
   }
 }
