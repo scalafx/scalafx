@@ -281,7 +281,7 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   /**
    * The sortOrder list defines the order in which `TableColumn` instances are sorted.
    */
-  def sortOrder = delegate.getSortOrder.map(new TableColumn(_))
+  def sortOrder : ObservableBuffer[jfxsc.TableColumn[S,_]]= delegate.getSortOrder
 
   /**
    * This controls whether a menu button is available when the user clicks in a designated space within the TableView,

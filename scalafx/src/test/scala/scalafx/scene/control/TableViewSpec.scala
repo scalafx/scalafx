@@ -52,4 +52,23 @@ class TableViewSpec[S]
     tableView.columns +=(firstTC, lastTC)
     tableView.columns.size should (equal(2))
   }
+
+  it should "not drop assigned sort order - Issue 42" in {
+    val firstTC = new TableColumn[String, String]("First Name")
+    val lastTC = new TableColumn[String, String]("Last Name")
+
+    val tableView = new TableView[String]()
+    tableView.columns.size should (equal(0))
+
+    tableView.columns +=(firstTC, lastTC)
+    tableView.columns.size should (equal(2))
+
+    tableView.sortOrder.size should (equal(0))
+    tableView.sortOrder += lastTC
+    tableView.sortOrder.size should (equal(1))
+    tableView.sortOrder += firstTC
+    tableView.sortOrder.size should (equal(2))
+    tableView.sortOrder.clear()
+    tableView.sortOrder.size should (equal(0))
+  }
 }
