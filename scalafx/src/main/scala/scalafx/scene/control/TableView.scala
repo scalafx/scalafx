@@ -211,7 +211,7 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   /**
    * The TableColumns that are part of this TableView.
    */
-  def columns : jfxc.ObservableList[jfxsc.TableColumn[S,_]] = delegate.getColumns
+  def columns : ObservableBuffer[jfxsc.TableColumn[S,_]] = delegate.getColumns
 
   /**
    * This is the function called when the user completes a column-resize operation.
