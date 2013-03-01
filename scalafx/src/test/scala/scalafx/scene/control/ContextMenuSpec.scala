@@ -32,6 +32,7 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
+import org.scalatest.matchers.ShouldMatchers._
 
 /**
  * ContextMenu Spec tests.
@@ -40,5 +41,18 @@ import scalafx.testutil.RunOnApplicationThread
  */
 @RunWith(classOf[JUnitRunner])
 class ContextMenuSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ContextMenu, ContextMenu, jfxsc.ContextMenuBuilder[_]](classOf[jfxsc.ContextMenu], classOf[ContextMenu], classOf[jfxsc.ContextMenuBuilder[_]])
-  with RunOnApplicationThread
+  extends AbstractSFXDelegateSpec[jfxsc.ContextMenu, ContextMenu, jfxsc.ContextMenuBuilder[_]](
+    classOf[jfxsc.ContextMenu], classOf[ContextMenu], classOf[jfxsc.ContextMenuBuilder[_]])
+  with RunOnApplicationThread  {
+
+  it should "not drop assigned items - Issue 42" in {
+    val menuItemA = new MenuItem("MenuItemA")
+    val menuItemB = new MenuItem("MenuItemB")
+
+    val contexMenu = new ContextMenu()
+    contexMenu.items.size should (equal(0))
+
+    contexMenu.items +=(menuItemA, menuItemB)
+    contexMenu.items.size should (equal(2))
+  }
+}
