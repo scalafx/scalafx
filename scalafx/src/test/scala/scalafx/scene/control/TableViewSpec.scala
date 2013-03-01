@@ -53,7 +53,7 @@ class TableViewSpec[S]
     tableView.columns.size should (equal(2))
   }
 
-  it should "not drop assigned sort order - Issue 42" in {
+  it should "not drop assigned sort order - Issue 43" in {
     val firstTC = new TableColumn[String, String]("First Name")
     val lastTC = new TableColumn[String, String]("Last Name")
 
