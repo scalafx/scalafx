@@ -29,6 +29,7 @@ package scalafx.scene.control
 import scala.math.Ordering
 import javafx.beans.{ value => jfxbv }
 import javafx.scene.{ control => jfxsc }
+import javafx.{ scene => jfxs }
 import javafx.{ event => jfxe }
 import javafx.{ util => jfxu }
 import scalafx.Includes._
@@ -253,7 +254,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * The graphic in the TableColumn.
    */
-  def graphic = delegate.graphicProperty
+  def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
   def graphic_=(v: Node) {
     graphic() = v
   }
@@ -339,7 +340,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    * The sort node is commonly seen represented as a triangle that rotates on screen to indicate whether the
    * TableColumn is part of the sort order, and if so, what position in the sort order it is in.
    */
-  def sortNode = delegate.sortNodeProperty
+  def sortNode: ObjectProperty[jfxs.Node] = delegate.sortNodeProperty
   def sortNode_=(v: Node) {
     sortNode() = v
   }
@@ -348,8 +349,8 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    * Used to state whether this column, if it is part of the TableView.sortOrder ObservableList, should be sorted in
    * ascending or descending order.
    */
-  def sortType = delegate.sortTypeProperty
-  def sortType_=(v: jfxsc.TableColumn.SortType) {
+  def sortType: ObjectProperty[jfxsc.TableColumn.SortType] = delegate.sortTypeProperty
+  def sortType_=(v: TableColumn.SortType) {
     sortType() = v
   }
 

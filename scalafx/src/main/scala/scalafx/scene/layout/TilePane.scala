@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,6 +39,7 @@ import scalafx.geometry.Orientation
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.beans.property.IntegerProperty
+import scalafx.beans.property.ObjectProperty
 
 object TilePane {
   implicit def sfxTilePane2jfx(v: TilePane) = v.delegate
@@ -86,7 +87,7 @@ class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane)
   /**
    * The orientation of this tilepane.
    */
-  def orientation = delegate.orientationProperty
+  def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
   def orientation_=(v: Orientation) {
     orientation() = v
   }

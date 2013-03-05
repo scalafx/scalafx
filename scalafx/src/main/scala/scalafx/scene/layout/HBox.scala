@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,7 @@ object HBox {
   /**
    * Sets the horizontal grow priority for the child when contained by an hbox.
    */
-  def setHgrow(child: Node, value: jfxsl.Priority) = jfxsl.HBox.setHgrow(child, value)
+  def setHgrow(child: Node, value: Priority) = jfxsl.HBox.setHgrow(child, value)
 
   /**
    * Returns the child's margin constraint if set.

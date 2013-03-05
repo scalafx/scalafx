@@ -762,7 +762,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Returns true if the given bounds (specified in the local coordinate space of this Node)
    * intersects the shape of this Node.
    */
-  def intersects(localBounds: jfxg.Bounds) = delegate.intersects(localBounds)
+  def intersects(localBounds: Bounds) = delegate.intersects(localBounds)
 
   /**
    * Returns true if the given rectangle (specified in the local coordinate space of this Node)

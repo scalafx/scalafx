@@ -151,8 +151,8 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * The FocusModel provides the API through which it is possible to control
    * focus on zero or one rows of the TreeView.
    */
-  def focusModel = delegate.focusModelProperty
-  def focusModel_=(v: jfxsc.FocusModel[jfxsc.TreeItem[T]]) {
+  def focusModel: ObjectProperty[jfxsc.FocusModel[jfxsc.TreeItem[T]]] = delegate.focusModelProperty
+  def focusModel_=(v: FocusModel[jfxsc.TreeItem[T]]) {
     focusModel() = v
   }
 
@@ -191,8 +191,8 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   /**
    *
    */
-  def selectionModel = delegate.selectionModelProperty
-  def selectionModel_=(v: jfxsc.MultipleSelectionModel[jfxsc.TreeItem[T]]) {
+  def selectionModel: ObjectProperty[jfxsc.MultipleSelectionModel[jfxsc.TreeItem[T]]] = delegate.selectionModelProperty
+  def selectionModel_=(v: MultipleSelectionModel[jfxsc.TreeItem[T]]) {
     selectionModel() = v
   }
 

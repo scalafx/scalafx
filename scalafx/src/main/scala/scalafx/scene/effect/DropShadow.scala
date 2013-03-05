@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,8 @@ package scalafx.scene.effect
 
 import javafx.scene.{ effect => jfxse, paint => jfxsp }
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
 import scalafx.scene.paint.Color
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.DimensionDelegate
@@ -60,27 +62,27 @@ class DropShadow(override val delegate: jfxse.DropShadow = new jfxse.DropShadow(
   def this(radius: Double, offsetX: Double, offsetY: Double, color: Color) =
     this(new jfxse.DropShadow(radius, offsetX, offsetY, color))
 
-  def blurType = delegate.blurTypeProperty
-  def blurType_=(bt: jfxse.BlurType) {
+  def blurType: ObjectProperty[jfxse.BlurType] = delegate.blurTypeProperty
+  def blurType_=(bt: BlurType) {
     blurType() = bt
   }
 
-  def offsetX = delegate.offsetXProperty
+  def offsetX: DoubleProperty = delegate.offsetXProperty
   def offsetX_=(d: Double) {
     offsetX() = d
   }
 
-  def offsetY = delegate.offsetYProperty
+  def offsetY: DoubleProperty = delegate.offsetYProperty
   def offsetY_=(d: Double) {
     offsetY() = d
   }
 
-  def radius = delegate.radiusProperty
+  def radius: DoubleProperty = delegate.radiusProperty
   def radius_=(d: Double) {
     radius() = d
   }
 
-  def spread = delegate.spreadProperty
+  def spread: DoubleProperty = delegate.spreadProperty
   def spread_=(d: Double) {
     spread() = d
   }
