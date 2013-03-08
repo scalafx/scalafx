@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,18 +29,72 @@ package scalafx.beans.property
 import javafx.beans.{property => jfxbp}
 import scalafx.delegate.SFXDelegate
 
+/** Factory for [[scalafx.beans.property.ObjectProperty]] instances. */
 object ObjectProperty {
   implicit def sfxObjectProperty2jfx[T <: Any](op: ObjectProperty[T]) = op.delegate
 
-  /**
-   * Creates a new ObjectProperty instance using the SimpleObjectProperty as the target.
-   *
-   * @param value the initial value
-   * @return      the observable instance
-   */
- def apply[T <: Any](value: T) = new ObjectProperty[T](new jfxbp.SimpleObjectProperty[T](value))
+  /** Creates a new ObjectProperty.
+    *
+    * @param initialValue the initial value.
+    */
+  def apply[T <: Any](initialValue: T) = new ObjectProperty[T](new jfxbp.SimpleObjectProperty[T](initialValue))
+
+  /** Creates a new ObjectProperty.
+    *
+    * Special case when value is an ScalaFX wrapper, to be used as a work around for Issue 14.
+    * Created object property will have value type of the wrapped JavaFX type to simplify use with binding.
+    *
+    * @param value the initial value.
+    * @tparam J the JavaFX type of the value hold by this object property.
+    */
+  def apply[J <: Object](value: SFXDelegate[J]): ObjectProperty[J] =
+    new ObjectProperty[J](new jfxbp.SimpleObjectProperty[J](value.delegate))
+
+  /** Creates a new ObjectProperty.
+    *
+    * @param bean - the bean of this ObjectProperty
+    * @param name - the name of this ObjectProperty
+    */
+  def apply[T <: Any](bean: Object, name: String): ObjectProperty[T] =
+    new ObjectProperty(new jfxbp.SimpleObjectProperty[T](bean, name))
+
+
+  /** Creates a new ObjectProperty.
+    *
+    * @param bean - the bean of this ObjectProperty
+    * @param name - the name of this ObjectProperty
+    * @param initialValue - the initial value of the wrapped value
+    */
+  def apply[T <: Any](bean: Object, name: String, initialValue: T): ObjectProperty[T] =
+    new ObjectProperty(new jfxbp.SimpleObjectProperty[T](bean, name, initialValue))
+
+  /** Creates a new ObjectProperty.
+    *
+    * Special case when value is an ScalaFX wrapper, to be used as a work around for Issue 14.
+    * Created object property will have value type of the wrapped JavaFX type to simplify use with binding.
+    *
+    * @param bean - the bean of this ObjectProperty
+    * @param name - the name of this ObjectProperty
+    * @param initialValue - the initial value of the wrapped value
+    * @tparam J the JavaFX type of the value hold by this object property.
+    */
+  def apply[J <: Object](bean: Object, name: String, initialValue: SFXDelegate[J]): ObjectProperty[J] =
+    new ObjectProperty(new jfxbp.SimpleObjectProperty[J](bean, name, initialValue.delegate))
 }
 
+/**
+ * This class provides a full implementation of a Property wrapping an arbitrary Object.
+ *
+ * It is recommended, as a work around for Issue 14, to use companion object factory methods to construct new instances,
+ * instead of using constructor directly, especially when an inatial value is a ScalaFX wrapper, for instance:
+ *
+ * {{{
+ *   import scalafx.scene.Cursor
+ *   ...
+ *   val p = ObjectProperty(Cursor.WAIT)
+ * }}}
+ * This assumes that will not provide property type but let Scala compiler infer correct one.
+ */
 class ObjectProperty[T <: Any](override val delegate: jfxbp.ObjectProperty[T] = new jfxbp.SimpleObjectProperty[T])
   extends ReadOnlyObjectProperty[T](delegate)
   with Property[T, T]
