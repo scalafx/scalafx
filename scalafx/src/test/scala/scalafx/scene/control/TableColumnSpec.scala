@@ -54,7 +54,7 @@ class TableColumnSpec[S, T]
     val firstTC = new TableColumn[String, String]("First")
     val lastTC = new TableColumn[String, String]("Last")
 
-    val nameTC = new TableColumn[String, String]{"Name"}
+    val nameTC = new TableColumn[String, String]("Name")
     nameTC.columns.size should (equal(0))
 
     nameTC.columns +=(firstTC, lastTC)
