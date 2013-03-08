@@ -73,9 +73,9 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
     stringProperty1 = new StringProperty(null, "String Property 1")
     stringProperty2 = new StringProperty(null, "String Property 2")
     stringProperty3 = new StringProperty(null, "String Property 3")
-    objectProperty1 = new ObjectProperty[Object](null, "Object Property 1")
-    objectProperty2 = new ObjectProperty[Object](null, "Object Property 2")
-    objectProperty3 = new ObjectProperty[Object](null, "Object Property 3")
+    objectProperty1 =  ObjectProperty[Object](null, "Object Property 1")
+    objectProperty2 =  ObjectProperty[Object](null, "Object Property 2")
+    objectProperty3 =  ObjectProperty[Object](null, "Object Property 3")
   }
 
   "BindingIncludes" should "support min" in {

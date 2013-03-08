@@ -49,7 +49,7 @@ class Issue36Spec extends FlatSpec {
   }
 
   it should "bind SFX <==> JFX" in {
-    val sfxProperty = new ObjectProperty[Int](null, "sfx", 13)
+    val sfxProperty = ObjectProperty[Int](null, "sfx", 13)
     val jfxProperty = new jfxbp.SimpleObjectProperty[Int](this, "jfx", 224)
 
     sfxProperty <==> jfxProperty
@@ -63,7 +63,7 @@ class Issue36Spec extends FlatSpec {
   }
 
   it should "bind JFX <==> SFX" in {
-    val sfxProperty = new ObjectProperty[Int](null, "sfx", 13)
+    val sfxProperty = ObjectProperty[Int](null, "sfx", 13)
     val jfxProperty = new jfxbp.SimpleObjectProperty[Int](this, "jfx", 224)
 
     jfxProperty <==> sfxProperty

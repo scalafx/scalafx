@@ -62,9 +62,9 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
   var booleanProperty: jfxbp.BooleanProperty = null
 
   override protected def beforeEach() {
-    objectProperty = new ObjectProperty[String](bean, "Test Object")
-    objectProperty2 = new ObjectProperty[String](bean, "Test Object 2")
-    sfxObjectProperty = new ObjectProperty[String](bean, "SFX Test Object")
+    objectProperty =  ObjectProperty[String](bean, "Test Object")
+    objectProperty2 =  ObjectProperty[String](bean, "Test Object 2")
+    sfxObjectProperty =  ObjectProperty[String](bean, "SFX Test Object")
     booleanProperty = new BooleanProperty(bean, "Test Boolean")
   }
 
@@ -222,7 +222,7 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "bind SFX <==> JFX holding a value type like Double" in {
-    val sfxProperty = new ObjectProperty[Double](null, "sfx", 13.2)
+    val sfxProperty = ObjectProperty[Double](null, "sfx", 13.2)
     val jfxProperty = new jfxbp.SimpleObjectProperty[Double](this, "jfx", 224.7)
 
     sfxProperty <==> jfxProperty
@@ -236,7 +236,7 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "bind JFX <==> SFX holding a value type like Double" in {
-    val sfxProperty = new ObjectProperty[Double](null, "sfx", 13.2)
+    val sfxProperty = ObjectProperty[Double](null, "sfx", 13.2)
     val jfxProperty = new jfxbp.SimpleObjectProperty[Double](this, "jfx", 224.7)
 
     jfxProperty <==> sfxProperty
