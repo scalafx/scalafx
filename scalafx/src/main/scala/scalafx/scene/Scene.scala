@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,6 +31,8 @@ import javafx.{event => jfxe, scene => jfxs}
 import jfxs.{input => jfxsi, paint => jfxsp, layout => jfxsl}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.scene.paint.Paint
 import scalafx.delegate.SFXDelegate
 
@@ -85,7 +87,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
     cursor() = v
   }
 
-  def eventDispatcher = delegate.eventDispatcherProperty
+  def eventDispatcher: ObjectProperty[jfxe.EventDispatcher] = delegate.eventDispatcherProperty
 
   def eventDispatcher_=(v: jfxe.EventDispatcher) {
     eventDispatcher() = v
@@ -97,9 +99,9 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
     fill() = v
   }
 
-  def height = delegate.heightProperty
+  def height: ReadOnlyDoubleProperty = delegate.heightProperty
 
-  def width = delegate.widthProperty
+  def width: ReadOnlyDoubleProperty = delegate.widthProperty
 
   def onContextMenuRequested = delegate.onContextMenuRequestedProperty
 
@@ -239,11 +241,11 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
     onScroll() = v
   }
 
-  def window = delegate.windowProperty
+  def window: ReadOnlyObjectProperty[javafx.stage.Window] = delegate.windowProperty
 
-  def x = delegate.xProperty
+  def x: ReadOnlyDoubleProperty = delegate.xProperty
 
-  def y = delegate.yProperty
+  def y: ReadOnlyDoubleProperty = delegate.yProperty
 
   def depthBuffer = delegate.isDepthBuffer
 
@@ -259,7 +261,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    *
    * @since 2.2
    */
-  def focusOwner = delegate.focusOwnerProperty()
+  def focusOwner: ReadOnlyObjectProperty[jfxs.Node] = delegate.focusOwnerProperty()
 
   /**
    * Defines a function to be called when user performs a rotation action.

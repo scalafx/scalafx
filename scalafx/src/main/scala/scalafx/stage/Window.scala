@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,6 +34,7 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.ReadOnlyProperty
 import scalafx.event.Event
 import scalafx.delegate.SFXDelegate
@@ -118,7 +119,7 @@ class Window protected (override val delegate: jfxs.Window)
   /**
    * The Scene to be rendered on this Stage.
    */
-  def scene = delegate.sceneProperty
+  def scene: ReadOnlyObjectProperty[javafx.scene.Scene] = delegate.sceneProperty
 
   /**
    * Whether or not this Stage is showing (that is, open on the user's system).

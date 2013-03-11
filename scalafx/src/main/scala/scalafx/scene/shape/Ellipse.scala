@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Ellipse {
@@ -39,22 +40,22 @@ object Ellipse {
 }
 
 class Ellipse(override val delegate:jfxss.Ellipse = new jfxss.Ellipse()) extends Shape(delegate) with SFXDelegate[jfxss.Ellipse] {
-  def centerX = delegate.centerXProperty
+  def centerX: DoubleProperty = delegate.centerXProperty
   def centerX_=(v: Double) {
     centerX() = v
   }
 
-  def centerY = delegate.centerYProperty
+  def centerY: DoubleProperty = delegate.centerYProperty
   def centerY_=(v: Double) {
     centerY() = v
   }
 
-  def radiusX = delegate.radiusXProperty
+  def radiusX: DoubleProperty = delegate.radiusXProperty
   def radiusX_=(v: Double) {
     radiusX() = v
   }
 
-  def radiusY = delegate.radiusYProperty
+  def radiusY: DoubleProperty = delegate.radiusYProperty
   def radiusY_=(v: Double) {
     radiusY() = v
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,11 @@
  */
 package scalafx.scene.transform
 
+import javafx.{ geometry => jfxg }
 import javafx.scene.{ transform => jfxst }
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
 import scalafx.geometry.Point3D._
 import scalafx.geometry.Point3D
 import scalafx.delegate.SFXDelegate
@@ -86,7 +89,7 @@ class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate) extends Tra
   /**
    * Defines the angle of rotation measured in degrees.
    */
-  def angle = delegate.angleProperty()
+  def angle: DoubleProperty = delegate.angleProperty()
   def angle_=(v: Double) {
     angle() = v
   }
@@ -94,7 +97,7 @@ class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate) extends Tra
   /**
    * Defines the axis of rotation at the pivot point.
    */
-  def axis = delegate.axisProperty()
+  def axis: ObjectProperty[jfxg.Point3D] = delegate.axisProperty()
   def axis_=(v: Point3D) {
     axis() = v
   }
@@ -102,7 +105,7 @@ class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate) extends Tra
   /**
    * Defines the X coordinate of the rotation pivot point.
    */
-  def pivotX = delegate.pivotXProperty()
+  def pivotX: DoubleProperty = delegate.pivotXProperty()
   def pivotX_=(v: Double) {
     pivotX() = v
   }
@@ -110,7 +113,7 @@ class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate) extends Tra
   /**
    * Defines the Y coordinate of the rotation pivot point.
    */
-  def pivotY = delegate.pivotYProperty()
+  def pivotY: DoubleProperty = delegate.pivotYProperty()
   def pivotY_=(v: Double) {
     pivotY() = v
   }
@@ -118,7 +121,7 @@ class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate) extends Tra
   /**
    * Defines the Z coordinate of the rotation pivot point.
    */
-  def pivotZ = delegate.pivotZProperty()
+  def pivotZ: DoubleProperty = delegate.pivotZProperty()
   def pivotZ_=(v: Double) {
     pivotZ() = v
   }

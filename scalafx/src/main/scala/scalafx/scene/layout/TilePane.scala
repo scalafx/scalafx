@@ -127,7 +127,7 @@ class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane)
   /**
    * The default alignment of each child within its tile.
    */
-  def tileAlignment = delegate.tileAlignmentProperty
+  def tileAlignment: ObjectProperty[jfxg.Pos] = delegate.tileAlignmentProperty
   def tileAlignment_=(v: Pos) {
     tileAlignment() = v
   }

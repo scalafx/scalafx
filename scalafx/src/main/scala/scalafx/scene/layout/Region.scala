@@ -33,6 +33,7 @@ import scalafx.scene.Parent
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.geometry.Insets
 import scalafx.delegate.SFXDelegate
 
@@ -61,12 +62,12 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
   /**
    * The height of this resizable node.
    */
-  def height = delegate.heightProperty
+  def height: ReadOnlyDoubleProperty = delegate.heightProperty
 
   /**
    * The width of this resizable node.
    */
-  def width = delegate.widthProperty
+  def width: ReadOnlyDoubleProperty = delegate.widthProperty
 
   /**
    * Property for overriding the region's computed maximum height.

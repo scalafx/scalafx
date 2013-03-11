@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,15 @@ package scalafx.scene.media
 
 import javafx.scene.{ media => jfxsm }
 import javafx.{ event => jfxe }
+import javafx.{ util => jfxu }
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.IntegerProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.beans.property.ReadOnlyIntegerProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.util.Duration
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
@@ -102,7 +110,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * The interval between spectrum updates in seconds.
    */
-  def audioSpectrumInterval = delegate.audioSpectrumIntervalProperty
+  def audioSpectrumInterval: DoubleProperty = delegate.audioSpectrumIntervalProperty
   def audioSpectrumInterval_=(v: Double) {
     audioSpectrumInterval() = v
   }
@@ -110,7 +118,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * A listener for audio spectrum updates.
    */
-  def audioSpectrumListener = delegate.audioSpectrumListenerProperty
+  def audioSpectrumListener: ObjectProperty[jfxsm.AudioSpectrumListener] = delegate.audioSpectrumListenerProperty
   def audioSpectrumListener_=(v: jfxsm.AudioSpectrumListener) {
     audioSpectrumListener() = v
   }
@@ -118,7 +126,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * The number of bands in the audio spectrum.
    */
-  def audioSpectrumNumBands = delegate.audioSpectrumNumBandsProperty
+  def audioSpectrumNumBands: IntegerProperty = delegate.audioSpectrumNumBandsProperty
   def audioSpectrumNumBands_=(v: Int) {
     audioSpectrumNumBands() = v
   }
@@ -126,7 +134,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * The sensitivity threshold in decibels; must be non-positive.
    */
-  def audioSpectrumThreshold = delegate.audioSpectrumThresholdProperty
+  def audioSpectrumThreshold: IntegerProperty = delegate.audioSpectrumThresholdProperty
   def audioSpectrumThreshold_=(v: Int) {
     audioSpectrumThreshold() = v
   }
@@ -134,7 +142,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * Whether playing should start as soon as possible.
    */
-  def autoPlay = delegate.autoPlayProperty
+  def autoPlay: BooleanProperty = delegate.autoPlayProperty
   def autoPlay_=(v: Boolean) {
     autoPlay() = v
   }
@@ -142,7 +150,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * The balance, or left-right setting, of the audio output.
    */
-  def balance = delegate.balanceProperty
+  def balance: DoubleProperty = delegate.balanceProperty
   def balance_=(v: Double) {
     balance() = v
   }
@@ -150,27 +158,27 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * The current buffer position indicating how much media can be played without stalling the MediaPlayer.
    */
-  def bufferProgressTime = delegate.bufferProgressTimeProperty
+  def bufferProgressTime: ReadOnlyObjectProperty[jfxu.Duration] = delegate.bufferProgressTimeProperty
 
   /**
    * The number of completed playback cycles.
    */
-  def currentCount = delegate.currentCountProperty
+  def currentCount: ReadOnlyIntegerProperty = delegate.currentCountProperty
 
   /**
    * The current rate of playback regardless of settings.
    */
-  def currentRate = delegate.currentRateProperty
+  def currentRate: ReadOnlyDoubleProperty = delegate.currentRateProperty
 
   /**
    * The current media playback time.
    */
-  def currentTime = delegate.currentTimeProperty
+  def currentTime: ReadOnlyObjectProperty[jfxu.Duration] = delegate.currentTimeProperty
 
   /**
    * The number of times the media will be played.
    */
-  def cycleCount = delegate.cycleCountProperty
+  def cycleCount: IntegerProperty = delegate.cycleCountProperty
   def cycleCount_=(v: Int) {
     cycleCount() = v
   }
@@ -178,12 +186,12 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * The amount of time between the startTime and stopTime of this player.
    */
-  def cycleDuration = delegate.cycleDurationProperty
+  def cycleDuration: ReadOnlyObjectProperty[jfxu.Duration] = delegate.cycleDurationProperty
 
   /**
    * Observable property set to a MediaException if an error occurs.
    */
-  def error = delegate.errorProperty
+  def error: ReadOnlyObjectProperty[jfxsm.MediaException] = delegate.errorProperty
 
   /**
    * Retrieves the Media instance being played.
@@ -193,7 +201,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * Whether the player audio is muted.
    */
-  def mute = delegate.muteProperty
+  def mute: BooleanProperty = delegate.muteProperty
   def mute_=(v: Boolean) {
     mute() = v
   }
@@ -201,7 +209,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * Event handler invoked when the player currentTime reaches stopTime and is not repeating.
    */
-  def onEndOfMedia = delegate.onEndOfMediaProperty
+  def onEndOfMedia: ObjectProperty[Runnable] = delegate.onEndOfMediaProperty
   def onEndOfMedia_=(v: Runnable) {
     onEndOfMedia() = v
   }
@@ -209,7 +217,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * Event handler invoked when an error occurs.
    */
-  def onError = delegate.onErrorProperty
+  def onError: ObjectProperty[Runnable] = delegate.onErrorProperty
   def onError_=(v: Runnable) {
     onError() = v
   }
@@ -217,7 +225,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * Event handler invoked when the status changes to HALTED.
    */
-  def onHalted = delegate.onHaltedProperty
+  def onHalted: ObjectProperty[Runnable] = delegate.onHaltedProperty
   def onHalted_=(v: Runnable) {
     onHalted() = v
   }
@@ -233,7 +241,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * Event handler invoked when the status changes to PAUSED.
    */
-  def onPaused = delegate.onPausedProperty
+  def onPaused: ObjectProperty[Runnable] = delegate.onPausedProperty
   def onPaused_=(v: Runnable) {
     onPaused() = v
   }
@@ -241,7 +249,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * Event handler invoked when the status changes to PLAYING.
    */
-  def onPlaying = delegate.onPlayingProperty
+  def onPlaying: ObjectProperty[Runnable] = delegate.onPlayingProperty
   def onPlaying_=(v: Runnable) {
     onPlaying() = v
   }
@@ -249,7 +257,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * Event handler invoked when the status changes to READY.
    */
-  def onReady = delegate.onReadyProperty
+  def onReady: ObjectProperty[Runnable] = delegate.onReadyProperty
   def onReady_=(v: Runnable) {
     onReady() = v
   }
@@ -257,7 +265,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * Event handler invoked when the player currentTime reaches stopTime and will be repeating.
    */
-  def onRepeat = delegate.onRepeatProperty
+  def onRepeat: ObjectProperty[Runnable] = delegate.onRepeatProperty
   def onRepeat_=(v: Runnable) {
     onRepeat() = v
   }
@@ -265,7 +273,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * Event handler invoked when the status changes to STALLED.
    */
-  def onStalled = delegate.onStalledProperty
+  def onStalled: ObjectProperty[Runnable] = delegate.onStalledProperty
   def onStalled_=(v: Runnable) {
     onStalled() = v
   }
@@ -273,7 +281,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * Event handler invoked when the status changes to STOPPED.
    */
-  def onStopped = delegate.onStoppedProperty
+  def onStopped: ObjectProperty[Runnable] = delegate.onStoppedProperty
   def onStopped_=(v: Runnable) {
     onStopped() = v
   }
@@ -281,7 +289,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * The rate at which the media should be played.
    */
-  def rate = delegate.rateProperty
+  def rate: DoubleProperty = delegate.rateProperty
   def rate_=(v: Double) {
     rate() = v
   }
@@ -289,7 +297,7 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * The time offset where media should start playing, or restart from when repeating.
    */
-  def startTime = delegate.startTimeProperty
+  def startTime: ObjectProperty[jfxu.Duration] = delegate.startTimeProperty
   def startTime_=(v: Duration) {
     startTime() = v
   }
@@ -297,12 +305,12 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * The current state of the MediaPlayer.
    */
-  def status = delegate.statusProperty
+  def status: ReadOnlyObjectProperty[jfxsm.MediaPlayer.Status] = delegate.statusProperty
 
   /**
    * The time offset where media should stop playing or restart when repeating.
    */
-  def stopTime = delegate.stopTimeProperty
+  def stopTime: ObjectProperty[jfxu.Duration] = delegate.stopTimeProperty
   def stopTime_=(v: Duration) {
     stopTime() = v
   }
@@ -310,12 +318,12 @@ final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDel
   /**
    * The total amount of play time if allowed to play until finished.
    */
-  def totalDuration = delegate.totalDurationProperty
+  def totalDuration: ReadOnlyObjectProperty[jfxu.Duration] = delegate.totalDurationProperty
 
   /**
    * The volume at which the media should be played.
    */
-  def volume = delegate.volumeProperty
+  def volume: DoubleProperty = delegate.volumeProperty
   def volume_=(v: Double) {
     volume() = v
   }

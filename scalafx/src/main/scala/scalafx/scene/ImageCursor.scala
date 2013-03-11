@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,9 @@ package scalafx.scene
 
 import javafx.scene.{image => jfxsi}
 import javafx.{scene => jfxs}
-import scalafx.scene.image.Image._
+import scalafx.Includes._
+import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.scene.image.Image
 import scalafx.delegate.SFXDelegate
 
@@ -71,16 +73,16 @@ class ImageCursor(override val delegate: jfxs.ImageCursor = new jfxs.ImageCursor
   /**
    * The X coordinate of the cursor's hot spot.
    */
-  def hotspotX = delegate.hotspotXProperty
+  def hotspotX: ReadOnlyDoubleProperty = delegate.hotspotXProperty
 
   /**
    * The Y coordinate of the cursor's hot spot.
    */
-  def hotspotY = delegate.hotspotYProperty
+  def hotspotY: ReadOnlyDoubleProperty = delegate.hotspotYProperty
 
   /**
    * The image to display when the cursor is active.
    */
-  def image = delegate.imageProperty
+  def image: ReadOnlyObjectProperty[jfxsi.Image] = delegate.imageProperty
 
 }

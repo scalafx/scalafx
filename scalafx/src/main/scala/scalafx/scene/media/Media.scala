@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,10 @@
 package scalafx.scene.media
 
 import javafx.scene.{ media => jfxsm }
+import javafx.{ util => jfxu }
 import scalafx.Includes._
+import scalafx.beans.property.ReadOnlyIntegerProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.util.Duration
 
@@ -45,17 +48,17 @@ final class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.
   /**
    * The duration in seconds of the source media.
    */
-  def duration = delegate.durationProperty
+  def duration: ReadOnlyObjectProperty[jfxu.Duration] = delegate.durationProperty
 
   /**
    * A property set to a MediaException value when an error occurs.
    */
-  def error = delegate.errorProperty
+  def error: ReadOnlyObjectProperty[jfxsm.MediaException] = delegate.errorProperty
 
   /**
    * The height in pixels of the source media.
    */
-  def height = delegate.heightProperty
+  def height: ReadOnlyIntegerProperty = delegate.heightProperty
 
   /** Retrieve the markers defined on this Media instance. */
   def markers = delegate.getMarkers
@@ -84,6 +87,6 @@ final class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.
   /**
    * The width in pixels of the source media.
    */
-  def width = delegate.widthProperty
+  def width: ReadOnlyIntegerProperty = delegate.widthProperty
 
 }

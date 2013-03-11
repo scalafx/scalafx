@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -76,7 +76,7 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   /**
    * Defines the font of text.
    */
-  def font = delegate.fontProperty
+  def font: ObjectProperty[jfxst.Font] = delegate.fontProperty
   def font_=(v: Font) {
     font() = v
   }

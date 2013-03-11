@@ -66,7 +66,7 @@ object ControlsTest extends JFXApp {
         right = controlsPane
       }
 
-  stage = new PrimaryStage {
+  stage = new JFXApp.PrimaryStage {
     title = "CheckBox Test"
     width = 800
     height = 600
@@ -75,8 +75,8 @@ object ControlsTest extends JFXApp {
       content = mainContent
     }
   }
-  mainContent.prefHeight <== stage.scene.height
-  mainContent.prefWidth <== stage.scene.width
+  mainContent.prefHeight <== stage.scene().height
+  mainContent.prefWidth <== stage.scene().width
 //  setPrefSize(stage.scene.width.get, stage.scene.height.get)
   
 //  indicatorPane.prefHeight <== stage.scene.height
