@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,14 @@
  */
 package scalafx.animation
 
-import javafx.{ animation => jfxa }
-import javafx.util.Duration
+import javafx.{ animation => jfxa, geometry => jfxg, scene => jfxs, util => jfxu }
+import scalafx.util.Duration
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
-import javafx.geometry.Point3D
+import scalafx.geometry.Point3D
 import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
 
 object RotateTransition extends AnimationStatics {
   implicit def sfxRotateTransition2jfx(v: RotateTransition) = v.delegate
@@ -64,7 +65,7 @@ class RotateTransition(override val delegate: jfxa.RotateTransition = new jfxa.R
   /**
    * The duration of this RotateTransition. Default value: 400ms
    */
-  def duration = delegate.durationProperty
+  def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
@@ -90,7 +91,7 @@ class RotateTransition(override val delegate: jfxa.RotateTransition = new jfxa.R
   /**
    * The target node of this RotateTransition.
    */
-  def node = delegate.nodeProperty
+  def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }
@@ -99,7 +100,7 @@ class RotateTransition(override val delegate: jfxa.RotateTransition = new jfxa.R
    * Specifies the axis of rotation for this RotateTransition.Default value:
    * null
    */
-  def axis = delegate.axisProperty
+  def axis: ObjectProperty[jfxg.Point3D] = delegate.axisProperty
   def axis_=(p: Point3D) {
     axis() = p
   }

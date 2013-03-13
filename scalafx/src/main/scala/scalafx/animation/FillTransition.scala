@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,12 +26,13 @@
  */
 package scalafx.animation
 
-import javafx.util.Duration
-import javafx.{ animation => jfxa }
-
+import javafx.{ animation => jfxa, util => jfxu }
+import javafx.scene.{ paint => jfxsp, shape => jfxss }
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Shape
+import scalafx.util.Duration
 import scalafx.delegate.SFXDelegate
 
 object FillTransition extends AnimationStatics {
@@ -85,7 +86,7 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
   /**
    * The target shape of this `FillTransition`.
    */
-  def shape = delegate.shapeProperty
+  def shape: ObjectProperty[jfxss.Shape] = delegate.shapeProperty
   def shape_=(s: Shape) {
     shape() = s
   }
@@ -94,7 +95,7 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
    * The duration of this `FillTransition`. Default value:
    * 400ms
    */
-  def duration = delegate.durationProperty
+  def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
@@ -103,7 +104,7 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
    * Specifies the start color value for this `FillTransition`. Default value:
    * null
    */
-  def fromValue = delegate.fromValueProperty
+  def fromValue: ObjectProperty[jfxsp.Color] = delegate.fromValueProperty
   def fromValue_=(from: Color) {
     fromValue() = from
   }
@@ -112,7 +113,7 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
    * Specifies the stop color value for this FillTransition. Default value:
    * null
    */
-  def toValue = delegate.toValueProperty
+  def toValue: ObjectProperty[jfxsp.Color] = delegate.toValueProperty
   def toValue_=(to: Color) {
     toValue() = to
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,8 @@
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
+import scalafx.Includes._
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object TableCell {
@@ -43,17 +45,17 @@ class TableCell[S, T](override val delegate: jfxsc.TableCell[S, T] = new jfxsc.T
   /**
    * The TableColumn instance that backs this TableCell.
    */
-  def tableColumn = delegate.tableColumnProperty
+  def tableColumn: ReadOnlyObjectProperty[jfxsc.TableColumn[S,T]] = delegate.tableColumnProperty
 
   /**
    *  The TableRow that this TableCell currently finds itself placed within.
    */
-  def tableRow = delegate.tableRowProperty
+  def tableRow: ReadOnlyObjectProperty[jfxsc.TableRow[_]] = delegate.tableRowProperty
 
   /**
    *  The TableView associated with this TableCell.
    */
-  def tableView = delegate.tableViewProperty
+  def tableView: ReadOnlyObjectProperty[jfxsc.TableView[S]] = delegate.tableViewProperty
 
   /**
    * Call this function to transition from an editing state into a non-editing state, without saving any user input.

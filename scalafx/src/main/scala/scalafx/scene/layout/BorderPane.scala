@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,10 @@
 package scalafx.scene.layout
 
 import javafx.{geometry => jfxg}
+import javafx.{ scene => jfxs }
 import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
 import scalafx.geometry.Insets._
 import scalafx.geometry.Insets
 import scalafx.scene.Node._
@@ -69,7 +71,7 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
   /**
    * The node placed on the bottom edge of this border pane.
    */
-  def bottom = delegate.bottomProperty()
+  def bottom: ObjectProperty[jfxs.Node] = delegate.bottomProperty()
   def bottom_=(v: Node) {
     if (null == v) {
       delegate.setBottom(null)
@@ -81,7 +83,7 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
   /**
    * The node placed in the center of this border pane.
    */
-  def center = delegate.centerProperty()
+  def center: ObjectProperty[jfxs.Node] = delegate.centerProperty()
   def center_=(v: Node) {
     if (null == v) {
       delegate.setCenter(null)
@@ -93,7 +95,7 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
   /**
    * The node placed on the left edge of this border pane.
    */
-  def left = delegate.leftProperty()
+  def left: ObjectProperty[jfxs.Node] = delegate.leftProperty()
   def left_=(v: Node) {
     if (null == v) {
       delegate.setLeft(null)
@@ -105,7 +107,7 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
   /**
    * The node placed on the right edge of this border pane.
    */
-  def right = delegate.rightProperty()
+  def right: ObjectProperty[jfxs.Node] = delegate.rightProperty()
   def right_=(v: Node) {
     if (null == v) {
       delegate.setRight(null)
@@ -117,7 +119,7 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
   /**
    * The node placed on the top edge of this border pane.
    */
-  def top = delegate.topProperty()
+  def top: ObjectProperty[jfxs.Node] = delegate.topProperty()
   def top_=(v: Node) {
     if (null == v) {
       delegate.setTop(null)

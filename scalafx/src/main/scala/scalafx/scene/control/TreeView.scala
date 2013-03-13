@@ -32,6 +32,7 @@ import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.event.Event
 import scalafx.delegate.SFXDelegate
 
@@ -145,7 +146,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * A property used to represent the TreeItem currently being edited in the
    * TreeView, if editing is taking place, or -1 if no item is being edited.
    */
-  def editingItem = delegate.editingItemProperty
+  def editingItem: ReadOnlyObjectProperty[jfxsc.TreeItem[T]] = delegate.editingItemProperty
 
   /**
    * The FocusModel provides the API through which it is possible to control

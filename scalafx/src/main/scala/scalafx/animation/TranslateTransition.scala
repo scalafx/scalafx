@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,12 +26,13 @@
  */
 package scalafx.animation
 
-import javafx.{ animation => jfxa }
+import javafx.{ animation => jfxa, scene => jfxs, util => jfxu }
 import scalafx.util.Duration
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
 
 object TranslateTransition extends AnimationStatics {
   implicit def sfxTranslateTransition2jfx(v: TranslateTransition) = v.delegate
@@ -63,7 +64,7 @@ class TranslateTransition(override val delegate: jfxa.TranslateTransition = new 
   /**
    * The duration of this TranslateTransition.
    */
-  def duration = delegate.durationProperty
+  def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
@@ -71,7 +72,7 @@ class TranslateTransition(override val delegate: jfxa.TranslateTransition = new 
   /**
    * The target node of this TranslateTransition.
    */
-  def node = delegate.nodeProperty
+  def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,11 @@
  */
 package scalafx.scene.layout
 
+import javafx.{ geometry => jfxg }
 import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.AlignmentDelegate
 import scalafx.geometry.Insets
@@ -36,7 +39,6 @@ import scalafx.geometry.Orientation
 import scalafx.geometry.HPos
 import scalafx.geometry.Pos
 import scalafx.geometry.VPos
-import scalafx.beans.property.DoubleProperty
 
 object FlowPane {
   implicit def sfxFlowPane2jfx(v: FlowPane) = v.delegate
@@ -90,7 +92,7 @@ class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
   /**
    * The horizontal alignment of nodes within each column of a vertical flowpane.
    */
-  def columnHalignment = delegate.columnHalignmentProperty
+  def columnHalignment: ObjectProperty[jfxg.HPos] = delegate.columnHalignmentProperty
   def columnHalignment_=(v: HPos) {
     columnHalignment() = v
   }
@@ -107,7 +109,7 @@ class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
   /**
    * The orientation of this flowpane.
    */
-  def orientation = delegate.orientationProperty
+  def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
   def orientation_=(v: Orientation) {
     orientation() = v
   }
@@ -124,7 +126,7 @@ class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
   /**
    * The vertical alignment of nodes within each row of a horizontal flowpane.
    */
-  def rowValignment = delegate.rowValignmentProperty
+  def rowValignment: ObjectProperty[jfxg.VPos] = delegate.rowValignmentProperty
   def rowValignment_=(v: VPos) {
     rowValignment() = v
   }

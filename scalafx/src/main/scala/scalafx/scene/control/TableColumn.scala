@@ -37,6 +37,7 @@ import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.StringProperty
 import scalafx.beans.value.ObservableValue
 import scalafx.beans.value.ObservableValue.sfxObservableValue2jfxObjectValue
@@ -310,7 +311,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * This read-only property will always refer to the parent of this column, in the situation where nested columns are being used.
    */
-  def parentColumn = delegate.parentColumnProperty
+  def parentColumn: ReadOnlyObjectProperty[jfxsc.TableColumn[S,_]] = delegate.parentColumnProperty
 
   /**
    * The preferred width of the TableColumn.
@@ -370,7 +371,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * The TableView that this TableColumn belongs to.
    */
-  def tableView = delegate.tableViewProperty
+  def tableView: ReadOnlyObjectProperty[jfxsc.TableView[S]] = delegate.tableViewProperty
 
   /**
    * This is the text to show in the header for this column.

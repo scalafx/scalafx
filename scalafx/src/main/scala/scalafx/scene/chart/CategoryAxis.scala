@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,9 @@ package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
@@ -38,19 +41,19 @@ object CategoryAxis {
 }
 
 final class CategoryAxis(override val delegate:jfxsc.CategoryAxis = new jfxsc.CategoryAxis) extends Axis[String](delegate) with SFXDelegate[jfxsc.CategoryAxis] {
-  def categorySpacing = delegate.categorySpacingProperty
+  def categorySpacing: ReadOnlyDoubleProperty = delegate.categorySpacingProperty
   
-  def endMargin = delegate.endMarginProperty
+  def endMargin: DoubleProperty = delegate.endMarginProperty
   def endMargin_= (v: Double) {
     endMargin() = v
   }
 
-  def gapStartAndEnd = delegate.gapStartAndEndProperty
+  def gapStartAndEnd: BooleanProperty = delegate.gapStartAndEndProperty
   def gapStartAndEnd_= (v: Boolean) {
     gapStartAndEnd() = v
   }
   
-  def startMargin = delegate.startMarginProperty
+  def startMargin: DoubleProperty = delegate.startMarginProperty
   def startMargin_= (v: Double) {
     startMargin() = v
   }

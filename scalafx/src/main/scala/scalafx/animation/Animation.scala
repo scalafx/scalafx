@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,14 @@
  */
 package scalafx.animation
 
-import javafx.{ event => jfxe }
-import javafx.{ animation => jfxa }
+import javafx.{ animation => jfxa, event => jfxe, util => jfxu }
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.IntegerProperty
+import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.util.Duration.sfxDuration2jfx
 import scalafx.util.Duration
 import scalafx.delegate._
@@ -97,7 +98,7 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
   /**
    *
    */
-  def currentTime = delegate.currentTimeProperty
+  def currentTime: ReadOnlyObjectProperty[jfxu.Duration] = delegate.currentTimeProperty
 
   /**
    * Defines the number of cycles in this animation.
@@ -112,12 +113,12 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
    * `Timeline`: the time it takes to play from time 0 to the KeyFrame with
    * the largest time (at the default rate of 1.0).
    */
-  def cycleDuration = delegate.cycleDurationProperty
+  def cycleDuration: ReadOnlyObjectProperty[jfxu.Duration] = delegate.cycleDurationProperty
 
   /**
    * Delays the start of an animation.
    */
-  def delay = delegate.delayProperty
+  def delay: ObjectProperty[jfxu.Duration] = delegate.delayProperty
   def delay_=(d: Duration) {
     delay() = d
   }
@@ -141,13 +142,13 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
   /**
    * The status of the Animation.
    */
-  def status = delegate.statusProperty
+  def status: ReadOnlyObjectProperty[jfxa.Animation.Status] = delegate.statusProperty
 
   /**
    * Read-only variable to indicate the total duration of this `Timeline`,
    * including repeats.
    */
-  def totalDuration = delegate.totalDurationProperty
+  def totalDuration: ReadOnlyObjectProperty[jfxu.Duration] = delegate.totalDurationProperty
 
   /**
    * Jumps to a given position in this Animation.

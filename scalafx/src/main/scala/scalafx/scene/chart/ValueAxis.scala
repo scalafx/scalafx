@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,44 +27,50 @@
 package scalafx.scene.chart
 
 import javafx.scene.{ chart => jfxsc }
+import javafx.{ util => jfxu }
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.IntegerProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.collections.ObservableBuffer
-import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
+import scalafx.delegate.SFXDelegate
 
 object ValueAxis {
   implicit def sfxValueAxis2jfx[T <: Number](v: ValueAxis[T]) = v.delegate
 }
 
 abstract class ValueAxis[T <: Number](override val delegate: jfxsc.ValueAxis[T]) extends Axis[T](delegate) with SFXDelegate[jfxsc.ValueAxis[T]] {
-  def lowerBound = delegate.lowerBoundProperty
+  def lowerBound: DoubleProperty = delegate.lowerBoundProperty
   def lowerBound_=(v: Double) {
     lowerBound() = v
   }
 
-  def minorTickCount = delegate.minorTickCountProperty
+  def minorTickCount: IntegerProperty = delegate.minorTickCountProperty
   def minorTickCount_=(v: Int) {
     minorTickCount() = v
   }
 
-  def minorTickLength = delegate.minorTickLengthProperty
+  def minorTickLength: DoubleProperty = delegate.minorTickLengthProperty
   def minorTickLength_=(v: Double) {
     minorTickLength() = v
   }
 
-  def minorTickVisible = delegate.minorTickVisibleProperty
+  def minorTickVisible: BooleanProperty = delegate.minorTickVisibleProperty
   def minorTickVisible_=(v: Boolean) {
     minorTickVisible() = v
   }
 
-  def scale = delegate.scaleProperty
+  def scale: ReadOnlyDoubleProperty = delegate.scaleProperty
 
-  def tickLabelFormatter = delegate.tickLabelFormatterProperty
+  def tickLabelFormatter: ObjectProperty[jfxu.StringConverter[T]] = delegate.tickLabelFormatterProperty
   def tickLabelFormatter_=(v: StringConverter[T]) {
     tickLabelFormatter() = v
   }
 
-  def upperBound = delegate.upperBoundProperty
+  def upperBound: DoubleProperty = delegate.upperBoundProperty
   def upperBound_=(v: Double) {
     upperBound() = v
   }

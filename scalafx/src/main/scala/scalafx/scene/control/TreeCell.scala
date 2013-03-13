@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,11 @@
  */
 package scalafx.scene.control
 
+import javafx.{ scene => jfxs }
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
@@ -48,7 +51,7 @@ class TreeCell[T](override val delegate: jfxsc.TreeCell[T] = new jfxsc.TreeCell[
    * The disclosure node is commonly seen represented as a triangle that rotates on screen to indicate whether or
    * not the TreeItem that it is placed beside is expanded or collapsed.
    */
-  def disclosureNode = delegate.disclosureNodeProperty
+  def disclosureNode: ObjectProperty[jfxs.Node] = delegate.disclosureNodeProperty
   def disclosureNode_=(v: Node) {
     disclosureNode() = v
   }
@@ -56,7 +59,7 @@ class TreeCell[T](override val delegate: jfxsc.TreeCell[T] = new jfxsc.TreeCell[
   /**
    * Each TreeCell represents at most a single `TreeItem`, which is represented by this property.
    */
-  def treeItem = delegate.treeItemProperty
+  def treeItem: ReadOnlyObjectProperty[jfxsc.TreeItem[T]] = delegate.treeItemProperty
   def treeItem_=(treeItem: TreeItem[T]) {
     delegate.updateTreeItem(treeItem)
   }
@@ -64,7 +67,7 @@ class TreeCell[T](override val delegate: jfxsc.TreeCell[T] = new jfxsc.TreeCell[
   /**
    * A TreeCell is explicitly linked to a single `TreeView` instance, which is represented by this property.
    */
-  def treeView = delegate.treeViewProperty
+  def treeView: ReadOnlyObjectProperty[jfxsc.TreeView[T]] = delegate.treeViewProperty
   def treeView_=(tree: TreeView[T]) {
     delegate.updateTreeView(tree)
   }

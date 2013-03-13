@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,7 @@ import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ReadOnlyIntegerProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.ReadOnlyStringProperty
 import scalafx.beans.property.StringProperty
 import scalafx.delegate.SFXDelegate
@@ -73,7 +74,7 @@ abstract class TextInputControl(override val delegate: jfxsc.TextInputControl)
   /**
    * The current selection.
    */
-  def selection = delegate.selectionProperty
+  def selection: ReadOnlyObjectProperty[jfxsc.IndexRange] = delegate.selectionProperty
 
   /**
    * The textual content of this TextInputControl.

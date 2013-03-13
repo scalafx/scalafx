@@ -26,16 +26,18 @@
  */
 package scalafx.scene.control
 
+import javafx.{ event => jfxe }
 import javafx.{ scene => jfxs }
 import javafx.scene.{ control => jfxsc }
-import javafx.{ event => jfxe }
 import scalafx.Includes._
 import scalafx.scene.Node._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.StringProperty
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
+import scalafx.beans.property.ReadOnlyObjectProperty
 
 object Tab {
 
@@ -104,7 +106,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
   /**
    * The currently selected tab.
    */
-  def selected = delegate.selectedProperty
+  def selected: ReadOnlyBooleanProperty = delegate.selectedProperty
 
   /**
    * The CSS style string associated to this tab.
@@ -119,7 +121,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
   /**
    * The TabPane that contains this tab.
    */
-  def tabPane = delegate.tabPaneProperty
+  def tabPane: ReadOnlyObjectProperty[jfxsc.TabPane] = delegate.tabPaneProperty
 
   /**
    * The text shown in the tab.
@@ -153,7 +155,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
    * on either itself or if the TabPane is disabled.
    * @since 2.2
    */
-  def disabled = delegate.disabledProperty()
+  def disabled: ReadOnlyBooleanProperty = delegate.disabledProperty()
 
 
   /**

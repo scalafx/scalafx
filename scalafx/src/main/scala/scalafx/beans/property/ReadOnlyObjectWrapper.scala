@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,7 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
+import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 
@@ -48,5 +49,5 @@ class ReadOnlyObjectWrapper[T <: Any](override val delegate: jfxbp.ReadOnlyObjec
   def this(bean: Object, name: String, initialValue: T) =
     this(new jfxbp.ReadOnlyObjectWrapper[T](bean, name, initialValue))
 
-  def readOnlyProperty = delegate.getReadOnlyProperty
+  def readOnlyProperty: ReadOnlyObjectProperty[T] = delegate.getReadOnlyProperty
 }

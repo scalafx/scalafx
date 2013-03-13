@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object Skinnable {
@@ -39,7 +40,7 @@ trait Skinnable extends SFXDelegate[jfxsc.Skinnable] {
   /**
    * Skin is responsible for rendering this `Control`.
    */
-  def skin = delegate.skinProperty
+  def skin: ObjectProperty[jfxsc.Skin[_]] = delegate.skinProperty
   def skin_=(v: Skin[_]) {
     skin() = v.delegate
   }

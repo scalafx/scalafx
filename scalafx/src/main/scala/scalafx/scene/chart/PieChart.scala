@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,10 @@ package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.StringProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
@@ -41,14 +45,14 @@ object PieChart {
   }
   
   class Data(override val delegate:jfxsc.PieChart.Data) extends SFXDelegate[jfxsc.PieChart.Data] {
-    def chart = delegate.chartProperty
+    def chart: ReadOnlyObjectProperty[jfxsc.PieChart] = delegate.chartProperty
     
-    def name = delegate.nameProperty
+    def name: StringProperty = delegate.nameProperty
     def name_= (v: String) {
       name() = v
     }
     
-    def pieValue = delegate.pieValueProperty
+    def pieValue: DoubleProperty = delegate.pieValueProperty
     def pieValue_= (v: Double) {
       pieValue() = v
     }
@@ -60,7 +64,7 @@ object PieChart {
 }
 
 class PieChart(override val delegate:jfxsc.PieChart = new jfxsc.PieChart()) extends Chart(delegate) with SFXDelegate[jfxsc.PieChart] {
-  def clockwise = delegate.clockwiseProperty
+  def clockwise: BooleanProperty = delegate.clockwiseProperty
   def clockwise_= (v: Boolean) {
     clockwise() = v
   }
@@ -70,17 +74,17 @@ class PieChart(override val delegate:jfxsc.PieChart = new jfxsc.PieChart()) exte
     data() = v
   }
 
-  def labelLineLength = delegate.labelLineLengthProperty
+  def labelLineLength: DoubleProperty = delegate.labelLineLengthProperty
   def labelLineLength_= (v: Double) {
     labelLineLength() = v
   }
   
-  def labelsVisible = delegate.labelsVisibleProperty
+  def labelsVisible:BooleanProperty = delegate.labelsVisibleProperty
   def labelsVisible_= (v: Boolean) {
     labelsVisible() = v
   }
   
-  def startAngle = delegate.startAngleProperty
+  def startAngle: DoubleProperty = delegate.startAngleProperty
   def startAngle_= (v: Double) {
     startAngle() = v
   }

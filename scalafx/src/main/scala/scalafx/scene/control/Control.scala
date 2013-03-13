@@ -27,11 +27,11 @@
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
-
 import scalafx.Includes._
-import scalafx.scene.Node
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
 object Control {
@@ -70,7 +70,7 @@ abstract class Control(override val delegate: jfxsc.Control)
   /**
    * The height of this control.
    */
-  def height = delegate.heightProperty
+  def height: ReadOnlyDoubleProperty = delegate.heightProperty
 
   /**
    * Property for overriding the control's computed maximum height.
@@ -131,6 +131,6 @@ abstract class Control(override val delegate: jfxsc.Control)
   /**
    * The width of this control.
    */
-  def width = delegate.widthProperty
+  def width: ReadOnlyDoubleProperty = delegate.widthProperty
 
 }

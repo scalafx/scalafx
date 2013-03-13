@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,14 +26,14 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ text => jfxst}
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{ control => jfxsc, text => jfxst }
 import javafx.{scene => jfxs }
 import scalafx.Includes._
 import scalafx.scene.Node._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.StringProperty
 import scalafx.scene.text.Font.sfxFont2jfx
 import scalafx.scene.text.Font
@@ -87,7 +87,7 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip) extends 
   /**
    * Typically, the tooltip is "activated" when the mouse moves over a Control.
    */
-  def activated = delegate.activatedProperty
+  def activated: ReadOnlyBooleanProperty = delegate.activatedProperty
 
   /**
    * Specifies the positioning of the graphic relative to the text.

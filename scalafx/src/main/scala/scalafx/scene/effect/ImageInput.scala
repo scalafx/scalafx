@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,10 @@
 */
 package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
 import javafx.scene.{ image => jfxsi }
+import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.image.Image
 import scalafx.delegate.PositionDelegate
@@ -55,7 +56,7 @@ class ImageInput(override val delegate: jfxse.ImageInput = new jfxse.ImageInput)
   /**
    * The source Image.
    */
-  def source = delegate.sourceProperty
+  def source: ObjectProperty[jfxsi.Image] = delegate.sourceProperty
   def source_=(v: Image) {
     source() = v
   }

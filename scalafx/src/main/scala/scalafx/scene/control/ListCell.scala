@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,8 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+import scalafx.Includes._
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object ListCell {
@@ -40,7 +42,7 @@ class ListCell[T](override val delegate: jfxsc.ListCell[T] = new jfxsc.ListCell[
   /**
    * The ListView associated with this Cell.
    */
-  def listView = delegate.listViewProperty
+  def listView: ReadOnlyObjectProperty[jfxsc.ListView[T]] = delegate.listViewProperty
 
   /**
    * Updates the ListView associated with this Cell.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object MultipleSelectionModel {
@@ -46,7 +47,7 @@ abstract class MultipleSelectionModel[T](override val delegate: jfxsc.MultipleSe
    *
    * By default, the selection mode is SelectionMode.SINGLE.
    */
-  def selectionMode = delegate.selectionModeProperty
+  def selectionMode: ObjectProperty[jfxsc.SelectionMode] = delegate.selectionModeProperty
   def selectionMode_=(v: SelectionMode) {
     selectionMode() = v
   }

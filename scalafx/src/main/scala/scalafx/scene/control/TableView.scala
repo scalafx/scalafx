@@ -27,10 +27,12 @@
 package scalafx.scene.control
 
 import javafx.{collections => jfxc}
+import javafx.{ scene => jfxs }
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
@@ -160,7 +162,7 @@ object TableView {
     /**
      * The position of the current item in the TableView which has the focus.
      */
-    def focusedCell = delegate.focusedCellProperty
+    def focusedCell: ReadOnlyObjectProperty[jfxsc.TablePosition[_,_]] = delegate.focusedCellProperty
 
     /**
      * Causes the item at the given index to receive the focus.
@@ -234,12 +236,12 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   /**
    * Represents the current cell being edited, or null if there is no cell being edited.
    */
-  def editingCell = delegate.editingCellProperty
+  def editingCell: ReadOnlyObjectProperty[jfxsc.TablePosition[S,_]] = delegate.editingCellProperty
 
   /**
    * Represents the currently-installed TableView.TableViewFocusModel for this TableView.
    */
-  def focusModel = delegate.focusModelProperty
+  def focusModel: ObjectProperty[jfxsc.TableView.TableViewFocusModel[S]] = delegate.focusModelProperty
   def focusModel_=(v: TableView.TableViewFocusModel[S]) {
     focusModel() = v
   }
@@ -255,7 +257,7 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   /**
    * This Node is shown to the user when the table has no content to show.
    */
-  def placeholder = delegate.placeholderProperty
+  def placeholder: ObjectProperty[jfxs.Node] = delegate.placeholderProperty
   def placeholder_=(v: Node) {
     placeholder() = v
   }
@@ -273,7 +275,7 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
    * The SelectionModel provides the API through which it is possible to select single or multiple items within a
    * TableView, as well as inspect which items have been selected by the user.
    */
-  def selectionModel = delegate.selectionModelProperty
+  def selectionModel: ObjectProperty[jfxsc.TableView.TableViewSelectionModel[S]] = delegate.selectionModelProperty
   def selectionModel_=(v: TableView.TableViewSelectionModel[S]) {
     selectionModel() = v
   }

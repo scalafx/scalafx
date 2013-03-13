@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
@@ -42,12 +43,12 @@ object BarChart {
 }
 
 class BarChart[X, Y](override val delegate:jfxsc.BarChart[X, Y]) extends XYChart[X, Y](delegate) with SFXDelegate[jfxsc.BarChart[X, Y]] {
-  def barGap = delegate.barGapProperty
+  def barGap: DoubleProperty = delegate.barGapProperty
   def barGap_= (v: Double) {
     barGap() = v
   }
   
-  def categoryGap = delegate.categoryGapProperty
+  def categoryGap: DoubleProperty = delegate.categoryGapProperty
   def categoryGap_= (v: Double) {
     categoryGap() = v
   }

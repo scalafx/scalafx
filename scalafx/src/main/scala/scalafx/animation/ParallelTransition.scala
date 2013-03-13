@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,11 @@
 package scalafx.animation
 
 import collection.JavaConversions._
-import javafx.{ animation => jfxa }
+import javafx.{ animation => jfxa, scene => jfxs }
 import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
+import scalafx.beans.property.ObjectProperty
 import scalafx.scene.Node
+import scalafx.delegate.SFXDelegate
 
 object ParallelTransition extends AnimationStatics {
   implicit def sfxParallelTransition2jfx(v: ParallelTransition) = v.delegate
@@ -73,7 +74,7 @@ class ParallelTransition(override val delegate: jfxa.ParallelTransition = new jf
    * This Node is used in all child Transitions, that do not define a target
    *  Node themselves.
    */
-  def node = delegate.nodeProperty
+  def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }

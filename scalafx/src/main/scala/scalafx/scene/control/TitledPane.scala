@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,13 @@
  */
 package scalafx.scene.control
 
+import javafx.{ scene => jfxs }
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene._
 import javafx.beans.property.BooleanProperty
+import scalafx.beans.property.ObjectProperty
 
 object TitledPane {
   implicit def sfxTitledPane2jfx(v: TitledPane) = v.delegate
@@ -50,7 +52,7 @@ class TitledPane(override val delegate: jfxsc.TitledPane = new jfxsc.TitledPane)
     collapsible() = v
   }
 
-  def content = delegate.contentProperty
+  def content: ObjectProperty[jfxs.Node] = delegate.contentProperty
   def content_=(v: Node) {
     content() = v
   }

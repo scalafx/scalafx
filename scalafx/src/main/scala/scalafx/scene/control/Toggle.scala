@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,8 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object Toggle {
@@ -43,7 +45,7 @@ trait Toggle extends SFXDelegate[jfxsc.Toggle] {
   /**
    * The selected state for this Toggle. Indicates whether this Control is selected.
    */
-  def selected = delegate.selectedProperty
+  def selected: BooleanProperty = delegate.selectedProperty
   def selected_=(v: Boolean) {
     selected() = v
   }
@@ -51,7 +53,7 @@ trait Toggle extends SFXDelegate[jfxsc.Toggle] {
   /**
    * The [[scalafx.scene.control.ToggleGroup]] to which this Toggle belongs.
    */
-  def toggleGroup = delegate.toggleGroupProperty
+  def toggleGroup: ObjectProperty[jfxsc.ToggleGroup] = delegate.toggleGroupProperty
   def toggleGroup_=(v: ToggleGroup) {
     toggleGroup() = v
   }

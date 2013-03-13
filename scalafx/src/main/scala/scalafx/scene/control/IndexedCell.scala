@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,8 @@
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
+import scalafx.Includes._
+import scalafx.beans.property.ReadOnlyIntegerProperty
 import scalafx.delegate.SFXDelegate
 
 object IndexedCell {
@@ -40,6 +42,6 @@ class IndexedCell[T](override val delegate: jfxsc.IndexedCell[T] = new jfxsc.Ind
   /**
    * The location of this cell in the virtualized control (e.g: ListView, TreeView, TableView, etc).
    */
-  def index = delegate.indexProperty
+  def index: ReadOnlyIntegerProperty = delegate.indexProperty
 
 }

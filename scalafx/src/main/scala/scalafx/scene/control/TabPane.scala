@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -89,7 +89,7 @@ class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane)
   /**
    * The selection model used for selecting tabs.
    */
-  def selectionModel = delegate.selectionModelProperty
+  def selectionModel: ObjectProperty[jfxsc.SingleSelectionModel[jfxsc.Tab]] = delegate.selectionModelProperty
   def selectionModel_=(v: SingleSelectionModel[Tab]) {
     selectionModel() = v.asInstanceOf[jfxsc.SingleSelectionModel[jfxsc.Tab]]
   }

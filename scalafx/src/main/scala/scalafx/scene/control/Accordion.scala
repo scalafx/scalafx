@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,8 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import collection.JavaConversions._
 
@@ -38,7 +38,7 @@ object Accordion {
 
 class Accordion(override val delegate: jfxsc.Accordion = new jfxsc.Accordion) extends Control(delegate) with SFXDelegate[jfxsc.Accordion] {
 
-  def expandedPane = delegate.expandedPaneProperty
+  def expandedPane: ObjectProperty[jfxsc.TitledPane] = delegate.expandedPaneProperty
 
   def expandedPane_=(v: TitledPane) {
     expandedPane() = v

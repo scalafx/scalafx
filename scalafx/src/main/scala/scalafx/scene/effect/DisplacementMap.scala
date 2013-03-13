@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,9 @@ package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object DisplacementMap {
@@ -52,7 +55,7 @@ class DisplacementMap(override val delegate: jfxse.DisplacementMap = new jfxse.D
   /**
    * The map data for this Effect.
    */
-  def mapData = delegate.mapDataProperty
+  def mapData: ObjectProperty[jfxse.FloatMap] = delegate.mapDataProperty
   def mapData_=(v: FloatMap) {
     mapData() = v
   }
@@ -60,7 +63,7 @@ class DisplacementMap(override val delegate: jfxse.DisplacementMap = new jfxse.D
   /**
    * The offset by which all x coordinate offset values in the FloatMap are displaced after they are scaled.
    */
-  def offsetX = delegate.offsetXProperty
+  def offsetX: DoubleProperty = delegate.offsetXProperty
   def offsetX_=(v: Double) {
     offsetX() = v
   }
@@ -68,7 +71,7 @@ class DisplacementMap(override val delegate: jfxse.DisplacementMap = new jfxse.D
   /**
    * The offset by which all y coordinate offset values in the FloatMap are displaced after they are scaled.
    */
-  def offsetY = delegate.offsetYProperty
+  def offsetY: DoubleProperty = delegate.offsetYProperty
   def offsetY_=(v: Double) {
     offsetX() = v
   }
@@ -76,7 +79,7 @@ class DisplacementMap(override val delegate: jfxse.DisplacementMap = new jfxse.D
   /**
    * The scale factor by which all x coordinate offset values in the FloatMap are multiplied.
    */
-  def scaleX = delegate.scaleXProperty
+  def scaleX: DoubleProperty = delegate.scaleXProperty
   def scaleX_=(v: Double) {
     scaleX() = v
   }
@@ -84,7 +87,7 @@ class DisplacementMap(override val delegate: jfxse.DisplacementMap = new jfxse.D
   /**
    * The scale factor by which all y coordinate offset values in the FloatMap are multiplied.
    */
-  def scaleY = delegate.scaleYProperty
+  def scaleY: DoubleProperty = delegate.scaleYProperty
   def scaleY_=(v: Double) {
     scaleY() = v
   }
@@ -92,7 +95,7 @@ class DisplacementMap(override val delegate: jfxse.DisplacementMap = new jfxse.D
   /**
    * Defines whether values taken from outside the edges of the map "wrap around" or not.
    */
-  def wrap = delegate.wrapProperty
+  def wrap: BooleanProperty = delegate.wrapProperty
   def wrap_=(v: Boolean) {
     wrap() = v
   }

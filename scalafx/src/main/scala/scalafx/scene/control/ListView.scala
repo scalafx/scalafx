@@ -33,9 +33,10 @@ import javafx.{ util => jfxu }
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
-import scalafx.geometry.Orientation
+import scalafx.beans.property.ReadOnlyIntegerProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.event.Event
+import scalafx.geometry.Orientation
 import scalafx.delegate.SFXDelegate
 
 object ListView {
@@ -143,7 +144,7 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * A property used to represent the index of the item currently being edited in the ListView,
    * if editing is taking place, or -1 if no item is being edited.
    */
-  def editingIndex = delegate.editingIndexProperty
+  def editingIndex: ReadOnlyIntegerProperty = delegate.editingIndexProperty
 
   /**
    * The FocusModel provides the API through which it is possible to both get and set the focus on
