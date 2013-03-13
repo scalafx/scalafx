@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -109,6 +109,10 @@ abstract class Shape(override val delegate: jfxss.Shape) extends Node(delegate) 
 
   def strokeDashArray :ObservableBuffer[java.lang.Double] = delegate.getStrokeDashArray
   def strokeDashArray_=(c: Iterable[java.lang.Double]) {
-    strokeDashArray.setAll(c)
+    if (null == c) {
+      strokeDashArray.clear
+    } else {
+      strokeDashArray.setAll(c)
+    }
   }
 }

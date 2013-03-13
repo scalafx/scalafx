@@ -148,7 +148,11 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   def effect: ObjectProperty[jfxse.Effect] = delegate.effectProperty
 
   def effect_=(v: Effect) {
-    effect() = v
+    if (null == v) {
+      delegate.setEffect(null)
+    } else {
+      effect() = v
+    }
   }
 
   /**
@@ -549,7 +553,11 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   def styleClass = delegate.getStyleClass
 
   def styleClass_=(c: Iterable[String]) {
-    styleClass.setAll(c)
+    if(null == c) {
+      styleClass.clear
+    } else {
+      styleClass.setAll(c)
+    }
   }
 
   /**
@@ -558,7 +566,11 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   def transforms = delegate.getTransforms
 
   def transforms_=(c: Iterable[Transform]) {
-    transforms.setAll(c.map(_.delegate))
+    if (null == c) {
+      transforms.clear
+    } else {
+      transforms.setAll(c.map(_.delegate))
+    }
   }
 
   /**

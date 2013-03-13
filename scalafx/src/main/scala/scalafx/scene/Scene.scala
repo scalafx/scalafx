@@ -67,12 +67,16 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   def content = getChildren
 
   def content_=(c: Iterable[Node]) {
-    getChildren.setAll(c.map(_.delegate))
+    if (null == c) {
+      content.clear
+    } else {
+      content.setAll(c.map(_.delegate))
+    }
   }
 
   def content_=(n: Node) {
-    getChildren.clear()
-    getChildren.add(n)
+    content.clear
+    content.add(n)
   }
 
   def camera: ObjectProperty[jfxs.Camera] = delegate.cameraProperty
@@ -252,7 +256,11 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   def stylesheets = delegate.getStylesheets
 
   def stylesheets_=(c: Iterable[String]) {
-    stylesheets.addAll(c)
+    if (null == c) {
+      stylesheets.clear
+    } else {
+      stylesheets.addAll(c)
+    }
   }
 
   /**

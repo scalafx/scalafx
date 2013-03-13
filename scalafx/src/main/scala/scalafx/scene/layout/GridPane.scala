@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -227,7 +227,11 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
    */
   def columnConstraints = delegate.getColumnConstraints
   def columnConstraints_=(c: Iterable[ColumnConstraints]) {
-    columnConstraints.setAll(c.map(_.delegate))
+    if (null == c) {
+      columnConstraints.clear
+    } else {
+      columnConstraints.setAll(c.map(_.delegate))
+    }
   }
 
   /**
@@ -235,7 +239,11 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
    */
   def rowConstraints = delegate.getRowConstraints
   def rowConstraints_=(c: Iterable[RowConstraints]) {
-    rowConstraints.setAll(c.map(_.delegate))
+    if (null == c) {
+      rowConstraints.clear
+    } else {
+      rowConstraints.setAll(c.map(_.delegate))
+    }
   }
 
   /**

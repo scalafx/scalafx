@@ -44,17 +44,22 @@ class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar) extends 
 
 	def items = delegate.getItems
 	def items_=(c: Iterable[Node]) {
-		items.setAll(c.map(_.delegate))
+	  if (null == c) {
+	    items.clear
+	  } else {
+	    items.setAll(c.map(_.delegate))
+	  }
 	}
 	def items_=(n: Node) {
-		items = List(n)
+	    items.clear
+	    items.add(n)
 	}
 	def content = items
 	def content_=(c: Iterable[Node]) {
 		items = c
 	}
 	def content_=(n: Node) {
-		items = n
+	    items = n
 	}
 
 	def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty

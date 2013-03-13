@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,6 +44,10 @@ class Path(override val delegate:jfxss.Path = new jfxss.Path()) extends Shape(de
 
   def elements = delegate.getElements
   def elements_=(c: Iterable[PathElement]) {
-    elements.setAll(c.map(_.delegate))
+    if (null == c) {
+      elements.clear
+    } else {
+      elements.setAll(c.map(_.delegate))
+    }
   }
 }

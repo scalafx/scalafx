@@ -84,6 +84,10 @@ class ParallelTransition(override val delegate: jfxa.ParallelTransition = new jf
    */
   def children = delegate.getChildren
   def children_=(c: Iterable[Animation]) {
-    children.setAll(c.map(_.delegate))
+    if (null == c) {
+      children.clear
+    } else {
+      children.setAll(c.map(_.delegate))
+    }
   }
 }
