@@ -17,7 +17,7 @@ object ScalaFXBuild extends Build {
     lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
         organization := "org.scalafx",
         version := "1.0.0-M2-SNAPSHOT",
-        crossScalaVersions := Seq( "2.9.3", "2.9.2",  "2.10.0" ),
+        crossScalaVersions := Seq( "2.9.3", "2.9.2",  "2.10.1" ),
         scalaVersion <<= (crossScalaVersions) { versions => versions.head },
         scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
         javacOptions ++= Seq("-target", "1.6", "-source", "1.6", "-Xlint:deprecation"),
