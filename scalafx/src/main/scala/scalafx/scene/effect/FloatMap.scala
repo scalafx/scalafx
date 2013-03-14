@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,9 @@
 */
 package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
+import scalafx.Includes._
+import scalafx.beans.property.IntegerProperty
 import scalafx.delegate.SFXDelegate
 
 object FloatMap {
@@ -41,7 +42,7 @@ class FloatMap(override val delegate: jfxse.FloatMap = new jfxse.FloatMap) exten
   /**
    * The height of the map, in pixels.
    */
-  def height = delegate.heightProperty
+  def height: IntegerProperty = delegate.heightProperty
   def height_=(v: Int) {
     height() = v
   }
@@ -49,7 +50,7 @@ class FloatMap(override val delegate: jfxse.FloatMap = new jfxse.FloatMap) exten
   /**
    * The width of the map, in pixels.
    */
-  def width = delegate.widthProperty
+  def width: IntegerProperty = delegate.widthProperty
   def width_=(v: Int) {
     width() = v
   }

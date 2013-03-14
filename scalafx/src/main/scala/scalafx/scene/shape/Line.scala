@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Line {
@@ -38,22 +39,22 @@ object Line {
 }
 
 class Line(override val delegate:jfxss.Line = new jfxss.Line()) extends Shape(delegate) with SFXDelegate[jfxss.Line] {
-  def endX = delegate.endXProperty
+  def endX: DoubleProperty = delegate.endXProperty
   def endX_=(v: Double) {
     endX() = v
   }
 
-  def endY = delegate.endYProperty
+  def endY: DoubleProperty = delegate.endYProperty
   def endY_=(v: Double) {
     endY() = v
   }
 
-  def startX = delegate.startXProperty
+  def startX: DoubleProperty = delegate.startXProperty
   def startX_=(v: Double) {
     startX() = v
   }
 
-  def startY = delegate.startYProperty
+  def startY: DoubleProperty = delegate.startYProperty
   def startY_=(v: Double) {
     startY() = v
   }

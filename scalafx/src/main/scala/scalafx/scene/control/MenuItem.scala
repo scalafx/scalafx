@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,14 +26,19 @@
  */
 package scalafx.scene.control
 
-import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
-import javafx.scene.{ control => jfxsc }
 import javafx.{ event => jfxe }
-import javafx.scene.Node
+import javafx.{ scene => jfxs }
+import javafx.scene.{ control => jfxsc, input => jfxsi }
+import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.StringProperty
+import scalafx.event.Event
+import scalafx.scene.Node
 import scalafx.scene.input.KeyCombination
 import scalafx.delegate.FireDelegate
-import scalafx.event.Event
+import scalafx.delegate.SFXDelegate
 
 object MenuItem {
   implicit def sfxMenuItem2jfx(m: MenuItem) = m.delegate
@@ -58,7 +63,7 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   /**
    *
    */
-  def accelerator = delegate.acceleratorProperty
+  def accelerator: ObjectProperty[jfxsi.KeyCombination] = delegate.acceleratorProperty
   def accelerator_=(v: KeyCombination) {
     accelerator() = v
   }
@@ -66,7 +71,7 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   /**
    *
    */
-  def disable = delegate.disableProperty
+  def disable: BooleanProperty = delegate.disableProperty
   def disable_=(v: Boolean) {
     disable() = v
   }
@@ -74,7 +79,7 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   /**
    *
    */
-  def graphic = delegate.graphicProperty
+  def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
   def graphic_=(v: Node) {
     graphic() = v
   }
@@ -82,7 +87,7 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   /**
    *
    */
-  def id = delegate.idProperty
+  def id: StringProperty = delegate.idProperty
   def id_=(v: String) {
     id() = v
   }
@@ -90,7 +95,7 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   /**
    * MnemonicParsing property to enable/disable text parsing.
    */
-  def mnemonicParsing = delegate.mnemonicParsingProperty
+  def mnemonicParsing: BooleanProperty = delegate.mnemonicParsingProperty
   def mnemonicParsing_=(v: Boolean) {
     mnemonicParsing() = v
   }
@@ -106,17 +111,17 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   /**
    *
    */
-  def parentMenu = delegate.parentMenuProperty
+  def parentMenu: ReadOnlyObjectProperty[jfxsc.Menu] = delegate.parentMenuProperty
 
   /**
    *
    */
-  def parentPopup = delegate.parentPopupProperty
+  def parentPopup: ReadOnlyObjectProperty[jfxsc.ContextMenu] = delegate.parentPopupProperty
 
   /**
    *
    */
-  def style = delegate.styleProperty
+  def style: StringProperty = delegate.styleProperty
   def style_=(v: String) {
     style() = v
   }
@@ -124,7 +129,7 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   /**
    *
    */
-  def text = delegate.textProperty
+  def text: StringProperty = delegate.textProperty
   def text_=(v: String) {
     text() = v
   }
@@ -132,7 +137,7 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   /**
    *
    */
-  def visible = delegate.visibleProperty
+  def visible: BooleanProperty = delegate.visibleProperty
   def visible_=(v: Boolean) {
     visible() = v
   }

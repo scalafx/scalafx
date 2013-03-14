@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package scalafx.scene.media
 
 import javafx.scene.{ media => jfxsm }
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
 
 object AudioEqualizer {
@@ -44,7 +45,7 @@ final class AudioEqualizer(override val delegate: jfxsm.AudioEqualizer) extends 
   /**
    * Whether the AudioEqualizer is enabled.
    */
-  def enabled = delegate.enabledProperty
+  def enabled: BooleanProperty = delegate.enabledProperty
   def enabled_=(v: Boolean) {
     enabled() = v
   }

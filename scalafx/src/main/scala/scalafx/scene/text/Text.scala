@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -69,14 +69,14 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
    * Determines how the bounds of the text node are calculated.
    */
   def boundsType: ObjectProperty[jfxst.TextBoundsType] = delegate.boundsTypeProperty
-  def boundsType_=(v: jfxst.TextBoundsType) {
+  def boundsType_=(v: TextBoundsType) {
     boundsType() = v
   }
 
   /**
    * Defines the font of text.
    */
-  def font = delegate.fontProperty
+  def font: ObjectProperty[jfxst.Font] = delegate.fontProperty
   def font_=(v: Font) {
     font() = v
   }
@@ -85,7 +85,7 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
    * Specifies a requested font smoothing type : gray or LCD.
    */
   def fontSmoothingType: ObjectProperty[jfxst.FontSmoothingType] = delegate.fontSmoothingTypeProperty
-  def fontSmoothingType_=(v: jfxst.FontSmoothingType) {
+  def fontSmoothingType_=(v: FontSmoothingType) {
     fontSmoothingType() = v
   }
 
@@ -109,7 +109,7 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
    * Defines horizontal text alignment in the bounding box.
    */
   def textAlignment: ObjectProperty[jfxst.TextAlignment] = delegate.textAlignmentProperty
-  def textAlignment_=(v: jfxst.TextAlignment) {
+  def textAlignment_=(v: TextAlignment) {
     textAlignment() = v
   }
 

@@ -51,9 +51,9 @@ class ReadOnlyObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
 
   override def beforeEach() {
     readOnlyObjectProperty = new ReadOnlyObjectProperty[jfxsp.Paint](bean, "Test Read-only Object", jfxsp.Color.BLACK)
-    objectProperty1 = new ObjectProperty[jfxsp.Paint](bean, "Test Object 1")
-    objectProperty2 = new ObjectProperty[jfxsp.Paint](bean, "Test Object 2")
-    sfxObjectProperty = new ObjectProperty[jfxsp.Paint](bean, "SFX Test Object")
+    objectProperty1 =  ObjectProperty[jfxsp.Paint](bean, "Test Object 1")
+    objectProperty2 =  ObjectProperty[jfxsp.Paint](bean, "Test Object 2")
+    sfxObjectProperty =  ObjectProperty[jfxsp.Paint](bean, "SFX Test Object")
     booleanProperty = new BooleanProperty(bean, "Test Boolean")
   }
 

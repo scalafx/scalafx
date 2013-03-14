@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,7 @@ package scalafx.scene.shape
 import collection.JavaConversions._
 import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object Path {
@@ -36,13 +37,17 @@ object Path {
 }
 
 class Path(override val delegate:jfxss.Path = new jfxss.Path()) extends Shape(delegate) with SFXDelegate[jfxss.Path] {
-  def fillRule = delegate.fillRuleProperty
-  def fillRule_=(v: jfxss.FillRule) {
+  def fillRule: ObjectProperty[jfxss.FillRule] = delegate.fillRuleProperty
+  def fillRule_=(v: FillRule) {
     fillRule() = v
   }
 
   def elements = delegate.getElements
   def elements_=(c: Iterable[PathElement]) {
-    elements.setAll(c.map(_.delegate))
+    if (null == c) {
+      elements.clear
+    } else {
+      elements.setAll(c.map(_.delegate))
+    }
   }
 }

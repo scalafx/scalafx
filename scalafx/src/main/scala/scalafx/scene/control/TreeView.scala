@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,9 @@ import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe}
 import javafx.{util => jfxu}
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.event.Event
 import scalafx.delegate.SFXDelegate
 
@@ -134,7 +137,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * the TreeCells within it are both editable will a TreeCell be able to go
    * into their editing state.
    */
-  def editable = delegate.editableProperty
+  def editable: BooleanProperty = delegate.editableProperty
   def editable_=(v: Boolean) {
     editable() = v
   }
@@ -143,14 +146,14 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * A property used to represent the TreeItem currently being edited in the
    * TreeView, if editing is taking place, or -1 if no item is being edited.
    */
-  def editingItem = delegate.editingItemProperty
+  def editingItem: ReadOnlyObjectProperty[jfxsc.TreeItem[T]] = delegate.editingItemProperty
 
   /**
    * The FocusModel provides the API through which it is possible to control
    * focus on zero or one rows of the TreeView.
    */
-  def focusModel = delegate.focusModelProperty
-  def focusModel_=(v: jfxsc.FocusModel[jfxsc.TreeItem[T]]) {
+  def focusModel: ObjectProperty[jfxsc.FocusModel[jfxsc.TreeItem[T]]] = delegate.focusModelProperty
+  def focusModel_=(v: FocusModel[jfxsc.TreeItem[T]]) {
     focusModel() = v
   }
 
@@ -181,7 +184,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   /**
    * Property representing the root node of the TreeView.
    */
-  def root = delegate.rootProperty
+  def root: ObjectProperty[jfxsc.TreeItem[T]] = delegate.rootProperty
   def root_=(v: TreeItem[T]) {
     root() = v
   }
@@ -189,15 +192,15 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   /**
    *
    */
-  def selectionModel = delegate.selectionModelProperty
-  def selectionModel_=(v: jfxsc.MultipleSelectionModel[jfxsc.TreeItem[T]]) {
+  def selectionModel: ObjectProperty[jfxsc.MultipleSelectionModel[jfxsc.TreeItem[T]]] = delegate.selectionModelProperty
+  def selectionModel_=(v: MultipleSelectionModel[jfxsc.TreeItem[T]]) {
     selectionModel() = v
   }
 
   /**
    * Property that represents whether or not the TreeView root node is visible.
    */
-  def showRoot = delegate.showRootProperty
+  def showRoot: BooleanProperty = delegate.showRootProperty
   def showRoot_=(v: Boolean) {
     showRoot() = v
   }

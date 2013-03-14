@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,6 +33,8 @@ import javafx.{ event => jfxe }
 import javafx.{ geometry => jfxg }
 import scalafx.scene.Node
 import collection.JavaConversions._
+import scalafx.beans.property.ObjectProperty
+import scalafx.geometry.Orientation
 
 object ToolBar {
 	implicit def sfxToolBarTojfx(v: ToolBar) = v.delegate
@@ -41,13 +43,27 @@ object ToolBar {
 class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar) extends Control(delegate) with SFXDelegate[jfxsc.ToolBar] {
 
 	def items = delegate.getItems
+	def items_=(c: Iterable[Node]) {
+	  if (null == c) {
+	    items.clear
+	  } else {
+	    items.setAll(c.map(_.delegate))
+	  }
+	}
+	def items_=(n: Node) {
+	    items.clear
+	    items.add(n)
+	}
 	def content = items
 	def content_=(c: Iterable[Node]) {
-		content.setAll(c.map(_.delegate))
+		items = c
+	}
+	def content_=(n: Node) {
+	    items = n
 	}
 
-	def orientation = delegate.orientationProperty
-	def orientation_=(v: jfxg.Orientation) {
+	def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
+	def orientation_=(v: Orientation) {
 		orientation() = v
 	}
 }

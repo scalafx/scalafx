@@ -61,7 +61,7 @@ class ContextMenu(override val delegate: jfxsc.ContextMenu = new jfxsc.ContextMe
   /**
    * The menu items on the context menu.
    */
-  def items: ObservableBuffer[MenuItem] = delegate.getItems.map(new MenuItem(_))
+  def items: ObservableBuffer[jfxsc.MenuItem] = delegate.getItems
 
   /**
    * Shows the `ContextMenu` relative to the given anchor node, on the side specified by the hpos and vpos parameters,

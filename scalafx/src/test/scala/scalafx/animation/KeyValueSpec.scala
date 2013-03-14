@@ -135,13 +135,13 @@ class KeyValueSpec
   }
 
   it should "have a convenient apply construction format for Objects" in {
-    val property = new ObjectProperty[Object](null, name)
+    val property = ObjectProperty[Object](null, name)
     val endValue = new Object()
     evaluateFromSfx(property, endValue, KeyValue(property, endValue))
   }
 
   it should "have a convenient apply construction format for jfx Objects" in {
-    val property = new ObjectProperty[Object](null, name).delegate
+    val property = ObjectProperty[Object](null, name).delegate
     val endValue = new Object()
     evaluateFromJfx(property, endValue, KeyValue(property, endValue))
   }

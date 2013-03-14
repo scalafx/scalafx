@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,8 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.StringProperty
 import scalafx.stage.PopupWindow
 import scalafx.delegate.SFXDelegate
 
@@ -43,7 +45,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
   /**
    * The id of this Node.
    */
-  def id = delegate.idProperty
+  def id: StringProperty = delegate.idProperty
   def id_=(v: String) {
     id() = v
   }
@@ -51,7 +53,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
   /**
    * Property for overriding the control's computed maximum height.
    */
-  def maxHeight = delegate.maxHeightProperty
+  def maxHeight: DoubleProperty = delegate.maxHeightProperty
   def maxHeight_=(v: Double) {
     maxHeight() = v
   }
@@ -59,7 +61,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
   /**
    * Property for overriding the control's computed maximum width.
    */
-  def maxWidth = delegate.maxWidthProperty
+  def maxWidth: DoubleProperty = delegate.maxWidthProperty
   def maxWidth_=(v: Double) {
     maxWidth() = v
   }
@@ -67,7 +69,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
   /**
    * Property for overriding the control's computed minimum height.
    */
-  def minHeight = delegate.minHeightProperty
+  def minHeight: DoubleProperty = delegate.minHeightProperty
   def minHeight_=(v: Double) {
     minHeight() = v
   }
@@ -75,7 +77,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
   /**
    * Property for overriding the control's computed minimum width.
    */
-  def minWidth = delegate.minWidthProperty
+  def minWidth: DoubleProperty = delegate.minWidthProperty
   def minWidth_=(v: Double) {
     minWidth() = v
   }
@@ -84,7 +86,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    * Property for overriding the control's computed preferred height.
    *
    */
-  def prefHeight = delegate.prefHeightProperty
+  def prefHeight: DoubleProperty = delegate.prefHeightProperty
   def prefHeight_=(v: Double) {
     prefHeight() = v
   }
@@ -92,7 +94,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
   /**
    * Property for overriding the control's computed preferred width.
    */
-  def prefWidth = delegate.prefWidthProperty
+  def prefWidth: DoubleProperty = delegate.prefWidthProperty
   def prefWidth_=(v: Double) {
     prefWidth() = v
   }
@@ -100,7 +102,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
   /**
    * A string representation of the CSS style associated with this specific Node.
    */
-  def style = delegate.styleProperty
+  def style: StringProperty = delegate.styleProperty
   def style_=(v: String) {
     style() = v
   }

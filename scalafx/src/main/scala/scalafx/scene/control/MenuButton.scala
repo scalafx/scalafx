@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,13 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
   /** The items to show within this buttons menu. */
   def items: jfxc.ObservableList[jfxsc.MenuItem] = delegate.getItems
 
-  def items_=(v: Iterable[MenuItem]): Boolean = items.addAll(v.map(_.delegate))
+  def items_=(c: Iterable[MenuItem]) {
+    if (null == c) {
+      items.clear
+    } else {
+      items.addAll(c.map(_.delegate))
+    }
+  }
 
 
   /** Indicates on which side the ContextMenu should open in relation to the MenuButton. */

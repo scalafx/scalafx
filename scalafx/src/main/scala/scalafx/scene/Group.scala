@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,7 @@ package scalafx.scene
 import collection.JavaConversions._
 import javafx.{ scene => jfxs }
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
 
 object Group {
@@ -44,17 +45,29 @@ class Group(override val delegate: jfxs.Group = new jfxs.Group()) extends Parent
 
   def children = delegate.getChildren
   def children_=(c: Iterable[Node]) {
-    children.setAll(c.map(_.delegate))
+    if (null == c) {
+      children.clear
+    } else {
+      children.setAll(c.map(_.delegate))
+    }
   }
-  def children_=(node: Node) {
-    this.children = List(node)
+  def children_=(n: Node) {
+    children.clear
+    children.add(n)
+  }
+  def content = children
+  def content_=(c: Iterable[Node]) {
+    children = c
+  }
+  def content_=(n: Node) {
+    children = n
   }
 
   /**
    * Controls whether or not this Group will automatically resize any managed resizable children
    * to their preferred sizes during the layout pass.
    */
-  def autoSizeChildren = delegate.autoSizeChildrenProperty
+  def autoSizeChildren: BooleanProperty = delegate.autoSizeChildrenProperty
   def autoSizeChildren_=(v: Boolean) {
     autoSizeChildren() = v
   }

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package scalafx.scene.effect
 
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
+import scalafx. beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Reflection {
@@ -47,7 +48,7 @@ class Reflection(override val delegate: jfxse.Reflection = new jfxse.Reflection)
   /**
    * The bottom opacity value, which is the opacity of the reflection at its bottom extreme.
    */
-  def bottomOpacity = delegate.bottomOpacityProperty
+  def bottomOpacity: DoubleProperty = delegate.bottomOpacityProperty
   def bottomOpacity_=(v: Double) {
     bottomOpacity() = v
   }
@@ -55,7 +56,7 @@ class Reflection(override val delegate: jfxse.Reflection = new jfxse.Reflection)
   /**
    * The fraction of the input that is visible in the reflection.
    */
-  def fraction = delegate.fractionProperty
+  def fraction: DoubleProperty = delegate.fractionProperty
   def fraction_=(v: Double) {
     fraction() = v
   }
@@ -63,7 +64,7 @@ class Reflection(override val delegate: jfxse.Reflection = new jfxse.Reflection)
   /**
    * The top offset adjustment, which is the distance between the bottom of the input and the top of the reflection.
    */
-  def topOffset = delegate.topOffsetProperty
+  def topOffset: DoubleProperty = delegate.topOffsetProperty
   def topOffset_=(v: Double) {
     topOffset() = v
   }
@@ -71,7 +72,7 @@ class Reflection(override val delegate: jfxse.Reflection = new jfxse.Reflection)
   /**
    * The top opacity value, which is the opacity of the reflection at its top extreme.
    */
-  def topOpacity = delegate.topOpacityProperty
+  def topOpacity: DoubleProperty = delegate.topOpacityProperty
   def topOpacity_=(v: Double) {
     topOpacity() = v
   }

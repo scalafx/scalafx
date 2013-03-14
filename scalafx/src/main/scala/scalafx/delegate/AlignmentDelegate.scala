@@ -29,6 +29,7 @@ package scalafx.delegate
 import javafx.beans.{ property => jfxbp }
 import javafx.{ geometry => jfxg }
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
 import scalafx.geometry.Pos
 import AlignmentDelegate._
 
@@ -59,7 +60,7 @@ trait AlignmentDelegate[J <: Object with Aligned]
    * 
    * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node.
    */
-  def alignment = delegate.alignmentProperty
+  def alignment: ObjectProperty[jfxg.Pos] = delegate.alignmentProperty
   def alignment_=(v: Pos) {
     alignment() = v
   }

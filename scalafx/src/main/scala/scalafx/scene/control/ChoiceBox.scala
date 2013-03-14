@@ -27,12 +27,13 @@
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
+import javafx.{ util => jfxu }
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.collections.ObservableBuffer
-import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
+import scalafx.delegate.SFXDelegate
 
 object ChoiceBox {
   implicit def sfxChoiceBox2jfx[J <: Any](cb: ChoiceBox[J]) = cb.delegate
@@ -50,7 +51,7 @@ class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.
   /**
    * Allows a way to specify how to represent objects in the items list.
    */
-  def converter = delegate.converterProperty
+  def converter: ObjectProperty[jfxu.StringConverter[J]] = delegate.converterProperty
   def converter_=(v: StringConverter[J]) {
     converter() = v
   }

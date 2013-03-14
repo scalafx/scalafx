@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,12 +49,17 @@ class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
    */
   def content = children
   def content_=(c: Iterable[Node]) {
-    content.setAll(c.map(_.delegate))
+    if (null == c) {
+      content.clear
+    } else {
+      content.setAll(c.map(_.delegate))
+    }
   }
   /**
    * Adds a simple Node as only content to this Pane.  
    */
-  def content_=(child: Node) {
-    content = List(child)
+  def content_=(n: Node) {
+    content.clear
+    content.add(n)
   }
 }

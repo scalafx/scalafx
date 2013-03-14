@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,8 @@ package scalafx.scene.effect
 
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
 import scalafx.scene.paint.Color
 import scalafx.delegate.DimensionDelegate
 import scalafx.delegate.SFXDelegate
@@ -66,15 +68,15 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
   /**
    * The algorithm used to blur the shadow.
    */
-  def blurType = delegate.blurTypeProperty
-  def blurType_=(v: jfxse.BlurType) {
+  def blurType: ObjectProperty[jfxse.BlurType] = delegate.blurTypeProperty
+  def blurType_=(v: BlurType) {
     blurType() = v
   }
 
   /**
    * The choke of the shadow.
    */
-  def choke = delegate.chokeProperty
+  def choke: DoubleProperty = delegate.chokeProperty
   def choke_=(v: Double) {
     choke() = v
   }
@@ -82,7 +84,7 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
   /**
    * The shadow offset in the x direction, in pixels.
    */
-  def offsetX = delegate.offsetXProperty
+  def offsetX: DoubleProperty = delegate.offsetXProperty
   def offsetX_=(v: Double) {
     offsetX() = v
   }
@@ -90,7 +92,7 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
   /**
    * The shadow offset in the y direction, in pixels.
    */
-  def offsetY = delegate.offsetYProperty
+  def offsetY: DoubleProperty = delegate.offsetYProperty
   def offsetY_=(v: Double) {
     offsetY() = v
   }
@@ -98,7 +100,7 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
   /**
    * The radius of the shadow blur kernel.
    */
-  def radius = delegate.radiusProperty
+  def radius: DoubleProperty = delegate.radiusProperty
   def radius_=(v: Double) {
     radius() = v
   }

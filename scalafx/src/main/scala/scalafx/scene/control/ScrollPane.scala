@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,9 @@
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
-import javafx.geometry.Bounds
+import javafx.{ geometry => jfxg }
 import scalafx.Includes._
+import scalafx.geometry.Bounds
 import scalafx.delegate.SFXDelegate
 import scalafx.beans.property._
 import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
@@ -67,7 +68,7 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
   /**
    * The node used as the content of this ScrollPane.
    */
-  def content = delegate.contentProperty
+  def content: ObjectProperty[jfxs.Node] = delegate.contentProperty
 
   @deprecated("Use a ScalaFX Node instead a JavaFX Node", "1.0")
   def content_=(v: jfxs.Node) {
@@ -99,7 +100,7 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
   /**
    * Specifies the policy for showing the horizontal scroll bar.
    */
-  def hbarPolicy = delegate.hbarPolicyProperty
+  def hbarPolicy: ObjectProperty[jfxsc.ScrollPane.ScrollBarPolicy] = delegate.hbarPolicyProperty
   def hbarPolicy_=(v: ScrollPane.ScrollBarPolicy) {
     hbarPolicy() = v
   }
@@ -155,7 +156,7 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
   /**
    * Specifies the policy for showing the vertical scroll bar.
    */
-  def vbarPolicy = delegate.vbarPolicyProperty
+  def vbarPolicy: ObjectProperty[jfxsc.ScrollPane.ScrollBarPolicy] = delegate.vbarPolicyProperty
   def vbarPolicy_=(v: ScrollPane.ScrollBarPolicy) {
     vbarPolicy() = v
   }
@@ -163,7 +164,7 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
   /**
    * The actual Bounds of the ScrollPane Viewport.
    */
-  def viewportBounds = delegate.viewportBoundsProperty
+  def viewportBounds: ObjectProperty[jfxg.Bounds] = delegate.viewportBoundsProperty
   def viewportBounds_=(v: Bounds) {
     viewportBounds() = v
   }

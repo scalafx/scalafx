@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,8 @@ package scalafx.scene.effect
 
 import scalafx.Includes._
 import javafx.scene.{ effect => jfxse}
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object Blend {
@@ -39,17 +41,17 @@ class Blend(override val delegate: jfxse.Blend = new jfxse.Blend) extends Effect
   /**
    * Creates a new instance of Blend with the specified mode.
    */
-  def this(mode: jfxse.BlendMode) = this(new jfxse.Blend(mode))
+  def this(mode: BlendMode) = this(new jfxse.Blend(mode))
 
   /**
    * Creates a new instance of Blend with the specified mode and bottom and top inputs.
    */
-  def this(mode: jfxse.BlendMode, bottomInput: Effect, topInput: Effect) = this(new jfxse.Blend(mode, bottomInput, topInput))
+  def this(mode: BlendMode, bottomInput: Effect, topInput: Effect) = this(new jfxse.Blend(mode, bottomInput, topInput))
 
   /**
    * The bottom input for this Blend operation.
    */
-  def bottomInput = delegate.bottomInputProperty
+  def bottomInput: ObjectProperty[jfxse.Effect] = delegate.bottomInputProperty
   def bottomInput_=(v: Effect) {
     bottomInput() = v
   }
@@ -57,15 +59,15 @@ class Blend(override val delegate: jfxse.Blend = new jfxse.Blend) extends Effect
   /**
    * The BlendMode used to blend the two inputs together.
    */
-  def mode = delegate.modeProperty
-  def mode_=(v: jfxse.BlendMode) {
+  def mode: ObjectProperty[jfxse.BlendMode] = delegate.modeProperty
+  def mode_=(v: BlendMode) {
     mode() = v
   }
 
   /**
    * The opacity value, which is modulated with the top input prior to blending.
    */
-  def opacity = delegate.opacityProperty
+  def opacity: DoubleProperty = delegate.opacityProperty
   def opacity_=(v: Double) {
     opacity() = v
   }
@@ -73,7 +75,7 @@ class Blend(override val delegate: jfxse.Blend = new jfxse.Blend) extends Effect
   /**
    * The top input for this Blend operation.
    */
-  def topInput = delegate.topInputProperty
+  def topInput: ObjectProperty[jfxse.Effect] = delegate.topInputProperty
   def topInput_=(v: Effect) {
     topInput() = v
   }

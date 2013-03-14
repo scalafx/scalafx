@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,8 @@ package scalafx.scene
 
 import collection.JavaConversions._
 import javafx.{scene => jfxs}
+import scalafx.Includes._
+import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.delegate.SFXDelegate
 
 object Parent {
@@ -35,11 +37,15 @@ object Parent {
 }
 
 abstract class Parent(override val delegate: jfxs.Parent) extends Node(delegate) with SFXDelegate[jfxs.Parent] {
-  def needsLayout = delegate.needsLayoutProperty
+  def needsLayout: ReadOnlyBooleanProperty = delegate.needsLayoutProperty
 
   def stylesheets = delegate.getStylesheets
 
   def stylesheets_=(c: Iterable[String]) {
-    stylesheets.addAll(c)
+    if (null == c) {
+      stylesheets.clear
+    } else {
+      stylesheets.addAll(c)
+    }
   }
 }

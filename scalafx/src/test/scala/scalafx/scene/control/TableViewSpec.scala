@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,12 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import org.scalatest.matchers.ShouldMatchers._
+
+import javafx.scene.{control => jfxsc}
+import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
@@ -37,4 +39,36 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TableViewSpec[S]
-  extends AbstractSFXDelegateSpec[jfxsc.TableView[S], TableView[S], jfxsc.TableViewBuilder[S, _]](classOf[jfxsc.TableView[S]], classOf[TableView[S]], classOf[jfxsc.TableViewBuilder[S, _]])
+  extends AbstractSFXDelegateSpec[jfxsc.TableView[S], TableView[S], jfxsc.TableViewBuilder[S, _]](
+    classOf[jfxsc.TableView[S]], classOf[TableView[S]], classOf[jfxsc.TableViewBuilder[S, _]]) {
+
+  it should "not drop assigned columns - Issue 41" in {
+    val firstTC = new TableColumn[String, String]("First Name")
+    val lastTC = new TableColumn[String, String]("Last Name")
+
+    val tableView = new TableView[String]()
+    tableView.columns.size should (equal(0))
+
+    tableView.columns +=(firstTC, lastTC)
+    tableView.columns.size should (equal(2))
+  }
+
+  it should "not drop assigned sort order - Issue 43" in {
+    val firstTC = new TableColumn[String, String]("First Name")
+    val lastTC = new TableColumn[String, String]("Last Name")
+
+    val tableView = new TableView[String]()
+    tableView.columns.size should (equal(0))
+
+    tableView.columns +=(firstTC, lastTC)
+    tableView.columns.size should (equal(2))
+
+    tableView.sortOrder.size should (equal(0))
+    tableView.sortOrder += lastTC
+    tableView.sortOrder.size should (equal(1))
+    tableView.sortOrder += firstTC
+    tableView.sortOrder.size should (equal(2))
+    tableView.sortOrder.clear()
+    tableView.sortOrder.size should (equal(0))
+  }
+}

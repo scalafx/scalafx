@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,9 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc}
 import javafx.{geometry => jfxg}
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.geometry.Orientation
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
@@ -44,7 +47,7 @@ object SplitPane {
     /**
      * Represents the location where the divider should ideally be positioned, between 0.0 and 1.0 (inclusive).
      */
-    def position = delegate.positionProperty
+    def position: DoubleProperty = delegate.positionProperty
     def position_=(v: Double) {
       position() = v
     }
@@ -68,8 +71,8 @@ class SplitPane(override val delegate: jfxsc.SplitPane = new jfxsc.SplitPane) ex
   /**
    * The orientation for the SplitPane.
    */
-  def orientation = delegate.orientationProperty
-  def orientation_=(v: jfxg.Orientation) {
+  def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
+  def orientation_=(v: Orientation) {
     orientation() = v
   }
 

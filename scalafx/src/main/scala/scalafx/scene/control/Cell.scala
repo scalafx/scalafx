@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,13 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-
-import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
 import javafx.{ scene => jfxs }
+import javafx.scene.{ control => jfxsc }
+import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.delegate.SFXDelegate
 
 object Cell {
   implicit def sfxCell2jfx[T](c: Cell[T]) = c.delegate
@@ -43,7 +45,7 @@ class Cell[T](override val delegate: jfxsc.Cell[T] = new jfxsc.Cell[T])
   /**
    * A property representing whether this cell is allowed to be put into an editing state.
    */
-  def editable = delegate.editableProperty
+  def editable: BooleanProperty = delegate.editableProperty
   def editable_=(v: Boolean) {
     editable() = v
   }
@@ -51,17 +53,17 @@ class Cell[T](override val delegate: jfxsc.Cell[T] = new jfxsc.Cell[T])
   /**
    * Property representing whether this cell is currently in its editing state.
    */
-  def editing = delegate.editingProperty
+  def editing: ReadOnlyBooleanProperty = delegate.editingProperty
 
   /**
    * A property used to represent whether the cell has any contents.
    */
-  def empty = delegate.emptyProperty
+  def empty: ReadOnlyBooleanProperty = delegate.emptyProperty
 
   /**
    * The data value associated with this Cell.
    */
-  def item = delegate.itemProperty
+  def item: ObjectProperty[T] = delegate.itemProperty
   def item_=(v: T) {
     item.set(v)
   }
@@ -69,7 +71,7 @@ class Cell[T](override val delegate: jfxsc.Cell[T] = new jfxsc.Cell[T])
   /**
    * Indicates whether or not this cell has been selected.
    */
-  def selected = delegate.selectedProperty
+  def selected: ReadOnlyBooleanProperty = delegate.selectedProperty
   def selected_=(s: Boolean) {
     delegate.updateSelected(s)
   }

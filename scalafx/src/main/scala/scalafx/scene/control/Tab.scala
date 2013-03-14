@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,12 +26,18 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
 import javafx.{ event => jfxe }
+import javafx.{ scene => jfxs }
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.scene.Node._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.beans.property.StringProperty
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
+import scalafx.beans.property.ReadOnlyObjectProperty
 
 object Tab {
 
@@ -44,7 +50,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
   /**
    * The closable state for this tab.
    */
-  def closable = delegate.closableProperty
+  def closable: BooleanProperty = delegate.closableProperty
   def closable_=(v: Boolean) {
     closable() = v
   }
@@ -52,7 +58,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
   /**
    * The content associated with the tab.
    */
-  def content = delegate.contentProperty
+  def content: ObjectProperty[jfxs.Node] = delegate.contentProperty
   def content_=(v: Node) {
     content() = v
   }
@@ -60,15 +66,15 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
   /**
    * The context menu associated with the tab.
    */
-  def contextMenu = delegate.contextMenuProperty
-  def contextMenu_=(v: jfxsc.ContextMenu) {
+  def contextMenu: ObjectProperty[jfxsc.ContextMenu] = delegate.contextMenuProperty
+  def contextMenu_=(v: ContextMenu) {
     contextMenu() = v
   }
 
   /**
    * The graphic in the tab.
    */
-  def graphic = delegate.graphicProperty
+  def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
   def graphic_=(v: Node) {
     graphic() = v
   }
@@ -76,7 +82,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
   /**
    * The id of this tab.
    */
-  def id = delegate.idProperty
+  def id: StringProperty = delegate.idProperty
   def id_=(v: String) {
     id() = v
   }
@@ -100,12 +106,12 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
   /**
    * The currently selected tab.
    */
-  def selected = delegate.selectedProperty
+  def selected: ReadOnlyBooleanProperty = delegate.selectedProperty
 
   /**
    * The CSS style string associated to this tab.
    */
-  def style = delegate.styleProperty
+  def style: StringProperty = delegate.styleProperty
   def style_=(v: String) {
     style() = v
   }
@@ -115,12 +121,12 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
   /**
    * The TabPane that contains this tab.
    */
-  def tabPane = delegate.tabPaneProperty
+  def tabPane: ReadOnlyObjectProperty[jfxsc.TabPane] = delegate.tabPaneProperty
 
   /**
    * The text shown in the tab.
    */
-  def text = delegate.textProperty
+  def text: StringProperty = delegate.textProperty
   def text_=(v: String) {
     text() = v
   }
@@ -128,7 +134,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
   /**
    * The tooltip associated with this tab.
    */
-  def tooltip = delegate.tooltipProperty
+  def tooltip: ObjectProperty[jfxsc.Tooltip] = delegate.tooltipProperty
   def tooltip_=(v: Tooltip) {
     tooltip() = v
   }
@@ -139,8 +145,8 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
    *
    * @since 2.2
    */
-  def disable = delegate.disableProperty()
-  def disable_=( v: Boolean) {
+  def disable: BooleanProperty = delegate.disableProperty()
+  def disable_=(v: Boolean) {
     disable() = v
   }
 
@@ -149,7 +155,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
    * on either itself or if the TabPane is disabled.
    * @since 2.2
    */
-  def disabled = delegate.disabledProperty()
+  def disabled: ReadOnlyBooleanProperty = delegate.disabledProperty()
 
 
   /**

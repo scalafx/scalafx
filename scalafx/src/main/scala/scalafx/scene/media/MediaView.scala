@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,11 @@ package scalafx.scene.media
 
 import javafx.scene.{ media => jfxsm }
 import javafx.{ event => jfxe }
+import javafx.{ geometry => jfxg }
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
 import scalafx.util.Duration
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
@@ -53,7 +57,7 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
    * Determines the height of the bounding box within which the source media is resized as
    * necessary to fit.
    */
-  def fitHeight = delegate.fitHeightProperty
+  def fitHeight: DoubleProperty = delegate.fitHeightProperty
   def fitHeight_=(v: Double) {
     fitHeight() = v
   }
@@ -62,7 +66,7 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
    * Determines the width of the bounding box within which the source media is resized as
    * necessary to fit.
    */
-  def fitWidth = delegate.fitWidthProperty
+  def fitWidth: DoubleProperty = delegate.fitWidthProperty
   def fitWidth_=(v: Double) {
     fitWidth() = v
   }
@@ -70,7 +74,7 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
   /**
    * The mediaPlayer whose output will be handled by this view.
    */
-  def mediaPlayer = delegate.mediaPlayerProperty
+  def mediaPlayer: ObjectProperty[jfxsm.MediaPlayer] = delegate.mediaPlayerProperty
   def mediaPlayer_=(v: MediaPlayer) {
     mediaPlayer() = v
   }
@@ -87,7 +91,7 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
    * Whether to preserve the aspect ratio (width / height) of the media when scaling it to fit the
    * node.
    */
-  def preserveRatio = delegate.preserveRatioProperty
+  def preserveRatio: BooleanProperty = delegate.preserveRatioProperty
   def preserveRatio_=(v: Boolean) {
     preserveRatio() = v
   }
@@ -96,7 +100,7 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
    * If set to true a better quality filtering algorithm will be used when scaling this video to
    * fit within the bounding box provided by fitWidth and fitHeight or when transforming.
    */
-  def smooth = delegate.smoothProperty
+  def smooth: BooleanProperty = delegate.smoothProperty
   def smooth_=(v: Boolean) {
     smooth() = v
   }
@@ -104,7 +108,7 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
   /**
    * Specifies a rectangular viewport into the media frame.
    */
-  def viewport = delegate.viewportProperty
+  def viewport: ObjectProperty[jfxg.Rectangle2D] = delegate.viewportProperty
   def viewport_=(v: Rectangle2D) {
     viewport() = v
   }

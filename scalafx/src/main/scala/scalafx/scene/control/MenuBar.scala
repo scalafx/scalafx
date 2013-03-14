@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,7 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc}
 import scalafx.delegate.SFXDelegate
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
 import collection.JavaConversions._
 
 object MenuBar {
@@ -45,14 +46,18 @@ class MenuBar(override val delegate: jfxsc.MenuBar = new jfxsc.MenuBar()) extend
   /**
    * Sets the list of Menus for this instance.
    */
-  def menus_=(v: Iterable[Menu]) = {
-    menus.setAll(v.map(_.delegate))
+  def menus_=(c: Iterable[Menu]) = {
+    if (null == c) {
+      menus.clear
+    } else {
+      menus.setAll(c.map(_.delegate))
+    }
   }
 
   /**
    * Gets the useSystemMenuBar for this instance.
    */
-  def useSystemMenuBar = delegate.useSystemMenuBarProperty
+  def useSystemMenuBar: BooleanProperty = delegate.useSystemMenuBarProperty
 
   /**
    * Sets the useSystemMenuBar for this instance.

@@ -29,6 +29,7 @@ package scalafx.scene.control
 import scala.math.Ordering
 import javafx.beans.{ value => jfxbv }
 import javafx.scene.{ control => jfxsc }
+import javafx.{ scene => jfxs }
 import javafx.{ event => jfxe }
 import javafx.{ util => jfxu }
 import scalafx.Includes._
@@ -36,6 +37,7 @@ import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.StringProperty
 import scalafx.beans.value.ObservableValue
 import scalafx.beans.value.ObservableValue.sfxObservableValue2jfxObjectValue
@@ -186,7 +188,7 @@ object TableColumn {
 /**
  * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.html]].
  */
-class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfxsc.TableColumn)
+class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfxsc.TableColumn[S, T]())
   extends SFXDelegate[jfxsc.TableColumn[S, T]] {
 
   /**
@@ -224,7 +226,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * This enables support for nested columns, which can be useful to group together related data.
    */
-  def columns: ObservableBuffer[TableColumn[S, _]] = ObservableBuffer(delegate.getColumns.map(new TableColumn(_)))
+  def columns: ObservableBuffer[jfxsc.TableColumn[S, _]] = delegate.getColumns
 
   /**
    * Comparator function used when sorting this TableColumn.
@@ -253,7 +255,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * The graphic in the TableColumn.
    */
-  def graphic = delegate.graphicProperty
+  def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
   def graphic_=(v: Node) {
     graphic() = v
   }
@@ -309,7 +311,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * This read-only property will always refer to the parent of this column, in the situation where nested columns are being used.
    */
-  def parentColumn = delegate.parentColumnProperty
+  def parentColumn: ReadOnlyObjectProperty[jfxsc.TableColumn[S,_]] = delegate.parentColumnProperty
 
   /**
    * The preferred width of the TableColumn.
@@ -339,7 +341,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    * The sort node is commonly seen represented as a triangle that rotates on screen to indicate whether the
    * TableColumn is part of the sort order, and if so, what position in the sort order it is in.
    */
-  def sortNode = delegate.sortNodeProperty
+  def sortNode: ObjectProperty[jfxs.Node] = delegate.sortNodeProperty
   def sortNode_=(v: Node) {
     sortNode() = v
   }
@@ -348,8 +350,8 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    * Used to state whether this column, if it is part of the TableView.sortOrder ObservableList, should be sorted in
    * ascending or descending order.
    */
-  def sortType = delegate.sortTypeProperty
-  def sortType_=(v: jfxsc.TableColumn.SortType) {
+  def sortType: ObjectProperty[jfxsc.TableColumn.SortType] = delegate.sortTypeProperty
+  def sortType_=(v: TableColumn.SortType) {
     sortType() = v
   }
 
@@ -369,7 +371,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * The TableView that this TableColumn belongs to.
    */
-  def tableView = delegate.tableViewProperty
+  def tableView: ReadOnlyObjectProperty[jfxsc.TableView[S]] = delegate.tableViewProperty
 
   /**
    * This is the text to show in the header for this column.

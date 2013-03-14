@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object VLineTo {
@@ -37,7 +38,7 @@ object VLineTo {
 }
 
 class VLineTo(override val delegate:jfxss.VLineTo = new jfxss.VLineTo()) extends PathElement(delegate) with SFXDelegate[jfxss.VLineTo] {
-  def y = delegate.yProperty
+  def y: DoubleProperty = delegate.yProperty
   def y_=(v: Double) {
     y() = v
   }

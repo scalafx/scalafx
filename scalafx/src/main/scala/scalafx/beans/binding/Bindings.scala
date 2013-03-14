@@ -76,6 +76,7 @@ trait Bindings {
     @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
      def `then`[J <: Object](thenExpression: SFXDelegate[J]) = choose(thenExpression)
 
+    def choose(chooseExpression: NumberBinding) = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression.delegate))
     def choose(chooseExpression: jfxbv.ObservableNumberValue) = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))
     def choose(chooseExpression: Int) = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))
     def choose(chooseExpression: Long) = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))

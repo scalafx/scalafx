@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,7 @@ import javafx.beans.{ property => jfxbp }
 import javafx.scene.{ effect => jfxse }
 import javafx.scene.{ paint => jfxsp }
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
 import scalafx.scene.paint.Color
 import scalafx.delegate.SFXDelegate
 
@@ -54,7 +55,7 @@ package object effect {
     /**
      * The input for this Effect.
      */
-    def input = delegate.inputProperty
+    def input: ObjectProperty[jfxse.Effect] = delegate.inputProperty
     def input_=(v: Effect) {
       input() = v
     }
@@ -77,7 +78,7 @@ package object effect {
     /**
      * The Effect's color.
      */
-    def color = delegate.colorProperty
+    def color: ObjectProperty[jfxsp.Color] = delegate.colorProperty
     def color_=(c: Color) {
       color() = c
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package scalafx.scene.transform
 
 import javafx.scene.{transform => jfxst}
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Affine {
@@ -42,7 +43,7 @@ class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Tra
   /**
    * Defines the X coordinate scaling element of the 3x4 matrix.
    */
-  def mxx = delegate.mxxProperty()
+  def mxx: DoubleProperty = delegate.mxxProperty()
   def mxx_=(v: Double) {
     mxx() = v
   }
@@ -50,7 +51,7 @@ class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Tra
   /**
    * Defines the XY coordinate element of the 3x4 matrix.
    */
-  def mxy = delegate.mxyProperty()
+  def mxy: DoubleProperty = delegate.mxyProperty()
   def mxy_=(v: Double) {
     mxy() = v
   }
@@ -58,7 +59,7 @@ class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Tra
   /**
    * Defines the XZ coordinate element of the 3x4 matrix.
    */
-  def mxz = delegate.mxzProperty()
+  def mxz: DoubleProperty = delegate.mxzProperty()
   def mxz_=(v: Double) {
     mxz() = v
   }
@@ -66,7 +67,7 @@ class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Tra
   /**
    * Defines the YX coordinate element of the 3x4 matrix.
    */
-  def myx = delegate.myxProperty()
+  def myx: DoubleProperty = delegate.myxProperty()
   def myx_=(v: Double) {
     myx() = v
   }
@@ -74,7 +75,7 @@ class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Tra
   /**
    * Defines the Y coordinate scaling element of the 3x4 matrix.
    */
-  def myy = delegate.myyProperty()
+  def myy: DoubleProperty = delegate.myyProperty()
   def myy_=(v: Double) {
     myy() = v
   }
@@ -82,7 +83,7 @@ class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Tra
   /**
    * Defines the YZ coordinate element of the 3x4 matrix.
    */
-  def myz = delegate.myzProperty()
+  def myz: DoubleProperty = delegate.myzProperty()
   def myz_=(v: Double) {
     myz() = v
   }
@@ -90,7 +91,7 @@ class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Tra
   /**
    * Defines the ZX coordinate element of the 3x4 matrix.
    */
-  def mzx = delegate.mzxProperty()
+  def mzx: DoubleProperty = delegate.mzxProperty()
   def mzx_=(v: Double) {
     mzx() = v
   }
@@ -98,7 +99,7 @@ class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Tra
   /**
    * Defines the ZY coordinate element of the 3x4 matrix.
    */
-  def mzy = delegate.mzyProperty()
+  def mzy: DoubleProperty = delegate.mzyProperty()
   def mzy_=(v: Double) {
     mzy() = v
   }
@@ -106,7 +107,7 @@ class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Tra
   /**
    * Defines the Z coordinate scaling element of the 3x4 matrix.
    */
-  def mzz = delegate.mzzProperty()
+  def mzz: DoubleProperty = delegate.mzzProperty()
   def mzz_=(v: Double) {
     mzz() = v
   }
@@ -114,7 +115,7 @@ class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Tra
   /**
    * Defines the X coordinate translation element of the 3x4 matrix.
    */
-  def tx = delegate.txProperty()
+  def tx: DoubleProperty = delegate.txProperty()
   def tx_=(v: Double) {
     tx() = v
   }
@@ -122,7 +123,7 @@ class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Tra
   /**
    * Defines the Y coordinate translation element of the 3x4 matrix.
    */
-  def ty = delegate.tyProperty()
+  def ty: DoubleProperty = delegate.tyProperty()
   def ty_=(v: Double) {
     ty() = v
   }
@@ -130,7 +131,7 @@ class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Tra
   /**
    * Defines the Z coordinate translation element of the 3x4 matrix.
    */
-  def tz = delegate.tzProperty()
+  def tz: DoubleProperty = delegate.tzProperty()
   def tz_=(v: Double) {
     tz() = v
   }

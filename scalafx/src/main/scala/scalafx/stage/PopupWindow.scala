@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -81,12 +81,12 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
    * The window which is the parent of this popup.
    *
    */
-  def ownerWindow = delegate.ownerWindowProperty
+  def ownerWindow: ReadOnlyObjectProperty[jfxs.Window] = delegate.ownerWindowProperty
 
   /**
    * The node which is the owner of this popup.
    */
-  def ownerNode = delegate.ownerNodeProperty
+  def ownerNode: ReadOnlyObjectProperty[javafx.scene.Node] = delegate.ownerNodeProperty
 
   /**
    * Show the Popup at the specified x,y location relative to the screen

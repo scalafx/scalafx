@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,8 @@
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
-
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
 
 object CheckBox {
@@ -48,7 +48,7 @@ class CheckBox(override val delegate: jfxsc.CheckBox = new jfxsc.CheckBox)
    * Determines whether the user toggling the CheckBox should cycle through all three states: 
    * checked, unchecked, and undefined.
    */
-  def allowIndeterminate = delegate.allowIndeterminateProperty
+  def allowIndeterminate: BooleanProperty = delegate.allowIndeterminateProperty
   def allowIndeterminate_=(b: Boolean) {
     allowIndeterminate() = b
   }
@@ -56,7 +56,7 @@ class CheckBox(override val delegate: jfxsc.CheckBox = new jfxsc.CheckBox)
   /**
    * Determines whether the CheckBox is in the indeterminate state.
    */
-  def indeterminate = delegate.indeterminateProperty
+  def indeterminate: BooleanProperty = delegate.indeterminateProperty
   def indeterminate_=(b: Boolean) {
     indeterminate() = b
   }
@@ -64,7 +64,7 @@ class CheckBox(override val delegate: jfxsc.CheckBox = new jfxsc.CheckBox)
   /**
    * Indicates whether this CheckBox is checked.
    */
-  def selected = delegate.selectedProperty
+  def selected: BooleanProperty = delegate.selectedProperty
   def selected_=(b: Boolean) {
     selected() = b
   }

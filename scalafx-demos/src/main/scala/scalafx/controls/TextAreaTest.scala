@@ -30,9 +30,7 @@ package scalafx.controls
 import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
 import scalafx.scene.layout.Priority
-import scalafx.Includes.jfxBooleanProperty2sfx
-import scalafx.Includes.jfxDoubleProperty2sfx
-import scalafx.Includes.jfxSceneProperty2sfx
+import scalafx.Includes._
 import scalafx.Includes.observableList2ObservableBuffer
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -63,7 +61,7 @@ object TextAreaTest extends JFXApp {
     spacing = 5
     fillWidth = true
     alignment = Pos.CENTER
-    prefHeight <== scene.height
+    prefHeight <== stage.scene().height
     hgrow = Priority.NEVER
     content = List(new TextAreaControls(textArea), new TextInputControlControls(textArea), new ControlControls(textArea))
   }
@@ -75,7 +73,7 @@ object TextAreaTest extends JFXApp {
 //    hgrow = Priority.ALWAYS
   }
 
-  stage = new PrimaryStage {
+  stage = new JFXApp.PrimaryStage {
     title = "TextArea Test"
     width = 450
     height = 380

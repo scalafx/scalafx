@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,10 @@
 package scalafx.concurrent
 
 import java.util.{ concurrent => juc }
-
 import javafx.{ concurrent => jfxc }
 import javafx.{ event => jfxe }
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
 import scalafx.event.EventHandlerDelegate
 import scalafx.delegate.SFXDelegate
 
@@ -64,7 +64,7 @@ abstract class Service[T](override val delegate: jfxc.Service[T])
   /**
    * The executor to use for running this Service.
    */
-  def executor = delegate.executorProperty
+  def executor: ObjectProperty[juc.Executor] = delegate.executorProperty
   def executor_=(v: juc.Executor) {
     executor() = v
   }

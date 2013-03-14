@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,8 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
 import scalafx.Includes._
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 import collection.JavaConversions._
 
@@ -38,11 +38,15 @@ object ToggleGroup {
 
 class ToggleGroup(override val delegate: jfxsc.ToggleGroup = new jfxsc.ToggleGroup) extends SFXDelegate[jfxsc.ToggleGroup] {
 
-  def selectedToggle = delegate.selectedToggleProperty
+  def selectedToggle: ReadOnlyObjectProperty[jfxsc.Toggle] = delegate.selectedToggleProperty
 
   def toggles = delegate.getToggles
   def toggles_=(c: Iterable[Toggle]) {
-    toggles.setAll(c.map(_.delegate))
+    if (null == c) {
+      toggles.clear
+    } else {
+      toggles.setAll(c.map(_.delegate))
+    }
   }
 
 }

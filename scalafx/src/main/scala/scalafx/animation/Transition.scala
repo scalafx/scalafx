@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package scalafx.animation
 
 import javafx.{animation => jfxa}
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object Transition extends AnimationStatics {
@@ -39,7 +40,7 @@ object Transition extends AnimationStatics {
  */
 abstract class Transition(override val delegate: jfxa.Transition) extends Animation(delegate) with SFXDelegate[jfxa.Transition] {
   
-  def interpolator = delegate.interpolatorProperty
+  def interpolator: ObjectProperty[jfxa.Interpolator] = delegate.interpolatorProperty
   def interpolator_=(i: jfxa.Interpolator) {
     interpolator() = i
   }

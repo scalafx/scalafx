@@ -60,7 +60,7 @@ object TextFieldTest extends JFXApp {
     hgrow = Priority.ALWAYS
   }
 
-  stage = new PrimaryStage {
+  stage = new JFXApp.PrimaryStage {
     title = "TextField Test"
     width = 300
     height = 400
@@ -69,8 +69,8 @@ object TextFieldTest extends JFXApp {
       content = mainPane
     }
   }
-  mainPane.prefHeight <== stage.scene.height
-  mainPane.prefWidth <== stage.scene.width
+  mainPane.prefHeight <== stage.scene().height
+  mainPane.prefWidth <== stage.scene().width
   
 
 }

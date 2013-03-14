@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object HLineTo {
@@ -41,7 +42,7 @@ class HLineTo(override val delegate:jfxss.HLineTo = new jfxss.HLineTo()) extends
   /**
    * Defines the X coordinate.
    */
-  def x = delegate.xProperty
+  def x: DoubleProperty = delegate.xProperty
   def x_=(v: Double) {
     x() = v
   }

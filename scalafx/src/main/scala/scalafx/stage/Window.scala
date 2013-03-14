@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,12 +30,14 @@ import javafx.event.EventDispatchChain
 import javafx.{ event => jfxe }
 import javafx.{ stage => jfxs }
 import scalafx.Includes._
-import scalafx.beans.property.ReadOnlyProperty
-import scalafx.event._
-import scalafx.delegate.SFXDelegate
-import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.ReadOnlyProperty
+import scalafx.event.Event
+import scalafx.delegate.SFXDelegate
 
 object Window {
   implicit def sfxWindow2jfx(v: Window) = v.delegate
@@ -48,7 +50,7 @@ class Window protected (override val delegate: jfxs.Window)
   /**
    * Specifies the event dispatcher for this node.
    */
-  def eventDispatcher = delegate.eventDispatcherProperty
+  def eventDispatcher: ObjectProperty[jfxe.EventDispatcher] = delegate.eventDispatcherProperty
   def eventDispatcher_=(v: jfxe.EventDispatcher) {
     eventDispatcher() = v
   }
@@ -117,7 +119,7 @@ class Window protected (override val delegate: jfxs.Window)
   /**
    * The Scene to be rendered on this Stage.
    */
-  def scene = delegate.sceneProperty
+  def scene: ReadOnlyObjectProperty[javafx.scene.Scene] = delegate.sceneProperty
 
   /**
    * Whether or not this Stage is showing (that is, open on the user's system).
@@ -161,7 +163,7 @@ class Window protected (override val delegate: jfxs.Window)
   /**
    * Construct an event dispatch chain for this stage.
    */
-  def buildEventDispatchChain(tail: EventDispatchChain) = delegate.buildEventDispatchChain(tail)
+  def buildEventDispatchChain(tail: jfxe.EventDispatchChain) = delegate.buildEventDispatchChain(tail)
 
   /**
    * Sets x and y properties on this Window so that it is centered on the screen.

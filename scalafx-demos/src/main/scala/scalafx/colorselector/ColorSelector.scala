@@ -35,7 +35,7 @@ object ColorSelector extends JFXApp {
 
   lazy val allControls = List(controlRed, controlGreen, controlBlue, controlAlpha)
 
-  val currentColor = new ObjectProperty[Color](Color.WHITE, "Color")
+  val currentColor = ObjectProperty(this, "Color", Color.WHITE)
   currentColor.onChange(colorChanged)
 
   val synchronizedValue = new DoubleProperty()

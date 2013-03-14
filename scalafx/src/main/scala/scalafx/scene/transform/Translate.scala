@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,9 @@
  */
 package scalafx.scene.transform
 
-import scalafx.Includes._
 import javafx.scene.{ transform => jfxst }
+import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.PositionDelegate
 
@@ -50,7 +51,7 @@ class Translate(override val delegate: jfxst.Translate = new jfxst.Translate)
   /**
    * Defines the distance by which coordinates are translated in the Z axis direction
    */
-  def z = delegate.zProperty
+  def z: DoubleProperty = delegate.zProperty
   def z_=(v: Double) {
     z() = v
   }

@@ -38,7 +38,7 @@ object TooltipDemo extends JFXApp {
     content = List(btnTooltip, controlsPane)
   }
 
-  stage = new PrimaryStage {
+  stage = new JFXApp.PrimaryStage {
     title = "Tooltip Test"
     width = 300
     height = 500
@@ -47,8 +47,8 @@ object TooltipDemo extends JFXApp {
       content = mainPane
     }
   }
-  mainPane.prefHeight <== stage.scene.height
-  mainPane.prefWidth <== stage.scene.width
+  mainPane.prefHeight <== stage.scene().height
+  mainPane.prefWidth <== stage.scene().width
 
 }
 

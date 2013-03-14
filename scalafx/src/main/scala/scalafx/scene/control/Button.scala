@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,8 +28,9 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
+import scalafx.beans.property.BooleanProperty
 import scalafx.scene.Node
+import scalafx.delegate.SFXDelegate
 
 object Button {
   implicit def sfxButton2jfx(v: Button) = v.delegate
@@ -51,7 +52,7 @@ class Button(override val delegate: jfxsc.Button = new jfxsc.Button) extends But
    * A Cancel Button is the button that receives a keyboard VK_ESC press, if no other node in the
    * scene consumes it.
    */
-  def cancelButton = delegate.cancelButtonProperty
+  def cancelButton: BooleanProperty = delegate.cancelButtonProperty
   def cancelButton_=(b: Boolean) {
     cancelButton() = b
   }
@@ -60,7 +61,7 @@ class Button(override val delegate: jfxsc.Button = new jfxsc.Button) extends But
    * A default Button is the button that receives a keyboard VK_ENTER press, if no other node in the
    * scene consumes it.
    */
-  def defaultButton = delegate.defaultButtonProperty
+  def defaultButton: BooleanProperty = delegate.defaultButtonProperty
   def defaultButton_=(b: Boolean) {
     defaultButton() = b
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,9 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+import scalafx.Includes._
+import scalafx.beans.property.ReadOnlyIntegerProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object FocusModel {
@@ -41,12 +44,12 @@ abstract class FocusModel[T](override val delegate: jfxsc.FocusModel[T]) extends
   /**
    * The index of the current item in the FocusModel which has the focus.
    */
-  def focusedIndex = delegate.focusedIndexProperty
+  def focusedIndex: ReadOnlyIntegerProperty = delegate.focusedIndexProperty
 
   /**
    * The current item in the FocusModel which has the focus.
    */
-  def focusedItem = delegate.focusedItemProperty
+  def focusedItem: ReadOnlyObjectProperty[T] = delegate.focusedItemProperty
 
   /**
    * Causes the item at the given index to receive the focus.

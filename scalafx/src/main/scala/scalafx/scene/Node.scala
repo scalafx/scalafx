@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,6 +39,8 @@ import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.StringProperty
 import scalafx.event.Event._
 import scalafx.event.Event
@@ -47,12 +49,14 @@ import scalafx.geometry.Point2D._
 import scalafx.geometry.Bounds
 import scalafx.geometry.Insets
 import scalafx.geometry.Point2D
+import scalafx.geometry.Point3D
 import scalafx.scene.effect.Effect
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.transform.Transform
 import scalafx.scene.image.WritableImage
 import scalafx.geometry.Pos
 import scalafx.scene.layout.Priority
+import scalafx.scene.effect.BlendMode
 
 object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
@@ -65,19 +69,19 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    */
   def blendMode: ObjectProperty[jfxse.BlendMode] = delegate.blendModeProperty
 
-  def blendMode_=(v: jfxse.BlendMode) {
+  def blendMode_=(v: BlendMode) {
     blendMode() = v
   }
 
   /**
    * The rectangular bounds of this Node in the node's untransformed local coordinate space.
    */
-  def boundsInLocal = delegate.boundsInLocalProperty
+  def boundsInLocal: ReadOnlyObjectProperty[jfxg.Bounds] = delegate.boundsInLocalProperty
 
   /**
    * The rectangular bounds of this Node which include its transforms.
    */
-  def boundsInParent = delegate.boundsInParentProperty
+  def boundsInParent: ReadOnlyObjectProperty[jfxg.Bounds] = delegate.boundsInParentProperty
 
   /**
    * Additional hint for controlling bitmap caching.
@@ -120,14 +124,14 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    */
   def depthTest: ObjectProperty[jfxs.DepthTest] = delegate.depthTestProperty
 
-  def depthTest_=(v: jfxs.DepthTest) {
+  def depthTest_=(v: DepthTest) {
     depthTest() = v
   }
 
   /**
    * Indicates whether or not this Node is disabled.
    */
-  def disabled = delegate.disabledProperty
+  def disabled: ReadOnlyBooleanProperty = delegate.disabledProperty
 
   /**
    * Sets the individual disabled state of this Node.
@@ -144,7 +148,11 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   def effect: ObjectProperty[jfxse.Effect] = delegate.effectProperty
 
   def effect_=(v: Effect) {
-    effect() = v
+    if (null == v) {
+      delegate.setEffect(null)
+    } else {
+      effect() = v
+    }
   }
 
   /**
@@ -159,12 +167,12 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Indicates whether this Node currently has the input focus.
    */
-  def focused = delegate.focusedProperty
+  def focused: ReadOnlyBooleanProperty = delegate.focusedProperty
 
   /**
    * Specifies whether this Node should be a part of focus traversal cycle.
    */
-  def focusTraversable = delegate.focusTraversableProperty
+  def focusTraversable: BooleanProperty = delegate.focusTraversableProperty
 
   def focusTraversable_=(v: Boolean) {
     focusTraversable() = v
@@ -173,7 +181,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Whether or not this Node is being hovered over.
    */
-  def hover = delegate.hoverProperty
+  def hover: ReadOnlyBooleanProperty = delegate.hoverProperty
 
   /**
    * The id of this Node.
@@ -196,13 +204,13 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * The rectangular bounds that should be used for layout calculations for this node.
    */
-  def layoutBounds = delegate.layoutBoundsProperty
+  def layoutBounds: ReadOnlyObjectProperty[jfxg.Bounds] = delegate.layoutBoundsProperty
 
   /**
    * Defines the x coordinate of the translation that is added to this Node's transform for the
    * purpose of layout.
    */
-  def layoutX = delegate.layoutXProperty
+  def layoutX: DoubleProperty = delegate.layoutXProperty
 
   def layoutX_=(v: Double) {
     layoutX() = v
@@ -212,7 +220,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines the y coordinate of the translation that is added to this Node's transform for the
    * purpose of layout.
    */
-  def layoutY = delegate.layoutYProperty
+  def layoutY: DoubleProperty = delegate.layoutYProperty
 
   def layoutY_=(v: Double) {
     layoutY() = v
@@ -221,7 +229,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Defines whether or not this node's layout will be managed by it's parent.
    */
-  def managed = delegate.managedProperty
+  def managed: BooleanProperty = delegate.managedProperty
 
   def managed_=(v: Boolean) {
     managed() = v
@@ -230,7 +238,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * If true, this node (together with all its children) is completely transparent to mouse events.
    */
-  def mouseTransparent = delegate.mouseTransparentProperty
+  def mouseTransparent: BooleanProperty = delegate.mouseTransparentProperty
 
   def mouseTransparent_=(v: Boolean) {
     mouseTransparent() = v
@@ -460,7 +468,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * The parent of this Node.
    */
-  def parent = delegate.parentProperty
+  def parent: ReadOnlyObjectProperty[jfxs.Parent] = delegate.parentProperty
 
   /**
    * Defines how the picking computation is done for this node when triggered by a MouseEvent or a
@@ -475,7 +483,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Whether or not the Node is pressed.
    */
-  def pressed = delegate.pressedProperty
+  def pressed: ReadOnlyBooleanProperty = delegate.pressedProperty
 
   /**
    * Defines the angle of rotation about the Node's center, measured in degrees.
@@ -489,9 +497,9 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Defines the axis of rotation of this Node.
    */
-  def rotationAxis = delegate.rotationAxisProperty
+  def rotationAxis: ObjectProperty[jfxg.Point3D] = delegate.rotationAxisProperty
 
-  def rotationAxis_=(v: jfxg.Point3D) {
+  def rotationAxis_=(v: Point3D) {
     rotationAxis() = v
   }
 
@@ -528,7 +536,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * The Scene that this Node is part of.
    */
-  def scene = delegate.sceneProperty
+  def scene: ReadOnlyObjectProperty[jfxs.Scene] = delegate.sceneProperty
 
   /**
    * A string representation of the CSS style associated with this specific Node.
@@ -545,7 +553,11 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   def styleClass = delegate.getStyleClass
 
   def styleClass_=(c: Iterable[String]) {
-    styleClass.setAll(c)
+    if(null == c) {
+      styleClass.clear
+    } else {
+      styleClass.setAll(c)
+    }
   }
 
   /**
@@ -554,7 +566,11 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   def transforms = delegate.getTransforms
 
   def transforms_=(c: Iterable[Transform]) {
-    transforms.setAll(c.map(_.delegate))
+    if (null == c) {
+      transforms.clear
+    } else {
+      transforms.setAll(c.map(_.delegate))
+    }
   }
 
   /**
@@ -760,7 +776,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Returns true if the given bounds (specified in the local coordinate space of this Node)
    * intersects the shape of this Node.
    */
-  def intersects(localBounds: jfxg.Bounds) = delegate.intersects(localBounds)
+  def intersects(localBounds: Bounds) = delegate.intersects(localBounds)
 
   /**
    * Returns true if the given rectangle (specified in the local coordinate space of this Node)

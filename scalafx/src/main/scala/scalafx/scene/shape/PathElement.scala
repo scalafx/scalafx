@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,7 @@ import collection.JavaConversions._
 import javafx.beans.{property => jfxbp}
 import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
+import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
 
 object PathElement {
@@ -37,7 +38,7 @@ object PathElement {
 }
 
 abstract class PathElement(override val delegate:jfxss.PathElement) extends SFXDelegate[jfxss.PathElement] {
-  def absolute = delegate.absoluteProperty
+  def absolute: BooleanProperty = delegate.absoluteProperty
   def absolute_=(v: Boolean) {
     absolute() = v
   }

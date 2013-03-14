@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package scalafx.scene.effect
 
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Glow {
@@ -47,7 +48,7 @@ class Glow(override val delegate: jfxse.Glow = new jfxse.Glow)
   /**
    * The level value, which controls the intensity of the glow effect.
    */
-  def level = delegate.levelProperty
+  def level: DoubleProperty = delegate.levelProperty
   def level_=(v: Double) {
     level() = v
   }

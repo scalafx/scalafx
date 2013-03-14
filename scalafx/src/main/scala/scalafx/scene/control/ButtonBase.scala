@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,10 @@ package scalafx.scene.control
 import javafx.scene.{ control => jfxsc, input => jfxsi }
 import javafx.{ event => jfxe }
 import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.FireDelegate
+import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.scene.input.MouseEvent
+import scalafx.delegate.FireDelegate
+import scalafx.delegate.SFXDelegate
 
 object ButtonBase {
   implicit def sfxButtonBase2jfx(v: ButtonBase) = v.delegate
@@ -45,7 +46,7 @@ class ButtonBase(override val delegate: jfxsc.ButtonBase)
   /**
    * Indicates that the button has been "armed" such that a mouse release will cause the button's action to be invoked.
    */
-  def armed = delegate.armedProperty
+  def armed: ReadOnlyBooleanProperty = delegate.armedProperty
 
   /**
    * The button's action, which is invoked whenever the button is fired.

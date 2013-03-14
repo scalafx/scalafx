@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,7 @@
 package scalafx.scene.web
 
 import javafx.{ event => jfxe }
+import javafx.scene.{ text => jfxst }
 import javafx.scene.{ web => jfxsw }
 import javafx.{ geometry => jfxg }
 import javafx.{ util => jfxu }
@@ -56,7 +57,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
   /**
    * Height of this WebView.
    */
-  def height = delegate.heightProperty
+  def height: ReadOnlyDoubleProperty = delegate.heightProperty
 
   /**
    * Maximum height property.
@@ -191,7 +192,7 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
    * such as various compositing modes, where effects are applied and very large glyphs.
    * @since 2.2
    */
-  def fontSmoothingType = delegate.fontSmoothingTypeProperty
+  def fontSmoothingType: ObjectProperty[jfxst.FontSmoothingType] = delegate.fontSmoothingTypeProperty
   def fontSmoothingType_=(v: FontSmoothingType) {
     fontSmoothingType() = v
   }

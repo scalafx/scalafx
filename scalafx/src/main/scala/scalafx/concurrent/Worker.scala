@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -122,7 +122,7 @@ trait Worker[T] extends SFXDelegate[jfxc.Worker[T]] {
   /**
    * Gets the ReadOnlyObjectProperty representing the value.
    */
-  def value = delegate.valueProperty
+  def value: ReadOnlyObjectProperty[T] = delegate.valueProperty
 
   /**
    * Gets the ReadOnlyDoubleProperty representing the current progress.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package scalafx.scene.transform
 
 import javafx.scene.{ transform => jfxst }
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.PositionDelegate
 
@@ -56,7 +57,7 @@ class Shear(override val delegate: jfxst.Shear = new jfxst.Shear)
   /**
    * Defines the X coordinate of the shear pivot point.
    */
-  def pivotX = delegate.pivotXProperty()
+  def pivotX: DoubleProperty = delegate.pivotXProperty()
   def pivotX_=(v: Double) {
     pivotX() = v
   }
@@ -64,7 +65,7 @@ class Shear(override val delegate: jfxst.Shear = new jfxst.Shear)
   /**
    * Defines the Y coordinate of the shear pivot point.
    */
-  def pivotY = delegate.pivotYProperty()
+  def pivotY: DoubleProperty = delegate.pivotYProperty()
   def pivotY_=(v: Double) {
     pivotY() = v
   }

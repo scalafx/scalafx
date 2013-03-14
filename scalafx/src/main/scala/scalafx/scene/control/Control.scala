@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,11 @@
 package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
-
 import scalafx.Includes._
-import scalafx.scene.Node
 import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
 object Control {
@@ -61,15 +62,15 @@ abstract class Control(override val delegate: jfxsc.Control)
   /**
    * The ContextMenu to show for this control.
    */
-  def contextMenu = delegate.contextMenuProperty
-  def contextMenu_=(v: jfxsc.ContextMenu) {
+  def contextMenu: ObjectProperty[jfxsc.ContextMenu] = delegate.contextMenuProperty
+  def contextMenu_=(v: ContextMenu) {
     contextMenu() = v
   }
 
   /**
    * The height of this control.
    */
-  def height = delegate.heightProperty
+  def height: ReadOnlyDoubleProperty = delegate.heightProperty
 
   /**
    * Property for overriding the control's computed maximum height.
@@ -122,7 +123,7 @@ abstract class Control(override val delegate: jfxsc.Control)
   /**
    * The ToolTip for this control.
    */
-  def tooltip = delegate.tooltipProperty
+  def tooltip: ObjectProperty[jfxsc.Tooltip] = delegate.tooltipProperty
   def tooltip_=(v: Tooltip) {
     tooltip() = v
   }
@@ -130,6 +131,6 @@ abstract class Control(override val delegate: jfxsc.Control)
   /**
    * The width of this control.
    */
-  def width = delegate.widthProperty
+  def width: ReadOnlyDoubleProperty = delegate.widthProperty
 
 }

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2012-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,10 @@
 */
 package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{ effect => jfxse }
+import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object Lighting {
@@ -44,7 +46,7 @@ class Lighting(override val delegate: jfxse.Lighting = new jfxse.Lighting) exten
   /**
    * The optional bump map input.
    */
-  def bumpInput = delegate.bumpInputProperty
+  def bumpInput: ObjectProperty[jfxse.Effect] = delegate.bumpInputProperty
   def bumpInput_=(v: Effect) {
     bumpInput() = v
   }
@@ -52,7 +54,7 @@ class Lighting(override val delegate: jfxse.Lighting = new jfxse.Lighting) exten
   /**
    * The content input for this Effect.
    */
-  def contentInput = delegate.contentInputProperty
+  def contentInput: ObjectProperty[jfxse.Effect] = delegate.contentInputProperty
   def contentInput_=(v: Effect) {
     contentInput() = v
   }
@@ -60,7 +62,7 @@ class Lighting(override val delegate: jfxse.Lighting = new jfxse.Lighting) exten
   /**
    * The diffuse constant.
    */
-  def diffuseConstant = delegate.diffuseConstantProperty
+  def diffuseConstant: DoubleProperty = delegate.diffuseConstantProperty
   def diffuseConstant_=(v: Double) {
     diffuseConstant() = v
   }
@@ -68,7 +70,7 @@ class Lighting(override val delegate: jfxse.Lighting = new jfxse.Lighting) exten
   /**
    * The light source for this Lighting effect.
    */
-  def light = delegate.lightProperty
+  def light: ObjectProperty[jfxse.Light] = delegate.lightProperty
   def light_=(v: Light) {
     light() = v
   }
@@ -76,7 +78,7 @@ class Lighting(override val delegate: jfxse.Lighting = new jfxse.Lighting) exten
   /**
    * The specular constant.
    */
-  def specularConstant = delegate.specularConstantProperty
+  def specularConstant: DoubleProperty = delegate.specularConstantProperty
   def specularConstant_=(v: Double) {
     specularConstant() = v
   }
@@ -84,7 +86,7 @@ class Lighting(override val delegate: jfxse.Lighting = new jfxse.Lighting) exten
   /**
    * The specular exponent.
    */
-  def specularExponent = delegate.specularExponentProperty
+  def specularExponent: DoubleProperty = delegate.specularExponentProperty
   def specularExponent_=(v: Double) {
     specularExponent() = v
   }
@@ -92,7 +94,7 @@ class Lighting(override val delegate: jfxse.Lighting = new jfxse.Lighting) exten
   /**
    * The surface scale factor.
    */
-  def surfaceScale = delegate.surfaceScaleProperty
+  def surfaceScale: DoubleProperty = delegate.surfaceScaleProperty
   def surfaceScale_=(v: Double) {
     surfaceScale() = v
   }

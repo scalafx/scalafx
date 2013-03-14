@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,11 +28,14 @@ package scalafx.scene.control
 
 import scala.collection.JavaConversions._
 import scala.collection.mutable.Buffer
-
-import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe}
+import javafx.{scene => jfxs}
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.event.Event
 import scalafx.scene.Node
@@ -216,7 +219,7 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
   /**
    * The node that is generally shown to the left of the value property.
    */
-  def graphic = delegate.graphicProperty
+  def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
   def graphic_=(v: Node) {
     graphic() = v
   }
@@ -224,18 +227,18 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
   /**
    * Represents the TreeItem leaf property, which is true if the TreeItem has no children.
    */
-  def leaf = delegate.leafProperty
+  def leaf: ReadOnlyBooleanProperty = delegate.leafProperty
 
   /**
    * A property that represents the parent of this TreeItem.
    */
-  def parent = delegate.parentProperty
+  def parent: ReadOnlyObjectProperty[jfxsc.TreeItem[T]] = delegate.parentProperty
 
   /**
    * A property representing the application-specific data contained within
    * this TreeItem.
    */
-  def value = delegate.valueProperty
+  def value: ObjectProperty[T] = delegate.valueProperty
   def value_=(v: T) {
     value.set(v)
   }

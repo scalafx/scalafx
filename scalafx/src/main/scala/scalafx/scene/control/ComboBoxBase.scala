@@ -31,6 +31,7 @@ import javafx.{ event => jfxe }
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.StringProperty
 import scalafx.delegate.SFXDelegate
 
@@ -95,7 +96,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   /**
    * Represents the current state of the ComboBox popup, and whether it is currently visible on screen (although it may be hidden behind other windows).
    */
-  def showing = delegate.showingProperty
+  def showing: ReadOnlyBooleanProperty = delegate.showingProperty
 
   /**
    * The value of this ComboBox is defined as the selected item if the input is not editable, or if it is editable, the most recent user action: either the value input by the user, or the last selected item.

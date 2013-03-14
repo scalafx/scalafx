@@ -27,19 +27,18 @@
 package scalafx.scene.control
 
 import scala.annotation.implicitNotFound
-
 import javafx.scene.{ control => jfxsc }
 import javafx.{ collections => jfxc }
 import javafx.{ util => jfxu }
 import scalafx.Includes._
-import scalafx.Includes._
 import scalafx.beans.property.IntegerProperty
 import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.collections.ObservableBuffer._
 import scalafx.collections.ObservableBuffer
 import scalafx.util.StringConverter._
-import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
+import scalafx.delegate.SFXDelegate
 
 object ComboBox {
   implicit def sfxComboBox2jfx[T](cb: ComboBox[T]) = cb.delegate
@@ -77,7 +76,7 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
   /**
    * Converts the user-typed input (when the ComboBox is editable) to an object of type T, such that the input may be retrieved via the value property.
    */
-  def converter = delegate.converterProperty
+  def converter: ObjectProperty[jfxu.StringConverter[T]] = delegate.converterProperty
   def converter_=(v: StringConverter[T]) {
     converter() = v
   }
@@ -123,7 +122,7 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    *
    * @since 2.2
    */
-  def editor = delegate.editorProperty()
+  def editor: ReadOnlyObjectProperty[jfxsc.TextField] = delegate.editorProperty()
 
 
   /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -71,7 +71,7 @@ class ObservableMapSpec[K, V]
 
   it should "generate new instances using Companion's apply" in {
     def assertGeneratedMap(map: Map[Int, String]) =
-      map.toList should equal(List((1, "one"), (2, "two")))
+	  map.toSet should equal(Map((1, "one"), (2, "two")).toSet)
 
     assertGeneratedMap(ObservableMap(List((1, "one"), (2, "two"))))
     assertGeneratedMap(ObservableMap((1, "one"), (2, "two")))

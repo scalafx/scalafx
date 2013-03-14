@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,12 +26,14 @@
  */
 package scalafx.animation
 
-import javafx.{ animation => jfxa }
-import javafx.util.Duration
+import javafx.{ animation => jfxa, scene => jfxs, util => jfxu }
+import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
+import scalafx.beans.property.ObjectProperty
 import scalafx.scene.Node
 import scalafx.scene.shape.Shape
+import scalafx.util.Duration
+import scalafx.delegate.SFXDelegate
 import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
 object PathTransition extends AnimationStatics {
@@ -92,7 +94,7 @@ class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathT
   /**
    * The target node of this PathTransition.
    */
-  def node = delegate.nodeProperty
+  def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }
@@ -100,7 +102,7 @@ class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathT
   /**
    * The duration of this Transition.
    */
-  def duration = delegate.durationProperty
+  def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
@@ -108,7 +110,7 @@ class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathT
   /**
    * The shape on which outline the node should be animated.
    */
-  def path = delegate.pathProperty
+  def path: ObjectProperty[jfxss.Shape] = delegate.pathProperty
   def path_=(s: Shape) {
     path() = s
   }
@@ -116,7 +118,7 @@ class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathT
   /**
    * Specifies the upright orientation of node along the path.
    */
-  def orientation = delegate.orientationProperty
+  def orientation: ObjectProperty[jfxa.PathTransition.OrientationType] = delegate.orientationProperty
   def orientation_=(o: PathTransition.OrientationType) {
     orientation() = o
   }

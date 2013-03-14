@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,8 +59,12 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
    * @return
    */
   def items = delegate.getItems
-  def items_=(v: Iterable[MenuItem]) = {
-    items.setAll(v.map(_.delegate))
+  def items_=(c: Iterable[MenuItem]) = {
+    if (null == c) {
+      items.clear
+    } else {
+      items.setAll(c.map(_.delegate))
+    }
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,10 +32,35 @@ import org.scalatest.junit.JUnitRunner
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
+import org.scalatest.matchers.ShouldMatchers._
 
 /**
  * TableColumnSpec tests.
  */
 @RunWith(classOf[JUnitRunner])
 class TableColumnSpec[S, T]
-  extends AbstractSFXDelegateSpec[jfxsc.TableColumn[S, T], TableColumn[S, T], jfxsc.TableColumnBuilder[S, T, _]](classOf[jfxsc.TableColumn[S, T]], classOf[TableColumn[S, T]], classOf[jfxsc.TableColumnBuilder[S, T, _]])
+  extends AbstractSFXDelegateSpec[jfxsc.TableColumn[S, T], TableColumn[S, T], jfxsc.TableColumnBuilder[S, T, _]](
+    classOf[jfxsc.TableColumn[S, T]], classOf[TableColumn[S, T]], classOf[jfxsc.TableColumnBuilder[S, T, _]]) {
+
+  it should " have parametrized default constructor - Issue 40" in {
+    // Without correctly parametrized default constructor following line was throwing exception:
+    //   error: polymorphic expression cannot be instantiated to expected type;
+    //   found   : [S, T]javafx.scene.control.TableColumn[Nothing,Nothing]
+    //   required: javafx.scene.control.TableColumn[String,String]
+    new TableColumn[String, String]()
+  }
+
+  it should "not drop nested columns - Issue 44" in {
+    val firstTC = new TableColumn[String, String]("First")
+    val lastTC = new TableColumn[String, String]("Last")
+
+    val nameTC = new TableColumn[String, String]("Name")
+    nameTC.columns.size should (equal(0))
+
+    nameTC.columns +=(firstTC, lastTC)
+    nameTC.columns.size should (equal(2))
+
+    nameTC.columns.clear()
+    nameTC.columns.size should (equal(0))
+  }
+}
