@@ -27,6 +27,7 @@
 package scalafx.scene
 
 import javafx.beans.{property => jfxbp}
+import scalafx.beans.property.ReadOnlyObjectProperty
 import javafx.{scene => jfxs}
 import chart.ChartIncludes
 import layout.LayoutIncludes
@@ -53,6 +54,6 @@ trait LowerPriorityIncludes {
   implicit def jfxParent2sfx(v: jfxs.Parent) = new Parent(v) {}
   implicit def jfxPerspectiveCamera2sfx(v: jfxs.PerspectiveCamera) = new PerspectiveCamera(v)
   implicit def jfxScene2sfx(v: jfxs.Scene) = new Scene(v)
-  implicit def jfxSceneProperty2sfx(p: jfxbp.ReadOnlyObjectProperty[jfxs.Scene]) = new SceneProperty(p)
+  implicit def jfxSceneProperty2sfx(p: ReadOnlyObjectProperty[jfxs.Scene]) = new SceneProperty(p)
   implicit def jfxSnapshotParameters2sfx(sp: jfxs.SnapshotParameters) = new SnapshotParameters(sp)
 }
