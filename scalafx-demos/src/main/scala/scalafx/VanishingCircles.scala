@@ -74,8 +74,8 @@ object VanishingCircles extends JFXApp {
     autoReverse = true
     keyFrames = for (circle <- circles) yield at (40 s) {
       Set(
-        circle.centerX -> random * stage.width.get,
-        circle.centerY -> random * stage.height.get
+        circle.centerX -> random * stage.width(),
+        circle.centerY -> random * stage.height()
       )
     }
   }.play

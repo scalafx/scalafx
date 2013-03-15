@@ -41,14 +41,14 @@ object TooltipDemo extends JFXApp {
   stage = new JFXApp.PrimaryStage {
     title = "Tooltip Test"
     width = 300
-    height = 500
+    height = 600
     scene = new Scene {
       fill = Color.LIGHTGRAY
       content = mainPane
     }
   }
-  mainPane.prefHeight <== stage.scene().height
-  mainPane.prefWidth <== stage.scene().width
+  mainPane.prefHeight <== stage.scene.height
+  mainPane.prefWidth <== stage.scene.width
 
 }
 
@@ -58,42 +58,42 @@ class TooltipControls(target: Tooltip) extends PropertiesNodes[Tooltip](target, 
     text <== when(target.activated) choose "Activated" otherwise "Deactivated"
   }
 
-  val originalContentDisplay = target.contentDisplay
+  val originalContentDisplay = target.contentDisplay()
   val chbContentDisplay = new ChoiceBox[ContentDisplay] {
     items = ObservableBuffer(ContentDisplay.BOTTOM, ContentDisplay.CENTER, ContentDisplay.GRAPHIC_ONLY, ContentDisplay.LEFT, ContentDisplay.RIGHT,
       ContentDisplay.TEXT_ONLY, ContentDisplay.TOP)
     value <==> target.contentDisplay
   }
 
-  val originalText = target.text
+  val originalText = target.text()
   val txfText = new TextField {
     text <==> target.text
   }
 
-  val originalTextAlignment = target.textAlignment
+  val originalTextAlignment = target.textAlignment()
   val chbTextAlignment = new ChoiceBox[TextAlignment] {
     items = ObservableBuffer(TextAlignment.CENTER, TextAlignment.JUSTIFY, TextAlignment.LEFT, TextAlignment.RIGHT)
     value <==> target.textAlignment
   }
 
-  val originalTextOverrun = target.textOverrun
+  val originalTextOverrun = target.textOverrun()
   val chbTextOverrun = new ChoiceBox[OverrunStyle] {
     items = ObservableBuffer(OverrunStyle.CENTER_ELLIPSIS, OverrunStyle.CENTER_WORD_ELLIPSIS, OverrunStyle.CLIP, OverrunStyle.ELLIPSIS,
       OverrunStyle.LEADING_ELLIPSIS, OverrunStyle.LEADING_WORD_ELLIPSIS, OverrunStyle.WORD_ELLIPSIS)
     value <==> target.textOverrun
   }
 
-  val originalWrap = target.wrapText
+  val originalWrap = target.wrapText()
   val chbWrap = new CheckBox {
     selected <==> target.wrapText
   }
 
   override protected def resetProperties = {
-    target.contentDisplay = originalContentDisplay.get()
-    target.text = originalText.get()
-    target.textAlignment = originalTextAlignment.get()
-    target.textOverrun = originalTextOverrun.get()
-    target.wrapText = originalWrap.get
+    target.contentDisplay = originalContentDisplay
+    target.text = originalText
+    target.textAlignment = originalTextAlignment
+    target.textOverrun = originalTextOverrun
+    target.wrapText = originalWrap
   }
 
   super.addNode("Activated?", lblActivated)

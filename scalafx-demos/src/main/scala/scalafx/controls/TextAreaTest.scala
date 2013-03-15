@@ -51,6 +51,16 @@ import scalafx.scene.paint.Color.sfxColor2jfx
 
 object TextAreaTest extends JFXApp {
 
+  stage = new JFXApp.PrimaryStage {
+    title = "TextArea Test"
+    width = 450
+    height = 380
+    scene = new Scene {
+      fill = Color.LIGHTGRAY
+      content = mainPane
+    }
+  }
+
   lazy val textArea = new TextArea {
     prefColumnCount = 20
 //    prefHeight <== scene.height
@@ -66,21 +76,11 @@ object TextAreaTest extends JFXApp {
     content = List(new TextAreaControls(textArea), new TextInputControlControls(textArea), new ControlControls(textArea))
   }
 
-  val mainPane = new BorderPane {
+  lazy val mainPane = new BorderPane {
     top = textArea
     center = controlsPane
 //    vgrow = Priority.ALWAYS
 //    hgrow = Priority.ALWAYS
-  }
-
-  stage = new JFXApp.PrimaryStage {
-    title = "TextArea Test"
-    width = 450
-    height = 380
-    scene = new Scene {
-      fill = Color.LIGHTGRAY
-      content = mainPane
-    }
   }
 
 }
