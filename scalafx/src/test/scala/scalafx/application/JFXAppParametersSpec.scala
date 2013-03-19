@@ -36,7 +36,7 @@ import javafx.application.Application.Parameters
 import javafx.{ application => jfxa }
 import scala.collection.JavaConversions._
 import scalafx.Includes.jfxParamaters2sfx
-import scalafx.application.JFXApp.Parameters.sfxParamaters2jfx
+import scalafx.application.JFXApp.Parameters.sfxParameters2jfx
 import scalafx.application.JFXApp.Parameters
 import scalafx.testutil.SimpleSFXDelegateSpec
 import com.sun.javafx.application.ParametersImpl

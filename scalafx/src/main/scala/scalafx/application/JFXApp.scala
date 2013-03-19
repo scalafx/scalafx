@@ -50,7 +50,7 @@ object JFXApp {
   private val keyValue = """^--([A-Za-z_][^=]*?)=(.*)$""".r
 
   object Parameters {
-    implicit def sfxParamaters2jfx(p: Parameters) = p.delegate
+    implicit def sfxParameters2jfx(p: Parameters) = p.delegate
 
     /**
      * Creates a new instance of Parameters
