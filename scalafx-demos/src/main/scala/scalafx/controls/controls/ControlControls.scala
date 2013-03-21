@@ -51,7 +51,7 @@ class ControlControls(target: Control) extends PropertiesNodes[Control](target, 
   }
 
   val originalMinHeight = target.minHeight
-  val sldinHeight = new SliderLabelControl(target.minHeight) {
+  val sldMinHeight = new SliderLabelControl(target.minHeight) {
     min = -10
   }
 
@@ -70,23 +70,23 @@ class ControlControls(target: Control) extends PropertiesNodes[Control](target, 
     min = -10
   }
 
-  val txfTootip = new TextField
-  txfTootip.text.onChange {
-    target.tooltip = if (txfTootip.text.get.isEmpty) null else Tooltip(txfTootip.text())
+  val txfTooltip = new TextField
+  txfTooltip.text.onChange {
+    target.tooltip = if (txfTooltip.text.get.isEmpty) null else Tooltip(txfTooltip.text())
   }
 
   super.addNode("Max Height", sldMaxHeight)
   super.addNode("Pref Height", sldPrefHeight)
-  super.addNode("Min Height", sldinHeight)
+  super.addNode("Min Height", sldMinHeight)
   super.addNode("Max Width", sldMaxWidth)
   super.addNode("Pref Width", sldPrefWidth)
   super.addNode("Min Width", sldMinWidth)
-  super.addNode("Tooltip", txfTootip)
+  super.addNode("Tooltip", txfTooltip)
   super.addNode("Height", lblHeight)
   super.addNode("Width", lblWidth)
 //  super.addNode(btnReset)
 
-  override def resetProperties {
+  override def resetProperties() {
     target.maxHeight = originalMaxHeight.get
     target.prefHeight = originalPrefHeight.get
     target.minHeight = originalMinHeight.get

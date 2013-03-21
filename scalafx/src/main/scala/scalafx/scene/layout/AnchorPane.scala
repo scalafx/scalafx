@@ -41,7 +41,9 @@ object AnchorPane {
   /**
    * Removes all anchorpane constraints from the child node.
    */
-  def clearConstraints(child: javafx.scene.Node) = jfxsl.AnchorPane.clearConstraints(child)
+  def clearConstraints(child: javafx.scene.Node) {
+    jfxsl.AnchorPane.clearConstraints(child)
+  }
 
   /**
    * Returns the child's bottom anchor constraint if set.
@@ -66,22 +68,30 @@ object AnchorPane {
   /**
    * Sets the bottom anchor for the child when contained by an anchorpane.
    */
-  def setBottomAnchor(child: Node, value: Double) = jfxsl.AnchorPane.setBottomAnchor(child, value)
+  def setBottomAnchor(child: Node, value: Double) {
+    jfxsl.AnchorPane.setBottomAnchor(child, value)
+  }
 
   /**
    * Sets the left anchor for the child when contained by an anchorpane.
    */
-  def setLeftAnchor(child: Node, value: Double) = jfxsl.AnchorPane.setLeftAnchor(child, value)
+  def setLeftAnchor(child: Node, value: Double) {
+    jfxsl.AnchorPane.setLeftAnchor(child, value)
+  }
 
   /**
    * Sets the bottom anchor for the child when contained by an anchorpane.
    */
-  def setRightAnchor(child: Node, value: Double) = jfxsl.AnchorPane.setRightAnchor(child, value)
+  def setRightAnchor(child: Node, value: Double) {
+    jfxsl.AnchorPane.setRightAnchor(child, value)
+  }
 
   /**
    * Sets the top anchor for the child when contained by an anchorpane.
    */
-  def setTopAnchor(child: Node, value: Double) = jfxsl.AnchorPane.setTopAnchor(child, value)
+  def setTopAnchor(child: Node, value: Double) {
+    jfxsl.AnchorPane.setTopAnchor(child, value)
+  }
 
   /**
    * Sets the anchors for the child when contained by an anchorpane.

@@ -88,8 +88,8 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
     stroke = Color.WHITE
     arcHeight = 3.5
     arcWidth = 3.5
-    width = questionText.boundsInLocal.getValue.getWidth() + 10
-    height = questionText.boundsInLocal.getValue.getHeight() + 10
+    width = questionText.boundsInLocal.getValue.getWidth + 10
+    height = questionText.boundsInLocal.getValue.getHeight + 10
   }
   val stackPane = new StackPane {
     alignment = Pos.CENTER
@@ -171,7 +171,7 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   gridPane.add(iconImageView, 0, 0, 1, 2)
   gridPane.add(salesText, 1, 0)
   gridPane.add(yearText, 2, 0)
-  gridPane.add(oldAndNewText, 1, 1, 2, 1);
+  gridPane.add(oldAndNewText, 1, 1, 2, 1)
   GridPane.setValignment(oldText, VPos.BOTTOM)
   gridPane.add(oldText, 0, 2)
   gridPane.add(newImageView, 1, 2, 2, 1)

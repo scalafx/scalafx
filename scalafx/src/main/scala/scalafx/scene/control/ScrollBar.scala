@@ -38,7 +38,7 @@ object ScrollBar {
   implicit def sfxScrollBar2jfx(sc: ScrollBar) = sc.delegate
 }
 /**
- * Wraprs [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/ScrollBar.html]]
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/ScrollBar.html]]
  */
 class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
   extends Control(delegate)
@@ -103,16 +103,22 @@ class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
   /**
    * Adjusts the `value` property by `blockIncrement`.
    */
-  def adjustValue(position: Double) = delegate.adjustValue(position)
+  def adjustValue(position: Double) {
+    delegate.adjustValue(position)
+  }
 
   /**
    * Decrements the value of the ScrollBar by the `unitIncrement`.
    */
-  def decrement = delegate.decrement
+  def decrement() {
+    delegate.decrement()
+  }
 
   /**
    * Increments the value of the ScrollBar by the `unitIncrement`.
    */
-  def increment = delegate.increment
+  def increment() {
+    delegate.increment()
+  }
 
 }

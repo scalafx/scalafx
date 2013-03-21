@@ -53,7 +53,7 @@ class ColumnConstraints(override val delegate: jfxsl.ColumnConstraints = new jfx
   def this(minWidth: Double, prefWidth: Double, maxWidth: Double) = this(new jfxsl.ColumnConstraints(minWidth, prefWidth, maxWidth))
 
   /**
-   * Creates a column constraint object with a fixed size range, horizontal grow priority, horizonal alignment, and horizontal fill behavior.
+   * Creates a column constraint object with a fixed size range, horizontal grow priority, horizontal alignment, and horizontal fill behavior.
    */
   def this(minWidth: Double, prefWidth: Double, maxWidth: Double, hgrow: jfxsl.Priority, halignment: jfxg.HPos, fillWidth: Boolean) =
     this(new jfxsl.ColumnConstraints(minWidth, prefWidth, maxWidth, hgrow, halignment, fillWidth))

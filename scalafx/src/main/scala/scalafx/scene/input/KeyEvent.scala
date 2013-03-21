@@ -65,7 +65,7 @@ class KeyEvent(override val delegate: jfxsi.KeyEvent) extends InputEvent(delegat
   /**
    * The unicode character associated with the key typed event.
    */
-  def character = delegate.getCharacter()
+  def character = delegate.getCharacter
 
   /**
    * The key code associated with the key in this key pressed or key released event.
@@ -76,31 +76,31 @@ class KeyEvent(override val delegate: jfxsi.KeyEvent) extends InputEvent(delegat
   /**
    * A String describing the key code, such as "HOME", "F1" or "A", for key pressed and key released events.
    */
-  def text = delegate.getText()
+  def text = delegate.getText
 
   /**
    * Returns whether or not the Alt modifier is down on this event.
    */
-  def altDown = delegate.isAltDown()
+  def altDown = delegate.isAltDown
 
   /**
    * Returns whether or not the Control modifier is down on this event.
    */
-  def controlDown = delegate.isControlDown()
+  def controlDown = delegate.isControlDown
 
   /**
    * Returns whether or not the Meta modifier is down on this event.
    */
-  def metaDown = delegate.isMetaDown()
+  def metaDown = delegate.isMetaDown
 
   /**
    * Returns whether or not the Shift modifier is down on this event.
    */
-  def shifitDown = delegate.isShiftDown()
+  def shiftDown = delegate.isShiftDown
 
   /**
    * Returns whether or not the host platform common shortcut modifier is down on this event.
    */
-  def shortcutDown = delegate.isShortcutDown()
+  def shortcutDown = delegate.isShortcutDown
 
 }

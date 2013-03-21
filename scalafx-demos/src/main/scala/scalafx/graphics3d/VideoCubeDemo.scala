@@ -42,7 +42,7 @@ object VideoCubeDemo extends JFXApp {
   // PLEASE DO NOT SHOW THIS PUBLIC LIKE IN A BIG CONFERENCE with consent either
   // This is just for learning and demonstration purposes.
   // Of course, it will only work my machine!!!!!!!!!!!!!!!!!!!!!! Until you edit the folder and files!
-  val folder = if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+  val folder = if (System.getProperty("os.name").toLowerCase.contains("windows")) {
       new File( "C:\\Users\\peter\\Videos\\Movie-Trailers-2012" )
     }
     else {
@@ -63,7 +63,7 @@ object VideoCubeDemo extends JFXApp {
   val mediaPlayers = vidFiles.map {
     filename =>  {
       val file = new File( folder, filename)
-      val media = new Media( file.toURI().toURL().toExternalForm )
+      val media = new Media( file.toURI.toURL.toExternalForm )
       val mediaPlayer = new MediaPlayer( media )
       mediaPlayer.volume = 0.5
       mediaPlayer.cycleCount = MediaPlayer.Indefinite
@@ -92,15 +92,15 @@ object VideoCubeDemo extends JFXApp {
     } )
     //    printf("stars=%s\n", stars)
     children = stars
-    translateZ = 100.0;
+    translateZ = 100.0
   }
 
   root.children.addAll( starryBackground, cubeSystem )
 
   def create3dContent():Node = {
-    val c1 = new VideoCube(mediaPlayers, 300);
-    c1.rx.angle = 45;
-    c1.ry.angle = 45;
+    val c1 = new VideoCube(mediaPlayers, 300)
+    c1.rx.angle = 45
+    c1.ry.angle = 45
     c1.translateX = 200
     c1.translateY = -200
 
@@ -115,15 +115,15 @@ object VideoCubeDemo extends JFXApp {
       )
     }
 
-    return new Group(c1);
+    new Group(c1)
   }
 
-  def play(): Unit = {
+  def play() {
     animation.play()
     for ( mp <- mediaPlayers ) { mp.play() }
   }
 
-  def stop(): Unit = {
+  def stop() {
     animation.pause()
     for ( mp <- mediaPlayers ) { mp.stop() }
   }
@@ -223,7 +223,7 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
       height = size
       fill = color.deriveColor(0.0, 1.0, (1 - 0.5*shade), 1.0)
       depthTest = DepthTest.INHERIT
-      // JavaFX Rendering on 3D with planar surfaces and mediaview will improve
+      // JavaFX Rendering on 3D with planar surfaces and MediaView will improve
       // opacity = 0.0
     }
 

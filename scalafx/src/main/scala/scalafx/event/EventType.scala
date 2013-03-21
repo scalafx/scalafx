@@ -34,7 +34,7 @@ object EventType {
   implicit def sfxEventType2jfx[T <: jfxe.Event](et: EventType[T]) = et.delegate
 
   /**
-   * The root event type. All other event types are eighter direct or indirect sub types of it.
+   * The root event type. All other event types are either direct or indirect sub types of it.
    * It is also the only event type which has its super event type set to null.
    */
   val ROOT = jfxe.EventType.ROOT
@@ -58,7 +58,7 @@ class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T] = new 
   /**
    * Constructs a new EventType with the specified name and the EventType.ROOT as its super type.
    *
-   * @param The name
+   * @param name The name
    */
   def this(name: String) = this(new jfxe.EventType[T](name))
 

@@ -38,11 +38,11 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ListViewEditEventEditEventSpec[T <: Any]
+class ListViewEditEventSpec[T <: Any]
   extends SimpleSFXDelegateSpec[jfxsc.ListView.EditEvent[T], ListView.EditEvent[T]](classOf[jfxsc.ListView.EditEvent[T]], classOf[ListView.EditEvent[T]]) {
 
   /*
-   * In third argument, I it was used simply null compiler throws a error qith message: 
+   * In third argument, I it was used simply null compiler throws a error with message:
    * "type mismatch;  found   : Null(null)  required: T". Solution found was make a cast from 
    * null to type T. 
    */

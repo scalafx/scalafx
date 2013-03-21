@@ -61,7 +61,7 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
   def items = delegate.getItems
   def items_=(c: Iterable[MenuItem]) = {
     if (null == c) {
-      items.clear
+      items.clear()
     } else {
       items.setAll(c.map(_.delegate))
     }

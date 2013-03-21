@@ -50,7 +50,7 @@ class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
   def content = children
   def content_=(c: Iterable[Node]) {
     if (null == c) {
-      content.clear
+      content.clear()
     } else {
       content.setAll(c.map(_.delegate))
     }
@@ -59,7 +59,7 @@ class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
    * Adds a simple Node as only content to this Pane.  
    */
   def content_=(n: Node) {
-    content.clear
+    content.clear()
     content.add(n)
   }
 }

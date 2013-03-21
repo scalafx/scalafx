@@ -146,7 +146,7 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
   }
 
   /**
-   * Specify the perferred width of the ScrollPane Viewport.
+   * Specify the preferred width of the ScrollPane Viewport.
    */
   def prefViewportWidth: DoubleProperty = delegate.prefViewportWidthProperty
   def prefViewportWidth_=(v: Double) {

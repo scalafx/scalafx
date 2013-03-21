@@ -37,12 +37,14 @@ class ComboBoxControls(target: ComboBox[String]) extends PropertiesNodes[ComboBo
 
   var itemIndex = 0
 
-  def addNewTab = {
+  def addNewTab() {
     itemIndex += 1
-    target += "Item %d".format(itemIndex).asInstanceOf[String]
+    target += "Item %d".format(itemIndex)
   }
 
-  def removeCurrentItem = target -= target.value.get
+  def removeCurrentItem() {
+    target -= target.value.get
+  }
 
   val txfVisibleRowCount = new TextField {
     text = target.visibleRowCount.get.toString
@@ -51,12 +53,12 @@ class ComboBoxControls(target: ComboBox[String]) extends PropertiesNodes[ComboBo
 
   val btnAddItem = new Button {
     text = "Add new Item"
-    onAction = addNewTab
+    onAction = addNewTab()
   }
 
   val btnRemoveItem = new Button {
     text = "Remove Item"
-    onAction = removeCurrentItem
+    onAction = removeCurrentItem()
   }
 
   super.addNode("Visible Rows", txfVisibleRowCount)

@@ -46,13 +46,13 @@ class Group(override val delegate: jfxs.Group = new jfxs.Group()) extends Parent
   def children = delegate.getChildren
   def children_=(c: Iterable[Node]) {
     if (null == c) {
-      children.clear
+      children.clear()
     } else {
       children.setAll(c.map(_.delegate))
     }
   }
   def children_=(n: Node) {
-    children.clear
+    children.clear()
     children.add(n)
   }
   def content = children

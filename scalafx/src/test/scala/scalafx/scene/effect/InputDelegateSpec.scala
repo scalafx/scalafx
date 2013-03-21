@@ -36,9 +36,6 @@ import scalafx.beans.property.DoubleProperty
  */
 trait InputDelegateSpec[D <: InputDelegate[_]] extends FlatSpec {
 
-  /**
-   *
-   */
   protected val inputDelegate: D
 
   it should "allow observe changes in Input Effect" in {

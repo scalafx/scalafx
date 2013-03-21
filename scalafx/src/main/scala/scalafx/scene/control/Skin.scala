@@ -44,7 +44,9 @@ trait Skin[C <: jfxsc.Skinnable] extends SFXDelegate[jfxsc.Skin[C]] {
   /**
    * Called by a Skinnable when the Skin is replaced on the Skinnable.
    */
-  def dispose: Unit = delegate.dispose
+  def dispose() {
+    delegate.dispose()
+  }
 
   /**
    * Gets the Node which represents this Skin.

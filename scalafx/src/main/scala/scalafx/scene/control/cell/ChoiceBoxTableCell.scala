@@ -96,7 +96,7 @@ class ChoiceBoxTableCell[S, T](override val delegate: jfxscc.ChoiceBoxTableCell[
   extends TableCell[S, T](delegate)
   with ConvertableCell[jfxscc.ChoiceBoxTableCell[S, T], T, T]
   with UpdatableCell[jfxscc.ChoiceBoxTableCell[S, T], T]
-  with ItemnableCell[jfxscc.ChoiceBoxTableCell[S, T], T]
+  with ItemableCell[jfxscc.ChoiceBoxTableCell[S, T], T]
   with SFXDelegate[jfxscc.ChoiceBoxTableCell[S, T]] {
 
   /**

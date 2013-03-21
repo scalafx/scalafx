@@ -48,7 +48,7 @@ class MenuBar(override val delegate: jfxsc.MenuBar = new jfxsc.MenuBar()) extend
    */
   def menus_=(c: Iterable[Menu]) = {
     if (null == c) {
-      menus.clear
+      menus.clear()
     } else {
       menus.setAll(c.map(_.delegate))
     }

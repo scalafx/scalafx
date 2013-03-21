@@ -47,6 +47,8 @@ class ListCell[T](override val delegate: jfxsc.ListCell[T] = new jfxsc.ListCell[
   /**
    * Updates the ListView associated with this Cell.
    */
-  def updateListView(listView: ListView[T]) = delegate.updateListView(listView)
+  def updateListView(listView: ListView[T]) {
+    delegate.updateListView(listView)
+  }
 
 }

@@ -91,17 +91,23 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
   /**
    * Show the Popup at the specified x,y location relative to the screen
    */
-  def show(owner: Node, screenX: Double, screenY: Double) = delegate.show(owner, screenX, screenY)
+  def show(owner: Node, screenX: Double, screenY: Double) {
+    delegate.show(owner, screenX, screenY)
+  }
 
   /**
    * Show the popup.
    */
-  def show(owner: Window) = delegate.show(owner)
+  def show(owner: Window) {
+    delegate.show(owner)
+  }
 
   /**
    * Show the Popup at the specified x,y location relative to the screen
    */
-  def show(owner: Window, screenX: Double, screenY: Double) = delegate.show(owner, screenX, screenY)
+  def show(owner: Window, screenX: Double, screenY: Double) {
+    delegate.show(owner, screenX, screenY)
+  }
 
   /**
    * Specifies whether the event, which caused the Popup to hide, should be consumed.

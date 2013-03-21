@@ -48,7 +48,7 @@ class Accordion(override val delegate: jfxsc.Accordion = new jfxsc.Accordion) ex
 
   def panes_=(c: Iterable[TitledPane]) {
     if (null == c) {
-      panes.clear
+      panes.clear()
     } else {
       panes.setAll(c.map(_.delegate))
     }

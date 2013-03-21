@@ -39,5 +39,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class TabPanePaneSpec
+class TabPaneSpec
   extends AbstractSFXDelegateSpec[jfxsc.TabPane, TabPane, jfxsc.TabPaneBuilder[_]](classOf[jfxsc.TabPane], classOf[TabPane], classOf[jfxsc.TabPaneBuilder[_]])

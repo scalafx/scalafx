@@ -31,7 +31,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
 /**
- * Class responsable for wrap a StringConverter from a Java type to a Scala type (eg:
+ * Class responsible for wrap a StringConverter from a Java type to a Scala type (eg:
  * java.lang.Integer to Int, java.lang.Character to Char). Eventually Java and Scala types can be
  * the same (like java.util.Date or java.lang.Number), so it must be used
  * StringConverterJavaToJavaDelegate class.
@@ -54,7 +54,7 @@ abstract class StringConverterDelegate[J <: java.lang.Object, S <: Any, C <: jfx
 }
 
 /**
- * Class responsable for wrap a StringConverter from and to a Java type(eg: java.util.Date or
+ * Class responsible for wrap a StringConverter from and to a Java type(eg: java.util.Date or
  * java.lang.Number).
  *
  * @tparam J Java Class (e.g. java.lang.Number, java.util.Date)

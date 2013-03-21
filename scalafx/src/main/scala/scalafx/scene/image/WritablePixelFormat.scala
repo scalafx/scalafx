@@ -44,6 +44,8 @@ abstract class WritablePixelFormat[B <: Buffer](override val delegate: jfxsi.Wri
   /**
    * Stores a 32-bit integer representation of the color in the buffer at the specified coordinates.
    */
-  def setArgb(buf: B, x: Int, y: Int, scanlineStride: Int, argb: Int) = delegate.setArgb(buf, x, y, scanlineStride, argb)
+  def setArgb(buf: B, x: Int, y: Int, scanlineStride: Int, argb: Int) {
+    delegate.setArgb(buf, x, y, scanlineStride, argb)
+  }
 
 }

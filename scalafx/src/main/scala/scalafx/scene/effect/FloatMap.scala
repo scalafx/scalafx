@@ -58,26 +58,36 @@ class FloatMap(override val delegate: jfxse.FloatMap = new jfxse.FloatMap) exten
   /**
    * Sets the sample for a specific band at the given (x,y) location.
    */
-  def setSample(x: Int, y: Int, band: Int, s: Float) = delegate.setSample(x, y, band, s)
+  def setSample(x: Int, y: Int, band: Int, s: Float) {
+    delegate.setSample(x, y, band, s)
+  }
 
   /**
    * Sets the sample for the first band at the given (x,y) location.
    */
-  def setSamples(x: Int, y: Int, s0: Float) = delegate.setSamples(x, y, s0)
+  def setSamples(x: Int, y: Int, s0: Float) {
+    delegate.setSamples(x, y, s0)
+  }
 
   /**
    * Sets the sample for the first two bands at the given (x,y) location.
    */
-  def setSamples(x: Int, y: Int, s0: Float, s1: Float) = delegate.setSamples(x, y, s0, s1)
+  def setSamples(x: Int, y: Int, s0: Float, s1: Float) {
+    delegate.setSamples(x, y, s0, s1)
+  }
 
   /**
    * Sets the sample for the first three bands at the given (x,y) location.
    */
-  def setSamples(x: Int, y: Int, s0: Float, s1: Float, s2: Float) = delegate.setSamples(x, y, s0, s1, s2)
+  def setSamples(x: Int, y: Int, s0: Float, s1: Float, s2: Float) {
+    delegate.setSamples(x, y, s0, s1, s2)
+  }
 
   /**
    * Sets the sample for each of the four bands at the given (x,y) location.
    */
-  def setSamples(x: Int, y: Int, s0: Float, s1: Float, s2: Float, s3: Float) = delegate.setSamples(x, y, s0, s1, s2, s3)
+  def setSamples(x: Int, y: Int, s0: Float, s1: Float, s2: Float, s3: Float) {
+    delegate.setSamples(x, y, s0, s1, s2, s3)
+  }
 
 }

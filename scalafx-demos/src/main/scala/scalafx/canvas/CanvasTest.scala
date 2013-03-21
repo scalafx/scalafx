@@ -63,10 +63,10 @@ object CanvasTest extends JFXApp {
    * warp the shape away from the letter "D."
    */
   //  drawDShape
-  gc.beginPath
+  gc.beginPath()
   gc.moveTo(50, 50)
   gc.bezierCurveTo(150, 20, 150, 150, 75, 150)
-  gc.closePath
+  gc.closePath()
 
   /*
    * Draws a radial gradient on the Canvas object, which appears as a series of
@@ -74,7 +74,7 @@ object CanvasTest extends JFXApp {
    */
   //  drawRadialGradient(Color.RED, Color.YELLOW)
   gc.fill = new RadialGradient(0, 0, 0.5, 0.5, 0.1, true, CycleMethod.REFLECT, List(Stop(0.0, Color.RED), Stop(1.0, Color.YELLOW)))
-  gc.fillPath
+  gc.fillPath()
 
   /*
    * Draws a radial gradient on the Canvas object, which appears as a series of
@@ -84,7 +84,7 @@ object CanvasTest extends JFXApp {
   val lg = new LinearGradient(0, 0, 1, 1, true, CycleMethod.REFLECT, List(Stop(0.0, Color.BLUE), Stop(1.0, Color.GREEN)))
   gc.stroke = lg
   gc.lineWidth = 20
-  gc.strokePath
+  gc.strokePath()
 
   /**
    * Draws a radial gradient on the Canvas object, which appears as a series of

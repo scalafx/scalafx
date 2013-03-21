@@ -46,7 +46,7 @@ class PauseTransition(override val delegate: jfxa.PauseTransition = new jfxa.Pau
   /**
    * The constructor of PauseTransition.
    *
-   * @param  The duration of the PauseTransition
+   * @param duration The duration of the PauseTransition
    */
   def this(duration: Duration) = this(new jfxa.PauseTransition(duration))
 

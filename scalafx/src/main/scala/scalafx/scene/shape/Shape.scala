@@ -110,7 +110,7 @@ abstract class Shape(override val delegate: jfxss.Shape) extends Node(delegate) 
   def strokeDashArray :ObservableBuffer[java.lang.Double] = delegate.getStrokeDashArray
   def strokeDashArray_=(c: Iterable[java.lang.Double]) {
     if (null == c) {
-      strokeDashArray.clear
+      strokeDashArray.clear()
     } else {
       strokeDashArray.setAll(c)
     }

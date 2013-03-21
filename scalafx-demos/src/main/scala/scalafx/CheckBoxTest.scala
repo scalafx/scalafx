@@ -64,7 +64,7 @@ object CheckBoxTest extends JFXApp {
   val btnFire = new Button {
     text = "Fire!"
   }
-  btnFire.onAction = (event: ActionEvent) =>  check.fire
+  btnFire.onAction = (event: ActionEvent) =>  check.fire()
 
   val txfText = new TextField 
   txfText.delegate.textProperty.bindBidirectional(check.text)

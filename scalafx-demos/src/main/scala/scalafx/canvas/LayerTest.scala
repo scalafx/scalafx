@@ -54,10 +54,10 @@ object LayerTest extends JFXApp {
   // Obtain Graphics Contexts
   private val gc1 = layer1.graphicsContext2D
   gc1.fill = Color.GREEN
-  gc1.fillOval(50, 50, 20, 20);
+  gc1.fillOval(50, 50, 20, 20)
   private val gc2 = layer2.graphicsContext2D
   gc2.fill = Color.BLUE
-  gc2.fillOval(100, 100, 20, 20);
+  gc2.fillOval(100, 100, 20, 20)
 
   // Handle Layers
   // Handler for Layer 1
@@ -78,21 +78,21 @@ object LayerTest extends JFXApp {
   val selectionModel: SelectionModel[String] = cb.selectionModel.get
   selectionModel.selectedItem.onChange((ov: Any, olaValue: Any, newValue: Any) => {
     if (newValue == layer1Title) {
-      layer1.toFront
+      layer1.toFront()
     } else if (newValue == layer2Title) {
-      layer2.toFront
+      layer2.toFront()
     }
   })
   cb.value = layer1Title
 
   // Build GUI
-  private val borderPane = new BorderPane();
+  private val borderPane = new BorderPane()
   // Add Layers
   borderPane.top = cb
   borderPane.center = new Pane {
     content = List(layer1, layer2)
   }
-  layer1.toFront
+  layer1.toFront()
 
   private val root = new Group
   root.children = borderPane

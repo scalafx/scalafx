@@ -37,7 +37,7 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.geometry.Orientation
 
 object ToolBar {
-	implicit def sfxToolBarTojfx(v: ToolBar) = v.delegate
+	implicit def sfxToolBarToJfx(v: ToolBar) = v.delegate
 }
 
 class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar) extends Control(delegate) with SFXDelegate[jfxsc.ToolBar] {
@@ -45,13 +45,13 @@ class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar) extends 
 	def items = delegate.getItems
 	def items_=(c: Iterable[Node]) {
 	  if (null == c) {
-	    items.clear
+	    items.clear()
 	  } else {
 	    items.setAll(c.map(_.delegate))
 	  }
 	}
 	def items_=(n: Node) {
-	    items.clear
+	    items.clear()
 	    items.add(n)
 	}
 	def content = items

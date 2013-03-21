@@ -14,7 +14,7 @@ object BootstrapApplication {
           Application.launch(classOf[BootstrapApplication])
         }
       }).start()
-      launchLatch.await();
+      launchLatch.await()
       launched = true
     }
   }

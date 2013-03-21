@@ -33,10 +33,10 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * XYChart.Series Spec tests.
+ * XYChart.Data Spec tests.
  *
  *
  */
 @RunWith(classOf[JUnitRunner])
-class XYChartSeries
-  extends SimpleSFXDelegateSpec[jfxsc.XYChart.Series[Int, Int], XYChart.Series[Int, Int]](classOf[jfxsc.XYChart.Series[Int, Int]], classOf[XYChart.Series[Int, Int]])
+class XYChartDataSpec
+  extends SimpleSFXDelegateSpec[jfxsc.XYChart.Data[Int, Int], XYChart.Data[Int, Int]](classOf[jfxsc.XYChart.Data[Int, Int]], classOf[XYChart.Data[Int, Int]])

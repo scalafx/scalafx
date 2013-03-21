@@ -77,10 +77,10 @@ object CanvasDoodleTest extends JFXApp {
     gc.clearRect(e.x - 2, e.y - 2, 5, 5)
   }
 
-  // Fill the Canvas with a Blue rectnagle when the user double-clicks
+  // Fill the Canvas with a Blue rectangle when the user double-clicks
   canvas.onMouseClicked = (e: MouseEvent) => {
     if (e.clickCount > 1) {
-      reset(Color.BLUE);
+      reset(Color.BLUE)
     }
   }
 
@@ -92,7 +92,7 @@ object CanvasDoodleTest extends JFXApp {
    */
   private def reset(color: Color) {
     gc.fill = color
-    gc.fillRect(0, 0, canvas.width.get, canvas.height.get);
+    gc.fillRect(0, 0, canvas.width.get, canvas.height.get)
   }
 
 }

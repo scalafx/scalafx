@@ -48,6 +48,8 @@ class TableRow[T](override val delegate: jfxsc.TableRow[T] = new jfxsc.TableRow)
   /**
    * Updates the TableView associated with this TableCell.
    */
-  def updateTableView(tv: TableView[T]) = delegate.updateTableView(tv)
+  def updateTableView(tv: TableView[T]) {
+    delegate.updateTableView(tv)
+  }
 
 }

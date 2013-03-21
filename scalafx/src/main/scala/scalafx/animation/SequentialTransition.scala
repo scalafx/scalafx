@@ -85,7 +85,7 @@ class SequentialTransition(override val delegate: jfxa.SequentialTransition = ne
   def children = delegate.getChildren
   def children_=(c: Iterable[Animation]) {
     if (null == c) {
-      children.clear
+      children.clear()
     } else {
       children.setAll(c.map(_.delegate))
     }

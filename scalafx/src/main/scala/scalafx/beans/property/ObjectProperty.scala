@@ -86,7 +86,7 @@ object ObjectProperty {
  * This class provides a full implementation of a Property wrapping an arbitrary Object.
  *
  * It is recommended, as a work around for Issue 14, to use companion object factory methods to construct new instances,
- * instead of using constructor directly, especially when an inatial value is a ScalaFX wrapper, for instance:
+ * instead of using constructor directly, especially when an initial value is a ScalaFX wrapper, for instance:
  *
  * {{{
  *   import scalafx.scene.Cursor

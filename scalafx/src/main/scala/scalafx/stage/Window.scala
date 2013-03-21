@@ -168,17 +168,23 @@ class Window protected (override val delegate: jfxs.Window)
   /**
    * Sets x and y properties on this Window so that it is centered on the screen.
    */
-  def centerOnScreen = delegate.centerOnScreen
+  def centerOnScreen() {
+    delegate.centerOnScreen()
+  }
 
   /**
    * Whether or not this Window has the keyboard or input focus.
    */
-  def fireEvent(event: Event) = delegate.fireEvent(event)
+  def fireEvent(event: Event) {
+    delegate.fireEvent(event)
+  }
 
   /**
    * Attempts to hide this Window by setting the visibility to false.
    */
-  def hide = delegate.hide
+  def hide() {
+    delegate.hide()
+  }
 
   /*
    * Unregisters a previously registered event filter from this node.
@@ -193,7 +199,9 @@ class Window protected (override val delegate: jfxs.Window)
   /**
    * Requests that this Window get the input focus.
    */
-  def requestFocus = delegate.requestFocus
+  def requestFocus() {
+    delegate.requestFocus()
+  }
 
   /*
    * Attempts to show this Window by setting visibility to true
@@ -203,6 +211,8 @@ class Window protected (override val delegate: jfxs.Window)
   /**
    * Set the width and height of this Window to match the size of the content of this Window's Scene.
    */
-  def sizeToScene = delegate.sizeToScene
+  def sizeToScene() {
+    delegate.sizeToScene()
+  }
 
 }

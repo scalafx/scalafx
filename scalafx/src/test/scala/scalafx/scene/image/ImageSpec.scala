@@ -42,6 +42,6 @@ import org.scalatest.junit.JUnitRunner
 class ImageSpec
   extends SimpleSFXDelegateSpec[jfxsi.Image, Image](classOf[jfxsi.Image], classOf[Image]) {
 
-  override protected def getJavaClassInstance = new jfxsi.Image(this.getClass().getResourceAsStream(""))
+  override protected def getJavaClassInstance = new jfxsi.Image(this.getClass.getResourceAsStream(""))
 
 }

@@ -48,9 +48,6 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   def this(parent: Parent, width: Double, height: Double) = this(new jfxs.Scene(parent, width, height))
 
   def this(parent: Parent, width: Double, height: Double, depthBuffer: Boolean ) = this(new jfxs.Scene(parent, width, height, depthBuffer ))
-  //def this(stackPane: jfxsl.StackPane) = this (new jfxs.Scene(stackPane))
-
-  //def this(stackPane: jfxsl.StackPane, width: Double, height: Double) = this (new jfxs.Scene(stackPane, width, height))
 
   def root: ObjectProperty[jfxs.Parent] = delegate.rootProperty
 
@@ -68,14 +65,14 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
 
   def content_=(c: Iterable[Node]) {
     if (null == c) {
-      content.clear
+      content.clear()
     } else {
       content.setAll(c.map(_.delegate))
     }
   }
 
   def content_=(n: Node) {
-    content.clear
+    content.clear()
     content.add(n)
   }
 
@@ -257,7 +254,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
 
   def stylesheets_=(c: Iterable[String]) {
     if (null == c) {
-      stylesheets.clear
+      stylesheets.clear()
     } else {
       stylesheets.addAll(c)
     }

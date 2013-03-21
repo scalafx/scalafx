@@ -126,7 +126,7 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
   }
 
   /**
-   * Defines whether this region rounds position/spacing and ceils size values to pixel boundaries
+   * Defines whether this region rounds position/spacing and cell size values to pixel boundaries
    * when laying out its children.
    */
   def snapToPixel: BooleanProperty = delegate.snapToPixelProperty
@@ -142,10 +142,12 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
   /**
    * Invoked by the region's parent during layout to set the region's width and height.
    */
-  override def resize(width: Double, height: Double) = delegate.resize(width, height)
+  override def resize(width: Double, height: Double) {
+    delegate.resize(width, height)
+  }
 
   /**
    * Gets the space around content, which will include any borders plus padding if set.
    */
-  def insets = delegate.getInsets()
+  def insets = delegate.getInsets
 }

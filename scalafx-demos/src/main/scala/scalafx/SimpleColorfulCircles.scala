@@ -79,10 +79,10 @@ object SimpleColorfulCircles extends JFXApp {
     cycleCount = INDEFINITE
     autoReverse = true
     keyFrames = (for (circle <- circles) yield at(40 s) {
-      Set (
+      Set(
         circle.centerX -> random * 800,
         circle.centerY -> random * 600
       )
     })
-  }.play
+  }.play()
 }

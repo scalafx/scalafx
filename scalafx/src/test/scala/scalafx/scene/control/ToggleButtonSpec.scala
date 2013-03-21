@@ -38,5 +38,5 @@ import org.scalatest.junit.JUnitRunner
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ToggleToggleButtonSpec
+class ToggleButtonSpec
   extends AbstractSFXDelegateSpec[jfxsc.ToggleButton, ToggleButton, jfxsc.ToggleButtonBuilder[_]](classOf[jfxsc.ToggleButton], classOf[ToggleButton], classOf[jfxsc.ToggleButtonBuilder[_]])

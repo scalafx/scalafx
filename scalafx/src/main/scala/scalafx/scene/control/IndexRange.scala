@@ -30,7 +30,7 @@ import javafx.scene.{ control => jfxsc }
 import scalafx.delegate.SFXDelegate
 
 object IndexRange {
-  implicit def sfxIndexeRange(r: IndexRange) = r.delegate
+  implicit def sfxIndexRange(r: IndexRange) = r.delegate
 
   /**
    * Index range value delimiter.

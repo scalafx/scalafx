@@ -72,7 +72,7 @@ class RadialGradient(override val delegate: jfxsp.RadialGradient) extends Paint(
   def centerY = delegate.getCenterY
 
   /**
-   * Defines which of the follwing cycle method is applied to the LinearGradient: CycleMethod.NO_CYCLE, CycleMethod.REFLECT, or CycleMethod.REPEAT.
+   * Defines which of the following cycle method is applied to the LinearGradient: CycleMethod.NO_CYCLE, CycleMethod.REFLECT, or CycleMethod.REPEAT.
    */
   def cycleMethod = delegate.getCycleMethod
 

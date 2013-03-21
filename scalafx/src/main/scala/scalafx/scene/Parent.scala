@@ -43,7 +43,7 @@ abstract class Parent(override val delegate: jfxs.Parent) extends Node(delegate)
 
   def stylesheets_=(c: Iterable[String]) {
     if (null == c) {
-      stylesheets.clear
+      stylesheets.clear()
     } else {
       stylesheets.addAll(c)
     }

@@ -37,9 +37,6 @@ import scalafx.scene.paint.Color
  */
 trait ColorDelegateSpec[D <: ColorDelegate[_]] extends FlatSpec {
 
-  /**
-   *
-   */
   protected val colorDelegate: D
 
   it should "allow observe changes in Color" in {

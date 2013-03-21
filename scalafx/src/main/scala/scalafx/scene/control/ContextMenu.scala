@@ -67,7 +67,8 @@ class ContextMenu(override val delegate: jfxsc.ContextMenu = new jfxsc.ContextMe
    * Shows the `ContextMenu` relative to the given anchor node, on the side specified by the hpos and vpos parameters,
    * and offset by the given dx and dy values for the x-axis and y-axis, respectively.
    */
-  def show(anchor: Node, side: jfxg.Side, screenX: Double, screenY: Double) =
+  def show(anchor: Node, side: jfxg.Side, screenX: Double, screenY: Double) {
     delegate.show(anchor, side, screenX, screenY)
+  }
 
 }

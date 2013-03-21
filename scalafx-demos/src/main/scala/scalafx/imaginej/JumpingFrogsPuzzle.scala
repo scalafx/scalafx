@@ -231,7 +231,7 @@ class Model(var optionalFrogMap: Map[Int, Option[Frog]]) {
     }
   }
 
-  val position = (frog: Frog) => positionSingleton(frog) head
+  val position = (frog: Frog) => positionSingleton(frog).head
 
   val canJumpOneRight = canMoveOneRightAt compose position
 

@@ -125,16 +125,22 @@ abstract class Service[T](override val delegate: jfxc.Service[T])
   /**
    * Resets the Service.
    */
-  def reset = delegate.reset
+  def reset() {
+    delegate.reset()
+  }
 
   /**
    * Cancels any currently running Task, if any, and restarts this Service.
    */
-  def restart = delegate.restart
+  def restart() {
+    delegate.restart()
+  }
 
   /**
    * Starts this Service.
    */
-  def start = delegate.start
+  def start() {
+    delegate.start()
+  }
 
 }

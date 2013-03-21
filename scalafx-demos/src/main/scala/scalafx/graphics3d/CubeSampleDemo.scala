@@ -41,17 +41,17 @@ object CubeSampleDemo extends JFXApp {
 
 
     def create3dContent():Node = {
-      val c = new Cube(50,Color.RED,1);
-      c.rx.setAngle(45);
-      c.ry.setAngle(45);
-      val c2 = new Cube(50,Color.GREEN,1);
-      c2.setTranslateX(100);
-      c2.rx.setAngle(45);
-      c2.ry.setAngle(45);
-      val c3 = new Cube(50,Color.ORANGE,1);
-      c3.setTranslateX(-100);
-      c3.rx.setAngle(45);
-      c3.ry.setAngle(45);
+      val c = new Cube(50,Color.RED,1)
+      c.rx.setAngle(45)
+      c.ry.setAngle(45)
+      val c2 = new Cube(50,Color.GREEN,1)
+      c2.setTranslateX(100)
+      c2.rx.setAngle(45)
+      c2.ry.setAngle(45)
+      val c3 = new Cube(50,Color.ORANGE,1)
+      c3.setTranslateX(-100)
+      c3.rx.setAngle(45)
+      c3.ry.setAngle(45)
 
       animation = new Timeline {
         cycleCount = Timeline.INDEFINITE
@@ -65,14 +65,14 @@ object CubeSampleDemo extends JFXApp {
         )
       }
 
-      return new Group(c,c2,c3);
+      new Group(c,c2,c3)
     }
 
-    def play(): Unit = {
+    def play() {
       animation.play()
     }
 
-    def stop(): Unit = {
+    def stop() {
       animation.pause()
     }
 

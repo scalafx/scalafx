@@ -8,7 +8,7 @@ object Formatter {
 
 }
 
-abstract sealed case class Formatter(val description: String) {
+abstract sealed case class Formatter(description: String) {
 
   import colorselector._
 
@@ -25,7 +25,7 @@ abstract sealed case class Formatter(val description: String) {
 }
 
 object HexFormatter extends Formatter("Hexadecimal") {
-  val HEXADECIMAL_FORMAT = "#%02x%02x%02x";
+  val HEXADECIMAL_FORMAT = "#%02x%02x%02x"
 
   def formatWithAlpha(c: Color): String = {
     val (r, g, b) = super.colorToRgbInt(c)
@@ -53,8 +53,8 @@ object RgbFormatter extends Formatter("RGB") {
 }
 
 object PercentFormatter extends Formatter("Percent") {
-  val RGB_FORMAT = "rgb(%3d%%, %3d%%, %3d%%)";
-  val RGBA_FORMAT = "rgba(%3d%%, %3d%%, %3d%%, %.2f)";
+  val RGB_FORMAT = "rgb(%3d%%, %3d%%, %3d%%)"
+  val RGBA_FORMAT = "rgba(%3d%%, %3d%%, %3d%%, %.2f)"
 
   private def doubleToInt(d: Double) = (100 * d).toInt
 

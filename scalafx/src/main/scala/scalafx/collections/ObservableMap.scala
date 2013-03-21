@@ -42,12 +42,12 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
   // CHANGING INDICATORS - BEGIN
 
   /**
-   * Indicates a change in a ObservableMap
+   * Indicates a change in an ObservableMap
    */
   trait Change[K, V]
 
   /**
-   * Indicates a addition in a ObservableMap
+   * Indicates an addition in an ObservableMap
    *
    * @param key Handled Key.
    * @param added Added element.
@@ -55,7 +55,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
   case class Add[K, V](key: K, added: V) extends Change[K, V]
 
   /**
-   * Indicates a remotion in a ObservableMap
+   * Indicates a removal in an ObservableMap
    *
    * @param key Handled Key.
    * @param removed Removed element.
@@ -63,7 +63,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
   case class Remove[K, V](key: K, removed: V) extends Change[K, V]
 
   /**
-   * Indicates a replacement in a ObservableMap
+   * Indicates a replacement in an ObservableMap
    *
    * @param key Handled Key.
    * @param added Added Value.
@@ -76,7 +76,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
   // CREATION METHODS - BEGIN
 
   /**
-   * Creates a empty ObservableMap.
+   * Creates an empty ObservableMap.
    */
   def empty[K, V]: ObservableMap[K, V] = new ObservableHashMap[K, V]
 
@@ -99,7 +99,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    * Note that mutation operations made directly to the underlying map are not reported to
    * observers of any ObservableMap that wraps it.
    *
-   * @param A Map that backs this ObservableMap
+   * @param originalMap A Map that backs this ObservableMap
    *
    * @return A newly created ObservableMap
    */
@@ -118,7 +118,6 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
  *
  * @tparam K Key type
  * @tparam V Value type.
- * @param delegate ObservableMap's JavaFX to be wrapped. Its default value is ObservableMap
  * returned by
  * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html#observableHashMap() observableHashMap]]
  * method from
@@ -135,7 +134,7 @@ trait ObservableMap[K, V]
   /**
    * The result when this map is used as a builder
    */
-  override def result = this
+  override def result() = this
 
   /**
    * The empty map of the same type as this map
@@ -147,7 +146,7 @@ trait ObservableMap[K, V]
   /**
    * Adds a new key/value pair to this map.
    *
-   * @param the key/value pair.
+   * @param kv the key/value pair.
    * @return the map itself
    */
   def +=(kv: (K, V)) = {
@@ -158,7 +157,7 @@ trait ObservableMap[K, V]
   /**
    * Removes a key from this map.
    *
-   * @param the key to be removed
+   * @param key the key to be removed
    * @return the map itself.
    */
   def -=(key: K) = {
@@ -169,7 +168,9 @@ trait ObservableMap[K, V]
   /**
    * Removes all elements from the map. After this operation has completed, the map will be empty.
    */
-  override def clear = delegate.clear
+  override def clear() {
+    delegate.clear()
+  }
 
   /**
    * Creates a new iterator over all key/value pairs of this map
@@ -180,7 +181,7 @@ trait ObservableMap[K, V]
     // Definition copied from JavaConversions.JMapWrapperLike.iterator
     val it = delegate.entrySet.iterator
     def hasNext = it.hasNext
-    def next = { val e = it.next; (e.getKey, e.getValue) }
+    def next() = { val e = it.next; (e.getKey, e.getValue) }
   }
 
   /**

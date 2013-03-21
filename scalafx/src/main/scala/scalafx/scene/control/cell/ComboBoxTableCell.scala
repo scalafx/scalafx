@@ -97,7 +97,7 @@ class ComboBoxTableCell[S, T](override val delegate: jfxscc.ComboBoxTableCell[S,
   with ConvertableCell[jfxscc.ComboBoxTableCell[S, T], T, T]
   with ComboBoxEditableCell[jfxscc.ComboBoxTableCell[S, T], T]
   with UpdatableCell[jfxscc.ComboBoxTableCell[S, T], T]
-  with ItemnableCell[jfxscc.ComboBoxTableCell[S, T], T]
+  with ItemableCell[jfxscc.ComboBoxTableCell[S, T], T]
   with SFXDelegate[jfxscc.ComboBoxTableCell[S, T]] {
 
   /**

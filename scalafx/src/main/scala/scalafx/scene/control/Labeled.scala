@@ -86,7 +86,7 @@ abstract class Labeled(override val delegate: jfxsc.Labeled)
   }
 
   /**
-   * The padding around the Labeled's text and graphic content.
+   * The padding around the Label's text and graphic content.
    */
   def labelPadding: ReadOnlyObjectProperty[jfxg.Insets] = delegate.labelPaddingProperty
 

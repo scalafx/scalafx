@@ -60,17 +60,23 @@ class TableCell[S, T](override val delegate: jfxsc.TableCell[S, T] = new jfxsc.T
   /**
    * Call this function to transition from an editing state into a non-editing state, without saving any user input.
    */
-  def cancelEdit = delegate.cancelEdit
+  def cancelEdit() {
+    delegate.cancelEdit()
+  }
 
   /**
    * Call this function to transition from an editing state into a non-editing state, and in the process saving any
    * user input.
    */
-  def commitEdit(newValue: T) = delegate.commitEdit(newValue)
+  def commitEdit(newValue: T) {
+    delegate.commitEdit(newValue)
+  }
 
   /**
    * Call this function to transition from a non-editing state into an editing state, if the cell is editable.
    */
-  def startEdit = delegate.startEdit
+  def startEdit() {
+    delegate.startEdit()
+  }
 
 }

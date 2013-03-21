@@ -81,7 +81,9 @@ class DragEvent(override val delegate: jfxsi.DragEvent) extends InputEvent(deleg
   /**
    * Accepts this DragEvent, choosing the transfer mode for the drop operation.
    */
-  def acceptTransferModes(transferModes: jfxsi.TransferMode*) = delegate.acceptTransferModes(transferModes: _*)
+  def acceptTransferModes(transferModes: jfxsi.TransferMode*) {
+    delegate.acceptTransferModes(transferModes: _*)
+  }
 
   /**
    * Gets transfer mode accepted by potential target.

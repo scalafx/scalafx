@@ -64,11 +64,11 @@ class ZoomEvent(override val delegate: jfxsi.ZoomEvent)
   /**
    * Gets the zooming amount of this gesture.
    */
-  def totalZoomFactor = delegate.getTotalZoomFactor()
+  def totalZoomFactor = delegate.getTotalZoomFactor
 
   /**
    * Gets the zooming amount of this event.
    */
-  def zoomFactor = delegate.getZoomFactor()
+  def zoomFactor = delegate.getZoomFactor
 
 }

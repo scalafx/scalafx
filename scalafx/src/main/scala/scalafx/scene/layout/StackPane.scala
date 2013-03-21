@@ -42,7 +42,9 @@ object StackPane {
   /**
    * Removes all hbox constraints from the child node.
    */
-  def clearConstraints(child: jfxs.Node) = jfxsl.StackPane.clearConstraints(child)
+  def clearConstraints(child: jfxs.Node) {
+    jfxsl.StackPane.clearConstraints(child)
+  }
 
   /**
    * Returns the child's alignment constraint if set.
@@ -52,7 +54,9 @@ object StackPane {
   /**
    * Sets the alignment for the child when contained by a stackpane.
    */
-  def setAlignment(child: Node, value: Pos) = jfxsl.StackPane.setAlignment(child, value)
+  def setAlignment(child: Node, value: Pos) {
+    jfxsl.StackPane.setAlignment(child, value)
+  }
 
   /**
    * Returns the child's margin constraint if set.
@@ -62,7 +66,9 @@ object StackPane {
   /**
    * Sets the margin for the child when contained by an hbox.
    */
-  def setMargin(child: Node, value: Insets) = jfxsl.StackPane.setMargin(child, value)
+  def setMargin(child: Node, value: Insets) {
+    jfxsl.StackPane.setMargin(child, value)
+  }
 
 }
 

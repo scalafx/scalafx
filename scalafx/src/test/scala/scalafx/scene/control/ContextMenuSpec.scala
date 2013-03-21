@@ -49,10 +49,10 @@ class ContextMenuSpec
     val menuItemA = new MenuItem("MenuItemA")
     val menuItemB = new MenuItem("MenuItemB")
 
-    val contexMenu = new ContextMenu()
-    contexMenu.items.size should (equal(0))
+    val contextMenu = new ContextMenu()
+    contextMenu.items.size should (equal(0))
 
-    contexMenu.items +=(menuItemA, menuItemB)
-    contexMenu.items.size should (equal(2))
+    contextMenu.items +=(menuItemA, menuItemB)
+    contextMenu.items.size should (equal(2))
   }
 }

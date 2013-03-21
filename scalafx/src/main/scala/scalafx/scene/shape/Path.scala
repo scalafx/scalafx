@@ -45,7 +45,7 @@ class Path(override val delegate:jfxss.Path = new jfxss.Path()) extends Shape(de
   def elements = delegate.getElements
   def elements_=(c: Iterable[PathElement]) {
     if (null == c) {
-      elements.clear
+      elements.clear()
     } else {
       elements.setAll(c.map(_.delegate))
     }

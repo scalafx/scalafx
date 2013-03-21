@@ -21,7 +21,7 @@ trait RunOnApplicationThread extends AbstractSuite { this: Suite =>
         }
       }
     })
-    appThreadLatch.await();
+    appThreadLatch.await()
     if (testException != null) {
       throw testException
     }

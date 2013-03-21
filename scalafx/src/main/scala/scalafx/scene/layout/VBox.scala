@@ -41,9 +41,11 @@ object VBox {
   implicit def sfxVBox2jfx(v: VBox) = v.delegate
 
   /**
-   * Removes all hbox constraints from the child node.
+   * Removes all vbox constraints from the child node.
    */
-  def clearConstraints(child: jfxs.Node) = jfxsl.VBox.clearConstraints(child)
+  def clearConstraints(child: jfxs.Node) {
+    jfxsl.VBox.clearConstraints(child)
+  }
 
   /**
    * Returns the child's margin constraint if set.
@@ -51,9 +53,11 @@ object VBox {
   def getMargin(child: Node) = jfxsl.VBox.getMargin(child)
 
   /**
-   * Sets the margin for the child when contained by an hbox.
+   * Sets the margin for the child when contained by a vbox.
    */
-  def setMargin(child: Node, value: Insets) = jfxsl.VBox.setMargin(child, value)
+  def setMargin(child: Node, value: Insets) {
+    jfxsl.VBox.setMargin(child, value)
+  }
 
   /**
    * Returns the child's vgrow constraint if set.
@@ -61,9 +65,11 @@ object VBox {
   def getVgrow(child: Node) = jfxsl.VBox.getVgrow(child)
 
   /**
-   * Sets the vertical grow priority for the child when contained by an hbox.
+   * Sets the vertical grow priority for the child when contained by a vbox.
    */
-  def setVgrow(child: Node, value: Priority) = jfxsl.VBox.setVgrow(child, value)
+  def setVgrow(child: Node, value: Priority) {
+    jfxsl.VBox.setVgrow(child, value)
+  }
 
 }
 
@@ -105,6 +111,8 @@ class VBox(override val delegate: jfxsl.VBox = new jfxsl.VBox)
   /**
    * Requests a layout pass to be performed before the next scene is rendered.
    */
-  def requestLayout = delegate.requestLayout
+  def requestLayout() {
+    delegate.requestLayout()
+  }
 
 }

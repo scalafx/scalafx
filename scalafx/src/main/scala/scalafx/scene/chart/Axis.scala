@@ -52,16 +52,24 @@ object Axis {
   
   final class TickMark[T](override val delegate: jfxsc.Axis.TickMark[T] = new jfxsc.Axis.TickMark[T]()) extends SFXDelegate[jfxsc.Axis.TickMark[T]] {
     def label: StringExpression = delegate.labelProperty
-    def label_= (value: String) = delegate.setLabel(value)
+    def label_= (value: String) {
+      delegate.setLabel(value)
+    }
     
     def position: NumberExpression = delegate.positionProperty
-    def position_= (value: Double) = delegate.setPosition(value)
+    def position_= (value: Double) {
+      delegate.setPosition(value)
+    }
     
     def value: ObjectExpression[T] = delegate.valueProperty
-    def value_= (value: T) = delegate.setValue(value)
+    def value_= (value: T) {
+      delegate.setValue(value)
+    }
     
     def textVisible = delegate.isTextVisible
-    def textVisible_= (v: Boolean) = delegate.setTextVisible(v)
+    def textVisible_= (v: Boolean) {
+      delegate.setTextVisible(v)
+    }
   }
 }
 
@@ -129,13 +137,19 @@ abstract class Axis[T](override val delegate: jfxsc.Axis[T]) extends Region(dele
   
   def zeroPosition = delegate.getZeroPosition
   
-  def invalidateRange(data: Buffer[T]) = delegate.invalidateRange(data)
+  def invalidateRange(data: Buffer[T]) {
+    delegate.invalidateRange(data)
+  }
   
   def isValueOnAxis(value: T) = delegate.isValueOnAxis(value)
   
-  def requestAxisLayout = delegate.requestAxisLayout
+  def requestAxisLayout() {
+    delegate.requestAxisLayout()
+  }
   
-  def requestLayout = delegate.requestLayout
+  def requestLayout() {
+    delegate.requestLayout()
+  }
   
   def toNumericValue(value: T) = delegate.toNumericValue(value)
   

@@ -41,13 +41,13 @@ trait UtilIncludes {
   /**
    * Convert a Function1 to a Callback JavaFX.
    */
-  implicit def function12jfxCallback[P, R](f: Function1[P, R]) = new jfxu.Callback[P, R] {
+  implicit def function12jfxCallback[P, R](f: (P) => R) = new jfxu.Callback[P, R] {
     def call(param: P) = f(param)
   }
   /**
    * Convert a Pair JavaFX to a Tuple2.
    */
-  implicit def jfxPair2Tuple2[K, V](p: jfxu.Pair[K, V]) = (p.getKey(), p.getValue())
+  implicit def jfxPair2Tuple2[K, V](p: jfxu.Pair[K, V]) = (p.getKey, p.getValue)
   /**
    * Convert a Tuple2 to a Pair JavaFX.
    */

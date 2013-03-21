@@ -53,8 +53,8 @@ class ObservableBufferSpec[T]
    * generated map must be a ObservableBuffer.
    *
    * @param generatedBuffer Generated Buffer, that should be a ObservableBuffer.
-   * @param original Buffer Original ObservableBuffer.
-   * @param shouldBeTheSame If both mapos should be same instance.
+   * @param originalBuffer Buffer Original ObservableBuffer.
+   * @param shouldBeTheSame If both maps should be same instance.
    */
   private def compareInstances(generatedBuffer: Buffer[_],
     originalBuffer: ObservableBuffer[_], shouldBeTheSame: Boolean) {
@@ -288,7 +288,7 @@ class ObservableBufferSpec[T]
     buffer should be('empty)
 
     buffer += ("a", "b", "c")
-    buffer.clear
+    buffer.clear()
     buffer should be('empty)
 
     buffer += ("a", "b", "c")
@@ -355,7 +355,7 @@ class ObservableBufferSpec[T]
         }
     }
 
-    // Executuion
+    // Execution
     ObservableBuffer.rotate(buffer, 2)
 
     // Verification
@@ -441,7 +441,7 @@ class ObservableBufferSpec[T]
 
   it should "throws a exception when sort a buffer that is composed by non Comparable subtypes" in {
     // Preparation
-    case class A(val value: Int)
+    case class A(value: Int)
     val buffer = ObservableBuffer(A(4), A(3), A(1), A(5), A(2))
 
     // Execution

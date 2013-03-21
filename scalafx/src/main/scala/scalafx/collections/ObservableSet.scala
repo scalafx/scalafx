@@ -123,7 +123,7 @@ trait ObservableSet[T]
   /**
    * The result when this set is used as a builder
    */
-  override def result = this
+  override def result() = this
 
   /**
    * Generates a empty ObservableSet
@@ -157,7 +157,9 @@ trait ObservableSet[T]
   /**
    * Removes all elements from the set. After this operation has completed, the set will be empty.
    */
-  override def clear = delegate.clear
+  override def clear() {
+    delegate.clear()
+  }
 
   /**
    * Creates a new iterator over elements of this set
@@ -167,7 +169,7 @@ trait ObservableSet[T]
 
     def hasNext = it.hasNext
 
-    def next = it.next
+    def next() = it.next
   }
 
   /**

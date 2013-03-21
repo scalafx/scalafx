@@ -39,29 +39,29 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class MultipleMultipleSelectionModelSpec[T]
+class MultipleSelectionModelSpec[T]
   extends AbstractSFXDelegateSpec[jfxsc.MultipleSelectionModel[T], MultipleSelectionModel[T], jfxsc.MultipleSelectionModelBuilder[T, _]](classOf[jfxsc.MultipleSelectionModel[T]], classOf[MultipleSelectionModel[T]], classOf[jfxsc.MultipleSelectionModelBuilder[T, _]]) {
 
-  class SimpleMultipleSelectionModel[T] extends jfxsc.MultipleSelectionModel[T] {
+  class SimpleMultipleSelectionModel extends jfxsc.MultipleSelectionModel[T] {
     def getSelectedIndices: jfxc.ObservableList[java.lang.Integer] = null
     def getSelectedItems: jfxc.ObservableList[T] = null
-    def selectAll: Unit = {}
-    def selectFirst: Unit = {}
-    def selectIndices(index: Int, indices: Int*): Unit = {}
-    def selectLast: Unit = {}
-    def clearAndSelect(index: Int): Unit = {}
-    def clearSelection: Unit = {}
-    def clearSelection(index: Int): Unit = {}
+    def selectAll() {}
+    def selectFirst() {}
+    def selectIndices(index: Int, indices: Int*) {}
+    def selectLast() {}
+    def clearAndSelect(index: Int) {}
+    def clearSelection() {}
+    def clearSelection(index: Int) {}
     def isEmpty: Boolean = false
     def isSelected(index: Int): Boolean = false
-    def select(index: Int): Unit = {}
-    def select(obj: T): Unit = {}
-    def selectNext: Unit = {}
-    def selectPrevious: Unit = {}
+    def select(index: Int) {}
+    def select(obj: T) {}
+    def selectNext() {}
+    def selectPrevious() {}
   }
 
   override protected def getScalaClassInstance = new MultipleSelectionModel[T](getJavaClassInstance) {}
 
-  override protected def getJavaClassInstance = new SimpleMultipleSelectionModel[T]
+  override protected def getJavaClassInstance = new SimpleMultipleSelectionModel
 
 }

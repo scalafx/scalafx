@@ -38,5 +38,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class CheckBoxCheckBoxListCellSpec[T]
+class CheckBoxListCellSpec[T]
   extends AbstractSFXDelegateSpec[jfxscc.CheckBoxListCell[T], CheckBoxListCell[T], jfxscc.CheckBoxListCellBuilder[T, _]](classOf[jfxscc.CheckBoxListCell[T]], classOf[CheckBoxListCell[T]], classOf[jfxscc.CheckBoxListCellBuilder[T, _]])

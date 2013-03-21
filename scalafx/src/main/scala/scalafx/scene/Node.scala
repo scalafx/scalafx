@@ -554,7 +554,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
 
   def styleClass_=(c: Iterable[String]) {
     if(null == c) {
-      styleClass.clear
+      styleClass.clear()
     } else {
       styleClass.setAll(c)
     }
@@ -567,7 +567,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
 
   def transforms_=(c: Iterable[Transform]) {
     if (null == c) {
-      transforms.clear
+      transforms.clear()
     } else {
       transforms.setAll(c.map(_.delegate))
     }
@@ -625,7 +625,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Pseudo-property that indicates this Node position inside its respective parent.
    */
-  def alignmentInParent: Pos = delegate.getProperties().get("alignment").asInstanceOf[jfxg.Pos]
+  def alignmentInParent: Pos = delegate.getProperties.get("alignment").asInstanceOf[jfxg.Pos]
 
   /**
    * Sets this Node's alignment constraint inside its Parent. If set, will override the Parent's default alignment.
@@ -643,7 +643,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * [[http://docs.oracle.com/javafx/2/api/javafx/scene/Node.html#getProperties() JavaFX Node's getProperties()]] and
    * `setAlignment` static method from
    *
-   * '''Do not confuse''' with `alignment' property from [[scalafx.delegate.AlignmentDelegate]]! It refers to alignment
+   * '''Do not confuse''' with `alignment` property from [[scalafx.delegate.AlignmentDelegate]]! It refers to alignment
    * ''inside'' element, while `alignmentInParent` refers to element's alignment inside its parent.
    *
    * @param p New node's Position
@@ -666,7 +666,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    *
    * @return this Node's margin constraint inside its Parent or `null` if no margin was set.
    */
-  def margin: Insets = delegate.getProperties().get("margin").asInstanceOf[jfxg.Insets]
+  def margin: Insets = delegate.getProperties.get("margin").asInstanceOf[jfxg.Insets]
 
   /**
    * Sets this Node's margin constraint inside its Parent if set. If set, the parent will layout the child with the
@@ -674,10 +674,10 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Internally it calls `setMargin(Node, Insets)` static method from JavaFX's `BorderPane`, `FlowPane`,
    * `GridPane`, `HBox`, `StackPane` and `VBox` besides fill this Node's "margin" property.
    *
-   * @param The margin of space around this Node inside its parent.
+   * @param i The margin of space around this Node inside its parent.
    */
   def margin_=(i: Insets) {
-    delegate.getProperties().put("margin", i.delegate)
+    delegate.getProperties.put("margin", i.delegate)
     // for compatibility with layouts, which all use different keys
     jfxsl.BorderPane.setMargin(delegate, i)
     jfxsl.FlowPane.setMargin(delegate, i)
@@ -693,7 +693,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    *
    * @return the horizontal grow priority for the child or `null` if no priority was set
    */
-  def hgrow: Priority = delegate.getProperties().get("hgrow").asInstanceOf[jfxsl.Priority]
+  def hgrow: Priority = delegate.getProperties.get("hgrow").asInstanceOf[jfxsl.Priority]
 
   /**
    * Sets the horizontal grow priority for this Node inside its parent. Setting the value to `null` will remove
@@ -715,7 +715,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    *
    * @return the vertical grow priority for the child or `null` if no priority was set
    */
-  def vgrow: Priority = delegate.getProperties().get("vgrow").asInstanceOf[jfxsl.Priority]
+  def vgrow: Priority = delegate.getProperties.get("vgrow").asInstanceOf[jfxsl.Priority]
 
   /**
    * Sets the vertical grow priority for this Node inside its parent. Setting the value to `null` will remove
@@ -735,19 +735,23 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Registers an event filter to this node.
    */
-  def addEventFilter[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) =
+  def addEventFilter[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) {
     delegate.addEventFilter(eventType, eventFilter)
+  }
 
   /**
    * Registers an event handler to this node.
    */
-  def addEventHandler[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) =
+  def addEventHandler[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) {
     delegate.addEventHandler(eventType, eventFilter)
+  }
 
   /**
    * If the node is resizable, will set its layout bounds to its current preferred width and height.
    */
-  def autosize = delegate.autosize
+  def autosize() {
+    delegate.autosize()
+  }
 
   /**
    * Returns true if the given point (specified in the local coordinate space of this Node) is
@@ -764,7 +768,9 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Fires the specified event.
    */
-  def fireEvent(event: Event) = delegate.fireEvent(event)
+  def fireEvent(event: Event) {
+    delegate.fireEvent(event)
+  }
 
   /**
    * The 'alphabetic' (or 'roman') baseline offset from the node's layoutBounds.minY location
@@ -873,36 +879,45 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Sets the node's layoutX and layoutY translation properties in order to relocate this node
    * to the x,y location in the parent.
    */
-  def relocate(x: Double, y: Double) = delegate.relocate(x, y)
+  def relocate(x: Double, y: Double) {
+    delegate.relocate(x, y)
+  }
 
   /**
    * Unregisters a previously registered event filter from this node.
    */
-  def removeEventFilter[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) =
+  def removeEventFilter[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) {
     delegate.removeEventFilter(eventType, eventFilter)
+  }
 
   /**
    * Unregisters a previously registered event handler from this node.
    */
-  def removeEventHandler[T <: jfxe.Event](eventType: jfxe.EventType[T], eventHandler: jfxe.EventHandler[T]) =
+  def removeEventHandler[T <: jfxe.Event](eventType: jfxe.EventType[T], eventHandler: jfxe.EventHandler[T]) {
     delegate.removeEventHandler(eventType, eventHandler)
+  }
 
   /**
    * Requests that this Node get the input focus, and that this Node's top-level ancestor become
    * the focused window.
    */
-  def requestFocus = delegate.requestFocus
+  def requestFocus() {
+    delegate.requestFocus()
+  }
 
   /**
    * If the node is resizable, will set its layout bounds to the specified width and height.
    */
-  def resize(width: Double, height: Double) = delegate.resize(width, height)
+  def resize(width: Double, height: Double) {
+    delegate.resize(width, height)
+  }
 
   /**
    * If the node is resizable, will set its layout bounds to the specified width and height.
    */
-  def resizeRelocate(x: Double, y: Double, width: Double, height: Double) =
+  def resizeRelocate(x: Double, y: Double, width: Double, height: Double) {
     delegate.resizeRelocate(x, y, width, height)
+  }
 
   /**
    * Transforms a rectangle from the coordinate space of the Scene into the local coordinate space
@@ -931,8 +946,9 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Takes a snapshot of this node at the next frame and calls the specified callback method when the image is ready.
    */
-  def snapshot(callback: jfxs.SnapshotResult => Unit, params: SnapshotParameters, image: WritableImage): Unit =
+  def snapshot(callback: jfxs.SnapshotResult => Unit, params: SnapshotParameters, image: WritableImage) {
     delegate.snapshot(callback, params, image)
+  }
 
   /**
    * Confirms a potential drag and drop gesture that is recognized over this Node.
@@ -943,17 +959,23 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    * Starts a full press-drag-release gesture with this node as gesture source.
    */
-  def startFullDrag = delegate.startFullDrag
+  def startFullDrag() {
+    delegate.startFullDrag()
+  }
 
   /**
    * Moves this Node to the back of its sibling nodes in terms of z-order.
    */
-  def toBack = delegate.toBack
+  def toBack() {
+    delegate.toBack()
+  }
 
   /**
    * Moves this Node to the front of its sibling nodes in terms of z-order.
    */
-  def toFront = delegate.toFront
+  def toFront() {
+    delegate.toFront()
+  }
 
   /**
    * An affine transform that holds the computed local-to-parent transform.

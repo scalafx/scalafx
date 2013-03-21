@@ -83,27 +83,27 @@ class ClipboardContent(override val delegate: jfxsi.ClipboardContent = new jfxsi
   /**
    * Gets whether an HTML text String (DataFormat.HTML) has been registered on this Clipboard.
    */
-  def hasHtml = delegate.hasHtml()
+  def hasHtml = delegate.hasHtml
 
   /**
    * Gets whether an Image (DataFormat.IMAGE) has been registered on this Clipboard.
    */
-  def hasImage = delegate.hasImage()
+  def hasImage = delegate.hasImage
 
   /**
    * Gets whether an RTF String (DataFormat.RTF) has been registered on this Clipboard.
    */
-  def hasRtf = delegate.hasRtf()
+  def hasRtf = delegate.hasRtf
 
   /**
    * Gets whether a plain text String (DataFormat.PLAIN_TEXT) has been registered on this Clipboard.
    */
-  def hasString = delegate.hasString()
+  def hasString = delegate.hasString
 
   /**
    * Gets whether a url String (DataFormat.URL) has been registered on this Clipboard.
    */
-  def hasUrl = delegate.hasUrl()
+  def hasUrl = delegate.hasUrl
 
   /**
    * Puts an List of Files onto the Clipboard.

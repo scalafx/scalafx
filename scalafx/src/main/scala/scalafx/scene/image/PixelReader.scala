@@ -63,16 +63,22 @@ trait PixelReader extends SFXDelegate[jfxsi.PixelReader] {
   /**
    * Reads pixel data from a rectangular region of the surface into the specified byte array.
    */
-  def getPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: WritablePixelFormat[ByteBuffer], buffer: Array[Byte], offset: Int, scanlineStride: Int) = delegate.getPixels(x, y, w, h, pixelformat, buffer, offset, scanlineStride)
+  def getPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: WritablePixelFormat[ByteBuffer], buffer: Array[Byte], offset: Int, scanlineStride: Int) {
+    delegate.getPixels(x, y, w, h, pixelformat, buffer, offset, scanlineStride)
+  }
 
   /**
    * Reads pixel data from a rectangular region of the surface into the specified int array.
    */
-  def getPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: WritablePixelFormat[IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int) = delegate.getPixels(x, y, w, h, pixelformat, buffer, offset, scanlineStride)
+  def getPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: WritablePixelFormat[IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int) {
+    delegate.getPixels(x, y, w, h, pixelformat, buffer, offset, scanlineStride)
+  }
 
   /**
    * Reads pixel data from a rectangular region of the surface into the specified buffer.
    */
-  def getPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: WritablePixelFormat[B], buffer: B, scanlineStride: Int) = delegate.getPixels(x, y, w, h, pixelformat, buffer, scanlineStride)
+  def getPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: WritablePixelFormat[B], buffer: B, scanlineStride: Int) {
+    delegate.getPixels(x, y, w, h, pixelformat, buffer, scanlineStride)
+  }
 
 }

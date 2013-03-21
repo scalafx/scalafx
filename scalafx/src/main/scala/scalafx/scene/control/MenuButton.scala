@@ -58,7 +58,7 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
 
   def items_=(c: Iterable[MenuItem]) {
     if (null == c) {
-      items.clear
+      items.clear()
     } else {
       items.addAll(c.map(_.delegate))
     }

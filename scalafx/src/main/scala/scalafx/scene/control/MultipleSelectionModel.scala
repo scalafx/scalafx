@@ -82,8 +82,9 @@ abstract class MultipleSelectionModel[T](override val delegate: jfxsc.MultipleSe
    *
    */
   // To convert Scala varargs to Java varargs, see http://stackoverflow.com/questions/2334200/transforming-scala-varargs-into-java-object-varargs
-  def selectIndices(index: Int, indices: Int*) = 
+  def selectIndices(index: Int, indices: Int*) {
     delegate.selectIndices(index, indices.map(_.asInstanceOf[Int]): _*)
+  }
 
   /**
    * Selects all indices from the given start index to the item before the 
@@ -99,11 +100,15 @@ abstract class MultipleSelectionModel[T](override val delegate: jfxsc.MultipleSe
    * @param start The first index to select - this index will be selected.
    * @param end The last index of the selection - this index will not be selected.
    */
-  def selectRange(start: Int, end: Int) = delegate.selectRange(start, end)
+  def selectRange(start: Int, end: Int) {
+    delegate.selectRange(start, end)
+  }
 
   /**
    * Convenience method to select all available indices.
    */
-  def selectAll = delegate.selectAll
+  def selectAll() {
+    delegate.selectAll()
+  }
 
 }

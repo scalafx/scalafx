@@ -18,7 +18,7 @@ import scalafx.util.converter.DoubleStringConverter
  */
 class SliderLabelControl(property: DoubleProperty) extends FlowPane {
 
-  def this(intProp: IntegerProperty) = this(new DoubleProperty(intProp.getValue(), intProp.name) {
+  def this(intProp: IntegerProperty) = this(new DoubleProperty(intProp.getValue, intProp.name) {
     override def value = intProp.value.toDouble
     override def value_=(v: Double) {
       intProp.value = v.toInt

@@ -64,6 +64,6 @@ class TextArea(override val delegate: jfxsc.TextArea = new jfxsc.TextArea) exten
     wrapText() = v
   }
 
-  def paragraphs = delegate.getParagraphs()
+  def paragraphs = delegate.getParagraphs
 
 }

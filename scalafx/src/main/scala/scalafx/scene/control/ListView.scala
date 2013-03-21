@@ -209,11 +209,15 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * Instructs the ListView to begin editing the item in the given index, if the ListView is
    * editable.
    */
-  def edit(itemIndex: Int) = delegate.edit(itemIndex)
+  def edit(itemIndex: Int) {
+    delegate.edit(itemIndex)
+  }
 
   /**
    * Scrolls the ListView such that the item in the given index is visible to the end user.
    */
-  def scrollTo(index: Int) = delegate.scrollTo(index)
+  def scrollTo(index: Int) {
+    delegate.scrollTo(index)
+  }
 
 }

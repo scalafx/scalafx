@@ -48,7 +48,7 @@ trait PropertyComparator
    *
    * @param javaFxProperties Properties names of JavaFX class.
    * @param scalaFxClass ScalaFX class
-   * @param complement
+   * @param complement Property type output in comparison error string
    */
   private def assertProperties(javaFxProperties: Set[String], scalaFxClass: Class[_], complement: String) {
     val diff = javaFxProperties diff getScalaFXProperties(scalaFxClass)

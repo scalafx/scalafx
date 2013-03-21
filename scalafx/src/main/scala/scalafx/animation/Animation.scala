@@ -167,15 +167,15 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
   /**
    * Pauses the animation.
    */
-  def pause {
-    delegate.pause
+  def pause() {
+    delegate.pause()
   }
 
   /**
    * Plays `Timeline` from current position in the direction indicated by rate.
    */
-  def play {
-    delegate.play
+  def play() {
+    delegate.play()
   }
 
   def playFrom(time: Duration) {
@@ -192,8 +192,8 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
   /**
    * Plays timeline from initial position in forward direction.
    */
-  def playFromStart {
-    delegate.playFromStart
+  def playFromStart() {
+    delegate.playFromStart()
   }
 
   /**

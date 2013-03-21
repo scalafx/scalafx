@@ -49,7 +49,7 @@ object SliderTest extends JFXApp {
 
 class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Slider Properties") {
 
-  override protected def resetProperties {
+  override protected def resetProperties() {
     target.value = originalValue
     target.blockIncrement = originalBlockIncrement
     txfLabelFormatter.text = null
@@ -78,7 +78,7 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
 
   val txfLabelFormatter = new TextField
   txfLabelFormatter.text.onChange(
-    if (txfLabelFormatter.text.get.isEmpty()) {
+    if (txfLabelFormatter.text.get.isEmpty) {
       target.labelFormatter = null
     } else {
       target.labelFormatter = new DoubleStringConverter
@@ -88,7 +88,7 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   val txfMajorTickUnit = new TextField {
     text = originalMajorTickUnit.toString
   }
-  target.majorTickUnit.onChange(txfMajorTickUnit.text = target.majorTickUnit.get.toString())
+  target.majorTickUnit.onChange(txfMajorTickUnit.text = target.majorTickUnit.get.toString)
   txfMajorTickUnit.onAction = fillDoublePropertyFromText(target.majorTickUnit, txfMajorTickUnit, false)
 
   val originalMax = target.max.get()

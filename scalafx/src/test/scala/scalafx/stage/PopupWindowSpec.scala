@@ -40,7 +40,7 @@ import scalafx.testutil.RunOnApplicationThread
  *
  */
 @RunWith(classOf[JUnitRunner])
-class PopupPopupWindowSpec
+class PopupWindowSpec
   extends AbstractSFXDelegateSpec[jfxs.PopupWindow, PopupWindow, jfxs.PopupWindowBuilder[_]](classOf[jfxs.PopupWindow], classOf[PopupWindow], classOf[jfxs.PopupWindowBuilder[_]])
   with RunOnApplicationThread {
 

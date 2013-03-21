@@ -87,8 +87,8 @@ object ScalaFX_Layout_Panes_04 extends JFXApp {
     stroke = Color.WHITE
     arcHeight = 3.5
     arcWidth = 3.5
-    width = questionText.boundsInLocal.getValue.getWidth() + 10
-    height = questionText.boundsInLocal.getValue.getHeight() + 10
+    width = questionText.boundsInLocal.getValue.getWidth + 10
+    height = questionText.boundsInLocal.getValue.getHeight + 10
   }
   val stackPane = new StackPane {
     alignment = Pos.CENTER

@@ -40,13 +40,6 @@ object ProgressBarTableCell {
   def forTableColumn[S](): (TableColumn[S, Double] => TableCell[S, Double]) =
     (view: TableColumn[S, Double]) => jfxscc.ComboBoxTableCell.forTableColumn[S, Double]().call(view)
 
-  /**
-   * Added to satisfy Spec tests.
-   */
-//  @deprecated(message = "Use forTableColumn[S]()", since = "1.0")
-//  def forTableColumn[S]() = jfxscc.ComboBoxTableCell.forTableColumn[S, Double]()
-
-
 }
 
 class ProgressBarTableCell [S](override val delegate: jfxscc.ProgressBarTableCell[S] = new jfxscc.ProgressBarTableCell[S])

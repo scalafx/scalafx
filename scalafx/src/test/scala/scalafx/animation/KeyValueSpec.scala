@@ -50,10 +50,10 @@ class KeyValueSpec
 
   private val doubleProperty = new DoubleProperty(null, name)
 
-  private def evaluateFromSfx(property: Property[_, _], endValue: Any, kv: KeyValue[_, _], evaluateInterpoalator: Boolean = false) {
+  private def evaluateFromSfx(property: Property[_, _], endValue: Any, kv: KeyValue[_, _], evaluateInterpolator: Boolean = false) {
     kv.target should equal(property.delegate)
     kv.endValue should equal(endValue)
-    if (evaluateInterpoalator)
+    if (evaluateInterpolator)
       kv.interpolator should equal(jfxa.Interpolator.EASE_BOTH)
   }
 

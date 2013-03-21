@@ -34,7 +34,7 @@ import scalafx.delegate.SFXDelegate
 object WorkerStateEvent {
   implicit def sfxWorkerStateEvent2jfx(w: WorkerStateEvent) = w.delegate
 
-  // Contants definitions
+  // Constant definitions
 
   /**
    * Common supertype for all worker state event types.

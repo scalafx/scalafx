@@ -37,12 +37,9 @@ import scalafx.delegate.DimensionDelegate
  */
 trait DimensionDelegateSpec[D <: DimensionDelegate[_]] extends FlatSpec {
 
-  /**
-   * 
-   */
   val dimensionDelegate: D
 
-  private def testDeslocation(testedProperty: DoubleProperty, propertyName: String) {
+  private def testDoublePropertyUpdate(testedProperty: DoubleProperty, propertyName: String) {
     var moved = false
     val observerDouble = new DoubleProperty(dimensionDelegate, propertyName)
 
@@ -58,11 +55,11 @@ trait DimensionDelegateSpec[D <: DimensionDelegate[_]] extends FlatSpec {
   }
 
   it should "have its Height observed when it is changed" in {
-    testDeslocation(dimensionDelegate.height, "Height Property")
+    testDoublePropertyUpdate(dimensionDelegate.height, "Height Property")
   }
 
   it should "have its Width observed when it is changed" in {
-    testDeslocation(dimensionDelegate.width, "Width Property")
+    testDoublePropertyUpdate(dimensionDelegate.width, "Width Property")
   }
 
 }
