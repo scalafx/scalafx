@@ -207,7 +207,11 @@ class ObservableMapSpec[K, V]
 
     removedEntries.clear
     // Retain even keys
-    compareInstances(map.retain((i, str) => i % 2 == 0), map, true)
+    // NOTE Due to Scala 2.10 bug SI-7269 cannot use some of Map methods to filter elements.
+    //      The `for` loop implements operation equivalent to `map.retain`
+    //      without throwing ConcurrentModificationException.
+    //    compareInstances(map.retain((i, str) => i % 2 == 0), map, true)
+    for (k <- map.keys.toArray if (k % 2 != 0)) {map.remove(k)}
     map should equal(ObservableMap((10 to 20).filter(_ % 2 == 0).map(i => (i, i.toString))))
     removedEntries.toList.sortWith(_._1 < _._1) should equal((10 to 20).filter(_ % 2 != 0).map(i => (i, i.toString)).toList)
 
