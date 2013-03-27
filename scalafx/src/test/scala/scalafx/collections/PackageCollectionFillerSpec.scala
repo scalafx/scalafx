@@ -46,13 +46,15 @@ import scalafx.scene.control._
 @RunWith(classOf[JUnitRunner])
 class PackageCollectionFillerSpec extends FlatSpec {
 
-  private def executeAndTestChanges[T](originalList: jfxc.ObservableList[T], newContent: Iterable[T]) {
+  private case class Analyzer[T](originalList: jfxc.ObservableList[T]) {
     val originalElements = originalList.toList
+    val copy = originalList.toList
     var addedElements: ju.List[_ <: T] = null
     var removedElements: ju.List[_ <: T] = null
     var wasRemoved: Boolean = false
     var wasAdded = false
     var secondChange: Boolean = false
+    
     originalList.addListener(new jfxc.ListChangeListener[T] {
       def onChanged(change: jfxc.ListChangeListener.Change[_ <: T]) {
         change.next
@@ -63,55 +65,46 @@ class PackageCollectionFillerSpec extends FlatSpec {
         secondChange = change.next
       }
     })
+
+    def evaluate {
+      this.wasRemoved should be(true)
+      this.removedElements.toIterable should be(this.copy)
+      this.secondChange should be(false)
+    }
+  }
+
+  private def executeAndTestChanges[T](originalList: jfxc.ObservableList[T], newContent: Iterable[T]) {
+    val analyzer = Analyzer(originalList)
 
     fillCollection(originalList, newContent)
 
     if (newContent == null || newContent.isEmpty) {
       originalList should be('empty)
-      wasAdded should be(false)
-      addedElements.size should be(0)
+      analyzer.wasAdded should be(false)
+      analyzer.addedElements.size should be(0)
     } else {
       originalList.toList should be(newContent.toList)
-      wasAdded should be(true)
-      addedElements.toList should be(newContent.toList)
+      analyzer.wasAdded should be(true)
+      analyzer.addedElements.toList should be(newContent.toList)
     }
-    wasRemoved should be(true)
-    removedElements.toIterable should be(originalElements)
-    secondChange should be(false)
+    analyzer.evaluate
   }
 
   private def executeAndTestChangesFX[T <: Object](originalList: jfxc.ObservableList[T], newContent: Iterable[SFXDelegate[T]]) {
-    val originalElements = originalList.toList
-    var addedElements: ju.List[_ <: T] = null
-    var removedElements: ju.List[_ <: T] = null
-    var wasRemoved: Boolean = false
-    var wasAdded = false
-    var secondChange: Boolean = false
-    originalList.addListener(new jfxc.ListChangeListener[T] {
-      def onChanged(change: jfxc.ListChangeListener.Change[_ <: T]) {
-        change.next
-        wasRemoved = change.wasRemoved()
-        wasAdded = change.wasAdded()
-        addedElements = change.getAddedSubList()
-        removedElements = change.getRemoved()
-        secondChange = change.next
-      }
-    })
+    val analyzer = Analyzer(originalList)
 
     fillSFXCollection(originalList, newContent)
 
     if (newContent == null || newContent.isEmpty) {
       originalList should be('empty)
-      wasAdded should be(false)
-      addedElements.size should be(0)
+      analyzer.wasAdded should be(false)
+      analyzer.addedElements.size should be(0)
     } else {
       originalList.toList should be(newContent.map(_.delegate).toList)
-      wasAdded should be(true)
-      addedElements.toList should be(newContent.map(_.delegate).toList)
+      analyzer.wasAdded should be(true)
+      analyzer.addedElements.toList should be(newContent.map(_.delegate).toList)
     }
-    wasRemoved should be(true)
-    removedElements.toIterable should be(originalElements)
-    secondChange should be(false)
+    analyzer.evaluate
   }
 
   private def getOriginalStringObservableList: jfxc.ObservableList[String] = jfxc.FXCollections.observableArrayList("A", "B", "C")
@@ -131,59 +124,28 @@ class PackageCollectionFillerSpec extends FlatSpec {
   }
 
   "fillCollectionWithOne" should "clean originalCollection if receives null" in {
-    var addedElements: ju.List[_] = null
-    var removedElements: ju.List[_] = null
-    var wasRemoved: Boolean = false
-    var wasAdded = false
-    var secondChange: Boolean = false
     val originalList = getOriginalStringObservableList
-    originalList.addListener(new jfxc.ListChangeListener[String] {
-      def onChanged(change: jfxc.ListChangeListener.Change[_ <: String]) {
-        change.next
-        wasRemoved = change.wasRemoved()
-        wasAdded = change.wasAdded()
-        addedElements = change.getAddedSubList()
-        removedElements = change.getRemoved()
-        secondChange = change.next
-      }
-    })
+    val analyzer = Analyzer(originalList)
 
     fillCollectionWithOne(originalList, null)
 
     originalList should be('empty)
-    wasAdded should be(false)
-    addedElements.size should be(0)
-    wasRemoved should be(true)
-    removedElements should be(this.getOriginalStringObservableList)
-    secondChange should be(false)
+    analyzer.wasAdded should be(false)
+    analyzer.addedElements.size should be(0)
+    analyzer.evaluate
   }
 
   "fillCollectionWithOne" should "replace original content if receives a not null element" in {
-    var addedElements: ju.List[_] = null
-    var removedElements: ju.List[_] = null
-    var wasRemoved: Boolean = false
-    var wasAdded = false
-    var secondChange: Boolean = false
     val originalList = getOriginalStringObservableList
-    originalList.addListener(new jfxc.ListChangeListener[String] {
-      def onChanged(change: jfxc.ListChangeListener.Change[_ <: String]) {
-        change.next
-        wasRemoved = change.wasRemoved()
-        wasAdded = change.wasAdded()
-        addedElements = change.getAddedSubList()
-        removedElements = change.getRemoved()
-        secondChange = change.next
-      }
-    })
+    val analyzer = Analyzer(originalList)
 
-    fillCollectionWithOne(originalList, "1")
+    val newValue = "1"
+    fillCollectionWithOne(originalList, newValue)
 
-    originalList.toList should be(List("1"))
-    wasAdded should be(true)
-    addedElements.size should be(1)
-    wasRemoved should be(true)
-    removedElements should be(this.getOriginalStringObservableList)
-    secondChange should be(false)
+    originalList.toList should be(List(newValue))
+    analyzer.wasAdded should be(true)
+    analyzer.addedElements.size should be(1)
+    analyzer.evaluate
   }
 
   "fillSFXCollection" should "clean originalCollection if receives null" in {
@@ -199,62 +161,28 @@ class PackageCollectionFillerSpec extends FlatSpec {
   }
 
   "fillSFXCollectionWithOne" should "clean originalCollection if receives null" in {
-    var addedElements: ju.List[_] = null
-    var removedElements: ju.List[_] = null
-    var wasRemoved: Boolean = false
-    var wasAdded = false
-    var secondChange: Boolean = false
     val originalList = getOriginalNodeObservableList
-    val copy = originalList.toList
-    originalList.addListener(new jfxc.ListChangeListener[jfxs.Node] {
-      def onChanged(change: jfxc.ListChangeListener.Change[_ <: jfxs.Node]) {
-        change.next
-        wasRemoved = change.wasRemoved()
-        wasAdded = change.wasAdded()
-        addedElements = change.getAddedSubList()
-        removedElements = change.getRemoved()
-        secondChange = change.next
-      }
-    })
+    val analyzer = Analyzer(originalList)
 
     fillSFXCollectionWithOne(originalList, null)
 
     originalList should be('empty)
-    wasAdded should be(false)
-    addedElements.size should be(0)
-    wasRemoved should be(true)
-    removedElements.toList should be(copy)
-    secondChange should be(false)
+    analyzer.wasAdded should be(false)
+    analyzer.addedElements.size should be(0)
+    analyzer.evaluate
   }
 
   it should "replace original content if receives a not null element" in {
-    var addedElements: ju.List[_] = null
-    var removedElements: ju.List[_] = null
-    var wasRemoved: Boolean = false
-    var wasAdded = false
-    var secondChange: Boolean = false
     val originalList = getOriginalNodeObservableList
-    val copy = originalList.toList
-    originalList.addListener(new jfxc.ListChangeListener[jfxs.Node] {
-      def onChanged(change: jfxc.ListChangeListener.Change[_ <: jfxs.Node]) {
-        change.next
-        wasRemoved = change.wasRemoved()
-        wasAdded = change.wasAdded()
-        addedElements = change.getAddedSubList()
-        removedElements = change.getRemoved()
-        secondChange = change.next
-      }
-    })
+    val analyzer = Analyzer(originalList)
 
-    val newNode = new Slider
-    fillSFXCollectionWithOne(originalList, newNode)
+    val newValue = new Slider
+    fillSFXCollectionWithOne(originalList, newValue)
 
-    originalList.toList should be(List(newNode.delegate))
-    wasAdded should be(true)
-    addedElements.size should be(1)
-    wasRemoved should be(true)
-    removedElements.toList should be(copy)
-    secondChange should be(false)
+    originalList.toList should be(List(newValue.delegate))
+    analyzer.wasAdded should be(true)
+    analyzer.addedElements.size should be(1)
+    analyzer.evaluate
   }
 
 }
