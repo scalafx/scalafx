@@ -26,7 +26,9 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
+import javafx.{ collections => jfxc }
+import scalafx._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
@@ -44,14 +46,9 @@ class Accordion(override val delegate: jfxsc.Accordion = new jfxsc.Accordion) ex
     expandedPane() = v
   }
 
-  def panes = delegate.getPanes
-
+  def panes: jfxc.ObservableList[jfxsc.TitledPane] = delegate.getPanes
   def panes_=(c: Iterable[TitledPane]) {
-    if (null == c) {
-      panes.clear
-    } else {
-      panes.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.panes, c)
   }
 
 }

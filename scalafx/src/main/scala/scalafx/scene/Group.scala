@@ -28,6 +28,8 @@ package scalafx.scene
 
 import collection.JavaConversions._
 import javafx.{ scene => jfxs }
+import javafx.{ collections => jfxc }
+import scalafx._
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
@@ -43,17 +45,12 @@ class Group(override val delegate: jfxs.Group = new jfxs.Group()) extends Parent
    */
   def this(children: jfxs.Node*) = this(new jfxs.Group(children: _*))
 
-  def children = delegate.getChildren
+  def children: jfxc.ObservableList[jfxs.Node] = delegate.getChildren
   def children_=(c: Iterable[Node]) {
-    if (null == c) {
-      children.clear
-    } else {
-      children.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.children, c)
   }
   def children_=(n: Node) {
-    children.clear
-    children.add(n)
+    fillSFXCollectionWithOne(this.children, n)
   }
   def content = children
   def content_=(c: Iterable[Node]) {

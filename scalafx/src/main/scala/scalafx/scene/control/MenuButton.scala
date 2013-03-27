@@ -31,6 +31,7 @@ import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc}
 import javafx.{geometry => jfxg}
 import scala.collection.JavaConversions.asJavaCollection
+import scalafx._
 import scalafx.Includes._
 import scalafx.geometry.Side
 import scalafx.scene.Node
@@ -55,13 +56,8 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
 
   /** The items to show within this buttons menu. */
   def items: jfxc.ObservableList[jfxsc.MenuItem] = delegate.getItems
-
   def items_=(c: Iterable[MenuItem]) {
-    if (null == c) {
-      items.clear
-    } else {
-      items.addAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.items, c)
   }
 
 

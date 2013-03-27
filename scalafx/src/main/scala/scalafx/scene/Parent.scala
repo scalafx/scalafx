@@ -27,7 +27,9 @@
 package scalafx.scene
 
 import collection.JavaConversions._
-import javafx.{scene => jfxs}
+import javafx.{ scene => jfxs }
+import javafx.{ collections => jfxc }
+import scalafx._
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.delegate.SFXDelegate
@@ -39,13 +41,9 @@ object Parent {
 abstract class Parent(override val delegate: jfxs.Parent) extends Node(delegate) with SFXDelegate[jfxs.Parent] {
   def needsLayout: ReadOnlyBooleanProperty = delegate.needsLayoutProperty
 
-  def stylesheets = delegate.getStylesheets
+  def stylesheets: jfxc.ObservableList[String] = delegate.getStylesheets
 
   def stylesheets_=(c: Iterable[String]) {
-    if (null == c) {
-      stylesheets.clear
-    } else {
-      stylesheets.addAll(c)
-    }
+    fillCollection(this.stylesheets, c)
   }
 }

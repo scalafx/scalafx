@@ -30,6 +30,8 @@ import scala.collection.JavaConversions._
 import javafx.scene.{ layout => jfxsl }
 import javafx.{ geometry => jfxg }
 import javafx.{ scene => jfxs }
+import javafx.{ collections => jfxc }
+import scalafx._
 import scalafx.Includes._
 import scalafx.geometry.Insets._
 import scalafx.geometry.Insets
@@ -225,25 +227,17 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
   /**
    *  List of column constraints.
    */
-  def columnConstraints = delegate.getColumnConstraints
+  def columnConstraints: jfxc.ObservableList[jfxsl.ColumnConstraints] = delegate.getColumnConstraints
   def columnConstraints_=(c: Iterable[ColumnConstraints]) {
-    if (null == c) {
-      columnConstraints.clear
-    } else {
-      columnConstraints.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.columnConstraints, c)
   }
 
   /**
    * List of row constraints.
    */
-  def rowConstraints = delegate.getRowConstraints
+  def rowConstraints: jfxc.ObservableList[jfxsl.RowConstraints]  = delegate.getRowConstraints
   def rowConstraints_=(c: Iterable[RowConstraints]) {
-    if (null == c) {
-      rowConstraints.clear
-    } else {
-      rowConstraints.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.rowConstraints, c)
   }
 
   /**

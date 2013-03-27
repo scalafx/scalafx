@@ -26,7 +26,10 @@
  */
 package scalafx.scene.control
 
+import javafx.{ collections => jfxc }
+import scalafx._
 import scalafx.Includes._
+import javafx.{ scene => jfxs }
 import javafx.scene.{ control => jfxsc }
 import scalafx.delegate.SFXDelegate
 import javafx.{ event => jfxe }
@@ -37,33 +40,28 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.geometry.Orientation
 
 object ToolBar {
-	implicit def sfxToolBarTojfx(v: ToolBar) = v.delegate
+  implicit def sfxToolBarTojfx(v: ToolBar) = v.delegate
 }
 
 class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar) extends Control(delegate) with SFXDelegate[jfxsc.ToolBar] {
 
-	def items = delegate.getItems
-	def items_=(c: Iterable[Node]) {
-	  if (null == c) {
-	    items.clear
-	  } else {
-	    items.setAll(c.map(_.delegate))
-	  }
-	}
-	def items_=(n: Node) {
-	    items.clear
-	    items.add(n)
-	}
-	def content = items
-	def content_=(c: Iterable[Node]) {
-		items = c
-	}
-	def content_=(n: Node) {
-	    items = n
-	}
+  def items: jfxc.ObservableList[jfxs.Node] = delegate.getItems
+  def items_=(c: Iterable[Node]) {
+    fillSFXCollection(this.items, c)
+  }
+  def items_=(n: Node) {
+    fillSFXCollectionWithOne(this.items, n)
+  }
+  def content = items
+  def content_=(c: Iterable[Node]) {
+    items = c
+  }
+  def content_=(n: Node) {
+    items = n
+  }
 
-	def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
-	def orientation_=(v: Orientation) {
-		orientation() = v
-	}
+  def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
+  def orientation_=(v: Orientation) {
+    orientation() = v
+  }
 }

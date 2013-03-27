@@ -28,6 +28,8 @@ package scalafx.scene.shape
 
 import collection.JavaConversions._
 import javafx.scene.{shape => jfxss}
+import javafx.{ collections => jfxc }
+import scalafx._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
@@ -42,12 +44,8 @@ class Path(override val delegate:jfxss.Path = new jfxss.Path()) extends Shape(de
     fillRule() = v
   }
 
-  def elements = delegate.getElements
+  def elements: jfxc.ObservableList[jfxss.PathElement] = delegate.getElements
   def elements_=(c: Iterable[PathElement]) {
-    if (null == c) {
-      elements.clear
-    } else {
-      elements.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.elements, c)
   }
 }

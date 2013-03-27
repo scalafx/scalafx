@@ -29,6 +29,8 @@ package scalafx.scene
 import collection.JavaConversions._
 import javafx.{event => jfxe, scene => jfxs}
 import jfxs.{input => jfxsi, paint => jfxsp, layout => jfxsl}
+import javafx.{ collections => jfxc }
+import scalafx._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
@@ -64,19 +66,14 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
     case _ => throw new IllegalStateException("Cannot access children of root: " + root + "\nUse a class that extends Group or Pane, or override the getChildren method.")
   }
 
-  def content = getChildren
+  def content: jfxc.ObservableList[jfxs.Node] = getChildren
 
   def content_=(c: Iterable[Node]) {
-    if (null == c) {
-      content.clear
-    } else {
-      content.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.content, c)
   }
 
   def content_=(n: Node) {
-    content.clear
-    content.add(n)
+    fillSFXCollectionWithOne(this.content, n)
   }
 
   def camera: ObjectProperty[jfxs.Camera] = delegate.cameraProperty
@@ -253,14 +250,10 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
 
   def depthBuffer = delegate.isDepthBuffer
 
-  def stylesheets = delegate.getStylesheets
+  def stylesheets: jfxc.ObservableList[String] = delegate.getStylesheets
 
   def stylesheets_=(c: Iterable[String]) {
-    if (null == c) {
-      stylesheets.clear
-    } else {
-      stylesheets.addAll(c)
-    }
+    fillCollection(stylesheets, c)
   }
 
   /**

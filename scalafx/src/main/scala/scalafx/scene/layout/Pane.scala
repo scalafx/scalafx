@@ -27,7 +27,10 @@
 package scalafx.scene.layout
 
 import collection.JavaConversions._
+import javafx.{scene => jfxs}
 import javafx.scene.{ layout => jfxsl }
+import javafx.{ collections => jfxc }
+import scalafx._
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
@@ -42,24 +45,19 @@ class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
   /**
    * Gets the list of children of this Parent.
    */
-  def children = delegate.getChildren
+  def children: jfxc.ObservableList[jfxs.Node] = delegate.getChildren
 
   /**
    * Gets the list of children of this Parent.
    */
-  def content = children
+  def content: jfxc.ObservableList[jfxs.Node]  = children
   def content_=(c: Iterable[Node]) {
-    if (null == c) {
-      content.clear
-    } else {
-      content.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.content, c)
   }
   /**
    * Adds a simple Node as only content to this Pane.  
    */
   def content_=(n: Node) {
-    content.clear
-    content.add(n)
+    fillSFXCollectionWithOne(this.content, n)
   }
 }

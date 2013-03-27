@@ -35,6 +35,8 @@ import javafx.{ event => jfxe }
 import javafx.{ geometry => jfxg }
 import javafx.{ scene => jfxs }
 import javafx.{ util => jfxu }
+import javafx.{ collections => jfxc }
+import scalafx._
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
@@ -550,27 +552,17 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   /**
    *
    */
-  def styleClass = delegate.getStyleClass
-
+  def styleClass: jfxc.ObservableList[String] = delegate.getStyleClass
   def styleClass_=(c: Iterable[String]) {
-    if(null == c) {
-      styleClass.clear
-    } else {
-      styleClass.setAll(c)
-    }
+    fillCollection(styleClass, c)
   }
 
   /**
    * Defines the ObservableList of Transform objects to be applied to this Node.
    */
-  def transforms = delegate.getTransforms
-
+  def transforms: jfxc.ObservableList[jfxst.Transform] = delegate.getTransforms
   def transforms_=(c: Iterable[Transform]) {
-    if (null == c) {
-      transforms.clear
-    } else {
-      transforms.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(transforms, c)
   }
 
   /**

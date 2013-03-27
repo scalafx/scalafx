@@ -30,6 +30,8 @@ import scala.collection.JavaConversions.asJavaCollection
 
 import javafx.scene.{ control => jfxsc }
 import javafx.{ event => jfxe }
+import javafx.{ collections => jfxc }
+import scalafx._
 import scalafx.Includes._
 import scalafx.scene.Node._
 import scalafx.scene.Node
@@ -58,13 +60,9 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
    * Gets the list of MenuItems for this instance.
    * @return
    */
-  def items = delegate.getItems
+  def items: jfxc.ObservableList[jfxsc.MenuItem] = delegate.getItems
   def items_=(c: Iterable[MenuItem]) = {
-    if (null == c) {
-      items.clear
-    } else {
-      items.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.items, c)
   }
 
   /**
@@ -88,7 +86,7 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
 
   def onHidden = delegate.onHiddenProperty
   def onHidden_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
-    onHidden() =  eventHandler
+    onHidden() = eventHandler
   }
 
   def onHiding = delegate.onHidingProperty
@@ -103,7 +101,7 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
 
   def onShown = delegate.onShownProperty
   def onShown_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
-    onShown() =  eventHandler
+    onShown() = eventHandler
   }
 
 }

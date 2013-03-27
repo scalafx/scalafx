@@ -26,7 +26,9 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
+import javafx.{ collections => jfxc }
+import scalafx._
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
@@ -40,13 +42,9 @@ class ToggleGroup(override val delegate: jfxsc.ToggleGroup = new jfxsc.ToggleGro
 
   def selectedToggle: ReadOnlyObjectProperty[jfxsc.Toggle] = delegate.selectedToggleProperty
 
-  def toggles = delegate.getToggles
+  def toggles: jfxc.ObservableList[jfxsc.Toggle] = delegate.getToggles
   def toggles_=(c: Iterable[Toggle]) {
-    if (null == c) {
-      toggles.clear
-    } else {
-      toggles.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.toggles, c)
   }
 
 }
