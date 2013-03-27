@@ -29,7 +29,7 @@ package scalafx.scene
 import collection.JavaConversions._
 import javafx.{ scene => jfxs }
 import javafx.{ collections => jfxc }
-import scalafx._
+import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate

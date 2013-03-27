@@ -31,7 +31,7 @@ import javafx.scene.{ layout => jfxsl }
 import javafx.{ geometry => jfxg }
 import javafx.{ scene => jfxs }
 import javafx.{ collections => jfxc }
-import scalafx._
+import scalafx.collections._
 import scalafx.Includes._
 import scalafx.geometry.Insets._
 import scalafx.geometry.Insets

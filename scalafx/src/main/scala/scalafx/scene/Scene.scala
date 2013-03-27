@@ -30,7 +30,7 @@ import collection.JavaConversions._
 import javafx.{event => jfxe, scene => jfxs}
 import jfxs.{input => jfxsi, paint => jfxsp, layout => jfxsl}
 import javafx.{ collections => jfxc }
-import scalafx._
+import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty

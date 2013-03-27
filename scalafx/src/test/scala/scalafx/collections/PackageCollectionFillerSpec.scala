@@ -24,22 +24,21 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx
+package scalafx.collections
 
-import org.scalatest.FlatSpec
-import scala.collection.JavaConversions._
+import java.{ util => ju }
 import javafx.{ collections => jfxc }
 import javafx.{ scene => jfxs }
 import jfxs.{ control => jfxsc }
-import java.{ util => ju }
-import scalafx.delegate.SFXDelegate
-import scalafx.scene.control._
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.FlatSpec
+import org.scalatest.junit.JUnitRunner
 import org.scalatest.matchers.ShouldMatchers._
+import scala.collection.JavaConversions._
 import scalafx.Includes._
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
+import scalafx.scene.control._
 
 /**
  * Spec tests for Collection methods in package object.
@@ -80,7 +79,7 @@ class PackageCollectionFillerSpec extends FlatSpec {
     removedElements.toIterable should be(originalElements)
     secondChange should be(false)
   }
-  
+
   private def executeAndTestChangesFX[T <: Object](originalList: jfxc.ObservableList[T], newContent: Iterable[SFXDelegate[T]]) {
     val originalElements = originalList.toList
     var addedElements: ju.List[_ <: T] = null
@@ -196,9 +195,9 @@ class PackageCollectionFillerSpec extends FlatSpec {
   }
 
   it should "replace new content" in {
-    executeAndTestChangesFX(getOriginalNodeObservableList, List(new ChoiceBox, new Slider)) 
+    executeAndTestChangesFX(getOriginalNodeObservableList, List(new ChoiceBox, new Slider))
   }
-  
+
   "fillSFXCollectionWithOne" should "clean originalCollection if receives null" in {
     var addedElements: ju.List[_] = null
     var removedElements: ju.List[_] = null
@@ -249,7 +248,7 @@ class PackageCollectionFillerSpec extends FlatSpec {
 
     val newNode = new Slider
     fillSFXCollectionWithOne(originalList, newNode)
-    
+
     originalList.toList should be(List(newNode.delegate))
     wasAdded should be(true)
     addedElements.size should be(1)
@@ -257,5 +256,5 @@ class PackageCollectionFillerSpec extends FlatSpec {
     removedElements.toList should be(copy)
     secondChange should be(false)
   }
-  
+
 }

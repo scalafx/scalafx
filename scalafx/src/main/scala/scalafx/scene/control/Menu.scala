@@ -31,7 +31,7 @@ import scala.collection.JavaConversions.asJavaCollection
 import javafx.scene.{ control => jfxsc }
 import javafx.{ event => jfxe }
 import javafx.{ collections => jfxc }
-import scalafx._
+import scalafx.collections._
 import scalafx.Includes._
 import scalafx.scene.Node._
 import scalafx.scene.Node

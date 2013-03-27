@@ -30,7 +30,7 @@ import collection.JavaConversions._
 import javafx.{scene => jfxs}
 import javafx.scene.{ layout => jfxsl }
 import javafx.{ collections => jfxc }
-import scalafx._
+import scalafx.collections._
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 

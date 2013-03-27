@@ -24,6 +24,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx
+
 import scala.collection.JavaConversions._
 import javafx.{ collections => jfxc }
 import scalafx.delegate.SFXDelegate
@@ -31,7 +33,8 @@ import scalafx.delegate.SFXDelegate
 /**
  * Utilities methods.
  */
-package object scalafx {
+package object collections {
+
 
   private def internalFiller[A, B](originalList: jfxc.ObservableList[A], filler: Iterable[B], f: B => A) {
     if (null == filler) {

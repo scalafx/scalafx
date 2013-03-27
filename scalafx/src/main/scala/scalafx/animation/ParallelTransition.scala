@@ -29,7 +29,7 @@ package scalafx.animation
 import collection.JavaConversions._
 import javafx.{ animation => jfxa, scene => jfxs }
 import javafx.{ collections => jfxc }
-import scalafx._
+import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.scene.Node
