@@ -54,7 +54,7 @@ class PackageCollectionFillerSpec extends FlatSpec {
     var wasRemoved: Boolean = false
     var wasAdded = false
     var secondChange: Boolean = false
-    
+
     originalList.addListener(new jfxc.ListChangeListener[T] {
       def onChanged(change: jfxc.ListChangeListener.Change[_ <: T]) {
         change.next
@@ -66,7 +66,19 @@ class PackageCollectionFillerSpec extends FlatSpec {
       }
     })
 
-    def evaluate {
+    def emptyEvaluation(list: jfxc.ObservableList[_]) {
+      list should be('empty)
+      this.wasAdded should be(false)
+      this.addedElements.size should be(0)
+    }
+
+    def filledEvaluation(list: jfxc.ObservableList[_], fillingIterable: Iterable[_], extraEval: (Analyzer[_], Iterable[_]) => Unit) {
+      list.toList should be(fillingIterable)
+      this.wasAdded should be(true)
+      extraEval(this, fillingIterable)
+    }
+
+    def finalEvaluation {
       this.wasRemoved should be(true)
       this.removedElements.toIterable should be(this.copy)
       this.secondChange should be(false)
@@ -79,15 +91,11 @@ class PackageCollectionFillerSpec extends FlatSpec {
     fillCollection(originalList, newContent)
 
     if (newContent == null || newContent.isEmpty) {
-      originalList should be('empty)
-      analyzer.wasAdded should be(false)
-      analyzer.addedElements.size should be(0)
+      analyzer.emptyEvaluation(originalList)
     } else {
-      originalList.toList should be(newContent.toList)
-      analyzer.wasAdded should be(true)
-      analyzer.addedElements.toList should be(newContent.toList)
+      analyzer.filledEvaluation(originalList, newContent, (an, li) => an.addedElements.toList should be(li.toList))
     }
-    analyzer.evaluate
+    analyzer.finalEvaluation
   }
 
   private def executeAndTestChangesFX[T <: Object](originalList: jfxc.ObservableList[T], newContent: Iterable[SFXDelegate[T]]) {
@@ -96,15 +104,12 @@ class PackageCollectionFillerSpec extends FlatSpec {
     fillSFXCollection(originalList, newContent)
 
     if (newContent == null || newContent.isEmpty) {
-      originalList should be('empty)
-      analyzer.wasAdded should be(false)
-      analyzer.addedElements.size should be(0)
+      analyzer.emptyEvaluation(originalList)
     } else {
-      originalList.toList should be(newContent.map(_.delegate).toList)
-      analyzer.wasAdded should be(true)
+      analyzer.filledEvaluation(originalList, newContent.map(_.delegate), (an, li) => ())
       analyzer.addedElements.toList should be(newContent.map(_.delegate).toList)
     }
-    analyzer.evaluate
+    analyzer.finalEvaluation
   }
 
   private def getOriginalStringObservableList: jfxc.ObservableList[String] = jfxc.FXCollections.observableArrayList("A", "B", "C")
@@ -129,10 +134,8 @@ class PackageCollectionFillerSpec extends FlatSpec {
 
     fillCollectionWithOne(originalList, null)
 
-    originalList should be('empty)
-    analyzer.wasAdded should be(false)
-    analyzer.addedElements.size should be(0)
-    analyzer.evaluate
+    analyzer.emptyEvaluation(originalList)
+    analyzer.finalEvaluation
   }
 
   "fillCollectionWithOne" should "replace original content if receives a not null element" in {
@@ -142,10 +145,8 @@ class PackageCollectionFillerSpec extends FlatSpec {
     val newValue = "1"
     fillCollectionWithOne(originalList, newValue)
 
-    originalList.toList should be(List(newValue))
-    analyzer.wasAdded should be(true)
-    analyzer.addedElements.size should be(1)
-    analyzer.evaluate
+    analyzer.filledEvaluation(originalList, List(newValue), (an, li) => an.addedElements.size should be(1))
+    analyzer.finalEvaluation
   }
 
   "fillSFXCollection" should "clean originalCollection if receives null" in {
@@ -166,10 +167,8 @@ class PackageCollectionFillerSpec extends FlatSpec {
 
     fillSFXCollectionWithOne(originalList, null)
 
-    originalList should be('empty)
-    analyzer.wasAdded should be(false)
-    analyzer.addedElements.size should be(0)
-    analyzer.evaluate
+    analyzer.emptyEvaluation(originalList)
+    analyzer.finalEvaluation
   }
 
   it should "replace original content if receives a not null element" in {
@@ -179,10 +178,8 @@ class PackageCollectionFillerSpec extends FlatSpec {
     val newValue = new Slider
     fillSFXCollectionWithOne(originalList, newValue)
 
-    originalList.toList should be(List(newValue.delegate))
-    analyzer.wasAdded should be(true)
-    analyzer.addedElements.size should be(1)
-    analyzer.evaluate
+    analyzer.filledEvaluation(originalList, List(newValue.delegate), (an, li) => an.addedElements.size should be(1))
+    analyzer.finalEvaluation
   }
 
 }
