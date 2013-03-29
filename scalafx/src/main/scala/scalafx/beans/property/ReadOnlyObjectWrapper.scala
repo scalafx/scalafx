@@ -44,10 +44,19 @@ class ReadOnlyObjectWrapper[T <: Any](override val delegate: jfxbp.ReadOnlyObjec
   extends ObjectProperty[T](delegate)
   with SFXDelegate[jfxbp.ReadOnlyObjectWrapper[T]] {
 
+  /** Creates a new ReadOnlyObjectWrapper instance.
+    * @param bean the bean of this ReadOnlyObjectWrapper
+    * @param name the name of this ReadOnlyObjectWrapper
+    */
   def this(bean: Object, name: String) = this(new jfxbp.ReadOnlyObjectWrapper[T](bean, name))
 
+  /** Creates a new ReadOnlyObjectWrapper instance.
+    * @param bean the bean of this ReadOnlyObjectWrapper
+    * @param name the name of this ReadOnlyObjectWrapper
+    */
   def this(bean: Object, name: String, initialValue: T) =
     this(new jfxbp.ReadOnlyObjectWrapper[T](bean, name, initialValue))
 
+  /** The read-only property, that is synchronized with this ReadOnlyObjectWrapper. */
   def readOnlyProperty: ReadOnlyObjectProperty[T] = delegate.getReadOnlyProperty
 }
