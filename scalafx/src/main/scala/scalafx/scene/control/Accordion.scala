@@ -26,7 +26,9 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
+import javafx.{ collections => jfxc }
+import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
@@ -36,22 +38,33 @@ object Accordion {
   implicit def sfxAccordion2jfx(v: Accordion) = v.delegate
 }
 
-class Accordion(override val delegate: jfxsc.Accordion = new jfxsc.Accordion) extends Control(delegate) with SFXDelegate[jfxsc.Accordion] {
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/Accordion.html]].
+ */
+class Accordion(override val delegate: jfxsc.Accordion = new jfxsc.Accordion)
+  extends Control(delegate)
+  with SFXDelegate[jfxsc.Accordion] {
 
+  /**
+   * The expanded TitledPane in the Accordion.
+   */
   def expandedPane: ObjectProperty[jfxsc.TitledPane] = delegate.expandedPaneProperty
-
   def expandedPane_=(v: TitledPane) {
     expandedPane() = v
   }
 
-  def panes = delegate.getPanes
-
+  /**
+   * The list of TitledPane in this Accordion.
+   */
+  def panes: jfxc.ObservableList[jfxsc.TitledPane] = delegate.getPanes
+  /**
+   * Sets the list of TitledPane in this Accordion, replacing the prior content. If you want append to current content,
+   * use `add` or similar.
+   *
+   * @param c list of TitledPane in this Accordion to replace prior content.
+   */
   def panes_=(c: Iterable[TitledPane]) {
-    if (null == c) {
-      panes.clear
-    } else {
-      panes.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.panes, c)
   }
 
 }

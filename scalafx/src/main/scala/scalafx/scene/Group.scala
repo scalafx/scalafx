@@ -28,6 +28,8 @@ package scalafx.scene
 
 import collection.JavaConversions._
 import javafx.{ scene => jfxs }
+import javafx.{ collections => jfxc }
+import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
@@ -36,29 +38,57 @@ object Group {
   implicit def sfxGroup2jfx(v: Group) = v.delegate
 }
 
-class Group(override val delegate: jfxs.Group = new jfxs.Group()) extends Parent(delegate) with SFXDelegate[jfxs.Group] {
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/Group.html]].
+ */
+class Group(override val delegate: jfxs.Group = new jfxs.Group())
+  extends Parent(delegate)
+  with SFXDelegate[jfxs.Group] {
 
   /**
    * Constructs a group consisting of children.
    */
   def this(children: jfxs.Node*) = this(new jfxs.Group(children: _*))
 
-  def children = delegate.getChildren
+  /**
+   * Gets the list of children of this `Group`.
+   */
+  def children: jfxc.ObservableList[jfxs.Node] = delegate.getChildren
+  /**
+   * Sets the list of children, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
+   *
+   * @param c list of children to replace prior content.
+   */
   def children_=(c: Iterable[Node]) {
-    if (null == c) {
-      children.clear
-    } else {
-      children.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.children, c)
   }
+  /**
+   * Sets a child, replacing the prior content. If you want append to current content, use `add` or similar.
+   *
+   * @param n Node to replace prior content.
+   */
   def children_=(n: Node) {
-    children.clear
-    children.add(n)
+    fillSFXCollectionWithOne(this.children, n)
   }
+  /**
+   * Gets the list of children of this `Group`.
+   */
   def content = children
+  /**
+   * Sets the list of children, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
+   *
+   * @param c list of children to replace prior content.
+   */
   def content_=(c: Iterable[Node]) {
     children = c
   }
+  /**
+   * Sets a child, replacing the prior content. If you want append to current content, use `add` or similar.
+   *
+   * @param n Node to replace prior content.
+   */
   def content_=(n: Node) {
     children = n
   }

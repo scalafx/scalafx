@@ -30,6 +30,8 @@ import scala.collection.JavaConversions._
 import javafx.scene.{ layout => jfxsl }
 import javafx.{ geometry => jfxg }
 import javafx.{ scene => jfxs }
+import javafx.{ collections => jfxc }
+import scalafx.collections._
 import scalafx.Includes._
 import scalafx.geometry.Insets._
 import scalafx.geometry.Insets
@@ -225,25 +227,29 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
   /**
    *  List of column constraints.
    */
-  def columnConstraints = delegate.getColumnConstraints
+  def columnConstraints: jfxc.ObservableList[jfxsl.ColumnConstraints] = delegate.getColumnConstraints
+  /**
+   * Sets the list of column constraints, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
+   *
+   * @param c list of column constraints to replace prior content.
+   */
   def columnConstraints_=(c: Iterable[ColumnConstraints]) {
-    if (null == c) {
-      columnConstraints.clear
-    } else {
-      columnConstraints.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.columnConstraints, c)
   }
 
   /**
    * List of row constraints.
    */
-  def rowConstraints = delegate.getRowConstraints
+  def rowConstraints: jfxc.ObservableList[jfxsl.RowConstraints] = delegate.getRowConstraints
+  /**
+   * Sets the list of row constraints, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
+   *
+   * @param c list of row constraints to replace prior content.
+   */
   def rowConstraints_=(c: Iterable[RowConstraints]) {
-    if (null == c) {
-      rowConstraints.clear
-    } else {
-      rowConstraints.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.rowConstraints, c)
   }
 
   /**
@@ -276,5 +282,5 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
    * Requests a layout pass to be performed before the next scene is rendered.
    */
   def requestLayout = delegate.requestLayout
-  
+
 }

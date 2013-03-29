@@ -27,7 +27,9 @@
 package scalafx.scene.shape
 
 import collection.JavaConversions._
-import javafx.scene.{shape => jfxss}
+import javafx.scene.{ shape => jfxss }
+import javafx.{ collections => jfxc }
+import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
@@ -36,18 +38,32 @@ object Path {
   implicit def sfxPath2jfx(v: Path) = v.delegate
 }
 
-class Path(override val delegate:jfxss.Path = new jfxss.Path()) extends Shape(delegate) with SFXDelegate[jfxss.Path] {
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/shape/Path.html]].
+ */
+class Path(override val delegate: jfxss.Path = new jfxss.Path())
+  extends Shape(delegate)
+  with SFXDelegate[jfxss.Path] {
+
+  /**
+   * The filling rule constant for determining the interior of the path.
+   */
   def fillRule: ObjectProperty[jfxss.FillRule] = delegate.fillRuleProperty
   def fillRule_=(v: FillRule) {
     fillRule() = v
   }
 
-  def elements = delegate.getElements
+  /**
+   * Observable list of path elements of this path.
+   */
+  def elements: jfxc.ObservableList[jfxss.PathElement] = delegate.getElements
+  /**
+   * Sets the list of path elements, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
+   *
+   * @param c list of path elements to replace prior content.
+   */
   def elements_=(c: Iterable[PathElement]) {
-    if (null == c) {
-      elements.clear
-    } else {
-      elements.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.elements, c)
   }
 }
