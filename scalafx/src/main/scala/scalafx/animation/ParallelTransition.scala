@@ -85,6 +85,12 @@ class ParallelTransition(override val delegate: jfxa.ParallelTransition = new jf
    * A list of Animations that will be played sequentially.
    */
   def children: jfxc.ObservableList[jfxa.Animation] = delegate.getChildren
+  /**
+   * Sets the list of Animations, replacing the prior content. If you want append to current content, use `add` or 
+   * similar.
+   * 
+   * @param c list of Animations to replace prior content.
+   */
   def children_=(c: Iterable[Animation]) {
     fillSFXCollection(this.children, c)
   }

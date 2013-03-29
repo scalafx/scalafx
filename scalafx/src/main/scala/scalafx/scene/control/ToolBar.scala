@@ -43,23 +43,57 @@ object ToolBar {
   implicit def sfxToolBarTojfx(v: ToolBar) = v.delegate
 }
 
-class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar) extends Control(delegate) with SFXDelegate[jfxsc.ToolBar] {
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/ToolBar.html]].
+ */
+class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar)
+  extends Control(delegate)
+  with SFXDelegate[jfxsc.ToolBar] {
 
+  /**
+   * The items contained in the ToolBar.
+   */
   def items: jfxc.ObservableList[jfxs.Node] = delegate.getItems
+  /**
+   * Sets the items, replacing the prior items. If you want append to current items, use `add` or similar.
+   *
+   * @param c list of items to replace prior items.
+   */
   def items_=(c: Iterable[Node]) {
     fillSFXCollection(this.items, c)
   }
+  /**
+   * Sets a node, replacing the prior content. If you want append to current content, use `add` or similar.
+   *
+   * @param n Node to replace prior content.
+   */
   def items_=(n: Node) {
     fillSFXCollectionWithOne(this.items, n)
   }
+  /**
+   * The items contained in the ToolBar.
+   */
   def content = items
+  /**
+   * Sets the items, replacing the prior items. If you want append to current items, use `add` or similar.
+   *
+   * @param c list of items to replace prior items.
+   */
   def content_=(c: Iterable[Node]) {
     items = c
   }
+  /**
+   * Sets a node, replacing the prior content. If you want append to current content, use `add` or similar.
+   *
+   * @param n Node to replace prior content.
+   */
   def content_=(n: Node) {
     items = n
   }
 
+  /**
+   * The orientation of the ToolBar - this can either be horizontal or vertical.
+   */
   def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
   def orientation_=(v: Orientation) {
     orientation() = v

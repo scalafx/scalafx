@@ -228,6 +228,12 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
    *  List of column constraints.
    */
   def columnConstraints: jfxc.ObservableList[jfxsl.ColumnConstraints] = delegate.getColumnConstraints
+  /**
+   * Sets the list of column constraints, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
+   *
+   * @param c list of column constraints to replace prior content.
+   */
   def columnConstraints_=(c: Iterable[ColumnConstraints]) {
     fillSFXCollection(this.columnConstraints, c)
   }
@@ -235,7 +241,13 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
   /**
    * List of row constraints.
    */
-  def rowConstraints: jfxc.ObservableList[jfxsl.RowConstraints]  = delegate.getRowConstraints
+  def rowConstraints: jfxc.ObservableList[jfxsl.RowConstraints] = delegate.getRowConstraints
+  /**
+   * Sets the list of row constraints, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
+   *
+   * @param c list of row constraints to replace prior content.
+   */
   def rowConstraints_=(c: Iterable[RowConstraints]) {
     fillSFXCollection(this.rowConstraints, c)
   }
@@ -270,5 +282,5 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
    * Requests a layout pass to be performed before the next scene is rendered.
    */
   def requestLayout = delegate.requestLayout
-  
+
 }

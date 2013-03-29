@@ -64,7 +64,11 @@ object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
 }
 
-abstract class Node protected (override val delegate: jfxs.Node) extends SFXDelegate[jfxs.Node] {
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/Node.html]].
+ */
+abstract class Node protected (override val delegate: jfxs.Node) 
+extends SFXDelegate[jfxs.Node] {
 
   /**
    * The BlendMode used to blend this individual node into the scene behind it.
@@ -550,9 +554,15 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   }
 
   /**
-   *
+   * CSS styles classes used by this Node.
    */
   def styleClass: jfxc.ObservableList[String] = delegate.getStyleClass
+  /**
+   * Sets the list of CSS styles classes, replacing the prior content. If you want append to current content, use `add` 
+   * or similar.
+   *
+   * @param c list of CSS styles classes to replace prior content.
+   */
   def styleClass_=(c: Iterable[String]) {
     fillCollection(styleClass, c)
   }
@@ -561,6 +571,12 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Defines the ObservableList of Transform objects to be applied to this Node.
    */
   def transforms: jfxc.ObservableList[jfxst.Transform] = delegate.getTransforms
+  /**
+   * Sets the list of transforms, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
+   *
+   * @param c list of transforms to replace prior content.
+   */
   def transforms_=(c: Iterable[Transform]) {
     fillSFXCollection(transforms, c)
   }

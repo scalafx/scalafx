@@ -38,6 +38,9 @@ object Pane {
   implicit def sfxPane2jfx(v: Pane) = v.delegate
 }
 
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/Pane.html]].
+ */
 class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
   extends Region(delegate)
   with SFXDelegate[jfxsl.Pane] {
@@ -51,11 +54,19 @@ class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
    * Gets the list of children of this Parent.
    */
   def content: jfxc.ObservableList[jfxs.Node]  = children
+  /**
+   * Sets the list of children, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
+   *
+   * @param c list of children to replace prior content.
+   */
   def content_=(c: Iterable[Node]) {
     fillSFXCollection(this.content, c)
   }
   /**
-   * Adds a simple Node as only content to this Pane.  
+   * Sets a child, replacing the prior content. If you want append to current content, use `add` or similar.
+   *
+   * @param n Node to replace prior content.
    */
   def content_=(n: Node) {
     fillSFXCollectionWithOne(this.content, n)
