@@ -436,6 +436,22 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   def accelerators: jfxc.ObservableMap[jfxsi.KeyCombination, Runnable] = delegate.getAccelerators()
 
   /**
+   * Confirms a potential drag and drop gesture that is recognized over this `Scene`.
+   * 
+   * @param  The supported `TransferMode`(s) of this `Node`
+   * @return A `Dragboard` to place this `Scene`'s data on
+   */
+  def startDragAndDrop(transferModes: TransferMode*): Dragboard = 
+    delegate.startDragAndDrop(transferModes.map(_.delegate): _*)
+  
+  /**
+   * Starts a full press-drag-release gesture with this scene as gesture source.
+   */
+  def startFullDrag {
+    delegate.startFullDrag
+  }
+
+  /**
    * The scene's current focus owner node. This node's "focused" variable might be false if this scene has no window,
    * or if the window is inactive (window.focused == false).
    *
@@ -628,23 +644,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
         null
       }
     }
-    delegate.snapshot(callback, image)
-  }
-
-  /**
-   * Confirms a potential drag and drop gesture that is recognized over this `Scene`.
-   * 
-   * @param  The supported `TransferMode`(s) of this `Node`
-   * @return A `Dragboard` to place this `Scene`'s data on
-   */
-  def startDragAndDrop(transferModes: TransferMode*): Dragboard = 
-    delegate.startDragAndDrop(transferModes.map(_.delegate): _*)
-  
-  /**
-   * Starts a full press-drag-release gesture with this scene as gesture source.
-   */
-  def startFullDrag {
-    delegate.startFullDrag
+    delegate.snapshot(javaCallback, image)
   }
 
 }
