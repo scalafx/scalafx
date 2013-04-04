@@ -39,29 +39,41 @@ import scalafx.delegate.SFXDelegate
 import scala.collection.generic.GenericCompanion
 
 /**
- * Companion Object for [[scalafx.collections.ObservableSet]].
+ * Companion Object for `[[scalafx.collections.ObservableSet]]`.
+ *
+ * @define OS `ObservableSet`
  */
 object ObservableSet extends MutableSetFactory[ObservableSet] {
+
+  /**
+   * Extracts a JavaFX's $OS from a ScalaFX's $OS.
+   *
+   * @param os ScalaFX's $OS.
+   */
   implicit def sfxObservableSet2sfxObservableSet[T](os: ObservableSet[T]) = os.delegate
 
   // CHANGING INDICATORS - BEGIN
 
   /**
-   * Indicates a change in a ObservableSet
+   * Indicates a change in a $OS. It is a simpler version of JavaFX's
+   * [[http://docs.oracle.com/javafx/2/api/javafx/collections/SetChangeListener.Change.html `SetChangeListener.Change`]],
+   * where each subclass indicates a specific change operation.
    */
   trait Change[T]
 
   /**
-   * Indicates a addition in a ObservableSet
+   * Indicates a addition in a $OS.
    *
    * @param added Added element.
+   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/SetChangeListener.Change.html#getElementAdded() `SetChangeListener.Change.getElementAdded()`]]
    */
   case class Add[T](added: T) extends Change[T]
 
   /**
-   * Indicates removal of an item.
+   * Indicates a remotion in a $OS.
    *
    * @param removed Removed element.
+   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/SetChangeListener.Change.html#getElementRemoved() `SetChangeListener.Change.getElementRemoved()`]]
    */
   case class Remove[T](removed: T) extends Change[T]
 
@@ -70,14 +82,14 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
   // CREATION METHODS - BEGIN
 
   /**
-   * Creates a empty ObservableSet
+   * Creates a empty $OS
    *
    * @return a Empty [[scalafx.collections.ObservableHashSet]]
    */
   override def empty[T]: ObservableSet[T] = new ObservableHashSet[T]
 
   /**
-   * Creates a new ObservableSet from a sequence.
+   * Creates a new $OS from a sequence.
    *
    * @param elems Sequence source of Set
    * @return new [[scalafx.collections.ObservableHashSet]] generated from elems
@@ -86,7 +98,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
     new ObservableHashSet[T](jfxc.FXCollections.observableSet(elems: _*))
 
   /**
-   * Creates a new ObservableSet from a mutable [[scala.collection.mutable.Set]].
+   * Creates a new $OS from a mutable [[scala.collection.mutable.Set]].
    *
    * @param set Mutable Set to be wrapped.
    * @return new [[scalafx.collections.ObservableHashSet]] wrapping ''set''
@@ -101,11 +113,12 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
 }
 
 /**
- * Wrapper class to [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableSet.html ObservableSet]]'s
- * from JavaFX.
+ * Wrapper class to JavaFX's [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableSet.html ObservableSet]] .
  *
- * @tparam T Type of this Set
+ * @tparam T Type of this $SET
  *
+ * @define OS `ObservableSet`
+ * @define SET `Set`
  */
 trait ObservableSet[T]
   extends Set[T]
@@ -116,7 +129,7 @@ trait ObservableSet[T]
   with SFXDelegate[jfxc.ObservableSet[T]] {
 
   /**
-   * The factory companion object that builds instances of class ObservableSet.
+   * The factory companion object that builds instances of class $OS.
    */
   override def companion: GenericCompanion[ObservableSet] = ObservableSet
 
@@ -126,7 +139,7 @@ trait ObservableSet[T]
   override def result = this
 
   /**
-   * Generates a empty ObservableSet
+   * Generates a empty $OS.
    *
    * @return A empty [[scalafx.collections.ObservableHashSet]]
    */
