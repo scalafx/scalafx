@@ -38,8 +38,10 @@ import org.scalatest.matchers.ShouldMatchers.equal
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.FlatSpec
 
-import javafx.beans.{property => jfxbp}
-import javafx.scene.{control => jfxsc}
+import java.{ util => ju }
+import javafx.beans.{ property => jfxbp }
+import javafx.beans.{ value => jfxbv }
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes.jfxBooleanBinding2sfx
 import scalafx.Includes.jfxBooleanProperty2sfx
 import scalafx.Includes.jfxObjectProperty2sfx
@@ -62,9 +64,9 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
   var booleanProperty: jfxbp.BooleanProperty = null
 
   override protected def beforeEach() {
-    objectProperty =  ObjectProperty[String](bean, "Test Object")
-    objectProperty2 =  ObjectProperty[String](bean, "Test Object 2")
-    sfxObjectProperty =  ObjectProperty[String](bean, "SFX Test Object")
+    objectProperty = ObjectProperty[String](bean, "Test Object")
+    objectProperty2 = ObjectProperty[String](bean, "Test Object 2")
+    sfxObjectProperty = ObjectProperty[String](bean, "SFX Test Object")
     booleanProperty = new BooleanProperty(bean, "Test Boolean")
   }
 
@@ -248,4 +250,41 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
     assert(21.1 === sfxProperty())
     assert(21.1 === jfxProperty())
   }
+
+  // Testing fillProperty method from companion.
+
+  private def evaluateFillPropery[T <: Object](property: ObjectProperty[T], newValue: T) {
+    val originalValue: T = property.value
+    var oldVal: T = null.asInstanceOf[T]
+    var newVal: T = null.asInstanceOf[T]
+    property.delegate.addListener(new jfxbv.ChangeListener[T] {
+      def changed(obs: jfxbv.ObservableValue[_ <: T], oldV: T, newV: T) {
+        oldVal = oldV
+        newVal = newV
+      }
+    })
+
+    ObjectProperty.fillProperty(property, newValue)
+
+    property.value should be(newValue)
+    newVal should be(newValue)
+    oldVal should be(originalValue)
+  }
+
+  "fillProperty" should "fill property with null if receives null" in {
+    evaluateFillPropery(ObjectProperty[ju.Date](new ju.Date), null)
+  }
+
+  "fillProperty" should "fill property with not null value if receives a not null" in {
+    evaluateFillPropery(ObjectProperty[ju.Date](new ju.Date), new ju.Date(123456L))
+  }
+
+  "fillProperty" should "supports variance" in {
+    evaluateFillPropery(ObjectProperty[ju.Date](new ju.Date), new java.sql.Date(1234678L))
+  }
+
+  "fillProperty" should "supports covariance" in {
+    evaluateFillPropery(ObjectProperty[ju.Date](new java.sql.Date(1234678L)), new ju.Date)
+  }
 }
+

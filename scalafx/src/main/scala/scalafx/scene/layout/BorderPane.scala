@@ -26,9 +26,9 @@
  */
 package scalafx.scene.layout
 
-import javafx.{geometry => jfxg}
+import javafx.{ geometry => jfxg }
 import javafx.{ scene => jfxs }
-import javafx.scene.{layout => jfxsl}
+import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.geometry.Insets._
@@ -73,11 +73,7 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    */
   def bottom: ObjectProperty[jfxs.Node] = delegate.bottomProperty()
   def bottom_=(v: Node) {
-    if (null == v) {
-      delegate.setBottom(null)
-    } else {
-      bottom() = v
-    }
+    ObjectProperty.fillProperty[jfxs.Node](this.bottom, v)
   }
 
   /**
@@ -85,11 +81,7 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    */
   def center: ObjectProperty[jfxs.Node] = delegate.centerProperty()
   def center_=(v: Node) {
-    if (null == v) {
-      delegate.setCenter(null)
-    } else {
-      center() = v
-    }
+    ObjectProperty.fillProperty[jfxs.Node](this.center, v)
   }
 
   /**
@@ -97,11 +89,7 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    */
   def left: ObjectProperty[jfxs.Node] = delegate.leftProperty()
   def left_=(v: Node) {
-    if (null == v) {
-      delegate.setLeft(null)
-    } else {
-      left() = v
-    }
+    ObjectProperty.fillProperty[jfxs.Node](this.left, v)
   }
 
   /**
@@ -109,11 +97,7 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    */
   def right: ObjectProperty[jfxs.Node] = delegate.rightProperty()
   def right_=(v: Node) {
-    if (null == v) {
-      delegate.setRight(null)
-    } else {
-      right() = v
-    }
+    ObjectProperty.fillProperty[jfxs.Node](this.right, v)
   }
 
   /**
@@ -121,11 +105,7 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    */
   def top: ObjectProperty[jfxs.Node] = delegate.topProperty()
   def top_=(v: Node) {
-    if (null == v) {
-      delegate.setTop(null)
-    } else {
-      top() = v
-    }
+    ObjectProperty.fillProperty[jfxs.Node](this.top, v)
   }
 
   /**

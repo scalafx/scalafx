@@ -75,11 +75,7 @@ abstract class Shape(override val delegate: jfxss.Shape)
    * @param v Filling Parameters.
    */
   def fill_=(v: Paint) {
-    if (null == v) {
-      delegate.setFill(null)
-    } else {
-      fill() = v
-    }
+    ObjectProperty.fillProperty[jfxsp.Paint](this.fill, v)
   }
 
   /**

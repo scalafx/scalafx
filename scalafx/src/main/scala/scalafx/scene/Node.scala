@@ -154,11 +154,7 @@ extends SFXDelegate[jfxs.Node] {
   def effect: ObjectProperty[jfxse.Effect] = delegate.effectProperty
 
   def effect_=(v: Effect) {
-    if (null == v) {
-      delegate.setEffect(null)
-    } else {
-      effect() = v
-    }
+    ObjectProperty.fillProperty[jfxse.Effect](this.effect, v)
   }
 
   /**
