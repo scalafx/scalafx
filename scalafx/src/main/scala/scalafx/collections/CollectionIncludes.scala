@@ -33,7 +33,7 @@ import javafx.{ collections => jfxc }
 object CollectionIncludes extends CollectionIncludes
 
 /**
- * Contains implicit conversor functions from [[http://docs.oracle.com/javafx/2/api/javafx/collections/package-frame.html `javafx.collections`]] 
+ * Contains implicit conversor functions from [[http://docs.oracle.com/javafx/2/api/javafx/collections/package-frame.html `javafx.collections`]]
  * traits to `scalafx.collections` traits.
  */
 trait CollectionIncludes {
@@ -48,10 +48,12 @@ trait CollectionIncludes {
    * Converts a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableMap.html `ObservableMap`]]
    * to a ScalaFX [[scalafx.collections.ObservableMap]].
    */
-  implicit def jfxObservableMap2sfxObservableMap[K, V](om: jfxc.ObservableMap[K, V]): ObservableMap[K, V] = 
-    ObservableMap(om)
+  implicit def jfxObservableMap2sfxObservableMap[K, V](om: jfxc.ObservableMap[K, V]): ObservableMap[K, V] =
+    new ObservableMap[K, V] {
+      override val delegate = om
+    }
 
-    /**
+  /**
    * Converts a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableSet.html `ObservableSet`]]
    * to a ScalaFX [[scalafx.collections.ObservableSet]].
    */
