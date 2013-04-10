@@ -43,12 +43,15 @@ class SFXDelegateSpec extends FlatSpec {
   }
 
   it should "delegate equals" in {
-    doubleProperty should equal(doublePropertyWithSameName)
+    // NOTE JFX8: JavaFX2 defined `equals` for SimpleDoubleProperty in ReadOnlyDoubleProperty
+    //            JavaFX8 does not override `equals` that is defined in `Object` so comparing two different
+    //            instances of SimpleDoubleProperty will be always return `false` and following test will fail
+    // doubleProperty should equal(doublePropertyWithSameName)
     doubleProperty should not(equal(doublePropertyWithDifferentName))
   }
 
   it should "delegate hashCode" in {
-    doubleProperty.hashCode should equal(2073312533)
+    doubleProperty.hashCode should equal(doubleProperty.delegate.hashCode)
   }
 
   it should "have a public delegate property" in {
