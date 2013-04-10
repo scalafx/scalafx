@@ -36,22 +36,6 @@ import scalafx.delegate.SFXDelegate
 
 object Control {
   implicit def sfxControl2jfx(v: Control) = v.delegate
-
-  /**
-   * Sentinel value which can be passed to a control's setMinWidth(), setMinHeight(),
-   * setPrefWidth(), setPrefHeight(), setMaxWidth(), setMaxHeight() methods to reset the
-   * control's size constraint back to it's intrinsic size returned by computeMinWidth(),
-   * computeMinHeight(), computePrefWidth(), computePrefHeight(), computeMaxWidth(), or
-   * computeMaxHeight().
-   */
-  val USE_COMPUTED_SIZE = jfxsc.Control.USE_COMPUTED_SIZE
-
-  /**
-   * Sentinel value which can be passed to a control's setMinWidth(), setMinHeight(),
-   * setMaxWidth() or setMaxHeight() methods to indicate that the preferred dimension
-   * should be used for that max and/or min constraint.
-   */
-  val USE_PREF_SIZE = jfxsc.Control.USE_PREF_SIZE
 }
 
 abstract class Control(override val delegate: jfxsc.Control)
@@ -132,5 +116,4 @@ abstract class Control(override val delegate: jfxsc.Control)
    * The width of this control.
    */
   def width: ReadOnlyDoubleProperty = delegate.widthProperty
-
 }

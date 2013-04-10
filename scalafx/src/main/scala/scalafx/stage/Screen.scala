@@ -29,8 +29,6 @@ package scalafx.stage
 import javafx.{ stage => jfxs }
 import scalafx.Includes._
 import scalafx.geometry.Rectangle2D
-import scalafx.scene.Node._
-import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
 object Screen {
@@ -59,7 +57,7 @@ object Screen {
 
 }
 
-class Screen(override val delegate: jfxs.Screen = new jfxs.Screen)
+class Screen(override val delegate: jfxs.Screen)
   extends SFXDelegate[jfxs.Screen] {
 
   /**

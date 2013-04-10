@@ -27,15 +27,18 @@
 package scalafx.scene.input
 
 import javafx.scene.{ input => jfxsi }
-import javafx.{ event => jfxe }
 import scalafx.delegate.SFXDelegate
-import scalafx.event.Event
 
 object InputMethodTextRun {
   implicit def sfxInputMethodTextRun2jfx(imtr: InputMethodTextRun) = imtr.delegate
 }
 
-class InputMethodTextRun(override val delegate: jfxsi.InputMethodTextRun = new jfxsi.InputMethodTextRun) extends SFXDelegate[jfxsi.InputMethodTextRun] {
+class InputMethodTextRun(override val delegate: jfxsi.InputMethodTextRun)
+  extends SFXDelegate[jfxsi.InputMethodTextRun] {
+
+  def this(text:String,  highlight : InputMethodHighlight ) {
+    this(new jfxsi.InputMethodTextRun(text, highlight))
+  }
 
   /**
    * Gets the highlight used for displaying this text.

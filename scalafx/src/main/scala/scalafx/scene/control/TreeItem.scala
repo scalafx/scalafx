@@ -71,7 +71,10 @@ object TreeItem {
      * Constructs a TreeModificationEvent for when the TreeItem has had its
      * children list changed.
      */
-    def this(eventType: jfxe.EventType[_ <: jfxe.Event], treeItem: jfxsc.TreeItem[T], added: Buffer[_ <: jfxsc.TreeItem[T]], removed: Buffer[_ <: jfxsc.TreeItem[T]]) =
+    def this(eventType: jfxe.EventType[_ <: jfxe.Event],
+             treeItem: jfxsc.TreeItem[T],
+             added: Buffer[_ <: jfxsc.TreeItem[T]],
+             removed: Buffer[_ <: jfxsc.TreeItem[T]]) =
       this(new jfxsc.TreeItem.TreeModificationEvent[T](eventType, treeItem, added, removed))
 
     /**
@@ -175,7 +178,8 @@ object TreeItem {
    * The general EventType used when the TreeItem receives a modification that
    *  results in the number of children being visible changes.
    */
-  def treeItemCountChangeEvent = jfxsc.TreeItem.treeItemCountChangeEvent
+  // NOTE JFX8: Comment method that disappeared in JavaFX 8. Did it moved somewhere?
+//  def treeItemCountChangeEvent = jfxsc.TreeItem.treeItemCountChangeEvent
 
   /**
    * The base EventType used to indicate that an event has occurred within a

@@ -37,8 +37,16 @@ object SceneProperty {
 }
 
 // This particular construct enables the reading of properties of the scene that will be set into the property later on.
-class SceneProperty(override val delegate: jfxbp.ReadOnlyObjectProperty[jfxs.Scene]) extends ReadOnlyObjectProperty[jfxs.Scene](delegate) with SFXDelegate[jfxbp.ReadOnlyObjectProperty[jfxs.Scene]] {
+class SceneProperty(override val delegate: jfxbp.ReadOnlyObjectProperty[jfxs.Scene])
+  extends ReadOnlyObjectProperty[jfxs.Scene](delegate)
+  with SFXDelegate[jfxbp.ReadOnlyObjectProperty[jfxs.Scene]] {
+
   def width = jfxbb.Bindings.selectDouble(delegate, "width")
   def height = jfxbb.Bindings.selectDouble(delegate, "height")
-  def stylesheets = jfxbb.Bindings.select(delegate, "stylesheets").asInstanceOf[jfxbb.ObjectBinding[javafx.collections.ObservableList[String]]]
+
+  // NOTE JFX8: The line with "jfxbb.Bindings.select ..." does not compile with:
+  //              error: ambiguous reference to overloaded definition
+  // See also [[http://stackoverflow.com/questions/3313929/how-do-i-disambiguate-in-scala-between-methods-with-vararg-and-without]]
+  // and [[https://issues.scala-lang.org/browse/SI-2991]]
+  //  def stylesheets = jfxbb.Bindings.select(delegate, "stylesheets").asInstanceOf[jfxbb.ObjectBinding[javafx.collections.ObservableList[String]]]
 }
