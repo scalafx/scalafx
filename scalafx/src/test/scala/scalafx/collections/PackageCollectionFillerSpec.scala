@@ -39,12 +39,13 @@ import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.control._
+import scalafx.testutil.RunOnApplicationThread
 
 /**
  * Spec tests for Collection methods in package object.
  */
 @RunWith(classOf[JUnitRunner])
-class PackageCollectionFillerSpec extends FlatSpec {
+class PackageCollectionFillerSpec extends FlatSpec with RunOnApplicationThread {
 
   private case class Analyzer[T](originalList: jfxc.ObservableList[T]) {
     val originalElements = originalList.toList

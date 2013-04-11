@@ -30,7 +30,7 @@ import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * Accordion Spec tests.
@@ -40,3 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class AccordionSpec
   extends AbstractSFXDelegateSpec[jfxsc.Accordion, Accordion, jfxsc.AccordionBuilder[_]](classOf[jfxsc.Accordion], classOf[Accordion], classOf[jfxsc.AccordionBuilder[_]])
+  with RunOnApplicationThread

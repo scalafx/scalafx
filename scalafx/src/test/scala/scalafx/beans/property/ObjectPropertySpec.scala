@@ -49,6 +49,7 @@ import scalafx.Includes.sfxObjectPropertyWithSFXDelegate2jfxObjectProperty
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.beans.property.ObjectProperty.sfxObjectProperty2jfx
 import scalafx.scene.control.Button
+import scalafx.testutil.RunOnApplicationThread
 
 /**
  * ObjectProperty Spec tests.
@@ -56,7 +57,7 @@ import scalafx.scene.control.Button
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
+class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach with RunOnApplicationThread {
   val bean = new Object()
   var objectProperty: jfxbp.ObjectProperty[String] = null
   var objectProperty2: jfxbp.ObjectProperty[String] = null

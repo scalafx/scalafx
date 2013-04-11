@@ -30,7 +30,7 @@ import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * AreaChart Spec tests.
@@ -39,7 +39,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class AreaChartSpec
-  extends AbstractSFXDelegateSpec[jfxsc.AreaChart[Number, Number], AreaChart[Number, Number], jfxsc.AreaChartBuilder[Number, Number, _]](classOf[jfxsc.AreaChart[Number, Number]], classOf[AreaChart[Number, Number]], classOf[jfxsc.AreaChartBuilder[Number, Number, _]]) {
+  extends AbstractSFXDelegateSpec[jfxsc.AreaChart[Number, Number], AreaChart[Number, Number], jfxsc.AreaChartBuilder[Number, Number, _]](classOf[jfxsc.AreaChart[Number, Number]], classOf[AreaChart[Number, Number]], classOf[jfxsc.AreaChartBuilder[Number, Number, _]])
+  with RunOnApplicationThread {
 
   override def getScalaClassInstance = new AreaChart[Number, Number](getJavaClassInstance)
   
