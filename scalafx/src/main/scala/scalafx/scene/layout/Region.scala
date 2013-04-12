@@ -28,6 +28,7 @@ package scalafx.scene.layout
 
 import javafx.{ geometry => jfxg }
 import javafx.scene.{ layout => jfxsl }
+import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
 import scalafx.scene.Parent
 import scalafx.beans.property.BooleanProperty
@@ -57,12 +58,34 @@ object Region {
 
 }
 
-class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends Parent(delegate) with SFXDelegate[jfxsl.Region] {
+class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
+  extends Parent(delegate)
+  with SFXDelegate[jfxsl.Region] {
+
+  /** The background of the Region, which is made up of zero or more BackgroundFills,
+    * and zero or more BackgroundImages.
+    */
+  def background : ObjectProperty[jfxsl.Background] = delegate.backgroundProperty()
+
+  /** The border of the Region, which is made up of zero or more BorderStrokes, and zero or more BorderImages. */
+  def border : ObjectProperty[jfxsl.Border] = delegate.borderProperty()
+
+  /** Defines a hint to the system indicating that the Shape used to define the region's
+    * background is stable and would benefit from caching. */
+  def cacheShape : BooleanProperty = delegate.cacheProperty()
+
+  /** Defines whether the shape is centered within the Region's width or height. */
+  def centerShape : BooleanProperty = delegate.centerShapeProperty()
 
   /**
    * The height of this resizable node.
    */
   def height: ReadOnlyDoubleProperty = delegate.heightProperty
+
+  /**
+   * Gets the space around content, which will include any borders plus padding if set.
+   */
+  def insets = delegate.getInsets()
 
   /**
    * The width of this resizable node.
@@ -101,6 +124,9 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
     minWidth() = v
   }
 
+  /** Defines the area of the region within which completely opaque pixels are drawn. */
+  def opaqueInsets : ObjectProperty[jfxg.Insets] = delegate.opaqueInsetsProperty()
+
   /**
    * The top,right,bottom,left padding around the region's content.
    */
@@ -125,6 +151,8 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
     prefWidth() = v
   }
 
+  def shape : ObjectProperty[jfxss.Shape] = delegate.shapeProperty()
+
   /**
    * Defines whether this region rounds position/spacing and ceils size values to pixel boundaries
    * when laying out its children.
@@ -144,8 +172,6 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
    */
   override def resize(width: Double, height: Double) = delegate.resize(width, height)
 
-  /**
-   * Gets the space around content, which will include any borders plus padding if set.
-   */
-  def insets = delegate.getInsets()
+  /** Specifies whether the shape, if defined, is scaled to match the size of the Region. */
+  def scaleShape : BooleanProperty = delegate.scaleShapeProperty()
 }
