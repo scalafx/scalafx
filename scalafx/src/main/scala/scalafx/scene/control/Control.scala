@@ -31,7 +31,7 @@ import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.scene.{Parent}
+import scalafx.scene.Parent
 import scalafx.delegate.SFXDelegate
 
 object Control {
