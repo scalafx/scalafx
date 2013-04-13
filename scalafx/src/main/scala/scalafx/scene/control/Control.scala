@@ -31,7 +31,7 @@ import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.scene.Node
+import scalafx.scene.{Parent}
 import scalafx.delegate.SFXDelegate
 
 object Control {
@@ -55,7 +55,7 @@ object Control {
 }
 
 abstract class Control(override val delegate: jfxsc.Control)
-  extends Node(delegate)
+  extends Parent(delegate)
   with Skinnable
   with SFXDelegate[jfxsc.Control] {
 
