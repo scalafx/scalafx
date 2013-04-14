@@ -36,9 +36,26 @@ import scalafx.util.Duration
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
+/**
+ * Companion Object for [[scalafx.animation.PathTransition]].
+ *
+ * @define PT `PathTransition`
+ * @define OT `OrientationType`
+ */
 object PathTransition extends AnimationStatics {
+
+  /**
+   * Converts a ScalaFX $PT to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/PathTransition.html $PT]],
+   * extracting its delegate.
+   *
+   * @param v ScalaFX $PT
+   * @return JavaFX $PT extracted from `v`.
+   */
   implicit def sfxPathTransition2jfx(v: PathTransition) = v.delegate
 
+  /**
+   * Companion Object for $OT, where its values are defined.
+   */
   object OrientationType
     extends SFXEnumDelegateCompanion[jfxa.PathTransition.OrientationType, OrientationType] {
 
@@ -58,7 +75,10 @@ object PathTransition extends AnimationStatics {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/animation/PathTransition.OrientationType.html]]
+   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/animation/PathTransition.OrientationType.html $OT]].
+   *
+   * @constructor Creates a new ScalaFX $OT from a JavaFX $OT.
+   * @param delegate JavaFX $OT to be delegated.
    */
   sealed case class OrientationType(override val delegate: jfxa.PathTransition.OrientationType)
     extends SFXEnumDelegate[jfxa.PathTransition.OrientationType]
@@ -67,32 +87,38 @@ object PathTransition extends AnimationStatics {
 
 /**
  * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/PathTransition.html PathTransition]].
+ *
+ * @constructor Creates a new ScalaFX $PT from a JavaFX $PT.
+ * @param delegate JavaFX $PT to be delegated.
+ *
+ * @define PT `PathTransition`
+ * @define CONSTR The constructor of $PT.
  */
 class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathTransition)
   extends Transition(delegate)
   with SFXDelegate[jfxa.PathTransition] {
 
   /**
-   * The constructor of PathTransition.
+   * $CONSTR
    *
-   * @param duration The duration of this PathTransition
-   * @param path The path of this PathTransition
-   * @param node The node of this PathTransition
+   * @param duration The duration of this $PT.
+   * @param path The path of this $PT.
+   * @param node The node of this $PT.
    */
   def this(duration: Duration, path: Shape, node: Node) =
     this(new jfxa.PathTransition(duration, path, node))
 
   /**
-   * The constructor of PathTransition.
+   * $CONSTR
    *
-   * @param duration The duration of this PathTransition
-   * @param path The path of this PathTransition
+   * @param duration The duration of this $PT.
+   * @param path The path of this $PT.
    */
   def this(duration: Duration, path: Shape) =
     this(new jfxa.PathTransition(duration, path))
 
   /**
-   * The target node of this PathTransition.
+   * The target node of this $PT.
    */
   def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
   def node_=(n: Node) {
@@ -100,7 +126,7 @@ class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathT
   }
 
   /**
-   * The duration of this Transition.
+   * The duration of this `Transition`.
    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
   def duration_=(d: Duration) {

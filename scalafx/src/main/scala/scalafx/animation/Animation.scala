@@ -38,6 +38,9 @@ import scalafx.util.Duration.sfxDuration2jfx
 import scalafx.util.Duration
 import scalafx.delegate._
 
+/**
+ * Defines Constants to be used for all [[scalafx.animation.Animation]]s object companions. 
+ */
 trait AnimationStatics {
   
   /**
@@ -50,6 +53,7 @@ trait AnimationStatics {
  * Companion Object for [[scalafx.animation.Animation]].
  *
  * @define AN `Animation`
+ * @define ST `Status`
  */
 object Animation extends AnimationStatics {
   
@@ -63,7 +67,7 @@ object Animation extends AnimationStatics {
   implicit def sfxAnimation2jfx(v: Animation) = v.delegate
 
   /**
-   * Companion Object for `Status`, where its values are defined.
+   * Companion Object for $ST, where its values are defined.
    */
   object Status
     extends SFXEnumDelegateCompanion[jfxa.Animation.Status, Status] {
@@ -88,10 +92,10 @@ object Animation extends AnimationStatics {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.Status.html `Status`]]
+   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.Status.html $ST]]
    * 
-   * @constructor Creates a new ScalaFX `Status` from a JavaFX `Status`.
-   * @param delegate JavaFX `Status` to be delegated.
+   * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
+   * @param delegate JavaFX $ST to be delegated.
    */
   sealed case class Status(override val delegate: jfxa.Animation.Status)
     extends SFXEnumDelegate[jfxa.Animation.Status]
