@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,20 +31,45 @@ import scalafx.util.Duration
 
 object AnimationIncludes extends AnimationIncludes
 
+/**
+ * Contains implicit methods to convert classes from 
+ * [[http://docs.oracle.com/javafx/2/api/javafx/animation/package-summary.html `javafx.animation`]] classes to their 
+ * respectives ScalaFX versions.
+ * 
+ * @define INTERP [[http://docs.oracle.com/javafx/2/api/javafx/animation/Interpolatable.html `Interpolatable`]]
+ * @define INTERPM `interpolate` method 
+ */
 trait AnimationIncludes {
+  
+  /**
+   * 
+   * @param time Dutarion time
+   * @param v Function which returns a [[scalafx.animation.KeyValue]] [[scala.Set]]
+   * @return new KeyFrame
+   */
   def at(time: Duration)(v: => Set[KeyValue[_, _ <: Object]]) = KeyFrame(time, values = v)
   implicit def wrapKeyValueInSet[T, J <: Object](kv: KeyValue[T, J]) = Set[KeyValue[_, _ <: Object]](kv)
   implicit def wrapTweenableInSet[T, J <: Object](t: Tweenable[T, J]) = Set[KeyValue[_, _ <: Object]](t.linear)
   implicit def tweenableSet2KeyValueSet(ts: Set[Tweenable[_, _ <: Object]]) = ts.map(_.linear)
   implicit def wrapKeyFrameInSeq[T <: KeyFrame](kf: T) = Seq[T](kf)
+  
   /**
-   * Converts a [[javafx.animation.Interpolatable]] to a [[scala.Function2]]
+   * Converts a $INTERP to a [[scala.Function2]].
+   * 
+   * @tparam T type of function
+   * @param i $INTERP instance
+   * @return A [[scala.Function2]] that receives a instance of T and a Double (between 0.0 and 1.0) and returns a T Instance  
+   * according $INTERPM
    */
   implicit def jfxInterpolatable2sfxFunction2[T](i: jfxa.Interpolatable[T]): ((T, Double) => T) =
     (endValue: T, t: Double) => i.interpolate(endValue, t)
-  /**
-   * Converts a [[scala.Function2]] to a [[javafx.animation.Interpolatable]]
-   * Implementation.
+  
+    /**
+   * Converts a [[scala.Function2]] to a $INTERP Implementation.
+   * 
+   * @tparam T Type of Function
+   * @param f Function that receives a instance of T and a Double (between 0.0 and 1.0) and returns a T Instance.
+   * @return A new instance of $INTERP which $INTERPM calls `f` function.
    */
   implicit def sfxFunction2jfxInterpolatable[T](f: ((T, Double) => T)): jfxa.Interpolatable[T] = new jfxa.Interpolatable[T] {
     def interpolate(endValue: T, t: Double): T = f(endValue, t)

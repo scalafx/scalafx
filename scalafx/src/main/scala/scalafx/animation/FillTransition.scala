@@ -35,21 +35,41 @@ import scalafx.scene.shape.Shape
 import scalafx.util.Duration
 import scalafx.delegate.SFXDelegate
 
+/**
+ * Companion Object for [[scalafx.animation.FadeTransition]].
+ *
+ * @define FT `FillTransition`
+ */
 object FillTransition extends AnimationStatics {
+
+  /**
+   * Converts a ScalaFX $FT to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/FillTransition.html $FT]],
+   * extracting its delegate.
+   *
+   * @param v ScalaFX $FT
+   * @return Delegated JavaFX $FT extracted from `v`.
+   */
   implicit def sfxFillTransition2jfx(v: FillTransition) = v.delegate
+
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/FillTransition.html FillTransition]].
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/FillTransition.html $FT]].
+ * 
+ * @constructor Creates a new ScalaFX $FT from a JavaFX $FT.
+ * @param delegate JavaFX $FT to be delegated.
+ * 
+ * @define FT `FillTransition`
+ * @define DV Default value:
  */
 class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillTransition())
   extends Transition(delegate)
   with SFXDelegate[jfxa.FillTransition] {
 
   /**
-   * The constructor of FillTransition
+   * The constructor of $FT
    *
-   * @param duration The duration of the FillTransition
+   * @param duration The duration of the $FT
    * @param shape The shape which filling will be animated
    * @param fromValue The start value of the color-animation
    * @param toValue The end value of the color-animation
@@ -58,9 +78,9 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
     this(new jfxa.FillTransition(duration, shape, fromValue, toValue))
 
   /**
-   * The constructor of FillTransition
+   * The constructor of $FT
    *
-   * @param duration The duration of the FillTransition
+   * @param duration The duration of the $FT
    * @param fromValue The start value of the color-animation
    * @param toValue The end value of the color-animation
    */
@@ -68,23 +88,23 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
     this(new jfxa.FillTransition(duration, fromValue, toValue))
 
   /**
-   * The constructor of FillTransition
+   * The constructor of $FT
    *
-   * @param duration The duration of the FillTransition
+   * @param duration The duration of the $FT
    * @param shape The shape which filling will be animated
    */
   def this(duration: Duration, shape: Shape) =
     this(new jfxa.FillTransition(duration, shape))
 
   /**
-   * The constructor of FillTransition
+   * The constructor of $FT
    *
-   * @param duration The duration of the FillTransition
+   * @param duration The duration of the $FT
    */
   def this(duration: Duration) = this(new jfxa.FillTransition(duration))
 
   /**
-   * The target shape of this `FillTransition`.
+   * The target shape of this $FT.
    */
   def shape: ObjectProperty[jfxss.Shape] = delegate.shapeProperty
   def shape_=(s: Shape) {
@@ -92,8 +112,7 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
   }
 
   /**
-   * The duration of this `FillTransition`. Default value:
-   * 400ms
+   * The duration of this $FT. $DV 400ms
    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
   def duration_=(d: Duration) {
@@ -101,8 +120,7 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
   }
 
   /**
-   * Specifies the start color value for this `FillTransition`. Default value:
-   * null
+   * Specifies the start color value for this $FT. $DV `null`
    */
   def fromValue: ObjectProperty[jfxsp.Color] = delegate.fromValueProperty
   def fromValue_=(from: Color) {
@@ -110,11 +128,11 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
   }
 
   /**
-   * Specifies the stop color value for this FillTransition. Default value:
-   * null
+   * Specifies the stop color value for this $FT. $DV `null`.
    */
   def toValue: ObjectProperty[jfxsp.Color] = delegate.toValueProperty
   def toValue_=(to: Color) {
     toValue() = to
   }
+  
 }

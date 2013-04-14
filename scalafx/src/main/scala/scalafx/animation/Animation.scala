@@ -39,12 +39,32 @@ import scalafx.util.Duration
 import scalafx.delegate._
 
 trait AnimationStatics {
+  
+  /**
+   * Used to specify an animation that repeats indefinitely, until the stop() method is called.
+   */
   def INDEFINITE = jfxa.Animation.INDEFINITE
 }
 
+/**
+ * Companion Object for [[scalafx.animation.Animation]].
+ *
+ * @define AN `Animation`
+ */
 object Animation extends AnimationStatics {
+  
+  /**
+   * Converts a ScalaFX $AN to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.html $AN]], 
+   * extracting its delegate.
+   *
+   * @param v ScalaFX $AN
+   * @return Delegated JavaFX $AN extracted from `v`.
+   */
   implicit def sfxAnimation2jfx(v: Animation) = v.delegate
 
+  /**
+   * Companion Object for `Status`, where its values are defined.
+   */
   object Status
     extends SFXEnumDelegateCompanion[jfxa.Animation.Status, Status] {
 
@@ -68,7 +88,10 @@ object Animation extends AnimationStatics {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.Status.html]]
+   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.Status.html `Status`]]
+   * 
+   * @constructor Creates a new ScalaFX `Status` from a JavaFX `Status`.
+   * @param delegate JavaFX `Status` to be delegated.
    */
   sealed case class Status(override val delegate: jfxa.Animation.Status)
     extends SFXEnumDelegate[jfxa.Animation.Status]
@@ -76,13 +99,18 @@ object Animation extends AnimationStatics {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.html Animation]].
+ * Wraps JavaFX's [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.html $AN]].
+ *
+ * @define AN `Animation`
+ * @define DV Default value:
  */
 abstract class Animation protected (override val delegate: jfxa.Animation)
   extends SFXDelegate[jfxa.Animation] {
 
+  // Properties
+
   /**
-   * Defines whether this Animation reverses direction on alternating cycles.
+   * Defines whether this $AN reverses direction on alternating cycles. $DV false.
    */
   def autoReverse: BooleanProperty = delegate.autoReverseProperty
   def autoReverse_=(ar: Boolean) {
@@ -91,17 +119,17 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
 
   /**
    * Read-only variable to indicate current direction/speed at which the
-   * `Timeline` is being played.
+   * $AN is being played. $DV 0.0.
    */
   def currentRate: ReadOnlyDoubleProperty = delegate.currentRateProperty
 
   /**
-   *
+   * Defines the $AN's play head position. $DV 0ms.
    */
   def currentTime: ReadOnlyObjectProperty[jfxu.Duration] = delegate.currentTimeProperty
 
   /**
-   * Defines the number of cycles in this animation.
+   * Defines the number of cycles in this $AN. $DV 0ms
    */
   def cycleCount: IntegerProperty = delegate.cycleCountProperty
   def cycleCount_=(r: Int) {
@@ -110,13 +138,13 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
 
   /**
    * Read-only variable to indicate the duration of one cycle of this
-   * `Timeline`: the time it takes to play from time 0 to the KeyFrame with
-   * the largest time (at the default rate of 1.0).
+   * $AN: the time it takes to play from time 0 to the KeyFrame with
+   * the largest time. $DV 1.0
    */
   def cycleDuration: ReadOnlyObjectProperty[jfxu.Duration] = delegate.cycleDurationProperty
 
   /**
-   * Delays the start of an animation.
+   * Delays the start of an $AN. $DV 0ms.
    */
   def delay: ObjectProperty[jfxu.Duration] = delegate.delayProperty
   def delay_=(d: Duration) {
@@ -124,7 +152,7 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
   }
 
   /**
-   * The action to be executed at the conclusion of this Animation.
+   * The action to be executed at the conclusion of this $AN.
    */
   def onFinished = delegate.onFinishedProperty
   def onFinished_=(handler: jfxe.EventHandler[jfxe.ActionEvent]) {
@@ -132,7 +160,7 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
   }
 
   /**
-   * Defines the direction/speed at which the Timeline is expected to be played.
+   * Defines the direction/speed at which the $AN is expected to be played. $DV 1.0
    */
   def rate: DoubleProperty = delegate.rateProperty
   def rate_=(r: Double) {
@@ -140,72 +168,83 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
   }
 
   /**
-   * The status of the Animation.
+   * The `status` of the $AN.
    */
   def status: ReadOnlyObjectProperty[jfxa.Animation.Status] = delegate.statusProperty
 
   /**
-   * Read-only variable to indicate the total duration of this `Timeline`,
-   * including repeats.
+   * Read-only variable to indicate the total duration of this $AN, including repeats. $DV 0ms
    */
   def totalDuration: ReadOnlyObjectProperty[jfxu.Duration] = delegate.totalDurationProperty
 
+  // Methods
+
   /**
-   * Jumps to a given position in this Animation.
+   * Jumps to a given position in this $AN.
+   * 
+   * @param time the new position
    */
   def jumpTo(time: Duration) {
     delegate.jumpTo(time)
   }
 
   /**
-   * Jumps to a predefined position in this Animation.
+   * Jumps to a predefined position in this $AN.
+   * 
+   * @param the name of the cue point
    */
   def jumpTo(cuePoint: String) {
     delegate.jumpTo(cuePoint)
   }
 
   /**
-   * Pauses the animation.
+   * Pauses the $AN.
    */
   def pause {
     delegate.pause
   }
 
   /**
-   * Plays `Timeline` from current position in the direction indicated by rate.
+   * Plays $AN from current position in the direction indicated by `rate`.
    */
   def play {
     delegate.play
   }
 
+  /**
+   * A convenience method to play this $AN from a specific position.
+   *
+   * @param time position where to play from
+   */
   def playFrom(time: Duration) {
     delegate.playFrom(time)
   }
 
   /**
-   * A convenience method to play this Animation from a predefined position.
+   * A convenience method to play this $AN from a predefined position.
+   *
+   * @param cuePoint name of the cue point
    */
   def playFrom(cuePoint: String) {
     delegate.playFrom(cuePoint)
   }
 
   /**
-   * Plays timeline from initial position in forward direction.
+   * Plays an $AN from initial position in forward direction.
    */
   def playFromStart {
     delegate.playFromStart
   }
 
   /**
-   * Stops the animation and resets the play head to its initial position.
+   * Stops the $AN and resets the play head to its initial position.
    */
   def stop() {
     delegate.stop()
   }
 
   /**
-   * The target framerate is the maximum framerate at which this animation
-   * will run, in frames per second.
+   * The target framerate is the maximum framerate at which this $AN will run, in frames per second.
    */
   def targetFramerate = delegate.getTargetFramerate
 
