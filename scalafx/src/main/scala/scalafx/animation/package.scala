@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,38 +24,12 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.collections
-
-import scala.collection.JavaConversions.mapAsScalaMap
-
-import javafx.{ collections => jfxc }
-
-object CollectionIncludes extends CollectionIncludes
+package scalafx
 
 /**
- * Contains implicit conversor functions from [[http://docs.oracle.com/javafx/2/api/javafx/collections/package-frame.html `javafx.collections`]]
- * traits to `scalafx.collections` traits.
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/animation/package-summary.html `javafx.animation`]] package.
+ *
  */
-trait CollectionIncludes {
-  /**
-   * Converts a [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableList.html `ObservableList`]]
-   * to a [[scalafx.collections.ObservableBuffer]].
-   */
-  implicit def observableList2ObservableBuffer[T](ol: jfxc.ObservableList[T]): ObservableBuffer[T] =
-    new ObservableBuffer[T](ol)
+package object animation {
 
-  /**
-   * Converts a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableMap.html `ObservableMap`]]
-   * to a ScalaFX [[scalafx.collections.ObservableMap]].
-   */
-  implicit def jfxObservableMap2sfxObservableMap[K, V](om: jfxc.ObservableMap[K, V]): ObservableMap[K, V] =
-    new ObservableMap[K, V] {
-      override val delegate = om
-    }
-
-  /**
-   * Converts a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableSet.html `ObservableSet`]]
-   * to a ScalaFX [[scalafx.collections.ObservableSet]].
-   */
-  implicit def jfxObservableSet2sfxObservableSet[T](os: jfxc.ObservableSet[T]): ObservableHashSet[T] = new ObservableHashSet[T](os)
 }

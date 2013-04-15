@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2012, ScalaFX Project
+* Copyright (c) 2011-2013, ScalaFX Project
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -31,8 +31,8 @@ import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import PositionDelegate._
 
-object PositionDelegate  {
-  
+object PositionDelegate {
+
   type Positioned = {
     def xProperty(): jfxbp.DoubleProperty
 
@@ -43,11 +43,11 @@ object PositionDelegate  {
 
 /**
  * Trait that unifies JavaFX classes that contains properties indicating localization in 2
- * dimensions, represented by xProperty and y yProperty and their respectives getter and setters.
+ * dimensions, represented by `xProperty` and `yProperty` and their respectives getter and setters.
  *
  */
 trait PositionDelegate[J <: Object with Positioned]
-  extends SFXDelegate[J] { 
+  extends SFXDelegate[J] {
 
   /**
    * X Position

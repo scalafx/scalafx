@@ -58,56 +58,102 @@ object Shape {
 
 }
 
-abstract class Shape(override val delegate: jfxss.Shape) extends Node(delegate) with SFXDelegate[jfxss.Shape] {
-  def fill :ObjectProperty[jfxsp.Paint] = delegate.fillProperty
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/shape/Shape.html]].
+ */
+abstract class Shape(override val delegate: jfxss.Shape)
+  extends Node(delegate)
+  with SFXDelegate[jfxss.Shape] {
+
+  /**
+   * Defines parameters to fill the interior of an Shape using the settings of the Paint context.
+   */
+  def fill: ObjectProperty[jfxsp.Paint] = delegate.fillProperty
+  /**
+   * Sets parameters to fill the interior of an Shape using the settings of the Paint context.
+   * 
+   * @param v Filling Parameters.
+   */
   def fill_=(v: Paint) {
-    if (null == v) {
-      delegate.setFill(null)
-    } else {
-      fill() = v
-    }
+    ObjectProperty.fillProperty[jfxsp.Paint](this.fill, v)
   }
-  def smooth :BooleanProperty = delegate.smoothProperty
+
+  /**
+   * Defines whether antialiasing hints are used or not for this Shape.
+   */
+  def smooth: BooleanProperty = delegate.smoothProperty
   def smooth_=(v: Boolean) {
     smooth() = v
   }
 
-  def strokeDashOffset :DoubleProperty = delegate.strokeDashOffsetProperty
+  /**
+   * Defines a distance specified in user coordinates that represents an offset into the dashing pattern.
+   */
+  def strokeDashOffset: DoubleProperty = delegate.strokeDashOffsetProperty
   def strokeDashOffset_=(v: Double) {
     strokeDashOffset() = v
   }
 
-  def strokeLineCap :ObjectProperty[jfxss.StrokeLineCap] = delegate.strokeLineCapProperty
+  /**
+   * The end cap style of this Shape as one of the following values that define possible end cap styles: 
+   * `StrokeLineCap.BUTT`, `StrokeLineCap.ROUND`, and `StrokeLineCap.SQUARE`.
+   */
+  def strokeLineCap: ObjectProperty[jfxss.StrokeLineCap] = delegate.strokeLineCapProperty
   def strokeLineCap_=(v: StrokeLineCap) {
     strokeLineCap() = v
   }
 
-  def strokeLineJoin :ObjectProperty[jfxss.StrokeLineJoin] = delegate.strokeLineJoinProperty
+  /**
+   * Defines the decoration applied where path segments meet.
+   */
+  def strokeLineJoin: ObjectProperty[jfxss.StrokeLineJoin] = delegate.strokeLineJoinProperty
   def strokeLineJoin_=(v: StrokeLineJoin) {
     strokeLineJoin() = v
   }
 
-  def strokeMiterLimit :DoubleProperty = delegate.strokeMiterLimitProperty
+  /**
+   * Defines the limit for the `StrokeLineJoin.MITER` line join style.
+   */
+  def strokeMiterLimit: DoubleProperty = delegate.strokeMiterLimitProperty
   def strokeMiterLimit_=(v: Double) {
     strokeMiterLimit() = v
   }
 
-  def stroke :ObjectProperty[jfxsp.Paint] = delegate.strokeProperty
+  /**
+   * Defines parameters of a stroke that is drawn around the outline of a Shape using the settings of the specified 
+   * Paint.
+   */
+  def stroke: ObjectProperty[jfxsp.Paint] = delegate.strokeProperty
   def stroke_=(v: Paint) {
     stroke() = v.delegate
   }
 
-  def strokeType :ObjectProperty[jfxss.StrokeType] = delegate.strokeTypeProperty
+  /**
+   * Defines the direction (inside, centered, or outside) that the strokeWidth is applied to the boundary of the shape.
+   */
+  def strokeType: ObjectProperty[jfxss.StrokeType] = delegate.strokeTypeProperty
   def strokeType_=(v: StrokeType) {
     strokeType() = v
   }
 
-  def strokeWidth :DoubleProperty = delegate.strokeWidthProperty
+  /**
+   * Defines a square pen line width.
+   */
+  def strokeWidth: DoubleProperty = delegate.strokeWidthProperty
   def strokeWidth_=(v: Double) {
     strokeWidth() = v
   }
 
-  def strokeDashArray :ObservableBuffer[java.lang.Double] = delegate.getStrokeDashArray
+  /**
+   * Defines the array representing the lengths of the dash segments.
+   */
+  def strokeDashArray: ObservableBuffer[java.lang.Double] = delegate.getStrokeDashArray
+  /**
+   * Sets the list of lengths of the dash segments, replacing the prior content. If you want append to current 
+   * content, use `+==` or similar.
+   *
+   * @param c List of lengths of the dash segments to replace prior content.
+   */
   def strokeDashArray_=(c: Iterable[java.lang.Double]) {
     if (null == c) {
       strokeDashArray.clear

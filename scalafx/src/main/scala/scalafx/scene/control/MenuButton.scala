@@ -31,6 +31,7 @@ import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc}
 import javafx.{geometry => jfxg}
 import scala.collection.JavaConversions.asJavaCollection
+import scalafx.collections._
 import scalafx.Includes._
 import scalafx.geometry.Side
 import scalafx.scene.Node
@@ -42,7 +43,9 @@ object MenuButton {
   implicit def sfxToggleButton2jfx(mb: MenuButton) = mb.delegate
 }
 
-/** Wrapper for `javafx.scene.control.MenuButton`. */
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/MenuButton.html]].
+ */
 class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
   extends ButtonBase(delegate)
   with SFXDelegate[jfxsc.MenuButton] {
@@ -55,13 +58,14 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
 
   /** The items to show within this buttons menu. */
   def items: jfxc.ObservableList[jfxsc.MenuItem] = delegate.getItems
-
+  /**
+   * Sets the items, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
+   *
+   * @param c Items to replace prior content.
+   */
   def items_=(c: Iterable[MenuItem]) {
-    if (null == c) {
-      items.clear
-    } else {
-      items.addAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.items, c)
   }
 
 

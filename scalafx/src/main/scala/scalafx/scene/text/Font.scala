@@ -52,6 +52,8 @@ object Font {
    */
   def font(family: String, size: Double) =
     new Font(jfxst.Font.font(family, size))
+  def apply(family: String, size: Double) =
+    new Font(jfxst.Font.font(family, size))
 
   /**
    * Searches for an appropriate font based on the font family name and posture
@@ -59,17 +61,23 @@ object Font {
    */
   def font(family: String, posture: jfxst.FontPosture, size: Double) =
     new Font(jfxst.Font.font(family, posture, size))
+  def apply(family: String, posture: jfxst.FontPosture, size: Double) =
+    new Font(jfxst.Font.font(family, posture, size))
 
   /**
    * Searches for an appropriate font based on the font family name and weight style.
    */
   def font(family: String, weight: jfxst.FontWeight, size: Double) =
     new Font(jfxst.Font.font(family, weight, size))
+  def apply(family: String, weight: jfxst.FontWeight, size: Double) =
+    new Font(jfxst.Font.font(family, weight, size))
 
   /**
    * Searches for an appropriate font based on the font family name and weight and posture style.
    */
   def font(family: String, weight: jfxst.FontWeight, posture: jfxst.FontPosture, size: Double) =
+    new Font(jfxst.Font.font(family, weight, posture, size))
+  def apply(family: String, weight: jfxst.FontWeight, posture: jfxst.FontPosture, size: Double) =
     new Font(jfxst.Font.font(family, weight, posture, size))
 
   /**

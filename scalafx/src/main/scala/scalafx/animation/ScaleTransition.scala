@@ -34,35 +34,60 @@ import scalafx.scene.Node
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
 
+/**
+ * Companion Object for [[scalafx.animation.ScaleTransition]].
+ *
+ * @define ST `ScaleTransition`
+ */
 object ScaleTransition extends AnimationStatics {
+
+  /**
+   * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/ScaleTransition.html $ST]],
+   * extracting its delegate.
+   *
+   * @param v ScalaFX $ST
+   * @return JavaFX $ST extracted from `v`.
+   */
   implicit def sfxScaleTransition2jfx(v: ScaleTransition) = v.delegate
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/ScaleTransition.html ScaleTransition]].
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/ScaleTransition.html $ST]].
+ * 
+ * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
+ * @param delegate JavaFX $ST to be delegated.
+ *
+ * @define ST `ScaleTransition`
+ * @define CONST The constructor of $ST
+ * @define DUR The duration of the $ST
+ * @define DV Default value:
  */
 class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.ScaleTransition)
   extends Transition(delegate)
   with SFXDelegate[jfxa.ScaleTransition] {
 
+  // CONSTRUCTORS
+
   /**
-   * The constructor of ScaleTransition
+   * $CONST
    *
-   * @param duration The duration of the ScaleTransition
+   * @param duration $DUR
    * @param node The node which will be scaled
    */
   def this(duration: Duration, node: Node) =
     this(new jfxa.ScaleTransition(duration, node))
 
   /**
-   * The constructor of ScaleTransition
+   * $CONST
    *
-   * @param duration The duration of the ScaleTransition
+   * @param duration $DUR
    */
   def this(duration: Duration) = this(new jfxa.ScaleTransition(duration))
 
+  // PROPERTIES
+
   /**
-   * The duration of this ScaleTransition.
+   * $DUR. $DV 400ms
    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
   def duration_=(d: Duration) {
@@ -70,7 +95,7 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
   }
 
   /**
-   * The target node of this ScaleTransition.
+   * The target node of this $ST.
    */
   def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
   def node_=(n: Node) {
@@ -78,7 +103,7 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
   }
 
   /**
-   * Specifies the incremented stop X scale value, from the start, of this ScaleTransition.
+   * Specifies the incremented stop X scale value, from the start, of this $ST.
    */
   def byX: DoubleProperty = delegate.byXProperty
   def byX_=(x: Double) {
@@ -86,7 +111,7 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
   }
 
   /**
-   * Specifies the incremented stop Y scale value, from the start, of this ScaleTransition.
+   * Specifies the incremented stop Y scale value, from the start, of this $ST.
    */
   def byY: DoubleProperty = delegate.byYProperty
   def byY_=(y: Double) {
@@ -94,7 +119,7 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
   }
 
   /**
-   * Specifies the incremented stop Z scale value, from the start, of this ScaleTransition.
+   * Specifies the incremented stop Z scale value, from the start, of this $ST.
    */
   def byZ: DoubleProperty = delegate.byZProperty
   def byZ_=(z: Double) {
@@ -102,7 +127,7 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
   }
 
   /**
-   * Specifies the start X scale value of this ScaleTransition.
+   * Specifies the start X scale value of this $ST. $DV `Double.NaN` 
    */
   def fromX: DoubleProperty = delegate.fromXProperty
   def fromX_=(x: Double) {
@@ -110,7 +135,7 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
   }
 
   /**
-   * Specifies the start Y scale value of this ScaleTransition.
+   * Specifies the start Y scale value of this $ST. $DV `Double.NaN`
    */
   def fromY: DoubleProperty = delegate.fromYProperty
   def fromY_=(y: Double) {
@@ -118,7 +143,7 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
   }
 
   /**
-   * Specifies the start Z scale value of this ScaleTransition.
+   * Specifies the start Z scale value of this $ST. $DV `Double.NaN`
    */
   def fromZ: DoubleProperty = delegate.fromZProperty
   def fromZ_=(z: Double) {
@@ -126,7 +151,7 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
   }
 
   /**
-   * Specifies the stop X scale value of this ScaleTransition.
+   * Specifies the stop X scale value of this $ST. $DV `Double.NaN`
    */
   def toX: DoubleProperty = delegate.toXProperty
   def toX_=(x: Double) {
@@ -134,7 +159,7 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
   }
 
   /**
-   * The stop Y scale value of this ScaleTransition.
+   * The stop Y scale value of this $ST. $DV `Double.NaN`
    */
   def toY: DoubleProperty = delegate.toYProperty
   def toY_=(y: Double) {
@@ -142,7 +167,7 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
   }
 
   /**
-   * The stop Z scale value of this ScaleTransition.
+   * The stop Z scale value of this $ST. $DV `Double.NaN`
    */
   def toZ: DoubleProperty = delegate.toZProperty
   def toZ_=(z: Double) {

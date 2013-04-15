@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,51 +24,41 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.layout
+package scalafx.beans.property
 
-import collection.JavaConversions._
-import javafx.{scene => jfxs}
-import javafx.scene.{ layout => jfxsl }
-import javafx.{ collections => jfxc }
-import scalafx.collections._
-import scalafx.scene.Node
+import javafx.beans.{property => jfxbp}
+import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
-object Pane {
-  implicit def sfxPane2jfx(v: Pane) = v.delegate
+
+object ReadOnlyDoubleWrapper {
+  implicit def sfxReadOnlyDoubleWrapper2jfx(w: ReadOnlyDoubleWrapper) = w.delegate
+
+  /** Creates a new ReadOnlyDoubleWrapper instance.
+    * @param value the initial value of the wrapped value
+    */
+  def apply(value: Double) = new ReadOnlyDoubleWrapper(new jfxbp.ReadOnlyDoubleWrapper(value))
 }
 
-/**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/Pane.html]].
- */
-class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
-  extends Region(delegate)
-  with SFXDelegate[jfxsl.Pane] {
 
-  /**
-   * Gets the list of children of this Parent.
-   */
-  def children: jfxc.ObservableList[jfxs.Node] = delegate.getChildren
+/** Wrapper for [[javafx.beans.property.ReadOnlyDoubleWrapper]] */
+class ReadOnlyDoubleWrapper(override val delegate: jfxbp.ReadOnlyDoubleWrapper = new jfxbp.ReadOnlyDoubleWrapper())
+  extends DoubleProperty(delegate)
+  with SFXDelegate[jfxbp.ReadOnlyDoubleWrapper] {
 
-  /**
-   * Gets the list of children of this Parent.
-   */
-  def content: jfxc.ObservableList[jfxs.Node]  = children
-  /**
-   * Sets the list of children, replacing the prior content. If you want append to current content, use `add` or
-   * similar.
-   *
-   * @param c list of children to replace prior content.
-   */
-  def content_=(c: Iterable[Node]) {
-    fillSFXCollection(this.content, c)
-  }
-  /**
-   * Sets a child, replacing the prior content. If you want append to current content, use `add` or similar.
-   *
-   * @param n Node to replace prior content.
-   */
-  def content_=(n: Node) {
-    fillSFXCollectionWithOne(this.content, n)
-  }
+  /** Creates a new ReadOnlyDoubleWrapper instance.
+    * @param bean the bean of this ReadOnlyDoubleWrapper
+    * @param name the name of this ReadOnlyDoubleWrapper
+    */
+  def this(bean: Object, name: String) = this(new jfxbp.ReadOnlyDoubleWrapper(bean, name))
+
+  /** Creates a new ReadOnlyDoubleWrapper instance.
+    * @param value the initial value of the wrapped value
+    * @param bean the bean of this ReadOnlyDoubleWrapper
+    * @param name the name of this ReadOnlyDoubleWrapper
+    */
+  def this(bean: Object, name: String, value: Double) = this(new jfxbp.ReadOnlyDoubleWrapper(bean, name, value))
+
+  /** The read-only property, that is synchronized with this ReadOnlyDoubleWrapper. */
+  def readOnlyProperty: ReadOnlyDoubleProperty = delegate.getReadOnlyProperty
 }

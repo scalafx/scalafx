@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,7 +47,13 @@ trait PropertyIncludes extends LowerPriorityIncludes {
   implicit def jfxReadOnlyObjectProperty2sfx[T <: Any](p: jfxbp.ReadOnlyObjectProperty[T]) = new ReadOnlyObjectProperty[T](p)
   implicit def jfxReadOnlyStringProperty2sfx(p: jfxbp.ReadOnlyStringProperty) = new ReadOnlyStringProperty(p)
 
+  implicit def jfxReadOnlyBooleanWrapper2sfx(p: jfxbp.ReadOnlyBooleanWrapper) = new ReadOnlyBooleanWrapper(p)
+  implicit def jfxReadOnlyDoubleWrapper2sfx(p: jfxbp.ReadOnlyDoubleWrapper) = new ReadOnlyDoubleWrapper(p)
+  implicit def jfxReadOnlyFloatWrapper2sfx(p: jfxbp.ReadOnlyFloatWrapper) = new ReadOnlyFloatWrapper(p)  
+  implicit def jfxReadOnlyIntegerWrapper2sfx(p: jfxbp.ReadOnlyIntegerWrapper) = new ReadOnlyIntegerWrapper(p)
+  implicit def jfxReadOnlyLongWrapper2sfx(p: jfxbp.ReadOnlyLongWrapper) = new ReadOnlyLongWrapper(p)
   implicit def jfxReadOnlyObjectWrapper2sfx[T <: Any](p: jfxbp.ReadOnlyObjectWrapper[T]) = new ReadOnlyObjectWrapper[T](p)
+  implicit def jfxReadOnlyStringWrapper2sfx(p: jfxbp.ReadOnlyStringWrapper) = new ReadOnlyStringWrapper(p)
 }
 
 trait LowerPriorityIncludes {
