@@ -38,6 +38,7 @@ object SceneProperty {
 
 // This particular construct enables the reading of properties of the scene that will be set into the property later on.
 class SceneProperty(override val delegate: jfxbp.ReadOnlyObjectProperty[jfxs.Scene]) extends ReadOnlyObjectProperty[jfxs.Scene](delegate) with SFXDelegate[jfxbp.ReadOnlyObjectProperty[jfxs.Scene]] {
+  def camera = jfxbb.Bindings.select(delegate, "camera").asInstanceOf[jfxbb.ObjectBinding[javafx.scene.Camera]]
   def width = jfxbb.Bindings.selectDouble(delegate, "width")
   def height = jfxbb.Bindings.selectDouble(delegate, "height")
   def stylesheets = jfxbb.Bindings.select(delegate, "stylesheets").asInstanceOf[jfxbb.ObjectBinding[javafx.collections.ObservableList[String]]]

@@ -44,18 +44,12 @@ trait PropertyComparator
     (name == "applyTo") || (name == "create") || (name == "build") || 
     name.endsWith("Property") || name.startsWith("get") || name.startsWith("set") || name.startsWith("is")
 
-  /**
-   *
-   * @param javaFxProperties Properties names of JavaFX class.
-   * @param scalaFxClass ScalaFX class
-   * @param complement Property type output in comparison error string
-   */
   private def assertProperties(javaFxProperties: Set[String], scalaFxClass: Class[_], complement: String) {
     val diff = javaFxProperties diff getScalaFXProperties(scalaFxClass)
-    assert(diff.isEmpty, "Missing %s Properties: ".format(complement) + diff.toList.sorted.mkString(", "))
+    assert(diff.isEmpty, "Missing %s: ".format(complement) + diff.toList.sorted.mkString(", "))
   }
 
-  def compareProperties(javafxClass: Class[_], scalafxClass: Class[_]) {
+  private def getProperties(javafxClass: Class[_]): Set[String] = {
     val javafxRegex = """(.*)Property""".r
     val javaFxProperties = javafxClass.getDeclaredMethods
       .filter(super.isPublicMethod)
@@ -64,20 +58,34 @@ trait PropertyComparator
       .flatMap(x => x)
       .map(_.group(1))
       .toSet
-
-    assertProperties(javaFxProperties, scalafxClass, "")
+    javaFxProperties
   }
 
-  def compareBuilderProperties(javafxClassBuilder: Class[_], scalafxClass: Class[_]) {
+  private def getBuilderProperties(javafxClassBuilder: Class[_]): Set[String] = {
     val notAllowed = (n: String) => n == "applyTo" || n == "create" || n == "build" || super.isImplementation(n)
-    
+
     val javaFxBuilderProperties = javafxClassBuilder.getDeclaredMethods // todo - this eventually needs to use: getMethods
       .filter(super.isPublicMethod)
       .map(_.getName)
       .filterNot(notAllowed)
       .toSet
+    javaFxBuilderProperties
+  }
 
-    assertProperties(javaFxBuilderProperties, scalafxClass, "Builder")
+  def compareProperties(javafxClass: Class[_], scalafxClass: Class[_]) {
+    assertProperties(getProperties(javafxClass), scalafxClass, "Properties")
+  }
+
+  def comparePropertiesInProxy(javafxClass: Class[_], scalafxPropertyProxy: Class[_]) {
+    assertProperties(getProperties(javafxClass), scalafxPropertyProxy, "Properties in Proxy")
+  }
+
+  def compareBuilderProperties(javafxClassBuilder: Class[_], scalafxClass: Class[_]) {
+    assertProperties(getBuilderProperties(javafxClassBuilder), scalafxClass, "Builder Properties")
+  }
+
+  def compareBuilderPropertiesInProxy(javafxClassBuilder: Class[_], scalafxPropertyProxy: Class[_]) {
+    assertProperties(getBuilderProperties(javafxClassBuilder), scalafxPropertyProxy, "Builder Properties in Proxy")
   }
 
 }

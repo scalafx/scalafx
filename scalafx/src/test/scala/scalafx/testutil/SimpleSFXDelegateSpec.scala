@@ -51,11 +51,7 @@ abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected
   extends SFXDelegateSpec[J, S](javaClass, scalaClass)
   with PropertyComparator {
 
-  // Tests - Begin
-
   it should "implement all the JavaFX properties" in {
     compareProperties(javaClass, scalaClass)
   }
-
-  // Tests - End
 }

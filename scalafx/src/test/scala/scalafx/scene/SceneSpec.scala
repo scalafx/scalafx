@@ -48,4 +48,12 @@ class SceneSpec
 
   override protected def getJavaClassInstance = new jfxs.Scene(new jfxs.Group)
 
+  it should "have a Property class that exposes all the JavaFX builder properties" in {
+    compareBuilderPropertiesInProxy(classOf[jfxs.SceneBuilder[_]], classOf[SceneProperty])
+  }
+
+  it should "have a Property class that exposes all the JavaFX properties" in {
+    comparePropertiesInProxy(classOf[jfxs.Scene], classOf[SceneProperty])
+  }
+
 }
