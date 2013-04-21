@@ -47,7 +47,7 @@ class MenuBar(override val delegate: jfxsc.MenuBar = new jfxsc.MenuBar()) extend
   /**
    * Sets the list of Menus for this instance.
    */
-  def menus_=(c: Iterable[Menu]) = {
+  def menus_=(c: Iterable[Menu]) {
     fillSFXCollection(this.menus, c)
   }
 

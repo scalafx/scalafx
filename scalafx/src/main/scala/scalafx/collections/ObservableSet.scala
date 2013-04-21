@@ -71,7 +71,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
   case class Add[T](added: T) extends Change[T]
 
   /**
-   * Indicates a remotion in a $OS.
+   * Indicates a removal in an $OS.
    *
    * @param removed Removed element.
    * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/SetChangeListener.Change.html#getElementRemoved() `SetChangeListener.Change.getElementRemoved()`]]

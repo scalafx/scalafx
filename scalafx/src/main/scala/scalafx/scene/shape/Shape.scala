@@ -79,7 +79,7 @@ abstract class Shape(override val delegate: jfxss.Shape)
   }
 
   /**
-   * Defines whether antialiasing hints are used or not for this Shape.
+   * Defines whether anti-aliasing hints are used or not for this Shape.
    */
   def smooth: BooleanProperty = delegate.smoothProperty
   def smooth_=(v: Boolean) {

@@ -68,7 +68,7 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
    *
    * @param c Menu items to replace prior content.
    */
-  def items_=(c: Iterable[MenuItem]) = {
+  def items_=(c: Iterable[MenuItem]) {
     fillSFXCollection(this.items, c)
   }
 

@@ -130,7 +130,7 @@ package object cell {
    * @tparam T The type of the elements contained within the inner element inside the Cell.
    */
   type Itemable[T] = {
-    def getItems(): jfxc.ObservableList[T]
+    def getItems: jfxc.ObservableList[T]
   }
 
   /**
@@ -144,7 +144,7 @@ package object cell {
     /**
      * Returns the items to be displayed in the ChoiceBox when it is showing.
      */
-    def items: ObservableBuffer[T] = delegate.getItems()
+    def items: ObservableBuffer[T] = delegate.getItems
 
   }
 

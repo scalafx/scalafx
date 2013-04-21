@@ -33,7 +33,7 @@ import javafx.{ collections => jfxc }
 object CollectionIncludes extends CollectionIncludes
 
 /**
- * Contains implicit conversor functions from [[http://docs.oracle.com/javafx/2/api/javafx/collections/package-frame.html `javafx.collections`]]
+ * Contains implicit conversion functions from [[http://docs.oracle.com/javafx/2/api/javafx/collections/package-frame.html `javafx.collections`]]
  * traits to `scalafx.collections` traits.
  */
 trait CollectionIncludes {

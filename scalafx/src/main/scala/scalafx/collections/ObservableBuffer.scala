@@ -48,7 +48,7 @@ import scalafx.delegate.SFXDelegate
  * Companion Object for [[scalafx.collections.ObservableBuffer]].
  *
  * @define OB `ObservableBuffer`
- * @define OL [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservavbleList.html `ObservavbleList`]]
+ * @define OL [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableList.html `ObservableList`]]
  * @define buf `Buffer`
  */
 object ObservableBuffer extends SeqFactory[ObservableBuffer] {

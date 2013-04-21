@@ -253,7 +253,7 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
 
   // Testing fillProperty method from companion.
 
-  private def evaluateFillPropery[T <: Object](property: ObjectProperty[T], newValue: T) {
+  private def evaluateFillProperty[T <: Object](property: ObjectProperty[T], newValue: T) {
     val originalValue: T = property.value
     var oldVal: T = null.asInstanceOf[T]
     var newVal: T = null.asInstanceOf[T]
@@ -272,19 +272,19 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   "fillProperty" should "fill property with null if receives null" in {
-    evaluateFillPropery(ObjectProperty[ju.Date](new ju.Date), null)
+    evaluateFillProperty(ObjectProperty[ju.Date](new ju.Date), null)
   }
 
   "fillProperty" should "fill property with not null value if receives a not null" in {
-    evaluateFillPropery(ObjectProperty[ju.Date](new ju.Date), new ju.Date(123456L))
+    evaluateFillProperty(ObjectProperty[ju.Date](new ju.Date), new ju.Date(123456L))
   }
 
   "fillProperty" should "supports variance" in {
-    evaluateFillPropery(ObjectProperty[ju.Date](new ju.Date), new java.sql.Date(1234678L))
+    evaluateFillProperty(ObjectProperty[ju.Date](new ju.Date), new java.sql.Date(1234678L))
   }
 
   "fillProperty" should "supports covariance" in {
-    evaluateFillPropery(ObjectProperty[ju.Date](new java.sql.Date(1234678L)), new ju.Date)
+    evaluateFillProperty(ObjectProperty[ju.Date](new java.sql.Date(1234678L)), new ju.Date)
   }
 }
 
