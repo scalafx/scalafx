@@ -35,7 +35,44 @@ object ReadOnlyObjectWrapper {
   implicit def sfxReadOnlyObjectWrapper2jfx[T <: Any](roow: ReadOnlyObjectWrapper[T]) = roow.delegate
 
   /** Creates a new ReadOnlyObjectWrapper instance with a given initial wrapped value. */
-  def apply[T <: Any](value: T) = new ReadOnlyObjectWrapper[T](new jfxbp.ReadOnlyObjectWrapper[T](value))
+  def apply[T <: Any](value: T): ReadOnlyObjectWrapper[T] =
+    new ReadOnlyObjectWrapper[T](new jfxbp.ReadOnlyObjectWrapper[T](value))
+
+  /** Creates a new ReadOnlyObjectWrapper instance with a given initial wrapped value.
+    *
+    * @param bean The bean of this ReadOnlyObjectWrapper
+    * @param name The name of this ReadOnlyObjectWrapper
+    * @param value the initial value.
+    * @tparam T type of the value hold by this object property.
+    */
+  def apply[T <: Any](bean: Object, name: String, value: T): ReadOnlyObjectWrapper[T] =
+    new ReadOnlyObjectWrapper[T](bean, name, value)
+
+  /** Creates a new ReadOnlyObjectWrapper with a `delegate` as initial value.
+    *
+    * Special case when value is an ScalaFX wrapper, to be used as a work around for
+    * [[https://code.google.com/p/scalafx/issues/detail?id=14 Issue 14]]. Created object property will have value type
+    * of the wrapped JavaFX type to simplify use with binding.
+    *
+    * @param value the initial value, `value.delegate` is actually stored in this property.
+    * @tparam J the JavaFX type of the value hold by this object property.
+    */
+  def apply[J <: Object](value: SFXDelegate[J]): ReadOnlyObjectWrapper[J] =
+    new ReadOnlyObjectWrapper[J](new jfxbp.ReadOnlyObjectWrapper[J](value.delegate))
+
+  /** Creates a new ReadOnlyObjectWrapper with a [[scalafx.delegate.SFXDelegate]] as initial value.
+    *
+    * Special case when value is an ScalaFX wrapper, to be used as a work around for
+    * [[https://code.google.com/p/scalafx/issues/detail?id=14 Issue 14]]. Created object property will have value type
+    * of the wrapped JavaFX type to simplify use with binding.
+    *
+    * @param bean The bean of this ReadOnlyObjectWrapper
+    * @param name The name of this ReadOnlyObjectWrapper
+    * @param value the initial value.
+    * @tparam J the JavaFX type of the value hold by this object property.
+    */
+  def apply[J <: Object](bean: Object, name: String, value: SFXDelegate[J]): ReadOnlyObjectWrapper[J] =
+    new ReadOnlyObjectWrapper[J](bean, name, value.delegate)
 }
 
 
@@ -44,10 +81,19 @@ class ReadOnlyObjectWrapper[T <: Any](override val delegate: jfxbp.ReadOnlyObjec
   extends ObjectProperty[T](delegate)
   with SFXDelegate[jfxbp.ReadOnlyObjectWrapper[T]] {
 
+  /** Creates a new ReadOnlyObjectWrapper instance.
+    * @param bean the bean of this ReadOnlyObjectWrapper
+    * @param name the name of this ReadOnlyObjectWrapper
+    */
   def this(bean: Object, name: String) = this(new jfxbp.ReadOnlyObjectWrapper[T](bean, name))
 
+  /** Creates a new ReadOnlyObjectWrapper instance.
+    * @param bean the bean of this ReadOnlyObjectWrapper
+    * @param name the name of this ReadOnlyObjectWrapper
+    */
   def this(bean: Object, name: String, initialValue: T) =
     this(new jfxbp.ReadOnlyObjectWrapper[T](bean, name, initialValue))
 
+  /** The read-only property, that is synchronized with this ReadOnlyObjectWrapper. */
   def readOnlyProperty: ReadOnlyObjectProperty[T] = delegate.getReadOnlyProperty
 }

@@ -28,66 +28,96 @@ package scalafx.animation
 
 import collection.JavaConversions._
 import javafx.{ animation => jfxa, scene => jfxs }
+import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
+/**
+ * Companion Object for [[scalafx.animation.ParallelTransition]].
+ *
+ * @define PT `ParallelTransition`
+ */
 object ParallelTransition extends AnimationStatics {
+
+  /**
+   * Converts a ScalaFX $PT to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/ParallelTransition.html $PT]],
+   * extracting its delegate.
+   *
+   * @param v ScalaFX $PT
+   * @return JavaFX $PT extracted from `v`.
+   */
   implicit def sfxParallelTransition2jfx(v: ParallelTransition) = v.delegate
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/ParallelTransition.html ParallelTransition]].
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/ParallelTransition.html $PT]].
+ *
+ * @constructor Creates a new ScalaFX $PT from a JavaFX $PT.
+ * @param delegate JavaFX $PT to be delegated.
+ *
+ * @define PT `ParallelTransition`
+ * @define CONSTR The constructor of $PT.
+ * @define TRS [[scalafx.animation.Transition]]s
+ * @define ND [[scalafx.scene.Node]]
+ * @define NDARG The target $ND to be used in child $TRS that have no `Node` specified themselves.
+ * @define ANS [[scalafx.animation.Animation]]s
+ * @define ANSARG The child $ANS of this $PT.
  */
 class ParallelTransition(override val delegate: jfxa.ParallelTransition = new jfxa.ParallelTransition)
   extends Transition(delegate)
   with SFXDelegate[jfxa.ParallelTransition] {
 
+  // CONSTRUCTORS
+
   /**
-   * The constructor of ParallelTransition.
+   * $CONSTR
    *
-   * @param children  The child Animations of this ParallelTransition
+   * @param children $ANSARG
    */
   def this(children: Seq[Animation]) =
     this(new jfxa.ParallelTransition(children.map(_.delegate): _*))
 
   /**
-   * The constructor of ParallelTransition.
+   * $CONSTR
    *
-   * @param node The target Node to be used in child Transitions that have no
-   * Node specified themselves
+   * @param node $NDARG
    */
   def this(node: Node) = this(new jfxa.ParallelTransition(node))
 
   /**
-   * The constructor of ParallelTransition.
+   * $CONSTR
    *
-   * @param node The target Node to be used in child Transitions that have no
-   * Node specified themselves
-   * @param children  The child Animations of this ParallelTransition
+   * @param node $NDARG
+   * @param children $ANSARG
    */
   def this(node: Node, children: Seq[Animation]) =
     this(new jfxa.ParallelTransition(node, children.map(_.delegate): _*))
 
+  // PROPERTIES
+
   /**
-   * This Node is used in all child Transitions, that do not define a target
-   *  Node themselves.
+   * This $ND is used in all child $TRS, that do not define a target `Node` themselves.
    */
   def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }
 
+  // METHODS
+
   /**
-   * A list of Animations that will be played sequentially.
+   * A list of $ANS that will be played sequentially.
    */
   def children = delegate.getChildren
+
+  /**
+   * Sets the list of $ANS, replacing the prior content. If you want append to current content, use `add` or similar.
+   *
+   * @param c list of $ANS to replace prior content.
+   */
   def children_=(c: Iterable[Animation]) {
-    if (null == c) {
-      children.clear()
-    } else {
-      children.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.children, c)
   }
 }

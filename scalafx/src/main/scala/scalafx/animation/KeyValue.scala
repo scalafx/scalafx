@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,20 @@ import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.beans.property.Property
 
+/**
+ * Companion Object for [[scalafx.animation.KeyValue]].
+ *
+ * @define KV `KeyValue`
+ */
 object KeyValue {
+
+  /**
+   * Converts a ScalaFX $KV to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/KeyValue.html $KV]],
+   * extracting its delegate.
+   *
+   * @param v ScalaFX $KV
+   * @return JavaFX $KV extracted from `v`.
+   */
   implicit def sfxKeyValue2jfx(v: KeyValue[_, _]) = v.delegate
 
   // Need to separately capture the Number/primitive combinations since JavaFX does not go down to primitives in its generics (wow, this is ugly!)
@@ -66,24 +79,29 @@ object KeyValue {
 }
 
 /**
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/KeyValue.html $KV]].
  * Defines a key value to be interpolated for a particular interval along the animation.
- * A KeyFrame, which defines a specific point on a timeline, can hold multiple KeyValues.
- * KeyValue is an immutable class.
+ * A KeyFrame, which defines a specific point on a timeline, can hold multiple $KV s.
+ * $KV is an immutable class.
  *
  * @tparam T Indicates Scala type that will be returned for this property.
  * @tparam J Indicates Java type to be wrapped by T. Eventually T and J could be the same.
+ * @constructor Creates a new ScalaFX $KV from a JavaFX $KV.
+ * @param delegate JavaFX $KV to be delegated.
+ * 
+ * @define KV `KeyValue`
  */
 class KeyValue[T, J](override val delegate: jfxa.KeyValue)
   extends SFXDelegate[jfxa.KeyValue] {
   // need to fix the types on these returns since JavaFX KeyValue is not genericized
 
   /**
-   * Returns the end value of this KeyValue
+   * Returns the end value of this $KV.
    */
   def endValue: J = delegate.getEndValue.asInstanceOf[J]
 
   /**
-   * Returns the target of this KeyValue
+   * Returns the target of this $KV.
    */
   def target: jfxbv.WritableValue[T] = delegate.getTarget.asInstanceOf[jfxbv.WritableValue[T]]
 
@@ -94,7 +112,20 @@ class KeyValue[T, J](override val delegate: jfxa.KeyValue)
 
 }
 
+/**
+ * Companion Object for [[scalafx.animation.Tweenable]].
+ *
+ * @define TW `Tweenable`
+ * @define KV `KeyValue`
+ */
 object Tweenable {
+  
+  /**
+   * Converts a ScalaFX $TW to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/KeyValue.html $KV]].
+   *
+   * @param t ScalaFX $TW
+   * @return JavaFX $KV extracted from `t.linear`.
+   */
   implicit def tweenable2KeyFrame[T <: Any, J <: Any](t: Tweenable[T, J]) = t.linear
 }
 
@@ -103,9 +134,12 @@ object Tweenable {
  *
  * @tparam T Indicates Scala type that will be returned for this property.
  * @tparam J Indicates Java type to be wrapped by T. Eventually T and J could be the same.
- *
+ * @constructor Creates a new $TW
  * @param target target.
  * @param endValue end value.
+ * 
+ * @define TW `Tweenable`
+ * @define KV `KeyValue`
  */
 class Tweenable[T <: Any, J <: Any](target: jfxbv.WritableValue[J], endValue: J) {
 

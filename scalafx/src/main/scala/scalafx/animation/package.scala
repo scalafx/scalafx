@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,46 +24,12 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.delegate
-
-import javafx.beans.{ property => jfxbp }
-import javafx.{ geometry => jfxg }
-import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.geometry.Pos
-import AlignmentDelegate._
-
-object AlignmentDelegate {
-
-  /**
-   * Types that contains `alignment` property.
-   */
-  type Aligned = {
-
-    /*
-     * The overall alignment of children (or text) within the component's width and height
-     */
-    def alignmentProperty(): jfxbp.ObjectProperty[jfxg.Pos]
-
-  }
-
-}
+package scalafx
 
 /**
- * Trait that unifies JavaFX classes that contains properties indicating component's internal alignment,
- * represented by `alignmentProperty` and its respective getter and setters.
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/animation/package-summary.html `javafx.animation`]] package.
+ *
  */
-trait AlignmentDelegate[J <: Object with Aligned]
-  extends SFXDelegate[J] {
-
-  /**
-   * The overall alignment of children (or text) within the component's width and height.
-   *
-   * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node.
-   */
-  def alignment: ObjectProperty[jfxg.Pos] = delegate.alignmentProperty()
-  def alignment_=(v: Pos) {
-    alignment() = v
-  }
+package object animation {
 
 }

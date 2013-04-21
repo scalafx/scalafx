@@ -249,6 +249,12 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
    *  List of column constraints.
    */
   def columnConstraints = delegate.getColumnConstraints
+  /**
+   * Sets the list of column constraints, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
+   *
+   * @param c list of column constraints to replace prior content.
+   */
   def columnConstraints_=(c: Iterable[ColumnConstraints]) {
     if (null == c) {
       columnConstraints.clear()
@@ -261,6 +267,12 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
    * List of row constraints.
    */
   def rowConstraints = delegate.getRowConstraints
+  /**
+   * Sets the list of row constraints, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
+   *
+   * @param c list of row constraints to replace prior content.
+   */
   def rowConstraints_=(c: Iterable[RowConstraints]) {
     if (null == c) {
       rowConstraints.clear()

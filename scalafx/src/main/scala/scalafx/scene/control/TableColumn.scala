@@ -40,7 +40,6 @@ import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.StringProperty
 import scalafx.beans.value.ObservableValue
-import scalafx.beans.value.ObservableValue.sfxObservableValue2jfxObjectValue
 import scalafx.event.Event
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
@@ -218,7 +217,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   def cellValueFactory_=(f: TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]) {
     delegate.cellValueFactoryProperty.setValue(new jfxu.Callback[jfxsc.TableColumn.CellDataFeatures[S, T], jfxbv.ObservableValue[T]] {
       def call(v: jfxsc.TableColumn.CellDataFeatures[S, T]): jfxbv.ObservableValue[T] = {
-        sfxObservableValue2jfxObjectValue(f(v))
+        f(v).delegate
       }
     })
   }

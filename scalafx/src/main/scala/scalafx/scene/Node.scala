@@ -35,6 +35,7 @@ import javafx.{ event => jfxe }
 import javafx.{ geometry => jfxg }
 import javafx.{ scene => jfxs }
 import javafx.{ util => jfxu }
+import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
@@ -62,6 +63,9 @@ object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
 }
 
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/Node.html]].
+ */
 abstract class Node protected (override val delegate: jfxs.Node) extends SFXDelegate[jfxs.Node] {
 
   /**
@@ -148,11 +152,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   def effect: ObjectProperty[jfxse.Effect] = delegate.effectProperty
 
   def effect_=(v: Effect) {
-    if (null == v) {
-      delegate.setEffect(null)
-    } else {
-      effect() = v
-    }
+    ObjectProperty.fillProperty[jfxse.Effect](this.effect, v)
   }
 
   /**
@@ -548,29 +548,31 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   }
 
   /**
-   *
+   * CSS styles classes used by this Node.
    */
   def styleClass = delegate.getStyleClass
-
+  /**
+   * Sets the list of CSS styles classes, replacing the prior content. If you want append to current content, use `add`
+   * or similar.
+   *
+   * @param c list of CSS styles classes to replace prior content.
+   */
   def styleClass_=(c: Iterable[String]) {
-    if(null == c) {
-      styleClass.clear()
-    } else {
-      styleClass.setAll(c)
-    }
+    fillCollection(styleClass, c)
   }
 
   /**
    * Defines the ObservableList of Transform objects to be applied to this Node.
    */
   def transforms = delegate.getTransforms
-
+  /**
+   * Sets the list of transforms, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
+   *
+   * @param c list of transforms to replace prior content.
+   */
   def transforms_=(c: Iterable[Transform]) {
-    if (null == c) {
-      transforms.clear()
-    } else {
-      transforms.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(transforms, c)
   }
 
   /**

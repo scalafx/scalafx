@@ -27,13 +27,13 @@
 package scalafx.stage
 
 import java.io.File
-
+import javafx.{stage => jfxs}
 import scala.collection.JavaConversions._
-import javafx.{ stage => jfxs }
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.StringProperty
 import scalafx.delegate.SFXDelegate
+
 
 object FileChooser {
   implicit def sfxFileChooser2jfx(fc: FileChooser) = fc.delegate
@@ -48,6 +48,12 @@ object FileChooser {
      * Creates an ExtensionFilter with the specified description and the file name extensions.
      */
     def this(description: String, extensions: Seq[String]) = this(new jfxs.FileChooser.ExtensionFilter(description, extensions))
+
+    /**
+     * Creates an ExtensionFilter with the specified description and the file name extension.
+     * This is a convenience constructor for a common situations when only one extension is used.
+     */
+    def this(description: String, extension: String) = this(new jfxs.FileChooser.ExtensionFilter(description, extension))
 
     /*
      * Creates an ExtensionFilter with the specified description and the file name extensions.

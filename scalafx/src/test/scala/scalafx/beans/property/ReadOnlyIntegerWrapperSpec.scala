@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2012-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,49 +24,36 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.layout
 
-import collection.JavaConversions._
-import javafx.scene.{ layout => jfxsl }
-import scalafx.collections._
-import scalafx.scene.Node
-import scalafx.delegate.SFXDelegate
+package scalafx.beans.property
 
-object Pane {
-  implicit def sfxPane2jfx(v: Pane) = v.delegate
-}
+import org.junit.runner.RunWith
+import org.scalatest.BeforeAndAfterEach
+import org.scalatest.FlatSpec
+import org.scalatest.junit.JUnitRunner
+import org.scalatest.matchers.ShouldMatchers.convertToAnyShouldWrapper
+import org.scalatest.matchers.ShouldMatchers.equal
 
-/**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/Pane.html]].
- */
-class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
-  extends Region(delegate)
-  with SFXDelegate[jfxsl.Pane] {
 
-  /**
-   * Gets the list of children of this Parent.
-   */
-  def children = delegate.getChildren
+/** ReadOnlyIntegerWrapper Spec tests. */
+@RunWith(classOf[JUnitRunner])
+class ReadOnlyIntegerWrapperSpec extends FlatSpec with BeforeAndAfterEach {
 
-  /**
-   * Gets the list of children of this Parent.
-   */
-  def content = children
-  /**
-   * Sets the list of children, replacing the prior content. If you want append to current content, use `add` or
-   * similar.
-   *
-   * @param c list of children to replace prior content.
-   */
-  def content_=(c: Iterable[Node]) {
-    fillSFXCollection(this.content, c)
+  "A ReadOnlyIntegerWrapper" should "be an instance of IntegerProperty" in {
+    val p = new ReadOnlyIntegerWrapper()
+    assert(p.isInstanceOf[IntegerProperty])
   }
-  /**
-   * Sets a child, replacing the prior content. If you want append to current content, use `add` or similar.
-   *
-   * @param n Node to replace prior content.
-   */
-  def content_=(n: Node) {
-    fillSFXCollectionWithOne(this.content, n)
+
+  it should "have public field `readOnlyProperty` that is an instance of `ReadOnlyIntegerProperty`" in {
+    val p = new ReadOnlyIntegerWrapper()
+    assert(p.readOnlyProperty.isInstanceOf[ReadOnlyIntegerProperty])
+  }
+
+  it should "propagate value changes to `readOnlyProperty`" in {
+    val p = new ReadOnlyIntegerWrapper()
+    p.value = -18
+    p.readOnlyProperty() should equal(-18)
+    p.value = 7896
+    p.readOnlyProperty() should equal(7896)
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,16 +33,30 @@ import javafx.{ animation => jfxa }
 import scalafx.util.Duration
 import scalafx.delegate.SFXDelegate
 
+/**
+ * Companion Object for [[scalafx.animation.KeyFrame]].
+ *
+ * @define KF `KeyFrame`
+ */
 object KeyFrame {
+
+  /**
+   * Converts a ScalaFX $KF to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/KeyFrame.html $KF]],
+   * extracting its delegate.
+   *
+   * @param v ScalaFX $KF
+   * @return JavaFX $KF extracted from `v`.
+   */
   implicit def sfxKeyFrame2jfx(v: KeyFrame) = v.delegate
 
   /**
-   * Creates a new KeyFrame instance
+   * Creates a new $KF instance
    *
-   * @param time  the time
-   * @param name the Name
-   * @param onFinished  the onFinished-handler
-   * @param values a ObservableList of KeyValue instances
+   * @param time the time
+   * @param name the Name. Default Value: `null`.
+   * @param onFinished the onFinished-handler. Default Value: `null`.
+   * @param values a `Set` of [[scalafx.animation.KeyValue]] instances. Default Value: empty Set.
+   * @return A new $KF
    */
   def apply(time: Duration,
     name: String = null,
@@ -54,26 +68,38 @@ object KeyFrame {
 
 }
 
+/**
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/KeyFrame.html $KF]].
+ *
+ * @constructor Creates a new ScalaFX $KF from a JavaFX $KF.
+ * @param delegate JavaFX $KF to be delegated.
+ *
+ * @define KF `KeyFrame`
+ */
 class KeyFrame(override val delegate: jfxa.KeyFrame)
   extends SFXDelegate[jfxa.KeyFrame] {
 
+  // METHODS
+  
   /**
-   * Returns the time offset of this KeyFrame.
+   * Returns the time offset of this $KF.
    */
   def time = delegate.getTime
 
   /**
-   * Returns the name of this KeyFrame.
+   * Returns the name of this $KF.
    */
   def name = delegate.getName
 
   /**
-   * Returns the onFinished event handler of this KeyFrame.
+   * Returns the onFinished event handler of this $KF.
    */
   def onFinished = delegate.getOnFinished
 
   /**
-   * Returns an immutable Set of KeyValue instances.
+   * Returns an immutable Set of [[http://docs.oracle.com/javafx/2/api/javafx/animation/KeyValue.html `KeyValue`]]
+   * instances.
    */
   def values = delegate.getValues
+
 }

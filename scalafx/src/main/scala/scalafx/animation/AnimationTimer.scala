@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,16 +30,27 @@ import javafx.{ animation => jfxa }
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
+/**
+ * Companion Object for [[scalafx.animation.AnimationTimer]].
+ *
+ * @define AT `AnimationTimer`
+ */
 object AnimationTimer {
+
+  /**
+   * Converts a ScalaFX $AT to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/AnimationTimer.html $AT]], 
+   * extracting its delegate.
+   *
+   * @param at ScalaFX $AT
+   * @return JavaFX $AT extracted from `at`.
+   */
   implicit def sfxAnimationTimer2jfx(at: AnimationTimer) = at.delegate
 
   /**
-   * Creates a new [[scalafx.animation.AnimationTimer]] from a handle function that receives a
-   * Long parameter.
+   * Creates a new [[scalafx.animation.AnimationTimer]] from a handle function that receives a Long parameter.
    *
-   * @param handler function that is called in every frame while the
-   * AnimationTimer is active.
-   * @return a new [[scalafx.animation.AnimationTimer]].
+   * @param handler function that is called in every frame while the $AT is active.
+   * @return a new $AT.
    */
   def apply(handler: Long => Unit): AnimationTimer = new AnimationTimer(new jfxa.AnimationTimer {
     def handle(now: Long) {
@@ -50,27 +61,35 @@ object AnimationTimer {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.html AnimationTimer]]. 
+ * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.html $AT]].
+ *
+ * @constructor Creates a new ScalaFX $AT from a JavaFX $AT.
+ * @param delegate JavaFX $AT to be delegated.
+ * 
+ * @define AT `AnimationTimer`
  */
 abstract class AnimationTimer(override val delegate: jfxa.AnimationTimer)
   extends SFXDelegate[jfxa.AnimationTimer] {
 
   /**
    * This method needs to be overridden by extending classes.
+   *
+   * @param now The timestamp of the current frame given in nanoseconds. This value will be the same for all $AT's
+   * called during one frame.
    */
   def handle(now: Long) {
     delegate.handle(now)
   }
 
   /**
-   * Starts the `AnimationTimers`.
+   * Starts the $AT's.
    */
   def start() {
     delegate.start()
   }
 
   /**
-   * Stops the `AnimationTimers`. It can be activated again by calling start().
+   * Stops the $AT's. It can be activated again by calling `start`.
    */
   def stop() {
     delegate.stop()

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,9 @@
 package scalafx.scene.control
 
 import javafx.beans.property.IntegerProperty
-import javafx.scene.{control => jfxsc}
+import javafx.{ scene => jfxs }
+import jfxs.{ control => jfxsc }
+import javafx.{ util => jfxu }
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.scene.Node
@@ -94,7 +96,11 @@ class Pagination(override val delegate: jfxsc.Pagination = new jfxsc.Pagination)
    */
   def pageFactory: ObjectProperty[Int => Node] = ObjectProperty((page: Int) => delegate.pageFactoryProperty.get.call(page))
   def pageFactory_=(callback: Int => Node) {
-    pageFactory() = callback
+    val jCallback = new jfxu.Callback[java.lang.Integer, jfxs.Node] {
+      def call(pageIndex: java.lang.Integer) = callback(pageIndex).delegate
+    }
+
+    delegate.setPageFactory(jCallback)
   }
 
 }

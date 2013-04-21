@@ -30,6 +30,7 @@ import scala.collection.JavaConversions.asJavaCollection
 
 import javafx.scene.{ control => jfxsc }
 import javafx.{ event => jfxe }
+import scalafx.collections._
 import scalafx.Includes._
 import scalafx.scene.Node._
 import scalafx.scene.Node
@@ -39,6 +40,9 @@ object Menu {
   implicit def sfxMenu2jfx(cb: Menu) = cb.delegate
 }
 
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/Menu.html]].
+ */
 class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
   extends MenuItem(delegate)
   with jfxe.EventTarget
@@ -55,16 +59,17 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
   def this(label: String) = this(new jfxsc.Menu(label))
 
   /**
-   * Gets the list of MenuItems for this instance.
-   * @return
+   * The items to show within this menu.
    */
   def items = delegate.getItems
+  /**
+   * Sets the menu items, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
+   *
+   * @param c Menu items to replace prior content.
+   */
   def items_=(c: Iterable[MenuItem]) = {
-    if (null == c) {
-      items.clear()
-    } else {
-      items.setAll(c.map(_.delegate))
-    }
+    fillSFXCollection(this.items, c)
   }
 
   /**

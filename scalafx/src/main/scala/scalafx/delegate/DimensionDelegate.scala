@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@ object DimensionDelegate {
    * Types that contains `height` and `width` properties.
    */
   type Dimensioned = {
-    
+
     def heightProperty(): jfxbp.DoubleProperty
 
     def widthProperty(): jfxbp.DoubleProperty
@@ -46,7 +46,7 @@ object DimensionDelegate {
 
 /**
  * Trait that unifies JavaFX classes that contains properties indicating height and width,
- * represented by heightProperty and widthProperty and their respective getter and setters.
+ * represented by `heightProperty` and `widthProperty` and their respective getter and setters.
  *
  * @tparam J Original JavaFX type that contains `height` and `width` properties.
  */
