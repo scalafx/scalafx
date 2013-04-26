@@ -45,7 +45,7 @@ class PopupControlSpec
   override protected def getJavaClassInstance = {
     val label = new jfxsc.Label
     label.setTooltip(new jfxsc.Tooltip)
-    val popupControl: PopupControl = label.getTooltip()
+    val popupControl: PopupControl = label.getTooltip
     popupControl
   }
 

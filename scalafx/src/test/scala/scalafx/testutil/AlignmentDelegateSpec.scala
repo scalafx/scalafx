@@ -59,7 +59,7 @@ trait AlignmentDelegateSpec[J <: Object with Aligned, D <: AlignmentDelegate[J]]
     changed should be(true)
     delegate.alignment.value should be(finalValue.delegate)
 
-    subscription.cancel
+    subscription.cancel()
   }
 
 }

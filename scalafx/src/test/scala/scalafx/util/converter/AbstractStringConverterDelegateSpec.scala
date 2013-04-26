@@ -57,7 +57,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 abstract private[converter] class AbstractStringConverterDelegateSpec[J <: java.lang.Object, C <: jfxu.StringConverter[J], S <: Any, D <: StringConverterDelegate[_, S, C]] protected (javaConverterClass: Class[C], scalaConverterClass: Class[D], scalaClass: Class[S]) (implicit jfx2sfx: C => D = null, sfx2jfx: D => C = null)
   extends SimpleSFXDelegateSpec[C, D](javaConverterClass, scalaConverterClass) {
 
-  private def runConverterForExamples {
+  private def runConverterForExamples() {
 
     val converter = getConverterForExample
 
@@ -79,7 +79,7 @@ abstract private[converter] class AbstractStringConverterDelegateSpec[J <: java.
   protected def getConverterForExample = this.getScalaClassInstance
   
   it should "convert %s to String and vice-versa".format(scalaClass) in {
-    this.runConverterForExamples
+    this.runConverterForExamples()
   }
 
 }

@@ -46,7 +46,7 @@ class SingleSkinSpec[T <: jfxsc.Skinnable]
 
   // How Skin is a abstract class, it is done a basic implementation
   override protected def getJavaClassInstance = new jfxsc.Skin[T] {
-    def dispose {}
+    def dispose() {}
     def getNode = null
     def getSkinnable = null.asInstanceOf[T]
   }

@@ -37,8 +37,8 @@ class StringConverterSpec extends FlatSpec {
 
   // Getting decimal and group separator from current Locale 
   private val symbols = DecimalFormatSymbols.getInstance()
-  val decimalSeparator = symbols.getDecimalSeparator()
-  val groupSeparator = symbols.getGroupingSeparator()
+  val decimalSeparator = symbols.getDecimalSeparator
+  val groupSeparator = symbols.getGroupingSeparator
 
   // HELPER METHODS - BEGIN
 
@@ -82,7 +82,7 @@ class StringConverterSpec extends FlatSpec {
 
   // TESTING METHODS - BEGIN
 
-  private def testImplicitConversion {
+  private def testImplicitConversion() {
     "A Scala StringConverter" should "be converteble to a JavaFX StringConverter" in {
       val sc = StringConverter[Char](s => s.charAt(0), ch => ch.toString)
       val jc: jfxu.StringConverter[Char] = sc
@@ -105,6 +105,6 @@ class StringConverterSpec extends FlatSpec {
 
   // TESTS EXECUTION
 
-  testImplicitConversion
+  testImplicitConversion()
 
 }

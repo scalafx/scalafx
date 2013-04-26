@@ -205,7 +205,7 @@ class ObservableMapSpec[K, V]
     map should equal(ObservableMap((10 to 20).map(i => (i, i.toString))))
     removedEntries.toList should equal((0 to 9).map(i => (i, i.toString)).toList)
 
-    removedEntries.clear
+    removedEntries.clear()
     // Retain even keys
     // NOTE Due to Scala 2.10 bug SI-7269 cannot use some of Map methods to filter elements.
     //      The `for` loop implements operation equivalent to `map.retain`
@@ -215,9 +215,9 @@ class ObservableMapSpec[K, V]
     map should equal(ObservableMap((10 to 20).filter(_ % 2 == 0).map(i => (i, i.toString))))
     removedEntries.toList.sortWith(_._1 < _._1) should equal((10 to 20).filter(_ % 2 != 0).map(i => (i, i.toString)).toList)
 
-    removedEntries.clear
+    removedEntries.clear()
     // Clear Map
-    map.clear
+    map.clear()
     removedEntries.toList.sortWith(_._1 < _._1) should equal((10 to 20).filter(_ % 2 == 0).map(i => (i, i.toString)).toList)
     map should be('empty)
   }

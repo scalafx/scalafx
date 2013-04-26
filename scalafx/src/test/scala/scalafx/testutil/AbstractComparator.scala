@@ -79,7 +79,7 @@ private[testutil] trait AbstractComparator {
     private val boolGetterPattern = "^is.+$"
 
     private def isValid(m: Method, pattern: String, parametersLenght: Int, returnEvaluator: Class[_] => Boolean) =
-      m.getName.matches(pattern) && (m.getParameterTypes.length == parametersLenght) && returnEvaluator(m.getReturnType())
+      m.getName.matches(pattern) && (m.getParameterTypes.length == parametersLenght) && returnEvaluator(m.getReturnType)
 
     private def isSetter(m: Method): Boolean = isValid(m, setterPattern, 1, (_ == JVoid))
 
@@ -99,7 +99,7 @@ private[testutil] trait AbstractComparator {
      *  - Otherwise, returns original method name.
      */
     def scalaizePropertyNames(m: Method): String = {
-      val name = m.getName()
+      val name = m.getName
 
       if (isSetter(m)) name(3).toLower + name.substring(4) + "_="
       else if (isGetter(m)) name(3).toLower + name.substring(4)

@@ -34,7 +34,7 @@ object SecondStageExceptionDemo extends JFXApp {
               }
             }
             // Exception was thrown here: java.lang.IllegalStateException: Cannot call this method on primary stage
-            dialogStage.showAndWait
+            dialogStage.showAndWait()
           }
         }
       }

@@ -196,14 +196,14 @@ class ObservableSetSpec[T]
     // First Verification
     removedValues.toList.sortWith(_ < _) should equal((0 to 7).toList)
 
-    removedValues.clear
+    removedValues.clear()
     // Retain even values
     set retain (_ % 2 == 0)
     removedValues.toList.sortWith(_ < _) should equal((8 to 15).filter(_ % 2 != 0).toList)
 
-    removedValues.clear
+    removedValues.clear()
     // Clear Set
-    set.clear
+    set.clear()
     set should be('empty)
     removedValues.toList.sortWith(_ < _) should equal((8 to 15).filter(_ % 2 == 0).toList)
   }

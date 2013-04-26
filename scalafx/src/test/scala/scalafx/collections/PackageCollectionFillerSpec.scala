@@ -60,8 +60,8 @@ class PackageCollectionFillerSpec extends FlatSpec {
         change.next
         wasRemoved = change.wasRemoved()
         wasAdded = change.wasAdded()
-        addedElements = change.getAddedSubList()
-        removedElements = change.getRemoved()
+        addedElements = change.getAddedSubList
+        removedElements = change.getRemoved
         secondChange = change.next
       }
     })

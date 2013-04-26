@@ -288,7 +288,7 @@ class ObservableBufferSpec[T]
     buffer should be('empty)
 
     buffer += ("a", "b", "c")
-    buffer.clear
+    buffer.clear()
     buffer should be('empty)
 
     buffer += ("a", "b", "c")
