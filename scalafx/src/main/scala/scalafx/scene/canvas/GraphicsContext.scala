@@ -92,7 +92,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * Starts a Path
    */
-  def beginPath = delegate.beginPath
+  def beginPath() = delegate.beginPath()
 
   /**
    * Adds segments to the current path to make a cubic bezier curve.
@@ -113,12 +113,12 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * Clips using the current path
    */
-  def clip = delegate.clip
+  def clip() = delegate.clip()
 
   /**
    * Closes the path.
    */
-  def closePath = delegate.closePath
+  def closePath() = delegate.closePath()
 
   /**
    * Draws an image at the given x, y position using the width and height of the given image.
@@ -168,7 +168,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
    * Fills the path with the current fill paint.
    * This method is correspondent to fill() method in JavaFx class.
    */
-  def fillPath = delegate.fill
+  def fillPath() = delegate.fill()
 
   /**
    * Fills an arc using the current fill paint.
@@ -296,7 +296,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
    * Pops the state off of the stack, setting the following attributes to their value at the time when that state was
    * pushed onto the stack.
    */
-  def restore = delegate.restore
+  def restore() = delegate.restore()
 
   /**
    * Rotates the current transform in degrees.
@@ -306,7 +306,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * Saves the following attributes onto a stack.
    */
-  def save = delegate.save
+  def save() = delegate.save()
 
   /**
    * Scales the current transform by x, y.
@@ -323,7 +323,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
    * Strokes the path with the current stroke paint.
    * This method is correspondent to stroke() method in JavaFx class.
    */
-  def strokePath = delegate.stroke
+  def strokePath() = delegate.stroke()
 
   /**
    * Strokes an Arc using the current stroke paint.

@@ -44,7 +44,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   /**
    * Arms the ComboBox.
    */
-  def arm = delegate.arm
+  def arm() = delegate.arm()
 
   /**
    * Indicates that the ComboBox has been "armed" such that a mouse release will cause the ComboBox show() method to be invoked.
@@ -57,7 +57,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   /**
    * Disarms the ComboBox.
    */
-  def disarm = delegate.disarm
+  def disarm() = delegate.disarm()
 
   /**
    * Specifies whether the ComboBox allows for user input.
@@ -70,7 +70,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   /**
    * Closes the popup / dialog that was shown when show() was called.
    */
-  def hide = delegate.hide
+  def hide() = delegate.hide()
 
   /**
    * The ComboBox action, which is invoked whenever the ComboBox value property is changed.
@@ -91,7 +91,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   /**
    * Requests that the ComboBox display the popup aspect of the user interface.
    */
-  def show = delegate.show
+  def show() = delegate.show()
 
   /**
    * Represents the current state of the ComboBox popup, and whether it is currently visible on screen (although it may be hidden behind other windows).

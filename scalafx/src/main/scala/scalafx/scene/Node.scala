@@ -629,7 +629,7 @@ extends SFXDelegate[jfxs.Node] {
   /**
    * Pseudo-property that indicates this Node position inside its respective parent.
    */
-  def alignmentInParent: Pos = delegate.getProperties().get("alignment").asInstanceOf[jfxg.Pos]
+  def alignmentInParent: Pos = delegate.getProperties.get("alignment").asInstanceOf[jfxg.Pos]
 
   /**
    * Sets this Node's alignment constraint inside its Parent. If set, will override the Parent's default alignment.
@@ -670,7 +670,7 @@ extends SFXDelegate[jfxs.Node] {
    *
    * @return this Node's margin constraint inside its Parent or `null` if no margin was set.
    */
-  def margin: Insets = delegate.getProperties().get("margin").asInstanceOf[jfxg.Insets]
+  def margin: Insets = delegate.getProperties.get("margin").asInstanceOf[jfxg.Insets]
 
   /**
    * Sets this Node's margin constraint inside its Parent if set. If set, the parent will layout the child with the
@@ -681,7 +681,7 @@ extends SFXDelegate[jfxs.Node] {
    * @param The margin of space around this Node inside its parent.
    */
   def margin_=(i: Insets) {
-    delegate.getProperties().put("margin", i.delegate)
+    delegate.getProperties.put("margin", i.delegate)
     // for compatibility with layouts, which all use different keys
     jfxsl.BorderPane.setMargin(delegate, i)
     jfxsl.FlowPane.setMargin(delegate, i)
@@ -697,7 +697,7 @@ extends SFXDelegate[jfxs.Node] {
    *
    * @return the horizontal grow priority for the child or `null` if no priority was set
    */
-  def hgrow: Priority = delegate.getProperties().get("hgrow").asInstanceOf[jfxsl.Priority]
+  def hgrow: Priority = delegate.getProperties.get("hgrow").asInstanceOf[jfxsl.Priority]
 
   /**
    * Sets the horizontal grow priority for this Node inside its parent. Setting the value to `null` will remove
@@ -719,7 +719,7 @@ extends SFXDelegate[jfxs.Node] {
    *
    * @return the vertical grow priority for the child or `null` if no priority was set
    */
-  def vgrow: Priority = delegate.getProperties().get("vgrow").asInstanceOf[jfxsl.Priority]
+  def vgrow: Priority = delegate.getProperties.get("vgrow").asInstanceOf[jfxsl.Priority]
 
   /**
    * Sets the vertical grow priority for this Node inside its parent. Setting the value to `null` will remove
@@ -751,7 +751,7 @@ extends SFXDelegate[jfxs.Node] {
   /**
    * If the node is resizable, will set its layout bounds to its current preferred width and height.
    */
-  def autosize = delegate.autosize
+  def autosize() = delegate.autosize()
 
   /**
    * Returns true if the given point (specified in the local coordinate space of this Node) is
@@ -895,7 +895,7 @@ extends SFXDelegate[jfxs.Node] {
    * Requests that this Node get the input focus, and that this Node's top-level ancestor become
    * the focused window.
    */
-  def requestFocus = delegate.requestFocus
+  def requestFocus() = delegate.requestFocus()
 
   /**
    * If the node is resizable, will set its layout bounds to the specified width and height.
@@ -947,17 +947,17 @@ extends SFXDelegate[jfxs.Node] {
   /**
    * Starts a full press-drag-release gesture with this node as gesture source.
    */
-  def startFullDrag = delegate.startFullDrag
+  def startFullDrag() = delegate.startFullDrag()
 
   /**
    * Moves this Node to the back of its sibling nodes in terms of z-order.
    */
-  def toBack = delegate.toBack
+  def toBack() = delegate.toBack()
 
   /**
    * Moves this Node to the front of its sibling nodes in terms of z-order.
    */
-  def toFront = delegate.toFront
+  def toFront() = delegate.toFront()
 
   /**
    * An affine transform that holds the computed local-to-parent transform.

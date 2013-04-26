@@ -108,8 +108,8 @@ object TreeView {
    * Creates a new TreeView overriding layoutChildren method from JavaFX`s
    * TreeView.
    */
-  def apply[T](layoutChildren: => Unit) = new TreeView[T](new jfxsc.TreeView[T] {
-    override def layoutChildren = layoutChildren
+  def apply[T](layoutChildrenOp: => Unit) = new TreeView[T](new jfxsc.TreeView[T] {
+    override def layoutChildren() = layoutChildrenOp
   })
 
 }

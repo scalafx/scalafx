@@ -76,7 +76,7 @@ class Event(override val delegate: jfxe.Event) extends SFXDelegate[jfxe.Event] {
   /**
    * Marks this Event as consumed. This stops its further propagation.
    */
-  def consume = delegate.consume
+  def consume() = delegate.consume()
 
   /**
    * Indicates whether this Event has been consumed by any filter or handler.

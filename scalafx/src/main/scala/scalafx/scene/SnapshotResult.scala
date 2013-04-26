@@ -57,6 +57,6 @@ class SnapshotResult(override val delegate: jfxs.SnapshotResult)
   /**
    * Gets the source Node or Scene on which the snapshot was called.
    */
-  def source: AnyRef = delegate.getSource()
+  def source: AnyRef = delegate.getSource
 
 }

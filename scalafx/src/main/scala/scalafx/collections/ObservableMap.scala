@@ -158,7 +158,7 @@ trait ObservableMap[K, V]
   /**
    * The result when this $MAP is used as a builder.
    */
-  override def result = this
+  override def result() = this
 
   /**
    * The empty map of the same type as this $MAP.
@@ -192,7 +192,7 @@ trait ObservableMap[K, V]
   /**
    * Removes all elements from the $MAP. After this operation has completed, the $MAP will be empty.
    */
-  override def clear = delegate.clear
+  override def clear() = delegate.clear()
 
   /**
    * Creates a new [[http://www.scala-lang.org/api/current/scala/collection/Iterator.html `Iterator`]] over all
@@ -204,7 +204,7 @@ trait ObservableMap[K, V]
     // Definition copied from JavaConversions.JMapWrapperLike.iterator
     val it = delegate.entrySet.iterator
     def hasNext = it.hasNext
-    def next = { val e = it.next; (e.getKey, e.getValue) }
+    def next() = { val e = it.next(); (e.getKey, e.getValue) }
   }
 
   /**

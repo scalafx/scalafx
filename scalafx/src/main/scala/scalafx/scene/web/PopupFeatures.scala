@@ -44,7 +44,7 @@ class PopupFeatures(override val delegate: jfxsw.PopupFeatures) extends SFXDeleg
   /**
    * Returns whether menu bar should be present.
    */
-  def hasMenu = delegate.hasMenu()
+  def hasMenu = delegate.hasMenu
 
   /**
    * Returns whether status bar should be present.

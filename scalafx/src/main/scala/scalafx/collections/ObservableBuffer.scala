@@ -225,7 +225,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
   /**
    * Produces a $OB from the added elements.
    */
-  def result = this
+  def result() = this
 
   /**
    * Creates a new $OB containing both the elements of this $buf and the
@@ -363,7 +363,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
   /**
    * Clears the $OB's contents. After this operation, the $buf is empty.
    */
-  def clear = delegate.clear
+  def clear() = delegate.clear()
 
   /**
    * Inserts new elements at a given index into this $buf.
@@ -383,7 +383,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
 
     def hasNext = it.hasNext
 
-    def next = it.next
+    def next() = it.next()
   }
 
   /**

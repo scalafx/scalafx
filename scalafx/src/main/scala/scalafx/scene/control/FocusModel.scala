@@ -59,12 +59,12 @@ abstract class FocusModel[T](override val delegate: jfxsc.FocusModel[T]) extends
   /**
    * Attempts to give focus to the row after to the currently focused row.
    */
-  def focusNext = delegate.focusNext
+  def focusNext() = delegate.focusNext()
 
   /**
    * Attempts to give focus to the row previous to the currently focused row.
    */
-  def focusPrevious = delegate.focusPrevious
+  def focusPrevious() = delegate.focusPrevious()
 
   /*
    * Returns the number of items in the data model that underpins the control.

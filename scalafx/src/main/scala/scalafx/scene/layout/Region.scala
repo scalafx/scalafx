@@ -147,5 +147,5 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region()) extends P
   /**
    * Gets the space around content, which will include any borders plus padding if set.
    */
-  def insets = delegate.getInsets()
+  def insets = delegate.getInsets
 }

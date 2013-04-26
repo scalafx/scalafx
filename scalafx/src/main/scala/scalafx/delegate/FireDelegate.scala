@@ -49,6 +49,6 @@ trait FireDelegate[J <: Object with Fired]
   /**
    * Fires some kind of event.
    */
-  def fire = delegate.fire
+  def fire() = delegate.fire()
 
 }

@@ -59,12 +59,12 @@ class ButtonBase(override val delegate: jfxsc.ButtonBase)
   /**
    * Arms the button.
    */
-  def arm = delegate.arm
+  def arm() = delegate.arm()
 
   /**
    * Disarms the button.
    */
-  def disarm = delegate.disarm
+  def disarm() = delegate.disarm()
 
   // for now only a few examples
 

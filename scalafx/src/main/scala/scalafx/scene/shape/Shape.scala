@@ -156,7 +156,7 @@ abstract class Shape(override val delegate: jfxss.Shape)
    */
   def strokeDashArray_=(c: Iterable[java.lang.Double]) {
     if (null == c) {
-      strokeDashArray.clear
+      strokeDashArray.clear()
     } else {
       strokeDashArray.setAll(c)
     }

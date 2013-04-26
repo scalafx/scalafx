@@ -93,7 +93,7 @@ object JFXApp {
     private var unnamedArguments = Buffer.empty[String]
     private var filled = false
 
-    private def parseArguments {
+    private def parseArguments() {
       if (!filled) {
         arguments.foreach(arg =>
           keyValue.findFirstMatchIn(arg) match {
@@ -107,12 +107,12 @@ object JFXApp {
     def raw = arguments
 
     def named = {
-      parseArguments
+      parseArguments()
       namedArguments
     }
 
     def unnamed = {
-      parseArguments
+      parseArguments()
       unnamedArguments
     }
 

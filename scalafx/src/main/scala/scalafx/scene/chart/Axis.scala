@@ -133,9 +133,9 @@ abstract class Axis[T](override val delegate: jfxsc.Axis[T]) extends Region(dele
   
   def isValueOnAxis(value: T) = delegate.isValueOnAxis(value)
   
-  def requestAxisLayout = delegate.requestAxisLayout
+  def requestAxisLayout() = delegate.requestAxisLayout()
   
-  def requestLayout = delegate.requestLayout
+  def requestLayout() = delegate.requestLayout()
   
   def toNumericValue(value: T) = delegate.toNumericValue(value)
   

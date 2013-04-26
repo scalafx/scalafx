@@ -158,6 +158,6 @@ class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane)
   /**
    * Requests a layout pass to be performed before the next scene is rendered.
    */
-  def requestLayout = delegate.requestLayout
+  def requestLayout() = delegate.requestLayout()
 
 }

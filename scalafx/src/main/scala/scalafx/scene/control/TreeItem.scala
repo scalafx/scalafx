@@ -266,7 +266,7 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
    */
   def children: ObservableBuffer[jfxsc.TreeItem[T]] = delegate.getChildren
   def children_=(items: Seq[TreeItem[T]]) {
-    children.clear
+    children.clear()
     items.foreach(children += _)
   }
 

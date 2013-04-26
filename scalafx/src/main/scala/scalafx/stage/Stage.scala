@@ -149,8 +149,8 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
   /**
    * Closes this Stage.
    */
-  def close {
-    delegate.close
+  def close() {
+    delegate.close()
   }
 
   /**
@@ -189,8 +189,8 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
   /**
    * Attempts to show this Window by setting visibility to true.
    */
-  def show {
-    delegate.show
+  def show() {
+    delegate.show()
   }
 
   /**
@@ -198,22 +198,22 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
    * This method temporarily blocks processing of the current event, and starts a nested event loop to handle other events.
    * This method must be called on the FX Application thread.
    */
-  def showAndWait {
-    delegate.showAndWait
+  def showAndWait() {
+    delegate.showAndWait()
   }
 
   /**
    * Send the Window to the background.
    */
-  def toBack {
-    delegate.toBack
+  def toBack() {
+    delegate.toBack()
   }
 
   /**
    * Bring the Window to the foreground.
    */
-  def toFront {
-    delegate.toFront
+  def toFront() {
+    delegate.toFront()
   }
 
 }

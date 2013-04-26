@@ -121,24 +121,24 @@ object TableView {
     /**
      * Selects the cell directly above the currently selected cell.
      */
-    def selectAboveCell = delegate.selectAboveCell
+    def selectAboveCell() = delegate.selectAboveCell()
 
     /**
      * Selects the cell directly below the currently selected cell.
      */
-    def selectBelowCell = delegate.selectBelowCell
+    def selectBelowCell() = delegate.selectBelowCell()
 
     /**
      * Selects the cell to the left of the currently selected cell.
      */
-    def selectLeftCell = delegate.selectLeftCell
+    def selectLeftCell() = delegate.selectLeftCell()
 
     /**
      * Selects the cell to the right of the currently selected cell.
      */
-    def selectRightCell = delegate.selectRightCell
+    def selectRightCell() = delegate.selectRightCell()
 
-    delegate.selectLast
+    delegate.selectLast()
 
   }
 
@@ -177,22 +177,22 @@ object TableView {
     /**
      * Attempts to move focus to the cell above the currently focused cell.
      */
-    def focusAboveCell = delegate.focusAboveCell
+    def focusAboveCell() = delegate.focusAboveCell()
 
     /**
      * Attempts to move focus to the cell below the currently focused cell.
      */
-    def focusBelowCell = delegate.focusBelowCell
+    def focusBelowCell() = delegate.focusBelowCell()
 
     /**
      * Attempts to move focus to the cell to the left of the currently focused cell.
      */
-    def focusLeftCell = delegate.focusLeftCell
+    def focusLeftCell() = delegate.focusLeftCell()
 
     /**
      * Attempts to move focus to the cell to the right of the the currently focused cell.
      */
-    def focusRightCell = delegate.focusRightCell
+    def focusRightCell() = delegate.focusRightCell()
     /**
      * Tests whether the row / cell at the given location currently has the focus within the TableView.
      */

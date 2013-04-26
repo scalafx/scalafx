@@ -89,7 +89,7 @@ trait ControlIncludes
   implicit def jfxTitledPane2sfx(t: jfxsc.TitledPane) = new TitledPane(t)
   implicit def jfxToggle2sfx(t: jfxsc.Toggle) = new Toggle {
     override val delegate = t
-    def userData: AnyRef = delegate.getUserData()
+    def userData: AnyRef = delegate.getUserData
     def userData_=(v: AnyRef) {
       delegate.setUserData(v)
     }

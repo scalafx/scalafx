@@ -55,7 +55,7 @@ package object effect {
     /**
      * The input for this Effect.
      */
-    def input: ObjectProperty[jfxse.Effect] = delegate.inputProperty
+    def input: ObjectProperty[jfxse.Effect] = delegate.inputProperty()
     def input_=(v: Effect) {
       input() = v
     }
@@ -78,7 +78,7 @@ package object effect {
     /**
      * The Effect's color.
      */
-    def color: ObjectProperty[jfxsp.Color] = delegate.colorProperty
+    def color: ObjectProperty[jfxsp.Color] = delegate.colorProperty()
     def color_=(c: Color) {
       color() = c
     }

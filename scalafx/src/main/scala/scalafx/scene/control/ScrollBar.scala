@@ -108,11 +108,11 @@ class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
   /**
    * Decrements the value of the ScrollBar by the `unitIncrement`.
    */
-  def decrement = delegate.decrement
+  def decrement() = delegate.decrement()
 
   /**
    * Increments the value of the ScrollBar by the `unitIncrement`.
    */
-  def increment = delegate.increment
+  def increment() = delegate.increment()
 
 }

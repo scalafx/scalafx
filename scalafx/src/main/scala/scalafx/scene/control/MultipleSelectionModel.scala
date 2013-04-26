@@ -104,6 +104,6 @@ abstract class MultipleSelectionModel[T](override val delegate: jfxsc.MultipleSe
   /**
    * Convenience method to select all available indices.
    */
-  def selectAll = delegate.selectAll
+  def selectAll() = delegate.selectAll()
 
 }

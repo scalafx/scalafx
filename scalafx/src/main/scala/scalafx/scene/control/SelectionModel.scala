@@ -61,7 +61,7 @@ abstract class SelectionModel[T](override val delegate: jfxsc.SelectionModel[T])
   /**
    * Clears the selection model of all selected indices.
    */
-  def clearSelection: Unit = delegate.clearSelection
+  def clearSelection(): Unit = delegate.clearSelection()
 
   /**
    * This method will clear the selection of the item in the given index.
@@ -93,22 +93,22 @@ abstract class SelectionModel[T](override val delegate: jfxsc.SelectionModel[T])
   /**
    * This method will attempt to select the first index in the control.
    */
-  def selectFirst: Unit = delegate.selectFirst
+  def selectFirst(): Unit = delegate.selectFirst()
 
   /**
    * This method will attempt to select the last index in the control.
    */
-  def selectLast: Unit = delegate.selectLast
+  def selectLast(): Unit = delegate.selectLast()
 
   /**
    * This method will attempt to select the index directly after the current
    * focused index.
    */
-  def selectNext: Unit = delegate.selectNext
+  def selectNext(): Unit = delegate.selectNext()
 
   /**
    * This method will attempt to select the index directly before the current focused index.
    */
-  def selectPrevious: Unit = delegate.selectPrevious
+  def selectPrevious(): Unit = delegate.selectPrevious()
 
 }

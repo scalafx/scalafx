@@ -52,7 +52,7 @@ trait PositionDelegate[J <: Object with Positioned]
   /**
    * X Position
    */
-  def x: DoubleProperty = delegate.xProperty
+  def x: DoubleProperty = delegate.xProperty()
   def x_=(v: Double) {
     x() = v
   }
@@ -60,7 +60,7 @@ trait PositionDelegate[J <: Object with Positioned]
   /**
    * Y Position
    */
-  def y: DoubleProperty = delegate.yProperty
+  def y: DoubleProperty = delegate.yProperty()
   def y_=(v: Double) {
     y() = v
   }

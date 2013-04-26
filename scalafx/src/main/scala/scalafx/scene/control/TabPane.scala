@@ -147,7 +147,7 @@ class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane)
    */
   def tabs = delegate.getTabs
   def tabs_=(tabSeq: Seq[Tab]) {
-    delegate.getTabs.clear
+    delegate.getTabs.clear()
     tabSeq.foreach(this += _)
   }
 

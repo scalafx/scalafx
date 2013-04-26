@@ -433,7 +433,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Gets the list of accelerators for this Scene.
    */
-  def accelerators: jfxc.ObservableMap[jfxsi.KeyCombination, Runnable] = delegate.getAccelerators()
+  def accelerators: jfxc.ObservableMap[jfxsi.KeyCombination, Runnable] = delegate.getAccelerators
 
   /**
    * Confirms a potential drag and drop gesture that is recognized over this `Scene`.
@@ -447,8 +447,8 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Starts a full press-drag-release gesture with this scene as gesture source.
    */
-  def startFullDrag {
-    delegate.startFullDrag
+  def startFullDrag() {
+    delegate.startFullDrag()
   }
 
   /**

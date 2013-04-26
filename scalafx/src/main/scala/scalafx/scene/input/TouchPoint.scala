@@ -81,7 +81,7 @@ class TouchPoint(override val delegate: jfxsi.TouchPoint)
   /**
    * Grabs this touch point by current event source.
    */
-  def grab = delegate.grab
+  def grab() = delegate.grab()
 
   /**
    * Grabs this touch point by the given target.
@@ -143,5 +143,5 @@ class TouchPoint(override val delegate: jfxsi.TouchPoint)
   /**
    *
    */
-  def ungrab = delegate.ungrab
+  def ungrab() = delegate.ungrab()
 }

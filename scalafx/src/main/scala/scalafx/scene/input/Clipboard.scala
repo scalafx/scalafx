@@ -49,7 +49,7 @@ class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxs
   /**
    * Clears the clipboard of any and all content.
    */
-  def clear = delegate.clear
+  def clear() = delegate.clear()
 
   /**
    * Returns the content stored in this clipboard of the given type, or null if there is no content with this type.

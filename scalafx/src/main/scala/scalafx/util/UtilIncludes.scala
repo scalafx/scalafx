@@ -47,7 +47,7 @@ trait UtilIncludes {
   /**
    * Convert a Pair JavaFX to a Tuple2.
    */
-  implicit def jfxPair2Tuple2[K, V](p: jfxu.Pair[K, V]) = (p.getKey(), p.getValue())
+  implicit def jfxPair2Tuple2[K, V](p: jfxu.Pair[K, V]) = (p.getKey, p.getValue)
   /**
    * Convert a Tuple2 to a Pair JavaFX.
    */

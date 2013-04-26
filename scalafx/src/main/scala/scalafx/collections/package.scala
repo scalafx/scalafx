@@ -39,7 +39,7 @@ package object collections {
 
   private def internalFiller[A, B](originalList: jfxc.ObservableList[A], filler: Iterable[B], f: B => A) {
     if (null == filler) {
-      originalList.clear
+      originalList.clear()
     } else {
       originalList.setAll(filler.map(f(_)))
     }
@@ -47,7 +47,7 @@ package object collections {
   
   private def internalFillerWithOne[A, B](originalList: jfxc.ObservableList[A], element: B, f: B => A) {
     if (null == element) {
-      originalList.clear
+      originalList.clear()
     } else {
       originalList.setAll(List(f(element)))
     }
