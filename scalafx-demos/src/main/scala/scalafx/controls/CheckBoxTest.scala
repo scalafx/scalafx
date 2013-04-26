@@ -95,7 +95,7 @@ class CheckBoxControls(check: CheckBox) extends PropertiesNodes[CheckBox](check,
 
   val btnFire = new Button {
     text = "Fire!"
-    onAction = check.fire
+    onAction = check.fire()
   }
 
   val txfText = new TextField {

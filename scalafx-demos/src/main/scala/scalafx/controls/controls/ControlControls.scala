@@ -86,7 +86,7 @@ class ControlControls(target: Control) extends PropertiesNodes[Control](target, 
   super.addNode("Width", lblWidth)
 //  super.addNode(btnReset)
 
-  override def resetProperties {
+  override def resetProperties() {
     target.maxHeight = originalMaxHeight.get
     target.prefHeight = originalPrefHeight.get
     target.minHeight = originalMinHeight.get

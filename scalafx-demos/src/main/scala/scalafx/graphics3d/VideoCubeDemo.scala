@@ -42,7 +42,7 @@ object VideoCubeDemo extends JFXApp {
   // PLEASE DO NOT SHOW THIS PUBLIC LIKE IN A BIG CONFERENCE with consent either
   // This is just for learning and demonstration purposes.
   // Of course, it will only work my machine!!!!!!!!!!!!!!!!!!!!!! Until you edit the folder and files!
-  val folder = if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+  val folder = if (System.getProperty("os.name").toLowerCase.contains("windows")) {
       new File( "C:\\Users\\peter\\Videos\\Movie-Trailers-2012" )
     }
     else {
@@ -63,7 +63,7 @@ object VideoCubeDemo extends JFXApp {
   val mediaPlayers = vidFiles.map {
     filename =>  {
       val file = new File( folder, filename)
-      val media = new Media( file.toURI().toURL().toExternalForm )
+      val media = new Media( file.toURI.toURL.toExternalForm )
       val mediaPlayer = new MediaPlayer( media )
       mediaPlayer.volume = 0.5
       mediaPlayer.cycleCount = MediaPlayer.Indefinite

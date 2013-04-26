@@ -78,9 +78,9 @@ object LayerTest extends JFXApp {
   val selectionModel: SelectionModel[String] = cb.selectionModel.get
   selectionModel.selectedItem.onChange((ov: Any, olaValue: Any, newValue: Any) => {
     if (newValue == layer1Title) {
-      layer1.toFront
+      layer1.toFront()
     } else if (newValue == layer2Title) {
-      layer2.toFront
+      layer2.toFront()
     }
   })
   cb.value = layer1Title
@@ -92,7 +92,7 @@ object LayerTest extends JFXApp {
   borderPane.center = new Pane {
     content = List(layer1, layer2)
   }
-  layer1.toFront
+  layer1.toFront()
 
   private val root = new Group
   root.children = borderPane
