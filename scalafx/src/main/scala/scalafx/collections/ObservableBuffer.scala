@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -79,7 +79,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    * [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html `ListChangeListener.Change`]],
    * where each subclass indicates a specific change operation.
    */
-  trait Change
+  sealed trait Change
 
   /**
    * Indicates a Addition in a $OB.
@@ -205,7 +205,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
  * @define OL `ObservavbleList`
  * @define ownOB The $OB itself.
  * @define buf `Buffer`
- * @define WhyOverride Overrided method to make it behave like wrapped $OL.
+ * @define WhyOverride Overridden method to make it behave like wrapped $OL.
  * @define noCL The new $OB won't have Change and Invalidation Listeners from original $buf.
  *
  */
@@ -281,7 +281,18 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * @return $ownOB
    */
   def +=:(elem: T) = {
-    delegate.insert(0, elem)
+    delegate.add(0, elem)
+    this
+  }
+
+  /**
+   * Appends a single element to this buffer. $WhyOverride
+   *
+   * @param elem Element to append
+   * @return $ownOB
+   */
+  def :+=(elem: T) = {
+    delegate.add(elem)
     this
   }
 
