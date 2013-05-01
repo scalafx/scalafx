@@ -1,4 +1,4 @@
-/* Copyright (c) 2012, ScalaFX Project
+/* Copyright (c) 2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,6 +38,9 @@ import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 import scalafx.beans.value.ObservableValue
 
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/package-summary.html `javafx.scene.control.cell`]] package.
+ */
 package object cell {
 
   /**
