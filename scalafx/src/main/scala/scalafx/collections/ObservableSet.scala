@@ -181,7 +181,7 @@ trait ObservableSet[T]
   def iterator = new Iterator[T] {
     val it = delegate.iterator
     def hasNext = it.hasNext
-    def next() = it.next
+    def next() = it.next()
   }
 
   /**

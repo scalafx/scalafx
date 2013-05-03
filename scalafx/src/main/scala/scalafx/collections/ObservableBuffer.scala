@@ -79,7 +79,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    * [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html `ListChangeListener.Change`]],
    * where each subclass indicates a specific change operation.
    */
-  trait Change
+  sealed trait Change
 
   /**
    * Indicates an Addition in an $OB.
@@ -287,7 +287,18 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * @return $ownOB
    */
   def +=:(elem: T) = {
-    delegate.insert(0, elem)
+    delegate.add(0, elem)
+    this
+  }
+
+  /**
+   * Appends a single element to this buffer. $WhyOverride
+   *
+   * @param elem Element to append
+   * @return $ownOB
+   */
+  def :+=(elem: T) = {
+    delegate.add(elem)
     this
   }
 
@@ -391,7 +402,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
 
     def hasNext = it.hasNext
 
-    def next() = it.next
+    def next() = it.next()
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2012, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,60 +26,42 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import scalafx.Includes._
-import scalafx.beans.property.ReadOnlyIntegerProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.delegate.SFXDelegate
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-object FocusModel {
-  implicit def sfxFocusModel2jfx[T](v: FocusModel[T]) = v.delegate
-}
+import javafx.scene.{control => jfxsc}
+import javafx.{collections => jfxc}
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
- * @todo Create a Spec test to FocusModel where getJavaClass returns TableView.TableViewFocusModel<S>
+ * MultipleSelectionModel Spec tests.
+ *
  */
-abstract class FocusModel[T](override val delegate: jfxsc.FocusModel[T]) extends SFXDelegate[jfxsc.FocusModel[T]] {
+@RunWith(classOf[JUnitRunner])
+class MultipleMultipleSelectionModelSpec[T]
+  extends AbstractSFXDelegateSpec[jfxsc.MultipleSelectionModel[T], MultipleSelectionModel[T], jfxsc.MultipleSelectionModelBuilder[T, _]](classOf[jfxsc.MultipleSelectionModel[T]], classOf[MultipleSelectionModel[T]], classOf[jfxsc.MultipleSelectionModelBuilder[T, _]]) {
 
-  /**
-   * The index of the current item in the FocusModel which has the focus.
-   */
-  def focusedIndex: ReadOnlyIntegerProperty = delegate.focusedIndexProperty
-
-  /**
-   * The current item in the FocusModel which has the focus.
-   */
-  def focusedItem: ReadOnlyObjectProperty[T] = delegate.focusedItemProperty
-
-  /**
-   * Causes the item at the given index to receive the focus.
-   */
-  def focus(index: Int) {
-    delegate.focus(index)
+  class SimpleMultipleSelectionModel[T] extends jfxsc.MultipleSelectionModel[T] {
+    def getSelectedIndices: jfxc.ObservableList[java.lang.Integer] = null
+    def getSelectedItems: jfxc.ObservableList[T] = null
+    def selectAll(): Unit = {}
+    def selectFirst(): Unit = {}
+    def selectIndices(index: Int, indices: Int*): Unit = {}
+    def selectLast(): Unit = {}
+    def clearAndSelect(index: Int): Unit = {}
+    def clearSelection(): Unit = {}
+    def clearSelection(index: Int): Unit = {}
+    def isEmpty: Boolean = false
+    def isSelected(index: Int): Boolean = false
+    def select(index: Int): Unit = {}
+    def select(obj: T): Unit = {}
+    def selectNext(): Unit = {}
+    def selectPrevious(): Unit = {}
   }
 
-  /**
-   * Attempts to give focus to the row after to the currently focused row.
-   */
-  def focusNext() {
-    delegate.focusNext()
-  }
+  override protected def getScalaClassInstance = new MultipleSelectionModel[T](getJavaClassInstance) {}
 
-  /**
-   * Attempts to give focus to the row previous to the currently focused row.
-   */
-  def focusPrevious() {
-    delegate.focusPrevious()
-  }
-
-  /*
-   * Returns the number of items in the data model that underpins the control.
-   */
-//  protected def itemCount: Int
-
-  /*
-   * Returns the item at the given index.
-   */
-//  protected def modelItem(index: Int): T
+  override protected def getJavaClassInstance = new SimpleMultipleSelectionModel[T]
 
 }

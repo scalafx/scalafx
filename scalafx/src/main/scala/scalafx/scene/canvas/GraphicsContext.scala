@@ -132,9 +132,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * Closes the path.
    */
-  def closePath() {
-    delegate.closePath()
-  }
+  def closePath = delegate.closePath
 
   /**
    * Draws an image at the given x, y position using the width and height of the given image.

@@ -205,7 +205,7 @@ trait ObservableMap[K, V]
     // Definition copied from JavaConversions.JMapWrapperLike.iterator
     val it = delegate.entrySet.iterator
     def hasNext = it.hasNext
-    def next() = { val e = it.next; (e.getKey, e.getValue) }
+    def next() = { val e = it.next(); (e.getKey, e.getValue) }
   }
 
   /**
