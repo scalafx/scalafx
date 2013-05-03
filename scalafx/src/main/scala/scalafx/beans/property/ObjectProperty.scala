@@ -40,7 +40,7 @@ import scalafx.delegate.SFXDelegate
 object ObjectProperty {
   
   /**
-   * Implicit conversor from a ScalaFX's $OP to a JavaFX's 
+   * Implicit conversion from a ScalaFX's $OP to a JavaFX's
    * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ObjectProperty.html $OP]], extracting its delegate.
    * 
    * @param op ScalaFX's $OP 

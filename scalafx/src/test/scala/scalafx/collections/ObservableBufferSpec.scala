@@ -66,11 +66,11 @@ class ObservableBufferSpec[T]
     }
   }
 
-  private def compareAfterRemoving[T](generatedBuffer: Buffer[T],
-    originalBuffer: ObservableBuffer[T], expectedResult: T*) {
+  private def compareAfterRemoving[T1](generatedBuffer: Buffer[T1],
+    originalBuffer: ObservableBuffer[T1], expectedResult: T1*) {
     generatedBuffer.toList should equal(expectedResult.toList)
     generatedBuffer should not be theSameInstanceAs(originalBuffer)
-    generatedBuffer.getClass should be(classOf[ObservableBuffer[T]])
+    generatedBuffer.getClass should be(classOf[ObservableBuffer[T1]])
   }
 
   override def getScalaClassInstance = ObservableBuffer.empty[T]

@@ -171,7 +171,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html `javafx.collections.FXCollections`]].
    * It is not called `reverse` to not confuse with method with same name from [[scala.collection.mutable.Buffer]]
    *
-   * @param $buf to be reverted.
+   * @param buffer $buf to be reverted.
    */
   def revertBuffer[T](buffer: ObservableBuffer[T]) {
     jfxc.FXCollections.reverse(buffer.delegate)
@@ -208,7 +208,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
  * @tparam T Type of this $buf
  *
  * @define OB `ObservableBuffer`
- * @define OL `ObservavbleList`
+ * @define OL `ObservableList`
  * @define ownOB The $OB itself.
  * @define buf `Buffer`
  * @define WhyOverride Overridden method to make it behave like a wrapped $OL.

@@ -45,7 +45,7 @@ trait AnimationIncludes {
 
   /**
    *
-   * @param time Dutarion time
+   * @param time Duration time
    * @param v Function which returns a [[scalafx.animation.KeyValue]] [[scala.Set]]
    * @return new KeyFrame
    */

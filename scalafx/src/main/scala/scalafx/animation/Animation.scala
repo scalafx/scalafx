@@ -195,7 +195,7 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
   /**
    * Jumps to a predefined position in this $AN.
    * 
-   * @param the name of the cue point
+   * @param cuePoint the name of the cue point
    */
   def jumpTo(cuePoint: String) {
     delegate.jumpTo(cuePoint)
