@@ -26,7 +26,7 @@
  */
 package scalafx.beans.value
 
-import javafx.beans.{value => jfxbv}
+import javafx.beans.{ value => jfxbv }
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
@@ -57,29 +57,41 @@ object ObservableValue {
  *
  * @tparam T Indicates Scala type that will be returned for this Observable.
  * @tparam J Indicates Java type to be wrapped by T. Eventually T and J could be the same.
+ * 
+ * @define OV `ObservableValue`
+ * @define VALUE the current value of this $OV.
+ * @define CV `ChangeListener`
+ * @define URLCV [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html `ChangeListener`]]
+ * @define SUBRET A new [[scalafx.event.subscriptions.Subscription]] to remove $OV.
  */
 trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
   extends Observable
   with SFXDelegate[jfxbv.ObservableValue[J]] {
 
   /**
-   * Returns the current value of this ObservableValue
+   * Returns $OV
+   *
+   * @return $OV
    */
   def value: T
 
   /**
-   * Returns the current value of this ObservableValue
+   * Returns $OV
+   *
+   * @return $OV
    */
   def apply() = value
 
   /**
-   * Adds a function as a [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html ChangeListener]].
-   * This function has all arguments from
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html#changed(javafx.beans.value.ObservableValue, T, T) changed]]
-   * method from ChangeListener.
+   * Adds a function as a $URLCV. This function has all arguments from
+   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html#changed(javafx.beans.value.ObservableValue, T, T) `changed`]]
+   * method from $CV.
    *
-   * @param op Function that receives a [[javafx.beans.value.ObservableValue]], the old value and the new value.
-   *           It will be called when value changes.
+   * @tparam J1 J superclass.
+   * @param op Function that receives a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ObservableValue.html $OV]],
+   * the old value and the new value. It will be called when value changes.
+   * @return $SUBRET
    */
   def onChange[J1 >: J](op: (ObservableValue[T, J], J1, J1) => Unit): Subscription = {
     val listener = new jfxbv.ChangeListener[J1] {
@@ -98,10 +110,10 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
   }
 
   /**
-   * Adds a function as a [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html ChangeListener]].
-   * This function has no arguments because it will not handle values changed.
+   * Adds a function as a $URLCV. This function has no arguments because it will not handle values changed.
    *
    * @param op A Function with no arguments. It will be called when value changes.
+   * @return $SUBRET
    */
   def onChange[J1 >: J](op: => Unit): Subscription = {
     val listener = new jfxbv.ChangeListener[J1] {

@@ -30,12 +30,63 @@ import javafx.{ concurrent => jfxc }
 
 object ConcurrentIncludes extends ConcurrentIncludes
 
+/**
+ * Contains implcit methods to convert from
+ * [[http://docs.oracle.com/javafx/2/api/javafx/concurrent/package-summary.html `javafx.concurrent`]]
+ * Classes to their ScalaFX counterparts.
+ * 
+ * @define JFX JavaFX
+ * @define SFX ScalaFX
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/concurrent/
+ * @define END ]]` instance to its $SFX counterpart.
+ * @define SER Service
+ * @define TSK Task
+ * @define WRK Worker
+ * @define WRS Worker.State
+ * @define WSE WorkerStateEvent
+ */
 trait ConcurrentIncludes {
+
+  /**
+   * $START$SER.html $SER$END
+   *
+   * @param s $JFX $SER
+   * @return $SFX $SER
+   */
   implicit def jfxService2sfxService[T](s: jfxc.Service[T]) = new Service[T](s) {}
+
+  /**
+   * $START$TSK.html $TSK$END
+   *
+   * @param t $JFX $TSK
+   * @return $SFX $TSK
+   */
   implicit def jfxTask2sfxTask[T](t: jfxc.Task[T]) = new Task[T](t) {}
+
+  /**
+   * $START$WRK.html $WRK$END
+   *
+   * @param w $JFX $WRK
+   * @return $SFX $WRK
+   */
   implicit def jfxWorker2sfxWorker[T](w: jfxc.Worker[T]) = new Worker[T] {
     override val delegate = w
   }
-  implicit def jfxWorkerState2sfxWorkerState(s: jfxc.Worker.State) = Worker.State.jfxEnum2sfx(s) 
+
+  /**
+   * $START$WRS.html $WRS$END
+   *
+   * @param s $JFX $WRS
+   * @return $SFX $WRS
+   */
+  implicit def jfxWorkerState2sfxWorkerState(s: jfxc.Worker.State) = Worker.State.jfxEnum2sfx(s)
+
+  /**
+   * $START$WSE.html $WSE$END
+   *
+   * @param w $JFX $WSE
+   * @return $SFX $WSE
+   */
   implicit def jfxWorkerStateEvent2sfxWorkerStateEvent(w: jfxc.WorkerStateEvent) = new WorkerStateEvent(w)
+
 }

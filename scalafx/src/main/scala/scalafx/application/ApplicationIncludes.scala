@@ -29,11 +29,25 @@ package scalafx.application
 import scala.collection.JavaConversions.asScalaBuffer
 import scala.collection.JavaConversions.mapAsScalaMap
 
-import javafx.{application => jfxa}
+import javafx.{ application => jfxa }
 
 object ApplicationIncludes extends ApplicationIncludes
 
+/**
+ * Contains implcit methods to convert from 
+ * [[http://docs.oracle.com/javafx/2/api/javafx/application/package-summary.html `javafx.application`]] Classes to 
+ * their ScalaFX counterparts.
+ */
 trait ApplicationIncludes {
+  
+  /**
+   * Converts a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/application/Application.Parameters.html `javafx.application.Application.Parameters`]] 
+   * instance to its ScalaFX counterpart.
+   * 
+   * @param p JavaFX Parameters
+   * @return ScalaFX Parameters
+   */
   implicit def jfxParamaters2sfx(p: jfxa.Application.Parameters) = new JFXApp.Parameters {
     def raw = p.getRaw
     def named = p.getNamed
@@ -41,5 +55,13 @@ trait ApplicationIncludes {
     def delegate = p
   }
 
+  /**
+   * Converts a 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/application/ConditionalFeature.html `javafx.application.ConditionalFeature`]] 
+   * instance to its ScalaFX counterpart.
+   * 
+   * @param e JavaFX ConditionalFeature
+   * @return ScalaFX ConditionalFeature
+   */
   implicit def jfxConditionalFeature2sfx(e: jfxa.ConditionalFeature) = ConditionalFeature.jfxEnum2sfx(e)
 }
