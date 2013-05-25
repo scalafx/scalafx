@@ -24,27 +24,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.control
+package scalafx.delegate
 
-import scalafx.delegate.{AlignmentPropertyDelegate, SFXDelegate}
 import javafx.beans.{property => jfxbp, binding => jfxbb}
-import javafx.{scene => jfxs, event => jfxe}
-import jfxs.{control => jfxsc}
-import scalafx.beans.property.ReadOnlyObjectProperty
+import javafx.{geometry => jfxg}
 
-object TextFieldProperty {
-  implicit def sfxTextFieldProperty2jfx(p: TextFieldProperty) = p.delegate
-}
-
-class TextFieldProperty(override val delegate: jfxbp.ReadOnlyObjectProperty[jfxsc.TextField])
-  extends ReadOnlyObjectProperty[jfxsc.TextField](delegate)
-  with SFXDelegate[jfxbp.ReadOnlyObjectProperty[jfxsc.TextField]]
-  with AlignmentPropertyDelegate {
-
-  def onAction = jfxbb.Bindings.select[jfxe.ActionEvent](delegate, "onAction")
-  def prefColumnCount = jfxbb.Bindings.selectInteger(delegate, "prefColumnCount")
-
-  // todo - these need to be moved to TextInputControl:
-  def promptText = jfxbb.Bindings.selectString(delegate, "promptText")
-  def text = jfxbb.Bindings.selectString(delegate, "text")
+trait AlignmentPropertyDelegate extends SFXDelegate[jfxbp.ReadOnlyObjectProperty[_]] {
+  def alignment = jfxbb.Bindings.select[jfxg.Pos](delegate, "alignment")
 }
