@@ -34,6 +34,7 @@ import java.{ util => ju }
 import ObservableBuffer.Add
 import ObservableBuffer.Remove
 import ObservableBuffer.Reorder
+import ObservableBuffer.Change
 import ObservableBuffer.observableBuffer2ObservableList
 import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
@@ -194,6 +195,7 @@ class ObservableBufferSpec[T]
             position should equal(3 * changeCount)
             elements should equal(Seq("d", "e", "f"))
           }
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
@@ -271,6 +273,7 @@ class ObservableBufferSpec[T]
             elements should equal(Seq("a", "b", "c"))
           }
           case Add(_, _) =>
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
@@ -323,6 +326,7 @@ class ObservableBufferSpec[T]
             elements should equal(Seq("b", "c", "d"))
           }
           case Add(_, _) =>
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
@@ -352,6 +356,7 @@ class ObservableBufferSpec[T]
             position should equal(0)
             elements should equal(Seq("a", "b", "c", "d", "e", "f"))
           }
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
@@ -380,6 +385,7 @@ class ObservableBufferSpec[T]
             position should equal(0)
             elements should equal(Seq("a", "b", "c"))
           }
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
@@ -404,6 +410,7 @@ class ObservableBufferSpec[T]
               permutation(i) should equal(5 - i)
             }
           }
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
@@ -429,6 +436,7 @@ class ObservableBufferSpec[T]
               permutation(i) should equal(5 - i)
             }
           }
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
@@ -465,6 +473,7 @@ class ObservableBufferSpec[T]
               permutation(i) should equal(i)
             }
           }
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 

@@ -96,6 +96,9 @@ object ColorSelector extends JFXApp {
       case Remove(pos, removed) => {
         removed.last.asInstanceOf[SliderControl].value unbind synchronizedValue
       }
+      case _@ otherChange => {
+        throw new UnsupportedOperationException("Only add and remove defined for the ColorSelector SliderControl sync")
+      }
     }
   }
 
