@@ -35,7 +35,7 @@ import scalafx.scene.paint.Color
 import scalafx.delegate.SFXDelegate
 
 /**
- *
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/effect/package-summary.html `javafx.scene.effect`]] package.
  */
 package object effect {
 

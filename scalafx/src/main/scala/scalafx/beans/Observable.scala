@@ -34,17 +34,25 @@ object Observable {
   implicit def sfxObservable2jfx(o: Observable) = o.delegate
 }
 
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/beans/Observable.html `Observable`]].
+ *
+ * @define JFX JavaFX
+ * @define IV `InvalidationListener`
+ * @define IVURL [[http://docs.oracle.com/javafx/2/api/javafx/beans/InvalidationListener.html `InvalidationListener`]]
+ * @define SUBRET A new [[scalafx.event.subscriptions.Subscription]] to remove $JFX $IV.
+ */
 trait Observable extends SFXDelegate[jfxb.Observable] {
 
   /**
-   * Adds a function as a [[http://docs.oracle.com/javafx/2/api/javafx/beans/InvalidationListener.html InvalidationListener]].
-   * This function has all arguments from
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/InvalidationListener.html#invalidated(javafx.beans.Observable) invalidated]]
-   * method from InvalidationListener.
+   * Adds a function as a $JFX $IVURL. This function has all arguments from
+   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/InvalidationListener.html#invalidated(javafx.beans.Observable) `invalidated`]]
+   * method from $IV.
    *
-   * @param op Function that receives a [[javafx.beans.Observable]]. It will be called when value was invalidated.
+   * @param op Function that receives a ScalaFX `Observable`. It will be called when value was invalidated.
+   * @return $SUBRET
    */
-  def onInvalidate(op: Observable => Unit):Subscription = {
+  def onInvalidate(op: Observable => Unit): Subscription = {
     val listener = new jfxb.InvalidationListener {
       def invalidated(observable: jfxb.Observable) {
         op(Observable.this)
@@ -61,12 +69,13 @@ trait Observable extends SFXDelegate[jfxb.Observable] {
   }
 
   /**
-   * Adds a function as a [[http://docs.oracle.com/javafx/2/api/javafx/beans/InvalidationListener.html InvalidationListener]].
-   * This function has no arguments because it will not handle values Invalidated.
+   * Adds a no argument function as a $JFX $IVURL. This function has no arguments because it will not handle
+   * invalidated values.
    *
    * @param op A Function with no arguments. It will be called when value was invalidated.
+   * @return $SUBRET
    */
-  def onInvalidate(op: => Unit):Subscription = {
+  def onInvalidate(op: => Unit): Subscription = {
     val listener = new jfxb.InvalidationListener {
       def invalidated(observable: jfxb.Observable) {
         op

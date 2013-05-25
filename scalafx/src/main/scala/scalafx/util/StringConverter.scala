@@ -30,6 +30,9 @@ import java.{ text => jt }
 import javafx.{ util => jfxu }
 import java.util.Date
 
+/**
+ * Companion Object for [[scalafx.util.StringConverter]].
+ */
 object StringConverter {
 
   /**
@@ -99,15 +102,28 @@ object StringConverter {
 
 }
 
+/**
+ * Wraps a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/util/StringConverter.html `StringConverter`]].
+ *
+ * @constructor Creates a new ScalaFX StringConverter from a JavaFX StringConverter.
+ * @tparam T Type to be converted from/to `String`.
+ * @param delegate JavaFX StringConverter to be delegated.
+ */
 abstract class StringConverter[T] {
 
   /**
    * Converts the string provided into an object defined by the specific converter.
+   * 
+   * @param string `String` to be converted to a T instance.
+   * @return A new T instance generated from argument.
    */
   def fromString(string: String): T
 
   /**
    * Converts the object provided into its string form.
+   * 
+   * @param t A T instance to be its String version.
+   * @return String version of argument.
    */
   def toString(t: T): String
 

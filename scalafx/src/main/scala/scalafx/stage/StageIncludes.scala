@@ -30,6 +30,11 @@ import javafx.{ stage => jfxs }
 
 object StageIncludes extends StageIncludes
 
+/**
+ * Contains implcit methods to convert from 
+ * [[http://docs.oracle.com/javafx/2/api/javafx/stage/package-summary.html `javafx.stage`]] 
+ * Classes to their ScalaFX counterparts.
+ */
 trait StageIncludes {
   implicit def jfxDirectoryChooser2sfx(dc: jfxs.DirectoryChooser) = new DirectoryChooser(dc)
   implicit def jfxFileChooser2sfx(fc: jfxs.FileChooser) = new FileChooser(fc)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,44 +24,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.application
-
-import scala.collection.JavaConversions.asScalaBuffer
-import scala.collection.JavaConversions.mapAsScalaMap
-
-import javafx.{ application => jfxa }
-
-object ApplicationIncludes extends ApplicationIncludes
+package scalafx.scene
 
 /**
- * Contains implcit methods to convert from 
- * [[http://docs.oracle.com/javafx/2/api/javafx/application/package-summary.html `javafx.application`]] Classes to 
- * their ScalaFX counterparts.
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/package-summary.html `javafx.scene.control`]] package.
  */
-trait ApplicationIncludes {
-  
-  /**
-   * Converts a 
-   * [[http://docs.oracle.com/javafx/2/api/javafx/application/Application.Parameters.html `javafx.application.Application.Parameters`]] 
-   * instance to its ScalaFX counterpart.
-   * 
-   * @param p JavaFX Parameters
-   * @return ScalaFX Parameters
-   */
-  implicit def jfxParameters2sfx(p: jfxa.Application.Parameters) = new JFXApp.Parameters {
-    def raw = p.getRaw
-    def named = p.getNamed
-    def unnamed = p.getUnnamed
-    def delegate = p
-  }
+package object control {
 
-  /**
-   * Converts a 
-   * [[http://docs.oracle.com/javafx/2/api/javafx/application/ConditionalFeature.html `javafx.application.ConditionalFeature`]] 
-   * instance to its ScalaFX counterpart.
-   * 
-   * @param e JavaFX ConditionalFeature
-   * @return ScalaFX ConditionalFeature
-   */
-  implicit def jfxConditionalFeature2sfx(e: jfxa.ConditionalFeature) = ConditionalFeature.jfxEnum2sfx(e)
 }

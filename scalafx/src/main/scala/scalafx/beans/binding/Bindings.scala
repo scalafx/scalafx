@@ -32,12 +32,49 @@ import scalafx.delegate.SFXDelegate
 
 object Bindings extends Bindings
 
+/**
+ * Contains Methods for Bindings.
+ * 
+ * @define JFX JavaFX
+ */
 trait Bindings {
+  
+  /**
+   * Returns the highest value among a collection of $JFX 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+   * 
+   * @param v1 First Value
+   * @param values Collection of values
+   * @return The highest Value
+   */
   def min(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values)(jfxbb.Bindings.min)
+  
+  /**
+   * Returns the Lowest value among a collection of $JFX 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+   * 
+   * @param v1 First Value
+   * @param values Collection of values
+   * @return The Lowest Value
+   */
   def max(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values)(jfxbb.Bindings.max)
 
+  /**
+   * Returns the sum of a collection of $JFX
+   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+   * 
+   * @param v1 First Value
+   * @param values Collection of values
+   * @return The Value sum.
+   */
   def add(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values)(jfxbb.Bindings.add)
 
+  /**
+   * 
+   * @param condition Function that returns a $JFX 
+   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ObservableBooleanValue.html `ObservableBooleanValue`]]
+   * @return A ConditionBuilder wrapping `condition`. 
+   */
   def when(condition: => jfxbv.ObservableBooleanValue) = new ConditionBuilder(new jfxbb.When(condition))
 
   protected class ConditionBuilder(whenBuilder: jfxbb.When) {
