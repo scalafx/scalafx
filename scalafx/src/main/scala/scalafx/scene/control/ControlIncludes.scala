@@ -26,11 +26,11 @@
  */
 package scalafx.scene.control
 
-import javafx.{ event => jfxe }
+import javafx.{event => jfxe, scene, application}
 import javafx.scene.{ control => jfxsc }
 import scalafx.scene.control.cell.CellIncludes
-import javafx.application
 import scalafx.application.ConditionalFeature
+import scalafx.beans.property.ReadOnlyObjectProperty
 
 object ControlIncludes extends ControlIncludes
 
@@ -120,6 +120,7 @@ trait ControlIncludes
   implicit def jfxTabPane2sfx(v: jfxsc.TabPane) = new TabPane(v)
   implicit def jfxTabClosingPolicy2sfx(v: jfxsc.TabPane.TabClosingPolicy) = TabPane.TabClosingPolicy.jfxEnum2sfx(v)
   implicit def jfxTextField2sfx(v: jfxsc.TextField) = new TextField(v)
+  implicit def jfxTextFieldProperty2sfx(p: ReadOnlyObjectProperty[jfxsc.TextField]) = new TextFieldProperty(p)
   implicit def jfxTextArea2sfx(t: jfxsc.TextArea) = new TextArea(t)
   implicit def jfxTextInputControl2sfx(t: jfxsc.TextInputControl) = new TextInputControl(t) {}
   implicit def jfxTooltip2sfx(t: jfxsc.Tooltip) = new Tooltip(t) {}

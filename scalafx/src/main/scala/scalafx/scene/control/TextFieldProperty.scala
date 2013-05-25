@@ -26,29 +26,17 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AlignmentDelegateSpec
-import javafx.scene
-import scalafx.scene.SceneProperty
+import scalafx.delegate.SFXDelegate
+import javafx.beans.{property => jfxbp, binding => jfxbb}
+import javafx.{scene => jfxs}
+import jfxs.{control => jfxsc}
+import scalafx.beans.property.ReadOnlyObjectProperty
 
-/**
- * TextField Spec tests.
- */
-@RunWith(classOf[JUnitRunner])
-class TextFieldSpec
-  extends AbstractSFXDelegateSpec[jfxsc.TextField, TextField, jfxsc.TextFieldBuilder[_]](classOf[jfxsc.TextField], classOf[TextField], classOf[jfxsc.TextFieldBuilder[_]])
-  with AlignmentDelegateSpec[jfxsc.TextField, TextField] {
+object TextFieldProperty {
+  implicit def sfxTextFieldProperty2jfx(p: TextFieldProperty) = p.delegate
+}
 
-
-  it should "have a Property class that exposes all the JavaFX builder properties" in {
-    compareBuilderPropertiesInProxy(classOf[jfxsc.TextFieldBuilder[_]], classOf[TextFieldProperty])
-  }
-
-  it should "have a Property class that exposes all the JavaFX properties" in {
-    comparePropertiesInProxy(classOf[jfxsc.TextField], classOf[TextFieldProperty])
-  }
+// This particular construct enables the reading of properties of the scene that will be set into the property later on.
+class TextFieldProperty(override val delegate: jfxbp.ReadOnlyObjectProperty[jfxsc.TextField]) extends ReadOnlyObjectProperty[jfxsc.TextField](delegate) with SFXDelegate[jfxbp.ReadOnlyObjectProperty[jfxsc.TextField]] {
+  def text = jfxbb.Bindings.selectString(delegate, "text")
 }

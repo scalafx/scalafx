@@ -24,31 +24,38 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.control
+package scalafx
 
-import javafx.scene.{ control => jfxsc }
+import application.JFXApp
+import application.JFXApp.PrimaryStage
+import beans.property.ObjectProperty
+import scene.control.{ComboBox, Label}
+import scene.layout.VBox
+import scene.Scene
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AlignmentDelegateSpec
-import javafx.scene
-import scalafx.scene.SceneProperty
 
-/**
- * TextField Spec tests.
- */
-@RunWith(classOf[JUnitRunner])
-class TextFieldSpec
-  extends AbstractSFXDelegateSpec[jfxsc.TextField, TextField, jfxsc.TextFieldBuilder[_]](classOf[jfxsc.TextField], classOf[TextField], classOf[jfxsc.TextFieldBuilder[_]])
-  with AlignmentDelegateSpec[jfxsc.TextField, TextField] {
-
-
-  it should "have a Property class that exposes all the JavaFX builder properties" in {
-    compareBuilderPropertiesInProxy(classOf[jfxsc.TextFieldBuilder[_]], classOf[TextFieldProperty])
+object TextBinding extends JFXApp {
+  var comboBox = new ComboBox() {
+    editable = false
   }
-
-  it should "have a Property class that exposes all the JavaFX properties" in {
-    comparePropertiesInProxy(classOf[jfxsc.TextField], classOf[TextFieldProperty])
+  stage = new PrimaryStage {
+    width = 800
+    height = 600
+    scene = new Scene {
+      content = Seq(
+        new VBox {
+          content = Seq (
+            comboBox,
+            new Label {
+              text <== comboBox.editor().text
+            }
+          )
+        }
+      )
+    }
   }
+  comboBox.editable = false
+  println(comboBox.editor())
+  comboBox.editable = true
+  println(comboBox.editor())
 }
