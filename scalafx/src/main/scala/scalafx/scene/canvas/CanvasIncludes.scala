@@ -30,7 +30,35 @@ import javafx.scene.{ canvas => jfxsc }
 
 object CanvasIncludes extends CanvasIncludes
 
+/**
+ * Contains implcit methods to convert from
+ * [[http://docs.oracle.com/javafx/2/api/javafx/scene/canvas/package-summary.html `javafx.scene.canvas`]]
+ * Classes/Traits to their $SFX counterparts.
+ *
+ * @define JFX JavaFX
+ * @define SFX ScalaFX
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/canvas/
+ * @define END ]]` instance to its $SFX counterpart.
+ *
+ * @define CANV Canvas
+ * @define GRCT GraphicsContext
+ */
 trait CanvasIncludes {
+
+  /**
+   * $START$CANV.html $CANV$END
+   *
+   * @param c $JFX $CANV
+   * @return $SFX $CANV
+   */
   implicit def jfxCanvas2sfx(c: jfxsc.Canvas) = new Canvas(c)
+
+  /**
+   * $START$GRCT.html $GRCT$END
+   *
+   * @param gc $JFX $GRCT
+   * @return $SFX $GRCT
+   */
   implicit def jfxGraphicsContext2sfx(gc: jfxsc.GraphicsContext) = new GraphicsContext(gc)
+
 }
