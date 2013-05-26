@@ -580,7 +580,7 @@ class ObservableBufferSpec[T]
     changesDetected should be(1)
   }
 
-  it should "replace all ocurrences of a element with just one change" in {
+  it should "replace all occurrences of a element with just one change" in {
     val buffer = ObservableBuffer(1, 2, 3, 1, 5)
     var changesDetected = 0
 

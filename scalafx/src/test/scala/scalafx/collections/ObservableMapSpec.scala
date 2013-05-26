@@ -262,7 +262,7 @@ class ObservableMapSpec[K, V]
     map getOrElseUpdate (13, "thirteen") // Map will not be updated
     // Operations that not change this set
     map + (14 -> "fourteen")
-    map + (15 -> "fiveteen") + (16 -> "sixteen")
+    map + (15 -> "fifteen") + (16 -> "sixteen")
     map + ((17, "seventeen"))
     map + ((18, "eighteen"), (19, "nineteen"))
     map + (20 -> "twenty", 21 -> "twenty-one")

@@ -31,7 +31,7 @@ import javafx.{ concurrent => jfxc }
 object ConcurrentIncludes extends ConcurrentIncludes
 
 /**
- * Contains implcit methods to convert from
+ * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javafx/2/api/javafx/concurrent/package-summary.html `javafx.concurrent`]]
  * Classes to their ScalaFX counterparts.
  * 

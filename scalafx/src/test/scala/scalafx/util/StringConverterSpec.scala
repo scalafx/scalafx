@@ -110,14 +110,14 @@ class StringConverterSpec extends FlatSpec {
   // TESTING METHODS - BEGIN
 
   private def testImplicitConversion() {
-    "A Scala StringConverter" should "be converteble to a JavaFX StringConverter" in {
+    "A Scala StringConverter" should "be convertible to a JavaFX StringConverter" in {
       val sc = StringConverter[Char](s => s.charAt(0), ch => ch.toString)
       val jc: jfxu.StringConverter[Char] = sc
 
       jc.isInstanceOf[jfxu.StringConverter[_]] should be(true)
     }
 
-    "A JavaFX StringConverter" should "be converteble to a Scala StringConverter" in {
+    "A JavaFX StringConverter" should "be convertible to a Scala StringConverter" in {
       val jc = new jfxu.StringConverter[Char] {
         def toString(c: Char) = c.toString
         def fromString(s: String) = s.charAt(0)

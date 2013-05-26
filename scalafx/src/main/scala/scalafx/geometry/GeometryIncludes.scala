@@ -31,7 +31,7 @@ import javafx.{ geometry => jfxg }
 object GeometryIncludes extends GeometryIncludes
 
 /**
- * Contains implcit methods to convert from
+ * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javafx/2/api/javafx/geometry/package-summary.html `javafx.geometry`]]
  * Classes to their ScalaFX counterparts.
  */

@@ -31,7 +31,7 @@ import javafx.util.{ converter => jfxuc }
 object ConverterIncludes extends ConverterIncludes
 
 /**
- * Contains implcit methods to convert from
+ * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javafx/2/api/javafx/util/converter/package-summary.html `javafx.util.converter`]]
  * Classes to their ScalaFX counterparts.
  *

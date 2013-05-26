@@ -31,7 +31,7 @@ import javafx.beans.{ property => jfxbp }
 object PropertyIncludes extends PropertyIncludes
 
 /**
- * Contains implcit methods to convert from
+ * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/package-summary.html `javafx.beans.property`]]
  * Classes to their ScalaFX counterparts.
  */
@@ -243,7 +243,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
    * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
    * instance to its ScalaFX counterpart.
    *
-   * @param p JavaFX ReadOnlyStringWrappery
+   * @param p JavaFX ReadOnlyStringWrapper
    * @return ScalaFX ReadOnlyStringWrapper
    */
   implicit def jfxReadOnlyStringWrapper2sfx(p: jfxbp.ReadOnlyStringWrapper) = new ReadOnlyStringWrapper(p)

@@ -33,7 +33,7 @@ import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
 object BindingIncludes extends BindingIncludes
 
 /**
- * Contains implcit methods to convert from
+ * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javafx/2/api/javafx/beans/binding/package-summary.html `javafx.beans.binding`]]
  * Classes to their $SFX counterparts.
  * 
@@ -174,7 +174,7 @@ trait BindingIncludes extends Bindings {
    * Converts a Long to a $JFX LongBinding
    * 
    * @param i Long to generate a new LongBinding
-   * @return a new LongBinding generted from the Long.
+   * @return a new LongBinding generated from the Long.
    */
   implicit def long2LongBinding(i: Long) = new jfxbb.LongBinding {
     def computeValue() = i
@@ -184,7 +184,7 @@ trait BindingIncludes extends Bindings {
    * Converts a Float to a $JFX FloatBinding
    * 
    * @param i Float to generate a new FloatBinding
-   * @return a new FloatBinding generted from the Float.
+   * @return a new FloatBinding generated from the Float.
    */
   implicit def float2FloatBinding(i: Float) = new jfxbb.FloatBinding {
     def computeValue() = i
@@ -194,7 +194,7 @@ trait BindingIncludes extends Bindings {
    * Converts a Double to a $JFX DoubleBinding
    * 
    * @param i Double to generate a new DoubleBinding
-   * @return a new DoubleBinding generted from the Double.
+   * @return a new DoubleBinding generated from the Double.
    */
   implicit def double2DoubleBinding(i: Double) = new jfxbb.DoubleBinding {
     def computeValue() = i

@@ -76,7 +76,7 @@ object StringConverter {
   def toStringConverter[T](toStringFunction: T => String) = new StringConverter[T] {
 
     def fromString(string: String): T =
-      throw new UnsupportedOperationException("Convertsior from String not supported. Consider create a new StringConverter impletentation that support it.")
+      throw new UnsupportedOperationException("Convertsior from String not supported. Consider create a new StringConverter implementation that support it.")
 
     def toString(t: T): String = toStringFunction(t)
 
@@ -96,7 +96,7 @@ object StringConverter {
     def fromString(string: String): T = fromStringFunction(string)
 
     def toString(t: T): String =
-      throw new UnsupportedOperationException("Convertsior to String not supported. Consider create a new StringConverter impletentation that support it.")
+      throw new UnsupportedOperationException("Conversion to String not supported. Consider create a new StringConverter implementation that support it.")
 
   }
 

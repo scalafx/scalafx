@@ -34,7 +34,7 @@ import javafx.{ application => jfxa }
 object ApplicationIncludes extends ApplicationIncludes
 
 /**
- * Contains implcit methods to convert from 
+ * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javafx/2/api/javafx/application/package-summary.html `javafx.application`]] Classes to 
  * their ScalaFX counterparts.
  */

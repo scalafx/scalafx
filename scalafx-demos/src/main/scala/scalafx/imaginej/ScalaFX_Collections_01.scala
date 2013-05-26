@@ -80,7 +80,7 @@ import ObservableBuffer.{Reorder, Remove, Add}
 
 object ScalaFX_Collections_01 {
   private def changes01(observableStringBuffer: ObservableBuffer[String]) {
-    println("observable string buffer before changess01 " + observableStringBuffer)
+    println("observable string buffer before changes01 " + observableStringBuffer)
     observableStringBuffer += "a"
     observableStringBuffer += "b"
     println("observable string buffer after  changes01 " + observableStringBuffer)

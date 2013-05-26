@@ -32,7 +32,7 @@ import scalafx.Includes._
 object EventIncludes extends EventIncludes
 
 /**
- * Contains implcit methods to convert from
+ * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javafx/2/api/javafx/event/package-summary.html `javafx.event`]]
  * Classes to their ScalaFX counterparts.
  */

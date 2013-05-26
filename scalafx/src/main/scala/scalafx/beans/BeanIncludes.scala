@@ -35,14 +35,14 @@ import value.ObservableValue
 object BeanIncludes extends BeanIncludes
 
 /**
- * Contains implcit methods to convert from
+ * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javafx/2/api/javafx/beans/package-summary.html `javafx.beans`]] Classes to
  * their ScalaFX counterparts.
  */
 trait BeanIncludes extends PropertyIncludes with BindingIncludes with LowerPriorityIncludes
 
 /**
- * Contains implcit methods to convert from
+ * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javafx/2/api/javafx/beans/package-summary.html `javafx.beans`]] Interfaces to
  * their ScalaFX counterparts.
  */

@@ -34,7 +34,7 @@ import scalafx.util.Duration.DurationHelper
 object UtilIncludes extends UtilIncludes
 
 /**
- * Contains implcit methods to convert from
+ * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javafx/2/api/javafx/util/package-summary.html `javafx.util`]]
  * Classes to their ScalaFX counterparts.
  */
