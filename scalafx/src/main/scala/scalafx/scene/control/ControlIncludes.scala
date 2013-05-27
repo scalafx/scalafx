@@ -684,6 +684,13 @@ trait ControlIncludes
    */
   implicit def jfxTextField2sfx(v: jfxsc.TextField) = new TextField(v)
 
+  /**
+   * Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/control/$TXFD.html $TXFD]]` to a 
+   * TextFieldProperty.
+   * 
+   * @param p A ReadOnlyObjectProperty containing a $TXFD
+   * @return a new TextFieldProperty
+   */
   implicit def jfxTextFieldProperty2sfx(p: ReadOnlyObjectProperty[jfxsc.TextField]) = new TextFieldProperty(p)
 
   /**
