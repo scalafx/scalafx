@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -422,13 +422,15 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * Registers an event handler to this TableColumn.
    */
-  def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) =
+  def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) {
     delegate.addEventHandler(eventType, eventHandler)
+  }
 
   /**
    *  Unregisters a previously registered event handler from this TableColumn.
    */
-  def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) =
+  def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) {
     delegate.addEventHandler(eventType, eventHandler)
+  }
 
 }

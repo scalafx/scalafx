@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -97,7 +97,7 @@ class ChoiceBoxTreeCell[T](override val delegate: jfxscc.ChoiceBoxTreeCell[T] = 
   extends TreeCell[T](delegate)
   with ConvertableCell[jfxscc.ChoiceBoxTreeCell[T], T, T]
   with UpdatableCell[jfxscc.ChoiceBoxTreeCell[T], T]
-  with ItemnableCell[jfxscc.ChoiceBoxTreeCell[T], T]
+  with ItemableCell[jfxscc.ChoiceBoxTreeCell[T], T]
   with SFXDelegate[jfxscc.ChoiceBoxTreeCell[T]] {
 
   /**

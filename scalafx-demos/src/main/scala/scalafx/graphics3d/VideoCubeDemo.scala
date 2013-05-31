@@ -1,3 +1,29 @@
+/*
+ * Copyright (c) 2011-2013, ScalaFX Project
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of the ScalaFX Project nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE SCALAFX PROJECT OR ITS CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
 package scalafx.graphics3d
 
 // JavaFX system properties: -Dprism.printStats=true -Dprism.verbose=true
@@ -42,7 +68,7 @@ object VideoCubeDemo extends JFXApp {
   // PLEASE DO NOT SHOW THIS PUBLIC LIKE IN A BIG CONFERENCE with consent either
   // This is just for learning and demonstration purposes.
   // Of course, it will only work my machine!!!!!!!!!!!!!!!!!!!!!! Until you edit the folder and files!
-  val folder = if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+  val folder = if (System.getProperty("os.name").toLowerCase.contains("windows")) {
       new File( "C:\\Users\\peter\\Videos\\Movie-Trailers-2012" )
     }
     else {
@@ -63,7 +89,7 @@ object VideoCubeDemo extends JFXApp {
   val mediaPlayers = vidFiles.map {
     filename =>  {
       val file = new File( folder, filename)
-      val media = new Media( file.toURI().toURL().toExternalForm )
+      val media = new Media( file.toURI.toURL.toExternalForm )
       val mediaPlayer = new MediaPlayer( media )
       mediaPlayer.volume = 0.5
       mediaPlayer.cycleCount = MediaPlayer.Indefinite
@@ -92,15 +118,15 @@ object VideoCubeDemo extends JFXApp {
     } )
     //    printf("stars=%s\n", stars)
     children = stars
-    translateZ = 100.0;
+    translateZ = 100.0
   }
 
   root.children.addAll( starryBackground, cubeSystem )
 
   def create3dContent():Node = {
-    val c1 = new VideoCube(mediaPlayers, 300);
-    c1.rx.angle = 45;
-    c1.ry.angle = 45;
+    val c1 = new VideoCube(mediaPlayers, 300)
+    c1.rx.angle = 45
+    c1.ry.angle = 45
     c1.translateX = 200
     c1.translateY = -200
 
@@ -115,15 +141,15 @@ object VideoCubeDemo extends JFXApp {
       )
     }
 
-    return new Group(c1);
+    new Group(c1)
   }
 
-  def play(): Unit = {
+  def play() {
     animation.play()
     for ( mp <- mediaPlayers ) { mp.play() }
   }
 
-  def stop(): Unit = {
+  def stop() {
     animation.pause()
     for ( mp <- mediaPlayers ) { mp.stop() }
   }
@@ -223,7 +249,7 @@ class VideoCube( val mediaPlayers: List[MediaPlayer], size: Double ) extends Gro
       height = size
       fill = color.deriveColor(0.0, 1.0, (1 - 0.5*shade), 1.0)
       depthTest = DepthTest.INHERIT
-      // JavaFX Rendering on 3D with planar surfaces and mediaview will improve
+      // JavaFX Rendering on 3D with planar surfaces and MediaView will improve
       // opacity = 0.0
     }
 

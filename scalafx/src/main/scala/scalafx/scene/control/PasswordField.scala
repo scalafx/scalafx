@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,8 +34,12 @@ object PasswordField {
 }
 
 class PasswordField(override val delegate: jfxsc.PasswordField = new jfxsc.PasswordField()) extends TextField(delegate) with SFXDelegate[jfxsc.PasswordField] {
-  def cut = delegate.cut()
+  def cut() {
+    delegate.cut()
+  }
 
-  def copy = delegate.copy()
+  def copy() {
+    delegate.copy()
+  }
 
 }

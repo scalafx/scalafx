@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,12 @@
  */
 package scalafx.util
 
-import javafx.{util => jfxu}
+import javafx.{ util => jfxu }
 import scalafx.delegate.SFXDelegate
 
+/**
+ * Companion Object for [[scalafx.util.Duration]].
+ */
 object Duration {
   implicit def sfxDuration2jfx(d: Duration) = d.delegate
 
@@ -47,6 +50,12 @@ object Duration {
   def ZERO = jfxu.Duration.ZERO
 }
 
+/**
+ * Wraps a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/util/Duration.html `Duration`]].
+ *
+ * @constructor Creates a new ScalaFX Duration from a JavaFX Duration.
+ * @param delegate JavaFX Duration to be delegated.
+ */
 class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Duration] with Ordered[Duration] {
   def +(d: jfxu.Duration) = delegate.add(d)
   def -(d: jfxu.Duration) = delegate.subtract(d)
@@ -71,4 +80,5 @@ class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Du
   def =!=(d: jfxu.Duration) = !delegate.equals(d)
 
   def unary_-() = delegate.negate()
+
 }

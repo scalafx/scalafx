@@ -42,7 +42,7 @@ import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
 object TreeItem {
-  implicit def sfxTreeItemTojfx[T](v: TreeItem[T]) = v.delegate
+  implicit def sfxTreeItemToJfx[T](v: TreeItem[T]) = v.delegate
 
   object TreeModificationEvent {
     implicit def sfxTreeModificationEvent2jfx[T](v: TreeModificationEvent[T]) = v.delegate
@@ -246,14 +246,16 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
   /**
    * Registers an event handler to this TreeItem.
    */
-  def addEventHandler[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) =
+  def addEventHandler[ET <: jfxe.Event](eventType: jfxe.EventType[ET], eventFilter: jfxe.EventHandler[ET]) {
     delegate.addEventHandler(eventType, eventFilter)
+  }
 
   /**
    * Unregisters a previously registered event handler from this TreeItem.
    */
-  def removeEventHandler[T <: jfxe.Event](eventType: jfxe.EventType[T], eventHandler: jfxe.EventHandler[T]) =
+  def removeEventHandler[ET <: jfxe.Event](eventType: jfxe.EventType[ET], eventHandler: jfxe.EventHandler[ET]) {
     delegate.removeEventHandler(eventType, eventHandler)
+  }
 
   /**
    * Construct an event dispatch chain for this target.
@@ -266,7 +268,7 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
    */
   def children: ObservableBuffer[jfxsc.TreeItem[T]] = delegate.getChildren
   def children_=(items: Seq[TreeItem[T]]) {
-    children.clear
+    children.clear()
     items.foreach(children += _)
   }
 

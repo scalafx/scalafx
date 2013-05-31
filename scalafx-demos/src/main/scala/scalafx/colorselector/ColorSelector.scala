@@ -1,3 +1,29 @@
+/*
+ * Copyright (c) 2011-2013, ScalaFX Project
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of the ScalaFX Project nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE SCALAFX PROJECT OR ITS CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
 package scalafx.colorselector
 
 import colorselector.Max
@@ -36,7 +62,7 @@ object ColorSelector extends JFXApp {
   lazy val allControls = List(controlRed, controlGreen, controlBlue, controlAlpha)
 
   val currentColor = ObjectProperty(this, "Color", Color.WHITE)
-  currentColor.onChange(colorChanged)
+  currentColor.onChange(colorChanged())
 
   val synchronizedValue = new DoubleProperty()
 
@@ -53,7 +79,7 @@ object ColorSelector extends JFXApp {
     }
   }
 
-  private def changeColor {
+  private def changeColor() {
     val newAlphaValue = if (controlAlpha.disabled.get()) 1.0 else (controlAlpha.value.toDouble / colorselector.Max)
 
     this.currentColor() = Color.rgb(controlRed.value.toInt, controlGreen.value.toInt,
@@ -70,10 +96,13 @@ object ColorSelector extends JFXApp {
       case Remove(pos, removed) => {
         removed.last.asInstanceOf[SliderControl].value unbind synchronizedValue
       }
+      case _@ otherChange => {
+        throw new UnsupportedOperationException("Only add and remove defined for the ColorSelector SliderControl sync")
+      }
     }
   }
 
-  private def randomizeColors {
+  private def randomizeColors() {
     if (synchronizedControls.size > 0) {
       this.synchronizedValue() = math.random * colorselector.Max
     }
@@ -85,22 +114,22 @@ object ColorSelector extends JFXApp {
     }
   }
 
-  private def colorChanged {
-    formatColor
-    verifyWebColor
+  private def colorChanged() {
+    formatColor()
+    verifyWebColor()
   }
 
-  private def formatColor {
+  private def formatColor() {
     this.txfColorValue.text() = this.cmbColorFormat.value.get.format(this.currentColor(), !this.chbDisableAlpha.selected.get)
   }
 
   private def getForegroundColor(d: Double) = if (d > Max / 2) Color.BLACK else Color.WHITE
 
-  private def verifyWebColor {
+  private def verifyWebColor() {
     cmbWebColor.value() = WebColor.colors.find(_.sameColor(currentColor())).orNull
   }
 
-  private def webColorSelected {
+  private def webColorSelected() {
     if (this.cmbWebColor.value.get != null) {
       val color = this.cmbWebColor.value.get.color
       controlRed.value() = doubleToInt(color.red)
@@ -117,7 +146,7 @@ object ColorSelector extends JFXApp {
     }
     onMouseClicked = (event: MouseEvent) => {
         if ((event.getClickCount == 2) && (event.button == MouseButton.PRIMARY)) {
-          randomizeColors
+          randomizeColors()
         }
       }
   }
@@ -128,7 +157,7 @@ object ColorSelector extends JFXApp {
     value = 255
   }
   controlRed.value.onChange({
-    changeColor
+    changeColor()
     controlRed.changeColor(Color.rgb(controlRed.value.get.toInt, 0, 0), getForegroundColor(controlRed.value.get))
   })
   controlRed.selectedControl.onChange(controlSelected(controlRed))
@@ -138,7 +167,7 @@ object ColorSelector extends JFXApp {
     value = 255
   }
   controlGreen.value.onChange({
-    changeColor
+    changeColor()
     controlGreen.changeColor(Color.rgb(0, controlGreen.value.get.toInt, 0), getForegroundColor(controlGreen.value.get))
   })
   controlGreen.selectedControl.onChange(controlSelected(controlGreen))
@@ -148,7 +177,7 @@ object ColorSelector extends JFXApp {
     value = 255
   }
   controlBlue.value.onChange({
-    changeColor
+    changeColor()
     controlBlue.changeColor(Color.rgb(0, 0, controlBlue.value.get.toInt), Color.WHITE)
   })
   controlBlue.selectedControl.onChange(controlSelected(controlBlue))
@@ -157,21 +186,21 @@ object ColorSelector extends JFXApp {
   val controlAlpha = new SliderControl("A") {
     value = 255
   }
-  controlAlpha.value.onChange(changeColor)
+  controlAlpha.value.onChange(changeColor())
   controlAlpha.selectedControl.onChange(controlSelected(controlAlpha))
   controlAlpha.disable.onChange({
     if (controlAlpha.selectedControl.get) {
       if (controlAlpha.disable.get) synchronizedControls.remove(controlAlpha)
       else synchronizedControls.add(controlAlpha)
     }
-    changeColor
-    formatColor
+    changeColor()
+    formatColor()
   })
 
   val cmbWebColor = new ComboBox[WebColor](WebColor.colors) {
     promptText = "Web Color"
     converter = StringConverter.toStringConverter((wc: WebColor) => wc.name)
-    onAction =  (event: ActionEvent) => webColorSelected
+    onAction =  (event: ActionEvent) => webColorSelected()
   }
 
   val txfColorValue = new TextField {
@@ -186,7 +215,7 @@ object ColorSelector extends JFXApp {
     promptText = "Color Format"
     converter = StringConverter.toStringConverter((f: Formatter) => f.description)
     value = RgbFormatter
-    onAction =(event: ActionEvent) => formatColor
+    onAction =(event: ActionEvent) => formatColor()
   }
 
   val chbDisableAlpha = new CheckBox {
@@ -290,9 +319,9 @@ object ColorSelector extends JFXApp {
   }
 
   // Initialization
-  changeColor
+  changeColor()
   chbDisableAlpha.selected = true
-  formatColor
-  webColorSelected
+  formatColor()
+  webColorSelected()
 
 }

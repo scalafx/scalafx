@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -98,7 +98,7 @@ class ComboBoxTreeCell[T](override val delegate: jfxscc.ComboBoxTreeCell[T] = ne
   with ConvertableCell[jfxscc.ComboBoxTreeCell[T], T, T]
   with ComboBoxEditableCell[jfxscc.ComboBoxTreeCell[T], T]
   with UpdatableCell[jfxscc.ComboBoxTreeCell[T], T]
-  with ItemnableCell[jfxscc.ComboBoxTreeCell[T], T]
+  with ItemableCell[jfxscc.ComboBoxTreeCell[T], T]
   with SFXDelegate[jfxscc.ComboBoxTreeCell[T]] {
 
   /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,9 @@ trait Skin[C <: jfxsc.Skinnable] extends SFXDelegate[jfxsc.Skin[C]] {
   /**
    * Called by a Skinnable when the Skin is replaced on the Skinnable.
    */
-  def dispose: Unit = delegate.dispose
+  def dispose() {
+    delegate.dispose()
+  }
 
   /**
    * Gets the Node which represents this Skin.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,13 @@
 package scalafx.stage
 
 import java.io.File
-
+import javafx.{stage => jfxs}
 import scala.collection.JavaConversions._
-import javafx.{ stage => jfxs }
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.StringProperty
 import scalafx.delegate.SFXDelegate
+
 
 object FileChooser {
   implicit def sfxFileChooser2jfx(fc: FileChooser) = fc.delegate
@@ -49,13 +49,19 @@ object FileChooser {
      */
     def this(description: String, extensions: Seq[String]) = this(new jfxs.FileChooser.ExtensionFilter(description, extensions))
 
+    /**
+     * Creates an ExtensionFilter with the specified description and the file name extension.
+     * This is a convenience constructor for a common situations when only one extension is used.
+     */
+    def this(description: String, extension: String) = this(new jfxs.FileChooser.ExtensionFilter(description, extension))
+
     /*
      * Creates an ExtensionFilter with the specified description and the file name extensions.
      * NOTE IMPLEMENTATION: for constructor with extensions varargs compile complaints with message: "double definition: constructor 
      * ExtensionFilter:(description: String, extensions: String*)scalafx.stage.FileChooser.ExtensionFilter and constructor 
      * ExtensionFilter:(description: String, extensions: Seq[String])scalafx.stage.FileChooser.ExtensionFilter 
      * at line XX have same type after erasure: (description: java.lang.String, extensions: Seq)scalafx.stage.FileChooser#ExtensionFilter".
-     * So I decided mantain just Seq constructor. 
+     * So I decided maintain just Seq constructor.
      */
     //        def this(description: String, extensions: String*) = this(new jfxs.FileChooser.ExtensionFilter(description, extensions: _*))
 

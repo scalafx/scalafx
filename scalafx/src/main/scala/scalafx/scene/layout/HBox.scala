@@ -45,7 +45,9 @@ object HBox {
   /**
    * Removes all hbox constraints from the child node.
    */
-  def clearConstraints(child: jfxs.Node) = jfxsl.HBox.clearConstraints(child)
+  def clearConstraints(child: jfxs.Node) {
+    jfxsl.HBox.clearConstraints(child)
+  }
 
   /**
    * Returns the child's hgrow constraint if set.
@@ -55,7 +57,9 @@ object HBox {
   /**
    * Sets the horizontal grow priority for the child when contained by an hbox.
    */
-  def setHgrow(child: Node, value: Priority) = jfxsl.HBox.setHgrow(child, value)
+  def setHgrow(child: Node, value: Priority) {
+    jfxsl.HBox.setHgrow(child, value)
+  }
 
   /**
    * Returns the child's margin constraint if set.
@@ -65,7 +69,9 @@ object HBox {
   /**
    * Sets the margin for the child when contained by an hbox.
    */
-  def setMargin(child: Node, value: Insets) = jfxsl.HBox.setMargin(child, value)
+  def setMargin(child: Node, value: Insets) {
+    jfxsl.HBox.setMargin(child, value)
+  }
 
 }
 

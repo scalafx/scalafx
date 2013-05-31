@@ -43,7 +43,9 @@ object BorderPane {
   /**
    * Removes all borderpane constraints from the child node.
    */
-  def clearConstraints(child: javafx.scene.Node) = jfxsl.BorderPane.clearConstraints(child)
+  def clearConstraints(child: javafx.scene.Node) {
+    jfxsl.BorderPane.clearConstraints(child)
+  }
 
   /**
    * Returns the child's alignment constraint if set.
@@ -58,12 +60,16 @@ object BorderPane {
   /**
    * Sets the alignment for the child when contained by a borderpane.
    */
-  def setAlignment(child: Node, value: jfxg.Pos) = jfxsl.BorderPane.setAlignment(child, value)
+  def setAlignment(child: Node, value: jfxg.Pos) {
+    jfxsl.BorderPane.setAlignment(child, value)
+  }
 
   /**
    * Sets the margin for the child when contained by a borderpane.
    */
-  def setMargin(child: Node, value: Insets) = jfxsl.BorderPane.setMargin(child, value)
+  def setMargin(child: Node, value: Insets) {
+    jfxsl.BorderPane.setMargin(child, value)
+  }
 }
 
 class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane()) extends Pane(delegate) with SFXDelegate[jfxsl.BorderPane] {

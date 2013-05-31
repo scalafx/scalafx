@@ -46,13 +46,17 @@ object FlowPane {
   /**
    * Removes all flowpane constraints from the child node.
    */
-  def clearConstraints(child: Node) = jfxsl.FlowPane.clearConstraints(child)
+  def clearConstraints(child: Node) {
+    jfxsl.FlowPane.clearConstraints(child)
+  }
 
   /**
    * Added just for satisfy tests.
    */
   @deprecated("Use clearConstraints(scalafx.scene.Node) instead", "1.0")
-  def clearConstraints(child: javafx.scene.Node) = jfxsl.FlowPane.clearConstraints(child)
+  def clearConstraints(child: javafx.scene.Node) {
+    jfxsl.FlowPane.clearConstraints(child)
+  }
 
   /**
    * Returns the child's margin constraint if set.
@@ -62,7 +66,9 @@ object FlowPane {
   /**
    * Sets the margin for the child when contained by a flowpane.
    */
-  def setMargin(child: Node, value: Insets) = jfxsl.FlowPane.setMargin(child, value)
+  def setMargin(child: Node, value: Insets) {
+    jfxsl.FlowPane.setMargin(child, value)
+  }
 
 }
 

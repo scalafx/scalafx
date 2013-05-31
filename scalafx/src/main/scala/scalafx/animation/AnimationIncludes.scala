@@ -34,7 +34,7 @@ object AnimationIncludes extends AnimationIncludes
 /**
  * Contains implicit methods to convert classes from
  * [[http://docs.oracle.com/javafx/2/api/javafx/animation/package-summary.html `javafx.animation`]] classes to their
- * respectives ScalaFX versions.
+ * respective ScalaFX versions.
  *
  * @define INTERP [[http://docs.oracle.com/javafx/2/api/javafx/animation/Interpolatable.html `Interpolatable`]]
  * @define INTERPM `interpolate` method
@@ -45,7 +45,7 @@ trait AnimationIncludes {
 
   /**
    *
-   * @param time Dutarion time
+   * @param time Duration time
    * @param v Function which returns a [[scalafx.animation.KeyValue]] [[scala.Set]]
    * @return new KeyFrame
    */

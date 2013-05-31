@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,7 @@ import scalafx.scene.paint.Color
 import scalafx.delegate.SFXDelegate
 
 /**
- *
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/effect/package-summary.html `javafx.scene.effect`]] package.
  */
 package object effect {
 
@@ -47,7 +47,7 @@ package object effect {
   }
 
   /**
-   * Trait that unify all Effect subclasses whose Java counterpart have input Property. See type Inputed.
+   * Trait that unifies all Effect subclasses whose Java counterpart have input Property. See type Inputed.
    */
   trait InputDelegate[J <: Object with Inputed]
     extends SFXDelegate[J] {
@@ -55,7 +55,7 @@ package object effect {
     /**
      * The input for this Effect.
      */
-    def input: ObjectProperty[jfxse.Effect] = delegate.inputProperty
+    def input: ObjectProperty[jfxse.Effect] = delegate.inputProperty()
     def input_=(v: Effect) {
       input() = v
     }
@@ -78,7 +78,7 @@ package object effect {
     /**
      * The Effect's color.
      */
-    def color: ObjectProperty[jfxsp.Color] = delegate.colorProperty
+    def color: ObjectProperty[jfxsp.Color] = delegate.colorProperty()
     def color_=(c: Color) {
       color() = c
     }

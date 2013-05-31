@@ -195,7 +195,7 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
   /**
    * Jumps to a predefined position in this $AN.
    * 
-   * @param the name of the cue point
+   * @param cuePoint the name of the cue point
    */
   def jumpTo(cuePoint: String) {
     delegate.jumpTo(cuePoint)
@@ -204,15 +204,15 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
   /**
    * Pauses the $AN.
    */
-  def pause {
-    delegate.pause
+  def pause() {
+    delegate.pause()
   }
 
   /**
    * Plays $AN from current position in the direction indicated by `rate`.
    */
-  def play {
-    delegate.play
+  def play() {
+    delegate.play()
   }
 
   /**
@@ -236,8 +236,8 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
   /**
    * Plays an $AN from initial position in forward direction.
    */
-  def playFromStart {
-    delegate.playFromStart
+  def playFromStart() {
+    delegate.playFromStart()
   }
 
   /**

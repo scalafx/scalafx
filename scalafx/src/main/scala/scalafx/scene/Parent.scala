@@ -27,8 +27,7 @@
 package scalafx.scene
 
 import collection.JavaConversions._
-import javafx.{ scene => jfxs }
-import javafx.{ collections => jfxc }
+import javafx.{scene => jfxs}
 import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyBooleanProperty
@@ -53,7 +52,7 @@ abstract class Parent(override val delegate: jfxs.Parent)
   /**
    * Gets an observable list of string URLs linking to the stylesheets to use with this Parent's contents.
    */
-  def stylesheets: jfxc.ObservableList[String] = delegate.getStylesheets
+  def stylesheets = delegate.getStylesheets
 
   /**
    * Sets the list of stylesheets URLs, replacing the prior content. If you want append to current content, use `add` or

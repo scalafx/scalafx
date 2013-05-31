@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,12 +57,12 @@ class GestureEvent(override val delegate: jfxsi.GestureEvent)
   /**
    * Gets the horizontal position of the event relative to the origin of the event's source.
    */
-  def x = delegate.getX()
+  def x = delegate.getX
 
   /**
    * Gets the vertical position of the event relative to the origin of the event's source.
    */
-  def y = delegate.getY()
+  def y = delegate.getY
 
   /**
    * Gets the horizontal position of the event relative to the origin of the Scene that contains the event's source.

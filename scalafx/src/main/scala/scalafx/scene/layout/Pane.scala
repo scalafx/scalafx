@@ -27,9 +27,7 @@
 package scalafx.scene.layout
 
 import collection.JavaConversions._
-import javafx.{scene => jfxs}
 import javafx.scene.{ layout => jfxsl }
-import javafx.{ collections => jfxc }
 import scalafx.collections._
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
@@ -48,12 +46,12 @@ class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
   /**
    * Gets the list of children of this Parent.
    */
-  def children: jfxc.ObservableList[jfxs.Node] = delegate.getChildren
+  def children = delegate.getChildren
 
   /**
    * Gets the list of children of this Parent.
    */
-  def content: jfxc.ObservableList[jfxs.Node]  = children
+  def content = children
   /**
    * Sets the list of children, replacing the prior content. If you want append to current content, use `add` or
    * similar.

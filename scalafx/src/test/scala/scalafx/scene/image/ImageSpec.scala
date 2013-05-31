@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,6 +42,6 @@ import org.scalatest.junit.JUnitRunner
 class ImageSpec
   extends SimpleSFXDelegateSpec[jfxsi.Image, Image](classOf[jfxsi.Image], classOf[Image]) {
 
-  override protected def getJavaClassInstance = new jfxsi.Image(this.getClass().getResourceAsStream(""))
+  override protected def getJavaClassInstance = new jfxsi.Image(this.getClass.getResourceAsStream(""))
 
 }

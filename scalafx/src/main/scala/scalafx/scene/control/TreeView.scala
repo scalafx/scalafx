@@ -105,11 +105,13 @@ object TreeView {
   def nodeLevel(node: TreeItem[_]) = jfxsc.TreeView.getNodeLevel(node)
 
   /**
-   * Creates a new TreeView overriding layoutChildren method from JavaFX`s
+   * Creates a new TreeView overriding layoutChildren method from JavaFX's
    * TreeView.
    */
-  def apply[T](layoutChildren: => Unit) = new TreeView[T](new jfxsc.TreeView[T] {
-    override def layoutChildren = layoutChildren
+  def apply[T](layoutChildrenOp:() => Unit) = new TreeView[T](new jfxsc.TreeView[T] {
+    override def layoutChildren() {
+      layoutChildrenOp()
+    }
   })
 
 }
@@ -209,7 +211,9 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * Instructs the TreeView to begin editing the given TreeItem, if the
    * TreeView is `editable`.
    */
-  def edit(item: TreeItem[T]) = delegate.edit(item)
+  def edit(item: TreeItem[T]) {
+    delegate.edit(item)
+  }
 
   /**
    * Returns the index position of the given TreeItem, taking into account the

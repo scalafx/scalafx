@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,6 +32,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AlignmentDelegateSpec
+import javafx.scene
+import scalafx.scene.SceneProperty
 
 /**
  * TextField Spec tests.
@@ -39,4 +41,14 @@ import scalafx.testutil.AlignmentDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class TextFieldSpec
   extends AbstractSFXDelegateSpec[jfxsc.TextField, TextField, jfxsc.TextFieldBuilder[_]](classOf[jfxsc.TextField], classOf[TextField], classOf[jfxsc.TextFieldBuilder[_]])
-  with AlignmentDelegateSpec[jfxsc.TextField, TextField]
+  with AlignmentDelegateSpec[jfxsc.TextField, TextField] {
+
+
+  it should "have a Property class that exposes all the JavaFX builder properties" in {
+    compareBuilderPropertiesInProxy(classOf[jfxsc.TextFieldBuilder[_]], classOf[TextFieldProperty])
+  }
+
+  it should "have a Property class that exposes all the JavaFX properties" in {
+    comparePropertiesInProxy(classOf[jfxsc.TextField], classOf[TextFieldProperty])
+  }
+}

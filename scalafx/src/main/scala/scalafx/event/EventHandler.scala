@@ -79,8 +79,9 @@ trait EventHandlerDelegate {
    * @param eventType  the type of the events to receive by the handler
    * @param eventHandler the handler to register that will manipulate event
    */
-  def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) =
+  def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) {
     eventHandlerDelegate.addEventHandler(eventType, eventHandler)
+  }
 
   /**
    * Register an event handler to this task that will manipulate the
@@ -93,7 +94,9 @@ trait EventHandlerDelegate {
    */
   def handleEvent[E <: jfxe.Event](eventType: jfxe.EventType[E])(op: E => Unit) {
     this.addEventHandler(eventType, new jfxe.EventHandler[E] {
-      def handle(event: E) = op(event)
+      def handle(event: E) {
+        op(event)
+      }
     })
   }
 
@@ -108,7 +111,9 @@ trait EventHandlerDelegate {
    */
   def handleEvent[E <: jfxe.Event](eventType: jfxe.EventType[E])(op: => Unit) {
     this.addEventHandler(eventType, new jfxe.EventHandler[E] {
-      def handle(event: E) = op
+      def handle(event: E) {
+        op
+      }
     })
   }
 
@@ -121,8 +126,9 @@ trait EventHandlerDelegate {
    * @param eventType  the event type from which to unregister
    * @param eventHandler  the handler to unregister
    */
-  def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) =
+  def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) {
     eventHandlerDelegate.removeEventHandler(eventType, eventHandler)
+  }
 
   /**
    * Registers an event filter to this task. Registered event filters get an event before any
@@ -132,8 +138,9 @@ trait EventHandlerDelegate {
    * @param eventType  the type of the events to receive by the filter
    * @param eventFilter the filter to register that will filter event
    */
-  def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[_ >: E]) =
+  def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[_ >: E]) {
     eventHandlerDelegate.addEventFilter(eventType, eventFilter)
+  }
 
   /**
    * Registers an event filter to this task that will filter the
@@ -146,7 +153,9 @@ trait EventHandlerDelegate {
    */
   def filterEvent[E <: jfxe.Event](eventType: jfxe.EventType[E])(op: E => Unit) {
     this.addEventFilter(eventType, new jfxe.EventHandler[E] {
-      def handle(event: E) = op(event)
+      def handle(event: E) {
+        op(event)
+      }
     })
   }
 
@@ -161,7 +170,9 @@ trait EventHandlerDelegate {
    */
   def filterEvent[E <: jfxe.Event](eventType: jfxe.EventType[E])(op: => Unit) {
     this.addEventFilter(eventType, new jfxe.EventHandler[E] {
-      def handle(event: E) = op
+      def handle(event: E) {
+        op
+      }
     })
   }
 
@@ -172,9 +183,10 @@ trait EventHandlerDelegate {
    *
    * @tparam E Event class
    * @param eventType the event type from which to unregister
-   * @param eventFilter the filter to unregister
+   * @param eventHandler the filter to unregister
    */
-  def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) =
+  def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) {
     eventHandlerDelegate.removeEventFilter(eventType, eventHandler)
+  }
 
 }

@@ -1,4 +1,5 @@
-/* Copyright (c) 2012, ScalaFX Project
+/*
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,13 +40,6 @@ object ProgressBarTableCell {
    */
   def forTableColumn[S](): (TableColumn[S, Double] => TableCell[S, Double]) =
     (view: TableColumn[S, Double]) => jfxscc.ComboBoxTableCell.forTableColumn[S, Double]().call(view)
-
-  /**
-   * Added to satisfy Spec tests.
-   */
-//  @deprecated(message = "Use forTableColumn[S]()", since = "1.0")
-//  def forTableColumn[S]() = jfxscc.ComboBoxTableCell.forTableColumn[S, Double]()
-
 
 }
 

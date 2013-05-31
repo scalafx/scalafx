@@ -26,8 +26,7 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import javafx.{ collections => jfxc }
+import javafx.scene.{control => jfxsc}
 import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyObjectProperty
@@ -52,7 +51,7 @@ class ToggleGroup(override val delegate: jfxsc.ToggleGroup = new jfxsc.ToggleGro
   /**
    * The list of toggles within the ToggleGroup.
    */
-  def toggles: jfxc.ObservableList[jfxsc.Toggle] = delegate.getToggles
+  def toggles = delegate.getToggles
   /**
    * Sets the list of toggles, replacing the prior toggles. If you want append to current toggles, use `add` or
    * similar.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -86,7 +86,7 @@ abstract class Labeled(override val delegate: jfxsc.Labeled)
   }
 
   /**
-   * The padding around the Labeled's text and graphic content.
+   * The padding around the Label's text and graphic content.
    */
   def labelPadding: ReadOnlyObjectProperty[jfxg.Insets] = delegate.labelPaddingProperty
 

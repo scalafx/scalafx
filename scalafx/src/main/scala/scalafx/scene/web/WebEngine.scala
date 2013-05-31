@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -146,16 +146,22 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) ex
   /**
    * Loads a Web page into this engine.
    */
-  def load(url: String) = delegate.load(url)
+  def load(url: String) {
+    delegate.load(url)
+  }
 
   /**
    * Loads the given HTML content directly.
    */
-  def loadContent(content: String) = delegate.loadContent(content)
+  def loadContent(content: String) {
+    delegate.loadContent(content)
+  }
 
   /**
    * Loads the given content directly.
    */
-  def loadContent(content: String, contentType: String) = delegate.loadContent(content, contentType)
+  def loadContent(content: String, contentType: String) {
+    delegate.loadContent(content, contentType)
+  }
 
 }

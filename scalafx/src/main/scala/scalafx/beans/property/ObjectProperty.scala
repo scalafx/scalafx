@@ -40,7 +40,7 @@ import scalafx.delegate.SFXDelegate
 object ObjectProperty {
   
   /**
-   * Implicit conversor from a ScalaFX's $OP to a JavaFX's 
+   * Implicit conversion from a ScalaFX's $OP to a JavaFX's
    * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ObjectProperty.html $OP]], extracting its delegate.
    * 
    * @param op ScalaFX's $OP 
@@ -118,7 +118,7 @@ object ObjectProperty {
  * This class provides a full implementation of a Property wrapping an arbitrary Object.
  *
  * It is recommended, as a work around for Issue 14, to use companion object factory methods to construct new instances,
- * instead of using constructor directly, especially when an inatial value is a ScalaFX wrapper, for instance:
+ * instead of using constructor directly, especially when an initial value is a ScalaFX wrapper, for instance:
  *
  * {{{
  *   import scalafx.scene.Cursor

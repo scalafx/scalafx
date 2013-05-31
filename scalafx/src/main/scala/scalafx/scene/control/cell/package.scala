@@ -1,4 +1,5 @@
-/* Copyright (c) 2012, ScalaFX Project
+/*
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,6 +39,9 @@ import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 import scalafx.beans.value.ObservableValue
 
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/package-summary.html `javafx.scene.control.cell`]] package.
+ */
 package object cell {
 
   /**
@@ -61,7 +65,7 @@ package object cell {
     /**
      * The `StringConverter` property.
      */
-    def converter: ObjectProperty[StringConverter[J]] = ObjectProperty(delegate.converterProperty.getValue)
+    def converter: ObjectProperty[StringConverter[J]] = ObjectProperty(delegate.converterProperty().getValue)
     def converter_=(v: StringConverter[J]) {
       converter() = v
     }
@@ -86,7 +90,7 @@ package object cell {
     /**
      * A property representing whether the `ComboBox`, when shown to the user, is editable or not.
      */
-    def comboBoxEditable: BooleanProperty = delegate.comboBoxEditableProperty
+    def comboBoxEditable: BooleanProperty = delegate.comboBoxEditableProperty()
     def comboBoxEditable_=(v: Boolean) {
       comboBoxEditable() = v
     }
@@ -111,14 +115,16 @@ package object cell {
     /**
      * Types that contains the method `updateItem(item: Any, empty: Boolean): Unit`
      */
-    type Updated[T] = {
-      def updateItem(item: Any, empty: Boolean): Unit
+    type Updated = {
+      def updateItem(item: Any, empty: Boolean)
     }
 
     /**
      * Updates the item associated with this Cell.
      */
-    def updateItem(item: T, empty: Boolean) = delegate.asInstanceOf[Updated[T]].updateItem(item, empty)
+    def updateItem(item: T, empty: Boolean) {
+      delegate.asInstanceOf[Updated].updateItem(item, empty)
+    }
 
   }
 
@@ -136,14 +142,13 @@ package object cell {
    *
    * @tparam T The type of the elements contained within the inner element inside the Cell.
    */
-  trait ItemnableCell[C <: jfxsc.Cell[T] with Itemable[T], T]
+  trait ItemableCell[C <: jfxsc.Cell[T] with Itemable[T], T]
     extends SFXDelegate[C] {
 
     /**
      * Returns the items to be displayed in the ChoiceBox when it is showing.
      */
-    def items: ObservableBuffer[T] = delegate.getItems
-
+    def items = delegate.getItems
   }
 
   /**
@@ -180,7 +185,7 @@ package object cell {
     /**
      * Property representing the Callback that is bound to by the element inside the Cell shown on screen.
      */
-    def selectedStateCallback = delegate.selectedStateCallbackProperty
+    def selectedStateCallback = delegate.selectedStateCallbackProperty()
     def selectedStateCallback_=(v: J => ObservableValue[Boolean, java.lang.Boolean]) {
       selectedStateCallback() = v
     }

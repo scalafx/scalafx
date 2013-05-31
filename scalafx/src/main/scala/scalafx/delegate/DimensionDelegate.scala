@@ -46,7 +46,7 @@ object DimensionDelegate {
 
 /**
  * Trait that unifies JavaFX classes that contains properties indicating height and width,
- * represented by `heightProperty` and `widthProperty` and their respectives getter and setters.
+ * represented by `heightProperty` and `widthProperty` and their respective getter and setters.
  *
  * @tparam J Original JavaFX type that contains `height` and `width` properties.
  */
@@ -56,7 +56,7 @@ trait DimensionDelegate[J <: Object with Dimensioned]
   /**
    * Indicates the height of object.
    */
-  def height: DoubleProperty = delegate.heightProperty
+  def height: DoubleProperty = delegate.heightProperty()
   def height_=(h: Double) {
     height() = h
   }
@@ -64,7 +64,7 @@ trait DimensionDelegate[J <: Object with Dimensioned]
   /**
    * Indicates the width of object.
    */
-  def width: DoubleProperty = delegate.widthProperty
+  def width: DoubleProperty = delegate.widthProperty()
   def width_=(w: Double) {
     width() = w
   }

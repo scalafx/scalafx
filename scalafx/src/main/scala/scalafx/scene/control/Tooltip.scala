@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,14 +43,14 @@ import scalafx.delegate.SFXDelegate
 
 object Tooltip {
 
-  implicit def sfxTooltip2jfx(v: Tooltip) = v.delegate
+  implicit def sfxTooltip2jfx(v: Tooltip) = if (v == null) null else v.delegate
 
   def apply(string: String) = new Tooltip {
     text = string
   }
 
   /**
-   * Generates a Simple Tooltip with defaul properties from a text.
+   * Generates a Simple Tooltip with default properties from a text.
    *
    * @param string Tooltip's text.
    */
@@ -62,23 +62,31 @@ object Tooltip {
    * Associates the given Tooltip with a given Node. The tooltip can then behave similar to when it is set on any Control.
    * A single tooltip can be associated with multiple nodes.
    */
-  def install(node: jfxs.Node, tooltip: jfxsc.Tooltip) = jfxsc.Tooltip.install(node, tooltip)
+  def install(node: jfxs.Node, tooltip: jfxsc.Tooltip) {
+    jfxsc.Tooltip.install(node, tooltip)
+  }
 
   /**
    * Associates the given Tooltip with a given Node. The tooltip can then behave similar to when it is set on any Control.
    * A single tooltip can be associated with multiple nodes.
    */
-  def install(node: Node, tooltip: Tooltip) = jfxsc.Tooltip.install(node, tooltip)
+  def install(node: Node, tooltip: Tooltip) {
+    jfxsc.Tooltip.install(node, tooltip)
+  }
 
   /**
    * Removes the association of the given Tooltip on a specified Node. Hence hovering on the node will no longer result in showing of the tooltip.
    */
-  def uninstall(node: jfxs.Node, tooltip: jfxsc.Tooltip) = jfxsc.Tooltip.uninstall(node, tooltip)
+  def uninstall(node: jfxs.Node, tooltip: jfxsc.Tooltip) {
+    jfxsc.Tooltip.uninstall(node, tooltip)
+  }
 
   /**
    * Removes the association of the given Tooltip on a specified Node. Hence hovering on the node will no longer result in showing of the tooltip.
    */
-  def uninstall(node: Node, tooltip: Tooltip) = jfxsc.Tooltip.uninstall(node, tooltip)
+  def uninstall(node: Node, tooltip: Tooltip) {
+    jfxsc.Tooltip.uninstall(node, tooltip)
+  }
 
 }
 

@@ -60,7 +60,7 @@ object PathTransition extends AnimationStatics {
     extends SFXEnumDelegateCompanion[jfxa.PathTransition.OrientationType, OrientationType] {
 
     /**
-     * The targeted node's rotation matrix stays unchange along the geometric path.
+     * The targeted node's rotation matrix stays unchanged along the geometric path.
      */
     val NONE = new OrientationType(jfxa.PathTransition.OrientationType.NONE)
 

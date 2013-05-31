@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,6 +34,7 @@ import java.{ util => ju }
 import ObservableBuffer.Add
 import ObservableBuffer.Remove
 import ObservableBuffer.Reorder
+import ObservableBuffer.Change
 import ObservableBuffer.observableBuffer2ObservableList
 import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
@@ -53,8 +54,8 @@ class ObservableBufferSpec[T]
    * generated map must be a ObservableBuffer.
    *
    * @param generatedBuffer Generated Buffer, that should be a ObservableBuffer.
-   * @param original Buffer Original ObservableBuffer.
-   * @param shouldBeTheSame If both mapos should be same instance.
+   * @param originalBuffer Buffer Original ObservableBuffer.
+   * @param shouldBeTheSame If both maps should be same instance.
    */
   private def compareInstances(generatedBuffer: Buffer[_],
     originalBuffer: ObservableBuffer[_], shouldBeTheSame: Boolean) {
@@ -66,11 +67,11 @@ class ObservableBufferSpec[T]
     }
   }
 
-  private def compareAfterRemoving[T](generatedBuffer: Buffer[T],
-    originalBuffer: ObservableBuffer[T], expectedResult: T*) {
+  private def compareAfterRemoving[T1](generatedBuffer: Buffer[T1],
+    originalBuffer: ObservableBuffer[T1], expectedResult: T1*) {
     generatedBuffer.toList should equal(expectedResult.toList)
     generatedBuffer should not be theSameInstanceAs(originalBuffer)
-    generatedBuffer.getClass should be(classOf[ObservableBuffer[T]])
+    generatedBuffer.getClass should be(classOf[ObservableBuffer[T1]])
   }
 
   override def getScalaClassInstance = ObservableBuffer.empty[T]
@@ -194,6 +195,7 @@ class ObservableBufferSpec[T]
             position should equal(3 * changeCount)
             elements should equal(Seq("d", "e", "f"))
           }
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
@@ -271,6 +273,7 @@ class ObservableBufferSpec[T]
             elements should equal(Seq("a", "b", "c"))
           }
           case Add(_, _) =>
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
@@ -288,7 +291,7 @@ class ObservableBufferSpec[T]
     buffer should be('empty)
 
     buffer += ("a", "b", "c")
-    buffer.clear
+    buffer.clear()
     buffer should be('empty)
 
     buffer += ("a", "b", "c")
@@ -323,6 +326,7 @@ class ObservableBufferSpec[T]
             elements should equal(Seq("b", "c", "d"))
           }
           case Add(_, _) =>
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
@@ -352,10 +356,11 @@ class ObservableBufferSpec[T]
             position should equal(0)
             elements should equal(Seq("a", "b", "c", "d", "e", "f"))
           }
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
-    // Executuion
+    // Execution
     ObservableBuffer.rotate(buffer, 2)
 
     // Verification
@@ -380,6 +385,7 @@ class ObservableBufferSpec[T]
             position should equal(0)
             elements should equal(Seq("a", "b", "c"))
           }
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
@@ -404,6 +410,7 @@ class ObservableBufferSpec[T]
               permutation(i) should equal(5 - i)
             }
           }
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
@@ -429,6 +436,7 @@ class ObservableBufferSpec[T]
               permutation(i) should equal(5 - i)
             }
           }
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
@@ -441,7 +449,7 @@ class ObservableBufferSpec[T]
 
   it should "throws a exception when sort a buffer that is composed by non Comparable subtypes" in {
     // Preparation
-    case class A(val value: Int)
+    case class A(value: Int)
     val buffer = ObservableBuffer(A(4), A(3), A(1), A(5), A(2))
 
     // Execution
@@ -465,6 +473,7 @@ class ObservableBufferSpec[T]
               permutation(i) should equal(i)
             }
           }
+          case _@ otherChange => fail(otherChange.toString)
         }
     }
 
@@ -571,7 +580,7 @@ class ObservableBufferSpec[T]
     changesDetected should be(1)
   }
 
-  it should "replace all ocurrences of a element with just one change" in {
+  it should "replace all occurrences of a element with just one change" in {
     val buffer = ObservableBuffer(1, 2, 3, 1, 5)
     var changesDetected = 0
 

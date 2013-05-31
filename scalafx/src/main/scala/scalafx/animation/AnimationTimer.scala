@@ -53,7 +53,9 @@ object AnimationTimer {
    * @return a new $AT.
    */
   def apply(handler: Long => Unit): AnimationTimer = new AnimationTimer(new jfxa.AnimationTimer {
-    def handle(now: Long) = handler(now)
+    def handle(now: Long) {
+      handler(now)
+    }
   }) {}
 
 }
@@ -82,11 +84,15 @@ abstract class AnimationTimer(override val delegate: jfxa.AnimationTimer)
   /**
    * Starts the $AT's.
    */
-  def start = delegate.start
+  def start() {
+    delegate.start()
+  }
 
   /**
    * Stops the $AT's. It can be activated again by calling `start`.
    */
-  def stop = delegate.stop
+  def stop() {
+    delegate.stop()
+  }
 
 }

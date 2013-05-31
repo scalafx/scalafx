@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,7 @@ import scalafx.testutil.RunOnApplicationThread
  *
  */
 @RunWith(classOf[JUnitRunner])
-class PopupPopupWindowSpec
+class PopupWindowSpec
   extends AbstractSFXDelegateSpec[jfxs.PopupWindow, PopupWindow, jfxs.PopupWindowBuilder[_]](classOf[jfxs.PopupWindow], classOf[PopupWindow], classOf[jfxs.PopupWindowBuilder[_]])
   with RunOnApplicationThread {
 

@@ -1,4 +1,5 @@
-/* Copyright (c) 2012, ScalaFX Project
+/*
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -86,23 +87,6 @@ object CheckBoxTableCell {
   @deprecated(message = "Use forTableView[S, T](Int => ObservableValue[Boolean, java.lang.Boolean], StringConverter[T])", since = "1.0")
   def forTableColumn[S, T](getSelectedProperty: jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]], converter: jfxu.StringConverter[T]) =
     jfxscc.CheckBoxTableCell.forTableColumn(getSelectedProperty, converter)
-
-  /*
-   * Creates a cell factory for use in a `TableColumn` cell factory.
-   *
-  def forTableColumn[S](column: TableColumn[S, Boolean]): (TableColumn[S, Boolean] => TableCell[S, Boolean]) = {
-    val jfxColumn: jfxsc.TableColumn[S, java.lang.Boolean] = column.delegate.asInstanceOf[jfxsc.TableColumn[S, java.lang.Boolean]]
-    val jfxCallback = jfxscc.CheckBoxTableCell.forTableColumn(jfxColumn).call(column.delegate.asInstanceOf[jfxsc.TableColumn[S, java.lang.Boolean]])
-    (column: TableColumn[S, Boolean]) => jfxscc.CheckBoxTableCell.forTableColumn(jfxColumn).call(column.delegate.asInstanceOf[jfxsc.TableColumn[S, java.lang.Boolean]])
-    *
- overloaded method value forTableColumn with alternatives: 
-[S, T](x$1: javafx.util.Callback[java.lang.Integer,javafx.beans.value.ObservableValue[java.lang.Boolean]])javafx.util.Callback[javafx.scene.control.TableColumn[S,T],javafx.scene.control.T
-	 ableCell[S,T]] <and> 
-[S   ](x$1: javafx.scene.control.TableColumn[S,java.lang.Boolean])javafx.util.Callback[javafx.scene.control.TableColumn[S,java.lang.Boolean],javafx.scene.control.TableCell[S,java.lang.
-	 Boolean]] cannot be applied to (scalafx.scene.control.TableColumn[S,scala.Boolean])     * 
-     
-  }
-*/
 
   /**
    * Added to satisfy Spec tests.

@@ -28,7 +28,6 @@ package scalafx.animation
 
 import collection.JavaConversions._
 import javafx.{ animation => jfxa, scene => jfxs }
-import javafx.{ collections => jfxc }
 import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
@@ -111,7 +110,7 @@ class ParallelTransition(override val delegate: jfxa.ParallelTransition = new jf
   /**
    * A list of $ANS that will be played sequentially.
    */
-  def children: jfxc.ObservableList[jfxa.Animation] = delegate.getChildren
+  def children = delegate.getChildren
 
   /**
    * Sets the list of $ANS, replacing the prior content. If you want append to current content, use `add` or similar.
@@ -121,5 +120,4 @@ class ParallelTransition(override val delegate: jfxa.ParallelTransition = new jf
   def children_=(c: Iterable[Animation]) {
     fillSFXCollection(this.children, c)
   }
-
 }

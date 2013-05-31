@@ -83,12 +83,11 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   def this(parent: Parent, width: Double, height: Double) = this(new jfxs.Scene(parent, width, height))
 
   /**
-   * Creates a Scene for a specific root Node with a specific size and fill.
+   * Creates a Scene for a specific root Node with a specific size.
    *
    * @param parent The root node of the scene graph
    * @param width The width of the scene
    * @param height The height of the scene
-   * @param fill The fill
    */
   def this(parent: Parent, width: Double, height: Double, depthBuffer: Boolean) = this(new jfxs.Scene(parent, width, height, depthBuffer))
   //def this(stackPane: jfxsl.StackPane) = this (new jfxs.Scene(stackPane))
@@ -414,16 +413,20 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Registers the specified mnemonic.
    *
-   * @param The Mnemonic
+   * @param m The Mnemonic
    */
-  def addMnemonic(m: Mnemonic) = delegate.addMnemonic(m)
+  def addMnemonic(m: Mnemonic) {
+    delegate.addMnemonic(m)
+  }
 
   /**
    * Unregisters the specified mnemonic.
    *
-   * @param The Mnemonic to be removed.
+   * @param m The Mnemonic to be removed.
    */
-  def removeMnemonic(m: Mnemonic) = delegate.removeMnemonic(m)
+  def removeMnemonic(m: Mnemonic) {
+    delegate.removeMnemonic(m)
+  }
 
   /**
    * Gets the list of mnemonics for this `Scene`.
@@ -433,22 +436,22 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Gets the list of accelerators for this Scene.
    */
-  def accelerators: jfxc.ObservableMap[jfxsi.KeyCombination, Runnable] = delegate.getAccelerators()
+  def accelerators: jfxc.ObservableMap[jfxsi.KeyCombination, Runnable] = delegate.getAccelerators
 
   /**
    * Confirms a potential drag and drop gesture that is recognized over this `Scene`.
-   * 
-   * @param  The supported `TransferMode`(s) of this `Node`
+   *
+   * @param  transferModes The supported `TransferMode`(s) of this `Node`
    * @return A `Dragboard` to place this `Scene`'s data on
    */
-  def startDragAndDrop(transferModes: TransferMode*): Dragboard = 
+  def startDragAndDrop(transferModes: TransferMode*): Dragboard =
     delegate.startDragAndDrop(transferModes.map(_.delegate): _*)
-  
+
   /**
    * Starts a full press-drag-release gesture with this scene as gesture source.
    */
-  def startFullDrag {
-    delegate.startFullDrag
+  def startFullDrag() {
+    delegate.startFullDrag()
   }
 
   /**

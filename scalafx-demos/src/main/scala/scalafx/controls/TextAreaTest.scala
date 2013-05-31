@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -86,7 +86,7 @@ object TextAreaTest extends JFXApp {
 }
 
 class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](target, "TextArea Properties") {
-  // TODO: ChoiceBoxes are not really working. In JavaFX 2.1, bind their respectives values with TextArea properties. 
+  // TODO: ChoiceBoxes are not really working. In JavaFX 2.1, bind their respective values with TextArea properties.
 
   val chbPrefColumnCount = new ChoiceBox[Int] {
     items = ObservableBuffer[Int](0, 5, 10, 15, 20, 25, 30)
@@ -94,7 +94,7 @@ class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](targe
   // In JAvaFX 2.1, bind TextArea.prefColumnCount with value
   chbPrefColumnCount.delegate.selectionModelProperty.addListener(new ChangeListener[Any] {
     def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
-      target.prefColumnCount = newValue.toString().toInt
+      target.prefColumnCount = newValue.toString.toInt
     }
   })
 
@@ -104,7 +104,7 @@ class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](targe
   // In JAvaFX 2.1, bind TextArea.prefRowCount with value
   chbPrefRowCount.delegate.selectionModelProperty.addListener(new ChangeListener[Any] {
     def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
-      target.prefRowCount = newValue.toString().toInt
+      target.prefRowCount = newValue.toString.toInt
     }
   })
 
@@ -115,7 +115,7 @@ class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](targe
   // In JAvaFX 2.1, bind TextArea.prefRowCount with value
   chbPrefRowCount.delegate.selectionModelProperty.addListener(new ChangeListener[Any] {
     def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
-      target.scrollLeft = chbScrollLeft.items.get().get(newValue.toString().toInt)
+      target.scrollLeft = chbScrollLeft.items.get().get(newValue.toString.toInt)
     }
   })
 
@@ -125,7 +125,7 @@ class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](targe
   // In JAvaFX 2.1, bind TextArea.prefRowCount with value
   chbPrefRowCount.delegate.selectionModelProperty.addListener(new ChangeListener[Any] {
     def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
-      target.scrollTop = chbScrollTop.items.get().get(newValue.toString().toInt)
+      target.scrollTop = chbScrollTop.items.get().get(newValue.toString.toInt)
     }
   })
 

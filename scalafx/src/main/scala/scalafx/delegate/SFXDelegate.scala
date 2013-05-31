@@ -28,24 +28,36 @@ package scalafx.delegate
 
 /**
  * Basic trait for all JavaFX classes wrapping.
- * 
+ *
  * @tparam D JavaFX class to be wrapped.
  */
 trait SFXDelegate[+D <: Object] extends AnyRef {
-  
+
   /**
    * JavaFX object to be wrapped.
    */
   def delegate: D
 
+  /**
+   * @return Returns the original delegate's `toString()` adding a `[SFX]` prefix.
+   */
   override def toString = "[SFX]" + delegate.toString
 
+  /**
+   * Verifies if a object is equals to this delegate.
+   *
+   * @param ref Object to be compared.
+   * @return if the other object is equals to this delegate or not.
+   */
   override def equals(ref: Any): Boolean = {
     ref match {
       case sfxd: SFXDelegate[_] => delegate.equals(sfxd.delegate)
-      case _ => delegate.equals(ref)
+      case _                    => delegate.equals(ref)
     }
   }
 
+  /**
+   * @return The delegate hashcode
+   */
   override def hashCode = delegate.hashCode
 }

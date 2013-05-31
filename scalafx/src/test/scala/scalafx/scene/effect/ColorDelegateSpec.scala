@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,9 +37,6 @@ import scalafx.scene.paint.Color
  */
 trait ColorDelegateSpec[D <: ColorDelegate[_]] extends FlatSpec {
 
-  /**
-   *
-   */
   protected val colorDelegate: D
 
   it should "allow observe changes in Color" in {

@@ -26,9 +26,8 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.delegate.SFXDelegate
-import javafx.{ collections => jfxc }
 import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
@@ -43,12 +42,12 @@ class MenuBar(override val delegate: jfxsc.MenuBar = new jfxsc.MenuBar()) extend
   /**
    * Gets the list of Menus for this instance.
    */
-  def menus: jfxc.ObservableList[jfxsc.Menu] = delegate.getMenus
+  def menus = delegate.getMenus
 
   /**
    * Sets the list of Menus for this instance.
    */
-  def menus_=(c: Iterable[Menu]) = {
+  def menus_=(c: Iterable[Menu]) {
     fillSFXCollection(this.menus, c)
   }
 

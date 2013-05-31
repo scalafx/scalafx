@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,12 +59,16 @@ class ButtonBase(override val delegate: jfxsc.ButtonBase)
   /**
    * Arms the button.
    */
-  def arm = delegate.arm
+  def arm() {
+    delegate.arm()
+  }
 
   /**
    * Disarms the button.
    */
-  def disarm = delegate.disarm
+  def disarm() {
+    delegate.disarm()
+  }
 
   // for now only a few examples
 

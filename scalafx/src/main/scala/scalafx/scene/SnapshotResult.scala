@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,6 +57,6 @@ class SnapshotResult(override val delegate: jfxs.SnapshotResult)
   /**
    * Gets the source Node or Scene on which the snapshot was called.
    */
-  def source: AnyRef = delegate.getSource()
+  def source: AnyRef = delegate.getSource
 
 }

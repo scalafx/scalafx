@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,8 +35,8 @@ import com.sun.javafx.{ application => csjfxa }
 import javafx.application.Application.Parameters
 import javafx.{ application => jfxa }
 import scala.collection.JavaConversions._
-import scalafx.Includes.jfxParamaters2sfx
-import scalafx.application.JFXApp.Parameters.sfxParamaters2jfx
+import scalafx.Includes.jfxParameters2sfx
+import scalafx.application.JFXApp.Parameters.sfxParameters2jfx
 import scalafx.application.JFXApp.Parameters
 import scalafx.testutil.SimpleSFXDelegateSpec
 import com.sun.javafx.application.ParametersImpl
@@ -47,7 +47,7 @@ import com.sun.javafx.application.ParametersImpl
  *
  */
 @RunWith(classOf[JUnitRunner])
-class JFXAppParameters
+class JFXAppParametersSpec
   extends SimpleSFXDelegateSpec[jfxa.Application.Parameters, JFXApp.Parameters](classOf[jfxa.Application.Parameters], classOf[JFXApp.Parameters]) {
 
   override protected def getScalaClassInstance = new JFXApp.ParametersImpl(Seq.empty[String])

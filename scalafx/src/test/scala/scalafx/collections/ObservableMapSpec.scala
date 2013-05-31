@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,8 @@ class ObservableMapSpec[K, V]
    * generated map must be a ObservableMap.
    *
    * @param generatedMap Generated Map, that should be a ObservableMap.
-   * @param original Map Original ObservableMap.
-   * @param shouldBeTheSame If both mapos should be same instance.
+   * @param originalMap Map Original ObservableMap.
+   * @param shouldBeTheSame If both maps should be same instance.
    */
   private def compareInstances(generatedMap: Map[Int, String],
     originalMap: ObservableMap[Int, String], shouldBeTheSame: Boolean) {
@@ -70,8 +70,9 @@ class ObservableMapSpec[K, V]
   override def getJavaClassInstance = jfxc.FXCollections.observableHashMap[K, V]
 
   it should "generate new instances using Companion's apply" in {
-    def assertGeneratedMap(map: Map[Int, String]) =
-	  map.toSet should equal(Map((1, "one"), (2, "two")).toSet)
+    def assertGeneratedMap(map: Map[Int, String]) {
+      map.toSet should equal(Map((1, "one"), (2, "two")).toSet)
+    }
 
     assertGeneratedMap(ObservableMap(List((1, "one"), (2, "two"))))
     assertGeneratedMap(ObservableMap((1, "one"), (2, "two")))
@@ -125,7 +126,7 @@ class ObservableMapSpec[K, V]
       (sourceMap, change) => sourceMap should be(map)
     }
 
-    // Excecution
+    // Execution
     map(3) = "three"
   }
 
@@ -143,7 +144,7 @@ class ObservableMapSpec[K, V]
         }
     }
 
-    // Excecution
+    // Execution
     map(0) = 0.toString
     compareInstances((map += (1 -> 1.toString)), map, true)
     compareInstances((map += (2 -> 2.toString) += (3 -> 3.toString)), map, true)
@@ -205,7 +206,7 @@ class ObservableMapSpec[K, V]
     map should equal(ObservableMap((10 to 20).map(i => (i, i.toString))))
     removedEntries.toList should equal((0 to 9).map(i => (i, i.toString)).toList)
 
-    removedEntries.clear
+    removedEntries.clear()
     // Retain even keys
     // NOTE Due to Scala 2.10 bug SI-7269 cannot use some of Map methods to filter elements.
     //      The `for` loop implements operation equivalent to `map.retain`
@@ -215,9 +216,9 @@ class ObservableMapSpec[K, V]
     map should equal(ObservableMap((10 to 20).filter(_ % 2 == 0).map(i => (i, i.toString))))
     removedEntries.toList.sortWith(_._1 < _._1) should equal((10 to 20).filter(_ % 2 != 0).map(i => (i, i.toString)).toList)
 
-    removedEntries.clear
+    removedEntries.clear()
     // Clear Map
-    map.clear
+    map.clear()
     removedEntries.toList.sortWith(_._1 < _._1) should equal((10 to 20).filter(_ % 2 == 0).map(i => (i, i.toString)).toList)
     map should be('empty)
   }
@@ -261,7 +262,7 @@ class ObservableMapSpec[K, V]
     map getOrElseUpdate (13, "thirteen") // Map will not be updated
     // Operations that not change this set
     map + (14 -> "fourteen")
-    map + (15 -> "fiveteen") + (16 -> "sixteen")
+    map + (15 -> "fifteen") + (16 -> "sixteen")
     map + ((17, "seventeen"))
     map + ((18, "eighteen"), (19, "nineteen"))
     map + (20 -> "twenty", 21 -> "twenty-one")
