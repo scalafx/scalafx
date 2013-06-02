@@ -26,16 +26,75 @@
  */
 package scalafx.scene.transform
 
-import scalafx.Includes._
 import javafx.scene.{ transform => jfxst }
 
 object TransformIncludes extends TransformIncludes
 
+/**
+ * Contains implcit methods to convert from
+ * [[http://docs.oracle.com/javafx/2/api/javafx/scene/transform/package-summary.html `javafx.scene.transform`]]
+ * Classes/Traits to their $SFX counterparts.
+ *
+ * @define JFX JavaFX
+ * @define SFX ScalaFX
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/transform/
+ * @define END ]]` instance to its $SFX counterpart.
+ *
+ * @define AF Affine
+ * @define RT Rotate
+ * @define SC Scale
+ * @define SH Shear
+ * @define TR Transform
+ * @define TL Translate
+ */
 trait TransformIncludes {
+
+  /**
+   * $START$AF.html $AF$END
+   *
+   * @param v $JFX $AF
+   * @return $SFX $AF
+   */
   implicit def jfxAffine2sfx(v: jfxst.Affine) = new Affine(v)
+
+  /**
+   * $START$RT.html $RT$END
+   *
+   * @param v $JFX $RT
+   * @return $SFX $RT
+   */
   implicit def jfxRotate2sfx(v: jfxst.Rotate) = new Rotate(v)
+
+  /**
+   * $START$SC.html $SC$END
+   *
+   * @param v $JFX $SC
+   * @return $SFX $SC
+   */
   implicit def jfxScale2sfx(v: jfxst.Scale) = new Scale(v)
+
+  /**
+   * $START$SH.html $SH$END
+   *
+   * @param v $JFX $SH
+   * @return $SFX $SH
+   */
   implicit def jfxShear2sfx(v: jfxst.Shear) = new Shear(v)
+
+  /**
+   * $START$TR.html $TR$END
+   *
+   * @param v $JFX $TR
+   * @return $SFX $TR
+   */
   implicit def jfxTransform2sfx(v: jfxst.Transform) = new Transform(v) {}
+
+  /**
+   * $START$TL.html $TL$END
+   *
+   * @param v $JFX $TL
+   * @return $SFX $TL
+   */
   implicit def jfxTranslate2sfx(v: jfxst.Translate) = new Translate(v)
+
 }
