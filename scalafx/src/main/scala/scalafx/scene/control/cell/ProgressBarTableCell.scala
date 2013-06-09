@@ -26,26 +26,25 @@
  */
 package scalafx.scene.control.cell
 
-import javafx.scene.control.{cell => jfxscc}
+import javafx.scene.control.{ cell => jfxscc }
 import scalafx.Includes._
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.TableCell
 import scalafx.scene.control.TableColumn
-import scalafx.delegate.SFXDelegate
 
 object ProgressBarTableCell {
-    implicit def sfxProgressBarTableCell2jfx[S](cell: ProgressBarTableCell[S]) = cell.delegate
+  implicit def sfxProgressBarTableCell2jfx[S](cell: ProgressBarTableCell[S]) = cell.delegate
 
   /**
    * Provides a `ProgressBar` that allows easy visualisation of a Number value as it proceeds from 0.0 to 1.0.
    */
-  def forTableColumn[S](): (TableColumn[S, Double] => TableCell[S, Double]) =
-    (view: TableColumn[S, Double]) => jfxscc.ComboBoxTableCell.forTableColumn[S, Double]().call(view)
-
+  def forTableColumn[S](): (TableColumn[S, java.lang.Double] => TableCell[S, java.lang.Double]) =
+    (view: TableColumn[S, java.lang.Double]) => jfxscc.ProgressBarTableCell.forTableColumn[S]().call(view)
 }
 
-class ProgressBarTableCell [S](override val delegate: jfxscc.ProgressBarTableCell[S] = new jfxscc.ProgressBarTableCell[S])
+class ProgressBarTableCell[S](override val delegate: jfxscc.ProgressBarTableCell[S] = new jfxscc.ProgressBarTableCell[S])
   extends TableCell[S, java.lang.Double](delegate)
   with UpdatableCell[jfxscc.ProgressBarTableCell[S], java.lang.Double]
-  with SFXDelegate[jfxscc.ProgressBarTableCell[S]]   {
+  with SFXDelegate[jfxscc.ProgressBarTableCell[S]] {
 
 }
