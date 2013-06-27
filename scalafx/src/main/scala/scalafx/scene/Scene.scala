@@ -607,7 +607,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    *
    * @since 2.2
    */
-  def onTouchReleased = delegate.onTouchPressedProperty()
+  def onTouchReleased = delegate.onTouchReleasedProperty()
   def onTouchReleased_=(v: jfxe.EventHandler[jfxsi.TouchEvent]) {
     onTouchReleased() = v
   }
