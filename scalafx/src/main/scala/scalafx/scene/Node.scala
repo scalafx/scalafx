@@ -1141,7 +1141,7 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    *
    * @since 2.2
    */
-  def onTouchReleased = delegate.onTouchPressedProperty()
+  def onTouchReleased = delegate.onTouchReleasedProperty()
   def onTouchReleased_=(v: jfxe.EventHandler[jfxsi.TouchEvent]) {
     onTouchReleased() = v
   }
