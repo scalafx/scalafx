@@ -32,16 +32,42 @@ import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.TableCell
 import scalafx.scene.control.TableColumn
 
+/**
+ * Companion Object for [[scalafx.scene.control.cell.ProgressBarTableCell]].
+ *
+ * @define PBTC `ProgressBarTableCell`
+ *
+ */
 object ProgressBarTableCell {
+
+  /**
+   * Converts a ScalaFX $PBTC to its JavaFX counterpart.
+   *
+   * @tparam S Type used in this cell
+   * @param cell ScalaFX $PBTC
+   * @return JavaFX $PBTC
+   */
   implicit def sfxProgressBarTableCell2jfx[S](cell: ProgressBarTableCell[S]) = cell.delegate
 
   /**
    * Provides a `ProgressBar` that allows easy visualisation of a Number value as it proceeds from 0.0 to 1.0.
+   *
+   * @return A Function  that can be inserted into the cell factory property of a TableColumn, that enables visualisation of a Number as it progresses from 0.0 to 1.0.
    */
   def forTableColumn[S](): (TableColumn[S, java.lang.Double] => TableCell[S, java.lang.Double]) =
     (view: TableColumn[S, java.lang.Double]) => jfxscc.ProgressBarTableCell.forTableColumn[S]().call(view)
+
 }
 
+/**
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/ProgressBarTableCell.html $PBTC]]
+ *
+ * @tparam S Type used in this cell
+ * @constructor Creates a new $PBTC from a JavaFX $PBTC
+ * @param delegate JavaFX $PBTC
+ *
+ * @define PBTC `ProgressBarTableCell`
+ */
 class ProgressBarTableCell[S](override val delegate: jfxscc.ProgressBarTableCell[S] = new jfxscc.ProgressBarTableCell[S])
   extends TableCell[S, java.lang.Double](delegate)
   with UpdatableCell[jfxscc.ProgressBarTableCell[S], java.lang.Double]

@@ -36,11 +36,34 @@ import scalafx.scene.control.TableColumn
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
+/**
+ * Companion Object for [[scalafx.scene.control.cell.ChoiceBoxTableCell]].
+ *
+ * @define CBTC `ChoiceBoxTableCell`
+ * @define FTCINIT Creates a [[scalafx.scene.control.ChoiceBox]] cell factory for use in [[scalafx.scene.control.TableColumn]] controls.
+ * @define TTYPE  The type of the elements contained within the `TableColumn`.
+ * @define CONVPARAM A `StringConverter` to convert the given item (of type T) to a String for displaying to the user.
+ * @define ITEMSPARAM Zero or more items that will be shown to the user when the ChoiceBox menu is showing. 
+ * @define BUFITEMSPARAM A `ObservableBuffer` containing $ITEMSPARAM
+ * @define FTCRET A Function that will return a `TableCell` that is able to work on the type of element contained within the `TableColumn`.
+ */
 object ChoiceBoxTableCell {
+
+  /**
+   * Converts a ScalaFX $CBTC to its JavaFX counterpart.
+   *
+   * @tparam T $TTYPE
+   * @param cell ScalaFX $CBTC
+   * @return JavaFX $CBTC
+   */
   implicit def sfxChoiceBoxTableCell2jfx[S, T](cell: ChoiceBoxTableCell[S, T]) = cell.delegate
 
   /**
-   * Creates a ChoiceBox cell factory for use in `TableColumn` controls.
+   * $FTCINIT
+   * 
+   * @tparam T $TTYPE
+   * @param items $ITEMSPARAM 
+   * @return $FTCRET 
    */
   def forTableColumn[S, T](items: ObservableBuffer[T]): (TableColumn[S, T] => TableCell[S, T]) =
     (view: TableColumn[S, T]) => jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](items).call(view)
@@ -52,7 +75,12 @@ object ChoiceBoxTableCell {
   def forTableColumn[S, T](items: jfxc.ObservableList[T]) = jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](items)
 
   /**
-   * Creates a ChoiceBox cell factory for use in `TableColumn` controls.
+   * $FTCINIT
+   * 
+   * @tparam T $TTYPE
+   * @param converter $CONVPARAM
+   * @param items $BUFITEMSPARAM 
+   * @return $FTCRET 
    */
   def forTableColumn[S, T](converter: StringConverter[T], items: ObservableBuffer[T]): (TableColumn[S, T] => TableCell[S, T]) =
     (view: TableColumn[S, T]) => jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](converter, items).call(view)
@@ -65,7 +93,12 @@ object ChoiceBoxTableCell {
     jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](converter, items)
 
   /**
-   * Creates a ChoiceBox cell factory for use in `TableColumn` controls.
+   * $FTCINIT
+   * 
+   * @tparam T $TTYPE
+   * @param converter $CONVPARAM
+   * @param items $ITEMSPARAM 
+   * @return $FTCRET 
    */
   def forTableColumn[S, T](converter: StringConverter[T], items: T*): (TableColumn[S, T] => TableCell[S, T]) =
     (view: TableColumn[S, T]) => jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](converter, items: _*).call(view)
@@ -77,7 +110,11 @@ object ChoiceBoxTableCell {
   def forTableColumn[S, T](converter: jfxu.StringConverter[T], items: T*) = jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](converter, items: _*)
 
   /**
-   * Creates a ChoiceBox cell factory for use in `TableColumn` controls.
+   * $FTCINIT
+   * 
+   * @tparam T $TTYPE
+   * @param items $ITEMSPARAM 
+   * @return $FTCRET 
    */
   def forTableColumn[S, T](items: T*): (TableColumn[S, T] => TableCell[S, T]) =
     (view: TableColumn[S, T]) => jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](items: _*).call(view)
@@ -91,7 +128,16 @@ object ChoiceBoxTableCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/ChoiceBoxListCell.html]]
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/ChoiceBoxListCell.html $CBLC]]
+ *
+ * @tparam T Type used in this cell
+ * @constructor Creates a new $CBLC from a JavaFX $CBLC
+ * @param delegate JavaFX $CBLC
+ * 
+ * @define CBLC `ChoiceBoxListCell`
+ * @define CONVPARAM A `StringConverter` to convert the given item (of type T) to a String for displaying to the user.
+ * @define ITEMSPARAM Zero or more items that will be shown to the user when the ChoiceBox menu is showing. 
+ * @define BUFITEMSPARAM A `ObservableBuffer` containing $ITEMSPARAM
  */
 class ChoiceBoxTableCell[S, T](override val delegate: jfxscc.ChoiceBoxTableCell[S, T] = new jfxscc.ChoiceBoxTableCell[S, T])
   extends TableCell[S, T](delegate)
@@ -101,26 +147,36 @@ class ChoiceBoxTableCell[S, T](override val delegate: jfxscc.ChoiceBoxTableCell[
   with SFXDelegate[jfxscc.ChoiceBoxTableCell[S, T]] {
 
   /**
-   * Creates a default `ChoiceBoxListCell` instance with the given items being used to populate the ChoiceBox when
+   * Creates a default $CBLC instance with the given items being used to populate the ChoiceBox when
    * it is shown.
+   * 
+   * @param items $BUFITEMSPARAM 
    */
   def this(items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxTableCell[S, T](items))
 
   /**
-   * Creates a `ChoiceBoxListCell` instance with the given items being used to populate the `ChoiceBox` when it is
+   * Creates a $CBLC instance with the given items being used to populate the `ChoiceBox` when it is
    * shown, and the StringConverter being used to convert the item in to a user-readable form.
+   * 
+   * @param converter $CONVPARAM
+   * @param items $BUFITEMSPARAM 
    */
   def this(converter: StringConverter[T], items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxTableCell[S, T](converter, items))
 
   /**
-   * Creates a `ChoiceBoxListCell` instance with the given items being used to populate the `ChoiceBox` when it is
+   * Creates a $CBLC instance with the given items being used to populate the `ChoiceBox` when it is
    * shown, and the StringConverter being used to convert the item in to a user-readable form.
+   * 
+   * @param converter $CONVPARAM
+   * @param items $ITEMSPARAM 
    */
   def this(converter: StringConverter[T], items: T*) = this(new jfxscc.ChoiceBoxTableCell[S, T](converter, items: _*))
 
   /**
-   * Creates a default `ChoiceBoxListCell` instance with the given items being used to populate the `ChoiceBox` when
+   * Creates a default $CBLC instance with the given items being used to populate the `ChoiceBox` when
    * it is shown.
+   * 
+   * @param items $ITEMSPARAM 
    */
   def this(items: T*) = this(new jfxscc.ChoiceBoxTableCell[S, T](items: _*))
 

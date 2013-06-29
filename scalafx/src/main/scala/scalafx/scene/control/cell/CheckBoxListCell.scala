@@ -39,11 +39,27 @@ import scalafx.scene.control.ListView
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
+/**
+ * Companion Object for [[scalafx.scene.control.cell.CheckBoxListCell]].
+ *
+ * @define CBLC `CheckBoxListCell`
+ * @define SP A Function that, given an object of type T (which is a value taken out of the
+ * ListView[T] list), will return an ObservableValue[Boolean] that represents whether the given item is selected or
+ * not.
+ */
 object CheckBoxListCell {
+
+  /**
+   * Converts a ScalaFX $CBLC to its JavaFX counterpart.
+   *
+   * @param cell ScalaFX $CBLC
+   */
   implicit def sfxCheckBoxListCell2jfx[T](cell: CheckBoxListCell[T]) = cell.delegate
 
   /**
    * Creates a cell factory for use in ListView controls.
+   *
+   * @param selectedProperty $SP
    */
   def forListView[T](selectedProperty: T => ObservableValue[Boolean, java.lang.Boolean]): (ListView[T] => ListCell[T]) = {
     (view: ListView[T]) => jfxscc.CheckBoxListCell.forListView(selectedProperty).call(view)
@@ -58,6 +74,9 @@ object CheckBoxListCell {
 
   /**
    * Creates a cell factory for use in ListView controls.
+   *
+   * @param selectedProperty $SP
+   * @param converter A StringConverter that, give an object of type T, will return a String that can be used to represent the object visually.
    */
   def forListView[T](selectedProperty: T => ObservableValue[Boolean, java.lang.Boolean], converter: StringConverter[T]): (ListView[T] => ListCell[T]) = {
     (view: ListView[T]) => jfxscc.CheckBoxListCell.forListView(selectedProperty, converter).call(view)
@@ -72,7 +91,14 @@ object CheckBoxListCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/CheckBoxListCell.html]]
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/CheckBoxListCell.html $CBLC]]
+ *
+ * @tparam T Type used in this cell
+ * @constructor Creates a new $CBLC from a JavaFX $CBLC
+ * @param delegate JavaFX $CBLC
+ *
+ * @define CBLC `CheckBoxListCell`
+ * @define SP Function that takes a T instance and return a obsevable boolean.
  */
 class CheckBoxListCell[T](override val delegate: jfxscc.CheckBoxListCell[T] = new jfxscc.CheckBoxListCell[T])
   extends ListCell[T](delegate)
@@ -82,13 +108,18 @@ class CheckBoxListCell[T](override val delegate: jfxscc.CheckBoxListCell[T] = ne
   with SFXDelegate[jfxscc.CheckBoxListCell[T]] {
 
   /**
-   * Creates a default CheckBoxListCell.
+   * Creates a default $CBLC from a function that takes a T instance and extracts a boolean.
+   *
+   * @param selectedProperty $SP
    */
   def this(selectedProperty: T => ObservableValue[Boolean, java.lang.Boolean]) =
     this(new jfxscc.CheckBoxListCell[T](selectedProperty))
 
   /**
-   * Creates a CheckBoxListCell with a custom string converter.
+   * Creates a  $CBLC with a custom string converter.
+   *
+   * @param selectedProperty $SP
+   * @param converter StringConverter that receives a T instance.
    */
   def this(selectedProperty: T => ObservableValue[Boolean, java.lang.Boolean], converter: StringConverter[T]) =
     this(new jfxscc.CheckBoxListCell[T](selectedProperty, converter))
