@@ -17,10 +17,12 @@ object ScalaFXBuild extends Build {
     lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
         organization := "org.scalafx",
         version := "8.0.0-M1-SNAPSHOT",
-        crossScalaVersions := Seq( "2.9.3", "2.9.2",  "2.10.1" ),
+        // TODO SFX8: At a moment only ScalaFX 2.10.2 supports JavaFX 8 sue to some InvokeDynamic byte codes
+        crossScalaVersions := Seq( /* "2.9.3", "2.9.2", */ "2.10.2" ),
         scalaVersion <<= (crossScalaVersions) { versions => versions.head },
         scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
-        javacOptions ++= Seq("-target", "1.6", "-source", "1.6", "-Xlint:deprecation"),
+        // TODO SFX8: Should target/source be marked "1.8", they will not work with ealier versions of Java anyway?
+        javacOptions ++= Seq(/* "-target", "1.6", "-source", "1.6", */ "-Xlint:deprecation"),
         manifestSetting,
         publishSetting,
         resolvers ++= Seq( localMavenRepo, sonatypeNexusSnapshots )
