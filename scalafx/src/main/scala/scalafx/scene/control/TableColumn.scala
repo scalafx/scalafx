@@ -430,7 +430,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    *  Unregisters a previously registered event handler from this TableColumn.
    */
   def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) {
-    delegate.addEventHandler(eventType, eventHandler)
+    delegate.removeEventHandler(eventType, eventHandler)
   }
 
 }
