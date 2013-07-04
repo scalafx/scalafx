@@ -26,19 +26,16 @@
  */
 package scalafx.scene.web
 
-import javafx.scene.{ web => jfxsw }
-import scalafx.Includes._
+import javafx.scene.{web => jfxsw}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
-import scalafx.testutil.RunOnApplicationThread
 
-/**
- * HTMLEditor Spec tests.
- *
- *
- */
+/** HTMLEditor Spec tests. */
 @RunWith(classOf[JUnitRunner])
-class HTMLEditorSpec
-  extends AbstractSFXDelegateSpec[jfxsw.HTMLEditor, HTMLEditor, jfxsw.HTMLEditorBuilder[_]](classOf[jfxsw.HTMLEditor], classOf[HTMLEditor], classOf[jfxsw.HTMLEditorBuilder[_]])
-  with RunOnApplicationThread
+class HTMLEditorSpec {
+  assert(false, "Test code is commented, it would not compile due to `HTMLEditorBuilder` missing in JavaFX 8")
+  // FIXME reimplement test without using `HTMLEditorBuilder`
+  //  extends AbstractSFXDelegateSpec[jfxsw.HTMLEditor, HTMLEditor, jfxsw.HTMLEditorBuilder[_]](classOf[jfxsw.HTMLEditor], classOf[HTMLEditor], classOf[jfxsw.HTMLEditorBuilder[_]])
+  //  with RunOnApplicationThread
+
+}

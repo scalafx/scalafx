@@ -26,19 +26,19 @@
  */
 package scalafx.scene.layout
 
-import javafx.scene.{ layout => jfxsl }
+import javafx.scene.{layout => jfxsl}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
 
 
 /** Background Spec tests. */
 @RunWith(classOf[JUnitRunner])
-class BackgroundSpec
-  extends AbstractSFXDelegateSpec[jfxsl.Background, Background, jfxsl.BackgroundBuilder](classOf[jfxsl.Background], classOf[Background], classOf[jfxsl.BackgroundBuilder]) {
-
-  override protected def getScalaClassInstance = new Background(getJavaClassInstance) {}
-
-  override protected def getJavaClassInstance = Background.EMPTY
+class BackgroundSpec {
+  assert(false, "Test code is commented, it would not compile due to `BackgroundBuilder` missing in JavaFX 8")
+  // FIXME reimplement test without using `BackgroundBuilder`
+  //  extends AbstractSFXDelegateSpec[jfxsl.Background, Background, jfxsl.BackgroundBuilder](classOf[jfxsl.Background], classOf[Background], classOf[jfxsl.BackgroundBuilder]) {
+  //
+  //  override protected def getScalaClassInstance = new Background(getJavaClassInstance) {}
+  //
+  //  override protected def getJavaClassInstance = Background.EMPTY
 }

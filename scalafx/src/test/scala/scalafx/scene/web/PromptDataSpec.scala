@@ -26,23 +26,19 @@
  */
 package scalafx.scene.web
 
-import javafx.scene.{ web => jfxsw }
-import scalafx.Includes._
+import javafx.scene.{web => jfxsw}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
 
-/**
- * PromptData Spec tests.
- *
- *
- */
+/** PromptData Spec tests. */
 @RunWith(classOf[JUnitRunner])
-class PromptDataSpec
-  extends AbstractSFXDelegateSpec[jfxsw.PromptData, PromptData, jfxsw.PromptDataBuilder[_]](classOf[jfxsw.PromptData], classOf[PromptData], classOf[jfxsw.PromptDataBuilder[_]]) {
-
-  override protected def getScalaClassInstance = new PromptData("", "")
-
-  override protected def getJavaClassInstance = new jfxsw.PromptData("", "")
-
+class PromptDataSpec {
+  assert(false, "Test code is commented, it would not compile due to `PromptDataBuilder` missing in JavaFX 8")
+  // FIXME reimplement test without using `PromptDataBuilder`
+  //  extends AbstractSFXDelegateSpec[jfxsw.PromptData, PromptData, jfxsw.PromptDataBuilder[_]](classOf[jfxsw.PromptData], classOf[PromptData], classOf[jfxsw.PromptDataBuilder[_]]) {
+  //
+  //  override protected def getScalaClassInstance = new PromptData("", "")
+  //
+  //  override protected def getJavaClassInstance = new jfxsw.PromptData("", "")
+  //
 }
