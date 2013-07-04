@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,6 +48,8 @@ class TableRow[T](override val delegate: jfxsc.TableRow[T] = new jfxsc.TableRow)
   /**
    * Updates the TableView associated with this TableCell.
    */
-  def updateTableView(tv: TableView[T]) = delegate.updateTableView(tv)
+  def updateTableView(tv: TableView[T]) {
+    delegate.updateTableView(tv)
+  }
 
 }

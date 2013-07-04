@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -145,8 +145,9 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   /**
    * Registers an event handler to this MenuItem.
    */
-  def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) =
+  def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) {
     delegate.addEventHandler(eventType, eventHandler)
+  }
 
   /**
    * Construct an event dispatch chain for this target.
@@ -176,8 +177,9 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   /**
    * Unregisters a previously registered event handler from this MenuItem.
    */
-  def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) =
+  def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) {
     delegate.removeEventHandler(eventType, eventHandler)
+  }
 
   /**
    * The event handler that is associated with invocation of an accelerator for a MenuItem.

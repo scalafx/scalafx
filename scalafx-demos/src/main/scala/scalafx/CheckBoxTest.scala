@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,7 +64,7 @@ object CheckBoxTest extends JFXApp {
   val btnFire = new Button {
     text = "Fire!"
   }
-  btnFire.onAction = (event: ActionEvent) =>  check.fire
+  btnFire.onAction = (event: ActionEvent) =>  check.fire()
 
   val txfText = new TextField 
   txfText.delegate.textProperty.bindBidirectional(check.text)

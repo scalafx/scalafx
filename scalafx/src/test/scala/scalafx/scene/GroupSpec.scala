@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 class GroupSpec
   extends AbstractSFXDelegateSpec[jfxs.Group, Group, jfxs.GroupBuilder[_]](classOf[jfxs.Group], classOf[Group], classOf[jfxs.GroupBuilder[_]]) {
 
-  it should "provide scala-like capabilties for the list" in {
+  it should "provide scala-like capabilities for the list" in {
     val group = new Group()
     group.children += new Group()
     group.children should have length (1)

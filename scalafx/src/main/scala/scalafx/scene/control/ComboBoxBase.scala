@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,9 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   /**
    * Arms the ComboBox.
    */
-  def arm = delegate.arm
+  def arm() {
+    delegate.arm()
+  }
 
   /**
    * Indicates that the ComboBox has been "armed" such that a mouse release will cause the ComboBox show() method to be invoked.
@@ -57,7 +59,9 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   /**
    * Disarms the ComboBox.
    */
-  def disarm = delegate.disarm
+  def disarm() {
+    delegate.disarm()
+  }
 
   /**
    * Specifies whether the ComboBox allows for user input.
@@ -70,7 +74,9 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   /**
    * Closes the popup / dialog that was shown when show() was called.
    */
-  def hide = delegate.hide
+  def hide() {
+    delegate.hide()
+  }
 
   /**
    * The ComboBox action, which is invoked whenever the ComboBox value property is changed.
@@ -91,7 +97,9 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   /**
    * Requests that the ComboBox display the popup aspect of the user interface.
    */
-  def show = delegate.show
+  def show() {
+    delegate.show()
+  }
 
   /**
    * Represents the current state of the ComboBox popup, and whether it is currently visible on screen (although it may be hidden behind other windows).
@@ -111,7 +119,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
    * @since 2.2
    */
   def onHidden = delegate.onHiddenProperty()
-  def onHidden_( eventHandler:jfxe.EventHandler[jfxe.Event] ) = {
+  def onHidden_( eventHandler:jfxe.EventHandler[jfxe.Event] ) {
     onHidden() = eventHandler
   }
 
@@ -120,7 +128,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
    * @since 2.2
    */
   def onHiding = delegate.onHidingProperty()
-  def onHiding_( eventHandler:jfxe.EventHandler[jfxe.Event] ) = {
+  def onHiding_( eventHandler:jfxe.EventHandler[jfxe.Event] ) {
     onHiding() = eventHandler
   }
 
@@ -129,7 +137,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
    * @since 2.2
    */
   def onShowing = delegate.onShowingProperty()
-  def onShowing_( eventHandler:jfxe.EventHandler[jfxe.Event] ) = {
+  def onShowing_( eventHandler:jfxe.EventHandler[jfxe.Event] ) {
     onShowing() = eventHandler
   }
 
@@ -138,7 +146,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
    * @since 2.2
    */
   def onShown = delegate.onShownProperty()
-  def onShown_( eventHandler:jfxe.EventHandler[jfxe.Event] ) = {
+  def onShown_( eventHandler:jfxe.EventHandler[jfxe.Event] ) {
     onShown() = eventHandler
   }
 

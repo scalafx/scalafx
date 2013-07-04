@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -72,11 +72,11 @@ object VanishingCircles extends JFXApp {
   new Timeline {
     cycleCount = INDEFINITE
     autoReverse = true
-    keyFrames = for (circle <- circles) yield at (40 s) {
+    keyFrames = for (circle <- circles) yield at(40 s) {
       Set(
         circle.centerX -> random * stage.width(),
         circle.centerY -> random * stage.height()
       )
     }
-  }.play
+  }.play()
 }

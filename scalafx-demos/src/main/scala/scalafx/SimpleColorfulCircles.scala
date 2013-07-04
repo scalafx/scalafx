@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -79,10 +79,10 @@ object SimpleColorfulCircles extends JFXApp {
     cycleCount = INDEFINITE
     autoReverse = true
     keyFrames = (for (circle <- circles) yield at(40 s) {
-      Set (
+      Set(
         circle.centerX -> random * 800,
         circle.centerY -> random * 600
       )
     })
-  }.play
+  }.play()
 }

@@ -59,6 +59,8 @@ final class CategoryAxis(override val delegate:jfxsc.CategoryAxis = new jfxsc.Ca
   }
   
   def categories = delegate.getCategories
-  def categories_= (value: ObservableBuffer[String]) = delegate.setCategories(value)
+  def categories_= (value: ObservableBuffer[String]) {
+    delegate.setCategories(value)
+  }
 
 }

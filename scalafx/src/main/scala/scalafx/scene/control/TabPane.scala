@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -147,7 +147,7 @@ class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane)
    */
   def tabs = delegate.getTabs
   def tabs_=(tabSeq: Seq[Tab]) {
-    delegate.getTabs.clear
+    delegate.getTabs.clear()
     tabSeq.foreach(this += _)
   }
 

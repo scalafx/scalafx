@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -91,12 +91,12 @@ class PasswordFieldControls(target: PasswordField) extends PropertiesNodes[Passw
    */
   val btnCopy = new Button {
     text = "Copy"
-    onAction = (target.copy)
+    onAction = (target.copy())
   }
 
   val btnCut = new Button {
     text = "Cut"
-    onAction = (target.cut)
+    onAction = (target.cut())
   }
 
   super.addNode("Typed Text", lblText)

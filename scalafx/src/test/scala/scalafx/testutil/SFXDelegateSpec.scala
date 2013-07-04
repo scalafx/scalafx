@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,7 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
 
   /**
    * Returns a new SFXDelegate subclass instance. By default calls scalaClass constructor that uses delegated class
-   * instance. If it is not possible use this constructor, this method must be overrided.
+   * instance. If it is not possible use this constructor, this method must be overridden.
    * {{{
    * override protected def getScalaClassInstance = new BoundingBox(0, 0, 0, 0)
    * }}}
@@ -71,7 +71,7 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
 
   /**
    * Returns a new JavaFX class instance. By default calls newInstance method from javaClass. If
-   * this class has no default constructor, this method must be overrided:
+   * this class has no default constructor, this method must be overridden:
    * {{{
    * override protected def getJavaClassInstance = new jfxg.BoundingBox(0, 0, 0, 0, 0, 0)
    * }}}

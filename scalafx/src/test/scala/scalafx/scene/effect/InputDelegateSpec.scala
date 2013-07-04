@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,9 +36,6 @@ import scalafx.beans.property.DoubleProperty
  */
 trait InputDelegateSpec[D <: InputDelegate[_]] extends FlatSpec {
 
-  /**
-   *
-   */
   protected val inputDelegate: D
 
   it should "allow observe changes in Input Effect" in {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,6 +47,8 @@ class ListCell[T](override val delegate: jfxsc.ListCell[T] = new jfxsc.ListCell[
   /**
    * Updates the ListView associated with this Cell.
    */
-  def updateListView(listView: ListView[T]) = delegate.updateListView(listView)
+  def updateListView(listView: ListView[T]) {
+    delegate.updateListView(listView)
+  }
 
 }

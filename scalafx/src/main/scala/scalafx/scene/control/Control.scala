@@ -49,7 +49,6 @@ abstract class Control(override val delegate: jfxsc.Control)
     contextMenu() = v
   }
 
-
   /**
    * The ToolTip for this control.
    */

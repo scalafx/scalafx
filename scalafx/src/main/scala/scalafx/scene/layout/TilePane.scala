@@ -47,7 +47,9 @@ object TilePane {
   /**
    * Removes all hbox constraints from the child node.
    */
-  def clearConstraints(child: jfxs.Node) = jfxsl.TilePane.clearConstraints(child)
+  def clearConstraints(child: jfxs.Node) {
+    jfxsl.TilePane.clearConstraints(child)
+  }
 
   /**
    * Returns the child's alignment constraint if set.
@@ -57,7 +59,9 @@ object TilePane {
   /**
    * Sets the alignment for the child when contained by a stackpane.
    */
-  def setAlignment(child: Node, value: jfxg.Pos) = jfxsl.TilePane.setAlignment(child, value)
+  def setAlignment(child: Node, value: jfxg.Pos) {
+    jfxsl.TilePane.setAlignment(child, value)
+  }
 
   /**
    * Returns the child's margin constraint if set.
@@ -67,7 +71,9 @@ object TilePane {
   /**
    * Sets the margin for the child when contained by an hbox.
    */
-  def setMargin(child: Node, value: Insets) = jfxsl.TilePane.setMargin(child, value)
+  def setMargin(child: Node, value: Insets) {
+    jfxsl.TilePane.setMargin(child, value)
+  }
 
 }
 
@@ -158,6 +164,8 @@ class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane)
   /**
    * Requests a layout pass to be performed before the next scene is rendered.
    */
-  def requestLayout = delegate.requestLayout
+  def requestLayout() {
+    delegate.requestLayout()
+  }
 
 }

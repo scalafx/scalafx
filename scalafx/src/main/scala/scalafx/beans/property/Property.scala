@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -65,7 +65,7 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: Any]
   }
 
   /**
-   * Create a unidirection binding for this Property.
+   * Create a unidirectional binding for this Property.
    *
    * @param v JavaFX ObservableValue this Property should be bound to.
    */
@@ -74,7 +74,7 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: Any]
   }
 
   /**
-   * Create a unidirection binding for this Property.
+   * Create a unidirectional binding for this Property.
    *
    * @param v ScalaFX ObservableValue this Property should be bound to.
    */

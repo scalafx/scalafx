@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,11 +51,7 @@ abstract class SimpleSFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected
   extends SFXDelegateSpec[J, S](javaClass, scalaClass)
   with PropertyComparator {
 
-  // Tests - Begin
-
   it should "implement all the JavaFX properties" in {
     compareProperties(javaClass, scalaClass)
   }
-
-  // Tests - End
 }

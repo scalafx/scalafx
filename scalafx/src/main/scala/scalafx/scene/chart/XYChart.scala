@@ -60,10 +60,14 @@ object XYChart {
     }
 
     def XValue: ObjectProperty[X] = delegate.XValueProperty
-    def XValue_=(v: X) = delegate.setXValue(v)
+    def XValue_=(v: X) {
+      delegate.setXValue(v)
+    }
 
     def YValue: ObjectProperty[Y] = delegate.YValueProperty
-    def YValue_=(v: Y) = delegate.setYValue(v)
+    def YValue_=(v: Y) {
+      delegate.setYValue(v)
+    }
   }
 
   object Series {

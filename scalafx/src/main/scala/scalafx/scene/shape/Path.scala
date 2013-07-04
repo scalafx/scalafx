@@ -27,8 +27,7 @@
 package scalafx.scene.shape
 
 import collection.JavaConversions._
-import javafx.scene.{ shape => jfxss }
-import javafx.{ collections => jfxc }
+import javafx.scene.{shape => jfxss}
 import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
@@ -56,7 +55,7 @@ class Path(override val delegate: jfxss.Path = new jfxss.Path())
   /**
    * Observable list of path elements of this path.
    */
-  def elements: jfxc.ObservableList[jfxss.PathElement] = delegate.getElements
+  def elements = delegate.getElements
   /**
    * Sets the list of path elements, replacing the prior content. If you want append to current content, use `add` or
    * similar.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,6 +64,6 @@ class TextArea(override val delegate: jfxsc.TextArea = new jfxsc.TextArea) exten
     wrapText() = v
   }
 
-  def paragraphs = delegate.getParagraphs()
+  def paragraphs = delegate.getParagraphs
 
 }

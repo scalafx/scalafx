@@ -218,12 +218,14 @@ trait TableColumnBase[S, T] extends SFXDelegate[jfxsc.TableColumnBase[S, T]] {
   /**
    * Registers an event handler to this TableColumnBase.
    */
-  def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) =
+  def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) {
     delegate.addEventHandler(eventType, eventHandler)
+  }
 
   /**
    *  Unregisters a previously registered event handler from this TableColumnBase.
    */
-  def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) =
-    delegate.addEventHandler(eventType, eventHandler)
+  def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) {
+    delegate.removeEventHandler(eventType, eventHandler)
+  }
 }

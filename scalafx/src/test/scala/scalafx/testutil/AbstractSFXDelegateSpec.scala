@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,10 +49,10 @@ import scalafx.delegate.SFXDelegate
  * @param sfx2jfx Implicit conversion from ScalaFX to JavaFX, it should not be assigned,
  *                it has to be resolved automatically by the compiler.
  *
- * @todo If B is made like a javafx.util.Builder (B <: javafx.util.Builder[_]) scala compiler shows message: "type arguments
- * [javafx.scene.control.CheckBox,scalafx.scene.control.CheckBox,javafx.scene. control.CheckBoxBuilder[_]] do not conform to class AbstractSFXDelegateSpec's
- * type parameter bounds [J <: java.lang.Object,S <: scalafx.util.SFXDelegate[J],B <: javafx.util.Builder[_]]". Only when remove B binding with Builder
- * compiler problems disappear. So it must be finded a way to put bind beetween B and Builder without create problems with compiler.
+ * @todo If B is made like a javafx.util.Builder (B &lt;: javafx.util.Builder[_]) scala compiler shows message: "type arguments
+ * [javafx.scene.control.CheckBox,scalafx.scene.control.CheckBox,javafx.scene. control.CheckBoxBuilder[_] ] do not conform to class AbstractSFXDelegateSpec's
+ * type parameter bounds [J &lt;: java.lang.Object,S &lt;: scalafx.util.SFXDelegate[J],B &lt;: javafx.util.Builder[_] ]". Only when remove B binding with Builder
+ * compiler problems disappear. So it must be find a way to put bind between B and Builder without create problems with compiler.
  */
 abstract class AbstractSFXDelegateSpec[J <: Object, S <: SFXDelegate[J], B](javaClass: Class[J], scalaClass: Class[S], javaBuilderClass: Class[B]) (implicit jfx2sfx: J => S = null, sfx2jfx: S => J = null)
   extends SimpleSFXDelegateSpec[J, S](javaClass, scalaClass) {

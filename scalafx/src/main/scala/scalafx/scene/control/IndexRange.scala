@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ import javafx.scene.{ control => jfxsc }
 import scalafx.delegate.SFXDelegate
 
 object IndexRange {
-  implicit def sfxIndexeRange(r: IndexRange) = r.delegate
+  implicit def sfxIndexRange(r: IndexRange) = r.delegate
 
   /**
    * Index range value delimiter.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,7 @@ class PopupFeatures(override val delegate: jfxsw.PopupFeatures) extends SFXDeleg
   /**
    * Returns whether menu bar should be present.
    */
-  def hasMenu = delegate.hasMenu()
+  def hasMenu = delegate.hasMenu
 
   /**
    * Returns whether status bar should be present.

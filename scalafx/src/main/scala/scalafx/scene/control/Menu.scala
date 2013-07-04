@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,6 @@ import scala.collection.JavaConversions.asJavaCollection
 
 import javafx.scene.{ control => jfxsc }
 import javafx.{ event => jfxe }
-import javafx.{ collections => jfxc }
 import scalafx.collections._
 import scalafx.Includes._
 import scalafx.scene.Node._
@@ -62,14 +61,14 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
   /**
    * The items to show within this menu.
    */
-  def items: jfxc.ObservableList[jfxsc.MenuItem] = delegate.getItems
+  def items = delegate.getItems
   /**
    * Sets the menu items, replacing the prior content. If you want append to current content, use `add` or
    * similar.
    *
    * @param c Menu items to replace prior content.
    */
-  def items_=(c: Iterable[MenuItem]) = {
+  def items_=(c: Iterable[MenuItem]) {
     fillSFXCollection(this.items, c)
   }
 
@@ -94,7 +93,7 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
 
   def onHidden = delegate.onHiddenProperty
   def onHidden_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
-    onHidden() = eventHandler
+    onHidden() =  eventHandler
   }
 
   def onHiding = delegate.onHidingProperty
@@ -109,7 +108,7 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
 
   def onShown = delegate.onShownProperty
   def onShown_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
-    onShown() = eventHandler
+    onShown() =  eventHandler
   }
 
 }

@@ -96,11 +96,6 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   def height: ReadOnlyDoubleProperty = delegate.heightProperty
 
   /**
-   * Gets the space around content, which will include any borders plus padding if set.
-   */
-  def insets = delegate.getInsets()
-
-  /**
    * The width of this resizable node.
    */
   def width: ReadOnlyDoubleProperty = delegate.widthProperty
@@ -174,7 +169,7 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   }
 
   /**
-   * Defines whether this region rounds position/spacing and ceils size values to pixel boundaries
+   * Defines whether this region rounds position/spacing and cell size values to pixel boundaries
    * when laying out its children.
    */
   def snapToPixel: BooleanProperty = delegate.snapToPixelProperty
@@ -190,11 +185,18 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   /**
    * Invoked by the region's parent during layout to set the region's width and height.
    */
-  override def resize(width: Double, height: Double) = delegate.resize(width, height)
+  override def resize(width: Double, height: Double) {
+    delegate.resize(width, height)
+  }
 
   /** Specifies whether the shape, if defined, is scaled to match the size of the Region. */
   def scaleShape : BooleanProperty = delegate.scaleShapeProperty()
   def scaleShape_=(v:Boolean) {
     scaleShape() = v
   }
+
+  /**
+   * Gets the space around content, which will include any borders plus padding if set.
+   */
+  def insets = delegate.getInsets
 }

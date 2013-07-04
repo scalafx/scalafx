@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@ object JFXApp {
   private val keyValue = """^--([A-Za-z_][^=]*?)=(.*)$""".r
 
   object Parameters {
-    implicit def sfxParamaters2jfx(p: Parameters) = p.delegate
+    implicit def sfxParameters2jfx(p: Parameters) = p.delegate
 
     /**
      * Creates a new instance of Parameters
@@ -93,7 +93,7 @@ object JFXApp {
     private var unnamedArguments = Buffer.empty[String]
     private var filled = false
 
-    private def parseArguments {
+    private def parseArguments() {
       if (!filled) {
         arguments.foreach(arg =>
           keyValue.findFirstMatchIn(arg) match {
@@ -107,12 +107,12 @@ object JFXApp {
     def raw = arguments
 
     def named = {
-      parseArguments
+      parseArguments()
       namedArguments
     }
 
     def unnamed = {
-      parseArguments
+      parseArguments()
       unnamedArguments
     }
 

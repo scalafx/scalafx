@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,20 +26,48 @@
  */
 package scalafx.beans
 
-import javafx.{beans => jfxb}
-import javafx.beans.{value => jfxbv}
+import javafx.{ beans => jfxb }
+import javafx.beans.{ value => jfxbv }
 import binding.BindingIncludes
 import property.PropertyIncludes
 import value.ObservableValue
 
 object BeanIncludes extends BeanIncludes
 
+/**
+ * Contains implicit methods to convert from
+ * [[http://docs.oracle.com/javafx/2/api/javafx/beans/package-summary.html `javafx.beans`]] Classes to
+ * their ScalaFX counterparts.
+ */
 trait BeanIncludes extends PropertyIncludes with BindingIncludes with LowerPriorityIncludes
 
+/**
+ * Contains implicit methods to convert from
+ * [[http://docs.oracle.com/javafx/2/api/javafx/beans/package-summary.html `javafx.beans`]] Interfaces to
+ * their ScalaFX counterparts.
+ */
 trait LowerPriorityIncludes {
+
+  /**
+   * Converts a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/Observable.html `javafx.beans.Observable`]]
+   * instance to its ScalaFX counterpart.
+   *
+   * @param o JavaFX Observable
+   * @return ScalaFX Observable
+   */
   implicit def jfxObservable2sfx(o: jfxb.Observable) = new Observable {
     override def delegate = o
   }
+
+  /**
+   * Converts a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ObservableValue.html `javafx.beans.value.ObservableValue`]]
+   * instance to its ScalaFX counterpart ''which Java Type and Scala Type are the same''. 
+   *
+   * @param o JavaFX ObservableValue
+   * @return ScalaFX ObservableValue ''which Java Type and Scala Type are the same''. 
+   */
   implicit def jfxObservableValue2sfx[T](ov: jfxbv.ObservableValue[T]) = new ObservableValue[T, T] {
     override def delegate = ov
     override def value = delegate.getValue

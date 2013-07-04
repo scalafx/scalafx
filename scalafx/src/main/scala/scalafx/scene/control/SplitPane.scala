@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -62,7 +62,9 @@ object SplitPane {
   /**
    * Sets a node in the SplitPane to be resizable or not when the SplitPane is resized.
    */
-  def setResizableWithParent(node: Node, value: Boolean) = jfxsc.SplitPane.setResizableWithParent(node, value)
+  def setResizableWithParent(node: Node, value: Boolean) {
+    jfxsc.SplitPane.setResizableWithParent(node, value)
+  }
 
 }
 
@@ -80,13 +82,17 @@ class SplitPane(override val delegate: jfxsc.SplitPane = new jfxsc.SplitPane) ex
    * Returns an array of double containing the position of each divider.
    */
   def dividerPositions = delegate.getDividerPositions
-  def dividerPositions_=(positions: Double*) = delegate.setDividerPositions(positions: _*)
+  def dividerPositions_=(positions: Double*) {
+    delegate.setDividerPositions(positions: _*)
+  }
 
   /**
    * Sets the position of the divider at the specified divider index.
    * @todo Change to a Scala notation
    */
-  def setDividerPosition(dividerIndex: Int, position: Double) = delegate.setDividerPosition(dividerIndex, position)
+  def setDividerPosition(dividerIndex: Int, position: Double) {
+    delegate.setDividerPosition(dividerIndex, position)
+  }
 
   /**
    * Returns an unmodifiable list of all the dividers in this SplitPane.

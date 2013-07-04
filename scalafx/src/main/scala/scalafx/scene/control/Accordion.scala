@@ -26,8 +26,7 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import javafx.{ collections => jfxc }
+import javafx.scene.{control => jfxsc}
 import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
@@ -56,7 +55,7 @@ class Accordion(override val delegate: jfxsc.Accordion = new jfxsc.Accordion)
   /**
    * The list of TitledPane in this Accordion.
    */
-  def panes: jfxc.ObservableList[jfxsc.TitledPane] = delegate.getPanes
+  def panes = delegate.getPanes
   /**
    * Sets the list of TitledPane in this Accordion, replacing the prior content. If you want append to current content,
    * use `add` or similar.

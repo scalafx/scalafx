@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class SingleSkinSpec[T <: jfxsc.Skinnable]
+class SkinSpec[T <: jfxsc.Skinnable]
   extends SimpleSFXDelegateSpec[jfxsc.Skin[T], Skin[T]](classOf[jfxsc.Skin[T]], classOf[Skin[T]]) {
 
   override protected def getScalaClassInstance = new Skin[T] {
@@ -46,7 +46,7 @@ class SingleSkinSpec[T <: jfxsc.Skinnable]
 
   // How Skin is a abstract class, it is done a basic implementation
   override protected def getJavaClassInstance = new jfxsc.Skin[T] {
-    def dispose {}
+    def dispose() {}
     def getNode = null
     def getSkinnable = null.asInstanceOf[T]
   }

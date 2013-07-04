@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,13 +33,19 @@ import javafx.{ collections => jfxc }
 object CollectionIncludes extends CollectionIncludes
 
 /**
- * Contains implicit conversor functions from [[http://docs.oracle.com/javafx/2/api/javafx/collections/package-frame.html `javafx.collections`]]
- * traits to `scalafx.collections` traits.
+ * Contains implicit methods to convert from 
+ * [[http://docs.oracle.com/javafx/2/api/javafx/collections/package-summary.html `javafx.collections`]] 
+ * Classes to their ScalaFX counterparts.
  */
 trait CollectionIncludes {
+  
   /**
    * Converts a [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableList.html `ObservableList`]]
    * to a [[scalafx.collections.ObservableBuffer]].
+   * 
+   * @tparam T List Type
+   * @param ol JavaFX ObservableList
+   * @return ScalaFX ObservableBuffer
    */
   implicit def observableList2ObservableBuffer[T](ol: jfxc.ObservableList[T]): ObservableBuffer[T] =
     new ObservableBuffer[T](ol)
@@ -47,6 +53,11 @@ trait CollectionIncludes {
   /**
    * Converts a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableMap.html `ObservableMap`]]
    * to a ScalaFX [[scalafx.collections.ObservableMap]].
+   * 
+   * @tparam K Key Type
+   * @tparam V Value Type
+   * @param om JavaFX ObservableMap
+   * @return ScalaFX ObservableMap
    */
   implicit def jfxObservableMap2sfxObservableMap[K, V](om: jfxc.ObservableMap[K, V]): ObservableMap[K, V] =
     new ObservableMap[K, V] {
@@ -56,6 +67,10 @@ trait CollectionIncludes {
   /**
    * Converts a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableSet.html `ObservableSet`]]
    * to a ScalaFX [[scalafx.collections.ObservableSet]].
+   * 
+   * @tparam T Set Type
+   * @param os JavaFX Observableset
+   * @return ScalaFX ObservableSet
    */
   implicit def jfxObservableSet2sfxObservableSet[T](os: jfxc.ObservableSet[T]): ObservableHashSet[T] = new ObservableHashSet[T](os)
 }

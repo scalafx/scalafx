@@ -26,21 +26,19 @@
  */
 package scalafx.scene.control
 
-import javafx.{ collections => jfxc }
-import scalafx.collections._
 import scalafx.Includes._
-import javafx.{ scene => jfxs }
 import javafx.scene.{ control => jfxsc }
 import scalafx.delegate.SFXDelegate
 import javafx.{ event => jfxe }
 import javafx.{ geometry => jfxg }
+import scalafx.collections._
 import scalafx.scene.Node
 import collection.JavaConversions._
 import scalafx.beans.property.ObjectProperty
 import scalafx.geometry.Orientation
 
 object ToolBar {
-  implicit def sfxToolBarTojfx(v: ToolBar) = v.delegate
+	implicit def sfxToolBarToJfx(v: ToolBar) = v.delegate
 }
 
 /**
@@ -53,7 +51,7 @@ class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar)
   /**
    * The items contained in the ToolBar.
    */
-  def items: jfxc.ObservableList[jfxs.Node] = delegate.getItems
+  def items = delegate.getItems
   /**
    * Sets the items, replacing the prior items. If you want append to current items, use `add` or similar.
    *

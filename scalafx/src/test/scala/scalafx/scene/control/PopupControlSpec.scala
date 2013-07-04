@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,7 @@ class PopupControlSpec
   override protected def getJavaClassInstance = {
     val label = new jfxsc.Label
     label.setTooltip(new jfxsc.Tooltip)
-    val popupControl: PopupControl = label.getTooltip()
+    val popupControl: PopupControl = label.getTooltip
     popupControl
   }
 

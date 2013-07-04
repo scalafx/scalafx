@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -71,7 +71,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
   case class Add[T](added: T) extends Change[T]
 
   /**
-   * Indicates a remotion in a $OS.
+   * Indicates a removal in an $OS.
    *
    * @param removed Removed element.
    * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/SetChangeListener.Change.html#getElementRemoved() `SetChangeListener.Change.getElementRemoved()`]]
@@ -137,7 +137,7 @@ trait ObservableSet[T]
   /**
    * The result when this set is used as a builder
    */
-  override def result = this
+  override def result() = this
 
   /**
    * Generates a empty $OS.
@@ -171,7 +171,9 @@ trait ObservableSet[T]
   /**
    * Removes all elements from the $SET. After this operation has completed, the $SET will be empty.
    */
-  override def clear = delegate.clear
+  override def clear() {
+    delegate.clear()
+  }
 
   /**
    * Creates a new iterator over elements of this set
@@ -179,7 +181,7 @@ trait ObservableSet[T]
   def iterator = new Iterator[T] {
     val it = delegate.iterator
     def hasNext = it.hasNext
-    def next = it.next
+    def next() = it.next()
   }
 
   /**

@@ -1,4 +1,5 @@
-/* Copyright (c) 2012, ScalaFX Project
+/*
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,5 +39,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class CheckBoxCheckBoxTableCellSpec[S, T]
+class CheckBoxTableCellSpec[S, T]
   extends AbstractSFXDelegateSpec[jfxscc.CheckBoxTableCell[S, T], CheckBoxTableCell[S, T], jfxscc.CheckBoxTableCellBuilder[S, T, _]](classOf[jfxscc.CheckBoxTableCell[S, T]], classOf[CheckBoxTableCell[S, T]], classOf[jfxscc.CheckBoxTableCellBuilder[S, T, _]])

@@ -35,21 +35,45 @@ import scalafx.scene.shape.Shape
 import scalafx.util.Duration
 import scalafx.delegate.SFXDelegate
 
+/**
+ * Companion Object for [[scalafx.animation.StrokeTransition]].
+ *
+ * @define ST `StrokeTransition`
+ */
 object StrokeTransition extends AnimationStatics {
+
+  /**
+   * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/StrokeTransition.html $ST]],
+   * extracting its delegate.
+   *
+   * @param v ScalaFX $ST
+   * @return JavaFX $ST extracted from `v`.
+   */
   implicit def sfxStrokeTransition2jfx(v: StrokeTransition) = v.delegate
+
 }
 
 /**
  * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/StrokeTransition.html StrokeTransition]].
+ *
+ * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
+ * @param delegate JavaFX $ST to be delegated.
+ *
+ * @define ST `StrokeTransition`
+ * @define CONST The constructor of $ST
+ * @define DUR The duration of the $ST.
+ * @define DV Default value:
  */
 class StrokeTransition(override val delegate: jfxa.StrokeTransition = new jfxa.StrokeTransition)
   extends Transition(delegate)
   with SFXDelegate[jfxa.StrokeTransition] {
 
+  // CONSTRUCTORS
+
   /**
-   * The constructor of StrokeTransition
+   * $CONST
    *
-   * @param duration The duration of the StrokeTransition
+   * @param duration $DUR
    * @param shape The shape which filling will be animated
    * @param fromValue The start value of the color-animation
    * @param toValue The end value of the color-animation
@@ -58,9 +82,9 @@ class StrokeTransition(override val delegate: jfxa.StrokeTransition = new jfxa.S
     this(new jfxa.StrokeTransition(duration, shape, fromValue, toValue))
 
   /**
-   * The constructor of StrokeTransition
+   * $CONST
    *
-   * @param duration The duration of the StrokeTransition
+   * @param duration $DUR
    * @param fromValue The start value of the color-animation
    * @param toValue The end value of the color-animation
    */
@@ -68,23 +92,25 @@ class StrokeTransition(override val delegate: jfxa.StrokeTransition = new jfxa.S
     this(new jfxa.StrokeTransition(duration, fromValue, toValue))
 
   /**
-   * The constructor of StrokeTransition
+   * $CONST
    *
-   * @param duration The duration of the StrokeTransition
+   * @param duration $DUR
    * @param shape The shape which filling will be animated
    */
   def this(duration: Duration, shape: Shape) =
     this(new jfxa.StrokeTransition(duration, shape))
 
   /**
-   * The constructor of StrokeTransition
+   * $CONST
    *
-   * @param duration The duration of the StrokeTransition
+   * @param duration $DUR
    */
   def this(duration: Duration) = this(new jfxa.StrokeTransition(duration))
 
+  // PROPERTIES
+
   /**
-   * The target shape of this StrokeTransition.
+   * The target shape of this $ST.
    */
   def shape: ObjectProperty[jfxss.Shape] = delegate.shapeProperty
   def shape_=(s: Shape) {
@@ -92,7 +118,7 @@ class StrokeTransition(override val delegate: jfxa.StrokeTransition = new jfxa.S
   }
 
   /**
-   * The duration of this StrokeTransition.
+   * $DUR. $DV 400ms
    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
   def duration_=(d: Duration) {
@@ -100,7 +126,7 @@ class StrokeTransition(override val delegate: jfxa.StrokeTransition = new jfxa.S
   }
 
   /**
-   * Specifies the start color value for this StrokeTransition.
+   * Specifies the start color value for this $ST. $DV `null`
    */
   def fromValue: ObjectProperty[jfxsp.Color] = delegate.fromValueProperty
   def fromValue_=(from: Color) {
@@ -108,10 +134,11 @@ class StrokeTransition(override val delegate: jfxa.StrokeTransition = new jfxa.S
   }
 
   /**
-   * Specifies the stop color value for this StrokeTransition.
+   * Specifies the stop color value for this $ST. $DV `null`
    */
   def toValue: ObjectProperty[jfxsp.Color] = delegate.toValueProperty
   def toValue_=(to: Color) {
     toValue() = to
   }
+
 }

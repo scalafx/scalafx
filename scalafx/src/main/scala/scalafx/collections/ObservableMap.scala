@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,14 +54,14 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
   // CHANGING INDICATORS - BEGIN
 
   /**
-   * Indicates a change in a $OM. It is a simpler version of JavaFX's
+   * Indicates a change in an $OM. It is a simpler version of JavaFX's
    * [[http://docs.oracle.com/javafx/2/api/javafx/collections/MapChangeListener.Change.html `MapChangeListener.Change`]],
    * where each subclass indicates a specific change operation.
    */
   trait Change[K, V]
 
   /**
-   * Indicates a addition in a $OM.
+   * Indicates an addition in an $OM.
    *
    * @param key Handled Key.
    * @param added Added element.
@@ -71,7 +71,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
   case class Add[K, V](key: K, added: V) extends Change[K, V]
 
   /**
-   * Indicates a remotion in a $OM.
+   * Indicates a removal in an $OM.
    *
    * @param key Handled Key.
    * @param removed Removed element.
@@ -81,7 +81,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
   case class Remove[K, V](key: K, removed: V) extends Change[K, V]
 
   /**
-   * Indicates a replacement in a $OM.
+   * Indicates a replacement in an $OM.
    *
    * @param key Handled Key.
    * @param added Added Value.
@@ -97,7 +97,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
   // CREATION METHODS - BEGIN
 
   /**
-   * Creates a empty $OM.
+   * Creates an empty $OM.
    *
    * @return a Empty [[scalafx.collections.ObservableHashMap]]
    */
@@ -121,7 +121,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    * to observers that have registered on that instance. Note that mutation operations made directly to the underlying
    * map are not reported to observers of any $OM that wraps it.
    *
-   * @param A Map that backs this $OM.
+   * @param originalMap A Map that backs this $OM.
    *
    * @return A newly created $OM.
    */
@@ -139,7 +139,6 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
  *
  * @tparam K Key type
  * @tparam V Value type.
- * @param delegate ObservableMap's JavaFX to be wrapped. Its default value is $OM
  * returned by
  * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html#observableHashMap() observableHashMap]]
  * method from
@@ -158,7 +157,7 @@ trait ObservableMap[K, V]
   /**
    * The result when this $MAP is used as a builder.
    */
-  override def result = this
+  override def result() = this
 
   /**
    * The empty map of the same type as this $MAP.
@@ -170,7 +169,7 @@ trait ObservableMap[K, V]
   /**
    * Adds a new key/value pair to this $MAP.
    *
-   * @param the key/value pair.
+   * @param kv the key/value pair.
    * @return The $OM itself
    */
   def +=(kv: (K, V)) = {
@@ -181,7 +180,7 @@ trait ObservableMap[K, V]
   /**
    * Removes a key from this $MAP.
    *
-   * @param the key to be removed
+   * @param key the key to be removed
    * @return The $OM itself.
    */
   def -=(key: K) = {
@@ -192,7 +191,9 @@ trait ObservableMap[K, V]
   /**
    * Removes all elements from the $MAP. After this operation has completed, the $MAP will be empty.
    */
-  override def clear = delegate.clear
+  override def clear() {
+    delegate.clear()
+  }
 
   /**
    * Creates a new [[http://www.scala-lang.org/api/current/scala/collection/Iterator.html `Iterator`]] over all
@@ -204,7 +205,7 @@ trait ObservableMap[K, V]
     // Definition copied from JavaConversions.JMapWrapperLike.iterator
     val it = delegate.entrySet.iterator
     def hasNext = it.hasNext
-    def next = { val e = it.next; (e.getKey, e.getValue) }
+    def next() = { val e = it.next(); (e.getKey, e.getValue) }
   }
 
   /**

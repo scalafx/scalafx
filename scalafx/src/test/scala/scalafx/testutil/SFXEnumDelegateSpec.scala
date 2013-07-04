@@ -80,13 +80,14 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
     }
   }
 
-  private def assertScalaEnumWithOrdinal(s: S, index: Int): Unit =
+  private def assertScalaEnumWithOrdinal(s: S, index: Int) {
     assert(s.delegate.ordinal() == index, "%s - Expected position: %d, actual: %d".format(s, s.delegate.ordinal(), index))
+  }
 
   protected override def getDesirableMethodName(javaMethod: Method): String = JavaBeanEvaluator.scalaizePropertyNames(javaMethod)
 
   /*
-   * Functionalities from static method "valueOf" (present in all java enums) are being replaced by apply method in 
+   * Functionality from static method "valueOf" (present in all java enums) are being replaced by apply method in
    * companions objects. Therefore, "valueOf" is being excluded from methods search.
    */
   protected override def isSpecialMethodName(name: String) = super.isImplementation(name) ||

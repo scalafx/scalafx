@@ -1,3 +1,29 @@
+/*
+ * Copyright (c) 2011-2013, ScalaFX Project
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of the ScalaFX Project nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE SCALAFX PROJECT OR ITS CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
 package scalafx.testutil
 
 import java.lang.reflect.Method
@@ -28,10 +54,10 @@ private[testutil] trait AbstractComparator {
     private def lastArgumentIsVararg(method: Method): Boolean = (method.getParameterTypes.last == classOf[Seq[_]])
 
     /**
-     * Verifies if a method has only one argument ''and'' this argument is a varagrs.
+     * Verifies if a method has only one argument ''and'' this argument is a vararg.
      *
      * @param method Method to be analyzed.
-     * @return `true` if method has only one argument ''and'' this argument is a varagrs, `false` otherwise.
+     * @return `true` if method has only one argument ''and'' this argument is a vararg, `false` otherwise.
      */
     private def methodHasOneArgVararg(method: Method): Boolean =
       (method.getParameterTypes.length == 1) && lastArgumentIsVararg(method)
@@ -78,8 +104,8 @@ private[testutil] trait AbstractComparator {
 
     private val boolGetterPattern = "^is.+$"
 
-    private def isValid(m: Method, pattern: String, parametersLenght: Int, returnEvaluator: Class[_] => Boolean) =
-      m.getName.matches(pattern) && (m.getParameterTypes.length == parametersLenght) && returnEvaluator(m.getReturnType())
+    private def isValid(m: Method, pattern: String, parametersLength: Int, returnEvaluator: Class[_] => Boolean) =
+      m.getName.matches(pattern) && (m.getParameterTypes.length == parametersLength) && returnEvaluator(m.getReturnType)
 
     private def isSetter(m: Method): Boolean = isValid(m, setterPattern, 1, (_ == JVoid))
 
@@ -99,7 +125,7 @@ private[testutil] trait AbstractComparator {
      *  - Otherwise, returns original method name.
      */
     def scalaizePropertyNames(m: Method): String = {
-      val name = m.getName()
+      val name = m.getName
 
       if (isSetter(m)) name(3).toLower + name.substring(4) + "_="
       else if (isGetter(m)) name(3).toLower + name.substring(4)
@@ -162,7 +188,7 @@ private[testutil] trait AbstractComparator {
    *
    * @param javaMethods Relation of methods from a Java class
    * @param scalaMethods Relation of methods from a Scala class.
-   * @param javaMethodsNotMirrored Relation of javaMethods that are not reflected in the scalaMethods. Defaul value:
+   * @param javaMethodsNotMirrored Relation of javaMethods that are not reflected in the scalaMethods. Default value:
    * [[scala.Nil]].
    */
   @tailrec
@@ -218,11 +244,11 @@ private[testutil] trait AbstractComparator {
   ////////////////////
 
   /**
-   * Indicates if a method with a determinated name should be used or not in methods comparsion. e.g: Methods which
+   * Indicates whether a method with a prefixed name should be used or not in methods comparison. e.g: Methods which
    * name starts with `impl_`, or if it is a setter (starts with `set`)
    *
    * @param methodName name of method to be evaluated.
-   * @return `true` if it is a special name and consequently must not be used in comparsion; `false` otherwise.
+   * @return `true` if it is a special name and consequently must not be used in comparison; `false` otherwise.
    */
   protected def isSpecialMethodName(methodName: String): Boolean
 

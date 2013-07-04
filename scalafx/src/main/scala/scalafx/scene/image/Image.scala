@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -76,7 +76,7 @@ class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image]
   /**
    *
    */
-  def this(that: AnyRef, imagePath: String) = this(new jfxsi.Image(that.getClass().getResourceAsStream(imagePath)))
+  def this(that: AnyRef, imagePath: String) = this(new jfxsi.Image(that.getClass.getResourceAsStream(imagePath)))
 
   /**
    * Indicates whether an error was detected while loading an image.
@@ -101,7 +101,9 @@ class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image]
   /**
    * Cancels the background loading of this image.
    */
-  def cancel = delegate.cancel
+  def cancel() {
+    delegate.cancel()
+  }
 
   /**
    * Indicates whether the image is being loaded in the background.

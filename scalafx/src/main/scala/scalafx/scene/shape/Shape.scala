@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -79,7 +79,7 @@ abstract class Shape(override val delegate: jfxss.Shape)
   }
 
   /**
-   * Defines whether antialiasing hints are used or not for this Shape.
+   * Defines whether anti-aliasing hints are used or not for this Shape.
    */
   def smooth: BooleanProperty = delegate.smoothProperty
   def smooth_=(v: Boolean) {
@@ -156,7 +156,7 @@ abstract class Shape(override val delegate: jfxss.Shape)
    */
   def strokeDashArray_=(c: Iterable[java.lang.Double]) {
     if (null == c) {
-      strokeDashArray.clear
+      strokeDashArray.clear()
     } else {
       strokeDashArray.setAll(c)
     }

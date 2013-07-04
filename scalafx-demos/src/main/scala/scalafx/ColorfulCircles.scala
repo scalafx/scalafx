@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -112,11 +112,11 @@ object ColorfulCircles extends JFXApp {
   new Timeline {
     cycleCount = INDEFINITE
     autoReverse = true
-    keyFrames = (for (circle <- circlesToAnimate.result) yield Seq(
-        at(0 s) {Set(circle.centerX -> random * 800,
-                     circle.centerY -> random * 600)},
-        at(40 s) {Set(circle.centerX -> random * 800,
-                      circle.centerY -> random * 600)}
+    keyFrames = (for (circle <- circlesToAnimate.result()) yield Seq(
+      at(0 s) {Set(circle.centerX -> random * 800,
+                   circle.centerY -> random * 600)},
+      at(40 s) {Set(circle.centerX -> random * 800,
+                    circle.centerY -> random * 600)}
     )).flatten
-  }.play
+  }.play()
 }

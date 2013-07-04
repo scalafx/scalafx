@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,12 +39,9 @@ import scalafx.delegate.PositionDelegate
  */
 trait PositionDelegateSpec[D <: PositionDelegate[_]] extends FlatSpec {
 
-  /**
-   * 
-   */
   val positionDelegate: D
 
-  private def testDeslocation(testedProperty: DoubleProperty, propertyName: String) {
+  private def testDoublePropertyUpdate(testedProperty: DoubleProperty, propertyName: String) {
     var moved = false
     val observerDouble = new DoubleProperty(positionDelegate, propertyName)
 
@@ -60,11 +57,11 @@ trait PositionDelegateSpec[D <: PositionDelegate[_]] extends FlatSpec {
   }
 
   it should "have its X Coordinate observed when it is changed" in {
-    testDeslocation(positionDelegate.x, "X Property")
+    testDoublePropertyUpdate(positionDelegate.x, "X Property")
   }
 
   it should "have its Y Coordinate observed when it is changed" in {
-    testDeslocation(positionDelegate.y, "Y Property")
+    testDoublePropertyUpdate(positionDelegate.y, "Y Property")
   }
 
 }

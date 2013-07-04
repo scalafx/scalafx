@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class SingleSkinnableSpec
+class SkinnableSpec
   extends SimpleSFXDelegateSpec[jfxsc.Skinnable, Skinnable](classOf[jfxsc.Skinnable], classOf[Skinnable]) {
 
   override protected def getScalaClassInstance = new Skinnable {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,5 +39,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class TabPanePaneSpec
+class TabPaneSpec
   extends AbstractSFXDelegateSpec[jfxsc.TabPane, TabPane, jfxsc.TabPaneBuilder[_]](classOf[jfxsc.TabPane], classOf[TabPane], classOf[jfxsc.TabPaneBuilder[_]])

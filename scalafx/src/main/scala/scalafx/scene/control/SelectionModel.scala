@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,17 +56,23 @@ abstract class SelectionModel[T](override val delegate: jfxsc.SelectionModel[T])
    * A method that clears any selection prior to setting the selection to the
    * given index.
    */
-  def clearAndSelect(index: Int): Unit = delegate.clearAndSelect(index)
+  def clearAndSelect(index: Int) {
+    delegate.clearAndSelect(index)
+  }
 
   /**
    * Clears the selection model of all selected indices.
    */
-  def clearSelection: Unit = delegate.clearSelection
+  def clearSelection() {
+    delegate.clearSelection()
+  }
 
   /**
    * This method will clear the selection of the item in the given index.
    */
-  def clearSelection(index: Int): Unit = delegate.clearSelection(index)
+  def clearSelection(index: Int) {
+    delegate.clearSelection(index)
+  }
 
   /**
    * This method is available to test whether there are any selected
@@ -83,32 +89,44 @@ abstract class SelectionModel[T](override val delegate: jfxsc.SelectionModel[T])
    * This will select the given index in the selection model, assuming the
    * index is within the valid range (i.e.
    */
-  def select(index: Int): Unit = delegate.select(index)
+  def select(index: Int) {
+    delegate.select(index)
+  }
 
   /**
    * This method will attempt to select the index that contains the given object.
    */
-  def select(obj: T): Unit = delegate.select(obj)
+  def select(obj: T) {
+    delegate.select(obj)
+  }
 
   /**
    * This method will attempt to select the first index in the control.
    */
-  def selectFirst: Unit = delegate.selectFirst
+  def selectFirst() {
+    delegate.selectFirst()
+  }
 
   /**
    * This method will attempt to select the last index in the control.
    */
-  def selectLast: Unit = delegate.selectLast
+  def selectLast() {
+    delegate.selectLast()
+  }
 
   /**
    * This method will attempt to select the index directly after the current
    * focused index.
    */
-  def selectNext: Unit = delegate.selectNext
+  def selectNext() {
+    delegate.selectNext()
+  }
 
   /**
    * This method will attempt to select the index directly before the current focused index.
    */
-  def selectPrevious: Unit = delegate.selectPrevious
+  def selectPrevious() {
+    delegate.selectPrevious()
+  }
 
 }

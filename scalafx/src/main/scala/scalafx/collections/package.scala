@@ -31,7 +31,7 @@ import javafx.{ collections => jfxc }
 import scalafx.delegate.SFXDelegate
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/collections/package-frame.html `javafx.collections`]] package, 
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/collections/package-summary.html `javafx.collections`]] package, 
  * adding Scala's collections features to original JavaFX collections.
  */
 package object collections {
@@ -39,7 +39,7 @@ package object collections {
 
   private def internalFiller[A, B](originalList: jfxc.ObservableList[A], filler: Iterable[B], f: B => A) {
     if (null == filler) {
-      originalList.clear
+      originalList.clear()
     } else {
       originalList.setAll(filler.map(f(_)))
     }
@@ -47,7 +47,7 @@ package object collections {
   
   private def internalFillerWithOne[A, B](originalList: jfxc.ObservableList[A], element: B, f: B => A) {
     if (null == element) {
-      originalList.clear
+      originalList.clear()
     } else {
       originalList.setAll(List(f(element)))
     }
