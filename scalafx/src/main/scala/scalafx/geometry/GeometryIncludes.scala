@@ -135,7 +135,7 @@ trait GeometryIncludes {
    * @param p JavaFX Pos
    * @return ScalaFX Pos
    */
-  implicit def jfxPos2sfx(e: jfxg.Pos) = Pos.jfxEnum2sfx(e)
+  implicit def jfxPos2sfx(p: jfxg.Pos) = Pos.jfxEnum2sfx(p)
 
   /**
    * Converts a
@@ -156,6 +156,16 @@ trait GeometryIncludes {
    * @return ScalaFX Side
    */
   implicit def jfxSide2sfx(e: jfxg.Side) = Side.jfxEnum2sfx(e)
+
+  /**
+   * Converts a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/geometry/VerticalDirection `javafx.geometry.VerticalDirection`]]
+   * instance to its ScalaFX counterpart.
+   *
+   * @param h JavaFX VerticalDirection
+   * @return ScalaFX VerticalDirection
+   */
+  implicit def jfxVerticalDirection2sfx(h: jfxg.VerticalDirection) = VerticalDirection.jfxEnum2sfx(h)
 
   /**
    * Converts a
