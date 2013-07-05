@@ -99,6 +99,16 @@ trait GeometryIncludes {
 
   /**
    * Converts a
+   * [[http://docs.oracle.com/javafx/2/api/javafx/geometry/NodeNodeOrientation `javafx.geometry.NodeOrientation`]]
+   * instance to its ScalaFX counterpart.
+   *
+   * @param e JavaFX NodeOrientation
+   * @return ScalaFX NodeOrientation
+   */
+  implicit def jfxNodeOrientation2sfx(e: jfxg.NodeOrientation) = NodeOrientation.jfxEnum2sfx(e)
+
+  /**
+   * Converts a
    * [[http://docs.oracle.com/javafx/2/api/javafx/geometry/Orientation `javafx.geometry.Orientation`]]
    * instance to its ScalaFX counterpart.
    *
