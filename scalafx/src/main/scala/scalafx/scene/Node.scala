@@ -26,15 +26,12 @@
  */
 package scalafx.scene
 
-import scala.collection.JavaConversions.asJavaCollection
 import javafx.scene.{ effect => jfxse }
 import javafx.scene.{ input => jfxsi }
 import javafx.scene.{ layout => jfxsl }
-import javafx.scene.{ transform => jfxst }
 import javafx.{ event => jfxe }
 import javafx.{ geometry => jfxg }
 import javafx.{ scene => jfxs }
-import javafx.{ util => jfxu }
 import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
@@ -43,21 +40,22 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.StringProperty
+import scalafx.delegate.SFXDelegate
 import scalafx.event.Event._
 import scalafx.event.Event
 import scalafx.geometry.Bounds._
 import scalafx.geometry.Point2D._
 import scalafx.geometry.Bounds
 import scalafx.geometry.Insets
+import scalafx.geometry.NodeOrientation
 import scalafx.geometry.Point2D
 import scalafx.geometry.Point3D
-import scalafx.scene.effect.Effect
-import scalafx.delegate.SFXDelegate
-import scalafx.scene.transform.Transform
-import scalafx.scene.image.WritableImage
 import scalafx.geometry.Pos
-import scalafx.scene.layout.Priority
 import scalafx.scene.effect.BlendMode
+import scalafx.scene.effect.Effect
+import scalafx.scene.image.WritableImage
+import scalafx.scene.layout.Priority
+import scalafx.scene.transform.Transform
 
 object Node {
   implicit def sfxNode2jfx(v: Node) = v.delegate
@@ -243,6 +241,20 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   def mouseTransparent_=(v: Boolean) {
     mouseTransparent() = v
   }
+  
+  /**
+   * Node orientation describes the flow of visual data within a node.
+   */
+  def nodeOrientation: ObjectProperty[jfxg.NodeOrientation] = delegate.nodeOrientationProperty
+
+  def nodeOrientation_=(v: NodeOrientation) {
+    nodeOrientation() = v
+  }
+
+  /**
+   * The effective orientation of a node resolves the inheritance of node orientation, returning either left-to-right or right-to-left.
+   */
+  def effectiveNodeOrientation: ReadOnlyObjectProperty[jfxg.NodeOrientation] = delegate.effectiveNodeOrientationProperty
 
   /**
    * Defines a function to be called when a context menu has been requested on this Node.

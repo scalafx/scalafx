@@ -49,7 +49,6 @@ object Region {
    * computePrefHeight(), computeMaxWidth(), or computeMaxHeight().
    */
   val USE_COMPUTED_SIZE = jfxsl.Region.USE_COMPUTED_SIZE
-
   /**
    * Sentinel value which can be passed to a region's minWidth, minHeight, prefWidth, prefHeight,
    * maxWidth, maxHeight properties to indicate that the preferred dimension should be used for
@@ -57,6 +56,28 @@ object Region {
    */
   val USE_PREF_SIZE = jfxsl.Region.USE_PREF_SIZE
 
+  /** Utility method which lays out the child within an area of it's parent defined by areaX, areaY,
+    * areaWidth x areaHeight, with a baseline offset relative to that area. */
+  def layoutInArea(child: javafx.scene.Node,
+                   areaX: Double, areaY: Double, areaWidth: Double, areaHeight: Double, areaBaselineOffset: Double,
+                   margin: jfxg.Insets, fillWidth: Boolean, fillHeight: Boolean,
+                   halignment: jfxg.HPos, valignment: jfxg.VPos, isSnapToPixel: Boolean) {
+    jfxsl.Region.layoutInArea(
+      child,
+      areaX, areaY, areaWidth, areaHeight, areaBaselineOffset,
+      margin, fillWidth, fillHeight,
+      halignment, valignment, isSnapToPixel)
+  }
+
+  /** Utility method which positions the child within an area of this region defined by areaX, areaY,
+    * areaWidth x areaHeight, with a baseline offset relative to that area. */
+  def positionInArea(child: javafx.scene.Node,
+                     areaX: Double, areaY: Double, areaWidth: Double, areaHeight: Double, areaBaselineOffset: Double,
+                     margin: jfxg.Insets, halignment: jfxg.HPos, valignment: jfxg.VPos, isSnapToPixel: Boolean) {
+    jfxsl.Region.positionInArea(child,
+      areaX, areaY, areaWidth, areaHeight,
+      areaBaselineOffset, margin, halignment, valignment, isSnapToPixel)
+  }
 }
 
 class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
