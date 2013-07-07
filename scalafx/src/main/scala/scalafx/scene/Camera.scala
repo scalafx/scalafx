@@ -34,4 +34,4 @@ object Camera {
   implicit def sfxCamera2jfx(c: Camera) = c.delegate
 }
 
-abstract class Camera (override val delegate: jfxs.Camera) extends SFXDelegate[jfxs.Camera]
+abstract class Camera (override val delegate: jfxs.Camera) extends Node(delegate) with SFXDelegate[jfxs.Camera]
