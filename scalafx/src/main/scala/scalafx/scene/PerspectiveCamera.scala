@@ -28,7 +28,7 @@ package scalafx.scene
 
 import javafx.{ scene => jfxs }
 import scalafx.Includes._
-import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty}
 import scalafx.delegate.SFXDelegate
 
 object PerspectiveCamera {
@@ -38,6 +38,9 @@ object PerspectiveCamera {
 class PerspectiveCamera(override val delegate: jfxs.PerspectiveCamera = new jfxs.PerspectiveCamera)
   extends Camera(delegate) with SFXDelegate[jfxs.PerspectiveCamera] {
 
+  /** Constructs a PerspectiveCamera with the specified fixedEyeAtCameraZero flag.  */
+  def this(fixedEyeAtCameraZero:Boolean) = this(new jfxs.PerspectiveCamera(fixedEyeAtCameraZero))
+
   /**
    * Specifies the vertical angle of the camera's projection.
    */
@@ -46,4 +49,13 @@ class PerspectiveCamera(override val delegate: jfxs.PerspectiveCamera = new jfxs
     fieldOfView() = v
   }
 
+  /**
+   * Defines whether the `fieldOfView` property is to apply to the vertical dimension of the projection plane.
+   */
+  def verticalFieldOfView: BooleanProperty = delegate.verticalFieldOfViewProperty
+  def verticalFieldOfView_=(v: Boolean) {
+    verticalFieldOfView() = v
+  }
+
+  def isFixedEyeAtCameraZero = delegate.isFixedEyeAtCameraZero
 }
