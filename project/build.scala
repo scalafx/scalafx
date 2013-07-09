@@ -94,7 +94,7 @@ object ScalaFXBuild extends Build {
     
     object Dependencies {
         // Ordered by `group 'and then by `artifact ID'.
-        lazy val junit              = "junit"                   % "junit"               % "4.10" 
+        lazy val junit              = "junit"                   % "junit"               % "4.11"
         lazy val scalatest          = "org.scalatest"           %% "scalatest"          % "1.9.1" 
         // lazy val scalatest2: MID = sv => "org.scalatest" %% "scalatest" % scalatestVersion(sv)
  
