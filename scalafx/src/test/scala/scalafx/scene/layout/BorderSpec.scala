@@ -29,16 +29,15 @@ package scalafx.scene.layout
 import javafx.scene.{layout => jfxsl}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 
 /** Border Spec tests. */
 @RunWith(classOf[JUnitRunner])
-class BorderSpec {
-  assert(false, "Test code is commented, it would not compile due to `BorderBuilder` missing in JavaFX 8")
-  // FIXME reimplement test without using `BorderBuilder`
-  //  extends AbstractSFXDelegateSpec[jfxsl.Border, Border, jfxsl.BorderBuilder](classOf[jfxsl.Border], classOf[Border], classOf[jfxsl.BorderBuilder]) {
-  //
-  //  override protected def getScalaClassInstance = new Border(getJavaClassInstance) {}
-  //
-  //  override protected def getJavaClassInstance = Border.EMPTY
+class BorderSpec extends SimpleSFXDelegateSpec[jfxsl.Border, Border](classOf[jfxsl.Border], classOf[Border]) {
+
+    override protected def getScalaClassInstance = new Border(getJavaClassInstance) {}
+
+    override protected def getJavaClassInstance = Border.EMPTY
 }
