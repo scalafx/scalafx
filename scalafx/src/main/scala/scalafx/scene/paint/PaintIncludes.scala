@@ -57,6 +57,7 @@ object PaintIncludes extends PaintIncludes
  * @define CLR Color
  * @define CMT CycleMethod
  * @define LGD LinearGradient
+ * @define PHM PhongMaterial
  * @define RGD RadialGradient
  * @define STP Stop
  * @define PNT Paint
@@ -82,7 +83,7 @@ trait PaintIncludes {
   /**
    * $BEGINHEX $SFX $CLR. $ENDHEX
    *
-   * @param s $PARAMHEX
+   * @param h $PARAMHEX
    * @return $SFX $RETHEX
    */
   implicit def hex2sfxColor(h: Int) = Color.rgb(h >>> 16 & 0xFF, h >>> 8 & 0xFF, h & 0xFF)
@@ -90,7 +91,7 @@ trait PaintIncludes {
   /**
    * $BEGINHEX $JFX $CLR. $ENDHEX
    *
-   * @param s $PARAMHEX
+   * @param h $PARAMHEX
    * @return $JFX $RETHEX
    */
   implicit def hex2jfxColor(h: Int) = jfxsp.Color.rgb(h >>> 16 & 0xFF, h >>> 8 & 0xFF, h & 0xFF)
@@ -150,6 +151,14 @@ trait PaintIncludes {
    * @return $SFX $LGD
    */
   implicit def jfxLinearGradient2sfx(lg: jfxsp.LinearGradient) = new LinearGradient(lg)
+
+  /**
+   * $START$PHM.html $PHM$END
+   *
+   * @param pm $JFX $PHM
+   * @return $SFX $PHM
+   */
+  implicit def jfxPhongMaterial2sfx(pm: jfxsp.PhongMaterial) = new PhongMaterial(pm)
 
   /**
    * $START$RGD.html $RGD$END
