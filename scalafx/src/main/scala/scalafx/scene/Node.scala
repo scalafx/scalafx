@@ -246,9 +246,8 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    * Node orientation describes the flow of visual data within a node.
    */
   def nodeOrientation: ObjectProperty[jfxg.NodeOrientation] = delegate.nodeOrientationProperty
-
   def nodeOrientation_=(v: NodeOrientation) {
-    nodeOrientation() = v
+    ObjectProperty.fillProperty[jfxg.NodeOrientation](this.nodeOrientation, v)
   }
 
   /**
