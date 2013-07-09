@@ -78,6 +78,7 @@ trait SceneIncludes extends ChartIncludes
  * @define SCE Scene
  * @define SCP SceneProperty
  * @define SNP SnapshotParameters
+ * @define SSCE SubScene
  */
 trait LowerPriorityIncludes {
 
@@ -185,4 +186,11 @@ trait LowerPriorityIncludes {
    */
   implicit def jfxSnapshotParameters2sfx(sp: jfxs.SnapshotParameters) = new SnapshotParameters(sp)
 
+  /**
+   * $START$SSCE.html $SSCE$END
+   *
+   * @param v $JFX $SSCE
+   * @return $SFX $SSCE
+   */
+  implicit def jfxSubScene2sfx(v: jfxs.SubScene) = new SubScene(v)
 }
