@@ -96,6 +96,14 @@ trait ShapeIncludes {
   implicit def jfxArcType2sfx(e: jfxss.ArcType) = ArcType.jfxEnum2sfx(e)
 
   /**
+   * $STARTBox.html Box$END
+   *
+   * @param b $JFX Box
+   * @return $SFX Box
+   */
+  implicit def jfxBox2sfx(b: jfxss.Box) = new Box(b) {}
+
+  /**
    * $START$CLC.html $CLC$END
    *
    * @param r $JFX $CLC
@@ -254,6 +262,14 @@ trait ShapeIncludes {
    * @return $SFX $SHA
    */
   implicit def jfxShape2sfx(s: jfxss.Shape) = new Shape(s) {}
+
+  /**
+   * $START$SHA.html $SH3DA$END
+   *
+   * @param s $JFX $SHA3D
+   * @return $SFX $SHA3D
+   */
+  implicit def jfxShape3D2sfx(s: jfxss.Shape3D) = new Shape3D(s) {}
 
   /**
    * $START$SLC.html $SLC$END
