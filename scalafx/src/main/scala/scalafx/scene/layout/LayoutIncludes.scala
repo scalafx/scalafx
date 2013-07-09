@@ -42,6 +42,7 @@ object LayoutIncludes extends LayoutIncludes
  *
  * @define ACPN AnchorPane
  * @define BKGN Background
+ * @define BRDR Border
  * @define BDPN BorderPane
  * @define CLCT ColumnConstraints
  * @define CTBS ConstraintsBase
@@ -73,6 +74,14 @@ trait LayoutIncludes {
      * @return $SFX $BKGN
      */
   implicit def jfxBackground2sfx(v: jfxsl.Background) = new Background(v)
+
+  /**
+   * $START$BRDR.html $BRDR$END
+   *
+   * @param v $JFX $BRDR
+   * @return $SFX $BRDR
+   */
+  implicit def jfxBorder2sfx(v: jfxsl.Border) = new Border(v)
 
   /**
    * $START$BDPN.html $BDPN$END
