@@ -24,21 +24,39 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.delegate.SFXDelegate
+import javafx.{collections => jfxc}
 
-/** Shape3D Spec tests. */
-@RunWith(classOf[JUnitRunner])
-class Shape3DSpec
-  extends SimpleSFXDelegateSpec[jfxss.Shape3D, Shape3D](classOf[jfxss.Shape3D], classOf[Shape3D]) {
 
-  override protected def getScalaClassInstance = new Box()
+object TriangleMesh {
+  implicit def sfxTriangleMesh2jfx(tm: TriangleMesh) = tm.delegate
 
-  override def getJavaClassInstance = new jfxss.Box()
+  val NUM_COMPONENTS_PER_FACE: Int = jfxss.TriangleMesh.NUM_COMPONENTS_PER_FACE
+  val NUM_COMPONENTS_PER_POINT: Int = jfxss.TriangleMesh.NUM_COMPONENTS_PER_POINT
+  val NUM_COMPONENTS_PER_TEXCOORD: Int = jfxss.TriangleMesh.NUM_COMPONENTS_PER_TEXCOORD
+}
+
+/**
+ * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/TriangleMesh.html]].
+ */
+class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.TriangleMesh())
+  extends Mesh(delegate)
+  with SFXDelegate[jfxss.TriangleMesh] {
+
+  // TODO Replace `jfxc.Observable*Array` below with SFX equivalents (when implemented).
+
+  /** Gets the ObservableIntegerArray of faces, indices into the points and texCoords arrays, of this TriangleMesh */
+  def faces: jfxc.ObservableIntegerArray = delegate.getFaces
+
+  /** Gets the ObservableIntegerArray of face smoothing groups of this TriangleMesh. */
+  def faceSmoothingGroups: jfxc.ObservableIntegerArray = delegate.getFaceSmoothingGroups
+
+  /** Gets the ObservableFloatArray of points of this TriangleMesh. */
+  def points: jfxc.ObservableFloatArray = delegate.getPoints
+
+  /** Gets the ObservableFloatArray of texture coordinates of this TriangleMesh. */
+  def texCoords: jfxc.ObservableFloatArray = delegate.getTexCoords
 }

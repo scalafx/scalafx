@@ -24,21 +24,30 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.beans.property.ObjectProperty
+import scalafx.delegate.SFXDelegate
 
-/** Shape3D Spec tests. */
-@RunWith(classOf[JUnitRunner])
-class Shape3DSpec
-  extends SimpleSFXDelegateSpec[jfxss.Shape3D, Shape3D](classOf[jfxss.Shape3D], classOf[Shape3D]) {
 
-  override protected def getScalaClassInstance = new Box()
+object MeshView {
+  implicit def sfxMeshView2jfx(mv: MeshView) = mv.delegate
+}
 
-  override def getJavaClassInstance = new jfxss.Box()
+
+/**
+ * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/MeshView.html]].
+ */
+class MeshView(override val delegate: jfxss.MeshView = new jfxss.MeshView())
+  extends Shape3D(delegate)
+  with SFXDelegate[jfxss.MeshView] {
+
+  def this(mesh: Mesh) = this(new jfxss.MeshView(mesh))
+
+  def mesh: ObjectProperty[jfxss.Mesh] = delegate.meshProperty
+  def mesh_=(m: Mesh) {
+    ObjectProperty.fillProperty[jfxss.Mesh](this.mesh, m)
+  }
 }

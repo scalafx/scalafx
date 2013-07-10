@@ -143,6 +143,8 @@ trait ShapeIncludes {
    */
   implicit def jfxCullFace2sfx(cf: jfxss.CullFace) = CullFace.jfxEnum2sfx(cf)
 
+  implicit def jfxCylinder2sfx(c: jfxss.Cylinder) = new Cylinder(c)
+
   /**
    * $START$DRM.html $DRM$END
    *
@@ -190,6 +192,8 @@ trait ShapeIncludes {
    * @return $SFX $LNT
    */
   implicit def jfxLineTo2sfx(l: jfxss.LineTo) = new LineTo(l)
+  
+  implicit def jfxMeshView2sfx(mv: jfxss.MeshView) = new MeshView(mv)
 
   /**
    * $START$MVT.html $MVT$END
@@ -270,6 +274,8 @@ trait ShapeIncludes {
    * @return $SFX $SHA3D
    */
   implicit def jfxShape3D2sfx(s: jfxss.Shape3D) = new Shape3D(s) {}
+  
+  implicit def jfxSphere2sfx(s: jfxss.Sphere) = new Sphere(s) 
 
   /**
    * $START$SLC.html $SLC$END
@@ -302,6 +308,8 @@ trait ShapeIncludes {
    * @return $SFX $SVP
    */
   implicit def jfxSVGPath2sfx(s: jfxss.SVGPath) = new SVGPath(s)
+  
+  implicit def jfxTriangleMesh2sfx(tm: jfxss.TriangleMesh) = new TriangleMesh(tm)
 
   /**
    * $START$VLT.html $VLT$END

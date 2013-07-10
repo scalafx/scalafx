@@ -24,21 +24,37 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.beans.property.DoubleProperty
+import scalafx.delegate.SFXDelegate
 
-/** Shape3D Spec tests. */
-@RunWith(classOf[JUnitRunner])
-class Shape3DSpec
-  extends SimpleSFXDelegateSpec[jfxss.Shape3D, Shape3D](classOf[jfxss.Shape3D], classOf[Shape3D]) {
 
-  override protected def getScalaClassInstance = new Box()
+object Sphere {
+  implicit def sfxSphere2jfx(s: Sphere) = s.delegate
+}
 
-  override def getJavaClassInstance = new jfxss.Box()
+/** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/Sphere.html]].
+  *
+  * Creates a new instance of Sphere of radius of 1.0.
+  */
+class Sphere(override val delegate: jfxss.Sphere = new jfxss.Sphere())
+  extends Shape3D(delegate)
+  with SFXDelegate[jfxss.Sphere] {
+
+  /** Creates a new instance of Sphere of a given radius. */
+  def this(radius: Double) = this(new jfxss.Sphere(radius))
+
+  /** Creates a new instance of Sphere of a given radius and number of divisions. */
+  def this(radius: Double, divisions: Int) = this(new jfxss.Sphere(radius, divisions))
+
+  def divisions: Int = delegate.getDivisions
+
+  /** Defines the radius of the Sphere. */
+  def radius: DoubleProperty = delegate.radiusProperty
+  def radius_=(v: Double) {
+    radius() = v
+  }
 }

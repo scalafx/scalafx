@@ -24,21 +24,47 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.beans.property.DoubleProperty
+import scalafx.delegate.SFXDelegate
 
-/** Shape3D Spec tests. */
-@RunWith(classOf[JUnitRunner])
-class Shape3DSpec
-  extends SimpleSFXDelegateSpec[jfxss.Shape3D, Shape3D](classOf[jfxss.Shape3D], classOf[Shape3D]) {
+object Cylinder {
+  implicit def sfxCylinder2jfx(c: Cylinder) = c.delegate
+}
 
-  override protected def getScalaClassInstance = new Box()
+/**
+ * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/Cylinder.html]].
+ */
+class Cylinder(override val delegate: jfxss.Cylinder = new jfxss.Cylinder())
+  extends Shape3D(delegate)
+  with SFXDelegate[jfxss.Cylinder] {
 
-  override def getJavaClassInstance = new jfxss.Box()
+  /** Creates a new instance of Cylinder of a given radius and height.
+    * Resolution defaults to 15 divisions along X and Z axis.
+    */
+  def this(radius: Double, height: Double) = this(new jfxss.Cylinder(radius, height))
+
+  /** Creates a new instance of Cylinder of a given radius, height, and divisions.
+    * Resolution defaults to 15 divisions along X and Z axis.
+    * Note that divisions should be at least 3.
+    * Any value less than that will be clamped to 3. */
+  def this(radius: Double, height: Double, divisions: Int) = this(new jfxss.Cylinder(radius, height, divisions))
+
+  /** Divisions attribute use to generate this cylinder. */
+  def divisions: Int = delegate.getDivisions
+
+  /** Defines the height or the Y dimension of the cylinder. */
+  def height: DoubleProperty = delegate.heightProperty
+  def height_=(v: Double) {
+    height() = v
+  }
+
+  /** Defines the radius in the Z plane of the cylinder. */
+  def radius: DoubleProperty = delegate.radiusProperty
+  def radius_=(v: Double) {
+    radius() = v
+  }
 }

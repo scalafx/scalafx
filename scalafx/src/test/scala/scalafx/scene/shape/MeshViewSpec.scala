@@ -33,12 +33,7 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
-/** Shape3D Spec tests. */
+/** MeshView Spec tests. */
 @RunWith(classOf[JUnitRunner])
-class Shape3DSpec
-  extends SimpleSFXDelegateSpec[jfxss.Shape3D, Shape3D](classOf[jfxss.Shape3D], classOf[Shape3D]) {
-
-  override protected def getScalaClassInstance = new Box()
-
-  override def getJavaClassInstance = new jfxss.Box()
-}
+class MeshViewSpec
+  extends SimpleSFXDelegateSpec[jfxss.MeshView, MeshView](classOf[jfxss.MeshView], classOf[MeshView])

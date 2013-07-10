@@ -24,21 +24,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.delegate.SFXDelegate
 
-/** Shape3D Spec tests. */
-@RunWith(classOf[JUnitRunner])
-class Shape3DSpec
-  extends SimpleSFXDelegateSpec[jfxss.Shape3D, Shape3D](classOf[jfxss.Shape3D], classOf[Shape3D]) {
+object Mesh {
+  implicit def sfxMesh2jfx(m: Mesh) = m.delegate
+}
 
-  override protected def getScalaClassInstance = new Box()
-
-  override def getJavaClassInstance = new jfxss.Box()
+/** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/Mesh.html]]. */
+abstract class Mesh(override val delegate: jfxss.Mesh)
+  extends SFXDelegate[jfxss.Mesh] {
 }

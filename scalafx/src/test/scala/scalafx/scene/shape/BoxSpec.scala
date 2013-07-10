@@ -33,16 +33,7 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
-/**
- * Shape Spec tests.
- *
- *
- */
+/** Box Spec tests. */
 @RunWith(classOf[JUnitRunner])
 class BoxSpec
-  extends SimpleSFXDelegateSpec[jfxss.Box, Box](classOf[jfxss.Box], classOf[Box]) {
-
-  override protected def getScalaClassInstance = new Box()
-
-  override def getJavaClassInstance = new jfxss.Box()
-}
+  extends SimpleSFXDelegateSpec[jfxss.Box, Box](classOf[jfxss.Box], classOf[Box])
