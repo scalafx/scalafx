@@ -26,13 +26,10 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
+import javafx.scene.{text => jfxst}
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ReadOnlyIntegerProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.beans.property.ReadOnlyStringProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate
 
 object TextInputControl {
@@ -59,6 +56,14 @@ abstract class TextInputControl(override val delegate: jfxsc.TextInputControl)
   def editable: BooleanProperty = delegate.editableProperty
   def editable_=(v: Boolean) {
     editable() = v
+  }
+
+  /**
+   * The default font to use for text in the TextInputControl.
+   */
+  def font: ObjectProperty[jfxst.Font] = delegate.fontProperty()
+  def font_=(v: jfxst.Font) {
+    ObjectProperty.fillProperty[jfxst.Font](font, v)
   }
 
   /**

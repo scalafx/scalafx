@@ -26,18 +26,16 @@
  */
 package scalafx.scene.control
 
-import javafx.{ geometry => jfxg }
-import javafx.{ scene => jfxs }
-import javafx.scene.{ control => jfxsc, paint => jfxsp, text => jfxst }
+import javafx.{geometry => jfxg}
+import javafx.{scene => jfxs}
+import javafx.scene.{control => jfxsc, paint => jfxsp, text => jfxst}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.StringProperty
-import scalafx.scene.Node.sfxNode2jfx
 import scalafx.scene.paint.Paint
-import scalafx.scene.text.Font.sfxFont2jfx
 import scalafx.scene.text.Font
 import scalafx.scene.text.TextAlignment
 import scalafx.scene.Node
@@ -89,6 +87,14 @@ abstract class Labeled(override val delegate: jfxsc.Labeled)
    * The padding around the Label's text and graphic content.
    */
   def labelPadding: ReadOnlyObjectProperty[jfxg.Insets] = delegate.labelPaddingProperty
+
+  /**
+   * Specifies the space in pixel between lines.
+   */
+  def lineSpacing: DoubleProperty = delegate.lineSpacingProperty
+  def lineSpacing_=(v: Double) {
+    lineSpacing() = v
+  }
 
   /**
    * MnemonicParsing property to enable/disable text parsing.

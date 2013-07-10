@@ -52,7 +52,10 @@ object StageStyle
    */
   val UTILITY = new StageStyle(jfxs.StageStyle.UTILITY)
 
-  protected override def unsortedValues: Array[StageStyle] = Array(DECORATED, UNDECORATED, TRANSPARENT, UTILITY)
+  /** Defines a Stage style with platform decorations and eliminates the border between client area and decorations. */
+  val UNIFIED = new StageStyle(jfxs.StageStyle.UNIFIED)
+
+  protected override def unsortedValues: Array[StageStyle] = Array(DECORATED, UNDECORATED, TRANSPARENT, UTILITY, UNIFIED)
 
 }
 

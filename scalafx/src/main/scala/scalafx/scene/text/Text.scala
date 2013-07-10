@@ -35,7 +35,6 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.beans.property.StringProperty
 import scalafx.scene.shape.Shape
-import scalafx.scene.text.Font.sfxFont2jfx
 import scalafx.delegate.PositionDelegate
 import scalafx.delegate.SFXDelegate
 
@@ -87,6 +86,14 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   def fontSmoothingType: ObjectProperty[jfxst.FontSmoothingType] = delegate.fontSmoothingTypeProperty
   def fontSmoothingType_=(v: FontSmoothingType) {
     fontSmoothingType() = v
+  }
+  
+  /**
+   * Defines the vertical space in pixel between lines.
+   */
+  def lineSpacing: DoubleProperty = delegate.lineSpacingProperty
+  def lineSpacing_=(v: Double) {
+    lineSpacing() = v
   }
 
   /**

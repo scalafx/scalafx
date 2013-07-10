@@ -30,7 +30,6 @@ import javafx.{ event => jfxe }
 import javafx.{ scene => jfxs }
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.scene.Node._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyBooleanProperty
@@ -93,6 +92,14 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
   def onClosed = delegate.onClosedProperty
   def onClosed_=(v: jfxe.EventHandler[jfxe.Event]) {
     onClosed() = v
+  }
+
+  /**
+   * Called when there is an external request to close this Tab.
+   */
+  def onCloseRequest : ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onCloseRequestProperty()
+  def onCloseRequest_=(v: jfxe.EventHandler[jfxe.Event]) {
+    ObjectProperty.fillProperty[jfxe.EventHandler[jfxe.Event]](onCloseRequest, v)
   }
 
   /**

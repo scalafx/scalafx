@@ -27,8 +27,11 @@
 package scalafx.scene.transform
 
 import scalafx.Includes._
-import javafx.scene.{ transform => jfxst }
+import javafx.{event => jfxe}
+import javafx.scene.{transform => jfxst}
 import scalafx.delegate.SFXDelegate
+import scalafx.beans.property.{ObjectProperty, ReadOnlyBooleanProperty}
+
 
 object Transform {
 
@@ -82,4 +85,17 @@ object Transform {
  */
 abstract class Transform(override val delegate: jfxst.Transform) extends SFXDelegate[jfxst.Transform] {
 
+  // TODO implement missing methods from JFX2 and JFX8
+
+  /** Determines if this is currently an identity transform. */
+  def identity: ReadOnlyBooleanProperty = delegate.identityProperty
+
+  /** The onTransformChanged event handler is called whenever the transform changes any of its parameters. */
+  def onTransformChanged: ObjectProperty[jfxe.EventHandler[_ <: jfxst.TransformChangedEvent]] = delegate.onTransformChanged
+  def onTransformChanged_=(v: jfxe.EventHandler[_ <: jfxst.TransformChangedEvent]) {
+    ObjectProperty.fillProperty[jfxe.EventHandler[_ <: jfxst.TransformChangedEvent]](this.onTransformChanged, v)
+  }
+
+  /** Determines if this is currently a 2D transform. */
+  def type2D: ReadOnlyBooleanProperty = delegate.type2DProperty
 }

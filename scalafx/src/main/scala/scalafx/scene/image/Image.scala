@@ -28,10 +28,9 @@ package scalafx.scene.image
 
 import java.io.InputStream
 
-import javafx.scene.{ image => jfxsi }
+import javafx.scene.{image => jfxsi}
 import scalafx.Includes._
-import scalafx.beans.property.ReadOnlyBooleanProperty
-import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.beans.property.{ReadOnlyObjectProperty, ReadOnlyBooleanProperty, ReadOnlyDoubleProperty}
 import scalafx.delegate.SFXDelegate
 
 object Image {
@@ -82,6 +81,9 @@ class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image]
    * Indicates whether an error was detected while loading an image.
    */
   def error: ReadOnlyBooleanProperty = delegate.errorProperty
+
+  /** The exception which caused image loading to fail. */
+  def exception: ReadOnlyObjectProperty[java.lang.Exception] = delegate.exceptionProperty
 
   /**
    * The image height or 0 if the image loading fails.
