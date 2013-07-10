@@ -26,12 +26,14 @@
  */
 package scalafx.scene
 
-import javafx.scene.{paint => jfxsp}
 import javafx.{scene => jfxs}
+import jfxs.{paint => jfxsp, layout => jfxsl}
+import javafx.{collections => jfxc}
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Paint
+import scalafx.collections._
 
 object SubScene {
   implicit def sfxSubScene2jfx(v: SubScene) = v.delegate
@@ -43,8 +45,23 @@ class SubScene(override val delegate: jfxs.SubScene)
   extends Node(delegate)
   with SFXDelegate[jfxs.SubScene] {
 
-  // TODO Make SubScene API similar to SFX Scene, for instance create root content as Group and provide:
-  // def this(width: Double, height: Double) =  ...
+  // TODO Combine common features with Scene in a trait used by both.
+
+  /** Creates a SubScene with a [[http://docs.oracle.com/javafx/8/api/javafx/scene/Group.html Group]]
+    * as root Node with a specified size.
+    *
+    * @param width The width of the scene
+    * @param height The height of the scene
+    */
+  def this(width: Double, height: Double) = this(new jfxs.SubScene(new jfxs.Group(), width, height))
+
+  /** Constructs a SubScene with a [[http://docs.oracle.com/javafx/8/api/javafx/scene/Group.html Group]]
+    * as root Node, with a dimension of width and height,
+    * specifies whether a depth buffer is created for this scene and specifies whether
+    * scene anti-aliasing is requested.
+    */
+  def this(width: Double, height: Double, depthBuffer: Boolean, antiAliasing: Boolean) =
+    this(new jfxs.SubScene(new jfxs.Group(), width, height, depthBuffer, antiAliasing))
 
   /** Creates a SubScene for a specific root Node with a specific size. */
   def this(root: Parent, width: Double, height: Double) = this(new jfxs.SubScene(root, width, height))
@@ -60,6 +77,40 @@ class SubScene(override val delegate: jfxs.SubScene)
   def root: ObjectProperty[jfxs.Parent] = delegate.rootProperty
   def root_=(v: Parent) {
     ObjectProperty.fillProperty[jfxs.Parent](this.root, v)
+  }
+
+  /**
+   * Returns Nodes children from this Scene's `root`.
+   */
+  def getChildren = root.value match {
+    case group: jfxs.Group => group.getChildren
+    case pane: jfxsl.Pane => pane.getChildren
+    case _ => throw new IllegalStateException("Cannot access children of root: " + root +
+      "\nUse a class that extends Group or Pane, or override the getChildren method.")
+  }
+
+  /**
+   * Returns Content's Node children from this Scene's `root`.
+   */
+  def content: jfxc.ObservableList[jfxs.Node] = getChildren
+
+  /**
+   * Sets the list of Nodes children from this Scene's `root`, replacing the prior content. If you want append to
+   * current content, use `add` or similar.
+   *
+   * @param c list of Nodes children from this Scene's `root` to replace prior content.
+   */
+  def content_=(c: Iterable[Node]) {
+    fillSFXCollection(this.content, c)
+  }
+
+  /**
+   * Sets a Node child, replacing the prior content. If you want append to current content, use `add` or similar.
+   *
+   * @param n Node child to replace prior content.
+   */
+  def content_=(n: Node) {
+    fillSFXCollectionWithOne(this.content, n)
   }
 
   /** Specifies the type of camera use for rendering this SubScene. */
