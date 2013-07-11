@@ -36,14 +36,28 @@ import scalafx.delegate._
 /** Wrapper for [[javafx.application.ConditionalFeature]] */
 object ConditionalFeature extends SFXEnumDelegateCompanion[jfxa.ConditionalFeature, ConditionalFeature] {
 
-  val SCENE3D = new ConditionalFeature(jfxa.ConditionalFeature.SCENE3D)
+  val CONTROLS = new ConditionalFeature(jfxa.ConditionalFeature.CONTROLS)
+  val GRAPHICS = new ConditionalFeature(jfxa.ConditionalFeature.GRAPHICS)
   val EFFECT = new ConditionalFeature(jfxa.ConditionalFeature.EFFECT)
-  val SHAPE_CLIP = new ConditionalFeature(jfxa.ConditionalFeature.SHAPE_CLIP)
+  val FXML = new ConditionalFeature(jfxa.ConditionalFeature.FXML)
   val INPUT_METHOD = new ConditionalFeature(jfxa.ConditionalFeature.INPUT_METHOD)
+  val INPUT_MULTITOUCH = new ConditionalFeature(jfxa.ConditionalFeature.INPUT_MULTITOUCH)
+  val INPUT_POINTER = new ConditionalFeature(jfxa.ConditionalFeature.INPUT_POINTER)
+  val INPUT_TOUCH = new ConditionalFeature(jfxa.ConditionalFeature.INPUT_TOUCH)
+  val MEDIA = new ConditionalFeature(jfxa.ConditionalFeature.MEDIA)
+  val SCENE3D = new ConditionalFeature(jfxa.ConditionalFeature.SCENE3D)
+  val SHAPE_CLIP = new ConditionalFeature(jfxa.ConditionalFeature.SHAPE_CLIP)
+  val SWING = new ConditionalFeature(jfxa.ConditionalFeature.SWING)
+  val SWT = new ConditionalFeature(jfxa.ConditionalFeature.SWT)
   val TRANSPARENT_WINDOW = new ConditionalFeature(jfxa.ConditionalFeature.TRANSPARENT_WINDOW)
+  val TWO_LEVEL_FOCUS = new ConditionalFeature(jfxa.ConditionalFeature.TWO_LEVEL_FOCUS)
+  val UNIFIED_WINDOW = new ConditionalFeature(jfxa.ConditionalFeature.UNIFIED_WINDOW)
+  val VIRTUAL_KEYBOARD = new ConditionalFeature(jfxa.ConditionalFeature.VIRTUAL_KEYBOARD)
+  val WEB = new ConditionalFeature(jfxa.ConditionalFeature.WEB)
 
   protected override def unsortedValues: Array[ConditionalFeature] = Array(
-    SCENE3D, EFFECT, SHAPE_CLIP, INPUT_METHOD, TRANSPARENT_WINDOW
+    GRAPHICS, CONTROLS, MEDIA, WEB, SWT, SWING, FXML, SCENE3D, EFFECT, SHAPE_CLIP, INPUT_METHOD, TRANSPARENT_WINDOW,
+    UNIFIED_WINDOW, TWO_LEVEL_FOCUS,  VIRTUAL_KEYBOARD, INPUT_TOUCH, INPUT_MULTITOUCH, INPUT_POINTER
   )
 }
 

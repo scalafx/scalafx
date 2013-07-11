@@ -33,9 +33,10 @@ import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 object TextBoundsType extends SFXEnumDelegateCompanion[jfxst.TextBoundsType, TextBoundsType] {
 
   val LOGICAL = new TextBoundsType(jfxst.TextBoundsType.LOGICAL)
+  val LOGICAL_VERTICAL_CENTER = new TextBoundsType(jfxst.TextBoundsType.LOGICAL_VERTICAL_CENTER)
   val VISUAL = new TextBoundsType(jfxst.TextBoundsType.VISUAL)
 
-  protected override def unsortedValues: Array[TextBoundsType] = Array(LOGICAL, VISUAL)
+  protected override def unsortedValues: Array[TextBoundsType] = Array(LOGICAL, VISUAL, LOGICAL_VERTICAL_CENTER)
 }
 
 

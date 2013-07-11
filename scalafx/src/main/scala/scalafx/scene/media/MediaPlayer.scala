@@ -47,6 +47,9 @@ object MediaPlayer {
   object Status
     extends SFXEnumDelegateCompanion[jfxsm.MediaPlayer.Status, Status] {
 
+    /** State of the player after dispose() method is invoked. */
+    val DISPOSED = new Status(jfxsm.MediaPlayer.Status.DISPOSED)
+
     /**
      * State of the player when a critical error has occurred.
      */
@@ -84,7 +87,7 @@ object MediaPlayer {
     val UNKNOWN = new Status(jfxsm.MediaPlayer.Status.UNKNOWN)
 
     protected override def unsortedValues: Array[Status] = Array(HALTED, PAUSED, PLAYING, READY, STALLED, STOPPED,
-      UNKNOWN)
+      UNKNOWN, DISPOSED)
 
   }
 

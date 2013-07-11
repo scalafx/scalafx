@@ -26,13 +26,12 @@
  */
 package scalafx.scene.control
 
-import javafx.{collections => jfxc}
+import javafx.{event => jfxe}
 import javafx.{ scene => jfxs }
 import javafx.scene.{ control => jfxsc }
+import javafx.{ util => jfxu }
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.{DoubleProperty, BooleanProperty, ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
@@ -250,6 +249,9 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
     columnResizePolicy() = v
   }
 
+  /** The comparator property is a read-only property that is representative of the current state of the `sort order` list. */
+  def comparator : ReadOnlyObjectProperty[java.util.Comparator[S]] = delegate.comparatorProperty
+
   /**
    * Specifies whether this TableView is editable - only if the TableView, the TableColumn (if applicable) and the
    * TableCells within it are both editable will a TableCell be able to go into their editing state.
@@ -263,6 +265,12 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
    * Represents the current cell being edited, or null if there is no cell being edited.
    */
   def editingCell: ReadOnlyObjectProperty[jfxsc.TablePosition[S,_]] = delegate.editingCellProperty
+
+  /** Specifies whether this control has cells that are a fixed height (of the specified value). */
+  def fixedCellSize : DoubleProperty = delegate.fixedCellSizeProperty
+  def fixedCellSize_=(v:Double) {
+    fixedCellSize() = v
+  }
 
   /**
    * Represents the currently-installed TableView.TableViewFocusModel for this TableView.
@@ -335,10 +343,54 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   def resizeColumn(column: TableColumn[S, _], delta: Double) = delegate.resizeColumn(column, delta)
 
   /**
+   * Called when there's a request to scroll an index into view using `scrollTo(int)` or `scrollTo(Object)`
+   */
+  def onScrollTo: ObjectProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]] = delegate.onScrollToProperty
+  def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]) {
+    ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]](onScrollTo, v)
+  }
+
+  /**
+   * Called when there's a request to scroll a column into view using `scrollToColumn(TableColumn)` or `scrollToColumnIndex(int)`.
+   */
+  def onScrollToColumn: ObjectProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[jfxsc.TableColumn[S,_]]]] = delegate.onScrollToColumnProperty
+  def onScrollToColumn_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[jfxsc.ScrollToEvent[jfxsc.TableColumn[S,_]]]]) {
+    ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[jfxsc.TableColumn[S,_]]]](onScrollToColumn, v)
+  }
+
+  /** Called when there's a request to sort the control. */
+  def onSort: ObjectProperty[jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TableView[S]]]] = delegate.onSortProperty
+  def onSort_=(v: jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TableView[S]]]) {
+    ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TableView[S]]]](onSort, v)
+  }
+
+  /**
    * Scrolls the TableView so that the given index is visible within the viewport.
    */
   def scrollTo(index: Int) {
     delegate.scrollTo(index)
   }
 
+  /** Scrolls the TableView so that the given object is visible within the viewport. */
+  def scrollTo(o: Object) {
+    delegate.scrollTo(o)
+  }
+
+  /** Scrolls the TableView so that the given object is visible within the viewport. */
+  def onScrollToColumn(column: TableColumn[S,_]) {
+    delegate.onScrollToColumn(column)
+  }
+
+  /**
+   * Scrolls the TableView so that the given index is visible within the viewport.
+   */
+  def scrollToColumnIndex(index: Int) {
+    delegate.scrollToColumnIndex(index)
+  }
+
+  /** The sort policy specifies how sorting in this TableView should be performed. */
+  def sortPolicy: ObjectProperty[jfxu.Callback[jfxsc.TableView[S],java.lang.Boolean]] = delegate.sortPolicyProperty
+  def sortPolicy_=(v: jfxu.Callback[jfxsc.TableView[S],java.lang.Boolean]) {
+    ObjectProperty.fillProperty[jfxu.Callback[jfxsc.TableView[S],java.lang.Boolean]](sortPolicy, v)
+  }
 }

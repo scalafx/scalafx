@@ -30,9 +30,7 @@ import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe}
 import javafx.{util => jfxu}
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property._
 import scalafx.event.Event
 import scalafx.delegate.SFXDelegate
 
@@ -150,6 +148,15 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    */
   def editingItem: ReadOnlyObjectProperty[jfxsc.TreeItem[T]] = delegate.editingItemProperty
 
+  /** Represents the number of tree nodes presently able to be visible in the TreeView. */
+  def expandedItemCount : ReadOnlyIntegerProperty = delegate.expandedItemCountProperty
+
+  /** Specifies whether this control has cells that are a fixed height (of the specified value). */
+  def fixedCellSize : DoubleProperty = delegate.fixedCellSizeProperty
+  def fixedCellSize_=(v:Double) {
+    fixedCellSize() = v
+  }
+
   /**
    * The FocusModel provides the API through which it is possible to control
    * focus on zero or one rows of the TreeView.
@@ -184,11 +191,26 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   }
 
   /**
+   * Called when there's a request to scroll an index into view using `scrollTo(Int)`
+   */
+  def onScrollTo: ObjectProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]] = delegate.onScrollToProperty
+  def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]) {
+    ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]](onScrollTo, v)
+  }
+
+  /**
    * Property representing the root node of the TreeView.
    */
   def root: ObjectProperty[jfxsc.TreeItem[T]] = delegate.rootProperty
   def root_=(v: TreeItem[T]) {
     root() = v
+  }
+
+  /**
+   * Scrolls the TreeView such that the item in the given index is visible to the end user.
+   */
+  def scrollTo(index: Int) {
+    delegate.scrollTo(index)
   }
 
   /**

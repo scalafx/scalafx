@@ -29,15 +29,15 @@ package scalafx.scene.control
 import javafx.scene.{ control => jfxsc }
 import javafx.{ event => jfxe }
 import javafx.{ geometry => jfxg }
+import javafx.{scene => jfxs}
 import javafx.{ util => jfxu }
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyIntegerProperty
+import scalafx.beans.property.{DoubleProperty, BooleanProperty, ObjectProperty, ReadOnlyIntegerProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.event.Event
 import scalafx.geometry.Orientation
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 
 object ListView {
   implicit def sfxListView2jfx[T](l: ListView[T]) = l.delegate
@@ -146,6 +146,12 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    */
   def editingIndex: ReadOnlyIntegerProperty = delegate.editingIndexProperty
 
+  /** Specifies whether this control has cells that are a fixed height (of the specified value). */
+  def fixedCellSize : DoubleProperty = delegate.fixedCellSizeProperty
+  def fixedCellSize_=(v:Double) {
+    fixedCellSize() = v
+  }
+
   /**
    * The FocusModel provides the API through which it is possible to both get and set the focus on
    * a single item within a ListView.
@@ -196,6 +202,13 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
     orientation() = v
   }
 
+
+  /** This Node is shown to the user when the listview has no content to show. */
+  def placeholder: ObjectProperty[jfxs.Node] = delegate.placeholderProperty
+  def placeholder_=(v: Node) {
+    ObjectProperty.fillProperty[jfxs.Node](placeholder, v)
+  }
+
   /**
    * The SelectionModel provides the API through which it is possible to select single or multiple
    * items within a ListView, as well as inspect which items have been selected by the user.
@@ -214,10 +227,22 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
   }
 
   /**
+   * Called when there's a request to scroll an index into view using scrollTo(int) or #scrollTo(S)
+   */
+  def onScrollTo: ObjectProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]] = delegate.onScrollToProperty
+  def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]) {
+    ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]](onScrollTo, v)
+  }
+
+  /**
    * Scrolls the ListView such that the item in the given index is visible to the end user.
    */
   def scrollTo(index: Int) {
     delegate.scrollTo(index)
   }
 
+  /** Scrolls the TableView so that the given object is visible within the viewport. */
+  def scrollTo(o: T) {
+    delegate.scrollTo(o)
+  }
 }
