@@ -168,6 +168,11 @@ object TreeItem {
    */
   def childrenModificationEvent = jfxsc.TreeItem.childrenModificationEvent
 
+  /** The general EventType used when the TreeItem receives a modification
+    * that results in the number of children being visible changes.
+    */
+  def expandedItemCountChangeEvent = jfxsc.TreeItem.expandedItemCountChangeEvent
+
   /**
    * An EventType used when the TreeItem receives a modification to its
    * graphic property.
@@ -176,20 +181,20 @@ object TreeItem {
 
   /**
    * The general EventType used when the TreeItem receives a modification that
-   *  results in the number of children being visible changes.
+   * results in the number of children being visible changes.
    */
   // NOTE JFX8: Comment method that disappeared in JavaFX 8. Did it moved somewhere?
-//  def treeItemCountChangeEvent = jfxsc.TreeItem.treeItemCountChangeEvent
+  //  def treeItemCountChangeEvent = jfxsc.TreeItem.treeItemCountChangeEvent
 
   /**
    * The base EventType used to indicate that an event has occurred within a
-   *  TreeItem.
+   * TreeItem.
    */
   def treeNotificationEvent = jfxsc.TreeItem.treeNotificationEvent
 
   /**
    * An EventType used when the TreeItem receives a modification to its value
-   *  property.
+   * property.
    */
   def valueChangedEvent = jfxsc.TreeItem.valueChangedEvent
 

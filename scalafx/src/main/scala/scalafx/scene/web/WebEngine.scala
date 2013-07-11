@@ -164,4 +164,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) ex
     delegate.loadContent(content, contentType)
   }
 
+  def userAgent : StringProperty = delegate.userAgentProperty
+  def userAgent_=(v:String) {
+    userAgent() = v
+  }
 }

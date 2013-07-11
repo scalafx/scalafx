@@ -37,7 +37,7 @@ object EventType {
    * The root event type. All other event types are either direct or indirect sub types of it.
    * It is also the only event type which has its super event type set to null.
    */
-  val ROOT = jfxe.EventType.ROOT
+  val ROOT = new EventType(jfxe.EventType.ROOT)
 }
 
 class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T] = new jfxe.EventType[T]) extends SFXDelegate[jfxe.EventType[T]] {

@@ -32,11 +32,11 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
 
-/**
- * InputMethodTextRun Spec tests.
- *
- *
- */
+/** InputMethodTextRun Spec tests. */
 @RunWith(classOf[JUnitRunner])
 class InputMethodTextRunSpec
-  extends SimpleSFXDelegateSpec[jfxsi.InputMethodTextRun, InputMethodTextRun](classOf[jfxsi.InputMethodTextRun], classOf[InputMethodTextRun])
+  extends SimpleSFXDelegateSpec[jfxsi.InputMethodTextRun, InputMethodTextRun](classOf[jfxsi.InputMethodTextRun], classOf[InputMethodTextRun]) {
+
+  override protected def getJavaClassInstance = new jfxsi.InputMethodTextRun("Coffee rules", jfxsi.InputMethodHighlight.SELECTED_CONVERTED)
+  override protected def getScalaClassInstance = new InputMethodTextRun("Coffee rules", InputMethodHighlight.SELECTED_CONVERTED)
+}

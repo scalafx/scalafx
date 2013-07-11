@@ -28,7 +28,7 @@ package scalafx.scene
 
 import javafx.beans.{binding => jfxbb}
 import javafx.beans.{property => jfxbp}
-import javafx.{scene => jfxs, event => jfxe}
+import javafx.{scene => jfxs, event => jfxe, geometry => jfxg}
 import jfxs.{input => jfxsi, paint => jfxsp}
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
@@ -42,10 +42,12 @@ class SceneProperty(override val delegate: jfxbp.ReadOnlyObjectProperty[jfxs.Sce
   def camera = jfxbb.Bindings.select[jfxbb.ObjectBinding[jfxs.Camera]](delegate, "camera")
   def cursor = jfxbb.Bindings.select[jfxbb.ObjectBinding[jfxs.Cursor]](delegate, "cursor")
   def depthBuffer = jfxbb.Bindings.selectBoolean(delegate, "depthBuffer")
+  def effectiveNodeOrientation = jfxbb.Bindings.select[jfxbp.ReadOnlyObjectProperty[jfxg.NodeOrientation]](delegate, "effectiveNodeOrientation")
   def eventDispatcher = jfxbb.Bindings.select[jfxbb.ObjectBinding[jfxe.EventDispatcher]](delegate, "eventDispatcher")
   def fill = jfxbb.Bindings.select[jfxbb.ObjectBinding[jfxsp.Paint]](delegate, "fill")
   def focusOwner = jfxbb.Bindings.select[jfxs.Node](delegate, "focusOwner")
   def height = jfxbb.Bindings.selectDouble(delegate, "height")
+  def nodeOrientation = jfxbb.Bindings.select[jfxbp.ReadOnlyObjectProperty[jfxg.NodeOrientation]](delegate, "nodeOrientation")
   def onContextMenuRequested = jfxbb.Bindings.select[jfxbb.ObjectBinding[_ >: jfxsi.ContextMenuEvent]](delegate, "onContextMenuRequested")
   def onDragDetected = jfxbb.Bindings.select[jfxbb.ObjectBinding[_ >: jfxsi.DragEvent]](delegate, "onDragDetected")
   def onDragDone = jfxbb.Bindings.select[jfxbb.ObjectBinding[_ >: jfxsi.DragEvent]](delegate, "onDragDone")

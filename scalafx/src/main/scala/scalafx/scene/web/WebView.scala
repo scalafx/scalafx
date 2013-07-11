@@ -30,13 +30,11 @@ import javafx.{ event => jfxe }
 import javafx.scene.{ text => jfxst }
 import javafx.scene.{ web => jfxsw }
 import javafx.{ geometry => jfxg }
-import javafx.{ util => jfxu }
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Parent
 import scalafx.beans.property._
 import scalafx.scene.text.FontSmoothingType
-import javafx.util.Callback
 
 object WebView {
   implicit def sfxWebView2jfx(wv: WebView) = wv.delegate
@@ -195,5 +193,10 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
   def fontSmoothingType: ObjectProperty[jfxst.FontSmoothingType] = delegate.fontSmoothingTypeProperty
   def fontSmoothingType_=(v: FontSmoothingType) {
     fontSmoothingType() = v
+  }
+
+  def zoom : DoubleProperty = delegate.zoomProperty
+  def zoom_=(v:Double) {
+    zoom() = v
   }
 }

@@ -66,6 +66,9 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
     delegate.setFullScreen(value)
   }
 
+  /** Defines whether the Stage is maximized or not. */
+  def maximized: ReadOnlyBooleanProperty = delegate.maximizedProperty
+
   /**
    * Defines the title of the Stage.
    */

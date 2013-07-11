@@ -28,7 +28,7 @@ package scalafx.scene.text
 
 import scala.collection.JavaConversions._
 
-import javafx.scene.{ text => jfxst }
+import javafx.scene.{text => jfxst}
 import scalafx.delegate.SFXDelegate
 
 object Font {
@@ -43,9 +43,17 @@ object Font {
 
   /**
    * Gets all the font families installed on the user's system, including any
-   *  application fonts or SDK fonts.
+   * application fonts or SDK fonts.
    */
   def families = jfxst.Font.getFamilies.toSeq
+
+  /** Searches for an appropriate font based on the default font family name and given font size. */
+  def font(size: Double) = new Font(jfxst.Font.font(size))
+  def apply(size: Double) = new Font(jfxst.Font.font(size))
+
+  /** Searches for an appropriate font based on the given font family name and default font size. */
+  def font(family: String) = new Font(jfxst.Font.font(family))
+  def apply(family: String) = new Font(jfxst.Font.font(family))
 
   /**
    * Searches for an appropriate font based on the font family name and size.

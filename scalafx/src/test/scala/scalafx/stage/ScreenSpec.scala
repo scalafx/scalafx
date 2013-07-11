@@ -27,7 +27,7 @@
 
 package scalafx.stage
 
-import javafx.{ stage => jfxs }
+import javafx.{stage => jfxs}
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -42,3 +42,9 @@ import scalafx.testutil.RunOnApplicationThread
 @RunWith(classOf[JUnitRunner])
 class ScreenSpec
   extends SimpleSFXDelegateSpec[jfxs.Screen, Screen](classOf[jfxs.Screen], classOf[Screen])
+  with RunOnApplicationThread {
+
+  override protected def getJavaClassInstance = jfxs.Screen.getPrimary
+
+  override protected def getScalaClassInstance = Screen.primary
+}

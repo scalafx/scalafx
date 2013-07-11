@@ -26,11 +26,8 @@
  */
 package scalafx.scene
 
-import collection.JavaConversions._
-import javafx.{ event => jfxe, scene => jfxs }
+import javafx.{event => jfxe, scene => jfxs, collections => jfxc, util => jfxu, geometry => jfxg}
 import jfxs.{ input => jfxsi, paint => jfxsp, layout => jfxsl }
-import javafx.{ collections => jfxc }
-import javafx.{ util => jfxu }
 import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
@@ -38,6 +35,7 @@ import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.scene.paint.Paint
 import scalafx.delegate.SFXDelegate
+import scalafx.geometry.NodeOrientation
 import scalafx.scene.input.Mnemonic
 import scalafx.scene.image.WritableImage
 import scalafx.scene.input.TransferMode
@@ -155,6 +153,9 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
     cursor() = v
   }
 
+  /** The effective node orientation of a scene resolves the inheritance of node orientation, returning either left-to-right or right-to-left.  */
+  def effectiveNodeOrientation: ReadOnlyObjectProperty[jfxg.NodeOrientation] = delegate.effectiveNodeOrientationProperty
+
   /**
    * Specifies the event dispatcher for this scene.
    */
@@ -180,6 +181,11 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * The width of this Scene
    */
   def width: ReadOnlyDoubleProperty = delegate.widthProperty
+
+  def nodeOrientation: ObjectProperty[jfxg.NodeOrientation] = delegate.nodeOrientationProperty
+  def nodeOrientation_=(v: NodeOrientation) {
+    ObjectProperty.fillProperty[jfxg.NodeOrientation](this.nodeOrientation, v)
+  }
 
   /**
    * Defines a function to be called when a mouse button has been clicked (pressed and released) on this `Scene`.
