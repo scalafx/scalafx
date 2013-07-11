@@ -63,7 +63,9 @@ object ScalaFXBuild extends Build {
                 scalatest % "test",
                 junit % "test" ),
             unmanagedListing,
-            description := "The ScalaFX framework"
+            description := "The ScalaFX framework",
+            fork in Test := true,
+            parallelExecution in Test := false
         )
      )
     
@@ -78,6 +80,8 @@ object ScalaFXBuild extends Build {
             description := "The ScalaFX demonstrations",
             // fork a new JVM for 'test:run', but not 'test'
             fork in run := true,
+            fork in Test := true,
+            parallelExecution in Test := false,
             // add a JVM option to use when forking a JVM for 'run'
             javaOptions ++= Seq(
               "-Xmx512M",
