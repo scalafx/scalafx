@@ -28,9 +28,10 @@ package scalafx.testutil
 
 import java.lang.reflect.Method
 import java.lang.reflect.Modifier
+import org.scalatest.Assertions
 import scala.annotation.tailrec
 
-private[testutil] trait AbstractComparator {
+private[testutil] trait AbstractComparator extends Assertions {
 
   private object MethodsComparators {
 
@@ -253,7 +254,7 @@ private[testutil] trait AbstractComparator {
   protected def isSpecialMethodName(methodName: String): Boolean
 
   /**
-   * 
+   *
    */
   protected def getDesirableMethodName(javaMethod: Method): String
 
