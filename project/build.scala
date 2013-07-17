@@ -100,7 +100,6 @@ object ScalaFXBuild extends Build {
         junit % "test"),
       unmanagedListing,
       description := "The ScalaFX demonstrations",
-      // fork a new JVM for 'test:run', but not 'test'
       fork in run := true,
       fork in Test := true,
       parallelExecution in Test := false,
