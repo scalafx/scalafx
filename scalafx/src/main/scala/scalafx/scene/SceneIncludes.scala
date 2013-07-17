@@ -82,6 +82,8 @@ trait SceneIncludes extends ChartIncludes
  */
 trait LowerPriorityIncludes {
 
+  implicit def jfxAmbientLight2sfx(v: jfxs.AmbientLight) = new AmbientLight(v)
+
   /**
    * $START$CHI.html $CHI$END
    *
@@ -130,6 +132,8 @@ trait LowerPriorityIncludes {
    */
   implicit def jfxImageCursor2sfx(ic: jfxs.ImageCursor) = new ImageCursor(ic)
 
+  implicit def jfxLightBase2sfx(v: jfxs.LightBase) = new LightBase(v) {}
+
   /**
    * $START$NOD.html $NOD$END
    *
@@ -161,6 +165,8 @@ trait LowerPriorityIncludes {
    * @return $SFX $PEC
    */
   implicit def jfxPerspectiveCamera2sfx(v: jfxs.PerspectiveCamera) = new PerspectiveCamera(v)
+
+  implicit def jfxPointLight2sfx(v: jfxs.PointLight) = new PointLight(v)
 
   /**
    * $START$SCE.html $SCE$END
