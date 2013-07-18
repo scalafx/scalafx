@@ -27,7 +27,7 @@
 package scalafx.scene
 
 import javafx.{event => jfxe, scene => jfxs, collections => jfxc, util => jfxu, geometry => jfxg}
-import jfxs.{ input => jfxsi, paint => jfxsp, layout => jfxsl }
+import jfxs.{input => jfxsi, paint => jfxsp, layout => jfxsl}
 import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
@@ -50,7 +50,7 @@ object Scene {
  *
  * @constructor Create a new ScalaFX Scene with JavaFX Scene as delegate.
  * @param delegate JavaFX Scene delegated. Its default value is a JavaFX Scene with a
- * [[http://docs.oracle.com/javafx/2/api/javafx/scene/Group.html Group]] as root Node.
+ *                 [[http://docs.oracle.com/javafx/2/api/javafx/scene/Group.html Group]] as root Node.
  */
 class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group()))
   extends SFXDelegate[jfxs.Scene] {
@@ -87,10 +87,17 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @param width The width of the scene
    * @param height The height of the scene
    */
-  def this(parent: Parent, width: Double, height: Double, depthBuffer: Boolean) = this(new jfxs.Scene(parent, width, height, depthBuffer))
-  //def this(stackPane: jfxsl.StackPane) = this (new jfxs.Scene(stackPane))
+  def this(parent: Parent, width: Double, height: Double, depthBuffer: Boolean) =
+    this(new jfxs.Scene(parent, width, height, depthBuffer))
 
-  //def this(stackPane: jfxsl.StackPane, width: Double, height: Double) = this (new jfxs.Scene(stackPane, width, height))
+  /**
+   * Creates a Scene with a `Group` as parent.
+   *
+   * @param width The width of the scene
+   * @param height The height of the scene
+   */
+  def this(width: Double, height: Double, depthBuffer: Boolean) =
+    this(new jfxs.Scene(new jfxs.Group(), width, height, depthBuffer))
 
   /**
    * Returns the root Node of the scene graph
@@ -109,8 +116,9 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    */
   def getChildren = root.value match {
     case group: jfxs.Group => group.getChildren
-    case pane: jfxsl.Pane  => pane.getChildren
-    case _                 => throw new IllegalStateException("Cannot access children of root: " + root + "\nUse a class that extends Group or Pane, or override the getChildren method.")
+    case pane: jfxsl.Pane => pane.getChildren
+    case _ => throw new IllegalStateException("Cannot access children of root: " + root +
+      "\nUse a class that extends Group or Pane, or override the getChildren method.")
   }
 
   /**
@@ -412,7 +420,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    *
    * @param selector The css selector to look up
    * @return A [[scala.Some]] containing the Node in the scene which matches the CSS selector, or [[scala.None]]
-   * if none is found.
+   *         if none is found.
    */
   def lookup(selector: String): Option[Node] = Option(delegate.lookup(selector))
 
