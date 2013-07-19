@@ -177,8 +177,8 @@ object TableColumn {
  * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.html]].
  */
 class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfxsc.TableColumn[S, T]())
-  extends SFXDelegate[jfxsc.TableColumn[S, T]]
-  with TableColumnBase[S,T] {
+  extends TableColumnBase[S,T](delegate)
+  with SFXDelegate[jfxsc.TableColumn[S, T]] {
 
   /**
    * Creates a TableColumn with the text set to the provided string, with default cell factory, comparator, and

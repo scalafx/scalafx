@@ -53,7 +53,8 @@ object TableColumnBase {
 /**
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/control/TableColumnBase.html]].
  */
-trait TableColumnBase[S, T] extends SFXDelegate[jfxsc.TableColumnBase[S, T]] {
+abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.TableColumnBase[S, T])
+  extends SFXDelegate[jfxsc.TableColumnBase[S, T]] {
 
   /**
    * This enables support for nested columns, which can be useful to group together related data.
