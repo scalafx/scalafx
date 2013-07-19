@@ -57,6 +57,10 @@ trait TransformIncludes {
    */
   implicit def jfxAffine2sfx(v: jfxst.Affine) = new Affine(v)
 
+  implicit def jfxMatrixType2sfx(v: jfxst.MatrixType) = new MatrixType(v)
+
+  implicit def jfxNonInvertibleTransformException2sfx(v: jfxst.NonInvertibleTransformException) = new NonInvertibleTransformException(v)
+
   /**
    * $START$RT.html $RT$END
    *
@@ -88,6 +92,8 @@ trait TransformIncludes {
    * @return $SFX $TR
    */
   implicit def jfxTransform2sfx(v: jfxst.Transform) = new Transform(v) {}
+
+  implicit def jfxTransformChangedEvent2sfx(v: jfxst.TransformChangedEvent) = new TransformChangedEvent(v)
 
   /**
    * $START$TL.html $TL$END
