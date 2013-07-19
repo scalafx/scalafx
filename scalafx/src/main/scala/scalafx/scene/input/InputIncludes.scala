@@ -257,6 +257,8 @@ trait InputIncludes {
    */
   implicit def jfxMouseDragEvent2sfx(mde: jfxsi.MouseDragEvent) = new MouseDragEvent(mde)
 
+  implicit def jfxPickResult2sfx(m: jfxsi.PickResult) = new PickResult(m)
+
   /**
    * $START$RTEV.html $RTEV$END
    *

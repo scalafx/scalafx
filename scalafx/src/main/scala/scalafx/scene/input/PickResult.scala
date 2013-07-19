@@ -1,0 +1,85 @@
+/*
+ * Copyright (c) 2011-2013, ScalaFX Project
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of the ScalaFX Project nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE SCALAFX PROJECT OR ITS CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+package scalafx.scene.input
+
+import javafx.{event => jfxe}
+import javafx.scene.{input => jfxsi}
+import scalafx.Includes._
+import scalafx.scene.Node
+import scalafx.delegate.SFXDelegate
+import scalafx.geometry.{Point3D, Point2D}
+
+object PickResult {
+  implicit def sfxPickResult2jfx(m: PickResult) = m.delegate
+
+  /** An undefined face. This value is used for the intersected face if the picked node has no user-specified faces. */
+  val FACE_UNDEFINED: Int = jfxsi.PickResult.FACE_UNDEFINED
+}
+
+class PickResult(override val delegate: jfxsi.PickResult)
+  extends SFXDelegate[jfxsi.PickResult] {
+
+  /** Creates a pick result for a 2D case where no additional information is needed.  */
+  def this(target: jfxe.EventTarget, sceneX: Double, sceneY: Double) {
+    this(new jfxsi.PickResult(target, sceneX, sceneY))
+  }
+
+  /** Creates a new instance of PickResult for a non-3d-shape target. */
+  def this(node: Node, point: Point3D, distance: Double) {
+    this(new jfxsi.PickResult(node, point, distance))
+  }
+
+  /** Creates a new instance of PickResult. */
+  def this(node: Node, point: Point3D, distance: Double, face: Int, texCoord: Point2D) {
+    this(new jfxsi.PickResult(node, point, distance, face, texCoord))
+  }
+
+  /** Returns the intersected distance between camera position and the intersected point. */
+  def intersectedDistance: Double = delegate.getIntersectedDistance
+
+  /** Returns the intersected face of the picked Node,
+    * `FACE_UNDEFINED` if the node doesn't have user-specified faces or was picked on bounds.
+    */
+  def intersectedFace: Int = delegate.getIntersectedFace
+
+  /** Returns the intersected node. Returns `None` if there was no intersection with any node and the scene was picked. */
+  def intersectedNode: Option[Node] = delegate.getIntersectedNode match {
+    case null => None
+    case v => Some[Node](v)
+  }
+
+  /** Returns the intersected point in local coordinate of the picked Node. */
+  def intersectedPoint: Point3D = delegate.getIntersectedPoint
+
+  /** Return the intersected texture coordinates of the picked 3d shape.
+    * If the picked target is not Shape3D or has pickOnBounds==true, it returns `None`.
+    */
+  def intersectedTexCoord: Option[Point2D] = delegate.getIntersectedTexCoord match {
+    case null => None
+    case v => Some[Point2D](v)
+  }
+}
