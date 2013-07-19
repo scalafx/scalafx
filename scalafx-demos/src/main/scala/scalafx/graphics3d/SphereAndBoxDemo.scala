@@ -47,7 +47,7 @@ object SphereAndBoxDemo extends JFXApp {
       val box = new Box(400, 400, 400) {
         material = new PhongMaterial {
           diffuseColor = Color.RED
-          specularColor = Color.ORANGE
+          specularColor = Color.PINK
         }
         translateZ = 225
       }
@@ -92,17 +92,17 @@ object SphereAndBoxDemo extends JFXApp {
       angle <== angleY
       axis = Rotate.YAxis
     }
-    var anchorY: Double = 0
+    var anchorX: Double = 0
     var anchorAngleY: Double = 0
 
     node.transforms = Seq(yRotate)
 
     scene.onMousePressed = (event: MouseEvent) => {
-      anchorY = event.sceneY
-      anchorAngleY = angleY.get()
+      anchorX = event.sceneX
+      anchorAngleY = angleY()
     }
     scene.onMouseDragged = (event: MouseEvent) => {
-      angleY() = anchorAngleY + event.sceneX
+      angleY() = anchorAngleY + anchorX - event.sceneX
     }
   }
 }
