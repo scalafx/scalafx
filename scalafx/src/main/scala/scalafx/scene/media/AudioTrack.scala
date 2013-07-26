@@ -27,14 +27,13 @@
 package scalafx.scene.media
 
 import javafx.scene.{ media => jfxsm }
-import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object AudioTrack {
   implicit def sfxAudioTrack2jfx(at: AudioTrack) = at.delegate
 }
 
-final class AudioTrack(override val delegate: jfxsm.AudioTrack) extends Track(delegate) with SFXDelegate[jfxsm.AudioTrack] {
+class AudioTrack(override val delegate: jfxsm.AudioTrack) extends Track(delegate) with SFXDelegate[jfxsm.AudioTrack] {
 
   /**
    * Retrieves the language of the audio track.

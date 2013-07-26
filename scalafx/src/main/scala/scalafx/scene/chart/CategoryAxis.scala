@@ -40,7 +40,10 @@ object CategoryAxis {
   def apply(categories: ObservableBuffer[String]) = new CategoryAxis(new jfxsc.CategoryAxis(categories))
 }
 
-final class CategoryAxis(override val delegate:jfxsc.CategoryAxis = new jfxsc.CategoryAxis) extends Axis[String](delegate) with SFXDelegate[jfxsc.CategoryAxis] {
+class CategoryAxis(override val delegate:jfxsc.CategoryAxis = new jfxsc.CategoryAxis)
+  extends Axis[String](delegate)
+  with SFXDelegate[jfxsc.CategoryAxis] {
+
   def categorySpacing: ReadOnlyDoubleProperty = delegate.categorySpacingProperty
   
   def endMargin: DoubleProperty = delegate.endMarginProperty

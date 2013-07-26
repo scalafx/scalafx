@@ -32,13 +32,12 @@ import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyIntegerProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
-import scalafx.util.Duration
 
 object Media {
   implicit def sfxMedia2jfx(m: Media) = m.delegate
 }
 
-final class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.Media] {
+class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.Media] {
 
   /**
    * Constructs a Media instance.

@@ -45,7 +45,8 @@ object EqualizerBand {
   val MIN_GAIN = jfxsm.EqualizerBand.MIN_GAIN
 }
 
-final class EqualizerBand(override val delegate: jfxsm.EqualizerBand = new jfxsm.EqualizerBand) extends SFXDelegate[jfxsm.EqualizerBand] {
+class EqualizerBand(override val delegate: jfxsm.EqualizerBand = new jfxsm.EqualizerBand)
+  extends SFXDelegate[jfxsm.EqualizerBand] {
 
   /**
    * Custom EqualizerBand constructor.

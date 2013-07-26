@@ -100,7 +100,7 @@ object MediaPlayer {
   val Indefinite: Int = jfxsm.MediaPlayer.INDEFINITE
 }
 
-final class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[jfxsm.MediaPlayer] {
+class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[jfxsm.MediaPlayer] {
 
   /**
    * Create a player for a specific media.
