@@ -26,8 +26,8 @@
  */
 package scalafx.scene.media
 
-import javafx.scene.{ media => jfxsm }
-import javafx.{ util => jfxu }
+import javafx.scene.{media => jfxsm}
+import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyIntegerProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
@@ -72,12 +72,19 @@ class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.Media]
   def onError_=(v: Runnable) {
     onError() = v
   }
-  
+  def onError_=(op: => Unit) {
+    onError() = new Runnable {
+      def run() {
+        op
+      }
+    }
+  }
+
   /**
    * Retrieve the source URI of the media.
    */
   def source = delegate.getSource
-  
+
   /**
    * Retrieve the tracks contained in this media source.
    */
