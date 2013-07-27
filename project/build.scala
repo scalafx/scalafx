@@ -107,8 +107,7 @@ object ScalaFXBuild extends Build {
       javaOptions ++= Seq(
         "-Xmx512M",
         "-Djavafx.verbose"
-      ),
-      mainClass in(Compile, run) := Some("scalafx.ColorfulCircles")
+      )
     )
   ) dependsOn (
     scalafx % "compile;test->test"
