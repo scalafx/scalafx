@@ -56,7 +56,7 @@ object NumberAxis {
     extends StringConverterDelegate[java.lang.Number, Number, jfxsc.NumberAxis.DefaultFormatter](delegate)
 }
 
-final class NumberAxis(override val delegate: jfxsc.NumberAxis = new jfxsc.NumberAxis)
+class NumberAxis(override val delegate: jfxsc.NumberAxis = new jfxsc.NumberAxis)
   extends ValueAxis[Number](delegate)
   with SFXDelegate[jfxsc.NumberAxis] {
 

@@ -35,7 +35,6 @@ import scalafx.beans.binding._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.StringProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.Side
 import scalafx.scene.paint.Paint
@@ -45,27 +44,29 @@ import scalafx.delegate.SFXDelegate
 
 object Axis {
   implicit def sfxAxis2jfx[T](v: Axis[T]) = v.delegate
-  
+
   object TickMark {
     implicit def sfxTickMark2jfx[T](v: Axis.TickMark[T]) = v.delegate
   }
-  
-  final class TickMark[T](override val delegate: jfxsc.Axis.TickMark[T] = new jfxsc.Axis.TickMark[T]()) extends SFXDelegate[jfxsc.Axis.TickMark[T]] {
+
+  class TickMark[T](override val delegate: jfxsc.Axis.TickMark[T] = new jfxsc.Axis.TickMark[T]())
+    extends SFXDelegate[jfxsc.Axis.TickMark[T]] {
+
     def label: StringExpression = delegate.labelProperty
     def label_= (value: String) {
       delegate.setLabel(value)
     }
-    
+
     def position: NumberExpression = delegate.positionProperty
     def position_= (value: Double) {
       delegate.setPosition(value)
     }
-    
+
     def value: ObjectExpression[T] = delegate.valueProperty
     def value_= (value: T) {
       delegate.setValue(value)
     }
-    
+
     def textVisible = delegate.isTextVisible
     def textVisible_= (v: Boolean) {
       delegate.setTextVisible(v)
@@ -73,86 +74,89 @@ object Axis {
   }
 }
 
-abstract class Axis[T](override val delegate: jfxsc.Axis[T]) extends Region(delegate) with SFXDelegate[jfxsc.Axis[T]] {
+abstract class Axis[T](override val delegate: jfxsc.Axis[T])
+  extends Region(delegate)
+  with SFXDelegate[jfxsc.Axis[T]] {
+
   def animated: BooleanProperty = delegate.animatedProperty
   def animated_= (v: Boolean) {
     animated() = v
   }
-  
+
   def autoRanging: BooleanProperty = delegate.autoRangingProperty
   def autoRanging_= (v: Boolean) {
     autoRanging() = v
   }
-  
+
   def label: ObjectProperty[java.lang.String] = delegate.labelProperty
   def label_= (v: String) {
     label() = v
   }
-  
+
   def side: ObjectProperty[jfxg.Side] = delegate.sideProperty
   def side_= (v: Side) {
     side() = v
   }
-  
+
   def tickLabelFill: ObjectProperty[jfxsp.Paint] = delegate.tickLabelFillProperty
   def tickLabelFill_= (v: Paint) {
     tickLabelFill() = v
   }
-  
+
   def tickLabelFont: ObjectProperty[jfxst.Font] = delegate.tickLabelFontProperty
   def tickLabelFont_= (v: Font) {
     tickLabelFont() = v
   }
-  
+
   def tickLabelGap: DoubleProperty = delegate.tickLabelGapProperty
   def tickLabelGap_= (v: Double) {
     tickLabelGap() = v
   }
-  
+
   def tickLabelRotation: DoubleProperty = delegate.tickLabelRotationProperty
   def tickLabelRotation_= (v: Double) {
     tickLabelRotation() = v
   }
-  
+
   def tickLabelsVisible: BooleanProperty = delegate.tickLabelsVisibleProperty
   def tickLabelsVisible_= (v: Boolean) {
     tickLabelsVisible() = v
   }
-  
+
   def tickLength: DoubleProperty = delegate.tickLengthProperty
   def tickLength_= (v: Double) {
     tickLength() = v
   }
-  
+
   def tickMarkVisible: BooleanProperty = delegate.tickMarkVisibleProperty
   def tickMarkVisible_= (v: Boolean) {
     tickMarkVisible() = v
   }
-  
+
   def displayPosition(value: T) = delegate.getDisplayPosition(value)
-  
+
   def tickMarks: ObservableBuffer[jfxsc.Axis.TickMark[T]] = delegate.getTickMarks
-  
+
   def valueForDisplay(displayPosition: Double): T = delegate.getValueForDisplay(displayPosition)
-  
+
   def zeroPosition = delegate.getZeroPosition
-  
+
   def invalidateRange(data: Buffer[T]) {
     delegate.invalidateRange(data)
   }
-  
+
   def isValueOnAxis(value: T) = delegate.isValueOnAxis(value)
-  
+
   def requestAxisLayout() {
     delegate.requestAxisLayout()
   }
-  
+
   def requestLayout() {
     delegate.requestLayout()
   }
-  
+
   def toNumericValue(value: T) = delegate.toNumericValue(value)
-  
+
   def toRealValue(value: Double): T = delegate.toRealValue(value)
-  
+
 }
