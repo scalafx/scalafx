@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.control.{ cell => jfxscc }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * CheckBoxTreeCell Spec tests.
@@ -41,3 +41,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class CheckBoxTreeCellSpec[T]
   extends AbstractSFXDelegateSpec[jfxscc.CheckBoxTreeCell[T], CheckBoxTreeCell[T], jfxscc.CheckBoxTreeCellBuilder[T, _]](classOf[jfxscc.CheckBoxTreeCell[T]], classOf[CheckBoxTreeCell[T]], classOf[jfxscc.CheckBoxTreeCellBuilder[T, _]])
+  with RunOnApplicationThread

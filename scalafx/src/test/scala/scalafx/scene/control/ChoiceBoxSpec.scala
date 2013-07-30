@@ -30,7 +30,7 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * ChoiceBox Spec tests.
@@ -39,3 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class ChoiceBoxSpec[J <: AnyRef]
   extends AbstractSFXDelegateSpec[jfxsc.ChoiceBox[J], ChoiceBox[J], jfxsc.ChoiceBoxBuilder[J, _]](classOf[jfxsc.ChoiceBox[J]], classOf[ChoiceBox[J]], classOf[jfxsc.ChoiceBoxBuilder[J, _]])
+  with RunOnApplicationThread

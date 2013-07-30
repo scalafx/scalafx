@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * Pagination Spec tests.
@@ -41,3 +41,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class PaginationSpec
   extends AbstractSFXDelegateSpec[jfxsc.Pagination, Pagination, jfxsc.PaginationBuilder[_]](classOf[jfxsc.Pagination], classOf[Pagination], classOf[jfxsc.PaginationBuilder[_]])
+  with RunOnApplicationThread

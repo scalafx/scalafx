@@ -30,7 +30,7 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * ComboBoxBase Spec tests.
@@ -38,7 +38,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ComboBoxBaseSpec[J]
-  extends AbstractSFXDelegateSpec[jfxsc.ComboBoxBase[J], ComboBoxBase[J], jfxsc.ComboBoxBaseBuilder[J, _]](classOf[jfxsc.ComboBoxBase[J]], classOf[ComboBoxBase[J]], classOf[jfxsc.ComboBoxBaseBuilder[J, _]]) {
+  extends AbstractSFXDelegateSpec[jfxsc.ComboBoxBase[J], ComboBoxBase[J], jfxsc.ComboBoxBaseBuilder[J, _]](classOf[jfxsc.ComboBoxBase[J]], classOf[ComboBoxBase[J]], classOf[jfxsc.ComboBoxBaseBuilder[J, _]])
+  with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new ComboBoxBase[J](getJavaClassInstance) {}
 

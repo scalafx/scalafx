@@ -47,6 +47,7 @@ import scalafx.Includes.sfxReadOnlyObjectWrapperWithSFXDelegate2jfxReadOnlyObjec
 import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectWrapper2sfx
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.scene.control.Button
+import scalafx.testutil.RunOnApplicationThread
 
 
 /**
@@ -55,7 +56,11 @@ import scalafx.scene.control.Button
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ReadOnlyObjectWrapperSpec extends FlatSpec with BeforeAndAfterEach {
+class ReadOnlyObjectWrapperSpec
+  extends FlatSpec
+  with BeforeAndAfterEach
+  with RunOnApplicationThread {
+
   val bean = new Object()
   var objectProperty: jfxbp.ReadOnlyObjectWrapper[String] = null
   var objectProperty2: jfxbp.ReadOnlyObjectWrapper[String] = null

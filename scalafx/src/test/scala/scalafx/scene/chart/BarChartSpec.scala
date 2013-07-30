@@ -30,7 +30,7 @@ import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * BarChart Spec tests.
@@ -39,7 +39,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class BarChartSpec 
-  extends AbstractSFXDelegateSpec[jfxsc.BarChart[String, Number], BarChart[String, Number], jfxsc.BarChartBuilder[String, Number, _]](classOf[jfxsc.BarChart[String, Number]], classOf[BarChart[String, Number]], classOf[jfxsc.BarChartBuilder[String, Number, _]]) {
+  extends AbstractSFXDelegateSpec[jfxsc.BarChart[String, Number], BarChart[String, Number], jfxsc.BarChartBuilder[String, Number, _]](classOf[jfxsc.BarChart[String, Number]], classOf[BarChart[String, Number]], classOf[jfxsc.BarChartBuilder[String, Number, _]])
+  with RunOnApplicationThread {
 
   override def getScalaClassInstance = new BarChart[String, Number](getJavaClassInstance)
   

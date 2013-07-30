@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.control.{ cell => jfxscc }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * ChoiceBoxTableCell Spec tests.
@@ -41,3 +41,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class ChoiceBoxTableCellSpec[S, T]
   extends AbstractSFXDelegateSpec[jfxscc.ChoiceBoxTableCell[S, T], ChoiceBoxTableCell[S, T], jfxscc.ChoiceBoxTableCellBuilder[S, T, _]](classOf[jfxscc.ChoiceBoxTableCell[S, T]], classOf[ChoiceBoxTableCell[S, T]], classOf[jfxscc.ChoiceBoxTableCellBuilder[S, T, _]])
+  with RunOnApplicationThread

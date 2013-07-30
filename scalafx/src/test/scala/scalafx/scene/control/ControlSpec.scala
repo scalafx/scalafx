@@ -31,7 +31,7 @@ import jfxs.{control => jfxsc}
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * Control Spec tests.
@@ -39,7 +39,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ControlSpec extends AbstractSFXDelegateSpec[jfxsc.Control, Control, jfxsc.ControlBuilder[_]](classOf[jfxsc.Control], classOf[Control], classOf[jfxsc.ControlBuilder[_]]) {
+class ControlSpec extends AbstractSFXDelegateSpec[jfxsc.Control, Control, jfxsc.ControlBuilder[_]](classOf[jfxsc.Control], classOf[Control], classOf[jfxsc.ControlBuilder[_]])
+  with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new Control(new jfxsc.Label) {}
 

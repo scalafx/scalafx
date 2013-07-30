@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.control.{ cell => jfxscc }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * TextFieldListCell Spec tests.
@@ -41,3 +41,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class TextFieldListCellSpec[T]
   extends AbstractSFXDelegateSpec[jfxscc.TextFieldListCell[T], TextFieldListCell[T], jfxscc.TextFieldListCellBuilder[T, _]](classOf[jfxscc.TextFieldListCell[T]], classOf[TextFieldListCell[T]], classOf[jfxscc.TextFieldListCellBuilder[T, _]])
+  with RunOnApplicationThread

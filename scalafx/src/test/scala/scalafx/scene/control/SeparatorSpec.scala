@@ -30,7 +30,7 @@ import javafx.scene.{ control => jfxsc }
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * Separator Spec tests.
@@ -40,3 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class SeparatorSpec
   extends AbstractSFXDelegateSpec[jfxsc.Separator, Separator, jfxsc.SeparatorBuilder[_]](classOf[jfxsc.Separator], classOf[Separator], classOf[jfxsc.SeparatorBuilder[_]])
+  with RunOnApplicationThread

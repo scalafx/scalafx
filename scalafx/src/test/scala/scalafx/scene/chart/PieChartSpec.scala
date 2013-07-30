@@ -30,7 +30,7 @@ import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * 	PieChart Spec tests.
@@ -40,3 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class PieChartSpec
   extends AbstractSFXDelegateSpec[jfxsc.PieChart, PieChart, jfxsc.PieChartBuilder[_]](classOf[jfxsc.PieChart], classOf[PieChart], classOf[jfxsc.PieChartBuilder[_]])
+  with RunOnApplicationThread

@@ -30,7 +30,7 @@ import javafx.scene.{ control => jfxsc }
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * TextArea Spec tests.
@@ -39,3 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class TextAreaSpec
   extends AbstractSFXDelegateSpec[jfxsc.TextArea, TextArea, jfxsc.TextAreaBuilder[_]](classOf[jfxsc.TextArea], classOf[TextArea], classOf[jfxsc.TextAreaBuilder[_]])
+  with RunOnApplicationThread

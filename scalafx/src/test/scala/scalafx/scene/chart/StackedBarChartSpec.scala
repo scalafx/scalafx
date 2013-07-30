@@ -30,7 +30,7 @@ import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * StackedBarChart Spec tests.
@@ -39,7 +39,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class StackedBarChartSpec
-  extends AbstractSFXDelegateSpec[jfxsc.StackedBarChart[String, Number], StackedBarChart[String, Number], jfxsc.StackedBarChartBuilder[String, Number, _]](classOf[jfxsc.StackedBarChart[String, Number]], classOf[StackedBarChart[String, Number]], classOf[jfxsc.StackedBarChartBuilder[String, Number, _]]) {
+  extends AbstractSFXDelegateSpec[jfxsc.StackedBarChart[String, Number], StackedBarChart[String, Number], jfxsc.StackedBarChartBuilder[String, Number, _]](classOf[jfxsc.StackedBarChart[String, Number]], classOf[StackedBarChart[String, Number]], classOf[jfxsc.StackedBarChartBuilder[String, Number, _]])
+  with RunOnApplicationThread {
 
   override def getJavaClassInstance = new jfxsc.StackedBarChart[String, Number](new jfxsc.CategoryAxis, new jfxsc.NumberAxis)
 

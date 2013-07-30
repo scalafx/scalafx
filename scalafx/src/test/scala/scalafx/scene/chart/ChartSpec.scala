@@ -30,7 +30,7 @@ import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * CategoryAxis Spec tests.
@@ -39,7 +39,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ChartSpec
-  extends AbstractSFXDelegateSpec[jfxsc.Chart, Chart, jfxsc.ChartBuilder[_]](classOf[jfxsc.Chart], classOf[Chart], classOf[jfxsc.ChartBuilder[_]]) {
+  extends AbstractSFXDelegateSpec[jfxsc.Chart, Chart, jfxsc.ChartBuilder[_]](classOf[jfxsc.Chart], classOf[Chart], classOf[jfxsc.ChartBuilder[_]])
+  with RunOnApplicationThread {
 
   override def getScalaClassInstance = new Chart(getJavaClassInstance) {}
   

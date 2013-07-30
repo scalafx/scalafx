@@ -30,7 +30,7 @@ import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * BubbleChart Spec tests.
@@ -39,7 +39,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class BubbleChartSpec
-  extends AbstractSFXDelegateSpec[jfxsc.BubbleChart[Number, Number], BubbleChart[Number, Number], jfxsc.BubbleChartBuilder[Number, Number, _]](classOf[jfxsc.BubbleChart[Number, Number]], classOf[BubbleChart[Number, Number]], classOf[jfxsc.BubbleChartBuilder[Number, Number, _]]) {
+  extends AbstractSFXDelegateSpec[jfxsc.BubbleChart[Number, Number], BubbleChart[Number, Number], jfxsc.BubbleChartBuilder[Number, Number, _]](classOf[jfxsc.BubbleChart[Number, Number]], classOf[BubbleChart[Number, Number]], classOf[jfxsc.BubbleChartBuilder[Number, Number, _]])
+  with RunOnApplicationThread {
 
   override def getScalaClassInstance = new BubbleChart[Number, Number](getJavaClassInstance)
   

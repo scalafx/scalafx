@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.control.{ cell => jfxscc }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * ComboBoxListCell Spec tests.
@@ -41,3 +41,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class ComboBoxListCellSpec[T]
   extends AbstractSFXDelegateSpec[jfxscc.ComboBoxListCell[T], ComboBoxListCell[T], jfxscc.ComboBoxListCellBuilder[T, _]](classOf[jfxscc.ComboBoxListCell[T]], classOf[ComboBoxListCell[T]], classOf[jfxscc.ComboBoxListCellBuilder[T, _]])
+  with RunOnApplicationThread

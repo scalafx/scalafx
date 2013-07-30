@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TreeView.EditEvent Spec tests.
@@ -40,7 +40,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TreeViewEditEventSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.TreeView.EditEvent[T], TreeView.EditEvent[T]](classOf[jfxsc.TreeView.EditEvent[T]], classOf[TreeView.EditEvent[T]]) {
+  extends SimpleSFXDelegateSpec[jfxsc.TreeView.EditEvent[T], TreeView.EditEvent[T]](classOf[jfxsc.TreeView.EditEvent[T]], classOf[TreeView.EditEvent[T]])
+  with RunOnApplicationThread {
 
   override def getJavaClassInstance =
     new jfxsc.TreeView.EditEvent[T](new jfxsc.TreeView[T], null, new jfxsc.TreeItem[T], null.asInstanceOf[T], null.asInstanceOf[T])

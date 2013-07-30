@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * TableCellSpec tests.
@@ -39,3 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class TableCellSpec[S, T]
   extends AbstractSFXDelegateSpec[jfxsc.TableCell[S, T], TableCell[S, T], jfxsc.TableCellBuilder[S, T, _]](classOf[jfxsc.TableCell[S, T]], classOf[TableCell[S, T]], classOf[jfxsc.TableCellBuilder[S, T, _]])
+  with RunOnApplicationThread

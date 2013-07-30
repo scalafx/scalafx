@@ -28,10 +28,9 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec, AlignmentDelegateSpec}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AlignmentDelegateSpec
 import javafx.scene
 import scalafx.scene.SceneProperty
 
@@ -41,7 +40,8 @@ import scalafx.scene.SceneProperty
 @RunWith(classOf[JUnitRunner])
 class TextFieldSpec
   extends AbstractSFXDelegateSpec[jfxsc.TextField, TextField, jfxsc.TextFieldBuilder[_]](classOf[jfxsc.TextField], classOf[TextField], classOf[jfxsc.TextFieldBuilder[_]])
-  with AlignmentDelegateSpec[jfxsc.TextField, TextField] {
+  with AlignmentDelegateSpec[jfxsc.TextField, TextField]
+  with RunOnApplicationThread {
 
 
   it should "have a Property class that exposes all the JavaFX builder properties" in {

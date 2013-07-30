@@ -31,14 +31,15 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TableViewFocusModel tests.
  */
 @RunWith(classOf[JUnitRunner])
 class TableViewTableViewFocusModelSpec[S]
-  extends SimpleSFXDelegateSpec[jfxsc.TableView.TableViewFocusModel[S], TableView.TableViewFocusModel[S]](classOf[jfxsc.TableView.TableViewFocusModel[S]], classOf[TableView.TableViewFocusModel[S]]) {
+  extends SimpleSFXDelegateSpec[jfxsc.TableView.TableViewFocusModel[S], TableView.TableViewFocusModel[S]](classOf[jfxsc.TableView.TableViewFocusModel[S]], classOf[TableView.TableViewFocusModel[S]])
+  with RunOnApplicationThread {
 
   override def getJavaClassInstance = new jfxsc.TableView.TableViewFocusModel(new jfxsc.TableView[S])
 

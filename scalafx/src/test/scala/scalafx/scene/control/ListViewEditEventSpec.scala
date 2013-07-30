@@ -30,7 +30,7 @@ import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ListView.EditEvent Spec tests.
@@ -39,7 +39,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ListViewEditEventSpec[T <: Any]
-  extends SimpleSFXDelegateSpec[jfxsc.ListView.EditEvent[T], ListView.EditEvent[T]](classOf[jfxsc.ListView.EditEvent[T]], classOf[ListView.EditEvent[T]]) {
+  extends SimpleSFXDelegateSpec[jfxsc.ListView.EditEvent[T], ListView.EditEvent[T]](classOf[jfxsc.ListView.EditEvent[T]], classOf[ListView.EditEvent[T]])
+  with RunOnApplicationThread {
 
   /*
    * In third argument, I it was used simply null compiler throws a error with message:

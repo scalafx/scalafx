@@ -30,7 +30,7 @@ import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ValueAxis Spec tests.
@@ -39,7 +39,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ValueAxisSpec[T <: Number]
-  extends SimpleSFXDelegateSpec[jfxsc.ValueAxis[T], ValueAxis[T]](classOf[jfxsc.ValueAxis[T]], classOf[ValueAxis[T]]) {
+  extends SimpleSFXDelegateSpec[jfxsc.ValueAxis[T], ValueAxis[T]](classOf[jfxsc.ValueAxis[T]], classOf[ValueAxis[T]])
+  with RunOnApplicationThread {
 
   override def getScalaClassInstance = new ValueAxis[T](getJavaClassInstance) {}
 

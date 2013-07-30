@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * TreeCell Spec tests.
@@ -40,3 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class TreeCellSpec[T <: AnyRef]
   extends AbstractSFXDelegateSpec[jfxsc.TreeCell[T], TreeCell[T], jfxsc.TreeCellBuilder[T, _]](classOf[jfxsc.TreeCell[T]], classOf[TreeCell[T]], classOf[jfxsc.TreeCellBuilder[T, _]])
+  with RunOnApplicationThread

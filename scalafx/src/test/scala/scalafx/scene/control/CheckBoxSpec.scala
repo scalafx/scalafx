@@ -30,7 +30,7 @@ import javafx.scene.{ control => jfxsc }
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
 
 /**
  * CheckBox Spec tests.
@@ -39,3 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class CheckBoxSpec
   extends AbstractSFXDelegateSpec[jfxsc.CheckBox, CheckBox, jfxsc.CheckBoxBuilder[_]](classOf[jfxsc.CheckBox], classOf[CheckBox], classOf[jfxsc.CheckBoxBuilder[_]])
+  with RunOnApplicationThread

@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.control.{ cell => jfxscc }
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ProgressBarTableCell Spec tests.
@@ -40,3 +40,4 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class ProgressBarTableCellSpec[S]
   extends SimpleSFXDelegateSpec[jfxscc.ProgressBarTableCell[S], ProgressBarTableCell[S]](classOf[jfxscc.ProgressBarTableCell[S]], classOf[ProgressBarTableCell[S]])
+  with RunOnApplicationThread
