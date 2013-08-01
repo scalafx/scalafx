@@ -37,7 +37,7 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.collections.ObservableBuffer
-import scalafx.event.Event
+import scalafx.event.{EventHandlerDelegate, Event}
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
@@ -195,7 +195,8 @@ object TreeItem {
  * Wraps [[javafx.scene.control.TreeItem]] class.
  */
 class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[T])
-  extends SFXDelegate[jfxsc.TreeItem[T]] {
+  extends EventHandlerDelegate
+  with SFXDelegate[jfxsc.TreeItem[T]] {
 
   /**
    * Creates a TreeItem with the value property set to the provided object.
@@ -244,20 +245,6 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
   }
 
   /**
-   * Registers an event handler to this TreeItem.
-   */
-  def addEventHandler[ET <: jfxe.Event](eventType: jfxe.EventType[ET], eventFilter: jfxe.EventHandler[ET]) {
-    delegate.addEventHandler(eventType, eventFilter)
-  }
-
-  /**
-   * Unregisters a previously registered event handler from this TreeItem.
-   */
-  def removeEventHandler[ET <: jfxe.Event](eventType: jfxe.EventType[ET], eventHandler: jfxe.EventHandler[ET]) {
-    delegate.removeEventHandler(eventType, eventHandler)
-  }
-
-  /**
    * Construct an event dispatch chain for this target.
    */
   def buildEventDispatchChain(tail: jfxe.EventDispatchChain) =
@@ -292,4 +279,5 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
    */
   def previousSibling(afterNode: TreeItem[T]) = delegate.previousSibling(afterNode)
 
+  override protected def eventHandlerDelegate = delegate.asInstanceOf[EventHandled]
 }

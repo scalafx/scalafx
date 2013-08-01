@@ -44,7 +44,7 @@ import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.StringProperty
 import scalafx.event.Event._
-import scalafx.event.Event
+import scalafx.event.{EventHandlerDelegate, Event}
 import scalafx.geometry.Bounds._
 import scalafx.geometry.Point2D._
 import scalafx.geometry.Bounds
@@ -66,7 +66,9 @@ object Node {
 /**
  * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/Node.html]].
  */
-abstract class Node protected (override val delegate: jfxs.Node) extends SFXDelegate[jfxs.Node] {
+abstract class Node protected (override val delegate: jfxs.Node)
+  extends EventHandlerDelegate
+  with SFXDelegate[jfxs.Node] {
 
   /**
    * The BlendMode used to blend this individual node into the scene behind it.
@@ -735,20 +737,6 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
   }
 
   /**
-   * Registers an event filter to this node.
-   */
-  def addEventFilter[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) {
-    delegate.addEventFilter(eventType, eventFilter)
-  }
-
-  /**
-   * Registers an event handler to this node.
-   */
-  def addEventHandler[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) {
-    delegate.addEventHandler(eventType, eventFilter)
-  }
-
-  /**
    * If the node is resizable, will set its layout bounds to its current preferred width and height.
    */
   def autosize() {
@@ -883,20 +871,6 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
    */
   def relocate(x: Double, y: Double) {
     delegate.relocate(x, y)
-  }
-
-  /**
-   * Unregisters a previously registered event filter from this node.
-   */
-  def removeEventFilter[T <: jfxe.Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[T]) {
-    delegate.removeEventFilter(eventType, eventFilter)
-  }
-
-  /**
-   * Unregisters a previously registered event handler from this node.
-   */
-  def removeEventHandler[T <: jfxe.Event](eventType: jfxe.EventType[T], eventHandler: jfxe.EventHandler[T]) {
-    delegate.removeEventHandler(eventType, eventHandler)
   }
 
   /**
@@ -1156,4 +1130,5 @@ abstract class Node protected (override val delegate: jfxs.Node) extends SFXDele
     onTouchStationary() = v
   }
 
+  override protected def eventHandlerDelegate = delegate.asInstanceOf[EventHandled]
 }

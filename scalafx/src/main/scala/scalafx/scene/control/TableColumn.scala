@@ -40,7 +40,7 @@ import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.StringProperty
 import scalafx.beans.value.ObservableValue
-import scalafx.event.Event
+import scalafx.event.{EventHandlerDelegate, Event}
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
@@ -188,7 +188,8 @@ object TableColumn {
  * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.html]].
  */
 class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfxsc.TableColumn[S, T]())
-  extends SFXDelegate[jfxsc.TableColumn[S, T]] {
+  extends EventHandlerDelegate
+  with SFXDelegate[jfxsc.TableColumn[S, T]] {
 
   /**
    * Creates a TableColumn with the text set to the provided string, with default cell factory, comparator, and
@@ -419,18 +420,5 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    */
   def hasProperties = delegate.hasProperties
 
-  /**
-   * Registers an event handler to this TableColumn.
-   */
-  def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) {
-    delegate.addEventHandler(eventType, eventHandler)
-  }
-
-  /**
-   *  Unregisters a previously registered event handler from this TableColumn.
-   */
-  def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) {
-    delegate.removeEventHandler(eventType, eventHandler)
-  }
-
+  override protected def eventHandlerDelegate = delegate.asInstanceOf[EventHandled]
 }
