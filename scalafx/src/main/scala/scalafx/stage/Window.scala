@@ -26,7 +26,6 @@
  */
 package scalafx.stage
 
-import javafx.event.EventDispatchChain
 import javafx.{ event => jfxe }
 import javafx.{ stage => jfxs }
 import scalafx.Includes._
@@ -35,7 +34,7 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.event.Event
+import scalafx.event.{EventHandlerDelegate, Event}
 import scalafx.delegate.SFXDelegate
 
 object Window {
@@ -43,7 +42,8 @@ object Window {
 }
 
 class Window protected (override val delegate: jfxs.Window)
-  extends SFXDelegate[jfxs.Window]
+  extends EventHandlerDelegate
+  with SFXDelegate[jfxs.Window]
   with jfxe.EventTarget {
 
   /**
@@ -150,11 +150,6 @@ class Window protected (override val delegate: jfxs.Window)
   }
 
   /**
-   * Construct an event dispatch chain for this stage.
-   */
-  def buildEventDispatchChain(tail: jfxe.EventDispatchChain) : EventDispatchChain = delegate.buildEventDispatchChain(tail)
-
-  /**
    * Sets x and y properties on this Window so that it is centered on the screen.
    */
   def centerOnScreen() {
@@ -194,4 +189,5 @@ class Window protected (override val delegate: jfxs.Window)
     delegate.sizeToScene()
   }
 
+  override protected def eventHandlerDelegate = delegate.asInstanceOf[EventHandled]
 }
