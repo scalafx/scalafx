@@ -62,6 +62,9 @@ trait EventHandlerDelegate {
 
     // Unregisters a previously registered event filter from this type.
     def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_])
+
+    // Construct an event dispatch chain for this target.
+    def buildEventDispatchChain(chain: jfxe.EventDispatchChain) : jfxe.EventDispatchChain
   }
 
   /**
@@ -188,5 +191,10 @@ trait EventHandlerDelegate {
   def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) {
     eventHandlerDelegate.removeEventFilter(eventType, eventHandler)
   }
+
+  /**
+   * Construct an event dispatch chain for this target.
+   */
+  def buildEventDispatchChain(chain: jfxe.EventDispatchChain) = eventHandlerDelegate.buildEventDispatchChain(chain)
 
 }

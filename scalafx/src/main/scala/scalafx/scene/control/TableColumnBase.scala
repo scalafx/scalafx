@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Project
+ * Copyright (c) 2011-2013, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,8 @@
 package scalafx.scene.control
 
 import scala.math.Ordering
-import javafx.scene.{ control => jfxsc }
-import javafx.{ scene => jfxs }
-import javafx.{ event => jfxe }
+import javafx.scene.{control => jfxsc}
+import javafx.{scene => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
@@ -37,6 +36,7 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.StringProperty
+import scalafx.event.EventHandlerDelegate
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 import scalafx.collections.ObservableBuffer
@@ -54,7 +54,8 @@ object TableColumnBase {
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/control/TableColumnBase.html]].
  */
 abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.TableColumnBase[S, T])
-  extends SFXDelegate[jfxsc.TableColumnBase[S, T]] {
+  extends EventHandlerDelegate
+  with SFXDelegate[jfxsc.TableColumnBase[S, T]] {
 
   /**
    * This enables support for nested columns, which can be useful to group together related data.
@@ -197,11 +198,6 @@ abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.Tab
   def width: ReadOnlyDoubleProperty = delegate.widthProperty
 
   /**
-   * Construct an event dispatch chain for this target.
-   */
-  def buildEventDispatchChain(tail: jfxe.EventDispatchChain) = delegate.buildEventDispatchChain(tail)
-
-  /**
    * Returns the actual value for a cell at a given row index (and which belongs to this TableColumnBase).
    */
   def getCellData(index: Int) = delegate.getCellData(index)
@@ -216,17 +212,5 @@ abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.Tab
    */
   def hasProperties = delegate.hasProperties
 
-  /**
-   * Registers an event handler to this TableColumnBase.
-   */
-  def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) {
-    delegate.addEventHandler(eventType, eventHandler)
-  }
-
-  /**
-   *  Unregisters a previously registered event handler from this TableColumnBase.
-   */
-  def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) {
-    delegate.removeEventHandler(eventType, eventHandler)
-  }
+  override protected def eventHandlerDelegate = delegate.asInstanceOf[EventHandled]
 }

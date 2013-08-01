@@ -34,7 +34,7 @@ import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.StringProperty
-import scalafx.event.Event
+import scalafx.event.EventHandlerDelegate
 import scalafx.scene.Node
 import scalafx.scene.input.KeyCombination
 import scalafx.delegate.FireDelegate
@@ -46,6 +46,7 @@ object MenuItem {
 
 class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   extends jfxe.EventTarget
+  with EventHandlerDelegate
   with FireDelegate[jfxsc.MenuItem]
   with SFXDelegate[jfxsc.MenuItem] {
 
@@ -142,17 +143,6 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
     visible() = v
   }
 
-  /**
-   * Registers an event handler to this MenuItem.
-   */
-  def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) {
-    delegate.addEventHandler(eventType, eventHandler)
-  }
-
-  /**
-   * Construct an event dispatch chain for this target.
-   */
-  def buildEventDispatchChain(tail: jfxe.EventDispatchChain) = delegate.buildEventDispatchChain(tail)
 
   /**
    * Returns an observable map of properties on this menu item for use primarily by application
@@ -175,13 +165,6 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   }
 
   /**
-   * Unregisters a previously registered event handler from this MenuItem.
-   */
-  def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]) {
-    delegate.removeEventHandler(eventType, eventHandler)
-  }
-
-  /**
    * The event handler that is associated with invocation of an accelerator for a MenuItem.
    * This can happen when a key sequence for an accelerator is pressed.
    * The event handler is also invoked when onShowing event handler is called.
@@ -192,4 +175,5 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
     onMenuValidation() = eventHandler
   }
 
+  override protected def eventHandlerDelegate = delegate.asInstanceOf[EventHandled]
 }

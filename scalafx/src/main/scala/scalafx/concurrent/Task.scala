@@ -97,7 +97,4 @@ abstract class Task[T](override val delegate: jfxc.Task[T])
   def onSucceeded_=(v: jfxe.EventHandler[jfxc.WorkerStateEvent]) {
     onSucceeded() = v
   }
-
-  def buildEventDispatchChain(chain: jfxe.EventDispatchChain) = delegate.buildEventDispatchChain(chain)
-
 }
