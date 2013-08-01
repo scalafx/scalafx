@@ -120,8 +120,6 @@ abstract class Service[T](override val delegate: jfxc.Service[T])
     onSucceeded() = v
   }
 
-  def buildEventDispatchChain(chain: jfxe.EventDispatchChain) = delegate.buildEventDispatchChain(chain)
-
   /**
    * Resets the Service.
    */

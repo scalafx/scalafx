@@ -145,11 +145,6 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
 
 
   /**
-   * Construct an event dispatch chain for this target.
-   */
-  def buildEventDispatchChain(tail: jfxe.EventDispatchChain) = delegate.buildEventDispatchChain(tail)
-
-  /**
    * Returns an observable map of properties on this menu item for use primarily by application
    * developers.
    */

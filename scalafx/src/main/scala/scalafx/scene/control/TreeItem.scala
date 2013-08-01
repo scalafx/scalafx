@@ -245,12 +245,6 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
   }
 
   /**
-   * Construct an event dispatch chain for this target.
-   */
-  def buildEventDispatchChain(tail: jfxe.EventDispatchChain) =
-    delegate.buildEventDispatchChain(tail)
-
-  /**
    * The children of this TreeItem.
    */
   def children: ObservableBuffer[jfxsc.TreeItem[T]] = delegate.getChildren

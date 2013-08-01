@@ -401,11 +401,6 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   def width: ReadOnlyDoubleProperty = delegate.widthProperty
 
   /**
-   * Construct an event dispatch chain for this target.
-   */
-  def buildEventDispatchChain(tail: jfxe.EventDispatchChain) = delegate.buildEventDispatchChain(tail)
-
-  /**
    * Returns the actual value for a cell at a given row index (and which belongs to this TableColumn).
    */
   def getCellData(index: Int) = delegate.getCellData(index)
