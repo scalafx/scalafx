@@ -23,3 +23,4 @@ project/target
 *.orig
 .worksheet/
 *.sc
+.externalToolBuilders/

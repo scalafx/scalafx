@@ -59,7 +59,7 @@ class PhongMaterial(override val delegate: jfxsp.PhongMaterial = new jfxsp.Phong
 
   /** Defines the specular power of this Material. */
   def specularPower: DoubleProperty = delegate.specularPowerProperty
-  def specularPower_=:(v:Double) {
+  def specularPower_=(v:Double) {
     specularPower() = v
   }
 
