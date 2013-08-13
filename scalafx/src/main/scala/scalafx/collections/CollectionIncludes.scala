@@ -33,14 +33,15 @@ import javafx.{ collections => jfxc }
 object CollectionIncludes extends CollectionIncludes
 
 /**
+ * @define JFXC http://docs.oracle.com/javafx/8/api/javafx/collections
  * Contains implicit methods to convert from 
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/package-summary.html `javafx.collections`]] 
+ * [[$JFXC/package-summary.html `javafx.collections`]] 
  * Classes to their ScalaFX counterparts.
  */
 trait CollectionIncludes {
   
   /**
-   * Converts a [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableList.html `ObservableList`]]
+   * Converts a [[$JFXC/ObservableList.html `ObservableList`]]
    * to a [[scalafx.collections.ObservableBuffer]].
    * 
    * @tparam T List Type
@@ -51,7 +52,7 @@ trait CollectionIncludes {
     new ObservableBuffer[T](ol)
 
   /**
-   * Converts a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableMap.html `ObservableMap`]]
+   * Converts a JavaFX [[$JFXC/ObservableMap.html `ObservableMap`]]
    * to a ScalaFX [[scalafx.collections.ObservableMap]].
    * 
    * @tparam K Key Type
@@ -65,7 +66,7 @@ trait CollectionIncludes {
     }
 
   /**
-   * Converts a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableSet.html `ObservableSet`]]
+   * Converts a JavaFX [[$JFXC/ObservableSet.html `ObservableSet`]]
    * to a ScalaFX [[scalafx.collections.ObservableSet]].
    * 
    * @tparam T Set Type
@@ -73,4 +74,28 @@ trait CollectionIncludes {
    * @return ScalaFX ObservableSet
    */
   implicit def jfxObservableSet2sfxObservableSet[T](os: jfxc.ObservableSet[T]): ObservableHashSet[T] = new ObservableHashSet[T](os)
+
+  /**
+   * Converts a JavaFX [[$JFXC/ObservableFloatArray.html
+   * `ObservableFloatArray`]] to a ScalaFX
+   * [[scalafx.collections.ObservableFloatArray!]].
+   * 
+   * @param ofa JavaFX ObservableFloatArray
+   * @return ScalaFX ObservableFloatArray
+   */
+  implicit def jfxObservableFloatArray2sfxObservableFloatArray (ofa:
+    jfxc.ObservableFloatArray): ObservableFloatArray =
+      new ObservableFloatArray (ofa)
+
+  /**
+   * Converts a JavaFX [[$JFXC/ObservableIntegerArray.html
+   * `ObservableIntegerArray`]] to a ScalaFX
+   * [[scalafx.collections.ObservableIntegerArray!]].
+   * 
+   * @param oia JavaFX ObservableIntegerArray
+   * @return ScalaFX ObservableIntegerArray
+   */
+  implicit def jfxObservableIntegerArray2sfxObservableIntegerArray (oia:
+    jfxc.ObservableIntegerArray): ObservableIntegerArray =
+      new ObservableIntegerArray (oia)
 }
