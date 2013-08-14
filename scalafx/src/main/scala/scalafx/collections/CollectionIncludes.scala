@@ -30,16 +30,24 @@ import scala.collection.JavaConversions.mapAsScalaMap
 
 import javafx.{ collections => jfxc }
 
+/**
+ * @define JFXC http://docs.oracle.com/javafx/8/api/javafx/collections
+ */
+
 object CollectionIncludes extends CollectionIncludes
 
 /**
- * @define JFXC http://docs.oracle.com/javafx/8/api/javafx/collections
  * Contains implicit methods to convert from 
  * [[$JFXC/package-summary.html `javafx.collections`]] 
  * Classes to their ScalaFX counterparts.
  */
 trait CollectionIncludes {
-  
+
+  /*
+   * Enable implicit conversions, to avoid feature warnings during compilation.
+   */
+  import scala.language.implicitConversions
+
   /**
    * Converts a [[$JFXC/ObservableList.html `ObservableList`]]
    * to a [[scalafx.collections.ObservableBuffer]].
@@ -77,7 +85,7 @@ trait CollectionIncludes {
 
   /**
    * Converts a JavaFX [[$JFXC/ObservableFloatArray.html
-   * `ObservableFloatArray`]] to a ScalaFX
+   * ObservableFloatArray]] to a ScalaFX
    * [[scalafx.collections.ObservableFloatArray!]].
    * 
    * @param ofa JavaFX ObservableFloatArray
@@ -89,7 +97,7 @@ trait CollectionIncludes {
 
   /**
    * Converts a JavaFX [[$JFXC/ObservableIntegerArray.html
-   * `ObservableIntegerArray`]] to a ScalaFX
+   * ObservableIntegerArray]] to a ScalaFX
    * [[scalafx.collections.ObservableIntegerArray!]].
    * 
    * @param oia JavaFX ObservableIntegerArray

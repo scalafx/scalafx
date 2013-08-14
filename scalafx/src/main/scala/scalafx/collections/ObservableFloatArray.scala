@@ -39,8 +39,8 @@ import scala.language.implicitConversions
 object ObservableFloatArray {
 
   /**
-   * Extract a JavaFX's [[$JFXC/ObservableFloatArray.html $OFA]] from a ScalaFX
-   * $OFA.
+   * Extract a JavaFX's [[$JFXC/ObservableFloatArray.html
+   * ObservableFloatArray]] from a ScalaFX $OFA.
    *
    * @param ofa ScalaFX $OFA.
    * @return JavaFX $OFA inside parameter.
@@ -50,23 +50,23 @@ object ObservableFloatArray {
 
   /**
    * Return an empty $OFA
-   * 
+   *
    * @return New empty $OFA
    */
   def empty = ofDim (0)
 
   /**
    * Create new $OFA from an existing Array [Float].
-   * 
+   *
    * @param af Array [Float] to be converted..
    * @return New $OFA storing `af`.
    */
   def apply (af: Array [Float]) =
     new ObservableFloatArray (jfxc.FXCollections.observableFloatArray (af:_*))
-  
+
   /**
    * Create new $OFA from a list of Float vararg.
-   * 
+   *
    * @param fva Float varargs.
    * @return New $OFA storing `fva`
    */
@@ -75,7 +75,7 @@ object ObservableFloatArray {
 
   /**
    * Create an array with given dimension.
-   * 
+   *
    * @param n Size of the new array.
    * @return An observable array with the specified dimension and zeroed
    * elements.
@@ -85,10 +85,10 @@ object ObservableFloatArray {
    /**
     * Returns an observable array containing the results of some element
     * computation.
-    * 
+    *
     * Note that `elem` is computed `n` times in total; it is not calculated
     * once and reused.
-    * 
+    *
     * @param n Int Size of the new array.
     * @param elem Computation to be calculated for each element.
     * @return Observable array of size `n`, with each element containing the
@@ -99,7 +99,7 @@ object ObservableFloatArray {
    /**
     * Returns an array containing the results of some element computation that
     * takes the element index as an argument.
-    * 
+    *
     * @param n Int Size of the new array.
     * @param f Function to be used to initialize element whose index is passed
     * as an argument.
@@ -110,7 +110,12 @@ object ObservableFloatArray {
 }
 
 /**
- * Wrapper class to JavaFX's [[$JFXC/ObservableFloatArray.html $OFA]].
+ * @define OFA `ObservableFloatArray`
+ * @define ARY `Array`
+ * @define JFXC http://docs.oracle.com/javafx/8/api/javafx/collections
+ *
+ * Wrapper class to JavaFX's [[$JFXC/ObservableFloatArray.html
+ * ObservableFloatArray]].
  *
  * @param delegate Wrapped JavaFX $OFA providing implementation.
  */
@@ -121,9 +126,9 @@ class ObservableFloatArray private [collections] (delegate:
 
   /**
    * Create $OFA with specified capacity.
-   * 
+   *
    * Elements will be zeroed out.
-   * 
+   *
    * @param size Size of new $OFA
    */
   def this (size: Int) = this (jfxc.FXCollections.observableFloatArray
@@ -154,7 +159,7 @@ class ObservableFloatArray private [collections] (delegate:
    * @inheritdocs.
    */
   override def addAll (elements: Float*) = delegate.addAll (elements:_*)
-  
+
   /**
    * @inheritdocs.
    */
@@ -189,7 +194,7 @@ class ObservableFloatArray private [collections] (delegate:
    */
   override def setAll (src: Array [Float], srcIdx: Int, length: Int) =
     delegate.setAll (src, srcIdx, length)
-  
+
   /**
    * @inheritdocs.
    */
@@ -200,13 +205,13 @@ class ObservableFloatArray private [collections] (delegate:
    * @inheritdocs
    */
   override def set (idx: Int, elem: Float) = delegate.set (idx, elem)
-  
+
   /**
    * @inheritdocs
    */
   override def set (destIdx: Int, src: Array [Float], srcIdx: Int, length:
     Int) = delegate.set (destIdx, src, srcIdx, length)
-  
+
   /**
    * @inheritdocs
    */
@@ -227,22 +232,22 @@ class ObservableFloatArray private [collections] (delegate:
   // ArrayLike [V, T] abstract member function implementations.
   /**
    * Create new builder for this collection.
-   * 
-   * @return New empty $OIA.
+   *
+   * @return New empty $OFA.
    */
   protected [this] override def newBuilder = ObservableFloatArray.empty
 
   // Builder [V, T] abstract member function implementations.
   /**
    * Produces collection from builder.
-   * 
+   *
    * @return This $OFA.
    */
   override def result () = this
 
   /**
    * Add new element to this $OFA.
-   * 
+   *
    * @param elem Element to be added to end of this array.
    * @return This $OFA.
    */

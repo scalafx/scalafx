@@ -34,17 +34,18 @@ import scalafx.delegate.SFXDelegate
 
 // Scaladoc macros for this file.
 /**
- * @define OA `ObservableArray`
- * @define ARY `Array`
  */
 
 /**
+ * @define OA `ObservableArray`
+ * @define ARY `Array`
+ *
  * Abstract $OA base class.
- * 
+ *
  * @tparam V Value type to be stored in this array.
  * @tparam T Type of this $ARY.
  * @tparam D Type of delegated $ARY.
- * 
+ *
  * @constructor Create new base $OA.
  * @param delegate Wrapped JavaFX $OA instance providing implementation.
  */
@@ -64,11 +65,11 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
    * Shrinks capacity to current length of data in this array.
    */
   def trimToSize () = delegate.trimToSize ()
-  
+
   /**
    * Grow array capacity if currently smaller than given `capacity`; do nothing
    * otherwise.
-   * 
+   *
    * @param capacity Required capacity.
    */
   def ensureCapacity (capacity: Int) =
@@ -79,7 +80,7 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
   // ObservableArray [T].
   /**
    * Copy specified portion of this observable array to `dest` regular array.
-   * 
+   *
    * @param srcIdx Start position in this array.
    * @param dest Array into which the portion of this array is to be copied.
    * @param destIdx Start position in the `dest` array.
@@ -95,7 +96,7 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
   /**
    * Copy specified portion of this observable array to `dest` observable
    * array.
-   * 
+   *
    * @param srcIdx Start position in this array.
    * @param dest Array into which the portion of this array is to be copied.
    * @param destIdx Start position in the `dest` array.
@@ -110,7 +111,7 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
 
   /**
    * Select the element at `idx` in the array.
-   * 
+   *
    * @param idx Index of selected element.
    * @return Element at given `idx`.
    * @throws java.lang.ArrayIndexOutOfBoundsException if `idx` does not satisfy
@@ -120,33 +121,33 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
 
   /**
    * Append given observable array to the end of this array.
-   * 
+   *
    * Capacity is increased, if necessary, to match the new size of the data.
-   * 
+   *
    * @param array Elements to be appended.
    * @throws java.lang.ArrayStoreException if element in `src` array could not
    * be stored in this array due to a type mismatch.
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def addAll (src: T): Unit
-  
+
   /**
    * Append given `elements` to the end of this array.
-   * 
+   *
    * Capacity is increased, if necessary, to match the new size of the data.
-   * 
+   *
    * @param elements Elements to be appended.
    * @throws java.lang.ArrayStoreException if element in `elements` could not
    * be stored in this array due to a type mismatch.
    * @throws java.lang.NullPointerException if `elements` is `null`.
    */
   def addAll (elements: V*): Unit
-  
+
   /**
    * Append portion of given regular array to the end of this array.
-   * 
+   *
    * Capacity is increased, if necessary, to match the new size of the data.
-   * 
+   *
    * @param src Elements to be appended.
    * @param srcIdx Start position in the `src` array.
    * @param length Number of data elements to be appended.
@@ -157,12 +158,12 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def addAll (src: Array [V], srcIdx: Int, lenght: Int): Unit
-  
+
   /**
    * Append portion of given regular array to the end of this array.
-   * 
+   *
    * Capacity is increased, if necessary, to match the new size of the data.
-   * 
+   *
    * @param src Elements to be appended.
    * @param srcIdx Start position in the `src` array.
    * @param length Number of data elements to be appended.
@@ -173,37 +174,37 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def addAll (src: T, srcIdx: Int, lenght: Int): Unit
-  
+
   /**
    * Replace the contents of this array with the given `elements`.
-   * 
+   *
    * Capacity is increased, if necessary, to match the new size of the data.
-   * 
+   *
    * @param elements New contents of this array.
    * @throws java.lang.ArrayStoreException if element in `elements` could not
    * be stored in this array due to a type mismatch.
    * @throws java.lang.NullPointerException if `elements` is `null`.
    */
   def setAll (elements: V*): Unit
-  
+
   /**
    * Replace the contents of this array with the given observable array.
-   * 
+   *
    * Capacity is increased, if necessary, to match the new size of the data.
-   * 
+   *
    * @param src Array to replace contents this array.
    * @throws java.lang.ArrayStoreException if element in `src` could not be
    * stored in this array due to a type mismatch.
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def setAll (src: T): Unit
-  
+
   /**
    * Replace the contents of this array with portion of the given regular
    * array.
-   * 
+   *
    * Capacity is increased, if necessary, to match the new size of the data.
-   * 
+   *
    * @param src Array to replace contents this array.
    * @param srcIdx Start position in the `src` array.
    * @param length Number of data elements to be copied.
@@ -214,13 +215,13 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def setAll (src: Array [V], srcIdx: Int, length: Int): Unit
-  
+
   /**
    * Replace the contents of this array with portion of the given observable
    * array.
-   * 
+   *
    * Capacity is increased, if necessary, to match the new size of the data.
-   * 
+   *
    * @param src Array to replace contents this array.
    * @param srcIdx Start position in the `src` array.
    * @param length Number of data elements to be copied.
@@ -231,21 +232,21 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def setAll (src: T, srcIdx: Int, length: Int): Unit
-  
+
   /**
    * Set the element at `idx` in the array to `value`.
-   * 
+   *
    * @param idx Index of element to be changed.
    * @param value New value for element at `idx`.
    * @throws java.lang.ArrayIndexOutOfBoundsException if `idx` does not satisfy
    * `0 <= idx < length`.
    */
   def set (idx: Int, value: V): Unit
-  
+
   /**
    * Copy a portion of given regular array into this array, replacing affected
    * contents.
-   * 
+   *
    * @param destIdx Start position in this array.
    * @param src Array containing data to be copied.
    * @param srcIdx Start position in `src` array.
@@ -257,11 +258,11 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def set (destIdx: Int, src: Array [V], srcIdx: Int, length: Int): Unit
-  
+
   /**
    * Copy a portion of given observable array into this array, replacing
    * affected contents.
-   * 
+   *
    * @param destIdx Start position in this array.
    * @param src Array containing data to be copied.
    * @param srcIdx Start position in `src` array.
@@ -276,7 +277,7 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
 
   /**
    * Translate this observable array to a regular array.
-   * 
+   *
    * @return Regular array containing this array's contents.
    */
   def toArray: Array [V] = toArray (null.asInstanceOf [Array [V]])
@@ -284,7 +285,7 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
   /**
    * Write the contents of this array into the specified array, if it is large
    * enough, or a new array if it is not.
-   * 
+   *
    * @param dest Array into which this array will be written, if large enough
    * to hold this array's contents.  If `null`, this argument is ignored.
    * @return The `dest` array if it is large enough to hold this array's data,
@@ -297,7 +298,7 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
   /**
    * Write a portion of this array's contents into the specified array, if it
    * is large enough, or a new array if it is not.
-   * 
+   *
    * @param srcIdx Start position in this array.
    * @param dest Array into which this array will be written, if large enough
    * to hold this array's contents.  If `null`, this argument is ignored.
@@ -312,47 +313,49 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
   // ArrayLike [V, T] abstract member function implementations.
   /**
    * Select an element by its index in the array.
-   * 
+   *
    * @param idx Index of selected element.
    * @return Element at given `idx`.
    * @throws java.lang.ArrayIndexOutOfBoundsException if `idx` does not satisfy
    * `0 <= idx < length`.
    */
   def apply (idx: Int) = get (idx)
-  
+
   /**
    * Set the element at `idx` in the array to `value`.
-   * 
+   *
    * @param idx Index of element to be changed.
    * @param value New value for element at `idx`.
    * @throws java.lang.ArrayIndexOutOfBoundsException if `idx` does not satisfy
    * `0 <= idx < length`.
    */
   def update (idx: Int, value: V) = set (idx, value)
-  
+
   /**
    * Retrieve length of data in this array.
-   * 
+   *
    * @return Length of data in this array.
    */
   override def size = delegate.size
-  
+
   /**
    * Retrieve length of data in this array.
-   * 
+   *
    * @return Length of data in this array.
    */
   override def length = size
 
   /**
-   * @inheritdocs
+   * Convert to a sequence in which all elements are implemented sequentially.
+   *
+   * @return Sequence with contents of this array.
    */
   override def seq = toArray.seq
 
   // Builder [V, T] abstract member function implementations.
   /**
    * Empty array, clearing builder contents, resizing it to zero.
-   * 
+   *
    * Capacity is unchanged.
    */
   override def clear () = delegate.clear ()
