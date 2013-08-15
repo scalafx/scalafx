@@ -26,19 +26,18 @@
  */
 package issues.issue070
 
-import javafx.{concurrent => jfxc}
 import org.junit.runner.RunWith
-import org.scalatest.{Ignore, FlatSpec}
+import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import scalafx.concurrent.Task
+import scalafx.Includes._
+import scalafx.concurrent.{WorkerStateEvent, Task}
 import scalafx.testutil.RunOnApplicationThread
 
 /** Verify that code causing Issue 70 behaves correctly after fix. */
 @RunWith(classOf[JUnitRunner])
-@Ignore
 class Issue070Spec extends FlatSpec with RunOnApplicationThread {
 
-  ignore  should "Issue 70 - code using handleEvent() should compile" in {
+  "Issue 70 - code using handleEvent()" should "compile" in {
 
     val expectedResult = "Hello"
 
@@ -48,12 +47,12 @@ class Issue070Spec extends FlatSpec with RunOnApplicationThread {
     // Add simple event handler that ignores event value
     // Issue 70 prevent following code from compiling with "error: ambiguous reference to overloaded definition"
     // Uncomment following line after the fix
-//    task.handleEvent(jfxc.WorkerStateEvent.ANY) {println("Some event happened")}
+    task.handleEvent(WorkerStateEvent.ANY) {println("Some event happened")}
 
     // Add simple event handler that accesses event value
     // Issue 70 prevent following code from compiling with "error: ambiguous reference to overloaded definition"
     // Uncomment following line after the fix
-//    task.handleEvent(jfxc.WorkerStateEvent.ANY) {(e: jfxc.WorkerStateEvent) => println(e.getEventType.toString)}
+    task.handleEvent(WorkerStateEvent.ANY) {(e: WorkerStateEvent) => println(e.getEventType.toString)}
 
     task.run()
     val actualResult = task.get()
@@ -61,4 +60,26 @@ class Issue070Spec extends FlatSpec with RunOnApplicationThread {
     assert(actualResult === expectedResult)
   }
 
+  "Issue 70 extension - code using filterEvent()" should "compile" in {
+
+    val expectedResult = "Hello"
+
+    // Setup a simple task that returns a string
+    val task = Task[String] {expectedResult}
+
+    // Add simple event filter that ignores event value
+    // Issue 70 prevent following code from compiling with "error: ambiguous reference to overloaded definition"
+    // Uncomment following line after the fix
+    task.filterEvent(WorkerStateEvent.ANY) {println("Some event happened")}
+
+    // Add simple event filter that accesses event value
+    // Issue 70 prevent following code from compiling with "error: ambiguous reference to overloaded definition"
+    // Uncomment following line after the fix
+    task.filterEvent(WorkerStateEvent.ANY) {(e: WorkerStateEvent) => println(e.getEventType.toString)}
+
+    task.run()
+    val actualResult = task.get()
+
+    assert(actualResult === expectedResult)
+  }
 }
