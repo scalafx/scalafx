@@ -28,89 +28,37 @@ package scalafx.collections
 
 
 import javafx.{collections => jfxc}
-import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.collections.ObservableIntegerArray!]].
- *
- * @define OIA `ObservableIntegerArray`
- * @define ARY `Array`
- * @define JFXC http://docs.oracle.com/javafx/8/api/javafx/collections
  */
-object ObservableIntegerArray {
+object ObservableIntegerArray extends ObservableArrayCompanionBase [Int,
+  ObservableIntegerArray, jfxc.ObservableIntegerArray] {
 
   /**
-   * Extract a JavaFX's [[$JFXC/ObservableIntegerArray.html
-   * ObservableIntegerArray]] from a
-   * ScalaFX $OIA.
-   *
-   * @param oia ScalaFX $OIA.
-   * @return JavaFX $OIA inside parameter.
+   * @inheritdocs
    */
-  implicit def sfxObservableIntegerArray2jfxObservableIntegerArray (oia:
-    ObservableIntegerArray) = oia.delegate
-
-  /**
-   * Return an empty $OIA
-   *
-   * @return New empty $OIA
-   */
-  def empty = ofDim (0)
-
-  /**
-   * Create new $OIA from an existing Array [Int].
-   *
-   * @param ai Array [Int] to be converted..
-   * @return New $OIA storing `ai`.
-   */
-  def apply (ai: Array [Int]) =
+  override def apply (va: Int*) =
     new ObservableIntegerArray (jfxc.FXCollections.observableIntegerArray
-      (ai:_*))
+      (va:_*))
 
   /**
-   * Create new $OIA from a list of Int vararg.
-   *
-   * @param iva Integer varargs.
-   * @return New $OIA storing `iva`
-   */
-  def apply (iva: Int*) =
-    new ObservableIntegerArray (jfxc.FXCollections.observableIntegerArray
-      (iva:_*))
-
-  /**
-   * Create an array with given dimension.
-   *
-   * @param n Size of the new array.
-   * @return An observable array with the specified dimension and zeroed
-   * elements.
-   */
-  def ofDim (n: Int) = new ObservableIntegerArray (n)
-
-   /**
-    * Returns an observable array containing the results of some element
-    * computation.
+    * Returns an array containing equally spaced values in some integer
+    * interval.
     *
-    * Note that `elem` is computed `n` times in total; it is not calculated
-    * once and reused.
-    *
-    * @param n Int Size of the new array.
-    * @param elem Computation to be calculated for each element.
-    * @return Observable array of size `n`, with each element containing the
-    * result of computation `elem`.
+    * @param start Start value of the array.
+    * @param end End value of the array, exclusive (that is, first value
+    * '''not''' included in array).  If `start` exceeds `end` (>= `end` if
+    * `step` is positive or <= `end` if `step` is negative), then an empty
+    * array will result.
+    * @param step Increment value of the array.  This value can be negative,
+    * but not zero.  If omitted, this value defaults to 1.
+    * @return Observable array with values: `start`, `start + step`, `start + 2
+    * * step`, `...`, up to, but not including, `end`.
+    * @throws IllegalArgumentException if `step` is 0.
     */
-  def fill (n: Int)(elem: => Int) = apply (Array.fill (n)(elem))
-
-   /**
-    * Returns an array containing the results of some element computation that
-    * takes the element index as an argument.
-    *
-    * @param n Int Size of the new array.
-    * @param f Function to be used to initialize element whose index is passed
-    * as an argument.
-    * @return Observable array of size `n`, with each element initialized by
-    * `f`.
-    */
-  def tabulate (n: Int)(f: Int => Int) = apply (Array.tabulate (n)(f (_)))
+  def range (start: Int, end: Int, step: Int = 1) = apply (Array.range (start,
+    end, step))
 }
 
 /**
@@ -123,8 +71,8 @@ object ObservableIntegerArray {
  *
  * @param delegate Wrapped JavaFX $OIA providing implementation.
  */
-class ObservableIntegerArray private [collections] (delegate:
-    jfxc.ObservableIntegerArray = ObservableIntegerArray.empty)
+class ObservableIntegerArray (delegate: jfxc.ObservableIntegerArray =
+  jfxc.FXCollections.observableIntegerArray ())
   extends ObservableArray [Int, ObservableIntegerArray,
     jfxc.ObservableIntegerArray] (delegate) {
 
@@ -133,10 +81,11 @@ class ObservableIntegerArray private [collections] (delegate:
    *
    * Elements will be zeroed out.
    *
-   * @param size Size of new $OIA
+   * @param n Size of new $OIA.  This value cannot be negative.
+   * @throws NegativeArraySizeException if `n` is negative.
    */
-  def this (size: Int) = this (jfxc.FXCollections.observableIntegerArray
-    (new Array [Int] (size):_*))
+  def this (n: Int) = this (jfxc.FXCollections.observableIntegerArray
+    (new Array [Int] (n):_*))
 
 
   // ObservableIntegerArray interface functions, allow class to act like it

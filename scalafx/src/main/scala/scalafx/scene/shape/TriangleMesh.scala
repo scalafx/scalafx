@@ -27,6 +27,9 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
+import scalafx.Includes._
+import scalafx.collections.ObservableFloatArray
+import scalafx.collections.ObservableIntegerArray
 import scalafx.delegate.SFXDelegate
 import javafx.{collections => jfxc}
 
@@ -46,17 +49,23 @@ class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.Triangl
   extends Mesh(delegate)
   with SFXDelegate[jfxss.TriangleMesh] {
 
+  new jfxss.TriangleMesh ()
   // TODO Replace `jfxc.Observable*Array` below with SFX equivalents (when implemented).
+  // BTW: Above TODO has been addressed.  However, the interface below is fine
+  // for retrieving information from the delegate, but there's currently no
+  // mechanism available to put that data INTO the delegate.  :-(
+  // Refer to ScalaFX Issue 74:
+  //   https://code.google.com/p/scalafx/issues/detail?id=74
 
   /** Gets the ObservableIntegerArray of faces, indices into the points and texCoords arrays, of this TriangleMesh */
-  def faces: jfxc.ObservableIntegerArray = delegate.getFaces
+  def faces: ObservableIntegerArray = delegate.getFaces
 
   /** Gets the ObservableIntegerArray of face smoothing groups of this TriangleMesh. */
-  def faceSmoothingGroups: jfxc.ObservableIntegerArray = delegate.getFaceSmoothingGroups
+  def faceSmoothingGroups: ObservableIntegerArray = delegate.getFaceSmoothingGroups
 
   /** Gets the ObservableFloatArray of points of this TriangleMesh. */
-  def points: jfxc.ObservableFloatArray = delegate.getPoints
+  def points: ObservableFloatArray = delegate.getPoints
 
   /** Gets the ObservableFloatArray of texture coordinates of this TriangleMesh. */
-  def texCoords: jfxc.ObservableFloatArray = delegate.getTexCoords
+  def texCoords: ObservableFloatArray = delegate.getTexCoords
 }

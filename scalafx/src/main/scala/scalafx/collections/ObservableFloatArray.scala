@@ -31,82 +31,15 @@ import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.collections.ObservableFloatArray!]].
- *
- * @define OFA `ObservableFloatArray`
- * @define ARY `Array`
- * @define JFXC http://docs.oracle.com/javafx/8/api/javafx/collections
  */
-object ObservableFloatArray {
+object ObservableFloatArray extends ObservableArrayCompanionBase [Float,
+  ObservableFloatArray, jfxc.ObservableFloatArray] {
 
   /**
-   * Extract a JavaFX's [[$JFXC/ObservableFloatArray.html
-   * ObservableFloatArray]] from a ScalaFX $OFA.
-   *
-   * @param ofa ScalaFX $OFA.
-   * @return JavaFX $OFA inside parameter.
+   * @inheritdocs
    */
-  implicit def sfxObservableFloatArray2jfxObservableFloatArray (ofa:
-    ObservableFloatArray) = ofa.delegate
-
-  /**
-   * Return an empty $OFA
-   *
-   * @return New empty $OFA
-   */
-  def empty = ofDim (0)
-
-  /**
-   * Create new $OFA from an existing Array [Float].
-   *
-   * @param af Array [Float] to be converted..
-   * @return New $OFA storing `af`.
-   */
-  def apply (af: Array [Float]) =
-    new ObservableFloatArray (jfxc.FXCollections.observableFloatArray (af:_*))
-
-  /**
-   * Create new $OFA from a list of Float vararg.
-   *
-   * @param fva Float varargs.
-   * @return New $OFA storing `fva`
-   */
-  def apply (fva: Float*) =
-    new ObservableFloatArray (jfxc.FXCollections.observableFloatArray (fva:_*))
-
-  /**
-   * Create an array with given dimension.
-   *
-   * @param n Size of the new array.
-   * @return An observable array with the specified dimension and zeroed
-   * elements.
-   */
-  def ofDim (n: Int) = new ObservableFloatArray (n)
-
-   /**
-    * Returns an observable array containing the results of some element
-    * computation.
-    *
-    * Note that `elem` is computed `n` times in total; it is not calculated
-    * once and reused.
-    *
-    * @param n Int Size of the new array.
-    * @param elem Computation to be calculated for each element.
-    * @return Observable array of size `n`, with each element containing the
-    * result of computation `elem`.
-    */
-  def fill (n: Int)(elem: => Float) = apply (Array.fill (n)(elem))
-
-   /**
-    * Returns an array containing the results of some element computation that
-    * takes the element index as an argument.
-    *
-    * @param n Int Size of the new array.
-    * @param f Function to be used to initialize element whose index is passed
-    * as an argument.
-    * @return Observable array of size `n`, with each element initialized by
-    * `f`.
-    */
-  def tabulate (n: Int)(f: Int => Float) = apply (Array.tabulate (n)(f (_)))
+  override def apply (va: Float*) =
+    new ObservableFloatArray (jfxc.FXCollections.observableFloatArray (va:_*))
 }
 
 /**
@@ -119,8 +52,8 @@ object ObservableFloatArray {
  *
  * @param delegate Wrapped JavaFX $OFA providing implementation.
  */
-class ObservableFloatArray private [collections] (delegate:
-    jfxc.ObservableFloatArray = ObservableFloatArray.empty)
+class ObservableFloatArray (delegate: jfxc.ObservableFloatArray =
+  jfxc.FXCollections.observableFloatArray ())
   extends ObservableArray [Float, ObservableFloatArray,
     jfxc.ObservableFloatArray] (delegate) {
 
@@ -129,10 +62,11 @@ class ObservableFloatArray private [collections] (delegate:
    *
    * Elements will be zeroed out.
    *
-   * @param size Size of new $OFA
+   * @param n Size of new $OFA.  This value cannot be negative.
+   * @throws NegativeArraySizeException if `n` is negative.
    */
-  def this (size: Int) = this (jfxc.FXCollections.observableFloatArray
-    (new Array [Float] (size):_*))
+  def this (n: Int) = this (jfxc.FXCollections.observableFloatArray
+    (new Array [Float] (n):_*))
 
   // ObservableFloatArray interface functions, allow class to act like it
   // implements the JavaFX ObservableFloatArray interface, without actually

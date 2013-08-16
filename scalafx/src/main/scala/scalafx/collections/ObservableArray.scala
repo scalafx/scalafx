@@ -29,12 +29,143 @@ package scalafx.collections
 import javafx.{collections => jfxc}
 import scala.collection.mutable.ArrayLike
 import scala.collection.mutable.Builder
+import scala.reflect.ClassTag
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 
-// Scaladoc macros for this file.
 /**
+ * @define OA `ObservableArray`
+ * @define ARY `Array`
+ *
+ * Abstract base class for observable array subclass companions.
+ *
+ * @tparam V Value type to be stored in this array.
+ * @tparam T Type of this $ARY.
+ *
+ * @constructor Create new base $OA.
+ * @param delegate Wrapped JavaFX $OA instance providing implementation.
  */
+
+private [collections] abstract class ObservableArrayCompanionBase [V :
+  ClassTag, T <: ObservableArray [V, T, D], D <: jfxc.ObservableArray [D]] {
+
+  /*
+   * Enable implicit conversions, to avoid feature warnings during compilation.
+   */
+  import scala.language.implicitConversions
+
+  /**
+   * Extract a JavaFX's [[$JFXC/ObservableIntegerArray.html
+   * ObservableIntegerArray]] from a
+   * ScalaFX $OIA.
+   *
+   * @param oia ScalaFX $OIA.
+   * @return JavaFX $OIA inside parameter.
+   */
+  implicit def sfxObservableArray2jfxObservableArray (oa: T): D = oa.delegate
+
+  /**
+   * Create new $OA from a vararg list.
+   *
+   * @param va Value varargs.
+   * @return New $OA storing `ia`
+   */
+  def apply (va: V*): T
+
+  /**
+   * Create new $OA from an existing array.
+   *
+   * @param av Array to be converted..
+   * @return New $OA storing `av`.
+   */
+  def apply (av: Array [V]): T = apply (av:_*)
+
+  /**
+   * Create an observable array with given dimension.
+   *
+   * @param n Size of the new array.  This value cannot be negative.
+   * @return An observable array with the specified dimension and zeroed
+   * elements.
+   * @throws NegativeArraySizeException if `n` is negative.
+   */
+  def ofDim (n: Int): T = apply (Array.ofDim (n))
+
+  /**
+   * Return an empty $OA
+   *
+   * @return New empty $OA
+   */
+  def empty (): T = ofDim (0)
+
+  /**
+   * Returns an observable array containing the results of some element
+   * computation.
+   *
+   * Note that `elem` is http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1139computed `n` times in total; it is not calculated
+   * once and reused.
+   *
+   * @param n Int Size of the new array.  If this value is less than 1, an
+   * empty array is returned (matching the behavior of Scala's Array [T].fill
+   * function).
+   * @param elem Computation to be calculated for each element.
+   * @return Observable array of size `n`, with each element containing the
+   * result of computation `elem`.
+   */
+  def fill (n: Int)(elem: => V): T = apply (Array.fill (n)(elem))
+
+  /**
+   * Returns an array containing the results of some element computation that
+   * takes the element index as an argument.
+   *
+   * @param n Int Size of the new array.  If this value is less than 1, an
+   * empty array is returned (matching the behavior of Scala's Array
+   * [T].tabulate function).
+   * @param f Function to be used to initialize element whose index is passed
+   * as an argument.
+   * @return Observable array of size `n`, with each element initialized by
+   * `f`.
+   */
+  def tabulate (n: Int)(f: Int => V): T = apply (Array.tabulate (n)(f))
+
+  /**
+   * Return an array returning repeated applications of a function to a start
+   * value.
+   * 
+   * @param start Start value of the array.
+   * @param n Int Size of the new array.  If this value is less than 1, an
+   * empty array is returned (matching the behavior of Scala's Array
+   * [T].iterate function).
+   * @param f Function to be repeatedly applied to previous element's value.
+   * @returns Array containing elements `start, f(start), f(f(start)), ...`.
+   */
+  def iterate (start: V, n: Int)(f: V => V): T = apply (Array.iterate (start,
+    n)(f))
+}
+
+/**
+ * Companion Object for `[[scalafx.collections.ObservableArray!]]`.
+ * 
+ * @define OA `ObservableArray`
+ * @define JFXC http://docs.oracle.com/javafx/82/api/javafx/collections
+ */
+
+object ObservableArray {
+
+  /**
+   * Indicates a change in an $OA. It is a simpler version of JavaFX's
+   * [[$JFXC/ArrayChangeListener.html `ArrayChangeListener [T]`]].
+   * 
+   * @constructor Create new instance describing the change detected.
+   * 
+   * @param sizeChanged `true` if the size of the $OA was changed; `false`
+   * otherwise.
+   * @param start Index of first element in the array affected by the change.
+   * @param end Index of first element in the array unaffected by the change.
+   * This value is exclusive of the change and indicates the first unchanged
+   * element after start, or the end of the array.
+   */
+  case class Change (sizeChanged: Boolean, start: Int, end: Int)
+}
 
 /**
  * @define OA `ObservableArray`
@@ -50,9 +181,8 @@ import scalafx.delegate.SFXDelegate
  * @param delegate Wrapped JavaFX $OA instance providing implementation.
  */
 
-abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
-  D <: jfxc.ObservableArray [D]] private [collections] (override val
-    delegate: D)
+abstract class ObservableArray [V : ClassTag, T <: ObservableArray [V, T, D],
+  D <: jfxc.ObservableArray [D]] (override val delegate: D)
   extends ArrayLike [V, T]
   with Builder [V, T]
   with Observable
@@ -359,4 +489,48 @@ abstract class ObservableArray [V <: AnyVal, T <: ObservableArray [V, T, D],
    * Capacity is unchanged.
    */
   override def clear () = delegate.clear ()
+
+  /**
+   * Add a listener function to $ARY's changes.
+   * 
+   * @note This function '''will handle''' this array's modifications data.
+   * This is, it will be notified which array has been modified and which array
+   * 
+   * @param op Function that will handle this $OA's modifications data,
+   * to be activated when some change is made.
+   */
+
+  import ObservableArray.Change
+  def onChange (op: (T, Change) => Unit): Unit = {
+    delegate.addListener {
+      new jfxc.ArrayChangeListener [D] {
+        override def onChanged (array: D, sizeChanged: Boolean, start: Int,
+          end: Int) {
+          op (ObservableArray.this.asInstanceOf [T], Change (sizeChanged,
+            start, end))
+        }
+      }
+    }
+  }
+
+  /**
+   * Add a listener function to $ARY's changes.
+   * 
+   * @note This function '''will handle''' this array's modifications data.
+   *
+   * @param op Function that will handle this $OA's modifications data,
+   * to be activated when some change is made.
+   */
+
+  import ObservableArray.Change
+  def onChange (op: => Unit): Unit = {
+    delegate.addListener {
+      new jfxc.ArrayChangeListener [D] {
+        override def onChanged (array: D, sizeChanged: Boolean, start: Int,
+          end: Int) {
+          op
+        }
+      }
+    }
+  }
 }
