@@ -482,6 +482,28 @@ abstract class ObservableArray [V : ClassTag, T <: ObservableArray [V, T, D],
    */
   override def seq = toArray.seq
 
+  /**
+   * Append another array to this array.
+   * 
+   * @param src Array to be appended to this array.
+   * @return This array, expanded to contain the indicated array.
+   */
+  def ++ (src: Array [V]): T = {
+    addAll (src:_*)
+    this.asInstanceOf [T]
+  }
+
+  /**
+   * Append another observable array to this array.
+   * 
+   * @param src Array to be appended to this array.
+   * @return This array, expanded to contain the indicated array.
+   */
+  def ++ (src: T): T = {
+    addAll (src)
+    this.asInstanceOf [T]
+  }
+
   // Builder [V, T] abstract member function implementations.
   /**
    * Empty array, clearing builder contents, resizing it to zero.
@@ -489,6 +511,25 @@ abstract class ObservableArray [V : ClassTag, T <: ObservableArray [V, T, D],
    * Capacity is unchanged.
    */
   override def clear () = delegate.clear ()
+
+  /**
+   * Produces collection from builder.
+   *
+   * @return This $OA.
+   */
+
+  override def result () = this.asInstanceOf [T]
+
+  /**
+   * Append new element to this $OFA.
+   *
+   * @param elem Element to be added to end of this array.
+   * @return This $OFA.
+   */
+  override def += (elem: V) = {
+    addAll (elem)
+    this
+  }
 
   /**
    * Add a listener function to $ARY's changes.

@@ -170,23 +170,4 @@ class ObservableFloatArray (delegate: jfxc.ObservableFloatArray =
    * @return New empty $OFA.
    */
   protected [this] override def newBuilder = ObservableFloatArray.empty
-
-  // Builder [V, T] abstract member function implementations.
-  /**
-   * Produces collection from builder.
-   *
-   * @return This $OFA.
-   */
-  override def result () = this
-
-  /**
-   * Add new element to this $OFA.
-   *
-   * @param elem Element to be added to end of this array.
-   * @return This $OFA.
-   */
-  override def += (elem: Float) = {
-    delegate.addAll (elem)
-    this
-  }
 }

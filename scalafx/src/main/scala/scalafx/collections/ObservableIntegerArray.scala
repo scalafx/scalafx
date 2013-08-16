@@ -190,23 +190,4 @@ class ObservableIntegerArray (delegate: jfxc.ObservableIntegerArray =
    * @return New empty $OIA.
    */
   protected [this] override def newBuilder = ObservableIntegerArray.empty
-
-  // Builder [V, T] abstract member function implementations.
-  /**
-   * Produces collection from builder.
-   *
-   * @return This $OIA.
-   */
-  override def result () = this
-
-  /**
-   * Add new element to this $OIA.
-   *
-   * @param elem Element to be added to end of this array.
-   * @return This $OIA.
-   */
-  override def += (elem: Int) = {
-    delegate.addAll (elem)
-    this
-  }
 }
