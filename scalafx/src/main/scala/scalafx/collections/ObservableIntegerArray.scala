@@ -32,49 +32,41 @@ import javafx.{collections => jfxc}
 /**
  * Companion Object for [[scalafx.collections.ObservableIntegerArray!]].
  */
-object ObservableIntegerArray extends ObservableArrayCompanionBase [Int,
-  ObservableIntegerArray, jfxc.ObservableIntegerArray] {
+object ObservableIntegerArray extends ObservableArrayCompanionBase[Int, ObservableIntegerArray,
+  jfxc.ObservableIntegerArray] {
 
   /**
    * @inheritdocs
    */
-  override def apply (va: Int*) =
-    new ObservableIntegerArray (jfxc.FXCollections.observableIntegerArray
-      (va:_*))
+  override def apply(a: Int*) = new ObservableIntegerArray(jfxc.FXCollections.observableIntegerArray(a:_*))
 
   /**
-    * Returns an array containing equally spaced values in some integer
-    * interval.
+    * Returns an array containing equally spaced values in some integer interval.
     *
     * @param start Start value of the array.
-    * @param end End value of the array, exclusive (that is, first value
-    * '''not''' included in array).  If `start` exceeds `end` (>= `end` if
-    * `step` is positive or <= `end` if `step` is negative), then an empty
-    * array will result.
-    * @param step Increment value of the array.  This value can be negative,
-    * but not zero.  If omitted, this value defaults to 1.
-    * @return Observable array with values: `start`, `start + step`, `start + 2
-    * * step`, `...`, up to, but not including, `end`.
+    * @param end End value of the array, exclusive (that is, first value '''not''' included in array).  If `start`
+    * exceeds `end` (>= `end` if `step` is positive or <= `end` if `step` is negative), then an empty array will
+    * result.
+    * @param step Increment value of the array.  This value can be negative, but not zero.  If omitted, this value
+    * defaults to 1.
+    * @return Observable array with values: `start, start + step, start + 2 * step, ...`, up to, but not including,
+    * `end`.
     * @throws IllegalArgumentException if `step` is 0.
     */
-  def range (start: Int, end: Int, step: Int = 1) = apply (Array.range (start,
-    end, step))
+  def range(start: Int, end: Int, step: Int = 1) = apply(Array.range(start, end, step))
 }
 
 /**
  * @define OIA `ObservableIntegerArray`
  * @define ARY `Array`
- * @define JFXC http://docs.oracle.com/javafx/8/api/javafx/collections
  *
- * Wrapper class to JavaFX's [[$JFXC/ObservableIntegerArray.html
- * ObservableIntegerArray]].
+ * Wrapper class to JavaFX's `[[http://docs.oracle.com/javafx/8/api/javafx/collections/ObservableIntegerArray.html
+ * ObservableIntegerArray]]`.
  *
  * @param delegate Wrapped JavaFX $OIA providing implementation.
  */
-class ObservableIntegerArray (delegate: jfxc.ObservableIntegerArray =
-  jfxc.FXCollections.observableIntegerArray ())
-  extends ObservableArray [Int, ObservableIntegerArray,
-    jfxc.ObservableIntegerArray] (delegate) {
+class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXCollections.observableIntegerArray())
+  extends ObservableArray[Int, ObservableIntegerArray, jfxc.ObservableIntegerArray](delegate) {
 
   /**
    * Create $OIA with specified capacity.
@@ -84,110 +76,123 @@ class ObservableIntegerArray (delegate: jfxc.ObservableIntegerArray =
    * @param n Size of new $OIA.  This value cannot be negative.
    * @throws NegativeArraySizeException if `n` is negative.
    */
-  def this (n: Int) = this (jfxc.FXCollections.observableIntegerArray
-    (new Array [Int] (n):_*))
+  def this(n: Int) = this(jfxc.FXCollections.observableIntegerArray(new Array[Int](n):_*))
 
 
-  // ObservableIntegerArray interface functions, allow class to act like it
-  // implements the JavaFX ObservableIntegerArray interface, without actually
-  // being interchangeable with one.
+  // ObservableIntegerArray interface functions, allow class to act like it implements the JavaFX
+  // ObservableIntegerArray interface, without actually being interchangeable with one.
   /**
    * @inheritdocs
    */
-  override def copyTo (srcIdx: Int, dest: Array [Int], destIdx: Int, length:
-    Int) = delegate.copyTo (srcIdx, dest, destIdx, length)
-
-  /**
-   * @inheritdocs
-   */
-  override def copyTo (srcIdx: Int, dest: ObservableIntegerArray, destIdx: Int,
-    length: Int) =
-      delegate.copyTo (srcIdx, dest.delegate, destIdx, length)
+  override def copyTo(srcIdx: Int, dest: Array[Int], destIdx: Int, length: Int) {
+    delegate.copyTo(srcIdx, dest, destIdx, length)
+  }
 
   /**
    * @inheritdocs
    */
-  override def get (idx: Int) = delegate.get (idx)
-
-  /**
-   * @inheritdocs.
-   */
-  override def addAll (elements: Int*) = delegate.addAll (elements:_*)
-
-  /**
-   * @inheritdocs.
-   */
-  override def addAll (src: ObservableIntegerArray) =
-    delegate.addAll (src.delegate)
-
-  /**
-   * @inheritdocs.
-   */
-  override def addAll (src: Array [Int], srcIdx: Int, length: Int) =
-    delegate.addAll (src, srcIdx, length)
-
-  /**
-   * @inheritdocs.
-   */
-  override def addAll (src: ObservableIntegerArray, srcIdx: Int, length: Int) =
-    delegate.addAll (src.delegate, srcIdx, length)
-
-  /**
-   * @inheritdocs.
-   */
-  override def setAll (elements: Int*) = delegate.setAll (elements:_*)
-
-  /**
-   * @inheritdocs.
-   */
-  override def setAll (src: ObservableIntegerArray) =
-    delegate.setAll (src.delegate)
-
-  /**
-   * @inheritdocs.
-   */
-  override def setAll (src: Array [Int], srcIdx: Int, length: Int) =
-    delegate.setAll (src, srcIdx, length)
-
-  /**
-   * @inheritdocs.
-   */
-  override def setAll (src: ObservableIntegerArray, srcIdx: Int, length: Int) =
-    delegate.setAll (src.delegate, srcIdx, length)
+  override def copyTo(srcIdx: Int, dest: ObservableIntegerArray, destIdx: Int, length: Int) {
+    delegate.copyTo(srcIdx, dest.delegate, destIdx, length)
+  }
 
   /**
    * @inheritdocs
    */
-  override def set (idx: Int, elem: Int) = delegate.set (idx, elem)
+  override def get(idx: Int) = delegate.get(idx)
+
+  /**
+   * @inheritdocs.
+   */
+  override def addAll(elems: Int*) = {
+    delegate.addAll(elems:_*)
+  }
+
+  /**
+   * @inheritdocs.
+   */
+  override def addAll(src: ObservableIntegerArray) {
+    delegate.addAll(src.delegate)
+  }
+
+  /**
+   * @inheritdocs.
+   */
+  override def addAll(src: Array[Int], srcIdx: Int, length: Int) {
+    delegate.addAll(src, srcIdx, length)
+  }
+
+  /**
+   * @inheritdocs.
+   */
+  override def addAll(src: ObservableIntegerArray, srcIdx: Int, length: Int) {
+    delegate.addAll(src.delegate, srcIdx, length)
+  }
+
+  /**
+   * @inheritdocs.
+   */
+  override def setAll(elements: Int*) {
+    delegate.setAll(elements:_*)
+  }
+
+  /**
+   * @inheritdocs.
+   */
+  override def setAll(src: ObservableIntegerArray) {
+    delegate.setAll(src.delegate)
+  }
+
+  /**
+   * @inheritdocs.
+   */
+  override def setAll(src: Array[Int], srcIdx: Int, length: Int) {
+    delegate.setAll(src, srcIdx, length)
+  }
+
+  /**
+   * @inheritdocs.
+   */
+  override def setAll(src: ObservableIntegerArray, srcIdx: Int, length: Int) {
+    delegate.setAll(src.delegate, srcIdx, length)
+  }
 
   /**
    * @inheritdocs
    */
-  override def set (destIdx: Int, src: Array [Int], srcIdx: Int, length: Int) =
-    delegate.set (destIdx, src, srcIdx, length)
+  override def set(idx: Int, elem: Int) {
+    delegate.set(idx, elem)
+  }
 
   /**
    * @inheritdocs
    */
-  override def set (destIdx: Int, src: ObservableIntegerArray, srcIdx: Int,
-    length: Int) = delegate.set (destIdx, src.delegate, srcIdx, length)
+  override def set(destIdx: Int, src: Array[Int], srcIdx: Int, length: Int) {
+    delegate.set(destIdx, src, srcIdx, length)
+  }
 
   /**
    * @inheritdocs
    */
-  override def toArray (dest: Array [Int]) = delegate.toArray (dest)
+  override def set(destIdx: Int, src: ObservableIntegerArray, srcIdx: Int, length: Int) {
+    delegate.set(destIdx, src.delegate, srcIdx, length)
+  }
 
   /**
    * @inheritdocs
    */
-  override def toArray (srcIdx: Int, dest: Array [Int], length: Int) =
-    delegate.toArray (srcIdx, dest, length)
+  override def toArray(dest: Array[Int]) = delegate.toArray(dest)
 
-  // ArrayLike [V, T] abstract member function implementations.
+  /**
+   * @inheritdocs
+   */
+  override def toArray(srcIdx: Int, dest: Array[Int], length: Int) =
+    delegate.toArray(srcIdx, dest, length)
+
+  // ArrayLike[V, T] abstract member function implementations.
   /**
    * Create new builder for this collection.
    *
    * @return New empty $OIA.
    */
-  protected [this] override def newBuilder = ObservableIntegerArray.empty
+  protected[this] override def newBuilder = ObservableIntegerArray.empty
 }

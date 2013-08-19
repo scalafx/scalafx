@@ -27,35 +27,30 @@
 package scalafx.collections
 
 import javafx.{collections => jfxc}
-import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.collections.ObservableFloatArray!]].
  */
-object ObservableFloatArray extends ObservableArrayCompanionBase [Float,
-  ObservableFloatArray, jfxc.ObservableFloatArray] {
+object ObservableFloatArray extends ObservableArrayCompanionBase[Float, ObservableFloatArray,
+  jfxc.ObservableFloatArray] {
 
   /**
    * @inheritdocs
    */
-  override def apply (va: Float*) =
-    new ObservableFloatArray (jfxc.FXCollections.observableFloatArray (va:_*))
+  override def apply(a: Float*) = new ObservableFloatArray(jfxc.FXCollections.observableFloatArray(a:_*))
 }
 
 /**
  * @define OFA `ObservableFloatArray`
  * @define ARY `Array`
- * @define JFXC http://docs.oracle.com/javafx/8/api/javafx/collections
  *
- * Wrapper class to JavaFX's [[$JFXC/ObservableFloatArray.html
- * ObservableFloatArray]].
+ * Wrapper class to JavaFX's `[[http://docs.oracle.com/javafx/8/api/javafx/collections/ObservableFloatArray.html
+ * ObservableFloatArray]]`.
  *
  * @param delegate Wrapped JavaFX $OFA providing implementation.
  */
-class ObservableFloatArray (delegate: jfxc.ObservableFloatArray =
-  jfxc.FXCollections.observableFloatArray ())
-  extends ObservableArray [Float, ObservableFloatArray,
-    jfxc.ObservableFloatArray] (delegate) {
+class ObservableFloatArray(delegate: jfxc.ObservableFloatArray = jfxc.FXCollections.observableFloatArray())
+  extends ObservableArray[Float, ObservableFloatArray, jfxc.ObservableFloatArray](delegate) {
 
   /**
    * Create $OFA with specified capacity.
@@ -65,8 +60,7 @@ class ObservableFloatArray (delegate: jfxc.ObservableFloatArray =
    * @param n Size of new $OFA.  This value cannot be negative.
    * @throws NegativeArraySizeException if `n` is negative.
    */
-  def this (n: Int) = this (jfxc.FXCollections.observableFloatArray
-    (new Array [Float] (n):_*))
+  def this(n: Int) = this(jfxc.FXCollections.observableFloatArray(new Array[Float](n):_*))
 
   // ObservableFloatArray interface functions, allow class to act like it
   // implements the JavaFX ObservableFloatArray interface, without actually
@@ -74,100 +68,114 @@ class ObservableFloatArray (delegate: jfxc.ObservableFloatArray =
   /**
    * @inheritdocs
    */
-  override def copyTo (srcIdx: Int, dest: Array [Float], destIdx: Int, length:
-    Int) = delegate.copyTo (srcIdx, dest, destIdx, length)
+  override def copyTo(srcIdx: Int, dest: Array[Float], destIdx: Int, length:Int) {
+    delegate.copyTo(srcIdx, dest, destIdx, length)
+  }
 
   /**
    * @inheritdocs
    */
-  override def copyTo (srcIdx: Int, dest: ObservableFloatArray, destIdx: Int,
-    length: Int) =
-      delegate.copyTo (srcIdx, dest.delegate, destIdx, length)
+  override def copyTo(srcIdx: Int, dest: ObservableFloatArray, destIdx: Int, length: Int) {
+    delegate.copyTo(srcIdx, dest.delegate, destIdx, length)
+  }
 
   /**
    * @inheritdocs
    */
-  override def get (idx: Int) = delegate.get (idx)
+  override def get(idx: Int) = delegate.get(idx)
 
   /**
    * @inheritdocs.
    */
-  override def addAll (elements: Float*) = delegate.addAll (elements:_*)
+  override def addAll(elems: Float*) {
+    delegate.addAll(elems:_*)
+  }
 
   /**
    * @inheritdocs.
    */
-  override def addAll (src: ObservableFloatArray) =
-    delegate.addAll (src.delegate)
+  override def addAll(src: ObservableFloatArray) {
+    delegate.addAll(src.delegate)
+  }
 
   /**
    * @inheritdocs.
    */
-  override def addAll (src: Array [Float], srcIdx: Int, length: Int) =
-    delegate.addAll (src, srcIdx, length)
+  override def addAll(src: Array[Float], srcIdx: Int, length: Int) {
+    delegate.addAll(src, srcIdx, length)
+  }
 
   /**
    * @inheritdocs.
    */
-  override def addAll (src: ObservableFloatArray, srcIdx: Int, length: Int) =
-    delegate.addAll (src.delegate, srcIdx, length)
+  override def addAll(src: ObservableFloatArray, srcIdx: Int, length: Int) {
+    delegate.addAll(src.delegate, srcIdx, length)
+  }
 
   /**
    * @inheritdocs.
    */
-  override def setAll (elements: Float*) = delegate.setAll (elements:_*)
+  override def setAll(elems: Float*) {
+    delegate.setAll(elems:_*)
+  }
 
   /**
    * @inheritdocs.
    */
-  override def setAll (src: ObservableFloatArray) =
-    delegate.setAll (src.delegate)
+  override def setAll(src: ObservableFloatArray) {
+    delegate.setAll(src.delegate)
+  }
 
   /**
    * @inheritdocs.
    */
-  override def setAll (src: Array [Float], srcIdx: Int, length: Int) =
-    delegate.setAll (src, srcIdx, length)
+  override def setAll(src: Array[Float], srcIdx: Int, length: Int) {
+    delegate.setAll(src, srcIdx, length)
+  }
 
   /**
    * @inheritdocs.
    */
-  override def setAll (src: ObservableFloatArray, srcIdx: Int, length: Int) =
-    delegate.setAll (src.delegate, srcIdx, length)
+  override def setAll(src: ObservableFloatArray, srcIdx: Int, length: Int) {
+    delegate.setAll(src.delegate, srcIdx, length)
+  }
 
   /**
    * @inheritdocs
    */
-  override def set (idx: Int, elem: Float) = delegate.set (idx, elem)
+  override def set(idx: Int, elem: Float) {
+    delegate.set(idx, elem)
+  }
 
   /**
    * @inheritdocs
    */
-  override def set (destIdx: Int, src: Array [Float], srcIdx: Int, length:
-    Int) = delegate.set (destIdx, src, srcIdx, length)
+  override def set(destIdx: Int, src: Array[Float], srcIdx: Int, length: Int) {
+    delegate.set(destIdx, src, srcIdx, length)
+  }
 
   /**
    * @inheritdocs
    */
-  override def set (destIdx: Int, src: ObservableFloatArray, srcIdx: Int,
-    length: Int) = delegate.set (destIdx, src.delegate, srcIdx, length)
+  override def set(destIdx: Int, src: ObservableFloatArray, srcIdx: Int, length: Int) {
+    delegate.set(destIdx, src.delegate, srcIdx, length)
+  }
 
   /**
    * @inheritdocs
    */
-  override def toArray (dest: Array [Float]) = delegate.toArray (dest)
+  override def toArray(dest: Array[Float]) = delegate.toArray(dest)
 
   /**
    * @inheritdocs
    */
-  override def toArray (srcIdx: Int, dest: Array [Float], length: Int) =
-    delegate.toArray (srcIdx, dest, length)
+  override def toArray(srcIdx: Int, dest: Array[Float], length: Int) = delegate.toArray(srcIdx, dest, length)
 
-  // ArrayLike [V, T] abstract member function implementations.
+  // ArrayLike[V, T] abstract member function implementations.
   /**
    * Create new builder for this collection.
    *
    * @return New empty $OFA.
    */
-  protected [this] override def newBuilder = ObservableFloatArray.empty
+  protected[this] override def newBuilder = ObservableFloatArray.empty
 }
