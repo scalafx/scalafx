@@ -29,7 +29,7 @@ package scalafx.collections
 import javafx.{collections => jfxc}
 
 /**
- * Companion Object for [[scalafx.collections.ObservableFloatArray!]].
+ * Companion Object for [[scalafx.collections.ObservableFloatArray]].
  */
 object ObservableFloatArray extends ObservableArrayCompanionBase[Float, ObservableFloatArray,
   jfxc.ObservableFloatArray] {
@@ -40,14 +40,14 @@ object ObservableFloatArray extends ObservableArrayCompanionBase[Float, Observab
   override def apply(a: Float*) = new ObservableFloatArray(jfxc.FXCollections.observableFloatArray(a:_*))
 }
 
+// TODO: Enter link when JavaFX 8 API Docs are available on-line.
 /**
- * @define OFA `ObservableFloatArray`
- * @define ARY `Array`
- *
- * Wrapper class to JavaFX's `[[http://docs.oracle.com/javafx/8/api/javafx/collections/ObservableFloatArray.html
- * ObservableFloatArray]]`.
+ * Wrapper class to JavaFX's `ObservableFloatArray`.
  *
  * @param delegate Wrapped JavaFX $OFA providing implementation.
+
+ * @define OFA `ObservableFloatArray`
+ * @define ARY `Array`
  */
 class ObservableFloatArray(delegate: jfxc.ObservableFloatArray = jfxc.FXCollections.observableFloatArray())
   extends ObservableArray[Float, ObservableFloatArray, jfxc.ObservableFloatArray](delegate) {

@@ -34,16 +34,16 @@ import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 
 /**
- * Companion Object for `[[scalafx.collections.ObservableArray!]]`.
+ * Companion Object for `[[scalafx.collections.ObservableArray]]`.
  * 
  * @define OA `ObservableArray`
  */
 
 object ObservableArray {
 
+  // TODO: Enter link when JavaFX 8 API Docs are available on-line.
   /**
-   * Indicates a change in an $OA. It is a simpler version of JavaFX's
-   * `[[http://docs.oracle.com/javafx/8/api/javafx/collections/ArrayChangeListener.html ArrayChangeListener[T]]]`.
+   * Indicates a change in an $OA. It is a simpler version of JavaFX's `ArrayChangeListener[T]`.
    * 
    * @constructor Create new instance describing the change detected.
    * 

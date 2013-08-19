@@ -30,7 +30,7 @@ package scalafx.collections
 import javafx.{collections => jfxc}
 
 /**
- * Companion Object for [[scalafx.collections.ObservableIntegerArray!]].
+ * Companion Object for [[scalafx.collections.ObservableIntegerArray]].
  */
 object ObservableIntegerArray extends ObservableArrayCompanionBase[Int, ObservableIntegerArray,
   jfxc.ObservableIntegerArray] {
@@ -56,14 +56,14 @@ object ObservableIntegerArray extends ObservableArrayCompanionBase[Int, Observab
   def range(start: Int, end: Int, step: Int = 1) = apply(Array.range(start, end, step))
 }
 
+// TODO: Enter link when JavaFX 8 API Docs are available on-line.
 /**
- * @define OIA `ObservableIntegerArray`
- * @define ARY `Array`
- *
- * Wrapper class to JavaFX's `[[http://docs.oracle.com/javafx/8/api/javafx/collections/ObservableIntegerArray.html
- * ObservableIntegerArray]]`.
+ * Wrapper class to JavaFX's `ObservableIntegerArray`.
  *
  * @param delegate Wrapped JavaFX $OIA providing implementation.
+ *
+ * @define OIA `ObservableIntegerArray`
+ * @define ARY `Array`
  */
 class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXCollections.observableIntegerArray())
   extends ObservableArray[Int, ObservableIntegerArray, jfxc.ObservableIntegerArray](delegate) {

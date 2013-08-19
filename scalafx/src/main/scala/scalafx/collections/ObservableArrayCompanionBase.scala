@@ -51,9 +51,9 @@ import scala.language.implicitConversions
 private[collections] abstract class ObservableArrayCompanionBase[V : ClassTag, T <: ObservableArray[V, T, D],
   D <: jfxc.ObservableArray[D]] {
 
+  // TODO: Enter link when JavaFX 8 API Docs are available on-line.
   /**
-   * Extract a JavaFX `[[http://docs.oracle.com/javafx/8/api/javafx/collections/ObservableArray.html OA]` from a
-   * ScalaFX $OA.
+   * Extract a JavaFX $OA from a ScalaFX $OA.
    *
    * @param oa ScalaFX $OA.
    * @return JavaFX $OA inside parameter.
