@@ -29,6 +29,7 @@ package scalafx.scene.input
 import javafx.scene.{ input => jfxsi }
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
+import scalafx.event.EventType
 
 object KeyEvent {
   implicit def sfxKeyEvent2jfx(ke: KeyEvent) = ke.delegate
@@ -36,27 +37,27 @@ object KeyEvent {
   /**
    * Common supertype for all key event types.
    */
-  val Any = jfxsi.KeyEvent.ANY
+  val Any : EventType[jfxsi.KeyEvent] = jfxsi.KeyEvent.ANY
 
   /**
    * KEY_PRESSED and KEY_RELEASED events which do not map to a valid Unicode character use this for the keyChar value.
    */
-  val CharUndefined = jfxsi.KeyEvent.CHAR_UNDEFINED
+  val CharUndefined : String = jfxsi.KeyEvent.CHAR_UNDEFINED
 
   /**
    * This event occurs when a key has been pressed.
    */
-  val KeyPressed = jfxsi.KeyEvent.KEY_PRESSED
+  val KeyPressed : EventType[jfxsi.KeyEvent] = jfxsi.KeyEvent.KEY_PRESSED
 
   /**
    * This event occurs when a key has been released.
    */
-  val KeyReleased = jfxsi.KeyEvent.KEY_RELEASED
+  val KeyReleased : EventType[jfxsi.KeyEvent] = jfxsi.KeyEvent.KEY_RELEASED
 
   /**
    * This event occurs when a key has been typed (pressed and released).
    */
-  val KeyTyped = jfxsi.KeyEvent.KEY_TYPED
+  val KeyTyped : EventType[jfxsi.KeyEvent] = jfxsi.KeyEvent.KEY_TYPED
 
 }
 
@@ -65,7 +66,7 @@ class KeyEvent(override val delegate: jfxsi.KeyEvent) extends InputEvent(delegat
   /**
    * The unicode character associated with the key typed event.
    */
-  def character = delegate.getCharacter
+  def character : String = delegate.getCharacter
 
   /**
    * The key code associated with the key in this key pressed or key released event.
@@ -76,31 +77,31 @@ class KeyEvent(override val delegate: jfxsi.KeyEvent) extends InputEvent(delegat
   /**
    * A String describing the key code, such as "HOME", "F1" or "A", for key pressed and key released events.
    */
-  def text = delegate.getText
+  def text : String = delegate.getText
 
   /**
    * Returns whether or not the Alt modifier is down on this event.
    */
-  def altDown = delegate.isAltDown
+  def altDown : Boolean = delegate.isAltDown
 
   /**
    * Returns whether or not the Control modifier is down on this event.
    */
-  def controlDown = delegate.isControlDown
+  def controlDown : Boolean = delegate.isControlDown
 
   /**
    * Returns whether or not the Meta modifier is down on this event.
    */
-  def metaDown = delegate.isMetaDown
+  def metaDown : Boolean = delegate.isMetaDown
 
   /**
    * Returns whether or not the Shift modifier is down on this event.
    */
-  def shiftDown = delegate.isShiftDown
+  def shiftDown : Boolean = delegate.isShiftDown
 
   /**
    * Returns whether or not the host platform common shortcut modifier is down on this event.
    */
-  def shortcutDown = delegate.isShortcutDown
+  def shortcutDown : Boolean = delegate.isShortcutDown
 
 }

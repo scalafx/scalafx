@@ -27,7 +27,9 @@
 package scalafx.scene.input
 
 import javafx.scene.{ input => jfxsi }
+import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
+import scalafx.event.EventType
 
 object ZoomEvent {
   implicit def sfxZoomEvent2jfx(ze: ZoomEvent) = ze.delegate
@@ -35,22 +37,22 @@ object ZoomEvent {
   /**
    * Common supertype for all Zoom event types.
    */
-  val ANY = jfxsi.ZoomEvent.ANY
+  val ANY : EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ANY
 
   /**
    * This event occurs when user performs a zooming gesture such as dragging two fingers apart.
    */
-  def ZOOM = jfxsi.ZoomEvent.ZOOM
+  val ZOOM : EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM
 
   /**
    * This event occurs when a zooming gesture is detected.
    */
-  def ZOOM_STARTED = jfxsi.ZoomEvent.ZOOM_STARTED
+  val ZOOM_STARTED : EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM_STARTED
 
   /**
    * This event occurs when a zooming gesture ends.
    */
-  def ZOOM_FINISHED = jfxsi.ZoomEvent.ZOOM_FINISHED
+  val ZOOM_FINISHED : EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM_FINISHED
 
 }
 
@@ -64,11 +66,11 @@ class ZoomEvent(override val delegate: jfxsi.ZoomEvent)
   /**
    * Gets the zooming amount of this gesture.
    */
-  def totalZoomFactor = delegate.getTotalZoomFactor
+  def totalZoomFactor : Double = delegate.getTotalZoomFactor
 
   /**
    * Gets the zooming amount of this event.
    */
-  def zoomFactor = delegate.getZoomFactor
+  def zoomFactor : Double = delegate.getZoomFactor
 
 }

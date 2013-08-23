@@ -27,7 +27,9 @@
 package scalafx.scene.input
 
 import javafx.scene.{ input => jfxsi }
+import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
+import scalafx.event.EventType
 
 object MouseDragEvent {
   implicit def sfxMouseDragEvent2jfx(mde: MouseDragEvent) = mde.delegate
@@ -35,37 +37,37 @@ object MouseDragEvent {
   /**
    * Common supertype for all mouse event types.
    */
-  val Any = jfxsi.MouseDragEvent.ANY
+  val Any : EventType[jfxsi.MouseDragEvent] = jfxsi.MouseDragEvent.ANY
 
   /**
    * This event occurs when the gesture enters a node.
    */
-  val MouseDragEntered = jfxsi.MouseDragEvent.MOUSE_DRAG_ENTERED
+  val MouseDragEntered : EventType[jfxsi.MouseDragEvent] = jfxsi.MouseDragEvent.MOUSE_DRAG_ENTERED
 
   /**
    * This event occurs when the gesture enters a node.
    */
-  val MouseDragEnteredTarget = jfxsi.MouseDragEvent.MOUSE_DRAG_ENTERED_TARGET
+  val MouseDragEnteredTarget : EventType[jfxsi.MouseDragEvent] = jfxsi.MouseDragEvent.MOUSE_DRAG_ENTERED_TARGET
 
   /**
    * This event occurs when the gesture exits a node.
    */
-  val MouseDragExited = jfxsi.MouseDragEvent.MOUSE_DRAG_EXITED
+  val MouseDragExited : EventType[jfxsi.MouseDragEvent] = jfxsi.MouseDragEvent.MOUSE_DRAG_EXITED
 
   /**
    * This event occurs when the gesture exits a node.
    */
-  val MouseDragExitedTarget = jfxsi.MouseDragEvent.MOUSE_DRAG_EXITED_TARGET
+  val MouseDragExitedTarget : EventType[jfxsi.MouseDragEvent] = jfxsi.MouseDragEvent.MOUSE_DRAG_EXITED_TARGET
 
   /**
    * This event occurs when the gesture progresses within this node.
    */
-  val MouseDragOver = jfxsi.MouseDragEvent.MOUSE_DRAG_OVER
+  val MouseDragOver : EventType[jfxsi.MouseDragEvent] = jfxsi.MouseDragEvent.MOUSE_DRAG_OVER
 
   /**
    * This event occurs when the gesture ends (by releasing mouse button) on this node.
    */
-  val MouseDragReleased = jfxsi.MouseDragEvent.MOUSE_DRAG_RELEASED
+  val MouseDragReleased : EventType[jfxsi.MouseDragEvent] = jfxsi.MouseDragEvent.MOUSE_DRAG_RELEASED
 
 }
 
@@ -74,6 +76,6 @@ class MouseDragEvent(override val delegate: jfxsi.MouseDragEvent) extends MouseE
   /**
    * Returns the source object of the ongoing gesture.
    */
-  def gestureSource = delegate.getGestureSource
+  def gestureSource : Object = delegate.getGestureSource
 
 }

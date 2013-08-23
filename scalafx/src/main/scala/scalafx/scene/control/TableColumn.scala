@@ -102,18 +102,18 @@ object TableColumn {
     /**
      * Returns the new value input by the end user.
      */
-    def newValue = delegate.getNewValue
+    def newValue : T = delegate.getNewValue
 
     /**
      * Attempts to return the old value at the position referred to in the TablePosition returned by `tablePosition`.
      */
-    def oldValue = delegate.getOldValue
+    def oldValue : T = delegate.getOldValue
 
     /**
      * Convenience method that returns the value for the row (that is, from the TableView items list), for the row
      * contained within the TablePosition returned in `tablePosition`.
      */
-    def rowValue = delegate.getRowValue
+    def rowValue : S = delegate.getRowValue
 
     /**
      * Returns the TableColumn upon which this event occurred.

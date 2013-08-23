@@ -28,11 +28,8 @@ package scalafx.stage
 
 import javafx.{ stage => jfxs }
 import scalafx.Includes._
-import scalafx.application.JFXApp
 import scalafx.delegate.SFXDelegate
-import scalafx.scene.Scene
-import scalafx.event.Event
-import javafx.event.EventType
+import scalafx.event.{EventType, Event}
 
 object WindowEvent {
   implicit def sfxWindowEvent2jfx(v: WindowEvent) = v.delegate
@@ -40,32 +37,32 @@ object WindowEvent {
   /**
    * Common supertype for all window event types.
    */
-  val Any = jfxs.WindowEvent.ANY
+  val Any : EventType[jfxs.WindowEvent] = jfxs.WindowEvent.ANY
 
   /**
    * This event is delivered to a window when there is an external request to close that window.
    */
-  val WindowCloseRequest = jfxs.WindowEvent.WINDOW_CLOSE_REQUEST
+  val WindowCloseRequest : EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_CLOSE_REQUEST
 
   /**
    * This event occurs on window just after it is hidden.
    */
-  val WindowHidden = jfxs.WindowEvent.WINDOW_HIDDEN
+  val WindowHidden : EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_HIDDEN
 
   /**
    * This event occurs on window just before it is hidden.
    */
-  val WindowHiding = jfxs.WindowEvent.WINDOW_HIDING
+  val WindowHiding : EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_HIDING
 
   /**
    * This event occurs on window just before it is shown.
    */
-  val WindowShowing = jfxs.WindowEvent.WINDOW_SHOWING
+  val WindowShowing : EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_SHOWING
 
   /**
    * This event occurs on window just after it is shown.
    */
-  val WindowShown = jfxs.WindowEvent.WINDOW_SHOWN
+  val WindowShown : EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_SHOWN
 }
 
 class WindowEvent(override val delegate: jfxs.WindowEvent) extends Event(delegate) with SFXDelegate[jfxs.WindowEvent] {
@@ -73,6 +70,6 @@ class WindowEvent(override val delegate: jfxs.WindowEvent) extends Event(delegat
   /**
    * Construct a new Event with the specified event source, target and type.
    */
-  def this(source: jfxs.Window, eventType: EventType[_ <: javafx.event.Event]) = this(new jfxs.WindowEvent(source, eventType))
+  def this(source: Window, eventType: EventType[_ <: javafx.event.Event]) = this(new jfxs.WindowEvent(source, eventType))
 
 }
