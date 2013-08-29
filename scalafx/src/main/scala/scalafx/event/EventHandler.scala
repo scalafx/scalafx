@@ -28,6 +28,7 @@ package scalafx.event
 
 import javafx.{event => jfxe}
 import scalafx.delegate.SFXDelegate
+import scalafx.event.subscriptions.Subscription
 
 /**
  * Companion Object for [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html EventHandler]]
@@ -93,7 +94,16 @@ trait EventHandlerDelegate {
    * to avoid compilation error "ambiguous reference to overloaded definition"
    */
   sealed trait HandlerMagnet[J <: jfxe.Event, S <: SFXDelegate[J]] {
-    def apply(eventType: EventType[J])
+    protected val eventHandler: jfxe.EventHandler[J]
+
+    def apply(eventType: EventType[J]): Subscription = {
+      EventHandlerDelegate.this.addEventHandler(eventType.delegate, eventHandler)
+      new Subscription {
+        def cancel() {
+          EventHandlerDelegate.this.removeEventHandler(eventType.delegate, eventHandler)
+        }
+      }
+    }
   }
 
   /**
@@ -103,29 +113,19 @@ trait EventHandlerDelegate {
   object HandlerMagnet {
     implicit def fromUnit[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: => Unit) = {
       new HandlerMagnet[J, S] {
-        def apply(eventType: EventType[J]) {
-          EventHandlerDelegate.this.addEventHandler(
-            eventType.delegate,
-            new jfxe.EventHandler[J] {
-              def handle(event: J) {
-                op
-              }
-            }
-          )
+        override val eventHandler = new jfxe.EventHandler[J] {
+          def handle(event: J) {
+            op
+          }
         }
       }
     }
     implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S) = {
       new HandlerMagnet[J, S] {
-        def apply(eventType: EventType[J]) {
-          EventHandlerDelegate.this.addEventHandler(
-            eventType.delegate,
-            new jfxe.EventHandler[J] {
-              def handle(event: J) {
-                op(jfx2sfx(event))
-              }
-            }
-          )
+        override val eventHandler = new jfxe.EventHandler[J] {
+          def handle(event: J) {
+            op(jfx2sfx(event))
+          }
         }
       }
     }
@@ -139,15 +139,9 @@ trait EventHandlerDelegate {
    *  pane.handleEvent(MouseEvent.Any) {
    *    me: MouseEvent => {
    *      me.eventType match {
-   *        case MouseEvent.MousePressed => {
-   *          ...
-   *        }
-   *        case MouseEvent.MouseDragged => {
-   *          ...
-   *        }
-   *        case _ => {
-   *          ...
-   *        }
+   *        case MouseEvent.MousePressed => ...
+   *        case MouseEvent.MouseDragged => ...
+   *        case _                       => {}
    *      }
    *    }
    *  }
@@ -159,15 +153,16 @@ trait EventHandlerDelegate {
    * NOTE: be careful with the code block, as in the second example above, they are not functions.
    * Due to the way Scala treats code blocks, only the last statement is invoked by the handler.
    * Statements before the last are treated as a "constructor" and executed only once, when handler is created.
-   * To avoid issue use the first form in with explicit event the example above {{{me: MouseEvent => ...}}}.
+   * To avoid issue use the first form above {{{me: MouseEvent => ...}}}.
    * If using code blocks, use only a single statement, for instance call to a function or a method.
    *
    * @param eventType type of events that will be handled.
    * @param handler code handling the event, see examples above.
    * @tparam J type JavaFX delegate of the event
    * @tparam S ScalaFX type for `J` type wrapper.
+   * @return Returns a subscription that can be used to cancel/remove this event handler
    */
-  def handleEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](eventType: EventType[J])(handler: HandlerMagnet[J, S]) {
+  def handleEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](eventType: EventType[J])(handler: HandlerMagnet[J, S]): Subscription = {
     handler(eventType)
   }
 
