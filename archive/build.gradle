@@ -6,7 +6,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 
 // The required Scala version
-ext.scalaVersion = '2.9.2'
+ext.scalaVersion = '2.9.3'
 
 // Define equivalent Maven GAV coordinates.
 // groupId - This element indicates the unique identifier of the organization or group that created the project.
