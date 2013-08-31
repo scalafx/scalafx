@@ -55,11 +55,11 @@ folder of the project.
 The following software is needed to build ScalaFX:
 
   1) Mercurial (http://mercurial.selenic.com/) v2.2 or better
-  2a) sbt (http://www.scala-sbt.org/) v0.12.2 or better
+  2a) sbt (http://www.scala-sbt.org/) v0.13.0 or better
   2b) gradle (http://gradle.org/)  v1.3 or better
-  3) Scala  (http://www.scala.org/) version 2.9.2 works!
+  3) Scala  (http://www.scala.org/) version 2.9.3+ or 2.10.+ works!
   
-The JavaFX software can be Java SE 7 from version jdk1.7.0_09 or better. It
+The JavaFX software can be Java SE 7 from version jdk1.7.0_25 or better. It
 works with Windows, MacOS X and Linux ports.
 
 
@@ -111,9 +111,3 @@ Any other business section.
    
 You can find the full list of committers, developers and contributors in
 the file `MAINTAINERS.txt'.
-
-
-
-This documentation was prepared by:
-    The ScalaFX Open Source Developer team,
-    Friday, 18 January 2013
