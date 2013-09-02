@@ -82,14 +82,14 @@ class ObservableIntegerArraySpec
   }
 
   /**
-   * @inheritdocs
+   * @inheritdoc
    * 
    * Overridden to create empty SFX ObservableIntegerArray (inherited method fails).
    */
   override protected def getScalaClassInstance = new ObservableIntegerArray()
 
   /**
-   * @inheritdocs
+   * @inheritdoc
    * 
    * Overridden to create empty JFX ObservableIntegerArray (inherited method fails).
    */

@@ -36,7 +36,7 @@ object ObservableIntegerArray extends ObservableArrayCompanionBase[Int, Observab
   jfxc.ObservableIntegerArray] {
 
   /**
-   * @inheritdocs
+   * @inheritdoc
    */
   override def apply(a: Int*) = new ObservableIntegerArray(jfxc.FXCollections.observableIntegerArray(a:_*))
 
@@ -82,108 +82,108 @@ class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXColl
   // ObservableIntegerArray interface functions, allow class to act like it implements the JavaFX
   // ObservableIntegerArray interface, without actually being interchangeable with one.
   /**
-   * @inheritdocs
+   * @inheritdoc
    */
   override def copyTo(srcIdx: Int, dest: Array[Int], destIdx: Int, length: Int) {
     delegate.copyTo(srcIdx, dest, destIdx, length)
   }
 
   /**
-   * @inheritdocs
+   * @inheritdoc
    */
   override def copyTo(srcIdx: Int, dest: ObservableIntegerArray, destIdx: Int, length: Int) {
     delegate.copyTo(srcIdx, dest.delegate, destIdx, length)
   }
 
   /**
-   * @inheritdocs
+   * @inheritdoc
    */
   override def get(idx: Int) = delegate.get(idx)
 
   /**
-   * @inheritdocs.
+   * @inheritdoc.
    */
   override def addAll(elems: Int*) = {
     delegate.addAll(elems:_*)
   }
 
   /**
-   * @inheritdocs.
+   * @inheritdoc.
    */
   override def addAll(src: ObservableIntegerArray) {
     delegate.addAll(src.delegate)
   }
 
   /**
-   * @inheritdocs.
+   * @inheritdoc.
    */
   override def addAll(src: Array[Int], srcIdx: Int, length: Int) {
     delegate.addAll(src, srcIdx, length)
   }
 
   /**
-   * @inheritdocs.
+   * @inheritdoc.
    */
   override def addAll(src: ObservableIntegerArray, srcIdx: Int, length: Int) {
     delegate.addAll(src.delegate, srcIdx, length)
   }
 
   /**
-   * @inheritdocs.
+   * @inheritdoc.
    */
   override def setAll(elements: Int*) {
     delegate.setAll(elements:_*)
   }
 
   /**
-   * @inheritdocs.
+   * @inheritdoc.
    */
   override def setAll(src: ObservableIntegerArray) {
     delegate.setAll(src.delegate)
   }
 
   /**
-   * @inheritdocs.
+   * @inheritdoc.
    */
   override def setAll(src: Array[Int], srcIdx: Int, length: Int) {
     delegate.setAll(src, srcIdx, length)
   }
 
   /**
-   * @inheritdocs.
+   * @inheritdoc.
    */
   override def setAll(src: ObservableIntegerArray, srcIdx: Int, length: Int) {
     delegate.setAll(src.delegate, srcIdx, length)
   }
 
   /**
-   * @inheritdocs
+   * @inheritdoc
    */
   override def set(idx: Int, elem: Int) {
     delegate.set(idx, elem)
   }
 
   /**
-   * @inheritdocs
+   * @inheritdoc
    */
   override def set(destIdx: Int, src: Array[Int], srcIdx: Int, length: Int) {
     delegate.set(destIdx, src, srcIdx, length)
   }
 
   /**
-   * @inheritdocs
+   * @inheritdoc
    */
   override def set(destIdx: Int, src: ObservableIntegerArray, srcIdx: Int, length: Int) {
     delegate.set(destIdx, src.delegate, srcIdx, length)
   }
 
   /**
-   * @inheritdocs
+   * @inheritdoc
    */
   override def toArray(dest: Array[Int]) = delegate.toArray(dest)
 
   /**
-   * @inheritdocs
+   * @inheritdoc
    */
   override def toArray(srcIdx: Int, dest: Array[Int], length: Int) =
     delegate.toArray(srcIdx, dest, length)

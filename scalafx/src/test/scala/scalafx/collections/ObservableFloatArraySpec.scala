@@ -82,7 +82,7 @@ class ObservableFloatArraySpec
   }
 
   /**
-   * @inheritdocs
+   * @inheritdoc
    * 
    * Overridden to create empty SFX ObservableFloatArray (inherited method
    * fails).
@@ -90,7 +90,7 @@ class ObservableFloatArraySpec
   override protected def getScalaClassInstance = new ObservableFloatArray()
 
   /**
-   * @inheritdocs
+   * @inheritdoc
    * 
    * Overridden to create empty JFX ObservableFloatArray (inherited method fails).
    */
