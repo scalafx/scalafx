@@ -43,14 +43,14 @@ In Unix, Mac OS X or Linux, you can define a environment variable `JAVAFX_HOME'
 inside the Bash shell init login file at `~/.bash_profile':
 
     # for Bash
-    export JAVAFX_HOME=/opt/java/jdk1.7.0_11
+    export JAVAFX_HOME=/opt/java/jdk1.7.0_25
 
 
 Alternatively, for the Bourne shell script, you can place this setting in the
 shell init login file `~/.profile':
 
     # for Bourne Shell
-    JAVAFX_HOME=/opt/java/jdk1.7.0_11
+    JAVAFX_HOME=/opt/java/jdk1.7.0_25
     export JAVAFX_HOME
 
 
@@ -61,7 +61,7 @@ Setting `JAVAFX_HOME' is very useful, if you have more than one JDK installed on
 your development workstation. For example, if you have a beta version of JDK 8
 and still want to use JDK 7 for ScalaFX, then you have settings like this:
 
-   JAVAFX_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_09.jdk/Contents/Home
+   JAVAFX_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home
    JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home
 
 

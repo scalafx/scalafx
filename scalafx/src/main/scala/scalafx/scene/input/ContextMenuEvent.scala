@@ -35,21 +35,21 @@ object ContextMenuEvent {
 
 class ContextMenuEvent(override val delegate: jfxsi.ContextMenuEvent) extends InputEvent(delegate) with SFXDelegate[jfxsi.ContextMenuEvent] {
 
-  def sceneX = delegate.getSceneX
+  def sceneX : Double = delegate.getSceneX
 
-  def sceneY = delegate.getSceneY
+  def sceneY : Double = delegate.getSceneY
 
-  def screenX = delegate.getScreenX
+  def screenX : Double = delegate.getScreenX
 
-  def screenY = delegate.getScreenY
+  def screenY : Double = delegate.getScreenY
 
-  def x = delegate.getX
+  def x : Double = delegate.getX
 
-  def y = delegate.getY
+  def y : Double = delegate.getY
 
   /**
    * Determines whether this event originated from the keyboard.
    */
-  def keyboardTrigger = delegate.isKeyboardTrigger
+  def keyboardTrigger : Boolean = delegate.isKeyboardTrigger
 
 }

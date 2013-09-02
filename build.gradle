@@ -6,7 +6,7 @@
 
 // The required Scala version
 ext {
-    scalaVersion = '2.9.2'
+    scalaVersion = '2.9.3'
     scalaGroup = 'org.scala-lang'
 }
 
@@ -40,7 +40,7 @@ allprojects {
         println """
                  |  Please set the environment variable JAVAFX_HOME
                  |  to the directory that contains rt/lib/jfxrt.jar
-                 |  or e.g set JAVAFX_HOME to the /Library/Java/JavaVirtualMachines/jdk1.7.0_11.jdk/Contents/Home
+                 |  or e.g set JAVAFX_HOME to the /Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home
                  |  otherwise the current JAVA_HOME will be used
                  |  with the JavaFX version ${scalafx_requiredJavaFxVersion}.\n""".stripMargin()
         System.exit 1

@@ -28,24 +28,24 @@ mvn install:install-file -DartifactId=scalafx_2.10 \
     -Dversion=1.0-SNAPSHOT \
     -Dsources=scalafx/target/scala-2.10/scalafx_2.10-1.0-SNAPSHOT-sources.jar
 
-# or, if you work with scala 2.9.2 (officially supported)
-mvn install:install-file -DartifactId=scalafx_2.9.2 \
+# or, if you work with scala 2.9.3 (officially supported)
+mvn install:install-file -DartifactId=scalafx_2.9.3 \
     -DgroupId=org.scalafx \
     -Dpackaging=jar \
-    -DpomFile=scalafx/target/scala-2.9.2/scalafx_2.9.2-1.0-SNAPSHOT.pom \
-    -Dfile=scalafx/target/scala-2.9.2/scalafx_2.9.2-1.0-SNAPSHOT.jar \
+    -DpomFile=scalafx/target/scala-2.9.3/scalafx_2.9.3-1.0-SNAPSHOT.pom \
+    -Dfile=scalafx/target/scala-2.9.3/scalafx_2.9.3-1.0-SNAPSHOT.jar \
     -Dversion=1.0-SNAPSHOT \
-    -Dsources=scalafx/target/scala-2.9.2/scalafx_2.9.2-1.0-SNAPSHOT-sources.jar
+    -Dsources=scalafx/target/scala-2.9.3/scalafx_2.9.3-1.0-SNAPSHOT-sources.jar
 
 You can change the scala version in project/build.scala, search for scalaversion variable.
 
 You'll want to reference the artifacts like this:
 
-for scala 2.9.2:
+for scala 2.9.3:
 
 		<dependency>
 			<groupId>org.scalafx</groupId>
-			<artifactId>scalafx_2.9.2</artifactId>
+			<artifactId>scalafx_2.9.3</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 

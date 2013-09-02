@@ -60,17 +60,17 @@ object ListView {
     /**
      * Returns the ListView upon which the edit took place.
      */
-    override def source = delegate.getSource
+    override def source : ListView[T] = delegate.getSource
 
     /**
      * Returns the value of the new input provided by the end user.
      */
-    def newValue = delegate.getNewValue
+    def newValue : T = delegate.getNewValue
 
     /**
      * Returns the index in which the edit took place.
      */
-    def index = delegate.getIndex
+    def index : Int = delegate.getIndex
 
   }
 
