@@ -63,16 +63,16 @@ private[collections] abstract class ObservableArrayCompanionBase[V : ClassTag, T
   /**
    * Create new $OA from a vararg list.
    *
-   * @param va Value varargs.
-   * @return New $OA storing `ia`
+   * @param v Value varargs.
+   * @return New $OA storing `v`
    */
   def apply(v: V*): T
 
   /**
    * Create new $OA from an existing array.
    *
-   * @param av Array to be converted..
-   * @return New $OA storing `av`.
+   * @param a Array to be converted..
+   * @return New $OA storing `a`.
    */
   def apply(a: Array[V]): T = apply(a:_*)
 

@@ -37,7 +37,7 @@ object ObservableFloatArray extends ObservableArrayCompanionBase[Float, Observab
   /**
    * @inheritdoc
    */
-  override def apply(a: Float*) = new ObservableFloatArray(jfxc.FXCollections.observableFloatArray(a:_*))
+  override def apply(v: Float*) = new ObservableFloatArray(jfxc.FXCollections.observableFloatArray(v:_*))
 }
 
 // TODO: Enter link when JavaFX 8 API Docs are available on-line.
@@ -177,5 +177,5 @@ class ObservableFloatArray(delegate: jfxc.ObservableFloatArray = jfxc.FXCollecti
    *
    * @return New empty $OFA.
    */
-  protected[this] override def newBuilder = ObservableFloatArray.empty
+  protected[this] override def newBuilder = ObservableFloatArray.empty()
 }

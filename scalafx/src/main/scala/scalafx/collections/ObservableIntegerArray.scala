@@ -38,7 +38,7 @@ object ObservableIntegerArray extends ObservableArrayCompanionBase[Int, Observab
   /**
    * @inheritdoc
    */
-  override def apply(a: Int*) = new ObservableIntegerArray(jfxc.FXCollections.observableIntegerArray(a:_*))
+  override def apply(v: Int*) = new ObservableIntegerArray(jfxc.FXCollections.observableIntegerArray(v:_*))
 
   /**
     * Returns an array containing equally spaced values in some integer interval.
@@ -194,5 +194,5 @@ class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXColl
    *
    * @return New empty $OIA.
    */
-  protected[this] override def newBuilder = ObservableIntegerArray.empty
+  protected[this] override def newBuilder = ObservableIntegerArray.empty()
 }
