@@ -202,7 +202,7 @@ object TriangleMeshDemo extends JFXApp {
 
   /** Add mouse interaction to a scene, rotating given node. */
   private def addMouseInteraction(scene: Scene, node: Node) {
-    val angleY = DoubleProperty(-50)
+    val angleY = DoubleProperty(0)
     val yRotate = new Rotate {
       angle <== angleY
       axis = Rotate.YAxis
