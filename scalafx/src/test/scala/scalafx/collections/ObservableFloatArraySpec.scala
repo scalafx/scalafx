@@ -257,6 +257,22 @@ class ObservableFloatArraySpec
       assert(changes === 0)
     }
   }
+  it should "allow individual elements to be modified and report changes" in {
+    new InstanceTests {
+      testOutOfBoundsExceptionThrown (instance0(-1) = 0.0f)
+      testOutOfBoundsExceptionThrown (instance0(0) = 0.0f)
+      testOutOfBoundsExceptionThrown (instance1(-1) = 0.0f)
+      instance1(0) = 0.0f // Notification 0
+      instance1(2) = 1.0f // Notification 1
+      instance1(3) = 2.0f // Notification 2
+      testOutOfBoundsExceptionThrown (instance1(4) = 2.0f)
+      testNonEmpty(instance1, Array(0.0f, array1(1), 1.0f, 2.0f))
+      assert (change.size === 3)
+      verifyChange(0, instance1, false, 0, 1)
+      verifyChange(1, instance1, false, 2, 3)
+      verifyChange(2, instance1, false, 3, 4)
+    }
+  }
 
   /**
    * Companion tests.

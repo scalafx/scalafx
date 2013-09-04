@@ -256,6 +256,22 @@ class ObservableIntegerArraySpec
       assert(changes === 0)
     }
   }
+  it should "allow individual elements to be modified and report changes" in {
+    new InstanceTests {
+      testOutOfBoundsExceptionThrown (instance0(-1) = 0)
+      testOutOfBoundsExceptionThrown (instance0(0) = 0)
+      testOutOfBoundsExceptionThrown (instance1(-1) = 0)
+      instance1(0) = 0 // Notification 0
+      instance1(2) = 1 // Notification 1
+      instance1(3) = 2 // Notification 2
+      testOutOfBoundsExceptionThrown (instance1(4) = 2)
+      testNonEmpty(instance1, Array(0, array1(1), 1, 2))
+      assert (change.size === 3)
+      verifyChange(0, instance1, false, 0, 1)
+      verifyChange(1, instance1, false, 2, 3)
+      verifyChange(2, instance1, false, 3, 4)
+    }
+  }
 
   /**
    * Companion tests.
