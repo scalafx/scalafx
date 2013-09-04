@@ -49,7 +49,7 @@ class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.Triangl
   extends Mesh(delegate)
   with SFXDelegate[jfxss.TriangleMesh] {
 
-  new jfxss.TriangleMesh ()
+
   // TODO Replace `jfxc.Observable*Array` below with SFX equivalents (when implemented).
   // BTW: Above TODO has been addressed.  However, the interface below is fine
   // for retrieving information from the delegate, but there's currently no
