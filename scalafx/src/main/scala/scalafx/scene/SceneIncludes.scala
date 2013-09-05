@@ -26,7 +26,6 @@
  */
 package scalafx.scene
 
-import javafx.beans.{ property => jfxbp }
 import scalafx.beans.property.ReadOnlyObjectProperty
 import javafx.{ scene => jfxs }
 import chart.ChartIncludes
@@ -41,7 +40,7 @@ import effect.EffectIncludes
 object SceneIncludes extends SceneIncludes
 
 /**
- * Contains implcit methods to convert from
+ * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javafx/2/api/javafx/scene/package-summary.html `javafx.scene`]] and subpackages
  * Classes/Traits to their ScalaFX counterparts.
  */
@@ -56,7 +55,7 @@ trait SceneIncludes extends ChartIncludes
   with ControlIncludes
 
 /**
- * Contains implcit methods to convert from
+ * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javafx/2/api/javafx/scene/package-summary.html `javafx.scene`]]
  * Classes/Traits to their $SFX counterparts.
  *
