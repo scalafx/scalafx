@@ -49,14 +49,6 @@ class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.Triangl
   extends Mesh(delegate)
   with SFXDelegate[jfxss.TriangleMesh] {
 
-
-  // TODO Replace `jfxc.Observable*Array` below with SFX equivalents (when implemented).
-  // BTW: Above TODO has been addressed.  However, the interface below is fine
-  // for retrieving information from the delegate, but there's currently no
-  // mechanism available to put that data INTO the delegate.  :-(
-  // Refer to ScalaFX Issue 74:
-  //   https://code.google.com/p/scalafx/issues/detail?id=74
-
   /** Gets the ObservableIntegerArray of faces, indices into the points and texCoords arrays, of this TriangleMesh */
   def faces: ObservableIntegerArray = delegate.getFaces
 
