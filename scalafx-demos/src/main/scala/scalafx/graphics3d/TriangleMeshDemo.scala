@@ -26,14 +26,11 @@
  */
 package scalafx.graphics3d
 
-import java.io.FileInputStream
 import scala.math.sqrt
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.DoubleProperty
-import scalafx.collections.ObservableFloatArray
-import scalafx.collections.ObservableIntegerArray
 import scalafx.scene.AmbientLight
 import scalafx.scene.Group
 import scalafx.scene.Node
@@ -62,7 +59,7 @@ object TriangleMeshDemo extends JFXApp {
 
       // Create a tetrahedron and add to a mesh view. Configure it.
       val tetra = new MeshView(tetrahedron (500.0)) {
-        val image = new Image(new FileInputStream("./src/main/scala/scalafx/graphics3d/images/TetrahedronMap.png"))
+        val image = new Image(TriangleMeshDemo.getClass.getResourceAsStream("images/TetrahedronMap.png"))
         material = new PhongMaterial {
           specularColor = Color.WHITE
           diffuseMap = image
@@ -98,7 +95,7 @@ object TriangleMeshDemo extends JFXApp {
 
   /**
    * Create a simple regular tetrahedron.
-   * 
+   *
    * The shape's origin is at the center of its base face.
    *
    * A regular tetrahedron has four faces, each made up of one triangular face.
@@ -106,7 +103,7 @@ object TriangleMeshDemo extends JFXApp {
    * @param length Length of any side of the tetrahedron. This value must be greater than zero.
    *
    * @return TriangularMesh instance defining the resulting tetrahedron.
-   * 
+   *
    * @throws java.lang.IllegalArgumentException if `length` is not zero.
    */
   private def tetrahedron (length: Double) = {
@@ -134,7 +131,7 @@ object TriangleMeshDemo extends JFXApp {
       -(length / 2.0).toFloat, (length * sqrt (3.0) / 6.0).toFloat, 0.0f,     // Base front left point, point 2.
       0.0f, 0.0f, -(length * sqrt (2.0 / 3.0)).toFloat                        // Top point, point 3.
     )
-      
+
     /*
      * Set the mesh's texture coordinates array to define how the faces (defined by getFaces below) map to texture files.
      *
@@ -175,7 +172,7 @@ object TriangleMeshDemo extends JFXApp {
       2, 2, 1, 1, 3, 4,       // Front face, face 2. (Vertex points 2, 1, 3, tex-coords 2, 1, 4)
       0, 0, 2, 2, 3, 5        // Left face, face 3. (Vertex points 0, 2, 3, tex-coords 0, 2, 3)
     )
-      
+
     /*
      * Set the mesh's face smoothing groups array to define which faces belong to which smoothing groups.
      *
