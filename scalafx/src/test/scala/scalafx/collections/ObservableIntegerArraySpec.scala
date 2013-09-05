@@ -29,8 +29,6 @@ package scalafx.collections
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers._
-import org.scalatest.FunSpec
 
 import javafx.{collections => jfxc}
 import scala.collection.mutable.Buffer
