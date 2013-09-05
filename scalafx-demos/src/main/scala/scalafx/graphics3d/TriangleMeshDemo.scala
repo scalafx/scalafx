@@ -104,7 +104,7 @@ object TriangleMeshDemo extends JFXApp {
    *
    * @return TriangularMesh instance defining the resulting tetrahedron.
    *
-   * @throws java.lang.IllegalArgumentException if `length` is not zero.
+   * @throws java.lang.IllegalArgumentException if `length` is not greater than zero.
    */
   private def tetrahedron (length: Double) = {
     require(length > 0.0)
