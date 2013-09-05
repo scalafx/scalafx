@@ -59,7 +59,7 @@ object TriangleMeshDemo extends JFXApp {
 
       // Create a tetrahedron and add to a mesh view. Configure it.
       val tetra = new MeshView(tetrahedron (500.0)) {
-        val image = new Image(TriangleMeshDemo.getClass.getResourceAsStream("images/TetrahedronMap.png"))
+        val image = new Image(this, "images/TetrahedronMap.png")
         material = new PhongMaterial {
           specularColor = Color.WHITE
           diffuseMap = image
