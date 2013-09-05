@@ -31,7 +31,6 @@ import scalafx.Includes._
 import scalafx.collections.ObservableFloatArray
 import scalafx.collections.ObservableIntegerArray
 import scalafx.delegate.SFXDelegate
-import javafx.{collections => jfxc}
 
 
 object TriangleMesh {
