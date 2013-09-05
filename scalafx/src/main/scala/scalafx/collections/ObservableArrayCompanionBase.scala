@@ -45,9 +45,7 @@ import scala.language.implicitConversions
  * @tparam D Type of the delegated JavaFX $ARY.
  *
  * @constructor Create new base $OA.
- * @param delegate Wrapped JavaFX $OA instance providing implementation.
  */
-
 private[collections] abstract class ObservableArrayCompanionBase[V : ClassTag, T <: ObservableArray[V, T, D],
   D <: jfxc.ObservableArray[D]] {
 
