@@ -27,6 +27,7 @@
 
 package scalafx.scene.chart
 
+import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.Side
@@ -34,7 +35,7 @@ import scalafx.scene.Scene
 
 object CategoryLineChartDemo extends JFXApp {
 
-  val series1 = Seq(("Alpha", 50), ("Beta", 80), ("RC1", 90), ("RC2", 30), ("1.0", 122), ("1.1", 10))
+  val dataPairs = Seq(("Alpha", 50), ("Beta", 80), ("RC1", 90), ("RC2", 30), ("1.0", 122), ("1.1", 10))
 
   stage = new JFXApp.PrimaryStage {
     title = "CategoryLineChartDemo"
@@ -44,7 +45,7 @@ object CategoryLineChartDemo extends JFXApp {
         legendSide = Side.RIGHT
         data = XYChart.Series[String, Number](
           "Series 1",
-          ObservableBuffer(series1.map {case (x, y) => XYChart.Data[String, Number](x, y)})
+          ObservableBuffer(dataPairs.map {case (x, y) => XYChart.Data[String, Number](x, y)})
         )
       }
     }
