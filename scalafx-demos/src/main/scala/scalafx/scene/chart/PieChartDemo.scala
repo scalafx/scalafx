@@ -33,7 +33,7 @@ import scalafx.scene.Scene
 
 object PieChartDemo extends JFXApp {
 
-  val series1 = Seq(("Sun", 25), ("IBM", 17), ("HP", 25), ("Dell", 27), ("Apple", 5))
+  val dataPairs = Seq(("Sun", 25), ("IBM", 17), ("HP", 25), ("Dell", 27), ("Apple", 5))
 
   stage = new JFXApp.PrimaryStage {
     title = "PieChartDemo"
@@ -41,7 +41,7 @@ object PieChartDemo extends JFXApp {
       root = new PieChart() {
         title = "Pie Chart"
         clockwise = false
-        data = ObservableBuffer(series1.map {case (x, y) => PieChart.Data(x, y)})
+        data = ObservableBuffer(dataPairs.map {case (x, y) => PieChart.Data(x, y)})
       }
     }
   }
