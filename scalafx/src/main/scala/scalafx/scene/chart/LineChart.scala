@@ -34,15 +34,28 @@ import scalafx.delegate.SFXDelegate
 
 object LineChart {
   implicit def sfxLineChart2jfx[X, Y](v: LineChart[X, Y]) = v.delegate
-  
-  def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y]) = new LineChart[X, Y](new jfxsc.LineChart[X, Y](xAxis, yAxis))
-  
-  def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) = new LineChart[X, Y](new jfxsc.LineChart[X, Y](xAxis, yAxis, data))
+
+  def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y]) =
+    new LineChart[X, Y](new jfxsc.LineChart[X, Y](xAxis, yAxis))
+
+  def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) =
+    new LineChart[X, Y](new jfxsc.LineChart[X, Y](xAxis, yAxis, data))
 }
 
-class LineChart[X, Y](override val delegate:jfxsc.LineChart[X, Y]) extends XYChart[X, Y](delegate) with SFXDelegate[jfxsc.LineChart[X, Y]] {
+class LineChart[X, Y](override val delegate: jfxsc.LineChart[X, Y])
+  extends XYChart[X, Y](delegate)
+  with SFXDelegate[jfxsc.LineChart[X, Y]] {
+
+  def this(xAxis: Axis[X], yAxis: Axis[Y]) {
+    this(new jfxsc.LineChart[X, Y](xAxis, yAxis))
+  }
+
+  def this(xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) {
+    this(new jfxsc.LineChart[X, Y](xAxis, yAxis, data))
+  }
+
   def createSymbols: BooleanProperty = delegate.createSymbolsProperty
-  def createSymbols_= (v: Boolean) {
+  def createSymbols_=(v: Boolean) {
     createSymbols() = v
   }
 }
