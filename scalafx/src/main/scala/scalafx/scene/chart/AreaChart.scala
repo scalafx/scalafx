@@ -27,16 +27,28 @@
 package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
-import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 object AreaChart {
   implicit def sfxAreaChart2jfx[X, Y](v: AreaChart[X, Y]) = v.delegate
-  
-  def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y]) = new AreaChart[X, Y](new jfxsc.AreaChart[X, Y](xAxis, yAxis))
-  
-  def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) = new AreaChart[X, Y](new jfxsc.AreaChart[X, Y](xAxis, yAxis, data))
+
+  def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y]) =
+    new AreaChart[X, Y](new jfxsc.AreaChart[X, Y](xAxis, yAxis))
+
+  def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) =
+    new AreaChart[X, Y](new jfxsc.AreaChart[X, Y](xAxis, yAxis, data))
 }
 
-class AreaChart[X, Y](override val delegate:jfxsc.AreaChart[X, Y]) extends XYChart[X, Y](delegate) with SFXDelegate[jfxsc.AreaChart[X, Y]]
+class AreaChart[X, Y](override val delegate: jfxsc.AreaChart[X, Y])
+  extends XYChart[X, Y](delegate)
+  with SFXDelegate[jfxsc.AreaChart[X, Y]] {
+
+  def this(xAxis: Axis[X], yAxis: Axis[Y]) {
+    this(new jfxsc.AreaChart[X, Y](xAxis, yAxis))
+  }
+
+  def this(xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) {
+    this(new jfxsc.AreaChart[X, Y](xAxis, yAxis, data))
+  }
+}

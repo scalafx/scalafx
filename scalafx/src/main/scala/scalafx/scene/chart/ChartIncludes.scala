@@ -26,12 +26,12 @@
  */
 package scalafx.scene.chart
 
-import javafx.scene.{ chart => jfxsc }
+import javafx.scene.{chart => jfxsc}
 
 object ChartIncludes extends ChartIncludes
 
 /**
- * Contains implcit methods to convert from
+ * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javafx/2/api/javafx/scene/chart/package-summary.html `javafx.scene.chart`]]
  * Classes/Traits to their $SFX counterparts.
  *
@@ -78,7 +78,6 @@ trait ChartIncludes {
    * $START$AXIS.html $AXIS$END
    *
    * @tparam X $XTYPE
-   * @tparam Y $YTYPE
    * @param a $JFX $AXIS
    * @return $SFX $AXIS
    */
@@ -107,8 +106,6 @@ trait ChartIncludes {
   /**
    * $START$CHAR.html $CHAR$END
    *
-   * @tparam X $XTYPE
-   * @tparam Y $YTYPE
    * @param c $JFX $CHAR
    * @return $SFX $CHAR
    */
@@ -127,8 +124,6 @@ trait ChartIncludes {
   /**
    * $START$PICH.html $PICH$END
    *
-   * @tparam X $XTYPE
-   * @tparam Y $YTYPE
    * @param b $JFX $PICH
    * @return $SFX $PICH
    */
@@ -137,8 +132,6 @@ trait ChartIncludes {
   /**
    * $START$PIDT.html $PIDT$END
    *
-   * @tparam X $XTYPE
-   * @tparam Y $YTYPE
    * @param b $JFX $PIDT
    * @return $SFX $PIDT
    */

@@ -34,17 +34,39 @@ import scalafx.delegate.SFXDelegate
 
 object StackedBarChart {
   implicit def sfxStackedBarChart2jfx[X, Y](v: StackedBarChart[X, Y]) = v.delegate
-  
-  def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y]) = new StackedBarChart[X, Y](new jfxsc.StackedBarChart[X, Y](xAxis, yAxis))
-  
-  def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) = new StackedBarChart[X, Y](new jfxsc.StackedBarChart[X, Y](xAxis, yAxis, data))
-  
-  def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]], categoryGap: Double) = new StackedBarChart[X, Y](new jfxsc.StackedBarChart[X, Y](xAxis, yAxis, data, categoryGap))
+
+  def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y]) =
+    new StackedBarChart[X, Y](new jfxsc.StackedBarChart[X, Y](xAxis, yAxis))
+
+  def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) =
+    new StackedBarChart[X, Y](new jfxsc.StackedBarChart[X, Y](xAxis, yAxis, data))
+
+  def apply[X, Y](xAxis: Axis[X],
+                  yAxis: Axis[Y],
+                  data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]],
+                  categoryGap: Double) =
+    new StackedBarChart[X, Y](new jfxsc.StackedBarChart[X, Y](xAxis, yAxis, data, categoryGap))
 }
 
-class StackedBarChart[X, Y](override val delegate:jfxsc.StackedBarChart[X, Y]) extends XYChart[X, Y](delegate) with SFXDelegate[jfxsc.StackedBarChart[X, Y]] {
+class StackedBarChart[X, Y](override val delegate: jfxsc.StackedBarChart[X, Y])
+  extends XYChart[X, Y](delegate)
+  with SFXDelegate[jfxsc.StackedBarChart[X, Y]] {
+
+  def this(xAxis: Axis[X], yAxis: Axis[Y]) {
+    this(new jfxsc.StackedBarChart[X, Y](xAxis, yAxis))
+  }
+
+  def this(xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) {
+    this(new jfxsc.StackedBarChart[X, Y](xAxis, yAxis, data))
+  }
+
+  def this(xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]], categoryGap: Double) {
+    this(new jfxsc.StackedBarChart[X, Y](xAxis, yAxis, data, categoryGap))
+  }
+
+
   def categoryGap: DoubleProperty = delegate.categoryGapProperty
-  def categoryGap_= (v: Double) {
+  def categoryGap_=(v: Double) {
     categoryGap() = v
   }
 }
