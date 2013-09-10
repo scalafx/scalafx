@@ -44,6 +44,8 @@ object NumberAxis {
 
   def apply(axisLabel: String) = new NumberAxis {label = axisLabel}
 
+  def apply() = new NumberAxis()
+
   object DefaultFormatter {
     implicit def sfxDefaultFormatter2jfx(v: DefaultFormatter) = v.delegate
 
