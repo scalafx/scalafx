@@ -26,7 +26,6 @@
  */
 package scalafx.controls.tableview
 
-import javafx.scene.{chart => jfxsc}
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -80,14 +79,13 @@ object BarChartWithTableViewDemo extends JFXApp {
   }
 
 
-  def createBarChart(title: String, data: ObservableBuffer[Position]): BarChart[String, Number] = {
-    val barChart = BarChart(new CategoryAxis(), new NumberAxis())
-    barChart.title = title
-    barChart.data = createChartData(data)
-    barChart.legendVisible = false
-    barChart.onMouseClicked = showAsTable(barChart.title(), data)
-    barChart
-  }
+  def createBarChart(chartTitle: String, chartData: ObservableBuffer[Position]): BarChart[String, Number] =
+    new BarChart(CategoryAxis(), NumberAxis()) {
+      title = chartTitle
+      data = XYChart.Series(chartData.map(d => XYChart.Data[String, Number](d.name(), d.value())))
+      legendVisible = false
+      onMouseClicked = showAsTable(title(), chartData)
+    }
 
 
   private def showAsTable(name: String, data: ObservableBuffer[Position]) {
@@ -118,17 +116,6 @@ object BarChartWithTableViewDemo extends JFXApp {
         }
       }
     }.showAndWait()
-  }
-
-
-  def createChartData(data: ObservableBuffer[Position]): ObservableBuffer[jfxsc.XYChart.Series[String, Number]] = {
-    val series = new XYChart.Series[String, Number]
-    for (d <- data) {
-      series.data() += XYChart.Data[String, Number](d.name(), d.value())
-    }
-    val answer = new ObservableBuffer[jfxsc.XYChart.Series[String, Number]]()
-    answer += series
-    answer
   }
 }
 
