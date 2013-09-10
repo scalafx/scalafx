@@ -26,23 +26,25 @@
  */
 package scalafx.scene.chart
 
-import javafx.scene.{ chart => jfxsc }
-import javafx.{ util => jfxu }
+import javafx.scene.{chart => jfxsc}
+import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.IntegerProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.collections.ObservableBuffer
-import scalafx.util.StringConverter
 import scalafx.delegate.SFXDelegate
+import scalafx.util.StringConverter
 
 object ValueAxis {
   implicit def sfxValueAxis2jfx[T <: Number](v: ValueAxis[T]) = v.delegate
 }
 
-abstract class ValueAxis[T <: Number](override val delegate: jfxsc.ValueAxis[T]) extends Axis[T](delegate) with SFXDelegate[jfxsc.ValueAxis[T]] {
+abstract class ValueAxis[T <: Number](override val delegate: jfxsc.ValueAxis[T])
+  extends Axis[T](delegate)
+  with SFXDelegate[jfxsc.ValueAxis[T]] {
+
   def lowerBound: DoubleProperty = delegate.lowerBoundProperty
   def lowerBound_=(v: Double) {
     lowerBound() = v
@@ -74,5 +76,4 @@ abstract class ValueAxis[T <: Number](override val delegate: jfxsc.ValueAxis[T])
   def upperBound_=(v: Double) {
     upperBound() = v
   }
-
 }

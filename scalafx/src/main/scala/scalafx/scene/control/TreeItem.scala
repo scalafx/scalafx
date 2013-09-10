@@ -37,7 +37,7 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.collections.ObservableBuffer
-import scalafx.event.Event
+import scalafx.event.{EventType, EventHandlerDelegate, Event}
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
@@ -57,28 +57,28 @@ object TreeItem {
      * where the tree item has not received a new value, has not changed
      * between expanded/collapsed states, and whose children has not changed.
      */
-    def this(eventType: jfxe.EventType[_ <: jfxe.Event], treeItem: TreeItem[T]) =
+    def this(eventType: EventType[_ <: jfxe.Event], treeItem: TreeItem[T]) =
       this(new jfxsc.TreeItem.TreeModificationEvent[T](eventType, treeItem))
 
     /**
      * Constructs a TreeModificationEvent for when the TreeItem has had its
      * `TreeItem.expandedProperty()` changed.
      */
-    def this(eventType: jfxe.EventType[_ <: jfxe.Event], treeItem: TreeItem[T], expanded: Boolean) =
+    def this(eventType: EventType[_ <: jfxe.Event], treeItem: TreeItem[T], expanded: Boolean) =
       this(new jfxsc.TreeItem.TreeModificationEvent[T](eventType, treeItem, expanded))
 
     /**
      * Constructs a TreeModificationEvent for when the TreeItem has had its
      * children list changed.
      */
-    def this(eventType: jfxe.EventType[_ <: jfxe.Event], treeItem: jfxsc.TreeItem[T], added: Buffer[_ <: jfxsc.TreeItem[T]], removed: Buffer[_ <: jfxsc.TreeItem[T]]) =
+    def this(eventType: EventType[_ <: jfxe.Event], treeItem: TreeItem[T], added: Buffer[_ <: jfxsc.TreeItem[T]], removed: Buffer[_ <: jfxsc.TreeItem[T]]) =
       this(new jfxsc.TreeItem.TreeModificationEvent[T](eventType, treeItem, added, removed))
 
     /**
      * Constructs a TreeModificationEvent for when the TreeItem has had its
      * `TreeItem.valueProperty()` changed.
      */
-    def this(eventType: jfxe.EventType[_ <: jfxe.Event], treeItem: jfxsc.TreeItem[T], newValue: T) =
+    def this(eventType: EventType[_ <: jfxe.Event], treeItem: TreeItem[T], newValue: T) =
       this(new jfxsc.TreeItem.TreeModificationEvent[T](eventType, treeItem, newValue))
 
     /**
@@ -91,13 +91,13 @@ object TreeItem {
      * Returns the number of children items that were added in this event, or
      * zero if no children were added.
      */
-    def addedSize = delegate.getAddedSize
+    def addedSize : Int = delegate.getAddedSize
 
     /**
      * If the value of the TreeItem changed, this method will return the new
      * value.
      */
-    def newValue = delegate.getNewValue
+    def newValue : T = delegate.getNewValue
 
     /**
      * Returns the children removed from the TreeItem in this event, or an
@@ -109,41 +109,41 @@ object TreeItem {
      * Returns the number of children items that were removed in this event,
      * or zero if no children were removed.
      */
-    def removedSize = delegate.getRemovedSize
+    def removedSize : Int = delegate.getRemovedSize
 
     /**
      * Returns the TreeItem upon which this event occurred.
      */
-    override def source = delegate.getSource
+    override def source : TreeItem[_] = delegate.getSource
 
     /**
      * Returns the TreeItem that this event occurred upon.
      */
-    def treeItem = delegate.getTreeItem
+    def treeItem: TreeItem[T] = delegate.getTreeItem
 
     /**
      * Returns true if this event represents a TreeItem event where children
      * TreeItems were added.
      */
-    def wasAdded = delegate.wasAdded
+    def wasAdded : Boolean = delegate.wasAdded
 
     /**
      * Returns true if this event represents a TreeItem collapse event, and
      * false if the TreeItem was not collapsed.
      */
-    def wasCollapsed = delegate.wasCollapsed
+    def wasCollapsed : Boolean = delegate.wasCollapsed
 
     /**
      * Returns true if this event represents a TreeItem expansion event, and
      * false if the TreeItem was not expanded.
      */
-    def wasExpanded = delegate.wasExpanded
+    def wasExpanded : Boolean = delegate.wasExpanded
 
     /**
      * Returns true if this event represents a TreeItem event where children
      * TreeItems were removed.
      */
-    def wasRemoved = delegate.wasRemoved
+    def wasRemoved : Boolean = delegate.wasRemoved
 
   }
 
@@ -195,7 +195,8 @@ object TreeItem {
  * Wraps [[javafx.scene.control.TreeItem]] class.
  */
 class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[T])
-  extends SFXDelegate[jfxsc.TreeItem[T]] {
+  extends EventHandlerDelegate
+  with SFXDelegate[jfxsc.TreeItem[T]] {
 
   /**
    * Creates a TreeItem with the value property set to the provided object.
@@ -244,26 +245,6 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
   }
 
   /**
-   * Registers an event handler to this TreeItem.
-   */
-  def addEventHandler[ET <: jfxe.Event](eventType: jfxe.EventType[ET], eventFilter: jfxe.EventHandler[ET]) {
-    delegate.addEventHandler(eventType, eventFilter)
-  }
-
-  /**
-   * Unregisters a previously registered event handler from this TreeItem.
-   */
-  def removeEventHandler[ET <: jfxe.Event](eventType: jfxe.EventType[ET], eventHandler: jfxe.EventHandler[ET]) {
-    delegate.removeEventHandler(eventType, eventHandler)
-  }
-
-  /**
-   * Construct an event dispatch chain for this target.
-   */
-  def buildEventDispatchChain(tail: jfxe.EventDispatchChain) =
-    delegate.buildEventDispatchChain(tail)
-
-  /**
    * The children of this TreeItem.
    */
   def children: ObservableBuffer[jfxsc.TreeItem[T]] = delegate.getChildren
@@ -292,4 +273,5 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
    */
   def previousSibling(afterNode: TreeItem[T]) = delegate.previousSibling(afterNode)
 
+  override protected def eventHandlerDelegate = delegate.asInstanceOf[EventHandled]
 }

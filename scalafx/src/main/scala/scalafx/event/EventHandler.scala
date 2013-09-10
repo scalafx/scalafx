@@ -26,7 +26,9 @@
  */
 package scalafx.event
 
-import javafx.{ event => jfxe }
+import javafx.{event => jfxe}
+import scalafx.delegate.SFXDelegate
+import scalafx.event.subscriptions.Subscription
 
 /**
  * Companion Object for [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html EventHandler]]
@@ -62,6 +64,9 @@ trait EventHandlerDelegate {
 
     // Unregisters a previously registered event filter from this type.
     def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_])
+
+    // Construct an event dispatch chain for this target.
+    def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain
   }
 
   /**
@@ -83,39 +88,84 @@ trait EventHandlerDelegate {
     eventHandlerDelegate.addEventHandler(eventType, eventHandler)
   }
 
+
   /**
-   * Register an event handler to this task that will manipulate the
-   * [[http://docs.oracle.com/javafx/2/api/javafx/event/Event.html Event]] associated to a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventType.html EventType]].
-   *
-   * @tparam E Event class
-   * @param eventType  the type of the events to receive by the handler
-   * @param op the handler to register that will manipulate event
+   * Trait implementing [[http://spray.io/blog/2012-12-13-the-magnet-pattern/ Magnet Pattern]]
+   * to avoid compilation error "ambiguous reference to overloaded definition"
    */
-  def handleEvent[E <: jfxe.Event](eventType: jfxe.EventType[E])(op: E => Unit) {
-    this.addEventHandler(eventType, new jfxe.EventHandler[E] {
-      def handle(event: E) {
-        op(event)
+  sealed trait HandlerMagnet[J <: jfxe.Event, S <: SFXDelegate[J]] {
+    protected val eventHandler: jfxe.EventHandler[J]
+
+    def apply(eventType: EventType[J]): Subscription = {
+      EventHandlerDelegate.this.addEventHandler(eventType.delegate, eventHandler)
+      new Subscription {
+        def cancel() {
+          EventHandlerDelegate.this.removeEventHandler(eventType.delegate, eventHandler)
+        }
       }
-    })
+    }
   }
 
   /**
-   * Register an event handler to this task that will ''not'' manipulate the
-   * [[http://docs.oracle.com/javafx/2/api/javafx/event/Event.html Event]] associated to a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventType.html EventType]].
-   *
-   * @tparam E Event class
-   * @param eventType  the type of the events to receive by the handler
-   * @param op the handler to register that will ''not'' manipulate event
+   * Companion object implementing Magnet Pattern [[http://spray.io/blog/2012-12-13-the-magnet-pattern/ Magnet Pattern]]
+   * to avoid compilation error "ambiguous reference to overloaded definition"
    */
-  def handleEvent[E <: jfxe.Event](eventType: jfxe.EventType[E])(op: => Unit) {
-    this.addEventHandler(eventType, new jfxe.EventHandler[E] {
-      def handle(event: E) {
-        op
+  object HandlerMagnet {
+    implicit def fromUnit[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: => Unit) = {
+      new HandlerMagnet[J, S] {
+        override val eventHandler = new jfxe.EventHandler[J] {
+          def handle(event: J) {
+            op
+          }
+        }
       }
-    })
+    }
+    implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S) = {
+      new HandlerMagnet[J, S] {
+        override val eventHandler = new jfxe.EventHandler[J] {
+          def handle(event: J) {
+            op(jfx2sfx(event))
+          }
+        }
+      }
+    }
   }
+
+  /**
+   * Registers an event handler. The handler is called when the node receives an Event of the specified type during the bubbling phase of event delivery.
+   *
+   * Example of handling mouse events
+   * {{{
+   *  pane.handleEvent(MouseEvent.Any) {
+   *    me: MouseEvent => {
+   *      me.eventType match {
+   *        case MouseEvent.MousePressed => ...
+   *        case MouseEvent.MouseDragged => ...
+   *        case _                       => {}
+   *      }
+   *    }
+   *  }
+   * }}}
+   * or
+   * {{{
+   *  pane.handleEvent(MouseEvent.Any) { println("Some mouse event handled") }
+   * }}}
+   * NOTE: be careful with the code block, as in the second example above, they are not functions.
+   * Due to the way Scala treats code blocks, only the last statement is invoked by the handler.
+   * Statements before the last are treated as a "constructor" and executed only once, when handler is created.
+   * To avoid issue use the first form above {{{me: MouseEvent => ...}}}.
+   * If using code blocks, use only a single statement, for instance call to a function or a method.
+   *
+   * @param eventType type of events that will be handled.
+   * @param handler code handling the event, see examples above.
+   * @tparam J type JavaFX delegate of the event
+   * @tparam S ScalaFX type for `J` type wrapper.
+   * @return Returns a subscription that can be used to cancel/remove this event handler
+   */
+  def handleEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](eventType: EventType[J])(handler: HandlerMagnet[J, S]): Subscription = {
+    handler(eventType)
+  }
+
 
   /**
    * Unregisters a previously registered event handler from this task. One handler might have been
@@ -143,37 +193,86 @@ trait EventHandlerDelegate {
   }
 
   /**
-   * Registers an event filter to this task that will filter the
-   * [[http://docs.oracle.com/javafx/2/api/javafx/event/Event.html Event]] associated to a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventType.html EventType]].
-   *
-   * @tparam E Event class
-   * @param eventType  the type of the events to receive by the filter
-   * @param op the filter to register that will filter event
+   * Trait implementing [[http://spray.io/blog/2012-12-13-the-magnet-pattern/ Magnet Pattern]]
+   * to avoid compilation error "ambiguous reference to overloaded definition"
    */
-  def filterEvent[E <: jfxe.Event](eventType: jfxe.EventType[E])(op: E => Unit) {
-    this.addEventFilter(eventType, new jfxe.EventHandler[E] {
-      def handle(event: E) {
-        op(event)
-      }
-    })
+  sealed trait FilterMagnet[J <: jfxe.Event, S <: SFXDelegate[J]] {
+    def apply(eventType: EventType[J])
   }
 
   /**
-   * Registers an event filter to this task that will ''not'' filter the
-   * [[http://docs.oracle.com/javafx/2/api/javafx/event/Event.html Event]] associated to a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventType.html EventType]].
-   *
-   * @tparam E Event class
-   * @param eventType  the type of the events to receive by the filter
-   * @param op the filter to register that will ''not'' filter event
+   * Companion object implementing Magnet Pattern [[http://spray.io/blog/2012-12-13-the-magnet-pattern/ Magnet Pattern]]
+   * to avoid compilation error "ambiguous reference to overloaded definition"
    */
-  def filterEvent[E <: jfxe.Event](eventType: jfxe.EventType[E])(op: => Unit) {
-    this.addEventFilter(eventType, new jfxe.EventHandler[E] {
-      def handle(event: E) {
-        op
+  object FilterMagnet {
+    implicit def fromUnit[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: => Unit) = {
+      new FilterMagnet[J, S] {
+        def apply(eventType: EventType[J]) {
+          EventHandlerDelegate.this.addEventFilter(
+            eventType.delegate,
+            new jfxe.EventHandler[J] {
+              def handle(event: J) {
+                op
+              }
+            }
+          )
+        }
       }
-    })
+    }
+    implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S) = {
+      new FilterMagnet[J, S] {
+        def apply(eventType: EventType[J]) {
+          EventHandlerDelegate.this.addEventFilter(
+            eventType.delegate,
+            new jfxe.EventHandler[J] {
+              def handle(event: J) {
+                op(jfx2sfx(event))
+              }
+            }
+          )
+        }
+      }
+    }
+  }
+
+  /**
+   * Registers an event filter. Registered event filters get an event before any associated event handlers.
+   *
+   * Example of filtering mouse events
+   * {{{
+   *  pane.filterEvent(MouseEvent.Any) {
+   *    me: MouseEvent => {
+   *      me.eventType match {
+   *        case MouseEvent.MousePressed => {
+   *          ...
+   *        }
+   *        case MouseEvent.MouseDragged => {
+   *          ...
+   *        }
+   *        case _ => {
+   *          ...
+   *        }
+   *      }
+   *    }
+   *  }
+   * }}}
+   * or
+   * {{{
+   *  pane.filterEvent(MouseEvent.Any) { println("Some mouse event handled") }
+   * }}}
+   * NOTE: be careful with the code block, as in the second example above, they are not functions.
+   * Due to the way Scala treats code blocks, only the last statement is invoked by the handler.
+   * Statements before the last are treated as a "constructor" and executed only once, when handler is created.
+   * To avoid issue use the first form in with explicit event the example above {{{me: MouseEvent => ...}}}.
+   * If using code blocks, use only a single statement, for instance call to a function or a method.
+   *
+   * @param eventType type of events that will be handled.
+   * @param filter code handling the event, see examples above.
+   * @tparam J type JavaFX delegate of the event
+   * @tparam S ScalaFX type for `J` type wrapper.
+   */
+  def filterEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](eventType: EventType[J])(filter: FilterMagnet[J, S]) {
+    filter(eventType)
   }
 
   /**
@@ -188,5 +287,10 @@ trait EventHandlerDelegate {
   def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) {
     eventHandlerDelegate.removeEventFilter(eventType, eventHandler)
   }
+
+  /**
+   * Construct an event dispatch chain for this target.
+   */
+  def buildEventDispatchChain(chain: jfxe.EventDispatchChain) = eventHandlerDelegate.buildEventDispatchChain(chain)
 
 }

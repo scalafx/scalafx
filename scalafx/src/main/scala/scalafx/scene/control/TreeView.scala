@@ -56,22 +56,22 @@ object TreeView {
     /**
      * Returns the new value input into the TreeItem by the end user.
      */
-    def newValue = delegate.getNewValue
+    def newValue : T = delegate.getNewValue
 
     /**
      * Returns the old value that existed in the TreeItem prior to the current edit event.
      */
-    def oldValue = delegate.getOldValue
+    def oldValue : T = delegate.getOldValue
 
     /**
      * Returns the TreeView upon which the edit took place.
      */
-    override def source = delegate.getSource
+    override def source : TreeView[T] = delegate.getSource
 
     /**
      * Returns the `TreeItem` upon which the edit took place.
      */
-    def treeItem = delegate.getTreeItem
+    def treeItem : TreeItem[T] = delegate.getTreeItem
 
   }
 

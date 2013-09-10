@@ -27,14 +27,13 @@
 package scalafx.scene.media
 
 import javafx.scene.{ media => jfxsm }
-import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object VideoTrack {
   implicit def sfxVideoTrack2jfx(at: VideoTrack) = at.delegate
 }
 
-final class VideoTrack(override val delegate: jfxsm.VideoTrack) extends Track(delegate) with SFXDelegate[jfxsm.VideoTrack] {
+class VideoTrack(override val delegate: jfxsm.VideoTrack) extends Track(delegate) with SFXDelegate[jfxsm.VideoTrack] {
 
   /**
    * Retrieves the height of the track.

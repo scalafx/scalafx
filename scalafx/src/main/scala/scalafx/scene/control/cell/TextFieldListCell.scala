@@ -34,17 +34,38 @@ import scalafx.scene.control.ListView
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
+/**
+ * Companion Object for [[scalafx.scene.control.cell.TextFieldListCell]].
+ *
+ * @define TFLC `TextFieldListCell`
+ * @define TTYPE  The type of the elements contained within the `ListView`.
+ * @define FLVINTI Provides a `TextField` that allows editing of the cell content when the cell is double-clicked, or when `ListView.edit(int)` is called.
+ * @define FLVRET A Function that can be inserted into the cell factory property of a `ListView`, that enables textual editing of the content.
+ */
 object TextFieldListCell {
+
+  /**
+   * Converts a ScalaFX $TFLC to its JavaFX counterpart.
+   *
+   * @tparam T $TTYPE
+   * @param cell ScalaFX $TFLC
+   * @return JavaFX $TFLC
+   */
   implicit def sfxTextFieldListCell2jfx[T](cell: TextFieldListCell[T]) = cell.delegate
 
   /**
-   * Creates a TextField cell factory for use in `ListView` controls.
+   * $FLVINTI
+   * 
+   * @return $FLVRET
    */
   def forListView(): (ListView[String] => ListCell[String]) =
     (view: ListView[String]) => jfxscc.TextFieldListCell.forListView().call(view)
 
   /**
-   * Creates a TextField cell factory for use in `ListView` controls.
+   * $FLVINTI
+   *
+   * @param converter A `StringConverter` that can convert the given String (from what the user typed in) into an instance of type T.
+   * @return $FLVRET
    */
   def forListView[T](converter: StringConverter[T]): (ListView[T] => ListCell[T]) =
     (view: ListView[T]) => jfxscc.TextFieldListCell.forListView[T](converter).call(view)
@@ -58,7 +79,13 @@ object TextFieldListCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/TextFieldListCell.html]]
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/TextFieldListCell.html $TFLC]]
+ *
+ * @tparam T Type used in this cell
+ * @constructor Creates a new $TFLC from a JavaFX $TFLC
+ * @param delegate JavaFX $TFLC
+ *
+ * @define TFLC `TextFieldListCell`
  */
 class TextFieldListCell[T](override val delegate: jfxscc.TextFieldListCell[T] = new jfxscc.TextFieldListCell[T])
   extends ListCell[T](delegate)
@@ -69,6 +96,8 @@ class TextFieldListCell[T](override val delegate: jfxscc.TextFieldListCell[T] = 
   /**
    * Creates a `TextFieldListCell` that provides a TextField when put into editing mode that allows editing of the
    * cell content.
+   *
+   * @param converter A `converter` that can convert the given String (from what the user typed in) into an instance of type T.
    */
   def this(converter: StringConverter[T]) = this(new jfxscc.TextFieldListCell[T](converter))
 

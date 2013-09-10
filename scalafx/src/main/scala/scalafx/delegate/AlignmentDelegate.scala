@@ -58,8 +58,6 @@ trait AlignmentDelegate[J <: Object with Aligned]
 
   /**
    * The overall alignment of children (or text) within the component's width and height.
-   *
-   * Renamed from alignment to avoid a conflict with the pseudo-property for alignment on Node.
    */
   def alignment: ObjectProperty[jfxg.Pos] = delegate.alignmentProperty()
   def alignment_=(v: Pos) {

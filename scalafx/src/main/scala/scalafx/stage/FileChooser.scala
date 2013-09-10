@@ -80,7 +80,7 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
    */
   def initialDirectory: ObjectProperty[File] = delegate.initialDirectoryProperty
   def initialDirectory_=(v: File) {
-    initialDirectory() = v
+    ObjectProperty.fillProperty[File](initialDirectory, v)
   }
 
   /**

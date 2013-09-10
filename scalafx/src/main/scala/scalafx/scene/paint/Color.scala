@@ -51,8 +51,7 @@ object Color {
   def rgb(red: Int, green: Int, blue: Int) = new Color(jfxsp.Color.rgb(red, green, blue))
 
   /**
-   * *
-   * Creates an sRGB color with the specified RGB values in the range 0-255, and a given opacity.
+   * Creates an sRGB color with the specified RGB values in the range 0-255, and a given opacity in the range 0.0-1.0.
    */
   def rgb(red: Int, green: Int, blue: Int, opacity: Double) = new Color(jfxsp.Color.rgb(red, green, blue, opacity))
 

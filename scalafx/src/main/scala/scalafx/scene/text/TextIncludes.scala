@@ -26,16 +26,84 @@
  */
 package scalafx.scene.text
 
-import javafx.scene.{text => jfxst}
+import javafx.scene.{ text => jfxst }
 
 object TextIncludes extends TextIncludes
 
+/**
+ * Contains implcit methods to convert from
+ * [[http://docs.oracle.com/javafx/2/api/javafx/scene/text/package-summary.html `javafx.scene.text`]]
+ * Classes/Traits to their $SFX counterparts.
+ *
+ * @define JFX JavaFX
+ * @define SFX ScalaFX
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/text/
+ * @define END ]]` instance to its $SFX counterpart.
+ *
+ * @define FT Font
+ * @define FP FontPosture
+ * @define FS FontSmoothingType
+ * @define FW FontWeight
+ * @define TX Text
+ * @define TA TextAlignment
+ * @define TB TextBoundsType
+ */
 trait TextIncludes {
+
+  /**
+   * $START$FT.html $FT$END
+   *
+   * @param f $JFX $FT
+   * @return $SFX $FT
+   */
   implicit def jfxFont2sfxFont(f: jfxst.Font) = new Font(f)
+
+  /**
+   * $START$FP.html $FP$END
+   *
+   * @param e $JFX $FP
+   * @return $SFX $FP
+   */
   implicit def jfxFontPosture2sfx(e: jfxst.FontPosture) = FontPosture.jfxEnum2sfx(e)
+
+  /**
+   * $START$FS.html $FS$END
+   *
+   * @param e $JFX $FS
+   * @return $SFX $FS
+   */
   implicit def jfxFontSmoothingType2sfx(e: jfxst.FontSmoothingType) = FontSmoothingType.jfxEnum2sfx(e)
+
+  /**
+   * $START$FW.html $FW$END
+   *
+   * @param e $JFX $FW
+   * @return $SFX $FW
+   */
   implicit def jfxFontWeight2sfx(e: jfxst.FontWeight) = FontWeight.jfxEnum2sfx(e)
+
+  /**
+   * $START$TX.html $TX$END
+   *
+   * @param t $JFX $TX
+   * @return $SFX $TX
+   */
   implicit def jfxText2sfxText(t: jfxst.Text) = new Text(t)
+
+  /**
+   * $START$TA.html $TA$END
+   *
+   * @param e $JFX $TA
+   * @return $SFX $TA
+   */
   implicit def jfxTextAlignment2sfx(e: jfxst.TextAlignment) = TextAlignment.jfxEnum2sfx(e)
+
+  /**
+   * $START$TB.html $TB$END
+   *
+   * @param e $JFX $TB
+   * @return $SFX $TB
+   */
   implicit def jfxTextBoundsType2sfx(e: jfxst.TextBoundsType) = TextBoundsType.jfxEnum2sfx(e)
+
 }

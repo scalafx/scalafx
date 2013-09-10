@@ -30,8 +30,8 @@ import javafx.scene.{chart => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
-import scalafx.util.converter.StringConverterDelegate
 import scalafx.delegate.SFXDelegate
+import scalafx.util.converter.StringConverterDelegate
 
 object NumberAxis {
   implicit def sfxNumberAxis2jfx(v: NumberAxis) = v.delegate
@@ -41,6 +41,10 @@ object NumberAxis {
 
   def apply(axisLabel: String, lowerBound: Double, upperBound: Double, tickUnit: Double) =
     new NumberAxis(new jfxsc.NumberAxis(axisLabel, lowerBound, upperBound, tickUnit))
+
+  def apply(axisLabel: String) = new NumberAxis {label = axisLabel}
+
+  def apply() = new NumberAxis()
 
   object DefaultFormatter {
     implicit def sfxDefaultFormatter2jfx(v: DefaultFormatter) = v.delegate
@@ -54,11 +58,21 @@ object NumberAxis {
 
   class DefaultFormatter(override val delegate: jfxsc.NumberAxis.DefaultFormatter)
     extends StringConverterDelegate[java.lang.Number, Number, jfxsc.NumberAxis.DefaultFormatter](delegate)
+
 }
 
-final class NumberAxis(override val delegate: jfxsc.NumberAxis = new jfxsc.NumberAxis)
+class NumberAxis(override val delegate: jfxsc.NumberAxis = new jfxsc.NumberAxis)
   extends ValueAxis[Number](delegate)
   with SFXDelegate[jfxsc.NumberAxis] {
+
+  def this(lowerBound: Double, upperBound: Double, tickUnit: Double) {
+    this(new jfxsc.NumberAxis(lowerBound, upperBound, tickUnit))
+  }
+
+  def this(axisLabel: String, lowerBound: Double, upperBound: Double, tickUnit: Double) {
+    this(new jfxsc.NumberAxis(axisLabel, lowerBound, upperBound, tickUnit))
+  }
+
 
   /**
    * When `true` zero is always included in the visible range.

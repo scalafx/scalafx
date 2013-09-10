@@ -27,6 +27,7 @@
 package scalafx.event
 
 import javafx.{event => jfxe }
+import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object ActionEvent {
@@ -35,7 +36,7 @@ object ActionEvent {
   /**
    * The only valid EventType for the ActionEvent.
    */
-  val ACTION = jfxe.ActionEvent.ACTION
+  val ACTION : EventType[jfxe.ActionEvent] = jfxe.ActionEvent.ACTION
 }
 
 class ActionEvent(override val delegate: jfxe.ActionEvent = new jfxe.ActionEvent) extends Event(delegate) with SFXDelegate[jfxe.ActionEvent] {

@@ -26,7 +26,6 @@
  */
 package scalafx.stage
 
-import javafx.event.EventDispatchChain
 import javafx.{ event => jfxe }
 import javafx.{ stage => jfxs }
 import scalafx.Includes._
@@ -35,8 +34,7 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.beans.property.ReadOnlyProperty
-import scalafx.event.Event
+import scalafx.event.{EventHandlerDelegate, Event}
 import scalafx.delegate.SFXDelegate
 
 object Window {
@@ -44,7 +42,8 @@ object Window {
 }
 
 class Window protected (override val delegate: jfxs.Window)
-  extends SFXDelegate[jfxs.Window]
+  extends EventHandlerDelegate
+  with SFXDelegate[jfxs.Window]
   with jfxe.EventTarget {
 
   /**
@@ -150,21 +149,6 @@ class Window protected (override val delegate: jfxs.Window)
     delegate.setY(value)
   }
 
-  /*
-   * Registers an event filter to this node.
-   */
-  //  def addEventFilter[T <: Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[_]) = delegate.addEventFilter(eventType.asInstanceOf[jfxe.EventType[jfxe.Event]], eventFilter)
-
-  /*
-   * Registers an event handler to this node.
-   */
-  //  def addEventHandler[T <: Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[_])  = delegate.addEventHandler(eventType.asInstanceOf[jfxe.EventType[jfxe.Event]], eventFilter)
-
-  /**
-   * Construct an event dispatch chain for this stage.
-   */
-  def buildEventDispatchChain(tail: jfxe.EventDispatchChain) = delegate.buildEventDispatchChain(tail)
-
   /**
    * Sets x and y properties on this Window so that it is centered on the screen.
    */
@@ -186,16 +170,6 @@ class Window protected (override val delegate: jfxs.Window)
     delegate.hide()
   }
 
-  /*
-   * Unregisters a previously registered event filter from this node.
-   */
-  //  def removeEventFilter[T <: Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[_]) = delegate.removeEventFilter(eventType.asInstanceOf[jfxe.EventType[jfxe.Event]], eventFilter)
-
-  /*
-   * Unregisters a previously registered event handler from this node.
-   */
-  //  def removeEventHandler[T <: Event](eventType: jfxe.EventType[T], eventFilter: jfxe.EventHandler[_])  = delegate.removeEventHandler(eventType.asInstanceOf[jfxe.EventType[jfxe.Event]], eventFilter)
-
   /**
    * Requests that this Window get the input focus.
    */
@@ -215,4 +189,5 @@ class Window protected (override val delegate: jfxs.Window)
     delegate.sizeToScene()
   }
 
+  override protected def eventHandlerDelegate = delegate.asInstanceOf[EventHandled]
 }

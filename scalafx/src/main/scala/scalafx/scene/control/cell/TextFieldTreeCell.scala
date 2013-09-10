@@ -36,11 +36,29 @@ import scalafx.scene.control.TreeView
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
+/**
+ * Companion Object for [[scalafx.scene.control.cell.TextFieldTableCell]].
+ *
+ * @define TFTC `TextFieldTreeCell`
+ * @define TTYPE  The type of the elements contained within the `ListView`.
+ * @define FLVINIT Provides a `TextField that allows editing of the cell content when the cell is double-clicked, or when TreeView.edit(javafx.scene.control.TreeItem) is called.
+ * @define FLVRET A Function that can be inserted into the cell factory property of a `TreeView`, that enables textual editing of the content.
+ */
 object TextFieldTreeCell {
+
+  /**
+   * Converts a ScalaFX $TFTC to its JavaFX counterpart.
+   *
+   * @tparam T $TTYPE
+   * @param cell ScalaFX $TFTC
+   * @return JavaFX $TFTC
+   */
   implicit def sfxTextFieldTreeCell2jfx[T](cell: TextFieldTreeCell[T]) = cell.delegate
 
   /**
-   * Creates a TextField cell factory for use in `TreeView` controls.
+   * $FLVINIT
+   * 
+   * @return $FLVRET
    */
   def forTreeView(): (TreeView[String] => TreeCell[String]) =
     (view: TreeView[String]) => jfxscc.TextFieldTreeCell.forTreeView().call(view)
@@ -52,7 +70,10 @@ object TextFieldTreeCell {
 //  def forTreeView() = jfxscc.TextFieldTreeCell.forTreeView()
 
   /**
-   * Creates a TextField cell factory for use in `TreeView` controls.
+   * $FLVINIT
+   * 
+   * @param converter A `StringConverter` that can convert the given String (from what the user typed in) into an instance of type T.
+   * @return $FLVRET
    */
   def forTreeView[T](converter: StringConverter[T]): (TreeView[T] => TreeCell[T]) =
     (view: TreeView[T]) => jfxscc.TextFieldTreeCell.forTreeView[T](converter).call(view)
@@ -66,7 +87,13 @@ object TextFieldTreeCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/TextFieldTreeCell.html]]
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/TextFieldTreeCell.html $TFTC]]
+ * 
+ * @tparam T Type used in this cell
+ * @constructor Creates a new $TFTC from a JavaFX $TFTC
+ * @param delegate JavaFX $TFTC
+ *
+ * @define TFTC `TextFieldTreeCell`
  */
 class TextFieldTreeCell[T](override val delegate: jfxscc.TextFieldTreeCell[T] = new jfxscc.TextFieldTreeCell[T])
   extends TreeCell[T](delegate)
@@ -77,6 +104,9 @@ class TextFieldTreeCell[T](override val delegate: jfxscc.TextFieldTreeCell[T] = 
   /**
    * Creates a `TextFieldTreeCell` that provides a `TextField` when put into editing mode that allows editing of the 
    * cell content.
+   * 
+   * @param converter A `converter` that can convert the given String (from what the user typed in) into an instance of type T.
    */
   def this(converter: StringConverter[T]) = this(new jfxscc.TextFieldTreeCell[T](converter))
+  
 }

@@ -26,19 +26,18 @@
  */
 package scalafx.scene.media
 
-import javafx.scene.{ media => jfxsm }
-import javafx.{ util => jfxu }
+import javafx.scene.{media => jfxsm}
+import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyIntegerProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
-import scalafx.util.Duration
 
 object Media {
   implicit def sfxMedia2jfx(m: Media) = m.delegate
 }
 
-final class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.Media] {
+class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.Media] {
 
   /**
    * Constructs a Media instance.
@@ -73,12 +72,19 @@ final class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.
   def onError_=(v: Runnable) {
     onError() = v
   }
-  
+  def onError_=(op: => Unit) {
+    onError() = new Runnable {
+      def run() {
+        op
+      }
+    }
+  }
+
   /**
    * Retrieve the source URI of the media.
    */
   def source = delegate.getSource
-  
+
   /**
    * Retrieve the tracks contained in this media source.
    */

@@ -194,6 +194,6 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
    */
   def fontSmoothingType: ObjectProperty[jfxst.FontSmoothingType] = delegate.fontSmoothingTypeProperty
   def fontSmoothingType_=(v: FontSmoothingType) {
-    fontSmoothingType() = v
+    ObjectProperty.fillProperty[jfxst.FontSmoothingType](fontSmoothingType, v)
   }
 }

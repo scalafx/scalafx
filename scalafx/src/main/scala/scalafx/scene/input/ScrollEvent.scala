@@ -28,7 +28,9 @@ package scalafx.scene.input
 
 import javafx.scene.{ input => jfxsi }
 import scalafx.delegate.SFXDelegate
+import scalafx.Includes._
 import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.event.EventType
 
 object ScrollEvent {
   implicit def sfxScrollEvent2jfx(se: ScrollEvent) = se.delegate
@@ -87,8 +89,8 @@ object ScrollEvent {
   /**
    * Common supertype for all scroll event types.
    */
-  val ANY = jfxsi.ScrollEvent.ANY
-
+  val ANY : EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.ANY
+    : EventType[jfxsi.ScrollEvent]
   /**
    * This event occurs when user performs a scrolling action such as rotating mouse wheel or dragging a finger over
    * touch screen.
@@ -98,12 +100,12 @@ object ScrollEvent {
   /**
    * This event occurs when a scrolling gesture ends.
    */
-  val SCROLL_FINISHED = jfxsi.ScrollEvent.SCROLL_FINISHED
+  val SCROLL_FINISHED : EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.SCROLL_FINISHED
 
   /**
    * This event occurs when a scrolling gesture is detected.
    */
-  val SCROLL_STARTED = jfxsi.ScrollEvent.SCROLL_STARTED
+  val SCROLL_STARTED : EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.SCROLL_STARTED
 
 }
 
@@ -117,17 +119,17 @@ class ScrollEvent(override val delegate: jfxsi.ScrollEvent)
   /**
    * Gets the horizontal scroll amount.
    */
-  def deltaX = delegate.getDeltaX
+  def deltaX : Double = delegate.getDeltaX
 
   /**
    * Gets the vertical scroll amount.
    */
-  def deltaY = delegate.getDeltaY
+  def deltaY : Double = delegate.getDeltaY
 
   /**
    * Gets the horizontal text-based scroll amount.
    */
-  def textDeltaX = delegate.getTextDeltaX
+  def textDeltaX : Double = delegate.getTextDeltaX
 
   /**
    * Gets the horizontal scrolling units for text-based scrolling.
@@ -138,7 +140,7 @@ class ScrollEvent(override val delegate: jfxsi.ScrollEvent)
   /**
    * Gets the vertical text-based scroll amount.
    */
-  def textDeltaY = delegate.getTextDeltaY
+  def textDeltaY : Double = delegate.getTextDeltaY
 
   /**
    * Gets the vertical scrolling units for text-based scrolling.

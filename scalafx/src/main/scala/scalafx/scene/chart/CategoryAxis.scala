@@ -36,30 +36,39 @@ import scalafx.delegate.SFXDelegate
 
 object CategoryAxis {
   implicit def sfxCategoryAxis2jfx(v: CategoryAxis) = v.delegate
-  
+
+  def apply() = new CategoryAxis()
+
   def apply(categories: ObservableBuffer[String]) = new CategoryAxis(new jfxsc.CategoryAxis(categories))
+
+  def apply(axisLabel: String) = new CategoryAxis {
+    label = axisLabel
+  }
 }
 
-final class CategoryAxis(override val delegate:jfxsc.CategoryAxis = new jfxsc.CategoryAxis) extends Axis[String](delegate) with SFXDelegate[jfxsc.CategoryAxis] {
+class CategoryAxis(override val delegate: jfxsc.CategoryAxis = new jfxsc.CategoryAxis)
+  extends Axis[String](delegate)
+  with SFXDelegate[jfxsc.CategoryAxis] {
+
   def categorySpacing: ReadOnlyDoubleProperty = delegate.categorySpacingProperty
-  
+
   def endMargin: DoubleProperty = delegate.endMarginProperty
-  def endMargin_= (v: Double) {
+  def endMargin_=(v: Double) {
     endMargin() = v
   }
 
   def gapStartAndEnd: BooleanProperty = delegate.gapStartAndEndProperty
-  def gapStartAndEnd_= (v: Boolean) {
+  def gapStartAndEnd_=(v: Boolean) {
     gapStartAndEnd() = v
   }
-  
+
   def startMargin: DoubleProperty = delegate.startMarginProperty
-  def startMargin_= (v: Double) {
+  def startMargin_=(v: Double) {
     startMargin() = v
   }
-  
+
   def categories = delegate.getCategories
-  def categories_= (value: ObservableBuffer[String]) {
+  def categories_=(value: ObservableBuffer[String]) {
     delegate.setCategories(value)
   }
 
