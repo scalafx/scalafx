@@ -38,7 +38,7 @@ object ScalaFXBuild extends Build {
 
   lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
     organization := "org.scalafx",
-    version := "8.0.0-M1-SNAPSHOT",
+    version := "8.0.0-M1",
     // TODO SFX8: At a moment only ScalaFX 2.10.2 supports JavaFX 8 sue to some InvokeDynamic byte codes
     crossScalaVersions := Seq(/* "2.9.3", "2.9.2", */ "2.10.2"),
     scalaVersion <<= crossScalaVersions {
