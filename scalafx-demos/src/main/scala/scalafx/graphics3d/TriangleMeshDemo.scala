@@ -164,7 +164,7 @@ object TriangleMeshDemo extends JFXApp {
      * visible side of a face, the vertices must be numbered in clockwise order, but the starting vertex is arbitrary.  For example, if
      * looking at the base of this tetrahedron from below, the vertices can be numbered 0, 1, 2 or 1, 2, 0 or 2, 0, 1 - all will work.
      * However, if the order of vertices is specified in counterclockwise order (such as 0, 2, 1), then the face will be invisible from
-     * below (and will also hide any visible faces behind it).
+     * below.
      */
     mesh.faces = Array (
       0, 0, 1, 1, 2, 2,       // Base face, face 0. (Vertex points 0, 1, 2, tex-coords 0, 1, 2)
