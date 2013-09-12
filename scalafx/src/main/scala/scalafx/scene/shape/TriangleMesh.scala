@@ -51,12 +51,48 @@ class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.Triangl
   /** Gets the ObservableIntegerArray of faces, indices into the points and texCoords arrays, of this TriangleMesh */
   def faces: ObservableIntegerArray = delegate.getFaces
 
+  /**
+   * Set faces to given array.
+   * 
+   * @param a Integer array to replace the contents of the faces array.
+   */
+  def faces_= (a: Array [Int]) {
+    delegate.getFaces.setAll (a, 0, a.length)
+  }
+
   /** Gets the ObservableIntegerArray of face smoothing groups of this TriangleMesh. */
   def faceSmoothingGroups: ObservableIntegerArray = delegate.getFaceSmoothingGroups
+
+  /**
+   * Set face smoothing groups to given array.
+   * 
+   * @param a Integer array to replace the contents of the face smoothing groups array.
+   */
+  def faceSmoothingGroups_= (a: Array [Int]) {
+    delegate.getFaceSmoothingGroups.setAll (a, 0, a.length)
+  }
 
   /** Gets the ObservableFloatArray of points of this TriangleMesh. */
   def points: ObservableFloatArray = delegate.getPoints
 
+  /**
+   * Set points to given array.
+   * 
+   * @param a Float array to replace the contents of the points array.
+   */
+  def points_= (a: Array [Float]) {
+    delegate.getPoints.setAll (a, 0, a.length)
+  }
+
   /** Gets the ObservableFloatArray of texture coordinates of this TriangleMesh. */
   def texCoords: ObservableFloatArray = delegate.getTexCoords
+
+  /**
+   * Set texture coordinates to given array.
+   * 
+   * @param a Float array to replace the contents of the texture coordinates array.
+   */
+  def texCoords_= (a: Array [Float]) {
+    delegate.getTexCoords.setAll (a, 0, a.length)
+  }
 }
