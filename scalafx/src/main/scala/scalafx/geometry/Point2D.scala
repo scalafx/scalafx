@@ -31,6 +31,11 @@ import scalafx.delegate.SFXDelegate
 
 object Point2D {
   implicit def sfxPoint2D2jfx(p: Point2D) = p.delegate
+
+  /**
+   * Point or vector with both coordinates set to zero.
+   */
+  val Zero = new Point2D (jfxg.Point2D.ZERO)
 }
 
 class Point2D(override val delegate: jfxg.Point2D) extends SFXDelegate[jfxg.Point2D] {
