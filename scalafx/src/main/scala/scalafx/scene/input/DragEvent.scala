@@ -103,7 +103,7 @@ class DragEvent(override val delegate: jfxsi.DragEvent) extends InputEvent(deleg
   /**
    * The target object of the drag and drop gesture.
    */
-  def gestureTarget : Object = delegate.getGestureSource
+  def gestureTarget : Object = delegate.getGestureTarget
 
   /**
    * Returns horizontal position of the event relative to the origin of the Scene that contains the DragEvent's source.
