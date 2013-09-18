@@ -41,7 +41,9 @@ trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] 
    *  @param s `SFXEnumDelegate` instance
    *  @return Delegated `enum`
    */
-  implicit def sfxEnum2jfx(s: S): E = s.delegate
+  implicit def sfxEnum2jfx(s: S): E =
+    if (s != null) s.delegate
+    else null.asInstanceOf[E]
 
   /**
    *  Converts a JavaFX `enum` to its respective `SFXEnumDelegate`. 
@@ -49,7 +51,9 @@ trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] 
    *  @param e JavaFX `enum`
    *  @return `[[scalafx.delegate.SFXEnumDelegate]]` equivalent to argument.
    */
-  def jfxEnum2sfx(e: E): S = values.find(_.delegate == e).get
+  def jfxEnum2sfx(e: E): S =
+    if (e != null) values.find(_.delegate == e).get
+    else null.asInstanceOf[S]
 
   /** Contain constants which will be source for `values` List  */
   protected def unsortedValues: Array[S]
