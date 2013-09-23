@@ -43,12 +43,6 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
   extends Window(delegate)
   with SFXDelegate[jfxs.PopupWindow] {
 
-  /** Specifies the reference point associated with the x, y location of the window on the screen. */
-  def alignWithContentOrigin : BooleanProperty = delegate.alignWithContentOriginProperty
-  def alignWithContentOrigin_=(v:Boolean) {
-    alignWithContentOrigin() = v
-  }
-
   /**
    * This convenience variable indicates whether, when the popup is shown, it should automatically correct its position
    * such that it doesn't end up positioned off the screen.
