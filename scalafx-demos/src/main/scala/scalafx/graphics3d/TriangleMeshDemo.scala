@@ -54,7 +54,7 @@ object TriangleMeshDemo extends JFXApp {
 
   stage = new PrimaryStage {
     title = "TriangleMesh Demo"
-    scene = new Scene(500, 500, true) {
+    scene = new Scene(500, 500, true, true) {
       fill = Color.BEIGE
 
       // Create a tetrahedron and add to a mesh view. Configure it.

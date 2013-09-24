@@ -39,7 +39,7 @@ import scalafx.scene.shape.{Box, DrawMode}
 object Simple3DBoxApp extends JFXApp {
 
   stage = new PrimaryStage {
-    scene = new Scene(300, 300) {
+    scene = new Scene(300, 300, true, true) {
       // 3D content
       content = new Box {
         width = 5
