@@ -40,20 +40,44 @@ object PickResult {
   val FACE_UNDEFINED: Int = jfxsi.PickResult.FACE_UNDEFINED
 }
 
+/** A container for the result of a pick event. Wrapper for JavaFX's
+  * [[http://download.java.net/jdk8/jfxdocs/javafx/scene/input/PickResult.html PickResult]]. */
 class PickResult(override val delegate: jfxsi.PickResult)
   extends SFXDelegate[jfxsi.PickResult] {
 
-  /** Creates a pick result for a 2D case where no additional information is needed.  */
+  /** Creates a pick result for a 2D case where no additional information is needed.
+    *
+    * Converts the given scene coordinates to the target's local coordinate space and stores
+    * the value as the intersected point. Sets intersected node to the given target,
+    * distance to 1.0, face to FACE_UNDEFINED and texCoord to null.
+    *
+    * @param target - The picked target (null in case of a Scene)
+    * @param sceneX - The scene X coordinate
+    * @param sceneY - The scene Y coordinate
+    */
   def this(target: jfxe.EventTarget, sceneX: Double, sceneY: Double) {
     this(new jfxsi.PickResult(target, sceneX, sceneY))
   }
 
-  /** Creates a new instance of PickResult for a non-3d-shape target. */
+  /** Creates a new instance of PickResult for a non-3d-shape target.
+    *
+    * Sets face to FACE_UNDEFINED and texCoord to null.
+    *
+    * @param node - The intersected node
+    * @param point - The intersected point in local coordinate of the picked Node
+    * @param distance - The intersected distance between camera position and the picked Node
+    */
   def this(node: Node, point: Point3D, distance: Double) {
     this(new jfxsi.PickResult(node, point, distance))
   }
 
-  /** Creates a new instance of PickResult. */
+  /** Creates a new instance of PickResult.
+    * @param node - The intersected node
+    * @param point - The intersected point in local coordinate of the picked Node
+    * @param distance - The intersected distance between camera position and the picked Node
+    * @param face - The intersected face of the picked Node
+    * @param texCoord - The intersected texture coordinates of the picked Node
+    */
   def this(node: Node, point: Point3D, distance: Double, face: Int, texCoord: Point2D) {
     this(new jfxsi.PickResult(node, point, distance, face, texCoord))
   }
