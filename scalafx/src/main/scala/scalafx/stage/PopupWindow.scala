@@ -26,22 +26,74 @@
  */
 package scalafx.stage
 
-import javafx.{ event => jfxe }
-import javafx.{ stage => jfxs }
+import javafx.{event => jfxe, stage => jfxs}
 import scalafx.beans.property._
 import scalafx.Includes._
 import scalafx.scene.Node._
 import scalafx.scene.Node
 import scalafx.stage.Window._
-import scalafx.delegate.SFXDelegate
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion, SFXDelegate}
 
 object PopupWindow {
   implicit def sfxPopupWindow2jfx(v: PopupWindow) = v.delegate
+
+  /** Anchor location constants for popup anchor point selection.
+    * Wraps [[http://download.java.net/jdk8/jfxdocs/javafx/stage/PopupWindow.AnchorLocation.html AnchorLocation]]
+    */
+  object AnchorLocation
+    extends SFXEnumDelegateCompanion[jfxs.PopupWindow.AnchorLocation, AnchorLocation] {
+
+    /** Represents bottom left content corner. */
+    val CONTENT_BOTTOM_LEFT = new AnchorLocation(jfxs.PopupWindow.AnchorLocation.CONTENT_BOTTOM_LEFT)
+
+    /** Represents bottom right content corner. */
+    val CONTENT_BOTTOM_RIGHT = new AnchorLocation(jfxs.PopupWindow.AnchorLocation.CONTENT_BOTTOM_RIGHT)
+
+    /** Represents top left content corner. */
+    val CONTENT_TOP_LEFT = new AnchorLocation(jfxs.PopupWindow.AnchorLocation.CONTENT_TOP_LEFT)
+
+    /** Represents top right content corner. */
+    val CONTENT_TOP_RIGHT = new AnchorLocation(jfxs.PopupWindow.AnchorLocation.CONTENT_TOP_RIGHT)
+
+    /** Represents bottom left window corner. */
+    val WINDOW_BOTTOM_LEFT = new AnchorLocation(jfxs.PopupWindow.AnchorLocation.WINDOW_BOTTOM_LEFT)
+
+    /** Represents bottom right window corner. */
+    val WINDOW_BOTTOM_RIGHT = new AnchorLocation(jfxs.PopupWindow.AnchorLocation.WINDOW_BOTTOM_RIGHT)
+
+    /** Represents top left window corner. */
+    val WINDOW_TOP_LEFT = new AnchorLocation(jfxs.PopupWindow.AnchorLocation.WINDOW_TOP_LEFT)
+
+    /** Represents top right window corner. */
+    val WINDOW_TOP_RIGHT = new AnchorLocation(jfxs.PopupWindow.AnchorLocation.WINDOW_TOP_RIGHT)
+
+    protected override def unsortedValues: Array[AnchorLocation] = Array(CONTENT_BOTTOM_LEFT, CONTENT_BOTTOM_RIGHT,
+      CONTENT_TOP_LEFT, CONTENT_TOP_RIGHT, WINDOW_BOTTOM_LEFT, WINDOW_BOTTOM_RIGHT, WINDOW_TOP_LEFT, WINDOW_TOP_RIGHT)
+  }
+
+  /** Anchor location constants for popup anchor point selection.
+    * Wraps [[http://download.java.net/jdk8/jfxdocs/javafx/stage/PopupWindow.AnchorLocation.html AnchorLocation]]
+    */
+  sealed case class AnchorLocation(override val delegate: jfxs.PopupWindow.AnchorLocation)
+    extends SFXEnumDelegate[jfxs.PopupWindow.AnchorLocation]
+
 }
 
 abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
   extends Window(delegate)
   with SFXDelegate[jfxs.PopupWindow] {
+
+  /** Specifies the popup anchor point which is used in popup positioning. */
+  def anchorLocation: ObjectProperty[jfxs.PopupWindow.AnchorLocation] = delegate.anchorLocationProperty
+  def anchorLocation_=(v: PopupWindow.AnchorLocation) {
+    ObjectProperty.fillProperty[jfxs.PopupWindow.AnchorLocation](this.anchorLocation, v)
+  }
+
+  /** Specifies the x coordinate of the popup anchor point on the screen. */
+  def anchorX: ReadOnlyDoubleProperty = delegate.anchorXProperty
+
+  /** Specifies the y coordinate of the popup anchor point on the screen. */
+  def anchorY: ReadOnlyDoubleProperty = delegate.anchorYProperty
 
   /**
    * This convenience variable indicates whether, when the popup is shown, it should automatically correct its position
