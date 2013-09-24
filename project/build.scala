@@ -75,8 +75,9 @@ object ScalaFXBuild extends Build {
   lazy val scalafxProject = Project(
     id = "scalafx-project",
     base = file("."),
-    settings = scalafxSettings ++ doNotPublish ++ Seq(
-      description := "The ScalaFX framework (root project)"
+    settings = scalafxSettings ++ Seq(
+      description := "The ScalaFX framework (root project)",
+      publishArtifact := false
     ),
     aggregate = Seq(scalafx, scalafxDemos)
   )
@@ -217,6 +218,4 @@ object ScalaFXBuild extends Build {
       )
     }
   )
-
-  lazy val doNotPublish = Seq(publish := {}, publishLocal := {})
 }
