@@ -33,7 +33,6 @@ import scalafx.Includes._
 import scalafx.concurrent.{WorkerStateEvent, Task}
 import scalafx.testutil.RunOnApplicationThread
 
-/** Verify that code causing Issue 70 behaves correctly after fix. */
 @RunWith(classOf[JUnitRunner])
 class Issue070Spec extends FlatSpec with RunOnApplicationThread {
 

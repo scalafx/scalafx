@@ -99,7 +99,30 @@ object ObjectProperty {
     new ObjectProperty(new jfxbp.SimpleObjectProperty[J](bean, name, initialValue.delegate))
 
   /**
-   * Fills a $OP with a value, setting `null` to its delegate if value is `null`.
+   * Helper method for setting a value of an `ObjectProperty`,
+   * it gracefully deals with `value` that could be `null`,
+   * without causing `NullPointerException`.
+   *
+   * Handles situation when `value` is of ScalaFX type, to avoid implicit conversion and NPE is `value` is `null`.
+   *
+   * @tparam J $OP type
+   * @param property $OP to be filled.
+   * @param value Value to be injected in $OP, to avoid implicit conversion and NPE is `value` is `null`.
+   */
+  def fillProperty[J <: AnyRef](property: ObjectProperty[J], value: SFXDelegate[J]) {
+    if (value == null) {
+      property.delegate.setValue(null.asInstanceOf[J])
+    } else {
+      property() = value.delegate
+    }
+  }
+
+  /**
+   * Helper method for setting a value of an `ObjectProperty`,
+   * it gracefully deals with `value` that could be `null`,
+   * without causing `NullPointerException`.
+   *
+   * Handles situation when `value` is of JavaFX type, to avoid implicit conversion and NPE is `value` is `null`.
    *
    * @tparam J $OP type
    * @param property $OP to be filled.
