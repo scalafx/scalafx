@@ -36,20 +36,23 @@ object ScalaFXBuild extends Build {
   import Dependencies._
   import Resolvers._
 
+  val scalafxVersion = "8.0.0-M2-SNAPSHOT"
+
   lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
     organization := "org.scalafx",
-    version := "8.0.0-M2-SNAPSHOT",
-    // TODO SFX8: At a moment only ScalaFX 2.10.2 supports JavaFX 8 sue to some InvokeDynamic byte codes
-    crossScalaVersions := Seq(/* "2.9.3", "2.9.2", */ "2.10.2"),
-    scalaVersion <<= crossScalaVersions {
-      versions => versions.head
-    },
+    version := scalafxVersion,
+    // TODO SFX8: At a moment only ScalaFX 2.10.2+ supports Java 8, due to some InvokeDynamic byte codes
+    crossScalaVersions := Seq(/* "2.9.3", "2.9.2", */ "2.10.3"),
+    scalaVersion <<= crossScalaVersions {versions => versions.head},
     scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
+    scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
+    scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
     // TODO SFX8: Should target/source be marked "1.8", they will not work with ealier versions of Java anyway?
-    javacOptions ++= Seq(/* "-target", "1.6", "-source", "1.6", */ "-Xlint:deprecation"),
+    javacOptions ++= Seq("-target", "1.6", "-source", "1.6", "-Xlint:deprecation"),
     manifestSetting,
     publishSetting,
-    resolvers ++= Seq(localMavenRepo, sonatypeNexusSnapshots)
+    resolvers ++= Seq(localMavenRepo, sonatypeNexusSnapshots),
+    shellPrompt in ThisBuild := { state => Project.extract(state).currentRef.project + "> " }
   ) ++ mavenCentralSettings
 
   lazy val javaHome = {
@@ -121,7 +124,7 @@ object ScalaFXBuild extends Build {
 
   object Dependencies {
     // Ordered by `group 'and then by `artifact ID'.
-    lazy val junit     = "junit"         %  "junit"     % "4.11"
+    lazy val junit = "junit" % "junit" % "4.11"
     lazy val scalatest = "org.scalatest" %% "scalatest" % "1.9.1"
     // lazy val scalatest2: MID = sv => "org.scalatest" %% "scalatest" % scalatestVersion(sv)
 
