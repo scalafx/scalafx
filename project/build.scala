@@ -47,8 +47,7 @@ object ScalaFXBuild extends Build {
     scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
     scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
     scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
-    // TODO SFX8: Should target/source be marked "1.8", they will not work with ealier versions of Java anyway?
-    javacOptions ++= Seq("-target", "1.6", "-source", "1.6", "-Xlint:deprecation"),
+    javacOptions ++= Seq("-target", "1.8", "-source", "1.8", "-Xlint:deprecation"),
     manifestSetting,
     publishSetting,
     resolvers ++= Seq(localMavenRepo, sonatypeNexusSnapshots),
