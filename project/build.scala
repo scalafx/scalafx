@@ -49,7 +49,8 @@ object ScalaFXBuild extends Build {
     javacOptions ++= Seq("-target", "1.6", "-source", "1.6", "-Xlint:deprecation"),
     manifestSetting,
     publishSetting,
-    resolvers ++= Seq(localMavenRepo, sonatypeNexusSnapshots)
+    resolvers ++= Seq(localMavenRepo, sonatypeNexusSnapshots),
+    shellPrompt in ThisBuild := { state => Project.extract(state).currentRef.project + "> " }
   ) ++ mavenCentralSettings
 
   lazy val javaHome = {
