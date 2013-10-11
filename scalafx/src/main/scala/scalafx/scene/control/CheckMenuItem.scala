@@ -40,7 +40,7 @@ object CheckMenuItem {
 
 /** A MenuItem that can be toggled between selected and unselected states. */
 class CheckMenuItem(override val delegate: jfxsc.CheckMenuItem = new jfxsc.CheckMenuItem)
-  extends jfxsc.MenuItem
+  extends MenuItem
   with SFXDelegate[jfxsc.CheckMenuItem] {
 
   /** Constructs a CheckMenuItem and sets the display text with the specified text. */
