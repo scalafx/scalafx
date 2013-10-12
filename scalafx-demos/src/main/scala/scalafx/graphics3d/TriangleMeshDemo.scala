@@ -179,16 +179,17 @@ object TriangleMeshDemo extends JFXApp {
      * Often, a portion of a 3D mesh is made up of two of more triangular faces that define a single face (such as the surface of a
      * sphere).  In this case, it makes sense to smooth all such faces when rendering the shape.  This is the idea behind "face smoothing
      * groups".  Each face can be assigned to one or more smoothing groups (up to 32 in total), although its typical for each face to be
-     * mapped to just a single smoothing group.
+     * mapped to just a single smoothing group. Smoothing group membership is expressed as a bit field, with each bit corresponding to a
+     * unique smoothing group.
      * 
      * In the case of a tetrahedron, each face should belong to its own smoothing group, so we here map each face to a single smoothing
      * group.
      */
     mesh.faceSmoothingGroups = Array (
-      0,              // Base face, smoothing group 0.
-      1,              // Right face, smoothing group 1.
-      2,              // Front face, smoothing group 2.
-      3               // Left face, smoothing group 3.
+      0x1,              // Base face, smoothing group 0 (2^0).
+      0x2,              // Right face, smoothing group (2^1).
+      0x4,              // Front face, smoothing group (2^2.
+      0x8               // Left face, smoothing group (2^3).
     )
 
     /*
