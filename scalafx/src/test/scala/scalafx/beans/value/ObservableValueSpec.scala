@@ -27,7 +27,7 @@
 
 package scalafx.beans.value
 
-import javafx.beans.value.{ObservableValue => JFXObservableValue}
+import javafx.beans.value.{ObservableValue => JFXObservableValue, ChangeListener}
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 import org.scalatest.matchers.ShouldMatchers._
 import scalafx.beans.property.DoubleProperty
@@ -84,9 +84,17 @@ class ObservableValueSpec extends FlatSpec with BeforeAndAfterEach {
     invalidateCalled should be (true)
   }
 
-  it should "support removing explict listeners" in {
+  it should "support removing explicit listeners" in {
     var invalidateCalled = false
-    val listener = (obs: JFXObservableValue[_ <: Number], oldV:Number, newV:Number) => invalidateCalled = true
+    // We are forcing implicit conversion of a Function3 to ChangeListener[Number],
+    // so we have a handle to actual listener object.
+    // Without it we will not be able to remove the listener, since will not have proper handle
+    // (a ChangeListener wrapper would be created while adding listener by implicit conversion ).
+    // A recommended way to add/remove listeners created from a closure is to use Subscription:
+    // val subscription = property.onChange ...
+    // ...
+    // subscription.cancel()
+    val listener : ChangeListener[Number] = (obs: JFXObservableValue[_ <: Number], oldV:Number, newV:Number) => invalidateCalled = true
     property addListener listener
     invalidateCalled should be (false)
     property() = 100
@@ -94,7 +102,6 @@ class ObservableValueSpec extends FlatSpec with BeforeAndAfterEach {
     property removeListener listener
     invalidateCalled = false
     property() = 200
-    // todo: report bug in removing listeners (appears to be in the jfx source)
-    //invalidateCalled should be (false)
+    invalidateCalled should be (false)
   }
 }

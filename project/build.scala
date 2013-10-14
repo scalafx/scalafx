@@ -42,7 +42,7 @@ object ScalaFXBuild extends Build {
     organization := "org.scalafx",
     version := scalafxVersion,
     // TODO SFX8: At a moment only ScalaFX 2.10.2+ supports Java 8, due to some InvokeDynamic byte codes
-    crossScalaVersions := Seq(/* "2.9.3", "2.9.2", */ "2.10.3"),
+    crossScalaVersions := Seq(/* "2.9.3", */ "2.10.3"),
     scalaVersion <<= crossScalaVersions {versions => versions.head},
     scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
     scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
