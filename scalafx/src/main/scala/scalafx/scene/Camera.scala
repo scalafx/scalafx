@@ -29,9 +29,33 @@ package scalafx.scene
 import javafx.{scene => jfxs}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
+import scalafx.beans.property.DoubleProperty
 
 object Camera {
   implicit def sfxCamera2jfx(c: Camera) = c.delegate
 }
 
-abstract class Camera (override val delegate: jfxs.Camera) extends Node(delegate) with SFXDelegate[jfxs.Camera]
+abstract class Camera (override val delegate: jfxs.Camera)
+  extends Node(delegate)
+  with SFXDelegate[jfxs.Camera] {
+
+  /**
+   * Specifies the far clipping plane of this `Camera` in the eye coordinate system of this node.
+   *
+   * Objects farther away from the eye than the farClip plane are not drawn.
+   */
+  def farClip: DoubleProperty = delegate.farClipProperty
+  def farClip_=(v: Double) {
+    farClip() = v
+  }
+
+  /**
+   * Specifies the near clipping plane of this `Camera` in the eye coordinate system of this node.
+   *
+   * Objects closer to the eye than the nearClip plane are not drawn.
+   */
+  def nearClip: DoubleProperty = delegate.nearClipProperty
+  def nearClip_=(v: Double) {
+    nearClip() = v
+  }
+}
