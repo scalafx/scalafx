@@ -24,41 +24,24 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.graphics3d
 
+package scalafx.scene
+
+import javafx.{ scene => jfxs }
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.scene._
-import scalafx.scene.transform.Transform._
-import scalafx.scene.transform.{Translate, Rotate}
-import scalafx.scene.paint.{Color, PhongMaterial}
-import scalafx.scene.shape.{Box, DrawMode}
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.SimpleSFXDelegateSpec
 
-/** Demo of a triangular frame of a 3D box, originally based on example in Ensemble 8. */
-object Simple3DBoxApp extends JFXApp {
+/**
+ * PerspectiveCamera Spec tests.
+ *
+ *
+ */
+@RunWith(classOf[JUnitRunner])
+class CameraSpec
+  extends SimpleSFXDelegateSpec[jfxs.Camera, Camera](classOf[jfxs.Camera], classOf[Camera]) {
 
-  stage = new PrimaryStage {
-    scene = new Scene(300, 300, true, true) {
-      // 3D content
-      content = new Box {
-        width = 5
-        height = 5
-        depth = 5
-        material = new PhongMaterial(Color.RED)
-        drawMode = DrawMode.LINE
-      }
-
-      // Background
-      fill = Color.ALICEBLUE
-
-      // Modify point of view
-      camera = new PerspectiveCamera(true) {
-        transforms +=(
-          new Rotate(-20, Rotate.YAxis),
-          new Rotate(-20, Rotate.XAxis),
-          new Translate(0, 0, -15))
-      }
-    }
-  }
+  override protected def getScalaClassInstance = new PerspectiveCamera()
+  override protected def getJavaClassInstance = getScalaClassInstance.delegate
 }

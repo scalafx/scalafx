@@ -44,4 +44,10 @@ class Point3DSpec
 
   override protected def getJavaClassInstance = new jfxg.Point3D(0, 0, 0)
 
+  it should "report all zero cooordinates as Point3D.Zero" in {
+    val zero = Point3D.Zero
+    assert (zero.x === 0.0)
+    assert (zero.y === 0.0)
+    assert (zero.z === 0.0)
+  }
 }

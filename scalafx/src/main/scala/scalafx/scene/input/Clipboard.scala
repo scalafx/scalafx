@@ -31,7 +31,7 @@ import java.io.File
 import scala.collection.JavaConversions._
 import scala.collection._
 
-import javafx.scene.{ input => jfxsi }
+import javafx.scene.{input => jfxsi}
 import scalafx.scene.input.DataFormat._
 import scalafx.delegate.SFXDelegate
 
@@ -128,8 +128,25 @@ class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxs
    */
   def hasUrl = delegate.hasUrl
 
-  /**
-   * Puts content onto the clipboard.
-   */
-  //  def setContent(content: Map[DataFormat, AnyRef]) = delegate.setContent(content)
+  /** Puts content onto the clipboard.
+    *
+    * This call will always result in clearing all previous content from the clipboard,
+    * and replacing it with whatever content is specified in the supplied ClipboardContent map.
+    *
+    * @return `true` if successful, `false` if the content fails to be added.
+    * @throws java.lang.NullPointerException - if null data reference is passed for any format
+    */
+  def content_=(content: Map[DataFormat, AnyRef]) = {
+    delegate.setContent(content.map {case (a, b) => (a.delegate, b)})
+  }
+
+  /** Puts content onto the clipboard.
+    *
+    * This call will always result in clearing all previous content from the clipboard,
+    * and replacing it with whatever content is specified in the supplied ClipboardContent map.
+    *
+    * @return `true` if successful, `false` if the content fails to be added.
+    * @throws java.lang.NullPointerException - if null data reference is passed for any format
+    */
+  def content_=(content: ClipboardContent) = delegate.setContent(content)
 }

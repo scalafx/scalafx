@@ -42,7 +42,7 @@ object SphereAndBoxDemo extends JFXApp {
 
   stage = new PrimaryStage {
     title = "Sphere and Box Demo"
-    scene = new Scene(500, 500, true) {
+    scene = new Scene(500, 500, true, true) {
 
       val box = new Box(400, 400, 400) {
         material = new PhongMaterial {

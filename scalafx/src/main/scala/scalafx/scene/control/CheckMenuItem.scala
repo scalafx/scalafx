@@ -24,41 +24,41 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.graphics3d
 
+package scalafx.scene.control
+
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.scene._
-import scalafx.scene.transform.Transform._
-import scalafx.scene.transform.{Translate, Rotate}
-import scalafx.scene.paint.{Color, PhongMaterial}
-import scalafx.scene.shape.{Box, DrawMode}
+import scalafx.beans.property.BooleanProperty
+import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 
-/** Demo of a triangular frame of a 3D box, originally based on example in Ensemble 8. */
-object Simple3DBoxApp extends JFXApp {
 
-  stage = new PrimaryStage {
-    scene = new Scene(300, 300, true, true) {
-      // 3D content
-      content = new Box {
-        width = 5
-        height = 5
-        depth = 5
-        material = new PhongMaterial(Color.RED)
-        drawMode = DrawMode.LINE
-      }
+object CheckMenuItem {
+  implicit def sfxCheckMenuItem2jfx(m: CheckMenuItem) = m.delegate
+}
 
-      // Background
-      fill = Color.ALICEBLUE
+/** A MenuItem that can be toggled between selected and unselected states. */
+class CheckMenuItem(override val delegate: jfxsc.CheckMenuItem = new jfxsc.CheckMenuItem)
+  extends MenuItem
+  with SFXDelegate[jfxsc.CheckMenuItem] {
 
-      // Modify point of view
-      camera = new PerspectiveCamera(true) {
-        transforms +=(
-          new Rotate(-20, Rotate.YAxis),
-          new Rotate(-20, Rotate.XAxis),
-          new Translate(0, 0, -15))
-      }
-    }
+  /** Constructs a CheckMenuItem and sets the display text with the specified text. */
+  def this(text: String) = this(new jfxsc.CheckMenuItem(text))
+
+  /** Constructs a CheckMenuItem and sets the display text with the specified text and
+    * sets the graphic Node to the given node.
+    */
+  def this(text: String, graphic: Node) = this(new jfxsc.CheckMenuItem(text, graphic))
+
+
+  /** Represents the current state of this CheckMenuItem.
+    *
+    * Bind to this to be informed whenever the user interacts with the CheckMenuItem
+    * (and causes the selected state to be toggled).
+    */
+  def selected: BooleanProperty = delegate.selectedProperty
+  def selected_=(v: Boolean) {
+    selected() = v
   }
 }

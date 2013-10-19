@@ -32,18 +32,19 @@ object StageIncludes extends StageIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/stage/package-summary.html `javafx.stage`]]
+ * [[http://download.java.net/jdk8/jfxdocs/javafx/stage/package-summary.html `javafx.stage`]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/stage/
+ * @define START Converts a $JFX `[[http://download.java.net/jdk8/jfxdocs/javafx/stage/
  * @define END ]]` instance to its $SFX counterpart.
  *
  * @define DC DirectoryChooser
  * @define FC FileChooser
  * @define FE FileChooser.ExtensionFilter
  * @define PW PopupWindow
+ * @define PWAL PopupWindow.AnchorLocation
  * @define PP Popup
  * @define MD Modality
  * @define SC Screen
@@ -85,6 +86,14 @@ trait StageIncludes {
    * @return $SFX $PW
    */
   implicit def jfxPopupWindow2sfx(pw: jfxs.PopupWindow) = new PopupWindow(pw) {}
+
+  /**
+   * $START$PWAL.html $PWAL$END
+   *
+   * @param v $JFX $PWAL
+   * @return $SFX $PWAL
+   */
+  implicit def jfxPopupWindowAnchorLocation2sfx(v: jfxs.PopupWindow.AnchorLocation) = PopupWindow.AnchorLocation.jfxEnum2sfx(v)
 
   /**
    * $START$PP.html $PP$END

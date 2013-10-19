@@ -54,6 +54,7 @@ object ControlIncludes extends ControlIncludes
  * @define CELL Cell
  * @define CHBX ChoiceBox
  * @define CEBX CheckBox
+ * @define CMNIT CheckMenuItem
  * @define CTDP ContentDisplay
  * @define CTMN ContextMenu
  * @define CTRL Control
@@ -197,6 +198,14 @@ trait ControlIncludes
    * @return $SFX $CEBX
    */
   implicit def jfxCheckBox2sfx(c: jfxsc.CheckBox) = new CheckBox(c)
+
+  /**
+   * $START$CMNIT.html $MNIT$END
+   *
+   * @param c $JFX $CMNIT
+   * @return $SFX $CMNIT
+   */
+  implicit def jfxCheckMenuItem2sfx(c: jfxsc.CheckMenuItem) = new CheckMenuItem(c)
 
   /**
    * $START$CTDP.html $CTDP$END

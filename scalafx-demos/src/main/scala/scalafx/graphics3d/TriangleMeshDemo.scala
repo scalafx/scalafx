@@ -54,7 +54,7 @@ object TriangleMeshDemo extends JFXApp {
 
   stage = new PrimaryStage {
     title = "TriangleMesh Demo"
-    scene = new Scene(500, 500, true) {
+    scene = new Scene(500, 500, true, true) {
       fill = Color.BEIGE
 
       // Create a tetrahedron and add to a mesh view. Configure it.
@@ -125,7 +125,7 @@ object TriangleMeshDemo extends JFXApp {
      * points South (in AutoCAD and 3D Studio, the Y-axis points North, while in X3D/VRML it points Up); the Z-axis points Down (in AutoCAD
      * and 3D Studio, the Z-axis points Up, while in X3D/VRML it points North).
      */
-    mesh.points.setAll(
+    mesh.points = Array (
       0.0f, -(length * sqrt (3.0) / 3.0).toFloat, 0.0f,                       // Base rear point, point 0.
       (length / 2.0).toFloat, (length * sqrt (3.0) / 6.0).toFloat, 0.0f,      // Base front right point, point 1.
       -(length / 2.0).toFloat, (length * sqrt (3.0) / 6.0).toFloat, 0.0f,     // Base front left point, point 2.
@@ -142,7 +142,7 @@ object TriangleMeshDemo extends JFXApp {
      * the texture co-ordinates define which parts of the image map to which face. (Note: The origin, 0.0, is the top left corner of the
      * image).
      */
-    mesh.texCoords.setAll(
+    mesh.texCoords = Array (
       0.5f, 1.0f,                                 // Base face, rear point (left face, right point; right face, left point), point 0.
       0.75f, (1.0 - sqrt (3.0) / 4.0).toFloat,    // Base face, right point (right face, right point; front face, right point), point 1.
       0.25f, (1.0 - sqrt (3.0) / 4.0).toFloat,    // Base face, left point (left face, left point; front face, left point), point 2.
@@ -164,9 +164,9 @@ object TriangleMeshDemo extends JFXApp {
      * visible side of a face, the vertices must be numbered in clockwise order, but the starting vertex is arbitrary.  For example, if
      * looking at the base of this tetrahedron from below, the vertices can be numbered 0, 1, 2 or 1, 2, 0 or 2, 0, 1 - all will work.
      * However, if the order of vertices is specified in counterclockwise order (such as 0, 2, 1), then the face will be invisible from
-     * below (and will also hide any visible faces behind it).
+     * below.
      */
-    mesh.faces.setAll(
+    mesh.faces = Array (
       0, 0, 1, 1, 2, 2,       // Base face, face 0. (Vertex points 0, 1, 2, tex-coords 0, 1, 2)
       1, 1, 0, 0, 3, 3,       // Right face, face 1. (Vertex points 1, 0, 3, tex-coords 1, 0, 3)
       2, 2, 1, 1, 3, 4,       // Front face, face 2. (Vertex points 2, 1, 3, tex-coords 2, 1, 4)
@@ -179,16 +179,17 @@ object TriangleMeshDemo extends JFXApp {
      * Often, a portion of a 3D mesh is made up of two of more triangular faces that define a single face (such as the surface of a
      * sphere).  In this case, it makes sense to smooth all such faces when rendering the shape.  This is the idea behind "face smoothing
      * groups".  Each face can be assigned to one or more smoothing groups (up to 32 in total), although its typical for each face to be
-     * mapped to just a single smoothing group.
+     * mapped to just a single smoothing group. Smoothing group membership is expressed as a bit field, with each bit corresponding to a
+     * unique smoothing group.
      * 
      * In the case of a tetrahedron, each face should belong to its own smoothing group, so we here map each face to a single smoothing
      * group.
      */
-    mesh.faceSmoothingGroups.setAll(
-      0,              // Base face, smoothing group 0.
-      1,              // Right face, smoothing group 1.
-      2,              // Front face, smoothing group 2.
-      3               // Left face, smoothing group 3.
+    mesh.faceSmoothingGroups = Array (
+      0x1,              // Base face, smoothing group 0 (2^0).
+      0x2,              // Right face, smoothing group (2^1).
+      0x4,              // Front face, smoothing group (2^2.
+      0x8               // Left face, smoothing group (2^3).
     )
 
     /*
