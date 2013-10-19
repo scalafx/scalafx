@@ -36,16 +36,21 @@ object ScalaFXBuild extends Build {
   import Dependencies._
   import Resolvers._
 
+  val scalafxVersion = "1.0.0-M6-SNAPSHOT"
+
   lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
     organization := "org.scalafx",
-    version := "1.0.0-M5",
-    crossScalaVersions := Seq("2.9.3", "2.9.2", "2.10.2"),
+    version := scalafxVersion,
+    crossScalaVersions := Seq("2.9.3", "2.10.3"),
     scalaVersion <<= crossScalaVersions {versions => versions.head},
     scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
+    scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
+    scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
     javacOptions ++= Seq("-target", "1.6", "-source", "1.6", "-Xlint:deprecation"),
     manifestSetting,
     publishSetting,
-    resolvers ++= Seq(localMavenRepo, sonatypeNexusSnapshots)
+    resolvers ++= Seq(localMavenRepo, sonatypeNexusSnapshots),
+    shellPrompt in ThisBuild := { state => Project.extract(state).currentRef.project + "> " }
   ) ++ mavenCentralSettings
 
   lazy val javaHome = {
@@ -71,8 +76,9 @@ object ScalaFXBuild extends Build {
   lazy val scalafxProject = Project(
     id = "scalafx-project",
     base = file("."),
-    settings = scalafxSettings ++ doNotPublish ++ Seq(
-      description := "The ScalaFX framework (root project)"
+    settings = scalafxSettings ++ Seq(
+      description := "The ScalaFX framework (root project)",
+      publishArtifact := false
     ),
     aggregate = Seq(scalafx, scalafxDemos)
   )
@@ -116,7 +122,7 @@ object ScalaFXBuild extends Build {
 
   object Dependencies {
     // Ordered by `group 'and then by `artifact ID'.
-    lazy val junit     = "junit"         %  "junit"     % "4.11"
+    lazy val junit = "junit" % "junit" % "4.11"
     lazy val scalatest = "org.scalatest" %% "scalatest" % "1.9.1"
     // lazy val scalatest2: MID = sv => "org.scalatest" %% "scalatest" % scalatestVersion(sv)
 
@@ -213,6 +219,4 @@ object ScalaFXBuild extends Build {
       )
     }
   )
-
-  lazy val doNotPublish = Seq(publish := {}, publishLocal := {})
 }

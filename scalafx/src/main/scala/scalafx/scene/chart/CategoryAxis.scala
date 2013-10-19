@@ -41,6 +41,8 @@ object CategoryAxis {
 
   def apply(categories: ObservableBuffer[String]) = new CategoryAxis(new jfxsc.CategoryAxis(categories))
 
+  def apply(categories: Seq[String]) = new CategoryAxis(new jfxsc.CategoryAxis(ObservableBuffer(categories)))
+
   def apply(axisLabel: String) = new CategoryAxis {
     label = axisLabel
   }

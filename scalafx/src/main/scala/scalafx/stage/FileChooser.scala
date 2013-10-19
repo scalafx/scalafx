@@ -84,6 +84,14 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
   }
 
   /**
+   * The initial file name for the displayed dialog.
+   */
+  def initialFileName: ObjectProperty[String] = delegate.initialFileNameProperty
+  def initialFileName_=(v: String) {
+    ObjectProperty.fillProperty[String](initialFileName, v)
+  }
+
+  /**
    * The title of the displayed dialog.
    */
   def title: StringProperty = delegate.titleProperty

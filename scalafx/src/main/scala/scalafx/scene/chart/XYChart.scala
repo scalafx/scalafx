@@ -91,6 +91,9 @@ object XYChart {
     def data_=(v: ObservableBuffer[jfxsc.XYChart.Data[X, Y]]) {
       data() = v
     }
+    def data_=(v: Seq[jfxsc.XYChart.Data[X, Y]]) {
+      data() = ObservableBuffer(v)
+    }
 
     def name: StringProperty = delegate.nameProperty
     def name_=(v: String) {
@@ -122,6 +125,9 @@ abstract class XYChart[X, Y](override val delegate: jfxsc.XYChart[X, Y])
   def data = delegate.dataProperty
   def data_=(v: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) {
     data() = v
+  }
+  def data_=(v: Seq[jfxsc.XYChart.Series[X, Y]]) {
+    data() = ObservableBuffer(v)
   }
   def data_=(v: XYChart.Series[X, Y]) {
     data() = ObservableBuffer[jfxsc.XYChart.Series[X, Y]](v)
