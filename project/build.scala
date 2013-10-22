@@ -36,7 +36,7 @@ object ScalaFXBuild extends Build {
   import Dependencies._
   import Resolvers._
 
-  val scalafxVersion = "8.0.0-M2-SNAPSHOT"
+  val scalafxVersion = "8.0.0-M2"
 
   lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
     organization := "org.scalafx",
