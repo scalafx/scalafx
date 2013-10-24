@@ -33,7 +33,7 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.transform.{Rotate, Translate}
-import scalafx.scene.{Node, PerspectiveCamera, Scene, Group}
+import scalafx.scene.{Node, PerspectiveCamera, Scene, SceneAntialiasing, Group}
 
 /**
  * A port of the JavaFX Ensemble CubeSampleDemo
@@ -54,7 +54,7 @@ object CubeSampleDemo extends JFXApp {
     stage = new PrimaryStage {
 //      width = 800
 //      height = 600
-      scene = new Scene( root, 400, 150, true )
+      scene = new Scene( root, 400, 150, true, SceneAntialiasing.Balanced )
       resizable = false
       title = "Graphics 3D Cubes Sample Demo in ScalaFX"
     }

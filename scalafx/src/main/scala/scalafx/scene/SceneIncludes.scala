@@ -75,6 +75,7 @@ trait SceneIncludes extends ChartIncludes
  * @define PAR Parent
  * @define PEC PerspectiveCamera
  * @define SCE Scene
+ * @define SCA SceneAntialiasing
  * @define SCP SceneProperty
  * @define SNP SnapshotParameters
  * @define SSCE SubScene
@@ -174,6 +175,29 @@ trait LowerPriorityIncludes {
    * @return $SFX $SCE
    */
   implicit def jfxScene2sfx(v: jfxs.Scene) = new Scene(v)
+
+  /**
+   * $START$SCA.html $SCA$END
+   *
+   * @param v $JFX $SCA
+   * @return $SFX $SCA
+   *
+   * @throws java.lang.IllegalArgumentException if `v` has no known correspondence in ScalaFX.
+   */
+  implicit def jfxSceneAntialiasing2sfx(v: jfxs.SceneAntialiasing): SceneAntialiasing.Value = {
+    /*
+     * A value of null is treated as though antialiasing is disabled.
+     */
+    if (v eq null) SceneAntialiasing.Disabled
+    /*
+     * Otherwise, return the associated values.
+     */
+    else v match {
+      case jfxs.SceneAntialiasing.DISABLED => SceneAntialiasing.Disabled
+      case jfxs.SceneAntialiasing.BALANCED => SceneAntialiasing.Balanced
+      case _ => throw new IllegalArgumentException ()
+    }
+  }
 
   /**
    * Generates a $SCP from a $JFX $SCE.

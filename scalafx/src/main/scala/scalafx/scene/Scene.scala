@@ -106,28 +106,28 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Constructs a scene consisting of a root, with a dimension of width and height,
    * specifies whether a depth buffer is created for this scene and specifies
-   * whether scene anti-aliasing is requested.
+   * the required scene anti-aliasing.
    *
    * @param parent The root node of the scene graph
    * @param width The width of the scene
    * @param height The height of the scene
    * @param depthBuffer The depth buffer flag
-   * @param antiAliasing The scene anti-aliasing flag.
+   * @param antiAliasing The required scene anti-aliasing.
    */
-  def this(parent: Parent, width: Double, height: Double, depthBuffer: Boolean, antiAliasing: Boolean) =
+  def this(parent: Parent, width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing.Value) =
     this(new jfxs.Scene(parent, width, height, depthBuffer, antiAliasing))
 
   /**
    * Creates a Scene with a `Group` as parent, with a dimension of width and height,
    * specifies whether a depth buffer is created for this scene and specifies
-   * whether scene anti-aliasing is requested.
+   * the required scene anti-aliasing.
    *
    * @param width The width of the scene
    * @param height The height of the scene
    * @param depthBuffer The depth buffer flag
-   * @param antiAliasing The scene anti-aliasing flag.
+   * @param antiAliasing The required scene anti-aliasing.
    */
-  def this(width: Double, height: Double, depthBuffer: Boolean, antiAliasing: Boolean) =
+  def this(width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing.Value) =
     this(new jfxs.Scene(new jfxs.Group(), width, height, depthBuffer, antiAliasing))
 
   /**
@@ -151,6 +151,11 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
     case _ => throw new IllegalStateException("Cannot access children of root: " + root +
       "\nUse a class that extends Group or Pane, or override the getChildren method.")
   }
+
+  /**
+   * Returns scene's antialiasing setting.
+   */
+  def antialiasing: SceneAntialiasing.Value = delegate.getAntiAliasing ()
 
   /**
    * Returns Content's Node children from this Scene's `root`.

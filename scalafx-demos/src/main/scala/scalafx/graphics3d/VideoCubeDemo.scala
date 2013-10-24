@@ -39,7 +39,7 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.text.{Text, Font}
 import scalafx.scene.transform.Rotate
-import scalafx.scene.{Node, PerspectiveCamera, Scene, Group}
+import scalafx.scene.{Node, PerspectiveCamera, Scene, SceneAntialiasing, Group}
 
 /**
  * The type VideoCubeDemo a demonstration of the JavaOne 2011 key note with
@@ -53,7 +53,7 @@ object VideoCubeDemo extends JFXApp {
   var animation: Timeline = _
   var root = new Group
   stage = new PrimaryStage {
-    scene = new Scene(root, 800, 600, true) {
+    scene = new Scene(root, 800, 600, true, SceneAntialiasing.Balanced) {
       fill = Color.BLACK
     }
     resizable = false
