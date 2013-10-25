@@ -59,7 +59,7 @@ class SubScene(override val delegate: jfxs.SubScene)
     * as root Node, with a dimension of width and height,
     * specifies whether a depth buffer is created for this scene and specifies the level of antialiasing required.
     */
-  def this(width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing.Value) =
+  def this(width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing) =
     this(new jfxs.SubScene(new jfxs.Group(), width, height, depthBuffer, antiAliasing))
 
   /** Creates a SubScene for a specific root Node with a specific size. */
@@ -68,7 +68,7 @@ class SubScene(override val delegate: jfxs.SubScene)
   /** Constructs a SubScene consisting of a root, with a dimension of width and height,
     * specifies whether a depth buffer is created for this scene and specifies the level of antialiasing required.
     */
-  def this(root: Parent, width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing.Value) =
+  def this(root: Parent, width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing) =
     this(new jfxs.SubScene(root, width, height, depthBuffer, antiAliasing))
 
   /** Defines the root Node of the SubScene scene graph. */

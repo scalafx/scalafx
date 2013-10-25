@@ -27,48 +27,36 @@
 package scalafx.scene
 
 import javafx.{scene => jfxs}
+import scalafx.delegate.SFXDelegate
 
 /**
- * Enumeration specifying the level of antialiasing desired when rendering 3D primitives.
+ * Specifies the level of antialiasing desired when rendering 3D primitives.
  *
- * @note In order for scene antialiasing to have an affect, the underlying system must support: ConditionalFeature.SCENE3D and
- * anti-aliasing.
+ * @note In order for scene antialiasing to have an affect, the underlying system must support:
+ *       ConditionalFeature.SCENE3D and anti-aliasing.
  */
-object SceneAntialiasing
-extends Enumeration {
+object SceneAntialiasing {
 
-  /*
-   * Enumeration values must be listed in the same order as the corresponding JAVAFX equivalent in sfxSAToJfxSA.
-   *
-   * Also, do not change the order in which the antialiasing values are defined, as this will create compatibility problems between
-   * difference ScalaFX releases.
+  /**
+   * Convert a ScalaFX scene antialiasing value to a JavaFX scene-antialiasing value.
    */
+  implicit def sfxSceneAntialiasing2jfx(v: SceneAntialiasing) = v.delegate
+
   /**
    * Disables antialiasing.
    */
-  val Disabled = Value
+  val Disabled = new SceneAntialiasing(jfxs.SceneAntialiasing.DISABLED)
 
   /**
    * Enables antialising, optimized for a balance of quality and performance.
    */
-  val Balanced = Value
+  val Balanced = new SceneAntialiasing(jfxs.SceneAntialiasing.BALANCED)
 
   /**
-   * Vector for converting ScalaFX scene antialiasing values to the JavaFX equivalent.
+   * Defined SceneAntialiasing values
    */
-  private val sfxSAToJfxSA = Vector (
-    jfxs.SceneAntialiasing.DISABLED,
-    jfxs.SceneAntialiasing.BALANCED
-  )
-
-  /**
-   * Convert a ScalaFX scene antialiasing value to a JavaFX scene-antialiasing value.
-   *
-   * @param v ScalaFX SceneAntialiasing value to be converted.
-   *
-   * @return Equivalent JavaFX SceneAntialiasing value.
-   *
-   * @throws java.lang.IndexOutOfBoundsException if `v` has no corresponding JavaFX SceneAntialiasingValue.
-   */
-  implicit def sfxSceneAntialiasing2jfx(v: SceneAntialiasing.Value) = sfxSAToJfxSA (v.id)
+  val values = Seq(Disabled, Balanced)
 }
+
+sealed case class SceneAntialiasing(override val delegate: jfxs.SceneAntialiasing)
+  extends SFXDelegate[jfxs.SceneAntialiasing]

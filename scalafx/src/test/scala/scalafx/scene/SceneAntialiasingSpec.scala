@@ -30,8 +30,8 @@ package scalafx.scene
 import javafx.{ scene => jfxs }
 import scalafx.Includes._
 import org.junit.runner.RunWith
-import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Scene Spec tests.
@@ -40,20 +40,24 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class SceneAntialiasingSpec
-  extends FlatSpec {
+  extends SimpleSFXDelegateSpec[jfxs.SceneAntialiasing, SceneAntialiasing](
+    classOf[jfxs.SceneAntialiasing], classOf[SceneAntialiasing]) {
+
+  override protected def getScalaClassInstance = SceneAntialiasing.Balanced
+  override protected def getJavaClassInstance = jfxs.SceneAntialiasing.DISABLED
 
   /**
    * Class tests.
    */
   it should "treat a null JFX SceneAntialiasing reference as disabled" in {
     val jfxNull: jfxs.SceneAntialiasing = null
-    val scalaEquiv: SceneAntialiasing.Value = jfxNull
+    val scalaEquiv: SceneAntialiasing = jfxNull
     assert(scalaEquiv === SceneAntialiasing.Disabled)
   }
 
   it should "treat JFX SceneAntialiasing.DISABLED as disabled" in {
     val jfxDisabled = jfxs.SceneAntialiasing.DISABLED
-    val scalaEquiv: SceneAntialiasing.Value = jfxDisabled
+    val scalaEquiv: SceneAntialiasing = jfxDisabled
     assert(scalaEquiv === SceneAntialiasing.Disabled)
   }
 
@@ -65,7 +69,7 @@ class SceneAntialiasingSpec
 
   it should "treat JFX SceneAntialiasing.BALANCED as balanced" in {
     val jfxBalanced = jfxs.SceneAntialiasing.BALANCED
-    val scalaEquiv: SceneAntialiasing.Value = jfxBalanced
+    val scalaEquiv: SceneAntialiasing = jfxBalanced
     assert(scalaEquiv === SceneAntialiasing.Balanced)
   }
 

@@ -27,7 +27,7 @@
 package scalafx.scene
 
 import scalafx.beans.property.ReadOnlyObjectProperty
-import javafx.{ scene => jfxs }
+import javafx.{scene => jfxs}
 import chart.ChartIncludes
 import layout.LayoutIncludes
 import image.ImageIncludes
@@ -45,14 +45,14 @@ object SceneIncludes extends SceneIncludes
  * Classes/Traits to their ScalaFX counterparts.
  */
 trait SceneIncludes extends ChartIncludes
-  with LayoutIncludes
-  with PaintIncludes
-  with ShapeIncludes
-  with TextIncludes
-  with ImageIncludes
-  with EffectIncludes
-  with LowerPriorityIncludes
-  with ControlIncludes
+with LayoutIncludes
+with PaintIncludes
+with ShapeIncludes
+with TextIncludes
+with ImageIncludes
+with EffectIncludes
+with LowerPriorityIncludes
+with ControlIncludes
 
 /**
  * Contains implicit methods to convert from
@@ -184,19 +184,10 @@ trait LowerPriorityIncludes {
    *
    * @throws java.lang.IllegalArgumentException if `v` has no known correspondence in ScalaFX.
    */
-  implicit def jfxSceneAntialiasing2sfx(v: jfxs.SceneAntialiasing): SceneAntialiasing.Value = {
-    /*
-     * A value of null is treated as though antialiasing is disabled.
-     */
+  implicit def jfxSceneAntialiasing2sfx(v: jfxs.SceneAntialiasing): SceneAntialiasing = {
+    // A value of null is treated as though antialiasing is disabled.
     if (v eq null) SceneAntialiasing.Disabled
-    /*
-     * Otherwise, return the associated values.
-     */
-    else v match {
-      case jfxs.SceneAntialiasing.DISABLED => SceneAntialiasing.Disabled
-      case jfxs.SceneAntialiasing.BALANCED => SceneAntialiasing.Balanced
-      case _ => throw new IllegalArgumentException ()
-    }
+    else new SceneAntialiasing(v)
   }
 
   /**

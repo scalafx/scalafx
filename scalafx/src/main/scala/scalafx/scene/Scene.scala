@@ -114,7 +114,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @param depthBuffer The depth buffer flag
    * @param antiAliasing The required scene anti-aliasing.
    */
-  def this(parent: Parent, width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing.Value) =
+  def this(parent: Parent, width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing) =
     this(new jfxs.Scene(parent, width, height, depthBuffer, antiAliasing))
 
   /**
@@ -127,7 +127,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @param depthBuffer The depth buffer flag
    * @param antiAliasing The required scene anti-aliasing.
    */
-  def this(width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing.Value) =
+  def this(width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing) =
     this(new jfxs.Scene(new jfxs.Group(), width, height, depthBuffer, antiAliasing))
 
   /**
@@ -155,7 +155,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Returns scene's antialiasing setting.
    */
-  def antialiasing: SceneAntialiasing.Value = delegate.getAntiAliasing ()
+  def antialiasing: SceneAntialiasing = delegate.getAntiAliasing()
 
   /**
    * Returns Content's Node children from this Scene's `root`.
