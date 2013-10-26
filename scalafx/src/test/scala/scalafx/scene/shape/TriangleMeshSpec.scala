@@ -86,9 +86,9 @@ class TriangleMeshSpec
 
   it should "report the correct array component sizes" in {
     new TestData {
-      assert (mesh.faceElementSize() === 6)
-      assert (mesh.pointElementSize() === 3)
-      assert (mesh.texCoordElementSize() === 2)
+      assert (mesh.faceElementSize === 6)
+      assert (mesh.pointElementSize === 3)
+      assert (mesh.texCoordElementSize === 2)
     }
   }
 
