@@ -84,6 +84,14 @@ class TriangleMeshSpec
     }
   }
 
+  it should "report the correct array component sizes" in {
+    new TestData {
+      assert (mesh.faceElementSize() === 6)
+      assert (mesh.pointElementSize() === 3)
+      assert (mesh.texCoordElementSize() === 2)
+    }
+  }
+
   it should "construct new mesh with empty arrays" in {
     new TestData {
       testFloatArray (mesh.points, emptyFloatArray)

@@ -35,10 +35,6 @@ import scalafx.delegate.SFXDelegate
 
 object TriangleMesh {
   implicit def sfxTriangleMesh2jfx(tm: TriangleMesh) = tm.delegate
-
-  val NUM_COMPONENTS_PER_FACE: Int = jfxss.TriangleMesh.NUM_COMPONENTS_PER_FACE
-  val NUM_COMPONENTS_PER_POINT: Int = jfxss.TriangleMesh.NUM_COMPONENTS_PER_POINT
-  val NUM_COMPONENTS_PER_TEXCOORD: Int = jfxss.TriangleMesh.NUM_COMPONENTS_PER_TEXCOORD
 }
 
 /**
@@ -47,6 +43,9 @@ object TriangleMesh {
 class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.TriangleMesh())
   extends Mesh(delegate)
   with SFXDelegate[jfxss.TriangleMesh] {
+
+  /** Gets the number of array components representing a single face. */
+  def faceElementSize() = delegate.getFaceElementSize()
 
   /** Gets the ObservableIntegerArray of faces, indices into the points and texCoords arrays, of this TriangleMesh */
   def faces: ObservableIntegerArray = delegate.getFaces
@@ -72,6 +71,9 @@ class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.Triangl
     delegate.getFaceSmoothingGroups.setAll (a, 0, a.length)
   }
 
+  /** Gets the number of array components representing a single point. */
+  def pointElementSize() = delegate.getPointElementSize()
+
   /** Gets the ObservableFloatArray of points of this TriangleMesh. */
   def points: ObservableFloatArray = delegate.getPoints
 
@@ -83,6 +85,9 @@ class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.Triangl
   def points_= (a: Array [Float]) {
     delegate.getPoints.setAll (a, 0, a.length)
   }
+
+  /** Gets the number of array components representing a single text coordinate. */
+  def texCoordElementSize() = delegate.getTexCoordElementSize()
 
   /** Gets the ObservableFloatArray of texture coordinates of this TriangleMesh. */
   def texCoords: ObservableFloatArray = delegate.getTexCoords
