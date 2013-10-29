@@ -32,7 +32,6 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout._
-import scalafx.scene.paint.Color._
 import scalafx.scene.web._
 import scene.paint.Color
 
@@ -41,7 +40,13 @@ object WebDemo extends JFXApp {
   val browser = new WebView {
     hgrow = Priority.ALWAYS
     vgrow = Priority.ALWAYS
+    onAlert = (e: WebEvent[_]) => println("onAlert: " + e)
+    onStatusChanged = (e: WebEvent[_]) => println("onStatusChanged: " + e)
+    onResized = (e: WebEvent[_]) => println("onResized: " + e)
+    onVisibilityChanged = (e: WebEvent[_]) => println("onVisibilityChanged: " + e)
   }
+
+
   val engine = browser.engine
   engine.load("http://code.google.com/p/scalafx/")
 
@@ -50,7 +55,7 @@ object WebDemo extends JFXApp {
     hgrow = Priority.ALWAYS
     vgrow = Priority.NEVER
   }
-  txfUrl.onAction = (engine.load(txfUrl.text.get))
+  txfUrl.onAction = engine.load(txfUrl.text.get)
 
   stage = new PrimaryStage {
     title = "ScalaFX Web Demo"
@@ -66,6 +71,5 @@ object WebDemo extends JFXApp {
       }
     }
   }
-  
 
 }
