@@ -28,6 +28,7 @@ package scalafx.event
 
 import javafx.{ event => jfxe }
 import scalafx.Includes._
+import scalafx.delegate.SFXDelegate
 
 object EventIncludes extends EventIncludes
 
@@ -76,7 +77,7 @@ trait EventIncludes {
    * @param handler Closure that ''will not'' handle event.
    * @return JavaFX EventHandler which handle method will call handler
    */
-  implicit def eventClosureWrapper[T <: jfxe.Event](handler: => Any) = new jfxe.EventHandler[T] {
+  implicit def eventClosureWrapper[T <: jfxe.Event, R](handler: => R) = new jfxe.EventHandler[T] {
     def handle(event: T) {
       handler
     }
@@ -89,7 +90,7 @@ trait EventIncludes {
    * @param handler Closure that ''will not'' handle event.
    * @return JavaFX EventHandler which handle method will call handler
    */
-  implicit def eventClosureWrapperWithUnitParam[T <: jfxe.Event](handler: Unit => Any) = new jfxe.EventHandler[T] {
+  implicit def eventClosureWrapperWithUnitParam[T <: jfxe.Event, R](handler: Unit => R) = new jfxe.EventHandler[T] {
     def handle(event: T) {
       handler()
     }
@@ -98,60 +99,13 @@ trait EventIncludes {
   /**
    * Converts a closure to a JavaFX EventHandler. It is used when the event properties ''will be used''.
    *
-   * @tparam T JavaFX Event subclass.
+   * @tparam J JavaFX Event subclass.
    * @param handler Closure that ''will'' handle event.
    * @return JavaFX EventHandler which handle method will call handler
    */
-  implicit def eventClosureWrapperWithParam[J <: jfxe.Event](handler: (Event) => Any) = new jfxe.EventHandler[J] {
+  implicit def eventClosureWrapperWithParam[J <: jfxe.Event, S <: SFXDelegate[J], R](handler: (S) => R)(implicit jfx2sfx: J => S) =
+    new jfxe.EventHandler[J] {
     def handle(event: J) {
-      handler(event)
-    }
-  }
-
-  /**
-   * Converts a Function that manipulates a [[scalafx.event.ActionEvent]]
-   * and returns a [[scala.Any]] into a JavaFX
-   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html EventHandler]]
-   * that manipulates a JavaFX
-   * [[http://docs.oracle.com/javafx/2/api/javafx/event/ActionEvent.html ActionEvent]]
-   *
-   * @param handler function that manipulates a ScalaFX's ActionEvent
-   * @return a JavaFX's EventHandler that manipulates a JavaFX's ActionEvent
-   */
-  implicit def actionEventClosureWrapper(handler: (ActionEvent) => Any) = new jfxe.EventHandler[jfxe.ActionEvent] {
-    def handle(event: jfxe.ActionEvent) {
-      handler(event)
-    }
-  }
-
-  /**
-   * Converts a Function that manipulates a [[scalafx.stage.WindowEvent]]
-   * and returns a [[scala.Any]] into a JavaFX
-   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html EventHandler]]
-   * that manipulates a JavaFX
-   * [[http://docs.oracle.com/javafx/2/api/javafx/stage/WindowEvent.html WindowEvent]]
-   *
-   * @param handler function that manipulates a ScalaFX's WindowEvent
-   * @return a JavaFX's EventHandler that manipulates a JavaFX's WindowEvent
-   */
-  implicit def windowEventClosureWrapper(handler: (scalafx.stage.WindowEvent) => Any) = new jfxe.EventHandler[javafx.stage.WindowEvent] {
-    def handle(event: javafx.stage.WindowEvent) {
-      handler(event)
-    }
-  }
-
-  /**
-   * Converts a Function that manipulates a [[scalafx.concurrent.WorkerStateEvent]]
-   * and returns a [[scala.Any]] into a JavaFX
-   * [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html EventHandler]]
-   * that manipulates a JavaFX
-   * [[http://docs.oracle.com/javafx/2/api/javafx/concurrent/WorkerStateEvent.html WorkerStateEvent]]
-   *
-   * @param handler function that manipulates a ScalaFX's WorkerStateEvent
-   * @return a JavaFX's EventHandler that manipulates a JavaFX's WorkerStateEvent
-   */
-  implicit def workerStateEventClosureWrapper(handler: (scalafx.concurrent.WorkerStateEvent) => Any) = new jfxe.EventHandler[javafx.concurrent.WorkerStateEvent] {
-    def handle(event: javafx.concurrent.WorkerStateEvent) {
       handler(event)
     }
   }

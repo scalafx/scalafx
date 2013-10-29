@@ -174,29 +174,4 @@ trait MediaIncludes {
    * @return $SFX $VDTC
    */
   implicit def jfxVideoTrack2sfx(vt: jfxsm.VideoTrack) = new VideoTrack(vt)
-
-  /**
-   * $BEGINWR$MDME$FINISHWR
-   *
-   * @param handler $PARAMWR $MDME
-   * @return $RETWR $MDME
-   */
-  implicit def mediaMarkerEventClosureWrapper(handler: (MediaMarkerEvent) => Any) = new jfxe.EventHandler[jfxsm.MediaMarkerEvent] {
-    def handle(event: jfxsm.MediaMarkerEvent) {
-      handler(event)
-    }
-  }
-
-  /**
-   * $BEGINWR$MDEE$FINISHWR
-   *
-   * @param handler $PARAMWR $MDEE
-   * @return $RETWR $MDEE
-   */
-  implicit def mediaErrorEventClosureWrapper(handler: (MediaErrorEvent) => Any) = new jfxe.EventHandler[jfxsm.MediaErrorEvent] {
-    def handle(event: jfxsm.MediaErrorEvent) {
-      handler(event)
-    }
-  }
-
 }

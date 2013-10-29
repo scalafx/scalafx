@@ -84,14 +84,14 @@ object IncompleteClickHandler extends JFXApp {
                 println("Button 1 - Message 2")
               }
             },
-            new Button {
-              text = "Button 2: Buggy event handler: should print two messages, but prints none."
-              // Following code should not compile but it does. Notice AWT.
-              onAction = (ae: java.awt.event.ActionEvent) => {
-                println("Button 2 - Message 1")
-                println("Button 2 - Message 2")
-              }
-            },
+//            new Button {
+//              text = "Button 2: Buggy event handler: should print two messages, but prints none."
+//              // Following code should not compile but it does. Notice AWT.
+//              onAction = (ae: java.awt.event.ActionEvent) => {
+//                println("Button 2 - Message 1")
+//                println("Button 2 - Message 2")
+//              }
+//            },
             new Button {
               text = "Button 3: Buggy event handler: should print two messages, but prints none."
               onAction = () => {
@@ -99,13 +99,14 @@ object IncompleteClickHandler extends JFXApp {
                 println("Button 3 - Message 2")
               }
             },
+//            new Button {
+//              text = "Button 4: Buggy event handler: should print two messages, but prints none."
+//              onAction = (ae: javafx.event.ActionEvent) => {
+//                println("Button 4 - Message 1")
+//                println("Button 4 - Message 2")
+//              }
+//            },
             new Button {
-              text = "Button 4: Buggy event handler: should print two messages, but prints none."
-              onAction = (ae: javafx.event.ActionEvent) => {
-                println("Button 4 - Message 1")
-                println("Button 4 - Message 2")
-              }
-            },           new Button {
               text = "Button 5: Fine event handler: print two messages."
               onAction = (ae: scalafx.event.ActionEvent) => {
                 println("Button 5 - Message 1")
