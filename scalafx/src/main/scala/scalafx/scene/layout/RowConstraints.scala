@@ -49,15 +49,15 @@ class RowConstraints(override val delegate: jfxsl.RowConstraints = new jfxsl.Row
   /**
    * Creates a row constraint object with a fixed size range.
    */
-  def this(height: Double, prefHeight: Double, maxHeight: Double) =
-    this(new jfxsl.RowConstraints(height, prefHeight, maxHeight))
+  def this(minHeight: Double, prefHeight: Double, maxHeight: Double) =
+    this(new jfxsl.RowConstraints(minHeight, prefHeight, maxHeight))
 
   /**
    * Creates a row constraint object with a fixed size range, vertical grow priority, vertical 
    * alignment, and vertical fill behavior.
    */
-  def this(height: Double, prefHeight: Double, maxHeight: Double, vgrow: jfxsl.Priority, valignment: jfxg.VPos, fillHeight: Boolean) =
-    this(new jfxsl.RowConstraints(height, prefHeight, maxHeight, vgrow, valignment, fillHeight))
+  def this(minHeight: Double, prefHeight: Double, maxHeight: Double, vgrow: jfxsl.Priority, valignment: jfxg.VPos, fillHeight: Boolean) =
+    this(new jfxsl.RowConstraints(minHeight, prefHeight, maxHeight, vgrow, valignment, fillHeight))
 
   /**
    * The vertical fill policy for the row.
