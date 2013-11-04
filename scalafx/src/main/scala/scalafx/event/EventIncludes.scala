@@ -26,8 +26,7 @@
  */
 package scalafx.event
 
-import javafx.{ event => jfxe }
-import scalafx.Includes._
+import javafx.{event => jfxe}
 import scalafx.delegate.SFXDelegate
 
 object EventIncludes extends EventIncludes
@@ -71,26 +70,42 @@ trait EventIncludes {
   implicit def jfxEventType2sfx[T <: jfxe.Event](e: jfxe.EventType[T]) = new EventType[T](e)
 
   /**
-   * Converts a closure to a JavaFX EventHandler. It is used when the event properties ''will not be used''.
+   * Create a simple event handler when information about event is not be used.
    *
-   * @tparam T JavaFX Event subclass.
-   * @param handler Closure that ''will not'' handle event.
-   * @return JavaFX EventHandler which handle method will call handler
+   * Enables following use:
+   * <pre>
+       button.onAction = handle {
+         println("Handling button action")
+         doSomething()
+       }
+   * </pre>
+   *
+   * @tparam J JavaFX Event subclass.
+   * @param handler code executed when event is handled.
+   * @return JavaFX EventHandler which will wrap the input code `handler`.
    */
-  implicit def eventClosureWrapper[T <: jfxe.Event, R](handler: => R) = new jfxe.EventHandler[T] {
-    def handle(event: T) {
+  def handle[J <: jfxe.Event, R](handler: => R) = new jfxe.EventHandler[J] {
+    def handle(event: J) {
       handler
     }
   }
 
   /**
-   * Converts a closure to a JavaFX EventHandler. It is used when the event properties ''will not be used''.
+   * Converts a closure to a JavaFX EventHandler. It is used when information about event is not be used.
+   *
+   * Enables following use:
+   * <pre>
+       button.onAction = () => {
+         println("Handling button action")
+         doSomething()
+       }
+   * </pre>
    *
    * @tparam T JavaFX Event subclass.
    * @param handler Closure that ''will not'' handle event.
    * @return JavaFX EventHandler which handle method will call handler
    */
-  implicit def eventClosureWrapperWithUnitParam[T <: jfxe.Event, R](handler: Unit => R) = new jfxe.EventHandler[T] {
+  implicit def eventClosureWrapperWithZeroParam[T <: jfxe.Event, R](handler: () => R) = new jfxe.EventHandler[T] {
     def handle(event: T) {
       handler()
     }
@@ -99,14 +114,22 @@ trait EventIncludes {
   /**
    * Converts a closure to a JavaFX EventHandler. It is used when the event properties ''will be used''.
    *
+   * Enables following use:
+   * <pre>
+      button.onAction = (e:ActionEvent) => {
+        println("Handling button action: " + e)
+        doSomething(e)
+      }
+   * </pre>
+   *
    * @tparam J JavaFX Event subclass.
-   * @param handler Closure that ''will'' handle event.
+   * @param handler Closure that that takes scalafx.event.Event as argument.
    * @return JavaFX EventHandler which handle method will call handler
    */
   implicit def eventClosureWrapperWithParam[J <: jfxe.Event, S <: SFXDelegate[J], R](handler: (S) => R)(implicit jfx2sfx: J => S) =
     new jfxe.EventHandler[J] {
-    def handle(event: J) {
-      handler(event)
+      def handle(event: J) {
+        handler(event)
+      }
     }
-  }
 }

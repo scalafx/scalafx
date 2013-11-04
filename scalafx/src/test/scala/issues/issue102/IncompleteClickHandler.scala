@@ -31,7 +31,7 @@ import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
-import scalafx.scene.control.Button
+import scalafx.scene.control.{Label, Button}
 import scalafx.scene.layout.{VBox, StackPane}
 
 
@@ -51,7 +51,7 @@ import scalafx.scene.layout.{VBox, StackPane}
   *   Button 1 - Message 2
   *   Button 1 - Message 2
   * }}}
-  * Notice that first `println` in the handler is execured during construction,
+  * Notice that first `println` in the handler is executed during construction,
   * before it is shown on the screen. Clicking on Button 1 produces only the second message.
   * If the event handler was working correctly we should have:
   * {{{
@@ -77,40 +77,53 @@ object IncompleteClickHandler extends JFXApp {
         content = new VBox {
           spacing = 10
           content = Seq(
+            new Label("If Issue 102 is not fixed, some buttons below may not respond correctly."),
             new Button {
               text = "Button 1: Buggy event handler: should print two messages, but prints one."
-              onAction = {
-                println("Button 1 - Message 1")
-                println("Button 1 - Message 2")
-              }
+              // Disable as old buggy handler no longer compiles
+              disable = true
+              //              onAction = {
+              //                println("Button 1 - Message 1")
+              //                println("Button 1 - Message 2")
+              //              }
             },
-//            new Button {
-//              text = "Button 2: Buggy event handler: should print two messages, but prints none."
-//              // Following code should not compile but it does. Notice AWT.
-//              onAction = (ae: java.awt.event.ActionEvent) => {
-//                println("Button 2 - Message 1")
-//                println("Button 2 - Message 2")
-//              }
-//            },
             new Button {
-              text = "Button 3: Buggy event handler: should print two messages, but prints none."
+              text = "Button 2: Buggy event handler: should print two messages, but prints none."
+              // Disable as old buggy handler no longer compiles
+              disable = true
+              //              onAction = (ae: java.awt.event.ActionEvent) => {
+              //                println("Button 2 - Message 1")
+              //                println("Button 2 - Message 2")
+              //              }
+            },
+            new Button {
+              text = "Button 3: Former buggy event handler: should print two messages, used to print none."
               onAction = () => {
                 println("Button 3 - Message 1")
                 println("Button 3 - Message 2")
               }
             },
-//            new Button {
-//              text = "Button 4: Buggy event handler: should print two messages, but prints none."
-//              onAction = (ae: javafx.event.ActionEvent) => {
-//                println("Button 4 - Message 1")
-//                println("Button 4 - Message 2")
-//              }
-//            },
             new Button {
-              text = "Button 5: Fine event handler: print two messages."
+              text = "Button 4: Buggy event handler: should print two messages, but prints none."
+              // Disable as old buggy handler no longer compiles
+              disable = true
+              //              onAction = (ae: javafx.event.ActionEvent) => {
+              //                println("Button 4 - Message 1")
+              //                println("Button 4 - Message 2")
+              //              }
+            },
+            new Button {
+              text = "Button 5: Fine event handler: prints two messages."
               onAction = (ae: scalafx.event.ActionEvent) => {
                 println("Button 5 - Message 1")
                 println("Button 5 - Message 2")
+              }
+            },
+            new Button {
+              text = "Button 6: New fine approach using `handle {}`"
+              onAction = handle {
+                println("Button 6 - Message 1")
+                println("Button 6 - Message 2")
               }
             }
           )
