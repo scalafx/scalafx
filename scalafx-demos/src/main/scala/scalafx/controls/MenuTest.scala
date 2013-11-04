@@ -48,10 +48,10 @@ object MenuTest extends JFXApp {
       }
     )
 
-    onShowing = printEvent("on showing")
-    onShown = printEvent("on shown")
-    onHiding = printEvent("on hiding")
-    onHidden = printEvent("on hidden")
+    onShowing = handle { printEvent("on showing") }
+    onShown = handle { printEvent("on shown") }
+    onHiding = handle { printEvent("on hiding") }
+    onHidden = handle { printEvent("on hidden") }
   }
 
   val history = new VBox()

@@ -55,7 +55,7 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
 
   protected val btnReset = new Button {
     text = "Reset"
-    onAction = resetProperties()
+    onAction = handle { resetProperties() }
     alignmentInParent = Pos.CENTER
   }
 

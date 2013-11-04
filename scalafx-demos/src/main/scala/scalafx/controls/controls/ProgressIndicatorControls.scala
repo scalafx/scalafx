@@ -35,7 +35,10 @@ class ProgressIndicatorControls(target: ProgressIndicator)
   extends PropertiesNodes[ProgressIndicator](target, target.getClass.getSimpleName + " Properties") {
 
   val txfValue = new TextField 
-  txfValue.onAction = fillDoublePropertyFromText(target.progress, txfValue, true, () => (target.progress = ProgressIndicator.INDETERMINATE_PROGRESS)) 
+  txfValue.onAction = handle {
+    fillDoublePropertyFromText(
+      target.progress, txfValue, true, () => (target.progress = ProgressIndicator.INDETERMINATE_PROGRESS))
+  }
 
   val lblRealValue = new Label {
     text <== target.progress.asString()
