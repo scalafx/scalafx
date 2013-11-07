@@ -90,12 +90,12 @@ object ScrollEvent {
    * Common supertype for all scroll event types.
    */
   val ANY : EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.ANY
-    : EventType[jfxsi.ScrollEvent]
+
   /**
    * This event occurs when user performs a scrolling action such as rotating mouse wheel or dragging a finger over
    * touch screen.
    */
-  val SCROLL = jfxsi.ScrollEvent.SCROLL
+  val SCROLL : EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.SCROLL
 
   /**
    * This event occurs when a scrolling gesture ends.
@@ -134,7 +134,7 @@ class ScrollEvent(override val delegate: jfxsi.ScrollEvent)
   /**
    * Gets the horizontal scrolling units for text-based scrolling.
    */
-  def textDeltaXUnits: ScrollEvent.HorizontalTextScrollUnits = 
+  def textDeltaXUnits: ScrollEvent.HorizontalTextScrollUnits =
     ScrollEvent.HorizontalTextScrollUnits.jfxEnum2sfx(delegate.getTextDeltaXUnits)
 
   /**
@@ -145,7 +145,7 @@ class ScrollEvent(override val delegate: jfxsi.ScrollEvent)
   /**
    * Gets the vertical scrolling units for text-based scrolling.
    */
-  def textDeltaYUnits: ScrollEvent.VerticalTextScrollUnits = 
+  def textDeltaYUnits: ScrollEvent.VerticalTextScrollUnits =
     ScrollEvent.VerticalTextScrollUnits.jfxEnum2sfx(delegate.getTextDeltaYUnits)
 
 }
