@@ -25,7 +25,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package issues.Issue108
+package issues.issue108
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
