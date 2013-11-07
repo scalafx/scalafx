@@ -25,7 +25,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package issues.Issue108
+package scalafx.controls
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
@@ -34,7 +34,7 @@ import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
 import scalafx.scene.control._
 
-/** Illustrates Issue 108 : Compilation error when creating TreeView cellFactory. */
+/** Illustrates use of TreeView CellFactory to do custom rendering of a TreeCell. */
 object TreeViewCellFactoryDemo extends JFXApp {
 
   case class Person(firstName: String, lastName: String)
@@ -58,12 +58,7 @@ object TreeViewCellFactoryDemo extends JFXApp {
           expanded = true
           children = ObservableBuffer(characters.map { p => new TreeItem(p) })
         }
-        // Following statement, if uncommented, fails during compilation with error:
-        //   type mismatch;
-        //     found   : scalafx.scene.control.TreeCell[issues.issue108.TreeViewCellFactoryDemo.Person]
-        //     required: javafx.scene.control.TreeCell[issues.issue108.TreeViewCellFactoryDemo.Person]
-        //         cellFactory = (v: TreeView[Person]) => new TreeCell[Person] {
-        //                                  ^
+        // Use CellFactory to do custom rendering of a TreeCell
         cellFactory = (v: TreeView[Person]) => new TreeCell[Person] {
           treeItem.onChange((_, _, p) =>
             text = if (p != null) p.value().firstName + " " + p.value().lastName else "?"

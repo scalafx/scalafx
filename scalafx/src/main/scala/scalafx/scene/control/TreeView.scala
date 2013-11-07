@@ -126,7 +126,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   def this(rootItem: TreeItem[T]) = this(new jfxsc.TreeView[T](rootItem))
 
   def cellFactory = delegate.cellFactoryProperty
-  def cellFactory_=(v: (TreeView[T] => jfxsc.TreeCell[T])) {
+  def cellFactory_=(v: (TreeView[T] => TreeCell[T])) {
     cellFactory() = new jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] {
       def call(tv: jfxsc.TreeView[T]): jfxsc.TreeCell[T] = {
         v(tv)
