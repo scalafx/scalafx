@@ -36,44 +36,45 @@ import scalafx.scene.control.{TableCell, TableColumn, TableView}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Circle
 
-/** Illustrates use of TableColumn CellFactory to do custom rendering of a TreeCell.
-  * Due to Issue 110 it is only partially functional - cannot render cell value based on the item it contains.
-  */
+/** Illustrates use of TableColumn CellFactory to do custom rendering of a TableCell. */
 object TableWithCustomCellDemo extends JFXApp {
 
   val characters = ObservableBuffer[Person](
-    new Person("Peggy", "Sue", "555-6798"),
-    new Person("Rocky", "Raccoon", "555-6798")
+    new Person("Peggy", "Sue", "555-6798", Color.VIOLET),
+    new Person("Rocky", "Raccoon", "555-6798", Color.GREENYELLOW),
+    new Person("Bungalow ", "Bill", "555-9275", Color.DARKSALMON)
   )
 
-  val v =
-
-    stage = new PrimaryStage {
-      title = "Simple Table View"
-      scene = new Scene {
-        content = new TableView[Person](characters) {
-          columns ++= List(
-            new TableColumn[Person, String] {
-              text = "First Name"
-              cellValueFactory = {_.value.firstName }
-              prefWidth = 180
-            },
-            new TableColumn[Person, String]() {
-              text = "Last Name"
-              cellValueFactory = {_.value.lastName }
-              prefWidth = 180
-            }
-          )
-          columns += new TableColumn[Person, Circle] {
-            text = "Color"
+  stage = new PrimaryStage {
+    title = "TableView with custom color cell"
+    scene = new Scene {
+      content = new TableView[Person](characters) {
+        columns ++= List(
+          new TableColumn[Person, String] {
+            text = "First Name"
+            cellValueFactory = {_.value.firstName }
+            prefWidth = 100
+          },
+          new TableColumn[Person, String]() {
+            text = "Last Name"
+            cellValueFactory = {_.value.lastName }
+            prefWidth = 100
+          },
+          new TableColumn[Person, Color] {
+            text = "Favorite Color"
+            cellValueFactory = {_.value.favoriteColor }
+            // Render the property value when it changes, including initial assignment
             cellFactory = {
-              e => new TableCell[Person, Circle] {
-                graphic = new Circle {fill = Color.GREEN; radius = 8}
+              _ => new TableCell[Person, Color] {
+                item.onChange {
+                  (_, _, newColor) => graphic = new Circle {fill = newColor; radius = 8}
+                }
               }
             }
-            prefWidth = 50
+            prefWidth = 100
           }
-        }
+        )
       }
     }
+  }
 }
