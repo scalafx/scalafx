@@ -50,7 +50,7 @@ object ListViewWithSelectionDemo extends JFXApp {
   )
 
   stage = new PrimaryStage {
-    title = "Simple Table View"
+    title = "ListView with Selection Demo"
     scene = new Scene {
       content = new ListView[Person] {
         items = characters

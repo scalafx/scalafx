@@ -25,50 +25,55 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package issues.issue108
+package scalafx.controls.tableview
 
-import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
-import scalafx.scene.control._
+import scalafx.scene.control.TableColumn._
+import scalafx.scene.control.{TableCell, TableColumn, TableView}
+import scalafx.scene.paint.Color
+import scalafx.scene.shape.Circle
 
-/** Illustrates Issue 108 : Compilation error when creating TreeView cellFactory. */
-object TreeViewCellFactoryDemo extends JFXApp {
-
-  case class Person(firstName: String, lastName: String)
+/** Illustrates use of TableColumn CellFactory to do custom rendering of a TableCell. */
+object TableWithCustomCellDemo extends JFXApp {
 
   val characters = ObservableBuffer[Person](
-    Person("Bungalow ", "Bill"),
-    Person("Dennis", "O’Dell"),
-    Person("Eleanor", "Rigby"),
-    Person("Rocky", "Raccoon"),
-    Person("Peggy", "Sue")
+    new Person("Peggy", "Sue", "555-6798", Color.VIOLET),
+    new Person("Rocky", "Raccoon", "555-6798", Color.GREENYELLOW),
+    new Person("Bungalow ", "Bill", "555-9275", Color.DARKSALMON)
   )
 
   stage = new PrimaryStage {
-    title = "TreeView CellFactory Demo"
+    title = "TableView with custom color cell"
     scene = new Scene {
-      content = new TreeView[Person] {
-        prefWidth = 200
-        prefHeight = 150
-        showRoot = false
-        root = new TreeItem[Person] {
-          expanded = true
-          children = ObservableBuffer(characters.map { p => new TreeItem(p) })
-        }
-        // Following statement, if uncommented, fails during compilation with error:
-        //   type mismatch;
-        //     found   : scalafx.scene.control.TreeCell[issues.issue108.TreeViewCellFactoryDemo.Person]
-        //     required: javafx.scene.control.TreeCell[issues.issue108.TreeViewCellFactoryDemo.Person]
-        //         cellFactory = (v: TreeView[Person]) => new TreeCell[Person] {
-        //                                  ^
-        cellFactory = (v: TreeView[Person]) => new TreeCell[Person] {
-          treeItem.onChange((_, _, p) =>
-            text = if (p != null) p.value().firstName + " " + p.value().lastName else "?"
-          )
-        }
+      content = new TableView[Person](characters) {
+        columns ++= List(
+          new TableColumn[Person, String] {
+            text = "First Name"
+            cellValueFactory = {_.value.firstName }
+            prefWidth = 100
+          },
+          new TableColumn[Person, String]() {
+            text = "Last Name"
+            cellValueFactory = {_.value.lastName }
+            prefWidth = 100
+          },
+          new TableColumn[Person, Color] {
+            text = "Favorite Color"
+            cellValueFactory = {_.value.favoriteColor }
+            // Render the property value when it changes, including initial assignment
+            cellFactory = {
+              _ => new TableCell[Person, Color] {
+                item.onChange {
+                  (_, _, newColor) => graphic = new Circle {fill = newColor; radius = 8}
+                }
+              }
+            }
+            prefWidth = 100
+          }
+        )
       }
     }
   }
