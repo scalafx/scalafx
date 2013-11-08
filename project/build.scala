@@ -176,6 +176,9 @@ object ScalaFXBuild extends Build {
               <name>Rafael Afonso</name>
             </developer>
             <developer>
+              <name>Mike Allen</name>
+            </developer>
+            <developer>
               <id>Alain.Fagot.Bearez</id>
               <name>Alain Béarez</name>
               <url>http://cua.li/TI/</url>
