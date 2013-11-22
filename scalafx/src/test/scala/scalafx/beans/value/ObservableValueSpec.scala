@@ -29,7 +29,7 @@ package scalafx.beans.value
 
 import javafx.beans.value.{ObservableValue => JFXObservableValue, ChangeListener}
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.binding.BindingIncludes._
 import org.junit.runner.RunWith

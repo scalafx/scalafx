@@ -29,7 +29,7 @@ package scalafx.beans.binding
 
 import java.lang.Object
 import javafx.beans.{property => jfxbp}
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 import scalafx.Includes._
 import scalafx.beans.property._

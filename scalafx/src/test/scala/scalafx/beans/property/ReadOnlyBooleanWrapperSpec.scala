@@ -31,8 +31,8 @@ import org.junit.runner.RunWith
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers.convertToAnyShouldWrapper
-import org.scalatest.matchers.ShouldMatchers.equal
+import org.scalatest.Matchers.convertToAnyShouldWrapper
+import org.scalatest.Matchers.equal
 
 
 /** ReadOnlyBooleanWrapper Spec tests. */

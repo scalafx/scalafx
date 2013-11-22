@@ -32,13 +32,13 @@ import javafx.{application => jfxa}
 import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.Matchers
 import scalafx.Includes._
 import scalafx.testutil.RunOnApplicationThread
 
 
 @RunWith(classOf[JUnitRunner])
-class PlatformSpec extends FlatSpec with ShouldMatchers with RunOnApplicationThread {
+class PlatformSpec extends FlatSpec with Matchers with RunOnApplicationThread {
 
   "Platform" should "declare all public static methods of javafx.application.Platform" in {
     val javaMethods = classOf[jfxa.Platform].getMethods

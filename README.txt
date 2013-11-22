@@ -1,5 +1,3 @@
-README    README    README    README    README    README    README    README    README    README    
-
 
                                                                   
   _|_|_|                      _|            _|_|_|_|  _|      _|  
@@ -7,8 +5,7 @@ _|          _|_|_|    _|_|_|  _|    _|_|_|  _|          _|  _|
   _|_|    _|        _|    _|  _|  _|    _|  _|_|_|        _|      
       _|  _|        _|    _|  _|  _|    _|  _|          _|  _|    
 _|_|_|      _|_|_|    _|_|_|  _|    _|_|_|  _|        _|      _|  
-                                                                  
-                                                                  
+                                                                
 
 
 This is the `README.txt ' file for ScalaFX 
@@ -17,27 +14,26 @@ This is the `README.txt ' file for ScalaFX
    ------------
    
 ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX
-2.x (not to be confused with Ingo Maier's great work on Functional Reactive
-Programming for Swing). This means that every ScalaFX application is also a
+2.x and and JavaFX 8. This means that every ScalaFX application is also a
 valid Scala application. By extension it supports full interoperability with
-Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX 2.0 are
-supported.
+Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX 2.0 orJavaFX 8 
+are supported.
 
 ScalaFX was originally created by Stephen Chin, Java Champion, Oracle JavaOne
 program chair; and Sven Reimers, a member of the Netbeans Dream Team.
 
-There are two official ways to build ScalaFX: using the SBT, which is the
-primary option, and Gradle, the secondary option. For information on building
-with SBT see 'README-SBT.txt' and the Gradle operation 'README-GRADLE.txt'.
-For information about using Maven directly, see 'README-MAVEN.txt'.
+There are two branches of ScalaFX: v.1.0 supporting JavaFX 2.x (Java 7) and 
+v.8.0 supporting JavaFX 8 (Java 8)
 
-Since, Thursday, 17th January 2013, ScalaFX has been refactored into
-multi-module project. Peter Pilgrim, Java Champion, was responsible to move
-ScalaFX from a single module to a multiple module project on SBT and Gradle.
-
-The official web site for ScalaFX is https://code.google.com/p/scalafx/
+The recommended way to build ScalaFX is using the SBT. Building with other 
+tools like Gradle and Maven may be possible but is not officially supported. 
+For information on building with SBT see 'README-SBT.txt'. 
+Instructions for Gradle and Maven, somewhat outdated, can be found in 
+'README-GRADLE.txt' and 'README-MAVEN.txt', respectively.
 
 
+The official web site for ScalaFX is http://scalafx.org, 
+currently hosted at https://code.google.com/p/scalafx/
 
 
 2. Software License
@@ -55,12 +51,12 @@ folder of the project.
 The following software is needed to build ScalaFX:
 
   1) Mercurial (http://mercurial.selenic.com/) v2.2 or better
-  2a) sbt (http://www.scala-sbt.org/) v0.13.0 or better
-  2b) gradle (http://gradle.org/)  v1.3 or better
-  3) Scala  (http://www.scala.org/) version 2.9.3+ or 2.10.+ works!
+  2) sbt (http://www.scala-sbt.org/) v0.13.0 or better
+  3) Scala (http://www.scala.org/)
+    - ScalaFX 1.0 builds with either Scala version 2.9.3+ or 2.10.+ 
+    - ScalaFX 8.0 builds only with Scala 2.10.2 or newer. 
   
-The JavaFX software can be Java SE 7 from version jdk1.7.0_25 or better. It
-works with Windows, MacOS X and Linux ports.
+It works with Windows, MacOS X and Linux ports.
 
 
 3. Project Structure
@@ -99,14 +95,7 @@ The `scalafx-demos' is the sub project for the ScalaFX Framework Demonstrations.
 The `project' folder is reserved for Scala SBT.
 
 
-4. Miscellaneous
-   ------------
-
-Any other business section.
-
-   
-
-5. Credits
+4. Credits
    -------
    
 You can find the full list of committers, developers and contributors in

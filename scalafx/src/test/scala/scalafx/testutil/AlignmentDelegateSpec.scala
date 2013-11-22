@@ -32,7 +32,7 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.AlignmentDelegate
 import scalafx.delegate.AlignmentDelegate._
 
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import org.scalatest.FlatSpec
 
 /**

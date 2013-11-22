@@ -26,8 +26,8 @@
  */
 package scalafx.testutil
 
-import org.scalatest.matchers.ShouldMatchers.be
-import org.scalatest.matchers.ShouldMatchers.convertToAnyShouldWrapper
+import org.scalatest.Matchers.be
+import org.scalatest.Matchers.convertToAnyShouldWrapper
 import org.scalatest.FlatSpec
 
 import scalafx.Includes.jfxDoubleProperty2sfx

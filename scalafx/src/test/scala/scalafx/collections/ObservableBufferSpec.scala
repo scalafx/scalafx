@@ -28,7 +28,7 @@ package scalafx.collections
 
 import scala.collection.mutable.Buffer
 import org.junit.runner.RunWith
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import javafx.{ collections => jfxc }
 import java.{ util => ju }
 import ObservableBuffer.Add

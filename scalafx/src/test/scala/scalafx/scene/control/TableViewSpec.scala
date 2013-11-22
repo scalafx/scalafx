@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._

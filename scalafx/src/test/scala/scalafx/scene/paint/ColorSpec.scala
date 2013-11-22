@@ -32,7 +32,8 @@ import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
+import org.scalautils.Tolerance.convertNumericToPlusOrMinusWrapper
 
 /**
  * Color Spec tests.
@@ -44,7 +45,7 @@ class ColorSpec
   override protected def getJavaClassInstance = new jfxsp.Color(0, 0, 0, 0)
 
   private def assertComponent(realValue: Double, expectedValue: Double) {
-    realValue should be(expectedValue plusOrMinus 0.01)
+    realValue should be(convertNumericToPlusOrMinusWrapper(expectedValue) +- 0.01)
   }
 
   private def intToDouble(i: Int): Double = i.toDouble / 255.0
