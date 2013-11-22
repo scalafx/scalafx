@@ -93,7 +93,9 @@ object ScalaFXBuild extends Build {
       unmanagedListing,
       description := "The ScalaFX framework",
       fork in Test := true,
-      parallelExecution in Test := false
+      parallelExecution in Test := false,
+      // print junit-style XML for CI
+      testOptions in Test <+= (target in Test) map {        t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))      }
     )
   )
 
@@ -110,7 +112,7 @@ object ScalaFXBuild extends Build {
       fork in Test := true,
       parallelExecution in Test := false,
       // print junit-style XML for CI
-      testOptions in Test <+= (target in Test) map {        t => Tests.Argument(TestFrameworks.ScalaTest, "junitxml(directory=\"%s\")" format (t / "test-reports"))      },
+      testOptions in Test <+= (target in Test) map {        t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))      },
       // add a JVM option to use when forking a JVM for 'run'
       javaOptions ++= Seq(
         "-Xmx512M",
