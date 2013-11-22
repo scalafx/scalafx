@@ -27,7 +27,7 @@
 package scalafx.scene
 
 import javafx.{ scene => jfxs }
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner

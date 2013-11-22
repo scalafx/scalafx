@@ -33,12 +33,9 @@ import org.junit.runner.RunWith
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers.be
-import org.scalatest.matchers.ShouldMatchers.convertHasIntLengthMethodToLengthShouldWrapper
-import org.scalatest.matchers.ShouldMatchers.convertToAnyRefShouldWrapper
-import org.scalatest.matchers.ShouldMatchers.convertToAnyShouldWrapper
-import org.scalatest.matchers.ShouldMatchers.convertToIntShouldWrapper
-import org.scalatest.matchers.ShouldMatchers.equal
+import org.scalatest.Matchers.be
+import org.scalatest.Matchers.convertToAnyShouldWrapper
+import org.scalatest.Matchers.equal
 import scalafx.Includes.jfxBooleanBinding2sfx
 import scalafx.Includes.jfxBooleanProperty2sfx
 import scalafx.Includes.jfxObjectProperty2sfx

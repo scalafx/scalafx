@@ -32,7 +32,7 @@ import org.scalatest.junit.JUnitRunner
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 
 /**
  * TableColumnSpec tests.

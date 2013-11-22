@@ -32,7 +32,7 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 
 /**
  * ContextMenu Spec tests.

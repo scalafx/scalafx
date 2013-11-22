@@ -32,7 +32,7 @@ package scalafx.util
 
 import javafx.{ util => jfxu }
 import org.scalatest.FlatSpec
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import org.scalatest.matchers._
 import scalafx.Includes._
 import scalafx.util.StringConverter._

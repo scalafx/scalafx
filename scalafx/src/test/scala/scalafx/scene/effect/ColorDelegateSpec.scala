@@ -26,7 +26,7 @@
  */
 package scalafx.scene.effect
 
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import org.scalatest.FlatSpec
 import javafx.scene.{ paint => jfxsp }
 import scalafx.Includes._
