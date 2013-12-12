@@ -23,7 +23,25 @@ ScalaFX was originally created by Stephen Chin, Java Champion, Oracle JavaOne
 program chair; and Sven Reimers, a member of the Netbeans Dream Team.
 
 There are two branches of ScalaFX: v.1.0 supporting JavaFX 2.x (Java 7) and 
-v.8.0 supporting JavaFX 8 (Java 8)
+v.8.0 supporting JavaFX 8 (Java 8).
+
+ScalaFX binaries are published in the Maven Central repository:
+http://search.maven.org/#search%7Cga%7C1%7Cscalafx
+
+To use ScalaFX with SBT add following dependency:
+
+  libraryDependencies += "org.scalafx" % "scalafx_2.10" % "1.0.0-M6"
+
+You can find a simple project setup in subdirectory "scalafx-hello-world"
+
+Snapshot releases are also regulary published on Sonatype. To use a snapshot 
+build you may need to add "Sonatype OSS Snapshots" resolver to you SBT 
+configuration:
+
+  resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots" 
+
+If you just want to download a recent snapshot build you can also use automated build site
+http://jfxtras.com/jenkins/job/scalafx/
 
 The recommended way to build ScalaFX is using the SBT. Building with other 
 tools like Gradle and Maven may be possible but is not officially supported. 
