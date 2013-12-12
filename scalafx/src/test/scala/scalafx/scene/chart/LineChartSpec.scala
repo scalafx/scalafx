@@ -30,7 +30,7 @@ import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * 	Chart Spec tests.
@@ -39,7 +39,8 @@ import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
  */
 @RunWith(classOf[JUnitRunner])
 class LineChartSpec
-  extends AbstractSFXDelegateSpec[jfxsc.LineChart[Number, Number], LineChart[Number, Number], jfxsc.LineChartBuilder[Number, Number, _]](classOf[jfxsc.LineChart[Number, Number]], classOf[LineChart[Number, Number]], classOf[jfxsc.LineChartBuilder[Number, Number, _]])
+  extends SimpleSFXDelegateSpec[jfxsc.LineChart[Number, Number], LineChart[Number, Number]](
+    classOf[jfxsc.LineChart[Number, Number]], classOf[LineChart[Number, Number]])
   with RunOnApplicationThread {
 
   override def getJavaClassInstance = new jfxsc.LineChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)

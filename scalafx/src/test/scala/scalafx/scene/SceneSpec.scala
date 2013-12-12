@@ -31,7 +31,7 @@ import javafx.{ scene => jfxs }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
 
 /**
@@ -41,7 +41,7 @@ import scalafx.testutil.RunOnApplicationThread
  */
 @RunWith(classOf[JUnitRunner])
 class SceneSpec
-  extends AbstractSFXDelegateSpec[jfxs.Scene, Scene, jfxs.SceneBuilder[_]](classOf[jfxs.Scene], classOf[Scene], classOf[jfxs.SceneBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxs.Scene, Scene](classOf[jfxs.Scene], classOf[Scene])
   with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new Scene(getJavaClassInstance)

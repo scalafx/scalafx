@@ -30,7 +30,7 @@ import javafx.{ animation => jfxa }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * StrokeTransition Spec tests.
@@ -39,4 +39,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class StrokeTransitionSpec 
-  extends AbstractSFXDelegateSpec[jfxa.StrokeTransition, StrokeTransition, jfxa.StrokeTransitionBuilder](classOf[jfxa.StrokeTransition], classOf[StrokeTransition], classOf[jfxa.StrokeTransitionBuilder])
+  extends SimpleSFXDelegateSpec[jfxa.StrokeTransition, StrokeTransition](
+    classOf[jfxa.StrokeTransition], classOf[StrokeTransition])

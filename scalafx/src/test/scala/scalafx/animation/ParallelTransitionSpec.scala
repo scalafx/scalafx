@@ -30,7 +30,7 @@ import javafx.{ animation => jfxa }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ParallelTransition Spec tests.
@@ -39,4 +39,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ParallelTransitionSpec 
-  extends AbstractSFXDelegateSpec[jfxa.ParallelTransition, ParallelTransition, jfxa.ParallelTransitionBuilder](classOf[jfxa.ParallelTransition], classOf[ParallelTransition], classOf[jfxa.ParallelTransitionBuilder])
+  extends SimpleSFXDelegateSpec[jfxa.ParallelTransition, ParallelTransition](
+    classOf[jfxa.ParallelTransition], classOf[ParallelTransition])

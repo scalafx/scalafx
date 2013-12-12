@@ -30,7 +30,7 @@ import javafx.{ animation => jfxa }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Transition Spec tests.
@@ -39,7 +39,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TransitionSpec
-  extends AbstractSFXDelegateSpec[jfxa.Transition, Transition, jfxa.TransitionBuilder[_]](classOf[jfxa.Transition], classOf[Transition], classOf[jfxa.TransitionBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxa.Transition, Transition](classOf[jfxa.Transition], classOf[Transition]) {
 
   override protected def getScalaClassInstance = new Transition(new jfxa.Transition() {
     def interpolate(p1: Double) {}

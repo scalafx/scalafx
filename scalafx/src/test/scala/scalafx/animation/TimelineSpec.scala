@@ -30,7 +30,7 @@ import javafx.{ animation => jfxa }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Timeline Spec tests.
@@ -39,4 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TimelineSpec 
-  extends AbstractSFXDelegateSpec[jfxa.Timeline, Timeline, jfxa.TimelineBuilder](classOf[jfxa.Timeline], classOf[Timeline], classOf[jfxa.TimelineBuilder])
+  extends SimpleSFXDelegateSpec[jfxa.Timeline, Timeline](classOf[jfxa.Timeline], classOf[Timeline])

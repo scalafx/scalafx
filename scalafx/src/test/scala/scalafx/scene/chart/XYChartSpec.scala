@@ -30,7 +30,7 @@ import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * 	Chart Spec tests.
@@ -39,7 +39,8 @@ import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
  */
 @RunWith(classOf[JUnitRunner])
 class XYChartSpec
-  extends AbstractSFXDelegateSpec[jfxsc.XYChart[Number, Number], XYChart[Number, Number], jfxsc.XYChartBuilder[Number, Number, _]](classOf[jfxsc.XYChart[Number, Number]], classOf[XYChart[Number, Number]], classOf[jfxsc.XYChartBuilder[Number, Number, _]])
+  extends SimpleSFXDelegateSpec[jfxsc.XYChart[Number, Number], XYChart[Number, Number]](
+    classOf[jfxsc.XYChart[Number, Number]], classOf[XYChart[Number, Number]])
   with RunOnApplicationThread {
 
   override def getScalaClassInstance = new XYChart[Number, Number](getJavaClassInstance) {}

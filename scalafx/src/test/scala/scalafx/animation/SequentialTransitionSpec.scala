@@ -30,7 +30,7 @@ import javafx.{ animation => jfxa }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * SequentialTransition Spec tests.
@@ -39,4 +39,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class SequentialTransitionSpec 
-  extends AbstractSFXDelegateSpec[jfxa.SequentialTransition, SequentialTransition, jfxa.SequentialTransitionBuilder](classOf[jfxa.SequentialTransition], classOf[SequentialTransition], classOf[jfxa.SequentialTransitionBuilder])
+  extends SimpleSFXDelegateSpec[jfxa.SequentialTransition, SequentialTransition](
+    classOf[jfxa.SequentialTransition], classOf[SequentialTransition])

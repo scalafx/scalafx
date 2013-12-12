@@ -31,7 +31,7 @@ import javafx.{ scene => jfxs }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Parent Spec tests.
@@ -40,7 +40,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ParentSpec
-  extends AbstractSFXDelegateSpec[jfxs.Parent, Parent, jfxs.ParentBuilder[_]](classOf[jfxs.Parent], classOf[Parent], classOf[jfxs.ParentBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxs.Parent, Parent](classOf[jfxs.Parent], classOf[Parent]) {
 
   override protected def getScalaClassInstance = new Parent(getJavaClassInstance) {}
 

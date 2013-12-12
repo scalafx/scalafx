@@ -31,7 +31,7 @@ import org.scalatest.Matchers._
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Group Spec tests.
@@ -40,7 +40,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class GroupSpec
-  extends AbstractSFXDelegateSpec[jfxs.Group, Group, jfxs.GroupBuilder[_]](classOf[jfxs.Group], classOf[Group], classOf[jfxs.GroupBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxs.Group, Group](classOf[jfxs.Group], classOf[Group]) {
 
   it should "provide scala-like capabilities for the list" in {
     val group = new Group()
