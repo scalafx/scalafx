@@ -29,7 +29,7 @@ package scalafx.scene.control
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import javafx.scene.{ control => jfxsc }
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 import scalafx.Includes._
 
 /**
@@ -38,5 +38,6 @@ import scalafx.Includes._
  */
 @RunWith(classOf[JUnitRunner])
 class PasswordFieldSpec
-  extends AbstractSFXDelegateSpec[jfxsc.PasswordField, PasswordField, jfxsc.PasswordFieldBuilder[_]](classOf[jfxsc.PasswordField], classOf[PasswordField], classOf[jfxsc.PasswordFieldBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.PasswordField, PasswordField](
+    classOf[jfxsc.PasswordField], classOf[PasswordField])
   with RunOnApplicationThread

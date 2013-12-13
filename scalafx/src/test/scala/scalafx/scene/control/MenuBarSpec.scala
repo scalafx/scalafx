@@ -29,10 +29,10 @@ package scalafx.scene.control
 import org.junit.runner.RunWith
 import javafx.scene.{ control => jfxsc }
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 import scalafx.Includes._
 
 @RunWith(classOf[JUnitRunner])
 class MenuBarSpec
-  extends AbstractSFXDelegateSpec[jfxsc.MenuBar, MenuBar, jfxsc.MenuBarBuilder[_]](classOf[jfxsc.MenuBar], classOf[MenuBar], classOf[jfxsc.MenuBarBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.MenuBar, MenuBar](classOf[jfxsc.MenuBar], classOf[MenuBar])
   with RunOnApplicationThread

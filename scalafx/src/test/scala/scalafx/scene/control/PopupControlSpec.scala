@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.{ RunOnApplicationThread, AbstractSFXDelegateSpec }
+import scalafx.testutil.{ RunOnApplicationThread, SimpleSFXDelegateSpec }
 
 /**
  * PopupControl Spec tests.
@@ -39,7 +39,7 @@ import scalafx.testutil.{ RunOnApplicationThread, AbstractSFXDelegateSpec }
  */
 @RunWith(classOf[JUnitRunner])
 class PopupControlSpec
-  extends AbstractSFXDelegateSpec[jfxsc.PopupControl, PopupControl, jfxsc.PopupControlBuilder[_]](classOf[jfxsc.PopupControl], classOf[PopupControl], classOf[jfxsc.PopupControlBuilder[_]]) 
+  extends SimpleSFXDelegateSpec[jfxsc.PopupControl, PopupControl](classOf[jfxsc.PopupControl], classOf[PopupControl])
   with RunOnApplicationThread {
 
   override protected def getJavaClassInstance = {

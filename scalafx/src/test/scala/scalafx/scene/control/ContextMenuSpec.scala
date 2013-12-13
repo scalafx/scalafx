@@ -30,7 +30,7 @@ import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
 import org.scalatest.Matchers._
 
@@ -41,8 +41,8 @@ import org.scalatest.Matchers._
  */
 @RunWith(classOf[JUnitRunner])
 class ContextMenuSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ContextMenu, ContextMenu, jfxsc.ContextMenuBuilder[_]](
-    classOf[jfxsc.ContextMenu], classOf[ContextMenu], classOf[jfxsc.ContextMenuBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.ContextMenu, ContextMenu](
+    classOf[jfxsc.ContextMenu], classOf[ContextMenu])
   with RunOnApplicationThread  {
 
   it should "not drop assigned items - Issue 42" in {

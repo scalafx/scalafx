@@ -30,7 +30,7 @@ import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * RadioButton Spec tests.
@@ -39,5 +39,5 @@ import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
  */
 @RunWith(classOf[JUnitRunner])
 class RadioButtonSpec
-  extends AbstractSFXDelegateSpec[jfxsc.RadioButton, RadioButton, jfxsc.RadioButtonBuilder[_]](classOf[jfxsc.RadioButton], classOf[RadioButton], classOf[jfxsc.RadioButtonBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.RadioButton, RadioButton](classOf[jfxsc.RadioButton], classOf[RadioButton])
   with RunOnApplicationThread

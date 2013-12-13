@@ -31,12 +31,12 @@ import javafx.scene.{control => jfxsc}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 
 @RunWith(classOf[JUnitRunner])
 class MenuButtonSpec
-  extends AbstractSFXDelegateSpec[jfxsc.MenuButton, MenuButton, jfxsc.MenuButtonBuilder[_]](classOf[jfxsc.MenuButton], classOf[MenuButton], classOf[jfxsc.MenuButtonBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.MenuButton, MenuButton](classOf[jfxsc.MenuButton], classOf[MenuButton])
   with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new MenuButton(new jfxsc.MenuButton())

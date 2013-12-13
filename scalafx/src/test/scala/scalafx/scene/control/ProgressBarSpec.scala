@@ -29,7 +29,7 @@ package scalafx.scene.control
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import javafx.scene.{ control => jfxsc }
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 import scalafx.Includes._
 
 /**
@@ -38,5 +38,5 @@ import scalafx.Includes._
  */
 @RunWith(classOf[JUnitRunner])
 class ProgressBarSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ProgressBar, ProgressBar, jfxsc.ProgressBarBuilder[_]](classOf[jfxsc.ProgressBar], classOf[ProgressBar], classOf[jfxsc.ProgressBarBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.ProgressBar, ProgressBar](classOf[jfxsc.ProgressBar], classOf[ProgressBar])
   with RunOnApplicationThread

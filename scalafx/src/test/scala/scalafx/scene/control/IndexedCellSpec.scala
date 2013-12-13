@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -39,5 +39,5 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class IndexedCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxsc.IndexedCell[T], IndexedCell[T], jfxsc.IndexedCellBuilder[T, _]](classOf[jfxsc.IndexedCell[T]], classOf[IndexedCell[T]], classOf[jfxsc.IndexedCellBuilder[T, _]])
+  extends SimpleSFXDelegateSpec[jfxsc.IndexedCell[T], IndexedCell[T]](classOf[jfxsc.IndexedCell[T]], classOf[IndexedCell[T]])
   with RunOnApplicationThread

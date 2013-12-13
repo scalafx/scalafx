@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -39,7 +39,8 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class RadioMenuItemSpec
-  extends AbstractSFXDelegateSpec[jfxsc.RadioMenuItem, RadioMenuItem, jfxsc.RadioMenuItemBuilder[_]](classOf[jfxsc.RadioMenuItem], classOf[RadioMenuItem], classOf[jfxsc.RadioMenuItemBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxsc.RadioMenuItem, RadioMenuItem](
+    classOf[jfxsc.RadioMenuItem], classOf[RadioMenuItem]) {
 
   override def getJavaClassInstance = new jfxsc.RadioMenuItem("")
 

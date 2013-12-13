@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -39,5 +39,5 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class HyperlinkSpec
-  extends AbstractSFXDelegateSpec[jfxsc.Hyperlink, Hyperlink, jfxsc.HyperlinkBuilder[_]](classOf[jfxsc.Hyperlink], classOf[Hyperlink], classOf[jfxsc.HyperlinkBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.Hyperlink, Hyperlink](classOf[jfxsc.Hyperlink], classOf[Hyperlink])
   with RunOnApplicationThread

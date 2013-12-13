@@ -29,7 +29,7 @@ package scalafx.scene.control
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import javafx.scene.{ control => jfxsc }
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 import scalafx.Includes._
 
 /**
@@ -38,5 +38,6 @@ import scalafx.Includes._
  */
 @RunWith(classOf[JUnitRunner])
 class ProgressIndicatorSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ProgressIndicator, ProgressIndicator, jfxsc.ProgressIndicatorBuilder[_]](classOf[jfxsc.ProgressIndicator], classOf[ProgressIndicator], classOf[jfxsc.ProgressIndicatorBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.ProgressIndicator, ProgressIndicator](
+    classOf[jfxsc.ProgressIndicator], classOf[ProgressIndicator])
   with RunOnApplicationThread

@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.Matchers._
 
 /**
@@ -39,8 +39,8 @@ import org.scalatest.Matchers._
  */
 @RunWith(classOf[JUnitRunner])
 class TableColumnSpec[S, T]
-  extends AbstractSFXDelegateSpec[jfxsc.TableColumn[S, T], TableColumn[S, T], jfxsc.TableColumnBuilder[S, T, _]](
-    classOf[jfxsc.TableColumn[S, T]], classOf[TableColumn[S, T]], classOf[jfxsc.TableColumnBuilder[S, T, _]]) {
+  extends SimpleSFXDelegateSpec[jfxsc.TableColumn[S, T], TableColumn[S, T]](
+    classOf[jfxsc.TableColumn[S, T]], classOf[TableColumn[S, T]]) {
 
   it should " have parametrized default constructor - Issue 40" in {
     // Without correctly parametrized default constructor following line was throwing exception:

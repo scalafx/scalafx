@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -39,5 +39,5 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class LabelSpec
-  extends AbstractSFXDelegateSpec[jfxsc.Label, Label, jfxsc.LabelBuilder[_]](classOf[jfxsc.Label], classOf[Label], classOf[jfxsc.LabelBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.Label, Label](classOf[jfxsc.Label], classOf[Label])
   with RunOnApplicationThread

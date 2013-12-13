@@ -29,7 +29,7 @@ package scalafx.scene.control
 import org.junit.runner.RunWith
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
 
 /**
@@ -39,7 +39,7 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class IndexRangeSpec
-  extends AbstractSFXDelegateSpec[jfxsc.IndexRange, IndexRange, jfxsc.IndexRangeBuilder](classOf[jfxsc.IndexRange], classOf[IndexRange], classOf[jfxsc.IndexRangeBuilder]) {
+  extends SimpleSFXDelegateSpec[jfxsc.IndexRange, IndexRange](classOf[jfxsc.IndexRange], classOf[IndexRange]) {
 
   override protected def getScalaClassInstance = new IndexRange(1, 2)
 

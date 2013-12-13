@@ -30,7 +30,7 @@ import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ListView[T] Spec tests.
@@ -39,5 +39,5 @@ import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
  */
 @RunWith(classOf[JUnitRunner])
 class ListViewSpec[T]
-  extends AbstractSFXDelegateSpec[jfxsc.ListView[T], ListView[T], jfxsc.ListViewBuilder[T, _]](classOf[jfxsc.ListView[T]], classOf[ListView[T]], classOf[jfxsc.ListViewBuilder[T, _]])
+  extends SimpleSFXDelegateSpec[jfxsc.ListView[T], ListView[T]](classOf[jfxsc.ListView[T]], classOf[ListView[T]])
   with RunOnApplicationThread

@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec, AlignmentDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec, AlignmentDelegateSpec}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import javafx.scene
@@ -39,7 +39,7 @@ import scalafx.scene.SceneProperty
  */
 @RunWith(classOf[JUnitRunner])
 class TextFieldSpec
-  extends AbstractSFXDelegateSpec[jfxsc.TextField, TextField, jfxsc.TextFieldBuilder[_]](classOf[jfxsc.TextField], classOf[TextField], classOf[jfxsc.TextFieldBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.TextField, TextField](classOf[jfxsc.TextField], classOf[TextField])
   with AlignmentDelegateSpec[jfxsc.TextField, TextField]
   with RunOnApplicationThread {
 

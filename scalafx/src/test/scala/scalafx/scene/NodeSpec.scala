@@ -30,14 +30,14 @@ import javafx.{ scene => jfxs }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Node Spec tests.
  */
 @RunWith(classOf[JUnitRunner])
 class NodeSpec
-  extends AbstractSFXDelegateSpec[jfxs.Node, Node, jfxs.NodeBuilder[_]](classOf[jfxs.Node], classOf[Node], classOf[jfxs.NodeBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxs.Node, Node](classOf[jfxs.Node], classOf[Node]) {
 
   override protected def getScalaClassInstance = new Node(getJavaClassInstance) {}
 

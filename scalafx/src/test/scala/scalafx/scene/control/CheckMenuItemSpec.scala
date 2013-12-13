@@ -29,7 +29,7 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -37,5 +37,5 @@ import org.scalatest.junit.JUnitRunner
 /** CheckMenuItem Spec tests. */
 @RunWith(classOf[JUnitRunner])
 class CheckMenuItemSpec
-  extends AbstractSFXDelegateSpec[jfxsc.CheckMenuItem, CheckMenuItem, jfxsc.CheckMenuItemBuilder[_]](
-    classOf[jfxsc.CheckMenuItem], classOf[CheckMenuItem], classOf[jfxsc.CheckMenuItemBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.CheckMenuItem, CheckMenuItem](
+    classOf[jfxsc.CheckMenuItem], classOf[CheckMenuItem])
