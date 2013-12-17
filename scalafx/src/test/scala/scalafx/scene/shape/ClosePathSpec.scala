@@ -31,7 +31,7 @@ import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ClosePath Spec tests.
@@ -40,4 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ClosePathSpec 
-  extends AbstractSFXDelegateSpec[jfxss.ClosePath, ClosePath, jfxss.ClosePathBuilder[_]](classOf[jfxss.ClosePath], classOf[ClosePath], classOf[jfxss.ClosePathBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxss.ClosePath, ClosePath](classOf[jfxss.ClosePath], classOf[ClosePath])

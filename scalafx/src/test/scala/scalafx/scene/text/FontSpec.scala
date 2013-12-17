@@ -31,7 +31,7 @@ import javafx.scene.{text => jfxst}
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Font Spec tests.
@@ -39,7 +39,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class FontSpec extends AbstractSFXDelegateSpec[jfxst.Font, Font, jfxst.FontBuilder](classOf[jfxst.Font], classOf[Font], classOf[jfxst.FontBuilder]) {
+class FontSpec extends SimpleSFXDelegateSpec[jfxst.Font, Font](classOf[jfxst.Font], classOf[Font]) {
 
   override protected def getJavaClassInstance = jfxst.Font.getDefault
 

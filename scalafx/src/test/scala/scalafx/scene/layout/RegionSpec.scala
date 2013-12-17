@@ -30,7 +30,7 @@ import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Region Spec tests.
@@ -39,4 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class RegionSpec
-  extends AbstractSFXDelegateSpec[jfxsl.Region, Region, jfxsl.RegionBuilder[_]](classOf[jfxsl.Region], classOf[Region], classOf[jfxsl.RegionBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsl.Region, Region](classOf[jfxsl.Region], classOf[Region])

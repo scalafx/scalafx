@@ -30,7 +30,7 @@ import javafx.scene.{ transform => jfxst }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.PositionDelegateSpec
 
 /**
@@ -40,7 +40,7 @@ import scalafx.testutil.PositionDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TranslateSpec
-  extends AbstractSFXDelegateSpec[jfxst.Translate, Translate, jfxst.TranslateBuilder[_]](classOf[jfxst.Translate], classOf[Translate], classOf[jfxst.TranslateBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxst.Translate, Translate](classOf[jfxst.Translate], classOf[Translate])
   with PositionDelegateSpec[Translate] {
 
   val positionDelegate = getScalaClassInstance

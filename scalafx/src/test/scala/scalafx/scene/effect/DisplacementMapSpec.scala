@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * DisplacementMap Spec tests.
@@ -39,7 +39,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class DisplacementMapSpec
-  extends AbstractSFXDelegateSpec[jfxse.DisplacementMap, DisplacementMap, jfxse.DisplacementMapBuilder[_]](classOf[jfxse.DisplacementMap], classOf[DisplacementMap], classOf[jfxse.DisplacementMapBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxse.DisplacementMap, DisplacementMap](
+    classOf[jfxse.DisplacementMap], classOf[DisplacementMap])
   with InputDelegateSpec[DisplacementMap] {
 
   val inputDelegate = getScalaClassInstance

@@ -31,7 +31,7 @@ import javafx.{ stage => jfxs }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
 
 /**
@@ -41,7 +41,7 @@ import scalafx.testutil.RunOnApplicationThread
  */
 @RunWith(classOf[JUnitRunner])
 class PopupWindowSpec
-  extends AbstractSFXDelegateSpec[jfxs.PopupWindow, PopupWindow, jfxs.PopupWindowBuilder[_]](classOf[jfxs.PopupWindow], classOf[PopupWindow], classOf[jfxs.PopupWindowBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxs.PopupWindow, PopupWindow](classOf[jfxs.PopupWindow], classOf[PopupWindow])
   with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new PopupWindow(this.getJavaClassInstance) {}

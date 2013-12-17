@@ -31,7 +31,7 @@ import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Shape Spec tests.
@@ -40,7 +40,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ShapeSpec
-  extends AbstractSFXDelegateSpec[jfxss.Shape, Shape, jfxss.ShapeBuilder[_]](classOf[jfxss.Shape], classOf[Shape], classOf[jfxss.ShapeBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxss.Shape, Shape](classOf[jfxss.Shape], classOf[Shape]) {
 
   override protected def getScalaClassInstance = new Rectangle
 

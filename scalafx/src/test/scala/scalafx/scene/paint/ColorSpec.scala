@@ -31,7 +31,7 @@ import jfxsp.{ Color => JColor }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.Matchers._
 import org.scalautils.Tolerance.convertNumericToPlusOrMinusWrapper
 
@@ -40,7 +40,7 @@ import org.scalautils.Tolerance.convertNumericToPlusOrMinusWrapper
  */
 @RunWith(classOf[JUnitRunner])
 class ColorSpec
-  extends AbstractSFXDelegateSpec[jfxsp.Color, Color, jfxsp.ColorBuilder[_]](classOf[jfxsp.Color], classOf[Color], classOf[jfxsp.ColorBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxsp.Color, Color](classOf[jfxsp.Color], classOf[Color]) {
 
   override protected def getJavaClassInstance = new jfxsp.Color(0, 0, 0, 0)
 

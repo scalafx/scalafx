@@ -28,7 +28,7 @@ package scalafx.scene.effect
 
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -39,7 +39,7 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class ColorAdjustSpec
-  extends AbstractSFXDelegateSpec[jfxse.ColorAdjust, ColorAdjust, jfxse.ColorAdjustBuilder[_]](classOf[jfxse.ColorAdjust], classOf[ColorAdjust], classOf[jfxse.ColorAdjustBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxse.ColorAdjust, ColorAdjust](classOf[jfxse.ColorAdjust], classOf[ColorAdjust])
   with InputDelegateSpec[ColorAdjust] {
 
   val inputDelegate = getScalaClassInstance

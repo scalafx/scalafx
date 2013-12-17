@@ -31,7 +31,7 @@ import javafx.{ stage => jfxs }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
 
 /**
@@ -41,5 +41,6 @@ import scalafx.testutil.RunOnApplicationThread
  */
 @RunWith(classOf[JUnitRunner])
 class DirectoryChooserSpec
-  extends AbstractSFXDelegateSpec[jfxs.DirectoryChooser, DirectoryChooser, jfxs.DirectoryChooserBuilder](classOf[jfxs.DirectoryChooser], classOf[DirectoryChooser], classOf[jfxs.DirectoryChooserBuilder])
+  extends SimpleSFXDelegateSpec[jfxs.DirectoryChooser, DirectoryChooser](
+    classOf[jfxs.DirectoryChooser], classOf[DirectoryChooser])
   with RunOnApplicationThread

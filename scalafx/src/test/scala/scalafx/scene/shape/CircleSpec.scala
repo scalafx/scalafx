@@ -31,7 +31,7 @@ import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Circle Spec tests.
@@ -40,4 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class CircleSpec
-  extends AbstractSFXDelegateSpec[jfxss.Circle, Circle, jfxss.CircleBuilder[_]](classOf[jfxss.Circle], classOf[Circle], classOf[jfxss.CircleBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxss.Circle, Circle](classOf[jfxss.Circle], classOf[Circle])

@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.control.{ cell => jfxscc }
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ChoiceBoxTreeCell Spec tests.
@@ -40,5 +40,6 @@ import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
  */
 @RunWith(classOf[JUnitRunner])
 class ChoiceBoxTreeCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxscc.ChoiceBoxTreeCell[T], ChoiceBoxTreeCell[T], jfxscc.ChoiceBoxTreeCellBuilder[T, _]](classOf[jfxscc.ChoiceBoxTreeCell[T]], classOf[ChoiceBoxTreeCell[T]], classOf[jfxscc.ChoiceBoxTreeCellBuilder[T, _]])
+  extends SimpleSFXDelegateSpec[jfxscc.ChoiceBoxTreeCell[T], ChoiceBoxTreeCell[T]](
+    classOf[jfxscc.ChoiceBoxTreeCell[T]], classOf[ChoiceBoxTreeCell[T]])
   with RunOnApplicationThread

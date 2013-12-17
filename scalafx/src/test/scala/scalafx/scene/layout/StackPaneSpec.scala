@@ -30,7 +30,7 @@ import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.AlignmentDelegateSpec
 
 /**
@@ -38,5 +38,5 @@ import scalafx.testutil.AlignmentDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class StackPaneSpec
-  extends AbstractSFXDelegateSpec[jfxsl.StackPane, StackPane, jfxsl.StackPaneBuilder[_]](classOf[jfxsl.StackPane], classOf[StackPane], classOf[jfxsl.StackPaneBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsl.StackPane, StackPane](classOf[jfxsl.StackPane], classOf[StackPane])
   with AlignmentDelegateSpec[jfxsl.StackPane, StackPane]

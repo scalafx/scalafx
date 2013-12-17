@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.DimensionDelegateSpec
 
 /**
@@ -40,7 +40,7 @@ import scalafx.testutil.DimensionDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ColorInputSpec
-  extends AbstractSFXDelegateSpec[jfxse.ColorInput, ColorInput, jfxse.ColorInputBuilder[_]](classOf[jfxse.ColorInput], classOf[ColorInput], classOf[jfxse.ColorInputBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxse.ColorInput, ColorInput](classOf[jfxse.ColorInput], classOf[ColorInput])
   with DimensionDelegateSpec[ColorInput] {
 
   val dimensionDelegate = getScalaClassInstance

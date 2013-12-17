@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.PositionDelegateSpec
 
 /**
@@ -40,4 +40,4 @@ import scalafx.testutil.PositionDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class CubicCurveSpec
-  extends AbstractSFXDelegateSpec[jfxss.CubicCurve, CubicCurve, jfxss.CubicCurveBuilder[_]](classOf[jfxss.CubicCurve], classOf[CubicCurve], classOf[jfxss.CubicCurveBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxss.CubicCurve, CubicCurve](classOf[jfxss.CubicCurve], classOf[CubicCurve])

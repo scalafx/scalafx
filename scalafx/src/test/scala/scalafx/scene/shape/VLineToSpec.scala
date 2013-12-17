@@ -31,8 +31,7 @@ import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
-import scalafx.testutil.PositionDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * VLineTo Spec tests.
@@ -41,7 +40,7 @@ import scalafx.testutil.PositionDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class VLineToSpec
-  extends AbstractSFXDelegateSpec[jfxss.VLineTo, VLineTo, jfxss.VLineToBuilder[_]](classOf[jfxss.VLineTo], classOf[VLineTo], classOf[jfxss.VLineToBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxss.VLineTo, VLineTo](classOf[jfxss.VLineTo], classOf[VLineTo]) {
 
   val positionDelegate = getScalaClassInstance
 

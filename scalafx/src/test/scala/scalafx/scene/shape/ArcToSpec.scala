@@ -31,7 +31,7 @@ import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.PositionDelegateSpec
 
 /**
@@ -41,7 +41,7 @@ import scalafx.testutil.PositionDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ArcToSpec
-  extends AbstractSFXDelegateSpec[jfxss.ArcTo, ArcTo, jfxss.ArcToBuilder[_]](classOf[jfxss.ArcTo], classOf[ArcTo], classOf[jfxss.ArcToBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxss.ArcTo, ArcTo](classOf[jfxss.ArcTo], classOf[ArcTo])
   with PositionDelegateSpec[ArcTo] {
 
   val positionDelegate = getScalaClassInstance

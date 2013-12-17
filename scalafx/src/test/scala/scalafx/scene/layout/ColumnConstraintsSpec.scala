@@ -31,7 +31,7 @@ import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ColumnConstraints Spec tests.
@@ -40,4 +40,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ColumnConstraintsSpec
-  extends AbstractSFXDelegateSpec[jfxsl.ColumnConstraints, ColumnConstraints, jfxsl.ColumnConstraintsBuilder[_]](classOf[jfxsl.ColumnConstraints], classOf[ColumnConstraints], classOf[jfxsl.ColumnConstraintsBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsl.ColumnConstraints, ColumnConstraints](
+    classOf[jfxsl.ColumnConstraints], classOf[ColumnConstraints])

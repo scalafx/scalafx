@@ -30,7 +30,7 @@ import javafx.scene.{ web => jfxsw }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
 
 /**
@@ -40,5 +40,5 @@ import scalafx.testutil.RunOnApplicationThread
  */
 @RunWith(classOf[JUnitRunner])
 class WebEngineSpec
-  extends AbstractSFXDelegateSpec[jfxsw.WebEngine, WebEngine, jfxsw.WebEngineBuilder](classOf[jfxsw.WebEngine], classOf[WebEngine], classOf[jfxsw.WebEngineBuilder])
+  extends SimpleSFXDelegateSpec[jfxsw.WebEngine, WebEngine](classOf[jfxsw.WebEngine], classOf[WebEngine])
   with RunOnApplicationThread

@@ -31,7 +31,7 @@ import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Polygon Spec tests.
@@ -40,4 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class PolygonSpec
-  extends AbstractSFXDelegateSpec[jfxss.Polygon, Polygon, jfxss.PolygonBuilder[_]](classOf[jfxss.Polygon], classOf[Polygon], classOf[jfxss.PolygonBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxss.Polygon, Polygon](classOf[jfxss.Polygon], classOf[Polygon])

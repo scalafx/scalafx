@@ -30,7 +30,7 @@ import javafx.scene.{ media => jfxsm }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Media Spec tests.
@@ -38,7 +38,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class MediaSpec extends AbstractSFXDelegateSpec[jfxsm.Media, Media, jfxsm.MediaBuilder](classOf[jfxsm.Media], classOf[Media], classOf[jfxsm.MediaBuilder])
+class MediaSpec extends SimpleSFXDelegateSpec[jfxsm.Media, Media](classOf[jfxsm.Media], classOf[Media])
   with UrlMedia {
 
   override protected def getJavaClassInstance = new jfxsm.Media(url)

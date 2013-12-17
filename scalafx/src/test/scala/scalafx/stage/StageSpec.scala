@@ -31,7 +31,7 @@ import javafx.{ stage => jfxs }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
 
 /**
@@ -41,5 +41,5 @@ import scalafx.testutil.RunOnApplicationThread
  */
 @RunWith(classOf[JUnitRunner])
 class StageSpec
-  extends AbstractSFXDelegateSpec[jfxs.Stage, Stage, jfxs.StageBuilder[_]](classOf[jfxs.Stage], classOf[Stage], classOf[jfxs.StageBuilder[_]]) 
+  extends SimpleSFXDelegateSpec[jfxs.Stage, Stage](classOf[jfxs.Stage], classOf[Stage])
   with RunOnApplicationThread

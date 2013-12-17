@@ -31,7 +31,7 @@ import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * AnchorPane Spec tests.
@@ -40,4 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class AnchorPaneSpec
-  extends AbstractSFXDelegateSpec[jfxsl.AnchorPane, AnchorPane, jfxsl.AnchorPaneBuilder[_]](classOf[jfxsl.AnchorPane], classOf[AnchorPane], classOf[jfxsl.AnchorPaneBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsl.AnchorPane, AnchorPane](classOf[jfxsl.AnchorPane], classOf[AnchorPane])

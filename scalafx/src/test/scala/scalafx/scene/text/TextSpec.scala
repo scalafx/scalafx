@@ -31,7 +31,7 @@ import javafx.scene.{ text => jfxst }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.PositionDelegateSpec
 
 /**
@@ -41,7 +41,7 @@ import scalafx.testutil.PositionDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TextSpec
-  extends AbstractSFXDelegateSpec[jfxst.Text, Text, jfxst.TextBuilder[_]](classOf[jfxst.Text], classOf[Text], classOf[jfxst.TextBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxst.Text, Text](classOf[jfxst.Text], classOf[Text])
   with PositionDelegateSpec[Text] {
 
   val positionDelegate = new Text

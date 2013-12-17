@@ -31,7 +31,7 @@ import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * RowConstraints Spec tests.
@@ -40,4 +40,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class RowConstraintsSpec
-  extends AbstractSFXDelegateSpec[jfxsl.RowConstraints, RowConstraints, jfxsl.RowConstraintsBuilder[_]](classOf[jfxsl.RowConstraints], classOf[RowConstraints], classOf[jfxsl.RowConstraintsBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsl.RowConstraints, RowConstraints](
+    classOf[jfxsl.RowConstraints], classOf[RowConstraints])

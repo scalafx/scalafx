@@ -30,7 +30,7 @@ import javafx.scene.{ transform => jfxst }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Rotate Spec tests.
@@ -39,4 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class RotateSpec
-  extends AbstractSFXDelegateSpec[jfxst.Rotate, Rotate, jfxst.RotateBuilder[_]](classOf[jfxst.Rotate], classOf[Rotate], classOf[jfxst.RotateBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxst.Rotate, Rotate](classOf[jfxst.Rotate], classOf[Rotate])

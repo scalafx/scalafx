@@ -31,7 +31,7 @@ import javafx.{ stage => jfxs }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
 
 /**
@@ -41,5 +41,5 @@ import scalafx.testutil.RunOnApplicationThread
  */
 @RunWith(classOf[JUnitRunner])
 class FileChooserSpec
-  extends AbstractSFXDelegateSpec[jfxs.FileChooser, FileChooser, jfxs.FileChooserBuilder](classOf[jfxs.FileChooser], classOf[FileChooser], classOf[jfxs.FileChooserBuilder])
+  extends SimpleSFXDelegateSpec[jfxs.FileChooser, FileChooser](classOf[jfxs.FileChooser], classOf[FileChooser])
   with RunOnApplicationThread

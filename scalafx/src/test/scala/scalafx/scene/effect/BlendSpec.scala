@@ -28,7 +28,7 @@ package scalafx.scene.effect
 
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -39,4 +39,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class BlendSpec
-  extends AbstractSFXDelegateSpec[jfxse.Blend, Blend, jfxse.BlendBuilder[_]](classOf[jfxse.Blend], classOf[Blend], classOf[jfxse.BlendBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxse.Blend, Blend](classOf[jfxse.Blend], classOf[Blend])

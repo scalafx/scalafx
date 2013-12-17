@@ -31,7 +31,7 @@ import javafx.{ stage => jfxs }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Window Spec tests.
@@ -40,7 +40,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class WindowSpec
-  extends AbstractSFXDelegateSpec[jfxs.Window, Window, jfxs.WindowBuilder[_]](classOf[jfxs.Window], classOf[Window], classOf[jfxs.WindowBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxs.Window, Window](classOf[jfxs.Window], classOf[Window]) {
 
   override protected def getScalaClassInstance = new Window(this.getJavaClassInstance) {}
 

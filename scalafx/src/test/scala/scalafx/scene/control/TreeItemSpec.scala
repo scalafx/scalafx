@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * TreeItem Spec tests.
@@ -39,4 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TreeItemSpec[T <: AnyRef]
-  extends AbstractSFXDelegateSpec[jfxsc.TreeItem[T], TreeItem[T], jfxsc.TreeItemBuilder[T, _]](classOf[jfxsc.TreeItem[T]], classOf[TreeItem[T]], classOf[jfxsc.TreeItemBuilder[T, _]])
+  extends SimpleSFXDelegateSpec[jfxsc.TreeItem[T], TreeItem[T]](classOf[jfxsc.TreeItem[T]], classOf[TreeItem[T]])

@@ -30,7 +30,7 @@ import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.AlignmentDelegateSpec
 
 /**
@@ -38,5 +38,5 @@ import scalafx.testutil.AlignmentDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class GridPaneSpec
-  extends AbstractSFXDelegateSpec[jfxsl.GridPane, GridPane, jfxsl.GridPaneBuilder[_]](classOf[jfxsl.GridPane], classOf[GridPane], classOf[jfxsl.GridPaneBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsl.GridPane, GridPane](classOf[jfxsl.GridPane], classOf[GridPane])
   with AlignmentDelegateSpec[jfxsl.GridPane, GridPane]

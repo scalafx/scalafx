@@ -31,7 +31,7 @@ import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * BorderPane Spec tests.
@@ -40,4 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class BorderPaneSpec
-  extends AbstractSFXDelegateSpec[jfxsl.BorderPane, BorderPane, jfxsl.BorderPaneBuilder[_]](classOf[jfxsl.BorderPane], classOf[BorderPane], classOf[jfxsl.BorderPaneBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsl.BorderPane, BorderPane](classOf[jfxsl.BorderPane], classOf[BorderPane])

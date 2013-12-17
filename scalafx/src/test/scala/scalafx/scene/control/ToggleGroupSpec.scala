@@ -29,7 +29,7 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -40,4 +40,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class ToggleGroupSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ToggleGroup, ToggleGroup, jfxsc.ToggleGroupBuilder[_]](classOf[jfxsc.ToggleGroup], classOf[ToggleGroup], classOf[jfxsc.ToggleGroupBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.ToggleGroup, ToggleGroup](classOf[jfxsc.ToggleGroup], classOf[ToggleGroup])

@@ -30,7 +30,7 @@ import org.junit.runner.RunWith
 import javafx.scene.{ input => jfxsi }
 import scalafx.Includes._
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ClipboardContent Spec tests.
@@ -39,4 +39,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ClipboardContentSpec
-  extends AbstractSFXDelegateSpec[jfxsi.ClipboardContent, ClipboardContent, jfxsi.ClipboardContentBuilder[_]](classOf[jfxsi.ClipboardContent], classOf[ClipboardContent], classOf[jfxsi.ClipboardContentBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsi.ClipboardContent, ClipboardContent](
+    classOf[jfxsi.ClipboardContent], classOf[ClipboardContent])

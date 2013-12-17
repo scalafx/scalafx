@@ -28,7 +28,7 @@ package scalafx.scene.image
 
 import javafx.scene.{ image => jfxsi }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -39,4 +39,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class ImageViewSpec
-  extends AbstractSFXDelegateSpec[jfxsi.ImageView, ImageView, jfxsi.ImageViewBuilder[_]](classOf[jfxsi.ImageView], classOf[ImageView], classOf[jfxsi.ImageViewBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsi.ImageView, ImageView](classOf[jfxsi.ImageView], classOf[ImageView])

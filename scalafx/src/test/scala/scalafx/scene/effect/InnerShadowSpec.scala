@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.DimensionDelegateSpec
 
 /**
@@ -39,7 +39,7 @@ import scalafx.testutil.DimensionDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class InnerShadowSpec
-  extends AbstractSFXDelegateSpec[jfxse.InnerShadow, InnerShadow, jfxse.InnerShadowBuilder[_]](classOf[jfxse.InnerShadow], classOf[InnerShadow], classOf[jfxse.InnerShadowBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxse.InnerShadow, InnerShadow](classOf[jfxse.InnerShadow], classOf[InnerShadow])
   with ColorDelegateSpec[InnerShadow]
   with DimensionDelegateSpec[InnerShadow]
   with InputDelegateSpec[InnerShadow] {

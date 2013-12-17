@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -39,5 +39,5 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class ToggleButtonSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ToggleButton, ToggleButton, jfxsc.ToggleButtonBuilder[_]](classOf[jfxsc.ToggleButton], classOf[ToggleButton], classOf[jfxsc.ToggleButtonBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.ToggleButton, ToggleButton](classOf[jfxsc.ToggleButton], classOf[ToggleButton])
   with RunOnApplicationThread

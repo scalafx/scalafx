@@ -31,7 +31,7 @@ import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Arc Spec tests.
@@ -40,4 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ArcSpec
-  extends AbstractSFXDelegateSpec[jfxss.Arc, Arc, jfxss.ArcBuilder[_]](classOf[jfxss.Arc], classOf[Arc], classOf[jfxss.ArcBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxss.Arc, Arc](classOf[jfxss.Arc], classOf[Arc])
