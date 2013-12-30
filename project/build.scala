@@ -121,7 +121,8 @@ object ScalaFXBuild extends Build {
       javaOptions ++= Seq(
         "-Xmx512M",
         "-Djavafx.verbose"
-      )
+      ),
+      publishArtifact := false
     )
   ) dependsOn (
     scalafx % "compile;test->test"
