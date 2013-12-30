@@ -63,13 +63,14 @@ Yours sincerely,
 
                     *COMMITTERS*        (alphabetical order)
 
-Rafael Afonso       ;           ;                               ; 
-Alain Béarez        ;           A@cua.li                ;       http://cua.li/TI/ ; 
-Stephen Chin        ;           stephen.chin@oracle.com ;       http://www.nighthacking.com/ ;              Co-creator, Java Champion
-Robert Ladstätter   ;           ;                               ;
-Peter Pilgrim       ;           peter.pilgrim@gmail.com ;       http://www.xenononique.co.uk/blog/ ;        Java Champion, independent contractor JavaEE7, JavaFX, Scala
-Sven Reimers        ;           ;                               http://wiki.netbeans.org/SvenReimers/ ;     Co-creator, Netbeans Dream Team
-Jarek Sacha         ;           jpsacha@gmail.com;                               ;
+Rafael Afonso     ;                               ;                                       ;
+Mike Allen        ; mike@hindsight-consulting.com ;                                       ;
+Alain Béarez      ; A@cua.li                      ; http://cua.li/TI/                     ; 
+Stephen Chin      ; stephen.chin@oracle.com       ; http://www.nighthacking.com/          ; Co-creator, Java Champion
+Robert Ladstätter ;                               ;                                       ;
+Peter Pilgrim     ; peter.pilgrim@gmail.com       ; http://www.xenononique.co.uk/blog/    ; Java Champion, independent contractor JavaEE7, JavaFX, Scala
+Sven Reimers      ;                               ; http://wiki.netbeans.org/SvenReimers/ ;     Co-creator, Netbeans Dream Team
+Jarek Sacha       ; jpsacha@gmail.com             ;                                       ;
 
 
 

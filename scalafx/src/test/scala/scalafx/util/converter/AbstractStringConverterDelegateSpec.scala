@@ -28,7 +28,7 @@ package scalafx.util.converter
 
 import java.text.SimpleDateFormat
 
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 
 import javafx.{util => jfxu}
 import scalafx.testutil.SimpleSFXDelegateSpec

@@ -26,14 +26,13 @@
  */
 package scalafx.scene.control.cell
 
-import javafx.scene.control.{ cell => jfxscc }
-import javafx.{ util => jfxu }
+import javafx.scene.control.{cell => jfxscc}
+import javafx.{util => jfxu}
 import scalafx.Includes._
-import scalafx.scene.control.TableCell
-import scalafx.scene.control.TableView
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.control.TableCell
+import scalafx.scene.control.TableColumn
 import scalafx.util.StringConverter
-import javafx.scene.control.TableColumn
 
 /**
  * Companion Object for [[scalafx.scene.control.cell.TextFieldTableCell]].
@@ -56,7 +55,7 @@ object TextFieldTableCell {
 
   /**
    * $FLVINIT
-   * 
+   *
    * @return $FLVRET
    */
   def forTableColumn[S](): (TableColumn[S, String] => TableCell[S, String]) =
@@ -64,7 +63,7 @@ object TextFieldTableCell {
 
   /**
    * $FLVINIT
-   * 
+   *
    * @param converter A `StringConverter` that can convert the given String (from what the user typed in) into an instance of type T.
    * @return $FLVRET
    */
@@ -81,7 +80,7 @@ object TextFieldTableCell {
 
 /**
  * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/TextFieldTableCell.html $TFTC]]
- * 
+ *
  * @tparam T Type used in this cell
  * @constructor Creates a new $TFTC from a JavaFX $TFTC
  * @param delegate JavaFX $TFTC
@@ -97,7 +96,7 @@ class TextFieldTableCell[S, T](override val delegate: jfxscc.TextFieldTableCell[
   /**
    * Creates a `TextFieldTableCell` that provides a TextField when put into editing mode that allows editing of the
    * cell content.
-   * 
+   *
    * @param converter A `converter` that can convert the given String (from what the user typed in) into an instance of type T.
    */
   def this(converter: StringConverter[T]) = this(new jfxscc.TextFieldTableCell[S, T](converter))

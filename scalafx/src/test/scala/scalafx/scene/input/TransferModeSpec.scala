@@ -30,7 +30,7 @@ package scalafx.scene.input
 import javafx.scene.{input => jfxsi}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 

@@ -36,12 +36,12 @@ object ScalaFXBuild extends Build {
   import Dependencies._
   import Resolvers._
 
-  val scalafxVersion = "1.0.0-M6"
+  val scalafxVersion = "1.0.0-M7-SNAPSHOT"
 
   lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
     organization := "org.scalafx",
     version := scalafxVersion,
-    crossScalaVersions := Seq("2.9.3", "2.10.3"),
+    crossScalaVersions := Seq("2.10.3", "2.9.3"),
     scalaVersion <<= crossScalaVersions {versions => versions.head},
     scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
     scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
@@ -93,7 +93,9 @@ object ScalaFXBuild extends Build {
       unmanagedListing,
       description := "The ScalaFX framework",
       fork in Test := true,
-      parallelExecution in Test := false
+      parallelExecution in Test := false,
+      // print junit-style XML for CI
+      testOptions in Test <+= (target in Test) map {        t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))      }
     )
   )
 
@@ -109,6 +111,8 @@ object ScalaFXBuild extends Build {
       fork in run := true,
       fork in Test := true,
       parallelExecution in Test := false,
+      // print junit-style XML for CI
+      testOptions in Test <+= (target in Test) map {        t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))      },
       // add a JVM option to use when forking a JVM for 'run'
       javaOptions ++= Seq(
         "-Xmx512M",
@@ -123,9 +127,7 @@ object ScalaFXBuild extends Build {
   object Dependencies {
     // Ordered by `group 'and then by `artifact ID'.
     lazy val junit = "junit" % "junit" % "4.11"
-    lazy val scalatest = "org.scalatest" %% "scalatest" % "1.9.1"
-    // lazy val scalatest2: MID = sv => "org.scalatest" %% "scalatest" % scalatestVersion(sv)
-
+    lazy val scalatest = "org.scalatest" % "scalatest_2.10" % "2.0"
     type MID = String => ModuleID
   }
 
@@ -176,6 +178,9 @@ object ScalaFXBuild extends Build {
             <developer>
               <id>rafael.afonso</id>
               <name>Rafael Afonso</name>
+            </developer>
+            <developer>
+              <name>Mike Allen</name>
             </developer>
             <developer>
               <id>Alain.Fagot.Bearez</id>

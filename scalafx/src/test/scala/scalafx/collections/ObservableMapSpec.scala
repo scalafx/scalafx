@@ -31,7 +31,7 @@ import scala.collection.mutable._
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 
 import ObservableMap._
 import javafx.{collections => jfxc}

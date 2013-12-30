@@ -26,7 +26,7 @@
  */
 package scalafx.testutil
 
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import org.scalatest.FlatSpec
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty

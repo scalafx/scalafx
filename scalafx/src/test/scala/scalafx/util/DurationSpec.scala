@@ -29,7 +29,7 @@ package scalafx.util
 
 import javafx.{ util => jfxu }
 import org.scalatest.FlatSpec
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
