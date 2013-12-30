@@ -36,7 +36,7 @@ object ScalaFXBuild extends Build {
   import Dependencies._
   import Resolvers._
 
-  val scalafxVersion = "1.0.0-M7-SNAPSHOT"
+  val scalafxVersion = "1.0.0-M7"
 
   lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
     organization := "org.scalafx",
@@ -95,7 +95,9 @@ object ScalaFXBuild extends Build {
       fork in Test := true,
       parallelExecution in Test := false,
       // print junit-style XML for CI
-      testOptions in Test <+= (target in Test) map {        t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))      }
+      testOptions in Test <+= (target in Test) map {
+        t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))
+      }
     )
   )
 
@@ -112,12 +114,15 @@ object ScalaFXBuild extends Build {
       fork in Test := true,
       parallelExecution in Test := false,
       // print junit-style XML for CI
-      testOptions in Test <+= (target in Test) map {        t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))      },
+      testOptions in Test <+= (target in Test) map {
+        t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))
+      },
       // add a JVM option to use when forking a JVM for 'run'
       javaOptions ++= Seq(
         "-Xmx512M",
         "-Djavafx.verbose"
-      )
+      ),
+      publishArtifact := false
     )
   ) dependsOn (
     scalafx % "compile;test->test"
