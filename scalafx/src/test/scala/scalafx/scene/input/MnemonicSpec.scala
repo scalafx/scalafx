@@ -30,7 +30,7 @@ import org.junit.runner.RunWith
 import javafx.scene.{ input => jfxsi }
 import scalafx.Includes._
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Mnemonic Spec tests.
@@ -39,7 +39,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class MnemonicSpec
-  extends AbstractSFXDelegateSpec[jfxsi.Mnemonic, Mnemonic, jfxsi.MnemonicBuilder[_]](classOf[jfxsi.Mnemonic], classOf[Mnemonic], classOf[jfxsi.MnemonicBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxsi.Mnemonic, Mnemonic](classOf[jfxsi.Mnemonic], classOf[Mnemonic]) {
 
   override protected def getJavaClassInstance = new jfxsi.Mnemonic(null, null)
 

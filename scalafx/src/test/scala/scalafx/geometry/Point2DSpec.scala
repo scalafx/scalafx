@@ -29,7 +29,7 @@ package scalafx.geometry
 
 import javafx.{ geometry => jfxg }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -39,7 +39,7 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class Point2DSpec
-  extends AbstractSFXDelegateSpec[jfxg.Point2D, Point2D, jfxg.Point2DBuilder[_]](classOf[jfxg.Point2D], classOf[Point2D], classOf[jfxg.Point2DBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxg.Point2D, Point2D](classOf[jfxg.Point2D], classOf[Point2D]) {
 
   override protected def getScalaClassInstance = new Point2D(0, 0)
 

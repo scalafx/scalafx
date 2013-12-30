@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{canvas => jfxsc}
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Canvas Spec tests.
@@ -39,4 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class CanvasSpec
-  extends AbstractSFXDelegateSpec[jfxsc.Canvas, Canvas, jfxsc.CanvasBuilder[_]](classOf[jfxsc.Canvas], classOf[Canvas], classOf[jfxsc.CanvasBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.Canvas, Canvas](classOf[jfxsc.Canvas], classOf[Canvas])

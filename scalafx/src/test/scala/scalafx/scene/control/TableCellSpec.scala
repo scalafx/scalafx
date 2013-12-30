@@ -31,12 +31,13 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TableCellSpec tests.
  */
 @RunWith(classOf[JUnitRunner])
 class TableCellSpec[S, T]
-  extends AbstractSFXDelegateSpec[jfxsc.TableCell[S, T], TableCell[S, T], jfxsc.TableCellBuilder[S, T, _]](classOf[jfxsc.TableCell[S, T]], classOf[TableCell[S, T]], classOf[jfxsc.TableCellBuilder[S, T, _]])
+  extends SimpleSFXDelegateSpec[jfxsc.TableCell[S, T], TableCell[S, T]](
+    classOf[jfxsc.TableCell[S, T]], classOf[TableCell[S, T]])
   with RunOnApplicationThread

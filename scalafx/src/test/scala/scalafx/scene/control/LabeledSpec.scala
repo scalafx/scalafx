@@ -30,14 +30,14 @@ import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec, AlignmentDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec, AlignmentDelegateSpec}
 
 /**
  * Labeled Spec tests.
  */
 @RunWith(classOf[JUnitRunner])
 class LabeledSpec
-  extends AbstractSFXDelegateSpec[jfxsc.Labeled, Labeled, jfxsc.LabeledBuilder[_]](classOf[jfxsc.Labeled], classOf[Labeled], classOf[jfxsc.LabeledBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.Labeled, Labeled](classOf[jfxsc.Labeled], classOf[Labeled])
   with AlignmentDelegateSpec[jfxsc.Labeled, Labeled]
   with RunOnApplicationThread {
 

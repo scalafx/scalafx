@@ -30,7 +30,7 @@ import org.junit.runner.RunWith
 import javafx.scene.{ input => jfxsi }
 import scalafx.Includes._
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * KeyCharacterCombination Spec tests.
@@ -39,7 +39,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class KeyCharacterCombinationSpec
-  extends AbstractSFXDelegateSpec[jfxsi.KeyCharacterCombination, KeyCharacterCombination, jfxsi.KeyCharacterCombinationBuilder](classOf[jfxsi.KeyCharacterCombination], classOf[KeyCharacterCombination], classOf[jfxsi.KeyCharacterCombinationBuilder]) {
+  extends SimpleSFXDelegateSpec[jfxsi.KeyCharacterCombination, KeyCharacterCombination](
+    classOf[jfxsi.KeyCharacterCombination], classOf[KeyCharacterCombination]) {
 
   override protected def getJavaClassInstance = new jfxsi.KeyCharacterCombination("A")
 

@@ -32,7 +32,7 @@ import org.scalatest.junit.JUnitRunner
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc}
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * MultipleSelectionModel Spec tests.
@@ -40,7 +40,8 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class MultipleSelectionModelSpec[T]
-  extends AbstractSFXDelegateSpec[jfxsc.MultipleSelectionModel[T], MultipleSelectionModel[T], jfxsc.MultipleSelectionModelBuilder[T, _]](classOf[jfxsc.MultipleSelectionModel[T]], classOf[MultipleSelectionModel[T]], classOf[jfxsc.MultipleSelectionModelBuilder[T, _]]) {
+  extends SimpleSFXDelegateSpec[jfxsc.MultipleSelectionModel[T], MultipleSelectionModel[T]](
+    classOf[jfxsc.MultipleSelectionModel[T]], classOf[MultipleSelectionModel[T]]) {
 
   class SimpleMultipleSelectionModel extends jfxsc.MultipleSelectionModel[T] {
     def getSelectedIndices: jfxc.ObservableList[java.lang.Integer] = null

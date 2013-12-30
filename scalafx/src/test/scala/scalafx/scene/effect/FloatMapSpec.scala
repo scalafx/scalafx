@@ -28,7 +28,7 @@ package scalafx.scene.effect
 
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -39,4 +39,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class FloatMapSpec
-  extends AbstractSFXDelegateSpec[jfxse.FloatMap, FloatMap, jfxse.FloatMapBuilder[_]](classOf[jfxse.FloatMap], classOf[FloatMap], classOf[jfxse.FloatMapBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxse.FloatMap, FloatMap](classOf[jfxse.FloatMap], classOf[FloatMap])

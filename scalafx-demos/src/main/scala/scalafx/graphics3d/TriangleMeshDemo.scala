@@ -37,6 +37,7 @@ import scalafx.scene.Node
 import scalafx.scene.PerspectiveCamera
 import scalafx.scene.PointLight
 import scalafx.scene.Scene
+import scalafx.scene.SceneAntialiasing
 import scalafx.scene.image.Image
 import scalafx.scene.input.MouseEvent
 import scalafx.scene.paint.Color
@@ -54,7 +55,7 @@ object TriangleMeshDemo extends JFXApp {
 
   stage = new PrimaryStage {
     title = "TriangleMesh Demo"
-    scene = new Scene(500, 500, true, true) {
+    scene = new Scene(500, 500, true,  SceneAntialiasing.Balanced) {
       fill = Color.BEIGE
 
       // Create a tetrahedron and add to a mesh view. Configure it.
@@ -181,7 +182,7 @@ object TriangleMeshDemo extends JFXApp {
      * groups".  Each face can be assigned to one or more smoothing groups (up to 32 in total), although its typical for each face to be
      * mapped to just a single smoothing group. Smoothing group membership is expressed as a bit field, with each bit corresponding to a
      * unique smoothing group.
-     * 
+     *
      * In the case of a tetrahedron, each face should belong to its own smoothing group, so we here map each face to a single smoothing
      * group.
      */

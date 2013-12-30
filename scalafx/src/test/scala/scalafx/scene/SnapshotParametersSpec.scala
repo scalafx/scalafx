@@ -31,11 +31,12 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.{scene => jfxs}
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * SnapshotParameters Spec tests.
  */
 @RunWith(classOf[JUnitRunner])
 class SnapshotParametersSpec
-  extends AbstractSFXDelegateSpec[jfxs.SnapshotParameters, SnapshotParameters, jfxs.SnapshotParametersBuilder[_]](classOf[jfxs.SnapshotParameters], classOf[SnapshotParameters], classOf[jfxs.SnapshotParametersBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxs.SnapshotParameters, SnapshotParameters](
+    classOf[jfxs.SnapshotParameters], classOf[SnapshotParameters])

@@ -27,7 +27,7 @@
 
 package scalafx.beans.property
 
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 import javafx.beans.{property => jfxbp}
 import scalafx.Includes._

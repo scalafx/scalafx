@@ -30,7 +30,7 @@ import javafx.scene.{ chart => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ScatterChart Spec tests.
@@ -39,7 +39,8 @@ import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
  */
 @RunWith(classOf[JUnitRunner])
 class ScatterChartSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ScatterChart[Number, Number], ScatterChart[Number, Number], jfxsc.ScatterChartBuilder[Number, Number, _]](classOf[jfxsc.ScatterChart[Number, Number]], classOf[ScatterChart[Number, Number]], classOf[jfxsc.ScatterChartBuilder[Number, Number, _]])
+  extends SimpleSFXDelegateSpec[jfxsc.ScatterChart[Number, Number], ScatterChart[Number, Number]](
+    classOf[jfxsc.ScatterChart[Number, Number]], classOf[ScatterChart[Number, Number]])
   with RunOnApplicationThread {
 
   override def getJavaClassInstance = new jfxsc.ScatterChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)

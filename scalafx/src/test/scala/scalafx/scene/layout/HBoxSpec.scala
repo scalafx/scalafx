@@ -30,7 +30,7 @@ import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.AlignmentDelegateSpec
 
 /**
@@ -38,5 +38,5 @@ import scalafx.testutil.AlignmentDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class HBoxSpec
-  extends AbstractSFXDelegateSpec[jfxsl.HBox, HBox, jfxsl.HBoxBuilder[_]](classOf[jfxsl.HBox], classOf[HBox], classOf[jfxsl.HBoxBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsl.HBox, HBox](classOf[jfxsl.HBox], classOf[HBox])
   with AlignmentDelegateSpec[jfxsl.HBox, HBox]

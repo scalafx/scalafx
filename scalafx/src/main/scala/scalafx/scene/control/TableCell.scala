@@ -26,7 +26,7 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
@@ -38,45 +38,22 @@ object TableCell {
 /**
  * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableCell.html]].
  */
-class TableCell[S, T](override val delegate: jfxsc.TableCell[S, T] = new jfxsc.TableCell)
+class TableCell[S, T](override val delegate: jfxsc.TableCell[S, T] = new jfxsc.TableCell[S, T]())
   extends IndexedCell[T]
   with SFXDelegate[jfxsc.TableCell[S, T]] {
 
   /**
    * The TableColumn instance that backs this TableCell.
    */
-  def tableColumn: ReadOnlyObjectProperty[jfxsc.TableColumn[S,T]] = delegate.tableColumnProperty
+  def tableColumn: ReadOnlyObjectProperty[jfxsc.TableColumn[S, T]] = delegate.tableColumnProperty
 
   /**
-   *  The TableRow that this TableCell currently finds itself placed within.
+   * The TableRow that this TableCell currently finds itself placed within.
    */
   def tableRow: ReadOnlyObjectProperty[jfxsc.TableRow[_]] = delegate.tableRowProperty
 
   /**
-   *  The TableView associated with this TableCell.
+   * The TableView associated with this TableCell.
    */
   def tableView: ReadOnlyObjectProperty[jfxsc.TableView[S]] = delegate.tableViewProperty
-
-  /**
-   * Call this function to transition from an editing state into a non-editing state, without saving any user input.
-   */
-  def cancelEdit() {
-    delegate.cancelEdit()
-  }
-
-  /**
-   * Call this function to transition from an editing state into a non-editing state, and in the process saving any
-   * user input.
-   */
-  def commitEdit(newValue: T) {
-    delegate.commitEdit(newValue)
-  }
-
-  /**
-   * Call this function to transition from a non-editing state into an editing state, if the cell is editable.
-   */
-  def startEdit() {
-    delegate.startEdit()
-  }
-
 }

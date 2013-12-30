@@ -57,20 +57,18 @@ class SubScene(override val delegate: jfxs.SubScene)
 
   /** Constructs a SubScene with a [[http://docs.oracle.com/javafx/8/api/javafx/scene/Group.html Group]]
     * as root Node, with a dimension of width and height,
-    * specifies whether a depth buffer is created for this scene and specifies whether
-    * scene anti-aliasing is requested.
+    * specifies whether a depth buffer is created for this scene and specifies the level of antialiasing required.
     */
-  def this(width: Double, height: Double, depthBuffer: Boolean, antiAliasing: Boolean) =
+  def this(width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing) =
     this(new jfxs.SubScene(new jfxs.Group(), width, height, depthBuffer, antiAliasing))
 
   /** Creates a SubScene for a specific root Node with a specific size. */
   def this(root: Parent, width: Double, height: Double) = this(new jfxs.SubScene(root, width, height))
 
   /** Constructs a SubScene consisting of a root, with a dimension of width and height,
-    * specifies whether a depth buffer is created for this scene and specifies whether
-    * scene anti-aliasing is requested.
+    * specifies whether a depth buffer is created for this scene and specifies the level of antialiasing required.
     */
-  def this(root: Parent, width: Double, height: Double, depthBuffer: Boolean, antiAliasing: Boolean) =
+  def this(root: Parent, width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing) =
     this(new jfxs.SubScene(root, width, height, depthBuffer, antiAliasing))
 
   /** Defines the root Node of the SubScene scene graph. */

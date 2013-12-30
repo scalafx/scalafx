@@ -29,7 +29,7 @@ package scalafx.geometry
 
 import javafx.{ geometry => jfxg }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -39,7 +39,7 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class Dimension2DSpec
-  extends AbstractSFXDelegateSpec[jfxg.Dimension2D, Dimension2D, jfxg.Dimension2DBuilder[_]](classOf[jfxg.Dimension2D], classOf[Dimension2D], classOf[jfxg.Dimension2DBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxg.Dimension2D, Dimension2D](classOf[jfxg.Dimension2D], classOf[Dimension2D]) {
 
   override protected def getScalaClassInstance = new Dimension2D(0, 0)
 

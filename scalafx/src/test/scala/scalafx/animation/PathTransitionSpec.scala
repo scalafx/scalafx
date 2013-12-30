@@ -30,7 +30,7 @@ import javafx.{ animation => jfxa }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * PathTransition Spec tests.
@@ -39,4 +39,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class PathTransitionSpec 
-  extends AbstractSFXDelegateSpec[jfxa.PathTransition, PathTransition, jfxa.PathTransitionBuilder](classOf[jfxa.PathTransition], classOf[PathTransition], classOf[jfxa.PathTransitionBuilder])
+  extends SimpleSFXDelegateSpec[jfxa.PathTransition, PathTransition](
+    classOf[jfxa.PathTransition], classOf[PathTransition])

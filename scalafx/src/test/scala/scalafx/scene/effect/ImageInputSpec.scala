@@ -28,7 +28,7 @@ package scalafx.scene.effect
 
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.PositionDelegateSpec
@@ -40,7 +40,7 @@ import scalafx.testutil.PositionDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ImageInputSpec
-  extends AbstractSFXDelegateSpec[jfxse.ImageInput, ImageInput, jfxse.ImageInputBuilder[_]](classOf[jfxse.ImageInput], classOf[ImageInput], classOf[jfxse.ImageInputBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxse.ImageInput, ImageInput](classOf[jfxse.ImageInput], classOf[ImageInput])
   with PositionDelegateSpec[ImageInput] {
 
   val positionDelegate = new ImageInput

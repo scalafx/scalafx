@@ -31,7 +31,7 @@ import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Line Spec tests.
@@ -40,4 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class LineSpec
-  extends AbstractSFXDelegateSpec[jfxss.Line, Line, jfxss.LineBuilder[_]](classOf[jfxss.Line], classOf[Line], classOf[jfxss.LineBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxss.Line, Line](classOf[jfxss.Line], classOf[Line])

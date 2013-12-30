@@ -31,20 +31,21 @@ import jfxsp.{ Color => JColor }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
-import org.scalatest.matchers.ShouldMatchers._
+import scalafx.testutil.SimpleSFXDelegateSpec
+import org.scalatest.Matchers._
+import org.scalautils.Tolerance.convertNumericToPlusOrMinusWrapper
 
 /**
  * Color Spec tests.
  */
 @RunWith(classOf[JUnitRunner])
 class ColorSpec
-  extends AbstractSFXDelegateSpec[jfxsp.Color, Color, jfxsp.ColorBuilder[_]](classOf[jfxsp.Color], classOf[Color], classOf[jfxsp.ColorBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxsp.Color, Color](classOf[jfxsp.Color], classOf[Color]) {
 
   override protected def getJavaClassInstance = new jfxsp.Color(0, 0, 0, 0)
 
   private def assertComponent(realValue: Double, expectedValue: Double) {
-    realValue should be(expectedValue plusOrMinus 0.01)
+    realValue should be(convertNumericToPlusOrMinusWrapper(expectedValue) +- 0.01)
   }
 
   private def intToDouble(i: Int): Double = i.toDouble / 255.0

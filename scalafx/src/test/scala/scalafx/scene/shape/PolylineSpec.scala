@@ -31,7 +31,7 @@ import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Polyline Spec tests.
@@ -40,4 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class PolylineSpec
-  extends AbstractSFXDelegateSpec[jfxss.Polyline, Polyline, jfxss.PolylineBuilder[_]](classOf[jfxss.Polyline], classOf[Polyline], classOf[jfxss.PolylineBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxss.Polyline, Polyline](classOf[jfxss.Polyline], classOf[Polyline])

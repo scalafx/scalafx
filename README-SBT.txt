@@ -24,6 +24,9 @@ For a more general introduction, please refer to `README.txt' for more
 information. The documentation explains how to download the required software
 for ScalaFX development.
 
+There are two branches of ScalaFX: v.1.0 supporting JavaFX 2.x (Java 7) and 
+ScalaFX v.8.0 supporting JavaFX 8 (Java 8).
+
 This information was prepared using Scala SBT version 0.13.0, which you can download
 from: http://www.scala-sbt.org/
 
@@ -31,40 +34,28 @@ from: http://www.scala-sbt.org/
 2. Define Environment Variables
    ----------------------------
 
-Define an environment variable `JAVA_HOME' that points to the JDK location.
-Define an environment variable `JAVAFX_HOME' that points to the JDK location, if
-you want to keep JAVA_HOME separate. `JAVAFX_HOME' takes priority over
-`JAVA_HOME' in the Scala SBT build.
-
-For Oracle Java SE JDK 7 builds, which are distributed with JavaFX 2.2.x, the
-build checks for the presence of the `jfxrt.jar', which should be found under
-`${JAVAFX_HOME}/jre/lib/jfxrt.jar' or `${JAVA_HOME}/jre/lib/jfxrt.jar'
+Define an environment variable `JAVA_HOME' that points to the JDK location. 
+When building ScalaFX 1.0, it is used to locate JavaFX runtime library: jfxrt.jar. 
+For Oracle Java SE JDK 7 builds, it is assumed that JavaFX runtime library
+is in `${JAVA_HOME}/jre/lib/jfxrt.jar'
 
 In Unix, Mac OS X or Linux, you can define a environment variable `JAVAFX_HOME'
 inside the Bash shell init login file at `~/.bash_profile':
 
     # for Bash
-    export JAVAFX_HOME=/opt/java/jdk1.7.0_25
+    export JAVA_HOME=/opt/java/jdk1.7.0_45
 
 
 Alternatively, for the Bourne shell script, you can place this setting in the
 shell init login file `~/.profile':
 
     # for Bourne Shell
-    JAVAFX_HOME=/opt/java/jdk1.7.0_25
-    export JAVAFX_HOME
+    JAVA_HOME=/opt/java/jdk1.7.0_45
+    export JAVA_HOME
 
 
 For Windows 7 operating systems, you need to define an environment variable in
 the Control Panel in the Systems application.
-
-Setting `JAVAFX_HOME' is very useful, if you have more than one JDK installed on
-your development workstation. For example, if you have a beta version of JDK 8
-and still want to use JDK 7 for ScalaFX, then you have settings like this:
-
-   JAVAFX_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home
-   JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0.jdk/Contents/Home
-
 
 
 3. Checkout Source Code

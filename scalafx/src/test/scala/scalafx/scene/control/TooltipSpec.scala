@@ -31,7 +31,7 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.{ RunOnApplicationThread, AbstractSFXDelegateSpec }
+import scalafx.testutil.{ RunOnApplicationThread, SimpleSFXDelegateSpec }
 
 /**
  * Tooltip Spec tests.
@@ -40,4 +40,5 @@ import scalafx.testutil.{ RunOnApplicationThread, AbstractSFXDelegateSpec }
  */
 @RunWith(classOf[JUnitRunner])
 class TooltipSpec
-  extends AbstractSFXDelegateSpec[jfxsc.Tooltip, Tooltip, jfxsc.TooltipBuilder[_]](classOf[jfxsc.Tooltip], classOf[Tooltip], classOf[jfxsc.TooltipBuilder[_]]) with RunOnApplicationThread
+  extends SimpleSFXDelegateSpec[jfxsc.Tooltip, Tooltip](classOf[jfxsc.Tooltip], classOf[Tooltip])
+  with RunOnApplicationThread

@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * SepiaTone Spec tests.
@@ -40,7 +40,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class SepiaToneSpec
-  extends AbstractSFXDelegateSpec[jfxse.SepiaTone, SepiaTone, jfxse.SepiaToneBuilder[_]](classOf[jfxse.SepiaTone], classOf[SepiaTone], classOf[jfxse.SepiaToneBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxse.SepiaTone, SepiaTone](classOf[jfxse.SepiaTone], classOf[SepiaTone])
   with InputDelegateSpec[SepiaTone] {
 
   val inputDelegate = getScalaClassInstance

@@ -24,13 +24,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.controls.tableview
 
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{ObjectProperty, StringProperty}
+import scalafx.scene.paint.Color
 
-class Person(firstName_ : String, lastName_ : String, phone_ : String) {
+class Person(firstName_ : String, lastName_ : String, phone_ : String, favoriteColor_ : Color = Color.BLUE) {
 
   val firstName = new StringProperty(this, "firstName", firstName_)
   val lastName = new StringProperty(this, "lastName", lastName_)
   val phone = new StringProperty(this, "phone", phone_)
+  val favoriteColor = new ObjectProperty(this, "favoriteColor", favoriteColor_)
 }

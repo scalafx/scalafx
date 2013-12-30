@@ -30,7 +30,7 @@ import javafx.{ animation => jfxa }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{SimpleSFXDelegateSpec}
 
 /**
  * FillTransition Spec tests.
@@ -39,4 +39,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class FillTransitionSpec
-  extends AbstractSFXDelegateSpec[jfxa.FillTransition, FillTransition, jfxa.FillTransitionBuilder](classOf[jfxa.FillTransition], classOf[FillTransition], classOf[jfxa.FillTransitionBuilder])
+  extends SimpleSFXDelegateSpec[jfxa.FillTransition, FillTransition](
+    classOf[jfxa.FillTransition], classOf[FillTransition])

@@ -10,7 +10,9 @@ _|_|_|      _|_|_|    _|_|_|  _|    _|_|_|  _|        _|      _|
 
 This is the file `README-MAVEN.txt'.
 
-There are two official build systems for ScalaFX, namely Scala SBT and Gradle.
+The official build systems for ScalaFX is SBT. Building with Maven is not 
+supported but may be possible :).
+
 This document describes how the developers support the Maven repository system.
 
 This project build relies on SBT, but you can get the scalafx libraries like this in

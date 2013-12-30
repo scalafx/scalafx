@@ -30,7 +30,7 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ButtonBase Spec tests.
@@ -38,7 +38,7 @@ import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
  */
 @RunWith(classOf[JUnitRunner])
 class ButtonBaseSpec
-  extends AbstractSFXDelegateSpec[jfxsc.ButtonBase, ButtonBase, jfxsc.ButtonBaseBuilder[_]](classOf[jfxsc.ButtonBase], classOf[ButtonBase], classOf[jfxsc.ButtonBaseBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.ButtonBase, ButtonBase](classOf[jfxsc.ButtonBase], classOf[ButtonBase])
   with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new ButtonBase(new jfxsc.Button)

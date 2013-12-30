@@ -30,7 +30,7 @@ import javafx.scene.{ transform => jfxst }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.PositionDelegateSpec
 
 /**
@@ -40,7 +40,7 @@ import scalafx.testutil.PositionDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ShearSpec
-  extends AbstractSFXDelegateSpec[jfxst.Shear, Shear, jfxst.ShearBuilder[_]](classOf[jfxst.Shear], classOf[Shear], classOf[jfxst.ShearBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxst.Shear, Shear](classOf[jfxst.Shear], classOf[Shear])
   with PositionDelegateSpec[Shear] {
 
   val positionDelegate = getScalaClassInstance

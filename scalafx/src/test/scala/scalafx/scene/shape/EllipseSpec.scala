@@ -31,7 +31,7 @@ import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Ellipse Spec tests.
@@ -40,4 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class EllipseSpec
-  extends AbstractSFXDelegateSpec[jfxss.Ellipse, Ellipse, jfxss.EllipseBuilder[_]](classOf[jfxss.Ellipse], classOf[Ellipse], classOf[jfxss.EllipseBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxss.Ellipse, Ellipse](classOf[jfxss.Ellipse], classOf[Ellipse])

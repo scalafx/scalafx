@@ -30,7 +30,7 @@ import javafx.scene.{control => jfxsc}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Tab Spec tests.
@@ -38,4 +38,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class TabSpec 
-extends AbstractSFXDelegateSpec[jfxsc.Tab, Tab, jfxsc.TabBuilder[_]](classOf[jfxsc.Tab], classOf[Tab], classOf[jfxsc.TabBuilder[_]])
+extends SimpleSFXDelegateSpec[jfxsc.Tab, Tab](classOf[jfxsc.Tab], classOf[Tab])

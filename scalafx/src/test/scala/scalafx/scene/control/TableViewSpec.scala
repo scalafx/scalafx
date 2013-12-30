@@ -28,19 +28,19 @@ package scalafx.scene.control
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TableViewSpec tests.
  */
 @RunWith(classOf[JUnitRunner])
 class TableViewSpec[S]
-  extends AbstractSFXDelegateSpec[jfxsc.TableView[S], TableView[S], jfxsc.TableViewBuilder[S, _]](
-    classOf[jfxsc.TableView[S]], classOf[TableView[S]], classOf[jfxsc.TableViewBuilder[S, _]])
+  extends SimpleSFXDelegateSpec[jfxsc.TableView[S], TableView[S]](
+    classOf[jfxsc.TableView[S]], classOf[TableView[S]])
   with RunOnApplicationThread {
 
   it should "not drop assigned columns - Issue 41" in {

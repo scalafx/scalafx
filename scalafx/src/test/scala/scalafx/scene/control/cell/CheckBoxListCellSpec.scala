@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.control.{ cell => jfxscc }
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * CheckBoxListCell Spec tests.
@@ -40,5 +40,6 @@ import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
  */
 @RunWith(classOf[JUnitRunner])
 class CheckBoxListCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxscc.CheckBoxListCell[T], CheckBoxListCell[T], jfxscc.CheckBoxListCellBuilder[T, _]](classOf[jfxscc.CheckBoxListCell[T]], classOf[CheckBoxListCell[T]], classOf[jfxscc.CheckBoxListCellBuilder[T, _]])
+  extends SimpleSFXDelegateSpec[jfxscc.CheckBoxListCell[T], CheckBoxListCell[T]](
+    classOf[jfxscc.CheckBoxListCell[T]], classOf[CheckBoxListCell[T]])
   with RunOnApplicationThread

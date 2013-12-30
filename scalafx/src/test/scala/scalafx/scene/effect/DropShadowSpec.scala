@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.DimensionDelegateSpec
 
 /**
@@ -41,7 +41,7 @@ import scalafx.testutil.DimensionDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class DropShadowSpec
-  extends AbstractSFXDelegateSpec[jfxse.DropShadow, DropShadow, jfxse.DropShadowBuilder[_]](classOf[jfxse.DropShadow], classOf[DropShadow], classOf[jfxse.DropShadowBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxse.DropShadow, DropShadow](classOf[jfxse.DropShadow], classOf[DropShadow])
   with ColorDelegateSpec[DropShadow]
   with DimensionDelegateSpec[DropShadow]
   with InputDelegateSpec[DropShadow] {

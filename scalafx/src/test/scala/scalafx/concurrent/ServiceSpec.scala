@@ -32,7 +32,7 @@ import javafx.{ concurrent => jfxc, event => jfxe }
 import scalafx.Includes._
 import scalafx.event.EventType
 import scalafx.testutil.SimpleSFXDelegateSpec
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import scalafx.testutil.RunOnApplicationThread
 
 /**

@@ -31,7 +31,7 @@ import javafx.{ scene => jfxs }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ImageCursor Spec tests.
@@ -40,4 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ImageCursorSpec
-  extends AbstractSFXDelegateSpec[jfxs.ImageCursor, ImageCursor, jfxs.ImageCursorBuilder[_]](classOf[jfxs.ImageCursor], classOf[ImageCursor], classOf[jfxs.ImageCursorBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxs.ImageCursor, ImageCursor](classOf[jfxs.ImageCursor], classOf[ImageCursor])

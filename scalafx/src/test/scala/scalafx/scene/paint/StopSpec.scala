@@ -30,8 +30,7 @@ import javafx.scene.{ paint => jfxsp }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
-import scala.collection.JavaConversions._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Stop Spec tests.
@@ -40,7 +39,7 @@ import scala.collection.JavaConversions._
  */
 @RunWith(classOf[JUnitRunner])
 class StopSpec
-  extends AbstractSFXDelegateSpec[jfxsp.Stop, Stop, jfxsp.StopBuilder](classOf[jfxsp.Stop], classOf[Stop], classOf[jfxsp.StopBuilder]) {
+  extends SimpleSFXDelegateSpec[jfxsp.Stop, Stop](classOf[jfxsp.Stop], classOf[Stop]) {
 
   override protected def getJavaClassInstance = new jfxsp.Stop(0, 0)
 

@@ -30,7 +30,7 @@ import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TableRowSpec tests.
@@ -39,5 +39,5 @@ import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
  */
 @RunWith(classOf[JUnitRunner])
 class TableRowSpec[T]
-  extends AbstractSFXDelegateSpec[jfxsc.TableRow[T], TableRow[T], jfxsc.TableRowBuilder[T, _]](classOf[jfxsc.TableRow[T]], classOf[TableRow[T]], classOf[jfxsc.TableRowBuilder[T, _]])
+  extends SimpleSFXDelegateSpec[jfxsc.TableRow[T], TableRow[T]](classOf[jfxsc.TableRow[T]], classOf[TableRow[T]])
   with RunOnApplicationThread

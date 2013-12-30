@@ -31,7 +31,7 @@ import javafx.{ animation => jfxa }
 import javafx.{ event => jfxe }
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.event.ActionEvent
@@ -66,23 +66,54 @@ class KeyFrameSpec
   }
 
   it should "have a simpler syntax for finish handlers" in {
-    var callCount = 0
-    val finishHandler = {
-      callCount += 1
+      // There is a potential problems with code blocks as event handlers,
+      // only the last statement is executed during handler invocation
+      // prior statements are executed only once during construction.
+    var callCount1 = 0
+    var callCount2 = 0
+    // Call the handler 3 times
+    KeyFrame(10 ms, onFinished = handle{callCount1 += 1; callCount2 += 1}).onFinished.handle(null)
+    KeyFrame(10 ms, onFinished = handle{callCount1 += 1; callCount2 += 1}).onFinished.handle(null)
+    KeyFrame(10 ms, onFinished = handle{callCount1 += 1; callCount2 += 1}).onFinished.handle(null)
+    // Verify that three calls were made
+    callCount2 should equal(3)
+    callCount1 should equal(3)
+  }
+
+  it should "have a simpler syntax for finish handlers as non-param functions" in {
+    var callCount1 = 0
+    var callCount2 = 0
+    val finishHandler = () => {
+      // There is a potential problems with code blocks as event handlers,
+      // only the last statement is executed during handler invocation
+      // prior statements are executed only once during construction.
+      callCount1 += 1
+      callCount2 += 1
     }
+    // Call the handler 3 times
     KeyFrame(10 ms, onFinished = finishHandler).onFinished.handle(null)
-    callCount should equal(1)
+    KeyFrame(10 ms, onFinished = finishHandler).onFinished.handle(null)
+    KeyFrame(10 ms, onFinished = finishHandler).onFinished.handle(null)
+    // Verify that three calls were made
+    callCount2 should equal(3)
+    callCount1 should equal(3)
   }
 
   it should "have a simpler syntax for finish handlers with events" in {
-    var callCount = 0
+    var callCount1 = 0
+    var callCount2 = 0
     val actionEvent = new jfxe.ActionEvent()
     val finishHandler = { (event: ActionEvent) =>
-      callCount += 1
+      callCount1 += 1
+      callCount2 += 1
       event should equal(actionEvent)
     }
     KeyFrame(10 ms, onFinished = finishHandler).onFinished.handle(actionEvent)
-    callCount should equal(1)
+    KeyFrame(10 ms, onFinished = finishHandler).onFinished.handle(actionEvent)
+    KeyFrame(10 ms, onFinished = finishHandler).onFinished.handle(actionEvent)
+    // Verify that three calls were made
+    callCount2 should equal(3)
+    callCount1 should equal(3)
   }
 
   it should "have a convenient apply construction format and property access for values" in {

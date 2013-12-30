@@ -28,7 +28,7 @@ package scalafx.scene.effect
 
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -39,4 +39,4 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class LightingSpec
-  extends AbstractSFXDelegateSpec[jfxse.Lighting, Lighting, jfxse.LightingBuilder[_]](classOf[jfxse.Lighting], classOf[Lighting], classOf[jfxse.LightingBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxse.Lighting, Lighting](classOf[jfxse.Lighting], classOf[Lighting])

@@ -31,7 +31,7 @@ import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{ effect => jfxse }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Reflection Spec tests.
@@ -40,7 +40,7 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ReflectionSpec
-  extends AbstractSFXDelegateSpec[jfxse.Reflection, Reflection, jfxse.ReflectionBuilder[_]](classOf[jfxse.Reflection], classOf[Reflection], classOf[jfxse.ReflectionBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxse.Reflection, Reflection](classOf[jfxse.Reflection], classOf[Reflection])
   with InputDelegateSpec[Reflection] {
 
   val inputDelegate = getScalaClassInstance

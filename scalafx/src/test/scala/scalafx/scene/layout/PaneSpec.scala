@@ -31,7 +31,7 @@ import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Pane Spec tests.
@@ -40,4 +40,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class PaneSpec
-  extends AbstractSFXDelegateSpec[jfxsl.Pane, Pane, jfxsl.PaneBuilder[_]](classOf[jfxsl.Pane], classOf[Pane], classOf[jfxsl.PaneBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsl.Pane, Pane](classOf[jfxsl.Pane], classOf[Pane])

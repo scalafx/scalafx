@@ -27,7 +27,7 @@
 package scalafx.animation
 
 import javafx.{ animation => jfxa }
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import scalafx.Includes._
 import scalafx.beans.property._
 import org.junit.runner.RunWith

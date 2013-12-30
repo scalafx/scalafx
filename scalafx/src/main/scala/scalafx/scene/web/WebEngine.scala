@@ -87,7 +87,7 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) ex
   /** The event handler called when an error occurs. */
   def onError = delegate.onErrorProperty
   def onError_=(v: jfxe.EventHandler[jfxsw.WebErrorEvent]) {
-    onAlert() = v
+    onError() = v
   }
 
   /**

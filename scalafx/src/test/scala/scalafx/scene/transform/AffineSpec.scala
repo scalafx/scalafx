@@ -30,7 +30,7 @@ import javafx.scene.{ transform => jfxst }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Affine Spec tests.
@@ -39,4 +39,4 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class AffineSpec
-  extends AbstractSFXDelegateSpec[jfxst.Affine, Affine, jfxst.AffineBuilder[_]](classOf[jfxst.Affine], classOf[Affine], classOf[jfxst.AffineBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxst.Affine, Affine](classOf[jfxst.Affine], classOf[Affine])

@@ -29,7 +29,7 @@ package scalafx.geometry
 
 import javafx.{ geometry => jfxg }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -39,7 +39,8 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class BoundingBoxSpec
-  extends AbstractSFXDelegateSpec[jfxg.BoundingBox, BoundingBox, jfxg.BoundingBoxBuilder[_]](classOf[jfxg.BoundingBox], classOf[BoundingBox], classOf[jfxg.BoundingBoxBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxg.BoundingBox, BoundingBox](
+    classOf[jfxg.BoundingBox], classOf[BoundingBox]) {
 
   override protected def getScalaClassInstance = new BoundingBox(0, 0, 0, 0)
 

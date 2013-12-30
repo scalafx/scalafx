@@ -30,7 +30,7 @@ import javafx.scene.{ paint => jfxsp }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scala.collection.JavaConversions._
 
 /**
@@ -40,7 +40,8 @@ import scala.collection.JavaConversions._
  */
 @RunWith(classOf[JUnitRunner])
 class LinearGradientSpec
-  extends AbstractSFXDelegateSpec[jfxsp.LinearGradient, LinearGradient, jfxsp.LinearGradientBuilder](classOf[jfxsp.LinearGradient], classOf[LinearGradient], classOf[jfxsp.LinearGradientBuilder]) {
+  extends SimpleSFXDelegateSpec[jfxsp.LinearGradient, LinearGradient](
+    classOf[jfxsp.LinearGradient], classOf[LinearGradient]) {
 
   override protected def getScalaClassInstance = new LinearGradient
   

@@ -30,11 +30,12 @@ import javafx.{ animation => jfxa }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.{SimpleSFXDelegateSpec}
 
 /**
  * FadeTransition Spec tests.
  */
 @RunWith(classOf[JUnitRunner])
 class FadeTransitionSpec
-  extends AbstractSFXDelegateSpec[jfxa.FadeTransition, FadeTransition, jfxa.FadeTransitionBuilder](classOf[jfxa.FadeTransition], classOf[FadeTransition], classOf[jfxa.FadeTransitionBuilder])
+  extends SimpleSFXDelegateSpec[jfxa.FadeTransition, FadeTransition](
+    classOf[jfxa.FadeTransition], classOf[FadeTransition])

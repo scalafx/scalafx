@@ -30,9 +30,8 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{control => jfxsc}
-import scalafx.Includes.jfxTitledPane2sfx
-import scalafx.scene.control.TitledPane.sfxTitledPane2jfx
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.Includes._
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TitledPane Spec tests.
@@ -40,5 +39,5 @@ import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
  */
 @RunWith(classOf[JUnitRunner])
 class TitledPaneSpec
-  extends AbstractSFXDelegateSpec[jfxsc.TitledPane, TitledPane, jfxsc.TitledPaneBuilder[_]](classOf[jfxsc.TitledPane], classOf[TitledPane], classOf[jfxsc.TitledPaneBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.TitledPane, TitledPane](classOf[jfxsc.TitledPane], classOf[TitledPane])
   with RunOnApplicationThread

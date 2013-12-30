@@ -27,7 +27,7 @@
 package scalafx.scene
 
 import scalafx.beans.property.ReadOnlyObjectProperty
-import javafx.{ scene => jfxs }
+import javafx.{scene => jfxs}
 import chart.ChartIncludes
 import layout.LayoutIncludes
 import image.ImageIncludes
@@ -45,14 +45,14 @@ object SceneIncludes extends SceneIncludes
  * Classes/Traits to their ScalaFX counterparts.
  */
 trait SceneIncludes extends ChartIncludes
-  with LayoutIncludes
-  with PaintIncludes
-  with ShapeIncludes
-  with TextIncludes
-  with ImageIncludes
-  with EffectIncludes
-  with LowerPriorityIncludes
-  with ControlIncludes
+with LayoutIncludes
+with PaintIncludes
+with ShapeIncludes
+with TextIncludes
+with ImageIncludes
+with EffectIncludes
+with LowerPriorityIncludes
+with ControlIncludes
 
 /**
  * Contains implicit methods to convert from
@@ -75,6 +75,7 @@ trait SceneIncludes extends ChartIncludes
  * @define PAR Parent
  * @define PEC PerspectiveCamera
  * @define SCE Scene
+ * @define SCA SceneAntialiasing
  * @define SCP SceneProperty
  * @define SNP SnapshotParameters
  * @define SSCE SubScene
@@ -174,6 +175,20 @@ trait LowerPriorityIncludes {
    * @return $SFX $SCE
    */
   implicit def jfxScene2sfx(v: jfxs.Scene) = new Scene(v)
+
+  /**
+   * $START$SCA.html $SCA$END
+   *
+   * @param v $JFX $SCA
+   * @return $SFX $SCA
+   *
+   * @throws java.lang.IllegalArgumentException if `v` has no known correspondence in ScalaFX.
+   */
+  implicit def jfxSceneAntialiasing2sfx(v: jfxs.SceneAntialiasing): SceneAntialiasing = {
+    // A value of null is treated as though antialiasing is disabled.
+    if (v eq null) SceneAntialiasing.Disabled
+    else new SceneAntialiasing(v)
+  }
 
   /**
    * Generates a $SCP from a $JFX $SCE.

@@ -29,12 +29,12 @@ package scalafx.scene.control
 import org.junit.runner.RunWith
 import javafx.scene.{ control => jfxsc }
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.Includes._
 
 @RunWith(classOf[JUnitRunner])
 class MenuSpec
-  extends AbstractSFXDelegateSpec[jfxsc.Menu, Menu, jfxsc.MenuBuilder[_]](classOf[jfxsc.Menu], classOf[Menu], classOf[jfxsc.MenuBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxsc.Menu, Menu](classOf[jfxsc.Menu], classOf[Menu]) {
 
   override protected def getScalaClassInstance = new Menu(new jfxsc.Menu("default"))
 

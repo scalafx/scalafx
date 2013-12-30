@@ -30,9 +30,6 @@ import colorselector.Max
 import colorselector.Min
 import colorselector.doubleToInt
 import scalafx.Includes._
-import scalafx.scene.text.FontWeight
-import scalafx.Includes.jfxBooleanProperty2sfx
-import scalafx.Includes.jfxDoubleProperty2sfx
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.DoubleProperty.sfxDoubleProperty2jfx
@@ -40,11 +37,12 @@ import scalafx.beans.property.StringProperty
 import scalafx.scene.control.CheckBox
 import scalafx.scene.control.Label
 import scalafx.scene.control.Slider
+import scalafx.scene.input.ScrollEvent
 import scalafx.scene.layout.HBox
 import scalafx.scene.layout.Priority
 import scalafx.scene.paint.Color
 import scalafx.scene.text.Font
-import scalafx.scene.input.ScrollEvent
+import scalafx.scene.text.FontWeight
 
 /**
  * @author Rafael
@@ -59,7 +57,9 @@ class SliderControl(title: String) extends HBox {
   private val cssForeground = new StringProperty()
 
   val realValue = new DoubleProperty()
+
   def value = this.realValue
+
   def value_=(d: Double) {
     if (d < Min) {
       value() = Min
@@ -93,7 +93,7 @@ class SliderControl(title: String) extends HBox {
     minorTickCount = 4
     showTickLabels = true
     showTickMarks = true
-//    style = ".slider .axis {-fx-tick-label-fill: green;}"
+    //    style = ".slider .axis {-fx-tick-label-fill: green;}"
     hgrow = Priority.ALWAYS
     style <== cssForeground
     value <==> realValue
@@ -113,15 +113,14 @@ class SliderControl(title: String) extends HBox {
 
   style <== cssBackground
 
-  onScroll =(event: ScrollEvent) => {
+  onScroll = (event: ScrollEvent) => {
+    if (event.eventType == ScrollEvent.SCROLL) {
+      val multiplier = if (event.isControlDown) 10 else 1
+      val delta = -(event.getDeltaY.toInt / 10)
 
-      if (event.getEventType == ScrollEvent.SCROLL) {
-        val multiplier = if (event.isControlDown) 10 else 1
-        val delta = -(event.getDeltaY.toInt / 10)
-
-        value = (value.get + multiplier * delta)
-      }
+      value = (value.get + multiplier * delta)
     }
+  }
 
 
   def changeColor(backgroundColor: Color, foregroundColor: Color) {

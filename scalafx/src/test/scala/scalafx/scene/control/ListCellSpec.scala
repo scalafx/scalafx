@@ -30,7 +30,7 @@ import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ListCell Spec tests.
@@ -39,5 +39,5 @@ import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
  */
 @RunWith(classOf[JUnitRunner])
 class ListCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxsc.ListCell[T], ListCell[T], jfxsc.ListCellBuilder[T, _]](classOf[jfxsc.ListCell[T]], classOf[ListCell[T]], classOf[jfxsc.ListCellBuilder[T, _]])
+  extends SimpleSFXDelegateSpec[jfxsc.ListCell[T], ListCell[T]](classOf[jfxsc.ListCell[T]], classOf[ListCell[T]])
   with RunOnApplicationThread

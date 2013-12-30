@@ -13,6 +13,9 @@ _|_|_|      _|_|_|    _|_|_|  _|    _|_|_|  _|        _|      _|
 Building ScalaFX with Gradle
 -------------------------------
 
+NOTE: The recommended build setup for ScalaFX is using SBT, building with 
+Gradle is supported, but may be possible :) 
+
 This is the `README-GRADLE.txt ' file for ScalaFX 
 
 

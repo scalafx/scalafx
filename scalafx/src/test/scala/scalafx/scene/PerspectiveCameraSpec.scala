@@ -31,7 +31,7 @@ import javafx.{ scene => jfxs }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * PerspectiveCamera Spec tests.
@@ -40,4 +40,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class PerspectiveCameraSpec
-  extends AbstractSFXDelegateSpec[jfxs.PerspectiveCamera, PerspectiveCamera, jfxs.PerspectiveCameraBuilder[_]](classOf[jfxs.PerspectiveCamera], classOf[PerspectiveCamera], classOf[jfxs.PerspectiveCameraBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxs.PerspectiveCamera, PerspectiveCamera](
+    classOf[jfxs.PerspectiveCamera], classOf[PerspectiveCamera])

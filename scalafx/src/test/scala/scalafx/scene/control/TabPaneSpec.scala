@@ -30,9 +30,8 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 import javafx.scene.{control => jfxsc}
-import scalafx.Includes.jfxTabPane2sfx
-import scalafx.scene.control.TabPane.sfxTabPane2jfx
-import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
+import scalafx.Includes._
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TabPane Spec tests.
@@ -40,5 +39,5 @@ import scalafx.testutil.{RunOnApplicationThread, AbstractSFXDelegateSpec}
  */
 @RunWith(classOf[JUnitRunner])
 class TabPaneSpec
-  extends AbstractSFXDelegateSpec[jfxsc.TabPane, TabPane, jfxsc.TabPaneBuilder[_]](classOf[jfxsc.TabPane], classOf[TabPane], classOf[jfxsc.TabPaneBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.TabPane, TabPane](classOf[jfxsc.TabPane], classOf[TabPane])
   with RunOnApplicationThread

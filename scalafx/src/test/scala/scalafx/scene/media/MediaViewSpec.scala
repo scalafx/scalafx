@@ -30,7 +30,7 @@ import javafx.scene.{ media => jfxsm }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.PositionDelegateSpec
 
 /**
@@ -40,7 +40,7 @@ import scalafx.testutil.PositionDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class MediaViewSpec
-  extends AbstractSFXDelegateSpec[jfxsm.MediaView, MediaView, jfxsm.MediaViewBuilder[_]](classOf[jfxsm.MediaView], classOf[MediaView], classOf[jfxsm.MediaViewBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsm.MediaView, MediaView](classOf[jfxsm.MediaView], classOf[MediaView])
   with PositionDelegateSpec[MediaView] {
 
   val positionDelegate = new MediaView

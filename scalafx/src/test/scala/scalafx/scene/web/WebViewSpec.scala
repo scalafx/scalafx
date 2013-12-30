@@ -31,7 +31,7 @@ import javafx.scene.{ web => jfxsw }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.testutil.RunOnApplicationThread
 
 /**
@@ -40,5 +40,5 @@ import scalafx.testutil.RunOnApplicationThread
  */
 @RunWith(classOf[JUnitRunner])
 class WebViewSpec
-  extends AbstractSFXDelegateSpec[jfxsw.WebView, WebView, jfxsw.WebViewBuilder](classOf[jfxsw.WebView], classOf[WebView], classOf[jfxsw.WebViewBuilder])
+  extends SimpleSFXDelegateSpec[jfxsw.WebView, WebView](classOf[jfxsw.WebView], classOf[WebView])
   with RunOnApplicationThread

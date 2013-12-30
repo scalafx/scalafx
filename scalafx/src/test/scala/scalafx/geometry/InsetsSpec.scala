@@ -29,7 +29,7 @@ package scalafx.geometry
 
 import javafx.{ geometry => jfxg }
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -39,7 +39,7 @@ import org.scalatest.junit.JUnitRunner
  */
 @RunWith(classOf[JUnitRunner])
 class InsetsSpec
-  extends AbstractSFXDelegateSpec[jfxg.Insets, Insets, jfxg.InsetsBuilder[_]](classOf[jfxg.Insets], classOf[Insets], classOf[jfxg.InsetsBuilder[_]]) {
+  extends SimpleSFXDelegateSpec[jfxg.Insets, Insets](classOf[jfxg.Insets], classOf[Insets]) {
 
   override protected def getScalaClassInstance = Insets.Empty
 
