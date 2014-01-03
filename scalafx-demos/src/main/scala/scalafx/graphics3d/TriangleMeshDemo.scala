@@ -66,7 +66,8 @@ object TriangleMeshDemo extends JFXApp {
           diffuseMap = image
         }
       }
-      // Put shapes in a groups so they can be rotated together
+
+      // Put shapes in a group so they can be rotated together
       val shapes = new Group(tetra)
 
       val pointLight = new PointLight {
@@ -77,7 +78,7 @@ object TriangleMeshDemo extends JFXApp {
       }
 
       val ambientLight = new AmbientLight {
-        color = Color.YELLOW
+        color = Color.WHITE
       }
 
       root = new Group {
@@ -140,7 +141,7 @@ object TriangleMeshDemo extends JFXApp {
      *
      * Each texture co-ordinate is made up of two values, conventionally u (horizontal) and v (vertical), that are defined as floating
      * point values between 0 and 1.  The idea is that, given a square image (that is to be applied as a texture to this tetrahedron),
-     * the texture co-ordinates define which parts of the image map to which face. (Note: The origin, 0.0, is the top left corner of the
+     * the texture co-ordinates define which parts of the image map to which face. (Note: The origin, (0, 0), is the top left corner of the
      * image).
      */
     mesh.texCoords = Array (
@@ -177,7 +178,7 @@ object TriangleMeshDemo extends JFXApp {
     /*
      * Set the mesh's face smoothing groups array to define which faces belong to which smoothing groups.
      *
-     * Often, a portion of a 3D mesh is made up of two of more triangular faces that define a single face (such as the surface of a
+     * Often, a portion of a 3D mesh is made up of two or more triangular faces that define a single face (such as the surface of a
      * sphere).  In this case, it makes sense to smooth all such faces when rendering the shape.  This is the idea behind "face smoothing
      * groups".  Each face can be assigned to one or more smoothing groups (up to 32 in total), although its typical for each face to be
      * mapped to just a single smoothing group. Smoothing group membership is expressed as a bit field, with each bit corresponding to a
@@ -189,7 +190,7 @@ object TriangleMeshDemo extends JFXApp {
     mesh.faceSmoothingGroups = Array (
       0x1,              // Base face, smoothing group 0 (2^0).
       0x2,              // Right face, smoothing group (2^1).
-      0x4,              // Front face, smoothing group (2^2.
+      0x4,              // Front face, smoothing group (2^2).
       0x8               // Left face, smoothing group (2^3).
     )
 
