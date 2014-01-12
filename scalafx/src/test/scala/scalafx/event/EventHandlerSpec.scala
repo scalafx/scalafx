@@ -90,7 +90,7 @@ class EventHandlerSpec extends FlatSpec with RunOnApplicationThread {
     assert(groupCounter === 0)
     assert(buttonCounter === 0)
 
-    val actionEvent = new ActionEvent(this, group)
+    val actionEvent = new ActionEvent(this, button)
 
     button.fireEvent(actionEvent)
     assert(groupCounter === 2)
@@ -125,7 +125,7 @@ class EventHandlerSpec extends FlatSpec with RunOnApplicationThread {
     assert(groupCounter === 0)
     assert(buttonCounter === 0)
 
-    val actionEvent = new ActionEvent(this, group)
+    val actionEvent = new ActionEvent(this, button)
 
     button.fireEvent(actionEvent)
     assert(groupCounter === 0)
