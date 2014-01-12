@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,6 +45,7 @@ object EventHandler {
  * def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E])
  * def addEventFilter    [E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E])
  * def removeEventFilter [E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E])
+ * def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain
  * }}}
  */
 trait EventHandlerDelegate {
@@ -111,15 +112,16 @@ trait EventHandlerDelegate {
    * to avoid compilation error "ambiguous reference to overloaded definition"
    */
   object HandlerMagnet {
-    implicit def fromUnit[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: => Unit) = {
+    implicit def fromParen[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: () => Unit) = {
       new HandlerMagnet[J, S] {
         override val eventHandler = new jfxe.EventHandler[J] {
           def handle(event: J) {
-            op
+            op()
           }
         }
       }
     }
+
     implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S) = {
       new HandlerMagnet[J, S] {
         override val eventHandler = new jfxe.EventHandler[J] {
@@ -219,6 +221,7 @@ trait EventHandlerDelegate {
         }
       }
     }
+
     implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S) = {
       new FilterMagnet[J, S] {
         def apply(eventType: EventType[J]) {
