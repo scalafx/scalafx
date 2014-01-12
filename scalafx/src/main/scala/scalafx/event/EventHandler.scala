@@ -150,13 +150,8 @@ trait EventHandlerDelegate {
    * }}}
    * or
    * {{{
-   *  pane.handleEvent(MouseEvent.Any) { println("Some mouse event handled") }
+   *  pane.handleEvent(MouseEvent.Any) { () => println("Some mouse event handled") }
    * }}}
-   * NOTE: be careful with the code block, as in the second example above, they are not functions.
-   * Due to the way Scala treats code blocks, only the last statement is invoked by the handler.
-   * Statements before the last are treated as a "constructor" and executed only once, when handler is created.
-   * To avoid issue use the first form above {{{me: MouseEvent => ...}}}.
-   * If using code blocks, use only a single statement, for instance call to a function or a method.
    *
    * @param eventType type of events that will be handled.
    * @param handler code handling the event, see examples above.
@@ -188,10 +183,10 @@ trait EventHandlerDelegate {
    *
    * @tparam E Event class
    * @param eventType  the type of the events to receive by the filter
-   * @param eventFilter the filter to register that will filter event
+   * @param eventHandler the filter to register that will filter event
    */
-  def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[_ >: E]) {
-    eventHandlerDelegate.addEventFilter(eventType, eventFilter)
+  def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) {
+    eventHandlerDelegate.addEventFilter(eventType, eventHandler)
   }
 
   /**
@@ -199,7 +194,16 @@ trait EventHandlerDelegate {
    * to avoid compilation error "ambiguous reference to overloaded definition"
    */
   sealed trait FilterMagnet[J <: jfxe.Event, S <: SFXDelegate[J]] {
-    def apply(eventType: EventType[J])
+    protected val eventFilter: jfxe.EventHandler[J]
+
+    def apply(eventType: EventType[J]): Subscription = {
+      EventHandlerDelegate.this.addEventFilter(eventType.delegate, eventFilter)
+      new Subscription {
+        def cancel() {
+          EventHandlerDelegate.this.removeEventFilter(eventType.delegate, eventFilter)
+        }
+      }
+    }
   }
 
   /**
@@ -207,32 +211,22 @@ trait EventHandlerDelegate {
    * to avoid compilation error "ambiguous reference to overloaded definition"
    */
   object FilterMagnet {
-    implicit def fromUnit[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: => Unit) = {
+    implicit def fromParen[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: () => Unit) = {
       new FilterMagnet[J, S] {
-        def apply(eventType: EventType[J]) {
-          EventHandlerDelegate.this.addEventFilter(
-            eventType.delegate,
-            new jfxe.EventHandler[J] {
-              def handle(event: J) {
-                op
-              }
-            }
-          )
+        override val eventFilter = new jfxe.EventHandler[J] {
+          def handle(event: J) {
+            op()
+          }
         }
       }
     }
 
     implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S) = {
       new FilterMagnet[J, S] {
-        def apply(eventType: EventType[J]) {
-          EventHandlerDelegate.this.addEventFilter(
-            eventType.delegate,
-            new jfxe.EventHandler[J] {
-              def handle(event: J) {
-                op(jfx2sfx(event))
-              }
-            }
-          )
+        override val eventFilter = new jfxe.EventHandler[J] {
+          def handle(event: J) {
+            op(jfx2sfx(event))
+          }
         }
       }
     }
@@ -261,20 +255,16 @@ trait EventHandlerDelegate {
    * }}}
    * or
    * {{{
-   *  pane.filterEvent(MouseEvent.Any) { println("Some mouse event handled") }
+   *  pane.filterEvent(MouseEvent.Any) { () => println("Some mouse event handled") }
    * }}}
-   * NOTE: be careful with the code block, as in the second example above, they are not functions.
-   * Due to the way Scala treats code blocks, only the last statement is invoked by the handler.
-   * Statements before the last are treated as a "constructor" and executed only once, when handler is created.
-   * To avoid issue use the first form in with explicit event the example above {{{me: MouseEvent => ...}}}.
-   * If using code blocks, use only a single statement, for instance call to a function or a method.
    *
    * @param eventType type of events that will be handled.
    * @param filter code handling the event, see examples above.
    * @tparam J type JavaFX delegate of the event
    * @tparam S ScalaFX type for `J` type wrapper.
    */
-  def filterEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](eventType: EventType[J])(filter: FilterMagnet[J, S]) {
+  def filterEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](eventType: EventType[J])(
+    filter: FilterMagnet[J, S]): Subscription = {
     filter(eventType)
   }
 

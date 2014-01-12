@@ -29,14 +29,16 @@
 import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
+import scalafx.Includes._
 import scalafx.event.{Event, ActionEvent}
+import scalafx.scene.control.Button
 import scalafx.scene.Group
 import scalafx.testutil.RunOnApplicationThread
 
 @RunWith(classOf[JUnitRunner])
 class EventHandlerSpec extends FlatSpec with RunOnApplicationThread {
 
-  "`handleEvent`" should "create subscription and cancel for EventHandlers" in {
+  "`handleEvent`" should "create subscription and cancel for Event Handlers" in {
 
     val group = new Group()
 
@@ -63,5 +65,92 @@ class EventHandlerSpec extends FlatSpec with RunOnApplicationThread {
     assert(counter === 4)
   }
 
+  "`filterEvent`" should "create subscription and cancel for Event Filters" in {
 
+    val button = new Button()
+    val group = new Group {
+      content = button
+    }
+
+    var groupCounter = 0
+    val groupSubscription = group.filterEvent(ActionEvent.ACTION) {
+      () =>
+      // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
+        groupCounter += 1
+        groupCounter += 1
+    }
+    var buttonCounter = 0
+    button.handleEvent(ActionEvent.ACTION) {
+      () =>
+      // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
+        buttonCounter += 3
+        buttonCounter += 3
+    }
+
+    assert(groupCounter === 0)
+    assert(buttonCounter === 0)
+
+    val actionEvent = new ActionEvent(this, group)
+
+    button.fireEvent(actionEvent)
+    assert(groupCounter === 2)
+    assert(buttonCounter === 6)
+
+    button.fireEvent(actionEvent)
+    assert(groupCounter === 4)
+    assert(buttonCounter === 12)
+
+    groupSubscription.cancel()
+    button.fireEvent(actionEvent)
+    assert(groupCounter === 4)
+    assert(buttonCounter === 18)
+  }
+
+  "`filterEvent`" should "not consume events when not cancelled/active" in {
+
+    val button = new Button()
+    val group = new Group {
+      content = button
+    }
+
+    var groupCounter = 0
+    var buttonCounter = 0
+    button.handleEvent(ActionEvent.ACTION) {
+      () =>
+      // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
+        buttonCounter += 3
+        buttonCounter += 3
+    }
+
+    assert(groupCounter === 0)
+    assert(buttonCounter === 0)
+
+    val actionEvent = new ActionEvent(this, group)
+
+    button.fireEvent(actionEvent)
+    assert(groupCounter === 0)
+    assert(buttonCounter === 6)
+
+    val groupSubscription = group.filterEvent(ActionEvent.ACTION) {
+      (ae: ActionEvent) =>
+      // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
+        groupCounter += 1
+        groupCounter += 1
+        ae.consume()
+    }
+
+    button.fireEvent(actionEvent)
+    assert(groupCounter === 2)
+    assert(buttonCounter === 6)
+
+    button.fireEvent(actionEvent)
+    assert(groupCounter === 4)
+    assert(buttonCounter === 6)
+
+    // After event filter is cancelled, event should be sent to the button
+    groupSubscription.cancel()
+    button.fireEvent(actionEvent)
+    assert(groupCounter === 4)
+    assert(buttonCounter === 12)
+  }
 }

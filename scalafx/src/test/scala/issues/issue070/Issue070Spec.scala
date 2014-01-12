@@ -69,7 +69,7 @@ class Issue070Spec extends FlatSpec with RunOnApplicationThread {
     // Add simple event filter that ignores event value
     // Issue 70 prevent following code from compiling with "error: ambiguous reference to overloaded definition"
     // Uncomment following line after the fix
-    task.filterEvent(WorkerStateEvent.ANY) { println("Some event happened") }
+    task.filterEvent(WorkerStateEvent.ANY) { () => println("Some event happened") }
 
     // Add simple event filter that accesses event value
     // Issue 70 prevent following code from compiling with "error: ambiguous reference to overloaded definition"
