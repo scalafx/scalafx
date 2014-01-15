@@ -8,7 +8,10 @@ lazy val scalafx = Project(
   id = "scalafx",
   base = file("scalafx"),
   settings = scalafxSettings ++ Seq(
-    description := "The ScalaFX framework"
+    description := "The ScalaFX framework",
+    scalacOptions in (Compile, doc) ++= Seq (
+      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md"
+    )
   )
 )
 
