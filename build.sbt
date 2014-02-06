@@ -8,7 +8,10 @@ lazy val scalafx = Project(
   id = "scalafx",
   base = file("scalafx"),
   settings = scalafxSettings ++ Seq(
-    description := "The ScalaFX framework"
+    description := "The ScalaFX framework",
+    scalacOptions in (Compile, doc) ++= Seq (
+      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md"
+    )
   )
 )
 
@@ -63,7 +66,7 @@ lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
   testOptions in Test <+= (target in Test) map {
     t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))
   },
-  shellPrompt in ThisBuild := { state => Project.extract(state).currentRef.project + "> " }
+  shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> " }
 ) ++ mavenCentralSettings
 
 lazy val manifestSetting = packageOptions <+= (name, version, organization) map {
