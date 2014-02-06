@@ -30,11 +30,11 @@ http://search.maven.org/#search%7Cga%7C1%7Cscalafx
 
 To use ScalaFX with SBT add following dependency:
 
-  libraryDependencies += "org.scalafx" % "scalafx_2.10" % "1.0.0-M6"
+  libraryDependencies += "org.scalafx" % "scalafx_2.10" % "1.0.0-M7"
 
 You can find a simple project setup in subdirectory "scalafx-hello-world"
 
-Snapshot releases are also regulary published on Sonatype. To use a snapshot 
+Snapshot releases are also regularly published on Sonatype. To use a snapshot
 build you may need to add "Sonatype OSS Snapshots" resolver to you SBT 
 configuration:
 
@@ -43,12 +43,8 @@ configuration:
 If you just want to download a recent snapshot build you can also use automated build site
 http://jfxtras.com/jenkins/job/scalafx/
 
-The recommended way to build ScalaFX is using the SBT. Building with other 
-tools like Gradle and Maven may be possible but is not officially supported. 
+ScalaFX source code is using the SBT build system.
 For information on building with SBT see 'README-SBT.txt'. 
-Instructions for Gradle and Maven, somewhat outdated, can be found in 
-'README-GRADLE.txt' and 'README-MAVEN.txt', respectively.
-
 
 The official web site for ScalaFX is http://scalafx.org, 
 currently hosted at https://code.google.com/p/scalafx/
@@ -69,7 +65,7 @@ folder of the project.
 The following software is needed to build ScalaFX:
 
   1) Mercurial (http://mercurial.selenic.com/) v2.2 or better
-  2) sbt (http://www.scala-sbt.org/) v0.13.0 or better
+  2) sbt (http://www.scala-sbt.org/) v0.13.1 or better
   3) Scala (http://www.scala.org/)
     - ScalaFX 1.0 builds with either Scala version 2.9.3+ or 2.10.+ 
     - ScalaFX 8.0 builds only with Scala 2.10.2 or newer. 
