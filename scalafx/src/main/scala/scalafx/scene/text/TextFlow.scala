@@ -30,7 +30,7 @@ package scalafx.scene.text
 import javafx.scene.{text => jfxst}
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
-import scalafx.delegate.{SFXDelegate, AlignmentDelegate}
+import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Orientation
 import scalafx.scene.Node
 import scalafx.scene.layout.Pane

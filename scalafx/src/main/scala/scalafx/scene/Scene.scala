@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,19 +27,22 @@
 package scalafx.scene
 
 import javafx.{event => jfxe, scene => jfxs, collections => jfxc, util => jfxu, geometry => jfxg}
+import javafx.{collections => jfxc}
+import javafx.{event => jfxe, scene => jfxs}
+import javafx.{util => jfxu}
 import jfxs.{input => jfxsi, paint => jfxsp, layout => jfxsl}
-import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.scene.paint.Paint
+import scalafx.collections._
 import scalafx.delegate.SFXDelegate
-import scalafx.geometry.NodeOrientation
-import scalafx.scene.input.Mnemonic
 import scalafx.scene.image.WritableImage
-import scalafx.scene.input.TransferMode
 import scalafx.scene.input.Dragboard
+import scalafx.scene.input.Mnemonic
+import scalafx.scene.input.TransferMode
+import scalafx.scene.paint.Paint
+import scalafx.geometry.NodeOrientation
 
 object Scene {
   implicit def sfxScene2jfx(v: Scene) = v.delegate
@@ -131,6 +134,23 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
     this(new jfxs.Scene(new jfxs.Group(), width, height, depthBuffer, antiAliasing))
 
   /**
+   * Creates a Scene for a specific root Node with a specific size and fill.
+   * @param parent  The root node of the scene graph
+   * @param width The width of the scene
+   * @param height The height of the scene
+   * @param fill The fill
+   */
+  def this(parent: Parent, width: Double, height: Double, fill: Paint) =
+    this(new jfxs.Scene(parent, width, height, fill))
+
+  /**
+   * Creates a Scene for a specific root Node with a fill.
+   * @param parent  The root node of the scene graph
+   * @param fill The fill
+   */
+  def this(parent: Parent, fill: Paint) = this(new jfxs.Scene(parent, fill))
+
+  /**
    * Returns the root Node of the scene graph
    */
   def root: ObjectProperty[jfxs.Parent] = delegate.rootProperty
@@ -148,8 +168,8 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   def getChildren = root.value match {
     case group: jfxs.Group => group.getChildren
     case pane: jfxsl.Pane => pane.getChildren
-    case _ => throw new IllegalStateException("Cannot access children of root: " + root +
-      "\nUse a class that extends Group or Pane, or override the getChildren method.")
+    case _ => throw new IllegalStateException("Cannot access children of root: " + root + "\n" +
+      "Use a class that extends Group or Pane, or override the getChildren method.")
   }
 
   /**
