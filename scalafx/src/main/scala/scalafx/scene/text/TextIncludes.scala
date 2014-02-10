@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -106,4 +106,5 @@ trait TextIncludes {
    */
   implicit def jfxTextBoundsType2sfx(e: jfxst.TextBoundsType) = TextBoundsType.jfxEnum2sfx(e)
 
+  implicit def jfxTextFlow2sfx(tf: jfxst.TextFlow) = new TextFlow(tf)
 }
