@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -75,6 +75,16 @@ trait LayoutIncludes {
      */
   implicit def jfxBackground2sfx(v: jfxsl.Background) = new Background(v)
 
+  implicit def jfxBackgroundFill2sfx(v: jfxsl.BackgroundFill) = new BackgroundFill(v)
+
+  implicit def jfxBackgroundImage2sfx(v: jfxsl.BackgroundImage) = new BackgroundImage(v)
+
+  implicit def jfxBackgroundPosition2sfx(v: jfxsl.BackgroundPosition) = new BackgroundPosition(v)
+
+  implicit def jfxBackgroundRepeat2sfx(v: jfxsl.BackgroundRepeat) = new BackgroundRepeat(v)
+
+  implicit def jfxBackgroundSize2sfx(v: jfxsl.BackgroundSize) = new BackgroundSize(v)
+
   /**
    * $START$BRDR.html $BRDR$END
    *
@@ -106,6 +116,8 @@ trait LayoutIncludes {
    * @return $SFX $CTBS
    */
   implicit def jfxConstraintsBase2sfx(v: jfxsl.ConstraintsBase) = new ConstraintsBase(v) {}
+
+  implicit def jfxCornerRadii2sfx(v: jfxsl.CornerRadii) = new CornerRadii(v) {}
 
   /**
    * $START$FLPN.html $FLPN$END

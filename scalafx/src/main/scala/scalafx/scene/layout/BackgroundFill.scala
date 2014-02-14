@@ -24,51 +24,43 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-import scala.collection.JavaConversions._
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Insets
+import scalafx.scene.paint.Paint
 
-object Background {
-  implicit def sfxBackground2jfx(v: Background) = v.delegate
-
-  /** An empty Background, useful to use instead of null. */
-  val EMPTY = jfxsl.Background.EMPTY
-
-  def classCssMetaData: Seq[javafx.css.CssMetaData[_ <: javafx.css.Styleable, _]] = jfxsl.Background.getClassCssMetaData
+object BackgroundFill {
+  implicit def sfxBackgroundFill2jfx(v: BackgroundFill) = v.delegate
 }
 
-class Background(override val delegate: jfxsl.Background)
-  extends SFXDelegate[jfxsl.Background] {
-
-  /** Create a new Background by supplying an array of BackgroundFills. */
-  def this(fills: Array[BackgroundFill]) = this(new jfxsl.Background(fills.map(_.delegate): _*))
-
-  /** Create a new Background by supplying two arrays, one for background fills, and one for background images. */
-  def this(fills: Array[BackgroundFill], images: Array[BackgroundImage]) =
-    this(new jfxsl.Background(fills.map(_.delegate), images.map(_.delegate)))
-
-  /** Create a new Background by supplying an array of BackgroundImages. */
-  def this(images: Array[BackgroundImage]) = this(new jfxsl.Background(images.map(_.delegate): _*))
-
-  /** Create a new Background supply two Lists, one for background fills and one for background images. */
-  def this(fills: Seq[BackgroundFill], images: Seq[BackgroundImage]) =
-    this(new jfxsl.Background(fills.map(_.delegate), images.map(_.delegate)))
+/**
+ * The fill and associated properties that direct how to fill the background of a Region.
+ */
+class BackgroundFill(override val delegate: jfxsl.BackgroundFill)
+  extends SFXDelegate[jfxsl.BackgroundFill] {
 
   /**
-   *    * The list of BackgroundFills which together define the filled portion of this Background.
+   * Creates a new BackgroundFill with the specified fill, radii, and insets.
    */
-  def fills : Seq[jfxsl.BackgroundFill] = delegate.getFills
-  /**
-   * The list of BackgroundImages which together define the image portion of this Background.
-   */
-  def images: Seq[jfxsl.BackgroundImage] = delegate.getImages
+  def this(fill: Paint, radii: CornerRadii, insets: Insets) =
+    this(new jfxsl.BackgroundFill(fill, radii, insets))
 
   /**
-   * The outsets of this Background.
+   * The Paint to use for filling the background of the Region.
    */
-  def outsets : Insets 	= delegate.getOutsets
+  def fill: Paint = delegate.getFill
+
+  /**
+   * The Insets to use for this fill.
+   */
+  def insets: Insets = delegate.getInsets
+
+  /**
+   * The Radii to use for representing the four radii of the BackgroundFill.
+   */
+  def radii: CornerRadii = delegate.getRadii
 }

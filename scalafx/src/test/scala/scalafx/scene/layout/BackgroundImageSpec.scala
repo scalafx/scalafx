@@ -28,15 +28,27 @@
 package scalafx.scene.layout
 
 import javafx.scene.{ layout => jfxsl }
+import javafx.scene.{ image => jfxsi }
 import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * AnchorPane Spec tests.
+ * BackgroundImage Spec tests.
  */
 @RunWith(classOf[JUnitRunner])
-class AnchorPaneSpec
-  extends SimpleSFXDelegateSpec[jfxsl.AnchorPane, AnchorPane](
-    classOf[jfxsl.AnchorPane], classOf[AnchorPane])
+class BackgroundImageSpec
+  extends SimpleSFXDelegateSpec[jfxsl.BackgroundImage, BackgroundImage](
+    classOf[jfxsl.BackgroundImage], classOf[BackgroundImage])  {
+
+  override protected def getScalaClassInstance = new BackgroundImage(getJavaClassInstance) {}
+
+  override protected def getJavaClassInstance = new jfxsl.BackgroundImage(
+    new jfxsi.Image(this.getClass.getResourceAsStream("")),
+    BackgroundRepeat.NoRepeat,
+    BackgroundRepeat.NoRepeat,
+    BackgroundPosition.Center,
+    BackgroundSize.Default)
+
+}
