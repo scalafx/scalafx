@@ -36,9 +36,7 @@ lazy val scalatest = "org.scalatest" % "scalatest_2.10" % "2.0"
 
 // Resolvers
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
-lazy val sonatypeNexusReleases = "Sonatype Nexus Releases" at "https://oss.sonatype.org/content/repositories/releases"
 lazy val sonatypeNexusStaging = "Sonatype Nexus Staging" at "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-lazy val localMavenRepo = "Local Maven Repository" at "file://" + Path.userHome.absolutePath + "/.m2/repository"
 
 // Common settings
 lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
@@ -61,7 +59,7 @@ lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
   publishSetting,
   fork in Test := true,
   parallelExecution in Test := false,
-  resolvers ++= Seq(localMavenRepo, sonatypeNexusSnapshots),
+  resolvers += sonatypeNexusSnapshots,
   // print junit-style XML for CI
   testOptions in Test <+= (target in Test) map {
     t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))
