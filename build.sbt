@@ -38,6 +38,10 @@ lazy val scalatest = "org.scalatest" % "scalatest_2.10" % "2.0"
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 lazy val sonatypeNexusStaging = "Sonatype Nexus Staging" at "https://oss.sonatype.org/service/local/staging/deploy/maven2"
 
+// Add snapshots to root project to enable compilation with Scala SNAPSHOT compiler,
+// e.g., 2.11.0-SNAPSHOT
+resolvers += sonatypeNexusSnapshots
+
 // Common settings
 lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
   organization := "org.scalafx",
