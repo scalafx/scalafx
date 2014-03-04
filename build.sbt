@@ -32,7 +32,7 @@ lazy val scalafxDemos = Project(
 
 // Dependencies
 lazy val junit = "junit" % "junit" % "4.11"
-lazy val scalatest = "org.scalatest" % "scalatest_2.10" % "2.0"
+lazy val scalatest = "org.scalatest" % "scalatest_2.10" % "2.1.0"
 
 // Resolvers
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
