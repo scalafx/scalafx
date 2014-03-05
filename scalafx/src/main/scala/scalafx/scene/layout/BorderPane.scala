@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.layout
 
 import javafx.{ geometry => jfxg }
@@ -73,6 +74,12 @@ object BorderPane {
 }
 
 class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane()) extends Pane(delegate) with SFXDelegate[jfxsl.BorderPane] {
+
+  /**
+   * Creates an BorderPane layout with the given Nodes to use for each of the main layout areas of the Border Pane.
+   */
+  def this(center: Node, top: Node, right: Node, bottom: Node, left: Node) =
+    this(new jfxsl.BorderPane(center, top, right, bottom, left))
 
   /**
    * The node placed on the bottom edge of this border pane.
