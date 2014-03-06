@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.layout
 
 import javafx.scene.{ layout => jfxsl }
@@ -93,6 +94,8 @@ trait LayoutIncludes {
    */
   implicit def jfxBorder2sfx(v: jfxsl.Border) = new Border(v)
 
+  implicit def jfxBorderImage2sfx(v: jfxsl.BorderImage) = new BorderImage(v)
+
   /**
    * $START$BDPN.html $BDPN$END
    *
@@ -100,6 +103,14 @@ trait LayoutIncludes {
    * @return $SFX $BDPN
    */
   implicit def jfxBorderPane2sfx(v: jfxsl.BorderPane) = new BorderPane(v)
+
+  implicit def jfxBorderRepeat2sfx(v: jfxsl.BorderRepeat) = new BorderRepeat(v)
+
+  implicit def jfxBorderStroke2sfx(v: jfxsl.BorderStroke) = new BorderStroke(v)
+
+  implicit def jfxBorderStrokeStyle2sfx(v: jfxsl.BorderStrokeStyle) = new BorderStrokeStyle(v)
+
+  implicit def jfxBorderWidths2sfx(v: jfxsl.BorderWidths) = new BorderWidths(v)
 
   /**
    * $START$CLCT.html $CLCT$END
