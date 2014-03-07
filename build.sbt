@@ -1,5 +1,6 @@
 import scala.xml._
 import java.net.URL
+import SonatypeKeys._
 
 val scalafxVersion = "1.0.0-M8-SNAPSHOT"
 
@@ -13,7 +14,7 @@ lazy val scalafx = Project(
     scalacOptions in (Compile, doc) ++= Seq (
       "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md"
     )
-  )
+  ) ++ sonatypeSettings
 )
 
 // ScalaFX Demos project
