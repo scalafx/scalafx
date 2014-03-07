@@ -46,7 +46,7 @@ object Simple3DBoxApp extends JFXApp {
         height = 5
         depth = 5
         material = new PhongMaterial(Color.RED)
-        drawMode = DrawMode.LINE
+        drawMode = DrawMode.Line
       }
 
       // Background

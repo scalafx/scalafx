@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,39 +24,36 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
-import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+package scalafx.scene.layout
 
-/** Wrapper for [[javafx.scene.shape.DrawMode]] */
-object DrawMode extends SFXEnumDelegateCompanion[jfxss.DrawMode, DrawMode] {
+import javafx.scene.{layout => jfxsl}
+import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
-  /**
-   * Render polygonal faces as solid surfaces.
-   */
-  val Fill = new DrawMode(jfxss.DrawMode.FILL)
+/** Wrapper for [[javafx.scene.layout.BackgroundRepeat]] */
+object BackgroundRepeat extends SFXEnumDelegateCompanion[jfxsl.BackgroundRepeat, BackgroundRepeat] {
 
-  /**
-   * Render polygonal faces as solid surfaces.
-   */
-  @deprecated ("Use Fill instead; FILL will be removed in a future release.", "8.0.0-M4")
-  val FILL = Fill
+  /**  The image is placed once and not repeated.     */
+  val NoRepeat = new BackgroundRepeat(jfxsl.BackgroundRepeat.NO_REPEAT)
 
-  /**
-   * Render polygonal faces as wireframes, with lines linking consecutive vertices.
-   */
-  val Line = new DrawMode(jfxss.DrawMode.LINE)
+  /** The image is repeated as often as needed to cover the area.   */
+  val Repeat = new BackgroundRepeat(jfxsl.BackgroundRepeat.REPEAT)
 
-  /**
-   * Render polygonal faces as wireframes, with lines linking consecutive vertices.
-   */
-  @deprecated ("Use Line instead; LINE will be removed in a future release.", "8.0.0-M4")
-  val LINE = Line
+  /** The image is repeated as often as will fit within the area.     */
+  val Round = new BackgroundRepeat(jfxsl.BackgroundRepeat.ROUND)
 
-  protected override def unsortedValues: Array[DrawMode] = Array(Fill, Line)
+  /** The image is repeated as often as will fit within the area without being clipped and then
+    * the images are spaced out to fill the area.
+    */
+  val Space = new BackgroundRepeat(jfxsl.BackgroundRepeat.SPACE)
+
+  protected override def unsortedValues: Array[BackgroundRepeat] = Array(
+    NoRepeat, Repeat, Round, Space
+  )
 }
 
-
-sealed case class DrawMode(override val delegate: jfxss.DrawMode)
-extends SFXEnumDelegate[jfxss.DrawMode]
+/**
+ * Enumeration of options for repeating images in backgrounds
+ */
+sealed case class BackgroundRepeat (override val delegate: jfxsl.BackgroundRepeat)
+  extends SFXEnumDelegate[jfxsl.BackgroundRepeat]

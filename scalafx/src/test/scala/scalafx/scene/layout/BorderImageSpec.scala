@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,39 +24,36 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
-import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+package scalafx.scene.layout
 
-/** Wrapper for [[javafx.scene.shape.DrawMode]] */
-object DrawMode extends SFXEnumDelegateCompanion[jfxss.DrawMode, DrawMode] {
+import javafx.scene.{layout => jfxsl}
+import javafx.scene.{ image => jfxsi }
+import scalafx.Includes._
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.geometry.Insets
 
-  /**
-   * Render polygonal faces as solid surfaces.
-   */
-  val Fill = new DrawMode(jfxss.DrawMode.FILL)
+/**
+ *
+ * Test for [[scalafx.scene.layout.BorderImageSpec]].
+ */
+@RunWith(classOf[JUnitRunner])
+class BorderImageSpec
+  extends SimpleSFXDelegateSpec[jfxsl.BorderImage, BorderImage](
+    classOf[jfxsl.BorderImage], classOf[BorderImage]) {
 
-  /**
-   * Render polygonal faces as solid surfaces.
-   */
-  @deprecated ("Use Fill instead; FILL will be removed in a future release.", "8.0.0-M4")
-  val FILL = Fill
+  override protected def getScalaClassInstance = new BorderImage(getJavaClassInstance) {}
 
-  /**
-   * Render polygonal faces as wireframes, with lines linking consecutive vertices.
-   */
-  val Line = new DrawMode(jfxss.DrawMode.LINE)
+  override protected def getJavaClassInstance = new jfxsl.BorderImage(
+    new jfxsi.Image(this.getClass.getResourceAsStream("")),
+    BorderWidths.Default,
+    Insets.Empty,
+    BorderWidths.Default,
+    true,
+    BorderRepeat.Repeat,
+    BorderRepeat.Repeat
+  )
 
-  /**
-   * Render polygonal faces as wireframes, with lines linking consecutive vertices.
-   */
-  @deprecated ("Use Line instead; LINE will be removed in a future release.", "8.0.0-M4")
-  val LINE = Line
-
-  protected override def unsortedValues: Array[DrawMode] = Array(Fill, Line)
 }
-
-
-sealed case class DrawMode(override val delegate: jfxss.DrawMode)
-extends SFXEnumDelegate[jfxss.DrawMode]

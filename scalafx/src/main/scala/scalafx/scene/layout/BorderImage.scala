@@ -24,51 +24,65 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-import scala.collection.JavaConversions._
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.image.Image
 import scalafx.geometry.Insets
 
-object Background {
-  implicit def sfxBackground2jfx(v: Background) = v.delegate
-
-  /** An empty Background, useful to use instead of null. */
-  val EMPTY = jfxsl.Background.EMPTY
-
-  def classCssMetaData: Seq[javafx.css.CssMetaData[_ <: javafx.css.Styleable, _]] = jfxsl.Background.getClassCssMetaData
+object BorderImage {
+  implicit def sfxBackground2jfx(v: BorderImage) = v.delegate
 }
 
-class Background(override val delegate: jfxsl.Background)
-  extends SFXDelegate[jfxsl.Background] {
-
-  /** Create a new Background by supplying an array of BackgroundFills. */
-  def this(fills: Array[BackgroundFill]) = this(new jfxsl.Background(fills.map(_.delegate): _*))
-
-  /** Create a new Background by supplying two arrays, one for background fills, and one for background images. */
-  def this(fills: Array[BackgroundFill], images: Array[BackgroundImage]) =
-    this(new jfxsl.Background(fills.map(_.delegate), images.map(_.delegate)))
-
-  /** Create a new Background by supplying an array of BackgroundImages. */
-  def this(images: Array[BackgroundImage]) = this(new jfxsl.Background(images.map(_.delegate): _*))
-
-  /** Create a new Background supply two Lists, one for background fills and one for background images. */
-  def this(fills: Seq[BackgroundFill], images: Seq[BackgroundImage]) =
-    this(new jfxsl.Background(fills.map(_.delegate), images.map(_.delegate)))
+/**
+ * Defines properties describing how to render an image as the background to some
+ * [[scalafx.scene.layout.Region]].
+ */
+class BorderImage(override val delegate: jfxsl.BorderImage)
+  extends SFXDelegate[jfxsl.BorderImage] {
 
   /**
-   *    * The list of BackgroundFills which together define the filled portion of this Background.
+   * Creates a new BackgroundImage.Defines properties describing how to render an image as
+   * the border of some Region.
    */
-  def fills : Seq[jfxsl.BackgroundFill] = delegate.getFills
-  /**
-   * The list of BackgroundImages which together define the image portion of this Background.
-   */
-  def images: Seq[jfxsl.BackgroundImage] = delegate.getImages
+    def this(image: Image,   widths:BorderWidths,  insets:Insets,  slices:BorderWidths,
+             filled:Boolean, repeatX: BorderRepeat, repeatY: BorderRepeat) =
+      this(new jfxsl.BorderImage(image, widths, insets, slices, filled, repeatX, repeatY))
 
   /**
-   * The outsets of this Background.
+   * The image to be used.
    */
-  def outsets : Insets 	= delegate.getOutsets
+  def image: Image = delegate.getImage
+
+  /**
+   * The insets of the BorderImage define where the border should be positioned relative
+   * to the edge of the Region.
+   */
+  def insets :Insets 	= delegate.getInsets
+
+  /**
+   * Indicates in what manner (if at all) the background image is to be repeated along
+   * the x-axis of the region.
+   */
+  def repeatX: BorderRepeat = delegate.getRepeatX
+
+  /**
+   * Indicates in what manner (if at all) the background image is to be repeated along
+   * the y-axis of the region.
+   */
+  def repeatY: BorderRepeat = delegate.getRepeatY
+
+  /**
+   * Defines the slices of the image.@return
+   */
+  def slices : BorderWidths 	= delegate.getSlices
+
+  /**
+   * The widths of the border on each side.
+   */
+  def widths : BorderWidths 	= delegate.getWidths
+
 }

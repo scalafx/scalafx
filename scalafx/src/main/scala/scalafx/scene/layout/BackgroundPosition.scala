@@ -24,51 +24,57 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-import scala.collection.JavaConversions._
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
-import scalafx.geometry.Insets
+import scalafx.geometry.Side
 
-object Background {
-  implicit def sfxBackground2jfx(v: Background) = v.delegate
+object BackgroundPosition {
+  implicit def sfxBackgroundPosition2jfx(v: BackgroundPosition) = v.delegate
 
-  /** An empty Background, useful to use instead of null. */
-  val EMPTY = jfxsl.Background.EMPTY
+  /** A BackgroundPosition which will center a BackgroundImage. */
+  val Center = jfxsl.BackgroundPosition.CENTER
 
-  def classCssMetaData: Seq[javafx.css.CssMetaData[_ <: javafx.css.Styleable, _]] = jfxsl.Background.getClassCssMetaData
+  /** The default BackgroundPosition for any BackgroundImage. */
+  val Default = jfxsl.BackgroundPosition.DEFAULT
 }
 
-class Background(override val delegate: jfxsl.Background)
-  extends SFXDelegate[jfxsl.Background] {
+/**
+ * Represents the position of a BackgroundImage within the Region's drawing area.
+ *
+ * Wrapper for [[http://docs.oracle.com/javafx/8/api/javafx/scene/layout/BackgroundPosition]]
+ */
+class BackgroundPosition(override val delegate: jfxsl.BackgroundPosition)
+  extends SFXDelegate[jfxsl.BackgroundPosition] {
 
-  /** Create a new Background by supplying an array of BackgroundFills. */
-  def this(fills: Array[BackgroundFill]) = this(new jfxsl.Background(fills.map(_.delegate): _*))
-
-  /** Create a new Background by supplying two arrays, one for background fills, and one for background images. */
-  def this(fills: Array[BackgroundFill], images: Array[BackgroundImage]) =
-    this(new jfxsl.Background(fills.map(_.delegate), images.map(_.delegate)))
-
-  /** Create a new Background by supplying an array of BackgroundImages. */
-  def this(images: Array[BackgroundImage]) = this(new jfxsl.Background(images.map(_.delegate): _*))
-
-  /** Create a new Background supply two Lists, one for background fills and one for background images. */
-  def this(fills: Seq[BackgroundFill], images: Seq[BackgroundImage]) =
-    this(new jfxsl.Background(fills.map(_.delegate), images.map(_.delegate)))
+  /** Creates a new BackgroundPosition. */
+  def this(horizontalSide: Side, horizontalPosition: Double, horizontalAsPercentage: Boolean,
+           verticalSide: Side, verticalPosition: Double, verticalAsPercentage: Boolean) =
+    this(new jfxsl.BackgroundPosition(horizontalSide, horizontalPosition, horizontalAsPercentage,
+      verticalSide, verticalPosition, verticalAsPercentage))
 
   /**
-   *    * The list of BackgroundFills which together define the filled portion of this Background.
+   * The value indicating the position of the BackgroundImage relative to the Region along the
+   * side indicated by the horizontalSide property.
    */
-  def fills : Seq[jfxsl.BackgroundFill] = delegate.getFills
-  /**
-   * The list of BackgroundImages which together define the image portion of this Background.
-   */
-  def images: Seq[jfxsl.BackgroundImage] = delegate.getImages
+  def horizontalPosition: Double = delegate.getHorizontalPosition
 
   /**
-   * The outsets of this Background.
+   * The side along the horizontal axis to which the BackgroundImage is anchored.
    */
-  def outsets : Insets 	= delegate.getOutsets
+  def horizontalSide: Side = delegate.getHorizontalSide
+
+  /**
+   * The value indicating the position of the BackgroundImage relative to the Region along the
+   * side indicated by the verticalSide property.
+   */
+  def verticalPosition: Double = delegate.getVerticalPosition
+
+  /**
+   * The side along the vertical axis to which the BackgroundImage is anchored.
+   */
+  def verticalSide: Side = delegate.getVerticalSide
 }

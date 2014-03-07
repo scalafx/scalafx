@@ -34,9 +34,14 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * AnchorPane Spec tests.
+ * CornerRadii Spec tests.
  */
 @RunWith(classOf[JUnitRunner])
-class AnchorPaneSpec
-  extends SimpleSFXDelegateSpec[jfxsl.AnchorPane, AnchorPane](
-    classOf[jfxsl.AnchorPane], classOf[AnchorPane])
+class CornerRadiiSpec
+  extends SimpleSFXDelegateSpec[jfxsl.CornerRadii, CornerRadii](
+    classOf[jfxsl.CornerRadii], classOf[CornerRadii]) {
+
+  override protected def getScalaClassInstance = new CornerRadii(getJavaClassInstance) {}
+
+  override protected def getJavaClassInstance = CornerRadii.Empty
+}

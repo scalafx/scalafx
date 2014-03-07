@@ -32,11 +32,18 @@ import scalafx.Includes._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.scene.paint.Color
+import scalafx.geometry.Insets
 
 /**
- * AnchorPane Spec tests.
+ * BackgroundFill Spec tests.
  */
 @RunWith(classOf[JUnitRunner])
-class AnchorPaneSpec
-  extends SimpleSFXDelegateSpec[jfxsl.AnchorPane, AnchorPane](
-    classOf[jfxsl.AnchorPane], classOf[AnchorPane])
+class BackgroundFillSpec
+  extends SimpleSFXDelegateSpec[jfxsl.BackgroundFill, BackgroundFill](
+    classOf[jfxsl.BackgroundFill], classOf[BackgroundFill]) {
+
+  override protected def getScalaClassInstance = new BackgroundFill(getJavaClassInstance) {}
+
+  override protected def getJavaClassInstance = new jfxsl.BackgroundFill(Color.WHITE, CornerRadii.Empty, Insets(0))
+}

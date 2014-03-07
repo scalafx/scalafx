@@ -13,10 +13,6 @@ _|_|_|      _|_|_|    _|_|_|  _|    _|_|_|  _|        _|      _|
 Building ScalaFX with Scala SBT
 -------------------------------
 
-
-This is the README-SBT.txt for ScalaFX 
-
-
 1. Introduction
    ------------
    
@@ -27,7 +23,7 @@ for ScalaFX development.
 There are two branches of ScalaFX: v.1.0 supporting JavaFX 2.x (Java 7) and 
 ScalaFX v.8.0 supporting JavaFX 8 (Java 8).
 
-This information was prepared using Scala SBT version 0.13.0, which you can download
+This information was prepared using Scala SBT version 0.13.1, which you can download
 from: http://www.scala-sbt.org/
 
 
@@ -43,14 +39,13 @@ In Unix, Mac OS X or Linux, you can define a environment variable `JAVAFX_HOME'
 inside the Bash shell init login file at `~/.bash_profile':
 
     # for Bash
-    export JAVA_HOME=/opt/java/jdk1.7.0_45
-
+    export JAVA_HOME=/opt/java/jdk1.7.0_51
 
 Alternatively, for the Bourne shell script, you can place this setting in the
 shell init login file `~/.profile':
 
     # for Bourne Shell
-    JAVA_HOME=/opt/java/jdk1.7.0_45
+    JAVA_HOME=/opt/java/jdk1.7.0_51
     export JAVA_HOME
 
 
@@ -73,17 +68,27 @@ Change to the scalafx directory:
 
     % cd scalafx
 
+It is always a good practice to start by cleaning the build directories:
 
-Build the software with SBT:
+    % sbt clean
 
-    % sbt clean compile package make-pom package-src
+To run tests:
+
+    % sbt test
+
+To build jars:
+
+    % sbt package
+
+To publish to a local repository:
+
+    % sbt publish-local
+
+This should build the entire code base; package up the JAR files,
+source and binary files; and publish them in local Ivy repository (~/.ivy).
 
 
-This should build the entire code base; run the tests; package up the JAR files,
-source and binary files; and generate a Maven POM.
-
-
-4. Using SBT Interatively
+4. Using SBT Interactively
    ----------------------
 
 Start Scala SBT at the command line:
@@ -136,23 +141,6 @@ Navigate around the Scala SBT multiple modules:
     sbt> projects
 
 
-Generate IntelliJ IDEA project files:
-
-    % sbt gen-idea
-or
-    sbt> gen-idea
-
-
-Generate Eclipse project files:
- 
-    % sbt eclipse
-or
-    sbt> eclipse
-
-The Eclipse Plugin generates the files: scalafx/.project, scalafx/.classpath
-and the files scalafx-demos/.project, scalafx-demos/.classpath
-
-
 Miscellaneous SBT commands:
 
     sbt> about
@@ -164,8 +152,22 @@ For more information, on Scala SBT and Multi-Module builds, point your favourite
 web browser to:
 http://www.scala-sbt.org/release/docs/Getting-Started/Multi-Project.html
 
+5. Uning IDEs
+   ----------
 
-5. Running the Demonstration
+Both IntelliJ IDEA with Scala plugin and NetBeans with it's Scala plugin can import
+project from the build.sbt file.
+
+If you want to use Eclipse you can generate project files using SBT:
+
+    % sbt eclipse
+or
+    sbt> eclipse
+
+The Eclipse Plugin generates the files: scalafx/.project, scalafx/.classpath
+and the files scalafx-demos/.project, scalafx-demos/.classpath
+
+6. Running the Demonstration
    -------------------------
    
 The module `scalafx-demos' contains many demonstrations of the ScalaFX Framework.
@@ -177,7 +179,6 @@ execute the `run' task:
 
     sbt> project scalafx-demos
     sbt> run
-    
 
 This will list available demos. To start a demo type in the demo number at the "Enter number:"
 prompt. To exit the application, simply close the program using your normal window
@@ -191,9 +192,7 @@ following command line:
     
 This the "Enter number:" prompt, as described above.
 
-
-
-6. Publishing SBT Artifacts Locally
+7. Publishing SBT Artifacts Locally
    --------------------------------
    
 SBT can publish artifacts to local repository using the task `publish-local'.
@@ -207,7 +206,7 @@ This will push the ScalaFX artifacts to your local Ivy Repository under
 relies on Scala SBT.
 
 If you want to generate artifacts for Maven then you need to manually install at
-the moment. Sorry about that. Here are the necessaey commands:
+the moment. Here are the necessary commands:
 
     % sbt make-pom
     % mvn install:install-file -DartifactId=scalafx_2.9.3 \
@@ -219,17 +218,16 @@ the moment. Sorry about that. Here are the necessaey commands:
     -Dsources=scalafx_2.9.3-1.0-SNAPSHOT-sources.jar
 
 
-Sadly, you will to repeat this for all the modules, until an automated method is
-found for Scala SBT. Please note the embedded Scala compiler version in the
-artifact name e.g. `scalafx_2.9.3'
+You will to repeat this for all the modules. Please note the embedded Scala
+compiler version in the artifact name e.g. `scalafx_2.9.3'
 
 
-7. SBT Configuration
-   -----------------
+8. SBT Configuration on Mac
+   ------------------------
    
-I found the following SBT launcher bash shell script worked for me under Mac OS
-X 10.8. I had to increase the memory of the JVM from -Xss1M to -Xss2M and set
-the permanent generation size to 512M. I also force set the JDK home in this
+The following SBT launcher bash shell script worked under Mac OS
+X 10.8. Had to increase the memory of the JVM from -Xss1M to -Xss2M and set
+the permanent generation size to 512M. Force set the JDK home in this
 following example of the `sbt' shell script.
 
 
@@ -242,31 +240,27 @@ following example of the `sbt' shell script.
     java -Xms512M -Xmx1536M -Xss2M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=512M -jar `dirname $0`/sbt-launch.jar "$@"
     # End.
 
-
 Of course, your mileage will indeed vary on your own workstation.
 
-
-
-8. SBT Build Files
+9. SBT Build Files
    ----------------
 
 Here is a description of the Scala SBT files for the entire build process.
 
 
-./project/build.scala              The build file for ScalaFX lives.
-./project/build.properties         Specifies the Scala SBT version for the build.
-./project/plugin.sbt               Defines additional plug-ins necessary for the build 
+./build.sbt                   The build file for ScalaFX lives.
+./project/build.properties    Specifies the Scala SBT version for the build.
+./project/plugin.sbt          Defines additional plug-ins necessary for the build
 
 
-
-9. Cross Versions
+10. Cross Versions
    --------------
    
 Cross Scala Versions is a feature of the Scala SBT to build against different
 versions of the Scala Libraries. This is enabled in the `project/build.scala'
 file with settings of `crossScalaVersions', which is set to something like this:
 
-    crossScalaVersions := Seq( "2.9.3", "2.10.2" ),
+    crossScalaVersions := Seq( "2.9.3", "2.10.3" ),
 
 
 You can switch between different Scala build version in interactive mode of
@@ -290,34 +284,34 @@ Now show the current value for `scala-version', with the command:
     [info] 	2.9.3
     
 
-Now switch to Scala 2.10.2 with the following command:
+Now switch to Scala 2.10.3 with the following command:
 
-     sbt> ++ 2.10.2
+     sbt> ++ 2.10.3
 
 
-And then build the software from a clean state for Scala 2.10.2 with the
+And then build the software from a clean state for Scala 2.10.3 with the
 following commands:
 
      sbt> clean
      sbt> package
-     sbt> javafx-demos/run
+     sbt> scalafx-demos/run
 
 
 You switch back to the original 2.9.3 build as well with the commands:
 
      sbt> ++ 2.9.3
-     sbt> javafx-demos/run
+     sbt> scalafx-demos/run
 
 
-Now, you should have both working 2.9.3 and 2.10.2 versions of ScalaFX. Exit
+Now, you should have both working 2.9.3 and 2.10.3 versions of ScalaFX. Exit
 Scala SBT check the `target' folder:
 
-     % ls ~/IdeaProjects/scalafx/target
+     % ls scalafx/target
      resolution-cache/	   scala-2.10/	   scala-2.9.3/	  streams/
-     % ls ~/IdeaProjects/scalafx/target/scala-2.10/
+     % ls scalafx/target/scala-2.10/
      cache/	           scalafx_2.10-1.0-SNAPSHOT.jar
-     % ls ~/Documents/IdeaProjects/scalafx/target/scala-2.9.3/
-     cache/                scalafx_2.9.3-1.0-SNAPSHOT.jar
+     % ls scalafx/target/scala-2.9.3/
+     cache/            scalafx_2.9.3-1.0-SNAPSHOT.jar
 
 
 And of course this feature of cross Scala versions scales to more compiler

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,39 +24,53 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
-import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+package scalafx.scene.layout
 
-/** Wrapper for [[javafx.scene.shape.DrawMode]] */
-object DrawMode extends SFXEnumDelegateCompanion[jfxss.DrawMode, DrawMode] {
+import javafx.scene.{layout => jfxsl}
+import scalafx.Includes._
+import scalafx.delegate.SFXDelegate
+import scalafx.scene.image.Image
 
-  /**
-   * Render polygonal faces as solid surfaces.
-   */
-  val Fill = new DrawMode(jfxss.DrawMode.FILL)
-
-  /**
-   * Render polygonal faces as solid surfaces.
-   */
-  @deprecated ("Use Fill instead; FILL will be removed in a future release.", "8.0.0-M4")
-  val FILL = Fill
-
-  /**
-   * Render polygonal faces as wireframes, with lines linking consecutive vertices.
-   */
-  val Line = new DrawMode(jfxss.DrawMode.LINE)
-
-  /**
-   * Render polygonal faces as wireframes, with lines linking consecutive vertices.
-   */
-  @deprecated ("Use Line instead; LINE will be removed in a future release.", "8.0.0-M4")
-  val LINE = Line
-
-  protected override def unsortedValues: Array[DrawMode] = Array(Fill, Line)
+object BackgroundImage {
+  implicit def sfxBackgroundImage2jfx(v: BackgroundImage) = v.delegate
 }
 
+/**
+ * Defines properties describing how to render an image as the background to some `Region`.
+ */
+class BackgroundImage(override val delegate: jfxsl.BackgroundImage)
+  extends SFXDelegate[jfxsl.BackgroundImage] {
 
-sealed case class DrawMode(override val delegate: jfxss.DrawMode)
-extends SFXEnumDelegate[jfxss.DrawMode]
+  /**
+   * Creates a new BackgroundImage.
+   */
+  def this(image: Image, repeatX: BackgroundRepeat, repeatY: BackgroundRepeat,
+           position: BackgroundPosition, size: BackgroundSize) =
+    this(new jfxsl.BackgroundImage(image, repeatX, repeatY, position, size))
+
+  /**
+   * The image to be used.
+   */
+  def image: Image = delegate.getImage
+
+  /**
+   * The position of this BackgroundImage relative to the Region.
+   */
+  def position: BackgroundPosition = delegate.getPosition
+
+  /**
+   * Indicates in what manner (if at all) the background image is to be repeated along the x-axis of the region.
+   */
+  def repeatX: BackgroundRepeat = delegate.getRepeatX
+
+  /**
+   * Indicates in what manner (if at all) the background image is to be repeated along the y-axis of the region.
+   */
+  def repeatY: BackgroundRepeat = delegate.getRepeatY
+
+  /**
+   * The size of this image relative to the Region.
+   */
+  def size: BackgroundSize = delegate.getSize
+}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,39 +24,42 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
+package scalafx.scene.layout
+
+import javafx.scene.{layout => jfxsl}
+import scalafx.Includes._
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/** Wrapper for [[javafx.scene.shape.DrawMode]] */
-object DrawMode extends SFXEnumDelegateCompanion[jfxss.DrawMode, DrawMode] {
+/**
+ * Enum indicating the repetition rules for border images.
+ * Wrapper for [[javafx.scene.layout.BorderRepeat]].
+ */
+object BorderRepeat extends SFXEnumDelegateCompanion[jfxsl.BorderRepeat, BorderRepeat] {
 
   /**
-   * Render polygonal faces as solid surfaces.
+   * The image is tiled (repeated) to fill the area. 
    */
-  val Fill = new DrawMode(jfxss.DrawMode.FILL)
+  val Repeat: BorderRepeat = jfxsl.BorderRepeat.REPEAT
 
   /**
-   * Render polygonal faces as solid surfaces.
+   * The image is tiled (repeated) to fill the area.
    */
-  @deprecated ("Use Fill instead; FILL will be removed in a future release.", "8.0.0-M4")
-  val FILL = Fill
+  val Round: BorderRepeat = jfxsl.BorderRepeat.ROUND
 
   /**
-   * Render polygonal faces as wireframes, with lines linking consecutive vertices.
+   * The image is tiled (repeated) to fill the area.
    */
-  val Line = new DrawMode(jfxss.DrawMode.LINE)
+  val Space: BorderRepeat = jfxsl.BorderRepeat.SPACE
 
   /**
-   * Render polygonal faces as wireframes, with lines linking consecutive vertices.
+   * The image is stretched to fill the area.
    */
-  @deprecated ("Use Line instead; LINE will be removed in a future release.", "8.0.0-M4")
-  val LINE = Line
+  val Stretch: BorderRepeat = jfxsl.BorderRepeat.STRETCH
 
-  protected override def unsortedValues: Array[DrawMode] = Array(Fill, Line)
+  protected override def unsortedValues: Array[BorderRepeat] = Array(Repeat, Round, Space, Stretch)
 }
 
 
-sealed case class DrawMode(override val delegate: jfxss.DrawMode)
-extends SFXEnumDelegate[jfxss.DrawMode]
+sealed case class BorderRepeat(override val delegate: jfxsl.BorderRepeat)
+  extends SFXEnumDelegate[jfxsl.BorderRepeat]

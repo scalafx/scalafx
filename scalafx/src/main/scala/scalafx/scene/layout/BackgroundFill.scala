@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,39 +24,43 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
-import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+package scalafx.scene.layout
 
-/** Wrapper for [[javafx.scene.shape.DrawMode]] */
-object DrawMode extends SFXEnumDelegateCompanion[jfxss.DrawMode, DrawMode] {
+import javafx.scene.{layout => jfxsl}
+import scalafx.Includes._
+import scalafx.delegate.SFXDelegate
+import scalafx.geometry.Insets
+import scalafx.scene.paint.Paint
 
-  /**
-   * Render polygonal faces as solid surfaces.
-   */
-  val Fill = new DrawMode(jfxss.DrawMode.FILL)
-
-  /**
-   * Render polygonal faces as solid surfaces.
-   */
-  @deprecated ("Use Fill instead; FILL will be removed in a future release.", "8.0.0-M4")
-  val FILL = Fill
-
-  /**
-   * Render polygonal faces as wireframes, with lines linking consecutive vertices.
-   */
-  val Line = new DrawMode(jfxss.DrawMode.LINE)
-
-  /**
-   * Render polygonal faces as wireframes, with lines linking consecutive vertices.
-   */
-  @deprecated ("Use Line instead; LINE will be removed in a future release.", "8.0.0-M4")
-  val LINE = Line
-
-  protected override def unsortedValues: Array[DrawMode] = Array(Fill, Line)
+object BackgroundFill {
+  implicit def sfxBackgroundFill2jfx(v: BackgroundFill) = v.delegate
 }
 
+/**
+ * The fill and associated properties that direct how to fill the background of a Region.
+ */
+class BackgroundFill(override val delegate: jfxsl.BackgroundFill)
+  extends SFXDelegate[jfxsl.BackgroundFill] {
 
-sealed case class DrawMode(override val delegate: jfxss.DrawMode)
-extends SFXEnumDelegate[jfxss.DrawMode]
+  /**
+   * Creates a new BackgroundFill with the specified fill, radii, and insets.
+   */
+  def this(fill: Paint, radii: CornerRadii, insets: Insets) =
+    this(new jfxsl.BackgroundFill(fill, radii, insets))
+
+  /**
+   * The Paint to use for filling the background of the Region.
+   */
+  def fill: Paint = delegate.getFill
+
+  /**
+   * The Insets to use for this fill.
+   */
+  def insets: Insets = delegate.getInsets
+
+  /**
+   * The Radii to use for representing the four radii of the BackgroundFill.
+   */
+  def radii: CornerRadii = delegate.getRadii
+}

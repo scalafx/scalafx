@@ -34,9 +34,14 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * AnchorPane Spec tests.
+ * BackgroundPosition Spec tests.
  */
 @RunWith(classOf[JUnitRunner])
-class AnchorPaneSpec
-  extends SimpleSFXDelegateSpec[jfxsl.AnchorPane, AnchorPane](
-    classOf[jfxsl.AnchorPane], classOf[AnchorPane])
+class BackgroundPositionSpec
+  extends SimpleSFXDelegateSpec[jfxsl.BackgroundPosition, BackgroundPosition](
+    classOf[jfxsl.BackgroundPosition], classOf[BackgroundPosition])  {
+
+  override protected def getScalaClassInstance = new BackgroundPosition(getJavaClassInstance) {}
+
+  override protected def getJavaClassInstance = BackgroundPosition.Center
+}

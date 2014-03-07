@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,39 +24,38 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.shape
 
-import javafx.scene.{shape => jfxss}
-import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+package scalafx.scene.text
 
-/** Wrapper for [[javafx.scene.shape.DrawMode]] */
-object DrawMode extends SFXEnumDelegateCompanion[jfxss.DrawMode, DrawMode] {
+import scalafx.Includes._
+import scalafx.application.JFXApp
+import scalafx.scene.Scene
+import scalafx.scene.paint.Color
 
-  /**
-   * Render polygonal faces as solid surfaces.
-   */
-  val Fill = new DrawMode(jfxss.DrawMode.FILL)
-
-  /**
-   * Render polygonal faces as solid surfaces.
-   */
-  @deprecated ("Use Fill instead; FILL will be removed in a future release.", "8.0.0-M4")
-  val FILL = Fill
-
-  /**
-   * Render polygonal faces as wireframes, with lines linking consecutive vertices.
-   */
-  val Line = new DrawMode(jfxss.DrawMode.LINE)
-
-  /**
-   * Render polygonal faces as wireframes, with lines linking consecutive vertices.
-   */
-  @deprecated ("Use Line instead; LINE will be removed in a future release.", "8.0.0-M4")
-  val LINE = Line
-
-  protected override def unsortedValues: Array[DrawMode] = Array(Fill, Line)
+object TextFlowDemo extends JFXApp {
+  stage = new JFXApp.PrimaryStage {
+    title = "TextFlow Demo"
+    scene = new Scene(500, 200) {
+      fill = Color.WHITE
+      root = new TextFlow {
+        val family = "Helvetica"
+        val size = 20d
+        val text1 = new Text {
+          text = "Hello "
+          font = Font(family, size)
+        }
+        val text2 = new Text {
+          text = "Bold"
+          font = Font(family, FontWeight.BOLD, size)
+        }
+        val text3 = new Text {
+          text = " World"
+          font = Font(family, FontPosture.ITALIC, size)
+        }
+        children ++= Seq(text1, text2, text3)
+        layoutX = 40
+        layoutY = 40
+      }
+    }
+  }
 }
-
-
-sealed case class DrawMode(override val delegate: jfxss.DrawMode)
-extends SFXEnumDelegate[jfxss.DrawMode]

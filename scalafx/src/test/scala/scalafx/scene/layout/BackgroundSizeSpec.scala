@@ -34,9 +34,14 @@ import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * AnchorPane Spec tests.
+ * BackgroundSize Spec tests.
  */
 @RunWith(classOf[JUnitRunner])
-class AnchorPaneSpec
-  extends SimpleSFXDelegateSpec[jfxsl.AnchorPane, AnchorPane](
-    classOf[jfxsl.AnchorPane], classOf[AnchorPane])
+class BackgroundSizeSpec
+  extends SimpleSFXDelegateSpec[jfxsl.BackgroundSize, BackgroundSize](
+    classOf[jfxsl.BackgroundSize], classOf[BackgroundSize])  {
+
+  override protected def getScalaClassInstance = new BackgroundSize(getJavaClassInstance) {}
+
+  override protected def getJavaClassInstance = BackgroundSize.Default
+}
