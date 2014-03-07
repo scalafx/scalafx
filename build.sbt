@@ -1,5 +1,6 @@
 import scala.xml._
 import java.net.URL
+import SonatypeKeys._
 
 val scalafxVersion = "8.0.0-M4-SNAPSHOT"
 
@@ -9,10 +10,11 @@ lazy val scalafx = Project(
   base = file("scalafx"),
   settings = scalafxSettings ++ Seq(
     description := "The ScalaFX framework",
+    fork in run := true,
     scalacOptions in (Compile, doc) ++= Seq (
       "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md"
     )
-  )
+  ) ++ sonatypeSettings
 )
 
 // ScalaFX Demos project
@@ -32,7 +34,7 @@ lazy val scalafxDemos = Project(
 
 // Dependencies
 lazy val junit = "junit" % "junit" % "4.11"
-lazy val scalatest = "org.scalatest" % "scalatest_2.10" % "2.0"
+lazy val scalatest = "org.scalatest" %% "scalatest" % "2.1.0"
 
 // Resolvers
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -47,12 +49,12 @@ lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
   // TODO SFX8: At a moment only ScalaFX 2.10.2+ supports Java 8, due to some InvokeDynamic byte codes
-  crossScalaVersions := Seq("2.10.3"/*, "2.9.3"*/),
+  crossScalaVersions := Seq("2.10.3", "2.11.0-RC1"),
   scalaVersion <<= crossScalaVersions { versions => versions.head },
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
-    javacOptions ++= Seq(
+  javacOptions ++= Seq(
     "-target", "1.8",
     "-source", "1.8",
     "-Xlint:deprecation"),
