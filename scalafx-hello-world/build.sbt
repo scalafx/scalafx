@@ -8,7 +8,7 @@ version := "1.0.0"
 scalaVersion := "2.10.3"
 
 // Add dependency on ScalaFX library, for use with JavaFX 2.2/Java 7
-libraryDependencies += "org.scalafx" %% "scalafx" % "1.0.0-M7"
+libraryDependencies += "org.scalafx" %% "scalafx" % "1.0.0-R8"
 
 // Add dependency on ScalaFX library, for use with JavaFX 8/Java 8
 // libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.0-M3"
