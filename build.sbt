@@ -9,6 +9,7 @@ lazy val scalafx = Project(
   base = file("scalafx"),
   settings = scalafxSettings ++ Seq(
     description := "The ScalaFX framework",
+    fork in run := true,
     scalacOptions in (Compile, doc) ++= Seq (
       "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md"
     )
@@ -32,7 +33,7 @@ lazy val scalafxDemos = Project(
 
 // Dependencies
 lazy val junit = "junit" % "junit" % "4.11"
-lazy val scalatest = "org.scalatest" % "scalatest_2.10" % "2.1.0"
+lazy val scalatest = "org.scalatest" %% "scalatest" % "2.1.0"
 
 // Resolvers
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -46,7 +47,7 @@ resolvers += sonatypeNexusSnapshots
 lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.10.3", "2.9.3"),
+  crossScalaVersions := Seq("2.10.3", "2.11.0-RC1", "2.9.3"),
   scalaVersion <<= crossScalaVersions { versions => versions.head },
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
@@ -56,7 +57,14 @@ lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
     "-source", "1.6",
     "-Xlint:deprecation"),
   libraryDependencies ++= Seq(
-    scalatest % "test",
+    // A hack to make compilation and packaging work with Scala 2.9.3. SBT attempts to download
+    // test dependencies even when not used. Testing will not work in 2.9.3, but we are more
+    // interested right now to testing in 2.10 and 2.11 and only releasing in 2.9.3.
+    // scalatest % "test",
+    if(scalaVersion.value.startsWith("2.9."))
+      "org.scalatest" %% "scalatest" % "1.9.2" % "test"
+    else
+      scalatest % "test",
     junit % "test"),
   unmanagedLibs,
   manifestSetting,
