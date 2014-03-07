@@ -2,7 +2,7 @@ import scala.xml._
 import java.net.URL
 import SonatypeKeys._
 
-val scalafxVersion = "1.0.0-R8"
+val scalafxVersion = "1.0.0-R9-SNAPSHOT"
 
 // ScalaFX project
 lazy val scalafx = Project(
