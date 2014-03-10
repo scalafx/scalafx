@@ -36,7 +36,7 @@ object TextFlowDemo extends JFXApp {
   stage = new JFXApp.PrimaryStage {
     title = "TextFlow Demo"
     scene = new Scene(500, 200) {
-      fill = Color.WHITE
+      fill = Color.White
       root = new TextFlow {
         val family = "Helvetica"
         val size = 20d

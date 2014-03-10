@@ -56,13 +56,13 @@ object TriangleMeshDemo extends JFXApp {
   stage = new PrimaryStage {
     title = "TriangleMesh Demo"
     scene = new Scene(500, 500, true,  SceneAntialiasing.Balanced) {
-      fill = Color.BEIGE
+      fill = Color.Beige
 
       // Create a tetrahedron and add to a mesh view. Configure it.
       val tetra = new MeshView(tetrahedron (500.0)) {
         val image = new Image(this, "images/TetrahedronMap.png")
         material = new PhongMaterial {
-          specularColor = Color.WHITE
+          specularColor = Color.White
           diffuseMap = image
         }
       }
@@ -71,14 +71,14 @@ object TriangleMeshDemo extends JFXApp {
       val shapes = new Group(tetra)
 
       val pointLight = new PointLight {
-        color = Color.ANTIQUEWHITE
+        color = Color.AntiqueWhite
         translateX = -300.0
         translateY = -300.0
         translateZ = -700.0
       }
 
       val ambientLight = new AmbientLight {
-        color = Color.WHITE
+        color = Color.White
       }
 
       root = new Group {

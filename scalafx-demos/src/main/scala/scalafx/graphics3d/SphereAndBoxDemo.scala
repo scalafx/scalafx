@@ -46,16 +46,16 @@ object SphereAndBoxDemo extends JFXApp {
 
       val box = new Box(400, 400, 400) {
         material = new PhongMaterial {
-          diffuseColor = Color.RED
-          specularColor = Color.PINK
+          diffuseColor = Color.Red
+          specularColor = Color.Pink
         }
         translateZ = 225
       }
 
       val sphere = new Sphere(200) {
         material = new PhongMaterial {
-          diffuseColor = Color.BLUE
-          specularColor = Color.LIGHTBLUE
+          diffuseColor = Color.Blue
+          specularColor = Color.LightBlue
         }
         translateZ = -225
       }
@@ -64,7 +64,7 @@ object SphereAndBoxDemo extends JFXApp {
       val shapes = new Group(box, sphere)
 
       val light = new PointLight {
-        color = Color.ANTIQUEWHITE
+        color = Color.AntiqueWhite
         translateX = -265
         translateY = -260
         translateZ = -625
