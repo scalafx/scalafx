@@ -55,7 +55,7 @@ object SceneRootAssignmentDemo extends JFXApp {
         content = new Rectangle {
           width = 200
           height = 200
-          fill = Color.DEEPSKYBLUE
+          fill = Color.DeepSkyBlue
         }
       }
     }
