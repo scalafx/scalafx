@@ -45,7 +45,7 @@ object VanishingCircles_basic extends JFXApp {
     width = 800
     height = 600
     scene = new Scene {
-      fill = BLACK
+      fill = Black
       content = for (i <- 0 until 50) yield new Circle {
         centerX = random * 800
         centerY = random * 600

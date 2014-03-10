@@ -56,7 +56,7 @@ object TextAreaTest extends JFXApp {
     width = 450
     height = 380
     scene = new Scene {
-      fill = Color.LIGHTGRAY
+      fill = Color.LightGray
       content = mainPane
     }
   }

@@ -72,7 +72,7 @@ object PasswordFieldTest extends JFXApp {
     width = 300
     height = 380
     scene = new Scene {
-      fill = Color.LIGHTGRAY
+      fill = Color.LightGray
       content = mainPane
     }
   }

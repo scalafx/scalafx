@@ -39,12 +39,12 @@ object JavaFXAnimation extends JFXApp {
   val rect1 = new Rectangle {
     width = 100
     height = 100
-    fill = Color.RED
+    fill = Color.Red
   }
   val rect2 = new Rectangle {
     width = 50
     height = 50
-    fill = Color.LIGHTGREEN
+    fill = Color.LightGreen
   }
   val timeline = new Timeline {
     cycleCount = Timeline.INDEFINITE

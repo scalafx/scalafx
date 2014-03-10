@@ -46,17 +46,17 @@ object AccordionTest extends JFXApp {
     width = 600
     height = 450
     scene = new Scene {
-      fill = Color.LIGHTGREEN
+      fill = Color.LightGreen
       content = new Accordion {
-        panes = List( 
+        panes = List(
           new TitledPane {
             content = new Arc {
               radiusX = 25
               radiusY = 50
               startAngle = 135
               length = 45
-              fill = Color.BLACK
-              stroke = Color.YELLOW
+              fill = Color.Black
+              stroke = Color.Yellow
               strokeWidth = 3
             }
           }

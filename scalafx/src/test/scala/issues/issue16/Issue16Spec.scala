@@ -50,21 +50,21 @@ class Issue16Spec extends FlatSpec {
     val fill: ObjectProperty[jfxsp.Color] = ObjectProperty(jfxsp.Color.BLUE)
 
     // Before binding is created `fill` should have its original value
-    assert(Color.BLUE === fill())
+    assert(Color.Blue === fill())
     assert(true === hover())
 
     // The problem reported in Issue 16 was that `fill` did not respond to changes in `hover`.
 
-    fill <== when(hover) choose Color.GREEN otherwise Color.RED
+    fill <== when(hover) choose Color.Green otherwise Color.Red
     assert(true === hover())
-    assert(Color.GREEN === fill())
+    assert(Color.Green === fill())
 
     hoverWrapper.set(false)
     assert(false === hover())
-    assert(Color.RED === fill())
+    assert(Color.Red === fill())
 
     hoverWrapper.set(true)
     assert(true === hover())
-    assert(Color.GREEN === fill())
+    assert(Color.Green === fill())
   }
 }

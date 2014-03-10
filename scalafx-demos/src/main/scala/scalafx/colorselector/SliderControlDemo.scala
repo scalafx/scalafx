@@ -114,7 +114,7 @@ object SliderControlDemo extends JFXApp {
   VBox.setVgrow(pnlControls, Priority.ALWAYS)
 
   val mainScene = new Scene {
-    fill = Color.LIGHTGRAY
+    fill = Color.LightGray
     content = new AnchorPane {
       content = List(box)
     }

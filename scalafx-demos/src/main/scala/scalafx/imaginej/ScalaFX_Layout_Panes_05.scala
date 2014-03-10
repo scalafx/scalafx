@@ -77,14 +77,14 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
     prefHeight = 20
   }
   val questionText: Text = new Text {
-    fill = Color.WHITE
-    stroke = Color.DARKBLUE
+    fill = Color.White
+    stroke = Color.DarkBlue
     font = Font.font("Amble Cn", FontWeight.BOLD, 18)
     text = " ? "
   }
   val questionRectangle = new Rectangle {
-    fill = Color.LIGHTBLUE
-    stroke = Color.WHITE
+    fill = Color.LightBlue
+    stroke = Color.White
     arcHeight = 3.5
     arcWidth = 3.5
     width = questionText.boundsInLocal.getValue.getWidth + 10

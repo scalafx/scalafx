@@ -67,7 +67,7 @@ object MenuTest extends JFXApp {
     width = 300
     height = 225
     scene = new Scene {
-      fill = Color.LIGHTGRAY
+      fill = Color.LightGray
       root = new BorderPane {
         top = menuBar
         bottom = history
