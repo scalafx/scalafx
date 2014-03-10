@@ -64,7 +64,7 @@ object LayoutDemo extends JFXApp {
       content = new ScrollPane {
         content = new HBox {
           alignmentInParent = Pos.BASELINE_LEFT
-          fill = Color.BLUE
+          fill = Color.Blue
           content = List(charm, strange)
         }
       }

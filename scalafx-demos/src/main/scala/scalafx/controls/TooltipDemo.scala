@@ -69,7 +69,7 @@ object TooltipDemo extends JFXApp {
     width = 300
     height = 600
     scene = new Scene {
-      fill = Color.LIGHTGRAY
+      fill = Color.LightGray
       content = mainPane
     }
   }

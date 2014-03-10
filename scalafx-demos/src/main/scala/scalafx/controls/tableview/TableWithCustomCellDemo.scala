@@ -40,9 +40,9 @@ import scalafx.scene.shape.Circle
 object TableWithCustomCellDemo extends JFXApp {
 
   val characters = ObservableBuffer[Person](
-    new Person("Peggy", "Sue", "555-6798", Color.VIOLET),
-    new Person("Rocky", "Raccoon", "555-6798", Color.GREENYELLOW),
-    new Person("Bungalow ", "Bill", "555-9275", Color.DARKSALMON)
+    new Person("Peggy", "Sue", "555-6798", Color.Violet),
+    new Person("Rocky", "Raccoon", "555-6798", Color.GreenYellow),
+    new Person("Bungalow ", "Bill", "555-9275", Color.DarkSalmon)
   )
 
   stage = new PrimaryStage {

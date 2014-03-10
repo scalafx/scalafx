@@ -65,13 +65,13 @@ object TextFieldTest extends JFXApp {
     width = 300
     height = 400
     scene = new Scene {
-      fill = Color.LIGHTGRAY
+      fill = Color.LightGray
       content = mainPane
     }
   }
   mainPane.prefHeight <== stage.scene().height
   mainPane.prefWidth <== stage.scene().width
-  
+
 
 }
 

@@ -61,27 +61,27 @@ object ScalaFX_Layout_Panes_01 extends JFXApp {
     scene = new Scene {
       content = new BorderPane {
         top = new Rectangle {
-          fill = Color.DARKCYAN
+          fill = Color.DarkCyan
           width = 200
           height = 50
         }
         bottom = new Rectangle {
-          fill = Color.DARKCYAN
+          fill = Color.DarkCyan
           width = 200
           height = 50
         }
         left = new Rectangle {
-          fill = Color.DARKTURQUOISE
+          fill = Color.DarkTurquoise
           width = 50
           height = 100
         }
         right = new Rectangle {
-          fill = Color.DARKTURQUOISE
+          fill = Color.DarkTurquoise
           width = 50
           height = 100
         }
         center = new Rectangle {
-          fill = Color.MEDIUMAQUAMARINE
+          fill = Color.MediumAquamarine
           width = 100
           height = 100
         }

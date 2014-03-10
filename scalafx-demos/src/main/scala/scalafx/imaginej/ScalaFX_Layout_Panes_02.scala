@@ -80,7 +80,7 @@ object ScalaFX_Layout_Panes_02 extends JFXApp {
         center = new Rectangle {
           width = 480
           height = 220
-          fill = Color.WHITE
+          fill = Color.White
         }
       }
     }

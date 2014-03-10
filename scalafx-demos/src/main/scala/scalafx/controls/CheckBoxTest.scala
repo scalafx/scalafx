@@ -71,7 +71,7 @@ object CheckBoxTest extends JFXApp {
     width = 300
     height = 500
     scene = new Scene {
-      fill = Color.LIGHTGRAY
+      fill = Color.LightGray
       content = mainPane
     }
   }

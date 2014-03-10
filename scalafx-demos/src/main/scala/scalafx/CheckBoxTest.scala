@@ -66,7 +66,7 @@ object CheckBoxTest extends JFXApp {
   }
   btnFire.onAction = (event: ActionEvent) =>  check.fire()
 
-  val txfText = new TextField 
+  val txfText = new TextField
   txfText.delegate.textProperty.bindBidirectional(check.text)
 
   val grid = new GridPane {
@@ -84,7 +84,7 @@ object CheckBoxTest extends JFXApp {
   stage = new PrimaryStage {
     title = "CheckBox Test"
     scene = new Scene {
-      fill = Color.LIGHTGRAY
+      fill = Color.LightGray
       content = grid
     }
   }

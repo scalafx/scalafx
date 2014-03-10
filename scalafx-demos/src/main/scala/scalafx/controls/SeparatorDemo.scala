@@ -48,7 +48,7 @@ object SeparatorDemo extends JFXApp {
     minHeight = 100
     prefHeight = 100
     minWidth = 100
-    prefWidth = 300    
+    prefWidth = 300
   }
 
   val controlsPane = new VBox {
@@ -70,7 +70,7 @@ object SeparatorDemo extends JFXApp {
     width = 300
     height = 600
     scene = new Scene {
-      fill = Color.WHITE
+      fill = Color.White
       content = mainPane
     }
   }
