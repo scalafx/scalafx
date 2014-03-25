@@ -61,7 +61,7 @@ object Platform {
   /** Run the specified code block on the JavaFX Application Thread at some unspecified time in the future.
     * Returns immediately.
     */
-  def runLater(op: => Unit) {
+  def runLater[R](op: => R) {
     runLater(new Runnable {
       def run() {
         op
