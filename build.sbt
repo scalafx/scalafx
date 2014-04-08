@@ -81,24 +81,15 @@ lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
 ) ++ mavenCentralSettings
 
 // Location of JavaFX jar
-lazy val javaHome: File = {
-  val envPath = Option(System.getenv("JAVAFX_HOME")) match {
-    case Some(s) => s
-    case None => Option(System.getenv("JAVA_HOME")) match {
-      case Some(s) => s
-      case None => throw new RuntimeException("SBT Failure: neither JAVAFX_HOME nor " +
-        "JAVA_HOME environment variables have been defined!")
-    }
-  }
-  val dir = new File(envPath)
-  if (!dir.exists) {
-    throw new RuntimeException("SBT Failure: no such directory found: " + envPath)
-  }
-  println("**** detected Java/JDK Home is set to " + dir + "  ****")
-  dir
-}
+val javafxHome: File =
+  if (scala.util.Properties.javaVersion.startsWith("1.7."))
+    file(scala.util.Properties.javaHome)
+  else
+    throw new Exception("This branch of ScalaFX requires java 1.7.*,  " +
+      "got " + scala.util.Properties.javaVersion + "\n" +
+      "Detected Java home as: " + scala.util.Properties.javaHome)
 
-lazy val unmanagedLibs = unmanagedJars in Compile += Attributed.blank(javaHome / "jre/lib/jfxrt.jar")
+lazy val unmanagedLibs = unmanagedJars in Compile += Attributed.blank(javafxHome / "lib/jfxrt.jar")
 
 lazy val manifestSetting = packageOptions <+= (name, version, organization) map {
   (title, version, vendor) =>

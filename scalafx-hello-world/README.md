@@ -20,12 +20,9 @@ How to build and Run
 
 1. Install [Java 7 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-2. Create environment variable JAVA_HOME environment variable pointing to your 
-   JFK installation
+2. Install [SBT](http://www.scala-sbt.org/)
 
-3. Install [SBT](http://www.scala-sbt.org/)
-
-4. Run the example: change o directory containing this example and use SBT to 
+3. Run the example: change o directory containing this example and use SBT to
    build and run the example:
 
     %> sbt run

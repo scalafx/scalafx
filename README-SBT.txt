@@ -27,33 +27,7 @@ This information was prepared using Scala SBT version 0.13.1, which you can down
 from: http://www.scala-sbt.org/
 
 
-2. Define Environment Variables
-   ----------------------------
-
-Define an environment variable `JAVA_HOME' that points to the JDK location. 
-When building ScalaFX 1.0, it is used to locate JavaFX runtime library: jfxrt.jar. 
-For Oracle Java SE JDK 7 builds, it is assumed that JavaFX runtime library
-is in `${JAVA_HOME}/jre/lib/jfxrt.jar'
-
-In Unix, Mac OS X or Linux, you can define a environment variable `JAVAFX_HOME'
-inside the Bash shell init login file at `~/.bash_profile':
-
-    # for Bash
-    export JAVA_HOME=/opt/java/jdk1.7.0_51
-
-Alternatively, for the Bourne shell script, you can place this setting in the
-shell init login file `~/.profile':
-
-    # for Bourne Shell
-    JAVA_HOME=/opt/java/jdk1.7.0_51
-    export JAVA_HOME
-
-
-For Windows 7 operating systems, you need to define an environment variable in
-the Control Panel in the Systems application.
-
-
-3. Checkout Source Code
+2. Checkout Source Code
    ---------------------
    
 If you do not have the source code, then use Mercurial to checkout the code
@@ -88,7 +62,7 @@ This should build the entire code base; package up the JAR files,
 source and binary files; and publish them in local Ivy repository (~/.ivy).
 
 
-4. Using SBT Interactively
+3. Using SBT Interactively
    ----------------------
 
 Start Scala SBT at the command line:
@@ -152,7 +126,7 @@ For more information, on Scala SBT and Multi-Module builds, point your favourite
 web browser to:
 http://www.scala-sbt.org/release/docs/Getting-Started/Multi-Project.html
 
-5. Uning IDEs
+4. Using IDEs
    ----------
 
 Both IntelliJ IDEA with Scala plugin and NetBeans with it's Scala plugin can import
@@ -167,7 +141,7 @@ or
 The Eclipse Plugin generates the files: scalafx/.project, scalafx/.classpath
 and the files scalafx-demos/.project, scalafx-demos/.classpath
 
-6. Running the Demonstration
+5. Running the Demonstration
    -------------------------
    
 The module `scalafx-demos' contains many demonstrations of the ScalaFX Framework.
@@ -192,7 +166,7 @@ following command line:
     
 This the "Enter number:" prompt, as described above.
 
-7. Publishing SBT Artifacts Locally
+6. Publishing SBT Artifacts Locally
    --------------------------------
    
 SBT can publish artifacts to local repository using the task `publish-local'.
@@ -222,7 +196,7 @@ You will to repeat this for all the modules. Please note the embedded Scala
 compiler version in the artifact name e.g. `scalafx_2.9.3'
 
 
-8. SBT Configuration on Mac
+7. SBT Configuration on Mac
    ------------------------
    
 The following SBT launcher bash shell script worked under Mac OS
@@ -242,7 +216,7 @@ following example of the `sbt' shell script.
 
 Of course, your mileage will indeed vary on your own workstation.
 
-9. SBT Build Files
+8. SBT Build Files
    ----------------
 
 Here is a description of the Scala SBT files for the entire build process.
@@ -253,7 +227,7 @@ Here is a description of the Scala SBT files for the entire build process.
 ./project/plugin.sbt          Defines additional plug-ins necessary for the build
 
 
-10. Cross Versions
+9. Cross Versions
    --------------
    
 Cross Scala Versions is a feature of the Scala SBT to build against different
