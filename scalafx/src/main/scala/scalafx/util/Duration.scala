@@ -63,7 +63,7 @@ class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Du
   /**
    * The constructor of $D
    *
-   * @param millis The duration of the $D in milliseconds
+   * @param millis The length of the $D in milliseconds
    */
   def this(millis: Double) =
     this(jfxu.Duration.millis(millis))
