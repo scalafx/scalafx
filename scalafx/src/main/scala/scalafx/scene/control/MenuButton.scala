@@ -44,7 +44,7 @@ object MenuButton {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/MenuButton.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/MenuButton.html]].
  */
 class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
   extends ButtonBase(delegate)

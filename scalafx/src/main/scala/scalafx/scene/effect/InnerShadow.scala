@@ -39,7 +39,7 @@ object InnerShadow {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/effect/InnerShadow.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/InnerShadow.html]]
  */
 class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShadow)
   extends Effect(delegate)

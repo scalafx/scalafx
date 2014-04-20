@@ -42,7 +42,7 @@ import scalafx.delegate.SFXDelegate
 object SequentialTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/SequentialTransition.html $ST]],
+   * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/SequentialTransition.html $ST]],
    * extracting its delegate.
    *
    * @param v ScalaFX $ST
@@ -53,7 +53,7 @@ object SequentialTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/SequentialTransition.html SequentialTransition]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/SequentialTransition.html SequentialTransition]].
  *
  * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
  * @param delegate JavaFX $ST to be delegated.

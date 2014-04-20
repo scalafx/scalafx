@@ -37,7 +37,7 @@ object Toggle {
 }
 
 /**
- * Wrapper trait to [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/Toggle.html Toggle]]
+ * Wrapper trait to [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Toggle.html Toggle]]
  * interface.
  */
 trait Toggle extends SFXDelegate[jfxsc.Toggle] {

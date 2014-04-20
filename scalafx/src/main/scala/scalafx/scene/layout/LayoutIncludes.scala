@@ -33,12 +33,12 @@ object LayoutIncludes extends LayoutIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/package-summary.html `javafx.scene.layout`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/package-summary.html `javafx.scene.layout`]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/
  * @define END ]]` instance to its $SFX counterpart.
  *
  * @define ACPN AnchorPane

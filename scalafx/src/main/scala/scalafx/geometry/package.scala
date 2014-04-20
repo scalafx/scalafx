@@ -27,7 +27,7 @@
 package scalafx
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/geometry/package-summary.html `javafx.geometry`]] package.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/package-summary.html `javafx.geometry`]] package.
  */
 package object geometry {
 

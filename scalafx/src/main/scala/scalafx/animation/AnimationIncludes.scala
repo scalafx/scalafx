@@ -33,10 +33,10 @@ object AnimationIncludes extends AnimationIncludes
 
 /**
  * Contains implicit methods to convert classes from
- * [[http://docs.oracle.com/javafx/2/api/javafx/animation/package-summary.html `javafx.animation`]] classes to their
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/package-summary.html `javafx.animation`]] classes to their
  * respective ScalaFX versions.
  *
- * @define INTERP [[http://docs.oracle.com/javafx/2/api/javafx/animation/Interpolatable.html `Interpolatable`]]
+ * @define INTERP [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Interpolatable.html `Interpolatable`]]
  * @define INTERPM `interpolate` method
  * @define GENERATE Generates a ScalaFX
  * @define FROM from its JavaFX counterparty.

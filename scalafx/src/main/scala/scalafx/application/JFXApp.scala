@@ -63,7 +63,7 @@ object JFXApp {
 
   /**
    * Wraps
-   * [[http://docs.oracle.com/javafx/2/api/javafx/application/Application.Parameters.html Application.Parameters]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html Application.Parameters]]
    * class.
    */
   abstract class Parameters extends SFXDelegate[jfxa.Application.Parameters] {

@@ -40,7 +40,7 @@ import scalafx.delegate.SFXDelegate
 object PauseTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $PT to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/PauseTransition.html $PT]],
+   * Converts a ScalaFX $PT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PauseTransition.html $PT]],
    * extracting its delegate.
    *
    * @param v ScalaFX $PT
@@ -51,7 +51,7 @@ object PauseTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/PauseTransition.html $PT]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PauseTransition.html $PT]].
  *
  * @constructor Creates a new ScalaFX $PT from a JavaFX $PT.
  * @param delegate JavaFX $PT to be delegated.

@@ -42,7 +42,7 @@ import scalafx.beans.property.ObjectProperty
 object TranslateTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $TT to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/TranslateTransition.html $TT]],
+   * Converts a ScalaFX $TT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/TranslateTransition.html $TT]],
    * extracting its delegate.
    *
    * @param v ScalaFX $TT
@@ -53,7 +53,7 @@ object TranslateTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/TranslateTransition.html TranslateTransition]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/TranslateTransition.html TranslateTransition]].
  *
  * @constructor Creates a new ScalaFX $TT from a JavaFX $TT.
  * @param delegate JavaFX $TT to be delegated.

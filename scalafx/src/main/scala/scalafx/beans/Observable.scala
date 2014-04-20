@@ -35,18 +35,18 @@ object Observable {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/beans/Observable.html `Observable`]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/Observable.html `Observable`]].
  *
  * @define JFX JavaFX
  * @define IV `InvalidationListener`
- * @define IVURL [[http://docs.oracle.com/javafx/2/api/javafx/beans/InvalidationListener.html `InvalidationListener`]]
+ * @define IVURL [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/InvalidationListener.html `InvalidationListener`]]
  * @define SUBRET A new [[scalafx.event.subscriptions.Subscription]] to remove $JFX $IV.
  */
 trait Observable extends SFXDelegate[jfxb.Observable] {
 
   /**
    * Adds a function as a $JFX $IVURL. This function has all arguments from
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/InvalidationListener.html#invalidated(javafx.beans.Observable) `invalidated`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/InvalidationListener.html#invalidated(javafx.beans.Observable) `invalidated`]]
    * method from $IV.
    *
    * @param op Function that receives a ScalaFX `Observable`. It will be called when value was invalidated.

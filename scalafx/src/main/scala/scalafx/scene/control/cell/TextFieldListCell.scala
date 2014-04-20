@@ -79,7 +79,7 @@ object TextFieldListCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/TextFieldListCell.html $TFLC]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/TextFieldListCell.html $TFLC]]
  *
  * @tparam T Type used in this cell
  * @constructor Creates a new $TFLC from a JavaFX $TFLC

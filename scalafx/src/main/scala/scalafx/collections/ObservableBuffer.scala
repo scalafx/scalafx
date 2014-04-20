@@ -48,7 +48,7 @@ import scalafx.delegate.SFXDelegate
  * Companion Object for [[scalafx.collections.ObservableBuffer]].
  *
  * @define OB `ObservableBuffer`
- * @define OL [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableList.html `ObservableList`]]
+ * @define OL [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html `ObservableList`]]
  * @define buf `Buffer`
  */
 object ObservableBuffer extends SeqFactory[ObservableBuffer] {
@@ -76,7 +76,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
 
   /**
    * Trait that indicates a Change in an $OB. It is a simpler version of JavaFX's
-   * [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html `ListChangeListener.Change`]],
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ListChangeListener.Change.html `ListChangeListener.Change`]],
    * where each subclass indicates a specific change operation.
    */
   sealed trait Change
@@ -86,8 +86,8 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    *
    * @param position Position from where new elements were added
    * @param added elements added
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getFrom() `ListChangeListener.Change.getFrom()`]]
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getAddedSubList() `ListChangeListener.Change.getAddedSubList()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ListChangeListener.Change.html#getFrom() `ListChangeListener.Change.getFrom()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ListChangeListener.Change.html#getAddedSubList() `ListChangeListener.Change.getAddedSubList()`]]
    */
   case class Add[T](position: Int, added: Traversable[T]) extends Change
 
@@ -96,8 +96,8 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    *
    * @param position Position from where elements were removed
    * @param removed elements removed
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getFrom() `ListChangeListener.Change.getFrom()`]]
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getRemoved() `ListChangeListener.Change.getRemoved()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ListChangeListener.Change.html#getFrom() `ListChangeListener.Change.getFrom()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ListChangeListener.Change.html#getRemoved() `ListChangeListener.Change.getRemoved()`]]
    */
   case class Remove[T](position: Int, removed: Traversable[T]) extends Change
 
@@ -108,9 +108,9 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    * @param end The end of the change interval.
    * @param permutation Function thst indicates the permutation that happened. The argument indicates the old index
    * that contained the element prior to this change. Its return is the new index of the same element.
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getFrom() `ListChangeListener.Change.getFrom()`]]
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getTo() `ListChangeListener.Change.getTo()`]]
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getPermutation(int) `ListChangeListener.Change.getPermutation(int)`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ListChangeListener.Change.html#getFrom() `ListChangeListener.Change.getFrom()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ListChangeListener.Change.html#getTo() `ListChangeListener.Change.getTo()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ListChangeListener.Change.html#getPermutation(int) `ListChangeListener.Change.getPermutation(int)`]]
    */
   case class Reorder(start: Int, end: Int, permutation: (Int => Int)) extends Change
 
@@ -166,9 +166,9 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    * Revert the order in the $OB. Fires only '''one''' change notification on the list.
    *
    * ''Implementation note'': This method uses
-   * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html#reverse(javafx.collections.ObservableList) `reverse`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html#reverse(javafx.collections.ObservableList) `reverse`]]
    * method from
-   * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html `javafx.collections.FXCollections`]].
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html `javafx.collections.FXCollections`]].
    * It is not called `reverse` to not confuse with method with same name from [[scala.collection.mutable.Buffer]]
    *
    * @param buffer $buf to be reverted.
@@ -203,7 +203,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
 
 /**
  * Wrapper class to JavaFX's 
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableList.html $OL]].
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html $OL]].
  *
  * @tparam T Type of this $buf
  *
@@ -422,7 +422,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * Removes a number of elements from a given index position. $WhyOverride
    *
    * '''Note''': This method conflicts with method with same signature in
-   * [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableList.html#remove(int,int) $OL]].
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html#remove(int,int) $OL]].
    * There the arguments indicate a range of index of elements to be removed. Here the arguments indicate the first
    * index of range and the quantity of elements to be removed. If you want a functionality equivalent to JavaFX
    * $OL, use `removeRange`.
@@ -436,7 +436,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
 
   /**
    * Remove a range of elements. Use this method if you want a functionality such as
-   * [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableList.html#remove(int,int) the method]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html#remove(int,int) the method]]
    *  with same signature in $OL.
    *
    * @param from the start of the range to remove (inclusive)

@@ -35,7 +35,7 @@ object WritableImage {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/image/WritableImage.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/WritableImage.html]]
  */
 class WritableImage(override val delegate: jfxsi.WritableImage)
   extends Image(delegate)

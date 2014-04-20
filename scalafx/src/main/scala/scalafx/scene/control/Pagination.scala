@@ -51,7 +51,7 @@ object Pagination {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/Pagination.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Pagination.html]]
  */
 class Pagination(override val delegate: jfxsc.Pagination = new jfxsc.Pagination)
   extends Control(delegate)

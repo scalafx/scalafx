@@ -57,7 +57,7 @@ object RotateEvent {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/RotateEvent.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/RotateEvent.html]]
  */
 class RotateEvent(override val delegate: jfxsi.RotateEvent)
   extends InputEvent(delegate)

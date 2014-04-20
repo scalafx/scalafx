@@ -59,7 +59,7 @@ object Shape {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/shape/Shape.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/Shape.html]].
  */
 abstract class Shape(override val delegate: jfxss.Shape)
   extends Node(delegate)

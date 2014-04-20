@@ -47,7 +47,7 @@ object Rectangle {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/shape/Rectangle.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/Rectangle.html]]
  *
  */
 class Rectangle(override val delegate: jfxss.Rectangle = new jfxss.Rectangle())

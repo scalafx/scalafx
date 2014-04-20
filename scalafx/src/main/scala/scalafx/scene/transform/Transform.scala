@@ -81,7 +81,7 @@ object Transform {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/scene/transform/Transform.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Transform.html]]
  */
 abstract class Transform(override val delegate: jfxst.Transform) extends SFXDelegate[jfxst.Transform] {
 

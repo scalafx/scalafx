@@ -36,7 +36,7 @@ object Affine {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/scene/transform/Affine.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Affine.html]]
  */
 class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Transform(delegate) with SFXDelegate[jfxst.Affine] {
 

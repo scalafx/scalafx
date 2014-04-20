@@ -51,7 +51,7 @@ object GraphicsContext {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/canvas/GraphicsContext.html JavaFX GraphicsContext]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/GraphicsContext.html JavaFX GraphicsContext]]
  */
 class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   extends SFXDelegate[jfxsc.GraphicsContext] {

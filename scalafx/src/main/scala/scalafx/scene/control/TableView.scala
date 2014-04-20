@@ -44,7 +44,7 @@ object TableView {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableView.ResizeFeatures.html]].
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.ResizeFeatures.html]].
    */
   class ResizeFeatures[S](override val delegate: jfxsc.TableView.ResizeFeatures[S])
     extends SFXDelegate[jfxsc.TableView.ResizeFeatures[S]] {
@@ -65,7 +65,7 @@ object TableView {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableView.TableViewSelectionModel.html]].
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.TableViewSelectionModel.html]].
    */
   abstract class TableViewSelectionModel[S](override val delegate: jfxsc.TableView.TableViewSelectionModel[S])
     extends MultipleSelectionModel[S](delegate)
@@ -160,7 +160,7 @@ object TableView {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableView.TableViewFocusModel.html]].
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.TableViewFocusModel.html]].
    */
   class TableViewFocusModel[S](override val delegate: jfxsc.TableView.TableViewFocusModel[S])
     extends FocusModel[S](delegate)
@@ -227,7 +227,7 @@ object TableView {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableView.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html]].
  */
 class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableView[S])
   extends Control(delegate)

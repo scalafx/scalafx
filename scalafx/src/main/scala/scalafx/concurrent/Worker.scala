@@ -79,7 +79,7 @@ object Worker {
 }
 
 /**
- * Wrapper trait for [[http://docs.oracle.com/javafx/2/api/javafx/concurrent/Worker.html Worker]]
+ * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/Worker.html Worker]]
  * Interface.
  */
 trait Worker[T] extends SFXDelegate[jfxc.Worker[T]] {

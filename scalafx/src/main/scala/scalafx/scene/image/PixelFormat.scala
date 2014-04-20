@@ -82,7 +82,7 @@ object PixelFormat {
   }
   
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/image/PixelFormat.Type.html]]
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/PixelFormat.Type.html]]
    */
   sealed case class Type(override val delegate: jfxsi.PixelFormat.Type)
     extends SFXEnumDelegate[jfxsi.PixelFormat.Type]
@@ -104,7 +104,7 @@ object PixelFormat {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/image/PixelFormat.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/PixelFormat.html]]
  */
 abstract class PixelFormat[B <: Buffer](override val delegate: jfxsi.PixelFormat[B])
   extends SFXDelegate[jfxsi.PixelFormat[B]] {

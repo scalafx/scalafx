@@ -41,7 +41,7 @@ trait Bindings {
   
   /**
    * Returns the highest value among a collection of $JFX 
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
    * 
    * @param v1 First Value
    * @param values Collection of values
@@ -51,7 +51,7 @@ trait Bindings {
   
   /**
    * Returns the Lowest value among a collection of $JFX 
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
    * 
    * @param v1 First Value
    * @param values Collection of values
@@ -61,7 +61,7 @@ trait Bindings {
 
   /**
    * Returns the sum of a collection of $JFX
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
    * 
    * @param v1 First Value
    * @param values Collection of values
@@ -72,7 +72,7 @@ trait Bindings {
   /**
    * 
    * @param condition Function that returns a $JFX 
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ObservableBooleanValue.html `ObservableBooleanValue`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableBooleanValue.html `ObservableBooleanValue`]]
    * @return A ConditionBuilder wrapping `condition`. 
    */
   def when(condition: => jfxbv.ObservableBooleanValue) = new ConditionBuilder(new jfxbb.When(condition))

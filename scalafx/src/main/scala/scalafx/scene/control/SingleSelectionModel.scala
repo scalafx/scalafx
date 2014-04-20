@@ -37,11 +37,11 @@ object SingleSelectionModel {
    * Creates a new [[scalafx.scene.control.SingleSelectionModel]] from functions that defines a data
    * model and quantity of items. This method was created to supply necessity
    * to override protected methods
-   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/SingleSelectionModel.html#getItemCount() getItemCount()]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SingleSelectionModel.html#getItemCount() getItemCount()]]
    * and
-   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/SingleSelectionModel.html#getModelItem(int) getModelItem(int)]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SingleSelectionModel.html#getModelItem(int) getModelItem(int)]]
    * from
-   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/SingleSelectionModel.html SingleSelectionModel]].
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SingleSelectionModel.html SingleSelectionModel]].
    *
    * @tparam T  The type of the item contained in the control that can be
    * selected.

@@ -35,7 +35,7 @@ object WritablePixelFormat {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/image/WritablePixelFormat.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/WritablePixelFormat.html]]
  */
 abstract class WritablePixelFormat[B <: Buffer](override val delegate: jfxsi.WritablePixelFormat[B])
   extends PixelFormat(delegate)

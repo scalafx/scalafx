@@ -27,7 +27,7 @@
 package scalafx
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/beans/package-summary.html `javafx.beans`]] package.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/package-summary.html `javafx.beans`]] package.
  *
  */
 package object beans {

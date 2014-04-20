@@ -62,7 +62,7 @@ object TouchPoint {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/TouchPoint.State.html]]
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/TouchPoint.State.html]]
    */
   sealed case class State(override val delegate: jfxsi.TouchPoint.State)
     extends SFXEnumDelegate[jfxsi.TouchPoint.State]

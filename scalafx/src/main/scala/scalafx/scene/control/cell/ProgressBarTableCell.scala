@@ -60,7 +60,7 @@ object ProgressBarTableCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/ProgressBarTableCell.html $PBTC]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ProgressBarTableCell.html $PBTC]]
  *
  * @tparam S Type used in this cell
  * @constructor Creates a new $PBTC from a JavaFX $PBTC

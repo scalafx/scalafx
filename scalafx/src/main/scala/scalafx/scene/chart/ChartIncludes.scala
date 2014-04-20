@@ -32,12 +32,12 @@ object ChartIncludes extends ChartIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/scene/chart/package-summary.html `javafx.scene.chart`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/package-summary.html `javafx.scene.chart`]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/chart/
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/
  * @define END ]]` instance to its $SFX counterpart.
  *
  * @define ARCH AreaChart

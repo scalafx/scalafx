@@ -44,7 +44,7 @@ object Task {
 }
 
 /**
- * Wrapper trait for [[http://docs.oracle.com/javafx/2/api/javafx/concurrent/Task.html Task]]
+ * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/Task.html Task]]
  * Class.
  */
 abstract class Task[T](override val delegate: jfxc.Task[T])

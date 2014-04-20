@@ -37,7 +37,7 @@ object Scale {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/scene/transform/Scale.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Scale.html]]
  */
 class Scale(override val delegate: jfxst.Scale = new jfxst.Scale)
   extends Transform(delegate)

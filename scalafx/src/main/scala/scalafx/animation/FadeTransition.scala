@@ -42,7 +42,7 @@ import scalafx.delegate.SFXDelegate
 object FadeTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $FT to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/FadeTransition.html $FT]], 
+   * Converts a ScalaFX $FT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FadeTransition.html $FT]], 
    * extracting its delegate.
    *
    * @param v ScalaFX $FT
@@ -52,7 +52,7 @@ object FadeTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/FadeTransition.html $FT]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FadeTransition.html $FT]].
  *
  * @constructor Creates a new ScalaFX $FT from a JavaFX $FT.
  * @param delegate JavaFX $FT to be delegated.

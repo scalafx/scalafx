@@ -57,7 +57,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
 
   /**
    * Indicates a change in a $OS. It is a simpler version of JavaFX's
-   * [[http://docs.oracle.com/javafx/2/api/javafx/collections/SetChangeListener.Change.html `SetChangeListener.Change`]],
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/SetChangeListener.Change.html `SetChangeListener.Change`]],
    * where each subclass indicates a specific change operation.
    */
   trait Change[T]
@@ -66,7 +66,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
    * Indicates a addition in a $OS.
    *
    * @param added Added element.
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/SetChangeListener.Change.html#getElementAdded() `SetChangeListener.Change.getElementAdded()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/SetChangeListener.Change.html#getElementAdded() `SetChangeListener.Change.getElementAdded()`]]
    */
   case class Add[T](added: T) extends Change[T]
 
@@ -74,7 +74,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
    * Indicates a removal in an $OS.
    *
    * @param removed Removed element.
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/SetChangeListener.Change.html#getElementRemoved() `SetChangeListener.Change.getElementRemoved()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/SetChangeListener.Change.html#getElementRemoved() `SetChangeListener.Change.getElementRemoved()`]]
    */
   case class Remove[T](removed: T) extends Change[T]
 
@@ -114,7 +114,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
 }
 
 /**
- * Wrapper class to JavaFX's [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableSet.html $OS]] .
+ * Wrapper class to JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableSet.html $OS]] .
  *
  * @tparam T Type of this $SET
  *
@@ -239,12 +239,12 @@ trait ObservableSet[T]
  * [[http://docs.oracle.com/javase/7/docs/api/java/util/HashSet.html `HashSet`]] from Java Collection.
  *
  * @param delegate JavaFX
- *                 [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableSet.html ObservableSet]]
+ *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableSet.html ObservableSet]]
  *                 instance to be wrapped by this class. By default it is a
  *                 [[http://docs.oracle.com/javase/7/docs/api/java/util/HashSet.html HashSet]] wrapped by
- *                 [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html#observableSet(java.util.Set) observableSet]]
+ *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html#observableSet(java.util.Set) observableSet]]
  *                 method from
- *                 [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html FXCollections]].
+ *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html FXCollections]].
  */
 class ObservableHashSet[T](override val delegate: jfxc.ObservableSet[T] = jfxc.FXCollections.observableSet(new ju.HashSet[T]))
   extends ObservableSet[T]

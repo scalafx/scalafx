@@ -32,12 +32,12 @@ object TransformIncludes extends TransformIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/scene/transform/package-summary.html `javafx.scene.transform`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/transform/package-summary.html `javafx.scene.transform`]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/transform/
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/transform/
  * @define END ]]` instance to its $SFX counterpart.
  *
  * @define AF Affine
