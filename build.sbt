@@ -34,7 +34,7 @@ lazy val scalafxDemos = Project(
 
 // Dependencies
 lazy val junit = "junit" % "junit" % "4.11"
-lazy val scalatest = "org.scalatest" %% "scalatest" % "2.1.0"
+lazy val scalatest = "org.scalatest" %% "scalatest" % "2.1.3"
 
 // Resolvers
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -48,7 +48,7 @@ resolvers += sonatypeNexusSnapshots
 lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.10.3", "2.11.0-RC1", "2.9.3"),
+  crossScalaVersions := Seq("2.10.4", "2.11.0", "2.9.3"),
   scalaVersion <<= crossScalaVersions { versions => versions.head },
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
@@ -67,6 +67,13 @@ lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
     else
       scalatest % "test",
     junit % "test"),
+  // ScalaTest needs Scala XML, in Scala 2.11 it is not in `scala-library`,
+  // it is in `scala-library-all`
+  libraryDependencies ++= (
+    if (scalaVersion.value.startsWith("2.11.0"))
+      Seq("org.scala-lang" % "scala-library-all" % "2.11.0" % "test")
+    else
+      Seq.empty[ModuleID]),
   unmanagedLibs,
   manifestSetting,
   publishSetting,
