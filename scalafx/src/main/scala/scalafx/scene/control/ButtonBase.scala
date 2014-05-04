@@ -38,7 +38,7 @@ object ButtonBase {
   implicit def sfxButtonBase2jfx(v: ButtonBase) = v.delegate
 }
 
-class ButtonBase(override val delegate: jfxsc.ButtonBase)
+abstract class ButtonBase(override val delegate: jfxsc.ButtonBase)
   extends Labeled(delegate)
   with FireDelegate[jfxsc.ButtonBase]
   with SFXDelegate[jfxsc.ButtonBase] {
