@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,9 +35,9 @@ import scalafx.beans.property.ReadOnlyObjectProperty
 object ControlIncludes extends ControlIncludes
 
 /**
- * Contains implcit methods to convert from
+ * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/package-summary.html `javafx.scene.control`]]
- * Classes/Traits to their $SFX counterparts.
+ * classes/traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
@@ -98,6 +98,7 @@ object ControlIncludes extends ControlIncludes
  * @define TGGL Toggle
  * @define SPRT Separator
  * @define SKIN Skin
+ * @define SNBE SkinBase
  * @define SKNB Skinnable
  * @define PRGI ProgressIndicator
  * @define PRGB ProgressBar
@@ -163,7 +164,7 @@ trait ControlIncludes
    * @param b $JFX $BTBS
    * @return $SFX $BTBS
    */
-  implicit def jfxButtonBase2sfx(b: jfxsc.ButtonBase) = new ButtonBase(b)
+  implicit def jfxButtonBase2sfx(b: jfxsc.ButtonBase) = new ButtonBase(b) {}
 
   /**
    * $START$BUTN.html $BUTN$END
@@ -421,7 +422,7 @@ trait ControlIncludes
    * @return $SFX $SLMD
    */
   implicit def jfxSelectionMode2sfx(e: jfxsc.SelectionMode) = SelectionMode.jfxEnum2sfx(e)
-
+  
   /**
    * $START$SLDR.html $SLDR$END
    *
@@ -576,6 +577,14 @@ trait ControlIncludes
   implicit def jfxSkin2sfxSkin[C <: jfxsc.Skinnable](s: jfxsc.Skin[C]) = new Skin[C] {
     override val delegate = s
   }
+  
+  /**
+   * $START$SNBE.html $SNBE$END
+   *
+   * @param sb $JFX $SNBE
+   * @return $SFX $SNBE
+   */
+  implicit def jfxSkinBase2sfx[C <: jfxsc.Control](sb: jfxsc.SkinBase[C]) = new SkinBase[C](sb) {}
 
   /**
    * $START$SKNB.html $SKNB$END

@@ -24,53 +24,54 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
-package scalafx
+import javafx.scene.{control => jfxsc}
+import scalafx.Includes._
+import scalafx.css.PseudoClass
+import scalafx.css.PseudoClass.sfxPseudoClass2jfx
+import scalafx.delegate.SFXDelegate
 
-import animation.AnimationIncludes
-import beans.BeanIncludes
-import collections.CollectionIncludes
-import concurrent.ConcurrentIncludes
-import css.CssIncludes
-import event.EventIncludes
-import geometry.GeometryIncludes
-import application.ApplicationIncludes
-import scene.canvas.CanvasIncludes
-import scene.input.InputIncludes
-import scene.media.MediaIncludes
-import scene.transform.TransformIncludes
-import scene.web.WebIncludes
-import scene.SceneIncludes
-import stage.StageIncludes
-import util.converter.ConverterIncludes
-import util.UtilIncludes
-import scalafx.delegate.DelegateIncludes
+object SkinBase {
+  implicit def sfxSkinBase2jfx[C <: jfxsc.Control](v: SkinBase[C]) = v.delegate
+  
+  def classCssMetaData = jfxsc.SkinBase.getClassCssMetaData
+}
 
 /**
- * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
- * and other syntactic sugar.
- *
- * This file is tiered both for modularity and to prioritize the implicits
- * (the order of the withs matter a lot!)
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SkinBase.html]].
  */
-object Includes extends Includes
-
-trait Includes
-  extends AnimationIncludes
-  with DelegateIncludes
-  with CollectionIncludes 
-  with EventIncludes 
-  with SceneIncludes 
-  with BeanIncludes 
-  with UtilIncludes 
-  with GeometryIncludes 
-  with TransformIncludes 
-  with InputIncludes 
-  with StageIncludes 
-  with WebIncludes 
-  with MediaIncludes
-  with ConverterIncludes
-  with ConcurrentIncludes
-  with CanvasIncludes
-  with ApplicationIncludes
-  with CssIncludes
+abstract class SkinBase[C <: jfxsc.Control] protected (override val delegate: jfxsc.SkinBase[C])
+  extends SFXDelegate[jfxsc.SkinBase[C]] {
+  
+  /**
+   * Called by a <code>Skinnable</code> when the <code>Skin</code> is replaced on the <code>Skinnable</code>.
+   */
+  def dispose() {
+    delegate.dispose()
+  }
+  
+  /**
+   * Returns the children of the skin.
+   */
+  def getChildren = delegate.getChildren
+  
+  /**
+   * This method should delegate to Node.getClassCssMetaData() so that a <code>Node</code>'s <code>CssMetaData</code> can be accessed without the need for reflection.
+   */
+  def cssMetaData = delegate.getCssMetaData
+  
+  /**
+   * Gets the <code>Node</code> which represents this <code>Skin</code>.
+   */
+  def node = delegate.getNode
+  
+  /**
+   * Gets the <code>Skinnable</code> to which this <code>Skin</code> is assigned.
+   */
+  def skinnable = delegate.getSkinnable
+  
+  def pseudoClassStateChanged(pseudoClass: PseudoClass, active: Boolean) {
+    delegate.pseudoClassStateChanged(pseudoClass, active)
+  }
+}
