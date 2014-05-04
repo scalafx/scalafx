@@ -33,9 +33,7 @@ import scalafx.css.CssIncludes.jfxPseudoClass2sfx
 object PseudoClass {
   implicit def sfxPseudoClass2jfx(v: PseudoClass) = v.delegate
   
-  def pseudoClass(pseudoClass: String): PseudoClass = {
-    jfxcss.PseudoClass.getPseudoClass(pseudoClass)
-  }
+  def pseudoClass(pseudoClass: String): PseudoClass = jfxcss.PseudoClass.getPseudoClass(pseudoClass)
 }
 
 /**
