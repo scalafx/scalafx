@@ -7,7 +7,7 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * PseudoClass Spec tests.
+ * SkinBase Spec tests.
  *
  */
 @RunWith(classOf[JUnitRunner])
