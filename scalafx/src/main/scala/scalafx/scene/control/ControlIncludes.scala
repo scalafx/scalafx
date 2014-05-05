@@ -61,6 +61,8 @@ object ControlIncludes extends ControlIncludes
  * @define CLPK ColorPicker
  * @define CBBS ComboBoxBase
  * @define CBBX ComboBox
+ * @define DTCL DateCell
+ * @define DTPR DatePicker
  * @define FCMD FocusModel
  * @define HYLK Hyperlink
  * @define IDCL IndexedCell
@@ -257,6 +259,24 @@ trait ControlIncludes
    * @return $SFX $CBBX
    */
   implicit def jfxComboBox2sfx[T](v: jfxsc.ComboBox[T]) = new ComboBox[T](v)
+  
+  /**
+   * $START$DTCL.html $DTCL$END
+   *
+   * @tparam T $TTYPE $DTCL
+   * @param v $JFX $DTCL
+   * @return $SFX $DTCL
+   */
+  implicit def jfxDateCell2sfx(v: jfxsc.DateCell) = new DateCell(v)
+  
+  /**
+   * $START$DTPR.html $DTPR$END
+   *
+   * @tparam T $TTYPE $DTPR
+   * @param v $JFX $DTPR
+   * @return $SFX $DTPR
+   */
+  implicit def jfxDatePicker2sfx(v: jfxsc.DatePicker) = new DatePicker(v)
 
   /**
    * $START$FCMD.html $FCMD$END
