@@ -54,7 +54,7 @@ abstract class SkinBase[C <: jfxsc.Control] protected (override val delegate: jf
   /**
    * Returns the children of the skin.
    */
-  def getChildren = delegate.getChildren
+  def children = delegate.getChildren
   
   /**
    * This method should delegate to Node.getClassCssMetaData() so that a <code>Node</code>'s <code>CssMetaData</code> can be accessed without the need for reflection.
