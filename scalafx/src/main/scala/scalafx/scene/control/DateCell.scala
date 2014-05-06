@@ -44,7 +44,7 @@ class DateCell(override val delegate: jfxsc.DateCell) extends Cell[LocalDate](de
   def this() = this(new jfxsc.DateCell())
   
   /**
-   * Updates the item associated with this <code>Cell</code>.
+   * Updates the item associated with this `Cell`.
    */
   def updateItem(item: LocalDate, empty: Boolean) {
     delegate.updateItem(item, empty)

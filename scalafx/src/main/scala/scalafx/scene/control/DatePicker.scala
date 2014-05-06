@@ -45,12 +45,12 @@ object DatePicker {
 class DatePicker(override val delegate: jfxsc.DatePicker) extends ComboBoxBase[LocalDate](delegate) with SFXDelegate[jfxsc.DatePicker] {
   
   /**
-   * Creates a default <code>DatePicker</code> instance with a <code>null</node> date value set.
+   * Creates a default `DatePicker` instance with a `null` date value set.
    */
   def this() = this(new jfxsc.DatePicker())
   
   /**
-   * Creates a <code>DatePicker</code> instance and sets the value to the given date.
+   * Creates a `DatePicker` instance and sets the value to the given date.
    */
   def this(localDate: LocalDate) = this(new jfxsc.DatePicker(localDate))
   
@@ -63,7 +63,7 @@ class DatePicker(override val delegate: jfxsc.DatePicker) extends ComboBoxBase[L
   }
   
   /**
-   * Converts the input text to an object of type <code>LocalDate</code> and vice versa.
+   * Converts the input text to an object of type `LocalDate` and vice versa.
    */
   def converter = delegate.converterProperty
   def converter_=(value: StringConverter[LocalDate]) {
@@ -71,7 +71,7 @@ class DatePicker(override val delegate: jfxsc.DatePicker) extends ComboBoxBase[L
   }
   
   /**
-   * A custom cell factory can be provided to customize individual day cells in the <code>DatePicker</code> popup.
+   * A custom cell factory can be provided to customize individual day cells in the `DatePicker` popup.
    */
   def dayCellFactory = delegate.dayCellFactoryProperty
   def dayCellFactory_=(value: DatePicker => DateCell) {
@@ -83,12 +83,12 @@ class DatePicker(override val delegate: jfxsc.DatePicker) extends ComboBoxBase[L
   }
   
   /**
-   * The editor for the <code>DatePicker</code>.
+   * The editor for the `DatePicker`.
    */
   def editor = delegate.editorProperty
   
   /**
-   * Whether the <code>DatePicker</code> popup should display a column showing week numbers.
+   * Whether the `DatePicker` popup should display a column showing week numbers.
    */
   def showWeekNumbers = delegate.showWeekNumbersProperty
   def showWeekNumbers_=(value: Boolean) = {

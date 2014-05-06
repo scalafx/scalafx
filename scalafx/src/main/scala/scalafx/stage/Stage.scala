@@ -40,7 +40,7 @@ object Stage {
 }
 
 /**
- * The primary stage for your application has to be created by wrapping the <code>JFXApp.STAGE</code> object.
+ * The primary stage for your application has to be created by wrapping the `JFXApp.STAGE` object.
  * <pre>
  * stage = new JFXApp.PrimaryStage {
  *   // your definitions

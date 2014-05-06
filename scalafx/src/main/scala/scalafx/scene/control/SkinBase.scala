@@ -45,7 +45,7 @@ abstract class SkinBase[C <: jfxsc.Control] protected (override val delegate: jf
   extends SFXDelegate[jfxsc.SkinBase[C]] {
   
   /**
-   * Called by a <code>Skinnable</code> when the <code>Skin</code> is replaced on the <code>Skinnable</code>.
+   * Called by a `Skinnable` when the `Skin` is replaced on the `Skinnable`.
    */
   def dispose() {
     delegate.dispose()
@@ -57,17 +57,17 @@ abstract class SkinBase[C <: jfxsc.Control] protected (override val delegate: jf
   def children = delegate.getChildren
   
   /**
-   * This method should delegate to Node.getClassCssMetaData() so that a <code>Node</code>'s <code>CssMetaData</code> can be accessed without the need for reflection.
+   * This method should delegate to Node.getClassCssMetaData() so that a `Node`'s `CssMetaData` can be accessed without the need for reflection.
    */
   def cssMetaData = delegate.getCssMetaData
   
   /**
-   * Gets the <code>Node</code> which represents this <code>Skin</code>.
+   * Gets the `Node` which represents this `Skin`.
    */
   def node = delegate.getNode
   
   /**
-   * Gets the <code>Skinnable</code> to which this <code>Skin</code> is assigned.
+   * Gets the `Skinnable` to which this `Skin` is assigned.
    */
   def skinnable = delegate.getSkinnable
   

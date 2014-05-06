@@ -42,7 +42,7 @@ object PseudoClass {
 abstract class PseudoClass(override val delegate: jfxcss.PseudoClass) extends SFXDelegate[jfxcss.PseudoClass] {
   
   /**
-   * There is only one <code>PseudoClass</code> instance for a given pseudoClass.
+   * There is only one `PseudoClass` instance for a given pseudoClass.
    */
   def pseudoClassName = delegate.getPseudoClassName
 }
