@@ -78,8 +78,8 @@ class DurationSpec extends FlatSpec {
 
   it should "support proper division of Durations" in {
     // the semantics for dividing durations is equally stupid...  fortunately we can fix it by cancelling units
-    (1000 ms) / (100 ms) should equal(10 ms)
-    (5 s) / (2.5 s) should equal(2 ms)
+    (1000 ms) / (100 ms) should equal(10)
+    (5 s) / (2.5 s) should equal(2)
   }
 
   it should "support less than" in {

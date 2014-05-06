@@ -77,7 +77,7 @@ class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Du
 
   def /(d: Double) = new Duration(delegate.divide(d))
   // Note: This is a "fixed" function...  rather than returning a duration we properly cancel units and return a Double
-  def /(d: jfxu.Duration) = new Duration(delegate.toMillis / d.toMillis)
+  def /(d: jfxu.Duration) = delegate.toMillis / d.toMillis
 
   override def compare(that: Duration) = delegate.compareTo(that)
   def <(d: jfxu.Duration) = delegate.lessThan(d)
