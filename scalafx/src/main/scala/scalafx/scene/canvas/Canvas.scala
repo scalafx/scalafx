@@ -37,7 +37,7 @@ object Canvas {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/canvas/Canvas.html JavaFX Canvas]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/Canvas.html JavaFX Canvas]]
  */
 class Canvas(override val delegate: jfxsc.Canvas = new jfxsc.Canvas)
   extends Node(delegate)

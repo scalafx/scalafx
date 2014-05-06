@@ -38,7 +38,7 @@ object SnapshotParameters {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/SnapshotParameters.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/SnapshotParameters.html]]
  * 
  * @since 2.2
  */

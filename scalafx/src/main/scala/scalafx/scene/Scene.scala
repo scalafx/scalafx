@@ -49,17 +49,17 @@ object Scene {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/Scene.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Scene.html]].
  *
  * @constructor Create a new ScalaFX Scene with JavaFX Scene as delegate.
  * @param delegate JavaFX Scene delegated. Its default value is a JavaFX Scene with a
- *                 [[http://docs.oracle.com/javafx/2/api/javafx/scene/Group.html Group]] as root Node.
+ *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.html Group]] as root Node.
  */
 class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group()))
   extends SFXDelegate[jfxs.Scene] {
 
   /**
-   * Creates a Scene with a [[http://docs.oracle.com/javafx/2/api/javafx/scene/Group.html Group]] as root Node with a
+   * Creates a Scene with a [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.html Group]] as root Node with a
    * specific size.
    *
    * @param width The width of the scene

@@ -36,21 +36,21 @@ object BeanIncludes extends BeanIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/beans/package-summary.html `javafx.beans`]] Classes to
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/package-summary.html `javafx.beans`]] Classes to
  * their ScalaFX counterparts.
  */
 trait BeanIncludes extends PropertyIncludes with BindingIncludes with LowerPriorityIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/beans/package-summary.html `javafx.beans`]] Interfaces to
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/package-summary.html `javafx.beans`]] Interfaces to
  * their ScalaFX counterparts.
  */
 trait LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/Observable.html `javafx.beans.Observable`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/Observable.html `javafx.beans.Observable`]]
    * instance to its ScalaFX counterpart.
    *
    * @param o JavaFX Observable
@@ -62,7 +62,7 @@ trait LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ObservableValue.html `javafx.beans.value.ObservableValue`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableValue.html `javafx.beans.value.ObservableValue`]]
    * instance to its ScalaFX counterpart ''which Java Type and Scala Type are the same''. 
    *
    * @param o JavaFX ObservableValue

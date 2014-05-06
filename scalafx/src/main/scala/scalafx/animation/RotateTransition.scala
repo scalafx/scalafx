@@ -43,7 +43,7 @@ import scalafx.beans.property.ObjectProperty
 object RotateTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $RT to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/RotateTransition.html $RT]],
+   * Converts a ScalaFX $RT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/RotateTransition.html $RT]],
    * extracting its delegate.
    *
    * @param v ScalaFX $RT
@@ -54,7 +54,7 @@ object RotateTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/RotateTransition.html $RT]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/RotateTransition.html $RT]].
  *
  * @constructor Creates a new ScalaFX $RT from a JavaFX $RT.
  * @param delegate JavaFX $RT to be delegated.

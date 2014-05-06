@@ -39,7 +39,7 @@ object ContextMenu {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/ContextMenu.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ContextMenu.html]].
  */
 class ContextMenu(override val delegate: jfxsc.ContextMenu = new jfxsc.ContextMenu)
   extends PopupControl(delegate)

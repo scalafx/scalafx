@@ -42,7 +42,7 @@ import scalafx.beans.property.ObjectProperty
 object ScaleTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/ScaleTransition.html $ST]],
+   * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/ScaleTransition.html $ST]],
    * extracting its delegate.
    *
    * @param v ScalaFX $ST
@@ -52,7 +52,7 @@ object ScaleTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/ScaleTransition.html $ST]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/ScaleTransition.html $ST]].
  * 
  * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
  * @param delegate JavaFX $ST to be delegated.

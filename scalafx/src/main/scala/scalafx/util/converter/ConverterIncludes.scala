@@ -32,12 +32,12 @@ object ConverterIncludes extends ConverterIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/util/converter/package-summary.html `javafx.util.converter`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/converter/package-summary.html `javafx.util.converter`]]
  * Classes to their ScalaFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/util/converter/
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/util/converter/
  * @define END ]]` instance to its $SFX counterpart.
  *
  * @define BDSC BigDecimalStringConverter

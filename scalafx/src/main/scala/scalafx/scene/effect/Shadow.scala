@@ -39,7 +39,7 @@ object Shadow {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/effect/Shadow.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/Shadow.html]].
  */
 class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
   extends Effect(delegate)

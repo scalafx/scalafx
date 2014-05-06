@@ -31,7 +31,7 @@ import javafx.{ collections => jfxc }
 import scalafx.delegate.SFXDelegate
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/collections/package-summary.html `javafx.collections`]] package, 
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/package-summary.html `javafx.collections`]] package, 
  * adding Scala's collections features to original JavaFX collections.
  */
 package object collections {

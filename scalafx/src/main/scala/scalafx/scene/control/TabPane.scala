@@ -63,7 +63,7 @@ object TabPane {
 
   }
 
-  /** Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TabPane.TabClosingPolicy.html]] */
+  /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TabPane.TabClosingPolicy.html]] */
   sealed case class TabClosingPolicy(override val delegate: jfxsc.TabPane.TabClosingPolicy)
     extends SFXEnumDelegate[jfxsc.TabPane.TabClosingPolicy]
 

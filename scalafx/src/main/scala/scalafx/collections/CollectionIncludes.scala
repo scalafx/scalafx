@@ -39,13 +39,13 @@ object CollectionIncludes extends CollectionIncludes
 
 /**
  * Contains implicit methods to convert from 
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/package-summary.html `javafx.collections`]] 
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/package-summary.html `javafx.collections`]] 
  * Classes to their ScalaFX counterparts.
  */
 trait CollectionIncludes {
 
   /**
-   * Converts a [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableList.html `ObservableList`]]
+   * Converts a [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html `ObservableList`]]
    * to a [[scalafx.collections.ObservableBuffer]].
    * 
    * @tparam T List Type
@@ -56,7 +56,7 @@ trait CollectionIncludes {
     new ObservableBuffer[T](ol)
 
   /**
-   * Converts a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableMap.html `ObservableMap`]]
+   * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html `ObservableMap`]]
    * to a ScalaFX [[scalafx.collections.ObservableMap]].
    * 
    * @tparam K Key Type
@@ -70,7 +70,7 @@ trait CollectionIncludes {
     }
 
   /**
-   * Converts a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableSet.html `ObservableSet`]]
+   * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableSet.html `ObservableSet`]]
    * to a ScalaFX [[scalafx.collections.ObservableSet]].
    * 
    * @tparam T Set Type

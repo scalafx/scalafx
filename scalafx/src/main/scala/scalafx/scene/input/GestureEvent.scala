@@ -43,7 +43,7 @@ object GestureEvent {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/GestureEvent.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/GestureEvent.html]]
  *
  */
 class GestureEvent(override val delegate: jfxsi.GestureEvent)

@@ -41,7 +41,7 @@ object ObjectProperty {
   
   /**
    * Implicit conversion from a ScalaFX's $OP to a JavaFX's
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ObjectProperty.html $OP]], extracting its delegate.
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ObjectProperty.html $OP]], extracting its delegate.
    * 
    * @param op ScalaFX's $OP 
    * @return JavaFX's $OP, extracted from op's delegate.

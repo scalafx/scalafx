@@ -76,7 +76,7 @@ object HBox {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/HBox.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/HBox.html]]
  */
 class HBox(override val delegate: jfxsl.HBox = new jfxsl.HBox)
   extends Pane(delegate)

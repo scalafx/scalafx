@@ -38,7 +38,7 @@ object Parent {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/Parent.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Parent.html]].
  */
 abstract class Parent(override val delegate: jfxs.Parent)
   extends Node(delegate)

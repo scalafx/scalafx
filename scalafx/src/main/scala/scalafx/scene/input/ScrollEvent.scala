@@ -53,7 +53,7 @@ object ScrollEvent {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ScrollEvent.HorizontalTextScrollUnits.html]]
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.HorizontalTextScrollUnits.html]]
    */
   sealed case class HorizontalTextScrollUnits(override val delegate: jfxsi.ScrollEvent.HorizontalTextScrollUnits)
     extends SFXEnumDelegate[jfxsi.ScrollEvent.HorizontalTextScrollUnits]
@@ -81,7 +81,7 @@ object ScrollEvent {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ScrollEvent.VerticalTextScrollUnits.html]]
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.VerticalTextScrollUnits.html]]
    */
   sealed case class VerticalTextScrollUnits(override val delegate: jfxsi.ScrollEvent.VerticalTextScrollUnits)
     extends SFXEnumDelegate[jfxsi.ScrollEvent.VerticalTextScrollUnits]
@@ -110,7 +110,7 @@ object ScrollEvent {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ScrollEvent.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.html]]
  */
 class ScrollEvent(override val delegate: jfxsi.ScrollEvent)
   extends GestureEvent(delegate)

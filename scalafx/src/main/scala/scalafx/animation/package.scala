@@ -27,7 +27,7 @@
 package scalafx
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/animation/package-summary.html `javafx.animation`]] package.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/package-summary.html `javafx.animation`]] package.
  *
  */
 package object animation {

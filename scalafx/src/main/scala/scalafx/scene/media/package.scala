@@ -27,7 +27,7 @@
 package scalafx.scene
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/media/package-summary.html `javafx.scene.media`]] package.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/media/package-summary.html `javafx.scene.media`]] package.
  */
 package object media {
 

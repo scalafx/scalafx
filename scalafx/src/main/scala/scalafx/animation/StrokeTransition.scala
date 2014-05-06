@@ -43,7 +43,7 @@ import scalafx.delegate.SFXDelegate
 object StrokeTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/StrokeTransition.html $ST]],
+   * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/StrokeTransition.html $ST]],
    * extracting its delegate.
    *
    * @param v ScalaFX $ST
@@ -54,7 +54,7 @@ object StrokeTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/StrokeTransition.html StrokeTransition]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/StrokeTransition.html StrokeTransition]].
  *
  * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
  * @param delegate JavaFX $ST to be delegated.

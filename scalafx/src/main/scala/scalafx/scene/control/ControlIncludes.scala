@@ -36,12 +36,12 @@ object ControlIncludes extends ControlIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/package-summary.html `javafx.scene.control`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/package-summary.html `javafx.scene.control`]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/control/
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/
  * @define END ]]` instance to its $SFX counterpart.
  *
  * @define TTYPE The type of the 
@@ -694,7 +694,7 @@ trait ControlIncludes
   implicit def jfxTextField2sfx(v: jfxsc.TextField) = new TextField(v)
 
   /**
-   * Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/control/$TXFD.html $TXFD]]` to a 
+   * Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TXFD.html $TXFD]]` to a 
    * TextFieldProperty.
    * 
    * @param p A ReadOnlyObjectProperty containing a $TXFD

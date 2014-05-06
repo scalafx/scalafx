@@ -40,7 +40,7 @@ object PixelReader {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/image/PixelReader.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/PixelReader.html]]
  */
 trait PixelReader extends SFXDelegate[jfxsi.PixelReader] {
 

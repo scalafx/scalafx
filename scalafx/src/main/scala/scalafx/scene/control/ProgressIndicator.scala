@@ -39,7 +39,7 @@ object ProgressIndicator {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/ProgressIndicator.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ProgressIndicator.html]]
  */
 class ProgressIndicator(override val delegate: jfxsc.ProgressIndicator = new jfxsc.ProgressIndicator)
   extends Control(delegate)

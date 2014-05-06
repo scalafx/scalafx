@@ -43,7 +43,7 @@ import scalafx.delegate.SFXDelegate
 object FillTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $FT to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/FillTransition.html $FT]],
+   * Converts a ScalaFX $FT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FillTransition.html $FT]],
    * extracting its delegate.
    *
    * @param v ScalaFX $FT
@@ -54,7 +54,7 @@ object FillTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/FillTransition.html $FT]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FillTransition.html $FT]].
  * 
  * @constructor Creates a new ScalaFX $FT from a JavaFX $FT.
  * @param delegate JavaFX $FT to be delegated.

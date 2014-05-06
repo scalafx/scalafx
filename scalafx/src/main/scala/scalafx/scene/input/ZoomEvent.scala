@@ -57,7 +57,7 @@ object ZoomEvent {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/ZoomEvent.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ZoomEvent.html]]
  */
 class ZoomEvent(override val delegate: jfxsi.ZoomEvent)
   extends GestureEvent(delegate)

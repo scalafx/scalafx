@@ -103,7 +103,7 @@ object StringConverter {
 }
 
 /**
- * Wraps a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/util/StringConverter.html `StringConverter`]].
+ * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/StringConverter.html `StringConverter`]].
  *
  * @constructor Creates a new ScalaFX StringConverter from a JavaFX StringConverter.
  * @tparam T Type to be converted from/to `String`.

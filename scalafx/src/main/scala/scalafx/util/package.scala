@@ -27,7 +27,7 @@
 package scalafx
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/util/package-summary.html `javafx.util`]] package.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/package-summary.html `javafx.util`]] package.
  */
 package object util {
 

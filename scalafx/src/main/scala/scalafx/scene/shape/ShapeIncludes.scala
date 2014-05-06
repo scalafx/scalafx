@@ -32,12 +32,12 @@ object ShapeIncludes extends ShapeIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/scene/shape/package-summary.html `javafx.scene.shape`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/package-summary.html `javafx.scene.shape`]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/shape/
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/
  * @define END ]]` instance to its $SFX counterpart.
  *
  * @define ARC Arc

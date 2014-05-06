@@ -91,7 +91,7 @@ object CheckBoxListCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/CheckBoxListCell.html $CBLC]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/CheckBoxListCell.html $CBLC]]
  *
  * @tparam T Type used in this cell
  * @constructor Creates a new $CBLC from a JavaFX $CBLC

@@ -39,7 +39,7 @@ import scalafx.delegate.SFXDelegate
 object Transition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $TR to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/Transition.html $TR]],
+   * Converts a ScalaFX $TR to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Transition.html $TR]],
    * extracting its delegate.
    *
    * @param v ScalaFX $TR
@@ -49,7 +49,7 @@ object Transition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/Transition.html $TR]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Transition.html $TR]].
  * 
  * @constructor Creates a new ScalaFX $TR from a JavaFX $TR.
  * @param delegate JavaFX $TR to be delegated.

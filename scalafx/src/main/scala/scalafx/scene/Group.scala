@@ -37,7 +37,7 @@ object Group {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/Group.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.html]].
  */
 class Group(override val delegate: jfxs.Group = new jfxs.Group())
   extends Parent(delegate)

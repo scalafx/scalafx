@@ -37,7 +37,7 @@ object Shear {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/scene/transform/Shear.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Shear.html]]
  */
 class Shear(override val delegate: jfxst.Shear = new jfxst.Shear)
   extends Transform(delegate)

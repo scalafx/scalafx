@@ -40,7 +40,7 @@ import scalafx.util.StringConverter
 import scalafx.beans.value.ObservableValue
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/package-summary.html `javafx.scene.control.cell`]] package.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/package-summary.html `javafx.scene.control.cell`]] package.
  */
 package object cell {
 

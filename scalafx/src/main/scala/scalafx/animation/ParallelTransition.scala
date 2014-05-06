@@ -42,7 +42,7 @@ import scalafx.delegate.SFXDelegate
 object ParallelTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $PT to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/ParallelTransition.html $PT]],
+   * Converts a ScalaFX $PT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/ParallelTransition.html $PT]],
    * extracting its delegate.
    *
    * @param v ScalaFX $PT
@@ -52,7 +52,7 @@ object ParallelTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/ParallelTransition.html $PT]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/ParallelTransition.html $PT]].
  *
  * @constructor Creates a new ScalaFX $PT from a JavaFX $PT.
  * @param delegate JavaFX $PT to be delegated.

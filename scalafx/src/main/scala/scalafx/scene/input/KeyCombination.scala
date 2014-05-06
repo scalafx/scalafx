@@ -57,7 +57,7 @@ object KeyCombination {
   }
   
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/KeyCombination.ModifierValue.html]]
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/KeyCombination.ModifierValue.html]]
    */
   sealed case class ModifierValue(override val delegate: jfxsi.KeyCombination.ModifierValue)
     extends SFXEnumDelegate[jfxsi.KeyCombination.ModifierValue]

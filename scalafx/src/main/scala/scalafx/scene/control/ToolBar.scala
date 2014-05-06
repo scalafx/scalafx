@@ -42,7 +42,7 @@ object ToolBar {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/ToolBar.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ToolBar.html]].
  */
 class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar)
   extends Control(delegate)

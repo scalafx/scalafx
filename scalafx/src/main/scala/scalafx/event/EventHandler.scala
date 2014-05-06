@@ -31,7 +31,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
 /**
- * Companion Object for [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html EventHandler]]
+ * Companion Object for [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html EventHandler]]
  * interface.
  */
 object EventHandler {

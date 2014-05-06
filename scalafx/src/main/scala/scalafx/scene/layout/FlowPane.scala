@@ -73,7 +73,7 @@ object FlowPane {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/FlowPane.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/FlowPane.html]]
  */
 class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
   extends Pane(delegate)

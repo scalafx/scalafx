@@ -118,7 +118,7 @@ object CheckBoxTreeCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/ChoiceBoxListCell.html $CBTC]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxListCell.html $CBTC]]
  *
  * @tparam T Type used in this cell
  * @constructor Creates a new $CBTC from a JavaFX $CBTC

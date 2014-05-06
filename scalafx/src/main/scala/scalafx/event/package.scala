@@ -27,7 +27,7 @@
 package scalafx
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/event/package-summary.html `javafx.event`]] package.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/package-summary.html `javafx.event`]] package.
  */
 package object event {
 

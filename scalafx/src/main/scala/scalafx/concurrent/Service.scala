@@ -50,7 +50,7 @@ object Service {
 }
 
 /**
- * Wrapper trait for [[http://docs.oracle.com/javafx/2/api/javafx/concurrent/Service.html Service]]
+ * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/Service.html Service]]
  * Class.
  */
 abstract class Service[T](override val delegate: jfxc.Service[T])

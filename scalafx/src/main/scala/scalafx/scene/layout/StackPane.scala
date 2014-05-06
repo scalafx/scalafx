@@ -73,7 +73,7 @@ object StackPane {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/StackPane.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/StackPane.html]]
  */
 class StackPane(override val delegate: jfxsl.StackPane = new jfxsl.StackPane)
   extends Pane(delegate)

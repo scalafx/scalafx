@@ -38,7 +38,7 @@ import scalafx.delegate.SFXDelegate
 object AnimationTimer {
 
   /**
-   * Converts a ScalaFX $AT to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/AnimationTimer.html $AT]], 
+   * Converts a ScalaFX $AT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/AnimationTimer.html $AT]], 
    * extracting its delegate.
    *
    * @param at ScalaFX $AT
@@ -61,7 +61,7 @@ object AnimationTimer {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.html $AT]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.html $AT]].
  *
  * @constructor Creates a new ScalaFX $AT from a JavaFX $AT.
  * @param delegate JavaFX $AT to be delegated.

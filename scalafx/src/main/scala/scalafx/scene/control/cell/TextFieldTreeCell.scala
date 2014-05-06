@@ -87,7 +87,7 @@ object TextFieldTreeCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/TextFieldTreeCell.html $TFTC]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/TextFieldTreeCell.html $TFTC]]
  * 
  * @tparam T Type used in this cell
  * @constructor Creates a new $TFTC from a JavaFX $TFTC

@@ -35,7 +35,7 @@ object TablePosition {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TablePosition.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TablePosition.html]].
  */
 class TablePosition[S, T](override val delegate: jfxsc.TablePosition[S, T])
   extends SFXDelegate[jfxsc.TablePosition[S, T]] {
