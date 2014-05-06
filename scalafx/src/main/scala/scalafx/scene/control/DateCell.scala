@@ -24,53 +24,29 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
-package scalafx
+import java.time.LocalDate
 
-import animation.AnimationIncludes
-import beans.BeanIncludes
-import collections.CollectionIncludes
-import concurrent.ConcurrentIncludes
-import css.CssIncludes
-import event.EventIncludes
-import geometry.GeometryIncludes
-import application.ApplicationIncludes
-import scene.canvas.CanvasIncludes
-import scene.input.InputIncludes
-import scene.media.MediaIncludes
-import scene.transform.TransformIncludes
-import scene.web.WebIncludes
-import scene.SceneIncludes
-import stage.StageIncludes
-import util.converter.ConverterIncludes
-import util.UtilIncludes
-import scalafx.delegate.DelegateIncludes
+import javafx.scene.{ control => jfxsc }
+import scalafx.Includes._
+import scalafx.delegate.SFXDelegate
+
+object DateCell {
+  implicit def sfxDateCell2jfx(c: DateCell) = c.delegate
+}
 
 /**
- * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
- * and other syntactic sugar.
- *
- * This file is tiered both for modularity and to prioritize the implicits
- * (the order of the withs matter a lot!)
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/DateCell.html]].
  */
-object Includes extends Includes
+class DateCell(override val delegate: jfxsc.DateCell) extends Cell[LocalDate](delegate) with SFXDelegate[jfxsc.DateCell] {
 
-trait Includes
-  extends AnimationIncludes
-  with DelegateIncludes
-  with CollectionIncludes 
-  with EventIncludes 
-  with SceneIncludes 
-  with BeanIncludes 
-  with UtilIncludes 
-  with GeometryIncludes 
-  with TransformIncludes 
-  with InputIncludes 
-  with StageIncludes 
-  with WebIncludes 
-  with MediaIncludes
-  with ConverterIncludes
-  with ConcurrentIncludes
-  with CanvasIncludes
-  with ApplicationIncludes
-  with CssIncludes
+  def this() = this(new jfxsc.DateCell())
+  
+  /**
+   * Updates the item associated with this <code>Cell</code>.
+   */
+  def updateItem(item: LocalDate, empty: Boolean) {
+    delegate.updateItem(item, empty)
+  }
+}

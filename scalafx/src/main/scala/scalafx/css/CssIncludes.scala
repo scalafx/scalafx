@@ -24,53 +24,30 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.css
 
-package scalafx
+import javafx.{css => jfxcss}
 
-import animation.AnimationIncludes
-import beans.BeanIncludes
-import collections.CollectionIncludes
-import concurrent.ConcurrentIncludes
-import css.CssIncludes
-import event.EventIncludes
-import geometry.GeometryIncludes
-import application.ApplicationIncludes
-import scene.canvas.CanvasIncludes
-import scene.input.InputIncludes
-import scene.media.MediaIncludes
-import scene.transform.TransformIncludes
-import scene.web.WebIncludes
-import scene.SceneIncludes
-import stage.StageIncludes
-import util.converter.ConverterIncludes
-import util.UtilIncludes
-import scalafx.delegate.DelegateIncludes
+object CssIncludes extends CssIncludes
 
 /**
- * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
- * and other syntactic sugar.
- *
- * This file is tiered both for modularity and to prioritize the implicits
- * (the order of the withs matter a lot!)
+ * Contains implicit methods to convert from
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/package-summary.html `javafx.css`]]
+ * classes to their ScalaFX counterparts.
+ * 
+ * @define JFX JavaFX
+ * @define SFX ScalaFX
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/css/
+ * @define END ]]` instance to its $SFX counterpart.
+ * @define PS PseudoClass
  */
-object Includes extends Includes
-
-trait Includes
-  extends AnimationIncludes
-  with DelegateIncludes
-  with CollectionIncludes 
-  with EventIncludes 
-  with SceneIncludes 
-  with BeanIncludes 
-  with UtilIncludes 
-  with GeometryIncludes 
-  with TransformIncludes 
-  with InputIncludes 
-  with StageIncludes 
-  with WebIncludes 
-  with MediaIncludes
-  with ConverterIncludes
-  with ConcurrentIncludes
-  with CanvasIncludes
-  with ApplicationIncludes
-  with CssIncludes
+trait CssIncludes {
+  
+  /**
+   * $START$PS.html $PS$END
+   *
+   * @param s $JFX $PS
+   * @return $SFX $PS
+   */
+  implicit def jfxPseudoClass2sfx(d: jfxcss.PseudoClass) = new PseudoClass(d) {}
+}
