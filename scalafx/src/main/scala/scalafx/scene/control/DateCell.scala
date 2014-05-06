@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import java.time.LocalDate
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
@@ -39,10 +39,9 @@ object DateCell {
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/DateCell.html]].
  */
-class DateCell(override val delegate: jfxsc.DateCell) extends Cell[LocalDate](delegate) with SFXDelegate[jfxsc.DateCell] {
+class DateCell(override val delegate: jfxsc.DateCell = new jfxsc.DateCell())
+  extends Cell[LocalDate](delegate) with SFXDelegate[jfxsc.DateCell] {
 
-  def this() = this(new jfxsc.DateCell())
-  
   /**
    * Updates the item associated with this `Cell`.
    */

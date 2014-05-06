@@ -42,18 +42,15 @@ object DatePicker {
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/DatePicker.html]].
  */
-class DatePicker(override val delegate: jfxsc.DatePicker) extends ComboBoxBase[LocalDate](delegate) with SFXDelegate[jfxsc.DatePicker] {
-  
-  /**
-   * Creates a default `DatePicker` instance with a `null` date value set.
-   */
-  def this() = this(new jfxsc.DatePicker())
-  
+class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker())
+  extends ComboBoxBase[LocalDate](delegate) with SFXDelegate[jfxsc.DatePicker] {
+
+
   /**
    * Creates a `DatePicker` instance and sets the value to the given date.
    */
   def this(localDate: LocalDate) = this(new jfxsc.DatePicker(localDate))
-  
+
   /**
    * The calendar system used for parsing, displaying, and choosing dates in the DatePicker control.
    */
@@ -61,7 +58,7 @@ class DatePicker(override val delegate: jfxsc.DatePicker) extends ComboBoxBase[L
   def chronology_=(value: Chronology) {
     chronology() = value
   }
-  
+
   /**
    * Converts the input text to an object of type `LocalDate` and vice versa.
    */
@@ -69,7 +66,7 @@ class DatePicker(override val delegate: jfxsc.DatePicker) extends ComboBoxBase[L
   def converter_=(value: StringConverter[LocalDate]) {
     converter() = value
   }
-  
+
   /**
    * A custom cell factory can be provided to customize individual day cells in the `DatePicker` popup.
    */
@@ -81,12 +78,12 @@ class DatePicker(override val delegate: jfxsc.DatePicker) extends ComboBoxBase[L
       }
     }
   }
-  
+
   /**
    * The editor for the `DatePicker`.
    */
   def editor = delegate.editorProperty
-  
+
   /**
    * Whether the `DatePicker` popup should display a column showing week numbers.
    */
