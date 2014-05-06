@@ -41,7 +41,7 @@ import scalafx.delegate.SFXDelegate
 object KeyFrame {
 
   /**
-   * Converts a ScalaFX $KF to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/KeyFrame.html $KF]],
+   * Converts a ScalaFX $KF to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyFrame.html $KF]],
    * extracting its delegate.
    *
    * @param v ScalaFX $KF
@@ -69,7 +69,7 @@ object KeyFrame {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/KeyFrame.html $KF]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyFrame.html $KF]].
  *
  * @constructor Creates a new ScalaFX $KF from a JavaFX $KF.
  * @param delegate JavaFX $KF to be delegated.
@@ -84,7 +84,7 @@ class KeyFrame(override val delegate: jfxa.KeyFrame)
   /**
    * Returns the time offset of this $KF.
    */
-  def time = delegate.getTime
+  def time = new Duration(delegate.getTime)
 
   /**
    * Returns the name of this $KF.
@@ -97,7 +97,7 @@ class KeyFrame(override val delegate: jfxa.KeyFrame)
   def onFinished = delegate.getOnFinished
 
   /**
-   * Returns an immutable Set of [[http://docs.oracle.com/javafx/2/api/javafx/animation/KeyValue.html `KeyValue`]]
+   * Returns an immutable Set of [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyValue.html `KeyValue`]]
    * instances.
    */
   def values = delegate.getValues
