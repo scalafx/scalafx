@@ -58,6 +58,7 @@ object MediaIncludes extends MediaIncludes
  * @define MDPL MediaPlayer
  * @define MPST MediaPlayer.Status
  * @define MDVW MediaView
+ * @define SBTR SubtitleTrack
  * @define TRAC Track
  * @define VDTC VideoTrack
  */
@@ -159,6 +160,14 @@ trait MediaIncludes {
    * @return $SFX $MDVW
    */
   implicit def jfxMediaView2sfx(mv: jfxsm.MediaView) = new MediaView(mv)
+  
+  /**
+   * $START$SBTR.html $SBTR$END
+   *
+   * @param mv $JFX $SBTR
+   * @return $SFX $SBTR
+   */
+  implicit def jfxSubtitleTrack2sfx(st: jfxsm.SubtitleTrack) = new SubtitleTrack(st)
 
   /**
    * $START$TRAC.html $TRAC$END
