@@ -26,6 +26,7 @@
  */
 package scalafx.css
 
+import scala.language.implicitConversions
 import javafx.{css => jfxcss}
 
 object CssIncludes extends CssIncludes

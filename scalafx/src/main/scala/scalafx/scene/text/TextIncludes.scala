@@ -26,6 +26,7 @@
  */
 package scalafx.scene.text
 
+import scala.language.implicitConversions
 import javafx.scene.{ text => jfxst }
 
 object TextIncludes extends TextIncludes

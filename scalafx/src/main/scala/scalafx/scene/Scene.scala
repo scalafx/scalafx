@@ -26,6 +26,7 @@
  */
 package scalafx.scene
 
+import scala.language.implicitConversions
 import javafx.{event => jfxe, scene => jfxs, collections => jfxc, util => jfxu, geometry => jfxg}
 import javafx.{collections => jfxc}
 import javafx.{event => jfxe, scene => jfxs}

@@ -26,6 +26,7 @@
  */
 package scalafx.event
 
+import scala.language.{implicitConversions, reflectiveCalls}
 import javafx.{event => jfxe}
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription

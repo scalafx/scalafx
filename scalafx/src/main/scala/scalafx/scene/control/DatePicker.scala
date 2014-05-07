@@ -26,6 +26,7 @@
  */
 package scalafx.scene.control
 
+import scala.language.implicitConversions
 import java.time.LocalDate
 import java.time.chrono.Chronology
 

@@ -26,7 +26,7 @@
  */
 package scalafx.scene.layout
 
-
+import scala.language.implicitConversions
 import javafx.scene.{ layout => jfxsl }
 import scalafx.delegate.SFXDelegate
 

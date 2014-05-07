@@ -26,6 +26,7 @@
  */
 package scalafx.scene.control
 
+import scala.language.implicitConversions
 import java.time.LocalDate
 
 import javafx.scene.{control => jfxsc}

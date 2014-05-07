@@ -26,6 +26,7 @@
  */
 package scalafx.scene.control
 
+import scala.language.implicitConversions
 import javafx.scene.{ control => jfxsc }
 import scalafx.scene.control.cell.CellIncludes
 import scalafx.beans.property.ReadOnlyObjectProperty

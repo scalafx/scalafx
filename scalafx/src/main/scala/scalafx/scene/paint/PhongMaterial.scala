@@ -1,5 +1,6 @@
 package scalafx.scene.paint
 
+import scala.language.implicitConversions
 import javafx.scene.{image => jfxsi}
 import javafx.scene.{paint => jfxsp}
 import scalafx.Includes._

@@ -26,6 +26,7 @@
  */
 package scalafx.css
 
+import scala.language.implicitConversions
 import javafx.{css => jfxcss}
 import scalafx.delegate.SFXDelegate
 import scalafx.css.CssIncludes.jfxPseudoClass2sfx

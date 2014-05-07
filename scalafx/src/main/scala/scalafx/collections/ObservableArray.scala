@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+* Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,6 @@ import scalafx.delegate.SFXDelegate
  * 
  * @define OA `ObservableArray`
  */
-
 object ObservableArray {
 
   // TODO: Enter link when JavaFX 8 API Docs are available on-line.
@@ -69,7 +68,6 @@ object ObservableArray {
  * @constructor Create new base $OA.
  * @param delegate Wrapped JavaFX $OA instance providing implementation.
  */
-
 abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <: jfxc.ObservableArray[D]]
   (override val delegate: D)
   extends ArrayLike[V, T]

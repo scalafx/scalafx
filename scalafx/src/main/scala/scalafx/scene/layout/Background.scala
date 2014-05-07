@@ -26,6 +26,7 @@
  */
 package scalafx.scene.layout
 
+import scala.language.implicitConversions
 import javafx.scene.{layout => jfxsl}
 import scala.collection.JavaConversions._
 import scalafx.Includes._
