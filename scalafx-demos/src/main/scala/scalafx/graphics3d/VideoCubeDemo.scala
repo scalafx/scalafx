@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,7 @@ package scalafx.graphics3d
 
 // JavaFX system properties: -Dprism.printStats=true -Dprism.verbose=true
 
+import scala.language.postfixOps
 import java.io.File
 import scalafx.Includes._
 import scalafx.animation.Timeline

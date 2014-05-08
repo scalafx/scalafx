@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,7 @@
 
 package scalafx
 
+import scala.language.postfixOps
 import scala.collection.immutable.VectorBuilder
 import scala.math.random
 import scalafx.Includes._
