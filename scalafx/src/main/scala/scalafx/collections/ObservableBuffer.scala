@@ -38,6 +38,7 @@ import scala.collection.mutable.ArrayBuffer
 import scala.collection.mutable.Buffer
 import scala.collection.mutable.BufferLike
 import scala.collection.mutable.Builder
+import scala.reflect.runtime.universe._
 
 import java.{ util => ju }
 import javafx.{ collections => jfxc }
@@ -490,20 +491,20 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
   def replaceAll(oldVal: T, newVal: T): Boolean = jfxc.FXCollections.replaceAll(this.delegate, oldVal, newVal)
 
   /**
-   * Sorts this $OB if its type's ''natural ordering''. This type must be a
-   * [[http://docs.oracle.com/javase/7/docs/api/java/lang/Comparable.html `java.util.Comparable`]] subclass.
+   * Sorts this $OB if its type implements ''natural ordering''. This type must be a
+   * [[http://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html `java.util.Comparable`]] subclass.
    * Otherwise it will throws a `IllegalStateException`.
    *
    * @param m Type T `ClassManifest` with information about if this type is a `Comparable` subclass or not.
    */
-  def sort()(implicit m: ClassManifest[T]) {
-    if (m.erasure.getInterfaces.contains(classOf[Comparable[_]])) {
+  def sort()(implicit typeTag: WeakTypeTag[T]) {
+    if(typeTag.tpe <:< typeOf[Comparable[_]]) {
       jfxc.FXCollections.sort(delegate, new ju.Comparator[T] {
         def compare(p1: T, p2: T) = p1.asInstanceOf[Comparable[T]].compareTo(p2)
       })
     } else {
-      throw new IllegalStateException("Type of this Observable List does not implements " +
-        "java.util.Comparable. Please uses a Comparator function.")
+      throw new IllegalStateException("Type of this Observable List does not implement " +
+        "java.util.Comparable. Please use a Comparator function.")
     }
   }
 
