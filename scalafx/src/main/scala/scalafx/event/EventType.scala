@@ -48,19 +48,22 @@ class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T]) exten
    */
   // Dummy implicit is used to disambiguate this auxiliary constructor from the main constructor - otherwise, they both have the same type after erasure, and the code cannot compile.
   // Also, named 'delegate' parameter is used to explicitly specify that the primary constructor should be called here. This prevents a "called constructor's definition must precede calling constructor's definition" compile error.
-  def this(superType: jfxe.EventType[_ >: T])(implicit d: DummyImplicit) = this(delegate = new jfxe.EventType(superType)) 
+  def this(superType: jfxe.EventType[_ >: T])(implicit d: DummyImplicit) =
+    this(delegate = new jfxe.EventType(superType)) 
 
   /**
    * Constructs a new `EventType` with the specified super type and name.
    */
-  def this(superType: jfxe.EventType[_ >: T], name: String) = this(new jfxe.EventType(superType, name))
+  def this(superType: jfxe.EventType[_ >: T], name: String) =
+    this(new jfxe.EventType(superType, name))
 
   /**
    * Constructs a new `EventType` with the specified name and the EventType.ROOT as its super type.
    *
    * @param name The name
    */
-  def this(name: String) = this(new jfxe.EventType[T](name))
+  def this(name: String) =
+    this(new jfxe.EventType[T](name))
 
   /**
    * Gets the name of this event type.
