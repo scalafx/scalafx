@@ -42,22 +42,21 @@ object EventType {
 }
 
 class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T]) extends SFXDelegate[jfxe.EventType[T]] {
-  /*
-   * COMPILER ERROR MESSAGE:
-	- overloaded method constructor EventType with alternatives: 
-	(javafx.event.EventType[_ >: T(in class EventType)(in class EventType)])javafx.event.EventType[T(in class EventType)(in class EventType)]  <and> 
-	(java.lang.String)javafx.event.EventType[T(in class EventType)(in class EventType)] cannot be applied to (T(in class EventType)(in class EventType))
-   */
-  //  def this(superType: T) = this(new jfxe.EventType(superType))
-
-  /*
-   * COMPILER ERROR MESSAGE:
-   * type mismatch; found : T required: javafx.event.EventType[_ >: ?]
-   */
-  //  def this(superType: T, name: String) = this(new jfxe.EventType(superType, name))
 
   /**
-   * Constructs a new EventType with the specified name and the EventType.ROOT as its super type.
+   * Constructs a new `EventType` with the specified super type and the name set to null. 
+   */
+  // Dummy implicit is used to disambiguate this auxiliary constructor from the main constructor - otherwise, they both have the same type after erasure, and the code cannot compile.
+  // Also, named 'delegate' parameter is used to explicitly specify that the primary constructor should be called here. This prevents a "called constructor's definition must precede calling constructor's definition" compile error.
+  def this(superType: jfxe.EventType[_ >: T])(implicit d: DummyImplicit) = this(delegate = new jfxe.EventType(superType)) 
+
+  /**
+   * Constructs a new `EventType` with the specified super type and name.
+   */
+  def this(superType: jfxe.EventType[_ >: T], name: String) = this(new jfxe.EventType(superType, name))
+
+  /**
+   * Constructs a new `EventType` with the specified name and the EventType.ROOT as its super type.
    *
    * @param name The name
    */
