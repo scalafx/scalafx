@@ -41,7 +41,7 @@ object EventType {
   val ROOT = new EventType(jfxe.EventType.ROOT)
 }
 
-class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T] = new jfxe.EventType[T]) extends SFXDelegate[jfxe.EventType[T]] {
+class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T]) extends SFXDelegate[jfxe.EventType[T]] {
   /*
    * COMPILER ERROR MESSAGE:
 	- overloaded method constructor EventType with alternatives: 
