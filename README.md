@@ -13,11 +13,15 @@ v.8.0 supporting JavaFX 8 (Java 8).
 ScalaFX binaries are published in the Maven Central repository:
 http://search.maven.org/#search%7Cga%7C1%7Cscalafx
 
-To use ScalaFX with SBT add following dependency:
+To use ScalaFX with SBT and Java 7 add following dependency:
 
-    libraryDependencies += "org.scalafx" % "scalafx_2.10" % "1.0.0-M7"
+    libraryDependencies += "org.scalafx" %% "scalafx" % "1.0.0-R8"
 
-You can find a simple project setup in subdirectory "scalafx-hello-world"
+With Java 8 use:
+
+    libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.0-R4"
+
+You can find a simple project setup in subdirectory `scalafx-hello-world`
 
 Snapshot releases are also regularly published on Sonatype. To use a snapshot
 build you may need to add "Sonatype OSS Snapshots" resolver to you SBT 
