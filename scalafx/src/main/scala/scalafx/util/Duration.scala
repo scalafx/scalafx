@@ -35,13 +35,13 @@ import scalafx.delegate.SFXDelegate
 object Duration {
   implicit def sfxDuration2jfx(d: Duration) = d.delegate
 
-  def apply(millis: Double) = jfxu.Duration.millis(millis)
+  def apply(millis: Double) = new Duration(millis)
 
   private[util] class DurationHelper(d: Double) {
     def ms = apply(d)
-    def s = jfxu.Duration.seconds(d)
-    def m = jfxu.Duration.minutes(d)
-    def h = jfxu.Duration.hours(d)
+    def s = new Duration(jfxu.Duration.seconds(d))
+    def m = new Duration(jfxu.Duration.minutes(d))
+    def h = new Duration(jfxu.Duration.hours(d))
   }
 
   def INDEFINITE = jfxu.Duration.INDEFINITE
@@ -51,22 +51,33 @@ object Duration {
 }
 
 /**
- * Wraps a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/util/Duration.html `Duration`]].
+ * Wraps a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/util/Duration.html $D]].
  *
- * @constructor Creates a new ScalaFX Duration from a JavaFX Duration.
- * @param delegate JavaFX Duration to be delegated.
+ * @constructor Creates a new $D from a JavaFX $D.
+ * @param delegate JavaFX $D to be delegated.
+ * 
+ * @define D `Duration`
  */
 class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Duration] with Ordered[Duration] {
-  def +(d: jfxu.Duration) = delegate.add(d)
-  def -(d: jfxu.Duration) = delegate.subtract(d)
+  
+  /**
+   * The constructor of $D
+   *
+   * @param millis The duration of the $D in milliseconds
+   */
+  def this(millis: Double) =
+    this(jfxu.Duration.millis(millis))
+  
+  def +(d: jfxu.Duration) = new Duration(delegate.add(d))
+  def -(d: jfxu.Duration) = new Duration(delegate.subtract(d))
 
-  def *(d: Double) = delegate.multiply(d)
+  def *(d: Double) = new Duration(delegate.multiply(d))
   // Note: We are intentionally *not* supporting this...  there is no use case for multiplication with disregard to units
   // def *(d: jfxu.Duration) = delegate.multiply(d)
 
-  def /(d: Double) = delegate.divide(d)
+  def /(d: Double) = new Duration(delegate.divide(d))
   // Note: This is a "fixed" function...  rather than returning a duration we properly cancel units and return a Double
-  def /(d: jfxu.Duration) = delegate.toMillis / d.toMillis
+  def /(d: jfxu.Duration) = new Duration(delegate.toMillis / d.toMillis)
 
   override def compare(that: Duration) = delegate.compareTo(that)
   def <(d: jfxu.Duration) = delegate.lessThan(d)
@@ -79,6 +90,6 @@ class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Du
   def ===(d: jfxu.Duration) = delegate.equals(d)
   def =!=(d: jfxu.Duration) = !delegate.equals(d)
 
-  def unary_-() = delegate.negate()
+  def unary_-() = new Duration(delegate.negate())
 
 }

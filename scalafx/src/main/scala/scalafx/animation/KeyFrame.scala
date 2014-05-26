@@ -79,12 +79,10 @@ object KeyFrame {
 class KeyFrame(override val delegate: jfxa.KeyFrame)
   extends SFXDelegate[jfxa.KeyFrame] {
 
-  // METHODS
-  
   /**
    * Returns the time offset of this $KF.
    */
-  def time = delegate.getTime
+  def time = new Duration(delegate.getTime)
 
   /**
    * Returns the name of this $KF.
