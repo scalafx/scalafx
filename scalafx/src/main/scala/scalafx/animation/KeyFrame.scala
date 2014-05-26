@@ -80,8 +80,6 @@ object KeyFrame {
 class KeyFrame(override val delegate: jfxa.KeyFrame)
   extends SFXDelegate[jfxa.KeyFrame] {
 
-  // METHODS
-  
   /**
    * Returns the time offset of this $KF.
    */

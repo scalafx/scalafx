@@ -43,7 +43,7 @@ currently hosted at https://code.google.com/p/scalafx/
 
 This software licensed under BSD Open Source.
 
-The License text for this software can be found in `LICENSE.txt` in the root
+The License text for this software can be found in [LICENSE.txt](LICENSE.txt) in the root
 folder of the project.
 
 
@@ -51,10 +51,10 @@ folder of the project.
 
 The following software is needed to build ScalaFX:
 
-  1) sbt (http://www.scala-sbt.org/) v0.13.1 or better
-  2) Scala (http://www.scala.org/)
-    - ScalaFX 1.0 builds with either Scala version 2.9.3+ or 2.10.+ 
-    - ScalaFX 8.0 builds only with Scala 2.10.2 or newer. 
+  1. [SBT](http://www.scala-sbt.org/) v.0.13.2 or better
+  2. [Scala](http://www.scala.org/)
+    - ScalaFX 1.0 builds with either Scala version 2.9.3+, 2.10.+, or 2.11.+ 
+    - ScalaFX 8.0 builds with Scala 2.10.2 or newer. 
   
 It works with Windows, MacOS X and Linux ports.
 
@@ -66,21 +66,8 @@ The current project structure looks like this:
     ./archive
     ./project
     ./scalafx
-    ./scalafx/src
-    ./scalafx/src/main
-    ./scalafx/src/main/scala
-    ./scalafx/src/main/resources
-    ./scalafx/src/test
-    ./scalafx/src/test/resources
-    ./scalafx/src/test/scala
     ./scalafx-demos
-    ./scalafx-demos/src
-    ./scalafx-demos/src/main
-    ./scalafx-demos/src/main/scala
-    ./scalafx-demos/src/main/resources
-    ./scalafx-demos/src/test
-    ./scalafx-demos/src/test/scala
-    ./scalafx-demos/src/test/resources
+    ./scalafx-hello-world
 
 Where `.` is a the root folder of the project.
 
@@ -93,8 +80,24 @@ The `scalafx-demos` is the sub project for the ScalaFX Framework Demonstrations.
 
 The `project` folder is reserved for Scala SBT.
 
+The `scalafx-hello-world` is a simple self contained project using ScalaFX. 
+It can be used as a template for creating user projects.
+
+
+#Source Code Branching Policy
+
+Main development is done on the `master` branch. 
+Commits common to JavaFX 2 an JavaFX 8 support are done on this branch. 
+Commits that are only applicable to JavaFX 8 are done on the `SFX-8` branch (master branch for ScalaFX 8). 
+Pull requests are only accepted on `master` and `SFX-8` or their branches (feature branches). 
+Merging `master` and `SFX-8` is done only in one direction (along compatibility) from `master` into `SFX-8`.
+Releases are done on `stable` and `stable-SFX-8` branches for ScalaFX 1 and ScalaFX 8, respectively.
+Releases are tagged with version number. 
+The branching policy is illustrated in the graph below.
+
+![Current branching policy](http://scalafx.github.io/images/scalafx-branching-policy-1.png)
 
 #Credits
    
 You can find the full list of committers, developers and contributors in
-the file `MAINTAINERS.txt`.
+the file [MAINTAINERS.txt](MAINTAINERS.txt).
