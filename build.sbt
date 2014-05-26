@@ -67,11 +67,10 @@ lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
     else
       scalatest % "test",
     junit % "test"),
-  // ScalaTest needs Scala XML, in Scala 2.11 it is not in `scala-library`,
-  // it is in `scala-library-all`
+  // ScalaTest needs Scala XML, in Scala 2.11 the XML library has been factored out to the `scala-xml` module
   libraryDependencies ++= (
-    if (scalaVersion.value.startsWith("2.11.0"))
-      Seq("org.scala-lang" % "scala-library-all" % "2.11.0" % "test")
+    if (scalaVersion.value.startsWith("2.11."))
+      Seq("org.scala-lang.modules" %% "scala-xml" % "1.0.1" % "test")
     else
       Seq.empty[ModuleID]),
   unmanagedLibs,
