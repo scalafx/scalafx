@@ -93,7 +93,7 @@ Pull requests are only accepted on `master` and `SFX-8` or their branches (featu
 Merging `master` and `SFX-8` is done only in one direction (along compatibility) from `master` into `SFX-8`.
 Releases are done on `stable` and `stable-SFX-8` branches for ScalaFX 1 and ScalaFX 8, respectively.
 Releases are tagged with version number. 
-The branching policy is illustrated in the below.
+The branching policy is illustrated in the graph below.
 
 ![Current branching policy](http://scalafx.github.io/images/scalafx-branching-policy-1.png)
 
