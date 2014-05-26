@@ -44,10 +44,10 @@ object Duration {
     def h = new Duration(jfxu.Duration.hours(d))
   }
 
-  def INDEFINITE = jfxu.Duration.INDEFINITE
-  def ONE = jfxu.Duration.ONE
-  def UNKNOWN = jfxu.Duration.UNKNOWN
-  def ZERO = jfxu.Duration.ZERO
+  def INDEFINITE = new Duration(jfxu.Duration.INDEFINITE)
+  def ONE = new Duration(jfxu.Duration.ONE)
+  def UNKNOWN = new Duration(jfxu.Duration.UNKNOWN)
+  def ZERO = new Duration(jfxu.Duration.ZERO)
 }
 
 /**
@@ -63,7 +63,7 @@ class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Du
   /**
    * The constructor of $D
    *
-   * @param millis The duration of the $D in milliseconds
+   * @param millis The length of the $D in milliseconds
    */
   def this(millis: Double) =
     this(jfxu.Duration.millis(millis))
