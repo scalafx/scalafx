@@ -34,7 +34,7 @@ lazy val scalafxDemos = Project(
 
 // Dependencies
 lazy val junit = "junit" % "junit" % "4.11"
-lazy val scalatest = "org.scalatest" %% "scalatest" % "2.1.3"
+lazy val scalatest = "org.scalatest" %% "scalatest" % "2.1.7"
 
 // Resolvers
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -49,7 +49,7 @@ lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
   // TODO SFX8: At a moment only ScalaFX 2.10.2+ supports Java 8, due to some InvokeDynamic byte codes
-  crossScalaVersions := Seq("2.10.4", "2.11.0"),
+  crossScalaVersions := Seq("2.10.4", "2.11.1"),
   scalaVersion <<= crossScalaVersions { versions => versions.head },
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
@@ -64,7 +64,7 @@ lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
     junit % "test"),
   // ScalaTest needs Scala XML, in Scala 2.11 the XML library has been factored out to the `scala-xml` module
   libraryDependencies ++= (
-    if (scalaVersion.value.startsWith("2.11.0"))
+    if (scalaVersion.value.startsWith("2.11.1"))
       Seq("org.scala-lang.modules" %% "scala-xml" % "1.0.1" % "test")
     else
       Seq.empty[ModuleID]),
@@ -133,6 +133,11 @@ lazy val mavenCentralSettings = Seq(
             <id>steveonjava</id>
             <name>Stephen Chin</name>
             <url>http://www.nighthacking.com/</url>
+          </developer>
+          <developer>
+            <id>KevinCoghlan</id>
+            <name>Kevin Coghlan</name>
+            <url>http://www.kevincoghlan.com</url>
           </developer>
           <developer>
             <id>akauppi</id>
