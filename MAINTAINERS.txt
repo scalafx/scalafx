@@ -76,8 +76,9 @@ Jarek Sacha       ; jpsacha@gmail.com             ;                             
 
                     *CONTRIBUTORS*       (alphabetical order)
 
-Asko Kauppi         ;           ;                               ; 
-Matthew Pocock      ;           ;                               ; 
-Curtis Stanford     ;           ;                               ; 
+Kevin Coghlan       ; mail@kevincoghlan.com ; www.kevincoghlan.com ;
+Asko Kauppi         ;                       ;                      ;
+Matthew Pocock      ;                       ;                      ;
+Curtis Stanford     ;                       ;                      ;
 
 -- END -- (PLEASE DO NOT EDIT THIS LINE!)
