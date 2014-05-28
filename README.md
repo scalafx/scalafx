@@ -1,7 +1,7 @@
 ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX
-2.x and and JavaFX 8. This means that every ScalaFX application is also a
+2.x and JavaFX 8. This means that every ScalaFX application is also a
 valid Scala application. By extension it supports full interoperability with
-Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX 2.0 orJavaFX 8 
+Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX 2.x or JavaFX 8 
 are supported.
 
 ScalaFX was originally created by Stephen Chin, Java Champion, Oracle JavaOne
