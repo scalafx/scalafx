@@ -45,7 +45,7 @@ lazy val sonatypeNexusStaging = "Sonatype Nexus Staging" at "https://oss.sonatyp
 resolvers += sonatypeNexusSnapshots
 
 // Common settings
-lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
+lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
   crossScalaVersions := Seq("2.10.4", "2.11.1", "2.9.3"),
