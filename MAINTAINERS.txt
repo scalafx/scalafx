@@ -76,9 +76,10 @@ Jarek Sacha       ; jpsacha@gmail.com             ;                             
 
                     *CONTRIBUTORS*       (alphabetical order)
 
-Mike Allen          ;           mike@hindsight-consulting.com ; https://hindsight-consulting.com/Blog/MikeAllen ; Operations Management & Simulation Consultant
-Asko Kauppi         ;           ;                               ; 
-Matthew Pocock      ;           ;                               ; 
-Curtis Stanford     ;           ;                               ; 
+Mike Allen          ; mike@hindsight-consulting.com ; https://hindsight-consulting.com/Blog/MikeAllen ; Operations Management & Simulation Consultant
+Kevin Coghlan       ; mail@kevincoghlan.com         ; www.kevincoghlan.com                            ;
+Asko Kauppi         ;                               ;                                                 ;
+Matthew Pocock      ;                               ;                                                 ;
+Curtis Stanford     ;                               ;                                                 ;
 
 -- END -- (PLEASE DO NOT EDIT THIS LINE!)
