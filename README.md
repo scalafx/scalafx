@@ -51,7 +51,7 @@ folder of the project.
 
 The following software is needed to build ScalaFX:
 
-  1. [SBT](http://www.scala-sbt.org/) v.0.13.2 or better
+  1. [SBT](http://www.scala-sbt.org/) v.0.13.5 or better
   2. [Scala](http://www.scala.org/)
     - ScalaFX 1.0 builds with either Scala version 2.9.3+, 2.10.+, or 2.11.+ 
     - ScalaFX 8.0 builds with Scala 2.10.2 or newer. 
