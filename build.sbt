@@ -45,7 +45,7 @@ lazy val sonatypeNexusStaging = "Sonatype Nexus Staging" at "https://oss.sonatyp
 resolvers += sonatypeNexusSnapshots
 
 // Common settings
-lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
+lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
   // TODO SFX8: At a moment only ScalaFX 2.10.2+ supports Java 8, due to some InvokeDynamic byte codes
