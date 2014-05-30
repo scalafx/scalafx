@@ -2,5 +2,8 @@ language: scala
 scala:
   - 2.10.4
   - 2.11.1
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 jdk:
   - oraclejdk7
