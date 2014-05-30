@@ -4,6 +4,8 @@ valid Scala application. By extension it supports full interoperability with
 Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX 2.x or JavaFX 8 
 are supported.
 
+[![Build Status](https://travis-ci.org/scalafx/scalafx.svg?branch=master)](https://travis-ci.org/scalafx/scalafx)
+
 ScalaFX was originally created by Stephen Chin, Java Champion, Oracle JavaOne
 program chair; and Sven Reimers, a member of the Netbeans Dream Team.
 
