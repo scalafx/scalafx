@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+* Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,55 +24,41 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.print
 
-package scalafx
-
-import animation.AnimationIncludes
-import beans.BeanIncludes
-import collections.CollectionIncludes
-import concurrent.ConcurrentIncludes
-import css.CssIncludes
-import event.EventIncludes
-import geometry.GeometryIncludes
-import application.ApplicationIncludes
-import scene.canvas.CanvasIncludes
-import scene.input.InputIncludes
-import scene.media.MediaIncludes
-import scene.transform.TransformIncludes
-import scene.web.WebIncludes
-import scene.SceneIncludes
-import stage.StageIncludes
-import util.converter.ConverterIncludes
-import util.UtilIncludes
-import scalafx.delegate.DelegateIncludes
-import scalafx.print.PrintIncludes
+import javafx.{ print => jfxp }
+import scalafx.delegate.SFXEnumDelegate
+import scalafx.delegate.SFXEnumDelegateCompanion
 
 /**
- * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
- * and other syntactic sugar.
- *
- * This file is tiered both for modularity and to prioritize the implicits
- * (the order of the withs matter a lot!)
+ * Companion Object for [[scalafx.print.PrintSides]].
  */
-object Includes extends Includes
+object PrintSides
+  extends SFXEnumDelegateCompanion[jfxp.PrintSides, PrintSides] {
 
-trait Includes
-  extends AnimationIncludes
-  with DelegateIncludes
-  with CollectionIncludes 
-  with EventIncludes 
-  with SceneIncludes 
-  with BeanIncludes 
-  with UtilIncludes 
-  with GeometryIncludes 
-  with TransformIncludes 
-  with InputIncludes 
-  with StageIncludes 
-  with WebIncludes 
-  with MediaIncludes
-  with ConverterIncludes
-  with ConcurrentIncludes
-  with CanvasIncludes
-  with ApplicationIncludes
-  with CssIncludes
-  with PrintIncludes
+  /**
+   * Two sided printing where the vertical edge of the paper is to be used for binding such as in a book.
+   */
+  val DUPLEX = new PrintSides(jfxp.PrintSides.DUPLEX)
+
+  /**
+   * One sided printing.
+   */
+  val ONE_SIDED = new PrintSides(jfxp.PrintSides.ONE_SIDED)
+
+  /**
+   * Two sided printing where the horizontal edge of the paper is to be used for binding such as in a notepad.
+   */
+  val TUMBLE = new PrintSides(jfxp.PrintSides.TUMBLE)
+
+  protected override def unsortedValues: Array[PrintSides] = Array(DUPLEX, ONE_SIDED, TUMBLE)
+
+}
+
+/**
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintSides.html JavaFX PrintSides]].
+ *
+ * @since 8.0
+ */
+sealed case class PrintSides(override val delegate: jfxp.PrintSides)
+  extends SFXEnumDelegate[jfxp.PrintSides]

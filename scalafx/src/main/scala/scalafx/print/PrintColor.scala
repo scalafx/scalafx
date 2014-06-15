@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+* Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,55 +24,33 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.print
 
-package scalafx
-
-import animation.AnimationIncludes
-import beans.BeanIncludes
-import collections.CollectionIncludes
-import concurrent.ConcurrentIncludes
-import css.CssIncludes
-import event.EventIncludes
-import geometry.GeometryIncludes
-import application.ApplicationIncludes
-import scene.canvas.CanvasIncludes
-import scene.input.InputIncludes
-import scene.media.MediaIncludes
-import scene.transform.TransformIncludes
-import scene.web.WebIncludes
-import scene.SceneIncludes
-import stage.StageIncludes
-import util.converter.ConverterIncludes
-import util.UtilIncludes
-import scalafx.delegate.DelegateIncludes
-import scalafx.print.PrintIncludes
+import javafx.{ print => jfxp }
+import scalafx.delegate.{ SFXEnumDelegate, SFXEnumDelegateCompanion }
 
 /**
- * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
- * and other syntactic sugar.
- *
- * This file is tiered both for modularity and to prioritize the implicits
- * (the order of the withs matter a lot!)
+ * Companion Object for [[scalafx.print.PrintColor]].
  */
-object Includes extends Includes
+object PrintColor
+  extends SFXEnumDelegateCompanion[jfxp.PrintColor, PrintColor] {
 
-trait Includes
-  extends AnimationIncludes
-  with DelegateIncludes
-  with CollectionIncludes 
-  with EventIncludes 
-  with SceneIncludes 
-  with BeanIncludes 
-  with UtilIncludes 
-  with GeometryIncludes 
-  with TransformIncludes 
-  with InputIncludes 
-  with StageIncludes 
-  with WebIncludes 
-  with MediaIncludes
-  with ConverterIncludes
-  with ConcurrentIncludes
-  with CanvasIncludes
-  with ApplicationIncludes
-  with CssIncludes
-  with PrintIncludes
+  /**
+   * Specifies color printing.
+   */
+  val COLOR = new PrintColor(jfxp.PrintColor.COLOR)
+
+  /**
+   * Specifies monochrome or grey scale printing.
+   */
+  val MONOCHROME = new PrintColor(jfxp.PrintColor.MONOCHROME)
+
+  protected override def unsortedValues: Array[PrintColor] = Array(COLOR, MONOCHROME)
+
+}
+
+/**
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintColor.html JavaFX PrintColor]].
+ */
+sealed case class PrintColor(override val delegate: jfxp.PrintColor)
+  extends SFXEnumDelegate[jfxp.PrintColor]

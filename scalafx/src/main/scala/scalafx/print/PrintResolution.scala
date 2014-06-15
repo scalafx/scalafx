@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+* Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,55 +24,45 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.print
 
-package scalafx
+import scala.language.implicitConversions
 
-import animation.AnimationIncludes
-import beans.BeanIncludes
-import collections.CollectionIncludes
-import concurrent.ConcurrentIncludes
-import css.CssIncludes
-import event.EventIncludes
-import geometry.GeometryIncludes
-import application.ApplicationIncludes
-import scene.canvas.CanvasIncludes
-import scene.input.InputIncludes
-import scene.media.MediaIncludes
-import scene.transform.TransformIncludes
-import scene.web.WebIncludes
-import scene.SceneIncludes
-import stage.StageIncludes
-import util.converter.ConverterIncludes
-import util.UtilIncludes
-import scalafx.delegate.DelegateIncludes
-import scalafx.print.PrintIncludes
+import javafx.{ print => jfxp }
+import scalafx.delegate.SFXDelegate
 
 /**
- * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
- * and other syntactic sugar.
- *
- * This file is tiered both for modularity and to prioritize the implicits
- * (the order of the withs matter a lot!)
+ * Companion Object for [[scalafx.print.PrintResolution]].
  */
-object Includes extends Includes
+object PrintResolution {
 
-trait Includes
-  extends AnimationIncludes
-  with DelegateIncludes
-  with CollectionIncludes 
-  with EventIncludes 
-  with SceneIncludes 
-  with BeanIncludes 
-  with UtilIncludes 
-  with GeometryIncludes 
-  with TransformIncludes 
-  with InputIncludes 
-  with StageIncludes 
-  with WebIncludes 
-  with MediaIncludes
-  with ConverterIncludes
-  with ConcurrentIncludes
-  with CanvasIncludes
-  with ApplicationIncludes
-  with CssIncludes
-  with PrintIncludes
+  /**
+   * Converts a ScalaFX PrintResolution to its JavaFX counterpart.
+   *
+   * @param pr ScalaFX PrintResolution
+   * @return JavaFX PrintResolution
+   */
+  implicit def sfxPrintResolution2jfx(pr: PrintResolution): jfxp.PrintResolution = pr.delegate
+
+}
+
+/**
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintResolution.html JavaFx PrintResolution]].
+ *
+ * @constructor Creates a new ScalaFX PrintResolution from its JavaFX counterpart.
+ * @param delegate JavaFX PrintResolution. Since there is no public constructor for it, there is not a default value.
+ */
+final class PrintResolution(override val delegate: jfxp.PrintResolution)
+  extends SFXDelegate[jfxp.PrintResolution] {
+
+  /**
+   * Returns the resolution in dpi. across the paper feed direction.
+   */
+  def crossFeedResolution: Integer = delegate.getCrossFeedResolution
+
+  /**
+   * Returns the resolution in dpi. in the paper feed direction.
+   */
+  def feedResolution: Integer = delegate.getFeedResolution
+
+}

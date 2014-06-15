@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+* Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,55 +24,57 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.print
 
-package scalafx
+import scala.language.implicitConversions
 
-import animation.AnimationIncludes
-import beans.BeanIncludes
-import collections.CollectionIncludes
-import concurrent.ConcurrentIncludes
-import css.CssIncludes
-import event.EventIncludes
-import geometry.GeometryIncludes
-import application.ApplicationIncludes
-import scene.canvas.CanvasIncludes
-import scene.input.InputIncludes
-import scene.media.MediaIncludes
-import scene.transform.TransformIncludes
-import scene.web.WebIncludes
-import scene.SceneIncludes
-import stage.StageIncludes
-import util.converter.ConverterIncludes
-import util.UtilIncludes
-import scalafx.delegate.DelegateIncludes
-import scalafx.print.PrintIncludes
+import javafx.{print => jfxp}
+import scalafx.Includes._
+import scalafx.beans.property.ReadOnlyIntegerProperty
+import scalafx.delegate.SFXDelegate
 
 /**
- * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
- * and other syntactic sugar.
- *
- * This file is tiered both for modularity and to prioritize the implicits
- * (the order of the withs matter a lot!)
+ * Companion Object for [[scalafx.print.PageRange]].
  */
-object Includes extends Includes
+object PageRange {
 
-trait Includes
-  extends AnimationIncludes
-  with DelegateIncludes
-  with CollectionIncludes 
-  with EventIncludes 
-  with SceneIncludes 
-  with BeanIncludes 
-  with UtilIncludes 
-  with GeometryIncludes 
-  with TransformIncludes 
-  with InputIncludes 
-  with StageIncludes 
-  with WebIncludes 
-  with MediaIncludes
-  with ConverterIncludes
-  with ConcurrentIncludes
-  with CanvasIncludes
-  with ApplicationIncludes
-  with CssIncludes
-  with PrintIncludes
+  /**
+   * Converts a ScalaFX PageRange to its JavaFX counterpart.
+   *
+   * @param pr ScalaFX PageRange
+   * @return JavaFX PageRange
+   */
+  implicit def sfxPageRange2jfx(pr: PageRange): jfxp.PageRange = pr.delegate
+
+}
+
+/**
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PageRange.html JavaFX PageRange]].
+ *
+ * @constructor Creates a new ScalaFX PageRange from its JavaFX counterpart.
+ * @param delegate JavaFX PageRange. Since there is no public 'default' constructor for it, there is not a default value.
+ *
+ * @since 8.0
+ */
+final class PageRange(override val delegate: jfxp.PageRange)
+  extends SFXDelegate[jfxp.PageRange] {
+
+  /**
+   * Create a new PageRange with the specified start and end page numbers.
+   *
+   * @param startPage the first page in the range.
+   * @param endPage the last page in the range.
+   */
+  def this(startPage: Int, endPage: Int) = this(new jfxp.PageRange(startPage, endPage))
+
+  /**
+   * IntegerProperty representing the ending page number of the range.
+   */
+  def startPage: ReadOnlyIntegerProperty = delegate.startPageProperty
+
+  /**
+   * IntegerProperty representing the starting page number of the range.
+   */
+  def endPage: ReadOnlyIntegerProperty = delegate.endPageProperty
+
+}
