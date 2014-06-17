@@ -51,6 +51,7 @@ object WebIncludes extends WebIncludes
  * @define PD PromptData
  * @define WE WebEngine
  * @define WT WebEvent
+ * @define WR WebErrorEvent
  * @define WV WebView
  */
 trait WebIncludes {
@@ -94,6 +95,14 @@ trait WebIncludes {
    * @return $SFX $WT
    */
   implicit def jfxWebEvent2sfx[T](we: jfxsw.WebEvent[T]) = new WebEvent(we)
+
+  /**
+   * $START$WR.html $WR$END
+   *
+   * @param wr $JFX $WR
+   * @return $SFX $WR
+   */
+  implicit def jfxWebErrorEvent2sfx(wr: jfxsw.WebErrorEvent): WebErrorEvent = new WebErrorEvent(wr)
 
   /**
    * $START$WV.html $WV$END
