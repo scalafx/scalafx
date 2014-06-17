@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,7 @@
 
 package scalafx
 
+import scala.language.postfixOps
 import animation.{Interpolator, Timeline}
 import scalafx.Includes._
 import scalafx.application.JFXApp
@@ -39,12 +40,12 @@ object JavaFXAnimation extends JFXApp {
   val rect1 = new Rectangle {
     width = 100
     height = 100
-    fill = Color.RED
+    fill = Color.Red
   }
   val rect2 = new Rectangle {
     width = 50
     height = 50
-    fill = Color.LIGHTGREEN
+    fill = Color.LightGreen
   }
   val timeline = new Timeline {
     cycleCount = Timeline.INDEFINITE

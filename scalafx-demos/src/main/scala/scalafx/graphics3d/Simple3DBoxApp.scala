@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,12 +45,12 @@ object Simple3DBoxApp extends JFXApp {
         width = 5
         height = 5
         depth = 5
-        material = new PhongMaterial(Color.RED)
+        material = new PhongMaterial(Color.Red)
         drawMode = DrawMode.Line
       }
 
       // Background
-      fill = Color.ALICEBLUE
+      fill = Color.AliceBlue
 
       // Modify point of view
       camera = new PerspectiveCamera(true) {

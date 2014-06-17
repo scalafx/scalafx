@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.beans.property
 
+import scala.language.implicitConversions
 import javafx.beans.{ property => jfxbp }
 import scalafx.delegate.SFXDelegate
 
@@ -41,7 +42,7 @@ object ObjectProperty {
   
   /**
    * Implicit conversion from a ScalaFX's $OP to a JavaFX's
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ObjectProperty.html $OP]], extracting its delegate.
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ObjectProperty.html $OP]], extracting its delegate.
    * 
    * @param op ScalaFX's $OP 
    * @return JavaFX's $OP, extracted from op's delegate.

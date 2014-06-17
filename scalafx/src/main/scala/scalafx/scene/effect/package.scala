@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene
 
+import scala.language.reflectiveCalls
 import javafx.beans.{ property => jfxbp }
 import javafx.scene.{ effect => jfxse }
 import javafx.scene.{ paint => jfxsp }
@@ -35,7 +36,7 @@ import scalafx.scene.paint.Color
 import scalafx.delegate.SFXDelegate
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/effect/package-summary.html `javafx.scene.effect`]] package.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/package-summary.html `javafx.scene.effect`]] package.
  */
 package object effect {
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.image
 
+import scala.language.implicitConversions
 import javafx.scene.{ image => jfxsi }
 import java.nio.Buffer
 
@@ -33,12 +34,12 @@ object ImageIncludes extends ImageIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/scene/image/package-summary.html `javafx.scene.image`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/package-summary.html `javafx.scene.image`]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/image/
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/
  * @define END ]]` instance to its $SFX counterpart.
  *
  * @define IMG Image

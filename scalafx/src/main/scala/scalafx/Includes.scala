@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,6 +31,7 @@ import animation.AnimationIncludes
 import beans.BeanIncludes
 import collections.CollectionIncludes
 import concurrent.ConcurrentIncludes
+import css.CssIncludes
 import event.EventIncludes
 import geometry.GeometryIncludes
 import application.ApplicationIncludes
@@ -44,6 +45,7 @@ import stage.StageIncludes
 import util.converter.ConverterIncludes
 import util.UtilIncludes
 import scalafx.delegate.DelegateIncludes
+import scalafx.print.PrintIncludes
 
 /**
  * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
@@ -72,3 +74,5 @@ trait Includes
   with ConcurrentIncludes
   with CanvasIncludes
   with ApplicationIncludes
+  with CssIncludes
+  with PrintIncludes

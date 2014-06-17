@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.input
 
+import scala.language.implicitConversions
 import javafx.{ event => jfxe }
 import javafx.scene.{ input => jfxsi }
 import scalafx.Includes._
@@ -43,7 +44,7 @@ object GestureEvent {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/GestureEvent.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/GestureEvent.html]]
  *
  */
 class GestureEvent(override val delegate: jfxsi.GestureEvent)

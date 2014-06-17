@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.layout
 
+import scala.language.implicitConversions
 import javafx.{ geometry => jfxg }
 import javafx.{ scene => jfxs }
 import javafx.scene.{ layout => jfxsl }
@@ -74,7 +75,7 @@ object VBox {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/VBox.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/VBox.html]]
  */
 class VBox(override val delegate: jfxsl.VBox = new jfxsl.VBox)
   extends Pane(delegate)

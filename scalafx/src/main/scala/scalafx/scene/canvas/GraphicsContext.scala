@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.canvas
 
+import scala.language.implicitConversions
 import scala.collection.mutable.ArrayBuffer
 
 import javafx.geometry.VPos
@@ -51,7 +52,7 @@ object GraphicsContext {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/canvas/GraphicsContext.html JavaFX GraphicsContext]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/GraphicsContext.html JavaFX GraphicsContext]]
  */
 class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   extends SFXDelegate[jfxsc.GraphicsContext] {

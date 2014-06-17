@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.collections
 
+import scala.language.implicitConversions
 import scala.collection.JavaConversions._
 import scala.collection.generic.MutableMapFactory
 import scala.collection.mutable.Builder
@@ -43,7 +44,7 @@ import scalafx.delegate.SFXDelegate
  */
 object ObservableMap extends MutableMapFactory[ObservableMap] {
   /**
-   * Extracts a JavaFX's [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableMap.html $OM]] from a 
+   * Extracts a JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html $OM]] from a 
    * ScalaFX's $OM.
    *
    * @param om ScalaFX's $OM.
@@ -55,7 +56,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
 
   /**
    * Indicates a change in an $OM. It is a simpler version of JavaFX's
-   * [[http://docs.oracle.com/javafx/2/api/javafx/collections/MapChangeListener.Change.html `MapChangeListener.Change`]],
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html `MapChangeListener.Change`]],
    * where each subclass indicates a specific change operation.
    */
   trait Change[K, V]
@@ -65,8 +66,8 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    *
    * @param key Handled Key.
    * @param added Added element.
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/http://docs.oracle.com/javafx/2/api/javafx/collections/MapChangeListener.Change.html#getKey() `MapChangeListener.Change.getKey()`]]
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/http://docs.oracle.com/javafx/2/api/javafx/collections/MapChangeListener.Change.html#getValueAdded() `MapChangeListener.Change.getValueAdded()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getKey() `MapChangeListener.Change.getKey()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getValueAdded() `MapChangeListener.Change.getValueAdded()`]]
    */
   case class Add[K, V](key: K, added: V) extends Change[K, V]
 
@@ -75,8 +76,8 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    *
    * @param key Handled Key.
    * @param removed Removed element.
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/http://docs.oracle.com/javafx/2/api/javafx/collections/MapChangeListener.Change.html#getKey() `MapChangeListener.Change.getKey()`]]
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/http://docs.oracle.com/javafx/2/api/javafx/collections/MapChangeListener.Change.html#getValueRemoved() `MapChangeListener.Change.getValueRemoved()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getKey() `MapChangeListener.Change.getKey()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getValueRemoved() `MapChangeListener.Change.getValueRemoved()`]]
    */
   case class Remove[K, V](key: K, removed: V) extends Change[K, V]
 
@@ -86,9 +87,9 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    * @param key Handled Key.
    * @param added Added Value.
    * @param removed Removed Value.
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/http://docs.oracle.com/javafx/2/api/javafx/collections/MapChangeListener.Change.html#getKey() `MapChangeListener.Change.getKey()`]]
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/http://docs.oracle.com/javafx/2/api/javafx/collections/MapChangeListener.Change.html#getValueAdded() `MapChangeListener.Change.getValueAdded()`]]
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/http://docs.oracle.com/javafx/2/api/javafx/collections/MapChangeListener.Change.html#getValueRemoved() `MapChangeListener.Change.getValueRemoved()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getKey() `MapChangeListener.Change.getKey()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getValueAdded() `MapChangeListener.Change.getValueAdded()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getValueRemoved() `MapChangeListener.Change.getValueRemoved()`]]
    */
   case class Replace[K, V](key: K, added: V, removed: V) extends Change[K, V]
 
@@ -135,14 +136,14 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
 }
 
 /**
- * Wrapper class to JavaFX's [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableMap.html $OM]].
+ * Wrapper class to JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html $OM]].
  *
  * @tparam K Key type
  * @tparam V Value type.
  * returned by
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html#observableHashMap() observableHashMap]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html#observableHashMap() observableHashMap]]
  * method from
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html FXCollections]].
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html FXCollections]].
  *
  * @define OM `ObservableMap`
  * @define MAP `Map`
@@ -266,12 +267,12 @@ trait ObservableMap[K, V]
  * [[http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html `HashMap`]] from Java Collection.
  *
  * @param delegate JavaFX
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableMap.html `ObservableMap`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html `ObservableMap`]]
  * instance to be wrapped by this class. By default it is a
  * [[http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html `HashMap`]] wrapped by
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html#observableMap(java.util.Map) `observableMap`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html#observableMap(java.util.Map) `observableMap`]]
  * method from
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html `FXCollections`]].
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html `FXCollections`]].
  */
 class ObservableHashMap[K, V](override val delegate: jfxc.ObservableMap[K, V] = jfxc.FXCollections.observableMap(new ju.HashMap[K, V]))
   extends ObservableMap[K, V] 

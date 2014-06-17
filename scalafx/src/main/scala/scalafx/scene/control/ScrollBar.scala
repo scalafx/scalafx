@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.control
 
+import scala.language.implicitConversions
 import javafx.{geometry => jfxg}
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
@@ -38,7 +39,7 @@ object ScrollBar {
   implicit def sfxScrollBar2jfx(sc: ScrollBar) = sc.delegate
 }
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/ScrollBar.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ScrollBar.html]]
  */
 class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
   extends Control(delegate)

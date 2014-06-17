@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,50 +24,18 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.scene.control
 
-package hello
+import javafx.scene.{ control => jfxsc }
+import scalafx.Includes._
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.geometry.Insets
-import scalafx.scene.Scene
-import scalafx.scene.effect.DropShadow
-import scalafx.scene.layout.HBox
-import scalafx.scene.paint.Color._
-import scalafx.scene.paint.{Stops, LinearGradient}
-import scalafx.scene.text.Text
-
-object ScalaFXHelloWorld extends JFXApp {
-
-  stage = new PrimaryStage {
-    title = "ScalaFX Hello World"
-    scene = new Scene {
-      fill = BLACK
-      content = new HBox {
-        padding = Insets(20)
-        content = Seq(
-          new Text {
-            text = "Hello "
-            style = "-fx-font-size: 100pt"
-            fill = new LinearGradient(
-              endX = 0,
-              stops = Stops(PALEGREEN, SEAGREEN))
-          },
-          new Text {
-            text = "World!!!"
-            style = "-fx-font-size: 100pt"
-            fill = new LinearGradient(
-              endX = 0,
-              stops = Stops(CYAN, DODGERBLUE)
-            )
-            effect = new DropShadow {
-              color = DODGERBLUE
-              radius = 25
-              spread = 0.25
-            }
-          }
-        )
-      }
-    }
-  }
-}
+/**
+ * DateCell Spec tests.
+ */
+@RunWith(classOf[JUnitRunner])
+class DateCellSpec
+  extends SimpleSFXDelegateSpec[jfxsc.DateCell, DateCell](classOf[jfxsc.DateCell], classOf[DateCell])
+  with RunOnApplicationThread

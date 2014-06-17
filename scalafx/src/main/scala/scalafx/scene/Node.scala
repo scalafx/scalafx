@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene
 
+import scala.language.implicitConversions
 import javafx.scene.{ effect => jfxse }
 import javafx.scene.{ input => jfxsi }
 import javafx.scene.{ layout => jfxsl }
@@ -62,7 +63,7 @@ object Node {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/Node.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Node.html]].
  */
 abstract class Node protected (override val delegate: jfxs.Node)
   extends EventHandlerDelegate
@@ -646,16 +647,16 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * Sets this Node's alignment constraint inside its Parent. If set, will override the Parent's default alignment.
    * Setting the value to `null` will remove the constraint.
    * Internally it calls `setAlignment(Node, Pos)` static method JavaFX's
-   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/BorderPane.html BorderPane]],
-   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/StackPane.html StackPane]] and
-   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/TilePane.html TilePane]]. Furthermore, it is set
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderPane.html BorderPane]],
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/StackPane.html StackPane]] and
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/TilePane.html TilePane]]. Furthermore, it is set
    * `halignment` and `valignment` property (using JavaFX Node's `getProperties()`) and called
-   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html#setHalignment(javafx.scene.Node, javafx.geometry.HPos) setHalignment]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/GridPane.html#setHalignment(javafx.scene.Node, javafx.geometry.HPos) setHalignment]]
    * and
-   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html#setValignment(javafx.scene.Node, javafx.geometry.VPos) setValignment]]
-   * static methods from [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html GridPane]]; this time
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/GridPane.html#setValignment(javafx.scene.Node, javafx.geometry.VPos) setValignment]]
+   * static methods from [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/GridPane.html GridPane]]; this time
    * using `hpos` and `vpos` from Pos argument. Besides, it sets this node `alignment` property towards
-   * [[http://docs.oracle.com/javafx/2/api/javafx/scene/Node.html#getProperties() JavaFX Node's getProperties()]] and
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Node.html#getProperties() JavaFX Node's getProperties()]] and
    * `setAlignment` static method from
    *
    * '''Do not confuse''' with `alignment` property from [[scalafx.delegate.AlignmentDelegate]]! It refers to alignment

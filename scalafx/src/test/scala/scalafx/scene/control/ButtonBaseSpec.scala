@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,11 +38,12 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  */
 @RunWith(classOf[JUnitRunner])
 class ButtonBaseSpec
-  extends SimpleSFXDelegateSpec[jfxsc.ButtonBase, ButtonBase](classOf[jfxsc.ButtonBase], classOf[ButtonBase])
+  extends SimpleSFXDelegateSpec[jfxsc.ButtonBase, ButtonBase](
+      classOf[jfxsc.ButtonBase], classOf[ButtonBase])
   with RunOnApplicationThread {
 
-  override protected def getScalaClassInstance = new ButtonBase(new jfxsc.Button)
+  override protected def getScalaClassInstance = new ButtonBase(new jfxsc.Button) {}
 
-  override protected def getJavaClassInstance = new jfxsc.Button
+  override protected def getJavaClassInstance = new jfxsc.Button {}
 
 }

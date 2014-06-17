@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@ import scalafx.scene.shape.Rectangle
 /**
  * Example for Issue 16 [[http://code.google.com/p/scalafx/issues/detail?id=16]] provided by "Alain.Fa...@gmail.com".
  *
- * When replacing the javafx.scene.paint.Color import by its ScalaFX counterpart, the rectangle would be BLUE forever.
+ * When replacing the javafx.scene.paint.Color import by its ScalaFX counterpart, the rectangle would be Blue forever.
  * The rectangle should normally be RED, but when mouse hovers above it it should change color to GREEN.
  */
 object World extends JFXApp {
@@ -46,15 +46,15 @@ object World extends JFXApp {
     width = 600
     height = 450
     scene = new Scene {
-      fill = Color.LIGHTGREEN
+      fill = Color.LightGreen
       content = new Rectangle {
         x = 25
         y = 40
         width = 100
         height = 100
-        fill = Color.BLUE
+        fill = Color.Blue
         // Problem with incorrect behaviour of the binding was here.
-        fill <== when(hover) choose Color.GREEN otherwise Color.RED
+        fill <== when(hover) choose Color.Green otherwise Color.Red
       }
     }
   }

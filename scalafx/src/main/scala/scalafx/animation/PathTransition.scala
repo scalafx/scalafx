@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.animation
 
+import scala.language.implicitConversions
 import javafx.{ animation => jfxa, scene => jfxs, util => jfxu }
 import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
@@ -45,7 +46,7 @@ import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 object PathTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $PT to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/PathTransition.html $PT]],
+   * Converts a ScalaFX $PT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.html $PT]],
    * extracting its delegate.
    *
    * @param v ScalaFX $PT
@@ -75,7 +76,7 @@ object PathTransition extends AnimationStatics {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/animation/PathTransition.OrientationType.html $OT]].
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.OrientationType.html $OT]].
    *
    * @constructor Creates a new ScalaFX $OT from a JavaFX $OT.
    * @param delegate JavaFX $OT to be delegated.
@@ -86,7 +87,7 @@ object PathTransition extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/PathTransition.html PathTransition]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.html PathTransition]].
  *
  * @constructor Creates a new ScalaFX $PT from a JavaFX $PT.
  * @param delegate JavaFX $PT to be delegated.

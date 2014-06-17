@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.control
 
+import scala.language.implicitConversions
 import javafx.beans.{ value => jfxbv }
 import javafx.scene.{ control => jfxsc }
 import javafx.{ event => jfxe }
@@ -47,7 +48,7 @@ object TableColumn {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.CellDataFeatures.html]].
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.CellDataFeatures.html]].
    */
   class CellDataFeatures[S, T](override val delegate: jfxsc.TableColumn.CellDataFeatures[S, T])
     extends SFXDelegate[jfxsc.TableColumn.CellDataFeatures[S, T]] {
@@ -80,7 +81,7 @@ object TableColumn {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.CellEditEvent.html]].
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.CellEditEvent.html]].
    */
   class CellEditEvent[S, T](override val delegate: jfxsc.TableColumn.CellEditEvent[S, T])
     extends Event(delegate)
@@ -138,7 +139,7 @@ object TableColumn {
 
   }
 
-  /** Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.SortType.html]] */
+  /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.SortType.html]] */
   sealed case class SortType(override val delegate: jfxsc.TableColumn.SortType)
     extends SFXEnumDelegate[jfxsc.TableColumn.SortType]
 
@@ -174,7 +175,7 @@ object TableColumn {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableColumn.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.html]].
  */
 class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfxsc.TableColumn[S, T]())
   extends TableColumnBase[S,T](delegate)

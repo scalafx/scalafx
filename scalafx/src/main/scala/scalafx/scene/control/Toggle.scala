@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.control
 
+import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
@@ -37,7 +38,7 @@ object Toggle {
 }
 
 /**
- * Wrapper trait to [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/Toggle.html Toggle]]
+ * Wrapper trait to [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Toggle.html Toggle]]
  * interface.
  */
 trait Toggle extends SFXDelegate[jfxsc.Toggle] {

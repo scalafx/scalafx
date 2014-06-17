@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,18 +26,19 @@
  */
 package scalafx.concurrent
 
+import scala.language.implicitConversions
 import javafx.{ concurrent => jfxc }
 
 object ConcurrentIncludes extends ConcurrentIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/concurrent/package-summary.html `javafx.concurrent`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/package-summary.html `javafx.concurrent`]]
  * Classes to their ScalaFX counterparts.
  * 
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/concurrent/
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/
  * @define END ]]` instance to its $SFX counterpart.
  * @define SER Service
  * @define TSK Task

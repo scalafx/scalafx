@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.control
 
+import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
 import scalafx.collections._
 import scalafx.Includes._
@@ -38,7 +39,7 @@ object ToggleGroup {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/ToggleGroup.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ToggleGroup.html]].
  */
 class ToggleGroup(override val delegate: jfxsc.ToggleGroup = new jfxsc.ToggleGroup)
   extends SFXDelegate[jfxsc.ToggleGroup] {

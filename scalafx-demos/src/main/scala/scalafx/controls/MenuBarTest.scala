@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ object MenuBarTest extends JFXApp {
     width = 300
     height = 225
     scene = new Scene {
-      fill = Color.LIGHTGRAY
+      fill = Color.LightGray
       root = new BorderPane {
         top = new MenuBar {
           useSystemMenuBar = true

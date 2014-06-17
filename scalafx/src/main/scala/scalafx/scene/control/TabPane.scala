@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.control
 
+import scala.language.implicitConversions
 import javafx.scene.{ control => jfxsc }
 import javafx.{ geometry => jfxg }
 import scalafx.Includes._
@@ -63,7 +64,7 @@ object TabPane {
 
   }
 
-  /** Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TabPane.TabClosingPolicy.html]] */
+  /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TabPane.TabClosingPolicy.html]] */
   sealed case class TabClosingPolicy(override val delegate: jfxsc.TabPane.TabClosingPolicy)
     extends SFXEnumDelegate[jfxsc.TabPane.TabClosingPolicy]
 

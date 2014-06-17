@@ -2,7 +2,7 @@ import scala.xml._
 import java.net.URL
 import SonatypeKeys._
 
-val scalafxVersion = "8.0.0-R4"
+val scalafxVersion = "8.0.0-R5-SNAPSHOT"
 
 // ScalaFX project
 lazy val scalafx = Project(
@@ -34,7 +34,7 @@ lazy val scalafxDemos = Project(
 
 // Dependencies
 lazy val junit = "junit" % "junit" % "4.11"
-lazy val scalatest = "org.scalatest" %% "scalatest" % "2.1.0"
+lazy val scalatest = "org.scalatest" %% "scalatest" % "2.1.7"
 
 // Resolvers
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -45,11 +45,11 @@ lazy val sonatypeNexusStaging = "Sonatype Nexus Staging" at "https://oss.sonatyp
 resolvers += sonatypeNexusSnapshots
 
 // Common settings
-lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
+lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
   // TODO SFX8: At a moment only ScalaFX 2.10.2+ supports Java 8, due to some InvokeDynamic byte codes
-  crossScalaVersions := Seq("2.10.3", "2.11.0-RC1"),
+  crossScalaVersions := Seq("2.10.4", "2.11.1"),
   scalaVersion <<= crossScalaVersions { versions => versions.head },
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
@@ -59,8 +59,15 @@ lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
     "-source", "1.8",
     "-Xlint:deprecation"),
   libraryDependencies ++= Seq(
+    "org.scala-lang" % "scala-reflect" % scalaVersion.value,
     scalatest % "test",
     junit % "test"),
+  // ScalaTest needs Scala XML, in Scala 2.11 the XML library has been factored out to the `scala-xml` module
+  libraryDependencies ++= (
+    if (scalaVersion.value.startsWith("2.11."))
+      Seq("org.scala-lang.modules" %% "scala-xml" % "1.0.1" % "test")
+    else
+      Seq.empty[ModuleID]),
   manifestSetting,
   publishSetting,
   fork in Test := true,
@@ -113,6 +120,7 @@ lazy val mavenCentralSettings = Seq(
           <developer>
             <id>rafael.afonso</id>
             <name>Rafael Afonso</name>
+            <url>https://github.com/rafonso</url>
           </developer>
           <developer>
             <name>Mike Allen</name>
@@ -126,6 +134,11 @@ lazy val mavenCentralSettings = Seq(
             <id>steveonjava</id>
             <name>Stephen Chin</name>
             <url>http://www.nighthacking.com/</url>
+          </developer>
+          <developer>
+            <id>KevinCoghlan</id>
+            <name>Kevin Coghlan</name>
+            <url>http://www.kevincoghlan.com</url>
           </developer>
           <developer>
             <id>akauppi</id>

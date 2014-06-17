@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.image
 
+import scala.language.implicitConversions
 import java.nio.Buffer
 import java.nio.ByteBuffer
 import java.nio.IntBuffer
@@ -40,7 +41,7 @@ object PixelReader {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/image/PixelReader.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/PixelReader.html]]
  */
 trait PixelReader extends SFXDelegate[jfxsi.PixelReader] {
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,8 +41,8 @@ trait ColorDelegateSpec[D <: ColorDelegate[_]] extends FlatSpec {
 
   it should "allow observe changes in Color" in {
     var changed = false
-    val initialColor = Color.WHITE
-    val finalColor = Color.BLACK
+    val initialColor = Color.White
+    val finalColor = Color.Black
 
     colorDelegate.color = initialColor
 

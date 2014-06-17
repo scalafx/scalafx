@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene
 
+import scala.language.implicitConversions
 import scalafx.beans.property.ReadOnlyObjectProperty
 import javafx.{scene => jfxs}
 import chart.ChartIncludes
@@ -41,7 +42,7 @@ object SceneIncludes extends SceneIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/scene/package-summary.html `javafx.scene`]] and subpackages
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/package-summary.html `javafx.scene`]] and subpackages
  * Classes/Traits to their ScalaFX counterparts.
  */
 trait SceneIncludes extends ChartIncludes
@@ -56,12 +57,12 @@ with ControlIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/scene/package-summary.html `javafx.scene`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/package-summary.html `javafx.scene`]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/
  * @define END ]]` instance to its $SFX counterpart.
  *
  * @define CHI CacheHint

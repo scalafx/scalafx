@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,26 +37,26 @@ import scene.shape.Circle
 object BorderPaneTest extends JFXApp {
   stage = new PrimaryStage {
     scene = new Scene {
-      fill = Color.LIGHTGRAY
+      fill = Color.LightGray
       content = new BorderPane {
         top = new Circle {
-          fill = Color.RED
+          fill = Color.Red
           radius = 120
         }
         bottom = new Circle {
-          fill = Color.GREEN
+          fill = Color.Green
           radius = 120
         }
         left = new Circle {
-          fill = Color.YELLOW
+          fill = Color.Yellow
           radius = 40
         }
         right = new Circle {
-          fill = Color.ORANGE
+          fill = Color.Orange
           radius = 40
         }
         center = new Circle {
-          fill = Color.BLUE
+          fill = Color.Blue
           radius = 40
         }
       }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ object HelloScalaFX extends JFXApp {
     width = 650
     height = 450
     scene = new Scene {
-      fill = BLACK
+      fill = Black
       content = new HBox {
 //        padding = Insets(5)
         content = Seq(new Text {
@@ -49,15 +49,15 @@ object HelloScalaFX extends JFXApp {
           style = "-fx-font-size: 100pt"
           fill = new LinearGradient(
             endX = 0,
-            stops = Stops(PALEGREEN, SEAGREEN))
+            stops = Stops(PaleGreen, SeaGreen))
         }, new Text {
           text = "FX"
           style = "-fx-font-size: 100pt"
           fill = new LinearGradient(
             endX = 0,
-            stops = Stops(CYAN, DODGERBLUE))
+            stops = Stops(Cyan, DodgerBlue))
           effect = new DropShadow {
-            color = DODGERBLUE
+            color = DodgerBlue
             radius = 25
             spread = 0.25
           }

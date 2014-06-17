@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,7 @@ object SceneRootAssignmentDemo extends JFXApp {
         content = new Rectangle {
           width = 200
           height = 200
-          fill = Color.DEEPSKYBLUE
+          fill = Color.DeepSkyBlue
         }
       }
     }

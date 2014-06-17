@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.animation
 
+import scala.language.implicitConversions
 import javafx.{ animation => jfxa }
 import javafx.beans.{ value => jfxbv }
 import scalafx.Includes._
@@ -40,7 +41,7 @@ import scalafx.beans.property.Property
 object KeyValue {
 
   /**
-   * Converts a ScalaFX $KV to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/KeyValue.html $KV]],
+   * Converts a ScalaFX $KV to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyValue.html $KV]],
    * extracting its delegate.
    *
    * @param v ScalaFX $KV
@@ -79,7 +80,7 @@ object KeyValue {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/KeyValue.html $KV]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyValue.html $KV]].
  * Defines a key value to be interpolated for a particular interval along the animation.
  * A KeyFrame, which defines a specific point on a timeline, can hold multiple $KV s.
  * $KV is an immutable class.
@@ -121,7 +122,7 @@ class KeyValue[T, J](override val delegate: jfxa.KeyValue)
 object Tweenable {
   
   /**
-   * Converts a ScalaFX $TW to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/KeyValue.html $KV]].
+   * Converts a ScalaFX $TW to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyValue.html $KV]].
    *
    * @param t ScalaFX $TW
    * @return JavaFX $KV extracted from `t.linear`.

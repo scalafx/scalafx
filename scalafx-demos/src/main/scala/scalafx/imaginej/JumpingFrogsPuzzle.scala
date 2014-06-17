@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,6 +39,7 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
+import scala.language.postfixOps
 import Constants._
 import scala._
 import scalafx.Includes._
@@ -83,19 +84,19 @@ object Constants {
   val STONE_STROKE_WIDTH = SCALE * 1
   val STONE_GAP = SCALE * 6
   val STONE_HEIGHT = SCALE * 10
-  val STONE_FILL = Color.WHITE
-  val STONE_STROKE = Color.BLUE
+  val STONE_FILL = Color.White
+  val STONE_STROKE = Color.Blue
   //
   // frogs
   //
   val FROG_RADIUS = SCALE * 6
-  val GREEN_FROG_FILL = Color.DARKGREEN
-  val RED_FROG_FILL = Color.DARKRED
+  val GREEN_FROG_FILL = Color.DarkGreen
+  val RED_FROG_FILL = Color.DarkRed
   //
   // canvas
   //
   val CANVAS_HEIGHT = SCALE * 100
-  val CANVAS_FILL = Color.LIGHTGRAY
+  val CANVAS_FILL = Color.LightGray
   //
   // relative
   //

@@ -26,6 +26,7 @@
  */
 package scalafx.scene
 
+import scala.language.implicitConversions
 import javafx.{scene => jfxs}
 import scalafx.Includes._
 import scalafx.collections._
@@ -37,7 +38,7 @@ object Group {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/Group.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.html]].
  */
 class Group(override val delegate: jfxs.Group = new jfxs.Group())
   extends Parent(delegate)

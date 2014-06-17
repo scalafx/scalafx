@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,18 +26,19 @@
  */
 package scalafx.scene.paint
 
+import scala.language.implicitConversions
 import javafx.scene.{ paint => jfxsp }
 
 object PaintIncludes extends PaintIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/scene/paint/package-summary.html `javafx.scene.paint`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/paint/package-summary.html `javafx.scene.paint`]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/paint/
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/paint/
  * @define END ]]` instance to its $SFX counterpart.
  * @define BEGINSTRING Converts an HTML or CSS attribute string to a
  * @define ENDSTRING See $JFX's `Color.web()` for more details.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,18 +26,19 @@
  */
 package scalafx.scene.canvas
 
+import scala.language.implicitConversions
 import javafx.scene.{ canvas => jfxsc }
 
 object CanvasIncludes extends CanvasIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/scene/canvas/package-summary.html `javafx.scene.canvas`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/package-summary.html `javafx.scene.canvas`]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/canvas/
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/
  * @define END ]]` instance to its $SFX counterpart.
  *
  * @define CANV Canvas

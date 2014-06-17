@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.graphics3d
 
+import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.animation._
 import scalafx.application.JFXApp
@@ -67,14 +68,14 @@ object CubeSampleDemo extends JFXApp {
 
 
     def create3dContent():Node = {
-      val c = new Cube(50,Color.RED,1)
+      val c = new Cube(50,Color.Red,1)
       c.rx.setAngle(45)
       c.ry.setAngle(45)
-      val c2 = new Cube(50,Color.GREEN,1)
+      val c2 = new Cube(50,Color.Green,1)
       c2.setTranslateX(100)
       c2.rx.setAngle(45)
       c2.ry.setAngle(45)
-      val c3 = new Cube(50,Color.ORANGE,1)
+      val c3 = new Cube(50,Color.Orange,1)
       c3.setTranslateX(-100)
       c3.rx.setAngle(45)
       c3.ry.setAngle(45)

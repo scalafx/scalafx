@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.layout
 
+import scala.language.implicitConversions
 import scala.collection.JavaConversions._
 import javafx.scene.{ layout => jfxsl }
 import javafx.{ geometry => jfxg }
@@ -213,7 +214,7 @@ object GridPane {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/GridPane.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/GridPane.html]]
  */
 class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
   extends Pane(delegate)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.input
 
+import scala.language.implicitConversions
 import javafx.{ event => jfxe }
 import javafx.scene.{ input => jfxsi }
 import scalafx.delegate.SFXDelegate
@@ -34,15 +35,15 @@ object InputIncludes extends InputIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/package-summary.html `javafx.scene.input`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/package-summary.html `javafx.scene.input`]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/input/
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/
  * @define END ]]` instance to its $SFX counterpart.
  * @define BEGINWR Converts a Function that manipulates a $SFX [[scalafx.scene.input.
- * @define FINISHWR ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html EventHandler]] that manipulates it's $JFX couterpart.
+ * @define FINISHWR ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html EventHandler]] that manipulates it's $JFX couterpart.
  * @define PARAMWR function that manipulates a $SFX's
  * @define RETWR A $JFX's EventHandler that manipulates a $JFX's
  *

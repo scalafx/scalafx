@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.control.cell
 
+import scala.language.implicitConversions
 import javafx.scene.control.{ cell => jfxscc }
 import javafx.{ util => jfxu }
 import scalafx.Includes._
@@ -79,7 +80,7 @@ object TextFieldListCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/TextFieldListCell.html $TFLC]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/TextFieldListCell.html $TFLC]]
  *
  * @tparam T Type used in this cell
  * @constructor Creates a new $TFLC from a JavaFX $TFLC

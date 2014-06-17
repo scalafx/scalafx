@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.media
 
+import scala.language.implicitConversions
 import javafx.scene.{ media => jfxsm }
 import scalafx.delegate.SFXDelegate
 
@@ -34,10 +35,11 @@ object AudioTrack {
 }
 
 class AudioTrack(override val delegate: jfxsm.AudioTrack) extends Track(delegate) with SFXDelegate[jfxsm.AudioTrack] {
-
+  
   /**
    * Retrieves the language of the audio track.
+   * 
+   * @deprecated("This method is deprecated, due to deprecation of the underlying JavaFX method 'getLanguage'. Use 'locale' instead. For now, this method call is redirected to utilise 'locale'.", "ScalaFX 8.0.0-R5")
    */
-  def language = delegate.getLanguage
-
+  def language = locale // <-- Calling 'getLocale' instead of the deprecated 'getLanguage' removes a compilation warning while building ScalaFX.
 }

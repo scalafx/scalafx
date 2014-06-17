@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,18 +26,19 @@
  */
 package scalafx.scene.chart
 
+import scala.language.implicitConversions
 import javafx.scene.{chart => jfxsc}
 
 object ChartIncludes extends ChartIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/scene/chart/package-summary.html `javafx.scene.chart`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/package-summary.html `javafx.scene.chart`]]
  * Classes/Traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/chart/
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/
  * @define END ]]` instance to its $SFX counterpart.
  *
  * @define ARCH AreaChart

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene
 
+import scala.language.implicitConversions
 import javafx.{ scene => jfxs }
 import scalafx.Includes._
 import scalafx.scene.image.WritableImage
@@ -36,7 +37,7 @@ object SnapshotResult {
 }
 
 /**
- * Wraps JavaFX's `[[http://docs.oracle.com/javafx/2/api/javafx/scene/SnapshotResult.html SnapshotResult]]`. 
+ * Wraps JavaFX's `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/SnapshotResult.html SnapshotResult]]`. 
  * How the original Java class does not have public constructors, it is not possible instantiate in Scala.
  *
  * @since 2.2

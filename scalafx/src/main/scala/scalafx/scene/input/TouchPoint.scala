@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.input
 
+import scala.language.implicitConversions
 import javafx.scene.{ input => jfxsi }
 import javafx.{ event => jfxe }
 import scalafx.delegate.SFXDelegate
@@ -62,7 +63,7 @@ object TouchPoint {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/TouchPoint.State.html]]
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/TouchPoint.State.html]]
    */
   sealed case class State(override val delegate: jfxsi.TouchPoint.State)
     extends SFXEnumDelegate[jfxsi.TouchPoint.State]

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,22 +26,21 @@
  */
 package scalafx.scene.control
 
-import javafx.{event => jfxe, scene, application}
+import scala.language.implicitConversions
 import javafx.scene.{ control => jfxsc }
 import scalafx.scene.control.cell.CellIncludes
-import scalafx.application.ConditionalFeature
 import scalafx.beans.property.ReadOnlyObjectProperty
 
 object ControlIncludes extends ControlIncludes
 
 /**
- * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/package-summary.html `javafx.scene.control`]]
- * Classes/Traits to their $SFX counterparts.
+ * Contains implicit methods to convert from
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/package-summary.html `javafx.scene.control`]]
+ * classes/traits to their $SFX counterparts.
  *
  * @define JFX JavaFX
  * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/control/
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/
  * @define END ]]` instance to its $SFX counterpart.
  *
  * @define TTYPE The type of the 
@@ -61,6 +60,8 @@ object ControlIncludes extends ControlIncludes
  * @define CLPK ColorPicker
  * @define CBBS ComboBoxBase
  * @define CBBX ComboBox
+ * @define DTCL DateCell
+ * @define DTPR DatePicker
  * @define FCMD FocusModel
  * @define HYLK Hyperlink
  * @define IDCL IndexedCell
@@ -98,6 +99,7 @@ object ControlIncludes extends ControlIncludes
  * @define TGGL Toggle
  * @define SPRT Separator
  * @define SKIN Skin
+ * @define SNBE SkinBase
  * @define SKNB Skinnable
  * @define PRGI ProgressIndicator
  * @define PRGB ProgressBar
@@ -163,7 +165,7 @@ trait ControlIncludes
    * @param b $JFX $BTBS
    * @return $SFX $BTBS
    */
-  implicit def jfxButtonBase2sfx(b: jfxsc.ButtonBase) = new ButtonBase(b)
+  implicit def jfxButtonBase2sfx(b: jfxsc.ButtonBase) = new ButtonBase(b) {}
 
   /**
    * $START$BUTN.html $BUTN$END
@@ -256,6 +258,24 @@ trait ControlIncludes
    * @return $SFX $CBBX
    */
   implicit def jfxComboBox2sfx[T](v: jfxsc.ComboBox[T]) = new ComboBox[T](v)
+  
+  /**
+   * $START$DTCL.html $DTCL$END
+   *
+   * @tparam T $TTYPE $DTCL
+   * @param v $JFX $DTCL
+   * @return $SFX $DTCL
+   */
+  implicit def jfxDateCell2sfx(v: jfxsc.DateCell) = new DateCell(v)
+  
+  /**
+   * $START$DTPR.html $DTPR$END
+   *
+   * @tparam T $TTYPE $DTPR
+   * @param v $JFX $DTPR
+   * @return $SFX $DTPR
+   */
+  implicit def jfxDatePicker2sfx(v: jfxsc.DatePicker) = new DatePicker(v)
 
   /**
    * $START$FCMD.html $FCMD$END
@@ -421,7 +441,7 @@ trait ControlIncludes
    * @return $SFX $SLMD
    */
   implicit def jfxSelectionMode2sfx(e: jfxsc.SelectionMode) = SelectionMode.jfxEnum2sfx(e)
-
+  
   /**
    * $START$SLDR.html $SLDR$END
    *
@@ -576,6 +596,14 @@ trait ControlIncludes
   implicit def jfxSkin2sfxSkin[C <: jfxsc.Skinnable](s: jfxsc.Skin[C]) = new Skin[C] {
     override val delegate = s
   }
+  
+  /**
+   * $START$SNBE.html $SNBE$END
+   *
+   * @param sb $JFX $SNBE
+   * @return $SFX $SNBE
+   */
+  implicit def jfxSkinBase2sfx[C <: jfxsc.Control](sb: jfxsc.SkinBase[C]) = new SkinBase[C](sb) {}
 
   /**
    * $START$SKNB.html $SKNB$END
@@ -694,7 +722,7 @@ trait ControlIncludes
   implicit def jfxTextField2sfx(v: jfxsc.TextField) = new TextField(v)
 
   /**
-   * Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/control/$TXFD.html $TXFD]]` to a 
+   * Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TXFD.html $TXFD]]` to a 
    * TextFieldProperty.
    * 
    * @param p A ReadOnlyObjectProperty containing a $TXFD

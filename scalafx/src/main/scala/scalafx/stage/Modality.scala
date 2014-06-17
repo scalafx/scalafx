@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@ object Modality
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/stage/Modality.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/stage/Modality.html]].
  */
 sealed case class Modality(override val delegate: jfxs.Modality)
   extends SFXEnumDelegate[jfxs.Modality]

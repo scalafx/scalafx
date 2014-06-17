@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.event
 
+import scala.language.implicitConversions
 import javafx.{ event => jfxe }
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
@@ -55,7 +56,7 @@ object Event {
 }
 
 /**
- * Wrapper class for [[http://docs.oracle.com/javafx/2/api/javafx/event/Event.html Event]].
+ * Wrapper class for [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/Event.html Event]].
  */
 class Event(override val delegate: jfxe.Event) extends SFXDelegate[jfxe.Event] {
 

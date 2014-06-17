@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,7 +31,7 @@ import javafx.{ collections => jfxc }
 import scalafx.delegate.SFXDelegate
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/collections/package-summary.html `javafx.collections`]] package, 
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/package-summary.html `javafx.collections`]] package, 
  * adding Scala's collections features to original JavaFX collections.
  */
 package object collections {

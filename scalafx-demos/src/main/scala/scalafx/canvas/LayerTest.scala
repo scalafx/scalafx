@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,10 +53,10 @@ object LayerTest extends JFXApp {
 
   // Obtain Graphics Contexts
   private val gc1 = layer1.graphicsContext2D
-  gc1.fill = Color.GREEN
+  gc1.fill = Color.Green
   gc1.fillOval(50, 50, 20, 20)
   private val gc2 = layer2.graphicsContext2D
-  gc2.fill = Color.BLUE
+  gc2.fill = Color.Blue
   gc2.fillOval(100, 100, 20, 20)
 
   // Handle Layers
@@ -69,9 +69,9 @@ object LayerTest extends JFXApp {
     gc2.fillOval(e.x, e.y, 20, 20)
   }
 
-  // Create Choice Box 
-  val layer1Title = "Layer 1 is GREEN"
-  val layer2Title = "Layer 2 is BLUE"
+  // Create Choice Box
+  val layer1Title = "Layer 1 is Green"
+  val layer2Title = "Layer 2 is Blue"
   private val cb = new ChoiceBox[String] {
     items = ObservableBuffer(layer1Title, layer2Title)
   }

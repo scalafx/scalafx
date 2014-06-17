@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.control.cell
 
+import scala.language.implicitConversions
 import java.lang.{ Boolean => JBoolean }
 
 import javafx.beans.{ value => jfxbv }
@@ -118,7 +119,7 @@ object CheckBoxTreeCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/ChoiceBoxListCell.html $CBTC]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxListCell.html $CBTC]]
  *
  * @tparam T Type used in this cell
  * @constructor Creates a new $CBTC from a JavaFX $CBTC

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.layout
 
+import scala.language.implicitConversions
 import collection.JavaConversions._
 import javafx.scene.{ layout => jfxsl }
 import scalafx.collections._
@@ -37,7 +38,7 @@ object Pane {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/layout/Pane.html]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Pane.html]].
  */
 class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
   extends Region(delegate)

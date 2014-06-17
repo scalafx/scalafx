@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,7 @@
 
 package scalafx
 
+import scala.language.postfixOps
 import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Timeline
@@ -36,8 +37,8 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.effect.BlendMode.OVERLAY
 import scalafx.scene.effect.BoxBlur
-import scalafx.scene.paint.Color.BLACK
-import scalafx.scene.paint.Color.WHITE
+import scalafx.scene.paint.Color.Black
+import scalafx.scene.paint.Color.White
 import scalafx.scene.paint.CycleMethod.NO_CYCLE
 import scalafx.scene.paint.LinearGradient
 import scalafx.scene.paint.Stops
@@ -55,13 +56,13 @@ object SimpleColorfulCircles extends JFXApp {
     width = 800
     height = 600
     scene = new Scene {
-      fill = BLACK
+      fill = Black
       circles = for (i <- 0 until 30) yield new Circle {
         centerX = random * 800
         centerY = random * 600
         radius = 150
-        fill = WHITE opacity 0.05
-        stroke = WHITE opacity 0.16
+        fill = White opacity 0.05
+        stroke = White opacity 0.16
         strokeWidth = 4
         strokeType = OUTSIDE
         effect = new BoxBlur(10, 10, 3)

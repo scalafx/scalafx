@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.transform
 
+import scala.language.implicitConversions
 import javafx.{ geometry => jfxg }
 import javafx.scene.{ transform => jfxst }
 import scalafx.Includes._
@@ -55,7 +56,7 @@ object Rotate {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/scene/transform/Rotate.html]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Rotate.html]]
  */
 class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate) extends Transform(delegate) with SFXDelegate[jfxst.Rotate] {
 

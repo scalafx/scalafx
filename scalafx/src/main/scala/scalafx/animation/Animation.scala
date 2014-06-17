@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.animation
 
+import scala.language.implicitConversions
 import javafx.{ animation => jfxa, event => jfxe, util => jfxu }
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
@@ -58,7 +59,7 @@ trait AnimationStatics {
 object Animation extends AnimationStatics {
   
   /**
-   * Converts a ScalaFX $AN to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.html $AN]], 
+   * Converts a ScalaFX $AN to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.html $AN]], 
    * extracting its delegate.
    *
    * @param v ScalaFX $AN
@@ -92,7 +93,7 @@ object Animation extends AnimationStatics {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.Status.html $ST]]
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.Status.html $ST]]
    * 
    * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
    * @param delegate JavaFX $ST to be delegated.
@@ -103,7 +104,7 @@ object Animation extends AnimationStatics {
 }
 
 /**
- * Wraps JavaFX's [[http://docs.oracle.com/javafx/2/api/javafx/animation/Animation.html $AN]].
+ * Wraps JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.html $AN]].
  *
  * @define AN `Animation`
  * @define DV Default value:

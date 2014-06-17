@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ package scalafx.controls.tableview
 import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.scene.paint.Color
 
-class Person(firstName_ : String, lastName_ : String, phone_ : String, favoriteColor_ : Color = Color.BLUE) {
+class Person(firstName_ : String, lastName_ : String, phone_ : String, favoriteColor_ : Color = Color.Blue) {
 
   val firstName = new StringProperty(this, "firstName", firstName_)
   val lastName = new StringProperty(this, "lastName", lastName_)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 package scalafx.util
 
 /**
- * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/util/converter/package-summary.html `javafx.util.converter`]] package.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/converter/package-summary.html `javafx.util.converter`]] package.
  */
 package object converter {
 

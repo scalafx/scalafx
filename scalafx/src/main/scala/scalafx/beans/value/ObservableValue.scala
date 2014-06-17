@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.beans.value
 
+import scala.language.implicitConversions
 import javafx.beans.{ value => jfxbv }
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
@@ -61,7 +62,7 @@ object ObservableValue {
  * @define OV `ObservableValue`
  * @define VALUE the current value of this $OV.
  * @define CV `ChangeListener`
- * @define URLCV [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html `ChangeListener`]]
+ * @define URLCV [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ChangeListener.html `ChangeListener`]]
  * @define SUBRET A new [[scalafx.event.subscriptions.Subscription]] to remove $OV.
  */
 trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
@@ -84,12 +85,12 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
 
   /**
    * Adds a function as a $URLCV. This function has all arguments from
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ChangeListener.html#changed(javafx.beans.value.ObservableValue, T, T) `changed`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ChangeListener.html#changed(javafx.beans.value.ObservableValue, T, T) `changed`]]
    * method from $CV.
    *
    * @tparam J1 J superclass.
    * @param op Function that receives a 
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/value/ObservableValue.html $OV]],
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableValue.html $OV]],
    * the old value and the new value. It will be called when value changes.
    * @return $SUBRET
    */

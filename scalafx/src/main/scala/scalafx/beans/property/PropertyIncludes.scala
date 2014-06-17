@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,20 +26,21 @@
  */
 package scalafx.beans.property
 
+import scala.language.implicitConversions
 import javafx.beans.{ property => jfxbp }
 
 object PropertyIncludes extends PropertyIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/package-summary.html `javafx.beans.property`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/package-summary.html `javafx.beans.property`]]
  * Classes to their ScalaFX counterparts.
  */
 trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/BooleanProperty `javafx.beans.property.BooleanProperty`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/BooleanProperty `javafx.beans.property.BooleanProperty`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX BooleanProperty
@@ -49,7 +50,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/BooleanProperty `javafx.beans.property.BooleanProperty`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/BooleanProperty `javafx.beans.property.BooleanProperty`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX BooleanProperty
@@ -59,7 +60,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/BooleanProperty `javafx.beans.property.BooleanProperty`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/BooleanProperty `javafx.beans.property.BooleanProperty`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX BooleanProperty
@@ -69,7 +70,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/BooleanProperty `javafx.beans.property.BooleanProperty`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/BooleanProperty `javafx.beans.property.BooleanProperty`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX BooleanProperty
@@ -79,7 +80,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/LongProperty `javafx.beans.property.LongProperty`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/LongProperty `javafx.beans.property.LongProperty`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX LongProperty
@@ -89,7 +90,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ObjectProperty `javafx.beans.property.ObjectProperty`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ObjectProperty `javafx.beans.property.ObjectProperty`]]
    * instance to its ScalaFX counterpart.
    *
    * @tparam T ObjectProperty Type
@@ -100,7 +101,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/StringProperty `javafx.beans.property.StringProperty`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/StringProperty `javafx.beans.property.StringProperty`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX StringProperty
@@ -110,7 +111,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyBooleanProperty `javafx.beans.property.ReadOnlyBooleanProperty`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyBooleanProperty `javafx.beans.property.ReadOnlyBooleanProperty`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX ReadOnlyBooleanProperty
@@ -120,7 +121,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyDoubleProperty `javafx.beans.property.ReadOnlyDoubleProperty`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyDoubleProperty `javafx.beans.property.ReadOnlyDoubleProperty`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX ReadOnlyDoubleProperty
@@ -130,7 +131,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyFloatProperty `javafx.beans.property.ReadOnlyFloatProperty`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyFloatProperty `javafx.beans.property.ReadOnlyFloatProperty`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX ReadOnlyFloatProperty
@@ -140,7 +141,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyIntegerProperty `javafx.beans.property.ReadOnlyIntegerProperty`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyIntegerProperty `javafx.beans.property.ReadOnlyIntegerProperty`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX ReadOnlyIntegerProperty
@@ -150,7 +151,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyLongProperty `javafx.beans.property.ReadOnlyLongProperty`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyLongProperty `javafx.beans.property.ReadOnlyLongProperty`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX ReadOnlyLongProperty
@@ -160,7 +161,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyObjectProperty `javafx.beans.property.ReadOnlyObjectProperty`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyObjectProperty `javafx.beans.property.ReadOnlyObjectProperty`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX ReadOnlyObjectProperty
@@ -170,7 +171,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyStringProperty `javafx.beans.property.ReadOnlyStringProperty`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyStringProperty `javafx.beans.property.ReadOnlyStringProperty`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX ReadOnlyStringProperty
@@ -180,7 +181,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX ReadOnlyStringWrapper
@@ -190,7 +191,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX ReadOnlyStringWrapper
@@ -200,7 +201,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX ReadOnlyStringWrapper
@@ -210,7 +211,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX ReadOnlyStringWrapper
@@ -220,7 +221,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX ReadOnlyStringWrapper
@@ -230,7 +231,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX ReadOnlyStringWrapper
@@ -240,7 +241,7 @@ trait PropertyIncludes extends LowerPriorityIncludes {
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX ReadOnlyStringWrapper

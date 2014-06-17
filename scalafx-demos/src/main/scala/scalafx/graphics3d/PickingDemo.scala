@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,8 +46,8 @@ object PickingDemo extends JFXApp {
 
       val box = new Box(400, 400, 400) {
         material = new PhongMaterial {
-          diffuseColor = Color.RED
-          specularColor = Color.PINK
+          diffuseColor = Color.Red
+          specularColor = Color.Pink
         }
         translateZ = 225
         id = "Box"
@@ -55,8 +55,8 @@ object PickingDemo extends JFXApp {
 
       val sphere = new Sphere(200) {
         material = new PhongMaterial {
-          diffuseColor = Color.BLUE
-          specularColor = Color.LIGHTBLUE
+          diffuseColor = Color.Blue
+          specularColor = Color.LightBlue
         }
         translateZ = -225
         id = "Sphere"
@@ -66,7 +66,7 @@ object PickingDemo extends JFXApp {
       val shapes = new Group(box, sphere)
 
       val light = new PointLight {
-        color = Color.ANTIQUEWHITE
+        color = Color.AntiqueWhite
         translateX = -265
         translateY = -260
         translateZ = -625
@@ -126,8 +126,8 @@ object PickingDemo extends JFXApp {
 
   private def createMarker(x: Double, y: Double, z: Double) : Sphere = new Sphere(35) {
     material = new PhongMaterial {
-      diffuseColor = Color.GOLD
-      specularColor = Color.LIGHTGREEN
+      diffuseColor = Color.Gold
+      specularColor = Color.LightGreen
     }
     translateX = x
     translateY = y

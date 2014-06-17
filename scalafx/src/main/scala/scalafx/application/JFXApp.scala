@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,12 +26,14 @@
  */
 package scalafx.application
 
+import scala.language.implicitConversions
 import scala.collection.JavaConversions.mapAsJavaMap
 import scala.collection.JavaConversions.seqAsJavaList
 import scala.collection.mutable.Buffer
 import scala.collection.Map
 import scala.collection.Seq
 import scala.collection.mutable
+import scala.collection.mutable.ListBuffer
 
 import javafx.{ application => jfxa }
 import javafx.{ stage => jfxs }
@@ -45,7 +47,7 @@ object JFXApp {
   var AUTO_SHOW = true
 
   /**
-   * Regular expression for parsing name/value parameters. 
+   * Regular expression for parsing name/value parameters.
    */
   private val keyValue = """^--([A-Za-z_][^=]*?)=(.*)$""".r
 
@@ -62,7 +64,7 @@ object JFXApp {
 
   /**
    * Wraps
-   * [[http://docs.oracle.com/javafx/2/api/javafx/application/Application.Parameters.html Application.Parameters]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html Application.Parameters]]
    * class.
    */
   abstract class Parameters extends SFXDelegate[jfxa.Application.Parameters] {
@@ -188,29 +190,64 @@ object JFXApp {
   * }}}
   *
  */
-class JFXApp extends DelayedInit {
+trait JFXApp extends DelayedInit {
+
+  // Since JFXApp is now a trait, it is immune from the behavior of the DelayedInit marker trait. All JFXApp
+  // initialization code is executed immediately, rather than being passed to delayedInit() and executed when init() is
+  // called during JavaFX application startup. Put non-essential initialization in main() prior to the application
+  // startup.
+
   /** JFXApp stage must be an instance of [[scalafx.application.JFXApp.PrimaryStage]] to ensure that it
     * actually is a proper wrapper for the primary stage supplied by JavaFX. */
   var stage: PrimaryStage = null
 
   private var arguments: Seq[String] = _
 
-  def main(args: Array[String]) {
-    JFXApp.ACTIVE_APP = this
-    arguments = args
-    jfxa.Application.launch(classOf[AppHelper], args: _*)
-  }
+  /** Buffer code (constructor/initialization code) for all classes & objects that implement JFXApp. This code is
+    * passed in through compiler-generated calls to delayedInit. The resulting code is then executed - in the same
+    * order - in main. (Note that traits inheriting or mixed in with JFXApp have their initialization performed
+    * immediately. See [[scala.DelayedInit]] for more information.
+    */
+  private val subClassInitCode = new ListBuffer[() => Unit]
 
   /**
    *  Set of parameters for an application
    */
   protected lazy val parameters: Parameters = Parameters(arguments)
 
-  var init: () => Unit = null
-
+  /* Add class/object construction/initialization code to the code execution buffer.
+   *
+   * This function is called multiple times (by the Scala compiler) with the initialization/construction code of each
+   * class and object (but not trait!) that extends JFXApp. This code is buffered until it can be executed in main().
+   *
+   * @note I (Mike Allen) think there's a good case for making this final, to prevent user code from destroying the
+   * application initialization logic.
+   */
   def delayedInit(x: => Unit) {
-    init = () => x
+    subClassInitCode += (() => x)
   }
+
+  /* Perform app-related initialization, and execute initialization/construction code for all classes and object that
+   * extend this trait.
+   *
+   * @note I (Mike Allen) think there's a good case for making this final, to prevent user code from destroying the
+   * application initialization logic.
+   */
+  def main(args: Array[String]) {
+    JFXApp.ACTIVE_APP = this
+    arguments = args
+    // Put any further non-essential initialization here.
+    /* Launch the JFX application.
+    */
+    jfxa.Application.launch(classOf[AppHelper], args: _*)
+  }
+
+  /** Perform sub-class initialization when directed to duing application startup.
+    *
+    * Execute the construction/initialization code of all classes/objects that extend JFXApp, that was earlier passed
+    * to delayedInit() by the compiler.
+    */
+  private [application] final def init(): Unit = for (initCode <- subClassInitCode) initCode()
 
   /**
    *  This method is called when the application should stop, and provides a convenient place to prepare
