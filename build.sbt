@@ -2,7 +2,7 @@ import scala.xml._
 import java.net.URL
 import SonatypeKeys._
 
-val scalafxVersion = "1.0.0-R8"
+val scalafxVersion = "1.0.0-R9-SNAPSHOT"
 
 // ScalaFX project
 lazy val scalafx = Project(
@@ -34,7 +34,7 @@ lazy val scalafxDemos = Project(
 
 // Dependencies
 lazy val junit = "junit" % "junit" % "4.11"
-lazy val scalatest = "org.scalatest" %% "scalatest" % "2.1.0"
+lazy val scalatest = "org.scalatest" %% "scalatest" % "2.1.7"
 
 // Resolvers
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -45,10 +45,10 @@ lazy val sonatypeNexusStaging = "Sonatype Nexus Staging" at "https://oss.sonatyp
 resolvers += sonatypeNexusSnapshots
 
 // Common settings
-lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
+lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.10.3", "2.11.0-RC1", "2.9.3"),
+  crossScalaVersions := Seq("2.10.4", "2.11.1", "2.9.3"),
   scalaVersion <<= crossScalaVersions { versions => versions.head },
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
@@ -67,6 +67,12 @@ lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
     else
       scalatest % "test",
     junit % "test"),
+  // ScalaTest needs Scala XML, in Scala 2.11 the XML library has been factored out to the `scala-xml` module
+  libraryDependencies ++= (
+    if (scalaVersion.value.startsWith("2.11."))
+      Seq("org.scala-lang.modules" %% "scala-xml" % "1.0.1" % "test")
+    else
+      Seq.empty[ModuleID]),
   unmanagedLibs,
   manifestSetting,
   publishSetting,
@@ -81,24 +87,15 @@ lazy val scalafxSettings = Defaults.defaultSettings ++ Seq(
 ) ++ mavenCentralSettings
 
 // Location of JavaFX jar
-lazy val javaHome: File = {
-  val envPath = Option(System.getenv("JAVAFX_HOME")) match {
-    case Some(s) => s
-    case None => Option(System.getenv("JAVA_HOME")) match {
-      case Some(s) => s
-      case None => throw new RuntimeException("SBT Failure: neither JAVAFX_HOME nor " +
-        "JAVA_HOME environment variables have been defined!")
-    }
-  }
-  val dir = new File(envPath)
-  if (!dir.exists) {
-    throw new RuntimeException("SBT Failure: no such directory found: " + envPath)
-  }
-  println("**** detected Java/JDK Home is set to " + dir + "  ****")
-  dir
-}
+val javafxHome: File =
+  if (scala.util.Properties.javaVersion.startsWith("1.7."))
+    file(scala.util.Properties.javaHome)
+  else
+    throw new Exception("This branch of ScalaFX requires java 1.7.*,  " +
+      "got " + scala.util.Properties.javaVersion + "\n" +
+      "Detected Java home as: " + scala.util.Properties.javaHome)
 
-lazy val unmanagedLibs = unmanagedJars in Compile += Attributed.blank(javaHome / "jre/lib/jfxrt.jar")
+lazy val unmanagedLibs = unmanagedJars in Compile += Attributed.blank(javafxHome / "lib/jfxrt.jar")
 
 lazy val manifestSetting = packageOptions <+= (name, version, organization) map {
   (title, version, vendor) =>
@@ -153,6 +150,11 @@ lazy val mavenCentralSettings = Seq(
             <id>steveonjava</id>
             <name>Stephen Chin</name>
             <url>http://www.nighthacking.com/</url>
+          </developer>
+          <developer>
+            <id>KevinCoghlan</id>
+            <name>Kevin Coghlan</name>
+            <url>http://www.kevincoghlan.com</url>
           </developer>
           <developer>
             <id>akauppi</id>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@ object VanishingCircles extends JFXApp {
     width = 800
     height = 600
     scene = new Scene {
-      fill = BLACK
+      fill = Black
       circles = for (i <- 0 until 50) yield new Circle {
         centerX = random * 800
         centerY = random * 600
@@ -59,7 +59,7 @@ object VanishingCircles extends JFXApp {
         effect = new BoxBlur(10, 10, 3)
         // add this for binding:
         strokeWidth <== when (hover) choose 4 otherwise 0
-        stroke = WHITE
+        stroke = White
         // add this for event listeners:
         onMouseClicked = handle {
           Timeline(at (3 s) {radius -> 0}).play()

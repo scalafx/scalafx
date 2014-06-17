@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,7 @@ object Platform {
   /** Run the specified code block on the JavaFX Application Thread at some unspecified time in the future.
     * Returns immediately.
     */
-  def runLater(op: => Unit) {
+  def runLater[R](op: => R) {
     runLater(new Runnable {
       def run() {
         op

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@ object CanvasDoodleTest extends JFXApp {
   val rect = new Rectangle {
     height = 400
     width = 400
-    fill = new LinearGradient(0, 0, 1, 1, true, CycleMethod.REFLECT, List(Stop(0, Color.RED), Stop(1, Color.YELLOW)))
+    fill = new LinearGradient(0, 0, 1, 1, true, CycleMethod.REFLECT, List(Stop(0, Color.Red), Stop(1, Color.Yellow)))
   }
 
   val rootPane = new Group
@@ -70,7 +70,7 @@ object CanvasDoodleTest extends JFXApp {
 
   val gc = canvas.graphicsContext2D
 
-  reset(Color.BLUE)
+  reset(Color.Blue)
 
   // Clear away portions as the user drags the mouse
   canvas.onMouseDragged = (e: MouseEvent) => {
@@ -80,13 +80,13 @@ object CanvasDoodleTest extends JFXApp {
   // Fill the Canvas with a Blue rectangle when the user double-clicks
   canvas.onMouseClicked = (e: MouseEvent) => {
     if (e.clickCount > 1) {
-      reset(Color.BLUE)
+      reset(Color.Blue)
     }
   }
 
   /**
    * Resets the canvas to its original look by filling in a rectangle covering
-   * its entire width and height. Color.BLUE is used in this demo.
+   * its entire width and height. Color.Blue is used in this demo.
    *
    * @param color The color to fill
    */

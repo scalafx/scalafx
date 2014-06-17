@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -69,7 +69,7 @@ class ColorSpec
   private def testJfxColor(c: JColor, r: Int, g: Int, b: Int, o: Int = 255) = compareJfxColors(c, intToDouble(r), intToDouble(g), intToDouble(b), intToDouble(o))
 
   it should "convert a webcolor to a ScalaFX Color" in {
-    compareSfxColors("orange", Color.ORANGE.red, Color.ORANGE.green, Color.ORANGE.blue, Color.ORANGE.opacity)
+    compareSfxColors("orange", Color.Orange.red, Color.Orange.green, Color.Orange.blue, Color.Orange.opacity)
     testSfxColor("transparent", 0, 0, 0, 0)
     testSfxColor("0xff668840", 0xff, 0x66, 0x88, 0x40)
     testSfxColor("0xff6688", 0xff, 0x66, 0x88)
@@ -119,7 +119,7 @@ class ColorSpec
     compareJfxColors(65280, 0, 1, 0)
     compareJfxColors(16777215, 1, 1, 1)
   }
-  
+
   it should "convert a tuple to a ScalaFX Color" in {
     testSfxColor((213, 23, 152), 213, 23, 152)
     testSfxColor((213, 23, 152, 0.25), 213, 23, 152, 255 / 4)

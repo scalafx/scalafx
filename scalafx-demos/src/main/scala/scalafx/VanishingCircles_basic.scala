@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,7 @@ object VanishingCircles_basic extends JFXApp {
     width = 800
     height = 600
     scene = new Scene {
-      fill = BLACK
+      fill = Black
       content = for (i <- 0 until 50) yield new Circle {
         centerX = random * 800
         centerY = random * 600

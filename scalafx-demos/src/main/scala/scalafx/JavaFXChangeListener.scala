@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,13 +40,13 @@ object JavaFXChangeListener extends JFXApp {
     width = 600
     height = 450
     scene = new Scene {
-      fill = Color.LIGHTGREEN
+      fill = Color.LightGreen
       content = new Rectangle {
         x = 25
         y = 40
         width = 100
         height = 100
-        fill <== when (hover) choose Color.GREEN otherwise Color.RED
+        fill <== when (hover) choose Color.Green otherwise Color.Red
       }
     }
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@ object VideoCubeDemo extends JFXApp {
   var root = new Group
   stage = new PrimaryStage {
     scene = new Scene(root, 800, 600, true) {
-      fill = Color.BLACK
+      fill = Color.Black
     }
     resizable = false
     title = "Graphics 3D Video Cube Demo in ScalaFX"
@@ -124,7 +124,7 @@ object VideoCubeDemo extends JFXApp {
       val s = 1 + scala.math.random * 3
       width = s
       height = s
-      fill = Color.WHITE
+      fill = Color.White
     })
     //    printf("stars=%s\n", stars)
     children = stars
@@ -248,7 +248,7 @@ class VideoCube(val mediaPlayers: List[MediaPlayer], size: Double) extends Group
    * @param shade the derived colour
    */
   class MediaViewCubeFace(val mediaPlayer: MediaPlayer, size: Double, offset: Double = -0.01,
-                          color: Color = Color.LIGHTBLUE, shade: Double = 1.0) extends Group {
+                          color: Color = Color.LightBlue, shade: Double = 1.0) extends Group {
 
     def this(mediaPlayer: MediaPlayer, offset: Double) = this(mediaPlayer, 0.0, offset)
 
@@ -256,7 +256,7 @@ class VideoCube(val mediaPlayers: List[MediaPlayer], size: Double) extends Group
 
     val debugText = new Text {
       font = new Font("Verdana", 36.0)
-      fill = Color.ORANGE
+      fill = Color.Orange
       layoutX = size / 4
       layoutY = size / 4
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,27 +40,28 @@ object EventType {
   val ROOT = jfxe.EventType.ROOT
 }
 
-class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T] = new jfxe.EventType[T]) extends SFXDelegate[jfxe.EventType[T]] {
-  /*
-   * COMPILER ERROR MESSAGE:
-	- overloaded method constructor EventType with alternatives: 
-	(javafx.event.EventType[_ >: T(in class EventType)(in class EventType)])javafx.event.EventType[T(in class EventType)(in class EventType)]  <and> 
-	(java.lang.String)javafx.event.EventType[T(in class EventType)(in class EventType)] cannot be applied to (T(in class EventType)(in class EventType))
-   */
-  //  def this(superType: T) = this(new jfxe.EventType(superType))
-
-  /*
-   * COMPILER ERROR MESSAGE:
-   * type mismatch; found : T required: javafx.event.EventType[_ >: ?]
-   */
-  //  def this(superType: T, name: String) = this(new jfxe.EventType(superType, name))
+class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T]) extends SFXDelegate[jfxe.EventType[T]] {
 
   /**
-   * Constructs a new EventType with the specified name and the EventType.ROOT as its super type.
+   * Constructs a new `EventType` with the specified super type and the name set to null. 
+   */
+  // Dummy implicit is used to disambiguate this auxiliary constructor from the main constructor - otherwise, they both have the same type after erasure, and the code cannot compile.
+  def this(superType: jfxe.EventType[_ >: T])(implicit d: DummyImplicit) =
+    this(new jfxe.EventType[T](superType)) 
+
+  /**
+   * Constructs a new `EventType` with the specified super type and name.
+   */
+  def this(superType: jfxe.EventType[_ >: T], name: String) =
+    this(new jfxe.EventType[T](superType, name))
+
+  /**
+   * Constructs a new `EventType` with the specified name and the EventType.ROOT as its super type.
    *
    * @param name The name
    */
-  def this(name: String) = this(new jfxe.EventType[T](name))
+  def this(name: String) =
+    this(new jfxe.EventType[T](name))
 
   /**
    * Gets the name of this event type.

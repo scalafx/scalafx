@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,7 @@ object ColorSelector extends JFXApp {
 
   lazy val allControls = List(controlRed, controlGreen, controlBlue, controlAlpha)
 
-  val currentColor = ObjectProperty(this, "Color", Color.WHITE)
+  val currentColor = ObjectProperty(this, "Color", Color.White)
   currentColor.onChange(colorChanged())
 
   val synchronizedValue = new DoubleProperty()
@@ -123,7 +123,7 @@ object ColorSelector extends JFXApp {
     this.txfColorValue.text() = this.cmbColorFormat.value.get.format(this.currentColor(), !this.chbDisableAlpha.selected.get)
   }
 
-  private def getForegroundColor(d: Double) = if (d > Max / 2) Color.BLACK else Color.WHITE
+  private def getForegroundColor(d: Double) = if (d > Max / 2) Color.Black else Color.White
 
   private def verifyWebColor() {
     cmbWebColor.value() = WebColor.colors.find(_.sameColor(currentColor())).orNull
@@ -178,10 +178,10 @@ object ColorSelector extends JFXApp {
   }
   controlBlue.value.onChange({
     changeColor()
-    controlBlue.changeColor(Color.rgb(0, 0, controlBlue.value.get.toInt), Color.WHITE)
+    controlBlue.changeColor(Color.rgb(0, 0, controlBlue.value.get.toInt), Color.White)
   })
   controlBlue.selectedControl.onChange(controlSelected(controlBlue))
-  controlBlue.changeColor(Color.rgb(0, 0, controlBlue.value.get.toInt), Color.WHITE)
+  controlBlue.changeColor(Color.rgb(0, 0, controlBlue.value.get.toInt), Color.White)
 
   val controlAlpha = new SliderControl("A") {
     value = 255

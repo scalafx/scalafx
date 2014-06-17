@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -72,7 +72,7 @@ object ScalaFX_Controls_04 extends JFXApp {
   val minorToggleButton = new ToggleButton {
     text = "Minor"
     toggleGroup = theToggleGroup
-    userData = Color.LIGHTGREEN
+    userData = Color.LightGreen
     selected = true
     style = "-fx-base: lightgreen;"
   }
@@ -80,7 +80,7 @@ object ScalaFX_Controls_04 extends JFXApp {
   val majorToggleButton = new ToggleButton {
     text = "Major"
     toggleGroup = theToggleGroup
-    userData = Color.LIGHTBLUE
+    userData = Color.LightBlue
     selected = true
     style = "-fx-base: lightblue;"
   }
@@ -88,7 +88,7 @@ object ScalaFX_Controls_04 extends JFXApp {
   val criticalToggleButton = new ToggleButton {
     text = "Critical"
     toggleGroup = theToggleGroup
-    userData = Color.SALMON
+    userData = Color.Salmon
     selected = true
     style = "-fx-base: salmon;"
   }
@@ -104,8 +104,8 @@ object ScalaFX_Controls_04 extends JFXApp {
   val rectangle = new Rectangle {
     width = 158
     height = 50
-    fill = Color.WHITE
-    stroke = Color.DARKGRAY
+    fill = Color.White
+    stroke = Color.DarkGray
     strokeWidth = 2
     arcHeight = 10
     arcWidth = 10
@@ -127,7 +127,7 @@ object ScalaFX_Controls_04 extends JFXApp {
         val userDataColor = selectedToggle.getUserData.asInstanceOf[Color]
         rectangle.fill = userDataColor
       } else {
-        rectangle.fill = Color.WHITE
+        rectangle.fill = Color.White
       }
   }
 

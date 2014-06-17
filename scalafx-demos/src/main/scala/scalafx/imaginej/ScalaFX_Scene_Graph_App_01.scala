@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,7 +58,7 @@ object ScalaFX_Scene_Graph_App_01 extends JFXApp {
   stage = new PrimaryStage {
     title = "ScalaFX Scene Graph App 01"
     scene = new Scene(500, 500) {
-      fill = Color.BLACK
+      fill = Color.Black
     }
   }
 }

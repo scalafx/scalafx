@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,22 +42,22 @@ object BoxTest extends JFXApp {
     width = 600
     height = 450
     scene = new Scene {
-      fill = Color.LIGHTGREEN
+      fill = Color.LightGreen
       content = new HBox {
         spacing = 10
         content = List(new Rectangle {
           width = 100
           height = 50
-          fill = Color.RED
-          stroke = Color.BLUE
+          fill = Color.Red
+          stroke = Color.Blue
           strokeWidth = 5
           margin = Insets(10)
         }, new VBox {
           spacing = 10
           content = for (i <- 0 until 3) yield new Circle {
             radius = 25
-            fill = Color.BLUE
-            stroke = Color.BLUE.brighter
+            fill = Color.Blue
+            stroke = Color.Blue.brighter
             strokeWidth = 3
           }
         }, new Arc {
@@ -65,8 +65,8 @@ object BoxTest extends JFXApp {
           radiusY = 50
           startAngle = 135
           length = 45
-          fill = Color.BLACK
-          stroke = Color.YELLOW
+          fill = Color.Black
+          stroke = Color.Yellow
           strokeWidth = 3
         })
       }

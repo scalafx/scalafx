@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,7 @@ import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.effect.BlendMode.OVERLAY
 import scalafx.scene.effect.BoxBlur
-import scalafx.scene.paint.Color.{BLACK, WHITE}
+import scalafx.scene.paint.Color.{Black, White}
 import scalafx.scene.paint.CycleMethod.NO_CYCLE
 import scalafx.scene.paint.{LinearGradient, Stops}
 import scalafx.scene.shape.StrokeType.OUTSIDE
@@ -53,20 +53,20 @@ object ColorfulCircles extends JFXApp {
     width = 800
     height = 600
     scene = new Scene {
-      fill = BLACK
+      fill = Black
       content = Seq(
         new Group {
           children = Seq(
             new Rectangle {
               width <== scene.width
               height <== scene.height
-              fill = BLACK
+              fill = Black
             },
             new Group {
               val circles = for (i <- 0 until 15) yield new Circle {
                 radius = 200
-                fill = WHITE opacity 0.05
-                stroke = WHITE opacity 0.2
+                fill = White opacity 0.05
+                stroke = White opacity 0.2
                 strokeWidth = 4
                 strokeType = OUTSIDE
               }
@@ -77,8 +77,8 @@ object ColorfulCircles extends JFXApp {
             new Group {
               val circles = for (i <- 0 until 20) yield new Circle {
                 radius = 70
-                fill = WHITE opacity 0.05
-                stroke = WHITE opacity 0.1
+                fill = White opacity 0.05
+                stroke = White opacity 0.1
                 strokeWidth = 2
                 strokeType = OUTSIDE
               }
@@ -89,8 +89,8 @@ object ColorfulCircles extends JFXApp {
             new Group {
               val circles = for (i <- 0 until 10) yield new Circle {
                 radius = 150
-                fill = WHITE opacity 0.05
-                stroke = WHITE opacity 0.16
+                fill = White opacity 0.05
+                stroke = White opacity 0.16
                 strokeWidth = 4
                 strokeType = OUTSIDE
               }

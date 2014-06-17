@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -108,7 +108,7 @@ object ScalaFX_Layout_Panes_03 extends JFXApp {
         center = new Rectangle {
           width = 380
           height = 220
-          fill = Color.WHITE
+          fill = Color.White
         }
       }
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -63,12 +63,12 @@ object ScalaFX_Scene_Graph_App_03 extends JFXApp {
     y = 0
     width = 250
     height = 250
-    fill = Color.BLUE
+    fill = Color.Blue
   }
   stage = new PrimaryStage {
     title = "ScalaFX Scene Graph App 03"
     scene = new Scene(500, 500) {
-      fill = Color.BLACK
+      fill = Color.Black
       content = List(
         rectangle
       )
@@ -86,7 +86,7 @@ object ScalaFX_Scene_Graph_App_03 extends JFXApp {
         },
         new FillTransition {
           duration = (2 s)
-          toValue = Color.RED
+          toValue = Color.Red
         },
         new RotateTransition {
           duration = (2 s)

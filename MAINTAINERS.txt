@@ -63,10 +63,11 @@ Yours sincerely,
 
                     *COMMITTERS*        (alphabetical order)
 
-Rafael Afonso     ;                               ;                                       ;
-Mike Allen        ; mike@hindsight-consulting.com ;                                       ;
+Rafael Afonso     ; rafael.afonso@gmail.com       ; https://github.com/rafonso            ;
+Mike Allen        ; mike@hindsight-consulting.com ; https://hindsight-consulting.com/Blog/MikeAllen ; Operations Management & Simulation Consultant
 Alain Béarez      ; A@cua.li                      ; http://cua.li/TI/                     ; 
 Stephen Chin      ; stephen.chin@oracle.com       ; http://www.nighthacking.com/          ; Co-creator, Java Champion
+Kevin Coghlan     ; mail@kevincoghlan.com         ; www.kevincoghlan.com                  ;
 Robert Ladstätter ;                               ;                                       ;
 Peter Pilgrim     ; peter.pilgrim@gmail.com       ; http://www.xenononique.co.uk/blog/    ; Java Champion, independent contractor JavaEE7, JavaFX, Scala
 Sven Reimers      ;                               ; http://wiki.netbeans.org/SvenReimers/ ;     Co-creator, Netbeans Dream Team
@@ -76,8 +77,8 @@ Jarek Sacha       ; jpsacha@gmail.com             ;                             
 
                     *CONTRIBUTORS*       (alphabetical order)
 
-Asko Kauppi         ;           ;                               ; 
-Matthew Pocock      ;           ;                               ; 
-Curtis Stanford     ;           ;                               ; 
+Asko Kauppi         ;                               ;                                                 ;
+Matthew Pocock      ;                               ;                                                 ;
+Curtis Stanford     ;                               ;                                                 ;
 
 -- END -- (PLEASE DO NOT EDIT THIS LINE!)

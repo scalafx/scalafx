@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2013, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,8 +41,8 @@ object BasicOpsTest extends JFXApp {
   val canvas = new Canvas(300, 300)
   val gc = canvas.graphicsContext2D
 
-  gc.fill = Color.GREEN
-  gc.stroke = Color.BLUE
+  gc.fill = Color.Green
+  gc.stroke = Color.Blue
   gc.lineWidth = 5
   gc.strokeLine(40, 10, 10, 40)
   gc.fillOval(10, 60, 30, 30)
