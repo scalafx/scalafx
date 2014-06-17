@@ -63,7 +63,7 @@ Yours sincerely,
  
                     *COMMITTERS*        (alphabetical order)
 
-Rafael Afonso      ;                               ;                                       ;
+Rafael Afonso      ; rafael.afonso@gmail.com       ; https://github.com/rafonso            ;
 Mike Allen         ; mike@hindsight-consulting.com ; https://hindsight-consulting.com/Blog/MikeAllen ; Operations Management & Simulation Consultant
 Alain Béarez      ; A@cua.li                      ; http://cua.li/TI/                     ; 
 Stephen Chin       ; stephen.chin@oracle.com       ; http://www.nighthacking.com/          ; Co-creator, Java Champion
