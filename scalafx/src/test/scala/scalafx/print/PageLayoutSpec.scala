@@ -32,14 +32,23 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-/** Tests for [[scalafx.print.PageLayout]]. */
-@RunWith(classOf[JUnitRunner])
+/** 
+ * Tests for [[scalafx.print.PageLayout]] temporarily inactive. 
+ *
+ * When running in an enviroment with no defined printer, 
+ * '[[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.html#getDefaultPrinter--
+ * Printer.getDefaultPrinter()]]' will return 'null'. Consequently, there will be a 
+ * 'NullPointerException'. Since JobSettings is a final class, it is not possible create a mock. 
+ * Therefore, this test is inactive until we find a way to skip the tests which need a 
+ * instantiation when there is no printer defined in environment.
+ */
+//@RunWith(classOf[JUnitRunner])
 class PageLayoutSpec
   extends SimpleSFXDelegateSpec[jfxp.PageLayout, PageLayout](classOf[jfxp.PageLayout], classOf[PageLayout]) {
 
-  override protected def getScalaClassInstance = new PageLayout(this.getJavaClassInstance)
+  override protected def getScalaClassInstance = Printer.defaultPrinter.defaultPageLayout
 
   override protected def getJavaClassInstance =
-    jfxp.Printer.getDefaultPrinter().getDefaultPageLayout
+    jfxp.Printer.getDefaultPrinter.getDefaultPageLayout
 
 }

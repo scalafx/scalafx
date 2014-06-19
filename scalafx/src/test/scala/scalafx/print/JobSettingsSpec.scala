@@ -32,14 +32,23 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-/** Tests for [[scalafx.print.JobSettings]]. */
-@RunWith(classOf[JUnitRunner])
+/**
+ * Tests for [[scalafx.print.JobSettings]] temporarily inactive.
+ *
+ * When running in an enviroment with no defined printer, 
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterJob.html#createPrinterJob--
+ * PrinterJob.createPrinterJob()]] will return 'null'. Consequently, there will be a 
+ * 'NullPointerException'. Since JobSettings is a final class, it is not possible create a mock. 
+ * Therefore, this test is inactive until we find a way to skip the tests which need a 
+ * instantiation when there is no printer defined in environment.
+ */
+//@RunWith(classOf[JUnitRunner])
 class JobSettingsSpec
   extends SimpleSFXDelegateSpec[jfxp.JobSettings, JobSettings](classOf[jfxp.JobSettings], classOf[JobSettings]) {
 
-  override protected def getScalaClassInstance = new JobSettings(this.getJavaClassInstance)
+  override protected def getScalaClassInstance = PrinterJob.createPrinterJob.jobSettings
 
   override protected def getJavaClassInstance =
-    jfxp.PrinterJob.createPrinterJob().getJobSettings()
+    jfxp.PrinterJob.createPrinterJob.getJobSettings
 
 }
