@@ -218,7 +218,7 @@ final class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngi
   /**
    * Prints the content of the editor using the given printer job.
    *
-   * @param printer job used for printing
+   * @param job printer job used for printing
    * @since 8.0
    */
   def print(job: PrinterJob): Unit = delegate.print(job)

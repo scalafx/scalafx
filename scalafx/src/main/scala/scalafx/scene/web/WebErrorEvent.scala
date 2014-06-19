@@ -80,6 +80,7 @@ object WebErrorEvent {
  *
  * @constructor Creates a new ScalaFX WebErrorEvent from its JavaFX equivalent.
  * @param delegate JavaFX WebErrorEvent. Since it has no default constructor, there is not default value.
+ * @since 8.0
  */
 final class WebErrorEvent(override val delegate: jfxsw.WebErrorEvent)
   extends Event(delegate) with SFXDelegate[jfxsw.WebErrorEvent] {

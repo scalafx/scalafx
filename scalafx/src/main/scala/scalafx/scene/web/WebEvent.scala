@@ -28,40 +28,58 @@ package scalafx.scene.web
 
 import scala.language.implicitConversions
 import javafx.scene.{ web => jfxsw }
-import scalafx.event.{EventType, Event}
+import scalafx.event.{ EventType, Event }
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
+/**
+ * Companion object for [[scalafx.scene.web.WebEvent]].
+ */
 object WebEvent {
+
+  /**
+   * Converts a ScalaFX WebEvent to its JavaFX counterpart.
+   *
+   * @param we ScalaFX WebEvent
+   * @return JavaFX WebEvent
+   */
   implicit def sfxWebEvent2jfx[T](we: WebEvent[T]) = we.delegate
 
   /**
    * This event occurs when a script calls the JavaScript alert function.
    */
-  val ALERT : EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.ALERT
+  val ALERT: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.ALERT
 
   /**
    * Common supertype for all Web event types.
    */
-  val ANY : EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.ANY
+  val ANY: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.ANY
 
   /**
    * This event occurs when a script changes location of the JavaScript window object.
    */
-  val RESIZED : EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.RESIZED
+  val RESIZED: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.RESIZED
 
   /**
    * This event occurs when a script changes status line text.
    */
-  val STATUS_CHANGED : EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.STATUS_CHANGED
+  val STATUS_CHANGED: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.STATUS_CHANGED
 
   /**
    * This event occurs when a script changes visibility of the JavaScript window object.
    */
-  val VISIBILITY_CHANGED : EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.VISIBILITY_CHANGED
+  val VISIBILITY_CHANGED: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.VISIBILITY_CHANGED
 }
 
-class WebEvent[T](override val delegate: jfxsw.WebEvent[T]) extends Event(delegate) with SFXDelegate[jfxsw.WebEvent[T]] {
+/**
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEvent.html JavaFX WebEvent]].
+ *
+ * @constructor Creates a new ScalaFX WebEvent from its JavaFX equivalent.
+ * @param delegate JavaFX WebEvent. Since it has no default constructor, there is not default value.
+ */
+final class WebEvent[T](override val delegate: jfxsw.WebEvent[T])
+  extends Event(delegate)
+  with SFXDelegate[jfxsw.WebEvent[T]] {
 
   /**
    * Creates a new event object.
@@ -72,6 +90,6 @@ class WebEvent[T](override val delegate: jfxsw.WebEvent[T]) extends Event(delega
   /**
    * Returns data item carried by this event.
    */
-  def data : T = delegate.getData
+  def data: T = delegate.getData
 
 }

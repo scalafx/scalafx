@@ -235,7 +235,7 @@ final class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
   }
 
   /**
-   * This method should delegate to 'Node.classCssMetaData' so that a Node's CssMetaData can be
+   * This method should delegate to `Node.classCssMetaData` so that a Node's CssMetaData can be
    * accessed without the need for reflection.
    *
    * @return The CssMetaData associated with this node, which may include the CssMetaData

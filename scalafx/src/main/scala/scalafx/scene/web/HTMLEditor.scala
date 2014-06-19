@@ -69,7 +69,7 @@ class HTMLEditor(override val delegate: jfxsw.HTMLEditor = new jfxsw.HTMLEditor)
   /**
    * Prints the content of the editor using the given printer job.
    *
-   * @param printer job used for printing
+   * @param job printer job used for printing
    */
   def print(job: PrinterJob): Unit = delegate.print(job)
 
