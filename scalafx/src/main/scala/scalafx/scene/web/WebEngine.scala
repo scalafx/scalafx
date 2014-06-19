@@ -35,12 +35,32 @@ import scalafx.beans.property._
 import javafx.geometry.Rectangle2D
 import scalafx.delegate.SFXDelegate
 import org.w3c.dom.Document
+import java.io.File
+import scalafx.print.PrinterJob
 
+/**
+ * Companion object for [[scalafx.scene.web.WebEngine]]
+ */
 object WebEngine {
+
+  /**
+   * Converts a ScalaFX WebEngine to its JavaFX counterpart.
+   *
+   * @param we ScalaFX WebEngine
+   * @return JavaFX WebEngine
+   */
   implicit def sfxWebEngine2jfx(we: WebEngine) = we.delegate
+
 }
 
-class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) extends SFXDelegate[jfxsw.WebEngine] {
+/**
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEngine.html JavaFX WebEngine]].
+ *
+ * @constructor Creates a new WebEngine from its JavaFX counterpart.
+ * @param delegate A JavaFX WebEngine. Its default value is a new instance.
+ */
+final class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
+  extends SFXDelegate[jfxsw.WebEngine] {
 
   /**
    * Creates a new engine and loads a Web page into it.
@@ -85,7 +105,11 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) ex
     onAlert() = v
   }
 
-  /** The event handler called when an error occurs. */
+  /**
+   *  The event handler called when an error occurs.
+   *
+   * @since 8.0
+   */
   def onError = delegate.onErrorProperty
   def onError_=(v: jfxe.EventHandler[jfxsw.WebErrorEvent]) {
     onError() = v
@@ -135,9 +159,13 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) ex
     javaScriptEnabled() = v
   }
 
-  /** Specifies the directory to be used by this WebEngine to store local user data. */
-  def userDataDirectory : ObjectProperty[java.io.File] = delegate.userDataDirectoryProperty
-  def userDataDirectory_=(v:java.io.File) {
+  /** 
+   * Specifies the directory to be used by this WebEngine to store local user data.
+   *   
+   * @since 8.0
+   */
+  def userDataDirectory: ObjectProperty[java.io.File] = delegate.userDataDirectoryProperty
+  def userDataDirectory_=(v: java.io.File) {
     ObjectProperty.fillProperty[java.io.File](this.userDataDirectory, v)
   }
 
@@ -177,8 +205,22 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) ex
     delegate.loadContent(content, contentType)
   }
 
-  def userAgent : StringProperty = delegate.userAgentProperty
-  def userAgent_=(v:String) {
+  /**
+   * Specifies user agent ID string.
+   * 
+   * @since 8.0
+   */
+  def userAgent: StringProperty = delegate.userAgentProperty
+  def userAgent_=(v: String) {
     userAgent() = v
   }
+
+  /**
+   * Prints the content of the editor using the given printer job.
+   *
+   * @param printer job used for printing
+   * @since 8.0
+   */
+  def print(job: PrinterJob): Unit = delegate.print(job)
+
 }
