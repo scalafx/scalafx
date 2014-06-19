@@ -14,3 +14,7 @@ branches:
   only:
     - SFX-8
     - SFX-8-stable
+
+notifications:
+  email:
+    - scalafx-build@googlegroups.com
