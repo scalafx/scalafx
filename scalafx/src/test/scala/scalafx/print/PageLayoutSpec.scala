@@ -32,19 +32,30 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-/** 
- * Tests for [[scalafx.print.PageLayout]] temporarily inactive. 
+/**
+ * Tests for [[scalafx.print.PageLayout]] temporarily inactive.
  *
- * When running in an enviroment with no defined printer, 
+ * When running in an enviroment with no defined printer,
  * '[[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.html#getDefaultPrinter--
- * Printer.getDefaultPrinter()]]' will return 'null'. Consequently, there will be a 
- * 'NullPointerException'. Since JobSettings is a final class, it is not possible create a mock. 
- * Therefore, this test is inactive until we find a way to skip the tests which need a 
- * instantiation when there is no printer defined in environment.
+ * Printer.getDefaultPrinter()]]' will return 'null'. Consequently, there will be a
+ * 'NullPointerException'. Since JobSettings is a final class, it is not possible create a mock.
+ * Therefore, it is necessary to skip the conversion tests when there is no printer defined in 
+ * environment.
  */
-//@RunWith(classOf[JUnitRunner])
+@RunWith(classOf[JUnitRunner])
 class PageLayoutSpec
   extends SimpleSFXDelegateSpec[jfxp.PageLayout, PageLayout](classOf[jfxp.PageLayout], classOf[PageLayout]) {
+
+  val skipingMessage: String = if (jfxp.Printer.getDefaultPrinter == null
+    || jfxp.Printer.getDefaultPrinter.getDefaultPageLayout == null) {
+    "Neither Default Printer nor Page Layout defined."
+  } else {
+    ""
+  }
+
+  override val skipJfxToSfxCause = skipingMessage
+
+  override val skipSfxToJfxCause = skipingMessage
 
   override protected def getScalaClassInstance = Printer.defaultPrinter.defaultPageLayout
 

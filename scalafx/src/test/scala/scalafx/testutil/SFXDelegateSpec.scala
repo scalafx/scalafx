@@ -78,6 +78,18 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
    */
   protected def getJavaClassInstance: J = javaClass.newInstance
 
+  /**
+   * Flag used to skip Java to Scala Conversion test. To Skip, it is necessary override it with a 
+   * non empty String explaning the cause.
+   */
+  protected val skipJfxToSfxCause: String = ""
+
+  /**
+   * Flag used to skip Scala to Java Conversion test. To Skip, it is necessary override it with a 
+   * non empty String explaning the cause.
+   */
+  protected val skipSfxToJfxCause: String = ""
+
   ///////////////////////////
   // PROTECTED METHODS - END 
   ///////////////////////////
@@ -90,22 +102,30 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
     // Test if the implicit conversion exists
     assert(sfx2jfx != null, "There is no implicit conversion from ScalaFX to JavaFX")
 
-    // Test if conversion behaves correctly
-    val sfxObject = getScalaClassInstance
-    val jfxObject: J = sfxObject
+    if (skipJfxToSfxCause.size == 0) {
+      // Test if conversion behaves correctly
+      val sfxObject = getScalaClassInstance
+      val jfxObject: J = sfxObject
 
-    jfxObject should be(sfxObject.delegate)
+      jfxObject should be(sfxObject.delegate)
+    } else {
+      info("JavaFX to ScalaFX conversion skipped: " + skipJfxToSfxCause)
+    }
   }
 
   it should "have an implicit conversion from JFX to SFX" in {
     // Test if the implicit conversion exists
     assert(jfx2sfx != null, "There is no implicit conversion from JavaFX to ScalaFX")
 
-    // Test if conversion behaves correctly
-    val jfxObject = getJavaClassInstance
-    val sfxObject: S = jfxObject
+    if (skipSfxToJfxCause.size == 0) {
+      // Test if conversion behaves correctly
+      val jfxObject = getJavaClassInstance
+      val sfxObject: S = jfxObject
 
-    sfxObject.delegate should be(jfxObject)
+      sfxObject.delegate should be(jfxObject)
+    } else {
+      info("ScalaFX to JavaFX conversion skipped: " + skipSfxToJfxCause)
+    }
   }
 
   it should "declare all public static methods of " + javaClass.getName in {
