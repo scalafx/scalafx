@@ -54,7 +54,7 @@ object PasswordFieldTest extends JFXApp {
     spacing = 5
     fillWidth = true
     alignment = Pos.Center
-    hgrow = Priority.NEVER
+    hgrow = Priority.Never
     content = List(new PasswordFieldControls(passwordField), new TextFieldControls(passwordField), new TextInputControlControls(passwordField), new ControlControls(passwordField))
   }
 
@@ -63,8 +63,8 @@ object PasswordFieldTest extends JFXApp {
       content = List(passwordField)
     }
     center = controlsPane
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
+    vgrow = Priority.Always
+    hgrow = Priority.Always
   }
 
   stage = new PrimaryStage {

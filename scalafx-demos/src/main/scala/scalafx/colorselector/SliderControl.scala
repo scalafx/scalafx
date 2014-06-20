@@ -94,7 +94,7 @@ class SliderControl(title: String) extends HBox {
     showTickLabels = true
     showTickMarks = true
     //    style = ".slider .axis {-fx-tick-label-fill: green;}"
-    hgrow = Priority.ALWAYS
+    hgrow = Priority.Always
     style <== cssForeground
     value <==> realValue
   }
@@ -102,7 +102,7 @@ class SliderControl(title: String) extends HBox {
   val lblValue = new Label {
     id = "lblValue"
     text <== realValue.asString("%03.0f")
-    hgrow = Priority.NEVER
+    hgrow = Priority.Never
     style <== cssForeground
   }
   lblValue.font = Font.font(lblValue.font().family, FontWeight.BOLD, lblValue.font().size)

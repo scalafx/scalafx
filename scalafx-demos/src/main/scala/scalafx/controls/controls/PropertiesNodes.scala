@@ -62,7 +62,7 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
   private val controlsPane = new GridPane {
     hgap = 5
     vgap = 5
-    hgrow = Priority.NEVER
+    hgrow = Priority.Never
   }
 
   /**

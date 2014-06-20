@@ -49,8 +49,8 @@ object ComboBoxDemo extends JFXApp {
     center = new VBox {
       content = List(comboBoxControls, new ComboBoxBaseControls[String](comboBox), new ControlControls(comboBox))
     }
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
+    vgrow = Priority.Always
+    hgrow = Priority.Always
   }
 
   stage = new PrimaryStage {

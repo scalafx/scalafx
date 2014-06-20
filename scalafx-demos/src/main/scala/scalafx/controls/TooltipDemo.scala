@@ -28,7 +28,6 @@ package scalafx.controls
 
 import javafx.scene.control.ContentDisplay
 import javafx.scene.control.OverrunStyle
-import javafx.scene.layout.Priority
 import javafx.scene.text.TextAlignment
 import scalafx.Includes._
 import scalafx.application.JFXApp
@@ -38,6 +37,7 @@ import scalafx.controls.controls._
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
 import scalafx.scene.control._
+import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 
@@ -56,7 +56,7 @@ object TooltipDemo extends JFXApp {
     fillWidth = true
     alignment = Pos.Center
     alignmentInParent = Pos.TopCenter
-    hgrow = Priority.ALWAYS
+    hgrow = Priority.Always
     content = List(new TooltipControls(myTooltip), new PopupControlControls(myTooltip))
   }
 

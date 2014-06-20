@@ -45,8 +45,8 @@ object ProgressIndicatorTest extends JFXApp {
   val mainPane = new BorderPane {
     top = progressIndicator
     center = progressIndicatorController
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
+    vgrow = Priority.Always
+    hgrow = Priority.Always
   }
 
   stage = new PrimaryStage {

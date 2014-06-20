@@ -26,7 +26,6 @@
  */
 package scalafx.controls
 
-import javafx.scene.layout.Priority
 import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.application.JFXApp
@@ -56,7 +55,7 @@ object SeparatorDemo extends JFXApp {
     fillWidth = true
     alignment = Pos.Center
     alignmentInParent = Pos.TopCenter
-    hgrow = Priority.ALWAYS
+    hgrow = Priority.Always
     content = List(new SeparatorControls(separator), new ControlControls(separator))
   }
 

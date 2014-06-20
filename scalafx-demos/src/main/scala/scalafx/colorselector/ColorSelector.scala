@@ -207,7 +207,7 @@ object ColorSelector extends JFXApp {
     promptText = "Color Value"
     editable = false
     alignment = Pos.CenterLeft
-    hgrow = Priority.NEVER
+    hgrow = Priority.Never
     style = "-fx-font-family: Consolas;"
   }
 
@@ -223,28 +223,28 @@ object ColorSelector extends JFXApp {
   }
 
   val rectangleRowsConstraint = new RowConstraints {
-    vgrow = Priority.ALWAYS
+    vgrow = Priority.Always
     prefHeight = Control.USE_COMPUTED_SIZE
   }
   val otherRowsConstraint = new RowConstraints {
-    vgrow = Priority.NEVER
+    vgrow = Priority.Never
     valignment = VPos.Top
   }
   val column0Constraint = new ColumnConstraints {
     fillWidth = true
     halignment = HPos.Center
-    hgrow = Priority.ALWAYS
+    hgrow = Priority.Always
     minWidth = 300
   }
   val column1Constraint = new ColumnConstraints {
     halignment = HPos.Right
-    hgrow = Priority.NEVER
+    hgrow = Priority.Never
     minWidth = 80
     maxWidth = 100
   }
   val column2Constraint = new ColumnConstraints {
     halignment = HPos.Left
-    hgrow = Priority.SOMETIMES
+    hgrow = Priority.Sometimes
     minWidth = 200
   }
   val pnlMain = new GridPane {

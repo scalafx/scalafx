@@ -47,7 +47,7 @@ object TextFieldTest extends JFXApp {
     spacing = 5
     fillWidth = true
     alignment = Pos.Center
-    hgrow = Priority.NEVER
+    hgrow = Priority.Never
     content = List(new TextFieldControls(textField), new TextInputControlControls(textField), new ControlControls(textField))
   }
 
@@ -56,8 +56,8 @@ object TextFieldTest extends JFXApp {
       content = List(textField)
     }
     center = controlsPane
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
+    vgrow = Priority.Always
+    hgrow = Priority.Always
   }
 
   stage = new JFXApp.PrimaryStage {
