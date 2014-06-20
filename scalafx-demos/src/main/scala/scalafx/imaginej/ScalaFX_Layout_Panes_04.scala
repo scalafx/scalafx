@@ -78,7 +78,7 @@ object ScalaFX_Layout_Panes_04 extends JFXApp {
   val questionText: Text = new Text {
     fill = Color.White
     stroke = Color.DarkBlue
-    font = Font.font("Amble Cn", FontWeight.BOLD, 18)
+    font = Font.font("Amble Cn", FontWeight.Bold, 18)
     text = " ? "
   }
   val questionRectangle = new Rectangle {
@@ -108,7 +108,7 @@ object ScalaFX_Layout_Panes_04 extends JFXApp {
   }
   val data = List(
     new Text {
-      font = Font.font("Amble CN", FontWeight.BOLD, 14)
+      font = Font.font("Amble CN", FontWeight.Bold, 14)
       text = "Data"
     },
     new Text {

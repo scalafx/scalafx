@@ -33,18 +33,36 @@ import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 /** Wrapper for [[javafx.scene.text.FontWeight]] */
 object FontWeight extends SFXEnumDelegateCompanion[jfxst.FontWeight, FontWeight] {
 
-  val THIN = new FontWeight(jfxst.FontWeight.THIN)
-  val EXTRA_LIGHT = new FontWeight(jfxst.FontWeight.EXTRA_LIGHT)
-  val LIGHT = new FontWeight(jfxst.FontWeight.LIGHT)
-  val NORMAL = new FontWeight(jfxst.FontWeight.NORMAL)
-  val MEDIUM = new FontWeight(jfxst.FontWeight.MEDIUM)
-  val SEMI_BOLD = new FontWeight(jfxst.FontWeight.SEMI_BOLD)
-  val BOLD = new FontWeight(jfxst.FontWeight.BOLD)
-  val EXTRA_BOLD = new FontWeight(jfxst.FontWeight.EXTRA_BOLD)
-  val BLACK = new FontWeight(jfxst.FontWeight.BLACK)
+  val Thin = new FontWeight(jfxst.FontWeight.THIN)
+@deprecated ("Use Thin; THIN will be removed in a future release", "2.2.60")
+val THIN = Thin
+  val ExtraLight = new FontWeight(jfxst.FontWeight.EXTRA_LIGHT)
+@deprecated ("Use ExtraLight; EXTRA_LIGHT will be removed in a future release", "2.2.60")
+val EXTRA_LIGHT = ExtraLight
+  val Light = new FontWeight(jfxst.FontWeight.LIGHT)
+@deprecated ("Use Light; LIGHT will be removed in a future release", "2.2.60")
+val LIGHT = Light
+  val Normal = new FontWeight(jfxst.FontWeight.NORMAL)
+@deprecated ("Use Normal; NORMAL will be removed in a future release", "2.2.60")
+val NORMAL = Normal
+  val Medium = new FontWeight(jfxst.FontWeight.MEDIUM)
+@deprecated ("Use Medium; MEDIUM will be removed in a future release", "2.2.60")
+val MEDIUM = Medium
+  val SemiBold = new FontWeight(jfxst.FontWeight.SEMI_BOLD)
+@deprecated ("Use SemiBold; SEMI_BOLD will be removed in a future release", "2.2.60")
+val SEMI_BOLD = SemiBold
+  val Bold = new FontWeight(jfxst.FontWeight.BOLD)
+@deprecated ("Use Bold; BOLD will be removed in a future release", "2.2.60")
+val BOLD = Bold
+  val ExtraBold = new FontWeight(jfxst.FontWeight.EXTRA_BOLD)
+@deprecated ("Use ExtraBold; EXTRA_BOLD will be removed in a future release", "2.2.60")
+val EXTRA_BOLD = ExtraBold
+  val Black = new FontWeight(jfxst.FontWeight.BLACK)
+@deprecated ("Use Black; BLACK will be removed in a future release", "2.2.60")
+val BLACK = Black
 
   protected override def unsortedValues: Array[FontWeight] = Array(
-    THIN, EXTRA_LIGHT, LIGHT, NORMAL, MEDIUM, SEMI_BOLD, BOLD, EXTRA_BOLD, BLACK
+    Thin, ExtraLight, Light, Normal, Medium, SemiBold, Bold, ExtraBold, Black
   )
 
   /** Returns FontWeight by its name. */

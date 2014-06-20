@@ -75,7 +75,7 @@ object ScalaFX_Layout_Panes_03 extends JFXApp {
   val data = List(
     new Text {
       text = "Data"
-      font = Font.font("Amble CN", FontWeight.BOLD, 14)
+      font = Font.font("Amble CN", FontWeight.Bold, 14)
     },
     new Text {
       text = "  Sales"

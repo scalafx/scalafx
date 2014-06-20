@@ -156,5 +156,5 @@ object PropertiesNodes {
   private val lblBase = new Label
   private val fontBase = lblBase.font.get()
 
-  val TitleFont = font(fontBase.getFamily, FontWeight.BOLD, fontBase.getSize)
+  val TitleFont = font(fontBase.getFamily, FontWeight.Bold, fontBase.getSize)
 }
