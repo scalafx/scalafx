@@ -65,7 +65,7 @@ object BarChartWithTableViewDemo extends JFXApp {
       root = new BorderPane {
         top = new Label {
           text = "Click on chart to see a table view of the data"
-          alignmentInParent = Pos.CENTER
+          alignmentInParent = Pos.Center
           margin = Insets(25)
         }
         center = new HBox {

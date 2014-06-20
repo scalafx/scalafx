@@ -91,7 +91,7 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
     height = questionText.boundsInLocal.getValue.getHeight + 10
   }
   val stackPane = new StackPane {
-    alignment = Pos.CENTER
+    alignment = Pos.Center
     content = List(questionRectangle, questionText)
   }
   val hBox = new HBox {
@@ -171,10 +171,10 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   gridPane.add(salesText, 1, 0)
   gridPane.add(yearText, 2, 0)
   gridPane.add(oldAndNewText, 1, 1, 2, 1)
-  GridPane.setValignment(oldText, VPos.BOTTOM)
+  GridPane.setValignment(oldText, VPos.Bottom)
   gridPane.add(oldText, 0, 2)
   gridPane.add(newImageView, 1, 2, 2, 1)
-  GridPane.setValignment(newText, VPos.TOP)
+  GridPane.setValignment(newText, VPos.Top)
   gridPane.add(newText, 3, 2)
 
 

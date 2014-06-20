@@ -206,7 +206,7 @@ object ColorSelector extends JFXApp {
   val txfColorValue = new TextField {
     promptText = "Color Value"
     editable = false
-    alignment = Pos.CENTER_LEFT
+    alignment = Pos.CenterLeft
     hgrow = Priority.NEVER
     style = "-fx-font-family: Consolas;"
   }
@@ -228,22 +228,22 @@ object ColorSelector extends JFXApp {
   }
   val otherRowsConstraint = new RowConstraints {
     vgrow = Priority.NEVER
-    valignment = VPos.TOP
+    valignment = VPos.Top
   }
   val column0Constraint = new ColumnConstraints {
     fillWidth = true
-    halignment = HPos.CENTER
+    halignment = HPos.Center
     hgrow = Priority.ALWAYS
     minWidth = 300
   }
   val column1Constraint = new ColumnConstraints {
-    halignment = HPos.RIGHT
+    halignment = HPos.Right
     hgrow = Priority.NEVER
     minWidth = 80
     maxWidth = 100
   }
   val column2Constraint = new ColumnConstraints {
-    halignment = HPos.LEFT
+    halignment = HPos.Left
     hgrow = Priority.SOMETIMES
     minWidth = 200
   }
@@ -259,7 +259,7 @@ object ColorSelector extends JFXApp {
 
     add(controlRed, 0, 1)
     add(new Label {
-      alignmentInParent = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TopRight
       labelFor = cmbWebColor
       text = "Web Color"
       textAlignment = TextAlignment.RIGHT
@@ -269,7 +269,7 @@ object ColorSelector extends JFXApp {
 
     add(controlGreen, 0, 2)
     add(new Label {
-      alignmentInParent = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TopRight
       labelFor = txfColorValue
       text = "Color Value"
       textAlignment = TextAlignment.RIGHT
@@ -279,7 +279,7 @@ object ColorSelector extends JFXApp {
 
     add(controlBlue, 0, 3)
     add(new Label {
-      alignmentInParent = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TopRight
       labelFor = cmbColorFormat
       text = "Color Format"
       textAlignment = TextAlignment.RIGHT
@@ -289,7 +289,7 @@ object ColorSelector extends JFXApp {
 
     add(controlAlpha, 0, 4)
     add(new Label {
-      alignmentInParent = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TopRight
       labelFor = chbDisableAlpha
       text = "Disable Alpha"
       textAlignment = TextAlignment.RIGHT

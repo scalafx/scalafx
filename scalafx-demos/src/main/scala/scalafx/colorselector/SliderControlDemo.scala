@@ -48,7 +48,7 @@ object SliderControlDemo extends JFXApp {
   val sliderControl = new SliderControl("X")
 
   val txfInputValue = new TextField {
-    alignmentInParent = Pos.BASELINE_LEFT
+    alignmentInParent = Pos.BaselineLeft
     promptText = "Enter the value"
     hgrow = Priority.NEVER
     onAction = handle {
@@ -57,17 +57,17 @@ object SliderControlDemo extends JFXApp {
   }
 
   val lblOutputValue = new Label {
-    alignmentInParent = Pos.BASELINE_LEFT
+    alignmentInParent = Pos.BaselineLeft
     text <== sliderControl.realValue.asString("%03.0f")
   }
 
   val chbSelected = new CheckBox {
-    alignmentInParent = Pos.BASELINE_LEFT
+    alignmentInParent = Pos.BaselineLeft
     selected <==> sliderControl.selectedControl
   }
 
   val chbEnabled = new CheckBox {
-    alignmentInParent = Pos.BASELINE_LEFT
+    alignmentInParent = Pos.BaselineLeft
     selected <==> sliderControl.disable
   }
 
@@ -91,17 +91,17 @@ object SliderControlDemo extends JFXApp {
     padding = insets
   }
   GridPane.setHgrow(txfInputValue, Priority.NEVER)
-  GridPane.setValignment(txfInputValue, VPos.BASELINE)
+  GridPane.setValignment(txfInputValue, VPos.Baseline)
   GridPane.setVgrow(txfInputValue, Priority.NEVER)
   GridPane.setHgrow(lblOutputValue, Priority.NEVER)
-  GridPane.setValignment(lblOutputValue, VPos.BASELINE)
+  GridPane.setValignment(lblOutputValue, VPos.Baseline)
   GridPane.setVgrow(lblOutputValue, Priority.NEVER)
   val ccOdd = new ColumnConstraints {
-    halignment = HPos.RIGHT
+    halignment = HPos.Right
     hgrow = Priority.NEVER
   }
   val ccEven = new ColumnConstraints {
-    halignment = HPos.LEFT
+    halignment = HPos.Left
     hgrow = Priority.SOMETIMES
   }
   pnlControls.columnConstraints = List(ccOdd, ccEven, ccOdd, ccEven)

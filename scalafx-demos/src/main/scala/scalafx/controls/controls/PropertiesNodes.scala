@@ -56,7 +56,7 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
   protected val btnReset = new Button {
     text = "Reset"
     onAction = handle { resetProperties() }
-    alignmentInParent = Pos.CENTER
+    alignmentInParent = Pos.Center
   }
 
   private val controlsPane = new GridPane {
@@ -131,17 +131,17 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
     }
 
   }
-  
+
   protected def getCheckBox(property: BooleanProperty, tip: String = "") = new CheckBox {
     selected <==> property
     tooltip = if(tip.isEmpty) null else Tooltip(tip)
   }
-  
+
   protected def getTextField(property: StringProperty, tip: String = "") = new TextField {
     text <==> property
     tooltip = if(tip.isEmpty) null else Tooltip(tip)
   }
-  
+
   protected def getLabel(property: StringProperty) = new Label {
     text <== property
   }

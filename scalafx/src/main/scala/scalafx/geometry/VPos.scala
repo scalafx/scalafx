@@ -34,18 +34,26 @@ object VPos
   extends SFXEnumDelegateCompanion[jfxg.VPos, VPos] {
 
   /** Indicates baseline vertical position. */
-  val BASELINE = new VPos(jfxg.VPos.BASELINE)
+  val Baseline = new VPos(jfxg.VPos.BASELINE)
+  @deprecated ("Use Baseline; BASELINE will be removed in a future release", "2.2.60")
+  val BASELINE = Baseline
 
   /** Indicates bottom vertical position. */
-  val BOTTOM = new VPos(jfxg.VPos.BOTTOM)
+  val Bottom = new VPos(jfxg.VPos.BOTTOM)
+  @deprecated ("Use Bottom; BOTTOM will be removed in a future release", "2.2.60")
+  val BOTTOM = Bottom
 
   /** Indicates centered vertical position. */
-  val CENTER = new VPos(jfxg.VPos.CENTER)
+  val Center = new VPos(jfxg.VPos.CENTER)
+  @deprecated ("Use Center; CENTER will be removed in a future release", "2.2.60")
+  val CENTER = Center
 
   /** Indicates top vertical position. */
-  val TOP = new VPos(jfxg.VPos.TOP)
+  val Top = new VPos(jfxg.VPos.TOP)
+  @deprecated ("Use Top; TOP will be removed in a future release", "2.2.60")
+  val TOP = Top
 
-  protected override def unsortedValues: Array[VPos] = Array(TOP, CENTER, BASELINE, BOTTOM)
+  protected override def unsortedValues: Array[VPos] = Array(Top, Center, Baseline, Bottom)
 }
 
 

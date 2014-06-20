@@ -48,14 +48,14 @@ object TooltipDemo extends JFXApp {
   val btnTooltip = new Button {
     text = "Mouse over me to see Tooltip"
     tooltip = myTooltip
-    alignmentInParent = Pos.CENTER
+    alignmentInParent = Pos.Center
   }
 
   val controlsPane = new VBox {
     spacing = 5
     fillWidth = true
-    alignment = Pos.CENTER
-    alignmentInParent = Pos.TOP_CENTER
+    alignment = Pos.Center
+    alignmentInParent = Pos.TopCenter
     hgrow = Priority.ALWAYS
     content = List(new TooltipControls(myTooltip), new PopupControlControls(myTooltip))
   }
