@@ -42,6 +42,6 @@ import scala.collection.JavaConversions._
 class RadialGradientSpec
   extends AbstractSFXDelegateSpec[jfxsp.RadialGradient, RadialGradient, jfxsp.RadialGradientBuilder](classOf[jfxsp.RadialGradient], classOf[RadialGradient], classOf[jfxsp.RadialGradientBuilder]) {
 
-  override protected def getJavaClassInstance = new jfxsp.RadialGradient(0, 0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)
+  override protected def getJavaClassInstance = new jfxsp.RadialGradient(0, 0, 0, 0, 0, true, CycleMethod.NoCycle, Nil)
 
 }

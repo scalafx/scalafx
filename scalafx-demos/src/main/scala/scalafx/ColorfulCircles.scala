@@ -37,7 +37,7 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.effect.BlendMode.Overlay
 import scalafx.scene.effect.BoxBlur
 import scalafx.scene.paint.Color.{Black, White}
-import scalafx.scene.paint.CycleMethod.NO_CYCLE
+import scalafx.scene.paint.CycleMethod.NoCycle
 import scalafx.scene.paint.{LinearGradient, Stops}
 import scalafx.scene.shape.StrokeType.OUTSIDE
 import scalafx.scene.shape.{Circle, Rectangle}
@@ -102,7 +102,7 @@ object ColorfulCircles extends JFXApp {
         new Rectangle {
           width <== scene.width
           height <== scene.height
-          fill = new LinearGradient(0, 1, 1, 0, true, NO_CYCLE,
+          fill = new LinearGradient(0, 1, 1, 0, true, NoCycle,
             Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f))
           blendMode = Overlay
         }
