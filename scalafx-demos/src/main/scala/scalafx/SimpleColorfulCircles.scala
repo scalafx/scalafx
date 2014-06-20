@@ -34,7 +34,7 @@ import scalafx.animation.Timeline.Indefinite
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
-import scalafx.scene.effect.BlendMode.OVERLAY
+import scalafx.scene.effect.BlendMode.Overlay
 import scalafx.scene.effect.BoxBlur
 import scalafx.scene.paint.Color.Black
 import scalafx.scene.paint.Color.White
@@ -71,7 +71,7 @@ object SimpleColorfulCircles extends JFXApp {
         height <== scene.height
         fill = new LinearGradient(0, 1, 1, 0, true, NO_CYCLE,
           Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f))
-        blendMode = OVERLAY
+        blendMode = Overlay
       }
     }
   }
