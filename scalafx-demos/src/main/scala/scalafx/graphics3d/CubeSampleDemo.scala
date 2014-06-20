@@ -80,7 +80,7 @@ object CubeSampleDemo extends JFXApp {
       c3.ry.setAngle(45)
 
       animation = new Timeline {
-        cycleCount = Timeline.INDEFINITE
+        cycleCount = Timeline.Indefinite
         keyFrames = Seq(
           at (0 s) { c.ry.angle -> 0d },
           at (0 s) { c2.rx.angle -> 0d },

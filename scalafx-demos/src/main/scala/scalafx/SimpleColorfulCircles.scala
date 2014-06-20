@@ -30,7 +30,7 @@ package scalafx
 import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Timeline
-import scalafx.animation.Timeline.INDEFINITE
+import scalafx.animation.Timeline.Indefinite
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
@@ -76,7 +76,7 @@ object SimpleColorfulCircles extends JFXApp {
     }
   }
   new Timeline {
-    cycleCount = INDEFINITE
+    cycleCount = Indefinite
     autoReverse = true
     keyFrames = (for (circle <- circles) yield at(40 s) {
       Set(

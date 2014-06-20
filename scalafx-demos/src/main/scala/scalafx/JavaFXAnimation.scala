@@ -47,7 +47,7 @@ object JavaFXAnimation extends JFXApp {
     fill = Color.LightGreen
   }
   val timeline = new Timeline {
-    cycleCount = Timeline.INDEFINITE
+    cycleCount = Timeline.Indefinite
     autoReverse = true
     keyFrames = Seq(
       at (2 s) {rect1.x -> 200d tween Interpolator.EASE_IN},

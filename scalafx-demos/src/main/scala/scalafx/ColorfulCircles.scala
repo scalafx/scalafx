@@ -31,7 +31,7 @@ import scala.collection.immutable.VectorBuilder
 import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Timeline
-import scalafx.animation.Timeline.INDEFINITE
+import scalafx.animation.Timeline.Indefinite
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.effect.BlendMode.OVERLAY
@@ -110,7 +110,7 @@ object ColorfulCircles extends JFXApp {
     }
   }
   new Timeline {
-    cycleCount = INDEFINITE
+    cycleCount = Indefinite
     autoReverse = true
     keyFrames = (for (circle <- circlesToAnimate.result()) yield Seq(
       at(0 s) {Set(circle.centerX -> random * 800,
