@@ -32,10 +32,12 @@ import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 /** Wrapper for [[javafx.scene.text.FontSmoothingType]] */
 object FontSmoothingType extends SFXEnumDelegateCompanion[jfxst.FontSmoothingType, FontSmoothingType] {
 
-  val GRAY = new FontSmoothingType(jfxst.FontSmoothingType.GRAY)
+  val Gray = new FontSmoothingType(jfxst.FontSmoothingType.GRAY)
+  @deprecated ("Use Gray; GRAY will be removed in a future release", "2.2.60")
+  val GRAY = Gray
   val LCD = new FontSmoothingType(jfxst.FontSmoothingType.LCD)
 
-  protected override def unsortedValues: Array[FontSmoothingType] = Array(GRAY, LCD)
+  protected override def unsortedValues: Array[FontSmoothingType] = Array(Gray, LCD)
 }
 
 
