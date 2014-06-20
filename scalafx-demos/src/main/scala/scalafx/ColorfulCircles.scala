@@ -39,7 +39,7 @@ import scalafx.scene.effect.BoxBlur
 import scalafx.scene.paint.Color.{Black, White}
 import scalafx.scene.paint.CycleMethod.NoCycle
 import scalafx.scene.paint.{LinearGradient, Stops}
-import scalafx.scene.shape.StrokeType.OUTSIDE
+import scalafx.scene.shape.StrokeType.Outside
 import scalafx.scene.shape.{Circle, Rectangle}
 import scalafx.scene.{Group, Scene}
 
@@ -68,7 +68,7 @@ object ColorfulCircles extends JFXApp {
                 fill = White opacity 0.05
                 stroke = White opacity 0.2
                 strokeWidth = 4
-                strokeType = OUTSIDE
+                strokeType = Outside
               }
               children = circles
               circlesToAnimate ++= circles
@@ -80,7 +80,7 @@ object ColorfulCircles extends JFXApp {
                 fill = White opacity 0.05
                 stroke = White opacity 0.1
                 strokeWidth = 2
-                strokeType = OUTSIDE
+                strokeType = Outside
               }
               children = circles
               circlesToAnimate ++= circles
@@ -92,7 +92,7 @@ object ColorfulCircles extends JFXApp {
                 fill = White opacity 0.05
                 stroke = White opacity 0.16
                 strokeWidth = 4
-                strokeType = OUTSIDE
+                strokeType = Outside
               }
               children = circles
               circlesToAnimate ++= circles

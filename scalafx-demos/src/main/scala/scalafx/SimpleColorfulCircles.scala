@@ -43,7 +43,7 @@ import scalafx.scene.paint.LinearGradient
 import scalafx.scene.paint.Stops
 import scalafx.scene.shape.Circle
 import scalafx.scene.shape.Rectangle
-import scalafx.scene.shape.StrokeType.OUTSIDE
+import scalafx.scene.shape.StrokeType.Outside
 
 
 /**
@@ -63,7 +63,7 @@ object SimpleColorfulCircles extends JFXApp {
         fill = White opacity 0.05
         stroke = White opacity 0.16
         strokeWidth = 4
-        strokeType = OUTSIDE
+        strokeType = Outside
         effect = new BoxBlur(10, 10, 3)
       }
       content = circles :+ new Rectangle {
