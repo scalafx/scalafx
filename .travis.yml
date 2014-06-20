@@ -12,8 +12,8 @@ jdk:
 
 branches:
   only:
-    - SFX-8
-    - SFX-8-stable
+    - master
+    - stable
 
 notifications:
   email:
