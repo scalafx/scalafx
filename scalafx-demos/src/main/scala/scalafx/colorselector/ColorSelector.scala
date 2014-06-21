@@ -262,7 +262,7 @@ object ColorSelector extends JFXApp {
       alignmentInParent = Pos.TopRight
       labelFor = cmbWebColor
       text = "Web Color"
-      textAlignment = TextAlignment.RIGHT
+      textAlignment = TextAlignment.Right
       wrapText = true
     }, 1, 1)
     add(cmbWebColor, 2, 1)
@@ -272,7 +272,7 @@ object ColorSelector extends JFXApp {
       alignmentInParent = Pos.TopRight
       labelFor = txfColorValue
       text = "Color Value"
-      textAlignment = TextAlignment.RIGHT
+      textAlignment = TextAlignment.Right
       wrapText = true
     }, 1, 2)
     add(txfColorValue, 2, 2)
@@ -282,7 +282,7 @@ object ColorSelector extends JFXApp {
       alignmentInParent = Pos.TopRight
       labelFor = cmbColorFormat
       text = "Color Format"
-      textAlignment = TextAlignment.RIGHT
+      textAlignment = TextAlignment.Right
       wrapText = true
     }, 1, 3)
     add(cmbColorFormat, 2, 3)
@@ -292,7 +292,7 @@ object ColorSelector extends JFXApp {
       alignmentInParent = Pos.TopRight
       labelFor = chbDisableAlpha
       text = "Disable Alpha"
-      textAlignment = TextAlignment.RIGHT
+      textAlignment = TextAlignment.Right
       wrapText = true
     }, 1, 4)
     add(chbDisableAlpha, 2, 4)

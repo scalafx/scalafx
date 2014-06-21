@@ -69,7 +69,7 @@ object ScalaFX_Controls_01 extends JFXApp {
     graphic = labelsImageView
     font = Font.font("Arial", 30)
     textFill = Color.web("#0076a3")
-    textAlignment = TextAlignment.JUSTIFY
+    textAlignment = TextAlignment.Justify
   }
   val valuesLabel = new Label {
     text = "Values"

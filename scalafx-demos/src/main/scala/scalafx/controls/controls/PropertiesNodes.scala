@@ -76,7 +76,7 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
       font = PropertiesNodes.TitleFont
       labelFor = control
       text = title
-      textAlignment = TextAlignment.RIGHT
+      textAlignment = TextAlignment.Right
     }.asInstanceOf[Node], 0, index)
     controlsPane.add(control, 1, index)
     index += 1
