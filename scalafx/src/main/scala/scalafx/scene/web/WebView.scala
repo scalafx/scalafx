@@ -69,7 +69,7 @@ object WebView {
  * @constructor Creates a new WebView from its JavaFX counterpart.
  * @param delegate A JavaFX WebView. Its default value is a new instance.
  */
-final class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
+class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
   extends Parent(delegate)
   with SFXDelegate[jfxsw.WebView] {
 
