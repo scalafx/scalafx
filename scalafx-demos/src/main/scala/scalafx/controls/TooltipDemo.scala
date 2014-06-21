@@ -27,19 +27,17 @@
 package scalafx.controls
 
 import javafx.scene.control.ContentDisplay
-import javafx.scene.control.OverrunStyle
-import javafx.scene.text.TextAlignment
+import javafx.scene.{control => jfxsc, text => jfxst}
 import scalafx.Includes._
 import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.controls.controls._
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
 import scalafx.scene.control._
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.paint.Color
+import scalafx.scene.text.TextAlignment
 
 object TooltipDemo extends JFXApp {
 
@@ -97,15 +95,15 @@ class TooltipControls(target: Tooltip) extends PropertiesNodes[Tooltip](target, 
   }
 
   val originalTextAlignment = target.textAlignment()
-  val chbTextAlignment = new ChoiceBox[TextAlignment] {
-    items = ObservableBuffer(TextAlignment.CENTER, TextAlignment.JUSTIFY, TextAlignment.LEFT, TextAlignment.RIGHT)
+  val chbTextAlignment = new ChoiceBox[jfxst.TextAlignment] {
+    items = ObservableBuffer(TextAlignment.Center, TextAlignment.Justify, TextAlignment.Left, TextAlignment.Right)
     value <==> target.textAlignment
   }
 
   val originalTextOverrun = target.textOverrun()
-  val chbTextOverrun = new ChoiceBox[OverrunStyle] {
-    items = ObservableBuffer(OverrunStyle.CENTER_ELLIPSIS, OverrunStyle.CENTER_WORD_ELLIPSIS, OverrunStyle.CLIP, OverrunStyle.ELLIPSIS,
-      OverrunStyle.LEADING_ELLIPSIS, OverrunStyle.LEADING_WORD_ELLIPSIS, OverrunStyle.WORD_ELLIPSIS)
+  val chbTextOverrun = new ChoiceBox[jfxsc.OverrunStyle] {
+    items = ObservableBuffer(OverrunStyle.CenterEllipsis, OverrunStyle.CenterWordEllipsis, OverrunStyle.Clip, OverrunStyle.Ellipsis,
+      OverrunStyle.LeadingEllipsis, OverrunStyle.LeadingWordEllipsis, OverrunStyle.WordEllipsis)
     value <==> target.textOverrun
   }
 
@@ -132,6 +130,7 @@ class TooltipControls(target: Tooltip) extends PropertiesNodes[Tooltip](target, 
   super.addNode(btnReset)
 
 }
+
 /*
 def font_=(v: Font) {
 def graphic_=(v: Node) {

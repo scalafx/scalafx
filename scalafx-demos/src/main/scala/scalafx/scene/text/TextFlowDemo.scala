@@ -46,7 +46,7 @@ object TextFlowDemo extends JFXApp {
         }
         val text2 = new Text {
           text = "Bold"
-          font = Font(family, FontWeight.BOLD, size)
+          font = Font(family, FontWeight.Bold, size)
         }
         val text3 = new Text {
           text = " World"

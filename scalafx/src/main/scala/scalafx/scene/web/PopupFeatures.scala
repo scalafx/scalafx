@@ -51,7 +51,7 @@ object PopupFeatures {
  * @constructor Creates a new PopupFeatures from its JavaFX counterpart.
  * @param delegate JavaFX PopupFeatures.
  */
-final class PopupFeatures(override val delegate: jfxsw.PopupFeatures)
+class PopupFeatures(override val delegate: jfxsw.PopupFeatures)
   extends SFXDelegate[jfxsw.PopupFeatures] {
 
   /**

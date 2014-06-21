@@ -51,7 +51,7 @@ object PromptData {
  * @constructor Creates a new PromptData from its JavaFX counterpart.
  * @param delegate JavaFX PromptData.
  */
-final class PromptData(override val delegate: jfxsw.PromptData)
+class PromptData(override val delegate: jfxsw.PromptData)
   extends SFXDelegate[jfxsw.PromptData] {
 
   /**

@@ -59,7 +59,7 @@ object WebEngine {
  * @constructor Creates a new WebEngine from its JavaFX counterpart.
  * @param delegate A JavaFX WebEngine. Its default value is a new instance.
  */
-final class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
+class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   extends SFXDelegate[jfxsw.WebEngine] {
 
   /**
