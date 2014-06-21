@@ -76,7 +76,7 @@ object ScalaFX_Scene_Graph_App_03 extends JFXApp {
     }
     val parallelTransition = new ParallelTransition {
       node = rectangle
-      cycleCount = Timeline.INDEFINITE
+      cycleCount = Timeline.Indefinite
       autoReverse = true
       interpolator = Interpolator.EASE_BOTH
       children = Seq(

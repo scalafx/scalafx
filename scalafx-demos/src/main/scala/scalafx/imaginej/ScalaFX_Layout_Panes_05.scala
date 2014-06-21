@@ -79,7 +79,7 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   val questionText: Text = new Text {
     fill = Color.White
     stroke = Color.DarkBlue
-    font = Font.font("Amble Cn", FontWeight.BOLD, 18)
+    font = Font.font("Amble Cn", FontWeight.Bold, 18)
     text = " ? "
   }
   val questionRectangle = new Rectangle {
@@ -91,7 +91,7 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
     height = questionText.boundsInLocal.getValue.getHeight + 10
   }
   val stackPane = new StackPane {
-    alignment = Pos.CENTER
+    alignment = Pos.Center
     content = List(questionRectangle, questionText)
   }
   val hBox = new HBox {
@@ -109,7 +109,7 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   }
   val data = List(
     new Text {
-      font = Font.font("Amble CN", FontWeight.BOLD, 14)
+      font = Font.font("Amble CN", FontWeight.Bold, 14)
       text = "Data"
     },
     new Text {
@@ -132,12 +132,12 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   }
 
   val salesText = new Text {
-    font = Font.font("Tahoma", FontWeight.BOLD, 20)
+    font = Font.font("Tahoma", FontWeight.Bold, 20)
     text = "Sales:"
   }
 
   val yearText = new Text {
-    font = Font.font("Tahoma", FontWeight.BOLD, 20)
+    font = Font.font("Tahoma", FontWeight.Bold, 20)
     text = "Current Year"
   }
 
@@ -171,10 +171,10 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   gridPane.add(salesText, 1, 0)
   gridPane.add(yearText, 2, 0)
   gridPane.add(oldAndNewText, 1, 1, 2, 1)
-  GridPane.setValignment(oldText, VPos.BOTTOM)
+  GridPane.setValignment(oldText, VPos.Bottom)
   gridPane.add(oldText, 0, 2)
   gridPane.add(newImageView, 1, 2, 2, 1)
-  GridPane.setValignment(newText, VPos.TOP)
+  GridPane.setValignment(newText, VPos.Top)
   gridPane.add(newText, 3, 2)
 
 

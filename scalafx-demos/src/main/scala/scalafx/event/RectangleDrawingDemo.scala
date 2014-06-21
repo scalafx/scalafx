@@ -99,7 +99,7 @@ object RectangleDrawingDemo extends JFXApp {
       root = new BorderPane {
         top = new Label {
           text = "Drag the mouse below to draw a rectangle"
-          alignmentInParent = Pos.CENTER
+          alignmentInParent = Pos.Center
         }
         center = pane
       }

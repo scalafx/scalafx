@@ -73,7 +73,7 @@ object CanvasTest extends JFXApp {
    * circles radiating outward. This demo uses Red and YELLOW by default.
    */
   //  drawRadialGradient(Color.Red, Color.Yellow)
-  gc.fill = new RadialGradient(0, 0, 0.5, 0.5, 0.1, true, CycleMethod.REFLECT, List(Stop(0.0, Color.Red), Stop(1.0, Color.Yellow)))
+  gc.fill = new RadialGradient(0, 0, 0.5, 0.5, 0.1, true, CycleMethod.Reflect, List(Stop(0.0, Color.Red), Stop(1.0, Color.Yellow)))
   gc.fillPath()
 
   /*
@@ -81,7 +81,7 @@ object CanvasTest extends JFXApp {
    * circles radiating outward. This demo uses Red and YELLOW by default.
    */
   //  drawLinearGradient(Color.Blue, Color.Green)
-  val lg = new LinearGradient(0, 0, 1, 1, true, CycleMethod.REFLECT, List(Stop(0.0, Color.Blue), Stop(1.0, Color.Green)))
+  val lg = new LinearGradient(0, 0, 1, 1, true, CycleMethod.Reflect, List(Stop(0.0, Color.Blue), Stop(1.0, Color.Green)))
   gc.stroke = lg
   gc.lineWidth = 20
   gc.strokePath()

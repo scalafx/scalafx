@@ -44,7 +44,7 @@ class LinearGradientSpec
     classOf[jfxsp.LinearGradient], classOf[LinearGradient]) {
 
   override protected def getScalaClassInstance = new LinearGradient
-  
-  override protected def getJavaClassInstance = new jfxsp.LinearGradient(0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)
+
+  override protected def getJavaClassInstance = new jfxsp.LinearGradient(0, 0, 0, 0, true, CycleMethod.NoCycle, Nil)
 
 }

@@ -35,24 +35,48 @@ import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 object Pos
   extends SFXEnumDelegateCompanion[jfxg.Pos, Pos] {
 
-  val BASELINE_CENTER = new Pos(jfxg.Pos.BASELINE_CENTER)
-  val BASELINE_LEFT = new Pos(jfxg.Pos.BASELINE_LEFT)
-  val BASELINE_RIGHT = new Pos(jfxg.Pos.BASELINE_RIGHT)
-  val BOTTOM_CENTER = new Pos(jfxg.Pos.BOTTOM_CENTER)
-  val BOTTOM_LEFT = new Pos(jfxg.Pos.BOTTOM_LEFT)
-  val BOTTOM_RIGHT = new Pos(jfxg.Pos.BOTTOM_RIGHT)
-  val CENTER = new Pos(jfxg.Pos.CENTER)
-  val CENTER_LEFT = new Pos(jfxg.Pos.CENTER_LEFT)
-  val CENTER_RIGHT = new Pos(jfxg.Pos.CENTER_RIGHT)
-  val TOP_CENTER = new Pos(jfxg.Pos.TOP_CENTER)
-  val TOP_LEFT = new Pos(jfxg.Pos.TOP_LEFT)
-  val TOP_RIGHT = new Pos(jfxg.Pos.TOP_RIGHT)
+  val BaselineCenter = new Pos(jfxg.Pos.BASELINE_CENTER)
+  @deprecated ("Use BaselineCenter; BASELINE_CENTER will be removed in a future release", "2.2.60")
+  val BASELINE_CENTER = BaselineCenter
+  val BaselineLeft = new Pos(jfxg.Pos.BASELINE_LEFT)
+  @deprecated ("Use BaselineLeft; BASELINE_LEFT will be removed in a future release", "2.2.60")
+  val BASELINE_LEFT = BaselineLeft
+  val BaselineRight = new Pos(jfxg.Pos.BASELINE_RIGHT)
+  @deprecated ("Use BaselineRight; BASELINE_RIGHT will be removed in a future release", "2.2.60")
+  val BASELINE_RIGHT = BaselineRight
+  val BottomCenter = new Pos(jfxg.Pos.BOTTOM_CENTER)
+  @deprecated ("Use BottomCenter; BOTTOM_CENTER will be removed in a future release", "2.2.60")
+  val BOTTOM_CENTER = BottomCenter
+  val BottomLeft = new Pos(jfxg.Pos.BOTTOM_LEFT)
+  @deprecated ("Use BottomLeft; BOTTOM_LEFT will be removed in a future release", "2.2.60")
+  val BOTTOM_LEFT = BottomLeft
+  val BottomRight = new Pos(jfxg.Pos.BOTTOM_RIGHT)
+  @deprecated ("Use BottomRight; BOTTOM_RIGHT will be removed in a future release", "2.2.60")
+  val BOTTOM_RIGHT = BottomRight
+  val Center = new Pos(jfxg.Pos.CENTER)
+  @deprecated ("Use Center; CENTER will be removed in a future release", "2.2.60")
+  val CENTER = Center
+  val CenterLeft = new Pos(jfxg.Pos.CENTER_LEFT)
+  @deprecated ("Use CenterLeft; CENTER_LEFT will be removed in a future release", "2.2.60")
+  val CENTER_LEFT = CenterLeft
+  val CenterRight = new Pos(jfxg.Pos.CENTER_RIGHT)
+  @deprecated ("Use CenterRight; CENTER_RIGHT will be removed in a future release", "2.2.60")
+  val CENTER_RIGHT = CenterRight
+  val TopCenter = new Pos(jfxg.Pos.TOP_CENTER)
+  @deprecated ("Use TopCenter; TOP_CENTER will be removed in a future release", "2.2.60")
+  val TOP_CENTER = TopCenter
+  val TopLeft = new Pos(jfxg.Pos.TOP_LEFT)
+  @deprecated ("Use TopLeft; TOP_LEFT will be removed in a future release", "2.2.60")
+  val TOP_LEFT = TopLeft
+  val TopRight = new Pos(jfxg.Pos.TOP_RIGHT)
+  @deprecated ("Use TopRight; TOP_RIGHT will be removed in a future release", "2.2.60")
+  val TOP_RIGHT = TopRight
 
   protected override def unsortedValues: Array[Pos] = Array(
-    TOP_LEFT, TOP_CENTER, TOP_RIGHT,
-    CENTER_LEFT, CENTER, CENTER_RIGHT,
-    BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT,
-    BASELINE_LEFT, BASELINE_CENTER, BASELINE_RIGHT
+    TopLeft, TopCenter, TopRight,
+    CenterLeft, Center, CenterRight,
+    BottomLeft, BottomCenter, BottomRight,
+    BaselineLeft, BaselineCenter, BaselineRight
   )
 }
 

@@ -43,6 +43,6 @@ class RadialGradientSpec
   extends SimpleSFXDelegateSpec[jfxsp.RadialGradient, RadialGradient](
     classOf[jfxsp.RadialGradient], classOf[RadialGradient]) {
 
-  override protected def getJavaClassInstance = new jfxsp.RadialGradient(0, 0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)
+  override protected def getJavaClassInstance = new jfxsp.RadialGradient(0, 0, 0, 0, 0, true, CycleMethod.NoCycle, Nil)
 
 }

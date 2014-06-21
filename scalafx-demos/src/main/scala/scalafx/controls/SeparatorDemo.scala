@@ -26,7 +26,6 @@
  */
 package scalafx.controls
 
-import javafx.scene.layout.Priority
 import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.application.JFXApp
@@ -54,9 +53,9 @@ object SeparatorDemo extends JFXApp {
   val controlsPane = new VBox {
     spacing = 5
     fillWidth = true
-    alignment = Pos.CENTER
-    alignmentInParent = Pos.TOP_CENTER
-    hgrow = Priority.ALWAYS
+    alignment = Pos.Center
+    alignmentInParent = Pos.TopCenter
+    hgrow = Priority.Always
     content = List(new SeparatorControls(separator), new ControlControls(separator))
   }
 
@@ -80,7 +79,7 @@ object SeparatorDemo extends JFXApp {
 class SeparatorControls(target: Separator) extends PropertiesNodes[Separator](target, "Separator Controls") {
 
   val chbHPos = new ChoiceBox[jfxg.HPos] {
-    items = ObservableBuffer(HPos.CENTER, HPos.LEFT, HPos.RIGHT)
+    items = ObservableBuffer(HPos.Center, HPos.Left, HPos.Right)
     value <==> target.halignment
   }
 
@@ -91,7 +90,7 @@ class SeparatorControls(target: Separator) extends PropertiesNodes[Separator](ta
 
   // NOTE: The type of ChoiceBox is using javafx.geometry.VPos due to current limitations of binding implementation
   val chbVPos = new ChoiceBox[jfxg.VPos] {
-    items = ObservableBuffer(VPos.BASELINE, VPos.BOTTOM, VPos.CENTER, VPos.TOP)
+    items = ObservableBuffer(VPos.Baseline, VPos.Bottom, VPos.Center, VPos.Top)
     value <==> target.valignment
   }
 

@@ -39,18 +39,18 @@ object RadialGradient {
    */
   def valueOf(value: String) = jfxsp.RadialGradient.valueOf(value)
 
-  def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: List[Stop]) { 
+  def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: List[Stop]) {
     val stopsList = new java.util.ArrayList[jfxsp.Stop](stops.length)
     for (stop <- stops) stopsList.add(stop)
     new RadialGradient(new jfxsp.RadialGradient(focusAngle, focusDistance, centerX, centerY, radius, proportional, cycleMethod, stopsList))
   }
 
-/* This should work but it looks like it calls the constructor that 
+/* This should work but it looks like it calls the constructor that
  * uses List instead of the one that uses variable arguments
   def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*) =
     new RadialGradient(new jfxsp.RadialGradient(focusAngle, focusDistance, centerX, centerY, radius, proportional, cycleMethod, stops: _*))
  */
-  def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*) { 
+  def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*) {
     val stopsList = new java.util.ArrayList[jfxsp.Stop](stops.length)
     for (stop <- stops) stopsList.add(stop)
     new RadialGradient(new jfxsp.RadialGradient(focusAngle, focusDistance, centerX, centerY, radius, proportional, cycleMethod, stopsList))
@@ -73,7 +73,7 @@ class RadialGradient(override val delegate: jfxsp.RadialGradient) extends Paint(
   def centerY = delegate.getCenterY
 
   /**
-   * Defines which of the following cycle method is applied to the LinearGradient: CycleMethod.NO_CYCLE, CycleMethod.REFLECT, or CycleMethod.REPEAT.
+   * Defines which of the following cycle method is applied to the LinearGradient: CycleMethod.NoCycle, CycleMethod.Reflect, or CycleMethod.Repeat.
    */
   def cycleMethod = delegate.getCycleMethod
 
