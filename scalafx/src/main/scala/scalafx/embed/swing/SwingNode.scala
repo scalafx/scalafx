@@ -24,57 +24,48 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.embed.swing
 
-package scalafx
-
-import animation.AnimationIncludes
-import beans.BeanIncludes
-import collections.CollectionIncludes
-import concurrent.ConcurrentIncludes
-import css.CssIncludes
-import event.EventIncludes
-import geometry.GeometryIncludes
-import application.ApplicationIncludes
-import scene.canvas.CanvasIncludes
-import scene.input.InputIncludes
-import scene.media.MediaIncludes
-import scene.transform.TransformIncludes
-import scene.web.WebIncludes
-import scene.SceneIncludes
-import stage.StageIncludes
-import util.converter.ConverterIncludes
-import util.UtilIncludes
-import scalafx.delegate.DelegateIncludes
-import scalafx.print.PrintIncludes
-import scalafx.embed.swing.SwingIncludes
+import javafx.embed.{ swing => jfxes }
+import scalafx.Includes._
+import scalafx.scene.Node
+import scalafx.delegate.SFXDelegate
+import javax.swing.JComponent
 
 /**
- * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
- * and other syntactic sugar.
- *
- * This file is tiered both for modularity and to prioritize the implicits
- * (the order of the withs matter a lot!)
+ * Companion Object for [[scalafx.embed.swing.SwingNode]].
  */
-object Includes extends Includes
+object SwingNode {
 
-trait Includes
-  extends AnimationIncludes
-  with DelegateIncludes
-  with CollectionIncludes 
-  with EventIncludes 
-  with SceneIncludes 
-  with BeanIncludes 
-  with UtilIncludes 
-  with GeometryIncludes 
-  with TransformIncludes 
-  with InputIncludes 
-  with StageIncludes 
-  with WebIncludes 
-  with MediaIncludes
-  with ConverterIncludes
-  with ConcurrentIncludes
-  with CanvasIncludes
-  with ApplicationIncludes
-  with CssIncludes
-  with PrintIncludes
-  with SwingIncludes
+  /**
+   * Converts a ScalaFX SwingNode to its JavaFX counterpart.
+   *
+   * @param node ScalaFX SwingNode
+   * @return JavaFX SwingNode
+   */
+  implicit def sfxPanel2jfx(node: SwingNode): jfxes.SwingNode = node.delegate
+
+}
+
+/**
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingNode.html JavaFX 
+ * SwingNode]]. This class is not implementing the `impl_*` methods from the original class.
+ *
+ * @constructor Creates a new ScalaFX SwingNode from its JavaFX counterpart.
+ * @param delegate JavaFX SwingNode. Its defaul value is a new SwingNode
+ *
+ * @since 8.0
+ */
+class SwingNode(override val delegate: jfxes.SwingNode = new jfxes.SwingNode)
+  extends Node(delegate)
+  with SFXDelegate[jfxes.SwingNode] {
+
+  /**
+   *  the JComponent instance attached to this SwingNode.
+   */
+  def content: JComponent = delegate.getContent
+  def content_=(c: JComponent) {
+    delegate.setContent(c)
+  }
+
+}
