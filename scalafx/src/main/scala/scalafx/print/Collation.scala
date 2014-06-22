@@ -39,14 +39,14 @@ object Collation
   /**
    * Each copy of a document is printed together.
    */
-  val COLLATED = new Collation(jfxp.Collation.COLLATED)
+  val Collated = new Collation(jfxp.Collation.COLLATED)
 
   /**
    * The same numbered pages are consecutive in the output.
    */
-  val UNCOLLATED = new Collation(jfxp.Collation.UNCOLLATED)
+  val Uncollated = new Collation(jfxp.Collation.UNCOLLATED)
 
-  protected override def unsortedValues: Array[Collation] = Array(COLLATED, UNCOLLATED)
+  protected override def unsortedValues: Array[Collation] = Array(Collated, Uncollated)
 
 }
 

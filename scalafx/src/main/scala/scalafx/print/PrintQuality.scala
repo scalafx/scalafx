@@ -39,24 +39,24 @@ object PrintQuality
   /**
    * Specify DRAFT quality printing.
    */
-  val DRAFT = new PrintQuality(jfxp.PrintQuality.DRAFT)
+  val Draft = new PrintQuality(jfxp.PrintQuality.DRAFT)
 
   /**
    * Specify HIGH quality printing.
    */
-  val HIGH = new PrintQuality(jfxp.PrintQuality.HIGH)
+  val High = new PrintQuality(jfxp.PrintQuality.HIGH)
 
   /**
    * Specify LOW quality printing.
    */
-  val LOW = new PrintQuality(jfxp.PrintQuality.LOW)
+  val Low = new PrintQuality(jfxp.PrintQuality.LOW)
 
   /**
    * Specify NORMAL quality printing.
    */
-  val NORMAL = new PrintQuality(jfxp.PrintQuality.NORMAL)
+  val Normal = new PrintQuality(jfxp.PrintQuality.NORMAL)
 
-  protected override def unsortedValues: Array[PrintQuality] = Array(DRAFT, HIGH, LOW, NORMAL)
+  protected override def unsortedValues: Array[PrintQuality] = Array(Draft, High, Low, Normal)
 
 }
 

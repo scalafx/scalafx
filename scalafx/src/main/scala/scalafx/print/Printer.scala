@@ -61,28 +61,28 @@ object Printer {
     /**
      * This requests a default 0.75 inch margin on all sides.
      */
-    val DEFAULT = new MarginType(jfxp.Printer.MarginType.DEFAULT)
+    val Default = new MarginType(jfxp.Printer.MarginType.DEFAULT)
 
     /**
      * Choose the largest of the four hardware margins, and use that for all for margins,
      * so that the margins are equal on all sides.
      */
-    val EQUAL = new MarginType(jfxp.Printer.MarginType.EQUAL)
+    val Equal = new MarginType(jfxp.Printer.MarginType.EQUAL)
 
     /**
      * Similar to EQUAL, but it chooses the larger of the left/right hardware margins and
      * top/bottom hardware margins separately, so that the top and bottom margins are equal,
      * and the left and right margins are equal.
      */
-    val EQUAL_OPPOSITES = new MarginType(jfxp.Printer.MarginType.EQUAL_OPPOSITES)
+    val EqualOpposites = new MarginType(jfxp.Printer.MarginType.EQUAL_OPPOSITES)
 
     /**
      * Request margins are set to be the smallest on each side that the hardware allows.
      */
-    val HARDWARE_MINIMUM = new MarginType(jfxp.Printer.MarginType.HARDWARE_MINIMUM)
+    val HardwareMinimum = new MarginType(jfxp.Printer.MarginType.HARDWARE_MINIMUM)
 
     protected override def unsortedValues: Array[Printer.MarginType] =
-      Array(DEFAULT, EQUAL, EQUAL_OPPOSITES, HARDWARE_MINIMUM)
+      Array(Default, Equal, EqualOpposites, HardwareMinimum)
 
   }
 

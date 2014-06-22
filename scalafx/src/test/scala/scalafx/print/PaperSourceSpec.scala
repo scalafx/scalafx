@@ -37,7 +37,7 @@ import org.scalatest.junit.JUnitRunner
 class PaperSourceSpec
   extends SimpleSFXDelegateSpec[jfxp.PaperSource, PaperSource](classOf[jfxp.PaperSource], classOf[PaperSource]) {
 
-  override protected def getScalaClassInstance = PaperSource.AUTOMATIC
+  override protected def getScalaClassInstance = PaperSource.Automatic
 
   override protected def getJavaClassInstance = jfxp.PaperSource.AUTOMATIC
 

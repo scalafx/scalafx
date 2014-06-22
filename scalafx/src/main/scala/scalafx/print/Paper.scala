@@ -72,40 +72,40 @@ object Paper {
   val C = new Paper(jfxp.Paper.C)
 
   /** Specifies the ISO Designated Long size, 110 mm by 220 mm.*/
-  val DESIGNATED_LONG = new Paper(jfxp.Paper.DESIGNATED_LONG)
+  val DesignatedLong = new Paper(jfxp.Paper.DESIGNATED_LONG)
 
   /** Specifies the executive size, 7.25 inches by 10.5 inches.*/
-  val EXECUTIVE = new Paper(jfxp.Paper.EXECUTIVE)
+  val Executive = new Paper(jfxp.Paper.EXECUTIVE)
 
   /** Specifies the Japanese postcard size, 100 mm by 148 mm.*/
-  val JAPANESE_POSTCARD = new Paper(jfxp.Paper.JAPANESE_POSTCARD)
+  val JapanesePostcard = new Paper(jfxp.Paper.JAPANESE_POSTCARD)
 
   /** Specifies the JIS B4 size, 257 mm by 364 mm.*/
-  val JIS_B4 = new Paper(jfxp.Paper.JIS_B4)
+  val JisB4 = new Paper(jfxp.Paper.JIS_B4)
 
   /** Specifies the JIS B5 size, 182 mm by 257 mm.*/
-  val JIS_B5 = new Paper(jfxp.Paper.JIS_B5)
+  val JisB5 = new Paper(jfxp.Paper.JIS_B5)
 
   /** Specifies the JIS B6 size, 128 mm by 182 mm.*/
-  val JIS_B6 = new Paper(jfxp.Paper.JIS_B6)
+  val JisB6 = new Paper(jfxp.Paper.JIS_B6)
 
   /** Specifies the North American legal size, 8.5 inches by 14 inches.*/
-  val LEGAL = new Paper(jfxp.Paper.LEGAL)
+  val Legal = new Paper(jfxp.Paper.LEGAL)
 
   /** Specifies the Monarch envelope size, 3.87 inch by 7.5 inch.*/
-  val MONARCH_ENVELOPE = new Paper(jfxp.Paper.MONARCH_ENVELOPE)
+  val MonarchEnvelope = new Paper(jfxp.Paper.MONARCH_ENVELOPE)
 
   /** Specifies the North American 8 inch by 10 inch paper.*/
-  val NA_8X10 = new Paper(jfxp.Paper.NA_8X10)
+  val Na8X10 = new Paper(jfxp.Paper.NA_8X10)
 
   /** Specifies the North American letter size, 8.5 inches by 11 inches.*/
-  val NA_LETTER = new Paper(jfxp.Paper.NA_LETTER)
+  val NaLetter = new Paper(jfxp.Paper.NA_LETTER)
 
   /** Specifies the North American Number 10 business envelope size, 4.125 inches by 9.5 inches.*/
-  val NA_NUMBER_10_ENVELOPE = new Paper(jfxp.Paper.NA_NUMBER_10_ENVELOPE)
+  val NaNumber10Envelope = new Paper(jfxp.Paper.NA_NUMBER_10_ENVELOPE)
 
   /** Specifies the tabloid size, 11 inches by 17 inches.*/
-  val TABLOID = new Paper(jfxp.Paper.TABLOID)
+  val Tabloid = new Paper(jfxp.Paper.TABLOID)
 
 }
 

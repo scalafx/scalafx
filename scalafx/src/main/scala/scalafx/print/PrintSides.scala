@@ -39,19 +39,19 @@ object PrintSides
   /**
    * Two sided printing where the vertical edge of the paper is to be used for binding such as in a book.
    */
-  val DUPLEX = new PrintSides(jfxp.PrintSides.DUPLEX)
+  val Duplex = new PrintSides(jfxp.PrintSides.DUPLEX)
 
   /**
    * One sided printing.
    */
-  val ONE_SIDED = new PrintSides(jfxp.PrintSides.ONE_SIDED)
+  val OneSided = new PrintSides(jfxp.PrintSides.ONE_SIDED)
 
   /**
    * Two sided printing where the horizontal edge of the paper is to be used for binding such as in a notepad.
    */
-  val TUMBLE = new PrintSides(jfxp.PrintSides.TUMBLE)
+  val Tumble = new PrintSides(jfxp.PrintSides.TUMBLE)
 
-  protected override def unsortedValues: Array[PrintSides] = Array(DUPLEX, ONE_SIDED, TUMBLE)
+  protected override def unsortedValues: Array[PrintSides] = Array(Duplex, OneSided, Tumble)
 
 }
 
