@@ -27,23 +27,30 @@
 package scalafx.css
 
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import javafx.{ css => jfxcss }
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
+import org.scalatest.junit.JUnitRunner
 
 /**
- * PseudoClass Spec tests.
- *
+ * Styleable Spec tests.
  */
 @RunWith(classOf[JUnitRunner])
-class PseudoClassSpec
-  extends SimpleSFXDelegateSpec[jfxcss.PseudoClass, PseudoClass](
-    classOf[jfxcss.PseudoClass], classOf[PseudoClass]) {
+class StyleableSpec
+  extends SimpleSFXDelegateSpec[jfxcss.Styleable, Styleable](classOf[jfxcss.Styleable], classOf[Styleable]) {
 
-  override protected def getScalaClassInstance = PseudoClass("test")
-
-  override protected def getJavaClassInstance = new jfxcss.PseudoClass {
-    def getPseudoClassName = ""
+  override protected def getScalaClassInstance = new Styleable {
+    override val delegate = getJavaClassInstance
   }
+
+  override protected def getJavaClassInstance = new jfxcss.Styleable {
+    def getCssMetaData = null
+    def getId = ""
+    def getPseudoClassStates = null
+    def getStyle = ""
+    def getStyleableParent = null
+    def getStyleClass = null
+    def getTypeSelector = ""
+  }
+
 }

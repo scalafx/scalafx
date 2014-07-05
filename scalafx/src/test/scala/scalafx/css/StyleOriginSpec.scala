@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+* Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,24 +26,15 @@
  */
 package scalafx.css
 
+import javafx.{ css => jfxcss }
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import javafx.{ css => jfxcss }
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.testutil.SFXEnumDelegateSpec
 
-/**
- * PseudoClass Spec tests.
- *
- */
+/** Tests for [[scalafx.css.StyleOrigin]]. */
 @RunWith(classOf[JUnitRunner])
-class PseudoClassSpec
-  extends SimpleSFXDelegateSpec[jfxcss.PseudoClass, PseudoClass](
-    classOf[jfxcss.PseudoClass], classOf[PseudoClass]) {
-
-  override protected def getScalaClassInstance = PseudoClass("test")
-
-  override protected def getJavaClassInstance = new jfxcss.PseudoClass {
-    def getPseudoClassName = ""
-  }
-}
+class StyleOriginSpec extends SFXEnumDelegateSpec[jfxcss.StyleOrigin, StyleOrigin](
+  javaClass = classOf[jfxcss.StyleOrigin],
+  scalaClass = classOf[StyleOrigin],
+  companion = StyleOrigin)

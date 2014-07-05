@@ -26,24 +26,71 @@
  */
 package scalafx.css
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+import scala.language.implicitConversions
+import scala.collection.JavaConversions._
 import javafx.{ css => jfxcss }
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.delegate.SFXDelegate
+import scalafx.collections.ObservableSet
+import scalafx.collections.ObservableBuffer
 
 /**
- * PseudoClass Spec tests.
- *
+ * Companion object for [[scalafx.css.Styleable]].
  */
-@RunWith(classOf[JUnitRunner])
-class PseudoClassSpec
-  extends SimpleSFXDelegateSpec[jfxcss.PseudoClass, PseudoClass](
-    classOf[jfxcss.PseudoClass], classOf[PseudoClass]) {
+object Styleable {
 
-  override protected def getScalaClassInstance = PseudoClass("test")
+  /**
+   * Converts a ScalaFX Styleable to its JavaFX counterpart.
+   *
+   * @param s ScalaFX Styleable
+   * @return JavaFX Styleable
+   */
+  implicit def sfxStyleable2jfx(s: Styleable): jfxcss.Styleable = s.delegate
 
-  override protected def getJavaClassInstance = new jfxcss.PseudoClass {
-    def getPseudoClassName = ""
-  }
+}
+
+/**
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/Styleable.html JavaFX Styleable]].
+ *
+ * @since 8.0
+ */
+trait Styleable
+  extends SFXDelegate[jfxcss.Styleable] {
+
+  /**
+   * The CssMetaData of this Styleable.
+   */
+  def cssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getCssMetaData
+
+  /**
+   * The id of this Styleable.
+   */
+  def id: String = delegate.getId
+
+  /**
+   * The pseudo-class state of this Styleable.
+   */
+  def pseudoClassStates: ObservableSet[jfxcss.PseudoClass] = delegate.getPseudoClassStates
+
+  /**
+   * A string representation of the CSS style associated with this specific Node.
+   */
+  def style: String = delegate.getStyle
+
+  /**
+   * The parent of this Styleable, or null if there is no parent.
+   */
+  def styleableParent: Styleable = delegate.getStyleableParent
+
+  /**
+   * A list of String identifiers which can be used to logically group Nodes, specifically for an
+   * external style engine.
+   */
+  def styleClass: ObservableBuffer[String] = delegate.getStyleClass
+
+  /**
+   * The type of this `Styleable` that is to be used in selector matching.
+   */
+  def typeSelector: String = delegate.getTypeSelector
+
 }

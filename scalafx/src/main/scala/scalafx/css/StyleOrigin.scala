@@ -26,24 +26,45 @@
  */
 package scalafx.css
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import javafx.{ css => jfxcss }
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import javafx.{css => jfxcss}
+import scalafx.delegate.SFXEnumDelegate
+import scalafx.delegate.SFXEnumDelegateCompanion
+import javafx.{css => jfxcss}
 
 /**
- * PseudoClass Spec tests.
- *
+ * Companion object for [[scalafx.css.StyleOrigin]].
  */
-@RunWith(classOf[JUnitRunner])
-class PseudoClassSpec
-  extends SimpleSFXDelegateSpec[jfxcss.PseudoClass, PseudoClass](
-    classOf[jfxcss.PseudoClass], classOf[PseudoClass]) {
+object StyleOrigin
+  extends SFXEnumDelegateCompanion[jfxcss.StyleOrigin, StyleOrigin] {
 
-  override protected def getScalaClassInstance = PseudoClass("test")
+  /**
+   * The stylesheet is an external file
+   */
+  val Author: StyleOrigin = new StyleOrigin(jfxcss.StyleOrigin.AUTHOR)
 
-  override protected def getJavaClassInstance = new jfxcss.PseudoClass {
-    def getPseudoClassName = ""
-  }
+  /**
+   * The style is from the Node via setStyle
+   */
+  val Inline: StyleOrigin = new StyleOrigin(jfxcss.StyleOrigin.INLINE)
+
+  /**
+   * The value of a property was set by the user through a call to a set method
+   */
+  val User: StyleOrigin = new StyleOrigin(jfxcss.StyleOrigin.USER)
+
+  /**
+   * The stylesheet is a user-agent stylesheet
+   */
+  val UserAgent: StyleOrigin = new StyleOrigin(jfxcss.StyleOrigin.USER_AGENT)
+
+  override val unsortedValues = Array(Author, Inline, User, UserAgent)
+
 }
+
+/**
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/StyleOrigin.html JavaFX StyleOrigin]].
+ *
+ * @since 8.0
+ */
+class StyleOrigin(override val delegate: jfxcss.StyleOrigin)
+  extends SFXEnumDelegate[jfxcss.StyleOrigin]

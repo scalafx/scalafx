@@ -24,26 +24,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.css
-
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import javafx.{ css => jfxcss }
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+package scalafx
 
 /**
- * PseudoClass Spec tests.
- *
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/package-summary.html `javafx.css`]] package.
+ * 
+ * @since 8.0
  */
-@RunWith(classOf[JUnitRunner])
-class PseudoClassSpec
-  extends SimpleSFXDelegateSpec[jfxcss.PseudoClass, PseudoClass](
-    classOf[jfxcss.PseudoClass], classOf[PseudoClass]) {
+package object css {
 
-  override protected def getScalaClassInstance = PseudoClass("test")
-
-  override protected def getJavaClassInstance = new jfxcss.PseudoClass {
-    def getPseudoClassName = ""
-  }
 }

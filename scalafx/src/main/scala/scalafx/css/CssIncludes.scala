@@ -27,28 +27,105 @@
 package scalafx.css
 
 import scala.language.implicitConversions
-import javafx.{css => jfxcss}
+
+import javafx.{ css => jfxcss }
 
 object CssIncludes extends CssIncludes
 
 /**
  * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/package-summary.html `javafx.css`]]
- * classes to their ScalaFX counterparts.
+ * classes/interfaces to their ScalaFX counterparts.
+ *
+ * @since 8.0
  * 
  * @define JFX JavaFX
  * @define SFX ScalaFX
  * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/css/
  * @define END ]]` instance to its $SFX counterpart.
+ * @define PV ParsedValue
  * @define PS PseudoClass
+ * @define ST Styleable
+ * @define SP StyleableProperty
+ * @define SO StyleOrigin
+ * @define SC StyleConverter
+ * @define MD CssMetaData
+ * @define FD FontCssMetaData
  */
 trait CssIncludes {
+
+  /*
+   * $START$PV.html $PV$END
+   *
+   * @param pv $JFX $PV
+   * @return $SFX $PV
+   */
+//  implicit def jfxParsedValur2sfx[V, T](pv: jfxcss.ParsedValue[V, T]): ParsedValue[V, T] = 
+//    new ParsedValue[V, T](pv)
   
   /**
    * $START$PS.html $PS$END
    *
-   * @param s $JFX $PS
+   * @param d $JFX $PS
    * @return $SFX $PS
    */
   implicit def jfxPseudoClass2sfx(d: jfxcss.PseudoClass) = new PseudoClass(d) {}
+
+  /**
+   * $START$ST.html $ST$END
+   *
+   * @param s $JFX $ST
+   * @return $SFX $ST
+   */
+  implicit def jfxStyleable2sfx(s: jfxcss.Styleable) = new Styleable {
+    override val delegate = s
+  }
+
+  /*
+   * $START$SP.html $SP$END
+   *
+   * @param s $JFX $SP
+   * @return $SFX $SP
+   */
+//  implicit def jfxStyleableProperty2sfx[T](s: jfxcss.StyleableProperty[T]) = new StyleableProperty[T] {
+//    override val delegate = s
+//  }
+
+  /**
+   * $START$SO.html $SO$END
+   *
+   * @param o $JFX $SO
+   * @return $SFX $SO
+   */
+  implicit def jfxStyleOrigin2sfx(o: jfxcss.StyleOrigin) = StyleOrigin.jfxEnum2sfx(o)
+
+  /*
+   * $START$MD.html $MD$END
+   *
+   * @param cmd $JFX $MD
+   * @return $SFX $MD
+   */
+//  implicit def jfxCssMetaData2sfx[S <: jfxcss.Styleable, V](cmd: jfxcss.CssMetaData[S, V]) =
+//    new CssMetaData[S, V](cmd) {}
+
+  /*
+   * $START$FD.html $MD$END
+   *
+   * @param f $JFX $FD
+   * @return $SFX $FD
+   */
+//  implicit def jfxFontCssMetaData2sfx[S <: jfxcss.Styleable](f: jfxcss.FontCssMetaData[S]) =
+//    new FontCssMetaData[S](f) {}
+
+  /**
+   * $START$SC.html $SC$END
+   *
+   * @tparam F
+   * @tparam T
+   * @param sc $JFX $SC
+   * @return $SFX $SC
+   */
+  implicit def jfxStyleConverter2sfx[F, T](sc: jfxcss.StyleConverter[F, T]) =
+    new StyleConverter[F, T](sc)
+
 }

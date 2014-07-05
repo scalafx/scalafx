@@ -27,23 +27,21 @@
 package scalafx.css
 
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import javafx.{ css => jfxcss }
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
+import org.scalatest.junit.JUnitRunner
 
 /**
- * PseudoClass Spec tests.
- *
+ * StyleConverter Spec tests. It is being used Conversion from String to String (stringConverter)  
  */
 @RunWith(classOf[JUnitRunner])
-class PseudoClassSpec
-  extends SimpleSFXDelegateSpec[jfxcss.PseudoClass, PseudoClass](
-    classOf[jfxcss.PseudoClass], classOf[PseudoClass]) {
+class StyleConverterSpec
+  extends SimpleSFXDelegateSpec[jfxcss.StyleConverter[String, String], StyleConverter[String, String]](
+    classOf[jfxcss.StyleConverter[String, String]], classOf[StyleConverter[String, String]]) {
 
-  override protected def getScalaClassInstance = PseudoClass("test")
+  override protected def getScalaClassInstance = StyleConverter.stringConverter
 
-  override protected def getJavaClassInstance = new jfxcss.PseudoClass {
-    def getPseudoClassName = ""
-  }
+  override protected def getJavaClassInstance = jfxcss.StyleConverter.getStringConverter
+
 }
