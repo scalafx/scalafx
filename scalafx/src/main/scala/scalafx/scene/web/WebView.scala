@@ -234,14 +234,4 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
     zoom() = v
   }
 
-  /**
-   * This method should delegate to `Node.classCssMetaData` so that a Node's CssMetaData can be
-   * accessed without the need for reflection.
-   *
-   * @return The CssMetaData associated with this node, which may include the CssMetaData
-   * of its super classes.
-   * @since 8.0
-   */
-  def cssMetaData: Buffer[jfxc.CssMetaData[_ <: jfxc.Styleable, _]] = delegate.getCssMetaData
-
 }

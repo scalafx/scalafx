@@ -27,9 +27,9 @@
 package scalafx.scene.text
 
 import scala.language.implicitConversions
-import javafx.scene.{text => jfxst}
+import javafx.scene.{ text => jfxst }
 import scalafx.Includes._
-import scalafx.beans.property.{DoubleProperty, ObjectProperty}
+import scalafx.beans.property.{ DoubleProperty, ObjectProperty }
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Orientation
 import scalafx.scene.Node
@@ -87,18 +87,10 @@ class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
   def contentBias: Orientation = delegate.getContentBias
 
   /**
-   * This method should delegate to Node.classCssMetaData() so that a Node's CssMetaData can
-   * be accessed without the need for reflection.
-   */
-  def cssMetaData() = delegate.getCssMetaData
-
-  /**
    * Requests a layout pass to be performed before the next scene is rendered.
    */
   def requestLayout() {
     delegate.requestLayout()
   }
+
 }
-
-
-

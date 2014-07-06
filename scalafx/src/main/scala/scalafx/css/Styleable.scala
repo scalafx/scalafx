@@ -64,8 +64,12 @@ trait Styleable
 
   /**
    * The id of this Styleable.
+   * 
+   * IMPLEMENTATION NOTE: For this method was adopted the name `getId` instead `id` to not 
+   * conflict with its subclasses already have a method with this name which returns a 
+   * `StringProperty`. 
    */
-  def id: String = delegate.getId
+  def getId: String = delegate.getId
 
   /**
    * The pseudo-class state of this Styleable.
@@ -74,8 +78,12 @@ trait Styleable
 
   /**
    * A string representation of the CSS style associated with this specific Node.
+   * 
+   * IMPLEMENTATION NOTE: For this method was adopted the name `getStyle` instead `style` to not 
+   * conflict with its subclasses already have a method with this name which returns a 
+   * `StringProperty`. 
    */
-  def style: String = delegate.getStyle
+  def getStyle: String = delegate.getStyle
 
   /**
    * The parent of this Styleable, or null if there is no parent.

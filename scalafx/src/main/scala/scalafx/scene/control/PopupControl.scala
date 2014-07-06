@@ -33,6 +33,7 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.StringProperty
 import scalafx.stage.PopupWindow
 import scalafx.delegate.SFXDelegate
+import scalafx.css.Styleable
 
 object PopupControl {
   implicit def sfxPopupControl2jfx(v: PopupControl) = v.delegate
@@ -40,6 +41,7 @@ object PopupControl {
 
 class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupControl)
   extends PopupWindow(delegate)
+  with Styleable
   with Skinnable
   with SFXDelegate[jfxsc.PopupControl] {
 
@@ -107,7 +109,5 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
   def style_=(v: String) {
     style() = v
   }
-
-  def styleClass = delegate.getStyleClass
 
 }

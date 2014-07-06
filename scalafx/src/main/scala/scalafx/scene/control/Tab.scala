@@ -38,6 +38,7 @@ import scalafx.beans.property.StringProperty
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.css.Styleable
 
 object Tab {
 
@@ -45,7 +46,9 @@ object Tab {
 
 }
 
-class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[jfxsc.Tab] {
+class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
+  extends Styleable
+  with SFXDelegate[jfxsc.Tab] {
 
   /**
    * The closable state for this tab.
@@ -98,7 +101,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
   /**
    * Called when there is an external request to close this Tab.
    */
-  def onCloseRequest : ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onCloseRequestProperty()
+  def onCloseRequest: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onCloseRequestProperty()
   def onCloseRequest_=(v: jfxe.EventHandler[jfxe.Event]) {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxe.Event]](onCloseRequest, v)
   }
@@ -123,8 +126,6 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
   def style_=(v: String) {
     style() = v
   }
-
-  def styleClass = delegate.getStyleClass
 
   /**
    * The TabPane that contains this tab.
@@ -165,13 +166,13 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
    */
   def disabled: ReadOnlyBooleanProperty = delegate.disabledProperty()
 
-
   /**
    * Set the value of the userData property for the instance constructed by this builder.
    * @since 2.2
    */
   def userData: AnyRef = delegate.userData
-  def userData_=( v: AnyRef ) {
-     delegate.setUserData(v)
+  def userData_=(v: AnyRef) {
+    delegate.setUserData(v)
   }
+
 }
