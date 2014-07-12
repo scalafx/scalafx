@@ -26,11 +26,12 @@
  */
 package scalafx.css
 
-import javafx.{ css => jfxcss }
+import scala.language.implicitConversions
+
+import javafx.{css => jfxcss}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.text.Font
-import scalafx.Includes._
-import scalafx.scene.paint.Color
+import scalafx.scene.text.Font.sfxFont2jfx
 
 /**
  * Companion object for [[scalafx.css.StyleConverter]].

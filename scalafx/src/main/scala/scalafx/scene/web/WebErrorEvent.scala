@@ -26,6 +26,8 @@
  */
 package scalafx.scene.web
 
+import scala.language.implicitConversions
+
 import scalafx.event.Event
 import scalafx.delegate.SFXDelegate
 import javafx.scene.{ web => jfxsw }
@@ -41,7 +43,7 @@ object WebErrorEvent {
 
   /**
    * Converts a ScalaFX WebErrorEvent to its JavaFX counterpart.
-   * 
+   *
    * @param wee ScalaFX WebErrorEvent
    * @return JavaFX WebErrorEvent
    */

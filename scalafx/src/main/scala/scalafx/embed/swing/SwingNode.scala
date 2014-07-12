@@ -26,11 +26,12 @@
  */
 package scalafx.embed.swing
 
+import scala.language.implicitConversions
+
 import javafx.embed.{ swing => jfxes }
-import scalafx.Includes._
-import scalafx.scene.Node
-import scalafx.delegate.SFXDelegate
 import javax.swing.JComponent
+import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 
 /**
  * Companion Object for [[scalafx.embed.swing.SwingNode]].
@@ -48,7 +49,7 @@ object SwingNode {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingNode.html JavaFX 
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingNode.html JavaFX
  * SwingNode]]. This class is not implementing the `impl_*` methods from the original class.
  *
  * @constructor Creates a new ScalaFX SwingNode from its JavaFX counterpart.

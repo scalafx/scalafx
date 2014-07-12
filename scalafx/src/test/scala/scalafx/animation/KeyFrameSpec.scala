@@ -26,6 +26,8 @@
  */
 package scalafx.animation
 
+import scala.language.postfixOps
+
 import collection.JavaConversions._
 import javafx.{ animation => jfxa }
 import javafx.{ event => jfxe }

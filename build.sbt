@@ -51,7 +51,7 @@ lazy val scalafxSettings = Seq(
   // TODO SFX8: At a moment only ScalaFX 2.10.2+ supports Java 8, due to some InvokeDynamic byte codes
   crossScalaVersions := Seq("2.10.4", "2.11.1"),
   scalaVersion <<= crossScalaVersions { versions => versions.head },
-  scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
+  scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
   javacOptions ++= Seq(
