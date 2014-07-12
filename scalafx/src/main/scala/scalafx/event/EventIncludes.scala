@@ -71,6 +71,19 @@ trait EventIncludes {
   implicit def jfxEventType2sfx[T <: jfxe.Event](e: jfxe.EventType[T]) = new EventType[T](e)
 
   /**
+   * Converts a
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/WeakEventHandler `javafx.event.WeakEventHandler`]]
+   * instance to its ScalaFX counterpart.
+   *
+   * @tparam T Event Type
+   * @param weh JavaFX WeakEventHandler
+   * @return ScalaFX WeakEventHandler
+   * @since 8.0
+   */
+  implicit def jfxWeakEventHandler2sfx[T <: jfxe.Event](weh: jfxe.WeakEventHandler[T]): WeakEventHandler[T] 
+    = new WeakEventHandler(weh)
+
+  /**
    * Create a simple event handler when information about event is not be used.
    *
    * Enables following use:
@@ -133,4 +146,5 @@ trait EventIncludes {
         handler(event)
       }
     }
+  
 }

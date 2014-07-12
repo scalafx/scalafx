@@ -73,14 +73,14 @@ class EventHandlerSpec extends FlatSpec with RunOnApplicationThread {
     }
 
     var groupCounter = 0
-    val groupSubscription = group.filterEvent(ActionEvent.ACTION) {
+    val groupSubscription = group.filterEvent(ActionEvent.Action) {
       () =>
       // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
         groupCounter += 1
         groupCounter += 1
     }
     var buttonCounter = 0
-    button.handleEvent(ActionEvent.ACTION) {
+    button.handleEvent(ActionEvent.Action) {
       () =>
       // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
         buttonCounter += 3
@@ -115,7 +115,7 @@ class EventHandlerSpec extends FlatSpec with RunOnApplicationThread {
 
     var groupCounter = 0
     var buttonCounter = 0
-    button.handleEvent(ActionEvent.ACTION) {
+    button.handleEvent(ActionEvent.Action) {
       () =>
       // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
         buttonCounter += 3
@@ -131,7 +131,7 @@ class EventHandlerSpec extends FlatSpec with RunOnApplicationThread {
     assert(groupCounter === 0)
     assert(buttonCounter === 6)
 
-    val groupSubscription = group.filterEvent(ActionEvent.ACTION) {
+    val groupSubscription = group.filterEvent(ActionEvent.Action) {
       (ae: ActionEvent) =>
       // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
         groupCounter += 1
