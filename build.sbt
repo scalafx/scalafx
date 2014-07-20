@@ -12,7 +12,7 @@ lazy val scalafx = Project(
     description := "The ScalaFX framework",
     fork in run := true,
     scalacOptions in (Compile, doc) ++= Seq (
-      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md", "-diagrams"
+      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md"
     )
   ) ++ sonatypeSettings
 )
