@@ -30,6 +30,7 @@ import scala.language.implicitConversions
 import javafx.scene.{ control => jfxsc }
 import scalafx.scene.control.cell.CellIncludes
 import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.collections.ObservableBuffer
 
 object ControlIncludes extends ControlIncludes
 
@@ -43,7 +44,7 @@ object ControlIncludes extends ControlIncludes
  * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/
  * @define END ]]` instance to its $SFX counterpart.
  *
- * @define TTYPE The type of the 
+ * @define TTYPE The type of the
  * @define ACCD Accordion
  * @define TGGR ToggleGroup
  * @define TGBT ToggleButton
@@ -78,6 +79,7 @@ object ControlIncludes extends ControlIncludes
  * @define MSMD MultipleSelectionModel
  * @define ORST OverrunStyle
  * @define PGNT Pagination
+ * @define RFBS ResizeFeaturesBase
  * @define SCPN ScrollPane
  * @define SCSB ScrollPane.ScrollBarPolicy
  * @define SCBR ScrollBar
@@ -89,6 +91,7 @@ object ControlIncludes extends ControlIncludes
  * @define TBST TableColumn.SortType
  * @define TCCD TableColumn.CellDataFeatures
  * @define TCCE TableColumn.CellEditEvent
+ * @define TBCB TableColumnBase
  * @define TBPS TablePosition
  * @define TBRW TableRow
  * @define TBVW TableView
@@ -258,7 +261,7 @@ trait ControlIncludes
    * @return $SFX $CBBX
    */
   implicit def jfxComboBox2sfx[T](v: jfxsc.ComboBox[T]) = new ComboBox[T](v)
-  
+
   /**
    * $START$DTCL.html $DTCL$END
    *
@@ -267,7 +270,7 @@ trait ControlIncludes
    * @return $SFX $DTCL
    */
   implicit def jfxDateCell2sfx(v: jfxsc.DateCell) = new DateCell(v)
-  
+
   /**
    * $START$DTPR.html $DTPR$END
    *
@@ -441,7 +444,7 @@ trait ControlIncludes
    * @return $SFX $SLMD
    */
   implicit def jfxSelectionMode2sfx(e: jfxsc.SelectionMode) = SelectionMode.jfxEnum2sfx(e)
-  
+
   /**
    * $START$SLDR.html $SLDR$END
    *
@@ -530,6 +533,15 @@ trait ControlIncludes
   implicit def jfxTableView2sfx[S](tv: jfxsc.TableView[S]) = new TableView[S](tv)
 
   /**
+   * $START$RFBS.html $RFBS$END
+   *
+   * @tparam S $TTYPE $RFBS
+   * @param rf $JFX $RFBS
+   * @return $SFX $RFBS
+   */
+  implicit def jfxResizeFeaturesBase2sfx[S](rf: jfxsc.ResizeFeaturesBase[S]): ResizeFeaturesBase[S] = new ResizeFeaturesBase[S](rf)
+
+  /**
    * $START$TVRF.html $TVRF$END
    *
    * @tparam S $TTYPE $TVRF
@@ -547,6 +559,21 @@ trait ControlIncludes
    */
   implicit def jfxTableViewSelectionModel2sfx[S](tvsm: jfxsc.TableView.TableViewSelectionModel[S]) = new TableView.TableViewSelectionModel[S](tvsm) {}
 
+  /*
+   * $START$TBCB.html $TBCB$END
+   *
+   * @tparam T The type of the UI control (e.g. the type of the 'row').
+   * @tparam S The type of the content in all cells in this table column.
+   * @param tbcb $JFX $TBCB
+   * @return $SFX $TBCB
+   *
+  implicit def jfxTableColumnBase2sfx[S, T](tbcb: jfxsc.TableColumnBase[S, T]): TableColumnBase[S, T] =
+    new TableColumnBase[S, T](tbcb) {
+      def columns: ObservableBuffer[jfxsc.TableColumnBase[S, _]] = {
+        ObservableBuffer(tbcb.getColumns)
+      }
+    }
+*/
   /**
    * $START$TVFM.html $TVFM$END
    *
@@ -596,7 +623,7 @@ trait ControlIncludes
   implicit def jfxSkin2sfxSkin[C <: jfxsc.Skinnable](s: jfxsc.Skin[C]) = new Skin[C] {
     override val delegate = s
   }
-  
+
   /**
    * $START$SNBE.html $SNBE$END
    *
@@ -663,7 +690,7 @@ trait ControlIncludes
    * @return $SFX $SCMD
    */
   implicit def jfxSelectionModel2sfx[T](v: jfxsc.SelectionModel[T]) = new SelectionModel[T](v) {}
-  
+
   /**
    * $START$SSMD.html $SSMD$END
    *
@@ -722,9 +749,9 @@ trait ControlIncludes
   implicit def jfxTextField2sfx(v: jfxsc.TextField) = new TextField(v)
 
   /**
-   * Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TXFD.html $TXFD]]` to a 
+   * Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TXFD.html $TXFD]]` to a
    * TextFieldProperty.
-   * 
+   *
    * @param p A ReadOnlyObjectProperty containing a $TXFD
    * @return a new TextFieldProperty
    */
