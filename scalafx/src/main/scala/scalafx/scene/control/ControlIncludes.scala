@@ -115,6 +115,7 @@ object ControlIncludes extends ControlIncludes
  * @define SPDV SplitPane.Divider
  * @define TAB  Tab
  * @define TBPN TabPane
+ * @define TBFM TableFocusModel
  * @define TPCP TabPane.TabClosingPolicy
  * @define TXFD TextField
  * @define TXAR TextArea
@@ -582,6 +583,18 @@ trait ControlIncludes
    * @return $SFX $TVFM
    */
   implicit def jfxTableViewFocusModel2sfx[S](tvfm: jfxsc.TableView.TableViewFocusModel[S]) = new TableView.TableViewFocusModel[S](tvfm)
+
+  /**
+   * $START$TBFM.html $TBFM$END
+   *
+   * @tparam T The type of the underlying data model for the UI control.
+   * @tparam TC The concrete subclass of [[scalafx.scene.control.TableColumnBase]] that is used by
+   *  the underlying UI control (e.g. [[scalafx.scene.control.TableColumn]] or `TreeTableColumn`).
+   * @param tfm $JFX $TBFM
+   * @return $SFX $TBFM
+   * @since 8.0
+   */
+  implicit def jfxTableFocusModel2sfx[T, TC <: jfxsc.TableColumnBase[T, _]](tfm: jfxsc.TableFocusModel[T, TC]) = new TableFocusModel[T, TC](tfm) {}
 
   /**
    * $START$TTPN.html $TTPN$END

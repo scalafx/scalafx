@@ -243,7 +243,7 @@ object TableView {
    * @param delegate $JFX $TVFM $CONSPARAM
    */
   class TableViewFocusModel[S](override val delegate: jfxsc.TableView.TableViewFocusModel[S])
-    extends FocusModel[S](delegate)
+    extends TableFocusModel[S, jfxsc.TableColumn[S, _]](delegate)
     with SFXDelegate[jfxsc.TableView.TableViewFocusModel[S]] {
 
     /**
@@ -278,39 +278,6 @@ object TableView {
     def focus(pos: TablePosition[_, _]) {
       delegate.focus(pos)
     }
-
-    /**
-     * Attempts to move focus to the cell above the currently focused cell.
-     */
-    def focusAboveCell() {
-      delegate.focusAboveCell()
-    }
-
-    /**
-     * Attempts to move focus to the cell below the currently focused cell.
-     */
-    def focusBelowCell() {
-      delegate.focusBelowCell()
-    }
-
-    /**
-     * Attempts to move focus to the cell to the left of the currently focused cell.
-     */
-    def focusLeftCell() {
-      delegate.focusLeftCell()
-    }
-
-    /**
-     * Attempts to move focus to the cell to the right of the the currently focused cell.
-     */
-    def focusRightCell() {
-      delegate.focusRightCell()
-    }
-
-    /**
-     * Tests whether the row / cell at the given location currently has the focus within the TableView.
-     */
-    //    def isFocused(index: Int, column: TableColumn[S, _]) = delegate.isFocused(index, column)
 
   }
 
