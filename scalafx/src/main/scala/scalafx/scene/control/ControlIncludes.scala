@@ -94,6 +94,7 @@ object ControlIncludes extends ControlIncludes
  * @define TCCE TableColumn.CellEditEvent
  * @define TBCB TableColumnBase
  * @define TBPS TablePosition
+ * @define TBPB TablePositionBase
  * @define TBRW TableRow
  * @define TBVW TableView
  * @define TVRF TableView.ResizeFeatures
@@ -523,6 +524,16 @@ trait ControlIncludes
    * @return $SFX $TBPS
    */
   implicit def jfxTablePosition2sfx[S, T](tp: jfxsc.TablePosition[S, T]) = new TablePosition[S, T](tp)
+
+  /**
+   * $START$TBPB.html $TBPB$END
+   *
+   * @tparam TC $TTYPE $TBPB
+   * @param tbp $JFX $TBPB
+   * @return $SFX $TBPB
+   * @since 8.0
+   */
+  implicit def jfxTablePositionBase2sfx[TC <: jfxsc.TableColumnBase[_, _]](tpb: jfxsc.TablePositionBase[TC]) = new TablePositionBase[TC](tpb) {}
 
   /**
    * $START$TBRW.html $TBRW$END

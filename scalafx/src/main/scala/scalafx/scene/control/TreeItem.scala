@@ -171,6 +171,8 @@ object TreeItem {
 
   /** The general EventType used when the TreeItem receives a modification
     * that results in the number of children being visible changes.
+    * 
+    * @since 8.0  
     */
   def expandedItemCountChangeEvent = jfxsc.TreeItem.expandedItemCountChangeEvent
 

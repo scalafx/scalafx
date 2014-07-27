@@ -27,19 +27,38 @@
 package scalafx.scene.control
 
 import scala.language.implicitConversions
+
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
+/**
+ * Object companion for [[scalafx.scene.control.TablePosition]]
+ */
 object TablePosition {
+  /**
+   * Converts a ScalaFX TablePosition into a JavaFX version.
+   *
+   * @param tpb ScalaFX TablePosition
+   * @return JavaFX TablePosition
+   * @tparam S The type of the items contained within the TableView (i.e. the same generic type as the S in TableView<S>).
+   * @tparam T The type of the items contained within the TableColumn.
+   */
   implicit def sfxTablePosition2jfx[S, T](tp: TablePosition[S, T]) = tp.delegate
+
 }
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TablePosition.html]].
+ *
+ * @constructor creates a new ScalaFX TablePosition from a JavaFX one.
+ * @param JavaFX TablePositionBase to be wrapped
+ * @tparam S The type of the items contained within the TableView (i.e. the same generic type as the S in TableView<S>).
+ * @tparam T The type of the items contained within the TableColumn.
  */
 class TablePosition[S, T](override val delegate: jfxsc.TablePosition[S, T])
-  extends SFXDelegate[jfxsc.TablePosition[S, T]] {
+  extends TablePositionBase[jfxsc.TableColumn[S, T]](delegate)
+  with SFXDelegate[jfxsc.TablePosition[S, T]] {
 
   /**
    * Constructs a TablePosition instance to represent the given row/column position in the given TableView instance.
@@ -48,22 +67,8 @@ class TablePosition[S, T](override val delegate: jfxsc.TablePosition[S, T])
     this(new jfxsc.TablePosition(tableView, row, tableColumn))
 
   /**
-   * The column index that this TablePosition represents in the TableView.
-   */
-  def column = delegate.getColumn
-
-  /**
-   * The row that this TablePosition represents in the TableView.
-   */
-  def row = delegate.getRow
-
-  /**
-   * The TableColumn that this TablePosition represents in the TableView.
-   */
-  def tableColumn: TableColumn[S, T] = delegate.getTableColumn
-
-  /**
    * The TableView that this TablePosition is related to.
    */
   def tableView: TableView[S] = delegate.getTableView
+
 }

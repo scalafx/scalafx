@@ -26,20 +26,55 @@
  */
 package scalafx.scene.control
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+import scala.language.implicitConversions
 
 import javafx.scene.{ control => jfxsc }
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.delegate.SFXDelegate
 
 /**
- * TablePositionSpec tests.
+ * Object companion for [[scalafx.scene.control.TablePositionBase]]
+ * @since 8.0
  */
-@RunWith(classOf[JUnitRunner])
-class TablePositionSpec[S, T]
-  extends SimpleSFXDelegateSpec[jfxsc.TablePosition[S, T], TablePosition[S, T]](classOf[jfxsc.TablePosition[S, T]], classOf[TablePosition[S, T]]) {
+object TablePositionBase {
 
-  override def getJavaClassInstance = new jfxsc.TablePosition(null, 0, null)
+  /**
+   * Converts a ScalaFX TablePositionBase into a JavaFX version.
+   * 
+   * @param tpb ScalaFX TablePositionBase 
+   * @return JavaFX TablePositionBase
+ * @since 8.0
+   */
+  implicit def sfxTablePositionBase2jfx[TC <: jfxsc.TableColumnBase[_, _]](tpb: TablePositionBase[TC]): jfxsc.TablePositionBase[TC] =
+    tpb.delegate
+
+}
+
+/**
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TablePosition.html]].
+ * 
+ * @constructor creates a new ScalaFX TablePositionBase from a JavaFX one.
+ * @param delegate JavaFX TablePositionBase 
+ * @tparam TC A JavaFX TableColumnBase subclass
+ * @since 8.0
+ */
+abstract class TablePositionBase[TC <: jfxsc.TableColumnBase[_, _]](override val delegate: jfxsc.TablePositionBase[TC])
+  extends SFXDelegate[jfxsc.TablePositionBase[TC]] {
+
+  //  protected	TablePositionBase(int row, TC tableColumn)
+
+  /**
+   * The column index that this TablePosition represents in the TableView.
+   */
+  def column: Int = delegate.getColumn
+
+  /**
+   * The row that this TablePosition represents in the TableView.
+   */
+  def row: Int = delegate.getRow
+
+  /**
+   * The TableColumn that this TablePosition represents in the TableView.
+   */
+  def tableColumn: TC = delegate.getTableColumn
 
 }
