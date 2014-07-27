@@ -83,6 +83,7 @@ object ControlIncludes extends ControlIncludes
  * @define SCPN ScrollPane
  * @define SCSB ScrollPane.ScrollBarPolicy
  * @define SCBR ScrollBar
+ * @define SCTE ScrollToEvent
  * @define SLMD SelectionMode
  * @define SLDR Slider
  * @define SPMB SplitMenuButton
@@ -421,6 +422,14 @@ trait ControlIncludes
    * @return $SFX $SCPN
    */
   implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = new ScrollPane(s)
+
+  /**
+   * $START$SCTE.html $SCTE$END
+   *
+   * @param ev $JFX $SCTE
+   * @return $SFX $SCTE
+   */
+  implicit def jfxScrollToEvent2sfx[T](ev: jfxsc.ScrollToEvent[T]): ScrollToEvent[T] = new ScrollToEvent[T](ev)
 
   /**
    * $START$SCSB.html $SCSB$END
