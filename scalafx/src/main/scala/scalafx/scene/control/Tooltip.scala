@@ -26,43 +26,58 @@
  */
 package scalafx.scene.control
 
+import scala.collection.JavaConversions._
+import scala.collection.mutable.Buffer
 import scala.language.implicitConversions
-import javafx.scene.{ control => jfxsc, text => jfxst }
-import javafx.{scene => jfxs }
+
+import javafx.{ css => jfxcss }
+import javafx.{ scene => jfxs }
+import jfxs.{ control => jfxsc }
+import jfxs.{ text => jfxst }
 import scalafx.Includes._
-import scalafx.scene.Node._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.StringProperty
-import scalafx.scene.text.Font.sfxFont2jfx
+import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 import scalafx.scene.text.Font
 import scalafx.scene.text.TextAlignment
-import scalafx.scene.Node
-import scalafx.delegate.SFXDelegate
 
+/**
+ * Object companion for [[scalafx.scene.control.PopupControl]].
+ */
 object Tooltip {
 
+  /**
+   * Converts a ScalaFX Tooltip to its JavaFX counterpart
+   *
+   * @param v ScalaFX Tooltip
+   * @return JavaFX Tooltip
+   */
   implicit def sfxTooltip2jfx(v: Tooltip) = if (v == null) null else v.delegate
-
-  def apply(string: String) = new Tooltip {
-    text = string
-  }
 
   /**
    * Generates a Simple Tooltip with default properties from a text.
    *
    * @param string Tooltip's text.
    */
-  implicit def stringToTooltip(string: String) = new Tooltip {
-    text() = string
+  def apply(string: String) = new Tooltip {
+    text = string
   }
 
   /**
-   * Associates the given Tooltip with a given Node. The tooltip can then behave similar to when it is set on any Control.
-   * A single tooltip can be associated with multiple nodes.
+   * Converts a String to a Simple Tooltip with default properties.
+   *
+   * @param string Tooltip's text.
    */
+  implicit def stringToTooltip(string: String) = Tooltip(string)
+
+  /**
+   * Just to satisfy Spec tests.
+   */
+  @deprecated("Use Tooltip.install(Node, Tooltip)", "2.1")
   def install(node: jfxs.Node, tooltip: jfxsc.Tooltip) {
     jfxsc.Tooltip.install(node, tooltip)
   }
@@ -76,8 +91,9 @@ object Tooltip {
   }
 
   /**
-   * Removes the association of the given Tooltip on a specified Node. Hence hovering on the node will no longer result in showing of the tooltip.
+   * Just to satisfy Spec tests.
    */
+  @deprecated("Use Tooltip.uninstall(Node, Tooltip)", "2.1")
   def uninstall(node: jfxs.Node, tooltip: jfxsc.Tooltip) {
     jfxsc.Tooltip.uninstall(node, tooltip)
   }
@@ -89,9 +105,26 @@ object Tooltip {
     jfxsc.Tooltip.uninstall(node, tooltip)
   }
 
+  /**
+   * The CssMetaData associated with this class, which may include the CssMetaData of its super
+   * classes.
+   *
+   * @since 8.0
+   */
+  def classCssMetaData: Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] =
+    jfxsc.Tooltip.getClassCssMetaData()
+
 }
 
-class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip) extends PopupControl(delegate) with SFXDelegate[jfxsc.Tooltip] {
+/**
+ * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Tooltip.html Tooltip]].
+ *
+ * @constructor Creates a new ScalaFX Tooltip from its JavaFX counterpart.
+ * @param delegate JavaFX Tooltip to be wrapped. It defaul value is a new JavaFX Tooltip with no text.
+ */
+class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip)
+  extends PopupControl(delegate)
+  with SFXDelegate[jfxsc.Tooltip] {
 
   /**
    * Typically, the tooltip is "activated" when the mouse moves over a Control.

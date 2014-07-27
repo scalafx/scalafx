@@ -32,13 +32,20 @@ import org.scalatest.junit.JUnitRunner
 import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.testutil.{ RunOnApplicationThread, SimpleSFXDelegateSpec }
+import org.scalatest.Assertions
 
 /**
  * Tooltip Spec tests.
- *
- *
  */
 @RunWith(classOf[JUnitRunner])
 class TooltipSpec
   extends SimpleSFXDelegateSpec[jfxsc.Tooltip, Tooltip](classOf[jfxsc.Tooltip], classOf[Tooltip])
-  with RunOnApplicationThread
+  with RunOnApplicationThread {
+
+  it should "generate a new Tooltip from a String" in {
+    val text = "Tooltip text"
+    val tooltip: Tooltip = text
+    assert(tooltip.text.value == text)
+  }
+
+}
