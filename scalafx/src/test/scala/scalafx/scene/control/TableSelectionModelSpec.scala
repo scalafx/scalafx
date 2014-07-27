@@ -34,16 +34,16 @@ import scalafx.Includes._
 import scalafx.testutil.{ RunOnApplicationThread, SimpleSFXDelegateSpec }
 
 /**
- * TableViewSelectionModel tests.
+ * TableSelectionModel tests.
  */
 @RunWith(classOf[JUnitRunner])
-class TableViewTableViewSelectionModelSpec[S]
-  extends SimpleSFXDelegateSpec[jfxsc.TableView.TableViewSelectionModel[S], TableView.TableViewSelectionModel[S]](classOf[jfxsc.TableView.TableViewSelectionModel[S]], classOf[TableView.TableViewSelectionModel[S]]) {
+class TableViewTableSelectionModelSpec[T]
+  extends SimpleSFXDelegateSpec[jfxsc.TableSelectionModel[T], TableSelectionModel[T]](classOf[jfxsc.TableSelectionModel[T]], classOf[TableSelectionModel[T]]) {
 
-  override def getScalaClassInstance = new TableView.TableViewSelectionModel[S](this.getJavaClassInstance) {}
+  override def getScalaClassInstance = new TableSelectionModel[T](this.getJavaClassInstance) {}
 
   override def getJavaClassInstance = {
-    val jtv = new jfxsc.TableView[S]
+    val jtv = new jfxsc.TableView[T]
     jtv.getSelectionModel
   }
 

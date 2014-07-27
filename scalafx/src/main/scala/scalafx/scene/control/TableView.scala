@@ -27,15 +27,19 @@
 package scalafx.scene.control
 
 import scala.language.implicitConversions
+
 import javafx.{ event => jfxe }
 import javafx.{ scene => jfxs }
 import javafx.scene.{ control => jfxsc }
 import javafx.{ util => jfxu }
 import scalafx.Includes._
-import scalafx.beans.property.{ DoubleProperty, BooleanProperty, ObjectProperty, ReadOnlyObjectProperty }
+import scalafx.beans.property.BooleanProperty
+import scalafx.beans.property.DoubleProperty
+import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.collections.ObservableBuffer
-import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 
 /**
  * $OBJCOMPSTA$TV$OBJCOMPEND
@@ -131,25 +135,8 @@ object TableView {
    * @param delegate $JFX $TVSM $CONSPARAM
    */
   abstract class TableViewSelectionModel[S](override val delegate: jfxsc.TableView.TableViewSelectionModel[S])
-    extends MultipleSelectionModel[S](delegate)
+    extends TableSelectionModel[S](delegate)
     with SFXDelegate[jfxsc.TableView.TableViewSelectionModel[S]] {
-
-    /*
-     * Creates a default TableViewFocusModel instance that will be used to manage focus of the provided TableView
-     * control.
-     * 
-     * @param tableView The TableView upon which this selection model should operate.
-     * @TODO: Implements this constuctor ...
-     */
-    //    def this(tableView: TableView[S]) = this(new jfxsc.TableView.TableViewSelectionModel(tableView){}) 
-
-    /**
-     * A boolean property used to represent whether the TableView is in row or cell selection modes.
-     */
-    def cellSelectionEnabled: BooleanProperty = delegate.cellSelectionEnabledProperty
-    def cellSelectionEnabled_=(v: Boolean) {
-      cellSelectionEnabled() = v
-    }
 
     /**
      * Clears all selection, and then selects the cell at the given row/column intersection.
@@ -165,6 +152,12 @@ object TableView {
       delegate.clearSelection(row, column)
     }
 
+    def focus(row: Int) {
+      delegate.focus(row)
+    }
+
+    def focusedIndex: Int = delegate.getFocusedIndex
+
     /**
      * A read-only ObservableList representing the currently selected cells in this TableView.
      */
@@ -177,12 +170,6 @@ object TableView {
     def tableView: TableView[S] = delegate.getTableView
 
     /**
-     * Convenience function which tests whether the given row and column index is currently selected in this
-     * TableView instance.
-     */
-    def isSelected(row: Int, column: TableColumn[S, _]) = delegate.isSelected(row, column)
-
-    /**
      * Selects the cell at the given row/column intersection.
      */
     def select(row: Int, column: TableColumn[S, _]) {
@@ -190,34 +177,10 @@ object TableView {
     }
 
     /**
-     * Selects the cell directly above the currently selected cell.
+     * Selects the cell at the given row/column intersection.
      */
-    def selectAboveCell() {
-      delegate.selectAboveCell()
-    }
-
-    /**
-     * Selects the cell directly below the currently selected cell.
-     */
-    def selectBelowCell() {
-      delegate.selectBelowCell()
-    }
-
-    /**
-     * Selects the cell to the left of the currently selected cell.
-     */
-    def selectLeftCell() {
-      delegate.selectLeftCell()
-    }
-
-    /**
-     * Selects the cell to the right of the currently selected cell.
-     */
-    def selectRightCell() {
-      delegate.selectRightCell()
-    }
-
-    delegate.selectLast()
+    def isSelected(row: Int, column: TableColumn[S, _]): Boolean =
+      delegate.isSelected(row, column)
 
   }
 

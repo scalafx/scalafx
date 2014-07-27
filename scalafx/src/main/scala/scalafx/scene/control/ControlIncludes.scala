@@ -95,6 +95,7 @@ object ControlIncludes extends ControlIncludes
  * @define TBCB TableColumnBase
  * @define TBPS TablePosition
  * @define TBPB TablePositionBase
+ * @define TBSM TableSelectionModel
  * @define TBRW TableRow
  * @define TBVW TableView
  * @define TVRF TableView.ResizeFeatures
@@ -579,6 +580,15 @@ trait ControlIncludes
    * @return $SFX $TVSM
    */
   implicit def jfxTableViewSelectionModel2sfx[S](tvsm: jfxsc.TableView.TableViewSelectionModel[S]) = new TableView.TableViewSelectionModel[S](tvsm) {}
+
+  /**
+   * $START$TBSM.html $TBSM$END
+   *
+   * @tparam T $TTYPE $TBSM
+   * @param tsm $JFX $TBSM
+   * @return $SFX $TBSM
+   */
+  implicit def jfxTableSelectionModel2sfx[T](tsm: jfxsc.TableSelectionModel[T]) = new TableSelectionModel[T](tsm) {}
 
   /*
    * $START$TBCB.html $TBCB$END

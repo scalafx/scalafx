@@ -39,10 +39,10 @@ object TablePositionBase {
 
   /**
    * Converts a ScalaFX TablePositionBase into a JavaFX version.
-   * 
-   * @param tpb ScalaFX TablePositionBase 
+   *
+   * @param tpb ScalaFX TablePositionBase
    * @return JavaFX TablePositionBase
- * @since 8.0
+   * @since 8.0
    */
   implicit def sfxTablePositionBase2jfx[TC <: jfxsc.TableColumnBase[_, _]](tpb: TablePositionBase[TC]): jfxsc.TablePositionBase[TC] =
     tpb.delegate
@@ -51,9 +51,9 @@ object TablePositionBase {
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TablePosition.html]].
- * 
+ *
  * @constructor creates a new ScalaFX TablePositionBase from a JavaFX one.
- * @param delegate JavaFX TablePositionBase 
+ * @param delegate JavaFX TablePositionBase
  * @tparam TC A JavaFX TableColumnBase subclass
  * @since 8.0
  */
