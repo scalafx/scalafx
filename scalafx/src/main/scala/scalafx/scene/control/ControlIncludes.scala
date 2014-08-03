@@ -131,6 +131,7 @@ object ControlIncludes extends ControlIncludes
  * @define TRVW TreeView
  * @define TVEE TreeView.EditEvent
  * @define TRTB TreeTableRow
+ * @define SREV SortEvent
  */
 trait ControlIncludes
   extends CellIncludes {
@@ -887,5 +888,14 @@ trait ControlIncludes
    */
   implicit def jfxTreeTableRow2sfx[T](ttr: jfxsc.TreeTableRow[T]): TreeTableRow[T] =
     new TreeTableRow[T](ttr)
+
+  /**
+   * $START$SREV.html $SREV$END
+   *
+   * @tparam C $TTYPE $SREV
+   * @param se $JFX $SREV
+   * @return $SFX $SREV
+   */
+  implicit def jfxSortEvent2sfx[C](se: jfxsc.SortEvent[C]): SortEvent[C] = new SortEvent[C](se)
 
 }
