@@ -130,6 +130,7 @@ object ControlIncludes extends ControlIncludes
  * @define TIME TreeItem.TreeModificationEvent
  * @define TRVW TreeView
  * @define TVEE TreeView.EditEvent
+ * @define TRTB TreeTableRow
  */
 trait ControlIncludes
   extends CellIncludes {
@@ -876,4 +877,15 @@ trait ControlIncludes
    * @return $SFX $TVEE
    */
   implicit def jfxTreeViewEditEvent2sfx[T](t: jfxsc.TreeView.EditEvent[T]) = new TreeView.EditEvent[T](t)
+
+  /**
+   * $START$TRTB.html $TRTB$END
+   *
+   * @tparam T $TTYPE $TRTB
+   * @param ttr $JFX $TRTB
+   * @return $SFX $TRTB
+   */
+  implicit def jfxTreeTableRow2sfx[T](ttr: jfxsc.TreeTableRow[T]): TreeTableRow[T] =
+    new TreeTableRow[T](ttr)
+
 }
