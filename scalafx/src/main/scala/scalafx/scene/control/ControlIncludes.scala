@@ -130,8 +130,9 @@ object ControlIncludes extends ControlIncludes
  * @define TIME TreeItem.TreeModificationEvent
  * @define TRVW TreeView
  * @define TVEE TreeView.EditEvent
- * @define TRTB TreeTableRow
+ * @define TTRW TreeTableRow
  * @define SREV SortEvent
+ * @define TTCL TreeTableCell
  */
 trait ControlIncludes
   extends CellIncludes {
@@ -880,14 +881,27 @@ trait ControlIncludes
   implicit def jfxTreeViewEditEvent2sfx[T](t: jfxsc.TreeView.EditEvent[T]) = new TreeView.EditEvent[T](t)
 
   /**
-   * $START$TRTB.html $TRTB$END
+   * $START$TTRW.html $TTRW$END
    *
-   * @tparam T $TTYPE $TRTB
-   * @param ttr $JFX $TRTB
-   * @return $SFX $TRTB
+   * @tparam T $TTYPE $TTRW
+   * @param ttr $JFX $TTRW
+   * @return $SFX $TTRW
+   * @since 8.0
    */
   implicit def jfxTreeTableRow2sfx[T](ttr: jfxsc.TreeTableRow[T]): TreeTableRow[T] =
     new TreeTableRow[T](ttr)
+
+  /**
+   * $START$TTCL.html $TTCL$END
+   *
+   * @tparam S 1st $TTYPE $TTCL
+   * @tparam T 2st $TTYPE $TTCL
+   * @param ttc $JFX $TTCL
+   * @return $SFX $TTCL
+   * @since 8.0
+   */
+  implicit def jfxTreeTableCell2sfx[S, T](ttc: jfxsc.TreeTableCell[S, T]): TreeTableCell[S, T] =
+    new TreeTableCell[S, T](ttc)
 
   /**
    * $START$SREV.html $SREV$END
