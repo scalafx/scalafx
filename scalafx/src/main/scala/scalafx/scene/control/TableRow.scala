@@ -36,7 +36,7 @@ object TableRow {
 /**
  * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TableRow.html]].
  */
-class TableRow[T](override val delegate: jfxsc.TableRow[T] = new jfxsc.TableRow)
+class TableRow[T](override val delegate: jfxsc.TableRow[T] = new jfxsc.TableRow[T])
   extends IndexedCell[T]
   with SFXDelegate[jfxsc.TableRow[T]] {
 
