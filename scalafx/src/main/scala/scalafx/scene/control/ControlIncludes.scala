@@ -133,6 +133,7 @@ object ControlIncludes extends ControlIncludes
  * @define TTRW TreeTableRow
  * @define SREV SortEvent
  * @define TTCL TreeTableCell
+ * @define TRSM TreeSortMode
  */
 trait ControlIncludes
   extends CellIncludes {
@@ -911,5 +912,14 @@ trait ControlIncludes
    * @return $SFX $SREV
    */
   implicit def jfxSortEvent2sfx[C](se: jfxsc.SortEvent[C]): SortEvent[C] = new SortEvent[C](se)
+
+  /**
+   * $START$TRSM.html $TRSM$END
+   *
+   * @param tsm $JFX $TRSM
+   * @return $SFX $TRSM
+   * @since 8.0
+   */
+  implicit def jfxTreeSortMode2sfx(tsm: jfxsc.TreeSortMode) = TreeSortMode.jfxEnum2sfx(tsm)
 
 }
