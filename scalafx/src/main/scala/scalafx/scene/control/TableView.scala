@@ -275,8 +275,12 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
    */
   def columnResizePolicy: ObjectProperty[TableView.ResizeFeatures[S] => Boolean] =
     ObjectProperty((features: TableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features))
-  def columnResizePolicy_=(v: TableView.ResizeFeatures[S] => Boolean) {
-    columnResizePolicy() = v
+  def columnResizePolicy_=(p: TableView.ResizeFeatures[_] => Boolean) {
+    delegate.columnResizePolicyProperty().setValue(new jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], java.lang.Boolean] {
+      def call(v: jfxsc.TableView.ResizeFeatures[_]): java.lang.Boolean = {
+        p(v)
+      }
+    })
   }
 
   /** The comparator property is a read-only property that is representative of the current state of the `sort order` list. */
@@ -332,7 +336,11 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   def rowFactory: ObjectProperty[TableView[S] => TableRow[S]] =
     ObjectProperty((view: TableView[S]) => delegate.rowFactoryProperty.value.call(view))
   def rowFactory_=(factory: TableView[S] => TableRow[S]) {
-    rowFactory() = factory
+    delegate.rowFactoryProperty.setValue(new jfxu.Callback[jfxsc.TableView[S], jfxsc.TableRow[S]] {
+      def call(v: jfxsc.TableView[S]): jfxsc.TableRow[S] = {
+        factory(v)
+      }
+    })
   }
 
   /**
