@@ -134,6 +134,7 @@ object ControlIncludes extends ControlIncludes
  * @define SREV SortEvent
  * @define TTCL TreeTableCell
  * @define TRSM TreeSortMode
+ * @define TRTP TreeTablePosition
  */
 trait ControlIncludes
   extends CellIncludes {
@@ -921,5 +922,16 @@ trait ControlIncludes
    * @since 8.0
    */
   implicit def jfxTreeSortMode2sfx(tsm: jfxsc.TreeSortMode) = TreeSortMode.jfxEnum2sfx(tsm)
+
+  /**
+   * $START$TRTP.html $TRTP$END
+   *
+   * @tparam S The type of the TreeItem instances contained within the TreeTableView.
+   * @tparam T The type of the items contained within the TreeTableColumn.
+   * @param ttp $JFX $TRTP
+   * @return $SFX $TRTP
+   */
+  implicit def jfxTreeTablePosition2sfx[S, T](ttp: jfxsc.TreeTablePosition[S, T]): TreeTablePosition[S, T] = 
+    new TreeTablePosition[S, T](ttp)
 
 }
