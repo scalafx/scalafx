@@ -117,13 +117,28 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
   def showOpenDialog(ownerWindow: Window): File = delegate.showOpenDialog(ownerWindow)
 
   /**
+   * Shows a new file open dialog.
+   */
+  def showOpenDialog(): File = delegate.showOpenDialog(null)
+
+  /**
    * Shows a new file open dialog in which multiple files can be selected.
    */
   def showOpenMultipleDialog(ownerWindow: Window): Seq[File] = delegate.showOpenMultipleDialog(ownerWindow)
 
   /**
+   * Shows a new file open dialog in which multiple files can be selected.
+   */
+  def showOpenMultipleDialog(): Seq[File] = delegate.showOpenMultipleDialog(null)
+
+  /**
    * Shows a new file save dialog.
    */
   def showSaveDialog(ownerWindow: Window): File = delegate.showSaveDialog(ownerWindow)
+
+  /**
+   * Shows a new file save dialog.
+   */
+  def showSaveDialog(): File = delegate.showSaveDialog(null)
 
 }

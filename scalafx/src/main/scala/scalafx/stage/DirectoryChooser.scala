@@ -61,4 +61,9 @@ class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.D
    * Shows a new directory selection dialog.
    */
   def showDialog(ownerWindow: Window): File = delegate.showDialog(ownerWindow)
+
+  /**
+   * Shows a new directory selection dialog.
+   */
+  def showDialog(): File = delegate.showDialog(null)
 }
