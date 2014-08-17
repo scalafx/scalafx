@@ -35,7 +35,7 @@ import scalafx.beans.property.BooleanProperty
 import collection.JavaConversions._
 
 object MenuBar {
-  implicit def sfxMenuBar2jfx(cb: MenuBar) = cb.delegate
+  implicit def sfxMenuBar2jfx(cb: MenuBar) = if (cb != null) cb.delegate else null
 }
 
 class MenuBar(override val delegate: jfxsc.MenuBar = new jfxsc.MenuBar()) extends Control(delegate) with SFXDelegate[jfxsc.MenuBar] {

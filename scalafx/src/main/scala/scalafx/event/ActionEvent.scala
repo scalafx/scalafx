@@ -42,7 +42,7 @@ object ActionEvent {
    * @param ie ScalaFX ActionEvent
    * @return JavaFX ActionEvent
    */
-  implicit def sfxActionEvent2jfx(ie: ActionEvent): jfxe.ActionEvent = ie.delegate
+  implicit def sfxActionEvent2jfx(ie: ActionEvent): jfxe.ActionEvent = if (ie != null) ie.delegate else null
 
   @deprecated("Use scalafx.event.ActionEvent.Any instead", "8.0")
   val ACTION: EventType[jfxe.ActionEvent] = jfxe.ActionEvent.ACTION

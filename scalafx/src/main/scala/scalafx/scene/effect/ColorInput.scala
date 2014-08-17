@@ -36,7 +36,7 @@ import scalafx.delegate.PositionDelegate
 import scalafx.delegate.DimensionDelegate
 
 object ColorInput {
-  implicit def sfxColorInput2jfx(ci: ColorInput) = ci.delegate
+  implicit def sfxColorInput2jfx(ci: ColorInput) = if (ci != null) ci.delegate else null
 }
 
 class ColorInput(override val delegate: jfxse.ColorInput = new jfxse.ColorInput)

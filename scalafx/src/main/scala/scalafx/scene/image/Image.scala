@@ -35,7 +35,7 @@ import scalafx.beans.property.{ReadOnlyObjectProperty, ReadOnlyBooleanProperty, 
 import scalafx.delegate.SFXDelegate
 
 object Image {
-  implicit def sfxImage2jfx(i: Image) = i.delegate
+  implicit def sfxImage2jfx(i: Image) = if (i != null) i.delegate else null
 }
 
 class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image] {

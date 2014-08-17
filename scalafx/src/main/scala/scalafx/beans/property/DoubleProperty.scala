@@ -27,15 +27,15 @@
 package scalafx.beans.property
 
 import scala.language.implicitConversions
-import javafx.beans.{ property => jfxbp }
+import javafx.beans.{property => jfxbp}
 import scalafx.delegate.SFXDelegate
 
 object DoubleProperty {
-  implicit def sfxDoubleProperty2jfx(dp: DoubleProperty) = dp.delegate
+  implicit def sfxDoubleProperty2jfx(dp: DoubleProperty) = if (dp != null) dp.delegate else null
 
   /**
    * Creates a new DoubleProperty instance using the SimpleDoubleProperty as the target.
-   * 
+   *
    * @param value the initial value
    * @return      the observable instance
    */
@@ -49,7 +49,7 @@ class DoubleProperty(override val delegate: jfxbp.DoubleProperty = new jfxbp.Sim
 
   def this(bean: Object, name: String) = this(new jfxbp.SimpleDoubleProperty(bean, name))
 
-  def this(bean: Object, name: String, initialValue: Double) = 
+  def this(bean: Object, name: String, initialValue: Double) =
     this(new jfxbp.SimpleDoubleProperty(bean, name, initialValue))
 
   def value_=(v: Double) {

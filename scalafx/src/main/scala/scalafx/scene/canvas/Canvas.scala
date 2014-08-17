@@ -34,7 +34,7 @@ import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
 object Canvas {
-  implicit def sfxCanvas2jfx(c: Canvas): jfxsc.Canvas = c.delegate
+  implicit def sfxCanvas2jfx(c: Canvas): jfxsc.Canvas = if (c != null) c.delegate else null
 }
 
 /**

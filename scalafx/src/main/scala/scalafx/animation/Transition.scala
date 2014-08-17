@@ -27,7 +27,7 @@
 package scalafx.animation
 
 import scala.language.implicitConversions
-import javafx.{ animation => jfxa }
+import javafx.{animation => jfxa}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
@@ -46,7 +46,7 @@ object Transition extends AnimationStatics {
    * @param v ScalaFX $TR
    * @return JavaFX $TR extracted from `v`.
    */
-  implicit def sfxTransition2jfx(v: Transition) = v.delegate
+  implicit def sfxTransition2jfx(v: Transition) = if (v != null) v.delegate else null
 }
 
 /**
@@ -54,7 +54,7 @@ object Transition extends AnimationStatics {
  * 
  * @constructor Creates a new ScalaFX $TR from a JavaFX $TR.
  * @param delegate JavaFX $TR to be delegated.
- * 
+ *
  * @define TR `Transition`
  */
 abstract class Transition(override val delegate: jfxa.Transition)
@@ -68,5 +68,5 @@ abstract class Transition(override val delegate: jfxa.Transition)
   def interpolator_=(i: jfxa.Interpolator) {
     interpolator() = i
   }
-  
+
 }

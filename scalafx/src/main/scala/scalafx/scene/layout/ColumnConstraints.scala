@@ -37,7 +37,7 @@ import scalafx.geometry.HPos
 import scalafx.delegate.SFXDelegate
 
 object ColumnConstraints {
-  implicit def sfxColumnConstraints2jfx(v: ColumnConstraints) = v.delegate
+  implicit def sfxColumnConstraints2jfx(v: ColumnConstraints) = if (v != null) v.delegate else null
 }
 
 class ColumnConstraints(override val delegate: jfxsl.ColumnConstraints = new jfxsl.ColumnConstraints)

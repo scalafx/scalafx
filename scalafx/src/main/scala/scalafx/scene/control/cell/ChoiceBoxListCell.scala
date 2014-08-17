@@ -47,7 +47,7 @@ import scalafx.util.StringConverter
  * @define ITEMSPARAM Zero or more items that will be shown to the user when the ChoiceBox menu is showing. 
  * @define BUFITEMSPARAM A `ObservableBuffer` containing $ITEMSPARAM
  * @define FTVRET A Function that will return a ListCell that is able to work on the type of element contained within 
- * the ListView.
+ *         the ListView.
  */
 object ChoiceBoxListCell {
 
@@ -56,11 +56,11 @@ object ChoiceBoxListCell {
    *
    * @param cell ScalaFX $CBLC
    */
-  implicit def sfxChoiceBoxListCell2jfx[T](cell: ChoiceBoxListCell[T]) = cell.delegate
+  implicit def sfxChoiceBoxListCell2jfx[T](cell: ChoiceBoxListCell[T]) = if (cell != null) cell.delegate else null
 
   /**
-   * $FLVINIT 
-   * 
+   * $FLVINIT
+   *
    * @tparam T $TTYPE
    * @param items $BUFITEMSPARAM
    * @return $FTVRET
@@ -75,8 +75,8 @@ object ChoiceBoxListCell {
   def forListView[T](items: jfxc.ObservableList[T]) = jfxscc.ChoiceBoxListCell.forListView[T](items)
 
   /**
-   * $FLVINIT 
-   * 
+   * $FLVINIT
+   *
    * @tparam T $TTYPE
    * @param converter $CONVPARAM
    * @param items $BUFITEMSPARAM
@@ -93,8 +93,8 @@ object ChoiceBoxListCell {
     jfxscc.ChoiceBoxListCell.forListView[T](converter, items)
 
   /**
-   * $FLVINIT 
-   * 
+   * $FLVINIT
+   *
    * @tparam T $TTYPE
    * @param converter $CONVPARAM
    * @param items $ITEMSPARAM
@@ -110,8 +110,8 @@ object ChoiceBoxListCell {
   def forListView[T](converter: jfxu.StringConverter[T], items: T*) = jfxscc.ChoiceBoxListCell.forListView[T](converter, items: _*)
 
   /**
-   * $FLVINIT 
-   * 
+   * $FLVINIT
+   *
    * @tparam T $TTYPE
    * @param items $ITEMSPARAM
    * @return $FTVRET
@@ -148,34 +148,34 @@ class ChoiceBoxListCell[T](override val delegate: jfxscc.ChoiceBoxListCell[T] = 
 
   /**
    * Creates a default $CBLC instance with the given items being used to populate the ChoiceBox when it is shown.
-   * 
-   * @param items $BUFITEMSPARAM 
+   *
+   * @param items $BUFITEMSPARAM
    */
   def this(items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxListCell[T](items))
 
   /**
    * Creates a $CBLC instance with the given items being used to populate the `ChoiceBox` when it is
    * shown, and the StringConverter being used to convert the item in to a user-readable form.
-   * 
+   *
    * @param converter $CONVPARAM
-   * @param items $BUFITEMSPARAM 
+   * @param items $BUFITEMSPARAM
    */
   def this(converter: StringConverter[T], items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxListCell[T](converter, items))
 
   /**
    * Creates a $CBLC instance with the given items being used to populate the `ChoiceBox` when it is
    * shown, and the StringConverter being used to convert the item in to a user-readable form.
-   * 
+   *
    * @param converter $CONVPARAM
-   * @param items $ITEMSPARAM 
+   * @param items $ITEMSPARAM
    */
   def this(converter: StringConverter[T], items: T*) = this(new jfxscc.ChoiceBoxListCell[T](converter, items: _*))
 
   /**
    * Creates a default `ChoiceBoxListCell` instance with the given items being used to populate the `ChoiceBox` when
    * it is shown.
-   * 
-   * @param items $ITEMSPARAM 
+   *
+   * @param items $ITEMSPARAM
    */
   def this(items: T*) = this(new jfxscc.ChoiceBoxListCell[T](items: _*))
 

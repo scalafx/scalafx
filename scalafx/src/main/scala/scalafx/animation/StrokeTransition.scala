@@ -27,8 +27,8 @@
 package scalafx.animation
 
 import scala.language.implicitConversions
-import javafx.{ animation => jfxa, util => jfxu }
-import javafx.scene.{ paint => jfxsp, shape => jfxss }
+import javafx.{animation => jfxa, util => jfxu}
+import javafx.scene.{paint => jfxsp, shape => jfxss}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.scene.paint.Color
@@ -50,7 +50,7 @@ object StrokeTransition extends AnimationStatics {
    * @param v ScalaFX $ST
    * @return JavaFX $ST extracted from `v`.
    */
-  implicit def sfxStrokeTransition2jfx(v: StrokeTransition) = v.delegate
+  implicit def sfxStrokeTransition2jfx(v: StrokeTransition) = if (v != null) v.delegate else null
 
 }
 

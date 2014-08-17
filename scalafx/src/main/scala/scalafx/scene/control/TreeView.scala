@@ -36,12 +36,12 @@ import scalafx.event.Event
 import scalafx.delegate.SFXDelegate
 
 object TreeView {
-  implicit def sfxTreeView2jfx[T](v: TreeView[T]) = v.delegate
+  implicit def sfxTreeView2jfx[T](v: TreeView[T]) = if (v != null) v.delegate else null
 
   object EditEvent {
-    implicit def sfxTreeViewEditEvent2jfx[T](v: EditEvent[T]) = v.delegate
+    implicit def sfxTreeViewEditEvent2jfx[T](v: EditEvent[T]) = if (v != null) v.delegate else null
   }
-  
+
   class EditEvent[T](override val delegate: jfxsc.TreeView.EditEvent[T])
     extends Event(delegate)
     with SFXDelegate[jfxsc.TreeView.EditEvent[T]] {
@@ -55,22 +55,22 @@ object TreeView {
     /**
      * Returns the new value input into the TreeItem by the end user.
      */
-    def newValue : T = delegate.getNewValue
+    def newValue: T = delegate.getNewValue
 
     /**
      * Returns the old value that existed in the TreeItem prior to the current edit event.
      */
-    def oldValue : T = delegate.getOldValue
+    def oldValue: T = delegate.getOldValue
 
     /**
      * Returns the TreeView upon which the edit took place.
      */
-    override def source : TreeView[T] = delegate.getSource
+    override def source: TreeView[T] = delegate.getSource
 
     /**
      * Returns the `TreeItem` upon which the edit took place.
      */
-    def treeItem : TreeItem[T] = delegate.getTreeItem
+    def treeItem: TreeItem[T] = delegate.getTreeItem
 
   }
 
@@ -87,7 +87,7 @@ object TreeView {
 
   /**
    * An EventType that is used to indicate that an edit in a TreeView has been
-   *  committed.
+   * committed.
    */
   def editCommitEvent = jfxsc.TreeView.editCommitEvent
 
@@ -107,7 +107,7 @@ object TreeView {
    * Creates a new TreeView overriding layoutChildren method from JavaFX's
    * TreeView.
    */
-  def apply[T](layoutChildrenOp:() => Unit) = new TreeView[T](new jfxsc.TreeView[T] {
+  def apply[T](layoutChildrenOp: () => Unit) = new TreeView[T](new jfxsc.TreeView[T] {
     override def layoutChildren() {
       layoutChildrenOp()
     }

@@ -27,18 +27,18 @@
 package scalafx.scene.control
 
 import scala.language.implicitConversions
-import javafx.scene.{ control => jfxsc }
-import javafx.{ geometry => jfxg }
+import javafx.scene.{control => jfxsc}
+import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.geometry.Bounds
 import scalafx.delegate.SFXDelegate
 import scalafx.beans.property._
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
-import javafx.{ scene => jfxs }
+import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+import javafx.{scene => jfxs}
 import scalafx.scene.Node
 
 object ScrollPane {
-  implicit def sfxScrollPane2jfx(v: ScrollPane) = v.delegate
+  implicit def sfxScrollPane2jfx(v: ScrollPane) = if (v != null) v.delegate else null
 
   object ScrollBarPolicy
     extends SFXEnumDelegateCompanion[jfxsc.ScrollPane.ScrollBarPolicy, ScrollBarPolicy] {

@@ -27,14 +27,14 @@
 package scalafx.scene.control
 
 import scala.language.implicitConversions
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes.jfxObjectProperty2sfx
 import scalafx.delegate.SFXDelegate
 import scalafx.Includes._
 import scalafx.scene.Node
 
 object Skin {
-  implicit def sfxSkin2jfx[C <: jfxsc.Skinnable](s: Skin[C]) = s.delegate
+  implicit def sfxSkin2jfx[C <: jfxsc.Skinnable](s: Skin[C]) = if (s != null) s.delegate else null
 }
 
 /**

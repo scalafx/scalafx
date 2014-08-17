@@ -31,7 +31,7 @@ import javafx.beans.{binding => jfxbb}
 import scalafx.beans.value.ObservableValue
 
 object ObjectBinding {
-  implicit def sfxObjectBinding2jfx[T](ob: ObjectBinding[T]) = ob.delegate
+  implicit def sfxObjectBinding2jfx[T](ob: ObjectBinding[T]) = if (ob != null) ob.delegate else null
 }
 
 class ObjectBinding[T](override val delegate: jfxbb.ObjectBinding[T]) extends ObjectExpression[T](delegate) with ObservableValue[T, T] {

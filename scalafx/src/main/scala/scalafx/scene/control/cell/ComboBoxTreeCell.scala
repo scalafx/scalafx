@@ -57,7 +57,7 @@ object ComboBoxTreeCell {
    * @param cell ScalaFX $CBTC
    * @return JavaFX $CBTC
    */
-  implicit def sfxComboBoxTreeCell2jfx[T](cell: ComboBoxTreeCell[T]) = cell.delegate
+  implicit def sfxComboBoxTreeCell2jfx[T](cell: ComboBoxTreeCell[T]) = if (cell != null) cell.delegate else null
 
   /**
    * $FTCINIT

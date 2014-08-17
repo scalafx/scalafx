@@ -27,9 +27,9 @@
 package scalafx.scene.web
 
 import scala.language.implicitConversions
-import javafx.{ event => jfxe }
-import javafx.scene.{ web => jfxsw }
-import javafx.{ util => jfxu }
+import javafx.{event => jfxe}
+import javafx.scene.{web => jfxsw}
+import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property._
 import javafx.geometry.Rectangle2D
@@ -49,7 +49,7 @@ object WebEngine {
    * @param we ScalaFX WebEngine
    * @return JavaFX WebEngine
    */
-  implicit def sfxWebEngine2jfx(we: WebEngine) = we.delegate
+  implicit def sfxWebEngine2jfx(we: WebEngine) = if (we != null) we.delegate else null
 
 }
 

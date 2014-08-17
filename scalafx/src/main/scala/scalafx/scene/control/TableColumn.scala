@@ -27,24 +27,24 @@
 package scalafx.scene.control
 
 import scala.language.implicitConversions
-import javafx.beans.{ value => jfxbv }
-import javafx.scene.{ control => jfxsc }
-import javafx.{ event => jfxe }
-import javafx.{ util => jfxu }
+import javafx.beans.{value => jfxbv}
+import javafx.scene.{control => jfxsc}
+import javafx.{event => jfxe}
+import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.value.ObservableValue
 import scalafx.event.Event
 import scalafx.delegate.SFXDelegate
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 import scalafx.collections.ObservableBuffer
 
 object TableColumn {
-  implicit def sfxTableColumn2jfx[S, T](tc: TableColumn[S, T]) = tc.delegate
+  implicit def sfxTableColumn2jfx[S, T](tc: TableColumn[S, T]) = if (tc != null) tc.delegate else null
 
   object CellDataFeatures {
-    implicit def sfxCellDataFeatures2jfx[S, T](cdf: CellDataFeatures[S, T]) = cdf.delegate
+    implicit def sfxCellDataFeatures2jfx[S, T](cdf: CellDataFeatures[S, T]) = if (cdf != null) cdf.delegate else null
   }
 
   /**
@@ -77,7 +77,8 @@ object TableColumn {
   }
 
   object CellEditEvent {
-    implicit def sfxCellEditEvent2jfx[S, T](cee: CellEditEvent[S, T]) = cee.delegate
+    implicit def sfxCellEditEvent2jfx[S, T](cee: CellEditEvent[S, T]) = if (cee != null) cee.delegate else null
+
   }
 
   /**
@@ -96,18 +97,18 @@ object TableColumn {
     /**
      * Returns the new value input by the end user.
      */
-    def newValue : T = delegate.getNewValue
+    def newValue: T = delegate.getNewValue
 
     /**
      * Attempts to return the old value at the position referred to in the TablePosition returned by `tablePosition`.
      */
-    def oldValue : T = delegate.getOldValue
+    def oldValue: T = delegate.getOldValue
 
     /**
      * Convenience method that returns the value for the row (that is, from the TableView items list), for the row
      * contained within the TablePosition returned in `tablePosition`.
      */
-    def rowValue : S = delegate.getRowValue
+    def rowValue: S = delegate.getRowValue
 
     /**
      * Returns the TableColumn upon which this event occurred.

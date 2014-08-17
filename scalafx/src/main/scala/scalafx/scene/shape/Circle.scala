@@ -34,18 +34,18 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Circle {
-  implicit def sfxCircle2jfx(v: Circle) = v.delegate
-  
+  implicit def sfxCircle2jfx(v: Circle) = if (v != null) v.delegate else null
+
   def apply(radius: Double) = new Circle(new jfxss.Circle(radius))
-  def apply(centerX: Double, centerY: Double, radius: Double) = 
+  def apply(centerX: Double, centerY: Double, radius: Double) =
     new Circle(new jfxss.Circle(centerX, centerY, radius))
-  def apply(centerX: Double, centerY: Double, radius: Double, fill: Paint) = 
+  def apply(centerX: Double, centerY: Double, radius: Double, fill: Paint) =
     new Circle(new jfxss.Circle(centerX, centerY, radius, fill))
-  def apply(radius: Double, fill: Paint) = 
+  def apply(radius: Double, fill: Paint) =
     new Circle(new jfxss.Circle(radius, fill))
 }
 
-class Circle(override val delegate:jfxss.Circle = new jfxss.Circle()) extends Shape(delegate) with SFXDelegate[jfxss.Circle] {
+class Circle(override val delegate: jfxss.Circle = new jfxss.Circle()) extends Shape(delegate) with SFXDelegate[jfxss.Circle] {
   def centerX: DoubleProperty = delegate.centerXProperty
   def centerX_=(v: Double) {
     centerX() = v

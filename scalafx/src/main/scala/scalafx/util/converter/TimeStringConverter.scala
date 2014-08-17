@@ -30,10 +30,10 @@ import scala.language.implicitConversions
 import java.text.DateFormat
 import java.util.Locale
 
-import javafx.util.{ converter => jfxuc }
+import javafx.util.{converter => jfxuc}
 
 object TimeStringConverter {
-  implicit def sfxTimeStringConverter2jfx(c: TimeStringConverter) = c.delegate
+  implicit def sfxTimeStringConverter2jfx(c: TimeStringConverter) = if (c != null) c.delegate else null
 }
 
 class TimeStringConverter(delegate: jfxuc.TimeStringConverter = new jfxuc.TimeStringConverter)

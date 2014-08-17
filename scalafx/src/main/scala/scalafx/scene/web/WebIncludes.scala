@@ -27,8 +27,8 @@
 package scalafx.scene.web
 
 import scala.language.implicitConversions
-import javafx.{ event => jfxe }
-import javafx.scene.{ web => jfxsw }
+import javafx.{event => jfxe}
+import javafx.scene.{web => jfxsw}
 
 object WebIncludes extends WebIncludes
 
@@ -62,7 +62,7 @@ trait WebIncludes {
    * @param he $JFX $HE
    * @return $SFX $HE
    */
-  implicit def jfxHTMLEditor2sfx(he: jfxsw.HTMLEditor) = new HTMLEditor(he)
+  implicit def jfxHTMLEditor2sfx(he: jfxsw.HTMLEditor) = if (he != null) new HTMLEditor(he) else null
 
   /**
    * $START$PF.html $PF$END
@@ -70,7 +70,7 @@ trait WebIncludes {
    * @param pf $JFX $PF
    * @return $SFX $PF
    */
-  implicit def jfxPopupFeatures2sfx(pf: jfxsw.PopupFeatures) = new PopupFeatures(pf)
+  implicit def jfxPopupFeatures2sfx(pf: jfxsw.PopupFeatures) = if (pf != null) new PopupFeatures(pf) else null
 
   /**
    * $START$PD.html $PD$END
@@ -78,7 +78,7 @@ trait WebIncludes {
    * @param pd $JFX $PD
    * @return $SFX $PD
    */
-  implicit def jfxPromptData2sfx(pd: jfxsw.PromptData) = new PromptData(pd)
+  implicit def jfxPromptData2sfx(pd: jfxsw.PromptData) = if (pd != null) new PromptData(pd) else null
 
   /**
    * $START$WE.html $WE$END
@@ -86,7 +86,7 @@ trait WebIncludes {
    * @param we $JFX $WE
    * @return $SFX $WE
    */
-  implicit def jfxWebEngine2sfx(we: jfxsw.WebEngine) = new WebEngine(we)
+  implicit def jfxWebEngine2sfx(we: jfxsw.WebEngine) = if (we != null) new WebEngine(we) else null
 
   /**
    * $START$WT.html $WT$END
@@ -94,7 +94,7 @@ trait WebIncludes {
    * @param we $JFX $WT
    * @return $SFX $WT
    */
-  implicit def jfxWebEvent2sfx[T](we: jfxsw.WebEvent[T]) = new WebEvent(we)
+  implicit def jfxWebEvent2sfx[T](we: jfxsw.WebEvent[T]) = if (we != null) new WebEvent(we) else null
 
   /**
    * $START$WR.html $WR$END
@@ -110,7 +110,7 @@ trait WebIncludes {
    * @param wv $JFX $WV
    * @return $SFX $WV
    */
-  implicit def jfxWebView2sfx(wv: jfxsw.WebView) = new WebView(wv)
+  implicit def jfxWebView2sfx(wv: jfxsw.WebView) = if (wv != null) new WebView(wv) else null
 
   /**
    * $BEGINWR$WE$FINISHWR

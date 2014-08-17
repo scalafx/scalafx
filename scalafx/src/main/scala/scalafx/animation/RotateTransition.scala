@@ -27,7 +27,7 @@
 package scalafx.animation
 
 import scala.language.implicitConversions
-import javafx.{ animation => jfxa, geometry => jfxg, scene => jfxs, util => jfxu }
+import javafx.{animation => jfxa, geometry => jfxg, scene => jfxs, util => jfxu}
 import scalafx.util.Duration
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
@@ -50,7 +50,7 @@ object RotateTransition extends AnimationStatics {
    * @param v ScalaFX $RT
    * @return JavaFX $RT extracted from `v`.
    */
-  implicit def sfxRotateTransition2jfx(v: RotateTransition) = v.delegate
+  implicit def sfxRotateTransition2jfx(v: RotateTransition) = if (v != null) v.delegate else null
 
 }
 

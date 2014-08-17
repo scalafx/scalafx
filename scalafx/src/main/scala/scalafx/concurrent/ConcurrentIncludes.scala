@@ -35,7 +35,7 @@ object ConcurrentIncludes extends ConcurrentIncludes
  * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/package-summary.html `javafx.concurrent`]]
  * Classes to their ScalaFX counterparts.
- * 
+ *
  * @define JFX JavaFX
  * @define SFX ScalaFX
  * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/
@@ -54,7 +54,7 @@ trait ConcurrentIncludes {
    * @param s $JFX $SER
    * @return $SFX $SER
    */
-  implicit def jfxService2sfxService[T](s: jfxc.Service[T]) = new Service[T](s) {}
+  implicit def jfxService2sfxService[T](s: jfxc.Service[T]) = if (s != null) new Service[T](s) {} else null
 
   /**
    * $START$TSK.html $TSK$END
@@ -62,7 +62,7 @@ trait ConcurrentIncludes {
    * @param t $JFX $TSK
    * @return $SFX $TSK
    */
-  implicit def jfxTask2sfxTask[T](t: jfxc.Task[T]) = new Task[T](t) {}
+  implicit def jfxTask2sfxTask[T](t: jfxc.Task[T]) = if (t != null) new Task[T](t) {} else null
 
   /**
    * $START$WRK.html $WRK$END
@@ -70,9 +70,11 @@ trait ConcurrentIncludes {
    * @param w $JFX $WRK
    * @return $SFX $WRK
    */
-  implicit def jfxWorker2sfxWorker[T](w: jfxc.Worker[T]) = new Worker[T] {
-    override val delegate = w
-  }
+  implicit def jfxWorker2sfxWorker[T](w: jfxc.Worker[T]) =
+    if (w != null) new Worker[T] {
+      override val delegate = w
+    }
+    else null
 
   /**
    * $START$WRS.html $WRS$END
@@ -88,6 +90,6 @@ trait ConcurrentIncludes {
    * @param w $JFX $WSE
    * @return $SFX $WSE
    */
-  implicit def jfxWorkerStateEvent2sfxWorkerStateEvent(w: jfxc.WorkerStateEvent) = new WorkerStateEvent(w)
+  implicit def jfxWorkerStateEvent2sfxWorkerStateEvent(w: jfxc.WorkerStateEvent) = if (w != null) new WorkerStateEvent(w) else null
 
 }

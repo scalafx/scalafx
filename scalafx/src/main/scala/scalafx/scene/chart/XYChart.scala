@@ -39,10 +39,10 @@ import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 
 object XYChart {
-  implicit def sfxXYChart2jfx[X, Y](v: XYChart[X, Y]) = v.delegate
+  implicit def sfxXYChart2jfx[X, Y](v: XYChart[X, Y]) = if (v != null) v.delegate else null
 
   object Data {
-    implicit def sfxXYChartData2jfx[X, Y](v: XYChart.Data[X, Y]) = v.delegate
+    implicit def sfxXYChartData2jfx[X, Y](v: XYChart.Data[X, Y]) = if (v != null) v.delegate else null
 
     def apply[X, Y](x: X, y: Y) = new jfxsc.XYChart.Data[X, Y](x, y)
 
@@ -74,7 +74,7 @@ object XYChart {
   }
 
   object Series {
-    implicit def sfxXYChartSeries2jfx[X, Y](v: XYChart.Series[X, Y]) = v.delegate
+    implicit def sfxXYChartSeries2jfx[X, Y](v: XYChart.Series[X, Y]) = if (v != null) v.delegate else null
 
     def apply[X, Y](data: ObservableBuffer[jfxsc.XYChart.Data[X, Y]]) =
       new jfxsc.XYChart.Series[X, Y](data)

@@ -31,15 +31,15 @@ import javafx.{ geometry => jfxg }
 import scalafx.delegate.SFXDelegate
 
 object Bounds {
-  implicit def sfxBounds2jfx(b: Bounds) = b.delegate
+  implicit def sfxBounds2jfx(b: Bounds) = if (b != null) b.delegate else null
 }
 
-abstract class Bounds protected (override val delegate: jfxg.Bounds) extends SFXDelegate[jfxg.Bounds] {
+abstract class Bounds protected(override val delegate: jfxg.Bounds) extends SFXDelegate[jfxg.Bounds] {
 
   /*
    * Creates a new instance of Bounds class.
    */
-//  protected def this(minX: Double, minY: Double, minZ: Double, width: Double, height: Double, depth: Double) = this(new jfxg.Bounds(minX, minY, minZ, width, height, depth) {})
+  //  protected def this(minX: Double, minY: Double, minZ: Double, width: Double, height: Double, depth: Double) = this(new jfxg.Bounds(minX, minY, minZ, width, height, depth) {})
 
   /**
    * Tests if the interior of this Bounds entirely contains the specified Bounds, b.

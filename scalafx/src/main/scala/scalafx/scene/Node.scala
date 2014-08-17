@@ -27,12 +27,12 @@
 package scalafx.scene
 
 import scala.language.implicitConversions
-import javafx.scene.{ effect => jfxse }
-import javafx.scene.{ input => jfxsi }
-import javafx.scene.{ layout => jfxsl }
-import javafx.{ event => jfxe }
-import javafx.{ geometry => jfxg }
-import javafx.{ scene => jfxs }
+import javafx.scene.{effect => jfxse}
+import javafx.scene.{input => jfxsi}
+import javafx.scene.{layout => jfxsl}
+import javafx.{event => jfxe}
+import javafx.{geometry => jfxg}
+import javafx.{scene => jfxs}
 import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
@@ -70,7 +70,7 @@ object Node {
    * @param v ScalaFX Node
    * @return JavaFX Node
    */  
-  implicit def sfxNode2jfx(v: Node) = v.delegate
+  implicit def sfxNode2jfx(v: Node) = if (v != null) v.delegate else null
 }
 
 /**
@@ -79,7 +79,7 @@ object Node {
  * @constructor creates a new ScalaFX Node from a JavaFX Node.
  * @param delegate JavaFX Node
  */
-abstract class Node protected (override val delegate: jfxs.Node)
+abstract class Node protected(override val delegate: jfxs.Node)
   extends EventHandlerDelegate
   with Styleable
   with SFXDelegate[jfxs.Node] {

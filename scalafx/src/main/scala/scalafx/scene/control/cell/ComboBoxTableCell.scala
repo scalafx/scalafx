@@ -57,7 +57,7 @@ object ComboBoxTableCell {
    * @param cell ScalaFX $CBTC
    * @return JavaFX $CBTC
    */
-  implicit def sfxComboBoxTableCell2jfx[S, T](cell: ComboBoxTableCell[S, T]) = cell.delegate
+  implicit def sfxComboBoxTableCell2jfx[S, T](cell: ComboBoxTableCell[S, T]) = if (cell != null) cell.delegate else null
 
   /**
    * $FTCINIT

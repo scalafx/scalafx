@@ -38,32 +38,32 @@ import scalafx.scene.layout.Region
 import scalafx.delegate.SFXDelegate
 
 object Chart {
-  implicit def sfxChart2jfx(v: Chart) = v.delegate
+  implicit def sfxChart2jfx(v: Chart) = if (v != null) v.delegate else null
 }
 
-abstract class Chart(override val delegate:jfxsc.Chart) extends Region(delegate) with SFXDelegate[jfxsc.Chart] {
+abstract class Chart(override val delegate: jfxsc.Chart) extends Region(delegate) with SFXDelegate[jfxsc.Chart] {
   def animated: BooleanProperty = delegate.animatedProperty
-  def animated_= (v: Boolean) {
+  def animated_=(v: Boolean) {
     animated() = v
   }
 
   def legendSide: ObjectProperty[jfxg.Side] = delegate.legendSideProperty
-  def legendSide_= (v: Side) {
+  def legendSide_=(v: Side) {
     legendSide() = v
   }
 
   def legendVisible: BooleanProperty = delegate.legendVisibleProperty
-  def legendVisible_= (v: Boolean) {
+  def legendVisible_=(v: Boolean) {
     legendVisible() = v
   }
 
   def title: StringProperty = delegate.titleProperty
-  def title_= (v: String) {
+  def title_=(v: String) {
     title() = v
   }
 
   def titleSide: ObjectProperty[jfxg.Side] = delegate.titleSideProperty
-  def titleSide_= (v: Side) {
+  def titleSide_=(v: Side) {
     titleSide() = v
   }
 

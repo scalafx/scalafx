@@ -31,7 +31,7 @@ import javafx.beans.{binding => jfxbb}
 import javafx.beans.value.ObservableBooleanValue
 
 object BooleanExpression {
-  implicit def sfxBooleanExpression2jfx(be: BooleanExpression) = be.delegate
+  implicit def sfxBooleanExpression2jfx(be: BooleanExpression) = if (be != null) be.delegate else null
 }
 
 class BooleanExpression(val delegate: jfxbb.BooleanExpression) {

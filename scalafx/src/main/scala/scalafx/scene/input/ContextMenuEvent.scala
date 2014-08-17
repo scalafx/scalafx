@@ -31,26 +31,26 @@ import javafx.scene.{ input => jfxsi }
 import scalafx.delegate.SFXDelegate
 
 object ContextMenuEvent {
-  implicit def sfxContextMenuEvent2jfx(c: ContextMenuEvent) = c.delegate
+  implicit def sfxContextMenuEvent2jfx(c: ContextMenuEvent) = if (c != null) c.delegate else null
 }
 
 class ContextMenuEvent(override val delegate: jfxsi.ContextMenuEvent) extends InputEvent(delegate) with SFXDelegate[jfxsi.ContextMenuEvent] {
 
-  def sceneX : Double = delegate.getSceneX
+  def sceneX: Double = delegate.getSceneX
 
-  def sceneY : Double = delegate.getSceneY
+  def sceneY: Double = delegate.getSceneY
 
-  def screenX : Double = delegate.getScreenX
+  def screenX: Double = delegate.getScreenX
 
-  def screenY : Double = delegate.getScreenY
+  def screenY: Double = delegate.getScreenY
 
-  def x : Double = delegate.getX
+  def x: Double = delegate.getX
 
-  def y : Double = delegate.getY
+  def y: Double = delegate.getY
 
   /**
    * Determines whether this event originated from the keyboard.
    */
-  def keyboardTrigger : Boolean = delegate.isKeyboardTrigger
+  def keyboardTrigger: Boolean = delegate.isKeyboardTrigger
 
 }

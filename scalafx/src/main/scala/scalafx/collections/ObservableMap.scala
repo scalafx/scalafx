@@ -32,8 +32,8 @@ import scala.collection.generic.MutableMapFactory
 import scala.collection.mutable.Builder
 import scala.collection.mutable.Map
 import scala.collection.mutable.MapLike
-import java.{ util => ju }
-import javafx.{ collections => jfxc }
+import java.{util => ju}
+import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 
@@ -50,7 +50,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    * @param om ScalaFX's $OM.
    * @return JavaFX's $OM inside parameter.
    */
-  implicit def sfxObservableMap2sfxObservableMap[K, V](om: ObservableMap[K, V]) = om.delegate
+  implicit def sfxObservableMap2sfxObservableMap[K, V](om: ObservableMap[K, V]) = if (om != null) om.delegate else null
 
   // CHANGING INDICATORS - BEGIN
 
@@ -206,7 +206,9 @@ trait ObservableMap[K, V]
     // Definition copied from JavaConversions.JMapWrapperLike.iterator
     val it = delegate.entrySet.iterator
     def hasNext = it.hasNext
-    def next() = { val e = it.next(); (e.getKey, e.getValue) }
+    def next() = {
+      val e = it.next(); (e.getKey, e.getValue)
+    }
   }
 
   /**
@@ -221,7 +223,7 @@ trait ObservableMap[K, V]
    *
    * @param key the key value
    * @return an option value containing the value associated with key in this $MAP, or None if
-   * none exists.
+   *         none exists.
    */
   def get(key: K): Option[V] = if (delegate.containsKey(key)) Option(delegate.get(key)) else None
 
@@ -236,9 +238,9 @@ trait ObservableMap[K, V]
     delegate.addListener(new jfxc.MapChangeListener[K, V] {
       def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]) {
         val changeEvent: Change[K, V] = (change.wasAdded, change.wasRemoved) match {
-          case (true, true)   => Replace(change.getKey, change.getValueAdded, change.getValueRemoved)
-          case (true, false)  => Add(change.getKey, change.getValueAdded)
-          case (false, true)  => Remove(change.getKey, change.getValueRemoved)
+          case (true, true) => Replace(change.getKey, change.getValueAdded, change.getValueRemoved)
+          case (true, false) => Add(change.getKey, change.getValueAdded)
+          case (false, true) => Remove(change.getKey, change.getValueRemoved)
           case (false, false) => throw new IllegalStateException("Irregular Change: neither addition nor remotion")
         }
 

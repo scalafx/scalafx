@@ -58,7 +58,7 @@ object CheckBoxTreeCell {
    *
    * @param cell ScalaFX $CBTC
    */
-  implicit def sfxCheckBoxTreeCell2jfx[T](cell: CheckBoxTreeCell[T]) = cell.delegate
+  implicit def sfxCheckBoxTreeCell2jfx[T](cell: CheckBoxTreeCell[T]) = if (cell != null) cell.delegate else null
 
   private[cell] implicit def selectedTreeItemPropertyToGetSelectedProperty[T](selectedProperty: TreeItem[T] => ObservableValue[Boolean, java.lang.Boolean]): jfxu.Callback[jfxsc.TreeItem[T], jfxbv.ObservableValue[JBoolean]] =
     new jfxu.Callback[jfxsc.TreeItem[T], jfxbv.ObservableValue[JBoolean]] {
@@ -104,7 +104,7 @@ object CheckBoxTreeCell {
    * @tparam T  The type of the elements contained within the TreeItem instances.
    * @param selectedProperty $SP
    * @param converter A StringConverter that, give an object of type TreeItem, will return a String that can be used
-   * to represent the object visually.
+   *                  to represent the object visually.
    * @return $FTVRET
    */
   def forTreeView[T](selectedProperty: TreeItem[T] => ObservableValue[Boolean, JBoolean], converter: StringConverter[TreeItem[T]]): (TreeView[T]) => (TreeCell[T]) =
@@ -127,7 +127,7 @@ object CheckBoxTreeCell {
  *
  * @define CBTC `CheckBoxTreeCell`
  * @define SP A Function that will return an ObservableValue<Boolean> that represents whether the given item is
- * selected or not.
+ *         selected or not.
  */
 class CheckBoxTreeCell[T](override val delegate: jfxscc.CheckBoxTreeCell[T] = new jfxscc.CheckBoxTreeCell[T])
   extends TreeCell[T](delegate)
@@ -149,7 +149,7 @@ class CheckBoxTreeCell[T](override val delegate: jfxscc.CheckBoxTreeCell[T] = ne
    *
    * @param selectedProperty $SP
    * @param converter A StringConverter that, give an object of type TreeItem, will return a String that can be used
-   * to represent the object visually.
+   *                  to represent the object visually.
    */
   def this(selectedProperty: TreeItem[T] => ObservableValue[Boolean, JBoolean], converter: StringConverter[TreeItem[T]]) =
     this(new jfxscc.CheckBoxTreeCell[T](selectedProperty, converter))

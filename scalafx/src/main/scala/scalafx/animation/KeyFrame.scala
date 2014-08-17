@@ -29,8 +29,8 @@ package scalafx.animation
 import scala.language.implicitConversions
 import scala.collection.JavaConversions._
 
-import javafx.{ event => jfxe }
-import javafx.{ animation => jfxa }
+import javafx.{event => jfxe}
+import javafx.{animation => jfxa}
 import scalafx.util.Duration
 import scalafx.delegate.SFXDelegate
 
@@ -48,7 +48,7 @@ object KeyFrame {
    * @param v ScalaFX $KF
    * @return JavaFX $KF extracted from `v`.
    */
-  implicit def sfxKeyFrame2jfx(v: KeyFrame) = v.delegate
+  implicit def sfxKeyFrame2jfx(v: KeyFrame) = if (v != null) v.delegate else null
 
   /**
    * Creates a new $KF instance
@@ -60,9 +60,9 @@ object KeyFrame {
    * @return A new $KF
    */
   def apply(time: Duration,
-    name: String = null,
-    onFinished: jfxe.EventHandler[jfxe.ActionEvent] = null,
-    values: Set[_ <: KeyValue[_, _]] = Set.empty) = {
+            name: String = null,
+            onFinished: jfxe.EventHandler[jfxe.ActionEvent] = null,
+            values: Set[_ <: KeyValue[_, _]] = Set.empty) = {
     val mappedValues: Set[jfxa.KeyValue] = values.map((x: KeyValue[_, _]) => x.delegate)
     new KeyFrame(new jfxa.KeyFrame(time, name, onFinished, mappedValues))
   }

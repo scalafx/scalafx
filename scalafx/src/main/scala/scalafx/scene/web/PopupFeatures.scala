@@ -27,7 +27,7 @@
 package scalafx.scene.web
 
 import scala.language.implicitConversions
-import javafx.scene.{ web => jfxsw }
+import javafx.scene.{web => jfxsw}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
@@ -42,7 +42,7 @@ object PopupFeatures {
    * @param pe ScalaFX PopupFeatures
    * @return JavaFX PopupFeatures
    */
-  implicit def sfxPopupFeatures2jfx(pe: PopupFeatures) = pe.delegate
+  implicit def sfxPopupFeatures2jfx(pe: PopupFeatures) = if (pe != null) pe.delegate else null
 }
 
 /**

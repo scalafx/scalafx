@@ -37,7 +37,7 @@ object BindingIncludes extends BindingIncludes
  * Contains implicit methods to convert from
  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/package-summary.html `javafx.beans.binding`]]
  * Classes to their $SFX counterparts.
- * 
+ *
  * @define JFX JavaFX
  * @define SFX ScalaFX
  * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/
@@ -61,7 +61,7 @@ trait BindingIncludes extends Bindings {
    * @param bb $JFX $BOB
    * @return $SFX $BOB
    */
-  implicit def jfxBooleanBinding2sfx(bb: jfxbb.BooleanBinding) = new BooleanBinding(bb)
+  implicit def jfxBooleanBinding2sfx(bb: jfxbb.BooleanBinding) = if (bb != null) new BooleanBinding(bb) else null
 
   /**
    * $START$BOE.html $BOE$END
@@ -69,7 +69,7 @@ trait BindingIncludes extends Bindings {
    * @param be $JFX $BOE
    * @return $SFX $BOE
    */
-  implicit def jfxBooleanExpression2sfx(be: jfxbb.BooleanExpression) = new BooleanExpression(be)
+  implicit def jfxBooleanExpression2sfx(be: jfxbb.BooleanExpression) = if (be != null) new BooleanExpression(be) else null
 
   /**
    * $START$NUB.html $NUB$END
@@ -77,7 +77,7 @@ trait BindingIncludes extends Bindings {
    * @param nb $JFX $NUB
    * @return $SFX $NUB
    */
-  implicit def jfxNumberBinding2sfx(nb: jfxbb.NumberBinding) = new NumberBinding(nb)
+  implicit def jfxNumberBinding2sfx(nb: jfxbb.NumberBinding) = if (nb != null) new NumberBinding(nb) else null
 
   /**
    * $START$NUE.html $NUE$END
@@ -85,7 +85,7 @@ trait BindingIncludes extends Bindings {
    * @param ne $JFX $NUE
    * @return $SFX $NUE
    */
-  implicit def jfxNumberExpression2sfx(ne: jfxbb.NumberExpression) = new NumberExpression(ne)
+  implicit def jfxNumberExpression2sfx(ne: jfxbb.NumberExpression) = if (ne != null) new NumberExpression(ne) else null
 
   /**
    * $START$OBB.html $OBB$END
@@ -94,7 +94,7 @@ trait BindingIncludes extends Bindings {
    * @param ob $JFX $OBB
    * @return $SFX $OBB
    */
-  implicit def jfxObjectBinding2sfx[T](ob: jfxbb.ObjectBinding[T]) = new ObjectBinding[T](ob)
+  implicit def jfxObjectBinding2sfx[T](ob: jfxbb.ObjectBinding[T]) = if (ob != null) new ObjectBinding[T](ob) else null
 
   /**
    * $START$OBE.html $OBE$END
@@ -103,7 +103,7 @@ trait BindingIncludes extends Bindings {
    * @param oe $JFX $OBE
    * @return $SFX $OBE
    */
-  implicit def jfxObjectExpression2sfx[T](oe: jfxbb.ObjectExpression[T]) = new ObjectExpression[T](oe)
+  implicit def jfxObjectExpression2sfx[T](oe: jfxbb.ObjectExpression[T]) = if (oe != null) new ObjectExpression[T](oe) else null
 
   /**
    * $START$STB.html $STB$END
@@ -111,7 +111,7 @@ trait BindingIncludes extends Bindings {
    * @param sb $JFX $STB
    * @return $SFX $STB
    */
-  implicit def jfxStringBinding2sfx(sb: jfxbb.StringBinding) = new StringBinding(sb)
+  implicit def jfxStringBinding2sfx(sb: jfxbb.StringBinding) = if (sb != null) new StringBinding(sb) else null
 
   /**
    * $START$STE.html $STE$END
@@ -119,7 +119,7 @@ trait BindingIncludes extends Bindings {
    * @param se $JFX $STE
    * @return $SFX $STE
    */
-  implicit def jfxStringExpression2sfx(se: jfxbb.StringExpression) = new StringExpression(se)
+  implicit def jfxStringExpression2sfx(se: jfxbb.StringExpression) = if (se != null) new StringExpression(se) else null
 
   // Conversion helper for variable precision numbers (e.g. 100+-.01)
 
@@ -163,7 +163,7 @@ trait BindingIncludes extends Bindings {
 
   /**
    * Converts a Integer to a $JFX IntegerBinding
-   * 
+   *
    * @param i Integer to generate a new IntegerBinding
    * @return a new IntegerBinding generted from the Integer.
    */
@@ -173,7 +173,7 @@ trait BindingIncludes extends Bindings {
 
   /**
    * Converts a Long to a $JFX LongBinding
-   * 
+   *
    * @param i Long to generate a new LongBinding
    * @return a new LongBinding generated from the Long.
    */
@@ -183,7 +183,7 @@ trait BindingIncludes extends Bindings {
 
   /**
    * Converts a Float to a $JFX FloatBinding
-   * 
+   *
    * @param i Float to generate a new FloatBinding
    * @return a new FloatBinding generated from the Float.
    */
@@ -193,7 +193,7 @@ trait BindingIncludes extends Bindings {
 
   /**
    * Converts a Double to a $JFX DoubleBinding
-   * 
+   *
    * @param i Double to generate a new DoubleBinding
    * @return a new DoubleBinding generated from the Double.
    */

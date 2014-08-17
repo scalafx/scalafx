@@ -33,7 +33,7 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object ColorAdjust {
-  implicit def sfxColorAdjust2jfx(ca: ColorAdjust) = ca.delegate
+  implicit def sfxColorAdjust2jfx(ca: ColorAdjust) = if (ca != null) ca.delegate else null
 }
 
 class ColorAdjust(override val delegate: jfxse.ColorAdjust = new jfxse.ColorAdjust)

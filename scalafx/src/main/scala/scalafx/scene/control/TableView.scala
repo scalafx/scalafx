@@ -28,10 +28,10 @@ package scalafx.scene.control
 
 import scala.language.implicitConversions
 
-import javafx.{ event => jfxe }
-import javafx.{ scene => jfxs }
-import javafx.scene.{ control => jfxsc }
-import javafx.{ util => jfxu }
+import javafx.{event => jfxe}
+import javafx.{scene => jfxs}
+import javafx.scene.{control => jfxsc}
+import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
@@ -66,7 +66,7 @@ object TableView {
    *  @param tv ScalaFX $TV
    *  @return $JFX $TV
    */
-  implicit def sfxTableView2jfx[S](tv: TableView[S]) = tv.delegate
+  implicit def sfxTableView2jfx[S](tv: TableView[S]) = if (tv != null) tv.delegate else null
 
   /**
    * $OBJCOMPSTA$TV.$RF$OBJCOMPEND
@@ -79,7 +79,7 @@ object TableView {
      *  @param rf ScalaFX ResizeFeatures
      *  @return JavaFX ResizeFeatures
      */
-    implicit def sfxResizeFeatures2jfx[S](rf: ResizeFeatures[S]) = rf.delegate
+    implicit def sfxResizeFeatures2jfx[S](rf: ResizeFeatures[S]) = if (rf != null) rf.delegate else null
 
   }
 

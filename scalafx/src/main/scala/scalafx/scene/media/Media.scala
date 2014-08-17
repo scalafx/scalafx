@@ -35,7 +35,7 @@ import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object Media {
-  implicit def sfxMedia2jfx(m: Media) = m.delegate
+  implicit def sfxMedia2jfx(m: Media) = if (m != null) m.delegate else null
 }
 
 class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.Media] {

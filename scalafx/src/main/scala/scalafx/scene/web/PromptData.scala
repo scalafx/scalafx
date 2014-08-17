@@ -27,7 +27,7 @@
 package scalafx.scene.web
 
 import scala.language.implicitConversions
-import javafx.scene.{ web => jfxsw }
+import javafx.scene.{web => jfxsw}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
@@ -42,7 +42,7 @@ object PromptData {
    * @param pd ScalaFX PromptData
    * @return JavaFX PromptData
    */
-  implicit def sfxPromptData2jfx(pd: PromptData) = pd.delegate
+  implicit def sfxPromptData2jfx(pd: PromptData) = if (pd != null) pd.delegate else null
 }
 
 /**

@@ -41,7 +41,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 
 object ComboBox {
-  implicit def sfxComboBox2jfx[T](cb: ComboBox[T]) = cb.delegate
+  implicit def sfxComboBox2jfx[T](cb: ComboBox[T]) = if (cb != null) cb.delegate else null
 }
 
 class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[T])

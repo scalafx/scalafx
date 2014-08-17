@@ -27,7 +27,7 @@
 package scalafx.scene.layout
 
 import scala.language.implicitConversions
-import javafx.scene.{ layout => jfxsl }
+import javafx.scene.{layout => jfxsl}
 
 object LayoutIncludes extends LayoutIncludes
 
@@ -66,7 +66,7 @@ trait LayoutIncludes {
    * @param a $JFX $ACPN
    * @return $SFX $ACPN
    */
-  implicit def jfxAnchorPane2sfx(a: jfxsl.AnchorPane) = new AnchorPane(a)
+  implicit def jfxAnchorPane2sfx(a: jfxsl.AnchorPane) = if (a != null) new AnchorPane(a) else null
 
   /**
      * $START$BKGN.html $BKGN$END
@@ -102,7 +102,7 @@ trait LayoutIncludes {
    * @param v $JFX $BDPN
    * @return $SFX $BDPN
    */
-  implicit def jfxBorderPane2sfx(v: jfxsl.BorderPane) = new BorderPane(v)
+  implicit def jfxBorderPane2sfx(v: jfxsl.BorderPane) = if (v != null) new BorderPane(v) else null
 
   implicit def jfxBorderRepeat2sfx(v: jfxsl.BorderRepeat) = new BorderRepeat(v)
 
@@ -118,7 +118,7 @@ trait LayoutIncludes {
    * @param v $JFX $CLCT
    * @return $SFX $CLCT
    */
-  implicit def jfxColumnConstraints2sfx(v: jfxsl.ColumnConstraints) = new ColumnConstraints(v)
+  implicit def jfxColumnConstraints2sfx(v: jfxsl.ColumnConstraints) = if (v != null) new ColumnConstraints(v) else null
 
   /**
    * $START$CTBS.html $CTBS$END
@@ -126,7 +126,7 @@ trait LayoutIncludes {
    * @param v $JFX $CTBS
    * @return $SFX $CTBS
    */
-  implicit def jfxConstraintsBase2sfx(v: jfxsl.ConstraintsBase) = new ConstraintsBase(v) {}
+  implicit def jfxConstraintsBase2sfx(v: jfxsl.ConstraintsBase) = if (v != null) new ConstraintsBase(v) {} else null
 
   implicit def jfxCornerRadii2sfx(v: jfxsl.CornerRadii) = new CornerRadii(v) {}
 
@@ -136,7 +136,7 @@ trait LayoutIncludes {
    * @param v $JFX $FLPN
    * @return $SFX $FLPN
    */
-  implicit def jfxFlowPane2sfx(v: jfxsl.FlowPane) = new FlowPane(v)
+  implicit def jfxFlowPane2sfx(v: jfxsl.FlowPane) = if (v != null) new FlowPane(v) else null
 
   /**
    * $START$GDPN.html $GDPN$END
@@ -144,7 +144,7 @@ trait LayoutIncludes {
    * @param v $JFX $GDPN
    * @return $SFX $GDPN
    */
-  implicit def jfxGridPane2sfx(v: jfxsl.GridPane) = new GridPane(v)
+  implicit def jfxGridPane2sfx(v: jfxsl.GridPane) = if (v != null) new GridPane(v) else null
 
   /**
    * $START$HBOX.html $HBOX$END
@@ -152,7 +152,7 @@ trait LayoutIncludes {
    * @param v $JFX $HBOX
    * @return $SFX $HBOX
    */
-  implicit def jfxHBox2sfx(v: jfxsl.HBox) = new HBox(v)
+  implicit def jfxHBox2sfx(v: jfxsl.HBox) = if (v != null) new HBox(v) else null
 
   /**
    * $START$PANE.html $PANE$END
@@ -160,7 +160,7 @@ trait LayoutIncludes {
    * @param v $JFX $PANE
    * @return $SFX $PANE
    */
-  implicit def jfxPane2sfx(v: jfxsl.Pane) = new Pane(v)
+  implicit def jfxPane2sfx(v: jfxsl.Pane) = if (v != null) new Pane(v) else null
 
   /**
    * $START$PRIO.html $PRIO$END
@@ -176,7 +176,7 @@ trait LayoutIncludes {
    * @param v $JFX $REGI
    * @return $SFX $REGI
    */
-  implicit def jfxRegion2sfx(v: jfxsl.Region) = new Region(v)
+  implicit def jfxRegion2sfx(v: jfxsl.Region) = if (v != null) new Region(v) else null
 
   /**
    * $START$RWCT.html $RWCT$END
@@ -184,7 +184,7 @@ trait LayoutIncludes {
    * @param v $JFX $RWCT
    * @return $SFX $RWCT
    */
-  implicit def jfxRowConstraints2sfx(v: jfxsl.RowConstraints) = new RowConstraints(v)
+  implicit def jfxRowConstraints2sfx(v: jfxsl.RowConstraints) = if (v != null) new RowConstraints(v) else null
 
   /**
    * $START$STPN.html $STPN$END
@@ -192,7 +192,7 @@ trait LayoutIncludes {
    * @param v $JFX $STPN
    * @return $SFX $STPN
    */
-  implicit def jfxStackPane2sfx(v: jfxsl.StackPane) = new StackPane(v)
+  implicit def jfxStackPane2sfx(v: jfxsl.StackPane) = if (v != null) new StackPane(v) else null
 
   /**
    * $START$TLPN.html $TLPN$END
@@ -200,7 +200,7 @@ trait LayoutIncludes {
    * @param v $JFX $TLPN
    * @return $SFX $TLPN
    */
-  implicit def jfxTilePane2sfx(v: jfxsl.TilePane) = new TilePane(v)
+  implicit def jfxTilePane2sfx(v: jfxsl.TilePane) = if (v != null) new TilePane(v) else null
 
   /**
    * $START$VBOX.html $VBOX$END
@@ -208,6 +208,6 @@ trait LayoutIncludes {
    * @param v $JFX $VBOX
    * @return $SFX $VBOX
    */
-  implicit def jfxVBox2sfx(v: jfxsl.VBox) = new VBox(v)
+  implicit def jfxVBox2sfx(v: jfxsl.VBox) = if (v != null) new VBox(v) else null
 
 }

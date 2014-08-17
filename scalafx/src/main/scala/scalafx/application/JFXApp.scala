@@ -35,8 +35,8 @@ import scala.collection.Seq
 import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
 
-import javafx.{ application => jfxa }
-import javafx.{ stage => jfxs }
+import javafx.{application => jfxa}
+import javafx.{stage => jfxs}
 import scalafx.application.JFXApp.{PrimaryStage, Parameters}
 import scalafx.stage.Stage
 import scalafx.delegate.SFXDelegate
@@ -52,7 +52,7 @@ object JFXApp {
   private val keyValue = """^--([A-Za-z_][^=]*?)=(.*)$""".r
 
   object Parameters {
-    implicit def sfxParameters2jfx(p: Parameters) = p.delegate
+    implicit def sfxParameters2jfx(p: Parameters) = if (p != null) p.delegate else null
 
     /**
      * Creates a new instance of Parameters
@@ -99,7 +99,7 @@ object JFXApp {
       if (!filled) {
         arguments.foreach(arg =>
           keyValue.findFirstMatchIn(arg) match {
-            case None          => unnamedArguments += arg
+            case None => unnamedArguments += arg
             case Some(matcher) => namedArguments(matcher.group(1)) = matcher.group(2)
           })
         filled = true
@@ -164,12 +164,13 @@ object JFXApp {
     * }}}
     */
   class PrimaryStage extends Stage(JFXApp.STAGE)
+
 }
 
 /** ScalaFX applications can extend JFXApp to create properly initialized JavaFX applications.
   *
   * On the back end `JFXApp` first calls [[javafx.application.Application.launch]] then executes body of its
-  * constructor when [[javafx.application.Application#start(primaryStage:Stage)]] is called. Here is an example use:
+  * constructor when [[javafx.application.Application# s t a r t ( p r i m a r y S t a g e : S t a g e )]] is called. Here is an example use:
   *
   * {{{
   *   object SimpleScalaFXApp extends JFXApp {
@@ -189,7 +190,7 @@ object JFXApp {
   *   }
   * }}}
   *
- */
+  */
 trait JFXApp extends DelayedInit {
 
   // Since JFXApp is now a trait, it is immune from the behavior of the DelayedInit marker trait. All JFXApp
@@ -211,7 +212,7 @@ trait JFXApp extends DelayedInit {
   private val subClassInitCode = new ListBuffer[() => Unit]
 
   /**
-   *  Set of parameters for an application
+   * Set of parameters for an application
    */
   protected lazy val parameters: Parameters = Parameters(arguments)
 
@@ -247,16 +248,16 @@ trait JFXApp extends DelayedInit {
     * Execute the construction/initialization code of all classes/objects that extend JFXApp, that was earlier passed
     * to delayedInit() by the compiler.
     */
-  private [application] final def init(): Unit = for (initCode <- subClassInitCode) initCode()
+  private[application] final def init(): Unit = for (initCode <- subClassInitCode) initCode()
 
   /**
-   *  This method is called when the application should stop, and provides a convenient place to prepare
-   *  for application exit and destroy resources.
+   * This method is called when the application should stop, and provides a convenient place to prepare
+   * for application exit and destroy resources.
    *
-   *  It is called from javafx.Application.stop method.
-   *  The implementation of this method provided by the JFXApp class does nothing.
+   * It is called from javafx.Application.stop method.
+   * The implementation of this method provided by the JFXApp class does nothing.
    *
-   *  NOTE: This method is called on the JavaFX Application Thread, the same as javafx.Application.stop method.
+   * NOTE: This method is called on the JavaFX Application Thread, the same as javafx.Application.stop method.
    */
   def stopApp() {
   }

@@ -52,7 +52,7 @@ object TextFieldTableCell {
    * @param cell ScalaFX $TFTC
    * @return JavaFX $TFTC
    */
-  implicit def sfxTextFieldTableCell2jfx[S, T](cell: TextFieldTableCell[S, T]) = cell.delegate
+  implicit def sfxTextFieldTableCell2jfx[S, T](cell: TextFieldTableCell[S, T]) = if (cell != null) cell.delegate else null
 
   /**
    * $FLVINIT

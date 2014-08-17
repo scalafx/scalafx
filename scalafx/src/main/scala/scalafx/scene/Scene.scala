@@ -46,7 +46,7 @@ import scalafx.scene.paint.Paint
 import scalafx.geometry.NodeOrientation
 
 object Scene {
-  implicit def sfxScene2jfx(v: Scene) = v.delegate
+  implicit def sfxScene2jfx(v: Scene) = if (v != null) v.delegate else null
 }
 
 /**

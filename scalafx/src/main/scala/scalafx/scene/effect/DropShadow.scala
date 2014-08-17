@@ -27,7 +27,7 @@
 package scalafx.scene.effect
 
 import scala.language.implicitConversions
-import javafx.scene.{ effect => jfxse, paint => jfxsp }
+import javafx.scene.{effect => jfxse, paint => jfxsp}
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
@@ -36,7 +36,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.delegate.DimensionDelegate
 
 object DropShadow {
-  implicit def sfxDropShadow2jfx(ds: DropShadow) = ds.delegate
+  implicit def sfxDropShadow2jfx(ds: DropShadow) = if (ds != null) ds.delegate else null
 }
 
 class DropShadow(override val delegate: jfxse.DropShadow = new jfxse.DropShadow())

@@ -33,7 +33,7 @@ import scalafx.delegate.SFXDelegate
 
 
 object ReadOnlyBooleanWrapper {
-  implicit def sfxReadOnlyBooleanWrapper2jfx(w: ReadOnlyBooleanWrapper) = w.delegate
+  implicit def sfxReadOnlyBooleanWrapper2jfx(w: ReadOnlyBooleanWrapper) = if (w != null) w.delegate else null
 
   /** Creates a new ReadOnlyBooleanWrapper instance.
     * @param value the initial value of the wrapped value

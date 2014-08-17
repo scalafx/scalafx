@@ -27,7 +27,7 @@
 package scalafx.scene.control
 
 import scala.language.implicitConversions
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyIntegerProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
@@ -45,7 +45,7 @@ object FocusModel {
    * @return JavaFX FocusModel
    * @tparam T The type of the underlying data model for the UI control.
    */
-  implicit def sfxFocusModel2jfx[T](v: FocusModel[T]) = v.delegate
+  implicit def sfxFocusModel2jfx[T](v: FocusModel[T]) = if (v != null) v.delegate else null
 
 }
 

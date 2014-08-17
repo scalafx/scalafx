@@ -27,9 +27,9 @@
 package scalafx.scene.control
 
 import scala.language.implicitConversions
-import javafx.{ event => jfxe }
-import javafx.{ scene => jfxs }
-import javafx.scene.{ control => jfxsc }
+import javafx.{event => jfxe}
+import javafx.{scene => jfxs}
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
@@ -42,7 +42,7 @@ import scalafx.css.Styleable
 
 object Tab {
 
-  implicit def sfxTab2jfx(v: Tab) = v.delegate
+  implicit def sfxTab2jfx(v: Tab) = if (v != null) v.delegate else null
 
 }
 

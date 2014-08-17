@@ -27,8 +27,8 @@
 package scalafx.scene.transform
 
 import scala.language.implicitConversions
-import javafx.{ geometry => jfxg }
-import javafx.scene.{ transform => jfxst }
+import javafx.{geometry => jfxg}
+import javafx.scene.{transform => jfxst}
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
@@ -37,7 +37,7 @@ import scalafx.geometry.Point3D
 import scalafx.delegate.SFXDelegate
 
 object Rotate {
-  implicit def sfxRotate2jfx(v: Rotate) = v.delegate
+  implicit def sfxRotate2jfx(v: Rotate) = if (v != null) v.delegate else null
 
   /**
    * Specifies the X-axis as the axis of rotation.

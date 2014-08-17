@@ -30,7 +30,7 @@ import scala.language.implicitConversions
 import javafx.util.{ converter => jfxuc }
 
 object ByteStringConverter {
-  implicit def sfxByteStringConverter2jfx(c: ByteStringConverter) = c.delegate
+  implicit def sfxByteStringConverter2jfx(c: ByteStringConverter) = if (c != null) c.delegate else null
 }
 
 class ByteStringConverter(delegate: jfxuc.ByteStringConverter = new jfxuc.ByteStringConverter)

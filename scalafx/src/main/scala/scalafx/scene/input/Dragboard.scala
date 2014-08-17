@@ -33,11 +33,11 @@ import javafx.scene.{input => jfxsi}
 import scalafx.delegate.SFXDelegate
 
 object Dragboard {
-  implicit def sfxDragboard2jfx(d: Dragboard) = d.delegate
+  implicit def sfxDragboard2jfx(d: Dragboard) = if (d != null) d.delegate else null
 }
 
 class Dragboard(override val delegate: jfxsi.Dragboard) extends Clipboard(delegate) with SFXDelegate[jfxsi.Dragboard] {
-  
+
   def transferModes: Set[jfxsi.TransferMode] = delegate.getTransferModes
 
 }

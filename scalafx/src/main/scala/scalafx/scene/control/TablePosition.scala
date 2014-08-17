@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import scala.language.implicitConversions
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
@@ -44,7 +44,7 @@ object TablePosition {
    * @tparam S The type of the items contained within the TableView (i.e. the same generic type as the S in TableView<S>).
    * @tparam T The type of the items contained within the TableColumn.
    */
-  implicit def sfxTablePosition2jfx[S, T](tp: TablePosition[S, T]) = tp.delegate
+  implicit def sfxTablePosition2jfx[S, T](tp: TablePosition[S, T]) = if (tp != null) tp.delegate else null
 
 }
 
