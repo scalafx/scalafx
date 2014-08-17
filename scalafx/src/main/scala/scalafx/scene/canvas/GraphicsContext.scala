@@ -32,7 +32,7 @@ import javafx.geometry.VPos
 import javafx.scene.effect.BlendMode
 import javafx.scene.shape.FillRule
 import javafx.scene.text.TextAlignment
-import javafx.scene.{ canvas => jfxsc }
+import javafx.scene.{canvas => jfxsc}
 import scalafx.Includes._
 import scalafx.scene.effect.Effect
 import scalafx.scene.image.Image
@@ -47,7 +47,7 @@ import scalafx.scene.transform.Affine
 import scalafx.delegate.SFXDelegate
 
 object GraphicsContext {
-  implicit def sfxGraphicsContext2jfx(gc: GraphicsContext): jfxsc.GraphicsContext = gc.delegate
+  implicit def sfxGraphicsContext2jfx(gc: GraphicsContext): jfxsc.GraphicsContext = if (gc != null) gc.delegate else null
 }
 
 /**
@@ -504,7 +504,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
    * Returns a copy of the current transform.
    */
   def getTransform: Affine = delegate.getTransform
-  
+
   /**
    * Sets the current transform.
    */

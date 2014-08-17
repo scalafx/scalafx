@@ -34,7 +34,7 @@ import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.delegate.SFXDelegate
 
 object Parent {
-  implicit def sfxParent2jfx(v: Parent) = v.delegate
+  implicit def sfxParent2jfx(v: Parent) = if (v != null) v.delegate else null
 }
 
 /**

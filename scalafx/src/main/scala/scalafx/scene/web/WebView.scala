@@ -26,11 +26,11 @@
  */
 package scalafx.scene.web
 
-import javafx.{ event => jfxe }
-import javafx.scene.{ text => jfxst }
-import javafx.scene.{ web => jfxsw }
-import javafx.{ geometry => jfxg }
-import javafx.{ util => jfxu }
+import javafx.{event => jfxe}
+import javafx.scene.{text => jfxst}
+import javafx.scene.{web => jfxsw}
+import javafx.{geometry => jfxg}
+import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Parent
@@ -39,7 +39,7 @@ import scalafx.scene.text.FontSmoothingType
 import javafx.util.Callback
 
 object WebView {
-  implicit def sfxWebView2jfx(wv: WebView) = wv.delegate
+  implicit def sfxWebView2jfx(wv: WebView) = if (wv != null) wv.delegate else null
 }
 
 class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)

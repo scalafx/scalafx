@@ -26,8 +26,8 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import javafx.{ geometry => jfxg }
+import javafx.scene.{control => jfxsc}
+import javafx.{geometry => jfxg}
 
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
@@ -37,7 +37,7 @@ import scalafx.geometry.VPos
 import scalafx.delegate.SFXDelegate
 
 object Separator {
-  implicit def sfxSeparator2jfx(v: Separator) = v.delegate
+  implicit def sfxSeparator2jfx(v: Separator) = if (v != null) v.delegate else null
 }
 
 class Separator(override val delegate: jfxsc.Separator = new jfxsc.Separator) extends Control(delegate) with SFXDelegate[jfxsc.Separator] {

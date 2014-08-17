@@ -33,7 +33,7 @@ import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object SelectionModel {
-  implicit def sfxSelectionModel2jfx[T](v: SelectionModel[T]) = v.delegate
+  implicit def sfxSelectionModel2jfx[T](v: SelectionModel[T]) = if (v != null) v.delegate else null
 }
 
 abstract class SelectionModel[T](override val delegate: jfxsc.SelectionModel[T])
@@ -49,7 +49,7 @@ abstract class SelectionModel[T](override val delegate: jfxsc.SelectionModel[T])
    * Refers to the selected item property, which is used to indicate the
    * currently selected item in the selection model.
    */
-  def selectedItem: ReadOnlyObjectProperty[T] = 
+  def selectedItem: ReadOnlyObjectProperty[T] =
     new ReadOnlyObjectProperty[T](delegate.selectedItemProperty)
 
   /**

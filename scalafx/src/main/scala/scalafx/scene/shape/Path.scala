@@ -34,7 +34,7 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object Path {
-  implicit def sfxPath2jfx(v: Path) = v.delegate
+  implicit def sfxPath2jfx(v: Path) = if (v != null) v.delegate else null
 }
 
 /**

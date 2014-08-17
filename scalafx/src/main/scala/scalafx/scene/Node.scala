@@ -27,14 +27,14 @@
 package scalafx.scene
 
 import scala.collection.JavaConversions.asJavaCollection
-import javafx.scene.{ effect => jfxse }
-import javafx.scene.{ input => jfxsi }
-import javafx.scene.{ layout => jfxsl }
-import javafx.scene.{ transform => jfxst }
-import javafx.{ event => jfxe }
-import javafx.{ geometry => jfxg }
-import javafx.{ scene => jfxs }
-import javafx.{ util => jfxu }
+import javafx.scene.{effect => jfxse}
+import javafx.scene.{input => jfxsi}
+import javafx.scene.{layout => jfxsl}
+import javafx.scene.{transform => jfxst}
+import javafx.{event => jfxe}
+import javafx.{geometry => jfxg}
+import javafx.{scene => jfxs}
+import javafx.{util => jfxu}
 import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
@@ -60,13 +60,13 @@ import scalafx.scene.layout.Priority
 import scalafx.scene.effect.BlendMode
 
 object Node {
-  implicit def sfxNode2jfx(v: Node) = v.delegate
+  implicit def sfxNode2jfx(v: Node) = if (v != null) v.delegate else null
 }
 
 /**
  * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/Node.html]].
  */
-abstract class Node protected (override val delegate: jfxs.Node)
+abstract class Node protected(override val delegate: jfxs.Node)
   extends EventHandlerDelegate
   with SFXDelegate[jfxs.Node] {
 

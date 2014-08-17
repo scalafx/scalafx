@@ -27,7 +27,7 @@
 package scalafx.scene.text
 
 import javafx.geometry.VPos
-import javafx.scene.{ text => jfxst }
+import javafx.scene.{text => jfxst}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.BooleanProperty
@@ -40,7 +40,8 @@ import scalafx.delegate.PositionDelegate
 import scalafx.delegate.SFXDelegate
 
 object Text {
-  implicit def sfxText2jfx(v: Text) = v.delegate
+  implicit def sfxText2jfx(v: Text) = if (v != null) v.delegate else null
+
 }
 
 class Text(override val delegate: jfxst.Text = new jfxst.Text)

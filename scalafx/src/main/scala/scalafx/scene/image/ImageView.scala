@@ -26,8 +26,8 @@
  */
 package scalafx.scene.image
 
-import javafx.{ scene => jfxs, geometry => jfxg }
-import jfxs.{ image => jfxsi }
+import javafx.{scene => jfxs, geometry => jfxg}
+import jfxs.{image => jfxsi}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.PositionDelegate
@@ -38,7 +38,7 @@ import scalafx.geometry.Rectangle2D
 import scalafx.scene.Node
 
 object ImageView {
-  implicit def sfxImageView2jfx(iv: ImageView) = iv.delegate
+  implicit def sfxImageView2jfx(iv: ImageView) = if (iv != null) iv.delegate else null
 }
 
 class ImageView(override val delegate: jfxsi.ImageView = new jfxsi.ImageView())
@@ -47,12 +47,12 @@ class ImageView(override val delegate: jfxsi.ImageView = new jfxsi.ImageView())
   with SFXDelegate[jfxsi.ImageView] {
 
   /** Allocates a new ImageView object using the given image. */
-  def this(image:Image) {
+  def this(image: Image) {
     this(new jfxsi.ImageView(image))
   }
 
   /** Allocates a new ImageView object with image loaded from the specified URL. */
-  def this(url:String) {
+  def this(url: String) {
     this(new jfxsi.ImageView(url))
   }
 

@@ -26,12 +26,12 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object TablePosition {
-  implicit def sfxTablePosition2jfx[S, T](tp: TablePosition[S, T]) = tp.delegate
+  implicit def sfxTablePosition2jfx[S, T](tp: TablePosition[S, T]) = if (tp != null) tp.delegate else null
 }
 
 /**

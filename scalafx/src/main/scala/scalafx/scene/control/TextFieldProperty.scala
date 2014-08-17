@@ -33,7 +33,7 @@ import jfxs.{control => jfxsc}
 import scalafx.beans.property.ReadOnlyObjectProperty
 
 object TextFieldProperty {
-  implicit def sfxTextFieldProperty2jfx(p: TextFieldProperty) = p.delegate
+  implicit def sfxTextFieldProperty2jfx(p: TextFieldProperty) = if (p != null) p.delegate else null
 }
 
 class TextFieldProperty(override val delegate: jfxbp.ReadOnlyObjectProperty[jfxsc.TextField])

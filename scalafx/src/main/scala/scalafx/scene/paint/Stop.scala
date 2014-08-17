@@ -26,11 +26,11 @@
  */
 package scalafx.scene.paint
 
-import javafx.scene.{ paint => jfxsp }
+import javafx.scene.{paint => jfxsp}
 import scalafx.delegate.SFXDelegate
 
 object Stop {
-  implicit def sfxStop2jfx(s: Stop) = s.delegate
+  implicit def sfxStop2jfx(s: Stop) = if (s != null) s.delegate else null
 
   def apply(offset: Double, color: Color) = new Stop(new jfxsp.Stop(offset, color))
 

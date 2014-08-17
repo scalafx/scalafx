@@ -26,9 +26,9 @@
  */
 package scalafx.scene.control
 
-import javafx.{ geometry => jfxg }
-import javafx.{ scene => jfxs }
-import javafx.scene.{ control => jfxsc, paint => jfxsp, text => jfxst }
+import javafx.{geometry => jfxg}
+import javafx.{scene => jfxs}
+import javafx.scene.{control => jfxsc, paint => jfxsp, text => jfxst}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
@@ -45,7 +45,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.delegate.AlignmentDelegate
 
 object Labeled {
-  implicit def sfxLabeled2jfx(v: Labeled) = v.delegate
+  implicit def sfxLabeled2jfx(v: Labeled) = if (v != null) v.delegate else null
 }
 
 abstract class Labeled(override val delegate: jfxsc.Labeled)

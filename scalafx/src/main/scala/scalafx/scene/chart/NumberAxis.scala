@@ -34,7 +34,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.util.converter.StringConverterDelegate
 
 object NumberAxis {
-  implicit def sfxNumberAxis2jfx(v: NumberAxis) = v.delegate
+  implicit def sfxNumberAxis2jfx(v: NumberAxis) = if (v != null) v.delegate else null
 
   def apply(lowerBound: Double, upperBound: Double, tickUnit: Double) =
     new NumberAxis(new jfxsc.NumberAxis(lowerBound, upperBound, tickUnit))
@@ -47,7 +47,7 @@ object NumberAxis {
   def apply() = new NumberAxis()
 
   object DefaultFormatter {
-    implicit def sfxDefaultFormatter2jfx(v: DefaultFormatter) = v.delegate
+    implicit def sfxDefaultFormatter2jfx(v: DefaultFormatter) = if (v != null) v.delegate else null
 
     def apply(axis: NumberAxis) =
       new DefaultFormatter(new jfxsc.NumberAxis.DefaultFormatter(axis))

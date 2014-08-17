@@ -26,14 +26,14 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
 object Button {
-  implicit def sfxButton2jfx(v: Button) = v.delegate
+  implicit def sfxButton2jfx(v: Button) = if (v != null) v.delegate else null
 }
 
 class Button(override val delegate: jfxsc.Button = new jfxsc.Button) extends ButtonBase(delegate) with SFXDelegate[jfxsc.Button] {

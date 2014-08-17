@@ -26,9 +26,9 @@
  */
 package scalafx.scene.layout
 
-import javafx.{ geometry => jfxg }
-import javafx.{ scene => jfxs }
-import javafx.scene.{ layout => jfxsl }
+import javafx.{geometry => jfxg}
+import javafx.{scene => jfxs}
+import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.AlignmentDelegate
@@ -42,7 +42,7 @@ import scalafx.beans.property.IntegerProperty
 import scalafx.beans.property.ObjectProperty
 
 object TilePane {
-  implicit def sfxTilePane2jfx(v: TilePane) = v.delegate
+  implicit def sfxTilePane2jfx(v: TilePane) = if (v != null) v.delegate else null
 
   /**
    * Removes all hbox constraints from the child node.

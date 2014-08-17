@@ -26,23 +26,23 @@
  */
 package scalafx.concurrent
 
-import java.util.{ concurrent => juc }
-import javafx.{ concurrent => jfxc }
-import javafx.{ event => jfxe }
+import java.util.{concurrent => juc}
+import javafx.{concurrent => jfxc}
+import javafx.{event => jfxe}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.event.EventHandlerDelegate
 import scalafx.delegate.SFXDelegate
 
 object Service {
-  implicit def sfxService2jfx[T](s: Service[T]) = s.delegate
+  implicit def sfxService2jfx[T](s: Service[T]) = if (s != null) s.delegate else null
 
   /**
    * Create a new [[scalafx.concurrent.Service]] with a operation to be invoked after this was started on the JavaFX
    * Application Thread.
    *
    * @param op [[scala.Function]] that returns a [[scalafx.concurrent.Task]] to be invoked after this was started on
-   * the JavaFX Application Thread.
+   *           the JavaFX Application Thread.
    */
   def apply[T](op: => jfxc.Task[T]) = new Service[T](new jfxc.Service[T] {
     protected def createTask = op

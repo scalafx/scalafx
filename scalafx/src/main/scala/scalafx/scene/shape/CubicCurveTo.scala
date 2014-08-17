@@ -26,14 +26,14 @@
  */
 package scalafx.scene.shape
 
-import javafx.scene.{ shape => jfxss }
+import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.PositionDelegate
 import scalafx.delegate.SFXDelegate
 
 object CubicCurveTo {
-  implicit def sfxCubicCurveTo2jfx(v: CubicCurveTo) = v.delegate
+  implicit def sfxCubicCurveTo2jfx(v: CubicCurveTo) = if (v != null) v.delegate else null
 
   def apply(controlX1: Double, controlY1: Double, controlX2: Double, controlY2: Double, x: Double, y: Double) =
     new CubicCurveTo(new jfxss.CubicCurveTo(controlX1, controlY1, controlX2, controlY2, x, y))

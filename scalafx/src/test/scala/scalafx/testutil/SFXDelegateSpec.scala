@@ -51,7 +51,7 @@ import scalafx.delegate.SFXDelegate
  *                it has to be resolved automatically by the compiler.
  *
  */
-abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (javaClass: Class[J], scalaClass: Class[S])(implicit jfx2sfx: J => S = null, sfx2jfx: S => J = null)
+abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaClass: Class[J], scalaClass: Class[S])(implicit jfx2sfx: J => S = null, sfx2jfx: S => J = null)
   extends FlatSpec
   with AbstractComparator {
 
@@ -97,6 +97,18 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
     jfxObject should be(sfxObject.delegate)
   }
 
+  it should "allow `null` as an argument to implicit conversion from SFX to JFX" in {
+    // Test if the implicit conversion exists
+    assert(sfx2jfx != null, "There is no implicit conversion from ScalaFX to JavaFX")
+
+    try {
+      assert(sfx2jfx(null.asInstanceOf[S]) === null.asInstanceOf[J],
+        "Implicit conversion of SFX `null` should be JFX `null`.")
+    } catch {
+      case ex: NullPointerException => fail("sfx2jfx implicit conversion should accept `null` argument.")
+    }
+  }
+
   it should "have an implicit conversion from JFX to SFX" in {
     // Test if the implicit conversion exists
     assert(jfx2sfx != null, "There is no implicit conversion from JavaFX to ScalaFX")
@@ -106,6 +118,19 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected (java
     val sfxObject: S = jfxObject
 
     sfxObject.delegate should be(jfxObject)
+  }
+
+  it should "allow `null` as an argument to implicit conversion from JFX to SFX" in {
+    // Test if the implicit conversion exists
+    assert(jfx2sfx != null, "There is no implicit conversion from JavaFX to ScalaFX")
+
+    // Check for `null` guard
+    try {
+      assert(jfx2sfx(null.asInstanceOf[J]) === null.asInstanceOf[S],
+        "Implicit conversion of JFX `null` should be SFX `null`.")
+    } catch {
+      case ex: NullPointerException => fail("jfx2sfx implicit conversion should accept `null` argument.")
+    }
   }
 
   it should "declare all public static methods of " + javaClass.getName in {

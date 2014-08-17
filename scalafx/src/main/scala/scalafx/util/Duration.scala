@@ -26,14 +26,14 @@
  */
 package scalafx.util
 
-import javafx.{ util => jfxu }
+import javafx.{util => jfxu}
 import scalafx.delegate.SFXDelegate
 
 /**
  * Companion Object for [[scalafx.util.Duration]].
  */
 object Duration {
-  implicit def sfxDuration2jfx(d: Duration) = d.delegate
+  implicit def sfxDuration2jfx(d: Duration) = if (d != null) d.delegate else null
 
   def apply(millis: Double) = new Duration(millis)
 
@@ -55,11 +55,11 @@ object Duration {
  *
  * @constructor Creates a new $D from a JavaFX $D.
  * @param delegate JavaFX $D to be delegated.
- * 
+ *
  * @define D `Duration`
  */
 class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Duration] with Ordered[Duration] {
-  
+
   /**
    * The constructor of $D
    *
@@ -67,7 +67,7 @@ class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Du
    */
   def this(millis: Double) =
     this(jfxu.Duration.millis(millis))
-  
+
   def +(d: jfxu.Duration) = new Duration(delegate.add(d))
   def -(d: jfxu.Duration) = new Duration(delegate.subtract(d))
 

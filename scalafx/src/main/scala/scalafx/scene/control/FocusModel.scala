@@ -33,7 +33,7 @@ import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object FocusModel {
-  implicit def sfxFocusModel2jfx[T](v: FocusModel[T]) = v.delegate
+  implicit def sfxFocusModel2jfx[T](v: FocusModel[T]) = if (v != null) v.delegate else null
 }
 
 /**
@@ -75,11 +75,11 @@ abstract class FocusModel[T](override val delegate: jfxsc.FocusModel[T]) extends
   /*
    * Returns the number of items in the data model that underpins the control.
    */
-//  protected def itemCount: Int
+  //  protected def itemCount: Int
 
   /*
    * Returns the item at the given index.
    */
-//  protected def modelItem(index: Int): T
+  //  protected def modelItem(index: Int): T
 
 }

@@ -31,7 +31,7 @@ import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object ProgressBar {
-  implicit def sfxProgressBar2jfx(v: ProgressBar) = v.delegate
+  implicit def sfxProgressBar2jfx(v: ProgressBar) = if (v != null) v.delegate else null
 }
 
 class ProgressBar(override val delegate: jfxsc.ProgressBar = new jfxsc.ProgressBar) extends ProgressIndicator(delegate) with SFXDelegate[jfxsc.ProgressBar] {

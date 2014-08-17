@@ -26,14 +26,14 @@
  */
 package scalafx.scene.canvas
 
-import javafx.scene.{ canvas => jfxsc }
+import javafx.scene.{canvas => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
 object Canvas {
-  implicit def sfxCanvas2jfx(c: Canvas): jfxsc.Canvas = c.delegate
+  implicit def sfxCanvas2jfx(c: Canvas): jfxsc.Canvas = if (c != null) c.delegate else null
 }
 
 /**

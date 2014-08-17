@@ -27,13 +27,13 @@
 package scalafx.scene.layout
 
 import collection.JavaConversions._
-import javafx.scene.{ layout => jfxsl }
+import javafx.scene.{layout => jfxsl}
 import scalafx.collections._
 import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
 object Pane {
-  implicit def sfxPane2jfx(v: Pane) = v.delegate
+  implicit def sfxPane2jfx(v: Pane) = if (v != null) v.delegate else null
 }
 
 /**

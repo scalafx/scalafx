@@ -26,12 +26,12 @@
  */
 package scalafx.scene.paint
 
-import javafx.scene.{ paint => jfxsp }
+import javafx.scene.{paint => jfxsp}
 import scala.collection.JavaConversions._
 import scalafx.delegate.SFXDelegate
 
 object RadialGradient {
-  implicit def sfxRadialGradient2jfx(rg: RadialGradient) = rg.delegate
+  implicit def sfxRadialGradient2jfx(rg: RadialGradient) = if (rg != null) rg.delegate else null
 
   /**
    * Creates a radial gradient value from a string representation.
@@ -44,11 +44,11 @@ object RadialGradient {
     new RadialGradient(new jfxsp.RadialGradient(focusAngle, focusDistance, centerX, centerY, radius, proportional, cycleMethod, stopsList))
   }
 
-/* This should work but it looks like it calls the constructor that
- * uses List instead of the one that uses variable arguments
-  def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*) =
-    new RadialGradient(new jfxsp.RadialGradient(focusAngle, focusDistance, centerX, centerY, radius, proportional, cycleMethod, stops: _*))
- */
+  /* This should work but it looks like it calls the constructor that
+   * uses List instead of the one that uses variable arguments
+    def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*) =
+      new RadialGradient(new jfxsp.RadialGradient(focusAngle, focusDistance, centerX, centerY, radius, proportional, cycleMethod, stops: _*))
+   */
   def apply(focusAngle: Double, focusDistance: Double, centerX: Double, centerY: Double, radius: Double, proportional: Boolean, cycleMethod: CycleMethod, stops: Stop*): RadialGradient = {
     val stopsList = new java.util.ArrayList[jfxsp.Stop](stops.length)
     for (stop <- stops) stopsList.add(stop)

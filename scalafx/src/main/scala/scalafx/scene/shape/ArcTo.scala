@@ -34,7 +34,7 @@ import scalafx.delegate.PositionDelegate
 import scalafx.delegate.SFXDelegate
 
 object ArcTo {
-  implicit def sfxArcTo2jfx(v: ArcTo) = v.delegate
+  implicit def sfxArcTo2jfx(v: ArcTo) = if (v != null) v.delegate else null
 
   def apply(radiusX: Double, radiusY: Double, xAxisRotation: Double, x: Double, y: Double, largeArcFlag: Boolean, sweepFlag: Boolean) =
     new ArcTo(new jfxss.ArcTo(radiusX, radiusY, xAxisRotation, x, y, largeArcFlag, sweepFlag))

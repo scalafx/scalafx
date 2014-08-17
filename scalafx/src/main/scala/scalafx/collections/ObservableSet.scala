@@ -26,14 +26,14 @@
  */
 package scalafx.collections
 
-import java.{ util => ju }
+import java.{util => ju}
 import scala.collection.JavaConversions._
 import scala.collection.generic.GenericSetTemplate
 import scala.collection.generic.MutableSetFactory
 import scala.collection.mutable.Builder
 import scala.collection.mutable.Set
 import scala.collection.mutable.SetLike
-import javafx.{ collections => jfxc }
+import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scala.collection.generic.GenericCompanion
@@ -51,7 +51,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
    * @param os ScalaFX's $OS.
    * @return JavaFX's $OS inside parameter.
    */
-  implicit def sfxObservableSet2sfxObservableSet[T](os: ObservableSet[T]) = os.delegate
+  implicit def sfxObservableSet2sfxObservableSet[T](os: ObservableSet[T]) = if (os != null) os.delegate else null
 
   // CHANGING INDICATORS - BEGIN
 

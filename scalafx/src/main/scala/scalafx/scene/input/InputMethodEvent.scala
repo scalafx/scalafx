@@ -26,16 +26,16 @@
  */
 package scalafx.scene.input
 
-import javafx.scene.{ input => jfxsi }
+import javafx.scene.{input => jfxsi}
 import scalafx.delegate.SFXDelegate
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.event.EventType
 
 object InputMethodEvent {
-  implicit def sfxInputMethodEvent2jfx(ime: InputMethodEvent) = ime.delegate
+  implicit def sfxInputMethodEvent2jfx(ime: InputMethodEvent) = if (ime != null) ime.delegate else null
 
-  val InputMethodTextChanged : EventType[jfxsi.InputMethodEvent] = jfxsi.InputMethodEvent.INPUT_METHOD_TEXT_CHANGED
+  val InputMethodTextChanged: EventType[jfxsi.InputMethodEvent] = jfxsi.InputMethodEvent.INPUT_METHOD_TEXT_CHANGED
 }
 
 class InputMethodEvent(override val delegate: jfxsi.InputMethodEvent) extends InputEvent(delegate) with SFXDelegate[jfxsi.InputMethodEvent] {
@@ -43,16 +43,16 @@ class InputMethodEvent(override val delegate: jfxsi.InputMethodEvent) extends In
   /**
    * The input method caret position within the composed text.
    */
-  def caretPosition : Int = delegate.getCaretPosition
+  def caretPosition: Int = delegate.getCaretPosition
 
   /**
    * Gets the text that is committed by the input method as the result of the composition.
    */
-  def committed : String = delegate.getCommitted
+  def committed: String = delegate.getCommitted
 
   /**
    * Gets the text under composition.
    */
-  def composed : ObservableBuffer[jfxsi.InputMethodTextRun] = delegate.getComposed
+  def composed: ObservableBuffer[jfxsi.InputMethodTextRun] = delegate.getComposed
 
 }

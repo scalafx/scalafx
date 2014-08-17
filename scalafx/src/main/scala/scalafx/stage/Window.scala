@@ -26,8 +26,8 @@
  */
 package scalafx.stage
 
-import javafx.{ event => jfxe }
-import javafx.{ stage => jfxs }
+import javafx.{event => jfxe}
+import javafx.{stage => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
@@ -38,10 +38,10 @@ import scalafx.event.{EventHandlerDelegate, Event}
 import scalafx.delegate.SFXDelegate
 
 object Window {
-  implicit def sfxWindow2jfx(v: Window) = v.delegate
+  implicit def sfxWindow2jfx(v: Window) = if (v != null) v.delegate else null
 }
 
-class Window protected (override val delegate: jfxs.Window)
+class Window protected(override val delegate: jfxs.Window)
   extends EventHandlerDelegate
   with SFXDelegate[jfxs.Window]
   with jfxe.EventTarget {

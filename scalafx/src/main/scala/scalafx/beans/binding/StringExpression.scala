@@ -30,7 +30,7 @@ import javafx.beans.{binding => jfxbb}
 import javafx.beans.value.ObservableStringValue
 
 object StringExpression {
-  implicit def sfxStringExpression2jfx(se: StringExpression) = se.delegate
+  implicit def sfxStringExpression2jfx(se: StringExpression) = if (se != null) se.delegate else null
 }
 
 class StringExpression(val delegate: jfxbb.StringExpression) {

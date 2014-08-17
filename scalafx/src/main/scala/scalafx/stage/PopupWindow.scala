@@ -26,8 +26,8 @@
  */
 package scalafx.stage
 
-import javafx.{ event => jfxe }
-import javafx.{ stage => jfxs }
+import javafx.{event => jfxe}
+import javafx.{stage => jfxs}
 import scalafx.beans.property._
 import scalafx.Includes._
 import scalafx.scene.Node._
@@ -36,7 +36,7 @@ import scalafx.stage.Window._
 import scalafx.delegate.SFXDelegate
 
 object PopupWindow {
-  implicit def sfxPopupWindow2jfx(v: PopupWindow) = v.delegate
+  implicit def sfxPopupWindow2jfx(v: PopupWindow) = if (v != null) v.delegate else null
 }
 
 abstract class PopupWindow(override val delegate: jfxs.PopupWindow)

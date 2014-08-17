@@ -26,43 +26,43 @@
  */
 package scalafx.stage
 
-import javafx.{ stage => jfxs }
+import javafx.{stage => jfxs}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.{EventType, Event}
 
 object WindowEvent {
-  implicit def sfxWindowEvent2jfx(v: WindowEvent) = v.delegate
+  implicit def sfxWindowEvent2jfx(v: WindowEvent) = if (v != null) v.delegate else null
 
   /**
    * Common supertype for all window event types.
    */
-  val Any : EventType[jfxs.WindowEvent] = jfxs.WindowEvent.ANY
+  val Any: EventType[jfxs.WindowEvent] = jfxs.WindowEvent.ANY
 
   /**
    * This event is delivered to a window when there is an external request to close that window.
    */
-  val WindowCloseRequest : EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_CLOSE_REQUEST
+  val WindowCloseRequest: EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_CLOSE_REQUEST
 
   /**
    * This event occurs on window just after it is hidden.
    */
-  val WindowHidden : EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_HIDDEN
+  val WindowHidden: EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_HIDDEN
 
   /**
    * This event occurs on window just before it is hidden.
    */
-  val WindowHiding : EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_HIDING
+  val WindowHiding: EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_HIDING
 
   /**
    * This event occurs on window just before it is shown.
    */
-  val WindowShowing : EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_SHOWING
+  val WindowShowing: EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_SHOWING
 
   /**
    * This event occurs on window just after it is shown.
    */
-  val WindowShown : EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_SHOWN
+  val WindowShown: EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_SHOWN
 }
 
 class WindowEvent(override val delegate: jfxs.WindowEvent) extends Event(delegate) with SFXDelegate[jfxs.WindowEvent] {

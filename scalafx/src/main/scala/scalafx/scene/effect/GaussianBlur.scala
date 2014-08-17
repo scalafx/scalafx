@@ -26,13 +26,13 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{ effect => jfxse }
+import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object GaussianBlur {
-  implicit def sfxGaussianBlur2jfx(gb: GaussianBlur) = gb.delegate
+  implicit def sfxGaussianBlur2jfx(gb: GaussianBlur) = if (gb != null) gb.delegate else null
 }
 
 class GaussianBlur(override val delegate: jfxse.GaussianBlur = new jfxse.GaussianBlur)

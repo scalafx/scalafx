@@ -26,14 +26,15 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{ effect => jfxse }
+import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object Lighting {
-  implicit def sfxLighting2jfx(l: Lighting) = l.delegate
+  implicit def sfxLighting2jfx(l: Lighting) = if (l != null) l.delegate else null
+
 }
 
 class Lighting(override val delegate: jfxse.Lighting = new jfxse.Lighting) extends Effect(delegate) with SFXDelegate[jfxse.Lighting] {

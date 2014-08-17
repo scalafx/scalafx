@@ -27,10 +27,10 @@
 package scalafx.scene.control
 
 import scalafx.Includes._
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.delegate.SFXDelegate
-import javafx.{ event => jfxe }
-import javafx.{ geometry => jfxg }
+import javafx.{event => jfxe}
+import javafx.{geometry => jfxg}
 import scalafx.collections._
 import scalafx.scene.Node
 import collection.JavaConversions._
@@ -38,7 +38,7 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.geometry.Orientation
 
 object ToolBar {
-	implicit def sfxToolBarToJfx(v: ToolBar) = v.delegate
+  implicit def sfxToolBarToJfx(v: ToolBar) = if (v != null) v.delegate else null
 }
 
 /**

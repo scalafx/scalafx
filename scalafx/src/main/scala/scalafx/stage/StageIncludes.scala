@@ -26,7 +26,7 @@
  */
 package scalafx.stage
 
-import javafx.{ stage => jfxs }
+import javafx.{stage => jfxs}
 
 object StageIncludes extends StageIncludes
 
@@ -60,7 +60,7 @@ trait StageIncludes {
    * @param dc $JFX $DC
    * @return $SFX $DC
    */
-  implicit def jfxDirectoryChooser2sfx(dc: jfxs.DirectoryChooser) = new DirectoryChooser(dc)
+  implicit def jfxDirectoryChooser2sfx(dc: jfxs.DirectoryChooser) = if (dc != null) new DirectoryChooser(dc) else null
 
   /**
    * $START$FC.html $FC$END
@@ -68,7 +68,7 @@ trait StageIncludes {
    * @param fc $JFX $FC
    * @return $SFX $FC
    */
-  implicit def jfxFileChooser2sfx(fc: jfxs.FileChooser) = new FileChooser(fc)
+  implicit def jfxFileChooser2sfx(fc: jfxs.FileChooser) = if (fc != null) new FileChooser(fc) else null
 
   /**
    * $START$FE.html $FE$END
@@ -76,7 +76,7 @@ trait StageIncludes {
    * @param ef $JFX $FE
    * @return $SFX $FE
    */
-  implicit def jfxFileChooserExtensionFilter2sfx(ef: jfxs.FileChooser.ExtensionFilter) = new FileChooser.ExtensionFilter(ef)
+  implicit def jfxFileChooserExtensionFilter2sfx(ef: jfxs.FileChooser.ExtensionFilter) = if (ef != null) new FileChooser.ExtensionFilter(ef) else null
 
   /**
    * $START$PW.html $PW$END
@@ -84,7 +84,7 @@ trait StageIncludes {
    * @param pw $JFX $PW
    * @return $SFX $PW
    */
-  implicit def jfxPopupWindow2sfx(pw: jfxs.PopupWindow) = new PopupWindow(pw) {}
+  implicit def jfxPopupWindow2sfx(pw: jfxs.PopupWindow) = if (pw != null) new PopupWindow(pw) {} else null
 
   /**
    * $START$PP.html $PP$END
@@ -92,7 +92,7 @@ trait StageIncludes {
    * @param p $JFX $PP
    * @return $SFX $PP
    */
-  implicit def jfxPopup2sfx(p: jfxs.Popup) = new Popup(p)
+  implicit def jfxPopup2sfx(p: jfxs.Popup) = if (p != null) new Popup(p) else null
 
   /**
    * $START$MD.html $MD$END
@@ -108,7 +108,7 @@ trait StageIncludes {
    * @param s $JFX $SC
    * @return $SFX $SC
    */
-  implicit def jfxScreen2sfx(s: jfxs.Screen) = new Screen(s)
+  implicit def jfxScreen2sfx(s: jfxs.Screen) = if (s != null) new Screen(s) else null
 
   /**
    * $START$ST.html $ST$END
@@ -116,7 +116,7 @@ trait StageIncludes {
    * @param s $JFX $ST
    * @return $SFX $ST
    */
-  implicit def jfxStage2sfx(s: jfxs.Stage) = new Stage(s)
+  implicit def jfxStage2sfx(s: jfxs.Stage) = if (s != null) new Stage(s) else null
 
   /**
    * $START$SS.html $SS$END
@@ -132,7 +132,7 @@ trait StageIncludes {
    * @param w $JFX $WN
    * @return $SFX $WN
    */
-  implicit def jfxWindow2sfx(w: jfxs.Window) = new Window(w) {}
+  implicit def jfxWindow2sfx(w: jfxs.Window) = if (w != null) new Window(w) {} else null
 
   /**
    * $START$WE.html $WE$END
@@ -140,6 +140,6 @@ trait StageIncludes {
    * @param we $JFX $WE
    * @return $SFX $WE
    */
-  implicit def jfxWindowEvent2sfx(we: jfxs.WindowEvent) = new WindowEvent(we) {}
+  implicit def jfxWindowEvent2sfx(we: jfxs.WindowEvent) = if (we != null) new WindowEvent(we) {} else null
 
 }

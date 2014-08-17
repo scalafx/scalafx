@@ -26,12 +26,12 @@
  */
 package scalafx.scene.media
 
-import javafx.scene.{ media => jfxsm }
+import javafx.scene.{media => jfxsm}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object Track {
-  implicit def sfxTrack2jfx(t: Track) = t.delegate
+  implicit def sfxTrack2jfx(t: Track) = if (t != null) t.delegate else null
 }
 
 abstract class Track(override val delegate: jfxsm.Track) extends SFXDelegate[jfxsm.Track] {

@@ -34,7 +34,7 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object DisplacementMap {
-  implicit def sfxDisplacementMap2jfx(dm: DisplacementMap) = dm.delegate
+  implicit def sfxDisplacementMap2jfx(dm: DisplacementMap) = if (dm != null) dm.delegate else null
 }
 
 class DisplacementMap(override val delegate: jfxse.DisplacementMap = new jfxse.DisplacementMap)

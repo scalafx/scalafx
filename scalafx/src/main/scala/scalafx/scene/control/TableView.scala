@@ -27,8 +27,8 @@
 package scalafx.scene.control
 
 import javafx.{collections => jfxc}
-import javafx.{ scene => jfxs }
-import javafx.scene.{ control => jfxsc }
+import javafx.{scene => jfxs}
+import javafx.scene.{control => jfxsc}
 import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
@@ -39,10 +39,10 @@ import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
 object TableView {
-  implicit def sfxTableView2jfx[S](tv: TableView[S]) = tv.delegate
+  implicit def sfxTableView2jfx[S](tv: TableView[S]) = if (tv != null) tv.delegate else null
 
   object ResizeFeatures {
-    implicit def sfxResizeFeatures2jfx[S](rf: ResizeFeatures[S]) = rf.delegate
+    implicit def sfxResizeFeatures2jfx[S](rf: ResizeFeatures[S]) = if (rf != null) rf.delegate else null
   }
 
   /**
@@ -63,7 +63,7 @@ object TableView {
   }
 
   object TableViewSelectionModel {
-    implicit def sfxTableViewSelectionModel2jfx[S](tvsm: TableViewSelectionModel[S]) = tvsm.delegate
+    implicit def sfxTableViewSelectionModel2jfx[S](tvsm: TableViewSelectionModel[S]) = if (tvsm != null) tvsm.delegate else null
   }
 
   /**
@@ -158,7 +158,7 @@ object TableView {
   }
 
   object TableViewFocusModel {
-    implicit def sfxTableViewFocusModel2jfx[S](tvfm: TableViewFocusModel[S]) = tvfm.delegate
+    implicit def sfxTableViewFocusModel2jfx[S](tvfm: TableViewFocusModel[S]) = if (tvfm != null) tvfm.delegate else null
   }
 
   /**
@@ -177,7 +177,7 @@ object TableView {
     /**
      * The position of the current item in the TableView which has the focus.
      */
-    def focusedCell: ReadOnlyObjectProperty[jfxsc.TablePosition[_,_]] = delegate.focusedCellProperty
+    def focusedCell: ReadOnlyObjectProperty[jfxsc.TablePosition[_, _]] = delegate.focusedCellProperty
 
     /**
      * Causes the item at the given index to receive the focus.
@@ -226,6 +226,7 @@ object TableView {
     def isFocused(index: Int, column: TableColumn[S, _]) = delegate.isFocused(index, column)
 
   }
+
 }
 
 /**
@@ -240,7 +241,7 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   /**
    * The TableColumns that are part of this TableView.
    */
-  def columns : ObservableBuffer[jfxsc.TableColumn[S,_]] = delegate.getColumns
+  def columns: ObservableBuffer[jfxsc.TableColumn[S, _]] = delegate.getColumns
 
   /**
    * This is the function called when the user completes a column-resize operation.
@@ -267,7 +268,7 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   /**
    * Represents the current cell being edited, or null if there is no cell being edited.
    */
-  def editingCell: ReadOnlyObjectProperty[jfxsc.TablePosition[S,_]] = delegate.editingCellProperty
+  def editingCell: ReadOnlyObjectProperty[jfxsc.TablePosition[S, _]] = delegate.editingCellProperty
 
   /**
    * Represents the currently-installed TableView.TableViewFocusModel for this TableView.
@@ -318,7 +319,7 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   /**
    * The sortOrder list defines the order in which `TableColumn` instances are sorted.
    */
-  def sortOrder : ObservableBuffer[jfxsc.TableColumn[S,_]]= delegate.getSortOrder
+  def sortOrder: ObservableBuffer[jfxsc.TableColumn[S, _]] = delegate.getSortOrder
 
   /**
    * This controls whether a menu button is available when the user clicks in a designated space within the TableView,

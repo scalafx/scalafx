@@ -28,14 +28,14 @@ package scalafx.scene.image
 
 import java.io.InputStream
 
-import javafx.scene.{ image => jfxsi }
+import javafx.scene.{image => jfxsi}
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Image {
-  implicit def sfxImage2jfx(i: Image) = i.delegate
+  implicit def sfxImage2jfx(i: Image) = if (i != null) i.delegate else null
 }
 
 class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image] {

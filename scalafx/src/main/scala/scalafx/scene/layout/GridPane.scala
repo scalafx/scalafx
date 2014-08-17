@@ -27,9 +27,9 @@
 package scalafx.scene.layout
 
 import scala.collection.JavaConversions._
-import javafx.scene.{ layout => jfxsl }
-import javafx.{ geometry => jfxg }
-import javafx.{ scene => jfxs }
+import javafx.scene.{layout => jfxsl}
+import javafx.{geometry => jfxg}
+import javafx.{scene => jfxs}
 import scalafx.Includes._
 import scalafx.geometry.Insets._
 import scalafx.geometry.Insets
@@ -45,7 +45,7 @@ import scalafx.geometry.Pos
 import scalafx.geometry.Orientation
 
 object GridPane {
-  implicit def sfxGridPane2jfx(v: GridPane) = v.delegate
+  implicit def sfxGridPane2jfx(v: GridPane) = if (v != null) v.delegate else null
 
   /**
    * Sentinel value which may be set on a child's row/column span constraint to indicate that it should span the
@@ -246,7 +246,7 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
   }
 
   /**
-   *  List of column constraints.
+   * List of column constraints.
    */
   def columnConstraints = delegate.getColumnConstraints
   /**
@@ -320,5 +320,5 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
   def requestLayout() {
     delegate.requestLayout()
   }
-  
+
 }

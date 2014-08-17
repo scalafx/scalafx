@@ -38,7 +38,7 @@ import scalafx.scene.image.Image
 import scalafx.delegate.SFXDelegate
 
 object ClipboardContent {
-  implicit def sfxClipboardContent2jfx(c: ClipboardContent) = c.delegate
+  implicit def sfxClipboardContent2jfx(c: ClipboardContent) = if (c != null) c.delegate else null
 }
 
 class ClipboardContent(override val delegate: jfxsi.ClipboardContent = new jfxsi.ClipboardContent) extends MapProxy[DataFormat, AnyRef] with SFXDelegate[jfxsi.ClipboardContent] {

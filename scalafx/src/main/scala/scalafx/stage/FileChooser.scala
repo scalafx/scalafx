@@ -36,10 +36,10 @@ import scalafx.delegate.SFXDelegate
 
 
 object FileChooser {
-  implicit def sfxFileChooser2jfx(fc: FileChooser) = fc.delegate
+  implicit def sfxFileChooser2jfx(fc: FileChooser) = if (fc != null) fc.delegate else null
 
   object ExtensionFilter {
-    implicit def sfxExtensionFilter2jfx(ef: ExtensionFilter) = ef.delegate
+    implicit def sfxExtensionFilter2jfx(ef: ExtensionFilter) = if (ef != null) ef.delegate else null
   }
 
   class ExtensionFilter(override val delegate: jfxs.FileChooser.ExtensionFilter) extends SFXDelegate[jfxs.FileChooser.ExtensionFilter] {
@@ -70,6 +70,7 @@ object FileChooser {
     def extensions: Seq[String] = delegate.getExtensions
 
   }
+
 }
 
 class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser)

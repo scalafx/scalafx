@@ -26,8 +26,8 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import javafx.{ util => jfxu }
+import javafx.scene.{control => jfxsc}
+import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyBooleanProperty
@@ -36,7 +36,7 @@ import scalafx.util.StringConverter
 import scalafx.delegate.SFXDelegate
 
 object ChoiceBox {
-  implicit def sfxChoiceBox2jfx[J <: Any](cb: ChoiceBox[J]) = cb.delegate
+  implicit def sfxChoiceBox2jfx[J <: Any](cb: ChoiceBox[J]) = if (cb != null) cb.delegate else null
 }
 
 class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.ChoiceBox[J])

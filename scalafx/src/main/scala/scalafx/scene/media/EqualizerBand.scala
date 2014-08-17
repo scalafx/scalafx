@@ -26,13 +26,13 @@
  */
 package scalafx.scene.media
 
-import javafx.scene.{ media => jfxsm }
+import javafx.scene.{media => jfxsm}
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object EqualizerBand {
-  implicit def sfxEqualizerBand2jfx(eb: EqualizerBand) = eb.delegate
+  implicit def sfxEqualizerBand2jfx(eb: EqualizerBand) = if (eb != null) eb.delegate else null
 
   /**
    * Maximum possible gain value.

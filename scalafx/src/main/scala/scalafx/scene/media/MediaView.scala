@@ -26,9 +26,9 @@
  */
 package scalafx.scene.media
 
-import javafx.scene.{ media => jfxsm }
-import javafx.{ event => jfxe }
-import javafx.{ geometry => jfxg }
+import javafx.scene.{media => jfxsm}
+import javafx.{event => jfxe}
+import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
@@ -40,7 +40,7 @@ import scalafx.geometry.Rectangle2D
 import scalafx.delegate.PositionDelegate
 
 object MediaView {
-  implicit def sfxMediaView2jfx(mv: MediaView) = mv.delegate
+  implicit def sfxMediaView2jfx(mv: MediaView) = if (mv != null) mv.delegate else null
 }
 
 class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)

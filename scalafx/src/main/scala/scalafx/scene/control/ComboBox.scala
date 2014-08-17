@@ -27,9 +27,9 @@
 package scalafx.scene.control
 
 import scala.annotation.implicitNotFound
-import javafx.scene.{ control => jfxsc }
-import javafx.{ collections => jfxc }
-import javafx.{ util => jfxu }
+import javafx.scene.{control => jfxsc}
+import javafx.{collections => jfxc}
+import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.IntegerProperty
 import scalafx.beans.property.ObjectProperty
@@ -41,7 +41,7 @@ import scalafx.util.StringConverter
 import scalafx.delegate.SFXDelegate
 
 object ComboBox {
-  implicit def sfxComboBox2jfx[T](cb: ComboBox[T]) = cb.delegate
+  implicit def sfxComboBox2jfx[T](cb: ComboBox[T]) = if (cb != null) cb.delegate else null
 }
 
 class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[T])

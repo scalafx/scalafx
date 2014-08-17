@@ -26,9 +26,9 @@
  */
 package scalafx.scene.control.cell
 
-import javafx.{ collections => jfxc }
-import javafx.scene.control.{ cell => jfxscc }
-import javafx.{ util => jfxu }
+import javafx.{collections => jfxc}
+import javafx.scene.control.{cell => jfxscc}
+import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.control.TreeCell
@@ -53,11 +53,11 @@ object TextFieldTreeCell {
    * @param cell ScalaFX $TFTC
    * @return JavaFX $TFTC
    */
-  implicit def sfxTextFieldTreeCell2jfx[T](cell: TextFieldTreeCell[T]) = cell.delegate
+  implicit def sfxTextFieldTreeCell2jfx[T](cell: TextFieldTreeCell[T]) = if (cell != null) cell.delegate else null
 
   /**
    * $FLVINIT
-   * 
+   *
    * @return $FLVRET
    */
   def forTreeView(): (TreeView[String] => TreeCell[String]) =
@@ -66,12 +66,12 @@ object TextFieldTreeCell {
   /**
    * Added to satisfy Spec tests.
    */
-//  @deprecated(message = "Use forTreeView()", since = "1.0")
-//  def forTreeView() = jfxscc.TextFieldTreeCell.forTreeView()
+  //  @deprecated(message = "Use forTreeView()", since = "1.0")
+  //  def forTreeView() = jfxscc.TextFieldTreeCell.forTreeView()
 
   /**
    * $FLVINIT
-   * 
+   *
    * @param converter A `StringConverter` that can convert the given String (from what the user typed in) into an instance of type T.
    * @return $FLVRET
    */
@@ -88,7 +88,7 @@ object TextFieldTreeCell {
 
 /**
  * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/cell/TextFieldTreeCell.html $TFTC]]
- * 
+ *
  * @tparam T Type used in this cell
  * @constructor Creates a new $TFTC from a JavaFX $TFTC
  * @param delegate JavaFX $TFTC
@@ -104,9 +104,9 @@ class TextFieldTreeCell[T](override val delegate: jfxscc.TextFieldTreeCell[T] = 
   /**
    * Creates a `TextFieldTreeCell` that provides a `TextField` when put into editing mode that allows editing of the 
    * cell content.
-   * 
+   *
    * @param converter A `converter` that can convert the given String (from what the user typed in) into an instance of type T.
    */
   def this(converter: StringConverter[T]) = this(new jfxscc.TextFieldTreeCell[T](converter))
-  
+
 }

@@ -26,7 +26,7 @@
  */
 package scalafx.scene.image
 
-import javafx.scene.{ image => jfxsi }
+import javafx.scene.{image => jfxsi}
 import java.nio.Buffer
 
 object ImageIncludes extends ImageIncludes
@@ -58,7 +58,7 @@ trait ImageIncludes {
    * @param i $JFX $IMG
    * @return $SFX $IMG
    */
-  implicit def jfxImage2sfx(i: jfxsi.Image) = new Image(i)
+  implicit def jfxImage2sfx(i: jfxsi.Image) = if (i != null) new Image(i) else null
 
   /**
    * $START$IMV.html $IMV$END
@@ -66,7 +66,7 @@ trait ImageIncludes {
    * @param iv $JFX $IMV
    * @return $SFX $IMV
    */
-  implicit def jfxImageView2sfx(iv: jfxsi.ImageView) = new ImageView(iv)
+  implicit def jfxImageView2sfx(iv: jfxsi.ImageView) = if (iv != null) new ImageView(iv) else null
 
   /**
    * $START$PXF.html $PXF$END
@@ -74,7 +74,7 @@ trait ImageIncludes {
    * @param pf $JFX $PXF
    * @return $SFX $PXF
    */
-  implicit def jfxPixelFormat2sfx[B <: Buffer](pf: jfxsi.PixelFormat[B]) = new PixelFormat[B](pf) {}
+  implicit def jfxPixelFormat2sfx[B <: Buffer](pf: jfxsi.PixelFormat[B]) = if (pf != null) new PixelFormat[B](pf) {} else null
 
   /**
    * $START$PFT.html $PFT$END
@@ -90,9 +90,11 @@ trait ImageIncludes {
    * @param pr $JFX $PXR
    * @return $SFX $PXR
    */
-  implicit def jfxPixelReader2sfx(pr: jfxsi.PixelReader) = new PixelReader {
-    override val delegate = pr
-  }
+  implicit def jfxPixelReader2sfx(pr: jfxsi.PixelReader): PixelReader =
+    if (pr != null) new PixelReader {
+      override val delegate = pr
+    }
+    else null
 
   /**
    * $START$PXW.html $PXW$END
@@ -100,9 +102,11 @@ trait ImageIncludes {
    * @param pw $JFX $PXW
    * @return $SFX $PXW
    */
-  implicit def jfxPixelWriter2sfx(pw: jfxsi.PixelWriter) = new PixelWriter {
-    override val delegate = pw
-  }
+  implicit def jfxPixelWriter2sfx(pw: jfxsi.PixelWriter): PixelWriter =
+    if (pw != null) new PixelWriter {
+      override val delegate = pw
+    }
+    else null
 
   /**
    * $START$WRI.html $WRI$END
@@ -110,7 +114,7 @@ trait ImageIncludes {
    * @param wi $JFX $WRI
    * @return $SFX $WRI
    */
-  implicit def jfxWritableImage2sfx(wi: jfxsi.WritableImage) = new WritableImage(wi)
+  implicit def jfxWritableImage2sfx(wi: jfxsi.WritableImage) = if (wi != null) new WritableImage(wi) else null
 
   /**
    * $START$WPF.html $WPF$END

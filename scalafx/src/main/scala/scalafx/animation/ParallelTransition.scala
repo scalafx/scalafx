@@ -27,7 +27,7 @@
 package scalafx.animation
 
 import collection.JavaConversions._
-import javafx.{ animation => jfxa, scene => jfxs }
+import javafx.{animation => jfxa, scene => jfxs}
 import scalafx.collections._
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
@@ -48,7 +48,7 @@ object ParallelTransition extends AnimationStatics {
    * @param v ScalaFX $PT
    * @return JavaFX $PT extracted from `v`.
    */
-  implicit def sfxParallelTransition2jfx(v: ParallelTransition) = v.delegate
+  implicit def sfxParallelTransition2jfx(v: ParallelTransition) = if (v != null) v.delegate else null
 }
 
 /**

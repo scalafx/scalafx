@@ -26,14 +26,14 @@
  */
 package scalafx.scene.media
 
-import javafx.scene.{ media => jfxsm }
+import javafx.scene.{media => jfxsm}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.util.Duration
 import scalafx.event._
 
 object MediaMarkerEvent {
-  implicit def sfxMediaMarkerEvent2jfx(mme: MediaMarkerEvent) = mme.delegate
+  implicit def sfxMediaMarkerEvent2jfx(mme: MediaMarkerEvent) = if (mme != null) mme.delegate else null
 }
 
 class MediaMarkerEvent(override val delegate: jfxsm.MediaMarkerEvent) extends ActionEvent(delegate) with SFXDelegate[jfxsm.MediaMarkerEvent] {

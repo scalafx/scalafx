@@ -26,33 +26,33 @@
  */
 package scalafx.scene.input
 
-import javafx.scene.{ input => jfxsi }
+import javafx.scene.{input => jfxsi}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
 
 object RotateEvent {
-  implicit def sfxRotateEvent2jfx(re: RotateEvent) = re.delegate
+  implicit def sfxRotateEvent2jfx(re: RotateEvent) = if (re != null) re.delegate else null
 
   /**
    * Common supertype for all rotate event types.
    */
-  val ANY : EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ANY
+  val ANY: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ANY
 
   /**
    * This event occurs when user performs a rotating gesture such as dragging two fingers around each other.
    */
-  val ROTATE : EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATE
+  val ROTATE: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATE
 
   /**
    * This event occurs when a rotating gesture ends.
    */
-  val ROTATION_FINISHED : EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATION_FINISHED
+  val ROTATION_FINISHED: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATION_FINISHED
 
   /**
    * This event occurs when a rotating gesture is detected.
    */
-  val ROTATION_STARTED : EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATION_STARTED
+  val ROTATION_STARTED: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATION_STARTED
 
 }
 
@@ -66,11 +66,11 @@ class RotateEvent(override val delegate: jfxsi.RotateEvent)
   /**
    * Gets the rotation angle of this event.
    */
-  def angle : Double = delegate.getAngle
+  def angle: Double = delegate.getAngle
 
   /**
    * Gets the cumulative rotation angle of this gesture.
    */
-  def totalAngle : Double = delegate.getTotalAngle
+  def totalAngle: Double = delegate.getTotalAngle
 
 }

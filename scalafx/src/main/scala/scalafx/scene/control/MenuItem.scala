@@ -26,9 +26,9 @@
  */
 package scalafx.scene.control
 
-import javafx.{ event => jfxe }
-import javafx.{ scene => jfxs }
-import javafx.scene.{ control => jfxsc, input => jfxsi }
+import javafx.{event => jfxe}
+import javafx.{scene => jfxs}
+import javafx.scene.{control => jfxsc, input => jfxsi}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
@@ -41,7 +41,7 @@ import scalafx.delegate.FireDelegate
 import scalafx.delegate.SFXDelegate
 
 object MenuItem {
-  implicit def sfxMenuItem2jfx(m: MenuItem) = m.delegate
+  implicit def sfxMenuItem2jfx(m: MenuItem) = if (m != null) m.delegate else null
 }
 
 class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)

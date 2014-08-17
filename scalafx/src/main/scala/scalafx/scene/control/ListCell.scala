@@ -32,7 +32,7 @@ import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object ListCell {
-  implicit def sfxListCell2jfx[T](l: ListCell[T]) = l.delegate
+  implicit def sfxListCell2jfx[T](l: ListCell[T]) = if (l != null) l.delegate else null
 }
 
 class ListCell[T](override val delegate: jfxsc.ListCell[T] = new jfxsc.ListCell[T])

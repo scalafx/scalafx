@@ -31,7 +31,7 @@ import javafx.beans.value.ObservableNumberValue
 import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
 
 object NumberExpression {
-  implicit def sfxNumberExpression2jfx(ne: NumberExpression) = ne.delegate
+  implicit def sfxNumberExpression2jfx(ne: NumberExpression) = if (ne != null) ne.delegate else null
 
   case class VariablePrecisionNumber(number: Double, var precision: Double = 0) {
     def +-(p: Double): VariablePrecisionNumber = {

@@ -27,14 +27,14 @@
 package scalafx.stage
 
 import java.io.File
-import javafx.{ stage => jfxs }
+import javafx.{stage => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.StringProperty
 import scalafx.delegate.SFXDelegate
 
 object DirectoryChooser {
-  implicit def sfxDirectoryChooser2jfx(dc: DirectoryChooser) = dc.delegate
+  implicit def sfxDirectoryChooser2jfx(dc: DirectoryChooser) = if (dc != null) dc.delegate else null
 }
 
 class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.DirectoryChooser)

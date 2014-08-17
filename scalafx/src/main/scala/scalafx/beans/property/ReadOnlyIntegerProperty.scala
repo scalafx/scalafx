@@ -31,11 +31,11 @@ import scalafx.beans.binding.NumberExpression
 import scalafx.delegate.SFXDelegate
 
 object ReadOnlyIntegerProperty {
-  implicit def sfxReadOnlyIntegerProperty2jfx(roip: ReadOnlyIntegerProperty) = roip.delegate
+  implicit def sfxReadOnlyIntegerProperty2jfx(roip: ReadOnlyIntegerProperty) = if (roip != null) roip.delegate else null
 }
 
 class ReadOnlyIntegerProperty(override val delegate: jfxbp.ReadOnlyIntegerProperty) extends NumberExpression(delegate) with ReadOnlyProperty[Int, Number] with SFXDelegate[jfxbp.ReadOnlyIntegerProperty] {
-  def this(bean: Object, name: String, value: Int) = this (new jfxbp.ReadOnlyIntegerPropertyBase() {
+  def this(bean: Object, name: String, value: Int) = this(new jfxbp.ReadOnlyIntegerPropertyBase() {
     def getBean = bean
     def getName = name
     def get = value

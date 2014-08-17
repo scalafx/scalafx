@@ -31,8 +31,8 @@ import scala.collection.generic.MutableMapFactory
 import scala.collection.mutable.Builder
 import scala.collection.mutable.Map
 import scala.collection.mutable.MapLike
-import java.{ util => ju }
-import javafx.{ collections => jfxc }
+import java.{util => ju}
+import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 
@@ -49,7 +49,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    * @param om ScalaFX's $OM.
    * @return JavaFX's $OM inside parameter.
    */
-  implicit def sfxObservableMap2sfxObservableMap[K, V](om: ObservableMap[K, V]) = om.delegate
+  implicit def sfxObservableMap2sfxObservableMap[K, V](om: ObservableMap[K, V]) = if (om != null) om.delegate else null
 
   // CHANGING INDICATORS - BEGIN
 
@@ -139,10 +139,10 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
  *
  * @tparam K Key type
  * @tparam V Value type.
- * returned by
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html#observableHashMap() observableHashMap]]
- * method from
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html FXCollections]].
+ *           returned by
+ *           [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html#observableHashMap() observableHashMap]]
+ *           method from
+ *           [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html FXCollections]].
  *
  * @define OM `ObservableMap`
  * @define MAP `Map`
@@ -205,7 +205,9 @@ trait ObservableMap[K, V]
     // Definition copied from JavaConversions.JMapWrapperLike.iterator
     val it = delegate.entrySet.iterator
     def hasNext = it.hasNext
-    def next() = { val e = it.next(); (e.getKey, e.getValue) }
+    def next() = {
+      val e = it.next(); (e.getKey, e.getValue)
+    }
   }
 
   /**
@@ -220,7 +222,7 @@ trait ObservableMap[K, V]
    *
    * @param key the key value
    * @return an option value containing the value associated with key in this $MAP, or None if
-   * none exists.
+   *         none exists.
    */
   def get(key: K): Option[V] = if (delegate.containsKey(key)) Option(delegate.get(key)) else None
 
@@ -235,9 +237,9 @@ trait ObservableMap[K, V]
     delegate.addListener(new jfxc.MapChangeListener[K, V] {
       def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]) {
         val changeEvent: Change[K, V] = (change.wasAdded, change.wasRemoved) match {
-          case (true, true)   => Replace(change.getKey, change.getValueAdded, change.getValueRemoved)
-          case (true, false)  => Add(change.getKey, change.getValueAdded)
-          case (false, true)  => Remove(change.getKey, change.getValueRemoved)
+          case (true, true) => Replace(change.getKey, change.getValueAdded, change.getValueRemoved)
+          case (true, false) => Add(change.getKey, change.getValueAdded)
+          case (false, true) => Remove(change.getKey, change.getValueRemoved)
           case (false, false) => throw new IllegalStateException("Irregular Change: neither addition nor remotion")
         }
 
@@ -266,12 +268,12 @@ trait ObservableMap[K, V]
  * [[http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html `HashMap`]] from Java Collection.
  *
  * @param delegate JavaFX
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableMap.html `ObservableMap`]]
- * instance to be wrapped by this class. By default it is a
- * [[http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html `HashMap`]] wrapped by
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html#observableMap(java.util.Map) `observableMap`]]
- * method from
- * [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html `FXCollections`]].
+ *                 [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableMap.html `ObservableMap`]]
+ *                 instance to be wrapped by this class. By default it is a
+ *                 [[http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html `HashMap`]] wrapped by
+ *                 [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html#observableMap(java.util.Map) `observableMap`]]
+ *                 method from
+ *                 [[http://docs.oracle.com/javafx/2/api/javafx/collections/FXCollections.html `FXCollections`]].
  */
 class ObservableHashMap[K, V](override val delegate: jfxc.ObservableMap[K, V] = jfxc.FXCollections.observableMap(new ju.HashMap[K, V]))
   extends ObservableMap[K, V] 

@@ -26,9 +26,9 @@
  */
 package scalafx.scene.layout
 
-import javafx.{ geometry => jfxg }
-import javafx.{ scene => jfxs }
-import javafx.scene.{ layout => jfxsl }
+import javafx.{geometry => jfxg}
+import javafx.{scene => jfxs}
+import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.geometry.Insets._
@@ -38,7 +38,7 @@ import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
 object BorderPane {
-  implicit def sfxBorderPane2jfx(v: BorderPane) = v.delegate
+  implicit def sfxBorderPane2jfx(v: BorderPane) = if (v != null) v.delegate else null
 
   /**
    * Removes all borderpane constraints from the child node.

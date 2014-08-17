@@ -26,19 +26,19 @@
  */
 package scalafx.beans.property
 
-import javafx.beans.{ property => jfxbp }
+import javafx.beans.{property => jfxbp}
 import scalafx.delegate.SFXDelegate
 
 object StringProperty {
-  implicit def sfxStringProperty2jfx(sp: StringProperty) = sp.delegate
+  implicit def sfxStringProperty2jfx(sp: StringProperty) = if (sp != null) sp.delegate else null
 
   /**
    * Creates a new StringProperty instance using the SimpleStringProperty as the target observable.
-   * 
+   *
    * @param value the initial value
    * @return      the StringProperty instance
    */
-  def apply(value:String) = new StringProperty(value)
+  def apply(value: String) = new StringProperty(value)
 }
 
 class StringProperty(override val delegate: jfxbp.StringProperty = new jfxbp.SimpleStringProperty)
@@ -47,7 +47,7 @@ class StringProperty(override val delegate: jfxbp.StringProperty = new jfxbp.Sim
   with SFXDelegate[jfxbp.StringProperty] {
 
   def this(initialValue: String) = this(new jfxbp.SimpleStringProperty(initialValue))
-  
+
   def this(bean: Object, name: String) = this(new jfxbp.SimpleStringProperty(bean, name))
 
   def this(bean: Object, name: String, initialValue: String) =

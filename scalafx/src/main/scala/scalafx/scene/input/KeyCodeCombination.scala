@@ -26,13 +26,13 @@
  */
 package scalafx.scene.input
 
-import javafx.scene.{ input => jfxsi }
+import javafx.scene.{input => jfxsi}
 import scalafx.delegate.SFXDelegate
 import scala.collection._
 import scala.collection.JavaConversions._
 
 object KeyCodeCombination {
-  implicit def sfxKeyCodeCombination2jfx(kcc: KeyCodeCombination) = kcc.delegate
+  implicit def sfxKeyCodeCombination2jfx(kcc: KeyCodeCombination) = if (kcc != null) kcc.delegate else null
 }
 
 class KeyCodeCombination(override val delegate: jfxsi.KeyCodeCombination) extends KeyCombination(delegate) with SFXDelegate[jfxsi.KeyCodeCombination] {

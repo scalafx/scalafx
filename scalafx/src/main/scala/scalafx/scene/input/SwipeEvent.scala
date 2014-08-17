@@ -26,38 +26,38 @@
  */
 package scalafx.scene.input
 
-import javafx.scene.{ input => jfxsi }
+import javafx.scene.{input => jfxsi}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
 
 object SwipeEvent {
-  implicit def sfxSwipeEvent2jfx(se: SwipeEvent) = se.delegate
+  implicit def sfxSwipeEvent2jfx(se: SwipeEvent) = if (se != null) se.delegate else null
 
   /**
    * Common supertype for all Swipe event types.
    */
-  val ANY : EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.ANY
+  val ANY: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.ANY
 
   /**
    * This event occurs when user performs downward swipe gesture.
    */
-  val SWIPE_DOWN : EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_DOWN
+  val SWIPE_DOWN: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_DOWN
 
   /**
    * This event occurs when user performs leftward swipe gesture.
    */
-  val SWIPE_LEFT : EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_LEFT
+  val SWIPE_LEFT: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_LEFT
 
   /**
    * This event occurs when user performs rightward swipe gesture.
    */
-  val SWIPE_RIGHT : EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_RIGHT
+  val SWIPE_RIGHT: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_RIGHT
 
   /**
    * This event occurs when user performs upward swipe gesture.
    */
-  val SWIPE_UP : EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_UP
+  val SWIPE_UP: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_UP
 
 }
 
@@ -71,6 +71,6 @@ class SwipeEvent(override val delegate: jfxsi.SwipeEvent)
   /**
    * Gets number of touch points that caused this event.
    */
-  def touchCount : Int = delegate.getTouchCount
+  def touchCount: Int = delegate.getTouchCount
 
 }
