@@ -31,7 +31,8 @@ import javafx.scene.{transform => jfxst}
 import scalafx.delegate.SFXDelegate
 
 object NonInvertibleTransformException {
-  implicit def sfxNonInvertibleTransformException2jfx(v: NonInvertibleTransformException) = v.delegate
+  implicit def sfxNonInvertibleTransformException2jfx(v: NonInvertibleTransformException) =
+    if (v != null) v.delegate else null
 }
 
 /** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/scene/transform/NonInvertibleTransformException.html]] */

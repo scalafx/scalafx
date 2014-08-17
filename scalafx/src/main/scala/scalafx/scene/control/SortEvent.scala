@@ -28,8 +28,8 @@ package scalafx.scene.control
 
 import scala.language.implicitConversions
 
-import javafx.{ event => jfxe }
-import javafx.scene.{ control => jfxsc }
+import javafx.{event => jfxe}
+import javafx.scene.{control => jfxsc}
 import scalafx.delegate.SFXDelegate
 import scalafx.event.Event
 
@@ -47,7 +47,7 @@ object SortEvent {
    * @tparam C SortEvent Type
    * @return JavaFX SortEvent
    */
-  implicit def sfxSortEvent2jfx[C](se: SortEvent[C]): jfxsc.SortEvent[C] = se.delegate
+  implicit def sfxSortEvent2jfx[C](se: SortEvent[C]): jfxsc.SortEvent[C] = if (se != null) se.delegate else null
 
   /**
    * Common supertype for all sort event types.

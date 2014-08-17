@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import scala.language.implicitConversions
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.delegate.SFXDelegate
 
 /**
@@ -47,7 +47,7 @@ object TreeTablePosition {
    * @return JavaFX TreeTablePosition
    */
   implicit def sfxTreeTablePosition2jfx[S, T](ttp: TreeTablePosition[S, T]): jfxsc.TreeTablePosition[S, T] =
-    ttp.delegate
+    if (ttp != null) ttp.delegate else null
 
 }
 

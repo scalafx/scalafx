@@ -36,7 +36,7 @@ import scalafx.collections.ObservableBuffer
 import scalafx.scene.paint.Color
 
 object LightBase {
-  implicit def sfxLightBase2jfx(lb: LightBase) = lb.delegate
+  implicit def sfxLightBase2jfx(lb: LightBase) = if (lb != null) lb.delegate else null
 }
 
 

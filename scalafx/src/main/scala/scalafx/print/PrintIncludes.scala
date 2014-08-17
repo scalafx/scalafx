@@ -28,13 +28,13 @@ package scalafx.print
 
 import scala.language.implicitConversions
 
-import javafx.{ print => jfxp }
+import javafx.{print => jfxp}
 
 /**
  * Companion Object for [[scalafx.print.PrintIncludes]].
  */
-object PrintIncludes 
-	extends PrintIncludes 
+object PrintIncludes
+  extends PrintIncludes
 
 /**
  * Contains implicit methods to convert from
@@ -79,7 +79,7 @@ trait PrintIncludes {
    * @param js $JFX $JS
    * @return $SFX $JS
    */
-  implicit def jfxJobSettings2sfx(js: jfxp.JobSettings): JobSettings = new JobSettings(js)
+  implicit def jfxJobSettings2sfx(js: jfxp.JobSettings): JobSettings = if (js != null) new JobSettings(js) else null
 
   /**
    * $START$PL$.html $PL$END
@@ -87,7 +87,7 @@ trait PrintIncludes {
    * @param pl $JFX $PL
    * @return $SFX $PL
    */
-  implicit def jfxPageLayout2sfx(pl: jfxp.PageLayout): PageLayout = new PageLayout(pl)
+  implicit def jfxPageLayout2sfx(pl: jfxp.PageLayout): PageLayout = if (pl != null) new PageLayout(pl) else null
 
   /**
    * $START$PO.html $PO$END
@@ -103,7 +103,7 @@ trait PrintIncludes {
    * @param pr $JFX $PR
    * @return $SFX $PR
    */
-  implicit def jfxPageRange2sfx(pr: jfxp.PageRange): PageRange = new PageRange(pr)
+  implicit def jfxPageRange2sfx(pr: jfxp.PageRange): PageRange = if (pr != null) new PageRange(pr) else null
 
   /**
    * $START$PP.html $PP$END
@@ -111,7 +111,7 @@ trait PrintIncludes {
    * @param pp $JFX $PP
    * @return $SFX $PP
    */
-  implicit def jfxPaper2sfx(pp: jfxp.Paper): Paper = new Paper(pp)
+  implicit def jfxPaper2sfx(pp: jfxp.Paper): Paper = if (pp != null) new Paper(pp) else null
 
   /**
    * $START$PS.html $PS$END
@@ -119,7 +119,7 @@ trait PrintIncludes {
    * @param ps $JFX $PS
    * @return $SFX $PP
    */
-  implicit def jfxPaperSource2sfx(ps: jfxp.PaperSource): PaperSource = new PaperSource(ps)
+  implicit def jfxPaperSource2sfx(ps: jfxp.PaperSource): PaperSource = if (ps != null) new PaperSource(ps) else null
 
   /**
    * $START$PC.html $PC$END
@@ -135,7 +135,8 @@ trait PrintIncludes {
    * @param pa $JFX $PA
    * @return $SFX $PA
    */
-  implicit def jfxPrinterAttributes2sfx(pa: jfxp.PrinterAttributes): PrinterAttributes = new PrinterAttributes(pa)
+  implicit def jfxPrinterAttributes2sfx(pa: jfxp.PrinterAttributes): PrinterAttributes =
+    if (pa != null) new PrinterAttributes(pa) else null
 
   /**
    * $START$PRT.html $PRT$END
@@ -143,7 +144,7 @@ trait PrintIncludes {
    * @param p $JFX $PRT
    * @return $SFX $PRT
    */
-  implicit def jfxPrinter2sfx(p: jfxp.Printer): Printer = new Printer(p)
+  implicit def jfxPrinter2sfx(p: jfxp.Printer): Printer = if (p != null) new Printer(p) else null
 
   /**
    * $START$MT.html $MT$END
@@ -159,7 +160,7 @@ trait PrintIncludes {
    * @param pj $JFX $PJ
    * @return $SFX $PJ
    */
-  implicit def jfxPrintJob2sfx(pj: jfxp.PrinterJob): PrinterJob = new PrinterJob(pj)
+  implicit def jfxPrintJob2sfx(pj: jfxp.PrinterJob): PrinterJob = if (pj != null) new PrinterJob(pj) else null
 
   /**
    * $START$JS.html $JS$END
@@ -183,7 +184,8 @@ trait PrintIncludes {
    * @param pr $JFX $PR
    * @return $SFX $PR
    */
-  implicit def jfxPrintResolution2sfx(pr: jfxp.PrintResolution): PrintResolution = new PrintResolution(pr)
+  implicit def jfxPrintResolution2sfx(pr: jfxp.PrintResolution): PrintResolution =
+    if (pr != null) new PrintResolution(pr) else null
 
   /**
    * $START$PS.html $PS$END

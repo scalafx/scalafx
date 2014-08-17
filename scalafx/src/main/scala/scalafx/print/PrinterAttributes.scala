@@ -29,8 +29,8 @@ package scalafx.print
 import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 import scala.collection.JavaConversions._
-import javafx.{ print => jfxp }
-import java.util.{ Set => JSet }
+import javafx.{print => jfxp}
+import java.util.{Set => JSet}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.IntegerProperty
@@ -47,7 +47,8 @@ object PrinterAttributes {
    * @param pa ScalaFX PrinterAttributes
    * @return JavaFX PrinterAttributes
    */
-  implicit def sfxPrinterAttributes2jfx(pa: PrinterAttributes): jfxp.PrinterAttributes = pa.delegate
+  implicit def sfxPrinterAttributes2jfx(pa: PrinterAttributes): jfxp.PrinterAttributes =
+    if (pa != null) pa.delegate else null
 
 }
 
@@ -131,7 +132,7 @@ final class PrinterAttributes(override val delegate: jfxp.PrinterAttributes)
     asScalaSet(delegate.getSupportedPapers).map(new Paper(_)).toSet
 
   /**
-   *  An unmodifiable set of the supported paper sources (ie input bins or trays) for this printer.
+   * An unmodifiable set of the supported paper sources (ie input bins or trays) for this printer.
    */
   def supportedPaperSources: Set[PaperSource] =
     asScalaSet(delegate.getSupportedPaperSources).map(new PaperSource(_)).toSet

@@ -30,11 +30,11 @@ import scala.language.implicitConversions
 
 import scalafx.event.Event
 import scalafx.delegate.SFXDelegate
-import javafx.scene.{ web => jfxsw }
+import javafx.scene.{web => jfxsw}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
-import javafx.{ event => jfxe }
+import javafx.{event => jfxe}
 
 /**
  * Companion object for [[scalafx.scene.web.WebErrorEvent]].
@@ -47,7 +47,8 @@ object WebErrorEvent {
    * @param wee ScalaFX WebErrorEvent
    * @return JavaFX WebErrorEvent
    */
-  implicit def sfxWebErrorEventsjfx(wee: WebErrorEvent): jfxsw.WebErrorEvent = wee.delegate
+  implicit def sfxWebErrorEventsjfx(wee: WebErrorEvent): jfxsw.WebErrorEvent =
+    if (wee != null) wee.delegate else null
 
   /**
    * Common supertype for all WebErrorEvent types.

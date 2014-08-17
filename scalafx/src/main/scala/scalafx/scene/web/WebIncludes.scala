@@ -102,7 +102,8 @@ trait WebIncludes {
    * @param wr $JFX $WR
    * @return $SFX $WR
    */
-  implicit def jfxWebErrorEvent2sfx(wr: jfxsw.WebErrorEvent): WebErrorEvent = new WebErrorEvent(wr)
+  implicit def jfxWebErrorEvent2sfx(wr: jfxsw.WebErrorEvent): WebErrorEvent =
+    if (wr != null) new WebErrorEvent(wr) else null
 
   /**
    * $START$WV.html $WV$END

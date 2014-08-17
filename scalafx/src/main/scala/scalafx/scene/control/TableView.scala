@@ -63,8 +63,8 @@ object TableView {
   /**
    * Converts a ScalaFX $TV instance to its $JFX counterpart.
    *
-   *  @param tv ScalaFX $TV
-   *  @return $JFX $TV
+   * @param tv ScalaFX $TV
+   * @return $JFX $TV
    */
   implicit def sfxTableView2jfx[S](tv: TableView[S]) = if (tv != null) tv.delegate else null
 
@@ -76,8 +76,8 @@ object TableView {
     /**
      * Converts a ScalaFX ResizeFeatures instance to its JavaFX counterpart.
      *
-     *  @param rf ScalaFX ResizeFeatures
-     *  @return JavaFX ResizeFeatures
+     * @param rf ScalaFX ResizeFeatures
+     * @return JavaFX ResizeFeatures
      */
     implicit def sfxResizeFeatures2jfx[S](rf: ResizeFeatures[S]) = if (rf != null) rf.delegate else null
 
@@ -99,7 +99,7 @@ object TableView {
      *
      * @param table The TableView upon which the resize operation is occurring.
      * @param column The column upon which the resize is occurring, or `null` if this
-     * `ResizeFeatures` instance is being created as a result of a TableView resize operation.
+     *               `ResizeFeatures` instance is being created as a result of a TableView resize operation.
      * @param delta The amount of horizontal space added or removed in the resize operation.
      */
     def this(table: TableView[S], column: TableColumn[S, _], delta: Double) =
@@ -121,10 +121,11 @@ object TableView {
     /**
      * Converts a ScalaFX TableViewSelectionModel instance to its JavaFX counterpart.
      *
-     *  @param tvsm ScalaFX TableViewSelectionModel
-     *  @return JavaFX TableViewSelectionModel
+     * @param tvsm ScalaFX TableViewSelectionModel
+     * @return JavaFX TableViewSelectionModel
      */
-    implicit def sfxTableViewSelectionModel2jfx[S](tvsm: TableViewSelectionModel[S]) = tvsm.delegate
+    implicit def sfxTableViewSelectionModel2jfx[S](tvsm: TableViewSelectionModel[S]) =
+      if (tvsm != null) tvsm.delegate else null
 
   }
 
@@ -192,10 +193,11 @@ object TableView {
     /**
      * Converts a ScalaFX TableViewFocusModel instance to its JavaFX counterpart.
      *
-     *  @param tvfm ScalaFX TableViewFocusModel
-     *  @return JavaFX TableViewFocusModel
+     * @param tvfm ScalaFX TableViewFocusModel
+     * @return JavaFX TableViewFocusModel
      */
-    implicit def sfxTableViewFocusModel2jfx[S](tvfm: TableViewFocusModel[S]) = tvfm.delegate
+    implicit def sfxTableViewFocusModel2jfx[S](tvfm: TableViewFocusModel[S]) =
+      if (tvfm != null) tvfm.delegate else null
 
   }
 
@@ -261,7 +263,7 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
    * Creates a TableView with the content provided in the items ObservableBuffer.
    *
    * @param items The items to insert into the TableView, and the list to watch for changes
-   * (to automatically show in the TableView).
+   *              (to automatically show in the TableView).
    */
   def this(items: ObservableBuffer[S]) = this(new jfxsc.TableView(items))
 

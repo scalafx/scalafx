@@ -37,7 +37,7 @@ import scalafx.scene.paint.Paint
 import scalafx.collections._
 
 object SubScene {
-  implicit def sfxSubScene2jfx(v: SubScene) = v.delegate
+  implicit def sfxSubScene2jfx(v: SubScene) = if (v != null) v.delegate else null
 }
 
 

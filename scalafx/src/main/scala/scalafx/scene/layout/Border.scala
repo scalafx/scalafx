@@ -27,11 +27,11 @@
 package scalafx.scene.layout
 
 import scala.language.implicitConversions
-import javafx.scene.{ layout => jfxsl }
+import javafx.scene.{layout => jfxsl}
 import scalafx.delegate.SFXDelegate
 
 object Border {
-  implicit def sfxBorder2jfx(v: Border) = v.delegate
+  implicit def sfxBorder2jfx(v: Border) = if (v != null) v.delegate else null
 
   /** An empty Border, useful to use instead of null. */
   val EMPTY = jfxsl.Border.EMPTY
@@ -40,15 +40,15 @@ object Border {
 class Border(override val delegate: jfxsl.Border)
   extends SFXDelegate[jfxsl.Border] {
   //FIXME implement constructors
-//  /** Creates a new Border by supplying an array of BorderImages. */
-//  def this(BorderImage... images)
-//
-//    /** Creates a new Border by supplying an array of BorderStrokes. */
-//    def this(BorderStroke... strokes)
-//
-//    /** Creates a new Border by supplying an array of BorderStrokes and BorderImages. */
-//    def this(BorderStroke[] strokes, BorderImage[] images)
-//
-//    /** Creates a new Border by supplying a List of BorderStrokes and BorderImages. */
-//    def this(java.util.List[BorderStroke] strokes, java.util.List<BorderImage> images)
+  //  /** Creates a new Border by supplying an array of BorderImages. */
+  //  def this(BorderImage... images)
+  //
+  //    /** Creates a new Border by supplying an array of BorderStrokes. */
+  //    def this(BorderStroke... strokes)
+  //
+  //    /** Creates a new Border by supplying an array of BorderStrokes and BorderImages. */
+  //    def this(BorderStroke[] strokes, BorderImage[] images)
+  //
+  //    /** Creates a new Border by supplying a List of BorderStrokes and BorderImages. */
+  //    def this(java.util.List[BorderStroke] strokes, java.util.List<BorderImage> images)
 }

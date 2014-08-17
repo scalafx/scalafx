@@ -28,7 +28,7 @@ package scalafx.print
 
 import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
-import javafx.{ print => jfxp }
+import javafx.{print => jfxp}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.IntegerProperty
@@ -45,7 +45,7 @@ object PaperSource {
    * @param ps ScalaFX PaperSource
    * @return JavaFX PaperSource
    */
-  implicit def sfxPaperSource2jfx(ps: PaperSource): jfxp.PaperSource = ps.delegate
+  implicit def sfxPaperSource2jfx(ps: PaperSource): jfxp.PaperSource = if (ps != null) ps.delegate else null
 
   /** Specify to automatically select the tray. */
   val Automatic: PaperSource = new PaperSource(jfxp.PaperSource.AUTOMATIC)

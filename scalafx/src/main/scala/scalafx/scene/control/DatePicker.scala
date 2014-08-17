@@ -37,7 +37,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
 object DatePicker {
-  implicit def sfxDatePicker2jfx(v: DatePicker) = v.delegate
+  implicit def sfxDatePicker2jfx(v: DatePicker) = if (v != null) v.delegate else null
 }
 
 /**

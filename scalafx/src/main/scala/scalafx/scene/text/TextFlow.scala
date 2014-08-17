@@ -27,16 +27,16 @@
 package scalafx.scene.text
 
 import scala.language.implicitConversions
-import javafx.scene.{ text => jfxst }
+import javafx.scene.{text => jfxst}
 import scalafx.Includes._
-import scalafx.beans.property.{ DoubleProperty, ObjectProperty }
+import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Orientation
 import scalafx.scene.Node
 import scalafx.scene.layout.Pane
 
 object TextFlow {
-  implicit def sfxTextFlow2jfx(v: TextFlow) = v.delegate
+  implicit def sfxTextFlow2jfx(v: TextFlow) = if (v != null) v.delegate else null
 
   def classCssMetaData = jfxst.TextFlow.getClassCssMetaData
 

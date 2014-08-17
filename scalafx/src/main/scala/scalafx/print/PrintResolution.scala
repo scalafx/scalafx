@@ -28,7 +28,7 @@ package scalafx.print
 
 import scala.language.implicitConversions
 
-import javafx.{ print => jfxp }
+import javafx.{print => jfxp}
 import scalafx.delegate.SFXDelegate
 
 /**
@@ -42,7 +42,8 @@ object PrintResolution {
    * @param pr ScalaFX PrintResolution
    * @return JavaFX PrintResolution
    */
-  implicit def sfxPrintResolution2jfx(pr: PrintResolution): jfxp.PrintResolution = pr.delegate
+  implicit def sfxPrintResolution2jfx(pr: PrintResolution): jfxp.PrintResolution =
+    if (pr != null) pr.delegate else null
 
 }
 

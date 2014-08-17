@@ -27,7 +27,7 @@
 package scalafx.event
 
 import scala.language.implicitConversions
-import javafx.{ event => jfxe }
+import javafx.{event => jfxe}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
@@ -44,7 +44,7 @@ object WeakEventHandler {
    * @return JavaFX WeakEventHandler
    */
   implicit def sfxWeakEventHandler2jfx[T <: jfxe.Event](weh: WeakEventHandler[T]): jfxe.WeakEventHandler[T] =
-    weh.delegate
+    if (weh != null) weh.delegate else null
 
 }
 
@@ -59,7 +59,7 @@ object WeakEventHandler {
 class WeakEventHandler[T <: jfxe.Event](override val delegate: jfxe.WeakEventHandler[T])
   extends SFXDelegate[jfxe.WeakEventHandler[T]] {
 
-  
+
   /**
    * Creates a new instance of WeakEventHandler.
    *

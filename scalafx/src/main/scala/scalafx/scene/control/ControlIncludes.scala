@@ -278,7 +278,7 @@ trait ControlIncludes
    * @param v $JFX $DTCL
    * @return $SFX $DTCL
    */
-  implicit def jfxDateCell2sfx(v: jfxsc.DateCell) = new DateCell(v)
+  implicit def jfxDateCell2sfx(v: jfxsc.DateCell) = if (v != null) new DateCell(v) else null
 
   /**
    * $START$DTPR.html $DTPR$END
@@ -287,7 +287,7 @@ trait ControlIncludes
    * @param v $JFX $DTPR
    * @return $SFX $DTPR
    */
-  implicit def jfxDatePicker2sfx(v: jfxsc.DatePicker) = new DatePicker(v)
+  implicit def jfxDatePicker2sfx(v: jfxsc.DatePicker) = if (v != null) new DatePicker(v) else null
 
   /**
    * $START$FCMD.html $FCMD$END
@@ -436,7 +436,8 @@ trait ControlIncludes
    * @param ev $JFX $SCTE
    * @return $SFX $SCTE
    */
-  implicit def jfxScrollToEvent2sfx[T](ev: jfxsc.ScrollToEvent[T]): ScrollToEvent[T] = new ScrollToEvent[T](ev)
+  implicit def jfxScrollToEvent2sfx[T](ev: jfxsc.ScrollToEvent[T]): ScrollToEvent[T] =
+    if (ev != null) new ScrollToEvent[T](ev) else null
 
   /**
    * $START$SCSB.html $SCSB$END
@@ -539,7 +540,8 @@ trait ControlIncludes
    * @return $SFX $TBPB
    * @since 8.0
    */
-  implicit def jfxTablePositionBase2sfx[TC <: jfxsc.TableColumnBase[_, _]](tpb: jfxsc.TablePositionBase[TC]) = new TablePositionBase[TC](tpb) {}
+  implicit def jfxTablePositionBase2sfx[TC <: jfxsc.TableColumnBase[_, _]](tpb: jfxsc.TablePositionBase[TC]) =
+    if (tpb != null) new TablePositionBase[TC](tpb) {} else null
 
   /**
    * $START$TBRW.html $TBRW$END
@@ -566,7 +568,8 @@ trait ControlIncludes
    * @param rf $JFX $RFBS
    * @return $SFX $RFBS
    */
-  implicit def jfxResizeFeaturesBase2sfx[S](rf: jfxsc.ResizeFeaturesBase[S]): ResizeFeaturesBase[S] = new ResizeFeaturesBase[S](rf)
+  implicit def jfxResizeFeaturesBase2sfx[S](rf: jfxsc.ResizeFeaturesBase[S]): ResizeFeaturesBase[S] =
+    if (rf != null) new ResizeFeaturesBase[S](rf) else null
 
   /**
    * $START$TVRF.html $TVRF$END
@@ -593,8 +596,8 @@ trait ControlIncludes
    * @param tsm $JFX $TBSM
    * @return $SFX $TBSM
    */
-  implicit def jfxTableSelectionModel2sfx[T](tsm: jfxsc.TableSelectionModel[T]) = new TableSelectionModel[T](tsm) {}
-
+  implicit def jfxTableSelectionModel2sfx[T](tsm: jfxsc.TableSelectionModel[T]) =
+    if (tsm != null) new TableSelectionModel[T](tsm) {} else null
   /*
    * $START$TBCB.html $TBCB$END
    *
@@ -624,12 +627,13 @@ trait ControlIncludes
    *
    * @tparam T The type of the underlying data model for the UI control.
    * @tparam TC The concrete subclass of [[scalafx.scene.control.TableColumnBase]] that is used by
-   *  the underlying UI control (e.g. [[scalafx.scene.control.TableColumn]] or `TreeTableColumn`).
+   *            the underlying UI control (e.g. [[scalafx.scene.control.TableColumn]] or `TreeTableColumn`).
    * @param tfm $JFX $TBFM
    * @return $SFX $TBFM
    * @since 8.0
    */
-  implicit def jfxTableFocusModel2sfx[T, TC <: jfxsc.TableColumnBase[T, _]](tfm: jfxsc.TableFocusModel[T, TC]) = new TableFocusModel[T, TC](tfm) {}
+  implicit def jfxTableFocusModel2sfx[T, TC <: jfxsc.TableColumnBase[T, _]](tfm: jfxsc.TableFocusModel[T, TC]) =
+    if (tfm != null) new TableFocusModel[T, TC](tfm) {} else null
 
   /**
    * $START$TTPN.html $TTPN$END
@@ -678,7 +682,8 @@ trait ControlIncludes
    * @param sb $JFX $SNBE
    * @return $SFX $SNBE
    */
-  implicit def jfxSkinBase2sfx[C <: jfxsc.Control](sb: jfxsc.SkinBase[C]) = new SkinBase[C](sb) {}
+  implicit def jfxSkinBase2sfx[C <: jfxsc.Control](sb: jfxsc.SkinBase[C]) =
+    if (sb != null) new SkinBase[C](sb) {} else null
 
   /**
    * $START$SKNB.html $SKNB$END
@@ -881,4 +886,58 @@ trait ControlIncludes
    * @return $SFX $TVEE
    */
   implicit def jfxTreeViewEditEvent2sfx[T](t: jfxsc.TreeView.EditEvent[T]) = if (t != null) new TreeView.EditEvent[T](t) else null
+
+
+  /**
+   * $START$TTRW.html $TTRW$END
+   *
+   * @tparam T $TTYPE $TTRW
+   * @param ttr $JFX $TTRW
+   * @return $SFX $TTRW
+   * @since 8.0
+   */
+  implicit def jfxTreeTableRow2sfx[T](ttr: jfxsc.TreeTableRow[T]): TreeTableRow[T] =
+    if (ttr != null) new TreeTableRow[T](ttr) else null
+
+  /**
+   * $START$TTCL.html $TTCL$END
+   *
+   * @tparam S 1st $TTYPE $TTCL
+   * @tparam T 2st $TTYPE $TTCL
+   * @param ttc $JFX $TTCL
+   * @return $SFX $TTCL
+   * @since 8.0
+   */
+  implicit def jfxTreeTableCell2sfx[S, T](ttc: jfxsc.TreeTableCell[S, T]): TreeTableCell[S, T] =
+    if (ttc != null) new TreeTableCell[S, T](ttc) else null
+
+  /**
+   * $START$SREV.html $SREV$END
+   *
+   * @tparam C $TTYPE $SREV
+   * @param se $JFX $SREV
+   * @return $SFX $SREV
+   */
+  implicit def jfxSortEvent2sfx[C](se: jfxsc.SortEvent[C]): SortEvent[C] =
+    if (se != null) new SortEvent[C](se) else null
+
+  /**
+   * $START$TRSM.html $TRSM$END
+   *
+   * @param tsm $JFX $TRSM
+   * @return $SFX $TRSM
+   * @since 8.0
+   */
+  implicit def jfxTreeSortMode2sfx(tsm: jfxsc.TreeSortMode) = TreeSortMode.jfxEnum2sfx(tsm)
+
+  /**
+   * $START$TRTP.html $TRTP$END
+   *
+   * @tparam S The type of the TreeItem instances contained within the TreeTableView.
+   * @tparam T The type of the items contained within the TreeTableColumn.
+   * @param ttp $JFX $TRTP
+   * @return $SFX $TRTP
+   */
+  implicit def jfxTreeTablePosition2sfx[S, T](ttp: jfxsc.TreeTablePosition[S, T]): TreeTablePosition[S, T] =
+    if (ttp != null) new TreeTablePosition[S, T](ttp) else null
 }

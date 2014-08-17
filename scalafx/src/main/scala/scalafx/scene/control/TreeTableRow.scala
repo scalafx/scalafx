@@ -28,8 +28,8 @@ package scalafx.scene.control
 
 import scala.language.implicitConversions
 
-import javafx.{ scene => jfxs }
-import javafx.scene.{ control => jfxsc }
+import javafx.{scene => jfxs}
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
@@ -50,7 +50,8 @@ object TreeTableRow {
    * @param ttr ScalaFX TreeTableRow
    * @return JavaFX TreeTableRow
    */
-  implicit def sfxTreeTableRow2jfx[T](ttr: TreeTableRow[T]): jfxsc.TreeTableRow[T] = ttr.delegate
+  implicit def sfxTreeTableRow2jfx[T](ttr: TreeTableRow[T]): jfxsc.TreeTableRow[T] =
+    if (ttr != null) ttr.delegate else null
 
 }
 

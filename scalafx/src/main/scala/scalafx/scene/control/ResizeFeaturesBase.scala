@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import scala.language.implicitConversions
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
@@ -46,7 +46,7 @@ object ResizeFeaturesBase {
    * @tparam S The type of the UI control (e.g. the type of the 'row').
    */
   implicit def sfxResizeFeaturesBase2jfx[S](rfb: ResizeFeaturesBase[S]): jfxsc.ResizeFeaturesBase[S] =
-    rfb.delegate
+    if (rfb != null) rfb.delegate else null
 
 }
 
@@ -66,7 +66,7 @@ class ResizeFeaturesBase[S](override val delegate: jfxsc.ResizeFeaturesBase[S])
    * set and stored in this immutable instance.
    *
    * @param column  The column upon which the resize is occurring, or null if this ResizeFeatures
-   * instance is being created as a result of a resize operation.
+   *                instance is being created as a result of a resize operation.
    * @param delta The amount of horizontal space added or removed in the resize operation.
    */
   def this(column: TableColumnBase[S, _], delta: Double) =

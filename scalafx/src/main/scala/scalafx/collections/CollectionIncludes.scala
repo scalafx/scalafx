@@ -35,7 +35,7 @@ object CollectionIncludes extends CollectionIncludes
 
 /**
  * Contains implicit methods to convert from 
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/package-summary.html `javafx.collections`]] 
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/package-summary.html `javafx.collections`]]
  * Classes to their ScalaFX counterparts.
  */
 trait CollectionIncludes {
@@ -83,21 +83,19 @@ trait CollectionIncludes {
 
   /**
    * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableFloatArray.html]] `ObservableFloatArray` to a ScalaFX [[scalafx.collections.ObservableFloatArray]].
-   * 
+   *
    * @param ofa JavaFX ObservableFloatArray
    * @return ScalaFX ObservableFloatArray
    */
-  implicit def jfxObservableFloatArray2sfxObservableFloatArray (ofa:
-    jfxc.ObservableFloatArray): ObservableFloatArray =
-      new ObservableFloatArray (ofa)
+  implicit def jfxObservableFloatArray2sfxObservableFloatArray(ofa: jfxc.ObservableFloatArray): ObservableFloatArray =
+    if (ofa != null) new ObservableFloatArray(ofa) else null
 
   /**
    * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableIntegerArray.html]] `ObservableIntegerArray` to a ScalaFX [[scalafx.collections.ObservableIntegerArray]].
-   * 
+   *
    * @param oia JavaFX ObservableIntegerArray
    * @return ScalaFX ObservableIntegerArray
    */
-  implicit def jfxObservableIntegerArray2sfxObservableIntegerArray (oia:
-    jfxc.ObservableIntegerArray): ObservableIntegerArray =
-      new ObservableIntegerArray (oia)
+  implicit def jfxObservableIntegerArray2sfxObservableIntegerArray(oia: jfxc.ObservableIntegerArray): ObservableIntegerArray =
+    if (oia != null) new ObservableIntegerArray(oia) else null
 }

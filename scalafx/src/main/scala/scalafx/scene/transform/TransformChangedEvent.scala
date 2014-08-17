@@ -34,7 +34,7 @@ import scalafx.event.Event
 
 
 object TransformChangedEvent {
-  implicit def sfxTransformChangedEvent2jfx(v: TransformChangedEvent) = v.delegate
+  implicit def sfxTransformChangedEvent2jfx(v: TransformChangedEvent) = if (v != null) v.delegate else null
 
   val ANY = jfxst.TransformChangedEvent.ANY
 

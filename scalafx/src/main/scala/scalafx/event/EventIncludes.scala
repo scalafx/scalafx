@@ -80,8 +80,8 @@ trait EventIncludes {
    * @return ScalaFX WeakEventHandler
    * @since 8.0
    */
-  implicit def jfxWeakEventHandler2sfx[T <: jfxe.Event](weh: jfxe.WeakEventHandler[T]): WeakEventHandler[T] 
-    = new WeakEventHandler(weh)
+  implicit def jfxWeakEventHandler2sfx[T <: jfxe.Event](weh: jfxe.WeakEventHandler[T]): WeakEventHandler[T] =
+    if (weh != null) new WeakEventHandler(weh) else null
 
   /**
    * Create a simple event handler when information about event is not be used.
@@ -146,5 +146,5 @@ trait EventIncludes {
         handler(event)
       }
     }
-  
+
 }

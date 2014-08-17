@@ -31,7 +31,7 @@ import javafx.scene.{shape => jfxss}
 import scalafx.delegate.SFXDelegate
 
 object Mesh {
-  implicit def sfxMesh2jfx(m: Mesh) = m.delegate
+  implicit def sfxMesh2jfx(m: Mesh) = if (m != null) m.delegate else null
 }
 
 /** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/Mesh.html]]. */

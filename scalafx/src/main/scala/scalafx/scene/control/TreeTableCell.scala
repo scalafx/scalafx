@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import scala.language.implicitConversions
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import javafx.scene.control.TreeTableColumn
 import javafx.scene.control.TreeTableView
 import scalafx.Includes._
@@ -49,7 +49,8 @@ object TreeTableCell {
    * @tparam T The type of the item contained within the Cell.
    * @return JavaFX TreeTableCell
    */
-  implicit def sfxTreeTableCell2jfx[S, T](ttc: TreeTableCell[S, T]): jfxsc.TreeTableCell[S, T] = ttc.delegate
+  implicit def sfxTreeTableCell2jfx[S, T](ttc: TreeTableCell[S, T]): jfxsc.TreeTableCell[S, T] =
+    if (ttc != null) ttc.delegate else null
 
 }
 

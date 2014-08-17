@@ -28,7 +28,7 @@ package scalafx.embed.swing
 
 import scala.language.implicitConversions
 
-import javafx.embed.{ swing => jfxes }
+import javafx.embed.{swing => jfxes}
 import javax.swing.JComponent
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
@@ -44,7 +44,7 @@ object SwingNode {
    * @param node ScalaFX SwingNode
    * @return JavaFX SwingNode
    */
-  implicit def sfxPanel2jfx(node: SwingNode): jfxes.SwingNode = node.delegate
+  implicit def sfxPanel2jfx(node: SwingNode): jfxes.SwingNode = if (node != null) node.delegate else null
 
 }
 
@@ -62,7 +62,7 @@ class SwingNode(override val delegate: jfxes.SwingNode = new jfxes.SwingNode)
   with SFXDelegate[jfxes.SwingNode] {
 
   /**
-   *  the JComponent instance attached to this SwingNode.
+   * the JComponent instance attached to this SwingNode.
    */
   def content: JComponent = delegate.getContent
   def content_=(c: JComponent) {

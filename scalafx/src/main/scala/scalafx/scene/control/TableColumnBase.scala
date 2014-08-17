@@ -47,7 +47,7 @@ import scalafx.scene.Node.sfxNode2jfx
 import scalafx.scene.control.ContextMenu._
 
 object TableColumnBase {
-  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]) = tc.delegate
+  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]) = if (tc != null) tc.delegate else null
 
   /**
    * By default all columns will use this comparator to perform sorting.
@@ -58,7 +58,7 @@ object TableColumnBase {
 /**
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/control/TableColumnBase.html]].
  */
-abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.TableColumnBase[S, T])
+abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.TableColumnBase[S, T])
   extends EventHandlerDelegate
   with Styleable
   with SFXDelegate[jfxsc.TableColumnBase[S, T]] {
@@ -127,7 +127,7 @@ abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.Tab
   /**
    * This read-only property will always refer to the parent of this column, in the situation where nested columns are being used.
    */
-  def parentColumn: ReadOnlyObjectProperty[jfxsc.TableColumnBase[S,_]] = delegate.parentColumnProperty
+  def parentColumn: ReadOnlyObjectProperty[jfxsc.TableColumnBase[S, _]] = delegate.parentColumnProperty
 
   /**
    * The preferred width of the TableColumnBase.

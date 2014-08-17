@@ -43,7 +43,7 @@ object PageLayout {
    * @param pl ScalaFX PageLayout
    * @return JavaFX PageLayout
    */
-  implicit def sfxPageLayout2jfx(pl: PageLayout): jfxp.PageLayout = pl.delegate
+  implicit def sfxPageLayout2jfx(pl: PageLayout): jfxp.PageLayout = if (pl != null) pl.delegate else null
 
 }
 
@@ -85,8 +85,8 @@ final class PageLayout(override val delegate: jfxp.PageLayout)
   def printableHeight: Double = delegate.getPrintableHeight
 
   /**
-   *  The width dimension of the printable area of the page, in 1/72 of an inch points,
-   *  taking into account the orientation.
+   * The width dimension of the printable area of the page, in 1/72 of an inch points,
+   * taking into account the orientation.
    */
   def printableWidth: Double = delegate.getPrintableWidth
 

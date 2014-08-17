@@ -28,7 +28,7 @@ package scalafx.print
 
 import scala.language.implicitConversions
 
-import javafx.{ print => jfxp }
+import javafx.{print => jfxp}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
@@ -49,7 +49,7 @@ object PrinterJob {
    * @param pj ScalaFX PrinterJob
    * @return JavaFX PrinterJob
    */
-  implicit def sfxPrinterJob2jfx(pj: PrinterJob): jfxp.PrinterJob = pj.delegate
+  implicit def sfxPrinterJob2jfx(pj: PrinterJob): jfxp.PrinterJob = if (pj != null) pj.delegate else null
 
   // JobStatus - begin
 
@@ -105,7 +105,7 @@ object PrinterJob {
    * Factory method to create a job for a specified printer.
    *
    * @param printer to use for the job. If the printer is currently unavailable (e.g. offline)
-   * then this may return 'null'.
+   *                then this may return 'null'.
    * @return a new PrinterJob, or 'null'.
    */
   def createPrinterJob(printer: Printer): PrinterJob = jfxp.PrinterJob.createPrinterJob(printer)
@@ -180,7 +180,7 @@ final class PrinterJob(override val delegate: jfxp.PrinterJob)
    *
    * @param to block input, or 'null'.
    * @return false if the user opts to cancel the dialog, or the job is not in the new state.
-   * That is if it has already started, has failed, or has been cancelled, or ended.
+   *         That is if it has already started, has failed, or has been cancelled, or ended.
    */
   def showPageSetupDialog(owner: Window): Boolean = delegate.showPageSetupDialog(owner)
 
@@ -189,7 +189,7 @@ final class PrinterJob(override val delegate: jfxp.PrinterJob)
    *
    * @param to which to block input, or 'null'.
    * @return false if the user opts to cancel printing, or the job is not in the new state.
-   * That is if it has already started, has failed, or has been cancelled, or ended.
+   *         That is if it has already started, has failed, or has been cancelled, or ended.
    */
   def showPrintDialog(owner: Window): Boolean = delegate.showPrintDialog(owner)
 

@@ -160,14 +160,14 @@ trait MediaIncludes {
    * @return $SFX $MDVW
    */
   implicit def jfxMediaView2sfx(mv: jfxsm.MediaView) = if (mv != null) new MediaView(mv) else null
-  
+
   /**
    * $START$SBTR.html $SBTR$END
    *
    * @param mv $JFX $SBTR
    * @return $SFX $SBTR
    */
-  implicit def jfxSubtitleTrack2sfx(st: jfxsm.SubtitleTrack) = new SubtitleTrack(st)
+  implicit def jfxSubtitleTrack2sfx(st: jfxsm.SubtitleTrack) = if (st != null) new SubtitleTrack(st) else null
 
   /**
    * $START$TRAC.html $TRAC$END

@@ -83,7 +83,7 @@ with ControlIncludes
  */
 trait LowerPriorityIncludes {
 
-  implicit def jfxAmbientLight2sfx(v: jfxs.AmbientLight) = new AmbientLight(v)
+  implicit def jfxAmbientLight2sfx(v: jfxs.AmbientLight) = if (v != null) new AmbientLight(v) else null
 
   /**
    * $START$CHI.html $CHI$END
@@ -133,7 +133,7 @@ trait LowerPriorityIncludes {
    */
   implicit def jfxImageCursor2sfx(ic: jfxs.ImageCursor) = if (ic != null) new ImageCursor(ic) else null
 
-  implicit def jfxLightBase2sfx(v: jfxs.LightBase) = new LightBase(v) {}
+  implicit def jfxLightBase2sfx(v: jfxs.LightBase) = if (v != null) new LightBase(v) {} else null
 
   /**
    * $START$NOD.html $NOD$END
@@ -167,7 +167,7 @@ trait LowerPriorityIncludes {
    */
   implicit def jfxPerspectiveCamera2sfx(v: jfxs.PerspectiveCamera) = if (v != null) new PerspectiveCamera(v) else null
 
-  implicit def jfxPointLight2sfx(v: jfxs.PointLight) = new PointLight(v)
+  implicit def jfxPointLight2sfx(v: jfxs.PointLight) = if (v != null) new PointLight(v) else null
 
   /**
    * $START$SCE.html $SCE$END
@@ -213,5 +213,5 @@ trait LowerPriorityIncludes {
    * @param v $JFX $SSCE
    * @return $SFX $SSCE
    */
-  implicit def jfxSubScene2sfx(v: jfxs.SubScene) = new SubScene(v)
+  implicit def jfxSubScene2sfx(v: jfxs.SubScene) = if (v != null) new SubScene(v) else null
 }

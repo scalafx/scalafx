@@ -36,7 +36,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Material
 
 object Shape3D {
-  implicit def sfxShape3D2jfx(v: Shape3D) = v.delegate
+  implicit def sfxShape3D2jfx(v: Shape3D) = if (v != null) v.delegate else null
 }
 
 

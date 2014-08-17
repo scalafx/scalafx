@@ -28,7 +28,7 @@ package scalafx.scene.control
 
 import scala.language.implicitConversions
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.delegate.SFXDelegate
 
 /**
@@ -45,7 +45,7 @@ object TablePositionBase {
    * @since 8.0
    */
   implicit def sfxTablePositionBase2jfx[TC <: jfxsc.TableColumnBase[_, _]](tpb: TablePositionBase[TC]): jfxsc.TablePositionBase[TC] =
-    tpb.delegate
+    if (tpb != null) tpb.delegate else null
 
 }
 

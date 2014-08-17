@@ -34,7 +34,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Insets
 
 object Background {
-  implicit def sfxBackground2jfx(v: Background) = v.delegate
+  implicit def sfxBackground2jfx(v: Background) = if (v != null) v.delegate else null
 
   /** An empty Background, useful to use instead of null. */
   val EMPTY = jfxsl.Background.EMPTY
@@ -60,9 +60,9 @@ class Background(override val delegate: jfxsl.Background)
     this(new jfxsl.Background(fills.map(_.delegate), images.map(_.delegate)))
 
   /**
-   *    * The list of BackgroundFills which together define the filled portion of this Background.
+   * * The list of BackgroundFills which together define the filled portion of this Background.
    */
-  def fills : Seq[jfxsl.BackgroundFill] = delegate.getFills
+  def fills: Seq[jfxsl.BackgroundFill] = delegate.getFills
   /**
    * The list of BackgroundImages which together define the image portion of this Background.
    */
@@ -71,5 +71,5 @@ class Background(override val delegate: jfxsl.Background)
   /**
    * The outsets of this Background.
    */
-  def outsets : Insets 	= delegate.getOutsets
+  def outsets: Insets = delegate.getOutsets
 }

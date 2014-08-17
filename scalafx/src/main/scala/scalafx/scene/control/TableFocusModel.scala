@@ -27,7 +27,7 @@
 package scalafx.scene.control
 
 import scala.language.implicitConversions
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
@@ -45,10 +45,10 @@ object TableFocusModel {
    * @return JavaFX TableFocusModel
    * @tparam T The type of the underlying data model for the UI control.
    * @tparam TC The concrete subclass of [[scalafx.scene.control.TableColumnBase]] that is used by
-   *  the underlying UI control (e.g. [[scalafx.scene.control.TableColumn]] or `TreeTableColumn`).
+   *            the underlying UI control (e.g. [[scalafx.scene.control.TableColumn]] or `TreeTableColumn`).
    */
   implicit def sfxTableFocusModel2jfx[T, TC <: jfxsc.TableColumnBase[T, _]](tfm: TableFocusModel[T, TC]): jfxsc.TableFocusModel[T, TC] =
-    tfm.delegate
+    if (tfm != null) tfm.delegate else null
 
 }
 
@@ -59,7 +59,7 @@ object TableFocusModel {
  * @param delegate JavaFX TableFocusModel to be wrapped.
  * @tparam T The type of the underlying data model for the UI control.
  * @tparam TC The concrete subclass of [[scalafx.scene.control.TableColumnBase]] that is used by
- *  the underlying UI control (e.g. [[scalafx.scene.control.TableColumn]] or `TreeTableColumn`).
+ *            the underlying UI control (e.g. [[scalafx.scene.control.TableColumn]] or `TreeTableColumn`).
  * @since 8.0
  */
 abstract class TableFocusModel[T, TC <: jfxsc.TableColumnBase[T, _]](override val delegate: jfxsc.TableFocusModel[T, TC])

@@ -47,7 +47,7 @@ object StyleConverter {
    * @return JavaFX StyleConverter
    */
   implicit def sfxStyleConverterProperty2jfx[F, T](s: StyleConverter[F, T]): jfxcss.StyleConverter[F, T] =
-    s.delegate
+    if (s != null) s.delegate else null
 
   // CONVERTERS
 
@@ -98,7 +98,7 @@ object StyleConverter {
  * StyleConverter]].
  *
  * @constructor Creates a new ScalaFX StyleConverter from a JavaFX StyleConverter. 
- * Its default value is a new JavaFX StyleConverter.
+ *              Its default value is a new JavaFX StyleConverter.
  * @param delegate JavaFX StyleConverter.
  * @tparam F
  * @tparam T

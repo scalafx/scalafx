@@ -27,11 +27,11 @@
 package scalafx.scene.media
 
 import scala.language.implicitConversions
-import javafx.scene.{ media => jfxsm }
+import javafx.scene.{media => jfxsm}
 import scalafx.delegate.SFXDelegate
 
 object SubtitleTrack {
-  implicit def sfxSubtitleTrack2jfx(st: SubtitleTrack) = st.delegate
+  implicit def sfxSubtitleTrack2jfx(st: SubtitleTrack) = if (st != null) st.delegate else null
 }
 
 /**

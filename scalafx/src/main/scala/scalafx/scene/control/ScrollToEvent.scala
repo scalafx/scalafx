@@ -28,8 +28,8 @@ package scalafx.scene.control
 
 import scala.language.implicitConversions
 
-import javafx.{ event => jfxe }
-import javafx.scene.{ control => jfxsc }
+import javafx.{event => jfxe}
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.Event
@@ -46,7 +46,8 @@ object ScrollToEvent {
    * @param event ScalaFX ScrollToEvent
    * @return JavaFX ScrollToEvent
    */
-  implicit def sfxScrollToEvent2jfx[T](event: ScrollToEvent[T]): jfxsc.ScrollToEvent[T] = event.delegate
+  implicit def sfxScrollToEvent2jfx[T](event: ScrollToEvent[T]): jfxsc.ScrollToEvent[T] =
+    if (event != null) event.delegate else null
 
   /**
    * Common supertype for all scroll-to event types.

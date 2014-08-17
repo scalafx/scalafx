@@ -35,7 +35,7 @@ import scalafx.delegate.SFXDelegate
 
 
 object TriangleMesh {
-  implicit def sfxTriangleMesh2jfx(tm: TriangleMesh) = tm.delegate
+  implicit def sfxTriangleMesh2jfx(tm: TriangleMesh) = if (tm != null) tm.delegate else null
 }
 
 /**
@@ -53,11 +53,11 @@ class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.Triangl
 
   /**
    * Set faces to given array.
-   * 
+   *
    * @param a Integer array to replace the contents of the faces array.
    */
-  def faces_= (a: Array [Int]) {
-    delegate.getFaces.setAll (a, 0, a.length)
+  def faces_=(a: Array[Int]) {
+    delegate.getFaces.setAll(a, 0, a.length)
   }
 
   /** Gets the ObservableIntegerArray of face smoothing groups of this TriangleMesh. */
@@ -65,11 +65,11 @@ class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.Triangl
 
   /**
    * Set face smoothing groups to given array.
-   * 
+   *
    * @param a Integer array to replace the contents of the face smoothing groups array.
    */
-  def faceSmoothingGroups_= (a: Array [Int]) {
-    delegate.getFaceSmoothingGroups.setAll (a, 0, a.length)
+  def faceSmoothingGroups_=(a: Array[Int]) {
+    delegate.getFaceSmoothingGroups.setAll(a, 0, a.length)
   }
 
   /** Gets the number of array components representing a single point. */
@@ -80,11 +80,11 @@ class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.Triangl
 
   /**
    * Set points to given array.
-   * 
+   *
    * @param a Float array to replace the contents of the points array.
    */
-  def points_= (a: Array [Float]) {
-    delegate.getPoints.setAll (a, 0, a.length)
+  def points_=(a: Array[Float]) {
+    delegate.getPoints.setAll(a, 0, a.length)
   }
 
   /** Gets the number of array components representing a single text coordinate. */
@@ -95,10 +95,10 @@ class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.Triangl
 
   /**
    * Set texture coordinates to given array.
-   * 
+   *
    * @param a Float array to replace the contents of the texture coordinates array.
    */
-  def texCoords_= (a: Array [Float]) {
-    delegate.getTexCoords.setAll (a, 0, a.length)
+  def texCoords_=(a: Array[Float]) {
+    delegate.getTexCoords.setAll(a, 0, a.length)
   }
 }

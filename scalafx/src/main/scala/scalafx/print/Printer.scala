@@ -29,7 +29,7 @@ package scalafx.print
 import scala.language.implicitConversions
 import scala.collection.JavaConversions._
 
-import javafx.{ print => jfxp }
+import javafx.{print => jfxp}
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.collections.ObservableSet
@@ -48,7 +48,7 @@ object Printer {
    * @param pr ScalaFX Printer
    * @return JavaFX Printer
    */
-  implicit def sfxPrinter2jfx(p: Printer): jfxp.Printer = p.delegate
+  implicit def sfxPrinter2jfx(p: Printer): jfxp.Printer = if (p != null) p.delegate else null
 
   // MarginType - begin
 
@@ -126,7 +126,7 @@ final class Printer(override val delegate: jfxp.Printer)
   extends SFXDelegate[jfxp.Printer] {
 
   /**
-   *  the default page layout for this printer.
+   * the default page layout for this printer.
    */
   def defaultPageLayout: PageLayout = delegate.getDefaultPageLayout
 

@@ -159,7 +159,7 @@ trait PaintIncludes {
    * @param pm $JFX $PHM
    * @return $SFX $PHM
    */
-  implicit def jfxPhongMaterial2sfx(pm: jfxsp.PhongMaterial) = new PhongMaterial(pm)
+  implicit def jfxPhongMaterial2sfx(pm: jfxsp.PhongMaterial) = if (pm != null) new PhongMaterial(pm) else null
 
   /**
    * $START$RGD.html $RGD$END

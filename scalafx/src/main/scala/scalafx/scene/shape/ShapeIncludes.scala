@@ -102,7 +102,7 @@ trait ShapeIncludes {
    * @param b $JFX Box
    * @return $SFX Box
    */
-  implicit def jfxBox2sfx(b: jfxss.Box) = new Box(b) {}
+  implicit def jfxBox2sfx(b: jfxss.Box) = if (b != null) new Box(b) {} else null
 
   /**
    * $START$CLC.html $CLC$END
@@ -144,7 +144,7 @@ trait ShapeIncludes {
    */
   implicit def jfxCullFace2sfx(cf: jfxss.CullFace) = CullFace.jfxEnum2sfx(cf)
 
-  implicit def jfxCylinder2sfx(c: jfxss.Cylinder) = new Cylinder(c)
+  implicit def jfxCylinder2sfx(c: jfxss.Cylinder) = if (c != null) new Cylinder(c) else null
 
   /**
    * $START$DRM.html $DRM$END
@@ -193,8 +193,8 @@ trait ShapeIncludes {
    * @return $SFX $LNT
    */
   implicit def jfxLineTo2sfx(l: jfxss.LineTo) = if (l != null) new LineTo(l) else null
-  
-  implicit def jfxMeshView2sfx(mv: jfxss.MeshView) = new MeshView(mv)
+
+  implicit def jfxMeshView2sfx(mv: jfxss.MeshView) = if (mv != null) new MeshView(mv) else null
 
   /**
    * $START$MVT.html $MVT$END
@@ -274,9 +274,9 @@ trait ShapeIncludes {
    * @param s $JFX $SHA3D
    * @return $SFX $SHA3D
    */
-  implicit def jfxShape3D2sfx(s: jfxss.Shape3D) = new Shape3D(s) {}
-  
-  implicit def jfxSphere2sfx(s: jfxss.Sphere) = new Sphere(s) 
+  implicit def jfxShape3D2sfx(s: jfxss.Shape3D) = if (s != null) new Shape3D(s) {} else null
+
+  implicit def jfxSphere2sfx(s: jfxss.Sphere) = if (s != null) new Sphere(s) else null
 
   /**
    * $START$SLC.html $SLC$END
@@ -309,8 +309,8 @@ trait ShapeIncludes {
    * @return $SFX $SVP
    */
   implicit def jfxSVGPath2sfx(s: jfxss.SVGPath) = if (s != null) new SVGPath(s) else null
-  
-  implicit def jfxTriangleMesh2sfx(tm: jfxss.TriangleMesh) = new TriangleMesh(tm)
+
+  implicit def jfxTriangleMesh2sfx(tm: jfxss.TriangleMesh) = if (tm != null) new TriangleMesh(tm) else null
 
   /**
    * $START$VLT.html $VLT$END
