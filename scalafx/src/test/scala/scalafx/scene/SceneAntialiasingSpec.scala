@@ -27,10 +27,12 @@
 
 package scalafx.scene
 
-import javafx.{ scene => jfxs }
-import scalafx.Includes._
+import javafx.{scene => jfxs}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
@@ -45,6 +47,7 @@ class SceneAntialiasingSpec
 
   override protected def getScalaClassInstance = SceneAntialiasing.Balanced
   override protected def getJavaClassInstance = jfxs.SceneAntialiasing.DISABLED
+  override protected def expectedNullJFXToSFXValue = SceneAntialiasing.Disabled
 
   /**
    * Class tests.
@@ -52,7 +55,7 @@ class SceneAntialiasingSpec
   it should "treat a null JFX SceneAntialiasing reference as disabled" in {
     val jfxNull: jfxs.SceneAntialiasing = null
     val scalaEquiv: SceneAntialiasing = jfxNull
-    assert(scalaEquiv === SceneAntialiasing.Disabled)
+    assert(scalaEquiv === expectedNullJFXToSFXValue)
   }
 
   it should "treat JFX SceneAntialiasing.DISABLED as disabled" in {
