@@ -26,14 +26,16 @@
  */
 package scalafx.scene.paint
 
-import javafx.scene.{ paint => jfxsp }
-import jfxsp.{ Color => JColor }
-import scalafx.Includes._
+import javafx.scene.paint.{Color => JColor}
+import javafx.scene.{paint => jfxsp}
+
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.SimpleSFXDelegateSpec
+import org.scalactic.Tolerance.convertNumericToPlusOrMinusWrapper
 import org.scalatest.Matchers._
-import org.scalautils.Tolerance.convertNumericToPlusOrMinusWrapper
+import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Color Spec tests.
@@ -60,10 +62,10 @@ class ColorSpec
   private def testSfxColor(c: Color, r: Int, g: Int, b: Int, o: Int = 255) = compareSfxColors(c, intToDouble(r), intToDouble(g), intToDouble(b), intToDouble(o))
 
   private def compareJfxColors(c: JColor, r: Double, g: Double, b: Double, o: Double = 1.0) {
-    assertComponent(c.getRed(), r)
-    assertComponent(c.getGreen(), g)
-    assertComponent(c.getBlue(), b)
-    assertComponent(c.getOpacity(), o)
+    assertComponent(c.getRed, r)
+    assertComponent(c.getGreen, g)
+    assertComponent(c.getBlue, b)
+    assertComponent(c.getOpacity, o)
   }
 
   private def testJfxColor(c: JColor, r: Int, g: Int, b: Int, o: Int = 255) = compareJfxColors(c, intToDouble(r), intToDouble(g), intToDouble(b), intToDouble(o))
@@ -85,7 +87,7 @@ class ColorSpec
   }
 
   it should "convert a webcolor to a JavaFX Color" in {
-    compareJfxColors("orange", JColor.ORANGE.getRed(), JColor.ORANGE.getGreen(), JColor.ORANGE.getBlue(), JColor.ORANGE.getOpacity())
+    compareJfxColors("orange", JColor.ORANGE.getRed, JColor.ORANGE.getGreen, JColor.ORANGE.getBlue, JColor.ORANGE.getOpacity)
     testJfxColor("transparent", 0, 0, 0, 0)
     testJfxColor("0xff668840", 0xff, 0x66, 0x88, 0x40)
     testJfxColor("0xff6688", 0xff, 0x66, 0x88)
@@ -95,9 +97,9 @@ class ColorSpec
     compareJfxColors("rgb(100%,50%,50%)", 1, 0.5, 0.5)
     compareJfxColors("rgba(255,50%,50%,0.25)", 1, 0.5, 0.5, 0.25)
     val hsl = JColor.hsb(240, 1, 1)
-    compareJfxColors("hsl(240,100%,100%)", hsl.getRed(), hsl.getGreen(), hsl.getBlue(), hsl.getOpacity())
+    compareJfxColors("hsl(240,100%,100%)", hsl.getRed, hsl.getGreen, hsl.getBlue, hsl.getOpacity)
     val hsla = JColor.hsb(120, 0, 0, 0.25)
-    compareJfxColors("hsla(120,0%,0%,0.25)", hsla.getRed(), hsla.getGreen(), hsla.getBlue(), hsla.getOpacity())
+    compareJfxColors("hsla(120,0%,0%,0.25)", hsla.getRed, hsla.getGreen, hsla.getBlue, hsla.getOpacity)
   }
 
   it should "convert a number to a ScalaFX Color" in {
