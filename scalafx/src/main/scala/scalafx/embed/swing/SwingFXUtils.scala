@@ -27,11 +27,10 @@
 package scalafx.embed.swing
 
 import java.awt.image.BufferedImage
-
 import javafx.embed.{swing => jfxes}
+
 import scalafx.Includes._
-import scalafx.scene.image.Image
-import scalafx.scene.image.WritableImage
+import scalafx.scene.image.{Image, WritableImage}
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingFXUtils.html JavaFX SwingFXUtils]].
@@ -61,9 +60,4 @@ object SwingFXUtils {
    */
   def toFXImage(bimg: BufferedImage, wimg: WritableImage): WritableImage =
     jfxes.SwingFXUtils.toFXImage(bimg, wimg)
-
-  def installFwEventQueue = jfxes.SwingFXUtils.installFwEventQueue
-
-  def removeFwEventQueue = jfxes.SwingFXUtils.removeFwEventQueue
-
 }
