@@ -69,7 +69,6 @@ The current project structure looks like this:
     ./project
     ./scalafx
     ./scalafx-demos
-    ./scalafx-hello-world
 
 Where `.` is a the root folder of the project.
 
@@ -82,9 +81,10 @@ The `scalafx-demos` is the sub project for the ScalaFX Framework Demonstrations.
 
 The `project` folder is reserved for Scala SBT.
 
-The `scalafx-hello-world` is a simple self contained project using ScalaFX. 
-It can be used as a template for creating user projects.
 
+#Template project
+
+A template project for a ScalaFX-based application can be found [here](https://github.com/scalafx/scalafx-hello-world). 
 
 #Source Code Branching Policy
 
