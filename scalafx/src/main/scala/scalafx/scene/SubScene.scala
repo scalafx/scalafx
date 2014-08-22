@@ -130,6 +130,34 @@ class SubScene(override val delegate: jfxs.SubScene)
     height() = v
   }
 
+  /**
+   * The URL of the user-agent stylesheet that will be used by this Scene in place of the the platform-default
+   * user-agent stylesheet. If the URL does not resolve to a valid location, the platform-default user-agent
+   * stylesheet will be used.
+   *
+   * For additional information about using CSS with the scene graph, see the
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html CSS Reference Guide]].
+   *
+   * @return The URL of the user-agent stylesheet that will be used by this SubScene, or null if has not been set.
+   */
+  def userAgentStylesheet: ObjectProperty[String] = delegate.userAgentStylesheetProperty
+  /**
+   * Set the URL of the user-agent stylesheet that will be used by this Scene in place of the the platform-default
+   * user-agent stylesheet. If the URL does not resolve to a valid location, the platform-default user-agent
+   * stylesheet will be used.
+   *
+   * For additional information about using CSS with the scene graph, see the
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html CSS Reference Guide]].
+   *
+   * @param url  The URL is a hierarchical URI of the form `[scheme:][//authority][path]`.
+   *             If the URL does not have a `[scheme:]` component, the URL is considered to be the `[path]`
+   *             component only. Any leading '/' character of the `[path]` is ignored and the `[path]` is
+   *             treated as a path relative to the root of the application's classpath.
+   */
+  def userAgentStylesheet_=(url: String) {
+    ObjectProperty.fillProperty[String](userAgentStylesheet, url)
+  }
+
   /** Defines the width of this SubScene. */
   def width: DoubleProperty = delegate.widthProperty
   def width_=(v: Double) {

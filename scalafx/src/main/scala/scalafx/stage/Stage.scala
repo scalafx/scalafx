@@ -26,15 +26,16 @@
  */
 package scalafx.stage
 
-import scala.language.implicitConversions
-import javafx.{stage => jfxs}
 import javafx.scene.{input => jfxsi}
+import javafx.{stage => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.{ObjectProperty, BooleanProperty, ReadOnlyBooleanProperty, StringProperty}
-import scalafx.scene.Scene
-import scalafx.stage.Window.sfxWindow2jfx
+import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyBooleanProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Scene
 import scalafx.scene.input.KeyCombination
+import scalafx.stage.Window.sfxWindow2jfx
 
 object Stage {
   implicit def sfxStage2jfx(v: Stage) = if (v != null) v.delegate else null
@@ -58,16 +59,34 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
    */
   def this(style: jfxs.StageStyle) = this(new jfxs.Stage(style))
 
-  def	fullScreenExitHint: ObjectProperty[String] = delegate.fullScreenExitHintProperty
-  def	fullScreenExitHint_=(value: String) {
+  /**
+   * Defines whether this `Stage` is kept on top of other windows.
+   *
+   * If some other window is already always-on-top then the relative order between these windows
+   * is unspecified (depends on platform).
+   *
+   * There are differences in behavior between applications if a security manager is present.
+   * Applications with permissions are allowed to set "always on top" flag on a Stage.
+   * In applications without the proper permissions, an attempt to set the flag will be ignored and the property
+   * value will be restored to "false".
+   *
+   * The property is read only because it can be changed externally by the underlying platform and therefore must not be bindable.
+   */
+  def alwaysOnTop: ReadOnlyBooleanProperty = delegate.alwaysOnTopProperty
+  def alwaysOnTop_=(value: Boolean) {
+    delegate.setAlwaysOnTop(value)
+  }
+
+  def fullScreenExitHint: ObjectProperty[String] = delegate.fullScreenExitHintProperty
+  def fullScreenExitHint_=(value: String) {
     fullScreenExitHint() = value
   }
 
   /**
    * Specifies the Full Screen exit key combination
    */
-  def	fullScreenExitKey: ObjectProperty[jfxsi.KeyCombination] = delegate.fullScreenExitKeyProperty
-  def	fullScreenExitHint_=(value: KeyCombination) {
+  def fullScreenExitKey: ObjectProperty[jfxsi.KeyCombination] = delegate.fullScreenExitKeyProperty
+  def fullScreenExitHint_=(value: KeyCombination) {
     fullScreenExitKey() = value
   }
 

@@ -26,24 +26,18 @@
  */
 package scalafx.scene
 
+import javafx.scene.{input => jfxsi, layout => jfxsl, paint => jfxsp}
+import javafx.{collections => jfxc, event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
+
 import scala.language.implicitConversions
-import javafx.{event => jfxe, scene => jfxs, collections => jfxc, util => jfxu, geometry => jfxg}
-import javafx.{collections => jfxc}
-import javafx.{event => jfxe, scene => jfxs}
-import javafx.{util => jfxu}
-import jfxs.{input => jfxsi, paint => jfxsp, layout => jfxsl}
 import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.{ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
 import scalafx.collections._
 import scalafx.delegate.SFXDelegate
-import scalafx.scene.image.WritableImage
-import scalafx.scene.input.Dragboard
-import scalafx.scene.input.Mnemonic
-import scalafx.scene.input.TransferMode
-import scalafx.scene.paint.Paint
 import scalafx.geometry.NodeOrientation
+import scalafx.scene.image.WritableImage
+import scalafx.scene.input.{Dragboard, Mnemonic, TransferMode}
+import scalafx.scene.paint.Paint
 
 object Scene {
   implicit def sfxScene2jfx(v: Scene) = if (v != null) v.delegate else null
@@ -176,7 +170,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Returns scene's antialiasing setting.
    */
-  def antialiasing: SceneAntialiasing = delegate.getAntiAliasing()
+  def antialiasing: SceneAntialiasing = delegate.getAntiAliasing
 
   /**
    * Returns Content's Node children from this Scene's `root`.
@@ -435,6 +429,34 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   def onScroll = delegate.onScrollProperty
   def onScroll_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]) {
     onScroll() = v
+  }
+
+  /**
+   * The URL of the user-agent stylesheet that will be used by this Scene in place of the the platform-default
+   * user-agent stylesheet. If the URL does not resolve to a valid location, the platform-default user-agent
+   * stylesheet will be used.
+   *
+   * For additional information about using CSS with the scene graph, see the
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html CSS Reference Guide]].
+   *
+   * @return The URL of the user-agent stylesheet that will be used by this SubScene, or null if has not been set.
+   */
+  def userAgentStylesheet: ObjectProperty[String] = delegate.userAgentStylesheetProperty
+  /**
+   * Set the URL of the user-agent stylesheet that will be used by this Scene in place of the the platform-default
+   * user-agent stylesheet. If the URL does not resolve to a valid location, the platform-default user-agent
+   * stylesheet will be used.
+   *
+   * For additional information about using CSS with the scene graph, see the
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html CSS Reference Guide]].
+   *
+   * @param url  The URL is a hierarchical URI of the form `[scheme:][//authority][path]`.
+   *             If the URL does not have a `[scheme:]` component, the URL is considered to be the `[path]`
+   *             component only. Any leading '/' character of the `[path]` is ignored and the `[path]` is
+   *             treated as a path relative to the root of the application's classpath.
+   */
+  def userAgentStylesheet_=(url: String) {
+    ObjectProperty.fillProperty[String](userAgentStylesheet, url)
   }
 
   /**
