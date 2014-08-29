@@ -24,26 +24,21 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
-import scala.collection.JavaConversions._
 import javafx.scene.{layout => jfxsl}
-import javafx.{geometry => jfxg}
-import javafx.{scene => jfxs}
+import javafx.{geometry => jfxg, scene => jfxs}
+
+import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.Includes._
+import scalafx.beans.property.{BooleanProperty, DoubleProperty}
+import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
 import scalafx.geometry.Insets._
-import scalafx.geometry.Insets
-import scalafx.scene.Node._
+import scalafx.geometry.{HPos, Insets, VPos}
 import scalafx.scene.Node
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.AlignmentDelegate
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.geometry.HPos
-import scalafx.geometry.VPos
-import scalafx.geometry.Pos
-import scalafx.geometry.Orientation
+import scalafx.scene.Node._
 
 object GridPane {
   implicit def sfxGridPane2jfx(v: GridPane) = if (v != null) v.delegate else null
@@ -309,11 +304,6 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
   def addRow(rowIndex: Int, children: jfxs.Node*) {
     delegate.addRow(rowIndex, children: _*)
   }
-
-  /**
-   * Returns the orientation of a node's resizing bias for layout purposes.
-   */
-  def contentBias: Orientation = delegate.getContentBias
 
   /**
    * Requests a layout pass to be performed before the next scene is rendered.

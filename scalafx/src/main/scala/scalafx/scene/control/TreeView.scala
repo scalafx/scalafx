@@ -24,16 +24,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe}
-import javafx.{util => jfxu}
+import javafx.{event => jfxe, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property._
-import scalafx.event.Event
 import scalafx.delegate.SFXDelegate
+import scalafx.event.Event
 
 object TreeView {
   implicit def sfxTreeView2jfx[T](v: TreeView[T]) = if (v != null) v.delegate else null
@@ -101,6 +102,9 @@ object TreeView {
    * Returns the number of levels of 'indentation' of the given TreeItem,
    * based on how many times getParent() can be recursively called.
    */
+  @deprecated(
+    "This method does not correctly calculate the distance from the given TreeItem to the root of the TreeView. " +
+      "As of JavaFX 8.0_20, the proper way to do this is via getTreeItemLevel(TreeItem)", since = "8.0_20")
   def nodeLevel(node: TreeItem[_]) = jfxsc.TreeView.getNodeLevel(node)
 
   /**
@@ -150,11 +154,11 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   def editingItem: ReadOnlyObjectProperty[jfxsc.TreeItem[T]] = delegate.editingItemProperty
 
   /** Represents the number of tree nodes presently able to be visible in the TreeView. */
-  def expandedItemCount : ReadOnlyIntegerProperty = delegate.expandedItemCountProperty
+  def expandedItemCount: ReadOnlyIntegerProperty = delegate.expandedItemCountProperty
 
   /** Specifies whether this control has cells that are a fixed height (of the specified value). */
-  def fixedCellSize : DoubleProperty = delegate.fixedCellSizeProperty
-  def fixedCellSize_=(v:Double) {
+  def fixedCellSize: DoubleProperty = delegate.fixedCellSizeProperty
+  def fixedCellSize_=(v: Double) {
     fixedCellSize() = v
   }
 
@@ -229,6 +233,18 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   def showRoot_=(v: Boolean) {
     showRoot() = v
   }
+
+  /**
+   * Returns the number of levels of 'indentation' of the given TreeItem, based on how many times getParent()
+   * can be recursively called.
+   * If the given TreeItem is the root node of this TreeView, or if the TreeItem does not have any parent set,
+   * the returned value will be zero. For each time getParent() is recursively called,
+   * the returned value is incremented by one.
+   *
+   * @param node  The `TreeItem` for which the level is needed.
+   * @return An integer representing the number of parents above the given node, or -1 if the given `TreeItem` is `null`.
+   */
+  def treeItemLevel(node: TreeItem[_]): Int = delegate.getTreeItemLevel(node)
 
   /**
    * Instructs the TreeView to begin editing the given TreeItem, if the

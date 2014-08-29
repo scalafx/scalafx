@@ -24,14 +24,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.input
 
-import scala.language.implicitConversions
 import javafx.scene.{input => jfxsi}
-import javafx.{event => jfxe}
-import scalafx.event.Event
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+
+import scala.language.implicitConversions
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 object KeyCombination {
 
@@ -162,6 +161,14 @@ abstract class KeyCombination protected(override val delegate: jfxsi.KeyCombinat
    * The state of the control key in this key combination.
    */
   def control: KeyCombination.ModifierValue = KeyCombination.ModifierValue.jfxEnum2sfx(delegate.getControl)
+
+  /**
+   * Returns a string representation of this KeyCombination that is suitable for display in a user interface
+   * (for example, beside a menu item).
+   *
+   * @return A string representation of this KeyCombination, suitable for display in a user interface.
+   */
+  def displayText: String = delegate.getDisplayText
 
   /**
    * The state of the meta key in this key combination.

@@ -24,58 +24,45 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene
 
+import javafx.scene.{effect => jfxse, input => jfxsi, layout => jfxsl}
+import javafx.{event => jfxe, geometry => jfxg, scene => jfxs}
+
 import scala.language.implicitConversions
-import javafx.scene.{effect => jfxse}
-import javafx.scene.{input => jfxsi}
-import javafx.scene.{layout => jfxsl}
-import javafx.{event => jfxe}
-import javafx.{geometry => jfxg}
-import javafx.{scene => jfxs}
-import scalafx.collections._
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyBooleanProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property._
+import scalafx.collections._
+import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.Event._
-import scalafx.event.{EventHandlerDelegate, Event}
+import scalafx.event.{Event, EventHandlerDelegate}
 import scalafx.geometry.Bounds._
 import scalafx.geometry.Point2D._
-import scalafx.geometry.Bounds
-import scalafx.geometry.Insets
-import scalafx.geometry.NodeOrientation
-import scalafx.geometry.Point2D
-import scalafx.geometry.Point3D
-import scalafx.geometry.Pos
-import scalafx.scene.effect.BlendMode
-import scalafx.scene.effect.Effect
+import scalafx.geometry._
+import scalafx.scene.effect.{BlendMode, Effect}
 import scalafx.scene.image.WritableImage
 import scalafx.scene.layout.Priority
 import scalafx.scene.transform.Transform
-import scalafx.css.Styleable
 
 /**
  * Companion object for [[scalafx.scene.Node]].
  */
 object Node {
-  
+
   /**
    * Converts a ScalaFX Node to its JavaFX counterpart.
    *
    * @param v ScalaFX Node
    * @return JavaFX Node
-   */  
+   */
   implicit def sfxNode2jfx(v: Node) = if (v != null) v.delegate else null
 }
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Node.html]].
- * 
+ *
  * @constructor creates a new ScalaFX Node from a JavaFX Node.
  * @param delegate JavaFX Node
  */
@@ -125,6 +112,18 @@ abstract class Node protected(override val delegate: jfxs.Node)
   def clip_=(v: Node) {
     clip() = v
   }
+
+  /**
+   * Returns the orientation of a node's resizing bias for layout purposes.
+   * If the node type has no bias, returns `null`.
+   * If the node is resizable and it's height depends on its width, returns HORIZONTAL, else
+   * if its width depends on its height, returns VERTICAL.
+   *
+   * Resizable subclasses should override this method to return an appropriate value.
+   *
+   * @return orientation of width/height dependency or `null` if there is none
+   */
+  def contentBias: Orientation = delegate.getContentBias
 
   /**
    * Defines the mouse cursor for this Node and subnodes.
@@ -246,7 +245,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
   def mouseTransparent_=(v: Boolean) {
     mouseTransparent() = v
   }
-  
+
   /**
    * Node orientation describes the flow of visual data within a node.
    */
@@ -577,7 +576,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Defines the ObservableList of Transform objects to be applied to this Node.
    */
   def transforms = delegate.getTransforms
-  
+
   /**
    * Sets the list of transforms, replacing the prior content. If you want append to current content, use `add` or
    * similar.

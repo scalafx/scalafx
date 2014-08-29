@@ -24,14 +24,15 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.text
 
-import scala.language.implicitConversions
 import javafx.scene.{text => jfxst}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
-import scalafx.geometry.Orientation
 import scalafx.scene.Node
 import scalafx.scene.layout.Pane
 
@@ -80,11 +81,6 @@ class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
    * Calculates the baseline offset based on the first managed child.
    */
   override def baselineOffset: Double = delegate.getBaselineOffset
-
-  /**
-   * Returns the orientation of a node's resizing bias for layout purposes.
-   */
-  def contentBias: Orientation = delegate.getContentBias
 
   /**
    * Requests a layout pass to be performed before the next scene is rendered.

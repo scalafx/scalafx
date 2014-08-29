@@ -24,19 +24,20 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.layout
 
+import javafx.scene.{layout => jfxsl}
+import javafx.{geometry => jfxg, scene => jfxs}
+
 import scala.language.implicitConversions
-import javafx.{ geometry => jfxg }
-import javafx.{ scene => jfxs }
-import javafx.scene.{ layout => jfxsl }
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
-import scalafx.geometry.Insets._
-import scalafx.geometry.Insets
-import scalafx.scene.Node._
-import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
+import scalafx.geometry.Insets
+import scalafx.geometry.Insets._
+import scalafx.scene.Node
+import scalafx.scene.Node._
 
 object BorderPane {
   implicit def sfxBorderPane2jfx(v: BorderPane) = if (v != null) v.delegate else null
@@ -120,9 +121,4 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
   def top_=(v: Node) {
     ObjectProperty.fillProperty[jfxs.Node](this.top, v)
   }
-
-  /**
-   * Returns the orientation of a node's resizing bias for layout purposes.
-   */
-  def contentBias = delegate.getContentBias
 }

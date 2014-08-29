@@ -24,16 +24,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
-import javafx.{scene => jfxs}
 import javafx.scene.{layout => jfxsl}
-import scalafx.delegate.AlignmentDelegate
-import scalafx.delegate.SFXDelegate
-import scalafx.geometry.Insets
+import javafx.{scene => jfxs}
+
+import scala.language.implicitConversions
+import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
 import scalafx.geometry.Insets.sfxInsets2jfx
-import scalafx.geometry.Pos
+import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Node
 import scalafx.scene.Node.sfxNode2jfx
 
@@ -79,11 +79,4 @@ object StackPane {
 class StackPane(override val delegate: jfxsl.StackPane = new jfxsl.StackPane)
   extends Pane(delegate)
   with AlignmentDelegate[jfxsl.StackPane]
-  with SFXDelegate[jfxsl.StackPane] {
-
-  /**
-   * Returns the orientation of a node's resizing bias for layout purposes.
-   */
-  def contentBias = delegate.getContentBias
-
-}
+  with SFXDelegate[jfxsl.StackPane]
