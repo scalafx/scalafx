@@ -24,9 +24,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.chart
 
 import scala.language.implicitConversions
+import javafx.{scene => jfxs}
 import javafx.scene.{chart => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
@@ -58,7 +60,7 @@ object PieChart {
       pieValue() = v
     }
 
-    def node = delegate.getNode
+    def node: ReadOnlyObjectProperty[jfxs.Node] = delegate.nodeProperty()
   }
 
   def apply(data: ObservableBuffer[jfxsc.PieChart.Data]) = new PieChart(new jfxsc.PieChart(data))
