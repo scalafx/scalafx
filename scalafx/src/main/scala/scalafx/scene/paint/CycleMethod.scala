@@ -32,11 +32,17 @@ import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 /** Wrapper for [[javafx.scene.paint.CycleMethod]] */
 object CycleMethod extends SFXEnumDelegateCompanion[jfxsp.CycleMethod, CycleMethod] {
 
-  val NO_CYCLE = new CycleMethod(jfxsp.CycleMethod.NO_CYCLE)
-  val REFLECT = new CycleMethod(jfxsp.CycleMethod.REFLECT)
-  val REPEAT = new CycleMethod(jfxsp.CycleMethod.REPEAT)
+  val NoCycle = new CycleMethod(jfxsp.CycleMethod.NO_CYCLE)
+  @deprecated ("Use NoCycle; NO_CYCLE will be removed in a future release", "2.2.60")
+  val NO_CYCLE = NoCycle
+  val Reflect = new CycleMethod(jfxsp.CycleMethod.REFLECT)
+  @deprecated ("Use Reflect; REFLECT will be removed in a future release", "2.2.60")
+  val REFLECT = Reflect
+  val Repeat = new CycleMethod(jfxsp.CycleMethod.REPEAT)
+  @deprecated ("Use Repeat; REPEAT will be removed in a future release", "2.2.60")
+  val REPEAT = Repeat
 
-  protected override def unsortedValues: Array[CycleMethod] = Array(NO_CYCLE, REFLECT, REPEAT)
+  protected override def unsortedValues: Array[CycleMethod] = Array(NoCycle, Reflect, Repeat)
 }
 
 sealed case class CycleMethod(override val delegate: jfxsp.CycleMethod) extends SFXEnumDelegate[jfxsp.CycleMethod]

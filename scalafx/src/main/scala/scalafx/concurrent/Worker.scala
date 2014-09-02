@@ -27,44 +27,44 @@
 package scalafx.concurrent
 
 import scala.language.implicitConversions
-import javafx.{ concurrent => jfxc }
+import javafx.{concurrent => jfxc}
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 object Worker {
-  implicit def sfxWorker2jfx[T](w: Worker[T]) = w.delegate
+  implicit def sfxWorker2jfx[T](w: Worker[T]) = if (w != null) w.delegate else null
 
   object State
     extends SFXEnumDelegateCompanion[jfxc.Worker.State, State] {
 
-    /** 
+    /**
      * Indicates that this Worker has been cancelled via the Worker.cancel() method. 
      */
     val CANCELLED = new State(jfxc.Worker.State.CANCELLED)
 
-    /** 
+    /**
      * Indicates that this Worker has failed, usually due to some unexpected condition having occurred. 
      */
     val FAILED = new State(jfxc.Worker.State.FAILED)
 
-    /** 
+    /**
      * Indicates that the Worker has not yet been executed and is ready to be executed, or that it has been reinitialized. 
      */
     val READY = new State(jfxc.Worker.State.READY)
 
-    /** 
+    /**
      * Indicates that this Worker is running. 
      */
     val RUNNING = new State(jfxc.Worker.State.RUNNING)
 
-    /** 
+    /**
      * Indicates that the Worker has been scheduled for execution, but that it is not currently running. 
      */
     val SCHEDULED = new State(jfxc.Worker.State.SCHEDULED)
 
-    /** 
+    /**
      * Indicates that this Worker has completed successfully, and that there is a valid result ready to be read from 
      * the value property. 
      */

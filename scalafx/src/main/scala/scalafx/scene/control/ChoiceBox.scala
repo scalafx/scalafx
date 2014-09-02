@@ -37,7 +37,7 @@ import scalafx.util.StringConverter
 import scalafx.delegate.SFXDelegate
 
 object ChoiceBox {
-  implicit def sfxChoiceBox2jfx[J <: Any](cb: ChoiceBox[J]) = cb.delegate
+  implicit def sfxChoiceBox2jfx[J <: Any](cb: ChoiceBox[J]) = if (cb != null) cb.delegate else null
 }
 
 class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.ChoiceBox[J])

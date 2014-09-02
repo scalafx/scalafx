@@ -32,16 +32,30 @@ import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 /** Wrapper for [[scalafx.scene.control.ContentDisplay]] */
 object ContentDisplay extends SFXEnumDelegateCompanion[jfxsc.ContentDisplay, ContentDisplay] {
 
-  val BOTTOM = new ContentDisplay(jfxsc.ContentDisplay.BOTTOM)
-  val CENTER = new ContentDisplay(jfxsc.ContentDisplay.CENTER)
-  val GRAPHIC_ONLY = new ContentDisplay(jfxsc.ContentDisplay.GRAPHIC_ONLY)
-  val LEFT = new ContentDisplay(jfxsc.ContentDisplay.LEFT)
-  val RIGHT = new ContentDisplay(jfxsc.ContentDisplay.RIGHT)
-  val TEXT_ONLY = new ContentDisplay(jfxsc.ContentDisplay.TEXT_ONLY)
-  val TOP = new ContentDisplay(jfxsc.ContentDisplay.TOP)
+  val Bottom = new ContentDisplay(jfxsc.ContentDisplay.BOTTOM)
+  @deprecated ("Use Bottom; BOTTOM will be removed in a future release", "2.2.60")
+  val BOTTOM = Bottom
+  val Center = new ContentDisplay(jfxsc.ContentDisplay.CENTER)
+  @deprecated ("Use Center; CENTER will be removed in a future release", "2.2.60")
+  val CENTER = Center
+  val GraphicOnly = new ContentDisplay(jfxsc.ContentDisplay.GRAPHIC_ONLY)
+  @deprecated ("Use GraphicOnly; GRAPHIC_ONLY will be removed in a future release", "2.2.60")
+  val GRAPHIC_ONLY = GraphicOnly
+  val Left = new ContentDisplay(jfxsc.ContentDisplay.LEFT)
+  @deprecated ("Use Left; LEFT will be removed in a future release", "2.2.60")
+  val LEFT = Left
+  val Right = new ContentDisplay(jfxsc.ContentDisplay.RIGHT)
+  @deprecated ("Use Right; RIGHT will be removed in a future release", "2.2.60")
+  val RIGHT = Right
+  val TextOnly = new ContentDisplay(jfxsc.ContentDisplay.TEXT_ONLY)
+  @deprecated ("Use TextOnly; TEXT_ONLY will be removed in a future release", "2.2.60")
+  val TEXT_ONLY = TextOnly
+  val Top = new ContentDisplay(jfxsc.ContentDisplay.TOP)
+  @deprecated ("Use Top; TOP will be removed in a future release", "2.2.60")
+  val TOP = Top
 
   protected override def unsortedValues: Array[ContentDisplay] = Array(
-    TOP, RIGHT, BOTTOM, LEFT, CENTER, GRAPHIC_ONLY, TEXT_ONLY
+    Top, Right, Bottom, Left, Center, GraphicOnly, TextOnly
   )
 }
 

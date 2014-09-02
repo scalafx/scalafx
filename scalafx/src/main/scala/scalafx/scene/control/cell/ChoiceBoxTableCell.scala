@@ -57,14 +57,14 @@ object ChoiceBoxTableCell {
    * @param cell ScalaFX $CBTC
    * @return JavaFX $CBTC
    */
-  implicit def sfxChoiceBoxTableCell2jfx[S, T](cell: ChoiceBoxTableCell[S, T]) = cell.delegate
+  implicit def sfxChoiceBoxTableCell2jfx[S, T](cell: ChoiceBoxTableCell[S, T]) = if (cell != null) cell.delegate else null
 
   /**
    * $FTCINIT
-   * 
+   *
    * @tparam T $TTYPE
-   * @param items $ITEMSPARAM 
-   * @return $FTCRET 
+   * @param items $ITEMSPARAM
+   * @return $FTCRET
    */
   def forTableColumn[S, T](items: ObservableBuffer[T]): (TableColumn[S, T] => TableCell[S, T]) =
     (view: TableColumn[S, T]) => jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](items).call(view)
@@ -77,11 +77,11 @@ object ChoiceBoxTableCell {
 
   /**
    * $FTCINIT
-   * 
+   *
    * @tparam T $TTYPE
    * @param converter $CONVPARAM
-   * @param items $BUFITEMSPARAM 
-   * @return $FTCRET 
+   * @param items $BUFITEMSPARAM
+   * @return $FTCRET
    */
   def forTableColumn[S, T](converter: StringConverter[T], items: ObservableBuffer[T]): (TableColumn[S, T] => TableCell[S, T]) =
     (view: TableColumn[S, T]) => jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](converter, items).call(view)
@@ -95,11 +95,11 @@ object ChoiceBoxTableCell {
 
   /**
    * $FTCINIT
-   * 
+   *
    * @tparam T $TTYPE
    * @param converter $CONVPARAM
-   * @param items $ITEMSPARAM 
-   * @return $FTCRET 
+   * @param items $ITEMSPARAM
+   * @return $FTCRET
    */
   def forTableColumn[S, T](converter: StringConverter[T], items: T*): (TableColumn[S, T] => TableCell[S, T]) =
     (view: TableColumn[S, T]) => jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](converter, items: _*).call(view)
@@ -112,10 +112,10 @@ object ChoiceBoxTableCell {
 
   /**
    * $FTCINIT
-   * 
+   *
    * @tparam T $TTYPE
-   * @param items $ITEMSPARAM 
-   * @return $FTCRET 
+   * @param items $ITEMSPARAM
+   * @return $FTCRET
    */
   def forTableColumn[S, T](items: T*): (TableColumn[S, T] => TableCell[S, T]) =
     (view: TableColumn[S, T]) => jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](items: _*).call(view)
@@ -134,7 +134,7 @@ object ChoiceBoxTableCell {
  * @tparam T Type used in this cell
  * @constructor Creates a new $CBLC from a JavaFX $CBLC
  * @param delegate JavaFX $CBLC
- * 
+ *
  * @define CBLC `ChoiceBoxListCell`
  * @define CONVPARAM A `StringConverter` to convert the given item (of type T) to a String for displaying to the user.
  * @define ITEMSPARAM Zero or more items that will be shown to the user when the ChoiceBox menu is showing. 
@@ -150,34 +150,34 @@ class ChoiceBoxTableCell[S, T](override val delegate: jfxscc.ChoiceBoxTableCell[
   /**
    * Creates a default $CBLC instance with the given items being used to populate the ChoiceBox when
    * it is shown.
-   * 
-   * @param items $BUFITEMSPARAM 
+   *
+   * @param items $BUFITEMSPARAM
    */
   def this(items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxTableCell[S, T](items))
 
   /**
    * Creates a $CBLC instance with the given items being used to populate the `ChoiceBox` when it is
    * shown, and the StringConverter being used to convert the item in to a user-readable form.
-   * 
+   *
    * @param converter $CONVPARAM
-   * @param items $BUFITEMSPARAM 
+   * @param items $BUFITEMSPARAM
    */
   def this(converter: StringConverter[T], items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxTableCell[S, T](converter, items))
 
   /**
    * Creates a $CBLC instance with the given items being used to populate the `ChoiceBox` when it is
    * shown, and the StringConverter being used to convert the item in to a user-readable form.
-   * 
+   *
    * @param converter $CONVPARAM
-   * @param items $ITEMSPARAM 
+   * @param items $ITEMSPARAM
    */
   def this(converter: StringConverter[T], items: T*) = this(new jfxscc.ChoiceBoxTableCell[S, T](converter, items: _*))
 
   /**
    * Creates a default $CBLC instance with the given items being used to populate the `ChoiceBox` when
    * it is shown.
-   * 
-   * @param items $ITEMSPARAM 
+   *
+   * @param items $ITEMSPARAM
    */
   def this(items: T*) = this(new jfxscc.ChoiceBoxTableCell[S, T](items: _*))
 

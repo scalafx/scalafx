@@ -27,7 +27,7 @@
 package scalafx.scene.text
 
 import scala.language.implicitConversions
-import javafx.scene.{ text => jfxst }
+import javafx.scene.{text => jfxst}
 
 object TextIncludes extends TextIncludes
 
@@ -57,7 +57,7 @@ trait TextIncludes {
    * @param f $JFX $FT
    * @return $SFX $FT
    */
-  implicit def jfxFont2sfxFont(f: jfxst.Font) = new Font(f)
+  implicit def jfxFont2sfxFont(f: jfxst.Font) = if (f != null) new Font(f) else null
 
   /**
    * $START$FP.html $FP$END
@@ -89,7 +89,7 @@ trait TextIncludes {
    * @param t $JFX $TX
    * @return $SFX $TX
    */
-  implicit def jfxText2sfxText(t: jfxst.Text) = new Text(t)
+  implicit def jfxText2sfxText(t: jfxst.Text) = if (t != null) new Text(t) else null
 
   /**
    * $START$TA.html $TA$END
@@ -107,5 +107,5 @@ trait TextIncludes {
    */
   implicit def jfxTextBoundsType2sfx(e: jfxst.TextBoundsType) = TextBoundsType.jfxEnum2sfx(e)
 
-  implicit def jfxTextFlow2sfx(tf: jfxst.TextFlow) = new TextFlow(tf)
+  implicit def jfxTextFlow2sfx(tf: jfxst.TextFlow) = if (tf != null) new TextFlow(tf) else null
 }

@@ -27,10 +27,10 @@
 package scalafx.util.converter
 
 import scala.language.implicitConversions
-import javafx.util.{ converter => jfxuc }
+import javafx.util.{converter => jfxuc}
 
 object LongStringConverter {
-  implicit def sfxLongStringConverter2jfx(c: LongStringConverter) = c.delegate
+  implicit def sfxLongStringConverter2jfx(c: LongStringConverter) = if (c != null) c.delegate else null
 }
 
 class LongStringConverter(delegate: jfxuc.LongStringConverter = new jfxuc.LongStringConverter)

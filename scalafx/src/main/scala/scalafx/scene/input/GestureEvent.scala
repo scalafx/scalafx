@@ -27,19 +27,19 @@
 package scalafx.scene.input
 
 import scala.language.implicitConversions
-import javafx.{ event => jfxe }
-import javafx.scene.{ input => jfxsi }
+import javafx.{event => jfxe}
+import javafx.scene.{input => jfxsi}
 import scalafx.Includes._
 import scalafx.event.{Event, EventType}
 import scalafx.delegate.SFXDelegate
 
 object GestureEvent {
-  implicit def sfxGestureEvent2jfx(ge: GestureEvent) = ge.delegate
+  implicit def sfxGestureEvent2jfx(ge: GestureEvent) = if (ge != null) ge.delegate else null
 
   /**
    * Common supertype for all gestures.
    */
-  val ANY : EventType[jfxsi.GestureEvent] = jfxsi.GestureEvent.ANY
+  val ANY: EventType[jfxsi.GestureEvent] = jfxsi.GestureEvent.ANY
 
 }
 
@@ -54,71 +54,71 @@ class GestureEvent(override val delegate: jfxsi.GestureEvent)
   /**
    * Creates and returns a copy of this event with the specified event source and target.
    */
-  override def copyFor(newSource: AnyRef, newTarget: jfxe.EventTarget) : Event = delegate.copyFor(newSource, newTarget)
+  override def copyFor(newSource: AnyRef, newTarget: jfxe.EventTarget): Event = delegate.copyFor(newSource, newTarget)
 
   /**
    * Gets the horizontal position of the event relative to the origin of the event's source.
    */
-  def x : Double = delegate.getX
+  def x: Double = delegate.getX
 
   /**
    * Gets the vertical position of the event relative to the origin of the event's source.
    */
-  def y : Double = delegate.getY
+  def y: Double = delegate.getY
 
   /**
    * Gets the horizontal position of the event relative to the origin of the Scene that contains the event's source.
    */
-  def sceneX : Double = delegate.getSceneX
+  def sceneX: Double = delegate.getSceneX
 
   /**
    * Gets the vertical position of the event relative to the origin of the Scene that contains the event's source.
    */
-  def sceneY : Double = delegate.getSceneY
+  def sceneY: Double = delegate.getSceneY
 
   /**
    * Gets the absolute horizontal position of the event.
    */
-  def screenX : Double = delegate.getScreenX
+  def screenX: Double = delegate.getScreenX
 
   /**
    * Gets the absolute vertical position of the event.
    */
-  def screenY : Double = delegate.getScreenY
+  def screenY: Double = delegate.getScreenY
 
   /**
    * Indicates whether or not the Alt modifier is down on this event.
    */
-  def altDown : Boolean = delegate.isAltDown
+  def altDown: Boolean = delegate.isAltDown
 
   /**
    * Indicates whether or not the Control modifier is down on this event.
    */
-  def controlDown : Boolean = delegate.isControlDown
+  def controlDown: Boolean = delegate.isControlDown
 
   /**
    * Indicates whether this gesture is caused by a direct or indirect input device.
    */
-  def direct : Boolean = delegate.isDirect
+  def direct: Boolean = delegate.isDirect
 
   /**
    * Indicates if this event represents an inertia of an already finished gesture.
    */
-  def inertia : Boolean = delegate.isInertia
+  def inertia: Boolean = delegate.isInertia
 
   /**
    * Indicates whether or not the Meta modifier is down on this event.
    */
-  def metaDown : Boolean = delegate.isMetaDown
+  def metaDown: Boolean = delegate.isMetaDown
 
   /**
    * Indicates whether or not the Shift modifier is down on this event.
    */
-  def shiftDown : Boolean = delegate.isShiftDown
+  def shiftDown: Boolean = delegate.isShiftDown
 
   /**
    * Indicates whether or not the host platform common shortcut modifier is down on this event.
    */
-  def shortcutDown : Boolean = delegate.isShortcutDown
+  def shortcutDown: Boolean = delegate.isShortcutDown
 
 }

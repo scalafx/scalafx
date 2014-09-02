@@ -32,11 +32,17 @@ import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 /** Wrapper for [[javafx.scene.layout.Priority]] */
 object Priority extends SFXEnumDelegateCompanion[jfxsl.Priority, Priority] {
 
-  val ALWAYS = new Priority(jfxsl.Priority.ALWAYS)
-  val SOMETIMES = new Priority(jfxsl.Priority.SOMETIMES)
-  val NEVER = new Priority(jfxsl.Priority.NEVER)
+  val Always = new Priority(jfxsl.Priority.ALWAYS)
+  @deprecated ("Use Always; ALWAYS will be removed in a future release", "2.2.60")
+  val ALWAYS = Always
+  val Sometimes = new Priority(jfxsl.Priority.SOMETIMES)
+  @deprecated ("Use Sometimes; SOMETIMES will be removed in a future release", "2.2.60")
+  val SOMETIMES = Sometimes
+  val Never = new Priority(jfxsl.Priority.NEVER)
+  @deprecated ("Use Never; NEVER will be removed in a future release", "2.2.60")
+  val NEVER = Never
 
-  protected override def unsortedValues: Array[Priority] = Array(ALWAYS, SOMETIMES, NEVER)
+  protected override def unsortedValues: Array[Priority] = Array(Always, Sometimes, Never)
 
   /** Convenience method for returning the higher of two priorities. */
   def max(a: jfxsl.Priority, b: jfxsl.Priority) = jfxsl.Priority.max(a, b)

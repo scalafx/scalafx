@@ -34,7 +34,7 @@ import scalafx.geometry.Insets
 import scalafx.scene.paint.Paint
 
 object BackgroundFill {
-  implicit def sfxBackgroundFill2jfx(v: BackgroundFill) = v.delegate
+  implicit def sfxBackgroundFill2jfx(v: BackgroundFill) = if (v != null) v.delegate else null
 }
 
 /**

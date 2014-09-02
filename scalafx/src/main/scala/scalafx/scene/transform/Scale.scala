@@ -27,14 +27,14 @@
 package scalafx.scene.transform
 
 import scala.language.implicitConversions
-import javafx.scene.{ transform => jfxst }
+import javafx.scene.{transform => jfxst}
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.PositionDelegate
 
 object Scale {
-  implicit def sfxScale2jfx(v: Scale) = v.delegate
+  implicit def sfxScale2jfx(v: Scale) = if (v != null) v.delegate else null
 }
 
 /**
@@ -42,7 +42,7 @@ object Scale {
  */
 class Scale(override val delegate: jfxst.Scale = new jfxst.Scale)
   extends Transform(delegate)
-  with PositionDelegate[jfxst.Scale] 
+  with PositionDelegate[jfxst.Scale]
   with SFXDelegate[jfxst.Scale] {
 
   /**
@@ -63,7 +63,7 @@ class Scale(override val delegate: jfxst.Scale = new jfxst.Scale)
   /**
    * Creates a three-dimensional Scale with pivot.
    */
-  def this(x: Double, y: Double, z: Double, pivotX: Double, pivotY: Double, pivotZ: Double) = 
+  def this(x: Double, y: Double, z: Double, pivotX: Double, pivotY: Double, pivotZ: Double) =
     this(new jfxst.Scale(x, y, z, pivotX, pivotY, pivotZ))
 
   /**

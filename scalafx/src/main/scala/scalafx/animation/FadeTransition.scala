@@ -27,7 +27,7 @@
 package scalafx.animation
 
 import scala.language.implicitConversions
-import javafx.{ animation => jfxa, scene => jfxs, util => jfxu }
+import javafx.{animation => jfxa, scene => jfxs, util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
@@ -49,7 +49,8 @@ object FadeTransition extends AnimationStatics {
    * @param v ScalaFX $FT
    * @return Delegated JavaFX $FT extracted from `v`.
    */
-  implicit def sfxFadeTransition2jfx(v: FadeTransition) = v.delegate
+  implicit def sfxFadeTransition2jfx(v: FadeTransition) = if (v != null) v.delegate else null
+
 }
 
 /**
@@ -86,7 +87,7 @@ class FadeTransition(override val delegate: jfxa.FadeTransition = new jfxa.FadeT
 
   /**
    * Specifies the incremented stop opacity value, from the start, of this
-   *  $FT.
+   * $FT.
    */
   def byValue: DoubleProperty = delegate.byValueProperty
   def byValue_=(by: Double) {

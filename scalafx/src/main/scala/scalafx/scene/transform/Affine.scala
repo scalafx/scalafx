@@ -33,7 +33,7 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Affine {
-  implicit def sfxAffine2jfx(v: Affine) = v.delegate
+  implicit def sfxAffine2jfx(v: Affine) = if (v != null) v.delegate else null
 }
 
 /**

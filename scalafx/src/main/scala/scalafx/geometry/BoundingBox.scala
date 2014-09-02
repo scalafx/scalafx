@@ -31,7 +31,8 @@ import javafx.{ geometry => jfxg }
 import scalafx.delegate.SFXDelegate
 
 object BoundingBox {
-  implicit def sfxBoundingBox2jfx(b: BoundingBox) = b.delegate
+  implicit def sfxBoundingBox2jfx(b: BoundingBox) = if (b != null) b.delegate else null
+
 }
 
 class BoundingBox(override val delegate: jfxg.BoundingBox) extends Bounds(delegate) with SFXDelegate[jfxg.BoundingBox] {

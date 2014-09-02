@@ -36,7 +36,7 @@ import scalafx.scene.image.Image
 import scalafx.delegate.SFXDelegate
 
 object ImageCursor {
-  implicit def sfxImageCursor2jfx(c: ImageCursor) = c.delegate
+  implicit def sfxImageCursor2jfx(c: ImageCursor) = if (c != null) c.delegate else null
 
   /**
    * Creates a custom image cursor from one of the specified images.

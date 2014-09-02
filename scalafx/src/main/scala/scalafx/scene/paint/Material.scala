@@ -31,7 +31,7 @@ import javafx.scene.{paint => jfxsp}
 import scalafx.delegate.SFXDelegate
 
 object Material {
-  implicit def sfxMaterial2jfx(c: Material) = c.delegate
+  implicit def sfxMaterial2jfx(c: Material) = if (c != null) c.delegate else null
 }
 
-abstract class Material (override val delegate: jfxsp.Material) extends SFXDelegate[jfxsp.Material]
+abstract class Material(override val delegate: jfxsp.Material) extends SFXDelegate[jfxsp.Material]

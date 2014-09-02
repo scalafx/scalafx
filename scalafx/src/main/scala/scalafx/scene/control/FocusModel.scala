@@ -33,14 +33,31 @@ import scalafx.beans.property.ReadOnlyIntegerProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 
+/**
+ * Object companion for [[scalafx.scene.control.FocusModel]].
+ */
 object FocusModel {
-  implicit def sfxFocusModel2jfx[T](v: FocusModel[T]) = v.delegate
+
+  /**
+   * Converts a ScalaFX FocusModel to its JavaFX counterpart
+   *
+   * @param v ScalaFX FocusModel
+   * @return JavaFX FocusModel
+   * @tparam T The type of the underlying data model for the UI control.
+   */
+  implicit def sfxFocusModel2jfx[T](v: FocusModel[T]) = if (v != null) v.delegate else null
+
 }
 
 /**
- * @todo Create a Spec test to FocusModel where getJavaClass returns TableView.TableViewFocusModel<S>
+ * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/FocusModel.html FocusModel]].
+ *
+ * @constructor Creates a new ScalaFX FocusModel from its JavaFX counterpart.
+ * @param delegate JavaFX FocusModel to be wrapped.
+ * @tparam T The type of the underlying data model for the UI control.
  */
-abstract class FocusModel[T](override val delegate: jfxsc.FocusModel[T]) extends SFXDelegate[jfxsc.FocusModel[T]] {
+abstract class FocusModel[T](override val delegate: jfxsc.FocusModel[T])
+  extends SFXDelegate[jfxsc.FocusModel[T]] {
 
   /**
    * The index of the current item in the FocusModel which has the focus.
@@ -54,6 +71,8 @@ abstract class FocusModel[T](override val delegate: jfxsc.FocusModel[T]) extends
 
   /**
    * Causes the item at the given index to receive the focus.
+   * 
+   * @param index The index of the item to get focus.
    */
   def focus(index: Int) {
     delegate.focus(index)
@@ -76,11 +95,11 @@ abstract class FocusModel[T](override val delegate: jfxsc.FocusModel[T]) extends
   /*
    * Returns the number of items in the data model that underpins the control.
    */
-//  protected def itemCount: Int
+  //  protected def itemCount: Int
 
   /*
    * Returns the item at the given index.
    */
-//  protected def modelItem(index: Int): T
+  //  protected def modelItem(index: Int): T
 
 }

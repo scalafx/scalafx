@@ -34,15 +34,21 @@ object HPos
   extends SFXEnumDelegateCompanion[jfxg.HPos, HPos] {
 
   /** Indicates centered horizontal position. */
-  val CENTER = new HPos(jfxg.HPos.CENTER)
+  val Center = new HPos(jfxg.HPos.CENTER)
+  @deprecated ("Use Center; CENTER will be removed in a future release", "2.2.60")
+  val CENTER = Center
 
   /** Indicates left horizontal position. */
-  val LEFT = new HPos(jfxg.HPos.LEFT)
+  val Left = new HPos(jfxg.HPos.LEFT)
+  @deprecated ("Use Left; LEFT will be removed in a future release", "2.2.60")
+  val LEFT = Left
 
   /** Indicates right horizontal position. */
-  val RIGHT = new HPos(jfxg.HPos.RIGHT)
+  val Right = new HPos(jfxg.HPos.RIGHT)
+  @deprecated ("Use Right; RIGHT will be removed in a future release", "2.2.60")
+  val RIGHT = Right
 
-  protected override def unsortedValues: Array[HPos] = Array(LEFT, CENTER, RIGHT)
+  protected override def unsortedValues: Array[HPos] = Array(Left, Center, Right)
 }
 
 

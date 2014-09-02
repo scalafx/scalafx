@@ -27,9 +27,9 @@
 package scalafx.scene.control
 
 import scala.language.implicitConversions
-import javafx.{ event => jfxe }
-import javafx.{ scene => jfxs }
-import javafx.scene.{ control => jfxsc, input => jfxsi }
+import javafx.{event => jfxe}
+import javafx.{scene => jfxs}
+import javafx.scene.{control => jfxsc, input => jfxsi}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
@@ -40,13 +40,15 @@ import scalafx.scene.Node
 import scalafx.scene.input.KeyCombination
 import scalafx.delegate.FireDelegate
 import scalafx.delegate.SFXDelegate
+import scalafx.css.Styleable
 
 object MenuItem {
-  implicit def sfxMenuItem2jfx(m: MenuItem) = m.delegate
+  implicit def sfxMenuItem2jfx(m: MenuItem) = if (m != null) m.delegate else null
 }
 
 class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   extends jfxe.EventTarget
+  with Styleable
   with EventHandlerDelegate
   with FireDelegate[jfxsc.MenuItem]
   with SFXDelegate[jfxsc.MenuItem] {
@@ -150,11 +152,6 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    * developers.
    */
   def properties = delegate.getProperties
-
-  /**
-   *
-   */
-  def styleClass = delegate.getStyleClass
 
   /**
    * Returns a previously set Object property, or null if no such property has been set using the

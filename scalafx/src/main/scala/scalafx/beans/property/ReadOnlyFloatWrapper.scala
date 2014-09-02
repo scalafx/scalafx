@@ -33,7 +33,7 @@ import scalafx.delegate.SFXDelegate
 
 
 object ReadOnlyFloatWrapper {
-  implicit def sfxReadOnlyFloatWrapper2jfx(w: ReadOnlyFloatWrapper) = w.delegate
+  implicit def sfxReadOnlyFloatWrapper2jfx(w: ReadOnlyFloatWrapper) = if (w != null) w.delegate else null
 
   /** Creates a new ReadOnlyFloatWrapper instance.
     * @param value the initial value of the wrapped value

@@ -1,44 +1,45 @@
 ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX
-2.x and JavaFX 8. This means that every ScalaFX application is also a
+8 and JavaFX 2.2. This means that every ScalaFX application is also a
 valid Scala application. By extension it supports full interoperability with
-Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX 2.x or JavaFX 8 
+Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX 8 or JavaFX 2.2 
 are supported.
 
-[![Build Status](https://travis-ci.org/scalafx/scalafx.svg?branch=SFX-8)](https://travis-ci.org/scalafx/scalafx)
+[![Build Status](https://travis-ci.org/scalafx/scalafx.svg?branch=SFX-2)](https://travis-ci.org/scalafx/scalafx)
 
 ScalaFX was originally created by Stephen Chin, Java Champion, Oracle JavaOne
 program chair; and Sven Reimers, a member of the Netbeans Dream Team.
 
-There are two branches of ScalaFX: v.1.0 supporting JavaFX 2.x (Java 7) and 
-v.8.0 supporting JavaFX 8 (Java 8).
+There are two branches of ScalaFX: v.8.0 supporting JavaFX 8 (Java 8) and 
+v.2.2 supporting JavaFX 2.x (Java 7).
 
 ScalaFX binaries are published in the Maven Central repository:
-http://search.maven.org/#search%7Cga%7C1%7Cscalafx
+[http://search.maven.org/#search|ga|1|scalafx](http://search.maven.org/#search%7Cga%7C1%7Cscalafx)
 
-To use ScalaFX with SBT and Java 7 add following dependency:
+To use ScalaFX with SBT and Java 8 add following dependency:
 
-    libraryDependencies += "org.scalafx" %% "scalafx" % "1.0.0-R8"
+    libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.5-R5"
+        
+With Java 7 use:
 
-With Java 8 use:
+    libraryDependencies += "org.scalafx" %% "scalafx" % "2.2.60-R9"
 
-    libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.0-R4"
-
-You can find a simple project setup in subdirectory `scalafx-hello-world`
+The [ScalaFX Organization page](https://github.com/scalafx) on GitHub contains several sample 
+project that illustrate use of ScalaFX. 
+The simplest one, and recommended to start with, is [`scalafx-hello-world`](https://github.com/scalafx/scalafx-hello-world).
 
 Snapshot releases are also regularly published on Sonatype. To use a snapshot
 build you may need to add "Sonatype OSS Snapshots" resolver to you SBT 
 configuration:
 
-    resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots" 
+    resolvers += Opts.resolver.sonatypeSnapshots 
 
-If you just want to download a recent snapshot build you can also use automated build site
-http://jfxtras.com/jenkins/job/scalafx/
+If you just want to download a recent snapshot build you can also use Travis CI build site
+https://travis-ci.org/scalafx/scalafx
 
 ScalaFX source code is using the SBT build system.
 For information on building with SBT see `README-SBT.txt`. 
 
-The official web site for ScalaFX is http://scalafx.org, 
-currently hosted at https://code.google.com/p/scalafx/
+The official web site for ScalaFX is http://scalafx.org.
 
 
 #Software License
@@ -55,8 +56,8 @@ The following software is needed to build ScalaFX:
 
   1. [SBT](http://www.scala-sbt.org/) v.0.13.5 or better
   2. [Scala](http://www.scala.org/)
-    - ScalaFX 1.0 builds with either Scala version 2.9.3+, 2.10.+, or 2.11.+ 
     - ScalaFX 8.0 builds with Scala 2.10.2 or newer. 
+    - ScalaFX 2.2 builds with either Scala version 2.9.3+, 2.10.+, or 2.11.+ 
   
 It works with Windows, MacOS X and Linux ports.
 
@@ -69,7 +70,6 @@ The current project structure looks like this:
     ./project
     ./scalafx
     ./scalafx-demos
-    ./scalafx-hello-world
 
 Where `.` is a the root folder of the project.
 
@@ -78,26 +78,24 @@ build system.
 
 The `scalafx` folder is the sub project for the ScalaFX Framework.
 
-The `scalafx-demos` is the sub project for the ScalaFX Framework Demonstrations.
+The `scalafx-demos` is the sub project for the ScalaFX Framework Demonstrations (some are a bit out of date, help needed here :).
 
 The `project` folder is reserved for Scala SBT.
 
-The `scalafx-hello-world` is a simple self contained project using ScalaFX. 
-It can be used as a template for creating user projects.
-
-
 #Source Code Branching Policy
 
-Main development is done on the `master` branch. 
-Commits common to JavaFX 2 an JavaFX 8 support are done on this branch. 
-Commits that are only applicable to JavaFX 8 are done on the `SFX-8` branch (master branch for ScalaFX 8). 
-Pull requests are only accepted on `master` and `SFX-8` or their branches (feature branches). 
-Merging `master` and `SFX-8` is done only in one direction (along compatibility) from `master` into `SFX-8`.
-Releases are done on `stable` and `stable-SFX-8` branches for ScalaFX 1 and ScalaFX 8, respectively.
-Releases are tagged with version number. 
-The branching policy is illustrated in the graph below.
+Main development is for ScalaFX 8 and it is done on the `master` branch.
+ScalaFX 2.2 development is done on `SFX-2` branch.
+Features that are common to v.2 and v.8 should be commited to SFX-2, as merging os done only in one direction: 
+from `SFX-2` into `main`.
 
-![Current branching policy](http://scalafx.github.io/images/scalafx-branching-policy-1.png)
+Pull requests are only accepted off `master` and `SFX-2` or their branches. 
+When working on a pull request, it is recommended to create separate branch for each feature or bug fix. 
+This way the main development branch is not blocked by a pull request and pull requests are easier 
+to merge individually. 
+
+Releases are done on `stable` and `SFX-2-stable` branches for ScalaFX 8 and ScalaFX 2, respectively.
+Releases are tagged with version number. 
 
 #Credits
    

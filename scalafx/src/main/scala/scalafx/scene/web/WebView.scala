@@ -27,20 +27,48 @@
 package scalafx.scene.web
 
 import scala.language.implicitConversions
-import javafx.{ event => jfxe }
-import javafx.scene.{ text => jfxst }
-import javafx.scene.{ web => jfxsw }
-import javafx.{ geometry => jfxg }
+import scala.collection.JavaConversions._
+import javafx.{event => jfxe}
+import javafx.{css => jfxc}
+import javafx.scene.{text => jfxst}
+import javafx.scene.{web => jfxsw}
+import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Parent
 import scalafx.beans.property._
 import scalafx.scene.text.FontSmoothingType
+import scala.collection.mutable.Buffer
 
+/**
+ * Companion object for [[scalafx.scene.web.WebView]]
+ */
 object WebView {
-  implicit def sfxWebView2jfx(wv: WebView) = wv.delegate
+
+  /**
+   * Converts a ScalaFX WebView to its JavaFX counterpart.
+   *
+   * @param we ScalaFX WebView
+   * @return JavaFX WebView
+   */
+  implicit def sfxWebView2jfx(wv: WebView) = if (wv != null) wv.delegate else null
+
+  /**
+   * @return The CssMetaData associated with this class, which may include the CssMetaData of its
+   * super classes.
+   * @since 8.0
+   */
+  def classCssMetaData: Buffer[jfxc.CssMetaData[_ <: jfxc.Styleable, _]] =
+    jfxsw.WebView.getClassCssMetaData
+
 }
 
+/**
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebView.html JavaFX WebView]].
+ *
+ * @constructor Creates a new WebView from its JavaFX counterpart.
+ * @param delegate A JavaFX WebView. Its default value is a new instance.
+ */
 class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
   extends Parent(delegate)
   with SFXDelegate[jfxsw.WebView] {
@@ -196,8 +224,14 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
     ObjectProperty.fillProperty[jfxst.FontSmoothingType](fontSmoothingType, v)
   }
 
-  def zoom : DoubleProperty = delegate.zoomProperty
-  def zoom_=(v:Double) {
+  /**
+   * Zoom property object.
+   *
+   * @since 8.0
+   */
+  def zoom: DoubleProperty = delegate.zoomProperty
+  def zoom_=(v: Double) {
     zoom() = v
   }
+
 }

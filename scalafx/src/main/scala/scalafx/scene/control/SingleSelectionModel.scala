@@ -28,11 +28,11 @@ package scalafx.scene.control
 
 import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 
 object SingleSelectionModel {
-  implicit def sfxSingleSelectionModel2jfx[T](v: SingleSelectionModel[T]) = v.delegate
+  implicit def sfxSingleSelectionModel2jfx[T](v: SingleSelectionModel[T]) = if (v != null) v.delegate else null
 
   /**
    * Creates a new [[scalafx.scene.control.SingleSelectionModel]] from functions that defines a data
@@ -45,11 +45,11 @@ object SingleSelectionModel {
    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SingleSelectionModel.html SingleSelectionModel]].
    *
    * @tparam T  The type of the item contained in the control that can be
-   * selected.
+   *            selected.
    * @param modelItem Function that gets the data model item associated with a
-   * specific index.
+   *                  specific index.
    * @param itemCount Function that gets the number of items available for the
-   * selection model.
+   *                  selection model.
    */
   def apply[T](modelItem: Int => T, itemCount: => Int) = new SingleSelectionModel[T](
     new jfxsc.SingleSelectionModel[T] {

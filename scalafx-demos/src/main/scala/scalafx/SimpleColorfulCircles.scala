@@ -31,20 +31,20 @@ import scala.language.postfixOps
 import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Timeline
-import scalafx.animation.Timeline.INDEFINITE
+import scalafx.animation.Timeline.Indefinite
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
-import scalafx.scene.effect.BlendMode.OVERLAY
+import scalafx.scene.effect.BlendMode.Overlay
 import scalafx.scene.effect.BoxBlur
 import scalafx.scene.paint.Color.Black
 import scalafx.scene.paint.Color.White
-import scalafx.scene.paint.CycleMethod.NO_CYCLE
+import scalafx.scene.paint.CycleMethod.NoCycle
 import scalafx.scene.paint.LinearGradient
 import scalafx.scene.paint.Stops
 import scalafx.scene.shape.Circle
 import scalafx.scene.shape.Rectangle
-import scalafx.scene.shape.StrokeType.OUTSIDE
+import scalafx.scene.shape.StrokeType.Outside
 
 
 /**
@@ -64,20 +64,20 @@ object SimpleColorfulCircles extends JFXApp {
         fill = White opacity 0.05
         stroke = White opacity 0.16
         strokeWidth = 4
-        strokeType = OUTSIDE
+        strokeType = Outside
         effect = new BoxBlur(10, 10, 3)
       }
       content = circles :+ new Rectangle {
         width <== scene.width
         height <== scene.height
-        fill = new LinearGradient(0, 1, 1, 0, true, NO_CYCLE,
+        fill = new LinearGradient(0, 1, 1, 0, true, NoCycle,
           Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f))
-        blendMode = OVERLAY
+        blendMode = Overlay
       }
     }
   }
   new Timeline {
-    cycleCount = INDEFINITE
+    cycleCount = Indefinite
     autoReverse = true
     keyFrames = (for (circle <- circles) yield at(40 s) {
       Set(

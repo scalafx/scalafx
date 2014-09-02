@@ -56,13 +56,13 @@ class SliderLabelControl(property: DoubleProperty) extends FlowPane {
 
   val slider = new Slider {
     value <==> property
-    hgrow = Priority.ALWAYS
+    hgrow = Priority.Always
     labelFormatter = new DoubleStringConverter()
   }
 
   val lblValue = new Label {
     text <== slider.value.asString(originalPattern)
-    hgrow = Priority.SOMETIMES
+    hgrow = Priority.Sometimes
   }
 
   def blockIncrement_=(v: Double) {

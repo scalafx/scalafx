@@ -33,7 +33,7 @@ import javafx.scene.{text => jfxst}
 import scalafx.delegate.SFXDelegate
 
 object Font {
-  implicit def sfxFont2jfx(v: Font) = v.delegate
+  implicit def sfxFont2jfx(v: Font) = if (v != null) v.delegate else null
 
   /**
    * Gets the default font which will be from the family "System", and typically the style

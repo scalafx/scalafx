@@ -57,11 +57,11 @@ object ComboBoxListCell {
    * @param cell ScalaFX $CBLC
    * @return JavaFX $CBLC
    */
-  implicit def sfxComboBoxListCell2jfx[T](cell: ComboBoxListCell[T]) = cell.delegate
+  implicit def sfxComboBoxListCell2jfx[T](cell: ComboBoxListCell[T]) = if (cell != null) cell.delegate else null
 
   /**
    * $FLVINIT
-   * 
+   *
    * @param items $ITEMSPARAM
    * @return $RET
    */
@@ -69,15 +69,15 @@ object ComboBoxListCell {
     (view: ListView[T]) => jfxscc.ComboBoxListCell.forListView[T](items).call(view)
 
   /**
-   * $FLVINITDEPREC 
+   * $FLVINITDEPREC
    */
   @deprecated(message = "Use forListView[T](T => ObservableValue[Boolean, java.lang.Boolean])", since = "1.0")
   def forListView[T](items: jfxc.ObservableList[T]) = jfxscc.ComboBoxListCell.forListView(items)
 
   /**
    * $FLVINIT
-   * 
-   * @param converter $CONVPARAM 
+   *
+   * @param converter $CONVPARAM
    * @param items $ITEMSPARAM
    * @return $RET
    */
@@ -85,7 +85,7 @@ object ComboBoxListCell {
     (view: ListView[T]) => jfxscc.ComboBoxListCell.forListView[T](converter, items).call(view)
 
   /**
-   * $FLVINITDEPREC 
+   * $FLVINITDEPREC
    */
   @deprecated(message = "Use forListView[T](StringConverter[T], ObservableBuffer[T])", since = "1.0")
   def forListView[T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]) =
@@ -93,8 +93,8 @@ object ComboBoxListCell {
 
   /**
    * $FLVINIT
-   * 
-   * @param converter $CONVPARAM 
+   *
+   * @param converter $CONVPARAM
    * @param items $ITEMSPARAM
    * @return $RET
    */
@@ -102,7 +102,7 @@ object ComboBoxListCell {
     (view: ListView[T]) => jfxscc.ComboBoxListCell.forListView[T](converter, items: _*).call(view)
 
   /**
-   * $FLVINITDEPREC 
+   * $FLVINITDEPREC
    */
   @deprecated(message = "Use forListView[T](StringConverter[T], T*)", since = "1.0")
   def forListView[T](converter: jfxu.StringConverter[T], items: T*) =
@@ -110,7 +110,7 @@ object ComboBoxListCell {
 
   /**
    * $FLVINIT
-   * 
+   *
    * @param items $ITEMSPARAM
    * @return $RET
    */
@@ -125,7 +125,7 @@ object ComboBoxListCell {
  * @tparam T Type used in this cell
  * @constructor Creates a new $CBLC from a JavaFX $CBLC
  * @param delegate JavaFX $CBLC
- * 
+ *
  * @define CBLC `ChoiceBoxListCell`
  * @define CMBX `ComboBox`
  * @define STCV `StringConverter`
@@ -143,32 +143,32 @@ class ComboBoxListCell[T](override val delegate: jfxscc.ComboBoxListCell[T] = ne
   with SFXDelegate[jfxscc.ComboBoxListCell[T]] {
 
   /**
-   * $CONSTITEMS 
-   * 
-   * @param items $ITEMSPARAM 
+   * $CONSTITEMS
+   *
+   * @param items $ITEMSPARAM
    */
   def this(items: ObservableBuffer[T]) = this(new jfxscc.ComboBoxListCell[T](items))
 
   /**
    * $CONSTRCONVERTER
-   * 
+   *
    * @param converter $CONVPARAM
-   * @param items $ITEMSPARAM 
+   * @param items $ITEMSPARAM
    */
   def this(converter: StringConverter[T], items: ObservableBuffer[T]) = this(new jfxscc.ComboBoxListCell[T](converter, items))
 
   /**
    * $CONSTRCONVERTER
-   * 
+   *
    * @param converter $CONVPARAM
-   * @param items $ITEMSPARAM 
+   * @param items $ITEMSPARAM
    */
   def this(converter: StringConverter[T], items: T*) = this(new jfxscc.ComboBoxListCell[T](converter, items: _*))
 
   /**
-   * $CONSTITEMS 
-   * 
-   * @param items $ITEMSPARAM 
+   * $CONSTITEMS
+   *
+   * @param items $ITEMSPARAM
    */
   def this(items: T*) = this(new jfxscc.ComboBoxListCell[T](items: _*))
 

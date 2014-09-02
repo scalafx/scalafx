@@ -28,7 +28,7 @@ package scalafx.print
 
 import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
-import javafx.{ print => jfxp }
+import javafx.{print => jfxp}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.IntegerProperty
@@ -45,34 +45,34 @@ object PaperSource {
    * @param ps ScalaFX PaperSource
    * @return JavaFX PaperSource
    */
-  implicit def sfxPaperSource2jfx(ps: PaperSource): jfxp.PaperSource = ps.delegate
+  implicit def sfxPaperSource2jfx(ps: PaperSource): jfxp.PaperSource = if (ps != null) ps.delegate else null
 
   /** Specify to automatically select the tray. */
-  val AUTOMATIC: PaperSource = new PaperSource(jfxp.PaperSource.AUTOMATIC)
+  val Automatic: PaperSource = new PaperSource(jfxp.PaperSource.AUTOMATIC)
 
   /** Specify to select the BOTTOM tray. */
-  val BOTTOM: PaperSource = new PaperSource(jfxp.PaperSource.BOTTOM)
+  val Bottom: PaperSource = new PaperSource(jfxp.PaperSource.BOTTOM)
 
   /** Specify to select the ENVELOPE tray. */
-  val ENVELOPE: PaperSource = new PaperSource(jfxp.PaperSource.ENVELOPE)
+  val Envelope: PaperSource = new PaperSource(jfxp.PaperSource.ENVELOPE)
 
   /** Specify to select the LARGE_CAPACITY tray. */
-  val LARGE_CAPACITY: PaperSource = new PaperSource(jfxp.PaperSource.LARGE_CAPACITY)
+  val LargeCapatity: PaperSource = new PaperSource(jfxp.PaperSource.LARGE_CAPACITY)
 
   /** Specify to select the MAIN tray. */
-  val MAIN: PaperSource = new PaperSource(jfxp.PaperSource.MAIN)
+  val Main: PaperSource = new PaperSource(jfxp.PaperSource.MAIN)
 
   /** Specify to select the MANUAL tray. */
-  val MANUAL: PaperSource = new PaperSource(jfxp.PaperSource.MANUAL)
+  val Manual: PaperSource = new PaperSource(jfxp.PaperSource.MANUAL)
 
   /** Specify to select the MIDDLE tray. */
-  val MIDDLE: PaperSource = new PaperSource(jfxp.PaperSource.MIDDLE)
+  val Middle: PaperSource = new PaperSource(jfxp.PaperSource.MIDDLE)
 
   /** Specify to select the SIDE tray. */
-  val SIDE: PaperSource = new PaperSource(jfxp.PaperSource.SIDE)
+  val Side: PaperSource = new PaperSource(jfxp.PaperSource.SIDE)
 
   /** Specify to select the TOP tray. */
-  val TOP: PaperSource = new PaperSource(jfxp.PaperSource.TOP)
+  val Top: PaperSource = new PaperSource(jfxp.PaperSource.TOP)
 
 }
 

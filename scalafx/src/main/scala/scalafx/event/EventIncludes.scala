@@ -47,7 +47,7 @@ trait EventIncludes {
    * @param ae JavaFX ActionEvent
    * @return ScalaFX ActionEvent
    */
-  implicit def jfxActionEvent2sfx(ae: jfxe.ActionEvent) = new ActionEvent(ae)
+  implicit def jfxActionEvent2sfx(ae: jfxe.ActionEvent) = if (ae != null) new ActionEvent(ae) else null
 
   /**
    * Converts a
@@ -57,7 +57,7 @@ trait EventIncludes {
    * @param e JavaFX Event
    * @return ScalaFX Event
    */
-  implicit def jfxEvent2sfx(e: jfxe.Event) = new Event(e)
+  implicit def jfxEvent2sfx(e: jfxe.Event) = if (e != null) new Event(e) else null
 
   /**
    * Converts a
@@ -68,7 +68,20 @@ trait EventIncludes {
    * @param e JavaFX EventType
    * @return ScalaFX EventType
    */
-  implicit def jfxEventType2sfx[T <: jfxe.Event](e: jfxe.EventType[T]) = new EventType[T](e)
+  implicit def jfxEventType2sfx[T <: jfxe.Event](e: jfxe.EventType[T]) = if (e != null) new EventType[T](e) else null
+
+  /**
+   * Converts a
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/WeakEventHandler `javafx.event.WeakEventHandler`]]
+   * instance to its ScalaFX counterpart.
+   *
+   * @tparam T Event Type
+   * @param weh JavaFX WeakEventHandler
+   * @return ScalaFX WeakEventHandler
+   * @since 8.0
+   */
+  implicit def jfxWeakEventHandler2sfx[T <: jfxe.Event](weh: jfxe.WeakEventHandler[T]): WeakEventHandler[T] =
+    if (weh != null) new WeakEventHandler(weh) else null
 
   /**
    * Create a simple event handler when information about event is not be used.
@@ -133,4 +146,5 @@ trait EventIncludes {
         handler(event)
       }
     }
+
 }

@@ -27,8 +27,8 @@
 package scalafx.util
 
 import scala.language.implicitConversions
-import javafx.beans.{ property => jfxbp }
-import javafx.{ util => jfxu }
+import javafx.beans.{property => jfxbp}
+import javafx.{util => jfxu}
 import scalafx.delegate.SFXDelegate
 import scalafx.util.Duration.DurationHelper
 
@@ -81,7 +81,7 @@ trait UtilIncludes {
    * @param t A Scala Tuple2
    * @return A JavaFX Pair generated from Scala Tuple2.
    */
-  implicit def tuple22jfxPair[K, V](t: (K, V)) = new jfxu.Pair[K, V](t._1, t._2)
+  implicit def tuple22jfxPair[K, V](t: (K, V)) = if (t != null) new jfxu.Pair[K, V](t._1, t._2) else null
 
   /**
    * Converts a Double to a Duration.
@@ -99,7 +99,7 @@ trait UtilIncludes {
    * @param d JavaFX Duration
    * @return ScalaFX Duration
    */
-  implicit def jfxDuration2sfx(d: jfxu.Duration) = new Duration(d)
+  implicit def jfxDuration2sfx(d: jfxu.Duration) = if (d != null) new Duration(d) else null
 
   /**
    * Converts a

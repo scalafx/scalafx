@@ -52,7 +52,7 @@ trait CanvasIncludes {
    * @param c $JFX $CANV
    * @return $SFX $CANV
    */
-  implicit def jfxCanvas2sfx(c: jfxsc.Canvas) = new Canvas(c)
+  implicit def jfxCanvas2sfx(c: jfxsc.Canvas) = if (c != null) new Canvas(c) else null
 
   /**
    * $START$GRCT.html $GRCT$END
@@ -60,6 +60,6 @@ trait CanvasIncludes {
    * @param gc $JFX $GRCT
    * @return $SFX $GRCT
    */
-  implicit def jfxGraphicsContext2sfx(gc: jfxsc.GraphicsContext) = new GraphicsContext(gc)
+  implicit def jfxGraphicsContext2sfx(gc: jfxsc.GraphicsContext) = if (gc != null) new GraphicsContext(gc) else null
 
 }

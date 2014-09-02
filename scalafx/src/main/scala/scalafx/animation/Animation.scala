@@ -40,14 +40,16 @@ import scalafx.util.Duration
 import scalafx.delegate._
 
 /**
- * Defines Constants to be used for all [[scalafx.animation.Animation]]s object companions. 
+ * Defines Constants to be used for all [[scalafx.animation.Animation]]s object companions.
  */
 trait AnimationStatics {
-  
+
   /**
    * Used to specify an animation that repeats indefinitely, until the stop() method is called.
    */
-  def INDEFINITE = jfxa.Animation.INDEFINITE
+  val Indefinite = jfxa.Animation.INDEFINITE
+  @deprecated("Use Indefinite; INDEFINITE will be removed in a future release", "2.2.60")
+  val INDEFINITE = Indefinite
 }
 
 /**
@@ -57,15 +59,15 @@ trait AnimationStatics {
  * @define ST `Status`
  */
 object Animation extends AnimationStatics {
-  
+
   /**
-   * Converts a ScalaFX $AN to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.html $AN]], 
+   * Converts a ScalaFX $AN to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.html $AN]],
    * extracting its delegate.
    *
    * @param v ScalaFX $AN
    * @return Delegated JavaFX $AN extracted from `v`.
    */
-  implicit def sfxAnimation2jfx(v: Animation) = v.delegate
+  implicit def sfxAnimation2jfx(v: Animation) = if (v != null) v.delegate else null
 
   /**
    * Companion Object for $ST, where its values are defined.
@@ -76,25 +78,31 @@ object Animation extends AnimationStatics {
     /**
      * The paused state.
      */
-    val PAUSED = new Status(jfxa.Animation.Status.PAUSED)
+    val Paused = new Status(jfxa.Animation.Status.PAUSED)
+    @deprecated("Use Paused; PAUSED will be removed in a future release", "2.2.60")
+    val PAUSED = Paused
 
     /**
      * The running state.
      */
-    val RUNNING = new Status(jfxa.Animation.Status.RUNNING)
+    val Running = new Status(jfxa.Animation.Status.RUNNING)
+    @deprecated("Use Running; RUNNING will be removed in a future release", "2.2.60")
+    val RUNNING = Running
 
     /**
      * The stopped state.
      */
-    val STOPPED = new Status(jfxa.Animation.Status.STOPPED)
+    val Stopped = new Status(jfxa.Animation.Status.STOPPED)
+    @deprecated("Use Stopped; STOPPED will be removed in a future release", "2.2.60")
+    val STOPPED = Stopped
 
-    protected override def unsortedValues: Array[Status] = Array(PAUSED, RUNNING, STOPPED)
+    protected override def unsortedValues: Array[Status] = Array(Paused, Running, Stopped)
 
   }
 
   /**
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.Status.html $ST]]
-   * 
+   *
    * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
    * @param delegate JavaFX $ST to be delegated.
    */
@@ -109,7 +117,7 @@ object Animation extends AnimationStatics {
  * @define AN `Animation`
  * @define DV Default value:
  */
-abstract class Animation protected (override val delegate: jfxa.Animation)
+abstract class Animation protected(override val delegate: jfxa.Animation)
   extends SFXDelegate[jfxa.Animation] {
 
   // Properties
@@ -186,7 +194,7 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
 
   /**
    * Jumps to a given position in this $AN.
-   * 
+   *
    * @param time the new position
    */
   def jumpTo(time: Duration) {
@@ -195,7 +203,7 @@ abstract class Animation protected (override val delegate: jfxa.Animation)
 
   /**
    * Jumps to a predefined position in this $AN.
-   * 
+   *
    * @param cuePoint the name of the cue point
    */
   def jumpTo(cuePoint: String) {

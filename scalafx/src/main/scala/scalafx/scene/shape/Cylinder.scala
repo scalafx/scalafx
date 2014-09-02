@@ -33,7 +33,7 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Cylinder {
-  implicit def sfxCylinder2jfx(c: Cylinder) = c.delegate
+  implicit def sfxCylinder2jfx(c: Cylinder) = if (c != null) c.delegate else null
 }
 
 /**

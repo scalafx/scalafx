@@ -27,14 +27,14 @@
 package scalafx.scene.control
 
 import scala.language.implicitConversions
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.layout.Region
 
 object Control {
-  implicit def sfxControl2jfx(v: Control) = v.delegate
+  implicit def sfxControl2jfx(v: Control) = if (v != null) v.delegate else null
 }
 
 abstract class Control(override val delegate: jfxsc.Control)

@@ -26,20 +26,68 @@
  */
 package scalafx.scene.control
 
+import scala.collection.JavaConversions._
+import scala.collection.mutable.Buffer
 import scala.language.implicitConversions
-import javafx.scene.{ control => jfxsc }
+
+import javafx.{css => jfxcss}
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.StringProperty
-import scalafx.stage.PopupWindow
+import scalafx.css.PseudoClass
+import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
+import scalafx.stage.PopupWindow
 
+/**
+ * Object companion for [[scalafx.scene.control.PopupControl]].
+ */
 object PopupControl {
-  implicit def sfxPopupControl2jfx(v: PopupControl) = v.delegate
+
+  /**
+   * Converts a ScalaFX PopupControl to its JavaFX counterpart
+   *
+   * @param v ScalaFX PopupControl
+   * @return JavaFX PopupControl
+   */
+  implicit def sfxPopupControl2jfx(v: PopupControl) = if (v != null) v.delegate else null
+
+  /**
+   * Sentinel value which can be passed to a control's minWidth, minHeight, prefWidth, prefHeight,
+   * maxWidth, maxHeight setters to reset the control's size constraint back to it's intrinsic
+   * size returned by computeMinWidth, computeMinHeight, computePrefWidth, computePrefHeight,
+   * computeMaxWidth, or computeMaxHeight.
+   */
+  val UseComputedSize: Double = jfxsc.PopupControl.USE_COMPUTED_SIZE
+
+  /**
+   * Sentinel value which can be passed to a control's minWidth, minHeight, maxWidth or maxHeight
+   * setters to indicate that the preferred dimension should be used for that max and/or min
+   * constraint.
+   */
+  val UsePrefSize: Double = jfxsc.PopupControl.USE_PREF_SIZE
+
+  /**
+   * The CssMetaData associated with this class, which may include the CssMetaData of its super
+   * classes.
+   *
+   * @since 8.0
+   */
+  def classCssMetaData: Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] =
+    jfxsc.PopupControl.getClassCssMetaData
+
 }
 
+/**
+ * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/PopupControl.html PopupControl]].
+ *
+ * @constructor Creates a new ScalaFX PopupControl from its JavaFX counterpart.
+ * @param delegate JavaFX PopupControl to be wrapped. It defaul value is a new JavaFX PopupControl
+ */
 class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupControl)
   extends PopupWindow(delegate)
+  with Styleable
   with Skinnable
   with SFXDelegate[jfxsc.PopupControl] {
 
@@ -108,6 +156,13 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
     style() = v
   }
 
-  def styleClass = delegate.getStyleClass
+  /**
+   * @since 8.0
+   */
+  def pseudoClassStateChanged(pseudoClass: PseudoClass, active: Boolean) {
+    delegate.pseudoClassStateChanged(pseudoClass, active)
+  }
+
+  // protected Skin<?> createDefaultSkin()
 
 }

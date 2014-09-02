@@ -24,19 +24,20 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.text
 
-import scala.language.implicitConversions
 import javafx.scene.{text => jfxst}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
-import scalafx.geometry.Orientation
 import scalafx.scene.Node
 import scalafx.scene.layout.Pane
 
 object TextFlow {
-  implicit def sfxTextFlow2jfx(v: TextFlow) = v.delegate
+  implicit def sfxTextFlow2jfx(v: TextFlow) = if (v != null) v.delegate else null
 
   def classCssMetaData = jfxst.TextFlow.getClassCssMetaData
 
@@ -82,23 +83,10 @@ class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
   override def baselineOffset: Double = delegate.getBaselineOffset
 
   /**
-   * Returns the orientation of a node's resizing bias for layout purposes.
-   */
-  def contentBias: Orientation = delegate.getContentBias
-
-  /**
-   * This method should delegate to Node.classCssMetaData() so that a Node's CssMetaData can
-   * be accessed without the need for reflection.
-   */
-  def cssMetaData() = delegate.getCssMetaData
-
-  /**
    * Requests a layout pass to be performed before the next scene is rendered.
    */
   def requestLayout() {
     delegate.requestLayout()
   }
+
 }
-
-
-

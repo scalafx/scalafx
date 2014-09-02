@@ -27,7 +27,7 @@
 package scalafx.scene.effect
 
 import scala.language.implicitConversions
-import javafx.scene.{ effect => jfxse }
+import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.scene.paint.Color
@@ -35,12 +35,12 @@ import scalafx.delegate.PositionDelegate
 import scalafx.delegate.SFXDelegate
 
 object Light {
-  implicit def sfxLight2jfx(l: Light) = l.delegate
+  implicit def sfxLight2jfx(l: Light) = if (l != null) l.delegate else null
 
   // Distant Definition - Begin
 
   object Distant {
-    implicit def sfxDistant2jfx(d: Distant) = d.delegate
+    implicit def sfxDistant2jfx(d: Distant) = if (d != null) d.delegate else null
   }
 
   class Distant(override val delegate: jfxse.Light.Distant = new jfxse.Light.Distant) extends Light(delegate) with SFXDelegate[jfxse.Light.Distant] {
@@ -73,7 +73,8 @@ object Light {
   // Point Definition - Begin
 
   object Point {
-    implicit def sfxPoint2jfx(p: Point) = p.delegate
+    implicit def sfxPoint2jfx(p: Point) = if (p != null) p.delegate else null
+
   }
 
   class Point(override val delegate: jfxse.Light.Point = new jfxse.Light.Point)
@@ -98,7 +99,8 @@ object Light {
   // Spot Definition - Begin
 
   object Spot {
-    implicit def sfxSpot2jfx(s: Spot) = s.delegate
+    implicit def sfxSpot2jfx(s: Spot) = if (s != null) s.delegate else null
+
   }
 
   class Spot(override val delegate: jfxse.Light.Spot = new jfxse.Light.Spot) extends Point(delegate) with SFXDelegate[jfxse.Light.Spot] {
@@ -146,6 +148,6 @@ object Light {
 
 }
 
-abstract class Light protected (override val delegate: jfxse.Light)
+abstract class Light protected(override val delegate: jfxse.Light)
   extends ColorDelegate[jfxse.Light]
   with SFXDelegate[jfxse.Light] 

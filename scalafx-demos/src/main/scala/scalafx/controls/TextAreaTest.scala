@@ -64,23 +64,23 @@ object TextAreaTest extends JFXApp {
   lazy val textArea = new TextArea {
     prefColumnCount = 20
 //    prefHeight <== scene.height
-//    hgrow = Priority.ALWAYS
+//    hgrow = Priority.Always
   }
 
   val controlsPane = new VBox {
     spacing = 5
     fillWidth = true
-    alignment = Pos.CENTER
+    alignment = Pos.Center
     prefHeight <== stage.scene().height
-    hgrow = Priority.NEVER
+    hgrow = Priority.Never
     content = List(new TextAreaControls(textArea), new TextInputControlControls(textArea), new ControlControls(textArea))
   }
 
   lazy val mainPane = new BorderPane {
     top = textArea
     center = controlsPane
-//    vgrow = Priority.ALWAYS
-//    hgrow = Priority.ALWAYS
+//    vgrow = Priority.Always
+//    hgrow = Priority.Always
   }
 
 }

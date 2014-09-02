@@ -45,7 +45,7 @@ object AnimationTimer {
    * @param at ScalaFX $AT
    * @return JavaFX $AT extracted from `at`.
    */
-  implicit def sfxAnimationTimer2jfx(at: AnimationTimer) = at.delegate
+  implicit def sfxAnimationTimer2jfx(at: AnimationTimer) = if (at != null) at.delegate else null
 
   /**
    * Creates a new [[scalafx.animation.AnimationTimer]] from a handle function that receives a Long parameter.
@@ -66,7 +66,7 @@ object AnimationTimer {
  *
  * @constructor Creates a new ScalaFX $AT from a JavaFX $AT.
  * @param delegate JavaFX $AT to be delegated.
- * 
+ *
  * @define AT `AnimationTimer`
  */
 abstract class AnimationTimer(override val delegate: jfxa.AnimationTimer)
@@ -76,7 +76,7 @@ abstract class AnimationTimer(override val delegate: jfxa.AnimationTimer)
    * This method needs to be overridden by extending classes.
    *
    * @param now The timestamp of the current frame given in nanoseconds. This value will be the same for all $AT's
-   * called during one frame.
+   *            called during one frame.
    */
   def handle(now: Long) {
     delegate.handle(now)

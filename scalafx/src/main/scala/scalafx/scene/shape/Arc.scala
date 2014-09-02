@@ -34,13 +34,13 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object Arc {
-  implicit def sfxArc2jfx(v: Arc) = v.delegate
-  
-  def apply(centerX: Double, centerY: Double, radiusX: Double, radiusY: Double, startAngle: Double, length: Double) = 
+  implicit def sfxArc2jfx(v: Arc) = if (v != null) v.delegate else null
+
+  def apply(centerX: Double, centerY: Double, radiusX: Double, radiusY: Double, startAngle: Double, length: Double) =
     new Arc(new jfxss.Arc(centerX, centerY, radiusX, radiusY, startAngle, length))
 }
 
-class Arc(override val delegate:jfxss.Arc = new jfxss.Arc()) extends Shape(delegate) with SFXDelegate[jfxss.Arc] {
+class Arc(override val delegate: jfxss.Arc = new jfxss.Arc()) extends Shape(delegate) with SFXDelegate[jfxss.Arc] {
   def centerX: DoubleProperty = delegate.centerXProperty
   def centerX_=(v: Double) {
     centerX() = v

@@ -30,10 +30,10 @@ import scala.language.implicitConversions
 import java.text.NumberFormat
 import java.util.Locale
 
-import javafx.util.{ converter => jfxuc }
+import javafx.util.{converter => jfxuc}
 
 object CurrencyStringConverter {
-  implicit def sfxCurrencyStringConverter2jfx(c: CurrencyStringConverter) = c.delegate
+  implicit def sfxCurrencyStringConverter2jfx(c: CurrencyStringConverter) = if (c != null) c.delegate else null
 }
 
 class CurrencyStringConverter(override val delegate: jfxuc.CurrencyStringConverter = new jfxuc.CurrencyStringConverter)

@@ -37,8 +37,10 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * TablePositionSpec tests.
  */
 @RunWith(classOf[JUnitRunner])
-class TablePositionSpec[S, T] extends SimpleSFXDelegateSpec[jfxsc.TablePosition[S, T], TablePosition[S, T]](classOf[jfxsc.TablePosition[S, T]], classOf[TablePosition[S, T]]) {
+class TablePositionSpec[S, T]
+  extends SimpleSFXDelegateSpec[jfxsc.TablePosition[S, T], TablePosition[S, T]](
+    classOf[jfxsc.TablePosition[S, T]], classOf[TablePosition[S, T]]) {
 
-  override def getJavaClassInstance = new jfxsc.TablePosition(null, 0, null)
+  override def getJavaClassInstance = new jfxsc.TablePosition[S, T](new jfxsc.TableView(), 0, null)
 
 }

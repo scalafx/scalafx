@@ -27,7 +27,7 @@
 package scalafx.animation
 
 import scala.language.implicitConversions
-import javafx.{ animation => jfxa, scene => jfxs, util => jfxu }
+import javafx.{animation => jfxa, scene => jfxs, util => jfxu}
 import scalafx.util.Duration
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
@@ -49,7 +49,8 @@ object ScaleTransition extends AnimationStatics {
    * @param v ScalaFX $ST
    * @return JavaFX $ST extracted from `v`.
    */
-  implicit def sfxScaleTransition2jfx(v: ScaleTransition) = v.delegate
+  implicit def sfxScaleTransition2jfx(v: ScaleTransition) = if (v != null) v.delegate else null
+
 }
 
 /**
@@ -128,7 +129,7 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
   }
 
   /**
-   * Specifies the start X scale value of this $ST. $DV `Double.NaN` 
+   * Specifies the start X scale value of this $ST. $DV `Double.NaN`
    */
   def fromX: DoubleProperty = delegate.fromXProperty
   def fromX_=(x: Double) {

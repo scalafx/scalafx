@@ -34,7 +34,7 @@ import scalafx.beans.property.IntegerProperty
 import scalafx.delegate.SFXDelegate
 
 object AudioClip {
-  implicit def sfxAudioClip2jfx(ac: AudioClip) = ac.delegate
+  implicit def sfxAudioClip2jfx(ac: AudioClip) = if (ac != null) ac.delegate else null
 
   /**
    * When cycleCount is set to this value, the AudioClip will loop continuously until stopped.

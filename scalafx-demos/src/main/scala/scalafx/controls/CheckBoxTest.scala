@@ -54,16 +54,16 @@ object CheckBoxTest extends JFXApp {
   val controlsPane = new VBox {
     spacing = 5
     fillWidth = true
-    alignment = Pos.CENTER
-    hgrow = Priority.NEVER
+    alignment = Pos.Center
+    hgrow = Priority.Never
     content = List(new CheckBoxControls(check), new ControlControls(check))
   }
 
   val mainPane = new BorderPane {
     top = check
     center = controlsPane
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
+    vgrow = Priority.Always
+    hgrow = Priority.Always
   }
 
   stage = new PrimaryStage {

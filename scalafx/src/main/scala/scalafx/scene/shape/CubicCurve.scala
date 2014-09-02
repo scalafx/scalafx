@@ -33,10 +33,10 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object CubicCurve {
-  implicit def sfxCubicCurve2jfx(v: CubicCurve) = v.delegate
+  implicit def sfxCubicCurve2jfx(v: CubicCurve) = if (v != null) v.delegate else null
 }
 
-class CubicCurve(override val delegate:jfxss.CubicCurve = new jfxss.CubicCurve()) extends Shape(delegate) with SFXDelegate[jfxss.CubicCurve] {
+class CubicCurve(override val delegate: jfxss.CubicCurve = new jfxss.CubicCurve()) extends Shape(delegate) with SFXDelegate[jfxss.CubicCurve] {
   def controlX1: DoubleProperty = delegate.controlX1Property
   def controlX1_=(v: Double) {
     controlX1() = v

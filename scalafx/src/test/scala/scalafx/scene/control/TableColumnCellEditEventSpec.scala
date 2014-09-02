@@ -29,7 +29,7 @@ package scalafx.scene.control
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
@@ -38,9 +38,15 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  */
 @RunWith(classOf[JUnitRunner])
 class TableColumnCellEditEventSpec[S, T]
-  extends SimpleSFXDelegateSpec[jfxsc.TableColumn.CellEditEvent[S, T], TableColumn.CellEditEvent[S, T]](classOf[jfxsc.TableColumn.CellEditEvent[S, T]], classOf[TableColumn.CellEditEvent[S, T]])
+  extends SimpleSFXDelegateSpec[jfxsc.TableColumn.CellEditEvent[S, T], TableColumn.CellEditEvent[S, T]](
+    classOf[jfxsc.TableColumn.CellEditEvent[S, T]], classOf[TableColumn.CellEditEvent[S, T]])
   with RunOnApplicationThread {
 
-  override def getJavaClassInstance = new jfxsc.TableColumn.CellEditEvent(new jfxsc.TableView[S], new jfxsc.TablePosition[S, T](null, 0, null), null, null.asInstanceOf[T])
+  override def getJavaClassInstance =
+    new jfxsc.TableColumn.CellEditEvent(
+      new jfxsc.TableView[S],
+      new jfxsc.TablePosition[S, T](new jfxsc.TableView(), 0, null),
+      null,
+      null.asInstanceOf[T])
 
 }

@@ -9,7 +9,7 @@ import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.scene.image.Image
 
 object PhongMaterial {
-  implicit def sfxPhongMaterial2jfx(c: PhongMaterial) = c.delegate
+  implicit def sfxPhongMaterial2jfx(c: PhongMaterial) = if (c != null) c.delegate else null
 }
 
 /** The PhongMaterial class provides definitions of properties that represent a form of Phong shaded material. */
@@ -22,7 +22,7 @@ class PhongMaterial(override val delegate: jfxsp.PhongMaterial = new jfxsp.Phong
   def this(diffuseColor: Color, diffuseMap: Image, specularMap: Image, bumpMap: Image, selfIlluminationMap: Image) =
     this(new jfxsp.PhongMaterial(diffuseColor, diffuseMap, specularMap, bumpMap, selfIlluminationMap))
 
-  /** The bump map of this `PhongMaterial`.*/
+  /** The bump map of this `PhongMaterial`. */
   def bumpMap: ObjectProperty[jfxsi.Image] = delegate.bumpMapProperty
   def bumpMap_=(v: jfxsi.Image) {
     bumpMap() = v
@@ -30,25 +30,25 @@ class PhongMaterial(override val delegate: jfxsp.PhongMaterial = new jfxsp.Phong
 
   /** Specifies the diffuse color of this Material. */
   def diffuseColor: ObjectProperty[jfxsp.Color] = delegate.diffuseColorProperty
-  def diffuseColor_=(v : jfxsp.Color) {
+  def diffuseColor_=(v: jfxsp.Color) {
     diffuseColor() = v
   }
 
   /** The diffuse map of this `PhongMaterial`. */
   def diffuseMap: ObjectProperty[jfxsi.Image] = delegate.diffuseMapProperty
-  def diffuseMap_=(v : jfxsi.Image) {
+  def diffuseMap_=(v: jfxsi.Image) {
     diffuseMap() = v
   }
 
   /** The self illumination map of this `PhongMaterial`. */
   def selfIlluminationMap: ObjectProperty[jfxsi.Image] = delegate.selfIlluminationMapProperty
-  def selfIlluminationMap_=(v : jfxsi.Image) {
+  def selfIlluminationMap_=(v: jfxsi.Image) {
     selfIlluminationMap() = v
   }
 
   /** Specifies the specular color of this Material. */
   def specularColor: ObjectProperty[jfxsp.Color] = delegate.specularColorProperty
-  def specularColor_=(v : jfxsp.Color) {
+  def specularColor_=(v: jfxsp.Color) {
     specularColor() = v
   }
 
@@ -60,7 +60,7 @@ class PhongMaterial(override val delegate: jfxsp.PhongMaterial = new jfxsp.Phong
 
   /** Defines the specular power of this Material. */
   def specularPower: DoubleProperty = delegate.specularPowerProperty
-  def specularPower_=(v:Double) {
+  def specularPower_=(v: Double) {
     specularPower() = v
   }
 

@@ -34,7 +34,7 @@ import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate
 
 object TextInputControl {
-  implicit def sfxTextInputControl2jfx(v: TextInputControl) = v.delegate
+  implicit def sfxTextInputControl2jfx(v: TextInputControl) = if (v != null) v.delegate else null
 }
 
 abstract class TextInputControl(override val delegate: jfxsc.TextInputControl)

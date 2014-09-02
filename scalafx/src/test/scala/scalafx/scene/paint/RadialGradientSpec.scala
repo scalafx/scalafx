@@ -43,6 +43,48 @@ class RadialGradientSpec
   extends SimpleSFXDelegateSpec[jfxsp.RadialGradient, RadialGradient](
     classOf[jfxsp.RadialGradient], classOf[RadialGradient]) {
 
-  override protected def getJavaClassInstance = new jfxsp.RadialGradient(0, 0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)
+  override protected def getJavaClassInstance = new jfxsp.RadialGradient(0, 0, 0, 0, 0, true, CycleMethod.NoCycle, Nil)
 
+  it should "return valid instance from companion's apply(List[Stop])" in {
+    val expected: RadialGradient = new RadialGradient(0, 0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)
+    val radialGradient = RadialGradient(
+      focusAngle = 0,
+      focusDistance = 0,
+      centerX = 0,
+      centerY = 0,
+      radius = 0,
+      proportional = true,
+      cycleMethod = CycleMethod.NoCycle,
+      stops = Nil
+    )
+    assert(radialGradient === expected)
+  }
+
+  it should "return valid instance from companion's apply(stops*)" in {
+    val expected: RadialGradient = new RadialGradient(
+      0,
+      0,
+      0,
+      0,
+      0,
+      true,
+      jfxsp.CycleMethod.NO_CYCLE,
+      List(
+        new jfxsp.Stop(0, Color.White),
+        new jfxsp.Stop(0, Color.Black)
+      )
+    )
+    val radialGradient = RadialGradient(
+      focusAngle = 0,
+      focusDistance = 0,
+      centerX = 0,
+      centerY = 0,
+      radius = 0,
+      proportional = true,
+      cycleMethod = CycleMethod.NoCycle,
+      Stop(0, Color.White),
+      Stop(0, Color.Black)
+    )
+    assert(radialGradient === expected)
+  }
 }

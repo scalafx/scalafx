@@ -142,7 +142,7 @@ object VideoCubeDemo extends JFXApp {
     c1.translateY = -200
 
     animation = new Timeline {
-      cycleCount = Timeline.INDEFINITE
+      cycleCount = Timeline.Indefinite
       keyFrames = Seq(
         at(0 s) {c1.ry.angle -> 0d; c1.rx.angle -> 0d; c1.rz.angle -> 0d},
         at(4 s) {c1.rx.angle -> 360d; c1.ry.angle -> 520d;},

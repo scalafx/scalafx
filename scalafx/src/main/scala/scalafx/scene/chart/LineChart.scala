@@ -34,7 +34,7 @@ import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 object LineChart {
-  implicit def sfxLineChart2jfx[X, Y](v: LineChart[X, Y]) = v.delegate
+  implicit def sfxLineChart2jfx[X, Y](v: LineChart[X, Y]) = if (v != null) v.delegate else null
 
   def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y]) =
     new LineChart[X, Y](new jfxsc.LineChart[X, Y](xAxis, yAxis))

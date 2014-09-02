@@ -28,8 +28,9 @@ package scalafx.scene.control
 
 import scala.language.implicitConversions
 import scala.math.Ordering
-import javafx.scene.{control => jfxsc}
+
 import javafx.{scene => jfxs}
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
@@ -37,13 +38,16 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.beans.property.StringProperty
+import scalafx.collections.ObservableBuffer
+import scalafx.css.Styleable
+import scalafx.delegate.SFXDelegate
 import scalafx.event.EventHandlerDelegate
 import scalafx.scene.Node
-import scalafx.delegate.SFXDelegate
-import scalafx.collections.ObservableBuffer
+import scalafx.scene.Node.sfxNode2jfx
+import scalafx.scene.control.ContextMenu._
 
 object TableColumnBase {
-  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]) = tc.delegate
+  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]) = if (tc != null) tc.delegate else null
 
   /**
    * By default all columns will use this comparator to perform sorting.
@@ -54,8 +58,9 @@ object TableColumnBase {
 /**
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/control/TableColumnBase.html]].
  */
-abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.TableColumnBase[S, T])
+abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.TableColumnBase[S, T])
   extends EventHandlerDelegate
+  with Styleable
   with SFXDelegate[jfxsc.TableColumnBase[S, T]] {
 
   /**
@@ -122,7 +127,7 @@ abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.Tab
   /**
    * This read-only property will always refer to the parent of this column, in the situation where nested columns are being used.
    */
-  def parentColumn: ReadOnlyObjectProperty[jfxsc.TableColumnBase[S,_]] = delegate.parentColumnProperty
+  def parentColumn: ReadOnlyObjectProperty[jfxsc.TableColumnBase[S, _]] = delegate.parentColumnProperty
 
   /**
    * The preferred width of the TableColumnBase.
@@ -164,12 +169,6 @@ abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.Tab
   def style_=(v: String) {
     style() = v
   }
-
-  /**
-   * A list of String identifiers which can be used to logically group Nodes, specifically for an external style engine.
-   */
-  def styleClass: ObservableBuffer[String] = delegate.getStyleClass
-
 
   /**
    * This is the text to show in the header for this column.

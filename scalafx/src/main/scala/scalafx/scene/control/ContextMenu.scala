@@ -30,13 +30,13 @@ import scala.language.implicitConversions
 import javafx.scene.{ control => jfxsc }
 import scalafx.delegate.SFXDelegate
 import scalafx.Includes._
-import javafx.{ event => jfxe }
-import javafx.{ geometry => jfxg }
+import javafx.{event => jfxe}
+import javafx.{geometry => jfxg}
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Node
 
 object ContextMenu {
-  implicit def sfxContextMenu2jfx(cm: ContextMenu) = cm.delegate
+  implicit def sfxContextMenu2jfx(cm: ContextMenu) = if (cm != null) cm.delegate else null
 }
 
 /**

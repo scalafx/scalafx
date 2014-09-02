@@ -27,12 +27,12 @@
 package scalafx.event
 
 import scala.language.implicitConversions
-import javafx.{ event => jfxe }
+import javafx.{event => jfxe}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object Event {
-  implicit def sfxEvent2jfx(e: Event) = e.delegate
+  implicit def sfxEvent2jfx(e: Event) = if (e != null) e.delegate else null
 
   def apply[T <: jfxe.Event](eventType: jfxe.EventType[T]) = new Event(new jfxe.Event(eventType))
 
@@ -46,12 +46,12 @@ object Event {
   /**
    * Common supertype for all event types.
    */
-  val ANY : EventType[jfxe.Event] = jfxe.Event.ANY
+  val ANY: EventType[jfxe.Event] = jfxe.Event.ANY
 
   /**
    * The constant which represents an unknown event source / target.
    */
-  val NULL_SOURCE_TARGET : jfxe.EventTarget = jfxe.Event.NULL_SOURCE_TARGET
+  val NULL_SOURCE_TARGET: jfxe.EventTarget = jfxe.Event.NULL_SOURCE_TARGET
 
 }
 
@@ -87,27 +87,27 @@ class Event(override val delegate: jfxe.Event) extends SFXDelegate[jfxe.Event] {
   /**
    * Indicates whether this Event has been consumed by any filter or handler.
    */
-  def consumed : Boolean = delegate.isConsumed
+  def consumed: Boolean = delegate.isConsumed
 
   /**
    * Creates and returns a copy of this event with the specified event source and target.
    */
-  def copyFor(newSource: AnyRef, newTarget: jfxe.EventTarget) : Event =
+  def copyFor(newSource: AnyRef, newTarget: jfxe.EventTarget): Event =
     new Event(delegate.copyFor(newSource, newTarget))
 
   /**
    * Gets the event type of this event.
    */
-  def eventType : EventType[_ <: jfxe.Event] = delegate.getEventType
+  def eventType: EventType[_ <: jfxe.Event] = delegate.getEventType
 
   /**
    * Returns the object on which the Event initially occurred.
    */
-  def source : Object = delegate.getSource
+  def source: Object = delegate.getSource
 
   /**
    * Returns the event target of this event.
    */
-  def target : jfxe.EventTarget = delegate.getTarget
+  def target: jfxe.EventTarget = delegate.getTarget
 
 }

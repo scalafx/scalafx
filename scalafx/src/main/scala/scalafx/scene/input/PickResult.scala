@@ -35,7 +35,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.geometry.{Point3D, Point2D}
 
 object PickResult {
-  implicit def sfxPickResult2jfx(m: PickResult) = m.delegate
+  implicit def sfxPickResult2jfx(m: PickResult) = if (m != null) m.delegate else null
 
   /** An undefined face. This value is used for the intersected face if the picked node has no user-specified faces. */
   val FACE_UNDEFINED: Int = jfxsi.PickResult.FACE_UNDEFINED

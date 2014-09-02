@@ -43,10 +43,10 @@ import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
 object TreeItem {
-  implicit def sfxTreeItemToJfx[T](v: TreeItem[T]) = v.delegate
+  implicit def sfxTreeItemToJfx[T](v: TreeItem[T]) = if (v != null) v.delegate else null
 
   object TreeModificationEvent {
-    implicit def sfxTreeModificationEvent2jfx[T](v: TreeModificationEvent[T]) = v.delegate
+    implicit def sfxTreeModificationEvent2jfx[T](v: TreeModificationEvent[T]) = if (v != null) v.delegate else null
   }
 
   class TreeModificationEvent[T](override val delegate: jfxsc.TreeItem.TreeModificationEvent[T])
@@ -95,13 +95,13 @@ object TreeItem {
      * Returns the number of children items that were added in this event, or
      * zero if no children were added.
      */
-    def addedSize : Int = delegate.getAddedSize
+    def addedSize: Int = delegate.getAddedSize
 
     /**
      * If the value of the TreeItem changed, this method will return the new
      * value.
      */
-    def newValue : T = delegate.getNewValue
+    def newValue: T = delegate.getNewValue
 
     /**
      * Returns the children removed from the TreeItem in this event, or an
@@ -113,12 +113,12 @@ object TreeItem {
      * Returns the number of children items that were removed in this event,
      * or zero if no children were removed.
      */
-    def removedSize : Int = delegate.getRemovedSize
+    def removedSize: Int = delegate.getRemovedSize
 
     /**
      * Returns the TreeItem upon which this event occurred.
      */
-    override def source : TreeItem[_] = delegate.getSource
+    override def source: TreeItem[_] = delegate.getSource
 
     /**
      * Returns the TreeItem that this event occurred upon.
@@ -129,25 +129,25 @@ object TreeItem {
      * Returns true if this event represents a TreeItem event where children
      * TreeItems were added.
      */
-    def wasAdded : Boolean = delegate.wasAdded
+    def wasAdded: Boolean = delegate.wasAdded
 
     /**
      * Returns true if this event represents a TreeItem collapse event, and
      * false if the TreeItem was not collapsed.
      */
-    def wasCollapsed : Boolean = delegate.wasCollapsed
+    def wasCollapsed: Boolean = delegate.wasCollapsed
 
     /**
      * Returns true if this event represents a TreeItem expansion event, and
      * false if the TreeItem was not expanded.
      */
-    def wasExpanded : Boolean = delegate.wasExpanded
+    def wasExpanded: Boolean = delegate.wasExpanded
 
     /**
      * Returns true if this event represents a TreeItem event where children
      * TreeItems were removed.
      */
-    def wasRemoved : Boolean = delegate.wasRemoved
+    def wasRemoved: Boolean = delegate.wasRemoved
 
   }
 
@@ -171,6 +171,8 @@ object TreeItem {
 
   /** The general EventType used when the TreeItem receives a modification
     * that results in the number of children being visible changes.
+    * 
+    * @since 8.0  
     */
   def expandedItemCountChangeEvent = jfxsc.TreeItem.expandedItemCountChangeEvent
 

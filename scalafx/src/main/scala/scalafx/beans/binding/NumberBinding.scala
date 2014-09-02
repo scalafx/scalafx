@@ -31,7 +31,7 @@ import javafx.beans.{binding => jfxbb}
 import scalafx.beans.value.ObservableValue
 
 object NumberBinding {
-  implicit def sfxNumberBinding2jfx(nb: NumberBinding) = nb.delegate
+  implicit def sfxNumberBinding2jfx(nb: NumberBinding) = if (nb != null) nb.delegate else null
 }
 
 class NumberBinding(override val delegate: jfxbb.NumberBinding) extends NumberExpression(delegate) with ObservableValue[Number, Number] {

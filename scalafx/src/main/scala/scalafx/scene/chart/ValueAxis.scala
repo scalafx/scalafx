@@ -39,7 +39,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
 object ValueAxis {
-  implicit def sfxValueAxis2jfx[T <: Number](v: ValueAxis[T]) = v.delegate
+  implicit def sfxValueAxis2jfx[T <: Number](v: ValueAxis[T]) = if (v != null) v.delegate else null
 }
 
 abstract class ValueAxis[T <: Number](override val delegate: jfxsc.ValueAxis[T])

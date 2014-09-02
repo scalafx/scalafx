@@ -40,8 +40,8 @@ import scala.collection.mutable.BufferLike
 import scala.collection.mutable.Builder
 import scala.reflect.runtime.universe._
 
-import java.{ util => ju }
-import javafx.{ collections => jfxc }
+import java.{util => ju}
+import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.event.subscriptions.Subscription
 import scalafx.delegate.SFXDelegate
@@ -60,7 +60,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    *
    * @param ob ObservableBuffer
    */
-  implicit def observableBuffer2ObservableList[T](ob: ObservableBuffer[T]) = ob.delegate
+  implicit def observableBuffer2ObservableList[T](ob: ObservableBuffer[T]) = if (ob != null) ob.delegate else null
 
   /**
    * The standard `CanBuildFrom` instance for $OB objects.
@@ -198,7 +198,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
   def rotate[T](buffer: ObservableBuffer[T], distance: Int) {
     jfxc.FXCollections.rotate(buffer, distance)
   }
-  
+
   // HELPER METHODS - END
 
 }
@@ -527,7 +527,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * modifications data.
    *
    * @param op Function that will handle this $OB's modifications data to be activated when
-   *                 some change was made.
+   *           some change was made.
    * @return A subscription object
    */
   def onChange[T1 >: T](op: (ObservableBuffer[T], Seq[Change]) => Unit): Subscription = {

@@ -46,6 +46,7 @@ import util.converter.ConverterIncludes
 import util.UtilIncludes
 import scalafx.delegate.DelegateIncludes
 import scalafx.print.PrintIncludes
+import scalafx.embed.swing.SwingIncludes
 
 /**
  * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
@@ -76,3 +77,4 @@ trait Includes
   with ApplicationIncludes
   with CssIncludes
   with PrintIncludes
+  with SwingIncludes

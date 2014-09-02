@@ -29,23 +29,22 @@ package scalafx.scene.control
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-import javafx.scene.{control => jfxsc}
+import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
+import scalafx.testutil.{ RunOnApplicationThread, SimpleSFXDelegateSpec }
 
 /**
  * TableViewSelectionModel tests.
  */
 @RunWith(classOf[JUnitRunner])
 class TableViewTableViewSelectionModelSpec[S]
-  extends SimpleSFXDelegateSpec[jfxsc.TableView.TableViewSelectionModel[S], TableView.TableViewSelectionModel[S]](classOf[jfxsc.TableView.TableViewSelectionModel[S]], classOf[TableView.TableViewSelectionModel[S]])
-  with RunOnApplicationThread {
+  extends SimpleSFXDelegateSpec[jfxsc.TableView.TableViewSelectionModel[S], TableView.TableViewSelectionModel[S]](classOf[jfxsc.TableView.TableViewSelectionModel[S]], classOf[TableView.TableViewSelectionModel[S]]) {
 
-  override def getScalaClassInstance = new TableView.TableViewSelectionModel[S](this.getJavaClassInstance){}
+  override def getScalaClassInstance = new TableView.TableViewSelectionModel[S](this.getJavaClassInstance) {}
 
   override def getJavaClassInstance = {
     val jtv = new jfxsc.TableView[S]
     jtv.getSelectionModel
-  } 
+  }
 
 }

@@ -31,7 +31,7 @@ import scalafx.delegate.SFXDelegate
 import javafx.scene.{control => jfxsc}
 
 object PasswordField {
-  implicit def sfxPasswordField2jfx(v: PasswordField) = v.delegate
+  implicit def sfxPasswordField2jfx(v: PasswordField) = if (v != null) v.delegate else null
 }
 
 class PasswordField(override val delegate: jfxsc.PasswordField = new jfxsc.PasswordField()) extends TextField(delegate) with SFXDelegate[jfxsc.PasswordField] {

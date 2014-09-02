@@ -32,7 +32,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color
 
 object PointLight {
-  implicit def sfxPointLight2jfx(pl: PointLight) = pl.delegate
+  implicit def sfxPointLight2jfx(pl: PointLight) = if (pl != null) pl.delegate else null
 }
 
 /** Defines a point light source object.

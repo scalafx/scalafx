@@ -38,14 +38,14 @@ object PrintColor
   /**
    * Specifies color printing.
    */
-  val COLOR = new PrintColor(jfxp.PrintColor.COLOR)
+  val Color = new PrintColor(jfxp.PrintColor.COLOR)
 
   /**
    * Specifies monochrome or grey scale printing.
    */
-  val MONOCHROME = new PrintColor(jfxp.PrintColor.MONOCHROME)
+  val Monochrome = new PrintColor(jfxp.PrintColor.MONOCHROME)
 
-  protected override def unsortedValues: Array[PrintColor] = Array(COLOR, MONOCHROME)
+  protected override def unsortedValues: Array[PrintColor] = Array(Color, Monochrome)
 
 }
 

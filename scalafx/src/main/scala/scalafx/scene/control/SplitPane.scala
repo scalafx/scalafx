@@ -37,10 +37,10 @@ import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
 object SplitPane {
-  implicit def sfxSplitPane2jfx(v: SplitPane) = v.delegate
+  implicit def sfxSplitPane2jfx(v: SplitPane) = if (v != null) v.delegate else null
 
   object Divider {
-    implicit def sfxSplitPaneDivider2jfx(v: SplitPane.Divider) = v.delegate
+    implicit def sfxSplitPaneDivider2jfx(v: SplitPane.Divider) = if (v != null) v.delegate else null
   }
 
   class Divider(override val delegate: jfxsc.SplitPane.Divider = new jfxsc.SplitPane.Divider) extends SFXDelegate[jfxsc.SplitPane.Divider] {

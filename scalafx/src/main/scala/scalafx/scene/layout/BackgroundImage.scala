@@ -33,7 +33,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.scene.image.Image
 
 object BackgroundImage {
-  implicit def sfxBackgroundImage2jfx(v: BackgroundImage) = v.delegate
+  implicit def sfxBackgroundImage2jfx(v: BackgroundImage) = if (v != null) v.delegate else null
 }
 
 /**

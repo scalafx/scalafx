@@ -33,7 +33,7 @@ import scalafx.delegate.SFXDelegate
 
 
 object ReadOnlyStringWrapper {
-  implicit def sfxReadOnlyStringWrapper2jfx(w: ReadOnlyStringWrapper) = w.delegate
+  implicit def sfxReadOnlyStringWrapper2jfx(w: ReadOnlyStringWrapper) = if (w != null) w.delegate else null
 
   /** Creates a new ReadOnlyStringWrapper instance.
     * @param value the initial value of the wrapped value

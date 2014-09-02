@@ -24,14 +24,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.input
 
+import javafx.scene.{input => jfxsi}
+
 import scala.language.implicitConversions
-import javafx.scene.{ input => jfxsi }
-import javafx.{ event => jfxe }
-import scalafx.event.Event
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 object KeyCombination {
 
@@ -56,7 +55,7 @@ object KeyCombination {
     protected override def unsortedValues: Array[ModifierValue] = Array(ANY, DOWN, UP)
 
   }
-  
+
   /**
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/KeyCombination.ModifierValue.html]]
    */
@@ -64,7 +63,7 @@ object KeyCombination {
     extends SFXEnumDelegate[jfxsi.KeyCombination.ModifierValue]
 
   object Modifier {
-    implicit def sfxModifier2jfx(m: Modifier) = m.delegate
+    implicit def sfxModifier2jfx(m: Modifier) = if (m != null) m.delegate else null
   }
 
   class Modifier(override val delegate: jfxsi.KeyCombination.Modifier) extends SFXDelegate[jfxsi.KeyCombination.Modifier] {
@@ -81,7 +80,7 @@ object KeyCombination {
 
   }
 
-  implicit def sfxKeyCombination2jfx(kc: KeyCombination) = kc.delegate
+  implicit def sfxKeyCombination2jfx(kc: KeyCombination) = if (kc != null) kc.delegate else null
 
   /**
    * Modifier which specifies that the alt key can be either up or down.
@@ -148,10 +147,10 @@ object KeyCombination {
    * Constructs a new KeyCombination from the specified string.
    */
   def apply(value: String): KeyCombination = new KeyCombination(jfxsi.KeyCombination.valueOf(value)) {}
-  
+
 }
 
-abstract class KeyCombination protected (override val delegate: jfxsi.KeyCombination) extends SFXDelegate[jfxsi.KeyCombination] {
+abstract class KeyCombination protected(override val delegate: jfxsi.KeyCombination) extends SFXDelegate[jfxsi.KeyCombination] {
 
   /**
    * The state of the alt key in this key combination.
@@ -162,6 +161,14 @@ abstract class KeyCombination protected (override val delegate: jfxsi.KeyCombina
    * The state of the control key in this key combination.
    */
   def control: KeyCombination.ModifierValue = KeyCombination.ModifierValue.jfxEnum2sfx(delegate.getControl)
+
+  /**
+   * Returns a string representation of this KeyCombination that is suitable for display in a user interface
+   * (for example, beside a menu item).
+   *
+   * @return A string representation of this KeyCombination, suitable for display in a user interface.
+   */
+  def displayText: String = delegate.getDisplayText
 
   /**
    * The state of the meta key in this key combination.

@@ -90,7 +90,7 @@ trait AnimationIncludes {
    * @tparam T type of function
    * @param i $INTERP instance
    * @return A [[scala.Function2]] that receives a instance of T and a Double (between 0.0 and 1.0) and returns a T Instance
-   * according $INTERPM
+   *         according $INTERPM
    */
   implicit def jfxInterpolatable2sfxFunction2[T](i: jfxa.Interpolatable[T]): ((T, Double) => T) =
     (endValue: T, t: Double) => i.interpolate(endValue, t)
@@ -109,7 +109,7 @@ trait AnimationIncludes {
   /**
    * $GENERATE `Animation` $FROM
    */
-  implicit def jfxAnimation2sfx(v: jfxa.Animation) = new Animation(v) {}
+  implicit def jfxAnimation2sfx(v: jfxa.Animation) = if (v != null) new Animation(v) {} else null
 
   /**
    * $GENERATE `Animation.Status` $FROM
@@ -119,80 +119,80 @@ trait AnimationIncludes {
   /**
    * $GENERATE `AnimationTimer` $FROM
    */
-  implicit def jfxAnimationTimer2sfx(at: jfxa.AnimationTimer) = new AnimationTimer(at) {}
+  implicit def jfxAnimationTimer2sfx(at: jfxa.AnimationTimer) = if (at != null) new AnimationTimer(at) {} else null
 
   /**
    * $GENERATE `FadeTransition` $FROM
    */
-  implicit def jfxFadeTransition2sfx(v: jfxa.FadeTransition) = new FadeTransition(v)
+  implicit def jfxFadeTransition2sfx(v: jfxa.FadeTransition) = if (v != null) new FadeTransition(v) else null
 
   /**
    * $GENERATE `FillTransition` $FROM
    */
-  implicit def jfxFillTransition2sfx(v: jfxa.FillTransition) = new FillTransition(v)
+  implicit def jfxFillTransition2sfx(v: jfxa.FillTransition) = if (v != null) new FillTransition(v) else null
 
   /**
    * $GENERATE `KeyFrame` $FROM
    */
-  implicit def jfxKeyFrame2sfx(v: jfxa.KeyFrame) = new KeyFrame(v)
+  implicit def jfxKeyFrame2sfx(v: jfxa.KeyFrame) = if (v != null) new KeyFrame(v) else null
 
   /**
    * $GENERATE `KeyValue` $FROM
    */
-  implicit def jfxKeyValue2sfx(v: jfxa.KeyValue) = new KeyValue(v)
+  implicit def jfxKeyValue2sfx(v: jfxa.KeyValue) = if (v != null) new KeyValue(v) else null
 
   /**
    * $GENERATE `ParallelTransition` $FROM
    */
-  implicit def jfxParallelTransition2sfx(v: jfxa.ParallelTransition) = new ParallelTransition(v)
+  implicit def jfxParallelTransition2sfx(v: jfxa.ParallelTransition) = if (v != null) new ParallelTransition(v) else null
 
   /**
    * $GENERATE `PathTransition` $FROM
    */
-  implicit def jfxPathTransition2sfx(v: jfxa.PathTransition) = new PathTransition(v)
+  implicit def jfxPathTransition2sfx(v: jfxa.PathTransition) = if (v != null) new PathTransition(v) else null
 
   /**
    * $GENERATE `PathTransition.OrientationType` $FROM
    */
-  implicit def jfxPathTransitionOrientationType2sfx(v: jfxa.PathTransition.OrientationType) = new PathTransition.OrientationType(v)
+  implicit def jfxPathTransitionOrientationType2sfx(v: jfxa.PathTransition.OrientationType) = if (v != null) new PathTransition.OrientationType(v) else null
 
   /**
    * $GENERATE `PauseTransition` $FROM
    */
-  implicit def jfxPauseTransition2sfx(v: jfxa.PauseTransition) = new PauseTransition(v)
+  implicit def jfxPauseTransition2sfx(v: jfxa.PauseTransition) = if (v != null) new PauseTransition(v) else null
 
   /**
    * $GENERATE `RotateTransition` $FROM
    */
-  implicit def jfxRotateTransition2sfx(v: jfxa.RotateTransition) = new RotateTransition(v)
+  implicit def jfxRotateTransition2sfx(v: jfxa.RotateTransition) = if (v != null) new RotateTransition(v) else null
 
   /**
    * $GENERATE `ScaleTransition` $FROM
    */
-  implicit def jfxScaleTransition2sfx(v: jfxa.ScaleTransition) = new ScaleTransition(v)
+  implicit def jfxScaleTransition2sfx(v: jfxa.ScaleTransition) = if (v != null) new ScaleTransition(v) else null
 
   /**
    * $GENERATE `SequentialTransition` $FROM
    */
-  implicit def jfxSequentialTransition2sfx(v: jfxa.SequentialTransition) = new SequentialTransition(v)
+  implicit def jfxSequentialTransition2sfx(v: jfxa.SequentialTransition) = if (v != null) new SequentialTransition(v) else null
 
   /**
    * $GENERATE `StrokeTransition` $FROM
    */
-  implicit def jfxStrokeTransition2sfx(v: jfxa.StrokeTransition) = new StrokeTransition(v)
+  implicit def jfxStrokeTransition2sfx(v: jfxa.StrokeTransition) = if (v != null) new StrokeTransition(v) else null
 
   /**
    * $GENERATE `Timeline` $FROM
    */
-  implicit def jfxTimeline2sfx(v: jfxa.Timeline) = new Timeline(v)
+  implicit def jfxTimeline2sfx(v: jfxa.Timeline) = if (v != null) new Timeline(v) else null
 
   /**
    * $GENERATE `Transition` $FROM
    */
-  implicit def jfxTransition2sfx(v: jfxa.Transition) = new Transition(v) {}
+  implicit def jfxTransition2sfx(v: jfxa.Transition) = if (v != null) new Transition(v) {} else null
 
   /**
    * $GENERATE `TranslateTransition` $FROM
    */
-  implicit def jfxTranslateTransition2sfx(v: jfxa.TranslateTransition) = new TranslateTransition(v)
+  implicit def jfxTranslateTransition2sfx(v: jfxa.TranslateTransition) = if (v != null) new TranslateTransition(v) else null
 }

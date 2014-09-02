@@ -27,13 +27,13 @@
 package scalafx.beans.value
 
 import scala.language.implicitConversions
-import javafx.beans.{ value => jfxbv }
+import javafx.beans.{value => jfxbv}
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
 object ObservableValue {
-  implicit def sfxObservableValue2jfx[T, J](ov: ObservableValue[T, J]) = ov.delegate
+  implicit def sfxObservableValue2jfx[T, J](ov: ObservableValue[T, J]) = if (ov != null) ov.delegate else null
 
   // Conversions to JavaFX Marker classes (no need for these in scala, due to specialized classes)
   implicit def sfxObservableValue2jfxIntegerValue(ov: ObservableValue[Int, Number]) = ov.delegate.asInstanceOf[jfxbv.ObservableIntegerValue]
@@ -58,7 +58,7 @@ object ObservableValue {
  *
  * @tparam T Indicates Scala type that will be returned for this Observable.
  * @tparam J Indicates Java type to be wrapped by T. Eventually T and J could be the same.
- * 
+ *
  * @define OV `ObservableValue`
  * @define VALUE the current value of this $OV.
  * @define CV `ChangeListener`

@@ -34,7 +34,7 @@ import scalafx.scene.image.Image
 import scalafx.geometry.Insets
 
 object BorderImage {
-  implicit def sfxBackground2jfx(v: BorderImage) = v.delegate
+  implicit def sfxBackground2jfx(v: BorderImage) = if (v != null) v.delegate else null
 }
 
 /**
@@ -48,9 +48,9 @@ class BorderImage(override val delegate: jfxsl.BorderImage)
    * Creates a new BackgroundImage.Defines properties describing how to render an image as
    * the border of some Region.
    */
-    def this(image: Image,   widths:BorderWidths,  insets:Insets,  slices:BorderWidths,
-             filled:Boolean, repeatX: BorderRepeat, repeatY: BorderRepeat) =
-      this(new jfxsl.BorderImage(image, widths, insets, slices, filled, repeatX, repeatY))
+  def this(image: Image, widths: BorderWidths, insets: Insets, slices: BorderWidths,
+           filled: Boolean, repeatX: BorderRepeat, repeatY: BorderRepeat) =
+    this(new jfxsl.BorderImage(image, widths, insets, slices, filled, repeatX, repeatY))
 
   /**
    * The image to be used.
@@ -61,7 +61,7 @@ class BorderImage(override val delegate: jfxsl.BorderImage)
    * The insets of the BorderImage define where the border should be positioned relative
    * to the edge of the Region.
    */
-  def insets :Insets 	= delegate.getInsets
+  def insets: Insets = delegate.getInsets
 
   /**
    * Indicates in what manner (if at all) the background image is to be repeated along
@@ -78,11 +78,11 @@ class BorderImage(override val delegate: jfxsl.BorderImage)
   /**
    * Defines the slices of the image.@return
    */
-  def slices : BorderWidths 	= delegate.getSlices
+  def slices: BorderWidths = delegate.getSlices
 
   /**
    * The widths of the border on each side.
    */
-  def widths : BorderWidths 	= delegate.getWidths
+  def widths: BorderWidths = delegate.getWidths
 
 }

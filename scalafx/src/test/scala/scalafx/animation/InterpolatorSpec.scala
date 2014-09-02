@@ -26,6 +26,8 @@
  */
 package scalafx.animation
 
+import scala.language.postfixOps
+
 import javafx.{animation => jfxa}
 import org.scalatest.Matchers._
 import org.scalatest.FlatSpec

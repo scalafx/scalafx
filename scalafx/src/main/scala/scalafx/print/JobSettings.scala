@@ -28,7 +28,7 @@ package scalafx.print
 
 import scala.language.implicitConversions
 
-import javafx.{ print => jfxp }
+import javafx.{print => jfxp}
 import scalafx.Includes.jfxIntegerProperty2sfx
 import scalafx.Includes.jfxObjectProperty2sfx
 import scalafx.Includes.jfxStringProperty2sfx
@@ -55,16 +55,16 @@ object JobSettings {
    * @param js ScalaFX JobSettings
    * @return JavaFX JobSettings
    */
-  implicit def sfxJobSettings2jfx(js: JobSettings): jfxp.JobSettings = js.delegate
+  implicit def sfxJobSettings2jfx(js: JobSettings): jfxp.JobSettings = if (js != null) js.delegate else null
 
 }
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/JobSettings.html JavaFX JobSettings]].
- * 
+ *
  * @constructor Creates a new ScalaFX JobSettings from its JavaFX counterpart.
  * @param delegate JavaFX JobSettings. Since there is no public constructor for it, there is not a default value.
- * 
+ *
  * @since 8.0
  */
 final class JobSettings(override val delegate: jfxp.JobSettings)

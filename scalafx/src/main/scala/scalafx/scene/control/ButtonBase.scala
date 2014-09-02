@@ -36,7 +36,7 @@ import scalafx.delegate.FireDelegate
 import scalafx.delegate.SFXDelegate
 
 object ButtonBase {
-  implicit def sfxButtonBase2jfx(v: ButtonBase) = v.delegate
+  implicit def sfxButtonBase2jfx(v: ButtonBase) = if (v != null) v.delegate else null
 }
 
 abstract class ButtonBase(override val delegate: jfxsc.ButtonBase)

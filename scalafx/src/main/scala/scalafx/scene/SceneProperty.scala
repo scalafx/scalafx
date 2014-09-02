@@ -35,7 +35,7 @@ import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object SceneProperty {
-  implicit def sfxSceneProperty2jfx(p: SceneProperty) = p.delegate
+  implicit def sfxSceneProperty2jfx(p: SceneProperty) = if (p != null) p.delegate else null
 }
 
 // This particular construct enables the reading of properties of the scene that will be set into the property later on.
@@ -90,6 +90,7 @@ class SceneProperty(override val delegate: jfxbp.ReadOnlyObjectProperty[jfxs.Sce
   def onZoomStarted = jfxbb.Bindings.select[jfxbb.ObjectBinding[_ >: jfxsi.ZoomEvent]](delegate, "onZoomStarted")
   def root = jfxbb.Bindings.select[jfxs.Parent](delegate, "root")
   def stylesheets = jfxbb.Bindings.select[jfxbb.ObjectBinding[javafx.collections.ObservableList[String]]](delegate, "stylesheets")
+  def userAgentStylesheet = jfxbb.Bindings.select[String](delegate, "userAgentStylesheet")
   def width = jfxbb.Bindings.selectDouble(delegate, "width")
   def window = jfxbb.Bindings.select[javafx.stage.Window](delegate, "window")
   def x = jfxbb.Bindings.selectDouble(delegate, "x")

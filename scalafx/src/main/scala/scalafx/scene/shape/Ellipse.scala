@@ -33,14 +33,14 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Ellipse {
-  implicit def sfxEllipse2jfx(v: Ellipse) = v.delegate
-  
+  implicit def sfxEllipse2jfx(v: Ellipse) = if (v != null) v.delegate else null
+
   def apply(radiusX: Double, radiusY: Double) = new Ellipse(new jfxss.Ellipse(radiusX, radiusY))
-  def apply(centerX: Double, centerY: Double, radiusX: Double, radiusY: Double) = 
+  def apply(centerX: Double, centerY: Double, radiusX: Double, radiusY: Double) =
     new Ellipse(new jfxss.Ellipse(centerX, centerY, radiusX, radiusY))
 }
 
-class Ellipse(override val delegate:jfxss.Ellipse = new jfxss.Ellipse()) extends Shape(delegate) with SFXDelegate[jfxss.Ellipse] {
+class Ellipse(override val delegate: jfxss.Ellipse = new jfxss.Ellipse()) extends Shape(delegate) with SFXDelegate[jfxss.Ellipse] {
   def centerX: DoubleProperty = delegate.centerXProperty
   def centerX_=(v: Double) {
     centerX() = v

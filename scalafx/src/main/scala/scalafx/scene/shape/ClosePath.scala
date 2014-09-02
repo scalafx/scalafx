@@ -32,7 +32,7 @@ import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object ClosePath {
-  implicit def sfxClosePath2jfx(v: ClosePath) = v.delegate
+  implicit def sfxClosePath2jfx(v: ClosePath) = if (v != null) v.delegate else null
 }
 
-class ClosePath(override val delegate:jfxss.ClosePath = new jfxss.ClosePath()) extends PathElement(delegate) with SFXDelegate[jfxss.ClosePath]
+class ClosePath(override val delegate: jfxss.ClosePath = new jfxss.ClosePath()) extends PathElement(delegate) with SFXDelegate[jfxss.ClosePath]

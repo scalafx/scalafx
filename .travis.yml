@@ -12,5 +12,9 @@ jdk:
 
 branches:
   only:
-    - SFX-8
-    - SFX-8-stable
+    - SFX-2
+    - SFX-2-stable
+
+notifications:
+  email:
+    - scalafx-build@googlegroups.com

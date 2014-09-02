@@ -34,7 +34,7 @@ import scalafx.scene.shape.{StrokeLineJoin, StrokeType, StrokeLineCap}
 import scala.collection.JavaConversions._
 
 object BorderStrokeStyle {
-  implicit def sfxBorderStrokeStyle2jfx(v: BorderStrokeStyle) = v.delegate
+  implicit def sfxBorderStrokeStyle2jfx(v: BorderStrokeStyle) = if (v != null) v.delegate else null
 
   /**
    * A predefined dashed pattern to be used for stroking

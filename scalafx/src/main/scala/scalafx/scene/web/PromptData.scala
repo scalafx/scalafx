@@ -27,15 +27,32 @@
 package scalafx.scene.web
 
 import scala.language.implicitConversions
-import javafx.scene.{ web => jfxsw }
+import javafx.scene.{web => jfxsw}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
+/**
+ * Companion object for [[scalafx.scene.web.PromptData]]
+ */
 object PromptData {
-  implicit def sfxPromptData2jfx(pd: PromptData) = pd.delegate
+
+  /**
+   * Converts a ScalaFX PromptData to its JavaFX counterpart.
+   *
+   * @param pd ScalaFX PromptData
+   * @return JavaFX PromptData
+   */
+  implicit def sfxPromptData2jfx(pd: PromptData) = if (pd != null) pd.delegate else null
 }
 
-class PromptData(override val delegate: jfxsw.PromptData) extends SFXDelegate[jfxsw.PromptData] {
+/**
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/PromptData.html JavaFX PromptData]]
+ *
+ * @constructor Creates a new PromptData from its JavaFX counterpart.
+ * @param delegate JavaFX PromptData.
+ */
+class PromptData(override val delegate: jfxsw.PromptData)
+  extends SFXDelegate[jfxsw.PromptData] {
 
   /**
    * .

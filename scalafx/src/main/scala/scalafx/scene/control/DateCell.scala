@@ -34,7 +34,7 @@ import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object DateCell {
-  implicit def sfxDateCell2jfx(c: DateCell) = c.delegate
+  implicit def sfxDateCell2jfx(c: DateCell) = if (c != null) c.delegate else null
 }
 
 /**

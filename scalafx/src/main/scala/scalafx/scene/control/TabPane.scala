@@ -27,19 +27,19 @@
 package scalafx.scene.control
 
 import scala.language.implicitConversions
-import javafx.scene.{ control => jfxsc }
-import javafx.{ geometry => jfxg }
+import javafx.scene.{control => jfxsc}
+import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 import scalafx.geometry.Side
 
 object TabPane {
 
-  implicit def sfxTabPane2jfx(v: TabPane) = v.delegate
+  implicit def sfxTabPane2jfx(v: TabPane) = if (v != null) v.delegate else null
 
   object TabClosingPolicy
     extends SFXEnumDelegateCompanion[jfxsc.TabPane.TabClosingPolicy, TabClosingPolicy] {

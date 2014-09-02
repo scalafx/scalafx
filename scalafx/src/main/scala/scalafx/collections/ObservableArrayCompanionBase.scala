@@ -33,13 +33,14 @@ import scala.reflect.ClassTag
 /*
  * Enable implicit conversions, to avoid feature warnings during compilation.
  */
+
 import scala.language.implicitConversions
 
 /**
  * @define OA `ObservableArray`
  * @define ARY `Array`
  *
- * Abstract base class for observable array subclass companion objects.
+ *         Abstract base class for observable array subclass companion objects.
  *
  * @tparam V Value type to be stored in this array.
  * @tparam T Type of this ScalaFX $ARY.
@@ -47,8 +48,8 @@ import scala.language.implicitConversions
  *
  * @constructor Create new base $OA.
  */
-private[collections] abstract class ObservableArrayCompanionBase[V : ClassTag, T <: ObservableArray[V, T, D],
-  D <: jfxc.ObservableArray[D]] {
+private[collections] abstract class ObservableArrayCompanionBase[V: ClassTag, T <: ObservableArray[V, T, D],
+D <: jfxc.ObservableArray[D]] {
 
   // TODO: Enter link when JavaFX 8 API Docs are available on-line.
   /**
@@ -57,7 +58,7 @@ private[collections] abstract class ObservableArrayCompanionBase[V : ClassTag, T
    * @param oa ScalaFX $OA.
    * @return JavaFX $OA inside parameter.
    */
-  implicit def sfxObservableArray2jfxObservableArray(oa: T): D = oa.delegate
+  implicit def sfxObservableArray2jfxObservableArray(oa: T): D = if (oa != null) oa.delegate else null.asInstanceOf[D]
 
   /**
    * Create new $OA from a vararg list.
@@ -73,7 +74,7 @@ private[collections] abstract class ObservableArrayCompanionBase[V : ClassTag, T
    * @param a Array to be converted..
    * @return New $OA storing `a`.
    */
-  def apply(a: Array[V]): T = apply(a:_*)
+  def apply(a: Array[V]): T = apply(a: _*)
 
   /**
    * Create an observable array with given dimension.
@@ -97,7 +98,7 @@ private[collections] abstract class ObservableArrayCompanionBase[V : ClassTag, T
    * Note that `elem` is computed `n` times in total; it is not simply calculated once and reused.
    *
    * @param n Size of the new array.  If this value is less than 1, an empty array is returned (matching the behavior
-   * of Scala's Array[T].fill function).
+   *          of Scala's Array[T].fill function).
    * @param elem Computation to be calculated for each element.
    * @return Observable array of size `n`, with each element containing the result of computation `elem`.
    */
@@ -107,7 +108,7 @@ private[collections] abstract class ObservableArrayCompanionBase[V : ClassTag, T
    * Returns an array containing the results of some element computation that takes the element index as an argument.
    *
    * @param n Size of the new array.  If this value is less than 1, an empty array is returned (matching the behavior
-   * of Scala's Array[T].tabulate function).
+   *          of Scala's Array[T].tabulate function).
    * @param f Function to be used to initialize element whose index is passed as an argument.
    * @return Observable array of size `n`, with each element initialized by `f`.
    */
@@ -115,10 +116,10 @@ private[collections] abstract class ObservableArrayCompanionBase[V : ClassTag, T
 
   /**
    * Return an array returning repeated applications of a function to a start value.
-   * 
+   *
    * @param start Start value of the array.
    * @param n Size of the new array.  If this value is less than 1, an empty array is returned (matching the behavior
-   * of Scala's Array[T].iterate function).
+   *          of Scala's Array[T].iterate function).
    * @param f Function to be repeatedly applied to previous element's value.
    * @return Array containing elements `start, f(start), f(f(start)), ...`.
    */

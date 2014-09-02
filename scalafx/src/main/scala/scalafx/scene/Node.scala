@@ -24,56 +24,57 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene
 
+import javafx.scene.{effect => jfxse, input => jfxsi, layout => jfxsl}
+import javafx.{event => jfxe, geometry => jfxg, scene => jfxs}
+
 import scala.language.implicitConversions
-import javafx.scene.{ effect => jfxse }
-import javafx.scene.{ input => jfxsi }
-import javafx.scene.{ layout => jfxsl }
-import javafx.{ event => jfxe }
-import javafx.{ geometry => jfxg }
-import javafx.{ scene => jfxs }
-import scalafx.collections._
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyBooleanProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property._
+import scalafx.collections._
+import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.Event._
-import scalafx.event.{EventHandlerDelegate, Event}
+import scalafx.event.{Event, EventHandlerDelegate}
 import scalafx.geometry.Bounds._
 import scalafx.geometry.Point2D._
-import scalafx.geometry.Bounds
-import scalafx.geometry.Insets
-import scalafx.geometry.NodeOrientation
-import scalafx.geometry.Point2D
-import scalafx.geometry.Point3D
-import scalafx.geometry.Pos
-import scalafx.scene.effect.BlendMode
-import scalafx.scene.effect.Effect
+import scalafx.geometry._
+import scalafx.scene.effect.{BlendMode, Effect}
 import scalafx.scene.image.WritableImage
 import scalafx.scene.layout.Priority
 import scalafx.scene.transform.Transform
 
+/**
+ * Companion object for [[scalafx.scene.Node]].
+ */
 object Node {
-  implicit def sfxNode2jfx(v: Node) = v.delegate
+
+  /**
+   * Converts a ScalaFX Node to its JavaFX counterpart.
+   *
+   * @param v ScalaFX Node
+   * @return JavaFX Node
+   */
+  implicit def sfxNode2jfx(v: Node) = if (v != null) v.delegate else null
 }
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Node.html]].
+ *
+ * @constructor creates a new ScalaFX Node from a JavaFX Node.
+ * @param delegate JavaFX Node
  */
-abstract class Node protected (override val delegate: jfxs.Node)
+abstract class Node protected(override val delegate: jfxs.Node)
   extends EventHandlerDelegate
+  with Styleable
   with SFXDelegate[jfxs.Node] {
 
   /**
    * The BlendMode used to blend this individual node into the scene behind it.
    */
   def blendMode: ObjectProperty[jfxse.BlendMode] = delegate.blendModeProperty
-
   def blendMode_=(v: BlendMode) {
     blendMode() = v
   }
@@ -92,7 +93,6 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * Additional hint for controlling bitmap caching.
    */
   def cacheHint: ObjectProperty[jfxs.CacheHint] = delegate.cacheHintProperty
-
   def cacheHint_=(v: CacheHint) {
     cacheHint() = v
   }
@@ -101,7 +101,6 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * A performance hint to the system to indicate that this Node should be cached as a bitmap.
    */
   def cache: BooleanProperty = delegate.cacheProperty
-
   def cache_=(v: Boolean) {
     cache() = v
   }
@@ -110,16 +109,26 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * Specifies a Node to use to define the the clipping shape for this Node.
    */
   def clip: ObjectProperty[jfxs.Node] = delegate.clipProperty
-
   def clip_=(v: Node) {
     clip() = v
   }
 
   /**
+   * Returns the orientation of a node's resizing bias for layout purposes.
+   * If the node type has no bias, returns `null`.
+   * If the node is resizable and it's height depends on its width, returns HORIZONTAL, else
+   * if its width depends on its height, returns VERTICAL.
+   *
+   * Resizable subclasses should override this method to return an appropriate value.
+   *
+   * @return orientation of width/height dependency or `null` if there is none
+   */
+  def contentBias: Orientation = delegate.getContentBias
+
+  /**
    * Defines the mouse cursor for this Node and subnodes.
    */
   def cursor: ObjectProperty[jfxs.Cursor] = delegate.cursorProperty
-
   def cursor_=(v: Cursor) {
     cursor() = v
   }
@@ -128,7 +137,6 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * Indicates whether depth testing is used when rendering this node.
    */
   def depthTest: ObjectProperty[jfxs.DepthTest] = delegate.depthTestProperty
-
   def depthTest_=(v: DepthTest) {
     depthTest() = v
   }
@@ -142,7 +150,6 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * Sets the individual disabled state of this Node.
    */
   def disable: BooleanProperty = delegate.disableProperty
-
   def disable_=(v: Boolean) {
     disable() = v
   }
@@ -151,7 +158,6 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * Specifies an effect to apply to this Node.
    */
   def effect: ObjectProperty[jfxse.Effect] = delegate.effectProperty
-
   def effect_=(v: Effect) {
     ObjectProperty.fillProperty[jfxse.Effect](this.effect, v)
   }
@@ -160,7 +166,6 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * Specifies the event dispatcher for this node.
    */
   def eventDispatcher: ObjectProperty[jfxe.EventDispatcher] = delegate.eventDispatcherProperty
-
   def eventDispatcher_=(v: jfxe.EventDispatcher) {
     eventDispatcher() = v
   }
@@ -174,7 +179,6 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * Specifies whether this Node should be a part of focus traversal cycle.
    */
   def focusTraversable: BooleanProperty = delegate.focusTraversableProperty
-
   def focusTraversable_=(v: Boolean) {
     focusTraversable() = v
   }
@@ -188,7 +192,6 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * The id of this Node.
    */
   def id: StringProperty = delegate.idProperty
-
   def id_=(v: String) {
     id() = v
   }
@@ -197,7 +200,6 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * Property holding InputMethodRequests.
    */
   def inputMethodRequests: ObjectProperty[jfxsi.InputMethodRequests] = delegate.inputMethodRequestsProperty
-
   def inputMethodRequests_=(v: jfxsi.InputMethodRequests) {
     inputMethodRequests() = v
   }
@@ -212,7 +214,6 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * purpose of layout.
    */
   def layoutX: DoubleProperty = delegate.layoutXProperty
-
   def layoutX_=(v: Double) {
     layoutX() = v
   }
@@ -244,7 +245,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   def mouseTransparent_=(v: Boolean) {
     mouseTransparent() = v
   }
-  
+
   /**
    * Node orientation describes the flow of visual data within a node.
    */
@@ -562,10 +563,6 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * CSS styles classes used by this Node.
-   */
-  def styleClass = delegate.getStyleClass
-  /**
    * Sets the list of CSS styles classes, replacing the prior content. If you want append to current content, use `add`
    * or similar.
    *
@@ -579,6 +576,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * Defines the ObservableList of Transform objects to be applied to this Node.
    */
   def transforms = delegate.getTransforms
+
   /**
    * Sets the list of transforms, replacing the prior content. If you want append to current content, use `add` or
    * similar.

@@ -27,7 +27,7 @@
 package scalafx.geometry
 
 import scala.language.implicitConversions
-import javafx.{ geometry => jfxg }
+import javafx.{geometry => jfxg}
 
 object GeometryIncludes extends GeometryIncludes
 
@@ -46,7 +46,7 @@ trait GeometryIncludes {
    * @param b JavaFX Bounds
    * @return ScalaFX Bounds
    */
-  implicit def jfxBounds2sfx(b: jfxg.Bounds) = new Bounds(b) {}
+  implicit def jfxBounds2sfx(b: jfxg.Bounds) = if (b != null) new Bounds(b) {} else null
 
   /**
    * Converts a
@@ -56,7 +56,7 @@ trait GeometryIncludes {
    * @param b JavaFX BoundingBox
    * @return ScalaFX BoundingBox
    */
-  implicit def jfxBoundingBox2sfx(b: jfxg.BoundingBox) = new BoundingBox(b)
+  implicit def jfxBoundingBox2sfx(b: jfxg.BoundingBox) = if (b != null) new BoundingBox(b) else null
 
   /**
    * Converts a
@@ -66,7 +66,7 @@ trait GeometryIncludes {
    * @param d JavaFX Dimension2D
    * @return ScalaFX Dimension2D
    */
-  implicit def jfxDimension2D2sfx(d: jfxg.Dimension2D) = new Dimension2D(d)
+  implicit def jfxDimension2D2sfx(d: jfxg.Dimension2D) = if (d != null) new Dimension2D(d) else null
 
   /**
    * Converts a
@@ -96,7 +96,7 @@ trait GeometryIncludes {
    * @param i JavaFX Insets
    * @return ScalaFX Insets
    */
-  implicit def jfxInsets2sfx(i: jfxg.Insets) = new Insets(i)
+  implicit def jfxInsets2sfx(i: jfxg.Insets) = if (i != null) new Insets(i) else null
 
   /**
    * Converts a
@@ -126,7 +126,7 @@ trait GeometryIncludes {
    * @param p JavaFX Point2D
    * @return ScalaFX Point2D
    */
-  implicit def jfxPoint2D2sfx(p: jfxg.Point2D) = new Point2D(p)
+  implicit def jfxPoint2D2sfx(p: jfxg.Point2D) = if (p != null) new Point2D(p) else null
 
   /**
    * Converts a
@@ -136,7 +136,7 @@ trait GeometryIncludes {
    * @param p JavaFX Point3D
    * @return ScalaFX Point3D
    */
-  implicit def jfxPoint3D2sfx(p: jfxg.Point3D) = new Point3D(p)
+  implicit def jfxPoint3D2sfx(p: jfxg.Point3D) = if (p != null) new Point3D(p) else null
 
   /**
    * Converts a
@@ -156,7 +156,7 @@ trait GeometryIncludes {
    * @param r JavaFX Rectangle2D
    * @return ScalaFX Rectangle2D
    */
-  implicit def jfxRectangle2D2sfx(r: jfxg.Rectangle2D) = new Rectangle2D(r)
+  implicit def jfxRectangle2D2sfx(r: jfxg.Rectangle2D) = if (r != null) new Rectangle2D(r) else null
 
   /**
    * Converts a

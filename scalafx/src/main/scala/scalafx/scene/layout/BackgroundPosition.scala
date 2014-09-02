@@ -33,7 +33,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Side
 
 object BackgroundPosition {
-  implicit def sfxBackgroundPosition2jfx(v: BackgroundPosition) = v.delegate
+  implicit def sfxBackgroundPosition2jfx(v: BackgroundPosition) = if (v != null) v.delegate else null
 
   /** A BackgroundPosition which will center a BackgroundImage. */
   val Center = jfxsl.BackgroundPosition.CENTER

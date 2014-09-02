@@ -27,6 +27,8 @@
 
 package scalafx.util
 
+import scala.language.postfixOps
+
 import javafx.{ util => jfxu }
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
