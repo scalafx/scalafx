@@ -20,10 +20,10 @@ For a more general introduction, please refer to `README.txt' for more
 information. The documentation explains how to download the required software
 for ScalaFX development.
 
-There are two branches of ScalaFX: v.1.0 supporting JavaFX 2.x (Java 7) and 
+There are two branches of ScalaFX: v.2.2.* supporting JavaFX 2.x (Java 7) and 
 ScalaFX v.8.0 supporting JavaFX 8 (Java 8).
 
-This information was prepared using Scala SBT version 0.13.1, which you can download
+This information was prepared using Scala SBT version 0.13.5, which you can download
 from: http://www.scala-sbt.org/
 
 
@@ -73,11 +73,11 @@ List the individual tree of projects and their version number:
 
     sbt> show version
     [info] scalafx/*:version
-    [info] 	1.0-SNAPSHOT
+    [info] 	2.2.67-R10-SNAPSHOT
     [info] scalafx-demos/*:version
-    [info] 	1.0-SNAPSHOT
+    [info] 	2.2.67-R10-SNAPSHOT
     [info] scalafx-project/*:version
-    [info] 	1.0-SNAPSHOT
+    [info] 	2.2.67-R10-SNAPSHOT
     (Where `sbt>' represents the Scala SBT interactive command line prompt)
     
 
@@ -186,10 +186,10 @@ the moment. Here are the necessary commands:
     % mvn install:install-file -DartifactId=scalafx_2.9.3 \
     -DgroupId=org.scalafx \
     -Dpackaging=jar \
-    -DpomFile=scalafx_2.9.3-1.0-SNAPSHOT.pom \
-    -Dfile=scalafx_2.9.3-1.0-SNAPSHOT.jar \
+    -DpomFile=scalafx_2.9.3-2.2.67-R10-SNAPSHOT.pom \
+    -Dfile=scalafx_2.9.3-2.2.67-R10-SNAPSHOT.jar \
     -Dversion=1.0-SNAPSHOT \
-    -Dsources=scalafx_2.9.3-1.0-SNAPSHOT-sources.jar
+    -Dsources=scalafx_2.9.3-2.2.67-R10-SNAPSHOT-sources.jar
 
 
 You will to repeat this for all the modules. Please note the embedded Scala
@@ -208,8 +208,8 @@ following example of the `sbt' shell script.
     #!/bin/bash 
     # SBT launch file (Peter Pilgrim)
     # http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html#manual-installation
-    # based on SBT 0.12.2
-    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home
+    # based on SBT 0.13.5
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home
     export PATH=${JAVA_HOME}/bin:${JAVA_HOME}/jre/bin:${PATH}
     java -Xms512M -Xmx1536M -Xss2M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=512M -jar `dirname $0`/sbt-launch.jar "$@"
     # End.
@@ -234,7 +234,7 @@ Cross Scala Versions is a feature of the Scala SBT to build against different
 versions of the Scala Libraries. This is enabled in the `project/build.scala'
 file with settings of `crossScalaVersions', which is set to something like this:
 
-    crossScalaVersions := Seq( "2.9.3", "2.10.3" ),
+    crossScalaVersions := Seq( "2.9.3", "2.10.4",  "2.11.2"),
 
 
 You can switch between different Scala build version in interactive mode of
@@ -283,9 +283,9 @@ Scala SBT check the `target' folder:
      % ls scalafx/target
      resolution-cache/	   scala-2.10/	   scala-2.9.3/	  streams/
      % ls scalafx/target/scala-2.10/
-     cache/	           scalafx_2.10-1.0-SNAPSHOT.jar
+     cache/	           scalafx_2.10-2.2.67-SNAPSHOT.jar
      % ls scalafx/target/scala-2.9.3/
-     cache/            scalafx_2.9.3-1.0-SNAPSHOT.jar
+     cache/            scalafx_2.9.3-2.2.67-SNAPSHOT.jar
 
 
 And of course this feature of cross Scala versions scales to more compiler

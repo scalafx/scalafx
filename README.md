@@ -17,11 +17,11 @@ ScalaFX binaries are published in the Maven Central repository:
 
 To use ScalaFX with SBT and Java 8 add following dependency:
 
-    libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.5-R5"
+    libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.20-R6"
         
 With Java 7 use:
 
-    libraryDependencies += "org.scalafx" %% "scalafx" % "2.2.60-R9"
+    libraryDependencies += "org.scalafx" %% "scalafx" % "2.2.67-R10"
 
 The [ScalaFX Organization page](https://github.com/scalafx) on GitHub contains several sample 
 project that illustrate use of ScalaFX. 
