@@ -27,14 +27,14 @@
 package scalafx.scene.control
 
 import scalafx.Includes._
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.AlignmentDelegate
-import javafx.{ event => jfxe }
+import javafx.{event => jfxe}
 import scalafx.beans.property.IntegerProperty
 
 object TextField {
-  implicit def sfxTextField2jfx(v: TextField) = v.delegate
+  implicit def sfxTextField2jfx(v: TextField) = if (v != null) v.delegate else null
 }
 
 class TextField(override val delegate: jfxsc.TextField = new jfxsc.TextField)

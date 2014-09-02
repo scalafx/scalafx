@@ -26,55 +26,55 @@
  */
 package scalafx.concurrent
 
-import javafx.{ concurrent => jfxc }
+import javafx.{concurrent => jfxc}
 import scalafx.Includes._
 import scalafx.event.Event
 import scalafx.event.EventType
 import scalafx.delegate.SFXDelegate
 
 object WorkerStateEvent {
-  implicit def sfxWorkerStateEvent2jfx(w: WorkerStateEvent) = w.delegate
+  implicit def sfxWorkerStateEvent2jfx(w: WorkerStateEvent) = if (w != null) w.delegate else null
 
   /**
    * Common supertype for all worker state event types.
    */
-  val ANY : EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.ANY
+  val ANY: EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.ANY
 
   /**
    * This event occurs when the state of a Worker implementation has transitioned to the
    * CANCELLED state.
    */
-  val WORKER_STATE_CANCELLED : EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_CANCELLED
+  val WORKER_STATE_CANCELLED: EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_CANCELLED
 
   /**
    * This event occurs when the state of a Worker implementation has transitioned to the
    * FAILED state.
    */
-  val WORKER_STATE_FAILED : EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_FAILED
+  val WORKER_STATE_FAILED: EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_FAILED
 
   /**
    * This event occurs when the state of a Worker implementation has transitioned to the
    * READY state.
    */
-  val WORKER_STATE_READY : EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_READY
+  val WORKER_STATE_READY: EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_READY
 
   /**
    * This event occurs when the state of a Worker implementation has transitioned to the
    * RUNNING state.
    */
-  val WORKER_STATE_RUNNING : EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_RUNNING
+  val WORKER_STATE_RUNNING: EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_RUNNING
 
   /**
    * This event occurs when the state of a Worker implementation has transitioned to the
    * SCHEDULED state.
    */
-  val WORKER_STATE_SCHEDULED : EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_SCHEDULED
+  val WORKER_STATE_SCHEDULED: EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_SCHEDULED
 
   /**
    * This event occurs when the state of a Worker implementation has transitioned to the
    * SUCCEEDED state.
    */
-  val WORKER_STATE_SUCCEEDED : EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_SUCCEEDED
+  val WORKER_STATE_SUCCEEDED: EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_SUCCEEDED
 
 }
 
@@ -90,7 +90,7 @@ class WorkerStateEvent(override val delegate: jfxc.WorkerStateEvent)
    * Create a new WorkerStateEvent.
    *
    * @param worker The Worker which is firing the event. The Worker really should be an
-   * EventTarget, otherwise the EventTarget for the event will be null.
+   *               EventTarget, otherwise the EventTarget for the event will be null.
    * @param eventType The type of event. This should not be null.
    */
   def this(worker: Worker[_], eventType: EventType[_ <: jfxc.WorkerStateEvent]) =

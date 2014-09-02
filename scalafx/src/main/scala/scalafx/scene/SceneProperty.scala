@@ -34,7 +34,7 @@ import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object SceneProperty {
-  implicit def sfxSceneProperty2jfx(p: SceneProperty) = p.delegate
+  implicit def sfxSceneProperty2jfx(p: SceneProperty) = if (p != null) p.delegate else null
 }
 
 // This particular construct enables the reading of properties of the scene that will be set into the property later on.

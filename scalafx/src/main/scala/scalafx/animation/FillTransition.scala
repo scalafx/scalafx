@@ -26,8 +26,8 @@
  */
 package scalafx.animation
 
-import javafx.{ animation => jfxa, util => jfxu }
-import javafx.scene.{ paint => jfxsp, shape => jfxss }
+import javafx.{animation => jfxa, util => jfxu}
+import javafx.scene.{paint => jfxsp, shape => jfxss}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.scene.paint.Color
@@ -49,16 +49,16 @@ object FillTransition extends AnimationStatics {
    * @param v ScalaFX $FT
    * @return Delegated JavaFX $FT extracted from `v`.
    */
-  implicit def sfxFillTransition2jfx(v: FillTransition) = v.delegate
+  implicit def sfxFillTransition2jfx(v: FillTransition) = if (v != null) v.delegate else null
 
 }
 
 /**
  * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/FillTransition.html $FT]].
- * 
+ *
  * @constructor Creates a new ScalaFX $FT from a JavaFX $FT.
  * @param delegate JavaFX $FT to be delegated.
- * 
+ *
  * @define FT `FillTransition`
  * @define DV Default value:
  */
@@ -134,5 +134,5 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
   def toValue_=(to: Color) {
     toValue() = to
   }
-  
+
 }

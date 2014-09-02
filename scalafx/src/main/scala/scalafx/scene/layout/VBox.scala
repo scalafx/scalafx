@@ -26,9 +26,9 @@
  */
 package scalafx.scene.layout
 
-import javafx.{ geometry => jfxg }
-import javafx.{ scene => jfxs }
-import javafx.scene.{ layout => jfxsl }
+import javafx.{geometry => jfxg}
+import javafx.{scene => jfxs}
+import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.AlignmentDelegate
@@ -38,7 +38,7 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.BooleanProperty
 
 object VBox {
-  implicit def sfxVBox2jfx(v: VBox) = v.delegate
+  implicit def sfxVBox2jfx(v: VBox) = if (v != null) v.delegate else null
 
   /**
    * Removes all vbox constraints from the child node.

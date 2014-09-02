@@ -26,7 +26,7 @@
  */
 package scalafx.scene.paint
 
-import javafx.scene.{ paint => jfxsp }
+import javafx.scene.{paint => jfxsp}
 
 object PaintIncludes extends PaintIncludes
 
@@ -114,7 +114,7 @@ trait PaintIncludes {
   /**
    * $BEGINTUPLE3 $JFX $CLR.
    *
-   * @param tuple $PTUPLE3 
+   * @param tuple $PTUPLE3
    * @return $RETTUPLE
    */
   implicit def tuple32JfxColor(tuple: (Int, Int, Int)) = jfxsp.Color.rgb(tuple._1, tuple._2, tuple._3)
@@ -133,7 +133,7 @@ trait PaintIncludes {
    * @param c $JFX $CLR
    * @return $SFX $CLR
    */
-  implicit def jfxColor2sfx(c: jfxsp.Color) = new Color(c)
+  implicit def jfxColor2sfx(c: jfxsp.Color) = if (c != null) new Color(c) else null
 
   /**
    * $START$CMT.html $CMT$END
@@ -149,7 +149,7 @@ trait PaintIncludes {
    * @param lg $JFX $LGD
    * @return $SFX $LGD
    */
-  implicit def jfxLinearGradient2sfx(lg: jfxsp.LinearGradient) = new LinearGradient(lg)
+  implicit def jfxLinearGradient2sfx(lg: jfxsp.LinearGradient) = if (lg != null) new LinearGradient(lg) else null
 
   /**
    * $START$RGD.html $RGD$END
@@ -157,7 +157,7 @@ trait PaintIncludes {
    * @param rg $JFX $RGD
    * @return $SFX $RGD
    */
-  implicit def jfxRadialGradient2sfx(rg: jfxsp.RadialGradient) = new RadialGradient(rg)
+  implicit def jfxRadialGradient2sfx(rg: jfxsp.RadialGradient) = if (rg != null) new RadialGradient(rg) else null
 
   /**
    * $START$STP.html $STP$END
@@ -165,7 +165,7 @@ trait PaintIncludes {
    * @param c $JFX $STP
    * @return $SFX $STP
    */
-  implicit def jfxStop2sfx(c: jfxsp.Stop) = new Stop(c)
+  implicit def jfxStop2sfx(c: jfxsp.Stop) = if (c != null) new Stop(c) else null
 
   /**
    * $START$PNT.html $PNT$END
@@ -173,6 +173,6 @@ trait PaintIncludes {
    * @param p $JFX $PNT
    * @return $SFX $PNT
    */
-  implicit def jfxPaint2sfx(p: jfxsp.Paint) = new Paint(p) {}
+  implicit def jfxPaint2sfx(p: jfxsp.Paint) = if (p != null) new Paint(p) {} else null
 
 }

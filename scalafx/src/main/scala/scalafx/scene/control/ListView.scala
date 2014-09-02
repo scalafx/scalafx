@@ -26,10 +26,10 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import javafx.{ event => jfxe }
-import javafx.{ geometry => jfxg }
-import javafx.{ util => jfxu }
+import javafx.scene.{control => jfxsc}
+import javafx.{event => jfxe}
+import javafx.{geometry => jfxg}
+import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
@@ -40,10 +40,10 @@ import scalafx.geometry.Orientation
 import scalafx.delegate.SFXDelegate
 
 object ListView {
-  implicit def sfxListView2jfx[T](l: ListView[T]) = l.delegate
+  implicit def sfxListView2jfx[T](l: ListView[T]) = if (l != null) l.delegate else null
 
   object EditEvent {
-    implicit def sfxEditEvent2jfx[T](e: EditEvent[T]) = e.delegate
+    implicit def sfxEditEvent2jfx[T](e: EditEvent[T]) = if (e != null) e.delegate else null
   }
 
   class EditEvent[T](override val delegate: jfxsc.ListView.EditEvent[T])
@@ -60,17 +60,17 @@ object ListView {
     /**
      * Returns the ListView upon which the edit took place.
      */
-    override def source : ListView[T] = delegate.getSource
+    override def source: ListView[T] = delegate.getSource
 
     /**
      * Returns the value of the new input provided by the end user.
      */
-    def newValue : T = delegate.getNewValue
+    def newValue: T = delegate.getNewValue
 
     /**
      * Returns the index in which the edit took place.
      */
-    def index : Int = delegate.getIndex
+    def index: Int = delegate.getIndex
 
   }
 

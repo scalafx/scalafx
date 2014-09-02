@@ -28,12 +28,12 @@ package scalafx.scene.paint
 
 import scala.collection.JavaConversions._
 
-import javafx.scene.{ paint => jfxsp }
+import javafx.scene.{paint => jfxsp}
 import scalafx.scene.paint.Stop.sfxStop2jfx
 import scalafx.delegate.SFXDelegate
 
 object LinearGradient {
-  implicit def sfxLinearGradient2jfx(lg: LinearGradient) = lg.delegate
+  implicit def sfxLinearGradient2jfx(lg: LinearGradient) = if (lg != null) lg.delegate else null
 
   /**
    * Creates a new instance of LinearGradient.
@@ -71,7 +71,7 @@ object LinearGradient {
 }
 
 /**
- * 
+ *
  */
 class LinearGradient(override val delegate: jfxsp.LinearGradient)
   extends Paint(delegate)
@@ -80,35 +80,35 @@ class LinearGradient(override val delegate: jfxsp.LinearGradient)
   /**
    * Creates a new instance of LinearGradient.
    *
-   * @param startX  the X coordinate of the gradient axis start point. 
-   * Default value = 0.0
-   * @param startY  the Y coordinate of the gradient axis start point. 
-   * Default value = 0.0
-   * @param endX  the X coordinate of the gradient axis end point. 
-   * Default value = 0.0
-   * @param endY  the Y coordinate of the gradient axis end point. 
-   * Default value = 0.0
-   * @param proportional  whether the coordinates are proportional to the shape 
-   * which this gradient fills. Default value = true
-   * @param cycleMethod  cycle method applied to the gradient. 
-   * Default value = [[scalafx.scene.paint.CycleMethod.NO_CYCLE]]
-   * @param stops  the gradient's color specification. 
-   * Default value = [[scala.Nil]]
+   * @param startX  the X coordinate of the gradient axis start point.
+   *                Default value = 0.0
+   * @param startY  the Y coordinate of the gradient axis start point.
+   *                Default value = 0.0
+   * @param endX  the X coordinate of the gradient axis end point.
+   *              Default value = 0.0
+   * @param endY  the Y coordinate of the gradient axis end point.
+   *              Default value = 0.0
+   * @param proportional  whether the coordinates are proportional to the shape
+   *                      which this gradient fills. Default value = true
+   * @param cycleMethod  cycle method applied to the gradient.
+   *                     Default value = [[scalafx.scene.paint.CycleMethod.NoCycle]]
+   * @param stops  the gradient's color specification.
+   *               Default value = [[scala.Nil]]
    */
   def this(startX: Double = 0,
-    startY: Double = 0,
-    endX: Double = 1,
-    endY: Double = 1,
-    proportional: Boolean = true,
-    cycleMethod: CycleMethod = CycleMethod.NO_CYCLE,
-    stops: Seq[jfxsp.Stop] = Nil) =
+           startY: Double = 0,
+           endX: Double = 1,
+           endY: Double = 1,
+           proportional: Boolean = true,
+           cycleMethod: CycleMethod = CycleMethod.NoCycle,
+           stops: Seq[jfxsp.Stop] = Nil) =
     this(new jfxsp.LinearGradient(startX, startY, endX, endY, proportional, cycleMethod, stops))
 
   /**
-   * Defines which of the following cycle method is applied to the 
-   * LinearGradient: [[scalafx.scene.paint.CycleMethod.NO_CYCLE]], 
-   * [[scalafx.scene.paint.CycleMethod.REFLECT]] or
-   * [[scalafx.scene.paint.CycleMethod.REPEAT]].
+   * Defines which of the following cycle method is applied to the
+   * LinearGradient: [[scalafx.scene.paint.CycleMethod.NoCycle]],
+   * [[scalafx.scene.paint.CycleMethod.Reflect]] or
+   * [[scalafx.scene.paint.CycleMethod.Repeat]].
    */
   def cycleMethod = delegate.getCycleMethod
 
@@ -133,7 +133,7 @@ class LinearGradient(override val delegate: jfxsp.LinearGradient)
   def startY = delegate.getStartY
 
   /**
-   * A sequence of 2 or more Stop values specifying how to distribute the 
+   * A sequence of 2 or more Stop values specifying how to distribute the
    * colors along the gradient.
    */
   def stops = delegate.getStops

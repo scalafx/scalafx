@@ -26,14 +26,14 @@
  */
 package scalafx.concurrent
 
-import javafx.{ concurrent => jfxc }
-import javafx.{ event => jfxe }
+import javafx.{concurrent => jfxc}
+import javafx.{event => jfxe}
 import scalafx.Includes._
 import scalafx.event.EventHandlerDelegate
 import scalafx.delegate.SFXDelegate
 
 object Task {
-  implicit def sfxTask2jfx[T](t: Task[T]) = t.delegate
+  implicit def sfxTask2jfx[T](t: Task[T]) = if (t != null) t.delegate else null
 
   /**
    * Creates a new [[scalafx.concurrent.Task]] with a operation that actually performs the background thread logic.

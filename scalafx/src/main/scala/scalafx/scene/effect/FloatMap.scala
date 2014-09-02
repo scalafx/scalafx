@@ -26,13 +26,13 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{ effect => jfxse }
+import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
 import scalafx.beans.property.IntegerProperty
 import scalafx.delegate.SFXDelegate
 
 object FloatMap {
-  implicit def sfxFloatMap2jfx(fm: FloatMap) = fm.delegate
+  implicit def sfxFloatMap2jfx(fm: FloatMap) = if (fm != null) fm.delegate else null
 }
 
 class FloatMap(override val delegate: jfxse.FloatMap = new jfxse.FloatMap) extends SFXDelegate[jfxse.FloatMap] {

@@ -26,12 +26,12 @@
  */
 package scalafx.scene.web
 
-import javafx.scene.{ web => jfxsw }
+import javafx.scene.{web => jfxsw}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object PromptData {
-  implicit def sfxPromptData2jfx(pd: PromptData) = pd.delegate
+  implicit def sfxPromptData2jfx(pd: PromptData) = if (pd != null) pd.delegate else null
 }
 
 class PromptData(override val delegate: jfxsw.PromptData) extends SFXDelegate[jfxsw.PromptData] {

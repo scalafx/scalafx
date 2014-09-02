@@ -26,15 +26,15 @@
  */
 package scalafx.beans.property
 
-import javafx.beans.{ property => jfxbp }
+import javafx.beans.{property => jfxbp}
 import scalafx.delegate.SFXDelegate
 
 object FloatProperty {
-  implicit def sfxFloatProperty2jfx(fp: FloatProperty) = fp.delegate
+  implicit def sfxFloatProperty2jfx(fp: FloatProperty) = if (fp != null) fp.delegate else null
 
   /**
    * Creates a new FloatProperty instance using the SimpleFloatProperty as the target.
-   * 
+   *
    * @param value the initial value
    * @return      the observable instance
    */

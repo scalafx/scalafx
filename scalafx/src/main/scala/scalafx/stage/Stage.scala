@@ -37,14 +37,14 @@ import scalafx.delegate.SFXDelegate
 import scalafx.application.JFXApp
 
 object Stage {
-  implicit def sfxStage2jfx(v: Stage) = v.delegate
+  implicit def sfxStage2jfx(v: Stage) = if (v != null) v.delegate else null
 }
 
 /**
  * The primary stage for your application has to be created by wrapping the <code>JFXApp.STAGE</code> object.
  * <pre>
  * stage = new JFXApp.PrimaryStage {
- *   // your definitions
+ * // your definitions
  * }
  * </pre>
  * Any further stage would be simply instantiated by the no-arg constructor.
@@ -136,7 +136,7 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
    */
   def showing_=(v: Boolean) {
     v match {
-      case true  => delegate.show()
+      case true => delegate.show()
       case false => delegate.hide()
     }
   }

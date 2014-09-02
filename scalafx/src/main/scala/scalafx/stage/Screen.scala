@@ -26,7 +26,7 @@
  */
 package scalafx.stage
 
-import javafx.{ stage => jfxs }
+import javafx.{stage => jfxs}
 import scalafx.Includes._
 import scalafx.geometry.Rectangle2D
 import scalafx.scene.Node._
@@ -34,7 +34,7 @@ import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
 object Screen {
-  implicit def sfxScreen2jfx(v: Screen) = v.delegate
+  implicit def sfxScreen2jfx(v: Screen) = if (v != null) v.delegate else null
 
   /**
    * The primary Screen.
@@ -49,7 +49,7 @@ object Screen {
   /**
    * Returns a ObservableList of Screens that intersects the provided rectangle.
    */
-  def screensForRectangle(x: Double, y: Double, width: Double, height: Double) = 
+  def screensForRectangle(x: Double, y: Double, width: Double, height: Double) =
     jfxs.Screen.getScreensForRectangle(x, y, width, height)
 
   /**

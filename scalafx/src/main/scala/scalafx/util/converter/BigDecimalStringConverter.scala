@@ -29,17 +29,17 @@ package scalafx.util.converter
 import java.{math => jm}
 import scala.math.BigDecimal._
 
-import javafx.util.{ converter => jfxuc }
+import javafx.util.{converter => jfxuc}
 
 object BigDecimalStringConverter {
-  implicit def sfxBigDecimalStringConverter2jfx(c: BigDecimalStringConverter) = c.delegate
+  implicit def sfxBigDecimalStringConverter2jfx(c: BigDecimalStringConverter) = if (c != null) c.delegate else null
 }
 
 class BigDecimalStringConverter(delegate: jfxuc.BigDecimalStringConverter = new jfxuc.BigDecimalStringConverter)
   extends StringConverterDelegate[jm.BigDecimal, BigDecimal, jfxuc.BigDecimalStringConverter](delegate) {
 
   override def toString(b: BigDecimal): String = delegate.toString(b.bigDecimal)
-  
+
   override def fromString(s: String): BigDecimal = BigDecimal(delegate.fromString(s))
 
 }

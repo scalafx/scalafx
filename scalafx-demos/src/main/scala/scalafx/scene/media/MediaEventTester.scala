@@ -38,7 +38,7 @@ import scalafx.scene.layout.StackPane
 object MediaEventTester extends JFXApp {
 
   val markerText = new Label {
-    alignmentInParent = Pos.TOP_CENTER
+    alignmentInParent = Pos.TopCenter
     style = "-fx-padding: 20; -fx-font-size: 24pt; -fx-text-fill: white;"
   }
 
@@ -47,7 +47,7 @@ object MediaEventTester extends JFXApp {
   media.markers ++= Map(
     "Clouds" -> (100 ms),
     "Planes" -> (3000 ms),
-    "Parashoote" -> (8000 ms),
+    "Parachute" -> (8000 ms),
     "Car" -> (13000 ms),
     "..." -> (15000 ms)
   )

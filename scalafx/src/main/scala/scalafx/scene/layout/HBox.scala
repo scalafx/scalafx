@@ -26,9 +26,9 @@
  */
 package scalafx.scene.layout
 
-import javafx.scene.{ layout => jfxsl }
-import javafx.{ geometry => jfxg }
-import javafx.{ scene => jfxs }
+import javafx.scene.{layout => jfxsl}
+import javafx.{geometry => jfxg}
+import javafx.{scene => jfxs}
 import scalafx.Includes._
 import scalafx.geometry.Insets._
 import scalafx.geometry.Insets
@@ -40,7 +40,7 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.BooleanProperty
 
 object HBox {
-  implicit def sfxHBox2jfx(v: HBox) = v.delegate
+  implicit def sfxHBox2jfx(v: HBox) = if (v != null) v.delegate else null
 
   /**
    * Removes all hbox constraints from the child node.

@@ -26,8 +26,8 @@
  */
 package scalafx.scene.control
 
-import javafx.{ scene => jfxs }
-import javafx.scene.{ control => jfxsc }
+import javafx.{scene => jfxs}
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
@@ -35,7 +35,7 @@ import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.delegate.SFXDelegate
 
 object Cell {
-  implicit def sfxCell2jfx[T](c: Cell[T]) = c.delegate
+  implicit def sfxCell2jfx[T](c: Cell[T]) = if (c != null) c.delegate else null
 }
 
 class Cell[T](override val delegate: jfxsc.Cell[T] = new jfxsc.Cell[T])
@@ -83,7 +83,7 @@ class Cell[T](override val delegate: jfxsc.Cell[T] = new jfxsc.Cell[T])
   def cancelEdit() {
     delegate.cancelEdit()
   }
-  
+
   /**
    * Call this function to transition from an editing state into a non-editing state, and in the 
    * process saving any user input.
@@ -91,7 +91,7 @@ class Cell[T](override val delegate: jfxsc.Cell[T] = new jfxsc.Cell[T])
   def commitEdit(newValue: T) {
     delegate.commitEdit(newValue)
   }
-  
+
   /**
    * Call this function to transition from a non-editing state into an editing state, if the cell 
    * is editable.
@@ -99,7 +99,7 @@ class Cell[T](override val delegate: jfxsc.Cell[T] = new jfxsc.Cell[T])
   def startEdit() {
     delegate.startEdit()
   }
-  
+
   // TODO: implement updateItem(T item, boolean empty)
   // might be difficult since updateItem is a protected method which needs to be defined in the delegate's class
 }

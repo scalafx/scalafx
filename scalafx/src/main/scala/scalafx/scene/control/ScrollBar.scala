@@ -35,8 +35,9 @@ import scalafx.geometry.Orientation
 import scalafx.delegate.SFXDelegate
 
 object ScrollBar {
-  implicit def sfxScrollBar2jfx(sc: ScrollBar) = sc.delegate
+  implicit def sfxScrollBar2jfx(sc: ScrollBar) = if (sc != null) sc.delegate else null
 }
+
 /**
  * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/ScrollBar.html]]
  */

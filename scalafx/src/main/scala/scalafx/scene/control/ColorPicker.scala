@@ -34,7 +34,7 @@ import scalafx.scene.paint.Color
 import scalafx.delegate.SFXDelegate
 
 object ColorPicker {
-  implicit def sfxColorPicker2jfx(cp: ColorPicker) = cp.delegate
+  implicit def sfxColorPicker2jfx(cp: ColorPicker) = if (cp != null) cp.delegate else null
 
   val STYLE_CLASS_BUTTON = jfxsc.ColorPicker.STYLE_CLASS_BUTTON
 

@@ -34,7 +34,7 @@ import scalafx.delegate.SFXDelegate
 import collection.JavaConversions._
 
 object Accordion {
-  implicit def sfxAccordion2jfx(v: Accordion) = v.delegate
+  implicit def sfxAccordion2jfx(v: Accordion) = if (v != null) v.delegate else null
 }
 
 /**

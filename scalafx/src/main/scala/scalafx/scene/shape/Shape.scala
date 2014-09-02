@@ -27,8 +27,8 @@
 package scalafx.scene.shape
 
 import collection.JavaConversions._
-import javafx.scene.{ paint => jfxsp }
-import javafx.scene.{ shape => jfxss }
+import javafx.scene.{paint => jfxsp}
+import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
@@ -39,7 +39,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.collections.ObservableBuffer
 
 object Shape {
-  implicit def sfxShape2jfx(v: Shape) = v.delegate
+  implicit def sfxShape2jfx(v: Shape) = if (v != null) v.delegate else null
 
   /**
    * Returns a new Shape which is created as an intersection of the specified input shapes.
@@ -71,7 +71,7 @@ abstract class Shape(override val delegate: jfxss.Shape)
   def fill: ObjectProperty[jfxsp.Paint] = delegate.fillProperty
   /**
    * Sets parameters to fill the interior of an Shape using the settings of the Paint context.
-   * 
+   *
    * @param v Filling Parameters.
    */
   def fill_=(v: Paint) {

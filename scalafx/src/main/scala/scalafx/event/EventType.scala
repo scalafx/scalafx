@@ -26,12 +26,12 @@
  */
 package scalafx.event
 
-import javafx.{ event => jfxe }
+import javafx.{event => jfxe}
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventIncludes._
 
 object EventType {
-  implicit def sfxEventType2jfx[T <: jfxe.Event](et: EventType[T]) = et.delegate
+  implicit def sfxEventType2jfx[T <: jfxe.Event](et: EventType[T]) = if (et != null) et.delegate else null
 
   /**
    * The root event type. All other event types are either direct or indirect sub types of it.
@@ -47,7 +47,7 @@ class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T]) exten
    */
   // Dummy implicit is used to disambiguate this auxiliary constructor from the main constructor - otherwise, they both have the same type after erasure, and the code cannot compile.
   def this(superType: jfxe.EventType[_ >: T])(implicit d: DummyImplicit) =
-    this(new jfxe.EventType[T](superType)) 
+    this(new jfxe.EventType[T](superType))
 
   /**
    * Constructs a new `EventType` with the specified super type and name.

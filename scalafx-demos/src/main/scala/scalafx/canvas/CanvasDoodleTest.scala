@@ -52,7 +52,7 @@ object CanvasDoodleTest extends JFXApp {
   val rect = new Rectangle {
     height = 400
     width = 400
-    fill = new LinearGradient(0, 0, 1, 1, true, CycleMethod.REFLECT, List(Stop(0, Color.Red), Stop(1, Color.Yellow)))
+    fill = new LinearGradient(0, 0, 1, 1, true, CycleMethod.Reflect, List(Stop(0, Color.Red), Stop(1, Color.Yellow)))
   }
 
   val rootPane = new Group

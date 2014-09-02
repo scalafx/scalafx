@@ -35,7 +35,7 @@ import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 object CategoryAxis {
-  implicit def sfxCategoryAxis2jfx(v: CategoryAxis) = v.delegate
+  implicit def sfxCategoryAxis2jfx(v: CategoryAxis) = if (v != null) v.delegate else null
 
   def apply() = new CategoryAxis()
 

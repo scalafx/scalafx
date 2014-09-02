@@ -26,8 +26,8 @@
  */
 package scalafx.scene.web
 
-import javafx.{ event => jfxe }
-import javafx.scene.{ web => jfxsw }
+import javafx.{event => jfxe}
+import javafx.scene.{web => jfxsw}
 
 object WebIncludes extends WebIncludes
 
@@ -41,7 +41,7 @@ object WebIncludes extends WebIncludes
  * @define START Converts a $JFX `[[http://docs.oracle.com/javafx/2/api/javafx/scene/web/
  * @define END ]]` instance to its $SFX counterpart.
  * @define BEGINWR Converts a Function that manipulates a $SFX [[scalafx.scene.web.
- * @define FINISHWR ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html EventHandler]] that manipulates it's $JFX couterpart.
+           * @ d e f i n e F I N I S H W R ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[http://docs.oracle.com/javafx/2/api/javafx/event/EventHandler.html EventHandler]] that manipulates it's $JFX couterpart.
  * @define PARAMWR function that manipulates a $SFX's
  * @define RETWR A $JFX's EventHandler that manipulates a $JFX's
  *
@@ -60,7 +60,7 @@ trait WebIncludes {
    * @param he $JFX $HE
    * @return $SFX $HE
    */
-  implicit def jfxHTMLEditor2sfx(he: jfxsw.HTMLEditor) = new HTMLEditor(he)
+  implicit def jfxHTMLEditor2sfx(he: jfxsw.HTMLEditor) = if (he != null) new HTMLEditor(he) else null
 
   /**
    * $START$PF.html $PF$END
@@ -68,7 +68,7 @@ trait WebIncludes {
    * @param pf $JFX $PF
    * @return $SFX $PF
    */
-  implicit def jfxPopupFeatures2sfx(pf: jfxsw.PopupFeatures) = new PopupFeatures(pf)
+  implicit def jfxPopupFeatures2sfx(pf: jfxsw.PopupFeatures) = if (pf != null) new PopupFeatures(pf) else null
 
   /**
    * $START$PD.html $PD$END
@@ -76,7 +76,7 @@ trait WebIncludes {
    * @param pd $JFX $PD
    * @return $SFX $PD
    */
-  implicit def jfxPromptData2sfx(pd: jfxsw.PromptData) = new PromptData(pd)
+  implicit def jfxPromptData2sfx(pd: jfxsw.PromptData) = if (pd != null) new PromptData(pd) else null
 
   /**
    * $START$WE.html $WE$END
@@ -84,7 +84,7 @@ trait WebIncludes {
    * @param we $JFX $WE
    * @return $SFX $WE
    */
-  implicit def jfxWebEngine2sfx(we: jfxsw.WebEngine) = new WebEngine(we)
+  implicit def jfxWebEngine2sfx(we: jfxsw.WebEngine) = if (we != null) new WebEngine(we) else null
 
   /**
    * $START$WT.html $WT$END
@@ -92,7 +92,7 @@ trait WebIncludes {
    * @param we $JFX $WT
    * @return $SFX $WT
    */
-  implicit def jfxWebEvent2sfx[T](we: jfxsw.WebEvent[T]) = new WebEvent(we)
+  implicit def jfxWebEvent2sfx[T](we: jfxsw.WebEvent[T]) = if (we != null) new WebEvent(we) else null
 
   /**
    * $START$WV.html $WV$END
@@ -100,7 +100,7 @@ trait WebIncludes {
    * @param wv $JFX $WV
    * @return $SFX $WV
    */
-  implicit def jfxWebView2sfx(wv: jfxsw.WebView) = new WebView(wv)
+  implicit def jfxWebView2sfx(wv: jfxsw.WebView) = if (wv != null) new WebView(wv) else null
 
   /**
    * $BEGINWR$WE$FINISHWR

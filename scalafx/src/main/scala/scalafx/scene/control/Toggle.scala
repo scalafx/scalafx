@@ -33,7 +33,7 @@ import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object Toggle {
-  implicit def sfxToggle2jfx(t: Toggle) = t.delegate
+  implicit def sfxToggle2jfx(t: Toggle) = if (t != null) t.delegate else null
 }
 
 /**

@@ -26,14 +26,14 @@
  */
 package scalafx.scene.transform
 
-import javafx.scene.{ transform => jfxst }
+import javafx.scene.{transform => jfxst}
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.PositionDelegate
 
 object Shear {
-  implicit def sfxShear2jfx(v: Shear) = v.delegate
+  implicit def sfxShear2jfx(v: Shear) = if (v != null) v.delegate else null
 }
 
 /**
@@ -41,7 +41,7 @@ object Shear {
  */
 class Shear(override val delegate: jfxst.Shear = new jfxst.Shear)
   extends Transform(delegate)
-  with PositionDelegate[jfxst.Shear] 
+  with PositionDelegate[jfxst.Shear]
   with SFXDelegate[jfxst.Shear] {
 
   /**

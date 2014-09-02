@@ -26,12 +26,12 @@
  */
 package scalafx.scene.web
 
-import javafx.scene.{ web => jfxsw }
+import javafx.scene.{web => jfxsw}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object PopupFeatures {
-  implicit def sfxPopupFeatures2jfx(pe: PopupFeatures) = pe.delegate
+  implicit def sfxPopupFeatures2jfx(pe: PopupFeatures) = if (pe != null) pe.delegate else null
 }
 
 class PopupFeatures(override val delegate: jfxsw.PopupFeatures) extends SFXDelegate[jfxsw.PopupFeatures] {

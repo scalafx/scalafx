@@ -26,8 +26,8 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import javafx.{ event => jfxe }
+import javafx.scene.{control => jfxsc}
+import javafx.{event => jfxe}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
@@ -36,7 +36,7 @@ import scalafx.beans.property.StringProperty
 import scalafx.delegate.SFXDelegate
 
 object ComboBoxBase {
-  implicit def sfxComboBoxBase2jfx[T](cb: ComboBoxBase[T]) = cb.delegate
+  implicit def sfxComboBoxBase2jfx[T](cb: ComboBoxBase[T]) = if (cb != null) cb.delegate else null
 }
 
 abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) extends Control(delegate) with SFXDelegate[jfxsc.ComboBoxBase[T]] {
@@ -119,7 +119,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
    * @since 2.2
    */
   def onHidden = delegate.onHiddenProperty()
-  def onHidden_( eventHandler:jfxe.EventHandler[jfxe.Event] ) {
+  def onHidden_(eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onHidden() = eventHandler
   }
 
@@ -128,7 +128,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
    * @since 2.2
    */
   def onHiding = delegate.onHidingProperty()
-  def onHiding_( eventHandler:jfxe.EventHandler[jfxe.Event] ) {
+  def onHiding_(eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onHiding() = eventHandler
   }
 
@@ -137,7 +137,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
    * @since 2.2
    */
   def onShowing = delegate.onShowingProperty()
-  def onShowing_( eventHandler:jfxe.EventHandler[jfxe.Event] ) {
+  def onShowing_(eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onShowing() = eventHandler
   }
 
@@ -146,7 +146,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
    * @since 2.2
    */
   def onShown = delegate.onShownProperty()
-  def onShown_( eventHandler:jfxe.EventHandler[jfxe.Event] ) {
+  def onShown_(eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onShown() = eventHandler
   }
 

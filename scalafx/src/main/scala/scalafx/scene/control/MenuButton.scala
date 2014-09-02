@@ -40,7 +40,7 @@ import scalafx.delegate.SFXDelegate
 
 
 object MenuButton {
-  implicit def sfxToggleButton2jfx(mb: MenuButton) = mb.delegate
+  implicit def sfxToggleButton2jfx(mb: MenuButton) = if (mb != null) mb.delegate else null
 }
 
 /**

@@ -26,7 +26,7 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
@@ -34,7 +34,7 @@ import scalafx.beans.property.IntegerProperty
 import scalafx.delegate.SFXDelegate
 
 object TextArea {
-  implicit def sfxTextArea2jfx(v: TextArea) = v.delegate
+  implicit def sfxTextArea2jfx(v: TextArea) = if (v != null) v.delegate else null
 }
 
 class TextArea(override val delegate: jfxsc.TextArea = new jfxsc.TextArea) extends TextInputControl(delegate) with SFXDelegate[jfxsc.TextArea] {

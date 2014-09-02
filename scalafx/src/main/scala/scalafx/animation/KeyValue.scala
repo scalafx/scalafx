@@ -26,8 +26,8 @@
  */
 package scalafx.animation
 
-import javafx.{ animation => jfxa }
-import javafx.beans.{ value => jfxbv }
+import javafx.{animation => jfxa}
+import javafx.beans.{value => jfxbv}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.beans.property.Property
@@ -46,7 +46,7 @@ object KeyValue {
    * @param v ScalaFX $KV
    * @return JavaFX $KV extracted from `v`.
    */
-  implicit def sfxKeyValue2jfx(v: KeyValue[_, _]) = v.delegate
+  implicit def sfxKeyValue2jfx(v: KeyValue[_, _]) = if (v != null) v.delegate else null
 
   // Need to separately capture the Number/primitive combinations since JavaFX does not go down to primitives in its generics (wow, this is ugly!)
   def apply[T >: Int <: Int, J >: Number <: Number](target: jfxbv.WritableIntegerValue, endValue: Int) = new KeyValue[T, J](new jfxa.KeyValue(target, int2Integer(endValue)))
@@ -88,7 +88,7 @@ object KeyValue {
  * @tparam J Indicates Java type to be wrapped by T. Eventually T and J could be the same.
  * @constructor Creates a new ScalaFX $KV from a JavaFX $KV.
  * @param delegate JavaFX $KV to be delegated.
- * 
+ *
  * @define KV `KeyValue`
  */
 class KeyValue[T, J](override val delegate: jfxa.KeyValue)
@@ -119,7 +119,7 @@ class KeyValue[T, J](override val delegate: jfxa.KeyValue)
  * @define KV `KeyValue`
  */
 object Tweenable {
-  
+
   /**
    * Converts a ScalaFX $TW to a JavaFX [[http://docs.oracle.com/javafx/2/api/javafx/animation/KeyValue.html $KV]].
    *
@@ -137,7 +137,7 @@ object Tweenable {
  * @constructor Creates a new $TW
  * @param target target.
  * @param endValue end value.
- * 
+ *
  * @define TW `Tweenable`
  * @define KV `KeyValue`
  */

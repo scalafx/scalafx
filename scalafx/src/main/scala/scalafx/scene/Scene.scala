@@ -43,7 +43,7 @@ import scalafx.scene.input.TransferMode
 import scalafx.scene.paint.Paint
 
 object Scene {
-  implicit def sfxScene2jfx(v: Scene) = v.delegate
+  implicit def sfxScene2jfx(v: Scene) = if (v != null) v.delegate else null
 }
 
 /**

@@ -28,8 +28,8 @@ package scalafx.scene.control
 
 import scala.collection.JavaConversions.asJavaCollection
 
-import javafx.scene.{ control => jfxsc }
-import javafx.{ event => jfxe }
+import javafx.scene.{control => jfxsc}
+import javafx.{event => jfxe}
 import scalafx.collections._
 import scalafx.Includes._
 import scalafx.scene.Node._
@@ -37,7 +37,7 @@ import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
 
 object Menu {
-  implicit def sfxMenu2jfx(cb: Menu) = cb.delegate
+  implicit def sfxMenu2jfx(cb: Menu) = if (cb != null) cb.delegate else null
 }
 
 /**
@@ -93,7 +93,7 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
 
   def onHidden = delegate.onHiddenProperty
   def onHidden_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
-    onHidden() =  eventHandler
+    onHidden() = eventHandler
   }
 
   def onHiding = delegate.onHidingProperty
@@ -108,7 +108,7 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
 
   def onShown = delegate.onShownProperty
   def onShown_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
-    onShown() =  eventHandler
+    onShown() = eventHandler
   }
 
 }

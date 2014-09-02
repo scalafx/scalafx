@@ -36,7 +36,7 @@ import scalafx.scene.input.DataFormat._
 import scalafx.delegate.SFXDelegate
 
 object Clipboard {
-  implicit def sfxClipboard2jfx(c: Clipboard) = c.delegate
+  implicit def sfxClipboard2jfx(c: Clipboard) = if (c != null) c.delegate else null
 
   /**
    * Gets the current system clipboard, through which data can be stored and retrieved.
@@ -137,7 +137,7 @@ class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxs
     * @throws java.lang.NullPointerException - if null data reference is passed for any format
     */
   def content_=(content: Map[DataFormat, AnyRef]) = {
-    delegate.setContent(content.map {case (a, b) => (a.delegate, b)})
+    delegate.setContent(content.map { case (a, b) => (a.delegate, b)})
   }
 
   /** Puts content onto the clipboard.

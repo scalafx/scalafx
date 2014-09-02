@@ -32,7 +32,7 @@ import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object TableCell {
-  implicit def sfxTableCell2jfx[S, T](tc: TableCell[S, T]) = tc.delegate
+  implicit def sfxTableCell2jfx[S, T](tc: TableCell[S, T]) = if (tc != null) tc.delegate else null
 }
 
 /**

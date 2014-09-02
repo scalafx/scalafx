@@ -206,8 +206,8 @@ object ColorSelector extends JFXApp {
   val txfColorValue = new TextField {
     promptText = "Color Value"
     editable = false
-    alignment = Pos.CENTER_LEFT
-    hgrow = Priority.NEVER
+    alignment = Pos.CenterLeft
+    hgrow = Priority.Never
     style = "-fx-font-family: Consolas;"
   }
 
@@ -223,28 +223,28 @@ object ColorSelector extends JFXApp {
   }
 
   val rectangleRowsConstraint = new RowConstraints {
-    vgrow = Priority.ALWAYS
+    vgrow = Priority.Always
     prefHeight = Control.USE_COMPUTED_SIZE
   }
   val otherRowsConstraint = new RowConstraints {
-    vgrow = Priority.NEVER
-    valignment = VPos.TOP
+    vgrow = Priority.Never
+    valignment = VPos.Top
   }
   val column0Constraint = new ColumnConstraints {
     fillWidth = true
-    halignment = HPos.CENTER
-    hgrow = Priority.ALWAYS
+    halignment = HPos.Center
+    hgrow = Priority.Always
     minWidth = 300
   }
   val column1Constraint = new ColumnConstraints {
-    halignment = HPos.RIGHT
-    hgrow = Priority.NEVER
+    halignment = HPos.Right
+    hgrow = Priority.Never
     minWidth = 80
     maxWidth = 100
   }
   val column2Constraint = new ColumnConstraints {
-    halignment = HPos.LEFT
-    hgrow = Priority.SOMETIMES
+    halignment = HPos.Left
+    hgrow = Priority.Sometimes
     minWidth = 200
   }
   val pnlMain = new GridPane {
@@ -259,40 +259,40 @@ object ColorSelector extends JFXApp {
 
     add(controlRed, 0, 1)
     add(new Label {
-      alignmentInParent = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TopRight
       labelFor = cmbWebColor
       text = "Web Color"
-      textAlignment = TextAlignment.RIGHT
+      textAlignment = TextAlignment.Right
       wrapText = true
     }, 1, 1)
     add(cmbWebColor, 2, 1)
 
     add(controlGreen, 0, 2)
     add(new Label {
-      alignmentInParent = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TopRight
       labelFor = txfColorValue
       text = "Color Value"
-      textAlignment = TextAlignment.RIGHT
+      textAlignment = TextAlignment.Right
       wrapText = true
     }, 1, 2)
     add(txfColorValue, 2, 2)
 
     add(controlBlue, 0, 3)
     add(new Label {
-      alignmentInParent = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TopRight
       labelFor = cmbColorFormat
       text = "Color Format"
-      textAlignment = TextAlignment.RIGHT
+      textAlignment = TextAlignment.Right
       wrapText = true
     }, 1, 3)
     add(cmbColorFormat, 2, 3)
 
     add(controlAlpha, 0, 4)
     add(new Label {
-      alignmentInParent = Pos.TOP_RIGHT
+      alignmentInParent = Pos.TopRight
       labelFor = chbDisableAlpha
       text = "Disable Alpha"
-      textAlignment = TextAlignment.RIGHT
+      textAlignment = TextAlignment.Right
       wrapText = true
     }, 1, 4)
     add(chbDisableAlpha, 2, 4)

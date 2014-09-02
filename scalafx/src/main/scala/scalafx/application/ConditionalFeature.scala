@@ -36,14 +36,24 @@ import scalafx.delegate._
 /** Wrapper for [[javafx.application.ConditionalFeature]] */
 object ConditionalFeature extends SFXEnumDelegateCompanion[jfxa.ConditionalFeature, ConditionalFeature] {
 
-  val SCENE3D = new ConditionalFeature(jfxa.ConditionalFeature.SCENE3D)
-  val EFFECT = new ConditionalFeature(jfxa.ConditionalFeature.EFFECT)
-  val SHAPE_CLIP = new ConditionalFeature(jfxa.ConditionalFeature.SHAPE_CLIP)
-  val INPUT_METHOD = new ConditionalFeature(jfxa.ConditionalFeature.INPUT_METHOD)
-  val TRANSPARENT_WINDOW = new ConditionalFeature(jfxa.ConditionalFeature.TRANSPARENT_WINDOW)
+  val Scene3D = new ConditionalFeature(jfxa.ConditionalFeature.SCENE3D)
+  @deprecated ("Use Scene3D; SCENE3D will be removed in a future release", "2.2.60")
+  val SCENE3D = Scene3D
+  val Effect = new ConditionalFeature(jfxa.ConditionalFeature.EFFECT)
+  @deprecated ("Use Effect; EFFECT will be removed in a future release", "2.2.60")
+  val EFFECT = Effect
+  val ShapeClip = new ConditionalFeature(jfxa.ConditionalFeature.SHAPE_CLIP)
+  @deprecated ("Use ShapeClip; SHAPE_CLIP will be removed in a future release", "2.2.60")
+  val SHAPE_CLIP = ShapeClip
+  val InputMethod = new ConditionalFeature(jfxa.ConditionalFeature.INPUT_METHOD)
+  @deprecated ("Use InputMethod; INPUT_METHOD will be removed in a future release", "2.2.60")
+  val INPUT_METHOD = InputMethod
+  val TransparentWindow = new ConditionalFeature(jfxa.ConditionalFeature.TRANSPARENT_WINDOW)
+  @deprecated ("Use TransparentWindow; TRANSPARENT_WINDOW will be removed in a future release", "2.2.60")
+  val TRANSPARENT_WINDOW = TransparentWindow
 
   protected override def unsortedValues: Array[ConditionalFeature] = Array(
-    SCENE3D, EFFECT, SHAPE_CLIP, INPUT_METHOD, TRANSPARENT_WINDOW
+    Scene3D, Effect, ShapeClip, InputMethod, TransparentWindow
   )
 }
 

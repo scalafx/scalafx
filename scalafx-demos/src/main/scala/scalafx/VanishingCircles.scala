@@ -29,7 +29,7 @@ package scalafx
 
 import scala.math.random
 import scalafx.Includes._
-import scalafx.animation.Animation.INDEFINITE
+import scalafx.animation.Animation.Indefinite
 import scalafx.animation.Timeline
 import scalafx.animation.Tweenable.tweenable2KeyFrame
 import scalafx.application.JFXApp
@@ -70,7 +70,7 @@ object VanishingCircles extends JFXApp {
   }
   // add this for animation:
   new Timeline {
-    cycleCount = INDEFINITE
+    cycleCount = Indefinite
     autoReverse = true
     keyFrames = for (circle <- circles) yield at(40 s) {
       Set(

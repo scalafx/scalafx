@@ -26,9 +26,9 @@
  */
 package scalafx.scene.web
 
-import javafx.{ event => jfxe }
-import javafx.scene.{ web => jfxsw }
-import javafx.{ util => jfxu }
+import javafx.{event => jfxe}
+import javafx.scene.{web => jfxsw}
+import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property._
 import javafx.geometry.Rectangle2D
@@ -36,7 +36,7 @@ import scalafx.delegate.SFXDelegate
 import org.w3c.dom.Document
 
 object WebEngine {
-  implicit def sfxWebEngine2jfx(we: WebEngine) = we.delegate
+  implicit def sfxWebEngine2jfx(we: WebEngine) = if (we != null) we.delegate else null
 }
 
 class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) extends SFXDelegate[jfxsw.WebEngine] {

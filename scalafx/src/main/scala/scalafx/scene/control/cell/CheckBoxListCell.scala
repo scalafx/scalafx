@@ -28,9 +28,9 @@ package scalafx.scene.control.cell
 
 import scala.annotation.implicitNotFound
 
-import javafx.beans.{ value => jfxbv }
-import javafx.scene.control.{ cell => jfxscc }
-import javafx.{ util => jfxu }
+import javafx.beans.{value => jfxbv}
+import javafx.scene.control.{cell => jfxscc}
+import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.value.ObservableValue
 import scalafx.scene.control.cell.CheckBoxListCell._
@@ -44,8 +44,8 @@ import scalafx.util.StringConverter
  *
  * @define CBLC `CheckBoxListCell`
  * @define SP A Function that, given an object of type T (which is a value taken out of the
- * ListView[T] list), will return an ObservableValue[Boolean] that represents whether the given item is selected or
- * not.
+ *         ListView[T] list), will return an ObservableValue[Boolean] that represents whether the given item is selected or
+ *         not.
  */
 object CheckBoxListCell {
 
@@ -54,7 +54,7 @@ object CheckBoxListCell {
    *
    * @param cell ScalaFX $CBLC
    */
-  implicit def sfxCheckBoxListCell2jfx[T](cell: CheckBoxListCell[T]) = cell.delegate
+  implicit def sfxCheckBoxListCell2jfx[T](cell: CheckBoxListCell[T]) = if (cell != null) cell.delegate else null
 
   /**
    * Creates a cell factory for use in ListView controls.

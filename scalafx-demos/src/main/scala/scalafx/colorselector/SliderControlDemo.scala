@@ -48,26 +48,26 @@ object SliderControlDemo extends JFXApp {
   val sliderControl = new SliderControl("X")
 
   val txfInputValue = new TextField {
-    alignmentInParent = Pos.BASELINE_LEFT
+    alignmentInParent = Pos.BaselineLeft
     promptText = "Enter the value"
-    hgrow = Priority.NEVER
+    hgrow = Priority.Never
     onAction = handle {
       sliderControl.value = text.get.toDouble
     }
   }
 
   val lblOutputValue = new Label {
-    alignmentInParent = Pos.BASELINE_LEFT
+    alignmentInParent = Pos.BaselineLeft
     text <== sliderControl.realValue.asString("%03.0f")
   }
 
   val chbSelected = new CheckBox {
-    alignmentInParent = Pos.BASELINE_LEFT
+    alignmentInParent = Pos.BaselineLeft
     selected <==> sliderControl.selectedControl
   }
 
   val chbEnabled = new CheckBox {
-    alignmentInParent = Pos.BASELINE_LEFT
+    alignmentInParent = Pos.BaselineLeft
     selected <==> sliderControl.disable
   }
 
@@ -90,19 +90,19 @@ object SliderControlDemo extends JFXApp {
     add(chbEnabled, 3, 1)
     padding = insets
   }
-  GridPane.setHgrow(txfInputValue, Priority.NEVER)
-  GridPane.setValignment(txfInputValue, VPos.BASELINE)
-  GridPane.setVgrow(txfInputValue, Priority.NEVER)
-  GridPane.setHgrow(lblOutputValue, Priority.NEVER)
-  GridPane.setValignment(lblOutputValue, VPos.BASELINE)
-  GridPane.setVgrow(lblOutputValue, Priority.NEVER)
+  GridPane.setHgrow(txfInputValue, Priority.Never)
+  GridPane.setValignment(txfInputValue, VPos.Baseline)
+  GridPane.setVgrow(txfInputValue, Priority.Never)
+  GridPane.setHgrow(lblOutputValue, Priority.Never)
+  GridPane.setValignment(lblOutputValue, VPos.Baseline)
+  GridPane.setVgrow(lblOutputValue, Priority.Never)
   val ccOdd = new ColumnConstraints {
-    halignment = HPos.RIGHT
-    hgrow = Priority.NEVER
+    halignment = HPos.Right
+    hgrow = Priority.Never
   }
   val ccEven = new ColumnConstraints {
-    halignment = HPos.LEFT
-    hgrow = Priority.SOMETIMES
+    halignment = HPos.Left
+    hgrow = Priority.Sometimes
   }
   pnlControls.columnConstraints = List(ccOdd, ccEven, ccOdd, ccEven)
 
@@ -110,8 +110,8 @@ object SliderControlDemo extends JFXApp {
     content = List(sliderControl,
       pnlControls)
   }
-  VBox.setVgrow(sliderControl, Priority.NEVER)
-  VBox.setVgrow(pnlControls, Priority.ALWAYS)
+  VBox.setVgrow(sliderControl, Priority.Never)
+  VBox.setVgrow(pnlControls, Priority.Always)
 
   val mainScene = new Scene {
     fill = Color.LightGray

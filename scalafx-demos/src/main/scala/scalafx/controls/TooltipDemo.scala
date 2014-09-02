@@ -28,7 +28,6 @@ package scalafx.controls
 
 import javafx.scene.control.ContentDisplay
 import javafx.scene.control.OverrunStyle
-import javafx.scene.layout.Priority
 import javafx.scene.text.TextAlignment
 import scalafx.Includes._
 import scalafx.application.JFXApp
@@ -38,6 +37,7 @@ import scalafx.controls.controls._
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
 import scalafx.scene.control._
+import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 
@@ -48,15 +48,15 @@ object TooltipDemo extends JFXApp {
   val btnTooltip = new Button {
     text = "Mouse over me to see Tooltip"
     tooltip = myTooltip
-    alignmentInParent = Pos.CENTER
+    alignmentInParent = Pos.Center
   }
 
   val controlsPane = new VBox {
     spacing = 5
     fillWidth = true
-    alignment = Pos.CENTER
-    alignmentInParent = Pos.TOP_CENTER
-    hgrow = Priority.ALWAYS
+    alignment = Pos.Center
+    alignmentInParent = Pos.TopCenter
+    hgrow = Priority.Always
     content = List(new TooltipControls(myTooltip), new PopupControlControls(myTooltip))
   }
 

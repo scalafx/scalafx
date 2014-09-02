@@ -34,10 +34,10 @@ import scalafx.scene.paint._
 import scalafx.delegate.SFXDelegate
 
 object SVGPath {
-  implicit def sfxSVGPath2jfx(v: SVGPath) = v.delegate
+  implicit def sfxSVGPath2jfx(v: SVGPath) = if (v != null) v.delegate else null
 }
 
-class SVGPath(override val delegate:jfxss.SVGPath = new jfxss.SVGPath()) extends Shape(delegate) with SFXDelegate[jfxss.SVGPath] {
+class SVGPath(override val delegate: jfxss.SVGPath = new jfxss.SVGPath()) extends Shape(delegate) with SFXDelegate[jfxss.SVGPath] {
   def content: StringProperty = delegate.contentProperty
   def content_=(v: String) {
     content() = v

@@ -32,16 +32,30 @@ import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 /** Wrapper for [[scalafx.scene.control.OverrunStyle]] */
 object OverrunStyle extends SFXEnumDelegateCompanion[jfxsc.OverrunStyle, OverrunStyle] {
 
-  val CENTER_ELLIPSIS = new OverrunStyle(jfxsc.OverrunStyle.CENTER_ELLIPSIS)
-  val CENTER_WORD_ELLIPSIS = new OverrunStyle(jfxsc.OverrunStyle.CENTER_WORD_ELLIPSIS)
-  val CLIP = new OverrunStyle(jfxsc.OverrunStyle.CLIP)
-  val ELLIPSIS = new OverrunStyle(jfxsc.OverrunStyle.ELLIPSIS)
-  val LEADING_ELLIPSIS = new OverrunStyle(jfxsc.OverrunStyle.LEADING_ELLIPSIS)
-  val LEADING_WORD_ELLIPSIS = new OverrunStyle(jfxsc.OverrunStyle.LEADING_WORD_ELLIPSIS)
-  val WORD_ELLIPSIS = new OverrunStyle(jfxsc.OverrunStyle.WORD_ELLIPSIS)
+  val CenterEllipsis = new OverrunStyle(jfxsc.OverrunStyle.CENTER_ELLIPSIS)
+@deprecated ("Use CenterEllipsis; CENTER_ELLIPSIS will be removed in a future release", "2.2.60")
+val CENTER_ELLIPSIS = CenterEllipsis
+  val CenterWordEllipsis = new OverrunStyle(jfxsc.OverrunStyle.CENTER_WORD_ELLIPSIS)
+@deprecated ("Use CenterWordEllipsis; CENTER_WORD_ELLIPSIS will be removed in a future release", "2.2.60")
+val CENTER_WORD_ELLIPSIS = CenterWordEllipsis
+  val Clip = new OverrunStyle(jfxsc.OverrunStyle.CLIP)
+@deprecated ("Use Clip; CLIP will be removed in a future release", "2.2.60")
+val CLIP = Clip
+  val Ellipsis = new OverrunStyle(jfxsc.OverrunStyle.ELLIPSIS)
+@deprecated ("Use Ellipsis; ELLIPSIS will be removed in a future release", "2.2.60")
+val ELLIPSIS = Ellipsis
+  val LeadingEllipsis = new OverrunStyle(jfxsc.OverrunStyle.LEADING_ELLIPSIS)
+@deprecated ("Use LeadingEllipsis; LEADING_ELLIPSIS will be removed in a future release", "2.2.60")
+val LEADING_ELLIPSIS = LeadingEllipsis
+  val LeadingWordEllipsis = new OverrunStyle(jfxsc.OverrunStyle.LEADING_WORD_ELLIPSIS)
+@deprecated ("Use LeadingWordEllipsis; LEADING_WORD_ELLIPSIS will be removed in a future release", "2.2.60")
+val LEADING_WORD_ELLIPSIS = LeadingWordEllipsis
+  val WordEllipsis = new OverrunStyle(jfxsc.OverrunStyle.WORD_ELLIPSIS)
+@deprecated ("Use WordEllipsis; WORD_ELLIPSIS will be removed in a future release", "2.2.60")
+val WORD_ELLIPSIS = WordEllipsis
 
   protected override def unsortedValues: Array[OverrunStyle] = Array(
-    CLIP, ELLIPSIS, WORD_ELLIPSIS, CENTER_ELLIPSIS, CENTER_WORD_ELLIPSIS, LEADING_ELLIPSIS, LEADING_WORD_ELLIPSIS
+    Clip, Ellipsis, WordEllipsis, CenterEllipsis, CenterWordEllipsis, LeadingEllipsis, LeadingWordEllipsis
   )
 }
 

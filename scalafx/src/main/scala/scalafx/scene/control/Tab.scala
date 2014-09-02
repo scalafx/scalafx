@@ -26,9 +26,9 @@
  */
 package scalafx.scene.control
 
-import javafx.{ event => jfxe }
-import javafx.{ scene => jfxs }
-import javafx.scene.{ control => jfxsc }
+import javafx.{event => jfxe}
+import javafx.{scene => jfxs}
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.scene.Node._
 import scalafx.beans.property.BooleanProperty
@@ -41,7 +41,7 @@ import scalafx.beans.property.ReadOnlyObjectProperty
 
 object Tab {
 
-  implicit def sfxTab2jfx(v: Tab) = v.delegate
+  implicit def sfxTab2jfx(v: Tab) = if (v != null) v.delegate else null
 
 }
 
@@ -163,7 +163,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends SFXDelegate[
    * @since 2.2
    */
   def userData: AnyRef = delegate.userData
-  def userData_=( v: AnyRef ) {
-     delegate.setUserData(v)
+  def userData_=(v: AnyRef) {
+    delegate.setUserData(v)
   }
 }

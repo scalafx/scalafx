@@ -38,8 +38,8 @@ import scala.collection.mutable.Buffer
 import scala.collection.mutable.BufferLike
 import scala.collection.mutable.Builder
 
-import java.{ util => ju }
-import javafx.{ collections => jfxc }
+import java.{util => ju}
+import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.event.subscriptions.Subscription
 import scalafx.delegate.SFXDelegate
@@ -58,7 +58,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    *
    * @param ob ObservableBuffer
    */
-  implicit def observableBuffer2ObservableList[T](ob: ObservableBuffer[T]) = ob.delegate
+  implicit def observableBuffer2ObservableList[T](ob: ObservableBuffer[T]) = if (ob != null) ob.delegate else null
 
   /**
    * The standard `CanBuildFrom` instance for $OB objects.
@@ -107,7 +107,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    * @param start The start of the change interval.
    * @param end The end of the change interval.
    * @param permutation Function thst indicates the permutation that happened. The argument indicates the old index
-   * that contained the element prior to this change. Its return is the new index of the same element.
+   *                    that contained the element prior to this change. Its return is the new index of the same element.
    * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getFrom() `ListChangeListener.Change.getFrom()`]]
    * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getTo() `ListChangeListener.Change.getTo()`]]
    * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getPermutation(int) `ListChangeListener.Change.getPermutation(int)`]]
@@ -196,7 +196,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
   def rotate[T](buffer: ObservableBuffer[T], distance: Int) {
     jfxc.FXCollections.rotate(buffer, distance)
   }
-  
+
   // HELPER METHODS - END
 
 }
@@ -437,7 +437,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
   /**
    * Remove a range of elements. Use this method if you want a functionality such as
    * [[http://docs.oracle.com/javafx/2/api/javafx/collections/ObservableList.html#remove(int,int) the method]]
-   *  with same signature in $OL.
+   * with same signature in $OL.
    *
    * @param from the start of the range to remove (inclusive)
    * @param to  the end of the range to remove (exclusive)
@@ -525,7 +525,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * modifications data.
    *
    * @param op Function that will handle this $OB's modifications data to be activated when
-   *                 some change was made.
+   *           some change was made.
    * @return A subscription object
    */
   def onChange[T1 >: T](op: (ObservableBuffer[T], Seq[Change]) => Unit): Subscription = {

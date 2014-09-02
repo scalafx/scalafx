@@ -38,14 +38,14 @@ import org.scalatest.FlatSpec
 /**
  * Trait to test AlignmentDelegate subclasses
  */
-trait AlignmentDelegateSpec[J <: Object with Aligned, D <: AlignmentDelegate[J]] 
+trait AlignmentDelegateSpec[J <: Object with Aligned, D <: AlignmentDelegate[J]]
 	extends SFXDelegateSpec[J, D] {
 
   it should "have its Alignment observed when changed" in {
     var changed = false
     val delegate = getScalaClassInstance
-    val initialValue = Pos.BASELINE_CENTER
-    val finalValue = Pos.CENTER_RIGHT
+    val initialValue = Pos.BaselineCenter
+    val finalValue = Pos.CenterRight
 
     delegate.alignment = initialValue
     val subscription = delegate.alignment.onChange((ov, oldValue, newValue) => {

@@ -26,12 +26,12 @@
  */
 package scalafx.beans
 
-import javafx.{ beans => jfxb }
+import javafx.{beans => jfxb}
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
 object Observable {
-  implicit def sfxObservable2jfx(o: Observable) = o.delegate
+  implicit def sfxObservable2jfx(o: Observable) = if (o != null) o.delegate else null
 }
 
 /**

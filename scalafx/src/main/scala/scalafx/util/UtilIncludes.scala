@@ -98,7 +98,7 @@ trait UtilIncludes {
    * @param d JavaFX Duration
    * @return ScalaFX Duration
    */
-  implicit def jfxDuration2sfx(d: jfxu.Duration) = new Duration(d)
+  implicit def jfxDuration2sfx(d: jfxu.Duration) = if (d != null) new Duration(d) else null
 
   /**
    * Converts a

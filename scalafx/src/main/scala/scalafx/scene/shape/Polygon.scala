@@ -26,12 +26,12 @@
  */
 package scalafx.scene.shape
 
-import javafx.scene.{ shape => jfxss }
+import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object Polygon {
-  implicit def sfxPolygon2jfx(v: Polygon) = v.delegate
+  implicit def sfxPolygon2jfx(v: Polygon) = if (v != null) v.delegate else null
 
   def apply(points: Double*) = new Polygon(new jfxss.Polygon(points: _*))
 }

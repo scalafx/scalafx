@@ -26,13 +26,13 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 
 object RadioMenuItem {
-  implicit def sfxRadioMenuItem2jfx(m: RadioMenuItem) = m.delegate
+  implicit def sfxRadioMenuItem2jfx(m: RadioMenuItem) = if (m != null) m.delegate else null
 }
 
 /**
@@ -54,11 +54,11 @@ class RadioMenuItem(override val delegate: jfxsc.RadioMenuItem)
    * graphic [[scalafx.scene.Node]] to the given node.
    */
   def this(text: String, graphic: Node) = this(new jfxsc.RadioMenuItem(text, graphic))
-  
+
   override def properties = delegate.getProperties
-//  def userData: AnyRef = delegate.getUserData()
-//  def userData_=(v: AnyRef) {
-//    delegate.setUserData(v)
-//  }
+  //  def userData: AnyRef = delegate.getUserData()
+  //  def userData_=(v: AnyRef) {
+  //    delegate.setUserData(v)
+  //  }
 
 }

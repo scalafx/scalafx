@@ -29,10 +29,10 @@ package scalafx.util.converter
 import java.text.DateFormat
 import java.util.Locale
 
-import javafx.util.{ converter => jfxuc }
+import javafx.util.{converter => jfxuc}
 
 object DateStringConverter {
-  implicit def sfxDateStringConverter2jfx(c: DateStringConverter) = c.delegate
+  implicit def sfxDateStringConverter2jfx(c: DateStringConverter) = if (c != null) c.delegate else null
 }
 
 class DateStringConverter(override val delegate: jfxuc.DateStringConverter = new jfxuc.DateStringConverter)

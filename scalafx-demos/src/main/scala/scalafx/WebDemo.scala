@@ -38,8 +38,8 @@ import scene.paint.Color
 object WebDemo extends JFXApp {
 
   val browser = new WebView {
-    hgrow = Priority.ALWAYS
-    vgrow = Priority.ALWAYS
+    hgrow = Priority.Always
+    vgrow = Priority.Always
     onAlert = (e: WebEvent[_]) => println("onAlert: " + e)
     onStatusChanged = (e: WebEvent[_]) => println("onStatusChanged: " + e)
     onResized = (e: WebEvent[_]) => println("onResized: " + e)
@@ -52,8 +52,8 @@ object WebDemo extends JFXApp {
 
   val txfUrl = new TextField {
     text = engine.location.value
-    hgrow = Priority.ALWAYS
-    vgrow = Priority.NEVER
+    hgrow = Priority.Always
+    vgrow = Priority.Never
   }
   txfUrl.onAction = handle{ engine.load(txfUrl.text.get) }
 
@@ -64,8 +64,8 @@ object WebDemo extends JFXApp {
     scene = new Scene {
       fill = Color.LightGray
       root = new BorderPane {
-        hgrow = Priority.ALWAYS
-        vgrow = Priority.ALWAYS
+        hgrow = Priority.Always
+        vgrow = Priority.Always
         top = txfUrl
         center = browser
       }

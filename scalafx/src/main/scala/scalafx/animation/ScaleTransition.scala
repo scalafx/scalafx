@@ -26,7 +26,7 @@
  */
 package scalafx.animation
 
-import javafx.{ animation => jfxa, scene => jfxs, util => jfxu }
+import javafx.{animation => jfxa, scene => jfxs, util => jfxu}
 import scalafx.util.Duration
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
@@ -48,12 +48,13 @@ object ScaleTransition extends AnimationStatics {
    * @param v ScalaFX $ST
    * @return JavaFX $ST extracted from `v`.
    */
-  implicit def sfxScaleTransition2jfx(v: ScaleTransition) = v.delegate
+  implicit def sfxScaleTransition2jfx(v: ScaleTransition) = if (v != null) v.delegate else null
+
 }
 
 /**
  * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/ScaleTransition.html $ST]].
- * 
+ *
  * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
  * @param delegate JavaFX $ST to be delegated.
  *
@@ -127,7 +128,7 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
   }
 
   /**
-   * Specifies the start X scale value of this $ST. $DV `Double.NaN` 
+   * Specifies the start X scale value of this $ST. $DV `Double.NaN`
    */
   def fromX: DoubleProperty = delegate.fromXProperty
   def fromX_=(x: Double) {

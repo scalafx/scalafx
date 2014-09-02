@@ -26,13 +26,13 @@
  */
 package scalafx.scene.input
 
-import javafx.scene.{ input => jfxsi }
-import javafx.{ event => jfxe }
+import javafx.scene.{input => jfxsi}
+import javafx.{event => jfxe}
 import scalafx.delegate.SFXDelegate
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 object TouchPoint {
-  implicit def sfxTouchPoint2jfx(tp: TouchPoint) = tp.delegate
+  implicit def sfxTouchPoint2jfx(tp: TouchPoint) = if (tp != null) tp.delegate else null
 
   object State
     extends SFXEnumDelegateCompanion[jfxsi.TouchPoint.State, State] {

@@ -26,8 +26,8 @@
  */
 package scalafx.scene.control
 
-import javafx.{ scene => jfxs }
-import javafx.scene.{ control => jfxsc }
+import javafx.{scene => jfxs}
+import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene._
@@ -35,7 +35,7 @@ import javafx.beans.property.BooleanProperty
 import scalafx.beans.property.ObjectProperty
 
 object TitledPane {
-  implicit def sfxTitledPane2jfx(v: TitledPane) = v.delegate
+  implicit def sfxTitledPane2jfx(v: TitledPane) = if (v != null) v.delegate else null
 }
 
 class TitledPane(override val delegate: jfxsc.TitledPane = new jfxsc.TitledPane)

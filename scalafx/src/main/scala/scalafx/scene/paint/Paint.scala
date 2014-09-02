@@ -26,11 +26,11 @@
  */
 package scalafx.scene.paint
 
-import javafx.scene.{ paint => jfxsp }
+import javafx.scene.{paint => jfxsp}
 import scalafx.delegate.SFXDelegate
 
 object Paint {
-  implicit def sfxPaint2jfx(p: Paint) = p.delegate
+  implicit def sfxPaint2jfx(p: Paint) = if (p != null) p.delegate else null
 
   /**
    * Creates a paint value from a string representation.  Recognizes strings representing Color, RadialGradient or LinearGradient. String specifying

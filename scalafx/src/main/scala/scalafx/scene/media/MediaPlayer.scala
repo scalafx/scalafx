@@ -26,9 +26,9 @@
  */
 package scalafx.scene.media
 
-import javafx.scene.{ media => jfxsm }
-import javafx.{ event => jfxe }
-import javafx.{ util => jfxu }
+import javafx.scene.{media => jfxsm}
+import javafx.{event => jfxe}
+import javafx.{util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
@@ -42,7 +42,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 object MediaPlayer {
-  implicit def sfxMediaPlayer2jfx(mp: MediaPlayer) = mp.delegate
+  implicit def sfxMediaPlayer2jfx(mp: MediaPlayer) = if (mp != null) mp.delegate else null
 
   object Status
     extends SFXEnumDelegateCompanion[jfxsm.MediaPlayer.Status, Status] {

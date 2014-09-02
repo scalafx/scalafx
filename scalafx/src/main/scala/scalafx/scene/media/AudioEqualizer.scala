@@ -26,13 +26,13 @@
  */
 package scalafx.scene.media
 
-import javafx.scene.{ media => jfxsm }
+import javafx.scene.{media => jfxsm}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
 
 object AudioEqualizer {
-  implicit def sfxAudioEqualizer2jfx(ae: AudioEqualizer) = ae.delegate
+  implicit def sfxAudioEqualizer2jfx(ae: AudioEqualizer) = if (ae != null) ae.delegate else null
 
   /**
    * Maximum number of bands an AudioEqualizer may contain.

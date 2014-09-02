@@ -33,7 +33,7 @@ import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
 
 object Group {
-  implicit def sfxGroup2jfx(v: Group) = v.delegate
+  implicit def sfxGroup2jfx(v: Group) = if (v != null) v.delegate else null
 }
 
 /**

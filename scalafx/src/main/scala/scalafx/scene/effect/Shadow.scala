@@ -26,7 +26,7 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{ effect => jfxse }
+import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.ObjectProperty
@@ -35,7 +35,7 @@ import scalafx.delegate.DimensionDelegate
 import scalafx.delegate.SFXDelegate
 
 object Shadow {
-  implicit def sfxShadow2jfx(s: Shadow) = s.delegate
+  implicit def sfxShadow2jfx(s: Shadow) = if (s != null) s.delegate else null
 }
 
 /**

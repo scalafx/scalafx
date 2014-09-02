@@ -26,8 +26,8 @@
  */
 package scalafx.scene.layout
 
-import javafx.{ geometry => jfxg }
-import javafx.scene.{ layout => jfxsl }
+import javafx.{geometry => jfxg}
+import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.beans.property.DoubleProperty
@@ -36,7 +36,7 @@ import scalafx.geometry.VPos
 import scalafx.delegate.SFXDelegate
 
 object RowConstraints {
-  implicit def sfxRowConstraints2jfx(v: RowConstraints) = v.delegate
+  implicit def sfxRowConstraints2jfx(v: RowConstraints) = if (v != null) v.delegate else null
 }
 
 class RowConstraints(override val delegate: jfxsl.RowConstraints = new jfxsl.RowConstraints) extends ConstraintsBase(delegate) with SFXDelegate[jfxsl.RowConstraints] {

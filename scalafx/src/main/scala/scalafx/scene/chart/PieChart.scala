@@ -36,10 +36,10 @@ import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 object PieChart {
-  implicit def sfxPieChart2jfx(v: PieChart) = v.delegate
+  implicit def sfxPieChart2jfx(v: PieChart) = if (v != null) v.delegate else null
 
   object Data {
-    implicit def sfxPieChartData2jfx(v: PieChart.Data) = v.delegate
+    implicit def sfxPieChartData2jfx(v: PieChart.Data) = if (v != null) v.delegate else null
 
     def apply(name: String, value: Double) = new jfxsc.PieChart.Data(name, value)
   }

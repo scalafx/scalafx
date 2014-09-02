@@ -28,13 +28,13 @@ package scalafx.scene.image
 
 import java.nio.Buffer
 
-import javafx.scene.{ image => jfxsi }
+import javafx.scene.{image => jfxsi}
 import scalafx.Includes._
 import scalafx.scene.paint.Color
 import scalafx.delegate.SFXDelegate
 
 object PixelWriter {
-  implicit def sfxPixelWriter2jfx(pw: PixelWriter) = pw.delegate
+  implicit def sfxPixelWriter2jfx(pw: PixelWriter) = if (pw != null) pw.delegate else null
 }
 
 /**
