@@ -441,7 +441,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    *
    * @return The URL of the user-agent stylesheet that will be used by this SubScene, or null if has not been set.
    */
-  def userAgentStylesheet: ObjectProperty[String] = delegate.userAgentStylesheetProperty
+  def userAgentStylesheet: ObjectProperty[String] = delegate.userAgentStylesheet
   /**
    * Set the URL of the user-agent stylesheet that will be used by this Scene in place of the the platform-default
    * user-agent stylesheet. If the URL does not resolve to a valid location, the platform-default user-agent

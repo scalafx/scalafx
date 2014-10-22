@@ -60,7 +60,7 @@ object PieChart {
       pieValue() = v
     }
 
-    def node: ReadOnlyObjectProperty[jfxs.Node] = delegate.nodeProperty()
+    def node: ReadOnlyObjectProperty[jfxs.Node] = delegate.node
   }
 
   def apply(data: ObservableBuffer[jfxsc.PieChart.Data]) = new PieChart(new jfxsc.PieChart(data))

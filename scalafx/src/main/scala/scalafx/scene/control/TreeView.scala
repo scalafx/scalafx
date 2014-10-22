@@ -244,7 +244,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * @param node  The `TreeItem` for which the level is needed.
    * @return An integer representing the number of parents above the given node, or -1 if the given `TreeItem` is `null`.
    */
-  def treeItemLevel(node: TreeItem[_]): Int = delegate.getTreeItemLevel(node)
+  def treeItemLevel(node: TreeItem[_]): Int = delegate.treeItemLevel(node)
 
   /**
    * Instructs the TreeView to begin editing the given TreeItem, if the
