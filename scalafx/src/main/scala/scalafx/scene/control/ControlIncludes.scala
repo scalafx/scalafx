@@ -950,4 +950,13 @@ trait ControlIncludes
 
   implicit def jfxTreeTableViewEditEvent2sfx[T](t: jfxsc.TreeTableView.EditEvent[T]) =
     if (t != null) new TreeTableView.EditEvent[T](t) else null
+
+  /**
+   * $START$TVRF.html $TVRF$END
+   *
+   * @tparam S $TTYPE $TVRF
+   * @param rf $JFX $TVRF
+   * @return $SFX $TVRF
+   */
+  implicit def jfxTreeTableViewResizeFeatures2sfx[S](rf: jfxsc.TreeTableView.ResizeFeatures[S]) = if (rf != null) new TreeTableView.ResizeFeatures[S](rf) else null
 }
