@@ -274,7 +274,6 @@ trait ControlIncludes
   /**
    * $START$DTCL.html $DTCL$END
    *
-   * @tparam T $TTYPE $DTCL
    * @param v $JFX $DTCL
    * @return $SFX $DTCL
    */
@@ -283,7 +282,6 @@ trait ControlIncludes
   /**
    * $START$DTPR.html $DTPR$END
    *
-   * @tparam T $TTYPE $DTPR
    * @param v $JFX $DTPR
    * @return $SFX $DTPR
    */
@@ -536,7 +534,7 @@ trait ControlIncludes
    * $START$TBPB.html $TBPB$END
    *
    * @tparam TC $TTYPE $TBPB
-   * @param tbp $JFX $TBPB
+   * @param tpb $JFX $TBPB
    * @return $SFX $TBPB
    * @since 8.0
    */
@@ -940,4 +938,16 @@ trait ControlIncludes
    */
   implicit def jfxTreeTablePosition2sfx[S, T](ttp: jfxsc.TreeTablePosition[S, T]): TreeTablePosition[S, T] =
     if (ttp != null) new TreeTablePosition[S, T](ttp) else null
+
+  implicit def jfxTreeTableColumn2sfx[S,T](a: jfxsc.TreeTableColumn[S,T]) =
+    if (a != null) new TreeTableColumn[S,T](a) else null
+
+  implicit def jfxTreeCellDataFeatures2sfx[S,T](a: jfxsc.TreeTableColumn.CellDataFeatures[S,T]) =
+    if (a != null) new TreeTableColumn.CellDataFeatures[S,T](a) else null
+
+  implicit def jfxTreeTableView2sfx[S](a: jfxsc.TreeTableView[S]) =
+    if (a != null) new TreeTableView[S](a) else null
+
+  implicit def jfxTreeTableViewEditEvent2sfx[T](t: jfxsc.TreeTableView.EditEvent[T]) =
+    if (t != null) new TreeTableView.EditEvent[T](t) else null
 }
