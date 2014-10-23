@@ -632,12 +632,13 @@ class TreeTableView[T](override val delegate: jfxsc.TreeTableView[T] = new jfxsc
   /**
    * Returns the number of levels of 'indentation' of the given TreeItem,
    * based on how many times getParent() can be recursively called.
-   * DEPRECATED: use [[treeItemLevel(TreeItem)]] instead
+   * DEPRECATED:
    *
    * @param node The ScalaFX TreeItem for which the level is needed.
    * @return An integer representing the number of parents above the given node,
    *         or -1 if the given TreeItem is null.
    */
+  @deprecated("use [[treeItemLevel(TreeItem)]] instead")
   def nodeLevel(node: TreeItem[T]) = jfxsc.TreeTableView.getNodeLevel(node: TreeItem[T])
 
   /**
