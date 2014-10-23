@@ -27,38 +27,20 @@
 
 package scalafx.scene.control
 
-import javafx.collections.ObservableList
-import javafx.css.CssMetaData
-
-import scala.language.implicitConversions
-import scala.collection.JavaConversions._
-import scalafx.Includes._
-import scalafx.beans.property._
-
+import javafx.{css => jfxcss}
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe, util => jfxu}
 
-import javafx.css.Styleable
+import scala.language.implicitConversions
+import scala.collection.JavaConversions._
+
+import scalafx.Includes._
+import scalafx.beans.property._
+import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
-import scalafx.event.Event
+import scalafx.event.{EventType, Event, EventHandler}
 import scalafx.scene.Node
 
-/**
- *
- * @define OBJCOMPSTA Object companion for [[scalafx.scene.control.
-           * @define OBJCOMPEND ]].
- * @define JFX JavaFX
- * @define SFX ScalaFX
- * @define WRAPSTA Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/
- * @define WRAPEND ]].
- * @define CONSSTA Creates a new ScalaFX
- * @define CONSEND from its JavaFX counterpart.
- * @define CONSPARAM to be wrapped.
- * @define TTV TableView
- * @define RF ResizeFeatures
- * @define TVSM TableViewSelectionModel
- * @define TVFM TableViewFocusModel
- */
 
 /**
  * Object companion for [[scalafx.scene.control.TreeTableView]]
@@ -121,10 +103,10 @@ object TreeTableView {
     def table: TreeTableView[S] = delegate.getTable
 
     /**
-     *Returns the column upon which the resize is occurring, or null if this ResizeFeatures
+     * Returns the column upon which the resize is occurring, or null if this ResizeFeatures
      * instance was created as a result of a TreeTableView resize operation.
      */
-    //override def column: TreeTableColumn[S,_] = delegate.getColumn
+    override def column: TreeTableColumn[S,_] = delegate.getColumn
 
   }
 
@@ -144,6 +126,12 @@ object TreeTableView {
      * @return JavaFX TreeTableView EditEvent
      */
     implicit def sfxTreeTableViewEditEvent2jfx[T](v: EditEvent[T]) = if (v != null) v.delegate else null
+
+    // TODO: correct?
+    /**
+     * Common supertype for all edit event types.
+     */
+    def ANY: jfxe.EventType[_] = jfxsc.TreeTableView.EditEvent.ANY
   }
 
   /**
@@ -186,28 +174,9 @@ object TreeTableView {
 
   }
 
-  /**
-   * An EventType that indicates some edit event has occurred.
-   */
-  def editAnyEvent = jfxsc.TreeTableView.editAnyEvent
 
-  /**
-   * An EventType used to indicate that an edit event has just been canceled
-   * within the TreeTableView upon which the event was fired.
-   */
-  def editCancelEvent = jfxsc.TreeTableView.editCancelEvent
 
-  /**
-   * An EventType that is used to indicate that an edit in a TreeTableView has been
-   *  committed.
-   */
-  def editCommitEvent = jfxsc.TreeTableView.editCommitEvent
 
-  /**
-   * An EventType used to indicate that an edit event has started within the
-   * TreeTableView upon which the event was fired.
-   */
-  def editStartEvent = jfxsc.TreeTableView.editStartEvent
 
 
 
@@ -298,16 +267,240 @@ object TreeTableView {
 
 
 
+
+
+
+  /************* TreeTableViewSelectionModel *****************/
+
   /**
-   * Returns the number of levels of 'indentation' of the given TreeItem,
-   * based on how many times getParent() can be recursively called.
-   * DEPRECATED: use [[treeItemLevel(TreeItem)]] instead
-   *
-   * @param node The ScalaFX TreeItem for which the level is needed.
-   * @return An integer representing the number of parents above the given node,
-   *         or -1 if the given TreeItem is null.
+   * Object companion for [[scalafx.scene.control.TreeTableView.TreeTableViewFocusModel]]
    */
-  def nodeLevel(node: TreeItem[_]) = jfxsc.TreeTableView.getNodeLevel(node)
+  object TreeTableViewSelectionModel {
+    /**
+     * Converts a ScalaFX TreeTableViewSelectionModel instance to its JavaFX counterpart.
+     *
+     * @param v ScalaFX TreeTableViewSelectionModel
+     * @return JavaFX TreeTableViewSelectionModel
+     */
+    implicit def sfxTreeTableViewSelectionModel2jfx[S](v: TreeTableView.TreeTableViewSelectionModel[S]) = v.delegate
+  }
+
+  /**
+   * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableView.TreeTableViewSelectionModel.html]]
+   *
+   * @constructor Creates a new TreeTableViewSelectionModel from a JavaFX one.
+   * @param delegate A JavaFX TreeTableViewSelectionModel to be wrapped. Its default value is a new JavaFX TreeTableViewSelectionModel.
+   * @since 8.0
+   *
+   */
+  abstract class TreeTableViewSelectionModel[S](override val delegate: jfxsc.TreeTableView.TreeTableViewSelectionModel[S])
+    extends SFXDelegate[jfxsc.TreeTableView.TreeTableViewSelectionModel[S]] {
+
+    /**
+     * A read-only ObservableBuffer representing the currently selected cells in this TreeTableView. Rather than directly
+     * modify this list, please use the other methods provided in the TreeTableViewSelectionModel.
+     */
+    def selectedCells: ObservableBuffer[TreeTablePosition[S,_]] =
+      ObservableBuffer(delegate.getSelectedCells.map(ttp => new TreeTablePosition(ttp)))
+
+    /**
+     * Returns the TreeTableView instance that this selection model is installed in.
+     */
+    def treeTableView: TreeTableView[S] = delegate.getTreeTableView
+
+    /**
+     * Returns the item at the given index. An example using ListView would be listView.getItems().get(index).
+     *
+     * @param index The index of the item that is requested from the underlying data model.
+     * @return Returns null if the index is out of bounds, or an element of type TreeItem[S] that is related to the given index.
+     */
+    def modelItem(index: Int): TreeItem[S] = delegate.getModelItem(index)
+
+
+    def focus(row: Int) { delegate.focus(row) }
+
+    def focusedIndex = delegate.getFocusedIndex
+
+    /**
+     * Selects the cells in the range (minRow, minColumn) to (maxRow, maxColumn), inclusive.
+     */
+    def selectRange(minRow: Int, minColumn: TableColumnBase[TreeItem[S],_], maxRow: Int, maxColumn: TableColumnBase[TreeItem[S],_]) {
+      delegate.selectRange(minRow, minColumn, maxRow, maxColumn)
+    }
+
+    /**
+     * Returns a read-only ObservableList of all selected indices. The ObservableList will be updated by the selection
+     * model to always reflect changes in selection. This can be observed by adding a ListChangeListener to the returned
+     * ObservableList.
+     */
+    def selectedIndices: ObservableBuffer[Int] = ObservableBuffer(delegate.getSelectedIndices.map(i => i.intValue()))
+
+    /**
+     * Returns a read-only ObservableList of all selected items. The ObservableList will be updated further by the
+     * selection model to always reflect changes in selection. This can be observed by adding a ListChangeListener to
+     * the returned ObservableList.
+     */
+    def selectedItems: ObservableBuffer[TreeItem[S]] = ObservableBuffer(delegate.getSelectedItems.map(ti => new TreeItem[S](ti)))
+
+    /**
+     * A method that clears any selection prior to setting the selection to the given index. The purpose of this method
+     * is to avoid having to call SelectionModel.clearSelection() first, meaning that observers that are listening to
+     * the selected index property will not see the selected index being temporarily set to -1.
+     * @param row The index that should be the only selected index in this selection model.
+     */
+    def clearAndSelect(row: Int) {
+      delegate.clearAndSelect(row)
+    }
+
+    /**
+     * This will select the given index in the selection model, assuming the index is within the valid range (i.e.
+     * greater than or equal to zero, and less than the total number of items in the underlying data model).
+     *
+     * If there is already one or more indices selected in this model, calling this method will not clear these selections -
+     * to do so it is necessary to first call SelectionModel.clearSelection().
+     *
+     * If the index is already selected, it will not be selected again, or unselected. However, if multiple selection is
+     * implemented, then calling select on an already selected index will have the effect of making the index the new
+     * selected index (as returned by SelectionModel.getSelectedIndex().
+     *
+     * @param row The position of the item to select in the selection model.
+     */
+    def select(row: Int) {
+      delegate.select(row)
+    }
+
+    /**
+     * This method will attempt to select the index that contains the given object. It will iterate through the
+     * underlying data model until it finds an item whose value is equal to the given object. At this point it will stop
+     * iterating - this means that this method will not select multiple indices.
+     *
+     * @param obj The object to attempt to select in the underlying data model.
+     */
+    def select(obj: TreeItem[S]) {
+      delegate.select(obj)
+    }
+
+    /**
+     * This method allows for one or more selections to be set at the same time. It will ignore any value that is not
+     * within the valid range (i.e. greater than or equal to zero, and less than the total number of items in the
+     * underlying data model). Any duplication of indices will be ignored.
+     *
+     * If there is already one or more indices selected in this model, calling this method will not clear these
+     * selections - to do so it is necessary to first call clearSelection.
+     *
+     * The last valid value given will become the selected index / selected item.
+     */
+    def selectIndices(row: Int, rows: Int*) {
+      delegate.selectIndices(row, rows : _*)
+    }
+
+    /**
+     * Convenience method to select all available indices.
+     */
+    def selectAll() {
+      delegate.selectAll()
+    }
+
+    /**
+     * This method will attempt to select the first index in the control. If clearSelection is not called first, this
+     * method will have the result of selecting the first index, whilst retaining the selection of any other currently
+     * selected indices.
+     *
+     * If the first index is already selected, calling this method will have no result, and no selection event will
+     * take place.
+     */
+    def selectFirst() {
+      delegate.selectFirst()
+    }
+
+    /**
+     * This method will attempt to select the last index in the control. If clearSelection is not called first, this
+     * method will have the result of selecting the last index, whilst retaining the selection of any other currently
+     * selected indices.
+     *
+     * If the last index is already selected, calling this method will have no result, and no selection event will
+     * take place.
+     */
+    def selectLast() {
+      delegate.selectLast()
+    }
+
+    /**
+     * Clears the selection model of all selected indices.
+     */
+    def clearSelection() {
+      delegate.clearSelection()
+    }
+
+    /**
+     * This method will clear the selection of the item in the given index. If the given index is not selected,
+     * nothing will happen.
+     *
+     * @param index The selected item to deselect.
+     */
+    def clearSelection(index: Int) {
+      delegate.clearSelection(index)
+    }
+
+    /**
+     * Convenience method to inform if the given index is currently selected in this SelectionModel. Is functionally
+     * equivalent to calling getSelectedIndices().contains(index).
+     *
+     * @param index The index to check as to whether it is currently selected or not.
+     * @return True if the given index is selected, false otherwise.
+     */
+    def isSelected(index: Int): Boolean  = delegate.isSelected(index)
+
+
+    /**
+     * This method is available to test whether there are any selected indices/items. It will return true if there are
+     * no selected items, and false if there are.
+     *
+     * @return Will return true if there are no selected items, and false if there are.
+     */
+    def isEmpty(): Boolean  = delegate.isEmpty()
+
+    /**
+     * This method will attempt to select the index directly before the current focused index. If clearSelection is not
+     * called first, this method will have the result of selecting the previous index, whilst retaining the selection of
+     * any other currently selected indices.
+     *
+     * Calling this method will only succeed if:
+     * - There is currently a lead/focused index.
+     * - The lead/focus index is not the first index in the control.
+     * - The previous index is not already selected.
+     *
+     * If any of these conditions is false, no selection event will take place.
+     */
+    def selectPrevious() {
+      delegate.selectPrevious()
+    }
+
+    /**
+     * This method will attempt to select the index directly after the current focused index. If clearSelection is not
+     * called first, this method will have the result of selecting the next index, whilst retaining the selection of any
+     * other currently selected indices.
+     *
+     * Calling this method will only succeed if:
+     * - There is currently a lead/focused index.
+     * - The lead/focus index is not the last index in the control.
+     * - The next index is not already selected.
+     *
+     * If any of these conditions is false, no selection event will take place.
+     */
+    def selectNext() {
+      delegate.selectNext()
+    }
+
+  }
+
+
+
+
+
+
+
+
 
   // TODO: fix!
   // def treeItemLevel(node: TreeItem[_]) = jfxsc.TreeTableView.getTreeItemLevel(node)
@@ -321,6 +514,69 @@ object TreeTableView {
   def apply[T](layoutChildren: => Unit) = new TreeTableView[T](new jfxsc.TreeTableView[T] {
     override def layoutChildren() = layoutChildren()
   })
+
+  /**
+   * Very simple resize policy that just resizes the specified column by the provided delta and shifts all other columns
+   * (to the right of the given column) further to the right (when the delta is positive) or to the left (when the delta
+   * is negative).
+   *
+   * It also handles the case where we have nested columns by sharing the new space, or subtracting the removed space,
+   * evenly between all immediate children columns. Of course, the immediate children may themselves be nested, and they
+   * would then use this policy on their children.
+   */
+  val UNCONSTRAINED_RESIZE_POLICY: TreeTableView.ResizeFeatures[_] => Boolean =
+    tvrf => jfxsc.TreeTableView.UNCONSTRAINED_RESIZE_POLICY(tvrf)
+
+  /**
+   * Simple policy that ensures the width of all visible leaf columns in this table sum up to equal the width of the
+   * table itself.
+   *
+   * When the user resizes a column width with this policy, the table automatically adjusts the width of the right hand
+   * side columns. When the user increases a column width, the table decreases the width of the rightmost column until
+   * it reaches its minimum width. Then it decreases the width of the second rightmost column until it reaches minimum
+   * width and so on. When all right hand side columns reach minimum size, the user cannot increase the size of resized
+   * column any more.
+   */
+  val CONSTRAINED_RESIZE_POLICY: TreeTableView.ResizeFeatures[_] => Boolean =
+    tvrf => jfxsc.TreeTableView.CONSTRAINED_RESIZE_POLICY(tvrf)
+
+  /**
+   * The default sort policy that this TreeTableView will use if no other policy is specified. The sort policy is a
+   * simple Callback that accepts a TreeTableView as the sole argument and expects a Boolean response representing
+   * whether the sort succeeded or not. A Boolean response of true represents success, and a response of false (or null)
+   * will be considered to represent failure.
+   */
+  val DEFAULT_SORT_POLICY: TreeTableView[_] => Boolean =
+    ttv => jfxsc.TreeTableView.DEFAULT_SORT_POLICY(ttv)
+
+/*
+  /**
+   * An EventType that indicates some edit event has occurred.
+   */
+  def editAnyEvent[S]: EventType[EditEvent[S]] = jfxsc.TreeTableView.editAnyEvent.asInstanceOf[EventType[EditEvent[S]]]
+
+  // def ANY[T <: jfxe.Event]: EventType[T] = jfxsc.TreeTableView.EditEvent.ANY.asInstanceOf[jfxe.EventType[T]]
+
+  /**
+   * An EventType used to indicate that an edit event has just been canceled
+   * within the TreeTableView upon which the event was fired.
+   */
+  def editCancelEvent[S]: EventType[EditEvent[S]] = jfxsc.TreeTableView.editCancelEvent.asInstanceOf[EventType[EditEvent[S]]]
+
+  /**
+   * An EventType that is used to indicate that an edit in a TreeTableView has been
+   *  committed.
+   */
+  def editCommitEvent[S]: EventType[EditEvent[S]] = jfxsc.TreeTableView.editCommitEvent.asInstanceOf[EventType[EditEvent[S]]]
+
+  /**
+   * An EventType used to indicate that an edit event has started within the
+   * TreeTableView upon which the event was fired.
+   */
+  def editStartEvent[S]: EventType[EditEvent[S]] = jfxsc.TreeTableView.editStartEvent.asInstanceOf[EventType[EditEvent[S]]]
+*/
+
+
 
 }
 
@@ -348,59 +604,41 @@ class TreeTableView[T](override val delegate: jfxsc.TreeTableView[T] = new jfxsc
 
 
 
+  /**
+   * An EventType that indicates some edit event has occurred.
+   */
+  val editAnyEvent: EventType[jfxsc.TreeTableView.EditEvent[T]] = jfxsc.TreeTableView.editAnyEvent[T]()
 
-  /************* TreeTableViewFocusModel *****************/
+  // def ANY[T <: jfxe.Event]: EventType[T] = jfxsc.TreeTableView.EditEvent.ANY.asInstanceOf[jfxe.EventType[T]]
 
   /**
-   * Object companion for [[scalafx.scene.control.TreeTableView.TreeTableViewFocusModel]]
+   * An EventType used to indicate that an edit event has just been canceled
+   * within the TreeTableView upon which the event was fired.
    */
-  object TreeTableViewSelectionModel {
-    /**
-     * Converts a ScalaFX TreeTableViewSelectionModel instance to its JavaFX counterpart.
-     *
-     * @param v ScalaFX TreeTableViewSelectionModel
-     * @return JavaFX TreeTableViewSelectionModel
-     */
-    implicit def sfxTreeTableViewSelectionModel2jfx(v: TreeTableView[T]#TreeTableViewSelectionModel) = v.delegate
-  }
+  val editCancelEvent: EventType[jfxsc.TreeTableView.EditEvent[T]] = jfxsc.TreeTableView.editCancelEvent[T]()
 
   /**
-   * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableView.TreeTableViewSelectionModel.html]]
-   *
-   * @constructor Creates a new TreeTableViewSelectionModel from a JavaFX one.
-   * @param delegate A JavaFX TreeTableViewSelectionModel to be wrapped. Its default value is a new JavaFX TreeTableViewSelectionModel.
-   * @since 8.0
-   *
+   * An EventType that is used to indicate that an edit in a TreeTableView has been
+   *  committed.
    */
-  class TreeTableViewSelectionModel(override val delegate: jfxsc.TreeTableView.TreeTableViewSelectionModel[T])
-    extends SFXDelegate[jfxsc.TreeTableView.TreeTableViewSelectionModel[T]] {
+  val editCommitEvent: EventType[jfxsc.TreeTableView.EditEvent[T]] = jfxsc.TreeTableView.editCommitEvent[T]()
 
-    /**
-     * Returns the TableView instance that this selection model is installed in.
-     */
-    def treeTableView: TreeTableView[T] = delegate.getTreeTableView
+  /**
+   * An EventType used to indicate that an edit event has started within the
+   * TreeTableView upon which the event was fired.
+   */
+  val editStartEvent: EventType[jfxsc.TreeTableView.EditEvent[T]] = jfxsc.TreeTableView.editStartEvent[T]()
 
-    /**
-     * Returns the item at the given index. An example using ListView would be listView.getItems().get(index).
-     *
-     * @param index The index of the item that is requested from the underlying data model.
-     * @return Returns null if the index is out of bounds, or an element of type T that is related to the given index.
-     */
-    def modelItem(index: Int): TreeItem[T] = delegate.getModelItem(index)
-
-
-
-    def focus(row: Int) { delegate.focus(row) }
-
-    def focusedIndex = delegate.getFocusedIndex
-
-
-  }
-
-
-
-
-
+  /**
+   * Returns the number of levels of 'indentation' of the given TreeItem,
+   * based on how many times getParent() can be recursively called.
+   * DEPRECATED: use [[treeItemLevel(TreeItem)]] instead
+   *
+   * @param node The ScalaFX TreeItem for which the level is needed.
+   * @return An integer representing the number of parents above the given node,
+   *         or -1 if the given TreeItem is null.
+   */
+  def nodeLevel(node: TreeItem[T]) = jfxsc.TreeTableView.getNodeLevel(node: TreeItem[T])
 
   /**
    * Creates a TreeTableView with the provided root node.
@@ -444,7 +682,7 @@ class TreeTableView[T](override val delegate: jfxsc.TreeTableView[T] = new jfxsc
    * must match the type of the TreeTableView itself.
    */
   def selectionModel = delegate.selectionModelProperty
-  def selectionModel_=(v: TreeTableViewSelectionModel) {
+  def selectionModel_=(v: TreeTableView.TreeTableViewSelectionModel[T]) {
     selectionModel() = v
   }
 
@@ -493,8 +731,8 @@ class TreeTableView[T](override val delegate: jfxsc.TreeTableView[T] = new jfxsc
 
   /**
    * This is the function called when the user completes a column-resize operation. The two most common policies are
-   * available as static functions in the TableView class: [[UNCONSTRAINED_RESIZE_POLICY]] and
-   * [[CONSTRAINED_RESIZE_POLICY]].
+   * available as static functions in the TableView class: [[TreeTableView#UNCONSTRAINED_RESIZE_POLICY]] and
+   * [[TreeTableView#CONSTRAINED_RESIZE_POLICY]].
    */
   def columnResizePolicy: ObjectProperty[TreeTableView.ResizeFeatures[T] => Boolean] =
     ObjectProperty((features: TreeTableView.ResizeFeatures[T]) => delegate.columnResizePolicyProperty.value.call(features))
@@ -582,17 +820,25 @@ class TreeTableView[T](override val delegate: jfxsc.TreeTableView[T] = new jfxsc
     *
     * It is recommended that rather than override the sort method that a different sort policy be provided instead.
     */
+  def sortPolicy: ObjectProperty[TreeTableView[T] => Boolean] =
+    ObjectProperty( ( ttv: TreeTableView[T] ) => delegate.sortPolicyProperty.get().call(ttv) )
+  def sortPolicy_=(v: TreeTableView[T] => Boolean) {
+    ObjectProperty.fillProperty[TreeTableView[T] => Boolean](sortPolicy, v)
+  }
+  /*
   def sortPolicy: ObjectProperty[jfxu.Callback[jfxsc.TreeTableView[T], java.lang.Boolean]] = delegate.sortPolicyProperty
   def sortPolicy_=(v: jfxu.Callback[jfxsc.TreeTableView[T], java.lang.Boolean]) {
     ObjectProperty.fillProperty[jfxu.Callback[jfxsc.TreeTableView[T], java.lang.Boolean]](sortPolicy, v)
   }
+   */
+
 
   /**
    * Called when there's a request to sort the control.
    */
-  def onSort: ObjectProperty[jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TreeTableView[T]]]] = delegate.onSortProperty
+  def onSort = delegate.onSortProperty
   def onSort_=(v: jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TreeTableView[T]]]) {
-    ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TreeTableView[T]]]](onSort, v)
+    onSort() = v
   }
 
   /**
@@ -658,7 +904,7 @@ class TreeTableView[T](override val delegate: jfxsc.TreeTableView[T] = new jfxsc
    *
    * Note: to display any data in a TableView, there must be at least one TreeTableColumn in this ObservableList.
    */
-  def columns: ObservableList[jfxsc.TreeTableColumn[T, _]] = delegate.getColumns
+  def columns: ObservableBuffer[jfxsc.TreeTableColumn[T, _]] = delegate.getColumns
 
   /**
    * The sortOrder list defines the order in which TreeTableColumn instances are sorted. An empty sortOrder list means
@@ -669,7 +915,7 @@ class TreeTableView[T](override val delegate: jfxsc.TreeTableView[T] = new jfxsc
    * equal, then the second TreeTableColumn in the list is used to determine ordering. This repeats until the results
    * from all TreeTableColumn comparators are considered, if necessary.
    */
-  def sortOrder: ObservableList[jfxsc.TreeTableColumn[T, _]] = delegate.getSortOrder
+  def sortOrder: ObservableBuffer[jfxsc.TreeTableColumn[T, _]] = delegate.getSortOrder
 
   /**
    * Applies the currently installed resize policy against the given column, resizing it based on the delta value provided.
@@ -689,7 +935,7 @@ class TreeTableView[T](override val delegate: jfxsc.TreeTableView[T] = new jfxsc
   /**
    * Returns an unmodifiable list containing the currently visible leaf columns.
    */
-  def getVisibleLeafColumns: ObservableList[jfxsc.TreeTableColumn[T,_]] = delegate.getVisibleLeafColumns
+  def getVisibleLeafColumns: ObservableBuffer[jfxsc.TreeTableColumn[T,_]] = delegate.getVisibleLeafColumns
 
   /**
    * Returns the position of the given column, relative to all other visible leaf columns.
@@ -715,6 +961,6 @@ class TreeTableView[T](override val delegate: jfxsc.TreeTableView[T] = new jfxsc
   /**
    * unmodifiable Seq of the controls css styleable properties
    */
-  def controlCssMetaData: Seq[CssMetaData[_ <: Styleable, _]] = delegate.getControlCssMetaData
+  def controlCssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getControlCssMetaData
 
 }
