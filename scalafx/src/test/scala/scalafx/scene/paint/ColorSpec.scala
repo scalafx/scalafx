@@ -33,7 +33,7 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.AbstractSFXDelegateSpec
 import org.scalatest.Matchers._
-import org.scalautils.Tolerance.convertNumericToPlusOrMinusWrapper
+import org.scalactic.Tolerance.convertNumericToPlusOrMinusWrapper
 
 /**
  * Color Spec tests.
