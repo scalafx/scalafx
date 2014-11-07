@@ -26,22 +26,20 @@
  */
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
 import javafx.scene.{layout => jfxsl}
-import javafx.{geometry => jfxg}
 import javafx.{scene => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.geometry.Insets._
+import scalafx.beans.property.{BooleanProperty, DoubleProperty}
+import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
 import scalafx.geometry.Insets
-import scalafx.scene.Node._
+import scalafx.geometry.Insets._
 import scalafx.scene.Node
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.AlignmentDelegate
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.BooleanProperty
+import scalafx.scene.Node._
 
 object HBox {
-  implicit def sfxHBox2jfx(v: HBox) = if (v != null) v.delegate else null
+  implicit def sfxHBox2jfx(v: HBox): jfxsl.HBox = if (v != null) v.delegate else null
 
   /**
    * Removes all hbox constraints from the child node.
@@ -88,6 +86,19 @@ class HBox(override val delegate: jfxsl.HBox = new jfxsl.HBox)
    * Creates an HBox layout with the specified spacing between children.
    */
   def this(spacing: Double) = this(new jfxsl.HBox(spacing))
+
+  /**
+   * Creates an HBox layout with spacing = 0.
+   * @param children The initial set of children for this pane.
+   */
+  def this(children: Node*) = this(new jfxsl.HBox(children.map(_.delegate): _*))
+
+  /**
+   * Creates an HBox layout with the specified spacing between children.
+   * @param spacing  The amount of horizontal space between each child.
+   * @param children  The initial set of children for this pane.
+   */
+  def this(spacing: Double, children: Node*) = this(new jfxsl.HBox(spacing, children.map(_.delegate): _*))
 
   /**
    * The amount of horizontal space between each child in the hbox.
