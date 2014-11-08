@@ -83,7 +83,11 @@ with ControlIncludes
  */
 trait LowerPriorityIncludes {
 
-  implicit def jfxAmbientLight2sfx(v: jfxs.AmbientLight) = if (v != null) new AmbientLight(v) else null
+  implicit def jfxAccessibleAction2sfx(e: jfxs.AccessibleAction): AccessibleAction = AccessibleAction.jfxEnum2sfx(e)
+
+  implicit def jfxAccessibleRole2sfx(e: jfxs.AccessibleRole): AccessibleRole = AccessibleRole.jfxEnum2sfx(e)
+
+  implicit def jfxAmbientLight2sfx(v: jfxs.AmbientLight): AmbientLight = if (v != null) new AmbientLight(v) else null
 
   /**
    * $START$CHI.html $CHI$END
@@ -133,7 +137,7 @@ trait LowerPriorityIncludes {
    */
   implicit def jfxImageCursor2sfx(ic: jfxs.ImageCursor) = if (ic != null) new ImageCursor(ic) else null
 
-  implicit def jfxLightBase2sfx(v: jfxs.LightBase) = if (v != null) new LightBase(v) {} else null
+  implicit def jfxLightBase2sfx(v: jfxs.LightBase): LightBase = if (v != null) new LightBase(v) {} else null
 
   /**
    * $START$NOD.html $NOD$END
@@ -167,7 +171,7 @@ trait LowerPriorityIncludes {
    */
   implicit def jfxPerspectiveCamera2sfx(v: jfxs.PerspectiveCamera) = if (v != null) new PerspectiveCamera(v) else null
 
-  implicit def jfxPointLight2sfx(v: jfxs.PointLight) = if (v != null) new PointLight(v) else null
+  implicit def jfxPointLight2sfx(v: jfxs.PointLight): PointLight = if (v != null) new PointLight(v) else null
 
   /**
    * $START$SCE.html $SCE$END

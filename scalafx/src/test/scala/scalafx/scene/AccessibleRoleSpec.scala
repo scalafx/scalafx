@@ -25,59 +25,21 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.controls
+package scalafx.scene
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.collections.ObservableBuffer
-import scalafx.geometry.Insets
-import scalafx.scene.Scene
-import scalafx.scene.control.Spinner
-import scalafx.scene.layout.{HBox, VBox}
+import javafx.{scene => jfxs}
 
-/**
- * A sample that demonstrates the Spinner control.
- */
-object SpinnersDemo extends JFXApp {
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 
-  val styles = Seq(
-    "spinner", // defaults to arrows on right stacked vertically
-    Spinner.StyleClassArrowsOnRightHorizontal,
-    Spinner.StyleClassArrowsOnLeftVertical,
-    Spinner.StyleClassArrowsOnLeftHorizontal,
-    Spinner.StyleClassSplitArrowsVertical,
-    Spinner.StyleClassSplitArrowsHorizontal
-  )
+import scalafx.Includes._
+import scalafx.testutil.SFXEnumDelegateSpec
 
-  val intSpinners = for (s <- styles) yield
-    new Spinner[Integer](1, 99, 5) {
-      styleClass += s
-      prefWidth = 100
-    }
 
-  val stringSpinners = for (s <- styles) yield
-    new Spinner[String](ObservableBuffer("Grace", "Matt", "Katie")) {
-      styleClass += s
-      prefWidth = 100
-    }
+/** Tests for [[scalafx.scene.AccessibleAction]]. */
+@RunWith(classOf[JUnitRunner])
+class AccessibleRoleSpec extends SFXEnumDelegateSpec[jfxs.AccessibleRole, AccessibleRole](
+  javaClass = classOf[jfxs.AccessibleRole],
+  scalaClass = classOf[AccessibleRole],
+  companion = AccessibleRole)
 
-  val doubleSpinners = for (s <- styles) yield
-    new Spinner[Double](0.0, 1.0, 0.5, 0.01) {
-      styleClass += s
-      prefWidth = 100
-    }
-
-  stage = new PrimaryStage {
-    title = "Spinners Demo"
-    scene = new Scene {
-      content = new VBox(30) {
-        content = Seq(
-          new HBox(30, intSpinners: _*),
-          new HBox(30, doubleSpinners: _*),
-          new HBox(30, stringSpinners: _*)
-        )
-        padding = Insets(24)
-      }
-    }
-  }
-}
