@@ -26,11 +26,11 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
-import scalafx.scene.control.cell.CellIncludes
+
+import scala.language.implicitConversions
 import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.collections.ObservableBuffer
+import scalafx.scene.control.cell.CellIncludes
 
 object ControlIncludes extends ControlIncludes
 
@@ -146,6 +146,9 @@ trait ControlIncludes
    * @return $SFX $ACCD
    */
   implicit def jfxAccordion2sfx(a: jfxsc.Accordion) = if (a != null) new Accordion(a) else null
+
+  implicit def jfxDoubleSpinnerValueFactory2sfx(ev: jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory): SpinnerValueFactory.DoubleSpinnerValueFactory =
+    if (ev != null) new SpinnerValueFactory.DoubleSpinnerValueFactory(ev) else null
 
   /**
    * $START$TGGR.html $TGGR$END
@@ -323,6 +326,9 @@ trait ControlIncludes
    */
   implicit def jfxIndexRange2sfx(r: jfxsc.IndexRange) = if (r != null) new IndexRange(r) else null
 
+  implicit def jfxIntegerSpinnerValueFactory2sfx(ev: jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory): SpinnerValueFactory.IntegerSpinnerValueFactory =
+    if (ev != null) new SpinnerValueFactory.IntegerSpinnerValueFactory(ev) else null
+
   /**
    * $START$LBEL.html $LBEL$END
    *
@@ -347,6 +353,9 @@ trait ControlIncludes
    * @return $SFX $LSCL
    */
   implicit def jfxListCell[T](l: jfxsc.ListCell[T]) = if (l != null) new ListCell(l) else null
+
+  implicit def jfxListSpinnerValueFactory2sfx[T](ev: jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[T]): SpinnerValueFactory.ListSpinnerValueFactory[T] =
+    if (ev != null) new SpinnerValueFactory.ListSpinnerValueFactory(ev) else null
 
   /**
    * $START$LSVW.html $LSVW$END
@@ -470,6 +479,12 @@ trait ControlIncludes
    * @return $SFX $SLDR
    */
   implicit def jfxSlider2sfx(s: jfxsc.Slider) = if (s != null) new Slider(s) else null
+
+  implicit def jfxSpinner2sfx[T](ev: jfxsc.Spinner[T]): Spinner[T] =
+    if (ev != null) new Spinner[T](ev) else null
+
+  implicit def jfxSpinnerValueFactory2sfx[T](ev: jfxsc.SpinnerValueFactory[T]): SpinnerValueFactory[T] =
+    if (ev != null) new SpinnerValueFactory(ev) {} else null
 
   /**
    * $START$SPMB.html $SPMB$END
