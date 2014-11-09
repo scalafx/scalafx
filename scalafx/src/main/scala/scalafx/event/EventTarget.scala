@@ -29,10 +29,11 @@ package scalafx.event
 
 import javafx.{event => jfxe}
 
+import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object EventTarget {
-  implicit def sfxEventTarget2jfx(v: EventTarget): jfxe.EventTarget = v.delegate
+  implicit def sfxEventTarget2jfx(v: EventTarget): jfxe.EventTarget = if (v != null) v.delegate else null
 }
 
 /**
@@ -43,7 +44,9 @@ object EventTarget {
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */
-trait EventTarget extends SFXDelegate[jfxe.EventTarget] {
+abstract class EventTarget(override val delegate: jfxe.EventTarget)
+  extends SFXDelegate[jfxe.EventTarget] {
+
   /**
    * Construct an event dispatch chain for this target. The event dispatch
    * chain contains event dispatchers which might be interested in processing
@@ -67,5 +70,6 @@ trait EventTarget extends SFXDelegate[jfxe.EventTarget] {
    * @return the resulting event dispatch chain for this target
    * @see $URL0#buildEventDispatchChain $ORIGINALDOC
    */
-  def buildEventDispatchChain(tail: EventDispatchChain): EventDispatchChain
+  def buildEventDispatchChain(tail: EventDispatchChain): EventDispatchChain =
+    delegate.buildEventDispatchChain(tail)
 }
