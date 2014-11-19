@@ -24,11 +24,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 
-import scala.language.implicitConversions
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.scene.control.cell.CellIncludes
 
@@ -147,6 +147,12 @@ trait ControlIncludes
    */
   implicit def jfxAccordion2sfx(a: jfxsc.Accordion) = if (a != null) new Accordion(a) else null
 
+  implicit def jfxDialog2sfx[R](a: jfxsc.Dialog[R]): Dialog[R] = if (a != null) new Dialog[R](a) else null
+
+  implicit def jfxDialogEvent2sfx(a: jfxsc.DialogEvent): DialogEvent = if (a != null) new DialogEvent(a) else null
+
+  implicit def jfxDialogPane2sfx(a: jfxsc.DialogPane): DialogPane = if (a != null) new DialogPane(a) else null
+
   implicit def jfxDoubleSpinnerValueFactory2sfx(ev: jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory): SpinnerValueFactory.DoubleSpinnerValueFactory =
     if (ev != null) new SpinnerValueFactory.DoubleSpinnerValueFactory(ev) else null
 
@@ -189,6 +195,12 @@ trait ControlIncludes
    * @return $SFX $BUTN
    */
   implicit def jfxButton2sfx(b: jfxsc.Button) = if (b != null) new Button(b) else null
+
+  implicit def jfxButtonBar2sfx(b: jfxsc.ButtonBar): ButtonBar = if (b != null) new ButtonBar(b) else null
+
+  implicit def jfxButtonData2sfx(b: jfxsc.ButtonBar.ButtonData): ButtonBar.ButtonData = if (b != null) new ButtonBar.ButtonData(b) else null
+
+  implicit def jfxButtonType2sfx(b: jfxsc.ButtonType): ButtonType = if (b != null) new ButtonType(b) else null
 
   /**
    * $START$CELL.html $CELL$END
