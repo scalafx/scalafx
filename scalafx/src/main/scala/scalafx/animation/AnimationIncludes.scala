@@ -46,7 +46,7 @@ trait AnimationIncludes {
   /**
    *
    * @param time Duration time
-   * @param v Function which returns a [[scalafx.animation.KeyValue]] [[scala.Set]]
+   * @param v Function which returns a [[scalafx.animation.KeyValue]] [[scala.collection.immutable.Set]]
    * @return new KeyFrame
    */
   def at(time: Duration)(v: => Set[KeyValue[_, _ <: Object]]) = KeyFrame(time, values = v)

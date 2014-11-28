@@ -74,6 +74,7 @@ lazy val scalafxSettings = Seq(
     else
       Seq.empty[ModuleID]),
   unmanagedLibs,
+  autoAPIMappings := true,
   manifestSetting,
   publishSetting,
   fork in Test := true,
