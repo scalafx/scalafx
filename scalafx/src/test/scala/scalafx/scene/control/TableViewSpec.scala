@@ -26,13 +26,15 @@
  */
 package scalafx.scene.control
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import org.scalatest.Matchers._
-
 import javafx.scene.{control => jfxsc}
+
+import org.junit.runner.RunWith
+import org.scalatest.Matchers._
+import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
+import scalafx.collections.ObservableBuffer
 
 /**
  * TableViewSpec tests.
@@ -71,5 +73,29 @@ class TableViewSpec[S]
     tableView.sortOrder.size should (equal(2))
     tableView.sortOrder.clear()
     tableView.sortOrder.size should (equal(0))
+  }
+
+  it should "not alter the delegate state during implicit conversion - Issue 154" in {
+    val rocky = "Rocky"
+    val characters = ObservableBuffer[String]("Peggy", "Sue", "555-6798", rocky, "Raccoon", "555-6798")
+
+    val tableView = new TableView[String](characters) {
+      columns += new TableColumn[String, String]("Name")
+    }
+
+    tableView.getSelectionModel.select(rocky)
+    tableView.getSelectionModel.selectedItem.value should equal(rocky)
+
+    // Clear selection
+    tableView.selectionModel.value.clearSelection()
+    tableView.getSelectionModel.selectedItem.value should equal(null)
+
+    tableView.selectionModel().select(rocky)
+    tableView.selectionModel().selectedItem() should equal(rocky)
+
+    // Clear selection
+    tableView.selectionModel().clearSelection()
+    tableView.selectionModel().selectedItem() should equal(null)
+
   }
 }
