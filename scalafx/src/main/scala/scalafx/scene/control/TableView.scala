@@ -152,9 +152,6 @@ object TableView {
     def selectRightCell() {
       delegate.selectRightCell()
     }
-
-    delegate.selectLast()
-
   }
 
   object TableViewFocusModel {
