@@ -27,17 +27,15 @@
 package scalafx.stage
 
 import javafx.{stage => jfxs}
+
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ReadOnlyBooleanProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{BooleanProperty, ReadOnlyBooleanProperty, StringProperty}
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.Scene
 import scalafx.stage.Window.sfxWindow2jfx
-import scalafx.delegate.SFXDelegate
-import scalafx.application.JFXApp
 
 object Stage {
-  implicit def sfxStage2jfx(v: Stage) = if (v != null) v.delegate else null
+  implicit def sfxStage2jfx(v: Stage): jfxs.Stage = if (v != null) v.delegate else null
 }
 
 /**

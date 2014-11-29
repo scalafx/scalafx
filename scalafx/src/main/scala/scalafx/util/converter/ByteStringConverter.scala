@@ -29,7 +29,8 @@ package scalafx.util.converter
 import javafx.util.{converter => jfxuc}
 
 object ByteStringConverter {
-  implicit def sfxByteStringConverter2jfx(c: ByteStringConverter) = if (c != null) c.delegate else null
+  implicit def sfxByteStringConverter2jfx(c: ByteStringConverter): jfxuc.ByteStringConverter =
+    if (c != null) c.delegate else null
 }
 
 class ByteStringConverter(delegate: jfxuc.ByteStringConverter = new jfxuc.ByteStringConverter)

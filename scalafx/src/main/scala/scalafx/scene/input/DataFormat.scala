@@ -27,14 +27,14 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
-import scalafx.delegate.SFXDelegate
-import scalafx.event.Event
-import scala.collection._
+
 import scala.collection.JavaConversions._
+import scala.collection._
+import scalafx.delegate.SFXDelegate
 
 object DataFormat {
 
-  implicit def sfxDataFormat2jfx(ie: DataFormat) = if (ie != null) ie.delegate else null
+  implicit def sfxDataFormat2jfx(ie: DataFormat): jfxsi.DataFormat = if (ie != null) ie.delegate else null
 
   /**
    * Looks for the DataFormat which has been previously created with the given mime type as one of its ids.

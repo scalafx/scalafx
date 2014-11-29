@@ -26,17 +26,14 @@
  */
 package scalafx.scene.control.cell
 
-import scala.annotation.implicitNotFound
-
 import javafx.beans.{value => jfxbv}
 import javafx.scene.control.{cell => jfxscc}
 import javafx.{util => jfxu}
+
 import scalafx.Includes._
 import scalafx.beans.value.ObservableValue
-import scalafx.scene.control.cell.CheckBoxListCell._
-import scalafx.scene.control.ListCell
-import scalafx.scene.control.ListView
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.control.{ListCell, ListView}
 import scalafx.util.StringConverter
 
 /**
@@ -54,7 +51,7 @@ object CheckBoxListCell {
    *
    * @param cell ScalaFX $CBLC
    */
-  implicit def sfxCheckBoxListCell2jfx[T](cell: CheckBoxListCell[T]) = if (cell != null) cell.delegate else null
+  implicit def sfxCheckBoxListCell2jfx[T](cell: CheckBoxListCell[T]): jfxscc.CheckBoxListCell[T] = if (cell != null) cell.delegate else null
 
   /**
    * Creates a cell factory for use in ListView controls.

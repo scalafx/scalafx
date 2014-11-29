@@ -26,19 +26,18 @@
  */
 package scalafx.scene.control
 
-import scalafx.Includes._
 import javafx.scene.{control => jfxsc}
-import scalafx.delegate.SFXDelegate
-import javafx.{event => jfxe}
-import javafx.{geometry => jfxg}
-import scalafx.collections._
-import scalafx.scene.Node
-import collection.JavaConversions._
+import javafx.{event => jfxe, geometry => jfxg}
+
+import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
+import scalafx.collections._
+import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Orientation
+import scalafx.scene.Node
 
 object ToolBar {
-  implicit def sfxToolBarToJfx(v: ToolBar) = if (v != null) v.delegate else null
+  implicit def sfxToolBarToJfx(v: ToolBar): jfxsc.ToolBar = if (v != null) v.delegate else null
 }
 
 /**

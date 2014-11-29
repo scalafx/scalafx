@@ -27,14 +27,14 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+
 import scalafx.Includes._
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.StringProperty
-import scalafx.stage.PopupWindow
+import scalafx.beans.property.{DoubleProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.stage.PopupWindow
 
 object PopupControl {
-  implicit def sfxPopupControl2jfx(v: PopupControl) = if (v != null) v.delegate else null
+  implicit def sfxPopupControl2jfx(v: PopupControl): jfxsc.PopupControl = if (v != null) v.delegate else null
 }
 
 class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupControl)

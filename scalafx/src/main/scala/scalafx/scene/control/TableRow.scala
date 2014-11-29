@@ -27,10 +27,11 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+
 import scalafx.delegate.SFXDelegate
 
 object TableRow {
-  implicit def sfxTableRow2jfx[T](tr: TableRow[T]) = if (tr != null) tr.delegate else null
+  implicit def sfxTableRow2jfx[T](tr: TableRow[T]): jfxsc.TableRow[T] = if (tr != null) tr.delegate else null
 }
 
 /**

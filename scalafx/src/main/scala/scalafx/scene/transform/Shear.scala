@@ -27,13 +27,13 @@
 package scalafx.scene.transform
 
 import javafx.scene.{transform => jfxst}
+
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.PositionDelegate
+import scalafx.delegate.{PositionDelegate, SFXDelegate}
 
 object Shear {
-  implicit def sfxShear2jfx(v: Shear) = if (v != null) v.delegate else null
+  implicit def sfxShear2jfx(v: Shear): jfxst.Shear = if (v != null) v.delegate else null
 }
 
 /**

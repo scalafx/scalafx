@@ -26,22 +26,18 @@
  */
 package scalafx.scene.control
 
-import javafx.{event => jfxe}
-import javafx.{scene => jfxs}
 import javafx.scene.{control => jfxsc}
+import javafx.{event => jfxe, scene => jfxs}
+
 import scalafx.Includes._
-import scalafx.scene.Node._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyBooleanProperty
-import scalafx.beans.property.StringProperty
-import scalafx.scene.Node
+import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyBooleanProperty, ReadOnlyObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.scene.Node
+import scalafx.scene.Node._
 
 object Tab {
 
-  implicit def sfxTab2jfx(v: Tab) = if (v != null) v.delegate else null
+  implicit def sfxTab2jfx(v: Tab): jfxsc.Tab = if (v != null) v.delegate else null
 
 }
 

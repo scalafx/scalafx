@@ -26,14 +26,13 @@
  */
 package scalafx.scene.control.cell
 
-import javafx.{collections => jfxc}
 import javafx.scene.control.{cell => jfxscc}
-import javafx.{util => jfxu}
+import javafx.{collections => jfxc, util => jfxu}
+
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
-import scalafx.scene.control.TreeCell
-import scalafx.scene.control.TreeView
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.control.{TreeCell, TreeView}
 import scalafx.util.StringConverter
 
 /**
@@ -56,7 +55,7 @@ object ComboBoxTreeCell {
    * @param cell ScalaFX $CBTC
    * @return JavaFX $CBTC
    */
-  implicit def sfxComboBoxTreeCell2jfx[T](cell: ComboBoxTreeCell[T]) = if (cell != null) cell.delegate else null
+  implicit def sfxComboBoxTreeCell2jfx[T](cell: ComboBoxTreeCell[T]): jfxscc.ComboBoxTreeCell[T] = if (cell != null) cell.delegate else null
 
   /**
    * $FTCINIT

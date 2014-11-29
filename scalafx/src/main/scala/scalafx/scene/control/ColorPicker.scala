@@ -26,15 +26,15 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import javafx.scene.{paint => jfxsp}
+import javafx.scene.{control => jfxsc, paint => jfxsp}
+
 import scalafx.collections.ObservableBuffer
-import scalafx.scene.paint.Color.sfxColor2jfx
-import scalafx.scene.paint.Color
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.paint.Color
+import scalafx.scene.paint.Color.sfxColor2jfx
 
 object ColorPicker {
-  implicit def sfxColorPicker2jfx(cp: ColorPicker) = if (cp != null) cp.delegate else null
+  implicit def sfxColorPicker2jfx(cp: ColorPicker): jfxsc.ColorPicker = if (cp != null) cp.delegate else null
 
   val STYLE_CLASS_BUTTON = jfxsc.ColorPicker.STYLE_CLASS_BUTTON
 

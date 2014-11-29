@@ -27,12 +27,10 @@
 package scalafx.util.converter
 
 import java.{math => jm}
-import scala.math.BigDecimal._
-
 import javafx.util.{converter => jfxuc}
 
 object BigDecimalStringConverter {
-  implicit def sfxBigDecimalStringConverter2jfx(c: BigDecimalStringConverter) = if (c != null) c.delegate else null
+  implicit def sfxBigDecimalStringConverter2jfx(c: BigDecimalStringConverter): jfxuc.BigDecimalStringConverter = if (c != null) c.delegate else null
 }
 
 class BigDecimalStringConverter(delegate: jfxuc.BigDecimalStringConverter = new jfxuc.BigDecimalStringConverter)

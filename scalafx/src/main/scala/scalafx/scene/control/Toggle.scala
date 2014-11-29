@@ -27,13 +27,13 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.{BooleanProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 
 object Toggle {
-  implicit def sfxToggle2jfx(t: Toggle) = if (t != null) t.delegate else null
+  implicit def sfxToggle2jfx(t: Toggle): jfxsc.Toggle = if (t != null) t.delegate else null
 }
 
 /**

@@ -26,20 +26,17 @@
  */
 package scalafx.scene.control.cell
 
-import scala.annotation.implicitNotFound
 import javafx.beans.{value => jfxbv}
 import javafx.scene.control.{cell => jfxscc}
 import javafx.scene.{control => jfxsc}
 import javafx.{util => jfxu}
+
 import scalafx.Includes._
 import scalafx.beans.value.ObservableValue
-import scalafx.scene.control.cell.CheckBoxTableCell._
-import scalafx.scene.control.ListCell
-import scalafx.scene.control.ListView
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.control.cell.CheckBoxTableCell._
+import scalafx.scene.control.{TableCell, TableColumn}
 import scalafx.util.StringConverter
-import scalafx.scene.control.TableCell
-import scalafx.scene.control.TableColumn
 
 /**
  * Companion Object for [[scalafx.scene.control.cell.CheckBoxTableCell]].
@@ -55,7 +52,7 @@ object CheckBoxTableCell {
    *
    * @param cell ScalaFX $CBTC
    */
-  implicit def sfxCheckBoxTableCell2jfx[S, T](cell: CheckBoxTableCell[S, T]) = if (cell != null) cell.delegate else null
+  implicit def sfxCheckBoxTableCell2jfx[S, T](cell: CheckBoxTableCell[S, T]): jfxsc.cell.CheckBoxTableCell[S, T] = if (cell != null) cell.delegate else null
 
   private[cell] implicit def selectedIntPropertyToGetSelectedProperty(selectedProperty: Int => ObservableValue[Boolean, java.lang.Boolean]): jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]] =
     new jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]] {

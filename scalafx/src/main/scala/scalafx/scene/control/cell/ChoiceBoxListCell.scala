@@ -26,14 +26,13 @@
  */
 package scalafx.scene.control.cell
 
-import javafx.{collections => jfxc}
 import javafx.scene.control.{cell => jfxscc}
-import javafx.{util => jfxu}
+import javafx.{collections => jfxc, util => jfxu}
+
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
-import scalafx.scene.control.ListCell
-import scalafx.scene.control.ListView
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.control.{ListCell, ListView}
 import scalafx.util.StringConverter
 
 /**
@@ -55,7 +54,7 @@ object ChoiceBoxListCell {
    *
    * @param cell ScalaFX $CBLC
    */
-  implicit def sfxChoiceBoxListCell2jfx[T](cell: ChoiceBoxListCell[T]) = if (cell != null) cell.delegate else null
+  implicit def sfxChoiceBoxListCell2jfx[T](cell: ChoiceBoxListCell[T]): jfxscc.ChoiceBoxListCell[T] = if (cell != null) cell.delegate else null
 
   /**
    * $FLVINIT

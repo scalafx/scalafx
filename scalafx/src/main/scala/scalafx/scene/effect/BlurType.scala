@@ -27,7 +27,8 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[scalafx.scene.effect.BlurType]] */
 object BlurType extends SFXEnumDelegateCompanion[jfxse.BlurType, BlurType] {

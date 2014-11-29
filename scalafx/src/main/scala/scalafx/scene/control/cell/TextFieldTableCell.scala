@@ -28,10 +28,10 @@ package scalafx.scene.control.cell
 
 import javafx.scene.control.{cell => jfxscc}
 import javafx.{util => jfxu}
+
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
-import scalafx.scene.control.TableCell
-import scalafx.scene.control.TableColumn
+import scalafx.scene.control.{TableCell, TableColumn}
 import scalafx.util.StringConverter
 
 /**
@@ -51,7 +51,7 @@ object TextFieldTableCell {
    * @param cell ScalaFX $TFTC
    * @return JavaFX $TFTC
    */
-  implicit def sfxTextFieldTableCell2jfx[S, T](cell: TextFieldTableCell[S, T]) = if (cell != null) cell.delegate else null
+  implicit def sfxTextFieldTableCell2jfx[S, T](cell: TextFieldTableCell[S, T]): jfxscc.TextFieldTableCell[S, T] = if (cell != null) cell.delegate else null
 
   /**
    * $FLVINIT

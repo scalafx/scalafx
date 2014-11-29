@@ -27,12 +27,13 @@
 package scalafx.scene
 
 import javafx.{scene => jfxs}
+
 import scalafx.Includes._
-import scalafx.scene.image.WritableImage
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.image.WritableImage
 
 object SnapshotResult {
-  implicit def sfxSnapshotResult2jfx(sr: SnapshotResult) = if (sr != null) sr.delegate else null
+  implicit def sfxSnapshotResult2jfx(sr: SnapshotResult): jfxs.SnapshotResult = if (sr != null) sr.delegate else null
 }
 
 /**

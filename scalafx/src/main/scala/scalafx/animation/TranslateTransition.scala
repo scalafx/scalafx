@@ -27,12 +27,12 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa, scene => jfxs, util => jfxu}
-import scalafx.util.Duration
+
 import scalafx.Includes._
+import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.util.Duration
 
 /**
  * Companion Object for [[scalafx.animation.TranslateTransition]].
@@ -48,7 +48,7 @@ object TranslateTransition extends AnimationStatics {
    * @param v ScalaFX $TT
    * @return JavaFX $TT extracted from `v`.
    */
-  implicit def sfxTranslateTransition2jfx(v: TranslateTransition) = if (v != null) v.delegate else null
+  implicit def sfxTranslateTransition2jfx(v: TranslateTransition): jfxa.TranslateTransition = if (v != null) v.delegate else null
 
 }
 

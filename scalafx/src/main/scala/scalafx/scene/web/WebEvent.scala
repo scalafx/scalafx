@@ -27,12 +27,13 @@
 package scalafx.scene.web
 
 import javafx.scene.{web => jfxsw}
-import scalafx.event.{EventType, Event}
+
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
+import scalafx.event.{Event, EventType}
 
 object WebEvent {
-  implicit def sfxWebEvent2jfx[T](we: WebEvent[T]) = if (we != null) we.delegate else null
+  implicit def sfxWebEvent2jfx[T](we: WebEvent[T]): jfxsw.WebEvent[T] = if (we != null) we.delegate else null
 
   /**
    * This event occurs when a script calls the JavaScript alert function.

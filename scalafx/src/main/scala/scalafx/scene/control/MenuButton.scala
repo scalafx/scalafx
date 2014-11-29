@@ -28,19 +28,18 @@ package scalafx.scene.control
 
 import javafx.beans.{property => jfxbp}
 import javafx.scene.{control => jfxsc}
-import javafx.{collections => jfxc}
-import javafx.{geometry => jfxg}
-import scala.collection.JavaConversions.asJavaCollection
-import scalafx.collections._
+import javafx.{collections => jfxc, geometry => jfxg}
+
 import scalafx.Includes._
+import scalafx.collections._
+import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Side
 import scalafx.scene.Node
 import scalafx.scene.Node._
-import scalafx.delegate.SFXDelegate
 
 
 object MenuButton {
-  implicit def sfxToggleButton2jfx(mb: MenuButton) = if (mb != null) mb.delegate else null
+  implicit def sfxToggleButton2jfx(mb: MenuButton): jfxsc.MenuButton = if (mb != null) mb.delegate else null
 }
 
 /**

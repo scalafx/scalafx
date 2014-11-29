@@ -27,15 +27,15 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import scalafx.delegate.SFXDelegate
+import javafx.{event => jfxe, geometry => jfxg}
+
 import scalafx.Includes._
-import javafx.{event => jfxe}
-import javafx.{geometry => jfxg}
 import scalafx.collections.ObservableBuffer
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 
 object ContextMenu {
-  implicit def sfxContextMenu2jfx(cm: ContextMenu) = if (cm != null) cm.delegate else null
+  implicit def sfxContextMenu2jfx(cm: ContextMenu): jfxsc.ContextMenu = if (cm != null) cm.delegate else null
 }
 
 /**

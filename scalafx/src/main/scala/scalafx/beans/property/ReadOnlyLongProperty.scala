@@ -27,11 +27,12 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
+
 import scalafx.beans.binding.NumberExpression
 import scalafx.delegate.SFXDelegate
 
 object ReadOnlyLongProperty {
-  implicit def sfxReadOnlyLongProperty2jfx(rolp: ReadOnlyLongProperty) = if (rolp != null) rolp.delegate else null
+  implicit def sfxReadOnlyLongProperty2jfx(rolp: ReadOnlyLongProperty): jfxbp.ReadOnlyLongProperty = if (rolp != null) rolp.delegate else null
 }
 
 class ReadOnlyLongProperty(override val delegate: jfxbp.ReadOnlyLongProperty) extends NumberExpression(delegate) with ReadOnlyProperty[Long, Number] with SFXDelegate[jfxbp.ReadOnlyLongProperty] {

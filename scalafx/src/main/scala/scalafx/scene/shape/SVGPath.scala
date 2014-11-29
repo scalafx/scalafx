@@ -27,14 +27,13 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
+
 import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.StringProperty
-import scalafx.scene.paint._
+import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
 
 object SVGPath {
-  implicit def sfxSVGPath2jfx(v: SVGPath) = if (v != null) v.delegate else null
+  implicit def sfxSVGPath2jfx(v: SVGPath): jfxss.SVGPath = if (v != null) v.delegate else null
 }
 
 class SVGPath(override val delegate: jfxss.SVGPath = new jfxss.SVGPath()) extends Shape(delegate) with SFXDelegate[jfxss.SVGPath] {

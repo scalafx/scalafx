@@ -26,24 +26,20 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc, text => jfxst }
-import javafx.{scene => jfxs }
+import javafx.scene.{control => jfxsc, text => jfxst}
+import javafx.{scene => jfxs}
+
 import scalafx.Includes._
-import scalafx.scene.Node._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyBooleanProperty
-import scalafx.beans.property.StringProperty
-import scalafx.scene.text.Font.sfxFont2jfx
-import scalafx.scene.text.Font
-import scalafx.scene.text.TextAlignment
-import scalafx.scene.Node
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyBooleanProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
+import scalafx.scene.Node._
+import scalafx.scene.text.Font.sfxFont2jfx
+import scalafx.scene.text.{Font, TextAlignment}
 
 object Tooltip {
 
-  implicit def sfxTooltip2jfx(v: Tooltip) = if (v == null) null else v.delegate
+  implicit def sfxTooltip2jfx(v: Tooltip): jfxsc.Tooltip = if (v == null) null else v.delegate
 
   def apply(string: String) = new Tooltip {
     text = string
@@ -54,7 +50,7 @@ object Tooltip {
    *
    * @param string Tooltip's text.
    */
-  implicit def stringToTooltip(string: String) = new Tooltip {
+  implicit def stringToTooltip(string: String): Tooltip = new Tooltip {
     text() = string
   }
 

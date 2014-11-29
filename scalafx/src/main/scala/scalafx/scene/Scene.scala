@@ -26,24 +26,19 @@
  */
 package scalafx.scene
 
-import javafx.{collections => jfxc}
-import javafx.{event => jfxe, scene => jfxs}
-import javafx.{util => jfxu}
-import jfxs.{input => jfxsi, paint => jfxsp, layout => jfxsl}
+import javafx.scene.{input => jfxsi, layout => jfxsl, paint => jfxsp}
+import javafx.{collections => jfxc, event => jfxe, scene => jfxs, util => jfxu}
+
 import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.{ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
 import scalafx.collections._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.image.WritableImage
-import scalafx.scene.input.Dragboard
-import scalafx.scene.input.Mnemonic
-import scalafx.scene.input.TransferMode
+import scalafx.scene.input.{Dragboard, Mnemonic, TransferMode}
 import scalafx.scene.paint.Paint
 
 object Scene {
-  implicit def sfxScene2jfx(v: Scene) = if (v != null) v.delegate else null
+  implicit def sfxScene2jfx(v: Scene): jfxs.Scene = if (v != null) v.delegate else null
 }
 
 /**

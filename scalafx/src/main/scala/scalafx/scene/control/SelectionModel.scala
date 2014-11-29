@@ -27,13 +27,13 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+
 import scalafx.Includes.jfxReadOnlyIntegerProperty2sfx
-import scalafx.beans.property.ReadOnlyIntegerProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.{ReadOnlyIntegerProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
 
 object SelectionModel {
-  implicit def sfxSelectionModel2jfx[T](v: SelectionModel[T]) = if (v != null) v.delegate else null
+  implicit def sfxSelectionModel2jfx[T](v: SelectionModel[T]): jfxsc.SelectionModel[T] = if (v != null) v.delegate else null
 }
 
 abstract class SelectionModel[T](override val delegate: jfxsc.SelectionModel[T])

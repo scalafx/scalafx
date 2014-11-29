@@ -27,11 +27,12 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
+
 import scalafx.beans.binding.NumberExpression
 import scalafx.delegate.SFXDelegate
 
 object ReadOnlyFloatProperty {
-  implicit def sfxReadOnlyFloatProperty2jfx(rofp: ReadOnlyFloatProperty) = if (rofp != null) rofp.delegate else null
+  implicit def sfxReadOnlyFloatProperty2jfx(rofp: ReadOnlyFloatProperty): jfxbp.ReadOnlyFloatProperty = if (rofp != null) rofp.delegate else null
 }
 
 class ReadOnlyFloatProperty(override val delegate: jfxbp.ReadOnlyFloatProperty) extends NumberExpression(delegate) with ReadOnlyProperty[Float, Number] with SFXDelegate[jfxbp.ReadOnlyFloatProperty] {

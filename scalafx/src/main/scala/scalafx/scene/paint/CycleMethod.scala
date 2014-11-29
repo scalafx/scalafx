@@ -27,7 +27,8 @@
 package scalafx.scene.paint
 
 import javafx.scene.{paint => jfxsp}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.scene.paint.CycleMethod]] */
 object CycleMethod extends SFXEnumDelegateCompanion[jfxsp.CycleMethod, CycleMethod] {

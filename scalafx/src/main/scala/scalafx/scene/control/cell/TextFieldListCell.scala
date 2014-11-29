@@ -28,10 +28,10 @@ package scalafx.scene.control.cell
 
 import javafx.scene.control.{cell => jfxscc}
 import javafx.{util => jfxu}
+
 import scalafx.Includes._
-import scalafx.scene.control.ListCell
-import scalafx.scene.control.ListView
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.control.{ListCell, ListView}
 import scalafx.util.StringConverter
 
 /**
@@ -51,7 +51,7 @@ object TextFieldListCell {
    * @param cell ScalaFX $TFLC
    * @return JavaFX $TFLC
    */
-  implicit def sfxTextFieldListCell2jfx[T](cell: TextFieldListCell[T]) = if (cell != null) cell.delegate else null
+  implicit def sfxTextFieldListCell2jfx[T](cell: TextFieldListCell[T]): jfxscc.TextFieldListCell[T] = if (cell != null) cell.delegate else null
 
   /**
    * $FLVINTI

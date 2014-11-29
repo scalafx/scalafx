@@ -27,8 +27,9 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
+
 import scalafx.Includes._
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.scene.input.KeyCode]] */
 object KeyCode extends SFXEnumDelegateCompanion[jfxsi.KeyCode, KeyCode] {

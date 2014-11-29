@@ -26,19 +26,15 @@
  */
 package scalafx.stage
 
-import javafx.{event => jfxe}
-import javafx.{stage => jfxs}
+import javafx.{event => jfxe, stage => jfxs}
+
 import scalafx.Includes._
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyBooleanProperty
-import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.event.{EventHandlerDelegate, Event}
+import scalafx.beans.property.{DoubleProperty, ObjectProperty, ReadOnlyBooleanProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.event.{Event, EventHandlerDelegate}
 
 object Window {
-  implicit def sfxWindow2jfx(v: Window) = if (v != null) v.delegate else null
+  implicit def sfxWindow2jfx(v: Window): jfxs.Window = if (v != null) v.delegate else null
 }
 
 class Window protected(override val delegate: jfxs.Window)

@@ -27,11 +27,11 @@
 package scalafx.scene
 
 import javafx.{scene => jfxs}
-import scalafx.Includes._
+
 import scalafx.delegate.SFXDelegate
 
 object Camera {
-  implicit def sfxCamera2jfx(c: Camera) = if (c != null) c.delegate else null
+  implicit def sfxCamera2jfx(c: Camera): jfxs.Camera = if (c != null) c.delegate else null
 }
 
 abstract class Camera(override val delegate: jfxs.Camera) extends SFXDelegate[jfxs.Camera]

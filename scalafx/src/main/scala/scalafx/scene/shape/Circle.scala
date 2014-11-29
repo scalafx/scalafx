@@ -27,13 +27,14 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import scalafx.scene.paint.Paint
+
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.paint.Paint
 
 object Circle {
-  implicit def sfxCircle2jfx(v: Circle) = if (v != null) v.delegate else null
+  implicit def sfxCircle2jfx(v: Circle): jfxss.Circle = if (v != null) v.delegate else null
 
   def apply(radius: Double) = new Circle(new jfxss.Circle(radius))
   def apply(centerX: Double, centerY: Double, radius: Double) =

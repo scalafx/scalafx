@@ -27,12 +27,13 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
+
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object SepiaTone {
-  implicit def sfxSepiaTone2jfx(st: SepiaTone) = if (st != null) st.delegate else null
+  implicit def sfxSepiaTone2jfx(st: SepiaTone): jfxse.SepiaTone = if (st != null) st.delegate else null
 }
 
 class SepiaTone(override val delegate: jfxse.SepiaTone = new jfxse.SepiaTone)

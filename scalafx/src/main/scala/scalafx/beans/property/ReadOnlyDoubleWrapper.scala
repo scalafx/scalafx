@@ -27,12 +27,13 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
+
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 
 object ReadOnlyDoubleWrapper {
-  implicit def sfxReadOnlyDoubleWrapper2jfx(w: ReadOnlyDoubleWrapper) = if (w != null) w.delegate else null
+  implicit def sfxReadOnlyDoubleWrapper2jfx(w: ReadOnlyDoubleWrapper): jfxbp.ReadOnlyDoubleWrapper = if (w != null) w.delegate else null
 
   /** Creates a new ReadOnlyDoubleWrapper instance.
     * @param value the initial value of the wrapped value

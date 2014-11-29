@@ -26,17 +26,16 @@
  */
 package scalafx.scene.layout
 
-import javafx.{geometry => jfxg}
 import javafx.scene.{layout => jfxsl}
+import javafx.{geometry => jfxg}
+
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.geometry.HPos
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.geometry.HPos
 
 object ColumnConstraints {
-  implicit def sfxColumnConstraints2jfx(v: ColumnConstraints) = if (v != null) v.delegate else null
+  implicit def sfxColumnConstraints2jfx(v: ColumnConstraints): jfxsl.ColumnConstraints = if (v != null) v.delegate else null
 }
 
 class ColumnConstraints(override val delegate: jfxsl.ColumnConstraints = new jfxsl.ColumnConstraints)

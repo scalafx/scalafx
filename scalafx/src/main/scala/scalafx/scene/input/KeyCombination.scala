@@ -28,9 +28,8 @@ package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
 import javafx.{event => jfxe}
-import scalafx.event.Event
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 object KeyCombination {
 
@@ -63,7 +62,7 @@ object KeyCombination {
     extends SFXEnumDelegate[jfxsi.KeyCombination.ModifierValue]
 
   object Modifier {
-    implicit def sfxModifier2jfx(m: Modifier) = if (m != null) m.delegate else null
+    implicit def sfxModifier2jfx(m: Modifier): jfxsi.KeyCombination.Modifier = if (m != null) m.delegate else null
   }
 
   class Modifier(override val delegate: jfxsi.KeyCombination.Modifier) extends SFXDelegate[jfxsi.KeyCombination.Modifier] {
@@ -80,7 +79,7 @@ object KeyCombination {
 
   }
 
-  implicit def sfxKeyCombination2jfx(kc: KeyCombination) = if (kc != null) kc.delegate else null
+  implicit def sfxKeyCombination2jfx(kc: KeyCombination): jfxsi.KeyCombination = if (kc != null) kc.delegate else null
 
   /**
    * Modifier which specifies that the alt key can be either up or down.

@@ -27,13 +27,13 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+
 import scalafx.Includes._
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.beans.property.{DoubleProperty, ReadOnlyBooleanProperty}
 import scalafx.delegate.SFXDelegate
 
 object ProgressIndicator {
-  implicit def sfxProgressIndicator2jfx(v: ProgressIndicator) = if (v != null) v.delegate else null
+  implicit def sfxProgressIndicator2jfx(v: ProgressIndicator): jfxsc.ProgressIndicator = if (v != null) v.delegate else null
 
   val INDETERMINATE_PROGRESS = jfxsc.ProgressIndicator.INDETERMINATE_PROGRESS
 }

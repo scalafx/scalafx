@@ -27,12 +27,13 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
+
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Line {
-  implicit def sfxLine2jfx(v: Line) = if (v != null) v.delegate else null
+  implicit def sfxLine2jfx(v: Line): jfxss.Line = if (v != null) v.delegate else null
 
   def apply(startX: Double, startY: Double, endX: Double, endY: Double) =
     new Line(new jfxss.Line(startX, startY, endX, endY))

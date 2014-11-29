@@ -26,14 +26,15 @@
  */
 package scalafx.scene.input
 
-import javafx.{event => jfxe}
 import javafx.scene.{input => jfxsi}
+import javafx.{event => jfxe}
+
 import scalafx.Includes._
-import scalafx.event.{Event, EventType}
 import scalafx.delegate.SFXDelegate
+import scalafx.event.{Event, EventType}
 
 object GestureEvent {
-  implicit def sfxGestureEvent2jfx(ge: GestureEvent) = if (ge != null) ge.delegate else null
+  implicit def sfxGestureEvent2jfx(ge: GestureEvent): jfxsi.GestureEvent = if (ge != null) ge.delegate else null
 
   /**
    * Common supertype for all gestures.

@@ -29,7 +29,8 @@ package scalafx.util.converter
 import javafx.util.{converter => jfxuc}
 
 object ShortStringConverter {
-  implicit def sfxShortStringConverter2jfx(c: ShortStringConverter) = if (c != null) c.delegate else null
+  implicit def sfxShortStringConverter2jfx(c: ShortStringConverter): jfxuc.ShortStringConverter =
+    if (c != null) c.delegate else null
 }
 
 class ShortStringConverter(delegate: jfxuc.ShortStringConverter = new jfxuc.ShortStringConverter)

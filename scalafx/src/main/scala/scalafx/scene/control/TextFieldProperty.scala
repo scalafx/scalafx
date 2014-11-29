@@ -26,14 +26,15 @@
  */
 package scalafx.scene.control
 
-import scalafx.delegate.{AlignmentPropertyDelegate, SFXDelegate}
-import javafx.beans.{property => jfxbp, binding => jfxbb}
-import javafx.{scene => jfxs, event => jfxe}
-import jfxs.{control => jfxsc}
+import javafx.beans.{binding => jfxbb, property => jfxbp}
+import javafx.scene.{control => jfxsc}
+import javafx.{event => jfxe, scene => jfxs}
+
 import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.delegate.{AlignmentPropertyDelegate, SFXDelegate}
 
 object TextFieldProperty {
-  implicit def sfxTextFieldProperty2jfx(p: TextFieldProperty) = if (p != null) p.delegate else null
+  implicit def sfxTextFieldProperty2jfx(p: TextFieldProperty): jfxbp.ReadOnlyObjectProperty[jfxsc.TextField] = if (p != null) p.delegate else null
 }
 
 class TextFieldProperty(override val delegate: jfxbp.ReadOnlyObjectProperty[jfxsc.TextField])

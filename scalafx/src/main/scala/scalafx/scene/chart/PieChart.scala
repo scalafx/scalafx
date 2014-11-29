@@ -27,19 +27,17 @@
 package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
+
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ReadOnlyObjectProperty, StringProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 object PieChart {
-  implicit def sfxPieChart2jfx(v: PieChart) = if (v != null) v.delegate else null
+  implicit def sfxPieChart2jfx(v: PieChart): jfxsc.PieChart = if (v != null) v.delegate else null
 
   object Data {
-    implicit def sfxPieChartData2jfx(v: PieChart.Data) = if (v != null) v.delegate else null
+    implicit def sfxPieChartData2jfx(v: PieChart.Data): jfxsc.PieChart.Data = if (v != null) v.delegate else null
 
     def apply(name: String, value: Double) = new jfxsc.PieChart.Data(name, value)
   }

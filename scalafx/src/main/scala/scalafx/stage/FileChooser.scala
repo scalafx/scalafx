@@ -28,18 +28,18 @@ package scalafx.stage
 
 import java.io.File
 import javafx.{stage => jfxs}
+
 import scala.collection.JavaConversions._
 import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
 
 
 object FileChooser {
-  implicit def sfxFileChooser2jfx(fc: FileChooser) = if (fc != null) fc.delegate else null
+  implicit def sfxFileChooser2jfx(fc: FileChooser): jfxs.FileChooser = if (fc != null) fc.delegate else null
 
   object ExtensionFilter {
-    implicit def sfxExtensionFilter2jfx(ef: ExtensionFilter) = if (ef != null) ef.delegate else null
+    implicit def sfxExtensionFilter2jfx(ef: ExtensionFilter): jfxs.FileChooser.ExtensionFilter = if (ef != null) ef.delegate else null
   }
 
   class ExtensionFilter(override val delegate: jfxs.FileChooser.ExtensionFilter) extends SFXDelegate[jfxs.FileChooser.ExtensionFilter] {

@@ -26,8 +26,11 @@
  */
 package scalafx.beans.binding
 
+import javafx.beans.binding.{DoubleBinding, FloatBinding, IntegerBinding, LongBinding}
+import javafx.beans.value.ChangeListener
+import javafx.beans.{InvalidationListener, binding => jfxbb, value => jfxbv}
 import javafx.{beans => jfxb}
-import javafx.beans.{binding => jfxbb, value => jfxbv}
+
 import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
 
 object BindingIncludes extends BindingIncludes
@@ -60,7 +63,7 @@ trait BindingIncludes extends Bindings {
    * @param bb $JFX $BOB
    * @return $SFX $BOB
    */
-  implicit def jfxBooleanBinding2sfx(bb: jfxbb.BooleanBinding) = if (bb != null) new BooleanBinding(bb) else null
+  implicit def jfxBooleanBinding2sfx(bb: jfxbb.BooleanBinding): BooleanBinding = if (bb != null) new BooleanBinding(bb) else null
 
   /**
    * $START$BOE.html $BOE$END
@@ -68,7 +71,7 @@ trait BindingIncludes extends Bindings {
    * @param be $JFX $BOE
    * @return $SFX $BOE
    */
-  implicit def jfxBooleanExpression2sfx(be: jfxbb.BooleanExpression) = if (be != null) new BooleanExpression(be) else null
+  implicit def jfxBooleanExpression2sfx(be: jfxbb.BooleanExpression): BooleanExpression = if (be != null) new BooleanExpression(be) else null
 
   /**
    * $START$NUB.html $NUB$END
@@ -76,7 +79,7 @@ trait BindingIncludes extends Bindings {
    * @param nb $JFX $NUB
    * @return $SFX $NUB
    */
-  implicit def jfxNumberBinding2sfx(nb: jfxbb.NumberBinding) = if (nb != null) new NumberBinding(nb) else null
+  implicit def jfxNumberBinding2sfx(nb: jfxbb.NumberBinding): NumberBinding = if (nb != null) new NumberBinding(nb) else null
 
   /**
    * $START$NUE.html $NUE$END
@@ -84,7 +87,7 @@ trait BindingIncludes extends Bindings {
    * @param ne $JFX $NUE
    * @return $SFX $NUE
    */
-  implicit def jfxNumberExpression2sfx(ne: jfxbb.NumberExpression) = if (ne != null) new NumberExpression(ne) else null
+  implicit def jfxNumberExpression2sfx(ne: jfxbb.NumberExpression): NumberExpression = if (ne != null) new NumberExpression(ne) else null
 
   /**
    * $START$OBB.html $OBB$END
@@ -93,7 +96,7 @@ trait BindingIncludes extends Bindings {
    * @param ob $JFX $OBB
    * @return $SFX $OBB
    */
-  implicit def jfxObjectBinding2sfx[T](ob: jfxbb.ObjectBinding[T]) = if (ob != null) new ObjectBinding[T](ob) else null
+  implicit def jfxObjectBinding2sfx[T](ob: jfxbb.ObjectBinding[T]): ObjectBinding[T] = if (ob != null) new ObjectBinding[T](ob) else null
 
   /**
    * $START$OBE.html $OBE$END
@@ -102,7 +105,7 @@ trait BindingIncludes extends Bindings {
    * @param oe $JFX $OBE
    * @return $SFX $OBE
    */
-  implicit def jfxObjectExpression2sfx[T](oe: jfxbb.ObjectExpression[T]) = if (oe != null) new ObjectExpression[T](oe) else null
+  implicit def jfxObjectExpression2sfx[T](oe: jfxbb.ObjectExpression[T]): ObjectExpression[T] = if (oe != null) new ObjectExpression[T](oe) else null
 
   /**
    * $START$STB.html $STB$END
@@ -110,7 +113,7 @@ trait BindingIncludes extends Bindings {
    * @param sb $JFX $STB
    * @return $SFX $STB
    */
-  implicit def jfxStringBinding2sfx(sb: jfxbb.StringBinding) = if (sb != null) new StringBinding(sb) else null
+  implicit def jfxStringBinding2sfx(sb: jfxbb.StringBinding): StringBinding = if (sb != null) new StringBinding(sb) else null
 
   /**
    * $START$STE.html $STE$END
@@ -118,7 +121,7 @@ trait BindingIncludes extends Bindings {
    * @param se $JFX $STE
    * @return $SFX $STE
    */
-  implicit def jfxStringExpression2sfx(se: jfxbb.StringExpression) = if (se != null) new StringExpression(se) else null
+  implicit def jfxStringExpression2sfx(se: jfxbb.StringExpression): StringExpression = if (se != null) new StringExpression(se) else null
 
   // Conversion helper for variable precision numbers (e.g. 100+-.01)
 
@@ -128,7 +131,7 @@ trait BindingIncludes extends Bindings {
    * @param d A Double
    * @return a VariablePrecisionNumber
    */
-  implicit def double2VariablePrecisionNumber(d: Double) = VariablePrecisionNumber(d)
+  implicit def double2VariablePrecisionNumber(d: Double): VariablePrecisionNumber = VariablePrecisionNumber(d)
 
   // Simple closure syntax for observables to reduce boilerplate on the JavaFX addListener methods
 
@@ -138,7 +141,7 @@ trait BindingIncludes extends Bindings {
    * @param il Closure to be converted.
    * @return a new $JFX InvalidationListener.
    */
-  implicit def closure2InvalidationListener(il: jfxb.Observable => Unit) = new jfxb.InvalidationListener {
+  implicit def closure2InvalidationListener(il: jfxb.Observable => Unit): InvalidationListener = new jfxb.InvalidationListener {
     def invalidated(observable: jfxb.Observable) {
       il(observable)
     }
@@ -151,7 +154,7 @@ trait BindingIncludes extends Bindings {
    * @param cl Closure to be converted.
    * @return a new $JFX ChangeListener.
    */
-  implicit def closure2ChangedListener[P](cl: (jfxbv.ObservableValue[_ <: P], P, P) => Unit) = new jfxbv.ChangeListener[P]() {
+  implicit def closure2ChangedListener[P](cl: (jfxbv.ObservableValue[_ <: P], P, P) => Unit): ChangeListener[P] = new jfxbv.ChangeListener[P]() {
     def changed(observable: jfxbv.ObservableValue[_ <: P], oldValue: P, newValue: P) {
       cl(observable, oldValue, newValue)
     }
@@ -166,7 +169,7 @@ trait BindingIncludes extends Bindings {
    * @param i Integer to generate a new IntegerBinding
    * @return a new IntegerBinding generted from the Integer.
    */
-  implicit def integer2IntegerBinding(i: Int) = new jfxbb.IntegerBinding {
+  implicit def integer2IntegerBinding(i: Int): IntegerBinding = new jfxbb.IntegerBinding {
     def computeValue() = i
   }
 
@@ -176,7 +179,7 @@ trait BindingIncludes extends Bindings {
    * @param i Long to generate a new LongBinding
    * @return a new LongBinding generated from the Long.
    */
-  implicit def long2LongBinding(i: Long) = new jfxbb.LongBinding {
+  implicit def long2LongBinding(i: Long): LongBinding = new jfxbb.LongBinding {
     def computeValue() = i
   }
 
@@ -186,7 +189,7 @@ trait BindingIncludes extends Bindings {
    * @param i Float to generate a new FloatBinding
    * @return a new FloatBinding generated from the Float.
    */
-  implicit def float2FloatBinding(i: Float) = new jfxbb.FloatBinding {
+  implicit def float2FloatBinding(i: Float): FloatBinding = new jfxbb.FloatBinding {
     def computeValue() = i
   }
 
@@ -196,7 +199,7 @@ trait BindingIncludes extends Bindings {
    * @param i Double to generate a new DoubleBinding
    * @return a new DoubleBinding generated from the Double.
    */
-  implicit def double2DoubleBinding(i: Double) = new jfxbb.DoubleBinding {
+  implicit def double2DoubleBinding(i: Double): DoubleBinding = new jfxbb.DoubleBinding {
     def computeValue() = i
   }
 

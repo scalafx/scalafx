@@ -27,14 +27,15 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
+
 import scala.collection.JavaConversions._
+import scala.collection.mutable
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
-import scala.collection.mutable
 
 object TouchEvent {
-  implicit def sfxTouchEvent2jfx(se: TouchEvent) = if (se != null) se.delegate else null
+  implicit def sfxTouchEvent2jfx(se: TouchEvent): jfxsi.TouchEvent = if (se != null) se.delegate else null
 
   /**
    * Common supertype for all touch event types.

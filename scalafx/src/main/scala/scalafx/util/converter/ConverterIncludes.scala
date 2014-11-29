@@ -66,7 +66,7 @@ trait ConverterIncludes {
    * @param c $JFX $BDSC
    * @return $SFX $BDSC
    */
-  implicit def jfxBigDecimalStringConverter2sfx(c: jfxuc.BigDecimalStringConverter) = if (c != null) new BigDecimalStringConverter(c) else null
+  implicit def jfxBigDecimalStringConverter2sfx(c: jfxuc.BigDecimalStringConverter): BigDecimalStringConverter = if (c != null) new BigDecimalStringConverter(c) else null
 
   /**
    * $START$BISC.html $BISC$END
@@ -74,7 +74,7 @@ trait ConverterIncludes {
    * @param c $JFX $BISC
    * @return $SFX $BISC
    */
-  implicit def jfxBigIntegerStringConverter2sfx(c: jfxuc.BigIntegerStringConverter) = if (c != null) new BigIntStringConverter(c) else null
+  implicit def jfxBigIntegerStringConverter2sfx(c: jfxuc.BigIntegerStringConverter): BigIntStringConverter = if (c != null) new BigIntStringConverter(c) else null
 
   /**
    * $START$BOSC.html $BOSC$END
@@ -82,7 +82,7 @@ trait ConverterIncludes {
    * @param c $JFX $BOSC
    * @return $SFX $BOSC
    */
-  implicit def jfxBooleanStringConverter2sfx(c: jfxuc.BooleanStringConverter) = if (c != null) new BooleanStringConverter(c) else null
+  implicit def jfxBooleanStringConverter2sfx(c: jfxuc.BooleanStringConverter): BooleanStringConverter = if (c != null) new BooleanStringConverter(c) else null
 
   /**
    * $START$BYSC.html $BYSC$END
@@ -90,7 +90,7 @@ trait ConverterIncludes {
    * @param c $JFX $BYSC
    * @return $SFX $BYSC
    */
-  implicit def jfxByteStringConverter2sfx(c: jfxuc.ByteStringConverter) = if (c != null) new ByteStringConverter(c) else null
+  implicit def jfxByteStringConverter2sfx(c: jfxuc.ByteStringConverter): ByteStringConverter = if (c != null) new ByteStringConverter(c) else null
 
   /**
    * $START$CHSC.html $CHSC$END
@@ -98,7 +98,7 @@ trait ConverterIncludes {
    * @param c $JFX $CHSC
    * @return $SFX $CHSC
    */
-  implicit def jfxCharacterStringConverter2sfx(c: jfxuc.CharacterStringConverter) = if (c != null) new CharStringConverter(c) else null
+  implicit def jfxCharacterStringConverter2sfx(c: jfxuc.CharacterStringConverter): CharStringConverter = if (c != null) new CharStringConverter(c) else null
 
   /**
    * $START$CUSC.html $CUSC$END
@@ -106,7 +106,7 @@ trait ConverterIncludes {
    * @param c $JFX $CUSC
    * @return $SFX $CUSC
    */
-  implicit def jfxCurrencyStringConverter2sfx(c: jfxuc.CurrencyStringConverter) = if (c != null) new CurrencyStringConverter(c) else null
+  implicit def jfxCurrencyStringConverter2sfx(c: jfxuc.CurrencyStringConverter): CurrencyStringConverter = if (c != null) new CurrencyStringConverter(c) else null
 
   /**
    * $START$DASC.html $DASC$END
@@ -114,7 +114,7 @@ trait ConverterIncludes {
    * @param c $JFX $DASC
    * @return $SFX $DASC
    */
-  implicit def jfxDateStringConverter2sfx(c: jfxuc.DateStringConverter) = if (c != null) new DateStringConverter(c) else null
+  implicit def jfxDateStringConverter2sfx(c: jfxuc.DateStringConverter): DateStringConverter = if (c != null) new DateStringConverter(c) else null
 
   /**
    * $START$DTSC.html $DTSC$END
@@ -122,7 +122,7 @@ trait ConverterIncludes {
    * @param c $JFX $DTSC
    * @return $SFX $DTSC
    */
-  implicit def jfxDateTimeStringConverter2sfx(c: jfxuc.DateTimeStringConverter) = if (c != null) new DateTimeStringConverter(c) else null
+  implicit def jfxDateTimeStringConverter2sfx(c: jfxuc.DateTimeStringConverter): DateTimeStringConverter = if (c != null) new DateTimeStringConverter(c) else null
 
   /**
    * $START$DESC.html $DESC$END
@@ -130,7 +130,7 @@ trait ConverterIncludes {
    * @param c $JFX $DESC
    * @return $SFX $DESC
    */
-  implicit def jfxDefaultStringConverter2sfx(c: jfxuc.DefaultStringConverter) = if (c != null) new DefaultStringConverter(c) else null
+  implicit def jfxDefaultStringConverter2sfx(c: jfxuc.DefaultStringConverter): DefaultStringConverter = if (c != null) new DefaultStringConverter(c) else null
 
   /**
    * $START$DOSC.html $DOSC$END
@@ -138,7 +138,7 @@ trait ConverterIncludes {
    * @param c $JFX $DOSC
    * @return $SFX $DOSC
    */
-  implicit def jfxDoubleStringConverter2sfx(c: jfxuc.DoubleStringConverter) = if (c != null) new DoubleStringConverter(c) else null
+  implicit def jfxDoubleStringConverter2sfx(c: jfxuc.DoubleStringConverter): DoubleStringConverter = if (c != null) new DoubleStringConverter(c) else null
 
   /**
    * $START$FLSC.html $FLSC$END
@@ -146,7 +146,7 @@ trait ConverterIncludes {
    * @param c $JFX $FLSC
    * @return $SFX $FLSC
    */
-  implicit def jfxFloatStringConverter2sfx(c: jfxuc.FloatStringConverter) = if (c != null) new FloatStringConverter(c) else null
+  implicit def jfxFloatStringConverter2sfx(c: jfxuc.FloatStringConverter): FloatStringConverter = if (c != null) new FloatStringConverter(c) else null
 
   /**
    * $START$INSC.html $INSC$END
@@ -154,7 +154,7 @@ trait ConverterIncludes {
    * @param c $JFX $INSC
    * @return $SFX $INSC
    */
-  implicit def jfxIntegerStringConverter2sfx(c: jfxuc.IntegerStringConverter) = if (c != null) new IntStringConverter(c) else null
+  implicit def jfxIntegerStringConverter2sfx(c: jfxuc.IntegerStringConverter): IntStringConverter = if (c != null) new IntStringConverter(c) else null
 
   /**
    * $START$LOSC.html $LOSC$END
@@ -162,7 +162,7 @@ trait ConverterIncludes {
    * @param c $JFX $LOSC
    * @return $SFX $LOSC
    */
-  implicit def jfxLongStringConverter2sfx(c: jfxuc.LongStringConverter) = if (c != null) new LongStringConverter(c) else null
+  implicit def jfxLongStringConverter2sfx(c: jfxuc.LongStringConverter): LongStringConverter = if (c != null) new LongStringConverter(c) else null
 
   /**
    * $START$NUSC.html $NUSC$END
@@ -170,7 +170,7 @@ trait ConverterIncludes {
    * @param c $JFX $NUSC
    * @return $SFX $NUSC
    */
-  implicit def jfxNumberStringConverter2sfx(c: jfxuc.NumberStringConverter) = if (c != null) new NumberStringConverter(c) else null
+  implicit def jfxNumberStringConverter2sfx(c: jfxuc.NumberStringConverter): NumberStringConverter = if (c != null) new NumberStringConverter(c) else null
 
   /**
    * $START$PESC.html $PESC$END
@@ -178,7 +178,7 @@ trait ConverterIncludes {
    * @param c $JFX $PESC
    * @return $SFX $PESC
    */
-  implicit def jfxPercentageStringConverter2sfx(c: jfxuc.PercentageStringConverter) = if (c != null) new PercentageStringConverter(c) else null
+  implicit def jfxPercentageStringConverter2sfx(c: jfxuc.PercentageStringConverter): PercentageStringConverter = if (c != null) new PercentageStringConverter(c) else null
 
   /**
    * $START$SHSC.html $SHSC$END
@@ -186,7 +186,7 @@ trait ConverterIncludes {
    * @param c $JFX $SHSC
    * @return $SFX $SHSC
    */
-  implicit def jfxShortStringConverter2sfx(c: jfxuc.ShortStringConverter) = if (c != null) new ShortStringConverter(c) else null
+  implicit def jfxShortStringConverter2sfx(c: jfxuc.ShortStringConverter): ShortStringConverter = if (c != null) new ShortStringConverter(c) else null
 
   /**
    * $START$TISC.html $TISC$END
@@ -194,6 +194,6 @@ trait ConverterIncludes {
    * @param c $JFX $TISC
    * @return $SFX $TISC
    */
-  implicit def jfxTimeStringConverter2sfx(c: jfxuc.TimeStringConverter) = if (c != null) new TimeStringConverter(c) else null
+  implicit def jfxTimeStringConverter2sfx(c: jfxuc.TimeStringConverter): TimeStringConverter = if (c != null) new TimeStringConverter(c) else null
 
 }

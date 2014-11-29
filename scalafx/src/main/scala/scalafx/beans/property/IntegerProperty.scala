@@ -27,10 +27,11 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
+
 import scalafx.delegate.SFXDelegate
 
 object IntegerProperty {
-  implicit def sfxIntegerProperty2jfx(ip: IntegerProperty) = if (ip != null) ip.delegate else null
+  implicit def sfxIntegerProperty2jfx(ip: IntegerProperty): jfxbp.IntegerProperty = if (ip != null) ip.delegate else null
 
   /**
    * Creates a new IntegerProperty instance using the SimpleIntegerProperty as the target.

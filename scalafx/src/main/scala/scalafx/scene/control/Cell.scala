@@ -26,16 +26,15 @@
  */
 package scalafx.scene.control
 
-import javafx.{scene => jfxs}
 import javafx.scene.{control => jfxsc}
+import javafx.{scene => jfxs}
+
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyBooleanProperty}
 import scalafx.delegate.SFXDelegate
 
 object Cell {
-  implicit def sfxCell2jfx[T](c: Cell[T]) = if (c != null) c.delegate else null
+  implicit def sfxCell2jfx[T](c: Cell[T]): jfxsc.Cell[T] = if (c != null) c.delegate else null
 }
 
 class Cell[T](override val delegate: jfxsc.Cell[T] = new jfxsc.Cell[T])

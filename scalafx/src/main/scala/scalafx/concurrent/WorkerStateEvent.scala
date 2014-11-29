@@ -27,13 +27,13 @@
 package scalafx.concurrent
 
 import javafx.{concurrent => jfxc}
+
 import scalafx.Includes._
-import scalafx.event.Event
-import scalafx.event.EventType
 import scalafx.delegate.SFXDelegate
+import scalafx.event.{Event, EventType}
 
 object WorkerStateEvent {
-  implicit def sfxWorkerStateEvent2jfx(w: WorkerStateEvent) = if (w != null) w.delegate else null
+  implicit def sfxWorkerStateEvent2jfx(w: WorkerStateEvent): jfxc.WorkerStateEvent = if (w != null) w.delegate else null
 
   /**
    * Common supertype for all worker state event types.

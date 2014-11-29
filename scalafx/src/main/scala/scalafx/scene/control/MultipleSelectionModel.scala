@@ -27,12 +27,13 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object MultipleSelectionModel {
-  implicit def sfxMultipleSelectionModel2jfx[T](v: MultipleSelectionModel[T]) = if (v != null) v.delegate else null
+  implicit def sfxMultipleSelectionModel2jfx[T](v: MultipleSelectionModel[T]): jfxsc.MultipleSelectionModel[T] = if (v != null) v.delegate else null
 }
 
 abstract class MultipleSelectionModel[T](override val delegate: jfxsc.MultipleSelectionModel[T])

@@ -27,16 +27,16 @@
 package scalafx.scene.control
 
 import javafx.beans.property.IntegerProperty
-import javafx.{scene => jfxs}
-import jfxs.{control => jfxsc}
-import javafx.{util => jfxu}
+import javafx.scene.{control => jfxsc}
+import javafx.{scene => jfxs, util => jfxu}
+
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
-import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 
 object Pagination {
-  implicit def sfxPagination2jfx(p: Pagination) = if (p != null) p.delegate else null
+  implicit def sfxPagination2jfx(p: Pagination): jfxsc.Pagination = if (p != null) p.delegate else null
 
   /**
    * The style class to change the numeric page indicators to bullet indicators.

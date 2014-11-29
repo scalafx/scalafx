@@ -27,14 +27,13 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.IntegerProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, IntegerProperty}
 import scalafx.delegate.SFXDelegate
 
 object TextArea {
-  implicit def sfxTextArea2jfx(v: TextArea) = if (v != null) v.delegate else null
+  implicit def sfxTextArea2jfx(v: TextArea): jfxsc.TextArea = if (v != null) v.delegate else null
 }
 
 class TextArea(override val delegate: jfxsc.TextArea = new jfxsc.TextArea) extends TextInputControl(delegate) with SFXDelegate[jfxsc.TextArea] {

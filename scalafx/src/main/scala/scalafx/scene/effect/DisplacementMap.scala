@@ -27,14 +27,13 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
+
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 
 object DisplacementMap {
-  implicit def sfxDisplacementMap2jfx(dm: DisplacementMap) = if (dm != null) dm.delegate else null
+  implicit def sfxDisplacementMap2jfx(dm: DisplacementMap): jfxse.DisplacementMap = if (dm != null) dm.delegate else null
 }
 
 class DisplacementMap(override val delegate: jfxse.DisplacementMap = new jfxse.DisplacementMap)

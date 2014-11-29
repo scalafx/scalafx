@@ -27,12 +27,11 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.PositionDelegate
+
+import scalafx.delegate.{PositionDelegate, SFXDelegate}
 
 object LineTo {
-  implicit def sfxLineTo2jfx(v: LineTo) = if (v != null) v.delegate else null
+  implicit def sfxLineTo2jfx(v: LineTo): jfxss.LineTo = if (v != null) v.delegate else null
 
   def apply(x: Double, y: Double) = new LineTo(new jfxss.LineTo(x, y))
 }

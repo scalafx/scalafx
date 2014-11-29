@@ -31,13 +31,11 @@ import javafx.{geometry => jfxg}
 
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
-import scalafx.geometry.HPos
-import scalafx.geometry.Orientation
-import scalafx.geometry.VPos
 import scalafx.delegate.SFXDelegate
+import scalafx.geometry.{HPos, Orientation, VPos}
 
 object Separator {
-  implicit def sfxSeparator2jfx(v: Separator) = if (v != null) v.delegate else null
+  implicit def sfxSeparator2jfx(v: Separator): jfxsc.Separator = if (v != null) v.delegate else null
 }
 
 class Separator(override val delegate: jfxsc.Separator = new jfxsc.Separator) extends Control(delegate) with SFXDelegate[jfxsc.Separator] {

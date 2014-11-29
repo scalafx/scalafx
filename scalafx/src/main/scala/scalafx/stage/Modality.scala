@@ -26,8 +26,9 @@
  */
 package scalafx.stage
 
-import javafx.{ stage => jfxs }
-import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+import javafx.{stage => jfxs}
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.stage.Modality]] */
 object Modality

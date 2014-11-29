@@ -27,13 +27,13 @@
 package scalafx.scene.transform
 
 import javafx.scene.{transform => jfxst}
+
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.PositionDelegate
+import scalafx.delegate.{PositionDelegate, SFXDelegate}
 
 object Scale {
-  implicit def sfxScale2jfx(v: Scale) = if (v != null) v.delegate else null
+  implicit def sfxScale2jfx(v: Scale): jfxst.Scale = if (v != null) v.delegate else null
 }
 
 /**

@@ -26,14 +26,13 @@
  */
 package scalafx.scene.control.cell
 
-import javafx.{collections => jfxc}
 import javafx.scene.control.{cell => jfxscc}
-import javafx.{util => jfxu}
+import javafx.scene.{control => jfxsc}
+import javafx.{collections => jfxc, util => jfxu}
+
 import scalafx.Includes._
-import scalafx.collections.ObservableBuffer
-import scalafx.scene.control.TreeCell
-import scalafx.scene.control.TreeView
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.control.{TreeCell, TreeView}
 import scalafx.util.StringConverter
 
 /**
@@ -53,7 +52,7 @@ object TextFieldTreeCell {
    * @param cell ScalaFX $TFTC
    * @return JavaFX $TFTC
    */
-  implicit def sfxTextFieldTreeCell2jfx[T](cell: TextFieldTreeCell[T]) = if (cell != null) cell.delegate else null
+  implicit def sfxTextFieldTreeCell2jfx[T](cell: TextFieldTreeCell[T]): jfxsc.cell.TextFieldTreeCell[T] = if (cell != null) cell.delegate else null
 
   /**
    * $FLVINIT

@@ -26,13 +26,13 @@
  */
 package scalafx.scene.layout
 
-import javafx.{geometry => jfxg}
 import javafx.scene.{layout => jfxsl}
-import scalafx.Includes._
+import javafx.{geometry => jfxg}
+
 import scalafx.delegate.SFXDelegate
 
 object ConstraintsBase {
-  implicit def sfxConstraintsBase2jfx(v: ConstraintsBase) = if (v != null) v.delegate else null
+  implicit def sfxConstraintsBase2jfx(v: ConstraintsBase): jfxsl.ConstraintsBase = if (v != null) v.delegate else null
 
   /**
    * If set as max value indicates that the pref value should be used as the max.

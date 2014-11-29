@@ -27,7 +27,8 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.scene.shape.StrokeLineCap]] */
 object StrokeLineCap extends SFXEnumDelegateCompanion[jfxss.StrokeLineCap, StrokeLineCap] {

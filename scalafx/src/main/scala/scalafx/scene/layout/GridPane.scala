@@ -26,26 +26,20 @@
  */
 package scalafx.scene.layout
 
-import scala.collection.JavaConversions._
 import javafx.scene.{layout => jfxsl}
-import javafx.{geometry => jfxg}
-import javafx.{scene => jfxs}
+import javafx.{geometry => jfxg, scene => jfxs}
+
+import scala.collection.JavaConversions._
 import scalafx.Includes._
+import scalafx.beans.property.{BooleanProperty, DoubleProperty}
+import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
 import scalafx.geometry.Insets._
-import scalafx.geometry.Insets
-import scalafx.scene.Node._
+import scalafx.geometry.{HPos, Insets, Orientation, VPos}
 import scalafx.scene.Node
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.AlignmentDelegate
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.geometry.HPos
-import scalafx.geometry.VPos
-import scalafx.geometry.Pos
-import scalafx.geometry.Orientation
+import scalafx.scene.Node._
 
 object GridPane {
-  implicit def sfxGridPane2jfx(v: GridPane) = if (v != null) v.delegate else null
+  implicit def sfxGridPane2jfx(v: GridPane): jfxsl.GridPane = if (v != null) v.delegate else null
 
   /**
    * Sentinel value which may be set on a child's row/column span constraint to indicate that it should span the

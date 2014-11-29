@@ -27,7 +27,8 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.scene.input.MouseButton]] */
 object MouseButton extends SFXEnumDelegateCompanion[jfxsi.MouseButton, MouseButton] {

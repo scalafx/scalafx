@@ -26,9 +26,8 @@
  */
 package scalafx.util
 
-import java.{ text => jt }
-import javafx.{ util => jfxu }
-import java.util.Date
+import java.{text => jt}
+import javafx.{util => jfxu}
 
 /**
  * Companion Object for [[scalafx.util.StringConverter]].
@@ -40,7 +39,7 @@ object StringConverter {
    *
    * @param s ScalaFX StringConverter
    */
-  implicit def sfxStringConverter2jfx[T](s: StringConverter[T]) = new jfxu.StringConverter[T] {
+  implicit def sfxStringConverter2jfx[T](s: StringConverter[T]): jfxu.StringConverter[T] = new jfxu.StringConverter[T] {
 
     def fromString(string: String): T = s.fromString(string)
 

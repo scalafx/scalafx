@@ -27,20 +27,18 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe}
-import javafx.{util => jfxu}
+import javafx.{event => jfxe, util => jfxu}
+
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.event.Event
+import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.event.Event
 
 object TreeView {
-  implicit def sfxTreeView2jfx[T](v: TreeView[T]) = if (v != null) v.delegate else null
+  implicit def sfxTreeView2jfx[T](v: TreeView[T]): jfxsc.TreeView[T] = if (v != null) v.delegate else null
 
   object EditEvent {
-    implicit def sfxTreeViewEditEvent2jfx[T](v: EditEvent[T]) = if (v != null) v.delegate else null
+    implicit def sfxTreeViewEditEvent2jfx[T](v: EditEvent[T]): jfxsc.TreeView.EditEvent[T] = if (v != null) v.delegate else null
   }
 
   class EditEvent[T](override val delegate: jfxsc.TreeView.EditEvent[T])

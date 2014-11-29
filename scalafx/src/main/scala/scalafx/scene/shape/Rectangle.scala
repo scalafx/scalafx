@@ -26,16 +26,15 @@
  */
 package scalafx.scene.shape
 
-import scalafx.Includes._
 import javafx.scene.{shape => jfxss}
+
+import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
+import scalafx.delegate.{DimensionDelegate, PositionDelegate, SFXDelegate}
 import scalafx.scene.paint._
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.PositionDelegate
-import scalafx.delegate.DimensionDelegate
 
 object Rectangle {
-  implicit def sfxRectangle2jfx(v: Rectangle) = if (v != null) v.delegate else null
+  implicit def sfxRectangle2jfx(v: Rectangle): jfxss.Rectangle = if (v != null) v.delegate else null
 
   def apply(width: Double, height: Double) = new Rectangle(new jfxss.Rectangle(width, height))
 

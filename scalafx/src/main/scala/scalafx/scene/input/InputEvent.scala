@@ -28,13 +28,14 @@ package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
 import javafx.{event => jfxe}
+
 import scalafx.delegate.SFXDelegate
 import scalafx.event.Event
 
 // so far ony minimal stuff
 
 object InputEvent {
-  implicit def sfxInputEvent2jfx(ie: InputEvent) = if (ie != null) ie.delegate else null
+  implicit def sfxInputEvent2jfx(ie: InputEvent): jfxsi.InputEvent = if (ie != null) ie.delegate else null
 
   val Any: jfxe.EventType[jfxsi.InputEvent] = jfxsi.InputEvent.ANY
 }

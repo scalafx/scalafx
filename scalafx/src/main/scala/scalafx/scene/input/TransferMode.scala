@@ -27,7 +27,8 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.scene.input.TransferMode]] */
 object TransferMode extends SFXEnumDelegateCompanion[jfxsi.TransferMode, TransferMode] {

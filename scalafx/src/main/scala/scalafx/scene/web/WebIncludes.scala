@@ -26,8 +26,9 @@
  */
 package scalafx.scene.web
 
-import javafx.{event => jfxe}
+import javafx.event.EventHandler
 import javafx.scene.{web => jfxsw}
+import javafx.{event => jfxe}
 
 object WebIncludes extends WebIncludes
 
@@ -60,7 +61,7 @@ trait WebIncludes {
    * @param he $JFX $HE
    * @return $SFX $HE
    */
-  implicit def jfxHTMLEditor2sfx(he: jfxsw.HTMLEditor) = if (he != null) new HTMLEditor(he) else null
+  implicit def jfxHTMLEditor2sfx(he: jfxsw.HTMLEditor): HTMLEditor = if (he != null) new HTMLEditor(he) else null
 
   /**
    * $START$PF.html $PF$END
@@ -68,7 +69,7 @@ trait WebIncludes {
    * @param pf $JFX $PF
    * @return $SFX $PF
    */
-  implicit def jfxPopupFeatures2sfx(pf: jfxsw.PopupFeatures) = if (pf != null) new PopupFeatures(pf) else null
+  implicit def jfxPopupFeatures2sfx(pf: jfxsw.PopupFeatures): PopupFeatures = if (pf != null) new PopupFeatures(pf) else null
 
   /**
    * $START$PD.html $PD$END
@@ -76,7 +77,7 @@ trait WebIncludes {
    * @param pd $JFX $PD
    * @return $SFX $PD
    */
-  implicit def jfxPromptData2sfx(pd: jfxsw.PromptData) = if (pd != null) new PromptData(pd) else null
+  implicit def jfxPromptData2sfx(pd: jfxsw.PromptData): PromptData = if (pd != null) new PromptData(pd) else null
 
   /**
    * $START$WE.html $WE$END
@@ -84,7 +85,7 @@ trait WebIncludes {
    * @param we $JFX $WE
    * @return $SFX $WE
    */
-  implicit def jfxWebEngine2sfx(we: jfxsw.WebEngine) = if (we != null) new WebEngine(we) else null
+  implicit def jfxWebEngine2sfx(we: jfxsw.WebEngine): WebEngine = if (we != null) new WebEngine(we) else null
 
   /**
    * $START$WT.html $WT$END
@@ -92,7 +93,7 @@ trait WebIncludes {
    * @param we $JFX $WT
    * @return $SFX $WT
    */
-  implicit def jfxWebEvent2sfx[T](we: jfxsw.WebEvent[T]) = if (we != null) new WebEvent(we) else null
+  implicit def jfxWebEvent2sfx[T](we: jfxsw.WebEvent[T]): WebEvent[T] = if (we != null) new WebEvent(we) else null
 
   /**
    * $START$WV.html $WV$END
@@ -100,7 +101,7 @@ trait WebIncludes {
    * @param wv $JFX $WV
    * @return $SFX $WV
    */
-  implicit def jfxWebView2sfx(wv: jfxsw.WebView) = if (wv != null) new WebView(wv) else null
+  implicit def jfxWebView2sfx(wv: jfxsw.WebView): WebView = if (wv != null) new WebView(wv) else null
 
   /**
    * $BEGINWR$WE$FINISHWR
@@ -108,7 +109,7 @@ trait WebIncludes {
    * @param handler $PARAMWR $WE
    * @return $RETWR $WE
    */
-  implicit def webEventClosureWrapper[T](handler: (WebEvent[T]) => Any) = new jfxe.EventHandler[jfxsw.WebEvent[T]] {
+  implicit def webEventClosureWrapper[T](handler: (WebEvent[T]) => Any): EventHandler[jfxsw.WebEvent[T]] = new jfxe.EventHandler[jfxsw.WebEvent[T]] {
     def handle(event: jfxsw.WebEvent[T]) {
       handler(event)
     }

@@ -27,11 +27,11 @@
 package scalafx.scene
 
 import javafx.{scene => jfxs}
-import scalafx.Includes._
+
 import scalafx.delegate.SFXDelegate
 
 object ParallelCamera {
-  implicit def sfxParallelCamera2jfx(c: ParallelCamera) = if (c != null) c.delegate else null
+  implicit def sfxParallelCamera2jfx(c: ParallelCamera): jfxs.ParallelCamera = if (c != null) c.delegate else null
 }
 
 class ParallelCamera(override val delegate: jfxs.ParallelCamera = new jfxs.ParallelCamera)

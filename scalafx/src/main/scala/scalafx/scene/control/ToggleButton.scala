@@ -27,11 +27,12 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import scalafx.scene.Node
+
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 
 object ToggleButton {
-  implicit def sfxToggleButton2jfx(v: ToggleButton) = if (v != null) v.delegate else null
+  implicit def sfxToggleButton2jfx(v: ToggleButton): jfxsc.ToggleButton = if (v != null) v.delegate else null
 }
 
 class ToggleButton(override val delegate: jfxsc.ToggleButton = new jfxsc.ToggleButton)

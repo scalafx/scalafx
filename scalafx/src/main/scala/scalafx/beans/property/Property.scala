@@ -26,15 +26,15 @@
  */
 package scalafx.beans.property
 
-import javafx.beans.value.{ ObservableValue => JFXObservableValue }
-import javafx.beans.{ property => jfxbp }
-import scalafx.Includes._
+import javafx.beans.value.{ObservableValue => JFXObservableValue}
+import javafx.beans.{property => jfxbp}
+
+import scalafx.animation.Tweenable
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
-import scalafx.animation.Tweenable
 
 object Property {
-  implicit def sfxProperty2jfx[T, J <: Any](p: Property[T, J]) = p.delegate
+  implicit def sfxProperty2jfx[T, J <: Any](p: Property[T, J]): jfxbp.Property[J] = p.delegate
 }
 
 /**

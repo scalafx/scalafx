@@ -27,15 +27,14 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+
 import scalafx.Includes._
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.scene.Parent
+import scalafx.beans.property.{DoubleProperty, ObjectProperty, ReadOnlyDoubleProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Parent
 
 object Control {
-  implicit def sfxControl2jfx(v: Control) = if (v != null) v.delegate else null
+  implicit def sfxControl2jfx(v: Control): jfxsc.Control = if (v != null) v.delegate else null
 
   /**
    * Sentinel value which can be passed to a control's setMinWidth(), setMinHeight(),

@@ -26,14 +26,13 @@
  */
 package scalafx.scene.paint
 
-import scala.collection.JavaConversions._
-
 import javafx.scene.{paint => jfxsp}
-import scalafx.scene.paint.Stop.sfxStop2jfx
+
+import scala.collection.JavaConversions._
 import scalafx.delegate.SFXDelegate
 
 object LinearGradient {
-  implicit def sfxLinearGradient2jfx(lg: LinearGradient) = if (lg != null) lg.delegate else null
+  implicit def sfxLinearGradient2jfx(lg: LinearGradient): jfxsp.LinearGradient = if (lg != null) lg.delegate else null
 
   /**
    * Creates a new instance of LinearGradient.

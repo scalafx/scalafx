@@ -27,12 +27,13 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
+
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object MotionBlur {
-  implicit def sfxMotionBlur2jfx(mb: MotionBlur) = if (mb != null) mb.delegate else null
+  implicit def sfxMotionBlur2jfx(mb: MotionBlur): jfxse.MotionBlur = if (mb != null) mb.delegate else null
 }
 
 class MotionBlur(override val delegate: jfxse.MotionBlur = new jfxse.MotionBlur)

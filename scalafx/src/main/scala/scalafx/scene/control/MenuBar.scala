@@ -27,14 +27,14 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import scalafx.delegate.SFXDelegate
-import scalafx.collections._
+
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
-import collection.JavaConversions._
+import scalafx.collections._
+import scalafx.delegate.SFXDelegate
 
 object MenuBar {
-  implicit def sfxMenuBar2jfx(cb: MenuBar) = if (cb != null) cb.delegate else null
+  implicit def sfxMenuBar2jfx(cb: MenuBar): jfxsc.MenuBar = if (cb != null) cb.delegate else null
 }
 
 class MenuBar(override val delegate: jfxsc.MenuBar = new jfxsc.MenuBar()) extends Control(delegate) with SFXDelegate[jfxsc.MenuBar] {

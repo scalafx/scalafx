@@ -29,7 +29,8 @@ package scalafx.util.converter
 import javafx.util.{converter => jfxuc}
 
 object DefaultStringConverter {
-  implicit def sfxDefaultStringConverter2jfx(c: DefaultStringConverter) = if (c != null) c.delegate else null
+  implicit def sfxDefaultStringConverter2jfx(c: DefaultStringConverter): jfxuc.DefaultStringConverter =
+    if (c != null) c.delegate else null
 }
 
 class DefaultStringConverter(delegate: jfxuc.DefaultStringConverter = new jfxuc.DefaultStringConverter)

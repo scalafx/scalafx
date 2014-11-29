@@ -27,13 +27,13 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
-import scalafx.delegate.SFXDelegate
+
 import scalafx.Includes._
-import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.event.EventType
 
 object ScrollEvent {
-  implicit def sfxScrollEvent2jfx(se: ScrollEvent) = if (se != null) se.delegate else null
+  implicit def sfxScrollEvent2jfx(se: ScrollEvent): jfxsi.ScrollEvent = if (se != null) se.delegate else null
 
   object HorizontalTextScrollUnits
     extends SFXEnumDelegateCompanion[jfxsi.ScrollEvent.HorizontalTextScrollUnits, HorizontalTextScrollUnits] {

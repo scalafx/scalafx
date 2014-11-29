@@ -27,12 +27,13 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
+
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 
 object ReadOnlyBooleanWrapper {
-  implicit def sfxReadOnlyBooleanWrapper2jfx(w: ReadOnlyBooleanWrapper) = if (w != null) w.delegate else null
+  implicit def sfxReadOnlyBooleanWrapper2jfx(w: ReadOnlyBooleanWrapper): jfxbp.ReadOnlyBooleanWrapper = if (w != null) w.delegate else null
 
   /** Creates a new ReadOnlyBooleanWrapper instance.
     * @param value the initial value of the wrapped value

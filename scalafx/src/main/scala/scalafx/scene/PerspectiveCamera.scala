@@ -27,12 +27,13 @@
 package scalafx.scene
 
 import javafx.{scene => jfxs}
+
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object PerspectiveCamera {
-  implicit def sfxPerspectiveCamera2jfx(c: PerspectiveCamera) = if (c != null) c.delegate else null
+  implicit def sfxPerspectiveCamera2jfx(c: PerspectiveCamera): jfxs.PerspectiveCamera = if (c != null) c.delegate else null
 }
 
 class PerspectiveCamera(override val delegate: jfxs.PerspectiveCamera = new jfxs.PerspectiveCamera)

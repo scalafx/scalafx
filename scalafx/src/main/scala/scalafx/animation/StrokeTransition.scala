@@ -26,14 +26,15 @@
  */
 package scalafx.animation
 
-import javafx.{animation => jfxa, util => jfxu}
 import javafx.scene.{paint => jfxsp, shape => jfxss}
+import javafx.{animation => jfxa, util => jfxu}
+
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Shape
 import scalafx.util.Duration
-import scalafx.delegate.SFXDelegate
 
 /**
  * Companion Object for [[scalafx.animation.StrokeTransition]].
@@ -49,7 +50,7 @@ object StrokeTransition extends AnimationStatics {
    * @param v ScalaFX $ST
    * @return JavaFX $ST extracted from `v`.
    */
-  implicit def sfxStrokeTransition2jfx(v: StrokeTransition) = if (v != null) v.delegate else null
+  implicit def sfxStrokeTransition2jfx(v: StrokeTransition): jfxa.StrokeTransition = if (v != null) v.delegate else null
 
 }
 

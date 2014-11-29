@@ -27,11 +27,12 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
+
 import scalafx.beans.binding.StringExpression
 import scalafx.delegate.SFXDelegate
 
 object ReadOnlyStringProperty {
-  implicit def sfxReadOnlyStringProperty2jfx(rosp: ReadOnlyStringProperty) = if (rosp != null) rosp.delegate else null
+  implicit def sfxReadOnlyStringProperty2jfx(rosp: ReadOnlyStringProperty): jfxbp.ReadOnlyStringProperty = if (rosp != null) rosp.delegate else null
 }
 
 class ReadOnlyStringProperty(override val delegate: jfxbp.ReadOnlyStringProperty) extends StringExpression(delegate) with ReadOnlyProperty[String, String] with SFXDelegate[jfxbp.ReadOnlyStringProperty] {

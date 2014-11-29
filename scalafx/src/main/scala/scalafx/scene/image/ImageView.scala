@@ -26,19 +26,17 @@
  */
 package scalafx.scene.image
 
-import javafx.{scene => jfxs, geometry => jfxg}
-import jfxs.{image => jfxsi}
+import javafx.scene.{image => jfxsi}
+import javafx.{geometry => jfxg, scene => jfxs}
+
 import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.PositionDelegate
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
+import scalafx.delegate.{PositionDelegate, SFXDelegate}
 import scalafx.geometry.Rectangle2D
 import scalafx.scene.Node
 
 object ImageView {
-  implicit def sfxImageView2jfx(iv: ImageView) = if (iv != null) iv.delegate else null
+  implicit def sfxImageView2jfx(iv: ImageView): jfxsi.ImageView = if (iv != null) iv.delegate else null
 }
 
 class ImageView(override val delegate: jfxsi.ImageView = new jfxsi.ImageView())
