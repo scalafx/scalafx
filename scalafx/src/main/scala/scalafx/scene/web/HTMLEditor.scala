@@ -26,12 +26,12 @@
  */
 package scalafx.scene.web
 
-import scala.language.implicitConversions
 import javafx.scene.{web => jfxsw}
-import scalafx.Includes._
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
-import scalafx.scene.control.Control
 import scalafx.print.PrinterJob
+import scalafx.scene.control.Control
 
 /**
  * Companion object for [[scalafx.scene.web.HTMLEditor]]
@@ -44,7 +44,7 @@ object HTMLEditor {
    * @param he ScalaFX HTMLEditor
    * @return JavaFX HTMLEditor
    */
-  implicit def sfxHTMLEditor2jfx(he: HTMLEditor) = if (he != null) he.delegate else null
+  implicit def sfxHTMLEditor2jfx(he: HTMLEditor): jfxsw.HTMLEditor = if (he != null) he.delegate else null
 
 }
 

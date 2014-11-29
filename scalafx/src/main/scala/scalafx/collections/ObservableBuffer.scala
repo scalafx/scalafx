@@ -26,25 +26,19 @@
  */
 package scalafx.collections
 
-import scala.language.implicitConversions
-import scala.collection.GenTraversableOnce
-import scala.collection.JavaConversions._
-import scala.collection.TraversableOnce
-import scala.collection.generic.CanBuildFrom
-import scala.collection.generic.GenericCompanion
-import scala.collection.generic.GenericTraversableTemplate
-import scala.collection.generic.SeqFactory
-import scala.collection.mutable.ArrayBuffer
-import scala.collection.mutable.Buffer
-import scala.collection.mutable.BufferLike
-import scala.collection.mutable.Builder
-import scala.reflect.runtime.universe._
-
 import java.{util => ju}
+import javafx.collections.ObservableList
 import javafx.{collections => jfxc}
+
+import scala.collection.JavaConversions._
+import scala.collection.generic.{CanBuildFrom, GenericCompanion, GenericTraversableTemplate, SeqFactory}
+import scala.collection.mutable.{ArrayBuffer, Buffer, BufferLike, Builder}
+import scala.collection.{GenTraversableOnce, TraversableOnce}
+import scala.language.implicitConversions
+import scala.reflect.runtime.universe._
 import scalafx.beans.Observable
-import scalafx.event.subscriptions.Subscription
 import scalafx.delegate.SFXDelegate
+import scalafx.event.subscriptions.Subscription
 
 /**
  * Companion Object for [[scalafx.collections.ObservableBuffer]].
@@ -60,7 +54,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    *
    * @param ob ObservableBuffer
    */
-  implicit def observableBuffer2ObservableList[T](ob: ObservableBuffer[T]) = if (ob != null) ob.delegate else null
+  implicit def observableBuffer2ObservableList[T](ob: ObservableBuffer[T]): ObservableList[T] = if (ob != null) ob.delegate else null
 
   /**
    * The standard `CanBuildFrom` instance for $OB objects.
@@ -520,7 +514,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     })
   }
 
-  import ObservableBuffer._
+  import scalafx.collections.ObservableBuffer._
 
   /**
    * Add a listener function to list's changes. This function '''will handle''' this buffer's

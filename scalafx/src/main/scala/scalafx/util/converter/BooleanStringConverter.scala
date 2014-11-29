@@ -26,11 +26,13 @@
  */
 package scalafx.util.converter
 
+import javafx.util.{converter => jfxuc}
+
 import scala.language.implicitConversions
-import javafx.util.{ converter => jfxuc }
 
 object BooleanStringConverter {
-  implicit def sfxBooleanStringConverter2jfx(c: BooleanStringConverter) = if (c != null) c.delegate else null
+  implicit def sfxBooleanStringConverter2jfx(c: BooleanStringConverter): jfxuc.BooleanStringConverter =
+    if (c != null) c.delegate else null
 }
 
 class BooleanStringConverter(delegate: jfxuc.BooleanStringConverter = new jfxuc.BooleanStringConverter)

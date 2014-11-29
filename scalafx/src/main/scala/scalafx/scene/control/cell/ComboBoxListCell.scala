@@ -26,15 +26,14 @@
  */
 package scalafx.scene.control.cell
 
+import javafx.scene.control.{cell => jfxscc}
+import javafx.{collections => jfxc, util => jfxu}
+
 import scala.language.implicitConversions
-import javafx.{ collections => jfxc }
-import javafx.scene.control.{ cell => jfxscc }
-import javafx.{ util => jfxu }
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
-import scalafx.scene.control.ListCell
-import scalafx.scene.control.ListView
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.control.{ListCell, ListView}
 import scalafx.util.StringConverter
 
 /**
@@ -57,7 +56,7 @@ object ComboBoxListCell {
    * @param cell ScalaFX $CBLC
    * @return JavaFX $CBLC
    */
-  implicit def sfxComboBoxListCell2jfx[T](cell: ComboBoxListCell[T]) = if (cell != null) cell.delegate else null
+  implicit def sfxComboBoxListCell2jfx[T](cell: ComboBoxListCell[T]): jfxscc.ComboBoxListCell[T] = if (cell != null) cell.delegate else null
 
   /**
    * $FLVINIT

@@ -27,12 +27,12 @@
 
 package scalafx.scene
 
-import javafx.scene.{effect => jfxse, input => jfxsi, layout => jfxsl}
-import javafx.{event => jfxe, geometry => jfxg, scene => jfxs}
+import javafx.scene.{effect => jfxse, input => jfxsi, layout => jfxsl, transform => jfxst}
+import javafx.{event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
 
 import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property._
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyBooleanProperty, ReadOnlyObjectProperty, StringProperty}
 import scalafx.collections._
 import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
@@ -40,7 +40,7 @@ import scalafx.event.Event._
 import scalafx.event.{Event, EventHandlerDelegate}
 import scalafx.geometry.Bounds._
 import scalafx.geometry.Point2D._
-import scalafx.geometry._
+import scalafx.geometry.{Bounds, Insets, Point2D, Point3D, Pos, _}
 import scalafx.scene.effect.{BlendMode, Effect}
 import scalafx.scene.image.WritableImage
 import scalafx.scene.layout.Priority
@@ -57,7 +57,7 @@ object Node {
    * @param v ScalaFX Node
    * @return JavaFX Node
    */
-  implicit def sfxNode2jfx(v: Node) = if (v != null) v.delegate else null
+  implicit def sfxNode2jfx(v: Node): jfxs.Node = if (v != null) v.delegate else null
 }
 
 /**

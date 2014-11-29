@@ -26,25 +26,21 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
-import javafx.{geometry => jfxg}
-import javafx.{scene => jfxs}
 import javafx.scene.{control => jfxsc, paint => jfxsp, text => jfxst}
+import javafx.{geometry => jfxg, scene => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.beans.property.StringProperty
-import scalafx.scene.paint.Paint
-import scalafx.scene.text.Font
-import scalafx.scene.text.TextAlignment
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyObjectProperty, StringProperty}
+import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
 import scalafx.scene.Node
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.AlignmentDelegate
+import scalafx.scene.Node.sfxNode2jfx
+import scalafx.scene.paint.Paint
+import scalafx.scene.text.Font.sfxFont2jfx
+import scalafx.scene.text.{Font, TextAlignment}
 
 object Labeled {
-  implicit def sfxLabeled2jfx(v: Labeled) = if (v != null) v.delegate else null
+  implicit def sfxLabeled2jfx(v: Labeled): jfxsc.Labeled = if (v != null) v.delegate else null
 }
 
 abstract class Labeled(override val delegate: jfxsc.Labeled)

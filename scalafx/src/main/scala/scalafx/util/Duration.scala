@@ -26,15 +26,16 @@
  */
 package scalafx.util
 
-import scala.language.implicitConversions
 import javafx.{util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 /**
  * Companion Object for [[scalafx.util.Duration]].
  */
 object Duration {
-  implicit def sfxDuration2jfx(d: Duration) = if (d != null) d.delegate else null
+  implicit def sfxDuration2jfx(d: Duration): jfxu.Duration = if (d != null) d.delegate else null
 
   def apply(millis: Double) = new Duration(millis)
 

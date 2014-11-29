@@ -26,16 +26,16 @@
  */
 package scalafx.scene
 
+import javafx.beans.{binding => jfxbb, property => jfxbp}
+import javafx.scene.{input => jfxsi, paint => jfxsp}
+import javafx.{event => jfxe, geometry => jfxg, scene => jfxs}
+
 import scala.language.implicitConversions
-import javafx.beans.{binding => jfxbb}
-import javafx.beans.{property => jfxbp}
-import javafx.{scene => jfxs, event => jfxe, geometry => jfxg}
-import jfxs.{input => jfxsi, paint => jfxsp}
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object SceneProperty {
-  implicit def sfxSceneProperty2jfx(p: SceneProperty) = if (p != null) p.delegate else null
+  implicit def sfxSceneProperty2jfx(p: SceneProperty): jfxbp.ReadOnlyObjectProperty[jfxs.Scene] = if (p != null) p.delegate else null
 }
 
 // This particular construct enables the reading of properties of the scene that will be set into the property later on.

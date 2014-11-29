@@ -26,14 +26,15 @@
  */
 package scalafx.scene.input
 
-import scala.language.implicitConversions
 import javafx.scene.{input => jfxsi}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
 
 object MouseEvent {
-  implicit def sfxMouseEvent2jfx(me: MouseEvent) = if (me != null) me.delegate else null
+  implicit def sfxMouseEvent2jfx(me: MouseEvent): jfxsi.MouseEvent = if (me != null) me.delegate else null
 
   val Any: EventType[jfxsi.MouseEvent] = jfxsi.MouseEvent.ANY
 

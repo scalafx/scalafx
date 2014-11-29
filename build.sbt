@@ -1,6 +1,6 @@
-import scala.xml._
 import java.net.URL
-import SonatypeKeys._
+
+import scala.xml._
 
 val scalafxVersion = "8.0.20-R7-SNAPSHOT"
 
@@ -67,6 +67,7 @@ lazy val scalafxSettings = Seq(
       Seq("org.scala-lang.modules" %% "scala-xml" % "1.0.1" % "test")
     else
       Seq.empty[ModuleID]),
+  autoAPIMappings := true,
   manifestSetting,
   publishSetting,
   fork in Test := true,

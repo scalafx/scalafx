@@ -26,7 +26,8 @@
  */
 package scalafx.util.converter
 
-import javafx.{ util => jfxu }
+import javafx.{util => jfxu}
+
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 

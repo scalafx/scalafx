@@ -26,14 +26,15 @@
  */
 package scalafx.animation
 
-import scala.language.implicitConversions
-import collection.JavaConversions._
+
 import javafx.{animation => jfxa, scene => jfxs}
-import scalafx.collections._
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
-import scalafx.scene.Node
+import scalafx.collections._
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 
 /**
  * Companion Object for [[scalafx.animation.SequentialTransition]].
@@ -49,7 +50,7 @@ object SequentialTransition extends AnimationStatics {
    * @param v ScalaFX $ST
    * @return JavaFX $ST extracted from `v`.
    */
-  implicit def sfxSequentialTransition2jfx(v: SequentialTransition) = if (v != null) v.delegate else null
+  implicit def sfxSequentialTransition2jfx(v: SequentialTransition): jfxa.SequentialTransition = if (v != null) v.delegate else null
 
 }
 

@@ -26,11 +26,19 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
-import scalafx.scene.control.cell.CellIncludes
+import javafx.{event => jfxe}
+
+import scala.language.implicitConversions
 import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.collections.ObservableBuffer
+import scalafx.scene.control.ScrollPane.ScrollBarPolicy
+import scalafx.scene.control.SplitPane.Divider
+import scalafx.scene.control.TabPane.TabClosingPolicy
+import scalafx.scene.control.TableColumn.{CellDataFeatures, CellEditEvent, SortType}
+import scalafx.scene.control.TableView.{ResizeFeatures, TableViewFocusModel, TableViewSelectionModel}
+import scalafx.scene.control.TreeItem.TreeModificationEvent
+import scalafx.scene.control.TreeView.EditEvent
+import scalafx.scene.control.cell.CellIncludes
 
 object ControlIncludes extends ControlIncludes
 
@@ -145,7 +153,7 @@ trait ControlIncludes
    * @param a $JFX $ACCD
    * @return $SFX $ACCD
    */
-  implicit def jfxAccordion2sfx(a: jfxsc.Accordion) = if (a != null) new Accordion(a) else null
+  implicit def jfxAccordion2sfx(a: jfxsc.Accordion): Accordion = if (a != null) new Accordion(a) else null
 
   /**
    * $START$TGGR.html $TGGR$END
@@ -153,7 +161,7 @@ trait ControlIncludes
    * @param tg $JFX $TGGR
    * @return $SFX $TGGR
    */
-  implicit def jfxToggleGroup2sfx(tg: jfxsc.ToggleGroup) = if (tg != null) new ToggleGroup(tg) else null
+  implicit def jfxToggleGroup2sfx(tg: jfxsc.ToggleGroup): ToggleGroup = if (tg != null) new ToggleGroup(tg) else null
 
   /**
    * $START$TGBT.html $TGBT$END
@@ -161,7 +169,7 @@ trait ControlIncludes
    * @param tb $JFX $TGBT
    * @return $SFX $TGBT
    */
-  implicit def jfxToggleButton2sfx(tb: jfxsc.ToggleButton) = if (tb != null) new ToggleButton(tb) else null
+  implicit def jfxToggleButton2sfx(tb: jfxsc.ToggleButton): ToggleButton = if (tb != null) new ToggleButton(tb) else null
 
   /**
    * $START$RDBT.html $RDBT$END
@@ -169,7 +177,7 @@ trait ControlIncludes
    * @param rb $JFX $RDBT
    * @return $SFX $RDBT
    */
-  implicit def jfxRadioButton2sfx(rb: jfxsc.RadioButton) = if (rb != null) new RadioButton(rb) else null
+  implicit def jfxRadioButton2sfx(rb: jfxsc.RadioButton): RadioButton = if (rb != null) new RadioButton(rb) else null
 
   /**
    * $START$BTBS.html $BTBS$END
@@ -177,7 +185,7 @@ trait ControlIncludes
    * @param b $JFX $BTBS
    * @return $SFX $BTBS
    */
-  implicit def jfxButtonBase2sfx(b: jfxsc.ButtonBase) = if (b != null) new ButtonBase(b) {} else null
+  implicit def jfxButtonBase2sfx(b: jfxsc.ButtonBase): ButtonBase = if (b != null) new ButtonBase(b) {} else null
 
   /**
    * $START$BUTN.html $BUTN$END
@@ -185,7 +193,7 @@ trait ControlIncludes
    * @param b $JFX $BUTN
    * @return $SFX $BUTN
    */
-  implicit def jfxButton2sfx(b: jfxsc.Button) = if (b != null) new Button(b) else null
+  implicit def jfxButton2sfx(b: jfxsc.Button): Button = if (b != null) new Button(b) else null
 
   /**
    * $START$CELL.html $CELL$END
@@ -194,7 +202,7 @@ trait ControlIncludes
    * @param c $JFX $CELL
    * @return $SFX $CELL
    */
-  implicit def jfxCell2sfx[T](c: jfxsc.Cell[T]) = if (c != null) new Cell[T](c) else null
+  implicit def jfxCell2sfx[T](c: jfxsc.Cell[T]): Cell[T] = if (c != null) new Cell[T](c) else null
 
   /**
    * $START$CHBX.html $CHBX$END
@@ -203,7 +211,7 @@ trait ControlIncludes
    * @param cb $JFX $CHBX
    * @return $SFX $CHBX
    */
-  implicit def jfxChoiceBox2sfx[J <: AnyRef](cb: jfxsc.ChoiceBox[J]) = if (cb != null) new ChoiceBox[J](cb) else null
+  implicit def jfxChoiceBox2sfx[J <: AnyRef](cb: jfxsc.ChoiceBox[J]): ChoiceBox[J] = if (cb != null) new ChoiceBox[J](cb) else null
 
   /**
    * $START$CEBX.html $CEBX$END
@@ -211,7 +219,7 @@ trait ControlIncludes
    * @param c $JFX $CEBX
    * @return $SFX $CEBX
    */
-  implicit def jfxCheckBox2sfx(c: jfxsc.CheckBox) = if (c != null) new CheckBox(c) else null
+  implicit def jfxCheckBox2sfx(c: jfxsc.CheckBox): CheckBox = if (c != null) new CheckBox(c) else null
 
   /**
    * $START$CMNIT.html $MNIT$END
@@ -219,7 +227,7 @@ trait ControlIncludes
    * @param c $JFX $CMNIT
    * @return $SFX $CMNIT
    */
-  implicit def jfxCheckMenuItem2sfx(c: jfxsc.CheckMenuItem) = if (c != null) new CheckMenuItem(c) else null
+  implicit def jfxCheckMenuItem2sfx(c: jfxsc.CheckMenuItem): CheckMenuItem = if (c != null) new CheckMenuItem(c) else null
 
   /**
    * $START$CTDP.html $CTDP$END
@@ -227,7 +235,7 @@ trait ControlIncludes
    * @param e $JFX $CTDP
    * @return $SFX $CTDP
    */
-  implicit def jfxContentDisplay2sfx(e: jfxsc.ContentDisplay) = ContentDisplay.jfxEnum2sfx(e)
+  implicit def jfxContentDisplay2sfx(e: jfxsc.ContentDisplay): ContentDisplay = ContentDisplay.jfxEnum2sfx(e)
 
   /**
    * $START$CTMN.html $CTMN$END
@@ -235,7 +243,7 @@ trait ControlIncludes
    * @param c $JFX $CTMN
    * @return $SFX $CTMN
    */
-  implicit def jfxContextMenu2sfx(c: jfxsc.ContextMenu) = if (c != null) new ContextMenu(c) else null
+  implicit def jfxContextMenu2sfx(c: jfxsc.ContextMenu): ContextMenu = if (c != null) new ContextMenu(c) else null
 
   /**
    * $START$CTRL.html $CTRL$END
@@ -243,7 +251,7 @@ trait ControlIncludes
    * @param c $JFX $CTRL
    * @return $SFX $CTRL
    */
-  implicit def jfxControl2sfx(c: jfxsc.Control) = if (c != null) new Control(c) {} else null
+  implicit def jfxControl2sfx(c: jfxsc.Control): Control = if (c != null) new Control(c) {} else null
 
   /**
    * $START$CLPK.html $CLPK$END
@@ -251,7 +259,7 @@ trait ControlIncludes
    * @param cp $JFX $CLPK
    * @return $SFX $CLPK
    */
-  implicit def jfxColorPicker2sfx(cp: jfxsc.ColorPicker) = if (cp != null) new ColorPicker(cp) else null
+  implicit def jfxColorPicker2sfx(cp: jfxsc.ColorPicker): ColorPicker = if (cp != null) new ColorPicker(cp) else null
 
   /**
    * $START$CBBS.html $CBBS$END
@@ -260,7 +268,7 @@ trait ControlIncludes
    * @param v $JFX $CBBS
    * @return $SFX $CBBS
    */
-  implicit def jfxComboBoxBase2sfx[T](v: jfxsc.ComboBoxBase[T]) = if (v != null) new ComboBoxBase[T](v) {} else null
+  implicit def jfxComboBoxBase2sfx[T](v: jfxsc.ComboBoxBase[T]): ComboBoxBase[T] = if (v != null) new ComboBoxBase[T](v) {} else null
 
   /**
    * $START$CBBX.html $CBBX$END
@@ -269,7 +277,7 @@ trait ControlIncludes
    * @param v $JFX $CBBX
    * @return $SFX $CBBX
    */
-  implicit def jfxComboBox2sfx[T](v: jfxsc.ComboBox[T]) = if (v != null) new ComboBox[T](v) else null
+  implicit def jfxComboBox2sfx[T](v: jfxsc.ComboBox[T]): ComboBox[T] = if (v != null) new ComboBox[T](v) else null
 
   /**
    * $START$DTCL.html $DTCL$END
@@ -296,7 +304,7 @@ trait ControlIncludes
    * @param v $JFX $FCMD
    * @return $SFX $FCMD
    */
-  implicit def jfxFocusModel2sfx[T](v: jfxsc.FocusModel[T]) = if (v != null) new FocusModel[T](v) {} else null
+  implicit def jfxFocusModel2sfx[T](v: jfxsc.FocusModel[T]): FocusModel[T] = if (v != null) new FocusModel[T](v) {} else null
 
   /**
    * $START$HYLK.html $HYLK$END
@@ -304,7 +312,7 @@ trait ControlIncludes
    * @param h $JFX $HYLK
    * @return $SFX $HYLK
    */
-  implicit def jfxHyperlink2sfx(h: jfxsc.Hyperlink) = if (h != null) new Hyperlink(h) else null
+  implicit def jfxHyperlink2sfx(h: jfxsc.Hyperlink): Hyperlink = if (h != null) new Hyperlink(h) else null
 
   /**
    * $START$IDCL.html $IDCL$END
@@ -313,7 +321,7 @@ trait ControlIncludes
    * @param c $JFX $IDCL
    * @return $SFX $IDCL
    */
-  implicit def jfxIndexedCell2sfx[T](c: jfxsc.IndexedCell[T]) = if (c != null) new IndexedCell[T](c) else null
+  implicit def jfxIndexedCell2sfx[T](c: jfxsc.IndexedCell[T]): IndexedCell[T] = if (c != null) new IndexedCell[T](c) else null
 
   /**
    * $START$IDRG.html $IDRG$END
@@ -321,7 +329,7 @@ trait ControlIncludes
    * @param r $JFX $IDRG
    * @return $SFX $IDRG
    */
-  implicit def jfxIndexRange2sfx(r: jfxsc.IndexRange) = if (r != null) new IndexRange(r) else null
+  implicit def jfxIndexRange2sfx(r: jfxsc.IndexRange): IndexRange = if (r != null) new IndexRange(r) else null
 
   /**
    * $START$LBEL.html $LBEL$END
@@ -329,7 +337,7 @@ trait ControlIncludes
    * @param l $JFX $LBEL
    * @return $SFX $LBEL
    */
-  implicit def jfxLabel2sfx(l: jfxsc.Label) = if (l != null) new Label(l) else null
+  implicit def jfxLabel2sfx(l: jfxsc.Label): Label = if (l != null) new Label(l) else null
 
   /**
    * $START$LBLD.html $LBLD$END
@@ -337,7 +345,7 @@ trait ControlIncludes
    * @param l $JFX $LBLD
    * @return $SFX $LBLD
    */
-  implicit def jfxLabeled2sfx(l: jfxsc.Labeled) = if (l != null) new Labeled(l) {} else null
+  implicit def jfxLabeled2sfx(l: jfxsc.Labeled): Labeled = if (l != null) new Labeled(l) {} else null
 
   /**
    * $START$LSCL.html $LSCL$END
@@ -346,7 +354,7 @@ trait ControlIncludes
    * @param l $JFX $LSCL
    * @return $SFX $LSCL
    */
-  implicit def jfxListCell[T](l: jfxsc.ListCell[T]) = if (l != null) new ListCell(l) else null
+  implicit def jfxListCell[T](l: jfxsc.ListCell[T]): ListCell[T] = if (l != null) new ListCell(l) else null
 
   /**
    * $START$LSVW.html $LSVW$END
@@ -355,7 +363,7 @@ trait ControlIncludes
    * @param l $JFX $LSVW
    * @return $SFX $LSVW
    */
-  implicit def jfxListView2sfx[T](l: jfxsc.ListView[T]) = if (l != null) new ListView(l) else null
+  implicit def jfxListView2sfx[T](l: jfxsc.ListView[T]): ListView[T] = if (l != null) new ListView(l) else null
 
   /**
    * $START$LVEE.html $LVEE$END
@@ -364,7 +372,7 @@ trait ControlIncludes
    * @param l $JFX $LVEE
    * @return $SFX $LVEE
    */
-  implicit def jfxListViewEditEvent2sfx[T](l: jfxsc.ListView.EditEvent[T]) = if (l != null) new ListView.EditEvent(l) else null
+  implicit def jfxListViewEditEvent2sfx[T](l: jfxsc.ListView.EditEvent[T]): ListView.EditEvent[T] = if (l != null) new ListView.EditEvent(l) else null
 
   /**
    * $START$MENU.html $MENU$END
@@ -372,7 +380,7 @@ trait ControlIncludes
    * @param h $JFX $MENU
    * @return $SFX $MENU
    */
-  implicit def jfxMenu2sfx(h: jfxsc.Menu) = if (h != null) new Menu(h) else null
+  implicit def jfxMenu2sfx(h: jfxsc.Menu): Menu = if (h != null) new Menu(h) else null
 
   /**
    * $START$MNBR.html $MNBR$END
@@ -380,7 +388,7 @@ trait ControlIncludes
    * @param h $JFX $MNBR
    * @return $SFX $MNBR
    */
-  implicit def jfxMenuBar2sfx(h: jfxsc.MenuBar) = if (h != null) new MenuBar(h) else null
+  implicit def jfxMenuBar2sfx(h: jfxsc.MenuBar): MenuBar = if (h != null) new MenuBar(h) else null
 
   /**
    * $START$MNBT.html $MNBT$END
@@ -388,7 +396,7 @@ trait ControlIncludes
    * @param h $JFX $MNBT
    * @return $SFX $MNBT
    */
-  implicit def jfxMenuButton2sfx(h: jfxsc.MenuButton) = if (h != null) new MenuButton(h) else null
+  implicit def jfxMenuButton2sfx(h: jfxsc.MenuButton): MenuButton = if (h != null) new MenuButton(h) else null
 
   /**
    * $START$MNIT.html $MNIT$END
@@ -396,7 +404,7 @@ trait ControlIncludes
    * @param m $JFX $MNIT
    * @return $SFX $MNIT
    */
-  implicit def jfxMenuItem2sfx(m: jfxsc.MenuItem) = if (m != null) new MenuItem(m) else null
+  implicit def jfxMenuItem2sfx(m: jfxsc.MenuItem): MenuItem = if (m != null) new MenuItem(m) else null
 
   /**
    * $START$MSMD.html $MSMD$END
@@ -404,7 +412,7 @@ trait ControlIncludes
    * @param v $JFX $MSMD
    * @return $SFX $MSMD
    */
-  implicit def jfxMultipleSelectionModel2sfx[T](v: jfxsc.MultipleSelectionModel[T]) = if (v != null) new MultipleSelectionModel[T](v) {} else null
+  implicit def jfxMultipleSelectionModel2sfx[T](v: jfxsc.MultipleSelectionModel[T]): MultipleSelectionModel[T] = if (v != null) new MultipleSelectionModel[T](v) {} else null
 
   /**
    * $START$ORST.html $ORST$END
@@ -412,7 +420,7 @@ trait ControlIncludes
    * @param e $JFX $ORST
    * @return $SFX $ORST
    */
-  implicit def jfxOverrunStyle2sfx(e: jfxsc.OverrunStyle) = OverrunStyle.jfxEnum2sfx(e)
+  implicit def jfxOverrunStyle2sfx(e: jfxsc.OverrunStyle): OverrunStyle = OverrunStyle.jfxEnum2sfx(e)
 
   /**
    * $START$PGNT.html $PGNT$END
@@ -420,7 +428,7 @@ trait ControlIncludes
    * @param p $JFX $PGNT
    * @return $SFX $PGNT
    */
-  implicit def jfxPagination2sfx(p: jfxsc.Pagination) = if (p != null) new Pagination(p) else null
+  implicit def jfxPagination2sfx(p: jfxsc.Pagination): Pagination = if (p != null) new Pagination(p) else null
 
   /**
    * $START$SCPN.html $SCPN$END
@@ -428,7 +436,7 @@ trait ControlIncludes
    * @param s $JFX $SCPN
    * @return $SFX $SCPN
    */
-  implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane) = if (s != null) new ScrollPane(s) else null
+  implicit def jfxScrollPane2sfx(s: jfxsc.ScrollPane): ScrollPane = if (s != null) new ScrollPane(s) else null
 
   /**
    * $START$SCTE.html $SCTE$END
@@ -445,7 +453,7 @@ trait ControlIncludes
    * @param s $JFX $SCSB
    * @return $SFX $SCSB
    */
-  implicit def jfxScrollPaneScrollBarPolicy2sfx(s: jfxsc.ScrollPane.ScrollBarPolicy) = ScrollPane.ScrollBarPolicy.jfxEnum2sfx(s)
+  implicit def jfxScrollPaneScrollBarPolicy2sfx(s: jfxsc.ScrollPane.ScrollBarPolicy): ScrollBarPolicy = ScrollPane.ScrollBarPolicy.jfxEnum2sfx(s)
 
   /**
    * $START$SCBR.html $SCBR$END
@@ -453,7 +461,7 @@ trait ControlIncludes
    * @param s $JFX $SCBR
    * @return $SFX $SCBR
    */
-  implicit def jfxScrollBar2sfx(s: jfxsc.ScrollBar) = if (s != null) new ScrollBar(s) else null
+  implicit def jfxScrollBar2sfx(s: jfxsc.ScrollBar): ScrollBar = if (s != null) new ScrollBar(s) else null
 
   /**
    * $START$SLMD.html $SLMD$END
@@ -461,7 +469,7 @@ trait ControlIncludes
    * @param e $JFX $SLMD
    * @return $SFX $SLMD
    */
-  implicit def jfxSelectionMode2sfx(e: jfxsc.SelectionMode) = SelectionMode.jfxEnum2sfx(e)
+  implicit def jfxSelectionMode2sfx(e: jfxsc.SelectionMode): SelectionMode = SelectionMode.jfxEnum2sfx(e)
 
   /**
    * $START$SLDR.html $SLDR$END
@@ -469,7 +477,7 @@ trait ControlIncludes
    * @param s $JFX $SLDR
    * @return $SFX $SLDR
    */
-  implicit def jfxSlider2sfx(s: jfxsc.Slider) = if (s != null) new Slider(s) else null
+  implicit def jfxSlider2sfx(s: jfxsc.Slider): Slider = if (s != null) new Slider(s) else null
 
   /**
    * $START$SPMB.html $SPMB$END
@@ -477,7 +485,7 @@ trait ControlIncludes
    * @param h $JFX $SPMB
    * @return $SFX $SPMB
    */
-  implicit def jfxSplitMenuButton2sfx(h: jfxsc.SplitMenuButton) = if (h != null) new SplitMenuButton(h) else null
+  implicit def jfxSplitMenuButton2sfx(h: jfxsc.SplitMenuButton): SplitMenuButton = if (h != null) new SplitMenuButton(h) else null
 
   /**
    * $START$TBCL.html $TBCL$END
@@ -486,7 +494,7 @@ trait ControlIncludes
    * @param tc $JFX $TBCL
    * @return $SFX $TBCL
    */
-  implicit def jfxTableCell2sfx[S, T](tc: jfxsc.TableCell[S, T]) = if (tc != null) new TableCell[S, T](tc) else null
+  implicit def jfxTableCell2sfx[S, T](tc: jfxsc.TableCell[S, T]): TableCell[S, T] = if (tc != null) new TableCell[S, T](tc) else null
 
   /**
    * $START$TBCM.html $TBCM$END
@@ -495,7 +503,7 @@ trait ControlIncludes
    * @param tc $JFX $TBCM
    * @return $SFX $TBCM
    */
-  implicit def jfxTableColumn2sfx[S, T](tc: jfxsc.TableColumn[S, T]) = if (tc != null) new TableColumn[S, T](tc) else null
+  implicit def jfxTableColumn2sfx[S, T](tc: jfxsc.TableColumn[S, T]): TableColumn[S, T] = if (tc != null) new TableColumn[S, T](tc) else null
 
   /**
    * $START$TBST.html $TBST$END
@@ -503,7 +511,7 @@ trait ControlIncludes
    * @param st $JFX $TBST
    * @return $SFX $TBST
    */
-  implicit def jfxSortType2sfx(st: jfxsc.TableColumn.SortType) = TableColumn.SortType.jfxEnum2sfx(st)
+  implicit def jfxSortType2sfx(st: jfxsc.TableColumn.SortType): SortType = TableColumn.SortType.jfxEnum2sfx(st)
 
   /**
    * $START$TCCD.html $TCCD$END
@@ -512,7 +520,7 @@ trait ControlIncludes
    * @param cdf $JFX $TCCD
    * @return $SFX $TCCD
    */
-  implicit def jfxCellDataFeatures2sfx[S, T](cdf: jfxsc.TableColumn.CellDataFeatures[S, T]) = if (cdf != null) new TableColumn.CellDataFeatures[S, T](cdf) else null
+  implicit def jfxCellDataFeatures2sfx[S, T](cdf: jfxsc.TableColumn.CellDataFeatures[S, T]): CellDataFeatures[S, T] = if (cdf != null) new TableColumn.CellDataFeatures[S, T](cdf) else null
 
   /**
    * $START$TCCE.html $TCCE$END
@@ -521,7 +529,7 @@ trait ControlIncludes
    * @param cee $JFX $TCCE
    * @return $SFX $TCCE
    */
-  implicit def jfxCellEditEvent2sfx[S, T](cee: jfxsc.TableColumn.CellEditEvent[S, T]) = if (cee != null) new TableColumn.CellEditEvent[S, T](cee) else null
+  implicit def jfxCellEditEvent2sfx[S, T](cee: jfxsc.TableColumn.CellEditEvent[S, T]): CellEditEvent[S, T] = if (cee != null) new TableColumn.CellEditEvent[S, T](cee) else null
 
   /**
    * $START$TBPS.html $TBPS$END
@@ -530,7 +538,7 @@ trait ControlIncludes
    * @param tp $JFX $TBPS
    * @return $SFX $TBPS
    */
-  implicit def jfxTablePosition2sfx[S, T](tp: jfxsc.TablePosition[S, T]) = if (tp != null) new TablePosition[S, T](tp) else null
+  implicit def jfxTablePosition2sfx[S, T](tp: jfxsc.TablePosition[S, T]): TablePosition[S, T] = if (tp != null) new TablePosition[S, T](tp) else null
 
   /**
    * $START$TBPB.html $TBPB$END
@@ -550,7 +558,7 @@ trait ControlIncludes
    * @param tr $JFX $TBRW
    * @return $SFX $TBRW
    */
-  implicit def jfxTableRow2sfx[T](tr: jfxsc.TableRow[T]) = if (tr != null) new TableRow[T](tr) else null
+  implicit def jfxTableRow2sfx[T](tr: jfxsc.TableRow[T]): TableRow[T] = if (tr != null) new TableRow[T](tr) else null
 
   /**
    * $START$TBVW.html $TBVW$END
@@ -559,7 +567,7 @@ trait ControlIncludes
    * @param tv $JFX $TBVW
    * @return $SFX $TBVW
    */
-  implicit def jfxTableView2sfx[S](tv: jfxsc.TableView[S]) = if (tv != null) new TableView[S](tv) else null
+  implicit def jfxTableView2sfx[S](tv: jfxsc.TableView[S]): TableView[S] = if (tv != null) new TableView[S](tv) else null
 
   /**
    * $START$RFBS.html $RFBS$END
@@ -578,7 +586,7 @@ trait ControlIncludes
    * @param rf $JFX $TVRF
    * @return $SFX $TVRF
    */
-  implicit def jfxResizeFeatures2sfx[S](rf: jfxsc.TableView.ResizeFeatures[S]) = if (rf != null) new TableView.ResizeFeatures[S](rf) else null
+  implicit def jfxResizeFeatures2sfx[S](rf: jfxsc.TableView.ResizeFeatures[S]): ResizeFeatures[S] = if (rf != null) new TableView.ResizeFeatures[S](rf) else null
 
   /**
    * $START$TVSM.html $TVSM$END
@@ -587,7 +595,7 @@ trait ControlIncludes
    * @param tvsm $JFX $TVSM
    * @return $SFX $TVSM
    */
-  implicit def jfxTableViewSelectionModel2sfx[S](tvsm: jfxsc.TableView.TableViewSelectionModel[S]) = if (tvsm != null) new TableView.TableViewSelectionModel[S](tvsm) {} else null
+  implicit def jfxTableViewSelectionModel2sfx[S](tvsm: jfxsc.TableView.TableViewSelectionModel[S]): TableViewSelectionModel[S] = if (tvsm != null) new TableView.TableViewSelectionModel[S](tvsm) {} else null
 
   /**
    * $START$TBSM.html $TBSM$END
@@ -620,7 +628,7 @@ trait ControlIncludes
    * @param tvfm $JFX $TVFM
    * @return $SFX $TVFM
    */
-  implicit def jfxTableViewFocusModel2sfx[S](tvfm: jfxsc.TableView.TableViewFocusModel[S]) = if (tvfm != null) new TableView.TableViewFocusModel[S](tvfm) else null
+  implicit def jfxTableViewFocusModel2sfx[S](tvfm: jfxsc.TableView.TableViewFocusModel[S]): TableViewFocusModel[S] = if (tvfm != null) new TableView.TableViewFocusModel[S](tvfm) else null
 
   /**
    * $START$TBFM.html $TBFM$END
@@ -641,7 +649,7 @@ trait ControlIncludes
    * @param t $JFX $TTPN
    * @return $SFX $TTPN
    */
-  implicit def jfxTitledPane2sfx(t: jfxsc.TitledPane) = if (t != null) new TitledPane(t) else null
+  implicit def jfxTitledPane2sfx(t: jfxsc.TitledPane): TitledPane = if (t != null) new TitledPane(t) else null
 
   /**
    * $START$TGGL.html $TGGL$END
@@ -663,7 +671,7 @@ trait ControlIncludes
    * @param s $JFX $SPRT
    * @return $SFX $SPRT
    */
-  implicit def jfxSeparator2sfx(s: jfxsc.Separator) = if (s != null) new Separator(s) else null
+  implicit def jfxSeparator2sfx(s: jfxsc.Separator): Separator = if (s != null) new Separator(s) else null
 
   /**
    * $START$SKIN.html $SKIN$END
@@ -701,7 +709,7 @@ trait ControlIncludes
    * @param p $JFX $PRGI
    * @return $SFX $PRGI
    */
-  implicit def jfxProgressIndicator2sfx(p: jfxsc.ProgressIndicator) = if (p != null) new ProgressIndicator(p) else null
+  implicit def jfxProgressIndicator2sfx(p: jfxsc.ProgressIndicator): ProgressIndicator = if (p != null) new ProgressIndicator(p) else null
 
   /**
    * $START$PRGB.html $PRGB$END
@@ -709,7 +717,7 @@ trait ControlIncludes
    * @param p $JFX $PRGB
    * @return $SFX $PRGB
    */
-  implicit def jfxProgressBar2sfx(p: jfxsc.ProgressBar) = if (p != null) new ProgressBar(p) else null
+  implicit def jfxProgressBar2sfx(p: jfxsc.ProgressBar): ProgressBar = if (p != null) new ProgressBar(p) else null
 
   /**
    * $START$PSFD.html $PSFD$END
@@ -717,7 +725,7 @@ trait ControlIncludes
    * @param v $JFX $PSFD
    * @return $SFX $PSFD
    */
-  implicit def jfxPasswordField2sfx(v: jfxsc.PasswordField) = if (v != null) new PasswordField(v) else null
+  implicit def jfxPasswordField2sfx(v: jfxsc.PasswordField): PasswordField = if (v != null) new PasswordField(v) else null
 
   /**
    * $START$PPCT.html $PPCT$END
@@ -725,7 +733,7 @@ trait ControlIncludes
    * @param v $JFX $PPCT
    * @return $SFX $PPCT
    */
-  implicit def jfxPopupControl2sfx(v: jfxsc.PopupControl) = if (v != null) new PopupControl(v) else null
+  implicit def jfxPopupControl2sfx(v: jfxsc.PopupControl): PopupControl = if (v != null) new PopupControl(v) else null
 
   /**
    * $START$RDMI.html $RDMI$END
@@ -733,7 +741,7 @@ trait ControlIncludes
    * @param m $JFX $RDMI
    * @return $SFX $RDMI
    */
-  implicit def jfxRadioMenuItem2sfx(m: jfxsc.RadioMenuItem) = if (m != null) new RadioMenuItem(m) else null
+  implicit def jfxRadioMenuItem2sfx(m: jfxsc.RadioMenuItem): RadioMenuItem = if (m != null) new RadioMenuItem(m) else null
 
   /**
    * $START$SCMD.html $SCMD$END
@@ -742,7 +750,7 @@ trait ControlIncludes
    * @param v $JFX $SCMD
    * @return $SFX $SCMD
    */
-  implicit def jfxSelectionModel2sfx[T](v: jfxsc.SelectionModel[T]) = if (v != null) new SelectionModel[T](v) {} else null
+  implicit def jfxSelectionModel2sfx[T](v: jfxsc.SelectionModel[T]): SelectionModel[T] = if (v != null) new SelectionModel[T](v) {} else null
 
   /**
    * $START$SSMD.html $SSMD$END
@@ -751,7 +759,7 @@ trait ControlIncludes
    * @param v $JFX $SSMD
    * @return $SFX $SSMD
    */
-  implicit def jfxSingleSelectionModel2sfx[T](v: jfxsc.SingleSelectionModel[T]) = if (v != null) new SingleSelectionModel[T](v) {} else null
+  implicit def jfxSingleSelectionModel2sfx[T](v: jfxsc.SingleSelectionModel[T]): SingleSelectionModel[T] = if (v != null) new SingleSelectionModel[T](v) {} else null
 
   /**
    * $START$SPPN.html $SPPN$END
@@ -759,7 +767,7 @@ trait ControlIncludes
    * @param s $JFX $SPPN
    * @return $SFX $SPPN
    */
-  implicit def jfxSplitPane2sfx(s: jfxsc.SplitPane) = if (s != null) new SplitPane(s) else null
+  implicit def jfxSplitPane2sfx(s: jfxsc.SplitPane): SplitPane = if (s != null) new SplitPane(s) else null
 
   /**
    * $START$SPDV.html $SPDV$END
@@ -767,7 +775,7 @@ trait ControlIncludes
    * @param d $JFX $SPDV
    * @return $SFX $SPDV
    */
-  implicit def jfxSplitPaneDivider2sfx(d: jfxsc.SplitPane.Divider) = if (d != null) new SplitPane.Divider(d) else null
+  implicit def jfxSplitPaneDivider2sfx(d: jfxsc.SplitPane.Divider): Divider = if (d != null) new SplitPane.Divider(d) else null
 
   /**
    * $START$TAB.html $TAB$END
@@ -775,7 +783,7 @@ trait ControlIncludes
    * @param v $JFX $TAB
    * @return $SFX $TAB
    */
-  implicit def jfxTab2sfx(v: jfxsc.Tab) = if (v != null) new Tab(v) else null
+  implicit def jfxTab2sfx(v: jfxsc.Tab): Tab = if (v != null) new Tab(v) else null
 
   /**
    * $START$TBPN.html $TBPN$END
@@ -783,7 +791,7 @@ trait ControlIncludes
    * @param v $JFX $TBPN
    * @return $SFX $TBPN
    */
-  implicit def jfxTabPane2sfx(v: jfxsc.TabPane) = if (v != null) new TabPane(v) else null
+  implicit def jfxTabPane2sfx(v: jfxsc.TabPane): TabPane = if (v != null) new TabPane(v) else null
 
   /**
    * $START$TPCP.html $TPCP$END
@@ -791,7 +799,7 @@ trait ControlIncludes
    * @param v $JFX $TPCP
    * @return $SFX $TPCP
    */
-  implicit def jfxTabClosingPolicy2sfx(v: jfxsc.TabPane.TabClosingPolicy) = TabPane.TabClosingPolicy.jfxEnum2sfx(v)
+  implicit def jfxTabClosingPolicy2sfx(v: jfxsc.TabPane.TabClosingPolicy): TabClosingPolicy = TabPane.TabClosingPolicy.jfxEnum2sfx(v)
 
   /**
    * $START$TXFD.html $TXFD$END
@@ -799,7 +807,7 @@ trait ControlIncludes
    * @param v $JFX $TXFD
    * @return $SFX $TXFD
    */
-  implicit def jfxTextField2sfx(v: jfxsc.TextField) = if (v != null) new TextField(v) else null
+  implicit def jfxTextField2sfx(v: jfxsc.TextField): TextField = if (v != null) new TextField(v) else null
 
   /**
    * Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TXFD.html $TXFD]]` to a
@@ -808,7 +816,7 @@ trait ControlIncludes
    * @param p A ReadOnlyObjectProperty containing a $TXFD
    * @return a new TextFieldProperty
    */
-  implicit def jfxTextFieldProperty2sfx(p: ReadOnlyObjectProperty[jfxsc.TextField]) = if (p != null) new TextFieldProperty(p) else null
+  implicit def jfxTextFieldProperty2sfx(p: ReadOnlyObjectProperty[jfxsc.TextField]): TextFieldProperty = if (p != null) new TextFieldProperty(p) else null
 
   /**
    * $START$TXAR.html $TXAR$END
@@ -816,7 +824,7 @@ trait ControlIncludes
    * @param t $JFX $TXAR
    * @return $SFX $TXAR
    */
-  implicit def jfxTextArea2sfx(t: jfxsc.TextArea) = if (t != null) new TextArea(t) else null
+  implicit def jfxTextArea2sfx(t: jfxsc.TextArea): TextArea = if (t != null) new TextArea(t) else null
 
   /**
    * $START$TXIC.html $TXIC$END
@@ -824,7 +832,7 @@ trait ControlIncludes
    * @param t $JFX $TXIC
    * @return $SFX $TXIC
    */
-  implicit def jfxTextInputControl2sfx(t: jfxsc.TextInputControl) = if (t != null) new TextInputControl(t) {} else null
+  implicit def jfxTextInputControl2sfx(t: jfxsc.TextInputControl): TextInputControl = if (t != null) new TextInputControl(t) {} else null
 
   /**
    * $START$TOTP.html $TOTP$END
@@ -832,7 +840,7 @@ trait ControlIncludes
    * @param t $JFX $TOTP
    * @return $SFX $TOTP
    */
-  implicit def jfxTooltip2sfx(t: jfxsc.Tooltip) = if (t != null) new Tooltip(t) {} else null
+  implicit def jfxTooltip2sfx(t: jfxsc.Tooltip): Tooltip = if (t != null) new Tooltip(t) {} else null
 
   /**
    * $START$TOBR.html $TOBR$END
@@ -840,7 +848,7 @@ trait ControlIncludes
    * @param t $JFX $TOBR
    * @return $SFX $TOBR
    */
-  implicit def jfxToolBar2sfx(t: jfxsc.ToolBar) = if (t != null) new ToolBar(t) {} else null
+  implicit def jfxToolBar2sfx(t: jfxsc.ToolBar): ToolBar = if (t != null) new ToolBar(t) {} else null
 
   /**
    * $START$TRCL.html $TRCL$END
@@ -849,7 +857,7 @@ trait ControlIncludes
    * @param t $JFX $TRCL
    * @return $SFX $TRCL
    */
-  implicit def jfxTreeCell2sfx[T](t: jfxsc.TreeCell[T]) = if (t != null) new TreeCell[T](t) else null
+  implicit def jfxTreeCell2sfx[T](t: jfxsc.TreeCell[T]): TreeCell[T] = if (t != null) new TreeCell[T](t) else null
 
   /**
    * $START$TRIT.html $TRIT$END
@@ -858,7 +866,7 @@ trait ControlIncludes
    * @param t $JFX $TRIT
    * @return $SFX $TRIT
    */
-  implicit def jfxTreeItem2sfx[T](t: jfxsc.TreeItem[T]) = if (t != null) new TreeItem[T](t) else null
+  implicit def jfxTreeItem2sfx[T](t: jfxsc.TreeItem[T]): TreeItem[T] = if (t != null) new TreeItem[T](t) else null
 
   /**
    * $START$TIME.html $TIME$END
@@ -867,7 +875,7 @@ trait ControlIncludes
    * @param tmi $JFX $TIME
    * @return $SFX $TIME
    */
-  implicit def jfxTreeModificationEvent2sfx[T](tmi: jfxsc.TreeItem.TreeModificationEvent[T]) = if (tmi != null) new TreeItem.TreeModificationEvent[T](tmi) else null
+  implicit def jfxTreeModificationEvent2sfx[T](tmi: jfxsc.TreeItem.TreeModificationEvent[T]): TreeModificationEvent[T] = if (tmi != null) new TreeItem.TreeModificationEvent[T](tmi) else null
 
   /**
    * $START$TRVW.html $TRVW$END
@@ -876,7 +884,7 @@ trait ControlIncludes
    * @param t $JFX $TRVW
    * @return $SFX $TRVW
    */
-  implicit def jfxTreeView2sfx[T](t: jfxsc.TreeView[T]) = if (t != null) new TreeView[T](t) else null
+  implicit def jfxTreeView2sfx[T](t: jfxsc.TreeView[T]): TreeView[T] = if (t != null) new TreeView[T](t) else null
 
   /**
    * $START$TVEE.html $TVEE$END
@@ -885,7 +893,7 @@ trait ControlIncludes
    * @param t $JFX $TVEE
    * @return $SFX $TVEE
    */
-  implicit def jfxTreeViewEditEvent2sfx[T](t: jfxsc.TreeView.EditEvent[T]) = if (t != null) new TreeView.EditEvent[T](t) else null
+  implicit def jfxTreeViewEditEvent2sfx[T](t: jfxsc.TreeView.EditEvent[T]): EditEvent[T] = if (t != null) new TreeView.EditEvent[T](t) else null
 
 
   /**

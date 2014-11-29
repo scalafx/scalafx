@@ -26,14 +26,14 @@
  */
 package scalafx.scene
 
+import javafx.beans.{property => jfxbp}
+import javafx.scene.{effect => jfxse, paint => jfxsp}
+
 import scala.language.reflectiveCalls
-import javafx.beans.{ property => jfxbp }
-import javafx.scene.{ effect => jfxse }
-import javafx.scene.{ paint => jfxsp }
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
-import scalafx.scene.paint.Color
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.paint.Color
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/package-summary.html `javafx.scene.effect`]] package.

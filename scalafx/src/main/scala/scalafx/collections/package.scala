@@ -26,8 +26,9 @@
  */
 package scalafx
 
+import javafx.{collections => jfxc}
+
 import scala.collection.JavaConversions._
-import javafx.{ collections => jfxc }
 import scalafx.delegate.SFXDelegate
 
 /**

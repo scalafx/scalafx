@@ -26,15 +26,15 @@
  */
 package scalafx.animation
 
-import scala.language.implicitConversions
 import javafx.{animation => jfxa, geometry => jfxg, scene => jfxs, util => jfxu}
-import scalafx.util.Duration
+
+import scala.language.implicitConversions
 import scalafx.Includes._
+import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
-import scalafx.scene.Node
 import scalafx.geometry.Point3D
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.scene.Node
+import scalafx.util.Duration
 
 /**
  * Companion Object for [[scalafx.animation.RotateTransition]].
@@ -50,7 +50,7 @@ object RotateTransition extends AnimationStatics {
    * @param v ScalaFX $RT
    * @return JavaFX $RT extracted from `v`.
    */
-  implicit def sfxRotateTransition2jfx(v: RotateTransition) = if (v != null) v.delegate else null
+  implicit def sfxRotateTransition2jfx(v: RotateTransition): jfxa.RotateTransition = if (v != null) v.delegate else null
 
 }
 

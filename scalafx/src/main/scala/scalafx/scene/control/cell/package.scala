@@ -26,19 +26,16 @@
  */
 package scalafx.scene.control
 
+import javafx.beans.{property => jfxbp, value => jfxbv}
+import javafx.scene.{control => jfxsc}
+import javafx.{collections => jfxc, util => jfxu}
+
 import scala.language.{implicitConversions, reflectiveCalls}
-import javafx.beans.{ property => jfxbp }
-import javafx.beans.{ value => jfxbv }
-import javafx.{ collections => jfxc }
-import javafx.scene.{ control => jfxsc }
-import javafx.{ util => jfxu }
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.collections.ObservableBuffer
+import scalafx.beans.property.{BooleanProperty, ObjectProperty}
+import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
-import scalafx.beans.value.ObservableValue
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/package-summary.html `javafx.scene.control.cell`]] package.

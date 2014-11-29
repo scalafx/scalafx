@@ -26,12 +26,13 @@
  */
 package scalafx.scene.media
 
+import javafx.scene.{media => jfxsm}
+
 import scala.language.implicitConversions
-import javafx.scene.{ media => jfxsm }
 import scalafx.delegate.SFXDelegate
 
 object AudioTrack {
-  implicit def sfxAudioTrack2jfx(at: AudioTrack) = if (at != null) at.delegate else null
+  implicit def sfxAudioTrack2jfx(at: AudioTrack): jfxsm.AudioTrack = if (at != null) at.delegate else null
 }
 
 class AudioTrack(override val delegate: jfxsm.AudioTrack) extends Track(delegate) with SFXDelegate[jfxsm.AudioTrack] {

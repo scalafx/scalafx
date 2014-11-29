@@ -26,25 +26,23 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.beans.{value => jfxbv}
 import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe}
-import javafx.{util => jfxu}
+import javafx.{event => jfxe, scene => jfxs, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.beans.value.ObservableValue
-import scalafx.event.Event
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 import scalafx.collections.ObservableBuffer
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
+import scalafx.event.Event
 
 object TableColumn {
-  implicit def sfxTableColumn2jfx[S, T](tc: TableColumn[S, T]) = if (tc != null) tc.delegate else null
+  implicit def sfxTableColumn2jfx[S, T](tc: TableColumn[S, T]): jfxsc.TableColumn[S, T] = if (tc != null) tc.delegate else null
 
   object CellDataFeatures {
-    implicit def sfxCellDataFeatures2jfx[S, T](cdf: CellDataFeatures[S, T]) = if (cdf != null) cdf.delegate else null
+    implicit def sfxCellDataFeatures2jfx[S, T](cdf: CellDataFeatures[S, T]): jfxsc.TableColumn.CellDataFeatures[S, T] = if (cdf != null) cdf.delegate else null
   }
 
   /**
@@ -77,7 +75,7 @@ object TableColumn {
   }
 
   object CellEditEvent {
-    implicit def sfxCellEditEvent2jfx[S, T](cee: CellEditEvent[S, T]) = if (cee != null) cee.delegate else null
+    implicit def sfxCellEditEvent2jfx[S, T](cee: CellEditEvent[S, T]): jfxsc.TableColumn.CellEditEvent[S, T] = if (cee != null) cee.delegate else null
 
   }
 

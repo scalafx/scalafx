@@ -26,12 +26,13 @@
  */
 package scalafx.geometry
 
+import javafx.{geometry => jfxg}
+
 import scala.language.implicitConversions
-import javafx.{ geometry => jfxg }
 import scalafx.delegate.SFXDelegate
 
 object Bounds {
-  implicit def sfxBounds2jfx(b: Bounds) = if (b != null) b.delegate else null
+  implicit def sfxBounds2jfx(b: Bounds): jfxg.Bounds = if (b != null) b.delegate else null
 }
 
 abstract class Bounds protected(override val delegate: jfxg.Bounds) extends SFXDelegate[jfxg.Bounds] {

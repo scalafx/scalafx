@@ -26,13 +26,14 @@
  */
 package scalafx.beans.property
 
-import scala.language.implicitConversions
 import javafx.beans.{property => jfxbp}
+
+import scala.language.implicitConversions
 import scalafx.beans.binding.ObjectExpression
 import scalafx.delegate.SFXDelegate
 
 object ReadOnlyObjectProperty {
-  implicit def sfxReadOnlyObjectProperty2jfx[T <: Any](roop: ReadOnlyObjectProperty[T]) = roop.delegate
+  implicit def sfxReadOnlyObjectProperty2jfx[T <: Any](roop: ReadOnlyObjectProperty[T]): jfxbp.ReadOnlyObjectProperty[T] = roop.delegate
 }
 
 class ReadOnlyObjectProperty[T <: Any](override val delegate: jfxbp.ReadOnlyObjectProperty[T])

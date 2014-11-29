@@ -26,13 +26,13 @@
  */
 package scalafx.scene
 
-import scala.language.implicitConversions
 import javafx.{scene => jfxs}
-import scalafx.Includes._
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Cursor {
-  implicit def sfxCursor2jfx(c: Cursor) = if (c != null) c.delegate else null
+  implicit def sfxCursor2jfx(c: Cursor): jfxs.Cursor = if (c != null) c.delegate else null
 
   /**
    * Returns a cursor for the specified identifier.

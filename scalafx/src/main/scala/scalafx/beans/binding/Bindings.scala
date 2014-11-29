@@ -27,6 +27,7 @@
 package scalafx.beans.binding
 
 import javafx.beans.{binding => jfxbb, value => jfxbv}
+
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
 

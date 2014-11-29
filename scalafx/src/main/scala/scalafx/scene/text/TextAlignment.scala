@@ -27,7 +27,8 @@
 package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.scene.text.TextAlignment]] */
 object TextAlignment extends SFXEnumDelegateCompanion[jfxst.TextAlignment, TextAlignment] {

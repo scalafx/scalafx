@@ -27,8 +27,7 @@
 package scalafx.util.converter
 
 import java.util.Date
-
-import javafx.util.{ converter => jfxuc }
+import javafx.util.{converter => jfxuc}
 
 private[converter] abstract class DateTimeStringConverterDelegate[C <: jfxuc.DateTimeStringConverter] protected (delegate: C)
   extends StringConverterJavaToJavaDelegate[Date, C](delegate)

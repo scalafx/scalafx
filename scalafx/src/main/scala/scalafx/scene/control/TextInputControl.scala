@@ -26,15 +26,15 @@
  */
 package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc, text => jfxst}
+
 import scala.language.implicitConversions
-import javafx.scene.{control => jfxsc}
-import javafx.scene.{text => jfxst}
 import scalafx.Includes._
-import scalafx.beans.property._
+import scalafx.beans.property.{BooleanProperty, ReadOnlyIntegerProperty, ReadOnlyObjectProperty, ReadOnlyStringProperty, StringProperty, _}
 import scalafx.delegate.SFXDelegate
 
 object TextInputControl {
-  implicit def sfxTextInputControl2jfx(v: TextInputControl) = if (v != null) v.delegate else null
+  implicit def sfxTextInputControl2jfx(v: TextInputControl): jfxsc.TextInputControl = if (v != null) v.delegate else null
 }
 
 abstract class TextInputControl(override val delegate: jfxsc.TextInputControl)

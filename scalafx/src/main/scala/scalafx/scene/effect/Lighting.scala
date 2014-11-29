@@ -26,15 +26,15 @@
  */
 package scalafx.scene.effect
 
-import scala.language.implicitConversions
 import javafx.scene.{effect => jfxse}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 
 object Lighting {
-  implicit def sfxLighting2jfx(l: Lighting) = if (l != null) l.delegate else null
+  implicit def sfxLighting2jfx(l: Lighting): jfxse.Lighting = if (l != null) l.delegate else null
 
 }
 

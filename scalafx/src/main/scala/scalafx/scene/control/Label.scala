@@ -26,10 +26,10 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
 import javafx.{scene => jfxs}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
@@ -37,7 +37,7 @@ import scalafx.scene.Node
 
 
 object Label {
-  implicit def sfxLabel2jfx(v: Label) = if (v != null) v.delegate else null
+  implicit def sfxLabel2jfx(v: Label): jfxsc.Label = if (v != null) v.delegate else null
 
   /** Creates Label with supplied text. */
   def apply(text: String) = new Label(text)

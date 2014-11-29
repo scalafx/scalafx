@@ -26,15 +26,16 @@
  */
 package scalafx.scene
 
-import scala.language.implicitConversions
 import javafx.{scene => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.collections._
 import scalafx.beans.property.BooleanProperty
+import scalafx.collections._
 import scalafx.delegate.SFXDelegate
 
 object Group {
-  implicit def sfxGroup2jfx(v: Group) = if (v != null) v.delegate else null
+  implicit def sfxGroup2jfx(v: Group): jfxs.Group = if (v != null) v.delegate else null
 }
 
 /**

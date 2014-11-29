@@ -26,17 +26,19 @@
  */
 package scalafx.scene
 
+import javafx.beans.{property => jfxbp}
+import javafx.{scene => jfxs}
+
 import scala.language.implicitConversions
 import scalafx.beans.property.ReadOnlyObjectProperty
-import javafx.{scene => jfxs}
-import chart.ChartIncludes
-import layout.LayoutIncludes
-import image.ImageIncludes
-import paint.PaintIncludes
-import shape.ShapeIncludes
-import control.ControlIncludes
-import text.TextIncludes
-import effect.EffectIncludes
+import scalafx.scene.chart.ChartIncludes
+import scalafx.scene.control.ControlIncludes
+import scalafx.scene.effect.EffectIncludes
+import scalafx.scene.image.ImageIncludes
+import scalafx.scene.layout.LayoutIncludes
+import scalafx.scene.paint.PaintIncludes
+import scalafx.scene.shape.ShapeIncludes
+import scalafx.scene.text.TextIncludes
 
 object SceneIncludes extends SceneIncludes
 
@@ -91,7 +93,7 @@ trait LowerPriorityIncludes {
    * @param e $JFX $CHI
    * @return $SFX $CHI
    */
-  implicit def jfxCacheHint2sfx(e: jfxs.CacheHint) = CacheHint.jfxEnum2sfx(e)
+  implicit def jfxCacheHint2sfx(e: jfxs.CacheHint): CacheHint = CacheHint.jfxEnum2sfx(e)
 
   /**
    * $START$CAM.html $CAM$END
@@ -99,7 +101,7 @@ trait LowerPriorityIncludes {
    * @param v $JFX $CAM
    * @return $SFX $CAM
    */
-  implicit def jfxCamera2sfx(v: jfxs.Camera) = if (v != null) new Camera(v) {} else null
+  implicit def jfxCamera2sfx(v: jfxs.Camera): Camera = if (v != null) new Camera(v) {} else null
 
   /**
    * $START$CUR.html $CUR$END
@@ -107,7 +109,7 @@ trait LowerPriorityIncludes {
    * @param v $JFX $CUR
    * @return $SFX $CUR
    */
-  implicit def jfxCursor2sfx(v: jfxs.Cursor) = if (v != null) new Cursor(v) {} else null
+  implicit def jfxCursor2sfx(v: jfxs.Cursor): Cursor = if (v != null) new Cursor(v) {} else null
 
   /**
    * $START$DPT.html $DPT$END
@@ -115,7 +117,7 @@ trait LowerPriorityIncludes {
    * @param e $JFX $DPT
    * @return $SFX $DPT
    */
-  implicit def jfxDepthTest2sfx(e: jfxs.DepthTest) = DepthTest.jfxEnum2sfx(e)
+  implicit def jfxDepthTest2sfx(e: jfxs.DepthTest): DepthTest = DepthTest.jfxEnum2sfx(e)
 
   /**
    * $START$GRP.html $GRP$END
@@ -123,7 +125,7 @@ trait LowerPriorityIncludes {
    * @param v $JFX $GRP
    * @return $SFX $GRP
    */
-  implicit def jfxGroup2sfx(v: jfxs.Group) = if (v != null) new Group(v) else null
+  implicit def jfxGroup2sfx(v: jfxs.Group): Group = if (v != null) new Group(v) else null
 
   /**
    * $START$IMC.html $IMC$END
@@ -131,7 +133,7 @@ trait LowerPriorityIncludes {
    * @param ic $JFX $IMC
    * @return $SFX $IMC
    */
-  implicit def jfxImageCursor2sfx(ic: jfxs.ImageCursor) = if (ic != null) new ImageCursor(ic) else null
+  implicit def jfxImageCursor2sfx(ic: jfxs.ImageCursor): ImageCursor = if (ic != null) new ImageCursor(ic) else null
 
   implicit def jfxLightBase2sfx(v: jfxs.LightBase) = if (v != null) new LightBase(v) {} else null
 
@@ -141,7 +143,7 @@ trait LowerPriorityIncludes {
    * @param v $JFX $NOD
    * @return $SFX $NOD
    */
-  implicit def jfxNode2sfx(v: jfxs.Node) = if (v != null) new Node(v) {} else null
+  implicit def jfxNode2sfx(v: jfxs.Node): Node = if (v != null) new Node(v) {} else null
 
   /**
    * $START$PRC.html $PRC$END
@@ -149,7 +151,7 @@ trait LowerPriorityIncludes {
    * @param v $JFX $PRC
    * @return $SFX $PRC
    */
-  implicit def jfxParallelCamera2sfx(v: jfxs.ParallelCamera) = if (v != null) new ParallelCamera(v) else null
+  implicit def jfxParallelCamera2sfx(v: jfxs.ParallelCamera): ParallelCamera = if (v != null) new ParallelCamera(v) else null
 
   /**
    * $START$PAR.html $PAR$END
@@ -157,7 +159,7 @@ trait LowerPriorityIncludes {
    * @param v $JFX $PAR
    * @return $SFX $PAR
    */
-  implicit def jfxParent2sfx(v: jfxs.Parent) = if (v != null) new Parent(v) {} else null
+  implicit def jfxParent2sfx(v: jfxs.Parent): Parent = if (v != null) new Parent(v) {} else null
 
   /**
    * $START$PEC.html $PEC$END
@@ -165,7 +167,7 @@ trait LowerPriorityIncludes {
    * @param v $JFX $PEC
    * @return $SFX $PEC
    */
-  implicit def jfxPerspectiveCamera2sfx(v: jfxs.PerspectiveCamera) = if (v != null) new PerspectiveCamera(v) else null
+  implicit def jfxPerspectiveCamera2sfx(v: jfxs.PerspectiveCamera): PerspectiveCamera = if (v != null) new PerspectiveCamera(v) else null
 
   implicit def jfxPointLight2sfx(v: jfxs.PointLight) = if (v != null) new PointLight(v) else null
 
@@ -175,7 +177,7 @@ trait LowerPriorityIncludes {
    * @param v $JFX $SCE
    * @return $SFX $SCE
    */
-  implicit def jfxScene2sfx(v: jfxs.Scene) = if (v != null) new Scene(v) else null
+  implicit def jfxScene2sfx(v: jfxs.Scene): Scene = if (v != null) new Scene(v) else null
 
   /**
    * $START$SCA.html $SCA$END
@@ -197,7 +199,7 @@ trait LowerPriorityIncludes {
    * @param p A $SFX [[scalafx.beans.property.ReadOnlyObjectProperty]] containing a $JFX $SCE.
    * @return $SFX $SCP
    */
-  implicit def jfxSceneProperty2sfx(p: ReadOnlyObjectProperty[jfxs.Scene]) = if (p != null) new SceneProperty(p) else null
+  implicit def jfxSceneProperty2sfx(p: ReadOnlyObjectProperty[jfxs.Scene]): SceneProperty = if (p != null) new SceneProperty(p) else null
 
   /**
    * $START$SNP.html $SNP$END
@@ -205,7 +207,7 @@ trait LowerPriorityIncludes {
    * @param sp $JFX $SNP
    * @return $SFX $SNP
    */
-  implicit def jfxSnapshotParameters2sfx(sp: jfxs.SnapshotParameters) = if (sp != null) new SnapshotParameters(sp) else null
+  implicit def jfxSnapshotParameters2sfx(sp: jfxs.SnapshotParameters): SnapshotParameters = if (sp != null) new SnapshotParameters(sp) else null
 
   /**
    * $START$SSCE.html $SSCE$END

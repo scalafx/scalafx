@@ -26,14 +26,14 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
-import scalafx.Includes._
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 
 object RadioMenuItem {
-  implicit def sfxRadioMenuItem2jfx(m: RadioMenuItem) = if (m != null) m.delegate else null
+  implicit def sfxRadioMenuItem2jfx(m: RadioMenuItem): jfxsc.RadioMenuItem = if (m != null) m.delegate else null
 }
 
 /**

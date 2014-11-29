@@ -26,9 +26,10 @@
  */
 package scalafx.scene.effect
 
-import scala.language.implicitConversions
 import javafx.scene.{effect => jfxse}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+
+import scala.language.implicitConversions
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[scalafx.scene.effect.BlendMode]] */
 object BlendMode extends SFXEnumDelegateCompanion[jfxse.BlendMode, BlendMode] {

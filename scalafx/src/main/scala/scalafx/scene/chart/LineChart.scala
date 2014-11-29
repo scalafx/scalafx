@@ -26,15 +26,16 @@
  */
 package scalafx.scene.chart
 
-import scala.language.implicitConversions
 import javafx.scene.{chart => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 object LineChart {
-  implicit def sfxLineChart2jfx[X, Y](v: LineChart[X, Y]) = if (v != null) v.delegate else null
+  implicit def sfxLineChart2jfx[X, Y](v: LineChart[X, Y]): jfxsc.LineChart[X, Y] = if (v != null) v.delegate else null
 
   def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y]) =
     new LineChart[X, Y](new jfxsc.LineChart[X, Y](xAxis, yAxis))

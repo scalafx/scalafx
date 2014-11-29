@@ -26,12 +26,13 @@
  */
 package scalafx.animation
 
-import scala.language.implicitConversions
 import javafx.{animation => jfxa, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
-import scalafx.util.Duration
 import scalafx.delegate.SFXDelegate
+import scalafx.util.Duration
 
 /**
  * Companion Object for [[scalafx.animation.PauseTransition]].
@@ -47,7 +48,7 @@ object PauseTransition extends AnimationStatics {
    * @param v ScalaFX $PT
    * @return JavaFX $PT extracted from `v`.
    */
-  implicit def sfxPauseTransition2jfx(v: PauseTransition) = if (v != null) v.delegate else null
+  implicit def sfxPauseTransition2jfx(v: PauseTransition): jfxa.PauseTransition = if (v != null) v.delegate else null
 
 }
 

@@ -26,8 +26,9 @@
  */
 package scalafx.scene.text
 
-import scala.language.implicitConversions
 import javafx.scene.{text => jfxst}
+
+import scala.language.implicitConversions
 
 object TextIncludes extends TextIncludes
 
@@ -57,7 +58,7 @@ trait TextIncludes {
    * @param f $JFX $FT
    * @return $SFX $FT
    */
-  implicit def jfxFont2sfxFont(f: jfxst.Font) = if (f != null) new Font(f) else null
+  implicit def jfxFont2sfxFont(f: jfxst.Font): Font = if (f != null) new Font(f) else null
 
   /**
    * $START$FP.html $FP$END
@@ -65,7 +66,7 @@ trait TextIncludes {
    * @param e $JFX $FP
    * @return $SFX $FP
    */
-  implicit def jfxFontPosture2sfx(e: jfxst.FontPosture) = FontPosture.jfxEnum2sfx(e)
+  implicit def jfxFontPosture2sfx(e: jfxst.FontPosture): FontPosture = FontPosture.jfxEnum2sfx(e)
 
   /**
    * $START$FS.html $FS$END
@@ -73,7 +74,7 @@ trait TextIncludes {
    * @param e $JFX $FS
    * @return $SFX $FS
    */
-  implicit def jfxFontSmoothingType2sfx(e: jfxst.FontSmoothingType) = FontSmoothingType.jfxEnum2sfx(e)
+  implicit def jfxFontSmoothingType2sfx(e: jfxst.FontSmoothingType): FontSmoothingType = FontSmoothingType.jfxEnum2sfx(e)
 
   /**
    * $START$FW.html $FW$END
@@ -81,7 +82,7 @@ trait TextIncludes {
    * @param e $JFX $FW
    * @return $SFX $FW
    */
-  implicit def jfxFontWeight2sfx(e: jfxst.FontWeight) = FontWeight.jfxEnum2sfx(e)
+  implicit def jfxFontWeight2sfx(e: jfxst.FontWeight): FontWeight = FontWeight.jfxEnum2sfx(e)
 
   /**
    * $START$TX.html $TX$END
@@ -89,7 +90,7 @@ trait TextIncludes {
    * @param t $JFX $TX
    * @return $SFX $TX
    */
-  implicit def jfxText2sfxText(t: jfxst.Text) = if (t != null) new Text(t) else null
+  implicit def jfxText2sfxText(t: jfxst.Text): Text = if (t != null) new Text(t) else null
 
   /**
    * $START$TA.html $TA$END
@@ -97,7 +98,7 @@ trait TextIncludes {
    * @param e $JFX $TA
    * @return $SFX $TA
    */
-  implicit def jfxTextAlignment2sfx(e: jfxst.TextAlignment) = TextAlignment.jfxEnum2sfx(e)
+  implicit def jfxTextAlignment2sfx(e: jfxst.TextAlignment): TextAlignment = TextAlignment.jfxEnum2sfx(e)
 
   /**
    * $START$TB.html $TB$END
@@ -105,7 +106,7 @@ trait TextIncludes {
    * @param e $JFX $TB
    * @return $SFX $TB
    */
-  implicit def jfxTextBoundsType2sfx(e: jfxst.TextBoundsType) = TextBoundsType.jfxEnum2sfx(e)
+  implicit def jfxTextBoundsType2sfx(e: jfxst.TextBoundsType): TextBoundsType = TextBoundsType.jfxEnum2sfx(e)
 
   implicit def jfxTextFlow2sfx(tf: jfxst.TextFlow) = if (tf != null) new TextFlow(tf) else null
 }

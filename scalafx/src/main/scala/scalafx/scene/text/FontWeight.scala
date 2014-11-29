@@ -27,8 +27,9 @@
 package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
+
 import scalafx.Includes._
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.scene.text.FontWeight]] */
 object FontWeight extends SFXEnumDelegateCompanion[jfxst.FontWeight, FontWeight] {
