@@ -42,10 +42,9 @@ package scalafx.imaginej
 
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectProperty2sfx
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
-import scalafx.scene.control.{ToggleButton, Label, ToggleGroup}
+import scalafx.scene.control.{Label, ToggleButton, ToggleGroup}
 import scalafx.scene.layout.{HBox, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle

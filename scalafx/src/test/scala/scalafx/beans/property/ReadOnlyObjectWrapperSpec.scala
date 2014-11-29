@@ -29,20 +29,15 @@ package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
 import javafx.scene.{control => jfxsc}
+
 import org.junit.runner.RunWith
-import org.scalatest.BeforeAndAfterEach
-import org.scalatest.FlatSpec
+import org.scalatest.Matchers.{be, convertToAnyShouldWrapper, equal}
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.Matchers.be
-import org.scalatest.Matchers.convertToAnyShouldWrapper
-import org.scalatest.Matchers.equal
-import scalafx.Includes.jfxBooleanBinding2sfx
-import scalafx.Includes.jfxBooleanProperty2sfx
-import scalafx.Includes.jfxObjectProperty2sfx
-import scalafx.Includes.jfxReadOnlyObjectProperty2sfx
-import scalafx.Includes.sfxReadOnlyObjectWrapperWithSFXDelegate2jfxReadOnlyObjectWrapper
-import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectWrapper2sfx
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+
+import scalafx.Includes.{jfxBooleanBinding2sfx, jfxBooleanProperty2sfx, jfxObjectProperty2sfx, sfxReadOnlyObjectWrapperWithSFXDelegate2jfxReadOnlyObjectWrapper}
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
+import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectWrapper2sfx
 import scalafx.scene.control.Button
 
 

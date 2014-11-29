@@ -27,7 +27,6 @@
 package scalafx.testutil
 
 import java.lang.reflect.Method
-import java.lang.reflect.Modifier
 
 trait PropertyComparator 
   extends AbstractComparator {

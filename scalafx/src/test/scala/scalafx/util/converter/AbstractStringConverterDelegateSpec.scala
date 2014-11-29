@@ -27,10 +27,10 @@
 package scalafx.util.converter
 
 import java.text.SimpleDateFormat
+import javafx.{util => jfxu}
 
 import org.scalatest.Matchers._
 
-import javafx.{util => jfxu}
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**

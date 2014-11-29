@@ -26,10 +26,11 @@
  */
 package scalafx.delegate
 
-import javafx.beans.{ property => jfxbp }
+import javafx.beans.{property => jfxbp}
+
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
-import PositionDelegate._
+import scalafx.delegate.PositionDelegate._
 
 object PositionDelegate {
 

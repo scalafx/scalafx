@@ -27,27 +27,17 @@
 
 package scalafx.controls
 
-import javafx.beans.value.ChangeListener
-import javafx.beans.value.ObservableValue
-import scalafx.scene.layout.Priority
-import scalafx.Includes._
-import scalafx.Includes.observableList2ObservableBuffer
+import javafx.beans.value.{ChangeListener, ObservableValue}
+
+import scalafx.Includes.{observableList2ObservableBuffer, _}
 import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
 import scalafx.collections.ObservableBuffer
-import scalafx.controls.controls.ControlControls
-import scalafx.controls.controls.PropertiesNodes
-import scalafx.controls.controls.TextInputControlControls
+import scalafx.controls.controls.{ControlControls, PropertiesNodes, TextInputControlControls}
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
-import scalafx.scene.control.CheckBox
-import scalafx.scene.control.ChoiceBox
-import scalafx.scene.control.Label
-import scalafx.scene.control.TextArea
-import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.VBox
+import scalafx.scene.control.{CheckBox, ChoiceBox, Label, TextArea}
+import scalafx.scene.layout.{BorderPane, Priority, VBox}
 import scalafx.scene.paint.Color
-import scalafx.scene.paint.Color.sfxColor2jfx
 
 object TextAreaTest extends JFXApp {
 

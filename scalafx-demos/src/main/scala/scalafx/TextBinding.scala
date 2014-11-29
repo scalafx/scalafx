@@ -26,13 +26,12 @@
  */
 package scalafx
 
-import application.JFXApp
-import application.JFXApp.PrimaryStage
-import beans.property.ObjectProperty
-import scene.control.{ComboBox, Label}
-import scene.layout.VBox
-import scene.Scene
 import scalafx.Includes._
+import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.Scene
+import scalafx.scene.control.{ComboBox, Label}
+import scalafx.scene.layout.VBox
 
 object TextBinding extends JFXApp {
   var comboBox = new ComboBox() {

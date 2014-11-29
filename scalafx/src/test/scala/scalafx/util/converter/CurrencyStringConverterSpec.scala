@@ -26,11 +26,13 @@
  */
 package scalafx.util.converter
 
+import java.util.Locale
+import javafx.util.{converter => jfxuc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import javafx.util.{ converter => jfxuc }
+
 import scalafx.Includes._
-import java.util.Locale
 
 /**
  * CurrencyStringConverter Spec tests.

@@ -31,13 +31,10 @@ import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.geometry.Pos
 import scalafx.scene.Node
-import scalafx.scene.Node._
 import scalafx.scene.control._
-import scalafx.scene.layout.GridPane
-import scalafx.scene.layout.Priority
+import scalafx.scene.layout.{GridPane, Priority}
 import scalafx.scene.text.Font._
-import scalafx.scene.text.FontWeight
-import scalafx.scene.text.TextAlignment
+import scalafx.scene.text.{FontWeight, TextAlignment}
 
 /**
  * Basic class to control a control properties

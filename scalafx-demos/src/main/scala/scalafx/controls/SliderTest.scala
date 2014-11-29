@@ -26,15 +26,14 @@
  */
 package scalafx.controls
 
-import controls._
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.controls.controls.PropertiesNodes
+import scalafx.controls.controls.{PropertiesNodes, _}
 import scalafx.geometry.{Orientation, Pos}
 import scalafx.scene.Scene
 import scalafx.scene.control._
-import scalafx.scene.layout.{Priority, BorderPane, FlowPane, VBox}
+import scalafx.scene.layout.{BorderPane, FlowPane, Priority, VBox}
 import scalafx.scene.paint.Color
 import scalafx.util.converter.DoubleStringConverter
 

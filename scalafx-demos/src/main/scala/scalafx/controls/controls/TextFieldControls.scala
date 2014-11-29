@@ -27,12 +27,10 @@
 
 package scalafx.controls.controls
 
-import javafx.beans.value.ObservableValue
-import javafx.beans.value.ChangeListener
-import scalafx.Includes.jfxStringProperty2sfx
+import javafx.beans.value.{ChangeListener, ObservableValue}
+
 import scalafx.collections.ObservableBuffer
-import scalafx.scene.control.ChoiceBox
-import scalafx.scene.control.TextField
+import scalafx.scene.control.{ChoiceBox, TextField}
 
 class TextFieldControls(target: TextField) extends PropertiesNodes[TextField](target, "TextField Properties") {
 

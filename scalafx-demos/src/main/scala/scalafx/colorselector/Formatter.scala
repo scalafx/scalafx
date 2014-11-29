@@ -27,7 +27,6 @@
 package scalafx.colorselector
 
 import scalafx.scene.paint.Color
-import scalafx.util.StringConverter
 
 object Formatter {
   val formatters = List(HexFormatter, RgbFormatter, PercentFormatter, HsbFormatter)
@@ -36,7 +35,7 @@ object Formatter {
 
 abstract sealed case class Formatter(description: String) {
 
-  import colorselector._
+  import scalafx.colorselector.colorselector._
 
   protected def colorToRgbInt(c: Color): (Int, Int, Int) =
     (doubleToInt(c.red), doubleToInt(c.green), doubleToInt(c.blue))

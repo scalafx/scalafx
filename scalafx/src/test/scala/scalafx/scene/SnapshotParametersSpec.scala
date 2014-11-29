@@ -26,10 +26,11 @@
  */
 package scalafx.scene
 
+import javafx.{scene => jfxs}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-import javafx.{scene => jfxs}
 import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 

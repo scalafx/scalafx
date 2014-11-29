@@ -26,8 +26,7 @@
  */
 package scalafx.delegate
 
-import FireDelegate._
-import java.lang.Object
+import scalafx.delegate.FireDelegate._
 
 object FireDelegate {
 

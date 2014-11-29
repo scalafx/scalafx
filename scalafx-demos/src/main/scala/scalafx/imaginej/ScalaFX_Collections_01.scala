@@ -40,7 +40,7 @@ package scalafx.imaginej
 //
 
 import scalafx.collections.ObservableBuffer
-import ObservableBuffer.{Reorder, Remove, Add}
+import scalafx.collections.ObservableBuffer.{Add, Remove, Reorder}
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>

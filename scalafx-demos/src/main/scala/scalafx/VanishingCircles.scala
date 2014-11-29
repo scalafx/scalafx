@@ -31,7 +31,6 @@ import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Animation.Indefinite
 import scalafx.animation.Timeline
-import scalafx.animation.Tweenable.tweenable2KeyFrame
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene

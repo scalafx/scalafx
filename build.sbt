@@ -1,6 +1,6 @@
-import scala.xml._
 import java.net.URL
-import SonatypeKeys._
+
+import scala.xml._
 
 val scalafxVersion = "2.2.67-R11-SNAPSHOT"
 

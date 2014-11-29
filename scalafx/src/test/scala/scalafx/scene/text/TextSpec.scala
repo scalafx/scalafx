@@ -27,12 +27,13 @@
 
 package scalafx.scene.text
 
-import javafx.scene.{ text => jfxst }
-import scalafx.Includes._
+import javafx.scene.{text => jfxst}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
-import scalafx.testutil.PositionDelegateSpec
+
+import scalafx.Includes._
+import scalafx.testutil.{AbstractSFXDelegateSpec, PositionDelegateSpec}
 
 /**
  * Text Spec tests.

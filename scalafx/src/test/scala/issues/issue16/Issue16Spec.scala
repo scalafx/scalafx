@@ -29,12 +29,14 @@ package issues.issue16
 
 import javafx.beans.{property => jfxbp}
 import javafx.scene.{paint => jfxsp}
-import org.scalatest.FlatSpec
-import scalafx.Includes._
-import scalafx.beans.property.{ReadOnlyBooleanProperty, ObjectProperty}
-import scalafx.scene.paint.Color
+
 import org.junit.runner.RunWith
+import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
+import scalafx.beans.property.{ObjectProperty, ReadOnlyBooleanProperty}
+import scalafx.scene.paint.Color
 
 /**
  * Verify that code causing Issue 16 behaves correctly after fix.

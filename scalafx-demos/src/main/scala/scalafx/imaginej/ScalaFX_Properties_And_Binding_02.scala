@@ -39,9 +39,8 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import scalafx.beans.property.IntegerProperty
 import scalafx.beans.binding.NumberBinding
-import scalafx.beans.binding.BindingIncludes.jfxNumberBinding2sfx
+import scalafx.beans.property.IntegerProperty
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>

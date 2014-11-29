@@ -26,11 +26,13 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{ effect => jfxse }
-import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import javafx.scene.{effect => jfxse}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * Blend Spec tests.

@@ -27,12 +27,14 @@
 
 package scalafx.util
 
-import javafx.{ util => jfxu }
+import javafx.{util => jfxu}
+
+import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
-import scalafx.Includes._
-import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 
 @RunWith(classOf[JUnitRunner])
 class DurationSpec extends FlatSpec {

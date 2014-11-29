@@ -31,12 +31,8 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.canvas.Canvas
 import scalafx.scene.effect.DropShadow
-import scalafx.scene.paint.Color
-import scalafx.scene.paint.CycleMethod
-import scalafx.scene.paint.LinearGradient
-import scalafx.scene.paint.RadialGradient
-import scalafx.scene.paint.Stop
 import scalafx.scene.paint.Stop.sfxStop2jfx
+import scalafx.scene.paint.{Color, CycleMethod, LinearGradient, RadialGradient, Stop}
 
 /**
  * Example adapted from code showed in [[http://docs.oracle.com/javafx/2/canvas/jfxpub-canvas.htm]].

@@ -27,22 +27,16 @@
 
 package scalafx.beans.property
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import org.scalatest.Matchers.be
-import org.scalatest.Matchers.convertToAnyShouldWrapper
-import org.scalatest.Matchers.equal
-import org.scalatest.BeforeAndAfterEach
-import org.scalatest.FlatSpec
+import java.{util => ju}
+import javafx.beans.{property => jfxbp, value => jfxbv}
+import javafx.scene.{control => jfxsc}
 
-import java.{ util => ju }
-import javafx.beans.{ property => jfxbp }
-import javafx.beans.{ value => jfxbv }
-import javafx.scene.{ control => jfxsc }
-import scalafx.Includes.jfxBooleanBinding2sfx
-import scalafx.Includes.jfxBooleanProperty2sfx
-import scalafx.Includes.jfxObjectProperty2sfx
-import scalafx.Includes.sfxObjectPropertyWithSFXDelegate2jfxObjectProperty
+import org.junit.runner.RunWith
+import org.scalatest.Matchers.{be, convertToAnyShouldWrapper, equal}
+import org.scalatest.junit.JUnitRunner
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+
+import scalafx.Includes.{jfxBooleanBinding2sfx, jfxBooleanProperty2sfx, jfxObjectProperty2sfx, sfxObjectPropertyWithSFXDelegate2jfxObjectProperty}
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.beans.property.ObjectProperty.sfxObjectProperty2jfx
 import scalafx.scene.control.Button

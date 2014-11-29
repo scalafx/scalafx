@@ -30,19 +30,17 @@
  */
 package scalafx.util
 
-import javafx.{ util => jfxu }
+import java.text.{DecimalFormatSymbols, ParseException}
+import java.{text => jt}
+import javafx.{util => jfxu}
+
+import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
-import org.scalatest.matchers._
+import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.util.StringConverter._
-import java.{ text => jt }
-import java.util._
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import java.util.Calendar
-import java.text.ParseException
-import java.text.DecimalFormatSymbols
 
 /**
  * StringConverter Spec tests.

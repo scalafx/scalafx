@@ -26,9 +26,11 @@
  */
 package scalafx.util.converter
 
+import javafx.util.{converter => jfxuc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import javafx.util.{ converter => jfxuc }
+
 import scalafx.Includes._
 
 /**

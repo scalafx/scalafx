@@ -32,8 +32,8 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout._
+import scalafx.scene.paint.Color
 import scalafx.scene.web._
-import scene.paint.Color
 
 object WebDemo extends JFXApp {
 

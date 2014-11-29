@@ -26,10 +26,12 @@
  */
 package scalafx.scene.chart
 
-import javafx.scene.{ chart => jfxsc }
-import scalafx.Includes._
+import javafx.scene.{chart => jfxsc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**

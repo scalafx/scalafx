@@ -28,8 +28,10 @@
 package scalafx.stage
 
 import javafx.{stage => jfxs}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 

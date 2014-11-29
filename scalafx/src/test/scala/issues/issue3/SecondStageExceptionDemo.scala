@@ -30,13 +30,13 @@ import javafx.{stage => jfxs}
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.event.ActionEvent
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
-import scalafx.scene.control.{Label, Button}
+import scalafx.scene.control.{Button, Label}
 import scalafx.scene.layout.StackPane
 import scalafx.stage.Stage
-import scalafx.application.JFXApp.PrimaryStage
 
 /**
  * Illustration of problem with creating and showing a second stage using `showAndWait()`.

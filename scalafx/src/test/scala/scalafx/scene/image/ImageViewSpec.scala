@@ -26,11 +26,13 @@
  */
 package scalafx.scene.image
 
-import javafx.scene.{ image => jfxsi }
-import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import javafx.scene.{image => jfxsi}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * ImageView Spec tests.

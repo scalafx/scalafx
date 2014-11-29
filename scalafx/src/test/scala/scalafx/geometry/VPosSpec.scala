@@ -27,8 +27,10 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 

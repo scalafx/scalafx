@@ -27,13 +27,13 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.{ shape => jfxss }
-import scalafx.Includes._
+import javafx.scene.{shape => jfxss}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
-import scalafx.testutil.PositionDelegateSpec
-import scalafx.testutil.DimensionDelegateSpec
+
+import scalafx.Includes._
+import scalafx.testutil.{AbstractSFXDelegateSpec, DimensionDelegateSpec, PositionDelegateSpec}
 
 /**
  * Rectangle Spec tests.

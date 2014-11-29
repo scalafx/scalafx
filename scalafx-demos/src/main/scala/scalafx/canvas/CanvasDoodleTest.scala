@@ -30,16 +30,12 @@ import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.DoubleProperty.sfxDoubleProperty2jfx
-import scalafx.scene.Group
-import scalafx.scene.Scene
 import scalafx.scene.canvas.Canvas
 import scalafx.scene.input.MouseEvent
-import scalafx.scene.paint.Color
-import scalafx.scene.paint.CycleMethod
-import scalafx.scene.paint.LinearGradient
-import scalafx.scene.paint.Stop
 import scalafx.scene.paint.Stop.sfxStop2jfx
+import scalafx.scene.paint.{Color, CycleMethod, LinearGradient, Stop}
 import scalafx.scene.shape.Rectangle
+import scalafx.scene.{Group, Scene}
 
 /**
  * Example adapted from code showed in [[http://docs.oracle.com/javafx/2/canvas/jfxpub-canvas.htm]].

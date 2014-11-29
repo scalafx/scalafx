@@ -29,8 +29,7 @@ package scalafx.controls
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
-import scalafx.scene.control.Menu
-import scalafx.scene.control.MenuBar
+import scalafx.scene.control.{Menu, MenuBar}
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.paint.Color
 

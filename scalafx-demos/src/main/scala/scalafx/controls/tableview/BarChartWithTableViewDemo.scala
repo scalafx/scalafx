@@ -33,7 +33,7 @@ import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Scene
-import scalafx.scene.chart.{XYChart, BarChart, CategoryAxis, NumberAxis}
+import scalafx.scene.chart.{BarChart, CategoryAxis, NumberAxis, XYChart}
 import scalafx.scene.control.TableColumn._
 import scalafx.scene.control.{Label, TableColumn, TableView}
 import scalafx.scene.layout.{BorderPane, HBox}

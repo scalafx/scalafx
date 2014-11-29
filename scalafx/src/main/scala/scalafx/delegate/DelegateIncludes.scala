@@ -26,8 +26,9 @@
  */
 package scalafx.delegate
 
-import javafx.beans.{ property => jfxbp }
-import scalafx.beans.property.{ReadOnlyObjectWrapper, ObjectProperty}
+import javafx.beans.{property => jfxbp}
+
+import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectWrapper}
 
 object DelegateIncludes extends DelegateIncludes 
 

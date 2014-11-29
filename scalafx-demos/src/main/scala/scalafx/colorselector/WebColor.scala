@@ -28,7 +28,6 @@ package scalafx.colorselector
 
 import scalafx.scene.paint.Color
 import scalafx.scene.paint.Color._
-import scalafx.util.StringConverter
 
 object WebColor {
 

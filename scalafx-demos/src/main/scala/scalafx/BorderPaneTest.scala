@@ -30,9 +30,9 @@ package scalafx
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
+import scalafx.scene.layout.BorderPane
 import scalafx.scene.paint.Color
-import scene.layout.BorderPane
-import scene.shape.Circle
+import scalafx.scene.shape.Circle
 
 object BorderPaneTest extends JFXApp {
   stage = new PrimaryStage {

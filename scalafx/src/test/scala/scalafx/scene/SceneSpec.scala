@@ -27,12 +27,13 @@
 
 package scalafx.scene
 
-import javafx.{ scene => jfxs }
-import scalafx.Includes._
+import javafx.{scene => jfxs}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
-import scalafx.testutil.RunOnApplicationThread
+
+import scalafx.Includes._
+import scalafx.testutil.{AbstractSFXDelegateSpec, RunOnApplicationThread}
 
 /**
  * Scene Spec tests.

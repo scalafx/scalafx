@@ -26,11 +26,13 @@
  */
 package scalafx.geometry
 
-import javafx.{ geometry => jfxg }
-import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import javafx.{geometry => jfxg}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * Point3D Spec tests.

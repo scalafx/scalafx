@@ -26,12 +26,14 @@
  */
 package scalafx.scene.input
 
+import javafx.scene.{input => jfxsi}
+
 import org.junit.runner.RunWith
-import javafx.scene.{ input => jfxsi }
+import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.scene.input.InputEvent._
 import scalafx.testutil.SimpleSFXDelegateSpec
-import org.scalatest.junit.JUnitRunner
 
 /**
  * InputEvent Spec tests.

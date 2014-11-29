@@ -29,11 +29,8 @@ package scalafx.controls
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
-import scalafx.scene.control.Hyperlink
-import scalafx.scene.control.Label
-import scalafx.scene.control.Pagination
-import scalafx.scene.layout.AnchorPane
-import scalafx.scene.layout.VBox
+import scalafx.scene.control.{Hyperlink, Label, Pagination}
+import scalafx.scene.layout.{AnchorPane, VBox}
 
 /**
  * Demo application based on Pagination example at [[http://docs.oracle.com/javafx/2/ui_controls/pagination.htm]].

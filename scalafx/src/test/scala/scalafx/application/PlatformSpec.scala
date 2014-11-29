@@ -29,10 +29,11 @@ package scalafx.application
 
 import java.lang.reflect.Modifier
 import javafx.{application => jfxa}
+
 import org.junit.runner.RunWith
-import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.Matchers
+import org.scalatest.{FlatSpec, Matchers}
+
 import scalafx.Includes._
 import scalafx.testutil.RunOnApplicationThread
 
