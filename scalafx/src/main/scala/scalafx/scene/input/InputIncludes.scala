@@ -261,7 +261,7 @@ trait InputIncludes {
    */
   implicit def jfxMouseDragEvent2sfx(mde: jfxsi.MouseDragEvent): MouseDragEvent = if (mde != null) new MouseDragEvent(mde) else null
 
-  implicit def jfxPickResult2sfx(m: jfxsi.PickResult) =
+  implicit def jfxPickResult2sfx(m: jfxsi.PickResult): PickResult =
     if (m != null) new PickResult(m) else null
 
   /**

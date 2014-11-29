@@ -27,7 +27,6 @@
 package scalafx.scene.media
 
 import javafx.scene.{media => jfxsm}
-import javafx.{event => jfxe}
 
 import scala.language.implicitConversions
 import scalafx.scene.media.MediaException.Type
@@ -167,10 +166,10 @@ trait MediaIncludes {
   /**
    * $START$SBTR.html $SBTR$END
    *
-   * @param mv $JFX $SBTR
+   * @param st $JFX $SBTR
    * @return $SFX $SBTR
    */
-  implicit def jfxSubtitleTrack2sfx(st: jfxsm.SubtitleTrack) = if (st != null) new SubtitleTrack(st) else null
+  implicit def jfxSubtitleTrack2sfx(st: jfxsm.SubtitleTrack): SubtitleTrack = if (st != null) new SubtitleTrack(st) else null
 
   /**
    * $START$TRAC.html $TRAC$END

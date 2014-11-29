@@ -26,12 +26,13 @@
  */
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
 import javafx.scene.{layout => jfxsl}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Border {
-  implicit def sfxBorder2jfx(v: Border) = if (v != null) v.delegate else null
+  implicit def sfxBorder2jfx(v: Border): jfxsl.Border = if (v != null) v.delegate else null
 
   /** An empty Border, useful to use instead of null. */
   val EMPTY = jfxsl.Border.EMPTY

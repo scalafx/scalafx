@@ -108,5 +108,5 @@ trait TextIncludes {
    */
   implicit def jfxTextBoundsType2sfx(e: jfxst.TextBoundsType): TextBoundsType = TextBoundsType.jfxEnum2sfx(e)
 
-  implicit def jfxTextFlow2sfx(tf: jfxst.TextFlow) = if (tf != null) new TextFlow(tf) else null
+  implicit def jfxTextFlow2sfx(tf: jfxst.TextFlow): TextFlow = if (tf != null) new TextFlow(tf) else null
 }

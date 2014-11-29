@@ -26,9 +26,9 @@
  */
 package scalafx.css
 
-import scala.language.implicitConversions
-
 import javafx.{css => jfxcss}
+
+import scala.language.implicitConversions
 
 object CssIncludes extends CssIncludes
 
@@ -69,7 +69,7 @@ trait CssIncludes {
    * @param d $JFX $PS
    * @return $SFX $PS
    */
-  implicit def jfxPseudoClass2sfx(d: jfxcss.PseudoClass) = if (d != null) new PseudoClass(d) {} else null
+  implicit def jfxPseudoClass2sfx(d: jfxcss.PseudoClass): PseudoClass = if (d != null) new PseudoClass(d) {} else null
 
   /**
    * $START$ST.html $ST$END
@@ -77,7 +77,7 @@ trait CssIncludes {
    * @param s $JFX $ST
    * @return $SFX $ST
    */
-  implicit def jfxStyleable2sfx(s: jfxcss.Styleable) =
+  implicit def jfxStyleable2sfx(s: jfxcss.Styleable): Styleable =
     if (s != null)
       new Styleable {
         override val delegate = s
@@ -100,7 +100,7 @@ trait CssIncludes {
    * @param o $JFX $SO
    * @return $SFX $SO
    */
-  implicit def jfxStyleOrigin2sfx(o: jfxcss.StyleOrigin) = StyleOrigin.jfxEnum2sfx(o)
+  implicit def jfxStyleOrigin2sfx(o: jfxcss.StyleOrigin): StyleOrigin = StyleOrigin.jfxEnum2sfx(o)
 
   /*
    * $START$MD.html $MD$END
@@ -128,7 +128,7 @@ trait CssIncludes {
    * @param sc $JFX $SC
    * @return $SFX $SC
    */
-  implicit def jfxStyleConverter2sfx[F, T](sc: jfxcss.StyleConverter[F, T]) =
+  implicit def jfxStyleConverter2sfx[F, T](sc: jfxcss.StyleConverter[F, T]): StyleConverter[F, T] =
     if (sc != null) new StyleConverter[F, T](sc) else null
 
 }

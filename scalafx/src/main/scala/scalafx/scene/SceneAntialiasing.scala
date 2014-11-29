@@ -26,8 +26,9 @@
  */
 package scalafx.scene
 
-import scala.language.implicitConversions
 import javafx.{scene => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 /**
@@ -41,7 +42,7 @@ object SceneAntialiasing {
   /**
    * Convert a ScalaFX scene antialiasing value to a JavaFX scene-antialiasing value.
    */
-  implicit def sfxSceneAntialiasing2jfx(v: SceneAntialiasing) = if (v != null) v.delegate else null
+  implicit def sfxSceneAntialiasing2jfx(v: SceneAntialiasing): jfxs.SceneAntialiasing = if (v != null) v.delegate else null
 
   /**
    * Disables antialiasing.

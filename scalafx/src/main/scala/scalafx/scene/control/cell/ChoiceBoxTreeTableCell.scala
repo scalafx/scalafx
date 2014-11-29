@@ -26,12 +26,11 @@
  */
 package scalafx.scene.control.cell
 
-import scala.language.implicitConversions
+import javafx.scene.control.{cell => jfxscc}
+import javafx.scene.{control => jfxsc}
+import javafx.{collections => jfxc, util => jfxu}
 
-import javafx.{ collections => jfxc }
-import javafx.scene.{ control => jfxsc }
-import javafx.scene.control.{ cell => jfxscc }
-import javafx.{ util => jfxu }
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
@@ -46,7 +45,7 @@ import scalafx.util.StringConverter
  *
  * @define CBTTC `ChoiceBoxTreeTableCell`
  * @define TTC TreeTableColumn
- * @define FTTC Creates a [[scalafx.scene.control.ChoiceBox ChoiceBox]] cell factory for use in $TTC controls.
+ * @define FTTC Creates a [[scalafx.scene.control.ChoiceBox C h o i c e B o x]] cell factory for use in $TTC controls.
  * @define RETFTTC A Function that will return a $TTCL that is able to work on the type of element contained within the $TTC.
  * @define STYPE
  * @define TTYPE The type of the elements contained within the `$TTC` instance.
@@ -65,7 +64,7 @@ object ChoiceBoxTreeTableCell {
    * @param cell ScalaFX $CBTTC
    * @return JavaFX $CBTTC
    */
-  implicit def sfxChoiceBoxTreeTableCell2jfx[S, T](cell: ChoiceBoxTreeTableCell[S, T]) = if (cell != null) cell.delegate else null
+  implicit def sfxChoiceBoxTreeTableCell2jfx[S, T](cell: ChoiceBoxTreeTableCell[S, T]): jfxsc.cell.ChoiceBoxTreeTableCell[S, T] = if (cell != null) cell.delegate else null
 
   /**
    * $FTTC
@@ -155,10 +154,10 @@ object ChoiceBoxTreeTableCell {
  * @define ITEMSPARAM Zero or more items that will be shown to the user when the ChoiceBox menu is showing.
  * @define BUFITEMSPARAM A `ObservableBuffer` containing $ITEMSPARAM
  * @define DEFCOMPL Creates a default $CBTTC instance with the given items being used to populate the
- * [[scalafx.scene.control.ChoiceBox ChoiceBox]] when it is shown.
+ *         [[scalafx.scene.control.ChoiceBox C h o i c e B o x]] when it is shown.
  * @define CONSCOMPL Creates a `$CBTTC` instance with the given items being used to populate the
- * [[scalafx.scene.control.ChoiceBox ChoiceBox]] when it is shown, and the [[scalafx.util.StringConverter StringConverter]]
- * being used to convert the item in to a user-readable form.
+ *         [[scalafx.scene.control.ChoiceBox C h o i c e B o x]] when it is shown, and the [[scalafx.util.StringConverter S t r i n g C o n v e r t e r]]
+ *         being used to convert the item in to a user-readable form.
  * @define URL0 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxTreeTableCell.html
  * @define ORIGINALDOC Original Documentation]].
  */

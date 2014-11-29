@@ -26,16 +26,16 @@
  */
 package scalafx.scene.shape
 
-import scala.language.implicitConversions
 import javafx.scene.{shape => jfxss}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.collections.ObservableFloatArray
-import scalafx.collections.ObservableIntegerArray
+import scalafx.collections.{ObservableFloatArray, ObservableIntegerArray}
 import scalafx.delegate.SFXDelegate
 
 
 object TriangleMesh {
-  implicit def sfxTriangleMesh2jfx(tm: TriangleMesh) = if (tm != null) tm.delegate else null
+  implicit def sfxTriangleMesh2jfx(tm: TriangleMesh): jfxss.TriangleMesh = if (tm != null) tm.delegate else null
 }
 
 /**

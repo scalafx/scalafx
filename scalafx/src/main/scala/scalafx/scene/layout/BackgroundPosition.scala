@@ -26,14 +26,15 @@
  */
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
 import javafx.scene.{layout => jfxsl}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Side
 
 object BackgroundPosition {
-  implicit def sfxBackgroundPosition2jfx(v: BackgroundPosition) = if (v != null) v.delegate else null
+  implicit def sfxBackgroundPosition2jfx(v: BackgroundPosition): jfxsl.BackgroundPosition = if (v != null) v.delegate else null
 
   /** A BackgroundPosition which will center a BackgroundImage. */
   val Center = jfxsl.BackgroundPosition.CENTER

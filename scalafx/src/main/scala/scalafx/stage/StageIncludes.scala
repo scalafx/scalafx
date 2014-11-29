@@ -30,6 +30,7 @@ import javafx.{stage => jfxs}
 
 import scala.language.implicitConversions
 import scalafx.stage.FileChooser.ExtensionFilter
+import scalafx.stage.PopupWindow.AnchorLocation
 
 object StageIncludes extends StageIncludes
 
@@ -96,7 +97,7 @@ trait StageIncludes {
    * @param v $JFX $PWAL
    * @return $SFX $PWAL
    */
-  implicit def jfxPopupWindowAnchorLocation2sfx(v: jfxs.PopupWindow.AnchorLocation) = PopupWindow.AnchorLocation.jfxEnum2sfx(v)
+  implicit def jfxPopupWindowAnchorLocation2sfx(v: jfxs.PopupWindow.AnchorLocation): AnchorLocation = PopupWindow.AnchorLocation.jfxEnum2sfx(v)
 
   /**
    * $START$PP.html $PP$END

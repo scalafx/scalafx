@@ -26,18 +26,18 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import java.time.LocalDate
 import java.time.chrono.Chronology
-
 import javafx.scene.{control => jfxsc}
 import javafx.{util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
 object DatePicker {
-  implicit def sfxDatePicker2jfx(v: DatePicker) = if (v != null) v.delegate else null
+  implicit def sfxDatePicker2jfx(v: DatePicker): jfxsc.DatePicker = if (v != null) v.delegate else null
 }
 
 /**

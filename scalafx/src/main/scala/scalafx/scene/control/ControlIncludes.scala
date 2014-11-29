@@ -286,7 +286,7 @@ trait ControlIncludes
    * @param v $JFX $DTCL
    * @return $SFX $DTCL
    */
-  implicit def jfxDateCell2sfx(v: jfxsc.DateCell) = if (v != null) new DateCell(v) else null
+  implicit def jfxDateCell2sfx(v: jfxsc.DateCell): DateCell = if (v != null) new DateCell(v) else null
 
   /**
    * $START$DTPR.html $DTPR$END
@@ -295,7 +295,7 @@ trait ControlIncludes
    * @param v $JFX $DTPR
    * @return $SFX $DTPR
    */
-  implicit def jfxDatePicker2sfx(v: jfxsc.DatePicker) = if (v != null) new DatePicker(v) else null
+  implicit def jfxDatePicker2sfx(v: jfxsc.DatePicker): DatePicker = if (v != null) new DatePicker(v) else null
 
   /**
    * $START$FCMD.html $FCMD$END
@@ -548,7 +548,7 @@ trait ControlIncludes
    * @return $SFX $TBPB
    * @since 8.0
    */
-  implicit def jfxTablePositionBase2sfx[TC <: jfxsc.TableColumnBase[_, _]](tpb: jfxsc.TablePositionBase[TC]) =
+  implicit def jfxTablePositionBase2sfx[TC <: jfxsc.TableColumnBase[_, _]](tpb: jfxsc.TablePositionBase[TC]): TablePositionBase[TC] =
     if (tpb != null) new TablePositionBase[TC](tpb) {} else null
 
   /**
@@ -604,7 +604,7 @@ trait ControlIncludes
    * @param tsm $JFX $TBSM
    * @return $SFX $TBSM
    */
-  implicit def jfxTableSelectionModel2sfx[T](tsm: jfxsc.TableSelectionModel[T]) =
+  implicit def jfxTableSelectionModel2sfx[T](tsm: jfxsc.TableSelectionModel[T]): TableSelectionModel[T] =
     if (tsm != null) new TableSelectionModel[T](tsm) {} else null
   /*
    * $START$TBCB.html $TBCB$END
@@ -640,7 +640,7 @@ trait ControlIncludes
    * @return $SFX $TBFM
    * @since 8.0
    */
-  implicit def jfxTableFocusModel2sfx[T, TC <: jfxsc.TableColumnBase[T, _]](tfm: jfxsc.TableFocusModel[T, TC]) =
+  implicit def jfxTableFocusModel2sfx[T, TC <: jfxsc.TableColumnBase[T, _]](tfm: jfxsc.TableFocusModel[T, TC]): TableFocusModel[T, TC] =
     if (tfm != null) new TableFocusModel[T, TC](tfm) {} else null
 
   /**
@@ -690,7 +690,7 @@ trait ControlIncludes
    * @param sb $JFX $SNBE
    * @return $SFX $SNBE
    */
-  implicit def jfxSkinBase2sfx[C <: jfxsc.Control](sb: jfxsc.SkinBase[C]) =
+  implicit def jfxSkinBase2sfx[C <: jfxsc.Control](sb: jfxsc.SkinBase[C]): SkinBase[C] =
     if (sb != null) new SkinBase[C](sb) {} else null
 
   /**
@@ -936,7 +936,7 @@ trait ControlIncludes
    * @return $SFX $TRSM
    * @since 8.0
    */
-  implicit def jfxTreeSortMode2sfx(tsm: jfxsc.TreeSortMode) = TreeSortMode.jfxEnum2sfx(tsm)
+  implicit def jfxTreeSortMode2sfx(tsm: jfxsc.TreeSortMode): TreeSortMode = TreeSortMode.jfxEnum2sfx(tsm)
 
   /**
    * $START$TRTP.html $TRTP$END

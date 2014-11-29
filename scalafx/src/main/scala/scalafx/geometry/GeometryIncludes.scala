@@ -107,7 +107,7 @@ trait GeometryIncludes {
    * @param e JavaFX NodeOrientation
    * @return ScalaFX NodeOrientation
    */
-  implicit def jfxNodeOrientation2sfx(e: jfxg.NodeOrientation) = NodeOrientation.jfxEnum2sfx(e)
+  implicit def jfxNodeOrientation2sfx(e: jfxg.NodeOrientation): NodeOrientation = NodeOrientation.jfxEnum2sfx(e)
 
   /**
    * Converts a

@@ -75,18 +75,18 @@ trait LayoutIncludes {
    * @param v $JFX $BKGN
    * @return $SFX $BKGN
    */
-  implicit def jfxBackground2sfx(v: jfxsl.Background) = if (v != null) new Background(v) else null
+  implicit def jfxBackground2sfx(v: jfxsl.Background): Background = if (v != null) new Background(v) else null
 
-  implicit def jfxBackgroundFill2sfx(v: jfxsl.BackgroundFill) = if (v != null) new BackgroundFill(v) else null
+  implicit def jfxBackgroundFill2sfx(v: jfxsl.BackgroundFill): BackgroundFill = if (v != null) new BackgroundFill(v) else null
 
-  implicit def jfxBackgroundImage2sfx(v: jfxsl.BackgroundImage) = if (v != null) new BackgroundImage(v) else null
+  implicit def jfxBackgroundImage2sfx(v: jfxsl.BackgroundImage): BackgroundImage = if (v != null) new BackgroundImage(v) else null
 
-  implicit def jfxBackgroundPosition2sfx(v: jfxsl.BackgroundPosition) =
+  implicit def jfxBackgroundPosition2sfx(v: jfxsl.BackgroundPosition): BackgroundPosition =
     if (v != null) new BackgroundPosition(v) else null
 
-  implicit def jfxBackgroundRepeat2sfx(v: jfxsl.BackgroundRepeat) = if (v != null) new BackgroundRepeat(v) else null
+  implicit def jfxBackgroundRepeat2sfx(v: jfxsl.BackgroundRepeat): BackgroundRepeat = if (v != null) new BackgroundRepeat(v) else null
 
-  implicit def jfxBackgroundSize2sfx(v: jfxsl.BackgroundSize) = if (v != null) new BackgroundSize(v) else null
+  implicit def jfxBackgroundSize2sfx(v: jfxsl.BackgroundSize): BackgroundSize = if (v != null) new BackgroundSize(v) else null
 
   /**
    * $START$BRDR.html $BRDR$END
@@ -94,9 +94,9 @@ trait LayoutIncludes {
    * @param v $JFX $BRDR
    * @return $SFX $BRDR
    */
-  implicit def jfxBorder2sfx(v: jfxsl.Border) = if (v != null) new Border(v) else null
+  implicit def jfxBorder2sfx(v: jfxsl.Border): Border = if (v != null) new Border(v) else null
 
-  implicit def jfxBorderImage2sfx(v: jfxsl.BorderImage) = if (v != null) new BorderImage(v) else null
+  implicit def jfxBorderImage2sfx(v: jfxsl.BorderImage): BorderImage = if (v != null) new BorderImage(v) else null
 
   /**
    * $START$BDPN.html $BDPN$END
@@ -106,14 +106,14 @@ trait LayoutIncludes {
    */
   implicit def jfxBorderPane2sfx(v: jfxsl.BorderPane): BorderPane = if (v != null) new BorderPane(v) else null
 
-  implicit def jfxBorderRepeat2sfx(v: jfxsl.BorderRepeat) = if (v != null) new BorderRepeat(v) else null
+  implicit def jfxBorderRepeat2sfx(v: jfxsl.BorderRepeat): BorderRepeat = if (v != null) new BorderRepeat(v) else null
 
-  implicit def jfxBorderStroke2sfx(v: jfxsl.BorderStroke) = if (v != null) new BorderStroke(v) else null
+  implicit def jfxBorderStroke2sfx(v: jfxsl.BorderStroke): BorderStroke = if (v != null) new BorderStroke(v) else null
 
-  implicit def jfxBorderStrokeStyle2sfx(v: jfxsl.BorderStrokeStyle) =
+  implicit def jfxBorderStrokeStyle2sfx(v: jfxsl.BorderStrokeStyle): BorderStrokeStyle =
     if (v != null) new BorderStrokeStyle(v) else null
 
-  implicit def jfxBorderWidths2sfx(v: jfxsl.BorderWidths) = if (v != null) new BorderWidths(v) else null
+  implicit def jfxBorderWidths2sfx(v: jfxsl.BorderWidths): BorderWidths = if (v != null) new BorderWidths(v) else null
 
   /**
    * $START$CLCT.html $CLCT$END
@@ -131,7 +131,7 @@ trait LayoutIncludes {
    */
   implicit def jfxConstraintsBase2sfx(v: jfxsl.ConstraintsBase): ConstraintsBase = if (v != null) new ConstraintsBase(v) {} else null
 
-  implicit def jfxCornerRadii2sfx(v: jfxsl.CornerRadii) = if (v != null) new CornerRadii(v) {} else null
+  implicit def jfxCornerRadii2sfx(v: jfxsl.CornerRadii): CornerRadii = if (v != null) new CornerRadii(v) {} else null
 
   /**
    * $START$FLPN.html $FLPN$END

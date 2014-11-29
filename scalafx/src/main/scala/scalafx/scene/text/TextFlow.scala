@@ -37,7 +37,7 @@ import scalafx.scene.Node
 import scalafx.scene.layout.Pane
 
 object TextFlow {
-  implicit def sfxTextFlow2jfx(v: TextFlow) = if (v != null) v.delegate else null
+  implicit def sfxTextFlow2jfx(v: TextFlow): jfxst.TextFlow = if (v != null) v.delegate else null
 
   def classCssMetaData = jfxst.TextFlow.getClassCssMetaData
 

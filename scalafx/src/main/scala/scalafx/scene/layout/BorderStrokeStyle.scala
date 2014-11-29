@@ -26,15 +26,16 @@
  */
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
 import javafx.scene.{layout => jfxsl}
+
+import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
-import scalafx.scene.shape.{StrokeLineJoin, StrokeType, StrokeLineCap}
-import scala.collection.JavaConversions._
+import scalafx.scene.shape.{StrokeLineCap, StrokeLineJoin, StrokeType}
 
 object BorderStrokeStyle {
-  implicit def sfxBorderStrokeStyle2jfx(v: BorderStrokeStyle) = if (v != null) v.delegate else null
+  implicit def sfxBorderStrokeStyle2jfx(v: BorderStrokeStyle): jfxsl.BorderStrokeStyle = if (v != null) v.delegate else null
 
   /**
    * A predefined dashed pattern to be used for stroking

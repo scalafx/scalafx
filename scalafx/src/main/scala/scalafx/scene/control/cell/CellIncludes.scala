@@ -100,7 +100,7 @@ trait CellIncludes {
    * @param cell $JFX $CBTTC
    * @return $SFX $CBTTC
    */
-  implicit def jfxCheckBoxTreeTableCell2sfx[S, T](cell: jfxscc.CheckBoxTreeTableCell[S, T]) = if (cell != null) new CheckBoxTreeTableCell[S, T](cell) else null
+  implicit def jfxCheckBoxTreeTableCell2sfx[S, T](cell: jfxscc.CheckBoxTreeTableCell[S, T]): CheckBoxTreeTableCell[S, T] = if (cell != null) new CheckBoxTreeTableCell[S, T](cell) else null
 
   /**
    * $START$XOBLC.html $XOBLC$END
@@ -137,7 +137,7 @@ trait CellIncludes {
    * @param cell $JFX $XOTTC
    * @return $SFX $XOTTC
    */
-  implicit def jfxChoiceBoxTreeTableCell2sfx[S, T](cell: jfxscc.ChoiceBoxTreeTableCell[S, T]) = if (cell != null) new ChoiceBoxTreeTableCell[S, T](cell) else null
+  implicit def jfxChoiceBoxTreeTableCell2sfx[S, T](cell: jfxscc.ChoiceBoxTreeTableCell[S, T]): ChoiceBoxTreeTableCell[S, T] = if (cell != null) new ChoiceBoxTreeTableCell[S, T](cell) else null
 
   /**
    * $START$CMBLC.html $CMBLC$END
@@ -174,7 +174,7 @@ trait CellIncludes {
    * @param cell $JFX $CMBRC
    * @return $SFX $CMBRC
    */
-  implicit def jfxComboBoxTreeTableCell2sfx[S, T](cell: jfxscc.ComboBoxTreeTableCell[S, T]) = if (cell != null) new ComboBoxTreeTableCell[S, T](cell) else null
+  implicit def jfxComboBoxTreeTableCell2sfx[S, T](cell: jfxscc.ComboBoxTreeTableCell[S, T]): ComboBoxTreeTableCell[S, T] = if (cell != null) new ComboBoxTreeTableCell[S, T](cell) else null
 
   /**
    * $START$PRBTC.html $PRBTC$END
@@ -220,6 +220,6 @@ trait CellIncludes {
    * @param cell $JFX $TXTTC
    * @return $SFX $TXTTC
    */
-  implicit def jfxTextFieldTreeTableCell2sfx[S, T](cell: jfxscc.TextFieldTreeTableCell[S, T]) = if (cell != null) new TextFieldTreeTableCell[S, T](cell) else null
+  implicit def jfxTextFieldTreeTableCell2sfx[S, T](cell: jfxscc.TextFieldTreeTableCell[S, T]): TextFieldTreeTableCell[S, T] = if (cell != null) new TextFieldTreeTableCell[S, T](cell) else null
 
 }

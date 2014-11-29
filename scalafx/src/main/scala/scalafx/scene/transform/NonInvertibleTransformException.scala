@@ -26,12 +26,13 @@
  */
 package scalafx.scene.transform
 
-import scala.language.implicitConversions
 import javafx.scene.{transform => jfxst}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object NonInvertibleTransformException {
-  implicit def sfxNonInvertibleTransformException2jfx(v: NonInvertibleTransformException) =
+  implicit def sfxNonInvertibleTransformException2jfx(v: NonInvertibleTransformException): jfxst.NonInvertibleTransformException =
     if (v != null) v.delegate else null
 }
 

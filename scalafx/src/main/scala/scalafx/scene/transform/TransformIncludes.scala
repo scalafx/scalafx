@@ -59,9 +59,9 @@ trait TransformIncludes {
    */
   implicit def jfxAffine2sfx(v: jfxst.Affine): Affine = if (v != null) new Affine(v) else null
 
-  implicit def jfxMatrixType2sfx(v: jfxst.MatrixType) = if (v != null) new MatrixType(v) else null
+  implicit def jfxMatrixType2sfx(v: jfxst.MatrixType): MatrixType = if (v != null) new MatrixType(v) else null
 
-  implicit def jfxNonInvertibleTransformException2sfx(v: jfxst.NonInvertibleTransformException) =
+  implicit def jfxNonInvertibleTransformException2sfx(v: jfxst.NonInvertibleTransformException): NonInvertibleTransformException =
     if (v != null) new NonInvertibleTransformException(v) else null
 
   /**
@@ -96,7 +96,7 @@ trait TransformIncludes {
    */
   implicit def jfxTransform2sfx(v: jfxst.Transform): Transform = if (v != null) new Transform(v) {} else null
 
-  implicit def jfxTransformChangedEvent2sfx(v: jfxst.TransformChangedEvent) =
+  implicit def jfxTransformChangedEvent2sfx(v: jfxst.TransformChangedEvent): TransformChangedEvent =
     if (v != null) new TransformChangedEvent(v) else null
 
   /**
