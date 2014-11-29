@@ -26,10 +26,10 @@
  */
 package scalafx.embed.swing
 
-import scala.language.implicitConversions
-
 import javafx.embed.{swing => jfxes}
 import javax.swing.JComponent
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 

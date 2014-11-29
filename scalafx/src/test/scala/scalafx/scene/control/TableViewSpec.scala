@@ -33,8 +33,8 @@ import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
 
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 import scalafx.collections.ObservableBuffer
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TableViewSpec tests.

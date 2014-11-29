@@ -30,7 +30,6 @@
  */
 package scalafx.controls.controls
 
-import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property._

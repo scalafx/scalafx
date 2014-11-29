@@ -27,14 +27,12 @@
 
 package scalafx.controls
 
-import scalafx.scene.layout.Priority
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.controls.controls._
 import scalafx.scene.Scene
 import scalafx.scene.control.ComboBox
-import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{BorderPane, Priority, VBox}
 import scalafx.scene.paint.Color
 
 

@@ -26,28 +26,20 @@
  */
 package scalafx.colorselector
 
-import colorselector.Max
-import colorselector.doubleToInt
 import scala.collection.Seq
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.collections.ObservableBuffer
-import scalafx.collections.ObservableBuffer.Add
-import scalafx.collections.ObservableBuffer.Change
-import scalafx.collections.ObservableBuffer.Remove
+import scalafx.collections.ObservableBuffer.{Add, Change, Remove}
+import scalafx.colorselector.colorselector.{Max, doubleToInt}
 import scalafx.event.ActionEvent
 import scalafx.geometry.{HPos, Pos, VPos}
 import scalafx.scene.Scene
-import scalafx.scene.control.CheckBox
-import scalafx.scene.control.ComboBox
-import scalafx.scene.control.Label
-import scalafx.scene.control.TextField
+import scalafx.scene.control.{CheckBox, ComboBox, Label, TextField}
 import scalafx.scene.effect.Reflection
-import scalafx.scene.input.MouseButton
-import scalafx.scene.input.MouseEvent
+import scalafx.scene.input.{MouseButton, MouseEvent}
 import scalafx.scene.layout._
 import scalafx.scene.paint.Color
 import scalafx.scene.text.TextAlignment

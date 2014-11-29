@@ -28,11 +28,12 @@
 package scalafx.stage
 
 import javafx.{stage => jfxs}
-import scalafx.Includes._
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.SimpleSFXDelegateSpec
-import scalafx.testutil.RunOnApplicationThread
+
+import scalafx.Includes._
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Screen Spec tests.

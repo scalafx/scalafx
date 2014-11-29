@@ -27,15 +27,15 @@
 
 package scalafx
 
-import scalafx.application.JFXApp
-import scalafx.event.ActionEvent
 import scalafx.Includes._
+import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
+import scalafx.event.ActionEvent
+import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout.GridPane
 import scalafx.scene.paint.Color
-import scalafx.geometry.Insets
 
 object CheckBoxTest extends JFXApp {
 

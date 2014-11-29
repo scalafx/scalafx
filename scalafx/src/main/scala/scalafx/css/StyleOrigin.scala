@@ -27,9 +27,8 @@
 package scalafx.css
 
 import javafx.{css => jfxcss}
-import scalafx.delegate.SFXEnumDelegate
-import scalafx.delegate.SFXEnumDelegateCompanion
-import javafx.{css => jfxcss}
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
  * Companion object for [[scalafx.css.StyleOrigin]].

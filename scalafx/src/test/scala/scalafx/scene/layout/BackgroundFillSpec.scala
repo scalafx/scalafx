@@ -27,13 +27,15 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{ layout => jfxsl }
-import scalafx.Includes._
+import javafx.scene.{layout => jfxsl}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.SimpleSFXDelegateSpec
-import scalafx.scene.paint.Color
+
+import scalafx.Includes._
 import scalafx.geometry.Insets
+import scalafx.scene.paint.Color
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * BackgroundFill Spec tests.

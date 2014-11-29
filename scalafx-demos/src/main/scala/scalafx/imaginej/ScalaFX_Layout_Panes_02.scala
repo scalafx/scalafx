@@ -44,7 +44,7 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
-import scalafx.scene.layout.{HBox, BorderPane}
+import scalafx.scene.layout.{BorderPane, HBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 

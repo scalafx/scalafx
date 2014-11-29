@@ -26,9 +26,10 @@
  */
 package scalafx.delegate
 
+import javafx.beans.{property => jfxbp}
+
 import scala.language.implicitConversions
-import javafx.beans.{ property => jfxbp }
-import scalafx.beans.property.{ReadOnlyObjectWrapper, ObjectProperty}
+import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectWrapper}
 
 object DelegateIncludes extends DelegateIncludes 
 

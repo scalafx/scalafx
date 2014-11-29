@@ -26,11 +26,13 @@
  */
 package scalafx.scene.media
 
-import javafx.scene.{ media => jfxsm }
+import javafx.scene.{media => jfxsm}
+
 import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
-import org.scalatest.junit.JUnitRunner
 
 /** Tests for [[scalafx.scene.media.MediaPlayer.Status]]. */
 @RunWith(classOf[JUnitRunner])

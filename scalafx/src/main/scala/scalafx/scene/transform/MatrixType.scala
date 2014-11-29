@@ -27,7 +27,8 @@
 package scalafx.scene.transform
 
 import javafx.scene.{transform => jfxst}
-import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.scene.transform.MatrixType]] */
 object MatrixType extends SFXEnumDelegateCompanion[jfxst.MatrixType, MatrixType] {

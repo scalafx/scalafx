@@ -27,7 +27,7 @@
 package scalafx.controls
 
 import javafx.{geometry => jfxg}
-import scalafx.Includes._
+
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.collections.ObservableBuffer

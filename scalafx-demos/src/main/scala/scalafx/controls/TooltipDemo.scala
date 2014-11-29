@@ -28,6 +28,7 @@ package scalafx.controls
 
 import javafx.scene.control.ContentDisplay
 import javafx.scene.{control => jfxsc, text => jfxst}
+
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.collections.ObservableBuffer

@@ -27,14 +27,15 @@
 
 package scalafx.collections
 
+import javafx.{collections => jfxc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-import javafx.{collections => jfxc}
 import scala.collection.mutable.Buffer
-import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.Includes._
 import scalafx.collections.ObservableArray.Change
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ObservableIntegerArray Spec tests.

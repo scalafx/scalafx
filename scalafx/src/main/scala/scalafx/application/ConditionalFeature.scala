@@ -27,6 +27,7 @@
 package scalafx.application
 
 import javafx.{application => jfxa}
+
 import scalafx.delegate._
 
 

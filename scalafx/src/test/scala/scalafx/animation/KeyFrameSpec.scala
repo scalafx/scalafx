@@ -26,14 +26,14 @@
  */
 package scalafx.animation
 
-import scala.language.postfixOps
+import javafx.{animation => jfxa, event => jfxe}
 
-import collection.JavaConversions._
-import javafx.{ animation => jfxa }
-import javafx.{ event => jfxe }
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.Matchers._
+import org.scalatest.junit.JUnitRunner
+
+import scala.collection.JavaConversions._
+import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.event.ActionEvent

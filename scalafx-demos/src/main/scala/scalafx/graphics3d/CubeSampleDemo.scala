@@ -34,7 +34,7 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.transform.{Rotate, Translate}
-import scalafx.scene.{Node, PerspectiveCamera, Scene, SceneAntialiasing, Group}
+import scalafx.scene.{Group, Node, PerspectiveCamera, Scene, SceneAntialiasing}
 
 /**
  * A port of the JavaFX Ensemble CubeSampleDemo

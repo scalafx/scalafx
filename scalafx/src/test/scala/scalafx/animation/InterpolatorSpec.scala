@@ -26,16 +26,17 @@
  */
 package scalafx.animation
 
-import scala.language.postfixOps
-
 import javafx.{animation => jfxa}
-import org.scalatest.Matchers._
-import org.scalatest.FlatSpec
-import scalafx.Includes._
-import scalafx.testutil.PropertyComparator
-import scalafx.beans.property._
+
 import org.junit.runner.RunWith
+import org.scalatest.FlatSpec
+import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
+
+import scala.language.postfixOps
+import scalafx.Includes._
+import scalafx.beans.property._
+import scalafx.testutil.PropertyComparator
 
 /**
  * FadeTransition Spec tests.

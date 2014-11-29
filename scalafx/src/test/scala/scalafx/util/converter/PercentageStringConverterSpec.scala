@@ -26,12 +26,13 @@
  */
 package scalafx.util.converter
 
-import java.lang.Number
 import java.util.Locale
-import org.junit.runner.RunWith
 import javafx.util.{converter => jfxuc}
-import scalafx.Includes._
+
+import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 
 /**
  * PercentageStringConverter Spec tests.

@@ -44,12 +44,10 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
-import scalafx.scene.layout.{VBox, HBox, BorderPane}
+import scalafx.scene.layout.{BorderPane, HBox, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-import scalafx.scene.text.Font
-import scalafx.scene.text.FontWeight
-import scalafx.scene.text.Text
+import scalafx.scene.text.{Font, FontWeight, Text}
 
 
 /**

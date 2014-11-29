@@ -26,13 +26,14 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import scalafx.Includes._
+import javafx.scene.{control => jfxsc}
+
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.SimpleSFXDelegateSpec
-import scalafx.testutil.RunOnApplicationThread
 import org.scalatest.Matchers._
+import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ContextMenu Spec tests.

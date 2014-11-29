@@ -26,9 +26,11 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
+import javafx.scene.{control => jfxsc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 

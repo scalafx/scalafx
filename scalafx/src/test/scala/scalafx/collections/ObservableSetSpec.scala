@@ -26,17 +26,17 @@
  */
 package scalafx.collections
 
-import scala.collection.JavaConversions._
-import scala.collection.mutable._
+import java.{util => ju}
+import javafx.{collections => jfxc}
+
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.Matchers._
-import javafx.{ collections => jfxc }
-import java.{ util => ju }
+import org.scalatest.junit.JUnitRunner
+
+import scala.collection.mutable._
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.collections.ObservableSet._
-import scalafx.collections._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ObservableSet[T] Spec tests.

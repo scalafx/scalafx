@@ -27,13 +27,15 @@
 
 package scalafx.beans.property
 
-import org.scalatest.Matchers._
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 import javafx.beans.{property => jfxbp}
 import javafx.scene.{paint => jfxsp}
-import scalafx.Includes._
+
 import org.junit.runner.RunWith
+import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+
+import scalafx.Includes._
 
 /**
  * ReadOnlyObjectProperty Spec tests.

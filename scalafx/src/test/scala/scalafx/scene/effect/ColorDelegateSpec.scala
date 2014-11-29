@@ -26,10 +26,11 @@
  */
 package scalafx.scene.effect
 
-import org.scalatest.Matchers._
+import javafx.scene.{paint => jfxsp}
+
 import org.scalatest.FlatSpec
-import javafx.scene.{ paint => jfxsp }
-import scalafx.Includes._
+import org.scalatest.Matchers._
+
 import scalafx.scene.paint.Color
 
 /**

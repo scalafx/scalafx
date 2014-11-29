@@ -26,12 +26,14 @@
  */
 package scalafx.scene.input
 
+import javafx.scene.{input => jfxsi}
+
 import org.junit.runner.RunWith
-import javafx.scene.{ input => jfxsi }
+import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.scene.input.Clipboard._
-import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.{ RunOnApplicationThread, SimpleSFXDelegateSpec }
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * KeyCharacterCombination Spec tests.

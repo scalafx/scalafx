@@ -26,12 +26,14 @@
  */
 package scalafx.scene.image
 
+import javafx.scene.{image => jfxsi}
+
 import org.junit.runner.RunWith
-import javafx.scene.{ image => jfxsi }
+import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes.jfxImage2sfx
 import scalafx.scene.image.Image.sfxImage2jfx
 import scalafx.testutil.SimpleSFXDelegateSpec
-import org.scalatest.junit.JUnitRunner
 
 /**
  * Image Spec tests.

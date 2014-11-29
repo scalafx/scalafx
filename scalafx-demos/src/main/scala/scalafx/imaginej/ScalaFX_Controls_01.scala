@@ -41,15 +41,14 @@ package scalafx.imaginej
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
-import scalafx.scene.image.{Image, ImageView}
-import scalafx.scene.input.MouseEvent
-import scalafx.scene.text.TextAlignment
-import scalafx.scene.layout.HBox
-import scalafx.scene.control.Label
-import scalafx.scene.text.Font
-import scalafx.scene.paint.Color
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
+import scalafx.scene.control.Label
+import scalafx.scene.image.{Image, ImageView}
+import scalafx.scene.input.MouseEvent
+import scalafx.scene.layout.HBox
+import scalafx.scene.paint.Color
+import scalafx.scene.text.{Font, TextAlignment}
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>

@@ -40,15 +40,7 @@ package scalafx.imaginej
 //
 
 
-import scalafx.scene.Scene
-import scalafx.stage.Stage
 import scalafx.application.JFXApp
-import scalafx.scene.layout.{HBox, VBox}
-import scalafx.geometry.Insets
-import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectProperty2sfx
-import scalafx.scene.shape.Rectangle
-import scalafx.scene.paint.Color
-import scalafx.scene.control.{ToggleButton, Label, ToggleGroup}
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>

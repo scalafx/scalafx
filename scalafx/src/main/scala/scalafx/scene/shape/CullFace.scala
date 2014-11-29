@@ -27,6 +27,7 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
+
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.scene.shape.CullFace]] */

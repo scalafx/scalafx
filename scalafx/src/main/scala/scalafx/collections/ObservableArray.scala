@@ -27,8 +27,8 @@
 package scalafx.collections
 
 import javafx.{collections => jfxc}
-import scala.collection.mutable.ArrayLike
-import scala.collection.mutable.Builder
+
+import scala.collection.mutable.{ArrayLike, Builder}
 import scala.reflect.ClassTag
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate

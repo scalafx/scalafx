@@ -26,11 +26,12 @@
  */
 package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc}
+import javafx.{collections => jfxc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-import javafx.scene.{control => jfxsc}
-import javafx.{collections => jfxc}
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 

@@ -28,11 +28,12 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
-import scalafx.collections.ObservableFloatArray
-import scalafx.collections.ObservableIntegerArray
+import scalafx.collections.{ObservableFloatArray, ObservableIntegerArray}
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** TriangleMesh Spec tests. */

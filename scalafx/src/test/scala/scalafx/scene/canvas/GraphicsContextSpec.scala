@@ -26,9 +26,11 @@
  */
 package scalafx.scene.canvas
 
+import javafx.scene.{canvas => jfxsc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import javafx.scene.{ canvas => jfxsc }
+
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 

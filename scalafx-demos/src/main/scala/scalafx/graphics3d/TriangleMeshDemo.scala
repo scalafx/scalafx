@@ -31,20 +31,12 @@ import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.DoubleProperty
-import scalafx.scene.AmbientLight
-import scalafx.scene.Group
-import scalafx.scene.Node
-import scalafx.scene.PerspectiveCamera
-import scalafx.scene.PointLight
-import scalafx.scene.Scene
-import scalafx.scene.SceneAntialiasing
 import scalafx.scene.image.Image
 import scalafx.scene.input.MouseEvent
-import scalafx.scene.paint.Color
-import scalafx.scene.paint.PhongMaterial
-import scalafx.scene.shape.MeshView
-import scalafx.scene.shape.TriangleMesh
+import scalafx.scene.paint.{Color, PhongMaterial}
+import scalafx.scene.shape.{MeshView, TriangleMesh}
 import scalafx.scene.transform.Rotate
+import scalafx.scene.{AmbientLight, Group, Node, PerspectiveCamera, PointLight, Scene, SceneAntialiasing}
 
 /**
  * Demonstrates custom 3D shapes.

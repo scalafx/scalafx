@@ -45,9 +45,9 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.event.ActionEvent
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
-import scalafx.scene.control.{Label, Button}
+import scalafx.scene.control.{Button, Label}
 import scalafx.scene.effect.DropShadow
-import scalafx.scene.image.{ImageView, Image}
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.input.MouseEvent
 import scalafx.scene.layout.{HBox, VBox}
 import scalafx.scene.paint.Color

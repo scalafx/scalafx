@@ -26,13 +26,13 @@
  */
 package scalafx.css
 
-import scala.language.implicitConversions
+import javafx.{css => jfxcss}
+
 import scala.collection.JavaConversions._
-import javafx.{ css => jfxcss }
+import scala.language.implicitConversions
 import scalafx.Includes._
+import scalafx.collections.{ObservableBuffer, ObservableSet}
 import scalafx.delegate.SFXDelegate
-import scalafx.collections.ObservableSet
-import scalafx.collections.ObservableBuffer
 
 /**
  * Companion object for [[scalafx.css.Styleable]].

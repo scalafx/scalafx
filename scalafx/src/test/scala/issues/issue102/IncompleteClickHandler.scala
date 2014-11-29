@@ -31,8 +31,8 @@ import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
-import scalafx.scene.control.{Label, Button}
-import scalafx.scene.layout.{VBox, StackPane}
+import scalafx.scene.control.{Button, Label}
+import scalafx.scene.layout.{StackPane, VBox}
 
 
 /** Illustrated [https://code.google.com/p/scalafx/issues/detail?id=102 Issue 102]

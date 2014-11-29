@@ -30,7 +30,6 @@
  */
 package scalafx.controls.controls
 
-import scalafx.Includes._
 import scalafx.scene.control._
 
 class PopupControlControls(target: PopupControl) extends PropertiesNodes[PopupControl](target, "Popup Control Properties") {

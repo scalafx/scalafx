@@ -26,11 +26,12 @@
  */
 package scalafx.delegate
 
+import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
-import scalafx.beans.property.DoubleProperty
-import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.beans.property.DoubleProperty
 
 @RunWith(classOf[JUnitRunner])
 class SFXDelegateSpec extends FlatSpec {

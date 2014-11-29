@@ -29,11 +29,11 @@ package scalafx.event
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.geometry.{Pos, Point2D}
+import scalafx.geometry.{Point2D, Pos}
 import scalafx.scene.Scene
 import scalafx.scene.control.Label
 import scalafx.scene.input.MouseEvent
-import scalafx.scene.layout.{Pane, BorderPane}
+import scalafx.scene.layout.{BorderPane, Pane}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 

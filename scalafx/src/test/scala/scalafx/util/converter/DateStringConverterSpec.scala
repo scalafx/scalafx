@@ -27,10 +27,12 @@
 package scalafx.util.converter
 
 import java.util.Date
-import org.junit.runner.RunWith
 import javafx.util.{converter => jfxuc}
-import scalafx.Includes._
+
+import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 
 /**
  * DateStringConverter Spec tests.

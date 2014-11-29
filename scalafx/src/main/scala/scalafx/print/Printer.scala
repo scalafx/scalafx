@@ -26,16 +26,13 @@
  */
 package scalafx.print
 
-import scala.language.implicitConversions
-import scala.collection.JavaConversions._
-
 import javafx.{print => jfxp}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.collections.ObservableSet
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.SFXEnumDelegate
-import scalafx.delegate.SFXEnumDelegateCompanion
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
  * Companion Object for [[scalafx.print.Printer]].

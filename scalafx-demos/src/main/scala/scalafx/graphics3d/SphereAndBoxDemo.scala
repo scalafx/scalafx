@@ -29,12 +29,12 @@ package scalafx.graphics3d
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.scene._
-import scalafx.scene.paint.{Color, PhongMaterial}
-import scalafx.scene.shape.{Sphere, Box}
-import scalafx.scene.transform.Rotate
 import scalafx.beans.property.DoubleProperty
+import scalafx.scene._
 import scalafx.scene.input.MouseEvent
+import scalafx.scene.paint.{Color, PhongMaterial}
+import scalafx.scene.shape.{Box, Sphere}
+import scalafx.scene.transform.Rotate
 
 
 /** ScalaFX version of the demo from projavafx8-scratchpad */

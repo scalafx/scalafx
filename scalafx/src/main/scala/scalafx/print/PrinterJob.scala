@@ -26,15 +26,12 @@
  */
 package scalafx.print
 
-import scala.language.implicitConversions
-
 import javafx.{print => jfxp}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.SFXEnumDelegate
-import scalafx.delegate.SFXEnumDelegateCompanion
+import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectProperty}
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.scene.Node
 import scalafx.stage.Window
 

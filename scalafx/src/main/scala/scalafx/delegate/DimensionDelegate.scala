@@ -26,11 +26,12 @@
  */
 package scalafx.delegate
 
+import javafx.beans.{property => jfxbp}
+
 import scala.language.reflectiveCalls
-import DimensionDelegate._
-import javafx.beans.{ property => jfxbp }
-import scalafx.beans.property.DoubleProperty
 import scalafx.Includes._
+import scalafx.beans.property.DoubleProperty
+import scalafx.delegate.DimensionDelegate._
 
 object DimensionDelegate {
 

@@ -26,19 +26,17 @@
  */
 package scalafx.collections
 
-import scala.collection.mutable.Buffer
+import java.{util => ju}
+import javafx.{collections => jfxc}
+
 import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import javafx.{ collections => jfxc }
-import java.{ util => ju }
-import ObservableBuffer.Add
-import ObservableBuffer.Remove
-import ObservableBuffer.Reorder
-import ObservableBuffer.Change
-import ObservableBuffer.observableBuffer2ObservableList
-import scalafx.testutil.SimpleSFXDelegateSpec
 import org.scalatest.junit.JUnitRunner
+
+import scala.collection.mutable.Buffer
 import scalafx.Includes._
+import scalafx.collections.ObservableBuffer.{Add, Remove, Reorder, observableBuffer2ObservableList}
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ObservableBuffer Spec tests.

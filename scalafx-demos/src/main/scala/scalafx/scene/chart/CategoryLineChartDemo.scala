@@ -27,7 +27,6 @@
 
 package scalafx.scene.chart
 
-import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.Side

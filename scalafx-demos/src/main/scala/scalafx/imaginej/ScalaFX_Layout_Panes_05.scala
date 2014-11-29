@@ -41,17 +41,14 @@ package scalafx.imaginej
 
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.geometry.Insets
-import scalafx.geometry.{VPos, Pos}
+import scalafx.geometry.{Insets, Pos, VPos}
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout._
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-import scalafx.scene.text.Font
-import scalafx.scene.text.FontWeight
-import scalafx.scene.text.Text
+import scalafx.scene.text.{Font, FontWeight, Text}
 
 
 /**

@@ -26,13 +26,12 @@
  */
 package scalafx.controls
 
-import scalafx.scene.layout.Priority
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.controls.controls.ProgressIndicatorControls
 import scalafx.scene.Scene
 import scalafx.scene.control.ProgressBar
-import scalafx.scene.layout.BorderPane
+import scalafx.scene.layout.{BorderPane, Priority}
 import scalafx.scene.paint.Color
 
 object ProgressBarTest extends JFXApp {

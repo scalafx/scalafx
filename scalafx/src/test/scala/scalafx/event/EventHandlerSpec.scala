@@ -29,10 +29,11 @@
 import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
-import scalafx.event.{Event, ActionEvent}
-import scalafx.scene.control.Button
+import scalafx.event.{ActionEvent, Event}
 import scalafx.scene.Group
+import scalafx.scene.control.Button
 import scalafx.testutil.RunOnApplicationThread
 
 @RunWith(classOf[JUnitRunner])

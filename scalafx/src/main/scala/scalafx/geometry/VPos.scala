@@ -27,7 +27,8 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.geometry.VPos]] */
 object VPos
