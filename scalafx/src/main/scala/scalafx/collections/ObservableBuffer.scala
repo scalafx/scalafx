@@ -35,6 +35,7 @@ import scala.collection.generic.{CanBuildFrom, GenericCompanion, GenericTraversa
 import scala.collection.mutable.{ArrayBuffer, Buffer, BufferLike, Builder}
 import scala.collection.{GenTraversableOnce, TraversableOnce}
 import scala.language.implicitConversions
+import scala.reflect.runtime.universe._
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
@@ -488,16 +489,16 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * [[http://docs.oracle.com/javase/7/docs/api/java/lang/Comparable.html `java.util.Comparable`]] subclass.
    * Otherwise it will throws a `IllegalStateException`.
    *
-   * @param m Type T `ClassManifest` with information about if this type is a `Comparable` subclass or not.
+   * @param typeTag information about if this type is a `Comparable` subclass or not.
    */
-  def sort()(implicit m: ClassManifest[T]) {
-    if (m.erasure.getInterfaces.contains(classOf[Comparable[_]])) {
+  def sort()(implicit typeTag: WeakTypeTag[T]) {
+    if(typeTag.tpe <:< typeOf[Comparable[_]]) {
       jfxc.FXCollections.sort(delegate, new ju.Comparator[T] {
         def compare(p1: T, p2: T) = p1.asInstanceOf[Comparable[T]].compareTo(p2)
       })
     } else {
-      throw new IllegalStateException("Type of this Observable List does not implements " +
-        "java.util.Comparable. Please uses a Comparator function.")
+      throw new IllegalStateException("Type of this Observable List does not implement " +
+        "java.util.Comparable. Please use a Comparator function.")
     }
   }
 
