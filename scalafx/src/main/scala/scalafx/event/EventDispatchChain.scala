@@ -29,12 +29,13 @@ package scalafx.event
 
 import javafx.{event => jfxe}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object EventDispatchChain {
   implicit def sfxEventDispatchChain2jfx(v: EventDispatchChain): jfxe.EventDispatchChain =
-    if(v!=null) v.delegate else null
+    if (v != null) v.delegate else null
 }
 
 /**
@@ -74,7 +75,7 @@ abstract class EventDispatchChain(override val delegate: jfxe.EventDispatchChain
    * @return the chain with the appended event dispatcher
    * @see $URL0#append $ORIGINALDOC
    */
-  def append(eventDispatcher: EventDispatcher): EventDispatchChain  =
+  def append(eventDispatcher: EventDispatcher): EventDispatchChain =
     delegate.append(eventDispatcher)
 
   /**

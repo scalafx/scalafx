@@ -20,7 +20,8 @@ is divided into following sections:
 
         
         -->
-<project xmlns:jaxrpc="http://www.netbeans.org/ns/scala-project/jax-rpc" xmlns:scalaProject1="http://www.netbeans.org/ns/scala-project/1" basedir=".." default="default" name="scalafx-impl">
+<project xmlns:scalaProject1="http://www.netbeans.org/ns/scala-project/1" basedir=".." default="default"
+         name="scalafx-impl">
     <target depends="test,jar,javadoc" description="Build and test whole project." name="default"/>
     <!--
                 ======================

@@ -60,16 +60,16 @@ object Includes extends Includes
 trait Includes
   extends AnimationIncludes
   with DelegateIncludes
-  with CollectionIncludes 
-  with EventIncludes 
-  with SceneIncludes 
-  with BeanIncludes 
-  with UtilIncludes 
-  with GeometryIncludes 
-  with TransformIncludes 
-  with InputIncludes 
-  with StageIncludes 
-  with WebIncludes 
+  with CollectionIncludes
+  with EventIncludes
+  with SceneIncludes
+  with BeanIncludes
+  with UtilIncludes
+  with GeometryIncludes
+  with TransformIncludes
+  with InputIncludes
+  with StageIncludes
+  with WebIncludes
   with MediaIncludes
   with ConverterIncludes
   with ConcurrentIncludes
