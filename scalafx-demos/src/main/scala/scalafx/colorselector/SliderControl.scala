@@ -29,7 +29,6 @@ package scalafx.colorselector
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty.sfxDoubleProperty2jfx
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, StringProperty}
-import scalafx.colorselector.colorselector.{Max, Min, doubleToInt}
 import scalafx.scene.control.{CheckBox, Label, Slider}
 import scalafx.scene.input.ScrollEvent
 import scalafx.scene.layout.{HBox, Priority}

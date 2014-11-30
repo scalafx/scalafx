@@ -35,8 +35,6 @@ object Formatter {
 
 abstract sealed case class Formatter(description: String) {
 
-  import scalafx.colorselector.colorselector._
-
   protected def colorToRgbInt(c: Color): (Int, Int, Int) =
     (doubleToInt(c.red), doubleToInt(c.green), doubleToInt(c.blue))
 

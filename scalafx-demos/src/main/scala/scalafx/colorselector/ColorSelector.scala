@@ -33,7 +33,7 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.collections.ObservableBuffer.{Add, Change, Remove}
-import scalafx.colorselector.colorselector.{Max, doubleToInt}
+import scalafx.colorselector
 import scalafx.event.ActionEvent
 import scalafx.geometry.{HPos, Pos, VPos}
 import scalafx.scene.Scene
