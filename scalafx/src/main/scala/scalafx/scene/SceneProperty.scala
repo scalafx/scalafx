@@ -30,6 +30,7 @@ import javafx.beans.{binding => jfxbb, property => jfxbp}
 import javafx.scene.{input => jfxsi, paint => jfxsp}
 import javafx.{event => jfxe, scene => jfxs}
 
+import scala.language.implicitConversions
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 

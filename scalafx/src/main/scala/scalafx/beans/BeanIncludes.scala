@@ -29,6 +29,7 @@ package scalafx.beans
 import javafx.beans.{value => jfxbv}
 import javafx.{beans => jfxb}
 
+import scala.language.implicitConversions
 import scalafx.beans.binding.BindingIncludes
 import scalafx.beans.property.PropertyIncludes
 import scalafx.beans.value.ObservableValue

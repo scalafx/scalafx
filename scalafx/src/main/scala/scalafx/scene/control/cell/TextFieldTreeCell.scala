@@ -30,6 +30,7 @@ import javafx.scene.control.{cell => jfxscc}
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, util => jfxu}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.{TreeCell, TreeView}

@@ -29,6 +29,7 @@ package scalafx.scene.shape
 import javafx.scene.{paint => jfxsp, shape => jfxss}
 
 import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.collections.ObservableBuffer

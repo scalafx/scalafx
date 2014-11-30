@@ -30,6 +30,7 @@ import javafx.beans.{binding => jfxbb, property => jfxbp}
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe, scene => jfxs}
 
+import scala.language.implicitConversions
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.{AlignmentPropertyDelegate, SFXDelegate}
 

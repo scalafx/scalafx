@@ -28,6 +28,8 @@ package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
 
+import scala.language.implicitConversions
+
 object ShapeIncludes extends ShapeIncludes
 
 /**

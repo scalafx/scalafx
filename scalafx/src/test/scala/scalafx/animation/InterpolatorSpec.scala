@@ -33,6 +33,7 @@ import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
 
+import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.testutil.PropertyComparator

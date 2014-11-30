@@ -30,6 +30,8 @@ import java.text.DateFormat
 import java.util.Locale
 import javafx.util.{converter => jfxuc}
 
+import scala.language.implicitConversions
+
 object DateTimeStringConverter {
   implicit def sfxDateTimeStringConverter2jfx(c: DateTimeStringConverter): jfxuc.DateTimeStringConverter = if (c != null) c.delegate else null
 }

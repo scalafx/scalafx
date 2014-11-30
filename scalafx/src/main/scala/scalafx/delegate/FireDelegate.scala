@@ -26,6 +26,7 @@
  */
 package scalafx.delegate
 
+import scala.language.reflectiveCalls
 import scalafx.delegate.FireDelegate._
 
 object FireDelegate {

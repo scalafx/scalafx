@@ -32,6 +32,7 @@ import javafx.scene.control.{cell => jfxscc}
 import javafx.scene.{control => jfxsc}
 import javafx.{util => jfxu}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate

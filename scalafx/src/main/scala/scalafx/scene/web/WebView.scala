@@ -29,6 +29,7 @@ package scalafx.scene.web
 import javafx.scene.{text => jfxst, web => jfxsw}
 import javafx.{event => jfxe, geometry => jfxg, util => jfxu}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate

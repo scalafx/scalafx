@@ -33,6 +33,7 @@ import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
 
 import scala.collection.JavaConversions._
+import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.event.ActionEvent

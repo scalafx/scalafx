@@ -26,6 +26,8 @@
  */
 package scalafx.delegate
 
+import scala.language.implicitConversions
+
 /**
  * Base trait for all Companion objects `SFXEnumDelegate` subclasses. It mirrors static methods for
  * [[http://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html `Enum`]].

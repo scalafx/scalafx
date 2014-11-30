@@ -28,6 +28,8 @@ package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
 
+import scala.language.implicitConversions
+
 object PropertyIncludes extends PropertyIncludes
 
 /**

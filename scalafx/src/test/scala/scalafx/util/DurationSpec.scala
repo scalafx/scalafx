@@ -34,6 +34,7 @@ import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
 
+import scala.language.postfixOps
 import scalafx.Includes._
 
 @RunWith(classOf[JUnitRunner])

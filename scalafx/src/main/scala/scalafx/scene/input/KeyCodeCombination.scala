@@ -28,6 +28,7 @@ package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
 
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object KeyCodeCombination {

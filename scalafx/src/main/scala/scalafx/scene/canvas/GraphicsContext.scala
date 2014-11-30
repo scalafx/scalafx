@@ -33,6 +33,7 @@ import javafx.scene.text.TextAlignment
 import javafx.scene.{canvas => jfxsc}
 
 import scala.collection.mutable.ArrayBuffer
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.effect.Effect

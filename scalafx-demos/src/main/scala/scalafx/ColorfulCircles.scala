@@ -28,6 +28,7 @@
 package scalafx
 
 import scala.collection.immutable.VectorBuilder
+import scala.language.postfixOps
 import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Timeline

@@ -28,6 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 
+import scala.language.implicitConversions
 import scalafx.Includes.jfxReadOnlyIntegerProperty2sfx
 import scalafx.beans.property.{ReadOnlyIntegerProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate

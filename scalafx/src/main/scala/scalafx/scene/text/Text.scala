@@ -30,6 +30,7 @@ import javafx.geometry.VPos
 import javafx.scene.{text => jfxst}
 import javafx.{scene => jfxs}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyDoubleProperty, StringProperty}
 import scalafx.delegate.{PositionDelegate, SFXDelegate}

@@ -28,6 +28,7 @@ package scalafx.scene.image
 
 import javafx.scene.{image => jfxsi}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 

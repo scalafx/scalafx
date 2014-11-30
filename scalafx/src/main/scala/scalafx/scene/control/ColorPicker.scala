@@ -28,6 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc, paint => jfxsp}
 
+import scala.language.implicitConversions
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color

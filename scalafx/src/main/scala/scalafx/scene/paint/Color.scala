@@ -28,6 +28,7 @@ package scalafx.scene.paint
 
 import javafx.scene.{paint => jfxsp}
 
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.PaintIncludes._
 

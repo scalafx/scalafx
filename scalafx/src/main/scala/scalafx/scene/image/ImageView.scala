@@ -29,6 +29,7 @@ package scalafx.scene.image
 import javafx.scene.{image => jfxsi}
 import javafx.{geometry => jfxg, scene => jfxs}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.delegate.{PositionDelegate, SFXDelegate}

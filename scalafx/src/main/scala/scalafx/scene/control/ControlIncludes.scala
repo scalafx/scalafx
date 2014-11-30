@@ -29,6 +29,7 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe}
 
+import scala.language.implicitConversions
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.scene.control.ScrollPane.ScrollBarPolicy
 import scalafx.scene.control.SplitPane.Divider

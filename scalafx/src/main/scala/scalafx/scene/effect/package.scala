@@ -29,6 +29,7 @@ package scalafx.scene
 import javafx.beans.{property => jfxbp}
 import javafx.scene.{effect => jfxse, paint => jfxsp}
 
+import scala.language.reflectiveCalls
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate

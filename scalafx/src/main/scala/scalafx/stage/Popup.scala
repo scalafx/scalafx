@@ -28,6 +28,7 @@ package scalafx.stage
 
 import javafx.{stage => jfxs}
 
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Popup {

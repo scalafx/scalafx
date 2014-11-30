@@ -29,6 +29,7 @@ package scalafx.animation
 import javafx.beans.{value => jfxbv}
 import javafx.{animation => jfxa}
 
+import scala.language.implicitConversions
 import scalafx.beans.property.Property
 import scalafx.delegate.SFXDelegate
 

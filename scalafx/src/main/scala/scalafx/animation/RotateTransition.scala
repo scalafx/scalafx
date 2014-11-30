@@ -28,6 +28,7 @@ package scalafx.animation
 
 import javafx.{animation => jfxa, geometry => jfxg, scene => jfxs, util => jfxu}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate

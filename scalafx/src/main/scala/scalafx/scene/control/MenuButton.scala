@@ -30,6 +30,7 @@ import javafx.beans.{property => jfxbp}
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, geometry => jfxg}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections._
 import scalafx.delegate.SFXDelegate

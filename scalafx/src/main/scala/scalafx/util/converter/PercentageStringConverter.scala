@@ -30,6 +30,8 @@ import java.text.NumberFormat
 import java.util.Locale
 import javafx.util.{converter => jfxuc}
 
+import scala.language.implicitConversions
+
 object PercentageStringConverter {
   implicit def sfxPercentageStringConverter2jfx(c: PercentageStringConverter): jfxuc.PercentageStringConverter = if (c != null) c.delegate else null
 }

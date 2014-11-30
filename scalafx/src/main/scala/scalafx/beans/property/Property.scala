@@ -29,6 +29,7 @@ package scalafx.beans.property
 import javafx.beans.value.{ObservableValue => JFXObservableValue}
 import javafx.beans.{property => jfxbp}
 
+import scala.language.implicitConversions
 import scalafx.animation.Tweenable
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate

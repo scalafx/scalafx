@@ -29,6 +29,7 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe, geometry => jfxg}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.collections._

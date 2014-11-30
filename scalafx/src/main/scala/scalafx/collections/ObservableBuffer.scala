@@ -34,6 +34,7 @@ import scala.collection.JavaConversions._
 import scala.collection.generic.{CanBuildFrom, GenericCompanion, GenericTraversableTemplate, SeqFactory}
 import scala.collection.mutable.{ArrayBuffer, Buffer, BufferLike, Builder}
 import scala.collection.{GenTraversableOnce, TraversableOnce}
+import scala.language.implicitConversions
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription

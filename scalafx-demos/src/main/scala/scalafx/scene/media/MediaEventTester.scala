@@ -26,6 +26,7 @@
  */
 package scalafx.scene.media
 
+import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.application.{JFXApp, Platform}

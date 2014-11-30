@@ -29,6 +29,7 @@ package scalafx.animation
 import javafx.{animation => jfxa, event => jfxe}
 
 import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.util.Duration
 

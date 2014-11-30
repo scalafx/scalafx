@@ -28,6 +28,7 @@ package scalafx.util
 
 import javafx.{util => jfxu}
 
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 /**

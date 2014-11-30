@@ -29,6 +29,7 @@ package scalafx.scene.input
 import javafx.scene.{input => jfxsi}
 import javafx.{event => jfxe}
 
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object InputMethodTextRun {

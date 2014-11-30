@@ -28,6 +28,7 @@ package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
 
+import scala.language.implicitConversions
 import scalafx.collections._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node

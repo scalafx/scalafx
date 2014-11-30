@@ -32,6 +32,7 @@ import javafx.{collections => jfxc}
 import scala.collection.JavaConversions._
 import scala.collection.generic.MutableMapFactory
 import scala.collection.mutable.{Builder, Map, MapLike}
+import scala.language.implicitConversions
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 

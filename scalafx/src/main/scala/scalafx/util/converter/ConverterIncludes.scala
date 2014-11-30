@@ -28,6 +28,8 @@ package scalafx.util.converter
 
 import javafx.util.{converter => jfxuc}
 
+import scala.language.implicitConversions
+
 object ConverterIncludes extends ConverterIncludes
 
 /**

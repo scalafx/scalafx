@@ -29,6 +29,7 @@ package scalafx.concurrent
 import java.util.{concurrent => juc}
 import javafx.{concurrent => jfxc, event => jfxe}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate

@@ -28,6 +28,7 @@ package scalafx.animation
 
 import javafx.{animation => jfxa}
 
+import scala.language.implicitConversions
 import scalafx.animation.Animation.Status
 import scalafx.animation.PathTransition.OrientationType
 import scalafx.util.Duration

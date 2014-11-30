@@ -28,6 +28,7 @@ package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate

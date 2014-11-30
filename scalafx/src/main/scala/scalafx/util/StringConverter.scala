@@ -29,6 +29,8 @@ package scalafx.util
 import java.{text => jt}
 import javafx.{util => jfxu}
 
+import scala.language.implicitConversions
+
 /**
  * Companion Object for [[scalafx.util.StringConverter]].
  */

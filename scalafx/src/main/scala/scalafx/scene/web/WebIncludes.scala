@@ -30,6 +30,8 @@ import javafx.event.EventHandler
 import javafx.scene.{web => jfxsw}
 import javafx.{event => jfxe}
 
+import scala.language.implicitConversions
+
 object WebIncludes extends WebIncludes
 
 /**

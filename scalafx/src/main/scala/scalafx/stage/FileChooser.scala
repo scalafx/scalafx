@@ -30,6 +30,7 @@ import java.io.File
 import javafx.{stage => jfxs}
 
 import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate

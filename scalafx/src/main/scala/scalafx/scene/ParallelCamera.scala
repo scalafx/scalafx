@@ -28,6 +28,7 @@ package scalafx.scene
 
 import javafx.{scene => jfxs}
 
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object ParallelCamera {

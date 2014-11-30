@@ -28,6 +28,8 @@ package scalafx.scene.canvas
 
 import javafx.scene.{canvas => jfxsc}
 
+import scala.language.implicitConversions
+
 object CanvasIncludes extends CanvasIncludes
 
 /**

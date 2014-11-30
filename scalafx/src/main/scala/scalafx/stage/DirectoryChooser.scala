@@ -29,6 +29,7 @@ package scalafx.stage
 import java.io.File
 import javafx.{stage => jfxs}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate

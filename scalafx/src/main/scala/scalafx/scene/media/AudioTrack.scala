@@ -28,6 +28,7 @@ package scalafx.scene.media
 
 import javafx.scene.{media => jfxsm}
 
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object AudioTrack {

@@ -28,6 +28,7 @@ package scalafx.delegate
 
 import javafx.beans.{property => jfxbp}
 
+import scala.language.reflectiveCalls
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.PositionDelegate._

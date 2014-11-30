@@ -28,6 +28,7 @@ package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
 
+import scala.language.implicitConversions
 import scalafx.scene.effect.Light.{Distant, Point, Spot}
 
 object EffectIncludes extends EffectIncludes

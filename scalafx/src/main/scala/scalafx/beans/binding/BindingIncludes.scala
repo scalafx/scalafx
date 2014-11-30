@@ -31,6 +31,7 @@ import javafx.beans.value.ChangeListener
 import javafx.beans.{InvalidationListener, binding => jfxbb, value => jfxbv}
 import javafx.{beans => jfxb}
 
+import scala.language.implicitConversions
 import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
 
 object BindingIncludes extends BindingIncludes

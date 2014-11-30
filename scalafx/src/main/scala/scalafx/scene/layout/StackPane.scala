@@ -29,6 +29,7 @@ package scalafx.scene.layout
 import javafx.scene.{layout => jfxsl}
 import javafx.{scene => jfxs}
 
+import scala.language.implicitConversions
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
 import scalafx.geometry.Insets.sfxInsets2jfx
 import scalafx.geometry.{Insets, Pos}

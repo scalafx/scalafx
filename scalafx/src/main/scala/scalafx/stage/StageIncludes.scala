@@ -28,6 +28,7 @@ package scalafx.stage
 
 import javafx.{stage => jfxs}
 
+import scala.language.implicitConversions
 import scalafx.stage.FileChooser.ExtensionFilter
 
 object StageIncludes extends StageIncludes

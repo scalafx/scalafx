@@ -28,6 +28,7 @@ package scalafx.geometry
 
 import javafx.{geometry => jfxg}
 
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object BoundingBox {

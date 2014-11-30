@@ -28,6 +28,7 @@ package scalafx.beans.binding
 
 import javafx.beans.{binding => jfxbb}
 
+import scala.language.implicitConversions
 import scalafx.beans.value.ObservableValue
 
 object BooleanBinding {

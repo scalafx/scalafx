@@ -29,6 +29,7 @@ package scalafx.scene
 import javafx.scene.{input => jfxsi, layout => jfxsl, paint => jfxsp}
 import javafx.{collections => jfxc, event => jfxe, scene => jfxs, util => jfxu}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
 import scalafx.collections._

@@ -31,6 +31,7 @@ import javafx.scene.{input => jfxsi}
 
 import scala.collection.JavaConversions._
 import scala.collection.{MapProxy, Seq}
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.image.Image
 import scalafx.scene.image.Image.sfxImage2jfx

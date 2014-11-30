@@ -29,6 +29,7 @@ package scalafx.scene.text
 import javafx.scene.{text => jfxst}
 
 import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Font {

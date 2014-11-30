@@ -29,6 +29,7 @@ package scalafx.scene
 import javafx.beans.{property => jfxbp}
 import javafx.{scene => jfxs}
 
+import scala.language.implicitConversions
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.scene.chart.ChartIncludes
 import scalafx.scene.control.ControlIncludes

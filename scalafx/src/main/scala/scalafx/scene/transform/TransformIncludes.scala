@@ -28,6 +28,8 @@ package scalafx.scene.transform
 
 import javafx.scene.{transform => jfxst}
 
+import scala.language.implicitConversions
+
 object TransformIncludes extends TransformIncludes
 
 /**

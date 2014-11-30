@@ -32,6 +32,7 @@ import javafx.{application => jfxa, stage => jfxs}
 import scala.collection.JavaConversions.{mapAsJavaMap, seqAsJavaList}
 import scala.collection.mutable.{Buffer, ListBuffer}
 import scala.collection.{Map, Seq, mutable}
+import scala.language.implicitConversions
 import scalafx.application.JFXApp.{Parameters, PrimaryStage}
 import scalafx.delegate.SFXDelegate
 import scalafx.stage.Stage

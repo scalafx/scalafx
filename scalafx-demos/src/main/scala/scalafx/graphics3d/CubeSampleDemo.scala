@@ -26,6 +26,7 @@
  */
 package scalafx.graphics3d
 
+import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.animation._
 import scalafx.application.JFXApp

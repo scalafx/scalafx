@@ -28,6 +28,7 @@ package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.{FireDelegate, SFXDelegate}
 import scalafx.scene.Node

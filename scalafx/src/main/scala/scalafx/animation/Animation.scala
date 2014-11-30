@@ -28,6 +28,7 @@ package scalafx.animation
 
 import javafx.{animation => jfxa, event => jfxe, util => jfxu}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, IntegerProperty, ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
 import scalafx.delegate._

@@ -29,6 +29,7 @@ package scalafx.scene.media
 import javafx.scene.{media => jfxsm}
 import javafx.{event => jfxe, geometry => jfxg}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.delegate.{PositionDelegate, SFXDelegate}

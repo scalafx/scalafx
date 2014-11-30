@@ -30,6 +30,7 @@ import javafx.scene.{input => jfxsi}
 
 import scala.collection.JavaConversions._
 import scala.collection.mutable
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType

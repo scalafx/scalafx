@@ -29,6 +29,7 @@ package scalafx.scene.image
 import java.nio.Buffer
 import javafx.scene.{image => jfxsi}
 
+import scala.language.implicitConversions
 import scalafx.scene.image.PixelFormat.Type
 
 object ImageIncludes extends ImageIncludes

@@ -28,6 +28,8 @@ package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
 
+import scala.language.implicitConversions
+
 object LayoutIncludes extends LayoutIncludes
 
 /**

@@ -28,6 +28,8 @@ package scalafx.geometry
 
 import javafx.{geometry => jfxg}
 
+import scala.language.implicitConversions
+
 object GeometryIncludes extends GeometryIncludes
 
 /**

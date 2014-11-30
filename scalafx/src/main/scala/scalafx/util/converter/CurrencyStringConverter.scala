@@ -30,6 +30,8 @@ import java.text.NumberFormat
 import java.util.Locale
 import javafx.util.{converter => jfxuc}
 
+import scala.language.implicitConversions
+
 object CurrencyStringConverter {
   implicit def sfxCurrencyStringConverter2jfx(c: CurrencyStringConverter): jfxuc.CurrencyStringConverter = if (c != null) c.delegate else null
 }

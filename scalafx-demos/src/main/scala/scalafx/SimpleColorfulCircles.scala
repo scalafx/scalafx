@@ -27,6 +27,7 @@
 
 package scalafx
 
+import scala.language.postfixOps
 import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Timeline

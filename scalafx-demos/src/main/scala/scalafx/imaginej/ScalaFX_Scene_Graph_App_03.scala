@@ -39,6 +39,7 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
+import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.animation._
 import scalafx.application.JFXApp

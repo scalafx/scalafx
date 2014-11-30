@@ -28,6 +28,7 @@ package scalafx.beans
 
 import javafx.{beans => jfxb}
 
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 

@@ -28,6 +28,7 @@ package scalafx.concurrent
 
 import javafx.{concurrent => jfxc}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.{Event, EventType}

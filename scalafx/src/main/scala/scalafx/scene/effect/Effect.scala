@@ -28,6 +28,7 @@ package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxe}
 
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Effect {

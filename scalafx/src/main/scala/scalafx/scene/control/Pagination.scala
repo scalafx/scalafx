@@ -30,6 +30,7 @@ import javafx.beans.property.IntegerProperty
 import javafx.scene.{control => jfxsc}
 import javafx.{scene => jfxs, util => jfxu}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate

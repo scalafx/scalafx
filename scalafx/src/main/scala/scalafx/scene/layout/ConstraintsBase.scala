@@ -29,6 +29,7 @@ package scalafx.scene.layout
 import javafx.scene.{layout => jfxsl}
 import javafx.{geometry => jfxg}
 
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object ConstraintsBase {

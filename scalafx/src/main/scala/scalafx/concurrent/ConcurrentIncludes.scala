@@ -28,6 +28,7 @@ package scalafx.concurrent
 
 import javafx.{concurrent => jfxc}
 
+import scala.language.implicitConversions
 import scalafx.concurrent.Worker.State
 
 object ConcurrentIncludes extends ConcurrentIncludes

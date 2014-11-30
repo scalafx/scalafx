@@ -28,6 +28,7 @@ package scalafx.scene.control.cell
 
 import javafx.scene.control.{cell => jfxscc}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.{TableCell, TableColumn}

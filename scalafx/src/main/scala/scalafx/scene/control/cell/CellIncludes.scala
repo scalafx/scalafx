@@ -28,6 +28,8 @@ package scalafx.scene.control.cell
 
 import javafx.scene.control.{cell => jfxscc}
 
+import scala.language.implicitConversions
+
 object CellIncludes extends CellIncludes
 
 /**

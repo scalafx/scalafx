@@ -29,6 +29,7 @@ package scalafx.scene.paint
 import javafx.scene.{paint => jfxsp}
 
 import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object LinearGradient {

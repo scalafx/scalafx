@@ -28,6 +28,7 @@ package scalafx.scene.web
 
 import javafx.scene.{web => jfxsw}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.{Event, EventType}

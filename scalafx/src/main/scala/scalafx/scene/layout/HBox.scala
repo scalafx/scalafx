@@ -29,6 +29,7 @@ package scalafx.scene.layout
 import javafx.scene.{layout => jfxsl}
 import javafx.{geometry => jfxg, scene => jfxs}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty}
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}

@@ -29,6 +29,7 @@ package scalafx.application
 import javafx.{application => jfxa}
 
 import scala.collection.JavaConversions.{asScalaBuffer, mapAsScalaMap}
+import scala.language.implicitConversions
 
 object ApplicationIncludes extends ApplicationIncludes
 

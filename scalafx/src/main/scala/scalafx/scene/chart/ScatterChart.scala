@@ -28,6 +28,7 @@ package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
 
+import scala.language.implicitConversions
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 

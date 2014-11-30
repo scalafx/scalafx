@@ -29,6 +29,7 @@ package scalafx.scene.chart
 import javafx.scene.{chart => jfxsc}
 import javafx.{geometry => jfxg}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate

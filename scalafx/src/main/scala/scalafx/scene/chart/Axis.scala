@@ -31,6 +31,7 @@ import javafx.{geometry => jfxg}
 
 import scala.collection.JavaConversions._
 import scala.collection.mutable.Buffer
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.binding._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}

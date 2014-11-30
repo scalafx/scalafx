@@ -30,6 +30,7 @@ import javafx.beans.{property => jfxbp}
 import javafx.util.Callback
 import javafx.{util => jfxu}
 
+import scala.language.implicitConversions
 import scalafx.util.Duration.DurationHelper
 
 object UtilIncludes extends UtilIncludes

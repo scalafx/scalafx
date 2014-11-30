@@ -30,6 +30,7 @@ package scalafx.graphics3d
 
 import java.io.File
 
+import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.animation.Timeline
 import scalafx.application.JFXApp

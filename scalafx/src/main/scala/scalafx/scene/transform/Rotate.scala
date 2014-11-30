@@ -29,6 +29,7 @@ package scalafx.scene.transform
 import javafx.scene.{transform => jfxst}
 import javafx.{geometry => jfxg}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate

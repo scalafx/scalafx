@@ -29,6 +29,7 @@ package scalafx.scene.control.cell
 import javafx.scene.control.{cell => jfxscc}
 import javafx.{collections => jfxc, util => jfxu}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate

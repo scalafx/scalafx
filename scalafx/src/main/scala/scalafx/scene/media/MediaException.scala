@@ -29,6 +29,7 @@ package scalafx.scene.media
 import javafx.scene.{media => jfxsm}
 import javafx.{event => jfxe}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 

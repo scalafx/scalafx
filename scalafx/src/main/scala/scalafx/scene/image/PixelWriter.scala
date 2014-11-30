@@ -29,6 +29,7 @@ package scalafx.scene.image
 import java.nio.Buffer
 import javafx.scene.{image => jfxsi}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color

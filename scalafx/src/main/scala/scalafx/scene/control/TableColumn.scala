@@ -30,6 +30,7 @@ import javafx.beans.{value => jfxbv}
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe, scene => jfxs, util => jfxu}
 
+import scala.language.implicitConversions
 import scala.math.Ordering
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty, StringProperty}

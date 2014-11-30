@@ -28,6 +28,7 @@ package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
 
+import scala.language.implicitConversions
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
 

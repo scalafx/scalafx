@@ -28,6 +28,7 @@ package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
 
+import scala.language.implicitConversions
 import scalafx.scene.chart.Axis.TickMark
 import scalafx.scene.chart.NumberAxis.DefaultFormatter
 import scalafx.scene.chart.XYChart.{Data, Series}

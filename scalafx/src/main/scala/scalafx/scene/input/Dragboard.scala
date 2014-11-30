@@ -30,6 +30,7 @@ import javafx.scene.{input => jfxsi}
 
 import scala.collection.JavaConversions._
 import scala.collection._
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Dragboard {

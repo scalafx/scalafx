@@ -32,6 +32,7 @@ import javafx.{event => jfxe, util => jfxu}
 
 import org.w3c.dom.Document
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate

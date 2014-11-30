@@ -28,6 +28,8 @@ package scalafx.util.converter
 
 import javafx.util.{converter => jfxuc}
 
+import scala.language.implicitConversions
+
 object FloatStringConverter {
   implicit def sfxFloatStringConverter2jfx(c: FloatStringConverter): jfxuc.FloatStringConverter =
     if (c != null) c.delegate else null
