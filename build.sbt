@@ -48,9 +48,9 @@ resolvers += sonatypeNexusSnapshots
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.10.4", "2.11.4", "2.9.3"),
+  crossScalaVersions := Seq("2.10.4", "2.11.4"),
   scalaVersion <<= crossScalaVersions { versions => versions.head },
-  scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
+  scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
   javacOptions ++= Seq(
@@ -58,14 +58,8 @@ lazy val scalafxSettings = Seq(
     "-source", "1.6",
     "-Xlint:deprecation"),
   libraryDependencies ++= Seq(
-    // A hack to make compilation and packaging work with Scala 2.9.3. SBT attempts to download
-    // test dependencies even when not used. Testing will not work in 2.9.3, but we are more
-    // interested right now to testing in 2.10 and 2.11 and only releasing in 2.9.3.
-    // scalatest % "test",
-    if(scalaVersion.value.startsWith("2.9."))
-      "org.scalatest" %% "scalatest" % "1.9.2" % "test"
-    else
-      scalatest % "test",
+    "org.scala-lang" % "scala-reflect" % scalaVersion.value,
+    scalatest % "test",
     junit % "test"),
   // ScalaTest needs Scala XML, in Scala 2.11 the XML library has been factored out to the `scala-xml` module
   libraryDependencies ++= (
