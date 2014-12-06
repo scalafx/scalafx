@@ -489,7 +489,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * [[http://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html `java.util.Comparable`]] subclass.
    * Otherwise it will throws a `IllegalStateException`.
    *
-   * @param m Type T `ClassManifest` with information about if this type is a `Comparable` subclass or not.
+   * @param typeTag information about if this type is a `Comparable` subclass or not.
    */
   def sort()(implicit typeTag: WeakTypeTag[T]) {
     if(typeTag.tpe <:< typeOf[Comparable[_]]) {

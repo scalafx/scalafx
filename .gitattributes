@@ -1,0 +1,2 @@
+# Set the default line separator behavior, in case people don't have core.autocrlf set.
+* text=auto
