@@ -29,6 +29,7 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.ButtonBar.ButtonData
