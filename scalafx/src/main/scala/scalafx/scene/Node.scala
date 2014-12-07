@@ -32,7 +32,7 @@ import javafx.{event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
 
 import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyBooleanProperty, ReadOnlyObjectProperty, StringProperty}
+import scalafx.beans.property._
 import scalafx.collections._
 import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
@@ -70,6 +70,73 @@ abstract class Node protected(override val delegate: jfxs.Node)
   extends EventHandlerDelegate
   with Styleable
   with SFXDelegate[jfxs.Node] {
+
+  /**
+   * The accessible text for this `Node`.
+   *
+   * This property is used to set the text that the screen
+   * reader will speak.  If a node normally speaks text,
+   * that text is overriden.  For example, a button
+   * usually speaks using the text in the control but will
+   * no longer do this when this value is set.
+   *
+   * Default value is `null`.
+   *
+   * @since JavaFX 8u40
+   */
+  def accessibleText: ObjectProperty[String] = delegate.accessibleTextProperty
+  def accessibleText_=(v: String): Unit = {
+    ObjectProperty.fillProperty(accessibleText, v)
+  }
+
+  /**
+   * The accessible help text for this `Node`.
+   *
+   * The help text provides a more detailed description of the
+   * accessible text for a node.  By default, if the node has
+   * a tool tip, this text is used.
+   *
+   * Default value is `null`.
+   *
+   * @since JavaFX 8u40
+   */
+  def accessibleHelp: ObjectProperty[String] = delegate.accessibleHelpProperty
+  def accessibleHelp_=(v: String): Unit = {
+    ObjectProperty.fillProperty(accessibleHelp, v)
+  }
+
+  /**
+   * The accessible role for this `Node`.
+   *
+   * The screen reader uses the role of a node to determine the
+   * attributes and actions that are supported.
+   *
+   *
+   * @since JavaFX 8u40
+   */
+  def accessibleRole: ObjectProperty[jfxs.AccessibleRole] = delegate.accessibleRoleProperty
+  def accessibleRole_=(v: AccessibleRole): Unit = {
+    ObjectProperty.fillProperty(accessibleRole, v)
+  }
+
+  /**
+   * The role description of this `Node`.
+   *
+   * Noramlly, when a role is provided for a node, the screen reader
+   * speaks the role as well as the contents of the node.  When this
+   * value is set, it is possbile to override the default.  This is
+   * useful because the set of roles is predefined.  For example,
+   * it is possible to set the role of a node to be a button, but
+   * have the role description be arbitrary text.
+   *
+   * Default value is `null`.
+   *
+   * @since JavaFX 8u40
+   */
+  def accessibleRoleDescription: ObjectProperty[String] = delegate.accessibleRoleDescriptionProperty
+  def accessibleRoleDescription_=(v: String): Unit = {
+    ObjectProperty.fillProperty(accessibleRoleDescription, v)
+  }
 
   /**
    * The BlendMode used to blend this individual node into the scene behind it.

@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
@@ -138,11 +139,29 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
   }
 
   /**
+   * Specify the minimum width of the ScrollPane Viewport.
+   * This is the width that will be available to the content node.
+   */
+  def minViewportHeight: DoubleProperty = delegate.minViewportHeightProperty()
+  def minViewportHeight_=(v: Double): Unit = {
+    minViewportHeight() = v
+  }
+
+  /**
    * Specify the preferred height of the ScrollPane Viewport.
    */
   def prefViewportHeight: DoubleProperty = delegate.prefViewportHeightProperty
   def prefViewportHeight_=(v: Double) {
     prefViewportHeight() = v
+  }
+
+  /**
+   * Specify the minimum width of the ScrollPane Viewport.
+   * This is the width that will be available to the content node.
+   */
+  def minViewportWidth: DoubleProperty = delegate.minViewportWidthProperty()
+  def minViewportWidth_=(v: Double): Unit = {
+    minViewportWidth() = v
   }
 
   /**

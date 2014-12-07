@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
@@ -125,6 +126,8 @@ trait ChartIncludes {
    * @return $SFX $LNCH
    */
   implicit def jfxLineChart2sfx[X, Y](b: jfxsc.LineChart[X, Y]): LineChart[X, Y] = if (b != null) new LineChart[X, Y](b) else null
+
+  implicit def jfxLineChartSortingPolicy2sfx(v: jfxsc.LineChart.SortingPolicy): LineChart.SortingPolicy = LineChart.SortingPolicy.jfxEnum2sfx(v)
 
   /**
    * $START$PICH.html $PICH$END
