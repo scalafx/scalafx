@@ -30,7 +30,6 @@
  */
 package scalafx.controls.controls
 
-import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property._
@@ -112,7 +111,7 @@ object SliderLabelControlDemo extends JFXApp {
 
   val x: java.lang.Double = 5.0
   val value = new IntegerProperty(1.asInstanceOf[java.lang.Object], "value")
-    //new DoubleProperty(x, "Value")
+  //new DoubleProperty(x, "Value")
 
   val lblValue = new Label {
     text <== value.asString("%2d")

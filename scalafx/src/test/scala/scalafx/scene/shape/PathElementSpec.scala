@@ -27,10 +27,12 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.{ shape => jfxss }
-import scalafx.Includes._
+import javafx.scene.{shape => jfxss}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
@@ -39,11 +41,11 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class PathElementSpec 
+class PathElementSpec
   extends SimpleSFXDelegateSpec[jfxss.PathElement, PathElement](classOf[jfxss.PathElement], classOf[PathElement]) {
 
   override protected def getScalaClassInstance = new ClosePath
 
   override def getJavaClassInstance = new jfxss.ClosePath
-  
+
 }

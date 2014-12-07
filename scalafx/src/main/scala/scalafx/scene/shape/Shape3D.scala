@@ -26,17 +26,17 @@
  */
 package scalafx.scene.shape
 
+import javafx.scene.{paint => jfxsp, shape => jfxss}
+
 import scala.language.implicitConversions
-import javafx.scene.{paint => jfxsp}
-import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
-import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 import scalafx.scene.paint.Material
 
 object Shape3D {
-  implicit def sfxShape3D2jfx(v: Shape3D) = if (v != null) v.delegate else null
+  implicit def sfxShape3D2jfx(v: Shape3D): jfxss.Shape3D = if (v != null) v.delegate else null
 }
 
 

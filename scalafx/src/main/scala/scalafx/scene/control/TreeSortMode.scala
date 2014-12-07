@@ -26,8 +26,9 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import javafx.scene.{control => jfxsc}
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
  * Wrapper for [[scalafx.scene.control.$TSM]]

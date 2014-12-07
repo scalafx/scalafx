@@ -26,16 +26,17 @@
  */
 package scalafx.scene.input
 
-import scala.language.implicitConversions
-import javafx.{event => jfxe}
 import javafx.scene.{input => jfxsi}
+import javafx.{event => jfxe}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
-import scalafx.geometry.{Point3D, Point2D}
+import scalafx.geometry.{Point2D, Point3D}
+import scalafx.scene.Node
 
 object PickResult {
-  implicit def sfxPickResult2jfx(m: PickResult) = if (m != null) m.delegate else null
+  implicit def sfxPickResult2jfx(m: PickResult): jfxsi.PickResult = if (m != null) m.delegate else null
 
   /** An undefined face. This value is used for the intersected face if the picked node has no user-specified faces. */
   val FACE_UNDEFINED: Int = jfxsi.PickResult.FACE_UNDEFINED
@@ -94,7 +95,7 @@ class PickResult(override val delegate: jfxsi.PickResult)
   /** Returns the intersected node. Returns `None` if there was no intersection with any node and the scene was picked. */
   def intersectedNode: Option[Node] = delegate.getIntersectedNode match {
     case null => None
-    case v => Some[Node](v)
+    case v    => Some[Node](v)
   }
 
   /** Returns the intersected point in local coordinate of the picked Node. */
@@ -105,6 +106,6 @@ class PickResult(override val delegate: jfxsi.PickResult)
     */
   def intersectedTexCoord: Option[Point2D] = delegate.getIntersectedTexCoord match {
     case null => None
-    case v => Some[Point2D](v)
+    case v    => Some[Point2D](v)
   }
 }

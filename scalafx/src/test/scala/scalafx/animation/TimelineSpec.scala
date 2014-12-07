@@ -26,10 +26,12 @@
  */
 package scalafx.animation
 
-import javafx.{ animation => jfxa }
-import scalafx.Includes._
+import javafx.{animation => jfxa}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
@@ -38,5 +40,5 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class TimelineSpec 
+class TimelineSpec
   extends SimpleSFXDelegateSpec[jfxa.Timeline, Timeline](classOf[jfxa.Timeline], classOf[Timeline])

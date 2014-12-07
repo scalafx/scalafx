@@ -26,14 +26,14 @@
  */
 package scalafx.scene.paint
 
+import javafx.scene.{paint => jfxsp}
+
 import scala.language.implicitConversions
-import javafx.scene.{ paint => jfxsp }
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.paint.PaintIncludes._
 
 object Color {
-  implicit def sfxColor2jfx(c: Color) = if (c != null) c.delegate else null
-
-  implicit def jfxColor2sfx(c: jfxsp.Color) = if (c != null) new Color(c) else null
+  implicit def sfxColor2jfx(c: Color): jfxsp.Color = if (c != null) c.delegate else null
 
   def apply(red: Double, green: Double, blue: Double, opacity: Double) = new Color(new jfxsp.Color(red, green, blue, opacity))
 

@@ -28,9 +28,11 @@
 package scalafx.event
 
 import javafx.{event => jfxe}
-import scalafx.Includes._
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
@@ -43,7 +45,7 @@ class EventDispatchChainSpec
     classOf[jfxe.EventDispatchChain], classOf[EventDispatchChain]) {
 
 
-  override protected def getScalaClassInstance : EventDispatchChain = getJavaClassInstance
+  override protected def getScalaClassInstance: EventDispatchChain = getJavaClassInstance
 
   override protected def getJavaClassInstance = new jfxe.EventDispatchChain() {
     override def append(eventDispatcher: jfxe.EventDispatcher) = ???

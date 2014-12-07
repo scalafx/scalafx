@@ -26,11 +26,9 @@
  */
 package scalafx.testutil
 
-import org.scalatest.Matchers.be
-import org.scalatest.Matchers.convertToAnyShouldWrapper
 import org.scalatest.FlatSpec
+import org.scalatest.Matchers.{be, convertToAnyShouldWrapper}
 
-import scalafx.Includes.jfxDoubleProperty2sfx
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.PositionDelegate
 
@@ -48,7 +46,7 @@ trait PositionDelegateSpec[D <: PositionDelegate[_]] extends FlatSpec {
     testedProperty.value = -10.0
 
     testedProperty.onChange(moved = true)
-    observerDouble <== testedProperty 
+    observerDouble <== testedProperty
 
     testedProperty.value = +101.0
 

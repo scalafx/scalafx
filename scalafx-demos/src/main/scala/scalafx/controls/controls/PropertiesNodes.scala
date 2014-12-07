@@ -31,21 +31,18 @@ import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.geometry.Pos
 import scalafx.scene.Node
-import scalafx.scene.Node._
 import scalafx.scene.control._
-import scalafx.scene.layout.GridPane
-import scalafx.scene.layout.Priority
+import scalafx.scene.layout.{GridPane, Priority}
 import scalafx.scene.text.Font._
-import scalafx.scene.text.FontWeight
-import scalafx.scene.text.TextAlignment
+import scalafx.scene.text.{FontWeight, TextAlignment}
 
 /**
  * Basic class to control a control properties
  *
- *  @tparam T scalafx.scene.Node subclass
+ * @tparam T scalafx.scene.Node subclass
  *
- *  @param target Node to be manipulated
- *  @param title TitledPane titled
+ * @param target Node to be manipulated
+ * @param title TitledPane titled
  */
 abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
 
@@ -55,7 +52,7 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
 
   protected val btnReset = new Button {
     text = "Reset"
-    onAction = handle { resetProperties() }
+    onAction = handle {resetProperties()}
     alignmentInParent = Pos.Center
   }
 
@@ -134,12 +131,12 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
 
   protected def getCheckBox(property: BooleanProperty, tip: String = "") = new CheckBox {
     selected <==> property
-    tooltip = if(tip.isEmpty) null else Tooltip(tip)
+    tooltip = if (tip.isEmpty) null else Tooltip(tip)
   }
 
   protected def getTextField(property: StringProperty, tip: String = "") = new TextField {
     text <==> property
-    tooltip = if(tip.isEmpty) null else Tooltip(tip)
+    tooltip = if (tip.isEmpty) null else Tooltip(tip)
   }
 
   protected def getLabel(property: StringProperty) = new Label {

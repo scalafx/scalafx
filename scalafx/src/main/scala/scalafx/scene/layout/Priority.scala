@@ -27,19 +27,20 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.scene.layout.Priority]] */
 object Priority extends SFXEnumDelegateCompanion[jfxsl.Priority, Priority] {
 
   val Always = new Priority(jfxsl.Priority.ALWAYS)
-  @deprecated ("Use Always; ALWAYS will be removed in a future release", "2.2.60")
+  @deprecated("Use Always; ALWAYS will be removed in a future release", "2.2.60")
   val ALWAYS = Always
   val Sometimes = new Priority(jfxsl.Priority.SOMETIMES)
-  @deprecated ("Use Sometimes; SOMETIMES will be removed in a future release", "2.2.60")
+  @deprecated("Use Sometimes; SOMETIMES will be removed in a future release", "2.2.60")
   val SOMETIMES = Sometimes
   val Never = new Priority(jfxsl.Priority.NEVER)
-  @deprecated ("Use Never; NEVER will be removed in a future release", "2.2.60")
+  @deprecated("Use Never; NEVER will be removed in a future release", "2.2.60")
   val NEVER = Never
 
   protected override def unsortedValues: Array[Priority] = Array(Always, Sometimes, Never)

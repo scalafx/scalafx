@@ -26,10 +26,10 @@
  */
 package scalafx.util
 
+import java.{text => jt}
+import javafx.{util => jfxu}
+
 import scala.language.implicitConversions
-import java.{ text => jt }
-import javafx.{ util => jfxu }
-import java.util.Date
 
 /**
  * Companion Object for [[scalafx.util.StringConverter]].
@@ -41,7 +41,7 @@ object StringConverter {
    *
    * @param s ScalaFX StringConverter
    */
-  implicit def sfxStringConverter2jfx[T](s: StringConverter[T]) = new jfxu.StringConverter[T] {
+  implicit def sfxStringConverter2jfx[T](s: StringConverter[T]): jfxu.StringConverter[T] = new jfxu.StringConverter[T] {
 
     def fromString(string: String): T = s.fromString(string)
 
@@ -67,7 +67,7 @@ object StringConverter {
 
   /**
    * Convenience method that will create a StringConverter implementation that just makes
-   * conversion from object to String. [[scalafx.util.StringConverter#fromString]] method will throw a
+   * conversion from object to String. [[scalafx.util.StringConverter# f r o m S t r i n g]] method will throw a
    * [[java.lang.UnsupportedOperationException]].
    *
    * @tparam T Type to convert
@@ -85,7 +85,7 @@ object StringConverter {
 
   /**
    * Convenience method that will create a StringConverter implementation that just makes
-   * conversion from String to object. [[scalafx.util.StringConverter#toString]] method will throw a
+   * conversion from String to object. [[scalafx.util.StringConverter# t o S t r i n g]] method will throw a
    * [[java.lang.UnsupportedOperationException]].
    *
    * @tparam T Type to convert
@@ -114,7 +114,7 @@ abstract class StringConverter[T] {
 
   /**
    * Converts the string provided into an object defined by the specific converter.
-   * 
+   *
    * @param string `String` to be converted to a T instance.
    * @return A new T instance generated from argument.
    */
@@ -122,7 +122,7 @@ abstract class StringConverter[T] {
 
   /**
    * Converts the object provided into its string form.
-   * 
+   *
    * @param t A T instance to be its String version.
    * @return String version of argument.
    */

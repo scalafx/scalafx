@@ -40,14 +40,14 @@ package scalafx.imaginej
 //
 
 import scalafx.collections.ObservableBuffer
-import ObservableBuffer.{Reorder, Remove, Add}
+import scalafx.collections.ObservableBuffer.{Add, Remove, Reorder}
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- * based upon: Example 4 Using an ObservableList & Example 7 Querying a ListChangeListener.Change Object
+ *         based upon: Example 4 Using an ObservableList & Example 7 Querying a ListChangeListener.Change Object
  *
- * http://docs.oracle.com/javafx/2.0/collections/jfxpub-collections.htm
+ *         http://docs.oracle.com/javafx/2.0/collections/jfxpub-collections.htm
  *
  */
 
@@ -97,13 +97,13 @@ object ScalaFX_Collections_01 {
     observableStringBuffer onChange {
       (_, changes) =>
         for (change <- changes) change match {
-          case Add(position, elements) =>
+          case Add(position, elements)    =>
             println("added " + elements + " at position " + position)
           case Remove(position, elements) =>
             println("removed " + elements + " at position " + position)
-          case Reorder(start, end, _) =>
+          case Reorder(start, end, _)     =>
             println("reordered from " + start + " to " + end)
-          case _ =>
+          case _                          =>
             println("unclassified change")
         }
     }

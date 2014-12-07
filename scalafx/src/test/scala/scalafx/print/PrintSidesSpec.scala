@@ -26,9 +26,11 @@
  */
 package scalafx.print
 
-import javafx.{ print => jfxp }
+import javafx.{print => jfxp}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 

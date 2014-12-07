@@ -44,16 +44,16 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
-import scalafx.scene.layout.{HBox, BorderPane}
+import scalafx.scene.layout.{BorderPane, HBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- * based upon: Example 1-2 Create an HBox Pane
+ *         based upon: Example 1-2 Create an HBox Pane
  *
- * http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
+ *         http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
  *
  */
 

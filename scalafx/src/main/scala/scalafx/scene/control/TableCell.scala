@@ -26,14 +26,15 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object TableCell {
-  implicit def sfxTableCell2jfx[S, T](tc: TableCell[S, T]) = if (tc != null) tc.delegate else null
+  implicit def sfxTableCell2jfx[S, T](tc: TableCell[S, T]): jfxsc.TableCell[S, T] = if (tc != null) tc.delegate else null
 }
 
 /**

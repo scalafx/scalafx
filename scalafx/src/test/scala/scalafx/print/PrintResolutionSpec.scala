@@ -26,14 +26,16 @@
  */
 package scalafx.print
 
-import javafx.{ print => jfxp }
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import javafx.{print => jfxp}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
+
 /**
- *  Tests for [[scalafx.print.PrintResolution]] temporarily inactive.
+ * Tests for [[scalafx.print.PrintResolution]] temporarily inactive.
  *
  * When running in an enviroment with no defined printer,
  * '[[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.html#getDefaultPrinter--

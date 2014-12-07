@@ -26,12 +26,13 @@
  */
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
 import javafx.scene.{layout => jfxsl}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object BackgroundSize {
-  implicit def sfxBackgroundSize2jfx(v: BackgroundSize) = if (v != null) v.delegate else null
+  implicit def sfxBackgroundSize2jfx(v: BackgroundSize): jfxsl.BackgroundSize = if (v != null) v.delegate else null
 
   /** From the CSS Specification:
     * An "auto" value for one dimension is resolved by using the image's intrinsic ratio and

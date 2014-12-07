@@ -29,12 +29,12 @@ package scalafx.graphics3d
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.scene._
-import scalafx.scene.paint.{Color, PhongMaterial}
-import scalafx.scene.shape.{Sphere, Box}
-import scalafx.scene.transform.Rotate
 import scalafx.beans.property.DoubleProperty
+import scalafx.scene._
 import scalafx.scene.input.MouseEvent
+import scalafx.scene.paint.{Color, PhongMaterial}
+import scalafx.scene.shape.{Box, Sphere}
+import scalafx.scene.transform.Rotate
 
 /** Illustrates picking of 3D objects.
   * When user picks (clocks) on an object in a 3D scene the object name is printed to console. */
@@ -42,7 +42,7 @@ object PickingDemo extends JFXApp {
 
   stage = new PrimaryStage {
     title = "Picking Demo"
-    scene = new Scene(500, 500, true,  SceneAntialiasing.Balanced) {
+    scene = new Scene(500, 500, true, SceneAntialiasing.Balanced) {
 
       val box = new Box(400, 400, 400) {
         material = new PhongMaterial {
@@ -113,7 +113,7 @@ object PickingDemo extends JFXApp {
           val p = pickResult.intersectedPoint
           group.content += createMarker(x = p.x + n.translateX(), y = p.y + n.translateY(), z = p.z + n.translateZ())
         }
-        case None => println("Picked nothing.")
+        case None    => println("Picked nothing.")
       }
     }
 
@@ -124,7 +124,7 @@ object PickingDemo extends JFXApp {
 
   }
 
-  private def createMarker(x: Double, y: Double, z: Double) : Sphere = new Sphere(35) {
+  private def createMarker(x: Double, y: Double, z: Double): Sphere = new Sphere(35) {
     material = new PhongMaterial {
       diffuseColor = Color.Gold
       specularColor = Color.LightGreen

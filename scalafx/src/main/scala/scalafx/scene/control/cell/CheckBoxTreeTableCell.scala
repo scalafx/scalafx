@@ -26,12 +26,12 @@
  */
 package scalafx.scene.control.cell
 
-import scala.language.implicitConversions
+import javafx.beans.{value => jfxbv}
+import javafx.scene.control.{cell => jfxscc}
+import javafx.scene.{control => jfxsc}
+import javafx.{util => jfxu}
 
-import javafx.beans.{ value => jfxbv }
-import javafx.scene.{ control => jfxsc }
-import javafx.scene.control.{ cell => jfxscc }
-import javafx.{ util => jfxu }
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
@@ -47,8 +47,8 @@ import scalafx.util.StringConverter
  * @define CBTTC `CheckBoxTreeTableCell`
  * @define TTC TreeTableColumn
  * @define SP A Function that, given an object of type $TTC[S, T], will return an ObservableValue[Boolean]
- * that represents whether the given item is selected or not.
- * @define FTTC Creates a cell factory for use in a [[scalafx.scene.control.TreeTableCell $TTC]] cell factory.
+ *         that represents whether the given item is selected or not.
+ * @define FTTC Creates a cell factory for use in a [[scalafx.scene.control.TreeTableCell $ T T C]] cell factory.
  * @define RETFTTC A Callback that will return a TreeTableCell that is able to work on the type of element contained within the $TTC.
  * @define STYPE
  * @define TTYPE The type of the elements contained within the `$TTC` instance.
@@ -119,8 +119,8 @@ object CheckBoxTreeTableCell {
    * @tparam T $TTYPE
    * @tparam S $STYPE
    * @param selectedProperty $SP
-   * @param converter A [[scalafx.util.StringConverter StringConverter]] that, give an object of type T, will return a
-   * String that can be used to represent the object visually.
+   * @param converter A [[scalafx.util.StringConverter S t r i n g C o n v e r t e r]] that, give an object of type T, will return a
+   *                  String that can be used to represent the object visually.
    * @return $RETFTTC
    * @see $URL0#forTreeTableColumn-javafx.util.Callback-javafx.util.StringConverter- $ORIGINALDOC
    */

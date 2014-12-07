@@ -26,10 +26,10 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
-
-import javafx.{event => jfxe}
 import javafx.scene.{control => jfxsc}
+import javafx.{event => jfxe}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.event.Event
 

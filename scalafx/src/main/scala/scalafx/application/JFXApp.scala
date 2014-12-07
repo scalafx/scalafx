@@ -26,20 +26,16 @@
  */
 package scalafx.application
 
-import scala.language.implicitConversions
-import scala.collection.JavaConversions.mapAsJavaMap
-import scala.collection.JavaConversions.seqAsJavaList
-import scala.collection.mutable.Buffer
-import scala.collection.Map
-import scala.collection.Seq
-import scala.collection.mutable
-import scala.collection.mutable.ListBuffer
+import javafx.application.Application
+import javafx.{application => jfxa, stage => jfxs}
 
-import javafx.{application => jfxa}
-import javafx.{stage => jfxs}
-import scalafx.application.JFXApp.{PrimaryStage, Parameters}
-import scalafx.stage.Stage
+import scala.collection.JavaConversions.{mapAsJavaMap, seqAsJavaList}
+import scala.collection.mutable.{Buffer, ListBuffer}
+import scala.collection.{Map, Seq, mutable}
+import scala.language.implicitConversions
+import scalafx.application.JFXApp.{Parameters, PrimaryStage}
 import scalafx.delegate.SFXDelegate
+import scalafx.stage.Stage
 
 object JFXApp {
   var STAGE: jfxs.Stage = null
@@ -52,7 +48,7 @@ object JFXApp {
   private val keyValue = """^--([A-Za-z_][^=]*?)=(.*)$""".r
 
   object Parameters {
-    implicit def sfxParameters2jfx(p: Parameters) = if (p != null) p.delegate else null
+    implicit def sfxParameters2jfx(p: Parameters): Application.Parameters = if (p != null) p.delegate else null
 
     /**
      * Creates a new instance of Parameters
@@ -99,7 +95,7 @@ object JFXApp {
       if (!filled) {
         arguments.foreach(arg =>
           keyValue.findFirstMatchIn(arg) match {
-            case None => unnamedArguments += arg
+            case None          => unnamedArguments += arg
             case Some(matcher) => namedArguments(matcher.group(1)) = matcher.group(2)
           })
         filled = true

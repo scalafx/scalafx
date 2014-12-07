@@ -27,7 +27,7 @@
 package scalafx.controls
 
 import javafx.{geometry => jfxg}
-import scalafx.Includes._
+
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.collections.ObservableBuffer
@@ -43,7 +43,7 @@ object SeparatorDemo extends JFXApp {
   val separator = new Separator
 
   val pnlSeparator = new FlowPane {
-    content = List(new Button { text = "Button 1" }, separator, new Button { text = "Button 2" })
+    content = List(new Button {text = "Button 1"}, separator, new Button {text = "Button 2"})
     minHeight = 100
     prefHeight = 100
     minWidth = 100

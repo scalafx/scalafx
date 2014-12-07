@@ -29,6 +29,7 @@ package scalafx.event
 import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.beans.property.StringProperty
 
 @RunWith(classOf[JUnitRunner])

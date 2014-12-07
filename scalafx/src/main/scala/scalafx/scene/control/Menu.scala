@@ -26,19 +26,18 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
-import scala.collection.JavaConversions.asJavaCollection
-
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe}
-import scalafx.collections._
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.scene.Node._
-import scalafx.scene.Node
+import scalafx.collections._
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
+import scalafx.scene.Node._
 
 object Menu {
-  implicit def sfxMenu2jfx(cb: Menu) = if (cb != null) cb.delegate else null
+  implicit def sfxMenu2jfx(cb: Menu): jfxsc.Menu = if (cb != null) cb.delegate else null
 }
 
 /**

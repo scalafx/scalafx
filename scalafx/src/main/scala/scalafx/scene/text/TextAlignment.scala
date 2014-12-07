@@ -27,22 +27,23 @@
 package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.scene.text.TextAlignment]] */
 object TextAlignment extends SFXEnumDelegateCompanion[jfxst.TextAlignment, TextAlignment] {
 
   val Left = new TextAlignment(jfxst.TextAlignment.LEFT)
-  @deprecated ("Use Left; LEFT will be removed in a future release", "2.2.60")
+  @deprecated("Use Left; LEFT will be removed in a future release", "2.2.60")
   val LEFT = Left
   val Center = new TextAlignment(jfxst.TextAlignment.CENTER)
-  @deprecated ("Use Center; CENTER will be removed in a future release", "2.2.60")
+  @deprecated("Use Center; CENTER will be removed in a future release", "2.2.60")
   val CENTER = Center
   val Right = new TextAlignment(jfxst.TextAlignment.RIGHT)
-  @deprecated ("Use Right; RIGHT will be removed in a future release", "2.2.60")
+  @deprecated("Use Right; RIGHT will be removed in a future release", "2.2.60")
   val RIGHT = Right
   val Justify = new TextAlignment(jfxst.TextAlignment.JUSTIFY)
-  @deprecated ("Use Justify; JUSTIFY will be removed in a future release", "2.2.60")
+  @deprecated("Use Justify; JUSTIFY will be removed in a future release", "2.2.60")
   val JUSTIFY = Justify
 
   protected override def unsortedValues: Array[TextAlignment] = Array(Left, Center, Right, Justify)

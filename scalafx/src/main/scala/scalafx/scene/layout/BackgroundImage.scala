@@ -26,14 +26,15 @@
  */
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
 import javafx.scene.{layout => jfxsl}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.image.Image
 
 object BackgroundImage {
-  implicit def sfxBackgroundImage2jfx(v: BackgroundImage) = if (v != null) v.delegate else null
+  implicit def sfxBackgroundImage2jfx(v: BackgroundImage): jfxsl.BackgroundImage = if (v != null) v.delegate else null
 }
 
 /**

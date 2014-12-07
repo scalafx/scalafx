@@ -27,8 +27,8 @@
 package scalafx.scene
 
 import javafx.{scene => jfxs}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 
 /** Wrapper for [[javafx.scene.DepthTest]] */

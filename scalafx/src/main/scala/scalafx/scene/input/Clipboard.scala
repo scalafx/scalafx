@@ -26,18 +26,17 @@
  */
 package scalafx.scene.input
 
-import scala.language.implicitConversions
 import java.io.File
+import javafx.scene.{input => jfxsi}
 
 import scala.collection.JavaConversions._
 import scala.collection._
-
-import javafx.scene.{input => jfxsi}
-import scalafx.scene.input.DataFormat._
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.input.DataFormat._
 
 object Clipboard {
-  implicit def sfxClipboard2jfx(c: Clipboard) = if (c != null) c.delegate else null
+  implicit def sfxClipboard2jfx(c: Clipboard): jfxsi.Clipboard = if (c != null) c.delegate else null
 
   /**
    * Gets the current system clipboard, through which data can be stored and retrieved.

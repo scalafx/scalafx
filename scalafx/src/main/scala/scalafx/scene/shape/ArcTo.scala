@@ -26,16 +26,15 @@
  */
 package scalafx.scene.shape
 
-import scala.language.implicitConversions
 import javafx.scene.{shape => jfxss}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.delegate.PositionDelegate
-import scalafx.delegate.SFXDelegate
+import scalafx.beans.property.{BooleanProperty, DoubleProperty}
+import scalafx.delegate.{PositionDelegate, SFXDelegate}
 
 object ArcTo {
-  implicit def sfxArcTo2jfx(v: ArcTo) = if (v != null) v.delegate else null
+  implicit def sfxArcTo2jfx(v: ArcTo): jfxss.ArcTo = if (v != null) v.delegate else null
 
   def apply(radiusX: Double, radiusY: Double, xAxisRotation: Double, x: Double, y: Double, largeArcFlag: Boolean, sweepFlag: Boolean) =
     new ArcTo(new jfxss.ArcTo(radiusX, radiusY, xAxisRotation, x, y, largeArcFlag, sweepFlag))

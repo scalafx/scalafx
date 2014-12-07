@@ -26,13 +26,13 @@
  */
 package scalafx.css
 
-import scala.language.implicitConversions
+import javafx.{css => jfxcss}
+
 import scala.collection.JavaConversions._
-import javafx.{ css => jfxcss }
+import scala.language.implicitConversions
 import scalafx.Includes._
+import scalafx.collections.{ObservableBuffer, ObservableSet}
 import scalafx.delegate.SFXDelegate
-import scalafx.collections.ObservableSet
-import scalafx.collections.ObservableBuffer
 
 /**
  * Companion object for [[scalafx.css.Styleable]].
@@ -64,7 +64,7 @@ trait Styleable
 
   /**
    * The id of this Styleable.
-   * 
+   *
    * IMPLEMENTATION NOTE: For this method was adopted the name `getId` instead `id` to not 
    * conflict with its subclasses already have a method with this name which returns a 
    * `StringProperty`. 
@@ -78,7 +78,7 @@ trait Styleable
 
   /**
    * A string representation of the CSS style associated with this specific Node.
-   * 
+   *
    * IMPLEMENTATION NOTE: For this method was adopted the name `getStyle` instead `style` to not 
    * conflict with its subclasses already have a method with this name which returns a 
    * `StringProperty`. 

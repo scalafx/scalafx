@@ -29,11 +29,11 @@ package scalafx
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
+import scalafx.scene.effect._
 import scalafx.scene.layout.HBox
 import scalafx.scene.paint.Color._
-import scene.effect._
-import scene.paint.{ Stops, LinearGradient }
-import scene.text.Text
+import scalafx.scene.paint.{LinearGradient, Stops}
+import scalafx.scene.text.Text
 
 object HelloScalaFX extends JFXApp {
   stage = new PrimaryStage {
@@ -43,7 +43,7 @@ object HelloScalaFX extends JFXApp {
     scene = new Scene {
       fill = Black
       content = new HBox {
-//        padding = Insets(5)
+        //        padding = Insets(5)
         content = Seq(new Text {
           text = "Scala"
           style = "-fx-font-size: 100pt"

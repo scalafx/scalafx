@@ -45,9 +45,9 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.event.ActionEvent
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
-import scalafx.scene.control.{Label, Button}
+import scalafx.scene.control.{Button, Label}
 import scalafx.scene.effect.DropShadow
-import scalafx.scene.image.{ImageView, Image}
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.input.MouseEvent
 import scalafx.scene.layout.{HBox, VBox}
 import scalafx.scene.paint.Color
@@ -57,9 +57,9 @@ import scalafx.scene.text.Font
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- * based upon:
+ *         based upon:
  *
- * http://docs.oracle.com/javafx/2.0/ui_controls/button.htm
+ *         http://docs.oracle.com/javafx/2.0/ui_controls/button.htm
  *
  */
 

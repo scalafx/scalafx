@@ -27,8 +27,7 @@
 
 package scalafx.controls.controls
 
-import scalafx.Includes._
-import scalafx.scene.control.{Tooltip, Control, Label, TextField}
+import scalafx.scene.control.{Control, Label, TextField, Tooltip}
 
 class ControlControls(target: Control) extends PropertiesNodes[Control](target, "Control Properties") {
 
@@ -84,7 +83,7 @@ class ControlControls(target: Control) extends PropertiesNodes[Control](target, 
   super.addNode("Tooltip", txfTooltip)
   super.addNode("Height", lblHeight)
   super.addNode("Width", lblWidth)
-//  super.addNode(btnReset)
+  //  super.addNode(btnReset)
 
   override def resetProperties() {
     target.maxHeight = originalMaxHeight.get
@@ -95,6 +94,7 @@ class ControlControls(target: Control) extends PropertiesNodes[Control](target, 
     target.maxWidth = originalMaxWidth.get
   }
 }
+
 /*
 ObjectProperty<ContextMenu>	contextMenu
 The ContextMenu to show for this control.

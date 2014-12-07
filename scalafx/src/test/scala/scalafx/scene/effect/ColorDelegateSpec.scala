@@ -26,10 +26,11 @@
  */
 package scalafx.scene.effect
 
-import org.scalatest.Matchers._
+import javafx.scene.{paint => jfxsp}
+
 import org.scalatest.FlatSpec
-import javafx.scene.{ paint => jfxsp }
-import scalafx.Includes._
+import org.scalatest.Matchers._
+
 import scalafx.scene.paint.Color
 
 /**
@@ -47,15 +48,15 @@ trait ColorDelegateSpec[D <: ColorDelegate[_]] extends FlatSpec {
     colorDelegate.color = initialColor
 
     colorDelegate.color.onChange((ov, oldColor, newColor) => {
-      oldColor should be (initialColor.delegate)
-      newColor should be (finalColor.delegate)
+      oldColor should be(initialColor.delegate)
+      newColor should be(finalColor.delegate)
       changed = true
     })
 
     colorDelegate.color = finalColor
 
     changed should be(true)
-    colorDelegate.color.value should be (finalColor.delegate)
+    colorDelegate.color.value should be(finalColor.delegate)
   }
 
 }

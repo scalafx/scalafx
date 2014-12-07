@@ -26,11 +26,13 @@
  */
 package scalafx.scene.transform
 
-import org.junit.runner.RunWith
 import javafx.scene.{transform => jfxst}
-import scalafx.testutil.SimpleSFXDelegateSpec
-import scalafx.Includes._
+
+import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** NonInvertibleTransformException Spec tests. */
 @RunWith(classOf[JUnitRunner])

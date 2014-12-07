@@ -26,14 +26,15 @@
  */
 package scalafx.scene.input
 
-import scala.language.implicitConversions
 import javafx.scene.{input => jfxsi}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
 
 object MouseEvent {
-  implicit def sfxMouseEvent2jfx(me: MouseEvent) = if (me != null) me.delegate else null
+  implicit def sfxMouseEvent2jfx(me: MouseEvent): jfxsi.MouseEvent = if (me != null) me.delegate else null
 
   val Any: EventType[jfxsi.MouseEvent] = jfxsi.MouseEvent.ANY
 
@@ -72,10 +73,10 @@ class MouseEvent(override val delegate: jfxsi.MouseEvent) extends InputEvent(del
   def clickCount: Int = delegate.getClickCount
 
   /** Gets the event type of this event. */
-  override def eventType : EventType[_ <: jfxsi.MouseEvent] = delegate.getEventType()
+  override def eventType: EventType[_ <: jfxsi.MouseEvent] = delegate.getEventType()
 
   /** Returns information about the pick. */
-  def pickResult : PickResult = delegate.getPickResult
+  def pickResult: PickResult = delegate.getPickResult
 
   def sceneX: Double = delegate.getSceneX
 
@@ -125,7 +126,7 @@ class MouseEvent(override val delegate: jfxsi.MouseEvent) extends InputEvent(del
   def middleButtonDown: Boolean = delegate.isMiddleButtonDown
 
   /** Returns true if this mouse event is the popup menu trigger event for the platform. */
-  def popupTrigger:Boolean = delegate.isPopupTrigger
+  def popupTrigger: Boolean = delegate.isPopupTrigger
 
   /**
    * Returns true if primary button (button 1, usually the left) is currently pressed.

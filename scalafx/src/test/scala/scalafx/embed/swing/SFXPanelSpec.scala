@@ -26,11 +26,13 @@
  */
 package scalafx.embed.swing
 
-import javafx.embed.{ swing => jfxes }
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import javafx.embed.{swing => jfxes}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** Tests for [[scalafx.embed.swing.SFXPanel]]. */
 @RunWith(classOf[JUnitRunner])

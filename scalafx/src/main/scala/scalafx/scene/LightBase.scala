@@ -26,17 +26,18 @@
  */
 package scalafx.scene
 
-import scala.language.implicitConversions
-import javafx.{scene => jfxs}
 import javafx.scene.{paint => jfxsp}
-import scalafx.delegate.SFXDelegate
+import javafx.{scene => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty}
 import scalafx.collections.ObservableBuffer
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color
 
 object LightBase {
-  implicit def sfxLightBase2jfx(lb: LightBase) = if (lb != null) lb.delegate else null
+  implicit def sfxLightBase2jfx(lb: LightBase): jfxs.LightBase = if (lb != null) lb.delegate else null
 }
 
 

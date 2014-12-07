@@ -27,12 +27,13 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.scene.layout.BackgroundRepeat]] */
 object BackgroundRepeat extends SFXEnumDelegateCompanion[jfxsl.BackgroundRepeat, BackgroundRepeat] {
 
-  /**  The image is placed once and not repeated.     */
+  /** The image is placed once and not repeated.     */
   val NoRepeat = new BackgroundRepeat(jfxsl.BackgroundRepeat.NO_REPEAT)
 
   /** The image is repeated as often as needed to cover the area.   */
@@ -54,5 +55,5 @@ object BackgroundRepeat extends SFXEnumDelegateCompanion[jfxsl.BackgroundRepeat,
 /**
  * Enumeration of options for repeating images in backgrounds
  */
-sealed case class BackgroundRepeat (override val delegate: jfxsl.BackgroundRepeat)
+sealed case class BackgroundRepeat(override val delegate: jfxsl.BackgroundRepeat)
   extends SFXEnumDelegate[jfxsl.BackgroundRepeat]

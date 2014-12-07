@@ -26,15 +26,13 @@
  */
 package scalafx.controls
 
-import scalafx.scene.layout.Priority
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.controls.controls.ProgressIndicatorControls
 import scalafx.scene.Scene
 import scalafx.scene.control.ProgressIndicator
-import scalafx.scene.layout.BorderPane
+import scalafx.scene.layout.{BorderPane, Priority}
 import scalafx.scene.paint.Color
-import scalafx.scene.paint.Color.sfxColor2jfx
 
 object ProgressIndicatorTest extends JFXApp {
 

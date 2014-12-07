@@ -26,15 +26,15 @@
  */
 package scalafx.scene.effect
 
-import scala.language.implicitConversions
 import javafx.scene.{effect => jfxse}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
-import scalafx.scene.paint.Color
 import scalafx.delegate.SFXDelegate
 
 object PerspectiveTransform {
-  implicit def sfxPerspectiveTransform2jfx(pt: PerspectiveTransform) = if (pt != null) pt.delegate else null
+  implicit def sfxPerspectiveTransform2jfx(pt: PerspectiveTransform): jfxse.PerspectiveTransform = if (pt != null) pt.delegate else null
 }
 
 class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = new jfxse.PerspectiveTransform)

@@ -27,13 +27,14 @@
 package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.scene.text.FontSmoothingType]] */
 object FontSmoothingType extends SFXEnumDelegateCompanion[jfxst.FontSmoothingType, FontSmoothingType] {
 
   val Gray = new FontSmoothingType(jfxst.FontSmoothingType.GRAY)
-  @deprecated ("Use Gray; GRAY will be removed in a future release", "2.2.60")
+  @deprecated("Use Gray; GRAY will be removed in a future release", "2.2.60")
   val GRAY = Gray
   val LCD = new FontSmoothingType(jfxst.FontSmoothingType.LCD)
 

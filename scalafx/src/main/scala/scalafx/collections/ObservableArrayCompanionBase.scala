@@ -26,8 +26,9 @@
  */
 package scalafx.collections
 
-import scala.language.implicitConversions
 import javafx.{collections => jfxc}
+
+import scala.language.implicitConversions
 import scala.reflect.ClassTag
 
 /*

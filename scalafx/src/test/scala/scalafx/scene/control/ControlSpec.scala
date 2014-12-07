@@ -26,21 +26,23 @@
  */
 package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc}
 import javafx.{scene => jfxs}
-import jfxs.{control => jfxsc}
-import scalafx.Includes._
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Control Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
 class ControlSpec extends SimpleSFXDelegateSpec[jfxsc.Control, Control](classOf[jfxsc.Control], classOf[Control])
-  with RunOnApplicationThread {
+with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new Control(new jfxsc.Label) {}
 

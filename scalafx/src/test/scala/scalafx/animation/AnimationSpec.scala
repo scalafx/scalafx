@@ -26,11 +26,13 @@
  */
 package scalafx.animation
 
-import javafx.{ animation => jfxa }
-import scalafx.Includes._
+import javafx.{animation => jfxa}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.{SimpleSFXDelegateSpec, RunOnApplicationThread}
+
+import scalafx.Includes._
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Animation Spec tests.

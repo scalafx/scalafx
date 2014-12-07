@@ -27,11 +27,12 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{ layout => jfxsl }
-import javafx.scene.{ image => jfxsi }
-import scalafx.Includes._
+import javafx.scene.{image => jfxsi, layout => jfxsl}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
@@ -40,7 +41,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class BackgroundImageSpec
   extends SimpleSFXDelegateSpec[jfxsl.BackgroundImage, BackgroundImage](
-    classOf[jfxsl.BackgroundImage], classOf[BackgroundImage])  {
+    classOf[jfxsl.BackgroundImage], classOf[BackgroundImage]) {
 
   override protected def getScalaClassInstance = new BackgroundImage(getJavaClassInstance) {}
 

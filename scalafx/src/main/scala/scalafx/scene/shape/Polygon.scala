@@ -26,13 +26,13 @@
  */
 package scalafx.scene.shape
 
-import scala.language.implicitConversions
 import javafx.scene.{shape => jfxss}
-import scalafx.Includes._
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Polygon {
-  implicit def sfxPolygon2jfx(v: Polygon) = if (v != null) v.delegate else null
+  implicit def sfxPolygon2jfx(v: Polygon): jfxss.Polygon = if (v != null) v.delegate else null
 
   def apply(points: Double*) = new Polygon(new jfxss.Polygon(points: _*))
 }

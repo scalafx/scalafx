@@ -26,9 +26,9 @@
  */
 package scalafx.print
 
-import javafx.{ print => jfxp }
-import scalafx.delegate.SFXEnumDelegate
-import scalafx.delegate.SFXEnumDelegateCompanion
+import javafx.{print => jfxp}
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
  * Companion Object for [[scalafx.print.PageOrientation]].
@@ -56,7 +56,7 @@ object PageOrientation
    */
   val ReversePortrait = new PageOrientation(jfxp.PageOrientation.REVERSE_PORTRAIT)
 
-  protected override def unsortedValues: Array[PageOrientation] = 
+  protected override def unsortedValues: Array[PageOrientation] =
     Array(Landscape, Portrait, ReverseLandcsape, ReversePortrait)
 
 }

@@ -26,24 +26,20 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
-import javafx.{event => jfxe}
-import javafx.{scene => jfxs}
 import javafx.scene.{control => jfxsc, input => jfxsi}
+import javafx.{event => jfxe, scene => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty, StringProperty}
+import scalafx.css.Styleable
+import scalafx.delegate.{FireDelegate, SFXDelegate}
 import scalafx.event.EventHandlerDelegate
 import scalafx.scene.Node
 import scalafx.scene.input.KeyCombination
-import scalafx.delegate.FireDelegate
-import scalafx.delegate.SFXDelegate
-import scalafx.css.Styleable
 
 object MenuItem {
-  implicit def sfxMenuItem2jfx(m: MenuItem) = if (m != null) m.delegate else null
+  implicit def sfxMenuItem2jfx(m: MenuItem): jfxsc.MenuItem = if (m != null) m.delegate else null
 }
 
 class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)

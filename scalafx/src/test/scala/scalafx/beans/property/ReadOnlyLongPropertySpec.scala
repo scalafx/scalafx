@@ -27,12 +27,14 @@
 
 package scalafx.beans.property
 
-import org.scalatest.Matchers._
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 import javafx.beans.{property => jfxbp}
-import scalafx.Includes._
+
 import org.junit.runner.RunWith
+import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+
+import scalafx.Includes._
 
 /**
  * ReadOnlyLongProperty Spec tests.
@@ -55,191 +57,191 @@ class ReadOnlyLongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   "A Read-only Long Property" should "start with the value we gave it" in {
-    readOnlyLongProperty.value should equal (50)
+    readOnlyLongProperty.value should equal(50)
   }
 
   it should "return its value using apply" in {
-    readOnlyLongProperty() should equal (50)
+    readOnlyLongProperty() should equal(50)
   }
 
   it should "know its name" in {
-    readOnlyLongProperty.name should equal ("Test Read-only Long")
+    readOnlyLongProperty.name should equal("Test Read-only Long")
   }
 
   it should "know its bean" in {
-    readOnlyLongProperty.bean should equal (bean)
+    readOnlyLongProperty.bean should equal(bean)
   }
 
   it should "be bindable to another Long Property" in {
     longProperty1 <== readOnlyLongProperty
-    longProperty1() should equal (50)
+    longProperty1() should equal(50)
     longProperty1.unbind()
   }
 
   it should "support bindable infix addition of a property" in {
     longProperty2 <== readOnlyLongProperty + longProperty1
     longProperty1() = 35
-    longProperty2() should equal (85)
+    longProperty2() should equal(85)
     longProperty2.unbind()
   }
 
   it should "support bindable infix addition of constants" in {
     longProperty2 <== readOnlyLongProperty + 35 + 35l + 35f + 35d
-    longProperty2() should equal (190)
+    longProperty2() should equal(190)
     longProperty2.unbind()
   }
 
   it should "support bindable infix subtraction of a property" in {
     longProperty2 <== readOnlyLongProperty - longProperty1
     longProperty1() = 12
-    longProperty2() should equal (38)
+    longProperty2() should equal(38)
     longProperty2.unbind()
   }
 
   it should "support bindable infix subtraction of constants" in {
     longProperty2 <== readOnlyLongProperty - 12 - 12l - 12f - 12d
-    longProperty2() should equal (2)
+    longProperty2() should equal(2)
     longProperty2.unbind()
   }
 
   it should "support bindable infix multiplication of a property" in {
     longProperty2 <== readOnlyLongProperty * longProperty1
     longProperty1() = 6
-    longProperty2() should equal (300)
+    longProperty2() should equal(300)
     longProperty2.unbind()
   }
 
   it should "support bindable infix multiplication of constants" in {
     longProperty2 <== readOnlyLongProperty * 2 * 2l * 2f * 2d
-    longProperty2() should equal (800)
+    longProperty2() should equal(800)
     longProperty2.unbind()
   }
 
   it should "support bindable infix division of a property" in {
     longProperty1() = 10
     longProperty2 <== readOnlyLongProperty / longProperty1
-    longProperty2() should equal (5)
+    longProperty2() should equal(5)
     longProperty2.unbind()
   }
 
   it should "support bindable infix division of constants" in {
     longProperty2 <== readOnlyLongProperty / 2 / 2l / 5f / 5d
-    longProperty2() should equal (0)
+    longProperty2() should equal(0)
     longProperty2.unbind()
   }
 
   it should "support bindable prefix negation" in {
     longProperty2 <== -readOnlyLongProperty
-    longProperty2() should equal (-50)
+    longProperty2() should equal(-50)
     longProperty2.unbind()
   }
 
   it should "support bindable infix equality with a property" in {
     booleanProperty <== readOnlyLongProperty === longProperty1
     longProperty1() = 23
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     longProperty1() = 50
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix equality with a constant" in {
     booleanProperty <== readOnlyLongProperty === 532
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyLongProperty === 50
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix inequality with a property" in {
     booleanProperty <== readOnlyLongProperty =!= longProperty1
     longProperty1() = 35
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     longProperty1() = 50
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix inequality with a constant" in {
     booleanProperty <== readOnlyLongProperty =!= 231
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     booleanProperty <== readOnlyLongProperty =!= 50
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support variable precision equality via +- operator" in {
-    booleanProperty <== readOnlyLongProperty === 55+-1.1
-    booleanProperty() should be (false)
-    booleanProperty <== readOnlyLongProperty === 51+-1.1
-    booleanProperty() should be (true)
-    booleanProperty <== readOnlyLongProperty === 49+-1.1
-    booleanProperty() should be (true)
+    booleanProperty <== readOnlyLongProperty === 55 +- 1.1
+    booleanProperty() should be(false)
+    booleanProperty <== readOnlyLongProperty === 51 +- 1.1
+    booleanProperty() should be(true)
+    booleanProperty <== readOnlyLongProperty === 49 +- 1.1
+    booleanProperty() should be(true)
   }
 
   it should "support variable precision inequality via +- operator" in {
-    booleanProperty <== readOnlyLongProperty =!= 55+-1.1
-    booleanProperty() should be (true)
-    booleanProperty <== readOnlyLongProperty =!= 51+-1.1
-    booleanProperty() should be (false)
-    booleanProperty <== readOnlyLongProperty =!= 49+-1.1
-    booleanProperty() should be (false)
+    booleanProperty <== readOnlyLongProperty =!= 55 +- 1.1
+    booleanProperty() should be(true)
+    booleanProperty <== readOnlyLongProperty =!= 51 +- 1.1
+    booleanProperty() should be(false)
+    booleanProperty <== readOnlyLongProperty =!= 49 +- 1.1
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix less than with a property" in {
     booleanProperty <== readOnlyLongProperty < longProperty1
     longProperty1() = 234
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     longProperty1() = 12
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix less than with a constant" in {
     booleanProperty <== readOnlyLongProperty < 49
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyLongProperty < 51
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix less than or equal to with a property" in {
     booleanProperty <== readOnlyLongProperty <= longProperty1
     longProperty1() = 512
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     longProperty1() = 34
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
     booleanProperty <== readOnlyLongProperty <= 34
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyLongProperty <= 512
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix greater than with a property" in {
     booleanProperty <== readOnlyLongProperty > longProperty1
     longProperty1() = 40
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     longProperty1() = 60
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix greater than with a constant" in {
     booleanProperty <== readOnlyLongProperty > 51
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyLongProperty > 49
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix greater than or equal to with a property" in {
     booleanProperty <== readOnlyLongProperty >= longProperty1
     longProperty1() = 49
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     longProperty1() = 51
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
     booleanProperty <== readOnlyLongProperty >= 18349
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyLongProperty >= 13
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support invalidate/change triggers on binding expressions" in {
@@ -253,10 +255,10 @@ class ReadOnlyLongPropertySpec extends FlatSpec with BeforeAndAfterEach {
       changeCount += 1
     }
     longProperty2() = 1
-    invalidateCount should equal (1)
-    changeCount should equal (1)
+    invalidateCount should equal(1)
+    changeCount should equal(1)
     longProperty2() = 5
-    invalidateCount should equal (2)
-    changeCount should equal (2)
+    invalidateCount should equal(2)
+    changeCount should equal(2)
   }
 }

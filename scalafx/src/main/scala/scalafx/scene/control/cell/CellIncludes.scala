@@ -26,8 +26,9 @@
  */
 package scalafx.scene.control.cell
 
+import javafx.scene.control.{cell => jfxscc}
+
 import scala.language.implicitConversions
-import javafx.scene.control.{ cell => jfxscc }
 
 object CellIncludes extends CellIncludes
 
@@ -70,7 +71,7 @@ trait CellIncludes {
    * @param cell $JFX $CHBLC
    * @return $SFX $CHBLC
    */
-  implicit def jfxCheckBoxListCell2sfx[T](cell: jfxscc.CheckBoxListCell[T]) = if (cell != null) new CheckBoxListCell[T](cell) else null
+  implicit def jfxCheckBoxListCell2sfx[T](cell: jfxscc.CheckBoxListCell[T]): CheckBoxListCell[T] = if (cell != null) new CheckBoxListCell[T](cell) else null
 
   /**
    * $START$CHBTC.html $CHBTC$END
@@ -80,7 +81,7 @@ trait CellIncludes {
    * @param cell $JFX $CHBTC
    * @return $SFX $CHBTC
    */
-  implicit def jfxCheckBoxTableCell2sfx[S, T](cell: jfxscc.CheckBoxTableCell[S, T]) = if (cell != null) new CheckBoxTableCell[S, T](cell) else null
+  implicit def jfxCheckBoxTableCell2sfx[S, T](cell: jfxscc.CheckBoxTableCell[S, T]): CheckBoxTableCell[S, T] = if (cell != null) new CheckBoxTableCell[S, T](cell) else null
 
   /**
    * $START$CHBRC.html $CHBRC$END
@@ -89,7 +90,7 @@ trait CellIncludes {
    * @param cell $JFX $CHBRC
    * @return $SFX $CHBRC
    */
-  implicit def jfxCheckBoxTreeCell2sfx[T](cell: jfxscc.CheckBoxTreeCell[T]) = if (cell != null) new CheckBoxTreeCell[T](cell) else null
+  implicit def jfxCheckBoxTreeCell2sfx[T](cell: jfxscc.CheckBoxTreeCell[T]): CheckBoxTreeCell[T] = if (cell != null) new CheckBoxTreeCell[T](cell) else null
 
   /**
    * $START$CBTTC.html $CBTTC$END
@@ -99,7 +100,7 @@ trait CellIncludes {
    * @param cell $JFX $CBTTC
    * @return $SFX $CBTTC
    */
-  implicit def jfxCheckBoxTreeTableCell2sfx[S, T](cell: jfxscc.CheckBoxTreeTableCell[S, T]) = if (cell != null) new CheckBoxTreeTableCell[S, T](cell) else null
+  implicit def jfxCheckBoxTreeTableCell2sfx[S, T](cell: jfxscc.CheckBoxTreeTableCell[S, T]): CheckBoxTreeTableCell[S, T] = if (cell != null) new CheckBoxTreeTableCell[S, T](cell) else null
 
   /**
    * $START$XOBLC.html $XOBLC$END
@@ -108,7 +109,7 @@ trait CellIncludes {
    * @param cell $JFX $XOBLC
    * @return $SFX $XOBLC
    */
-  implicit def jfxChoiceBoxListCell2sfx[T](cell: jfxscc.ChoiceBoxListCell[T]) = if (cell != null) new ChoiceBoxListCell[T](cell) else null
+  implicit def jfxChoiceBoxListCell2sfx[T](cell: jfxscc.ChoiceBoxListCell[T]): ChoiceBoxListCell[T] = if (cell != null) new ChoiceBoxListCell[T](cell) else null
 
   /**
    * $START$XOBTC.html $XOBTC$END
@@ -118,7 +119,7 @@ trait CellIncludes {
    * @param cell $JFX $XOBTC
    * @return $SFX $XOBTC
    */
-  implicit def jfxChoiceBoxTableCell2sfx[S, T](cell: jfxscc.ChoiceBoxTableCell[S, T]) = if (cell != null) new ChoiceBoxTableCell[S, T](cell) else null
+  implicit def jfxChoiceBoxTableCell2sfx[S, T](cell: jfxscc.ChoiceBoxTableCell[S, T]): ChoiceBoxTableCell[S, T] = if (cell != null) new ChoiceBoxTableCell[S, T](cell) else null
 
   /**
    * $START$XOBRC.html $XOBRC$END
@@ -127,7 +128,7 @@ trait CellIncludes {
    * @param cell $JFX $XOBRC
    * @return $SFX $XOBRC
    */
-  implicit def jfxChoiceBoxTreeCell2sfx[T](cell: jfxscc.ChoiceBoxTreeCell[T]) = if (cell != null) new ChoiceBoxTreeCell[T](cell) else null
+  implicit def jfxChoiceBoxTreeCell2sfx[T](cell: jfxscc.ChoiceBoxTreeCell[T]): ChoiceBoxTreeCell[T] = if (cell != null) new ChoiceBoxTreeCell[T](cell) else null
 
   /**
    * $START$XOTTC.html $XOTTC$END
@@ -136,7 +137,7 @@ trait CellIncludes {
    * @param cell $JFX $XOTTC
    * @return $SFX $XOTTC
    */
-  implicit def jfxChoiceBoxTreeTableCell2sfx[S, T](cell: jfxscc.ChoiceBoxTreeTableCell[S, T]) = if (cell != null) new ChoiceBoxTreeTableCell[S, T](cell) else null
+  implicit def jfxChoiceBoxTreeTableCell2sfx[S, T](cell: jfxscc.ChoiceBoxTreeTableCell[S, T]): ChoiceBoxTreeTableCell[S, T] = if (cell != null) new ChoiceBoxTreeTableCell[S, T](cell) else null
 
   /**
    * $START$CMBLC.html $CMBLC$END
@@ -145,7 +146,7 @@ trait CellIncludes {
    * @param cell $JFX $CMBLC
    * @return $SFX $CMBLC
    */
-  implicit def jfxComboBoxListCell2sfx[T](cell: jfxscc.ComboBoxListCell[T]) = if (cell != null) new ComboBoxListCell[T](cell) else null
+  implicit def jfxComboBoxListCell2sfx[T](cell: jfxscc.ComboBoxListCell[T]): ComboBoxListCell[T] = if (cell != null) new ComboBoxListCell[T](cell) else null
 
   /**
    * $START$CMBTC.html $CMBTC$END
@@ -155,7 +156,7 @@ trait CellIncludes {
    * @param cell $JFX $CMBTC
    * @return $SFX $CMBTC
    */
-  implicit def jfxComboBoxTableCell2sfx[S, T](cell: jfxscc.ComboBoxTableCell[S, T]) = if (cell != null) new ComboBoxTableCell[S, T](cell) else null
+  implicit def jfxComboBoxTableCell2sfx[S, T](cell: jfxscc.ComboBoxTableCell[S, T]): ComboBoxTableCell[S, T] = if (cell != null) new ComboBoxTableCell[S, T](cell) else null
 
   /**
    * $START$CMBRC.html $CMBRC$END
@@ -164,7 +165,7 @@ trait CellIncludes {
    * @param cell $JFX $CMBRC
    * @return $SFX $CMBRC
    */
-  implicit def jfxComboBoxTreeCell2sfx[T](cell: jfxscc.ComboBoxTreeCell[T]) = if (cell != null) new ComboBoxTreeCell[T](cell) else null
+  implicit def jfxComboBoxTreeCell2sfx[T](cell: jfxscc.ComboBoxTreeCell[T]): ComboBoxTreeCell[T] = if (cell != null) new ComboBoxTreeCell[T](cell) else null
 
   /**
    * $START$CMBRC.html $CMBRC$END
@@ -173,7 +174,7 @@ trait CellIncludes {
    * @param cell $JFX $CMBRC
    * @return $SFX $CMBRC
    */
-  implicit def jfxComboBoxTreeTableCell2sfx[S, T](cell: jfxscc.ComboBoxTreeTableCell[S, T]) = if (cell != null) new ComboBoxTreeTableCell[S, T](cell) else null
+  implicit def jfxComboBoxTreeTableCell2sfx[S, T](cell: jfxscc.ComboBoxTreeTableCell[S, T]): ComboBoxTreeTableCell[S, T] = if (cell != null) new ComboBoxTreeTableCell[S, T](cell) else null
 
   /**
    * $START$PRBTC.html $PRBTC$END
@@ -182,7 +183,7 @@ trait CellIncludes {
    * @param cell $JFX $PRBTC
    * @return $SFX $PRBTC
    */
-  implicit def jfxProgressBarTableCell2sfx[S](cell: jfxscc.ProgressBarTableCell[S]) = if (cell != null) new ProgressBarTableCell[S](cell) else null
+  implicit def jfxProgressBarTableCell2sfx[S](cell: jfxscc.ProgressBarTableCell[S]): ProgressBarTableCell[S] = if (cell != null) new ProgressBarTableCell[S](cell) else null
 
   /**
    * $START$TXFLC.html $TXFLC$END
@@ -191,7 +192,7 @@ trait CellIncludes {
    * @param cell $JFX $TXFLC
    * @return $SFX $TXFLC
    */
-  implicit def jfxTextFieldListCell2sfx[T](cell: jfxscc.TextFieldListCell[T]) = if (cell != null) new TextFieldListCell[T](cell) else null
+  implicit def jfxTextFieldListCell2sfx[T](cell: jfxscc.TextFieldListCell[T]): TextFieldListCell[T] = if (cell != null) new TextFieldListCell[T](cell) else null
 
   /**
    * $START$TXFTC.html $TXFTC$END
@@ -201,7 +202,7 @@ trait CellIncludes {
    * @param cell $JFX $TXFTC
    * @return $SFX $TXFTC
    */
-  implicit def jfxTextFieldTableCell2sfx[S, T](cell: jfxscc.TextFieldTableCell[S, T]) = if (cell != null) new TextFieldTableCell[S, T](cell) else null
+  implicit def jfxTextFieldTableCell2sfx[S, T](cell: jfxscc.TextFieldTableCell[S, T]): TextFieldTableCell[S, T] = if (cell != null) new TextFieldTableCell[S, T](cell) else null
 
   /**
    * $START$TXFRC.html $TXFRC$END
@@ -210,7 +211,7 @@ trait CellIncludes {
    * @param cell $JFX $TXFRC
    * @return $SFX $TXFRC
    */
-  implicit def jfxTextFieldTreeCell2sfx[T](cell: jfxscc.TextFieldTreeCell[T]) = if (cell != null) new TextFieldTreeCell[T](cell) else null
+  implicit def jfxTextFieldTreeCell2sfx[T](cell: jfxscc.TextFieldTreeCell[T]): TextFieldTreeCell[T] = if (cell != null) new TextFieldTreeCell[T](cell) else null
 
   /**
    * $START$TXTTC.html $TXTTC$END
@@ -219,6 +220,6 @@ trait CellIncludes {
    * @param cell $JFX $TXTTC
    * @return $SFX $TXTTC
    */
-  implicit def jfxTextFieldTreeTableCell2sfx[S, T](cell: jfxscc.TextFieldTreeTableCell[S, T]) = if (cell != null) new TextFieldTreeTableCell[S, T](cell) else null
+  implicit def jfxTextFieldTreeTableCell2sfx[S, T](cell: jfxscc.TextFieldTreeTableCell[S, T]): TextFieldTreeTableCell[S, T] = if (cell != null) new TextFieldTreeTableCell[S, T](cell) else null
 
 }

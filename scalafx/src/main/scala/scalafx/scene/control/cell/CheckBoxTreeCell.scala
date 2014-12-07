@@ -26,20 +26,18 @@
  */
 package scalafx.scene.control.cell
 
-import scala.language.implicitConversions
-import java.lang.{ Boolean => JBoolean }
+import java.lang.{Boolean => JBoolean}
+import javafx.beans.{value => jfxbv}
+import javafx.scene.control.{cell => jfxscc}
+import javafx.scene.{control => jfxsc}
+import javafx.{util => jfxu}
 
-import javafx.beans.{ value => jfxbv }
-import javafx.scene.{ control => jfxsc }
-import javafx.scene.control.{ cell => jfxscc }
-import javafx.{ util => jfxu }
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.value.ObservableValue
-import scalafx.scene.control.TreeCell
-import scalafx.scene.control.TreeItem
-import scalafx.scene.control.TreeView
-import scalafx.scene.control.cell.CheckBoxTreeCell._
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.control.cell.CheckBoxTreeCell._
+import scalafx.scene.control.{TreeCell, TreeItem, TreeView}
 import scalafx.util.StringConverter
 
 /**
@@ -47,9 +45,9 @@ import scalafx.util.StringConverter
  *
  * @define CBTC `CheckBoxTableCell`
  * @define SP A Function that, given an object of type `TreeItem`, will return an `ObservableValue[Boolean]` that
- * represents whether the given item is selected or not.
+ *         represents whether the given item is selected or not.
  * @define FTVRET A Function that will return a TreeCell that is able to work on the type of element contained within the
- * TreeView root, and all of its children (recursively).
+ *         TreeView root, and all of its children (recursively).
  */
 object CheckBoxTreeCell {
 
@@ -58,14 +56,14 @@ object CheckBoxTreeCell {
    *
    * @param cell ScalaFX $CBTC
    */
-  implicit def sfxCheckBoxTreeCell2jfx[T](cell: CheckBoxTreeCell[T]) = if (cell != null) cell.delegate else null
+  implicit def sfxCheckBoxTreeCell2jfx[T](cell: CheckBoxTreeCell[T]): jfxsc.cell.CheckBoxTreeCell[T] = if (cell != null) cell.delegate else null
 
   private[cell] implicit def selectedTreeItemPropertyToGetSelectedProperty[T](selectedProperty: TreeItem[T] => ObservableValue[Boolean, java.lang.Boolean]): jfxu.Callback[jfxsc.TreeItem[T], jfxbv.ObservableValue[JBoolean]] =
     new jfxu.Callback[jfxsc.TreeItem[T], jfxbv.ObservableValue[JBoolean]] {
       def call(x: jfxsc.TreeItem[T]) = selectedProperty(x)
     }
 
-  private[cell] implicit def sfxStringConverterTreeItem2jfxConverter[T](converter: StringConverter[TreeItem[T]]) = new jfxu.StringConverter[jfxsc.TreeItem[T]] {
+  private[cell] implicit def sfxStringConverterTreeItem2jfxConverter[T](converter: StringConverter[TreeItem[T]]): jfxu.StringConverter[jfxsc.TreeItem[T]] = new jfxu.StringConverter[jfxsc.TreeItem[T]] {
     def fromString(str: String) = converter.fromString(str)
     def toString(item: jfxsc.TreeItem[T]) = converter.toString(item)
   }

@@ -26,9 +26,11 @@
  */
 package scalafx.css
 
-import javafx.{ css => jfxcss }
+import javafx.{css => jfxcss}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 

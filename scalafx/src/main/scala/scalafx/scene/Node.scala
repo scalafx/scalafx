@@ -27,12 +27,12 @@
 
 package scalafx.scene
 
-import javafx.scene.{effect => jfxse, input => jfxsi, layout => jfxsl}
-import javafx.{event => jfxe, geometry => jfxg, scene => jfxs}
+import javafx.scene.{effect => jfxse, input => jfxsi, layout => jfxsl, transform => jfxst}
+import javafx.{event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
 
 import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property._
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyBooleanProperty, ReadOnlyObjectProperty, StringProperty}
 import scalafx.collections._
 import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
@@ -40,7 +40,7 @@ import scalafx.event.Event._
 import scalafx.event.{Event, EventHandlerDelegate}
 import scalafx.geometry.Bounds._
 import scalafx.geometry.Point2D._
-import scalafx.geometry._
+import scalafx.geometry.{Bounds, Insets, Point2D, Point3D, Pos, _}
 import scalafx.scene.effect.{BlendMode, Effect}
 import scalafx.scene.image.WritableImage
 import scalafx.scene.layout.Priority
@@ -57,7 +57,7 @@ object Node {
    * @param v ScalaFX Node
    * @return JavaFX Node
    */
-  implicit def sfxNode2jfx(v: Node) = if (v != null) v.delegate else null
+  implicit def sfxNode2jfx(v: Node): jfxs.Node = if (v != null) v.delegate else null
 }
 
 /**
@@ -70,66 +70,6 @@ abstract class Node protected(override val delegate: jfxs.Node)
   extends EventHandlerDelegate
   with Styleable
   with SFXDelegate[jfxs.Node] {
-
-  /**
-   * The accessible help text for this {@code Node}.
-   * <p>
-   * The help text provides a more detailed description of the
-   * accessible text for a node.  By default, if the node has
-   * a tool tip, this text is used.
-   *
-   */
-  def accessibleHelp: ObjectProperty[String] = delegate.accessibleHelpProperty
-  def accessibleHelp_=(v: String) {
-    accessibleHelp() = v
-  }
-
-  /**
-   * The accessible role for this {@code Node}.
-   * <p>
-   * The screen reader uses the role of a node to determine the
-   * attributes and actions that are supported.
-   *
-   */
-  def accessibleRole: ObjectProperty[jfxs.AccessibleRole] = delegate.accessibleRoleProperty
-  def accessibleRole_=(v: AccessibleRole) {
-    accessibleRole() = v
-  }
-
-  /**
-   * The role description of this {@code Node}.
-   * <p>
-   * Noramlly, when a role is provided for a node, the screen reader
-   * speaks the role as well as the contents of the node.  When this
-   * value is set, it is possbile to override the default.  This is
-   * useful because the set of roles is predefined.  For example,
-   * it is possible to set the role of a node to be a button, but
-   * have the role description be arbitrary text.
-   *
-   * @defaultValue null
-   *
-   * @since JavaFX 8u40
-   */
-  def accessibleRoleDescription: ObjectProperty[String] = delegate.accessibleRoleDescriptionProperty
-  def accessibleRoleDescription_=(v: String) {
-    accessibleRoleDescription() = v
-  }
-
-
-  /**
-   * The accessible text for this {@code Node}.
-   * <p>
-   * This property is used to set the text that the screen
-   * reader will speak.  If a node normally speaks text,
-   * that text is overriden.  For example, a button
-   * usually speaks using the text in the control but will
-   * no longer do this when this value is set.
-   *
-   */
-  def accessibleText: ObjectProperty[String] = delegate.accessibleTextProperty
-  def accessibleText_=(v: String) {
-    accessibleText() = v
-  }
 
   /**
    * The BlendMode used to blend this individual node into the scene behind it.

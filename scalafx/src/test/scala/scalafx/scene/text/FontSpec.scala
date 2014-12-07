@@ -28,9 +28,11 @@
 package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
-import scalafx.Includes._
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**

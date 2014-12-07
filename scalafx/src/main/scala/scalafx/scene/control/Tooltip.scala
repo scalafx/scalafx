@@ -26,24 +26,20 @@
  */
 package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc, text => jfxst}
+import javafx.{css => jfxcss, scene => jfxs}
+
 import scala.collection.JavaConversions._
 import scala.collection.mutable.Buffer
 import scala.language.implicitConversions
-
-import javafx.{ css => jfxcss }
-import javafx.{ scene => jfxs }
-import jfxs.{ control => jfxsc }
-import jfxs.{ text => jfxst }
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyBooleanProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyBooleanProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
-import scalafx.scene.text.Font
-import scalafx.scene.text.TextAlignment
+import scalafx.scene.Node._
+import scalafx.scene.text.Font.sfxFont2jfx
+import scalafx.scene.text.{Font, TextAlignment}
+
 
 /**
  * Object companion for [[scalafx.scene.control.PopupControl]].
@@ -56,7 +52,8 @@ object Tooltip {
    * @param v ScalaFX Tooltip
    * @return JavaFX Tooltip
    */
-  implicit def sfxTooltip2jfx(v: Tooltip) = if (v == null) null else v.delegate
+  implicit def sfxTooltip2jfx(v: Tooltip): jfxsc.Tooltip = if (v == null) null else v.delegate
+
 
   /**
    * Generates a Simple Tooltip with default properties from a text.
@@ -72,7 +69,7 @@ object Tooltip {
    *
    * @param string Tooltip's text.
    */
-  implicit def stringToTooltip(string: String) = Tooltip(string)
+  implicit def stringToTooltip(string: String): Tooltip = Tooltip(string)
 
   /**
    * Just to satisfy Spec tests.

@@ -26,9 +26,9 @@
  */
 package scalafx.testutil
 
-import org.scalatest.Matchers._
 import org.scalatest.FlatSpec
-import scalafx.Includes._
+import org.scalatest.Matchers._
+
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.DimensionDelegate
 
@@ -46,7 +46,7 @@ trait DimensionDelegateSpec[D <: DimensionDelegate[_]] extends FlatSpec {
     testedProperty.value = -10.0
 
     testedProperty.onChange(moved = true)
-    observerDouble <== testedProperty 
+    observerDouble <== testedProperty
 
     testedProperty.value = +101.0
 

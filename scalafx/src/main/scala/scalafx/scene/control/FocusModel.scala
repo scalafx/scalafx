@@ -26,11 +26,11 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.ReadOnlyIntegerProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.{ReadOnlyIntegerProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
 
 /**
@@ -45,8 +45,7 @@ object FocusModel {
    * @return JavaFX FocusModel
    * @tparam T The type of the underlying data model for the UI control.
    */
-  implicit def sfxFocusModel2jfx[T](v: FocusModel[T]) = if (v != null) v.delegate else null
-
+  implicit def sfxFocusModel2jfx[T](v: FocusModel[T]): jfxsc.FocusModel[T] = if (v != null) v.delegate else null
 }
 
 /**
@@ -71,7 +70,7 @@ abstract class FocusModel[T](override val delegate: jfxsc.FocusModel[T])
 
   /**
    * Causes the item at the given index to receive the focus.
-   * 
+   *
    * @param index The index of the item to get focus.
    */
   def focus(index: Int) {

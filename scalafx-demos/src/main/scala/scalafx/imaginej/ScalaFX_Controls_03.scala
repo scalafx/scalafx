@@ -42,19 +42,18 @@ package scalafx.imaginej
 
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectProperty2sfx
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.{RadioButton, ToggleGroup}
-import scalafx.scene.image.{ImageView, Image}
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.{HBox, VBox}
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- * based upon:
+ *         based upon:
  *
- * http://docs.oracle.com/javafx/2.0/ui_controls/radio-button.htm
+ *         http://docs.oracle.com/javafx/2.0/ui_controls/radio-button.htm
  *
  */
 

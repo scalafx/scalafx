@@ -26,14 +26,13 @@
  */
 package scalafx.concurrent
 
+import javafx.{concurrent => jfxc, event => jfxe}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import javafx.{ concurrent => jfxc, event => jfxe }
+
 import scalafx.Includes._
-import scalafx.event.EventType
 import scalafx.testutil.SimpleSFXDelegateSpec
-import org.scalatest.Matchers._
-import scalafx.testutil.RunOnApplicationThread
 
 /**
  * Service Spec tests.

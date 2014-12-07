@@ -26,8 +26,10 @@
  */
 package scalafx.concurrent
 
+import javafx.{concurrent => jfxc}
+
 import scala.language.implicitConversions
-import javafx.{ concurrent => jfxc }
+import scalafx.concurrent.Worker.State
 
 object ConcurrentIncludes extends ConcurrentIncludes
 
@@ -54,7 +56,7 @@ trait ConcurrentIncludes {
    * @param s $JFX $SER
    * @return $SFX $SER
    */
-  implicit def jfxService2sfxService[T](s: jfxc.Service[T]) = if (s != null) new Service[T](s) {} else null
+  implicit def jfxService2sfxService[T](s: jfxc.Service[T]): Service[T] = if (s != null) new Service[T](s) {} else null
 
   /**
    * $START$TSK.html $TSK$END
@@ -62,7 +64,7 @@ trait ConcurrentIncludes {
    * @param t $JFX $TSK
    * @return $SFX $TSK
    */
-  implicit def jfxTask2sfxTask[T](t: jfxc.Task[T]) = if (t != null) new Task[T](t) {} else null
+  implicit def jfxTask2sfxTask[T](t: jfxc.Task[T]): Task[T] = if (t != null) new Task[T](t) {} else null
 
   /**
    * $START$WRK.html $WRK$END
@@ -70,7 +72,7 @@ trait ConcurrentIncludes {
    * @param w $JFX $WRK
    * @return $SFX $WRK
    */
-  implicit def jfxWorker2sfxWorker[T](w: jfxc.Worker[T]) =
+  implicit def jfxWorker2sfxWorker[T](w: jfxc.Worker[T]): Worker[T] =
     if (w != null) new Worker[T] {
       override val delegate = w
     }
@@ -82,7 +84,7 @@ trait ConcurrentIncludes {
    * @param s $JFX $WRS
    * @return $SFX $WRS
    */
-  implicit def jfxWorkerState2sfxWorkerState(s: jfxc.Worker.State) = Worker.State.jfxEnum2sfx(s)
+  implicit def jfxWorkerState2sfxWorkerState(s: jfxc.Worker.State): State = Worker.State.jfxEnum2sfx(s)
 
   /**
    * $START$WSE.html $WSE$END
@@ -90,6 +92,6 @@ trait ConcurrentIncludes {
    * @param w $JFX $WSE
    * @return $SFX $WSE
    */
-  implicit def jfxWorkerStateEvent2sfxWorkerStateEvent(w: jfxc.WorkerStateEvent) = if (w != null) new WorkerStateEvent(w) else null
+  implicit def jfxWorkerStateEvent2sfxWorkerStateEvent(w: jfxc.WorkerStateEvent): WorkerStateEvent = if (w != null) new WorkerStateEvent(w) else null
 
 }

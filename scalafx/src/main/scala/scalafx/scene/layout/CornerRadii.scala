@@ -26,13 +26,13 @@
  */
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
 import javafx.scene.{layout => jfxsl}
 
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object CornerRadii {
-  implicit def sfxCornerRadii2jfx(v: CornerRadii) = if (v != null) v.delegate else null
+  implicit def sfxCornerRadii2jfx(v: CornerRadii): jfxsl.CornerRadii = if (v != null) v.delegate else null
 
   /** An empty Background, useful to use instead of null. */
   val Empty = jfxsl.CornerRadii.EMPTY

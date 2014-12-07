@@ -39,16 +39,16 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import scalafx.beans.property.IntegerProperty
-import scalafx.beans.binding.Bindings
 import scalafx.beans.BeanIncludes.jfxObservableValue2sfx
+import scalafx.beans.binding.Bindings
+import scalafx.beans.property.IntegerProperty
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- * based upon: Example 4 Using the Bindings Class
+ *         based upon: Example 4 Using the Bindings Class
  *
- * http://docs.oracle.com/javafx/2.0/binding/jfxpub-binding.htm
+ *         http://docs.oracle.com/javafx/2.0/binding/jfxpub-binding.htm
  *
  */
 

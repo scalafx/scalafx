@@ -27,10 +27,12 @@
 
 package scalafx.scene.shape
 
-import javafx.scene.{ shape => jfxss }
-import scalafx.Includes._
+import javafx.scene.{shape => jfxss}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
@@ -39,5 +41,5 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class QuadCurveSpec 
+class QuadCurveSpec
   extends SimpleSFXDelegateSpec[jfxss.QuadCurve, QuadCurve](classOf[jfxss.QuadCurve], classOf[QuadCurve])

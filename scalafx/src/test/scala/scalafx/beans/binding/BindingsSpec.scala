@@ -27,14 +27,15 @@
 
 package scalafx.beans.binding
 
-import java.lang.Object
 import javafx.beans.{property => jfxbp}
+
+import org.junit.runner.RunWith
 import org.scalatest.Matchers._
+import org.scalatest.junit.JUnitRunner
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+
 import scalafx.Includes._
 import scalafx.beans.property._
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 
 /**
  * Bindings Spec tests.
@@ -73,25 +74,25 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
     stringProperty1 = new StringProperty(null, "String Property 1")
     stringProperty2 = new StringProperty(null, "String Property 2")
     stringProperty3 = new StringProperty(null, "String Property 3")
-    objectProperty1 =  ObjectProperty[Object](null, "Object Property 1")
-    objectProperty2 =  ObjectProperty[Object](null, "Object Property 2")
-    objectProperty3 =  ObjectProperty[Object](null, "Object Property 3")
+    objectProperty1 = ObjectProperty[Object](null, "Object Property 1")
+    objectProperty2 = ObjectProperty[Object](null, "Object Property 2")
+    objectProperty3 = ObjectProperty[Object](null, "Object Property 3")
   }
 
   "BindingIncludes" should "support min" in {
     doubleProperty1 <== min(doubleProperty2, doubleProperty3, 25, 26l, 27f, 28d)
-    doubleProperty1() should equal (0)
+    doubleProperty1() should equal(0)
     doubleProperty2() = 50
     doubleProperty3() = 43
-    doubleProperty1() should equal (25)
+    doubleProperty1() should equal(25)
   }
 
   "BindingIncludes" should "support max" in {
     doubleProperty1 <== max(doubleProperty2, doubleProperty3, 25, 26l, 27f, 28d)
-    doubleProperty1() should equal (28)
+    doubleProperty1() should equal(28)
     doubleProperty2() = 50
     doubleProperty3() = 43
-    doubleProperty1() should equal (50)
+    doubleProperty1() should equal(50)
   }
 
   it should "support `when ..choose .. otherwise` with all numeric property types" in {
@@ -100,56 +101,56 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
     floatProperty1() = 15
     doubleProperty1() = 30
     doubleProperty2 <== when(booleanProperty1) choose 31 otherwise integerProperty1
-    doubleProperty2() should equal (5)
+    doubleProperty2() should equal(5)
     doubleProperty2 <== when(booleanProperty1) choose 31 otherwise longProperty1
-    doubleProperty2() should equal (10)
+    doubleProperty2() should equal(10)
     doubleProperty2 <== when(booleanProperty1) choose 31 otherwise floatProperty1
-    doubleProperty2() should equal (15)
+    doubleProperty2() should equal(15)
     doubleProperty2 <== when(booleanProperty1) choose 31 otherwise doubleProperty1
-    doubleProperty2() should equal (30)
+    doubleProperty2() should equal(30)
   }
 
   it should "support `when .. choose .. otherwise with all number/property combinations" in {
     doubleProperty2() = 15
     doubleProperty3() = 30
     doubleProperty1 <== when(booleanProperty1) choose doubleProperty2 otherwise doubleProperty3
-    doubleProperty1() should equal (30)
+    doubleProperty1() should equal(30)
     doubleProperty1 <== when(booleanProperty1) choose doubleProperty2 otherwise 15d
-    doubleProperty1() should equal (15)
+    doubleProperty1() should equal(15)
     doubleProperty1 <== when(booleanProperty1) choose 25d otherwise doubleProperty3
-    doubleProperty1() should equal (30)
+    doubleProperty1() should equal(30)
   }
 
   it should "support `when .. choose .. otherwise` with all different number primitives" in {
     doubleProperty1 <== when(booleanProperty1) choose 25d otherwise 15d
-    doubleProperty1() should equal (15)
+    doubleProperty1() should equal(15)
     doubleProperty1 <== when(booleanProperty1) choose 25 otherwise 16
-    doubleProperty1() should equal (16)
+    doubleProperty1() should equal(16)
     doubleProperty1 <== when(booleanProperty1) choose 25l otherwise 17l
-    doubleProperty1() should equal (17)
+    doubleProperty1() should equal(17)
     doubleProperty1 <== when(booleanProperty1) choose 25f otherwise 18f
-    doubleProperty1() should equal (18)
+    doubleProperty1() should equal(18)
   }
 
   it should "support `when .. choose .. otherwise` with boolean types" in {
     booleanProperty3() = true
     booleanProperty1 <== when(booleanProperty2) choose booleanProperty2 otherwise booleanProperty3
-    booleanProperty1() should be (true)
+    booleanProperty1() should be(true)
     booleanProperty1 <== when(booleanProperty2) choose booleanProperty2 otherwise false
-    booleanProperty1() should be (false)
+    booleanProperty1() should be(false)
     booleanProperty1 <== when(booleanProperty2) choose true otherwise booleanProperty3
-    booleanProperty1() should be (true)
+    booleanProperty1() should be(true)
   }
 
   it should "support `when .. choose .. otherwise` with string types" in {
     stringProperty2() = "Hello"
     stringProperty3() = "World"
-    stringProperty1 <== when (booleanProperty1) choose stringProperty3 otherwise stringProperty2
-    stringProperty1() should equal ("Hello")
-    stringProperty1 <== when (booleanProperty1) choose "string before" otherwise stringProperty3
-    stringProperty1() should equal ("World")
-    stringProperty1 <== when (booleanProperty1) choose stringProperty2 otherwise "string after"
-    stringProperty1() should equal ("string after")
+    stringProperty1 <== when(booleanProperty1) choose stringProperty3 otherwise stringProperty2
+    stringProperty1() should equal("Hello")
+    stringProperty1 <== when(booleanProperty1) choose "string before" otherwise stringProperty3
+    stringProperty1() should equal("World")
+    stringProperty1 <== when(booleanProperty1) choose stringProperty2 otherwise "string after"
+    stringProperty1() should equal("string after")
   }
 
   it should "support `when .. choose .. otherwise` with object types" in {
@@ -159,11 +160,11 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
     objectProperty2() = obj2
     objectProperty3() = obj3
     objectProperty1 <== when(booleanProperty1) choose objectProperty2 otherwise objectProperty3
-    objectProperty1() should equal (obj3)
+    objectProperty1() should equal(obj3)
     objectProperty1 <== when(booleanProperty1) choose obj1 otherwise objectProperty2
-    objectProperty1() should equal (obj2)
+    objectProperty1() should equal(obj2)
     objectProperty1 <== when(booleanProperty1) choose objectProperty2 otherwise obj1
-    objectProperty1() should equal (obj1)
+    objectProperty1() should equal(obj1)
   }
 
   it should "support that select* funk..." is (pending)

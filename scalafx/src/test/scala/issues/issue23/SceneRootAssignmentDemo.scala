@@ -27,13 +27,12 @@
 package issues.issue23
 
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.layout.StackPane
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-import scalafx.stage.Stage
-import scalafx.application.JFXApp.PrimaryStage
 
 /**
  * Issue 23: Cannot assign a ScalaFX object to "scene.root".

@@ -26,21 +26,24 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import javafx.scene.{control => jfxsc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
+import scalafx.event.EventType
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ScrollToEvent[T] Spec tests.
  */
 @RunWith(classOf[JUnitRunner])
-class ScrollToEventSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.ScrollToEvent[T], ScrollToEvent[T]](classOf[jfxsc.ScrollToEvent[T]], classOf[ScrollToEvent[T]]) {
+class ScrollToEventSpec[String]
+  extends SimpleSFXDelegateSpec[jfxsc.ScrollToEvent[String], ScrollToEvent[String]](classOf[jfxsc.ScrollToEvent[String]], classOf[ScrollToEvent[String]]) {
 
-  override def getScalaClassInstance = new ScrollToEvent[T](getJavaClassInstance)
+  override def getScalaClassInstance = new ScrollToEvent[String](getJavaClassInstance)
 
-  override def getJavaClassInstance = new jfxsc.ScrollToEvent(null, null, null, null.asInstanceOf[T])
+  override def getJavaClassInstance = new jfxsc.ScrollToEvent(null, null, null.asInstanceOf[EventType[jfxsc.ScrollToEvent[String]]], "eventTarget".asInstanceOf[String])
 
 }

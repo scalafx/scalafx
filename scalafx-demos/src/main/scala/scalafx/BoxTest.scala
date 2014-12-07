@@ -27,15 +27,13 @@
 
 package scalafx
 
-import geometry.Insets
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
+import scalafx.geometry.Insets
 import scalafx.scene.Scene
-import scalafx.scene.shape.Arc
-import scalafx.scene.shape.Circle
-import scalafx.scene.shape.Rectangle
-import scene.layout.{VBox, HBox}
-import scene.paint.Color
+import scalafx.scene.layout.{HBox, VBox}
+import scalafx.scene.paint.Color
+import scalafx.scene.shape.{Arc, Circle, Rectangle}
 
 object BoxTest extends JFXApp {
   stage = new PrimaryStage {

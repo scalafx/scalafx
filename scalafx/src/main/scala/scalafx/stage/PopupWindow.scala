@@ -26,17 +26,18 @@
  */
 package scalafx.stage
 
-import scala.language.implicitConversions
 import javafx.{event => jfxe, stage => jfxs}
-import scalafx.beans.property._
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.scene.Node._
+import scalafx.beans.property._
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.scene.Node
+import scalafx.scene.Node._
 import scalafx.stage.Window._
-import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion, SFXDelegate}
 
 object PopupWindow {
-  implicit def sfxPopupWindow2jfx(v: PopupWindow) = if (v != null) v.delegate else null
+  implicit def sfxPopupWindow2jfx(v: PopupWindow): jfxs.PopupWindow = if (v != null) v.delegate else null
 
   /** Anchor location constants for popup anchor point selection.
     * Wraps [[http://download.java.net/jdk8/jfxdocs/javafx/stage/PopupWindow.AnchorLocation.html AnchorLocation]]

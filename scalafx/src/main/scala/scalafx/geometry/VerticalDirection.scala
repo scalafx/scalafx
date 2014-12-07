@@ -27,6 +27,7 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
+
 import scalafx.delegate._
 
 /** Wrapper for [[javafx.geometry.VerticalDirection]] */

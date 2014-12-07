@@ -26,21 +26,21 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
 import javafx.{geometry => jfxg}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.{DoubleProperty, ObjectProperty}
+import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Orientation
 import scalafx.scene.Node
-import scalafx.delegate.SFXDelegate
 
 object SplitPane {
-  implicit def sfxSplitPane2jfx(v: SplitPane) = if (v != null) v.delegate else null
+  implicit def sfxSplitPane2jfx(v: SplitPane): jfxsc.SplitPane = if (v != null) v.delegate else null
 
   object Divider {
-    implicit def sfxSplitPaneDivider2jfx(v: SplitPane.Divider) = if (v != null) v.delegate else null
+    implicit def sfxSplitPaneDivider2jfx(v: SplitPane.Divider): jfxsc.SplitPane.Divider = if (v != null) v.delegate else null
   }
 
   class Divider(override val delegate: jfxsc.SplitPane.Divider = new jfxsc.SplitPane.Divider) extends SFXDelegate[jfxsc.SplitPane.Divider] {

@@ -26,18 +26,13 @@
  */
 package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc}
+import javafx.{scene => jfxs}
+
 import scala.language.implicitConversions
 import scala.math.Ordering
-
-import javafx.{scene => jfxs}
-import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty, StringProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
@@ -47,7 +42,7 @@ import scalafx.scene.Node.sfxNode2jfx
 import scalafx.scene.control.ContextMenu._
 
 object TableColumnBase {
-  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]) = if (tc != null) tc.delegate else null
+  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]): jfxsc.TableColumnBase[S, T] = if (tc != null) tc.delegate else null
 
   /**
    * By default all columns will use this comparator to perform sorting.

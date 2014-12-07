@@ -26,15 +26,16 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.layout.Region
 
 object Control {
-  implicit def sfxControl2jfx(v: Control) = if (v != null) v.delegate else null
+  implicit def sfxControl2jfx(v: Control): jfxsc.Control = if (v != null) v.delegate else null
 }
 
 abstract class Control(override val delegate: jfxsc.Control)
@@ -57,6 +58,6 @@ abstract class Control(override val delegate: jfxsc.Control)
   def tooltip_=(v: Tooltip) {
     tooltip() = v
   }
-  
-  
+
+
 }

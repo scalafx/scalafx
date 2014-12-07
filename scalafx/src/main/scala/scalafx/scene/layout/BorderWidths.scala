@@ -26,13 +26,14 @@
  */
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
 import javafx.scene.{layout => jfxsl}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object BorderWidths {
-  implicit def sfxBorderWidths2jfx(v: BorderWidths) = if (v != null) v.delegate else null
+  implicit def sfxBorderWidths2jfx(v: BorderWidths): jfxsl.BorderWidths = if (v != null) v.delegate else null
 
   /**
    * When used by a BorderStroke, the value of AUTO is interpreted as the value of

@@ -26,13 +26,14 @@
  */
 package scalafx.scene
 
-import scala.language.implicitConversions
 import javafx.{scene => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color
 
 object PointLight {
-  implicit def sfxPointLight2jfx(pl: PointLight) = if (pl != null) pl.delegate else null
+  implicit def sfxPointLight2jfx(pl: PointLight): jfxs.PointLight = if (pl != null) pl.delegate else null
 }
 
 /** Defines a point light source object.

@@ -26,11 +26,13 @@
  */
 package scalafx.animation
 
-import javafx.{ animation => jfxa }
-import scalafx.Includes._
+import javafx.{animation => jfxa}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.{SimpleSFXDelegateSpec, AbstractSFXDelegateSpec}
+
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * PauseTransition Spec tests.
@@ -38,6 +40,6 @@ import scalafx.testutil.{SimpleSFXDelegateSpec, AbstractSFXDelegateSpec}
  *
  */
 @RunWith(classOf[JUnitRunner])
-class PauseTransitionSpec 
+class PauseTransitionSpec
   extends SimpleSFXDelegateSpec[jfxa.PauseTransition, PauseTransition](
     classOf[jfxa.PauseTransition], classOf[PauseTransition])

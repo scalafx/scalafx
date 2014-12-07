@@ -40,12 +40,11 @@ package scalafx.imaginej
 //
 
 import scala.language.postfixOps
-import Constants._
-import scala._
 import scalafx.Includes._
 import scalafx.animation.Timeline
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
+import scalafx.imaginej.Constants._
 import scalafx.scene.Scene
 import scalafx.scene.input.MouseEvent
 import scalafx.scene.paint.Color
@@ -368,7 +367,7 @@ class Control {
   def update(model: Model, view: View) {
     view.frogShapes.foreach {
       case `theDummyFrogShape` =>
-      case frogShape => frogShape.onMouseClicked = {
+      case frogShape           => frogShape.onMouseClicked = {
         (_: MouseEvent) =>
           val frog = frogShape.getFrog
           if (model.canJumpOneRight(frog)) {

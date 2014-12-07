@@ -26,21 +26,14 @@
  */
 package scalafx.print
 
-import scala.language.implicitConversions
-
 import javafx.{print => jfxp}
-import scalafx.Includes.jfxIntegerProperty2sfx
-import scalafx.Includes.jfxObjectProperty2sfx
-import scalafx.Includes.jfxStringProperty2sfx
-import scalafx.beans.property.IntegerProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.StringProperty
+
+import scala.language.implicitConversions
+import scalafx.Includes.{jfxIntegerProperty2sfx, jfxObjectProperty2sfx, jfxStringProperty2sfx}
+import scalafx.beans.property.{IntegerProperty, ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
-import scalafx.print.Collation.sfxEnum2jfx
 import scalafx.print.PageLayout.sfxPageLayout2jfx
 import scalafx.print.PaperSource.sfxPaperSource2jfx
-import scalafx.print.PrintColor.sfxEnum2jfx
-import scalafx.print.PrintQuality.sfxEnum2jfx
 import scalafx.print.PrintResolution.sfxPrintResolution2jfx
 import scalafx.print.PrintSides.sfxEnum2jfx
 

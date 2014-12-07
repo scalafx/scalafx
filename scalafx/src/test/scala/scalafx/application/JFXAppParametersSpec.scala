@@ -26,18 +26,17 @@
  */
 package scalafx.application
 
+import javafx.{application => jfxa}
+
+import com.sun.javafx.{application => csjfxa}
 import org.junit.runner.RunWith
 import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
-import com.sun.javafx.{ application => csjfxa }
-import javafx.application.Application.Parameters
-import javafx.{ application => jfxa }
+
 import scala.collection.JavaConversions._
 import scalafx.Includes.jfxParameters2sfx
 import scalafx.application.JFXApp.Parameters.sfxParameters2jfx
-import scalafx.application.JFXApp.Parameters
 import scalafx.testutil.SimpleSFXDelegateSpec
-import com.sun.javafx.application.ParametersImpl
 
 /**
  * JFXApp.Parameters Spec tests.
@@ -66,8 +65,8 @@ class JFXAppParametersSpec
     val args = Array("arg1", "arg2")
     val parameters = getParameters(args)
 
-    parameters.raw should contain theSameElementsInOrderAs(args.toSeq)
-    parameters.unnamed should contain theSameElementsInOrderAs(args.toSeq)
+    parameters.raw should contain theSameElementsInOrderAs (args.toSeq)
+    parameters.unnamed should contain theSameElementsInOrderAs (args.toSeq)
     parameters.named shouldBe empty
   }
 
@@ -75,18 +74,18 @@ class JFXAppParametersSpec
     val args = Array("--arg1=value1", "--arg2=value2")
     val parameters = getParameters(args)
 
-    parameters.raw should contain theSameElementsInOrderAs(args.toSeq)
+    parameters.raw should contain theSameElementsInOrderAs (args.toSeq)
     parameters.unnamed shouldBe empty
-    parameters.named should contain theSameElementsAs(Map("arg1" -> "value1", "arg2" -> "value2"))
+    parameters.named should contain theSameElementsAs (Map("arg1" -> "value1", "arg2" -> "value2"))
   }
 
   it should "allows mix raw and named arguments" in {
     val args = Array("arg1", "--arg2=value2", "-arg3=value3")
     val parameters = getParameters(args)
 
-    parameters.raw should contain theSameElementsInOrderAs(args.toSeq)
-    parameters.unnamed should contain theSameElementsInOrderAs(Seq("arg1", "-arg3=value3"))
-    parameters.named should contain theSameElementsAs(Map("arg2" -> "value2"))
+    parameters.raw should contain theSameElementsInOrderAs (args.toSeq)
+    parameters.unnamed should contain theSameElementsInOrderAs (Seq("arg1", "-arg3=value3"))
+    parameters.named should contain theSameElementsAs (Map("arg2" -> "value2"))
   }
 
 }

@@ -26,11 +26,11 @@
  */
 package scalafx.scene.control.cell
 
-import scala.language.implicitConversions
-
-import javafx.scene.{control => jfxsc}
 import javafx.scene.control.{cell => jfxscc}
+import javafx.scene.{control => jfxsc}
 import javafx.{util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes.jfxTreeTableCell2sfx
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.TreeTableCell
@@ -54,7 +54,7 @@ object TextFieldTreeTableCell {
    * @param cell ScalaFX $TFTC
    * @return JavaFX $TFTC
    */
-  implicit def sfxTextFieldTreeTableCell2jfx[S, T](cell: TextFieldTreeTableCell[S, T]) =
+  implicit def sfxTextFieldTreeTableCell2jfx[S, T](cell: TextFieldTreeTableCell[S, T]): jfxsc.cell.TextFieldTreeTableCell[S, T] =
     if (cell != null) cell.delegate else null
 
   /**

@@ -26,18 +26,18 @@
  */
 package scalafx.scene
 
+import javafx.scene.{layout => jfxsl, paint => jfxsp}
+import javafx.{collections => jfxc, scene => jfxs}
+
 import scala.language.implicitConversions
-import javafx.{scene => jfxs}
-import jfxs.{paint => jfxsp, layout => jfxsl}
-import javafx.{collections => jfxc}
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
+import scalafx.collections._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Paint
-import scalafx.collections._
 
 object SubScene {
-  implicit def sfxSubScene2jfx(v: SubScene) = if (v != null) v.delegate else null
+  implicit def sfxSubScene2jfx(v: SubScene): jfxs.SubScene = if (v != null) v.delegate else null
 }
 
 
@@ -83,8 +83,8 @@ class SubScene(override val delegate: jfxs.SubScene)
    */
   def getChildren = root.value match {
     case group: jfxs.Group => group.getChildren
-    case pane: jfxsl.Pane => pane.getChildren
-    case _ => throw new IllegalStateException("Cannot access children of root: " + root +
+    case pane: jfxsl.Pane  => pane.getChildren
+    case _                 => throw new IllegalStateException("Cannot access children of root: " + root +
       "\nUse a class that extends Group or Pane, or override the getChildren method.")
   }
 

@@ -26,14 +26,15 @@
  */
 package scalafx.beans.property
 
-import scala.language.implicitConversions
 import javafx.beans.{property => jfxbp}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 
 object ReadOnlyObjectWrapper {
-  implicit def sfxReadOnlyObjectWrapper2jfx[T <: Any](roow: ReadOnlyObjectWrapper[T]) = roow.delegate
+  implicit def sfxReadOnlyObjectWrapper2jfx[T <: Any](roow: ReadOnlyObjectWrapper[T]): jfxbp.ReadOnlyObjectWrapper[T] = roow.delegate
 
   /** Creates a new ReadOnlyObjectWrapper instance with a given initial wrapped value. */
   def apply[T <: Any](value: T): ReadOnlyObjectWrapper[T] =

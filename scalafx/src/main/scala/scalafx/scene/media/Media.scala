@@ -26,16 +26,16 @@
  */
 package scalafx.scene.media
 
-import scala.language.implicitConversions
 import javafx.scene.{media => jfxsm}
 import javafx.{util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.ReadOnlyIntegerProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.{ReadOnlyIntegerProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
 
 object Media {
-  implicit def sfxMedia2jfx(m: Media) = if (m != null) m.delegate else null
+  implicit def sfxMedia2jfx(m: Media): jfxsm.Media = if (m != null) m.delegate else null
 }
 
 class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.Media] {

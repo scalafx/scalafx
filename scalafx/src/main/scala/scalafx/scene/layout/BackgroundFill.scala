@@ -26,15 +26,16 @@
  */
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
 import javafx.scene.{layout => jfxsl}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Insets
 import scalafx.scene.paint.Paint
 
 object BackgroundFill {
-  implicit def sfxBackgroundFill2jfx(v: BackgroundFill) = if (v != null) v.delegate else null
+  implicit def sfxBackgroundFill2jfx(v: BackgroundFill): jfxsl.BackgroundFill = if (v != null) v.delegate else null
 }
 
 /**

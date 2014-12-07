@@ -26,15 +26,13 @@
  */
 package scalafx.scene.web
 
-import scala.language.implicitConversions
-
-import scalafx.event.Event
-import scalafx.delegate.SFXDelegate
 import javafx.scene.{web => jfxsw}
+import javafx.{event => jfxe}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
-import scalafx.event.EventType
-import javafx.{event => jfxe}
+import scalafx.event.{Event, EventType}
 
 /**
  * Companion object for [[scalafx.scene.web.WebErrorEvent]].

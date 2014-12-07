@@ -26,9 +26,11 @@
  */
 package scalafx.scene.image
 
-import scala.language.implicitConversions
-import javafx.scene.{image => jfxsi}
 import java.nio.Buffer
+import javafx.scene.{image => jfxsi}
+
+import scala.language.implicitConversions
+import scalafx.scene.image.PixelFormat.Type
 
 object ImageIncludes extends ImageIncludes
 
@@ -59,7 +61,7 @@ trait ImageIncludes {
    * @param i $JFX $IMG
    * @return $SFX $IMG
    */
-  implicit def jfxImage2sfx(i: jfxsi.Image) = if (i != null) new Image(i) else null
+  implicit def jfxImage2sfx(i: jfxsi.Image): Image = if (i != null) new Image(i) else null
 
   /**
    * $START$IMV.html $IMV$END
@@ -67,7 +69,7 @@ trait ImageIncludes {
    * @param iv $JFX $IMV
    * @return $SFX $IMV
    */
-  implicit def jfxImageView2sfx(iv: jfxsi.ImageView) = if (iv != null) new ImageView(iv) else null
+  implicit def jfxImageView2sfx(iv: jfxsi.ImageView): ImageView = if (iv != null) new ImageView(iv) else null
 
   /**
    * $START$PXF.html $PXF$END
@@ -75,7 +77,7 @@ trait ImageIncludes {
    * @param pf $JFX $PXF
    * @return $SFX $PXF
    */
-  implicit def jfxPixelFormat2sfx[B <: Buffer](pf: jfxsi.PixelFormat[B]) = if (pf != null) new PixelFormat[B](pf) {} else null
+  implicit def jfxPixelFormat2sfx[B <: Buffer](pf: jfxsi.PixelFormat[B]): PixelFormat[B] = if (pf != null) new PixelFormat[B](pf) {} else null
 
   /**
    * $START$PFT.html $PFT$END
@@ -83,7 +85,7 @@ trait ImageIncludes {
    * @param t $JFX $PFT
    * @return $SFX $PFT
    */
-  implicit def jfxType2sfx(t: jfxsi.PixelFormat.Type) = PixelFormat.Type.jfxEnum2sfx(t)
+  implicit def jfxType2sfx(t: jfxsi.PixelFormat.Type): Type = PixelFormat.Type.jfxEnum2sfx(t)
 
   /**
    * $START$PXR.html $PXR$END
@@ -115,7 +117,7 @@ trait ImageIncludes {
    * @param wi $JFX $WRI
    * @return $SFX $WRI
    */
-  implicit def jfxWritableImage2sfx(wi: jfxsi.WritableImage) = if (wi != null) new WritableImage(wi) else null
+  implicit def jfxWritableImage2sfx(wi: jfxsi.WritableImage): WritableImage = if (wi != null) new WritableImage(wi) else null
 
   /**
    * $START$WPF.html $WPF$END
@@ -123,6 +125,6 @@ trait ImageIncludes {
    * @param pf $JFX $WPF
    * @return $SFX $WPF
    */
-  implicit def jfxWritablePixelFormat2sfx[B <: Buffer](pf: jfxsi.WritablePixelFormat[B]) = new WritablePixelFormat[B](pf) {}
+  implicit def jfxWritablePixelFormat2sfx[B <: Buffer](pf: jfxsi.WritablePixelFormat[B]): WritablePixelFormat[B] = new WritablePixelFormat[B](pf) {}
 
 }

@@ -26,12 +26,13 @@
  */
 package scalafx.geometry
 
-import scala.language.implicitConversions
 import javafx.{geometry => jfxg}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Rectangle2D {
-  implicit def sfxRectangle2D2jfx(r: Rectangle2D) = if (r != null) r.delegate else null
+  implicit def sfxRectangle2D2jfx(r: Rectangle2D): jfxg.Rectangle2D = if (r != null) r.delegate else null
 
   /**
    * An empty Rectangle2D instance (with all coordinates equal to zero).

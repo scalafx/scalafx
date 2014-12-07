@@ -27,7 +27,8 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[javafx.geometry.Side]] */
 object Side
@@ -43,10 +44,10 @@ object Side
 
 sealed case class Side(override val delegate: jfxg.Side)
   extends SFXEnumDelegate[jfxg.Side] {
-  
+
   /** Indicates whether this is horizontal side of a rectangle (returns true for `TOP` and `BOTTOM`). */
   def isHorizontal = delegate.isHorizontal
-  
+
   /** Indicates whether this is vertical side of a rectangle (returns true for `LEFT` and `RIGHT`). */
   def isVertical = delegate.isVertical
 }

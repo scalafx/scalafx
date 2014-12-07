@@ -26,14 +26,16 @@
  */
 package scalafx.animation
 
-import javafx.{ animation => jfxa }
+import javafx.beans.{property => jfxbp}
+import javafx.{animation => jfxa}
+
+import org.junit.runner.RunWith
 import org.scalatest.Matchers._
+import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.beans.property._
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import scalafx.testutil.SimpleSFXDelegateSpec
-import javafx.beans.{ property => jfxbp }
 
 /**
  * KeyValue Spec tests.

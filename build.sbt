@@ -1,6 +1,6 @@
-import scala.xml._
 import java.net.URL
-import SonatypeKeys._
+
+import scala.xml._
 
 val scalafxVersion = "8.0.40-SNAPSHOT"
 
@@ -11,7 +11,7 @@ lazy val scalafx = Project(
   settings = scalafxSettings ++ Seq(
     description := "The ScalaFX framework",
     fork in run := true,
-    scalacOptions in (Compile, doc) ++= Seq (
+    scalacOptions in(Compile, doc) ++= Seq(
       "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md"
     )
   ) ++ sonatypeSettings
@@ -49,7 +49,7 @@ lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
   crossScalaVersions := Seq("2.10.4", "2.11.4"),
-  scalaVersion <<= crossScalaVersions { versions => versions.head },
+  scalaVersion <<= crossScalaVersions { versions => versions.head},
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
@@ -67,6 +67,7 @@ lazy val scalafxSettings = Seq(
       Seq("org.scala-lang.modules" %% "scala-xml" % "1.0.1" % "test")
     else
       Seq.empty[ModuleID]),
+  autoAPIMappings := true,
   manifestSetting,
   publishSetting,
   fork in Test := true,
@@ -76,7 +77,7 @@ lazy val scalafxSettings = Seq(
   testOptions in Test <+= (target in Test) map {
     t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))
   },
-  shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> " }
+  shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> "}
 ) ++ mavenCentralSettings
 
 lazy val manifestSetting = packageOptions <+= (name, version, organization) map {

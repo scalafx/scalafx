@@ -26,17 +26,16 @@
  */
 package scalafx.scene.effect
 
+import javafx.scene.{effect => jfxse, paint => jfxsp}
+
 import scala.language.implicitConversions
-import javafx.scene.{ effect => jfxse, paint => jfxsp }
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
+import scalafx.delegate.{DimensionDelegate, PositionDelegate, SFXDelegate}
 import scalafx.scene.paint._
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.PositionDelegate
-import scalafx.delegate.DimensionDelegate
 
 object ColorInput {
-  implicit def sfxColorInput2jfx(ci: ColorInput) = if (ci != null) ci.delegate else null
+  implicit def sfxColorInput2jfx(ci: ColorInput): jfxse.ColorInput = if (ci != null) ci.delegate else null
 }
 
 class ColorInput(override val delegate: jfxse.ColorInput = new jfxse.ColorInput)

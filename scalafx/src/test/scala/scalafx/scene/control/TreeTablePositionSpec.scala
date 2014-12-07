@@ -26,10 +26,11 @@
  */
 package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-import javafx.scene.{ control => jfxsc }
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
@@ -40,7 +41,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 class TreeTablePositionSpec[S, T]
   extends SimpleSFXDelegateSpec[jfxsc.TreeTablePosition[S, T], TreeTablePosition[S, T]](classOf[jfxsc.TreeTablePosition[S, T]], classOf[TreeTablePosition[S, T]]) {
 
-  override def getJavaClassInstance = 
+  override def getJavaClassInstance =
     new jfxsc.TreeTablePosition(new jfxsc.TreeTableView(), 0, new jfxsc.TreeTableColumn())
 
 }

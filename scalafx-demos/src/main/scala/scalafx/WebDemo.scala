@@ -32,8 +32,8 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout._
+import scalafx.scene.paint.Color
 import scalafx.scene.web._
-import scene.paint.Color
 
 object WebDemo extends JFXApp {
 
@@ -55,7 +55,7 @@ object WebDemo extends JFXApp {
     hgrow = Priority.Always
     vgrow = Priority.Never
   }
-  txfUrl.onAction = handle{ engine.load(txfUrl.text.get) }
+  txfUrl.onAction = handle {engine.load(txfUrl.text.get)}
 
   stage = new PrimaryStage {
     title = "ScalaFX Web Demo"

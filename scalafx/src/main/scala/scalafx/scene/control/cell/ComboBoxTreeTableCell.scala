@@ -26,12 +26,11 @@
  */
 package scalafx.scene.control.cell
 
-import scala.language.implicitConversions
-
-import javafx.{collections => jfxc}
-import javafx.scene.{control => jfxsc}
 import javafx.scene.control.{cell => jfxscc}
-import javafx.{util => jfxu}
+import javafx.scene.{control => jfxsc}
+import javafx.{collections => jfxc, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes.jfxTreeTableCell2sfx
 import scalafx.collections.ObservableBuffer
 import scalafx.collections.ObservableBuffer.observableBuffer2ObservableList
@@ -67,7 +66,7 @@ object ComboBoxTreeTableCell {
    * @param cell $SFX $CBTC
    * @return $JFX $CBTC
    */
-  implicit def sfxComboBoxTreeTableCell2jfx[S, T](cell: ComboBoxTreeTableCell[S, T]) =
+  implicit def sfxComboBoxTreeTableCell2jfx[S, T](cell: ComboBoxTreeTableCell[S, T]): jfxsc.cell.ComboBoxTreeTableCell[S, T] =
     if (cell != null) cell.delegate else null
 
   /**

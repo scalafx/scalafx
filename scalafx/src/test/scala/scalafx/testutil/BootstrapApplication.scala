@@ -26,9 +26,9 @@
  */
 package scalafx.testutil
 
-import javafx.stage.Stage
-import javafx.application.Application
 import java.util.concurrent.CountDownLatch
+import javafx.application.Application
+import javafx.stage.Stage
 
 object BootstrapApplication {
   private val launchLatch = new CountDownLatch(1)

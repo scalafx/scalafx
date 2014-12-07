@@ -26,16 +26,16 @@
  */
 package scalafx.scene.web
 
-import scala.language.implicitConversions
-import javafx.{event => jfxe}
+import javafx.geometry.Rectangle2D
 import javafx.scene.{web => jfxsw}
-import javafx.{util => jfxu}
+import javafx.{event => jfxe, util => jfxu}
+
+import org.w3c.dom.Document
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property._
-import javafx.geometry.Rectangle2D
 import scalafx.delegate.SFXDelegate
-import org.w3c.dom.Document
-import java.io.File
 import scalafx.print.PrinterJob
 
 /**
@@ -49,8 +49,7 @@ object WebEngine {
    * @param we ScalaFX WebEngine
    * @return JavaFX WebEngine
    */
-  implicit def sfxWebEngine2jfx(we: WebEngine) = if (we != null) we.delegate else null
-
+  implicit def sfxWebEngine2jfx(we: WebEngine): jfxsw.WebEngine = if (we != null) we.delegate else null
 }
 
 /**
@@ -106,7 +105,7 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   }
 
   /**
-   *  The event handler called when an error occurs.
+   * The event handler called when an error occurs.
    *
    * @since 8.0
    */
@@ -159,9 +158,9 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
     javaScriptEnabled() = v
   }
 
-  /** 
+  /**
    * Specifies the directory to be used by this WebEngine to store local user data.
-   *   
+   *
    * @since 8.0
    */
   def userDataDirectory: ObjectProperty[java.io.File] = delegate.userDataDirectoryProperty
@@ -207,7 +206,7 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
 
   /**
    * Specifies user agent ID string.
-   * 
+   *
    * @since 8.0
    */
   def userAgent: StringProperty = delegate.userAgentProperty
