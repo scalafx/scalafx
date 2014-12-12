@@ -41,4 +41,11 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class ListCellSpec[T]
-  extends AbstractSFXDelegateSpec[jfxsc.ListCell[T], ListCell[T], jfxsc.ListCellBuilder[T, _]](classOf[jfxsc.ListCell[T]], classOf[ListCell[T]], classOf[jfxsc.ListCellBuilder[T, _]])
+  extends AbstractSFXDelegateSpec[jfxsc.ListCell[T], ListCell[T],
+    jfxsc.ListCellBuilder[T, _]](classOf[jfxsc.ListCell[T]], classOf[ListCell[T]], classOf[jfxsc.ListCellBuilder[T, _]]) {
+
+  "ListCell" should "have index property (Issue #167)" in {
+    val cell = new ListCell()
+    cell.index === 0
+  }
+}
