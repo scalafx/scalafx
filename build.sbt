@@ -33,7 +33,7 @@ lazy val scalafxDemos = Project(
 ) dependsOn (scalafx % "compile;test->test")
 
 // Dependencies
-lazy val junit = "junit" % "junit" % "4.11"
+lazy val junit = "junit" % "junit" % "4.12"
 lazy val scalatest = "org.scalatest" %% "scalatest" % "2.2.2"
 
 // Resolvers
