@@ -38,7 +38,7 @@ object ListCell {
 }
 
 class ListCell[T](override val delegate: jfxsc.ListCell[T] = new jfxsc.ListCell[T])
-  extends Cell(delegate)
+  extends IndexedCell(delegate)
   with SFXDelegate[jfxsc.ListCell[T]] {
 
   /**
