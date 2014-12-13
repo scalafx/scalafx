@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.util.converter
 
 import javafx.util.{converter => jfxuc}
@@ -149,6 +150,8 @@ trait ConverterIncludes {
    * @return $SFX $FLSC
    */
   implicit def jfxFloatStringConverter2sfx(c: jfxuc.FloatStringConverter): FloatStringConverter = if (c != null) new FloatStringConverter(c) else null
+
+  implicit def jfxFormatStringConverter2sfx[T <: AnyRef](c: jfxuc.FormatStringConverter[T]): FormatStringConverter[T] = if (c != null) new FormatStringConverter(c) else null
 
   /**
    * $START$INSC.html $INSC$END
