@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
@@ -669,6 +670,10 @@ trait ControlIncludes
    */
   implicit def jfxTableFocusModel2sfx[T, TC <: jfxsc.TableColumnBase[T, _]](tfm: jfxsc.TableFocusModel[T, TC]): TableFocusModel[T, TC] =
     if (tfm != null) new TableFocusModel[T, TC](tfm) {} else null
+
+  implicit def jfxTextFormatter2sfx[V](t: jfxsc.TextFormatter[V]): TextFormatter[V] = if (t != null) new TextFormatter(t) else null
+
+  implicit def jfxTextFormatterChange2sfx[V](t: jfxsc.TextFormatter.Change): TextFormatter.Change = if (t != null) new TextFormatter.Change(t) else null
 
   /**
    * $START$TTPN.html $TTPN$END
