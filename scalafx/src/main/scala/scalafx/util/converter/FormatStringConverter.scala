@@ -24,33 +24,24 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
+package scalafx.util.converter
+
+import java.text.Format
+import javafx.util.{converter => jfxuc}
 
 import scala.language.implicitConversions
-import scalafx.Includes._
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.delegate.SFXDelegate
 
-object ListCell {
-  implicit def sfxListCell2jfx[T](l: ListCell[T]): jfxsc.ListCell[T] = if (l != null) l.delegate else null
+object FormatStringConverter {
+  implicit def sfxFormatStringConverter2jfx[T <: AnyRef](c: FormatStringConverter[T]): jfxuc.FormatStringConverter[T] =
+    if (c != null) c.delegate else null
 }
 
-class ListCell[T](override val delegate: jfxsc.ListCell[T] = new jfxsc.ListCell[T])
-  extends IndexedCell(delegate)
-  with SFXDelegate[jfxsc.ListCell[T]] {
+/**
+ * `StringConverter` implementation that can use a `Format` instance.
+ */
+class FormatStringConverter[T <: AnyRef](delegate: jfxuc.FormatStringConverter[T])
+  extends StringConverterDelegate[T, T, jfxuc.FormatStringConverter[T]](delegate) {
 
-  /**
-   * The ListView associated with this Cell.
-   */
-  def listView: ReadOnlyObjectProperty[jfxsc.ListView[T]] = delegate.listViewProperty
-
-  /**
-   * Updates the ListView associated with this Cell.
-   */
-  def updateListView(listView: ListView[T]) {
-    delegate.updateListView(listView)
-  }
-
+  def this(format: Format) = this(new jfxuc.FormatStringConverter[T](format))
 }

@@ -24,33 +24,58 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
+package scalafx.util.converter
+
+import java.text.NumberFormat
+import java.util.Locale
+import javafx.util.{converter => jfxuc}
+
+import org.junit.runner.RunWith
+import org.scalatest.Matchers._
+import org.scalatest.junit.JUnitRunner
 
 import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.delegate.SFXDelegate
+import scalafx.testutil.SimpleSFXDelegateSpec
 
-object ListCell {
-  implicit def sfxListCell2jfx[T](l: ListCell[T]): jfxsc.ListCell[T] = if (l != null) l.delegate else null
-}
+/**
+ * Test for [[scalafx.util.converter.FormatStringConverterSpec]].
+ */
+@RunWith(classOf[JUnitRunner])
+class FormatStringConverterSpec
+  extends SimpleSFXDelegateSpec[jfxuc.FormatStringConverter[Number], FormatStringConverter[Number]](
+    classOf[jfxuc.FormatStringConverter[Number]], classOf[FormatStringConverter[Number]]) {
 
-class ListCell[T](override val delegate: jfxsc.ListCell[T] = new jfxsc.ListCell[T])
-  extends IndexedCell(delegate)
-  with SFXDelegate[jfxsc.ListCell[T]] {
+  override protected def getJavaClassInstance = getScalaClassInstance
+  override protected def getScalaClassInstance = new FormatStringConverter[Number](NumberFormat.getCurrencyInstance(Locale.US))
 
-  /**
-   * The ListView associated with this Cell.
-   */
-  def listView: ReadOnlyObjectProperty[jfxsc.ListView[T]] = delegate.listViewProperty
+  def getConverterForExample: FormatStringConverter[Number] = getScalaClassInstance
 
-  /**
-   * Updates the ListView associated with this Cell.
-   */
-  def updateListView(listView: ListView[T]) {
-    delegate.updateListView(listView)
+  val examples = List[(Number, String)](
+    (0.0, "$0.00"),
+    (123.45, "$123.45"),
+    (-123.45, "($123.45)")
+  )
+
+  private def runConverterForExamples() {
+
+    val converter = getConverterForExample
+
+    def runConversionsForExamples(number: Number, string: String) {
+      val numberAsString = converter.toString(number)
+      numberAsString should equal(string)
+
+      val stringToNumber = converter.fromString(string)
+      stringToNumber should equal(number)
+    }
+
+    examples.foreach(example => runConversionsForExamples(example._1, example._2))
+  }
+
+
+  it should "convert Number to String and vice-versa" in {
+    this.runConverterForExamples()
   }
 
 }
