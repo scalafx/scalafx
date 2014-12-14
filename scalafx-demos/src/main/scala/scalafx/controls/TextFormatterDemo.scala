@@ -28,16 +28,16 @@
 package scalafx.controls
 
 import java.text.NumberFormat
-import javafx.util.{converter => jfxu}
+import java.util.Locale
 
 import scala.language.implicitConversions
-import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
+import scalafx.scene.Scene
 import scalafx.scene.control.{Label, Slider, TextField, TextFormatter}
 import scalafx.scene.layout.{Region, VBox}
-import scalafx.scene.{Parent, Scene}
+import scalafx.util.converter.FormatStringConverter
 
 /**
  * Demonstrates a TextField control with a TextFormatter that formats the content.
@@ -51,12 +51,14 @@ object TextFormatterDemo extends JFXApp {
     wrapText = true
     prefHeight = Region.USE_COMPUTED_SIZE
   }
+
   val slider = new Slider(0, 10000, 1000)
 
-  def createContent(): Parent = {
-    val converter = new jfxu.FormatStringConverter[Number](NumberFormat.getCurrencyInstance)
+  val textField = {
+    val currencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
+    val converter = new FormatStringConverter[Number](currencyFormat)
     new TextField {
-      textFormatter = new TextFormatter[Number](converter) {
+      textFormatter = new TextFormatter(converter) {
         value <==> slider.value
       }
       maxWidth = 140
@@ -68,7 +70,7 @@ object TextFormatterDemo extends JFXApp {
     scene = new Scene(300, 200) {
       title = "TextFormatter Demo"
       root = new VBox {
-        content = Seq(infoLabel, createContent(), slider)
+        content = Seq(infoLabel, textField, slider)
         padding = Insets(20)
         spacing = 12
       }
