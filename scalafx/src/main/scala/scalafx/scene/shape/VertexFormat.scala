@@ -98,6 +98,6 @@ class VertexFormat(override val delegate: jfxss.VertexFormat)
    *
    * @return the offset to the texture coordinates component.
    */
-  def TexCoordIndexOffset: Int = delegate.getTexCoordIndexOffset
+  def texCoordIndexOffset: Int = delegate.getTexCoordIndexOffset
 
 }
