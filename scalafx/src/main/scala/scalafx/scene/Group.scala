@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene
 
 import javafx.{scene => jfxs}
@@ -74,6 +75,7 @@ class Group(override val delegate: jfxs.Group = new jfxs.Group())
   /**
    * Gets the list of children of this `Group`.
    */
+  @deprecated("Will be removed due to name conflicts with JavaFX 8u40. Use `children` instead.", since = "2.2.75-R11")
   def content = children
   /**
    * Sets the list of children, replacing the prior content. If you want append to current content, use `add` or
@@ -81,6 +83,7 @@ class Group(override val delegate: jfxs.Group = new jfxs.Group())
    *
    * @param c list of children to replace prior content.
    */
+  @deprecated("Will be removed due to name conflicts with JavaFX 8u40. Use `children` instead.", since = "2.2.75-R11")
   def content_=(c: Iterable[Node]) {
     children = c
   }
@@ -89,6 +92,7 @@ class Group(override val delegate: jfxs.Group = new jfxs.Group())
    *
    * @param n Node to replace prior content.
    */
+  @deprecated("Will be removed due to name conflicts with JavaFX 8u40. Use `children` instead.", since = "2.2.75-R11")
   def content_=(n: Node) {
     children = n
   }

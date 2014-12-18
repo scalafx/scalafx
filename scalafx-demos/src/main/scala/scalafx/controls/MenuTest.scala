@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.controls
 
 import scalafx.Includes._
@@ -41,10 +42,10 @@ object MenuTest extends JFXApp {
   val menu = new Menu("File") {
     items = List(
       new MenuItem("Open") {
-        onAction = (ae: ActionEvent) => history.content += new Label("Selected item `Open`")
+        onAction = (ae: ActionEvent) => history.children += new Label("Selected item `Open`")
       },
       new MenuItem("Close") {
-        onAction = (ae: ActionEvent) => history.content += new Label("Selected item `Close`")
+        onAction = (ae: ActionEvent) => history.children += new Label("Selected item `Close`")
       }
     )
 
@@ -76,6 +77,6 @@ object MenuTest extends JFXApp {
   }
 
   def printEvent(eventStr: String)() {
-    history.content += new Label(eventStr)
+    history.children += new Label(eventStr)
   }
 }

@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx
 
 import scalafx.application.JFXApp
@@ -44,7 +45,7 @@ object HelloScalaFX extends JFXApp {
       fill = Black
       content = new HBox {
 //        padding = Insets(5)
-        content = Seq(new Text {
+        children = Seq(new Text {
           text = "Scala"
           style = "-fx-font-size: 100pt"
           fill = new LinearGradient(

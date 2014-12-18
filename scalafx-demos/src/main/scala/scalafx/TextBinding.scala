@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx
 
 import scalafx.Includes._
@@ -43,7 +44,7 @@ object TextBinding extends JFXApp {
     scene = new Scene {
       content = Seq(
         new VBox {
-          content = Seq (
+          children = Seq(
             comboBox,
             new Label {
               text <== comboBox.editor().text

@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.imaginej
 
 //             ________                                __                   ________   __    __
@@ -89,13 +90,13 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   }
   val stackPane = new StackPane {
     alignment = Pos.Center
-    content = List(questionRectangle, questionText)
+    children = List(questionRectangle, questionText)
   }
   val hBox = new HBox {
     spacing = 10
     padding = Insets(15, 12, 15, 12)
     style = "-fx-background-color: #336699"
-    content = List(
+    children = List(
       currentButton,
       projectedButton,
       new Rectangle {
@@ -125,7 +126,7 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   val vBox = new VBox {
     spacing = 10
     padding = Insets(10, 10, 10, 10)
-    content = data
+    children = data
   }
 
   val salesText = new Text {

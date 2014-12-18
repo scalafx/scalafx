@@ -49,7 +49,7 @@ object CheckBoxTest extends JFXApp {
     fillWidth = true
     alignment = Pos.Center
     hgrow = Priority.Never
-    content = List(new CheckBoxControls(check), new ControlControls(check))
+    children = List(new CheckBoxControls(check), new ControlControls(check))
   }
 
   val mainPane = new BorderPane {

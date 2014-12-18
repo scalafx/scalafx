@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.colorselector
 
 import scala.collection.Seq
@@ -290,7 +291,7 @@ object ColorSelector extends JFXApp {
   }
 
   val pnlMain0 = new AnchorPane {
-    content = List(pnlMain)
+    children = List(pnlMain)
     prefHeight = 500
     prefWidth = 800
   }

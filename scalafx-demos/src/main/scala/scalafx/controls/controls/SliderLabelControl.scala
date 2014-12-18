@@ -103,7 +103,7 @@ class SliderLabelControl(property: DoubleProperty) extends FlowPane {
     slider.snapToTicks = v
   }
 
-  super.content = List(slider, lblValue)
+  super.children = List(slider, lblValue)
   super.hgap = 5.0
 }
 
@@ -126,7 +126,7 @@ object SliderLabelControlDemo extends JFXApp {
     scene = new Scene {
       content =
         new FlowPane {
-          content = List(lblValue, sldValue)
+          children = List(lblValue, sldValue)
         }
     }
   }

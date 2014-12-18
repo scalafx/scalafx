@@ -25,45 +25,33 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.controls
+package issues.issue169
 
-import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.event.ActionEvent
-import scalafx.geometry.Insets
-import scalafx.scene.Scene
-import scalafx.scene.control.{MenuButton, MenuItem}
-import scalafx.scene.layout.VBox
+import scalafx.collections.ObservableBuffer
 
-object MenuButtonDemo extends JFXApp {
+/**
+ * Based on example case from reporter `scalasolist` [[https://github.com/scalafx/scalafx/issues/169#issuecomment-67260390]]:
+ *
+ *
+ * I expect that update method would generate update change,
+ * but javafx generated instead pair of delete-remove changes. It differs from its own documentation.
+ * Theoretically I still can create delegate object that would generate such change.
+ */
+object Example1App extends App {
+  val items: ObservableBuffer[String] = ObservableBuffer()
 
-  stage = new PrimaryStage {
-    scene = new Scene(200, 200) {
-      content = new VBox {
-        padding = Insets(10)
-        spacing = 10
-        children = List(
-          new MenuButton("MenuButton 1") {
-            items = List(
-              new MenuItem("MenuItem A") {
-                onAction = {ae: ActionEvent => {println(ae.eventType + " occurred on Menu Item A")}}
-              },
-              new MenuItem("MenuItem B")
-            )
-          },
-          new MenuButton {
-            text = "MenuButton 2"
-            items = List(
-              new MenuItem("MenuItem C") {
-                onAction = {ae: ActionEvent => {println(ae.eventType + " occurred on Menu Item C")}}
-              },
-              new MenuItem("MenuItem D")
-            )
-          }
-
-        )
+  items.onChange((_, changes) => {
+    println(s"onChange(_, $changes")
+    for (change <- changes)
+      change match {
+        case ObservableBuffer.Add(_, _)        => println(s"  case Add    : $change")
+        case ObservableBuffer.Remove(_, _)     => println(s"  case Remove : $change")
+        case ObservableBuffer.Reorder(_, _, _) => println(s"  case Reorder: $change")
       }
-    }
-  }
+  })
+
+  println("items.append(\"test\")")
+  items.append("test")
+  println("items(0) = \"update\"")
+  items(0) = "update"
 }

@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.colorselector
 
 import scalafx.Includes._
@@ -98,7 +99,7 @@ class SliderControl(title: String) extends HBox {
   }
   lblValue.font = Font.font(lblValue.font().family, FontWeight.Bold, lblValue.font().size)
 
-  content = List(chbSelected, lblTitle, sldValue, lblValue)
+  children = List(chbSelected, lblTitle, sldValue, lblValue)
 
   padding = insets
 
