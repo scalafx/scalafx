@@ -70,7 +70,7 @@ class EventHandlerSpec extends FlatSpec with RunOnApplicationThread {
 
     val button = new Button()
     val group = new Group {
-      content = button
+      children = button
     }
 
     var groupCounter = 0
@@ -111,7 +111,7 @@ class EventHandlerSpec extends FlatSpec with RunOnApplicationThread {
 
     val button = new Button()
     val group = new Group {
-      content = button
+      children = button
     }
 
     var groupCounter = 0

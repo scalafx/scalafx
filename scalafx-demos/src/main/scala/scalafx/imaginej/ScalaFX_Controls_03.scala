@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.imaginej
 
 //             ________                                __                   ________   __    __
@@ -91,7 +92,7 @@ object ScalaFX_Controls_03 extends JFXApp {
 
   val vBox = new VBox {
     spacing = 10
-    content = List(
+    children = List(
       homeRadioButton,
       calendarRadioButton,
       contactsRadioButton
@@ -104,7 +105,7 @@ object ScalaFX_Controls_03 extends JFXApp {
   val hBox = new HBox {
     spacing = 50
     padding = Insets(20, 10, 10, 20)
-    content = List(
+    children = List(
       vBox,
       iconImageView
     )

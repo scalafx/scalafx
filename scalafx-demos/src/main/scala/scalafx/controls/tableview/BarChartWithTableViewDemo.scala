@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.controls.tableview
 
 import scalafx.Includes._
@@ -69,7 +70,7 @@ object BarChartWithTableViewDemo extends JFXApp {
           margin = Insets(25)
         }
         center = new HBox {
-          content = Seq(
+          children = Seq(
             createBarChart("Speculations", data1),
             createBarChart("Predictions", data2)
           )

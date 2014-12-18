@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.canvas
 
 import scalafx.Includes._
@@ -86,7 +87,7 @@ object LayerTest extends JFXApp {
   // Add Layers
   borderPane.top = cb
   borderPane.center = new Pane {
-    content = List(layer1, layer2)
+    children = List(layer1, layer2)
   }
   layer1.toFront()
 
