@@ -72,7 +72,7 @@ object SphereAndBoxDemo extends JFXApp {
 
       root = new Group {
         // Put light outside of `shapes` group so it does not rotate
-        content = new Group(shapes, light)
+        children = new Group(shapes, light)
         translateX = 250
         translateY = 250
         translateZ = 725

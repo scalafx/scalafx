@@ -74,7 +74,7 @@ object TriangleMeshDemo extends JFXApp {
       }
 
       root = new Group {
-        content = new Group(shapes, pointLight, ambientLight)
+        children = new Group(shapes, pointLight, ambientLight)
         translateX = 250.0
         translateY = 250.0
         translateZ = 700.0
