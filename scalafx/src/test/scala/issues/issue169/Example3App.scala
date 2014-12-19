@@ -27,31 +27,40 @@
 
 package issues.issue169
 
+import javafx.{beans => jfxb, collections => jfxc}
+
+import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 
 /**
- * Based on example case from reporter `scalasolist` [[https://github.com/scalafx/scalafx/issues/169#issuecomment-67260390]]:
+ * Example of `Update` notification. Based on example for Issue #169:
+ * [[https://github.com/scalafx/scalafx/issues/169#issuecomment-67577800]]
  *
- * I expect that update method would generate update change,
- * but javafx generated instead pair of delete-remove changes. It differs from its own documentation.
- * Theoretically I still can create delegate object that would generate such change.
  */
-object Example1App extends App {
-  val items: ObservableBuffer[String] = ObservableBuffer()
+object Example3App extends App {
+
+  val items: ObservableBuffer[jfxc.ObservableList[String]] = new ObservableBuffer(
+    jfxc.FXCollections.observableArrayList[jfxc.ObservableList[String]]((elem: jfxc.ObservableList[String]) => Array[jfxb.Observable](elem)))
 
   items.onChange((_, changes) => {
     println(s"onChange(_, $changes")
     for (change <- changes)
       change match {
-        case ObservableBuffer.Add(_, _)        => println(s"  case Add    : $change")
-        case ObservableBuffer.Remove(_, _)     => println(s"  case Remove : $change")
+        case ObservableBuffer.Add(_, _)        => println(s"  case Add: $change")
+        case ObservableBuffer.Remove(_, _)     => println(s"  case Remove: $change")
         case ObservableBuffer.Reorder(_, _, _) => println(s"  case Reorder: $change")
-        case ObservableBuffer.Update(_, _) => println(s"  case Update: $change")
+        case ObservableBuffer.Update(_, _)     => println(s"  case Update: $change")
       }
   })
 
-  println("items += \"test\"")
-  items += "test"
-  println("items(0) = \"update\"")
-  items(0) = "update"
+  // Should produce `Add` notification
+  println("items += ObservableBuffer(\"test\")")
+  items += ObservableBuffer("test")
+  println("Items: " + items)
+  println()
+
+  // Should produce `Update` notification
+  println("items(0) += \"update\"")
+  items(0) += "update"
+  println("Items: " + items)
 }
