@@ -28,7 +28,7 @@
 package scalafx.collections
 
 import java.{util => ju}
-import javafx.{collections => jfxc}
+import javafx.{beans => jfxb, collections => jfxc}
 
 import org.junit.runner.RunWith
 import org.scalatest.Matchers._
@@ -36,7 +36,7 @@ import org.scalatest.junit.JUnitRunner
 
 import scala.collection.mutable.Buffer
 import scalafx.Includes._
-import scalafx.collections.ObservableBuffer.{Add, Remove, Reorder, observableBuffer2ObservableList}
+import scalafx.collections.ObservableBuffer._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
@@ -150,7 +150,7 @@ class ObservableBufferSpec[T]
           case (List(Add(position, elements))) =>
             changeCount += 1
             position should be(expectedPosition)
-            elements should have size (1)
+            elements should have size 1
             elements.toSeq(0) should equal(addedElement)
           case _                               => fail("Unexpected changes: " + changes)
         }
@@ -228,7 +228,7 @@ class ObservableBufferSpec[T]
           case (List(Remove(position, elements))) =>
             changeCount += 1
             position should be(expectedPosition)
-            elements should have size (1)
+            elements should have size 1
             elements.toSeq(0) should equal(removedElement)
           case _                                  => fail("Unexpected changes: " + changes)
         }
@@ -611,6 +611,8 @@ class ObservableBufferSpec[T]
             val p = Buffer.empty[(Int, Int)]
             (start until end).foreach(i => p += ((i, permutation(i))))
             permutations += p
+          case Update(pas, updated) => println(s"  case Update: $change")
+
         }
       }
     }
@@ -630,6 +632,44 @@ class ObservableBufferSpec[T]
     removedValues.toList should equal(List('d', 'a'))
     permutations should have size 1
     permutations(0).toList should equal(List((0, 3), (1, 2), (2, 5), (3, 0), (4, 1), (5, 4)))
+  }
+
+  it should "not ignore updates (Issue #169)" in {
+
+    type ElementType = jfxc.ObservableList[String]
+
+    val items = new ObservableBuffer(jfxc.FXCollections.observableArrayList[ElementType]((elem: ElementType) => Array[jfxb.Observable](elem)))
+
+    items.append(jfxc.FXCollections.observableArrayList("test"))
+
+    var expectedPosition = -1
+    var changed = false
+    items.onChange((obs, changes) => {
+      changed = true
+      for (change <- changes)
+        change match {
+          case ObservableBuffer.Update(position, update) =>
+            position should be(expectedPosition)
+            val list = update.toList
+            list.length should equal(1)
+            list(0) match {
+              case e: ElementType =>
+                e.length should equal(2)
+                e(0) should equal("test")
+                e(1) should equal("update")
+              case _@t            => fail("Wrong list type: " + t)
+            }
+
+          case _@otherChange => fail("Wrong change: " + otherChange.toString)
+        }
+    })
+
+    expectedPosition = 0
+    items(0) += "update"
+
+    changed should be(true)
+
+
   }
 
 }

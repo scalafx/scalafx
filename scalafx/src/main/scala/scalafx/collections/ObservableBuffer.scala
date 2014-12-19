@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.collections
 
 import java.{util => ju}
@@ -74,6 +75,20 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    * Trait that indicates a Change in an $OB. It is a simpler version of JavaFX's
    * [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html `ListChangeListener.Change`]],
    * where each subclass indicates a specific change operation.
+   * Unlike JavaFX, all subcalsses are exclusive to each other. This enables using pattern matching:
+   * {{{
+   * items.onChange((_, changes) => {
+   *   for (change <- changes)
+   *     change match {
+   *       case Add(pos, added)                => ...
+   *       case Remove(pos, removed)           => ...
+   *       case Reorder(from, to, permutation) => ...
+   *       case Update(pos, updated)           => ...
+   *     }
+   * })
+   * }}}
+   *
+   * "replace" is represented as two changes `Remove` and `Add`.
    */
   sealed trait Change
 
@@ -82,6 +97,8 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    *
    * @param position Position from where new elements were added
    * @param added elements added
+   *
+   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#wasUpdated() `ListChangeListener.Change.wasAdded()`]]
    * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getFrom() `ListChangeListener.Change.getFrom()`]]
    * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getAddedSubList() `ListChangeListener.Change.getAddedSubList()`]]
    */
@@ -92,6 +109,8 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    *
    * @param position Position from where elements were removed
    * @param removed elements removed
+   *
+   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#wasUpdated() `ListChangeListener.Change.wasRemoved()`]]
    * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getFrom() `ListChangeListener.Change.getFrom()`]]
    * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getRemoved() `ListChangeListener.Change.getRemoved()`]]
    */
@@ -104,11 +123,25 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    * @param end The end of the change interval.
    * @param permutation Function thst indicates the permutation that happened. The argument indicates the old index
    *                    that contained the element prior to this change. Its return is the new index of the same element.
+   *
+   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#wasUpdated() `ListChangeListener.Change.wasPermutated()`]]
    * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getFrom() `ListChangeListener.Change.getFrom()`]]
    * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getTo() `ListChangeListener.Change.getTo()`]]
    * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getPermutation(int) `ListChangeListener.Change.getPermutation(int)`]]
    */
   case class Reorder(start: Int, end: Int, permutation: (Int => Int)) extends Change
+
+  /**
+   * Indicates an Update in an $OB.
+   *
+   * @param position Position from where new elements were updated
+   * @param updated elements updated
+   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#wasUpdated() `ListChangeListener.Change.wasUpdated()`]]
+   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getFrom() `ListChangeListener.Change.getFrom()`]]
+   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getAddedSubList() `ListChangeListener.Change.getAddedSubList()`]]
+   */
+  case class Update[T](position: Int, updated: Traversable[T]) extends Change
+
 
   // CHANGING INDICATORS - END
 
@@ -492,7 +525,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * @param typeTag information about if this type is a `Comparable` subclass or not.
    */
   def sort()(implicit typeTag: WeakTypeTag[T]) {
-    if(typeTag.tpe <:< typeOf[Comparable[_]]) {
+    if (typeTag.tpe <:< typeOf[Comparable[_]]) {
       jfxc.FXCollections.sort(delegate, new ju.Comparator[T] {
         def compare(p1: T, p2: T) = p1.asInstanceOf[Comparable[T]].compareTo(p2)
       })
@@ -529,16 +562,19 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
       def onChanged(c: jfxc.ListChangeListener.Change[_ <: T1]) {
         var changes = ArrayBuffer.empty[Change]
         while (c.next()) {
-          if (c.wasRemoved()) {
-            changes += Remove(c.getFrom, c.getRemoved)
-          }
-          if (c.wasAdded()) {
-            changes += Add(c.getFrom, c.getAddedSubList)
-          }
           if (c.wasPermutated()) {
             changes += Reorder(c.getFrom, c.getTo, {
               x => c.getPermutation(x)
             })
+          } else if (c.wasUpdated()) {
+            changes += Update(c.getFrom, c.getAddedSubList)
+          } else {
+            if (c.wasRemoved()) {
+              changes += Remove(c.getFrom, c.getRemoved)
+            }
+            if (c.wasAdded()) {
+              changes += Add(c.getFrom, c.getAddedSubList)
+            }
           }
         }
         op(ObservableBuffer.this, changes)

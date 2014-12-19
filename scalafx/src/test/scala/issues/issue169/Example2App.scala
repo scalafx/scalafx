@@ -27,7 +27,7 @@
 
 package issues.issue169
 
-import javafx.collections.ListChangeListener
+import javafx.{collections => jfxc}
 
 import scalafx.collections.ObservableBuffer
 
@@ -44,8 +44,8 @@ import scalafx.collections.ObservableBuffer
 object Example2App extends App {
   val items: ObservableBuffer[String] = ObservableBuffer()
 
-  val listener = new ListChangeListener[String] {
-    def onChanged(change: ListChangeListener.Change[_ <: String]) {
+  val listener = new jfxc.ListChangeListener[String] {
+    def onChanged(change: jfxc.ListChangeListener.Change[_ <: String]) {
       println(change)
       var order = 0
       while (change.next()) {
