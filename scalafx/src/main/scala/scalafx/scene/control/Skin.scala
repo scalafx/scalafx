@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ object Skin {
 }
 
 /**
- * Wraps [[javafx.scene.control.Skinnable]] interface.
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/Skinnable.html javafx.scene.control.Skinnable]] interface.
  */
 trait Skin[C <: jfxsc.Skinnable] extends SFXDelegate[jfxsc.Skin[C]] {
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ object ReadOnlyFloatWrapper {
 }
 
 
-/** Wrapper for [[javafx.beans.property.ReadOnlyFloatWrapper]] */
+/** Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyFloatWrapper.html javafx.beans.property.ReadOnlyFloatWrapper]] */
 class ReadOnlyFloatWrapper(override val delegate: jfxbp.ReadOnlyFloatWrapper = new jfxbp.ReadOnlyFloatWrapper())
   extends FloatProperty(delegate)
   with SFXDelegate[jfxbp.ReadOnlyFloatWrapper] {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ import javafx.scene.{text => jfxst}
 
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/** Wrapper for [[javafx.scene.text.TextBoundsType]] */
+/** Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/scene/text/TextBoundsType.html javafx.scene.text.TextBoundsType]] */
 object TextBoundsType extends SFXEnumDelegateCompanion[jfxst.TextBoundsType, TextBoundsType] {
 
   val LOGICAL = new TextBoundsType(jfxst.TextBoundsType.LOGICAL)
