@@ -136,9 +136,9 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
    *
    * @param position Position from where new elements were updated
    * @param updated elements updated
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#wasUpdated() `ListChangeListener.Change.wasUpdated()`]]
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getFrom() `ListChangeListener.Change.getFrom()`]]
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getAddedSubList() `ListChangeListener.Change.getAddedSubList()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ListChangeListener.Change.html#wasUpdated() ListChangeListener.Change.wasUpdated()]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ListChangeListener.Change.html#getFrom() ListChangeListener.Change.getFrom()]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ListChangeListener.Change.html#getAddedSubList() ListChangeListener.Change.getAddedSubList()]]
    */
   case class Update[T](position: Int, updated: Traversable[T]) extends Change
 
