@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ object ReadOnlyIntegerWrapper {
 }
 
 
-/** Wrapper for [[javafx.beans.property.ReadOnlyIntegerWrapper]] */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyIntegerWrapper.html javafx.beans.property.ReadOnlyIntegerWrapper]] */
 class ReadOnlyIntegerWrapper(override val delegate: jfxbp.ReadOnlyIntegerWrapper = new jfxbp.ReadOnlyIntegerWrapper())
   extends IntegerProperty(delegate)
   with SFXDelegate[jfxbp.ReadOnlyIntegerWrapper] {

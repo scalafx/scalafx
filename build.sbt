@@ -2,7 +2,14 @@ import java.net.URL
 
 import scala.xml._
 
+//
+// Environment variables used by the build:
+// GRAPHVIZ_DOT_PATH - Full path to Graphviz dot utility. If not defined Scaladocs will be build without diagrams.
+// JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
+//
+
 val scalafxVersion = "8.0.20-R7-SNAPSHOT"
+val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v" + scalafxVersion
 
 // ScalaFX project
 lazy val scalafx = Project(
@@ -11,9 +18,14 @@ lazy val scalafx = Project(
   settings = scalafxSettings ++ Seq(
     description := "The ScalaFX framework",
     fork in run := true,
-    scalacOptions in (Compile, doc) ++= Seq (
-      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md"
-    )
+    scalacOptions in(Compile, doc) ++= Seq(
+      "-sourcepath", baseDirectory.value.toString,
+      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md",
+      "-doc-source-url", "https://github.com/scalafx/scalafx/blob/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala"
+    ) ++ (Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
+      case Some(path) => Seq("-diagrams", "-diagrams-dot-path", path)
+      case None       => Seq.empty[String]
+    })
   ) ++ sonatypeSettings
 )
 
@@ -49,10 +61,11 @@ lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
   crossScalaVersions := Seq("2.10.4", "2.11.4"),
-  scalaVersion <<= crossScalaVersions { versions => versions.head },
+  scalaVersion <<= crossScalaVersions { versions => versions.head},
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
+  scalacOptions in(Compile, doc) += s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
   javacOptions ++= Seq(
     "-target", "1.8",
     "-source", "1.8",
@@ -77,7 +90,7 @@ lazy val scalafxSettings = Seq(
   testOptions in Test <+= (target in Test) map {
     t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))
   },
-  shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> " }
+  shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> "}
 ) ++ mavenCentralSettings
 
 lazy val manifestSetting = packageOptions <+= (name, version, organization) map {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -165,8 +165,10 @@ object JFXApp {
 
 /** ScalaFX applications can extend JFXApp to create properly initialized JavaFX applications.
   *
-  * On the back end `JFXApp` first calls [[javafx.application.Application.launch]] then executes body of its
-  * constructor when [[javafx.application.Application# s t a r t ( p r i m a r y S t a g e : S t a g e )]] is called. Here is an example use:
+  * On the back end `JFXApp` first calls [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html#launch javafx.application.Application.launch]] then executes body of its
+  * constructor when
+  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.html#start(javafx.stage.Stage) javafx.application.Application.start(primaryStage:Stage)]]
+  * is called. Here is an example use:
   *
   * {{{
   *   object SimpleScalaFXApp extends JFXApp {
