@@ -51,7 +51,7 @@ object WeakEventHandler {
 /**
  * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/WeakEventHandler.html WeakEventHandler]].
  *
- * @contructor Creates a new ScalaFX WeakEventHandler from a JavaFX WeakEventHandler.
+ * @constructor Creates a new ScalaFX WeakEventHandler from a JavaFX WeakEventHandler.
  * @param delegate JavaFX WeakEventHandler to be wrapped
  * @tparam T JavaFX Event subclass
  * @since 8.0

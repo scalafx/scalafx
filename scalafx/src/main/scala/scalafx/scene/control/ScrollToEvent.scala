@@ -70,7 +70,7 @@ object ScrollToEvent {
  *
  * @constructor Creates a new ScrollToEvent from its JavaFX counterpart.
  * @param delegate JavaFX ScrollToEvent
- * @tparam
+ * @tparam T scroll target type
  */
 class ScrollToEvent[T](override val delegate: jfxsc.ScrollToEvent[T])
   extends Event(delegate)

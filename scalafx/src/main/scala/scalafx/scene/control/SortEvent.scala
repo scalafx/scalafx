@@ -65,6 +65,8 @@ object SortEvent {
  * @param delegate JavaFX SortEvent to be wrapped.
  * @tparam C Event Type
  * @since 8.0
+ *
+ * @define JFX JavaFX
  */
 class SortEvent[C](override val delegate: jfxsc.SortEvent[C])
   extends Event(delegate)

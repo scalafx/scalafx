@@ -30,7 +30,7 @@ import javafx.scene.{shape => jfxss}
 
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/** Wrapper for [[javafx.scene.shape.CullFace]] */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/CullFace.html javafx.scene.shape.CullFace]] */
 object CullFace extends SFXEnumDelegateCompanion[jfxss.CullFace, CullFace] {
 
   /**

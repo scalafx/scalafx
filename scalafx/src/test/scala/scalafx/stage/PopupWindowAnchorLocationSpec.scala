@@ -9,7 +9,7 @@ import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
-/** Tests for [[javafx.stage.PopupWindow.AnchorLocation]]. */
+/** Tests for [[scalafx.stage.PopupWindow.AnchorLocation]]. */
 @RunWith(classOf[JUnitRunner])
 class PopupWindowAnchorLocationSpec
   extends SFXEnumDelegateSpec[jfxs.PopupWindow.AnchorLocation, PopupWindow.AnchorLocation](

@@ -60,7 +60,7 @@ object BorderStroke {
 
 /**
  *
- * Wrapper for [[javafx.scene.layout.BorderStroke]].
+ * Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderStroke.html javafx.scene.layout.BorderStroke]].
  */
 class BorderStroke(override val delegate: jfxsl.BorderStroke)
   extends SFXDelegate[jfxsl.BorderStroke] {

@@ -65,6 +65,7 @@ object ShapeIncludes extends ShapeIncludes
  * @define QCT QuadCurveTo
  * @define REC Rectangle
  * @define SHA Shape
+ * @define SHA3D Shape3D
  * @define SLC StrokeLineCap
  * @define SLJ StrokeLineJoin
  * @define STT StrokeType
@@ -98,7 +99,7 @@ trait ShapeIncludes {
   implicit def jfxArcType2sfx(e: jfxss.ArcType): ArcType = ArcType.jfxEnum2sfx(e)
 
   /**
-   * $STARTBox.html Box$END
+   * ${START}Box.html Box$END
    *
    * @param b $JFX Box
    * @return $SFX Box
@@ -270,7 +271,7 @@ trait ShapeIncludes {
   implicit def jfxShape2sfx(s: jfxss.Shape): Shape = if (s != null) new Shape(s) {} else null
 
   /**
-   * $START$SHA.html $SH3DA$END
+   * $START$SHA3D.html $SHA3D$END
    *
    * @param s $JFX $SHA3D
    * @return $SFX $SHA3D

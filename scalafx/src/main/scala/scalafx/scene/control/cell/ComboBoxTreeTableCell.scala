@@ -43,8 +43,9 @@ import scalafx.util.StringConverter.sfxStringConverter2jfx
  * Companion Object for [[scalafx.scene.control.cell.ComboBoxTreeTableCell]].
  *
  * @since 8.0
- * @todo Replace all references to $JFX $TTC to its $SFX counterpart when it was created
+ * @todo Replace all references to $JFX `$TTC` to its $SFX counterpart when it was created
  *
+ * @define TTC TreeTableColumn
  * @define CBTC `ComboBoxTreeTableCell`
  * @define TTYPE  The type of the elements contained within the `TreeTableColumn`.
  * @define FTCINIT Creates a ComboBox cell factory for use in [[scalafx.scene.control.TreeTableColumn]] controls.
@@ -72,7 +73,7 @@ object ComboBoxTreeTableCell {
   /**
    * $FTCINIT
    *
-   * @tparam $TTYPE
+   * @tparam T $TTYPE
    * @param items $ITEMSPARAM
    * @return $RET
    */

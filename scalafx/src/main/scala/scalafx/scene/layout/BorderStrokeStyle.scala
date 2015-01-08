@@ -61,7 +61,7 @@ object BorderStrokeStyle {
 /**
  * Defines the style of the stroke to use on one side of a BorderStroke.
  *
- * Wrapper for [[javafx.scene.layout.BorderStrokeStyle]].
+ * Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderStrokeStyle.html javafx.scene.layout.BorderStrokeStyle]].
  */
 class BorderStrokeStyle(override val delegate: jfxsl.BorderStrokeStyle)
   extends SFXDelegate[jfxsl.BorderStrokeStyle] {

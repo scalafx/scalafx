@@ -30,7 +30,7 @@ import javafx.{geometry => jfxg}
 
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/** Wrapper for [[javafx.geometry.NodeOrientation]] */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/NodeOrientation.html javafx.geometry.NodeOrientation]] */
 object NodeOrientation
   extends SFXEnumDelegateCompanion[jfxg.NodeOrientation, NodeOrientation] {
 
