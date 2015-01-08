@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.control
 
 import javafx.beans.{property => jfxbp, value => jfxbv}
@@ -143,10 +144,10 @@ package object cell {
   }
 
   /**
-   * [[javafx.scene.control.Cell]]s that contains the method `getItems(): ObservableList[T]`.
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Cell.html javafx.scene.control.Cell]]s that contains the method `getItems(): ObservableList[T]`.
    *
    * @tparam T The type of the elements contained within the inner element inside the Cell.
-   * @tparam C  Derivated type from JavaFX Cell
+   * @tparam C  Derived type from JavaFX Cell
    */
   trait ItemableCell[C <: jfxsc.Cell[T] with Itemable[T], T]
     extends SFXDelegate[C] {
@@ -154,7 +155,7 @@ package object cell {
     /**
      * Returns the items to be displayed in the ChoiceBox when it is showing.
      */
-    def items = delegate.getItems
+    def items = delegate.getItems()
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.event
 
 import scalafx.Includes._
@@ -72,7 +73,7 @@ object RectangleDrawingDemo extends JFXApp {
 
   val pane = new Pane {
     // Add rectangle that will be updated with user interactions
-    content += Updater.rectangle
+    children += Updater.rectangle
   }
 
   // Define handling of mouse events

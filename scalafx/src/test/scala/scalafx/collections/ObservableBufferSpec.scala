@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,10 +24,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.collections
 
 import java.{util => ju}
-import javafx.{collections => jfxc}
+import javafx.{beans => jfxb, collections => jfxc}
 
 import org.junit.runner.RunWith
 import org.scalatest.Matchers._
@@ -35,7 +36,7 @@ import org.scalatest.junit.JUnitRunner
 
 import scala.collection.mutable.Buffer
 import scalafx.Includes._
-import scalafx.collections.ObservableBuffer.{Add, Remove, Reorder, observableBuffer2ObservableList}
+import scalafx.collections.ObservableBuffer._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
@@ -58,7 +59,7 @@ class ObservableBufferSpec[T]
   private def compareInstances(generatedBuffer: Buffer[_],
                                originalBuffer: ObservableBuffer[_], shouldBeTheSame: Boolean) {
     if (shouldBeTheSame) {
-      generatedBuffer should be theSameInstanceAs (originalBuffer)
+      generatedBuffer should be theSameInstanceAs originalBuffer
     } else {
       generatedBuffer should not be theSameInstanceAs(originalBuffer)
       generatedBuffer.getClass should be(classOf[ObservableBuffer[_]])
@@ -81,7 +82,7 @@ class ObservableBufferSpec[T]
     val buffer = ObservableBuffer("a", "b", "c")
 
     // Verification
-    buffer should have length (3)
+    buffer should have length 3
   }
 
   it should "support unapply" in {
@@ -146,12 +147,11 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) => {
         changes.toList match {
-          case (List(Add(position, elements))) => {
+          case (List(Add(position, elements))) =>
             changeCount += 1
             position should be(expectedPosition)
-            elements should have size (1)
+            elements should have size 1
             elements.toSeq(0) should equal(addedElement)
-          }
           case _                               => fail("Unexpected changes: " + changes)
         }
       }
@@ -187,11 +187,10 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) =>
         for (change <- changes) change match {
-          case Add(position, elements) => {
+          case Add(position, elements) =>
             changeCount += 1
             position should equal(3 * changeCount)
             elements should equal(Seq("d", "e", "f"))
-          }
           case _@otherChange           => fail(otherChange.toString)
         }
     }
@@ -226,12 +225,11 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) => {
         changes.toList match {
-          case (List(Remove(position, elements))) => {
+          case (List(Remove(position, elements))) =>
             changeCount += 1
             position should be(expectedPosition)
-            elements should have size (1)
+            elements should have size 1
             elements.toSeq(0) should equal(removedElement)
-          }
           case _                                  => fail("Unexpected changes: " + changes)
         }
       }
@@ -263,11 +261,10 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) =>
         for (change <- changes) change match {
-          case Remove(position, elements) => {
+          case Remove(position, elements) =>
             changeCount += 1
             position should equal(0)
             elements should equal(Seq("a", "b", "c"))
-          }
           case Add(_, _)                  =>
           case _@otherChange              => fail(otherChange.toString)
         }
@@ -316,11 +313,10 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) =>
         for (change <- changes) change match {
-          case Remove(position, elements) => {
+          case Remove(position, elements) =>
             changeCount += 1
             position should equal(1)
             elements should equal(Seq("b", "c", "d"))
-          }
           case Add(_, _)                  =>
           case _@otherChange              => fail(otherChange.toString)
         }
@@ -342,16 +338,14 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) =>
         for (change <- changes) change match {
-          case Add(position, elements)    => {
+          case Add(position, elements)    =>
             changeCount += 1
             position should equal(0)
             elements should equal(Seq("e", "f", "a", "b", "c", "d"))
-          }
-          case Remove(position, elements) => {
+          case Remove(position, elements) =>
             changeCount += 1
             position should equal(0)
             elements should equal(Seq("a", "b", "c", "d", "e", "f"))
-          }
           case _@otherChange              => fail(otherChange.toString)
         }
     }
@@ -371,16 +365,14 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) =>
         for (change <- changes) change match {
-          case Add(position, elements)    => {
+          case Add(position, elements)    =>
             changeCount += 1
             position should equal(0)
             elements should equal(Seq("d", "e", "f"))
-          }
-          case Remove(position, elements) => {
+          case Remove(position, elements) =>
             changeCount += 1
             position should equal(0)
             elements should equal(Seq("a", "b", "c"))
-          }
           case _@otherChange              => fail(otherChange.toString)
         }
     }
@@ -398,14 +390,13 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) =>
         for (change <- changes) change match {
-          case Reorder(start, end, permutation) => {
+          case Reorder(start, end, permutation) =>
             changeCount += 1
             start should equal(0)
             end should equal(6)
             for (i <- 0 until 5) {
               permutation(i) should equal(5 - i)
             }
-          }
           case _@otherChange                    => fail(otherChange.toString)
         }
     }
@@ -424,14 +415,13 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) =>
         for (change <- changes) change match {
-          case Reorder(start, end, permutation) => {
+          case Reorder(start, end, permutation) =>
             changeCount += 1
             start should equal(0)
             end should equal(6)
             for (i <- 0 until 5) {
               permutation(i) should equal(5 - i)
             }
-          }
           case _@otherChange                    => fail(otherChange.toString)
         }
     }
@@ -461,14 +451,13 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) =>
         for (change <- changes) change match {
-          case Reorder(start, end, permutation) => {
+          case Reorder(start, end, permutation) =>
             changeCount += 1
             start should equal(0)
             end should equal(6)
             for (i <- 0 until 5) {
               permutation(i) should equal(i)
             }
-          }
           case _@otherChange                    => fail(otherChange.toString)
         }
     }
@@ -488,18 +477,16 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) =>
         for (change <- changes) change match {
-          case Add(pos, addedBuffer)      => {
+          case Add(pos, addedBuffer)      =>
             addCount += 1
             pos should equal(0)
             addedBuffer.size should equal(buffer.size)
             addedBuffer.toBuffer.sameElements(buffer)
-          }
-          case Remove(pos, removedBuffer) => {
+          case Remove(pos, removedBuffer) =>
             removeCount += 1
             pos should equal(0)
             removedBuffer.size should equal(buffer.size)
             removedBuffer.toBuffer.sameElements(buffer)
-          }
           case _@otherChange              => fail(otherChange.toString)
         }
     }
@@ -616,17 +603,16 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) => {
         for (change <- changes) change match {
-          case Add(pos, addedBuffer)            => {
+          case Add(pos, addedBuffer)            =>
             addedValues ++= addedBuffer.toBuffer
-          }
-          case Remove(pos, removedBuffer)       => {
+          case Remove(pos, removedBuffer)       =>
             removedValues ++= removedBuffer.toBuffer
-          }
-          case Reorder(start, end, permutation) => {
+          case Reorder(start, end, permutation) =>
             val p = Buffer.empty[(Int, Int)]
             (start until end).foreach(i => p += ((i, permutation(i))))
             permutations += p
-          }
+          case Update(pas, updated) => println(s"  case Update: $change")
+
         }
       }
     }
@@ -644,8 +630,46 @@ class ObservableBufferSpec[T]
     buffer.toList should equal(List('e', 'h', 'j', 'r', 't', 'z'))
     addedValues.toList should equal(List('e', 'a', 't', 'r', 'j', 'd', 'z', 'h'))
     removedValues.toList should equal(List('d', 'a'))
-    permutations should have size (1)
+    permutations should have size 1
     permutations(0).toList should equal(List((0, 3), (1, 2), (2, 5), (3, 0), (4, 1), (5, 4)))
+  }
+
+  it should "not ignore updates (Issue #169)" in {
+
+    type ElementType = jfxc.ObservableList[String]
+
+    val items = new ObservableBuffer(jfxc.FXCollections.observableArrayList[ElementType]((elem: ElementType) => Array[jfxb.Observable](elem)))
+
+    items.append(jfxc.FXCollections.observableArrayList("test"))
+
+    var expectedPosition = -1
+    var changed = false
+    items.onChange((obs, changes) => {
+      changed = true
+      for (change <- changes)
+        change match {
+          case ObservableBuffer.Update(position, update) =>
+            position should be(expectedPosition)
+            val list = update.toList
+            list.length should equal(1)
+            list(0) match {
+              case e: ElementType =>
+                e.length should equal(2)
+                e(0) should equal("test")
+                e(1) should equal("update")
+              case _@t            => fail("Wrong list type: " + t)
+            }
+
+          case _@otherChange => fail("Wrong change: " + otherChange.toString)
+        }
+    })
+
+    expectedPosition = 0
+    items(0) += "update"
+
+    changed should be(true)
+
+
   }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.imaginej
 
 //             ________                                __                   ________   __    __
@@ -116,7 +117,7 @@ object ScalaFX_Controls_02 extends JFXApp {
   val hBox1 = new HBox {
     spacing = 10
     alignment = Pos.BottomCenter
-    content = List(
+    children = List(
       okButton2,
       koButton1,
       label
@@ -142,7 +143,7 @@ object ScalaFX_Controls_02 extends JFXApp {
 
   val hBox2 = new HBox {
     spacing = 25
-    content = List(
+    children = List(
       okButton3,
       koButton2
     )
@@ -152,7 +153,7 @@ object ScalaFX_Controls_02 extends JFXApp {
     layoutX = 20
     layoutY = 20
     spacing = 10
-    content = List(
+    children = List(
       okButton1,
       hBox1,
       hBox2

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.util
 
 import javafx.beans.{property => jfxbp}
@@ -88,7 +89,7 @@ trait UtilIncludes {
    * Converts a Double to a Duration.
    *
    * @param d Double to convert
-   * @return A [[scalafx.util.DurationHelper]] from where it is possible create a new [[scalafx.util.Duration]] instance.
+   * @return A [[scalafx.util.Duration.DurationHelper]] from where it is possible create a new [[scalafx.util.Duration]] instance.
    */
   implicit def double2DurationHelper(d: Double): DurationHelper = new DurationHelper(d)
 

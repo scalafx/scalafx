@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,7 @@ object ComboBoxDemo extends JFXApp {
   val mainPane = new BorderPane {
     top = comboBox
     center = new VBox {
-      content = List(comboBoxControls, new ComboBoxBaseControls[String](comboBox), new ControlControls(comboBox))
+      children = List(comboBoxControls, new ComboBoxBaseControls[String](comboBox), new ControlControls(comboBox))
     }
     vgrow = Priority.Always
     hgrow = Priority.Always

@@ -25,45 +25,42 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.controls
+package issues.issue169
+
+import javafx.{beans => jfxb, collections => jfxc}
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.event.ActionEvent
-import scalafx.geometry.Insets
-import scalafx.scene.Scene
-import scalafx.scene.control.{MenuButton, MenuItem}
-import scalafx.scene.layout.VBox
+import scalafx.collections.ObservableBuffer
 
-object MenuButtonDemo extends JFXApp {
+/**
+ * Example of `Update` notification. Based on example for Issue #169:
+ * [[https://github.com/scalafx/scalafx/issues/169#issuecomment-67577800]]
+ *
+ */
+object Example3App extends App {
 
-  stage = new PrimaryStage {
-    scene = new Scene(200, 200) {
-      content = new VBox {
-        padding = Insets(10)
-        spacing = 10
-        children = List(
-          new MenuButton("MenuButton 1") {
-            items = List(
-              new MenuItem("MenuItem A") {
-                onAction = {ae: ActionEvent => {println(ae.eventType + " occurred on Menu Item A")}}
-              },
-              new MenuItem("MenuItem B")
-            )
-          },
-          new MenuButton {
-            text = "MenuButton 2"
-            items = List(
-              new MenuItem("MenuItem C") {
-                onAction = {ae: ActionEvent => {println(ae.eventType + " occurred on Menu Item C")}}
-              },
-              new MenuItem("MenuItem D")
-            )
-          }
+  val items: ObservableBuffer[jfxc.ObservableList[String]] = new ObservableBuffer(
+    jfxc.FXCollections.observableArrayList[jfxc.ObservableList[String]]((elem: jfxc.ObservableList[String]) => Array[jfxb.Observable](elem)))
 
-        )
+  items.onChange((_, changes) => {
+    println(s"onChange(_, $changes")
+    for (change <- changes)
+      change match {
+        case ObservableBuffer.Add(_, _)        => println(s"  case Add: $change")
+        case ObservableBuffer.Remove(_, _)     => println(s"  case Remove: $change")
+        case ObservableBuffer.Reorder(_, _, _) => println(s"  case Reorder: $change")
+        case ObservableBuffer.Update(_, _)     => println(s"  case Update: $change")
       }
-    }
-  }
+  })
+
+  // Should produce `Add` notification
+  println("items += ObservableBuffer(\"test\")")
+  items += ObservableBuffer("test")
+  println("Items: " + items)
+  println()
+
+  // Should produce `Update` notification
+  println("items(0) += \"update\"")
+  items(0) += "update"
+  println("Items: " + items)
 }

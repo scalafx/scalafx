@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.application
 
 import javafx.{application => jfxa}
@@ -31,10 +32,7 @@ import javafx.{application => jfxa}
 import scalafx.delegate._
 
 
-/**
- * ConditionalFeature
- */
-/** Wrapper for [[javafx.application.ConditionalFeature]] */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/ConditionalFeature.html javafx.application.ConditionalFeature]] */
 object ConditionalFeature extends SFXEnumDelegateCompanion[jfxa.ConditionalFeature, ConditionalFeature] {
 
   val Controls = new ConditionalFeature(jfxa.ConditionalFeature.CONTROLS)

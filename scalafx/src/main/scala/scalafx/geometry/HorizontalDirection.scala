@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,13 +24,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
 
 import scalafx.delegate._
 
-/** Wrapper for [[javafx.geometry.HorizontalDirection]] */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/HorizontalDirection.html javafx.geometry.HorizontalDirection]] */
 object HorizontalDirection
   extends SFXEnumDelegateCompanion[jfxg.HorizontalDirection, HorizontalDirection] {
 

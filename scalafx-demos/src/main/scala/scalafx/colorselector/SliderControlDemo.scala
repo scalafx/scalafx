@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.colorselector
 
 import scalafx.Includes._
@@ -101,7 +102,7 @@ object SliderControlDemo extends JFXApp {
   pnlControls.columnConstraints = List(ccOdd, ccEven, ccOdd, ccEven)
 
   val box = new VBox(5.0) {
-    content = List(sliderControl,
+    children = List(sliderControl,
       pnlControls)
   }
   VBox.setVgrow(sliderControl, Priority.Never)
@@ -110,7 +111,7 @@ object SliderControlDemo extends JFXApp {
   val mainScene = new Scene {
     fill = Color.LightGray
     content = new AnchorPane {
-      content = List(box)
+      children = List(box)
     }
   }
   box.prefWidth <== mainScene.width

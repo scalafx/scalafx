@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.graphics3d
 
 import scalafx.Includes._
@@ -74,7 +75,7 @@ object PickingDemo extends JFXApp {
 
       root = new Group {
         // Put light outside of `shapes` group so it does not rotate
-        content = new Group(shapes, light)
+        children = new Group(shapes, light)
         translateX = 250
         translateY = 250
         translateZ = 825
@@ -108,12 +109,11 @@ object PickingDemo extends JFXApp {
 
       // If picked on a Node, place green marker at the location of the pick
       pickResult.intersectedNode match {
-        case Some(n) => {
+        case Some(n) =>
           println("Picked node: '" + n.id() + "'")
           val p = pickResult.intersectedPoint
-          group.content += createMarker(x = p.x + n.translateX(), y = p.y + n.translateY(), z = p.z + n.translateZ())
-        }
-        case None    => println("Picked nothing.")
+          group.children += createMarker(x = p.x + n.translateX(), y = p.y + n.translateY(), z = p.z + n.translateZ())
+        case None => println("Picked nothing.")
       }
     }
 

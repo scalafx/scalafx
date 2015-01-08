@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -71,7 +71,7 @@ object SpinnersDemo extends JFXApp {
     title = "Spinners Demo"
     scene = new Scene {
       content = new VBox(30) {
-        content = Seq(
+        children = Seq(
           new HBox(30, intSpinners: _*),
           new HBox(30, doubleSpinners: _*),
           new HBox(30, stringSpinners: _*)

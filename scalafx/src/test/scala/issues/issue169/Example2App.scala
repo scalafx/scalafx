@@ -25,45 +25,45 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.controls
+package issues.issue169
 
-import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.event.ActionEvent
-import scalafx.geometry.Insets
-import scalafx.scene.Scene
-import scalafx.scene.control.{MenuButton, MenuItem}
-import scalafx.scene.layout.VBox
+import javafx.{collections => jfxc}
 
-object MenuButtonDemo extends JFXApp {
+import scalafx.collections.ObservableBuffer
 
-  stage = new PrimaryStage {
-    scene = new Scene(200, 200) {
-      content = new VBox {
-        padding = Insets(10)
-        spacing = 10
-        children = List(
-          new MenuButton("MenuButton 1") {
-            items = List(
-              new MenuItem("MenuItem A") {
-                onAction = {ae: ActionEvent => {println(ae.eventType + " occurred on Menu Item A")}}
-              },
-              new MenuItem("MenuItem B")
-            )
-          },
-          new MenuButton {
-            text = "MenuButton 2"
-            items = List(
-              new MenuItem("MenuItem C") {
-                onAction = {ae: ActionEvent => {println(ae.eventType + " occurred on Menu Item C")}}
-              },
-              new MenuItem("MenuItem D")
-            )
-          }
+/**
+ * * Based on example case from reporter `scalasolist` [[https://github.com/scalafx/scalafx/issues/169#issuecomment-67262542]]:
+ *
+ * It show how scalafx listener lose information.
+ *
+ * The key is that original javafx listener is equivalent to Seq[Set[Change]] not to Seq[Change].
+ * When two changes take place inside single step that means that changes are correlated.
+ * Added and Removed when correlated become Replaced. Replaced shows that item in fact was modified.
+ * It is very important for cost-significant computation performed when list is actually reducing or expanding.
+ */
+object Example2App extends App {
+  val items: ObservableBuffer[String] = ObservableBuffer()
 
-        )
+  val listener = new jfxc.ListChangeListener[String] {
+    def onChanged(change: jfxc.ListChangeListener.Change[_ <: String]) {
+      println(change)
+      var order = 0
+      while (change.next()) {
+        order += 1
+        println(order)
+        if (change.wasPermutated) println("permutated")
+        if (change.wasAdded) println("added")
+        if (change.wasRemoved) println("removed")
+        if (change.wasReplaced) println("replaced")
+        if (change.wasUpdated) println("updated")
       }
     }
   }
+
+  items.delegate.addListener(listener)
+
+  println("items.append(\"test\")")
+  items.append("test")
+  println("items(0) = \"update\"")
+  items(0) = "update"
 }

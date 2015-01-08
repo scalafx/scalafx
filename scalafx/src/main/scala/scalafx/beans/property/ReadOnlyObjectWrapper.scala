@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
@@ -78,7 +79,7 @@ object ReadOnlyObjectWrapper {
 }
 
 
-/** Wrapper for [[javafx.beans.property.ReadOnlyObjectWrapper]] */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyObjectWrapper.html javafx.beans.property.ReadOnlyObjectWrapper]] */
 class ReadOnlyObjectWrapper[T <: Any](override val delegate: jfxbp.ReadOnlyObjectWrapper[T])
   extends ObjectProperty[T](delegate)
   with SFXDelegate[jfxbp.ReadOnlyObjectWrapper[T]] {

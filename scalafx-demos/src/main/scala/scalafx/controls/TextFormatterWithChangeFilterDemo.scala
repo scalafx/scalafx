@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -109,7 +109,7 @@ object TextFormatterWithChangeFilterDemo extends JFXApp {
       root = new VBox {
         spacing = 6
         padding = Insets(10)
-        content = Seq(
+        children = Seq(
           new Label("Type message at the prompt. Press \"Enter\" to send."),
           new BorderPane {
             top = textField

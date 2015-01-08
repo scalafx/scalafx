@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,14 +36,14 @@ import scalafx.scene.layout._
 object ControlsTest extends JFXApp {
 
   val indicatorPane = new VBox {
-    content = List(new Label {
+    children = List(new Label {
       text = "LEFT"
 
     })
   }
 
   val controlsPane = new VBox {
-    content = List(new Label {
+    children = List(new Label {
       text = "RIGHT"
     })
   }
@@ -53,7 +53,7 @@ object ControlsTest extends JFXApp {
       text = "Label"
     }
     center = new StackPane {
-      content = List(new Button {
+      children = List(new Button {
         text = "Button"
       })
     }

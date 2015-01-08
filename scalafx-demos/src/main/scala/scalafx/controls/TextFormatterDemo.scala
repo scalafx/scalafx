@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -70,7 +70,7 @@ object TextFormatterDemo extends JFXApp {
     scene = new Scene(300, 200) {
       title = "TextFormatter Demo"
       root = new VBox {
-        content = Seq(infoLabel, textField, slider)
+        children = Seq(infoLabel, textField, slider)
         padding = Insets(20)
         spacing = 12
       }

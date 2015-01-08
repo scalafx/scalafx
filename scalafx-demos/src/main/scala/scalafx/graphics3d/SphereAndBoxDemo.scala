@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.graphics3d
 
 import scalafx.Includes._
@@ -72,7 +73,7 @@ object SphereAndBoxDemo extends JFXApp {
 
       root = new Group {
         // Put light outside of `shapes` group so it does not rotate
-        content = new Group(shapes, light)
+        children = new Group(shapes, light)
         translateX = 250
         translateY = 250
         translateZ = 725
