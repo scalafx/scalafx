@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -642,34 +642,25 @@ class ObservableBufferSpec[T]
 
     items.append(jfxc.FXCollections.observableArrayList("test"))
 
-    var expectedPosition = -1
+    var actualFrom = -1
+    var actualTo = -1
     var changed = false
     items.onChange((obs, changes) => {
       changed = true
       for (change <- changes)
         change match {
-          case ObservableBuffer.Update(position, update) =>
-            position should be(expectedPosition)
-            val list = update.toList
-            list.length should equal(1)
-            list(0) match {
-              case e: ElementType =>
-                e.length should equal(2)
-                e(0) should equal("test")
-                e(1) should equal("update")
-              case _@t            => fail("Wrong list type: " + t)
-            }
-
+          case ObservableBuffer.Update(from, to) =>
+            actualFrom = from
+            actualTo = to
           case _@otherChange => fail("Wrong change: " + otherChange.toString)
         }
     })
 
-    expectedPosition = 0
     items(0) += "update"
 
     changed should be(true)
-
-
+    actualFrom should be(0)
+    actualTo should be(1)
   }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -134,13 +134,13 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
   /**
    * Indicates an Update in an $OB.
    *
-   * @param position Position from where new elements were updated
-   * @param updated elements updated
+   * @param from Position from where elements were updated
+   * @param to Position to where elements were updated (exclusive)
    * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#wasUpdated() `ListChangeListener.Change.wasUpdated()`]]
    * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getFrom() `ListChangeListener.Change.getFrom()`]]
-   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getAddedSubList() `ListChangeListener.Change.getAddedSubList()`]]
+   * @see [[http://docs.oracle.com/javafx/2/api/javafx/collections/ListChangeListener.Change.html#getTo() `ListChangeListener.Change.getTo()`]]
    */
-  case class Update[T](position: Int, updated: Traversable[T]) extends Change
+  case class Update[T](from: Int, to: Int) extends Change
 
 
   // CHANGING INDICATORS - END
@@ -567,7 +567,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
               x => c.getPermutation(x)
             })
           } else if (c.wasUpdated()) {
-            changes += Update(c.getFrom, c.getAddedSubList)
+            changes += Update(c.getFrom, c.getTo)
           } else {
             if (c.wasRemoved()) {
               changes += Remove(c.getFrom, c.getRemoved)
