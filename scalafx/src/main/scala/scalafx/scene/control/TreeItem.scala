@@ -73,9 +73,8 @@ object TreeItem {
     def this(eventType: jfxe.EventType[_ <: jfxe.Event],
              treeItem: jfxsc.TreeItem[T],
              added: mutable.Buffer[_ <: jfxsc.TreeItem[T]],
-             removed: mutable.Buffer[_ <: jfxsc.TreeItem[T]],
-             change: jfxc.ListChangeListener.Change[_ <: jfxsc.TreeItem[T]]) =
-      this(new jfxsc.TreeItem.TreeModificationEvent[T](eventType, treeItem, added, removed, change))
+             removed: mutable.Buffer[_ <: jfxsc.TreeItem[T]]) =
+      this(new jfxsc.TreeItem.TreeModificationEvent[T](eventType, treeItem, added, removed))
 
     /**
      * Constructs a TreeModificationEvent for when the TreeItem has had its
