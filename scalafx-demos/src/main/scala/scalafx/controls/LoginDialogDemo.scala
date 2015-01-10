@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,15 +33,20 @@ import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.ButtonBar.ButtonData
 import scalafx.scene.control._
-import scalafx.scene.image.ImageView
-import scalafx.scene.layout.GridPane
+import scalafx.scene.image.{Image, ImageView}
+import scalafx.scene.layout.{GridPane, VBox}
 
 object LoginDialogDemo extends JFXApp {
 
   stage = new JFXApp.PrimaryStage {
+    icons += new Image("/scalafx/sfx.png")
     scene = new Scene {
-      content = new Button("Show Login Dialog") {
-        onAction = handle {onShowLoginDialog()}
+      title = "Custom Dialog Demo"
+      content = new VBox {
+        children = new Button("Show Login Dialog") {
+          onAction = handle {onShowLoginDialog()}
+        }
+        padding = Insets(top = 24, right = 64, bottom = 24, left = 64)
       }
     }
   }
@@ -53,18 +58,13 @@ object LoginDialogDemo extends JFXApp {
       headerText = "Look, a Custom Login Dialog"
       graphic = new ImageView(this.getClass.getResource("login_icon.png").toString)
     }
+    dialog.initOwner(stage)
 
     // Set the button types.
     val loginButtonType = new ButtonType("Login", ButtonData.OKDone)
-    dialog.dialogPane().buttonTypes ++= Seq(loginButtonType, ButtonType.Cancel)
+    dialog.dialogPane().buttonTypes = Seq(loginButtonType, ButtonType.Cancel)
 
     // Create the username and password labels and fields.
-    val grid = new GridPane() {
-      hgap = 10
-      vgap = 10
-      padding = Insets(20, 100, 10, 10)
-    }
-
     val username = new TextField() {
       promptText = "Username"
     }
@@ -72,10 +72,16 @@ object LoginDialogDemo extends JFXApp {
       promptText = "Password"
     }
 
-    grid.add(new Label("Username:"), 0, 0)
-    grid.add(username, 1, 0)
-    grid.add(new Label("Password:"), 0, 1)
-    grid.add(password, 1, 1)
+    val grid = new GridPane() {
+      hgap = 10
+      vgap = 10
+      padding = Insets(20, 100, 10, 10)
+
+      add(new Label("Username:"), 0, 0)
+      add(username, 1, 0)
+      add(new Label("Password:"), 0, 1)
+      add(password, 1, 1)
+    }
 
     // Enable/Disable login button depending on whether a username was entered.
     val loginButton = dialog.dialogPane().lookupButton(loginButtonType)

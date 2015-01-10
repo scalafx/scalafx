@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,6 +56,8 @@ object Dialog {
  *
  * Wraps a $JFX $URL0 $TC]].
  *
+ * @tparam R The return type of the dialog, via the result property or `showAndWait` method.
+ *
  * @define TC Dialog
  * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Dialog.html
  * @define JFX JavaFX
@@ -69,7 +71,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * Shows the dialog and waits for the user response (in other words, brings
    * up a blocking dialog, with the returned value the users input).
    *
-   * @return An `Option` that contains the `result` .
+   * @return An `Option` that contains the `result`.
    * @see $URL0#showAndWait showAndWait $ORIGINALDOC
    */
   def showAndWait(): Option[R] = {
@@ -122,6 +124,9 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   def headerText: StringProperty = delegate.headerTextProperty
   def headerText_=(value: String): Unit = {
     headerText() = value
+  }
+  def headerText_=(value: Option[String]): Unit = {
+    headerText() = value.orNull
   }
 
   /**

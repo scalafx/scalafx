@@ -25,63 +25,54 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.controls
+package scalafx.scene.control
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.scene.Scene
-import scalafx.scene.control.{Hyperlink, Label, Pagination}
-import scalafx.scene.layout.{AnchorPane, VBox}
+import javafx.scene.{control => jfxsc}
+
+import scala.language.implicitConversions
+import scalafx.Includes._
+import scalafx.delegate.SFXDelegate
+
+object TextInputDialog {
+  /**
+   * Converts a ScalaFX TextInputDialog to its JavaFX counterpart.
+   *
+   * @param v ScalaFX TextInputDialog
+   * @return JavaFX TextInputDialog
+   */
+  implicit def sfxTextInputDialog2jfx(v: TextInputDialog): jfxsc.TextInputDialog =
+    if (v != null) v.delegate else null
+}
 
 /**
- * Demo application based on Pagination example at [[http://docs.oracle.com/javafx/2/ui_controls/pagination.htm]].
+ * A dialog that shows a text input control to the user.
+ *
+ * Wraps a $JFX $URL0 $TC]].
+ *
+ * @constructor Creates a new TextInputDialog without a default value entered into the dialog.
+ *
+ * @define TC TextInputDialog
+ * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene/TextInputDialog.html
+ * @define JFX JavaFX
+ * @define ORIGINALDOC Original Documentation]].
  */
-object PaginationSample extends JFXApp {
+class TextInputDialog(override val delegate: jfxsc.TextInputDialog = new jfxsc.TextInputDialog())
+  extends Dialog[String](delegate)
+  with SFXDelegate[jfxsc.TextInputDialog] {
 
-  private val itemsPerPage = 8
+  /**
+   * Creates a new TextInputDialog with the default value entered into the
+   * dialog `TextField`.
+   */
+  def this(defaultValue: String) = this(new jfxsc.TextInputDialog(defaultValue))
 
-  private def createPage(pageIndex: Int): VBox = {
+  /**
+   * The `TextField` used within this dialog.
+   */
+  def editor: TextField = delegate.getEditor
 
-    def getPage(i: Int) = {
-      val link = new Hyperlink {
-        text = "Item " + (i + 1)
-        visited = true
-      }
-      new VBox {
-        children = List(link,
-          new Label( """|Search results
-                       |for %s""".stripMargin.format(link.text.value)))
-      }
-    }
-
-    val page = pageIndex * itemsPerPage
-    new VBox(5) {
-      children = (page until (page + itemsPerPage)).map(getPage(_))
-    }
-  }
-
-  private def getAnchorPage(pagination: Pagination): AnchorPane = {
-    AnchorPane.setTopAnchor(pagination, 10.0)
-    AnchorPane.setRightAnchor(pagination, 10.0)
-    AnchorPane.setBottomAnchor(pagination, 10.0)
-    AnchorPane.setLeftAnchor(pagination, 10.0)
-
-    new AnchorPane {
-      children = pagination
-    }
-  }
-
-  val pagination = new Pagination(28, 0) {
-    style = "-fx-border-color:red;"
-    pageFactory = (pageIndex: Int) => createPage(pageIndex)
-  }
-  val anchor = this.getAnchorPage(pagination)
-
-  stage = new PrimaryStage {
-    title = "PaginationSample by ScalaFX"
-    scene = new Scene {
-      content = anchor
-    }
-  }
-
+  /**
+   * The default value that was specified in the constructor.
+   */
+  def defaultValue: String = delegate.getDefaultValue
 }

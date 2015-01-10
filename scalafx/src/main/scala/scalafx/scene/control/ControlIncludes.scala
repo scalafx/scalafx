@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,6 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe}
 
 import scala.language.implicitConversions
 import scalafx.beans.property.ReadOnlyObjectProperty
@@ -156,6 +155,10 @@ trait ControlIncludes
    */
   implicit def jfxAccordion2sfx(a: jfxsc.Accordion): Accordion = if (a != null) new Accordion(a) else null
 
+  implicit def jfxAlert2sfx(a: jfxsc.Alert): Alert = if (a != null) new Alert(a) else null
+
+  implicit def jfxAlertType2sfx(a: jfxsc.Alert.AlertType): Alert.AlertType = if (a != null) new Alert.AlertType(a) else null
+
   implicit def jfxDialog2sfx[R](a: jfxsc.Dialog[R]): Dialog[R] = if (a != null) new Dialog[R](a) else null
 
   implicit def jfxDialogEvent2sfx(a: jfxsc.DialogEvent): DialogEvent = if (a != null) new DialogEvent(a) else null
@@ -236,6 +239,9 @@ trait ControlIncludes
    * @return $SFX $CEBX
    */
   implicit def jfxCheckBox2sfx(c: jfxsc.CheckBox): CheckBox = if (c != null) new CheckBox(c) else null
+
+  implicit def jfxChoiceDialog2sfx[T](c: jfxsc.ChoiceDialog[T]): ChoiceDialog[T] = if (c != null) new ChoiceDialog[T](c) else null
+
 
   /**
    * $START$CMNIT.html $MNIT$END
@@ -532,6 +538,8 @@ trait ControlIncludes
    * @return $SFX $TBCM
    */
   implicit def jfxTableColumn2sfx[S, T](tc: jfxsc.TableColumn[S, T]): TableColumn[S, T] = if (tc != null) new TableColumn[S, T](tc) else null
+
+  implicit def jfxTextInputDialog2sfx(v: jfxsc.TextInputDialog): TextInputDialog = if (v != null) new TextInputDialog(v) else null
 
   /**
    * $START$TBST.html $TBST$END
