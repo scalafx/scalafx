@@ -48,54 +48,6 @@ object ButtonType {
     if (v != null) v.delegate else null
 
   /**
-   * Converts `Option` holding JavaFX `ButtonType` into an `Option` holding ScalaFX `ButtonType`.
-   * It may be use is to simplify processing results of `Dialog`s returning `ButtonType`.
-   * For instance, here is a use for processing result of a confirmation `Alert`:
-   * {{{
-   *  val alert = new Alert(AlertType.Confirmation) {
-   *    title = "Confirmation Dialog"
-   *    headerText = "Look, a Confirmation Dialog"
-   *    contentText = "Are you ok with this?"
-   *  }
-   *
-   *  val result = alert.showAndWait()
-   *
-   *  ButtonType(result) match {
-   *    case Some(ButtonType.OK) => println("OK")
-   *    case _                   => println("Cancel or closed")
-   *  }
-   * }}}
-   *
-   * And more complex case of a confirmation `Alert` that is using custom buttons.
-   * {{{
-   *  val One = new ButtonType("One")
-   *  val Two = new ButtonType("Two")
-   *  val Three = new ButtonType("Three")
-   *
-   *  val alert = new Alert(AlertType.Confirmation) {
-   *    title = "Confirmation Dialog with Custom Actions"
-   *    headerText = "Look, a Confirmation Dialog with Custom Actions"
-   *    contentText = "Choose your option."
-   *    buttonTypes = Seq(One, Two, Three, ButtonType.Cancel)
-   *  }
-   *
-   *  val result = alert.showAndWait()
-   *
-   *  // Convert option to avoid matching on JavaFX types
-   *  ButtonType(result) match {
-   *    case Some(One)   => println("... user chose \"One\"")
-   *    case Some(Two)   => println("... user chose \"Two\"")
-   *    case Some(Three) => println("... user chose \"Three\"")
-   *    case _           => println("... user chose CANCEL or closed the dialog")
-   *  }
-   * }}}
-   */
-  def apply(o: Option[jfxsc.ButtonType]) = o match {
-    case Some(bt) => Some(new ButtonType(bt))
-    case None     => None
-  }
-
-  /**
    * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Apply" and has a
    * [[scalafx.scene.control.ButtonBar.ButtonData]] of [[scalafx.scene.control.ButtonBar.ButtonData.Apply]].
    */

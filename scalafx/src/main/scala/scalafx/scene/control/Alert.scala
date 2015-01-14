@@ -132,9 +132,7 @@ object Alert {
  *  }
  *
  *  val result = alert.showAndWait()
- *
- *  // Convert option to avoid matching on JavaFX types
- *  ButtonType(result) match {
+ *  result match {
  *    case Some(One)   => println("... user chose \"One\"")
  *    case Some(Two)   => println("... user chose \"Two\"")
  *    case Some(Three) => println("... user chose \"Three\"")

@@ -52,8 +52,11 @@ object LoginDialogDemo extends JFXApp {
   }
 
   def onShowLoginDialog(): Unit = {
+
+    case class Result(username: String, password: String)
+
     // Create the custom dialog.
-    val dialog = new Dialog[(String, String)]() {
+    val dialog = new Dialog[Result]() {
       title = "Login Dialog"
       headerText = "Look, a Custom Login Dialog"
       graphic = new ImageView(this.getClass.getResource("login_icon.png").toString)
@@ -99,13 +102,13 @@ object LoginDialogDemo extends JFXApp {
 
     // Convert the result to a username-password-pair when the login button is clicked.
     dialog.resultConverter = dialogButton =>
-      if (dialogButton == loginButtonType) (username.text(), password.text())
+      if (dialogButton == loginButtonType) Result(username.text(), password.text())
       else null
 
     val result = dialog.showAndWait()
 
     result match {
-      case Some((u, p)) => println("Username=" + u + ", Password=" + p)
+      case Some(Result(u, p)) => println("Username=" + u + ", Password=" + p)
       case None => println("Dialog returned: None")
     }
   }

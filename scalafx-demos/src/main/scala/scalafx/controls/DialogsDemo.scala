@@ -151,7 +151,7 @@ object DialogsDemo extends JFXApp {
 
     val result = alert.showAndWait()
 
-    ButtonType(result) match {
+    result match {
       case Some(ButtonType.OK) => println("OK")
       case _                   => println("Cancel or closed")
     }
@@ -173,7 +173,7 @@ object DialogsDemo extends JFXApp {
 
     val result = alert.showAndWait()
 
-    ButtonType(result) match {
+    result match {
       case Some(ButtonTypeOne)   => println("... user chose \"One\"")
       case Some(ButtonTypeTwo)   => println("... user chose \"Two\"")
       case Some(ButtonTypeThree) => println("... user chose \"Three\"")

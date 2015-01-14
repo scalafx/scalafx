@@ -38,6 +38,20 @@ import scalafx.event.EventTarget
 import scalafx.scene.Node
 import scalafx.stage.{Modality, Window}
 
+/** Helper trait for converting dialog return type. Not intended for separate use. */
+trait DConvert[T, F] {
+  type S
+  def apply(t: T, f: F): S
+}
+
+object DConvert {
+  def apply[T, F](implicit conv: DConvert[T, F]) = conv
+  implicit def t2r[T, R]: DConvert[T, T => R] = new DConvert[T, T => R] {
+    type S = R
+    def apply(t: T, f: T => R) = f(t)
+  }
+}
+
 /**
  * Object companion for [[scalafx.scene.control.Dialog]].
  */
@@ -56,7 +70,7 @@ object Dialog {
  *
  * Wraps a $JFX $URL0 $TC]].
  *
- * @tparam R The return type of the dialog, via the result property or `showAndWait` method.
+ * @tparam R The default return type of the dialog, via the result property or `showAndWait` method.
  *
  * @define TC Dialog
  * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Dialog.html
@@ -71,12 +85,25 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * Shows the dialog and waits for the user response (in other words, brings
    * up a blocking dialog, with the returned value the users input).
    *
+   * The intended use when return value is ignored:
+   * {{{
+   *   dialog.showAndWait()
+   * }}}
+   * Or when return value is required:
+   * {{{
+   *   val r = dialog.showAndWait()
+   *   r match {
+   *     case Some(v) => ...
+   *     case None => ...
+   *   }
+   * }}}
+   *
    * @return An `Option` that contains the `result`.
    * @see $URL0#showAndWait showAndWait $ORIGINALDOC
    */
-  def showAndWait(): Option[R] = {
+  def showAndWait[F](j2s: F = { x: R => x})(implicit convert: DConvert[R, F]): Option[convert.S] = {
     val v = delegate.showAndWait()
-    if (v.isPresent) Some(v.get) else None
+    if (v.isPresent) Some(convert(v.get, j2s)) else None
   }
 
   /**
