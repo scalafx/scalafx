@@ -36,7 +36,7 @@ import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventTarget
 import scalafx.scene.Node
-import scalafx.stage.{Modality, Window}
+import scalafx.stage.{Modality, StageStyle, Window}
 
 /** Helper trait for converting dialog return type. Not intended for separate use. */
 trait DConvert[T, F] {
@@ -107,12 +107,55 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   }
 
   /**
+   * Specifies the style for this dialog. This must be done prior to making
+   * the dialog visible. The style is one of: StageStyle.DECORATED,
+   * StageStyle.UNDECORATED, StageStyle.TRANSPARENT, StageStyle.UTILITY,
+   * or StageStyle.UNIFIED.
+   *
+   * @param style the style for this dialog.
+   *
+   * @throws IllegalStateException if this property is set after the dialog
+   *                               has ever been made visible.
+   *
+   */
+  def initStyle(style: StageStyle) {
+    delegate.initStyle(style)
+  }
+
+  /**
+   * Specifies the modality for this dialog. This must be done prior to making
+   * the dialog visible. The modality is one of: Modality.NONE,
+   * Modality.WINDOW_MODAL, or Modality.APPLICATION_MODAL.
+   *
+   * @param modality the modality for this dialog.
+   *
+   * @throws IllegalStateException if this property is set after the dialog
+   *                               has ever been made visible.
+   */
+  def initModality(modality: Modality) {
+    delegate.initModality(modality)
+  }
+
+  /**
    * Retrieves the modality attribute for this dialog.
    *
    * @return the modality.
    * @see $URL0#getModality getModality $ORIGINALDOC
    */
   def modality: Modality = delegate.getModality
+
+  /**
+   * Specifies the owner [[Window]] for this dialog, or null for a top-level,
+   * unowned dialog. This must be done prior to making the dialog visible.
+   *
+   * @param window the owner [[Window]] for this dialog.
+   *
+   * @throws IllegalStateException if this property is set after the dialog
+   *                               has ever been made visible.
+   */
+  def initOwner(window: Window) {
+    delegate.initOwner(window)
+  }
 
   /**
    * Retrieves the owner Window for this dialog, or null for an unowned dialog.
