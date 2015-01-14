@@ -178,6 +178,28 @@ class Alert(override val delegate: jfxsc.Alert)
   def this(alertType: AlertType, contentText: String, buttons: ButtonType*) =
     this(new jfxsc.Alert(alertType, contentText, buttons.map(_.delegate): _*))
 
+  /**
+   * Shows the dialog and waits for the user response (in other words, brings
+   * up a blocking dialog, with the returned value the users input).
+   *
+   * {{{
+   *   dialog.showAndWait()
+   * }}}
+   * Or when return value is required:
+   * {{{
+   *   val r = dialog.showAndWait()
+   *   r match {
+   *     case Some(v) => ...
+   *     case None    => ...
+   *   }
+   * }}}
+   *
+   * @return An `Option` that contains the `result`.
+   */
+  def showAndWait(): Option[ButtonType] = {
+    super.showAndWait((x: jfxsc.ButtonType) => new ButtonType(x)).asInstanceOf[Option[ButtonType]]
+  }
+
   def alertType: ObjectProperty[jfxsc.Alert.AlertType] = delegate.alertTypeProperty
   def alertType_(v: AlertType) {
     alertType() = v

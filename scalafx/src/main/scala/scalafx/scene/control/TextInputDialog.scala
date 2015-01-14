@@ -66,6 +66,29 @@ class TextInputDialog(override val delegate: jfxsc.TextInputDialog = new jfxsc.T
    */
   def this(defaultValue: String) = this(new jfxsc.TextInputDialog(defaultValue))
 
+
+  /**
+   * Shows the dialog and waits for the user response (in other words, brings
+   * up a blocking dialog, with the returned value the users input).
+   *
+   * {{{
+   *   dialog.showAndWait()
+   * }}}
+   * Or when return value is required:
+   * {{{
+   *   val r = dialog.showAndWait()
+   *   r match {
+   *     case Some(v) => ...
+   *     case None    => ...
+   *   }
+   * }}}
+   *
+   * @return An `Option` that contains the `result`.
+   */
+  def showAndWait(): Option[String] = {
+    super.showAndWait((x: String) => x).asInstanceOf[Option[String]]
+  }
+
   /**
    * The `TextField` used within this dialog.
    */

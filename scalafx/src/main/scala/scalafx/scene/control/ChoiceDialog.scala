@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -83,6 +83,28 @@ class ChoiceDialog[T](override val delegate: jfxsc.ChoiceDialog[T] = new jfxsc.C
    * @param choices All possible choices to present to the user.
    */
   def this(defaultChoice: T, choices: Iterable[T]) = this(new jfxsc.ChoiceDialog[T](defaultChoice, choices))
+
+  /**
+   * Shows the dialog and waits for the user response (in other words, brings
+   * up a blocking dialog, with the returned value the users input).
+   *
+   * {{{
+   *   dialog.showAndWait()
+   * }}}
+   * Or when return value is required:
+   * {{{
+   *   val r = dialog.showAndWait()
+   *   r match {
+   *     case Some(v) => ...
+   *     case None    => ...
+   *   }
+   * }}}
+   *
+   * @return An `Option` that contains the `result`.
+   */
+  def showAndWait(): Option[T] = {
+    super.showAndWait((x: T) => x).asInstanceOf[Option[T]]
+  }
 
   /**
    * Returns the property representing the currently selected item in the dialog.
