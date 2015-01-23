@@ -64,6 +64,7 @@ object ControlIncludes extends ControlIncludes
  * @define CEBX CheckBox
  * @define CUMIT CustomMenuItem
  * @define CMNIT CheckMenuItem
+ * @define SPMIT SeparatorMenuItem
  * @define CTDP ContentDisplay
  * @define CTMN ContextMenu
  * @define CTRL Control
@@ -382,6 +383,14 @@ trait ControlIncludes
    * @return $SFX $CUMIT
    */
   implicit def jfxCustomMenuItem2sfx(c: jfxsc.CustomMenuItem): CustomMenuItem = if(c != null) new CustomMenuItem(c) else null
+
+  /**
+   * $START$SPMIT.html $SPMIT$END
+   *
+   * @param s $JFX $SPMIT
+   * @return $SFX $SPMIT
+   */
+  implicit def jfxSeparatorMenuItem2sfx(s: jfxsc.SeparatorMenuItem): SeparatorMenuItem = if(s != null) new SeparatorMenuItem(s) else null
 
   /**
    * $START$MSMD.html $MSMD$END
