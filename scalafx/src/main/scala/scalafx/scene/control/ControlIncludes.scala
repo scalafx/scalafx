@@ -62,6 +62,7 @@ object ControlIncludes extends ControlIncludes
  * @define CELL Cell
  * @define CHBX ChoiceBox
  * @define CEBX CheckBox
+ * @define CUMIT CustomMenuItem
  * @define CMNIT CheckMenuItem
  * @define CTDP ContentDisplay
  * @define CTMN ContextMenu
@@ -373,6 +374,14 @@ trait ControlIncludes
    * @return $SFX $MNIT
    */
   implicit def jfxMenuItem2sfx(m: jfxsc.MenuItem): MenuItem = if (m != null) new MenuItem(m) else null
+
+  /**
+   * $START$CUMIT.html $CUMIT$END
+   *
+   * @param c $JFX $CUMIT
+   * @return $SFX $CUMIT
+   */
+  implicit def jfxCustomMenuItem2sfx(c: jfxsc.CustomMenuItem): CustomMenuItem = if(c != null) new CustomMenuItem(c) else null
 
   /**
    * $START$MSMD.html $MSMD$END
