@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.control
 
+import java.{util => ju}
 import javafx.scene.{control => jfxsc}
 import javafx.{scene => jfxs}
 
@@ -66,9 +67,9 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
   /**
    * Comparator function used when sorting this TableColumnBase.
    */
-  def comparator: ObjectProperty[Ordering[T]] = ObjectProperty(Ordering.comparatorToOrdering(delegate.comparatorProperty.getValue))
+  def comparator: ObjectProperty[ju.Comparator[T]] = delegate.comparatorProperty
   def comparator_=(v: Ordering[T]) {
-    comparator() = v
+    ObjectProperty.fillProperty(delegate.comparatorProperty, v)
   }
 
   /**
