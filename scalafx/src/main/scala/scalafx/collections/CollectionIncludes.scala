@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,15 +29,18 @@ package scalafx.collections
 import javafx.{collections => jfxc}
 
 import scala.language.implicitConversions
+import scalafx.collections.transformation.TransformationIncludes
 
 object CollectionIncludes extends CollectionIncludes
+
+//trait CollectionIncludes extends TransformationIncludes with LowerPriorityIncludes
 
 /**
  * Contains implicit methods to convert from 
  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/package-summary.html `javafx.collections`]]
  * Classes to their ScalaFX counterparts.
  */
-trait CollectionIncludes {
+trait CollectionIncludes extends TransformationIncludes {
 
   /**
    * Converts a [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html `ObservableList`]]
