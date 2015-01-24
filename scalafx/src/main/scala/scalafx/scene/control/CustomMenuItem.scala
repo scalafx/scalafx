@@ -25,60 +25,44 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.controls
+package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc}
+import javafx.{scene => jfxs}
+
+import scala.language.implicitConversions
+
+import scalafx.beans.property.{BooleanProperty, ObjectProperty}
+import scalafx.delegate.SFXDelegate
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.event.ActionEvent
-import scalafx.scene.Scene
-import scalafx.scene.control.{Label, Menu, MenuBar, MenuItem, SeparatorMenuItem}
-import scalafx.scene.layout.{BorderPane, VBox}
-import scalafx.scene.paint.Color
+import scalafx.scene.Node
 
+/** @author Roman Hargrave */
+object CustomMenuItem {
+    implicit def sfxCustomMenuItem2jfx(c: CustomMenuItem): jfxsc.CustomMenuItem = if(c != null) c.delegate else null
+}
+class CustomMenuItem(override val delegate: jfxsc.CustomMenuItem = new jfxsc.CustomMenuItem) extends MenuItem with SFXDelegate[jfxsc.CustomMenuItem] {
 
-object MenuTest extends JFXApp {
+    /**
+     * Bridge constructor for [[jfxsc.CustomMenuItem(Node)]]
+     * @param content menu item content
+     */
+    def this(content: Node) = this(new jfxsc.CustomMenuItem(content))
 
-  val menu = new Menu("File") {
-    items = List(
-      new MenuItem("Open") {
-        onAction = (ae: ActionEvent) => history.children += new Label("Selected item `Open`")
-      },
-      new SeparatorMenuItem,
-      new MenuItem("Close") {
-        onAction = (ae: ActionEvent) => history.children += new Label("Selected item `Close`")
-      }
-    )
+    /**
+     * Bridge constructor for [[jfxsc.CustomMenuItem(Node, boolean)]]
+     * @param content menu item content
+     * @param hidOnClick hide on click
+     */
+    def this(content: Node, hidOnClick: Boolean) = this(new jfxsc.CustomMenuItem)
 
-    onShowing = handle { printEvent("on showing") }
-    onShown = handle { printEvent("on shown") }
-    onHiding = handle { printEvent("on hiding") }
-    onHidden = handle { printEvent("on hidden") }
-  }
-
-  val history = new VBox()
-
-  val menuBar = new MenuBar {
-    useSystemMenuBar = true
-    minWidth = 100
-    menus.add(menu)
-  }
-
-  stage = new PrimaryStage {
-    title = "Menu test"
-    width = 300
-    height = 225
-    scene = new Scene {
-      fill = Color.LightGray
-      root = new BorderPane {
-        top = menuBar
-        bottom = history
-      }
+    def content: ObjectProperty[jfxs.Node] = delegate.contentProperty()
+    def content_=(n: Node): Unit = {
+        content() = n
     }
-  }
 
-  def printEvent(eventStr: String)() {
-    history.children += new Label(eventStr)
-  }
-
+    def hideOnClick: BooleanProperty = delegate.hideOnClickProperty()
+    def hideOnClick_=(b: Boolean): Unit = {
+        hideOnClick() = b
+    }
 }
