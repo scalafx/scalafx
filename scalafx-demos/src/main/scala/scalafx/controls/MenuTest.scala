@@ -32,7 +32,7 @@ import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.event.ActionEvent
 import scalafx.scene.Scene
-import scalafx.scene.control.{Label, Menu, MenuBar, MenuItem}
+import scalafx.scene.control.{Label, Menu, MenuBar, MenuItem, SeparatorMenuItem}
 import scalafx.scene.layout.{BorderPane, VBox}
 import scalafx.scene.paint.Color
 
@@ -44,6 +44,7 @@ object MenuTest extends JFXApp {
       new MenuItem("Open") {
         onAction = (ae: ActionEvent) => history.children += new Label("Selected item `Open`")
       },
+      new SeparatorMenuItem,
       new MenuItem("Close") {
         onAction = (ae: ActionEvent) => history.children += new Label("Selected item `Close`")
       }
@@ -79,4 +80,5 @@ object MenuTest extends JFXApp {
   def printEvent(eventStr: String)() {
     history.children += new Label(eventStr)
   }
+
 }
