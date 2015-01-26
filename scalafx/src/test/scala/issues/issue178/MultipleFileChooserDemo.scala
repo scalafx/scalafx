@@ -24,43 +24,42 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.stage
 
-import java.io.File
-import javafx.{stage => jfxs}
+package issues.issue178
 
 import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.{ObjectProperty, StringProperty}
-import scalafx.delegate.SFXDelegate
+import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.geometry.Insets
+import scalafx.scene.Scene
+import scalafx.scene.control.Button
+import scalafx.scene.layout.VBox
+import scalafx.stage.FileChooser
 
-object DirectoryChooser {
-  implicit def sfxDirectoryChooser2jfx(dc: DirectoryChooser): jfxs.DirectoryChooser = if (dc != null) dc.delegate else null
-}
+/**
+ * Demo for Issue #178: FileChooser does not handle a the value returned when the user cancels file selection.
+ * If FileChooser.showOpenMultipleDialog was used and user cancelled selection an NPE was thrown.
+ *
+ */
+object MultipleFileChooserDemo extends JFXApp {
 
-class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.DirectoryChooser)
-  extends SFXDelegate[jfxs.DirectoryChooser] {
+  stage = new PrimaryStage {
+    scene = new Scene {
+      title = "Demo for Issue #178"
+      root = new VBox {
+        padding = Insets(12)
+        children = new Button {
+          text = "Open file chooser and select multiple files or Cancel"
+          onAction = handle {
+            val fc = new FileChooser()
+            val selection = fc.showOpenMultipleDialog(stage)
 
-  /**
-   * The initial directory for the displayed dialog.
-   */
-  def initialDirectory: ObjectProperty[File] = delegate.initialDirectoryProperty
-  def initialDirectory_=(v: File) {
-    initialDirectory() = v
+            println("Selection: " + selection)
+          }
+        }
+      }
+    }
   }
 
-  /**
-   * The title of the displayed dialog.
-   */
-  def title: StringProperty = delegate.titleProperty
-  def title_=(v: String) {
-    title() = v
-  }
-
-  /**
-   * Shows a new directory selection dialog.
-   *
-   * @return the selected directory or null if no directory has been selected
-   */
-  def showDialog(ownerWindow: Window): File = delegate.showDialog(ownerWindow)
 }
