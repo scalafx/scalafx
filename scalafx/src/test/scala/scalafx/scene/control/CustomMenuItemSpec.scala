@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
@@ -41,4 +42,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class CustomMenuItemSpec
-  extends AbstractSFXDelegateSpec[jfxsc.CustomMenuItem, CustomMenuItem, jfxsc.CustomMenuItemBuilder[_]](classOf[jfxsc.CustomMenuItem], classOf[CustomMenuItem], classOf[jfxsc.CustomMenuItemBuilder[_]])
+  extends AbstractSFXDelegateSpec[jfxsc.CustomMenuItem, CustomMenuItem, jfxsc.CustomMenuItemBuilder[_]](
+    classOf[jfxsc.CustomMenuItem], classOf[CustomMenuItem], classOf[jfxsc.CustomMenuItemBuilder[_]])

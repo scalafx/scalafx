@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,16 +30,33 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc}
 
 import scala.language.implicitConversions
-
 import scalafx.delegate.SFXDelegate
 
-/** @author Roman Hargrave */
+/**
+ * Object companion for [[scalafx.scene.control.SeparatorMenuItem]].
+ */
 object SeparatorMenuItem {
-    implicit def sfxSeparatorMenuItem2jfx(s: SeparatorMenuItem): jfxsc.SeparatorMenuItem = if(s != null) s.delegate else null
+  implicit def sfxSeparatorMenuItem2jfx(s: SeparatorMenuItem): jfxsc.SeparatorMenuItem = if (s != null) s.delegate else null
 }
 
-class SeparatorMenuItem(override val delegate: jfxsc.SeparatorMenuItem) extends CustomMenuItem with SFXDelegate[jfxsc.SeparatorMenuItem] {
-    def this() = {
-        this(new jfxsc.SeparatorMenuItem)
-    }
+/**
+ * A [[MenuItem]] that as the name suggests allows for a horizontal Separator to be embedded within it,
+ * by assigning a Separator to the content property of the [[CustomMenuItem]].
+ *
+ * Wraps a $JFX $URL0 $FC]].
+ *
+ * @constructor Creates a new $FC from a $JFX one.
+ * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
+ *
+ * @define FC SeparatorMenuItem
+ * @define URL0 [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/SeparatorMenuItem.html
+ * @define JFX JavaFX
+ * @define ORIGINALDOC Original Documentation]].
+ */
+class SeparatorMenuItem(override val delegate: jfxsc.SeparatorMenuItem)
+  extends CustomMenuItem(delegate)
+  with SFXDelegate[jfxsc.SeparatorMenuItem] {
+  def this() = {
+    this(new jfxsc.SeparatorMenuItem)
+  }
 }
