@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.stage
 
 import java.io.File
@@ -59,6 +60,8 @@ class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.D
 
   /**
    * Shows a new directory selection dialog.
+   *
+   * @return the selected directory or null if no directory has been selected
    */
   def showDialog(ownerWindow: Window): File = delegate.showDialog(ownerWindow)
 }

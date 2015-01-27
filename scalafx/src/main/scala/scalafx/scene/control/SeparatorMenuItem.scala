@@ -25,60 +25,38 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.controls
+package scalafx.scene.control
 
-import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.event.ActionEvent
-import scalafx.scene.Scene
-import scalafx.scene.control.{Label, Menu, MenuBar, MenuItem, SeparatorMenuItem}
-import scalafx.scene.layout.{BorderPane, VBox}
-import scalafx.scene.paint.Color
+import javafx.scene.{control => jfxsc}
 
+import scala.language.implicitConversions
+import scalafx.delegate.SFXDelegate
 
-object MenuTest extends JFXApp {
+/**
+ * Object companion for [[scalafx.scene.control.SeparatorMenuItem]].
+ */
+object SeparatorMenuItem {
+  implicit def sfxSeparatorMenuItem2jfx(s: SeparatorMenuItem): jfxsc.SeparatorMenuItem = if (s != null) s.delegate else null
+}
 
-  val menu = new Menu("File") {
-    items = List(
-      new MenuItem("Open") {
-        onAction = (ae: ActionEvent) => history.children += new Label("Selected item `Open`")
-      },
-      new SeparatorMenuItem,
-      new MenuItem("Close") {
-        onAction = (ae: ActionEvent) => history.children += new Label("Selected item `Close`")
-      }
-    )
-
-    onShowing = handle { printEvent("on showing") }
-    onShown = handle { printEvent("on shown") }
-    onHiding = handle { printEvent("on hiding") }
-    onHidden = handle { printEvent("on hidden") }
+/**
+ * A [[MenuItem]] that as the name suggests allows for a horizontal Separator to be embedded within it,
+ * by assigning a Separator to the content property of the [[CustomMenuItem]].
+ *
+ * Wraps a $JFX $URL0 $FC]].
+ *
+ * @constructor Creates a new $FC from a $JFX one.
+ * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
+ *
+ * @define FC SeparatorMenuItem
+ * @define URL0 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SeparatorMenuItem.html
+ * @define JFX JavaFX
+ * @define ORIGINALDOC Original Documentation]].
+ */
+class SeparatorMenuItem(override val delegate: jfxsc.SeparatorMenuItem)
+  extends CustomMenuItem(delegate)
+  with SFXDelegate[jfxsc.SeparatorMenuItem] {
+  def this() = {
+    this(new jfxsc.SeparatorMenuItem)
   }
-
-  val history = new VBox()
-
-  val menuBar = new MenuBar {
-    useSystemMenuBar = true
-    minWidth = 100
-    menus.add(menu)
-  }
-
-  stage = new PrimaryStage {
-    title = "Menu test"
-    width = 300
-    height = 225
-    scene = new Scene {
-      fill = Color.LightGray
-      root = new BorderPane {
-        top = menuBar
-        bottom = history
-      }
-    }
-  }
-
-  def printEvent(eventStr: String)() {
-    history.children += new Label(eventStr)
-  }
-
 }

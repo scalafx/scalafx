@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
@@ -62,7 +63,9 @@ object ControlIncludes extends ControlIncludes
  * @define CELL Cell
  * @define CHBX ChoiceBox
  * @define CEBX CheckBox
+ * @define CUMIT CustomMenuItem
  * @define CMNIT CheckMenuItem
+ * @define SPMIT SeparatorMenuItem
  * @define CTDP ContentDisplay
  * @define CTMN ContextMenu
  * @define CTRL Control
@@ -405,6 +408,22 @@ trait ControlIncludes
    * @return $SFX $MNIT
    */
   implicit def jfxMenuItem2sfx(m: jfxsc.MenuItem): MenuItem = if (m != null) new MenuItem(m) else null
+
+  /**
+   * $START$CUMIT.html $CUMIT$END
+   *
+   * @param c $JFX $CUMIT
+   * @return $SFX $CUMIT
+   */
+  implicit def jfxCustomMenuItem2sfx(c: jfxsc.CustomMenuItem): CustomMenuItem = if (c != null) new CustomMenuItem(c) else null
+
+  /**
+   * $START$SPMIT.html $SPMIT$END
+   *
+   * @param s $JFX $SPMIT
+   * @return $SFX $SPMIT
+   */
+  implicit def jfxSeparatorMenuItem2sfx(s: jfxsc.SeparatorMenuItem): SeparatorMenuItem = if (s != null) new SeparatorMenuItem(s) else null
 
   /**
    * $START$MSMD.html $MSMD$END

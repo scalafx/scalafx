@@ -25,60 +25,41 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.controls
+package issues.issue178
 
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.event.ActionEvent
+import scalafx.geometry.Insets
 import scalafx.scene.Scene
-import scalafx.scene.control.{Label, Menu, MenuBar, MenuItem, SeparatorMenuItem}
-import scalafx.scene.layout.{BorderPane, VBox}
-import scalafx.scene.paint.Color
+import scalafx.scene.control.Button
+import scalafx.scene.layout.VBox
+import scalafx.stage.FileChooser
 
-
-object MenuTest extends JFXApp {
-
-  val menu = new Menu("File") {
-    items = List(
-      new MenuItem("Open") {
-        onAction = (ae: ActionEvent) => history.children += new Label("Selected item `Open`")
-      },
-      new SeparatorMenuItem,
-      new MenuItem("Close") {
-        onAction = (ae: ActionEvent) => history.children += new Label("Selected item `Close`")
-      }
-    )
-
-    onShowing = handle { printEvent("on showing") }
-    onShown = handle { printEvent("on shown") }
-    onHiding = handle { printEvent("on hiding") }
-    onHidden = handle { printEvent("on hidden") }
-  }
-
-  val history = new VBox()
-
-  val menuBar = new MenuBar {
-    useSystemMenuBar = true
-    minWidth = 100
-    menus.add(menu)
-  }
+/**
+ * Demo for Issue #178: FileChooser does not handle a the value returned when the user cancels file selection.
+ * If FileChooser.showOpenMultipleDialog was used and user cancelled selection an NPE was thrown.
+ *
+ */
+object MultipleFileChooserDemo extends JFXApp {
 
   stage = new PrimaryStage {
-    title = "Menu test"
-    width = 300
-    height = 225
     scene = new Scene {
-      fill = Color.LightGray
-      root = new BorderPane {
-        top = menuBar
-        bottom = history
+      title = "Demo for Issue #178"
+      root = new VBox {
+        padding = Insets(12)
+        children = new Button {
+          text = "Open file chooser and select multiple files or Cancel"
+          onAction = handle {
+            val fc = new FileChooser()
+            val selection = fc.showOpenMultipleDialog(stage)
+
+            println("Selection: " + selection)
+          }
+        }
       }
     }
-  }
-
-  def printEvent(eventStr: String)() {
-    history.children += new Label(eventStr)
   }
 
 }
