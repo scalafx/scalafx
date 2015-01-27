@@ -1,0 +1,19 @@
+ScalaFX 8.0.31-R7 was tested against JavaFX 8.0.31. Improvements and bug fixes are mostly merged from ScalaFX 2 branch (except Issue #159).
+
+* Compatibility braking changes:
+    - Issue #163: `content` property naming conflict with JavaFX 8u40. Usage of `content` property in ScalaFX where it was referring to `children` property in JavaFX was deprecated and will be removed in ScalaFX 8u40.\
+    - Issue #164: Scala 2.9 is no longer supported starting with this release.
+
+* New features:
+    - Issue #159: Add `VBox` and `HBox` constructors added in JavaFX 8
+    - Issue #161: Add missing traits in scalafx.event: `EventDispatchChain`, `EventDispatcher`, `EventTarget`
+    - Issue #168: Added wrappers for `FormatStringConverter`
+    - Issue #171: ScalaDocs are now generated with links to sources
+    - Issue #172: ScalaDocs are now generated with hierarchy diagrams
+    - Issue #173: Added wrappers for `SeparatorMenuItem` and `CustomMenuItem` (thanks to Roman Hargrave)
+
+* Bug fixes:
+    - Issue #154: `TableView`'s `selectedItem` not empty after clearing the selection
+    - Issue #167: `ListCell` should inherit from `IndexedCell`
+    - Issue #169: Observable buffer ignores update changes
+    - Issue #178: When `FileChooser.showOpenMultipleDialog()` is used and user cancelled selection an NPE is thrown.
