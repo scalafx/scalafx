@@ -26,10 +26,10 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
-
-import javafx.{event => jfxe}
 import javafx.scene.{control => jfxsc}
+import javafx.{event => jfxe}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.event.Event
 
@@ -65,6 +65,8 @@ object SortEvent {
  * @param delegate JavaFX SortEvent to be wrapped.
  * @tparam C Event Type
  * @since 8.0
+ *
+ * @define JFX JavaFX
  */
 class SortEvent[C](override val delegate: jfxsc.SortEvent[C])
   extends Event(delegate)

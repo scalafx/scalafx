@@ -26,15 +26,16 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
-import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 
 object Hyperlink {
-  implicit def sfxHyperlink2jfx(h: Hyperlink) = if (h != null) h.delegate else null
+  implicit def sfxHyperlink2jfx(h: Hyperlink): jfxsc.Hyperlink = if (h != null) h.delegate else null
 }
 
 class Hyperlink(override val delegate: jfxsc.Hyperlink = new jfxsc.Hyperlink)

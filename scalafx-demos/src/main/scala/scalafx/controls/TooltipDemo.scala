@@ -24,10 +24,12 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.controls
 
 import javafx.scene.control.ContentDisplay
 import javafx.scene.{control => jfxsc, text => jfxst}
+
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.collections.ObservableBuffer
@@ -55,11 +57,11 @@ object TooltipDemo extends JFXApp {
     alignment = Pos.Center
     alignmentInParent = Pos.TopCenter
     hgrow = Priority.Always
-    content = List(new TooltipControls(myTooltip), new PopupControlControls(myTooltip))
+    children = List(new TooltipControls(myTooltip), new PopupControlControls(myTooltip))
   }
 
   val mainPane = new VBox {
-    content = List(btnTooltip, controlsPane)
+    children = List(btnTooltip, controlsPane)
   }
 
   stage = new JFXApp.PrimaryStage {

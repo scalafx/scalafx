@@ -31,9 +31,7 @@ import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.paint.Color
-import scalafx.scene.shape.Arc
-import scalafx.scene.shape.Circle
-import scalafx.scene.shape.Rectangle
+import scalafx.scene.shape.{Arc, Circle, Rectangle}
 
 object HelloJavaFX extends JFXApp {
   stage = new PrimaryStage {

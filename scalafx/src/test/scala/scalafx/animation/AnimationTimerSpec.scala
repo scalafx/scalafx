@@ -26,9 +26,11 @@
  */
 package scalafx.animation
 
+import javafx.{animation => jfxa}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import javafx.{ animation => jfxa }
+
 import scalafx.Includes.jfxAnimationTimer2sfx
 import scalafx.animation.AnimationTimer.sfxAnimationTimer2jfx
 import scalafx.testutil.SimpleSFXDelegateSpec

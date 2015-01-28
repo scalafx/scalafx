@@ -71,6 +71,9 @@ Kevin Coghlan      ; mail@kevincoghlan.com         ; www.kevincoghlan.com       
 Robert Ladstätter ;                               ;                                       ;
 Peter Pilgrim      ; peter.pilgrim@gmail.com       ; http://www.xenononique.co.uk/blog/    ; Java Champion, independent contractor JavaEE7, JavaFX, Scala
 Sven Reimers       ;                               ; http://wiki.netbeans.org/SvenReimers/ ;     Co-creator, Netbeans Dream Team
+nigredo-tori       ; nigredo.tori@gmail.com        ; https://github.com/nigredo-tori       ;
+SwhGo_oN           ;                               ; https://github.com/swhgoon            ;
+Eric Zoerner       ; eric.zoerner@gmail.com        ; https://bitbucket.org/ezoerner        ;
 Jarek Sacha        ; jpsacha@gmail.com             ;                                       ;
 
 

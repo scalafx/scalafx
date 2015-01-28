@@ -26,19 +26,17 @@
  */
 package scalafx.scene.web
 
-import scala.language.implicitConversions
+import javafx.scene.{text => jfxst, web => jfxsw}
+import javafx.{css => jfxc, event => jfxe, geometry => jfxg, util => jfxu}
+
 import scala.collection.JavaConversions._
-import javafx.{event => jfxe}
-import javafx.{css => jfxc}
-import javafx.scene.{text => jfxst}
-import javafx.scene.{web => jfxsw}
-import javafx.{geometry => jfxg}
+import scala.collection.mutable.Buffer
+import scala.language.implicitConversions
 import scalafx.Includes._
+import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Parent
-import scalafx.beans.property._
 import scalafx.scene.text.FontSmoothingType
-import scala.collection.mutable.Buffer
 
 /**
  * Companion object for [[scalafx.scene.web.WebView]]
@@ -51,7 +49,7 @@ object WebView {
    * @param we ScalaFX WebView
    * @return JavaFX WebView
    */
-  implicit def sfxWebView2jfx(wv: WebView) = if (wv != null) wv.delegate else null
+  implicit def sfxWebView2jfx(wv: WebView): jfxsw.WebView = if (wv != null) wv.delegate else null
 
   /**
    * @return The CssMetaData associated with this class, which may include the CssMetaData of its

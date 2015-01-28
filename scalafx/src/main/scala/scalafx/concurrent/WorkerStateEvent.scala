@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,15 +26,15 @@
  */
 package scalafx.concurrent
 
-import scala.language.implicitConversions
 import javafx.{concurrent => jfxc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.event.Event
-import scalafx.event.EventType
 import scalafx.delegate.SFXDelegate
+import scalafx.event.{Event, EventType}
 
 object WorkerStateEvent {
-  implicit def sfxWorkerStateEvent2jfx(w: WorkerStateEvent) = if (w != null) w.delegate else null
+  implicit def sfxWorkerStateEvent2jfx(w: WorkerStateEvent): jfxc.WorkerStateEvent = if (w != null) w.delegate else null
 
   /**
    * Common supertype for all worker state event types.
@@ -80,8 +80,7 @@ object WorkerStateEvent {
 }
 
 /**
- * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/WorkerStateEvent.html
- * WorkerStateEvent]] Class.
+ * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/WorkerStateEvent.html WorkerStateEvent]] Class.
  */
 class WorkerStateEvent(override val delegate: jfxc.WorkerStateEvent)
   extends Event(delegate)

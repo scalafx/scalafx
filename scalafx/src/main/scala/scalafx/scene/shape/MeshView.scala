@@ -26,15 +26,16 @@
  */
 package scalafx.scene.shape
 
-import scala.language.implicitConversions
 import javafx.scene.{shape => jfxss}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 
 object MeshView {
-  implicit def sfxMeshView2jfx(mv: MeshView) = if (mv != null) mv.delegate else null
+  implicit def sfxMeshView2jfx(mv: MeshView): jfxss.MeshView = if (mv != null) mv.delegate else null
 }
 
 

@@ -26,12 +26,12 @@
  */
 package scalafx.scene.control.cell
 
-import scala.language.implicitConversions
+import javafx.beans.{value => jfxbv}
+import javafx.scene.control.{cell => jfxscc}
+import javafx.scene.{control => jfxsc}
+import javafx.{util => jfxu}
 
-import javafx.beans.{ value => jfxbv }
-import javafx.scene.{ control => jfxsc }
-import javafx.scene.control.{ cell => jfxscc }
-import javafx.{ util => jfxu }
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
@@ -65,8 +65,8 @@ object CheckBoxTreeTableCell {
    *
    * @tparam T $TTYPE
    * @tparam S $STYPE
-   * @param cell $SFX $CBLC
-   * @return $JFX $CBLC
+   * @param cell $SFX $CBTTC
+   * @return $JFX $CBTTC
    */
   implicit def sfxCheckBoxTreeTableCell2jfx[S, T](cell: CheckBoxTreeTableCell[S, T]): jfxscc.CheckBoxTreeTableCell[S, T] = if (cell != null) cell.delegate else null
 
@@ -138,7 +138,6 @@ object CheckBoxTreeTableCell {
    * $FTTC
    *
    * @tparam S $STYPE
-   * @param selectedProperty $SP
    * @return $RETFTTC
    * @see $URL0#forTreeTableColumn-javafx.scene.control.TreeTableColumn- $ORIGINALDOC
    */

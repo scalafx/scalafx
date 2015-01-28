@@ -26,14 +26,13 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
-
-import javafx.{event => jfxe}
 import javafx.scene.{control => jfxsc}
+import javafx.{event => jfxe}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
-import scalafx.event.Event
-import scalafx.event.EventType
+import scalafx.event.{Event, EventType}
 
 /**
  * Companion Object for [[scalafx.scene.control.ScrollToEvent]].
@@ -71,7 +70,7 @@ object ScrollToEvent {
  *
  * @constructor Creates a new ScrollToEvent from its JavaFX counterpart.
  * @param delegate JavaFX ScrollToEvent
- * @tparam
+ * @tparam T scroll target type
  */
 class ScrollToEvent[T](override val delegate: jfxsc.ScrollToEvent[T])
   extends Event(delegate)

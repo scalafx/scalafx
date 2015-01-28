@@ -26,15 +26,16 @@
  */
 package scalafx.scene.shape
 
-import scala.language.implicitConversions
 import javafx.scene.{shape => jfxss}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 
 object Box {
-  implicit def sfxBox2jfx(v: Box) = if (v != null) v.delegate else null
+  implicit def sfxBox2jfx(v: Box): jfxss.Box = if (v != null) v.delegate else null
 }
 
 /**

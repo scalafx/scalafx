@@ -29,12 +29,12 @@ package scalafx.graphics3d
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.scene._
-import scalafx.scene.paint.{Color, PhongMaterial}
-import scalafx.scene.shape.{Sphere, Box}
-import scalafx.scene.transform.Rotate
 import scalafx.beans.property.DoubleProperty
+import scalafx.scene._
 import scalafx.scene.input.MouseEvent
+import scalafx.scene.paint.{Color, PhongMaterial}
+import scalafx.scene.shape.{Box, Sphere}
+import scalafx.scene.transform.Rotate
 
 /** Illustrates picking of 3D objects.
   * When user picks (clocks) on an object in a 3D scene the object name is printed to console. */
@@ -74,7 +74,7 @@ object PickingDemo extends JFXApp {
 
       root = new Group {
         // Put light outside of `shapes` group so it does not rotate
-        content = new Group(shapes, light)
+        children = new Group(shapes, light)
         translateX = 250
         translateY = 250
         translateZ = 825
@@ -108,11 +108,10 @@ object PickingDemo extends JFXApp {
 
       // If picked on a Node, place green marker at the location of the pick
       pickResult.intersectedNode match {
-        case Some(n) => {
+        case Some(n) =>
           println("Picked node: '" + n.id() + "'")
           val p = pickResult.intersectedPoint
-          group.content += createMarker(x = p.x + n.translateX(), y = p.y + n.translateY(), z = p.z + n.translateZ())
-        }
+          group.children += createMarker(x = p.x + n.translateX(), y = p.y + n.translateY(), z = p.z + n.translateZ())
         case None => println("Picked nothing.")
       }
     }

@@ -26,16 +26,16 @@
  */
 package scalafx.scene.shape
 
-import scala.language.implicitConversions
-import collection.JavaConversions._
 import javafx.scene.{shape => jfxss}
-import scalafx.collections._
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
+import scalafx.collections._
 import scalafx.delegate.SFXDelegate
 
 object Path {
-  implicit def sfxPath2jfx(v: Path) = if (v != null) v.delegate else null
+  implicit def sfxPath2jfx(v: Path): jfxss.Path = if (v != null) v.delegate else null
 }
 
 /**

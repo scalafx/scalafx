@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,10 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
-/** Wrapper for [[javafx.scene.shape.FillRule]] */
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/FillRule.html javafx.scene.shape.FillRule]] */
 object FillRule extends SFXEnumDelegateCompanion[jfxss.FillRule, FillRule] {
 
   val EVEN_ODD = new FillRule(jfxss.FillRule.EVEN_ODD)

@@ -26,14 +26,15 @@
  */
 package scalafx.scene.effect
 
-import scala.language.implicitConversions
 import javafx.scene.{effect => jfxse}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object ColorAdjust {
-  implicit def sfxColorAdjust2jfx(ca: ColorAdjust) = if (ca != null) ca.delegate else null
+  implicit def sfxColorAdjust2jfx(ca: ColorAdjust): jfxse.ColorAdjust = if (ca != null) ca.delegate else null
 }
 
 class ColorAdjust(override val delegate: jfxse.ColorAdjust = new jfxse.ColorAdjust)

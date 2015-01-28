@@ -26,8 +26,9 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
@@ -35,7 +36,7 @@ import scalafx.scene.Node
 
 
 object CheckMenuItem {
-  implicit def sfxCheckMenuItem2jfx(m: CheckMenuItem) = if (m != null) m.delegate else null
+  implicit def sfxCheckMenuItem2jfx(m: CheckMenuItem): jfxsc.CheckMenuItem = if (m != null) m.delegate else null
 }
 
 /** A MenuItem that can be toggled between selected and unselected states. */

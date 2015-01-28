@@ -28,8 +28,10 @@
 package scalafx.scene.paint
 
 import javafx.scene.{paint => jfxsp}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 

@@ -26,13 +26,13 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec, AlignmentDelegateSpec}
+import javafx.scene.{control => jfxsc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import javafx.scene
-import scalafx.scene.SceneProperty
+
+import scalafx.Includes._
+import scalafx.testutil.{AlignmentDelegateSpec, RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TextField Spec tests.

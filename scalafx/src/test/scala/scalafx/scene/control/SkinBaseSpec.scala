@@ -1,8 +1,10 @@
 package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import javafx.scene.{ control => jfxsc }
+
 import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 

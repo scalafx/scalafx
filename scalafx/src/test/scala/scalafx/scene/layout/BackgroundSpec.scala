@@ -27,8 +27,10 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 

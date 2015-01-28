@@ -26,18 +26,15 @@
  */
 package scalafx.collections
 
-import scala.language.implicitConversions
 import java.{util => ju}
-import scala.collection.JavaConversions._
-import scala.collection.generic.GenericSetTemplate
-import scala.collection.generic.MutableSetFactory
-import scala.collection.mutable.Builder
-import scala.collection.mutable.Set
-import scala.collection.mutable.SetLike
 import javafx.{collections => jfxc}
+
+import scala.collection.JavaConversions._
+import scala.collection.generic.{GenericCompanion, GenericSetTemplate, MutableSetFactory}
+import scala.collection.mutable.{Builder, Set, SetLike}
+import scala.language.implicitConversions
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
-import scala.collection.generic.GenericCompanion
 
 /**
  * Companion Object for `[[scalafx.collections.ObservableSet]]`.
@@ -52,7 +49,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
    * @param os ScalaFX's $OS.
    * @return JavaFX's $OS inside parameter.
    */
-  implicit def sfxObservableSet2sfxObservableSet[T](os: ObservableSet[T]) = if (os != null) os.delegate else null
+  implicit def sfxObservableSet2sfxObservableSet[T](os: ObservableSet[T]): jfxc.ObservableSet[T] = if (os != null) os.delegate else null
 
   // CHANGING INDICATORS - BEGIN
 
@@ -198,7 +195,7 @@ trait ObservableSet[T]
    */
   def contains(elem: T) = delegate.contains(elem)
 
-  import ObservableSet._
+  import scalafx.collections.ObservableSet._
 
   /**
    * Add a listener function to $SET's changes. This function '''will handle''' this map's modifications data.

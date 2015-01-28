@@ -26,15 +26,16 @@
  */
 package scalafx.scene.chart
 
-import scala.language.implicitConversions
 import javafx.scene.{chart => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 object StackedBarChart {
-  implicit def sfxStackedBarChart2jfx[X, Y](v: StackedBarChart[X, Y]) = if (v != null) v.delegate else null
+  implicit def sfxStackedBarChart2jfx[X, Y](v: StackedBarChart[X, Y]): jfxsc.StackedBarChart[X, Y] = if (v != null) v.delegate else null
 
   def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y]) =
     new StackedBarChart[X, Y](new jfxsc.StackedBarChart[X, Y](xAxis, yAxis))

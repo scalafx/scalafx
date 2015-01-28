@@ -26,22 +26,19 @@
  */
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
+import javafx.scene.{layout => jfxsl, shape => jfxss}
 import javafx.{geometry => jfxg}
-import javafx.scene.{layout => jfxsl}
-import javafx.scene.{shape => jfxss}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.scene.Parent
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.geometry.Insets
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyDoubleProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.geometry.Insets
+import scalafx.scene.Parent
 import scalafx.scene.shape.Shape
 
 object Region {
-  implicit def sfxRegion2jfx(v: Region) = if (v != null) v.delegate else null
+  implicit def sfxRegion2jfx(v: Region): jfxsl.Region = if (v != null) v.delegate else null
 
   /**
    * Sentinel value which can be passed to a region's minWidth, minHeight, prefWidth, prefHeight,

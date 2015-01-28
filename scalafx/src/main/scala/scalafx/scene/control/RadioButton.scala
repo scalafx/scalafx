@@ -26,12 +26,13 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object RadioButton {
-  implicit def sfxRadioButton2jfx(rb: RadioButton) = if (rb != null) rb.delegate else null
+  implicit def sfxRadioButton2jfx(rb: RadioButton): jfxsc.RadioButton = if (rb != null) rb.delegate else null
 }
 
 class RadioButton(override val delegate: jfxsc.RadioButton = new jfxsc.RadioButton)

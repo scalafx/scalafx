@@ -26,15 +26,15 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
-import scalafx.Includes._
+
+import scala.language.implicitConversions
 import scalafx.css.PseudoClass
 import scalafx.css.PseudoClass.sfxPseudoClass2jfx
 import scalafx.delegate.SFXDelegate
 
 object SkinBase {
-  implicit def sfxSkinBase2jfx[C <: jfxsc.Control](v: SkinBase[C]) = if (v != null) v.delegate else null
+  implicit def sfxSkinBase2jfx[C <: jfxsc.Control](v: SkinBase[C]): jfxsc.SkinBase[C] = if (v != null) v.delegate else null
 
   def classCssMetaData = jfxsc.SkinBase.getClassCssMetaData
 }

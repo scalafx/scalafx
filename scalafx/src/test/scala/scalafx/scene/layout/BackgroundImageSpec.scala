@@ -27,11 +27,12 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{ layout => jfxsl }
-import javafx.scene.{ image => jfxsi }
-import scalafx.Includes._
+import javafx.scene.{image => jfxsi, layout => jfxsl}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**

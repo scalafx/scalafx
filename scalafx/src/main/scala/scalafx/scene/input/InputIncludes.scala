@@ -26,10 +26,13 @@
  */
 package scalafx.scene.input
 
-import scala.language.implicitConversions
-import javafx.{event => jfxe}
 import javafx.scene.{input => jfxsi}
-import scalafx.delegate.SFXDelegate
+import javafx.{event => jfxe}
+
+import scala.language.implicitConversions
+import scalafx.scene.input.KeyCombination.{Modifier, ModifierValue}
+import scalafx.scene.input.ScrollEvent.{HorizontalTextScrollUnits, VerticalTextScrollUnits}
+import scalafx.scene.input.TouchPoint.State
 
 object InputIncludes extends InputIncludes
 
@@ -88,7 +91,7 @@ trait InputIncludes {
    * @param c $JFX $CLIP
    * @return $SFX $CLIP
    */
-  implicit def jfxClipboard2sfx(c: jfxsi.Clipboard) = if (c != null) new Clipboard(c) else null
+  implicit def jfxClipboard2sfx(c: jfxsi.Clipboard): Clipboard = if (c != null) new Clipboard(c) else null
 
   /**
    * $START$CLCT.html $CLCT$END
@@ -96,7 +99,7 @@ trait InputIncludes {
    * @param c $JFX $CLCT
    * @return $SFX $CLCT
    */
-  implicit def jfxClipboardContent2sfx(c: jfxsi.ClipboardContent) = if (c != null) new ClipboardContent(c) else null
+  implicit def jfxClipboardContent2sfx(c: jfxsi.ClipboardContent): ClipboardContent = if (c != null) new ClipboardContent(c) else null
 
   /**
    * $START$CMEV.html $CMEV$END
@@ -104,7 +107,7 @@ trait InputIncludes {
    * @param c $JFX $CMEV
    * @return $SFX $CMEV
    */
-  implicit def jfxContextMenuEvent2sfx(c: jfxsi.ContextMenuEvent) = if (c != null) new ContextMenuEvent(c) else null
+  implicit def jfxContextMenuEvent2sfx(c: jfxsi.ContextMenuEvent): ContextMenuEvent = if (c != null) new ContextMenuEvent(c) else null
 
   /**
    * $START$DTFM.html $DTFM$END
@@ -112,7 +115,7 @@ trait InputIncludes {
    * @param df $JFX $DTFM
    * @return $SFX $DTFM
    */
-  implicit def jfxDataFormat2sfx(df: jfxsi.DataFormat) = if (df != null) new DataFormat(df) else null
+  implicit def jfxDataFormat2sfx(df: jfxsi.DataFormat): DataFormat = if (df != null) new DataFormat(df) else null
 
   /**
    * $START$DRGB.html $DRGB$END
@@ -120,7 +123,7 @@ trait InputIncludes {
    * @param d $JFX $DRGB
    * @return $SFX $DRGB
    */
-  implicit def jfxDragboard2sfx(d: jfxsi.Dragboard) = if (d != null) new Dragboard(d) else null
+  implicit def jfxDragboard2sfx(d: jfxsi.Dragboard): Dragboard = if (d != null) new Dragboard(d) else null
 
   /**
    * $START$DREV.html $DREV$END
@@ -128,7 +131,7 @@ trait InputIncludes {
    * @param de $JFX $DREV
    * @return $SFX $DREV
    */
-  implicit def jfxDragEvent2sfx(de: jfxsi.DragEvent) = if (de != null) new DragEvent(de) else null
+  implicit def jfxDragEvent2sfx(de: jfxsi.DragEvent): DragEvent = if (de != null) new DragEvent(de) else null
 
   /**
    * $START$GTEV.html $GTEV$END
@@ -136,7 +139,7 @@ trait InputIncludes {
    * @param ge $JFX $GTEV
    * @return $SFX $GTEV
    */
-  implicit def jfxGestureEvent2sfx(ge: jfxsi.GestureEvent) = if (ge != null) new GestureEvent(ge) else null
+  implicit def jfxGestureEvent2sfx(ge: jfxsi.GestureEvent): GestureEvent = if (ge != null) new GestureEvent(ge) else null
 
   /**
    * $START$IPEV.html $IPEV$END
@@ -144,7 +147,7 @@ trait InputIncludes {
    * @param ie $JFX $IPEV
    * @return $SFX $IPEV
    */
-  implicit def jfxInputEvent2sfx(ie: jfxsi.InputEvent) = if (ie != null) new InputEvent(ie) else null
+  implicit def jfxInputEvent2sfx(ie: jfxsi.InputEvent): InputEvent = if (ie != null) new InputEvent(ie) else null
 
   /**
    * $START$IMEV.html $IMEV$END
@@ -152,7 +155,7 @@ trait InputIncludes {
    * @param ime $JFX $IMEV
    * @return $SFX $IMEV
    */
-  implicit def jfxInputMethodEvent2sfx(ime: jfxsi.InputMethodEvent) = if (ime != null) new InputMethodEvent(ime) else null
+  implicit def jfxInputMethodEvent2sfx(ime: jfxsi.InputMethodEvent): InputMethodEvent = if (ime != null) new InputMethodEvent(ime) else null
 
   /**
    * $START$IMHL.html $IMHL$END
@@ -160,7 +163,7 @@ trait InputIncludes {
    * @param e $JFX $IMHL
    * @return $SFX $IMHL
    */
-  implicit def jfxInputMethodHighlight2sfx(e: jfxsi.InputMethodHighlight) = InputMethodHighlight.jfxEnum2sfx(e)
+  implicit def jfxInputMethodHighlight2sfx(e: jfxsi.InputMethodHighlight): InputMethodHighlight = InputMethodHighlight.jfxEnum2sfx(e)
 
   /**
    * $START$IMTR.html $IMTR$END
@@ -168,7 +171,7 @@ trait InputIncludes {
    * @param imtr $JFX $IMTR
    * @return $SFX $IMTR
    */
-  implicit def jfxInputMethodTextRun2sfx(imtr: jfxsi.InputMethodTextRun) = if (imtr != null) new InputMethodTextRun(imtr) else null
+  implicit def jfxInputMethodTextRun2sfx(imtr: jfxsi.InputMethodTextRun): InputMethodTextRun = if (imtr != null) new InputMethodTextRun(imtr) else null
 
   /**
    * $START$KYCB.html $KYCB$END
@@ -176,7 +179,7 @@ trait InputIncludes {
    * @param kc $JFX $KYCB
    * @return $SFX $KYCB
    */
-  implicit def jfxKeyCombination2sfx(kc: jfxsi.KeyCombination) = if (kc != null) new KeyCombination(kc) {} else null
+  implicit def jfxKeyCombination2sfx(kc: jfxsi.KeyCombination): KeyCombination = if (kc != null) new KeyCombination(kc) {} else null
 
   /**
    * $START$KCMV.html $KCMV$END
@@ -184,7 +187,7 @@ trait InputIncludes {
    * @param mv $JFX $KCMV
    * @return $SFX $KCMV
    */
-  implicit def jfxModifierValue2sfx(mv: jfxsi.KeyCombination.ModifierValue) = KeyCombination.ModifierValue.jfxEnum2sfx(mv)
+  implicit def jfxModifierValue2sfx(mv: jfxsi.KeyCombination.ModifierValue): ModifierValue = KeyCombination.ModifierValue.jfxEnum2sfx(mv)
 
   /**
    * $START$KCCB.html $KCCB$END
@@ -192,7 +195,7 @@ trait InputIncludes {
    * @param kcc $JFX $KCCB
    * @return $SFX $KCCB
    */
-  implicit def jfxKeyCharacterCombination2sfx(kcc: jfxsi.KeyCharacterCombination) = if (kcc != null) new KeyCharacterCombination(kcc) else null
+  implicit def jfxKeyCharacterCombination2sfx(kcc: jfxsi.KeyCharacterCombination): KeyCharacterCombination = if (kcc != null) new KeyCharacterCombination(kcc) else null
 
   /**
    * $START$KYCD.html $KYCD$END
@@ -200,7 +203,7 @@ trait InputIncludes {
    * @param e $JFX $KYCD
    * @return $SFX $KYCD
    */
-  implicit def jfxKeyCode2sfx(e: jfxsi.KeyCode) = KeyCode.jfxEnum2sfx(e)
+  implicit def jfxKeyCode2sfx(e: jfxsi.KeyCode): KeyCode = KeyCode.jfxEnum2sfx(e)
 
   /**
    * $START$KCCM.html $KCCM$END
@@ -208,7 +211,7 @@ trait InputIncludes {
    * @param kcc $JFX $KCCM
    * @return $SFX $KCCM
    */
-  implicit def jfxKeyCodeCombination2sfx(kcc: jfxsi.KeyCodeCombination) = if (kcc != null) new KeyCodeCombination(kcc) else null
+  implicit def jfxKeyCodeCombination2sfx(kcc: jfxsi.KeyCodeCombination): KeyCodeCombination = if (kcc != null) new KeyCodeCombination(kcc) else null
 
   /**
    * $START$KCMD.html $KCMD$END
@@ -216,7 +219,7 @@ trait InputIncludes {
    * @param m $JFX $KCMD
    * @return $SFX $KCMD
    */
-  implicit def jfxKeyCombinationModifier2sfx(m: jfxsi.KeyCombination.Modifier) = if (m != null) new KeyCombination.Modifier(m) {} else null
+  implicit def jfxKeyCombinationModifier2sfx(m: jfxsi.KeyCombination.Modifier): Modifier = if (m != null) new KeyCombination.Modifier(m) {} else null
 
   /**
    * $START$KEEV.html $KEEV$END
@@ -224,7 +227,7 @@ trait InputIncludes {
    * @param ke $JFX $KEEV
    * @return $SFX $KEEV
    */
-  implicit def jfxKeyEvent2sfx(ke: jfxsi.KeyEvent) = if (ke != null) new KeyEvent(ke) else null
+  implicit def jfxKeyEvent2sfx(ke: jfxsi.KeyEvent): KeyEvent = if (ke != null) new KeyEvent(ke) else null
 
   /**
    * $START$MNMC.html $MNMC$END
@@ -232,7 +235,7 @@ trait InputIncludes {
    * @param m $JFX $MNMC
    * @return $SFX $MNMC
    */
-  implicit def jfxMnemonic2sfx(m: jfxsi.Mnemonic) = if (m != null) new Mnemonic(m) else null
+  implicit def jfxMnemonic2sfx(m: jfxsi.Mnemonic): Mnemonic = if (m != null) new Mnemonic(m) else null
 
   /**
    * $START$MSBT.html $MSBT$END
@@ -240,7 +243,7 @@ trait InputIncludes {
    * @param e $JFX $MSBT
    * @return $SFX $MSBT
    */
-  implicit def jfxMouseButton2sfx(e: jfxsi.MouseButton) = MouseButton.jfxEnum2sfx(e)
+  implicit def jfxMouseButton2sfx(e: jfxsi.MouseButton): MouseButton = MouseButton.jfxEnum2sfx(e)
 
   /**
    * $START$MSEV.html $MSEV$END
@@ -248,7 +251,7 @@ trait InputIncludes {
    * @param me $JFX $MSEV
    * @return $SFX $MSEV
    */
-  implicit def jfxMouseEvent2sfx(me: jfxsi.MouseEvent) = if (me != null) new MouseEvent(me) else null
+  implicit def jfxMouseEvent2sfx(me: jfxsi.MouseEvent): MouseEvent = if (me != null) new MouseEvent(me) else null
 
   /**
    * $START$MSDE.html $MSDE$END
@@ -256,9 +259,9 @@ trait InputIncludes {
    * @param mde $JFX $MSDE
    * @return $SFX $MSDE
    */
-  implicit def jfxMouseDragEvent2sfx(mde: jfxsi.MouseDragEvent) = if (mde != null) new MouseDragEvent(mde) else null
+  implicit def jfxMouseDragEvent2sfx(mde: jfxsi.MouseDragEvent): MouseDragEvent = if (mde != null) new MouseDragEvent(mde) else null
 
-  implicit def jfxPickResult2sfx(m: jfxsi.PickResult) =
+  implicit def jfxPickResult2sfx(m: jfxsi.PickResult): PickResult =
     if (m != null) new PickResult(m) else null
 
   /**
@@ -267,7 +270,7 @@ trait InputIncludes {
    * @param re $JFX $RTEV
    * @return $SFX $RTEV
    */
-  implicit def jfxRotateEvent2sfx(re: jfxsi.RotateEvent) = if (re != null) new RotateEvent(re) else null
+  implicit def jfxRotateEvent2sfx(re: jfxsi.RotateEvent): RotateEvent = if (re != null) new RotateEvent(re) else null
 
   /**
    * $START$SCEV.html $SCEV$END
@@ -275,7 +278,7 @@ trait InputIncludes {
    * @param se $JFX $SCEV
    * @return $SFX $SCEV
    */
-  implicit def jfxScrollEvent2sfx(se: jfxsi.ScrollEvent) = if (se != null) new ScrollEvent(se) else null
+  implicit def jfxScrollEvent2sfx(se: jfxsi.ScrollEvent): ScrollEvent = if (se != null) new ScrollEvent(se) else null
 
   /**
    * $START$SEHS.html $SEHS$END
@@ -283,7 +286,7 @@ trait InputIncludes {
    * @param h $JFX $SEHS
    * @return $SFX $SEHS
    */
-  implicit def jfxScrollEventHorizontalTextScrollUnits2sfx(h: jfxsi.ScrollEvent.HorizontalTextScrollUnits) = ScrollEvent.HorizontalTextScrollUnits.jfxEnum2sfx(h)
+  implicit def jfxScrollEventHorizontalTextScrollUnits2sfx(h: jfxsi.ScrollEvent.HorizontalTextScrollUnits): HorizontalTextScrollUnits = ScrollEvent.HorizontalTextScrollUnits.jfxEnum2sfx(h)
 
   /**
    * $START$SEVS.html $SEVS$END
@@ -291,7 +294,7 @@ trait InputIncludes {
    * @param v $JFX $SEVS
    * @return $SFX $SEVS
    */
-  implicit def jfxScrollEventVerticalTextScrollUnits2sfx(v: jfxsi.ScrollEvent.VerticalTextScrollUnits) = ScrollEvent.VerticalTextScrollUnits.jfxEnum2sfx(v)
+  implicit def jfxScrollEventVerticalTextScrollUnits2sfx(v: jfxsi.ScrollEvent.VerticalTextScrollUnits): VerticalTextScrollUnits = ScrollEvent.VerticalTextScrollUnits.jfxEnum2sfx(v)
 
   /**
    * $START$SWEV.html $SWEV$END
@@ -299,7 +302,7 @@ trait InputIncludes {
    * @param se $JFX $SWEV
    * @return $SFX $SWEV
    */
-  implicit def jfxSwipeEvent2sfx(se: jfxsi.SwipeEvent) = if (se != null) new SwipeEvent(se) else null
+  implicit def jfxSwipeEvent2sfx(se: jfxsi.SwipeEvent): SwipeEvent = if (se != null) new SwipeEvent(se) else null
 
   /**
    * $START$TCEV.html $TCEV$END
@@ -307,7 +310,7 @@ trait InputIncludes {
    * @param te $JFX $TCEV
    * @return $SFX $TCEV
    */
-  implicit def jfxTouchEvent2sfx(te: jfxsi.TouchEvent) = if (te != null) new TouchEvent(te) else null
+  implicit def jfxTouchEvent2sfx(te: jfxsi.TouchEvent): TouchEvent = if (te != null) new TouchEvent(te) else null
 
   /**
    * $START$TCPT.html $TCPT$END
@@ -315,7 +318,7 @@ trait InputIncludes {
    * @param tp $JFX $TCPT
    * @return $SFX $TCPT
    */
-  implicit def jfxTouchPoint2sfx(tp: jfxsi.TouchPoint) = if (tp != null) new TouchPoint(tp) else null
+  implicit def jfxTouchPoint2sfx(tp: jfxsi.TouchPoint): TouchPoint = if (tp != null) new TouchPoint(tp) else null
 
   /**
    * $START$TPST.html $TPST$END
@@ -323,7 +326,7 @@ trait InputIncludes {
    * @param s $JFX $TPST
    * @return $SFX $TPST
    */
-  implicit def jfxTouchPointState2sfx(s: jfxsi.TouchPoint.State) = TouchPoint.State.jfxEnum2sfx(s)
+  implicit def jfxTouchPointState2sfx(s: jfxsi.TouchPoint.State): State = TouchPoint.State.jfxEnum2sfx(s)
 
   /**
    * $START$TRMD.html $TRMD$END
@@ -331,7 +334,7 @@ trait InputIncludes {
    * @param e $JFX $TRMD
    * @return $SFX $TRMD
    */
-  implicit def jfxTransferMode2sfx(e: jfxsi.TransferMode) = TransferMode.jfxEnum2sfx(e)
+  implicit def jfxTransferMode2sfx(e: jfxsi.TransferMode): TransferMode = TransferMode.jfxEnum2sfx(e)
 
   /**
    * $START$ZMEV.html $ZMEV$END
@@ -339,5 +342,5 @@ trait InputIncludes {
    * @param ze $JFX $ZMEV
    * @return $SFX $ZMEV
    */
-  implicit def jfxZoomEvent2sfx(ze: jfxsi.ZoomEvent) = if (ze != null) new ZoomEvent(ze) else null
+  implicit def jfxZoomEvent2sfx(ze: jfxsi.ZoomEvent): ZoomEvent = if (ze != null) new ZoomEvent(ze) else null
 }

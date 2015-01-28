@@ -1,8 +1,15 @@
-import scala.xml._
 import java.net.URL
-import SonatypeKeys._
 
-val scalafxVersion = "8.0.20-R6"
+import scala.xml._
+
+//
+// Environment variables used by the build:
+// GRAPHVIZ_DOT_PATH - Full path to Graphviz dot utility. If not defined Scaladocs will be build without diagrams.
+// JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
+//
+
+val scalafxVersion = "8.0.31-R7-SNAPSHOT"
+val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v" + scalafxVersion
 
 // ScalaFX project
 lazy val scalafx = Project(
@@ -11,9 +18,14 @@ lazy val scalafx = Project(
   settings = scalafxSettings ++ Seq(
     description := "The ScalaFX framework",
     fork in run := true,
-    scalacOptions in (Compile, doc) ++= Seq (
-      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md"
-    )
+    scalacOptions in(Compile, doc) ++= Seq(
+      "-sourcepath", baseDirectory.value.toString,
+      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md",
+      "-doc-source-url", "https://github.com/scalafx/scalafx/blob/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala"
+    ) ++ (Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
+      case Some(path) => Seq("-diagrams", "-diagrams-dot-path", path)
+      case None       => Seq.empty[String]
+    })
   ) ++ sonatypeSettings
 )
 
@@ -33,8 +45,8 @@ lazy val scalafxDemos = Project(
 ) dependsOn (scalafx % "compile;test->test")
 
 // Dependencies
-lazy val junit = "junit" % "junit" % "4.11"
-lazy val scalatest = "org.scalatest" %% "scalatest" % "2.2.1"
+lazy val junit = "junit" % "junit" % "4.12"
+lazy val scalatest = "org.scalatest" %% "scalatest" % "2.2.3"
 
 // Resolvers
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -48,12 +60,13 @@ resolvers += sonatypeNexusSnapshots
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  // TODO SFX8: At a moment only ScalaFX 2.10.2+ supports Java 8, due to some InvokeDynamic byte codes
-  crossScalaVersions := Seq("2.10.4", "2.11.2"),
-  scalaVersion <<= crossScalaVersions { versions => versions.head },
+  crossScalaVersions := Seq("2.10.4", "2.11.5"),
+  scalaVersion <<= crossScalaVersions { versions => versions.head},
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
+  scalacOptions in(Compile, doc) += s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
+  scalacOptions in(Compile, doc) ++= Seq("-doc-footer", s"ScalaFX API v.$scalafxVersion"),
   javacOptions ++= Seq(
     "-target", "1.8",
     "-source", "1.8",
@@ -68,6 +81,7 @@ lazy val scalafxSettings = Seq(
       Seq("org.scala-lang.modules" %% "scala-xml" % "1.0.1" % "test")
     else
       Seq.empty[ModuleID]),
+  autoAPIMappings := true,
   manifestSetting,
   publishSetting,
   fork in Test := true,
@@ -77,7 +91,7 @@ lazy val scalafxSettings = Seq(
   testOptions in Test <+= (target in Test) map {
     t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))
   },
-  shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> " }
+  shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> "}
 ) ++ mavenCentralSettings
 
 lazy val manifestSetting = packageOptions <+= (name, version, organization) map {

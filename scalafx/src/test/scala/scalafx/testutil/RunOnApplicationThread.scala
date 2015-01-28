@@ -28,7 +28,8 @@ package scalafx.testutil
 
 import java.util.concurrent.CountDownLatch
 import javafx.application.Platform
-import org.scalatest.{Outcome, SuiteMixin, Suite}
+
+import org.scalatest.{Outcome, Suite, SuiteMixin}
 
 trait RunOnApplicationThread extends SuiteMixin { this: Suite =>
   abstract override def withFixture(test : NoArgTest):Outcome = {

@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.imaginej
 
 //             ________                                __                   ________   __    __
@@ -44,12 +45,10 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
-import scalafx.scene.layout.{VBox, HBox, BorderPane}
+import scalafx.scene.layout.{BorderPane, HBox, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-import scalafx.scene.text.Font
-import scalafx.scene.text.FontWeight
-import scalafx.scene.text.Text
+import scalafx.scene.text.{Font, FontWeight, Text}
 
 
 /**
@@ -98,12 +97,12 @@ object ScalaFX_Layout_Panes_03 extends JFXApp {
           spacing = 10
           padding = Insets(15, 12, 15, 12)
           style = "-fx-background-color: #336699"
-          content = List(current, projected)
+          children = List(current, projected)
         }
         left = new VBox {
           spacing = 10
           padding = Insets(10, 10, 10, 10)
-          content = data
+          children = data
         }
         center = new Rectangle {
           width = 380

@@ -1,15 +1,15 @@
 package scalafx.scene.paint
 
+import javafx.scene.{image => jfxsi, paint => jfxsp}
+
 import scala.language.implicitConversions
-import javafx.scene.{image => jfxsi}
-import javafx.scene.{paint => jfxsp}
 import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.image.Image
 
 object PhongMaterial {
-  implicit def sfxPhongMaterial2jfx(c: PhongMaterial) = if (c != null) c.delegate else null
+  implicit def sfxPhongMaterial2jfx(c: PhongMaterial): jfxsp.PhongMaterial = if (c != null) c.delegate else null
 }
 
 /** The PhongMaterial class provides definitions of properties that represent a form of Phong shaded material. */

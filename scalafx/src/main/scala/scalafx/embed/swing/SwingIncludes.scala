@@ -26,9 +26,9 @@
  */
 package scalafx.embed.swing
 
-import scala.language.implicitConversions
-
 import javafx.embed.{swing => jfxes}
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.embed.swing.SwingIncludes]].

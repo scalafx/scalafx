@@ -26,10 +26,8 @@
  */
 package scalafx.scene.effect
 
-import org.scalatest.Matchers._
 import org.scalatest.FlatSpec
-import scalafx.Includes._
-import scalafx.beans.property.DoubleProperty
+import org.scalatest.Matchers._
 
 /**
  * Trait to test InputDelegate subclasses

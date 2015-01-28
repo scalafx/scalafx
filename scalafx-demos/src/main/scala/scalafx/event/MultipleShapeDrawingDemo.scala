@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.event
 
 import scalafx.Includes._
@@ -32,11 +33,11 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.event.subscriptions.Subscription
 import scalafx.geometry.Point2D
 import scalafx.scene.Scene
-import scalafx.scene.control.{ToggleButton, ToolBar, ToggleGroup}
+import scalafx.scene.control.{ToggleButton, ToggleGroup, ToolBar}
 import scalafx.scene.input.MouseEvent
-import scalafx.scene.layout.{Pane, BorderPane}
+import scalafx.scene.layout.{BorderPane, Pane}
 import scalafx.scene.paint.Color
-import scalafx.scene.shape.{Ellipse, Line, Circle, Rectangle}
+import scalafx.scene.shape.{Circle, Ellipse, Line, Rectangle}
 
 /** Demo illustrating use of event handler subscription.
   *
@@ -96,7 +97,7 @@ object MultipleShapeDrawingDemo extends JFXApp {
   val drawingPane = new Pane {
     // For simplicity of the demo, just add all shapes to canvas, single instance of each type.
     // Initially, they have zero area so they will not be visible.
-    content ++= Seq(RectangleInteractor.rectangle, EllipseInteractor.ellipse, LineInteractor.line)
+    children ++= Seq(RectangleInteractor.rectangle, EllipseInteractor.ellipse, LineInteractor.line)
   }
 
   stage = new PrimaryStage {

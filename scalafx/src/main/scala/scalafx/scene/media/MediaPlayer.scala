@@ -26,24 +26,17 @@
  */
 package scalafx.scene.media
 
-import scala.language.implicitConversions
 import javafx.scene.{media => jfxsm}
-import javafx.{event => jfxe}
-import javafx.{util => jfxu}
+import javafx.{event => jfxe, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.IntegerProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.beans.property.ReadOnlyIntegerProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, IntegerProperty, ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyIntegerProperty, ReadOnlyObjectProperty}
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.util.Duration
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 object MediaPlayer {
-  implicit def sfxMediaPlayer2jfx(mp: MediaPlayer) = if (mp != null) mp.delegate else null
+  implicit def sfxMediaPlayer2jfx(mp: MediaPlayer): jfxsm.MediaPlayer = if (mp != null) mp.delegate else null
 
   object Status
     extends SFXEnumDelegateCompanion[jfxsm.MediaPlayer.Status, Status] {

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,18 +26,14 @@
  */
 package scalafx.scene.control
 
+import java.{util => ju}
+import javafx.scene.{control => jfxsc}
+import javafx.{scene => jfxs}
+
 import scala.language.implicitConversions
 import scala.math.Ordering
-
-import javafx.{scene => jfxs}
-import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty, StringProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
@@ -47,7 +43,7 @@ import scalafx.scene.Node.sfxNode2jfx
 import scalafx.scene.control.ContextMenu._
 
 object TableColumnBase {
-  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]) = if (tc != null) tc.delegate else null
+  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]): jfxsc.TableColumnBase[S, T] = if (tc != null) tc.delegate else null
 
   /**
    * By default all columns will use this comparator to perform sorting.
@@ -71,9 +67,9 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
   /**
    * Comparator function used when sorting this TableColumnBase.
    */
-  def comparator: ObjectProperty[Ordering[T]] = ObjectProperty(Ordering.comparatorToOrdering(delegate.comparatorProperty.getValue))
+  def comparator: ObjectProperty[ju.Comparator[T]] = delegate.comparatorProperty
   def comparator_=(v: Ordering[T]) {
-    comparator() = v
+    ObjectProperty.fillProperty(delegate.comparatorProperty, v)
   }
 
   /**

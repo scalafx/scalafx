@@ -26,13 +26,14 @@
  */
 package scalafx.beans.property
 
-import scala.language.implicitConversions
 import javafx.beans.{property => jfxbp}
+
+import scala.language.implicitConversions
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
 
 object ReadOnlyProperty {
-  implicit def sfxReadOnlyProperty2jfx[T, J](rop: ReadOnlyProperty[T, J]) = if (rop != null) rop.delegate else null
+  implicit def sfxReadOnlyProperty2jfx[T, J](rop: ReadOnlyProperty[T, J]): jfxbp.ReadOnlyProperty[J] = if (rop != null) rop.delegate else null
 }
 
 /**

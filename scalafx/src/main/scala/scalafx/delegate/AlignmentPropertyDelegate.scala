@@ -26,7 +26,7 @@
  */
 package scalafx.delegate
 
-import javafx.beans.{property => jfxbp, binding => jfxbb}
+import javafx.beans.{binding => jfxbb, property => jfxbp}
 import javafx.{geometry => jfxg}
 
 trait AlignmentPropertyDelegate extends SFXDelegate[jfxbp.ReadOnlyObjectProperty[_]] {

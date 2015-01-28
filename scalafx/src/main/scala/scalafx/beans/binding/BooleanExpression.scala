@@ -26,12 +26,15 @@
  */
 package scalafx.beans.binding
 
-import scala.language.implicitConversions
-import javafx.beans.{binding => jfxbb}
+
 import javafx.beans.value.ObservableBooleanValue
+import javafx.beans.{binding => jfxbb}
+
+import scala.language.implicitConversions
 
 object BooleanExpression {
-  implicit def sfxBooleanExpression2jfx(be: BooleanExpression) = if (be != null) be.delegate else null
+  implicit def sfxBooleanExpression2jfx(be: BooleanExpression): jfxbb.BooleanExpression =
+    if (be != null) be.delegate else null
 }
 
 class BooleanExpression(val delegate: jfxbb.BooleanExpression) {

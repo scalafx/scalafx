@@ -26,16 +26,16 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
-import scalafx.collections._
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.collections._
 import scalafx.delegate.SFXDelegate
-import collection.JavaConversions._
 
 object ToggleGroup {
-  implicit def sfxToggleGroup2jfx(v: ToggleGroup) = if (v != null) v.delegate else null
+  implicit def sfxToggleGroup2jfx(v: ToggleGroup): jfxsc.ToggleGroup = if (v != null) v.delegate else null
 }
 
 /**

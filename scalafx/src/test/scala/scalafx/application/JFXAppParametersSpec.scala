@@ -26,18 +26,17 @@
  */
 package scalafx.application
 
+import javafx.{application => jfxa}
+
+import com.sun.javafx.{application => csjfxa}
 import org.junit.runner.RunWith
 import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
-import com.sun.javafx.{ application => csjfxa }
-import javafx.application.Application.Parameters
-import javafx.{ application => jfxa }
+
 import scala.collection.JavaConversions._
 import scalafx.Includes.jfxParameters2sfx
 import scalafx.application.JFXApp.Parameters.sfxParameters2jfx
-import scalafx.application.JFXApp.Parameters
 import scalafx.testutil.SimpleSFXDelegateSpec
-import com.sun.javafx.application.ParametersImpl
 
 /**
  * JFXApp.Parameters Spec tests.

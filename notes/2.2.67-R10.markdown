@@ -1,0 +1,10 @@
+Tested with JavaFX 2.2.67. Mostly bug fixes and API style improvements:
+
+* Partially resolved issue #75: Use Scala naming convention for constants.
+* Bug fixes:
+  - Issue #144: Add type parameter to default constructor argument in `scalafx.scene.control.TableRow` constructor
+  - Issue #145: Fix assignment of `TableView`'s `columnResizePolicy` and `rowFactory`
+  - Issue #147: `LongProperty` should be initialized with a Long value (instead of `Int`).
+  - Issue #150: `apply()` methods in `RadialGradient` companion object should have return type `RadialGradient`, not `Unit`.
+  - Issue #153:  Implicit conversions SFX to/from JFX should allow `null` arguments
+

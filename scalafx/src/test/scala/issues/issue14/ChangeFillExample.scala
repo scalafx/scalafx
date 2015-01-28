@@ -32,7 +32,7 @@ import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.ObjectProperty
 import scalafx.event.ActionEvent
-import scalafx.geometry.{Pos, Insets}
+import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
 import scalafx.scene.layout.{BorderPane, HBox}
@@ -76,7 +76,7 @@ object ChangeFillExample extends JFXApp {
         bottom = new HBox {
           padding = Insets(10)
           alignmentInParent = Pos.Center
-          content = new Button {
+          children = new Button {
             text = "Change Fill"
             onAction = (ae: ActionEvent) => fillPaint() = if (Light == fillPaint()) Dark else Light
           }

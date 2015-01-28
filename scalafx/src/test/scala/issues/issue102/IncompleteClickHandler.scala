@@ -31,8 +31,8 @@ import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
-import scalafx.scene.control.{Label, Button}
-import scalafx.scene.layout.{VBox, StackPane}
+import scalafx.scene.control.{Button, Label}
+import scalafx.scene.layout.{StackPane, VBox}
 
 
 /** Illustrated [https://code.google.com/p/scalafx/issues/detail?id=102 Issue 102]
@@ -74,9 +74,9 @@ object IncompleteClickHandler extends JFXApp {
     scene = new Scene {
       content = new StackPane {
         padding = Insets(20)
-        content = new VBox {
+        children = new VBox {
           spacing = 10
-          content = Seq(
+          children = Seq(
             new Label("If Issue 102 is not fixed, some buttons below may not respond correctly."),
             new Button {
               text = "Button 1: Buggy event handler: should print two messages, but prints one."

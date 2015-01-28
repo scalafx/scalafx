@@ -27,9 +27,10 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
-/** Wrapper for [[javafx.scene.layout.BackgroundRepeat]] */
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BackgroundRepeat.html javafx.scene.layout.BackgroundRepeat]] */
 object BackgroundRepeat extends SFXEnumDelegateCompanion[jfxsl.BackgroundRepeat, BackgroundRepeat] {
 
   /**  The image is placed once and not repeated.     */

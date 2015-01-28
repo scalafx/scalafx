@@ -26,15 +26,17 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
-import scalafx.Includes._
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object ProgressBar {
-  implicit def sfxProgressBar2jfx(v: ProgressBar) = if (v != null) v.delegate else null
+  implicit def sfxProgressBar2jfx(v: ProgressBar): jfxsc.ProgressBar = if (v != null) v.delegate else null
 }
 
-class ProgressBar(override val delegate: jfxsc.ProgressBar = new jfxsc.ProgressBar) extends ProgressIndicator(delegate) with SFXDelegate[jfxsc.ProgressBar] {
+class ProgressBar(override val delegate: jfxsc.ProgressBar = new jfxsc.ProgressBar)
+  extends ProgressIndicator(delegate)
+  with SFXDelegate[jfxsc.ProgressBar] {
 
 }

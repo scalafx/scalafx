@@ -38,7 +38,7 @@ import scalafx.scene.input.KeyCombination
 import scalafx.stage.Window.sfxWindow2jfx
 
 object Stage {
-  implicit def sfxStage2jfx(v: Stage) = if (v != null) v.delegate else null
+  implicit def sfxStage2jfx(v: Stage): jfxs.Stage = if (v != null) v.delegate else null
 }
 
 /**

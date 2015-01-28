@@ -26,9 +26,10 @@
  */
 package scalafx.animation
 
-import scala.language.implicitConversions
-import javafx.{ animation => jfxa }
 import javafx.util.Duration
+import javafx.{animation => jfxa}
+
+import scala.language.implicitConversions
 
 /**
  * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Interpolator.html $INT]].

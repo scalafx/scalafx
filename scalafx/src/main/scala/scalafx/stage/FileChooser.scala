@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,24 +24,25 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.stage
 
-import scala.language.implicitConversions
 import java.io.File
 import javafx.{stage => jfxs}
+
 import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.stage.FileChooser.ExtensionFilter
 
 
 object FileChooser {
-  implicit def sfxFileChooser2jfx(fc: FileChooser) = if (fc != null) fc.delegate else null
+  implicit def sfxFileChooser2jfx(fc: FileChooser): jfxs.FileChooser = if (fc != null) fc.delegate else null
 
   object ExtensionFilter {
-    implicit def sfxExtensionFilter2jfx(ef: ExtensionFilter) = if (ef != null) ef.delegate else null
+    implicit def sfxExtensionFilter2jfx(ef: ExtensionFilter): jfxs.FileChooser.ExtensionFilter = if (ef != null) ef.delegate else null
   }
 
   class ExtensionFilter(override val delegate: jfxs.FileChooser.ExtensionFilter) extends SFXDelegate[jfxs.FileChooser.ExtensionFilter] {
@@ -75,6 +76,26 @@ object FileChooser {
 
 }
 
+/**
+ * Provides support for standard platform file dialogs. These dialogs have look and feel of the platform UI components which is independent of JavaFX.
+ *
+ * Example:
+ * {{{
+ * val fileChooser = new FileChooser {
+ *  title = "Open Resource File"
+ *  extensionFilters ++= Seq(
+ *    new ExtensionFilter("Text Files", "*.txt"),
+ *    new ExtensionFilter("Image Files", Seq("*.png", "*.jpg", "*.gif")),
+ *    new ExtensionFilter("Audio Files", Seq("*.wav", "*.mp3", "*.aac")),
+ *    new ExtensionFilter("All Files", "*.*")
+ *  )
+ * }
+ * val selectedFile = fileChooser.showOpenDialog(stage)
+ * if (selectedFile != null) {
+ *  stage.display(selectedFile);
+ * }
+ * }}}
+ */
 class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser)
   extends SFXDelegate[jfxs.FileChooser] {
 
@@ -114,16 +135,25 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
 
   /**
    * Shows a new file open dialog.
+   *
+   * @return the selected file or null if no file has been selected
    */
   def showOpenDialog(ownerWindow: Window): File = delegate.showOpenDialog(ownerWindow)
 
   /**
    * Shows a new file open dialog in which multiple files can be selected.
+   *
+   * @return the selected files or null if no file has been selected
    */
-  def showOpenMultipleDialog(ownerWindow: Window): Seq[File] = delegate.showOpenMultipleDialog(ownerWindow)
+  def showOpenMultipleDialog(ownerWindow: Window): Seq[File] = {
+    val selection = delegate.showOpenMultipleDialog(ownerWindow)
+    if (selection != null) selection else null.asInstanceOf[Seq[File]]
+  }
 
   /**
    * Shows a new file save dialog.
+   *
+   * @return the selected file or null if no file has been selected
    */
   def showSaveDialog(ownerWindow: Window): File = delegate.showSaveDialog(ownerWindow)
 

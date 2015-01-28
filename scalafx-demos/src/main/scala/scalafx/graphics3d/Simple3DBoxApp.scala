@@ -30,10 +30,10 @@ import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene._
-import scalafx.scene.transform.Transform._
-import scalafx.scene.transform.{Translate, Rotate}
 import scalafx.scene.paint.{Color, PhongMaterial}
 import scalafx.scene.shape.{Box, DrawMode}
+import scalafx.scene.transform.Transform._
+import scalafx.scene.transform.{Rotate, Translate}
 
 /** Demo of a triangular frame of a 3D box, originally based on example in Ensemble 8. */
 object Simple3DBoxApp extends JFXApp {

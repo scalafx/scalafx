@@ -1,0 +1,26 @@
+Tested with JavaFX 8.0.20. Over 20 new wrappers, changes needed to support JavaFX 8.0 u20 (in some rare situations u20 may break existing code), bug fixes mostly merged from ScalaFX 2 branch:
+
+* Merge bug fixes and style improvements from ScalaFX 2.2.67-R10
+* Bug fixes:
+    - There were some errors in test implementations.
+    - Some wrappers were marked `final`.
+* New wrappers:
+    - WebErrorEvent
+    - SFXPanel, SwingFXUtils, SwingNode
+    - StyleConverter, StyleOrigin, Stylable
+    - WeakEventHandler
+    - ResizeFeatureBase
+    - TableFocusModel
+    - ScrollToEvent
+    - TablePositionBase. TableSelectionModel, TreeTableRow, SortEvent, TreeTableCell, TreeSortMode, TreeTablePosition
+    - CheckBoxTreeTableCell, ChoiceBoxTreeTableCell, ComboBoxTreeTableCell and TextFieldTreeTableCell.
+* Add missing methods and constants in: HTMLEditor, WebEngine, WebView, PopupControl.
+* Issue #155: Upgrade JavaFX support to v.8.0_u20:
+    - Remove methods from SwingFXUtils
+    - Add new Stage property `alwaysOnTop` and `userAgentStylesheet`
+    - Fixed test after some constructor convention changed.
+    - `PieChart.Data#node` is now a property rather than a value accessor.
+    - Add new methods:  `Node#contentBias()`
+    - Deprecate `TreeView#nodeLevel`, add add `TreeView#treeItemLevel`
+    - Add `KeyCombination#displayText`
+* ScalaDoc improvements

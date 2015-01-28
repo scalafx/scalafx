@@ -27,26 +27,26 @@
 
 package scalafx
 
-import animation.AnimationIncludes
-import beans.BeanIncludes
-import collections.CollectionIncludes
-import concurrent.ConcurrentIncludes
-import css.CssIncludes
-import event.EventIncludes
-import geometry.GeometryIncludes
-import application.ApplicationIncludes
-import scene.canvas.CanvasIncludes
-import scene.input.InputIncludes
-import scene.media.MediaIncludes
-import scene.transform.TransformIncludes
-import scene.web.WebIncludes
-import scene.SceneIncludes
-import stage.StageIncludes
-import util.converter.ConverterIncludes
-import util.UtilIncludes
+import scalafx.animation.AnimationIncludes
+import scalafx.application.ApplicationIncludes
+import scalafx.beans.BeanIncludes
+import scalafx.collections.CollectionIncludes
+import scalafx.concurrent.ConcurrentIncludes
+import scalafx.css.CssIncludes
 import scalafx.delegate.DelegateIncludes
-import scalafx.print.PrintIncludes
 import scalafx.embed.swing.SwingIncludes
+import scalafx.event.EventIncludes
+import scalafx.geometry.GeometryIncludes
+import scalafx.print.PrintIncludes
+import scalafx.scene.SceneIncludes
+import scalafx.scene.canvas.CanvasIncludes
+import scalafx.scene.input.InputIncludes
+import scalafx.scene.media.MediaIncludes
+import scalafx.scene.transform.TransformIncludes
+import scalafx.scene.web.WebIncludes
+import scalafx.stage.StageIncludes
+import scalafx.util.UtilIncludes
+import scalafx.util.converter.ConverterIncludes
 
 /**
  * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
@@ -60,16 +60,16 @@ object Includes extends Includes
 trait Includes
   extends AnimationIncludes
   with DelegateIncludes
-  with CollectionIncludes 
-  with EventIncludes 
-  with SceneIncludes 
-  with BeanIncludes 
-  with UtilIncludes 
-  with GeometryIncludes 
-  with TransformIncludes 
-  with InputIncludes 
-  with StageIncludes 
-  with WebIncludes 
+  with CollectionIncludes
+  with EventIncludes
+  with SceneIncludes
+  with BeanIncludes
+  with UtilIncludes
+  with GeometryIncludes
+  with TransformIncludes
+  with InputIncludes
+  with StageIncludes
+  with WebIncludes
   with MediaIncludes
   with ConverterIncludes
   with ConcurrentIncludes

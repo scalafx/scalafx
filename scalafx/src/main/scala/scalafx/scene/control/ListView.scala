@@ -26,25 +26,23 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe}
-import javafx.{geometry => jfxg}
-import javafx.{scene => jfxs}
-import javafx.{ util => jfxu }
+import javafx.{event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.{DoubleProperty, BooleanProperty, ObjectProperty, ReadOnlyIntegerProperty}
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyIntegerProperty}
 import scalafx.collections.ObservableBuffer
+import scalafx.delegate.SFXDelegate
 import scalafx.event.Event
 import scalafx.geometry.Orientation
-import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 
 object ListView {
-  implicit def sfxListView2jfx[T](l: ListView[T]) = if (l != null) l.delegate else null
+  implicit def sfxListView2jfx[T](l: ListView[T]): jfxsc.ListView[T] = if (l != null) l.delegate else null
 
   object EditEvent {
-    implicit def sfxEditEvent2jfx[T](e: EditEvent[T]) = if (e != null) e.delegate else null
+    implicit def sfxEditEvent2jfx[T](e: EditEvent[T]): jfxsc.ListView.EditEvent[T] = if (e != null) e.delegate else null
   }
 
   class EditEvent[T](override val delegate: jfxsc.ListView.EditEvent[T])

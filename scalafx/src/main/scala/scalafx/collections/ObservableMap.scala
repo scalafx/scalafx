@@ -26,14 +26,13 @@
  */
 package scalafx.collections
 
-import scala.language.implicitConversions
-import scala.collection.JavaConversions._
-import scala.collection.generic.MutableMapFactory
-import scala.collection.mutable.Builder
-import scala.collection.mutable.Map
-import scala.collection.mutable.MapLike
 import java.{util => ju}
 import javafx.{collections => jfxc}
+
+import scala.collection.JavaConversions._
+import scala.collection.generic.MutableMapFactory
+import scala.collection.mutable.{Builder, Map, MapLike}
+import scala.language.implicitConversions
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 
@@ -50,7 +49,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    * @param om ScalaFX's $OM.
    * @return JavaFX's $OM inside parameter.
    */
-  implicit def sfxObservableMap2sfxObservableMap[K, V](om: ObservableMap[K, V]) = if (om != null) om.delegate else null
+  implicit def sfxObservableMap2sfxObservableMap[K, V](om: ObservableMap[K, V]): jfxc.ObservableMap[K, V] = if (om != null) om.delegate else null
 
   // CHANGING INDICATORS - BEGIN
 
@@ -227,7 +226,7 @@ trait ObservableMap[K, V]
    */
   def get(key: K): Option[V] = if (delegate.containsKey(key)) Option(delegate.get(key)) else None
 
-  import ObservableMap._
+  import scalafx.collections.ObservableMap._
 
   /**
    * Add a listener function to $MAP's changes. This function '''will handle''' this map's modifications data.

@@ -26,14 +26,15 @@
  */
 package scalafx.scene.effect
 
-import scala.language.implicitConversions
 import javafx.scene.{effect => jfxse}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Reflection {
-  implicit def sfxReflection2jfx(r: Reflection) = if (r != null) r.delegate else null
+  implicit def sfxReflection2jfx(r: Reflection): jfxse.Reflection = if (r != null) r.delegate else null
 }
 
 class Reflection(override val delegate: jfxse.Reflection = new jfxse.Reflection)

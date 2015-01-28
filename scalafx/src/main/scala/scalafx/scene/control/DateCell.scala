@@ -26,15 +26,14 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import java.time.LocalDate
-
 import javafx.scene.{control => jfxsc}
-import scalafx.Includes._
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object DateCell {
-  implicit def sfxDateCell2jfx(c: DateCell) = if (c != null) c.delegate else null
+  implicit def sfxDateCell2jfx(c: DateCell): jfxsc.DateCell = if (c != null) c.delegate else null
 }
 
 /**

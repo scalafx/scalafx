@@ -26,12 +26,13 @@
  */
 package scalafx.geometry
 
+import javafx.{geometry => jfxg}
+
 import scala.language.implicitConversions
-import javafx.{ geometry => jfxg }
 import scalafx.delegate.SFXDelegate
 
 object Point2D {
-  implicit def sfxPoint2D2jfx(p: Point2D) = if (p != null) p.delegate else null
+  implicit def sfxPoint2D2jfx(p: Point2D): jfxg.Point2D = if (p != null) p.delegate else null
 
   /**
    * Point or vector with both coordinates set to zero.

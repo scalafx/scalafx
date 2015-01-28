@@ -26,13 +26,13 @@
  */
 package scalafx.scene.shape
 
+import javafx.scene.{shape => jfxss}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-import javafx.scene.{ shape => jfxss }
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
-import scalafx.testutil.PositionDelegateSpec
+import scalafx.testutil.{PositionDelegateSpec, SimpleSFXDelegateSpec}
 
 /**
  * CubicCurveTo Spec tests.

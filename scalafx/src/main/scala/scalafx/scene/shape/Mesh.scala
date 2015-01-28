@@ -26,12 +26,13 @@
  */
 package scalafx.scene.shape
 
-import scala.language.implicitConversions
 import javafx.scene.{shape => jfxss}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Mesh {
-  implicit def sfxMesh2jfx(m: Mesh) = if (m != null) m.delegate else null
+  implicit def sfxMesh2jfx(m: Mesh): jfxss.Mesh = if (m != null) m.delegate else null
 }
 
 /** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/Mesh.html]]. */

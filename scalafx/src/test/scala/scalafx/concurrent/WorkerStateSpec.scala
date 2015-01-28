@@ -26,10 +26,12 @@
  */
 package scalafx.concurrent
 
-import javafx.{ concurrent => jfxc }
-import scalafx.Includes._
+import javafx.{concurrent => jfxc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.animation.Worker.State]]. */

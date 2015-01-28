@@ -26,11 +26,13 @@
  */
 package scalafx.event
 
-import org.junit.runner.RunWith
 import javafx.{event => jfxe}
+
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
-import org.scalatest.junit.JUnitRunner
 
 /** EventType[T] Spec tests. */
 @RunWith(classOf[JUnitRunner])

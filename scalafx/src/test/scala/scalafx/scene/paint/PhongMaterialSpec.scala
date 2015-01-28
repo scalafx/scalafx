@@ -26,11 +26,13 @@
  */
 package scalafx.scene.paint
 
-import javafx.scene.{ paint => jfxsp }
-import scalafx.Includes._
+import javafx.scene.{paint => jfxsp}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.{SimpleSFXDelegateSpec}
+
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Stop Spec tests.

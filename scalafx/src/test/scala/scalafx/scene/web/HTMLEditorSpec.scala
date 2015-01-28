@@ -27,8 +27,10 @@
 package scalafx.scene.web
 
 import javafx.scene.{web => jfxsw}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 

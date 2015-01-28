@@ -26,16 +26,17 @@
  */
 package scalafx.scene.input
 
-import scala.language.implicitConversions
-import javafx.{event => jfxe}
 import javafx.scene.{input => jfxsi}
+import javafx.{event => jfxe}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
-import scalafx.geometry.{Point3D, Point2D}
+import scalafx.geometry.{Point2D, Point3D}
+import scalafx.scene.Node
 
 object PickResult {
-  implicit def sfxPickResult2jfx(m: PickResult) = if (m != null) m.delegate else null
+  implicit def sfxPickResult2jfx(m: PickResult): jfxsi.PickResult = if (m != null) m.delegate else null
 
   /** An undefined face. This value is used for the intersected face if the picked node has no user-specified faces. */
   val FACE_UNDEFINED: Int = jfxsi.PickResult.FACE_UNDEFINED

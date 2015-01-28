@@ -26,12 +26,14 @@
  */
 package scalafx.scene.input
 
-import scala.language.implicitConversions
 import javafx.scene.{input => jfxsi}
+import javafx.{event => jfxe}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object InputMethodTextRun {
-  implicit def sfxInputMethodTextRun2jfx(imtr: InputMethodTextRun) = if (imtr != null) imtr.delegate else null
+  implicit def sfxInputMethodTextRun2jfx(imtr: InputMethodTextRun): jfxsi.InputMethodTextRun = if (imtr != null) imtr.delegate else null
 }
 
 class InputMethodTextRun(override val delegate: jfxsi.InputMethodTextRun)

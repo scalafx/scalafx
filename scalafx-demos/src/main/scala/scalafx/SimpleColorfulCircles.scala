@@ -37,14 +37,11 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.effect.BlendMode.Overlay
 import scalafx.scene.effect.BoxBlur
-import scalafx.scene.paint.Color.Black
-import scalafx.scene.paint.Color.White
+import scalafx.scene.paint.Color.{Black, White}
 import scalafx.scene.paint.CycleMethod.NoCycle
-import scalafx.scene.paint.LinearGradient
-import scalafx.scene.paint.Stops
-import scalafx.scene.shape.Circle
-import scalafx.scene.shape.Rectangle
+import scalafx.scene.paint.{LinearGradient, Stops}
 import scalafx.scene.shape.StrokeType.Outside
+import scalafx.scene.shape.{Circle, Rectangle}
 
 
 /**

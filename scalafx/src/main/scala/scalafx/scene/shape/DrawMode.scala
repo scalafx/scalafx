@@ -27,9 +27,10 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
+
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/** Wrapper for [[javafx.scene.shape.DrawMode]] */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/DrawMode.html javafx.scene.shape.DrawMode]] */
 object DrawMode extends SFXEnumDelegateCompanion[jfxss.DrawMode, DrawMode] {
 
   /**

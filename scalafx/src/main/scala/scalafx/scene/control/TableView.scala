@@ -26,17 +26,12 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
-
-import javafx.{event => jfxe}
-import javafx.{scene => jfxs}
 import javafx.scene.{control => jfxsc}
-import javafx.{util => jfxu}
+import javafx.{collections => jfxc, event => jfxe, scene => jfxs, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
@@ -59,14 +54,13 @@ import scalafx.scene.Node
  * @define TVFM TableViewFocusModel
  */
 object TableView {
-
   /**
    * Converts a ScalaFX $TV instance to its $JFX counterpart.
    *
    * @param tv ScalaFX $TV
    * @return $JFX $TV
    */
-  implicit def sfxTableView2jfx[S](tv: TableView[S]) = if (tv != null) tv.delegate else null
+  implicit def sfxTableView2jfx[S](tv: TableView[S]): jfxsc.TableView[S] = if (tv != null) tv.delegate else null
 
   /**
    * $OBJCOMPSTA$TV.$RF$OBJCOMPEND
@@ -79,8 +73,7 @@ object TableView {
      * @param rf ScalaFX ResizeFeatures
      * @return JavaFX ResizeFeatures
      */
-    implicit def sfxResizeFeatures2jfx[S](rf: ResizeFeatures[S]) = if (rf != null) rf.delegate else null
-
+    implicit def sfxResizeFeatures2jfx[S](rf: ResizeFeatures[S]): jfxsc.TableView.ResizeFeatures[S] = if (rf != null) rf.delegate else null
   }
 
   /**
@@ -124,7 +117,7 @@ object TableView {
      * @param tvsm ScalaFX TableViewSelectionModel
      * @return JavaFX TableViewSelectionModel
      */
-    implicit def sfxTableViewSelectionModel2jfx[S](tvsm: TableViewSelectionModel[S]) =
+    implicit def sfxTableViewSelectionModel2jfx[S](tvsm: TableViewSelectionModel[S]): jfxsc.TableView.TableViewSelectionModel[S] =
       if (tvsm != null) tvsm.delegate else null
 
   }
@@ -196,7 +189,7 @@ object TableView {
      * @param tvfm ScalaFX TableViewFocusModel
      * @return JavaFX TableViewFocusModel
      */
-    implicit def sfxTableViewFocusModel2jfx[S](tvfm: TableViewFocusModel[S]) =
+    implicit def sfxTableViewFocusModel2jfx[S](tvfm: TableViewFocusModel[S]): jfxsc.TableView.TableViewFocusModel[S] =
       if (tvfm != null) tvfm.delegate else null
 
   }

@@ -26,8 +26,8 @@
  */
 package scalafx
 
-import org.junit.runner.RunWith
 import org.junit.Assert._
+import org.junit.runner.RunWith
 import org.scalatest.WordSpec
 import org.scalatest.junit.JUnitRunner
 

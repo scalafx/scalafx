@@ -28,11 +28,13 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
+import scalafx.scene.shape.{StrokeLineCap, StrokeLineJoin, StrokeType}
 import scalafx.testutil.SimpleSFXDelegateSpec
-import scalafx.scene.shape.{StrokeType, StrokeLineJoin, StrokeLineCap}
 
 /**
   *

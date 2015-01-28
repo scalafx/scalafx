@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
-import scalafx.geometry.GeometryIncludes.jfxHPos2sfx
-import scalafx.geometry.GeometryIncludes.jfxVPos2sfx
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
-/** Wrapper for [[javafx.geometry.Pos]] */
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+import scalafx.geometry.GeometryIncludes.{jfxHPos2sfx, jfxVPos2sfx}
+
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Pos.html javafx.geometry.Pos]] */
 object Pos
   extends SFXEnumDelegateCompanion[jfxg.Pos, Pos] {
 

@@ -27,7 +27,8 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[scalafx.scene.control.OverrunStyle]] */
 object OverrunStyle extends SFXEnumDelegateCompanion[jfxsc.OverrunStyle, OverrunStyle] {

@@ -26,14 +26,11 @@
  */
 package scalafx.testutil
 
-import scalafx.Includes._
-import scalafx.geometry.Pos
-import scalafx.beans.property.ObjectProperty
+import org.scalatest.Matchers._
+
 import scalafx.delegate.AlignmentDelegate
 import scalafx.delegate.AlignmentDelegate._
-
-import org.scalatest.Matchers._
-import org.scalatest.FlatSpec
+import scalafx.geometry.Pos
 
 /**
  * Trait to test AlignmentDelegate subclasses

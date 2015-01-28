@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,11 @@
  */
 package scalafx.util
 
-import scala.language.implicitConversions
 import javafx.beans.{property => jfxbp}
+import javafx.util.Callback
 import javafx.{util => jfxu}
-import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 import scalafx.util.Duration.DurationHelper
 
 object UtilIncludes extends UtilIncludes
@@ -49,7 +50,7 @@ trait UtilIncludes {
    * @param c JavaFX Callback
    * @return A function would call Callback.
    */
-  implicit def jfxCallbackToFunction1[P, R](c: jfxu.Callback[P, R]) = (param: P) => c.call(param)
+  implicit def jfxCallbackToFunction1[P, R](c: jfxu.Callback[P, R]): (P) => R = (param: P) => c.call(param)
 
   /**
    * Converts a Function1 to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Callback.html `Callback`]].
@@ -59,7 +60,7 @@ trait UtilIncludes {
    * @param f ScalaFX Function
    * @return a JavaFX Callback that will call ScalaFX function.
    */
-  implicit def function12jfxCallback[P, R](f: (P) => R) = new jfxu.Callback[P, R] {
+  implicit def function12jfxCallback[P, R](f: (P) => R): Callback[P, R] = new jfxu.Callback[P, R] {
     def call(param: P) = f(param)
   }
 
@@ -71,7 +72,7 @@ trait UtilIncludes {
    * @param p JavaFX Pair
    * @return A Scala Tuple2 generated from Pair.
    */
-  implicit def jfxPair2Tuple2[K, V](p: jfxu.Pair[K, V]) = (p.getKey, p.getValue)
+  implicit def jfxPair2Tuple2[K, V](p: jfxu.Pair[K, V]): (K, V) = (p.getKey, p.getValue)
 
   /**
    * Convert a Scala Tuple2 to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Pair.html Pair]].
@@ -81,15 +82,15 @@ trait UtilIncludes {
    * @param t A Scala Tuple2
    * @return A JavaFX Pair generated from Scala Tuple2.
    */
-  implicit def tuple22jfxPair[K, V](t: (K, V)) = if (t != null) new jfxu.Pair[K, V](t._1, t._2) else null
+  implicit def tuple22jfxPair[K, V](t: (K, V)): jfxu.Pair[K, V] = if (t != null) new jfxu.Pair[K, V](t._1, t._2) else null
 
   /**
    * Converts a Double to a Duration.
    *
    * @param d Double to convert
-   * @return A [[scalafx.util.DurationHelper]] from where it is possible create a new [[scalafx.util.Duration]] instance.
+   * @return A [[scalafx.util.Duration.DurationHelper]] from where it is possible create a new [[scalafx.util.Duration]] instance.
    */
-  implicit def double2DurationHelper(d: Double) = new DurationHelper(d)
+  implicit def double2DurationHelper(d: Double): DurationHelper = new DurationHelper(d)
 
   /**
    * Converts a
@@ -99,7 +100,7 @@ trait UtilIncludes {
    * @param d JavaFX Duration
    * @return ScalaFX Duration
    */
-  implicit def jfxDuration2sfx(d: jfxu.Duration) = if (d != null) new Duration(d) else null
+  implicit def jfxDuration2sfx(d: jfxu.Duration): Duration = if (d != null) new Duration(d) else null
 
   /**
    * Converts a
@@ -110,7 +111,7 @@ trait UtilIncludes {
    * @param c JavaFX StringConverter
    * @return ScalaFX StringConverter
    */
-  implicit def jfxStringConverter2sfx[T](c: jfxu.StringConverter[T]) = new StringConverter[T] {
+  implicit def jfxStringConverter2sfx[T](c: jfxu.StringConverter[T]): StringConverter[T] = new StringConverter[T] {
     def fromString(string: String): T = c.fromString(string)
     def toString(t: T): String = c.toString(t)
   }

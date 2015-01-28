@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene
 
 import javafx.{scene => jfxs}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 
-
-/** Wrapper for [[javafx.scene.DepthTest]] */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/DepthTest.html javafx.scene.DepthTest]] */
 object DepthTest extends SFXEnumDelegateCompanion[jfxs.DepthTest, DepthTest] {
 
   val DISABLE = new DepthTest(jfxs.DepthTest.DISABLE)

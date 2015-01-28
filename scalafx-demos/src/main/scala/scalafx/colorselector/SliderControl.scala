@@ -24,25 +24,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.colorselector
 
-import colorselector.Max
-import colorselector.Min
-import colorselector.doubleToInt
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
 import scalafx.beans.property.DoubleProperty.sfxDoubleProperty2jfx
-import scalafx.beans.property.StringProperty
-import scalafx.scene.control.CheckBox
-import scalafx.scene.control.Label
-import scalafx.scene.control.Slider
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, StringProperty}
+import scalafx.scene.control.{CheckBox, Label, Slider}
 import scalafx.scene.input.ScrollEvent
-import scalafx.scene.layout.HBox
-import scalafx.scene.layout.Priority
+import scalafx.scene.layout.{HBox, Priority}
 import scalafx.scene.paint.Color
-import scalafx.scene.text.Font
-import scalafx.scene.text.FontWeight
+import scalafx.scene.text.{Font, FontWeight}
 
 /**
  * @author Rafael
@@ -107,7 +99,7 @@ class SliderControl(title: String) extends HBox {
   }
   lblValue.font = Font.font(lblValue.font().family, FontWeight.Bold, lblValue.font().size)
 
-  content = List(chbSelected, lblTitle, sldValue, lblValue)
+  children = List(chbSelected, lblTitle, sldValue, lblValue)
 
   padding = insets
 

@@ -40,7 +40,7 @@ import scalafx.scene.input.{Dragboard, Mnemonic, TransferMode}
 import scalafx.scene.paint.Paint
 
 object Scene {
-  implicit def sfxScene2jfx(v: Scene) = if (v != null) v.delegate else null
+  implicit def sfxScene2jfx(v: Scene): jfxs.Scene = if (v != null) v.delegate else null
 }
 
 /**

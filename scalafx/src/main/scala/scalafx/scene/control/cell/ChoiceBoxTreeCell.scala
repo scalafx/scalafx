@@ -26,15 +26,14 @@
  */
 package scalafx.scene.control.cell
 
+import javafx.scene.control.{cell => jfxscc}
+import javafx.{collections => jfxc, util => jfxu}
+
 import scala.language.implicitConversions
-import javafx.{ collections => jfxc }
-import javafx.scene.control.{ cell => jfxscc }
-import javafx.{ util => jfxu }
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
-import scalafx.scene.control.TreeCell
-import scalafx.scene.control.TreeView
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.control.{TreeCell, TreeView}
 import scalafx.util.StringConverter
 
 /**
@@ -57,7 +56,7 @@ object ChoiceBoxTreeCell {
    * @param cell ScalaFX $CBTC
    * @return JavaFX $CBTC
    */
-  implicit def sfxChoiceBoxTreeCell2jfx[T](cell: ChoiceBoxTreeCell[T]) = if (cell != null) cell.delegate else null
+  implicit def sfxChoiceBoxTreeCell2jfx[T](cell: ChoiceBoxTreeCell[T]): jfxscc.ChoiceBoxTreeCell[T] = if (cell != null) cell.delegate else null
 
   /**
    * $FTVINIT

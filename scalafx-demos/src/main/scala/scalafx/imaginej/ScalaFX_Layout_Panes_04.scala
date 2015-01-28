@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.imaginej
 
 //             ________                                __                   ________   __    __
@@ -41,16 +42,13 @@ package scalafx.imaginej
 
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.geometry.Insets
-import scalafx.geometry.Pos
+import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
-import scalafx.scene.layout.{StackPane, VBox, HBox, BorderPane}
+import scalafx.scene.layout.{BorderPane, HBox, StackPane, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-import scalafx.scene.text.Font
-import scalafx.scene.text.FontWeight
-import scalafx.scene.text.Text
+import scalafx.scene.text.{Font, FontWeight, Text}
 
 
 /**
@@ -91,13 +89,13 @@ object ScalaFX_Layout_Panes_04 extends JFXApp {
   }
   val stackPane = new StackPane {
     alignment = Pos.Center
-    content = List(questionRectangle, questionText)
+    children = List(questionRectangle, questionText)
   }
   val hBox = new HBox {
     spacing = 10
     padding = Insets(15, 12, 15, 12)
     style = "-fx-background-color: #336699"
-    content = List(
+    children = List(
       currentButton,
       projectedButton,
       new Rectangle {
@@ -127,7 +125,7 @@ object ScalaFX_Layout_Panes_04 extends JFXApp {
   val vBox = new VBox {
     spacing = 10
     padding = Insets(10, 10, 10, 10)
-    content = data
+    children = data
   }
 
   val rectangle = new Rectangle {
