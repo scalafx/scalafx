@@ -8,7 +8,7 @@ import scala.xml._
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val scalafxVersion = "2.2.76-R11"
+val scalafxVersion = "2.2.76-R12-SNAPSHOT"
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "SFX-2" else "v" + scalafxVersion
 
 // ScalaFX project
