@@ -73,11 +73,11 @@ List the individual tree of projects and their version number:
 
     sbt> show version
     [info] scalafx/*:version
-    [info] 	2.2.67-R11-SNAPSHOT
+    [info] 	2.2.76-R11
     [info] scalafx-demos/*:version
-    [info] 	2.2.67-R11-SNAPSHOT
+    [info] 	2.2.76-R11
     [info] scalafx-project/*:version
-    [info] 	2.2.67-R11-SNAPSHOT
+    [info] 	2.2.76-R11
     (Where `sbt>' represents the Scala SBT interactive command line prompt)
     
 
@@ -186,10 +186,10 @@ the moment. Here are the necessary commands:
     % mvn install:install-file -DartifactId=scalafx_2.9.3 \
     -DgroupId=org.scalafx \
     -Dpackaging=jar \
-    -DpomFile=scalafx_2.9.3-2.2.67-R11-SNAPSHOT.pom \
+    -DpomFile=scalafx_2.9.3-2.2.76-R11.pom \
     -Dfile=scalafx_2.9.3-2.2.67-R10-SNAPSHOT.jar \
     -Dversion=1.0-SNAPSHOT \
-    -Dsources=scalafx_2.9.3-2.2.67-R11-SNAPSHOT-sources.jar
+    -Dsources=scalafx_2.9.3-2.2.76-R11-sources.jar
 
 
 You will to repeat this for all the modules. Please note the embedded Scala
@@ -234,7 +234,7 @@ Cross Scala Versions is a feature of the Scala SBT to build against different
 versions of the Scala Libraries. This is enabled in the `project/build.scala'
 file with settings of `crossScalaVersions', which is set to something like this:
 
-    crossScalaVersions := Seq( "2.9.3", "2.10.4",  "2.11.2"),
+    crossScalaVersions := Seq( "2.10.4",  "2.11.5"),
 
 
 You can switch between different Scala build version in interactive mode of
@@ -251,16 +251,16 @@ Now show the current value for `scala-version', with the command:
 
     sbt> show scala-version
     [info] scalafx/*:scala-version
-    [info] 	2.9.3
+    [info] 	2.10.4
     [info] scalafx-demos/*:scala-version
-    [info] 	2.9.3
+    [info] 	2.10.4
     [info] scalafx-project/*:scala-version
-    [info] 	2.9.3
+    [info] 	2.10.4
     
 
-Now switch to Scala 2.10.3 with the following command:
+Now switch to Scala 2.11.5 with the following command:
 
-     sbt> ++ 2.10.3
+     sbt> ++ 2.11.5
 
 
 And then build the software from a clean state for Scala 2.10.3 with the
@@ -271,9 +271,9 @@ following commands:
      sbt> scalafx-demos/run
 
 
-You switch back to the original 2.9.3 build as well with the commands:
+You switch back to the original 2.10.4 build as well with the commands:
 
-     sbt> ++ 2.9.3
+     sbt> ++ 2.10.4
      sbt> scalafx-demos/run
 
 
@@ -281,11 +281,11 @@ Now, you should have both working 2.9.3 and 2.10.3 versions of ScalaFX. Exit
 Scala SBT check the `target' folder:
 
      % ls scalafx/target
-     resolution-cache/	   scala-2.10/	   scala-2.9.3/	  streams/
+     resolution-cache/	   scala-2.10/	   scala-2.11/	  streams/
      % ls scalafx/target/scala-2.10/
-     cache/	           scalafx_2.10-2.2.67-R11-SNAPSHOT.jar
-     % ls scalafx/target/scala-2.9.3/
-     cache/            scalafx_2.9.3-2.2.67-R11-SNAPSHOT.jar
+     cache/	           scalafx_2.10-2.2.76-R11.jar
+     % ls scalafx/target/scala-2.11/
+     cache/            scalafx_2.11-2.2.76-R11.jar
 
 
 And of course this feature of cross Scala versions scales to more compiler
