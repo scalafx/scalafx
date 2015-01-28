@@ -27,13 +27,14 @@
 package scalafx.scene.transform
 
 import javafx.scene.{transform => jfxst}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.PositionDelegate
+import scalafx.delegate.{PositionDelegate, SFXDelegate}
 
 object Translate {
-  implicit def sfxTranslate2jfx(v: Translate) = if (v != null) v.delegate else null
+  implicit def sfxTranslate2jfx(v: Translate): jfxst.Translate = if (v != null) v.delegate else null
 }
 
 /**

@@ -26,17 +26,16 @@
  */
 package scalafx.scene.image
 
-import java.nio.Buffer
-import java.nio.ByteBuffer
-import java.nio.IntBuffer
-
+import java.nio.{Buffer, ByteBuffer, IntBuffer}
 import javafx.scene.{image => jfxsi}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.scene.paint.Color
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.paint.Color
 
 object PixelReader {
-  implicit def sfxPixelReader2jfx(pr: PixelReader) = if (pr != null) pr.delegate else null
+  implicit def sfxPixelReader2jfx(pr: PixelReader): jfxsi.PixelReader = if (pr != null) pr.delegate else null
 }
 
 /**

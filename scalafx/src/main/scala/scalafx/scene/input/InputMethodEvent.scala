@@ -27,13 +27,15 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
-import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
+import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
 
 object InputMethodEvent {
-  implicit def sfxInputMethodEvent2jfx(ime: InputMethodEvent) = if (ime != null) ime.delegate else null
+  implicit def sfxInputMethodEvent2jfx(ime: InputMethodEvent): jfxsi.InputMethodEvent = if (ime != null) ime.delegate else null
 
   val InputMethodTextChanged: EventType[jfxsi.InputMethodEvent] = jfxsi.InputMethodEvent.INPUT_METHOD_TEXT_CHANGED
 }

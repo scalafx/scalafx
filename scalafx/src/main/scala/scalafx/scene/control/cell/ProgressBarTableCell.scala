@@ -27,10 +27,11 @@
 package scalafx.scene.control.cell
 
 import javafx.scene.control.{cell => jfxscc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
-import scalafx.scene.control.TableCell
-import scalafx.scene.control.TableColumn
+import scalafx.scene.control.{TableCell, TableColumn}
 
 /**
  * Companion Object for [[scalafx.scene.control.cell.ProgressBarTableCell]].
@@ -47,7 +48,7 @@ object ProgressBarTableCell {
    * @param cell ScalaFX $PBTC
    * @return JavaFX $PBTC
    */
-  implicit def sfxProgressBarTableCell2jfx[S](cell: ProgressBarTableCell[S]) = if (cell != null) cell.delegate else null
+  implicit def sfxProgressBarTableCell2jfx[S](cell: ProgressBarTableCell[S]): jfxscc.ProgressBarTableCell[S] = if (cell != null) cell.delegate else null
 
   /**
    * Provides a `ProgressBar` that allows easy visualisation of a Number value as it proceeds from 0.0 to 1.0.

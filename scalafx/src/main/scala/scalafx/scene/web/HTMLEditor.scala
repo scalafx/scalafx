@@ -27,12 +27,13 @@
 package scalafx.scene.web
 
 import javafx.scene.{web => jfxsw}
-import scalafx.Includes._
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.Control
 
 object HTMLEditor {
-  implicit def sfxHTMLEditor2jfx(he: HTMLEditor) = if (he != null) he.delegate else null
+  implicit def sfxHTMLEditor2jfx(he: HTMLEditor): jfxsw.HTMLEditor = if (he != null) he.delegate else null
 }
 
 class HTMLEditor(override val delegate: jfxsw.HTMLEditor = new jfxsw.HTMLEditor) extends Control(delegate) with SFXDelegate[jfxsw.HTMLEditor] {

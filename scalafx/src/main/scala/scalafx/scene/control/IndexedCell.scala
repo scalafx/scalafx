@@ -27,12 +27,14 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyIntegerProperty
 import scalafx.delegate.SFXDelegate
 
 object IndexedCell {
-  implicit def sfxIndexedCell2jfx[T](c: IndexedCell[T]) = if (c != null) c.delegate else null
+  implicit def sfxIndexedCell2jfx[T](c: IndexedCell[T]): jfxsc.IndexedCell[T] = if (c != null) c.delegate else null
 }
 
 class IndexedCell[T](override val delegate: jfxsc.IndexedCell[T] = new jfxsc.IndexedCell[T])

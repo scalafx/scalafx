@@ -43,7 +43,7 @@ object MenuButtonDemo extends JFXApp {
       content = new VBox {
         padding = Insets(10)
         spacing = 10
-        content = List(
+        children = List(
           new MenuButton("MenuButton 1") {
             items = List(
               new MenuItem("MenuItem A") {

@@ -26,16 +26,17 @@
  */
 package scalafx.scene.control
 
-import javafx.{scene => jfxs}
 import javafx.scene.{control => jfxsc}
+import javafx.{scene => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.scene.Node
+import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 
 object TreeCell {
-  implicit def sfxTreeCell2jfx[T](t: TreeCell[T]) = if (t != null) t.delegate else null
+  implicit def sfxTreeCell2jfx[T](t: TreeCell[T]): jfxsc.TreeCell[T] = if (t != null) t.delegate else null
 }
 
 /**

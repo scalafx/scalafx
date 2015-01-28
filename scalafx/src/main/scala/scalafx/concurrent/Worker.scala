@@ -27,13 +27,14 @@
 package scalafx.concurrent
 
 import javafx.{concurrent => jfxc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property._
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 object Worker {
-  implicit def sfxWorker2jfx[T](w: Worker[T]) = if (w != null) w.delegate else null
+  implicit def sfxWorker2jfx[T](w: Worker[T]): jfxc.Worker[T] = if (w != null) w.delegate else null
 
   object State
     extends SFXEnumDelegateCompanion[jfxc.Worker.State, State] {

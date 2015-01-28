@@ -26,17 +26,16 @@
  */
 package scalafx.scene.layout
 
-import javafx.{geometry => jfxg}
 import javafx.scene.{layout => jfxsl}
-import scalafx.Includes._
-import scalafx.geometry.Insets._
-import scalafx.geometry.Insets
-import scalafx.scene.Node._
-import scalafx.scene.Node
+import javafx.{geometry => jfxg}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
+import scalafx.scene.Node._
 
 object AnchorPane {
-  implicit def sfxAnchorPane2jfx(ap: AnchorPane) = if (ap != null) ap.delegate else null
+  implicit def sfxAnchorPane2jfx(ap: AnchorPane): jfxsl.AnchorPane = if (ap != null) ap.delegate else null
 
   /**
    * Removes all anchorpane constraints from the child node.

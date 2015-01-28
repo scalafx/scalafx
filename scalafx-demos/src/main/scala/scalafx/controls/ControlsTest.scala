@@ -29,7 +29,6 @@ package scalafx.controls
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout._
@@ -37,14 +36,14 @@ import scalafx.scene.layout._
 object ControlsTest extends JFXApp {
 
   val indicatorPane = new VBox {
-    content = List(new Label {
+    children = List(new Label {
       text = "LEFT"
 
     })
   }
 
   val controlsPane = new VBox {
-    content = List(new Label {
+    children = List(new Label {
       text = "RIGHT"
     })
   }
@@ -54,7 +53,7 @@ object ControlsTest extends JFXApp {
       text = "Label"
     }
     center = new StackPane {
-      content = List(new Button {
+      children = List(new Button {
         text = "Button"
       })
     }

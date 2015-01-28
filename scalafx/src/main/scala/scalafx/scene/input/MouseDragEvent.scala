@@ -27,12 +27,14 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
 
 object MouseDragEvent {
-  implicit def sfxMouseDragEvent2jfx(mde: MouseDragEvent) = if (mde != null) mde.delegate else null
+  implicit def sfxMouseDragEvent2jfx(mde: MouseDragEvent): jfxsi.MouseDragEvent = if (mde != null) mde.delegate else null
 
   /**
    * Common supertype for all mouse event types.

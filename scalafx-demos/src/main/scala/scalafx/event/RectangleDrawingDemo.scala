@@ -24,16 +24,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.event
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.geometry.{Pos, Point2D}
+import scalafx.geometry.{Point2D, Pos}
 import scalafx.scene.Scene
 import scalafx.scene.control.Label
 import scalafx.scene.input.MouseEvent
-import scalafx.scene.layout.{Pane, BorderPane}
+import scalafx.scene.layout.{BorderPane, Pane}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
@@ -72,7 +73,7 @@ object RectangleDrawingDemo extends JFXApp {
 
   val pane = new Pane {
     // Add rectangle that will be updated with user interactions
-    content += Updater.rectangle
+    children += Updater.rectangle
   }
 
   // Define handling of mouse events

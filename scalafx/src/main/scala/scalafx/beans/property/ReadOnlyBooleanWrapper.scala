@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,14 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 
 object ReadOnlyBooleanWrapper {
-  implicit def sfxReadOnlyBooleanWrapper2jfx(w: ReadOnlyBooleanWrapper) = if (w != null) w.delegate else null
+  implicit def sfxReadOnlyBooleanWrapper2jfx(w: ReadOnlyBooleanWrapper): jfxbp.ReadOnlyBooleanWrapper = if (w != null) w.delegate else null
 
   /** Creates a new ReadOnlyBooleanWrapper instance.
     * @param value the initial value of the wrapped value
@@ -41,7 +43,7 @@ object ReadOnlyBooleanWrapper {
 }
 
 
-/** Wrapper for [[javafx.beans.property.ReadOnlyBooleanWrapper]] */
+/** Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/beans/property/ReadOnlyBooleanWrapper.html javafx.beans.property.ReadOnlyBooleanWrapper]] */
 class ReadOnlyBooleanWrapper(override val delegate: jfxbp.ReadOnlyBooleanWrapper = new jfxbp.ReadOnlyBooleanWrapper())
   extends BooleanProperty(delegate)
   with SFXDelegate[jfxbp.ReadOnlyBooleanWrapper] {

@@ -26,11 +26,13 @@
  */
 package scalafx.beans
 
-import javafx.{ beans => jfxb }
-import javafx.beans.{ value => jfxbv }
-import binding.BindingIncludes
-import property.PropertyIncludes
-import value.ObservableValue
+import javafx.beans.{value => jfxbv}
+import javafx.{beans => jfxb}
+
+import scala.language.implicitConversions
+import scalafx.beans.binding.BindingIncludes
+import scalafx.beans.property.PropertyIncludes
+import scalafx.beans.value.ObservableValue
 
 object BeanIncludes extends BeanIncludes
 
@@ -56,7 +58,7 @@ trait LowerPriorityIncludes {
    * @param o JavaFX Observable
    * @return ScalaFX Observable
    */
-  implicit def jfxObservable2sfx(o: jfxb.Observable) = new Observable {
+  implicit def jfxObservable2sfx(o: jfxb.Observable): Observable = new Observable {
     override def delegate = o
   }
 
@@ -68,7 +70,7 @@ trait LowerPriorityIncludes {
    * @param o JavaFX ObservableValue
    * @return ScalaFX ObservableValue ''which Java Type and Scala Type are the same''. 
    */
-  implicit def jfxObservableValue2sfx[T](ov: jfxbv.ObservableValue[T]) = new ObservableValue[T, T] {
+  implicit def jfxObservableValue2sfx[T](ov: jfxbv.ObservableValue[T]): ObservableValue[T, T] = new ObservableValue[T, T] {
     override def delegate = ov
     override def value = delegate.getValue
   }

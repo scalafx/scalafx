@@ -27,14 +27,15 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import scalafx.collections._
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
+import scalafx.collections._
 import scalafx.delegate.SFXDelegate
-import collection.JavaConversions._
 
 object Accordion {
-  implicit def sfxAccordion2jfx(v: Accordion) = if (v != null) v.delegate else null
+  implicit def sfxAccordion2jfx(v: Accordion): jfxsc.Accordion = if (v != null) v.delegate else null
 }
 
 /**

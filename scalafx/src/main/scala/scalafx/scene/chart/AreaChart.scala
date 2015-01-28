@@ -27,11 +27,13 @@
 package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 object AreaChart {
-  implicit def sfxAreaChart2jfx[X, Y](v: AreaChart[X, Y]) = if (v != null) v.delegate else null
+  implicit def sfxAreaChart2jfx[X, Y](v: AreaChart[X, Y]): jfxsc.AreaChart[X, Y] = if (v != null) v.delegate else null
 
   def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y]) =
     new AreaChart[X, Y](new jfxsc.AreaChart[X, Y](xAxis, yAxis))

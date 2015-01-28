@@ -26,16 +26,15 @@
  */
 package scalafx.scene.image
 
-import java.nio.Buffer
-import java.nio.ByteBuffer
-import java.nio.IntBuffer
-import javafx.scene.{ image => jfxsi }
+import java.nio.{Buffer, ByteBuffer, IntBuffer}
+import javafx.scene.{image => jfxsi}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 object PixelFormat {
-  implicit def sfxPixelFormat2jfx[B <: Buffer](pf: PixelFormat[B]) = pf.delegate
+  implicit def sfxPixelFormat2jfx[B <: Buffer](pf: PixelFormat[B]): jfxsi.PixelFormat[B] = pf.delegate
 
   object Type 
     extends SFXEnumDelegateCompanion[jfxsi.PixelFormat.Type, Type] {

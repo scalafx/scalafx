@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,26 +26,24 @@
  */
 package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc}
+import javafx.{event => jfxe, scene => jfxs}
+
 import scala.collection.JavaConversions._
 import scala.collection.mutable.Buffer
-import javafx.{event => jfxe}
-import javafx.{scene => jfxs}
-import javafx.scene.{control => jfxsc}
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyBooleanProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyBooleanProperty, ReadOnlyObjectProperty}
 import scalafx.collections.ObservableBuffer
-import scalafx.event.{EventType, EventHandlerDelegate, Event}
-import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
+import scalafx.event.{Event, EventHandlerDelegate, EventType}
+import scalafx.scene.Node
 
 object TreeItem {
-  implicit def sfxTreeItemToJfx[T](v: TreeItem[T]) = if (v != null) v.delegate else null
+  implicit def sfxTreeItemToJfx[T](v: TreeItem[T]): jfxsc.TreeItem[T] = if (v != null) v.delegate else null
 
   object TreeModificationEvent {
-    implicit def sfxTreeModificationEvent2jfx[T](v: TreeModificationEvent[T]) = if (v != null) v.delegate else null
+    implicit def sfxTreeModificationEvent2jfx[T](v: TreeModificationEvent[T]): jfxsc.TreeItem.TreeModificationEvent[T] = if (v != null) v.delegate else null
   }
 
   class TreeModificationEvent[T](override val delegate: jfxsc.TreeItem.TreeModificationEvent[T])
@@ -192,7 +190,7 @@ object TreeItem {
 }
 
 /**
- * Wraps [[javafx.scene.control.TreeItem]] class.
+ * Wraps [[http://docs.oracle.com/javafx/2/api/javafx/scene/control/TreeItem.html javafx.scene.control.TreeItem]] class.
  */
 class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[T])
   extends EventHandlerDelegate

@@ -26,27 +26,27 @@
  */
 package scalafx.scene.chart
 
-import javafx.{geometry => jfxg}
 import javafx.scene.{chart => jfxsc, paint => jfxsp, text => jfxst}
+import javafx.{geometry => jfxg}
+
 import scala.collection.JavaConversions._
 import scala.collection.mutable.Buffer
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.binding._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.collections.ObservableBuffer
-import scalafx.geometry.Side
-import scalafx.scene.paint.Paint
-import scalafx.scene.layout.Region
-import scalafx.scene.text.Font
 import scalafx.delegate.SFXDelegate
+import scalafx.geometry.Side
+import scalafx.scene.layout.Region
+import scalafx.scene.paint.Paint
+import scalafx.scene.text.Font
 
 object Axis {
-  implicit def sfxAxis2jfx[T](v: Axis[T]) = if (v != null) v.delegate else null
+  implicit def sfxAxis2jfx[T](v: Axis[T]): jfxsc.Axis[T] = if (v != null) v.delegate else null
 
   object TickMark {
-    implicit def sfxTickMark2jfx[T](v: Axis.TickMark[T]) = if (v != null) v.delegate else null
+    implicit def sfxTickMark2jfx[T](v: Axis.TickMark[T]): jfxsc.Axis.TickMark[T] = if (v != null) v.delegate else null
   }
 
   class TickMark[T](override val delegate: jfxsc.Axis.TickMark[T] = new jfxsc.Axis.TickMark[T]())

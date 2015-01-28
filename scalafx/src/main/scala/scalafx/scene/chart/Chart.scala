@@ -26,18 +26,18 @@
  */
 package scalafx.scene.chart
 
-import javafx.{geometry => jfxg}
 import javafx.scene.{chart => jfxsc}
+import javafx.{geometry => jfxg}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{BooleanProperty, ObjectProperty, StringProperty}
+import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Side
 import scalafx.scene.layout.Region
-import scalafx.delegate.SFXDelegate
 
 object Chart {
-  implicit def sfxChart2jfx(v: Chart) = if (v != null) v.delegate else null
+  implicit def sfxChart2jfx(v: Chart): jfxsc.Chart = if (v != null) v.delegate else null
 }
 
 abstract class Chart(override val delegate: jfxsc.Chart) extends Region(delegate) with SFXDelegate[jfxsc.Chart] {

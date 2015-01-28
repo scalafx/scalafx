@@ -29,8 +29,9 @@ package issues.issue091
 
 import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.Matchers._
+import org.scalatest.junit.JUnitRunner
+
 import scalafx.scene.effect.Blend
 import scalafx.scene.shape.Rectangle
 import scalafx.testutil.RunOnApplicationThread

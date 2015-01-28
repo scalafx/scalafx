@@ -24,10 +24,11 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.controls
 
 import javafx.{geometry => jfxg}
-import scalafx.Includes._
+
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.collections.ObservableBuffer
@@ -43,7 +44,7 @@ object SeparatorDemo extends JFXApp {
   val separator = new Separator
 
   val pnlSeparator = new FlowPane {
-    content = List(new Button { text = "Button 1" }, separator, new Button { text = "Button 2" })
+    children = List(new Button {text = "Button 1"}, separator, new Button {text = "Button 2"})
     minHeight = 100
     prefHeight = 100
     minWidth = 100
@@ -56,7 +57,7 @@ object SeparatorDemo extends JFXApp {
     alignment = Pos.Center
     alignmentInParent = Pos.TopCenter
     hgrow = Priority.Always
-    content = List(new SeparatorControls(separator), new ControlControls(separator))
+    children = List(new SeparatorControls(separator), new ControlControls(separator))
   }
 
   val mainPane = new BorderPane {

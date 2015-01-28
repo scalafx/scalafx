@@ -27,12 +27,14 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object HLineTo {
-  implicit def sfxHLineTo2jfx(v: HLineTo) = if (v != null) v.delegate else null
+  implicit def sfxHLineTo2jfx(v: HLineTo): jfxss.HLineTo = if (v != null) v.delegate else null
 
   def apply(x: Double) = new HLineTo(new jfxss.HLineTo(x))
 }

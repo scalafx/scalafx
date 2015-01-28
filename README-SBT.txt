@@ -73,11 +73,11 @@ List the individual tree of projects and their version number:
 
     sbt> show version
     [info] scalafx/*:version
-    [info] 	2.2.67-R10-SNAPSHOT
+    [info] 	2.2.67-R11-SNAPSHOT
     [info] scalafx-demos/*:version
-    [info] 	2.2.67-R10-SNAPSHOT
+    [info] 	2.2.67-R11-SNAPSHOT
     [info] scalafx-project/*:version
-    [info] 	2.2.67-R10-SNAPSHOT
+    [info] 	2.2.67-R11-SNAPSHOT
     (Where `sbt>' represents the Scala SBT interactive command line prompt)
     
 
@@ -186,10 +186,10 @@ the moment. Here are the necessary commands:
     % mvn install:install-file -DartifactId=scalafx_2.9.3 \
     -DgroupId=org.scalafx \
     -Dpackaging=jar \
-    -DpomFile=scalafx_2.9.3-2.2.67-R10-SNAPSHOT.pom \
+    -DpomFile=scalafx_2.9.3-2.2.67-R11-SNAPSHOT.pom \
     -Dfile=scalafx_2.9.3-2.2.67-R10-SNAPSHOT.jar \
     -Dversion=1.0-SNAPSHOT \
-    -Dsources=scalafx_2.9.3-2.2.67-R10-SNAPSHOT-sources.jar
+    -Dsources=scalafx_2.9.3-2.2.67-R11-SNAPSHOT-sources.jar
 
 
 You will to repeat this for all the modules. Please note the embedded Scala
@@ -283,9 +283,9 @@ Scala SBT check the `target' folder:
      % ls scalafx/target
      resolution-cache/	   scala-2.10/	   scala-2.9.3/	  streams/
      % ls scalafx/target/scala-2.10/
-     cache/	           scalafx_2.10-2.2.67-SNAPSHOT.jar
+     cache/	           scalafx_2.10-2.2.67-R11-SNAPSHOT.jar
      % ls scalafx/target/scala-2.9.3/
-     cache/            scalafx_2.9.3-2.2.67-SNAPSHOT.jar
+     cache/            scalafx_2.9.3-2.2.67-R11-SNAPSHOT.jar
 
 
 And of course this feature of cross Scala versions scales to more compiler

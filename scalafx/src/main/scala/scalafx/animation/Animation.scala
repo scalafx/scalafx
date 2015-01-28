@@ -27,16 +27,13 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa, event => jfxe, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.IntegerProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.util.Duration.sfxDuration2jfx
-import scalafx.util.Duration
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, IntegerProperty, ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
 import scalafx.delegate._
+import scalafx.util.Duration
+import scalafx.util.Duration.sfxDuration2jfx
 
 /**
  * Defines Constants to be used for all [[scalafx.animation.Animation]]s object companions.
@@ -66,7 +63,7 @@ object Animation extends AnimationStatics {
    * @param v ScalaFX $AN
    * @return Delegated JavaFX $AN extracted from `v`.
    */
-  implicit def sfxAnimation2jfx(v: Animation) = if (v != null) v.delegate else null
+  implicit def sfxAnimation2jfx(v: Animation): jfxa.Animation = if (v != null) v.delegate else null
 
   /**
    * Companion Object for $ST, where its values are defined.

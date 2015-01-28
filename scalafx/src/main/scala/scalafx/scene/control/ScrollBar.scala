@@ -26,16 +26,17 @@
  */
 package scalafx.scene.control
 
-import javafx.{geometry => jfxg}
 import javafx.scene.{control => jfxsc}
+import javafx.{geometry => jfxg}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.geometry.Orientation
+import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.geometry.Orientation
 
 object ScrollBar {
-  implicit def sfxScrollBar2jfx(sc: ScrollBar) = if (sc != null) sc.delegate else null
+  implicit def sfxScrollBar2jfx(sc: ScrollBar): jfxsc.ScrollBar = if (sc != null) sc.delegate else null
 }
 
 /**

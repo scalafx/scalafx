@@ -27,12 +27,14 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
 
 object RotateEvent {
-  implicit def sfxRotateEvent2jfx(re: RotateEvent) = if (re != null) re.delegate else null
+  implicit def sfxRotateEvent2jfx(re: RotateEvent): jfxsi.RotateEvent = if (re != null) re.delegate else null
 
   /**
    * Common supertype for all rotate event types.

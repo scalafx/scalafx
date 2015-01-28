@@ -27,10 +27,12 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object SplitMenuButton {
-  implicit def sfxSplitMenuButton2jfx(smb: SplitMenuButton) = if (smb != null) smb.delegate else null
+  implicit def sfxSplitMenuButton2jfx(smb: SplitMenuButton): jfxsc.SplitMenuButton = if (smb != null) smb.delegate else null
 }
 
 /** Wrapper for `javafx.scene.control.SplitMenuButton`. */

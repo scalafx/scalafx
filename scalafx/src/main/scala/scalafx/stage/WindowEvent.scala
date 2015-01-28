@@ -27,12 +27,14 @@
 package scalafx.stage
 
 import javafx.{stage => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
-import scalafx.event.{EventType, Event}
+import scalafx.event.{Event, EventType}
 
 object WindowEvent {
-  implicit def sfxWindowEvent2jfx(v: WindowEvent) = if (v != null) v.delegate else null
+  implicit def sfxWindowEvent2jfx(v: WindowEvent): jfxs.WindowEvent = if (v != null) v.delegate else null
 
   /**
    * Common supertype for all window event types.

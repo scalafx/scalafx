@@ -26,11 +26,9 @@
  */
 package scalafx.testutil
 
-import org.scalatest.Matchers.be
-import org.scalatest.Matchers.convertToAnyShouldWrapper
 import org.scalatest.FlatSpec
+import org.scalatest.Matchers.{be, convertToAnyShouldWrapper}
 
-import scalafx.Includes.jfxDoubleProperty2sfx
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.PositionDelegate
 

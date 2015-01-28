@@ -24,21 +24,20 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.controls
 
-import javafx.scene.control.ContentDisplay
-import javafx.scene.control.OverrunStyle
+import javafx.scene.control.{ContentDisplay, OverrunStyle}
 import javafx.scene.text.TextAlignment
+
 import scalafx.Includes._
 import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.controls.controls._
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
 import scalafx.scene.control._
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.paint.Color
 
 object TooltipDemo extends JFXApp {
@@ -57,11 +56,11 @@ object TooltipDemo extends JFXApp {
     alignment = Pos.Center
     alignmentInParent = Pos.TopCenter
     hgrow = Priority.Always
-    content = List(new TooltipControls(myTooltip), new PopupControlControls(myTooltip))
+    children = List(new TooltipControls(myTooltip), new PopupControlControls(myTooltip))
   }
 
   val mainPane = new VBox {
-    content = List(btnTooltip, controlsPane)
+    children = List(btnTooltip, controlsPane)
   }
 
   stage = new JFXApp.PrimaryStage {

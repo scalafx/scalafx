@@ -27,11 +27,12 @@
 package scalafx.event
 
 import javafx.{event => jfxe}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
-import scalafx.event.EventIncludes._
 
 object EventType {
-  implicit def sfxEventType2jfx[T <: jfxe.Event](et: EventType[T]) = if (et != null) et.delegate else null
+  implicit def sfxEventType2jfx[T <: jfxe.Event](et: EventType[T]): jfxe.EventType[T] = if (et != null) et.delegate else null
 
   /**
    * The root event type. All other event types are either direct or indirect sub types of it.

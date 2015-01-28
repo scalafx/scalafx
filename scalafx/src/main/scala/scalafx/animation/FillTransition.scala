@@ -26,14 +26,16 @@
  */
 package scalafx.animation
 
-import javafx.{animation => jfxa, util => jfxu}
 import javafx.scene.{paint => jfxsp, shape => jfxss}
+import javafx.{animation => jfxa, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Shape
 import scalafx.util.Duration
-import scalafx.delegate.SFXDelegate
 
 /**
  * Companion Object for [[scalafx.animation.FadeTransition]].
@@ -49,7 +51,7 @@ object FillTransition extends AnimationStatics {
    * @param v ScalaFX $FT
    * @return Delegated JavaFX $FT extracted from `v`.
    */
-  implicit def sfxFillTransition2jfx(v: FillTransition) = if (v != null) v.delegate else null
+  implicit def sfxFillTransition2jfx(v: FillTransition): jfxa.FillTransition = if (v != null) v.delegate else null
 
 }
 

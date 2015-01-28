@@ -27,10 +27,12 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object BoundingBox {
-  implicit def sfxBoundingBox2jfx(b: BoundingBox) = if (b != null) b.delegate else null
+  implicit def sfxBoundingBox2jfx(b: BoundingBox): jfxg.BoundingBox = if (b != null) b.delegate else null
 
 }
 

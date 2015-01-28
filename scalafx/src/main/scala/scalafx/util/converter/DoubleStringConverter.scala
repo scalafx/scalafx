@@ -28,8 +28,11 @@ package scalafx.util.converter
 
 import javafx.util.{converter => jfxuc}
 
+import scala.language.implicitConversions
+
 object DoubleStringConverter {
-  implicit def sfxDoubleStringConverter2jfx(c: DoubleStringConverter) = if (c != null) c.delegate else null
+  implicit def sfxDoubleStringConverter2jfx(c: DoubleStringConverter): jfxuc.DoubleStringConverter =
+    if (c != null) c.delegate else null
 }
 
 class DoubleStringConverter(delegate: jfxuc.DoubleStringConverter = new jfxuc.DoubleStringConverter)

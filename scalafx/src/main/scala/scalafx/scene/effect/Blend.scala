@@ -26,14 +26,15 @@
  */
 package scalafx.scene.effect
 
-import scalafx.Includes._
 import javafx.scene.{effect => jfxse}
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+
+import scala.language.implicitConversions
+import scalafx.Includes._
+import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 
 object Blend {
-  implicit def sfxBlend2jfx(b: Blend) = if (b != null) b.delegate else null
+  implicit def sfxBlend2jfx(b: Blend): jfxse.Blend = if (b != null) b.delegate else null
 }
 
 class Blend(override val delegate: jfxse.Blend = new jfxse.Blend) extends Effect(delegate) with SFXDelegate[jfxse.Blend] {

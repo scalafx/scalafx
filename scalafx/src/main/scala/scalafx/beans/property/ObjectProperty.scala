@@ -26,7 +26,9 @@
  */
 package scalafx.beans.property
 
-import javafx.beans.{ property => jfxbp }
+import javafx.beans.{property => jfxbp}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 /**
@@ -46,7 +48,7 @@ object ObjectProperty {
    * @param op ScalaFX's $OP 
    * @return JavaFX's $OP, extracted from op's delegate.
    */
-  implicit def sfxObjectProperty2jfx[T <: Any](op: ObjectProperty[T]) = op.delegate
+  implicit def sfxObjectProperty2jfx[T <: Any](op: ObjectProperty[T]): jfxbp.ObjectProperty[T] = op.delegate
 
   /**
    * Creates a new $OP.

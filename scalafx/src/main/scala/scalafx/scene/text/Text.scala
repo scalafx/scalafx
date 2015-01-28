@@ -28,19 +28,17 @@ package scalafx.scene.text
 
 import javafx.geometry.VPos
 import javafx.scene.{text => jfxst}
+import javafx.{scene => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyDoubleProperty, StringProperty}
+import scalafx.delegate.{PositionDelegate, SFXDelegate}
 import scalafx.scene.shape.Shape
 import scalafx.scene.text.Font.sfxFont2jfx
-import scalafx.delegate.PositionDelegate
-import scalafx.delegate.SFXDelegate
 
 object Text {
-  implicit def sfxText2jfx(v: Text) = if (v != null) v.delegate else null
+  implicit def sfxText2jfx(v: Text): jfxs.text.Text = if (v != null) v.delegate else null
 
 }
 

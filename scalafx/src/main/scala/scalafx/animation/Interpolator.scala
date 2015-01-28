@@ -26,8 +26,8 @@
  */
 package scalafx.animation
 
-import javafx.{ animation => jfxa }
 import javafx.util.Duration
+import javafx.{animation => jfxa}
 
 /**
  * Wraps a [[http://docs.oracle.com/javafx/2/api/javafx/animation/Interpolator.html $INT]].

@@ -27,13 +27,14 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
+import scalafx.delegate.{FireDelegate, SFXDelegate}
 import scalafx.scene.Node
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.FireDelegate
 
 object Mnemonic {
-  implicit def sfxMnemonic2jfx(m: Mnemonic) = if (m != null) m.delegate else null
+  implicit def sfxMnemonic2jfx(m: Mnemonic): jfxsi.Mnemonic = if (m != null) m.delegate else null
 }
 
 class Mnemonic(override val delegate: jfxsi.Mnemonic)

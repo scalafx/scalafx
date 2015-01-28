@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.imaginej
 
 //             ________                                __                   ________   __    __
@@ -44,7 +45,7 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
-import scalafx.scene.layout.{HBox, BorderPane}
+import scalafx.scene.layout.{BorderPane, HBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
@@ -66,7 +67,7 @@ object ScalaFX_Layout_Panes_02 extends JFXApp {
           spacing = 10
           padding = Insets(15, 12, 15, 12)
           style = "-fx-background-color: #336699"
-          content = List(
+          children = List(
             new Button {
               text = "Current"
               prefWidth = 100

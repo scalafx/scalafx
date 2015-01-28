@@ -27,11 +27,13 @@
 package scalafx.event
 
 import javafx.{event => jfxe}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object Event {
-  implicit def sfxEvent2jfx(e: Event) = if (e != null) e.delegate else null
+  implicit def sfxEvent2jfx(e: Event): jfxe.Event = if (e != null) e.delegate else null
 
   def apply[T <: jfxe.Event](eventType: jfxe.EventType[T]) = new Event(new jfxe.Event(eventType))
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,14 @@ package scalafx.stage
 
 import java.io.File
 import javafx.{stage => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
 
 object DirectoryChooser {
-  implicit def sfxDirectoryChooser2jfx(dc: DirectoryChooser) = if (dc != null) dc.delegate else null
+  implicit def sfxDirectoryChooser2jfx(dc: DirectoryChooser): jfxs.DirectoryChooser = if (dc != null) dc.delegate else null
 }
 
 class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.DirectoryChooser)
@@ -58,6 +59,8 @@ class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.D
 
   /**
    * Shows a new directory selection dialog.
+   *
+   * @return the selected directory or null if no directory has been selected
    */
   def showDialog(ownerWindow: Window): File = delegate.showDialog(ownerWindow)
 }

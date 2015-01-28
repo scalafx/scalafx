@@ -27,11 +27,13 @@
 package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 object StackedAreaChart {
-  implicit def sfxStackedAreaChart2jfx[X, Y](v: StackedAreaChart[X, Y]) = if (v != null) v.delegate else null
+  implicit def sfxStackedAreaChart2jfx[X, Y](v: StackedAreaChart[X, Y]): jfxsc.StackedAreaChart[X, Y] = if (v != null) v.delegate else null
 
   def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y]) =
     new StackedAreaChart[X, Y](new jfxsc.StackedAreaChart[X, Y](xAxis, yAxis))

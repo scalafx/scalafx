@@ -29,10 +29,11 @@
 import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
-import scalafx.event.{Event, ActionEvent}
-import scalafx.scene.control.Button
+import scalafx.event.{ActionEvent, Event}
 import scalafx.scene.Group
+import scalafx.scene.control.Button
 import scalafx.testutil.RunOnApplicationThread
 
 @RunWith(classOf[JUnitRunner])
@@ -69,7 +70,7 @@ class EventHandlerSpec extends FlatSpec with RunOnApplicationThread {
 
     val button = new Button()
     val group = new Group {
-      content = button
+      children = button
     }
 
     var groupCounter = 0
@@ -110,7 +111,7 @@ class EventHandlerSpec extends FlatSpec with RunOnApplicationThread {
 
     val button = new Button()
     val group = new Group {
-      content = button
+      children = button
     }
 
     var groupCounter = 0

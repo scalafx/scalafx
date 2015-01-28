@@ -27,16 +27,14 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ReadOnlyIntegerProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.beans.property.ReadOnlyStringProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{BooleanProperty, ReadOnlyIntegerProperty, ReadOnlyObjectProperty, ReadOnlyStringProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
 
 object TextInputControl {
-  implicit def sfxTextInputControl2jfx(v: TextInputControl) = if (v != null) v.delegate else null
+  implicit def sfxTextInputControl2jfx(v: TextInputControl): jfxsc.TextInputControl = if (v != null) v.delegate else null
 }
 
 abstract class TextInputControl(override val delegate: jfxsc.TextInputControl)

@@ -26,16 +26,16 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{effect => jfxse}
-import javafx.scene.{image => jfxsi}
+import javafx.scene.{effect => jfxse, image => jfxsi}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
-import scalafx.delegate.SFXDelegate
+import scalafx.delegate.{PositionDelegate, SFXDelegate}
 import scalafx.scene.image.Image
-import scalafx.delegate.PositionDelegate
 
 object ImageInput {
-  implicit def sfxImageInput2jfx(ii: ImageInput) = if (ii != null) ii.delegate else null
+  implicit def sfxImageInput2jfx(ii: ImageInput): jfxse.ImageInput = if (ii != null) ii.delegate else null
 }
 
 class ImageInput(override val delegate: jfxse.ImageInput = new jfxse.ImageInput)

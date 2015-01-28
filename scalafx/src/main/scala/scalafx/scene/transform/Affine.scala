@@ -27,12 +27,14 @@
 package scalafx.scene.transform
 
 import javafx.scene.{transform => jfxst}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Affine {
-  implicit def sfxAffine2jfx(v: Affine) = if (v != null) v.delegate else null
+  implicit def sfxAffine2jfx(v: Affine): jfxst.Affine = if (v != null) v.delegate else null
 }
 
 /**

@@ -27,6 +27,7 @@
 package scalafx.testutil
 
 import javafx.util.Builder
+
 import scalafx.delegate.SFXDelegate
 
 /**

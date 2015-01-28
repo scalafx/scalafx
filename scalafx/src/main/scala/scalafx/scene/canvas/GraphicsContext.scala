@@ -26,25 +26,22 @@
  */
 package scalafx.scene.canvas
 
-import scala.collection.mutable.ArrayBuffer
-
 import javafx.geometry.VPos
 import javafx.scene.effect.BlendMode
 import javafx.scene.shape.FillRule
 import javafx.scene.text.TextAlignment
 import javafx.scene.{canvas => jfxsc}
+
+import scala.collection.mutable.ArrayBuffer
+import scala.language.implicitConversions
 import scalafx.Includes._
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.effect.Effect
 import scalafx.scene.image.Image
 import scalafx.scene.paint.Paint
-import scalafx.scene.shape.StrokeLineCap
-import scalafx.scene.shape.StrokeLineJoin
-import scalafx.scene.shape.ArcType
-import scalafx.scene.shape.StrokeLineCap
-import scalafx.scene.shape.StrokeLineJoin
+import scalafx.scene.shape.{ArcType, StrokeLineCap, StrokeLineJoin}
 import scalafx.scene.text.Font
 import scalafx.scene.transform.Affine
-import scalafx.delegate.SFXDelegate
 
 object GraphicsContext {
   implicit def sfxGraphicsContext2jfx(gc: GraphicsContext): jfxsc.GraphicsContext = if (gc != null) gc.delegate else null

@@ -26,9 +26,9 @@
  */
 package scalafx.testutil
 
-import org.scalatest.Matchers._
 import org.scalatest.FlatSpec
-import scalafx.Includes._
+import org.scalatest.Matchers._
+
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.DimensionDelegate
 

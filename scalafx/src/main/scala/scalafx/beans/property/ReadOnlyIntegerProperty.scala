@@ -27,11 +27,13 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
+
+import scala.language.implicitConversions
 import scalafx.beans.binding.NumberExpression
 import scalafx.delegate.SFXDelegate
 
 object ReadOnlyIntegerProperty {
-  implicit def sfxReadOnlyIntegerProperty2jfx(roip: ReadOnlyIntegerProperty) = if (roip != null) roip.delegate else null
+  implicit def sfxReadOnlyIntegerProperty2jfx(roip: ReadOnlyIntegerProperty): jfxbp.ReadOnlyIntegerProperty = if (roip != null) roip.delegate else null
 }
 
 class ReadOnlyIntegerProperty(override val delegate: jfxbp.ReadOnlyIntegerProperty) extends NumberExpression(delegate) with ReadOnlyProperty[Int, Number] with SFXDelegate[jfxbp.ReadOnlyIntegerProperty] {

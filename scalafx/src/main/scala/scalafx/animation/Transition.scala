@@ -27,6 +27,8 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
@@ -45,7 +47,7 @@ object Transition extends AnimationStatics {
    * @param v ScalaFX $TR
    * @return JavaFX $TR extracted from `v`.
    */
-  implicit def sfxTransition2jfx(v: Transition) = if (v != null) v.delegate else null
+  implicit def sfxTransition2jfx(v: Transition): jfxa.Transition = if (v != null) v.delegate else null
 }
 
 /**

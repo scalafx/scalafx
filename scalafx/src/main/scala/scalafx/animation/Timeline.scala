@@ -26,8 +26,10 @@
  */
 package scalafx.animation
 
-import collection.JavaConversions._
 import javafx.{animation => jfxa}
+
+import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 /**
@@ -44,7 +46,7 @@ object Timeline extends AnimationStatics {
    * @param v ScalaFX $TM
    * @return JavaFX $TM extracted from `v`.
    */
-  implicit def sfxTimeline2jfx(v: Timeline) = if (v != null) v.delegate else null
+  implicit def sfxTimeline2jfx(v: Timeline): jfxa.Timeline = if (v != null) v.delegate else null
 
   /**
    * Creates a new $TM from a sequence of [[scalafx.animation.KeyFrame]]s.

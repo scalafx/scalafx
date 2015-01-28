@@ -26,20 +26,18 @@
  */
 package scalafx.scene.control
 
-import javafx.{geometry => jfxg}
 import javafx.scene.{control => jfxsc}
-import javafx.{util => jfxu}
+import javafx.{geometry => jfxg, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.IntegerProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, IntegerProperty, ObjectProperty}
+import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Orientation
 import scalafx.util.StringConverter
-import scalafx.delegate.SFXDelegate
 
 object Slider {
-  implicit def sfxSlider2jfx(v: Slider) = if (v != null) v.delegate else null
+  implicit def sfxSlider2jfx(v: Slider): jfxsc.Slider = if (v != null) v.delegate else null
 }
 
 class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Control(delegate) with SFXDelegate[jfxsc.Slider] {

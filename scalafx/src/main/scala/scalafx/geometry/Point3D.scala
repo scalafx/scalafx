@@ -27,10 +27,12 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Point3D {
-  implicit def sfxPoint3D2jfx(p: Point3D) = if (p != null) p.delegate else null
+  implicit def sfxPoint3D2jfx(p: Point3D): jfxg.Point3D = if (p != null) p.delegate else null
 }
 
 class Point3D(override val delegate: jfxg.Point3D) extends SFXDelegate[jfxg.Point3D] {

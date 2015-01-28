@@ -24,16 +24,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package issues.issue23
 
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.layout.StackPane
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-import scalafx.stage.Stage
-import scalafx.application.JFXApp.PrimaryStage
 
 /**
  * Issue 23: Cannot assign a ScalaFX object to "scene.root".
@@ -52,7 +52,7 @@ object SceneRootAssignmentDemo extends JFXApp {
     scene = new Scene {
       root = new StackPane {
         padding = Insets(20)
-        content = new Rectangle {
+        children = new Rectangle {
           width = 200
           height = 200
           fill = Color.DeepSkyBlue

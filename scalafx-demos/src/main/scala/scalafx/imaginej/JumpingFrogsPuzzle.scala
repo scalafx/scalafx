@@ -39,12 +39,12 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import Constants._
-import scala._
+import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.animation.Timeline
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
+import scalafx.imaginej.Constants._
 import scalafx.scene.Scene
 import scalafx.scene.input.MouseEvent
 import scalafx.scene.paint.Color

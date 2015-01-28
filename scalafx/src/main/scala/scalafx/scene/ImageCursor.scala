@@ -28,14 +28,15 @@ package scalafx.scene
 
 import javafx.scene.{image => jfxsi}
 import javafx.{scene => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.ReadOnlyDoubleProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.scene.image.Image
+import scalafx.beans.property.{ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.image.Image
 
 object ImageCursor {
-  implicit def sfxImageCursor2jfx(c: ImageCursor) = if (c != null) c.delegate else null
+  implicit def sfxImageCursor2jfx(c: ImageCursor): jfxs.ImageCursor = if (c != null) c.delegate else null
 
   /**
    * Creates a custom image cursor from one of the specified images.

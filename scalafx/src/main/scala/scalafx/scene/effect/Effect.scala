@@ -26,13 +26,15 @@
  */
 package scalafx.scene.effect
 
-import javafx.scene.{ effect => jfxe }
+import javafx.scene.{effect => jfxe}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Effect {
-  implicit def sfxEffect2jfx(e: Effect) = if (e != null) e.delegate else null.asInstanceOf[jfxe.Effect]
+  implicit def sfxEffect2jfx(e: Effect): jfxe.Effect = if (e != null) e.delegate else null.asInstanceOf[jfxe.Effect]
 }
 
-abstract class Effect protected (override val delegate: jfxe.Effect) extends SFXDelegate[jfxe.Effect] {
+abstract class Effect protected(override val delegate: jfxe.Effect) extends SFXDelegate[jfxe.Effect] {
 
 }

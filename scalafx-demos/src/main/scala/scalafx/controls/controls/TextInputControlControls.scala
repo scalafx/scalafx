@@ -27,10 +27,7 @@
 
 package scalafx.controls.controls
 
-import scalafx.Includes._
-import scalafx.scene.control.CheckBox
-import scalafx.scene.control.Label
-import scalafx.scene.control.TextInputControl
+import scalafx.scene.control.{CheckBox, Label, TextInputControl}
 
 class TextInputControlControls(target: TextInputControl) extends PropertiesNodes[TextInputControl](target, "TextInputControl Properties") {
 

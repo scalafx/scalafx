@@ -26,14 +26,16 @@
  */
 package scalafx.scene.paint
 
-import javafx.scene.{ paint => jfxsp }
-import jfxsp.{ Color => JColor }
-import scalafx.Includes._
+import javafx.scene.paint.{Color => JColor}
+import javafx.scene.{paint => jfxsp}
+
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+import org.scalactic.Tolerance.convertNumericToPlusOrMinusWrapper
 import org.scalatest.Matchers._
-import org.scalautils.Tolerance.convertNumericToPlusOrMinusWrapper
+import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * Color Spec tests.

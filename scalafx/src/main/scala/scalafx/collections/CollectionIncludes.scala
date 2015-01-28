@@ -26,9 +26,9 @@
  */
 package scalafx.collections
 
-import scala.collection.JavaConversions.mapAsScalaMap
-
 import javafx.{collections => jfxc}
+
+import scala.language.implicitConversions
 
 object CollectionIncludes extends CollectionIncludes
 

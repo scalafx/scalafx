@@ -28,11 +28,12 @@ package scalafx.util.converter
 
 import java.text.DateFormat
 import java.util.Locale
-
 import javafx.util.{converter => jfxuc}
 
+import scala.language.implicitConversions
+
 object TimeStringConverter {
-  implicit def sfxTimeStringConverter2jfx(c: TimeStringConverter) = if (c != null) c.delegate else null
+  implicit def sfxTimeStringConverter2jfx(c: TimeStringConverter): jfxuc.TimeStringConverter = if (c != null) c.delegate else null
 }
 
 class TimeStringConverter(delegate: jfxuc.TimeStringConverter = new jfxuc.TimeStringConverter)

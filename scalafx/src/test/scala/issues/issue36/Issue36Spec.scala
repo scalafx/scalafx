@@ -28,11 +28,13 @@
 package issues.issue36
 
 import javafx.beans.{property => jfxbp}
+
 import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
-import scalafx.beans.property.{ReadOnlyObjectWrapper, ObjectProperty}
+import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectWrapper}
 
 /**
  * Verify that code causing Issue 36 behaves correctly after fix.

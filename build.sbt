@@ -1,8 +1,15 @@
-import scala.xml._
 import java.net.URL
-import SonatypeKeys._
 
-val scalafxVersion = "2.2.67-R10"
+import scala.xml._
+
+//
+// Environment variables used by the build:
+// GRAPHVIZ_DOT_PATH - Full path to Graphviz dot utility. If not defined Scaladocs will be build without diagrams.
+// JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
+//
+
+val scalafxVersion = "2.2.76-R11-SNAPSHOT"
+val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "SFX-2" else "v" + scalafxVersion
 
 // ScalaFX project
 lazy val scalafx = Project(
@@ -11,9 +18,14 @@ lazy val scalafx = Project(
   settings = scalafxSettings ++ Seq(
     description := "The ScalaFX framework",
     fork in run := true,
-    scalacOptions in (Compile, doc) ++= Seq (
-      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md"
-    )
+    scalacOptions in(Compile, doc) ++= Seq(
+      "-sourcepath", baseDirectory.value.toString,
+      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md",
+      "-doc-source-url", "https://github.com/scalafx/scalafx/blob/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala"
+    ) ++ (Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
+      case Some(path) => Seq("-diagrams", "-diagrams-dot-path", path)
+      case None       => Seq.empty[String]
+    })
   ) ++ sonatypeSettings
 )
 
@@ -33,8 +45,8 @@ lazy val scalafxDemos = Project(
 ) dependsOn (scalafx % "compile;test->test")
 
 // Dependencies
-lazy val junit = "junit" % "junit" % "4.11"
-lazy val scalatest = "org.scalatest" %% "scalatest" % "2.1.7"
+lazy val junit = "junit" % "junit" % "4.12"
+lazy val scalatest = "org.scalatest" %% "scalatest" % "2.2.3"
 
 // Resolvers
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -48,24 +60,20 @@ resolvers += sonatypeNexusSnapshots
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.10.4", "2.11.1", "2.9.3"),
-  scalaVersion <<= crossScalaVersions { versions => versions.head },
-  scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8"),
+  crossScalaVersions := Seq("2.10.4", "2.11.5"),
+  scalaVersion <<= crossScalaVersions { versions => versions.head},
+  scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
+  scalacOptions in(Compile, doc) += s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
+  scalacOptions in(Compile, doc) ++= Seq("-doc-footer", s"ScalaFX API v.$scalafxVersion"),
   javacOptions ++= Seq(
     "-target", "1.6",
     "-source", "1.6",
     "-Xlint:deprecation"),
   libraryDependencies ++= Seq(
-    // A hack to make compilation and packaging work with Scala 2.9.3. SBT attempts to download
-    // test dependencies even when not used. Testing will not work in 2.9.3, but we are more
-    // interested right now to testing in 2.10 and 2.11 and only releasing in 2.9.3.
-    // scalatest % "test",
-    if(scalaVersion.value.startsWith("2.9."))
-      "org.scalatest" %% "scalatest" % "1.9.2" % "test"
-    else
-      scalatest % "test",
+    "org.scala-lang" % "scala-reflect" % scalaVersion.value,
+    scalatest % "test",
     junit % "test"),
   // ScalaTest needs Scala XML, in Scala 2.11 the XML library has been factored out to the `scala-xml` module
   libraryDependencies ++= (
@@ -74,6 +82,7 @@ lazy val scalafxSettings = Seq(
     else
       Seq.empty[ModuleID]),
   unmanagedLibs,
+  autoAPIMappings := true,
   manifestSetting,
   publishSetting,
   fork in Test := true,
@@ -83,7 +92,7 @@ lazy val scalafxSettings = Seq(
   testOptions in Test <+= (target in Test) map {
     t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))
   },
-  shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> " }
+  shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> "}
 ) ++ mavenCentralSettings
 
 // Location of JavaFX jar

@@ -27,15 +27,12 @@
 package scalafx.stage
 
 import javafx.{stage => jfxs}
-import scalafx.Includes._
-import scalafx.application.JFXApp
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
-import scalafx.scene.Scene
-import scalafx.event.Event
-import javafx.event.EventType
 
 object Popup {
-  implicit def sfxPopup2jfx(p: Popup) = if (p != null) p.delegate else null
+  implicit def sfxPopup2jfx(p: Popup): jfxs.Popup = if (p != null) p.delegate else null
 }
 
 class Popup(override val delegate: jfxs.Popup = new jfxs.Popup)

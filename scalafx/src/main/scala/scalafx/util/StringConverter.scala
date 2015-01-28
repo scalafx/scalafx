@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,9 @@
  */
 package scalafx.util
 
-import java.{ text => jt }
-import javafx.{ util => jfxu }
-import java.util.Date
+import javafx.{util => jfxu}
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.util.StringConverter]].
@@ -40,7 +40,7 @@ object StringConverter {
    *
    * @param s ScalaFX StringConverter
    */
-  implicit def sfxStringConverter2jfx[T](s: StringConverter[T]) = new jfxu.StringConverter[T] {
+  implicit def sfxStringConverter2jfx[T](s: StringConverter[T]): jfxu.StringConverter[T] = new jfxu.StringConverter[T] {
 
     def fromString(string: String): T = s.fromString(string)
 
@@ -67,7 +67,7 @@ object StringConverter {
   /**
    * Convenience method that will create a StringConverter implementation that just makes
    * conversion from object to String. [[scalafx.util.StringConverter#fromString]] method will throw a
-   * [[java.lang.UnsupportedOperationException]].
+   * `java.lang.UnsupportedOperationException`.
    *
    * @tparam T Type to convert
    *
@@ -76,7 +76,7 @@ object StringConverter {
   def toStringConverter[T](toStringFunction: T => String) = new StringConverter[T] {
 
     def fromString(string: String): T =
-      throw new UnsupportedOperationException("Convertsior from String not supported. Consider create a new StringConverter implementation that support it.")
+      throw new UnsupportedOperationException("Conversion from String not supported. Consider create a new StringConverter implementation that support it.")
 
     def toString(t: T): String = toStringFunction(t)
 
@@ -85,7 +85,7 @@ object StringConverter {
   /**
    * Convenience method that will create a StringConverter implementation that just makes
    * conversion from String to object. [[scalafx.util.StringConverter#toString]] method will throw a
-   * [[java.lang.UnsupportedOperationException]].
+   * `java.lang.UnsupportedOperationException`.
    *
    * @tparam T Type to convert
    *
@@ -107,13 +107,12 @@ object StringConverter {
  *
  * @constructor Creates a new ScalaFX StringConverter from a JavaFX StringConverter.
  * @tparam T Type to be converted from/to `String`.
- * @param delegate JavaFX StringConverter to be delegated.
  */
 abstract class StringConverter[T] {
 
   /**
    * Converts the string provided into an object defined by the specific converter.
-   * 
+   *
    * @param string `String` to be converted to a T instance.
    * @return A new T instance generated from argument.
    */
@@ -121,7 +120,7 @@ abstract class StringConverter[T] {
 
   /**
    * Converts the object provided into its string form.
-   * 
+   *
    * @param t A T instance to be its String version.
    * @return String version of argument.
    */

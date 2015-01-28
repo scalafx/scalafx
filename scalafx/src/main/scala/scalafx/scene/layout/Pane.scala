@@ -24,16 +24,18 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.layout
 
-import collection.JavaConversions._
 import javafx.scene.{layout => jfxsl}
+
+import scala.language.implicitConversions
 import scalafx.collections._
-import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 
 object Pane {
-  implicit def sfxPane2jfx(v: Pane) = if (v != null) v.delegate else null
+  implicit def sfxPane2jfx(v: Pane): jfxsl.Pane = if (v != null) v.delegate else null
 }
 
 /**
@@ -47,10 +49,29 @@ class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
    * Gets the list of children of this Parent.
    */
   def children = delegate.getChildren
+  /**
+   * Sets the list of children, replacing the prior content. If you want append to current content, use `add`, `+=` or
+   * similar.
+   *
+   * @param c list of children to replace prior content.
+   */
+  def children_=(c: Iterable[Node]) {
+    fillSFXCollection(this.children, c)
+  }
+  /**
+   * Sets a child, replacing the prior content. If you want append to current content, use `add`, `+=` or similar.
+   *
+   * @param n Node to replace prior content.
+   */
+  def children_=(n: Node) {
+    fillSFXCollectionWithOne(this.children, n)
+  }
+
 
   /**
    * Gets the list of children of this Parent.
    */
+  @deprecated("Will be removed due to name conflicts with JavaFX 8u40. Use `children` instead.", since = "2.2.75-R11")
   def content = children
   /**
    * Sets the list of children, replacing the prior content. If you want append to current content, use `add` or
@@ -58,15 +79,17 @@ class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
    *
    * @param c list of children to replace prior content.
    */
+  @deprecated("Will be removed due to name conflicts with JavaFX 8u40. Use `children` instead.", since = "2.2.75-R11")
   def content_=(c: Iterable[Node]) {
-    fillSFXCollection(this.content, c)
+    fillSFXCollection(this.children, c)
   }
   /**
    * Sets a child, replacing the prior content. If you want append to current content, use `add` or similar.
    *
    * @param n Node to replace prior content.
    */
+  @deprecated("Will be removed due to name conflicts with JavaFX 8u40. Use `children` instead.", since = "2.2.75-R11")
   def content_=(n: Node) {
-    fillSFXCollectionWithOne(this.content, n)
+    fillSFXCollectionWithOne(this.children, n)
   }
 }

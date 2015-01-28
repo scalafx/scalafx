@@ -26,15 +26,16 @@
  */
 package scalafx.animation
 
-import javafx.{animation => jfxa, scene => jfxs, util => jfxu}
 import javafx.scene.{shape => jfxss}
+import javafx.{animation => jfxa, scene => jfxs, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.scene.Node
 import scalafx.scene.shape.Shape
 import scalafx.util.Duration
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 
 /**
  * Companion Object for [[scalafx.animation.PathTransition]].
@@ -51,7 +52,7 @@ object PathTransition extends AnimationStatics {
    * @param v ScalaFX $PT
    * @return JavaFX $PT extracted from `v`.
    */
-  implicit def sfxPathTransition2jfx(v: PathTransition) = if (v != null) v.delegate else null
+  implicit def sfxPathTransition2jfx(v: PathTransition): jfxa.PathTransition = if (v != null) v.delegate else null
 
   /**
    * Companion Object for $OT, where its values are defined.

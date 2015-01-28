@@ -26,13 +26,13 @@
  */
 package scalafx.scene.effect
 
+import javafx.scene.{effect => jfxse}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
-import scalafx.testutil.PositionDelegateSpec
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.testutil.{PositionDelegateSpec, SimpleSFXDelegateSpec}
 
 /**
  * Light.Point Spec tests.

@@ -27,10 +27,12 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object StringProperty {
-  implicit def sfxStringProperty2jfx(sp: StringProperty) = if (sp != null) sp.delegate else null
+  implicit def sfxStringProperty2jfx(sp: StringProperty): jfxbp.StringProperty = if (sp != null) sp.delegate else null
 
   /**
    * Creates a new StringProperty instance using the SimpleStringProperty as the target observable.

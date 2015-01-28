@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,10 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
-/** Wrapper for [[javafx.scene.input.MouseButton]] */
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+
+/** Wrapper for [[http://docs.oracle.com/javafx/2/api/javafx/scene/input/MouseButton.html javafx.scene.input.MouseButton]] */
 object MouseButton extends SFXEnumDelegateCompanion[jfxsi.MouseButton, MouseButton] {
 
   val NONE = new MouseButton(jfxsi.MouseButton.NONE)

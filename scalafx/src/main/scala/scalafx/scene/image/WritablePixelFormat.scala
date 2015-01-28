@@ -26,12 +26,15 @@
  */
 package scalafx.scene.image
 
-import javafx.scene.{ image => jfxsi }
 import java.nio.Buffer
+import javafx.scene.{image => jfxsi}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object WritablePixelFormat {
-  implicit def sfxWritablePixelFormat2jfx[B <: Buffer](wpf: WritablePixelFormat[B]) = wpf.delegate
+  implicit def sfxWritablePixelFormat2jfx[B <: Buffer](wpf: WritablePixelFormat[B]): jfxsi.WritablePixelFormat[B] =
+    if (null == wpf) null else wpf.delegate
 }
 
 /**

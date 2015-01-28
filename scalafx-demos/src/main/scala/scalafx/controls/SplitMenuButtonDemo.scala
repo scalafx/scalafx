@@ -44,7 +44,7 @@ object SplitMenuButtonDemo extends JFXApp {
       content = new VBox {
         padding = Insets(10)
         spacing = 10
-        content = List(
+        children = List(
           new SplitMenuButton {
             text = "SplitMenuButton 1"
             onAction = {ae: ActionEvent => {println(ae.eventType + " occurred on SplitMenuButton")}}

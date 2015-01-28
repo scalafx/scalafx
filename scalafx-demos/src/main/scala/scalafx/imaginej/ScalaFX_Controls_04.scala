@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.imaginej
 
 //             ________                                __                   ________   __    __
@@ -42,10 +43,9 @@ package scalafx.imaginej
 
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectProperty2sfx
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
-import scalafx.scene.control.{ToggleButton, Label, ToggleGroup}
+import scalafx.scene.control.{Label, ToggleButton, ToggleGroup}
 import scalafx.scene.layout.{HBox, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
@@ -94,7 +94,7 @@ object ScalaFX_Controls_04 extends JFXApp {
   }
 
   val hBox = new HBox {
-    content = List(
+    children = List(
       minorToggleButton,
       majorToggleButton,
       criticalToggleButton
@@ -113,7 +113,7 @@ object ScalaFX_Controls_04 extends JFXApp {
 
   val vBox = new VBox {
     padding = Insets(20, 10, 10, 20)
-    content = List(
+    children = List(
       priorityLabel,
       hBox,
       rectangle

@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.imaginej
 
 //             ________                                __                   ________   __    __
@@ -45,9 +46,9 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.event.ActionEvent
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
-import scalafx.scene.control.{Label, Button}
+import scalafx.scene.control.{Button, Label}
 import scalafx.scene.effect.DropShadow
-import scalafx.scene.image.{ImageView, Image}
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.input.MouseEvent
 import scalafx.scene.layout.{HBox, VBox}
 import scalafx.scene.paint.Color
@@ -116,7 +117,7 @@ object ScalaFX_Controls_02 extends JFXApp {
   val hBox1 = new HBox {
     spacing = 10
     alignment = Pos.BottomCenter
-    content = List(
+    children = List(
       okButton2,
       koButton1,
       label
@@ -142,7 +143,7 @@ object ScalaFX_Controls_02 extends JFXApp {
 
   val hBox2 = new HBox {
     spacing = 25
-    content = List(
+    children = List(
       okButton3,
       koButton2
     )
@@ -152,7 +153,7 @@ object ScalaFX_Controls_02 extends JFXApp {
     layoutX = 20
     layoutY = 20
     spacing = 10
-    content = List(
+    children = List(
       okButton1,
       hBox1,
       hBox2

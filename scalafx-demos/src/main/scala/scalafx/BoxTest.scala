@@ -27,15 +27,13 @@
 
 package scalafx
 
-import geometry.Insets
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
+import scalafx.geometry.Insets
 import scalafx.scene.Scene
-import scalafx.scene.shape.Arc
-import scalafx.scene.shape.Circle
-import scalafx.scene.shape.Rectangle
-import scene.layout.{VBox, HBox}
-import scene.paint.Color
+import scalafx.scene.layout.{HBox, VBox}
+import scalafx.scene.paint.Color
+import scalafx.scene.shape.{Arc, Circle, Rectangle}
 
 object BoxTest extends JFXApp {
   stage = new PrimaryStage {
@@ -45,7 +43,7 @@ object BoxTest extends JFXApp {
       fill = Color.LightGreen
       content = new HBox {
         spacing = 10
-        content = List(new Rectangle {
+        children = List(new Rectangle {
           width = 100
           height = 50
           fill = Color.Red
@@ -54,7 +52,7 @@ object BoxTest extends JFXApp {
           margin = Insets(10)
         }, new VBox {
           spacing = 10
-          content = for (i <- 0 until 3) yield new Circle {
+          children = for (i <- 0 until 3) yield new Circle {
             radius = 25
             fill = Color.Blue
             stroke = Color.Blue.brighter

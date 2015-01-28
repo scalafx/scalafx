@@ -26,15 +26,16 @@
  */
 package scalafx.scene
 
-import collection.JavaConversions._
 import javafx.{scene => jfxs}
-import scalafx.collections._
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.collections._
 import scalafx.delegate.SFXDelegate
 
 object Parent {
-  implicit def sfxParent2jfx(v: Parent) = if (v != null) v.delegate else null
+  implicit def sfxParent2jfx(v: Parent): jfxs.Parent = if (v != null) v.delegate else null
 }
 
 /**

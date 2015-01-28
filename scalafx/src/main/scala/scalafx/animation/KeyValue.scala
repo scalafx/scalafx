@@ -26,11 +26,12 @@
  */
 package scalafx.animation
 
-import javafx.{animation => jfxa}
 import javafx.beans.{value => jfxbv}
-import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
+import javafx.{animation => jfxa}
+
+import scala.language.implicitConversions
 import scalafx.beans.property.Property
+import scalafx.delegate.SFXDelegate
 
 /**
  * Companion Object for [[scalafx.animation.KeyValue]].
@@ -46,7 +47,7 @@ object KeyValue {
    * @param v ScalaFX $KV
    * @return JavaFX $KV extracted from `v`.
    */
-  implicit def sfxKeyValue2jfx(v: KeyValue[_, _]) = if (v != null) v.delegate else null
+  implicit def sfxKeyValue2jfx(v: KeyValue[_, _]): jfxa.KeyValue = if (v != null) v.delegate else null
 
   // Need to separately capture the Number/primitive combinations since JavaFX does not go down to primitives in its generics (wow, this is ugly!)
   def apply[T >: Int <: Int, J >: Number <: Number](target: jfxbv.WritableIntegerValue, endValue: Int) = new KeyValue[T, J](new jfxa.KeyValue(target, int2Integer(endValue)))
@@ -126,7 +127,7 @@ object Tweenable {
    * @param t ScalaFX $TW
    * @return JavaFX $KV extracted from `t.linear`.
    */
-  implicit def tweenable2KeyFrame[T <: Any, J <: Any](t: Tweenable[T, J]) = t.linear
+  implicit def tweenable2KeyFrame[T <: Any, J <: Any](t: Tweenable[T, J]): KeyValue[J, J] = t.linear
 }
 
 /**

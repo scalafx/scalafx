@@ -27,13 +27,14 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 
 object Arc {
-  implicit def sfxArc2jfx(v: Arc) = if (v != null) v.delegate else null
+  implicit def sfxArc2jfx(v: Arc): jfxss.Arc = if (v != null) v.delegate else null
 
   def apply(centerX: Double, centerY: Double, radiusX: Double, radiusY: Double, startAngle: Double, length: Double) =
     new Arc(new jfxss.Arc(centerX, centerY, radiusX, radiusY, startAngle, length))

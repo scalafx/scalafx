@@ -26,15 +26,16 @@
  */
 package scalafx.scene.shape
 
-import collection.JavaConversions._
 import javafx.beans.{property => jfxbp}
 import javafx.scene.{shape => jfxss}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
 
 object PathElement {
-  implicit def sfxPathElement2jfx(v: PathElement) = if (v != null) v.delegate else null
+  implicit def sfxPathElement2jfx(v: PathElement): jfxss.PathElement = if (v != null) v.delegate else null
 }
 
 abstract class PathElement(override val delegate: jfxss.PathElement) extends SFXDelegate[jfxss.PathElement] {

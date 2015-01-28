@@ -26,12 +26,14 @@
  */
 package scalafx.scene.transform
 
+import javafx.scene.{transform => jfxst}
+
 import org.junit.runner.RunWith
-import javafx.scene.{ transform => jfxst }
+import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes.jfxTransform2sfx
 import scalafx.scene.transform.Transform.sfxTransform2jfx
 import scalafx.testutil.SimpleSFXDelegateSpec
-import org.scalatest.junit.JUnitRunner
 
 /**
  * Transform Spec tests.

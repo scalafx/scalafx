@@ -27,20 +27,17 @@
 package scalafx.scene.media
 
 import javafx.scene.{media => jfxsm}
-import javafx.{event => jfxe}
-import javafx.{geometry => jfxg}
+import javafx.{event => jfxe, geometry => jfxg}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.util.Duration
-import scalafx.delegate.SFXDelegate
-import scalafx.scene.Node
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
+import scalafx.delegate.{PositionDelegate, SFXDelegate}
 import scalafx.geometry.Rectangle2D
-import scalafx.delegate.PositionDelegate
+import scalafx.scene.Node
 
 object MediaView {
-  implicit def sfxMediaView2jfx(mv: MediaView) = if (mv != null) mv.delegate else null
+  implicit def sfxMediaView2jfx(mv: MediaView): jfxsm.MediaView = if (mv != null) mv.delegate else null
 }
 
 class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)

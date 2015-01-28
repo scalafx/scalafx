@@ -26,14 +26,15 @@
  */
 package scalafx.collections
 
-import java.{ util => ju }
-import javafx.{ collections => jfxc }
-import javafx.{ scene => jfxs }
-import jfxs.{ control => jfxsc }
+import java.{util => ju}
+import javafx.scene.{control => jfxsc}
+import javafx.{collections => jfxc, scene => jfxs}
+
 import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.Matchers._
+import org.scalatest.junit.JUnitRunner
+
 import scala.collection.JavaConversions._
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate

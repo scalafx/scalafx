@@ -27,8 +27,7 @@
 
 package scalafx.controls.controls
 
-import scalafx.Includes._
-import scalafx.scene.control.{Tooltip, Control, Label, TextField}
+import scalafx.scene.control.{Control, Label, TextField, Tooltip}
 
 class ControlControls(target: Control) extends PropertiesNodes[Control](target, "Control Properties") {
 

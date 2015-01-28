@@ -27,13 +27,14 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.ReadOnlyIntegerProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.{ReadOnlyIntegerProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
 
 object FocusModel {
-  implicit def sfxFocusModel2jfx[T](v: FocusModel[T]) = if (v != null) v.delegate else null
+  implicit def sfxFocusModel2jfx[T](v: FocusModel[T]): jfxsc.FocusModel[T] = if (v != null) v.delegate else null
 }
 
 /**

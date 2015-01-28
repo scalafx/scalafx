@@ -27,8 +27,9 @@
 
 package scalafx
 
-import animation.{Interpolator, Timeline}
+import scala.language.postfixOps
 import scalafx.Includes._
+import scalafx.animation.{Interpolator, Timeline}
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene

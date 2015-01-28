@@ -27,12 +27,14 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
 
 object SwipeEvent {
-  implicit def sfxSwipeEvent2jfx(se: SwipeEvent) = if (se != null) se.delegate else null
+  implicit def sfxSwipeEvent2jfx(se: SwipeEvent): jfxsi.SwipeEvent = if (se != null) se.delegate else null
 
   /**
    * Common supertype for all Swipe event types.

@@ -27,12 +27,12 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import scala.collection.JavaConversions._
-import scalafx.Includes._
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Polyline {
-  implicit def sfxPolyline2jfx(v: Polyline) = if (v != null) v.delegate else null
+  implicit def sfxPolyline2jfx(v: Polyline): jfxss.Polyline = if (v != null) v.delegate else null
 
   def apply(points: Double*) = new Polyline(new jfxss.Polyline(points: _*))
 }

@@ -29,8 +29,9 @@ package issues.issue070
 import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
-import scalafx.concurrent.{WorkerStateEvent, Task}
+import scalafx.concurrent.{Task, WorkerStateEvent}
 import scalafx.testutil.RunOnApplicationThread
 
 @RunWith(classOf[JUnitRunner])

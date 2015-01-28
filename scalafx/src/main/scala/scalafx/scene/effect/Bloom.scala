@@ -27,12 +27,14 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Bloom {
-  implicit def sfxBloom2jfx(b: Bloom) = if (b != null) b.delegate else null
+  implicit def sfxBloom2jfx(b: Bloom): jfxse.Bloom = if (b != null) b.delegate else null
 }
 
 class Bloom(override val delegate: jfxse.Bloom = new jfxse.Bloom)

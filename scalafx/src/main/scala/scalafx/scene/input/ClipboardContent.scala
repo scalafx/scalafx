@@ -27,18 +27,17 @@
 package scalafx.scene.input
 
 import java.io.File
+import javafx.scene.{input => jfxsi}
 
 import scala.collection.JavaConversions._
-import scala.collection.MapProxy
-import scala.collection.Seq
-
-import javafx.scene.{input => jfxsi}
-import scalafx.scene.image.Image.sfxImage2jfx
-import scalafx.scene.image.Image
+import scala.collection.{MapProxy, Seq}
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.image.Image
+import scalafx.scene.image.Image.sfxImage2jfx
 
 object ClipboardContent {
-  implicit def sfxClipboardContent2jfx(c: ClipboardContent) = if (c != null) c.delegate else null
+  implicit def sfxClipboardContent2jfx(c: ClipboardContent): jfxsi.ClipboardContent = if (c != null) c.delegate else null
 }
 
 class ClipboardContent(override val delegate: jfxsi.ClipboardContent = new jfxsi.ClipboardContent) extends MapProxy[DataFormat, AnyRef] with SFXDelegate[jfxsi.ClipboardContent] {

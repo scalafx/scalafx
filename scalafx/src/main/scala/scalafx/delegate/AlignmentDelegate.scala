@@ -26,12 +26,14 @@
  */
 package scalafx.delegate
 
-import javafx.beans.{ property => jfxbp }
-import javafx.{ geometry => jfxg }
+import javafx.beans.{property => jfxbp}
+import javafx.{geometry => jfxg}
+
+import scala.language.reflectiveCalls
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
+import scalafx.delegate.AlignmentDelegate._
 import scalafx.geometry.Pos
-import AlignmentDelegate._
 
 object AlignmentDelegate {
 

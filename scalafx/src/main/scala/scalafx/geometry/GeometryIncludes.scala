@@ -28,6 +28,8 @@ package scalafx.geometry
 
 import javafx.{geometry => jfxg}
 
+import scala.language.implicitConversions
+
 object GeometryIncludes extends GeometryIncludes
 
 /**
@@ -45,7 +47,7 @@ trait GeometryIncludes {
    * @param b JavaFX Bounds
    * @return ScalaFX Bounds
    */
-  implicit def jfxBounds2sfx(b: jfxg.Bounds) = if (b != null) new Bounds(b) {} else null
+  implicit def jfxBounds2sfx(b: jfxg.Bounds): Bounds = if (b != null) new Bounds(b) {} else null
 
   /**
    * Converts a
@@ -55,7 +57,7 @@ trait GeometryIncludes {
    * @param b JavaFX BoundingBox
    * @return ScalaFX BoundingBox
    */
-  implicit def jfxBoundingBox2sfx(b: jfxg.BoundingBox) = if (b != null) new BoundingBox(b) else null
+  implicit def jfxBoundingBox2sfx(b: jfxg.BoundingBox): BoundingBox = if (b != null) new BoundingBox(b) else null
 
   /**
    * Converts a
@@ -65,7 +67,7 @@ trait GeometryIncludes {
    * @param d JavaFX Dimension2D
    * @return ScalaFX Dimension2D
    */
-  implicit def jfxDimension2D2sfx(d: jfxg.Dimension2D) = if (d != null) new Dimension2D(d) else null
+  implicit def jfxDimension2D2sfx(d: jfxg.Dimension2D): Dimension2D = if (d != null) new Dimension2D(d) else null
 
   /**
    * Converts a
@@ -75,7 +77,7 @@ trait GeometryIncludes {
    * @param h JavaFX HorizontalDirection
    * @return ScalaFX HorizontalDirection
    */
-  implicit def jfxHorizontalDirection2sfx(h: jfxg.HorizontalDirection) = HorizontalDirection.jfxEnum2sfx(h)
+  implicit def jfxHorizontalDirection2sfx(h: jfxg.HorizontalDirection): HorizontalDirection = HorizontalDirection.jfxEnum2sfx(h)
 
   /**
    * Converts a
@@ -85,7 +87,7 @@ trait GeometryIncludes {
    * @param h JavaFX HPos
    * @return ScalaFX HPos
    */
-  implicit def jfxHPos2sfx(h: jfxg.HPos) = HPos.jfxEnum2sfx(h)
+  implicit def jfxHPos2sfx(h: jfxg.HPos): HPos = HPos.jfxEnum2sfx(h)
 
   /**
    * Converts a
@@ -95,7 +97,7 @@ trait GeometryIncludes {
    * @param i JavaFX Insets
    * @return ScalaFX Insets
    */
-  implicit def jfxInsets2sfx(i: jfxg.Insets) = if (i != null) new Insets(i) else null
+  implicit def jfxInsets2sfx(i: jfxg.Insets): Insets = if (i != null) new Insets(i) else null
 
   /**
    * Converts a
@@ -105,7 +107,7 @@ trait GeometryIncludes {
    * @param e JavaFX Orientation
    * @return ScalaFX Orientation
    */
-  implicit def jfxOrientation2sfx(e: jfxg.Orientation) = Orientation.jfxEnum2sfx(e)
+  implicit def jfxOrientation2sfx(e: jfxg.Orientation): Orientation = Orientation.jfxEnum2sfx(e)
 
   /**
    * Converts a
@@ -115,7 +117,7 @@ trait GeometryIncludes {
    * @param p JavaFX Point2D
    * @return ScalaFX Point2D
    */
-  implicit def jfxPoint2D2sfx(p: jfxg.Point2D) = if (p != null) new Point2D(p) else null
+  implicit def jfxPoint2D2sfx(p: jfxg.Point2D): Point2D = if (p != null) new Point2D(p) else null
 
   /**
    * Converts a
@@ -125,7 +127,7 @@ trait GeometryIncludes {
    * @param p JavaFX Point3D
    * @return ScalaFX Point3D
    */
-  implicit def jfxPoint3D2sfx(p: jfxg.Point3D) = if (p != null) new Point3D(p) else null
+  implicit def jfxPoint3D2sfx(p: jfxg.Point3D): Point3D = if (p != null) new Point3D(p) else null
 
   /**
    * Converts a
@@ -135,7 +137,7 @@ trait GeometryIncludes {
    * @param p JavaFX Pos
    * @return ScalaFX Pos
    */
-  implicit def jfxPos2sfx(p: jfxg.Pos) = Pos.jfxEnum2sfx(p)
+  implicit def jfxPos2sfx(p: jfxg.Pos): Pos = Pos.jfxEnum2sfx(p)
 
   /**
    * Converts a
@@ -145,7 +147,7 @@ trait GeometryIncludes {
    * @param r JavaFX Rectangle2D
    * @return ScalaFX Rectangle2D
    */
-  implicit def jfxRectangle2D2sfx(r: jfxg.Rectangle2D) = if (r != null) new Rectangle2D(r) else null
+  implicit def jfxRectangle2D2sfx(r: jfxg.Rectangle2D): Rectangle2D = if (r != null) new Rectangle2D(r) else null
 
   /**
    * Converts a
@@ -155,7 +157,7 @@ trait GeometryIncludes {
    * @param e JavaFX Side
    * @return ScalaFX Side
    */
-  implicit def jfxSide2sfx(e: jfxg.Side) = Side.jfxEnum2sfx(e)
+  implicit def jfxSide2sfx(e: jfxg.Side): Side = Side.jfxEnum2sfx(e)
 
   /**
    * Converts a
@@ -165,7 +167,7 @@ trait GeometryIncludes {
    * @param h JavaFX VerticalDirection
    * @return ScalaFX VerticalDirection
    */
-  implicit def jfxVerticalDirection2sfx(h: jfxg.VerticalDirection) = VerticalDirection.jfxEnum2sfx(h)
+  implicit def jfxVerticalDirection2sfx(h: jfxg.VerticalDirection): VerticalDirection = VerticalDirection.jfxEnum2sfx(h)
 
   /**
    * Converts a
@@ -175,5 +177,5 @@ trait GeometryIncludes {
    * @param v JavaFX VPos
    * @return ScalaFX VPos
    */
-  implicit def jfxVPos2sfx(v: jfxg.VPos) = VPos.jfxEnum2sfx(v)
+  implicit def jfxVPos2sfx(v: jfxg.VPos): VPos = VPos.jfxEnum2sfx(v)
 }

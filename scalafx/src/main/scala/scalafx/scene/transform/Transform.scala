@@ -26,13 +26,15 @@
  */
 package scalafx.scene.transform
 
-import scalafx.Includes._
 import javafx.scene.{transform => jfxst}
+
+import scala.language.implicitConversions
+import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object Transform {
 
-  implicit def sfxTransform2jfx(v: Transform) = if (v != null) v.delegate else null
+  implicit def sfxTransform2jfx(v: Transform): jfxst.Transform = if (v != null) v.delegate else null
 
   /**
    * Returns a new Affine object from 12 number values representing the 6 specifiable entries of the 3x4 Affine transformation matrix.

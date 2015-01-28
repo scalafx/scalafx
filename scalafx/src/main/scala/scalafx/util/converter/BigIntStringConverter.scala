@@ -28,8 +28,11 @@ package scalafx.util.converter
 
 import javafx.util.{converter => jfxuc}
 
+import scala.language.implicitConversions
+
 object BigIntStringConverter {
-  implicit def sfxBigIntStringConverter2jfx(c: BigIntStringConverter) = if (c != null) c.delegate else null
+  implicit def sfxBigIntStringConverter2jfx(c: BigIntStringConverter): jfxuc.BigIntegerStringConverter =
+    if (c != null) c.delegate else null
 }
 
 class BigIntStringConverter(delegate: jfxuc.BigIntegerStringConverter = new jfxuc.BigIntegerStringConverter)

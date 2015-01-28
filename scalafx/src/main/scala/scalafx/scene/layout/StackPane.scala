@@ -26,18 +26,18 @@
  */
 package scalafx.scene.layout
 
-import javafx.{scene => jfxs}
 import javafx.scene.{layout => jfxsl}
-import scalafx.delegate.AlignmentDelegate
-import scalafx.delegate.SFXDelegate
-import scalafx.geometry.Insets
+import javafx.{scene => jfxs}
+
+import scala.language.implicitConversions
+import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
 import scalafx.geometry.Insets.sfxInsets2jfx
-import scalafx.geometry.Pos
+import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Node
 import scalafx.scene.Node.sfxNode2jfx
 
 object StackPane {
-  implicit def sfxStackPane2jfx(v: StackPane) = if (v != null) v.delegate else null
+  implicit def sfxStackPane2jfx(v: StackPane): jfxsl.StackPane = if (v != null) v.delegate else null
 
   /**
    * Removes all hbox constraints from the child node.

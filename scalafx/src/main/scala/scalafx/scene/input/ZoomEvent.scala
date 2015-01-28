@@ -27,12 +27,14 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
 
 object ZoomEvent {
-  implicit def sfxZoomEvent2jfx(ze: ZoomEvent) = if (ze != null) ze.delegate else null
+  implicit def sfxZoomEvent2jfx(ze: ZoomEvent): jfxsi.ZoomEvent = if (ze != null) ze.delegate else null
 
   /**
    * Common supertype for all Zoom event types.

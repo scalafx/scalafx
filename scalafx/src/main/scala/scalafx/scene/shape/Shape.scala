@@ -26,20 +26,19 @@
  */
 package scalafx.scene.shape
 
-import collection.JavaConversions._
-import javafx.scene.{paint => jfxsp}
-import javafx.scene.{shape => jfxss}
+import javafx.scene.{paint => jfxsp, shape => jfxss}
+
+import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
+import scalafx.collections.ObservableBuffer
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.paint.Paint
-import scalafx.delegate.SFXDelegate
-import scalafx.collections.ObservableBuffer
 
 object Shape {
-  implicit def sfxShape2jfx(v: Shape) = if (v != null) v.delegate else null
+  implicit def sfxShape2jfx(v: Shape): jfxss.Shape = if (v != null) v.delegate else null
 
   /**
    * Returns a new Shape which is created as an intersection of the specified input shapes.

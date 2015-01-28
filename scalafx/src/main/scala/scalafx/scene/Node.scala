@@ -26,41 +26,26 @@
  */
 package scalafx.scene
 
-import scala.collection.JavaConversions.asJavaCollection
-import javafx.scene.{effect => jfxse}
-import javafx.scene.{input => jfxsi}
-import javafx.scene.{layout => jfxsl}
-import javafx.scene.{transform => jfxst}
-import javafx.{event => jfxe}
-import javafx.{geometry => jfxg}
-import javafx.{scene => jfxs}
-import javafx.{util => jfxu}
-import scalafx.collections._
+import javafx.scene.{effect => jfxse, input => jfxsi, layout => jfxsl, transform => jfxst}
+import javafx.{event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyBooleanProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyBooleanProperty, ReadOnlyObjectProperty, StringProperty}
+import scalafx.collections._
+import scalafx.delegate.SFXDelegate
 import scalafx.event.Event._
-import scalafx.event.{EventHandlerDelegate, Event}
+import scalafx.event.{Event, EventHandlerDelegate}
 import scalafx.geometry.Bounds._
 import scalafx.geometry.Point2D._
-import scalafx.geometry.Bounds
-import scalafx.geometry.Insets
-import scalafx.geometry.Point2D
-import scalafx.geometry.Point3D
-import scalafx.scene.effect.Effect
-import scalafx.delegate.SFXDelegate
-import scalafx.scene.transform.Transform
+import scalafx.geometry.{Bounds, Insets, Point2D, Point3D, Pos}
+import scalafx.scene.effect.{BlendMode, Effect}
 import scalafx.scene.image.WritableImage
-import scalafx.geometry.Pos
 import scalafx.scene.layout.Priority
-import scalafx.scene.effect.BlendMode
+import scalafx.scene.transform.Transform
 
 object Node {
-  implicit def sfxNode2jfx(v: Node) = if (v != null) v.delegate else null
+  implicit def sfxNode2jfx(v: Node): jfxs.Node = if (v != null) v.delegate else null
 }
 
 /**

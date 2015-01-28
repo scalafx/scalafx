@@ -27,13 +27,14 @@
 package scalafx.scene.media
 
 import javafx.scene.{media => jfxsm}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
-import scalafx.util.Duration
 import scalafx.event._
 
 object MediaErrorEvent {
-  implicit def sfxMediaErrorEvent2jfx(mee: MediaErrorEvent) = if (mee != null) mee.delegate else null
+  implicit def sfxMediaErrorEvent2jfx(mee: MediaErrorEvent): jfxsm.MediaErrorEvent = if (mee != null) mee.delegate else null
 
   val MEDIA_ERROR: EventType[jfxsm.MediaErrorEvent] = jfxsm.MediaErrorEvent.MEDIA_ERROR
 }

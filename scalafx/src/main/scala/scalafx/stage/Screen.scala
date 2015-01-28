@@ -27,14 +27,14 @@
 package scalafx.stage
 
 import javafx.{stage => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.geometry.Rectangle2D
-import scalafx.scene.Node._
-import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
+import scalafx.geometry.Rectangle2D
 
 object Screen {
-  implicit def sfxScreen2jfx(v: Screen) = if (v != null) v.delegate else null
+  implicit def sfxScreen2jfx(v: Screen): jfxs.Screen = if (v != null) v.delegate else null
 
   /**
    * The primary Screen.

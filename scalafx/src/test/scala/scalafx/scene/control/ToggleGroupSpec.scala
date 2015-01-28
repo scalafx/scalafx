@@ -27,11 +27,13 @@
 
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import javafx.scene.{control => jfxsc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
 
 /**
  * ToggleGroup Spec tests.

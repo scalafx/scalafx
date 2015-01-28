@@ -27,12 +27,14 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Glow {
-  implicit def sfxGlow2jfx(g: Glow) = if (g != null) g.delegate else null
+  implicit def sfxGlow2jfx(g: Glow): jfxse.Glow = if (g != null) g.delegate else null
 }
 
 class Glow(override val delegate: jfxse.Glow = new jfxse.Glow)

@@ -26,23 +26,21 @@
  */
 package scalafx.scene.control
 
-import javafx.{collections => jfxc}
-import javafx.{scene => jfxs}
 import javafx.scene.{control => jfxsc}
-import javafx.{util => jfxu}
+import javafx.{collections => jfxc, scene => jfxs, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.collections.ObservableBuffer
-import scalafx.scene.Node
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 
 object TableView {
-  implicit def sfxTableView2jfx[S](tv: TableView[S]) = if (tv != null) tv.delegate else null
+  implicit def sfxTableView2jfx[S](tv: TableView[S]): jfxsc.TableView[S] = if (tv != null) tv.delegate else null
 
   object ResizeFeatures {
-    implicit def sfxResizeFeatures2jfx[S](rf: ResizeFeatures[S]) = if (rf != null) rf.delegate else null
+    implicit def sfxResizeFeatures2jfx[S](rf: ResizeFeatures[S]): jfxsc.TableView.ResizeFeatures[S] = if (rf != null) rf.delegate else null
   }
 
   /**
@@ -63,7 +61,7 @@ object TableView {
   }
 
   object TableViewSelectionModel {
-    implicit def sfxTableViewSelectionModel2jfx[S](tvsm: TableViewSelectionModel[S]) = if (tvsm != null) tvsm.delegate else null
+    implicit def sfxTableViewSelectionModel2jfx[S](tvsm: TableViewSelectionModel[S]): jfxsc.TableView.TableViewSelectionModel[S] = if (tvsm != null) tvsm.delegate else null
   }
 
   /**
@@ -152,13 +150,10 @@ object TableView {
     def selectRightCell() {
       delegate.selectRightCell()
     }
-
-    delegate.selectLast()
-
   }
 
   object TableViewFocusModel {
-    implicit def sfxTableViewFocusModel2jfx[S](tvfm: TableViewFocusModel[S]) = if (tvfm != null) tvfm.delegate else null
+    implicit def sfxTableViewFocusModel2jfx[S](tvfm: TableViewFocusModel[S]): jfxsc.TableView.TableViewFocusModel[S] = if (tvfm != null) tvfm.delegate else null
   }
 
   /**

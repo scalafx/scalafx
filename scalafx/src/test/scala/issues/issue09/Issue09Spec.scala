@@ -27,8 +27,9 @@
 package issues.issue09
 
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.FlatSpec
+import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 

@@ -26,11 +26,13 @@
  */
 package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc}
+
 import org.junit.runner.RunWith
-import javafx.scene.{ control => jfxsc }
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.AbstractSFXDelegateSpec
+
 import scalafx.Includes._
+import scalafx.testutil.AbstractSFXDelegateSpec
 
 @RunWith(classOf[JUnitRunner])
 class MenuSpec

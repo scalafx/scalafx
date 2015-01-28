@@ -24,17 +24,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.controls
 
-import controls._
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.controls.controls.PropertiesNodes
+import scalafx.controls.controls.{PropertiesNodes, _}
 import scalafx.geometry.{Orientation, Pos}
 import scalafx.scene.Scene
 import scalafx.scene.control._
-import scalafx.scene.layout.{Priority, BorderPane, FlowPane, VBox}
+import scalafx.scene.layout.{BorderPane, FlowPane, Priority, VBox}
 import scalafx.scene.paint.Color
 import scalafx.util.converter.DoubleStringConverter
 
@@ -49,12 +49,12 @@ object SliderTest extends JFXApp {
     fillWidth = true
     alignment = Pos.Center
     hgrow = Priority.Never
-    content = List(new SliderControls(slider), new ControlControls(slider))
+    children = List(new SliderControls(slider), new ControlControls(slider))
   }
 
   val mainPane = new BorderPane {
     top = new FlowPane {
-      content = List(slider)
+      children = List(slider)
     }
     center = controlsPane
     vgrow = Priority.Always
@@ -186,7 +186,7 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   super.addNode("Snap To Ticks", chbSnapToTicks)
   super.addNode("Value Changing", chbValueChanging)
   super.addNode("Orientation", new VBox {
-    content = List(rdbHorizontal, rdbVertical)
+    children = List(rdbHorizontal, rdbVertical)
   })
 
   super.addNode(btnReset)

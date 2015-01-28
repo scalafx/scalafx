@@ -28,17 +28,15 @@ package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
 import javafx.{util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.IntegerProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, IntegerProperty, ObjectProperty, ReadOnlyDoubleProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
 object ValueAxis {
-  implicit def sfxValueAxis2jfx[T <: Number](v: ValueAxis[T]) = if (v != null) v.delegate else null
+  implicit def sfxValueAxis2jfx[T <: Number](v: ValueAxis[T]): jfxsc.ValueAxis[T] = if (v != null) v.delegate else null
 }
 
 abstract class ValueAxis[T <: Number](override val delegate: jfxsc.ValueAxis[T])

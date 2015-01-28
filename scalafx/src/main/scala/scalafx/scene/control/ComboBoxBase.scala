@@ -28,15 +28,14 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyBooleanProperty
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyBooleanProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
 
 object ComboBoxBase {
-  implicit def sfxComboBoxBase2jfx[T](cb: ComboBoxBase[T]) = if (cb != null) cb.delegate else null
+  implicit def sfxComboBoxBase2jfx[T](cb: ComboBoxBase[T]): jfxsc.ComboBoxBase[T] = if (cb != null) cb.delegate else null
 }
 
 abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) extends Control(delegate) with SFXDelegate[jfxsc.ComboBoxBase[T]] {

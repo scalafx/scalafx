@@ -27,10 +27,12 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object DoubleProperty {
-  implicit def sfxDoubleProperty2jfx(dp: DoubleProperty) = if (dp != null) dp.delegate else null
+  implicit def sfxDoubleProperty2jfx(dp: DoubleProperty): jfxbp.DoubleProperty = if (dp != null) dp.delegate else null
 
   /**
    * Creates a new DoubleProperty instance using the SimpleDoubleProperty as the target.
