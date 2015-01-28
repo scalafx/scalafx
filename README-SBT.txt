@@ -187,7 +187,7 @@ the moment. Here are the necessary commands:
     -DgroupId=org.scalafx \
     -Dpackaging=jar \
     -DpomFile=scalafx_2.9.3-2.2.76-R11.pom \
-    -Dfile=scalafx_2.9.3-2.2.67-R10-SNAPSHOT.jar \
+    -Dfile=scalafx_2.9.3-2.2.76-R11.jar \
     -Dversion=1.0-SNAPSHOT \
     -Dsources=scalafx_2.9.3-2.2.76-R11-sources.jar
 
