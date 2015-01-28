@@ -73,11 +73,11 @@ List the individual tree of projects and their version number:
 
     sbt> show version
     [info] scalafx/*:version
-    [info] 	2.2.76-R11
+    [info] 	2.2.76-R12-SNAPSHOT
     [info] scalafx-demos/*:version
-    [info] 	2.2.76-R11
+    [info] 	2.2.76-R12-SNAPSHOT
     [info] scalafx-project/*:version
-    [info] 	2.2.76-R11
+    [info] 	2.2.76-R12-SNAPSHOT
     (Where `sbt>' represents the Scala SBT interactive command line prompt)
     
 
@@ -186,10 +186,10 @@ the moment. Here are the necessary commands:
     % mvn install:install-file -DartifactId=scalafx_2.9.3 \
     -DgroupId=org.scalafx \
     -Dpackaging=jar \
-    -DpomFile=scalafx_2.9.3-2.2.76-R11.pom \
-    -Dfile=scalafx_2.9.3-2.2.67-R10-SNAPSHOT.jar \
+    -DpomFile=scalafx_2.10-2.2.76-R12-SNAPSHOT.pom \
+    -Dfile=scalafx_2.10-2.2.76-R12-SNAPSHOT.jar \
     -Dversion=1.0-SNAPSHOT \
-    -Dsources=scalafx_2.9.3-2.2.76-R11-sources.jar
+    -Dsources=scalafx_2.10-2.2.76-R12-SNAPSHOT-sources.jar
 
 
 You will to repeat this for all the modules. Please note the embedded Scala
@@ -206,10 +206,10 @@ following example of the `sbt' shell script.
 
 
     #!/bin/bash 
-    # SBT launch file (Peter Pilgrim)
+    # SBT launch file
     # http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html#manual-installation
     # based on SBT 0.13.5
-    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_76.jdk/Contents/Home
     export PATH=${JAVA_HOME}/bin:${JAVA_HOME}/jre/bin:${PATH}
     java -Xms512M -Xmx1536M -Xss2M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=512M -jar `dirname $0`/sbt-launch.jar "$@"
     # End.
@@ -283,9 +283,9 @@ Scala SBT check the `target' folder:
      % ls scalafx/target
      resolution-cache/	   scala-2.10/	   scala-2.11/	  streams/
      % ls scalafx/target/scala-2.10/
-     cache/	           scalafx_2.10-2.2.76-R11.jar
+     cache/	           scalafx_2.10-2.2.76-R12-SNAPSHOT.jar
      % ls scalafx/target/scala-2.11/
-     cache/            scalafx_2.11-2.2.76-R11.jar
+     cache/            scalafx_2.11-2.2.76-R12-SNAPSHOT.jar
 
 
 And of course this feature of cross Scala versions scales to more compiler
