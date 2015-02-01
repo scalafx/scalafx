@@ -24,36 +24,28 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.beans.binding
 
-import javafx.beans.value.ObservableObjectValue
+package issues.issue180
+
 import javafx.beans.{binding => jfxbb}
 
-import scala.language.implicitConversions
-import scalafx.beans.value.ObservableValue
+import scalafx.scene.Group
 
-object ObjectExpression {
-  implicit def sfxObjectExpression2jfx[J](oe: ObjectExpression[J]): jfxbb.ObjectExpression[J] = if (oe != null) oe.delegate else null
-}
+/**
+ * Illustration for Issue 180:
+ * In ScalaFX 8 use of Bindings.select* leads to IllegalArgumentException: "... property ... doesn't exist" exceptions.
+ * The same code works fine in ScalaFX 2.
+ */
+object BindingSelectDemo extends App {
 
-class ObjectExpression[J](val delegate: jfxbb.ObjectExpression[J]) {
-  def ===(v: Null) = delegate.isNull
-  def ===(v: ObservableObjectValue[_]) = delegate.isEqualTo(v)
-  // explicit conversion needed due to AnyRef typed method
-  def ===[T](v: ObservableValue[T, T]) = delegate.isEqualTo(ObservableValue.sfxObservableValue2jfxObjectValue[T](v))
-  def ===(v: AnyRef) = delegate.isEqualTo(v)
+  val group = new Group()
 
-  def =!=(v: Null) = delegate.isNotNull
-  def =!=(v: ObservableObjectValue[_]) = delegate.isNotEqualTo(v)
-  // explicit conversion needed due to AnyRef typed method
-  def =!=[T](v: ObservableValue[T, T]) = delegate.isNotEqualTo(ObservableValue.sfxObservableValue2jfxObjectValue[T](v))
-  def =!=(v: AnyRef) = delegate.isNotEqualTo(v)
+  // JavaFX version works fine
+  println("JavaFX `selectDouble`")
+  jfxbb.Bindings.selectDouble(group.delegate.parentProperty(), "width")
 
-  def selectDouble(s: String) = jfxbb.Bindings.selectDouble(this.delegate, s)
-  def selectBoolean(s: String) = jfxbb.Bindings.selectBoolean(this.delegate, s)
-  def selectFloat(s: String) = jfxbb.Bindings.selectFloat(this.delegate, s)
-  def selectInteger(s: String) = jfxbb.Bindings.selectInteger(this.delegate, s)
-  def selectLong(s: String) = jfxbb.Bindings.selectLong(this.delegate, s)
-  def selectString(s: String) = jfxbb.Bindings.selectString(this.delegate, s)
-  def select[T](s: String) = jfxbb.Bindings.select[T](this.delegate, s)
+  // ScalaFX throws exception:
+  //   Exception in thread "main" java.lang.IllegalArgumentException: The first property 'width' doesn't exist
+  println("ScalaFX `selectDouble`")
+  group.parent.selectDouble("width")
 }
