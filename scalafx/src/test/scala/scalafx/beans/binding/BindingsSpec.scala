@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 
 package scalafx.beans.binding
 
-import javafx.beans.{property => jfxbp}
+import javafx.beans.{binding => jfxbb, property => jfxbp}
 
 import org.junit.runner.RunWith
 import org.scalatest.Matchers._
@@ -36,6 +36,7 @@ import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
 import scalafx.Includes._
 import scalafx.beans.property._
+import scalafx.delegate.SFXDelegate
 
 /**
  * Bindings Spec tests.
@@ -166,6 +167,32 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
     objectProperty1 <== when(booleanProperty1) choose objectProperty2 otherwise obj1
     objectProperty1() should equal(obj1)
   }
+
+  it should "support selectDouble" in {
+    // Test for other select* variants should be similar
+
+    // Simulate ScalaFX wrapper
+    class DoubleHolderJFX {
+      val widthProperty = new jfxbp.SimpleDoubleProperty(this, "width", 7.0)
+      def getWidth: Double = widthProperty.getValue
+      def setWidth(v: Double) = widthProperty.setValue(v)
+    }
+    class DoublePropertySFX(val delegate: DoubleHolderJFX = new DoubleHolderJFX())
+      extends SFXDelegate[DoubleHolderJFX] {
+      val width: DoubleProperty = delegate.widthProperty
+    }
+
+    val dp1 = new ObjectProperty[DoubleHolderJFX](this, "level 2 property", new DoubleHolderJFX())
+    val prop2 = new DoubleProperty(this, "prop2", 0.0)
+    prop2() should equal(0.0)
+
+    prop2 <== dp1.selectDouble("width")
+    prop2() should equal(7.0)
+
+    dp1().setWidth(3.0)
+    prop2() should equal(3.0)
+  }
+
 
   it should "support that select* funk..." is (pending)
 
