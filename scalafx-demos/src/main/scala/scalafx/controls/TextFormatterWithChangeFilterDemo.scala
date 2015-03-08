@@ -27,8 +27,6 @@
 
 package scalafx.controls
 
-import javafx.util.StringConverter
-
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -38,6 +36,7 @@ import scalafx.scene.Scene
 import scalafx.scene.control.TextFormatter.Change
 import scalafx.scene.control.{Label, TextArea, TextField, TextFormatter}
 import scalafx.scene.layout.{BorderPane, VBox}
+import scalafx.util.StringConverter
 
 /**
  * Demonstrates a TextField control with a TextFormatter that filters changes.
@@ -45,41 +44,39 @@ import scalafx.scene.layout.{BorderPane, VBox}
  * The text field at a top is an input area. It should have a prompt-like text "> " that cannot be edited.
  * When pressing "Enter" the text after the prompt is copied to bottom output area.
  *
- * The changes in the input text field are monitored and filtered using TextFormatter parameter `filter`
- * to preserve the prompt text "> " at the beginning.
+ * The changes in the input text field are monitored and filtered using TextFormatter parameter `filter`.
+ * The examines the change and modifies it as needed to preserve the prompt text "> " at the beginning.
  */
 object TextFormatterWithChangeFilterDemo extends JFXApp {
 
-  case class Message(text: String)
+  case class Message(text: String) {
+    override def toString = '"' + text + '"'
+  }
 
   val prompt = "> "
 
   val converter = new StringConverter[Message] {
     override def fromString(s: String): Message = {
-      println("fromString(" + s + ")")
-      if (s.startsWith("> "))
-        Message(s.substring(2))
-      else if (s.startsWith(">"))
-        Message(s.substring(1))
-      else
-        Message(s)
+      val r =
+        if (s.startsWith(prompt)) s.substring(prompt.length)
+        else s
+      Message(r)
     }
     override def toString(v: Message): String = {
-      println("toString(" + v + ")")
-      "> " + v.text
+      prompt + v.text
     }
   }
 
-  val filter: (Change) => Change = { c: Change =>
+  // Filter the change restoring prompt if it was removed and correcting caret position
+  val filter: (Change) => Change = { change: Change =>
     // Restore prompt if part was deleted
-    if (c.controlNewText.length <= prompt.length) {
-      c.text = prompt.substring(c.controlNewText.length)
-      println("c.text: `" + c.text + "`")
+    if (change.controlNewText.length <= prompt.length) {
+      change.text = prompt.substring(change.controlNewText.length)
     }
     // Restore caret position if it moved over the prompt
-    if (c.anchor < prompt.length) c.anchor = prompt.length
-    if (c.caretPosition < prompt.length) c.caretPosition = prompt.length
-    c
+    if (change.anchor < prompt.length) change.anchor = prompt.length
+    if (change.caretPosition < prompt.length) change.caretPosition = prompt.length
+    change
   }
   val formatter = new TextFormatter[Message](converter, Message("hello"), filter)
 
@@ -93,23 +90,22 @@ object TextFormatterWithChangeFilterDemo extends JFXApp {
     textFormatter = formatter
     onAction = (a: ActionEvent) => {
       val str = text()
-      val message =
-        if (outputTextArea.text().length == 0)
-          converter.fromString(str)
-        else
-          converter.fromString(str) + "\n"
+      val message = converter.fromString(str) + "\n"
       outputTextArea.text = message + outputTextArea.text()
       text() = ""
     }
   }
 
   stage = new PrimaryStage {
-    scene = new Scene(300, 200) {
+    scene = new Scene(300, 300) {
       title = "TextFormatter Demo"
       root = new VBox {
         spacing = 6
         padding = Insets(10)
         children = Seq(
+          new Label("Example of using `TextFormatter` to ensure that the input field includes prompt text \"> \".") {
+            wrapText = true
+          },
           new Label("Type message at the prompt. Press \"Enter\" to send."),
           new BorderPane {
             top = textField
