@@ -48,12 +48,14 @@ object FileChooser {
 
     /**
      * Creates an ExtensionFilter with the specified description and the file name extensions.
+     * File name extension should be specified in the `*.<extension>` format.
      */
     def this(description: String, extensions: Seq[String]) = this(new jfxs.FileChooser.ExtensionFilter(description, extensions))
 
     /**
      * Creates an ExtensionFilter with the specified description and the file name extension.
      * This is a convenience constructor for a common situations when only one extension is used.
+     * File name extension should be specified in the `*.<extension>` format.
      */
     def this(description: String, extension: String) = this(new jfxs.FileChooser.ExtensionFilter(description, extension))
 
@@ -76,7 +78,8 @@ object FileChooser {
 }
 
 /**
- * Provides support for standard platform file dialogs. These dialogs have look and feel of the platform UI components which is independent of JavaFX.
+ * Provides support for standard platform file dialogs.
+ * These dialogs have look and feel of the platform UI components which is independent of JavaFX.
  *
  * Example:
  * {{{
