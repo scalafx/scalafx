@@ -1,0 +1,14 @@
+ScalaFX 8.0.40-R8 was tested against JavaFX 8.0.40. 
+This release adds wrappers for new features in JavaFX 8u40.
+
+* New features (JavaFX 8u40):
+    - Issue #162: Support Dialogs and Alerts. See examples in those [two](https://github.com/scalafx/scalafx/blob/master/scalafx-demos/src/main/scala/scalafx/controls/DialogsDemo.scala) [demos](https://github.com/scalafx/scalafx/blob/master/scalafx-demos/src/main/scala/scalafx/controls/LoginDialogDemo.scala)
+    - Issue #158: Add Spinner and SpinnerValueFactory classes. See examples in [this blog post](https://codingonthestaircase.wordpress.com/2014/11/08/scalafx-8-0-40-snapshot-spinner/)
+    - Add TextFormatter and new properties in TextInputControl. See examples in those two [blog](https://codingonthestaircase.wordpress.com/2014/12/14/scalafx-8u40-textformatter-part-1/) [posts](https://codingonthestaircase.wordpress.com/2015/03/07/scalafx-8u40-textformatter-part-2/).
+    - Add new class VertexFormat.
+    - Add wrappers for new properties in: LineChart, Node, Platform, ScrollPane, TriangleMesh.
+    - Issue #160: Support new accessibility properties added to Node
+    - Updated TreeItem constructors 
+    
+* Bug fixes:
+    - Issue #180: `Bindings.select*` methods throw "property ... doesn't exists" exceptions.
