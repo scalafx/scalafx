@@ -57,10 +57,10 @@ object LoginDialogDemo extends JFXApp {
 
     // Create the custom dialog.
     val dialog = new Dialog[Result]() {
+      initOwner(stage)
       title = "Login Dialog"
       headerText = "Look, a Custom Login Dialog"
       graphic = new ImageView(this.getClass.getResource("login_icon.png").toString)
-      initOwner(stage)
     }
 
     // Set the button types.
@@ -90,12 +90,10 @@ object LoginDialogDemo extends JFXApp {
     val loginButton = dialog.dialogPane().lookupButton(loginButtonType)
     loginButton.disable = true
 
-    // Do some validation (using the Java 8 lambda syntax).
+    // Do some validation (disable when username is empty).
     username.text.onChange { (_, _, newValue) => loginButton.disable = newValue.trim().isEmpty}
 
-    // NOTE: Due to clash between ScalaFX Pane.content and JavaFX DialogPane.contentProperty
-    // The DialogPane.content needs to accessed using `contentNode`
-    dialog.dialogPane().contentNode = grid
+    dialog.dialogPane().content = grid
 
     // Request focus on the username field by default.
     Platform.runLater(username.requestFocus())

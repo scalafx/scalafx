@@ -104,21 +104,38 @@ class DialogPane(override val delegate: jfxsc.DialogPane = new jfxsc.DialogPane(
     headerText() = value
   }
 
-  def contentNode: ObjectProperty[jfxs.Node] = delegate.contentProperty
-  def contentNode_=(value: Node): Unit = {
-    ObjectProperty.fillProperty[jfxs.Node](this.contentNode, value)
+  /**
+   * Property representing the content area of the dialog.
+   */
+  def content: ObjectProperty[jfxs.Node] = delegate.contentProperty
+  def content_=(value: Node): Unit = {
+    ObjectProperty.fillProperty[jfxs.Node](this.content, value)
   }
 
+  /**
+   * A property representing the content text for the dialog pane.
+   * The content text is lower precedence than the content node,
+   * meaning that if both the content node and the contentText properties are set,
+   * the content text will not be displayed in a default DialogPane instance.
+   */
   def contentText: StringProperty = delegate.contentTextProperty
   def contentText_=(value: String): Unit = {
     contentText() = value
   }
 
+  /**
+   * A property that represents the dialog expandable content area.
+   * Any Node can be placed in this area, but it will only be shown when the user clicks the 'Show Details' expandable button.
+   * This button will be added automatically when the expandable content property is non-null.
+   */
   def expandableContent: ObjectProperty[jfxs.Node] = delegate.expandableContentProperty
   def expandableContent_=(value: Node): Unit = {
     ObjectProperty.fillProperty[jfxs.Node](this.expandableContent, value)
   }
 
+  /**
+   * Represents whether the dialogPane is expanded.
+   */
   def expanded: BooleanProperty = delegate.expandedProperty
   def expanded_=(v: Boolean) {
     expanded() = v

@@ -72,30 +72,6 @@ class Group(override val delegate: jfxs.Group = new jfxs.Group())
   def children_=(n: Node) {
     fillSFXCollectionWithOne(this.children, n)
   }
-  /**
-   * Gets the list of children of this `Group`.
-   */
-  @deprecated("Will be removed due to name conflicts with JavaFX 8u40. Use `children` instead.", since = "2.2.75-R11")
-  def content = children
-  /**
-   * Sets the list of children, replacing the prior content. If you want append to current content, use `add` or
-   * similar.
-   *
-   * @param c list of children to replace prior content.
-   */
-  @deprecated("Will be removed due to name conflicts with JavaFX 8u40. Use `children` instead.", since = "2.2.75-R11")
-  def content_=(c: Iterable[Node]) {
-    children = c
-  }
-  /**
-   * Sets a child, replacing the prior content. If you want append to current content, use `add` or similar.
-   *
-   * @param n Node to replace prior content.
-   */
-  @deprecated("Will be removed due to name conflicts with JavaFX 8u40. Use `children` instead.", since = "2.2.75-R11")
-  def content_=(n: Node) {
-    children = n
-  }
 
   /**
    * Controls whether or not this Group will automatically resize any managed resizable children
