@@ -17,7 +17,17 @@ This release adds wrappers for new features in JavaFX 8u40.
 * Bug fixes:
     - Issue #180: `Bindings.select*` methods throw "property ... doesn't exists" exceptions.
     
+To use ScalaFX add following to your SBT:
+
+``` scala
+libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.40-R8"
+```
+
+For binary downloads visit [ScalaFX on Sonatype](http://search.maven.org/#search&#124;ga&#124;1&#124;scalafx).    
+    
 [1]: https://codingonthestaircase.wordpress.com/2015/03/16/scalafx-alerts-and-dialogs/
 [2]: https://codingonthestaircase.wordpress.com/2014/11/08/scalafx-8-0-40-snapshot-spinner/
 [3]: https://codingonthestaircase.wordpress.com/2014/12/14/scalafx-8u40-textformatter-part-1/
 [4]: https://codingonthestaircase.wordpress.com/2015/03/07/scalafx-8u40-textformatter-part-2/
+
+
