@@ -37,6 +37,7 @@ import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Scene
 import scalafx.scene.control.Alert.AlertType
 import scalafx.scene.control._
+import scalafx.scene.image.Image
 import scalafx.scene.layout.{GridPane, Priority, VBox}
 
 /**
@@ -47,6 +48,7 @@ object DialogsDemo extends JFXApp {
 
   stage = new PrimaryStage {
     scene = new Scene {
+      icons += new Image("/scalafx/sfx.png")
       title = "Dialogs Demo"
       root = new VBox {
         children = Seq(
@@ -77,7 +79,8 @@ object DialogsDemo extends JFXApp {
 
   def informationDialog(): Unit = {
     new Alert(AlertType.Information) {
-      title = "Information Dialog"
+      initOwner(stage)
+      title = "Information Dialog."
       headerText = "Look, an Information Dialog"
       contentText = "I have a great message for you!"
     }.showAndWait()
@@ -85,6 +88,7 @@ object DialogsDemo extends JFXApp {
 
   def withoutHeader(): Unit = {
     new Alert(AlertType.Information) {
+      initOwner(stage)
       title = "Information Dialog"
       headerText = None
       contentText = "I have a great message for you!"
@@ -93,16 +97,18 @@ object DialogsDemo extends JFXApp {
 
   def warningDialog(): Unit = {
     new Alert(AlertType.Warning) {
+      initOwner(stage)
       title = "Warning Dialog"
-      headerText = "Look, an Warning Dialog"
+      headerText = "Look, an Warning Dialog."
       contentText = "Careful with the next step!"
     }.showAndWait()
   }
 
   def errorDialog(): Unit = {
     new Alert(AlertType.Error) {
+      initOwner(stage)
       title = "Error Dialog"
-      headerText = "Look, an Error Dialog"
+      headerText = "Look, an Error Dialog."
       contentText = "Ooops, there was an error!"
     }.showAndWait()
   }
@@ -134,8 +140,9 @@ object DialogsDemo extends JFXApp {
     }
 
     new Alert(AlertType.Error) {
+      initOwner(stage)
       title = "Exception Dialog"
-      headerText = "Look, an Exception Dialog"
+      headerText = "Look, an Exception Dialog."
       contentText = "Could not find file blabla.txt!"
       // Set expandable Exception into the dialog pane.
       dialogPane().expandableContent = expContent
@@ -144,8 +151,9 @@ object DialogsDemo extends JFXApp {
 
   def confirmationDialog(): Unit = {
     val alert = new Alert(AlertType.Confirmation) {
+      initOwner(stage)
       title = "Confirmation Dialog"
-      headerText = "Look, a Confirmation Dialog"
+      headerText = "Look, a Confirmation Dialog."
       contentText = "Are you ok with this?"
     }
 
@@ -163,8 +171,9 @@ object DialogsDemo extends JFXApp {
     val ButtonTypeThree = new ButtonType("Three")
 
     val alert = new Alert(AlertType.Confirmation) {
+      initOwner(stage)
       title = "Confirmation Dialog with Custom Actions"
-      headerText = "Look, a Confirmation Dialog with Custom Actions"
+      headerText = "Look, a Confirmation Dialog with Custom Actions."
       contentText = "Choose your option."
       // Note that we override here default dialog buttons, OK and Cancel, with new ones.
       // We could also just add to existing button using `++=`.
@@ -182,9 +191,10 @@ object DialogsDemo extends JFXApp {
   }
 
   def textInputDialog(): Unit = {
-    val dialog = new TextInputDialog("walter") {
+    val dialog = new TextInputDialog(defaultValue = "walter") {
+      initOwner(stage)
       title = "Text Input Dialog"
-      headerText = "Look, a Text Input Dialog"
+      headerText = "Look, a Text Input Dialog."
       contentText = "Please enter your name:"
     }
 
@@ -199,11 +209,11 @@ object DialogsDemo extends JFXApp {
 
     val choices = Seq("a", "b", "c")
 
-    val dialog = new ChoiceDialog("b", choices) {
+    val dialog = new ChoiceDialog(defaultChoice = "b", choices = choices) {
+      initOwner(stage)
       title = "Choice Dialog"
-      headerText = "Look, a Choice Dialog"
+      headerText = "Look, a Choice Dialog."
       contentText = "Choose your letter:"
-
     }
 
     val result = dialog.showAndWait()
