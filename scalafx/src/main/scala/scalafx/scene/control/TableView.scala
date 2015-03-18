@@ -40,7 +40,7 @@ import scalafx.scene.Node
  * $OBJCOMPSTA$TV$OBJCOMPEND
  *
  * @define OBJCOMPSTA Object companion for [[scalafx.scene.control.
- * @define OBJCOMPEND ]].
+           * @ d e f i n e O B J C O M P E N D ]].
  * @define JFX JavaFX
  * @define SFX ScalaFX
  * @define WRAPSTA Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/

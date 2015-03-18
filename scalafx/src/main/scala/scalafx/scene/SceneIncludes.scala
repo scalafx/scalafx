@@ -85,6 +85,10 @@ with ControlIncludes
  */
 trait LowerPriorityIncludes {
 
+  implicit def jfxAccessibleAction2sfx(e: jfxs.AccessibleAction): AccessibleAction = AccessibleAction.jfxEnum2sfx(e)
+
+  implicit def jfxAccessibleRole2sfx(e: jfxs.AccessibleRole): AccessibleRole = AccessibleRole.jfxEnum2sfx(e)
+
   implicit def jfxAmbientLight2sfx(v: jfxs.AmbientLight): AmbientLight = if (v != null) new AmbientLight(v) else null
 
   /**

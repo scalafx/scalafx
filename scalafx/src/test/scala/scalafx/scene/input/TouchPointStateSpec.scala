@@ -36,7 +36,7 @@ import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.scene.input.TouchPoint.State]]. */
 @RunWith(classOf[JUnitRunner])
-class TouchPointStateSpec 
+class TouchPointStateSpec
   extends SFXEnumDelegateSpec[jfxsi.TouchPoint.State, TouchPoint.State](
     classOf[jfxsi.TouchPoint.State],
     classOf[TouchPoint.State],

@@ -44,7 +44,7 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 class ContextMenuSpec
   extends SimpleSFXDelegateSpec[jfxsc.ContextMenu, ContextMenu](
     classOf[jfxsc.ContextMenu], classOf[ContextMenu])
-  with RunOnApplicationThread  {
+  with RunOnApplicationThread {
 
   it should "not drop assigned items - Issue 42" in {
     val menuItemA = new MenuItem("MenuItemA")

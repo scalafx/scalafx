@@ -35,7 +35,7 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * 	Chart Spec tests.
+ * Chart Spec tests.
  *
  *
  */

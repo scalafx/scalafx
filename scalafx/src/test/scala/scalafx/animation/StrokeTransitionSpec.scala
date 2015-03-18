@@ -40,6 +40,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class StrokeTransitionSpec 
+class StrokeTransitionSpec
   extends SimpleSFXDelegateSpec[jfxa.StrokeTransition, StrokeTransition](
     classOf[jfxa.StrokeTransition], classOf[StrokeTransition])

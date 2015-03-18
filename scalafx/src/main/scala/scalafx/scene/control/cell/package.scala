@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.control
 
 import javafx.beans.{property => jfxbp, value => jfxbv}
@@ -125,7 +126,7 @@ package object cell {
      *
      * @param item  The new item for the cell
      * @param empty whether or not this cell represents data from the list. If it is empty, then it does not
-     * represent any domain data, but is a cell being used to render an "empty" row.
+     *              represent any domain data, but is a cell being used to render an "empty" row.
      */
     def updateItem(item: T, empty: Boolean) {
       delegate.asInstanceOf[Updated].updateItem(item, empty)

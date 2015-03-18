@@ -37,7 +37,7 @@ object BoxBlur {
   implicit def sfxBoxBlur2jfx(bb: BoxBlur): jfxse.BoxBlur = if (bb != null) bb.delegate else null
 }
 
-/** 
+/**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/BoxBlur.html]]
  */
 class BoxBlur(override val delegate: jfxse.BoxBlur = new jfxse.BoxBlur)

@@ -38,8 +38,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class PromptDataSpec extends SimpleSFXDelegateSpec[jfxsw.PromptData, PromptData](classOf[jfxsw.PromptData], classOf[PromptData]) {
 
-    override protected def getScalaClassInstance = new PromptData("", "")
+  override protected def getScalaClassInstance = new PromptData("", "")
 
-    override protected def getJavaClassInstance = new jfxsw.PromptData("", "")
+  override protected def getJavaClassInstance = new jfxsw.PromptData("", "")
 
 }

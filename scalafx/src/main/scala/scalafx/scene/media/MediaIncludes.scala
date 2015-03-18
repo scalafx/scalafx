@@ -44,7 +44,7 @@ object MediaIncludes extends MediaIncludes
  * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/media/
  * @define END ]]` instance to its $SFX counterpart.
  * @define BEGINWR Converts a Function that manipulates a $SFX [[scalafx.scene.media.
- * @define FINISHWR ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html EventHandler]] that manipulates it's $JFX couterpart.
+           * @ d e f i n e F I N I S H W R ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html EventHandler]] that manipulates it's $JFX couterpart.
  * @define PARAMWR function that manipulates a $SFX's
  * @define RETWR A $JFX's EventHandler that manipulates a $JFX's
  *

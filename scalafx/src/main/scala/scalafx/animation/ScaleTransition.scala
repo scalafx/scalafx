@@ -55,7 +55,7 @@ object ScaleTransition extends AnimationStatics {
 
 /**
  * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/ScaleTransition.html $ST]].
- * 
+ *
  * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
  * @param delegate JavaFX $ST to be delegated.
  *

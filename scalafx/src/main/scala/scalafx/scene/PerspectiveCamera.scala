@@ -41,7 +41,7 @@ class PerspectiveCamera(override val delegate: jfxs.PerspectiveCamera = new jfxs
   extends Camera(delegate) with SFXDelegate[jfxs.PerspectiveCamera] {
 
   /** Constructs a PerspectiveCamera with the specified fixedEyeAtCameraZero flag.  */
-  def this(fixedEyeAtCameraZero:Boolean) = this(new jfxs.PerspectiveCamera(fixedEyeAtCameraZero))
+  def this(fixedEyeAtCameraZero: Boolean) = this(new jfxs.PerspectiveCamera(fixedEyeAtCameraZero))
 
   /**
    * Specifies the vertical angle of the camera's projection.

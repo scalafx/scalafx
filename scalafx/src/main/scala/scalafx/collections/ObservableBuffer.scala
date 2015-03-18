@@ -466,7 +466,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
   /**
    * Remove a range of elements. Use this method if you want a functionality such as
    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html#remove(int,int) the method]]
-   *  with same signature in $OL.
+   * with same signature in $OL.
    *
    * @param from the start of the range to remove (inclusive)
    * @param to  the end of the range to remove (exclusive)

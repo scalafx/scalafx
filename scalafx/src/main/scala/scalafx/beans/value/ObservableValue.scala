@@ -92,8 +92,8 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
    *
    * @tparam J1 J superclass.
    * @param op Function that receives a 
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableValue.html $OV]],
-   * the old value and the new value. It will be called when value changes.
+   *           [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableValue.html $OV]],
+   *           the old value and the new value. It will be called when value changes.
    * @return $SUBRET
    */
   def onChange[J1 >: J](op: (ObservableValue[T, J], J1, J1) => Unit): Subscription = {

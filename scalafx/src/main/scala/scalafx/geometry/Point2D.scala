@@ -37,7 +37,7 @@ object Point2D {
   /**
    * Point or vector with both coordinates set to zero.
    */
-  val Zero = new Point2D (jfxg.Point2D.ZERO)
+  val Zero = new Point2D(jfxg.Point2D.ZERO)
 }
 
 class Point2D(override val delegate: jfxg.Point2D) extends SFXDelegate[jfxg.Point2D] {

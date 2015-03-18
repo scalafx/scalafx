@@ -49,7 +49,7 @@ class Point2DSpec
 
   it should "report all zero cooordinates as Point2D.Zero" in {
     val zero = Point2D.Zero
-    assert (zero.x === 0.0)
-    assert (zero.y === 0.0)
+    assert(zero.x === 0.0)
+    assert(zero.y === 0.0)
   }
 }

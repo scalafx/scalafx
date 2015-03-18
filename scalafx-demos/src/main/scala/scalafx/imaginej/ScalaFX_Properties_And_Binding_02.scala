@@ -45,9 +45,9 @@ import scalafx.beans.property.IntegerProperty
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- * based upon: Example 3 Using the Fluent API
+ *         based upon: Example 3 Using the Fluent API
  *
- * http://docs.oracle.com/javafx/2.0/binding/jfxpub-binding.htm
+ *         http://docs.oracle.com/javafx/2.0/binding/jfxpub-binding.htm
  *
  */
 

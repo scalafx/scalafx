@@ -44,15 +44,15 @@ trait InputDelegateSpec[D <: InputDelegate[_]] extends FlatSpec {
     inputDelegate.input = initialInput
 
     inputDelegate.input.onChange((ov, oldInput, newInput) => {
-      oldInput should be (initialInput.delegate)
-      newInput should be (finalInput.delegate)
+      oldInput should be(initialInput.delegate)
+      newInput should be(finalInput.delegate)
       changed = true
     })
 
     inputDelegate.input = finalInput
 
     changed should be(true)
-    inputDelegate.input.value should be (finalInput.delegate)
+    inputDelegate.input.value should be(finalInput.delegate)
   }
 
 }

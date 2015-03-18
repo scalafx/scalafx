@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc, text => jfxst}
@@ -83,6 +84,16 @@ abstract class TextInputControl(override val delegate: jfxsc.TextInputControl)
   def selection: ReadOnlyObjectProperty[jfxsc.IndexRange] = delegate.selectionProperty
 
   /**
+   * The property describes if it's currently possible to undo the latest change of the content that was done.
+   */
+  def undoable: ReadOnlyBooleanProperty = delegate.undoableProperty()
+
+  /**
+   * The property describes if it's currently possible to redo the latest change of the content that was undone.
+   */
+  def redoable: ReadOnlyBooleanProperty = delegate.redoableProperty()
+
+  /**
    * The textual content of this TextInputControl.
    */
   def text: StringProperty = delegate.textProperty
@@ -99,4 +110,12 @@ abstract class TextInputControl(override val delegate: jfxsc.TextInputControl)
     promptText() = v
   }
 
+  /**
+   * The property contains currently attached `TextFormatter`.
+   * Since the value is part of the `Formatter`, changing the TextFormatter will update the text based on the new textFormatter.
+   */
+  def textFormatter: ObjectProperty[jfxsc.TextFormatter[_]] = delegate.textFormatterProperty()
+  def textFormatter_=(v: TextFormatter[_]): Unit = {
+    ObjectProperty.fillProperty(textFormatter, v)
+  }
 }

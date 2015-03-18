@@ -41,7 +41,7 @@ object SnapshotParameters {
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/SnapshotParameters.html]]
- * 
+ *
  * @since 2.2
  */
 class SnapshotParameters(override val delegate: jfxs.SnapshotParameters = new jfxs.SnapshotParameters)

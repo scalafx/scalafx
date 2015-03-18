@@ -35,7 +35,7 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * 	PieChart Spec tests.
+ * PieChart Spec tests.
  *
  *
  */

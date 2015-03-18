@@ -39,7 +39,7 @@ object InputMethodTextRun {
 class InputMethodTextRun(override val delegate: jfxsi.InputMethodTextRun)
   extends SFXDelegate[jfxsi.InputMethodTextRun] {
 
-  def this(text:String,  highlight : InputMethodHighlight ) {
+  def this(text: String, highlight: InputMethodHighlight) {
     this(new jfxsi.InputMethodTextRun(text, highlight))
   }
 

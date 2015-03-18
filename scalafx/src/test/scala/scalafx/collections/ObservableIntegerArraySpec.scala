@@ -49,7 +49,7 @@ class ObservableIntegerArraySpec
   /**
    * Test trait for instance testing.
    */
-  
+
   trait InstanceTests {
     val array0: Array[Int] = Array.empty
     val array1 = Array(4, 5, 6, 7)
@@ -82,7 +82,7 @@ class ObservableIntegerArraySpec
 
   /**
    * @inheritdoc
-   * 
+   *
    * Overridden to create empty JFX ObservableIntegerArray (inherited method fails).
    */
   override protected def getJavaClassInstance = jfxc.FXCollections.observableIntegerArray()
@@ -187,10 +187,10 @@ class ObservableIntegerArraySpec
       instance2.resize(4) // Notification 3
       testNonEmpty(instance2, Array(array2(0), 0, 0, 0))
       assert(change.size === 4)
-      verifyChange(0, instance0, true, 0, 3)  // Elements 0 through 2 added.
-      verifyChange(1, instance1, true, 0, 0)  // All elements cleared.
-      verifyChange(2, instance2, true, 1, 1)  // Elements 1 through 4 removed.
-      verifyChange(3, instance2, true, 1, 4)  // Elements 1 through 3 added.
+      verifyChange(0, instance0, true, 0, 3) // Elements 0 through 2 added.
+      verifyChange(1, instance1, true, 0, 0) // All elements cleared.
+      verifyChange(2, instance2, true, 1, 1) // Elements 1 through 4 removed.
+      verifyChange(3, instance2, true, 1, 4) // Elements 1 through 3 added.
       assert(changes === 4)
     }
   }
@@ -210,14 +210,14 @@ class ObservableIntegerArraySpec
   }
   it should "allow its contents to be cleared" in {
     new InstanceTests {
-      instance0.clear()    // No notification - nothing was changed
+      instance0.clear() // No notification - nothing was changed
       testEmpty(instance0)
-      instance1.clear()    // Notification 0
+      instance1.clear() // Notification 0
       testEmpty(instance1)
       // Repeat - make sure nothing unexpected happens.
-      instance1.clear()    // No notification - nothing was changed
+      instance1.clear() // No notification - nothing was changed
       testEmpty(instance1)
-      instance2.clear()    // Notification 1
+      instance2.clear() // Notification 1
       testEmpty(instance2)
       assert(change.size === 2)
       verifyChange(0, instance1, true, 0, 0)
@@ -250,15 +250,15 @@ class ObservableIntegerArraySpec
   }
   it should "allow individual elements to be modified and report changes" in {
     new InstanceTests {
-      testOutOfBoundsExceptionThrown (instance0(-1) = 0)
-      testOutOfBoundsExceptionThrown (instance0(0) = 0)
-      testOutOfBoundsExceptionThrown (instance1(-1) = 0)
+      testOutOfBoundsExceptionThrown(instance0(-1) = 0)
+      testOutOfBoundsExceptionThrown(instance0(0) = 0)
+      testOutOfBoundsExceptionThrown(instance1(-1) = 0)
       instance1(0) = 0 // Notification 0
       instance1(2) = 1 // Notification 1
       instance1(3) = 2 // Notification 2
-      testOutOfBoundsExceptionThrown (instance1(4) = 2)
+      testOutOfBoundsExceptionThrown(instance1(4) = 2)
       testNonEmpty(instance1, Array(0, array1(1), 1, 2))
-      assert (change.size === 3)
+      assert(change.size === 3)
       verifyChange(0, instance1, false, 0, 1)
       verifyChange(1, instance1, false, 2, 3)
       verifyChange(2, instance1, false, 3, 4)
@@ -286,7 +286,7 @@ class ObservableIntegerArraySpec
   it should "return valid array from companion's apply(Array)" in {
     testEmpty(ObservableIntegerArray(Array[Int]()))
     val arrays = List(Array(1), Array(0, 1, 2, 3, 4))
-    arrays.foreach (array => testNonEmpty(ObservableIntegerArray(array), array))
+    arrays.foreach(array => testNonEmpty(ObservableIntegerArray(array), array))
   }
   it should "return valid initialized array from companion's fill(n)(f)" in {
     def fillArray(n: Int): ObservableIntegerArray = {

@@ -41,5 +41,5 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class ClosePathSpec 
+class ClosePathSpec
   extends SimpleSFXDelegateSpec[jfxss.ClosePath, ClosePath](classOf[jfxss.ClosePath], classOf[ClosePath])

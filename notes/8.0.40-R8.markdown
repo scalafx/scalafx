@@ -1,0 +1,23 @@
+ScalaFX 8.0.40-R8 was tested against JavaFX 8.0.40. 
+This release adds wrappers for new features in JavaFX 8u40.
+
+* Compatibility braking changes:
+    - Issue #163: `content` property naming conflict with JavaFX 8u40. Usage of `content` property in ScalaFX where it was referring to `children` property in JavaFX was deprecated in v.8.0.31-R7, and is now removed in ScalaFX 8.0.40-R8. You need to use `children` to access `childrenProperty` in JavaFX, and `content` to access `contentProperty`.
+    - To follow the same naming approach, use of `content` in `Scene` and `SubScene` was deprecated. You should use `children` instead.
+
+* New features (JavaFX 8u40):
+    - Issue #162: Support Dialogs and Alerts. See examples in those [this blog post][1]
+    - Issue #158: Add Spinner and SpinnerValueFactory classes. See examples in [this blog post][2]
+    - Add TextFormatter and new properties in TextInputControl. See examples in those two [blog][3] [posts][4].
+    - Add new class VertexFormat.
+    - Add wrappers for new properties in: LineChart, Node, Platform, ScrollPane, TriangleMesh.
+    - Issue #160: Support new accessibility properties added to Node
+    - Updated TreeItem constructors 
+    
+* Bug fixes:
+    - Issue #180: `Bindings.select*` methods throw "property ... doesn't exists" exceptions.
+    
+[1]: https://codingonthestaircase.wordpress.com/2015/03/16/scalafx-alerts-and-dialogs/
+[2]: https://codingonthestaircase.wordpress.com/2014/11/08/scalafx-8-0-40-snapshot-spinner/
+[3]: https://codingonthestaircase.wordpress.com/2014/12/14/scalafx-8u40-textformatter-part-1/
+[4]: https://codingonthestaircase.wordpress.com/2015/03/07/scalafx-8u40-textformatter-part-2/

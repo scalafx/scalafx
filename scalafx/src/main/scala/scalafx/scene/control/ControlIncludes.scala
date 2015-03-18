@@ -28,7 +28,6 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe}
 
 import scala.language.implicitConversions
 import scalafx.beans.property.ReadOnlyObjectProperty
@@ -158,6 +157,19 @@ trait ControlIncludes
    */
   implicit def jfxAccordion2sfx(a: jfxsc.Accordion): Accordion = if (a != null) new Accordion(a) else null
 
+  implicit def jfxAlert2sfx(a: jfxsc.Alert): Alert = if (a != null) new Alert(a) else null
+
+  implicit def jfxAlertType2sfx(a: jfxsc.Alert.AlertType): Alert.AlertType = if (a != null) new Alert.AlertType(a) else null
+
+  implicit def jfxDialog2sfx[R](a: jfxsc.Dialog[R]): Dialog[R] = if (a != null) new Dialog[R](a) else null
+
+  implicit def jfxDialogEvent2sfx(a: jfxsc.DialogEvent): DialogEvent = if (a != null) new DialogEvent(a) else null
+
+  implicit def jfxDialogPane2sfx(a: jfxsc.DialogPane): DialogPane = if (a != null) new DialogPane(a) else null
+
+  implicit def jfxDoubleSpinnerValueFactory2sfx(ev: jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory): SpinnerValueFactory.DoubleSpinnerValueFactory =
+    if (ev != null) new SpinnerValueFactory.DoubleSpinnerValueFactory(ev) else null
+
   /**
    * $START$TGGR.html $TGGR$END
    *
@@ -198,6 +210,12 @@ trait ControlIncludes
    */
   implicit def jfxButton2sfx(b: jfxsc.Button): Button = if (b != null) new Button(b) else null
 
+  implicit def jfxButtonBar2sfx(b: jfxsc.ButtonBar): ButtonBar = if (b != null) new ButtonBar(b) else null
+
+  implicit def jfxButtonData2sfx(b: jfxsc.ButtonBar.ButtonData): ButtonBar.ButtonData = if (b != null) new ButtonBar.ButtonData(b) else null
+
+  implicit def jfxButtonType2sfx(b: jfxsc.ButtonType): ButtonType = if (b != null) new ButtonType(b) else null
+
   /**
    * $START$CELL.html $CELL$END
    *
@@ -223,6 +241,9 @@ trait ControlIncludes
    * @return $SFX $CEBX
    */
   implicit def jfxCheckBox2sfx(c: jfxsc.CheckBox): CheckBox = if (c != null) new CheckBox(c) else null
+
+  implicit def jfxChoiceDialog2sfx[T](c: jfxsc.ChoiceDialog[T]): ChoiceDialog[T] = if (c != null) new ChoiceDialog[T](c) else null
+
 
   /**
    * $START$CMNIT.html $MNIT$END
@@ -334,6 +355,9 @@ trait ControlIncludes
    */
   implicit def jfxIndexRange2sfx(r: jfxsc.IndexRange): IndexRange = if (r != null) new IndexRange(r) else null
 
+  implicit def jfxIntegerSpinnerValueFactory2sfx(ev: jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory): SpinnerValueFactory.IntegerSpinnerValueFactory =
+    if (ev != null) new SpinnerValueFactory.IntegerSpinnerValueFactory(ev) else null
+
   /**
    * $START$LBEL.html $LBEL$END
    *
@@ -358,6 +382,9 @@ trait ControlIncludes
    * @return $SFX $LSCL
    */
   implicit def jfxListCell[T](l: jfxsc.ListCell[T]): ListCell[T] = if (l != null) new ListCell(l) else null
+
+  implicit def jfxListSpinnerValueFactory2sfx[T](ev: jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[T]): SpinnerValueFactory.ListSpinnerValueFactory[T] =
+    if (ev != null) new SpinnerValueFactory.ListSpinnerValueFactory(ev) else null
 
   /**
    * $START$LSVW.html $LSVW$END
@@ -498,6 +525,12 @@ trait ControlIncludes
    */
   implicit def jfxSlider2sfx(s: jfxsc.Slider): Slider = if (s != null) new Slider(s) else null
 
+  implicit def jfxSpinner2sfx[T](ev: jfxsc.Spinner[T]): Spinner[T] =
+    if (ev != null) new Spinner[T](ev) else null
+
+  implicit def jfxSpinnerValueFactory2sfx[T](ev: jfxsc.SpinnerValueFactory[T]): SpinnerValueFactory[T] =
+    if (ev != null) new SpinnerValueFactory(ev) {} else null
+
   /**
    * $START$SPMB.html $SPMB$END
    *
@@ -523,6 +556,8 @@ trait ControlIncludes
    * @return $SFX $TBCM
    */
   implicit def jfxTableColumn2sfx[S, T](tc: jfxsc.TableColumn[S, T]): TableColumn[S, T] = if (tc != null) new TableColumn[S, T](tc) else null
+
+  implicit def jfxTextInputDialog2sfx(v: jfxsc.TextInputDialog): TextInputDialog = if (v != null) new TextInputDialog(v) else null
 
   /**
    * $START$TBST.html $TBST$END
@@ -661,6 +696,10 @@ trait ControlIncludes
    */
   implicit def jfxTableFocusModel2sfx[T, TC <: jfxsc.TableColumnBase[T, _]](tfm: jfxsc.TableFocusModel[T, TC]): TableFocusModel[T, TC] =
     if (tfm != null) new TableFocusModel[T, TC](tfm) {} else null
+
+  implicit def jfxTextFormatter2sfx[V](t: jfxsc.TextFormatter[V]): TextFormatter[V] = if (t != null) new TextFormatter(t) else null
+
+  implicit def jfxTextFormatterChange2sfx[V](t: jfxsc.TextFormatter.Change): TextFormatter.Change = if (t != null) new TextFormatter.Change(t) else null
 
   /**
    * $START$TTPN.html $TTPN$END

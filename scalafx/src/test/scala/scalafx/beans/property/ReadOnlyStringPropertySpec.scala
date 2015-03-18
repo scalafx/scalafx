@@ -59,259 +59,259 @@ class ReadOnlyStringPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   "A Read-only String Property" should "return the constant value set" in {
-    readOnlyStringProperty.value should equal ("read-only")
+    readOnlyStringProperty.value should equal("read-only")
   }
 
   it should "return its value using apply" in {
-    readOnlyStringProperty() should equal ("read-only")
+    readOnlyStringProperty() should equal("read-only")
   }
 
   it should "know its name" in {
-    readOnlyStringProperty.name should equal ("Test Read-only String")
+    readOnlyStringProperty.name should equal("Test Read-only String")
   }
 
   it should "know its bean" in {
-    readOnlyStringProperty.bean should equal (bean)
+    readOnlyStringProperty.bean should equal(bean)
   }
 
   it should "be bindable to another String Property" in {
     stringProperty <== readOnlyStringProperty
-    stringProperty() should equal ("read-only")
+    stringProperty() should equal("read-only")
   }
 
   it should "support unbinding from another String Property" in {
     stringProperty <== readOnlyStringProperty
-    stringProperty() should equal ("read-only")
+    stringProperty() should equal("read-only")
     stringProperty.unbind()
     stringProperty() = "other"
-    stringProperty() should equal ("other")
+    stringProperty() should equal("other")
   }
 
   it should "support bindable infix equality (===) with a property" in {
     booleanProperty <== stringProperty === readOnlyStringProperty
     stringProperty() = "something"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     stringProperty() = "read-only"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix equality (===) with an sfx property" in {
     booleanProperty <== readOnlyStringProperty === sfxStringProperty
     sfxStringProperty() = "something"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     sfxStringProperty() = "read-only"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix equality (===) with a string" in {
     booleanProperty <== readOnlyStringProperty === "something"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyStringProperty === "read-only"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support null/empty-string comparisons for equals (===)" in {
     booleanProperty <== readOnlyStringProperty === null
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyStringProperty === ""
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix inequality (=!=) with a property" in {
     booleanProperty <== stringProperty =!= readOnlyStringProperty
     stringProperty() = "something"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     stringProperty() = "read-only"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix inequality (=!=) with an sfx property" in {
     booleanProperty <== readOnlyStringProperty =!= sfxStringProperty
     sfxStringProperty() = "something"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     sfxStringProperty() = "read-only"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix inequality (=!=) with a string" in {
     booleanProperty <== readOnlyStringProperty =!= "something"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     booleanProperty <== readOnlyStringProperty =!= "read-only"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support null/empty-string comparisons for not equals (=!=)" in {
     booleanProperty <== readOnlyStringProperty =!= null
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     booleanProperty <== readOnlyStringProperty =!= ""
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix, case-insensitive equality (==~) with a property" in {
     booleanProperty <== stringProperty ==~ readOnlyStringProperty
     stringProperty() = "something"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     stringProperty() = "READ-ONLY"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix, case-insensitive equality (==~) with an sfx property" in {
     booleanProperty <== readOnlyStringProperty ==~ sfxStringProperty
     sfxStringProperty() = "something"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     sfxStringProperty() = "READ-ONLY"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix, case-insensitive equality (==~) with a string" in {
     booleanProperty <== readOnlyStringProperty ==~ "something"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyStringProperty ==~ "READ-ONLY"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support null/empty-string comparisons for case-insensitive equals (==~)" in {
     booleanProperty <== readOnlyStringProperty ==~ null
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyStringProperty ==~ ""
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix, case-insensitive inequality (!=~) with a property" in {
     booleanProperty <== stringProperty !=~ readOnlyStringProperty
     stringProperty() = "something"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     stringProperty() = "READ-ONLY"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix, case-insensitive inequality (!=~) with an sfx property" in {
     booleanProperty <== readOnlyStringProperty !=~ sfxStringProperty
     sfxStringProperty() = "something"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     sfxStringProperty() = "READ-ONLY"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix, case-insensitive inequality (!=~) with a string" in {
     booleanProperty <== readOnlyStringProperty !=~ "something"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     booleanProperty <== readOnlyStringProperty !=~ "READ-ONLY"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support null/empty-string comparisons for case-insensitive not equals (!=~)" in {
     booleanProperty <== readOnlyStringProperty !=~ null
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     booleanProperty <== readOnlyStringProperty !=~ ""
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix less than (<) with a property" in {
     booleanProperty <== stringProperty < readOnlyStringProperty
     stringProperty() = "alpha"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     stringProperty() = "zed"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix less than (<) with a string" in {
     booleanProperty <== readOnlyStringProperty < "alpha"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyStringProperty < "zed"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support null/empty-string comparisons for less than (<)" in {
     booleanProperty <== readOnlyStringProperty < null
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyStringProperty < ""
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix less than or equal to (<=) with a property" in {
     booleanProperty <== stringProperty <= readOnlyStringProperty
     stringProperty() = "alpha"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     stringProperty() = "read-only"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     stringProperty() = "zed"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix less than or equal to (<=) with a string" in {
     booleanProperty <== readOnlyStringProperty <= "alpha"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyStringProperty <= "read-only"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     booleanProperty <== readOnlyStringProperty <= "zed"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support null/empty-string comparisons for less than or equal to (<=)" in {
     booleanProperty <== readOnlyStringProperty <= null
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyStringProperty <= ""
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix greater than (>) with a property" in {
     booleanProperty <== stringProperty > readOnlyStringProperty
     stringProperty() = "alpha"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     stringProperty() = "zed"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix greater than (>) with a string" in {
     booleanProperty <== readOnlyStringProperty > "alpha"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     booleanProperty <== readOnlyStringProperty > "zed"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support null/empty-string comparisons for greater than (>)" in {
     booleanProperty <== readOnlyStringProperty > null
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     booleanProperty <== readOnlyStringProperty > ""
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix greater than or equal to (>=) with a property" in {
     booleanProperty <== stringProperty >= readOnlyStringProperty
     stringProperty() = "alpha"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     stringProperty() = "read-only"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     stringProperty() = "zed"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix greater than or equal to (>=) with a string" in {
     booleanProperty <== readOnlyStringProperty >= "alpha"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     booleanProperty <== readOnlyStringProperty >= "read-only"
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     booleanProperty <== readOnlyStringProperty >= "zed"
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support null/empty-string comparisons for greater than or equal to (>=)" in {
     booleanProperty <== readOnlyStringProperty >= null
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     booleanProperty <== readOnlyStringProperty >= ""
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support concatenation" in {
     stringProperty <== readOnlyStringProperty + " " + stringProperty2
     stringProperty2() = "World"
-    stringProperty() should equal ("read-only World")
+    stringProperty() should equal("read-only World")
   }
 
   it should "support concatenation of nulls/primitives" in {
     stringProperty <== readOnlyStringProperty + null + stringProperty2 + 15
     stringProperty2() = "World"
-    stringProperty() should equal ("read-onlynullWorld15")
+    stringProperty() should equal("read-onlynullWorld15")
   }
 }

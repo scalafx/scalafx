@@ -50,118 +50,129 @@ import scalafx.scene.{Group, Node, PerspectiveCamera, Scene, SceneAntialiasing}
 
 object CubeSampleDemo extends JFXApp {
 
-    var animation: Timeline = _
-    var root = new Group
-    stage = new PrimaryStage {
-//      width = 800
-//      height = 600
-      scene = new Scene( root, 400, 150, true, SceneAntialiasing.Balanced )
-      resizable = false
-      title = "Graphics 3D Cubes Sample Demo in ScalaFX"
+  var animation: Timeline = _
+  var root = new Group
+  stage = new PrimaryStage {
+    //      width = 800
+    //      height = 600
+    scene = new Scene(root, 400, 150, true, SceneAntialiasing.Balanced)
+    resizable = false
+    title = "Graphics 3D Cubes Sample Demo in ScalaFX"
+  }
+
+  root.getTransforms.addAll(new Translate(400 / 2, 150 / 2), new Rotate(180, Rotate.XAxis))
+
+  stage.getScene.setCamera(new PerspectiveCamera())
+
+  root.children.add(create3dContent())
+
+
+  def create3dContent(): Node = {
+    val c = new Cube(50, Color.Red, 1)
+    c.rx.setAngle(45)
+    c.ry.setAngle(45)
+    val c2 = new Cube(50, Color.Green, 1)
+    c2.setTranslateX(100)
+    c2.rx.setAngle(45)
+    c2.ry.setAngle(45)
+    val c3 = new Cube(50, Color.Orange, 1)
+    c3.setTranslateX(-100)
+    c3.rx.setAngle(45)
+    c3.ry.setAngle(45)
+
+    animation = new Timeline {
+      cycleCount = Timeline.Indefinite
+      keyFrames = Seq(
+        at(0 s) {c.ry.angle -> 0d},
+        at(0 s) {c2.rx.angle -> 0d},
+        at(0 s) {c3.rz.angle -> 0d},
+        at(1 s) {c.ry.angle -> 360d},
+        at(1 s) {c2.rx.angle -> 360d},
+        at(1 s) {c3.rz.angle -> 360d}
+      )
     }
 
-    root.getTransforms.addAll( new Translate(400 / 2, 150 / 2), new Rotate(180, Rotate.XAxis) )
+    new Group(c, c2, c3)
+  }
 
-    stage.getScene.setCamera( new PerspectiveCamera() )
+  def play() {
+    animation.play()
+  }
 
-    root.children.add(create3dContent())
+  def stop() {
+    animation.pause()
+  }
 
-
-    def create3dContent():Node = {
-      val c = new Cube(50,Color.Red,1)
-      c.rx.setAngle(45)
-      c.ry.setAngle(45)
-      val c2 = new Cube(50,Color.Green,1)
-      c2.setTranslateX(100)
-      c2.rx.setAngle(45)
-      c2.ry.setAngle(45)
-      val c3 = new Cube(50,Color.Orange,1)
-      c3.setTranslateX(-100)
-      c3.rx.setAngle(45)
-      c3.ry.setAngle(45)
-
-      animation = new Timeline {
-        cycleCount = Timeline.Indefinite
-        keyFrames = Seq(
-          at (0 s) { c.ry.angle -> 0d },
-          at (0 s) { c2.rx.angle -> 0d },
-          at (0 s) { c3.rz.angle -> 0d },
-          at (1 s) { c.ry.angle -> 360d },
-          at (1 s) { c2.rx.angle -> 360d },
-          at (1 s) { c3.rz.angle -> 360d }
-        )
-      }
-
-      new Group(c,c2,c3)
-    }
-
-    def play() {
-      animation.play()
-    }
-
-    def stop() {
-      animation.pause()
-    }
-
-    play()
+  play()
 }
 
 
-class Cube( size: Double, color: Color, shade: Double) extends Group {
-  val rx = new Rotate(0,Rotate.XAxis)
-  val ry = new Rotate(0,Rotate.YAxis)
-  val rz = new Rotate(0,Rotate.ZAxis)
+class Cube(size: Double, color: Color, shade: Double) extends Group {
+  val rx = new Rotate(0, Rotate.XAxis)
+  val ry = new Rotate(0, Rotate.YAxis)
+  val rz = new Rotate(0, Rotate.ZAxis)
 
   transforms = Seq(rz, ry, rx)
 
   children = Seq(
-      new Rectangle { // back face
-        width = size
-        height = size
-        fill = color.deriveColor(0.0, 1.0, (1 - 0.5*shade), 1.0)
-        translateX = -0.5*size
-        translateY = -0.5*size
-        translateZ = 0.5*size
-      },
-      new Rectangle { // bottom face
-        width = size ; height = size
-        fill = color.deriveColor(0.0, 1.0, (1 - 0.4*shade), 1.0)
-        translateX = -0.5*size
-        translateY = 0
-        rotationAxis = Rotate.XAxis
-        rotate = 90
-      },
-      new Rectangle { // right face
-        width = size ; height = size
-        fill = color.deriveColor(0.0, 1.0, (1 - 0.3*shade), 1.0)
-        translateX = -1*size
-        translateY = -0.5*size
-        rotationAxis = Rotate.YAxis
-        rotate = 90
-      },
-      new Rectangle { // left face
-        width = size; height = size
-        fill = color.deriveColor(0.0, 1.0, (1 - 0.2*shade), 1.0)
-        translateX = 0
-        translateY = -0.5*size
-        rotationAxis = Rotate.YAxis
-        rotate = 90
-      },
-      new Rectangle { // top face
-        width = size; height = size
-        fill = color.deriveColor(0.0, 1.0, (1 - 0.1*shade), 1.0)
-        translateX = -0.5*size
-        translateY = -1*size
-        rotationAxis = Rotate.XAxis
-        rotate = 90
-      },
-      new Rectangle { // top face
-        width = size; height = size
-        fill = color
-        translateX = -0.5*size
-        translateY = -0.5*size
-        translateZ = -0.5*size
-      }
-    )
+    new Rectangle {
+      // back face
+      width = size
+      height = size
+      fill = color.deriveColor(0.0, 1.0, (1 - 0.5 * shade), 1.0)
+      translateX = -0.5 * size
+      translateY = -0.5 * size
+      translateZ = 0.5 * size
+    },
+    new Rectangle {
+      // bottom face
+      width = size;
+      height = size
+      fill = color.deriveColor(0.0, 1.0, (1 - 0.4 * shade), 1.0)
+      translateX = -0.5 * size
+      translateY = 0
+      rotationAxis = Rotate.XAxis
+      rotate = 90
+    },
+    new Rectangle {
+      // right face
+      width = size;
+      height = size
+      fill = color.deriveColor(0.0, 1.0, (1 - 0.3 * shade), 1.0)
+      translateX = -1 * size
+      translateY = -0.5 * size
+      rotationAxis = Rotate.YAxis
+      rotate = 90
+    },
+    new Rectangle {
+      // left face
+      width = size;
+      height = size
+      fill = color.deriveColor(0.0, 1.0, (1 - 0.2 * shade), 1.0)
+      translateX = 0
+      translateY = -0.5 * size
+      rotationAxis = Rotate.YAxis
+      rotate = 90
+    },
+    new Rectangle {
+      // top face
+      width = size;
+      height = size
+      fill = color.deriveColor(0.0, 1.0, (1 - 0.1 * shade), 1.0)
+      translateX = -0.5 * size
+      translateY = -1 * size
+      rotationAxis = Rotate.XAxis
+      rotate = 90
+    },
+    new Rectangle {
+      // top face
+      width = size;
+      height = size
+      fill = color
+      translateX = -0.5 * size
+      translateY = -0.5 * size
+      translateZ = -0.5 * size
+    }
+  )
 
 }

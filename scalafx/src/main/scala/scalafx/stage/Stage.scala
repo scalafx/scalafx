@@ -171,7 +171,7 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
    */
   def showing_=(v: Boolean) {
     v match {
-      case true => delegate.show()
+      case true  => delegate.show()
       case false => delegate.hide()
     }
   }

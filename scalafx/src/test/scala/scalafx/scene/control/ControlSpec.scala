@@ -37,12 +37,12 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Control Spec tests.
- * 
+ *
  *
  */
 @RunWith(classOf[JUnitRunner])
 class ControlSpec extends SimpleSFXDelegateSpec[jfxsc.Control, Control](classOf[jfxsc.Control], classOf[Control])
-  with RunOnApplicationThread {
+with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new Control(new jfxsc.Label) {}
 

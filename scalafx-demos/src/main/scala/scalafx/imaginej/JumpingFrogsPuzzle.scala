@@ -367,7 +367,7 @@ class Control {
   def update(model: Model, view: View) {
     view.frogShapes.foreach {
       case `theDummyFrogShape` =>
-      case frogShape => frogShape.onMouseClicked = {
+      case frogShape           => frogShape.onMouseClicked = {
         (_: MouseEvent) =>
           val frog = frogShape.getFrog
           if (model.canJumpOneRight(frog)) {

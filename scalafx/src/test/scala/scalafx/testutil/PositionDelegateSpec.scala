@@ -46,7 +46,7 @@ trait PositionDelegateSpec[D <: PositionDelegate[_]] extends FlatSpec {
     testedProperty.value = -10.0
 
     testedProperty.onChange(moved = true)
-    observerDouble <== testedProperty 
+    observerDouble <== testedProperty
 
     testedProperty.value = +101.0
 

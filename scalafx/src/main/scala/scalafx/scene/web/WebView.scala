@@ -53,7 +53,7 @@ object WebView {
 
   /**
    * @return The CssMetaData associated with this class, which may include the CssMetaData of its
-   * super classes.
+   *         super classes.
    * @since 8.0
    */
   def classCssMetaData: Buffer[jfxc.CssMetaData[_ <: jfxc.Styleable, _]] =

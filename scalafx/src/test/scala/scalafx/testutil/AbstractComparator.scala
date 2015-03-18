@@ -97,6 +97,7 @@ private[testutil] trait AbstractComparator extends Assertions {
   }
 
   protected object JavaBeanEvaluator {
+
     import java.lang.Boolean.{TYPE => JBoolean}
     import java.lang.Void.{TYPE => JVoid}
 
@@ -118,13 +119,13 @@ private[testutil] trait AbstractComparator extends Assertions {
     /**
      * It takes a Java method and, if it fits in Java Beans standards, returns this name "scalaized". Its operation
      * is as follows:
-     *  - If it is a setter method (starts with `set`, has just one argument and it's a void method), returns the
-     *  property name followed by a "_=". e.g. `public void setFoo(Object o)` returns `foo_=`
-     *  - It it is boolean getter (starts with `is`, has no argument and it's a boolean method), returns the
-     *  property name. e.g. `public boolean isFoo()` returns `foo`
-     *  - It it is general getter (starts with `get`, has no argument and it's a not-void method), returns the
-     *  property name. e.g. `public int getFoo()` returns `foo`
-     *  - Otherwise, returns original method name.
+     * - If it is a setter method (starts with `set`, has just one argument and it's a void method), returns the
+     * property name followed by a "_=". e.g. `public void setFoo(Object o)` returns `foo_=`
+     * - It it is boolean getter (starts with `is`, has no argument and it's a boolean method), returns the
+     * property name. e.g. `public boolean isFoo()` returns `foo`
+     * - It it is general getter (starts with `get`, has no argument and it's a not-void method), returns the
+     * property name. e.g. `public int getFoo()` returns `foo`
+     * - Otherwise, returns original method name.
      */
     def scalaizePropertyNames(m: Method): String = {
       val name = m.getName
@@ -144,20 +145,20 @@ private[testutil] trait AbstractComparator extends Assertions {
    */
   private def methodToString(m: Method) = {
 
-      def classParameterToString(classParameter: Class[_], isVarargs: Boolean = false) = {
-        (classParameter.isArray, classParameter.getName.matches("""^\[.$"""), isVarargs) match {
-          case (true, true, true)   => classParameter.getName.last + "..."
-          case (true, true, false)  => classParameter.getName.last + "[]"
-          case (true, false, true)  => classParameter.getName.substring(2).init + "..."
-          case (true, false, false) => classParameter.getName.substring(2).init + "[]"
-          case (false, _, _)        => classParameter.getName
-        }
+    def classParameterToString(classParameter: Class[_], isVarargs: Boolean = false) = {
+      (classParameter.isArray, classParameter.getName.matches( """^\[.$"""), isVarargs) match {
+        case (true, true, true)   => classParameter.getName.last + "..."
+        case (true, true, false)  => classParameter.getName.last + "[]"
+        case (true, false, true)  => classParameter.getName.substring(2).init + "..."
+        case (true, false, false) => classParameter.getName.substring(2).init + "[]"
+        case (false, _, _)        => classParameter.getName
       }
+    }
 
     val strParameters = (m.getParameterTypes.size, m.isVarArgs) match {
-      case (0, _)    => ""
-      case (1, true) => classParameterToString(m.getParameterTypes.last, true)
-      case (_, true) => m.getParameterTypes.init.map(classParameterToString(_)).mkString("", ", ", ", ") +
+      case (0, _)     => ""
+      case (1, true)  => classParameterToString(m.getParameterTypes.last, true)
+      case (_, true)  => m.getParameterTypes.init.map(classParameterToString(_)).mkString("", ", ", ", ") +
         classParameterToString(m.getParameterTypes.last, true)
       case (_, false) => m.getParameterTypes.map(classParameterToString(_)).mkString(", ")
     }
@@ -191,12 +192,12 @@ private[testutil] trait AbstractComparator extends Assertions {
    * @param javaMethods Relation of methods from a Java class
    * @param scalaMethods Relation of methods from a Scala class.
    * @param javaMethodsNotMirrored Relation of javaMethods that are not reflected in the scalaMethods. Default value:
-   * [[scala.Nil]].
+   *                               [[scala.Nil]].
    */
   @tailrec
   private def compare(javaMethods: List[Method], scalaMethods: List[Method], javaMethodsNotMirrored: List[Method] = Nil): List[Method] = {
     javaMethods match {
-      case Nil => javaMethodsNotMirrored
+      case Nil                        => javaMethodsNotMirrored
       case javaMethod :: otherMethods => {
         val finderMethod = MethodsComparators.getFinderMethod(javaMethod)
         val desirableName = getDesirableMethodName(javaMethod)

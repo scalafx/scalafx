@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,9 +53,9 @@ import scalafx.scene.shape.Rectangle
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- * based upon:
+ *         based upon:
  *
- * http://docs.oracle.com/javafx/2.0/ui_controls/toggle-button.htm
+ *         http://docs.oracle.com/javafx/2.0/ui_controls/toggle-button.htm
  *
  */
 

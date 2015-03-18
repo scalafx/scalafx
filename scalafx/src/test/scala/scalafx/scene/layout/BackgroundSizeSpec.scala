@@ -41,7 +41,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class BackgroundSizeSpec
   extends SimpleSFXDelegateSpec[jfxsl.BackgroundSize, BackgroundSize](
-    classOf[jfxsl.BackgroundSize], classOf[BackgroundSize])  {
+    classOf[jfxsl.BackgroundSize], classOf[BackgroundSize]) {
 
   override protected def getScalaClassInstance = new BackgroundSize(getJavaClassInstance) {}
 

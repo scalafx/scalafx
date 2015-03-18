@@ -46,7 +46,7 @@ class BubbleChartSpec
   with RunOnApplicationThread {
 
   override def getScalaClassInstance = new BubbleChart[Number, Number](getJavaClassInstance)
-  
+
   override def getJavaClassInstance = new jfxsc.BubbleChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
 
 }

@@ -36,7 +36,7 @@ import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 object PixelFormat {
   implicit def sfxPixelFormat2jfx[B <: Buffer](pf: PixelFormat[B]): jfxsi.PixelFormat[B] = pf.delegate
 
-  object Type 
+  object Type
     extends SFXEnumDelegateCompanion[jfxsi.PixelFormat.Type, Type] {
 
     /**
@@ -75,11 +75,11 @@ object PixelFormat {
      */
     val INT_ARGB_PRE = new Type(jfxsi.PixelFormat.Type.INT_ARGB_PRE)
 
-    protected override def unsortedValues: Array[Type] = Array(BYTE_BGRA, BYTE_BGRA_PRE, BYTE_INDEXED, BYTE_RGB, 
-        INT_ARGB, INT_ARGB_PRE)
+    protected override def unsortedValues: Array[Type] = Array(BYTE_BGRA, BYTE_BGRA_PRE, BYTE_INDEXED, BYTE_RGB,
+      INT_ARGB, INT_ARGB_PRE)
 
   }
-  
+
   /**
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/PixelFormat.Type.html]]
    */
@@ -114,7 +114,7 @@ abstract class PixelFormat[B <: Buffer](override val delegate: jfxsi.PixelFormat
   def getArgb(buf: B, x: Int, y: Int, scanlineStride: Int): Int = delegate.getArgb(buf, x, y, scanlineStride)
 
   /**
-   * 
+   *
    */
   def getType: PixelFormat.Type = delegate.getType
 

@@ -51,11 +51,11 @@ object JavaFXAnimation extends JFXApp {
     cycleCount = Timeline.Indefinite
     autoReverse = true
     keyFrames = Seq(
-      at (2 s) {rect1.x -> 200d tween Interpolator.EASE_IN},
-      at (4 s) {rect1.x -> 300d},
-      at (3 s) {rect2.y -> 100d tween Interpolator.EASE_BOTH},
-      at (4 s) {rect2.y -> 300d},
-      at (4 s) {rect2.width -> 300d tween Interpolator.EASE_OUT}
+      at(2 s) {rect1.x -> 200d tween Interpolator.EASE_IN},
+      at(4 s) {rect1.x -> 300d},
+      at(3 s) {rect2.y -> 100d tween Interpolator.EASE_BOTH},
+      at(4 s) {rect2.y -> 300d},
+      at(4 s) {rect2.width -> 300d tween Interpolator.EASE_OUT}
     )
   }
   timeline.play()

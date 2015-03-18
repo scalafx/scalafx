@@ -58,6 +58,6 @@ abstract class Control(override val delegate: jfxsc.Control)
   def tooltip_=(v: Tooltip) {
     tooltip() = v
   }
-  
-  
+
+
 }

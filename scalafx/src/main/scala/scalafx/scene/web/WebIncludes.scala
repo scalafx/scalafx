@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.web
 
 import javafx.event.EventHandler
@@ -44,7 +45,7 @@ object WebIncludes extends WebIncludes
  * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/
  * @define END ]]` instance to its $SFX counterpart.
  * @define BEGINWR Converts a Function that manipulates a $SFX [[scalafx.scene.web.
- * @define FINISHWR ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html EventHandler]] that manipulates it's $JFX counterpart.
+           * @define FINISHWR ]] and returns a [[http://www.scala-lang.org/api/current/scala/Any.html scala.Any]] into a $JFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html EventHandler]] that manipulates it's $JFX counterpart.
  * @define PARAMWR function that manipulates a $SFX's
  * @define RETWR A $JFX's EventHandler that manipulates a $JFX's
  *

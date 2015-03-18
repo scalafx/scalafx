@@ -46,7 +46,7 @@ class AreaChartSpec
   with RunOnApplicationThread {
 
   override def getScalaClassInstance = new AreaChart[Number, Number](getJavaClassInstance)
-  
+
   override def getJavaClassInstance = new jfxsc.AreaChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
 
 }

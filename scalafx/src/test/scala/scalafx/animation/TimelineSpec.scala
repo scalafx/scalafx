@@ -40,5 +40,5 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class TimelineSpec 
+class TimelineSpec
   extends SimpleSFXDelegateSpec[jfxa.Timeline, Timeline](classOf[jfxa.Timeline], classOf[Timeline])

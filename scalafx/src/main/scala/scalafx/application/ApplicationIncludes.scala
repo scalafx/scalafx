@@ -43,7 +43,7 @@ trait ApplicationIncludes {
 
   /**
    * Converts a 
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html `javafx.application.Application.Parameters`]] 
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html `javafx.application.Application.Parameters`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX Parameters
@@ -60,7 +60,7 @@ trait ApplicationIncludes {
 
   /**
    * Converts a 
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/ConditionalFeature.html `javafx.application.ConditionalFeature`]] 
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/ConditionalFeature.html `javafx.application.ConditionalFeature`]]
    * instance to its ScalaFX counterpart.
    *
    * @param e JavaFX ConditionalFeature

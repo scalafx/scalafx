@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -111,7 +111,7 @@ object SliderLabelControlDemo extends JFXApp {
 
   val x: java.lang.Double = 5.0
   val value = new IntegerProperty(1.asInstanceOf[java.lang.Object], "value")
-    //new DoubleProperty(x, "Value")
+  //new DoubleProperty(x, "Value")
 
   val lblValue = new Label {
     text <== value.asString("%2d")

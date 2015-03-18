@@ -39,7 +39,7 @@ import scalafx.Includes._
  *
  */
 @RunWith(classOf[JUnitRunner])
-class NumberStringConverterSpec 
+class NumberStringConverterSpec
   extends AbstractStringConverterDelegateSpec[Number, jfxuc.NumberStringConverter, Number, NumberStringConverter](classOf[jfxuc.NumberStringConverter], classOf[NumberStringConverter], classOf[Number]) {
 
   val examples = List((new java.lang.Integer(10), "10"), (new java.lang.Integer(0), "0"),

@@ -66,7 +66,7 @@ object Interpolator {
 
   /**
    * Creates an $INT, which `curve()` is shaped using the spline control points defined by `(x1, y1)` and `(x2, y2)`.
-   * 
+   *
    * @param x1 x coordinate of the first control point
    * @param y1 y coordinate of the first control point
    * @param x2 x coordinate of the second control point
@@ -77,7 +77,7 @@ object Interpolator {
 
   /**
    * Creates a tangent $INT, for which in-tangent and out-tangent are identical.
-   * 
+   *
    * @param t The delta time of the tangent
    * @param v The value of the tangent
    * @return the new Tangent interpolator
@@ -86,7 +86,7 @@ object Interpolator {
 
   /**
    * Create a tangent $INT.
-   * 
+   *
    * @param t1 The delta time of the in-tangent
    * @param v1 The value of the in-tangent
    * @param t2 The delta time of the out-tangent

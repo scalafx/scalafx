@@ -41,6 +41,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 class ModifierSpec
   extends SimpleSFXDelegateSpec[jfxsi.KeyCombination.Modifier, KeyCombination.Modifier](classOf[jfxsi.KeyCombination.Modifier], classOf[KeyCombination.Modifier]) {
 
-      override protected def getJavaClassInstance = jfxsi.KeyCombination.ALT_ANY
+  override protected def getJavaClassInstance = jfxsi.KeyCombination.ALT_ANY
 
 }

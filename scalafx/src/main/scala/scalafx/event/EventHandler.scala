@@ -213,7 +213,7 @@ trait EventHandlerDelegate {
    * to avoid compilation error "ambiguous reference to overloaded definition"
    */
   object FilterMagnet {
-    implicit def fromParen[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: () => Unit): FilterMagnet[J, S]  = {
+    implicit def fromParen[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: () => Unit): FilterMagnet[J, S] = {
       new FilterMagnet[J, S] {
         override val eventFilter = new jfxe.EventHandler[J] {
           def handle(event: J) {
@@ -223,7 +223,7 @@ trait EventHandlerDelegate {
       }
     }
 
-    implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S): FilterMagnet[J, S]  = {
+    implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S): FilterMagnet[J, S] = {
       new FilterMagnet[J, S] {
         override val eventFilter = new jfxe.EventHandler[J] {
           def handle(event: J) {

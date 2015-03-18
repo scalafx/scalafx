@@ -1,7 +1,7 @@
 ScalaFX 8.0.31-R7 was tested against JavaFX 8.0.31. Improvements and bug fixes are mostly merged from ScalaFX 2 branch (except Issue #159).
 
 * Compatibility braking changes:
-    - Issue #163: `content` property naming conflict with JavaFX 8u40. Usage of `content` property in ScalaFX where it was referring to `children` property in JavaFX was deprecated and will be removed in ScalaFX 8u40.\
+    - Issue #163: `content` property naming conflict with JavaFX 8u40. Usage of `content` property in ScalaFX where it was referring to `children` property in JavaFX was deprecated and will be removed in ScalaFX 8u40.
     - Issue #164: Scala 2.9 is no longer supported starting with this release.
 
 * New features:

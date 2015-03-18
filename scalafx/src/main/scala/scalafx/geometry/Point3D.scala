@@ -37,7 +37,7 @@ object Point3D {
   /**
    * Point or vector with all three coordinates set to zero.
    */
-  val Zero = new Point3D (jfxg.Point3D.ZERO)
+  val Zero = new Point3D(jfxg.Point3D.ZERO)
 }
 
 class Point3D(override val delegate: jfxg.Point3D) extends SFXDelegate[jfxg.Point3D] {

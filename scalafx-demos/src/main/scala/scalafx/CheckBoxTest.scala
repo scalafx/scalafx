@@ -43,7 +43,7 @@ object CheckBoxTest extends JFXApp {
     text = "CheckBox"
   }
   check.onAction = (event: ActionEvent) => {
-      lblCheckState.text = if (check.indeterminate.get) "Indeterminate" else check.selected.get().toString
+    lblCheckState.text = if (check.indeterminate.get) "Indeterminate" else check.selected.get().toString
   }
 
   val lblCheckState = new Label {
@@ -54,7 +54,7 @@ object CheckBoxTest extends JFXApp {
     text = "Allow Indeterminate"
   }
   btnAllowIndeterminate.onAction = (event: ActionEvent) => {
-      check.allowIndeterminate = !check.allowIndeterminate.get()
+    check.allowIndeterminate = !check.allowIndeterminate.get()
   }
 
   val lblAllowIndeterminate = new Label {
@@ -64,7 +64,7 @@ object CheckBoxTest extends JFXApp {
   val btnFire = new Button {
     text = "Fire!"
   }
-  btnFire.onAction = (event: ActionEvent) =>  check.fire()
+  btnFire.onAction = (event: ActionEvent) => check.fire()
 
   val txfText = new TextField
   txfText.delegate.textProperty.bindBidirectional(check.text)

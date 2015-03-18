@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,17 +42,17 @@ object PaginationSample extends JFXApp {
 
   private def createPage(pageIndex: Int): VBox = {
 
-      def getPage(i: Int) = {
-        val link = new Hyperlink {
-          text = "Item " + (i + 1)
-          visited = true
-        }
-        new VBox {
-          children = List(link,
-            new Label("""|Search results
-                         |for %s""".stripMargin.format(link.text.value)))
-        }
+    def getPage(i: Int) = {
+      val link = new Hyperlink {
+        text = "Item " + (i + 1)
+        visited = true
       }
+      new VBox {
+        children = List(link,
+          new Label( """|Search results
+                       |for %s""".stripMargin.format(link.text.value)))
+      }
+    }
 
     val page = pageIndex * itemsPerPage
     new VBox(5) {

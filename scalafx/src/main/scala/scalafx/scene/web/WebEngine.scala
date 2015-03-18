@@ -105,7 +105,7 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   }
 
   /**
-   *  The event handler called when an error occurs.
+   * The event handler called when an error occurs.
    *
    * @since 8.0
    */
@@ -158,9 +158,9 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
     javaScriptEnabled() = v
   }
 
-  /** 
+  /**
    * Specifies the directory to be used by this WebEngine to store local user data.
-   *   
+   *
    * @since 8.0
    */
   def userDataDirectory: ObjectProperty[java.io.File] = delegate.userDataDirectoryProperty
@@ -206,7 +206,7 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
 
   /**
    * Specifies user agent ID string.
-   * 
+   *
    * @since 8.0
    */
   def userAgent: StringProperty = delegate.userAgentProperty

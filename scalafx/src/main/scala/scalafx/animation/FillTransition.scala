@@ -57,7 +57,7 @@ object FillTransition extends AnimationStatics {
 
 /**
  * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FillTransition.html $FT]].
- * 
+ *
  * @constructor Creates a new ScalaFX $FT from a JavaFX $FT.
  * @param delegate JavaFX $FT to be delegated.
  *

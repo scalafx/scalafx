@@ -41,14 +41,14 @@ abstract class Track(override val delegate: jfxsm.Track) extends SFXDelegate[jfx
    * Retrieves the name of the track.
    */
   def name = delegate.getName
-  
+
   /**
    * The `Locale` specifying the language and possibly the country that the `Track` contents are formatted for.
    */
   def locale = delegate.getLocale
-  
+
   def metadata = delegate.getMetadata
-  
+
   /**
    * Gets the `trackID` as defined by the media container format.
    */

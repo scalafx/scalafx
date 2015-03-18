@@ -48,8 +48,8 @@ class Point3DSpec
 
   it should "report all zero cooordinates as Point3D.Zero" in {
     val zero = Point3D.Zero
-    assert (zero.x === 0.0)
-    assert (zero.y === 0.0)
-    assert (zero.z === 0.0)
+    assert(zero.x === 0.0)
+    assert(zero.y === 0.0)
+    assert(zero.z === 0.0)
   }
 }

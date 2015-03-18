@@ -28,7 +28,7 @@ package scalafx.testutil
 
 import java.lang.reflect.Method
 
-trait PropertyComparator 
+trait PropertyComparator
   extends AbstractComparator {
 
   private def getScalaFXProperties(scalafxClass: Class[_]) = {
@@ -40,7 +40,7 @@ trait PropertyComparator
   protected def getDesirableMethodName(javaMethod: Method): String = javaMethod.getName
 
   protected def isSpecialMethodName(name: String) = super.isImplementation(name) ||
-    (name == "applyTo") || (name == "create") || (name == "build") || 
+    (name == "applyTo") || (name == "create") || (name == "build") ||
     name.endsWith("Property") || name.startsWith("get") || name.startsWith("set") || name.startsWith("is")
 
   private def assertProperties(javaFxProperties: Set[String], scalaFxClass: Class[_], complement: String) {

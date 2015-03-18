@@ -81,7 +81,7 @@ object VideoCubeDemo extends JFXApp {
       else throw new IllegalArgumentException("System property `" + folderSysProperty + " = " + folderName + "` " +
         "has to point to an existing directory.")
     }
-    case None => throw new IllegalArgumentException("System property `" + folderSysProperty + "` is not defined.")
+    case None             => throw new IllegalArgumentException("System property `" + folderSysProperty + "` is not defined.")
   }
 
   // You need your video files ;-) Cannot redistribute MOVIE FILES!!!
@@ -98,7 +98,7 @@ object VideoCubeDemo extends JFXApp {
     filename => {
       val file = new File(folder, filename)
       val media = new Media(file.toURI.toURL.toExternalForm)
-      new MediaPlayer(media)  {
+      new MediaPlayer(media) {
         volume = 0.5
         cycleCount = MediaPlayer.Indefinite
       }

@@ -70,7 +70,7 @@ abstract class FocusModel[T](override val delegate: jfxsc.FocusModel[T])
 
   /**
    * Causes the item at the given index to receive the focus.
-   * 
+   *
    * @param index The index of the item to get focus.
    */
   def focus(index: Int) {

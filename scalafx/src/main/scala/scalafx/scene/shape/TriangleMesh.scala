@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,7 @@ import javafx.scene.{shape => jfxss}
 
 import scala.language.implicitConversions
 import scalafx.Includes._
+import scalafx.beans.property.ObjectProperty
 import scalafx.collections.{ObservableFloatArray, ObservableIntegerArray}
 import scalafx.delegate.SFXDelegate
 
@@ -44,6 +45,24 @@ object TriangleMesh {
 class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.TriangleMesh())
   extends Mesh(delegate)
   with SFXDelegate[jfxss.TriangleMesh] {
+
+  /**
+   * Creates a new instance of `TriangleMesh` class with the specified `VertexFormat`.
+   *
+   * @param vertexFormat specifies the vertex format type.
+   */
+  def this(vertexFormat: VertexFormat) = this(new jfxss.TriangleMesh(vertexFormat))
+
+  /**
+   * Specifies the vertex format of this `TriangleMesh`, one of
+   * [[VertexFormat.PointTexcoord]] or [[VertexFormat.PointNormalTexcoord]].
+   *
+   * Default value [[VertexFormat.PointTexcoord]]
+   */
+  def vertexFormat: ObjectProperty[jfxss.VertexFormat] = delegate.vertexFormatProperty()
+  def vertexFormat_=(v: VertexFormat): Unit = {
+    ObjectProperty.fillProperty(vertexFormat, v)
+  }
 
   /** Gets the number of array components representing a single face. */
   def faceElementSize = delegate.getFaceElementSize()

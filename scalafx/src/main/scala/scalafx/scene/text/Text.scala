@@ -87,7 +87,7 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   def fontSmoothingType_=(v: FontSmoothingType) {
     fontSmoothingType() = v
   }
-  
+
   /**
    * Defines the vertical space in pixel between lines.
    */

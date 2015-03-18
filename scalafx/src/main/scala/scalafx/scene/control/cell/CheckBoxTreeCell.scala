@@ -45,9 +45,9 @@ import scalafx.util.StringConverter
  *
  * @define CBTC `CheckBoxTableCell`
  * @define SP A Function that, given an object of type `TreeItem`, will return an `ObservableValue[Boolean]` that
- * represents whether the given item is selected or not.
+ *         represents whether the given item is selected or not.
  * @define FTVRET A Function that will return a TreeCell that is able to work on the type of element contained within the
- * TreeView root, and all of its children (recursively).
+ *         TreeView root, and all of its children (recursively).
  */
 object CheckBoxTreeCell {
 

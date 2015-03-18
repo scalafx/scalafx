@@ -54,7 +54,8 @@ class PlatformSpec extends FlatSpec with Matchers with RunOnApplicationThread {
           scalaName == javaName ||
             "is" + firstToUpper(scalaName) == javaName ||
             "get" + firstToUpper(scalaName) == javaName ||
-            "set" + firstToUpper(scalaName) == javaName
+            "set" + firstToUpper(scalaName) == javaName ||
+            scalaName + "Property" == javaName
         }
       )
 

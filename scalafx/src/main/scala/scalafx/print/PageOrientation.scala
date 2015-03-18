@@ -56,7 +56,7 @@ object PageOrientation
    */
   val ReversePortrait = new PageOrientation(jfxp.PageOrientation.REVERSE_PORTRAIT)
 
-  protected override def unsortedValues: Array[PageOrientation] = 
+  protected override def unsortedValues: Array[PageOrientation] =
     Array(Landscape, Portrait, ReverseLandcsape, ReversePortrait)
 
 }

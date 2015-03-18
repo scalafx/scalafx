@@ -45,5 +45,5 @@ class ScaleSpec
   with PositionDelegateSpec[Scale] {
 
   val positionDelegate = new Scale(new jfxst.Scale)
-  
+
 }

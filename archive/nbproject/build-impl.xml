@@ -41,10 +41,10 @@ is divided into following sections:
             <isset property="env.SCALA_HOME"/>
         </condition>
         <fail unless="scala.home">
-                    You must set SCALA_HOME or environment property and append "-J-Dscala.home=scalahomepath"
-                    property to the end of "netbeans_default_options" in NetBeansInstallationPath/etc/netbeans.conf to point to
-                    Scala installation directory.
-                </fail>
+            You must set SCALA_HOME or environment property and append "-J-Dscala.home=scalahomepath"
+            property to the end of "netbeans_default_options" in NetBeansInstallationPath/etc/netbeans.conf to point to
+            Scala installation directory.
+        </fail>
         <property name="scala.compiler" value="${scala.home}/lib/scala-compiler.jar"/>
         <property name="scala.library" value="${scala.home}/lib/scala-library.jar"/>
         <property name="scala.lib" value="${scala.home}/lib"/>
@@ -178,7 +178,10 @@ is divided into following sections:
             <attribute default="" name="sourcepath"/>
             <element name="customize" optional="true"/>
             <sequential>
-                <javac debug="@{debug}" deprecation="${javac.deprecation}" destdir="@{destdir}" encoding="${source.encoding}" excludes="@{excludes}" includeantruntime="false" includes="@{includes}" source="${javac.source}" sourcepath="@{sourcepath}" srcdir="@{srcdir}" target="${javac.target}">
+                <javac debug="@{debug}" deprecation="${javac.deprecation}" destdir="@{destdir}"
+                       encoding="${source.encoding}" excludes="@{excludes}" includeantruntime="false"
+                       includes="@{includes}" source="${javac.source}" sourcepath="@{sourcepath}" srcdir="@{srcdir}"
+                       target="${javac.target}">
                     <classpath>
                         <path path="@{classpath}"/>
                         <fileset dir="${scala.lib}">
@@ -195,7 +198,8 @@ is divided into following sections:
             <attribute default="${build.classes.dir}" name="destdir"/>
             <attribute default="${javac.classpath}" name="classpath"/>
             <sequential>
-                <depend cache="${build.dir}/depcache" destdir="@{destdir}" excludes="${excludes}" includes="${includes}" srcdir="@{srcdir}">
+                <depend cache="${build.dir}/depcache" destdir="@{destdir}" excludes="${excludes}" includes="${includes}"
+                        srcdir="@{srcdir}">
                     <classpath>
                         <path>
                             <pathelement path="@{classpath}"/>
@@ -236,7 +240,11 @@ is divided into following sections:
             <attribute default="" name="sourcepath"/>
             <element name="customize" optional="true"/>
             <sequential>
-                <scalac addparams="-make:transitive -dependencyfile &quot;${basedir}/${build.dir}/.scala_dependencies&quot; @{addparams}" deprecation="${scalac.deprecation}" destdir="@{destdir}" encoding="${source.encoding}" excludes="@{excludes}" extdirs="@{extdirs}" force="yes" fork="true" includes="@{includes}" sourcepath="@{sourcepath}" srcdir="@{srcdir}" target="jvm-${javac.target}" unchecked="${scalac.unchecked}">
+                <scalac addparams="-make:transitive -dependencyfile &quot;${basedir}/${build.dir}/.scala_dependencies&quot; @{addparams}"
+                        deprecation="${scalac.deprecation}" destdir="@{destdir}" encoding="${source.encoding}"
+                        excludes="@{excludes}" extdirs="@{extdirs}" force="yes" fork="true" includes="@{includes}"
+                        sourcepath="@{sourcepath}" srcdir="@{srcdir}" target="jvm-${javac.target}"
+                        unchecked="${scalac.unchecked}">
                     <classpath>
                         <path>
                             <pathelement path="@{classpath}"/>
@@ -272,9 +280,11 @@ is divided into following sections:
             <attribute default="${excludes}" name="excludes"/>
             <attribute default="**" name="testincludes"/>
             <sequential>
-                <junit dir="${work.dir}" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" showoutput="true">
+                <junit dir="${work.dir}" errorproperty="tests.failed" failureproperty="tests.failed" fork="true"
+                       showoutput="true">
                     <batchtest todir="${build.test.results.dir}">
-                        <fileset dir="${build.test.classes.dir}" excludes="@{excludes},${excludes}" includes="@{includes}">
+                        <fileset dir="${build.test.classes.dir}" excludes="@{excludes},${excludes}"
+                                 includes="@{includes}">
                             <filename name="@{testincludes}"/>
                         </fileset>
                     </batchtest>
@@ -301,7 +311,8 @@ is divided into following sections:
             <attribute default="${debug.classpath}" name="classpath"/>
             <attribute default="" name="stopclassname"/>
             <sequential>
-                <nbjpdastart addressproperty="jpda.address" name="@{name}" stopclassname="@{stopclassname}" transport="dt_socket">
+                <nbjpdastart addressproperty="jpda.address" name="@{name}" stopclassname="@{stopclassname}"
+                             transport="dt_socket">
                     <classpath>
                         <path path="@{classpath}"/>
                     </classpath>
@@ -385,7 +396,8 @@ is divided into following sections:
             </jar>
         </presetdef>
     </target>
-    <target depends="-pre-init,-init-private ,-init-user,-init-project,-do-init,-post-init,-init-check,-init-macrodef-property,-init-macrodef-javac,-init-macrodef-scalac,-init-macrodef-junit,-init-macrodef-nbjpda,-init-macrodef-debug,-init-macrodef-java,-init-presetdef-jar" name="init"/>
+    <target depends="-pre-init,-init-private ,-init-user,-init-project,-do-init,-post-init,-init-check,-init-macrodef-property,-init-macrodef-javac,-init-macrodef-scalac,-init-macrodef-junit,-init-macrodef-nbjpda,-init-macrodef-debug,-init-macrodef-java,-init-presetdef-jar"
+            name="init"/>
     <!--
                 ===================
                 COMPILATION SECTION
@@ -406,15 +418,18 @@ is divided into following sections:
         <scalaProject1:scalac/>
         <scalaProject1:javac/>
         <copy todir="${build.classes.dir}">
-            <fileset dir="${src.dir}" excludes="${build.classes.excludes},${excludes}&#10;                        " includes="${includes}"/>
-            <fileset dir="${src.demo.dir}" excludes="${build.classes.excludes},${excludes}&#10;                        " includes="${includes}"/>
+            <fileset dir="${src.dir}" excludes="${build.classes.excludes},${excludes}&#10;                        "
+                     includes="${includes}"/>
+            <fileset dir="${src.demo.dir}" excludes="${build.classes.excludes},${excludes}&#10;                        "
+                     includes="${includes}"/>
         </copy>
     </target>
     <target name="-post-compile">
         <!-- Empty placeholder for easier customization. -->
         <!-- You can override this target in the ../build.xml file. -->
     </target>
-    <target depends="init,deps-jar,-pre-pre-compile,-pre-compile,-do-compile,-post-compile" description="Compile project." name="compile"/>
+    <target depends="init,deps-jar,-pre-pre-compile,-pre-compile,-do-compile,-post-compile"
+            description="Compile project." name="compile"/>
     <target name="-pre-compile-single">
         <!-- Empty placeholder for easier customization. -->
         <!-- You can override this target in the ../build.xml file. -->
@@ -428,7 +443,8 @@ is divided into following sections:
         <!-- Empty placeholder for easier customization. -->
         <!-- You can override this target in the ../build.xml file. -->
     </target>
-    <target depends="init,deps-jar,-pre-pre-compile,-pre-compile-single,-do-compile-single,-post-compile-single" name="compile-single"/>
+    <target depends="init,deps-jar,-pre-pre-compile,-pre-compile-single,-do-compile-single,-post-compile-single"
+            name="compile-single"/>
     <!--
                 ====================
                 JAR BUILDING SECTION
@@ -445,10 +461,12 @@ is divided into following sections:
     <target depends="init,compile,-pre-pre-jar,-pre-jar" name="-do-jar-without-manifest" unless="manifest.available">
         <scalaProject1:jar/>
     </target>
-    <target depends="init,compile,-pre-pre-jar,-pre-jar" if="manifest.available" name="-do-jar-with-manifest" unless="manifest.available+main.class">
+    <target depends="init,compile,-pre-pre-jar,-pre-jar" if="manifest.available" name="-do-jar-with-manifest"
+            unless="manifest.available+main.class">
         <scalaProject1:jar manifest="${manifest.file}"/>
     </target>
-    <target depends="init,compile,-pre-pre-jar,-pre-jar" if="manifest.available+main.class" name="-do-jar-with-mainclass" unless="manifest.available+main.class+mkdist.available">
+    <target depends="init,compile,-pre-pre-jar,-pre-jar" if="manifest.available+main.class"
+            name="-do-jar-with-mainclass" unless="manifest.available+main.class+mkdist.available">
         <scalaProject1:jar manifest="${manifest.file}">
             <scalaProject1:manifest>
                 <scalaProject1:attribute name="Main-Class" value="${main.class}"/>
@@ -462,9 +480,10 @@ is divided into following sections:
             <map from="${build.classes.dir.resolved}" to="${dist.jar.resolved}"/>
         </pathconvert>
         <echo>java -cp "${run.classpath.with.dist.jar}" ${main.class}
-                </echo>
+        </echo>
     </target>
-    <target depends="init,compile,-pre-pre-jar,-pre-jar" if="manifest.available+main.class+mkdist.available" name="-do-jar-with-libraries">
+    <target depends="init,compile,-pre-pre-jar,-pre-jar" if="manifest.available+main.class+mkdist.available"
+            name="-do-jar-with-libraries">
         <property location="${build.classes.dir}" name="build.classes.dir.resolved"/>
         <pathconvert property="run.classpath.without.build.classes.dir">
             <path path="${run.classpath}"/>
@@ -477,8 +496,10 @@ is divided into following sections:
                 <globmapper from="*" to="lib/*"/>
             </chainedmapper>
         </pathconvert>
-        <taskdef classname="org.netbeans.modules.java.j2seproject.copylibstask.CopyLibs" classpath="${libs.CopyLibs.classpath}" name="copylibs"/>
-        <copylibs compress="${jar.compress}" jarfile="${dist.jar}" manifest="${manifest.file}" runtimeclasspath="${run.classpath.without.build.classes.dir}">
+        <taskdef classname="org.netbeans.modules.java.j2seproject.copylibstask.CopyLibs"
+                 classpath="${libs.CopyLibs.classpath}" name="copylibs"/>
+        <copylibs compress="${jar.compress}" jarfile="${dist.jar}" manifest="${manifest.file}"
+                  runtimeclasspath="${run.classpath.without.build.classes.dir}">
             <fileset dir="${build.classes.dir}"/>
             <manifest>
                 <attribute name="Main-Class" value="${main.class}"/>
@@ -488,13 +509,14 @@ is divided into following sections:
         <echo>To run this application from the command line without Ant, try:</echo>
         <property location="${dist.jar}" name="dist.jar.resolved"/>
         <echo>java -jar "${dist.jar.resolved}"
-                </echo>
+        </echo>
     </target>
     <target name="-post-jar">
         <!-- Empty placeholder for easier customization. -->
         <!-- You can override this target in the ../build.xml file. -->
     </target>
-    <target depends="init,compile,-pre-jar,-do-jar-with-manifest,-do-jar-without-manifest,-do-jar-with-mainclass,-do-jar-with-libraries,-post-jar" description="Build JAR." name="jar"/>
+    <target depends="init,compile,-pre-jar,-do-jar-with-manifest,-do-jar-without-manifest,-do-jar-with-mainclass,-do-jar-with-libraries,-post-jar"
+            description="Build JAR." name="jar"/>
     <!--
                 =================
                 EXECUTION SECTION
@@ -529,16 +551,19 @@ is divided into following sections:
             </customize>
         </scalaProject1:debug>
     </target>
-    <target depends="init,compile,-debug-start-debugger,-debug-start-debuggee" description="Debug project in IDE." if="netbeans.home" name="debug"/>
+    <target depends="init,compile,-debug-start-debugger,-debug-start-debuggee" description="Debug project in IDE."
+            if="netbeans.home" name="debug"/>
     <target depends="init" if="netbeans.home" name="-debug-start-debugger-stepinto">
         <scalaProject1:nbjpdastart stopclassname="${main.class}"/>
     </target>
-    <target depends="init,compile,-debug-start-debugger-stepinto,-debug-start-debuggee" if="netbeans.home" name="debug-stepinto"/>
+    <target depends="init,compile,-debug-start-debugger-stepinto,-debug-start-debuggee" if="netbeans.home"
+            name="debug-stepinto"/>
     <target depends="init,compile-single" if="netbeans.home" name="-debug-start-debuggee-single">
         <fail unless="debug.class">Must select one file in the IDE or set debug.class</fail>
         <scalaProject1:debug classname="${debug.class}"/>
     </target>
-    <target depends="init,-do-not-recompile,compile-single,-debug-start-debugger,-debug-start-debuggee-single" if="netbeans.home" name="debug-single"/>
+    <target depends="init,-do-not-recompile,compile-single,-debug-start-debugger,-debug-start-debuggee-single"
+            if="netbeans.home" name="debug-single"/>
     <target depends="init" name="-pre-debug-fix">
         <fail unless="fix.includes">Must set fix.includes</fail>
         <property name="javac.includes" value="${fix.includes}.java"/>
@@ -554,7 +579,9 @@ is divided into following sections:
             -->
     <target depends="init" name="-javadoc-build">
         <mkdir dir="${dist.javadoc.dir}"/>
-        <scaladoc addparams="${javadoc.additionalparam}" deprecation="yes" destdir="${dist.javadoc.dir}" doctitle="${javadoc.windowtitle}" encoding="${javadoc.encoding.used}" srcdir="${src.dir}" unchecked="yes">
+        <scaladoc addparams="${javadoc.additionalparam}" deprecation="yes" destdir="${dist.javadoc.dir}"
+                  doctitle="${javadoc.windowtitle}" encoding="${javadoc.encoding.used}" srcdir="${src.dir}"
+                  unchecked="yes">
             <classpath>
                 <path path="${javac.classpath}"/>
                 <fileset dir="${scala.lib}">
@@ -580,36 +607,45 @@ is divided into following sections:
         <!-- You can override this target in the ../build.xml file. -->
     </target>
     <target if="do.depend.true" name="-compile-test-depend">
-        <scalaProject1:depend classpath="${javac.test.classpath}" destdir="${build.test.classes.dir}" srcdir="${test.src.dir}"/>
+        <scalaProject1:depend classpath="${javac.test.classpath}" destdir="${build.test.classes.dir}"
+                              srcdir="${test.src.dir}"/>
     </target>
-    <target depends="init,compile,-pre-pre-compile-test,-pre-compile-test,-compile-test-depend" if="have.tests" name="-do-compile-test">
-        <scalaProject1:scalac classpath="${javac.test.classpath}" destdir="${build.test.classes.dir}" srcdir="${test.src.dir}"/>
+    <target depends="init,compile,-pre-pre-compile-test,-pre-compile-test,-compile-test-depend" if="have.tests"
+            name="-do-compile-test">
+        <scalaProject1:scalac classpath="${javac.test.classpath}" destdir="${build.test.classes.dir}"
+                              srcdir="${test.src.dir}"/>
         <copy todir="${build.test.classes.dir}">
-            <fileset dir="${test.src.dir}" excludes="${build.classes.excludes},${excludes}&#10;                        " includes="${includes}"/>
+            <fileset dir="${test.src.dir}" excludes="${build.classes.excludes},${excludes}&#10;                        "
+                     includes="${includes}"/>
         </copy>
     </target>
     <target name="-post-compile-test">
         <!-- Empty placeholder for easier customization. -->
         <!-- You can override this target in the ../build.xml file. -->
     </target>
-    <target depends="init,compile,-pre-pre-compile-test,-pre-compile-test,-do-compile-test,-post-compile-test" name="compile-test"/>
+    <target depends="init,compile,-pre-pre-compile-test,-pre-compile-test,-do-compile-test,-post-compile-test"
+            name="compile-test"/>
     <target name="-pre-compile-test-single">
         <!-- Empty placeholder for easier customization. -->
         <!-- You can override this target in the ../build.xml file. -->
     </target>
-    <target depends="init,compile,-pre-pre-compile-test,-pre-compile-test-single" if="have.tests" name="-do-compile-test-single">
+    <target depends="init,compile,-pre-pre-compile-test,-pre-compile-test-single" if="have.tests"
+            name="-do-compile-test-single">
         <fail unless="javac.includes">Must select some files in the IDE or set javac.includes</fail>
         <scalaProject1:force-recompile destdir="${build.test.classes.dir}"/>
-        <scalaProject1:scalac classpath="${javac.test.classpath}" destdir="${build.test.classes.dir}" excludes="" includes="${javac.includes}" sourcepath="${test.src.dir}" srcdir="${test.src.dir}"/>
+        <scalaProject1:scalac classpath="${javac.test.classpath}" destdir="${build.test.classes.dir}" excludes=""
+                              includes="${javac.includes}" sourcepath="${test.src.dir}" srcdir="${test.src.dir}"/>
         <copy todir="${build.test.classes.dir}">
-            <fileset dir="${test.src.dir}" excludes="${build.classes.excludes},${excludes}&#10;                        " includes="${includes}"/>
+            <fileset dir="${test.src.dir}" excludes="${build.classes.excludes},${excludes}&#10;                        "
+                     includes="${includes}"/>
         </copy>
     </target>
     <target name="-post-compile-test-single">
         <!-- Empty placeholder for easier customization. -->
         <!-- You can override this target in the ../build.xml file. -->
     </target>
-    <target depends="init,compile,-pre-pre-compile-test,-pre-compile-test-single,-do-compile-test-single,-post-compile-test-single" name="compile-test-single"/>
+    <target depends="init,compile,-pre-pre-compile-test,-pre-compile-test-single,-do-compile-test-single,-post-compile-test-single"
+            name="compile-test-single"/>
     <!--
                 =======================
                 JUNIT EXECUTION SECTION
@@ -626,7 +662,8 @@ is divided into following sections:
     </target>
     <target depends="init" if="have.tests" name="test-report"/>
     <target depends="init" if="netbeans.home+have.tests" name="-test-browse"/>
-    <target depends="init,compile-test,-pre-test-run,-do-test-run,test-report,-post-test-run,-test-browse" description="Run unit tests." name="test"/>
+    <target depends="init,compile-test,-pre-test-run,-do-test-run,test-report,-post-test-run,-test-browse"
+            description="Run unit tests." name="test"/>
     <target depends="init" if="have.tests" name="-pre-test-run-single">
         <mkdir dir="${build.test.results.dir}"/>
     </target>
@@ -634,10 +671,12 @@ is divided into following sections:
         <fail unless="test.includes">Must select some files in the IDE or set test.includes</fail>
         <scalaProject1:junit excludes="" includes="${test.includes}"/>
     </target>
-    <target depends="init,compile-test-single,-pre-test-run-single,-do-test-run-single" if="have.tests" name="-post-test-run-single">
+    <target depends="init,compile-test-single,-pre-test-run-single,-do-test-run-single" if="have.tests"
+            name="-post-test-run-single">
         <fail if="tests.failed">Some tests failed; see details above.</fail>
     </target>
-    <target depends="init,-do-not-recompile,compile-test-single,-pre-test-run-single,-do-test-run-single,-post-test-run-single" description="Run single unit test." name="test-single"/>
+    <target depends="init,-do-not-recompile,compile-test-single,-pre-test-run-single,-do-test-run-single,-post-test-run-single"
+            description="Run single unit test." name="test-single"/>
     <!--
                 =======================
                 JUNIT DEBUGGING SECTION
@@ -648,7 +687,8 @@ is divided into following sections:
         <property location="${build.test.results.dir}/TEST-${test.class}.xml" name="test.report.file"/>
         <delete file="${test.report.file}"/>
         <mkdir dir="${build.test.results.dir}"/>
-        <scalaProject1:debug classname="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner" classpath="${ant.home}/lib/ant.jar:${ant.home}/lib/ant-junit.jar:${debug.test.classpath}">
+        <scalaProject1:debug classname="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner"
+                             classpath="${ant.home}/lib/ant.jar:${ant.home}/lib/ant-junit.jar:${debug.test.classpath}">
             <customize>
                 <syspropertyset>
                     <propertyref prefix="test-sys-prop."/>
@@ -664,7 +704,8 @@ is divided into following sections:
     <target depends="init,compile-test" if="netbeans.home+have.tests" name="-debug-start-debugger-test">
         <scalaProject1:nbjpdastart classpath="${debug.test.classpath}" name="${test.class}"/>
     </target>
-    <target depends="init,-do-not-recompile,compile-test-single,-debug-start-debugger-test,-debug-start-debuggee-test" name="debug-test"/>
+    <target depends="init,-do-not-recompile,compile-test-single,-debug-start-debugger-test,-debug-start-debuggee-test"
+            name="debug-test"/>
     <target depends="init,-pre-debug-fix,compile-test-single" if="netbeans.home" name="-do-debug-fix-test">
         <scalaProject1:nbjpdareload dir="${build.test.classes.dir}"/>
     </target>
@@ -695,7 +736,8 @@ is divided into following sections:
             </customize>
         </scalaProject1:debug>
     </target>
-    <target depends="init,compile-single,-debug-start-debugger,-debug-start-debuggee-applet" if="netbeans.home" name="debug-applet"/>
+    <target depends="init,compile-single,-debug-start-debugger,-debug-start-debuggee-applet" if="netbeans.home"
+            name="debug-applet"/>
     <!--
                 ===============
                 CLEANUP SECTION

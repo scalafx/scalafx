@@ -40,6 +40,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class PauseTransitionSpec 
+class PauseTransitionSpec
   extends SimpleSFXDelegateSpec[jfxa.PauseTransition, PauseTransition](
     classOf[jfxa.PauseTransition], classOf[PauseTransition])

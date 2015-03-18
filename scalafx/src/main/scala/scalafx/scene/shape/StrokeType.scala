@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
@@ -34,13 +35,13 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object StrokeType extends SFXEnumDelegateCompanion[jfxss.StrokeType, StrokeType] {
 
   val Inside = new StrokeType(jfxss.StrokeType.INSIDE)
-  @deprecated ("Use Inside; INSIDE will be removed in a future release", "2.2.60")
+  @deprecated("Use Inside; INSIDE will be removed in a future release", "2.2.60")
   val INSIDE = Inside
   val Outside = new StrokeType(jfxss.StrokeType.OUTSIDE)
-  @deprecated ("Use Outside; OUTSIDE will be removed in a future release", "2.2.60")
+  @deprecated("Use Outside; OUTSIDE will be removed in a future release", "2.2.60")
   val OUTSIDE = Outside
   val Centered = new StrokeType(jfxss.StrokeType.CENTERED)
-  @deprecated ("Use Centered; CENTERED will be removed in a future release", "2.2.60")
+  @deprecated("Use Centered; CENTERED will be removed in a future release", "2.2.60")
   val CENTERED = Centered
 
   protected override def unsortedValues: Array[StrokeType] = Array(Inside, Outside, Centered)

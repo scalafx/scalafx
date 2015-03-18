@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,9 +54,9 @@ import scalafx.scene.text.{Font, FontWeight, Text}
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- * based upon: Example 1-3 Create a VBox Pane
+ *         based upon: Example 1-3 Create a VBox Pane
  *
- * http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
+ *         http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
  *
  */
 

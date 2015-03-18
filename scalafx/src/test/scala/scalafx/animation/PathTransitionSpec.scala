@@ -40,6 +40,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  */
 @RunWith(classOf[JUnitRunner])
-class PathTransitionSpec 
+class PathTransitionSpec
   extends SimpleSFXDelegateSpec[jfxa.PathTransition, PathTransition](
     classOf[jfxa.PathTransition], classOf[PathTransition])

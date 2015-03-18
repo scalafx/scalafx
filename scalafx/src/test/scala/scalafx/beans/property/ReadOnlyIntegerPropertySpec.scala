@@ -57,191 +57,191 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   "A Read-only Integer Property" should "start with the value we gave it" in {
-    readOnlyIntegerProperty.value should equal (50)
+    readOnlyIntegerProperty.value should equal(50)
   }
 
   it should "return its value using apply" in {
-    readOnlyIntegerProperty() should equal (50)
+    readOnlyIntegerProperty() should equal(50)
   }
 
   it should "know its name" in {
-    readOnlyIntegerProperty.name should equal ("Test Read-only Integer")
+    readOnlyIntegerProperty.name should equal("Test Read-only Integer")
   }
 
   it should "know its bean" in {
-    readOnlyIntegerProperty.bean should equal (bean)
+    readOnlyIntegerProperty.bean should equal(bean)
   }
 
   it should "be bindable to another Integer Property" in {
     integerProperty1 <== readOnlyIntegerProperty
-    integerProperty1() should equal (50)
+    integerProperty1() should equal(50)
     integerProperty1.unbind()
   }
 
   it should "support bindable infix addition of a property" in {
     integerProperty2 <== readOnlyIntegerProperty + integerProperty1
     integerProperty1() = 35
-    integerProperty2() should equal (85)
+    integerProperty2() should equal(85)
     integerProperty2.unbind()
   }
 
   it should "support bindable infix addition of constants" in {
     integerProperty2 <== readOnlyIntegerProperty + 35 + 35l + 35f + 35d
-    integerProperty2() should equal (190)
+    integerProperty2() should equal(190)
     integerProperty2.unbind()
   }
 
   it should "support bindable infix subtraction of a property" in {
     integerProperty2 <== readOnlyIntegerProperty - integerProperty1
     integerProperty1() = 12
-    integerProperty2() should equal (38)
+    integerProperty2() should equal(38)
     integerProperty2.unbind()
   }
 
   it should "support bindable infix subtraction of constants" in {
     integerProperty2 <== readOnlyIntegerProperty - 12 - 12l - 12f - 12d
-    integerProperty2() should equal (2)
+    integerProperty2() should equal(2)
     integerProperty2.unbind()
   }
 
   it should "support bindable infix multiplication of a property" in {
     integerProperty2 <== readOnlyIntegerProperty * integerProperty1
     integerProperty1() = 6
-    integerProperty2() should equal (300)
+    integerProperty2() should equal(300)
     integerProperty2.unbind()
   }
 
   it should "support bindable infix multiplication of constants" in {
     integerProperty2 <== readOnlyIntegerProperty * 2 * 2l * 2f * 2d
-    integerProperty2() should equal (800)
+    integerProperty2() should equal(800)
     integerProperty2.unbind()
   }
 
   it should "support bindable infix division of a property" in {
     integerProperty1() = 10
     integerProperty2 <== readOnlyIntegerProperty / integerProperty1
-    integerProperty2() should equal (5)
+    integerProperty2() should equal(5)
     integerProperty2.unbind()
   }
 
   it should "support bindable infix division of constants" in {
     integerProperty2 <== readOnlyIntegerProperty / 2 / 2l / 5f / 5d
-    integerProperty2() should equal (0)
+    integerProperty2() should equal(0)
     integerProperty2.unbind()
   }
 
   it should "support bindable prefix negation" in {
     integerProperty2 <== -readOnlyIntegerProperty
-    integerProperty2() should equal (-50)
+    integerProperty2() should equal(-50)
     integerProperty2.unbind()
   }
 
   it should "support bindable infix equality with a property" in {
     booleanProperty <== readOnlyIntegerProperty === integerProperty1
     integerProperty1() = 23
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     integerProperty1() = 50
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix equality with a constant" in {
     booleanProperty <== readOnlyIntegerProperty === 532
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyIntegerProperty === 50
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix inequality with a property" in {
     booleanProperty <== readOnlyIntegerProperty =!= integerProperty1
     integerProperty1() = 35
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     integerProperty1() = 50
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix inequality with a constant" in {
     booleanProperty <== readOnlyIntegerProperty =!= 231
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     booleanProperty <== readOnlyIntegerProperty =!= 50
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support variable precision equality via +- operator" in {
-    booleanProperty <== readOnlyIntegerProperty === 55+-1.1
-    booleanProperty() should be (false)
-    booleanProperty <== readOnlyIntegerProperty === 51+-1.1
-    booleanProperty() should be (true)
-    booleanProperty <== readOnlyIntegerProperty === 49+-1.1
-    booleanProperty() should be (true)
+    booleanProperty <== readOnlyIntegerProperty === 55 +- 1.1
+    booleanProperty() should be(false)
+    booleanProperty <== readOnlyIntegerProperty === 51 +- 1.1
+    booleanProperty() should be(true)
+    booleanProperty <== readOnlyIntegerProperty === 49 +- 1.1
+    booleanProperty() should be(true)
   }
 
   it should "support variable precision inequality via +- operator" in {
-    booleanProperty <== readOnlyIntegerProperty =!= 55+-1.1
-    booleanProperty() should be (true)
-    booleanProperty <== readOnlyIntegerProperty =!= 51+-1.1
-    booleanProperty() should be (false)
-    booleanProperty <== readOnlyIntegerProperty =!= 49+-1.1
-    booleanProperty() should be (false)
+    booleanProperty <== readOnlyIntegerProperty =!= 55 +- 1.1
+    booleanProperty() should be(true)
+    booleanProperty <== readOnlyIntegerProperty =!= 51 +- 1.1
+    booleanProperty() should be(false)
+    booleanProperty <== readOnlyIntegerProperty =!= 49 +- 1.1
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix less than with a property" in {
     booleanProperty <== readOnlyIntegerProperty < integerProperty1
     integerProperty1() = 234
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     integerProperty1() = 12
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix less than with a constant" in {
     booleanProperty <== readOnlyIntegerProperty < 49
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyIntegerProperty < 51
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix less than or equal to with a property" in {
     booleanProperty <== readOnlyIntegerProperty <= integerProperty1
     integerProperty1() = 512
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     integerProperty1() = 34
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix less than or equal to with a constant" in {
     booleanProperty <== readOnlyIntegerProperty <= 34
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyIntegerProperty <= 512
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix greater than with a property" in {
     booleanProperty <== readOnlyIntegerProperty > integerProperty1
     integerProperty1() = 40
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     integerProperty1() = 60
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix greater than with a constant" in {
     booleanProperty <== readOnlyIntegerProperty > 51
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyIntegerProperty > 49
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support bindable infix greater than or equal to with a property" in {
     booleanProperty <== readOnlyIntegerProperty >= integerProperty1
     integerProperty1() = 49
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
     integerProperty1() = 51
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
   }
 
   it should "support bindable infix greater than or equal to with a constant" in {
     booleanProperty <== readOnlyIntegerProperty >= 18349
-    booleanProperty() should be (false)
+    booleanProperty() should be(false)
     booleanProperty <== readOnlyIntegerProperty >= 13
-    booleanProperty() should be (true)
+    booleanProperty() should be(true)
   }
 
   it should "support invalidate/change triggers on binding expressions" in {
@@ -255,10 +255,10 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
       changeCount += 1
     }
     integerProperty2() = 1
-    invalidateCount should equal (1)
-    changeCount should equal (1)
+    invalidateCount should equal(1)
+    changeCount should equal(1)
     integerProperty2() = 5
-    invalidateCount should equal (2)
-    changeCount should equal (2)
+    invalidateCount should equal(2)
+    changeCount should equal(2)
   }
 }

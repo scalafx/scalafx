@@ -132,7 +132,7 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
   }
 
   it should "presents its values at same order as its JavaFX enum ordinal" in {
-    companion.values.zipWithIndex.foreach({case (s, i) => assertScalaEnumWithOrdinal(s, i)})
+    companion.values.zipWithIndex.foreach({ case (s, i) => assertScalaEnumWithOrdinal(s, i)})
   }
 
   ///////////////

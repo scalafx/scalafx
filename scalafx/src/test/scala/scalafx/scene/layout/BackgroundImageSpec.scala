@@ -41,7 +41,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class BackgroundImageSpec
   extends SimpleSFXDelegateSpec[jfxsl.BackgroundImage, BackgroundImage](
-    classOf[jfxsl.BackgroundImage], classOf[BackgroundImage])  {
+    classOf[jfxsl.BackgroundImage], classOf[BackgroundImage]) {
 
   override protected def getScalaClassInstance = new BackgroundImage(getJavaClassInstance) {}
 

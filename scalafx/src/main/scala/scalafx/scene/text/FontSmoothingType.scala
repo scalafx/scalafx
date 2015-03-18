@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
@@ -34,7 +35,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object FontSmoothingType extends SFXEnumDelegateCompanion[jfxst.FontSmoothingType, FontSmoothingType] {
 
   val Gray = new FontSmoothingType(jfxst.FontSmoothingType.GRAY)
-  @deprecated ("Use Gray; GRAY will be removed in a future release", "2.2.60")
+  @deprecated("Use Gray; GRAY will be removed in a future release", "2.2.60")
   val GRAY = Gray
   val LCD = new FontSmoothingType(jfxst.FontSmoothingType.LCD)
 

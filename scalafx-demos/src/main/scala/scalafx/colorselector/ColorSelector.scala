@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -80,7 +80,7 @@ object ColorSelector extends JFXApp {
 
   private def synchronizeValues(buffer: ObservableBuffer[SliderControl], changes: Seq[Change]) {
     changes(0) match {
-      case Add(pos, added) => {
+      case Add(pos, added)      => {
         val media = buffer.map(_.value.get).sum / buffer.size
         added.last.asInstanceOf[SliderControl].value <==> synchronizedValue
         buffer.foreach(_.value = media)
@@ -88,7 +88,7 @@ object ColorSelector extends JFXApp {
       case Remove(pos, removed) => {
         removed.last.asInstanceOf[SliderControl].value unbind synchronizedValue
       }
-      case _@ otherChange => {
+      case _@otherChange        => {
         throw new UnsupportedOperationException("Only add and remove defined for the ColorSelector SliderControl sync")
       }
     }
@@ -137,10 +137,10 @@ object ColorSelector extends JFXApp {
       fraction = 0.45
     }
     onMouseClicked = (event: MouseEvent) => {
-        if ((event.getClickCount == 2) && (event.button == MouseButton.PRIMARY)) {
-          randomizeColors()
-        }
+      if ((event.getClickCount == 2) && (event.button == MouseButton.PRIMARY)) {
+        randomizeColors()
       }
+    }
   }
 
   currentColor.onChange(rectangleRegion.setStyle("-fx-background-color: " + RgbFormatter.format(currentColor(), !this.chbDisableAlpha.selected.get)))
@@ -192,7 +192,7 @@ object ColorSelector extends JFXApp {
   val cmbWebColor = new ComboBox[WebColor](WebColor.colors) {
     promptText = "Web Color"
     converter = StringConverter.toStringConverter((wc: WebColor) => wc.name)
-    onAction =  (event: ActionEvent) => webColorSelected()
+    onAction = (event: ActionEvent) => webColorSelected()
   }
 
   val txfColorValue = new TextField {
@@ -207,7 +207,7 @@ object ColorSelector extends JFXApp {
     promptText = "Color Format"
     converter = StringConverter.toStringConverter((f: Formatter) => f.description)
     value = RgbFormatter
-    onAction =(event: ActionEvent) => formatColor()
+    onAction = (event: ActionEvent) => formatColor()
   }
 
   val chbDisableAlpha = new CheckBox {

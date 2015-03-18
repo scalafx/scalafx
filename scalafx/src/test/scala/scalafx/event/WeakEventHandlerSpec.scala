@@ -39,10 +39,10 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 class WeakEventHandlerSpec
   extends SimpleSFXDelegateSpec[jfxe.WeakEventHandler[jfxe.Event], WeakEventHandler[jfxe.Event]](classOf[jfxe.WeakEventHandler[jfxe.Event]], classOf[WeakEventHandler[jfxe.Event]]) {
 
-  override protected def getScalaClassInstance: WeakEventHandler[jfxe.Event] = 
+  override protected def getScalaClassInstance: WeakEventHandler[jfxe.Event] =
     new WeakEventHandler(getJavaClassInstance)
 
-  override protected def getJavaClassInstance: jfxe.WeakEventHandler[jfxe.Event] = 
+  override protected def getJavaClassInstance: jfxe.WeakEventHandler[jfxe.Event] =
     new jfxe.WeakEventHandler(null)
 
 }

@@ -45,5 +45,5 @@ class BloomSpec
   with InputDelegateSpec[Bloom] {
 
   val inputDelegate = getScalaClassInstance
-  
+
 }

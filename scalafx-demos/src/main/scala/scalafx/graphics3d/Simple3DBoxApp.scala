@@ -39,7 +39,7 @@ import scalafx.scene.transform.{Rotate, Translate}
 object Simple3DBoxApp extends JFXApp {
 
   stage = new PrimaryStage {
-    scene = new Scene(300, 300, true,  SceneAntialiasing.Balanced) {
+    scene = new Scene(300, 300, true, SceneAntialiasing.Balanced) {
       // 3D content
       content = new Box {
         width = 5

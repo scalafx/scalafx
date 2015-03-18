@@ -40,13 +40,13 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  *
  */
 @RunWith(classOf[JUnitRunner])
-class BarChartSpec 
+class BarChartSpec
   extends SimpleSFXDelegateSpec[jfxsc.BarChart[String, Number], BarChart[String, Number]](
     classOf[jfxsc.BarChart[String, Number]], classOf[BarChart[String, Number]])
   with RunOnApplicationThread {
 
   override def getScalaClassInstance = new BarChart[String, Number](getJavaClassInstance)
-  
+
   override def getJavaClassInstance = new jfxsc.BarChart[String, Number](new jfxsc.CategoryAxis, new jfxsc.NumberAxis)
 
 }

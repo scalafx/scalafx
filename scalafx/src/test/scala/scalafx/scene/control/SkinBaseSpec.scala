@@ -15,7 +15,7 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 @RunWith(classOf[JUnitRunner])
 class SkinBaseSpec
   extends SimpleSFXDelegateSpec[jfxsc.SkinBase[jfxsc.Button], SkinBase[jfxsc.Button]](
-      classOf[jfxsc.SkinBase[jfxsc.Button]], classOf[SkinBase[jfxsc.Button]])
+    classOf[jfxsc.SkinBase[jfxsc.Button]], classOf[SkinBase[jfxsc.Button]])
   with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new SkinBase[jfxsc.Button](new jfxsc.SkinBase[jfxsc.Button](new jfxsc.Button) {}) {}

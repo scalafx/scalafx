@@ -53,83 +53,83 @@ class ReadOnlyObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
 
   override def beforeEach() {
     readOnlyObjectProperty = new ReadOnlyObjectProperty[jfxsp.Paint](bean, "Test Read-only Object", jfxsp.Color.BLACK)
-    objectProperty1 =  ObjectProperty[jfxsp.Paint](bean, "Test Object 1")
-    objectProperty2 =  ObjectProperty[jfxsp.Paint](bean, "Test Object 2")
-    sfxObjectProperty =  ObjectProperty[jfxsp.Paint](bean, "SFX Test Object")
+    objectProperty1 = ObjectProperty[jfxsp.Paint](bean, "Test Object 1")
+    objectProperty2 = ObjectProperty[jfxsp.Paint](bean, "Test Object 2")
+    sfxObjectProperty = ObjectProperty[jfxsp.Paint](bean, "SFX Test Object")
     booleanProperty = new BooleanProperty(bean, "Test Boolean")
   }
 
   "An Object Property" should "start with the value we gave it" in {
-    readOnlyObjectProperty.value should equal (jfxsp.Color.BLACK)
+    readOnlyObjectProperty.value should equal(jfxsp.Color.BLACK)
   }
 
   it should "return its value using apply" in {
-    readOnlyObjectProperty() should equal (jfxsp.Color.BLACK)
+    readOnlyObjectProperty() should equal(jfxsp.Color.BLACK)
   }
 
   it should "know its name" in {
-    readOnlyObjectProperty.name should equal ("Test Read-only Object")
+    readOnlyObjectProperty.name should equal("Test Read-only Object")
   }
 
   it should "know its bean" in {
-    readOnlyObjectProperty.bean should equal (bean)
+    readOnlyObjectProperty.bean should equal(bean)
   }
 
   it should "be bindable to another Object Property" in {
     objectProperty1 <== readOnlyObjectProperty
-    objectProperty1() should equal (jfxsp.Color.BLACK)
+    objectProperty1() should equal(jfxsp.Color.BLACK)
     objectProperty1.unbind()
   }
-  
+
   it should "support bindable infix equality with a property" in {
     booleanProperty <== readOnlyObjectProperty === objectProperty1
     objectProperty1() = jfxsp.Color.WHITE
-    booleanProperty() should equal (false)
+    booleanProperty() should equal(false)
     objectProperty1() = jfxsp.Color.BLACK
-    booleanProperty() should equal (true)
+    booleanProperty() should equal(true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix equality with an sfx property" in {
     booleanProperty <== readOnlyObjectProperty === sfxObjectProperty
     sfxObjectProperty() = jfxsp.Color.WHITE
-    booleanProperty() should equal (false)
+    booleanProperty() should equal(false)
     sfxObjectProperty() = jfxsp.Color.BLACK
-    booleanProperty() should equal (true)
+    booleanProperty() should equal(true)
     booleanProperty.unbind()
   }
-  
+
   it should "support bindable infix equality with a constant" in {
     booleanProperty <== readOnlyObjectProperty === jfxsp.Color.WHITE
-    booleanProperty() should equal (false)
+    booleanProperty() should equal(false)
     booleanProperty <== readOnlyObjectProperty === jfxsp.Color.BLACK
-    booleanProperty() should equal (true)
+    booleanProperty() should equal(true)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a property" in {
     booleanProperty <== readOnlyObjectProperty =!= objectProperty1
     objectProperty1() = jfxsp.Color.WHITE
-    booleanProperty() should equal (true)
+    booleanProperty() should equal(true)
     objectProperty1() = jfxsp.Color.BLACK
-    booleanProperty() should equal (false)
+    booleanProperty() should equal(false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with an sfx property" in {
     booleanProperty <== readOnlyObjectProperty =!= sfxObjectProperty
     sfxObjectProperty() = jfxsp.Color.WHITE
-    booleanProperty() should equal (true)
+    booleanProperty() should equal(true)
     sfxObjectProperty() = jfxsp.Color.BLACK
-    booleanProperty() should equal (false)
+    booleanProperty() should equal(false)
     booleanProperty.unbind()
   }
 
   it should "support bindable infix inequality with a constant" in {
     booleanProperty <== readOnlyObjectProperty =!= jfxsp.Color.WHITE
-    booleanProperty() should equal (true)
+    booleanProperty() should equal(true)
     booleanProperty <== readOnlyObjectProperty =!= jfxsp.Color.BLACK
-    booleanProperty() should equal (false)
+    booleanProperty() should equal(false)
     booleanProperty.unbind()
   }
 }

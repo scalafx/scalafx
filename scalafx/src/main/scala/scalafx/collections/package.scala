@@ -45,7 +45,7 @@ package object collections {
       originalList.setAll(filler.map(f(_)))
     }
   }
-  
+
   private def internalFillerWithOne[A, B](originalList: jfxc.ObservableList[A], element: B, f: B => A) {
     if (null == element) {
       originalList.clear()
@@ -69,7 +69,7 @@ package object collections {
   /**
    * Replaces all content in an ObservableList of type T for a single element. If this element was `null`, the list 
    * will be cleaned.
-   * 
+   *
    * @tparam T Element and ObservableList type
    * @param originalList List to be filled
    * @param element Element which will replace originalList content.
@@ -93,7 +93,7 @@ package object collections {
   /**
    * Replaces all content in an JavaFX ObservableList of type J for a single SFXDelegate[J] element. 
    * If this element was `null`, the list will be cleaned.
-   * 
+   *
    * @tparam J Iterable and ObservableList type
    * @param originalList List to be filled
    * @param element Element which will replace originalList content. Actually, it will used its delegate.

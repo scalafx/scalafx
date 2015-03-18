@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
@@ -36,17 +37,17 @@ object HPos
 
   /** Indicates centered horizontal position. */
   val Center = new HPos(jfxg.HPos.CENTER)
-  @deprecated ("Use Center; CENTER will be removed in a future release", "2.2.60")
+  @deprecated("Use Center; CENTER will be removed in a future release", "2.2.60")
   val CENTER = Center
 
   /** Indicates left horizontal position. */
   val Left = new HPos(jfxg.HPos.LEFT)
-  @deprecated ("Use Left; LEFT will be removed in a future release", "2.2.60")
+  @deprecated("Use Left; LEFT will be removed in a future release", "2.2.60")
   val LEFT = Left
 
   /** Indicates right horizontal position. */
   val Right = new HPos(jfxg.HPos.RIGHT)
-  @deprecated ("Use Right; RIGHT will be removed in a future release", "2.2.60")
+  @deprecated("Use Right; RIGHT will be removed in a future release", "2.2.60")
   val RIGHT = Right
 
   protected override def unsortedValues: Array[HPos] = Array(Left, Center, Right)

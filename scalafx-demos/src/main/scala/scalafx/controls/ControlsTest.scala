@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -58,31 +58,31 @@ object ControlsTest extends JFXApp {
       })
     }
   }
-  
+
   val mainContent = new BorderPane {
-        left = indicatorPane
-        center = centerPane
-        right = controlsPane
-      }
+    left = indicatorPane
+    center = centerPane
+    right = controlsPane
+  }
 
   stage = new JFXApp.PrimaryStage {
     title = "CheckBox Test"
     width = 800
     height = 600
     scene = new Scene {
-//      fill = Color.LIGHTGRAY
+      //      fill = Color.LIGHTGRAY
       content = mainContent
     }
   }
   mainContent.prefHeight <== stage.scene().height
   mainContent.prefWidth <== stage.scene().width
-//  setPrefSize(stage.scene.width.get, stage.scene.height.get)
-  
-//  indicatorPane.prefHeight <== stage.scene.height
+  //  setPrefSize(stage.scene.width.get, stage.scene.height.get)
+
+  //  indicatorPane.prefHeight <== stage.scene.height
   indicatorPane.prefWidth <== mainContent.width * 0.2
-//  controlsPane.prefHeight <== stage.scene.height
+  //  controlsPane.prefHeight <== stage.scene.height
   controlsPane.prefWidth <== mainContent.width * 0.2
-//  centerPane.prefHeight <== stage.scene.height
-//  centerPane.prefWidth <== stage.scene.width * 0.6
+  //  centerPane.prefHeight <== stage.scene.height
+  //  centerPane.prefWidth <== stage.scene.width * 0.6
 
 }

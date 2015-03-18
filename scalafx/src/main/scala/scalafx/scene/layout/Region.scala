@@ -85,27 +85,27 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   /** The background of the Region, which is made up of zero or more BackgroundFills,
     * and zero or more BackgroundImages.
     */
-  def background : ObjectProperty[jfxsl.Background] = delegate.backgroundProperty()
-  def background_=(v:Background) {
+  def background: ObjectProperty[jfxsl.Background] = delegate.backgroundProperty()
+  def background_=(v: Background) {
     background() = v
   }
 
   /** The border of the Region, which is made up of zero or more BorderStrokes, and zero or more BorderImages. */
-  def border : ObjectProperty[jfxsl.Border] = delegate.borderProperty()
-  def border_=(v:Border) {
+  def border: ObjectProperty[jfxsl.Border] = delegate.borderProperty()
+  def border_=(v: Border) {
     border() = v
   }
 
   /** Defines a hint to the system indicating that the Shape used to define the region's
     * background is stable and would benefit from caching. */
-  def cacheShape : BooleanProperty = delegate.cacheProperty()
-  def cacheShape_=(v:Boolean) {
+  def cacheShape: BooleanProperty = delegate.cacheProperty()
+  def cacheShape_=(v: Boolean) {
     cacheShape() = v
   }
 
   /** Defines whether the shape is centered within the Region's width or height. */
-  def centerShape : BooleanProperty = delegate.centerShapeProperty()
-  def centerShape_=(v:Boolean) {
+  def centerShape: BooleanProperty = delegate.centerShapeProperty()
+  def centerShape_=(v: Boolean) {
     centerShape() = v
   }
 
@@ -152,8 +152,8 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   }
 
   /** Defines the area of the region within which completely opaque pixels are drawn. */
-  def opaqueInsets : ObjectProperty[jfxg.Insets] = delegate.opaqueInsetsProperty()
-  def opaqueInsets_=(v:Insets) {
+  def opaqueInsets: ObjectProperty[jfxg.Insets] = delegate.opaqueInsetsProperty()
+  def opaqueInsets_=(v: Insets) {
     opaqueInsets() = v
   }
 
@@ -182,8 +182,8 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   }
 
   /** When specified, the shape will cause the region to be rendered as the specified shape rather than as a rounded rectangle. */
-  def shape : ObjectProperty[jfxss.Shape] = delegate.shapeProperty()
-  def shape_=(v:Shape) {
+  def shape: ObjectProperty[jfxss.Shape] = delegate.shapeProperty()
+  def shape_=(v: Shape) {
     shape() = v
   }
 
@@ -209,8 +209,8 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   }
 
   /** Specifies whether the shape, if defined, is scaled to match the size of the Region. */
-  def scaleShape : BooleanProperty = delegate.scaleShapeProperty()
-  def scaleShape_=(v:Boolean) {
+  def scaleShape: BooleanProperty = delegate.scaleShapeProperty()
+  def scaleShape_=(v: Boolean) {
     scaleShape() = v
   }
 

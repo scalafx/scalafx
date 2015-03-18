@@ -146,8 +146,8 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
   def editingIndex: ReadOnlyIntegerProperty = delegate.editingIndexProperty
 
   /** Specifies whether this control has cells that are a fixed height (of the specified value). */
-  def fixedCellSize : DoubleProperty = delegate.fixedCellSizeProperty
-  def fixedCellSize_=(v:Double) {
+  def fixedCellSize: DoubleProperty = delegate.fixedCellSizeProperty
+  def fixedCellSize_=(v: Double) {
     fixedCellSize() = v
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.graphics3d
 
 import scala.math.sqrt
@@ -47,11 +48,11 @@ object TriangleMeshDemo extends JFXApp {
 
   stage = new PrimaryStage {
     title = "TriangleMesh Demo"
-    scene = new Scene(500, 500, true,  SceneAntialiasing.Balanced) {
+    scene = new Scene(500, 500, true, SceneAntialiasing.Balanced) {
       fill = Color.Beige
 
       // Create a tetrahedron and add to a mesh view. Configure it.
-      val tetra = new MeshView(tetrahedron (500.0)) {
+      val tetra = new MeshView(tetrahedron(500.0)) {
         val image = new Image(this, "images/TetrahedronMap.png")
         material = new PhongMaterial {
           specularColor = Color.White
@@ -100,7 +101,7 @@ object TriangleMeshDemo extends JFXApp {
    *
    * @throws java.lang.IllegalArgumentException if `length` is not greater than zero.
    */
-  private def tetrahedron (length: Double) = {
+  private def tetrahedron(length: Double) = {
     require(length > 0.0)
 
     /*
@@ -119,11 +120,11 @@ object TriangleMeshDemo extends JFXApp {
      * points South (in AutoCAD and 3D Studio, the Y-axis points North, while in X3D/VRML it points Up); the Z-axis points Down (in AutoCAD
      * and 3D Studio, the Z-axis points Up, while in X3D/VRML it points North).
      */
-    mesh.points = Array (
-      0.0f, -(length * sqrt (3.0) / 3.0).toFloat, 0.0f,                       // Base rear point, point 0.
-      (length / 2.0).toFloat, (length * sqrt (3.0) / 6.0).toFloat, 0.0f,      // Base front right point, point 1.
-      -(length / 2.0).toFloat, (length * sqrt (3.0) / 6.0).toFloat, 0.0f,     // Base front left point, point 2.
-      0.0f, 0.0f, -(length * sqrt (2.0 / 3.0)).toFloat                        // Top point, point 3.
+    mesh.points = Array(
+      0.0f, -(length * sqrt(3.0) / 3.0).toFloat, 0.0f, // Base rear point, point 0.
+      (length / 2.0).toFloat, (length * sqrt(3.0) / 6.0).toFloat, 0.0f, // Base front right point, point 1.
+      -(length / 2.0).toFloat, (length * sqrt(3.0) / 6.0).toFloat, 0.0f, // Base front left point, point 2.
+      0.0f, 0.0f, -(length * sqrt(2.0 / 3.0)).toFloat // Top point, point 3.
     )
 
     /*
@@ -136,13 +137,13 @@ object TriangleMeshDemo extends JFXApp {
      * the texture co-ordinates define which parts of the image map to which face. (Note: The origin, (0, 0), is the top left corner of the
      * image).
      */
-    mesh.texCoords = Array (
-      0.5f, 1.0f,                                 // Base face, rear point (left face, right point; right face, left point), point 0.
-      0.75f, (1.0 - sqrt (3.0) / 4.0).toFloat,    // Base face, right point (right face, right point; front face, right point), point 1.
-      0.25f, (1.0 - sqrt (3.0) / 4.0).toFloat,    // Base face, left point (left face, left point; front face, left point), point 2.
-      1.0f, 1.0f,                                 // Right face, top point, point 3.
-      0.5f, (1.0 - sqrt (3.0) / 2.0).toFloat,     // Front face, top point, point 4.
-      0.0f, 1.0f                                  // Left face, top point, point 5.
+    mesh.texCoords = Array(
+      0.5f, 1.0f, // Base face, rear point (left face, right point; right face, left point), point 0.
+      0.75f, (1.0 - sqrt(3.0) / 4.0).toFloat, // Base face, right point (right face, right point; front face, right point), point 1.
+      0.25f, (1.0 - sqrt(3.0) / 4.0).toFloat, // Base face, left point (left face, left point; front face, left point), point 2.
+      1.0f, 1.0f, // Right face, top point, point 3.
+      0.5f, (1.0 - sqrt(3.0) / 2.0).toFloat, // Front face, top point, point 4.
+      0.0f, 1.0f // Left face, top point, point 5.
     )
 
     /*
@@ -160,11 +161,11 @@ object TriangleMeshDemo extends JFXApp {
      * However, if the order of vertices is specified in counterclockwise order (such as 0, 2, 1), then the face will be invisible from
      * below.
      */
-    mesh.faces = Array (
-      0, 0, 1, 1, 2, 2,       // Base face, face 0. (Vertex points 0, 1, 2, tex-coords 0, 1, 2)
-      1, 1, 0, 0, 3, 3,       // Right face, face 1. (Vertex points 1, 0, 3, tex-coords 1, 0, 3)
-      2, 2, 1, 1, 3, 4,       // Front face, face 2. (Vertex points 2, 1, 3, tex-coords 2, 1, 4)
-      0, 0, 2, 2, 3, 5        // Left face, face 3. (Vertex points 0, 2, 3, tex-coords 0, 2, 3)
+    mesh.faces = Array(
+      0, 0, 1, 1, 2, 2, // Base face, face 0. (Vertex points 0, 1, 2, tex-coords 0, 1, 2)
+      1, 1, 0, 0, 3, 3, // Right face, face 1. (Vertex points 1, 0, 3, tex-coords 1, 0, 3)
+      2, 2, 1, 1, 3, 4, // Front face, face 2. (Vertex points 2, 1, 3, tex-coords 2, 1, 4)
+      0, 0, 2, 2, 3, 5 // Left face, face 3. (Vertex points 0, 2, 3, tex-coords 0, 2, 3)
     )
 
     /*
@@ -179,11 +180,11 @@ object TriangleMeshDemo extends JFXApp {
      * In the case of a tetrahedron, each face should belong to its own smoothing group, so we here map each face to a single smoothing
      * group.
      */
-    mesh.faceSmoothingGroups = Array (
-      0x1,              // Base face, smoothing group 0 (2^0).
-      0x2,              // Right face, smoothing group (2^1).
-      0x4,              // Front face, smoothing group (2^2).
-      0x8               // Left face, smoothing group (2^3).
+    mesh.faceSmoothingGroups = Array(
+      0x1, // Base face, smoothing group 0 (2^0).
+      0x2, // Right face, smoothing group (2^1).
+      0x4, // Front face, smoothing group (2^2).
+      0x8 // Left face, smoothing group (2^3).
     )
 
     /*

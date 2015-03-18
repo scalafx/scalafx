@@ -35,7 +35,7 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- *  Tests for [[scalafx.print.PrintResolution]] temporarily inactive.
+ * Tests for [[scalafx.print.PrintResolution]] temporarily inactive.
  *
  * When running in an enviroment with no defined printer,
  * '[[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.html#getDefaultPrinter--

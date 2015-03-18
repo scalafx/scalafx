@@ -35,7 +35,7 @@ import scalafx.delegate.SFXDelegate
 
 /**
  * Companion Object for `[[scalafx.collections.ObservableArray]]`.
- * 
+ *
  * @define OA `ObservableArray`
  */
 object ObservableArray {
@@ -43,16 +43,17 @@ object ObservableArray {
   // TODO: Enter link when JavaFX 8 API Docs are available on-line.
   /**
    * Indicates a change in an $OA. It is a simpler version of JavaFX's `ArrayChangeListener[T]`.
-   * 
+   *
    * @constructor Create new instance describing the change detected.
-   * 
+   *
    * @param sizeChanged `true` if the size of the $OA was changed; `false` otherwise.
    * @param start Index of first element in the array affected by the change.
    * @param end Index of first element in the array unaffected by the change.  This value is exclusive of the change
-   * and indicates the first unchanged element after the modification, or the end of the array.  Note that `end` may be
-   * less than `start`.
+   *            and indicates the first unchanged element after the modification, or the end of the array.  Note that `end` may be
+   *            less than `start`.
    */
   case class Change(sizeChanged: Boolean, start: Int, end: Int)
+
 }
 
 /**
@@ -68,8 +69,8 @@ object ObservableArray {
  * @constructor Create new base $OA.
  * @param delegate Wrapped JavaFX $OA instance providing implementation.
  */
-abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <: jfxc.ObservableArray[D]]
-  (override val delegate: D)
+abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: jfxc.ObservableArray[D]]
+(override val delegate: D)
   extends ArrayLike[V, T]
   with Builder[V, T]
   with Observable
@@ -104,7 +105,7 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
    * @param length Number of data elements to be copied.
    * @throws java.lang.ArrayIndexOutOfBoundsException if copying would cause access out of either array bounds.
    * @throws java.lang.ArrayStoreException if element in this array could not be stored in `dest` array due to a type
-   * mismatch.
+   *                                       mismatch.
    * @throws java.lang.NullPointerException if `dest` is `null`.
    */
   def copyTo(srcIdx: Int, dest: Array[V], destIdx: Int, length: Int): Unit
@@ -118,7 +119,7 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
    * @param length Number of data elements to be copied.
    * @throws java.lang.ArrayIndexOutOfBoundsException if copying would cause access out of either array bounds.
    * @throws java.lang.ArrayStoreException if element in this array could not be stored in `dest` array due to a type
-   * mismatch.
+   *                                       mismatch.
    * @throws java.lang.NullPointerException if `dest` is `null`.
    */
   def copyTo(srcIdx: Int, dest: T, destIdx: Int, length: Int): Unit
@@ -139,7 +140,7 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
    *
    * @param src Elements to be appended.
    * @throws java.lang.ArrayStoreException if element in `src` array could not be stored in this array due to a type
-   * mismatch.
+   *                                       mismatch.
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def addAll(src: T): Unit
@@ -151,7 +152,7 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
    *
    * @param elems Elements to be appended.
    * @throws java.lang.ArrayStoreException if element in `elements` could not be stored in this array due to a type
-   * mismatch.
+   *                                       mismatch.
    * @throws java.lang.NullPointerException if `elements` is `null`.
    */
   def addAll(elems: V*): Unit
@@ -166,7 +167,7 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
    * @param length Number of data elements to be appended.
    * @throws java.lang.ArrayIndexOutOfBoundsException if copying would cause access out of `src` array bounds.
    * @throws java.lang.ArrayStoreException if element in `src` array could not be stored in this array due to a type
-   * mismatch.
+   *                                       mismatch.
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def addAll(src: Array[V], srcIdx: Int, length: Int): Unit
@@ -181,7 +182,7 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
    * @param length Number of data elements to be appended.
    * @throws java.lang.ArrayIndexOutOfBoundsException if copying would cause access out of `src` array bounds.
    * @throws java.lang.ArrayStoreException if element in `src` array could not be stored in this array due to a type
-   * mismatch.
+   *                                       mismatch.
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def addAll(src: T, srcIdx: Int, length: Int): Unit
@@ -193,7 +194,7 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
    *
    * @param elems New contents of this array.
    * @throws java.lang.ArrayStoreException if element in `elements` could not be stored in this array due to a type
-   * mismatch.
+   *                                       mismatch.
    * @throws java.lang.NullPointerException if `elements` is `null`.
    */
   def setAll(elems: V*): Unit
@@ -205,7 +206,7 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
    *
    * @param src Array to replace contents this array.
    * @throws java.lang.ArrayStoreException if element in `src` could not be stored in this array due to a type
-   * mismatch.
+   *                                       mismatch.
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def setAll(src: T): Unit
@@ -220,7 +221,7 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
    * @param length Number of data elements to be copied.
    * @throws java.lang.ArrayIndexOutOfBoundsException if copying would cause access out of array bounds.
    * @throws java.lang.ArrayStoreException if element in `src` could not be stored in this array due to a type
-   * mismatch.
+   *                                       mismatch.
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def setAll(src: Array[V], srcIdx: Int, length: Int): Unit
@@ -235,7 +236,7 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
    * @param length Number of data elements to be copied.
    * @throws java.lang.ArrayIndexOutOfBoundsException if copying would cause access out of array bounds.
    * @throws java.lang.ArrayStoreException if element in `src` could not be stored in this array due to a type
-   * mismatch.
+   *                                       mismatch.
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def setAll(src: T, srcIdx: Int, length: Int): Unit
@@ -258,7 +259,7 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
    * @param length Number of data elements to be copied.
    * @throws java.lang.ArrayIndexOutOfBoundsException if copying would cause access out of array bounds.
    * @throws java.lang.ArrayStoreException if element in `src` could not be stored in this array due to a type
-   * mismatch.
+   *                                       mismatch.
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def set(destIdx: Int, src: Array[V], srcIdx: Int, length: Int): Unit
@@ -272,7 +273,7 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
    * @param length Number of data elements to be copied.
    * @throws java.lang.ArrayIndexOutOfBoundsException if copying would cause access out of array bounds.
    * @throws java.lang.ArrayStoreException if element in `src` could not be stored in this array due to a type
-   * mismatch.
+   *                                       mismatch.
    * @throws java.lang.NullPointerException if `src` is `null`.
    */
   def set(destIdx: Int, src: T, srcIdx: Int, length: Int): Unit
@@ -288,11 +289,11 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
    * Write the contents of this array into the specified array, if it is large enough, or a new array if it is not.
    *
    * @param dest Array into which this array will be written, if large enough to hold this array's contents.  If
-   * `null`, this argument is ignored.
+   *             `null`, this argument is ignored.
    * @return The `dest` array if it is large enough to hold this array's data, or a new array, containing this array's
-   * copied contents.
+   *         copied contents.
    * @throws java.lang.ArrayStoreException if element in `src` could not be stored in this array due to a type
-   * mismatch.
+   *                                       mismatch.
    */
   def toArray(dest: Array[V]): Array[V]
 
@@ -302,12 +303,12 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
    *
    * @param srcIdx Start position in this array.
    * @param dest Array into which this array will be written, if large enough to hold this array's contents.  If
-   * `null`, this argument is ignored.
+   *             `null`, this argument is ignored.
    * @param length Number of data elements to be copied.
    * @return The `dest` array if it is large enough to hold this array's data, or a new array, containing this array's
-   * copied contents.
+   *         copied contents.
    * @throws java.lang.ArrayStoreException if element in `src` could not be stored in this array due to a type
-   * mismatch.
+   *                                       mismatch.
    */
   def toArray(srcIdx: Int, dest: Array[V], length: Int): Array[V]
 
@@ -355,18 +356,18 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
 
   /**
    * Append another array to this array.
-   * 
+   *
    * @param src Array to be appended to this array.
    * @return This array, expanded to contain the indicated array.
    */
   def ++(src: Array[V]): T = {
-    addAll(src:_*)
+    addAll(src: _*)
     this.asInstanceOf[T]
   }
 
   /**
    * Append another observable array to this array.
-   * 
+   *
    * @param src Array to be appended to this array.
    * @return This array, expanded to contain the indicated array.
    */
@@ -406,14 +407,14 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
 
   /**
    * Add a listener function to $ARY's changes.
-   * 
+   *
    * @note This function '''will handle''' this array's modifications data.  That is, it will be notified which array
-   * has been modified and which array elements have been changed.
-   * 
+   *       has been modified and which array elements have been changed.
+   *
    * @param op Function that will handle this $OA's modifications data, to be activated when some change is made.
    */
 
-  def onChange(op:(T, ObservableArray.Change) => Unit) {
+  def onChange(op: (T, ObservableArray.Change) => Unit) {
     delegate.addListener {
       new jfxc.ArrayChangeListener[D] {
         override def onChanged(array: D, sizeChanged: Boolean, start: Int, end: Int) {
@@ -425,9 +426,9 @@ abstract class ObservableArray[V : ClassTag, T <: ObservableArray[V, T, D], D <:
 
   /**
    * Add a listener function to $ARY's changes.
-   * 
+   *
    * @note This function '''will not handle''' this array's modifications data.  That is, it will be notified that an
-   * array it is associated with has changed, but not which array the which data within it was changed.
+   *       array it is associated with has changed, but not which array the which data within it was changed.
    *
    * @param op Function that will handle this $OA's modifications data, to be activated when some change is made.
    */

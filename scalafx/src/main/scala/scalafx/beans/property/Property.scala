@@ -132,9 +132,9 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: Any]
   /**
    * Returns a new [[scalafx.animation.Tweenable]] from a End Value.
    *
-   *  @param endVal End Value
+   * @param endVal End Value
    *
-   *  @return a new Tweenable with this Property and end value passed.
+   * @return a new Tweenable with this Property and end value passed.
    */
   def ->(endVal: J) = new Tweenable[T, J](this, endVal)
 }

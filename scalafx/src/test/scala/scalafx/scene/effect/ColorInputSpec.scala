@@ -36,7 +36,7 @@ import scalafx.testutil.{DimensionDelegateSpec, SimpleSFXDelegateSpec}
 
 /**
  * ColorInput Spec tests.
- * 
+ *
  */
 @RunWith(classOf[JUnitRunner])
 class ColorInputSpec

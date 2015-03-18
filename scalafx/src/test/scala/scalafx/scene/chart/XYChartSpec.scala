@@ -35,7 +35,7 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * 	Chart Spec tests.
+ * Chart Spec tests.
  *
  *
  */
@@ -46,7 +46,7 @@ class XYChartSpec
   with RunOnApplicationThread {
 
   override def getScalaClassInstance = new XYChart[Number, Number](getJavaClassInstance) {}
-  
+
   override def getJavaClassInstance = new jfxsc.LineChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
 
 }
