@@ -49,6 +49,8 @@ The official web site for ScalaFX is http://scalafx.org.
 
 #Software License
 
+[![Join the chat at https://gitter.im/scalafx/scalafx](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/scalafx/scalafx?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This software licensed under BSD Open Source.
 
 The License text for this software can be found in [LICENSE.txt](LICENSE.txt) in the root
