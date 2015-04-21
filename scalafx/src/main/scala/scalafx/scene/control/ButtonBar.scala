@@ -33,7 +33,7 @@ import javafx.{scene => jfxs}
 import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, StringProperty}
-import scalafx.collections.ObservableBuffer
+import scalafx.collections._
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.scene.Node
 
@@ -41,15 +41,6 @@ import scalafx.scene.Node
  * Object companion for [[scalafx.scene.control.ButtonBar]].
  */
 object ButtonBar {
-  /**
-   * Converts a ScalaFX ButtonBar to its JavaFX counterpart.
-   *
-   * @param v ScalaFX ButtonBar
-   * @return JavaFX ButtonBar
-   */
-  implicit def sfxButtonBar2jfx(v: ButtonBar): jfxsc.ButtonBar =
-    if (v != null) v.delegate else null
-
   /**
    * The default button ordering on Windows.
    */
@@ -69,6 +60,69 @@ object ButtonBar {
    * different than using an HBox is that the buttons are right-aligned.
    */
   val ButtonOrderNone: String = jfxsc.ButtonBar.BUTTON_ORDER_NONE
+  /**
+   * Converts a ScalaFX ButtonBar to its JavaFX counterpart.
+   *
+   * @param v ScalaFX ButtonBar
+   * @return JavaFX ButtonBar
+   */
+  implicit def sfxButtonBar2jfx(v: ButtonBar): jfxsc.ButtonBar =
+    if (v != null) v.delegate else null
+  /**
+   * Sets the given ButtonData on the given button. If this button is
+   * subsequently placed in a [[scalafx.scene.control.ButtonBar]] it will be placed in the
+   * correct position relative to all other buttons in the bar.
+   *
+   * @param button The button to annotate with the given { @link ButtonData} value.
+   * @param buttonData The ButtonData to designate the button as.
+   */
+  def setButtonData(button: Node, buttonData: ButtonBar.ButtonData) {
+    jfxsc.ButtonBar.setButtonData(button, buttonData)
+  }
+  /**
+   * Returns the previously set ButtonData property on the given button. If this
+   * was never set, this method will return null.
+   *
+   * @param button The button to return the previously set ButtonData for.
+   */
+  def getButtonData(button: Node): ButtonBar.ButtonData = jfxsc.ButtonBar.getButtonData(button)
+  /**
+   * By default all buttons are uniformly sized in a ButtonBar, meaning that all
+   * buttons take the width of the widest button. It is possible to opt-out of this
+   * on a per-button basis, but calling the setButtonUniformSize method with
+   * a boolean value of false.
+   *
+   * <p>If a button is excluded from uniform sizing, it is both excluded from
+   * being resized away from its preferred size, and also excluded from the
+   * measuring process, so its size will not influence the maximum size calculated
+   * for all buttons in the ButtonBar.
+   *
+   * @param button The button to include / exclude from uniform sizing.
+   * @param uniformSize Boolean true to force uniform sizing on the button,
+   *                    false to exclude the button from uniform sizing.
+   */
+  def setButtonUniformSize(button: Node, uniformSize: Boolean) {
+    jfxsc.ButtonBar.setButtonUniformSize(button, uniformSize)
+  }
+  /**
+   * Returns whether the given node is part of the uniform sizing calculations
+   * or not. By default all nodes that have not opted out (via
+   * [[scalafx.scene.control.ButtonBar.setButtonUniformSize( N o d e, b o o l e a n]]) will return true here.
+   */
+  def isButtonUniformSize(button: Node): Boolean = {
+    jfxsc.ButtonBar.isButtonUniformSize(button)
+  }
+
+  /**
+   * Wraps a $JFX $URL0 $FC]].
+   *
+   * @constructor Creates a new ButtonData from a JavaFX one.
+   * @param delegate JavaFX ButtonData
+   */
+  sealed case class ButtonData(override val delegate: jfxsc.ButtonBar.ButtonData)
+    extends SFXEnumDelegate[jfxsc.ButtonBar.ButtonData] {
+    def typeCode: String = delegate.getTypeCode
+  }
 
   /**
    * Wraps a $JFX $URL0 $FC]].
@@ -197,64 +251,6 @@ object ButtonBar {
       NextForward, BackPrevious, Finish, Apply, CancelClose, OKDone, Other, BigGap, SmallGap)
   }
 
-  /**
-   * Wraps a $JFX $URL0 $FC]].
-   *
-   * @constructor Creates a new ButtonData from a JavaFX one.
-   * @param delegate JavaFX ButtonData
-   */
-  sealed case class ButtonData(override val delegate: jfxsc.ButtonBar.ButtonData)
-    extends SFXEnumDelegate[jfxsc.ButtonBar.ButtonData] {
-    def typeCode: String = delegate.getTypeCode
-  }
-
-  /**
-   * Sets the given ButtonData on the given button. If this button is
-   * subsequently placed in a [[scalafx.scene.control.ButtonBar]] it will be placed in the
-   * correct position relative to all other buttons in the bar.
-   *
-   * @param button The button to annotate with the given { @link ButtonData} value.
-   * @param buttonData The ButtonData to designate the button as.
-   */
-  def setButtonData(button: Node, buttonData: ButtonBar.ButtonData) {
-    jfxsc.ButtonBar.setButtonData(button, buttonData)
-  }
-
-  /**
-   * Returns the previously set ButtonData property on the given button. If this
-   * was never set, this method will return null.
-   *
-   * @param button The button to return the previously set ButtonData for.
-   */
-  def getButtonData(button: Node): ButtonBar.ButtonData = jfxsc.ButtonBar.getButtonData(button)
-
-  /**
-   * By default all buttons are uniformly sized in a ButtonBar, meaning that all
-   * buttons take the width of the widest button. It is possible to opt-out of this
-   * on a per-button basis, but calling the setButtonUniformSize method with
-   * a boolean value of false.
-   *
-   * <p>If a button is excluded from uniform sizing, it is both excluded from
-   * being resized away from its preferred size, and also excluded from the
-   * measuring process, so its size will not influence the maximum size calculated
-   * for all buttons in the ButtonBar.
-   *
-   * @param button The button to include / exclude from uniform sizing.
-   * @param uniformSize Boolean true to force uniform sizing on the button,
-   *                    false to exclude the button from uniform sizing.
-   */
-  def setButtonUniformSize(button: Node, uniformSize: Boolean) {
-    jfxsc.ButtonBar.setButtonUniformSize(button, uniformSize)
-  }
-
-  /**
-   * Returns whether the given node is part of the uniform sizing calculations
-   * or not. By default all nodes that have not opted out (via
-   * [[scalafx.scene.control.ButtonBar.setButtonUniformSize( N o d e, b o o l e a n]]) will return true here.
-   */
-  def isButtonUniformSize(button: Node): Boolean = {
-    jfxsc.ButtonBar.isButtonUniformSize(button)
-  }
 }
 
 /**
@@ -284,6 +280,12 @@ class ButtonBar(override val delegate: jfxsc.ButtonBar = new jfxsc.ButtonBar())
 
 
   def buttons: ObservableBuffer[jfxs.Node] = delegate.getButtons
+  def buttons_=(c: Node) = {
+    fillSFXCollectionWithOne(delegate.getButtons, c)
+  }
+  def buttons_=(c: Iterable[Node]) = {
+    fillSFXCollection(delegate.getButtons, c)
+  }
 
   /**
    * The order for the typical buttons in a standard button bar. It is
