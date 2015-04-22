@@ -39,8 +39,8 @@ import scalafx.scene.Node
 /**
  * $OBJCOMPSTA$TV$OBJCOMPEND
  *
- * @define OBJCOMPSTA Object companion for [[scalafx.scene.control.
-           * @ d e f i n e O B J C O M P E N D ]].
+ * @define OBJCOMPSTA Object companion for [[scalafx.scene.control
+ * @define OBJCOMPEND ]].
  * @define JFX JavaFX
  * @define SFX ScalaFX
  * @define WRAPSTA Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/
@@ -61,6 +61,29 @@ object TableView {
    * @return $JFX $TV
    */
   implicit def sfxTableView2jfx[S](tv: TableView[S]): jfxsc.TableView[S] = if (tv != null) tv.delegate else null
+
+  /**
+   * Very simple resize policy that just resizes the specified column by the provided delta and
+   * shifts all other columns (to the right of the given column) further to the right (when the delta is positive)
+   * or to the left (when the delta is negative).
+   *
+   * It delegates to JavaFX
+   * [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html#UNCONSTRAINED_RESIZE_POLICY UNCONSTRAINED_RESIZE_POLICY]]
+   */
+  val UnconstrainedResizePolicy = jfxsc.TableView.UNCONSTRAINED_RESIZE_POLICY
+
+  /**
+   * Simple policy that ensures the width of all visible leaf columns in this table sum up to equal
+   * the width of the table itself.
+   * When the user resizes a column width with this policy, the table automatically adjusts the width of the right
+   * hand side columns. When the user increases a column width, the table decreases the width of the rightmost column
+   * until it reaches its minimum width.
+   * Then it decreases the width of the second rightmost column until it reaches minimum width and so on.
+   * When all right hand side columns reach minimum size, the user cannot increase the size of resized column any more.
+   *
+   * It delegates to JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html#CONSTRAINED_RESIZE_POLICY CONSTRAINED_RESIZE_POLICY]]
+   */
+  val ConstrainedResizePolicy = jfxsc.TableView.CONSTRAINED_RESIZE_POLICY
 
   /**
    * $OBJCOMPSTA$TV.$RF$OBJCOMPEND
@@ -220,7 +243,7 @@ object TableView {
     /**
      * Causes the item at the given index to receive the focus.
      *
-     * @param row The row index of the item to give focus to.
+     * @param index The row index of the item to give focus to.
      * @param column The column of the item to give focus to. Can be `null`.
      */
     def focus(index: Int, column: TableColumn[S, _]) {
@@ -267,6 +290,15 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
 
   /**
    * This is the function called when the user completes a column-resize operation.
+   *
+   * There are predefined resize policies defined by
+   * [[scalafx.scene.control.TableView#ConstrainedResizePolicy UnconstrainedResizePolicy]] and
+   * [[scalafx.scene.control.TableView#UnconstrainedResizePolicy UnconstrainedResizePolicy]].
+   *
+   * Example use:
+   * {{{
+   *   tableView.columnResizePolicy = TableView.UnconstrainedResizePolicy
+   * }}}
    */
   def columnResizePolicy: ObjectProperty[TableView.ResizeFeatures[S] => Boolean] =
     ObjectProperty((features: TableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features))
@@ -276,6 +308,9 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
         p(v)
       }
     })
+  }
+  def columnResizePolicy_=(p: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], java.lang.Boolean]) {
+    delegate.columnResizePolicyProperty().setValue(p)
   }
 
   /** The comparator property is a read-only property that is representative of the current state of the `sort order` list. */
