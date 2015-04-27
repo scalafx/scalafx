@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.input
 
 import java.io.File
@@ -34,6 +35,7 @@ import scala.collection._
 import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.input.DataFormat._
+import scalafx.scene.input.InputIncludes.jfxClipboard2sfx
 
 object Clipboard {
   implicit def sfxClipboard2jfx(c: Clipboard): jfxsi.Clipboard = if (c != null) c.delegate else null
@@ -41,7 +43,7 @@ object Clipboard {
   /**
    * Gets the current system clipboard, through which data can be stored and retrieved.
    */
-  def systemClipboard = jfxsi.Clipboard.getSystemClipboard
+  def systemClipboard: Clipboard = jfxsi.Clipboard.getSystemClipboard
 }
 
 class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxsi.Clipboard] {
@@ -137,7 +139,7 @@ class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxs
     * @throws java.lang.NullPointerException - if null data reference is passed for any format
     */
   def content_=(content: Map[DataFormat, AnyRef]) = {
-    delegate.setContent(content.map { case (a, b) => (a.delegate, b)})
+    delegate.setContent(content.map { case (a, b) => (a.delegate, b) })
   }
 
   /** Puts content onto the clipboard.
