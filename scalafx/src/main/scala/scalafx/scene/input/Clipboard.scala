@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,9 +64,9 @@ class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxs
   def contentTypes: Set[jfxsi.DataFormat] = delegate.getContentTypes
 
   /**
-   * Gets the List of Files from the clipboard which had previously been registered.
+   * Gets the list of files from the clipboard which had previously been registered.
    */
-  def Files: Seq[File] = delegate.getFiles
+  def files: Seq[File] = delegate.getFiles
 
   /**
    * Gets the HTML text String from the clipboard which had previously been registered.
@@ -99,32 +99,32 @@ class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxs
   def hasContent(dataFormat: DataFormat) = delegate.hasContent(dataFormat)
 
   /**
-   * Gets whether an List of Files (DataFormat.FILES) has been registered on this Clipboard.
+   * Gets whether an list of files ([[DataFormat.Files]]) has been registered on this Clipboard.
    */
   def hasFiles = delegate.hasFiles
 
   /**
-   * Gets whether an HTML text String (DataFormat.HTML) has been registered on this Clipboard.
+   * Gets whether an HTML text String ([[DataFormat.Html]]) has been registered on this Clipboard.
    */
   def hasHtml = delegate.hasHtml
 
   /**
-   * Gets whether an Image (DataFormat.IMAGE) has been registered on this Clipboard.
+   * Gets whether an Image ([[DataFormat.Image]]) has been registered on this Clipboard.
    */
   def hasImage = delegate.hasImage
 
   /**
-   * Gets whether an RTF String (DataFormat.RTF) has been registered on this Clipboard.
+   * Gets whether an RTF String ([[DataFormat.Rtf]]) has been registered on this Clipboard.
    */
   def hasRtf = delegate.hasRtf
 
   /**
-   * Gets whether a plain text String (DataFormat.PLAIN_TEXT) has been registered on this Clipboard.
+   * Gets whether a plain text String ([[DataFormat.PlainText]]) has been registered on this Clipboard.
    */
   def hasString = delegate.hasString
 
   /**
-   * Gets whether a url String (DataFormat.URL) has been registered on this Clipboard.
+   * Gets whether a url String ([[DataFormat.Url]]) has been registered on this Clipboard.
    */
   def hasUrl = delegate.hasUrl
 
