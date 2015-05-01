@@ -167,6 +167,11 @@ abstract class Animation protected(override val delegate: jfxa.Animation)
   def onFinished_=(handler: jfxe.EventHandler[jfxe.ActionEvent]) {
     onFinished() = handler
   }
+  def onFinished_=(handler: jfxe.ActionEvent => Unit) {
+    onFinished() = new jfxe.EventHandler[jfxe.ActionEvent] {
+      override def handle(event: jfxe.ActionEvent): Unit = handler(event)
+    }
+  }
 
   /**
    * Defines the direction/speed at which the $AN is expected to be played. $DV 1.0
