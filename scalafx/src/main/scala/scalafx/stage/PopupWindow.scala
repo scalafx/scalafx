@@ -173,7 +173,7 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
    * @since 2.2
    */
   def consumeAutoHidingEvents: BooleanProperty = delegate.consumeAutoHidingEventsProperty
-  def consumeAutoHidingEvents(v: Boolean) {
+  def consumeAutoHidingEvents_=(v: Boolean) {
     consumeAutoHidingEvents() = v
   }
 
