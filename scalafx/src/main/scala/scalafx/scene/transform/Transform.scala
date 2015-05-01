@@ -93,9 +93,9 @@ abstract class Transform(override val delegate: jfxst.Transform) extends SFXDele
   def identity: ReadOnlyBooleanProperty = delegate.identityProperty
 
   /** The onTransformChanged event handler is called whenever the transform changes any of its parameters. */
-  def onTransformChanged: ObjectProperty[jfxe.EventHandler[_ <: jfxst.TransformChangedEvent]] = delegate.onTransformChanged
-  def onTransformChanged_=(v: jfxe.EventHandler[_ <: jfxst.TransformChangedEvent]) {
-    ObjectProperty.fillProperty[jfxe.EventHandler[_ <: jfxst.TransformChangedEvent]](this.onTransformChanged, v)
+  def onTransformChanged: ObjectProperty[jfxe.EventHandler[_ >: jfxst.TransformChangedEvent]] = delegate.onTransformChanged
+  def onTransformChanged_=(v: jfxe.EventHandler[_ >: jfxst.TransformChangedEvent]) {
+    ObjectProperty.fillProperty[jfxe.EventHandler[_ >: jfxst.TransformChangedEvent]](this.onTransformChanged, v)
   }
 
   /** Determines if this is currently a 2D transform. */
