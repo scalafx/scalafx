@@ -169,6 +169,12 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
   def onAlert_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]) {
     delegate.engine.onAlert = v
   }
+  def onAlert_=(handler: jfxsw.WebEvent[String] => Unit) {
+    delegate.engine.onAlert = new jfxe.EventHandler[jfxsw.WebEvent[String]] {
+      override def handle(event: jfxsw.WebEvent[String]): Unit = handler(event)
+    }
+  }
+
 
   /**
    * JavaScript window resize handler property.
@@ -176,6 +182,11 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
   def onResized = delegate.engine.onResized
   def onResized_=(v: jfxe.EventHandler[jfxsw.WebEvent[jfxg.Rectangle2D]]) {
     delegate.engine.onResized = v
+  }
+  def onResized_=(handler: jfxsw.WebEvent[jfxg.Rectangle2D] => Unit): Unit = {
+    delegate.engine.onResized = new jfxe.EventHandler[jfxsw.WebEvent[jfxg.Rectangle2D]] {
+      override def handle(event: jfxsw.WebEvent[jfxg.Rectangle2D]): Unit = handler(event)
+    }
   }
 
   /**
@@ -185,6 +196,11 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
   def onStatusChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]) {
     delegate.engine.onStatusChanged = v
   }
+  def onStatusChanged_=(handler: jfxsw.WebEvent[String] => Unit) {
+    delegate.engine.onStatusChanged = new jfxe.EventHandler[jfxsw.WebEvent[String]] {
+      override def handle(event: jfxsw.WebEvent[String]): Unit = handler(event)
+    }
+  }
 
   /**
    * JavaScript window visibility handler property.
@@ -192,6 +208,11 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
   def onVisibilityChanged = delegate.engine.onVisibilityChanged
   def onVisibilityChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]]) {
     delegate.engine.onVisibilityChanged = v
+  }
+  def onVisibilityChanged_=(handler: jfxsw.WebEvent[java.lang.Boolean] => Unit) {
+    delegate.engine.onVisibilityChanged = new jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]] {
+      override def handle(event: jfxsw.WebEvent[java.lang.Boolean]): Unit = handler(event)
+    }
   }
 
   /**
