@@ -130,6 +130,11 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
   def onAutoHide_=(v: jfxe.EventHandler[jfxe.Event]) {
     onAutoHide() = v
   }
+  def onAutoHide_=(handler: jfxe.Event => Unit) {
+    onAutoHide() = new jfxe.EventHandler[jfxe.Event] {
+      override def handle(event: jfxe.Event): Unit = handler(event)
+    }
+  }
 
   /**
    * The window which is the parent of this popup.
