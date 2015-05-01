@@ -46,7 +46,7 @@ object WebView {
   /**
    * Converts a ScalaFX WebView to its JavaFX counterpart.
    *
-   * @param we ScalaFX WebView
+   * @param wv ScalaFX WebView
    * @return JavaFX WebView
    */
   implicit def sfxWebView2jfx(wv: WebView): jfxsw.WebView = if (wv != null) wv.delegate else null
