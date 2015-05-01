@@ -64,6 +64,11 @@ abstract class Task[T](override val delegate: jfxc.Task[T])
   def onCancelled_=(v: jfxe.EventHandler[jfxc.WorkerStateEvent]) {
     onCancelled() = v
   }
+  def onCancelled_=(handler: jfxc.WorkerStateEvent => Unit) {
+    onCancelled() = new jfxe.EventHandler[jfxc.WorkerStateEvent] {
+      override def handle(event: jfxc.WorkerStateEvent): Unit = handler(event)
+    }
+  }
 
   /**
    * The onFailed event handler is called whenever the Task state transitions to the FAILED state.
@@ -72,6 +77,11 @@ abstract class Task[T](override val delegate: jfxc.Task[T])
   def onFailed_=(v: jfxe.EventHandler[jfxc.WorkerStateEvent]) {
     onFailed() = v
   }
+  def onFailed_=(handler: jfxc.WorkerStateEvent => Unit) {
+    onFailed() = new jfxe.EventHandler[jfxc.WorkerStateEvent] {
+      override def handle(event: jfxc.WorkerStateEvent): Unit = handler(event)
+    }
+  }
 
   /**
    * The onRunning event handler is called whenever the Task state transitions to the RUNNING state.
@@ -79,6 +89,11 @@ abstract class Task[T](override val delegate: jfxc.Task[T])
   def onRunning = delegate.onRunningProperty
   def onRunning_=(v: jfxe.EventHandler[jfxc.WorkerStateEvent]) {
     onRunning() = v
+  }
+  def onRunning_=(handler: jfxc.WorkerStateEvent => Unit) {
+    onRunning() = new jfxe.EventHandler[jfxc.WorkerStateEvent] {
+      override def handle(event: jfxc.WorkerStateEvent): Unit = handler(event)
+    }
   }
 
   /**
@@ -89,6 +104,11 @@ abstract class Task[T](override val delegate: jfxc.Task[T])
   def onScheduled_=(v: jfxe.EventHandler[jfxc.WorkerStateEvent]) {
     onScheduled() = v
   }
+  def onScheduled_=(handler: jfxc.WorkerStateEvent => Unit) {
+    onScheduled() = new jfxe.EventHandler[jfxc.WorkerStateEvent] {
+      override def handle(event: jfxc.WorkerStateEvent): Unit = handler(event)
+    }
+  }
 
   /**
    * The onSucceeded event handler is called whenever the Task state transitions to the SUCCEEDED
@@ -97,5 +117,10 @@ abstract class Task[T](override val delegate: jfxc.Task[T])
   def onSucceeded = delegate.onSucceededProperty
   def onSucceeded_=(v: jfxe.EventHandler[jfxc.WorkerStateEvent]) {
     onSucceeded() = v
+  }
+  def onSucceeded_=(handler: jfxc.WorkerStateEvent => Unit) {
+    onSucceeded() = new jfxe.EventHandler[jfxc.WorkerStateEvent] {
+      override def handle(event: jfxc.WorkerStateEvent): Unit = handler(event)
+    }
   }
 }
