@@ -417,6 +417,14 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]) {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]](onScrollTo, v)
   }
+  def onScrollTo_=(handler: jfxsc.ScrollToEvent[Integer] => Unit) {
+    ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]](
+      onScrollTo,
+      new jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]] {
+        override def handle(event: jfxsc.ScrollToEvent[Integer]): Unit = handler(event)
+      }
+    )
+  }
 
   /**
    * Called when there's a request to scroll a column into view using `scrollToColumn(TableColumn)` or `scrollToColumnIndex(int)`.
@@ -425,11 +433,27 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   def onScrollToColumn_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[jfxsc.TableColumn[S, _]]]) {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[jfxsc.TableColumn[S, _]]]](onScrollToColumn, v)
   }
+  def onScrollToColumn_=(handler: jfxsc.ScrollToEvent[jfxsc.TableColumn[S, _]] => Unit) {
+    ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[jfxsc.TableColumn[S, _]]]](
+      onScrollToColumn,
+      new jfxe.EventHandler[jfxsc.ScrollToEvent[jfxsc.TableColumn[S, _]]] {
+        override def handle(event: jfxsc.ScrollToEvent[jfxsc.TableColumn[S, _]]): Unit = handler(event)
+      }
+    )
+  }
 
   /** Called when there's a request to sort the control. */
   def onSort: ObjectProperty[jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TableView[S]]]] = delegate.onSortProperty
   def onSort_=(v: jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TableView[S]]]) {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TableView[S]]]](onSort, v)
+  }
+  def onSort_=(handler: jfxsc.SortEvent[jfxsc.TableView[S]] => Unit) {
+    ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TableView[S]]]](
+      onSort,
+      new jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TableView[S]]] {
+        override def handle(event: jfxsc.SortEvent[jfxsc.TableView[S]]): Unit = handler(event)
+      }
+    )
   }
 
   /**
