@@ -107,6 +107,11 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]) {
     onAction() = v
   }
+  def onAction_=(handler: jfxe.ActionEvent => Unit) {
+    onAction() = new jfxe.EventHandler[jfxe.ActionEvent] {
+      override def handle(event: jfxe.ActionEvent): Unit = handler(event)
+    }
+  }
 
   /**
    *
@@ -167,6 +172,11 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   def onMenuValidation = delegate.onMenuValidationProperty()
   def onMenuValidation_=(eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onMenuValidation() = eventHandler
+  }
+  def onMenuValidation_=(handler: jfxe.Event => Unit) {
+    onMenuValidation() = new jfxe.EventHandler[jfxe.Event] {
+      override def handle(event: jfxe.Event): Unit = handler(event)
+    }
   }
 
   override protected def eventHandlerDelegate = delegate.asInstanceOf[EventHandled]
