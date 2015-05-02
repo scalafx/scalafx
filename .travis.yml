@@ -15,6 +15,7 @@ install: true
 script:
   - sudo apt-get update && sudo apt-get install oracle-java8-installer
   - java -version
+  - sbt test
 
 branches:
   only:
