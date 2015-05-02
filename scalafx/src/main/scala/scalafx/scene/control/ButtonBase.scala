@@ -56,6 +56,11 @@ abstract class ButtonBase(override val delegate: jfxsc.ButtonBase)
   def onAction_=(implicit aeh: jfxe.EventHandler[jfxe.ActionEvent]) {
     onAction() = aeh
   }
+  def onAction_=(handler: jfxe.ActionEvent => Unit): Unit = {
+    onAction() = new jfxe.EventHandler[jfxe.ActionEvent] {
+      override def handle(event: jfxe.ActionEvent): Unit = handler(event)
+    }
+  }
 
   /**
    * Arms the button.
