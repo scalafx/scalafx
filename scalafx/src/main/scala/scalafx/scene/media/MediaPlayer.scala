@@ -253,6 +253,11 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
   def onMarker_=(v: jfxe.EventHandler[jfxsm.MediaMarkerEvent]) {
     onMarker() = v
   }
+  def onMarker_=(handler: jfxsm.MediaMarkerEvent => Unit) {
+    onMarker() = new jfxe.EventHandler[jfxsm.MediaMarkerEvent] {
+      override def handle(event: jfxsm.MediaMarkerEvent): Unit = handler(event)
+    }
+  }
 
   /**
    * Event handler invoked when the status changes to PAUSED.
