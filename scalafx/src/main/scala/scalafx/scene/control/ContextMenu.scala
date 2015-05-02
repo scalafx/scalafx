@@ -58,6 +58,11 @@ class ContextMenu(override val delegate: jfxsc.ContextMenu = new jfxsc.ContextMe
   def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]) {
     onAction() = v
   }
+  def onAction_=(handler: jfxe.ActionEvent => Unit) {
+    onAction() = new jfxe.EventHandler[jfxe.ActionEvent] {
+      override def handle(event: jfxe.ActionEvent): Unit = handler(event)
+    }
+  }
 
   /**
    * The menu items on the context menu.
