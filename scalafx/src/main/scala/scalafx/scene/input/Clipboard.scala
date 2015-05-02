@@ -61,8 +61,8 @@ class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxs
   def content = {
     val cnt = new ClipboardContent()
 
-    contentTypes foreach { jfxDataFormat =>
-      cnt.put(new DataFormat(jfxDataFormat), delegate.getContent(jfxDataFormat))
+    contentTypes foreach { dataFormat =>
+      cnt.put(dataFormat, delegate.getContent(dataFormat))
     }
 
     cnt
@@ -76,7 +76,7 @@ class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxs
   /**
    * Gets the set of DataFormat types on this Clipboard instance which have associated data registered on the clipboard.
    */
-  def contentTypes: Set[jfxsi.DataFormat] = delegate.getContentTypes
+  def contentTypes: Set[DataFormat] = delegate.getContentTypes map (new DataFormat(_))
 
   /**
    * Gets the list of files from the clipboard which had previously been registered.
