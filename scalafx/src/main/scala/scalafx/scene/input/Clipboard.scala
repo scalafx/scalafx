@@ -61,7 +61,9 @@ class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxs
   def content = {
     val cnt = new ClipboardContent()
 
-    contentTypes foreach (cnt.put(_, delegate.getContent(_)))
+    contentTypes foreach { jfxDataFormat =>
+      cnt.put(new DataFormat(jfxDataFormat), delegate.getContent(jfxDataFormat))
+    }
 
     cnt
   }
