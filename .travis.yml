@@ -1,7 +1,7 @@
 language: scala
 scala:
-  - 2.10.4
-  - 2.11.5
+  - 2.10.5
+  - 2.11.6
 
 before_install:
   - "export DISPLAY=:99.0"
@@ -12,8 +12,8 @@ jdk:
 
 branches:
   only:
-    - SFX-8
-    - SFX-8-stable
+    - master
+    - stable
 
 notifications:
   email:
