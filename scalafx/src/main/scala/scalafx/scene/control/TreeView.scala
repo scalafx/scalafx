@@ -178,6 +178,11 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
     onEditCancel() = v
   }
+  def onEditCancel_=(handler: jfxsc.TreeView.EditEvent[T] => Unit) {
+    onEditCancel() = new jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]] {
+      override def handle(event: jfxsc.TreeView.EditEvent[T]): Unit = handler(event)
+    }
+  }
 
   /**
    * This event handler will be fired when the user commits editing a cell.
@@ -185,6 +190,11 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   def onEditCommit = delegate.onEditCommitProperty
   def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
     onEditCommit() = v
+  }
+  def onEditCommit_=(handler: jfxsc.TreeView.EditEvent[T] => Unit) {
+    onEditCommit() = new jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]] {
+      override def handle(event: jfxsc.TreeView.EditEvent[T]): Unit = handler(event)
+    }
   }
 
   /**
@@ -194,6 +204,11 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   def onEditStart_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
     onEditStart() = v
   }
+  def onEditStart_=(handler: jfxsc.TreeView.EditEvent[T] => Unit) {
+    onEditStart() = new jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]] {
+      override def handle(event: jfxsc.TreeView.EditEvent[T]): Unit = handler(event)
+    }
+  }
 
   /**
    * Called when there's a request to scroll an index into view using `scrollTo(Int)`
@@ -201,6 +216,14 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   def onScrollTo: ObjectProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]] = delegate.onScrollToProperty
   def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]) {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]](onScrollTo, v)
+  }
+  def onScrollTo_=(handler: jfxsc.ScrollToEvent[Integer] => Unit) {
+    ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]](
+      onScrollTo,
+      new jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]] {
+        override def handle(event: jfxsc.ScrollToEvent[Integer]): Unit = handler(event)
+      }
+    )
   }
 
   /**
