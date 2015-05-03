@@ -71,7 +71,7 @@ class Window protected(override val delegate: jfxs.Window)
   def onCloseRequest_=(v: jfxe.EventHandler[jfxs.WindowEvent]) {
     onCloseRequest() = v
   }
-  def onCloseRequest_=(handler: jfxs.WindowEvent => Unit) {
+  def onCloseRequest_=(handler: WindowEvent => Unit) {
     onCloseRequest() = new jfxe.EventHandler[jfxs.WindowEvent] {
       override def handle(event: jfxs.WindowEvent): Unit = handler(event)
     }
@@ -84,7 +84,7 @@ class Window protected(override val delegate: jfxs.Window)
   def onHidden_=(v: jfxe.EventHandler[jfxs.WindowEvent]) {
     onHidden() = v
   }
-  def onHidden_=(handler: jfxs.WindowEvent => Unit) {
+  def onHidden_=(handler: WindowEvent => Unit) {
     onHidden() = new jfxe.EventHandler[jfxs.WindowEvent] {
       override def handle(event: jfxs.WindowEvent): Unit = handler(event)
     }
@@ -97,7 +97,7 @@ class Window protected(override val delegate: jfxs.Window)
   def onHiding_=(v: jfxe.EventHandler[jfxs.WindowEvent]) {
     onHiding() = v
   }
-  def onHiding_=(handler: jfxs.WindowEvent => Unit) {
+  def onHiding_=(handler: WindowEvent => Unit) {
     onHiding() = new jfxe.EventHandler[jfxs.WindowEvent] {
       override def handle(event: jfxs.WindowEvent): Unit = handler(event)
     }
@@ -110,7 +110,7 @@ class Window protected(override val delegate: jfxs.Window)
   def onShowing_=(v: jfxe.EventHandler[jfxs.WindowEvent]) {
     onShowing() = v
   }
-  def onShowing_=(handler: jfxs.WindowEvent => Unit) {
+  def onShowing_=(handler: WindowEvent => Unit) {
     onShowing() = new jfxe.EventHandler[jfxs.WindowEvent] {
       override def handle(event: jfxs.WindowEvent): Unit = handler(event)
     }
@@ -123,7 +123,7 @@ class Window protected(override val delegate: jfxs.Window)
   def onShown_=(v: jfxe.EventHandler[jfxs.WindowEvent]) {
     onShown() = v
   }
-  def onShown_=(handler: jfxs.WindowEvent => Unit) {
+  def onShown_=(handler: WindowEvent => Unit) {
     onShown() = new jfxe.EventHandler[jfxs.WindowEvent] {
       override def handle(event: jfxs.WindowEvent): Unit = handler(event)
     }

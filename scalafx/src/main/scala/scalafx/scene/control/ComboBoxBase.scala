@@ -33,6 +33,7 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyBooleanProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.event.{Event, ActionEvent}
 
 object ComboBoxBase {
   implicit def sfxComboBoxBase2jfx[T](cb: ComboBoxBase[T]): jfxsc.ComboBoxBase[T] = if (cb != null) cb.delegate else null
@@ -84,7 +85,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]) {
     onAction() = v
   }
-  def onAction_=(handler: jfxe.ActionEvent => Unit) {
+  def onAction_=(handler: ActionEvent => Unit) {
     onAction() = new jfxe.EventHandler[jfxe.ActionEvent] {
       override def handle(event: jfxe.ActionEvent): Unit = handler(event)
     }
@@ -126,7 +127,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   def onHidden_=(eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onHidden() = eventHandler
   }
-  def onHidden_=(handler: jfxe.Event => Unit) {
+  def onHidden_=(handler: Event => Unit) {
     onHidden() = new jfxe.EventHandler[jfxe.Event] {
       override def handle(event: jfxe.Event): Unit = handler(event)
     }
@@ -140,7 +141,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   def onHiding_=(eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onHiding() = eventHandler
   }
-  def onHiding_=(handler: jfxe.Event => Unit) {
+  def onHiding_=(handler: Event => Unit) {
     onHiding() = new jfxe.EventHandler[jfxe.Event] {
       override def handle(event: jfxe.Event): Unit = handler(event)
     }
@@ -154,7 +155,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   def onShowing_=(eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onShowing() = eventHandler
   }
-  def onShowing_=(handler: jfxe.Event => Unit) {
+  def onShowing_=(handler: Event => Unit) {
     onShowing() = new jfxe.EventHandler[jfxe.Event] {
       override def handle(event: jfxe.Event): Unit = handler(event)
     }
@@ -168,7 +169,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
   def onShown_=(eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onShown() = eventHandler
   }
-  def onShown_=(handler: jfxe.Event => Unit) {
+  def onShown_=(handler: Event => Unit) {
     onShown() = new jfxe.EventHandler[jfxe.Event] {
       override def handle(event: jfxe.Event): Unit = handler(event)
     }

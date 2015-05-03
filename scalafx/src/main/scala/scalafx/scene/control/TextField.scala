@@ -33,6 +33,7 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.IntegerProperty
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
+import scalafx.event.ActionEvent
 
 object TextField {
   implicit def sfxTextField2jfx(v: TextField): jfxsc.TextField = if (v != null) v.delegate else null
@@ -50,7 +51,7 @@ class TextField(override val delegate: jfxsc.TextField = new jfxsc.TextField)
   def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]) {
     onAction() = v
   }
-  def onAction_=(handler: jfxe.ActionEvent => Unit) {
+  def onAction_=(handler: ActionEvent => Unit) {
     onAction() = new jfxe.EventHandler[jfxe.ActionEvent] {
       override def handle(event: jfxe.ActionEvent): Unit = handler(event)
     }

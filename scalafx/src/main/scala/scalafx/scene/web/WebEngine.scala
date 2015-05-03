@@ -103,7 +103,7 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   def onAlert_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]) {
     onAlert() = v
   }
-  def onAlert_=(handler: jfxsw.WebEvent[String] => Unit) {
+  def onAlert_=(handler: WebEvent[String] => Unit) {
     onAlert() = new jfxe.EventHandler[jfxsw.WebEvent[String]] {
       override def handle(event: jfxsw.WebEvent[String]): Unit = handler(event)
     }
@@ -118,7 +118,7 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   def onError_=(v: jfxe.EventHandler[jfxsw.WebErrorEvent]) {
     onError() = v
   }
-  def onError_=(handler: jfxsw.WebErrorEvent => Unit) {
+  def onError_=(handler: WebErrorEvent => Unit) {
     onError() = new jfxe.EventHandler[jfxsw.WebErrorEvent] {
       override def handle(event: jfxsw.WebErrorEvent): Unit = handler(event)
     }
@@ -131,7 +131,7 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   def onResized_=(v: jfxe.EventHandler[jfxsw.WebEvent[Rectangle2D]]) {
     onResized() = v
   }
-  def onResized_=(handler: jfxsw.WebEvent[Rectangle2D] => Unit): Unit = {
+  def onResized_=(handler: WebEvent[Rectangle2D] => Unit): Unit = {
     onResized() = new jfxe.EventHandler[jfxsw.WebEvent[Rectangle2D]] {
       override def handle(event: jfxsw.WebEvent[Rectangle2D]): Unit = handler(event)
     }
@@ -144,7 +144,7 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   def onStatusChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]) {
     onStatusChanged() = v
   }
-  def onStatusChanged_=(handler: jfxsw.WebEvent[String] => Unit) {
+  def onStatusChanged_=(handler: WebEvent[String] => Unit) {
     onStatusChanged() = new jfxe.EventHandler[jfxsw.WebEvent[String]] {
       override def handle(event: jfxsw.WebEvent[String]): Unit = handler(event)
     }
@@ -157,7 +157,7 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   def onVisibilityChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]]) {
     onVisibilityChanged() = v
   }
-  def onVisibilityChanged_=(handler: jfxsw.WebEvent[java.lang.Boolean] => Unit) {
+  def onVisibilityChanged_=(handler: WebEvent[java.lang.Boolean] => Unit) {
     onVisibilityChanged() = new jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]] {
       override def handle(event: jfxsw.WebEvent[java.lang.Boolean]): Unit = handler(event)
     }

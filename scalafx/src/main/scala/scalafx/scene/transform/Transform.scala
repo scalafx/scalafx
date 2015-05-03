@@ -33,6 +33,7 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyBooleanProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.event.Event
 
 
 object Transform {
@@ -97,11 +98,12 @@ abstract class Transform(override val delegate: jfxst.Transform) extends SFXDele
   def onTransformChanged_=(v: jfxe.EventHandler[_ >: jfxst.TransformChangedEvent]) {
     ObjectProperty.fillProperty[jfxe.EventHandler[_ >: jfxst.TransformChangedEvent]](this.onTransformChanged, v)
   }
-  def onTransformChanged_=[T >: jfxst.TransformChangedEvent <: jfxe.Event](handler: T => Unit) {
+  def onTransformChanged_=[T >: TransformChangedEvent <: Event, U >: jfxst.TransformChangedEvent <: jfxe.Event](handler: T => Unit)
+                                                                                                               (implicit jfx2sfx: U => T) {
     ObjectProperty.fillProperty[jfxe.EventHandler[_ >: jfxst.TransformChangedEvent]](
       this.onTransformChanged,
-      new jfxe.EventHandler[T] {
-        override def handle(event: T): Unit = handler(event)
+      new jfxe.EventHandler[U] {
+        override def handle(event: U): Unit = handler(event)
       })
   }
 

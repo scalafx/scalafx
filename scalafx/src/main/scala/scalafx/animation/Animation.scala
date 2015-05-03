@@ -32,6 +32,7 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, IntegerProperty, ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
 import scalafx.delegate._
+import scalafx.event.ActionEvent
 import scalafx.util.Duration
 import scalafx.util.Duration.sfxDuration2jfx
 
@@ -167,7 +168,7 @@ abstract class Animation protected(override val delegate: jfxa.Animation)
   def onFinished_=(handler: jfxe.EventHandler[jfxe.ActionEvent]) {
     onFinished() = handler
   }
-  def onFinished_=(handler: jfxe.ActionEvent => Unit) {
+  def onFinished_=(handler: ActionEvent => Unit) {
     onFinished() = new jfxe.EventHandler[jfxe.ActionEvent] {
       override def handle(event: jfxe.ActionEvent): Unit = handler(event)
     }

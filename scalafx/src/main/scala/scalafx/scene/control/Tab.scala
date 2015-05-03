@@ -34,6 +34,7 @@ import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyBooleanProperty, ReadOnlyObjectProperty, StringProperty}
 import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
+import scalafx.event.Event
 import scalafx.scene.Node
 import scalafx.scene.Node._
 
@@ -94,7 +95,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
   def onClosed_=(v: jfxe.EventHandler[jfxe.Event]) {
     onClosed() = v
   }
-  def onClosed_=(handler: jfxe.Event => Unit) {
+  def onClosed_=(handler: Event => Unit) {
     onClosed() = new jfxe.EventHandler[jfxe.Event] {
       override def handle(event: jfxe.Event): Unit = handler(event)
     }
@@ -107,7 +108,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
   def onCloseRequest_=(v: jfxe.EventHandler[jfxe.Event]) {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxe.Event]](onCloseRequest, v)
   }
-  def onCloseRequest_=(handler: jfxe.Event => Unit) {
+  def onCloseRequest_=(handler: Event => Unit) {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxe.Event]](
       onCloseRequest,
       new jfxe.EventHandler[jfxe.Event] {
@@ -123,7 +124,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
   def onSelectionChanged_=(v: jfxe.EventHandler[jfxe.Event]) {
     onSelectionChanged() = v
   }
-  def onSelectionChanged_=(handler: jfxe.Event => Unit) {
+  def onSelectionChanged_=(handler: Event => Unit) {
     onSelectionChanged() = new jfxe.EventHandler[jfxe.Event] {
       override def handle(event: jfxe.Event): Unit = handler(event)
     }

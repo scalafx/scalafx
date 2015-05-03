@@ -178,7 +178,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
     onEditCancel() = v
   }
-  def onEditCancel_=(handler: jfxsc.TreeView.EditEvent[T] => Unit) {
+  def onEditCancel_=(handler: TreeView.EditEvent[T] => Unit) {
     onEditCancel() = new jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]] {
       override def handle(event: jfxsc.TreeView.EditEvent[T]): Unit = handler(event)
     }
@@ -191,7 +191,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
     onEditCommit() = v
   }
-  def onEditCommit_=(handler: jfxsc.TreeView.EditEvent[T] => Unit) {
+  def onEditCommit_=(handler: TreeView.EditEvent[T] => Unit) {
     onEditCommit() = new jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]] {
       override def handle(event: jfxsc.TreeView.EditEvent[T]): Unit = handler(event)
     }
@@ -204,7 +204,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   def onEditStart_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
     onEditStart() = v
   }
-  def onEditStart_=(handler: jfxsc.TreeView.EditEvent[T] => Unit) {
+  def onEditStart_=(handler: TreeView.EditEvent[T] => Unit) {
     onEditStart() = new jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]] {
       override def handle(event: jfxsc.TreeView.EditEvent[T]): Unit = handler(event)
     }
@@ -217,7 +217,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]) {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]](onScrollTo, v)
   }
-  def onScrollTo_=(handler: jfxsc.ScrollToEvent[Integer] => Unit) {
+  def onScrollTo_=(handler: ScrollToEvent[Integer] => Unit) {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]](
       onScrollTo,
       new jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]] {

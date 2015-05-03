@@ -309,7 +309,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   def onShowing_=(v: jfxe.EventHandler[jfxsc.DialogEvent]) {
     onShowing() = v
   }
-  def onShowing_=(handler: jfxsc.DialogEvent => Unit) {
+  def onShowing_=(handler: DialogEvent => Unit) {
     onShowing() = new jfxe.EventHandler[jfxsc.DialogEvent] {
       override def handle(event: jfxsc.DialogEvent): Unit = handler(event)
     }
@@ -322,7 +322,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   def onShown_=(v: jfxe.EventHandler[jfxsc.DialogEvent]) {
     onShown() = v
   }
-  def onShown_=(handler: jfxsc.DialogEvent => Unit) {
+  def onShown_=(handler: DialogEvent => Unit) {
     onShown() = new jfxe.EventHandler[jfxsc.DialogEvent] {
       override def handle(event: jfxsc.DialogEvent): Unit = handler(event)
     }
@@ -335,7 +335,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   def onHiding_=(v: jfxe.EventHandler[jfxsc.DialogEvent]) {
     onHiding() = v
   }
-  def onHiding_=(handler: jfxsc.DialogEvent => Unit) {
+  def onHiding_=(handler: DialogEvent => Unit) {
     onHiding() = new jfxe.EventHandler[jfxsc.DialogEvent] {
       override def handle(event: jfxsc.DialogEvent): Unit = handler(event)
     }
@@ -351,7 +351,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   def onHidden_=(v: jfxe.EventHandler[jfxsc.DialogEvent]) {
     onHidden() = v
   }
-  def onHidden_=(handler: jfxsc.DialogEvent => Unit) {
+  def onHidden_=(handler: DialogEvent => Unit) {
     onHidden() = new jfxe.EventHandler[jfxsc.DialogEvent] {
       override def handle(event: jfxsc.DialogEvent): Unit = handler(event)
     }
@@ -361,7 +361,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   def onCloseRequest_=(v: jfxe.EventHandler[jfxsc.DialogEvent]) {
     onCloseRequest() = v
   }
-  def onCloseRequest_=(handler: jfxsc.DialogEvent => Unit) {
+  def onCloseRequest_=(handler: DialogEvent => Unit) {
     onCloseRequest() = new jfxe.EventHandler[jfxsc.DialogEvent] {
       override def handle(event: jfxsc.DialogEvent): Unit = handler(event)
     }
