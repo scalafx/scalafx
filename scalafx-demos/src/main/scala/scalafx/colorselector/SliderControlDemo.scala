@@ -46,7 +46,7 @@ object SliderControlDemo extends JFXApp {
     alignmentInParent = Pos.BaselineLeft
     promptText = "Enter the value"
     hgrow = Priority.Never
-    onAction = handle {
+    onAction =  { actionEvent =>
       sliderControl.value = text.get.toDouble
     }
   }

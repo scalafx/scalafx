@@ -55,7 +55,7 @@ object WebDemo extends JFXApp {
     hgrow = Priority.Always
     vgrow = Priority.Never
   }
-  txfUrl.onAction = handle {engine.load(txfUrl.text.get)}
+  txfUrl.onAction = { actionEvent => engine.load(txfUrl.text.get)}
 
   stage = new PrimaryStage {
     title = "ScalaFX Web Demo"

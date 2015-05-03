@@ -61,7 +61,7 @@ object VanishingCircles extends JFXApp {
         strokeWidth <== when(hover) choose 4 otherwise 0
         stroke = White
         // add this for event listeners:
-        onMouseClicked = handle {
+        onMouseClicked = { mouseEvent =>
           Timeline(at(3 s) {radius -> 0}).play()
         }
       }

@@ -85,7 +85,7 @@ object BarChartWithTableViewDemo extends JFXApp {
       title = chartTitle
       data = XYChart.Series(chartData.map(d => XYChart.Data[String, Number](d.name(), d.value())))
       legendVisible = false
-      onMouseClicked = handle {showAsTable(title(), chartData)}
+      onMouseClicked = { mouseEvent => showAsTable(title(), chartData) }
     }
 
 

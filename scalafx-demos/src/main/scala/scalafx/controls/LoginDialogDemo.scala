@@ -44,7 +44,7 @@ object LoginDialogDemo extends JFXApp {
       title = "Custom Dialog Demo"
       content = new VBox {
         children = new Button("Show Login Dialog") {
-          onAction = handle {onShowLoginDialog()}
+          onAction = { actionEvent => onShowLoginDialog() }
         }
         padding = Insets(top = 24, right = 64, bottom = 24, left = 64)
       }

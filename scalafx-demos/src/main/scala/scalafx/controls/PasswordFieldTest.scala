@@ -82,12 +82,12 @@ class PasswordFieldControls(target: PasswordField) extends PropertiesNodes[Passw
    */
   val btnCopy = new Button {
     text = "Copy"
-    onAction = handle {target.copy()}
+    onAction = { actionEvent => target.copy() }
   }
 
   val btnCut = new Button {
     text = "Cut"
-    onAction = handle {target.cut()}
+    onAction = { actionEvent => target.cut() }
   }
 
   super.addNode("Typed Text", lblText)
