@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -94,7 +94,7 @@ object PrinterJob {
   // JobStatus - end
 
   /**
-   * Factory method to create a job.
+   * Factory method to create a job. If there are no printers available, this will return `null`.
    */
   def createPrinterJob: PrinterJob = jfxp.PrinterJob.createPrinterJob
 
@@ -148,7 +148,7 @@ final class PrinterJob(override val delegate: jfxp.PrinterJob)
   /**
    * Cancel the underlying print job at the earliest opportunity.
    */
-  def cancelJob: Unit = delegate.cancelJob
+  def cancelJob(): Unit = delegate.cancelJob()
 
   /**
    * If the job can be successfully spooled to the printer queue this will return true.
@@ -175,7 +175,7 @@ final class PrinterJob(override val delegate: jfxp.PrinterJob)
   /**
    * Displays a Page Setup dialog.
    *
-   * @param to block input, or 'null'.
+   * @param owner owner to block input, or 'null'.
    * @return false if the user opts to cancel the dialog, or the job is not in the new state.
    *         That is if it has already started, has failed, or has been cancelled, or ended.
    */
@@ -184,7 +184,7 @@ final class PrinterJob(override val delegate: jfxp.PrinterJob)
   /**
    * Displays a Print Dialog.
    *
-   * @param to which to block input, or 'null'.
+   * @param owner owner to which to block input, or 'null'.
    * @return false if the user opts to cancel printing, or the job is not in the new state.
    *         That is if it has already started, has failed, or has been cancelled, or ended.
    */
