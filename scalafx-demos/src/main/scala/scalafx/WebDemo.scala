@@ -29,6 +29,7 @@ package scalafx
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
+import scalafx.event.ActionEvent
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout._
@@ -55,7 +56,7 @@ object WebDemo extends JFXApp {
     hgrow = Priority.Always
     vgrow = Priority.Never
   }
-  txfUrl.onAction = { actionEvent => engine.load(txfUrl.text.get)}
+  txfUrl.onAction = { actionEvent: ActionEvent => engine.load(txfUrl.text.get)}
 
   stage = new PrimaryStage {
     title = "ScalaFX Web Demo"

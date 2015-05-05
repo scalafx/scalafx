@@ -37,6 +37,7 @@ import scalafx.scene.Scene
 import scalafx.scene.chart.{BarChart, CategoryAxis, NumberAxis, XYChart}
 import scalafx.scene.control.TableColumn._
 import scalafx.scene.control.{Label, TableColumn, TableView}
+import scalafx.scene.input.MouseEvent
 import scalafx.scene.layout.{BorderPane, HBox}
 import scalafx.stage.{Modality, Stage}
 
@@ -85,7 +86,7 @@ object BarChartWithTableViewDemo extends JFXApp {
       title = chartTitle
       data = XYChart.Series(chartData.map(d => XYChart.Data[String, Number](d.name(), d.value())))
       legendVisible = false
-      onMouseClicked = { mouseEvent => showAsTable(title(), chartData) }
+      onMouseClicked = { mouseEvent: MouseEvent => showAsTable(title(), chartData) }
     }
 
 

@@ -29,6 +29,7 @@ package scalafx.controls.controls
 
 import scalafx.Includes._
 import scalafx.beans.property._
+import scalafx.event.ActionEvent
 import scalafx.geometry.Pos
 import scalafx.scene.Node
 import scalafx.scene.control._
@@ -52,7 +53,7 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
 
   protected val btnReset = new Button {
     text = "Reset"
-    onAction = { actionEvent => resetProperties() }
+    onAction = { actionEvent: ActionEvent => resetProperties() }
     alignmentInParent = Pos.Center
   }
 

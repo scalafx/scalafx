@@ -31,6 +31,7 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
+import scalafx.event.ActionEvent
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
@@ -51,7 +52,7 @@ object MultipleFileChooserDemo extends JFXApp {
         padding = Insets(12)
         children = new Button {
           text = "Open file chooser and select multiple files or Cancel"
-          onAction = handle {
+          onAction = { actionEvent: ActionEvent =>
             val fc = new FileChooser()
             val selection = fc.showOpenMultipleDialog(stage)
 
