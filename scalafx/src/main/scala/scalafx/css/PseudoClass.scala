@@ -26,10 +26,11 @@
  */
 package scalafx.css
 
-import scala.language.implicitConversions
 import javafx.{css => jfxcss}
-import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 import scalafx.css.CssIncludes.jfxPseudoClass2sfx
+import scalafx.delegate.SFXDelegate
 
 /**
  * Companion object for [[scalafx.css.PseudoClass]].
@@ -42,7 +43,7 @@ object PseudoClass {
    * @param v ScalaFX PseudoClass
    * @return JavaFX PseudoClass
    */
-  implicit def sfxPseudoClass2jfx(v: PseudoClass) = if (v != null) v.delegate else null
+  implicit def sfxPseudoClass2jfx(v: PseudoClass): jfxcss.PseudoClass = if (v != null) v.delegate else null
 
   /**
    * There is only one PseudoClass instance for a given pseudoClass.

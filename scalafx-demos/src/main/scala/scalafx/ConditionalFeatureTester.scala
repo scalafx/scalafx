@@ -26,7 +26,7 @@
  */
 package scalafx
 
-import scalafx.application.{JFXApp, Platform, ConditionalFeature}
+import scalafx.application.{ConditionalFeature, JFXApp, Platform}
 
 /** Test which conditional features are supported on this platform. */
 object ConditionalFeatureTester extends JFXApp {

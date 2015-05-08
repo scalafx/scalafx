@@ -26,14 +26,15 @@
  */
 package scalafx.scene.input
 
-import scala.language.implicitConversions
+import javafx.scene.{input => jfxsi}
+
 import scala.collection.JavaConversions._
 import scala.collection._
-import javafx.scene.{input => jfxsi}
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Dragboard {
-  implicit def sfxDragboard2jfx(d: Dragboard) = if (d != null) d.delegate else null
+  implicit def sfxDragboard2jfx(d: Dragboard): jfxsi.Dragboard = if (d != null) d.delegate else null
 }
 
 class Dragboard(override val delegate: jfxsi.Dragboard) extends Clipboard(delegate) with SFXDelegate[jfxsi.Dragboard] {

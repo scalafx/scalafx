@@ -26,8 +26,9 @@
  */
 package scalafx.scene.canvas
 
+import javafx.scene.{canvas => jfxsc}
+
 import scala.language.implicitConversions
-import javafx.scene.{ canvas => jfxsc }
 
 object CanvasIncludes extends CanvasIncludes
 
@@ -52,7 +53,7 @@ trait CanvasIncludes {
    * @param c $JFX $CANV
    * @return $SFX $CANV
    */
-  implicit def jfxCanvas2sfx(c: jfxsc.Canvas) = if (c != null) new Canvas(c) else null
+  implicit def jfxCanvas2sfx(c: jfxsc.Canvas): Canvas = if (c != null) new Canvas(c) else null
 
   /**
    * $START$GRCT.html $GRCT$END
@@ -60,6 +61,6 @@ trait CanvasIncludes {
    * @param gc $JFX $GRCT
    * @return $SFX $GRCT
    */
-  implicit def jfxGraphicsContext2sfx(gc: jfxsc.GraphicsContext) = if (gc != null) new GraphicsContext(gc) else null
+  implicit def jfxGraphicsContext2sfx(gc: jfxsc.GraphicsContext): GraphicsContext = if (gc != null) new GraphicsContext(gc) else null
 
 }

@@ -30,7 +30,7 @@ import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
-import scalafx.scene.control.{TableView, TableColumn}
+import scalafx.scene.control.{TableColumn, TableView}
 
 
 object SimpleTableViewSorted extends JFXApp {

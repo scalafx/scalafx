@@ -26,12 +26,13 @@
  */
 package scalafx.geometry
 
-import scala.language.implicitConversions
 import javafx.{geometry => jfxg}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Insets {
-  implicit def sfxInsets2jfx(i: Insets) = if (i != null) i.delegate else null
+  implicit def sfxInsets2jfx(i: Insets): jfxg.Insets = if (i != null) i.delegate else null
 
   /**
    * Empty insets. An Insets instance with all offsets equal to zero.

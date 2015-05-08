@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,25 +26,23 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.beans.{value => jfxbv}
 import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe}
-import javafx.{util => jfxu}
+import javafx.{event => jfxe, scene => jfxs, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.beans.value.ObservableValue
-import scalafx.event.Event
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.{SFXEnumDelegateCompanion, SFXEnumDelegate}
 import scalafx.collections.ObservableBuffer
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
+import scalafx.event.Event
 
 object TableColumn {
-  implicit def sfxTableColumn2jfx[S, T](tc: TableColumn[S, T]) = if (tc != null) tc.delegate else null
+  implicit def sfxTableColumn2jfx[S, T](tc: TableColumn[S, T]): jfxsc.TableColumn[S, T] = if (tc != null) tc.delegate else null
 
   object CellDataFeatures {
-    implicit def sfxCellDataFeatures2jfx[S, T](cdf: CellDataFeatures[S, T]) = if (cdf != null) cdf.delegate else null
+    implicit def sfxCellDataFeatures2jfx[S, T](cdf: CellDataFeatures[S, T]): jfxsc.TableColumn.CellDataFeatures[S, T] = if (cdf != null) cdf.delegate else null
   }
 
   /**
@@ -77,7 +75,7 @@ object TableColumn {
   }
 
   object CellEditEvent {
-    implicit def sfxCellEditEvent2jfx[S, T](cee: CellEditEvent[S, T]) = if (cee != null) cee.delegate else null
+    implicit def sfxCellEditEvent2jfx[S, T](cee: CellEditEvent[S, T]): jfxsc.TableColumn.CellEditEvent[S, T] = if (cee != null) cee.delegate else null
 
   }
 
@@ -179,7 +177,7 @@ object TableColumn {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.html]].
  */
 class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfxsc.TableColumn[S, T]())
-  extends TableColumnBase[S,T](delegate)
+  extends TableColumnBase[S, T](delegate)
   with SFXDelegate[jfxsc.TableColumn[S, T]] {
 
   /**
@@ -203,6 +201,28 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
 
   /**
    * The cell value factory needs to be set to specify how to populate all cells within a single TableColumn.
+   *
+   * {{{
+   * class Position(name_ : String, value_ : Int) {
+   *   val name = new StringProperty(this, "name", name_)
+   *   val value = new ObjectProperty[Int](this, "value", value_)
+   * }
+   *
+   * val tableView = new TableView[Position](data) {
+   *   columns ++= List(
+   *     new TableColumn[Position, String] {
+   *       text = "Position"
+   *       cellValueFactory = {_.value.name}
+   *       prefWidth = 180
+   *     },
+   *     new TableColumn[Position, Int] {
+   *       text = "Value"
+   *       cellValueFactory = {_.value.value}
+   *       prefWidth = 180
+   *     }
+   *   )
+   * }
+   * }}}
    */
   def cellValueFactory: ObjectProperty[TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]] =
     ObjectProperty((features: TableColumn.CellDataFeatures[S, T]) => delegate.cellValueFactoryProperty.getValue.call(features))

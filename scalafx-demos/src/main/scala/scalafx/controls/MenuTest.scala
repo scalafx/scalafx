@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.controls
 
 import scalafx.Includes._
@@ -31,7 +32,7 @@ import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.event.ActionEvent
 import scalafx.scene.Scene
-import scalafx.scene.control.{Label, MenuItem, Menu, MenuBar}
+import scalafx.scene.control.{Label, Menu, MenuBar, MenuItem, SeparatorMenuItem}
 import scalafx.scene.layout.{BorderPane, VBox}
 import scalafx.scene.paint.Color
 
@@ -41,17 +42,18 @@ object MenuTest extends JFXApp {
   val menu = new Menu("File") {
     items = List(
       new MenuItem("Open") {
-        onAction = (ae: ActionEvent) => history.content += new Label("Selected item `Open`")
+        onAction = (ae: ActionEvent) => history.children += new Label("Selected item `Open`")
       },
+      new SeparatorMenuItem,
       new MenuItem("Close") {
-        onAction = (ae: ActionEvent) => history.content += new Label("Selected item `Close`")
+        onAction = (ae: ActionEvent) => history.children += new Label("Selected item `Close`")
       }
     )
 
-    onShowing = handle { printEvent("on showing") }
-    onShown = handle { printEvent("on shown") }
-    onHiding = handle { printEvent("on hiding") }
-    onHidden = handle { printEvent("on hidden") }
+    onShowing = handle {printEvent("on showing")}
+    onShown = handle {printEvent("on shown")}
+    onHiding = handle {printEvent("on hiding")}
+    onHidden = handle {printEvent("on hidden")}
   }
 
   val history = new VBox()
@@ -76,6 +78,7 @@ object MenuTest extends JFXApp {
   }
 
   def printEvent(eventStr: String)() {
-    history.content += new Label(eventStr)
+    history.children += new Label(eventStr)
   }
+
 }

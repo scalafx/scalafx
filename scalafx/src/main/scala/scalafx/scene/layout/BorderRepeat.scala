@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,16 +24,18 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
 import javafx.scene.{layout => jfxsl}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
  * Enum indicating the repetition rules for border images.
- * Wrapper for [[javafx.scene.layout.BorderRepeat]].
+ * Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderRepeat.html javafx.scene.layout.BorderRepeat]].
  */
 object BorderRepeat extends SFXEnumDelegateCompanion[jfxsl.BorderRepeat, BorderRepeat] {
 

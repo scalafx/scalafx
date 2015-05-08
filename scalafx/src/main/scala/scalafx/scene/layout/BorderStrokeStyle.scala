@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,17 +24,19 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
 import javafx.scene.{layout => jfxsl}
+
+import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
-import scalafx.scene.shape.{StrokeLineJoin, StrokeType, StrokeLineCap}
-import scala.collection.JavaConversions._
+import scalafx.scene.shape.{StrokeLineCap, StrokeLineJoin, StrokeType}
 
 object BorderStrokeStyle {
-  implicit def sfxBorderStrokeStyle2jfx(v: BorderStrokeStyle) = if (v != null) v.delegate else null
+  implicit def sfxBorderStrokeStyle2jfx(v: BorderStrokeStyle): jfxsl.BorderStrokeStyle = if (v != null) v.delegate else null
 
   /**
    * A predefined dashed pattern to be used for stroking
@@ -60,7 +62,7 @@ object BorderStrokeStyle {
 /**
  * Defines the style of the stroke to use on one side of a BorderStroke.
  *
- * Wrapper for [[javafx.scene.layout.BorderStrokeStyle]].
+ * Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderStrokeStyle.html javafx.scene.layout.BorderStrokeStyle]].
  */
 class BorderStrokeStyle(override val delegate: jfxsl.BorderStrokeStyle)
   extends SFXDelegate[jfxsl.BorderStrokeStyle] {

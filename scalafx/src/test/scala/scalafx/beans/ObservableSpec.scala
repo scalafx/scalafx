@@ -28,12 +28,14 @@
 package scalafx.beans
 
 import javafx.beans.{Observable => JFXObservable}
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
-import org.scalatest.Matchers._
-import property.DoubleProperty
-import scalafx.beans.binding.BindingIncludes._
+
 import org.junit.runner.RunWith
+import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+
+import scalafx.beans.binding.BindingIncludes._
+import scalafx.beans.property.DoubleProperty
 
 /**
  * Observable Spec tests.
@@ -53,9 +55,9 @@ class ObservableSpec extends FlatSpec with BeforeAndAfterEach {
     property onInvalidate {
       invalidateCalled = true
     }
-    invalidateCalled should be (false)
+    invalidateCalled should be(false)
     property() = 100
-    invalidateCalled should be (true)
+    invalidateCalled should be(true)
   }
 
   it should "support anonymous invalidation listeners with parameters" in {
@@ -63,11 +65,11 @@ class ObservableSpec extends FlatSpec with BeforeAndAfterEach {
     property onInvalidate {
       obs =>
         invalidateCalled = true
-        obs should equal (property)
+        obs should equal(property)
     }
-    invalidateCalled should be (false)
+    invalidateCalled should be(false)
     property() = 100
-    invalidateCalled should be (true)
+    invalidateCalled should be(true)
   }
 
   it should "support adding explicit listeners as a clojure" in {
@@ -75,23 +77,23 @@ class ObservableSpec extends FlatSpec with BeforeAndAfterEach {
     property addListener {
       (obs: JFXObservable) =>
         invalidateCalled = true
-        obs should equal (property.delegate)
+        obs should equal(property.delegate)
     }
-    invalidateCalled should be (false)
+    invalidateCalled should be(false)
     property() = 100
-    invalidateCalled should be (true)
+    invalidateCalled should be(true)
   }
 
   it should "support removing explict listeners" in {
     var invalidateCalled = false
     val listener = (obs: JFXObservable) => invalidateCalled = true
     property addListener listener
-    invalidateCalled should be (false)
+    invalidateCalled should be(false)
     property() = 100
-    invalidateCalled should be (true)
+    invalidateCalled should be(true)
     invalidateCalled = false
     property removeListener listener
     property() = 200
-    invalidateCalled should be (false)
+    invalidateCalled should be(false)
   }
 }

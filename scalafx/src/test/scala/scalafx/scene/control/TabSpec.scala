@@ -27,15 +27,17 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Tab Spec tests.
- * 
+ *
  */
 @RunWith(classOf[JUnitRunner])
-class TabSpec 
-extends SimpleSFXDelegateSpec[jfxsc.Tab, Tab](classOf[jfxsc.Tab], classOf[Tab])
+class TabSpec
+  extends SimpleSFXDelegateSpec[jfxsc.Tab, Tab](classOf[jfxsc.Tab], classOf[Tab])

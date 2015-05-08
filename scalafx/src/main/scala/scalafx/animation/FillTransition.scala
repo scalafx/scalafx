@@ -26,15 +26,16 @@
  */
 package scalafx.animation
 
-import scala.language.implicitConversions
+import javafx.scene.{paint => jfxsp, shape => jfxss}
 import javafx.{animation => jfxa, util => jfxu}
-import javafx.scene.{ paint => jfxsp, shape => jfxss }
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Shape
 import scalafx.util.Duration
-import scalafx.delegate.SFXDelegate
 
 /**
  * Companion Object for [[scalafx.animation.FadeTransition]].
@@ -50,13 +51,13 @@ object FillTransition extends AnimationStatics {
    * @param v ScalaFX $FT
    * @return Delegated JavaFX $FT extracted from `v`.
    */
-  implicit def sfxFillTransition2jfx(v: FillTransition) = if (v != null) v.delegate else null
+  implicit def sfxFillTransition2jfx(v: FillTransition): jfxa.FillTransition = if (v != null) v.delegate else null
 
 }
 
 /**
  * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FillTransition.html $FT]].
- * 
+ *
  * @constructor Creates a new ScalaFX $FT from a JavaFX $FT.
  * @param delegate JavaFX $FT to be delegated.
  *
@@ -66,8 +67,6 @@ object FillTransition extends AnimationStatics {
 class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillTransition())
   extends Transition(delegate)
   with SFXDelegate[jfxa.FillTransition] {
-
-  override type Delegate = jfxa.FillTransition
 
   /**
    * The constructor of $FT

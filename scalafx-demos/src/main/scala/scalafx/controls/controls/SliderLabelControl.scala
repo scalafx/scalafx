@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,6 @@
  */
 package scalafx.controls.controls
 
-import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property._
@@ -104,7 +103,7 @@ class SliderLabelControl(property: DoubleProperty) extends FlowPane {
     slider.snapToTicks = v
   }
 
-  super.content = List(slider, lblValue)
+  super.children = List(slider, lblValue)
   super.hgap = 5.0
 }
 
@@ -112,7 +111,7 @@ object SliderLabelControlDemo extends JFXApp {
 
   val x: java.lang.Double = 5.0
   val value = new IntegerProperty(1.asInstanceOf[java.lang.Object], "value")
-    //new DoubleProperty(x, "Value")
+  //new DoubleProperty(x, "Value")
 
   val lblValue = new Label {
     text <== value.asString("%2d")
@@ -127,7 +126,7 @@ object SliderLabelControlDemo extends JFXApp {
     scene = new Scene {
       content =
         new FlowPane {
-          content = List(lblValue, sldValue)
+          children = List(lblValue, sldValue)
         }
     }
   }

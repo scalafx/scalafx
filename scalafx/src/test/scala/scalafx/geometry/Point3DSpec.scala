@@ -26,11 +26,13 @@
  */
 package scalafx.geometry
 
-import javafx.{ geometry => jfxg }
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import javafx.{geometry => jfxg}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Point3D Spec tests.
@@ -46,8 +48,8 @@ class Point3DSpec
 
   it should "report all zero cooordinates as Point3D.Zero" in {
     val zero = Point3D.Zero
-    assert (zero.x === 0.0)
-    assert (zero.y === 0.0)
-    assert (zero.z === 0.0)
+    assert(zero.x === 0.0)
+    assert(zero.y === 0.0)
+    assert(zero.z === 0.0)
   }
 }

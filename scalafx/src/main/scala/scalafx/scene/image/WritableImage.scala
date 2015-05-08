@@ -26,13 +26,14 @@
  */
 package scalafx.scene.image
 
-import scala.language.implicitConversions
 import javafx.scene.{image => jfxsi}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object WritableImage {
-  implicit def sfxWritableImage2jfx(wi: WritableImage) = if (null == wi) null else wi.delegate
+  implicit def sfxWritableImage2jfx(wi: WritableImage): jfxsi.WritableImage = if (null == wi) null else wi.delegate
 }
 
 /**
@@ -58,10 +59,10 @@ class WritableImage(override val delegate: jfxsi.WritableImage)
    * [[scalafx.scene.image.PixelReader]].
    */
   def this(reader: PixelReader, x: Int, y: Int, width: Int, height: Int) = this(new jfxsi.WritableImage(reader, x, y, width, height))
-  
+
   /**
    * This method returns a PixelWriter that provides access to write the pixels of the image.
    */
   def pixelWrit: PixelWriter = delegate.getPixelWriter
-  
+
 }

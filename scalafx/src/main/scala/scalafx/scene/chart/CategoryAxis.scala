@@ -26,17 +26,16 @@
  */
 package scalafx.scene.chart
 
-import scala.language.implicitConversions
 import javafx.scene.{chart => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ReadOnlyDoubleProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ReadOnlyDoubleProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 object CategoryAxis {
-  implicit def sfxCategoryAxis2jfx(v: CategoryAxis) = if (v != null) v.delegate else null
+  implicit def sfxCategoryAxis2jfx(v: CategoryAxis): jfxsc.CategoryAxis = if (v != null) v.delegate else null
 
   def apply() = new CategoryAxis()
 

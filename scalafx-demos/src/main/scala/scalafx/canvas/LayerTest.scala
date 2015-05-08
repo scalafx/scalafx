@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,22 +24,19 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.canvas
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.collections.ObservableBuffer
-import scalafx.scene.Group
-import scalafx.scene.Group.sfxGroup2jfx
-import scalafx.scene.Scene
 import scalafx.scene.canvas.Canvas
-import scalafx.scene.control.ChoiceBox
-import scalafx.scene.control.SelectionModel
+import scalafx.scene.control.{ChoiceBox, SelectionModel}
 import scalafx.scene.input.MouseEvent
-import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.Pane
+import scalafx.scene.layout.{BorderPane, Pane}
 import scalafx.scene.paint.Color
+import scalafx.scene.{Group, Scene}
 
 /**
  * Example adapted from code showed in [[http://docs.oracle.com/javafx/2/canvas/jfxpub-canvas.htm]].
@@ -90,7 +87,7 @@ object LayerTest extends JFXApp {
   // Add Layers
   borderPane.top = cb
   borderPane.center = new Pane {
-    content = List(layer1, layer2)
+    children = List(layer1, layer2)
   }
   layer1.toFront()
 

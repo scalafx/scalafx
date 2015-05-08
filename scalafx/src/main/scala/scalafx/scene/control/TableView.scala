@@ -26,17 +26,12 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
-
-import javafx.{event => jfxe}
-import javafx.{scene => jfxs}
 import javafx.scene.{control => jfxsc}
-import javafx.{util => jfxu}
+import javafx.{collections => jfxc, event => jfxe, scene => jfxs, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.BooleanProperty
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
@@ -44,7 +39,7 @@ import scalafx.scene.Node
 /**
  * $OBJCOMPSTA$TV$OBJCOMPEND
  *
- * @define OBJCOMPSTA Object companion for [[scalafx.scene.control.
+ * @define OBJCOMPSTA Object companion for [[scalafx.scene.control
  * @define OBJCOMPEND ]].
  * @define JFX JavaFX
  * @define SFX ScalaFX
@@ -59,14 +54,36 @@ import scalafx.scene.Node
  * @define TVFM TableViewFocusModel
  */
 object TableView {
-
   /**
    * Converts a ScalaFX $TV instance to its $JFX counterpart.
    *
    * @param tv ScalaFX $TV
    * @return $JFX $TV
    */
-  implicit def sfxTableView2jfx[S](tv: TableView[S]) = if (tv != null) tv.delegate else null
+  implicit def sfxTableView2jfx[S](tv: TableView[S]): jfxsc.TableView[S] = if (tv != null) tv.delegate else null
+
+  /**
+   * Very simple resize policy that just resizes the specified column by the provided delta and
+   * shifts all other columns (to the right of the given column) further to the right (when the delta is positive)
+   * or to the left (when the delta is negative).
+   *
+   * It delegates to JavaFX
+   * [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html#UNCONSTRAINED_RESIZE_POLICY UNCONSTRAINED_RESIZE_POLICY]]
+   */
+  val UnconstrainedResizePolicy = jfxsc.TableView.UNCONSTRAINED_RESIZE_POLICY
+
+  /**
+   * Simple policy that ensures the width of all visible leaf columns in this table sum up to equal
+   * the width of the table itself.
+   * When the user resizes a column width with this policy, the table automatically adjusts the width of the right
+   * hand side columns. When the user increases a column width, the table decreases the width of the rightmost column
+   * until it reaches its minimum width.
+   * Then it decreases the width of the second rightmost column until it reaches minimum width and so on.
+   * When all right hand side columns reach minimum size, the user cannot increase the size of resized column any more.
+   *
+   * It delegates to JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html#CONSTRAINED_RESIZE_POLICY CONSTRAINED_RESIZE_POLICY]]
+   */
+  val ConstrainedResizePolicy = jfxsc.TableView.CONSTRAINED_RESIZE_POLICY
 
   /**
    * $OBJCOMPSTA$TV.$RF$OBJCOMPEND
@@ -79,8 +96,7 @@ object TableView {
      * @param rf ScalaFX ResizeFeatures
      * @return JavaFX ResizeFeatures
      */
-    implicit def sfxResizeFeatures2jfx[S](rf: ResizeFeatures[S]) = if (rf != null) rf.delegate else null
-
+    implicit def sfxResizeFeatures2jfx[S](rf: ResizeFeatures[S]): jfxsc.TableView.ResizeFeatures[S] = if (rf != null) rf.delegate else null
   }
 
   /**
@@ -124,7 +140,7 @@ object TableView {
      * @param tvsm ScalaFX TableViewSelectionModel
      * @return JavaFX TableViewSelectionModel
      */
-    implicit def sfxTableViewSelectionModel2jfx[S](tvsm: TableViewSelectionModel[S]) =
+    implicit def sfxTableViewSelectionModel2jfx[S](tvsm: TableViewSelectionModel[S]): jfxsc.TableView.TableViewSelectionModel[S] =
       if (tvsm != null) tvsm.delegate else null
 
   }
@@ -196,7 +212,7 @@ object TableView {
      * @param tvfm ScalaFX TableViewFocusModel
      * @return JavaFX TableViewFocusModel
      */
-    implicit def sfxTableViewFocusModel2jfx[S](tvfm: TableViewFocusModel[S]) =
+    implicit def sfxTableViewFocusModel2jfx[S](tvfm: TableViewFocusModel[S]): jfxsc.TableView.TableViewFocusModel[S] =
       if (tvfm != null) tvfm.delegate else null
 
   }
@@ -227,7 +243,7 @@ object TableView {
     /**
      * Causes the item at the given index to receive the focus.
      *
-     * @param row The row index of the item to give focus to.
+     * @param index The row index of the item to give focus to.
      * @param column The column of the item to give focus to. Can be `null`.
      */
     def focus(index: Int, column: TableColumn[S, _]) {
@@ -274,6 +290,15 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
 
   /**
    * This is the function called when the user completes a column-resize operation.
+   *
+   * There are predefined resize policies defined by
+   * [[scalafx.scene.control.TableView#ConstrainedResizePolicy UnconstrainedResizePolicy]] and
+   * [[scalafx.scene.control.TableView#UnconstrainedResizePolicy UnconstrainedResizePolicy]].
+   *
+   * Example use:
+   * {{{
+   *   tableView.columnResizePolicy = TableView.UnconstrainedResizePolicy
+   * }}}
    */
   def columnResizePolicy: ObjectProperty[TableView.ResizeFeatures[S] => Boolean] =
     ObjectProperty((features: TableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features))
@@ -283,6 +308,9 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
         p(v)
       }
     })
+  }
+  def columnResizePolicy_=(p: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], java.lang.Boolean]) {
+    delegate.columnResizePolicyProperty().setValue(p)
   }
 
   /** The comparator property is a read-only property that is representative of the current state of the `sort order` list. */

@@ -26,14 +26,14 @@
  */
 package scalafx.animation
 
-import scala.language.implicitConversions
 import javafx.{animation => jfxa, scene => jfxs, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.{DoubleProperty, ObjectProperty}
+import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.util.Duration
-import scalafx.delegate.SFXDelegate
 
 /**
  * Companion Object for [[scalafx.animation.FadeTransition]].
@@ -49,7 +49,7 @@ object FadeTransition extends AnimationStatics {
    * @param v ScalaFX $FT
    * @return Delegated JavaFX $FT extracted from `v`.
    */
-  implicit def sfxFadeTransition2jfx(v: FadeTransition) = if (v != null) v.delegate else null
+  implicit def sfxFadeTransition2jfx(v: FadeTransition): jfxa.FadeTransition = if (v != null) v.delegate else null
 
 }
 
@@ -65,8 +65,6 @@ object FadeTransition extends AnimationStatics {
 class FadeTransition(override val delegate: jfxa.FadeTransition = new jfxa.FadeTransition)
   extends Transition(delegate)
   with SFXDelegate[jfxa.FadeTransition] {
-
-  override type Delegate = jfxa.FadeTransition
 
   // CONSTRUCTORS
 

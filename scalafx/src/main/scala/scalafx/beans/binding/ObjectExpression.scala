@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,14 @@
  */
 package scalafx.beans.binding
 
-import scala.language.implicitConversions
-import javafx.beans.{binding => jfxbb}
 import javafx.beans.value.ObservableObjectValue
+import javafx.beans.{binding => jfxbb}
+
+import scala.language.implicitConversions
 import scalafx.beans.value.ObservableValue
 
 object ObjectExpression {
-  implicit def sfxObjectExpression2jfx[J](oe: ObjectExpression[J]) = if (oe != null) oe.delegate else null
+  implicit def sfxObjectExpression2jfx[J](oe: ObjectExpression[J]): jfxbb.ObjectExpression[J] = if (oe != null) oe.delegate else null
 }
 
 class ObjectExpression[J](val delegate: jfxbb.ObjectExpression[J]) {
@@ -48,11 +49,11 @@ class ObjectExpression[J](val delegate: jfxbb.ObjectExpression[J]) {
   def =!=[T](v: ObservableValue[T, T]) = delegate.isNotEqualTo(ObservableValue.sfxObservableValue2jfxObjectValue[T](v))
   def =!=(v: AnyRef) = delegate.isNotEqualTo(v)
 
-  def selectDouble(s: String) = jfxbb.Bindings.selectDouble(this, s)
-  def selectBoolean(s: String) = jfxbb.Bindings.selectBoolean(this, s)
-  def selectFloat(s: String) = jfxbb.Bindings.selectFloat(this, s)
-  def selectInteger(s: String) = jfxbb.Bindings.selectInteger(this, s)
-  def selectLong(s: String) = jfxbb.Bindings.selectLong(this, s)
-  def selectString(s: String) = jfxbb.Bindings.selectString(this, s)
-  def select[T](s: String) = jfxbb.Bindings.select[T](this, s)
+  def selectDouble(s: String) = jfxbb.Bindings.selectDouble(this.delegate, s)
+  def selectBoolean(s: String) = jfxbb.Bindings.selectBoolean(this.delegate, s)
+  def selectFloat(s: String) = jfxbb.Bindings.selectFloat(this.delegate, s)
+  def selectInteger(s: String) = jfxbb.Bindings.selectInteger(this.delegate, s)
+  def selectLong(s: String) = jfxbb.Bindings.selectLong(this.delegate, s)
+  def selectString(s: String) = jfxbb.Bindings.selectString(this.delegate, s)
+  def select[T](s: String) = jfxbb.Bindings.select[T](this.delegate, s)
 }

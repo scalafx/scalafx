@@ -26,13 +26,14 @@
  */
 package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc}
+
 import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
-import javafx.scene.{control => jfxsc}
-import scalafx.Includes._
 
 object SingleSelectionModel {
-  implicit def sfxSingleSelectionModel2jfx[T](v: SingleSelectionModel[T]) = if (v != null) v.delegate else null
+  implicit def sfxSingleSelectionModel2jfx[T](v: SingleSelectionModel[T]): jfxsc.SingleSelectionModel[T] =
+    if (v != null) v.delegate else null
 
   /**
    * Creates a new [[scalafx.scene.control.SingleSelectionModel]] from functions that defines a data

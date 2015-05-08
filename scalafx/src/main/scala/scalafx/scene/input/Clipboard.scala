@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,25 +24,26 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.input
 
-import scala.language.implicitConversions
 import java.io.File
+import javafx.scene.{input => jfxsi}
 
 import scala.collection.JavaConversions._
 import scala.collection._
-
-import javafx.scene.{input => jfxsi}
-import scalafx.scene.input.DataFormat._
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.input.DataFormat._
+import scalafx.scene.input.InputIncludes.jfxClipboard2sfx
 
 object Clipboard {
-  implicit def sfxClipboard2jfx(c: Clipboard) = if (c != null) c.delegate else null
+  implicit def sfxClipboard2jfx(c: Clipboard): jfxsi.Clipboard = if (c != null) c.delegate else null
 
   /**
    * Gets the current system clipboard, through which data can be stored and retrieved.
    */
-  def systemClipboard = jfxsi.Clipboard.getSystemClipboard
+  def systemClipboard: Clipboard = jfxsi.Clipboard.getSystemClipboard
 }
 
 class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxsi.Clipboard] {
@@ -65,9 +66,9 @@ class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxs
   def contentTypes: Set[jfxsi.DataFormat] = delegate.getContentTypes
 
   /**
-   * Gets the List of Files from the clipboard which had previously been registered.
+   * Gets the list of files from the clipboard which had previously been registered.
    */
-  def Files: Seq[File] = delegate.getFiles
+  def files: Seq[File] = delegate.getFiles
 
   /**
    * Gets the HTML text String from the clipboard which had previously been registered.
@@ -100,32 +101,32 @@ class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxs
   def hasContent(dataFormat: DataFormat) = delegate.hasContent(dataFormat)
 
   /**
-   * Gets whether an List of Files (DataFormat.FILES) has been registered on this Clipboard.
+   * Gets whether an list of files ([[DataFormat.Files]]) has been registered on this Clipboard.
    */
   def hasFiles = delegate.hasFiles
 
   /**
-   * Gets whether an HTML text String (DataFormat.HTML) has been registered on this Clipboard.
+   * Gets whether an HTML text String ([[DataFormat.Html]]) has been registered on this Clipboard.
    */
   def hasHtml = delegate.hasHtml
 
   /**
-   * Gets whether an Image (DataFormat.IMAGE) has been registered on this Clipboard.
+   * Gets whether an Image ([[DataFormat.Image]]) has been registered on this Clipboard.
    */
   def hasImage = delegate.hasImage
 
   /**
-   * Gets whether an RTF String (DataFormat.RTF) has been registered on this Clipboard.
+   * Gets whether an RTF String ([[DataFormat.Rtf]]) has been registered on this Clipboard.
    */
   def hasRtf = delegate.hasRtf
 
   /**
-   * Gets whether a plain text String (DataFormat.PLAIN_TEXT) has been registered on this Clipboard.
+   * Gets whether a plain text String ([[DataFormat.PlainText]]) has been registered on this Clipboard.
    */
   def hasString = delegate.hasString
 
   /**
-   * Gets whether a url String (DataFormat.URL) has been registered on this Clipboard.
+   * Gets whether a url String ([[DataFormat.Url]]) has been registered on this Clipboard.
    */
   def hasUrl = delegate.hasUrl
 
@@ -138,7 +139,7 @@ class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxs
     * @throws java.lang.NullPointerException - if null data reference is passed for any format
     */
   def content_=(content: Map[DataFormat, AnyRef]) = {
-    delegate.setContent(content.map { case (a, b) => (a.delegate, b)})
+    delegate.setContent(content.map { case (a, b) => (a.delegate, b) })
   }
 
   /** Puts content onto the clipboard.

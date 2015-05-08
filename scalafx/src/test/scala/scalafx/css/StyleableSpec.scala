@@ -26,11 +26,13 @@
  */
 package scalafx.css
 
+import javafx.{css => jfxcss}
+
 import org.junit.runner.RunWith
-import javafx.{ css => jfxcss }
+import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
-import org.scalatest.junit.JUnitRunner
 
 /**
  * Styleable Spec tests.

@@ -26,17 +26,17 @@
  */
 package scalafx.collections
 
-import scala.collection.JavaConversions._
-import scala.collection.mutable._
+import javafx.{collections => jfxc}
 
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.Matchers._
+import org.scalatest.junit.JUnitRunner
 
-import ObservableMap._
-import javafx.{collections => jfxc}
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scala.collection.JavaConversions._
+import scala.collection.mutable._
 import scalafx.Includes._
+import scalafx.collections.ObservableMap._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ObservableMap[K, V] Spec tests.
@@ -56,9 +56,9 @@ class ObservableMapSpec[K, V]
    * @param shouldBeTheSame If both maps should be same instance.
    */
   private def compareInstances(generatedMap: Map[Int, String],
-    originalMap: ObservableMap[Int, String], shouldBeTheSame: Boolean) {
+                               originalMap: ObservableMap[Int, String], shouldBeTheSame: Boolean) {
     if (shouldBeTheSame) {
-      generatedMap should be theSameInstanceAs(originalMap)
+      generatedMap should be theSameInstanceAs (originalMap)
     } else {
       generatedMap should not be theSameInstanceAs(originalMap)
       generatedMap.getClass.getInterfaces.contains(classOf[ObservableMap[Int, String]]) should be(true)
@@ -83,7 +83,7 @@ class ObservableMapSpec[K, V]
     assertGeneratedMap(ObservableMap(map1))
 
     val map2 = Map.empty[Int, String]
-    map2 += ((1, "one"), (2, "two"))
+    map2 +=((1, "one"), (2, "two"))
     assertGeneratedMap(ObservableMap(map2))
   }
 
@@ -140,7 +140,7 @@ class ObservableMapSpec[K, V]
           case Add(key, valueAdded) => {
             addedEntries += ((key, valueAdded))
           }
-          case _ => fail("Unexpected change: " + change)
+          case _                    => fail("Unexpected change: " + change)
         }
     }
 
@@ -149,18 +149,18 @@ class ObservableMapSpec[K, V]
     compareInstances((map += (1 -> 1.toString)), map, true)
     compareInstances((map += (2 -> 2.toString) += (3 -> 3.toString)), map, true)
     compareInstances((map += ((4, 4.toString))), map, true)
-    compareInstances((map += ((5, 5.toString), (6, 6.toString))), map, true)
-    compareInstances((map += (7 -> 7.toString, 8 -> 8.toString)), map, true)
+    compareInstances((map +=((5, 5.toString), (6, 6.toString))), map, true)
+    compareInstances((map +=(7 -> 7.toString, 8 -> 8.toString)), map, true)
     compareInstances((map ++= List((9, 9.toString))), map, true)
     compareInstances((map ++= List((10, 10.toString), (11, 11.toString))), map, true)
-    (map put (12, 12.toString)) should be(None)
-    (map getOrElseUpdate (13, 13.toString)) should equal(13.toString)
+    (map put(12, 12.toString)) should be(None)
+    (map getOrElseUpdate(13, 13.toString)) should equal(13.toString)
     // Next operations must not affect original map, so they must not call onchange function
     compareInstances((map + (100 -> 100.toString)), map, false)
     compareInstances((map + (101 -> 101.toString) + (102 -> 102.toString)), map, false)
     compareInstances((map + ((103, 103.toString))), map, false)
-    compareInstances((map + ((104, 104.toString), (105, 105.toString))), map, false)
-    compareInstances((map + (106 -> 106.toString, 107 -> 107.toString)), map, false)
+    compareInstances((map +((104, 104.toString), (105, 105.toString))), map, false)
+    compareInstances((map +(106 -> 106.toString, 107 -> 107.toString)), map, false)
     compareInstances((map ++ List((108, 108.toString))), map, false)
     compareInstances((map ++ List((109, 109.toString), (110, 110.toString))), map, false)
     compareInstances((map.updated(111, 111.toString)), map, false)
@@ -179,7 +179,7 @@ class ObservableMapSpec[K, V]
           case Remove(key, valueRemoved) => {
             removedEntries += ((key, valueRemoved))
           }
-          case _ => fail("Unexpected change: " + change)
+          case _                         => fail("Unexpected change: " + change)
         }
     }
 
@@ -187,7 +187,7 @@ class ObservableMapSpec[K, V]
     compareInstances((map -= 0), map, true)
     compareInstances((map -= 1 -= 2), map, true)
     compareInstances((map -= (3)), map, true)
-    compareInstances((map -= (4, 5)), map, true)
+    compareInstances((map -=(4, 5)), map, true)
     compareInstances((map --= List(6)), map, true)
     compareInstances((map --= List(7, 8)), map, true)
     (map remove (9)) should equal(Option(9.toString))
@@ -198,7 +198,7 @@ class ObservableMapSpec[K, V]
     compareInstances((map - 10), map, false)
     compareInstances((map - 11 - 12), map, false)
     compareInstances((map - (13)), map, false)
-    compareInstances((map - (14, 15)), map, false)
+    compareInstances((map -(14, 15)), map, false)
     compareInstances((map -- List(16)), map, false)
     compareInstances((map -- List(17, 18)), map, false)
 
@@ -233,7 +233,7 @@ class ObservableMapSpec[K, V]
           case Replace(key, valueAdded, valueRemoved) => {
             replacedEntries += ((key, valueAdded, valueRemoved))
           }
-          case _ => fail("Unexpected change: " + change)
+          case _                                      => fail("Unexpected change: " + change)
         }
     }
     val expectedEntries = Buffer.empty[(Int, String, String)]
@@ -245,27 +245,27 @@ class ObservableMapSpec[K, V]
     map += (1 -> "one")
     expectedEntries += ((1, "one", 1.toString))
     map += (2 -> "two") += (3 -> "three")
-    expectedEntries += ((2, "two", 2.toString), (3, "three", 3.toString))
+    expectedEntries +=((2, "two", 2.toString), (3, "three", 3.toString))
     map += ((4, "four"))
     expectedEntries += ((4, "four", 4.toString))
-    map += ((5, "five"), (6, "six"))
-    expectedEntries += ((5, "five", 5.toString), (6, "six", 6.toString))
-    map += (7 -> "seven", 8 -> "eight")
-    expectedEntries += ((7, "seven", 7.toString), (8, "eight", 8.toString))
+    map +=((5, "five"), (6, "six"))
+    expectedEntries +=((5, "five", 5.toString), (6, "six", 6.toString))
+    map +=(7 -> "seven", 8 -> "eight")
+    expectedEntries +=((7, "seven", 7.toString), (8, "eight", 8.toString))
     map ++= List((9, "nine"))
     expectedEntries += ((9, "nine", 9.toString))
     map ++= List((10, "ten"), (11, "eleven"))
-    expectedEntries += ((10, "ten", 10.toString), (11, "eleven", 11.toString))
-    map put (12, 12.toString) // repeating a value. It will not be change the map
-    map put (12, "twelve")
+    expectedEntries +=((10, "ten", 10.toString), (11, "eleven", 11.toString))
+    map put(12, 12.toString) // repeating a value. It will not be change the map
+    map put(12, "twelve")
     expectedEntries += ((12, "twelve", 12.toString))
-    map getOrElseUpdate (13, "thirteen") // Map will not be updated
+    map getOrElseUpdate(13, "thirteen") // Map will not be updated
     // Operations that not change this set
     map + (14 -> "fourteen")
     map + (15 -> "fifteen") + (16 -> "sixteen")
     map + ((17, "seventeen"))
-    map + ((18, "eighteen"), (19, "nineteen"))
-    map + (20 -> "twenty", 21 -> "twenty-one")
+    map +((18, "eighteen"), (19, "nineteen"))
+    map +(20 -> "twenty", 21 -> "twenty-one")
     map ++ List((22, "twenty-two"))
     map ++ List((23, "twenty-three"), (24, "twenty-four"))
     map.updated(25, "twenty-five")
@@ -282,8 +282,8 @@ class ObservableMapSpec[K, V]
     map onChange {
       (sourceSet, change) =>
         change match {
-          case Add(key, value)    => addedValues += ((key, value))
-          case Remove(key, value) => removedValues += ((key, value))
+          case Add(key, value)              => addedValues += ((key, value))
+          case Remove(key, value)           => removedValues += ((key, value))
           case Replace(key, added, removed) => {
             addedValues += ((key, added))
             removedValues += ((key, removed))
@@ -292,8 +292,8 @@ class ObservableMapSpec[K, V]
     }
 
     // Execution
-    compareInstances((map += ((3, 3.toString), (1, 1.toString), (5, 5.toString))), map, true)
-    compareInstances((map -= (1, 4)), map, true)
+    compareInstances((map +=((3, 3.toString), (1, 1.toString), (5, 5.toString))), map, true)
+    compareInstances((map -=(1, 4)), map, true)
     map(3) = "three"
 
     // Verification

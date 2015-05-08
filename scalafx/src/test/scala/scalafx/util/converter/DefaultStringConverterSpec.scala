@@ -26,10 +26,12 @@
  */
 package scalafx.util.converter
 
-import javafx.util.{ converter => jfxuc }
-import scalafx.Includes._
+import javafx.util.{converter => jfxuc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 
 /**
  * DefaultStringConverter Spec tests.

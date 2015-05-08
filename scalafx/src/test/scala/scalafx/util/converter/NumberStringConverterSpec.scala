@@ -26,11 +26,12 @@
  */
 package scalafx.util.converter
 
+import javafx.util.{converter => jfxuc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import javafx.util.{ converter => jfxuc }
+
 import scalafx.Includes._
-import java.util.Locale
 
 /**
  * NumberStringConverter Spec tests.
@@ -38,7 +39,7 @@ import java.util.Locale
  *
  */
 @RunWith(classOf[JUnitRunner])
-class NumberStringConverterSpec 
+class NumberStringConverterSpec
   extends AbstractStringConverterDelegateSpec[Number, jfxuc.NumberStringConverter, Number, NumberStringConverter](classOf[jfxuc.NumberStringConverter], classOf[NumberStringConverter], classOf[Number]) {
 
   val examples = List((new java.lang.Integer(10), "10"), (new java.lang.Integer(0), "0"),

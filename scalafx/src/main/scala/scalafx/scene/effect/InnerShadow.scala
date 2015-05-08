@@ -26,17 +26,16 @@
  */
 package scalafx.scene.effect
 
-import scala.language.implicitConversions
 import javafx.scene.{effect => jfxse}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.{DoubleProperty, ObjectProperty}
+import scalafx.delegate.{DimensionDelegate, SFXDelegate}
 import scalafx.scene.paint.Color
-import scalafx.delegate.DimensionDelegate
-import scalafx.delegate.SFXDelegate
 
 object InnerShadow {
-  implicit def sfxInnerShadow2jfx(ii: InnerShadow) = if (ii != null) ii.delegate else null
+  implicit def sfxInnerShadow2jfx(ii: InnerShadow): jfxse.InnerShadow = if (ii != null) ii.delegate else null
 }
 
 /**

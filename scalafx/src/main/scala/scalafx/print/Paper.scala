@@ -26,13 +26,10 @@
  */
 package scalafx.print
 
-import scalafx.delegate.SFXDelegate
-import scala.language.implicitConversions
 import javafx.{print => jfxp}
-import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.IntegerProperty
-import scalafx.beans.property.StringProperty
+
+import scala.language.implicitConversions
+import scalafx.delegate.SFXDelegate
 
 /**
  * Companion Object for [[scalafx.print.Paper]].

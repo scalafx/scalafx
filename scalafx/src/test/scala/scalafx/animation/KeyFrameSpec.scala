@@ -26,14 +26,14 @@
  */
 package scalafx.animation
 
-import scala.language.postfixOps
+import javafx.{animation => jfxa, event => jfxe}
 
-import collection.JavaConversions._
-import javafx.{ animation => jfxa }
-import javafx.{ event => jfxe }
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.Matchers._
+import org.scalatest.junit.JUnitRunner
+
+import scala.collection.JavaConversions._
+import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.event.ActionEvent
@@ -47,7 +47,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class KeyFrameSpec
   extends SimpleSFXDelegateSpec[jfxa.KeyFrame, KeyFrame](classOf[jfxa.KeyFrame], classOf[KeyFrame]) {
-  
+
   override protected def getScalaClassInstance = KeyFrame(5 s)
 
   override def getJavaClassInstance = new jfxa.KeyFrame(5 s)
@@ -68,15 +68,15 @@ class KeyFrameSpec
   }
 
   it should "have a simpler syntax for finish handlers" in {
-      // There is a potential problems with code blocks as event handlers,
-      // only the last statement is executed during handler invocation
-      // prior statements are executed only once during construction.
+    // There is a potential problems with code blocks as event handlers,
+    // only the last statement is executed during handler invocation
+    // prior statements are executed only once during construction.
     var callCount1 = 0
     var callCount2 = 0
     // Call the handler 3 times
-    KeyFrame(10 ms, onFinished = handle{callCount1 += 1; callCount2 += 1}).onFinished.handle(null)
-    KeyFrame(10 ms, onFinished = handle{callCount1 += 1; callCount2 += 1}).onFinished.handle(null)
-    KeyFrame(10 ms, onFinished = handle{callCount1 += 1; callCount2 += 1}).onFinished.handle(null)
+    KeyFrame(10 ms, onFinished = handle {callCount1 += 1; callCount2 += 1}).onFinished.handle(null)
+    KeyFrame(10 ms, onFinished = handle {callCount1 += 1; callCount2 += 1}).onFinished.handle(null)
+    KeyFrame(10 ms, onFinished = handle {callCount1 += 1; callCount2 += 1}).onFinished.handle(null)
     // Verify that three calls were made
     callCount2 should equal(3)
     callCount1 should equal(3)
@@ -127,9 +127,9 @@ class KeyFrameSpec
 
   it should "support the at(duration) {value} syntax" in {
     val doubleProperty = new DoubleProperty(null, "sample")
-    val keyFrame = at(5 s) { doubleProperty -> 20 }
+    val keyFrame = at(5 s) {doubleProperty -> 20}
     keyFrame.time should equal(5 s)
     keyFrame.values should have size (1)
   }
-  
+
 }

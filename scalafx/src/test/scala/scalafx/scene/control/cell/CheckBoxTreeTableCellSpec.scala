@@ -26,12 +26,13 @@
  */
 package scalafx.scene.control.cell
 
+import javafx.scene.control.{cell => jfxscc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-import javafx.scene.control.{ cell => jfxscc }
 import scalafx.Includes._
-import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * CheckBoxTreeTableCell Spec tests.

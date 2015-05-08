@@ -26,9 +26,10 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
-
+import javafx.scene.control.{TreeTableColumn, TreeTableView}
 import javafx.scene.{control => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate

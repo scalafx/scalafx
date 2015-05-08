@@ -26,22 +26,21 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
-import javafx.{scene => jfxs}
 import javafx.scene.{control => jfxsc}
-import javafx.{util => jfxu}
+import javafx.{collections => jfxc, scene => jfxs, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.IntegerProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.ReadOnlyObjectProperty
-import scalafx.collections.ObservableBuffer._
+import scalafx.beans.property.{IntegerProperty, ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.collections.ObservableBuffer
-import scalafx.util.StringConverter
+import scalafx.collections.ObservableBuffer._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
+import scalafx.util.StringConverter
+import scalafx.util.StringConverter._
 
 object ComboBox {
-  implicit def sfxComboBox2jfx[T](cb: ComboBox[T]) = if (cb != null) cb.delegate else null
+  implicit def sfxComboBox2jfx[T](cb: ComboBox[T]): jfxsc.ComboBox[T] = if (cb != null) cb.delegate else null
 }
 
 class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[T])

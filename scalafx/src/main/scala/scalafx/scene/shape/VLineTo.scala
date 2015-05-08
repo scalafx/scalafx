@@ -26,14 +26,15 @@
  */
 package scalafx.scene.shape
 
-import scala.language.implicitConversions
 import javafx.scene.{shape => jfxss}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object VLineTo {
-  implicit def sfxVLineTo2jfx(v: VLineTo) = if (v != null) v.delegate else null
+  implicit def sfxVLineTo2jfx(v: VLineTo): jfxss.VLineTo = if (v != null) v.delegate else null
 
   def apply(y: Double) = new VLineTo(new jfxss.VLineTo(y))
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,22 +24,24 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.media
 
+import javafx.scene.{media => jfxsm}
+
 import scala.language.implicitConversions
-import javafx.scene.{ media => jfxsm }
 import scalafx.delegate.SFXDelegate
 
 object AudioTrack {
-  implicit def sfxAudioTrack2jfx(at: AudioTrack) = if (at != null) at.delegate else null
+  implicit def sfxAudioTrack2jfx(at: AudioTrack): jfxsm.AudioTrack = if (at != null) at.delegate else null
 }
 
 class AudioTrack(override val delegate: jfxsm.AudioTrack) extends Track(delegate) with SFXDelegate[jfxsm.AudioTrack] {
-  
+
   /**
    * Retrieves the language of the audio track.
-   * 
-   * @deprecated("This method is deprecated, due to deprecation of the underlying JavaFX method 'getLanguage'. Use 'locale' instead. For now, this method call is redirected to utilise 'locale'.", "ScalaFX 8.0.0-R5")
+   *
    */
+  @deprecated("This method is deprecated, due to deprecation of the underlying JavaFX method 'getLanguage'. Use 'locale' instead. For now, this method call is redirected to utilise 'locale'.", "ScalaFX 8.0.0-R5")
   def language = locale // <-- Calling 'getLocale' instead of the deprecated 'getLanguage' removes a compilation warning while building ScalaFX.
 }

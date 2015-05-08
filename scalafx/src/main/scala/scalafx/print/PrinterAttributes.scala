@@ -26,15 +26,13 @@
  */
 package scalafx.print
 
-import scalafx.delegate.SFXDelegate
-import scala.language.implicitConversions
-import scala.collection.JavaConversions._
-import javafx.{print => jfxp}
 import java.util.{Set => JSet}
+import javafx.{print => jfxp}
+
+import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
-import scalafx.beans.property.IntegerProperty
-import scalafx.beans.property.StringProperty
+import scalafx.delegate.SFXDelegate
 
 /**
  * Companion Object for [[scalafx.print.PrinterAttributes]].

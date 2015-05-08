@@ -26,7 +26,8 @@
  */
 package scalafx.util.converter
 
-import javafx.{ util => jfxu }
+import javafx.{util => jfxu}
+
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
@@ -39,11 +40,11 @@ import scalafx.util.StringConverter
  * @tparam J Java Class (e.g. java.lang.Integer, java.lang.Number, java.util.BigInteger, java.util.Date)
  * @tparam S Scala CLass (e.g. Int, BigInt)
  * @tparam C JavaFX StringConverter using type J (e.g. javafx.util.converter.IntegerStringConverter,
- * javafx.util.converter.BigIntegerStringConverter, javafx.util.converter.DateStringConverter)
+ *           javafx.util.converter.BigIntegerStringConverter, javafx.util.converter.DateStringConverter)
  *
  * @param delegate JavaFx StringConverter to be wrapped.
  */
-abstract class StringConverterDelegate[J <: java.lang.Object, S <: Any, C <: jfxu.StringConverter[J]] protected (override val delegate: C)
+abstract class StringConverterDelegate[J <: java.lang.Object, S <: Any, C <: jfxu.StringConverter[J]] protected(override val delegate: C)
   extends StringConverter[S]
   with SFXDelegate[C] {
 
@@ -59,10 +60,10 @@ abstract class StringConverterDelegate[J <: java.lang.Object, S <: Any, C <: jfx
  *
  * @tparam J Java Class (e.g. java.lang.Number, java.util.Date)
  * @tparam C JavaFX StringConverter using type J (e.g. javafx.util.converter.IntegerStringConverter,
- * javafx.util.converter.NumberStringConverter, javafx.util.converter.BigIntegerStringConverter,
- * javafx.util.converter.DateStringConverter)
+ *           javafx.util.converter.NumberStringConverter, javafx.util.converter.BigIntegerStringConverter,
+ *           javafx.util.converter.DateStringConverter)
  *
  * @param delegate JavaFx StringConverter to be wrapped.
  */
-abstract class StringConverterJavaToJavaDelegate[J <: java.lang.Object, C <: jfxu.StringConverter[J]] protected (override val delegate: C)
+abstract class StringConverterJavaToJavaDelegate[J <: java.lang.Object, C <: jfxu.StringConverter[J]] protected(override val delegate: C)
   extends StringConverterDelegate[J, J, C](delegate)

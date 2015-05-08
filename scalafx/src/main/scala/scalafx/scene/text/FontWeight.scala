@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,42 +24,44 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
-import scalafx.Includes._
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
-/** Wrapper for [[javafx.scene.text.FontWeight]] */
+import scalafx.Includes._
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontWeight.html javafx.scene.text.FontWeight]] */
 object FontWeight extends SFXEnumDelegateCompanion[jfxst.FontWeight, FontWeight] {
 
   val Thin = new FontWeight(jfxst.FontWeight.THIN)
-@deprecated ("Use Thin; THIN will be removed in a future release", "2.2.60")
-val THIN = Thin
+  @deprecated("Use Thin; THIN will be removed in a future release", "2.2.60")
+  val THIN = Thin
   val ExtraLight = new FontWeight(jfxst.FontWeight.EXTRA_LIGHT)
-@deprecated ("Use ExtraLight; EXTRA_LIGHT will be removed in a future release", "2.2.60")
-val EXTRA_LIGHT = ExtraLight
+  @deprecated("Use ExtraLight; EXTRA_LIGHT will be removed in a future release", "2.2.60")
+  val EXTRA_LIGHT = ExtraLight
   val Light = new FontWeight(jfxst.FontWeight.LIGHT)
-@deprecated ("Use Light; LIGHT will be removed in a future release", "2.2.60")
-val LIGHT = Light
+  @deprecated("Use Light; LIGHT will be removed in a future release", "2.2.60")
+  val LIGHT = Light
   val Normal = new FontWeight(jfxst.FontWeight.NORMAL)
-@deprecated ("Use Normal; NORMAL will be removed in a future release", "2.2.60")
-val NORMAL = Normal
+  @deprecated("Use Normal; NORMAL will be removed in a future release", "2.2.60")
+  val NORMAL = Normal
   val Medium = new FontWeight(jfxst.FontWeight.MEDIUM)
-@deprecated ("Use Medium; MEDIUM will be removed in a future release", "2.2.60")
-val MEDIUM = Medium
+  @deprecated("Use Medium; MEDIUM will be removed in a future release", "2.2.60")
+  val MEDIUM = Medium
   val SemiBold = new FontWeight(jfxst.FontWeight.SEMI_BOLD)
-@deprecated ("Use SemiBold; SEMI_BOLD will be removed in a future release", "2.2.60")
-val SEMI_BOLD = SemiBold
+  @deprecated("Use SemiBold; SEMI_BOLD will be removed in a future release", "2.2.60")
+  val SEMI_BOLD = SemiBold
   val Bold = new FontWeight(jfxst.FontWeight.BOLD)
-@deprecated ("Use Bold; BOLD will be removed in a future release", "2.2.60")
-val BOLD = Bold
+  @deprecated("Use Bold; BOLD will be removed in a future release", "2.2.60")
+  val BOLD = Bold
   val ExtraBold = new FontWeight(jfxst.FontWeight.EXTRA_BOLD)
-@deprecated ("Use ExtraBold; EXTRA_BOLD will be removed in a future release", "2.2.60")
-val EXTRA_BOLD = ExtraBold
+  @deprecated("Use ExtraBold; EXTRA_BOLD will be removed in a future release", "2.2.60")
+  val EXTRA_BOLD = ExtraBold
   val Black = new FontWeight(jfxst.FontWeight.BLACK)
-@deprecated ("Use Black; BLACK will be removed in a future release", "2.2.60")
-val BLACK = Black
+  @deprecated("Use Black; BLACK will be removed in a future release", "2.2.60")
+  val BLACK = Black
 
   protected override def unsortedValues: Array[FontWeight] = Array(
     Thin, ExtraLight, Light, Normal, Medium, SemiBold, Bold, ExtraBold, Black
@@ -68,7 +70,7 @@ val BLACK = Black
   /** Returns FontWeight by its name. */
   def findByName(name: String): FontWeight = jfxst.FontWeight.findByName(name)
 
-  /** Returns the closest [[javafx.scene.text.FontWeight]] for a weight value as defined by the CSS
+  /** Returns the closest [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontWeight.html javafx.scene.text.FontWeight]] for a weight value as defined by the CSS
     * and OpenType specifications.
     */
   def findByWeight(weight: Int): FontWeight = jfxst.FontWeight.findByWeight(weight)

@@ -26,12 +26,13 @@
  */
 package scalafx.scene.media
 
-import javafx.scene.{ media => jfxsm }
-import scalafx.Includes._
+import javafx.scene.{media => jfxsm}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
-import scalafx.testutil.RunOnApplicationThread
 
 /**
  * AudioEqualizer Spec tests.
@@ -40,8 +41,8 @@ import scalafx.testutil.RunOnApplicationThread
  */
 @RunWith(classOf[JUnitRunner])
 class AudioEqualizerSpec
-  extends SimpleSFXDelegateSpec[jfxsm.AudioEqualizer, AudioEqualizer](classOf[jfxsm.AudioEqualizer], classOf[AudioEqualizer]) 
-  with UrlMedia{
+  extends SimpleSFXDelegateSpec[jfxsm.AudioEqualizer, AudioEqualizer](classOf[jfxsm.AudioEqualizer], classOf[AudioEqualizer])
+  with UrlMedia {
 
   override protected def getJavaClassInstance = new jfxsm.MediaPlayer(new jfxsm.Media(url)).getAudioEqualizer
 

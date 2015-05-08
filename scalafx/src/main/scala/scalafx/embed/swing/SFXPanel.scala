@@ -28,10 +28,9 @@ package scalafx.embed.swing
 
 import java.awt.Dimension
 import java.awt.im.InputMethodRequests
+import javafx.embed.{swing => jfxes}
 
 import scala.language.implicitConversions
-
-import javafx.embed.{swing => jfxes}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Scene

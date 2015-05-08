@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,12 +24,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.application
 
 import javafx.{application => jfxa}
 
+import scalafx.Includes._
+import scalafx.beans.property.ReadOnlyBooleanProperty
 
-/** Application platform support, wrapper for [[javafx.application.Platform]]. */
+
+/** Application platform support, wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Platform.html javafx.application.Platform]]. */
 object Platform {
 
   /** Causes the JavaFX application to terminate. */
@@ -68,4 +72,21 @@ object Platform {
       }
     })
   }
+
+  def isAccessibilityActive: Boolean = jfxa.Platform.isAccessibilityActive
+
+  /**
+   * Indicates whether or not accessibility is active.
+   * This property is typically set to true the first time an
+   * assistive technology, such as a screen reader, requests
+   * information about any JavaFX window or its children.
+   *
+   * This method may be called from any thread.
+   *
+   * @return the read-only boolean property indicating if accessibility is active
+   *
+   * @since JavaFX 8u40
+   */
+  def accessibilityActive: ReadOnlyBooleanProperty = jfxa.Platform.accessibilityActiveProperty
+
 }

@@ -27,10 +27,12 @@
 
 package scalafx.scene.layout
 
-import javafx.scene.{ layout => jfxsl }
-import scalafx.Includes._
+import javafx.scene.{layout => jfxsl}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
@@ -39,7 +41,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class BackgroundPositionSpec
   extends SimpleSFXDelegateSpec[jfxsl.BackgroundPosition, BackgroundPosition](
-    classOf[jfxsl.BackgroundPosition], classOf[BackgroundPosition])  {
+    classOf[jfxsl.BackgroundPosition], classOf[BackgroundPosition]) {
 
   override protected def getScalaClassInstance = new BackgroundPosition(getJavaClassInstance) {}
 

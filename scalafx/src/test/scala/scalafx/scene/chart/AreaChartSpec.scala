@@ -26,10 +26,12 @@
  */
 package scalafx.scene.chart
 
-import javafx.scene.{ chart => jfxsc }
-import scalafx.Includes._
+import javafx.scene.{chart => jfxsc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
@@ -44,7 +46,7 @@ class AreaChartSpec
   with RunOnApplicationThread {
 
   override def getScalaClassInstance = new AreaChart[Number, Number](getJavaClassInstance)
-  
+
   override def getJavaClassInstance = new jfxsc.AreaChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
 
 }

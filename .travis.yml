@@ -1,7 +1,7 @@
 language: scala
 scala:
-  - 2.10.4
-  - 2.11.2
+  - 2.10.5
+  - 2.11.6
 
 before_install:
   - "export DISPLAY=:99.0"
@@ -9,11 +9,18 @@ before_install:
 
 jdk:
   - oraclejdk8
+  
+install: true
+
+script:
+  - sudo apt-get update && sudo apt-get install oracle-java8-installer
+  - java -version
+  - sbt test
 
 branches:
   only:
-    - SFX-8
-    - SFX-8-stable
+    - master
+    - stable
 
 notifications:
   email:

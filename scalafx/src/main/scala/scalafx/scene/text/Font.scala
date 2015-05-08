@@ -26,14 +26,14 @@
  */
 package scalafx.scene.text
 
-import scala.language.implicitConversions
-import scala.collection.JavaConversions._
-
 import javafx.scene.{text => jfxst}
+
+import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object Font {
-  implicit def sfxFont2jfx(v: Font) = if (v != null) v.delegate else null
+  implicit def sfxFont2jfx(v: Font): jfxst.Font = if (v != null) v.delegate else null
 
   /**
    * Gets the default font which will be from the family "System", and typically the style

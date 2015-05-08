@@ -26,21 +26,22 @@
  */
 package scalafx.scene
 
-import scala.language.implicitConversions
 import javafx.{scene => jfxs}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
+import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Rectangle2D
 import scalafx.scene.paint.Paint
 import scalafx.scene.transform.Transform
-import scalafx.delegate.SFXDelegate
 
 object SnapshotParameters {
-  implicit def sfxSnapshotParameters2jfx(sp: SnapshotParameters) = if (sp != null) sp.delegate else null
+  implicit def sfxSnapshotParameters2jfx(sp: SnapshotParameters): jfxs.SnapshotParameters = if (sp != null) sp.delegate else null
 }
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/SnapshotParameters.html]]
- * 
+ *
  * @since 2.2
  */
 class SnapshotParameters(override val delegate: jfxs.SnapshotParameters = new jfxs.SnapshotParameters)

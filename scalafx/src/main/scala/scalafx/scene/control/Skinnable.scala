@@ -26,14 +26,15 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 
 object Skinnable {
-  implicit def sfxSkinnable2jfx(s: Skinnable) = if (s != null) s.delegate else null
+  implicit def sfxSkinnable2jfx(s: Skinnable): jfxsc.Skinnable = if (s != null) s.delegate else null
 }
 
 trait Skinnable extends SFXDelegate[jfxsc.Skinnable] {

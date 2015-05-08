@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,30 +24,23 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.colorselector
 
-import colorselector.Max
-import colorselector.doubleToInt
 import scala.collection.Seq
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.collections.ObservableBuffer
-import scalafx.collections.ObservableBuffer.Add
-import scalafx.collections.ObservableBuffer.Change
-import scalafx.collections.ObservableBuffer.Remove
+import scalafx.collections.ObservableBuffer.{Add, Change, Remove}
+import scalafx.colorselector
 import scalafx.event.ActionEvent
 import scalafx.geometry.{HPos, Pos, VPos}
 import scalafx.scene.Scene
-import scalafx.scene.control.CheckBox
-import scalafx.scene.control.ComboBox
-import scalafx.scene.control.Label
-import scalafx.scene.control.TextField
+import scalafx.scene.control.{CheckBox, ComboBox, Label, TextField}
 import scalafx.scene.effect.Reflection
-import scalafx.scene.input.MouseButton
-import scalafx.scene.input.MouseEvent
+import scalafx.scene.input.{MouseButton, MouseEvent}
 import scalafx.scene.layout._
 import scalafx.scene.paint.Color
 import scalafx.scene.text.TextAlignment
@@ -87,7 +80,7 @@ object ColorSelector extends JFXApp {
 
   private def synchronizeValues(buffer: ObservableBuffer[SliderControl], changes: Seq[Change]) {
     changes(0) match {
-      case Add(pos, added) => {
+      case Add(pos, added)      => {
         val media = buffer.map(_.value.get).sum / buffer.size
         added.last.asInstanceOf[SliderControl].value <==> synchronizedValue
         buffer.foreach(_.value = media)
@@ -95,7 +88,7 @@ object ColorSelector extends JFXApp {
       case Remove(pos, removed) => {
         removed.last.asInstanceOf[SliderControl].value unbind synchronizedValue
       }
-      case _@ otherChange => {
+      case _@otherChange        => {
         throw new UnsupportedOperationException("Only add and remove defined for the ColorSelector SliderControl sync")
       }
     }
@@ -144,10 +137,10 @@ object ColorSelector extends JFXApp {
       fraction = 0.45
     }
     onMouseClicked = (event: MouseEvent) => {
-        if ((event.getClickCount == 2) && (event.button == MouseButton.PRIMARY)) {
-          randomizeColors()
-        }
+      if ((event.getClickCount == 2) && (event.button == MouseButton.PRIMARY)) {
+        randomizeColors()
       }
+    }
   }
 
   currentColor.onChange(rectangleRegion.setStyle("-fx-background-color: " + RgbFormatter.format(currentColor(), !this.chbDisableAlpha.selected.get)))
@@ -199,7 +192,7 @@ object ColorSelector extends JFXApp {
   val cmbWebColor = new ComboBox[WebColor](WebColor.colors) {
     promptText = "Web Color"
     converter = StringConverter.toStringConverter((wc: WebColor) => wc.name)
-    onAction =  (event: ActionEvent) => webColorSelected()
+    onAction = (event: ActionEvent) => webColorSelected()
   }
 
   val txfColorValue = new TextField {
@@ -214,7 +207,7 @@ object ColorSelector extends JFXApp {
     promptText = "Color Format"
     converter = StringConverter.toStringConverter((f: Formatter) => f.description)
     value = RgbFormatter
-    onAction =(event: ActionEvent) => formatColor()
+    onAction = (event: ActionEvent) => formatColor()
   }
 
   val chbDisableAlpha = new CheckBox {
@@ -298,7 +291,7 @@ object ColorSelector extends JFXApp {
   }
 
   val pnlMain0 = new AnchorPane {
-    content = List(pnlMain)
+    children = List(pnlMain)
     prefHeight = 500
     prefWidth = 800
   }

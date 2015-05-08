@@ -27,14 +27,11 @@
 package scalafx.scene.image
 
 import java.nio.Buffer
-import java.nio.ByteBuffer
-import java.nio.IntBuffer
+import javafx.scene.{image => jfxsi, paint => jfxsp}
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-import javafx.scene.{image => jfxsi}
-import javafx.scene.{paint => jfxsp}
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
@@ -51,12 +48,12 @@ class PixelWriterSpec
   }
 
   override protected def getJavaClassInstance = new jfxsi.PixelWriter {
-  def getPixelFormat = null
-  def setArgb(x: Int, y: Int, argb: Int) {}
-  def setColor(x: Int, y: Int, c: jfxsp.Color) {}
-  def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.PixelFormat[java.nio.ByteBuffer], buffer: Array[Byte], offset: Int, scanlineStride: Int) {}
-  def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.PixelFormat[java.nio.IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int) {}
-  def setPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.PixelFormat[B], buffer: B, scanlineStride: Int) {}
-  def setPixels(dstx: Int, dsty: Int, w: Int, h: Int, reader: jfxsi.PixelReader, srcx: Int, srcy: Int) {}
+    def getPixelFormat = null
+    def setArgb(x: Int, y: Int, argb: Int) {}
+    def setColor(x: Int, y: Int, c: jfxsp.Color) {}
+    def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.PixelFormat[java.nio.ByteBuffer], buffer: Array[Byte], offset: Int, scanlineStride: Int) {}
+    def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.PixelFormat[java.nio.IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int) {}
+    def setPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.PixelFormat[B], buffer: B, scanlineStride: Int) {}
+    def setPixels(dstx: Int, dsty: Int, w: Int, h: Int, reader: jfxsi.PixelReader, srcx: Int, srcy: Int) {}
   }
 }

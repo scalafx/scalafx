@@ -26,14 +26,16 @@
  */
 package scalafx.scene.chart
 
-import javafx.scene.{ chart => jfxsc }
-import scalafx.Includes._
+import javafx.scene.{chart => jfxsc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * 	Chart Spec tests.
+ * Chart Spec tests.
  *
  *
  */
@@ -44,7 +46,7 @@ class XYChartSpec
   with RunOnApplicationThread {
 
   override def getScalaClassInstance = new XYChart[Number, Number](getJavaClassInstance) {}
-  
+
   override def getJavaClassInstance = new jfxsc.LineChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.event
 
 import scalafx.Includes._
@@ -32,11 +33,11 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.event.subscriptions.Subscription
 import scalafx.geometry.Point2D
 import scalafx.scene.Scene
-import scalafx.scene.control.{ToggleButton, ToolBar, ToggleGroup}
+import scalafx.scene.control.{ToggleButton, ToggleGroup, ToolBar}
 import scalafx.scene.input.MouseEvent
-import scalafx.scene.layout.{Pane, BorderPane}
+import scalafx.scene.layout.{BorderPane, Pane}
 import scalafx.scene.paint.Color
-import scalafx.scene.shape.{Ellipse, Line, Circle, Rectangle}
+import scalafx.scene.shape.{Circle, Ellipse, Line, Rectangle}
 
 /** Demo illustrating use of event handler subscription.
   *
@@ -96,7 +97,7 @@ object MultipleShapeDrawingDemo extends JFXApp {
   val drawingPane = new Pane {
     // For simplicity of the demo, just add all shapes to canvas, single instance of each type.
     // Initially, they have zero area so they will not be visible.
-    content ++= Seq(RectangleInteractor.rectangle, EllipseInteractor.ellipse, LineInteractor.line)
+    children ++= Seq(RectangleInteractor.rectangle, EllipseInteractor.ellipse, LineInteractor.line)
   }
 
   stage = new PrimaryStage {
@@ -148,14 +149,14 @@ object MultipleShapeDrawingDemo extends JFXApp {
             val handlerId = alignToggleGroup.selectedToggle().asInstanceOf[javafx.scene.control.ToggleButton].id()
             val selectedHandler = handlerId match {
               case "rectangle" => Some(RectangleInteractor.handler)
-              case "ellipse" => Some(EllipseInteractor.handler)
-              case "line" => Some(LineInteractor.handler)
-              case _ => None
+              case "ellipse"   => Some(EllipseInteractor.handler)
+              case "line"      => Some(LineInteractor.handler)
+              case _           => None
             }
             // Selected corresponding handler
             mouseHandlerSubscription = selectedHandler match {
               case Some(h) => Some(drawingPane.handleEvent(MouseEvent.Any)(h))
-              case None => None
+              case None    => None
             }
           }
 
@@ -199,9 +200,10 @@ object MultipleShapeDrawingDemo extends JFXApp {
         me.eventType match {
           case MouseEvent.MousePressed => start = new Point2D(me.x, me.y)
           case MouseEvent.MouseDragged => end = new Point2D(me.x, me.y)
-          case _ => {}
+          case _                       => {}
         }
       }
     }
   }
+
 }

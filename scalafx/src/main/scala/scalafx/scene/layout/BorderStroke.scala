@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,17 +24,19 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
 import javafx.scene.{layout => jfxsl}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
-import scalafx.scene.paint.Paint
 import scalafx.geometry.Insets
+import scalafx.scene.paint.Paint
 
 object BorderStroke {
-  implicit def sfxBorderStroke2jfx(v: BorderStroke) = if (v != null) v.delegate else null
+  implicit def sfxBorderStroke2jfx(v: BorderStroke): jfxsl.BorderStroke = if (v != null) v.delegate else null
 
   /**
    * The default Insets to be used with a BorderStroke that does not otherwise define any.
@@ -59,7 +61,7 @@ object BorderStroke {
 
 /**
  *
- * Wrapper for [[javafx.scene.layout.BorderStroke]].
+ * Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderStroke.html javafx.scene.layout.BorderStroke]].
  */
 class BorderStroke(override val delegate: jfxsl.BorderStroke)
   extends SFXDelegate[jfxsl.BorderStroke] {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.imaginej
 
 //             ________                                __                   ________   __    __
@@ -44,16 +45,16 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
-import scalafx.scene.layout.{HBox, BorderPane}
+import scalafx.scene.layout.{BorderPane, HBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- * based upon: Example 1-2 Create an HBox Pane
+ *         based upon: Example 1-2 Create an HBox Pane
  *
- * http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
+ *         http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
  *
  */
 
@@ -66,7 +67,7 @@ object ScalaFX_Layout_Panes_02 extends JFXApp {
           spacing = 10
           padding = Insets(15, 12, 15, 12)
           style = "-fx-background-color: #336699"
-          content = List(
+          children = List(
             new Button {
               text = "Current"
               prefWidth = 100

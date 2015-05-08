@@ -26,17 +26,19 @@
  */
 package scalafx.event
 
-import org.junit.runner.RunWith
 import javafx.{event => jfxe}
+
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
-import org.scalatest.junit.JUnitRunner
 
 /** EventType[T] Spec tests. */
 @RunWith(classOf[JUnitRunner])
 class EventTypeSpec
   extends SimpleSFXDelegateSpec[jfxe.EventType[jfxe.Event], EventType[jfxe.Event]](classOf[jfxe.EventType[jfxe.Event]], classOf[EventType[jfxe.Event]]) {
 
-  override protected def getJavaClassInstance : jfxe.EventType[jfxe.Event] = jfxe.EventType.ROOT
-  override protected def getScalaClassInstance : EventType[jfxe.Event] = EventType.ROOT
+  override protected def getJavaClassInstance: jfxe.EventType[jfxe.Event] = jfxe.EventType.ROOT
+  override protected def getScalaClassInstance: EventType[jfxe.Event] = EventType.ROOT
 }

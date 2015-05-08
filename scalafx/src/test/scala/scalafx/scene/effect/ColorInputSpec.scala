@@ -26,17 +26,17 @@
  */
 package scalafx.scene.effect
 
+import javafx.scene.{effect => jfxse}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
-import scalafx.testutil.DimensionDelegateSpec
+import scalafx.testutil.{DimensionDelegateSpec, SimpleSFXDelegateSpec}
 
 /**
  * ColorInput Spec tests.
- * 
+ *
  */
 @RunWith(classOf[JUnitRunner])
 class ColorInputSpec

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,16 +26,28 @@
  */
 package scalafx.print
 
-import javafx.{ print => jfxp }
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import javafx.{print => jfxp}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** Tests for [[scalafx.print.Printer]]. */
 @RunWith(classOf[JUnitRunner])
 class PrinterSpec
   extends SimpleSFXDelegateSpec[jfxp.Printer, Printer](classOf[jfxp.Printer], classOf[Printer]) {
+
+  lazy val skippingMessage: String = if (jfxp.PrinterJob.createPrinterJob == null) {
+    "No default printer defined."
+  } else {
+    ""
+  }
+
+  override val skipJfxToSfxCause = skippingMessage
+
+  override val skipSfxToJfxCause = skippingMessage
 
   override protected def getScalaClassInstance = Printer.defaultPrinter
 

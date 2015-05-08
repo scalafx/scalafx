@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.controls.tableview
 
 import scalafx.Includes._
@@ -33,7 +34,7 @@ import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Scene
-import scalafx.scene.chart.{XYChart, BarChart, CategoryAxis, NumberAxis}
+import scalafx.scene.chart.{BarChart, CategoryAxis, NumberAxis, XYChart}
 import scalafx.scene.control.TableColumn._
 import scalafx.scene.control.{Label, TableColumn, TableView}
 import scalafx.scene.layout.{BorderPane, HBox}
@@ -69,7 +70,7 @@ object BarChartWithTableViewDemo extends JFXApp {
           margin = Insets(25)
         }
         center = new HBox {
-          content = Seq(
+          children = Seq(
             createBarChart("Speculations", data1),
             createBarChart("Predictions", data2)
           )
@@ -84,7 +85,7 @@ object BarChartWithTableViewDemo extends JFXApp {
       title = chartTitle
       data = XYChart.Series(chartData.map(d => XYChart.Data[String, Number](d.name(), d.value())))
       legendVisible = false
-      onMouseClicked = handle { showAsTable(title(), chartData) }
+      onMouseClicked = handle {showAsTable(title(), chartData)}
     }
 
 

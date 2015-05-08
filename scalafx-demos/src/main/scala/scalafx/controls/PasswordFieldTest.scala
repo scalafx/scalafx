@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,24 +27,15 @@
 
 package scalafx.controls
 
-import controls.ControlControls
 import scalafx.Includes._
-import scalafx.scene.layout.Priority
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.controls.controls.PropertiesNodes
-import scalafx.controls.controls.TextFieldControls
-import scalafx.controls.controls.TextInputControlControls
+import scalafx.controls.controls.{ControlControls, PropertiesNodes, TextFieldControls, TextInputControlControls}
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
-import scalafx.scene.control.Button
-import scalafx.scene.control.Label
-import scalafx.scene.control.PasswordField
-import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.FlowPane
-import scalafx.scene.layout.VBox
+import scalafx.scene.control.{Button, Label, PasswordField}
+import scalafx.scene.layout.{BorderPane, FlowPane, Priority, VBox}
 import scalafx.scene.paint.Color
-import scalafx.scene.paint.Color.sfxColor2jfx
 
 object PasswordFieldTest extends JFXApp {
 
@@ -55,12 +46,12 @@ object PasswordFieldTest extends JFXApp {
     fillWidth = true
     alignment = Pos.Center
     hgrow = Priority.Never
-    content = List(new PasswordFieldControls(passwordField), new TextFieldControls(passwordField), new TextInputControlControls(passwordField), new ControlControls(passwordField))
+    children = List(new PasswordFieldControls(passwordField), new TextFieldControls(passwordField), new TextInputControlControls(passwordField), new ControlControls(passwordField))
   }
 
   val mainPane = new BorderPane {
     top = new FlowPane {
-      content = List(passwordField)
+      children = List(passwordField)
     }
     center = controlsPane
     vgrow = Priority.Always
@@ -91,12 +82,12 @@ class PasswordFieldControls(target: PasswordField) extends PropertiesNodes[Passw
    */
   val btnCopy = new Button {
     text = "Copy"
-    onAction = handle { target.copy() }
+    onAction = handle {target.copy()}
   }
 
   val btnCut = new Button {
     text = "Cut"
-    onAction = handle { target.cut() }
+    onAction = handle {target.cut()}
   }
 
   super.addNode("Typed Text", lblText)

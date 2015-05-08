@@ -26,8 +26,9 @@
  */
 package scalafx.event
 
+import javafx.{event => jfxe}
+
 import scala.language.implicitConversions
-import javafx.{ event => jfxe }
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
@@ -60,6 +61,7 @@ object ActionEvent {
   val Any: EventType[jfxe.ActionEvent] = jfxe.ActionEvent.ANY
 
 }
+
 
 /**
  * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/ActionEvent.html ActionEvent]].

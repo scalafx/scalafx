@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,14 +29,11 @@ package scalafx.controls
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.controls.controls.ControlControls
-import scalafx.controls.controls.TextFieldControls
-import scalafx.controls.controls.TextInputControlControls
+import scalafx.controls.controls.{ControlControls, TextFieldControls, TextInputControlControls}
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
 import scalafx.scene.control.TextField
-import scalafx.scene.layout.{Priority, BorderPane, FlowPane, VBox}
+import scalafx.scene.layout.{BorderPane, FlowPane, Priority, VBox}
 import scalafx.scene.paint.Color
 
 object TextFieldTest extends JFXApp {
@@ -48,12 +45,12 @@ object TextFieldTest extends JFXApp {
     fillWidth = true
     alignment = Pos.Center
     hgrow = Priority.Never
-    content = List(new TextFieldControls(textField), new TextInputControlControls(textField), new ControlControls(textField))
+    children = List(new TextFieldControls(textField), new TextInputControlControls(textField), new ControlControls(textField))
   }
 
   val mainPane = new BorderPane {
     top = new FlowPane {
-      content = List(textField)
+      children = List(textField)
     }
     center = controlsPane
     vgrow = Priority.Always

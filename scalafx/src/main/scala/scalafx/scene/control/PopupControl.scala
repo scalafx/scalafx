@@ -26,17 +26,15 @@
  */
 package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc}
+import javafx.{css => jfxcss}
+
 import scala.collection.JavaConversions._
 import scala.collection.mutable.Buffer
 import scala.language.implicitConversions
-
-import javafx.{css => jfxcss}
-import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.StringProperty
-import scalafx.css.PseudoClass
-import scalafx.css.Styleable
+import scalafx.beans.property.{DoubleProperty, StringProperty}
+import scalafx.css.{PseudoClass, Styleable}
 import scalafx.delegate.SFXDelegate
 import scalafx.stage.PopupWindow
 
@@ -51,7 +49,7 @@ object PopupControl {
    * @param v ScalaFX PopupControl
    * @return JavaFX PopupControl
    */
-  implicit def sfxPopupControl2jfx(v: PopupControl) = if (v != null) v.delegate else null
+  implicit def sfxPopupControl2jfx(v: PopupControl): jfxsc.PopupControl = if (v != null) v.delegate else null
 
   /**
    * Sentinel value which can be passed to a control's minWidth, minHeight, prefWidth, prefHeight,

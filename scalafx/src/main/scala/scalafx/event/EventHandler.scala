@@ -26,8 +26,9 @@
  */
 package scalafx.event
 
-import scala.language.{implicitConversions, reflectiveCalls}
 import javafx.{event => jfxe}
+
+import scala.language.{implicitConversions, reflectiveCalls}
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
@@ -113,7 +114,7 @@ trait EventHandlerDelegate {
    * to avoid compilation error "ambiguous reference to overloaded definition"
    */
   object HandlerMagnet {
-    implicit def fromParen[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: () => Unit) = {
+    implicit def fromParen[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: () => Unit): HandlerMagnet[J, S] = {
       new HandlerMagnet[J, S] {
         override val eventHandler = new jfxe.EventHandler[J] {
           def handle(event: J) {
@@ -123,7 +124,7 @@ trait EventHandlerDelegate {
       }
     }
 
-    implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S) = {
+    implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S): HandlerMagnet[J, S] = {
       new HandlerMagnet[J, S] {
         override val eventHandler = new jfxe.EventHandler[J] {
           def handle(event: J) {
@@ -212,7 +213,7 @@ trait EventHandlerDelegate {
    * to avoid compilation error "ambiguous reference to overloaded definition"
    */
   object FilterMagnet {
-    implicit def fromParen[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: () => Unit) = {
+    implicit def fromParen[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: () => Unit): FilterMagnet[J, S] = {
       new FilterMagnet[J, S] {
         override val eventFilter = new jfxe.EventHandler[J] {
           def handle(event: J) {
@@ -222,7 +223,7 @@ trait EventHandlerDelegate {
       }
     }
 
-    implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S) = {
+    implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S): FilterMagnet[J, S] = {
       new FilterMagnet[J, S] {
         override val eventFilter = new jfxe.EventHandler[J] {
           def handle(event: J) {

@@ -26,15 +26,17 @@
  */
 package scalafx.scene.input
 
+import javafx.scene.{input => jfxsi}
+
 import org.junit.runner.RunWith
-import javafx.scene.{ input => jfxsi }
+import org.scalatest.junit.JUnitRunner
+
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
-import org.scalatest.junit.JUnitRunner
 
 /** Tests for [[scalafx.scene.input.TouchPoint.State]]. */
 @RunWith(classOf[JUnitRunner])
-class TouchPointStateSpec 
+class TouchPointStateSpec
   extends SFXEnumDelegateSpec[jfxsi.TouchPoint.State, TouchPoint.State](
     classOf[jfxsi.TouchPoint.State],
     classOf[TouchPoint.State],

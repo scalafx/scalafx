@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,14 +24,14 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.control.cell
 
-import scala.language.implicitConversions
-
-import javafx.{collections => jfxc}
-import javafx.scene.{control => jfxsc}
 import javafx.scene.control.{cell => jfxscc}
-import javafx.{util => jfxu}
+import javafx.scene.{control => jfxsc}
+import javafx.{collections => jfxc, util => jfxu}
+
+import scala.language.implicitConversions
 import scalafx.Includes.jfxTreeTableCell2sfx
 import scalafx.collections.ObservableBuffer
 import scalafx.collections.ObservableBuffer.observableBuffer2ObservableList
@@ -44,8 +44,9 @@ import scalafx.util.StringConverter.sfxStringConverter2jfx
  * Companion Object for [[scalafx.scene.control.cell.ComboBoxTreeTableCell]].
  *
  * @since 8.0
- * @todo Replace all references to $JFX $TTC to its $SFX counterpart when it was created
+ * @todo Replace all references to $JFX `$TTC` to its $SFX counterpart when it was created
  *
+ * @define TTC TreeTableColumn
  * @define CBTC `ComboBoxTreeTableCell`
  * @define TTYPE  The type of the elements contained within the `TreeTableColumn`.
  * @define FTCINIT Creates a ComboBox cell factory for use in [[scalafx.scene.control.TreeTableColumn]] controls.
@@ -67,13 +68,13 @@ object ComboBoxTreeTableCell {
    * @param cell $SFX $CBTC
    * @return $JFX $CBTC
    */
-  implicit def sfxComboBoxTreeTableCell2jfx[S, T](cell: ComboBoxTreeTableCell[S, T]) =
+  implicit def sfxComboBoxTreeTableCell2jfx[S, T](cell: ComboBoxTreeTableCell[S, T]): jfxsc.cell.ComboBoxTreeTableCell[S, T] =
     if (cell != null) cell.delegate else null
 
   /**
    * $FTCINIT
    *
-   * @tparam $TTYPE
+   * @tparam T $TTYPE
    * @param items $ITEMSPARAM
    * @return $RET
    */

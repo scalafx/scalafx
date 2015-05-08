@@ -26,8 +26,11 @@
  */
 package scalafx.stage
 
-import scala.language.implicitConversions
 import javafx.{stage => jfxs}
+
+import scala.language.implicitConversions
+import scalafx.stage.FileChooser.ExtensionFilter
+import scalafx.stage.PopupWindow.AnchorLocation
 
 object StageIncludes extends StageIncludes
 
@@ -62,7 +65,7 @@ trait StageIncludes {
    * @param dc $JFX $DC
    * @return $SFX $DC
    */
-  implicit def jfxDirectoryChooser2sfx(dc: jfxs.DirectoryChooser) = if (dc != null) new DirectoryChooser(dc) else null
+  implicit def jfxDirectoryChooser2sfx(dc: jfxs.DirectoryChooser): DirectoryChooser = if (dc != null) new DirectoryChooser(dc) else null
 
   /**
    * $START$FC.html $FC$END
@@ -70,7 +73,7 @@ trait StageIncludes {
    * @param fc $JFX $FC
    * @return $SFX $FC
    */
-  implicit def jfxFileChooser2sfx(fc: jfxs.FileChooser) = if (fc != null) new FileChooser(fc) else null
+  implicit def jfxFileChooser2sfx(fc: jfxs.FileChooser): FileChooser = if (fc != null) new FileChooser(fc) else null
 
   /**
    * $START$FE.html $FE$END
@@ -78,7 +81,7 @@ trait StageIncludes {
    * @param ef $JFX $FE
    * @return $SFX $FE
    */
-  implicit def jfxFileChooserExtensionFilter2sfx(ef: jfxs.FileChooser.ExtensionFilter) = if (ef != null) new FileChooser.ExtensionFilter(ef) else null
+  implicit def jfxFileChooserExtensionFilter2sfx(ef: jfxs.FileChooser.ExtensionFilter): ExtensionFilter = if (ef != null) new FileChooser.ExtensionFilter(ef) else null
 
   /**
    * $START$PW.html $PW$END
@@ -86,7 +89,7 @@ trait StageIncludes {
    * @param pw $JFX $PW
    * @return $SFX $PW
    */
-  implicit def jfxPopupWindow2sfx(pw: jfxs.PopupWindow) = if (pw != null) new PopupWindow(pw) {} else null
+  implicit def jfxPopupWindow2sfx(pw: jfxs.PopupWindow): PopupWindow = if (pw != null) new PopupWindow(pw) {} else null
 
   /**
    * $START$PWAL.html $PWAL$END
@@ -94,7 +97,7 @@ trait StageIncludes {
    * @param v $JFX $PWAL
    * @return $SFX $PWAL
    */
-  implicit def jfxPopupWindowAnchorLocation2sfx(v: jfxs.PopupWindow.AnchorLocation) = PopupWindow.AnchorLocation.jfxEnum2sfx(v)
+  implicit def jfxPopupWindowAnchorLocation2sfx(v: jfxs.PopupWindow.AnchorLocation): AnchorLocation = PopupWindow.AnchorLocation.jfxEnum2sfx(v)
 
   /**
    * $START$PP.html $PP$END
@@ -102,7 +105,7 @@ trait StageIncludes {
    * @param p $JFX $PP
    * @return $SFX $PP
    */
-  implicit def jfxPopup2sfx(p: jfxs.Popup) = if (p != null) new Popup(p) else null
+  implicit def jfxPopup2sfx(p: jfxs.Popup): Popup = if (p != null) new Popup(p) else null
 
   /**
    * $START$MD.html $MD$END
@@ -110,7 +113,7 @@ trait StageIncludes {
    * @param e $JFX $MD
    * @return $SFX $MD
    */
-  implicit def jfxModality2sfx(e: jfxs.Modality) = Modality.jfxEnum2sfx(e)
+  implicit def jfxModality2sfx(e: jfxs.Modality): Modality = Modality.jfxEnum2sfx(e)
 
   /**
    * $START$SC.html $SC$END
@@ -118,7 +121,7 @@ trait StageIncludes {
    * @param s $JFX $SC
    * @return $SFX $SC
    */
-  implicit def jfxScreen2sfx(s: jfxs.Screen) = if (s != null) new Screen(s) else null
+  implicit def jfxScreen2sfx(s: jfxs.Screen): Screen = if (s != null) new Screen(s) else null
 
   /**
    * $START$ST.html $ST$END
@@ -126,7 +129,7 @@ trait StageIncludes {
    * @param s $JFX $ST
    * @return $SFX $ST
    */
-  implicit def jfxStage2sfx(s: jfxs.Stage) = if (s != null) new Stage(s) else null
+  implicit def jfxStage2sfx(s: jfxs.Stage): Stage = if (s != null) new Stage(s) else null
 
   /**
    * $START$SS.html $SS$END
@@ -134,7 +137,7 @@ trait StageIncludes {
    * @param e $JFX $SS
    * @return $SFX $SS
    */
-  implicit def jfxStageStyle2sfx(e: jfxs.StageStyle) = StageStyle.jfxEnum2sfx(e)
+  implicit def jfxStageStyle2sfx(e: jfxs.StageStyle): StageStyle = StageStyle.jfxEnum2sfx(e)
 
   /**
    * $START$WN.html $WN$END
@@ -142,7 +145,7 @@ trait StageIncludes {
    * @param w $JFX $WN
    * @return $SFX $WN
    */
-  implicit def jfxWindow2sfx(w: jfxs.Window) = if (w != null) new Window(w) {} else null
+  implicit def jfxWindow2sfx(w: jfxs.Window): Window = if (w != null) new Window(w) {} else null
 
   /**
    * $START$WE.html $WE$END
@@ -150,6 +153,6 @@ trait StageIncludes {
    * @param we $JFX $WE
    * @return $SFX $WE
    */
-  implicit def jfxWindowEvent2sfx(we: jfxs.WindowEvent) = if (we != null) new WindowEvent(we) {} else null
+  implicit def jfxWindowEvent2sfx(we: jfxs.WindowEvent): WindowEvent = if (we != null) new WindowEvent(we) {} else null
 
 }

@@ -26,10 +26,12 @@
  */
 package scalafx.scene.chart
 
-import javafx.scene.{ chart => jfxsc }
-import scalafx.Includes._
+import javafx.scene.{chart => jfxsc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
@@ -38,13 +40,13 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  *
  */
 @RunWith(classOf[JUnitRunner])
-class BarChartSpec 
+class BarChartSpec
   extends SimpleSFXDelegateSpec[jfxsc.BarChart[String, Number], BarChart[String, Number]](
     classOf[jfxsc.BarChart[String, Number]], classOf[BarChart[String, Number]])
   with RunOnApplicationThread {
 
   override def getScalaClassInstance = new BarChart[String, Number](getJavaClassInstance)
-  
+
   override def getJavaClassInstance = new jfxsc.BarChart[String, Number](new jfxsc.CategoryAxis, new jfxsc.NumberAxis)
 
 }

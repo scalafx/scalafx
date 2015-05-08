@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,35 +27,30 @@
 
 package scalafx
 
-import application.JFXApp
+import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.{Pos, VPos}
+import scalafx.scene.Scene
+import scalafx.scene.control.{Accordion, Label, ScrollPane, TitledPane}
+import scalafx.scene.layout.HBox
 import scalafx.scene.paint.Color
-import scalafx.scene.paint.Color._
-import scene.Scene
-import scene.control.Accordion
-import scene.control.Label
-import scene.control.ScrollPane
-import scene.control.TitledPane
-import scene.layout.HBox
-import scene.shape.Circle
-import scene.text.Font
-import scene.text.Text
+import scalafx.scene.shape.Circle
+import scalafx.scene.text.{Font, Text}
 
 object LayoutDemo extends JFXApp {
   val hello = new Accordion {
     panes = List(
       new TitledPane {
-        content = new Label { text = "Hello" }
+        content = new Label {text = "Hello"}
       }
     )
   }
 
-  val hbox1 = new HBox { content=List(hello, new Label { text = "Goodbye" }) }
-  val hbox2 = new HBox { content=List(new Circle { radius=20 }, new Label { text = "Strange" }) }
+  val hbox1 = new HBox {children = List(hello, new Label {text = "Goodbye"})}
+  val hbox2 = new HBox {children = List(new Circle {radius = 20}, new Label {text = "Strange"})}
 
-  val charm = new Text("charm") { font = new Font(24); alignmentInParent = Pos.BaselineLeft; textOrigin = VPos.Baseline }
-  val strange = new Text("strange") { font = new Font(12); alignmentInParent = Pos.BaselineLeft; textOrigin = VPos.Baseline }
+  val charm = new Text("charm") {font = new Font(24); alignmentInParent = Pos.BaselineLeft; textOrigin = VPos.Baseline}
+  val strange = new Text("strange") {font = new Font(12); alignmentInParent = Pos.BaselineLeft; textOrigin = VPos.Baseline}
 
   stage = new PrimaryStage {
     width = 1024
@@ -65,7 +60,7 @@ object LayoutDemo extends JFXApp {
         content = new HBox {
           alignmentInParent = Pos.BaselineLeft
           fill = Color.Blue
-          content = List(charm, strange)
+          children = List(charm, strange)
         }
       }
     }

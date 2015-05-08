@@ -26,13 +26,14 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import scalafx.Includes._
+import javafx.scene.{control => jfxsc}
+
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.SimpleSFXDelegateSpec
-import scalafx.testutil.RunOnApplicationThread
 import org.scalatest.Matchers._
+import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ContextMenu Spec tests.
@@ -43,7 +44,7 @@ import org.scalatest.Matchers._
 class ContextMenuSpec
   extends SimpleSFXDelegateSpec[jfxsc.ContextMenu, ContextMenu](
     classOf[jfxsc.ContextMenu], classOf[ContextMenu])
-  with RunOnApplicationThread  {
+  with RunOnApplicationThread {
 
   it should "not drop assigned items - Issue 42" in {
     val menuItemA = new MenuItem("MenuItemA")

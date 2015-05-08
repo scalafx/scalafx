@@ -26,23 +26,18 @@
  */
 package scalafx.scene.layout
 
-import scala.language.implicitConversions
-import javafx.{geometry => jfxg}
 import javafx.scene.{layout => jfxsl}
+import javafx.{geometry => jfxg}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.DoubleProperty
-import scalafx.beans.property.ObjectProperty
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.AlignmentDelegate
-import scalafx.geometry.Insets
+import scalafx.beans.property.{DoubleProperty, ObjectProperty}
+import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
+import scalafx.geometry.{HPos, Insets, Orientation, VPos}
 import scalafx.scene.Node
-import scalafx.geometry.Orientation
-import scalafx.geometry.HPos
-import scalafx.geometry.Pos
-import scalafx.geometry.VPos
 
 object FlowPane {
-  implicit def sfxFlowPane2jfx(v: FlowPane) = if (v != null) v.delegate else null
+  implicit def sfxFlowPane2jfx(v: FlowPane): jfxsl.FlowPane = if (v != null) v.delegate else null
 
   /**
    * Removes all flowpane constraints from the child node.

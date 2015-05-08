@@ -26,28 +26,30 @@
  */
 package scalafx.beans.property
 
+
+import javafx.beans.{property => jfxbp}
+
 import scala.language.implicitConversions
-import javafx.beans.{ property => jfxbp }
 import scalafx.delegate.SFXDelegate
 
 /**
- *  Factory for `[[scalafx.beans.property.ObjectProperty]]` instances.
+ * Factory for `[[scalafx.beans.property.ObjectProperty]]` instances.
  *
- *  @define OP `ObjectProperty`
- *  @define ISSUE14 Special case when value is an ScalaFX wrapper, to be used as a work around for 
- *  [[https://code.google.com/p/scalafx/issues/detail?id=14 Issue 14]]. Created object property will have value type 
- *  of the wrapped JavaFX type to simplify use with binding.
+ * @define OP `ObjectProperty`
+ * @define ISSUE14 Special case when value is an ScalaFX wrapper, to be used as a work around for
+ *         [[https://code.google.com/p/scalafx/issues/detail?id=14 Issue 14]]. Created object property will have value type
+ *         of the wrapped JavaFX type to simplify use with binding.
  */
 object ObjectProperty {
-  
+
   /**
    * Implicit conversion from a ScalaFX's $OP to a JavaFX's
    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ObjectProperty.html $OP]], extracting its delegate.
-   * 
-   * @param op ScalaFX's $OP 
+   *
+   * @param op ScalaFX's $OP
    * @return JavaFX's $OP, extracted from op's delegate.
    */
-  implicit def sfxObjectProperty2jfx[T <: Any](op: ObjectProperty[T]) = op.delegate
+  implicit def sfxObjectProperty2jfx[T <: Any](op: ObjectProperty[T]): jfxbp.ObjectProperty[T] = op.delegate
 
   /**
    * Creates a new $OP.
@@ -58,7 +60,7 @@ object ObjectProperty {
 
   /**
    * Creates a new $OP with a [[scalafx.delegate.SFXDelegate]] as initial value.
-   * 
+   *
    * $ISSUE14
    *
    * @param value the initial value.

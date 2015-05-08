@@ -26,17 +26,17 @@
  */
 package scalafx.scene.control
 
+import javafx.scene.{control => jfxsc, input => jfxsi}
+import javafx.{event => jfxe}
+
 import scala.language.implicitConversions
-import javafx.scene.{ control => jfxsc, input => jfxsi }
-import javafx.{ event => jfxe }
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.delegate.{FireDelegate, SFXDelegate}
 import scalafx.scene.input.MouseEvent
-import scalafx.delegate.FireDelegate
-import scalafx.delegate.SFXDelegate
 
 object ButtonBase {
-  implicit def sfxButtonBase2jfx(v: ButtonBase) = if (v != null) v.delegate else null
+  implicit def sfxButtonBase2jfx(v: ButtonBase): jfxsc.ButtonBase = if (v != null) v.delegate else null
 }
 
 abstract class ButtonBase(override val delegate: jfxsc.ButtonBase)

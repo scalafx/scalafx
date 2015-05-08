@@ -38,7 +38,7 @@ import scalafx.scene.input.KeyCombination
 import scalafx.stage.Window.sfxWindow2jfx
 
 object Stage {
-  implicit def sfxStage2jfx(v: Stage) = if (v != null) v.delegate else null
+  implicit def sfxStage2jfx(v: Stage): jfxs.Stage = if (v != null) v.delegate else null
 }
 
 /**
@@ -171,7 +171,7 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
    */
   def showing_=(v: Boolean) {
     v match {
-      case true => delegate.show()
+      case true  => delegate.show()
       case false => delegate.hide()
     }
   }

@@ -27,8 +27,8 @@
 
 package scalafx
 
-import scala.language.postfixOps
 import scala.collection.immutable.VectorBuilder
+import scala.language.postfixOps
 import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Timeline
@@ -114,10 +114,14 @@ object ColorfulCircles extends JFXApp {
     cycleCount = Indefinite
     autoReverse = true
     keyFrames = (for (circle <- circlesToAnimate.result()) yield Seq(
-      at(0 s) {Set(circle.centerX -> random * 800,
-                   circle.centerY -> random * 600)},
-      at(40 s) {Set(circle.centerX -> random * 800,
-                    circle.centerY -> random * 600)}
+      at(0 s) {
+        Set(circle.centerX -> random * 800,
+          circle.centerY -> random * 600)
+      },
+      at(40 s) {
+        Set(circle.centerX -> random * 800,
+          circle.centerY -> random * 600)
+      }
     )).flatten
   }.play()
 }

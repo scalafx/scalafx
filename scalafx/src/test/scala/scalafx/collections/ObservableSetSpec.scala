@@ -26,17 +26,17 @@
  */
 package scalafx.collections
 
-import scala.collection.JavaConversions._
-import scala.collection.mutable._
+import java.{util => ju}
+import javafx.{collections => jfxc}
+
 import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.Matchers._
-import javafx.{ collections => jfxc }
-import java.{ util => ju }
+import org.scalatest.junit.JUnitRunner
+
+import scala.collection.mutable._
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
 import scalafx.collections.ObservableSet._
-import scalafx.collections._
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * ObservableSet[T] Spec tests.
@@ -56,7 +56,7 @@ class ObservableSetSpec[T]
    * @param shouldBeTheSame If both maps should be same instance.
    */
   private def compareInstances(generatedSet: Set[Int],
-    originalSet: ObservableSet[Int], shouldBeTheSame: Boolean) {
+                               originalSet: ObservableSet[Int], shouldBeTheSame: Boolean) {
     if (shouldBeTheSame) {
       generatedSet should be theSameInstanceAs (originalSet)
     } else {
@@ -148,14 +148,14 @@ class ObservableSetSpec[T]
     // Execution
     // Operations that change this set
     compareInstances(set += 0, set, true)
-    compareInstances(set += (1, 2), set, true)
+    compareInstances(set +=(1, 2), set, true)
     compareInstances(set ++= List(3), set, true)
     compareInstances(set ++= List(4, 5), set, true)
     (set add 6) should be(true)
     set(7) = true
     // Operations that not change this set
     compareInstances(set + 100, set, false)
-    compareInstances(set + (101, 102), set, false)
+    compareInstances(set +(101, 102), set, false)
     compareInstances(set ++ List(103), set, false)
     compareInstances(set ++ List(104, 105), set, false)
     (set add 1) should be(false)
@@ -180,14 +180,14 @@ class ObservableSetSpec[T]
     // Execution
     // Operations that change this set
     compareInstances(set -= 0, set, true)
-    compareInstances(set -= (1, 2), set, true)
+    compareInstances(set -=(1, 2), set, true)
     compareInstances(set --= List(3), set, true)
     compareInstances(set --= List(4, 5), set, true)
     (set remove 6) should be(true)
     set(7) = false
     // Operations that not change this set
     compareInstances(set - 100, set, false)
-    compareInstances(set - (101, 102), set, false)
+    compareInstances(set -(101, 102), set, false)
     compareInstances(set -- List(103), set, false)
     compareInstances(set -- List(104, 105), set, false)
     (set remove 1) should be(false)
@@ -222,10 +222,10 @@ class ObservableSetSpec[T]
     }
 
     // Execution
-    compareInstances(set += (1, 10, 3, 8, 5), set, true)
-    compareInstances(set -= (10, 9, 3), set, true)
+    compareInstances(set +=(1, 10, 3, 8, 5), set, true)
+    compareInstances(set -=(10, 9, 3), set, true)
     compareInstances(set += 11, set, true)
-    compareInstances(set += (-1, 15), set, true)
+    compareInstances(set +=(-1, 15), set, true)
 
     // Verification
     set.toList should equal(List(1, 8, 5, 11, -1, 15))

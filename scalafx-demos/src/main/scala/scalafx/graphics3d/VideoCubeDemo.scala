@@ -28,19 +28,19 @@ package scalafx.graphics3d
 
 // JavaFX system properties: -Dprism.printStats=true -Dprism.verbose=true
 
-import scala.language.postfixOps
 import java.io.File
+
+import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.animation.Timeline
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.scene.DepthTest
-import scalafx.scene.media.{Media, MediaView, MediaPlayer}
+import scalafx.scene.media.{Media, MediaPlayer, MediaView}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-import scalafx.scene.text.{Text, Font}
+import scalafx.scene.text.{Font, Text}
 import scalafx.scene.transform.Rotate
-import scalafx.scene.{Node, PerspectiveCamera, Scene, SceneAntialiasing, Group}
+import scalafx.scene.{DepthTest, Group, Node, PerspectiveCamera, Scene, SceneAntialiasing}
 
 /**
  * The type VideoCubeDemo a demonstration of the JavaOne 2011 key note with
@@ -81,7 +81,7 @@ object VideoCubeDemo extends JFXApp {
       else throw new IllegalArgumentException("System property `" + folderSysProperty + " = " + folderName + "` " +
         "has to point to an existing directory.")
     }
-    case None => throw new IllegalArgumentException("System property `" + folderSysProperty + "` is not defined.")
+    case None             => throw new IllegalArgumentException("System property `" + folderSysProperty + "` is not defined.")
   }
 
   // You need your video files ;-) Cannot redistribute MOVIE FILES!!!
@@ -98,7 +98,7 @@ object VideoCubeDemo extends JFXApp {
     filename => {
       val file = new File(folder, filename)
       val media = new Media(file.toURI.toURL.toExternalForm)
-      new MediaPlayer(media)  {
+      new MediaPlayer(media) {
         volume = 0.5
         cycleCount = MediaPlayer.Indefinite
       }

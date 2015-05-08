@@ -26,14 +26,14 @@
  */
 package scalafx.util.converter
 
-import scala.language.implicitConversions
 import java.text.NumberFormat
 import java.util.Locale
-
 import javafx.util.{converter => jfxuc}
 
+import scala.language.implicitConversions
+
 object CurrencyStringConverter {
-  implicit def sfxCurrencyStringConverter2jfx(c: CurrencyStringConverter) = if (c != null) c.delegate else null
+  implicit def sfxCurrencyStringConverter2jfx(c: CurrencyStringConverter): jfxuc.CurrencyStringConverter = if (c != null) c.delegate else null
 }
 
 class CurrencyStringConverter(override val delegate: jfxuc.CurrencyStringConverter = new jfxuc.CurrencyStringConverter)

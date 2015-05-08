@@ -28,11 +28,9 @@
 package scalafx.beans.property
 
 import org.junit.runner.RunWith
-import org.scalatest.BeforeAndAfterEach
-import org.scalatest.FlatSpec
+import org.scalatest.Matchers.{convertToAnyShouldWrapper, equal}
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.Matchers.convertToAnyShouldWrapper
-import org.scalatest.Matchers.equal
+import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
 
 /** ReadOnlyFloatWrapper Spec tests. */

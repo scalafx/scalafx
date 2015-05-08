@@ -27,12 +27,13 @@
 
 package scalafx.scene
 
-import javafx.{ scene => jfxs }
-import scalafx.Includes._
+import javafx.{scene => jfxs}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import scalafx.testutil.SimpleSFXDelegateSpec
-import scalafx.testutil.RunOnApplicationThread
+
+import scalafx.Includes._
+import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Scene Spec tests.
@@ -48,30 +49,30 @@ class SceneSpec
 
   override protected def getJavaClassInstance = new jfxs.Scene(new jfxs.Group)
 
-//  protected def getScalaPropertyClassInstance = new ScalaProperty(getJavaPropertyClassInstance)
-//  protected def getJavaPropetyClassInstance = new
+  //  protected def getScalaPropertyClassInstance = new ScalaProperty(getJavaPropertyClassInstance)
+  //  protected def getJavaPropetyClassInstance = new
 
-//  "A %s".format(classOf[jfxs.Scene].getSimpleName) should "have an implicit conversion from SFX Property to JFX Property" in {
-//    // Test if the implicit conversion exists
-//    //assert(sfxProp2jfxProp != null, "There is no implicit conversion from ScalaFX to JavaFX")
-//
-//    // Test if conversion behaves correctly
-//    val sfxObject = getScalaPropertyClassInstance
-//    val jfxObject: J = sfxObject
-//
-//    jfxObject should be(sfxObject.delegate)
-//  }
-//
-//  it should "have an implicit conversion from JFX to SFX" in {
-//    // Test if the implicit conversion exists
-//    assert(jfx2sfx != null, "There is no implicit conversion from JavaFX to ScalaFX")
-//
-//    // Test if conversion behaves correctly
-//    val jfxObject = getJavaClassInstance
-//    val sfxObject: S = jfxObject
-//
-//    sfxObject.delegate should be(jfxObject)
-//  }
+  //  "A %s".format(classOf[jfxs.Scene].getSimpleName) should "have an implicit conversion from SFX Property to JFX Property" in {
+  //    // Test if the implicit conversion exists
+  //    //assert(sfxProp2jfxProp != null, "There is no implicit conversion from ScalaFX to JavaFX")
+  //
+  //    // Test if conversion behaves correctly
+  //    val sfxObject = getScalaPropertyClassInstance
+  //    val jfxObject: J = sfxObject
+  //
+  //    jfxObject should be(sfxObject.delegate)
+  //  }
+  //
+  //  it should "have an implicit conversion from JFX to SFX" in {
+  //    // Test if the implicit conversion exists
+  //    assert(jfx2sfx != null, "There is no implicit conversion from JavaFX to ScalaFX")
+  //
+  //    // Test if conversion behaves correctly
+  //    val jfxObject = getJavaClassInstance
+  //    val sfxObject: S = jfxObject
+  //
+  //    sfxObject.delegate should be(jfxObject)
+  //  }
 
   it should "have a Property class that exposes all the JavaFX builder properties" in {
     compareBuilderPropertiesInProxy(classOf[jfxs.SceneBuilder[_]], classOf[SceneProperty])

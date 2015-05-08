@@ -26,12 +26,13 @@
  */
 package scalafx.scene.control
 
-import scala.language.implicitConversions
 import javafx.scene.{control => jfxsc}
+
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object IndexRange {
-  implicit def sfxIndexRange(r: IndexRange) = if (r != null) r.delegate else null
+  implicit def sfxIndexRange(r: IndexRange): jfxsc.IndexRange = if (r != null) r.delegate else null
 
   /**
    * Index range value delimiter.

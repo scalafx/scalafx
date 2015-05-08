@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.imaginej
 
 //             ________                                __                   ________   __    __
@@ -41,27 +42,24 @@ package scalafx.imaginej
 
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.geometry.Insets
-import scalafx.geometry.{VPos, Pos}
+import scalafx.geometry.{Insets, Pos, VPos}
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout._
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-import scalafx.scene.text.Font
-import scalafx.scene.text.FontWeight
-import scalafx.scene.text.Text
+import scalafx.scene.text.{Font, FontWeight, Text}
 
 
 /**
  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- * based upon: Example 1-4 Create a Stack Pane
+ *         based upon: Example 1-4 Create a Stack Pane
  *
- * note: no linear gradient and hard coded positioning of stack pane
+ *         note: no linear gradient and hard coded positioning of stack pane
  *
- * http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
+ *         http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
  *
  */
 
@@ -92,13 +90,13 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   }
   val stackPane = new StackPane {
     alignment = Pos.Center
-    content = List(questionRectangle, questionText)
+    children = List(questionRectangle, questionText)
   }
   val hBox = new HBox {
     spacing = 10
     padding = Insets(15, 12, 15, 12)
     style = "-fx-background-color: #336699"
-    content = List(
+    children = List(
       currentButton,
       projectedButton,
       new Rectangle {
@@ -128,7 +126,7 @@ object ScalaFX_Layout_Panes_05 extends JFXApp {
   val vBox = new VBox {
     spacing = 10
     padding = Insets(10, 10, 10, 10)
-    content = data
+    children = data
   }
 
   val salesText = new Text {

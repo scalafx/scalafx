@@ -26,14 +26,15 @@
  */
 package scalafx.scene.shape
 
-import scala.language.implicitConversions
 import javafx.scene.{shape => jfxss}
+
+import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object Cylinder {
-  implicit def sfxCylinder2jfx(c: Cylinder) = if (c != null) c.delegate else null
+  implicit def sfxCylinder2jfx(c: Cylinder): jfxss.Cylinder = if (c != null) c.delegate else null
 }
 
 /**

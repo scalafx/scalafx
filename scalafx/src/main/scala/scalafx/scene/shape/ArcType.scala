@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,22 +24,24 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-import scalafx.delegate.{ SFXEnumDelegateCompanion, SFXEnumDelegate }
 
-/** Wrapper for [[javafx.scene.shape.ArcType]] */
+import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/ArcType.html javafx.scene.shape.ArcType]] */
 object ArcType extends SFXEnumDelegateCompanion[jfxss.ArcType, ArcType] {
 
   val Open = new ArcType(jfxss.ArcType.OPEN)
-  @deprecated ("Use Open; OPEN will be removed in a future release", "2.2.60")
+  @deprecated("Use Open; OPEN will be removed in a future release", "2.2.60")
   val OPEN = Open
   val Chord = new ArcType(jfxss.ArcType.CHORD)
-  @deprecated ("Use Chord; CHORD will be removed in a future release", "2.2.60")
+  @deprecated("Use Chord; CHORD will be removed in a future release", "2.2.60")
   val CHORD = Chord
   val Round = new ArcType(jfxss.ArcType.ROUND)
-  @deprecated ("Use Round; ROUND will be removed in a future release", "2.2.60")
+  @deprecated("Use Round; ROUND will be removed in a future release", "2.2.60")
   val ROUND = Round
 
   protected override def unsortedValues: Array[ArcType] = Array(Open, Chord, Round)

@@ -26,10 +26,12 @@
  */
 package scalafx.scene.control
 
-import javafx.scene.{ control => jfxsc }
-import scalafx.Includes._
+import javafx.scene.{control => jfxsc}
+
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
+
+import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
@@ -40,4 +42,10 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 @RunWith(classOf[JUnitRunner])
 class ListCellSpec[T]
   extends SimpleSFXDelegateSpec[jfxsc.ListCell[T], ListCell[T]](classOf[jfxsc.ListCell[T]], classOf[ListCell[T]])
-  with RunOnApplicationThread
+  with RunOnApplicationThread {
+
+  "ListCell" should "have index property (Issue #167)" in {
+    val cell = new ListCell()
+    cell.index === 0
+  }
+}

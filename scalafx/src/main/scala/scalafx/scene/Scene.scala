@@ -40,7 +40,7 @@ import scalafx.scene.input.{Dragboard, Mnemonic, TransferMode}
 import scalafx.scene.paint.Paint
 
 object Scene {
-  implicit def sfxScene2jfx(v: Scene) = if (v != null) v.delegate else null
+  implicit def sfxScene2jfx(v: Scene): jfxs.Scene = if (v != null) v.delegate else null
 }
 
 /**
@@ -162,8 +162,8 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    */
   def getChildren = root.value match {
     case group: jfxs.Group => group.getChildren
-    case pane: jfxsl.Pane => pane.getChildren
-    case _ => throw new IllegalStateException("Cannot access children of root: " + root + "\n" +
+    case pane: jfxsl.Pane  => pane.getChildren
+    case _                 => throw new IllegalStateException("Cannot access children of root: " + root + "\n" +
       "Use a class that extends Group or Pane, or override the getChildren method.")
   }
 
@@ -441,7 +441,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    *
    * @return The URL of the user-agent stylesheet that will be used by this SubScene, or null if has not been set.
    */
-  def userAgentStylesheet: ObjectProperty[String] = delegate.userAgentStylesheet
+  def userAgentStylesheet: ObjectProperty[String] = delegate.userAgentStylesheetProperty
   /**
    * Set the URL of the user-agent stylesheet that will be used by this Scene in place of the the platform-default
    * user-agent stylesheet. If the URL does not resolve to a valid location, the platform-default user-agent

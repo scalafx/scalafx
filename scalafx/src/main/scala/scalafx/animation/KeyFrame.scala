@@ -26,13 +26,12 @@
  */
 package scalafx.animation
 
-import scala.language.implicitConversions
-import scala.collection.JavaConversions._
+import javafx.{animation => jfxa, event => jfxe}
 
-import javafx.{event => jfxe}
-import javafx.{animation => jfxa}
-import scalafx.util.Duration
+import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
+import scalafx.util.Duration
 
 /**
  * Companion Object for [[scalafx.animation.KeyFrame]].
@@ -48,7 +47,7 @@ object KeyFrame {
    * @param v ScalaFX $KF
    * @return JavaFX $KF extracted from `v`.
    */
-  implicit def sfxKeyFrame2jfx(v: KeyFrame) = if (v != null) v.delegate else null
+  implicit def sfxKeyFrame2jfx(v: KeyFrame): jfxa.KeyFrame = if (v != null) v.delegate else null
 
   /**
    * Creates a new $KF instance

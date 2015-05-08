@@ -32,7 +32,6 @@ import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Animation.Indefinite
 import scalafx.animation.Timeline
-import scalafx.animation.Tweenable.tweenable2KeyFrame
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
@@ -59,11 +58,11 @@ object VanishingCircles extends JFXApp {
         fill = color(random, random, random, .2)
         effect = new BoxBlur(10, 10, 3)
         // add this for binding:
-        strokeWidth <== when (hover) choose 4 otherwise 0
+        strokeWidth <== when(hover) choose 4 otherwise 0
         stroke = White
         // add this for event listeners:
         onMouseClicked = handle {
-          Timeline(at (3 s) {radius -> 0}).play()
+          Timeline(at(3 s) {radius -> 0}).play()
         }
       }
       content = circles

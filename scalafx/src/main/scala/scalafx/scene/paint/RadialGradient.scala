@@ -26,13 +26,14 @@
  */
 package scalafx.scene.paint
 
-import scala.language.implicitConversions
 import javafx.scene.{paint => jfxsp}
+
 import scala.collection.JavaConversions._
+import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object RadialGradient {
-  implicit def sfxRadialGradient2jfx(rg: RadialGradient) = if (rg != null) rg.delegate else null
+  implicit def sfxRadialGradient2jfx(rg: RadialGradient): jfxsp.RadialGradient = if (rg != null) rg.delegate else null
 
   /**
    * Creates a radial gradient value from a string representation.

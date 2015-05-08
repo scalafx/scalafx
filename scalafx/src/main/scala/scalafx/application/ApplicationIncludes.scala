@@ -26,11 +26,11 @@
  */
 package scalafx.application
 
-import scala.language.implicitConversions
-import scala.collection.JavaConversions.asScalaBuffer
-import scala.collection.JavaConversions.mapAsScalaMap
 
 import javafx.{application => jfxa}
+
+import scala.collection.JavaConversions.{asScalaBuffer, mapAsScalaMap}
+import scala.language.implicitConversions
 
 object ApplicationIncludes extends ApplicationIncludes
 
@@ -43,7 +43,7 @@ trait ApplicationIncludes {
 
   /**
    * Converts a 
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html `javafx.application.Application.Parameters`]] 
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html `javafx.application.Application.Parameters`]]
    * instance to its ScalaFX counterpart.
    *
    * @param p JavaFX Parameters
@@ -60,11 +60,11 @@ trait ApplicationIncludes {
 
   /**
    * Converts a 
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/ConditionalFeature.html `javafx.application.ConditionalFeature`]] 
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/ConditionalFeature.html `javafx.application.ConditionalFeature`]]
    * instance to its ScalaFX counterpart.
    *
    * @param e JavaFX ConditionalFeature
    * @return ScalaFX ConditionalFeature
    */
-  implicit def jfxConditionalFeature2sfx(e: jfxa.ConditionalFeature) = ConditionalFeature.jfxEnum2sfx(e)
+  implicit def jfxConditionalFeature2sfx(e: jfxa.ConditionalFeature): ConditionalFeature = ConditionalFeature.jfxEnum2sfx(e)
 }

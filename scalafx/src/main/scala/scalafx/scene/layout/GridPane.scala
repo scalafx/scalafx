@@ -41,7 +41,7 @@ import scalafx.scene.Node
 import scalafx.scene.Node._
 
 object GridPane {
-  implicit def sfxGridPane2jfx(v: GridPane) = if (v != null) v.delegate else null
+  implicit def sfxGridPane2jfx(v: GridPane): jfxsl.GridPane = if (v != null) v.delegate else null
 
   /**
    * Sentinel value which may be set on a child's row/column span constraint to indicate that it should span the

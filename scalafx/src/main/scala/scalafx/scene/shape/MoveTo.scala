@@ -26,14 +26,13 @@
  */
 package scalafx.scene.shape
 
-import scala.language.implicitConversions
 import javafx.scene.{shape => jfxss}
-import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
-import scalafx.delegate.PositionDelegate
+
+import scala.language.implicitConversions
+import scalafx.delegate.{PositionDelegate, SFXDelegate}
 
 object MoveTo {
-  implicit def sfxMoveTo2jfx(v: MoveTo) = if (v != null) v.delegate else null
+  implicit def sfxMoveTo2jfx(v: MoveTo): jfxss.MoveTo = if (v != null) v.delegate else null
 
   def apply(x: Double, y: Double) = new MoveTo(new jfxss.MoveTo(x, y))
 }
