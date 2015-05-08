@@ -109,7 +109,7 @@ object TreeTableView {
      * Returns the column upon which the resize is occurring, or null if this ResizeFeatures
      * instance was created as a result of a TreeTableView resize operation.
      */
-    override def column: TreeTableColumn[S,_] = delegate.getColumn
+    // TODO: override def column: TreeTableColumn[S,_] = delegate.getColumn
 
   }
 
@@ -647,7 +647,7 @@ class TreeTableView[T](override val delegate: jfxsc.TreeTableView[T] = new jfxsc
    * @return An integer representing the number of parents above the given node,
    *         or -1 if the given TreeItem is null.
    */
-  @deprecated("use [[treeItemLevel(TreeItem)]] instead")
+  @deprecated("use [[treeItemLevel(TreeItem)]] instead", "8.0_20")
   def nodeLevel(node: TreeItem[T]) = jfxsc.TreeTableView.getNodeLevel(node: TreeItem[T])
 
   /**
@@ -657,7 +657,7 @@ class TreeTableView[T](override val delegate: jfxsc.TreeTableView[T] = new jfxsc
    *
    * @param rootItem The node to be the root in this TreeTableView.
    */
-  def this(rootItem: TreeItem[T]) = this(new TreeTableView[T](rootItem))
+  def this(rootItem: TreeItem[T]) = this(new jfxsc.TreeTableView[T](rootItem))
 
 
   /**
