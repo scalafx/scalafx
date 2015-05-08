@@ -141,6 +141,11 @@ object ControlIncludes extends ControlIncludes
  * @define TRVW TreeView
  * @define TVEE TreeView.EditEvent
  * @define TTRW TreeTableRow
+ * @define TTVW TreeTableView
+ * @define TTVR TreeTableView.ResizeFeatures
+ * @define TTVE TreeTableView.EditEvent
+ * @define TTVS TreeTableView.TreeTableViewSelectionModel
+ * @define TTVF TreeTableView.TreeTableViewFocusModel
  * @define SREV SortEvent
  * @define TTCL TreeTableCell
  * @define TRSM TreeSortMode
@@ -598,7 +603,7 @@ trait ControlIncludes
    * $START$TBPB.html $TBPB$END
    *
    * @tparam TC $TTYPE $TBPB
-   * @param tbp $JFX $TBPB
+   * @param tpb $JFX $TBPB
    * @return $SFX $TBPB
    * @since 8.0
    */
@@ -1006,4 +1011,65 @@ trait ControlIncludes
    */
   implicit def jfxTreeTablePosition2sfx[S, T](ttp: jfxsc.TreeTablePosition[S, T]): TreeTablePosition[S, T] =
     if (ttp != null) new TreeTablePosition[S, T](ttp) else null
+
+  implicit def jfxTreeTableColumn2sfx[S,T](a: jfxsc.TreeTableColumn[S,T]) =
+    if (a != null) new TreeTableColumn[S,T](a) else null
+
+  implicit def jfxTreeCellDataFeatures2sfx[S,T](a: jfxsc.TreeTableColumn.CellDataFeatures[S,T]) =
+    if (a != null) new TreeTableColumn.CellDataFeatures[S,T](a) else null
+
+  /**
+   * $START$TTVW.html $TTVW$END
+   *
+   * @tparam S The type of the TreeItem instances contained within the TreeTableView.
+   * @param a $JFX $TTVW
+   * @return $SFX $TTVW
+   * @since 8.0
+   */
+  implicit def jfxTreeTableView2sfx[S](a: jfxsc.TreeTableView[S]) =
+    if (a != null) new TreeTableView[S](a) else null
+
+  /**
+   * $START$TTVW.html $TTVW$END
+   *
+   * @tparam T The type of the TreeItem instances contained within the TreeTableView.
+   * @param t $JFX $TTVW
+   * @return $SFX $TTVW
+   * @since 8.0
+   */
+  implicit def jfxTreeTableViewEditEvent2sfx[T](t: jfxsc.TreeTableView.EditEvent[T]) =
+    if (t != null) new TreeTableView.EditEvent[T](t) else null
+
+  /**
+   * $START$TTVE.html $TTVE$END
+   *
+   * @tparam S The type of the TreeItem instances contained within the TreeTableView.
+   * @param rf $JFX $TTVE
+   * @return $SFX $TVVE
+   */
+  implicit def jfxTreeTableViewResizeFeatures2sfx[S](rf: jfxsc.TreeTableView.ResizeFeatures[S]) =
+    if (rf != null) new TreeTableView.ResizeFeatures[S](rf) else null
+
+  /**
+   * $START$TTVS.html $TTVS$END
+   *
+   * @tparam S The type of the TreeItem instances contained within the TreeTableView.
+   * @param ttvsm $JFX $TTVS
+   * @return $SFX $TTVS
+   */
+  implicit def jfxTreeTableViewSelectionModel2sfx[S](ttvsm: jfxsc.TreeTableView.TreeTableViewSelectionModel[S]) =
+    if (ttvsm != null) new TreeTableView.TreeTableViewSelectionModel[S](ttvsm) {} else null
+
+  /**
+   * $START$TTVF.html $TTVF$END
+   *
+   * @tparam S The type of the TreeItem instances contained within the TreeTableView.
+   * @param ttvfm $JFX $TTVF
+   * @return $SFX $TTVF
+   */
+  implicit def jfxTreeTableViewFocusModel2sfx[S](ttvfm: jfxsc.TreeTableView.TreeTableViewFocusModel[S]) =
+    if (ttvfm != null) new TreeTableView.TreeTableViewFocusModel[S](ttvfm) else null
+
+
+
 }
