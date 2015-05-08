@@ -66,6 +66,8 @@ class FadeTransition(override val delegate: jfxa.FadeTransition = new jfxa.FadeT
   extends Transition(delegate)
   with SFXDelegate[jfxa.FadeTransition] {
 
+  override type Delegate = jfxa.FadeTransition
+
   // CONSTRUCTORS
 
   /**

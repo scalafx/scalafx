@@ -67,6 +67,8 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
   extends Transition(delegate)
   with SFXDelegate[jfxa.FillTransition] {
 
+  override type Delegate = jfxa.FillTransition
+
   /**
    * The constructor of $FT
    *

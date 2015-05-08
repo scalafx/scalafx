@@ -26,17 +26,26 @@
  */
 package scalafx.delegate
 
+trait SFXCompanion {
+  implicit def sfx2jfx[D <: SFXDelegate[_]](s: D): s.Delegate =
+    if (s == null) null.asInstanceOf[s.Delegate]
+    else s.delegate
+}
+
 /**
  * Basic trait for all JavaFX classes wrapping.
  *
  * @tparam D JavaFX class to be wrapped.
  */
-trait SFXDelegate[+D <: Object] extends AnyRef {
+trait SFXDelegate[D <: Object] extends AnyRef {
+
+  type Delegate <: D // !!
+
 
   /**
    * JavaFX object to be wrapped.
    */
-  def delegate: D
+  def delegate: Delegate
 
   /**
    * @return Returns the original delegate's `toString()` adding a `[SFX]` prefix.

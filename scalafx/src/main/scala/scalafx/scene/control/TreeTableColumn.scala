@@ -10,6 +10,7 @@ import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.beans.value.ObservableValue
 import scalafx.collections.ObservableBuffer
+import scalafx.css.Styleable
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.event.Event
 
@@ -225,14 +226,40 @@ object TreeTableColumn {
 }
 
 
+
+
+
+/**
+ * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableColumn.html]]
+ *
+ * @constructor Creates a new TreeTableColumn from a JavaFX one.
+ * @param delegate A JavaFX TreeTableColumn to be wrapped. Its default value is a new JavaFX TreeTableColumn.
+ * @tparam S The type of the TreeTableView generic type (i.e. S == TreeTableView<S>)
+ * @tparam T The type of the content in all cells in this TreeTableColumn.
+ * @since 8.0
+ *
+ */
 class TreeTableColumn[S,T](override val delegate: jfxsc.TreeTableColumn[S,T] = new  jfxsc.TreeTableColumn[S, T]())
   extends  TableColumnBase[jfxsc.TreeItem[S],T]( delegate )
   with SFXDelegate[jfxsc.TreeTableColumn[S,T]] {
 
-
+  /**
+   * Creates a TreeTableColumn with the text set to the provided string, with default cell factory, comparator, and onEditCommit implementation.
+   *
+   * @param text  The string to show when the TreeTableColumn is placed within the TreeTableView.
+   */
   def this(text: String) = this(new jfxsc.TreeTableColumn[S, T](text))
 
-
+  /**
+   * The cell factory for all cells in this column. The cell factory is responsible for rendering the data contained
+   * within each TreeTableCell for a single TreeTableColumn.
+   *
+   * By default TreeTableColumn uses a default cell factory, but this can be replaced with a custom implementation,
+   * for example to show data in a different way or to support editing. There is a lot of documentation on creating
+   * custom cell factories elsewhere (see Cell and TreeTableView for example).
+   *
+   * Finally, there are a number of pre-built cell factories available in the javafx.scene.control.cell package.
+   */
   def cellFactory: ObjectProperty[TreeTableColumn[S, T] => TreeTableCell[S, T]] =
     ObjectProperty((column: TreeTableColumn[S, T]) => new TreeTableCell(delegate.cellFactoryProperty.getValue.call(column)))
   def cellFactory_=(f: TreeTableColumn[S, T] => TreeTableCell[S, T]) {
@@ -243,44 +270,44 @@ class TreeTableColumn[S,T](override val delegate: jfxsc.TreeTableColumn[S,T] = n
     })
   }
 
+  /**
+   * The TreeTableView that this TreeTableColumn belongs to.
+   */
+  def treeTableView: ReadOnlyObjectProperty[jfxsc.TreeTableView[S]] = delegate.treeTableViewProperty
 
 
+  /**
+   * The cell value factory needs to be set to specify how to populate all cells within a single TreeTableColumn. A cell
+   * value factory is a Callback that provides a TreeTableColumn.CellDataFeatures instance, and expects an
+   * ObservableValue to be returned. The returned ObservableValue instance will be observed internally to allow for
+   * updates to the value to be immediately reflected on screen.
+   *
+   * An example of how to set a cell value factory is:
+   *
+   * firstNameCol.setCellValueFactory(new Callback<CellDataFeatures<Person, String>, ObservableValue<String>>() {
+   * public ObservableValue<String> call(CellDataFeatures<Person, String> p) {
+   * // p.getValue() returns the TreeItem<Person> instance for a particular TreeTableView row,
+   * // p.getValue().getValue() returns the Person instance inside the TreeItem<Person>
+   *   return p.getValue().getValue().firstNameProperty();
+   *   }
+   *   });
+   *   }
+   *
+   *   A common approach is to want to populate cells in a TreeTableColumn using a single value from a Java bean. To
+   *   support this common scenario, there is the TreeItemPropertyValueFactory class. Refer to this class for more
+   *   information on how to use it, but briefly here is how the above use case could be simplified using the
+   *   TreeItemPropertyValueFactory class:
+   *
+   *   firstNameCol.setCellValueFactory(new TreeItemPropertyValueFactory<Person,String>("firstName"));
+   */
   def cellValueFactory: ObjectProperty[TreeTableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]] =
     ObjectProperty((features: TreeTableColumn.CellDataFeatures[S, T]) => jfxObservableValue2sfx[T](delegate.cellValueFactoryProperty.getValue.call(features)))
-
   def cellValueFactory_=(f: TreeTableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]) {
     delegate.cellValueFactoryProperty.setValue(new jfxu.Callback[jfxsc.TreeTableColumn.CellDataFeatures[S, T], jfxbv.ObservableValue[T]] {
       def call(v: jfxsc.TreeTableColumn.CellDataFeatures[S, T]): jfxbv.ObservableValue[T] = {
         f(v).delegate
       }
     })
-  }
-
-  def columns: ObservableBuffer[jfxsc.TreeTableColumn[S, _]] = delegate.getColumns
-
-
-  /**
-   * This event handler will be fired when the user cancels editing a cell.
-   */
-  def onEditCancel = delegate.onEditCancelProperty
-  def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]) {
-    onEditCancel() = v
-  }
-
-  /**
-   * This event handler will be fired when the user successfully commits their editing.
-   */
-  def onEditCommit = delegate.onEditCommitProperty
-  def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]) {
-    onEditCommit() = v
-  }
-
-  /**
-   * This event handler will be fired when the user successfully initiates editing.
-   */
-  def onEditStart = delegate.onEditCommitProperty
-  def onEditStart_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]) {
-    onEditStart() = v
   }
 
   /**
@@ -292,9 +319,91 @@ class TreeTableColumn[S,T](override val delegate: jfxsc.TreeTableColumn[S,T] = n
     sortType() = v
   }
 
+  /**
+   * This event handler will be fired when the user successfully initiates editing.
+   */
+  def onEditStart = delegate.onEditCommitProperty
+  def onEditStart_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]) {
+    onEditStart() = v
+  }
 
   /**
-   * The TableView that this TableColumn belongs to.
+   * This event handler will be fired when the user successfully commits their editing.
    */
-  def tableView: ReadOnlyObjectProperty[jfxsc.TreeTableView[S]] = delegate.treeTableViewProperty
+  def onEditCommit = delegate.onEditCommitProperty
+  def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]) {
+    onEditCommit() = v
+  }
+
+  /**
+   * This event handler will be fired when the user cancels editing a cell.
+   */
+  def onEditCancel = delegate.onEditCancelProperty
+  def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]) {
+    onEditCancel() = v
+  }
+
+
+  /**
+   * This enables support for nested columns, which can be useful to group together related data. For example, we may
+   * have a 'Name' column with two nested columns for 'First' and 'Last' names.
+   *
+   * This has no impact on the table as such - all column indices point to the leaf columns only, and it isn't
+   * possible to sort using the parent column, just the leaf columns. In other words, this is purely a visual feature.
+   *
+   * @return An ObservableBuffer containing TableColumnBase instances (or subclasses) that are the children of this
+   *         TableColumnBase. If these children TableColumnBase instances are set as visible, they will appear
+   *         beneath this table column.
+   */
+  def columns: ObservableBuffer[jfxsc.TreeTableColumn[S, _]] = delegate.getColumns
+
+  /**
+   * Attempts to return an ObservableValue<T> for the item in the given index (which is of type S). In other words,
+   * this method expects to receive an integer value that is greater than or equal to zero, and less than the size
+   * of the underlying data model. If the index is valid, this method will return an ObservableValue<T> for
+   * this specific column.
+   *
+   * This is achieved by calling the cell value factory, and returning whatever it returns when passed a
+   * CellDataFeatures (see, for example, the CellDataFeatures classes belonging to TableColumn and TreeTableColumn
+   * for more information).
+   *
+   * @param index The index of the item (of type S) for which an ObservableValue<T> is sought.
+   * @return An ObservableValue<T> for this specific table column.
+   */
+  def cellObservableValue(index: Int): ObservableValue[T,T] = delegate.getCellObservableValue(index)
+
+  /**
+   * Attempts to return an ObservableValue<T> for the given item (which is of type S). In other words, this method
+   * expects to receive an object from the underlying data model for the entire 'row' in the table, and it must
+   * return an ObservableValue<T> for the value in this specific column.
+   *
+   * This is achieved by calling the cell value factory, and returning whatever it returns when passed a
+   * CellDataFeatures (see, for example, the CellDataFeatures classes belonging to TableColumn and TreeTableColumn
+   * for more information).
+   *
+   * @param item The item (of type S) for which an ObservableValue<T> is sought.
+   * @return An ObservableValue<T> for this specific table column.
+   */
+  def cellObservableValue(item: TreeItem[S]): ObservableValue[T,T] = delegate.getCellObservableValue(item)
+
+  /**
+   * The type of this Styleable that is to be used in selector matching. This is analogous to an "element" in HTML.
+   * (CSS Type Selector).
+   *
+   * @return "TreeTableColumn"
+   */
+  override def typeSelector: String = delegate.getTypeSelector
+
+  /**
+   * Return the parent of this Styleable, or null if there is no parent.
+   *
+   * @return getTreeTableView()
+   */
+  override def styleableParent: Styleable = delegate.getStyleableParent
+
+  /**
+   * The CssMetaData of this Styleable. This may be returned as an unmodifiable list.
+   */
+  override def cssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getCssMetaData
+
 }

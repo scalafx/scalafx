@@ -37,15 +37,16 @@ import scala.collection.JavaConversions._
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.collections.ObservableBuffer
-import scalafx.delegate.SFXDelegate
+import scalafx.delegate.{SFXCompanion, SFXDelegate}
 import scalafx.event.{EventType, Event, EventHandler}
 import scalafx.scene.Node
+
 
 
 /**
  * Object companion for [[scalafx.scene.control.TreeTableView]]
  */
-object TreeTableView {
+object TreeTableView extends SFXCompanion {
 
   /**
    * Converts a ScalaFX TreeTableView instance to its JavaFX counterpart.
@@ -53,7 +54,7 @@ object TreeTableView {
    * @param v ScalaFX TreeTableView
    * @return JavaFX TreeTableView
    */
-  implicit def sfxTreeTableView2jfx[T](v: TreeTableView[T]) = if (v != null) v.delegate else null
+  //implicit def sfxTreeTableView2jfx[T](v: TreeTableView[T]) = if (v != null) v.delegate else null
 
 
 
@@ -63,7 +64,7 @@ object TreeTableView {
   /**
    * Object companion for [[scalafx.scene.control.TreeTableView.ResizeFeatures]]
    */
-  object ResizeFeatures {
+  object ResizeFeatures extends SFXCompanion {
 
     /**
      * Converts a ScalaFX ResizeFeatures instance to its JavaFX counterpart.
@@ -71,7 +72,7 @@ object TreeTableView {
      * @param rf ScalaFX TreeTableView.ResizeFeatures
      * @return JavaFX TreeTableView.ResizeFeatures
      */
-    implicit def sfxTreeTableViewResizeFeatures2jfx[S](rf: ResizeFeatures[S]) = if (rf != null) rf.delegate else null
+    //implicit def sfxTreeTableViewResizeFeatures2jfx[S](rf: ResizeFeatures[S]) = if (rf != null) rf.delegate else null
 
   }
 
@@ -84,6 +85,8 @@ object TreeTableView {
   class ResizeFeatures[S](override val delegate: jfxsc.TreeTableView.ResizeFeatures[S])
     extends ResizeFeaturesBase[jfxsc.TreeItem[S]](delegate)
     with SFXDelegate[jfxsc.TreeTableView.ResizeFeatures[S]] {
+
+    type Delegate = jfxsc.TreeTableView.ResizeFeatures[S]
 
     /**
      * Creates an instance of this class, with the provided TreeTableView, TreeTableColumn and delta values
@@ -118,14 +121,14 @@ object TreeTableView {
   /**
    * Object companion for [[scalafx.scene.control.TreeTableView.EditEvent]]
    */
-  object EditEvent {
+  object EditEvent extends SFXCompanion {
     /**
      * Converts a ScalaFX EditEvent instance to its JavaFX counterpart.
      *
      * @param v ScalaFX TreeTableView EditEvent
      * @return JavaFX TreeTableView EditEvent
      */
-    implicit def sfxTreeTableViewEditEvent2jfx[T](v: EditEvent[T]) = if (v != null) v.delegate else null
+    //implicit def sfxTreeTableViewEditEvent2jfx[T](v: EditEvent[T]) = if (v != null) v.delegate else null
 
     // TODO: correct?
     /**
@@ -143,6 +146,8 @@ object TreeTableView {
   class EditEvent[T](override val delegate: jfxsc.TreeTableView.EditEvent[T])
     extends Event(delegate)
     with SFXDelegate[jfxsc.TreeTableView.EditEvent[T]] {
+
+    type Delegate = jfxsc.TreeTableView.EditEvent[T]
 
     /**
      * Creates a new EditEvent instance to represent an edit event. This event is used for
@@ -186,7 +191,7 @@ object TreeTableView {
   /**
    * Object companion for [[scalafx.scene.control.TreeTableView.TreeTableViewFocusModel]]
    */
-  object TreeTableViewFocusModel {
+  object TreeTableViewFocusModel extends SFXCompanion {
 
     /**
      * Converts a ScalaFX TableViewFocusModel instance to its JavaFX counterpart.
@@ -194,8 +199,8 @@ object TreeTableView {
      * @param tvfm ScalaFX TableViewFocusModel
      * @return JavaFX TableViewFocusModel
      */
-    implicit def sfxTableViewFocusModel2jfx[S](tvfm: TreeTableViewFocusModel[S]) =
-      if (tvfm != null) tvfm.delegate else null
+    //implicit def sfxTableViewFocusModel2jfx[S](tvfm: TreeTableViewFocusModel[S]) =
+    //  if (tvfm != null) tvfm.delegate else null
 
   }
 
@@ -208,6 +213,8 @@ object TreeTableView {
   class TreeTableViewFocusModel[S](override val delegate: jfxsc.TreeTableView.TreeTableViewFocusModel[S])
     extends TableFocusModel[jfxsc.TreeItem[S], jfxsc.TreeTableColumn[S, _]](delegate)
     with SFXDelegate[jfxsc.TreeTableView.TreeTableViewFocusModel[S]] {
+
+    type Delegate = jfxsc.TreeTableView.TreeTableViewFocusModel[S]
 
     /**
      * Creates a default TableViewFocusModel instance that will be used to manage focus of the provided TableView control.
@@ -275,14 +282,14 @@ object TreeTableView {
   /**
    * Object companion for [[scalafx.scene.control.TreeTableView.TreeTableViewFocusModel]]
    */
-  object TreeTableViewSelectionModel {
+  object TreeTableViewSelectionModel extends SFXCompanion {
     /**
      * Converts a ScalaFX TreeTableViewSelectionModel instance to its JavaFX counterpart.
      *
      * @param v ScalaFX TreeTableViewSelectionModel
      * @return JavaFX TreeTableViewSelectionModel
      */
-    implicit def sfxTreeTableViewSelectionModel2jfx[S](v: TreeTableView.TreeTableViewSelectionModel[S]) = v.delegate
+    //implicit def sfxTreeTableViewSelectionModel2jfx[S](v: TreeTableView.TreeTableViewSelectionModel[S]) = v.delegate
   }
 
   /**
@@ -295,6 +302,8 @@ object TreeTableView {
    */
   abstract class TreeTableViewSelectionModel[S](override val delegate: jfxsc.TreeTableView.TreeTableViewSelectionModel[S])
     extends SFXDelegate[jfxsc.TreeTableView.TreeTableViewSelectionModel[S]] {
+
+    type Delegate = jfxsc.TreeTableView.TreeTableViewSelectionModel[S]
 
     /**
      * A read-only ObservableBuffer representing the currently selected cells in this TreeTableView. Rather than directly
@@ -601,7 +610,7 @@ class TreeTableView[T](override val delegate: jfxsc.TreeTableView[T] = new jfxsc
   extends Control(delegate)
   with SFXDelegate[jfxsc.TreeTableView[T]] {
 
-
+ type Delegate = jfxsc.TreeTableView[T]
 
 
   /**
