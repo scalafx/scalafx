@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.control.cell
 
 import javafx.beans.{value => jfxbv}
@@ -134,7 +135,7 @@ object CheckBoxTableCell {
    * @tparam S cell value type.
    * @return Cell factory
    */
-  def forTableColumn[S](column: TableColumn[S, java.lang.Boolean]) = jfxscc.CheckBoxTableCell.forTableColumn(column.delegate)
+  def forTableColumn[S](column: jfxsc.TableColumn[S, java.lang.Boolean]) = jfxscc.CheckBoxTableCell.forTableColumn(column)
 }
 
 /**
