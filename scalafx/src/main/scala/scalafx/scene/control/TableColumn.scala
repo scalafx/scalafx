@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.control
 
 import javafx.beans.{value => jfxbv}
@@ -197,6 +198,9 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
         f(v)
       }
     })
+  }
+  def cellFactory_=(callback: jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]]) {
+    delegate.cellFactoryProperty.setValue(callback)
   }
 
   /**
