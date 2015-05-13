@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,9 +53,11 @@ object CheckBoxTableCell {
    *
    * @param cell ScalaFX $CBTC
    */
-  implicit def sfxCheckBoxTableCell2jfx[S, T](cell: CheckBoxTableCell[S, T]): jfxsc.cell.CheckBoxTableCell[S, T] = if (cell != null) cell.delegate else null
+  implicit def sfxCheckBoxTableCell2jfx[S, T](cell: CheckBoxTableCell[S, T]): jfxsc.cell.CheckBoxTableCell[S, T] =
+    if (cell != null) cell.delegate else null
 
-  private[cell] implicit def selectedIntPropertyToGetSelectedProperty(selectedProperty: Int => ObservableValue[Boolean, java.lang.Boolean]): jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]] =
+  private[cell] implicit def selectedIntPropertyToGetSelectedProperty(selectedProperty: Int => ObservableValue[Boolean, java.lang.Boolean])
+  : jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]] =
     new jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]] {
       def call(x: java.lang.Integer) = selectedProperty(x)
     }
@@ -65,7 +67,8 @@ object CheckBoxTableCell {
    *
    * @param selectedProperty $SP
    */
-  def forTableColumn[S, T](selectedProperty: Int => ObservableValue[Boolean, java.lang.Boolean]): (TableColumn[S, T] => TableCell[S, T]) =
+  def forTableColumn[S, T](selectedProperty: Int => ObservableValue[Boolean, java.lang.Boolean])
+  : (TableColumn[S, T] => TableCell[S, T]) =
     (column: TableColumn[S, T]) => jfxscc.CheckBoxTableCell.forTableColumn(selectedProperty).call(column)
 
   /**
@@ -81,14 +84,16 @@ object CheckBoxTableCell {
    * @param selectedProperty $SP
    * @param showLabel In some cases, it may be desirable to show a label in the TableCell beside the CheckBox.
    */
-  def forTableColumn[S, T](selectedProperty: Int => ObservableValue[Boolean, java.lang.Boolean], showLabel: Boolean): (TableColumn[S, T] => TableCell[S, T]) =
+  def forTableColumn[S, T](selectedProperty: Int => ObservableValue[Boolean, java.lang.Boolean], showLabel: Boolean)
+  : (TableColumn[S, T] => TableCell[S, T]) =
     (column: TableColumn[S, T]) => jfxscc.CheckBoxTableCell.forTableColumn(selectedProperty, showLabel).call(column)
 
   /**
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTableView[S, T](Int => ObservableValue[Boolean, java.lang.Boolean], Boolean)", since = "1.0")
-  def forTableColumn[S, T](getSelectedProperty: jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]], showLabel: Boolean) =
+  def forTableColumn[S, T](getSelectedProperty: jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]],
+                           showLabel: Boolean) =
     jfxscc.CheckBoxTableCell.forTableColumn(getSelectedProperty, showLabel)
 
   /**
@@ -97,22 +102,39 @@ object CheckBoxTableCell {
    * @param selectedProperty $SP
    * @param converter A StringConverter that, give an object of type T, will return a String that can be used to represent the object visually.
    */
-  def forTableColumn[S, T](selectedProperty: Int => ObservableValue[Boolean, java.lang.Boolean], converter: StringConverter[T]): (TableColumn[S, T] => TableCell[S, T]) =
+  def forTableColumn[S, T](selectedProperty: Int => ObservableValue[Boolean, java.lang.Boolean],
+                           converter: StringConverter[T]): (TableColumn[S, T] => TableCell[S, T]) =
     (column: TableColumn[S, T]) => jfxscc.CheckBoxTableCell.forTableColumn(selectedProperty, converter).call(column)
 
   /**
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTableView[S, T](Int => ObservableValue[Boolean, java.lang.Boolean], StringConverter[T])", since = "1.0")
-  def forTableColumn[S, T](getSelectedProperty: jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]], converter: jfxu.StringConverter[T]) =
+  def forTableColumn[S, T](getSelectedProperty: jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]],
+                           converter: jfxu.StringConverter[T]) =
     jfxscc.CheckBoxTableCell.forTableColumn(getSelectedProperty, converter)
 
   /**
-   * Added to satisfy Spec tests.
-   * TODO: Create ScalaFX Version
+   * Creates a cell factory producing `CheckBoxTableCell` for use in a TableColumn cell factory.
+   * This method requires that the TableColumn be of type Boolean.
+   * When used in a TableColumn, the CheckBoxCell is rendered with a CheckBox centered in the column.
+   *
+   * Equivalent to JavaFX static method `forTableColumn`.
+   *
+   * Example use:
+   * {{{
+   *   new TableColumn[Item, java.lang.Boolean] {
+   *     ...
+   *     cellFactory = CheckBoxTableCell.forTableColumn(this)
+   *     ...
+   *   }
+   * }}}
+   *
+   * @param column column for which to create the factory
+   * @tparam S cell value type.
+   * @return Cell factory
    */
-  def forTableColumn[S](column: jfxsc.TableColumn[S, java.lang.Boolean]) = jfxscc.CheckBoxTableCell.forTableColumn(column)
-
+  def forTableColumn[S](column: TableColumn[S, java.lang.Boolean]) = jfxscc.CheckBoxTableCell.forTableColumn(column.delegate)
 }
 
 /**
