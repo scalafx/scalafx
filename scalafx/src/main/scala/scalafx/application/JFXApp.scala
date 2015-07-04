@@ -217,11 +217,12 @@ trait JFXApp extends DelayedInit {
 
   /** Add class/object construction/initialization code to the code execution buffer.
     *
-    * This function is called multiple times (by the Scala compiler) within the initialization/construction code of
-    * each class and object (but not trait!) that extends JFXApp. This code is buffered until it can be executed in
-    * main().
+    * This function is called multiple times (by the Scala compiler) with the initialization/construction code of each
+    * class and object (but not trait!) that extends JFXApp. This code is buffered until it can be executed in main().
     *
     * @note You are strongly advised not to override this function.
+    *
+    * @param x Class/object construction code to be buffered for delayed execution.
     */
   def delayedInit(x: => Unit) {
     subClassInitCode += (() => x)
