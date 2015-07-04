@@ -50,19 +50,29 @@ import scalafx.scene.{Group, Scene}
  */
 object ColorfulCircles extends JFXApp {
   val circlesToAnimate = new VectorBuilder[Circle]()
+  val initWidth = 800
+  val initHeight = 600
   stage = new PrimaryStage {
-    width = 800
-    height = 600
+    width = initWidth
+    height = initHeight
+    val rectA = new Rectangle {
+      width = initWidth
+      height = initHeight
+      fill = Black
+    }
+    val rectB = new Rectangle {
+      width = initWidth
+      height = initHeight
+      fill = new LinearGradient(0, 1, 1, 0, true, NoCycle,
+      Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f))
+      blendMode = Overlay
+    }
     scene = new Scene {
       fill = Black
       content = Seq(
         new Group {
           children = Seq(
-            new Rectangle {
-              width <== scene.width
-              height <== scene.height
-              fill = Black
-            },
+            rectA,
             new Group {
               val circles = for (i <- 0 until 15) yield new Circle {
                 radius = 200
@@ -100,27 +110,26 @@ object ColorfulCircles extends JFXApp {
               effect = new BoxBlur(10, 10, 3)
             })
         },
-        new Rectangle {
-          width <== scene.width
-          height <== scene.height
-          fill = new LinearGradient(0, 1, 1, 0, true, NoCycle,
-            Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f))
-          blendMode = Overlay
-        }
+        rectB
       )
     }
+    // Have the two rectangles react to changes in scene height & width
+    rectA.width <== scene.width
+    rectA.height <== scene.height
+    rectB.width <== scene.width
+    rectB.height <== scene.height
   }
   new Timeline {
     cycleCount = Indefinite
     autoReverse = true
     keyFrames = (for (circle <- circlesToAnimate.result()) yield Seq(
       at(0 s) {
-        Set(circle.centerX -> random * 800,
-          circle.centerY -> random * 600)
+        Set(circle.centerX -> random * initWidth,
+          circle.centerY -> random * initHeight)
       },
       at(40 s) {
-        Set(circle.centerX -> random * 800,
-          circle.centerY -> random * 600)
+        Set(circle.centerX -> random * initWidth,
+          circle.centerY -> random * initHeight)
       }
     )).flatten
   }.play()
