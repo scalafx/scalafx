@@ -46,7 +46,7 @@ lazy val scalafxDemos = Project(
 
 // Dependencies
 lazy val junit = "junit" % "junit" % "4.12"
-lazy val scalatest = "org.scalatest" %% "scalatest" % "2.2.4"
+lazy val scalatest = "org.scalatest" %% "scalatest" % "2.2.5"
 
 // Resolvers
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -60,8 +60,8 @@ resolvers += sonatypeNexusSnapshots
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.10.5", "2.11.6"),
-  scalaVersion <<= crossScalaVersions { versions => versions.head},
+  crossScalaVersions := Seq("2.10.5", "2.11.7", "2.12.0-M2"),
+  scalaVersion <<= crossScalaVersions { versions => versions.head },
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
@@ -73,14 +73,8 @@ lazy val scalafxSettings = Seq(
     "-Xlint:deprecation"),
   libraryDependencies ++= Seq(
     "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-    scalatest % "test",
+    if (scalaVersion.value.equals("2.12.0-M2")) "org.scalatest" %% "scalatest" % "2.2.5-M2" % "test" else scalatest % "test",
     junit % "test"),
-  // ScalaTest needs Scala XML, in Scala 2.11 the XML library has been factored out to the `scala-xml` module
-  libraryDependencies ++= (
-    if (scalaVersion.value.startsWith("2.11."))
-      Seq("org.scala-lang.modules" %% "scala-xml" % "1.0.1" % "test")
-    else
-      Seq.empty[ModuleID]),
   autoAPIMappings := true,
   manifestSetting,
   publishSetting,
@@ -91,7 +85,7 @@ lazy val scalafxSettings = Seq(
   testOptions in Test <+= (target in Test) map {
     t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))
   },
-  shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> "}
+  shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> " }
 ) ++ mavenCentralSettings
 
 lazy val manifestSetting = packageOptions <+= (name, version, organization) map {
