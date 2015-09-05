@@ -28,12 +28,13 @@ package scalafx.scene.control
 
 import javafx.beans.{property => jfxbp}
 import javafx.scene.{control => jfxsc}
-import javafx.{collections => jfxc, geometry => jfxg}
+import javafx.{collections => jfxc, event => jfxe, geometry => jfxg}
 
 import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections._
 import scalafx.delegate.SFXDelegate
+import scalafx.event.EventType
 import scalafx.geometry.Side
 import scalafx.scene.Node
 import scalafx.scene.Node._
@@ -41,6 +42,18 @@ import scalafx.scene.Node._
 
 object MenuButton {
   implicit def sfxToggleButton2jfx(mb: MenuButton): jfxsc.MenuButton = if (mb != null) mb.delegate else null
+
+  /** Called when the MenuButton popup has been hidden. */
+  val OnHidden: EventType[jfxe.Event] = jfxsc.MenuButton.ON_HIDDEN
+
+  /** Called when the MenuButton popup '''will''' be hidden. */
+  val OnHiding: EventType[jfxe.Event] = jfxsc.MenuButton.ON_HIDING
+
+  /** Called prior to the MenuButton showing its popup after the user has clicked or otherwise interacted with the MenuButton. */
+  val OnShowing: EventType[jfxe.Event] = jfxsc.MenuButton.ON_SHOWING
+
+  /** Called after the MenuButton has shown its popup. */
+  val OnShown: EventType[jfxe.Event] = jfxsc.MenuButton.ON_SHOWN
 }
 
 /**
