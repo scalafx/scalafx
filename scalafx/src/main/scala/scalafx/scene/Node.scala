@@ -994,7 +994,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Takes a snapshot of this node and returns the rendered image when it is ready.
    */
   def snapshot(params: SnapshotParameters, image: WritableImage): WritableImage =
-    delegate.snapshot(params, image)
+    delegate.snapshot(params.delegate, image.delegate)
 
   /**
    * Takes a snapshot of this node at the next frame and calls the specified callback method when the image is ready.
@@ -1036,7 +1036,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    *
    * @since 2.2
    */
-  def localToParentTransform: Transform = delegate.localToParentTransform
+  def localToParentTransform: Transform = delegate.getLocalToParentTransform
 
   /**
    * An affine transform that holds the computed local-to-scene transform.
@@ -1045,7 +1045,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    *
    * @since 2.2
    */
-  def localToSceneTransform: Transform = delegate.localToSceneTransform
+  def localToSceneTransform: Transform = delegate.getLocalToSceneTransform
 
   /**
    * Defines a function to be called when user performs a rotation action.
