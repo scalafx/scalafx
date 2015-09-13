@@ -20,7 +20,7 @@ lazy val scalafx = Project(
     fork in run := true,
     scalacOptions in(Compile, doc) ++= Seq(
       "-sourcepath", baseDirectory.value.toString,
-      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md",
+      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.creole",
       "-doc-source-url", "https://github.com/scalafx/scalafx/blob/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala"
     ) ++ (Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
       case Some(path) => Seq("-diagrams", "-diagrams-dot-path", path)
