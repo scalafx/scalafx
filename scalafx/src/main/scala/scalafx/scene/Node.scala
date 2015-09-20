@@ -28,6 +28,7 @@
 package scalafx.scene
 
 import javafx.scene.{effect => jfxse, input => jfxsi, layout => jfxsl, transform => jfxst}
+import javafx.util.Callback
 import javafx.{event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
 
 import scala.language.implicitConversions
@@ -998,9 +999,16 @@ abstract class Node protected(override val delegate: jfxs.Node)
 
   /**
    * Takes a snapshot of this node at the next frame and calls the specified callback method when the image is ready.
+   * Arguments `params` and `image` can be null.
    */
-  def snapshot(callback: jfxs.SnapshotResult => Unit, params: SnapshotParameters, image: WritableImage) {
-    delegate.snapshot(callback, params, image)
+  def snapshot(callback: SnapshotResult => Unit, params: SnapshotParameters, image: WritableImage) {
+    val jfxCallback = new Callback[jfxs.SnapshotResult, java.lang.Void] {
+      override def call(result: jfxs.SnapshotResult): java.lang.Void = {
+        callback(new SnapshotResult(result))
+        null
+      }
+    }
+    delegate.snapshot(jfxCallback, params, image)
   }
 
   /**
