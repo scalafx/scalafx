@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -168,7 +168,7 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
    * @since 2.2
    */
   def consumeAutoHidingEvents: BooleanProperty = delegate.consumeAutoHidingEventsProperty
-  def consumeAutoHidingEvents(v: Boolean) {
+  def consumeAutoHidingEvents_=(v: Boolean) {
     consumeAutoHidingEvents() = v
   }
 
