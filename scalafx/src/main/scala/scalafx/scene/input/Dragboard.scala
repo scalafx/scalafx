@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,21 +24,63 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
 
 import scala.collection.JavaConversions._
-import scala.collection._
+import scala.collection.Set
 import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.image.Image
+import scalafx.scene.image.ImageIncludes.jfxImage2sfx
 
+/**
+ * Object companion for [[scalafx.scene.input.Dragboard]].
+ */
 object Dragboard {
   implicit def sfxDragboard2jfx(d: Dragboard): jfxsi.Dragboard = if (d != null) d.delegate else null
 }
 
+/**
+ * Wraps a $JFX $URL0 $FC]].
+ *
+ * @constructor Creates a new $FC from a $JFX one.
+ * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
+ *
+ * @define FC Dragboard
+ * @define URL0 [[http://docs.oracle.com/javase/8/javafx/scene/input/Dragboard.html
+ * @define JFX JavaFX
+ * @define ORIGINALDOC Original Documentation]].
+ */
 class Dragboard(override val delegate: jfxsi.Dragboard) extends Clipboard(delegate) with SFXDelegate[jfxsi.Dragboard] {
 
+  /** The image used as a drag view. */
+  def dragView: Image = delegate.getDragView
+  def dragView_=(image: Image): Unit = {
+    delegate.setDragView(image)
+  }
+  /**
+   * Sets the visual representation of data being transfered in a drag and drop gesture.
+   */
+  def dragView_=(image: Image, offsetX: Double, offsetY: Double): Unit = {
+    delegate.setDragView(image)
+  }
+
+  /** The x position of the cursor of the drag view image. */
+  def dragViewOffsetX: Double = delegate.getDragViewOffsetX
+  def dragViewOffsetX_=(offsetX: Double): Unit = {
+    delegate.setDragViewOffsetX(offsetX)
+  }
+
+  /** The y position of the cursor of the drag view image. */
+  def dragViewOffsetY: Double = delegate.getDragViewOffsetY
+  def dragViewOffsetY_=(offsetY: Double): Unit = {
+    delegate.setDragViewOffsetY(offsetY)
+  }
+
+  /** Transport modes supported by source of this drag operation. */
   def transferModes: Set[jfxsi.TransferMode] = delegate.getTransferModes
 
 }
