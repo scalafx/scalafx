@@ -1,0 +1,40 @@
+[ScalaFX][1] 8.0.60-R9 was tested against JavaFX 8.0.60. 
+
+
+* Compatibility braking changes:
+    - [Issue #208][208]: Support changes in Java 8 u60 API - `ChoiceBox`, `MenuButton`, ...
+
+* New features and improvements:
+	- [Issue #188][188]: Add helper methods for adding buttons.
+    - [Issue #192][192]: Add wrappers for `Dragboard` methods added in JavaFX 8.
+    
+* Bug fixes:
+	- [Issue #189][189]: `TableView.columnResizePolicy` does not accept `CONSTRAINED_RESIZE_POLICY`
+    - [Issue #193][193]: Method `Clipboard.Files` should start with lower case `f`.
+    - [Issue #197][197]: `MultipleSelectionModel.selected*` methods should return ScalaFX `ObservableBuffer`.
+    - [Issue #199][199]: `TableColumn` should allow assignment of predefined cell factories.
+    - [Issue #205][205]: Calling `scalafx.scene.Node.localToParentTransform` / `localToSceneTransform` results in StackOverflow exception.
+    - [Issue #214][214]: Infinite recursion in `scalafx.scene.Node#snapshot(callback, params, image)`.
+    - [Issue #215][215]: Incorrect assignment in `scalafx.stage.PopupWindow#consumeAutoHidingEvents`.
+
+To use ScalaFX add following to your SBT:
+
+``` scala
+libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.60-R9"
+```
+
+For downloads visit [ScalaFX on Sonatype][2] or [ScalaFX Releases][3] on GitHub.    
+    
+[1]: http://scalafx.org
+[2]: http://search.maven.org/#search&#124;ga&#124;1&#124;scalafx
+[3]: https://github.com/scalafx/scalafx/releases
+[188]: https://github.com/scalafx/scalafx/issues/188  
+[189]: https://github.com/scalafx/scalafx/issues/189
+[192]: https://github.com/scalafx/scalafx/issues/192
+[193]: https://github.com/scalafx/scalafx/issues/193
+[197]: https://github.com/scalafx/scalafx/issues/197
+[199]: https://github.com/scalafx/scalafx/issues/199
+[205]: https://github.com/scalafx/scalafx/issues/205
+[208]: https://github.com/scalafx/scalafx/issues/208
+[214]: https://github.com/scalafx/scalafx/issues/214
+[215]: https://github.com/scalafx/scalafx/issues/215
