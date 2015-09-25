@@ -1,7 +1,10 @@
+sudo: false
+
 language: scala
 scala:
   - 2.10.5
   - 2.11.6
+  - 2.12.0-M2
 
 before_install:
   - "export DISPLAY=:99.0"
@@ -13,7 +16,6 @@ jdk:
 install: true
 
 script:
-  - sudo apt-get update && sudo apt-get install oracle-java8-installer
   - java -version
   - sbt test
 
@@ -25,3 +27,9 @@ branches:
 notifications:
   email:
     - scalafx-build@googlegroups.com
+
+# Work around for default old version of Java provided by Travis CI
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
