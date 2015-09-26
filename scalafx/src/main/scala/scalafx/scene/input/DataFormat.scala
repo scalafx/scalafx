@@ -45,32 +45,32 @@ object DataFormat {
   /**
    * Represents a List of Files.
    */
-  val Files = jfxsi.DataFormat.FILES
+  val Files: DataFormat = new DataFormat(jfxsi.DataFormat.FILES)
 
   /**
    * Represents an HTML formatted string.
    */
-  val Html = jfxsi.DataFormat.HTML
+  val Html: DataFormat = new DataFormat(jfxsi.DataFormat.HTML)
 
   /**
    * A special platform specific image type, such as is commonly used on the clipboard and interoperates widely with other applications.
    */
-  val Image = jfxsi.DataFormat.IMAGE
+  val Image: DataFormat = new DataFormat(jfxsi.DataFormat.IMAGE)
 
   /**
    * Represents a plain text string.
    */
-  val PlainText = jfxsi.DataFormat.PLAIN_TEXT
+  val PlainText: DataFormat = new DataFormat(jfxsi.DataFormat.PLAIN_TEXT)
 
   /**
    * Represents an RTF formatted string
    */
-  val Rtf = jfxsi.DataFormat.RTF
+  val Rtf: DataFormat = new DataFormat(jfxsi.DataFormat.RTF)
 
   /**
    * Represents a URL, encoded as a String
    */
-  val Url = jfxsi.DataFormat.URL
+  val Url: DataFormat = new DataFormat(jfxsi.DataFormat.URL)
 
 }
 
