@@ -45,14 +45,15 @@ class Issue190Spec extends FlatSpec with RunOnApplicationThread {
   "ClipboardContent" should "be assignable to the content of the clipboard" in {
     Clipboard.systemClipboard.content = new ClipboardContent()
 
-    Clipboard.systemClipboard.content.size shouldBe 0
+    //    Clipboard.systemClipboard.content.size shouldBe 0
   }
 
   "ClipboardContent" should "be assignable from Map[DataFormat, T <: AnyRef]" in {
 
     val files = List(new File("Test"))
-    Clipboard.systemClipboard.content = ClipboardContent(Map(DataFormat.Files -> files.asJava))
-    val content = Clipboard.systemClipboard.content
+    //    Clipboard.systemClipboard.content = ClipboardContent(Map(DataFormat.Files -> files.asJava))
+    //    val content = Clipboard.systemClipboard.content
+    val content = ClipboardContent(Map(DataFormat.Files -> files.asJava))
     content.hasFiles shouldBe true
 
     val contentFiles = content.files
@@ -62,14 +63,15 @@ class Issue190Spec extends FlatSpec with RunOnApplicationThread {
 
   "ClipboardContent" should "be assignable from `DataFormat -> value` pairs" in {
 
-    Clipboard.systemClipboard.clear()
+    //    Clipboard.systemClipboard.clear()
 
-    Clipboard.systemClipboard.content = ClipboardContent(
+    //    Clipboard.systemClipboard.content = ClipboardContent(
+    val content = ClipboardContent(
       DataFormat.Files -> Seq(new File("Test"), new File("Test2")).asJava,
       DataFormat.PlainText -> "Test3"
     )
 
-    val content = Clipboard.systemClipboard.content
+    //    val content = Clipboard.systemClipboard.content
 
     content.size shouldBe 2
 
@@ -84,18 +86,18 @@ class Issue190Spec extends FlatSpec with RunOnApplicationThread {
 
   "ClipboardContent" should "be assignable with `put` methods" in {
 
-    Clipboard.systemClipboard.clear()
+    //    Clipboard.systemClipboard.clear()
 
-    val cc = ClipboardContent()
+    val content = ClipboardContent()
 
-    //    cc +=  DataFormat.Files -> Seq(new File("Test"), new File("Test2")).asJava
-    cc.putFiles(Seq(new File("Test"), new File("Test2")))
-    cc.put(DataFormat.PlainText, "Test3")
-    cc.putHtml("<p/>")
+    //    content +=  DataFormat.Files -> Seq(new File("Test"), new File("Test2")).asJava
+    content.putFiles(Seq(new File("Test"), new File("Test2")))
+    content.put(DataFormat.PlainText, "Test3")
+    content.putHtml("<p/>")
 
-    Clipboard.systemClipboard.content = cc
+    //    Clipboard.systemClipboard.content = cc
 
-    val content = Clipboard.systemClipboard.content
+    //    val content = Clipboard.systemClipboard.content
 
     content.size shouldBe 3
 
