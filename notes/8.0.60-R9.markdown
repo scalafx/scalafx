@@ -1,4 +1,5 @@
-[ScalaFX][1] 8.0.60-R9 was tested against JavaFX 8.0.60. 
+[ScalaFX][1] 8.0.60-R9 was tested against JavaFX 8.0u60.
+This is primarily compatibility upgrade (for new JavaFX 8.0u60 API) and bug-fix release. 
 
 
 * Compatibility braking changes:
@@ -9,7 +10,8 @@
     - [Issue #192][192]: Add wrappers for `Dragboard` methods added in JavaFX 8.
     
 * Bug fixes:
-	- [Issue #189][189]: `TableView.columnResizePolicy` does not accept `CONSTRAINED_RESIZE_POLICY`
+	- [Issue #189][189]: `TableView.columnResizePolicy` does not accept `CONSTRAINED_RESIZE_POLICY`.
+	- [Issue #190][190]: Convenience methods for Clipboard assignment don't work. See examples of usage in new ScalaDoc.
     - [Issue #193][193]: Method `Clipboard.Files` should start with lower case `f`.
     - [Issue #197][197]: `MultipleSelectionModel.selected*` methods should return ScalaFX `ObservableBuffer`.
     - [Issue #199][199]: `TableColumn` should allow assignment of predefined cell factories.
@@ -30,6 +32,7 @@ For downloads visit [ScalaFX on Sonatype][2] or [ScalaFX Releases][3] on GitHub.
 [3]: https://github.com/scalafx/scalafx/releases
 [188]: https://github.com/scalafx/scalafx/issues/188  
 [189]: https://github.com/scalafx/scalafx/issues/189
+[190]: https://github.com/scalafx/scalafx/issues/190
 [192]: https://github.com/scalafx/scalafx/issues/192
 [193]: https://github.com/scalafx/scalafx/issues/193
 [197]: https://github.com/scalafx/scalafx/issues/197
