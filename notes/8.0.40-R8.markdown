@@ -1,9 +1,9 @@
-[ScalaFX][1] 8.0.40-R8 was tested against JavaFX 8.0.40. 
+[ScalaFX][1] 8.0.60-R9 was tested against JavaFX 8.0.40. 
 This release adds wrappers for new features in JavaFX 8u40.
 
 Compatibility braking changes:
 
-* Issue #163: `content` property naming conflict with JavaFX 8u40. Usage of `content` property in ScalaFX where it was referring to `children` property in JavaFX was deprecated in v.8.0.31-R7, and is now removed in ScalaFX 8.0.40-R8. You need to use `children` to access `childrenProperty` in JavaFX, and `content` to access `contentProperty`.
+* Issue #163: `content` property naming conflict with JavaFX 8u40. Usage of `content` property in ScalaFX where it was referring to `children` property in JavaFX was deprecated in v.8.0.31-R7, and is now removed in ScalaFX 8.0.60-R9. You need to use `children` to access `childrenProperty` in JavaFX, and `content` to access `contentProperty`.
 * To follow the same naming approach, use of `content` in `Scene` and `SubScene` was deprecated. You should use `children` instead.
 
 New features (JavaFX 8u40):
