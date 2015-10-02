@@ -26,7 +26,7 @@ lazy val scalafx = Project(
       case Some(path) => Seq("-diagrams", "-diagrams-dot-path", path)
       case None       => Seq.empty[String]
     })
-  ) ++ sonatypeSettings
+  )
 )
 
 // ScalaFX Demos project
@@ -60,7 +60,7 @@ resolvers += sonatypeNexusSnapshots
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.10.5", "2.11.7", "2.12.0-M2"),
+  crossScalaVersions := Seq("2.10.6", "2.11.7", "2.12.0-M2"),
   scalaVersion <<= crossScalaVersions { versions => versions.head },
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
