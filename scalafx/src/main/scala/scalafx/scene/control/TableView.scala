@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,8 +39,8 @@ import scalafx.scene.Node
 /**
  * $OBJCOMPSTA$TV$OBJCOMPEND
  *
- * @define OBJCOMPSTA Object companion for [[scalafx.scene.control.
-           * @ d e f i n e O B J C O M P E N D ]].
+ * @define OBJCOMPSTA Object companion for [[scalafx.scene.control
+ * @define OBJCOMPEND ]].
  * @define JFX JavaFX
  * @define SFX ScalaFX
  * @define WRAPSTA Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/
@@ -61,6 +61,29 @@ object TableView {
    * @return $JFX $TV
    */
   implicit def sfxTableView2jfx[S](tv: TableView[S]): jfxsc.TableView[S] = if (tv != null) tv.delegate else null
+
+  /**
+   * Very simple resize policy that just resizes the specified column by the provided delta and
+   * shifts all other columns (to the right of the given column) further to the right (when the delta is positive)
+   * or to the left (when the delta is negative).
+   *
+   * It delegates to JavaFX
+   * [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html#UNCONSTRAINED_RESIZE_POLICY UNCONSTRAINED_RESIZE_POLICY]]
+   */
+  val UnconstrainedResizePolicy = jfxsc.TableView.UNCONSTRAINED_RESIZE_POLICY
+
+  /**
+   * Simple policy that ensures the width of all visible leaf columns in this table sum up to equal
+   * the width of the table itself.
+   * When the user resizes a column width with this policy, the table automatically adjusts the width of the right
+   * hand side columns. When the user increases a column width, the table decreases the width of the rightmost column
+   * until it reaches its minimum width.
+   * Then it decreases the width of the second rightmost column until it reaches minimum width and so on.
+   * When all right hand side columns reach minimum size, the user cannot increase the size of resized column any more.
+   *
+   * It delegates to JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html#CONSTRAINED_RESIZE_POLICY CONSTRAINED_RESIZE_POLICY]]
+   */
+  val ConstrainedResizePolicy = jfxsc.TableView.CONSTRAINED_RESIZE_POLICY
 
   /**
    * $OBJCOMPSTA$TV.$RF$OBJCOMPEND
@@ -136,18 +159,14 @@ object TableView {
      * Clears all selection, and then selects the cell at the given row/column intersection.
      */
     def clearAndSelect(row: Int, column: TableColumn[S, _]) {
-      delegate.clearAndSelect(row, column)
+      delegate.clearAndSelect(row, column.delegate)
     }
 
     /**
      * Removes selection from the specified row/column position (in view indexes).
      */
     def clearSelection(row: Int, column: TableColumn[S, _]) {
-      delegate.clearSelection(row, column)
-    }
-
-    def focus(row: Int) {
-      delegate.focus(row)
+      delegate.clearSelection(row, column.delegate)
     }
 
     def focusedIndex: Int = delegate.getFocusedIndex
@@ -167,14 +186,14 @@ object TableView {
      * Selects the cell at the given row/column intersection.
      */
     def select(row: Int, column: TableColumn[S, _]) {
-      delegate.select(row, column)
+      delegate.select(row, column.delegate)
     }
 
     /**
      * Selects the cell at the given row/column intersection.
      */
     def isSelected(row: Int, column: TableColumn[S, _]): Boolean =
-      delegate.isSelected(row, column)
+      delegate.isSelected(row, column.delegate)
 
   }
 
@@ -220,11 +239,11 @@ object TableView {
     /**
      * Causes the item at the given index to receive the focus.
      *
-     * @param row The row index of the item to give focus to.
+     * @param index The row index of the item to give focus to.
      * @param column The column of the item to give focus to. Can be `null`.
      */
     def focus(index: Int, column: TableColumn[S, _]) {
-      delegate.focus(index, column)
+      delegate.focus(index, column.delegate)
     }
 
     /**
@@ -234,7 +253,7 @@ object TableView {
      * @param pos The table position where focus should be set.
      */
     def focus(pos: TablePosition[_, _]) {
-      delegate.focus(pos)
+      delegate.focus(pos.delegate)
     }
 
   }
@@ -267,6 +286,15 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
 
   /**
    * This is the function called when the user completes a column-resize operation.
+   *
+   * There are predefined resize policies defined by
+   * [[scalafx.scene.control.TableView#ConstrainedResizePolicy UnconstrainedResizePolicy]] and
+   * [[scalafx.scene.control.TableView#UnconstrainedResizePolicy UnconstrainedResizePolicy]].
+   *
+   * Example use:
+   * {{{
+   *   tableView.columnResizePolicy = TableView.UnconstrainedResizePolicy
+   * }}}
    */
   def columnResizePolicy: ObjectProperty[TableView.ResizeFeatures[S] => Boolean] =
     ObjectProperty((features: TableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features))
@@ -276,6 +304,9 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
         p(v)
       }
     })
+  }
+  def columnResizePolicy_=(p: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], java.lang.Boolean]) {
+    delegate.columnResizePolicyProperty().setValue(p)
   }
 
   /** The comparator property is a read-only property that is representative of the current state of the `sort order` list. */
@@ -366,14 +397,14 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
    * it, and assuming that the TableView and column are also editable.
    */
   def edit(row: Int, column: TableColumn[S, _]) {
-    delegate.edit(row, column)
+    delegate.edit(row, column.delegate)
   }
 
   /**
    * Applies the currently installed resize policy against the given column, resizing it based on the delta value
    * provided.
    */
-  def resizeColumn(column: TableColumn[S, _], delta: Double) = delegate.resizeColumn(column, delta)
+  def resizeColumn(column: TableColumn[S, _], delta: Double) = delegate.resizeColumn(column.delegate, delta)
 
   /**
    * Called when there's a request to scroll an index into view using `scrollTo(int)` or `scrollTo(Object)`
@@ -397,28 +428,9 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.SortEvent[jfxsc.TableView[S]]]](onSort, v)
   }
 
-  /**
-   * Scrolls the TableView so that the given index is visible within the viewport.
-   */
-  def scrollTo(index: Int) {
-    delegate.scrollTo(index)
-  }
-
   /** Scrolls the TableView so that the given object is visible within the viewport. */
-  def scrollTo(o: Object) {
-    delegate.scrollTo(o)
-  }
-
-  /** Scrolls the TableView so that the given object is visible within the viewport. */
-  def onScrollToColumn(column: TableColumn[S, _]) {
-    delegate.onScrollToColumn(column)
-  }
-
-  /**
-   * Scrolls the TableView so that the given index is visible within the viewport.
-   */
-  def scrollToColumnIndex(index: Int) {
-    delegate.scrollToColumnIndex(index)
+  def scrollToColumn(column: TableColumn[S, _]) {
+    delegate.scrollToColumn(column.delegate)
   }
 
   /** The sort policy specifies how sorting in this TableView should be performed. */

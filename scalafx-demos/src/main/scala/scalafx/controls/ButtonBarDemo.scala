@@ -24,33 +24,33 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.print
 
-import javafx.{print => jfxp}
+package scalafx.controls
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.geometry.Insets
+import scalafx.scene.Scene
+import scalafx.scene.control.{Button, ButtonBar, Label}
+import scalafx.scene.layout.VBox
 
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
 
-/** Tests for [[scalafx.print.Printer]]. */
-@RunWith(classOf[JUnitRunner])
-class PrinterSpec
-  extends SimpleSFXDelegateSpec[jfxp.Printer, Printer](classOf[jfxp.Printer], classOf[Printer]) {
+object ButtonBarDemo extends JFXApp {
 
-  lazy val skippingMessage: String = if (jfxp.PrinterJob.createPrinterJob == null) {
-    "No default printer defined."
-  } else {
-    ""
+  stage = new PrimaryStage {
+    scene = new Scene {
+      title = "ButtonBar Demo"
+      root = new VBox {
+        children = Seq(
+          new Label("Three buttons are placed on a button bar below."),
+          new ButtonBar {
+            buttons = Seq(new Button("One"), new Button("Two"), new Button("Three"))
+          }
+        )
+        spacing = 10
+        padding = Insets(10)
+      }
+    }
   }
-
-  override val skipJfxToSfxCause = skippingMessage
-
-  override val skipSfxToJfxCause = skippingMessage
-
-  override protected def getScalaClassInstance = Printer.defaultPrinter
-
-  override protected def getJavaClassInstance = jfxp.Printer.getDefaultPrinter
 
 }

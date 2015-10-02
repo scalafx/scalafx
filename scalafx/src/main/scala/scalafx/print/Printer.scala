@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,7 +42,7 @@ object Printer {
   /**
    * Converts a ScalaFX Printer to its JavaFX counterpart.
    *
-   * @param pr ScalaFX Printer
+   * @param p ScalaFX Printer
    * @return JavaFX Printer
    */
   implicit def sfxPrinter2jfx(p: Printer): jfxp.Printer = if (p != null) p.delegate else null
@@ -105,7 +105,7 @@ object Printer {
   def allPrinters: ObservableSet[jfxp.Printer] = jfxp.Printer.getAllPrinters
 
   /**
-   * Retrieve the default printer.
+   * Retrieve the default printer or `null`.
    */
   def defaultPrinter: Printer = jfxp.Printer.getDefaultPrinter
 

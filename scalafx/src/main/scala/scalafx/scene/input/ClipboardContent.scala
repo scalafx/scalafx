@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,25 +24,83 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.input
 
 import java.io.File
 import javafx.scene.{input => jfxsi}
 
 import scala.collection.JavaConversions._
-import scala.collection.{MapProxy, Seq}
+import scala.collection.{Map, Seq}
 import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.image.Image
 import scalafx.scene.image.Image.sfxImage2jfx
+import scalafx.scene.image.ImageIncludes.jfxImage2sfx
 
 object ClipboardContent {
   implicit def sfxClipboardContent2jfx(c: ClipboardContent): jfxsi.ClipboardContent = if (c != null) c.delegate else null
+
+  def apply[T <: AnyRef](arg: Map[DataFormat, T]): ClipboardContent = {
+    val c = new jfxsi.ClipboardContent()
+    arg.foreach { case (k, v) => c.put(k.delegate, v) }
+    new ClipboardContent(c)
+  }
+
+  def apply[T <: AnyRef](elems: (DataFormat, T)*): ClipboardContent = {
+    val c = new jfxsi.ClipboardContent()
+    elems.foreach { case (k, v) => c.put(k.delegate, v) }
+    new ClipboardContent(c)
+  }
 }
 
-class ClipboardContent(override val delegate: jfxsi.ClipboardContent = new jfxsi.ClipboardContent) extends MapProxy[DataFormat, AnyRef] with SFXDelegate[jfxsi.ClipboardContent] {
+/**
+ * Data container for Clipboard data. It can hold multiple data in several data formats.
+ *
+ * Example use:
+ * {{{
+ *   val content = new ClipboardContent()
+ *   content.putString("Some text")
+ *   content.putHtml("<b>Some</b> text")
+ * }}}
+ *
+ * Alternative use:
+ * {{{
+ *    val content = ClipboardContent(
+ *      DataFormat.PlainText -> "Some text",
+ *      DataFormat.Html -> "<b>Some</b> text"
+ *    )
+ * }}}
+ *
+ * Caution when putting files into the clipboard. The recommended way is to use `putFiles` method:
+ * {{{
+ *   content.putFiles(Seq(new File("one"), new File("two"))) *
+ * }}}
+ *
+ * When using with `DataFormat.Files` you have to use Java `List` as a container, which is less convenient:
+ * {{{
+ *   import scala.collection.JavaConverters._
+ *
+ *   val content = ClipboardContent(
+ *     DataFormat.Files -> Seq(new File("one"), new File("two")).asJava,
+ *   )
+ * }}}
+ *
+ * Wraps a $JFX $URL0 $FC]].
+ *
+ * @constructor Creates a new $FC from a $JFX one.
+ * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
+ *
+ * @define FC ClipboardContent
+ * @define URL0 [[http://docs.oracle.com/javase/8/javafx/scene/input/ClipboardContent.html
+ * @define JFX JavaFX
+ * @define ORIGINALDOC Original Documentation]].
+ */
+class ClipboardContent(override val delegate: jfxsi.ClipboardContent = new jfxsi.ClipboardContent)
+  extends JMapWrapperLike[jfxsi.DataFormat, AnyRef, ClipboardContent]
+  with SFXDelegate[jfxsi.ClipboardContent] {
 
-  def self = delegate.asInstanceOf[MapProxy[DataFormat, AnyRef]]
+  override def underlying: java.util.Map[jfxsi.DataFormat, AnyRef] = delegate
 
   /**
    * Gets the List of Files from the clipboard which had previously been registered.
@@ -52,91 +110,90 @@ class ClipboardContent(override val delegate: jfxsi.ClipboardContent = new jfxsi
   /**
    * Gets the HTML text String from the clipboard which had previously been registered.
    */
-  def html = delegate.getHtml
+  def html: String = delegate.getHtml
 
   /**
    * Gets the Image from the clipboard which had previously been registered.
    */
-  def image = delegate.getImage
+  def image: Image = delegate.getImage
 
   /**
    * Gets the RTF text String from the clipboard which had previously been registered.
    */
-  def rtf = delegate.getRtf
+  def rtf: String = delegate.getRtf
 
   /**
    * Gets the plain text String from the clipboard which had previously been registered.
    */
-  def string = delegate.getString
+  def string: String = delegate.getString
 
   /**
    * Gets the URL String from the clipboard which had previously been registered.
    */
-  def url = delegate.getUrl
+  def url: String = delegate.getUrl
 
   /**
    * Gets whether an List of Files (DataFormat.FILES) has been registered on this Clipboard.
    */
-  def hasFiles = delegate.hasFiles
+  def hasFiles: Boolean = delegate.hasFiles
 
   /**
    * Gets whether an HTML text String (DataFormat.HTML) has been registered on this Clipboard.
    */
-  def hasHtml = delegate.hasHtml
+  def hasHtml: Boolean = delegate.hasHtml
 
   /**
    * Gets whether an Image (DataFormat.IMAGE) has been registered on this Clipboard.
    */
-  def hasImage = delegate.hasImage
+  def hasImage: Boolean = delegate.hasImage
 
   /**
    * Gets whether an RTF String (DataFormat.RTF) has been registered on this Clipboard.
    */
-  def hasRtf = delegate.hasRtf
+  def hasRtf: Boolean = delegate.hasRtf
 
   /**
    * Gets whether a plain text String (DataFormat.PLAIN_TEXT) has been registered on this Clipboard.
    */
-  def hasString = delegate.hasString
+  def hasString: Boolean = delegate.hasString
 
   /**
    * Gets whether a url String (DataFormat.URL) has been registered on this Clipboard.
    */
-  def hasUrl = delegate.hasUrl
+  def hasUrl: Boolean = delegate.hasUrl
 
   /**
    * Puts an List of Files onto the Clipboard.
    */
-  def putFiles(files: Seq[File]) = delegate.putFiles(files)
+  def putFiles(files: Seq[File]): Boolean = delegate.putFiles(files)
 
   /**
    * Puts an List of Files onto the Clipboard, based on the file path.
    */
-  def putFilesByPath(filePaths: Seq[String]) = delegate.putFilesByPath(filePaths)
+  def putFilesByPath(filePaths: Seq[String]): Boolean = delegate.putFilesByPath(filePaths)
 
   /**
    * Puts an HTML text String onto the Clipboard.
    */
-  def putHtml(html: String) = delegate.putHtml(html)
+  def putHtml(html: String): Boolean = delegate.putHtml(html)
 
   /**
    * Puts an Image onto the Clipboard.
    */
-  def putImage(i: Image) = delegate.putImage(i)
+  def putImage(i: Image): Boolean = delegate.putImage(i)
 
   /**
    * Puts an RTF text String onto the Clipboard.
    */
-  def putRtf(rtf: String) = delegate.putRtf(rtf)
+  def putRtf(rtf: String): Boolean = delegate.putRtf(rtf)
 
   /**
    * Puts a plain text String onto the Clipboard.
    */
-  def putString(string: String) = delegate.putString(string)
+  def putString(string: String): Boolean = delegate.putString(string)
 
   /**
    * Puts a URL String onto the Clipboard.
    */
-  def putUrl(url: String) = delegate.putUrl(url)
-
+  def putUrl(url: String): Boolean = delegate.putUrl(url)
 }

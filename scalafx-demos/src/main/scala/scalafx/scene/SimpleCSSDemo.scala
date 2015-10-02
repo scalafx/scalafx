@@ -24,33 +24,35 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.print
 
-import javafx.{print => jfxp}
-
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+package scalafx.scene
 
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene.control.Button
+import scalafx.scene.layout.BorderPane
 
-/** Tests for [[scalafx.print.Printer]]. */
-@RunWith(classOf[JUnitRunner])
-class PrinterSpec
-  extends SimpleSFXDelegateSpec[jfxp.Printer, Printer](classOf[jfxp.Printer], classOf[Printer]) {
+/**
+ * An example of using CSS create custom button.
+ */
+object SimpleCSSDemo extends JFXApp {
 
-  lazy val skippingMessage: String = if (jfxp.PrinterJob.createPrinterJob == null) {
-    "No default printer defined."
-  } else {
-    ""
+  stage = new PrimaryStage {
+    title = "Simple CSS Demo"
+
+    scene = new Scene {
+      stylesheets += getClass.getResource("simple.css").toExternalForm
+
+      root = new BorderPane {
+        id = "my-pane"
+
+        center = new Button {
+          id = "my-button"
+          text = "Large Rounded Button"
+        }
+      }
+    }
   }
-
-  override val skipJfxToSfxCause = skippingMessage
-
-  override val skipSfxToJfxCause = skippingMessage
-
-  override protected def getScalaClassInstance = Printer.defaultPrinter
-
-  override protected def getJavaClassInstance = jfxp.Printer.getDefaultPrinter
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
@@ -32,6 +33,7 @@ import scala.collection.JavaConversions._
 import scala.collection._
 import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.input.InputIncludes.jfxDataFormat2sfx
 
 object DataFormat {
 
@@ -45,37 +47,55 @@ object DataFormat {
   /**
    * Represents a List of Files.
    */
-  val Files = jfxsi.DataFormat.FILES
+  val Files: DataFormat = jfxsi.DataFormat.FILES
 
   /**
    * Represents an HTML formatted string.
    */
-  val Html = jfxsi.DataFormat.HTML
+  val Html: DataFormat = jfxsi.DataFormat.HTML
 
   /**
    * A special platform specific image type, such as is commonly used on the clipboard and interoperates widely with other applications.
    */
-  val Image = jfxsi.DataFormat.IMAGE
+  val Image: DataFormat = jfxsi.DataFormat.IMAGE
 
   /**
    * Represents a plain text string.
    */
-  val PlainText = jfxsi.DataFormat.PLAIN_TEXT
+  val PlainText: DataFormat = jfxsi.DataFormat.PLAIN_TEXT
 
   /**
    * Represents an RTF formatted string
    */
-  val Rtf = jfxsi.DataFormat.RTF
+  val Rtf: DataFormat = jfxsi.DataFormat.RTF
 
   /**
    * Represents a URL, encoded as a String
    */
-  val Url = jfxsi.DataFormat.URL
+  val Url: DataFormat = jfxsi.DataFormat.URL
 
 }
 
+/**
+ * Data format identifier used as means of identifying the data stored on a clipboard/dragboard.
+ *
+ * Wraps a $JFX $URL0 $FC]].
+ *
+ * @constructor Creates a new $FC from a $JFX one.
+ * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
+ *
+ * @define FC DataFormat
+ * @define URL0 [[http://docs.oracle.com/javase/8/javafx/scene/input/DataFormat.html
+ * @define JFX JavaFX
+ * @define ORIGINALDOC Original Documentation]].
+ */
 class DataFormat(override val delegate: jfxsi.DataFormat = new jfxsi.DataFormat) extends SFXDelegate[jfxsi.DataFormat] {
 
+  /**
+   * Create a new DataFormat, specifying the set of ids that are associated with this data format.
+   *
+   * @param ids - The set of ids used to represent this DataFormat on the clipboard.
+   */
   def this(ids: String*) = this(new jfxsi.DataFormat(ids: _*))
 
   /**

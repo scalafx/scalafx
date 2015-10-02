@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,6 +38,16 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 @RunWith(classOf[JUnitRunner])
 class PrinterJobSpec
   extends SimpleSFXDelegateSpec[jfxp.PrinterJob, PrinterJob](classOf[jfxp.PrinterJob], classOf[PrinterJob]) {
+
+  lazy val skipingMessage: String = if (jfxp.PrinterJob.createPrinterJob == null) {
+    "JavaFX did not create a default printer job, system may not have no default printer defined."
+  } else {
+    ""
+  }
+
+  override val skipJfxToSfxCause = skipingMessage
+
+  override val skipSfxToJfxCause = skipingMessage
 
   override protected def getScalaClassInstance = PrinterJob.createPrinterJob
 

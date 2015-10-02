@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,10 +31,12 @@ import javafx.scene.{control => jfxsc}
 import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
+import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 object MultipleSelectionModel {
-  implicit def sfxMultipleSelectionModel2jfx[T](v: MultipleSelectionModel[T]): jfxsc.MultipleSelectionModel[T] = if (v != null) v.delegate else null
+  implicit def sfxMultipleSelectionModel2jfx[T](v: MultipleSelectionModel[T]): jfxsc.MultipleSelectionModel[T] =
+    if (v != null) v.delegate else null
 }
 
 abstract class MultipleSelectionModel[T](override val delegate: jfxsc.MultipleSelectionModel[T])
@@ -60,7 +62,7 @@ abstract class MultipleSelectionModel[T](override val delegate: jfxsc.MultipleSe
    * changes in selection. This can be observed by adding a ListChangeListener 
    * to the returned ObservableList.
    */
-  def selectedIndices = delegate.getSelectedIndices
+  def selectedIndices: ObservableBuffer[Integer] = delegate.getSelectedIndices
 
   /**
    * Returns a read-only ObservableList of all selected items. The 
@@ -68,7 +70,7 @@ abstract class MultipleSelectionModel[T](override val delegate: jfxsc.MultipleSe
    * reflect changes in selection. This can be observed by adding a 
    * ListChangeListener to the returned ObservableList.
    */
-  def selectedItems = delegate.getSelectedItems
+  def selectedItems: ObservableBuffer[T] = delegate.getSelectedItems
 
   /**
    * This method allows for one or more selections to be set at the same time. 
@@ -84,7 +86,7 @@ abstract class MultipleSelectionModel[T](override val delegate: jfxsc.MultipleSe
    *
    */
   // To convert Scala varargs to Java varargs, see http://stackoverflow.com/questions/2334200/transforming-scala-varargs-into-java-object-varargs
-  def selectIndices(index: Int, indices: Int*) {
+  def selectIndices(index: Int, indices: Int*): Unit = {
     delegate.selectIndices(index, indices.map(_.asInstanceOf[Int]): _*)
   }
 
@@ -102,7 +104,7 @@ abstract class MultipleSelectionModel[T](override val delegate: jfxsc.MultipleSe
    * @param start The first index to select - this index will be selected.
    * @param end The last index of the selection - this index will not be selected.
    */
-  def selectRange(start: Int, end: Int) {
+  def selectRange(start: Int, end: Int): Unit = {
     delegate.selectRange(start, end)
   }
 

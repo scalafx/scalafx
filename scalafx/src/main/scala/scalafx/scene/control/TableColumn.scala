@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.control
 
 import javafx.beans.{value => jfxbv}
@@ -198,9 +199,34 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
       }
     })
   }
+  def cellFactory_=(callback: jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]]) {
+    delegate.cellFactoryProperty.setValue(callback)
+  }
 
   /**
    * The cell value factory needs to be set to specify how to populate all cells within a single TableColumn.
+   *
+   * {{{
+   * class Position(name_ : String, value_ : Int) {
+   *   val name = new StringProperty(this, "name", name_)
+   *   val value = new ObjectProperty[Int](this, "value", value_)
+   * }
+   *
+   * val tableView = new TableView[Position](data) {
+   *   columns ++= List(
+   *     new TableColumn[Position, String] {
+   *       text = "Position"
+   *       cellValueFactory = {_.value.name}
+   *       prefWidth = 180
+   *     },
+   *     new TableColumn[Position, Int] {
+   *       text = "Value"
+   *       cellValueFactory = {_.value.value}
+   *       prefWidth = 180
+   *     }
+   *   )
+   * }
+   * }}}
    */
   def cellValueFactory: ObjectProperty[TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]] =
     ObjectProperty((features: TableColumn.CellDataFeatures[S, T]) => delegate.cellValueFactoryProperty.getValue.call(features))

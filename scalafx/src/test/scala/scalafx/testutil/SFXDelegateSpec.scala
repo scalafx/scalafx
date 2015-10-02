@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -80,13 +80,13 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaC
 
   /**
    * Flag used to skip Java to Scala Conversion test. To Skip, it is necessary override it with a 
-   * non empty String explaning the cause.
+   * non empty String explaining the cause.
    */
   protected val skipJfxToSfxCause: String = ""
 
   /**
    * Flag used to skip Scala to Java Conversion test. To Skip, it is necessary override it with a 
-   * non empty String explaning the cause.
+   * non empty String explaining the cause.
    */
   protected val skipSfxToJfxCause: String = ""
 
@@ -118,7 +118,7 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaC
     // Test if the implicit conversion exists
     assert(sfx2jfx != null, "There is no implicit conversion from ScalaFX to JavaFX")
 
-    if (skipJfxToSfxCause.size == 0) {
+    if (skipJfxToSfxCause.isEmpty) {
       // Test if conversion behaves correctly
       val sfxObject = getScalaClassInstance
       val jfxObject: J = sfxObject
@@ -145,7 +145,7 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaC
     // Test if the implicit conversion exists
     assert(jfx2sfx != null, "There is no implicit conversion from JavaFX to ScalaFX")
 
-    if (skipSfxToJfxCause.size == 0) {
+    if (skipSfxToJfxCause.isEmpty) {
       // Test if conversion behaves correctly
       val jfxObject = getJavaClassInstance
       val sfxObject: S = jfxObject

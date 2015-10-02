@@ -24,33 +24,52 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.print
 
-import javafx.{print => jfxp}
+package scalafx.controls
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
+import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.beans.property.BooleanProperty
+import scalafx.collections.ObservableBuffer
+import scalafx.scene.Scene
+import scalafx.scene.control.cell.CheckBoxListCell
+import scalafx.scene.control.{Button, ListView}
+import scalafx.scene.layout.VBox
 
-/** Tests for [[scalafx.print.Printer]]. */
-@RunWith(classOf[JUnitRunner])
-class PrinterSpec
-  extends SimpleSFXDelegateSpec[jfxp.Printer, Printer](classOf[jfxp.Printer], classOf[Printer]) {
+/**
+ * Example of using `CheckBoxListCell` in `ListView`.
+ */
+object CheckBoxListCellDemo extends JFXApp {
 
-  lazy val skippingMessage: String = if (jfxp.PrinterJob.createPrinterJob == null) {
-    "No default printer defined."
-  } else {
-    ""
+  class Item(initialSelection: Boolean, val name: String) {
+    val selected = BooleanProperty(initialSelection)
+    override def toString = name
   }
 
-  override val skipJfxToSfxCause = skippingMessage
+  val data = ObservableBuffer[Item](
+    (1 to 10).map { i => new Item(i % 2 == 0, s"Item $i") }
+  )
 
-  override val skipSfxToJfxCause = skippingMessage
-
-  override protected def getScalaClassInstance = Printer.defaultPrinter
-
-  override protected def getJavaClassInstance = jfxp.Printer.getDefaultPrinter
-
+  stage = new PrimaryStage {
+    scene = new Scene {
+      title = "CheckBoxListCell Demo"
+      root = new VBox {
+        children = Seq(
+          new ListView[Item] {
+            prefHeight = 250
+            items = data
+            cellFactory = CheckBoxListCell.forListView(_.selected)
+          },
+          new Button("Print State ") {
+            onAction = handle {
+              println("-------------")
+              println(data.map(d => d.name + ": " + d.selected()).mkString("\n"))
+            }
+          }
+        )
+      }
+    }
+  }
 }

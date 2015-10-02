@@ -24,33 +24,16 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.print
 
-import javafx.{print => jfxp}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
+#my-pane {
+    -fx-background-color: mediumpurple;
+    -fx-padding: 35;
+}
 
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
-
-/** Tests for [[scalafx.print.Printer]]. */
-@RunWith(classOf[JUnitRunner])
-class PrinterSpec
-  extends SimpleSFXDelegateSpec[jfxp.Printer, Printer](classOf[jfxp.Printer], classOf[Printer]) {
-
-  lazy val skippingMessage: String = if (jfxp.PrinterJob.createPrinterJob == null) {
-    "No default printer defined."
-  } else {
-    ""
-  }
-
-  override val skipJfxToSfxCause = skippingMessage
-
-  override val skipSfxToJfxCause = skippingMessage
-
-  override protected def getScalaClassInstance = Printer.defaultPrinter
-
-  override protected def getJavaClassInstance = jfxp.Printer.getDefaultPrinter
-
+#my-button {
+    -fx-background-radius: 48;
+    -fx-padding: 15 30 15 30;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 18px;
 }

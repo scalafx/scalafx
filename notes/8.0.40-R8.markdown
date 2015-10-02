@@ -19,6 +19,12 @@ New features (JavaFX 8u40):
 Bug fixes:
 
 * Issue #180: `Bindings.select` methods throw "property ... doesn't exists" exceptions.
+
+To use ScalaFX add following to your SBT:
+
+``` scala
+libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.40-R8"
+```
     
 For downloads visit [ScalaFX on Sonatype][2] or [ScalaFX Releases][3] on GitHub.    
     

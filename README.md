@@ -4,7 +4,9 @@ valid Scala application. By extension it supports full interoperability with
 Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX 8 or JavaFX 2.2 
 are supported.
 
-[![Build Status](https://travis-ci.org/scalafx/scalafx.svg?branch=SFX-2)](https://travis-ci.org/scalafx/scalafx)
+[![Join the chat at https://gitter.im/scalafx/scalafx](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/scalafx/scalafx?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+[![Build Status](https://travis-ci.org/scalafx/scalafx.svg?branch=master)](https://travis-ci.org/scalafx/scalafx)   [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.11) [![Scaladoc](http://javadoc-badge.appspot.com/org.scalafx/scalafx_2.11.svg?label=scaladoc)](http://javadoc-badge.appspot.com/org.scalafx/scalafx_2.11) [![Reference Status](https://www.versioneye.com/java/org.scalafx:scalafx_2.11/reference_badge.svg?style=flat)](https://www.versioneye.com/java/org.scalafx:scalafx_2.11/references)
 
 ScalaFX was originally created by Stephen Chin, Java Champion, Oracle JavaOne
 program chair; and Sven Reimers, a member of the Netbeans Dream Team.
@@ -17,11 +19,16 @@ ScalaFX binaries are published in the Maven Central repository:
 
 To use ScalaFX with SBT and Java 8 add following dependency:
 
-    libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.40-R8"
+    libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.60-R9"
         
 With Java 7 use:
 
     libraryDependencies += "org.scalafx" %% "scalafx" % "2.2.76-R11"
+    
+For latest development version:
+
+    libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.40-R9-SNAPSHOT"
+
 
 The [ScalaFX Organization page](https://github.com/scalafx) on GitHub contains several sample 
 project that illustrate use of ScalaFX. 
