@@ -2,22 +2,25 @@
 This is primarily compatibility upgrade (for new JavaFX 8.0u60 API) and bug-fix release. 
 
 
-* Compatibility braking changes:
-    - [Issue #208][208]: Support changes in Java 8 u60 API - `ChoiceBox`, `MenuButton`, ...
+Compatibility braking changes:
 
-* New features and improvements:
-	- [Issue #188][188]: Add helper methods for adding buttons.
-    - [Issue #192][192]: Add wrappers for `Dragboard` methods added in JavaFX 8.
+* [Issue #208][208]: Support changes in Java 8 u60 API - `ChoiceBox`, `MenuButton`, ...
+
+New features and improvements:
+
+* [Issue #188][188]: Add helper methods for adding buttons.
+* [Issue #192][192]: Add wrappers for `Dragboard` methods added in JavaFX 8.
     
-* Bug fixes:
-	- [Issue #189][189]: `TableView.columnResizePolicy` does not accept `CONSTRAINED_RESIZE_POLICY`.
-	- [Issue #190][190]: Convenience methods for Clipboard assignment don't work. See examples of usage in new ScalaDoc.
-    - [Issue #193][193]: Method `Clipboard.Files` should start with lower case `f`.
-    - [Issue #197][197]: `MultipleSelectionModel.selected*` methods should return ScalaFX `ObservableBuffer`.
-    - [Issue #199][199]: `TableColumn` should allow assignment of predefined cell factories.
-    - [Issue #205][205]: Calling `scalafx.scene.Node.localToParentTransform` / `localToSceneTransform` results in StackOverflow exception.
-    - [Issue #214][214]: Infinite recursion in `scalafx.scene.Node#snapshot(callback, params, image)`.
-    - [Issue #215][215]: Incorrect assignment in `scalafx.stage.PopupWindow#consumeAutoHidingEvents`.
+Bug fixes:
+
+* [Issue #189][189]: `TableView.columnResizePolicy` does not accept `CONSTRAINED_RESIZE_POLICY`.
+* [Issue #190][190]: Convenience methods for Clipboard assignment don't work. See examples of usage in new ScalaDoc.
+* [Issue #193][193]: Method `Clipboard.Files` should start with lower case `f`.
+* [Issue #197][197]: `MultipleSelectionModel.selected*` methods should return ScalaFX `ObservableBuffer`.
+* [Issue #199][199]: `TableColumn` should allow assignment of predefined cell factories.
+* [Issue #205][205]: Calling `scalafx.scene.Node.localToParentTransform` / `localToSceneTransform` results in StackOverflow exception.
+* [Issue #214][214]: Infinite recursion in `scalafx.scene.Node#snapshot(callback, params, image)`.
+* [Issue #215][215]: Incorrect assignment in `scalafx.stage.PopupWindow#consumeAutoHidingEvents`.
 
 To use ScalaFX add following to your SBT:
 
