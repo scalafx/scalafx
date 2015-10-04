@@ -16,7 +16,7 @@ Bug fixes:
 * [Issue #189][189]: `TableView.columnResizePolicy` does not accept `CONSTRAINED_RESIZE_POLICY`.
 * [Issue #190][190]: Convenience methods for Clipboard assignment don't work. See examples of usage in new ScalaDoc.
 * [Issue #193][193]: Method `Clipboard.Files` should start with lower case `f`.
-* [Issue #197][197]: `MultipleSelectionModel.selected*` methods should return ScalaFX `ObservableBuffer`.
+* [Issue #197][197]: `MultipleSelectionModel.selected` methods should return ScalaFX `ObservableBuffer`.
 * [Issue #199][199]: `TableColumn` should allow assignment of predefined cell factories.
 * [Issue #205][205]: Calling `scalafx.scene.Node.localToParentTransform` / `localToSceneTransform` results in StackOverflow exception.
 * [Issue #214][214]: Infinite recursion in `scalafx.scene.Node#snapshot(callback, params, image)`.
@@ -24,14 +24,12 @@ Bug fixes:
 
 To use ScalaFX add following to your SBT:
 
-``` scala
-libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.60-R9"
-```
+      libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.60-R9"
 
-For downloads visit [ScalaFX on Sonatype][2] or [ScalaFX Releases][3] on GitHub.        
-Please report any problems using [ScalaFX Issue Tracker][4].
+For downloads visit [ScalaFX on Sonatype][2] or [ScalaFX Releases][3] on GitHub. 
+Please report any problems using [ScalaFX Issue Tracker][4]. 
 Please use [ScalaFX Users Group][5] to post questions. 
-    
+
 [1]: http://scalafx.org
 [2]: http://search.maven.org/#search&#124;ga&#124;1&#124;scalafx
 [3]: https://github.com/scalafx/scalafx/releases
