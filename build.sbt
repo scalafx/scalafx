@@ -60,7 +60,7 @@ resolvers += sonatypeNexusSnapshots
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.10.6", "2.11.7", "2.12.0-M2"),
+  crossScalaVersions := Seq("2.10.6", "2.11.7", "2.12.0-M2", "2.12.0-M3"),
   scalaVersion <<= crossScalaVersions { versions => versions.head },
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
@@ -73,7 +73,7 @@ lazy val scalafxSettings = Seq(
     "-Xlint:deprecation"),
   libraryDependencies ++= Seq(
     "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-    if (scalaVersion.value.equals("2.12.0-M2")) "org.scalatest" %% "scalatest" % "2.2.5-M2" % "test" else scalatest % "test",
+    if (scalaVersion.value.startsWith("2.12.0-M")) "org.scalatest" % "scalatest_2.12.0-M2" % "2.2.5-M2" else scalatest % "test",
     junit % "test"),
   autoAPIMappings := true,
   manifestSetting,
@@ -115,14 +115,14 @@ lazy val publishSetting = publishTo <<= version {
 // Metadata needed by Maven Central
 // See also http://maven.apache.org/pom.html#Developers
 lazy val mavenCentralSettings = Seq(
-  homepage := Some(new URL("https://code.google.com/p/scalafx/")),
+  homepage := Some(new URL("http://www.scalafx.org/")),
   startYear := Some(2011),
-  licenses := Seq(("BSD", new URL("https://code.google.com/p/scalafx/source/browse/LICENSE.txt"))),
+  licenses := Seq(("BSD", new URL("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
   pomExtra <<= (pomExtra, name, description) {
     (pom, name, desc) => pom ++ Group(
       <scm>
-        <url>https://code.google.com/p/scalafx</url>
-        <connection>scm:hg:https://code.google.com/p/scalafx</connection>
+        <url>https://github.com/scalafx/scalafx</url>
+        <connection>scm:git:https://github.com/scalafx/scalafx.git</connection>
       </scm>
         <developers>
           <developer>

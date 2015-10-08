@@ -35,7 +35,7 @@ import scalafx.scene.control.{Button, Label}
 import scalafx.scene.layout.{StackPane, VBox}
 
 
-/** Illustrated [https://code.google.com/p/scalafx/issues/detail?id=102 Issue 102]
+/** Illustrated [[https://github.com/scalafx/scalafx/issues/102 Issue 102]]
   *
   * When event handler is created from a code block (rather than a function),
   * only it's last instruction is used when event handler is invoked.
