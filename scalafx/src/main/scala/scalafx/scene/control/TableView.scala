@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
@@ -34,7 +35,9 @@ import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
+import scalafx.delegate.SFXDelegate.delegateOrNull
 import scalafx.scene.Node
+
 
 /**
  * $OBJCOMPSTA$TV$OBJCOMPEND
@@ -60,7 +63,7 @@ object TableView {
    * @param tv ScalaFX $TV
    * @return $JFX $TV
    */
-  implicit def sfxTableView2jfx[S](tv: TableView[S]): jfxsc.TableView[S] = if (tv != null) tv.delegate else null
+  implicit def sfxTableView2jfx[S](tv: TableView[S]): jfxsc.TableView[S] = delegateOrNull(tv)
 
   /**
    * Very simple resize policy that just resizes the specified column by the provided delta and
@@ -96,7 +99,7 @@ object TableView {
      * @param rf ScalaFX ResizeFeatures
      * @return JavaFX ResizeFeatures
      */
-    implicit def sfxResizeFeatures2jfx[S](rf: ResizeFeatures[S]): jfxsc.TableView.ResizeFeatures[S] = if (rf != null) rf.delegate else null
+    implicit def sfxResizeFeatures2jfx[S](rf: ResizeFeatures[S]): jfxsc.TableView.ResizeFeatures[S] = delegateOrNull(rf)
   }
 
   /**
@@ -141,7 +144,7 @@ object TableView {
      * @return JavaFX TableViewSelectionModel
      */
     implicit def sfxTableViewSelectionModel2jfx[S](tvsm: TableViewSelectionModel[S]): jfxsc.TableView.TableViewSelectionModel[S] =
-      if (tvsm != null) tvsm.delegate else null
+      delegateOrNull(tvsm)
 
   }
 
@@ -159,14 +162,14 @@ object TableView {
      * Clears all selection, and then selects the cell at the given row/column intersection.
      */
     def clearAndSelect(row: Int, column: TableColumn[S, _]) {
-      delegate.clearAndSelect(row, column.delegate)
+      delegate.clearAndSelect(row, delegateOrNull(column))
     }
 
     /**
      * Removes selection from the specified row/column position (in view indexes).
      */
     def clearSelection(row: Int, column: TableColumn[S, _]) {
-      delegate.clearSelection(row, column.delegate)
+      delegate.clearSelection(row, delegateOrNull(column))
     }
 
     def focusedIndex: Int = delegate.getFocusedIndex
@@ -186,14 +189,14 @@ object TableView {
      * Selects the cell at the given row/column intersection.
      */
     def select(row: Int, column: TableColumn[S, _]) {
-      delegate.select(row, column.delegate)
+      delegate.select(row, delegateOrNull(column))
     }
 
     /**
      * Selects the cell at the given row/column intersection.
      */
     def isSelected(row: Int, column: TableColumn[S, _]): Boolean =
-      delegate.isSelected(row, column.delegate)
+      delegate.isSelected(row, delegateOrNull(column))
 
   }
 
@@ -209,7 +212,7 @@ object TableView {
      * @return JavaFX TableViewFocusModel
      */
     implicit def sfxTableViewFocusModel2jfx[S](tvfm: TableViewFocusModel[S]): jfxsc.TableView.TableViewFocusModel[S] =
-      if (tvfm != null) tvfm.delegate else null
+      delegateOrNull(tvfm)
 
   }
 
@@ -243,7 +246,7 @@ object TableView {
      * @param column The column of the item to give focus to. Can be `null`.
      */
     def focus(index: Int, column: TableColumn[S, _]) {
-      delegate.focus(index, column.delegate)
+      delegate.focus(index, delegateOrNull(column))
     }
 
     /**
@@ -397,7 +400,7 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
    * it, and assuming that the TableView and column are also editable.
    */
   def edit(row: Int, column: TableColumn[S, _]) {
-    delegate.edit(row, column.delegate)
+    delegate.edit(row, delegateOrNull(column))
   }
 
   /**

@@ -24,64 +24,40 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.delegate
 
-object SFXDelegate {
+package issues.issue217
 
-  /**
-    * Return `delegate` contained in this wrapper or `null`.
-    * This is useful in situations when passing calling directly JavaFX API that accepts `null` arguments.
-    *
-    * Call to
-    * {{{
-    *   delegateOrNull(wrapper)
-    * }}}
-    * is equivalent to
-    * {{{
-    *   if (wrapper != null) wrapper.delegate else null
-    * }}}
-    *
-    * @param wrapper ScalaFX wrapper
-    * @tparam J JavaFX type
-    */
-  def delegateOrNull[J <: Object](wrapper: SFXDelegate[J]): J = {
-    if (wrapper != null) wrapper.delegate else null.asInstanceOf[J]
-  }
-
-}
+import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.geometry.Rectangle2D
+import scalafx.scene._
+import scalafx.scene.image.WritableImage
+import scalafx.scene.layout.BorderPane
+import scalafx.scene.media.{Media, MediaPlayer, MediaView}
 
 /**
-  * Basic trait for all JavaFX classes wrapping.
-  *
-  * @tparam D JavaFX class to be wrapped.
+  * Illustration ofd Issue 217. Originallu reported on ScalaFX Users
+  * [[https://groups.google.com/forum/#!topic/scalafx-users/-NWgd40U_W0 snapshot problem after upgrade to scalafx 8.0.60-R9]]
   */
-trait SFXDelegate[+D <: Object] extends AnyRef {
+object SnapshotNPETester extends JFXApp {
+  val movie     = "http://download.oracle.com/otndocs/products/javafx/oow2010-2.flv"
+  val mediaView = new MediaView(new MediaPlayer(new Media(movie)) {autoPlay.value = true})
 
-  /**
-    * JavaFX object to be wrapped.
-    */
-  def delegate: D
+  test(mediaView)
 
-  /**
-    * @return Returns the original delegate's `toString()` adding a `[SFX]` prefix.
-    */
-  override def toString = "[SFX]" + delegate.toString
-
-  /**
-    * Verifies if a object is equals to this delegate.
-    *
-    * @param ref Object to be compared.
-    * @return if the other object is equals to this delegate or not.
-    */
-  override def equals(ref: Any): Boolean = {
-    ref match {
-      case sfxd: SFXDelegate[_] => delegate.equals(sfxd.delegate)
-      case _                    => delegate.equals(ref)
+  stage = new PrimaryStage {
+    width = 500
+    height = 300
+    scene = new Scene(0, 0, true, SceneAntialiasing.Balanced) {
+      camera = new PerspectiveCamera
+      root = new BorderPane {center = mediaView}
     }
   }
 
-  /**
-    * @return The delegate hashcode
-    */
-  override def hashCode = delegate.hashCode
+  def test(mediaNode: Node) = {
+    val param = new SnapshotParameters {viewport = new Rectangle2D(0, 0, 200, 200)}
+    // This call was resulting in NPE - Issue #217.
+    val textureImage: WritableImage = mediaNode.snapshot(param, null)
+  }
+
 }
