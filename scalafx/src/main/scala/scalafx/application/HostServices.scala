@@ -25,35 +25,55 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene
+package scalafx.application
 
-import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.scene.control.Button
-import scalafx.scene.layout.BorderPane
+import javafx.{application => jfx}
+
+import netscape.javascript.JSObject
+
+import scala.language.implicitConversions
+import scalafx.delegate.SFXDelegate
+
+object HostServices {
+  /**
+    * Converts a ScalaFX HostServices to its JavaFX counterpart.
+    *
+    * @param v ScalaFX HostServices
+    * @return JavaFX HostServices
+    */
+  implicit def sfxHostServices2jfx(v: HostServices): jfx.HostServices =
+    if (v != null) v.delegate else null
+}
 
 /**
- * An example of using CSS create custom button.
- */
-object SimpleCSSDemo extends JFXApp {
+  * This class provides HostServices for an Application.
+  * This includes methods to get the code base and document base for an Application,
+  * show a web page in a browser, and communicate with the enclosing web page using JavaScript
+  * if the Application is running in a browser.
+  *
+  * Wraps a $JFX $URL0 $TC]].
+  *
+  * @define TC HostServices
+  * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/application/HostServices.html
+  * @define JFX JavaFX
+  * @define ORIGINALDOC Original Documentation]].
+  */
+class HostServices(override val delegate: jfx.HostServices)
+  extends SFXDelegate[jfx.HostServices] {
 
-  stage = new PrimaryStage {
-    title = "Simple CSS Demo"
+  /**
+    * Gets the code base URI for this application.
+    */
+  def codeBase: String = delegate.getCodeBase
 
-    scene = new Scene {
-      // Add a stylesheet to existing ones.
-      stylesheets += getClass.getResource("simple.css").toExternalForm
+  /**
+    * Gets the document base URI for this application.
+    */
+  def documentBase: String = delegate.getDocumentBase
 
-      root = new BorderPane {
-        id = "my-pane"
-
-        center = new Button {
-          id = "my-button"
-          text = "Large Rounded Button"
-        }
-      }
-    }
-  }
+  /**
+    * Returns the JavaScript handle of the enclosing DOM window of the web page containing this application.
+    */
+  def webContext: JSObject = delegate.getWebContext
 
 }

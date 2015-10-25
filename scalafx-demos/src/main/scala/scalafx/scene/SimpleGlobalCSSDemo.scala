@@ -27,24 +27,23 @@
 
 package scalafx.scene
 
-import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.control.Button
 import scalafx.scene.layout.BorderPane
 
 /**
- * An example of using CSS create custom button.
- */
-object SimpleCSSDemo extends JFXApp {
+  * An example of replacing global CSS stylesheet.
+  */
+object SimpleGlobalCSSDemo extends JFXApp {
+
+  // Replace global stylesheet.
+  JFXApp.userAgentStylesheet = getClass.getResource("simple2.css").toExternalForm
 
   stage = new PrimaryStage {
-    title = "Simple CSS Demo"
+    title = "Simple Global CSS Demo"
 
     scene = new Scene {
-      // Add a stylesheet to existing ones.
-      stylesheets += getClass.getResource("simple.css").toExternalForm
-
       root = new BorderPane {
         id = "my-pane"
 
