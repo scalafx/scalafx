@@ -260,24 +260,26 @@ trait JFXApp extends DelayedInit {
     */
   protected lazy val parameters: Parameters = Parameters(arguments)
 
-  /* Add class/object construction/initialization code to the code execution buffer.
-   *
-   * This function is called multiple times (by the Scala compiler) with the initialization/construction code of each
-   * class and object (but not trait!) that extends JFXApp. This code is buffered until it can be executed in main().
-   *
-   * @note I (Mike Allen) think there's a good case for making this final, to prevent user code from destroying the
-   * application initialization logic.
-   */
+  /** Add class/object construction/initialization code to the code execution buffer.
+    *
+    * This function is called multiple times (by the Scala compiler) with the initialization/construction code of each
+    * class and object (but not trait!) that extends JFXApp. This code is buffered until it can be executed in main().
+    *
+    * @note You are strongly advised not to override this function.
+    *
+    * @param x Class/object construction code to be buffered for delayed execution.
+    */
   def delayedInit(x: => Unit) {
     subClassInitCode += (() => x)
   }
 
-  /* Perform app-related initialization, and execute initialization/construction code for all classes and object that
-   * extend this trait.
-   *
-   * @note I (Mike Allen) think there's a good case for making this final, to prevent user code from destroying the
-   * application initialization logic.
-   */
+  /** Perform app-related initialization, and execute initialization/construction code for all classes and objects that
+    * extend this trait.
+    *
+    * @note You are strongly advised not to override this function.
+    *
+    * @param args Command line arguments.
+    */
   def main(args: Array[String]) {
     JFXApp.ActiveApp = this
     arguments = args
