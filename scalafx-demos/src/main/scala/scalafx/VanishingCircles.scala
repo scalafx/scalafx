@@ -36,6 +36,7 @@ import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.effect.BoxBlur
+import scalafx.scene.input.MouseEvent
 import scalafx.scene.paint.Color._
 import scalafx.scene.shape.Circle
 
@@ -61,7 +62,7 @@ object VanishingCircles extends JFXApp {
         strokeWidth <== when(hover) choose 4 otherwise 0
         stroke = White
         // add this for event listeners:
-        onMouseClicked = handle {
+        onMouseClicked = { mouseEvent: MouseEvent =>
           Timeline(at(3 s) {radius -> 0}).play()
         }
       }

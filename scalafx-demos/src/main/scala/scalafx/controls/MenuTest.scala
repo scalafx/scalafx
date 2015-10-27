@@ -30,7 +30,7 @@ package scalafx.controls
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.event.ActionEvent
+import scalafx.event.{Event, ActionEvent}
 import scalafx.scene.Scene
 import scalafx.scene.control.{Label, Menu, MenuBar, MenuItem, SeparatorMenuItem}
 import scalafx.scene.layout.{BorderPane, VBox}
@@ -50,10 +50,10 @@ object MenuTest extends JFXApp {
       }
     )
 
-    onShowing = handle {printEvent("on showing")}
-    onShown = handle {printEvent("on shown")}
-    onHiding = handle {printEvent("on hiding")}
-    onHidden = handle {printEvent("on hidden")}
+    onShowing = { evt: Event => printEvent("on showing") }
+    onShown = { evt: Event => printEvent("on shown") }
+    onHiding = { evt: Event => printEvent("on hiding") }
+    onHidden = { evt: Event => printEvent("on hidden") }
   }
 
   val history = new VBox()

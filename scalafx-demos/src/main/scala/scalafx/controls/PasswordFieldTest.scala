@@ -31,6 +31,7 @@ import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.controls.controls.{ControlControls, PropertiesNodes, TextFieldControls, TextInputControlControls}
+import scalafx.event.ActionEvent
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
 import scalafx.scene.control.{Button, Label, PasswordField}
@@ -82,12 +83,12 @@ class PasswordFieldControls(target: PasswordField) extends PropertiesNodes[Passw
    */
   val btnCopy = new Button {
     text = "Copy"
-    onAction = handle {target.copy()}
+    onAction = { actionEvent: ActionEvent => target.copy() }
   }
 
   val btnCut = new Button {
     text = "Cut"
-    onAction = handle {target.cut()}
+    onAction = { actionEvent: ActionEvent => target.cut() }
   }
 
   super.addNode("Typed Text", lblText)

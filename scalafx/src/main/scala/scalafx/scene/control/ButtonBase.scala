@@ -33,6 +33,7 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.delegate.{FireDelegate, SFXDelegate}
+import scalafx.event.ActionEvent
 import scalafx.scene.input.MouseEvent
 
 object ButtonBase {
@@ -55,6 +56,11 @@ abstract class ButtonBase(override val delegate: jfxsc.ButtonBase)
   def onAction = delegate.onActionProperty
   def onAction_=(implicit aeh: jfxe.EventHandler[jfxe.ActionEvent]) {
     onAction() = aeh
+  }
+  def onAction_=(handler: ActionEvent => Unit): Unit = {
+    onAction() = new jfxe.EventHandler[jfxe.ActionEvent] {
+      override def handle(event: jfxe.ActionEvent): Unit = handler(event)
+    }
   }
 
   /**

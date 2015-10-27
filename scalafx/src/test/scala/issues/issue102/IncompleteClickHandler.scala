@@ -29,6 +29,7 @@ package issues.issue102
 
 import scalafx.Includes._
 import scalafx.application.JFXApp
+import scalafx.event.ActionEvent
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.{Button, Label}
@@ -121,7 +122,7 @@ object IncompleteClickHandler extends JFXApp {
             },
             new Button {
               text = "Button 6: New fine approach using `handle {}`"
-              onAction = handle {
+              onAction = { actionEvent: ActionEvent =>
                 println("Button 6 - Message 1")
                 println("Button 6 - Message 2")
               }

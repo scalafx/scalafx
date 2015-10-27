@@ -28,6 +28,7 @@
 package scalafx.controls.controls
 
 import scalafx.Includes._
+import scalafx.event.ActionEvent
 import scalafx.scene.control._
 
 /**
@@ -49,16 +50,16 @@ class ComboBoxControls(target: ComboBox[String]) extends PropertiesNodes[ComboBo
   val txfVisibleRowCount = new TextField {
     text = target.visibleRowCount.get.toString
   }
-  txfVisibleRowCount.onAction = handle {  fillIntPropertyFromText(target.visibleRowCount, txfVisibleRowCount, false) }
+  txfVisibleRowCount.onAction = { actionEvent: ActionEvent => fillIntPropertyFromText(target.visibleRowCount, txfVisibleRowCount, false) }
 
   val btnAddItem = new Button {
     text = "Add new Item"
-    onAction = handle { addNewTab() }
+    onAction = { actionEvent: ActionEvent => addNewTab() }
   }
 
   val btnRemoveItem = new Button {
     text = "Remove Item"
-    onAction = handle { removeCurrentItem() }
+    onAction = { actionEvent: ActionEvent => removeCurrentItem() }
   }
 
   super.addNode("Visible Rows", txfVisibleRowCount)

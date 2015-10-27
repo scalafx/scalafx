@@ -32,6 +32,7 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
+import scalafx.event.Event
 import scalafx.scene.Node
 import scalafx.scene.Node._
 import scalafx.stage.Window._
@@ -129,6 +130,11 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
   def onAutoHide = delegate.onAutoHideProperty
   def onAutoHide_=(v: jfxe.EventHandler[jfxe.Event]) {
     onAutoHide() = v
+  }
+  def onAutoHide_=(handler: Event => Unit) {
+    onAutoHide() = new jfxe.EventHandler[jfxe.Event] {
+      override def handle(event: jfxe.Event): Unit = handler(event)
+    }
   }
 
   /**

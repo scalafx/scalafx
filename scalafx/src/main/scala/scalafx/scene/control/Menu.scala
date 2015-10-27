@@ -33,6 +33,7 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections._
 import scalafx.delegate.SFXDelegate
+import scalafx.event.Event
 import scalafx.scene.Node
 import scalafx.scene.Node._
 
@@ -95,20 +96,40 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
   def onHidden_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onHidden() = eventHandler
   }
+  def onHidden_=(handler: Event => Unit) {
+    onHidden() = new jfxe.EventHandler[jfxe.Event] {
+      override def handle(event: jfxe.Event): Unit = handler(event)
+    }
+  }
 
   def onHiding = delegate.onHidingProperty
   def onHiding_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onHiding() = eventHandler
+  }
+  def onHiding_=(handler: Event => Unit) {
+    onHiding() = new jfxe.EventHandler[jfxe.Event] {
+      override def handle(event: jfxe.Event): Unit = handler(event)
+    }
   }
 
   def onShowing = delegate.onShowingProperty
   def onShowing_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onShowing() = eventHandler
   }
+  def onShowing_=(handler: Event => Unit) {
+    onShowing() = new jfxe.EventHandler[jfxe.Event] {
+      override def handle(event: jfxe.Event): Unit = handler(event)
+    }
+  }
 
   def onShown = delegate.onShownProperty
   def onShown_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onShown() = eventHandler
+  }
+  def onShown_=(handler: Event => Unit) {
+    onShown() = new jfxe.EventHandler[jfxe.Event] {
+      override def handle(event: jfxe.Event): Unit = handler(event)
+    }
   }
 
 }

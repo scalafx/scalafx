@@ -251,6 +251,11 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]) {
     onEditCancel() = v
   }
+  def onEditCancel_=(handler: TableColumn.CellEditEvent[S, T] => Unit) {
+    onEditCancel() = new jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]] {
+      override def handle(event: jfxsc.TableColumn.CellEditEvent[S, T]): Unit = handler(event)
+    }
+  }
 
   /**
    * This event handler will be fired when the user successfully commits their editing.
@@ -259,6 +264,11 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]) {
     onEditCommit() = v
   }
+  def onEditCommit_=(handler: TableColumn.CellEditEvent[S, T] => Unit) {
+    onEditCommit() = new jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]] {
+      override def handle(event: jfxsc.TableColumn.CellEditEvent[S, T]): Unit = handler(event)
+    }
+  }
 
   /**
    * This event handler will be fired when the user successfully initiates editing.
@@ -266,6 +276,11 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   def onEditStart = delegate.onEditCommitProperty
   def onEditStart_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]) {
     onEditStart() = v
+  }
+  def onEditStart_=(handler: TableColumn.CellEditEvent[S, T] => Unit) {
+    onEditStart() = new jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]] {
+      override def handle(event: jfxsc.TableColumn.CellEditEvent[S, T]): Unit = handler(event)
+    }
   }
 
   /**

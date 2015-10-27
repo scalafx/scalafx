@@ -71,6 +71,11 @@ class Window protected(override val delegate: jfxs.Window)
   def onCloseRequest_=(v: jfxe.EventHandler[jfxs.WindowEvent]) {
     onCloseRequest() = v
   }
+  def onCloseRequest_=(handler: WindowEvent => Unit) {
+    onCloseRequest() = new jfxe.EventHandler[jfxs.WindowEvent] {
+      override def handle(event: jfxs.WindowEvent): Unit = handler(event)
+    }
+  }
 
   /**
    * Called just after the Window has been hidden.
@@ -78,6 +83,11 @@ class Window protected(override val delegate: jfxs.Window)
   def onHidden = delegate.onHiddenProperty
   def onHidden_=(v: jfxe.EventHandler[jfxs.WindowEvent]) {
     onHidden() = v
+  }
+  def onHidden_=(handler: WindowEvent => Unit) {
+    onHidden() = new jfxe.EventHandler[jfxs.WindowEvent] {
+      override def handle(event: jfxs.WindowEvent): Unit = handler(event)
+    }
   }
 
   /**
@@ -87,6 +97,11 @@ class Window protected(override val delegate: jfxs.Window)
   def onHiding_=(v: jfxe.EventHandler[jfxs.WindowEvent]) {
     onHiding() = v
   }
+  def onHiding_=(handler: WindowEvent => Unit) {
+    onHiding() = new jfxe.EventHandler[jfxs.WindowEvent] {
+      override def handle(event: jfxs.WindowEvent): Unit = handler(event)
+    }
+  }
 
   /**
    * Called just prior to the Window being shown, even if the menu has no items to show.
@@ -95,6 +110,11 @@ class Window protected(override val delegate: jfxs.Window)
   def onShowing_=(v: jfxe.EventHandler[jfxs.WindowEvent]) {
     onShowing() = v
   }
+  def onShowing_=(handler: WindowEvent => Unit) {
+    onShowing() = new jfxe.EventHandler[jfxs.WindowEvent] {
+      override def handle(event: jfxs.WindowEvent): Unit = handler(event)
+    }
+  }
 
   /**
    * Called just after the Window is shown.
@@ -102,6 +122,11 @@ class Window protected(override val delegate: jfxs.Window)
   def onShown = delegate.onShownProperty
   def onShown_=(v: jfxe.EventHandler[jfxs.WindowEvent]) {
     onShown() = v
+  }
+  def onShown_=(handler: WindowEvent => Unit) {
+    onShown() = new jfxe.EventHandler[jfxs.WindowEvent] {
+      override def handle(event: jfxs.WindowEvent): Unit = handler(event)
+    }
   }
 
   /**

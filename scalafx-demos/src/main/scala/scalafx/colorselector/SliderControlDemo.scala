@@ -30,6 +30,7 @@ package scalafx.colorselector
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
+import scalafx.event.ActionEvent
 import scalafx.geometry.{HPos, Pos, VPos}
 import scalafx.scene.Scene
 import scalafx.scene.control.{CheckBox, Label, TextField}
@@ -46,7 +47,7 @@ object SliderControlDemo extends JFXApp {
     alignmentInParent = Pos.BaselineLeft
     promptText = "Enter the value"
     hgrow = Priority.Never
-    onAction = handle {
+    onAction =  { actionEvent: ActionEvent =>
       sliderControl.value = text.get.toDouble
     }
   }

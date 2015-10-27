@@ -29,6 +29,7 @@ package scalafx.controls
 
 import scalafx.Includes._
 import scalafx.application.{JFXApp, Platform}
+import scalafx.event.ActionEvent
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.ButtonBar.ButtonData
@@ -44,7 +45,7 @@ object LoginDialogDemo extends JFXApp {
       title = "Custom Dialog Demo"
       content = new VBox {
         children = new Button("Show Login Dialog") {
-          onAction = handle {onShowLoginDialog()}
+          onAction = { actionEvent: ActionEvent => onShowLoginDialog() }
         }
         padding = Insets(top = 24, right = 64, bottom = 24, left = 64)
       }

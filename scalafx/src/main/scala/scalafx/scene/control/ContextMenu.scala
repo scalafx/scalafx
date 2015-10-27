@@ -33,6 +33,7 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
+import scalafx.event.ActionEvent
 import scalafx.scene.Node
 
 object ContextMenu {
@@ -57,6 +58,11 @@ class ContextMenu(override val delegate: jfxsc.ContextMenu = new jfxsc.ContextMe
   def onAction = delegate.onActionProperty
   def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]) {
     onAction() = v
+  }
+  def onAction_=(handler: ActionEvent => Unit) {
+    onAction() = new jfxe.EventHandler[jfxe.ActionEvent] {
+      override def handle(event: jfxe.ActionEvent): Unit = handler(event)
+    }
   }
 
   /**

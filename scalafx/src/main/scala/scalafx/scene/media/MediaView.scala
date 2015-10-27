@@ -83,6 +83,11 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
   def onError_=(v: jfxe.EventHandler[jfxsm.MediaErrorEvent]) {
     onError() = v
   }
+  def onError_=(handler: MediaErrorEvent => Unit) {
+    onError() = new jfxe.EventHandler[jfxsm.MediaErrorEvent] {
+      override def handle(event: jfxsm.MediaErrorEvent): Unit = handler(event)
+    }
+  }
 
   /**
    * Whether to preserve the aspect ratio (width / height) of the media when scaling it to fit the

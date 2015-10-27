@@ -103,6 +103,11 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   def onAlert_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]) {
     onAlert() = v
   }
+  def onAlert_=(handler: WebEvent[String] => Unit) {
+    onAlert() = new jfxe.EventHandler[jfxsw.WebEvent[String]] {
+      override def handle(event: jfxsw.WebEvent[String]): Unit = handler(event)
+    }
+  }
 
   /**
    * The event handler called when an error occurs.
@@ -113,6 +118,11 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   def onError_=(v: jfxe.EventHandler[jfxsw.WebErrorEvent]) {
     onError() = v
   }
+  def onError_=(handler: WebErrorEvent => Unit) {
+    onError() = new jfxe.EventHandler[jfxsw.WebErrorEvent] {
+      override def handle(event: jfxsw.WebErrorEvent): Unit = handler(event)
+    }
+  }
 
   /**
    * JavaScript window resize handler property.
@@ -120,6 +130,11 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   def onResized = delegate.onResizedProperty
   def onResized_=(v: jfxe.EventHandler[jfxsw.WebEvent[Rectangle2D]]) {
     onResized() = v
+  }
+  def onResized_=(handler: WebEvent[Rectangle2D] => Unit): Unit = {
+    onResized() = new jfxe.EventHandler[jfxsw.WebEvent[Rectangle2D]] {
+      override def handle(event: jfxsw.WebEvent[Rectangle2D]): Unit = handler(event)
+    }
   }
 
   /**
@@ -129,6 +144,11 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   def onStatusChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]) {
     onStatusChanged() = v
   }
+  def onStatusChanged_=(handler: WebEvent[String] => Unit) {
+    onStatusChanged() = new jfxe.EventHandler[jfxsw.WebEvent[String]] {
+      override def handle(event: jfxsw.WebEvent[String]): Unit = handler(event)
+    }
+  }
 
   /**
    * JavaScript window visibility handler property.
@@ -136,6 +156,11 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   def onVisibilityChanged = delegate.onVisibilityChangedProperty
   def onVisibilityChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]]) {
     onVisibilityChanged() = v
+  }
+  def onVisibilityChanged_=(handler: WebEvent[java.lang.Boolean] => Unit) {
+    onVisibilityChanged() = new jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]] {
+      override def handle(event: jfxsw.WebEvent[java.lang.Boolean]): Unit = handler(event)
+    }
   }
 
   /**

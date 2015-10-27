@@ -33,6 +33,7 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
+import scalafx.event.ActionEvent
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Scene
 import scalafx.scene.control.Alert.AlertType
@@ -70,7 +71,7 @@ object DialogsDemo extends JFXApp {
   }
 
   def button[R](text: String, action: () => R) = new Button(text) {
-    onAction = handle {action()}
+    onAction = { actionEvent: ActionEvent => action() }
     alignmentInParent = Pos.Center
     hgrow = Priority.Always
     maxWidth = Double.MaxValue
