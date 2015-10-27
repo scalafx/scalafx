@@ -49,14 +49,23 @@ import scalafx.scene.shape.{Circle, Rectangle}
  */
 object SimpleColorfulCircles extends JFXApp {
   var circles: Seq[Circle] = null
+  val initWidth = 800
+  val initHeight = 600
   stage = new PrimaryStage {
-    width = 800
-    height = 600
+    width = initWidth
+    height = initHeight
+    val rect = new Rectangle {
+      width = initWidth
+      height = initHeight
+      fill = new LinearGradient(0, 1, 1, 0, true, NoCycle,
+      Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f))
+      blendMode = Overlay
+    }
     scene = new Scene {
       fill = Black
       circles = for (i <- 0 until 30) yield new Circle {
-        centerX = random * 800
-        centerY = random * 600
+        centerX = random * initWidth
+        centerY = random * initHeight
         radius = 150
         fill = White opacity 0.05
         stroke = White opacity 0.16
@@ -64,14 +73,11 @@ object SimpleColorfulCircles extends JFXApp {
         strokeType = Outside
         effect = new BoxBlur(10, 10, 3)
       }
-      content = circles :+ new Rectangle {
-        width <== scene.width
-        height <== scene.height
-        fill = new LinearGradient(0, 1, 1, 0, true, NoCycle,
-          Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f))
-        blendMode = Overlay
-      }
+      content = circles :+ rect
     }
+    // Have rectangle react to changes in scene height & width
+    rect.width <== scene.width
+    rect.height <== scene.height
   }
   new Timeline {
     cycleCount = Indefinite
