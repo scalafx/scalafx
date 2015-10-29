@@ -1062,7 +1062,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onRotate = delegate.onRotateProperty
-  def onRotate_=(v: jfxe.EventHandler[jfxsi.RotateEvent]) {
+  def onRotate_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]) {
     onRotate() = v
   }
 
@@ -1072,7 +1072,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onRotationFinished = delegate.onRotationFinishedProperty()
-  def onRotationFinished_=(v: jfxe.EventHandler[jfxsi.RotateEvent]) {
+  def onRotationFinished_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]) {
     onRotationFinished() = v
   }
 
@@ -1082,7 +1082,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onRotationStarted = delegate.onRotationFinishedProperty()
-  def onRotationStarted_=(v: jfxe.EventHandler[jfxsi.RotateEvent]) {
+  def onRotationStarted_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]) {
     onRotationStarted() = v
   }
 
@@ -1092,7 +1092,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onScrollFinished = delegate.onScrollFinishedProperty()
-  def onScrollFinished_=(v: jfxe.EventHandler[jfxsi.ScrollEvent]) {
+  def onScrollFinished_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]) {
     onScrollFinished() = v
   }
 
@@ -1102,7 +1102,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onScrollStarted = delegate.onScrollStartedProperty()
-  def onScrollStarted_=(v: jfxe.EventHandler[jfxsi.ScrollEvent]) {
+  def onScrollStarted_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]) {
     onScrollStarted() = v
   }
 
@@ -1112,7 +1112,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onSwipeDown = delegate.onSwipeDownProperty()
-  def onSwipeDown_=(v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+  def onSwipeDown_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]) {
     onSwipeDown() = v
   }
 
@@ -1122,7 +1122,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onSwipeLeft = delegate.onSwipeLeftProperty()
-  def onSwipeLeft_=(v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+  def onSwipeLeft_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]) {
     onSwipeLeft() = v
   }
 
@@ -1132,7 +1132,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onSwipeUp = delegate.onSwipeUpProperty()
-  def onSwipeUp_=(v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+  def onSwipeUp_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]) {
     onSwipeUp() = v
   }
 
@@ -1142,7 +1142,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onSwipeRight = delegate.onSwipeRightProperty()
-  def onSwipeRight_=(v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+  def onSwipeRight_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]) {
     onSwipeRight() = v
   }
 
@@ -1152,7 +1152,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onZoom = delegate.onZoomProperty()
-  def onZoom_=(v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
+  def onZoom_=(v: jfxe.EventHandler[_ >: jfxsi.ZoomEvent]) {
     onZoom() = v
   }
 
@@ -1162,7 +1162,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onZoomFinished = delegate.onZoomFinishedProperty()
-  def onZoomFinished_=(v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
+  def onZoomFinished_=(v: jfxe.EventHandler[_ >: jfxsi.ZoomEvent]) {
     onZoomFinished() = v
   }
 
@@ -1172,7 +1172,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onZoomStarted = delegate.onZoomStartedProperty()
-  def onZoomStarted_=(v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
+  def onZoomStarted_=(v: jfxe.EventHandler[_ >: jfxsi.ZoomEvent]) {
     onZoomStarted() = v
   }
 
@@ -1182,7 +1182,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onTouchMoved = delegate.onTouchMovedProperty()
-  def onTouchMoved_=(v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+  def onTouchMoved_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]) {
     onTouchMoved() = v
   }
 
@@ -1192,7 +1192,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onTouchPressed = delegate.onTouchPressedProperty()
-  def onTouchPressed_=(v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+  def onTouchPressed_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]) {
     onTouchPressed() = v
   }
 
@@ -1202,7 +1202,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onTouchReleased = delegate.onTouchReleasedProperty()
-  def onTouchReleased_=(v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+  def onTouchReleased_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]) {
     onTouchReleased() = v
   }
 
@@ -1212,7 +1212,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onTouchStationary = delegate.onTouchStationaryProperty()
-  def onTouchStationary_=(v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+  def onTouchStationary_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]) {
     onTouchStationary() = v
   }
 
