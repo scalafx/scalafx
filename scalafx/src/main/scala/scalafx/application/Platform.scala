@@ -64,6 +64,13 @@ object Platform {
 
   /** Run the specified code block on the JavaFX Application Thread at some unspecified time in the future.
     * Returns immediately.
+    *
+    * Example use:
+    * {{{
+    *   Platform.runLater {
+    *     println("Running on application thread.")
+    *   }
+    * }}}
     */
   def runLater[R](op: => R) {
     runLater(new Runnable {
