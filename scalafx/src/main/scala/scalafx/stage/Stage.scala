@@ -100,6 +100,9 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
 
   /** Defines whether the Stage is maximized or not. */
   def maximized: ReadOnlyBooleanProperty = delegate.maximizedProperty
+  def maximized_=(value: Boolean) {
+    delegate.setMaximized(value)
+  }
 
   /**
    * Defines the title of the Stage.
