@@ -45,20 +45,26 @@ object TabPane {
     /**
      * All tabs will have the option to be closed.
      */
-    val ALL_TABS = new TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.ALL_TABS)
+    val AllTabs = new TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.ALL_TABS)
+    @deprecated ("Use AllTabs; ALL_TABS will be removed in a future release", "8.0.60-R10")
+    val ALL_TABS = AllTabs
 
     /**
      * Only the currently selected tab will have the option to be closed, with a graphic next to the tab text being
      * shown.
      */
-    val SELECTED_TAB = new TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.SELECTED_TAB)
+    val SelectedTab = new TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.SELECTED_TAB)
+    @deprecated ("Use SelectedTab; SELECTED_TAB will be removed in a future release", "8.0.60-R10")
+    val SELECTED_TAB = SelectedTab
 
     /**
      * Tabs can not be closed by the user.
      */
-    val UNAVAILABLE = new TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.UNAVAILABLE)
+    val Unavailable = new TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.UNAVAILABLE)
+    @deprecated ("Use Unavailable; UNAVAILABLE will be removed in a future release", "8.0.60-R10")
+    val UNAVAILABLE = Unavailable
 
-    protected override def unsortedValues: Array[TabClosingPolicy] = Array(ALL_TABS, SELECTED_TAB, UNAVAILABLE)
+    protected override def unsortedValues: Array[TabClosingPolicy] = Array(AllTabs, SelectedTab, Unavailable)
 
   }
 

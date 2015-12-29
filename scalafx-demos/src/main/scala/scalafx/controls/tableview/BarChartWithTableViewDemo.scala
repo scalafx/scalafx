@@ -109,7 +109,7 @@ object BarChartWithTableViewDemo extends JFXApp {
     // Show as modal dialog
     new Stage {
       title = name
-      initModality(Modality.WINDOW_MODAL)
+      initModality(Modality.WindowModal)
       initOwner(BarChartWithTableViewDemo.stage)
       scene = new Scene {
         root = new BorderPane {

@@ -78,7 +78,7 @@ object ColorSelector extends JFXApp {
       controlBlue.value.toInt, newAlphaValue)
   }
 
-  private def synchronizeValues(buffer: ObservableBuffer[SliderControl], changes: Seq[Change]) {
+  private def synchronizeValues(buffer: ObservableBuffer[SliderControl], changes: Seq[Change[SliderControl]]) {
     changes(0) match {
       case Add(pos, added)      => {
         val media = buffer.map(_.value.get).sum / buffer.size
@@ -137,7 +137,7 @@ object ColorSelector extends JFXApp {
       fraction = 0.45
     }
     onMouseClicked = (event: MouseEvent) => {
-      if ((event.getClickCount == 2) && (event.button == MouseButton.PRIMARY)) {
+      if ((event.getClickCount == 2) && (event.button == MouseButton.Primary)) {
         randomizeColors()
       }
     }

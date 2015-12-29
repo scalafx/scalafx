@@ -36,27 +36,37 @@ object StageStyle
   /**
    * Defines a normal Stage style with a solid white background and platform decorations.
    */
-  val DECORATED = new StageStyle(jfxs.StageStyle.DECORATED)
+  val Decorated = new StageStyle(jfxs.StageStyle.DECORATED)
+  @deprecated ("Use Decorated; DECORATED will be removed in a future release", "8.0.60-R10")
+  val DECORATED = Decorated
 
   /**
    * Defines a Stage style with a solid white background and no decorations.
    */
-  val UNDECORATED = new StageStyle(jfxs.StageStyle.UNDECORATED)
+  val Undecorated = new StageStyle(jfxs.StageStyle.UNDECORATED)
+  @deprecated ("Use Undecorated; UNDECORATED will be removed in a future release", "8.0.60-R10")
+  val UNDECORATED = Undecorated
 
   /**
    * Defines a Stage style with a transparent background and no decorations.
    */
-  val TRANSPARENT = new StageStyle(jfxs.StageStyle.TRANSPARENT)
+  val Transparent = new StageStyle(jfxs.StageStyle.TRANSPARENT)
+  @deprecated ("Use Transparent; TRANSPARENT will be removed in a future release", "8.0.60-R10")
+  val TRANSPARENT = Transparent
 
   /**
    * Defines a Stage style with a solid white background and minimal platform decorations used for a utility window.
    */
-  val UTILITY = new StageStyle(jfxs.StageStyle.UTILITY)
+  val Utility = new StageStyle(jfxs.StageStyle.UTILITY)
+  @deprecated ("Use Utility; UTILITY will be removed in a future release", "8.0.60-R10")
+  val UTILITY = Utility
 
   /** Defines a Stage style with platform decorations and eliminates the border between client area and decorations. */
-  val UNIFIED = new StageStyle(jfxs.StageStyle.UNIFIED)
+  val Unified = new StageStyle(jfxs.StageStyle.UNIFIED)
+  @deprecated ("Use Unified; UNIFIED will be removed in a future release", "8.0.60-R10")
+  val UNIFIED = Unified
 
-  protected override def unsortedValues: Array[StageStyle] = Array(DECORATED, UNDECORATED, TRANSPARENT, UTILITY, UNIFIED)
+  protected override def unsortedValues: Array[StageStyle] = Array(Decorated, Undecorated, Transparent, Utility, Unified)
 
 }
 

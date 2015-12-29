@@ -50,7 +50,7 @@ object TextFlowDemo extends JFXApp {
         }
         val text3 = new Text {
           text = " World"
-          font = Font(family, FontPosture.ITALIC, size)
+          font = Font(family, FontPosture.Italic, size)
         }
         children ++= Seq(text1, text2, text3)
         layoutX = 40

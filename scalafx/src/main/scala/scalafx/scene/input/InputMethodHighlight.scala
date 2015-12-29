@@ -34,13 +34,24 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/InputMethodHighlight.html javafx.scene.input.InputMethodHighlight]] */
 object InputMethodHighlight extends SFXEnumDelegateCompanion[jfxsi.InputMethodHighlight, InputMethodHighlight] {
 
-  val UNSELECTED_RAW = new InputMethodHighlight(jfxsi.InputMethodHighlight.UNSELECTED_RAW)
-  val SELECTED_RAW = new InputMethodHighlight(jfxsi.InputMethodHighlight.SELECTED_RAW)
-  val UNSELECTED_CONVERTED = new InputMethodHighlight(jfxsi.InputMethodHighlight.UNSELECTED_CONVERTED)
-  val SELECTED_CONVERTED = new InputMethodHighlight(jfxsi.InputMethodHighlight.SELECTED_CONVERTED)
+  val UnselectedRaw = new InputMethodHighlight(jfxsi.InputMethodHighlight.UNSELECTED_RAW)
+  @deprecated ("Use UnselectedRaw; UNSELECTED_RAW will be removed in a future release", "8.0.60-R10")
+  val UNSELECTED_RAW = UnselectedRaw
+
+  val SelectedRaw = new InputMethodHighlight(jfxsi.InputMethodHighlight.SELECTED_RAW)
+  @deprecated ("Use SelectedRaw; SELECTED_RAW will be removed in a future release", "8.0.60-R10")
+  val SELECTED_RAW = SelectedRaw
+
+  val UnselectedConverted = new InputMethodHighlight(jfxsi.InputMethodHighlight.UNSELECTED_CONVERTED)
+  @deprecated ("Use UnselectedConverted; UNSELECTED_CONVERTED will be removed in a future release", "8.0.60-R10")
+  val UNSELECTED_CONVERTED = UnselectedConverted
+
+  val SelectedConverted = new InputMethodHighlight(jfxsi.InputMethodHighlight.SELECTED_CONVERTED)
+  @deprecated ("Use SelectedConverted; SELECTED_CONVERTED will be removed in a future release", "8.0.60-R10")
+  val SELECTED_CONVERTED = SelectedConverted
 
   protected override def unsortedValues: Array[InputMethodHighlight] = Array(
-    UNSELECTED_RAW, SELECTED_RAW, UNSELECTED_CONVERTED, SELECTED_CONVERTED
+    UnselectedRaw, SelectedRaw, UnselectedConverted, SelectedConverted
   )
 }
 

@@ -37,10 +37,14 @@ import scalafx.event.Event
 object TransformChangedEvent {
   implicit def sfxTransformChangedEvent2jfx(v: TransformChangedEvent): jfxst.TransformChangedEvent = if (v != null) v.delegate else null
 
-  val ANY = jfxst.TransformChangedEvent.ANY
+  val Any = jfxst.TransformChangedEvent.ANY
+  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  val ANY = Any
 
   /** The only valid EventType for the TransformChangedEvent. */
-  val TRANSFORM_CHANGED = jfxst.TransformChangedEvent.TRANSFORM_CHANGED
+  val TransformChanged = jfxst.TransformChangedEvent.TRANSFORM_CHANGED
+  @deprecated ("Use TransformChanged; TRANSFORM_CHANGED will be removed in a future release", "8.0.60-R10")
+  val TRANSFORM_CHANGED = TransformChanged
 }
 
 /** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/scene/transform/TransformChangedEvent.html]] */

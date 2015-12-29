@@ -39,27 +39,37 @@ object SwipeEvent {
   /**
    * Common supertype for all Swipe event types.
    */
-  val ANY: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.ANY
+  val Any: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.ANY
+  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  val ANY = Any
 
   /**
    * This event occurs when user performs downward swipe gesture.
    */
-  val SWIPE_DOWN: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_DOWN
+  val SwipeDown: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_DOWN
+  @deprecated ("Use SwipeDown; SWIPE_DOWN will be removed in a future release", "8.0.60-R10")
+  val SWIPE_DOWN = SwipeDown
 
   /**
    * This event occurs when user performs leftward swipe gesture.
    */
-  val SWIPE_LEFT: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_LEFT
+  val SwipeLeft: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_LEFT
+  @deprecated ("Use SwipeLeft; SWIPE_LEFT will be removed in a future release", "8.0.60-R10")
+  val SWIPE_LEFT = SwipeLeft
 
   /**
    * This event occurs when user performs rightward swipe gesture.
    */
-  val SWIPE_RIGHT: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_RIGHT
+  val SwipeRight: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_RIGHT
+  @deprecated ("Use SwipeRight; SWIPE_RIGHT will be removed in a future release", "8.0.60-R10")
+  val SWIPE_RIGHT = SwipeRight
 
   /**
    * This event occurs when user performs upward swipe gesture.
    */
-  val SWIPE_UP: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_UP
+  val SwipeUp: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_UP
+  @deprecated ("Use SwipeUp; SWIPE_UP will be removed in a future release", "8.0.60-R10")
+  val SWIPE_UP = SwipeUp
 
 }
 

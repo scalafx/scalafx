@@ -40,7 +40,7 @@ object AreaChartDemo extends JFXApp {
     scene = new Scene {
       root = new AreaChart(NumberAxis("X Values"), NumberAxis("Y Values")) {
         title = "Area Chart"
-        legendSide = Side.RIGHT
+        legendSide = Side.Right
         data = ObservableBuffer(
           xySeries("Series 1", Seq((0, 4), (2, 5), (4, 4), (6, 2), (8, 6), (10, 8))),
           xySeries("Series 2", Seq((0, 8), (2, 2), (4, 9), (6, 7), (8, 5), (10, 7))),

@@ -161,17 +161,17 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   val originalOrientation = target.orientation.get()
   val tggOrientation = new ToggleGroup
   val rdbHorizontal = new RadioButton {
-    text = Orientation.HORIZONTAL.toString
+    text = Orientation.Horizontal.toString
     toggleGroup = tggOrientation
   }
   val rdbVertical = new RadioButton {
-    text = Orientation.VERTICAL.toString
+    text = Orientation.Vertical.toString
     toggleGroup = tggOrientation
   }
-  rdbHorizontal.selected = (target.orientation.get() == Orientation.HORIZONTAL)
-  target.orientation.onChange(rdbHorizontal.selected = (target.orientation.get() == Orientation.HORIZONTAL))
+  rdbHorizontal.selected = (target.orientation.get() == Orientation.Horizontal)
+  target.orientation.onChange(rdbHorizontal.selected = (target.orientation.get() == Orientation.Horizontal))
   tggOrientation.selectedToggle.onChange {
-    target.orientation = if (rdbHorizontal.selected.get) Orientation.HORIZONTAL else Orientation.VERTICAL
+    target.orientation = if (rdbHorizontal.selected.get) Orientation.Horizontal else Orientation.Vertical
   }
 
   super.addNode("Value", txfValue)

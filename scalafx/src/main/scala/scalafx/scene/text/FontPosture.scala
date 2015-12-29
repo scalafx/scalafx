@@ -35,10 +35,15 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontPosture.html javafx.scene.text.FontPosture]] */
 object FontPosture extends SFXEnumDelegateCompanion[jfxst.FontPosture, FontPosture] {
 
-  val REGULAR = new FontPosture(jfxst.FontPosture.REGULAR)
-  val ITALIC = new FontPosture(jfxst.FontPosture.ITALIC)
+  val Regular = new FontPosture(jfxst.FontPosture.REGULAR)
+  @deprecated ("Use Regular; REGULAR will be removed in a future release", "8.0.60-R10")
+  val REGULAR = Regular
 
-  protected override def unsortedValues: Array[FontPosture] = Array(REGULAR, ITALIC)
+  val Italic = new FontPosture(jfxst.FontPosture.ITALIC)
+  @deprecated ("Use Italic; ITALIC will be removed in a future release", "8.0.60-R10")
+  val ITALIC = Italic
+
+  protected override def unsortedValues: Array[FontPosture] = Array(Regular, Italic)
 
   /** Returns FontPosture by its name. */
   def findByName(name: String): FontPosture = jfxst.FontPosture.findByName(name)

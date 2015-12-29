@@ -41,27 +41,37 @@ object TouchEvent {
   /**
    * Common supertype for all touch event types.
    */
-  val ANY: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.ANY
+  val Any: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.ANY
+  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  val ANY = Any
 
   /**
    * This event occurs when the touch point is pressed (touched for the first time).
    */
-  val TOUCH_PRESSED: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.TOUCH_PRESSED
+  val TouchPressed: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.TOUCH_PRESSED
+  @deprecated ("Use TouchPressed; TOUCH_PRESSED will be removed in a future release", "8.0.60-R10")
+  val TOUCH_PRESSED = TouchPressed
 
   /**
    * This event occurs when the touch point is moved.
    */
-  val TOUCH_MOVED: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.TOUCH_MOVED
+  val TouchMoved: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.TOUCH_MOVED
+  @deprecated ("Use TouchMoved; TOUCH_MOVED will be removed in a future release", "8.0.60-R10")
+  val TOUCH_MOVED = TouchMoved
 
   /**
    * This event occurs when the touch point is released.
    */
-  val TOUCH_RELEASED: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.TOUCH_RELEASED
+  val TouchReleased: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.TOUCH_RELEASED
+  @deprecated ("Use TouchReleased; TOUCH_RELEASED will be removed in a future release", "8.0.60-R10")
+  val TOUCH_RELEASED = TouchReleased
 
   /**
    * This event occurs when the touch point is pressed and still (doesn't move).
    */
-  val TOUCH_STATIONARY: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.TOUCH_STATIONARY
+  val TouchStationary: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.TOUCH_STATIONARY
+  @deprecated ("Use TouchStationary; TOUCH_STATIONARY will be removed in a future release", "8.0.60-R10")
+  val TOUCH_STATIONARY = TouchStationary
 
 }
 

@@ -49,27 +49,37 @@ object WebEvent {
   /**
    * This event occurs when a script calls the JavaScript alert function.
    */
-  val ALERT: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.ALERT
+  val Alert: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.ALERT
+  @deprecated ("Use Alert; ALERT will be removed in a future release", "8.0.60-R10")
+  val ALERT = Alert
 
   /**
    * Common supertype for all Web event types.
    */
-  val ANY: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.ANY
+  val Any: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.ANY
+  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  val ANY = Any
 
   /**
    * This event occurs when a script changes location of the JavaScript window object.
    */
-  val RESIZED: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.RESIZED
+  val Resized: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.RESIZED
+  @deprecated ("Use Resized; RESIZED will be removed in a future release", "8.0.60-R10")
+  val RESIZED = Resized
 
   /**
    * This event occurs when a script changes status line text.
    */
-  val STATUS_CHANGED: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.STATUS_CHANGED
+  val StatusChanged: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.STATUS_CHANGED
+  @deprecated ("Use StatusChanged; STATUS_CHANGED will be removed in a future release", "8.0.60-R10")
+  val STATUS_CHANGED = StatusChanged
 
   /**
    * This event occurs when a script changes visibility of the JavaScript window object.
    */
-  val VISIBILITY_CHANGED: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.VISIBILITY_CHANGED
+  val VisibilityChanged: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.VISIBILITY_CHANGED
+  @deprecated ("Use VisibilityChanged; VISIBILITY_CHANGED will be removed in a future release", "8.0.60-R10")
+  val VISIBILITY_CHANGED = VisibilityChanged
 }
 
 /**
