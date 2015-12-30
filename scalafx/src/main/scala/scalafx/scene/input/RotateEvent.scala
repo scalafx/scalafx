@@ -39,22 +39,30 @@ object RotateEvent {
   /**
    * Common supertype for all rotate event types.
    */
-  val ANY: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ANY
+  val Any: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ANY
+  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  val ANY = Any
 
   /**
    * This event occurs when user performs a rotating gesture such as dragging two fingers around each other.
    */
-  val ROTATE: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATE
+  val Rotate: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATE
+  @deprecated ("Use Rotate; ROTATE will be removed in a future release", "8.0.60-R10")
+  val ROTATE = Rotate
 
   /**
    * This event occurs when a rotating gesture ends.
    */
-  val ROTATION_FINISHED: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATION_FINISHED
+  val RotationFinished: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATION_FINISHED
+  @deprecated ("Use RotationFinished; ROTATION_FINISHED will be removed in a future release", "8.0.60-R10")
+  val ROTATION_FINISHED = RotationFinished
 
   /**
    * This event occurs when a rotating gesture is detected.
    */
-  val ROTATION_STARTED: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATION_STARTED
+  val RotationStarted: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATION_STARTED
+  @deprecated ("Use RotationStarted; ROTATION_STARTED will be removed in a future release", "8.0.60-R10")
+  val ROTATION_STARTED = RotationStarted
 
 }
 

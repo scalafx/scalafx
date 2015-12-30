@@ -42,35 +42,47 @@ object Worker {
     /**
      * Indicates that this Worker has been cancelled via the Worker.cancel() method. 
      */
-    val CANCELLED = new State(jfxc.Worker.State.CANCELLED)
+    val Cancelled = new State(jfxc.Worker.State.CANCELLED)
+    @deprecated ("Use Cancelled; CANCELLED will be removed in a future release", "8.0.60-R10")
+    val CANCELLED = Cancelled
 
     /**
      * Indicates that this Worker has failed, usually due to some unexpected condition having occurred. 
      */
-    val FAILED = new State(jfxc.Worker.State.FAILED)
+    val Failed = new State(jfxc.Worker.State.FAILED)
+    @deprecated ("Use Failed; FAILED will be removed in a future release", "8.0.60-R10")
+    val FAILED = Failed
 
     /**
      * Indicates that the Worker has not yet been executed and is ready to be executed, or that it has been reinitialized. 
      */
-    val READY = new State(jfxc.Worker.State.READY)
+    val Ready = new State(jfxc.Worker.State.READY)
+    @deprecated ("Use Ready; READY will be removed in a future release", "8.0.60-R10")
+    val READY = Ready
 
     /**
      * Indicates that this Worker is running. 
      */
-    val RUNNING = new State(jfxc.Worker.State.RUNNING)
+    val Running = new State(jfxc.Worker.State.RUNNING)
+    @deprecated ("Use Running; RUNNING will be removed in a future release", "8.0.60-R10")
+    val RUNNING = Running
 
     /**
      * Indicates that the Worker has been scheduled for execution, but that it is not currently running. 
      */
-    val SCHEDULED = new State(jfxc.Worker.State.SCHEDULED)
+    val Scheduled = new State(jfxc.Worker.State.SCHEDULED)
+    @deprecated ("Use Scheduled; SCHEDULED will be removed in a future release", "8.0.60-R10")
+    val SCHEDULED = Scheduled
 
     /**
      * Indicates that this Worker has completed successfully, and that there is a valid result ready to be read from 
      * the value property. 
      */
-    val SUCCEEDED = new State(jfxc.Worker.State.SUCCEEDED)
+    val Succeeded = new State(jfxc.Worker.State.SUCCEEDED)
+    @deprecated ("Use Succeeded; SUCCEEDED will be removed in a future release", "8.0.60-R10")
+    val SUCCEEDED = Succeeded
 
-    protected override def unsortedValues: Array[State] = Array(CANCELLED, FAILED, READY, RUNNING, SCHEDULED, SUCCEEDED)
+    protected override def unsortedValues: Array[State] = Array(Cancelled, Failed, Ready, Running, Scheduled, Succeeded)
 
   }
 

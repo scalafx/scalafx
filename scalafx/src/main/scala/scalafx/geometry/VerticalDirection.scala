@@ -36,12 +36,17 @@ object VerticalDirection
   extends SFXEnumDelegateCompanion[jfxg.VerticalDirection, VerticalDirection] {
 
   /** The down direction. */
-  val DOWN = new VerticalDirection(jfxg.VerticalDirection.DOWN)
+  val Down = new VerticalDirection(jfxg.VerticalDirection.DOWN)
+  @deprecated ("Use Down; DOWN will be removed in a future release", "8.0.60-R10")
+  val DOWN = Down
+
 
   /** The up direction. */
-  val UP = new VerticalDirection(jfxg.VerticalDirection.UP)
+  val Up = new VerticalDirection(jfxg.VerticalDirection.UP)
+  @deprecated ("Use Up; UP will be removed in a future release", "8.0.60-R10")
+  val UP = Up
 
-  protected override def unsortedValues: Array[VerticalDirection] = Array(DOWN, UP)
+  protected override def unsortedValues: Array[VerticalDirection] = Array(Down, Up)
 }
 
 sealed case class VerticalDirection(override val delegate: jfxg.VerticalDirection)

@@ -137,7 +137,7 @@ object ColorSelector extends JFXApp {
       fraction = 0.45
     }
     onMouseClicked = (event: MouseEvent) => {
-      if ((event.getClickCount == 2) && (event.button == MouseButton.PRIMARY)) {
+      if ((event.getClickCount == 2) && (event.button == MouseButton.Primary)) {
         randomizeColors()
       }
     }

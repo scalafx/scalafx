@@ -42,12 +42,16 @@ object Pagination {
   /**
    * The style class to change the numeric page indicators to bullet indicators.
    */
-  val STYLE_CLASS_BULLET = jfxsc.Pagination.STYLE_CLASS_BULLET
+  val StyleClassBullet = jfxsc.Pagination.STYLE_CLASS_BULLET
+  @deprecated ("Use StyleClassBullet; STYLE_CLASS_BULLET will be removed in a future release", "8.0.60-R10")
+  val STYLE_CLASS_BULLET = StyleClassBullet
 
   /**
    * Value for indicating that the page count is indeterminate.
    */
-  val INDETERMINATE = jfxsc.Pagination.INDETERMINATE
+  val Indeterminate = jfxsc.Pagination.INDETERMINATE
+  @deprecated ("Use Indeterminate; INDETERMINATE will be removed in a future release", "8.0.60-R10")
+  val INDETERMINATE = Indeterminate
 
 }
 

@@ -35,12 +35,23 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object Side
   extends SFXEnumDelegateCompanion[jfxg.Side, Side] {
 
-  val BOTTOM = new Side(jfxg.Side.BOTTOM)
-  val LEFT = new Side(jfxg.Side.LEFT)
-  val RIGHT = new Side(jfxg.Side.RIGHT)
-  val TOP = new Side(jfxg.Side.TOP)
+  val Bottom = new Side(jfxg.Side.BOTTOM)
+  @deprecated ("Use Bottom; BOTTOM will be removed in a future release", "8.0.60-R10")
+  val BOTTOM = Bottom
 
-  protected override def unsortedValues: Array[Side] = Array(TOP, BOTTOM, LEFT, RIGHT)
+  val Left = new Side(jfxg.Side.LEFT)
+  @deprecated ("Use Left; LEFT will be removed in a future release", "8.0.60-R10")
+  val LEFT = Left
+
+  val Right = new Side(jfxg.Side.RIGHT)
+  @deprecated ("Use Right; RIGHT will be removed in a future release", "8.0.60-R10")
+  val RIGHT = Right
+
+  val Top = new Side(jfxg.Side.TOP)
+  @deprecated ("Use Top; TOP will be removed in a future release", "8.0.60-R10")
+  val TOP = Top
+
+  protected override def unsortedValues: Array[Side] = Array(Top, Bottom, Left, Right)
 }
 
 sealed case class Side(override val delegate: jfxg.Side)

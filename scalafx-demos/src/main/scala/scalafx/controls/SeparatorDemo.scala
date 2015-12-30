@@ -85,7 +85,7 @@ class SeparatorControls(target: Separator) extends PropertiesNodes[Separator](ta
   }
 
   val chbOrientation = new ChoiceBox[jfxg.Orientation] {
-    items = ObservableBuffer(Orientation.HORIZONTAL, Orientation.VERTICAL)
+    items = ObservableBuffer(Orientation.Horizontal, Orientation.Vertical)
     value <==> target.orientation
   }
 

@@ -37,9 +37,13 @@ import scalafx.scene.paint.Color.sfxColor2jfx
 object ColorPicker {
   implicit def sfxColorPicker2jfx(cp: ColorPicker): jfxsc.ColorPicker = if (cp != null) cp.delegate else null
 
-  val STYLE_CLASS_BUTTON = jfxsc.ColorPicker.STYLE_CLASS_BUTTON
+  val StyleClassButton = jfxsc.ColorPicker.STYLE_CLASS_BUTTON
+  @deprecated ("Use StyleClassButton; STYLE_CLASS_BUTTON will be removed in a future release", "8.0.60-R10")
+  val STYLE_CLASS_BUTTON = StyleClassButton
 
-  val STYLE_CLASS_SPLIT_BUTTON = jfxsc.ColorPicker.STYLE_CLASS_SPLIT_BUTTON
+  val StyleClassSplitButton = jfxsc.ColorPicker.STYLE_CLASS_SPLIT_BUTTON
+  @deprecated ("Use StyleClassSplitButton; STYLE_CLASS_SPLIT_BUTTON will be removed in a future release", "8.0.60-R10")
+  val STYLE_CLASS_SPLIT_BUTTON = StyleClassSplitButton
 }
 
 /**

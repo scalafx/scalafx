@@ -42,14 +42,18 @@ object ScrollEvent {
     /**
      * The horizontal text-based scrolling amount is a number of characters to scroll.
      */
-    val CHARACTERS = new HorizontalTextScrollUnits(jfxsi.ScrollEvent.HorizontalTextScrollUnits.CHARACTERS)
+    val Characters = new HorizontalTextScrollUnits(jfxsi.ScrollEvent.HorizontalTextScrollUnits.CHARACTERS)
+    @deprecated ("Use Characters; CHARACTERS will be removed in a future release", "8.0.60-R10")
+    val CHARACTERS = Characters
 
     /**
      * The horizontal text-based scrolling data is not available (not provided by the underlying platform).
      */
-    val NONE = new HorizontalTextScrollUnits(jfxsi.ScrollEvent.HorizontalTextScrollUnits.NONE)
+    val None = new HorizontalTextScrollUnits(jfxsi.ScrollEvent.HorizontalTextScrollUnits.NONE)
+    @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
+    val NONE = None
 
-    protected override def unsortedValues: Array[HorizontalTextScrollUnits] = Array(NONE, CHARACTERS)
+    protected override def unsortedValues: Array[HorizontalTextScrollUnits] = Array(None, Characters)
 
   }
 
@@ -65,19 +69,25 @@ object ScrollEvent {
     /**
      * The vertical text-based scrolling amount is a number of lines to scroll.
      */
-    val LINES = new VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.LINES)
+    val Lines = new VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.LINES)
+    @deprecated ("Use Lines; LINES will be removed in a future release", "8.0.60-R10")
+    val LINES = Lines
 
     /**
      * The vertical text-based scrolling amount is a number of pages to scroll.
      */
-    val PAGES = new VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.PAGES)
+    val Pages = new VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.PAGES)
+    @deprecated ("Use Pages; PAGES will be removed in a future release", "8.0.60-R10")
+    val PAGES = Pages
 
     /**
      * The vertical text-based scrolling data is not available (not provided by the underlying platform).
      */
-    val NONE = new VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.NONE)
+    val None = new VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.NONE)
+    @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
+    val NONE = None
 
-    protected override def unsortedValues: Array[VerticalTextScrollUnits] = Array(NONE, LINES, PAGES)
+    protected override def unsortedValues: Array[VerticalTextScrollUnits] = Array(None, Lines, Pages)
 
   }
 
@@ -90,23 +100,31 @@ object ScrollEvent {
   /**
    * Common supertype for all scroll event types.
    */
-  val ANY: EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.ANY
+  val Any: EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.ANY
+  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  val ANY = Any
 
   /**
    * This event occurs when user performs a scrolling action such as rotating mouse wheel or dragging a finger over
    * touch screen.
    */
-  val SCROLL: EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.SCROLL
+  val Scroll: EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.SCROLL
+  @deprecated ("Use Scroll; SCROLL will be removed in a future release", "8.0.60-R10")
+  val SCROLL = Scroll
 
   /**
    * This event occurs when a scrolling gesture ends.
    */
-  val SCROLL_FINISHED: EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.SCROLL_FINISHED
+  val ScrollFinished: EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.SCROLL_FINISHED
+  @deprecated ("Use ScrollFinished; SCROLL_FINISHED will be removed in a future release", "8.0.60-R10")
+  val SCROLL_FINISHED = ScrollFinished
 
   /**
    * This event occurs when a scrolling gesture is detected.
    */
-  val SCROLL_STARTED: EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.SCROLL_STARTED
+  val ScrollStarted: EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.SCROLL_STARTED
+  @deprecated ("Use ScrollStarted; SCROLL_STARTED will be removed in a future release", "8.0.60-R10")
+  val SCROLL_STARTED = ScrollStarted
 
 }
 

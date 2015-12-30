@@ -42,7 +42,7 @@ object CategoryLineChartDemo extends JFXApp {
     scene = new Scene {
       root = new LineChart(CategoryAxis("X Axis"), NumberAxis("Y Axis")) {
         title = "LineChart with Category Axis"
-        legendSide = Side.RIGHT
+        legendSide = Side.Right
         data = XYChart.Series[String, Number](
           "Series 1",
           ObservableBuffer(dataPairs.map {case (x, y) => XYChart.Data[String, Number](x, y)})
