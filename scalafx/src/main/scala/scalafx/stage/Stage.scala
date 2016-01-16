@@ -86,7 +86,7 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
    * Specifies the Full Screen exit key combination
    */
   def fullScreenExitKey: ObjectProperty[jfxsi.KeyCombination] = delegate.fullScreenExitKeyProperty
-  def fullScreenExitHint_=(value: KeyCombination) {
+  def fullScreenExitKey_=(value: KeyCombination) {
     fullScreenExitKey() = value
   }
 
