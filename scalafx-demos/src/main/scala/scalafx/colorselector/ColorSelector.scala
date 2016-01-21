@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,7 +64,7 @@ object ColorSelector extends JFXApp {
   // METHODS - BEGIN
 
   private def controlSelected(control: SliderControl) {
-    if (control.selectedControl.get) {
+    if (control.selectedControl.value) {
       synchronizedControls.add(control)
     } else {
       synchronizedControls.remove(control)
@@ -72,36 +72,33 @@ object ColorSelector extends JFXApp {
   }
 
   private def changeColor() {
-    val newAlphaValue = if (controlAlpha.disabled.get()) 1.0 else (controlAlpha.value.toDouble / colorselector.Max)
+    val newAlphaValue = if (controlAlpha.disabled.value) 1.0 else (controlAlpha.value.toDouble / colorselector.Max)
 
     this.currentColor() = Color.rgb(controlRed.value.toInt, controlGreen.value.toInt,
       controlBlue.value.toInt, newAlphaValue)
   }
 
   private def synchronizeValues(buffer: ObservableBuffer[SliderControl], changes: Seq[Change[SliderControl]]) {
-    changes(0) match {
-      case Add(pos, added)      => {
-        val media = buffer.map(_.value.get).sum / buffer.size
+    changes.head match {
+      case Add(pos, added)      =>
+        val media = buffer.map(_.value.value).sum / buffer.size
         added.last.value <==> synchronizedValue
         buffer.foreach(_.value = media)
-      }
-      case Remove(pos, removed) => {
+      case Remove(pos, removed) =>
         removed.last.value unbind synchronizedValue
-      }
-      case _@otherChange        => {
+      case _@otherChange        =>
         throw new UnsupportedOperationException("Only add and remove defined for the ColorSelector SliderControl sync")
-      }
     }
   }
 
   private def randomizeColors() {
-    if (synchronizedControls.size > 0) {
+    if (synchronizedControls.nonEmpty) {
       this.synchronizedValue() = math.random * colorselector.Max
     }
     if (synchronizedControls.size < 4) {
       this.allControls
-        .filterNot(_.selectedControl.get)
-        .filterNot(_.disabled.get)
+        .filterNot(_.selectedControl.value)
+        .filterNot(_.disabled.value)
         .foreach(_.value() = math.random * colorselector.Max)
     }
   }
@@ -112,7 +109,7 @@ object ColorSelector extends JFXApp {
   }
 
   private def formatColor() {
-    this.txfColorValue.text() = this.cmbColorFormat.value.get.format(this.currentColor(), !this.chbDisableAlpha.selected.get)
+    this.txfColorValue.text() = this.cmbColorFormat.value.value.format(this.currentColor(), !this.chbDisableAlpha.selected.value)
   }
 
   private def getForegroundColor(d: Double) = if (d > Max / 2) Color.Black else Color.White
@@ -122,8 +119,8 @@ object ColorSelector extends JFXApp {
   }
 
   private def webColorSelected() {
-    if (this.cmbWebColor.value.get != null) {
-      val color = this.cmbWebColor.value.get.color
+    if (this.cmbWebColor.value.value != null) {
+      val color = this.cmbWebColor.value.value.color
       controlRed.value() = doubleToInt(color.red)
       controlGreen.value() = doubleToInt(color.green)
       controlBlue.value() = doubleToInt(color.blue)
@@ -143,37 +140,37 @@ object ColorSelector extends JFXApp {
     }
   }
 
-  currentColor.onChange(rectangleRegion.setStyle("-fx-background-color: " + RgbFormatter.format(currentColor(), !this.chbDisableAlpha.selected.get)))
+  currentColor.onChange(rectangleRegion.setStyle("-fx-background-color: " + RgbFormatter.format(currentColor(), !this.chbDisableAlpha.selected.value)))
 
   val controlRed = new SliderControl("R") {
     value = 255
   }
   controlRed.value.onChange({
     changeColor()
-    controlRed.changeColor(Color.rgb(controlRed.value.get.toInt, 0, 0), getForegroundColor(controlRed.value.get))
+    controlRed.changeColor(Color.rgb(controlRed.value.value.toInt, 0, 0), getForegroundColor(controlRed.value.value))
   })
   controlRed.selectedControl.onChange(controlSelected(controlRed))
-  controlRed.changeColor(Color.rgb(controlRed.value.get.toInt, 0, 0), getForegroundColor(controlRed.value.get))
+  controlRed.changeColor(Color.rgb(controlRed.value.value.toInt, 0, 0), getForegroundColor(controlRed.value.value))
 
   val controlGreen = new SliderControl("G") {
     value = 255
   }
   controlGreen.value.onChange({
     changeColor()
-    controlGreen.changeColor(Color.rgb(0, controlGreen.value.get.toInt, 0), getForegroundColor(controlGreen.value.get))
+    controlGreen.changeColor(Color.rgb(0, controlGreen.value.value.toInt, 0), getForegroundColor(controlGreen.value.value))
   })
   controlGreen.selectedControl.onChange(controlSelected(controlGreen))
-  controlGreen.changeColor(Color.rgb(0, controlGreen.value.get.toInt, 0), getForegroundColor(controlGreen.value.get))
+  controlGreen.changeColor(Color.rgb(0, controlGreen.value.value.toInt, 0), getForegroundColor(controlGreen.value.value))
 
   val controlBlue = new SliderControl("B") {
     value = 255
   }
   controlBlue.value.onChange({
     changeColor()
-    controlBlue.changeColor(Color.rgb(0, 0, controlBlue.value.get.toInt), Color.White)
+    controlBlue.changeColor(Color.rgb(0, 0, controlBlue.value.value.toInt), Color.White)
   })
   controlBlue.selectedControl.onChange(controlSelected(controlBlue))
-  controlBlue.changeColor(Color.rgb(0, 0, controlBlue.value.get.toInt), Color.White)
+  controlBlue.changeColor(Color.rgb(0, 0, controlBlue.value.value.toInt), Color.White)
 
   val controlAlpha = new SliderControl("A") {
     value = 255
@@ -181,8 +178,8 @@ object ColorSelector extends JFXApp {
   controlAlpha.value.onChange(changeColor())
   controlAlpha.selectedControl.onChange(controlSelected(controlAlpha))
   controlAlpha.disable.onChange({
-    if (controlAlpha.selectedControl.get) {
-      if (controlAlpha.disable.get) synchronizedControls.remove(controlAlpha)
+    if (controlAlpha.selectedControl.value) {
+      if (controlAlpha.disable.value) synchronizedControls.remove(controlAlpha)
       else synchronizedControls.add(controlAlpha)
     }
     changeColor()
@@ -300,8 +297,8 @@ object ColorSelector extends JFXApp {
   val mainScene = new Scene {
     content = List(pnlMain0)
   }
-  pnlMain0.prefWidth <== (mainScene.width)
-  pnlMain0.prefHeight <== (mainScene.height)
+  pnlMain0.prefWidth <== mainScene.width
+  pnlMain0.prefHeight <== mainScene.height
 
   stage = new PrimaryStage {
     title = "Color Selector"

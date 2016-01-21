@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,56 +24,37 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package scalafx.controls.treetableview
 
-package scalafx.controls.tableview
-
-import scala.language.implicitConversions
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.beans.property.{BooleanProperty, StringProperty}
-import scalafx.beans.value.ObservableValue
-import scalafx.collections.ObservableBuffer
+import scalafx.controls.tableview.Person
 import scalafx.scene.Scene
-import scalafx.scene.control.TableColumn._
-import scalafx.scene.control.cell.CheckBoxTableCell
-import scalafx.scene.control.{TableColumn, TableView}
+import scalafx.scene.control.{TreeTableColumn, TreeTableView, TreeItem}
+import scalafx.scene.control.TreeTableColumn._
 
-/**
-  * Example of using `CheckBoxTableCell` in `TableView`.
-  */
-object CheckBoxTableCellDemo extends JFXApp {
+object SimpleTreeTableView extends JFXApp {
 
-  class Item(selected_ : Boolean, name_ : String) {
-    val selected = new BooleanProperty(this, "selected", selected_)
-    val name     = new StringProperty(this, "name", name_)
-  }
+  val treeRoot = new TreeItem[Person](new Person("Peggy", "Sue", "555-6798"))
+  treeRoot.children.add(new TreeItem[Person](new Person("Rocky", "Raccoon", "555-6798")))
 
-  val data = ObservableBuffer[Item](
-    (1 to 10).map { i => new Item(i % 2 == 0, s"Item $i") }
-  )
 
   stage = new PrimaryStage {
-    title = "Example of a Table View with Check Boxes"
+    title = "Simple Table View"
     scene = new Scene {
-      root = new TableView[Item](data) {
+      content = new TreeTableView[Person](treeRoot) {
         columns ++= List(
-          new TableColumn[Item, java.lang.Boolean] {
-            text = "Selected"
-            // We need to explicitly cast `_.value.selected` to modify boolean type parameters.
-            // `scala.Boolean` type is different from `java.lang.Boolean`, but eventually represented the same way
-            // by the compiler.
-            cellValueFactory = _.value.selected.asInstanceOf[ObservableValue[java.lang.Boolean, java.lang.Boolean]]
-            cellFactory = CheckBoxTableCell.forTableColumn(this)
-            editable = true
+          new TreeTableColumn[Person, String] {
+            text = "First Name"
+            cellValueFactory = {_.value.getValue.firstName}
             prefWidth = 180
           },
-          new TableColumn[Item, String] {
-            text = "Name"
-            cellValueFactory = {_.value.name}
+          new TreeTableColumn[Person, String]() {
+            text = "Last Name"
+            cellValueFactory = {_.value.getValue.lastName}
             prefWidth = 180
           }
         )
-        editable = true
       }
     }
   }
