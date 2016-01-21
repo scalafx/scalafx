@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,10 +33,15 @@ import scalafx.beans.binding.BooleanExpression
 import scalafx.delegate.SFXDelegate
 
 object ReadOnlyBooleanProperty {
-  implicit def sfxReadOnlyBooleanProperty2jfx(robp: ReadOnlyBooleanProperty): jfxbp.ReadOnlyBooleanProperty = if (robp != null) robp.delegate else null
+  implicit def sfxReadOnlyBooleanProperty2jfx(robp: ReadOnlyBooleanProperty): jfxbp.ReadOnlyBooleanProperty =
+    if (robp != null) robp.delegate else null
 }
 
-class ReadOnlyBooleanProperty(override val delegate: jfxbp.ReadOnlyBooleanProperty) extends BooleanExpression(delegate) with ReadOnlyProperty[Boolean, java.lang.Boolean] with SFXDelegate[jfxbp.ReadOnlyBooleanProperty] {
+class ReadOnlyBooleanProperty(override val delegate: jfxbp.ReadOnlyBooleanProperty)
+  extends BooleanExpression(delegate)
+  with ReadOnlyProperty[Boolean, java.lang.Boolean]
+  with SFXDelegate[jfxbp.ReadOnlyBooleanProperty] {
+
   def this(bean: Object, name: String, value: Boolean) = this(new jfxbp.ReadOnlyBooleanPropertyBase() {
     def getBean = bean
     def getName = name

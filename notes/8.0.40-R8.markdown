@@ -1,32 +1,35 @@
-[ScalaFX][1] 8.0.40-R8 was tested against JavaFX 8.0.40. 
+[ScalaFX][1] 8.0.60-R9 was tested against JavaFX 8.0.40. 
 This release adds wrappers for new features in JavaFX 8u40.
 
-* Compatibility braking changes:
-    - Issue #163: `content` property naming conflict with JavaFX 8u40. Usage of `content` property in ScalaFX where it was referring to `children` property in JavaFX was deprecated in v.8.0.31-R7, and is now removed in ScalaFX 8.0.40-R8. You need to use `children` to access `childrenProperty` in JavaFX, and `content` to access `contentProperty`.
-    - To follow the same naming approach, use of `content` in `Scene` and `SubScene` was deprecated. You should use `children` instead.
+Compatibility braking changes:
 
-* New features (JavaFX 8u40):
-    - Issue #162: Support Dialogs and Alerts. See examples in those [this blog post][4]
-    - Issue #158: Add Spinner and SpinnerValueFactory classes. See examples in [this blog post][5]
-    - Add TextFormatter and new properties in TextInputControl. See examples in those two [blog][6] [posts][7].
-    - Add new class VertexFormat.
-    - Add wrappers for new properties in: LineChart, Node, Platform, ScrollPane, TriangleMesh.
-    - Issue #160: Support new accessibility properties added to Node
-    - Updated TreeItem constructors 
+* Issue #163: `content` property naming conflict with JavaFX 8u40. Usage of `content` property in ScalaFX where it was referring to `children` property in JavaFX was deprecated in v.8.0.31-R7, and is now removed in ScalaFX 8.0.60-R9. You need to use `children` to access `childrenProperty` in JavaFX, and `content` to access `contentProperty`.
+* To follow the same naming approach, use of `content` in `Scene` and `SubScene` was deprecated. You should use `children` instead.
+
+New features (JavaFX 8u40):
+
+* Issue #162: Support Dialogs and Alerts. See examples in those [this blog post][4]
+* Issue #158: Add Spinner and SpinnerValueFactory classes. See examples in [this blog post][5]
+* Add TextFormatter and new properties in TextInputControl. See examples in those two [blog][6] [posts][7].
+* Add new class VertexFormat.
+* Add wrappers for new properties in: LineChart, Node, Platform, ScrollPane, TriangleMesh.
+* Issue #160: Support new accessibility properties added to Node
+* Updated TreeItem constructors 
     
-* Bug fixes:
-    - Issue #180: `Bindings.select*` methods throw "property ... doesn't exists" exceptions.
+Bug fixes:
+
+* Issue #180: `Bindings.select` methods throw "property ... doesn't exists" exceptions.
 
 To use ScalaFX add following to your SBT:
 
 ``` scala
 libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.40-R8"
 ```
-
+    
 For downloads visit [ScalaFX on Sonatype][2] or [ScalaFX Releases][3] on GitHub.    
     
 [1]: http://scalafx.org
-[2]: http://search.maven.org/#search&#124;ga&#124;1&#124;scalafx
+[2]: http://search.maven.org/#search%7Cga%7C1%7Cscalafx
 [3]: https://github.com/scalafx/scalafx/releases
 [4]: https://codingonthestaircase.wordpress.com/2015/03/18/scalafx-alerts-and-dialogs/
 [5]: https://codingonthestaircase.wordpress.com/2014/11/08/scalafx-8-0-40-snapshot-spinner/

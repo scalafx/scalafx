@@ -271,7 +271,7 @@ class VideoCube(val mediaPlayers: List[MediaPlayer], size: Double) extends Group
       width = size
       height = size
       fill = color.deriveColor(0.0, 1.0, 1 - 0.5 * shade, 1.0)
-      depthTest = DepthTest.INHERIT
+      depthTest = DepthTest.Inherit
       // JavaFX Rendering on 3D with planar surfaces and MediaView will improve
       // opacity = 0.0
     }

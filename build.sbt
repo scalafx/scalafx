@@ -8,7 +8,7 @@ import scala.xml._
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val scalafxVersion = "8.0.40-R9-SNAPSHOT"
+val scalafxVersion = "8.0.60-R10-SNAPSHOT"
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v" + scalafxVersion
 
 // ScalaFX project
@@ -20,13 +20,13 @@ lazy val scalafx = Project(
     fork in run := true,
     scalacOptions in(Compile, doc) ++= Seq(
       "-sourcepath", baseDirectory.value.toString,
-      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.md",
+      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.creole",
       "-doc-source-url", "https://github.com/scalafx/scalafx/blob/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala"
     ) ++ (Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
       case Some(path) => Seq("-diagrams", "-diagrams-dot-path", path)
       case None       => Seq.empty[String]
     })
-  ) ++ sonatypeSettings
+  )
 )
 
 // ScalaFX Demos project
@@ -46,7 +46,7 @@ lazy val scalafxDemos = Project(
 
 // Dependencies
 lazy val junit = "junit" % "junit" % "4.12"
-lazy val scalatest = "org.scalatest" %% "scalatest" % "2.2.4"
+lazy val scalatest = "org.scalatest" %% "scalatest" % "2.2.5"
 
 // Resolvers
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -60,8 +60,8 @@ resolvers += sonatypeNexusSnapshots
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.10.5", "2.11.6"),
-  scalaVersion <<= crossScalaVersions { versions => versions.head},
+  crossScalaVersions := Seq("2.10.6", "2.11.7", "2.12.0-M3"),
+  scalaVersion <<= crossScalaVersions { versions => versions.head },
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
@@ -73,14 +73,8 @@ lazy val scalafxSettings = Seq(
     "-Xlint:deprecation"),
   libraryDependencies ++= Seq(
     "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-    scalatest % "test",
+    if (scalaVersion.value.startsWith("2.12.0-M")) "org.scalatest" % "scalatest_2.12.0-M3" % "2.2.5-M3" else scalatest % "test",
     junit % "test"),
-  // ScalaTest needs Scala XML, in Scala 2.11 the XML library has been factored out to the `scala-xml` module
-  libraryDependencies ++= (
-    if (scalaVersion.value.startsWith("2.11."))
-      Seq("org.scala-lang.modules" %% "scala-xml" % "1.0.1" % "test")
-    else
-      Seq.empty[ModuleID]),
   autoAPIMappings := true,
   manifestSetting,
   publishSetting,
@@ -91,7 +85,7 @@ lazy val scalafxSettings = Seq(
   testOptions in Test <+= (target in Test) map {
     t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))
   },
-  shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> "}
+  shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> " }
 ) ++ mavenCentralSettings
 
 lazy val manifestSetting = packageOptions <+= (name, version, organization) map {
@@ -121,14 +115,14 @@ lazy val publishSetting = publishTo <<= version {
 // Metadata needed by Maven Central
 // See also http://maven.apache.org/pom.html#Developers
 lazy val mavenCentralSettings = Seq(
-  homepage := Some(new URL("https://code.google.com/p/scalafx/")),
+  homepage := Some(new URL("http://www.scalafx.org/")),
   startYear := Some(2011),
-  licenses := Seq(("BSD", new URL("https://code.google.com/p/scalafx/source/browse/LICENSE.txt"))),
+  licenses := Seq(("BSD", new URL("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
   pomExtra <<= (pomExtra, name, description) {
     (pom, name, desc) => pom ++ Group(
       <scm>
-        <url>https://code.google.com/p/scalafx</url>
-        <connection>scm:hg:https://code.google.com/p/scalafx</connection>
+        <url>https://github.com/scalafx/scalafx</url>
+        <connection>scm:git:https://github.com/scalafx/scalafx.git</connection>
       </scm>
         <developers>
           <developer>

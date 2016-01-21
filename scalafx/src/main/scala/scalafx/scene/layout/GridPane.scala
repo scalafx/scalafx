@@ -47,7 +47,9 @@ object GridPane {
    * Sentinel value which may be set on a child's row/column span constraint to indicate that it should span the
    * remaining rows/columns.
    */
-  val REMAINING = jfxsl.GridPane.REMAINING
+  val Remaining = jfxsl.GridPane.REMAINING
+  @deprecated ("Use Remaining; REMAINING will be removed in a future release", "8.0.60-R10")
+  val REMAINING = Remaining
 
   /**
    * Removes all gridpane constraints from the child node.

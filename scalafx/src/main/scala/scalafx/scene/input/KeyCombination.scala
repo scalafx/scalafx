@@ -41,19 +41,25 @@ object KeyCombination {
     /**
      * Constant which indicates that the modifier key can be either up or down.
      */
-    val ANY = new ModifierValue(jfxsi.KeyCombination.ModifierValue.ANY)
+    val Any = new ModifierValue(jfxsi.KeyCombination.ModifierValue.ANY)
+    @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+    val ANY = Any
 
     /**
      * Constant which indicates that the modifier key must be down.
      */
-    val DOWN = new ModifierValue(jfxsi.KeyCombination.ModifierValue.DOWN)
+    val Down = new ModifierValue(jfxsi.KeyCombination.ModifierValue.DOWN)
+    @deprecated ("Use Down; DOWN will be removed in a future release", "8.0.60-R10")
+    val DOWN = Down
 
     /**
      * Constant which indicates that the modifier key must be up.
      */
-    val UP = new ModifierValue(jfxsi.KeyCombination.ModifierValue.UP)
+    val Up = new ModifierValue(jfxsi.KeyCombination.ModifierValue.UP)
+    @deprecated ("Use Up; UP will be removed in a future release", "8.0.60-R10")
+    val UP = Up
 
-    protected override def unsortedValues: Array[ModifierValue] = Array(ANY, DOWN, UP)
+    protected override def unsortedValues: Array[ModifierValue] = Array(Any, Down, Up)
 
   }
 

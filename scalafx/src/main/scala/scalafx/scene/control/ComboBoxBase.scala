@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -118,7 +118,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
    * @since 2.2
    */
   def onHidden = delegate.onHiddenProperty()
-  def onHidden_(eventHandler: jfxe.EventHandler[jfxe.Event]) {
+  def onHidden_=(eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onHidden() = eventHandler
   }
 
@@ -127,7 +127,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
    * @since 2.2
    */
   def onHiding = delegate.onHidingProperty()
-  def onHiding_(eventHandler: jfxe.EventHandler[jfxe.Event]) {
+  def onHiding_=(eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onHiding() = eventHandler
   }
 
@@ -136,7 +136,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
    * @since 2.2
    */
   def onShowing = delegate.onShowingProperty()
-  def onShowing_(eventHandler: jfxe.EventHandler[jfxe.Event]) {
+  def onShowing_=(eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onShowing() = eventHandler
   }
 
@@ -145,7 +145,7 @@ abstract class ComboBoxBase[T](override val delegate: jfxsc.ComboBoxBase[T]) ext
    * @since 2.2
    */
   def onShown = delegate.onShownProperty()
-  def onShown_(eventHandler: jfxe.EventHandler[jfxe.Event]) {
+  def onShown_=(eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onShown() = eventHandler
   }
 

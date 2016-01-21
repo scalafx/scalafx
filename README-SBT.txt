@@ -33,7 +33,7 @@ from: http://www.scala-sbt.org/
 If you do not have the source code, then use Mercurial to checkout the code
 base. Open a command line terminal with a shell, and type:
 
-    % hg clone https://code.google.com/p/scalafx/
+    % git clone https://github.com/scalafx/scalafx.git
 
 ( Where % character represents the command line shell prompt for your operating
 system.)
@@ -73,11 +73,11 @@ List the individual tree of projects and their version number:
 
     sbt> show version
     [info] scalafx/*:version
-    [info] 	8.0.40-R8
+    [info] 	8.0.60-R9
     [info] scalafx-demos/*:version
-    [info] 	8.0.40-R8
+    [info] 	8.0.60-R9
     [info] scalafx-project/*:version
-    [info] 	8.0.40-R8
+    [info] 	8.0.60-R9
     (Where `sbt>' represents the Scala SBT interactive command line prompt)
     
 
@@ -186,10 +186,10 @@ the moment. Here are the necessary commands:
     % mvn install:install-file -DartifactId=scalafx_2.10 \
     -DgroupId=org.scalafx \
     -Dpackaging=jar \
-    -DpomFile=scalafx_2.10-8.0.40-R8.pom \
-    -Dfile=scalafx_2.10-8.0.40-R8.jar \
+    -DpomFile=scalafx_2.10-8.0.60-R9.pom \
+    -Dfile=scalafx_2.10-8.0.60-R9.jar \
     -Dversion=1.0-SNAPSHOT \
-    -Dsources=scalafx_2.10-8.0.40-R8-sources.jar
+    -Dsources=scalafx_2.10-8.0.60-R9-sources.jar
 
 
 You will to repeat this for all the modules. Please note the embedded Scala
@@ -283,9 +283,9 @@ Scala SBT check the `target' folder:
      % ls scalafx/target
      resolution-cache/	   scala-2.10/	   scala-2.11/	  streams/
      % ls scalafx/target/scala-2.10/
-     cache/	           scalafx_2.10-8.0.40-R8.jar
+     cache/	           scalafx_2.10-8.0.60-R9.jar
      % ls scalafx/target/scala-2.11/
-     cache/            scalafx_2.11-8.0.40-R8.jar
+     cache/            scalafx_2.11-8.0.60-R9.jar
 
 
 And of course this feature of cross Scala versions scales to more compiler

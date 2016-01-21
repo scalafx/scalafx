@@ -27,19 +27,35 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import javafx.{util => jfxu}
+import javafx.{event => jfxe, util => jfxu}
 
 import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyBooleanProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
+import scalafx.event.EventType
 import scalafx.util.StringConverter
 
 object ChoiceBox {
   implicit def sfxChoiceBox2jfx[J <: Any](cb: ChoiceBox[J]): jfxsc.ChoiceBox[J] = if (cb != null) cb.delegate else null
+
+  /** Called when the ChoiceBox popup has been hidden. */
+  val OnHidden: EventType[jfxe.Event] = jfxsc.ChoiceBox.ON_HIDDEN
+
+  /** Called when the ChoiceBox popup '''will''' be hidden. */
+  val OnHiding: EventType[jfxe.Event] = jfxsc.ChoiceBox.ON_HIDING
+
+  /** Called prior to the ChoiceBox showing its popup after the user has clicked or otherwise interacted with the ChoiceBox. */
+  val OnShowing: EventType[jfxe.Event] = jfxsc.ChoiceBox.ON_SHOWING
+
+  /** Called after the ChoiceBox has shown its popup. */
+  val OnShown: EventType[jfxe.Event] = jfxsc.ChoiceBox.ON_SHOWN
 }
 
+/**
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ChoiceBox.html]].
+ */
 class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.ChoiceBox[J])
   extends Control(delegate)
   with SFXDelegate[jfxsc.ChoiceBox[J]] {
@@ -93,5 +109,47 @@ class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.
   def value_=(v: J) {
     value() = v
   }
+
+
+  /**
+   * The ChoiceBox action, which is invoked whenever the ChoiceBox value property is changed.
+   */
+  def onAction = delegate.onActionProperty
+  def onAction_=(implicit aeh: jfxe.EventHandler[jfxe.ActionEvent]) {
+    onAction() = aeh
+  }
+
+  /**
+   * Called just prior to the ChoiceBox popup being shown.
+   */
+  def onShowing = delegate.onShowingProperty
+  def onShowing_=(implicit aeh: jfxe.EventHandler[jfxe.Event]) {
+    onShowing() = aeh
+  }
+
+  /**
+   * Called just after the ChoiceBox popup is shown.
+   */
+  def onShown = delegate.onShownProperty
+  def onShown_=(implicit aeh: jfxe.EventHandler[jfxe.Event]) {
+    onShown() = aeh
+  }
+
+  /**
+   * Called just prior to the ChoiceBox popup being hidden.
+   */
+  def onHiding = delegate.onHidingProperty
+  def onHiding_=(implicit aeh: jfxe.EventHandler[jfxe.Event]) {
+    onHiding() = aeh
+  }
+
+  /**
+   * Called just after the ChoiceBox popup has been hidden.
+   */
+  def onHidden = delegate.onHiddenProperty
+  def onHidden_=(implicit aeh: jfxe.EventHandler[jfxe.Event]) {
+    onHidden() = aeh
+  }
+
 
 }

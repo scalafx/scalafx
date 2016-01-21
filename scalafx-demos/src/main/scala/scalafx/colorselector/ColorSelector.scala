@@ -78,15 +78,15 @@ object ColorSelector extends JFXApp {
       controlBlue.value.toInt, newAlphaValue)
   }
 
-  private def synchronizeValues(buffer: ObservableBuffer[SliderControl], changes: Seq[Change]) {
+  private def synchronizeValues(buffer: ObservableBuffer[SliderControl], changes: Seq[Change[SliderControl]]) {
     changes(0) match {
       case Add(pos, added)      => {
         val media = buffer.map(_.value.get).sum / buffer.size
-        added.last.asInstanceOf[SliderControl].value <==> synchronizedValue
+        added.last.value <==> synchronizedValue
         buffer.foreach(_.value = media)
       }
       case Remove(pos, removed) => {
-        removed.last.asInstanceOf[SliderControl].value unbind synchronizedValue
+        removed.last.value unbind synchronizedValue
       }
       case _@otherChange        => {
         throw new UnsupportedOperationException("Only add and remove defined for the ColorSelector SliderControl sync")
@@ -137,7 +137,7 @@ object ColorSelector extends JFXApp {
       fraction = 0.45
     }
     onMouseClicked = (event: MouseEvent) => {
-      if ((event.getClickCount == 2) && (event.button == MouseButton.PRIMARY)) {
+      if ((event.getClickCount == 2) && (event.button == MouseButton.Primary)) {
         randomizeColors()
       }
     }

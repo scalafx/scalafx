@@ -39,7 +39,9 @@ object AudioClip {
   /**
    * When cycleCount is set to this value, the AudioClip will loop continuously until stopped.
    */
-  val INDEFINITE = jfxsm.AudioClip.INDEFINITE
+  val Indefinite = jfxsm.AudioClip.INDEFINITE
+  @deprecated ("Use Indefinite; INDEFINITE will be removed in a future release", "8.0.60-R10")
+  val INDEFINITE = Indefinite
 
 }
 

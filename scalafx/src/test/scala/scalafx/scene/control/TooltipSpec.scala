@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,4 +49,9 @@ class TooltipSpec
     assert(tooltip.text.value == text)
   }
 
+  it should "should have String constructor (Issue #210)" in {
+    val text = "Tooltip text"
+    val tooltip = new Tooltip(text)
+    assert(tooltip.text.value == text)
+  }
 }

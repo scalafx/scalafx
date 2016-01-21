@@ -40,7 +40,7 @@ object ScatterChartDemo extends JFXApp {
     scene = new Scene {
       root = new ScatterChart(NumberAxis("X", 0, 6, 1), NumberAxis("Y", 0, 6, 1)) {
         title = "Scatter Chart"
-        legendSide = Side.RIGHT
+        legendSide = Side.Right
         data = ObservableBuffer(
           xySeries("Series 1", Seq((0.1, 0.2), (1.1, 0.8), (1.9, 2.5), (3.2, 3.3), (3.9, 3.5), (5.1, 5.4))),
           xySeries("Series 2", Seq((0, 4), (1, 1), (2, 4.5), (3, 3.5), (4, 4.25), (5, 4.5))),

@@ -46,10 +46,21 @@ object Duration {
     def h = new Duration(jfxu.Duration.hours(d))
   }
 
-  def INDEFINITE = new Duration(jfxu.Duration.INDEFINITE)
-  def ONE = new Duration(jfxu.Duration.ONE)
-  def UNKNOWN = new Duration(jfxu.Duration.UNKNOWN)
-  def ZERO = new Duration(jfxu.Duration.ZERO)
+  def Indefinite = new Duration(jfxu.Duration.INDEFINITE)
+  @deprecated ("Use Indefinite; INDEFINITE will be removed in a future release", "8.0.60-R10")
+  def INDEFINITE = Indefinite
+
+  def One = new Duration(jfxu.Duration.ONE)
+  @deprecated ("Use One; ONE will be removed in a future release", "8.0.60-R10")
+  def ONE = One
+
+  def Unknown = new Duration(jfxu.Duration.UNKNOWN)
+  @deprecated ("Use Unknown; UNKNOWN will be removed in a future release", "8.0.60-R10")
+  def UNKNOWN = Unknown
+
+  def Zero = new Duration(jfxu.Duration.ZERO)
+  @deprecated ("Use Zero; ZERO will be removed in a future release", "8.0.60-R10")
+  def ZERO = Zero
 }
 
 /**

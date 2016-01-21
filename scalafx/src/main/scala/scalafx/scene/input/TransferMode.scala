@@ -34,20 +34,34 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/TransferMode.html javafx.scene.input.TransferMode]] */
 object TransferMode extends SFXEnumDelegateCompanion[jfxsi.TransferMode, TransferMode] {
 
-  val COPY = new TransferMode(jfxsi.TransferMode.COPY)
-  val MOVE = new TransferMode(jfxsi.TransferMode.MOVE)
-  val LINK = new TransferMode(jfxsi.TransferMode.LINK)
+  val Copy = new TransferMode(jfxsi.TransferMode.COPY)
+  @deprecated ("Use Copy; COPY will be removed in a future release", "8.0.60-R10")
+  val COPY = Copy
+
+  val Move = new TransferMode(jfxsi.TransferMode.MOVE)
+  @deprecated ("Use Move; MOVE will be removed in a future release", "8.0.60-R10")
+  val MOVE = Move
+
+  val Link = new TransferMode(jfxsi.TransferMode.LINK)
+  @deprecated ("Use Link; LINK will be removed in a future release", "8.0.60-R10")
+  val LINK = Link
 
   /** Array containing all transfer modes. */
-  val ANY = jfxsi.TransferMode.ANY
+  val Any = jfxsi.TransferMode.ANY
+  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  val ANY = Any
 
   /** Array containing transfer modes COPY and MOVE. */
-  val COPY_OR_MOVE = jfxsi.TransferMode.COPY_OR_MOVE
+  val CopyOrMove = jfxsi.TransferMode.COPY_OR_MOVE
+  @deprecated ("Use CopyOrMove; COPY_OR_MOVE will be removed in a future release", "8.0.60-R10")
+  val COPY_OR_MOVE = CopyOrMove
 
   /** Empty array of transfer modes. */
-  val NONE = jfxsi.TransferMode.NONE
+  val None = jfxsi.TransferMode.NONE
+  @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
+  val NONE = None
 
-  protected override def unsortedValues: Array[TransferMode] = Array(COPY, MOVE, LINK)
+  protected override def unsortedValues: Array[TransferMode] = Array(Copy, Move, Link)
 }
 
 

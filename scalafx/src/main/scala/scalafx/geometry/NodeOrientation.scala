@@ -35,11 +35,19 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object NodeOrientation
   extends SFXEnumDelegateCompanion[jfxg.NodeOrientation, NodeOrientation] {
 
-  val INHERIT = new NodeOrientation(jfxg.NodeOrientation.INHERIT)
-  val LEFT_TO_RIGHT = new NodeOrientation(jfxg.NodeOrientation.LEFT_TO_RIGHT)
-  val RIGHT_TO_LEFT = new NodeOrientation(jfxg.NodeOrientation.RIGHT_TO_LEFT)
+  val Inherit = new NodeOrientation(jfxg.NodeOrientation.INHERIT)
+  @deprecated ("Use Inherit; INHERIT will be removed in a future release", "8.0.60-R10")
+  val INHERIT = Inherit
 
-  protected override def unsortedValues: Array[NodeOrientation] = Array(INHERIT, LEFT_TO_RIGHT, RIGHT_TO_LEFT)
+  val LeftToRight = new NodeOrientation(jfxg.NodeOrientation.LEFT_TO_RIGHT)
+  @deprecated ("Use LeftToRight; LEFT_TO_RIGHT will be removed in a future release", "8.0.60-R10")
+  val LEFT_TO_RIGHT = LeftToRight
+
+  val RightToLeft = new NodeOrientation(jfxg.NodeOrientation.RIGHT_TO_LEFT)
+  @deprecated ("Use RightToLeft; RIGHT_TO_LEFT will be removed in a future release", "8.0.60-R10")
+  val RIGHT_TO_LEFT = RightToLeft
+
+  protected override def unsortedValues: Array[NodeOrientation] = Array(Inherit, LeftToRight, RightToLeft)
 }
 
 
