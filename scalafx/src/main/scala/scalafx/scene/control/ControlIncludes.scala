@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,6 +31,7 @@ import javafx.scene.{control => jfxsc}
 
 import scala.language.implicitConversions
 import scalafx.beans.property.ReadOnlyObjectProperty
+import scalafx.collections.ObservableBuffer
 import scalafx.scene.control.ScrollPane.ScrollBarPolicy
 import scalafx.scene.control.SplitPane.Divider
 import scalafx.scene.control.TabPane.TabClosingPolicy
@@ -673,13 +674,15 @@ trait ControlIncludes
    * @param tbcb $JFX $TBCB
    * @return $SFX $TBCB
    *
+   */
   implicit def jfxTableColumnBase2sfx[S, T](tbcb: jfxsc.TableColumnBase[S, T]): TableColumnBase[S, T] =
     new TableColumnBase[S, T](tbcb) {
-      def columns: ObservableBuffer[jfxsc.TableColumnBase[S, _]] = {
-        ObservableBuffer(tbcb.getColumns)
-      }
+
+      import scalafx.collections.CollectionIncludes._
+
+      def columns: ObservableBuffer[_ <: jfxsc.TableColumnBase[S, _]] = delegate.getColumns
     }
-*/
+
   /**
    * $START$TVFM.html $TVFM$END
    *

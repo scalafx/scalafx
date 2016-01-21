@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,10 +30,12 @@ import javafx.scene.{control => jfxsc}
 
 import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.control.ControlIncludes.jfxTableColumnBase2sfx
 
 /**
  * Object companion for [[scalafx.scene.control.ResizeFeaturesBase]]
- * @since 8.0
+  *
+  * @since 8.0
  */
 object ResizeFeaturesBase {
 
@@ -74,8 +76,8 @@ class ResizeFeaturesBase[S](override val delegate: jfxsc.ResizeFeaturesBase[S])
   /**
    * The column upon which the resize is occurring, or null if this ResizeFeatures instance was
    * created as a result of a resize operation.
-   */
-  def column: jfxsc.TableColumnBase[S, _] = delegate.getColumn
+    */
+  def column: TableColumnBase[S, _] = jfxTableColumnBase2sfx(delegate.getColumn)
 
   /**
    * The amount of horizontal space added or removed in the resize operation.
