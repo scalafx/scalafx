@@ -847,4 +847,7 @@ sealed case class KeyCode(override val delegate: jfxsi.KeyCode)
 
   /** Control key */
   def isControlKey: Boolean = delegate.isControlKey
+
+  /** Command key */
+  def isCommandKey: Boolean = delegate.isCommandKey
 }
