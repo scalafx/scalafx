@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -193,6 +193,89 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
     prop2() should equal(3.0)
   }
 
+  it should "support createBooleanBinding" in {
+    val a = new BooleanProperty()
+    val b = new BooleanProperty()
+    val xor = Bindings.createBooleanBinding(() => (a() || b()) && !(a() && b()), a, b)
+
+    a() = true
+    b() = true
+    xor() should be(false)
+
+    a() = false
+    b() = true
+    xor() should be(true)
+
+    a() = true
+    b() = false
+    xor() should be(true)
+
+    a() = false
+    b() = false
+    xor() should be(false)
+  }
+
+  it should "support createDoubleBinding" in {
+    val a = new DoubleProperty()
+    val b = Bindings.createDoubleBinding(() => a.value * a.value, a)
+
+    // NOTE: using `plusOrMinus` instead `+-` to avoid operator clash between ScalaFX and ScalaTest
+    a.value = 1.0
+    b.doubleValue should be(1.0 plusOrMinus 0.1)
+
+    a.value = 2d
+    b.doubleValue should be(4d plusOrMinus 0.1)
+  }
+
+  it should "support createFloatBinding" in {
+    val a = new FloatProperty()
+    val b = Bindings.createFloatBinding(() => a.value * a.value, a)
+
+    // NOTE: using `plusOrMinus` instead `+-` to avoid operator clash between ScalaFX and ScalaTest
+    a.value = 1.0f
+    b.floatValue should be(1.0f plusOrMinus 0.1f)
+
+    a.value = 2d
+    b.floatValue should be(4.0f plusOrMinus 0.1f)
+  }
+
+  it should "support createIntegerBinding" in {
+    val a = new IntegerProperty()
+    val b = Bindings.createIntegerBinding(() => a.value * a.value, a)
+
+    a.value = 1
+    a() should be(1)
+
+    a.value = 2
+    b() should be(4)
+  }
+
+  it should "support createLongBinding" in {
+    val a = new LongProperty()
+    val b = Bindings.createLongBinding(() => a.value * a.value, a)
+
+    a.value = 1L
+    a() should be(1L)
+
+    a.value = 2L
+    b() should be(4L)
+  }
+
+  it should "support createObjectBinding" in {
+    val a = new ObjectProperty[String]()
+    val b = Bindings.createObjectBinding(() => Option(a.value).getOrElse("").toLowerCase(), a)
+
+    a.value = "HEllO"
+    b() should be("hello")
+  }
+
+  it should "support createStringBinding" in {
+    val a = new StringProperty()
+    val b = Bindings.createStringBinding(() => Option(a.value).getOrElse("").toLowerCase(), a)
+
+    a.value = "HEllO"
+    b() should be("hello")
+  }
 
   it should "support that select* funk..." is (pending)
 
