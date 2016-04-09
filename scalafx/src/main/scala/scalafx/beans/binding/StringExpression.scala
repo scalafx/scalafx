@@ -30,6 +30,7 @@ import javafx.beans.value.ObservableStringValue
 import javafx.beans.{binding => jfxbb}
 
 import scala.language.implicitConversions
+import scalafx.delegate.SFXDelegate
 
 object StringExpression {
   implicit def sfxStringExpression2jfx(se: StringExpression): jfxbb.StringExpression =
@@ -73,4 +74,13 @@ class StringExpression(val delegate: jfxbb.StringExpression) {
   def +(v: Null) = delegate.concat(v.asInstanceOf[String])
   def +(v: ObservableStringValue) = delegate.concat(v)
   def +(v: Any) = delegate.concat(v)
+
+  def concat(v: Object) = {
+    val jfxV = v match {
+      case d: SFXDelegate[_] => d.delegate
+      case a => a
+    }
+    delegate.concat(jfxV)
+  }
+
 }
