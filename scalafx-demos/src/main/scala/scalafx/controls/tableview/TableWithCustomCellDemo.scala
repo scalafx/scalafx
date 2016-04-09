@@ -65,7 +65,7 @@ object TableWithCustomCellDemo extends JFXApp {
             cellValueFactory = {_.value.favoriteColor }
             // Render the property value when it changes, including initial assignment
             cellFactory = {
-              _ => new TableCell[Person, Color] {
+              _ : TableColumn[Person, Color] => new TableCell[Person, Color] {
                 item.onChange {
                   (_, _, newColor) => graphic = new Circle {fill = newColor; radius = 8}
                 }

@@ -60,7 +60,7 @@ resolvers += sonatypeNexusSnapshots
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.10.6", "2.11.7", "2.12.0-M3"),
+  crossScalaVersions := Seq("2.10.6", "2.11.7", "2.12.0-M4"),
   scalaVersion <<= crossScalaVersions { versions => versions.head },
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
@@ -73,7 +73,7 @@ lazy val scalafxSettings = Seq(
     "-Xlint:deprecation"),
   libraryDependencies ++= Seq(
     "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-    if (scalaVersion.value.startsWith("2.12.0-M")) "org.scalatest" % "scalatest_2.12.0-M3" % "2.2.5-M3" else scalatest % "test",
+    scalatest % "test",
     junit % "test"),
   autoAPIMappings := true,
   manifestSetting,
