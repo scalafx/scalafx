@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -163,6 +163,6 @@ class KeyValueSpec
   it should "support interpolators with the ->/tween operator" in {
     val property = new DoubleProperty(null, name)
     val endValue = 50
-    evaluateFromSfx(property, endValue, (property -> endValue tween Interpolator.EASE_BOTH), true)
+    evaluateFromSfx(property, endValue, (property -> endValue tween Interpolator.EaseBoth), true)
   }
 }
