@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,7 @@
 package scalafx.collections
 
 import java.{util => ju}
-import javafx.{beans => jfxb, collections => jfxc}
+import javafx.{beans => jfxb, collections => jfxc, util => jfxu}
 
 import org.junit.runner.RunWith
 import org.scalatest.Matchers._
@@ -53,7 +53,7 @@ class ObservableBufferSpec[T]
     * generated map must be a ObservableBuffer.
     *
     * @param generatedBuffer Generated Buffer, that should be a ObservableBuffer.
-    * @param originalBuffer Buffer Original ObservableBuffer.
+    * @param originalBuffer  Buffer Original ObservableBuffer.
     * @param shouldBeTheSame If both maps should be same instance.
     */
   private def compareInstances(generatedBuffer: Buffer[_],
@@ -638,7 +638,14 @@ class ObservableBufferSpec[T]
 
     type ElementType = jfxc.ObservableList[String]
 
-    val items = new ObservableBuffer(jfxc.FXCollections.observableArrayList[ElementType]((elem: ElementType) => Array[jfxb.Observable](elem)))
+    //    val items = new ObservableBuffer(jfxc.FXCollections.observableArrayList[ElementType]((elem: ElementType) => Array[jfxb.Observable](elem)))
+    val items = new ObservableBuffer(
+      jfxc.FXCollections.observableArrayList[ElementType](
+        new jfxu.Callback[ElementType, Array[jfxb.Observable]] {
+          def call(elem: ElementType) = Array[jfxb.Observable](elem)
+        }
+      )
+    )
 
     items.append(jfxc.FXCollections.observableArrayList("test"))
 

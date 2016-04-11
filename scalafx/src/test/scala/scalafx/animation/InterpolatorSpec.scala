@@ -34,6 +34,7 @@ import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
 
 import scala.language.postfixOps
+import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.testutil.PropertyComparator
 
@@ -66,7 +67,7 @@ class InterpolatorSpec extends FlatSpec with PropertyComparator {
   }
 
   it should "support tangent interpolations" in {
-    val doubleProperty = new DoubleProperty(null, "test")
+    val doubleProperty = new DoubleProperty(null, "test")`
     val kv1 = doubleProperty -> 50 tween Interpolator.Tangent((100 ms), .3)
     // equals method doesn't work, so the best we can do is test the class type
     kv1.interpolator.getClass should equal(Interpolator.Tangent((100 ms), .3).getClass)

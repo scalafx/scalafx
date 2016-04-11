@@ -25,47 +25,49 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package issues.issue169
+package issues.issue236
 
-import javafx.{beans => jfxb, collections => jfxc, util => jfxu}
-
-import scalafx.Includes._
+import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
+import scalafx.beans.property.StringProperty
 import scalafx.collections.ObservableBuffer
+import scalafx.scene.Scene
+import scalafx.scene.control.TableColumn._
+import scalafx.scene.control.cell.TextFieldTableCell
+import scalafx.scene.control.{TableColumn, TableView}
 
-/**
-  * Example of `Update` notification. Based on example for Issue #169:
-  * [[https://github.com/scalafx/scalafx/issues/169#issuecomment-67577800]]
-  *
-  */
-object Example3App extends App {
+//import scalafx.Includes._ // does not compile
+//import scalafx.util.UtilIncludes.function12jfxCallback // does not compile
+//import scalafx.Includes.{function12jfxCallback => _, _} // compiles OK
 
-  val items: ObservableBuffer[jfxc.ObservableList[String]] = new ObservableBuffer(
-    jfxc.FXCollections.observableArrayList[jfxc.ObservableList[String]](
-      new jfxu.Callback[jfxc.ObservableList[String], Array[jfxb.Observable]] {
-        def call(elem: jfxc.ObservableList[String]) = Array[jfxb.Observable](elem)
-      }
-    )
+
+class Person(name_ : String) {
+
+  val name = new StringProperty(this, "firstName", name_)
+}
+
+object SimpleTableView extends JFXApp {
+
+  val characters = ObservableBuffer[Person](
+    new Person("Peggy"),
+    new Person("Rocky")
   )
 
-  items.onChange((_, changes) => {
-    println(s"onChange(_, $changes")
-    for (change <- changes)
-      change match {
-        case ObservableBuffer.Add(_, _) => println(s"  case Add: $change")
-        case ObservableBuffer.Remove(_, _) => println(s"  case Remove: $change")
-        case ObservableBuffer.Reorder(_, _, _) => println(s"  case Reorder: $change")
-        case ObservableBuffer.Update(_, _) => println(s"  case Update: $change")
+  stage = new PrimaryStage {
+    title = "Simple Table View"
+    scene = new Scene {
+      content = new TableView[Person](characters) {
+        columns ++= List(
+          new TableColumn[Person, String] {
+            text = "First Name"
+            cellValueFactory = {
+              _.value.name
+            }
+            cellFactory = _ => new TextFieldTableCell[Person, String]()
+            prefWidth = 180
+          }
+        )
       }
-  })
-
-  // Should produce `Add` notification
-  println("items += ObservableBuffer(\"test\")")
-  items += ObservableBuffer("test")
-  println("Items: " + items)
-  println()
-
-  // Should produce `Update` notification
-  println("items(0) += \"update\"")
-  items(0) += "update"
-  println("Items: " + items)
+    }
+  }
 }
