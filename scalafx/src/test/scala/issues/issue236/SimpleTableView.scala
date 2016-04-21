@@ -36,13 +36,8 @@ import scalafx.scene.control.TableColumn._
 import scalafx.scene.control.cell.TextFieldTableCell
 import scalafx.scene.control.{TableColumn, TableView}
 
-//import scalafx.Includes._ // does not compile
-//import scalafx.util.UtilIncludes.function12jfxCallback // does not compile
-//import scalafx.Includes.{function12jfxCallback => _, _} // compiles OK
-
 
 class Person(name_ : String) {
-
   val name = new StringProperty(this, "firstName", name_)
 }
 
@@ -63,7 +58,7 @@ object SimpleTableView extends JFXApp {
             cellValueFactory = {
               _.value.name
             }
-            cellFactory = _ => new TextFieldTableCell[Person, String]()
+            cellFactory = (_: TableColumn[Person, String]) => new TextFieldTableCell[Person, String]()
             prefWidth = 180
           }
         )
