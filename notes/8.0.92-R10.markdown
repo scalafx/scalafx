@@ -2,19 +2,22 @@
 It is contains some new features and bug-fix release. Scala 2.10, 2.11, and 2.12 are supported.
 
 Compatibility braking changes:
+
 * [Issue #107][107]: Remove code that was deprecated before release of ScalaFX 1.0.0 M1
 
 New features and improvements:
+
 * [Issue #218][218]: Missing access methods in JFXApp
-* [Issue #232][232]: Wrap missing `Bindings.create*Binding`.
+* [Issue #232][232]: Wrap missing `Bindings.create**Binding`.
 * [Issue #210][210]: Add `Tooltip` constructor with `String`.
 
 Bug fixes:
+
 * [Issue #69][69]: SFX-8: `ColorfulCircles` and `SimpleColorfulCircles` demos fail.
 * [Issue #184][184]: `ObservableBuffer.Change` has no generic type parameters, while the majority of its children do.
 * [Issue #217][217]: NPE when calling `Node#snapshot`
 * [Issue #219][219]: `WritableImage#pixelWrit` should be `pixelWriter`.
-* [Issue #220][220]: Scene's `onMouseDrag*` setters have incorrect type parameters, `jfxsi.MouseEvent` instead `jfxsi.MouseDragEvent`.
+* [Issue #220][220]: Scene's `onMouseDrag` setters have incorrect type parameters, `jfxsi.MouseEvent` instead `jfxsi.MouseDragEvent`.
 * [Issue #221][221]: Some type constraints in methods using `jfxe.EventHandler` arguments have incorrect variance.
 * [Issue #222][222]: Some setter are defined with `_(...)` instead of `_=(...)`.
 * [Issue #233][233]: Problem with `StringProperty.concat`.
@@ -23,7 +26,7 @@ Bug fixes:
 
 To use ScalaFX add following to your SBT:
 
-      libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.60-R10"
+      libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.92-R10"
 
 For downloads visit [ScalaFX on Sonatype][2] or [ScalaFX Releases][3] on GitHub. 
 Please report any problems using [ScalaFX Issue Tracker][4]. 
