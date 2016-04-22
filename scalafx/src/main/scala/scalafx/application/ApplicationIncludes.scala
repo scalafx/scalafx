@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -67,4 +67,6 @@ trait ApplicationIncludes {
    * @return ScalaFX ConditionalFeature
    */
   implicit def jfxConditionalFeature2sfx(e: jfxa.ConditionalFeature): ConditionalFeature = ConditionalFeature.jfxEnum2sfx(e)
+
+  implicit def jfxHostServices2sfx(e: jfxa.HostServices): HostServices = new HostServices(e)
 }

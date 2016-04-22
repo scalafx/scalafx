@@ -34,11 +34,19 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/TextBoundsType.html javafx.scene.text.TextBoundsType]] */
 object TextBoundsType extends SFXEnumDelegateCompanion[jfxst.TextBoundsType, TextBoundsType] {
 
-  val LOGICAL = new TextBoundsType(jfxst.TextBoundsType.LOGICAL)
-  val LOGICAL_VERTICAL_CENTER = new TextBoundsType(jfxst.TextBoundsType.LOGICAL_VERTICAL_CENTER)
-  val VISUAL = new TextBoundsType(jfxst.TextBoundsType.VISUAL)
+  val Logical = new TextBoundsType(jfxst.TextBoundsType.LOGICAL)
+  @deprecated ("Use Logical; LOGICAL will be removed in a future release", "8.0.60-R10")
+  val LOGICAL = Logical
 
-  protected override def unsortedValues: Array[TextBoundsType] = Array(LOGICAL, VISUAL, LOGICAL_VERTICAL_CENTER)
+  val LogicalVerticalCenter = new TextBoundsType(jfxst.TextBoundsType.LOGICAL_VERTICAL_CENTER)
+  @deprecated ("Use LogicalVerticalCenter; LOGICAL_VERTICAL_CENTER will be removed in a future release", "8.0.60-R10")
+  val LOGICAL_VERTICAL_CENTER = LogicalVerticalCenter
+
+  val Visual = new TextBoundsType(jfxst.TextBoundsType.VISUAL)
+  @deprecated ("Use Visual; VISUAL will be removed in a future release", "8.0.60-R10")
+  val VISUAL = Visual
+
+  protected override def unsortedValues: Array[TextBoundsType] = Array(Logical, Visual, LogicalVerticalCenter)
 }
 
 

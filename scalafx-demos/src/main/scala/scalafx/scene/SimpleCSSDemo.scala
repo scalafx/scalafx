@@ -42,6 +42,7 @@ object SimpleCSSDemo extends JFXApp {
     title = "Simple CSS Demo"
 
     scene = new Scene {
+      // Add a stylesheet to existing ones.
       stylesheets += getClass.getResource("simple.css").toExternalForm
 
       root = new BorderPane {

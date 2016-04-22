@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,96 +24,64 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.beans.binding
 
 import javafx.beans.{binding => jfxbb, value => jfxbv}
 
+import scalafx.beans.Observable
+import scalafx.beans.binding.BindingIncludes._
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
 
 object Bindings extends Bindings
 
 /**
- * Contains Methods for Bindings.
- *
- * @define JFX JavaFX
- */
+  * Contains Methods for Bindings.
+  *
+  * @define JFX JavaFX
+  */
 trait Bindings {
 
   /**
-   * Returns the highest value among a collection of $JFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
-   *
-   * @param v1 First Value
-   * @param values Collection of values
-   * @return The highest Value
-   */
-  def min(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values)(jfxbb.Bindings.min)
+    * Returns the highest value among a collection of $JFX
+    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+    *
+    * @param v1     First Value
+    * @param values Collection of values
+    * @return The highest Value
+    */
+  def min(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values) (jfxbb.Bindings.min)
 
   /**
-   * Returns the Lowest value among a collection of $JFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
-   *
-   * @param v1 First Value
-   * @param values Collection of values
-   * @return The Lowest Value
-   */
-  def max(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values)(jfxbb.Bindings.max)
+    * Returns the Lowest value among a collection of $JFX
+    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+    *
+    * @param v1     First Value
+    * @param values Collection of values
+    * @return The Lowest Value
+    */
+  def max(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values) (jfxbb.Bindings.max)
 
   /**
-   * Returns the sum of a collection of $JFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
-   *
-   * @param v1 First Value
-   * @param values Collection of values
-   * @return The Value sum.
-   */
-  def add(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values)(jfxbb.Bindings.add)
+    * Returns the sum of a collection of $JFX
+    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+    *
+    * @param v1     First Value
+    * @param values Collection of values
+    * @return The Value sum.
+    */
+  def add(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values) (jfxbb.Bindings.add)
 
   /**
-   *
-   * @param condition Function that returns a $JFX
-   *                  [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableBooleanValue.html `ObservableBooleanValue`]]
-   * @return A ConditionBuilder wrapping `condition`. 
-   */
+    *
+    * @param condition Function that returns a $JFX
+    *                  [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableBooleanValue.html `ObservableBooleanValue`]]
+    * @return A ConditionBuilder wrapping `condition`.
+    */
   def when(condition: => jfxbv.ObservableBooleanValue) = new ConditionBuilder(new jfxbb.When(condition))
 
   protected class ConditionBuilder(whenBuilder: jfxbb.When) {
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`(thenExpression: jfxbv.ObservableNumberValue) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`(thenExpression: Int) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`(thenExpression: Long) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`(thenExpression: Float) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`(thenExpression: Double) = choose(thenExpression)
-
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[T](thenExpression: jfxbv.ObservableBooleanValue) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[T](thenExpression: Boolean) = choose(thenExpression)
-
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[T](thenExpression: jfxbv.ObservableStringValue) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[T](thenExpression: String) = choose(thenExpression)
-
-    // explicit conversion needed due to T(Any) typed method
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[T](thenExpression: ObservableValue[T, T]) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[T](thenExpression: jfxbv.ObservableObjectValue[T]) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[T](thenExpression: T) = choose(thenExpression)
-    /** Create `ObjectConditionBuilder` with type of the delegate rather than wrapping SFX.
-      *
-      * This is addressing problems pointed in Issue 16 - inability to bind an expression to JFX property
-      * when `thenValue` is a SFX wrapper. */
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[J <: Object](thenExpression: SFXDelegate[J]) = choose(thenExpression)
-
     def choose(chooseExpression: NumberBinding) = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression.delegate))
     def choose(chooseExpression: jfxbv.ObservableNumberValue) = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))
     def choose(chooseExpression: Int) = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))
@@ -164,4 +132,144 @@ trait Bindings {
     def otherwise(otherwiseExpression: T) = whenBuilder.otherwise(otherwiseExpression)
   }
 
+  /**
+    * Helper function to create a custom BooleanBinding.
+    *
+    * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/Bindings.html#createBooleanBinding-java.util.concurrent.Callable-javafx.beans.Observable...- Bindings.createBooleanBinding]].
+    *
+    * @param func         The function that calculates the value of this binding
+    * @param dependencies The dependencies of this binding
+    * @return The generated binding
+    */
+  def createBooleanBinding(func: () => Boolean, dependencies: Observable*): BooleanBinding = {
+    import java.util.{concurrent => jfxuc}
+    import javafx.beans.{binding => jfxbb}
+
+    jfxbb.Bindings.createBooleanBinding(
+      new jfxuc.Callable[java.lang.Boolean] {
+        override def call() = func()
+      },
+      dependencies.map(_.delegate): _*)
+  }
+
+  /**
+    * Helper function to create a custom DoubleBinding.
+    *
+    * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/Bindings.html#createDoubleBinding-java.util.concurrent.Callable-javafx.beans.Observable...- Bindings.createDoubleBinding]].
+    *
+    * @param func         The function that calculates the value of this binding
+    * @param dependencies The dependencies of this binding
+    * @return The generated binding
+    */
+  def createDoubleBinding(func: () => Double, dependencies: Observable*): jfxbb.DoubleBinding = {
+    import java.util.{concurrent => jfxuc}
+    import javafx.beans.{binding => jfxbb}
+
+    jfxbb.Bindings.createDoubleBinding(
+      new jfxuc.Callable[java.lang.Double] {
+        override def call() = func()
+      },
+      dependencies.map(_.delegate): _*)
+  }
+
+  /**
+    * Helper function to create a custom FloatBinding.
+    *
+    * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/Bindings.html#createFloatBinding-java.util.concurrent.Callable-javafx.beans.Observable...- Bindings.createFloatBinding]].
+    *
+    * @param func         The function that calculates the value of this binding
+    * @param dependencies The dependencies of this binding
+    * @return The generated binding
+    */
+  def createFloatBinding(func: () => Float, dependencies: Observable*): jfxbb.FloatBinding = {
+    import java.util.{concurrent => jfxuc}
+    import javafx.beans.{binding => jfxbb}
+
+    jfxbb.Bindings.createFloatBinding(
+      new jfxuc.Callable[java.lang.Float] {
+        override def call() = func()
+      },
+      dependencies.map(_.delegate): _*)
+  }
+
+  /**
+    * Helper function to create a custom IntegerBinding.
+    *
+    * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/Bindings.html#createIntegerBinding-java.util.concurrent.Callable-javafx.beans.Observable...- Bindings.createIntegerBinding]].
+    *
+    * @param func         The function that calculates the value of this binding
+    * @param dependencies The dependencies of this binding
+    * @return The generated binding
+    */
+  def createIntegerBinding(func: () => Int, dependencies: Observable*): jfxbb.IntegerBinding = {
+    import java.util.{concurrent => jfxuc}
+    import javafx.beans.{binding => jfxbb}
+
+    jfxbb.Bindings.createIntegerBinding(
+      new jfxuc.Callable[java.lang.Integer] {
+        override def call() = func()
+      },
+      dependencies.map(_.delegate): _*)
+  }
+
+
+  /**
+    * Helper function to create a custom LongBinding.
+    *
+    * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/Bindings.html#createLongBinding-java.util.concurrent.Callable-javafx.beans.Observable...- Bindings.createLongBinding]].
+    *
+    * @param func         The function that calculates the value of this binding
+    * @param dependencies The dependencies of this binding
+    * @return The generated binding
+    */
+  def createLongBinding(func: () => Long, dependencies: Observable*): jfxbb.LongBinding = {
+    import java.util.{concurrent => jfxuc}
+    import javafx.beans.{binding => jfxbb}
+
+    jfxbb.Bindings.createLongBinding(
+      new jfxuc.Callable[java.lang.Long] {
+        override def call() = func()
+      },
+      dependencies.map(_.delegate): _*)
+  }
+
+  /**
+    * Helper function to create a custom ObjectBinding.
+    *
+    * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/Bindings.html#createObjectBinding-java.util.concurrent.Callable-javafx.beans.Observable...- Bindings.createObjectBinding]].
+    *
+    * @param func         The function that calculates the value of this binding
+    * @param dependencies The dependencies of this binding
+    * @return The generated binding
+    */
+  def createObjectBinding[T](func: () => T, dependencies: Observable*): ObjectBinding[T] = {
+    import java.util.{concurrent => jfxuc}
+    import javafx.beans.{binding => jfxbb}
+
+    jfxbb.Bindings.createObjectBinding(
+      new jfxuc.Callable[T] {
+        override def call() = func()
+      },
+      dependencies.map(_.delegate): _*)
+  }
+
+  /**
+    * Helper function to create a custom StringBinding.
+    *
+    * Wraps a JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/Bindings.html#createStringBinding-java.util.concurrent.Callable-javafx.beans.Observable...- Bindings.createStringBinding]].
+    *
+    * @param func         The function that calculates the value of this binding
+    * @param dependencies The dependencies of this binding
+    * @return The generated binding
+    */
+  def createStringBinding(func: () => String, dependencies: Observable*): StringBinding = {
+    import java.util.{concurrent => jfxuc}
+    import javafx.beans.{binding => jfxbb}
+
+    jfxbb.Bindings.createStringBinding(
+      new jfxuc.Callable[String] {
+        override def call() = func()
+      },
+      dependencies.map(_.delegate): _*)
+  }
 }

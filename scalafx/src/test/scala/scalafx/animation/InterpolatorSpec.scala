@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,32 +47,32 @@ import scalafx.testutil.PropertyComparator
 class InterpolatorSpec extends FlatSpec with PropertyComparator {
   "Interpolators" should "support all the built-in interpolators" in {
     val doubleProperty = new DoubleProperty(null, "test")
-    val kv1 = doubleProperty -> 50 tween Interpolator.DISCRETE
+    val kv1 = doubleProperty -> 50 tween Interpolator.Discrete
     kv1.interpolator should equal(jfxa.Interpolator.DISCRETE)
-    val kv2 = doubleProperty -> 50 tween Interpolator.EASE_BOTH
+    val kv2 = doubleProperty -> 50 tween Interpolator.EaseBoth
     kv2.interpolator should equal(jfxa.Interpolator.EASE_BOTH)
-    val kv3 = doubleProperty -> 50 tween Interpolator.EASE_IN
+    val kv3 = doubleProperty -> 50 tween Interpolator.EaseIn
     kv3.interpolator should equal(jfxa.Interpolator.EASE_IN)
-    val kv4 = doubleProperty -> 50 tween Interpolator.EASE_OUT
+    val kv4 = doubleProperty -> 50 tween Interpolator.EaseOut
     kv4.interpolator should equal(jfxa.Interpolator.EASE_OUT)
-    val kv5 = doubleProperty -> 50 tween Interpolator.LINEAR
+    val kv5 = doubleProperty -> 50 tween Interpolator.Linear
     kv5.interpolator should equal(jfxa.Interpolator.LINEAR)
   }
 
   it should "support spline interpolations" in {
     val doubleProperty = new DoubleProperty(null, "test")
-    val kv1 = doubleProperty -> 50 tween Interpolator.SPLINE(.2, .2, .8, .8)
+    val kv1 = doubleProperty -> 50 tween Interpolator.Spline(.2, .2, .8, .8)
     // equals method doesn't work, so the best we can do is test the class type
-    kv1.interpolator.getClass should equal(Interpolator.SPLINE(.2, .2, .8, .8).getClass)
+    kv1.interpolator.getClass should equal(Interpolator.Spline(.2, .2, .8, .8).getClass)
   }
 
   it should "support tangent interpolations" in {
     val doubleProperty = new DoubleProperty(null, "test")
-    val kv1 = doubleProperty -> 50 tween Interpolator.TANGENT((100 ms), .3)
+    val kv1 = doubleProperty -> 50 tween Interpolator.Tangent((100 ms), .3)
     // equals method doesn't work, so the best we can do is test the class type
-    kv1.interpolator.getClass should equal(Interpolator.TANGENT((100 ms), .3).getClass)
-    val kv2 = doubleProperty -> 50 tween Interpolator.TANGENT((50 ms), .5, (100 ms), .3)
+    kv1.interpolator.getClass should equal(Interpolator.Tangent((100 ms), .3).getClass)
+    val kv2 = doubleProperty -> 50 tween Interpolator.Tangent((50 ms), .5, (100 ms), .3)
     // equals method doesn't work, so the best we can do is test the class type
-    kv2.interpolator.getClass should equal(Interpolator.TANGENT((50 ms), .5, (100 ms), .3).getClass)
+    kv2.interpolator.getClass should equal(Interpolator.Tangent((50 ms), .5, (100 ms), .3).getClass)
   }
 }

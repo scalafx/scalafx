@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,6 +53,7 @@ object SimpleColorfulCircles extends JFXApp {
     width = 800
     height = 600
     scene = new Scene {
+      _scene =>
       fill = Black
       circles = for (i <- 0 until 30) yield new Circle {
         centerX = random * 800
@@ -65,8 +66,8 @@ object SimpleColorfulCircles extends JFXApp {
         effect = new BoxBlur(10, 10, 3)
       }
       content = circles :+ new Rectangle {
-        width <== scene.width
-        height <== scene.height
+        width <== _scene.width
+        height <== _scene.height
         fill = new LinearGradient(0, 1, 1, 0, true, NoCycle,
           Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f))
         blendMode = Overlay
@@ -76,11 +77,11 @@ object SimpleColorfulCircles extends JFXApp {
   new Timeline {
     cycleCount = Indefinite
     autoReverse = true
-    keyFrames = (for (circle <- circles) yield at(40 s) {
+    keyFrames = for (circle <- circles) yield at(40 s) {
       Set(
         circle.centerX -> random * 800,
         circle.centerY -> random * 600
       )
-    })
+    }
   }.play()
 }

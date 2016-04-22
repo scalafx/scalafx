@@ -33,7 +33,7 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 import scalafx.Includes._
-import scalafx.testutil.AbstractSFXDelegateSpec
+import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * CustomMenuItem Spec tests.
@@ -42,5 +42,5 @@ import scalafx.testutil.AbstractSFXDelegateSpec
  */
 @RunWith(classOf[JUnitRunner])
 class CustomMenuItemSpec
-  extends AbstractSFXDelegateSpec[jfxsc.CustomMenuItem, CustomMenuItem, jfxsc.CustomMenuItemBuilder[_]](
-    classOf[jfxsc.CustomMenuItem], classOf[CustomMenuItem], classOf[jfxsc.CustomMenuItemBuilder[_]])
+  extends SimpleSFXDelegateSpec[jfxsc.CustomMenuItem, CustomMenuItem](
+      classOf[jfxsc.CustomMenuItem], classOf[CustomMenuItem])

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,15 +44,21 @@ object ScrollPane {
     extends SFXEnumDelegateCompanion[jfxsc.ScrollPane.ScrollBarPolicy, ScrollBarPolicy] {
 
     /** Indicates that a scroll bar should always be shown. */
-    val ALWAYS = new ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.ALWAYS)
+    val Always = new ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.ALWAYS)
+    @deprecated ("Use Always; ALWAYS will be removed in a future release", "8.0.60-R10")
+    val ALWAYS = Always
 
     /** Indicates that a scroll bar should be shown when required. */
-    val AS_NEEDED = new ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.AS_NEEDED)
+    val AsNeeded = new ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.AS_NEEDED)
+    @deprecated ("Use AsNeeded; AS_NEEDED will be removed in a future release", "8.0.60-R10")
+    val AS_NEEDED = AsNeeded
 
     /** Indicates that a scroll bar should never be shown */
-    val NEVER = new ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.NEVER)
+    val Never = new ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.NEVER)
+    @deprecated ("Use Never; NEVER will be removed in a future release", "8.0.60-R10")
+    val NEVER = Never
 
-    protected override def unsortedValues: Array[ScrollBarPolicy] = Array(ALWAYS, AS_NEEDED, NEVER)
+    protected override def unsortedValues: Array[ScrollBarPolicy] = Array(Always, AsNeeded, Never)
 
   }
 
@@ -70,11 +76,6 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * The node used as the content of this ScrollPane.
    */
   def content: ObjectProperty[jfxs.Node] = delegate.contentProperty
-
-  @deprecated("Use a ScalaFX Node instead a JavaFX Node", "1.0")
-  def content_=(v: jfxs.Node) {
-    content() = v
-  }
 
   def content_=(v: Node) {
     content() = v

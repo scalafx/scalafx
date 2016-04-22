@@ -25,12 +25,12 @@ ScalaFX.
 	
 For general information about ScalaFX, please visit:
 
-        https://code.google.com/p/scalafx
+        http://www.scalafx.org/
 	
 
 To report problems in ScalaFX, please visit:
 	
-        https://code.google.com/p/scalafx/issues
+        https://github.com/scalafx/scalafx/issues
 
 
 

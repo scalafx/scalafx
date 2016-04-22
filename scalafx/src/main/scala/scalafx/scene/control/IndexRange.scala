@@ -37,7 +37,9 @@ object IndexRange {
   /**
    * Index range value delimiter.
    */
-  val VALUE_DELIMITER = jfxsc.IndexRange.VALUE_DELIMITER
+  val ValueDelimiter = jfxsc.IndexRange.VALUE_DELIMITER
+  @deprecated ("Use ValueDelimiter; VALUE_DELIMITER will be removed in a future release", "8.0.60-R10")
+  val VALUE_DELIMITER = ValueDelimiter
 
   /**
    * Convenience method to create an IndexRange instance that has the smaller value as the start

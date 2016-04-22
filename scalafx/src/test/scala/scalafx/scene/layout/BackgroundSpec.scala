@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,5 +41,5 @@ class BackgroundSpec extends SimpleSFXDelegateSpec[jfxsl.Background, Background]
 
   override protected def getScalaClassInstance = new Background(getJavaClassInstance) {}
 
-  override protected def getJavaClassInstance = Background.EMPTY
+  override protected def getJavaClassInstance = Background.Empty
 }

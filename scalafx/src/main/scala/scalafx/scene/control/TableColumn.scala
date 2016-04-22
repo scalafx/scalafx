@@ -130,12 +130,16 @@ object TableColumn {
     extends SFXEnumDelegateCompanion[jfxsc.TableColumn.SortType, SortType] {
 
     /** Column will be sorted in an ascending order. */
-    val ASCENDING = new SortType(jfxsc.TableColumn.SortType.ASCENDING)
+    val Ascending = new SortType(jfxsc.TableColumn.SortType.ASCENDING)
+    @deprecated ("Use Ascending; ASCENDING will be removed in a future release", "8.0.60-R10")
+    val ASCENDING = Ascending
 
     /** Column will be sorted in a descending order. */
-    val DESCENDING = new SortType(jfxsc.TableColumn.SortType.DESCENDING)
+    val Descending = new SortType(jfxsc.TableColumn.SortType.DESCENDING)
+    @deprecated ("Use Descending; DESCENDING will be removed in a future release", "8.0.60-R10")
+    val DESCENDING = Descending
 
-    protected override def unsortedValues: Array[SortType] = Array(ASCENDING, DESCENDING)
+    protected override def unsortedValues: Array[SortType] = Array(Ascending, Descending)
 
   }
 
@@ -146,8 +150,10 @@ object TableColumn {
   /**
    * If no cellFactory is specified on a TableColumn instance, then this one will be used by default.
    */
-  val DEFAULT_CELL_FACTORY: (TableColumn[_, _] => TableCell[_, _]) = (column: TableColumn[_, _]) =>
+  val DefaultCellFactory: (TableColumn[_, _] => TableCell[_, _]) = (column: TableColumn[_, _]) =>
     jfxsc.TableColumn.DEFAULT_CELL_FACTORY.call(column)
+  @deprecated ("Use DefaultCellFactory; DEFAULT_CELL_FACTORY will be removed in a future release", "8.0.60-R10")
+  val DEFAULT_CELL_FACTORY = DefaultCellFactory
 
 
   /**

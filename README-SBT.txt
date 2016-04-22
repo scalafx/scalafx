@@ -33,7 +33,7 @@ from: http://www.scala-sbt.org/
 If you do not have the source code, then use Mercurial to checkout the code
 base. Open a command line terminal with a shell, and type:
 
-    % hg clone https://code.google.com/p/scalafx/
+    % git clone https://github.com/scalafx/scalafx.git
 
 ( Where % character represents the command line shell prompt for your operating
 system.)

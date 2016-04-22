@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,10 +51,10 @@ class DurationSpec extends FlatSpec {
   }
 
   it should "expose INDEFINITE, ONE, UNKNOWN, and ZERO" in {
-    Duration.INDEFINITE should equal(jfxu.Duration.INDEFINITE)
-    Duration.ONE should equal(jfxu.Duration.ONE)
-    Duration.UNKNOWN should equal(jfxu.Duration.UNKNOWN)
-    Duration.ZERO should equal(jfxu.Duration.ZERO)
+    Duration.Indefinite should equal(jfxu.Duration.INDEFINITE)
+    Duration.One should equal(jfxu.Duration.ONE)
+    Duration.Unknown should equal(jfxu.Duration.UNKNOWN)
+    Duration.Zero should equal(jfxu.Duration.ZERO)
   }
 
   it should "support addition" in {

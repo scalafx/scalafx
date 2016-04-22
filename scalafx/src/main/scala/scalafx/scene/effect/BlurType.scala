@@ -34,13 +34,24 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 /** Wrapper for [[scalafx.scene.effect.BlurType]] */
 object BlurType extends SFXEnumDelegateCompanion[jfxse.BlurType, BlurType] {
 
-  val GAUSSIAN = new BlurType(jfxse.BlurType.GAUSSIAN)
-  val ONE_PASS_BOX = new BlurType(jfxse.BlurType.ONE_PASS_BOX)
-  val THREE_PASS_BOX = new BlurType(jfxse.BlurType.THREE_PASS_BOX)
-  val TWO_PASS_BOX = new BlurType(jfxse.BlurType.TWO_PASS_BOX)
+  val Gaussian = new BlurType(jfxse.BlurType.GAUSSIAN)
+  @deprecated ("Use Gaussian; GAUSSIAN will be removed in a future release", "8.0.60-R10")
+  val GAUSSIAN = Gaussian
+
+  val OnePassBox = new BlurType(jfxse.BlurType.ONE_PASS_BOX)
+  @deprecated ("Use OnePassBox; ONE_PASS_BOX will be removed in a future release", "8.0.60-R10")
+  val ONE_PASS_BOX = OnePassBox
+
+  val ThreePassBox = new BlurType(jfxse.BlurType.THREE_PASS_BOX)
+  @deprecated ("Use ThreePassBox; THREE_PASS_BOX will be removed in a future release", "8.0.60-R10")
+  val THREE_PASS_BOX = ThreePassBox
+
+  val TwoPassBox = new BlurType(jfxse.BlurType.TWO_PASS_BOX)
+  @deprecated ("Use TwoPassBox; TWO_PASS_BOX will be removed in a future release", "8.0.60-R10")
+  val TWO_PASS_BOX = TwoPassBox
 
   protected override def unsortedValues: Array[BlurType] = Array(
-    ONE_PASS_BOX, TWO_PASS_BOX, THREE_PASS_BOX, GAUSSIAN
+    OnePassBox, TwoPassBox, ThreePassBox, Gaussian
   )
 }
 

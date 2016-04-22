@@ -35,7 +35,7 @@ class ProgressIndicatorControls(target: ProgressIndicator)
   val txfValue = new TextField
   txfValue.onAction = handle {
     fillDoublePropertyFromText(
-      target.progress, txfValue, true, () => (target.progress = ProgressIndicator.INDETERMINATE_PROGRESS))
+      target.progress, txfValue, true, () => (target.progress = ProgressIndicator.IndeterminateProgress))
   }
 
   val lblRealValue = new Label {

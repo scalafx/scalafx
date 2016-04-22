@@ -35,10 +35,15 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object Orientation
   extends SFXEnumDelegateCompanion[jfxg.Orientation, Orientation] {
 
-  val HORIZONTAL = new Orientation(jfxg.Orientation.HORIZONTAL)
-  val VERTICAL = new Orientation(jfxg.Orientation.VERTICAL)
+  val Horizontal = new Orientation(jfxg.Orientation.HORIZONTAL)
+  @deprecated ("Use Horizontal; HORIZONTAL will be removed in a future release", "8.0.60-R10")
+  val HORIZONTAL = Horizontal
 
-  protected override def unsortedValues: Array[Orientation] = Array(HORIZONTAL, VERTICAL)
+  val Vertical = new Orientation(jfxg.Orientation.VERTICAL)
+  @deprecated ("Use Vertical; VERTICAL will be removed in a future release", "8.0.60-R10")
+  val VERTICAL = Vertical
+
+  protected override def unsortedValues: Array[Orientation] = Array(Horizontal, Vertical)
 }
 
 

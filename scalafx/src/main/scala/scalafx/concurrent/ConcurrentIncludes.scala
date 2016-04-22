@@ -43,6 +43,7 @@ object ConcurrentIncludes extends ConcurrentIncludes
  * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/
  * @define END ]]` instance to its $SFX counterpart.
  * @define SER Service
+ * @define SSER ScheduledService
  * @define TSK Task
  * @define WRK Worker
  * @define WRS Worker.State
@@ -57,6 +58,14 @@ trait ConcurrentIncludes {
    * @return $SFX $SER
    */
   implicit def jfxService2sfxService[T](s: jfxc.Service[T]): Service[T] = if (s != null) new Service[T](s) {} else null
+
+  /**
+    * $START$SSER.html $SSER$END
+    *
+    * @param s $JFX $SSER
+    * @return $SFX $SSER
+    */
+  implicit def jfxScheduledService2sfxScheduledService[T](s: jfxc.ScheduledService[T]): ScheduledService[T] = if (s != null) new ScheduledService[T](s) {} else null
 
   /**
    * $START$TSK.html $TSK$END

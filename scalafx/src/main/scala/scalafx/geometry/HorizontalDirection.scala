@@ -36,12 +36,16 @@ object HorizontalDirection
   extends SFXEnumDelegateCompanion[jfxg.HorizontalDirection, HorizontalDirection] {
 
   /** A direction to the left. */
-  val LEFT = new HorizontalDirection(jfxg.HorizontalDirection.LEFT)
+  val Left = new HorizontalDirection(jfxg.HorizontalDirection.LEFT)
+  @deprecated ("Use Left; LEFT will be removed in a future release", "8.0.60-R10")
+  val LEFT = Left
 
   /** A direction to the right. */
-  val RIGHT = new HorizontalDirection(jfxg.HorizontalDirection.RIGHT)
+  val Right = new HorizontalDirection(jfxg.HorizontalDirection.RIGHT)
+  @deprecated ("Use Right; RIGHT will be removed in a future release", "8.0.60-R10")
+  val RIGHT = Right
 
-  protected override def unsortedValues: Array[HorizontalDirection] = Array(LEFT, RIGHT)
+  protected override def unsortedValues: Array[HorizontalDirection] = Array(Left, Right)
 }
 
 

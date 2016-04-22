@@ -35,11 +35,20 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/DepthTest.html javafx.scene.DepthTest]] */
 object DepthTest extends SFXEnumDelegateCompanion[jfxs.DepthTest, DepthTest] {
 
-  val DISABLE = new DepthTest(jfxs.DepthTest.DISABLE)
-  val ENABLE = new DepthTest(jfxs.DepthTest.ENABLE)
-  val INHERIT = new DepthTest(jfxs.DepthTest.INHERIT)
+  val Disabled = new DepthTest(jfxs.DepthTest.DISABLE)
+  @deprecated ("Use Disabled; DISABLED will be removed in a future release", "8.0.60-R10")
+  val DISABLE = Disabled
 
-  protected override def unsortedValues: Array[DepthTest] = Array(DISABLE, ENABLE, INHERIT)
+  val Enable = new DepthTest(jfxs.DepthTest.ENABLE)
+  @deprecated ("Use Enable; ENABLE will be removed in a future release", "8.0.60-R10")
+  val ENABLE = Enable
+
+  val Inherit = new DepthTest(jfxs.DepthTest.INHERIT)
+  @deprecated ("Use Inherit; INHERIT will be removed in a future release", "8.0.60-R10")
+  val INHERIT = Inherit
+
+
+  protected override def unsortedValues: Array[DepthTest] = Array(Disabled, Enable, Inherit)
 }
 
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,6 @@
 package scalafx.util
 
 import javafx.beans.{property => jfxbp}
-import javafx.util.Callback
 import javafx.{util => jfxu}
 
 import scala.language.implicitConversions
@@ -53,17 +52,17 @@ trait UtilIncludes {
    */
   implicit def jfxCallbackToFunction1[P, R](c: jfxu.Callback[P, R]): (P) => R = (param: P) => c.call(param)
 
-  /**
-   * Converts a Function1 to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Callback.html `Callback`]].
-   *
-   * @tparam P Callback parameter type
-   * @tparam R Callback  return type.
-   * @param f ScalaFX Function
-   * @return a JavaFX Callback that will call ScalaFX function.
-   */
-  implicit def function12jfxCallback[P, R](f: (P) => R): Callback[P, R] = new jfxu.Callback[P, R] {
-    def call(param: P) = f(param)
-  }
+  //  /**
+  //   * Converts a Function1 to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Callback.html `Callback`]].
+  //   *
+  //   * @tparam P Callback parameter type
+  //   * @tparam R Callback  return type.
+  //   * @param f ScalaFX Function
+  //   * @return a JavaFX Callback that will call ScalaFX function.
+  //   */
+  //  implicit def function12jfxCallback[P, R](f: (P) => R): Callback[P, R] = new jfxu.Callback[P, R] {
+  //    def call(param: P) = f(param)
+  //  }
 
   /**
    * Convert a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Pair.html Pair]] in a Scala Tuple2.

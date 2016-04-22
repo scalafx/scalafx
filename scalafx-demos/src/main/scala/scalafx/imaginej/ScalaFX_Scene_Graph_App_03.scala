@@ -78,7 +78,7 @@ object ScalaFX_Scene_Graph_App_03 extends JFXApp {
       node = rectangle
       cycleCount = Timeline.Indefinite
       autoReverse = true
-      interpolator = Interpolator.EASE_BOTH
+      interpolator = Interpolator.EaseBoth
       children = Seq(
         new TranslateTransition {
           duration = (2 s)

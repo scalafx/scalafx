@@ -48,7 +48,9 @@ object TableColumnBase {
   /**
    * By default all columns will use this comparator to perform sorting.
    */
-  val DEFAULT_COMPARATOR: Ordering[_] = Ordering.comparatorToOrdering(jfxsc.TableColumnBase.DEFAULT_COMPARATOR)
+  val DefaultComparator: Ordering[_] = Ordering.comparatorToOrdering(jfxsc.TableColumnBase.DEFAULT_COMPARATOR)
+  @deprecated ("Use DefaultComparator; DEFAULT_COMPARATOR will be removed in a future release", "8.0.60-R10")
+  val DEFAULT_COMPARATOR = DefaultComparator
 }
 
 /**

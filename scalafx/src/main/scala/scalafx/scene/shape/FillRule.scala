@@ -34,10 +34,15 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/FillRule.html javafx.scene.shape.FillRule]] */
 object FillRule extends SFXEnumDelegateCompanion[jfxss.FillRule, FillRule] {
 
-  val EVEN_ODD = new FillRule(jfxss.FillRule.EVEN_ODD)
-  val NON_ZERO = new FillRule(jfxss.FillRule.NON_ZERO)
+  val EvenOdd = new FillRule(jfxss.FillRule.EVEN_ODD)
+  @deprecated ("Use EvenOdd; EVEN_ODD will be removed in a future release", "8.0.60-R10")
+  val EVEN_ODD = EvenOdd
 
-  protected override def unsortedValues: Array[FillRule] = Array(EVEN_ODD, NON_ZERO)
+  val NonZero = new FillRule(jfxss.FillRule.NON_ZERO)
+  @deprecated ("Use NonZero; NON_ZERO will be removed in a future release", "8.0.60-R10")
+  val NON_ZERO = NonZero
+
+  protected override def unsortedValues: Array[FillRule] = Array(EvenOdd, NonZero)
 }
 
 

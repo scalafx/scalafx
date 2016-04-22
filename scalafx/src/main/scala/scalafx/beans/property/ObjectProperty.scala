@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,8 +37,8 @@ import scalafx.delegate.SFXDelegate
  *
  * @define OP `ObjectProperty`
  * @define ISSUE14 Special case when value is an ScalaFX wrapper, to be used as a work around for
- *         [[https://code.google.com/p/scalafx/issues/detail?id=14 Issue 14]]. Created object property will have value type
- *         of the wrapped JavaFX type to simplify use with binding.
+ *                 [[https://github.com/scalafx/scalafx/issues/14]]. Created object property will have value type
+ *                 of the wrapped JavaFX type to simplify use with binding.
  */
 object ObjectProperty {
 

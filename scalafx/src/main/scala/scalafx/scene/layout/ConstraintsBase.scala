@@ -38,7 +38,9 @@ object ConstraintsBase {
   /**
    * If set as max value indicates that the pref value should be used as the max.
    */
-  val CONSTRAIN_TO_PREF = jfxsl.ConstraintsBase.CONSTRAIN_TO_PREF
+  val ConstrainToPref = jfxsl.ConstraintsBase.CONSTRAIN_TO_PREF
+  @deprecated ("Use ConstrainToPref; CONSTRAIN_TO_PREF will be removed in a future release", "8.0.60-R10")
+  val CONSTRAIN_TO_PREF = ConstrainToPref
 }
 
 abstract class ConstraintsBase(override val delegate: jfxsl.ConstraintsBase) extends SFXDelegate[jfxsl.ConstraintsBase] {

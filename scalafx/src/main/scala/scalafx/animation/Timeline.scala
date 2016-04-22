@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -96,7 +96,7 @@ class Timeline(override val delegate: jfxa.Timeline = new jfxa.Timeline())
   def this(targetFramerate: Double, keyFrames: Seq[_ <: KeyFrame]) = {
     // HACK: for some reason this does not compile with scala 2.10.0-M7
     // this(new jfxa.Timeline(targetFramerate, keyFrames.map(_.delegate).toArray: _*))
-    // solution from https://code.google.com/p/scalafx/issues/detail?id=7
+    // solution from https://github.com/scalafx/scalafx/issues/7
     // this(new jfxa.Timeline(targetFramerate, keyFrames.map { kf: KeyFrame => kf.delegate } : _*))
     this(new jfxa.Timeline(targetFramerate, keyFrames.map((keyFrame: KeyFrame) => keyFrame.delegate).toArray: _*))
   }

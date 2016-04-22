@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,7 @@
 
 package scalafx.controls.tableview
 
-import javafx.scene.control.cell.PropertyValueFactory
-
 import scala.language.implicitConversions
-import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.{BooleanProperty, StringProperty}
@@ -42,25 +39,23 @@ import scalafx.scene.control.cell.CheckBoxTableCell
 import scalafx.scene.control.{TableColumn, TableView}
 
 /**
- * Example of using `CheckBoxTableCell` in `TableView`.
- */
+  * Example of using `CheckBoxTableCell` in `TableView`.
+  */
 object CheckBoxTableCellDemo extends JFXApp {
 
   class Item(selected_ : Boolean, name_ : String) {
     val selected = new BooleanProperty(this, "selected", selected_)
-    val name = new StringProperty(this, "name", name_)
+    val name     = new StringProperty(this, "name", name_)
   }
 
   val data = ObservableBuffer[Item](
     (1 to 10).map { i => new Item(i % 2 == 0, s"Item $i") }
   )
 
-  val propertyValueFactory = new PropertyValueFactory("selected")
-
   stage = new PrimaryStage {
     title = "Example of a Table View with Check Boxes"
     scene = new Scene {
-      content = new TableView[Item](data) {
+      root = new TableView[Item](data) {
         columns ++= List(
           new TableColumn[Item, java.lang.Boolean] {
             text = "Selected"

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -63,6 +63,8 @@ class WritableImage(override val delegate: jfxsi.WritableImage)
   /**
    * This method returns a PixelWriter that provides access to write the pixels of the image.
    */
+  def pixelWriter: PixelWriter = delegate.getPixelWriter
+  @deprecated("Method name is incorrect use `pixelWriter`.", "8.0.60-R10")
   def pixelWrit: PixelWriter = delegate.getPixelWriter
 
 }

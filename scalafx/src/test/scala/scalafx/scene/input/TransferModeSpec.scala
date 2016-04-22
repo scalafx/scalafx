@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,8 +45,8 @@ class TransferModeSpec extends SFXEnumDelegateSpec[jfxsi.TransferMode, TransferM
   companion = TransferMode) {
 
   it should "contain all static fields" in {
-    TransferMode.ANY should be(jfxsi.TransferMode.ANY)
-    TransferMode.COPY_OR_MOVE should be(jfxsi.TransferMode.COPY_OR_MOVE)
-    TransferMode.NONE should be(jfxsi.TransferMode.NONE)
+    TransferMode.Any should be(jfxsi.TransferMode.ANY)
+    TransferMode.CopyOrMove should be(jfxsi.TransferMode.COPY_OR_MOVE)
+    TransferMode.None should be(jfxsi.TransferMode.NONE)
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -122,6 +122,13 @@ object Tooltip {
 class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip)
   extends PopupControl(delegate)
   with SFXDelegate[jfxsc.Tooltip] {
+
+  /**
+   * Creates a tooltip with the specified text.
+   */
+  def this(text: String) = {
+    this(new jfxsc.Tooltip(text))
+  }
 
   /**
    * Typically, the tooltip is "activated" when the mouse moves over a Control.

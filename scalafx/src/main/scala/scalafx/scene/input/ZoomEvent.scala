@@ -39,22 +39,30 @@ object ZoomEvent {
   /**
    * Common supertype for all Zoom event types.
    */
-  val ANY: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ANY
+  val Any: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ANY
+  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  val ANY = Any
 
   /**
    * This event occurs when user performs a zooming gesture such as dragging two fingers apart.
    */
-  val ZOOM: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM
+  val Zoom: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM
+  @deprecated ("Use Zoom; ZOOM will be removed in a future release", "8.0.60-R10")
+  val ZOOM = Zoom
 
   /**
    * This event occurs when a zooming gesture is detected.
    */
-  val ZOOM_STARTED: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM_STARTED
+  val ZoomStarted: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM_STARTED
+  @deprecated ("Use ZoomStarted; ZOOM_STARTED will be removed in a future release", "8.0.60-R10")
+  val ZOOM_STARTED = ZoomStarted
 
   /**
    * This event occurs when a zooming gesture ends.
    */
-  val ZOOM_FINISHED: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM_FINISHED
+  val ZoomFinished: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM_FINISHED
+  @deprecated ("Use ZoomFinished; ZOOM_FINISHED will be removed in a future release", "8.0.60-R10")
+  val ZOOM_FINISHED = ZoomFinished
 
 }
 

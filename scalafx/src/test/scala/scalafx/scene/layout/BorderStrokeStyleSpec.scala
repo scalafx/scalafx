@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,8 +49,8 @@ class BorderStrokeStyleSpec
 
   override protected def getJavaClassInstance = new jfxsl.BorderStrokeStyle(
     StrokeType.Centered,
-    StrokeLineJoin.BEVEL,
-    StrokeLineCap.BUTT,
+    StrokeLineJoin.Bevel,
+    StrokeLineCap.Butt,
     1,
     1,
     new java.util.ArrayList[java.lang.Double]()

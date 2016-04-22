@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,11 +42,6 @@ class TextFieldSpec
   extends SimpleSFXDelegateSpec[jfxsc.TextField, TextField](classOf[jfxsc.TextField], classOf[TextField])
   with AlignmentDelegateSpec[jfxsc.TextField, TextField]
   with RunOnApplicationThread {
-
-
-  it should "have a Property class that exposes all the JavaFX builder properties" in {
-    compareBuilderPropertiesInProxy(classOf[jfxsc.TextFieldBuilder[_]], classOf[TextFieldProperty])
-  }
 
   it should "have a Property class that exposes all the JavaFX properties" in {
     comparePropertiesInProxy(classOf[jfxsc.TextField], classOf[TextFieldProperty])

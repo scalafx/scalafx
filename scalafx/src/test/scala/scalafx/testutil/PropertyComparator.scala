@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,17 +60,6 @@ trait PropertyComparator
     javaFxProperties
   }
 
-  private def getBuilderProperties(javafxClassBuilder: Class[_]): Set[String] = {
-    val notAllowed = (n: String) => n == "applyTo" || n == "create" || n == "build" || super.isImplementation(n)
-
-    val javaFxBuilderProperties = javafxClassBuilder.getDeclaredMethods // todo - this eventually needs to use: getMethods
-      .filter(super.isPublicMethod)
-      .map(_.getName)
-      .filterNot(notAllowed)
-      .toSet
-    javaFxBuilderProperties
-  }
-
   def compareProperties(javafxClass: Class[_], scalafxClass: Class[_]) {
     assertProperties(getProperties(javafxClass), scalafxClass, "Properties")
   }
@@ -78,13 +67,4 @@ trait PropertyComparator
   def comparePropertiesInProxy(javafxClass: Class[_], scalafxPropertyProxy: Class[_]) {
     assertProperties(getProperties(javafxClass), scalafxPropertyProxy, "Properties in Proxy")
   }
-
-  def compareBuilderProperties(javafxClassBuilder: Class[_], scalafxClass: Class[_]) {
-    assertProperties(getBuilderProperties(javafxClassBuilder), scalafxClass, "Builder Properties")
-  }
-
-  def compareBuilderPropertiesInProxy(javafxClassBuilder: Class[_], scalafxPropertyProxy: Class[_]) {
-    assertProperties(getBuilderProperties(javafxClassBuilder), scalafxPropertyProxy, "Builder Properties in Proxy")
-  }
-
 }

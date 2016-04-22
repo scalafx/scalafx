@@ -27,7 +27,6 @@
 
 package scalafx.controls
 
-import javafx.scene.control.ContentDisplay
 import javafx.scene.{control => jfxsc, text => jfxst}
 
 import scalafx.Includes._
@@ -73,8 +72,8 @@ object TooltipDemo extends JFXApp {
       content = mainPane
     }
   }
-  mainPane.prefHeight <== stage.scene.height
-  mainPane.prefWidth <== stage.scene.width
+  mainPane.prefHeight <== stage.scene().height
+  mainPane.prefWidth <== stage.scene().width
 
 }
 
@@ -85,9 +84,9 @@ class TooltipControls(target: Tooltip) extends PropertiesNodes[Tooltip](target, 
   }
 
   val originalContentDisplay = target.contentDisplay()
-  val chbContentDisplay = new ChoiceBox[ContentDisplay] {
-    items = ObservableBuffer(ContentDisplay.BOTTOM, ContentDisplay.CENTER, ContentDisplay.GRAPHIC_ONLY, ContentDisplay.LEFT, ContentDisplay.RIGHT,
-      ContentDisplay.TEXT_ONLY, ContentDisplay.TOP)
+  val chbContentDisplay      = new ChoiceBox[jfxsc.ContentDisplay] {
+    items = ObservableBuffer(ContentDisplay.Bottom, ContentDisplay.Center, ContentDisplay.GraphicOnly, ContentDisplay.Left, ContentDisplay.Right,
+      ContentDisplay.TextOnly, ContentDisplay.Top)
     value <==> target.contentDisplay
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.scene
 
 import javafx.scene.{input => jfxsi, layout => jfxsl, paint => jfxsp}
@@ -355,7 +356,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * Defines a function to be called when a full press-drag-release gesture enters this `Scene`.
    */
   def onMouseDragEntered = delegate.onMouseDragEnteredProperty
-  def onMouseDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]) {
     onMouseDragEntered() = v
   }
 
@@ -363,7 +364,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * Defines a function to be called when a full press-drag-release gesture exits this `Scene`.
    */
   def onMouseDragExited = delegate.onMouseDragExitedProperty
-  def onMouseDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]) {
     onMouseDragExited() = v
   }
 
@@ -371,7 +372,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * Defines a function to be called when a full press-drag-release gesture progresses within this `Scene`.
    */
   def onMouseDragOver = delegate.onMouseDragOverProperty
-  def onMouseDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]) {
     onMouseDragOver() = v
   }
 
@@ -379,7 +380,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * Defines a function to be called when a full press-drag-release gesture ends within this `Scene`.
    */
   def onMouseDragReleased = delegate.onMouseDragReleasedProperty
-  def onMouseDragReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseDragReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]) {
     onMouseDragReleased() = v
   }
 
@@ -561,7 +562,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onRotate = delegate.onRotateProperty
-  def onRotate_=(v: jfxe.EventHandler[jfxsi.RotateEvent]) {
+  def onRotate_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]) {
     onRotate() = v
   }
 
@@ -571,7 +572,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onRotationFinished = delegate.onRotationFinishedProperty()
-  def onRotationFinished_=(v: jfxe.EventHandler[jfxsi.RotateEvent]) {
+  def onRotationFinished_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]) {
     onRotationFinished() = v
   }
 
@@ -581,7 +582,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onRotationStarted = delegate.onRotationFinishedProperty()
-  def onRotationStarted_=(v: jfxe.EventHandler[jfxsi.RotateEvent]) {
+  def onRotationStarted_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]) {
     onRotationStarted() = v
   }
 
@@ -591,7 +592,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onScrollFinished = delegate.onScrollFinishedProperty()
-  def onScrollFinished_=(v: jfxe.EventHandler[jfxsi.ScrollEvent]) {
+  def onScrollFinished_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]) {
     onScrollFinished() = v
   }
 
@@ -601,7 +602,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onScrollStarted = delegate.onScrollStartedProperty()
-  def onScrollStarted_=(v: jfxe.EventHandler[jfxsi.ScrollEvent]) {
+  def onScrollStarted_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]) {
     onScrollStarted() = v
   }
 
@@ -611,7 +612,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onSwipeDown = delegate.onSwipeDownProperty()
-  def onSwipeDown_=(v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+  def onSwipeDown_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]) {
     onSwipeDown() = v
   }
 
@@ -621,7 +622,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onSwipeLeft = delegate.onSwipeLeftProperty()
-  def onSwipeLeft_=(v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+  def onSwipeLeft_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]) {
     onSwipeLeft() = v
   }
 
@@ -631,7 +632,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onSwipeUp = delegate.onSwipeUpProperty()
-  def onSwipeUp_=(v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+  def onSwipeUp_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]) {
     onSwipeUp() = v
   }
 
@@ -641,7 +642,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onSwipeRight = delegate.onSwipeRightProperty()
-  def onSwipeRight_=(v: jfxe.EventHandler[jfxsi.SwipeEvent]) {
+  def onSwipeRight_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]) {
     onSwipeRight() = v
   }
 
@@ -651,7 +652,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onZoom = delegate.onZoomProperty()
-  def onZoom_=(v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
+  def onZoom_=(v: jfxe.EventHandler[_ >: jfxsi.ZoomEvent]) {
     onZoom() = v
   }
 
@@ -661,7 +662,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onZoomFinished = delegate.onZoomFinishedProperty()
-  def onZoomFinished_=(v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
+  def onZoomFinished_=(v: jfxe.EventHandler[_ >: jfxsi.ZoomEvent]) {
     onZoomFinished() = v
   }
 
@@ -671,7 +672,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onZoomStarted = delegate.onZoomStartedProperty()
-  def onZoomStarted_=(v: jfxe.EventHandler[jfxsi.ZoomEvent]) {
+  def onZoomStarted_=(v: jfxe.EventHandler[_ >: jfxsi.ZoomEvent]) {
     onZoomStarted() = v
   }
 
@@ -681,7 +682,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onTouchMoved = delegate.onTouchMovedProperty()
-  def onTouchMoved_=(v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+  def onTouchMoved_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]) {
     onTouchMoved() = v
   }
 
@@ -691,7 +692,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onTouchPressed = delegate.onTouchPressedProperty()
-  def onTouchPressed_=(v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+  def onTouchPressed_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]) {
     onTouchPressed() = v
   }
 
@@ -701,7 +702,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onTouchReleased = delegate.onTouchReleasedProperty()
-  def onTouchReleased_=(v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+  def onTouchReleased_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]) {
     onTouchReleased() = v
   }
 
@@ -711,7 +712,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * @since 2.2
    */
   def onTouchStationary = delegate.onTouchStationaryProperty()
-  def onTouchStationary_=(v: jfxe.EventHandler[jfxsi.TouchEvent]) {
+  def onTouchStationary_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]) {
     onTouchStationary() = v
   }
 

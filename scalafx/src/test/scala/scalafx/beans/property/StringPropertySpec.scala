@@ -481,4 +481,27 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support concatenation starting with nulls/primitives/strings" is (pending)
+
+  it should "support JFX concat(StringProperty)" in {
+    stringProperty <== stringProperty2.concat(stringProperty3)
+    stringProperty2() = "Hello"
+    stringProperty3() = "World"
+    stringProperty() should equal("HelloWorld")
+  }
+
+  it should "support concat(String)" in {
+    stringProperty <== sfxStringProperty.concat("World")
+    sfxStringProperty() = "Hello"
+    val x = stringProperty()
+    stringProperty() should equal("HelloWorld")
+  }
+
+  it should "support SFX concat(StringProperty)" in {
+    val sfxStringProperty2 = new StringProperty(bean, "Test SFX String")
+    stringProperty <== sfxStringProperty.concat(sfxStringProperty2)
+    sfxStringProperty2() = "World"
+    sfxStringProperty() = "Hello"
+    val x = stringProperty()
+    stringProperty() should equal("HelloWorld")
+  }
 }
