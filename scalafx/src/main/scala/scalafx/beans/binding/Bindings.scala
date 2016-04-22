@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.beans.binding
 
 import javafx.beans.{binding => jfxbb, value => jfxbv}
@@ -81,41 +82,6 @@ trait Bindings {
   def when(condition: => jfxbv.ObservableBooleanValue) = new ConditionBuilder(new jfxbb.When(condition))
 
   protected class ConditionBuilder(whenBuilder: jfxbb.When) {
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`(thenExpression: jfxbv.ObservableNumberValue) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`(thenExpression: Int) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`(thenExpression: Long) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`(thenExpression: Float) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`(thenExpression: Double) = choose(thenExpression)
-
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[T](thenExpression: jfxbv.ObservableBooleanValue) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[T](thenExpression: Boolean) = choose(thenExpression)
-
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[T](thenExpression: jfxbv.ObservableStringValue) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[T](thenExpression: String) = choose(thenExpression)
-
-    // explicit conversion needed due to T(Any) typed method
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[T](thenExpression: ObservableValue[T, T]) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[T](thenExpression: jfxbv.ObservableObjectValue[T]) = choose(thenExpression)
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[T](thenExpression: T) = choose(thenExpression)
-    /** Create `ObjectConditionBuilder` with type of the delegate rather than wrapping SFX.
-      *
-      * This is addressing problems pointed in Issue 16 - inability to bind an expression to JFX property
-      * when `thenValue` is a SFX wrapper. */
-    @deprecated(message = "`then` is a reserved word in Scala 2.10+, use `choose` instead. `then` will be removed in ScalaFX 1.0.0-m3", since = "1.0.0-m1")
-    def `then`[J <: Object](thenExpression: SFXDelegate[J]) = choose(thenExpression)
-
     def choose(chooseExpression: NumberBinding) = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression.delegate))
     def choose(chooseExpression: jfxbv.ObservableNumberValue) = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))
     def choose(chooseExpression: Int) = new NumberConditionBuilder(whenBuilder.`then`(chooseExpression))

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -76,11 +76,6 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * The node used as the content of this ScrollPane.
    */
   def content: ObjectProperty[jfxs.Node] = delegate.contentProperty
-
-  @deprecated("Use a ScalaFX Node instead a JavaFX Node", "1.0")
-  def content_=(v: jfxs.Node) {
-    content() = v
-  }
 
   def content_=(v: Node) {
     content() = v
