@@ -8,7 +8,7 @@ import scala.xml._
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val scalafxVersion = "8.0.60-R10-SNAPSHOT"
+val scalafxVersion = "8.0.92-R10-SNAPSHOT"
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v" + scalafxVersion
 
 // ScalaFX project
@@ -60,7 +60,7 @@ resolvers += sonatypeNexusSnapshots
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.10.6", "2.11.7", "2.12.0-M4"),
+  crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.0-M4"),
   scalaVersion <<= crossScalaVersions { versions => versions.head },
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
