@@ -32,6 +32,7 @@ import scala.collection.mutable.{ArrayLike, Builder}
 import scala.reflect.ClassTag
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
+import scalafx.event.subscriptions.Subscription
 
 /**
  * Companion Object for `[[scalafx.collections.ObservableArray]]`.
@@ -414,12 +415,18 @@ abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: 
    * @param op Function that will handle this $OA's modifications data, to be activated when some change is made.
    */
 
-  def onChange(op: (T, ObservableArray.Change) => Unit) {
-    delegate.addListener {
-      new jfxc.ArrayChangeListener[D] {
-        override def onChanged(array: D, sizeChanged: Boolean, start: Int, end: Int) {
-          op(ObservableArray.this.asInstanceOf[T], ObservableArray.Change(sizeChanged, start, end))
-        }
+  def onChange(op: (T, ObservableArray.Change) => Unit): Subscription = {
+    val listener = new jfxc.ArrayChangeListener[D] {
+      override def onChanged(array: D, sizeChanged: Boolean, start: Int, end: Int) {
+        op(ObservableArray.this.asInstanceOf[T], ObservableArray.Change(sizeChanged, start, end))
+      }
+    }
+
+    delegate.addListener(listener)
+
+    new Subscription {
+      def cancel() {
+        delegate.removeListener(listener)
       }
     }
   }
@@ -433,12 +440,18 @@ abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: 
    * @param op Function that will handle this $OA's modifications data, to be activated when some change is made.
    */
 
-  def onChange(op: => Unit) {
-    delegate.addListener {
-      new jfxc.ArrayChangeListener[D] {
-        override def onChanged(array: D, sizeChanged: Boolean, start: Int, end: Int) {
-          op
-        }
+  def onChange(op: => Unit): Subscription = {
+    val listener = new jfxc.ArrayChangeListener[D] {
+      override def onChanged(array: D, sizeChanged: Boolean, start: Int, end: Int) {
+        op
+      }
+    }
+
+    delegate.addListener(listener)
+
+    new Subscription {
+      def cancel() {
+        delegate.removeListener(listener)
       }
     }
   }
