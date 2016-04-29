@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -80,8 +80,8 @@ object DialogsDemo extends JFXApp {
   def informationDialog(): Unit = {
     new Alert(AlertType.Information) {
       initOwner(stage)
-      title = "Information Dialog."
-      headerText = "Look, an Information Dialog"
+      title = "Information Dialog"
+      headerText = "Look, an Information Dialog."
       contentText = "I have a great message for you!"
     }.showAndWait()
   }
