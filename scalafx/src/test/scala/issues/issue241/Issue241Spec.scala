@@ -25,28 +25,22 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package issues.issue240
+package issues.issue241
 
 import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
-import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
 
-import scalafx.scene.text.Text
+import scalafx.scene.shape.Line
 import scalafx.testutil.RunOnApplicationThread
 
-/** Issue 240: Text.strikethrough_=(v: Boolean) doesn't work. */
+/** Issue #241: Shape.stroke_=(v: Paint) doesn't accept null as v */
 @RunWith(classOf[JUnitRunner])
-class Issue240Spec extends FlatSpec with RunOnApplicationThread {
+class Issue241Spec extends FlatSpec with RunOnApplicationThread {
 
-
-  "Text" should "allow asining to `strikethrough`" in {
-    val text = new Text("hello, world")
-
-    text.strikethrough = true // This line causes infinite exceptions
-    text.strikethrough.value should be(true)
-
-    text.strikethrough = false // This line causes infinite exceptions
-    text.strikethrough.value should be(false)
+  "Shape" should "accept null `stroke` value" in {
+    val shape = new Line()
+    // Issue #241 will cause NPE in following line
+    shape.stroke = null
   }
 }
