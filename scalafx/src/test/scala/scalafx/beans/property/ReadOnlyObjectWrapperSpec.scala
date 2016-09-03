@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,7 +31,7 @@ import javafx.beans.{property => jfxbp}
 import javafx.scene.{control => jfxsc}
 
 import org.junit.runner.RunWith
-import org.scalatest.Matchers.{be, convertToAnyShouldWrapper, equal}
+import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 

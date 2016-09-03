@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,10 +29,10 @@ package scalafx.testutil
 import java.util.concurrent.CountDownLatch
 import javafx.application.Platform
 
-import org.scalatest.{Outcome, Suite, SuiteMixin}
+import org.scalatest.{Outcome, TestSuite, TestSuiteMixin}
 
-trait RunOnApplicationThread extends SuiteMixin {
-  this: Suite =>
+trait RunOnApplicationThread extends TestSuiteMixin {
+  this: TestSuite =>
   abstract override def withFixture(test: NoArgTest): Outcome = {
     BootstrapApplication.launch()
     val appThreadLatch = new CountDownLatch(1)
