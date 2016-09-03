@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -127,11 +127,11 @@ object ButtonBar {
   /**
    * Wraps a $JFX $URL0 $FC]].
    *
-   * @define EN ButtonData
-   * @define URL0 [[http://docs.oracle.com/javase/8/javafx/package/subpackage/FxClass.html
-   * @define JFX JavaFX
+   * @define EN          ButtonData
+    * @define URL0       [[http://docs.oracle.com/javase/8/javafx/api/javafx/javafx/scene/control/ButtonBar.ButtonData.html
+    * @define JFX        JavaFX
    * @define ORIGINALDOC Original Documentation]].
-   */
+    **/
   object ButtonData extends SFXEnumDelegateCompanion[jfxsc.ButtonBar.ButtonData, ButtonData] {
 
     /**

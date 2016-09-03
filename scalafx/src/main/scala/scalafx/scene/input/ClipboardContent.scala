@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -90,12 +90,11 @@ object ClipboardContent {
  *
  * @constructor Creates a new $FC from a $JFX one.
  * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
- *
- * @define FC ClipboardContent
- * @define URL0 [[http://docs.oracle.com/javase/8/javafx/scene/input/ClipboardContent.html
- * @define JFX JavaFX
+  * @define FC         ClipboardContent
+ * @define URL0        [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ClipboardContent.html
+  * @define JFX        JavaFX
  * @define ORIGINALDOC Original Documentation]].
- */
+  **/
 class ClipboardContent(override val delegate: jfxsi.ClipboardContent = new jfxsi.ClipboardContent)
   extends JMapWrapperLike[jfxsi.DataFormat, AnyRef, ClipboardContent]
   with SFXDelegate[jfxsi.ClipboardContent] {
