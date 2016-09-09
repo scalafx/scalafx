@@ -37,6 +37,11 @@ import scalafx.geometry.{HPos, Orientation, VPos}
 
 object Separator {
   implicit def sfxSeparator2jfx(v: Separator): jfxsc.Separator = if (v != null) v.delegate else null
+
+  /**
+    * Create new separator with provided orientation.
+    */
+  def apply(orientation: Orientation): Separator = new jfxsc.Separator(orientation)
 }
 
 class Separator(override val delegate: jfxsc.Separator = new jfxsc.Separator) extends Control(delegate) with SFXDelegate[jfxsc.Separator] {
