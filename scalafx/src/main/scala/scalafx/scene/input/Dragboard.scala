@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,12 +48,11 @@ object Dragboard {
  *
  * @constructor Creates a new $FC from a $JFX one.
  * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
- *
- * @define FC Dragboard
- * @define URL0 [[http://docs.oracle.com/javase/8/javafx/scene/input/Dragboard.html
- * @define JFX JavaFX
+  * @define FC         Dragboard
+ * @define URL0        [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/Dragboard.html
+  * @define JFX        JavaFX
  * @define ORIGINALDOC Original Documentation]].
- */
+  **/
 class Dragboard(override val delegate: jfxsi.Dragboard) extends Clipboard(delegate) with SFXDelegate[jfxsi.Dragboard] {
 
   /** The image used as a drag view. */

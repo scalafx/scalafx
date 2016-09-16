@@ -35,6 +35,7 @@ import scala.collection.mutable.{Builder, Set, SetLike}
 import scala.language.implicitConversions
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
+import scalafx.event.subscriptions.Subscription
 
 /**
  * Companion Object for `[[scalafx.collections.ObservableSet]]`.
@@ -202,8 +203,8 @@ trait ObservableSet[T]
    *
    * @param op Function that will handle this $OS's modifications data to be activated when some change was made.
    */
-  def onChange[J >: T](op: (ObservableSet[T], Change[J]) => Unit) {
-    delegate.addListener(new jfxc.SetChangeListener[T] {
+  def onChange[J >: T](op: (ObservableSet[T], Change[J]) => Unit): Subscription = {
+    val listener = new jfxc.SetChangeListener[T] {
       def onChanged(change: jfxc.SetChangeListener.Change[_ <: T]) {
         val changeEvent: Change[J] = (change.wasAdded, change.wasRemoved) match {
           case (true, false) => ObservableSet.Add(change.getElementAdded)
@@ -214,7 +215,15 @@ trait ObservableSet[T]
 
         op(ObservableSet.this, changeEvent)
       }
-    })
+    }
+
+    delegate.addListener(listener)
+
+    new Subscription {
+      def cancel() {
+        delegate.removeListener(listener)
+      }
+    }
   }
 
   /**
@@ -222,12 +231,20 @@ trait ObservableSet[T]
    *
    * @param op No-argument function to be activated when some change in this $OS was made.
    */
-  def onChange(op: => Unit) {
-    delegate.addListener(new jfxc.SetChangeListener[T] {
+  def onChange(op: => Unit): Subscription = {
+    val listener = new jfxc.SetChangeListener[T] {
       def onChanged(change: jfxc.SetChangeListener.Change[_ <: T]) {
         op
       }
-    })
+    }
+
+    delegate.addListener(listener)
+
+    new Subscription {
+      def cancel() {
+        delegate.removeListener(listener)
+      }
+    }
   }
 
 }

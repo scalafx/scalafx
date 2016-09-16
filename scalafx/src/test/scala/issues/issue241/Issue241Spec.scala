@@ -25,33 +25,22 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+package issues.issue241
 
 import org.junit.runner.RunWith
-import org.scalatest.Matchers._
+import org.scalatest.FlatSpec
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
+import scalafx.scene.shape.Line
+import scalafx.testutil.RunOnApplicationThread
 
-/** ReadOnlyStringWrapper Spec tests. */
+/** Issue #241: Shape.stroke_=(v: Paint) doesn't accept null as v */
 @RunWith(classOf[JUnitRunner])
-class ReadOnlyStringWrapperSpec extends FlatSpec with BeforeAndAfterEach {
+class Issue241Spec extends FlatSpec with RunOnApplicationThread {
 
-  "A ReadOnlyStringWrapper" should "be an instance of StringProperty" in {
-    val p = new ReadOnlyStringWrapper()
-    assert(p.isInstanceOf[StringProperty])
-  }
-
-  it should "have public field `readOnlyProperty` that is an instance of `ReadOnlyStringProperty`" in {
-    val p = new ReadOnlyStringWrapper()
-    assert(p.readOnlyProperty.isInstanceOf[ReadOnlyStringProperty])
-  }
-
-  it should "propagate value changes to `readOnlyProperty`" in {
-    val p = new ReadOnlyStringWrapper()
-    p.value = "F One"
-    p.readOnlyProperty() should equal("F One")
-    p.value = "Alfa Alfa"
-    p.readOnlyProperty() should equal("Alfa Alfa")
+  "Shape" should "accept null `stroke` value" in {
+    val shape = new Line()
+    // Issue #241 will cause NPE in following line
+    shape.stroke = null
   }
 }

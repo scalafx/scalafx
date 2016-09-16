@@ -35,6 +35,7 @@ import scala.collection.mutable.{Builder, Map, MapLike}
 import scala.language.implicitConversions
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
+import scalafx.event.subscriptions.Subscription
 
 /**
  * Companion Object for `[[scalafx.collections.ObservableMap]]`.
@@ -234,8 +235,8 @@ trait ObservableMap[K, V]
    *
    * @param op Function that will handle this $OM's modifications data to be activated when some change was made.
    */
-  def onChange(op: (ObservableMap[K, V], Change[K, V]) => Unit) {
-    delegate.addListener(new jfxc.MapChangeListener[K, V] {
+  def onChange(op: (ObservableMap[K, V], Change[K, V]) => Unit): Subscription = {
+    val listener = new jfxc.MapChangeListener[K, V] {
       def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]) {
         val changeEvent: Change[K, V] = (change.wasAdded, change.wasRemoved) match {
           case (true, true)   => Replace(change.getKey, change.getValueAdded, change.getValueRemoved)
@@ -246,7 +247,15 @@ trait ObservableMap[K, V]
 
         op(ObservableMap.this, changeEvent)
       }
-    })
+    }
+
+    delegate.addListener(listener)
+
+    new Subscription {
+      def cancel() {
+        delegate.removeListener(listener)
+      }
+    }
   }
 
   /**
@@ -254,12 +263,20 @@ trait ObservableMap[K, V]
    *
    * @param op No-argument function to be activated when some change in this $OM was made.
    */
-  def onChange(op: => Unit) {
-    delegate.addListener(new jfxc.MapChangeListener[K, V] {
+  def onChange(op: => Unit): Subscription = {
+    val listener = new jfxc.MapChangeListener[K, V] {
       def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]) {
         op
       }
-    })
+    }
+
+    delegate.addListener(listener)
+
+    new Subscription {
+      def cancel() {
+        delegate.removeListener(listener)
+      }
+    }
   }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -89,12 +89,11 @@ object Clipboard {
  *
  * @constructor Creates a new $FC from a $JFX one.
  * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
- *
- * @define FC Clipboard
- * @define URL0 [[http://docs.oracle.com/javase/8/javafx/scene/input/Clipboard.html
- * @define JFX JavaFX
+  * @define FC         Clipboard
+ * @define URL0        [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/Clipboard.html
+  * @define JFX        JavaFX
  * @define ORIGINALDOC Original Documentation]].
- */
+  **/
 class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxsi.Clipboard] {
 
   /**

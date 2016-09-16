@@ -30,6 +30,7 @@ package scalafx.beans.binding
 import javafx.beans.{binding => jfxbb, property => jfxbp}
 
 import org.junit.runner.RunWith
+import org.scalactic.TripleEqualsSupport.Spread
 import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
@@ -219,12 +220,12 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
     val a = new DoubleProperty()
     val b = Bindings.createDoubleBinding(() => a.value * a.value, a)
 
-    // NOTE: using `plusOrMinus` instead `+-` to avoid operator clash between ScalaFX and ScalaTest
+    // NOTE: using `Spread` instead `+-` to avoid operator clash between ScalaFX and ScalaTest
     a.value = 1.0
-    b.doubleValue should be(1.0 plusOrMinus 0.1)
+    b.doubleValue should be(Spread(1.0, 0.1))
 
     a.value = 2d
-    b.doubleValue should be(4d plusOrMinus 0.1)
+    b.doubleValue should be(Spread(4d, 0.1))
   }
 
   it should "support createFloatBinding" in {
@@ -233,10 +234,10 @@ class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
 
     // NOTE: using `plusOrMinus` instead `+-` to avoid operator clash between ScalaFX and ScalaTest
     a.value = 1.0f
-    b.floatValue should be(1.0f plusOrMinus 0.1f)
+    b.floatValue should be(Spread(1.0f, 0.1f))
 
     a.value = 2d
-    b.floatValue should be(4.0f plusOrMinus 0.1f)
+    b.floatValue should be(Spread(4.0f, 0.1f))
   }
 
   it should "support createIntegerBinding" in {

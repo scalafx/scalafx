@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -124,7 +124,7 @@ abstract class Shape(override val delegate: jfxss.Shape)
    */
   def stroke: ObjectProperty[jfxsp.Paint] = delegate.strokeProperty
   def stroke_=(v: Paint) {
-    stroke() = v.delegate
+    stroke() = v
   }
 
   /**
