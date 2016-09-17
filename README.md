@@ -27,7 +27,7 @@ With Java 7 use:
     
 For latest development version:
 
-    libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.92-R11-SNAPSHOT"
+    libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.102-R12-SNAPSHOT"
 
 
 The [ScalaFX Organization page](https://github.com/scalafx) on GitHub contains several sample 
