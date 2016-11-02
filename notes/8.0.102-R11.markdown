@@ -3,7 +3,7 @@
 New features and improvements:
 * [Issue #239][239] return subscription from `onChange` like the rest of observable collections. Thanks to PR from Piotr Mardziel (piotrm0)
 * [Issue #244][244] Add Selector creation with provided orientation enhancement.
-* [Issue #245][245] Support Scala 2.12.0-RC1 and ScalaTest 3.
+* [Issue #245][245] Support Scala 2.12.0 and ScalaTest 3.
 
 Bug fixes:
 * [Issue #240][240] `Text.strikethrough_=(v: Boolean)` doesn't work. Thanks to PR from MamoruAsagami.
