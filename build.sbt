@@ -61,7 +61,7 @@ lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
   crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.0"),
-  scalaVersion <<= crossScalaVersions { versions => versions.head },
+  scalaVersion := crossScalaVersions.value.head,
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
@@ -82,30 +82,31 @@ lazy val scalafxSettings = Seq(
   parallelExecution in Test := false,
   resolvers += sonatypeNexusSnapshots,
   // print junit-style XML for CI
-  testOptions in Test <+= (target in Test) map {
-    t => Tests.Argument(TestFrameworks.ScalaTest, "-u", "%s" format (t / "junitxmldir"))
+  testOptions in Test += {
+    val t = (target in Test).value
+    Tests.Argument(TestFrameworks.ScalaTest, "-u", s"$t/junitxmldir")
   },
   shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> " }
 ) ++ mavenCentralSettings
 
-lazy val manifestSetting = packageOptions <+= (name, version, organization) map {
-  (title, version, vendor) =>
-    Package.ManifestAttributes(
-      "Created-By" -> "Simple Build Tool",
-      "Built-By" -> Option(System.getenv("JAR_BUILT_BY")).getOrElse(System.getProperty("user.name")),
-      "Build-Jdk" -> System.getProperty("java.version"),
-      "Specification-Title" -> title,
-      "Specification-Version" -> version,
-      "Specification-Vendor" -> vendor,
-      "Implementation-Title" -> title,
-      "Implementation-Version" -> version,
-      "Implementation-Vendor-Id" -> vendor,
-      "Implementation-Vendor" -> vendor
-    )
+
+lazy val manifestSetting = packageOptions += {
+  Package.ManifestAttributes(
+    "Created-By" -> "Simple Build Tool",
+    "Built-By" -> Option(System.getenv("JAR_BUILT_BY")).getOrElse(System.getProperty("user.name")),
+    "Build-Jdk" -> System.getProperty("java.version"),
+    "Specification-Title" -> name.value,
+    "Specification-Version" -> version.value,
+    "Specification-Vendor" -> organization.value,
+    "Implementation-Title" -> name.value,
+    "Implementation-Version" -> version.value,
+    "Implementation-Vendor-Id" -> organization.value,
+    "Implementation-Vendor" -> organization.value
+  )
 }
 
-lazy val publishSetting = publishTo <<= version {
-  version: String =>
+lazy val publishSetting = publishTo := {
+  val version: String = scalafxVersion
     if (version.trim.endsWith("SNAPSHOT"))
       Some(sonatypeNexusSnapshots)
     else
@@ -118,65 +119,63 @@ lazy val mavenCentralSettings = Seq(
   homepage := Some(new URL("http://www.scalafx.org/")),
   startYear := Some(2011),
   licenses := Seq(("BSD", new URL("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
-  pomExtra <<= (pomExtra, name, description) {
-    (pom, name, desc) => pom ++ Group(
-      <scm>
-        <url>https://github.com/scalafx/scalafx</url>
-        <connection>scm:git:https://github.com/scalafx/scalafx.git</connection>
-      </scm>
-        <developers>
-          <developer>
-            <id>rafael.afonso</id>
-            <name>Rafael Afonso</name>
-            <url>https://github.com/rafonso</url>
-          </developer>
-          <developer>
-            <name>Mike Allen</name>
-          </developer>
-          <developer>
-            <id>Alain.Fagot.Bearez</id>
-            <name>Alain Béarez</name>
-            <url>http://cua.li/TI/</url>
-          </developer>
-          <developer>
-            <id>steveonjava</id>
-            <name>Stephen Chin</name>
-            <url>http://www.nighthacking.com/</url>
-          </developer>
-          <developer>
-            <id>KevinCoghlan</id>
-            <name>Kevin Coghlan</name>
-            <url>http://www.kevincoghlan.com</url>
-          </developer>
-          <developer>
-            <id>akauppi</id>
-            <name>Asko Kauppi</name>
-          </developer>
-          <developer>
-            <id>rladstaetter</id>
-            <name>Robert Ladstätter</name>
-          </developer>
-          <developer>
-            <id>peter.pilgrim</id>
-            <name>Peter Pilgrim</name>
-            <url>http://www.xenonique.co.uk/blog/</url>
-          </developer>
-          <developer>
-            <name>Matthew Pocock</name>
-          </developer>
-          <developer>
-            <id>sven.reimers</id>
-            <name>Sven Reimers</name>
-            <url>http://wiki.netbeans.org/SvenReimers/</url>
-          </developer>
-          <developer>
-            <id>jpsacha</id>
-            <name>Jarek Sacha</name>
-          </developer>
-          <developer>
-            <name>Curtis Stanford</name>
-          </developer>
-        </developers>
-    )
-  }
+  pomExtra :=
+    <scm>
+      <url>https://github.com/scalafx/scalafx</url>
+      <connection>scm:git:https://github.com/scalafx/scalafx.git</connection>
+    </scm>
+      <developers>
+        <developer>
+          <id>rafael.afonso</id>
+          <name>Rafael Afonso</name>
+          <url>https://github.com/rafonso</url>
+        </developer>
+        <developer>
+          <name>Mike Allen</name>
+        </developer>
+        <developer>
+          <id>Alain.Fagot.Bearez</id>
+          <name>Alain Béarez</name>
+          <url>http://cua.li/TI/</url>
+        </developer>
+        <developer>
+          <id>steveonjava</id>
+          <name>Stephen Chin</name>
+          <url>http://www.nighthacking.com/</url>
+        </developer>
+        <developer>
+          <id>KevinCoghlan</id>
+          <name>Kevin Coghlan</name>
+          <url>http://www.kevincoghlan.com</url>
+        </developer>
+        <developer>
+          <id>akauppi</id>
+          <name>Asko Kauppi</name>
+        </developer>
+        <developer>
+          <id>rladstaetter</id>
+          <name>Robert Ladstätter</name>
+        </developer>
+        <developer>
+          <id>peter.pilgrim</id>
+          <name>Peter Pilgrim</name>
+          <url>http://www.xenonique.co.uk/blog/</url>
+        </developer>
+        <developer>
+          <name>Matthew Pocock</name>
+        </developer>
+        <developer>
+          <id>sven.reimers</id>
+          <name>Sven Reimers</name>
+          <url>http://wiki.netbeans.org/SvenReimers/</url>
+        </developer>
+        <developer>
+          <id>jpsacha</id>
+          <name>Jarek Sacha</name>
+        </developer>
+        <developer>
+          <name>Curtis Stanford</name>
+        </developer>
+      </developers>
+
 )
