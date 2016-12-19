@@ -129,10 +129,12 @@ http://www.scala-sbt.org/release/docs/Getting-Started/Multi-Project.html
 4. Using IDEs
    ----------
 
-Both IntelliJ IDEA with Scala plugin and NetBeans with it's Scala plugin can import
+Both IntelliJ IDEA with Scala plugin and NetBeans with its Scala plugin can import
 project from the build.sbt file.
 
-If you want to use Eclipse you can generate project files using SBT:
+If you want to use Eclipse you can generate project files by setting up the sbteclipse
+plugin globally as described at https://github.com/typesafehub/sbteclipse#for-sbt-013-and-up
+and then running:
 
     % sbt eclipse
 or
