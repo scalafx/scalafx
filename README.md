@@ -89,20 +89,13 @@ The `scalafx-demos` is the sub project for the ScalaFX Framework Demonstrations 
 
 The `project` folder is reserved for Scala SBT.
 
+
 #Source Code Branching Policy
 
-Main development is for ScalaFX 8 and it is done on the `master` branch.
-ScalaFX 2.2 development is done on `SFX-2` branch.
-Features that are common to v.2 and v.8 should be commited to SFX-2, as merging os done only in one direction:
-from `SFX-2` into `main`.
+The current development is for ScalaFX 8 and it is done on the `master` branch. Releases are done on the `stable` branch. Releases are tagged with version number. Pull requests are only accepted off a brunch created from the `master` branch. When working on a pull request, create a separate branch for each feature or bug fix. This way the main development branch is not blocked by a pull request and pull requests are easier to merge individually.
 
-Pull requests are only accepted off `master` and `SFX-2` or their branches.
-When working on a pull request, it is recommended to create separate branch for each feature or bug fix.
-This way the main development branch is not blocked by a pull request and pull requests are easier
-to merge individually.
+The ScalaFX 2.2 development is no longer active. For those who need it, the code is on the `SFX-2` branch and past releases are on the `SFX-2-stable` branch. 
 
-Releases are done on `stable` and `SFX-2-stable` branches for ScalaFX 8 and ScalaFX 2, respectively.
-Releases are tagged with version number.
 
 #Credits
 
