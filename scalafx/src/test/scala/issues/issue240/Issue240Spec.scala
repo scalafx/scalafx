@@ -25,33 +25,28 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.beans.property
+package issues.issue240
 
 import org.junit.runner.RunWith
+import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
+import scalafx.scene.text.Text
+import scalafx.testutil.RunOnApplicationThread
 
-/** ReadOnlyStringWrapper Spec tests. */
+/** Issue 240: Text.strikethrough_=(v: Boolean) doesn't work. */
 @RunWith(classOf[JUnitRunner])
-class ReadOnlyStringWrapperSpec extends FlatSpec with BeforeAndAfterEach {
+class Issue240Spec extends FlatSpec with RunOnApplicationThread {
 
-  "A ReadOnlyStringWrapper" should "be an instance of StringProperty" in {
-    val p = new ReadOnlyStringWrapper()
-    assert(p.isInstanceOf[StringProperty])
-  }
 
-  it should "have public field `readOnlyProperty` that is an instance of `ReadOnlyStringProperty`" in {
-    val p = new ReadOnlyStringWrapper()
-    assert(p.readOnlyProperty.isInstanceOf[ReadOnlyStringProperty])
-  }
+  "Text" should "allow asining to `strikethrough`" in {
+    val text = new Text("hello, world")
 
-  it should "propagate value changes to `readOnlyProperty`" in {
-    val p = new ReadOnlyStringWrapper()
-    p.value = "F One"
-    p.readOnlyProperty() should equal("F One")
-    p.value = "Alfa Alfa"
-    p.readOnlyProperty() should equal("Alfa Alfa")
+    text.strikethrough = true // This line causes infinite exceptions
+    text.strikethrough.value should be(true)
+
+    text.strikethrough = false // This line causes infinite exceptions
+    text.strikethrough.value should be(false)
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,7 +50,7 @@ object TreeViewCellFactoryDemo extends JFXApp {
   stage = new PrimaryStage {
     title = "TreeView CellFactory Demo"
     scene = new Scene {
-      content = new TreeView[Person] {
+      root = new TreeView[Person] {
         prefWidth = 200
         prefHeight = 150
         showRoot = false
@@ -61,7 +61,7 @@ object TreeViewCellFactoryDemo extends JFXApp {
         // Use CellFactory to do custom rendering of a TreeCell
         cellFactory = (v: TreeView[Person]) => new TreeCell[Person] {
           treeItem.onChange((_, _, p) =>
-            text = if (p != null) p.value().firstName + " " + p.value().lastName else "?"
+            text = if (p != null) p.value().firstName + " " + p.value().lastName else null
           )
         }
       }

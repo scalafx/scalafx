@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@ import javafx.beans.{property => jfxbp, value => jfxbv}
 import javafx.scene.{control => jfxsc}
 
 import org.junit.runner.RunWith
-import org.scalatest.Matchers.{be, convertToAnyShouldWrapper, equal}
+import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
@@ -43,17 +43,17 @@ import scalafx.scene.control.Button
 import scalafx.testutil.RunOnApplicationThread
 
 /**
- * ObjectProperty Spec tests.
- *
- *
- */
+  * ObjectProperty Spec tests.
+  *
+  *
+  */
 @RunWith(classOf[JUnitRunner])
 class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach with RunOnApplicationThread {
   val bean = new Object()
-  var objectProperty: jfxbp.ObjectProperty[String] = null
-  var objectProperty2: jfxbp.ObjectProperty[String] = null
-  var sfxObjectProperty: ObjectProperty[String] = null
-  var booleanProperty: jfxbp.BooleanProperty = null
+  var objectProperty: jfxbp.ObjectProperty[String] = _
+  var objectProperty2: jfxbp.ObjectProperty[String] = _
+  var sfxObjectProperty: ObjectProperty[String] = _
+  var booleanProperty: jfxbp.BooleanProperty = _
 
   override protected def beforeEach() {
     objectProperty = ObjectProperty[String](bean, "Test Object")
@@ -63,7 +63,7 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach with RunOnAppl
   }
 
   "An Object Property" should "have a default value of null" in {
-    objectProperty.value should be(null)
+    objectProperty.value should be(null.asInstanceOf[String])
   }
 
   it should "be assignable using update" in {

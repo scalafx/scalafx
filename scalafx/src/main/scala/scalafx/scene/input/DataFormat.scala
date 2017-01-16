@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -83,12 +83,11 @@ object DataFormat {
  *
  * @constructor Creates a new $FC from a $JFX one.
  * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
- *
- * @define FC DataFormat
- * @define URL0 [[http://docs.oracle.com/javase/8/javafx/scene/input/DataFormat.html
- * @define JFX JavaFX
+  * @define FC         DataFormat
+ * @define URL0        [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/DataFormat.html
+  * @define JFX        JavaFX
  * @define ORIGINALDOC Original Documentation]].
- */
+  **/
 class DataFormat(override val delegate: jfxsi.DataFormat = new jfxsi.DataFormat) extends SFXDelegate[jfxsi.DataFormat] {
 
   /**

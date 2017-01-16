@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2016, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,11 @@
 package scalafx.beans.binding
 
 
-import javafx.beans.binding.{DoubleBinding, FloatBinding, IntegerBinding, LongBinding}
-import javafx.beans.value.ChangeListener
-import javafx.beans.{InvalidationListener, binding => jfxbb, value => jfxbv}
+import javafx.beans.{binding => jfxbb, value => jfxbv}
 import javafx.{beans => jfxb}
 
 import scala.language.implicitConversions
+import scalafx.beans.Observable
 import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
 
 object BindingIncludes extends BindingIncludes
@@ -140,23 +139,41 @@ trait BindingIncludes extends Bindings {
   /**
    * Converts a closure to a $JFX InvalidationListener.
    *
+    * @tparam R closure can have arbitrary return type to make usage easier (last statement in the closure does not
+    *           have to return `Unit`). Return value is ignored in generated listener.
    * @param il Closure to be converted.
    * @return a new $JFX InvalidationListener.
    */
-  implicit def closure2InvalidationListener(il: jfxb.Observable => Unit): InvalidationListener = new jfxb.InvalidationListener {
+  implicit def closure2InvalidationListener[R](il: jfxb.Observable => R): jfxb.InvalidationListener = new jfxb.InvalidationListener {
     def invalidated(observable: jfxb.Observable) {
       il(observable)
     }
   }
 
   /**
+    * Converts a closure to a $JFX InvalidationListener.
+    *
+    * @tparam R closure can have arbitrary return type to make usage easier (last statement in the closure does not
+    *           have to return `Unit`). Return value is ignored in generated listener.
+    * @param il Closure to be converted.
+    * @return a new $JFX InvalidationListener.
+    */
+  implicit def closureSFX2InvalidationListener[R](il: Observable => R): jfxb.InvalidationListener = new jfxb.InvalidationListener {
+    def invalidated(observable: jfxb.Observable) {
+      il(scalafx.beans.BeanIncludes.jfxObservable2sfx(observable))
+    }
+  }
+
+  /**
    * Converts a closure to a $JFX ChangeListener.
    *
-   * @tparam P Change listener type.
+   * @tparam P  Change listener type.
+    * @tparam R closure can have arbitrary return type to make usage easier (last statement in the closure does not
+    *           have to return `Unit`). Return value is ignored in generated listener.
    * @param cl Closure to be converted.
    * @return a new $JFX ChangeListener.
    */
-  implicit def closure2ChangedListener[P](cl: (jfxbv.ObservableValue[_ <: P], P, P) => Unit): ChangeListener[P] = new jfxbv.ChangeListener[P]() {
+  implicit def closure2ChangedListener[P, R](cl: (jfxbv.ObservableValue[_ <: P], P, P) => R): jfxbv.ChangeListener[P] = new jfxbv.ChangeListener[P]() {
     def changed(observable: jfxbv.ObservableValue[_ <: P], oldValue: P, newValue: P) {
       cl(observable, oldValue, newValue)
     }
@@ -169,9 +186,9 @@ trait BindingIncludes extends Bindings {
    * Converts a Integer to a $JFX IntegerBinding
    *
    * @param i Integer to generate a new IntegerBinding
-   * @return a new IntegerBinding generted from the Integer.
+    * @return a new IntegerBinding generated from the Integer.
    */
-  implicit def integer2IntegerBinding(i: Int): IntegerBinding = new jfxbb.IntegerBinding {
+  implicit def integer2IntegerBinding(i: Int): jfxbb.IntegerBinding = new jfxbb.IntegerBinding {
     def computeValue() = i
   }
 
@@ -181,7 +198,7 @@ trait BindingIncludes extends Bindings {
    * @param i Long to generate a new LongBinding
    * @return a new LongBinding generated from the Long.
    */
-  implicit def long2LongBinding(i: Long): LongBinding = new jfxbb.LongBinding {
+  implicit def long2LongBinding(i: Long): jfxbb.LongBinding = new jfxbb.LongBinding {
     def computeValue() = i
   }
 
@@ -191,7 +208,7 @@ trait BindingIncludes extends Bindings {
    * @param i Float to generate a new FloatBinding
    * @return a new FloatBinding generated from the Float.
    */
-  implicit def float2FloatBinding(i: Float): FloatBinding = new jfxbb.FloatBinding {
+  implicit def float2FloatBinding(i: Float): jfxbb.FloatBinding = new jfxbb.FloatBinding {
     def computeValue() = i
   }
 
@@ -201,7 +218,7 @@ trait BindingIncludes extends Bindings {
    * @param i Double to generate a new DoubleBinding
    * @return a new DoubleBinding generated from the Double.
    */
-  implicit def double2DoubleBinding(i: Double): DoubleBinding = new jfxbb.DoubleBinding {
+  implicit def double2DoubleBinding(i: Double): jfxbb.DoubleBinding = new jfxbb.DoubleBinding {
     def computeValue() = i
   }
 
