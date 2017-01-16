@@ -17,7 +17,8 @@ v.2.2 supporting JavaFX 2.x (Java 7).
 ScalaFX binaries are published in the Maven Central repository:
 [http://search.maven.org/#search|ga|1|scalafx](http://search.maven.org/#search%7Cga%7C1%7Cscalafx)
 
-To use ScalaFX with SBT and Java 8 add following dependency:
+To use ScalaFX with SBT and Java 8 add following dependency (to use
+the latest scalafx you might need Java version at least 1.8.40):
 
     libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.102-R11"
 
