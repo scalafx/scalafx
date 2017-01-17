@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
@@ -48,6 +49,9 @@ trait PropertyIncludes extends LowerPriorityIncludes {
    * @return ScalaFX BooleanProperty
    */
   implicit def jfxBooleanProperty2sfx(p: jfxbp.BooleanProperty): BooleanProperty = if (p != null) new BooleanProperty(p) else null
+
+  implicit def jfxListProperty2sfx[E <: Any](p: jfxbp.ListProperty[E]): BufferProperty[E] =
+    if (p != null) new BufferProperty(p) else null
 
   /**
    * Converts a
@@ -89,6 +93,9 @@ trait PropertyIncludes extends LowerPriorityIncludes {
    */
   implicit def jfxLongProperty2sfx(p: jfxbp.LongProperty): LongProperty = if (p != null) new LongProperty(p) else null
 
+  implicit def jfxMapProperty2sfx[K, V](p: jfxbp.MapProperty[K, V]): MapProperty[K, V] =
+    if (p != null) new MapProperty(p) else null
+
   /**
    * Converts a
    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ObjectProperty `javafx.beans.property.ObjectProperty`]]
@@ -99,6 +106,9 @@ trait PropertyIncludes extends LowerPriorityIncludes {
    * @return ScalaFX ObjectProperty
    */
   implicit def jfxObjectProperty2sfx[T <: Any](p: jfxbp.ObjectProperty[T]): ObjectProperty[T] = new ObjectProperty[T](p)
+
+  implicit def jfxSetProperty2sfx[E <: Any](p: jfxbp.SetProperty[E]): SetProperty[E] =
+    if (p != null) new SetProperty(p) else null
 
   /**
    * Converts a
@@ -119,6 +129,9 @@ trait PropertyIncludes extends LowerPriorityIncludes {
    * @return ScalaFX ReadOnlyBooleanProperty
    */
   implicit def jfxReadOnlyBooleanProperty2sfx(p: jfxbp.ReadOnlyBooleanProperty): ReadOnlyBooleanProperty = if (p != null) new ReadOnlyBooleanProperty(p) else null
+
+  implicit def jfxReadOnlyListProperty2sfx[E](p: jfxbp.ReadOnlyListProperty[E]): ReadOnlyBufferProperty[E] =
+    if (p != null) new ReadOnlyBufferProperty(p) else null
 
   /**
    * Converts a
@@ -160,6 +173,9 @@ trait PropertyIncludes extends LowerPriorityIncludes {
    */
   implicit def jfxReadOnlyLongProperty2sfx(p: jfxbp.ReadOnlyLongProperty): ReadOnlyLongProperty = if (p != null) new ReadOnlyLongProperty(p) else null
 
+  implicit def jfxReadOnlyMapProperty2sfx[K, V](p: jfxbp.ReadOnlyMapProperty[K, V]): ReadOnlyMapProperty[K, V] =
+    if (p != null) new ReadOnlyMapProperty(p) else null
+
   /**
    * Converts a
    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyObjectProperty `javafx.beans.property.ReadOnlyObjectProperty`]]
@@ -169,6 +185,9 @@ trait PropertyIncludes extends LowerPriorityIncludes {
    * @return ScalaFX ReadOnlyObjectProperty
    */
   implicit def jfxReadOnlyObjectProperty2sfx[T <: Any](p: jfxbp.ReadOnlyObjectProperty[T]): ReadOnlyObjectProperty[T] = new ReadOnlyObjectProperty[T](p)
+
+  implicit def jfxReadOnlySetProperty2sfx[E](p: jfxbp.ReadOnlySetProperty[E]): ReadOnlySetProperty[E] =
+    if (p != null) new ReadOnlySetProperty(p) else null
 
   /**
    * Converts a
@@ -189,6 +208,9 @@ trait PropertyIncludes extends LowerPriorityIncludes {
    * @return ScalaFX ReadOnlyStringWrapper
    */
   implicit def jfxReadOnlyBooleanWrapper2sfx(p: jfxbp.ReadOnlyBooleanWrapper): ReadOnlyBooleanWrapper = if (p != null) new ReadOnlyBooleanWrapper(p) else null
+
+  implicit def jfxReadOnlyListWrapper2sfx[E](p: jfxbp.ReadOnlyListWrapper[E]): ReadOnlyBufferWrapper[E] =
+    if (p != null) new ReadOnlyBufferWrapper(p) else null
 
   /**
    * Converts a
@@ -230,6 +252,9 @@ trait PropertyIncludes extends LowerPriorityIncludes {
    */
   implicit def jfxReadOnlyLongWrapper2sfx(p: jfxbp.ReadOnlyLongWrapper): ReadOnlyLongWrapper = if (p != null) new ReadOnlyLongWrapper(p) else null
 
+  implicit def jfxReadOnlyMapWrapper2sfx[K, V](p: jfxbp.ReadOnlyMapWrapper[K, V]): ReadOnlyMapWrapper[K, V] =
+    if (p != null) new ReadOnlyMapWrapper(p) else null
+
   /**
    * Converts a
    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyStringWrapper `javafx.beans.property.ReadOnlyStringWrapper`]]
@@ -239,6 +264,9 @@ trait PropertyIncludes extends LowerPriorityIncludes {
    * @return ScalaFX ReadOnlyObjectWrapper
    */
   implicit def jfxReadOnlyObjectWrapper2sfx[T <: Any](p: jfxbp.ReadOnlyObjectWrapper[T]): ReadOnlyObjectWrapper[T] = new ReadOnlyObjectWrapper[T](p)
+
+  implicit def jfxReadOnlySetWrapper2sfx[E](p: jfxbp.ReadOnlySetWrapper[E]): ReadOnlySetWrapper[E] =
+    if (p != null) new ReadOnlySetWrapper(p) else null
 
   /**
    * Converts a

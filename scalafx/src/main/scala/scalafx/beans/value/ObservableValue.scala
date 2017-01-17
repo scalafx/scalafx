@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,13 +24,15 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.beans.value
 
-import javafx.beans.value._
 import javafx.beans.{value => jfxbv}
+import javafx.{collections => jfxc}
 
 import scala.language.implicitConversions
 import scalafx.beans.Observable
+import scalafx.collections.{ObservableBuffer, ObservableMap, ObservableSet}
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
@@ -38,21 +40,33 @@ object ObservableValue {
   implicit def sfxObservableValue2jfx[T, J](ov: ObservableValue[T, J]): jfxbv.ObservableValue[J] = if (ov != null) ov.delegate else null
 
   // Conversions to JavaFX Marker classes (no need for these in scala, due to specialized classes)
-  implicit def sfxObservableValue2jfxIntegerValue(ov: ObservableValue[Int, Number]): ObservableIntegerValue = ov.delegate.asInstanceOf[jfxbv.ObservableIntegerValue]
+  implicit def sfxObservableValue2jfxIntegerValue(ov: ObservableValue[Int, Number]): jfxbv.ObservableIntegerValue = ov.delegate.asInstanceOf[jfxbv.ObservableIntegerValue]
 
-  implicit def sfxObservableValue2jfxLongValue(ov: ObservableValue[Long, Number]): ObservableLongValue = ov.delegate.asInstanceOf[jfxbv.ObservableLongValue]
+  implicit def sfxObservableValue2jfxLongValue(ov: ObservableValue[Long, Number]): jfxbv.ObservableLongValue = ov.delegate.asInstanceOf[jfxbv.ObservableLongValue]
 
-  implicit def sfxObservableValue2jfxFloatValue(ov: ObservableValue[Float, Number]): ObservableFloatValue = ov.delegate.asInstanceOf[jfxbv.ObservableFloatValue]
+  implicit def sfxObservableValue2jfxFloatValue(ov: ObservableValue[Float, Number]): jfxbv.ObservableFloatValue = ov.delegate.asInstanceOf[jfxbv.ObservableFloatValue]
 
-  implicit def sfxObservableValue2jfxDoubleValue(ov: ObservableValue[Double, Number]): ObservableDoubleValue = ov.delegate.asInstanceOf[jfxbv.ObservableDoubleValue]
+  implicit def sfxObservableValue2jfxDoubleValue(ov: ObservableValue[Double, Number]): jfxbv.ObservableDoubleValue = ov.delegate.asInstanceOf[jfxbv.ObservableDoubleValue]
 
-  implicit def sfxObservableValue2jfxBooleanValue(ov: ObservableValue[Boolean, java.lang.Boolean]): ObservableBooleanValue = ov.delegate.asInstanceOf[jfxbv.ObservableBooleanValue]
+  implicit def sfxObservableValue2jfxBooleanValue(ov: ObservableValue[Boolean, java.lang.Boolean]): jfxbv.ObservableBooleanValue = ov.delegate.asInstanceOf[jfxbv.ObservableBooleanValue]
 
-  implicit def sfxObservableValue2jfxStringValue(ov: ObservableValue[String, String]): ObservableStringValue = ov.delegate.asInstanceOf[jfxbv.ObservableStringValue]
+  implicit def sfxObservableValue2jfxStringValue(ov: ObservableValue[String, String]): jfxbv.ObservableStringValue = ov.delegate.asInstanceOf[jfxbv.ObservableStringValue]
 
-  implicit def sfxObservableValue2jfxObjectValue[T](ov: ObservableValue[T, T]): ObservableObjectValue[T] = ov.delegate.asInstanceOf[jfxbv.ObservableObjectValue[T]]
+  implicit def sfxObservableValue2jfxObjectValue[T](ov: ObservableValue[T, T]): jfxbv.ObservableObjectValue[T] = ov.delegate.asInstanceOf[jfxbv.ObservableObjectValue[T]]
 
-  implicit def sfxObservableValue2jfxNumberValue(ov: ObservableValue[Number, Number]): ObservableNumberValue = ov.delegate.asInstanceOf[jfxbv.ObservableNumberValue]
+  implicit def sfxObservableValue2jfxNumberValue(ov: ObservableValue[Number, Number]): jfxbv.ObservableNumberValue = ov.delegate.asInstanceOf[jfxbv.ObservableNumberValue]
+
+  implicit def sfxObservableValue2jfxListValue[E](ov: ObservableValue[ObservableBuffer[E], jfxc.ObservableList[E]]
+                                                 ): jfxbv.ObservableListValue[E] =
+    ov.delegate.asInstanceOf[jfxbv.ObservableListValue[E]]
+
+  implicit def sfxObservableValue2jfxSetValue[E](ov: ObservableValue[ObservableSet[E], jfxc.ObservableSet[E]]
+                                                ): jfxbv.ObservableListValue[E] =
+    ov.delegate.asInstanceOf[jfxbv.ObservableListValue[E]]
+
+  implicit def sfxObservableValue2jfxMapValue[K, V](ov: ObservableValue[ObservableMap[K, V], jfxc.ObservableMap[K, V]]
+                                                   ): jfxbv.ObservableMapValue[K, V] =
+    ov.delegate.asInstanceOf[jfxbv.ObservableMapValue[K, V]]
 }
 
 /**
@@ -91,9 +105,9 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
    * method from $CV.
    *
    * @tparam J1 J superclass.
-   * @param op Function that receives a 
-   *           [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableValue.html $OV]],
-   *           the old value and the new value. It will be called when value changes.
+    * @param op Function that receives a
+   *            [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableValue.html $OV]],
+   *            the old value and the new value. It will be called when value changes.
    * @return $SUBRET
    */
   def onChange[J1 >: J](op: (ObservableValue[T, J], J1, J1) => Unit): Subscription = {

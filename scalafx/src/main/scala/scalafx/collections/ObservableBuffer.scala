@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -247,10 +247,10 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
 class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.FXCollections.observableArrayList[T])
   extends mutable.Buffer[T]
     with mutable.BufferLike[T, ObservableBuffer[T]]
-  with GenericTraversableTemplate[T, ObservableBuffer]
+    with GenericTraversableTemplate[T, ObservableBuffer]
     with mutable.Builder[T, ObservableBuffer[T]]
-  with Observable
-  with SFXDelegate[jfxc.ObservableList[T]] {
+    with Observable
+    with SFXDelegate[jfxc.ObservableList[T]] {
 
   /**
     * The factory companion object that builds instances of class $OB.
