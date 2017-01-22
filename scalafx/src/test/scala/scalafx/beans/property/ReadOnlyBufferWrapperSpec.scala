@@ -30,6 +30,7 @@ package scalafx.beans.property
 import javafx.beans.{property => jfxbp}
 
 import org.junit.runner.RunWith
+import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
 
 import scala.language.implicitConversions
@@ -45,6 +46,43 @@ class ReadOnlyBufferWrapperSpec
   extends SimpleSFXDelegateSpec[jfxbp.ReadOnlyListWrapper[Int], ReadOnlyBufferWrapper[Int]](
     classOf[jfxbp.ReadOnlyListWrapper[Int]], classOf[ReadOnlyBufferWrapper[Int]]) {
 
+  val bean = new Object()
+  val name = "Bean Name X"
+
   // Ignore property comparison, it cannot deal with 'getReadOnlyProperty' correctly
   override def compareProperties(javafxClass: Class[_], scalafxClass: Class[_]): Unit = {}
+
+  it should "create from items apply(items)" in {
+    val roWrapper = ReadOnlyBufferWrapper(Seq(1, 2, 3, 5, 11, 13))
+
+    roWrapper.size.value should be(6)
+    roWrapper.value.toArray should be(Array(1, 2, 3, 5, 11, 13))
+  }
+
+  it should "create from items apply(bean, name, items)" in {
+    val roWrapper = ReadOnlyBufferWrapper(bean, name, Seq(1, 2, 3, 5, 11, 13))
+
+    roWrapper.bean should equal(bean)
+    roWrapper.name should equal(name)
+
+    roWrapper.size.value should be(6)
+    roWrapper.value.toArray should be(Array(1, 2, 3, 5, 11, 13))
+  }
+
+  it should "create from items new(items)" in {
+    val roWrapper = new ReadOnlyBufferWrapper(Seq(1, 2, 3, 5, 11, 13))
+
+    roWrapper.size.value should be(6)
+    roWrapper.value.toArray should be(Array(1, 2, 3, 5, 11, 13))
+  }
+
+  it should "create from items new(items, name, items)" in {
+    val roWrapper = new ReadOnlyBufferWrapper(bean, name, Seq(1, 2, 3, 5, 11, 13))
+
+    roWrapper.bean should equal(bean)
+    roWrapper.name should equal(name)
+
+    roWrapper.size.value should be(6)
+    roWrapper.value.toArray should be(Array(1, 2, 3, 5, 11, 13))
+  }
 }

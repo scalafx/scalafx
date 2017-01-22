@@ -30,6 +30,7 @@ package scalafx.beans.property
 import javafx.beans.{property => jfxbp}
 
 import org.junit.runner.RunWith
+import org.scalatest.Matchers._
 import org.scalatest.junit.JUnitRunner
 
 import scala.language.implicitConversions
@@ -45,5 +46,42 @@ class BufferPropertySpec
   extends SimpleSFXDelegateSpec[jfxbp.ListProperty[Int], BufferProperty[Int]](
     classOf[jfxbp.ListProperty[Int]], classOf[BufferProperty[Int]]) {
 
+  val bean = new Object()
+  val name = "Bean Name X"
+
   override protected def getJavaClassInstance: jfxbp.ListProperty[Int] = new jfxbp.SimpleListProperty[Int]()
+
+  it should "create from items apply(items)" in {
+    val p = BufferProperty(Seq(1, 2, 3, 5, 11, 13))
+
+    p.size.value should be(6)
+    p.value.toArray should be(Array(1, 2, 3, 5, 11, 13))
+  }
+
+  it should "create from items apply(bean, name, items)" in {
+    val p = BufferProperty(bean, name, Seq(1, 2, 3, 5, 11, 13))
+
+    p.bean should equal(bean)
+    p.name should equal(name)
+
+    p.size.value should be(6)
+    p.value.toArray should be(Array(1, 2, 3, 5, 11, 13))
+  }
+
+  it should "create from items new(items)" in {
+    val p = new BufferProperty(Seq(1, 2, 3, 5, 11, 13))
+
+    p.size.value should be(6)
+    p.value.toArray should be(Array(1, 2, 3, 5, 11, 13))
+  }
+
+  it should "create from items new(items, name, items)" in {
+    val p = new BufferProperty(bean, name, Seq(1, 2, 3, 5, 11, 13))
+
+    p.bean should equal(bean)
+    p.name should equal(name)
+
+    p.size.value should be(6)
+    p.value.toArray should be(Array(1, 2, 3, 5, 11, 13))
+  }
 }

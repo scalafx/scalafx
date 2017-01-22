@@ -28,6 +28,7 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
+import javafx.{collections => jfxc}
 
 import scala.language.implicitConversions
 import scalafx.beans.property.PropertyIncludes.jfxReadOnlyListProperty2sfx
@@ -54,8 +55,8 @@ object ReadOnlyBufferWrapper {
   /**
     * Creates a new ReadOnlyBufferWrapper.
     *
-    * @param bean the bean of this BufferProperty
-    * @param name the name of this BufferProperty
+    * @param bean the bean of this ReadOnlyBufferWrapper
+    * @param name the name of this ReadOnlyBufferWrapper
     */
   def apply[E <: Any](bean: Any, name: String) =
     new ReadOnlyBufferWrapper(new jfxbp.ReadOnlyListWrapper[E](bean, name))
@@ -63,12 +64,38 @@ object ReadOnlyBufferWrapper {
   /**
     * Creates a new ReadOnlyBufferWrapper.
     *
-    * @param bean  the bean of this BufferProperty
-    * @param name  the name of this BufferProperty
+    * @param bean  the bean of this ReadOnlyBufferWrapper
+    * @param name  the name of this ReadOnlyBufferWrapper
     * @param value the initial value
     */
   def apply[E <: Any](bean: Any, name: String, value: ObservableBuffer[E]) =
     new ReadOnlyBufferWrapper(new jfxbp.ReadOnlyListWrapper(bean, name, value.delegate))
+
+  /**
+    * Creates a new ReadOnlyBufferWrapper and a its value from a sequence of elements.
+    *
+    * @param items Sequence of elements to assign to ReadOnlyBufferWrapper value
+    * @return new ReadOnlyBufferWrapper from items
+    */
+  def apply[E <: Any](items: Seq[E]): ReadOnlyBufferWrapper[E] = {
+    import scala.collection.JavaConversions._
+    new ReadOnlyBufferWrapper[E](
+      new jfxbp.ReadOnlyListWrapper(jfxc.FXCollections.observableArrayList[E](items)))
+  }
+
+  /**
+    * Creates a new ReadOnlyBufferWrapper and a its value from a sequence of elements.
+    *
+    * @param bean  the bean of this ReadOnlyBufferWrapper
+    * @param name  the name of this ReadOnlyBufferWrapper
+    * @param items Sequence of elements to assign to ReadOnlyBufferWrapper value
+    * @return new ReadOnlyBufferWrapper from items
+    */
+  def apply[E <: Any](bean: Any, name: String, items: Seq[E]): ReadOnlyBufferWrapper[E] = {
+    import scala.collection.JavaConversions._
+    new ReadOnlyBufferWrapper[E](
+      new jfxbp.ReadOnlyListWrapper(bean, name, jfxc.FXCollections.observableArrayList[E](items)))
+  }
 }
 
 
@@ -89,8 +116,8 @@ class ReadOnlyBufferWrapper[E <: Any](override val delegate: jfxbp.ReadOnlyListW
   /**
     * Creates a new ReadOnlyBufferWrapper.
     *
-    * @param bean the bean of this BufferProperty
-    * @param name the name of this BufferProperty
+    * @param bean the bean of this ReadOnlyBufferWrapper
+    * @param name the name of this ReadOnlyBufferWrapper
     */
   def this(bean: Any, name: String) =
     this(new jfxbp.ReadOnlyListWrapper[E](bean, name))
@@ -98,12 +125,42 @@ class ReadOnlyBufferWrapper[E <: Any](override val delegate: jfxbp.ReadOnlyListW
   /**
     * Creates a new ReadOnlyBufferWrapper.
     *
-    * @param bean  the bean of this BufferProperty
-    * @param name  the name of this BufferProperty
+    * @param bean  the bean of this ReadOnlyBufferWrapper
+    * @param name  the name of this ReadOnlyBufferWrapper
     * @param value the initial value
     */
   def this(bean: Any, name: String, value: ObservableBuffer[E]) =
     this(new jfxbp.ReadOnlyListWrapper[E](bean, name, value))
+
+  /**
+    * Creates a new ReadOnlyBufferWrapper and a its value from a sequence of elements.
+    *
+    * @param items Sequence of elements to assign to ReadOnlyBufferWrapper value
+    * @return new ReadOnlyBufferWrapper from items
+    */
+  def this(items: Seq[E]) = {
+    this(
+      new jfxbp.ReadOnlyListWrapper(
+        jfxc.FXCollections.observableArrayList[E](
+          scala.collection.JavaConversions.seqAsJavaList(items))))
+  }
+
+  /**
+    * Creates a new ReadOnlyBufferWrapper and a its value from a sequence of elements.
+    *
+    * @param bean  the bean of this ReadOnlyBufferWrapper
+    * @param name  the name of this ReadOnlyBufferWrapper
+    * @param items Sequence of elements to assign to ReadOnlyBufferWrapper value
+    * @return new ReadOnlyBufferWrapper from items
+    */
+  def this(bean: Any, name: String, items: Seq[E]) = {
+    this(
+      new jfxbp.ReadOnlyListWrapper(
+        bean,
+        name,
+        jfxc.FXCollections.observableArrayList[E](
+          scala.collection.JavaConversions.seqAsJavaList(items))))
+  }
 
   /**
     * Returns the readonly property, that is synchronized with this ReadOnlyListWrapper.
