@@ -20,16 +20,21 @@ ScalaFX binaries are published in the Maven Central repository:
 To use ScalaFX with SBT and Java 8 add following dependency (to use
 the latest scalafx you might need Java version at least 1.8.40):
 
-    libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.102-R11"
+```scala
+libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.102-R11"
+```
 
 With Java 7 use:
 
-    libraryDependencies += "org.scalafx" %% "scalafx" % "2.2.76-R11"
+```scala
+libraryDependencies += "org.scalafx" %% "scalafx" % "2.2.76-R11"
+```
 
 For latest development version:
 
-    libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.102-R12-SNAPSHOT"
-
+```scala
+libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.102-R12-SNAPSHOT"
+```
 
 The [ScalaFX Organization page](https://github.com/scalafx) on GitHub contains several sample
 project that illustrate use of ScalaFX.
@@ -39,7 +44,9 @@ Snapshot releases are also regularly published on Sonatype. To use a snapshot
 build you may need to add "Sonatype OSS Snapshots" resolver to you SBT
 configuration:
 
-    resolvers += Opts.resolver.sonatypeSnapshots
+```scala
+resolvers += Opts.resolver.sonatypeSnapshots
+```
 
 If you just want to download a recent snapshot build you can also use Travis CI build site
 https://travis-ci.org/scalafx/scalafx
