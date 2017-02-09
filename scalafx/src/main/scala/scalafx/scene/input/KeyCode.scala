@@ -844,4 +844,10 @@ sealed case class KeyCode(override val delegate: jfxsi.KeyCode)
 
   /** Space, tab and enter */
   def isWhitespaceKey: Boolean = delegate.isWhitespaceKey
+
+  /** Control key */
+  def isControlKey: Boolean = delegate.isControlKey
+
+  /** Command key */
+  def isCommandKey: Boolean = delegate.isCommandKey
 }
