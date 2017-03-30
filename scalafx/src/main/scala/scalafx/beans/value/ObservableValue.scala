@@ -27,11 +27,14 @@
 
 package scalafx.beans.value
 
+import javafx.beans.binding.{DoubleBinding, IntegerBinding}
 import javafx.beans.{value => jfxbv}
 import javafx.{collections => jfxc}
 
+import scala.collection.mutable
 import scala.language.implicitConversions
 import scalafx.beans.Observable
+import scalafx.beans.binding._
 import scalafx.collections.{ObservableBuffer, ObservableMap, ObservableSet}
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
@@ -147,4 +150,15 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
       }
     }
   }
+
+  def map[X](f: T => X): ObjectBinding[X] = Bindings.createObjectBinding(() => f(value), this)
+
+  def map(f: T => Boolean): BooleanBinding = Bindings.createBooleanBinding(() => f(value), this)
+
+  def map(f: T => Int): IntegerBinding = Bindings.createIntegerBinding(() => f(value), this)
+
+  def map(f: T => Double): DoubleBinding = Bindings.createDoubleBinding(() => f(value), this)
+
+  def map(f: T => String): StringBinding = Bindings.createStringBinding(() => f(value), this)
+
 }
