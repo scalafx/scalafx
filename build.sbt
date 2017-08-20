@@ -10,41 +10,36 @@ val scalafxVersion = "8.0.102-R12-SNAPSHOT"
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v" + scalafxVersion
 
 // ScalaFX project
-lazy val scalafx = Project(
-  id = "scalafx",
-  base = file("scalafx"),
-  settings = scalafxSettings ++ Seq(
-    description := "The ScalaFX framework",
-    fork in run := true,
-    scalacOptions in(Compile, doc) ++= Seq(
-      "-sourcepath", baseDirectory.value.toString,
-      "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.creole",
-      "-doc-source-url", "https://github.com/scalafx/scalafx/blob/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala"
-    ) ++ (Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
-      case Some(path) => Seq("-diagrams", "-diagrams-dot-path", path)
-      case None       => Seq.empty[String]
-    })
-  )
+lazy val scalafx = (project in file("scalafx")).settings(
+  scalafxSettings,
+  description := "The ScalaFX framework",
+  fork in run := true,
+  scalacOptions in(Compile, doc) ++= Seq(
+    "-sourcepath", baseDirectory.value.toString,
+    "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.creole",
+    "-doc-source-url", "https://github.com/scalafx/scalafx/blob/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala"
+  ) ++ (Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
+    case Some(path) => Seq("-diagrams", "-diagrams-dot-path", path)
+    case None => Seq.empty[String]
+  })
 )
 
 // ScalaFX Demos project
-lazy val scalafxDemos = Project(
-  id = "scalafx-demos",
-  base = file("scalafx-demos"),
-  settings = scalafxSettings ++ Seq(
-    description := "The ScalaFX demonstrations",
-    fork in run := true,
-    javaOptions ++= Seq(
-      "-Xmx512M",
-      "-Djavafx.verbose"
-    ),
-    publishArtifact := false
-  )
-) dependsOn (scalafx % "compile;test->test")
+lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
+  scalafxSettings,
+  description := "The ScalaFX demonstrations",
+  fork in run := true,
+  javaOptions ++= Seq(
+    "-Xmx512M",
+    "-Djavafx.verbose"
+  ),
+  publishArtifact := false
+).dependsOn(scalafx % "compile;test->test")
+
 
 // Dependencies
 lazy val junit = "junit" % "junit" % "4.12"
-lazy val scalatest = "org.scalatest" %% "scalatest" % "3.0.0"
+lazy val scalatest = "org.scalatest" %% "scalatest" % "3.0.4"
 
 // Resolvers
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -58,7 +53,7 @@ resolvers += sonatypeNexusSnapshots
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.10.6", "2.11.11", "2.12.2"),
+  crossScalaVersions := Seq("2.10.6", "2.11.11", "2.12.3"),
   scalaVersion := crossScalaVersions.value.head,
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
@@ -105,10 +100,10 @@ lazy val manifestSetting = packageOptions += {
 
 lazy val publishSetting = publishTo := {
   val version: String = scalafxVersion
-    if (version.trim.endsWith("SNAPSHOT"))
-      Some(sonatypeNexusSnapshots)
-    else
-      Some(sonatypeNexusStaging)
+  if (version.trim.endsWith("SNAPSHOT"))
+    Some(sonatypeNexusSnapshots)
+  else
+    Some(sonatypeNexusStaging)
 }
 
 // Metadata needed by Maven Central
