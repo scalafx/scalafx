@@ -21,7 +21,7 @@ To use ScalaFX with SBT and Java 8 add following dependency (to use
 the latest scalafx you might need Java version at least 1.8.40):
 
 ```scala
-libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.102-R11"
+libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.144-R12"
 ```
 
 With Java 7 use:
@@ -33,7 +33,7 @@ libraryDependencies += "org.scalafx" %% "scalafx" % "2.2.76-R11"
 For latest development version:
 
 ```scala
-libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.102-R12-SNAPSHOT"
+libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.144-R13-SNAPSHOT"
 ```
 
 The [ScalaFX Organization page](https://github.com/scalafx) on GitHub contains several sample
@@ -69,7 +69,7 @@ folder of the project.
 
 The following software is needed to build ScalaFX:
 
-  1. [SBT](http://www.scala-sbt.org/) v.0.13.5 or better
+  1. [SBT](http://www.scala-sbt.org/) v.1.0.0 or better
   2. [Scala](http://www.scala.org/)
     - ScalaFX 8.0 builds with Scala 2.10.2 or newer.
     - ScalaFX 2.2 builds with either Scala version 2.9.3+, 2.10.+, or 2.11.+
