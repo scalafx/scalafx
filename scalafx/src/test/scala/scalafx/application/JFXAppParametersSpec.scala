@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,7 @@ package scalafx.application
 import javafx.{application => jfxa}
 
 import com.sun.javafx.{application => csjfxa}
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scala.collection.JavaConversions._
 import scalafx.Includes.jfxParameters2sfx
@@ -43,7 +41,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  *
  */
-@RunWith(classOf[JUnitRunner])
 class JFXAppParametersSpec
   extends SimpleSFXDelegateSpec[jfxa.Application.Parameters, JFXApp.Parameters](classOf[jfxa.Application.Parameters], classOf[JFXApp.Parameters]) {
 

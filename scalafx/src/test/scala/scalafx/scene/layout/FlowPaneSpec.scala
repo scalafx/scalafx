@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,16 +28,12 @@ package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.{AlignmentDelegateSpec, SimpleSFXDelegateSpec}
 
 /**
  * FlowPane Spec tests.
  */
-@RunWith(classOf[JUnitRunner])
 class FlowPaneSpec
   extends SimpleSFXDelegateSpec[jfxsl.FlowPane, FlowPane](classOf[jfxsl.FlowPane], classOf[FlowPane])
   with AlignmentDelegateSpec[jfxsl.FlowPane, FlowPane]

@@ -38,7 +38,6 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
 
 
 // Dependencies
-lazy val junit = "junit" % "junit" % "4.12"
 lazy val scalatest = "org.scalatest" %% "scalatest" % "3.0.4"
 
 // Resolvers
@@ -66,8 +65,7 @@ lazy val scalafxSettings = Seq(
     "-Xlint:deprecation"),
   libraryDependencies ++= Seq(
     "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-    scalatest % "test",
-    junit % "test"),
+    scalatest % "test"),
   autoAPIMappings := true,
   manifestSetting,
   publishSetting,

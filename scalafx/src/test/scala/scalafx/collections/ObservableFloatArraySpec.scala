@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,6 @@ package scalafx.collections
 
 import javafx.{collections => jfxc}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scala.collection.mutable.Buffer
 import scalafx.Includes._
 import scalafx.collections.ObservableArray.Change
@@ -40,7 +37,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 /**
  * ObservableFloatArray Spec tests.
  */
-@RunWith(classOf[JUnitRunner])
 class ObservableFloatArraySpec
   extends SimpleSFXDelegateSpec[jfxc.ObservableFloatArray, ObservableFloatArray](classOf[jfxc.ObservableFloatArray],
     classOf[ObservableFloatArray]) {

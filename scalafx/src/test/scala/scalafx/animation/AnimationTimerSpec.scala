@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,6 @@ package scalafx.animation
 
 import javafx.{animation => jfxa}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes.jfxAnimationTimer2sfx
 import scalafx.animation.AnimationTimer.sfxAnimationTimer2jfx
 import scalafx.testutil.SimpleSFXDelegateSpec
@@ -40,7 +37,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  *
  */
-@RunWith(classOf[JUnitRunner])
 class AnimationTimerSpec
   extends SimpleSFXDelegateSpec[jfxa.AnimationTimer, AnimationTimer](classOf[jfxa.AnimationTimer], classOf[AnimationTimer]) {
 

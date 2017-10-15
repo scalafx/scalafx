@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,6 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
@@ -40,7 +37,6 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  *
  * Test for [[scalafx.scene.control.ChoiceDialog]].
  */
-@RunWith(classOf[JUnitRunner])
 class ChoiceDialogSpec[T]
   extends SimpleSFXDelegateSpec[jfxsc.ChoiceDialog[T], ChoiceDialog[T]](
     classOf[jfxsc.ChoiceDialog[T]], classOf[ChoiceDialog[T]])

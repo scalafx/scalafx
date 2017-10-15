@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,7 @@ package scalafx.beans
 
 import javafx.{beans => jfxb}
 
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
 import scalafx.beans.binding.BindingIncludes._
@@ -42,7 +40,6 @@ import scalafx.beans.property.DoubleProperty
   *
   *
   */
-@RunWith(classOf[JUnitRunner])
 class ObservableSpec extends FlatSpec with BeforeAndAfterEach {
   var property: DoubleProperty = _
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,9 +30,7 @@ package issues.issue16
 import javafx.beans.{property => jfxbp}
 import javafx.scene.{paint => jfxsp}
 
-import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
-import org.scalatest.junit.JUnitRunner
 
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyBooleanProperty}
@@ -41,7 +39,6 @@ import scalafx.scene.paint.Color
 /**
  * Verify that code causing Issue 16 behaves correctly after fix.
  */
-@RunWith(classOf[JUnitRunner])
 class Issue16Spec extends FlatSpec {
 
   "Issue 16 - binding" should "respond to changes in `when` condition" in {

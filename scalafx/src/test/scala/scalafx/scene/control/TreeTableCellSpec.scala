@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,15 +28,11 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * TreeTableCell Spec tests.
  */
-@RunWith(classOf[JUnitRunner])
 class TreeTableCellSpec[S, T]
   extends SimpleSFXDelegateSpec[jfxsc.TreeTableCell[S, T], TreeTableCell[S, T]](classOf[jfxsc.TreeTableCell[S, T]], classOf[TreeTableCell[S, T]])

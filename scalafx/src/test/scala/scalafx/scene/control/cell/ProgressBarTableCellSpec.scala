@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,6 @@ package scalafx.scene.control.cell
 
 import javafx.scene.control.{cell => jfxscc}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
@@ -38,7 +35,6 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  * ProgressBarTableCell Spec tests.
  *
  */
-@RunWith(classOf[JUnitRunner])
 class ProgressBarTableCellSpec[S]
   extends SimpleSFXDelegateSpec[jfxscc.ProgressBarTableCell[S], ProgressBarTableCell[S]](classOf[jfxscc.ProgressBarTableCell[S]], classOf[ProgressBarTableCell[S]])
   with RunOnApplicationThread

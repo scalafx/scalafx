@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,7 @@ package scalafx.collections
 
 import javafx.{collections => jfxc}
 
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scala.collection.JavaConversions._
 import scala.collection.mutable._
@@ -43,7 +41,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  *
  */
-@RunWith(classOf[JUnitRunner])
 class ObservableMapSpec[K, V]
   extends SimpleSFXDelegateSpec[jfxc.ObservableMap[K, V], ObservableMap[K, V]](classOf[jfxc.ObservableMap[K, V]], classOf[ObservableMap[K, V]]) {
 

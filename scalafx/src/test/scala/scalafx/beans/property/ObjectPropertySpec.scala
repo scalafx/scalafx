@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,9 +31,7 @@ import java.{util => ju}
 import javafx.beans.{property => jfxbp, value => jfxbv}
 import javafx.scene.{control => jfxsc}
 
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
 import scalafx.Includes.{jfxBooleanBinding2sfx, jfxBooleanProperty2sfx, jfxObjectProperty2sfx, sfxObjectPropertyWithSFXDelegate2jfxObjectProperty}
@@ -47,7 +45,6 @@ import scalafx.testutil.RunOnApplicationThread
   *
   *
   */
-@RunWith(classOf[JUnitRunner])
 class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach with RunOnApplicationThread {
   val bean = new Object()
   var objectProperty: jfxbp.ObjectProperty[String] = _

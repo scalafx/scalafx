@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
@@ -40,7 +38,6 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  *
  *
  */
-@RunWith(classOf[JUnitRunner])
 class ContextMenuSpec
   extends SimpleSFXDelegateSpec[jfxsc.ContextMenu, ContextMenu](
     classOf[jfxsc.ContextMenu], classOf[ContextMenu])

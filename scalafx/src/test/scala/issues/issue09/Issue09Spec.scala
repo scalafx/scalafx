@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,15 +26,12 @@
  */
 package issues.issue09
 
-import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
-import org.scalatest.junit.JUnitRunner
 
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 
 /** Verify that code causing Issue 9 behaves correctly after fix. */
-@RunWith(classOf[JUnitRunner])
 class Issue09Spec extends FlatSpec {
 
   "Issue 9 fix" should "run HeronsFormulaExample without exceptions" in {

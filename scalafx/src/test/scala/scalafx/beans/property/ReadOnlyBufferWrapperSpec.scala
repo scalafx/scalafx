@@ -29,9 +29,7 @@ package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
 
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scala.language.implicitConversions
 import scalafx.Includes._
@@ -41,7 +39,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
   *
   * Test for [[scalafx.beans.property.ReadOnlyBufferWrapper]].
   */
-@RunWith(classOf[JUnitRunner])
 class ReadOnlyBufferWrapperSpec
   extends SimpleSFXDelegateSpec[jfxbp.ReadOnlyListWrapper[Int], ReadOnlyBufferWrapper[Int]](
     classOf[jfxbp.ReadOnlyListWrapper[Int]], classOf[ReadOnlyBufferWrapper[Int]]) {

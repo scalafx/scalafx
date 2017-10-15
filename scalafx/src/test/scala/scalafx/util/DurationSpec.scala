@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,15 +29,12 @@ package scalafx.util
 
 import javafx.{util => jfxu}
 
-import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scala.language.postfixOps
 import scalafx.Includes._
 
-@RunWith(classOf[JUnitRunner])
 class DurationSpec extends FlatSpec {
   "A Duration" should "be constructable from apply" in {
     Duration(500) should equal(new jfxu.Duration(500))

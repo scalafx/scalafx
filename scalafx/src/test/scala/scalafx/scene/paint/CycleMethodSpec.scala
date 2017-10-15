@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,15 +29,11 @@ package scalafx.scene.paint
 
 import javafx.scene.{paint => jfxsp}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Test for [[scalafx.scene.paint.CycleMethod]] */
-@RunWith(classOf[JUnitRunner])
 class CycleMethodSpec extends SFXEnumDelegateSpec[jfxsp.CycleMethod, CycleMethod](
   javaClass = classOf[jfxsp.CycleMethod],
   scalaClass = classOf[CycleMethod],

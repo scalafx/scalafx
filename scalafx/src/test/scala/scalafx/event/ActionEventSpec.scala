@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,6 @@ package scalafx.event
 
 import javafx.{event => jfxe}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes.jfxActionEvent2sfx
 import scalafx.event.ActionEvent.sfxActionEvent2jfx
 import scalafx.testutil.SimpleSFXDelegateSpec
@@ -40,6 +37,5 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  *
  */
-@RunWith(classOf[JUnitRunner])
 class ActionEventSpec
   extends SimpleSFXDelegateSpec[jfxe.ActionEvent, ActionEvent](classOf[jfxe.ActionEvent], classOf[ActionEvent])

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,15 +26,12 @@
  */
 package issues.issue070
 
-import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
-import org.scalatest.junit.JUnitRunner
 
 import scalafx.Includes._
 import scalafx.concurrent.{Task, WorkerStateEvent}
 import scalafx.testutil.RunOnApplicationThread
 
-@RunWith(classOf[JUnitRunner])
 class Issue070Spec extends FlatSpec with RunOnApplicationThread {
 
   "Issue 70 - code using handleEvent()" should "compile" in {

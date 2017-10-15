@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,10 +29,8 @@ package scalafx.beans.binding
 
 import javafx.beans.{binding => jfxbb, property => jfxbp}
 
-import org.junit.runner.RunWith
 import org.scalactic.TripleEqualsSupport.Spread
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
 import scalafx.Includes._
@@ -44,7 +42,6 @@ import scalafx.delegate.SFXDelegate
  *
  *
  */
-@RunWith(classOf[JUnitRunner])
 class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
   def bean = new Object()
   var booleanProperty1: jfxbp.BooleanProperty = null

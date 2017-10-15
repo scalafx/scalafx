@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,17 +29,14 @@ package issues.issue190
 
 import java.io.File
 
-import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scala.collection.JavaConverters._
 import scalafx.scene.input.{Clipboard, ClipboardContent, DataFormat}
 import scalafx.testutil.RunOnApplicationThread
 
 /** Issue 190: Convenience methods not working for clipboard */
-@RunWith(classOf[JUnitRunner])
 class Issue190Spec extends FlatSpec with RunOnApplicationThread {
 
   "ClipboardContent" should "be assignable to the content of the clipboard" in {

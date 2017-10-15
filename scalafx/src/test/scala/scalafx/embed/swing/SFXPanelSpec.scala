@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,9 @@ package scalafx.embed.swing
 
 import javafx.embed.{swing => jfxes}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** Tests for [[scalafx.embed.swing.SFXPanel]]. */
-@RunWith(classOf[JUnitRunner])
 class SFXPanelSpec
   extends SimpleSFXDelegateSpec[jfxes.JFXPanel, SFXPanel](classOf[jfxes.JFXPanel], classOf[SFXPanel])

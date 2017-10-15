@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,9 +31,7 @@ import java.{util => ju}
 import javafx.collections.{transformation => jfxct}
 import javafx.{collections => jfxc}
 
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scala.language.implicitConversions
 import scalafx.Includes._
@@ -41,10 +39,9 @@ import scalafx.collections.ObservableBuffer
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- *
- * Test for [[scalafx.collections.transformation.FilteredBuffer]].
- */
-@RunWith(classOf[JUnitRunner])
+  *
+  * Test for [[scalafx.collections.transformation.FilteredBuffer]].
+  */
 class FilteredBufferSpec[E]
   extends SimpleSFXDelegateSpec[jfxct.FilteredList[E], FilteredBuffer[E]](
     classOf[jfxct.FilteredList[E]], classOf[FilteredBuffer[E]]) {
@@ -55,7 +52,7 @@ class FilteredBufferSpec[E]
 
   it should "assing comparator correctly" in {
 
-    val sb = new FilteredBuffer(ObservableBuffer(3, 4, 1), { _: Int => true})
+    val sb = new FilteredBuffer(ObservableBuffer(3, 4, 1), { _: Int => true })
 
     sb.toList should equal(List(3, 4, 1))
 

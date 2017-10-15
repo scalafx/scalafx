@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,6 @@ package scalafx.geometry
 
 import javafx.{geometry => jfxg}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
@@ -38,7 +35,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * Point3D Spec tests.
  *
  */
-@RunWith(classOf[JUnitRunner])
 class Point3DSpec
   extends SimpleSFXDelegateSpec[jfxg.Point3D, Point3D](classOf[jfxg.Point3D], classOf[Point3D]) {
 

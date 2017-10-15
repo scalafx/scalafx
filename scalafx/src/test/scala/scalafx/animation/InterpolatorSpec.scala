@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,10 +28,8 @@ package scalafx.animation
 
 import javafx.{animation => jfxa}
 
-import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scala.language.postfixOps
 import scalafx.Includes._
@@ -43,7 +41,6 @@ import scalafx.testutil.PropertyComparator
  *
  * @todo When Interpolator is converted to SFXEnumDelegate, this test should be converted to a SFXEnumDelegateSpec
  */
-@RunWith(classOf[JUnitRunner])
 class InterpolatorSpec extends FlatSpec with PropertyComparator {
   "Interpolators" should "support all the built-in interpolators" in {
     val doubleProperty = new DoubleProperty(null, "test")

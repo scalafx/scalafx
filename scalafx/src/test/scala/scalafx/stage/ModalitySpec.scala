@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,15 +29,11 @@ package scalafx.stage
 
 import javafx.{stage => jfxs}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Test for [[scalafx.stage.Modality]] */
-@RunWith(classOf[JUnitRunner])
 class ModalitySpec extends SFXEnumDelegateSpec[jfxs.Modality, Modality](
   javaClass = classOf[jfxs.Modality],
   scalaClass = classOf[Modality],

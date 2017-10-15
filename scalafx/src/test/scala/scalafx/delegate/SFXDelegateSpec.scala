@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,14 +26,11 @@
  */
 package scalafx.delegate
 
-import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scalafx.beans.property.DoubleProperty
 
-@RunWith(classOf[JUnitRunner])
 class SFXDelegateSpec extends FlatSpec {
   val doubleProperty = new DoubleProperty(null, "double property")
   val doublePropertyWithSameName = new DoubleProperty(null, "double property")

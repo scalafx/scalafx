@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,14 +28,10 @@ package scalafx.event
 
 import javafx.{event => jfxe}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** EventType[T] Spec tests. */
-@RunWith(classOf[JUnitRunner])
 class EventTypeSpec
   extends SimpleSFXDelegateSpec[jfxe.EventType[jfxe.Event], EventType[jfxe.Event]](classOf[jfxe.EventType[jfxe.Event]], classOf[EventType[jfxe.Event]]) {
 

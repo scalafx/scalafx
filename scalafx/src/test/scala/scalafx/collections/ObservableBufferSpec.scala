@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,9 +30,7 @@ package scalafx.collections
 import java.{util => ju}
 import javafx.{beans => jfxb, collections => jfxc, util => jfxu}
 
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scala.collection.mutable.Buffer
 import scalafx.Includes._
@@ -44,7 +42,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
   *
   *
   */
-@RunWith(classOf[JUnitRunner])
 class ObservableBufferSpec[T]
   extends SimpleSFXDelegateSpec[jfxc.ObservableList[T], ObservableBuffer[T]](classOf[jfxc.ObservableList[T]], classOf[ObservableBuffer[T]]) {
 
