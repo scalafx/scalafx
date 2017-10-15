@@ -10,8 +10,9 @@ New features and improvements:
 * [Issue #255][255] Add missing constructor for `MouseEvent`
 
 Bug fixes:
-* [Issue #262][262] `TextFieldListCell.converter_=(c)` method does not work (atrosinenko)
-* [Issue #267][267] In Image constructor, requestedWidth is passed instead of requestedHeight (KSwordOfHaste)
+
+* [Issue #262][262] `TextFieldListCell.converter_=(c)` method does not work. Thanks to PR from atrosinenko.
+* [Issue #267][267] In Image constructor, requestedWidth is passed instead of requestedHeight. Thanks to PR from KSwordOfHaste.
 
 
 To use ScalaFX add following to your SBT:
