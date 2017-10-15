@@ -65,7 +65,7 @@ package object cell {
     /**
      * The `StringConverter` property.
      */
-    def converter: ObjectProperty[StringConverter[J]] = ObjectProperty(delegate.converterProperty().getValue)
+    def converter: ObjectProperty[jfxu.StringConverter[J]] = delegate.converterProperty()
     def converter_=(v: StringConverter[J]) {
       converter() = v
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.beans.binding
 
 
@@ -74,6 +75,18 @@ trait BindingIncludes extends Bindings {
    */
   implicit def jfxBooleanExpression2sfx(be: jfxbb.BooleanExpression): BooleanExpression = if (be != null) new BooleanExpression(be) else null
 
+  implicit def jfxListBinding2sfx[E <: Any](v: jfxbb.ListBinding[E]): BufferBinding[E] =
+    if (v != null) new BufferBinding(v) else null
+
+  implicit def jfxListExpression2sfx[E <: Any](v: jfxbb.ListExpression[E]): BufferExpression[E] =
+    if (v != null) new BufferExpression(v) else null
+
+  implicit def jfxMapBinding2sfx[K, V](v: jfxbb.MapBinding[K, V]): MapBinding[K, V] =
+    if (v != null) new MapBinding(v) else null
+
+  implicit def jfxMapExpression2sfx[K, V](v: jfxbb.MapExpression[K, V]): MapExpression[K, V] =
+    if (v != null) new MapExpression(v) else null
+
   /**
    * $START$NUB.html $NUB$END
    *
@@ -107,6 +120,12 @@ trait BindingIncludes extends Bindings {
    * @return $SFX $OBE
    */
   implicit def jfxObjectExpression2sfx[T](oe: jfxbb.ObjectExpression[T]): ObjectExpression[T] = if (oe != null) new ObjectExpression[T](oe) else null
+
+  implicit def jfxSetBinding2sfx[E <: Any](v: jfxbb.SetBinding[E]): SetBinding[E] =
+    if (v != null) new SetBinding(v) else null
+
+  implicit def jfxSetExpression2sfx[E <: Any](v: jfxbb.SetExpression[E]): SetExpression[E] =
+    if (v != null) new SetExpression(v) else null
 
   /**
    * $START$STB.html $STB$END
