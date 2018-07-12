@@ -26,6 +26,8 @@
  */
 package scalafx.scene.text
 
+import java.io.InputStream
+
 import javafx.scene.{text => jfxst}
 
 import scala.collection.JavaConversions._
@@ -110,6 +112,89 @@ object Font {
    * Loads a font resource from the specified URL.
    */
   def loadFont(urlStr: String, size: Double) = jfxst.Font.loadFont(urlStr, size)
+
+  /**
+   * Loads font resources from the specified URL. If the load is successful
+   * such that the location is readable, and it represents a supported
+   * font format then an array of <code>Font</code> will be returned.
+   * <p>
+   * The use case for this method is for loading all fonts
+   * from a TrueType Collection (TTC).
+   * <p>
+   * If a security manager is present, the application
+   * must have both permission to read from the specified URL location
+   * and the [[scalafx.util.FXPermission]] "loadFont".
+   * If the application does not have permission to read from the specified
+   * URL location, then null is returned.
+   * If the application does not have the "loadFont" permission then this method
+   * will return an array of one element which is the default
+   * system font with the specified font size.
+   * <p>
+   * Any failure such as a malformed URL being unable to locate or read
+   * from the resource, or if it doesn't represent a font, will result in
+   * a <code>null</code> return. It is the application's responsibility
+   * to check this before use.
+   * <p>
+   * On a successful (non-null) return the fonts will be registered
+   * with the FX graphics system for creation by available constructors
+   * and factory methods, and the application should use it in this
+   * manner rather than calling this method again, which would
+   * repeat the overhead of downloading and installing the fonts.
+   * <p>
+   * The font <code>size</code> parameter is a convenience so that in
+   * typical usage the application can directly use the returned (non-null)
+   * font rather than needing to create one via a constructor.
+   * Invalid sizes are those <=0 and will result in a default size.
+   * <p>
+   * If the URL represents a local disk file, then no copying is performed
+   * and the font file is required to persist for the lifetime of the
+   * application. Updating the file in any manner will result
+   * in unspecified and likely undesired behaviours.
+   *
+   * @param urlStr from which to load the fonts, specified as a String.
+   * @param size   of the returned fonts.
+   * @return array of Font, or null if the fonts cannot be created.
+   * @since 9
+   */
+  def loadFonts(urlStr: String, size: Double) = jfxst.Font.loadFonts(urlStr, size).toSeq
+
+  /**
+   * Loads font resources from the specified input stream.
+   * If the load is successful such that the stream can be
+   * fully read, and it represents a supported font format then
+   * an array of <code>Font</code> will be returned.
+   * <p>
+   * The use case for this method is for loading all fonts
+   * from a TrueType Collection (TTC).
+   * <p>
+   * If a security manager is present, the application
+   * must have the [[scalafx.util.FXPermission]] "loadFont".
+   * If the application does not have permission then this method
+   * will return the default system font with the specified font size.
+   * <p>
+   * Any failure such as abbreviated input, or an unsupported font format
+   * will result in a <code>null</code> return. It is the application's
+   * responsibility to check this before use.
+   * <p>
+   * On a successful (non-null) return the fonts will be registered
+   * with the FX graphics system for creation by available constructors
+   * and factory methods, and the application should use it in this
+   * manner rather than calling this method again, which would
+   * repeat the overhead of re-reading and installing the fonts.
+   * <p>
+   * The font <code>size</code> parameter is a convenience so that in
+   * typical usage the application can directly use the returned (non-null)
+   * fonts rather than needing to re-create via a constructor.
+   * Invalid sizes are those <=0 and will result in a default size.
+   * <p>
+   * This method does not close the input stream.
+   *
+   * @param in   stream from which to load the fonts.
+   * @param size of the returned fonts.
+   * @return array of Font, or null if the fonts cannot be created.
+   * @since 9
+   */
+  def loadFonts (in: InputStream, size: Double) = jfxst.Font.loadFonts(in, size).toSeq
 }
 
 class Font(val delegate: jfxst.Font) extends SFXDelegate[jfxst.Font] {
