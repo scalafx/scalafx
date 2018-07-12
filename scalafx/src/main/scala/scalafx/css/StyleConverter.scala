@@ -26,6 +26,8 @@
  */
 package scalafx.css
 
+import java.io.{DataInputStream, DataOutputStream}
+
 import javafx.{css => jfxcss}
 
 import scala.language.implicitConversions
@@ -91,6 +93,22 @@ object StyleConverter {
   def urlConverter: StyleConverter[Array[jfxcss.ParsedValue[_, _]], String] =
     new StyleConverter(jfxcss.StyleConverter.getUrlConverter)
 
+  /**
+   * Read binary data stream.
+   * @param is      the data input stream
+   * @param strings the strings
+   * @return the style converter
+   * @throws java.io.IOException the exception
+   * @since 9
+   */
+  def readBinary(is: DataInputStream, strings: Array[String]): StyleConverter[_, _] =
+    new StyleConverter(jfxcss.StyleConverter.readBinary(is, strings))
+
+  /**
+   * Clear the cache.
+   * @since 9
+   */
+  def clearCache(): Unit = jfxcss.StyleConverter.clearCache()
 }
 
 /**
