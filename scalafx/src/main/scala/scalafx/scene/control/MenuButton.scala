@@ -103,4 +103,49 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
   def show() {
     delegate.show()
   }
+
+  /**
+    * Called just prior to the `ContextMenu` being hidden.
+    *
+    * @return the on hiding property
+    * @since 10
+    */
+  def onHiding = delegate.onHidingProperty
+  def onHiding_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
+    onHiding() = eventHandler
+  }
+
+  /**
+    * Called just prior to the `ContextMenu` being shown.
+    *
+    * @return the on showing property
+    * @since 10
+    */
+  def onShowing = delegate.onShowingProperty
+  def onShowing_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
+    onShowing() = eventHandler
+  }
+
+  /**
+    * Called just after the `ContextMenu` is shown.
+    *
+    * @return the on shown property
+    * @since 10
+    */
+  def onShown = delegate.onShownProperty
+  def onShown_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
+    onShown() = eventHandler
+  }
+
+  /**
+    * Called just after the `ContextMenu` has been hidden.
+    *
+    * @return the on hidden property
+    * @since 10
+    */
+  def onHidden = delegate.onHiddenProperty
+  def onHidden_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
+    onHidden() = eventHandler
+  }
+
 }
