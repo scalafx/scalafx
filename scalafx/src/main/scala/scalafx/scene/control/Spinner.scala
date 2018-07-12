@@ -31,7 +31,7 @@ import javafx.scene.{control => jfxsc}
 
 import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty}
+import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty, StringProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
@@ -201,6 +201,18 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
   def editable: BooleanProperty = delegate.editableProperty()
   def editable_=(value: Boolean): Unit = {
     editable() = value
+  }
+
+  /**
+    * The prompt text to display in the `Spinner`, or
+    * `null` if no prompt text is displayed.
+    *
+    * @return the prompt text property
+    * @since 9
+    */
+  def promptText: StringProperty = delegate.promptTextProperty()
+  def promptText_=(value: String): Unit = {
+    promptText() = value
   }
 
   def editor: ReadOnlyObjectProperty[jfxsc.TextField] = delegate.editorProperty()
