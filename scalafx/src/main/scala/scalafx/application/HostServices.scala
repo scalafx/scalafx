@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,11 +28,9 @@
 package scalafx.application
 
 import javafx.{application => jfx}
-
-import netscape.javascript.JSObject
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object HostServices {
   /**
@@ -70,10 +68,5 @@ class HostServices(override val delegate: jfx.HostServices)
     * Gets the document base URI for this application.
     */
   def documentBase: String = delegate.getDocumentBase
-
-  /**
-    * Returns the JavaScript handle of the enclosing DOM window of the web page containing this application.
-    */
-  def webContext: JSObject = delegate.getWebContext
 
 }

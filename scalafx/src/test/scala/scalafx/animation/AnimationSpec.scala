@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa}
-
 import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
@@ -44,8 +43,8 @@ class AnimationSpec
   override protected def getScalaClassInstance = new Animation(new jfxa.Timeline) {}
 
   override def getJavaClassInstance = new jfxa.Animation {
-    def impl_playTo(p1: Long, p2: Long) {}
-    def impl_jumpTo(p1: Long, p2: Long, p3: Boolean) {}
+    def doPlayTo(p1: Long, p2: Long) {}
+    def doJumpTo(p1: Long, p2: Long, p3: Boolean) {}
   }
 
 }
