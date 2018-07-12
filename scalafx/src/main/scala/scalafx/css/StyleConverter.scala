@@ -30,6 +30,7 @@ import java.io.{DataInputStream, DataOutputStream}
 
 import javafx.{css => jfxcss}
 
+import scala.collection.JavaConversions._
 import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.text.Font
@@ -109,6 +110,23 @@ object StyleConverter {
    * @since 9
    */
   def clearCache(): Unit = jfxcss.StyleConverter.clearCache()
+
+  /**
+   * The StringStore class
+   *
+   * @since 9
+   */
+  class StringStore(override val delegate: jfxcss.StyleConverter.StringStore = new jfxcss.StyleConverter.StringStore)
+    extends SFXDelegate[jfxcss.StyleConverter.StringStore]{
+
+    def strings: Seq[String] = delegate.strings.toSeq
+
+    def addString(s: String): Int = delegate.addString(s)
+
+    def writeBinary(os: DataOutputStream): Unit = delegate.writeBinary(os)
+
+    def readBinary(is: DataInputStream): Array[String] = jfxcss.StyleConverter.StringStore.readBinary(is)
+  }
 }
 
 /**
