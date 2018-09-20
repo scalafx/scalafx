@@ -71,16 +71,13 @@ class StringExpression(val delegate: jfxbb.StringExpression) {
   def >=(v: ObservableStringValue) = delegate.greaterThanOrEqualTo(v)
 
   // Kind of an odd case that concat is not observable, but this is how it is coded in JavaFX
-  def +(v: Null) = delegate.concat(v.asInstanceOf[String])
-  def +(v: ObservableStringValue) = delegate.concat(v)
-  def +(v: Any) = delegate.concat(v)
+  def + = concat _
 
-  def concat(v: Object) = {
+  def concat(v: Any) = {
     val jfxV = v match {
       case d: SFXDelegate[_] => d.delegate
       case a => a
     }
-    delegate.concat(jfxV)
+    new StringExpression(delegate.concat(jfxV))
   }
-
 }
