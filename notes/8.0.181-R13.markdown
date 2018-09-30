@@ -8,7 +8,7 @@ Bug fixes:
 
 To use ScalaFX add following to your SBT:
 
-      libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.144-R12"
+      libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.181-R13"
 
 For downloads visit [ScalaFX on Sonatype][2] or [ScalaFX Releases][3] on GitHub. 
 Please report any problems using [ScalaFX Issue Tracker][4]. 
