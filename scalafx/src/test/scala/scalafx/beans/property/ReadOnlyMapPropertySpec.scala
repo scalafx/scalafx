@@ -29,9 +29,7 @@ package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
 
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
 import scalafx.Includes._
@@ -42,7 +40,6 @@ import scalafx.collections.ObservableMap
   *
   *
   */
-@RunWith(classOf[JUnitRunner])
 class ReadOnlyMapPropertySpec extends FlatSpec with BeforeAndAfterEach {
 
   val valueAsSeq = Seq("one" -> 1, "two" -> 2, "seven" -> 7)

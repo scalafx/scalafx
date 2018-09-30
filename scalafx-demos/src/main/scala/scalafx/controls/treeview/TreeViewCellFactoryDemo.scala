@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -101,13 +101,10 @@ object TreeViewCellFactoryDemo extends JFXApp {
             override def updateItem(item: Person, empty: Boolean): Unit = {
               super.updateItem(item, empty)
               self.graphic = null
-              self.text =
-                if (empty) null
-                else item match {
-                  case p: Person => p.firstName + " " + p.lastName
-                  case null => null
-                  case _ => "???"
-                }
+              self.text = item match {
+                case p: Person => p.firstName + " " + p.lastName
+                case null => null
+              }
             }
           }
 

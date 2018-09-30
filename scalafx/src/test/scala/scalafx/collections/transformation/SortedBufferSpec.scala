@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,9 +31,7 @@ import java.{util => ju}
 import javafx.collections.{transformation => jfxct}
 import javafx.{collections => jfxc}
 
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scala.language.implicitConversions
 import scalafx.Includes._
@@ -44,7 +42,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  * Test for [[scalafx.collections.transformation.SortedBuffer]].
  */
-@RunWith(classOf[JUnitRunner])
 class SortedBufferSpec[E]
   extends SimpleSFXDelegateSpec[jfxct.SortedList[E], SortedBuffer[E]](
     classOf[jfxct.SortedList[E]], classOf[SortedBuffer[E]]) {

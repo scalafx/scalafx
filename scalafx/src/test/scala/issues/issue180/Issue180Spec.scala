@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,15 +27,12 @@
 
 package issues.issue180
 
-import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
-import org.scalatest.junit.JUnitRunner
 
 import scalafx.scene.Group
 import scalafx.testutil.RunOnApplicationThread
 
 /** Issue 91: "Setting control effect as null causes NPE" */
-@RunWith(classOf[JUnitRunner])
 class Issue180Spec extends FlatSpec with RunOnApplicationThread {
 
   "selectDouble" should "should not throw exception with valid input" in {

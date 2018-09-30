@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,6 @@ package scalafx.geometry
 
 import javafx.{geometry => jfxg}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
@@ -38,7 +35,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * Rectangle2D Spec tests.
  *
  */
-@RunWith(classOf[JUnitRunner])
 class Rectangle2DSpec
   extends SimpleSFXDelegateSpec[jfxg.Rectangle2D, Rectangle2D](classOf[jfxg.Rectangle2D], classOf[Rectangle2D]) {
 

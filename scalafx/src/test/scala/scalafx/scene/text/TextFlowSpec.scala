@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,15 +29,11 @@ package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * TextFlow Spec tests.
  */
-@RunWith(classOf[JUnitRunner])
 class TextFlowSpec
   extends SimpleSFXDelegateSpec[jfxst.TextFlow, TextFlow](classOf[jfxst.TextFlow], classOf[TextFlow])

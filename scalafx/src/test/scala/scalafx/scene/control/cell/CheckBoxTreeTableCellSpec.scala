@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,16 +28,12 @@ package scalafx.scene.control.cell
 
 import javafx.scene.control.{cell => jfxscc}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * CheckBoxTreeTableCell Spec tests.
  */
-@RunWith(classOf[JUnitRunner])
 class CheckBoxTreeTableCellSpec[S, T]
   extends SimpleSFXDelegateSpec[jfxscc.CheckBoxTreeTableCell[S, T], CheckBoxTreeTableCell[S, T]](
     classOf[jfxscc.CheckBoxTreeTableCell[S, T]], classOf[CheckBoxTreeTableCell[S, T]])

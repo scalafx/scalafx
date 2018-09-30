@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,16 +28,12 @@ package scalafx.css
 
 import javafx.{css => jfxcss}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * StyleConverter Spec tests. It is being used Conversion from String to String (stringConverter)  
  */
-@RunWith(classOf[JUnitRunner])
 class StyleConverterSpec
   extends SimpleSFXDelegateSpec[jfxcss.StyleConverter[String, String], StyleConverter[String, String]](
     classOf[jfxcss.StyleConverter[String, String]], classOf[StyleConverter[String, String]]) {

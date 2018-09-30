@@ -29,9 +29,7 @@ package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
 
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scala.language.implicitConversions
 import scalafx.Includes._
@@ -41,7 +39,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
   *
   * Test for [[scalafx.beans.property.BufferProperty]].
   */
-@RunWith(classOf[JUnitRunner])
 class BufferPropertySpec
   extends SimpleSFXDelegateSpec[jfxbp.ListProperty[Int], BufferProperty[Int]](
     classOf[jfxbp.ListProperty[Int]], classOf[BufferProperty[Int]]) {

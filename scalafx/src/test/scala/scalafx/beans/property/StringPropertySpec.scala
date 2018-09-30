@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,27 +27,20 @@
 
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
-
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
-
-import scalafx.Includes._
 
 /**
  * StringProperty Spec tests.
  *
  *
  */
-@RunWith(classOf[JUnitRunner])
 class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var booleanProperty: jfxbp.BooleanProperty = null
-  var stringProperty: jfxbp.StringProperty = null
-  var stringProperty2: jfxbp.StringProperty = null
-  var stringProperty3: jfxbp.StringProperty = null
+  var booleanProperty: BooleanProperty = null
+  var stringProperty: StringProperty = null
+  var stringProperty2: StringProperty = null
+  var stringProperty3: StringProperty = null
   var sfxStringProperty: StringProperty = null
 
   override def beforeEach() {

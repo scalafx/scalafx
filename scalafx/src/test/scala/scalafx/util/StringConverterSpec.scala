@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,10 +34,8 @@ import java.text.{DecimalFormatSymbols, ParseException}
 import java.{text => jt}
 import javafx.{util => jfxu}
 
-import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scalafx.Includes._
 import scalafx.util.StringConverter._
@@ -46,7 +44,6 @@ import scalafx.util.StringConverter._
  * StringConverter Spec tests.
  *
  */
-@RunWith(classOf[JUnitRunner])
 class StringConverterSpec extends FlatSpec {
 
   // Just For Fun

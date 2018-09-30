@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,6 @@ package scalafx.geometry
 
 import javafx.{geometry => jfxg}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
@@ -39,7 +36,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * BoundingBox Spec tests.
  *
  */
-@RunWith(classOf[JUnitRunner])
 class BoundingBoxSpec
   extends SimpleSFXDelegateSpec[jfxg.BoundingBox, BoundingBox](
     classOf[jfxg.BoundingBox], classOf[BoundingBox]) {

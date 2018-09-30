@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,9 +31,7 @@ import java.text.NumberFormat
 import java.util.Locale
 import javafx.util.{converter => jfxuc}
 
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scala.language.implicitConversions
 import scalafx.Includes._
@@ -42,7 +40,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 /**
  * Test for [[scalafx.util.converter.FormatStringConverterSpec]].
  */
-@RunWith(classOf[JUnitRunner])
 class FormatStringConverterSpec
   extends SimpleSFXDelegateSpec[jfxuc.FormatStringConverter[Number], FormatStringConverter[Number]](
     classOf[jfxuc.FormatStringConverter[Number]], classOf[FormatStringConverter[Number]]) {

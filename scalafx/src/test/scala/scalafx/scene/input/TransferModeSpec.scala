@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,16 +29,13 @@ package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
 
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 
 /** Tests for [[scalafx.scene.input.TransferMode]]. */
-@RunWith(classOf[JUnitRunner])
 class TransferModeSpec extends SFXEnumDelegateSpec[jfxsi.TransferMode, TransferMode](
   javaClass = classOf[jfxsi.TransferMode],
   scalaClass = classOf[TransferMode],

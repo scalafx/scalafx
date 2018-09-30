@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,7 @@ package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
 
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
 import scalafx.Includes._
@@ -41,7 +39,6 @@ import scalafx.Includes._
  *
  *
  */
-@RunWith(classOf[JUnitRunner])
 class ReadOnlyFloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
   var readOnlyFloatProperty: jfxbp.ReadOnlyFloatProperty = null

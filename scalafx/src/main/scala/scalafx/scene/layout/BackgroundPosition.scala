@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,10 +37,10 @@ object BackgroundPosition {
   implicit def sfxBackgroundPosition2jfx(v: BackgroundPosition): jfxsl.BackgroundPosition = if (v != null) v.delegate else null
 
   /** A BackgroundPosition which will center a BackgroundImage. */
-  val Center = jfxsl.BackgroundPosition.CENTER
+  val Center: BackgroundPosition = jfxsl.BackgroundPosition.CENTER
 
   /** The default BackgroundPosition for any BackgroundImage. */
-  val Default = jfxsl.BackgroundPosition.DEFAULT
+  val Default: BackgroundPosition = jfxsl.BackgroundPosition.DEFAULT
 }
 
 /**

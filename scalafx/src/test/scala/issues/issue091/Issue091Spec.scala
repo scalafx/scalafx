@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,17 +27,14 @@
 
 package issues.issue091
 
-import org.junit.runner.RunWith
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scalafx.scene.effect.Blend
 import scalafx.scene.shape.Rectangle
 import scalafx.testutil.RunOnApplicationThread
 
 /** Issue 91: "Setting control effect as null causes NPE" */
-@RunWith(classOf[JUnitRunner])
 class Issue091Spec extends FlatSpec with RunOnApplicationThread {
 
   "Issue 91 - cont" should "compile" in {

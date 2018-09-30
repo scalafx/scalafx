@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,6 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
@@ -39,7 +36,6 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  *
  *
  */
-@RunWith(classOf[JUnitRunner])
 class TreeViewEditEventSpec[T]
   extends SimpleSFXDelegateSpec[jfxsc.TreeView.EditEvent[T], TreeView.EditEvent[T]](classOf[jfxsc.TreeView.EditEvent[T]], classOf[TreeView.EditEvent[T]])
   with RunOnApplicationThread {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,6 @@ package scalafx.scene
 
 import javafx.{scene => jfxs}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
@@ -40,7 +37,6 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  *
  *
  */
-@RunWith(classOf[JUnitRunner])
 class SceneSpec
   extends SimpleSFXDelegateSpec[jfxs.Scene, Scene](classOf[jfxs.Scene], classOf[Scene])
   with RunOnApplicationThread {

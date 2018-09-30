@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,6 @@ package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
@@ -39,6 +36,5 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  *
  */
-@RunWith(classOf[JUnitRunner])
 class XYChartSeriesSpec
   extends SimpleSFXDelegateSpec[jfxsc.XYChart.Series[Int, Int], XYChart.Series[Int, Int]](classOf[jfxsc.XYChart.Series[Int, Int]], classOf[XYChart.Series[Int, Int]])

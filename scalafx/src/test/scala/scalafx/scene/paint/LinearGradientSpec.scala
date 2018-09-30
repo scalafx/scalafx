@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,6 @@ package scalafx.scene.paint
 
 import javafx.scene.{paint => jfxsp}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scala.collection.JavaConversions._
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
@@ -40,7 +37,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *
  *
  */
-@RunWith(classOf[JUnitRunner])
 class LinearGradientSpec
   extends SimpleSFXDelegateSpec[jfxsp.LinearGradient, LinearGradient](
     classOf[jfxsp.LinearGradient], classOf[LinearGradient]) {

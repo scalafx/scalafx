@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2017, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,7 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 
-import org.junit.runner.RunWith
 import org.scalatest.Matchers._
-import org.scalatest.junit.JUnitRunner
 
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
@@ -39,7 +37,6 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 /**
  * TableViewSpec tests.
  */
-@RunWith(classOf[JUnitRunner])
 class TableViewSpec[S]
   extends SimpleSFXDelegateSpec[jfxsc.TableView[S], TableView[S]](
     classOf[jfxsc.TableView[S]], classOf[TableView[S]])

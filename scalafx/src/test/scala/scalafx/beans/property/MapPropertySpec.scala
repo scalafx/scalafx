@@ -29,9 +29,6 @@ package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
 
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-
 import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
@@ -40,7 +37,6 @@ import scalafx.testutil.SimpleSFXDelegateSpec
   *
   * Test for [[scalafx.beans.property.MapProperty]].
   */
-@RunWith(classOf[JUnitRunner])
 class MapPropertySpec
   extends SimpleSFXDelegateSpec[jfxbp.MapProperty[String, Int], MapProperty[String, Int]](
     classOf[jfxbp.MapProperty[String, Int]], classOf[MapProperty[String, Int]]) {
