@@ -1,0 +1,25 @@
+[ScalaFX][1] 8.0.181-R13 was tested against JavaFX 8.0u181. It contains bug fixes.
+Scala 2.10, 2.11, and 2.12 are supported.
+
+Bug fixes:
+
+* [Issue #269][269]: `+` concat Binding Expressions function of class StringExpression not working as intended. Thanks to PR from kdallen25 #282.
+* [Issue #271][271]: Value members in object BackgroundPosition have the wrong type.
+
+
+To use ScalaFX add following to your SBT:
+
+      libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.181-R13"
+
+For downloads visit [ScalaFX on Sonatype][2] or [ScalaFX Releases][3] on GitHub. 
+Please report any problems using [ScalaFX Issue Tracker][4]. 
+Please use [ScalaFX Users Group][5] to post questions. 
+
+[1]: http://scalafx.org
+[2]: http://search.maven.org/#search&#124;ga&#124;1&#124;scalafx
+[3]: https://github.com/scalafx/scalafx/releases
+[4]: https://github.com/scalafx/scalafx/issues
+[5]: https://groups.google.com/forum/#!forum/scalafx-users
+
+[269]: https://github.com/scalafx/scalafx/issues/269
+[271]: https://github.com/scalafx/scalafx/issues/271

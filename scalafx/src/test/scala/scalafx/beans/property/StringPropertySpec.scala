@@ -27,12 +27,8 @@
 
 package scalafx.beans.property
 
-import javafx.beans.{property => jfxbp}
-
 import org.scalatest.Matchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
-
-import scalafx.Includes._
 
 /**
  * StringProperty Spec tests.
@@ -41,10 +37,10 @@ import scalafx.Includes._
  */
 class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
-  var booleanProperty: jfxbp.BooleanProperty = null
-  var stringProperty: jfxbp.StringProperty = null
-  var stringProperty2: jfxbp.StringProperty = null
-  var stringProperty3: jfxbp.StringProperty = null
+  var booleanProperty: BooleanProperty = null
+  var stringProperty: StringProperty = null
+  var stringProperty2: StringProperty = null
+  var stringProperty3: StringProperty = null
   var sfxStringProperty: StringProperty = null
 
   override def beforeEach() {

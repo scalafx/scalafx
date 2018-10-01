@@ -1,15 +1,16 @@
+# ScalaFX
+[![Join the chat at https://gitter.im/scalafx/scalafx](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/scalafx/scalafx?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+[![Build Status](https://travis-ci.org/scalafx/scalafx.svg?branch=master)](https://travis-ci.org/scalafx/scalafx)   [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.11) [![Scaladoc](http://javadoc-badge.appspot.com/org.scalafx/scalafx_2.11.svg?label=scaladoc)](http://javadoc-badge.appspot.com/org.scalafx/scalafx_2.11)
+
 ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX
 8 and JavaFX 2.2. This means that every ScalaFX application is also a
 valid Scala application. By extension it supports full interoperability with
 Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX 8 or JavaFX 2.2
 are supported.
 
-[![Join the chat at https://gitter.im/scalafx/scalafx](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/scalafx/scalafx?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[![Build Status](https://travis-ci.org/scalafx/scalafx.svg?branch=master)](https://travis-ci.org/scalafx/scalafx)   [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.11) [![Scaladoc](http://javadoc-badge.appspot.com/org.scalafx/scalafx_2.11.svg?label=scaladoc)](http://javadoc-badge.appspot.com/org.scalafx/scalafx_2.11) [![Reference Status](https://www.versioneye.com/java/org.scalafx:scalafx_2.11/reference_badge.svg?style=flat)](https://www.versioneye.com/java/org.scalafx:scalafx_2.11/references)
-
-ScalaFX was originally created by Stephen Chin, Java Champion, Oracle JavaOne
-program chair; and Sven Reimers, a member of the Netbeans Dream Team.
+## Getting Started
 
 There are two branches of ScalaFX: v.8.0 supporting JavaFX 8 (Java 8) and
 v.2.2 supporting JavaFX 2.x (Java 7).
@@ -21,7 +22,7 @@ To use ScalaFX with SBT and Java 8 add following dependency (to use
 the latest scalafx you might need Java version at least 1.8.40):
 
 ```scala
-libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.144-R12"
+libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.181-R13"
 ```
 
 With Java 7 use:
@@ -33,7 +34,7 @@ libraryDependencies += "org.scalafx" %% "scalafx" % "2.2.76-R11"
 For latest development version:
 
 ```scala
-libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.144-R13-SNAPSHOT"
+libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.181-R14-SNAPSHOT"
 ```
 
 The [ScalaFX Organization page](https://github.com/scalafx) on GitHub contains several sample
@@ -57,7 +58,7 @@ For information on building with SBT see `README-SBT.txt`.
 The official web site for ScalaFX is http://scalafx.org.
 
 
-#Software License
+## Software License
 
 This software licensed under BSD Open Source.
 
@@ -65,7 +66,7 @@ The License text for this software can be found in [LICENSE.txt](LICENSE.txt) in
 folder of the project.
 
 
-#Software Required
+## Software Required
 
 The following software is needed to build ScalaFX:
 
@@ -77,7 +78,7 @@ The following software is needed to build ScalaFX:
 It works with Windows, MacOS X and Linux ports.
 
 
-#Project Structure
+## Project Structure
 
 The current project structure looks like this:
 
@@ -98,19 +99,26 @@ The `scalafx-demos` is the sub project for the ScalaFX Framework Demonstrations 
 The `project` folder is reserved for Scala SBT.
 
 
-#Source Code Branching Policy
+## Source Code Branching Policy
 
-The current development is for ScalaFX 8 and it is done on the `master` branch. Releases are done on the `stable` branch. Releases are tagged with version number. Pull requests are only accepted off a brunch created from the `master` branch. When working on a pull request, create a separate branch for each feature or bug fix. This way the main development branch is not blocked by a pull request and pull requests are easier to merge individually.
+The current development is for ScalaFX 8. The development is done on the `master` branch. Releases are done on the `stable` branch. Releases are tagged with version number. Pull requests are only accepted off a brunch created from the `master` branch. When working on a pull request, create a separate branch for each feature or bug fix. This way the main development branch is not blocked by a pull request and pull requests are easier to merge individually.
 
 The ScalaFX 2.2 development is no longer active. For those who need it, the code is on the `SFX-2` branch and past releases are on the `SFX-2-stable` branch. 
 
 
-#Credits
+## Authors
 
-You can find the full list of committers, developers and contributors in
-the file [MAINTAINERS.txt](MAINTAINERS.txt).
+ScalaFX was originally created by Stephen Chin, Java Champion, Oracle JavaOne
+program chair; and Sven Reimers, a member of the Netbeans Dream Team.
 
-# Community
+
+## Credits
+
+The most up to date list of contributors to the project can be found on the [Contributors](https://github.com/scalafx/scalafx/graphs/contributors) page.
+
+
+## Community
 We request all the team members to follow the [Typelevel Code of Conduct](http://typelevel.org/conduct.html) in our mailinglist, issue discussion, Gitter room or any of ScalaFX meetups.
 
 For more info on Contribute, check our [Contributing page](http://http://www.scalafx.org/docs/contributing/).
+

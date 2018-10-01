@@ -1,4 +1,4 @@
-[ScalaFX][1] 8.0.144-R14 was tested against JavaFX 8.0u144. It is contains new features and bug fixes. 
+[ScalaFX][1] 8.0.144-R12 was tested against JavaFX 8.0u144. It is contains new features and bug fixes.
 Scala 2.10, 2.11, and 2.12 are supported.
 
 New features and improvements:
