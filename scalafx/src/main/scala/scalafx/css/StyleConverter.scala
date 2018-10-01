@@ -26,8 +26,11 @@
  */
 package scalafx.css
 
+import java.io.{DataInputStream, DataOutputStream}
+
 import javafx.{css => jfxcss}
 
+import scala.collection.JavaConversions._
 import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.text.Font
@@ -91,6 +94,39 @@ object StyleConverter {
   def urlConverter: StyleConverter[Array[jfxcss.ParsedValue[_, _]], String] =
     new StyleConverter(jfxcss.StyleConverter.getUrlConverter)
 
+  /**
+   * Read binary data stream.
+   * @param is      the data input stream
+   * @param strings the strings
+   * @return the style converter
+   * @throws java.io.IOException the exception
+   * @since 9
+   */
+  def readBinary(is: DataInputStream, strings: Array[String]): StyleConverter[_, _] =
+    new StyleConverter(jfxcss.StyleConverter.readBinary(is, strings))
+
+  /**
+   * Clear the cache.
+   * @since 9
+   */
+  def clearCache(): Unit = jfxcss.StyleConverter.clearCache()
+
+  /**
+   * The StringStore class
+   *
+   * @since 9
+   */
+  class StringStore(override val delegate: jfxcss.StyleConverter.StringStore = new jfxcss.StyleConverter.StringStore)
+    extends SFXDelegate[jfxcss.StyleConverter.StringStore]{
+
+    def strings: Seq[String] = delegate.strings.toSeq
+
+    def addString(s: String): Int = delegate.addString(s)
+
+    def writeBinary(os: DataOutputStream): Unit = delegate.writeBinary(os)
+
+    def readBinary(is: DataInputStream): Array[String] = jfxcss.StyleConverter.StringStore.readBinary(is)
+  }
 }
 
 /**

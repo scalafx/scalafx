@@ -1217,4 +1217,39 @@ abstract class Node protected(override val delegate: jfxs.Node)
   }
 
   override protected def eventHandlerDelegate = delegate.asInstanceOf[EventHandled]
+
+  /**
+   * Defines the rendering and picking order of this `Node` within its
+   * parent.
+   * <p>
+   * This property is used to alter the rendering and picking order of a node
+   * within its parent without reordering the parent's `children` list.
+   * For example, this can be used as a more efficient way to implement
+   * transparency sorting. To do this, an application can assign the viewOrder
+   * value of each node to the computed distance between that node and the
+   * viewer.
+   * </p>
+   * <p>
+   * The parent will traverse its `children` in decreasing
+   * `viewOrder` order. This means that a child with a lower
+   * `viewOrder` will be in front of a child with a higher
+   * `viewOrder`. If two children have the same `viewOrder`, the
+   * parent will traverse them in the order they appear in the parent's
+   * `children` list.
+   * </p>
+   * <p>
+   * However, `viewOrder` does not alter the layout and focus traversal
+   * order of this Node within its parent. A parent always traverses its
+   * `children` list in order when doing layout or focus traversal.
+   * </p>
+   *
+   * @return the view order for this `Node`
+   * @defaultValue 0.0
+   * @since 9
+   */
+  def viewOrder: DoubleProperty = delegate.viewOrderProperty
+  def viewOrder_(value: Double): Unit = {
+    viewOrder() = value
+  }
+
 }

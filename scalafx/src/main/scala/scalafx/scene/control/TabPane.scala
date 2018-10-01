@@ -164,4 +164,16 @@ class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane)
     this
   }
 
+  /**
+   * The drag policy for the tabs. The policy can be changed dynamically.
+   *
+   * @defaultValue TabDragPolicy.FIXED
+   * @return The tab drag policy property
+   * @since 10
+   */
+  def tabDragPolicy: ObjectProperty[jfxsc.TabPane.TabDragPolicy] = delegate.tabDragPolicyProperty
+  def tabDragPolicy_=(value: jfxsc.TabPane.TabDragPolicy) {
+    tabDragPolicy() = value
+  }
+
 }
