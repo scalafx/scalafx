@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,17 +29,17 @@ package scalafx.util.converter
 
 import java.text.NumberFormat
 import java.util.Locale
+
 import javafx.util.{converter => jfxuc}
-
 import org.scalatest.Matchers._
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
+import scala.language.implicitConversions
+
 /**
- * Test for [[scalafx.util.converter.FormatStringConverterSpec]].
- */
+  * Test for [[scalafx.util.converter.FormatStringConverterSpec]].
+  */
 class FormatStringConverterSpec
   extends SimpleSFXDelegateSpec[jfxuc.FormatStringConverter[Number], FormatStringConverter[Number]](
     classOf[jfxuc.FormatStringConverter[Number]], classOf[FormatStringConverter[Number]]) {
@@ -49,10 +49,10 @@ class FormatStringConverterSpec
 
   def getConverterForExample: FormatStringConverter[Number] = getScalaClassInstance
 
-  val examples = List[(Number, String)](
+  private val examples = List[(Number, String)](
     (0.0, "$0.00"),
     (123.45, "$123.45"),
-    (-123.45, "($123.45)")
+    (-123.45, "-$123.45")
   )
 
   private def runConverterForExamples() {

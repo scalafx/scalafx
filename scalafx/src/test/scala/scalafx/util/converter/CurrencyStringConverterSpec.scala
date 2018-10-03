@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,8 @@
 package scalafx.util.converter
 
 import java.util.Locale
-import javafx.util.{converter => jfxuc}
 
+import javafx.util.{converter => jfxuc}
 import scalafx.Includes._
 
 /**
@@ -41,7 +41,9 @@ class CurrencyStringConverterSpec
 
   override protected def getConverterForExample = new CurrencyStringConverter(Locale.US)
 
-  val examples = List((new java.lang.Long(123), "$123.00"), (new java.lang.Long(0), "$0.00"),
-    (new java.lang.Long(-123), "($123.00)"))
+  val examples = List(
+    (java.lang.Long.valueOf(123), "$123.00"),
+    (java.lang.Long.valueOf(0), "$0.00"),
+    (java.lang.Long.valueOf(-123), "-$123.00"))
 
 }
