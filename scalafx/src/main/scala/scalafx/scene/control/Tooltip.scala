@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,18 +27,19 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc, text => jfxst}
-import javafx.{css => jfxcss, scene => jfxs}
-
-import scala.collection.JavaConversions._
-import scala.collection.mutable.Buffer
-import scala.language.implicitConversions
+import javafx.{css => jfxcss, scene => jfxs, util => jfxu}
 import scalafx.Includes._
-import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyBooleanProperty, StringProperty}
+import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.Node._
 import scalafx.scene.text.Font.sfxFont2jfx
 import scalafx.scene.text.{Font, TextAlignment}
+import scalafx.util.Duration
+
+import scala.collection.JavaConversions._
+import scala.collection.mutable.Buffer
+import scala.language.implicitConversions
 
 
 /**
@@ -167,6 +168,34 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip)
     graphicTextGap() = v
   }
 
+
+  /**
+    * The duration in which to continue showing the tooltip after the mouse has left the node. Once this time has
+    * elapsed the tooltip will hide. The default value is 200ms.
+    */
+  def hideDelay: ObjectProperty[jfxu.Duration] = delegate.hideDelayProperty
+  def hideDelay_=(v: Duration) {
+    hideDelay() = v
+  }
+
+  /**
+    * The delay between the mouse entering the hovered node and when the associated tooltip will be shown to the user.
+    * The default delay is 1000ms.
+    */
+  def showDelay: ObjectProperty[jfxu.Duration] = delegate.showDelayProperty
+  def showDelay_=(v: Duration) {
+    showDelay() = v
+  }
+
+
+  /**
+    * The duration that the tooltip should remain showing for until it is no longer visible to the user.
+    */
+  def showDuration: ObjectProperty[jfxu.Duration] = delegate.showDurationProperty
+  def showDuration_=(v: Duration) {
+    showDuration() = v
+  }
+  
   /**
    * Specifies the behavior for lines of text when text is multiline Unlike contentDisplay which affects the graphic and text,
    * this setting only affects multiple lines of text relative to the text bounds.
