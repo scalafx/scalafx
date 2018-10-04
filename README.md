@@ -12,8 +12,9 @@ are supported.
 
 ## Getting Started
 
-There are two branches of ScalaFX: v.8.0 supporting JavaFX 8 (Java 8) and
+There are three branches of ScalaFX: v.8.0 supporting JavaFX 8 (Java 8), v.10 supporting JavaFX 10 (Java 10), and
 v.2.2 supporting JavaFX 2.x (Java 7).
+
 
 ScalaFX binaries are published in the Maven Central repository:
 [http://search.maven.org/#search|ga|1|scalafx](http://search.maven.org/#search%7Cga%7C1%7Cscalafx)
@@ -23,6 +24,11 @@ the latest scalafx you might need Java version at least 1.8.40):
 
 ```scala
 libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.181-R13"
+```
+
+with Java 10 use:
+```scala
+libraryDependencies += "org.scalafx" %% "scalafx" % "10.0.2-R15"
 ```
 
 With Java 7 use:
@@ -80,7 +86,7 @@ It works with Windows, MacOS X and Linux ports.
 
 ## Project Structure
 
-The current project structure looks like this:
+The current project directory structure:
 
     ./archive
     ./project
@@ -101,9 +107,19 @@ The `project` folder is reserved for Scala SBT.
 
 ## Source Code Branching Policy
 
-The current development is for ScalaFX 8. The development is done on the `master` branch. Releases are done on the `stable` branch. Releases are tagged with version number. Pull requests are only accepted off a brunch created from the `master` branch. When working on a pull request, create a separate branch for each feature or bug fix. This way the main development branch is not blocked by a pull request and pull requests are easier to merge individually.
+The current development is for ScalaFX 8.
+The development is done on the `master` branch.
+Releases are done on the `stable` branch.
+Releases are tagged with version number.
+Pull requests are only accepted off a brunch created from the `master` branch.
+When working on a pull request, create a separate branch for each feature or bug fix.
+This way the main development branch is not blocked by a pull request and pull requests are easier to merge individually.
 
-The ScalaFX 2.2 development is no longer active. For those who need it, the code is on the `SFX-2` branch and past releases are on the `SFX-2-stable` branch. 
+Forward looking development to support JavaFX 10+ is on branch 'SFX-10'.
+
+
+The ScalaFX 2.2 development is no longer active.
+For those who need it, the code is on the `SFX-2` branch and past releases are on the `SFX-2-stable` branch.
 
 
 ## Authors
