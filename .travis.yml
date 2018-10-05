@@ -11,7 +11,7 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 
 jdk:
-  - oraclejdk8
+  - oraclejdk10
   
 install: true
 
@@ -21,8 +21,8 @@ script:
 
 branches:
   only:
-    - master
-    - stable
+    - SFX-10
+    - SFX-10-stable
 
 notifications:
   email:
@@ -32,4 +32,4 @@ notifications:
 addons:
   apt:
     packages:
-      - oracle-java8-installer
+      - oracle-java10-installer
