@@ -28,8 +28,8 @@ notifications:
   email:
     - scalafx-build@googlegroups.com
 
-# Work around for default old version of Java provided by Travis CI
-addons:
-  apt:
-    packages:
-      - oracle-java10-installer
+## Work around for default old version of Java provided by Travis CI
+#addons:
+#  apt:
+#    packages:
+#      - oracle-java10-installer
