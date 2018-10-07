@@ -11,7 +11,7 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 
 jdk:
-  - oraclejdk10
+- oraclejdk11
   
 install: true
 
@@ -21,8 +21,8 @@ script:
 
 branches:
   only:
-    - SFX-10
-    - SFX-10-stable
+  - SFX-11
+  - SFX-11-stable
 
 notifications:
   email:

@@ -5,9 +5,18 @@ import java.net.URL
 // GRAPHVIZ_DOT_PATH - Full path to Graphviz dot utility. If not defined Scaladocs will be build without diagrams.
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
+// @formatter:off
 
-val scalafxVersion = "10.0.2-R16-SNAPSHOT"
+val scalafxVersion = "11-R16-SNAPSHOT"
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v" + scalafxVersion
+
+lazy val javaFXVersion = "11"
+lazy val osName = System.getProperty("os.name") match {
+  case n if n.startsWith("Linux")   => "linux"
+  case n if n.startsWith("Mac")     => "mac"
+  case n if n.startsWith("Windows") => "win"
+  case _ => throw new Exception("Unknown platform!")
+}
 
 // ScalaFX project
 lazy val scalafx = (project in file("scalafx")).settings(
@@ -64,7 +73,14 @@ lazy val scalafxSettings = Seq(
     "-source", "1.8",
     "-Xlint:deprecation"),
   libraryDependencies ++= Seq(
-    "org.scala-lang" % "scala-reflect" % scalaVersion.value,
+    "org.openjfx"    % "javafx-base"     % javaFXVersion classifier osName,
+    "org.openjfx"    % "javafx-controls" % javaFXVersion classifier osName,
+    "org.openjfx"    % "javafx-fxml"     % javaFXVersion classifier osName,
+    "org.openjfx"    % "javafx-graphics" % javaFXVersion classifier osName,
+    "org.openjfx"    % "javafx-media"    % javaFXVersion classifier osName,
+    "org.openjfx"    % "javafx-swing"    % javaFXVersion classifier osName,
+    "org.openjfx"    % "javafx-web"      % javaFXVersion classifier osName,
+    "org.scala-lang" % "scala-reflect"   % scalaVersion.value,
     scalatest % "test"),
   autoAPIMappings := true,
   manifestSetting,
