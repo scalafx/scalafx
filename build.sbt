@@ -1,22 +1,18 @@
 import java.net.URL
 
+import scala.xml.transform.{RewriteRule, RuleTransformer}
+import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
+
 //
 // Environment variables used by the build:
 // GRAPHVIZ_DOT_PATH - Full path to Graphviz dot utility. If not defined Scaladocs will be build without diagrams.
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
-// @formatter:off
 
-val scalafxVersion = "11-R16-SNAPSHOT"
+val javaFXVersion = "11"
+val scalafxVersion = s"$javaFXVersion-R16-SNAPSHOT"
+
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v" + scalafxVersion
-
-lazy val javaFXVersion = "11"
-lazy val osName = System.getProperty("os.name") match {
-  case n if n.startsWith("Linux")   => "linux"
-  case n if n.startsWith("Mac")     => "mac"
-  case n if n.startsWith("Windows") => "win"
-  case _ => throw new Exception("Unknown platform!")
-}
 
 // ScalaFX project
 lazy val scalafx = (project in file("scalafx")).settings(
@@ -47,6 +43,12 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
 
 
 // Dependencies
+val osName = System.getProperty("os.name") match {
+  case n if n.startsWith("Linux") => "linux"
+  case n if n.startsWith("Mac") => "mac"
+  case n if n.startsWith("Windows") => "win"
+  case _ => throw new Exception("Unknown platform!")
+}
 lazy val scalatest = "org.scalatest" %% "scalatest" % "3.0.5"
 
 // Resolvers
@@ -72,16 +74,28 @@ lazy val scalafxSettings = Seq(
     "-target", "1.8",
     "-source", "1.8",
     "-Xlint:deprecation"),
+  // Add JavaFX dependencies, mark as "provided", so they can be later removed from published POM
+  libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web").map(
+    m => "org.openjfx" % s"javafx-$m" % javaFXVersion % "provided" classifier osName),
+  // Add other dependencies
   libraryDependencies ++= Seq(
-    "org.openjfx"    % "javafx-base"     % javaFXVersion classifier osName,
-    "org.openjfx"    % "javafx-controls" % javaFXVersion classifier osName,
-    "org.openjfx"    % "javafx-fxml"     % javaFXVersion classifier osName,
-    "org.openjfx"    % "javafx-graphics" % javaFXVersion classifier osName,
-    "org.openjfx"    % "javafx-media"    % javaFXVersion classifier osName,
-    "org.openjfx"    % "javafx-swing"    % javaFXVersion classifier osName,
-    "org.openjfx"    % "javafx-web"      % javaFXVersion classifier osName,
-    "org.scala-lang" % "scala-reflect"   % scalaVersion.value,
+    "org.scala-lang" % "scala-reflect" % scalaVersion.value,
     scalatest % "test"),
+  // Use `pomPostProcess` to remove dependencies marked as "provided" from publishing in POM
+  // This is to avoid dependency on wrong OS version JavaFX libraries [Issue #289]
+  // See also [https://stackoverflow.com/questions/27835740/sbt-exclude-certain-dependency-only-during-publish]
+  pomPostProcess := { node: XmlNode =>
+    new RuleTransformer(new RewriteRule {
+      override def transform(node: XmlNode): XmlNodeSeq = node match {
+        case e: Elem if e.label == "dependency" && e.child.exists(c => c.label == "scope" && c.text == "provided") =>
+          val organization = e.child.filter(_.label == "groupId").flatMap(_.text).mkString
+          val artifact = e.child.filter(_.label == "artifactId").flatMap(_.text).mkString
+          val version = e.child.filter(_.label == "version").flatMap(_.text).mkString
+          Comment(s"provided dependency $organization#$artifact;$version has been omitted")
+        case _ => node
+      }
+    }).transform(node).head
+  },
   autoAPIMappings := true,
   manifestSetting,
   publishSetting,
