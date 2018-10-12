@@ -26,7 +26,9 @@
  */
 package scalafx.scene.control
 
+import javafx.beans.property.ObjectProperty
 import javafx.beans.{property => jfxbp}
+import javafx.event.{Event, EventHandler}
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, event => jfxe, geometry => jfxg}
 
@@ -110,7 +112,7 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
     * @return the on hiding property
     * @since 10
     */
-  def onHiding = delegate.onHidingProperty
+  def onHiding: ObjectProperty[EventHandler[Event]] = delegate.onHidingProperty
   def onHiding_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
     onHiding() = eventHandler
   }
