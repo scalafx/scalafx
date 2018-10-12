@@ -1244,8 +1244,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * </p>
    *
    * @return the view order for this `Node`
-   * @defaultValue 0.0
    * @since 9
+   * Default value is 0.0
    */
   def viewOrder: DoubleProperty = delegate.viewOrderProperty
   def viewOrder_(value: Double): Unit = {
