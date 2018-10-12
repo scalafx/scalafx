@@ -53,7 +53,7 @@ object Platform {
    *
    * @since 9
    */
-  def requestNextPulse: Unit = jfxa.Platform.requestNextPulse
+  def requestNextPulse(): Unit = jfxa.Platform.requestNextPulse()
 
   /** Returns true if the calling thread is the JavaFX Application Thread. */
   def isFxApplicationThread: Boolean = jfxa.Platform.isFxApplicationThread

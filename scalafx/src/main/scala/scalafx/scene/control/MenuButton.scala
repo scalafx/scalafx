@@ -26,7 +26,9 @@
  */
 package scalafx.scene.control
 
+import javafx.beans.property.ObjectProperty
 import javafx.beans.{property => jfxbp}
+import javafx.event.{Event, EventHandler}
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, event => jfxe, geometry => jfxg}
 
@@ -110,8 +112,8 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
     * @return the on hiding property
     * @since 10
     */
-  def onHiding = delegate.onHidingProperty
-  def onHiding_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
+  def onHiding: ObjectProperty[EventHandler[Event]] = delegate.onHidingProperty
+  def onHiding_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onHiding() = eventHandler
   }
 
@@ -121,8 +123,8 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
     * @return the on showing property
     * @since 10
     */
-  def onShowing = delegate.onShowingProperty
-  def onShowing_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
+  def onShowing: ObjectProperty[EventHandler[Event]] = delegate.onShowingProperty
+  def onShowing_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onShowing() = eventHandler
   }
 
@@ -132,8 +134,8 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
     * @return the on shown property
     * @since 10
     */
-  def onShown = delegate.onShownProperty
-  def onShown_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
+  def onShown: ObjectProperty[EventHandler[Event]] = delegate.onShownProperty
+  def onShown_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onShown() = eventHandler
   }
 
@@ -143,8 +145,8 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
     * @return the on hidden property
     * @since 10
     */
-  def onHidden = delegate.onHiddenProperty
-  def onHidden_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
+  def onHidden: ObjectProperty[EventHandler[Event]] = delegate.onHiddenProperty
+  def onHidden_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onHidden() = eventHandler
   }
 

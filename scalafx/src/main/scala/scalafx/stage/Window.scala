@@ -196,13 +196,13 @@ class Window protected(override val delegate: jfxs.Window)
     * calling `setRenderScaleX()` in response to a listener on the
     * `outputScaleX` property or by binding it appropriately.
     *
-    * @defaultValue outputScaleX
+    * Default value is outputScaleX
     * @see [[outputScaleX]]
     * @see [[forceIntegerRenderScale]]
     * @since 9
     */
   def renderScaleX: DoubleProperty = delegate.renderScaleXProperty
-  def renderScaleX_=(scale: Double) {
+  def renderScaleX_=(scale: Double): Unit = {
     renderScaleX = scale
   }
 
@@ -214,13 +214,13 @@ class Window protected(override val delegate: jfxs.Window)
     * calling `setRenderScaleY()` in response to a listener on the
     * `outputScaleY` property or by binding it appropriately.
     *
-    * @defaultValue outputScaleY
+    * DefaultValue is outputScaleY
     * @see [[outputScaleY]]
     * @see [[forceIntegerRenderScale]]
     * @since 9
     */
   def renderScaleY: DoubleProperty = delegate.renderScaleYProperty
-  def renderScaleY_=(scale: Double) {
+  def renderScaleY_=(scale: Double): Unit = {
     renderScaleY = scale
   }
 
@@ -279,7 +279,7 @@ class Window protected(override val delegate: jfxs.Window)
     * directly using the `renderScale` property object or the
     * convenience setter method.
     *
-    * @defaultValue false
+    * Default value is false
     * @see [[renderScaleX]]
     * @see [[renderScaleY]]
     * @since 9

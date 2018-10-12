@@ -156,7 +156,7 @@ object Font {
    * @return array of Font, or null if the fonts cannot be created.
    * @since 9
    */
-  def loadFonts(urlStr: String, size: Double) = jfxst.Font.loadFonts(urlStr, size).toSeq
+  def loadFonts(urlStr: String, size: Double): Seq[jfxst.Font] = jfxst.Font.loadFonts(urlStr, size).toSeq
 
   /**
    * Loads font resources from the specified input stream.
@@ -194,7 +194,7 @@ object Font {
    * @return array of Font, or null if the fonts cannot be created.
    * @since 9
    */
-  def loadFonts (in: InputStream, size: Double) = jfxst.Font.loadFonts(in, size).toSeq
+  def loadFonts(in: InputStream, size: Double): Seq[jfxst.Font] = jfxst.Font.loadFonts(in, size).toSeq
 }
 
 class Font(val delegate: jfxst.Font) extends SFXDelegate[jfxst.Font] {
