@@ -124,7 +124,7 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
     * @since 10
     */
   def onShowing: ObjectProperty[EventHandler[Event]] = delegate.onShowingProperty
-  def onShowing_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
+  def onShowing_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onShowing() = eventHandler
   }
 
