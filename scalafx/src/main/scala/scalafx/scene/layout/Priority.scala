@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,19 +28,20 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Priority.html javafx.scene.layout.Priority]] */
 object Priority extends SFXEnumDelegateCompanion[jfxsl.Priority, Priority] {
 
-  val Always = new Priority(jfxsl.Priority.ALWAYS)
+  case object Always extends Priority(jfxsl.Priority.ALWAYS)
   @deprecated("Use Always; ALWAYS will be removed in a future release", "2.2.60")
   val ALWAYS = Always
-  val Sometimes = new Priority(jfxsl.Priority.SOMETIMES)
+
+  case object Sometimes extends Priority(jfxsl.Priority.SOMETIMES)
   @deprecated("Use Sometimes; SOMETIMES will be removed in a future release", "2.2.60")
   val SOMETIMES = Sometimes
-  val Never = new Priority(jfxsl.Priority.NEVER)
+
+  case object Never extends Priority(jfxsl.Priority.NEVER)
   @deprecated("Use Never; NEVER will be removed in a future release", "2.2.60")
   val NEVER = Never
 
@@ -54,5 +55,5 @@ object Priority extends SFXEnumDelegateCompanion[jfxsl.Priority, Priority] {
 }
 
 
-sealed case class Priority(override val delegate: jfxsl.Priority)
+sealed abstract class Priority(override val delegate: jfxsl.Priority)
   extends SFXEnumDelegate[jfxsl.Priority]

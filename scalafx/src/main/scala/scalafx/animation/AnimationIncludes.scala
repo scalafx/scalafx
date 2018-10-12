@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa}
-
-import scala.language.implicitConversions
 import scalafx.animation.Animation.Status
 import scalafx.animation.PathTransition.OrientationType
 import scalafx.util.Duration
+
+import scala.language.implicitConversions
 
 object AnimationIncludes extends AnimationIncludes
 
@@ -157,7 +157,7 @@ trait AnimationIncludes {
   /**
    * $GENERATE `PathTransition.OrientationType` $FROM
    */
-  implicit def jfxPathTransitionOrientationType2sfx(v: jfxa.PathTransition.OrientationType): OrientationType = if (v != null) new PathTransition.OrientationType(v) else null
+  implicit def jfxPathTransitionOrientationType2sfx(v: jfxa.PathTransition.OrientationType): OrientationType = if (v != null) PathTransition.OrientationType(v) else null
 
   /**
    * $GENERATE `PauseTransition` $FROM

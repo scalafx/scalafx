@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,17 +28,16 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/FillRule.html javafx.scene.shape.FillRule]] */
 object FillRule extends SFXEnumDelegateCompanion[jfxss.FillRule, FillRule] {
 
-  val EvenOdd = new FillRule(jfxss.FillRule.EVEN_ODD)
+  case object EvenOdd extends FillRule(jfxss.FillRule.EVEN_ODD)
   @deprecated ("Use EvenOdd; EVEN_ODD will be removed in a future release", "8.0.60-R10")
   val EVEN_ODD = EvenOdd
 
-  val NonZero = new FillRule(jfxss.FillRule.NON_ZERO)
+  case object NonZero extends FillRule(jfxss.FillRule.NON_ZERO)
   @deprecated ("Use NonZero; NON_ZERO will be removed in a future release", "8.0.60-R10")
   val NON_ZERO = NonZero
 
@@ -46,5 +45,5 @@ object FillRule extends SFXEnumDelegateCompanion[jfxss.FillRule, FillRule] {
 }
 
 
-sealed case class FillRule(override val delegate: jfxss.FillRule)
+sealed abstract class FillRule(override val delegate: jfxss.FillRule)
   extends SFXEnumDelegate[jfxss.FillRule]

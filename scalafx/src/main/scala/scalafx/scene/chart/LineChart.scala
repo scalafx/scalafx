@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,12 @@
 package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
+
+import scala.language.implicitConversions
 
 object LineChart {
   implicit def sfxLineChart2jfx[X, Y](v: LineChart[X, Y]): jfxsc.LineChart[X, Y] = if (v != null) v.delegate else null
@@ -48,20 +48,20 @@ object LineChart {
     /**
      * The data should be left in the order defined by the list in [[scalafx.scene.chart.LineChart.data]] property.
      */
-    val None = new SortingPolicy(jfxsc.LineChart.SortingPolicy.NONE)
+    case object None extends SortingPolicy(jfxsc.LineChart.SortingPolicy.NONE)
     /**
      * The data is ordered by x axis.
      */
-    val XAxis = new SortingPolicy(jfxsc.LineChart.SortingPolicy.X_AXIS)
+    case object XAxis extends SortingPolicy(jfxsc.LineChart.SortingPolicy.X_AXIS)
     /**
      * The data is ordered by y axis.
      */
-    val YAxis = new SortingPolicy(jfxsc.LineChart.SortingPolicy.Y_AXIS)
+    case object YAxis extends SortingPolicy(jfxsc.LineChart.SortingPolicy.Y_AXIS)
 
     protected override def unsortedValues: Array[SortingPolicy] = Array(None, XAxis, YAxis)
   }
 
-  sealed case class SortingPolicy(override val delegate: jfxsc.LineChart.SortingPolicy)
+  sealed abstract class SortingPolicy(override val delegate: jfxsc.LineChart.SortingPolicy)
     extends SFXEnumDelegate[jfxsc.LineChart.SortingPolicy]
 
 }

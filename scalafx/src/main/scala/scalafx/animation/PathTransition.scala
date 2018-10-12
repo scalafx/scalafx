@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,14 +28,14 @@ package scalafx.animation
 
 import javafx.scene.{shape => jfxss}
 import javafx.{animation => jfxa, scene => jfxs, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.scene.Node
 import scalafx.scene.shape.Shape
 import scalafx.util.Duration
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.animation.PathTransition]].
@@ -63,7 +63,7 @@ object PathTransition extends AnimationStatics {
     /**
      * The targeted node's rotation matrix stays unchanged along the geometric path.
      */
-    val None = new OrientationType(jfxa.PathTransition.OrientationType.NONE)
+    case object None extends OrientationType(jfxa.PathTransition.OrientationType.NONE)
     @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
     val NONE = None
 
@@ -71,7 +71,7 @@ object PathTransition extends AnimationStatics {
      * The targeted node's rotation matrix is set to keep node perpendicular to the path's tangent along the geometric
      * path.
      */
-    val OrthogonalToTangent = new OrientationType(jfxa.PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT)
+    case object OrthogonalToTangent extends OrientationType(jfxa.PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT)
     @deprecated ("Use OrthogonalToTangent; ORTHOGONAL_TO_TANGENT will be removed in a future release", "8.0.60-R10")
     val ORTHOGONAL_TO_TANGENT = OrthogonalToTangent
 
@@ -85,7 +85,7 @@ object PathTransition extends AnimationStatics {
    * @constructor Creates a new ScalaFX $OT from a JavaFX $OT.
    * @param delegate JavaFX $OT to be delegated.
    */
-  sealed case class OrientationType(override val delegate: jfxa.PathTransition.OrientationType)
+  sealed abstract class OrientationType(override val delegate: jfxa.PathTransition.OrientationType)
     extends SFXEnumDelegate[jfxa.PathTransition.OrientationType]
 
 }

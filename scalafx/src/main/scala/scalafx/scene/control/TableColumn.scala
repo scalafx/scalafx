@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,15 +29,15 @@ package scalafx.scene.control
 
 import javafx.beans.{value => jfxbv}
 import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe, scene => jfxs, util => jfxu}
-
-import scala.language.implicitConversions
+import javafx.{event => jfxe, util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.beans.value.ObservableValue
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.event.Event
+
+import scala.language.implicitConversions
 
 object TableColumn {
   implicit def sfxTableColumn2jfx[S, T](tc: TableColumn[S, T]): jfxsc.TableColumn[S, T] = if (tc != null) tc.delegate else null
@@ -130,12 +130,12 @@ object TableColumn {
     extends SFXEnumDelegateCompanion[jfxsc.TableColumn.SortType, SortType] {
 
     /** Column will be sorted in an ascending order. */
-    val Ascending = new SortType(jfxsc.TableColumn.SortType.ASCENDING)
+    case object Ascending extends SortType(jfxsc.TableColumn.SortType.ASCENDING)
     @deprecated ("Use Ascending; ASCENDING will be removed in a future release", "8.0.60-R10")
     val ASCENDING = Ascending
 
     /** Column will be sorted in a descending order. */
-    val Descending = new SortType(jfxsc.TableColumn.SortType.DESCENDING)
+    case object Descending extends SortType(jfxsc.TableColumn.SortType.DESCENDING)
     @deprecated ("Use Descending; DESCENDING will be removed in a future release", "8.0.60-R10")
     val DESCENDING = Descending
 
@@ -144,7 +144,7 @@ object TableColumn {
   }
 
   /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.SortType.html]] */
-  sealed case class SortType(override val delegate: jfxsc.TableColumn.SortType)
+  sealed abstract class SortType(override val delegate: jfxsc.TableColumn.SortType)
     extends SFXEnumDelegate[jfxsc.TableColumn.SortType]
 
   /**

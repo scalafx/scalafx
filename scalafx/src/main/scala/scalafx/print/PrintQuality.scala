@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 package scalafx.print
 
 import javafx.{print => jfxp}
-
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
@@ -39,22 +38,22 @@ object PrintQuality
   /**
    * Specify DRAFT quality printing.
    */
-  val Draft = new PrintQuality(jfxp.PrintQuality.DRAFT)
+  case object Draft extends PrintQuality(jfxp.PrintQuality.DRAFT)
 
   /**
    * Specify HIGH quality printing.
    */
-  val High = new PrintQuality(jfxp.PrintQuality.HIGH)
+  case object High extends PrintQuality(jfxp.PrintQuality.HIGH)
 
   /**
    * Specify LOW quality printing.
    */
-  val Low = new PrintQuality(jfxp.PrintQuality.LOW)
+  case object Low extends PrintQuality(jfxp.PrintQuality.LOW)
 
   /**
    * Specify NORMAL quality printing.
    */
-  val Normal = new PrintQuality(jfxp.PrintQuality.NORMAL)
+  case object Normal extends PrintQuality(jfxp.PrintQuality.NORMAL)
 
   protected override def unsortedValues: Array[PrintQuality] = Array(Draft, High, Low, Normal)
 
@@ -63,5 +62,5 @@ object PrintQuality
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintQuality.html JavaFX PrintQuality]].
  */
-sealed case class PrintQuality(override val delegate: jfxp.PrintQuality)
+sealed abstract class PrintQuality(override val delegate: jfxp.PrintQuality)
   extends SFXEnumDelegate[jfxp.PrintQuality]

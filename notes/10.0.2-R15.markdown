@@ -1,6 +1,6 @@
 [ScalaFX][1] 10.0.2-R15 was tested against JavaFX 10.0.2. It contains changes to better support JavaFX 10.
 
-New features, manu provided by [Romain DEP](https://github.com/rom1dep):
+New features, many provided by [Romain DEP](https://github.com/rom1dep):
 * Add missing public static methods for `Font`: `loadFonts(url)`, `loadFonts(stream)`
 * Add missing properties for `Node`: `viewOrder`
 * Add missing public static methods for `Platform`: `requestNextPulse`, `startup`, `enterNestedEventLoop`, `exitNestedEventLoop`, `isNestedLoopRunning`

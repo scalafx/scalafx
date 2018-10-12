@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,9 @@ package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
 import javafx.{event => jfxe}
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 import scala.language.implicitConversions
-import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 object TouchPoint {
   implicit def sfxTouchPoint2jfx(tp: TouchPoint): jfxsi.TouchPoint = if (tp != null) tp.delegate else null
@@ -41,28 +41,28 @@ object TouchPoint {
     /**
      * The touch point has been moved
      */
-    val Moved = new State(jfxsi.TouchPoint.State.MOVED)
+    case object Moved extends State(jfxsi.TouchPoint.State.MOVED)
     @deprecated ("Use Moved; MOVED will be removed in a future release", "8.0.60-R10")
     val MOVED = Moved
 
     /**
      * The touch point has been moved
      */
-    val Pressed = new State(jfxsi.TouchPoint.State.PRESSED)
+    case object Pressed extends State(jfxsi.TouchPoint.State.PRESSED)
     @deprecated ("Use Pressed; PRESSED will be removed in a future release", "8.0.60-R10")
     val PRESSED = Pressed
 
     /**
      * The touch point remains pressed and still (without moving)
      */
-    val Stationary = new State(jfxsi.TouchPoint.State.STATIONARY)
+    case object Stationary extends State(jfxsi.TouchPoint.State.STATIONARY)
     @deprecated ("Use Stationary; STATIONARY will be removed in a future release", "8.0.60-R10")
     val STATIONARY = Stationary
 
     /**
      * The touch point has been released
      */
-    val Released = new State(jfxsi.TouchPoint.State.RELEASED)
+    case object Released extends State(jfxsi.TouchPoint.State.RELEASED)
     @deprecated ("Use Released; RELEASED will be removed in a future release", "8.0.60-R10")
     val RELEASED = Released
 
@@ -73,7 +73,7 @@ object TouchPoint {
   /**
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/TouchPoint.State.html]]
    */
-  sealed case class State(override val delegate: jfxsi.TouchPoint.State)
+  sealed abstract class State(override val delegate: jfxsi.TouchPoint.State)
     extends SFXEnumDelegate[jfxsi.TouchPoint.State]
 
 }

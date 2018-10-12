@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,7 @@
  */
 package scalafx.scene
 
-import javafx.beans.{property => jfxbp}
 import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.scene.chart.ChartIncludes
 import scalafx.scene.control.ControlIncludes
@@ -39,6 +36,8 @@ import scalafx.scene.layout.LayoutIncludes
 import scalafx.scene.paint.PaintIncludes
 import scalafx.scene.shape.ShapeIncludes
 import scalafx.scene.text.TextIncludes
+
+import scala.language.implicitConversions
 
 object SceneIncludes extends SceneIncludes
 
@@ -194,7 +193,7 @@ trait LowerPriorityIncludes {
   implicit def jfxSceneAntialiasing2sfx(v: jfxs.SceneAntialiasing): SceneAntialiasing = {
     // A value of null is treated as though antialiasing is disabled.
     if (v eq null) SceneAntialiasing.Disabled
-    else new SceneAntialiasing(v)
+    else SceneAntialiasing(v)
   }
 
   /**

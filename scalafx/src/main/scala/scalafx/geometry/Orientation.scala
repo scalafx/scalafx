@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,18 +28,17 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
-
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Orientation.html javafx.geometry.Orientation]] */
 object Orientation
   extends SFXEnumDelegateCompanion[jfxg.Orientation, Orientation] {
 
-  val Horizontal = new Orientation(jfxg.Orientation.HORIZONTAL)
+  case object Horizontal extends Orientation(jfxg.Orientation.HORIZONTAL)
   @deprecated ("Use Horizontal; HORIZONTAL will be removed in a future release", "8.0.60-R10")
   val HORIZONTAL = Horizontal
 
-  val Vertical = new Orientation(jfxg.Orientation.VERTICAL)
+  case object Vertical extends Orientation(jfxg.Orientation.VERTICAL)
   @deprecated ("Use Vertical; VERTICAL will be removed in a future release", "8.0.60-R10")
   val VERTICAL = Vertical
 
@@ -47,5 +46,5 @@ object Orientation
 }
 
 
-sealed case class Orientation(override val delegate: jfxg.Orientation)
+sealed abstract class Orientation(override val delegate: jfxg.Orientation)
   extends SFXEnumDelegate[jfxg.Orientation]

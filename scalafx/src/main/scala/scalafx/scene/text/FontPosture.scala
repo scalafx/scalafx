@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,18 +28,17 @@
 package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
-
 import scalafx.Includes._
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontPosture.html javafx.scene.text.FontPosture]] */
 object FontPosture extends SFXEnumDelegateCompanion[jfxst.FontPosture, FontPosture] {
 
-  val Regular = new FontPosture(jfxst.FontPosture.REGULAR)
+  case object Regular extends FontPosture(jfxst.FontPosture.REGULAR)
   @deprecated ("Use Regular; REGULAR will be removed in a future release", "8.0.60-R10")
   val REGULAR = Regular
 
-  val Italic = new FontPosture(jfxst.FontPosture.ITALIC)
+  case object Italic extends FontPosture(jfxst.FontPosture.ITALIC)
   @deprecated ("Use Italic; ITALIC will be removed in a future release", "8.0.60-R10")
   val ITALIC = Italic
 
@@ -50,5 +49,5 @@ object FontPosture extends SFXEnumDelegateCompanion[jfxst.FontPosture, FontPostu
 }
 
 
-sealed case class FontPosture(override val delegate: jfxst.FontPosture)
+sealed abstract class FontPosture(override val delegate: jfxst.FontPosture)
   extends SFXEnumDelegate[jfxst.FontPosture]

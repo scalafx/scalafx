@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,23 +28,24 @@
 package scalafx.scene.paint
 
 import javafx.scene.{paint => jfxsp}
-
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/paint/CycleMethod.html javafx.scene.paint.CycleMethod]] */
 object CycleMethod extends SFXEnumDelegateCompanion[jfxsp.CycleMethod, CycleMethod] {
 
-  val NoCycle = new CycleMethod(jfxsp.CycleMethod.NO_CYCLE)
+  case object NoCycle extends CycleMethod(jfxsp.CycleMethod.NO_CYCLE)
   @deprecated("Use NoCycle; NO_CYCLE will be removed in a future release", "2.2.60")
   val NO_CYCLE = NoCycle
-  val Reflect = new CycleMethod(jfxsp.CycleMethod.REFLECT)
+
+  case object Reflect extends CycleMethod(jfxsp.CycleMethod.REFLECT)
   @deprecated("Use Reflect; REFLECT will be removed in a future release", "2.2.60")
   val REFLECT = Reflect
-  val Repeat = new CycleMethod(jfxsp.CycleMethod.REPEAT)
+
+  case object Repeat extends CycleMethod(jfxsp.CycleMethod.REPEAT)
   @deprecated("Use Repeat; REPEAT will be removed in a future release", "2.2.60")
   val REPEAT = Repeat
 
   protected override def unsortedValues: Array[CycleMethod] = Array(NoCycle, Reflect, Repeat)
 }
 
-sealed case class CycleMethod(override val delegate: jfxsp.CycleMethod) extends SFXEnumDelegate[jfxsp.CycleMethod]
+sealed abstract class CycleMethod(override val delegate: jfxsp.CycleMethod) extends SFXEnumDelegate[jfxsp.CycleMethod]

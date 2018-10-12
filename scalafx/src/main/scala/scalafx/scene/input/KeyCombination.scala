@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,10 +28,9 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
-import javafx.{event => jfxe}
+import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 import scala.language.implicitConversions
-import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 object KeyCombination {
 
@@ -41,21 +40,21 @@ object KeyCombination {
     /**
      * Constant which indicates that the modifier key can be either up or down.
      */
-    val Any = new ModifierValue(jfxsi.KeyCombination.ModifierValue.ANY)
+    case object Any extends ModifierValue(jfxsi.KeyCombination.ModifierValue.ANY)
     @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
     val ANY = Any
 
     /**
      * Constant which indicates that the modifier key must be down.
      */
-    val Down = new ModifierValue(jfxsi.KeyCombination.ModifierValue.DOWN)
+    case object Down extends ModifierValue(jfxsi.KeyCombination.ModifierValue.DOWN)
     @deprecated ("Use Down; DOWN will be removed in a future release", "8.0.60-R10")
     val DOWN = Down
 
     /**
      * Constant which indicates that the modifier key must be up.
      */
-    val Up = new ModifierValue(jfxsi.KeyCombination.ModifierValue.UP)
+    case object Up extends ModifierValue(jfxsi.KeyCombination.ModifierValue.UP)
     @deprecated ("Use Up; UP will be removed in a future release", "8.0.60-R10")
     val UP = Up
 
@@ -66,7 +65,7 @@ object KeyCombination {
   /**
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/KeyCombination.ModifierValue.html]]
    */
-  sealed case class ModifierValue(override val delegate: jfxsi.KeyCombination.ModifierValue)
+  sealed abstract class ModifierValue(override val delegate: jfxsi.KeyCombination.ModifierValue)
     extends SFXEnumDelegate[jfxsi.KeyCombination.ModifierValue]
 
   object Modifier {
@@ -78,7 +77,7 @@ object KeyCombination {
     /**
      * Gets the modifier key of this Modifier.
      */
-    def key: KeyCode = new KeyCode(delegate.getKey)
+    def key: KeyCode = KeyCode(delegate.getKey)
 
     /**
      * Gets the modifier value of this Modifier.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,13 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.scene.control.Alert.AlertType
+
+import scala.language.implicitConversions
 
 object Alert {
   /**
@@ -55,7 +55,7 @@ object Alert {
      * The `None` alert type has the effect of not setting any default properties
      * in the Alert.
      */
-    val None = AlertType(jfxsc.Alert.AlertType.NONE)
+    case object None extends AlertType(jfxsc.Alert.AlertType.NONE)
 
     /**
      * The `INFORMATION` alert type configures the Alert dialog to appear in a
@@ -64,7 +64,7 @@ object Alert {
      * appropriate title and header, and just an OK button for the user to
      * click on to dismiss the dialog.
      */
-    val Information = AlertType(jfxsc.Alert.AlertType.INFORMATION)
+    case object Information extends AlertType(jfxsc.Alert.AlertType.INFORMATION)
 
     /**
      * The `Warning` alert type configures the Alert dialog to appear in a
@@ -73,7 +73,7 @@ object Alert {
      * appropriate title and header, and just an OK button for the user to
      * click on to dismiss the dialog.
      */
-    val Warning = AlertType(jfxsc.Alert.AlertType.WARNING)
+    case object Warning extends AlertType(jfxsc.Alert.AlertType.WARNING)
 
     /**
      * The `Confirmation` alert type configures the Alert dialog to appear in a
@@ -82,7 +82,7 @@ object Alert {
      * appropriate title and header, and both OK and Cancel buttons for the
      * user to click on to dismiss the dialog.
      */
-    val Confirmation = AlertType(jfxsc.Alert.AlertType.CONFIRMATION)
+    case object Confirmation extends AlertType(jfxsc.Alert.AlertType.CONFIRMATION)
 
     /**
      * The `Error` alert type configures the Alert dialog to appear in a
@@ -90,13 +90,13 @@ object Alert {
      * 'error' image, an appropriate title and header, and just an OK button
      * for the user to click on to dismiss the dialog.
      */
-    val Error = AlertType(jfxsc.Alert.AlertType.ERROR)
+    case object Error extends AlertType(jfxsc.Alert.AlertType.ERROR)
 
     /** Contain constants which will be source for `values` List  */
     override protected def unsortedValues = Array(None, Information, Warning, Confirmation, Error)
   }
 
-  sealed case class AlertType(override val delegate: jfxsc.Alert.AlertType)
+  sealed abstract class AlertType(override val delegate: jfxsc.Alert.AlertType)
     extends SFXEnumDelegate[jfxsc.Alert.AlertType]
 
 }

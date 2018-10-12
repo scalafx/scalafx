@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,6 @@
 package scalafx.scene
 
 import javafx.{scene => jfxs}
-
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
@@ -58,7 +57,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#FIRE} </li>
    * </ul>
    */
-  val Button = new AccessibleRole(jfxs.AccessibleRole.BUTTON)
+  case object Button extends AccessibleRole(jfxs.AccessibleRole.BUTTON)
 
   /**
    * Check Box role.
@@ -74,7 +73,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#FIRE} </li>
    * </ul>
    */
-  val CheckBox = new AccessibleRole(jfxs.AccessibleRole.CHECK_BOX)
+  case object CheckBox extends AccessibleRole(jfxs.AccessibleRole.CHECK_BOX)
 
   /**
    * Check Menu Item role.
@@ -92,7 +91,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#FIRE} </li>
    * </ul>
    */
-  val CheckMenuItem = new AccessibleRole(jfxs.AccessibleRole.CHECK_MENU_ITEM)
+  case object CheckMenuItem extends AccessibleRole(jfxs.AccessibleRole.CHECK_MENU_ITEM)
 
   /**
    * Combo Box role.
@@ -109,7 +108,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#COLLAPSE} </li>
    * </ul>
    */
-  val ComboBox = new AccessibleRole(jfxs.AccessibleRole.COMBO_BOX)
+  case object ComboBox extends AccessibleRole(jfxs.AccessibleRole.COMBO_BOX)
 
   /**
    * Context Menu role.
@@ -123,7 +122,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <ul>
    * </ul>
    */
-  val ContextMenu = new AccessibleRole(jfxs.AccessibleRole.CONTEXT_MENU)
+  case object ContextMenu extends AccessibleRole(jfxs.AccessibleRole.CONTEXT_MENU)
 
   /**
    * Date Picker role.
@@ -137,7 +136,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <ul>
    * </ul>
    */
-  val DatePicker = new AccessibleRole(jfxs.AccessibleRole.DATE_PICKER)
+  case object DatePicker extends AccessibleRole(jfxs.AccessibleRole.DATE_PICKER)
 
   /**
    * Decrement Button role.
@@ -151,7 +150,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#FIRE} </li>
    * </ul>
    */
-  val DecrementButton = new AccessibleRole(jfxs.AccessibleRole.DECREMENT_BUTTON)
+  case object DecrementButton extends AccessibleRole(jfxs.AccessibleRole.DECREMENT_BUTTON)
 
   /**
    * Hyperlink role.
@@ -165,7 +164,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#FIRE} </li>
    * </ul>
    */
-  val Hyperlink = new AccessibleRole(jfxs.AccessibleRole.HYPERLINK)
+  case object Hyperlink extends AccessibleRole(jfxs.AccessibleRole.HYPERLINK)
 
   /**
    * Increment Button role.
@@ -179,7 +178,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#FIRE} </li>
    * </ul>
    */
-  val IncrementButton = new AccessibleRole(jfxs.AccessibleRole.INCREMENT_BUTTON)
+  case object IncrementButton extends AccessibleRole(jfxs.AccessibleRole.INCREMENT_BUTTON)
 
   /**
    * Image View role.
@@ -197,7 +196,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * or by using {@link AccessibleAttribute#LABELED_BY}.
    * </p>
    */
-  val ImageView = new AccessibleRole(jfxs.AccessibleRole.IMAGE_VIEW)
+  case object ImageView extends AccessibleRole(jfxs.AccessibleRole.IMAGE_VIEW)
 
   /**
    * List View role.
@@ -218,7 +217,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#SET_SELECTED_ITEMS} </li>
    * </ul>
    */
-  val ListView = new AccessibleRole(jfxs.AccessibleRole.LIST_VIEW)
+  case object ListView extends AccessibleRole(jfxs.AccessibleRole.LIST_VIEW)
 
   /**
    * List Item role.
@@ -234,7 +233,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#REQUEST_FOCUS} </li>
    * </ul>
    */
-  val ListItem = new AccessibleRole(jfxs.AccessibleRole.LIST_ITEM)
+  case object ListItem extends AccessibleRole(jfxs.AccessibleRole.LIST_ITEM)
 
   /**
    * Menu role.
@@ -252,7 +251,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#FIRE} </li>
    * </ul>
    */
-  val Menu = new AccessibleRole(jfxs.AccessibleRole.MENU)
+  case object Menu extends AccessibleRole(jfxs.AccessibleRole.MENU)
 
   /**
    * Menu Bar role.
@@ -264,7 +263,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <ul>
    * </ul>
    */
-  val MenuBar = new AccessibleRole(jfxs.AccessibleRole.MENU_BAR)
+  case object MenuBar extends AccessibleRole(jfxs.AccessibleRole.MENU_BAR)
 
   /**
    * Menu Button role.
@@ -278,7 +277,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#FIRE} </li>
    * </ul>
    */
-  val MenuButton = new AccessibleRole(jfxs.AccessibleRole.MENU_BUTTON)
+  case object MenuButton extends AccessibleRole(jfxs.AccessibleRole.MENU_BUTTON)
 
   /**
    * Menu Item role.
@@ -295,7 +294,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#FIRE} </li>
    * </ul>
    */
-  val MenuItem = new AccessibleRole(jfxs.AccessibleRole.MENU_ITEM)
+  case object MenuItem extends AccessibleRole(jfxs.AccessibleRole.MENU_ITEM)
 
   /**
    * Node role.
@@ -326,7 +325,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#SHOW_MENU} </li>
    * </ul>
    */
-  val Node = new AccessibleRole(jfxs.AccessibleRole.NODE)
+  case object Node extends AccessibleRole(jfxs.AccessibleRole.NODE)
 
   /**
    * Page role.
@@ -341,7 +340,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#REQUEST_FOCUS} </li>
    * </ul>
    */
-  val PageItem = new AccessibleRole(jfxs.AccessibleRole.PAGE_ITEM)
+  case object PageItem extends AccessibleRole(jfxs.AccessibleRole.PAGE_ITEM)
 
   /**
    * Pagination role.
@@ -356,7 +355,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <ul>
    * </ul>
    */
-  val Pagination = new AccessibleRole(jfxs.AccessibleRole.PAGINATION)
+  case object Pagination extends AccessibleRole(jfxs.AccessibleRole.PAGINATION)
 
   /**
    * Parent role.
@@ -369,7 +368,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <ul>
    * </ul>
    */
-  val Parent = new AccessibleRole(jfxs.AccessibleRole.PARENT)
+  case object Parent extends AccessibleRole(jfxs.AccessibleRole.PARENT)
 
   /**
    * Password Field role.
@@ -382,7 +381,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <ul>
    * </ul>
    */
-  val PasswordField = new AccessibleRole(jfxs.AccessibleRole.PASSWORD_FIELD)
+  case object PasswordField extends AccessibleRole(jfxs.AccessibleRole.PASSWORD_FIELD)
 
   /**
    * Progress Indicator role.
@@ -398,7 +397,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <ul>
    * </ul>
    */
-  val ProgressIndicator = new AccessibleRole(jfxs.AccessibleRole.PROGRESS_INDICATOR)
+  case object ProgressIndicator extends AccessibleRole(jfxs.AccessibleRole.PROGRESS_INDICATOR)
 
   /**
    * Radio Button role.
@@ -413,7 +412,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#FIRE} </li>
    * </ul>
    */
-  val RadioButton = new AccessibleRole(jfxs.AccessibleRole.RADIO_BUTTON)
+  case object RadioButton extends AccessibleRole(jfxs.AccessibleRole.RADIO_BUTTON)
 
   /**
    * Radio Menu Item role.
@@ -431,7 +430,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#FIRE} </li>
    * </ul>
    */
-  val RadioMenuItem = new AccessibleRole(jfxs.AccessibleRole.RADIO_MENU_ITEM)
+  case object RadioMenuItem extends AccessibleRole(jfxs.AccessibleRole.RADIO_MENU_ITEM)
 
   /**
    * Slider role.
@@ -450,7 +449,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#SET_VALUE} </li>
    * </ul>
    */
-  val Slider = new AccessibleRole(jfxs.AccessibleRole.SLIDER)
+  case object Slider extends AccessibleRole(jfxs.AccessibleRole.SLIDER)
 
   /**
    * Spinner role.
@@ -465,7 +464,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#DECREMENT} </li>
    * </ul>
    */
-  val Spinner = new AccessibleRole(jfxs.AccessibleRole.SPINNER)
+  case object Spinner extends AccessibleRole(jfxs.AccessibleRole.SPINNER)
 
   /**
    * Text role.
@@ -480,7 +479,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#SET_TEXT} </li>
    * </ul>
    */
-  val Text = new AccessibleRole(jfxs.AccessibleRole.TEXT)
+  case object Text extends AccessibleRole(jfxs.AccessibleRole.TEXT)
 
   /**
    * Text Area role.
@@ -505,7 +504,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#SET_TEXT_SELECTION} </li>
    * </ul>
    */
-  val TextArea = new AccessibleRole(jfxs.AccessibleRole.TEXT_AREA)
+  case object TextArea extends AccessibleRole(jfxs.AccessibleRole.TEXT_AREA)
 
   /**
    * Text Field role.
@@ -527,7 +526,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#SET_TEXT_SELECTION} </li>
    * </ul>
    */
-  val TextField = new AccessibleRole(jfxs.AccessibleRole.TEXT_FIELD)
+  case object TextField extends AccessibleRole(jfxs.AccessibleRole.TEXT_FIELD)
 
   /**
    * Toggle Button role.
@@ -542,7 +541,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#FIRE} </li>
    * </ul>
    */
-  val ToggleButton = new AccessibleRole(jfxs.AccessibleRole.TOGGLE_BUTTON)
+  case object ToggleButton extends AccessibleRole(jfxs.AccessibleRole.TOGGLE_BUTTON)
 
   /**
    * Tooltip role.
@@ -554,7 +553,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <ul>
    * </ul>
    */
-  val Tooltip = new AccessibleRole(jfxs.AccessibleRole.TOOLTIP)
+  case object Tooltip extends AccessibleRole(jfxs.AccessibleRole.TOOLTIP)
 
   /**
    * Scroll Bar role.
@@ -575,7 +574,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#SET_VALUE} </li>
    * </ul>
    */
-  val ScrollBar = new AccessibleRole(jfxs.AccessibleRole.SCROLL_BAR)
+  case object ScrollBar extends AccessibleRole(jfxs.AccessibleRole.SCROLL_BAR)
 
   /**
    * Scroll Pane role.
@@ -590,7 +589,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <ul>
    * </ul>
    */
-  val ScrollPane = new AccessibleRole(jfxs.AccessibleRole.SCROLL_PANE)
+  case object ScrollPane extends AccessibleRole(jfxs.AccessibleRole.SCROLL_PANE)
 
   /**
    * Split Menu Button role.
@@ -607,7 +606,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#COLLAPSE} </li>
    * </ul>
    */
-  val SplitMenuButton = new AccessibleRole(jfxs.AccessibleRole.SPLIT_MENU_BUTTON)
+  case object SplitMenuButton extends AccessibleRole(jfxs.AccessibleRole.SPLIT_MENU_BUTTON)
 
   /**
    * Tab Item role.
@@ -622,7 +621,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#REQUEST_FOCUS} </li>
    * </ul>
    */
-  val TabItem = new AccessibleRole(jfxs.AccessibleRole.TAB_ITEM)
+  case object TabItem extends AccessibleRole(jfxs.AccessibleRole.TAB_ITEM)
 
   /**
    * Tab Pane role.
@@ -637,7 +636,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <ul>
    * </ul>
    */
-  val TabPane = new AccessibleRole(jfxs.AccessibleRole.TAB_PANE)
+  case object TabPane extends AccessibleRole(jfxs.AccessibleRole.TAB_PANE)
 
   /**
    * Table Cell role.
@@ -654,7 +653,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#REQUEST_FOCUS} </li>
    * </ul>
    */
-  val TableCell = new AccessibleRole(jfxs.AccessibleRole.TABLE_CELL)
+  case object TableCell extends AccessibleRole(jfxs.AccessibleRole.TABLE_CELL)
 
   /**
    * Table Column role.
@@ -668,7 +667,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <ul>
    * </ul>
    */
-  val TableColumn = new AccessibleRole(jfxs.AccessibleRole.TABLE_COLUMN)
+  case object TableColumn extends AccessibleRole(jfxs.AccessibleRole.TABLE_COLUMN)
 
   /**
    * Table Row role.
@@ -682,7 +681,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <ul>
    * </ul>
    */
-  val TableRow = new AccessibleRole(jfxs.AccessibleRole.TABLE_ROW)
+  case object TableRow extends AccessibleRole(jfxs.AccessibleRole.TABLE_ROW)
 
   /**
    * Table View role.
@@ -707,7 +706,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#SET_SELECTED_ITEMS} </li>
    * </ul>
    */
-  val TableView = new AccessibleRole(jfxs.AccessibleRole.TABLE_VIEW)
+  case object TableView extends AccessibleRole(jfxs.AccessibleRole.TABLE_VIEW)
 
   /**
    * Thumb role.
@@ -720,7 +719,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <ul>
    * </ul>
    */
-  val Thumb = new AccessibleRole(jfxs.AccessibleRole.THUMB)
+  case object Thumb extends AccessibleRole(jfxs.AccessibleRole.THUMB)
 
   /**
    * Titled Pane role.
@@ -736,7 +735,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#COLLAPSE} </li>
    * </ul>
    */
-  val TitledPane = new AccessibleRole(jfxs.AccessibleRole.TITLED_PANE)
+  case object TitledPane extends AccessibleRole(jfxs.AccessibleRole.TITLED_PANE)
 
   /**
    * Tool Bar role.
@@ -749,7 +748,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <ul>
    * </ul>
    */
-  val ToolBar = new AccessibleRole(jfxs.AccessibleRole.TOOL_BAR)
+  case object ToolBar extends AccessibleRole(jfxs.AccessibleRole.TOOL_BAR)
 
   /**
    * Tree Item role.
@@ -773,7 +772,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#REQUEST_FOCUS} </li>
    * </ul>
    */
-  val TreeItem = new AccessibleRole(jfxs.AccessibleRole.TREE_ITEM)
+  case object TreeItem extends AccessibleRole(jfxs.AccessibleRole.TREE_ITEM)
 
   /**
    * Tree Table Cell role.
@@ -790,7 +789,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#REQUEST_FOCUS} </li>
    * </ul>
    */
-  val TreeTableCell = new AccessibleRole(jfxs.AccessibleRole.TREE_TABLE_CELL)
+  case object TreeTableCell extends AccessibleRole(jfxs.AccessibleRole.TREE_TABLE_CELL)
 
   /**
    * Tree Table Row role.
@@ -811,7 +810,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#COLLAPSE} </li>
    * </ul>
    */
-  val TreeTableRow = new AccessibleRole(jfxs.AccessibleRole.TREE_TABLE_ROW)
+  case object TreeTableRow extends AccessibleRole(jfxs.AccessibleRole.TREE_TABLE_ROW)
 
   /**
    * Tree Table View role.
@@ -836,7 +835,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#SET_SELECTED_ITEMS} </li>
    * </ul>
    */
-  val TreeTableView = new AccessibleRole(jfxs.AccessibleRole.TREE_TABLE_VIEW)
+  case object TreeTableView extends AccessibleRole(jfxs.AccessibleRole.TREE_TABLE_VIEW)
 
   /**
    * Tree View role.
@@ -857,7 +856,7 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
    * <li> {@link AccessibleAction#SET_SELECTED_ITEMS} </li>
    * </ul>
    */
-  val TreeView = new AccessibleRole(jfxs.AccessibleRole.TREE_VIEW)
+  case object TreeView extends AccessibleRole(jfxs.AccessibleRole.TREE_VIEW)
 
 
   protected override def unsortedValues: Array[AccessibleRole] = Array(Button, CheckBox, CheckMenuItem, ComboBox,
@@ -869,5 +868,5 @@ object AccessibleRole extends SFXEnumDelegateCompanion[jfxs.AccessibleRole, Acce
   )
 }
 
-sealed case class AccessibleRole(override val delegate: jfxs.AccessibleRole) extends SFXEnumDelegate[jfxs.AccessibleRole]
+sealed abstract class AccessibleRole(override val delegate: jfxs.AccessibleRole) extends SFXEnumDelegate[jfxs.AccessibleRole]
 

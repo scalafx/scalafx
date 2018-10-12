@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,6 @@
 package scalafx.scene
 
 import javafx.{scene => jfxs}
-
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
@@ -51,7 +50,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * A smaller decrement is requested using {@link #DECREMENT}.
    *
    */
-  val BlockDecrement = new AccessibleAction(jfxs.AccessibleAction.BLOCK_DECREMENT)
+  case object BlockDecrement extends AccessibleAction(jfxs.AccessibleAction.BLOCK_DECREMENT)
 
   /**
    * Request that the node be incremented by a large value.
@@ -59,14 +58,14 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
 
    * Used by Slider, ScrollBar, and others
    */
-  val BlockIncrement = new AccessibleAction(jfxs.AccessibleAction.BLOCK_INCREMENT)
+  case object BlockIncrement extends AccessibleAction(jfxs.AccessibleAction.BLOCK_INCREMENT)
 
   /**
    * Request that the node should become collapsed.
    *
    * Used by TreeItem, TitledPane, and others
    */
-  val Collapse = new AccessibleAction(jfxs.AccessibleAction.COLLAPSE)
+  case object Collapse extends AccessibleAction(jfxs.AccessibleAction.COLLAPSE)
 
   /**
    * Request that the node be decremented by a small value.
@@ -75,7 +74,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * Used by Slider, ScrollBar, and others
    *
    */
-  val Decrement = new AccessibleAction(jfxs.AccessibleAction.DECREMENT)
+  case object Decrement extends AccessibleAction(jfxs.AccessibleAction.DECREMENT)
 
   /**
    * Request that the node should become expanded.
@@ -83,7 +82,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * Used by TreeItem, TitledPane, and others
    *
    */
-  val Expand = new AccessibleAction(jfxs.AccessibleAction.EXPAND)
+  case object Expand extends AccessibleAction(jfxs.AccessibleAction.EXPAND)
 
   /**
    * Fires the primary action for the node. For example, a push
@@ -93,7 +92,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * Used by Button, Hyperlink, and others
    *
    */
-  val Fire = new AccessibleAction(jfxs.AccessibleAction.FIRE)
+  case object Fire extends AccessibleAction(jfxs.AccessibleAction.FIRE)
 
   /**
    * Request that the node be incremented by a small value.
@@ -102,7 +101,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * Used by Slider, ScrollBar, and others
    *
    */
-  val Increment = new AccessibleAction(jfxs.AccessibleAction.INCREMENT)
+  case object Increment extends AccessibleAction(jfxs.AccessibleAction.INCREMENT)
 
   /**
    * Request that the node take focus.  By default, a node will
@@ -116,7 +115,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    *
    * Used by Node, TabItem, TableCell and others
    */
-  val RequestFocus = new AccessibleAction(jfxs.AccessibleAction.REQUEST_FOCUS)
+  case object RequestFocus extends AccessibleAction(jfxs.AccessibleAction.REQUEST_FOCUS)
 
   /**
    * Request the node to show an item, scrolling if required.
@@ -128,7 +127,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * <li> {@link Node} the item to show </li>
    * </ul>
    */
-  val ShowItem = new AccessibleAction(jfxs.AccessibleAction.SHOW_ITEM)
+  case object ShowItem extends AccessibleAction(jfxs.AccessibleAction.SHOW_ITEM)
 
   /**
    * Request the node to show a text range, scrolling if required.
@@ -141,7 +140,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * <li> {@link java.lang.Integer} the end offset </li>
    * </ul>
    */
-  val ShowTextRange = new AccessibleAction(jfxs.AccessibleAction.SHOW_TEXT_RANGE)
+  case object ShowTextRange extends AccessibleAction(jfxs.AccessibleAction.SHOW_TEXT_RANGE)
 
   /**
    * Request the node to set the selection to a list of items.
@@ -153,7 +152,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * <li> {@link javafx.collections.ObservableList}&lt;{@link Node}&gt; the items to select </li>
    * </ul>
    */
-  val SetSelectedItems = new AccessibleAction(jfxs.AccessibleAction.SET_SELECTED_ITEMS)
+  case object SetSelectedItems extends AccessibleAction(jfxs.AccessibleAction.SET_SELECTED_ITEMS)
 
   /**
    * Request the node to set the selection to range of text.
@@ -166,7 +165,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * <li> {@link java.lang.Integer} the end offset </li>
    * </ul>
    */
-  val SetTextSelection = new AccessibleAction(jfxs.AccessibleAction.SET_TEXT_SELECTION)
+  case object SetTextSelection extends AccessibleAction(jfxs.AccessibleAction.SET_TEXT_SELECTION)
 
   /**
    * Request the node to set the current text.
@@ -178,7 +177,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * <li> {@link String} the new text</li>
    * </ul>
    */
-  val SetText = new AccessibleAction(jfxs.AccessibleAction.SET_TEXT)
+  case object SetText extends AccessibleAction(jfxs.AccessibleAction.SET_TEXT)
 
   /**
    * Request the node to set the current value.
@@ -190,7 +189,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * <li> {@link java.lang.Double} the new value </li>
    * </ul>
    */
-  val SetValue = new AccessibleAction(jfxs.AccessibleAction.SET_VALUE)
+  case object SetValue extends AccessibleAction(jfxs.AccessibleAction.SET_VALUE)
 
   /**
    * Request the node to show a menu.  If the node is a control,
@@ -203,7 +202,7 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
    * <ul>
    * </ul>
    */
-  val ShowMenu = new AccessibleAction(jfxs.AccessibleAction.SHOW_MENU)
+  case object ShowMenu extends AccessibleAction(jfxs.AccessibleAction.SHOW_MENU)
 
 
   protected override def unsortedValues: Array[AccessibleAction] = Array(
@@ -213,4 +212,4 @@ object AccessibleAction extends SFXEnumDelegateCompanion[jfxs.AccessibleAction, 
 }
 
 
-sealed case class AccessibleAction(override val delegate: jfxs.AccessibleAction) extends SFXEnumDelegate[jfxs.AccessibleAction]
+sealed abstract class AccessibleAction(override val delegate: jfxs.AccessibleAction) extends SFXEnumDelegate[jfxs.AccessibleAction]
