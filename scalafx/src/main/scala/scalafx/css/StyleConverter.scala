@@ -30,7 +30,7 @@ import java.io.{DataInputStream, DataOutputStream}
 
 import javafx.{css => jfxcss}
 
-import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.text.Font
@@ -119,7 +119,7 @@ object StyleConverter {
   class StringStore(override val delegate: jfxcss.StyleConverter.StringStore = new jfxcss.StyleConverter.StringStore)
     extends SFXDelegate[jfxcss.StyleConverter.StringStore]{
 
-    def strings: Seq[String] = delegate.strings.toSeq
+    def strings: Seq[String] = delegate.strings.asScala
 
     def addString(s: String): Int = delegate.addString(s)
 
