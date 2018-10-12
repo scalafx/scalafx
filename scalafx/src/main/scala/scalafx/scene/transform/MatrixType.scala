@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,26 +28,25 @@
 package scalafx.scene.transform
 
 import javafx.scene.{transform => jfxst}
-
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/transform/MatrixType.html javafx.scene.transform.MatrixType]] */
 object MatrixType extends SFXEnumDelegateCompanion[jfxst.MatrixType, MatrixType] {
 
   /** A 2D affine transformation matrix of 2 rows and 3 columns. */
-  val MT_2D_2x3 = new MatrixType(jfxst.MatrixType.MT_2D_2x3)
+  case object MT_2D_2x3 extends MatrixType(jfxst.MatrixType.MT_2D_2x3)
   /** A 2D transformation matrix of 3 rows and 3 columns. */
-  val MT_2D_3x3 = new MatrixType(jfxst.MatrixType.MT_2D_3x3)
+  case object MT_2D_3x3 extends MatrixType(jfxst.MatrixType.MT_2D_3x3)
   /** A 3D affine transformation matrix of 3 rows and 4 columns */
-  val MT_3D_3x4 = new MatrixType(jfxst.MatrixType.MT_3D_3x4)
+  case object MT_3D_3x4 extends MatrixType(jfxst.MatrixType.MT_3D_3x4)
   /** A 3D transformation matrix of 4 rows and 4 columns */
-  val MT_3D_4x4 = new MatrixType(jfxst.MatrixType.MT_3D_4x4)
+  case object MT_3D_4x4 extends MatrixType(jfxst.MatrixType.MT_3D_4x4)
 
   protected override def unsortedValues: Array[MatrixType] = Array(MT_2D_2x3, MT_2D_3x3, MT_3D_3x4, MT_3D_4x4)
 }
 
 
-sealed case class MatrixType(override val delegate: jfxst.MatrixType)
+sealed abstract class MatrixType(override val delegate: jfxst.MatrixType)
   extends SFXEnumDelegate[jfxst.MatrixType] {
   /** Returns the number of columns in the matrix of this type. */
   def columns: Int = delegate.columns

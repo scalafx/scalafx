@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.print
 
 import javafx.{print => jfxp}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.collections.ObservableSet
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.print.Printer]].
@@ -58,25 +58,25 @@ object Printer {
     /**
      * This requests a default 0.75 inch margin on all sides.
      */
-    val Default = new MarginType(jfxp.Printer.MarginType.DEFAULT)
+    case object Default extends MarginType(jfxp.Printer.MarginType.DEFAULT)
 
     /**
      * Choose the largest of the four hardware margins, and use that for all for margins,
      * so that the margins are equal on all sides.
      */
-    val Equal = new MarginType(jfxp.Printer.MarginType.EQUAL)
+    case object Equal extends MarginType(jfxp.Printer.MarginType.EQUAL)
 
     /**
      * Similar to EQUAL, but it chooses the larger of the left/right hardware margins and
      * top/bottom hardware margins separately, so that the top and bottom margins are equal,
      * and the left and right margins are equal.
      */
-    val EqualOpposites = new MarginType(jfxp.Printer.MarginType.EQUAL_OPPOSITES)
+    case object EqualOpposites extends MarginType(jfxp.Printer.MarginType.EQUAL_OPPOSITES)
 
     /**
      * Request margins are set to be the smallest on each side that the hardware allows.
      */
-    val HardwareMinimum = new MarginType(jfxp.Printer.MarginType.HARDWARE_MINIMUM)
+    case object HardwareMinimum extends MarginType(jfxp.Printer.MarginType.HARDWARE_MINIMUM)
 
     protected override def unsortedValues: Array[Printer.MarginType] =
       Array(Default, Equal, EqualOpposites, HardwareMinimum)
@@ -88,7 +88,7 @@ object Printer {
    *
    * @since 8.0
    */
-  sealed case class MarginType(override val delegate: jfxp.Printer.MarginType)
+  sealed abstract class MarginType(override val delegate: jfxp.Printer.MarginType)
     extends SFXEnumDelegate[jfxp.Printer.MarginType]
 
   // MarginType - end

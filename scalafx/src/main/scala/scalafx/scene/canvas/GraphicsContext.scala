@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,9 +31,6 @@ import javafx.scene.effect.BlendMode
 import javafx.scene.shape.FillRule
 import javafx.scene.text.TextAlignment
 import javafx.scene.{canvas => jfxsc}
-
-import scala.collection.mutable.ArrayBuffer
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.effect.Effect
@@ -42,6 +39,9 @@ import scalafx.scene.paint.Paint
 import scalafx.scene.shape.{ArcType, StrokeLineCap, StrokeLineJoin}
 import scalafx.scene.text.Font
 import scalafx.scene.transform.Affine
+
+import scala.collection.mutable.ArrayBuffer
+import scala.language.implicitConversions
 
 object GraphicsContext {
   implicit def sfxGraphicsContext2jfx(gc: GraphicsContext): jfxsc.GraphicsContext = if (gc != null) gc.delegate else null
@@ -285,7 +285,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * the current stroke line cap.
    */
-  def lineCap: StrokeLineCap = new StrokeLineCap(delegate.getLineCap)
+  def lineCap: StrokeLineCap = StrokeLineCap(delegate.getLineCap)
   def lineCap_=(cap: StrokeLineCap) {
     delegate.setLineCap(cap)
   }
@@ -293,7 +293,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * the current stroke line join.
    */
-  def lineJoin: StrokeLineJoin = new StrokeLineJoin(delegate.getLineJoin)
+  def lineJoin: StrokeLineJoin = StrokeLineJoin(delegate.getLineJoin)
   def lineJoin_=(join: StrokeLineJoin) {
     delegate.setLineJoin(join)
   }

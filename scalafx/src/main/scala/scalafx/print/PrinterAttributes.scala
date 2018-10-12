@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,12 @@
  */
 package scalafx.print
 
-import java.util.{Set => JSet}
 import javafx.{print => jfxp}
+import scalafx.Includes._
+import scalafx.delegate.SFXDelegate
 
 import scala.collection.JavaConversions._
 import scala.language.implicitConversions
-import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
 
 /**
  * Companion Object for [[scalafx.print.PrinterAttributes]].
@@ -109,19 +108,19 @@ final class PrinterAttributes(override val delegate: jfxp.PrinterAttributes)
   /**
    * The maximum supported number of copies.
    */
-  def maxCopies: Int = delegate.getMaxCopies()
+  def maxCopies: Int = delegate.getMaxCopies
 
   /**
    * An unmodifiable set of the supported collation settings for this printer.
    */
   def supportedCollations: Set[Collation] =
-    asScalaSet(delegate.getSupportedCollations).map(new Collation(_)).toSet
+    asScalaSet(delegate.getSupportedCollations).map(Collation(_)).toSet
 
   /**
    * An unmodifiable set of the supported orientations for this printer.
    */
   def supportedPageOrientations: Set[PageOrientation] =
-    asScalaSet(delegate.getSupportedPageOrientations).map(new PageOrientation(_)).toSet
+    asScalaSet(delegate.getSupportedPageOrientations).map(PageOrientation(_)).toSet
 
   /**
    * An unmodifiable set of the supported paper sizes for this printer.
@@ -139,13 +138,13 @@ final class PrinterAttributes(override val delegate: jfxp.PrinterAttributes)
    * An unmodifiable set of the supported color settings for this printer.
    */
   def supportedPrintColors: Set[PrintColor] =
-    asScalaSet(delegate.getSupportedPrintColors).map(new PrintColor(_)).toSet
+    asScalaSet(delegate.getSupportedPrintColors).map(PrintColor(_)).toSet
 
   /**
    * An unmodifiable set of the supported quality settings for this printer.
    */
   def supportedPrintQuality: Set[PrintQuality] =
-    asScalaSet(delegate.getSupportedPrintQuality).map(new PrintQuality(_)).toSet
+    asScalaSet(delegate.getSupportedPrintQuality).map(PrintQuality(_)).toSet
 
   /**
    * An unmodifiable set of the supported print resolutions for this printer.
@@ -157,7 +156,7 @@ final class PrinterAttributes(override val delegate: jfxp.PrinterAttributes)
    * An unmodifiable set of the supported duplex settings for this printer.
    */
   def supportedPrintSides: Set[PrintSides] =
-    asScalaSet(delegate.getSupportedPrintSides).map(new PrintSides(_)).toSet
+    asScalaSet(delegate.getSupportedPrintSides).map(PrintSides(_)).toSet
 
   /**
    * Reports if page ranges are supported.

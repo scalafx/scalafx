@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,13 @@
 package scalafx.print
 
 import javafx.{print => jfxp}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.scene.Node
 import scalafx.stage.Window
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.print.PrinterJob]].
@@ -58,27 +58,27 @@ object PrinterJob {
     /**
      * The job has been cancelled by the application.
      */
-    val Canceled = new JobStatus(jfxp.PrinterJob.JobStatus.CANCELED)
+    case object Canceled extends JobStatus(jfxp.PrinterJob.JobStatus.CANCELED)
 
     /**
      * The job initiated printing and later called endJob() which reported success.
      */
-    val Done = new JobStatus(jfxp.PrinterJob.JobStatus.DONE)
+    case object Done extends JobStatus(jfxp.PrinterJob.JobStatus.DONE)
 
     /**
      * The job encountered an error.
      */
-    val Error = new JobStatus(jfxp.PrinterJob.JobStatus.ERROR)
+    case object Error extends JobStatus(jfxp.PrinterJob.JobStatus.ERROR)
 
     /**
      * The new job status.
      */
-    val NotStarted = new JobStatus(jfxp.PrinterJob.JobStatus.NOT_STARTED)
+    case object NotStarted extends JobStatus(jfxp.PrinterJob.JobStatus.NOT_STARTED)
 
     /**
      * The job has requested to print at least one page, and has not terminated printing.
      */
-    val Printing = new JobStatus(jfxp.PrinterJob.JobStatus.PRINTING)
+    case object Printing extends JobStatus(jfxp.PrinterJob.JobStatus.PRINTING)
 
     protected override def unsortedValues: Array[PrinterJob.JobStatus] =
       Array(Canceled, Done, Error, NotStarted, Printing)
@@ -88,7 +88,7 @@ object PrinterJob {
   /**
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterJob.JobStatus.html JavaFX JobStatus]].
    */
-  sealed case class JobStatus(override val delegate: jfxp.PrinterJob.JobStatus)
+  sealed abstract class JobStatus(override val delegate: jfxp.PrinterJob.JobStatus)
     extends SFXEnumDelegate[jfxp.PrinterJob.JobStatus]
 
   // JobStatus - end

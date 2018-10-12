@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,13 +29,13 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, StringProperty}
 import scalafx.collections._
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 /**
  * Object companion for [[scalafx.scene.control.ButtonBar]].
@@ -119,7 +119,7 @@ object ButtonBar {
    * @constructor Creates a new ButtonData from a JavaFX one.
    * @param delegate JavaFX ButtonData
    */
-  sealed case class ButtonData(override val delegate: jfxsc.ButtonBar.ButtonData)
+  sealed abstract class ButtonData(override val delegate: jfxsc.ButtonBar.ButtonData)
     extends SFXEnumDelegate[jfxsc.ButtonBar.ButtonData] {
     def typeCode: String = delegate.getTypeCode
   }
@@ -139,28 +139,28 @@ object ButtonBar {
      *
      * <p><strong>Button order code:</strong> L
      */
-    val Left = new ButtonData(jfxsc.ButtonBar.ButtonData.LEFT)
+    case object Left extends ButtonData(jfxsc.ButtonBar.ButtonData.LEFT)
 
     /**
      * Buttons with this style tag will statically end up on the right end of the bar.
      *
      * <p><strong>Button order code:</strong> R
      */
-    val Right = new ButtonData(jfxsc.ButtonBar.ButtonData.RIGHT)
+    case object Right extends ButtonData(jfxsc.ButtonBar.ButtonData.RIGHT)
 
     /**
      * A tag for the "help" button that normally is supposed to be on the right.
      *
      * <p><strong>Button order code:</strong> H
      */
-    val Help = new ButtonData(jfxsc.ButtonBar.ButtonData.HELP)
+    case object Help extends ButtonData(jfxsc.ButtonBar.ButtonData.HELP)
 
     /**
      * A tag for the "help2" button that normally is supposed to be on the left.
      *
      * <p><strong>Button order code:</strong> E
      */
-    val Help2 = new ButtonData(jfxsc.ButtonBar.ButtonData.HELP_2)
+    case object Help2 extends ButtonData(jfxsc.ButtonBar.ButtonData.HELP_2)
 
     /**
      * A tag for the "yes" button.
@@ -168,7 +168,7 @@ object ButtonBar {
      * <p><strong>Is default button:</strong> True
      * <p><strong>Button order code:</strong> Y
      */
-    val Yes = new ButtonData(jfxsc.ButtonBar.ButtonData.YES)
+    case object Yes extends ButtonData(jfxsc.ButtonBar.ButtonData.YES)
 
     /**
      * A tag for the "no" button.
@@ -176,7 +176,7 @@ object ButtonBar {
      * <p><strong>Is cancel button:</strong> True
      * <p><strong>Button order code:</strong> N
      */
-    val No = new ButtonData(jfxsc.ButtonBar.ButtonData.NO)
+    case object No extends ButtonData(jfxsc.ButtonBar.ButtonData.NO)
 
     /**
      * A tag for the "next" or "forward" button.
@@ -184,14 +184,14 @@ object ButtonBar {
      * <p><strong>Is default button:</strong> True
      * <p><strong>Button order code:</strong> X
      */
-    val NextForward = new ButtonData(jfxsc.ButtonBar.ButtonData.NEXT_FORWARD)
+    case object NextForward extends ButtonData(jfxsc.ButtonBar.ButtonData.NEXT_FORWARD)
 
     /**
      * A tag for the "back" or "previous" button.
      *
      * <p><strong>Button order code:</strong> B
      */
-    val BackPrevious = new ButtonData(jfxsc.ButtonBar.ButtonData.BACK_PREVIOUS)
+    case object BackPrevious extends ButtonData(jfxsc.ButtonBar.ButtonData.BACK_PREVIOUS)
 
     /**
      * A tag for the "finish".
@@ -199,14 +199,14 @@ object ButtonBar {
      * <p><strong>Is default button:</strong> True
      * <p><strong>Button order code:</strong> I
      */
-    val Finish = new ButtonData(jfxsc.ButtonBar.ButtonData.FINISH)
+    case object Finish extends ButtonData(jfxsc.ButtonBar.ButtonData.FINISH)
 
     /**
      * A tag for the "apply" button.
      *
      * <p><strong>Button order code:</strong> A
      */
-    val Apply = new ButtonData(jfxsc.ButtonBar.ButtonData.APPLY)
+    case object Apply extends ButtonData(jfxsc.ButtonBar.ButtonData.APPLY)
 
     /**
      * A tag for the "cancel" or "close" button.
@@ -214,7 +214,7 @@ object ButtonBar {
      * <p><strong>Is cancel button:</strong> True
      * <p><strong>Button order code:</strong> C
      */
-    val CancelClose = new ButtonData(jfxsc.ButtonBar.ButtonData.CANCEL_CLOSE)
+    case object CancelClose extends ButtonData(jfxsc.ButtonBar.ButtonData.CANCEL_CLOSE)
 
     /**
      * A tag for the "ok" or "done" button.
@@ -222,14 +222,14 @@ object ButtonBar {
      * <p><strong>Is default button:</strong> True
      * <p><strong>Button order code:</strong> O
      */
-    val OKDone = new ButtonData(jfxsc.ButtonBar.ButtonData.OK_DONE)
+    case object OKDone extends ButtonData(jfxsc.ButtonBar.ButtonData.OK_DONE)
 
     /**
      * All Uncategorized, Other, or "Unknown" buttons. Tag will be "other".
      *
      * <p><strong>Button order code:</strong> U
      */
-    val Other = new ButtonData(jfxsc.ButtonBar.ButtonData.OTHER)
+    case object Other extends ButtonData(jfxsc.ButtonBar.ButtonData.OTHER)
 
 
     /**
@@ -238,14 +238,14 @@ object ButtonBar {
      *
      * <p><strong>Button order code:</strong> +
      */
-    val BigGap = new ButtonData(jfxsc.ButtonBar.ButtonData.BIG_GAP)
+    case object BigGap extends ButtonData(jfxsc.ButtonBar.ButtonData.BIG_GAP)
 
     /**
      * An "unrelated" gap. (Platform dependent)
      *
      * <p><strong>Button order code:</strong> _ (underscore)
      */
-    val SmallGap = new ButtonData(jfxsc.ButtonBar.ButtonData.SMALL_GAP)
+    case object SmallGap extends ButtonData(jfxsc.ButtonBar.ButtonData.SMALL_GAP)
 
     protected override def unsortedValues: Array[ButtonData] = Array(Left, Right, Help, Help2, Yes, No,
       NextForward, BackPrevious, Finish, Apply, CancelClose, OKDone, Other, BigGap, SmallGap)

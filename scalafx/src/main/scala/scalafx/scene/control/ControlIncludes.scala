@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,8 +28,6 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.control.ScrollPane.ScrollBarPolicy
@@ -40,6 +38,8 @@ import scalafx.scene.control.TableView.{ResizeFeatures, TableViewFocusModel, Tab
 import scalafx.scene.control.TreeItem.TreeModificationEvent
 import scalafx.scene.control.TreeView.EditEvent
 import scalafx.scene.control.cell.CellIncludes
+
+import scala.language.implicitConversions
 
 object ControlIncludes extends ControlIncludes
 
@@ -165,7 +165,7 @@ trait ControlIncludes
 
   implicit def jfxAlert2sfx(a: jfxsc.Alert): Alert = if (a != null) new Alert(a) else null
 
-  implicit def jfxAlertType2sfx(a: jfxsc.Alert.AlertType): Alert.AlertType = if (a != null) new Alert.AlertType(a) else null
+  implicit def jfxAlertType2sfx(a: jfxsc.Alert.AlertType): Alert.AlertType = if (a != null) Alert.AlertType(a) else null
 
   implicit def jfxDialog2sfx[R](a: jfxsc.Dialog[R]): Dialog[R] = if (a != null) new Dialog[R](a) else null
 
@@ -218,7 +218,7 @@ trait ControlIncludes
 
   implicit def jfxButtonBar2sfx(b: jfxsc.ButtonBar): ButtonBar = if (b != null) new ButtonBar(b) else null
 
-  implicit def jfxButtonData2sfx(b: jfxsc.ButtonBar.ButtonData): ButtonBar.ButtonData = if (b != null) new ButtonBar.ButtonData(b) else null
+  implicit def jfxButtonData2sfx(b: jfxsc.ButtonBar.ButtonData): ButtonBar.ButtonData = if (b != null) ButtonBar.ButtonData(b) else null
 
   implicit def jfxButtonType2sfx(b: jfxsc.ButtonType): ButtonType = if (b != null) new ButtonType(b) else null
 

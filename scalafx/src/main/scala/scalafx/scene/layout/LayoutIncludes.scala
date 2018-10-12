@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -84,7 +84,7 @@ trait LayoutIncludes {
   implicit def jfxBackgroundPosition2sfx(v: jfxsl.BackgroundPosition): BackgroundPosition =
     if (v != null) new BackgroundPosition(v) else null
 
-  implicit def jfxBackgroundRepeat2sfx(v: jfxsl.BackgroundRepeat): BackgroundRepeat = if (v != null) new BackgroundRepeat(v) else null
+  implicit def jfxBackgroundRepeat2sfx(v: jfxsl.BackgroundRepeat): BackgroundRepeat = if (v != null) BackgroundRepeat(v) else null
 
   implicit def jfxBackgroundSize2sfx(v: jfxsl.BackgroundSize): BackgroundSize = if (v != null) new BackgroundSize(v) else null
 
@@ -106,7 +106,7 @@ trait LayoutIncludes {
    */
   implicit def jfxBorderPane2sfx(v: jfxsl.BorderPane): BorderPane = if (v != null) new BorderPane(v) else null
 
-  implicit def jfxBorderRepeat2sfx(v: jfxsl.BorderRepeat): BorderRepeat = if (v != null) new BorderRepeat(v) else null
+  implicit def jfxBorderRepeat2sfx(v: jfxsl.BorderRepeat): BorderRepeat = if (v != null) BorderRepeat(v) else null
 
   implicit def jfxBorderStroke2sfx(v: jfxsl.BorderStroke): BorderStroke = if (v != null) new BorderStroke(v) else null
 

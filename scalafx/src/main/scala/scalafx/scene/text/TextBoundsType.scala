@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,21 +28,20 @@
 package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
-
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/TextBoundsType.html javafx.scene.text.TextBoundsType]] */
 object TextBoundsType extends SFXEnumDelegateCompanion[jfxst.TextBoundsType, TextBoundsType] {
 
-  val Logical = new TextBoundsType(jfxst.TextBoundsType.LOGICAL)
+  case object Logical extends TextBoundsType(jfxst.TextBoundsType.LOGICAL)
   @deprecated ("Use Logical; LOGICAL will be removed in a future release", "8.0.60-R10")
   val LOGICAL = Logical
 
-  val LogicalVerticalCenter = new TextBoundsType(jfxst.TextBoundsType.LOGICAL_VERTICAL_CENTER)
+  case object LogicalVerticalCenter extends TextBoundsType(jfxst.TextBoundsType.LOGICAL_VERTICAL_CENTER)
   @deprecated ("Use LogicalVerticalCenter; LOGICAL_VERTICAL_CENTER will be removed in a future release", "8.0.60-R10")
   val LOGICAL_VERTICAL_CENTER = LogicalVerticalCenter
 
-  val Visual = new TextBoundsType(jfxst.TextBoundsType.VISUAL)
+  case object Visual extends TextBoundsType(jfxst.TextBoundsType.VISUAL)
   @deprecated ("Use Visual; VISUAL will be removed in a future release", "8.0.60-R10")
   val VISUAL = Visual
 
@@ -50,5 +49,5 @@ object TextBoundsType extends SFXEnumDelegateCompanion[jfxst.TextBoundsType, Tex
 }
 
 
-sealed case class TextBoundsType(override val delegate: jfxst.TextBoundsType)
+sealed abstract class TextBoundsType(override val delegate: jfxst.TextBoundsType)
   extends SFXEnumDelegate[jfxst.TextBoundsType]
