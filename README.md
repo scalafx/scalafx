@@ -3,22 +3,27 @@
 
 [![Build Status](https://travis-ci.org/scalafx/scalafx.svg?branch=master)](https://travis-ci.org/scalafx/scalafx)   [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.11) [![Scaladoc](http://javadoc-badge.appspot.com/org.scalafx/scalafx_2.11.svg?label=scaladoc)](http://javadoc-badge.appspot.com/org.scalafx/scalafx_2.11)
 
-ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX
-8 and JavaFX 2.2. This means that every ScalaFX application is also a
-valid Scala application. By extension it supports full interoperability with
-Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX 8 or JavaFX 2.2
+ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX.
+This means that every ScalaFX application is also a valid Scala application.
+By extension it supports full interoperability with Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX
 are supported.
 
 
 ## Getting Started
 
-There are three branches of ScalaFX: v.8.0 supporting JavaFX 8 (Java 8), v.10 supporting JavaFX 10 (Java 10), and
-v.2.2 supporting JavaFX 2.x (Java 7).
-
+There are four branches of ScalaFX: v.8.0 supporting JavaFX 8 (Java 8), v.10 supporting JavaFX 10 (Java 10), v.11 supporting JavaFX 11 (Java 11 or Java 10), and v.2.2 supporting JavaFX 2.x (Java 7).
 
 ScalaFX binaries are published in the Maven Central repository:
 [http://search.maven.org/#search|ga|1|scalafx](http://search.maven.org/#search%7Cga%7C1%7Cscalafx)
 
+ScalaFX source code is using the SBT build system.
+For information on building with SBT see `README-SBT.txt`.
+
+The official web site for ScalaFX is http://scalafx.org.
+
+### ScalaFX Dependencies
+
+#### ScalaFX 8
 To use ScalaFX with SBT and Java 8 add following dependency (to use
 the latest scalafx you might need Java version at least 1.8.40):
 
@@ -26,10 +31,38 @@ the latest scalafx you might need Java version at least 1.8.40):
 libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.181-R13"
 ```
 
+#### ScalaFX 10
+
 with Java 10 use:
 ```scala
 libraryDependencies += "org.scalafx" %% "scalafx" % "10.0.2-R15"
 ```
+
+#### ScalaFX 11
+
+Staring with Java 11 JavaFX is no longer part of Java distribution.
+In addition to ScalaFX, JavaFX binaries needs to be explicitly added to a project.
+JavaFX binaries depend on operating system used.
+Add following to SBT configuration:
+```scala
+// Add dependency on ScalaFX library
+libraryDependencies += "org.scalafx" %% "scalafx" % "11-R16"
+
+// Determine OS version of JavaFX binaries
+lazy val osName = System.getProperty("os.name") match {
+  case n if n.startsWith("Linux")   => "linux"
+  case n if n.startsWith("Mac")     => "mac"
+  case n if n.startsWith("Windows") => "win"
+  case _ => throw new Exception("Unknown platform!")
+}
+
+lazy val javaFXModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
+libraryDependencies ++= javaFXModules.map( m =>
+  "org.openjfx" % s"javafx-$m" % "11" classifier osName
+)
+```
+
+#### ScalaFX 2
 
 With Java 7 use:
 
@@ -37,17 +70,16 @@ With Java 7 use:
 libraryDependencies += "org.scalafx" %% "scalafx" % "2.2.76-R11"
 ```
 
-For latest development version:
 
-```scala
-libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.181-R14-SNAPSHOT"
-```
+### Demo Projects and Examples
 
 The [ScalaFX Organization page](https://github.com/scalafx) on GitHub contains several sample
 project that illustrate use of ScalaFX.
 The simplest one, and recommended to start with, is [`scalafx-hello-world`](https://github.com/scalafx/scalafx-hello-world).
 
-Snapshot releases are also regularly published on Sonatype. To use a snapshot
+### Development Snapshots
+
+Snapshot releases are also regularly published on [Sonatype Snapshots](https://oss.sonatype.org/content/repositories/snapshots/org/scalafx/). To use a snapshot
 build you may need to add "Sonatype OSS Snapshots" resolver to you SBT
 configuration:
 
@@ -57,11 +89,6 @@ resolvers += Opts.resolver.sonatypeSnapshots
 
 If you just want to download a recent snapshot build you can also use Travis CI build site
 https://travis-ci.org/scalafx/scalafx
-
-ScalaFX source code is using the SBT build system.
-For information on building with SBT see `README-SBT.txt`.
-
-The official web site for ScalaFX is http://scalafx.org.
 
 
 ## Software License
