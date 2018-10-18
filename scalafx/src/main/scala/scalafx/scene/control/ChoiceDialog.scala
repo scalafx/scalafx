@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,13 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.collection.JavaConversions._
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
+
+import scala.collection.JavaConverters._
+import scala.language.implicitConversions
 
 object ChoiceDialog {
   /**
@@ -51,7 +51,7 @@ object ChoiceDialog {
  * A dialog that shows a list of choices to the user, from which they can pick
  * one item at most.
  *
- * Wraps a $JFX $URL0 $TC]].
+  * Wraps a $JFX [[ $URL0 $TC]].
  *
  * @see Dialog
  * @tparam T The type of the items to show to the user, and the type that is returned
@@ -59,11 +59,9 @@ object ChoiceDialog {
  * @constructor Creates a default, empty instance of ChoiceDialog with no set items and a
  *              null default choice. Users of this constructor will subsequently need to
  *              call `items` to specify which items to show to the user.
- *
- * @define TC ChoiceDialog
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene.control/ChoiceDialog.html
- * @define JFX JavaFX
- * @define ORIGINALDOC Original Documentation]].
+  * @define TC  ChoiceDialog
+ * @define URL0 https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene.control/ChoiceDialog.html
+  * @define JFX JavaFX
  */
 class ChoiceDialog[T](override val delegate: jfxsc.ChoiceDialog[T] = new jfxsc.ChoiceDialog[T]())
   extends Dialog[T](delegate)
@@ -82,7 +80,7 @@ class ChoiceDialog[T](override val delegate: jfxsc.ChoiceDialog[T] = new jfxsc.C
    *                      This item must be contained within the choices varargs array.
    * @param choices All possible choices to present to the user.
    */
-  def this(defaultChoice: T, choices: Iterable[T]) = this(new jfxsc.ChoiceDialog[T](defaultChoice, choices))
+  def this(defaultChoice: T, choices: Iterable[T]) = this(new jfxsc.ChoiceDialog[T](defaultChoice, choices.asJavaCollection))
 
   /**
    * Shows the dialog and waits for the user response (in other words, brings

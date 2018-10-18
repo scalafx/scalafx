@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,36 +29,36 @@ package scalafx.application
 
 import javafx.application.Application
 import javafx.{application => jfxa, stage => jfxs}
-
-import scala.collection.JavaConversions.{mapAsJavaMap, seqAsJavaList}
-import scala.collection.mutable.{Buffer, ListBuffer}
-import scala.collection.{Map, Seq, mutable}
-import scala.language.implicitConversions
 import scalafx.application.JFXApp.{Parameters, PrimaryStage}
 import scalafx.delegate.SFXDelegate
 import scalafx.stage.Stage
 
+import scala.collection.JavaConverters._
+import scala.collection.mutable.ListBuffer
+import scala.collection.{Map, Seq, mutable}
+import scala.language.implicitConversions
+
 object JFXApp {
 
-  var Stage: jfxs.Stage = null
+  var Stage: jfxs.Stage = _
   @deprecated("Prefer Scala naming convention over Java, use `Stage` instead.", "8.0.60-R10")
   def STAGE: jfxs.Stage = Stage
   @deprecated("Prefer Scala naming convention over Java, use `Stage` instead.", "8.0.60-R10")
   def STAGE_=(stage: jfxs.Stage): Unit = Stage = stage
 
-  var ActiveApp: JFXApp = null
+  var ActiveApp: JFXApp = _
   @deprecated("Prefer Scala naming convention over Java, use `ActiveApp` instead.", "8.0.60-R10")
   def ACTIVE_APP: JFXApp = ActiveApp
   @deprecated("Prefer Scala naming convention over Java, use `ActiveApp` instead.", "8.0.60-R10")
   def ACTIVE_APP_=(app: JFXApp): Unit = ActiveApp = app
 
-  private[application] var ActiveJFXApp: jfxa.Application = null
+  private[application] var ActiveJFXApp: jfxa.Application = _
 
   var AutoShow: Boolean = true
   @deprecated("Prefer Scala naming convention over Java, use `AutoShow` instead.", "8.0.60-R10")
   def AUTO_SHOW: Boolean = true
   @deprecated("Prefer Scala naming convention over Java, use `AutoShow` instead.", "8.0.60-R10")
-  def AUTO_SHOW_=(autoShow: Boolean) = AutoShow = true
+  def AUTO_SHOW_=(autoShow: Boolean): Unit = AutoShow = true
 
   /**
     * Regular expression for parsing name/value parameters.
@@ -107,10 +107,10 @@ object JFXApp {
   private[application] class ParametersImpl(arguments: Seq[String]) extends Parameters {
 
     private var namedArguments: mutable.Map[String, String] = mutable.Map.empty[String, String]
-    private var unnamedArguments                            = Buffer.empty[String]
+    private var unnamedArguments = mutable.Buffer.empty[String]
     private var filled                                      = false
 
-    private def parseArguments() {
+    private def parseArguments(): Unit = {
       if (!filled) {
         arguments.foreach(arg =>
           keyValue.findFirstMatchIn(arg) match {
@@ -121,22 +121,22 @@ object JFXApp {
       }
     }
 
-    def raw = arguments
+    def raw: Seq[String] = arguments
 
-    def named = {
+    def named: mutable.Map[String, String] = {
       parseArguments()
       namedArguments
     }
 
-    def unnamed = {
+    def unnamed: mutable.Buffer[String] = {
       parseArguments()
       unnamedArguments
     }
 
-    lazy val delegate = new jfxa.Application.Parameters {
-      def getRaw = raw
-      def getNamed = named
-      def getUnnamed = unnamed
+    lazy val delegate: Application.Parameters = new jfxa.Application.Parameters {
+      def getRaw: java.util.List[String] = raw.asJava
+      def getNamed: java.util.Map[String, String] = named.asJava
+      def getUnnamed: java.util.List[String] = unnamed.asJava
     }
 
   }
@@ -175,10 +175,10 @@ object JFXApp {
     def raw = Seq.empty[String]
     def named = Map.empty[String, String]
     def unnamed = Seq.empty[String]
-    lazy val delegate = new jfxa.Application.Parameters {
-      def getRaw = raw
-      def getNamed = named
-      def getUnnamed = unnamed
+    lazy val delegate: Application.Parameters = new jfxa.Application.Parameters {
+      def getRaw: java.util.List[String] = raw.asJava
+      def getNamed: java.util.Map[String, String] = named.asJava
+      def getUnnamed: java.util.List[String] = unnamed.asJava
     }
   }
 
@@ -244,7 +244,7 @@ trait JFXApp extends DelayedInit {
 
   /** JFXApp stage must be an instance of [[scalafx.application.JFXApp.PrimaryStage]] to ensure that it
     * actually is a proper wrapper for the primary stage supplied by JavaFX. */
-  var stage: PrimaryStage = null
+  var stage: PrimaryStage = _
 
   private var arguments: Seq[String] = _
 
@@ -269,7 +269,7 @@ trait JFXApp extends DelayedInit {
     *
     * @param x Class/object construction code to be buffered for delayed execution.
     */
-  def delayedInit(x: => Unit) {
+  def delayedInit(x: => Unit): Unit = {
     subClassInitCode += (() => x)
   }
 
@@ -280,7 +280,7 @@ trait JFXApp extends DelayedInit {
     *
     * @param args Command line arguments.
     */
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
     JFXApp.ActiveApp = this
     arguments = args
     // Put any further non-essential initialization here.
@@ -307,6 +307,6 @@ trait JFXApp extends DelayedInit {
     *
     * NOTE: This method is called on the JavaFX Application Thread, the same as javafx.Application.stop method.
     */
-  def stopApp() {
+  def stopApp(): Unit = {
   }
 }

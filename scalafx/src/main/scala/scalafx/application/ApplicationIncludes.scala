@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,7 +29,8 @@ package scalafx.application
 
 import javafx.{application => jfxa}
 
-import scala.collection.JavaConversions.{asScalaBuffer, mapAsScalaMap}
+import scala.collection.JavaConverters._
+import scala.collection.mutable
 import scala.language.implicitConversions
 
 object ApplicationIncludes extends ApplicationIncludes
@@ -51,10 +52,10 @@ trait ApplicationIncludes {
    */
   implicit def jfxParameters2sfx(p: jfxa.Application.Parameters): JFXApp.Parameters =
     if (p != null) new JFXApp.Parameters {
-      def raw = p.getRaw
-      def named = p.getNamed
-      def unnamed = p.getUnnamed
-      def delegate = p
+      def raw: mutable.Buffer[String] = p.getRaw.asScala
+      def named: mutable.Map[String, String] = p.getNamed.asScala
+      def unnamed: mutable.Buffer[String] = p.getUnnamed.asScala
+      def delegate: jfxa.Application.Parameters = p
     }
     else null
 

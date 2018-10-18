@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,12 @@
 package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
-
-import scala.collection.JavaConversions._
-import scala.language.implicitConversions
+import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
+
+import scala.collection.JavaConverters._
+import scala.collection.mutable
+import scala.language.implicitConversions
 
 object Font {
   implicit def sfxFont2jfx(v: Font): jfxst.Font = if (v != null) v.delegate else null
@@ -40,13 +42,13 @@ object Font {
    * "Regular", and be of a size consistent with the user's desktop environment, to the extent
    * that can be determined.
    */
-  def default = jfxst.Font.getDefault
+  def default: Font = jfxst.Font.getDefault
 
   /**
    * Gets all the font families installed on the user's system, including any
    * application fonts or SDK fonts.
    */
-  def families = jfxst.Font.getFamilies.toSeq
+  def families: mutable.Buffer[String] = jfxst.Font.getFamilies.asScala
 
   /** Searches for an appropriate font based on the default font family name and given font size. */
   def font(size: Double) = new Font(jfxst.Font.font(size))
@@ -93,23 +95,23 @@ object Font {
    * Gets the names of all fonts that are installed on the users system, including any application
    * fonts and SDK fonts.
    */
-  def fontNames = jfxst.Font.getFontNames.toSeq
+  def fontNames: mutable.Buffer[String] = jfxst.Font.getFontNames.asScala
 
   /**
    * Gets the names of all fonts in the specified font family that are installed on the users
    * system, including any application fonts and SDK fonts.
    */
-  def fontNames(family: String) = jfxst.Font.getFontNames(family).toSeq
+  def fontNames(family: String): mutable.Buffer[String] = jfxst.Font.getFontNames(family).asScala
 
   /**
    * Loads a font resource from the specified input stream.
    */
-  def loadFont(in: java.io.InputStream, size: Double) = jfxst.Font.loadFont(in, size)
+  def loadFont(in: java.io.InputStream, size: Double): Font = jfxst.Font.loadFont(in, size)
 
   /**
    * Loads a font resource from the specified URL.
    */
-  def loadFont(urlStr: String, size: Double) = jfxst.Font.loadFont(urlStr, size)
+  def loadFont(urlStr: String, size: Double): Font = jfxst.Font.loadFont(urlStr, size)
 }
 
 class Font(val delegate: jfxst.Font) extends SFXDelegate[jfxst.Font] {
@@ -127,20 +129,20 @@ class Font(val delegate: jfxst.Font) extends SFXDelegate[jfxst.Font] {
   /**
    * Returns the family of this font.
    */
-  def family = delegate.getFamily
+  def family: String = delegate.getFamily
 
   /**
    * The full font name.
    */
-  def name = delegate.getName
+  def name: String = delegate.getName
 
   /**
    * The point size for this font.
    */
-  def size = delegate.getSize
+  def size: Double = delegate.getSize
 
   /**
    * The font specified string describing the style within the font family.
    */
-  def style = delegate.getStyle
+  def style: String = delegate.getStyle
 }

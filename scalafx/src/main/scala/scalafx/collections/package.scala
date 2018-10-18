@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx
 
 import javafx.{collections => jfxc}
-
-import scala.collection.JavaConversions._
 import scalafx.delegate.SFXDelegate
+
+import scala.collection.JavaConverters._
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/package-summary.html `javafx.collections`]] package, 
@@ -42,7 +42,7 @@ package object collections {
     if (null == filler) {
       originalList.clear()
     } else {
-      originalList.setAll(filler.map(f(_)))
+      originalList.setAll(filler.map(f(_)).asJavaCollection)
     }
   }
 
@@ -50,7 +50,7 @@ package object collections {
     if (null == element) {
       originalList.clear()
     } else {
-      originalList.setAll(List(f(element)))
+      originalList.setAll(List(f(element)).asJavaCollection)
     }
   }
 

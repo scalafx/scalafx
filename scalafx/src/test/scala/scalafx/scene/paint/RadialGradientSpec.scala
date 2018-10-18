@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,21 +27,19 @@
 package scalafx.scene.paint
 
 import javafx.scene.{paint => jfxsp}
-
-import scala.collection.JavaConversions._
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * RadialGradient Spec tests.
- *
- *
- */
+  * RadialGradient Spec tests.
+  *
+  *
+  */
 class RadialGradientSpec
   extends SimpleSFXDelegateSpec[jfxsp.RadialGradient, RadialGradient](
     classOf[jfxsp.RadialGradient], classOf[RadialGradient]) {
 
-  override protected def getJavaClassInstance = new jfxsp.RadialGradient(0, 0, 0, 0, 0, true, CycleMethod.NoCycle, Nil)
+  override protected def getJavaClassInstance = new jfxsp.RadialGradient(0, 0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, new java.util.LinkedList[jfxsp.Stop]())
 
   it should "return valid instance from companion's apply(List[Stop])" in {
     val expected: RadialGradient = new RadialGradient(0, 0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)

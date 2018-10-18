@@ -38,7 +38,7 @@ import scalafx.css.Styleable
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.event.Event
 
-import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 import scala.language.implicitConversions
 
 /**
@@ -199,7 +199,7 @@ object TreeTableColumn {
   /**
     * If no cellFactory is specified on a TreeTableColumn instance, then this one will be used by default.
     */
-  val DefaultCellFactory: (TreeTableColumn[_, _] => TreeTableCell[_, _]) =
+  val DefaultCellFactory: TreeTableColumn[_, _] => TreeTableCell[_, _] =
     (column: TreeTableColumn[_, _]) => jfxsc.TreeTableColumn.DEFAULT_CELL_FACTORY.call(column)
 
   /**
@@ -227,7 +227,8 @@ object TreeTableColumn {
   /**
     * The CssMetaData of this Styleable. This may be returned as an unmodifiable list.
     */
-  def classCssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = jfxsc.TreeTableColumn.getClassCssMetaData
+  def classCssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] =
+    jfxsc.TreeTableColumn.getClassCssMetaData.asScala
 
 }
 
@@ -322,14 +323,14 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
     */
   def sortType: ObjectProperty[jfxsc.TreeTableColumn.SortType] = delegate.sortTypeProperty
 
-  def sortType_=(v: TreeTableColumn.SortType) {
+  def sortType_=(v: TreeTableColumn.SortType): Unit = {
     sortType() = v
   }
 
   /**
     * This event handler will be fired when the user successfully initiates editing.
     */
-  def onEditStart = delegate.onEditCommitProperty
+  def onEditStart: ObjectProperty[jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]] = delegate.onEditCommitProperty
 
   def onEditStart_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]) {
     onEditStart() = v
@@ -338,7 +339,7 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
   /**
     * This event handler will be fired when the user successfully commits their editing.
     */
-  def onEditCommit = delegate.onEditCommitProperty
+  def onEditCommit: ObjectProperty[jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]] = delegate.onEditCommitProperty
 
   def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]) {
     onEditCommit() = v
@@ -347,7 +348,7 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
   /**
     * This event handler will be fired when the user cancels editing a cell.
     */
-  def onEditCancel = delegate.onEditCancelProperty
+  def onEditCancel: ObjectProperty[jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]] = delegate.onEditCancelProperty
 
   def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]) {
     onEditCancel() = v
@@ -414,6 +415,6 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
   /**
     * The CssMetaData of this Styleable. This may be returned as an unmodifiable list.
     */
-  override def cssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getCssMetaData
+  override def cssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getCssMetaData.asScala
 
 }

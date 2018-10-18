@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,14 +27,13 @@
 package scalafx.collections
 
 import javafx.{collections => jfxc}
-
 import org.scalatest.Matchers._
-
-import scala.collection.JavaConversions._
-import scala.collection.mutable._
 import scalafx.Includes._
 import scalafx.collections.ObservableMap._
 import scalafx.testutil.SimpleSFXDelegateSpec
+
+import scala.collection.JavaConverters._
+import scala.collection.mutable._
 
 /**
  * ObservableMap[K, V] Spec tests.
@@ -77,7 +76,7 @@ class ObservableMapSpec[K, V]
     val map1 = new java.util.HashMap[Int, String]
     map1.put(1, "one")
     map1.put(2, "two")
-    assertGeneratedMap(ObservableMap(map1))
+    assertGeneratedMap(ObservableMap(map1.asScala))
 
     val map2 = Map.empty[Int, String]
     map2 +=((1, "one"), (2, "two"))

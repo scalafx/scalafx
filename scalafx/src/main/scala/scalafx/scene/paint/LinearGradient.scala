@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,14 @@
  */
 package scalafx.scene.paint
 
-import javafx.scene.{paint => jfxsp}
+import java.util
 
-import scala.collection.JavaConversions._
-import scala.language.implicitConversions
+import javafx.scene.{paint => jfxsp}
+import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
+
+import scala.collection.JavaConverters._
+import scala.language.implicitConversions
 
 object LinearGradient {
   implicit def sfxLinearGradient2jfx(lg: LinearGradient): jfxsp.LinearGradient = if (lg != null) lg.delegate else null
@@ -66,7 +69,7 @@ object LinearGradient {
   /**
    * Creates a linear gradient value from a string representation.
    */
-  def valueOf(value: String) = jfxsp.LinearGradient.valueOf(value)
+  def valueOf(value: String): LinearGradient = jfxsp.LinearGradient.valueOf(value)
 
 }
 
@@ -102,7 +105,7 @@ class LinearGradient(override val delegate: jfxsp.LinearGradient)
            proportional: Boolean = true,
            cycleMethod: CycleMethod = CycleMethod.NoCycle,
            stops: Seq[jfxsp.Stop] = Nil) =
-    this(new jfxsp.LinearGradient(startX, startY, endX, endY, proportional, cycleMethod, stops))
+    this(new jfxsp.LinearGradient(startX, startY, endX, endY, proportional, cycleMethod, stops.asJava))
 
   /**
    * Defines which of the following cycle method is applied to the
@@ -110,37 +113,37 @@ class LinearGradient(override val delegate: jfxsp.LinearGradient)
    * [[scalafx.scene.paint.CycleMethod.Reflect]] or
    * [[scalafx.scene.paint.CycleMethod.Repeat]].
    */
-  def cycleMethod = delegate.getCycleMethod
+  def cycleMethod: CycleMethod = delegate.getCycleMethod
 
   /**
    * Defines the X coordinate of the gradient axis end point.
    */
-  def endX = delegate.getEndX
+  def endX: Double = delegate.getEndX
 
   /**
    * Defines the Y coordinate of the gradient axis end point.
    */
-  def endY = delegate.getEndY
+  def endY: Double = delegate.getEndY
 
   /**
    * Defines the X coordinate of the gradient axis start point.
    */
-  def startX = delegate.getStartX
+  def startX: Double = delegate.getStartX
 
   /**
    * Defines the Y coordinate of the gradient axis start point.
    */
-  def startY = delegate.getStartY
+  def startY: Double = delegate.getStartY
 
   /**
    * A sequence of 2 or more Stop values specifying how to distribute the
    * colors along the gradient.
    */
-  def stops = delegate.getStops
+  def stops: util.List[jfxsp.Stop] = delegate.getStops
 
   /**
    * Indicates whether start and end locations are proportional or absolute.
    */
-  def proportional = delegate.isProportional
+  def proportional: Boolean = delegate.isProportional
 
 }

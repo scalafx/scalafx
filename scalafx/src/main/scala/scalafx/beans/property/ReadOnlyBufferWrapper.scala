@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,11 +29,11 @@ package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
 import javafx.{collections => jfxc}
-
-import scala.language.implicitConversions
 import scalafx.beans.property.PropertyIncludes.jfxReadOnlyListProperty2sfx
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 
 object ReadOnlyBufferWrapper {
@@ -78,9 +78,9 @@ object ReadOnlyBufferWrapper {
     * @return new ReadOnlyBufferWrapper from items
     */
   def apply[E <: Any](items: Seq[E]): ReadOnlyBufferWrapper[E] = {
-    import scala.collection.JavaConversions._
+    import scala.collection.JavaConverters._
     new ReadOnlyBufferWrapper[E](
-      new jfxbp.ReadOnlyListWrapper(jfxc.FXCollections.observableArrayList[E](items)))
+      new jfxbp.ReadOnlyListWrapper(jfxc.FXCollections.observableArrayList[E](items.asJava)))
   }
 
   /**
@@ -92,9 +92,9 @@ object ReadOnlyBufferWrapper {
     * @return new ReadOnlyBufferWrapper from items
     */
   def apply[E <: Any](bean: Any, name: String, items: Seq[E]): ReadOnlyBufferWrapper[E] = {
-    import scala.collection.JavaConversions._
+    import scala.collection.JavaConverters._
     new ReadOnlyBufferWrapper[E](
-      new jfxbp.ReadOnlyListWrapper(bean, name, jfxc.FXCollections.observableArrayList[E](items)))
+      new jfxbp.ReadOnlyListWrapper(bean, name, jfxc.FXCollections.observableArrayList[E](items.asJava)))
   }
 }
 
@@ -142,7 +142,7 @@ class ReadOnlyBufferWrapper[E <: Any](override val delegate: jfxbp.ReadOnlyListW
     this(
       new jfxbp.ReadOnlyListWrapper(
         jfxc.FXCollections.observableArrayList[E](
-          scala.collection.JavaConversions.seqAsJavaList(items))))
+          scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava)))
   }
 
   /**
@@ -159,7 +159,7 @@ class ReadOnlyBufferWrapper[E <: Any](override val delegate: jfxbp.ReadOnlyListW
         bean,
         name,
         jfxc.FXCollections.observableArrayList[E](
-          scala.collection.JavaConversions.seqAsJavaList(items))))
+          scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava)))
   }
 
   /**
