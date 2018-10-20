@@ -142,4 +142,30 @@ abstract class Bounds protected(override val delegate: jfxg.Bounds) extends SFXD
    */
   def width = delegate.getWidth
 
+  /**
+   * The central x coordinate of this [[Bounds]].
+   *
+   * @return the central x coordinate
+   * This call is equivalent to {{{(getMaxX() + getMinX())/2.0}}}.
+   * @since 11
+   */
+  def centerX: Double = delegate.getCenterX
+
+  /**
+   * The central y coordinate of this [[Bounds]].
+   *
+   * @return the central y coordinate
+   * This call is equivalent to {{{(getMaxY() + getMinY())/2.0}}}.
+   * @since 11
+   */
+  def centerY: Double = delegate.getCenterY
+
+  /**
+   * The central z coordinate of this [[Bounds]].
+   *
+   * @return the central z coordinate
+   * This call is equivalent to {{{(getMaxZ() + getMinZ())/2.0}}}.
+   * @since 11
+   */
+  def centerZ: Double = delegate.getCenterZ
 }
