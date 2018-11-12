@@ -413,7 +413,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   }
 
   /**
-   * Strokes a rectangle using the current stroke paint.
+   * Strokes an oval using the current stroke paint.
    */
   def strokeOval(x: Double, y: Double, w: Double, h: Double) {
     delegate.strokeOval(x, y, w, h)
