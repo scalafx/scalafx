@@ -909,22 +909,22 @@ abstract class Node protected(override val delegate: jfxs.Node)
   /**
    * Returns the node's maximum height for use in layout calculations.
    */
-  def maxHeight(width: Double) = delegate.maxHeight(width)
+  def maxHeight(height: Double) = delegate.maxHeight(height)
 
   /**
    * Returns the node's maximum width for use in layout calculations.
    */
-  def maxWidth(height: Double) = delegate.maxWidth(height)
+  def maxWidth(width: Double) = delegate.maxWidth(width)
 
   /**
    * Returns the node's minimum height for use in layout calculations.
    */
-  def minHeight(width: Double) = delegate.minHeight(width)
+  def minHeight(height: Double) = delegate.minHeight(height)
 
   /**
    * Returns the node's minimum width for use in layout calculations.
    */
-  def minWidth(height: Double) = delegate.minWidth(height)
+  def minWidth(width: Double) = delegate.minWidth(width)
 
   /**
    * Transforms a rectangle from the coordinate space of the parent into the local coordinate
