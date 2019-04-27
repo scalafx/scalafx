@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,19 +28,20 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/StrokeType.html javafx.scene.shape.StrokeType]] */
 object StrokeType extends SFXEnumDelegateCompanion[jfxss.StrokeType, StrokeType] {
 
-  val Inside = new StrokeType(jfxss.StrokeType.INSIDE)
+  case object Inside extends StrokeType(jfxss.StrokeType.INSIDE)
   @deprecated("Use Inside; INSIDE will be removed in a future release", "2.2.60")
   val INSIDE = Inside
-  val Outside = new StrokeType(jfxss.StrokeType.OUTSIDE)
+
+  case object Outside extends StrokeType(jfxss.StrokeType.OUTSIDE)
   @deprecated("Use Outside; OUTSIDE will be removed in a future release", "2.2.60")
   val OUTSIDE = Outside
-  val Centered = new StrokeType(jfxss.StrokeType.CENTERED)
+
+  case object Centered extends StrokeType(jfxss.StrokeType.CENTERED)
   @deprecated("Use Centered; CENTERED will be removed in a future release", "2.2.60")
   val CENTERED = Centered
 
@@ -48,5 +49,5 @@ object StrokeType extends SFXEnumDelegateCompanion[jfxss.StrokeType, StrokeType]
 }
 
 
-sealed case class StrokeType(override val delegate: jfxss.StrokeType)
+sealed abstract class StrokeType(override val delegate: jfxss.StrokeType)
   extends SFXEnumDelegate[jfxss.StrokeType]

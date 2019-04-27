@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.css
 
 import javafx.{css => jfxcss}
-
-import scala.collection.JavaConversions._
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections.{ObservableBuffer, ObservableSet}
 import scalafx.delegate.SFXDelegate
+
+import scala.collection.JavaConverters._
+import scala.language.implicitConversions
 
 /**
  * Companion object for [[scalafx.css.Styleable]].
@@ -60,7 +60,7 @@ trait Styleable
   /**
    * The CssMetaData of this Styleable.
    */
-  def cssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getCssMetaData
+  def cssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getCssMetaData.asScala
 
   /**
    * The id of this Styleable.

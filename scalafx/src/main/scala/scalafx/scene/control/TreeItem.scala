@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,17 +28,17 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import javafx.{collections => jfxc, event => jfxe, scene => jfxs}
-
-import scala.collection.JavaConversions._
-import scala.collection.mutable
-import scala.language.implicitConversions
+import javafx.{event => jfxe, scene => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyBooleanProperty, ReadOnlyObjectProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.event.{Event, EventHandlerDelegate, EventType}
 import scalafx.scene.Node
+
+import scala.collection.JavaConverters._
+import scala.collection.mutable
+import scala.language.implicitConversions
 
 object TreeItem {
   implicit def sfxTreeItemToJfx[T](v: TreeItem[T]): jfxsc.TreeItem[T] = if (v != null) v.delegate else null
@@ -74,7 +74,7 @@ object TreeItem {
              treeItem: jfxsc.TreeItem[T],
              added: mutable.Buffer[_ <: jfxsc.TreeItem[T]],
              removed: mutable.Buffer[_ <: jfxsc.TreeItem[T]]) =
-      this(new jfxsc.TreeItem.TreeModificationEvent[T](eventType, treeItem, added, removed))
+      this(new jfxsc.TreeItem.TreeModificationEvent[T](eventType, treeItem, added.asJava, removed.asJava))
 
     /**
      * Constructs a TreeModificationEvent for when the TreeItem has had its
@@ -87,7 +87,7 @@ object TreeItem {
      * Returns the children added to the TreeItem in this event, or an empty
      * list if no children were added.
      */
-    def addedChildren: mutable.Buffer[_ <: jfxsc.TreeItem[T]] = delegate.getAddedChildren
+    def addedChildren: mutable.Buffer[_ <: jfxsc.TreeItem[T]] = delegate.getAddedChildren.asScala
 
     /**
      * Returns the number of children items that were added in this event, or
@@ -105,7 +105,7 @@ object TreeItem {
      * Returns the children removed from the TreeItem in this event, or an
      * empty list if no children were added.
      */
-    def removedChildren: mutable.Buffer[_ <: jfxsc.TreeItem[T]] = delegate.getRemovedChildren
+    def removedChildren: mutable.Buffer[_ <: jfxsc.TreeItem[T]] = delegate.getRemovedChildren.asScala
 
     /**
      * Returns the number of children items that were removed in this event,
@@ -153,32 +153,32 @@ object TreeItem {
    * An EventType used when the TreeItem receives a modification to its
    * expanded property, such that the TreeItem is now in the collapsed state.
    */
-  def branchCollapsedEvent = jfxsc.TreeItem.branchCollapsedEvent
+  def branchCollapsedEvent[T] = jfxsc.TreeItem.branchCollapsedEvent
 
   /**
    * An EventType used when the TreeItem receives a modification to its
    * expanded property, such that the TreeItem is now in the expanded state.
    */
-  def branchExpandedEvent = jfxsc.TreeItem.branchExpandedEvent
+  def branchExpandedEvent[T] = jfxsc.TreeItem.branchExpandedEvent
 
   /**
    * An EventType used when the TreeItem receives a direct modification to its
    * children list.
    */
-  def childrenModificationEvent = jfxsc.TreeItem.childrenModificationEvent
+  def childrenModificationEvent[T] = jfxsc.TreeItem.childrenModificationEvent
 
   /** The general EventType used when the TreeItem receives a modification
     * that results in the number of children being visible changes.
     *
     * @since 8.0  
     */
-  def expandedItemCountChangeEvent = jfxsc.TreeItem.expandedItemCountChangeEvent
+  def expandedItemCountChangeEvent[T] = jfxsc.TreeItem.expandedItemCountChangeEvent
 
   /**
    * An EventType used when the TreeItem receives a modification to its
    * graphic property.
    */
-  def graphicChangedEvent = jfxsc.TreeItem.graphicChangedEvent
+  def graphicChangedEvent[T] = jfxsc.TreeItem.graphicChangedEvent
 
   /**
    * The general EventType used when the TreeItem receives a modification that
@@ -191,13 +191,13 @@ object TreeItem {
    * The base EventType used to indicate that an event has occurred within a
    * TreeItem.
    */
-  def treeNotificationEvent = jfxsc.TreeItem.treeNotificationEvent
+  def treeNotificationEvent[T] = jfxsc.TreeItem.treeNotificationEvent
 
   /**
    * An EventType used when the TreeItem receives a modification to its value
    * property.
    */
-  def valueChangedEvent = jfxsc.TreeItem.valueChangedEvent
+  def valueChangedEvent[T] = jfxsc.TreeItem.valueChangedEvent
 
 }
 
@@ -223,7 +223,7 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
    * The expanded state of this TreeItem.
    */
   def expanded: BooleanProperty = delegate.expandedProperty
-  def expanded_=(v: Boolean) {
+  def expanded_=(v: Boolean): Unit = {
     expanded() = v
   }
 
@@ -231,7 +231,7 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
    * The node that is generally shown to the left of the value property.
    */
   def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
-  def graphic_=(v: Node) {
+  def graphic_=(v: Node): Unit = {
     graphic() = v
   }
 
@@ -250,7 +250,7 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
    * this TreeItem.
    */
   def value: ObjectProperty[T] = delegate.valueProperty
-  def value_=(v: T) {
+  def value_=(v: T): Unit = {
     value.set(v)
   }
 
@@ -258,7 +258,7 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
    * The children of this TreeItem.
    */
   def children: ObservableBuffer[jfxsc.TreeItem[T]] = delegate.getChildren
-  def children_=(items: Seq[TreeItem[T]]) {
+  def children_=(items: Seq[TreeItem[T]]): Unit = {
     children.clear()
     items.foreach(children += _)
   }
@@ -266,22 +266,22 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
   /**
    * Returns the next sibling of the TreeItem.
    */
-  def nextSibling = delegate.nextSibling
+  def nextSibling: TreeItem[T] = delegate.nextSibling
 
   /**
    * Returns the next sibling after the given node.
    */
-  def nextSibling(afterNode: TreeItem[T]) = delegate.nextSibling(afterNode)
+  def nextSibling(afterNode: TreeItem[T]): TreeItem[T] = delegate.nextSibling(afterNode)
 
   /**
    * Returns the previous sibling of the TreeItem.
    */
-  def previousSibling = delegate.previousSibling
+  def previousSibling: TreeItem[T] = delegate.previousSibling
 
   /**
    * Returns the previous sibling previous the given node.
    */
-  def previousSibling(afterNode: TreeItem[T]) = delegate.previousSibling(afterNode)
+  def previousSibling(afterNode: TreeItem[T]): TreeItem[T] = delegate.previousSibling(afterNode)
 
-  override protected def eventHandlerDelegate = delegate.asInstanceOf[EventHandled]
+  override protected def eventHandlerDelegate: EventHandled = delegate.asInstanceOf[EventHandled]
 }

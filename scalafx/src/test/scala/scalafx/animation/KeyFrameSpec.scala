@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,15 +27,13 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa, event => jfxe}
-
 import org.scalatest.Matchers._
-
-import scala.collection.JavaConversions._
-import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.event.ActionEvent
 import scalafx.testutil.SimpleSFXDelegateSpec
+
+import scala.language.postfixOps
 
 /**
  * KeyFrame Spec tests.
@@ -102,7 +100,7 @@ class KeyFrameSpec
     var callCount1 = 0
     var callCount2 = 0
     val actionEvent = new jfxe.ActionEvent()
-    val finishHandler = { (event: ActionEvent) =>
+    val finishHandler = { event: ActionEvent =>
       callCount1 += 1
       callCount2 += 1
       event should equal(actionEvent)
@@ -119,14 +117,14 @@ class KeyFrameSpec
     val doubleProperty = new DoubleProperty(null, "sample")
     val frames = Set(
       KeyValue(doubleProperty, 50d))
-    KeyFrame(10 ms, values = frames).values should equal(setAsJavaSet(frames.map(_.delegate)))
+    KeyFrame(10 ms, values = frames).values should equal(frames.map(_.delegate))
   }
 
   it should "support the at(duration) {value} syntax" in {
     val doubleProperty = new DoubleProperty(null, "sample")
     val keyFrame = at(5 s) {doubleProperty -> 20}
     keyFrame.time should equal(5 s)
-    keyFrame.values should have size (1)
+    keyFrame.values should have size 1
   }
 
 }

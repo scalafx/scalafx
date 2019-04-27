@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,12 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{geometry => jfxg}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.geometry.Side
+
+import scala.language.implicitConversions
 
 object TabPane {
 
@@ -45,7 +45,7 @@ object TabPane {
     /**
      * All tabs will have the option to be closed.
      */
-    val AllTabs = new TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.ALL_TABS)
+    case object AllTabs extends TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.ALL_TABS)
     @deprecated ("Use AllTabs; ALL_TABS will be removed in a future release", "8.0.60-R10")
     val ALL_TABS = AllTabs
 
@@ -53,14 +53,14 @@ object TabPane {
      * Only the currently selected tab will have the option to be closed, with a graphic next to the tab text being
      * shown.
      */
-    val SelectedTab = new TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.SELECTED_TAB)
+    case object SelectedTab extends TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.SELECTED_TAB)
     @deprecated ("Use SelectedTab; SELECTED_TAB will be removed in a future release", "8.0.60-R10")
     val SELECTED_TAB = SelectedTab
 
     /**
      * Tabs can not be closed by the user.
      */
-    val Unavailable = new TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.UNAVAILABLE)
+    case object Unavailable extends TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.UNAVAILABLE)
     @deprecated ("Use Unavailable; UNAVAILABLE will be removed in a future release", "8.0.60-R10")
     val UNAVAILABLE = Unavailable
 
@@ -69,7 +69,7 @@ object TabPane {
   }
 
   /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TabPane.TabClosingPolicy.html]] */
-  sealed case class TabClosingPolicy(override val delegate: jfxsc.TabPane.TabClosingPolicy)
+  sealed abstract class TabClosingPolicy(override val delegate: jfxsc.TabPane.TabClosingPolicy)
     extends SFXEnumDelegate[jfxsc.TabPane.TabClosingPolicy]
 
   /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,14 +28,14 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe, scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyBooleanProperty, ReadOnlyObjectProperty, StringProperty}
+import scalafx.beans.property._
 import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.Node._
+
+import scala.language.implicitConversions
 
 object Tab {
 
@@ -167,7 +167,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
    * Set the value of the userData property for the instance constructed by this builder.
    * @since 2.2
    */
-  def userData: AnyRef = delegate.userData
+  def userData: AnyRef = delegate.getUserData
   def userData_=(v: AnyRef) {
     delegate.setUserData(v)
   }

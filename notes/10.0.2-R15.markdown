@@ -1,0 +1,31 @@
+[ScalaFX][1] 10.0.2-R15 was tested against JavaFX 10.0.2. It contains changes to better support JavaFX 10.
+
+New features, many provided by [Romain DEP](https://github.com/rom1dep):
+* Add missing public static methods for `Font`: `loadFonts(url)`, `loadFonts(stream)`
+* Add missing properties for `Node`: `viewOrder`
+* Add missing public static methods for `Platform`: `requestNextPulse`, `startup`, `enterNestedEventLoop`, `exitNestedEventLoop`, `isNestedLoopRunning`
+* Add missing properties for `Window`: `renderScaleX`, `renderScaleY`, `outputScaleX`, `outputScaleY`, `forceIntegerRenderScale`
+* Add missing properties for `MenuButton`: `onHiding`, `onShowing`, `onShown`, `onHidden`
+* Add missing properties for `Spinner`: `promptText`
+* `StyleConverter`: wrap the `StringStore` class
+* Add public static methods for `StyleConverter`: `readBinary`, `clearCache`
+* Add missing properties for `TabPane`: `tabDragPolicy`
+* Add missing properties for `Text`: `caretBias`, `caretPosition`, `caretShape`, `selectionEnd`, `selectionFill`, `selectionShape`,  `selectionStart`
+* Add missing properties for `Tooltip`: `hideDelay`,  `showDelay`, `showDuration`
+
+To use ScalaFX add following to your SBT:
+
+      libraryDependencies += "org.scalafx" %% "scalafx" % "10.0.2-R15"
+
+For downloads visit [ScalaFX on Sonatype][2] or [ScalaFX Releases][3] on GitHub. 
+Please report any problems using [ScalaFX Issue Tracker][4]. 
+Please use [ScalaFX Users Group][5] to post questions. 
+
+[1]: http://scalafx.org
+[2]: http://search.maven.org/#search&#124;ga&#124;1&#124;scalafx
+[3]: https://github.com/scalafx/scalafx/releases
+[4]: https://github.com/scalafx/scalafx/issues
+[5]: https://groups.google.com/forum/#!forum/scalafx-users
+
+[269]: https://github.com/scalafx/scalafx/issues/269
+[271]: https://github.com/scalafx/scalafx/issues/271

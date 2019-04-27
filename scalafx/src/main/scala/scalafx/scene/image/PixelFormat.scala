@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,12 @@
 package scalafx.scene.image
 
 import java.nio.{Buffer, ByteBuffer, IntBuffer}
-import javafx.scene.{image => jfxsi}
 
-import scala.language.implicitConversions
+import javafx.scene.{image => jfxsi}
 import scalafx.Includes._
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
+
+import scala.language.implicitConversions
 
 object PixelFormat {
   implicit def sfxPixelFormat2jfx[B <: Buffer](pf: PixelFormat[B]): jfxsi.PixelFormat[B] = pf.delegate
@@ -43,7 +44,7 @@ object PixelFormat {
      * The pixels are stored in adjacent bytes with the non-premultiplied components stored in order of increasing 
      * index: blue, green, red, alpha.
      */
-    val ByteBGRA = new Type(jfxsi.PixelFormat.Type.BYTE_BGRA)
+    case object ByteBGRA extends Type(jfxsi.PixelFormat.Type.BYTE_BGRA)
     @deprecated ("Use ByteBGRA; BYTE_BGRA will be removed in a future release", "8.0.60-R10")
     val BYTE_BGRA = ByteBGRA
 
@@ -51,7 +52,7 @@ object PixelFormat {
      * The pixels are stored in adjacent bytes with the premultiplied components stored in order of increasing index: 
      * blue, green, red, alpha.
      */
-    val ByteBRGAPre = new Type(jfxsi.PixelFormat.Type.BYTE_BGRA_PRE)
+    case object ByteBRGAPre extends Type(jfxsi.PixelFormat.Type.BYTE_BGRA_PRE)
     @deprecated ("Use ByteBRGAPre; BYTE_BGRA_PRE will be removed in a future release", "8.0.60-R10")
     val BYTE_BGRA_PRE = ByteBRGAPre
 
@@ -59,7 +60,7 @@ object PixelFormat {
      * The pixel colors are referenced by byte indices stored in the pixel array, with the byte interpreted as an 
      * unsigned index into a list of colors provided by the PixelFormat object.
      */
-    val ByteIndexed = new Type(jfxsi.PixelFormat.Type.BYTE_INDEXED)
+    case object ByteIndexed extends Type(jfxsi.PixelFormat.Type.BYTE_INDEXED)
     @deprecated ("Use ByteIndexed; BYTE_INDEXED will be removed in a future release", "8.0.60-R10")
     val BYTE_INDEXED = ByteIndexed
 
@@ -67,7 +68,7 @@ object PixelFormat {
      * The opaque pixels are stored in adjacent bytes with the color components stored in order of increasing index: 
      * red, green, blue.
      */
-    val ByteRGB = new Type(jfxsi.PixelFormat.Type.BYTE_RGB)
+    case object ByteRGB extends Type(jfxsi.PixelFormat.Type.BYTE_RGB)
     @deprecated ("Use ByteRGB; BYTE_RGB will be removed in a future release", "8.0.60-R10")
     val BYTE_RGB = ByteRGB
 
@@ -75,7 +76,7 @@ object PixelFormat {
      * The pixels are stored in 32-bit integers with the non-premultiplied components stored in order, from MSb to LSb: 
      * alpha, red, green, blue.
      */
-    val IntARGB = new Type(jfxsi.PixelFormat.Type.INT_ARGB)
+    case object IntARGB extends Type(jfxsi.PixelFormat.Type.INT_ARGB)
     @deprecated ("Use IntARGB; INT_ARGB will be removed in a future release", "8.0.60-R10")
     val INT_ARGB = IntARGB
 
@@ -83,7 +84,7 @@ object PixelFormat {
      * The pixels are stored in 32-bit integers with the premultiplied components stored in order, from MSb to LSb: 
      * alpha, red, green, blue.
      */
-    val IntARGBPre = new Type(jfxsi.PixelFormat.Type.INT_ARGB_PRE)
+    case object IntARGBPre extends Type(jfxsi.PixelFormat.Type.INT_ARGB_PRE)
     @deprecated ("Use IntARGBPre; INT_ARGB_PRE will be removed in a future release", "8.0.60-R10")
     val INT_ARGB_PRE = IntARGBPre
 
@@ -95,7 +96,7 @@ object PixelFormat {
   /**
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/PixelFormat.Type.html]]
    */
-  sealed case class Type(override val delegate: jfxsi.PixelFormat.Type)
+  sealed abstract class Type(override val delegate: jfxsi.PixelFormat.Type)
     extends SFXEnumDelegate[jfxsi.PixelFormat.Type]
 
   def createByteIndexedInstance(colors: Array[Int]): PixelFormat[ByteBuffer] = jfxsi.PixelFormat.createByteIndexedInstance(colors)

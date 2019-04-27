@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,13 +29,13 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{geometry => jfxg, scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.geometry.Bounds
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object ScrollPane {
   implicit def sfxScrollPane2jfx(v: ScrollPane): jfxsc.ScrollPane = if (v != null) v.delegate else null
@@ -44,17 +44,17 @@ object ScrollPane {
     extends SFXEnumDelegateCompanion[jfxsc.ScrollPane.ScrollBarPolicy, ScrollBarPolicy] {
 
     /** Indicates that a scroll bar should always be shown. */
-    val Always = new ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.ALWAYS)
+    case object Always extends ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.ALWAYS)
     @deprecated ("Use Always; ALWAYS will be removed in a future release", "8.0.60-R10")
     val ALWAYS = Always
 
     /** Indicates that a scroll bar should be shown when required. */
-    val AsNeeded = new ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.AS_NEEDED)
+    case object AsNeeded extends ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.AS_NEEDED)
     @deprecated ("Use AsNeeded; AS_NEEDED will be removed in a future release", "8.0.60-R10")
     val AS_NEEDED = AsNeeded
 
     /** Indicates that a scroll bar should never be shown */
-    val Never = new ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.NEVER)
+    case object Never extends ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.NEVER)
     @deprecated ("Use Never; NEVER will be removed in a future release", "8.0.60-R10")
     val NEVER = Never
 
@@ -63,7 +63,7 @@ object ScrollPane {
   }
 
   /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ScrollPane.ScrollBarPolicy.html]] */
-  sealed case class ScrollBarPolicy(override val delegate: jfxsc.ScrollPane.ScrollBarPolicy)
+  sealed abstract class ScrollBarPolicy(override val delegate: jfxsc.ScrollPane.ScrollBarPolicy)
     extends SFXEnumDelegate[jfxsc.ScrollPane.ScrollBarPolicy]
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,10 +29,10 @@ package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
 import javafx.{collections => jfxc}
-
-import scala.language.implicitConversions
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 
 object BufferProperty {
@@ -79,9 +79,9 @@ object BufferProperty {
     * @return new BufferProperty from items
     */
   def apply[E <: Any](items: Seq[E]): BufferProperty[E] = {
-    import scala.collection.JavaConversions._
+    import scala.collection.JavaConverters._
     new BufferProperty[E](
-      new jfxbp.SimpleListProperty(jfxc.FXCollections.observableArrayList[E](items)))
+      new jfxbp.SimpleListProperty(jfxc.FXCollections.observableArrayList[E](items.asJava)))
   }
 
   /**
@@ -93,24 +93,23 @@ object BufferProperty {
     * @return new BufferProperty from items
     */
   def apply[E <: Any](bean: Any, name: String, items: Seq[E]): BufferProperty[E] = {
-    import scala.collection.JavaConversions.seqAsJavaList
+    import scala.collection.JavaConverters.seqAsJavaListConverter
     new BufferProperty[E](
       new jfxbp.SimpleListProperty(
         bean,
         name,
-        jfxc.FXCollections.observableArrayList[E](seqAsJavaList(items))))
+        jfxc.FXCollections.observableArrayList[E](seqAsJavaListConverter(items).asJava)))
   }
 }
 
 
 /**
-  * Wraps a $JFX $URL0 ListProperty]].
+  * Wraps a $JFX [[ $URL0 ListProperty]].
   *
-  * @define TC          BufferProperty
-  * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ListProperty.html
-  * @define JFX         JavaFX
-  * @define ORIGINALDOC Original Documentation]].
-  **/
+  * @define TC   BufferProperty
+  * @define URL0 https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ListProperty.html
+  * @define JFX  JavaFX
+  */
 class BufferProperty[E <: Any](override val delegate: jfxbp.ListProperty[E] = new jfxbp.SimpleListProperty[E])
   extends ReadOnlyBufferProperty[E](delegate)
     with Property[ObservableBuffer[E], jfxc.ObservableList[E]]
@@ -152,7 +151,7 @@ class BufferProperty[E <: Any](override val delegate: jfxbp.ListProperty[E] = ne
   def this(items: Seq[E]) = {
     this(new jfxbp.SimpleListProperty(
       jfxc.FXCollections.observableArrayList[E](
-        scala.collection.JavaConversions.seqAsJavaList(items))))
+        scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava)))
   }
 
   /**
@@ -168,7 +167,7 @@ class BufferProperty[E <: Any](override val delegate: jfxbp.ListProperty[E] = ne
       bean,
       name,
       jfxc.FXCollections.observableArrayList[E](
-        scala.collection.JavaConversions.seqAsJavaList(items))))
+        scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava)))
   }
 
   /**

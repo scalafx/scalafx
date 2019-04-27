@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,10 @@
 package scalafx.testutil
 
 import java.lang.reflect.Method
-import java.util.EnumSet
 
-import scala.collection.JavaConversions._
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+
+import scala.collection.JavaConverters._
 
 
 /** Abstract class that facilitates testing of wrappers for Java enums.
@@ -67,9 +67,9 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] protected(javaClass: Class[E], scalaClass: Class[S], companion: SFXEnumDelegateCompanion[E, S])(implicit jfx2sfx: E => S = null, sfx2jfx: S => E = null)
   extends SFXDelegateSpec[E, S](javaClass, scalaClass) {
 
-  private val javaEnumConstants = EnumSet.allOf(javaClass)
+  private val javaEnumConstants = java.util.EnumSet.allOf(javaClass)
 
-  private def nameIsPresent(name: String) = {
+  private def nameIsPresent(name: String): Boolean = {
     try {
       val scalaEnum = companion(name)
       true
@@ -78,7 +78,7 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
     }
   }
 
-  private def assertScalaEnumWithOrdinal(s: S, index: Int) {
+  private def assertScalaEnumWithOrdinal(s: S, index: Int): Unit = {
     assert(s.delegate.ordinal() == index, "%s - Expected position: %d, actual: %d".format(s, s.delegate.ordinal(), index))
   }
 
@@ -88,14 +88,14 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
    * Functionality from static method "valueOf" (present in all java enums) are being replaced by apply method in
    * companions objects. Therefore, "valueOf" is being excluded from methods search.
    */
-  protected override def isSpecialMethodName(name: String) = super.isImplementation(name) ||
+  protected override def isSpecialMethodName(name: String): Boolean = super.isImplementation(name) ||
     (name == "values") || (name == "valueOf") || name.startsWith("is") || name.startsWith("get")
 
   // Simply it gets the first constant available.
-  override protected def getScalaClassInstance = companion.values.toList.head
+  override protected def getScalaClassInstance: S = companion.values.head
 
   // Simply it gets the first constant available.
-  override protected def getJavaClassInstance = javaEnumConstants.iterator.next
+  override protected def getJavaClassInstance: E = javaEnumConstants.iterator.next
 
   /////////////////
   // TESTS - BEGIN 
@@ -106,13 +106,13 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
   }
 
   it should "presents all constants from its original JavaFX class" in {
-    val diff = javaEnumConstants -- companion.values.map(_.delegate)
+    val diff = javaEnumConstants.asScala -- companion.values.map(_.delegate)
 
     assert(diff.isEmpty, "Missing constants: " + diff.mkString(", "))
   }
 
   it should "generate all ScalaFX enums from JavaFX enums names" in {
-    val missingJavaEnumNames = javaEnumConstants.map(_.name).filterNot(nameIsPresent(_))
+    val missingJavaEnumNames = javaEnumConstants.asScala.map(_.name).filterNot(nameIsPresent(_))
 
     assert(missingJavaEnumNames.isEmpty, "Missing constants: " + missingJavaEnumNames.mkString(", "))
   }

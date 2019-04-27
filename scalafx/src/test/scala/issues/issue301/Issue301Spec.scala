@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,29 +25,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.scene.text
+package issues.issue301
 
-import javafx.scene.{text => jfxst}
-import scalafx.Includes._
-import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+import org.scalatest.FlatSpec
+import org.scalatest.Matchers._
+import scalafx.scene.control.Tab
+import scalafx.testutil.RunOnApplicationThread
 
-/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontPosture.html javafx.scene.text.FontPosture]] */
-object FontPosture extends SFXEnumDelegateCompanion[jfxst.FontPosture, FontPosture] {
-
-  case object Regular extends FontPosture(jfxst.FontPosture.REGULAR)
-  @deprecated ("Use Regular; REGULAR will be removed in a future release", "8.0.60-R10")
-  val REGULAR = Regular
-
-  case object Italic extends FontPosture(jfxst.FontPosture.ITALIC)
-  @deprecated ("Use Italic; ITALIC will be removed in a future release", "8.0.60-R10")
-  val ITALIC = Italic
-
-  protected override def unsortedValues: Array[FontPosture] = Array(Regular, Italic)
-
-  /** Returns FontPosture by its name. */
-  def findByName(name: String): FontPosture = jfxst.FontPosture.findByName(name)
+class Issue301Spec extends FlatSpec with RunOnApplicationThread {
+  "Tab.userData" should "not throw StackOverflowException" in {
+    val tab = new Tab()
+    tab.userData
+  }
 }
-
-
-sealed abstract class FontPosture(override val delegate: jfxst.FontPosture)
-  extends SFXEnumDelegate[jfxst.FontPosture]

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,756 +28,805 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
-
 import scalafx.Includes._
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/KeyCode.html javafx.scene.input.KeyCode]] */
 object KeyCode extends SFXEnumDelegateCompanion[jfxsi.KeyCode, KeyCode] {
 
-  val Enter = new KeyCode(jfxsi.KeyCode.ENTER)
+  case object Enter extends KeyCode(jfxsi.KeyCode.ENTER)
   @deprecated ("Use Enter; ENTER will be removed in a future release", "8.0.60-R10")
   val ENTER = Enter
 
-  val BackSpace = new KeyCode(jfxsi.KeyCode.BACK_SPACE)
+  case object BackSpace extends KeyCode(jfxsi.KeyCode.BACK_SPACE)
   @deprecated ("Use BackSpace; BACK_SPACE will be removed in a future release", "8.0.60-R10")
   val BACK_SPACE = BackSpace
 
-  val Tab = new KeyCode(jfxsi.KeyCode.TAB)
+  case object Tab extends KeyCode(jfxsi.KeyCode.TAB)
   @deprecated ("Use Tab; TAB will be removed in a future release", "8.0.60-R10")
   val TAB = Tab
 
-  val Cancel = new KeyCode(jfxsi.KeyCode.CANCEL)
+  case object Cancel extends KeyCode(jfxsi.KeyCode.CANCEL)
   @deprecated ("Use Cancel; CANCEL will be removed in a future release", "8.0.60-R10")
   val CANCEL = Cancel
 
-  val Clear = new KeyCode(jfxsi.KeyCode.CLEAR)
+  case object Clear extends KeyCode(jfxsi.KeyCode.CLEAR)
   @deprecated ("Use Clear; CLEAR will be removed in a future release", "8.0.60-R10")
   val CLEAR = Clear
 
-  val Shift = new KeyCode(jfxsi.KeyCode.SHIFT)
+  case object Shift extends KeyCode(jfxsi.KeyCode.SHIFT)
   @deprecated ("Use Shift; SHIFT will be removed in a future release", "8.0.60-R10")
   val SHIFT = Shift
 
-  val Control = new KeyCode(jfxsi.KeyCode.CONTROL)
+  case object Control extends KeyCode(jfxsi.KeyCode.CONTROL)
   @deprecated ("Use Control; CONTROL will be removed in a future release", "8.0.60-R10")
   val CONTROL = Control
 
-  val Alt = new KeyCode(jfxsi.KeyCode.ALT)
+  case object Alt extends KeyCode(jfxsi.KeyCode.ALT)
   @deprecated ("Use Alt; ALT will be removed in a future release", "8.0.60-R10")
   val ALT = Alt
 
-  val Pause = new KeyCode(jfxsi.KeyCode.PAUSE)
+  case object Pause extends KeyCode(jfxsi.KeyCode.PAUSE)
   @deprecated ("Use Pause; PAUSE will be removed in a future release", "8.0.60-R10")
   val PAUSE = Pause
 
-  val Caps = new KeyCode(jfxsi.KeyCode.CAPS)
+  case object Caps extends KeyCode(jfxsi.KeyCode.CAPS)
   @deprecated ("Use Caps; CAPS will be removed in a future release", "8.0.60-R10")
   val CAPS = Caps
 
-  val Escape = new KeyCode(jfxsi.KeyCode.ESCAPE)
+  case object Escape extends KeyCode(jfxsi.KeyCode.ESCAPE)
   @deprecated ("Use Escape; ESCAPE will be removed in a future release", "8.0.60-R10")
   val ESCAPE = Escape
 
-  val Space = new KeyCode(jfxsi.KeyCode.SPACE)
+  case object Space extends KeyCode(jfxsi.KeyCode.SPACE)
   @deprecated ("Use Space; SPACE will be removed in a future release", "8.0.60-R10")
   val SPACE = Space
 
-  val PageUp = new KeyCode(jfxsi.KeyCode.PAGE_UP)
+  case object PageUp extends KeyCode(jfxsi.KeyCode.PAGE_UP)
   @deprecated ("Use PageUp; PAGE_UP will be removed in a future release", "8.0.60-R10")
   val PAGE_UP = PageUp
 
-  val PageDown = new KeyCode(jfxsi.KeyCode.PAGE_DOWN)
+  case object PageDown extends KeyCode(jfxsi.KeyCode.PAGE_DOWN)
   @deprecated ("Use PageDown; PAGE_DOWN will be removed in a future release", "8.0.60-R10")
   val PAGE_DOWN = PageDown
 
-  val End = new KeyCode(jfxsi.KeyCode.END)
+  case object End extends KeyCode(jfxsi.KeyCode.END)
   @deprecated ("Use End; END will be removed in a future release", "8.0.60-R10")
   val END = End
 
-  val Home = new KeyCode(jfxsi.KeyCode.HOME)
+  case object Home extends KeyCode(jfxsi.KeyCode.HOME)
   @deprecated ("Use Home; HOME will be removed in a future release", "8.0.60-R10")
   val HOME = Home
 
-  val Left = new KeyCode(jfxsi.KeyCode.LEFT)
+  case object Left extends KeyCode(jfxsi.KeyCode.LEFT)
   @deprecated ("Use Left; LEFT will be removed in a future release", "8.0.60-R10")
   val LEFT = Left
 
-  val Up = new KeyCode(jfxsi.KeyCode.UP)
+  case object Up extends KeyCode(jfxsi.KeyCode.UP)
   @deprecated ("Use Up; UP will be removed in a future release", "8.0.60-R10")
   val UP = Up
 
-  val Right = new KeyCode(jfxsi.KeyCode.RIGHT)
+  case object Right extends KeyCode(jfxsi.KeyCode.RIGHT)
   @deprecated ("Use Right; RIGHT will be removed in a future release", "8.0.60-R10")
   val RIGHT = Right
 
-  val Down = new KeyCode(jfxsi.KeyCode.DOWN)
+  case object Down extends KeyCode(jfxsi.KeyCode.DOWN)
   @deprecated ("Use Down; DOWN will be removed in a future release", "8.0.60-R10")
   val DOWN = Down
 
-  val Comma = new KeyCode(jfxsi.KeyCode.COMMA)
+  case object Comma extends KeyCode(jfxsi.KeyCode.COMMA)
   @deprecated ("Use Comma; COMMA will be removed in a future release", "8.0.60-R10")
   val COMMA = Comma
 
-  val Minus = new KeyCode(jfxsi.KeyCode.MINUS)
+  case object Minus extends KeyCode(jfxsi.KeyCode.MINUS)
   @deprecated ("Use Minus; MINUS will be removed in a future release", "8.0.60-R10")
   val MINUS = Minus
 
-  val Period = new KeyCode(jfxsi.KeyCode.PERIOD)
+  case object Period extends KeyCode(jfxsi.KeyCode.PERIOD)
   @deprecated ("Use Period; PERIOD will be removed in a future release", "8.0.60-R10")
   val PERIOD = Period
 
-  val Slash = new KeyCode(jfxsi.KeyCode.SLASH)
+  case object Slash extends KeyCode(jfxsi.KeyCode.SLASH)
   @deprecated ("Use Slash; SLASH will be removed in a future release", "8.0.60-R10")
   val SLASH = Slash
 
-  val Digit0 = new KeyCode(jfxsi.KeyCode.DIGIT0)
+  case object Digit0 extends KeyCode(jfxsi.KeyCode.DIGIT0)
   @deprecated ("Use Digit0; DIGIT0 will be removed in a future release", "8.0.60-R10")
   val DIGIT0 = Digit0
 
-  val Digit1 = new KeyCode(jfxsi.KeyCode.DIGIT1)
+  case object Digit1 extends KeyCode(jfxsi.KeyCode.DIGIT1)
   @deprecated ("Use Digit1; DIGIT1 will be removed in a future release", "8.0.60-R10")
   val DIGIT1 = Digit1
 
-  val Digit2 = new KeyCode(jfxsi.KeyCode.DIGIT2)
+  case object Digit2 extends KeyCode(jfxsi.KeyCode.DIGIT2)
   @deprecated ("Use Digit2; DIGIT2 will be removed in a future release", "8.0.60-R10")
   val DIGIT2 = Digit2
 
-  val Digit3 = new KeyCode(jfxsi.KeyCode.DIGIT3)
+  case object Digit3 extends KeyCode(jfxsi.KeyCode.DIGIT3)
   @deprecated ("Use Digit3; DIGIT3 will be removed in a future release", "8.0.60-R10")
   val DIGIT3 = Digit3
 
-  val Digit4 = new KeyCode(jfxsi.KeyCode.DIGIT4)
+  case object Digit4 extends KeyCode(jfxsi.KeyCode.DIGIT4)
   @deprecated ("Use Digit4; DIGIT4 will be removed in a future release", "8.0.60-R10")
   val DIGIT4 = Digit4
 
-  val Digit5 = new KeyCode(jfxsi.KeyCode.DIGIT5)
+  case object Digit5 extends KeyCode(jfxsi.KeyCode.DIGIT5)
   @deprecated ("Use Digit5; DIGIT5 will be removed in a future release", "8.0.60-R10")
   val DIGIT5 = Digit5
 
-  val Digit6 = new KeyCode(jfxsi.KeyCode.DIGIT6)
+  case object Digit6 extends KeyCode(jfxsi.KeyCode.DIGIT6)
   @deprecated ("Use Digit6; DIGIT6 will be removed in a future release", "8.0.60-R10")
   val DIGIT6 = Digit6
 
-  val Digit7 = new KeyCode(jfxsi.KeyCode.DIGIT7)
+  case object Digit7 extends KeyCode(jfxsi.KeyCode.DIGIT7)
   @deprecated ("Use Digit7; DIGIT7 will be removed in a future release", "8.0.60-R10")
   val DIGIT7 = Digit7
 
-  val Digit8 = new KeyCode(jfxsi.KeyCode.DIGIT8)
+  case object Digit8 extends KeyCode(jfxsi.KeyCode.DIGIT8)
   @deprecated ("Use Digit8; DIGIT8 will be removed in a future release", "8.0.60-R10")
   val DIGIT8 = Digit8
 
-  val Digit9 = new KeyCode(jfxsi.KeyCode.DIGIT9)
+  case object Digit9 extends KeyCode(jfxsi.KeyCode.DIGIT9)
   @deprecated ("Use Digit9; DIGIT9 will be removed in a future release", "8.0.60-R10")
   val DIGIT9 = Digit9
 
-  val Semicolon = new KeyCode(jfxsi.KeyCode.SEMICOLON)
+  case object Semicolon extends KeyCode(jfxsi.KeyCode.SEMICOLON)
   @deprecated ("Use Semicolon; SEMICOLON will be removed in a future release", "8.0.60-R10")
   val SEMICOLON = Semicolon
 
-  val Equals = new KeyCode(jfxsi.KeyCode.EQUALS)
+  case object Equals extends KeyCode(jfxsi.KeyCode.EQUALS)
   @deprecated ("Use Equals; EQUALS will be removed in a future release", "8.0.60-R10")
   val EQUALS = Equals
 
-  val A = new KeyCode(jfxsi.KeyCode.A)
-  val B = new KeyCode(jfxsi.KeyCode.B)
-  val C = new KeyCode(jfxsi.KeyCode.C)
-  val D = new KeyCode(jfxsi.KeyCode.D)
-  val E = new KeyCode(jfxsi.KeyCode.E)
-  val F = new KeyCode(jfxsi.KeyCode.F)
-  val G = new KeyCode(jfxsi.KeyCode.G)
-  val H = new KeyCode(jfxsi.KeyCode.H)
-  val I = new KeyCode(jfxsi.KeyCode.I)
-  val J = new KeyCode(jfxsi.KeyCode.J)
-  val K = new KeyCode(jfxsi.KeyCode.K)
-  val L = new KeyCode(jfxsi.KeyCode.L)
-  val M = new KeyCode(jfxsi.KeyCode.M)
-  val N = new KeyCode(jfxsi.KeyCode.N)
-  val O = new KeyCode(jfxsi.KeyCode.O)
-  val P = new KeyCode(jfxsi.KeyCode.P)
-  val Q = new KeyCode(jfxsi.KeyCode.Q)
-  val R = new KeyCode(jfxsi.KeyCode.R)
-  val S = new KeyCode(jfxsi.KeyCode.S)
-  val T = new KeyCode(jfxsi.KeyCode.T)
-  val U = new KeyCode(jfxsi.KeyCode.U)
-  val V = new KeyCode(jfxsi.KeyCode.V)
-  val W = new KeyCode(jfxsi.KeyCode.W)
-  val X = new KeyCode(jfxsi.KeyCode.X)
-  val Y = new KeyCode(jfxsi.KeyCode.Y)
-  val Z = new KeyCode(jfxsi.KeyCode.Z)
-  val OpenBracket = new KeyCode(jfxsi.KeyCode.OPEN_BRACKET)
+  case object A extends KeyCode(jfxsi.KeyCode.A)
+
+  case object B extends KeyCode(jfxsi.KeyCode.B)
+
+  case object C extends KeyCode(jfxsi.KeyCode.C)
+
+  case object D extends KeyCode(jfxsi.KeyCode.D)
+
+  case object E extends KeyCode(jfxsi.KeyCode.E)
+
+  case object F extends KeyCode(jfxsi.KeyCode.F)
+
+  case object G extends KeyCode(jfxsi.KeyCode.G)
+
+  case object H extends KeyCode(jfxsi.KeyCode.H)
+
+  case object I extends KeyCode(jfxsi.KeyCode.I)
+
+  case object J extends KeyCode(jfxsi.KeyCode.J)
+
+  case object K extends KeyCode(jfxsi.KeyCode.K)
+
+  case object L extends KeyCode(jfxsi.KeyCode.L)
+
+  case object M extends KeyCode(jfxsi.KeyCode.M)
+
+  case object N extends KeyCode(jfxsi.KeyCode.N)
+
+  case object O extends KeyCode(jfxsi.KeyCode.O)
+
+  case object P extends KeyCode(jfxsi.KeyCode.P)
+
+  case object Q extends KeyCode(jfxsi.KeyCode.Q)
+
+  case object R extends KeyCode(jfxsi.KeyCode.R)
+
+  case object S extends KeyCode(jfxsi.KeyCode.S)
+
+  case object T extends KeyCode(jfxsi.KeyCode.T)
+
+  case object U extends KeyCode(jfxsi.KeyCode.U)
+
+  case object V extends KeyCode(jfxsi.KeyCode.V)
+
+  case object W extends KeyCode(jfxsi.KeyCode.W)
+
+  case object X extends KeyCode(jfxsi.KeyCode.X)
+
+  case object Y extends KeyCode(jfxsi.KeyCode.Y)
+
+  case object Z extends KeyCode(jfxsi.KeyCode.Z)
+
+  case object OpenBracket extends KeyCode(jfxsi.KeyCode.OPEN_BRACKET)
   @deprecated ("Use OpenBracket; OPEN_BRACKET will be removed in a future release", "8.0.60-R10")
   val OPEN_BRACKET = OpenBracket
 
-  val BackSlash = new KeyCode(jfxsi.KeyCode.BACK_SLASH)
+  case object BackSlash extends KeyCode(jfxsi.KeyCode.BACK_SLASH)
   @deprecated ("Use BackSlash; BACK_SLASH will be removed in a future release", "8.0.60-R10")
   val BACK_SLASH = BackSlash
 
-  val CloseBracket = new KeyCode(jfxsi.KeyCode.CLOSE_BRACKET)
+  case object CloseBracket extends KeyCode(jfxsi.KeyCode.CLOSE_BRACKET)
   @deprecated ("Use CloseBracket; CLOSE_BRACKET will be removed in a future release", "8.0.60-R10")
   val CLOSE_BRACKET = CloseBracket
 
-  val Numpad0 = new KeyCode(jfxsi.KeyCode.NUMPAD0)
+  case object Numpad0 extends KeyCode(jfxsi.KeyCode.NUMPAD0)
   @deprecated ("Use Numpad0; NUMPAD0 will be removed in a future release", "8.0.60-R10")
   val NUMPAD0 = Numpad0
 
-  val Numpad1 = new KeyCode(jfxsi.KeyCode.NUMPAD1)
+  case object Numpad1 extends KeyCode(jfxsi.KeyCode.NUMPAD1)
   @deprecated ("Use Numpad1; NUMPAD1 will be removed in a future release", "8.0.60-R10")
   val NUMPAD1 = Numpad1
 
-  val Numpad2 = new KeyCode(jfxsi.KeyCode.NUMPAD2)
+  case object Numpad2 extends KeyCode(jfxsi.KeyCode.NUMPAD2)
   @deprecated ("Use Numpad2; NUMPAD2 will be removed in a future release", "8.0.60-R10")
   val NUMPAD2 = Numpad2
 
-  val Numpad3 = new KeyCode(jfxsi.KeyCode.NUMPAD3)
+  case object Numpad3 extends KeyCode(jfxsi.KeyCode.NUMPAD3)
   @deprecated ("Use Numpad3; NUMPAD3 will be removed in a future release", "8.0.60-R10")
   val NUMPAD3 = Numpad3
 
-  val Numpad4 = new KeyCode(jfxsi.KeyCode.NUMPAD4)
+  case object Numpad4 extends KeyCode(jfxsi.KeyCode.NUMPAD4)
   @deprecated ("Use Numpad4; NUMPAD4 will be removed in a future release", "8.0.60-R10")
   val NUMPAD4 = Numpad4
 
-  val Numpad5 = new KeyCode(jfxsi.KeyCode.NUMPAD5)
+  case object Numpad5 extends KeyCode(jfxsi.KeyCode.NUMPAD5)
   @deprecated ("Use Numpad5; NUMPAD5 will be removed in a future release", "8.0.60-R10")
   val NUMPAD5 = Numpad5
 
-  val Numpad6 = new KeyCode(jfxsi.KeyCode.NUMPAD6)
+  case object Numpad6 extends KeyCode(jfxsi.KeyCode.NUMPAD6)
   @deprecated ("Use Numpad6; NUMPAD6 will be removed in a future release", "8.0.60-R10")
   val NUMPAD6 = Numpad6
 
-  val Numpad7 = new KeyCode(jfxsi.KeyCode.NUMPAD7)
+  case object Numpad7 extends KeyCode(jfxsi.KeyCode.NUMPAD7)
   @deprecated ("Use Numpad7; NUMPAD7 will be removed in a future release", "8.0.60-R10")
   val NUMPAD7 = Numpad7
 
-  val Numpad8 = new KeyCode(jfxsi.KeyCode.NUMPAD8)
+  case object Numpad8 extends KeyCode(jfxsi.KeyCode.NUMPAD8)
   @deprecated ("Use Numpad8; NUMPAD8 will be removed in a future release", "8.0.60-R10")
   val NUMPAD8 = Numpad8
 
-  val Numpad9 = new KeyCode(jfxsi.KeyCode.NUMPAD9)
+  case object Numpad9 extends KeyCode(jfxsi.KeyCode.NUMPAD9)
   @deprecated ("Use Numpad9; NUMPAD9 will be removed in a future release", "8.0.60-R10")
   val NUMPAD9 = Numpad9
 
-  val Multiply = new KeyCode(jfxsi.KeyCode.MULTIPLY)
+  case object Multiply extends KeyCode(jfxsi.KeyCode.MULTIPLY)
   @deprecated ("Use Multiply; MULTIPLY will be removed in a future release", "8.0.60-R10")
   val MULTIPLY = Multiply
 
-  val Add = new KeyCode(jfxsi.KeyCode.ADD)
+  case object Add extends KeyCode(jfxsi.KeyCode.ADD)
   @deprecated ("Use Add; ADD will be removed in a future release", "8.0.60-R10")
   val ADD = Add
 
-  val Separator = new KeyCode(jfxsi.KeyCode.SEPARATOR)
+  case object Separator extends KeyCode(jfxsi.KeyCode.SEPARATOR)
   @deprecated ("Use Separator; SEPARATOR will be removed in a future release", "8.0.60-R10")
   val SEPARATOR = Separator
 
-  val Subtract = new KeyCode(jfxsi.KeyCode.SUBTRACT)
+  case object Subtract extends KeyCode(jfxsi.KeyCode.SUBTRACT)
   @deprecated ("Use Subtract; SUBTRACT will be removed in a future release", "8.0.60-R10")
   val SUBTRACT = Subtract
 
-  val Decimal = new KeyCode(jfxsi.KeyCode.DECIMAL)
+  case object Decimal extends KeyCode(jfxsi.KeyCode.DECIMAL)
   @deprecated ("Use Decimal; DECIMAL will be removed in a future release", "8.0.60-R10")
   val DECIMAL = Decimal
 
-  val Divide = new KeyCode(jfxsi.KeyCode.DIVIDE)
+  case object Divide extends KeyCode(jfxsi.KeyCode.DIVIDE)
   @deprecated ("Use Divide; DIVIDE will be removed in a future release", "8.0.60-R10")
   val DIVIDE = Divide
 
-  val Delete = new KeyCode(jfxsi.KeyCode.DELETE)
+  case object Delete extends KeyCode(jfxsi.KeyCode.DELETE)
   @deprecated ("Use Delete; DELETE will be removed in a future release", "8.0.60-R10")
   val DELETE = Delete
 
-  val NumLock = new KeyCode(jfxsi.KeyCode.NUM_LOCK)
+  case object NumLock extends KeyCode(jfxsi.KeyCode.NUM_LOCK)
   @deprecated ("Use NumLock; NUM_LOCK will be removed in a future release", "8.0.60-R10")
   val NUM_LOCK = NumLock
 
-  val ScrollLock = new KeyCode(jfxsi.KeyCode.SCROLL_LOCK)
+  case object ScrollLock extends KeyCode(jfxsi.KeyCode.SCROLL_LOCK)
   @deprecated ("Use ScrollLock; SCROLL_LOCK will be removed in a future release", "8.0.60-R10")
   val SCROLL_LOCK = ScrollLock
 
-  val F1 = new KeyCode(jfxsi.KeyCode.F1)
-  val F2 = new KeyCode(jfxsi.KeyCode.F2)
-  val F3 = new KeyCode(jfxsi.KeyCode.F3)
-  val F4 = new KeyCode(jfxsi.KeyCode.F4)
-  val F5 = new KeyCode(jfxsi.KeyCode.F5)
-  val F6 = new KeyCode(jfxsi.KeyCode.F6)
-  val F7 = new KeyCode(jfxsi.KeyCode.F7)
-  val F8 = new KeyCode(jfxsi.KeyCode.F8)
-  val F9 = new KeyCode(jfxsi.KeyCode.F9)
-  val F10 = new KeyCode(jfxsi.KeyCode.F10)
-  val F11 = new KeyCode(jfxsi.KeyCode.F11)
-  val F12 = new KeyCode(jfxsi.KeyCode.F12)
-  val F13 = new KeyCode(jfxsi.KeyCode.F13)
-  val F14 = new KeyCode(jfxsi.KeyCode.F14)
-  val F15 = new KeyCode(jfxsi.KeyCode.F15)
-  val F16 = new KeyCode(jfxsi.KeyCode.F16)
-  val F17 = new KeyCode(jfxsi.KeyCode.F17)
-  val F18 = new KeyCode(jfxsi.KeyCode.F18)
-  val F19 = new KeyCode(jfxsi.KeyCode.F19)
-  val F20 = new KeyCode(jfxsi.KeyCode.F20)
-  val F21 = new KeyCode(jfxsi.KeyCode.F21)
-  val F22 = new KeyCode(jfxsi.KeyCode.F22)
-  val F23 = new KeyCode(jfxsi.KeyCode.F23)
-  val F24 = new KeyCode(jfxsi.KeyCode.F24)
-  val Printscreen = new KeyCode(jfxsi.KeyCode.PRINTSCREEN)
+  case object F1 extends KeyCode(jfxsi.KeyCode.F1)
+
+  case object F2 extends KeyCode(jfxsi.KeyCode.F2)
+
+  case object F3 extends KeyCode(jfxsi.KeyCode.F3)
+
+  case object F4 extends KeyCode(jfxsi.KeyCode.F4)
+
+  case object F5 extends KeyCode(jfxsi.KeyCode.F5)
+
+  case object F6 extends KeyCode(jfxsi.KeyCode.F6)
+
+  case object F7 extends KeyCode(jfxsi.KeyCode.F7)
+
+  case object F8 extends KeyCode(jfxsi.KeyCode.F8)
+
+  case object F9 extends KeyCode(jfxsi.KeyCode.F9)
+
+  case object F10 extends KeyCode(jfxsi.KeyCode.F10)
+
+  case object F11 extends KeyCode(jfxsi.KeyCode.F11)
+
+  case object F12 extends KeyCode(jfxsi.KeyCode.F12)
+
+  case object F13 extends KeyCode(jfxsi.KeyCode.F13)
+
+  case object F14 extends KeyCode(jfxsi.KeyCode.F14)
+
+  case object F15 extends KeyCode(jfxsi.KeyCode.F15)
+
+  case object F16 extends KeyCode(jfxsi.KeyCode.F16)
+
+  case object F17 extends KeyCode(jfxsi.KeyCode.F17)
+
+  case object F18 extends KeyCode(jfxsi.KeyCode.F18)
+
+  case object F19 extends KeyCode(jfxsi.KeyCode.F19)
+
+  case object F20 extends KeyCode(jfxsi.KeyCode.F20)
+
+  case object F21 extends KeyCode(jfxsi.KeyCode.F21)
+
+  case object F22 extends KeyCode(jfxsi.KeyCode.F22)
+
+  case object F23 extends KeyCode(jfxsi.KeyCode.F23)
+
+  case object F24 extends KeyCode(jfxsi.KeyCode.F24)
+
+  case object Printscreen extends KeyCode(jfxsi.KeyCode.PRINTSCREEN)
   @deprecated ("Use Printscreen; PRINTSCREEN will be removed in a future release", "8.0.60-R10")
   val PRINTSCREEN = Printscreen
 
-  val Insert = new KeyCode(jfxsi.KeyCode.INSERT)
+  case object Insert extends KeyCode(jfxsi.KeyCode.INSERT)
   @deprecated ("Use Insert; INSERT will be removed in a future release", "8.0.60-R10")
   val INSERT = Insert
 
-  val Help = new KeyCode(jfxsi.KeyCode.HELP)
+  case object Help extends KeyCode(jfxsi.KeyCode.HELP)
   @deprecated ("Use Help; HELP will be removed in a future release", "8.0.60-R10")
   val HELP = Help
 
-  val Meta = new KeyCode(jfxsi.KeyCode.META)
+  case object Meta extends KeyCode(jfxsi.KeyCode.META)
   @deprecated ("Use Meta; META will be removed in a future release", "8.0.60-R10")
   val META = Meta
 
-  val BackQuote = new KeyCode(jfxsi.KeyCode.BACK_QUOTE)
+  case object BackQuote extends KeyCode(jfxsi.KeyCode.BACK_QUOTE)
   @deprecated ("Use BackQuote; BACK_QUOTE will be removed in a future release", "8.0.60-R10")
   val BACK_QUOTE = BackQuote
 
-  val Quote = new KeyCode(jfxsi.KeyCode.QUOTE)
+  case object Quote extends KeyCode(jfxsi.KeyCode.QUOTE)
   @deprecated ("Use Quote; QUOTE will be removed in a future release", "8.0.60-R10")
   val QUOTE = Quote
 
-  val KPUp = new KeyCode(jfxsi.KeyCode.KP_UP)
+  case object KPUp extends KeyCode(jfxsi.KeyCode.KP_UP)
   @deprecated ("Use KPUp; KP_UP will be removed in a future release", "8.0.60-R10")
   val KP_UP = KPUp
 
-  val KPDown = new KeyCode(jfxsi.KeyCode.KP_DOWN)
+  case object KPDown extends KeyCode(jfxsi.KeyCode.KP_DOWN)
   @deprecated ("Use KPDown; KP_DOWN will be removed in a future release", "8.0.60-R10")
   val KP_DOWN = KPDown
 
-  val KPLeft = new KeyCode(jfxsi.KeyCode.KP_LEFT)
+  case object KPLeft extends KeyCode(jfxsi.KeyCode.KP_LEFT)
   @deprecated ("Use KPLeft; KP_LEFT will be removed in a future release", "8.0.60-R10")
   val KP_LEFT = KPLeft
 
-  val KPRight = new KeyCode(jfxsi.KeyCode.KP_RIGHT)
+  case object KPRight extends KeyCode(jfxsi.KeyCode.KP_RIGHT)
   @deprecated ("Use KPRight; KP_RIGHT will be removed in a future release", "8.0.60-R10")
   val KP_RIGHT = KPRight
 
-  val DeadGrave = new KeyCode(jfxsi.KeyCode.DEAD_GRAVE)
+  case object DeadGrave extends KeyCode(jfxsi.KeyCode.DEAD_GRAVE)
   @deprecated ("Use DeadGrave; DEAD_GRAVE will be removed in a future release", "8.0.60-R10")
   val DEAD_GRAVE = DeadGrave
 
-  val DeadAcute = new KeyCode(jfxsi.KeyCode.DEAD_ACUTE)
+  case object DeadAcute extends KeyCode(jfxsi.KeyCode.DEAD_ACUTE)
   @deprecated ("Use DeadAcute; DEAD_ACUTE will be removed in a future release", "8.0.60-R10")
   val DEAD_ACUTE = DeadAcute
 
-  val DeadCircumflex = new KeyCode(jfxsi.KeyCode.DEAD_CIRCUMFLEX)
+  case object DeadCircumflex extends KeyCode(jfxsi.KeyCode.DEAD_CIRCUMFLEX)
   @deprecated ("Use DeadCircumflex; DEAD_CIRCUMFLEX will be removed in a future release", "8.0.60-R10")
   val DEAD_CIRCUMFLEX = DeadCircumflex
 
-  val DeadTilde = new KeyCode(jfxsi.KeyCode.DEAD_TILDE)
+  case object DeadTilde extends KeyCode(jfxsi.KeyCode.DEAD_TILDE)
   @deprecated ("Use DeadTilde; DEAD_TILDE will be removed in a future release", "8.0.60-R10")
   val DEAD_TILDE = DeadTilde
 
-  val DeadMacron = new KeyCode(jfxsi.KeyCode.DEAD_MACRON)
+  case object DeadMacron extends KeyCode(jfxsi.KeyCode.DEAD_MACRON)
   @deprecated ("Use DeadMacron; DEAD_MACRON will be removed in a future release", "8.0.60-R10")
   val DEAD_MACRON = DeadMacron
 
-  val DeadBreve = new KeyCode(jfxsi.KeyCode.DEAD_BREVE)
+  case object DeadBreve extends KeyCode(jfxsi.KeyCode.DEAD_BREVE)
   @deprecated ("Use DeadBreve; DEAD_BREVE will be removed in a future release", "8.0.60-R10")
   val DEAD_BREVE = DeadBreve
 
-  val DeadAbovedot = new KeyCode(jfxsi.KeyCode.DEAD_ABOVEDOT)
+  case object DeadAbovedot extends KeyCode(jfxsi.KeyCode.DEAD_ABOVEDOT)
   @deprecated ("Use DeadAbovedot; DEAD_ABOVEDOT will be removed in a future release", "8.0.60-R10")
   val DEAD_ABOVEDOT = DeadAbovedot
 
-  val DeadDiaeresis = new KeyCode(jfxsi.KeyCode.DEAD_DIAERESIS)
+  case object DeadDiaeresis extends KeyCode(jfxsi.KeyCode.DEAD_DIAERESIS)
   @deprecated ("Use DeadDiaeresis; DEAD_DIAERESIS will be removed in a future release", "8.0.60-R10")
   val DEAD_DIAERESIS = DeadDiaeresis
 
-  val DeadAbovering = new KeyCode(jfxsi.KeyCode.DEAD_ABOVERING)
+  case object DeadAbovering extends KeyCode(jfxsi.KeyCode.DEAD_ABOVERING)
   @deprecated ("Use DeadAbovering; DEAD_ABOVERING will be removed in a future release", "8.0.60-R10")
   val DEAD_ABOVERING = DeadAbovering
 
-  val DeadDoubleacute = new KeyCode(jfxsi.KeyCode.DEAD_DOUBLEACUTE)
+  case object DeadDoubleacute extends KeyCode(jfxsi.KeyCode.DEAD_DOUBLEACUTE)
   @deprecated ("Use DeadDoubleacute; DEAD_DOUBLEACUTE will be removed in a future release", "8.0.60-R10")
   val DEAD_DOUBLEACUTE = DeadDoubleacute
 
-  val DeadCaron = new KeyCode(jfxsi.KeyCode.DEAD_CARON)
+  case object DeadCaron extends KeyCode(jfxsi.KeyCode.DEAD_CARON)
   @deprecated ("Use DeadCaron; DEAD_CARON will be removed in a future release", "8.0.60-R10")
   val DEAD_CARON = DeadCaron
 
-  val DeadCedilla = new KeyCode(jfxsi.KeyCode.DEAD_CEDILLA)
+  case object DeadCedilla extends KeyCode(jfxsi.KeyCode.DEAD_CEDILLA)
   @deprecated ("Use DeadCedilla; DEAD_CEDILLA will be removed in a future release", "8.0.60-R10")
   val DEAD_CEDILLA = DeadCedilla
 
-  val DeadOgonek = new KeyCode(jfxsi.KeyCode.DEAD_OGONEK)
+  case object DeadOgonek extends KeyCode(jfxsi.KeyCode.DEAD_OGONEK)
   @deprecated ("Use DeadOgonek; DEAD_OGONEK will be removed in a future release", "8.0.60-R10")
   val DEAD_OGONEK = DeadOgonek
 
-  val DeadIota = new KeyCode(jfxsi.KeyCode.DEAD_IOTA)
+  case object DeadIota extends KeyCode(jfxsi.KeyCode.DEAD_IOTA)
   @deprecated ("Use DeadIota; DEAD_IOTA will be removed in a future release", "8.0.60-R10")
   val DEAD_IOTA = DeadIota
 
-  val DeadVoicedSound = new KeyCode(jfxsi.KeyCode.DEAD_VOICED_SOUND)
+  case object DeadVoicedSound extends KeyCode(jfxsi.KeyCode.DEAD_VOICED_SOUND)
   @deprecated ("Use DeadVoicedSound; DEAD_VOICED_SOUND will be removed in a future release", "8.0.60-R10")
   val DEAD_VOICED_SOUND = DeadVoicedSound
 
-  val DeadSemivoicedSound = new KeyCode(jfxsi.KeyCode.DEAD_SEMIVOICED_SOUND)
+  case object DeadSemivoicedSound extends KeyCode(jfxsi.KeyCode.DEAD_SEMIVOICED_SOUND)
   @deprecated ("Use DeadSemivoicedSound; DEAD_SEMIVOICED_SOUND will be removed in a future release", "8.0.60-R10")
   val DEAD_SEMIVOICED_SOUND = DeadSemivoicedSound
 
-  val Ampersand = new KeyCode(jfxsi.KeyCode.AMPERSAND)
+  case object Ampersand extends KeyCode(jfxsi.KeyCode.AMPERSAND)
   @deprecated ("Use Ampersand; AMPERSAND will be removed in a future release", "8.0.60-R10")
   val AMPERSAND = Ampersand
 
-  val Asterisk = new KeyCode(jfxsi.KeyCode.ASTERISK)
+  case object Asterisk extends KeyCode(jfxsi.KeyCode.ASTERISK)
   @deprecated ("Use Asterisk; ASTERISK will be removed in a future release", "8.0.60-R10")
   val ASTERISK = Asterisk
 
-  val Quotedbl = new KeyCode(jfxsi.KeyCode.QUOTEDBL)
+  case object Quotedbl extends KeyCode(jfxsi.KeyCode.QUOTEDBL)
   @deprecated ("Use Quotedbl; QUOTEDBL will be removed in a future release", "8.0.60-R10")
   val QUOTEDBL = Quotedbl
 
-  val Less = new KeyCode(jfxsi.KeyCode.LESS)
+  case object Less extends KeyCode(jfxsi.KeyCode.LESS)
   @deprecated ("Use Less; LESS will be removed in a future release", "8.0.60-R10")
   val LESS = Less
 
-  val Greater = new KeyCode(jfxsi.KeyCode.GREATER)
+  case object Greater extends KeyCode(jfxsi.KeyCode.GREATER)
   @deprecated ("Use Greater; GREATER will be removed in a future release", "8.0.60-R10")
   val GREATER = Greater
 
-  val Braceleft = new KeyCode(jfxsi.KeyCode.BRACELEFT)
+  case object Braceleft extends KeyCode(jfxsi.KeyCode.BRACELEFT)
   @deprecated ("Use Braceleft; BRACELEFT will be removed in a future release", "8.0.60-R10")
   val BRACELEFT = Braceleft
 
-  val Braceright = new KeyCode(jfxsi.KeyCode.BRACERIGHT)
+  case object Braceright extends KeyCode(jfxsi.KeyCode.BRACERIGHT)
   @deprecated ("Use Braceright; BRACERIGHT will be removed in a future release", "8.0.60-R10")
   val BRACERIGHT = Braceright
 
-  val At = new KeyCode(jfxsi.KeyCode.AT)
+  case object At extends KeyCode(jfxsi.KeyCode.AT)
   @deprecated ("Use At; AT will be removed in a future release", "8.0.60-R10")
   val AT = At
 
-  val Colon = new KeyCode(jfxsi.KeyCode.COLON)
+  case object Colon extends KeyCode(jfxsi.KeyCode.COLON)
   @deprecated ("Use Colon; COLON will be removed in a future release", "8.0.60-R10")
   val COLON = Colon
 
-  val Circumflex = new KeyCode(jfxsi.KeyCode.CIRCUMFLEX)
+  case object Circumflex extends KeyCode(jfxsi.KeyCode.CIRCUMFLEX)
   @deprecated ("Use Circumflex; CIRCUMFLEX will be removed in a future release", "8.0.60-R10")
   val CIRCUMFLEX = Circumflex
 
-  val Dollar = new KeyCode(jfxsi.KeyCode.DOLLAR)
+  case object Dollar extends KeyCode(jfxsi.KeyCode.DOLLAR)
   @deprecated ("Use Dollar; DOLLAR will be removed in a future release", "8.0.60-R10")
   val DOLLAR = Dollar
 
-  val EuroSign = new KeyCode(jfxsi.KeyCode.EURO_SIGN)
+  case object EuroSign extends KeyCode(jfxsi.KeyCode.EURO_SIGN)
   @deprecated ("Use EuroSign; EURO_SIGN will be removed in a future release", "8.0.60-R10")
   val EURO_SIGN = EuroSign
 
-  val ExclamationMark = new KeyCode(jfxsi.KeyCode.EXCLAMATION_MARK)
+  case object ExclamationMark extends KeyCode(jfxsi.KeyCode.EXCLAMATION_MARK)
   @deprecated ("Use ExclamationMark; EXCLAMATION_MARK will be removed in a future release", "8.0.60-R10")
   val EXCLAMATION_MARK = ExclamationMark
 
-  val InvertedExclamationMark = new KeyCode(jfxsi.KeyCode.INVERTED_EXCLAMATION_MARK)
+  case object InvertedExclamationMark extends KeyCode(jfxsi.KeyCode.INVERTED_EXCLAMATION_MARK)
   @deprecated ("Use InvertedExclamationMark; INVERTED_EXCLAMATION_MARK will be removed in a future release", "8.0.60-R10")
   val INVERTED_EXCLAMATION_MARK = InvertedExclamationMark
 
-  val LeftParenthesis = new KeyCode(jfxsi.KeyCode.LEFT_PARENTHESIS)
+  case object LeftParenthesis extends KeyCode(jfxsi.KeyCode.LEFT_PARENTHESIS)
   @deprecated ("Use LeftParenthesis; LEFT_PARENTHESIS will be removed in a future release", "8.0.60-R10")
   val LEFT_PARENTHESIS = LeftParenthesis
 
-  val NumberSign = new KeyCode(jfxsi.KeyCode.NUMBER_SIGN)
+  case object NumberSign extends KeyCode(jfxsi.KeyCode.NUMBER_SIGN)
   @deprecated ("Use NumberSign; NUMBER_SIGN will be removed in a future release", "8.0.60-R10")
   val NUMBER_SIGN = NumberSign
 
-  val Plus = new KeyCode(jfxsi.KeyCode.PLUS)
+  case object Plus extends KeyCode(jfxsi.KeyCode.PLUS)
   @deprecated ("Use Plus; PLUS will be removed in a future release", "8.0.60-R10")
   val PLUS = Plus
 
-  val RightParenthesis = new KeyCode(jfxsi.KeyCode.RIGHT_PARENTHESIS)
+  case object RightParenthesis extends KeyCode(jfxsi.KeyCode.RIGHT_PARENTHESIS)
   @deprecated ("Use RightParenthesis; RIGHT_PARENTHESIS will be removed in a future release", "8.0.60-R10")
   val RIGHT_PARENTHESIS = RightParenthesis
 
-  val Underscore = new KeyCode(jfxsi.KeyCode.UNDERSCORE)
+  case object Underscore extends KeyCode(jfxsi.KeyCode.UNDERSCORE)
   @deprecated ("Use Underscore; UNDERSCORE will be removed in a future release", "8.0.60-R10")
   val UNDERSCORE = Underscore
 
-  val Windows = new KeyCode(jfxsi.KeyCode.WINDOWS)
+  case object Windows extends KeyCode(jfxsi.KeyCode.WINDOWS)
   @deprecated ("Use Windows; WINDOWS will be removed in a future release", "8.0.60-R10")
   val WINDOWS = Windows
 
-  val ContextMenu = new KeyCode(jfxsi.KeyCode.CONTEXT_MENU)
+  case object ContextMenu extends KeyCode(jfxsi.KeyCode.CONTEXT_MENU)
   @deprecated ("Use ContextMenu; CONTEXT_MENU will be removed in a future release", "8.0.60-R10")
   val CONTEXT_MENU = ContextMenu
 
-  val Final = new KeyCode(jfxsi.KeyCode.FINAL)
+  case object Final extends KeyCode(jfxsi.KeyCode.FINAL)
   @deprecated ("Use Final; FINAL will be removed in a future release", "8.0.60-R10")
   val FINAL = Final
 
-  val Convert = new KeyCode(jfxsi.KeyCode.CONVERT)
+  case object Convert extends KeyCode(jfxsi.KeyCode.CONVERT)
   @deprecated ("Use Convert; CONVERT will be removed in a future release", "8.0.60-R10")
   val CONVERT = Convert
 
-  val Nonconvert = new KeyCode(jfxsi.KeyCode.NONCONVERT)
+  case object Nonconvert extends KeyCode(jfxsi.KeyCode.NONCONVERT)
   @deprecated ("Use Nonconvert; NONCONVERT will be removed in a future release", "8.0.60-R10")
   val NONCONVERT = Nonconvert
 
-  val Accept = new KeyCode(jfxsi.KeyCode.ACCEPT)
+  case object Accept extends KeyCode(jfxsi.KeyCode.ACCEPT)
   @deprecated ("Use Accept; ACCEPT will be removed in a future release", "8.0.60-R10")
   val ACCEPT = Accept
 
-  val Modechange = new KeyCode(jfxsi.KeyCode.MODECHANGE)
+  case object Modechange extends KeyCode(jfxsi.KeyCode.MODECHANGE)
   @deprecated ("Use Modechange; MODECHANGE will be removed in a future release", "8.0.60-R10")
   val MODECHANGE = Modechange
 
-  val Kana = new KeyCode(jfxsi.KeyCode.KANA)
+  case object Kana extends KeyCode(jfxsi.KeyCode.KANA)
   @deprecated ("Use Kana; KANA will be removed in a future release", "8.0.60-R10")
   val KANA = Kana
 
-  val Kanji = new KeyCode(jfxsi.KeyCode.KANJI)
+  case object Kanji extends KeyCode(jfxsi.KeyCode.KANJI)
   @deprecated ("Use Kanji; KANJI will be removed in a future release", "8.0.60-R10")
   val KANJI = Kanji
 
-  val Alphanumeric = new KeyCode(jfxsi.KeyCode.ALPHANUMERIC)
+  case object Alphanumeric extends KeyCode(jfxsi.KeyCode.ALPHANUMERIC)
   @deprecated ("Use Alphanumeric; ALPHANUMERIC will be removed in a future release", "8.0.60-R10")
   val ALPHANUMERIC = Alphanumeric
 
-  val Katakana = new KeyCode(jfxsi.KeyCode.KATAKANA)
+  case object Katakana extends KeyCode(jfxsi.KeyCode.KATAKANA)
   @deprecated ("Use Katakana; KATAKANA will be removed in a future release", "8.0.60-R10")
   val KATAKANA = Katakana
 
-  val Hiragana = new KeyCode(jfxsi.KeyCode.HIRAGANA)
+  case object Hiragana extends KeyCode(jfxsi.KeyCode.HIRAGANA)
   @deprecated ("Use Hiragana; HIRAGANA will be removed in a future release", "8.0.60-R10")
   val HIRAGANA = Hiragana
 
-  val FullWidth = new KeyCode(jfxsi.KeyCode.FULL_WIDTH)
+  case object FullWidth extends KeyCode(jfxsi.KeyCode.FULL_WIDTH)
   @deprecated ("Use FullWidth; FULL_WIDTH will be removed in a future release", "8.0.60-R10")
   val FULL_WIDTH = FullWidth
 
-  val HalfWidth = new KeyCode(jfxsi.KeyCode.HALF_WIDTH)
+  case object HalfWidth extends KeyCode(jfxsi.KeyCode.HALF_WIDTH)
   @deprecated ("Use HalfWidth; HALF_WIDTH will be removed in a future release", "8.0.60-R10")
   val HALF_WIDTH = HalfWidth
 
-  val RomanCharacters = new KeyCode(jfxsi.KeyCode.ROMAN_CHARACTERS)
+  case object RomanCharacters extends KeyCode(jfxsi.KeyCode.ROMAN_CHARACTERS)
   @deprecated ("Use RomanCharacters; ROMAN_CHARACTERS will be removed in a future release", "8.0.60-R10")
   val ROMAN_CHARACTERS = RomanCharacters
 
-  val AllCandidates = new KeyCode(jfxsi.KeyCode.ALL_CANDIDATES)
+  case object AllCandidates extends KeyCode(jfxsi.KeyCode.ALL_CANDIDATES)
   @deprecated ("Use AllCandidates; ALL_CANDIDATES will be removed in a future release", "8.0.60-R10")
   val ALL_CANDIDATES = AllCandidates
 
-  val PreviousCandidate = new KeyCode(jfxsi.KeyCode.PREVIOUS_CANDIDATE)
+  case object PreviousCandidate extends KeyCode(jfxsi.KeyCode.PREVIOUS_CANDIDATE)
   @deprecated ("Use PreviousCandidate; PREVIOUS_CANDIDATE will be removed in a future release", "8.0.60-R10")
   val PREVIOUS_CANDIDATE = PreviousCandidate
 
-  val CodeInput = new KeyCode(jfxsi.KeyCode.CODE_INPUT)
+  case object CodeInput extends KeyCode(jfxsi.KeyCode.CODE_INPUT)
   @deprecated ("Use CodeInput; CODE_INPUT will be removed in a future release", "8.0.60-R10")
   val CODE_INPUT = CodeInput
 
-  val JapaneseKatakana = new KeyCode(jfxsi.KeyCode.JAPANESE_KATAKANA)
+  case object JapaneseKatakana extends KeyCode(jfxsi.KeyCode.JAPANESE_KATAKANA)
   @deprecated ("Use JapaneseKatakana; JAPANESE_KATAKANA will be removed in a future release", "8.0.60-R10")
   val JAPANESE_KATAKANA = JapaneseKatakana
 
-  val JapaneseHiragana = new KeyCode(jfxsi.KeyCode.JAPANESE_HIRAGANA)
+  case object JapaneseHiragana extends KeyCode(jfxsi.KeyCode.JAPANESE_HIRAGANA)
   @deprecated ("Use JapaneseHiragana; JAPANESE_HIRAGANA will be removed in a future release", "8.0.60-R10")
   val JAPANESE_HIRAGANA = JapaneseHiragana
 
-  val JapaneseRoman = new KeyCode(jfxsi.KeyCode.JAPANESE_ROMAN)
+  case object JapaneseRoman extends KeyCode(jfxsi.KeyCode.JAPANESE_ROMAN)
   @deprecated ("Use JapaneseRoman; JAPANESE_ROMAN will be removed in a future release", "8.0.60-R10")
   val JAPANESE_ROMAN = JapaneseRoman
 
-  val KanaLock = new KeyCode(jfxsi.KeyCode.KANA_LOCK)
+  case object KanaLock extends KeyCode(jfxsi.KeyCode.KANA_LOCK)
   @deprecated ("Use KanaLock; KANA_LOCK will be removed in a future release", "8.0.60-R10")
   val KANA_LOCK = KanaLock
 
-  val InputMethodOnOff = new KeyCode(jfxsi.KeyCode.INPUT_METHOD_ON_OFF)
+  case object InputMethodOnOff extends KeyCode(jfxsi.KeyCode.INPUT_METHOD_ON_OFF)
   @deprecated ("Use InputMethodOnOff; INPUT_METHOD_ON_OFF will be removed in a future release", "8.0.60-R10")
   val INPUT_METHOD_ON_OFF = InputMethodOnOff
 
-  val Cut = new KeyCode(jfxsi.KeyCode.CUT)
+  case object Cut extends KeyCode(jfxsi.KeyCode.CUT)
   @deprecated ("Use Cut; CUT will be removed in a future release", "8.0.60-R10")
   val CUT = Cut
 
-  val Copy = new KeyCode(jfxsi.KeyCode.COPY)
+  case object Copy extends KeyCode(jfxsi.KeyCode.COPY)
   @deprecated ("Use Copy; COPY will be removed in a future release", "8.0.60-R10")
   val COPY = Copy
 
-  val Paste = new KeyCode(jfxsi.KeyCode.PASTE)
+  case object Paste extends KeyCode(jfxsi.KeyCode.PASTE)
   @deprecated ("Use Paste; PASTE will be removed in a future release", "8.0.60-R10")
   val PASTE = Paste
 
-  val Undo = new KeyCode(jfxsi.KeyCode.UNDO)
+  case object Undo extends KeyCode(jfxsi.KeyCode.UNDO)
   @deprecated ("Use Undo; UNDO will be removed in a future release", "8.0.60-R10")
   val UNDO = Undo
 
-  val Again = new KeyCode(jfxsi.KeyCode.AGAIN)
+  case object Again extends KeyCode(jfxsi.KeyCode.AGAIN)
   @deprecated ("Use Again; AGAIN will be removed in a future release", "8.0.60-R10")
   val AGAIN = Again
 
-  val Find = new KeyCode(jfxsi.KeyCode.FIND)
+  case object Find extends KeyCode(jfxsi.KeyCode.FIND)
   @deprecated ("Use Find; FIND will be removed in a future release", "8.0.60-R10")
   val FIND = Find
 
-  val Props = new KeyCode(jfxsi.KeyCode.PROPS)
+  case object Props extends KeyCode(jfxsi.KeyCode.PROPS)
   @deprecated ("Use Props; PROPS will be removed in a future release", "8.0.60-R10")
   val PROPS = Props
 
-  val Stop = new KeyCode(jfxsi.KeyCode.STOP)
+  case object Stop extends KeyCode(jfxsi.KeyCode.STOP)
   @deprecated ("Use Stop; STOP will be removed in a future release", "8.0.60-R10")
   val STOP = Stop
 
-  val Compose = new KeyCode(jfxsi.KeyCode.COMPOSE)
+  case object Compose extends KeyCode(jfxsi.KeyCode.COMPOSE)
   @deprecated ("Use Compose; COMPOSE will be removed in a future release", "8.0.60-R10")
   val COMPOSE = Compose
 
-  val AltGraph = new KeyCode(jfxsi.KeyCode.ALT_GRAPH)
+  case object AltGraph extends KeyCode(jfxsi.KeyCode.ALT_GRAPH)
   @deprecated ("Use AltGraph; ALT_GRAPH will be removed in a future release", "8.0.60-R10")
   val ALT_GRAPH = AltGraph
 
-  val Begin = new KeyCode(jfxsi.KeyCode.BEGIN)
+  case object Begin extends KeyCode(jfxsi.KeyCode.BEGIN)
   @deprecated ("Use Begin; BEGIN will be removed in a future release", "8.0.60-R10")
   val BEGIN = Begin
 
-  val Undefined = new KeyCode(jfxsi.KeyCode.UNDEFINED)
+  case object Undefined extends KeyCode(jfxsi.KeyCode.UNDEFINED)
   @deprecated ("Use Undefined; UNDEFINED will be removed in a future release", "8.0.60-R10")
   val UNDEFINED = Undefined
 
-  val Softkey0 = new KeyCode(jfxsi.KeyCode.SOFTKEY_0)
+  case object Softkey0 extends KeyCode(jfxsi.KeyCode.SOFTKEY_0)
   @deprecated ("Use Softkey0; SOFTKEY_0 will be removed in a future release", "8.0.60-R10")
   val SOFTKEY_0 = Softkey0
 
-  val Softkey1 = new KeyCode(jfxsi.KeyCode.SOFTKEY_1)
+  case object Softkey1 extends KeyCode(jfxsi.KeyCode.SOFTKEY_1)
   @deprecated ("Use Softkey1; SOFTKEY_1 will be removed in a future release", "8.0.60-R10")
   val SOFTKEY_1 = Softkey1
 
-  val Softkey2 = new KeyCode(jfxsi.KeyCode.SOFTKEY_2)
+  case object Softkey2 extends KeyCode(jfxsi.KeyCode.SOFTKEY_2)
   @deprecated ("Use Softkey2; SOFTKEY_2 will be removed in a future release", "8.0.60-R10")
   val SOFTKEY_2 = Softkey2
 
-  val Softkey3 = new KeyCode(jfxsi.KeyCode.SOFTKEY_3)
+  case object Softkey3 extends KeyCode(jfxsi.KeyCode.SOFTKEY_3)
   @deprecated ("Use Softkey3; SOFTKEY_3 will be removed in a future release", "8.0.60-R10")
   val SOFTKEY_3 = Softkey3
 
-  val Softkey4 = new KeyCode(jfxsi.KeyCode.SOFTKEY_4)
+  case object Softkey4 extends KeyCode(jfxsi.KeyCode.SOFTKEY_4)
   @deprecated ("Use Softkey4; SOFTKEY_4 will be removed in a future release", "8.0.60-R10")
   val SOFTKEY_4 = Softkey4
 
-  val Softkey5 = new KeyCode(jfxsi.KeyCode.SOFTKEY_5)
+  case object Softkey5 extends KeyCode(jfxsi.KeyCode.SOFTKEY_5)
   @deprecated ("Use Softkey5; SOFTKEY_5 will be removed in a future release", "8.0.60-R10")
   val SOFTKEY_5 = Softkey5
 
-  val Softkey6 = new KeyCode(jfxsi.KeyCode.SOFTKEY_6)
+  case object Softkey6 extends KeyCode(jfxsi.KeyCode.SOFTKEY_6)
   @deprecated ("Use Softkey6; SOFTKEY_6 will be removed in a future release", "8.0.60-R10")
   val SOFTKEY_6 = Softkey6
 
-  val Softkey7 = new KeyCode(jfxsi.KeyCode.SOFTKEY_7)
+  case object Softkey7 extends KeyCode(jfxsi.KeyCode.SOFTKEY_7)
   @deprecated ("Use Softkey7; SOFTKEY_7 will be removed in a future release", "8.0.60-R10")
   val SOFTKEY_7 = Softkey7
 
-  val Softkey8 = new KeyCode(jfxsi.KeyCode.SOFTKEY_8)
+  case object Softkey8 extends KeyCode(jfxsi.KeyCode.SOFTKEY_8)
   @deprecated ("Use Softkey8; SOFTKEY_8 will be removed in a future release", "8.0.60-R10")
   val SOFTKEY_8 = Softkey8
 
-  val Softkey9 = new KeyCode(jfxsi.KeyCode.SOFTKEY_9)
+  case object Softkey9 extends KeyCode(jfxsi.KeyCode.SOFTKEY_9)
   @deprecated ("Use Softkey9; SOFTKEY_9 will be removed in a future release", "8.0.60-R10")
   val SOFTKEY_9 = Softkey9
 
-  val GameA = new KeyCode(jfxsi.KeyCode.GAME_A)
+  case object GameA extends KeyCode(jfxsi.KeyCode.GAME_A)
   @deprecated ("Use GameA; GAME_A will be removed in a future release", "8.0.60-R10")
   val GAME_A = GameA
 
-  val GameB = new KeyCode(jfxsi.KeyCode.GAME_B)
+  case object GameB extends KeyCode(jfxsi.KeyCode.GAME_B)
   @deprecated ("Use GameB; GAME_B will be removed in a future release", "8.0.60-R10")
   val GAME_B = GameB
 
-  val GameC = new KeyCode(jfxsi.KeyCode.GAME_C)
+  case object GameC extends KeyCode(jfxsi.KeyCode.GAME_C)
   @deprecated ("Use GameC; GAME_C will be removed in a future release", "8.0.60-R10")
   val GAME_C = GameC
 
-  val GameD = new KeyCode(jfxsi.KeyCode.GAME_D)
+  case object GameD extends KeyCode(jfxsi.KeyCode.GAME_D)
   @deprecated ("Use GameD; GAME_D will be removed in a future release", "8.0.60-R10")
   val GAME_D = GameD
 
-  val Star = new KeyCode(jfxsi.KeyCode.STAR)
+  case object Star extends KeyCode(jfxsi.KeyCode.STAR)
   @deprecated ("Use Star; STAR will be removed in a future release", "8.0.60-R10")
   val STAR = Star
 
-  val Pound = new KeyCode(jfxsi.KeyCode.POUND)
+  case object Pound extends KeyCode(jfxsi.KeyCode.POUND)
   @deprecated ("Use Pound; POUND will be removed in a future release", "8.0.60-R10")
   val POUND = Pound
 
-  val Power = new KeyCode(jfxsi.KeyCode.POWER)
+  case object Power extends KeyCode(jfxsi.KeyCode.POWER)
   @deprecated ("Use Power; POWER will be removed in a future release", "8.0.60-R10")
   val POWER = Power
 
-  val Info = new KeyCode(jfxsi.KeyCode.INFO)
+  case object Info extends KeyCode(jfxsi.KeyCode.INFO)
   @deprecated ("Use Info; INFO will be removed in a future release", "8.0.60-R10")
   val INFO = Info
 
-  val ColoredKey0 = new KeyCode(jfxsi.KeyCode.COLORED_KEY_0)
+  case object ColoredKey0 extends KeyCode(jfxsi.KeyCode.COLORED_KEY_0)
   @deprecated ("Use ColoredKey0; COLORED_KEY_0 will be removed in a future release", "8.0.60-R10")
   val COLORED_KEY_0 = ColoredKey0
 
-  val ColoredKey1 = new KeyCode(jfxsi.KeyCode.COLORED_KEY_1)
+  case object ColoredKey1 extends KeyCode(jfxsi.KeyCode.COLORED_KEY_1)
   @deprecated ("Use ColoredKey1; COLORED_KEY_1 will be removed in a future release", "8.0.60-R10")
   val COLORED_KEY_1 = ColoredKey1
 
-  val ColoredKey2 = new KeyCode(jfxsi.KeyCode.COLORED_KEY_2)
+  case object ColoredKey2 extends KeyCode(jfxsi.KeyCode.COLORED_KEY_2)
   @deprecated ("Use ColoredKey2; COLORED_KEY_2 will be removed in a future release", "8.0.60-R10")
   val COLORED_KEY_2 = ColoredKey2
 
-  val ColoredKey3 = new KeyCode(jfxsi.KeyCode.COLORED_KEY_3)
+  case object ColoredKey3 extends KeyCode(jfxsi.KeyCode.COLORED_KEY_3)
   @deprecated ("Use ColoredKey3; COLORED_KEY_3 will be removed in a future release", "8.0.60-R10")
   val COLORED_KEY_3 = ColoredKey3
 
-  val EjectToggle = new KeyCode(jfxsi.KeyCode.EJECT_TOGGLE)
+  case object EjectToggle extends KeyCode(jfxsi.KeyCode.EJECT_TOGGLE)
   @deprecated ("Use EjectToggle; EJECT_TOGGLE will be removed in a future release", "8.0.60-R10")
   val EJECT_TOGGLE = EjectToggle
 
-  val Play = new KeyCode(jfxsi.KeyCode.PLAY)
+  case object Play extends KeyCode(jfxsi.KeyCode.PLAY)
   @deprecated ("Use Play; PLAY will be removed in a future release", "8.0.60-R10")
   val PLAY = Play
 
-  val Record = new KeyCode(jfxsi.KeyCode.RECORD)
+  case object Record extends KeyCode(jfxsi.KeyCode.RECORD)
   @deprecated ("Use Record; RECORD will be removed in a future release", "8.0.60-R10")
   val RECORD = Record
 
-  val FastFwd = new KeyCode(jfxsi.KeyCode.FAST_FWD)
+  case object FastFwd extends KeyCode(jfxsi.KeyCode.FAST_FWD)
   @deprecated ("Use FastFwd; FAST_FWD will be removed in a future release", "8.0.60-R10")
   val FAST_FWD = FastFwd
 
-  val Rewind = new KeyCode(jfxsi.KeyCode.REWIND)
+  case object Rewind extends KeyCode(jfxsi.KeyCode.REWIND)
   @deprecated ("Use Rewind; REWIND will be removed in a future release", "8.0.60-R10")
   val REWIND = Rewind
 
-  val TrackPrev = new KeyCode(jfxsi.KeyCode.TRACK_PREV)
+  case object TrackPrev extends KeyCode(jfxsi.KeyCode.TRACK_PREV)
   @deprecated ("Use TrackPrev; TRACK_PREV will be removed in a future release", "8.0.60-R10")
   val TRACK_PREV = TrackPrev
 
-  val TrackNext = new KeyCode(jfxsi.KeyCode.TRACK_NEXT)
+  case object TrackNext extends KeyCode(jfxsi.KeyCode.TRACK_NEXT)
   @deprecated ("Use TrackNext; TRACK_NEXT will be removed in a future release", "8.0.60-R10")
   val TRACK_NEXT = TrackNext
 
-  val ChannelUp = new KeyCode(jfxsi.KeyCode.CHANNEL_UP)
+  case object ChannelUp extends KeyCode(jfxsi.KeyCode.CHANNEL_UP)
   @deprecated ("Use ChannelUp; CHANNEL_UP will be removed in a future release", "8.0.60-R10")
   val CHANNEL_UP = ChannelUp
 
-  val ChannelDown = new KeyCode(jfxsi.KeyCode.CHANNEL_DOWN)
+  case object ChannelDown extends KeyCode(jfxsi.KeyCode.CHANNEL_DOWN)
   @deprecated ("Use ChannelDown; CHANNEL_DOWN will be removed in a future release", "8.0.60-R10")
   val CHANNEL_DOWN = ChannelDown
 
-  val VolumeUp = new KeyCode(jfxsi.KeyCode.VOLUME_UP)
+  case object VolumeUp extends KeyCode(jfxsi.KeyCode.VOLUME_UP)
   @deprecated ("Use VolumeUp; VOLUME_UP will be removed in a future release", "8.0.60-R10")
   val VOLUME_UP = VolumeUp
 
-  val VolumeDown = new KeyCode(jfxsi.KeyCode.VOLUME_DOWN)
+  case object VolumeDown extends KeyCode(jfxsi.KeyCode.VOLUME_DOWN)
   @deprecated ("Use VolumeDown; VOLUME_DOWN will be removed in a future release", "8.0.60-R10")
   val VOLUME_DOWN = VolumeDown
 
-  val Mute = new KeyCode(jfxsi.KeyCode.MUTE)
+  case object Mute extends KeyCode(jfxsi.KeyCode.MUTE)
   @deprecated ("Use Mute; MUTE will be removed in a future release", "8.0.60-R10")
   val MUTE = Mute
 
-  val Command = new KeyCode(jfxsi.KeyCode.COMMAND)
+  case object Command extends KeyCode(jfxsi.KeyCode.COMMAND)
   @deprecated ("Use Command; COMMAND will be removed in a future release", "8.0.60-R10")
   val COMMAND = Command
 
-  val Shortcut = new KeyCode(jfxsi.KeyCode.SHORTCUT)
+  case object Shortcut extends KeyCode(jfxsi.KeyCode.SHORTCUT)
   @deprecated ("Use Shortcut; SHORTCUT will be removed in a future release", "8.0.60-R10")
   val SHORTCUT = Shortcut
 
@@ -812,7 +861,7 @@ object KeyCode extends SFXEnumDelegateCompanion[jfxsi.KeyCode, KeyCode] {
 }
 
 
-sealed case class KeyCode(override val delegate: jfxsi.KeyCode)
+sealed abstract class KeyCode(override val delegate: jfxsi.KeyCode)
   extends SFXEnumDelegate[jfxsi.KeyCode] {
 
   /** Gets name of this key code. */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,18 +27,18 @@
 package scalafx.collections
 
 import java.{util => ju}
+
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, scene => jfxs}
-
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
-
-import scala.collection.JavaConversions._
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.control._
 import scalafx.testutil.RunOnApplicationThread
+
+import scala.collection.JavaConverters._
 
 /**
  * Spec tests for Collection methods in package object.
@@ -46,16 +46,16 @@ import scalafx.testutil.RunOnApplicationThread
 class PackageCollectionFillerSpec extends FlatSpec with RunOnApplicationThread {
 
   private case class Analyzer[T](originalList: jfxc.ObservableList[T]) {
-    val originalElements = originalList.toList
-    val copy = originalList.toList
-    var addedElements: ju.List[_ <: T] = null
-    var removedElements: ju.List[_ <: T] = null
+    val originalElements: List[T] = originalList.toList
+    val copy: List[T] = originalList.toList
+    var addedElements: ju.List[_ <: T] = _
+    var removedElements: ju.List[_ <: T] = _
     var wasRemoved: Boolean = false
     var wasAdded = false
     var secondChange: Boolean = false
 
     originalList.addListener(new jfxc.ListChangeListener[T] {
-      def onChanged(change: jfxc.ListChangeListener.Change[_ <: T]) {
+      def onChanged(change: jfxc.ListChangeListener.Change[_ <: T]): Unit = {
         change.next
         wasRemoved = change.wasRemoved()
         wasAdded = change.wasAdded()
@@ -67,21 +67,21 @@ class PackageCollectionFillerSpec extends FlatSpec with RunOnApplicationThread {
 
   }
 
-  def emptyEvaluation(analyzer: Analyzer[_], list: jfxc.ObservableList[_]) {
+  def emptyEvaluation(analyzer: Analyzer[_], list: jfxc.ObservableList[_]): Unit = {
     list should be('empty)
     analyzer.wasAdded should be(false)
     analyzer.addedElements.size should be(0)
   }
 
-  def filledEvaluation(analyzer: Analyzer[_], list: jfxc.ObservableList[_], fillingIterable: Iterable[_], extraEval: (Analyzer[_], Iterable[_]) => Unit) {
+  def filledEvaluation(analyzer: Analyzer[_], list: jfxc.ObservableList[_], fillingIterable: Iterable[_], extraEval: (Analyzer[_], Iterable[_]) => Unit): Unit = {
     list.toList should be(fillingIterable)
     analyzer.wasAdded should be(true)
     extraEval(analyzer, fillingIterable)
   }
 
-  def finalEvaluation(analyzer: Analyzer[_]) {
+  def finalEvaluation(analyzer: Analyzer[_]): Unit = {
     analyzer.wasRemoved should be(true)
-    analyzer.removedElements.toIterable should be(analyzer.copy)
+    analyzer.removedElements.asScala should be(analyzer.copy)
     analyzer.secondChange should be(false)
   }
 
@@ -93,12 +93,12 @@ class PackageCollectionFillerSpec extends FlatSpec with RunOnApplicationThread {
     if (newContent == null || newContent.isEmpty) {
       this.emptyEvaluation(analyzer, originalList)
     } else {
-      this.filledEvaluation(analyzer, originalList, newContent, (an, li) => an.addedElements.toList should be(li.toList))
+      this.filledEvaluation(analyzer, originalList, newContent, (an, li) => an.addedElements.asScala should be(li.toList))
     }
     this.finalEvaluation(analyzer)
   }
 
-  private def executeAndTestChangesFX[T <: Object](originalList: jfxc.ObservableList[T], newContent: Iterable[SFXDelegate[T]]) {
+  private def executeAndTestChangesFX[T <: Object](originalList: jfxc.ObservableList[T], newContent: Iterable[SFXDelegate[T]]): Unit = {
     val analyzer = Analyzer(originalList)
 
     fillSFXCollection(originalList, newContent)
@@ -106,8 +106,8 @@ class PackageCollectionFillerSpec extends FlatSpec with RunOnApplicationThread {
     if (newContent == null || newContent.isEmpty) {
       this.emptyEvaluation(analyzer, originalList)
     } else {
-      this.filledEvaluation(analyzer, originalList, newContent.map(_.delegate), (an, li) => ())
-      analyzer.addedElements.toList should be(newContent.map(_.delegate).toList)
+      this.filledEvaluation(analyzer, originalList, newContent.map(_.delegate), (_, _) => ())
+      analyzer.addedElements.asScala should be(newContent.map(_.delegate).toList)
     }
     this.finalEvaluation(analyzer)
   }
@@ -145,7 +145,7 @@ class PackageCollectionFillerSpec extends FlatSpec with RunOnApplicationThread {
     val newValue = "1"
     fillCollectionWithOne(originalList, newValue)
 
-    this.filledEvaluation(analyzer, originalList, List(newValue), (an, li) => an.addedElements.size should be(1))
+    this.filledEvaluation(analyzer, originalList, List(newValue), (an, _) => an.addedElements.size should be(1))
     this.finalEvaluation(analyzer)
   }
 
@@ -178,7 +178,7 @@ class PackageCollectionFillerSpec extends FlatSpec with RunOnApplicationThread {
     val newValue = new Slider
     fillSFXCollectionWithOne(originalList, newValue)
 
-    this.filledEvaluation(analyzer, originalList, List(newValue.delegate), (an, li) => an.addedElements.size should be(1))
+    this.filledEvaluation(analyzer, originalList, List(newValue.delegate), (an, _) => an.addedElements.size should be(1))
     this.finalEvaluation(analyzer)
   }
 

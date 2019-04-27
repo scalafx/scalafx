@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,13 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa, event => jfxe, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.{BooleanProperty, DoubleProperty, IntegerProperty, ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
+import scalafx.beans.property._
 import scalafx.delegate._
 import scalafx.util.Duration
 import scalafx.util.Duration.sfxDuration2jfx
+
+import scala.language.implicitConversions
 
 /**
  * Defines Constants to be used for all [[scalafx.animation.Animation]]s object companions.
@@ -74,21 +74,21 @@ object Animation extends AnimationStatics {
     /**
      * The paused state.
      */
-    val Paused = new Status(jfxa.Animation.Status.PAUSED)
+    case object Paused extends Status(jfxa.Animation.Status.PAUSED)
     @deprecated("Use Paused; PAUSED will be removed in a future release", "2.2.60")
     val PAUSED = Paused
 
     /**
      * The running state.
      */
-    val Running = new Status(jfxa.Animation.Status.RUNNING)
+    case object Running extends Status(jfxa.Animation.Status.RUNNING)
     @deprecated("Use Running; RUNNING will be removed in a future release", "2.2.60")
     val RUNNING = Running
 
     /**
      * The stopped state.
      */
-    val Stopped = new Status(jfxa.Animation.Status.STOPPED)
+    case object Stopped extends Status(jfxa.Animation.Status.STOPPED)
     @deprecated("Use Stopped; STOPPED will be removed in a future release", "2.2.60")
     val STOPPED = Stopped
 
@@ -102,7 +102,7 @@ object Animation extends AnimationStatics {
    * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
    * @param delegate JavaFX $ST to be delegated.
    */
-  sealed case class Status(override val delegate: jfxa.Animation.Status)
+  sealed abstract class Status(override val delegate: jfxa.Animation.Status)
     extends SFXEnumDelegate[jfxa.Animation.Status]
 
 }

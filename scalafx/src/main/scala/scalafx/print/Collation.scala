@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 package scalafx.print
 
 import javafx.{print => jfxp}
-
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
@@ -39,12 +38,12 @@ object Collation
   /**
    * Each copy of a document is printed together.
    */
-  val Collated = new Collation(jfxp.Collation.COLLATED)
+  case object Collated extends Collation(jfxp.Collation.COLLATED)
 
   /**
    * The same numbered pages are consecutive in the output.
    */
-  val Uncollated = new Collation(jfxp.Collation.UNCOLLATED)
+  case object Uncollated extends Collation(jfxp.Collation.UNCOLLATED)
 
   protected override def unsortedValues: Array[Collation] = Array(Collated, Uncollated)
 
@@ -53,5 +52,5 @@ object Collation
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Collation.html JavaFX Collation]].
  */
-sealed case class Collation(override val delegate: jfxp.Collation)
+sealed abstract class Collation(override val delegate: jfxp.Collation)
   extends SFXEnumDelegate[jfxp.Collation] 

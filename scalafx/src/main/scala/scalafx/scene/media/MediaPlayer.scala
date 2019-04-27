@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,12 @@ package scalafx.scene.media
 
 import javafx.scene.{media => jfxsm}
 import javafx.{event => jfxe, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.{BooleanProperty, DoubleProperty, IntegerProperty, ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyIntegerProperty, ReadOnlyObjectProperty}
+import scalafx.beans.property._
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.util.Duration
+
+import scala.language.implicitConversions
 
 object MediaPlayer {
   implicit def sfxMediaPlayer2jfx(mp: MediaPlayer): jfxsm.MediaPlayer = if (mp != null) mp.delegate else null
@@ -47,35 +47,35 @@ object MediaPlayer {
      * This state indicates player is disposed, all resources are free and player SHOULD NOT be used again.
      * Media and MediaView objects associated with disposed player can be reused.
      */
-    val Disposed = new Status(jfxsm.MediaPlayer.Status.DISPOSED)
+    case object Disposed extends Status(jfxsm.MediaPlayer.Status.DISPOSED)
     @deprecated ("Use Disposed; DISPOSED will be removed in a future release", "8.0.60-R10")
     val DISPOSED = Disposed
 
     /**
      * State of the player when a critical error has occurred.
      */
-    val Halted = new Status(jfxsm.MediaPlayer.Status.HALTED)
+    case object Halted extends Status(jfxsm.MediaPlayer.Status.HALTED)
     @deprecated ("Use Halted; HALTED will be removed in a future release", "8.0.60-R10")
     val HALTED = Halted
 
     /**
      * State of the player when playback is paused.
      */
-    val Paused = new Status(jfxsm.MediaPlayer.Status.PAUSED)
+    case object Paused extends Status(jfxsm.MediaPlayer.Status.PAUSED)
     @deprecated ("Use Paused; PAUSED will be removed in a future release", "8.0.60-R10")
     val PAUSED = Paused
 
     /**
      * State of the player when it is currently playing.
      */
-    val Playing = new Status(jfxsm.MediaPlayer.Status.PLAYING)
+    case object Playing extends Status(jfxsm.MediaPlayer.Status.PLAYING)
     @deprecated ("Use Playing; PLAYING will be removed in a future release", "8.0.60-R10")
     val PLAYING = Playing
 
     /**
      * State of the player once it is prepared to play.
      */
-    val Ready = new Status(jfxsm.MediaPlayer.Status.READY)
+    case object Ready extends Status(jfxsm.MediaPlayer.Status.READY)
     @deprecated ("Use Ready; READY will be removed in a future release", "8.0.60-R10")
     val READY = Ready
 
@@ -83,21 +83,21 @@ object MediaPlayer {
      * State of the player when data coming into the buffer has slowed or stopped and the playback buffer does not
      * have enough data to continue playing.
      */
-    val Stalled = new Status(jfxsm.MediaPlayer.Status.STALLED)
+    case object Stalled extends Status(jfxsm.MediaPlayer.Status.STALLED)
     @deprecated ("Use Stalled; STALLED will be removed in a future release", "8.0.60-R10")
     val STALLED = Stalled
 
     /**
      * State of the player when playback has stopped.
      */
-    val Stopped = new Status(jfxsm.MediaPlayer.Status.STOPPED)
+    case object Stopped extends Status(jfxsm.MediaPlayer.Status.STOPPED)
     @deprecated ("Use Stopped; STOPPED will be removed in a future release", "8.0.60-R10")
     val STOPPED = Stopped
 
     /**
      * State of the player immediately after creation.
      */
-    val Unknown = new Status(jfxsm.MediaPlayer.Status.UNKNOWN)
+    case object Unknown extends Status(jfxsm.MediaPlayer.Status.UNKNOWN)
     @deprecated ("Use Unknown; UNKNOWN will be removed in a future release", "8.0.60-R10")
     val UNKNOWN = Unknown
 
@@ -108,7 +108,7 @@ object MediaPlayer {
   /**
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/MediaPlayer.Status.html]]
    */
-  sealed case class Status(override val delegate: jfxsm.MediaPlayer.Status)
+  sealed abstract class Status(override val delegate: jfxsm.MediaPlayer.Status)
     extends SFXEnumDelegate[jfxsm.MediaPlayer.Status]
 
   /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2018, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.event.EventType
+
+import scala.language.implicitConversions
 
 object ScrollEvent {
   implicit def sfxScrollEvent2jfx(se: ScrollEvent): jfxsi.ScrollEvent = if (se != null) se.delegate else null
@@ -42,14 +42,14 @@ object ScrollEvent {
     /**
      * The horizontal text-based scrolling amount is a number of characters to scroll.
      */
-    val Characters = new HorizontalTextScrollUnits(jfxsi.ScrollEvent.HorizontalTextScrollUnits.CHARACTERS)
+    case object Characters extends HorizontalTextScrollUnits(jfxsi.ScrollEvent.HorizontalTextScrollUnits.CHARACTERS)
     @deprecated ("Use Characters; CHARACTERS will be removed in a future release", "8.0.60-R10")
     val CHARACTERS = Characters
 
     /**
      * The horizontal text-based scrolling data is not available (not provided by the underlying platform).
      */
-    val None = new HorizontalTextScrollUnits(jfxsi.ScrollEvent.HorizontalTextScrollUnits.NONE)
+    case object None extends HorizontalTextScrollUnits(jfxsi.ScrollEvent.HorizontalTextScrollUnits.NONE)
     @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
     val NONE = None
 
@@ -60,7 +60,7 @@ object ScrollEvent {
   /**
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.HorizontalTextScrollUnits.html]]
    */
-  sealed case class HorizontalTextScrollUnits(override val delegate: jfxsi.ScrollEvent.HorizontalTextScrollUnits)
+  sealed abstract class HorizontalTextScrollUnits(override val delegate: jfxsi.ScrollEvent.HorizontalTextScrollUnits)
     extends SFXEnumDelegate[jfxsi.ScrollEvent.HorizontalTextScrollUnits]
 
   object VerticalTextScrollUnits
@@ -69,21 +69,21 @@ object ScrollEvent {
     /**
      * The vertical text-based scrolling amount is a number of lines to scroll.
      */
-    val Lines = new VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.LINES)
+    case object Lines extends VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.LINES)
     @deprecated ("Use Lines; LINES will be removed in a future release", "8.0.60-R10")
     val LINES = Lines
 
     /**
      * The vertical text-based scrolling amount is a number of pages to scroll.
      */
-    val Pages = new VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.PAGES)
+    case object Pages extends VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.PAGES)
     @deprecated ("Use Pages; PAGES will be removed in a future release", "8.0.60-R10")
     val PAGES = Pages
 
     /**
      * The vertical text-based scrolling data is not available (not provided by the underlying platform).
      */
-    val None = new VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.NONE)
+    case object None extends VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.NONE)
     @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
     val NONE = None
 
@@ -94,7 +94,7 @@ object ScrollEvent {
   /**
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.VerticalTextScrollUnits.html]]
    */
-  sealed case class VerticalTextScrollUnits(override val delegate: jfxsi.ScrollEvent.VerticalTextScrollUnits)
+  sealed abstract class VerticalTextScrollUnits(override val delegate: jfxsi.ScrollEvent.VerticalTextScrollUnits)
     extends SFXEnumDelegate[jfxsi.ScrollEvent.VerticalTextScrollUnits]
 
   /**

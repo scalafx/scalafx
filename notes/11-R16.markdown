@@ -1,0 +1,47 @@
+[ScalaFX][1] 11-R16 was tested against JavaFX 11. It contains changes to better support JavaFX 11.
+It includes features from recently released versions [8.0.181-R13][R13] and [10.0.2-R15][R15].
+
+End user visible features:
+* [Issue #185][185]: Correct implementation of "Enum" classes.
+* [Issue #288][288] Add wrappers for new Spinner properties in JavaFX 11
+
+Internal changes:
+* [Issue #287][287] Add support for building with Java 11
+* [Issue #289][289] Exclude JavaFX 11 OS dependent libraries when publishing binaries
+
+To use ScalaFX with Java 11 add following to your SBT:
+
+```scala
+// Add dependency on ScalaFX library
+libraryDependencies += "org.scalafx" %% "scalafx" % "11-R16"
+
+// Determine OS version of JavaFX binaries
+lazy val osName = System.getProperty("os.name") match {
+  case n if n.startsWith("Linux")   => "linux"
+  case n if n.startsWith("Mac")     => "mac"
+  case n if n.startsWith("Windows") => "win"
+  case _ => throw new Exception("Unknown platform!")
+}
+
+lazy val javaFXModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
+libraryDependencies ++= javaFXModules.map( m =>
+  "org.openjfx" % s"javafx-$m" % "11" classifier osName
+)
+```
+
+For downloads visit [ScalaFX on Sonatype][2] or [ScalaFX Releases][3] on GitHub. 
+Please report any problems using [ScalaFX Issue Tracker][4]. 
+Please use [ScalaFX Users Group][5] to post questions. 
+
+[1]: http://scalafx.org
+[2]: http://search.maven.org/#search&#124;ga&#124;1&#124;scalafx
+[3]: https://github.com/scalafx/scalafx/releases
+[4]: https://github.com/scalafx/scalafx/issues
+[5]: https://groups.google.com/forum/#!forum/scalafx-users
+
+[R13]: https://github.com/scalafx/scalafx/releases/tag/v8.0.181-R13
+[R15]: https://github.com/scalafx/scalafx/releases/tag/v10.0.2-R15
+[185]: https://github.com/scalafx/scalafx/issues/185
+[287]: https://github.com/scalafx/scalafx/issues/287
+[288]: https://github.com/scalafx/scalafx/issues/288
+[289]: https://github.com/scalafx/scalafx/issues/289
