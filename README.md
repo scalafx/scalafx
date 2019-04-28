@@ -38,15 +38,15 @@ with Java 10 use:
 libraryDependencies += "org.scalafx" %% "scalafx" % "10.0.2-R15"
 ```
 
-#### ScalaFX 11
-
+#### ScalaFX 12
+ScalaFX 12 is intended to support Java 11 and newer. 
 Staring with Java 11 JavaFX is no longer part of Java distribution.
 In addition to ScalaFX, JavaFX binaries needs to be explicitly added to a project.
 JavaFX binaries depend on operating system used.
 Add following to SBT configuration:
 ```scala
 // Add dependency on ScalaFX library
-libraryDependencies += "org.scalafx" %% "scalafx" % "11-R16"
+libraryDependencies += "org.scalafx" %% "scalafx" % "12.0.1-R17"
 
 // Determine OS version of JavaFX binaries
 lazy val osName = System.getProperty("os.name") match {
@@ -58,7 +58,7 @@ lazy val osName = System.getProperty("os.name") match {
 
 lazy val javaFXModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
 libraryDependencies ++= javaFXModules.map( m =>
-  "org.openjfx" % s"javafx-$m" % "11" classifier osName
+  "org.openjfx" % s"javafx-$m" % "12.0.1" classifier osName
 )
 ```
 
