@@ -71,10 +71,10 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
 
   private def nameIsPresent(name: String): Boolean = {
     try {
-      val scalaEnum = companion(name)
+      companion(name)
       true
     } catch {
-      case e: IllegalArgumentException => false
+      case _: IllegalArgumentException => false
     }
   }
 
@@ -112,7 +112,7 @@ abstract class SFXEnumDelegateSpec[E <: java.lang.Enum[E], S <: SFXEnumDelegate[
   }
 
   it should "generate all ScalaFX enums from JavaFX enums names" in {
-    val missingJavaEnumNames = javaEnumConstants.asScala.map(_.name).filterNot(nameIsPresent(_))
+    val missingJavaEnumNames = javaEnumConstants.asScala.map(_.name).filterNot(nameIsPresent)
 
     assert(missingJavaEnumNames.isEmpty, "Missing constants: " + missingJavaEnumNames.mkString(", "))
   }
