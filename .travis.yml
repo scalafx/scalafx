@@ -12,7 +12,8 @@ services:
 
 jdk:
   - openjdk11
-  
+  - openjdk12
+
 install: true
 
 script:
@@ -21,8 +22,8 @@ script:
 
 branches:
   only:
-  - SFX-11
-  - SFX-11-stable
+    - master
+    - stable
 
 notifications:
   email:
