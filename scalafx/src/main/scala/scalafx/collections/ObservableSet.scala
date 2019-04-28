@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,15 +27,16 @@
 package scalafx.collections
 
 import java.{util => ju}
-import javafx.{collections => jfxc}
 
-import scala.collection.JavaConversions._
-import scala.collection.generic.{GenericCompanion, GenericSetTemplate, MutableSetFactory}
-import scala.collection.mutable.{Builder, Set, SetLike}
-import scala.language.implicitConversions
+import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
+
+import scala.collection.JavaConverters._
+import scala.collection.generic.{GenericCompanion, GenericSetTemplate, MutableSetFactory}
+import scala.collection.mutable.{Builder, Set, SetLike}
+import scala.language.implicitConversions
 
 /**
  * Companion Object for `[[scalafx.collections.ObservableSet]]`.
@@ -105,7 +106,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
    */
   def apply[T](set: Set[T]): ObservableSet[T] =
     new ObservableSet[T] {
-      override val delegate = jfxc.FXCollections.observableSet(mutableSetAsJavaSet(set))
+      override val delegate = jfxc.FXCollections.observableSet(set.asJava)
     }
 
   // CREATION METHODS - END

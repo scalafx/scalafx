@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -413,7 +413,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   }
 
   /**
-   * Strokes a rectangle using the current stroke paint.
+    * Strokes an oval using the current stroke paint.
    */
   def strokeOval(x: Double, y: Double, w: Double, h: Double) {
     delegate.strokeOval(x, y, w, h)

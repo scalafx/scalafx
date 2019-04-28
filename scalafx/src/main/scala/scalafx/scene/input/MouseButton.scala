@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,22 +34,30 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object MouseButton extends SFXEnumDelegateCompanion[jfxsi.MouseButton, MouseButton] {
 
   case object None extends MouseButton(jfxsi.MouseButton.NONE)
-  @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
-  val NONE = None
+
+  @deprecated("Use None; NONE will be removed in a future release", "8.0.60-R10")
+  val NONE: MouseButton = None
 
   case object Primary extends MouseButton(jfxsi.MouseButton.PRIMARY)
-  @deprecated ("Use Primary; PRIMARY will be removed in a future release", "8.0.60-R10")
-  val PRIMARY = Primary
+
+  @deprecated("Use Primary; PRIMARY will be removed in a future release", "8.0.60-R10")
+  val PRIMARY: MouseButton = Primary
 
   case object Middle extends MouseButton(jfxsi.MouseButton.MIDDLE)
-  @deprecated ("Use Middle; MIDDLE will be removed in a future release", "8.0.60-R10")
-  val MIDDLE = Middle
+
+  @deprecated("Use Middle; MIDDLE will be removed in a future release", "8.0.60-R10")
+  val MIDDLE: MouseButton = Middle
 
   case object Secondary extends MouseButton(jfxsi.MouseButton.SECONDARY)
-  @deprecated ("Use Secondary; SECONDARY will be removed in a future release", "8.0.60-R10")
-  val SECONDARY = Secondary
 
-  protected override def unsortedValues: Array[MouseButton] = Array(None, Primary, Middle, Secondary)
+  @deprecated("Use Secondary; SECONDARY will be removed in a future release", "8.0.60-R10")
+  val SECONDARY: MouseButton = Secondary
+
+  case object Back extends MouseButton(jfxsi.MouseButton.BACK)
+
+  case object Forward extends MouseButton(jfxsi.MouseButton.FORWARD)
+
+  protected override def unsortedValues: Array[MouseButton] = Array(None, Primary, Middle, Secondary, Back, Forward)
 }
 
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,18 +28,19 @@
 package scalafx.collections
 
 import java.{util => ju}
+
 import javafx.collections.ObservableList
 import javafx.{collections => jfxc}
+import scalafx.beans.Observable
+import scalafx.delegate.SFXDelegate
+import scalafx.event.subscriptions.Subscription
 
-import scala.collection.JavaConversions._
+import scala.collection.JavaConverters._
 import scala.collection.generic.{CanBuildFrom, GenericCompanion, GenericTraversableTemplate, SeqFactory}
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.{GenTraversableOnce, TraversableOnce, mutable}
 import scala.language.implicitConversions
 import scala.reflect.runtime.universe._
-import scalafx.beans.Observable
-import scalafx.delegate.SFXDelegate
-import scalafx.event.subscriptions.Subscription
 
 /**
   * Companion Object for [[scalafx.collections.ObservableBuffer]].
@@ -61,7 +62,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
     * The standard `CanBuildFrom` instance for $OB objects.
     */
   implicit def canBuildFrom[T]: CanBuildFrom[Coll, T, ObservableBuffer[T]] = new GenericCanBuildFrom[T] {
-    override def apply() = newBuilder[T]
+    override def apply(): mutable.Builder[T, ObservableBuffer[T]] = newBuilder[T]
   }
 
   /**
@@ -129,7 +130,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
     * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ListChangeListener.Change.html#getTo() `ListChangeListener.Change.getTo()`]]
     * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ListChangeListener.Change.html#getPermutation(int) `ListChangeListener.Change.getPermutation(int)`]]
     */
-  case class Reorder[T](start: Int, end: Int, permutation: (Int => Int)) extends Change[T]
+  case class Reorder[T](start: Int, end: Int, permutation: Int => Int) extends Change[T]
 
   /**
     * Indicates an Update in an $OB.
@@ -154,7 +155,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
     * @return new $OB from items
     */
   def apply[T](items: Seq[T]): ObservableBuffer[T] =
-    new ObservableBuffer[T](jfxc.FXCollections.observableArrayList[T](items))
+    new ObservableBuffer[T](jfxc.FXCollections.observableArrayList[T](items.asJava))
 
   // CREATION METHODS - END
 
@@ -188,7 +189,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
     val lists: java.util.List[jfxc.ObservableList[T]] = new java.util.ArrayList[jfxc.ObservableList[T]]
     buffers.foreach(buf => lists.add(buf.delegate))
 
-    ObservableBuffer[T](jfxc.FXCollections.concat(lists: _*))
+    ObservableBuffer[T](jfxc.FXCollections.concat(lists.asScala: _*).asScala)
   }
 
   /**
@@ -260,7 +261,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
   /**
     * Produces an $OB from the added elements.
     */
-  def result() = this
+  def result(): ObservableBuffer[T] = this
 
   /**
     * Creates a new $OB containing both the elements of this $buf and the
@@ -269,7 +270,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param xs The traversable object.
     * @return A new $OB consisting of all the elements of this $buf and `xs`. $noCL
     */
-  override def ++(xs: GenTraversableOnce[T]) = {
+  override def ++(xs: GenTraversableOnce[T]): ObservableBuffer[T] = {
     val ob = new ObservableBuffer[T]
     ob.appendAll(this)
     ob.appendAll(xs.toList)
@@ -282,7 +283,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param elem the element to add.
     * @return $ownOB
     */
-  def +=(elem: T) = {
+  def +=(elem: T): ObservableBuffer.this.type = {
     delegate.add(elem)
     this
   }
@@ -295,8 +296,8 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param elems Other elements to add
     * @return $ownOB
     */
-  override def +=(elem1: T, elem2: T, elems: T*) =
-    this ++= (mutable.Buffer(elem1, elem2) ++= elems).toTraversable
+  override def +=(elem1: T, elem2: T, elems: T*): ObservableBuffer.this.type =
+    this ++= (mutable.Buffer(elem1, elem2) ++= elems)
 
   /**
     * Adds all elements produced by a TraversableOnce to this $OB. $WhyOverride
@@ -304,8 +305,8 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param xs traversable object.
     * @return $ownOB
     */
-  override def ++=(xs: TraversableOnce[T]) = {
-    delegate.addAll(xs.toIterable)
+  override def ++=(xs: TraversableOnce[T]): ObservableBuffer.this.type = {
+    delegate.addAll(xs.toIterable.asJavaCollection)
     this
   }
 
@@ -315,7 +316,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param elem Element to prepend
     * @return $ownOB
     */
-  def +=:(elem: T) = {
+  def +=:(elem: T): ObservableBuffer.this.type = {
     delegate.add(0, elem)
     this
   }
@@ -326,7 +327,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param elem Element to append
     * @return $ownOB
     */
-  def :+=(elem: T) = {
+  def :+=(elem: T): ObservableBuffer.this.type = {
     delegate.add(elem)
     this
   }
@@ -337,7 +338,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param elem Element to remove
     * @return A new $OB consisting of all the elements of this $buf except `elem`. $noCL
     */
-  override def -(elem: T) = {
+  override def -(elem: T): ObservableBuffer[T] = {
     val ob = new ObservableBuffer[T]
     this.filterNot(_ != elem).foreach(ob += _)
     ob
@@ -353,7 +354,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @return a new $OB consisting of all the elements of this $buf except `elem1`, `elem2` and
     *         those in `elems`. $noCL
     */
-  override def -(elem1: T, elem2: T, elems: T*) = {
+  override def -(elem1: T, elem2: T, elems: T*): ObservableBuffer[T] = {
     val xs = mutable.Buffer(elem1, elem2) ++= elems
     val ob = new ObservableBuffer[T]
     this.filterNot(xs.contains(_)).foreach(ob += _)
@@ -367,7 +368,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param xs The traversable object.
     * @return A new $OB with all the elements of this $buf except those in `xs`. $noCL
     */
-  override def --(xs: GenTraversableOnce[T]) = {
+  override def --(xs: GenTraversableOnce[T]): ObservableBuffer[T] = {
     val ob = new ObservableBuffer[T]
     val list = xs.toList
     this.filterNot(list.contains(_)).foreach(ob += _)
@@ -382,8 +383,8 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param elems Other elements to remove
     * @return $ownOB
     */
-  override def -=(elem1: T, elem2: T, elems: T*) = {
-    delegate.removeAll(mutable.Buffer(elem1, elem2) ++= elems)
+  override def -=(elem1: T, elem2: T, elems: T*): ObservableBuffer.this.type = {
+    delegate.removeAll((mutable.Buffer(elem1, elem2) ++= elems).asJava)
     this
   }
 
@@ -393,8 +394,8 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param xs the traversable object with elements to remove.
     * @return $ownOB
     */
-  override def --=(xs: TraversableOnce[T]) = {
-    delegate.removeAll(xs.toIterable)
+  override def --=(xs: TraversableOnce[T]): ObservableBuffer.this.type = {
+    delegate.removeAll(xs.toIterable.asJavaCollection)
     this
   }
 
@@ -404,12 +405,12 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param n index
     * @return Element at position `n`
     */
-  def apply(n: Int) = delegate.get(n)
+  def apply(n: Int): T = delegate.get(n)
 
   /**
     * Clears the $OB's contents. After this operation, the $buf is empty.
     */
-  def clear() {
+  def clear(): Unit = {
     delegate.clear()
   }
 
@@ -419,25 +420,25 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param n the index where new elements are inserted.
     * @param elems  the traversable collection containing the elements to insert.
     */
-  def insertAll(n: Int, elems: Traversable[T]) {
-    delegate.addAll(n, elems.toIterable)
+  def insertAll(n: Int, elems: Traversable[T]): Unit = {
+    delegate.addAll(n, elems.toIterable.asJavaCollection)
   }
 
   /**
     * Creates a new [[http://www.scala-lang.org/api/current/scala/collection/Iterator.html `Iterator`]].
     */
-  def iterator = new Iterator[T] {
-    val it = delegate.iterator
+  def iterator: Iterator[T] = new Iterator[T] {
+    val it: ju.Iterator[T] = delegate.iterator
 
-    def hasNext = it.hasNext
+    def hasNext: Boolean = it.hasNext
 
-    def next() = it.next()
+    def next(): T = it.next()
   }
 
   /**
     * Length of this $OB.
     */
-  def length = delegate.size
+  def length: Int = delegate.size
 
   /**
     * Removes the element at a given index from this $OB.
@@ -445,7 +446,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param n index the index of the element to be removed
     * @return Removed element
     */
-  def remove(n: Int) = delegate.remove(n)
+  def remove(n: Int): T = delegate.remove(n)
 
   /**
     * Removes a number of elements from a given index position. $WhyOverride
@@ -493,7 +494,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param elems the traversable collection containing elements to be retained in this list
     */
   def retainAll(elems: T*) {
-    delegate.retainAll(elems)
+    delegate.retainAll(elems.asJava)
   }
 
   /**
@@ -504,7 +505,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     * @param elems the traversable collection containing elements to be retained in this list
     */
   def retainAll(elems: Iterable[T]) {
-    delegate.retainAll(elems)
+    delegate.retainAll(elems.asJavaCollection)
   }
 
   /**
@@ -527,7 +528,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
   def sort()(implicit typeTag: WeakTypeTag[T]) {
     if (typeTag.tpe <:< typeOf[Comparable[_]]) {
       jfxc.FXCollections.sort(delegate, new ju.Comparator[T] {
-        def compare(p1: T, p2: T) = p1.asInstanceOf[Comparable[T]].compareTo(p2)
+        def compare(p1: T, p2: T): Int = p1.asInstanceOf[Comparable[T]].compareTo(p2)
       })
     } else {
       throw new IllegalStateException("Type of this Observable List does not implement " +
@@ -543,7 +544,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     */
   def sort(lt: (T, T) => Boolean) {
     jfxc.FXCollections.sort(delegate, new ju.Comparator[T] {
-      def compare(p1: T, p2: T) = if (lt(p1, p2)) -1 else if (lt(p2, p1)) 1 else 0
+      def compare(p1: T, p2: T): Int = if (lt(p1, p2)) -1 else if (lt(p2, p1)) 1 else 0
     })
   }
 
@@ -570,10 +571,10 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
             changes += Update(c.getFrom, c.getTo)
           } else {
             if (c.wasRemoved()) {
-              changes += Remove(c.getFrom, c.getRemoved)
+              changes += Remove(c.getFrom, c.getRemoved.asScala)
             }
             if (c.wasAdded()) {
-              changes += Add(c.getFrom, c.getAddedSubList)
+              changes += Add(c.getFrom, c.getAddedSubList.asScala)
             }
           }
         }

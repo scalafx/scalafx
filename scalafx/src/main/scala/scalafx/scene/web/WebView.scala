@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,113 +28,120 @@ package scalafx.scene.web
 
 import javafx.scene.{text => jfxst, web => jfxsw}
 import javafx.{css => jfxc, event => jfxe, geometry => jfxg, util => jfxu}
-
-import scala.collection.JavaConversions._
-import scala.collection.mutable.Buffer
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Parent
 import scalafx.scene.text.FontSmoothingType
 
+import scala.collection.JavaConverters._
+import scala.collection.mutable
+import scala.language.implicitConversions
+
 /**
- * Companion object for [[scalafx.scene.web.WebView]]
- */
+  * Companion object for [[scalafx.scene.web.WebView]]
+  */
 object WebView {
 
   /**
-   * Converts a ScalaFX WebView to its JavaFX counterpart.
-   *
+    * Converts a ScalaFX WebView to its JavaFX counterpart.
+    *
     * @param wv ScalaFX WebView
-   * @return JavaFX WebView
-   */
+    * @return JavaFX WebView
+    */
   implicit def sfxWebView2jfx(wv: WebView): jfxsw.WebView = if (wv != null) wv.delegate else null
 
   /**
-   * @return The CssMetaData associated with this class, which may include the CssMetaData of its
-   *         super classes.
-   * @since 8.0
-   */
-  def classCssMetaData: Buffer[jfxc.CssMetaData[_ <: jfxc.Styleable, _]] =
-    jfxsw.WebView.getClassCssMetaData
+    * @return The CssMetaData associated with this class, which may include the CssMetaData of its
+    *         super classes.
+    * @since 8.0
+    */
+  def classCssMetaData: mutable.Buffer[jfxc.CssMetaData[_ <: jfxc.Styleable, _]] =
+    jfxsw.WebView.getClassCssMetaData.asScala
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebView.html JavaFX WebView]].
- *
- * @constructor Creates a new WebView from its JavaFX counterpart.
- * @param delegate A JavaFX WebView. Its default value is a new instance.
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebView.html JavaFX WebView]].
+  *
+  * @constructor Creates a new WebView from its JavaFX counterpart.
+  * @param delegate A JavaFX WebView. Its default value is a new instance.
+  */
 class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
   extends Parent(delegate)
-  with SFXDelegate[jfxsw.WebView] {
+    with SFXDelegate[jfxsw.WebView] {
 
   /**
-   * Scale factor applied to font.
-   */
+    * Scale factor applied to font.
+    */
   def fontScale: DoubleProperty = delegate.fontScaleProperty
-  def fontScale_=(v: Double) {
+
+  def fontScale_=(v: Double): Unit = {
     fontScale() = v
   }
 
   /**
-   * Height of this WebView.
-   */
+    * Height of this WebView.
+    */
   def height: ReadOnlyDoubleProperty = delegate.heightProperty
 
   /**
-   * Maximum height property.
-   */
+    * Maximum height property.
+    */
   def maxHeight: DoubleProperty = delegate.maxHeightProperty
-  def maxHeight_=(v: Double) {
+
+  def maxHeight_=(v: Double): Unit = {
     maxHeight() = v
   }
 
   /**
-   * Maximum width property.
-   */
+    * Maximum width property.
+    */
   def maxWidth: DoubleProperty = delegate.maxWidthProperty
-  def maxWidth_=(v: Double) {
+
+  def maxWidth_=(v: Double): Unit = {
     maxWidth() = v
   }
 
   /**
-   * Minimum height property.
-   */
+    * Minimum height property.
+    */
   def minHeight: DoubleProperty = delegate.minHeightProperty
-  def minHeight_=(v: Double) {
+
+  def minHeight_=(v: Double): Unit = {
     minHeight() = v
   }
 
   /**
-   * Minimum width property.
-   */
+    * Minimum width property.
+    */
   def minWidth: DoubleProperty = delegate.minWidthProperty
-  def minWidth_=(v: Double) {
+
+  def minWidth_=(v: Double): Unit = {
     minWidth() = v
   }
 
   /**
-   * Preferred height property.
-   */
+    * Preferred height property.
+    */
   def prefHeight: DoubleProperty = delegate.prefHeightProperty
-  def prefHeight_=(v: Double) {
+
+  def prefHeight_=(v: Double): Unit = {
     prefHeight() = v
   }
 
   /**
-   * Preferred width property.
-   */
+    * Preferred width property.
+    */
   def prefWidth: DoubleProperty = delegate.prefWidthProperty
-  def prefWidth_=(v: Double) {
+
+  def prefWidth_=(v: Double): Unit = {
     prefWidth() = v
   }
 
   /**
-   * Width of this WebView.
-   */
+    * Width of this WebView.
+    */
   def width: ReadOnlyDoubleProperty = delegate.widthProperty
 
   // Indirect WebEngine methods / properties.
@@ -142,93 +149,105 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
   def engine: WebEngine = delegate.getEngine
 
   /**
-   * JavaScript confirm handler property.
-   */
-  def confirmHandler = delegate.engine.confirmHandler
-  def confirmHandler_=(f: String => Boolean) {
+    * JavaScript confirm handler property.
+    */
+  def confirmHandler: ObjectProperty[jfxu.Callback[String, java.lang.Boolean]] = delegate.engine.confirmHandler
+
+  def confirmHandler_=(f: String => Boolean): Unit = {
     delegate.engine.confirmHandler = f
   }
 
   /**
-   * JavaScript popup handler property.
-   */
-  def createPopupHandler = delegate.engine.createPopupHandler
-  def createPopupHandler_=(f: jfxsw.PopupFeatures => WebEngine) {
+    * JavaScript popup handler property.
+    */
+  def createPopupHandler: ObjectProperty[jfxu.Callback[jfxsw.PopupFeatures, jfxsw.WebEngine]] = delegate.engine.createPopupHandler
+
+  def createPopupHandler_=(f: jfxsw.PopupFeatures => WebEngine): Unit = {
     delegate.engine.createPopupHandler = f
   }
 
   /**
-   * URL of the current Web page.
-   */
+    * URL of the current Web page.
+    */
   def location: ReadOnlyStringProperty = delegate.engine.location
 
   /**
-   * JavaScript alert handler property.
-   */
-  def onAlert = delegate.engine.onAlert
-  def onAlert_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]) {
+    * JavaScript alert handler property.
+    */
+  def onAlert: ObjectProperty[jfxe.EventHandler[jfxsw.WebEvent[String]]] = delegate.engine.onAlert
+
+  def onAlert_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]): Unit = {
     delegate.engine.onAlert = v
   }
 
   /**
-   * JavaScript window resize handler property.
-   */
-  def onResized = delegate.engine.onResized
-  def onResized_=(v: jfxe.EventHandler[jfxsw.WebEvent[jfxg.Rectangle2D]]) {
+    * JavaScript window resize handler property.
+    */
+  def onResized: ObjectProperty[jfxe.EventHandler[jfxsw.WebEvent[jfxg.Rectangle2D]]] = delegate.engine.onResized
+
+  def onResized_=(v: jfxe.EventHandler[jfxsw.WebEvent[jfxg.Rectangle2D]]): Unit = {
     delegate.engine.onResized = v
   }
 
   /**
-   * JavaScript status handler property.
-   */
-  def onStatusChanged = delegate.engine.onStatusChanged
-  def onStatusChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]) {
+    * JavaScript status handler property.
+    */
+  def onStatusChanged: ObjectProperty[jfxe.EventHandler[jfxsw.WebEvent[String]]] = delegate.engine.onStatusChanged
+
+  def onStatusChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]): Unit = {
     delegate.engine.onStatusChanged = v
   }
 
   /**
-   * JavaScript window visibility handler property.
-   */
-  def onVisibilityChanged = delegate.engine.onVisibilityChanged
-  def onVisibilityChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]]) {
+    * JavaScript window visibility handler property.
+    */
+  def onVisibilityChanged: ObjectProperty[jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]]] = delegate.engine.onVisibilityChanged
+
+  def onVisibilityChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]]): Unit = {
     delegate.engine.onVisibilityChanged = v
   }
 
   /**
-   * JavaScript prompt handler property.
-   */
-  def promptHandler = delegate.engine.promptHandler
-  def promptHandler_=(f: PromptData => String) {
+    * JavaScript prompt handler property.
+    */
+  def promptHandler: ObjectProperty[jfxu.Callback[jfxsw.PromptData, String]] = delegate.engine.promptHandler
+
+  def promptHandler_=(f: PromptData => String): Unit = {
     delegate.engine.promptHandler = f
   }
 
   /**
-   * Specifies whether context menu is enabled.
-   * @since 2.2
-   */
+    * Specifies whether context menu is enabled.
+    *
+    * @since 2.2
+    */
   def contextMenuEnabled: BooleanProperty = delegate.contextMenuEnabledProperty
-  def contextMenuEnabled_=(v: Boolean) {
+
+  def contextMenuEnabled_=(v: Boolean): Unit = {
     contextMenuEnabled() = v
   }
 
   /**
-   * Specifies a requested font smoothing type : gray or LCD.
-   * The width of the bounding box is defined by the widest row. Note: LCD mode doesn't apply in numerous cases,
-   * such as various compositing modes, where effects are applied and very large glyphs.
-   * @since 2.2
-   */
+    * Specifies a requested font smoothing type : gray or LCD.
+    * The width of the bounding box is defined by the widest row. Note: LCD mode doesn't apply in numerous cases,
+    * such as various compositing modes, where effects are applied and very large glyphs.
+    *
+    * @since 2.2
+    */
   def fontSmoothingType: ObjectProperty[jfxst.FontSmoothingType] = delegate.fontSmoothingTypeProperty
-  def fontSmoothingType_=(v: FontSmoothingType) {
+
+  def fontSmoothingType_=(v: FontSmoothingType): Unit = {
     ObjectProperty.fillProperty[jfxst.FontSmoothingType](fontSmoothingType, v)
   }
 
   /**
-   * Zoom property object.
-   *
-   * @since 8.0
-   */
+    * Zoom property object.
+    *
+    * @since 8.0
+    */
   def zoom: DoubleProperty = delegate.zoomProperty
-  def zoom_=(v: Double) {
+
+  def zoom_=(v: Double): Unit = {
     zoom() = v
   }
 

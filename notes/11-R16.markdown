@@ -1,9 +1,13 @@
 [ScalaFX][1] 11-R16 was tested against JavaFX 11. It contains changes to better support JavaFX 11.
 It includes features from recently released versions [8.0.181-R13][R13] and [10.0.2-R15][R15].
 
-Enhancement added since release R15:
+End user visible features:
 * [Issue #185][185]: Correct implementation of "Enum" classes.
+* [Issue #288][288] Add wrappers for new Spinner properties in JavaFX 11
 
+Internal changes:
+* [Issue #287][287] Add support for building with Java 11
+* [Issue #289][289] Exclude JavaFX 11 OS dependent libraries when publishing binaries
 
 To use ScalaFX with Java 11 add following to your SBT:
 
@@ -38,3 +42,6 @@ Please use [ScalaFX Users Group][5] to post questions.
 [R13]: https://github.com/scalafx/scalafx/releases/tag/v8.0.181-R13
 [R15]: https://github.com/scalafx/scalafx/releases/tag/v10.0.2-R15
 [185]: https://github.com/scalafx/scalafx/issues/185
+[287]: https://github.com/scalafx/scalafx/issues/287
+[288]: https://github.com/scalafx/scalafx/issues/288
+[289]: https://github.com/scalafx/scalafx/issues/289

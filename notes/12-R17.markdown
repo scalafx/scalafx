@@ -1,0 +1,31 @@
+[ScalaFX][1] 11-R16 was tested against JavaFX 11. It contains changes to better support JavaFX 11.
+It includes features from recently released versions [8.0.192-R14][8.0.192-R14].
+
+
+* [PR #293][293] Add all missing properties for Bounds (thanks to [Romain DEP.](https://github.com/rom1dep))
+   - added getCenterX
+   - added getCenterY
+   - added getCenterZ
+   
+* [Issue #291][291]: Remove use of JavaConversions in the code   
+* [Issue #303][303]: Support JavaFX 12
+* [Issue #302][302]: Support new MouseButton constants added in JavaFX 12 #302
+
+
+For downloads visit [ScalaFX on Sonatype][2] or [ScalaFX Releases][3] on GitHub. 
+Please report any problems using [ScalaFX Issue Tracker][4]. 
+Please use [ScalaFX Users Group][5] to post questions. 
+
+[1]: http://scalafx.org
+[2]: http://search.maven.org/#search&#124;ga&#124;1&#124;scalafx
+[3]: https://github.com/scalafx/scalafx/releases
+[4]: https://github.com/scalafx/scalafx/issues
+[5]: https://groups.google.com/forum/#!forum/scalafx-users
+
+[8.0.192-R14]: https://github.com/scalafx/scalafx/releases/tag/v8.0.192-R14
+
+[293]: https://github.com/scalafx/scalafx/pull/293
+
+[291]: https://github.com/scalafx/scalafx/issues/291
+[302]: https://github.com/scalafx/scalafx/issues/302
+[303]: https://github.com/scalafx/scalafx/issues/303

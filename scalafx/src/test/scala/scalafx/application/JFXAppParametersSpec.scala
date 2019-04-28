@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,15 +26,15 @@
  */
 package scalafx.application
 
+import java.util
+
 import javafx.{application => jfxa}
-
-import com.sun.javafx.{application => csjfxa}
 import org.scalatest.Matchers._
-
-import scala.collection.JavaConversions._
 import scalafx.Includes.jfxParameters2sfx
 import scalafx.application.JFXApp.Parameters.sfxParameters2jfx
 import scalafx.testutil.SimpleSFXDelegateSpec
+
+import scala.collection.JavaConverters._
 
 /**
  * JFXApp.Parameters Spec tests.
@@ -46,10 +46,12 @@ class JFXAppParametersSpec
 
   override protected def getScalaClassInstance = new JFXApp.ParametersImpl(Seq.empty[String])
 
-  override protected def getJavaClassInstance = new jfxa.Application.Parameters {
-    def getRaw = Seq.empty[String]
-    def getNamed = Map.empty[String, String]
-    def getUnnamed = Seq.empty[String]
+  override protected def getJavaClassInstance: jfxa.Application.Parameters = new jfxa.Application.Parameters {
+    def getRaw: util.List[String] = Seq.empty[String].asJava
+
+    def getNamed: util.Map[String, String] = Map.empty[String, String].asJava
+
+    def getUnnamed: util.List[String] = Seq.empty[String].asJava
   }
 
   private def getParameters(args: Seq[String]): JFXApp.Parameters = JFXApp.Parameters(args)
@@ -62,8 +64,8 @@ class JFXAppParametersSpec
     val args = Array("arg1", "arg2")
     val parameters = getParameters(args)
 
-    parameters.raw should contain theSameElementsInOrderAs (args.toSeq)
-    parameters.unnamed should contain theSameElementsInOrderAs (args.toSeq)
+    parameters.raw should contain theSameElementsInOrderAs args.toSeq
+    parameters.unnamed should contain theSameElementsInOrderAs args.toSeq
     parameters.named shouldBe empty
   }
 
@@ -71,18 +73,18 @@ class JFXAppParametersSpec
     val args = Array("--arg1=value1", "--arg2=value2")
     val parameters = getParameters(args)
 
-    parameters.raw should contain theSameElementsInOrderAs (args.toSeq)
+    parameters.raw should contain theSameElementsInOrderAs args.toSeq
     parameters.unnamed shouldBe empty
-    parameters.named should contain theSameElementsAs (Map("arg1" -> "value1", "arg2" -> "value2"))
+    parameters.named should contain theSameElementsAs Map("arg1" -> "value1", "arg2" -> "value2")
   }
 
   it should "allows mix raw and named arguments" in {
     val args = Array("arg1", "--arg2=value2", "-arg3=value3")
     val parameters = getParameters(args)
 
-    parameters.raw should contain theSameElementsInOrderAs (args.toSeq)
-    parameters.unnamed should contain theSameElementsInOrderAs (Seq("arg1", "-arg3=value3"))
-    parameters.named should contain theSameElementsAs (Map("arg2" -> "value2"))
+    parameters.raw should contain theSameElementsInOrderAs args.toSeq
+    parameters.unnamed should contain theSameElementsInOrderAs Seq("arg1", "-arg3=value3")
+    parameters.named should contain theSameElementsAs Map("arg2" -> "value2")
   }
 
 }

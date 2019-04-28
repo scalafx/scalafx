@@ -4,14 +4,14 @@ language: scala
 scala:
 - 2.10.7
 - 2.11.12
-- 2.12.7
+- 2.12.8
 
-before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+dist: xenial
+services:
+  - xvfb
 
 jdk:
-- oraclejdk11
+  - openjdk11
   
 install: true
 
@@ -28,8 +28,3 @@ notifications:
   email:
     - scalafx-build@googlegroups.com
 
-## Work around for default old version of Java provided by Travis CI
-#addons:
-#  apt:
-#    packages:
-#      - oracle-java10-installer

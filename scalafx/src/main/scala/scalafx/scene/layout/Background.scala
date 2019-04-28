@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,22 +27,23 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-
-import scala.collection.JavaConversions._
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Insets
+
+import scala.collection.JavaConverters._
+import scala.language.implicitConversions
 
 object Background {
   implicit def sfxBackground2jfx(v: Background): jfxsl.Background = if (v != null) v.delegate else null
 
   /** An empty Background, useful to use instead of null. */
-  val Empty = jfxsl.Background.EMPTY
+  val Empty: Background = jfxsl.Background.EMPTY
   @deprecated ("Use Empty; EMPTY will be removed in a future release", "8.0.60-R10")
-  val EMPTY = Empty
+  val EMPTY: Background = Empty
 
-  def classCssMetaData: Seq[javafx.css.CssMetaData[_ <: javafx.css.Styleable, _]] = jfxsl.Background.getClassCssMetaData
+  def classCssMetaData: Seq[javafx.css.CssMetaData[_ <: javafx.css.Styleable, _]] =
+    jfxsl.Background.getClassCssMetaData.asScala
 }
 
 class Background(override val delegate: jfxsl.Background)
@@ -60,16 +61,16 @@ class Background(override val delegate: jfxsl.Background)
 
   /** Create a new Background supply two Lists, one for background fills and one for background images. */
   def this(fills: Seq[BackgroundFill], images: Seq[BackgroundImage]) =
-    this(new jfxsl.Background(fills.map(_.delegate), images.map(_.delegate)))
+    this(new jfxsl.Background(fills.map(_.delegate).asJava, images.map(_.delegate).asJava))
 
   /**
    * * The list of BackgroundFills which together define the filled portion of this Background.
    */
-  def fills: Seq[jfxsl.BackgroundFill] = delegate.getFills
+  def fills: Seq[jfxsl.BackgroundFill] = delegate.getFills.asScala
   /**
    * The list of BackgroundImages which together define the image portion of this Background.
    */
-  def images: Seq[jfxsl.BackgroundImage] = delegate.getImages
+  def images: Seq[jfxsl.BackgroundImage] = delegate.getImages.asScala
 
   /**
    * The outsets of this Background.

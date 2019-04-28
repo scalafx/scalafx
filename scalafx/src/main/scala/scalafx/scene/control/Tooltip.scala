@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,8 +37,8 @@ import scalafx.scene.text.Font.sfxFont2jfx
 import scalafx.scene.text.{Font, TextAlignment}
 import scalafx.util.Duration
 
-import scala.collection.JavaConversions._
-import scala.collection.mutable.Buffer
+import scala.collection.JavaConverters._
+import scala.collection.mutable
 import scala.language.implicitConversions
 
 
@@ -61,7 +61,7 @@ object Tooltip {
    *
    * @param string Tooltip's text.
    */
-  def apply(string: String) = new Tooltip {
+  def apply(string: String): Tooltip = new Tooltip {
     text = string
   }
 
@@ -76,7 +76,7 @@ object Tooltip {
    * Just to satisfy Spec tests.
    */
   @deprecated("Use Tooltip.install(Node, Tooltip)", "2.1")
-  def install(node: jfxs.Node, tooltip: jfxsc.Tooltip) {
+  def install(node: jfxs.Node, tooltip: jfxsc.Tooltip): Unit = {
     jfxsc.Tooltip.install(node, tooltip)
   }
 
@@ -84,7 +84,7 @@ object Tooltip {
    * Associates the given Tooltip with a given Node. The tooltip can then behave similar to when it is set on any Control.
    * A single tooltip can be associated with multiple nodes.
    */
-  def install(node: Node, tooltip: Tooltip) {
+  def install(node: Node, tooltip: Tooltip): Unit = {
     jfxsc.Tooltip.install(node, tooltip)
   }
 
@@ -92,14 +92,14 @@ object Tooltip {
    * Just to satisfy Spec tests.
    */
   @deprecated("Use Tooltip.uninstall(Node, Tooltip)", "2.1")
-  def uninstall(node: jfxs.Node, tooltip: jfxsc.Tooltip) {
+  def uninstall(node: jfxs.Node, tooltip: jfxsc.Tooltip): Unit = {
     jfxsc.Tooltip.uninstall(node, tooltip)
   }
 
   /**
    * Removes the association of the given Tooltip on a specified Node. Hence hovering on the node will no longer result in showing of the tooltip.
    */
-  def uninstall(node: Node, tooltip: Tooltip) {
+  def uninstall(node: Node, tooltip: Tooltip): Unit = {
     jfxsc.Tooltip.uninstall(node, tooltip)
   }
 
@@ -109,8 +109,8 @@ object Tooltip {
    *
    * @since 8.0
    */
-  def classCssMetaData: Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] =
-    jfxsc.Tooltip.getClassCssMetaData()
+  def classCssMetaData: mutable.Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] =
+    jfxsc.Tooltip.getClassCssMetaData.asScala
 
 }
 
@@ -140,7 +140,8 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip)
    * Specifies the positioning of the graphic relative to the text.
    */
   def contentDisplay: ObjectProperty[jfxsc.ContentDisplay] = delegate.contentDisplayProperty
-  def contentDisplay_=(v: ContentDisplay) {
+
+  def contentDisplay_=(v: ContentDisplay): Unit = {
     contentDisplay() = v
   }
 
@@ -148,7 +149,8 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip)
    * The default font to use for text in the Tooltip.
    */
   def font: ObjectProperty[jfxst.Font] = delegate.fontProperty
-  def font_=(v: Font) {
+
+  def font_=(v: Font): Unit = {
     font() = v
   }
 
@@ -156,7 +158,8 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip)
    * An optional icon for the Tooltip.
    */
   def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
-  def graphic_=(v: Node) {
+
+  def graphic_=(v: Node): Unit = {
     graphic() = v
   }
 
@@ -164,7 +167,8 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip)
    * The amount of space between the graphic and text
    */
   def graphicTextGap: DoubleProperty = delegate.graphicTextGapProperty
-  def graphicTextGap_=(v: Double) {
+
+  def graphicTextGap_=(v: Double): Unit = {
     graphicTextGap() = v
   }
 
@@ -201,7 +205,8 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip)
    * this setting only affects multiple lines of text relative to the text bounds.
    */
   def textAlignment: ObjectProperty[jfxst.TextAlignment] = delegate.textAlignmentProperty
-  def textAlignment_=(v: TextAlignment) {
+
+  def textAlignment_=(v: TextAlignment): Unit = {
     textAlignment() = v
   }
 
@@ -209,7 +214,8 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip)
    * Specifies the behavior to use if the text of the Tooltip exceeds the available space for rendering the text.
    */
   def textOverrun: ObjectProperty[jfxsc.OverrunStyle] = delegate.textOverrunProperty
-  def textOverrun_=(v: OverrunStyle) {
+
+  def textOverrun_=(v: OverrunStyle): Unit = {
     textOverrun() = v
   }
 
@@ -217,7 +223,8 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip)
    * The text to display in the tooltip.
    */
   def text: StringProperty = delegate.textProperty
-  def text_=(v: String) {
+
+  def text_=(v: String): Unit = {
     text() = v
   }
 
@@ -225,7 +232,8 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip)
    * If a run of text exceeds the width of the Tooltip, then this variable indicates whether the text should wrap onto another line.
    */
   def wrapText: BooleanProperty = delegate.wrapTextProperty
-  def wrapText_=(v: Boolean) {
+
+  def wrapText_=(v: Boolean): Unit = {
     wrapText() = v
   }
 
