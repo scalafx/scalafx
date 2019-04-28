@@ -8,6 +8,8 @@ It includes features from recently released versions [8.0.192-R14][8.0.192-R14].
    - added getCenterZ
    
 * [Issue #291][291]: Remove use of JavaConversions in the code   
+* [Issue #303][303]: Support JavaFX 12
+* [Issue #302][302]: Support new MouseButton constants added in JavaFX 12 #302
 
 
 For downloads visit [ScalaFX on Sonatype][2] or [ScalaFX Releases][3] on GitHub. 
@@ -25,3 +27,5 @@ Please use [ScalaFX Users Group][5] to post questions.
 [293]: https://github.com/scalafx/scalafx/pull/293
 
 [291]: https://github.com/scalafx/scalafx/issues/291
+[302]: https://github.com/scalafx/scalafx/issues/302
+[303]: https://github.com/scalafx/scalafx/issues/303
