@@ -1,4 +1,4 @@
-[ScalaFX][1] 11-R16 was tested against JavaFX 11. It contains changes to better support JavaFX 11.
+[ScalaFX][1] 12.0.1-R17 was tested against JavaFX 12.0.1. It contains changes to better support JavaFX 12.
 It includes features from recently released versions [8.0.192-R14][8.0.192-R14].
 
 
