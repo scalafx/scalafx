@@ -9,8 +9,8 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion = "11"
-val scalafxVersion = s"$javaFXVersion-R16"
+val javaFXVersion = "12.0.1"
+val scalafxVersion = s"$javaFXVersion-R17-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v" + scalafxVersion
 
