@@ -6,9 +6,9 @@ scala:
 - 2.11.12
 - 2.12.8
 
-before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+dist: xenial
+services:
+  - xvfb
 
 jdk:
   - oraclejdk8
@@ -21,8 +21,8 @@ script:
 
 branches:
   only:
-    - master
-    - stable
+    - SFX-8
+    - SFX-8-stable
 
 notifications:
   email:
