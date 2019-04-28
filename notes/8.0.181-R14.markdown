@@ -1,0 +1,30 @@
+[ScalaFX][1] 8.0.192-R14 was tested against JavaFX 8.0u192. It contains bug fixes.
+Scala 2.10, 2.11, and 2.12 are supported.
+
+Bug fixes:
+
+* [PR #295][295] Fix typo in strokeOval documentation from "rectangle" to "oval". 
+  Thanks to [Emily Herbert](https://github.com/emilyaherbert).
+* [PR #299][299] Correct parameter names. Thanks to [Jeansen](https://github.com/Jeansen).
+* [Issue #301][301]: Tab.userData causes stackOverflowError, 
+  based on hint from [DavidGoodenough](https://github.com/DavidGoodenough).
+
+
+To use ScalaFX add following to your SBT:
+
+      libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.192-R14"
+
+For downloads visit [ScalaFX on Sonatype][2] or [ScalaFX Releases][3] on GitHub. 
+Please report any problems using [ScalaFX Issue Tracker][4]. 
+Please use [ScalaFX Users Group][5] to post questions. 
+
+[1]: http://scalafx.org
+[2]: http://search.maven.org/#search&#124;ga&#124;1&#124;scalafx
+[3]: https://github.com/scalafx/scalafx/releases
+[4]: https://github.com/scalafx/scalafx/issues
+[5]: https://groups.google.com/forum/#!forum/scalafx-users
+
+[295]: https://github.com/scalafx/scalafx/pull/295
+[299]: https://github.com/scalafx/scalafx/pull/299
+
+[301]: https://github.com/scalafx/scalafx/issues/301

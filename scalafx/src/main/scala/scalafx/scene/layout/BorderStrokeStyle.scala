@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,12 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-
-import scala.collection.JavaConversions._
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.shape.{StrokeLineCap, StrokeLineJoin, StrokeType}
+
+import scala.collection.JavaConverters._
+import scala.language.implicitConversions
 
 object BorderStrokeStyle {
   implicit def sfxBorderStrokeStyle2jfx(v: BorderStrokeStyle): jfxsl.BorderStrokeStyle = if (v != null) v.delegate else null
@@ -72,12 +72,12 @@ class BorderStrokeStyle(override val delegate: jfxsl.BorderStrokeStyle)
    */
   def this(strokeType: StrokeType, lineJoin: StrokeLineJoin, lineCap: StrokeLineCap,
            miterLimit: Double, dashOffset: Double, dashArray: Seq[java.lang.Double]) =
-    this(new jfxsl.BorderStrokeStyle(strokeType, lineJoin, lineCap, miterLimit, dashOffset, dashArray))
+    this(new jfxsl.BorderStrokeStyle(strokeType, lineJoin, lineCap, miterLimit, dashOffset, dashArray.asJava))
 
   /**
    * Defines the array representing the lengths of the dash segments.
    */
-  def dashArray: Seq[java.lang.Double] = delegate.getDashArray.toIndexedSeq
+  def dashArray: Seq[java.lang.Double] = delegate.getDashArray.asScala
 
   /**
    * Defines a distance specified in user coordinates that represents an offset into the dashing pattern.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,10 +29,6 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{css => jfxcss, event => jfxe, scene => jfxs, util => jfxu}
-
-import scala.collection.JavaConversions._
-import scala.collection.mutable
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.collections.ObservableBuffer
@@ -40,6 +36,10 @@ import scalafx.delegate.SFXDelegate
 import scalafx.event.EventIncludes.jfxEventType2sfx
 import scalafx.event.{Event, EventType}
 import scalafx.scene.Node
+
+import scala.collection.JavaConverters._
+import scala.collection.mutable
+import scala.language.implicitConversions
 
 
 /**
@@ -313,7 +313,9 @@ object TreeTableView {
     def modelItem(index: Int): TreeItem[S] = delegate.getModelItem(index)
 
 
-    def focus(row: Int): Unit = { delegate.focus(row) }
+    def focus(row: Int): Unit = {
+      delegate.focus(row)
+    }
 
     def focusedIndex: Int = delegate.getFocusedIndex
 
@@ -554,7 +556,7 @@ object TreeTableView {
     * @since 8.0
     */
   def classCssMetaData: mutable.Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] =
-    jfxsc.PopupControl.getClassCssMetaData
+    jfxsc.PopupControl.getClassCssMetaData.asScala
 }
 
 
@@ -592,7 +594,7 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
     *         or -1 if the given TreeItem is null.
     */
   @deprecated("use [[treeItemLevel(TreeItem)]] instead", "8.0_20")
-  def nodeLevel(node: TreeItem[S]) = jfxsc.TreeTableView.getNodeLevel(node: TreeItem[S])
+  def nodeLevel(node: TreeItem[S]): Int = jfxsc.TreeTableView.getNodeLevel(node: TreeItem[S])
 
   /**
     * Creates a TreeTableView with the provided root node.
@@ -713,7 +715,8 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
     * property in the TreeTableColumn class.
     */
   def rowFactory: ObjectProperty[jfxu.Callback[jfxsc.TreeTableView[S], jfxsc.TreeTableRow[S]]] = delegate.rowFactoryProperty
-  def rowFactory_=(v: (TreeTableView[S] => TreeTableRow[S])): Unit = {
+
+  def rowFactory_=(v: TreeTableView[S] => TreeTableRow[S]): Unit = {
     rowFactory() = new jfxu.Callback[jfxsc.TreeTableView[S], jfxsc.TreeTableRow[S]] {
       def call(tv: jfxsc.TreeTableView[S]): jfxsc.TreeTableRow[S] = {
         v(tv)
@@ -802,12 +805,14 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
     * @param index The index that should be made visible to the user, assuming of course that it is greater than, or
     *              equal to 0, and less than the number of the visible items in the TreeTableView.
     */
-  def scrollTo(index: Int): Unit = { delegate.scrollTo(index) }
+  def scrollTo(index: Int): Unit = {
+    delegate.scrollTo(index)
+  }
 
   /**
     * Called when there's a request to scroll an index into view using [[scrollTo(int)]]
     */
-  def onScrollTo = delegate.onScrollToProperty
+  def onScrollTo: ObjectProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]] = delegate.onScrollToProperty
   def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]): Unit = {
     onScrollTo() = v
   }
@@ -817,14 +822,18 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
     *
     * @param column The column that should be visible to the user.
     */
-  def scrollToColumn(column: TreeTableColumn[S, _]): Unit = { delegate.scrollToColumn(column) }
+  def scrollToColumn(column: TreeTableColumn[S, _]): Unit = {
+    delegate.scrollToColumn(column)
+  }
 
   /**
     * Scrolls the TreeTableView so that the given index is visible within the viewport.
     *
     * @param index The index of a column that should be visible to the user.
     */
-  def scrollToColumnIndex(index: Int): Unit = { delegate.scrollToColumnIndex(index) }
+  def scrollToColumnIndex(index: Int): Unit = {
+    delegate.scrollToColumnIndex(index)
+  }
 
   /**
     * Called when there's a request to scroll a column into view using scrollToColumn(TreeTableColumn) or scrollToColumnIndex(int)
@@ -885,7 +894,9 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
     * Applies the currently installed resize policy against the given column, resizing it based on the delta value provided.
     *
     */
-  def resizeColumn(column: TreeTableColumn[S, _], delta: Double): Boolean = { delegate.resizeColumn(column, delta) }
+  def resizeColumn(column: TreeTableColumn[S, _], delta: Double): Boolean = {
+    delegate.resizeColumn(column, delta)
+  }
 
 
   /**
@@ -902,7 +913,7 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
   /**
     * Returns the position of the given column, relative to all other visible leaf columns.
     */
-  def visibleLeafIndex(column: TreeTableColumn[S, _]) = delegate.getVisibleLeafIndex(column)
+  def visibleLeafIndex(column: TreeTableColumn[S, _]): Int = delegate.getVisibleLeafIndex(column)
 
   /**
     * Returns the TreeTableColumn in the given column index, relative to all other visible leaf columns.
@@ -915,10 +926,12 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
     * TreeTableColumn sort type properties change. In other words, this method should only be called directly when
     * something external changes and a sort is required.
     */
-  def sort(): Unit = { delegate.sort() }
+  def sort(): Unit = {
+    delegate.sort()
+  }
 
   /**
     * Returns the CssMetaData associated with this class, which may include the CssMetaData of its super classes.
     */
-  def controlCssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getControlCssMetaData
+  def controlCssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getControlCssMetaData.asScala
 }

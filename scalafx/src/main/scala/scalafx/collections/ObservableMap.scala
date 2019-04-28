@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,15 +27,16 @@
 package scalafx.collections
 
 import java.{util => ju}
-import javafx.{collections => jfxc}
 
-import scala.collection.JavaConversions._
-import scala.collection.generic.MutableMapFactory
-import scala.collection.mutable.{Builder, Map, MapLike}
-import scala.language.implicitConversions
+import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
+
+import scala.collection.JavaConverters._
+import scala.collection.generic.MutableMapFactory
+import scala.collection.mutable
+import scala.language.implicitConversions
 
 /**
  * Companion Object for `[[scalafx.collections.ObservableMap]]`.
@@ -126,9 +127,9 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    *
    * @return A newly created $OM.
    */
-  def apply[K, V](originalMap: Map[K, V]): ObservableMap[K, V] =
+  def apply[K, V](originalMap: mutable.Map[K, V]): ObservableMap[K, V] =
     new ObservableMap[K, V] {
-      override val delegate = jfxc.FXCollections.observableMap(mutableMapAsJavaMap(originalMap))
+      override val delegate: jfxc.ObservableMap[K, V] = jfxc.FXCollections.observableMap(originalMap.asJava)
     }
 
   // CREATION METHODS - END
@@ -149,23 +150,23 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
  * @define MAP `Map`
  */
 trait ObservableMap[K, V]
-  extends Map[K, V]
-  with MapLike[K, V, ObservableMap[K, V]]
-  with Builder[(K, V), ObservableMap[K, V]]
+  extends mutable.Map[K, V]
+    with mutable.MapLike[K, V, ObservableMap[K, V]]
+    with mutable.Builder[(K, V), ObservableMap[K, V]]
   with Observable
   with SFXDelegate[jfxc.ObservableMap[K, V]] {
 
   /**
    * The result when this $MAP is used as a builder.
    */
-  override def result() = this
+  override def result(): ObservableMap[K, V] = this
 
   /**
    * The empty map of the same type as this $MAP.
    *
    * @return An empty $OM
    */
-  override def empty = new ObservableHashMap[K, V]
+  override def empty = new ObservableHashMap[K, V]()
 
   /**
    * Adds a new key/value pair to this $MAP.
@@ -173,7 +174,7 @@ trait ObservableMap[K, V]
    * @param kv the key/value pair.
    * @return The $OM itself
    */
-  def +=(kv: (K, V)) = {
+  def +=(kv: (K, V)): ObservableMap.this.type = {
     delegate.put(kv._1, kv._2)
     this
   }
@@ -184,7 +185,7 @@ trait ObservableMap[K, V]
    * @param key the key to be removed
    * @return The $OM itself.
    */
-  def -=(key: K) = {
+  def -=(key: K): ObservableMap.this.type = {
     delegate.remove(key)
     this
   }
@@ -192,7 +193,7 @@ trait ObservableMap[K, V]
   /**
    * Removes all elements from the $MAP. After this operation has completed, the $MAP will be empty.
    */
-  override def clear() {
+  override def clear(): Unit = {
     delegate.clear()
   }
 
@@ -202,12 +203,14 @@ trait ObservableMap[K, V]
    *
    * @return The new `iterator`.
    */
-  def iterator = new Iterator[(K, V)] {
+  def iterator: Iterator[(K, V)] = new Iterator[(K, V)] {
     // Definition copied from JavaConversions.JMapWrapperLike.iterator
-    val it = delegate.entrySet.iterator
-    def hasNext = it.hasNext
-    def next() = {
-      val e = it.next();
+    val it: ju.Iterator[ju.Map.Entry[K, V]] = delegate.entrySet.iterator
+
+    def hasNext: Boolean = it.hasNext
+
+    def next(): (K, V) = {
+      val e = it.next()
       (e.getKey, e.getValue)
     }
   }
@@ -217,7 +220,7 @@ trait ObservableMap[K, V]
    *
    * @return This $MAP's size.
    */
-  override def size = delegate.size
+  override def size: Int = delegate.size
 
   /**
    * Optionally returns the value associated with a key.
@@ -252,7 +255,7 @@ trait ObservableMap[K, V]
     delegate.addListener(listener)
 
     new Subscription {
-      def cancel() {
+      def cancel(): Unit = {
         delegate.removeListener(listener)
       }
     }
@@ -265,7 +268,7 @@ trait ObservableMap[K, V]
    */
   def onChange(op: => Unit): Subscription = {
     val listener = new jfxc.MapChangeListener[K, V] {
-      def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]) {
+      def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]): Unit = {
         op
       }
     }
@@ -273,7 +276,7 @@ trait ObservableMap[K, V]
     delegate.addListener(listener)
 
     new Subscription {
-      def cancel() {
+      def cancel(): Unit = {
         delegate.removeListener(listener)
       }
     }

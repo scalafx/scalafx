@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,6 @@
 package scalafx.scene.shape
 
 import javafx.scene.{paint => jfxsp, shape => jfxss}
-
-import scala.collection.JavaConversions._
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.collections.ObservableBuffer
@@ -37,23 +34,26 @@ import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.paint.Paint
 
+import scala.collection.JavaConverters._
+import scala.language.implicitConversions
+
 object Shape {
   implicit def sfxShape2jfx(v: Shape): jfxss.Shape = if (v != null) v.delegate else null
 
   /**
    * Returns a new Shape which is created as an intersection of the specified input shapes.
    */
-  def intersect(shape1: jfxss.Shape, shape2: jfxss.Shape) = jfxss.Shape.intersect(shape1, shape2)
+  def intersect(shape1: jfxss.Shape, shape2: jfxss.Shape): Shape = jfxss.Shape.intersect(shape1, shape2)
 
   /**
    * Returns a new Shape which is created by subtracting the specified second shape from the first shape.
    */
-  def subtract(shape1: jfxss.Shape, shape2: jfxss.Shape) = jfxss.Shape.subtract(shape1, shape2)
+  def subtract(shape1: jfxss.Shape, shape2: jfxss.Shape): Shape = jfxss.Shape.subtract(shape1, shape2)
 
   /**
    * Returns a new Shape which is created as a union of the specified input shapes.
    */
-  def union(shape1: jfxss.Shape, shape2: jfxss.Shape) = jfxss.Shape.union(shape1, shape2)
+  def union(shape1: jfxss.Shape, shape2: jfxss.Shape): Shape = jfxss.Shape.union(shape1, shape2)
 
 }
 
@@ -73,7 +73,7 @@ abstract class Shape(override val delegate: jfxss.Shape)
    *
    * @param v Filling Parameters.
    */
-  def fill_=(v: Paint) {
+  def fill_=(v: Paint): Unit = {
     ObjectProperty.fillProperty[jfxsp.Paint](this.fill, v)
   }
 
@@ -81,7 +81,8 @@ abstract class Shape(override val delegate: jfxss.Shape)
    * Defines whether anti-aliasing hints are used or not for this Shape.
    */
   def smooth: BooleanProperty = delegate.smoothProperty
-  def smooth_=(v: Boolean) {
+
+  def smooth_=(v: Boolean): Unit = {
     smooth() = v
   }
 
@@ -89,7 +90,8 @@ abstract class Shape(override val delegate: jfxss.Shape)
    * Defines a distance specified in user coordinates that represents an offset into the dashing pattern.
    */
   def strokeDashOffset: DoubleProperty = delegate.strokeDashOffsetProperty
-  def strokeDashOffset_=(v: Double) {
+
+  def strokeDashOffset_=(v: Double): Unit = {
     strokeDashOffset() = v
   }
 
@@ -98,7 +100,8 @@ abstract class Shape(override val delegate: jfxss.Shape)
    * `StrokeLineCap.BUTT`, `StrokeLineCap.ROUND`, and `StrokeLineCap.SQUARE`.
    */
   def strokeLineCap: ObjectProperty[jfxss.StrokeLineCap] = delegate.strokeLineCapProperty
-  def strokeLineCap_=(v: StrokeLineCap) {
+
+  def strokeLineCap_=(v: StrokeLineCap): Unit = {
     strokeLineCap() = v
   }
 
@@ -106,7 +109,8 @@ abstract class Shape(override val delegate: jfxss.Shape)
    * Defines the decoration applied where path segments meet.
    */
   def strokeLineJoin: ObjectProperty[jfxss.StrokeLineJoin] = delegate.strokeLineJoinProperty
-  def strokeLineJoin_=(v: StrokeLineJoin) {
+
+  def strokeLineJoin_=(v: StrokeLineJoin): Unit = {
     strokeLineJoin() = v
   }
 
@@ -114,7 +118,8 @@ abstract class Shape(override val delegate: jfxss.Shape)
    * Defines the limit for the `StrokeLineJoin.MITER` line join style.
    */
   def strokeMiterLimit: DoubleProperty = delegate.strokeMiterLimitProperty
-  def strokeMiterLimit_=(v: Double) {
+
+  def strokeMiterLimit_=(v: Double): Unit = {
     strokeMiterLimit() = v
   }
 
@@ -123,7 +128,8 @@ abstract class Shape(override val delegate: jfxss.Shape)
    * Paint.
    */
   def stroke: ObjectProperty[jfxsp.Paint] = delegate.strokeProperty
-  def stroke_=(v: Paint) {
+
+  def stroke_=(v: Paint): Unit = {
     stroke() = v
   }
 
@@ -131,7 +137,8 @@ abstract class Shape(override val delegate: jfxss.Shape)
    * Defines the direction (inside, centered, or outside) that the strokeWidth is applied to the boundary of the shape.
    */
   def strokeType: ObjectProperty[jfxss.StrokeType] = delegate.strokeTypeProperty
-  def strokeType_=(v: StrokeType) {
+
+  def strokeType_=(v: StrokeType): Unit = {
     strokeType() = v
   }
 
@@ -139,7 +146,8 @@ abstract class Shape(override val delegate: jfxss.Shape)
    * Defines a square pen line width.
    */
   def strokeWidth: DoubleProperty = delegate.strokeWidthProperty
-  def strokeWidth_=(v: Double) {
+
+  def strokeWidth_=(v: Double): Unit = {
     strokeWidth() = v
   }
 
@@ -153,11 +161,11 @@ abstract class Shape(override val delegate: jfxss.Shape)
    *
    * @param c List of lengths of the dash segments to replace prior content.
    */
-  def strokeDashArray_=(c: Iterable[java.lang.Double]) {
+  def strokeDashArray_=(c: Iterable[java.lang.Double]): Unit = {
     if (null == c) {
       strokeDashArray.clear()
     } else {
-      strokeDashArray.setAll(c)
+      strokeDashArray.setAll(c.asJavaCollection)
     }
   }
 }

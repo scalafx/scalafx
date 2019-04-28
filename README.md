@@ -28,7 +28,7 @@ To use ScalaFX with SBT and Java 8 add following dependency (to use
 the latest scalafx you might need Java version at least 1.8.40):
 
 ```scala
-libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.181-R13"
+libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.192-R14"
 ```
 
 #### ScalaFX 10

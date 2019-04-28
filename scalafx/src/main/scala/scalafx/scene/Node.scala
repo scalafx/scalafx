@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,9 @@
 
 package scalafx.scene
 
-import javafx.scene.{effect => jfxse, input => jfxsi, layout => jfxsl, transform => jfxst}
+import javafx.scene.{effect => jfxse, input => jfxsi, layout => jfxsl}
 import javafx.util.Callback
-import javafx.{event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
-
-import scala.language.implicitConversions
+import javafx.{event => jfxe, geometry => jfxg, scene => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.collections._
@@ -47,6 +45,8 @@ import scalafx.scene.effect.{BlendMode, Effect}
 import scalafx.scene.image.WritableImage
 import scalafx.scene.layout.Priority
 import scalafx.scene.transform.Transform
+
+import scala.language.implicitConversions
 
 /**
  * Companion object for [[scalafx.scene.Node]].
@@ -909,22 +909,22 @@ abstract class Node protected(override val delegate: jfxs.Node)
   /**
    * Returns the node's maximum height for use in layout calculations.
    */
-  def maxHeight(width: Double) = delegate.maxHeight(width)
+  def maxHeight(height: Double) = delegate.maxHeight(height)
 
   /**
    * Returns the node's maximum width for use in layout calculations.
    */
-  def maxWidth(height: Double) = delegate.maxWidth(height)
+  def maxWidth(width: Double) = delegate.maxWidth(width)
 
   /**
    * Returns the node's minimum height for use in layout calculations.
    */
-  def minHeight(width: Double) = delegate.minHeight(width)
+  def minHeight(height: Double) = delegate.minHeight(height)
 
   /**
    * Returns the node's minimum width for use in layout calculations.
    */
-  def minWidth(height: Double) = delegate.minWidth(height)
+  def minWidth(width: Double) = delegate.minWidth(width)
 
   /**
    * Transforms a rectangle from the coordinate space of the parent into the local coordinate

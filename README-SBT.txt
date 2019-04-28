@@ -73,11 +73,11 @@ List the individual tree of projects and their version number:
 
     sbt> show version
     [info] scalafx/*:version
-    [info] 	8.0.181-R13
+    [info] 	8.0.192-R14
     [info] scalafx-demos/*:version
-    [info] 	8.0.181-R13
+    [info] 	8.0.192-R14
     [info] scalafx-project/*:version
-    [info] 	8.0.181-R13
+    [info] 	8.0.192-R14
     (Where `sbt>' represents the Scala SBT interactive command line prompt)
     
 
@@ -188,10 +188,10 @@ the moment. Here are the necessary commands:
     % mvn install:install-file -DartifactId=scalafx_2.10 \
     -DgroupId=org.scalafx \
     -Dpackaging=jar \
-    -DpomFile=scalafx_2.10-8.0.181-R13.pom \
-    -Dfile=scalafx_2.10-8.0.181-R13.jar \
+    -DpomFile=scalafx_2.10-8.0.192-R14.pom \
+    -Dfile=scalafx_2.10-8.0.192-R14.jar \
     -Dversion=1.0-SNAPSHOT \
-    -Dsources=scalafx_2.10-8.0.181-R13-sources.jar
+    -Dsources=scalafx_2.10-8.0.192-R14-sources.jar
 
 
 You will to repeat this for all the modules. Please note the embedded Scala
@@ -285,9 +285,9 @@ Scala SBT check the `target' folder:
      % ls scalafx/target
      resolution-cache/	   scala-2.10/	   scala-2.11/	  streams/
      % ls scalafx/target/scala-2.10/
-     cache/	           scalafx_2.10-8.0.181-R13.jar
+     cache/	           scalafx_2.10-8.0.192-R14.jar
      % ls scalafx/target/scala-2.11/
-     cache/            scalafx_2.11-8.0.181-R13.jar
+     cache/            scalafx_2.11-8.0.192-R14.jar
 
 
 And of course this feature of cross Scala versions scales to more compiler

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,14 +28,16 @@
 package scalafx.stage
 
 import java.io.File
-import javafx.{stage => jfxs}
 
-import scala.collection.JavaConversions._
-import scala.language.implicitConversions
+import javafx.collections.ObservableList
+import javafx.{stage => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.stage.FileChooser.ExtensionFilter
+
+import scala.collection.JavaConverters._
+import scala.language.implicitConversions
 
 
 object FileChooser {
@@ -51,7 +53,8 @@ object FileChooser {
      * Creates an ExtensionFilter with the specified description and the file name extensions.
      * File name extension should be specified in the `*.<extension>` format.
      */
-    def this(description: String, extensions: Seq[String]) = this(new jfxs.FileChooser.ExtensionFilter(description, extensions))
+    def this(description: String, extensions: Seq[String]) =
+      this(new jfxs.FileChooser.ExtensionFilter(description, extensions.asJava))
 
     /**
      * Creates an ExtensionFilter with the specified description and the file name extension.
@@ -70,9 +73,9 @@ object FileChooser {
      */
     //        def this(description: String, extensions: String*) = this(new jfxs.FileChooser.ExtensionFilter(description, extensions: _*))
 
-    def description = delegate.getDescription
+    def description: String = delegate.getDescription
 
-    def extensions: Seq[String] = delegate.getExtensions
+    def extensions: Seq[String] = delegate.getExtensions.asScala
 
   }
 
@@ -134,7 +137,7 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
   /**
    * Gets the extension filters used in the displayed file dialog.
    */
-  def extensionFilters = delegate.getExtensionFilters
+  def extensionFilters: ObservableList[jfxs.FileChooser.ExtensionFilter] = delegate.getExtensionFilters
 
   /**
    * Shows a new file open dialog.
@@ -150,7 +153,7 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
    */
   def showOpenMultipleDialog(ownerWindow: Window): Seq[File] = {
     val selection = delegate.showOpenMultipleDialog(ownerWindow)
-    if (selection != null) selection else null.asInstanceOf[Seq[File]]
+    if (selection != null) selection.asScala else null.asInstanceOf[Seq[File]]
   }
 
   /**

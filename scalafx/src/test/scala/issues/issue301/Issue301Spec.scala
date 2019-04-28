@@ -24,63 +24,17 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.paint
 
-import javafx.scene.{paint => jfxsp}
-import scalafx.Includes._
-import scalafx.testutil.SimpleSFXDelegateSpec
+package issues.issue301
 
-/**
-  * RadialGradient Spec tests.
-  *
-  *
-  */
-class RadialGradientSpec
-  extends SimpleSFXDelegateSpec[jfxsp.RadialGradient, RadialGradient](
-    classOf[jfxsp.RadialGradient], classOf[RadialGradient]) {
+import org.scalatest.FlatSpec
+import org.scalatest.Matchers._
+import scalafx.scene.control.Tab
+import scalafx.testutil.RunOnApplicationThread
 
-  override protected def getJavaClassInstance = new jfxsp.RadialGradient(0, 0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, new java.util.LinkedList[jfxsp.Stop]())
-
-  it should "return valid instance from companion's apply(List[Stop])" in {
-    val expected: RadialGradient = new RadialGradient(0, 0, 0, 0, 0, true, jfxsp.CycleMethod.NO_CYCLE, Nil)
-    val radialGradient = RadialGradient(
-      focusAngle = 0,
-      focusDistance = 0,
-      centerX = 0,
-      centerY = 0,
-      radius = 0,
-      proportional = true,
-      cycleMethod = CycleMethod.NoCycle,
-      stops = Nil
-    )
-    assert(radialGradient === expected)
-  }
-
-  it should "return valid instance from companion's apply(stops*)" in {
-    val expected: RadialGradient = new RadialGradient(
-      0,
-      0,
-      0,
-      0,
-      0,
-      true,
-      jfxsp.CycleMethod.NO_CYCLE,
-      List(
-        new jfxsp.Stop(0, Color.White),
-        new jfxsp.Stop(0, Color.Black)
-      )
-    )
-    val radialGradient = RadialGradient(
-      focusAngle = 0,
-      focusDistance = 0,
-      centerX = 0,
-      centerY = 0,
-      radius = 0,
-      proportional = true,
-      cycleMethod = CycleMethod.NoCycle,
-      Stop(0, Color.White),
-      Stop(0, Color.Black)
-    )
-    assert(radialGradient === expected)
+class Issue301Spec extends FlatSpec with RunOnApplicationThread {
+  "Tab.userData" should "not throw StackOverflowException" in {
+    val tab = new Tab()
+    tab.userData
   }
 }

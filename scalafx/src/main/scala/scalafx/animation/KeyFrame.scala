@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,12 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa, event => jfxe}
-
-import scala.collection.JavaConversions._
-import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.util.Duration
+
+import scala.collection.JavaConverters._
+import scala.collection.mutable
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.animation.KeyFrame]].
@@ -61,9 +62,9 @@ object KeyFrame {
   def apply(time: Duration,
             name: String = null,
             onFinished: jfxe.EventHandler[jfxe.ActionEvent] = null,
-            values: Set[_ <: KeyValue[_, _]] = Set.empty) = {
+            values: Set[_ <: KeyValue[_, _]] = Set.empty): KeyFrame = {
     val mappedValues: Set[jfxa.KeyValue] = values.map((x: KeyValue[_, _]) => x.delegate)
-    new KeyFrame(new jfxa.KeyFrame(time, name, onFinished, mappedValues))
+    new KeyFrame(new jfxa.KeyFrame(time, name, onFinished, mappedValues.asJava))
   }
 
 }
@@ -87,17 +88,17 @@ class KeyFrame(override val delegate: jfxa.KeyFrame)
   /**
    * Returns the name of this $KF.
    */
-  def name = delegate.getName
+  def name: String = delegate.getName
 
   /**
    * Returns the onFinished event handler of this $KF.
    */
-  def onFinished = delegate.getOnFinished
+  def onFinished: jfxe.EventHandler[jfxe.ActionEvent] = delegate.getOnFinished
 
   /**
    * Returns an immutable Set of [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyValue.html `KeyValue`]]
    * instances.
    */
-  def values = delegate.getValues
+  def values: mutable.Set[jfxa.KeyValue] = delegate.getValues.asScala
 
 }

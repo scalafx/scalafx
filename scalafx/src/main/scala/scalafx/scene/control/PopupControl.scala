@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,15 +28,15 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{css => jfxcss}
-
-import scala.collection.JavaConversions._
-import scala.collection.mutable.Buffer
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, StringProperty}
 import scalafx.css.{PseudoClass, Styleable}
 import scalafx.delegate.SFXDelegate
 import scalafx.stage.PopupWindow
+
+import scala.collection.JavaConverters._
+import scala.collection.mutable
+import scala.language.implicitConversions
 
 /**
  * Object companion for [[scalafx.scene.control.PopupControl]].
@@ -72,8 +72,8 @@ object PopupControl {
    *
    * @since 8.0
    */
-  def classCssMetaData: Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] =
-    jfxsc.PopupControl.getClassCssMetaData
+  def classCssMetaData: mutable.Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] =
+    jfxsc.PopupControl.getClassCssMetaData.asScala
 
 }
 
@@ -93,7 +93,8 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    * The id of this Node.
    */
   def id: StringProperty = delegate.idProperty
-  def id_=(v: String) {
+
+  def id_=(v: String): Unit = {
     id() = v
   }
 
@@ -101,7 +102,8 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    * Property for overriding the control's computed maximum height.
    */
   def maxHeight: DoubleProperty = delegate.maxHeightProperty
-  def maxHeight_=(v: Double) {
+
+  def maxHeight_=(v: Double): Unit = {
     maxHeight() = v
   }
 
@@ -109,7 +111,8 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    * Property for overriding the control's computed maximum width.
    */
   def maxWidth: DoubleProperty = delegate.maxWidthProperty
-  def maxWidth_=(v: Double) {
+
+  def maxWidth_=(v: Double): Unit = {
     maxWidth() = v
   }
 
@@ -117,7 +120,8 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    * Property for overriding the control's computed minimum height.
    */
   def minHeight: DoubleProperty = delegate.minHeightProperty
-  def minHeight_=(v: Double) {
+
+  def minHeight_=(v: Double): Unit = {
     minHeight() = v
   }
 
@@ -125,7 +129,8 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    * Property for overriding the control's computed minimum width.
    */
   def minWidth: DoubleProperty = delegate.minWidthProperty
-  def minWidth_=(v: Double) {
+
+  def minWidth_=(v: Double): Unit = {
     minWidth() = v
   }
 
@@ -134,7 +139,8 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    *
    */
   def prefHeight: DoubleProperty = delegate.prefHeightProperty
-  def prefHeight_=(v: Double) {
+
+  def prefHeight_=(v: Double): Unit = {
     prefHeight() = v
   }
 
@@ -142,7 +148,8 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    * Property for overriding the control's computed preferred width.
    */
   def prefWidth: DoubleProperty = delegate.prefWidthProperty
-  def prefWidth_=(v: Double) {
+
+  def prefWidth_=(v: Double): Unit = {
     prefWidth() = v
   }
 
@@ -150,14 +157,15 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
    * A string representation of the CSS style associated with this specific Node.
    */
   def style: StringProperty = delegate.styleProperty
-  def style_=(v: String) {
+
+  def style_=(v: String): Unit = {
     style() = v
   }
 
   /**
    * @since 8.0
    */
-  def pseudoClassStateChanged(pseudoClass: PseudoClass, active: Boolean) {
+  def pseudoClassStateChanged(pseudoClass: PseudoClass, active: Boolean): Unit = {
     delegate.pseudoClassStateChanged(pseudoClass, active)
   }
 
