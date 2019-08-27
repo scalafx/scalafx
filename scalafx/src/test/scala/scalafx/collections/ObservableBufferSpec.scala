@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,32 +28,33 @@
 package scalafx.collections
 
 import java.{util => ju}
-import javafx.{beans => jfxb, collections => jfxc, util => jfxu}
 
+import javafx.collections.ObservableList
+import javafx.{beans => jfxb, collections => jfxc}
 import org.scalatest.Matchers._
-
-import scala.collection.mutable.Buffer
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
+import scala.collection.mutable
+
 /**
-  * ObservableBuffer Spec tests.
-  *
-  *
-  */
+ * ObservableBuffer Spec tests.
+ *
+ *
+ */
 class ObservableBufferSpec[T]
   extends SimpleSFXDelegateSpec[jfxc.ObservableList[T], ObservableBuffer[T]](classOf[jfxc.ObservableList[T]], classOf[ObservableBuffer[T]]) {
 
   /**
-    * Verifies if a generated Buffer is the same instance than a original Buffer. If it should not be,
-    * generated map must be a ObservableBuffer.
-    *
-    * @param generatedBuffer Generated Buffer, that should be a ObservableBuffer.
-    * @param originalBuffer  Buffer Original ObservableBuffer.
-    * @param shouldBeTheSame If both maps should be same instance.
-    */
-  private def compareInstances(generatedBuffer: Buffer[_],
+   * Verifies if a generated Buffer is the same instance than a original Buffer. If it should not be,
+   * generated map must be a ObservableBuffer.
+   *
+   * @param generatedBuffer Generated Buffer, that should be a ObservableBuffer.
+   * @param originalBuffer  Buffer Original ObservableBuffer.
+   * @param shouldBeTheSame If both maps should be same instance.
+   */
+  private def compareInstances(generatedBuffer: mutable.Buffer[_],
                                originalBuffer: ObservableBuffer[_], shouldBeTheSame: Boolean) {
     if (shouldBeTheSame) {
       generatedBuffer should be theSameInstanceAs originalBuffer
@@ -63,16 +64,16 @@ class ObservableBufferSpec[T]
     }
   }
 
-  private def compareAfterRemoving[T1](generatedBuffer: Buffer[T1],
+  private def compareAfterRemoving[T1](generatedBuffer: mutable.Buffer[T1],
                                        originalBuffer: ObservableBuffer[T1], expectedResult: T1*) {
     generatedBuffer.toList should equal(expectedResult.toList)
     generatedBuffer should not be theSameInstanceAs(originalBuffer)
     generatedBuffer.getClass should be(classOf[ObservableBuffer[T1]])
   }
 
-  override def getScalaClassInstance = ObservableBuffer.empty[T]
+  override def getScalaClassInstance: ObservableBuffer[T] = ObservableBuffer.empty[T]
 
-  override def getJavaClassInstance = jfxc.FXCollections.observableList[T](new ju.ArrayList[T])
+  override def getJavaClassInstance: ObservableList[T] = jfxc.FXCollections.observableList[T](new ju.ArrayList[T])
 
   "An ObservableBuffer" should "support apply" in {
     // Execution
@@ -102,7 +103,7 @@ class ObservableBufferSpec[T]
     }
 
     // Execution
-    compareInstances(buffer += "d", buffer, true)
+    compareInstances(buffer += "d", buffer, shouldBeTheSame = true)
 
     // Verification
     invalidateCount should equal(1)
@@ -144,7 +145,7 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) => {
         changes.toList match {
-          case (List(Add(position, elements))) =>
+          case List(Add(position, elements)) =>
             changeCount += 1
             position should be(expectedPosition)
             elements should have size 1
@@ -157,11 +158,11 @@ class ObservableBufferSpec[T]
     // Execution
     addedElement = "d"
     expectedPosition = buffer.size
-    compareInstances(buffer += addedElement, buffer, true)
+    compareInstances(buffer += addedElement, buffer, shouldBeTheSame = true)
 
     addedElement = "0"
     expectedPosition = 0
-    compareInstances(addedElement +=: buffer, buffer, true)
+    compareInstances(addedElement +=: buffer, buffer, shouldBeTheSame = true)
 
     addedElement = "e"
     expectedPosition = buffer.size
@@ -169,8 +170,8 @@ class ObservableBufferSpec[T]
 
     // Next changes will not affect buffer.
     addedElement = "f"
-    compareInstances(addedElement +: buffer, buffer, false)
-    compareInstances(buffer :+ addedElement, buffer, false)
+    compareInstances(addedElement +: buffer, buffer, shouldBeTheSame = false)
+    compareInstances(buffer :+ addedElement, buffer, shouldBeTheSame = false)
 
     // Verification
     buffer.toList should equal(List("0", "a", "b", "c", "d", "e"))
@@ -194,22 +195,20 @@ class ObservableBufferSpec[T]
 
     // Execution
     // Operations that change this buffer
-    compareInstances(buffer +=("d", "e", "f"), buffer, true)
-    compareInstances(buffer ++= List("d", "e", "f"), buffer, true)
-    buffer.append("d", "e", "f")
+    compareInstances(buffer ++= List("d", "e", "f"), buffer, shouldBeTheSame = true)
     buffer.appendAll(List("d", "e", "f"))
     buffer.insertAll((changeCount + 1) * 3, List("d", "e", "f"))
-    buffer.insert((changeCount + 1) * 3, "d", "e", "f")
-    changeCount should equal(6)
+    buffer.insertAll((changeCount + 1) * 3, Seq("d", "e", "f"))
+    changeCount should equal(4)
     changeCount = -1
-    compareInstances(List("d", "e", "f") ++=: buffer, buffer, true)
+    compareInstances(List("d", "e", "f") ++=: buffer, buffer, shouldBeTheSame = true)
     changeCount = -1
     buffer.prependAll(List("d", "e", "f"))
     // Operations that not change this set
     changeCount = -1
-    compareInstances(buffer ++ List("d", "e", "f"), buffer, false)
-    compareInstances("d" +: "e" +: "f" +: buffer, buffer, false)
-    compareInstances(List("d", "e", "f") ++: buffer, buffer, false)
+    compareInstances(buffer ++ List("d", "e", "f"), buffer, shouldBeTheSame = false)
+    compareInstances("d" +: "e" +: "f" +: buffer, buffer, shouldBeTheSame = false)
+    compareInstances(List("d", "e", "f") ++: buffer, buffer, shouldBeTheSame = false)
     changeCount should equal(-1)
   }
 
@@ -222,7 +221,7 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) => {
         changes.toList match {
-          case (List(Remove(position, elements))) =>
+          case List(Remove(position, elements)) =>
             changeCount += 1
             position should be(expectedPosition)
             elements should have size 1
@@ -235,7 +234,7 @@ class ObservableBufferSpec[T]
     // Execution
     removedElement = "d"
     expectedPosition = 3
-    compareInstances(buffer -= removedElement, buffer, true)
+    compareInstances(buffer -= removedElement, buffer, shouldBeTheSame = true)
 
     removedElement = "b"
     expectedPosition = 1
@@ -244,7 +243,7 @@ class ObservableBufferSpec[T]
     // Next changes will not affect buffer.
     removedElement = "e"
     expectedPosition = -1
-    compareInstances(buffer - removedElement, buffer, false)
+    compareInstances(generatedBuffer = buffer - removedElement, originalBuffer = buffer, shouldBeTheSame = false)
 
     // Verification
     buffer.toList should equal(List("a", "c", "e", "f"))
@@ -270,32 +269,32 @@ class ObservableBufferSpec[T]
     // Execution
     buffer.setAll("a", "b", "c") should be(true)
     buffer.trimEnd(3)
-    buffer should be('empty)
+    buffer should be(Symbol("empty"))
 
-    buffer +=("a", "b", "c")
+    buffer ++= Seq("a", "b", "c")
     buffer.trimStart(3)
-    buffer should be('empty)
+    buffer should be(Symbol("empty"))
 
-    buffer +=("a", "b", "c")
+    buffer ++= Seq("a", "b", "c")
     buffer.remove(0, 3)
-    buffer should be('empty)
+    buffer should be(Symbol("empty"))
 
-    buffer +=("a", "b", "c")
+    buffer ++= Seq("a", "b", "c")
     buffer.clear()
-    buffer should be('empty)
+    buffer should be(Symbol("empty"))
 
-    buffer +=("a", "b", "c")
-    compareInstances(buffer -=("a", "b", "c"), buffer, true)
-    buffer should be('empty)
+    buffer ++= Seq("a", "b", "c")
+    compareInstances(buffer -= ("a", "b", "c"), buffer, shouldBeTheSame = true)
+    buffer should be(Symbol("empty"))
 
-    buffer +=("a", "b", "c")
-    compareInstances(buffer --= List("a", "b", "c"), buffer, true)
-    buffer should be('empty)
+    buffer ++= Seq("a", "b", "c")
+    compareInstances(buffer --= List("a", "b", "c"), buffer, shouldBeTheSame = true)
+    buffer should be(Symbol("empty"))
 
-    buffer +=("a", "b", "c")
+    buffer ++= Seq("a", "b", "c")
     // Next Methods will not change buffer
-    compareAfterRemoving(buffer -("a", "c"), buffer, "b")
-    buffer.toList should equal(List("a", "b", "c"))
+    //    compareAfterRemoving(buffer -("a", "c"), buffer, "b")
+    //    buffer.toList should equal(List("a", "b", "c"))
     compareAfterRemoving(buffer -- List("a", "c"), buffer, "b")
     buffer.toList should equal(List("a", "b", "c"))
 
@@ -502,7 +501,7 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) => {
         list.toList should equal(List("c", "d"))
-        changes.toList should equal(List(Remove(0, Buffer("a", "b")), Remove(2, Buffer("e"))))
+        changes.toList should equal(List(Remove(0, Seq("a", "b")), Remove(2, Seq("e"))))
       }
     }
 
@@ -519,7 +518,7 @@ class ObservableBufferSpec[T]
     buffer onChange {
       (list, changes) => {
         list.toList should equal(List("b", "d"))
-        changes.toList should equal(List(Remove(0, Buffer("a")), Remove(1, Buffer("c")), Remove(2, Buffer("e"))))
+        changes.toList should equal(List(Remove(0, Seq("a")), Remove(1, Seq("c")), Remove(2, Seq("e"))))
       }
     }
 
@@ -548,7 +547,7 @@ class ObservableBufferSpec[T]
       (list, changes) => {
         changesDetected += 1
         list.toList should equal(List(5, 4, 3, 2, 1))
-        changes.toList should equal(List(Remove(0, Buffer(1, 2, 3, 4, 5)), Add(0, Buffer(5, 4, 3, 2, 1))))
+        changes.toList should equal(List(Remove(0, Seq(1, 2, 3, 4, 5)), Add(0, Seq(5, 4, 3, 2, 1))))
       }
     }
 
@@ -565,7 +564,7 @@ class ObservableBufferSpec[T]
       (list, changes) => {
         changesDetected += 1
         list.toList should equal(List(0, 2, 3, 0, 5))
-        changes.toList should equal(List(Remove(0, Buffer(1, 2, 3, 1, 5)), Add(0, Buffer(0, 2, 3, 0, 5))))
+        changes.toList should equal(List(Remove(0, Seq(1, 2, 3, 1, 5)), Add(0, Seq(0, 2, 3, 0, 5))))
       }
     }
 
@@ -582,7 +581,7 @@ class ObservableBufferSpec[T]
       (list, changes) => {
         changesDetected += 1
         list.toList should equal(List(-1, -1, -1, -1, -1))
-        changes.toList should equal(List(Remove(0, Buffer(1, 2, 3, 4, 5)), Add(0, Buffer(-1, -1, -1, -1, -1))))
+        changes.toList should equal(List(Remove(0, Seq(1, 2, 3, 4, 5)), Add(0, Seq(-1, -1, -1, -1, -1))))
       }
     }
 
@@ -593,10 +592,10 @@ class ObservableBufferSpec[T]
 
   it should "keep his behavior with other types of sets beyond default implementation" in {
     // Preparation
-    val buffer = ObservableBuffer(new StringBuilder)
-    val addedValues = Buffer.empty[Any]
-    val removedValues = Buffer.empty[Any]
-    val permutations = Buffer.empty[Buffer[(Int, Int)]]
+    val buffer = ObservableBuffer.from(new StringBuilder())
+    val addedValues = mutable.Buffer.empty[Any]
+    val removedValues = mutable.Buffer.empty[Any]
+    val permutations = mutable.Buffer.empty[mutable.Buffer[(Int, Int)]]
     buffer onChange {
       (list, changes) => {
         for (change <- changes) change match {
@@ -605,7 +604,7 @@ class ObservableBufferSpec[T]
           case Remove(pos, removedBuffer) =>
             removedValues ++= removedBuffer.toBuffer
           case Reorder(start, end, permutation) =>
-            val p = Buffer.empty[(Int, Int)]
+            val p = mutable.Buffer.empty[(Int, Int)]
             (start until end).foreach(i => p += ((i, permutation(i))))
             permutations += p
           case Update(pas, updated) => println(s"  case Update: $change")
@@ -638,9 +637,7 @@ class ObservableBufferSpec[T]
     //    val items = new ObservableBuffer(jfxc.FXCollections.observableArrayList[ElementType]((elem: ElementType) => Array[jfxb.Observable](elem)))
     val items = new ObservableBuffer(
       jfxc.FXCollections.observableArrayList[ElementType](
-        new jfxu.Callback[ElementType, Array[jfxb.Observable]] {
-          def call(elem: ElementType) = Array[jfxb.Observable](elem)
-        }
+        (elem: ElementType) => Array[jfxb.Observable](elem)
       )
     )
 
