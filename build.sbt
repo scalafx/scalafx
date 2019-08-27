@@ -49,7 +49,7 @@ val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Windows") => "win"
   case _ => throw new Exception("Unknown platform!")
 }
-lazy val scalatest = "org.scalatest" %% "scalatest" % "3.0.7"
+lazy val scalatest = "org.scalatest" %% "scalatest" % "3.0.8"
 
 // Resolvers
 lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -63,7 +63,7 @@ resolvers += sonatypeNexusSnapshots
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.10.7", "2.11.12", "2.12.8"),
+  crossScalaVersions := Seq("2.13.0", "2.11.12", "2.12.8"),
   scalaVersion := crossScalaVersions.value.head,
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
