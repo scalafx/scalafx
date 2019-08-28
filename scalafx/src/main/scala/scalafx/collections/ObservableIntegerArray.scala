@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@ object ObservableIntegerArray extends ObservableArrayCompanionBase[Int, Observab
     * `end`.
     * @throws IllegalArgumentException if `step` is 0.
     */
-  def range(start: Int, end: Int, step: Int = 1) = apply(Array.range(start, end, step))
+  def range(start: Int, end: Int, step: Int = 1): ObservableIntegerArray = apply(Array.range(start, end, step))
 }
 
 // TODO: Enter link when JavaFX 8 API Docs are available on-line.
@@ -97,59 +97,59 @@ class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXColl
   /**
    * @inheritdoc
    */
-  override def get(idx: Int) = delegate.get(idx)
+  override def get(idx: Int): Int = delegate.get(idx)
 
   /**
-   * @inheritdoc.
+   * @inheritdoc
    */
-  override def addAll(elems: Int*) = {
+  override def addAll(elems: Int*): Unit = {
     delegate.addAll(elems:_*)
   }
 
   /**
-   * @inheritdoc.
+   * @inheritdoc
    */
   override def addAll(src: ObservableIntegerArray) {
     delegate.addAll(src.delegate)
   }
 
   /**
-   * @inheritdoc.
+   * @inheritdoc
    */
   override def addAll(src: Array[Int], srcIdx: Int, length: Int) {
     delegate.addAll(src, srcIdx, length)
   }
 
   /**
-   * @inheritdoc.
+   * @inheritdoc
    */
   override def addAll(src: ObservableIntegerArray, srcIdx: Int, length: Int) {
     delegate.addAll(src.delegate, srcIdx, length)
   }
 
   /**
-   * @inheritdoc.
+   * @inheritdoc
    */
   override def setAll(elements: Int*) {
     delegate.setAll(elements:_*)
   }
 
   /**
-   * @inheritdoc.
+   * @inheritdoc
    */
   override def setAll(src: ObservableIntegerArray) {
     delegate.setAll(src.delegate)
   }
 
   /**
-   * @inheritdoc.
+   * @inheritdoc
    */
   override def setAll(src: Array[Int], srcIdx: Int, length: Int) {
     delegate.setAll(src, srcIdx, length)
   }
 
   /**
-   * @inheritdoc.
+   * @inheritdoc
    */
   override def setAll(src: ObservableIntegerArray, srcIdx: Int, length: Int) {
     delegate.setAll(src.delegate, srcIdx, length)
@@ -179,19 +179,11 @@ class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXColl
   /**
    * @inheritdoc
    */
-  override def toArray(dest: Array[Int]) = delegate.toArray(dest)
+  override def toArray(dest: Array[Int]): Array[Int] = delegate.toArray(dest)
 
   /**
    * @inheritdoc
    */
-  override def toArray(srcIdx: Int, dest: Array[Int], length: Int) =
+  override def toArray(srcIdx: Int, dest: Array[Int], length: Int): Array[Int] =
     delegate.toArray(srcIdx, dest, length)
-
-  // ArrayLike[V, T] abstract member function implementations.
-  /**
-   * Create new builder for this collection.
-   *
-   * @return New empty $OIA.
-   */
-  protected[this] override def newBuilder = ObservableIntegerArray.empty()
 }

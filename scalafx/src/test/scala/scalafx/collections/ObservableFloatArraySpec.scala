@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,11 +28,11 @@
 package scalafx.collections
 
 import javafx.{collections => jfxc}
-
-import scala.collection.mutable.Buffer
 import scalafx.Includes._
 import scalafx.collections.ObservableArray.Change
 import scalafx.testutil.SimpleSFXDelegateSpec
+
+import scala.collection.mutable.Buffer
 
 /**
  * ObservableFloatArray Spec tests.
@@ -133,6 +133,18 @@ class ObservableFloatArraySpec
       assert((oa(i) - expected(i)).abs < 1.0e-6f)
     }
     testOutOfBoundsExceptionThrown(oa(expected.length))
+  }
+
+  /**
+   * Test that arrays are equal.
+   */
+  def testEqual(oa: ObservableFloatArray, expected: ObservableFloatArray) {
+    assert(oa.length === expected.length)
+    assert(oa.size === expected.length)
+    assert(oa.isEmpty === false)
+    for (i <- 0 until expected.length) {
+      assert((oa(i) - expected(i)).abs < 1.0e-6f)
+    }
   }
 
   /**
@@ -319,4 +331,46 @@ class ObservableFloatArraySpec
     testNonEmpty(ObservableFloatArray.iterate(0.0f, 1)(_ + 1.0f), Array(0.0f))
     testNonEmpty(ObservableFloatArray.iterate(0.0f, 5)(_ + 1.0f), Array(0.0f, 1.0f, 2.0f, 3.0f, 4.0f))
   }
+
+  it should "support element access through (i) operator" in {
+    val a = ObservableFloatArray(1f, 2f, 3f, 4f, 5f)
+    val v = a(2)
+    assert(v === 3f)
+  }
+
+  it should "support element assignment through (i) operator" in {
+    val a = ObservableFloatArray(1f, 2f, 3f, 4f, 5f)
+    a(2) = 13
+    val v = a(2)
+    assert(v === 13f)
+    testEqual(a, ObservableFloatArray(1f, 2f, 13f, 4f, 5f))
+  }
+
+  it should "support operator +=" in {
+    val a = ObservableFloatArray(1f, 2f, 3f, 4f, 5f)
+    assert(a.length === 5)
+    a += 13
+    assert(a.length === 6)
+    assert(a(5) === 13f)
+    testEqual(a, ObservableFloatArray(1f, 2f, 3f, 4f, 5f, 13f))
+  }
+
+  it should "support operator ++= Array[Float](...)" in {
+    val a = ObservableFloatArray(1f, 2f, 3f, 4f, 5f)
+    assert(a.length === 5)
+    a ++= Array(13f, 42f)
+    assert(a.length === 7)
+    assert(a(6) === 42f)
+    testEqual(a, ObservableFloatArray(1f, 2f, 3f, 4f, 5f, 13f, 42f))
+  }
+
+  it should "support operator ++= ObservableFloatArray(...)" in {
+    val a = ObservableFloatArray(1f, 2f, 3f, 4f, 5f)
+    assert(a.length === 5)
+    a ++= ObservableFloatArray(13f, 42f)
+    assert(a.length === 7)
+    assert(a(6) === 42f)
+    testEqual(a, ObservableFloatArray(1f, 2f, 3f, 4f, 5f, 13f, 42f))
+  }
+
 }
