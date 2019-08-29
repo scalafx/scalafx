@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,14 +27,14 @@
 package scalafx.collections
 
 import java.{util => ju}
+
 import javafx.{collections => jfxc}
-
 import org.scalatest.Matchers._
-
-import scala.collection.mutable._
 import scalafx.Includes._
 import scalafx.collections.ObservableSet._
 import scalafx.testutil.SimpleSFXDelegateSpec
+
+import scala.collection.mutable
 
 /**
  * ObservableSet[T] Spec tests.
@@ -52,33 +52,33 @@ class ObservableSetSpec[T]
    * @param originalSet Set Original ObservableSet.
    * @param shouldBeTheSame If both maps should be same instance.
    */
-  private def compareInstances(generatedSet: Set[Int],
+  private def compareInstances(generatedSet: mutable.Set[Int],
                                originalSet: ObservableSet[Int], shouldBeTheSame: Boolean) {
     if (shouldBeTheSame) {
-      generatedSet should be theSameInstanceAs (originalSet)
+      generatedSet should be theSameInstanceAs originalSet
     } else {
       generatedSet should not be theSameInstanceAs(originalSet)
       generatedSet.getClass.getInterfaces.contains(classOf[ObservableSet[Int]]) should be(true)
     }
   }
 
-  override def getScalaClassInstance = ObservableSet.empty[T]
+  override def getScalaClassInstance: ObservableSet[T] = ObservableSet.empty[T]
 
-  override def getJavaClassInstance = jfxc.FXCollections.observableSet[T](new ju.HashSet[T])
+  override def getJavaClassInstance: jfxc.ObservableSet[T] = jfxc.FXCollections.observableSet[T](new ju.HashSet[T])
 
   it should "generate new instances using Companion's apply" in {
 
     def assertGeneratedSet(set: ObservableSet[Int]) {
-      set should have size (2)
+      set should have size 2
       set should contain(1)
       set should contain(2)
     }
 
     assertGeneratedSet(ObservableSet(1, 2))
     assertGeneratedSet(ObservableSet(List(1, 2)))
-    assertGeneratedSet(ObservableSet(Set(1, 2)))
+    assertGeneratedSet(ObservableSet(mutable.Set(1, 2)))
 
-    val scalaHashSet = new HashSet[Int]
+    val scalaHashSet = new mutable.HashSet[Int]
     scalaHashSet += 1 += 2
     assertGeneratedSet(ObservableSet(scalaHashSet))
   }
@@ -123,7 +123,7 @@ class ObservableSetSpec[T]
     // Preparation
     val set = ObservableSet(1, 2)
     set onChange {
-      (sourceSet, change) => sourceSet should be(set)
+      (sourceSet, _) => sourceSet should be(set)
     }
 
     // Execution
@@ -133,9 +133,9 @@ class ObservableSetSpec[T]
   it should "notify each addition individually" in {
     // Preparation
     val set = ObservableSet.empty[Int]
-    val addedValues = Buffer.empty[Int]
+    val addedValues = mutable.Buffer.empty[Int]
     set onChange {
-      (sourceSet, change) =>
+      (_, change) =>
         change match {
           case Add(value) => addedValues += value
           case _          => fail("Unexpected change: " + change)
@@ -144,17 +144,17 @@ class ObservableSetSpec[T]
 
     // Execution
     // Operations that change this set
-    compareInstances(set += 0, set, true)
-    compareInstances(set +=(1, 2), set, true)
-    compareInstances(set ++= List(3), set, true)
-    compareInstances(set ++= List(4, 5), set, true)
+    compareInstances(set += 0, set, shouldBeTheSame = true)
+    compareInstances(set ++= Seq(1, 2), set, shouldBeTheSame = true)
+    compareInstances(set ++= List(3), set, shouldBeTheSame = true)
+    compareInstances(set ++= List(4, 5), set, shouldBeTheSame = true)
     (set add 6) should be(true)
     set(7) = true
     // Operations that not change this set
-    compareInstances(set + 100, set, false)
-    compareInstances(set +(101, 102), set, false)
-    compareInstances(set ++ List(103), set, false)
-    compareInstances(set ++ List(104, 105), set, false)
+    compareInstances(set + 100, set, shouldBeTheSame = false)
+    compareInstances(set ++ Seq(101, 102), set, shouldBeTheSame = false)
+    compareInstances(set ++ List(103), set, shouldBeTheSame = false)
+    compareInstances(set ++ List(104, 105), set, shouldBeTheSame = false)
     (set add 1) should be(false)
     set(2) = true
 
@@ -162,12 +162,12 @@ class ObservableSetSpec[T]
     addedValues should equal((0 to 7).toBuffer)
   }
 
-  it should "notify each remotion individually" in {
+  it should "notify each removal individually" in {
     // Preparation 
-    val set = ObservableSet((0 to 15))
-    val removedValues = Buffer.empty[Int]
+    val set = ObservableSet(0 to 15)
+    val removedValues = mutable.Buffer.empty[Int]
     set onChange {
-      (sourceSet, change) =>
+      (_, change) =>
         change match {
           case Remove(value) => removedValues += value
           case _             => fail("Unexpected change: " + change)
@@ -176,17 +176,17 @@ class ObservableSetSpec[T]
 
     // Execution
     // Operations that change this set
-    compareInstances(set -= 0, set, true)
-    compareInstances(set -=(1, 2), set, true)
-    compareInstances(set --= List(3), set, true)
-    compareInstances(set --= List(4, 5), set, true)
+    compareInstances(set -= 0, set, shouldBeTheSame = true)
+    compareInstances(set -= (1, 2), set, shouldBeTheSame = true)
+    compareInstances(set --= List(3), set, shouldBeTheSame = true)
+    compareInstances(set --= List(4, 5), set, shouldBeTheSame = true)
     (set remove 6) should be(true)
     set(7) = false
     // Operations that not change this set
-    compareInstances(set - 100, set, false)
-    compareInstances(set -(101, 102), set, false)
-    compareInstances(set -- List(103), set, false)
-    compareInstances(set -- List(104, 105), set, false)
+    compareInstances(set - 100, set, shouldBeTheSame = false)
+    compareInstances(set -- Seq(101, 102), set, shouldBeTheSame = false)
+    compareInstances(set -- List(103), set, shouldBeTheSame = false)
+    compareInstances(set -- List(104, 105), set, shouldBeTheSame = false)
     (set remove 1) should be(false)
     set(2) = false
 
@@ -195,23 +195,23 @@ class ObservableSetSpec[T]
 
     removedValues.clear()
     // Retain even values
-    set retain (_ % 2 == 0)
+    set filterInPlace (_ % 2 == 0)
     removedValues.toList.sortWith(_ < _) should equal((8 to 15).filter(_ % 2 != 0).toList)
 
     removedValues.clear()
     // Clear Set
     set.clear()
-    set should be('empty)
+    set should be(Symbol("empty"))
     removedValues.toList.sortWith(_ < _) should equal((8 to 15).filter(_ % 2 == 0).toList)
   }
 
   it should "keep his behavior with other types of sets beyond HashSet" in {
     // Preparation
-    val set = ObservableSet(new LinkedHashSet[Int])
-    val addedValues = Buffer.empty[Int]
-    val removedValues = Buffer.empty[Int]
+    val set = ObservableSet(new mutable.LinkedHashSet[Int])
+    val addedValues = mutable.Buffer.empty[Int]
+    val removedValues = mutable.Buffer.empty[Int]
     set onChange {
-      (sourceSet, change) =>
+      (_, change) =>
         change match {
           case Add(value)    => addedValues += value
           case Remove(value) => removedValues += value
@@ -219,15 +219,15 @@ class ObservableSetSpec[T]
     }
 
     // Execution
-    compareInstances(set +=(1, 10, 3, 8, 5), set, true)
-    compareInstances(set -=(10, 9, 3), set, true)
-    compareInstances(set += 11, set, true)
-    compareInstances(set +=(-1, 15), set, true)
+    compareInstances(set ++= Seq(1, 10, 3, 8, 5), set, shouldBeTheSame = true)
+    compareInstances(set --= Seq(10, 9, 3), set, shouldBeTheSame = true)
+    compareInstances(set += 11, set, shouldBeTheSame = true)
+    compareInstances(set ++= Seq(-1, 15), set, shouldBeTheSame = true)
 
     // Verification
     set.toList should equal(List(1, 8, 5, 11, -1, 15))
-    addedValues should equal(Buffer(1, 10, 3, 8, 5, 11, -1, 15))
-    removedValues should equal(Buffer(10, 3))
+    addedValues should equal(mutable.Buffer(1, 10, 3, 8, 5, 11, -1, 15))
+    removedValues should equal(mutable.Buffer(10, 3))
   }
 
 }
