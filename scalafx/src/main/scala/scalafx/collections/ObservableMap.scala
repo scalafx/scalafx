@@ -33,9 +33,8 @@ import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
-import scala.collection.JavaConverters._
-import scala.collection.generic.MutableMapFactory
-import scala.collection.mutable
+import scala.collection.{MapFactory, MapFactoryDefaults, StrictOptimizedIterableOps, mutable}
+import scala.jdk.CollectionConverters._
 import scala.language.implicitConversions
 
 /**
@@ -43,7 +42,7 @@ import scala.language.implicitConversions
  *
  * @define OM `ObservableMap`
  */
-object ObservableMap extends MutableMapFactory[ObservableMap] {
+object ObservableMap extends MapFactory[ObservableMap] {
   /**
    * Extracts a JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html $OM]] from a 
    * ScalaFX's $OM.
@@ -52,6 +51,13 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    * @return JavaFX's $OM inside parameter.
    */
   implicit def sfxObservableMap2sfxObservableMap[K, V](om: ObservableMap[K, V]): jfxc.ObservableMap[K, V] = if (om != null) om.delegate else null
+
+  override def from[K, V](source: IterableOnce[(K, V)]): ObservableMap[K, V] = empty.addAll(source)
+
+  override def newBuilder[K, V]: mutable.Builder[(K, V), ObservableMap[K, V]] = {
+    new mutable.GrowableBuilder[(K, V), ObservableMap[K, V]](empty[K, V])
+  }
+
 
   // CHANGING INDICATORS - BEGIN
 
@@ -103,7 +109,7 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    *
    * @return a Empty [[scalafx.collections.ObservableHashMap]]
    */
-  def empty[K, V]: ObservableMap[K, V] = new ObservableHashMap[K, V]
+  override def empty[K, V]: ObservableMap[K, V] = new ObservableHashMap[K, V]()
 
   /**
    * Creates a new $OM from a sequence of tuples
@@ -151,10 +157,13 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
  */
 trait ObservableMap[K, V]
   extends mutable.Map[K, V]
-    with mutable.MapLike[K, V, ObservableMap[K, V]]
-    with mutable.Builder[(K, V), ObservableMap[K, V]]
+    with mutable.MapOps[K, V, mutable.Map, ObservableMap[K, V]]
+    with StrictOptimizedIterableOps[(K, V), mutable.Iterable, ObservableMap[K, V]]
+    with MapFactoryDefaults[K, V, ObservableMap, mutable.Iterable]
   with Observable
   with SFXDelegate[jfxc.ObservableMap[K, V]] {
+
+  override def mapFactory: MapFactory[ObservableMap] = ObservableMap
 
   /**
    * The result when this $MAP is used as a builder.
@@ -174,7 +183,7 @@ trait ObservableMap[K, V]
    * @param kv the key/value pair.
    * @return The $OM itself
    */
-  def +=(kv: (K, V)): ObservableMap.this.type = {
+  override def addOne(kv: (K, V)): ObservableMap.this.type = {
     delegate.put(kv._1, kv._2)
     this
   }
@@ -185,7 +194,7 @@ trait ObservableMap[K, V]
    * @param key the key to be removed
    * @return The $OM itself.
    */
-  def -=(key: K): ObservableMap.this.type = {
+  override def subtractOne(key: K): ObservableMap.this.type = {
     delegate.remove(key)
     this
   }
@@ -229,7 +238,7 @@ trait ObservableMap[K, V]
    * @return an option value containing the value associated with key in this $MAP, or None if
    *         none exists.
    */
-  def get(key: K): Option[V] = if (delegate.containsKey(key)) Option(delegate.get(key)) else None
+  override def get(key: K): Option[V] = if (delegate.containsKey(key)) Option(delegate.get(key)) else None
 
   import scalafx.collections.ObservableMap._
 
@@ -240,12 +249,12 @@ trait ObservableMap[K, V]
    */
   def onChange(op: (ObservableMap[K, V], Change[K, V]) => Unit): Subscription = {
     val listener = new jfxc.MapChangeListener[K, V] {
-      def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]) {
+      override def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]) {
         val changeEvent: Change[K, V] = (change.wasAdded, change.wasRemoved) match {
           case (true, true)   => Replace(change.getKey, change.getValueAdded, change.getValueRemoved)
           case (true, false)  => Add(change.getKey, change.getValueAdded)
           case (false, true)  => Remove(change.getKey, change.getValueRemoved)
-          case (false, false) => throw new IllegalStateException("Irregular Change: neither addition nor remotion")
+          case (false, false) => throw new IllegalStateException("Irregular Change: neither addition nor removal")
         }
 
         op(ObservableMap.this, changeEvent)
@@ -255,7 +264,7 @@ trait ObservableMap[K, V]
     delegate.addListener(listener)
 
     new Subscription {
-      def cancel(): Unit = {
+      override def cancel(): Unit = {
         delegate.removeListener(listener)
       }
     }
@@ -268,7 +277,7 @@ trait ObservableMap[K, V]
    */
   def onChange(op: => Unit): Subscription = {
     val listener = new jfxc.MapChangeListener[K, V] {
-      def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]): Unit = {
+      override def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]): Unit = {
         op
       }
     }
@@ -276,7 +285,7 @@ trait ObservableMap[K, V]
     delegate.addListener(listener)
 
     new Subscription {
-      def cancel(): Unit = {
+      override def cancel(): Unit = {
         delegate.removeListener(listener)
       }
     }
