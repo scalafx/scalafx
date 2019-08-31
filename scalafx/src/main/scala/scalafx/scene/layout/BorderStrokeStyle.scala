@@ -77,7 +77,7 @@ class BorderStrokeStyle(override val delegate: jfxsl.BorderStrokeStyle)
   /**
    * Defines the array representing the lengths of the dash segments.
    */
-  def dashArray: Seq[java.lang.Double] = delegate.getDashArray.asScala
+  def dashArray: Seq[java.lang.Double] = delegate.getDashArray.asScala.toSeq
 
   /**
    * Defines a distance specified in user coordinates that represents an offset into the dashing pattern.

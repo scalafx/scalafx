@@ -35,8 +35,8 @@ import scalafx.scene.image.Image
 import scalafx.scene.image.Image.sfxImage2jfx
 import scalafx.scene.image.ImageIncludes.jfxImage2sfx
 
-import scala.collection.JavaConverters._
 import scala.collection.{Map, Seq}
+import scala.jdk.CollectionConverters._
 import scala.language.implicitConversions
 
 object ClipboardContent {
@@ -96,7 +96,7 @@ object ClipboardContent {
   * @define JFX  JavaFX
   */
 class ClipboardContent(override val delegate: jfxsi.ClipboardContent = new jfxsi.ClipboardContent)
-  extends JMapWrapperLike[jfxsi.DataFormat, AnyRef, ClipboardContent]
+  extends JMapWrapperLike[jfxsi.DataFormat, AnyRef]
     with SFXDelegate[jfxsi.ClipboardContent] {
 
   override def underlying: java.util.Map[jfxsi.DataFormat, AnyRef] = delegate

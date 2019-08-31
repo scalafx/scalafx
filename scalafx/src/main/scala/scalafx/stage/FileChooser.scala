@@ -75,7 +75,7 @@ object FileChooser {
 
     def description: String = delegate.getDescription
 
-    def extensions: Seq[String] = delegate.getExtensions.asScala
+    def extensions: Seq[String] = delegate.getExtensions.asScala.toSeq
 
   }
 
@@ -153,7 +153,7 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
    */
   def showOpenMultipleDialog(ownerWindow: Window): Seq[File] = {
     val selection = delegate.showOpenMultipleDialog(ownerWindow)
-    if (selection != null) selection.asScala else null.asInstanceOf[Seq[File]]
+    if (selection != null) selection.asScala.toSeq else null.asInstanceOf[Seq[File]]
   }
 
   /**
