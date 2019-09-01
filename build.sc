@@ -1,4 +1,4 @@
-import mill._, scalalib._
+import mill._, scalalib._, scalafmt._
 import $ivy.`com.lihaoyi::mill-contrib-bloop:0.5.0`
 
 // JavaFX options
@@ -7,7 +7,7 @@ val scalafxVersion = s"$javaFXVersion-R18-SNAPSHOT"
 
 object scalafx extends mill.Cross[ScalaFXCrossModule]("2.13.0", "2.12.9", "2.11.12")
 
-class ScalaFXCrossModule(val crossScalaVersion: String) extends CrossSbtModule { parent =>
+class ScalaFXCrossModule(val crossScalaVersion: String) extends CrossSbtModule with ScalafmtModule { parent =>
   def suffix = crossScalaVersion
   def millSourcePath = os.pwd / "scalafx"
 
