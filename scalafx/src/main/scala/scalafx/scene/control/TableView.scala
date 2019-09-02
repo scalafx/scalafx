@@ -27,6 +27,8 @@
 
 package scalafx.scene.control
 
+import java.lang
+
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe, scene => jfxs, util => jfxu}
 import scalafx.Includes._
@@ -73,7 +75,7 @@ object TableView {
    * It delegates to JavaFX
    * [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html#UNCONSTRAINED_RESIZE_POLICY UNCONSTRAINED_RESIZE_POLICY]]
    */
-  val UnconstrainedResizePolicy = jfxsc.TableView.UNCONSTRAINED_RESIZE_POLICY
+  val UnconstrainedResizePolicy: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] = jfxsc.TableView.UNCONSTRAINED_RESIZE_POLICY
 
   /**
    * Simple policy that ensures the width of all visible leaf columns in this table sum up to equal
@@ -86,7 +88,7 @@ object TableView {
    *
    * It delegates to JavaFX [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableView.html#CONSTRAINED_RESIZE_POLICY CONSTRAINED_RESIZE_POLICY]]
    */
-  val ConstrainedResizePolicy = jfxsc.TableView.CONSTRAINED_RESIZE_POLICY
+  val ConstrainedResizePolicy: jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], lang.Boolean] = jfxsc.TableView.CONSTRAINED_RESIZE_POLICY
 
   /**
    * $OBJCOMPSTA$TV.$RF$OBJCOMPEND
