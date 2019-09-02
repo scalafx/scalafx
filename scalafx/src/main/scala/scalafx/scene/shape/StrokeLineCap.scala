@@ -34,20 +34,19 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object StrokeLineCap extends SFXEnumDelegateCompanion[jfxss.StrokeLineCap, StrokeLineCap] {
 
   case object Square extends StrokeLineCap(jfxss.StrokeLineCap.SQUARE)
-  @deprecated ("Use Square; SQUARE will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Square; SQUARE will be removed in a future release", "8.0.60-R10")
   val SQUARE = Square
 
   case object Butt extends StrokeLineCap(jfxss.StrokeLineCap.BUTT)
-  @deprecated ("Use Butt; BUTT will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Butt; BUTT will be removed in a future release", "8.0.60-R10")
   val BUTT = Butt
 
   case object Round extends StrokeLineCap(jfxss.StrokeLineCap.ROUND)
-  @deprecated ("Use Round; ROUND will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Round; ROUND will be removed in a future release", "8.0.60-R10")
   val ROUND = Round
 
   protected override def unsortedValues: Array[StrokeLineCap] = Array(Square, Butt, Round)
 }
 
-
 sealed abstract class StrokeLineCap(override val delegate: jfxss.StrokeLineCap)
-  extends SFXEnumDelegate[jfxss.StrokeLineCap]
+    extends SFXEnumDelegate[jfxss.StrokeLineCap]

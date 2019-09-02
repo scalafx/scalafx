@@ -30,7 +30,6 @@ package scalafx.application
 import javafx.{application => jfxa}
 import scalafx.delegate._
 
-
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/ConditionalFeature.html javafx.application.ConditionalFeature]] */
 object ConditionalFeature extends SFXEnumDelegateCompanion[jfxa.ConditionalFeature, ConditionalFeature] {
 
@@ -103,10 +102,26 @@ object ConditionalFeature extends SFXEnumDelegateCompanion[jfxa.ConditionalFeatu
   val WEB = Web
 
   protected override def unsortedValues: Array[ConditionalFeature] = Array(
-    Graphics, Controls, Media, Web, SWT, Swing, FXML, Scene3D, Effect, ShapeClip, InputMethod, TransparentWindow,
-    UnifiedWindow, TwoLevelFocus, VirtualKeyboard, InputTouch, InputMultitouch, InputPointer
+    Graphics,
+    Controls,
+    Media,
+    Web,
+    SWT,
+    Swing,
+    FXML,
+    Scene3D,
+    Effect,
+    ShapeClip,
+    InputMethod,
+    TransparentWindow,
+    UnifiedWindow,
+    TwoLevelFocus,
+    VirtualKeyboard,
+    InputTouch,
+    InputMultitouch,
+    InputPointer
   )
 }
 
-
-sealed abstract class ConditionalFeature(override val delegate: jfxa.ConditionalFeature) extends SFXEnumDelegate[jfxa.ConditionalFeature]
+sealed abstract class ConditionalFeature(override val delegate: jfxa.ConditionalFeature)
+    extends SFXEnumDelegate[jfxa.ConditionalFeature]

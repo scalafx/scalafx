@@ -44,7 +44,7 @@ object Text {
 }
 
 class Text(override val delegate: jfxst.Text = new jfxst.Text)
-  extends Shape(delegate)
+    extends Shape(delegate)
     with PositionDelegate[jfxst.Text]
     with SFXDelegate[jfxst.Text] {
 
@@ -145,7 +145,6 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   def wrappingWidth_=(v: Double) {
     wrappingWidth() = v
   }
-
 
   /**
     * Caret bias in the content. `true` means a bias towards the leading character edge.

@@ -26,7 +26,6 @@
  */
 package scalafx.animation
 
-
 import javafx.{animation => jfxa, scene => jfxs}
 
 import scala.language.implicitConversions
@@ -37,84 +36,86 @@ import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 
 /**
- * Companion Object for [[scalafx.animation.SequentialTransition]].
- *
- * @define ST `SequentialTransition`
- */
+  * Companion Object for [[scalafx.animation.SequentialTransition]].
+  *
+  * @define ST `SequentialTransition`
+  */
 object SequentialTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/SequentialTransition.html $ST]],
-   * extracting its delegate.
-   *
-   * @param v ScalaFX $ST
-   * @return JavaFX $ST extracted from `v`.
-   */
-  implicit def sfxSequentialTransition2jfx(v: SequentialTransition): jfxa.SequentialTransition = if (v != null) v.delegate else null
+    * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/SequentialTransition.html $ST]],
+    * extracting its delegate.
+    *
+    * @param v ScalaFX $ST
+    * @return JavaFX $ST extracted from `v`.
+    */
+  implicit def sfxSequentialTransition2jfx(v: SequentialTransition): jfxa.SequentialTransition =
+    if (v != null) v.delegate else null
 
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/SequentialTransition.html SequentialTransition]].
- *
- * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
- * @param delegate JavaFX $ST to be delegated.
- *
- * @define ST `SequentialTransition`
- * @define CONST The constructor of $ST
- * @define ANS [[scalafx.animation.Animation]]s
- * @define DV Default value:
- */
+  * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/SequentialTransition.html SequentialTransition]].
+  *
+  * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
+  * @param delegate JavaFX $ST to be delegated.
+  *
+  * @define ST `SequentialTransition`
+  * @define CONST The constructor of $ST
+  * @define ANS [[scalafx.animation.Animation]]s
+  * @define DV Default value:
+  */
 class SequentialTransition(override val delegate: jfxa.SequentialTransition = new jfxa.SequentialTransition)
-  extends Transition(delegate)
-  with SFXDelegate[jfxa.SequentialTransition] {
+    extends Transition(delegate)
+    with SFXDelegate[jfxa.SequentialTransition] {
 
   // CONSTRUCTORS
 
   /**
-   * $CONST
-   *
-   * @param node The target Node to be used in child Transitions that have no Node specified themselves
-   * @param children The child $ANS of this $ST
-   */
+    * $CONST
+    *
+    * @param node The target Node to be used in child Transitions that have no Node specified themselves
+    * @param children The child $ANS of this $ST
+    */
   def this(node: Node, children: Seq[Animation]) =
     this(new jfxa.SequentialTransition(node, children.map(_.delegate): _*))
 
   /**
-   * $CONST
-   *
-   * @param node The target Node to be used in child Transitions that have no Node specified themselves.
-   */
+    * $CONST
+    *
+    * @param node The target Node to be used in child Transitions that have no Node specified themselves.
+    */
   def this(node: Node) = this(new jfxa.SequentialTransition(node))
 
   /**
-   * $CONST
-   *
-   * @param children The child $ANS of this $ST
-   */
+    * $CONST
+    *
+    * @param children The child $ANS of this $ST
+    */
   def this(children: Seq[Animation]) =
     this(new jfxa.SequentialTransition(children.map(_.delegate): _*))
 
   // PROPERTIES
 
   /**
-   * This Node is used in all child Transitions, that do not define a target Node themselves.
-   */
+    * This Node is used in all child Transitions, that do not define a target Node themselves.
+    */
   def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }
 
   /**
-   * A list of $ANS that will be played sequentially.
-   */
+    * A list of $ANS that will be played sequentially.
+    */
   def children = delegate.getChildren
+
   /**
-   * Sets the list of $ANS, replacing the prior content. If you want append to current content, use `add` or
-   * similar.
-   *
-   * @param c list of $ANS to replace prior content.
-   */
+    * Sets the list of $ANS, replacing the prior content. If you want append to current content, use `add` or
+    * similar.
+    *
+    * @param c list of $ANS to replace prior content.
+    */
   def children_=(c: Iterable[Animation]) {
     fillSFXCollection(this.children, c)
   }

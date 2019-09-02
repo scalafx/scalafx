@@ -39,67 +39,67 @@ object InnerShadow {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/InnerShadow.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/InnerShadow.html]]
+  */
 class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShadow)
-  extends Effect(delegate)
-  with ColorDelegate[jfxse.InnerShadow]
-  with DimensionDelegate[jfxse.InnerShadow]
-  with InputDelegate[jfxse.InnerShadow]
-  with SFXDelegate[jfxse.InnerShadow] {
+    extends Effect(delegate)
+    with ColorDelegate[jfxse.InnerShadow]
+    with DimensionDelegate[jfxse.InnerShadow]
+    with InputDelegate[jfxse.InnerShadow]
+    with SFXDelegate[jfxse.InnerShadow] {
 
   /**
-   * Creates a new instance of InnerShadow with the specified blurType, color, radius, spread, offsetX and offsetY.
-   */
+    * Creates a new instance of InnerShadow with the specified blurType, color, radius, spread, offsetX and offsetY.
+    */
   def this(blurType: jfxse.BlurType, color: Color, radius: Double, choke: Double, offsetX: Double, offsetY: Double) =
     this(new jfxse.InnerShadow(blurType, color, radius, choke, offsetX, offsetY))
 
   /**
-   * Creates a new instance of InnerShadow with specified radius and color.
-   */
+    * Creates a new instance of InnerShadow with specified radius and color.
+    */
   def this(radius: Double, color: Color) = this(new jfxse.InnerShadow(radius, color))
 
   /**
-   * Creates a new instance of InnerShadow with specified radius, offsetX, offsetY and color.
-   */
+    * Creates a new instance of InnerShadow with specified radius, offsetX, offsetY and color.
+    */
   def this(radius: Double, offsetX: Double, offsetY: Double, color: Color) =
     this(new jfxse.InnerShadow(radius, offsetX, offsetY, color))
 
   /**
-   * The algorithm used to blur the shadow.
-   */
+    * The algorithm used to blur the shadow.
+    */
   def blurType: ObjectProperty[jfxse.BlurType] = delegate.blurTypeProperty
   def blurType_=(v: BlurType) {
     blurType() = v
   }
 
   /**
-   * The choke of the shadow.
-   */
+    * The choke of the shadow.
+    */
   def choke: DoubleProperty = delegate.chokeProperty
   def choke_=(v: Double) {
     choke() = v
   }
 
   /**
-   * The shadow offset in the x direction, in pixels.
-   */
+    * The shadow offset in the x direction, in pixels.
+    */
   def offsetX: DoubleProperty = delegate.offsetXProperty
   def offsetX_=(v: Double) {
     offsetX() = v
   }
 
   /**
-   * The shadow offset in the y direction, in pixels.
-   */
+    * The shadow offset in the y direction, in pixels.
+    */
   def offsetY: DoubleProperty = delegate.offsetYProperty
   def offsetY_=(v: Double) {
     offsetY() = v
   }
 
   /**
-   * The radius of the shadow blur kernel.
-   */
+    * The radius of the shadow blur kernel.
+    */
   def radius: DoubleProperty = delegate.radiusProperty
   def radius_=(v: Double) {
     radius() = v

@@ -36,166 +36,182 @@ import scala.language.implicitConversions
 object AnimationIncludes extends AnimationIncludes
 
 /**
- * Contains implicit methods to convert classes from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/package-summary.html `javafx.animation`]] classes to their
- * respective ScalaFX versions.
- *
- * @define INTERP [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Interpolatable.html `Interpolatable`]]
- * @define INTERPM `interpolate` method
- * @define GENERATE Generates a ScalaFX
- * @define FROM from its JavaFX counterparty.
- */
+  * Contains implicit methods to convert classes from
+  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/package-summary.html `javafx.animation`]] classes to their
+  * respective ScalaFX versions.
+  *
+  * @define INTERP [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Interpolatable.html `Interpolatable`]]
+  * @define INTERPM `interpolate` method
+  * @define GENERATE Generates a ScalaFX
+  * @define FROM from its JavaFX counterparty.
+  */
 trait AnimationIncludes {
 
   /**
-   *
-   * @param time Duration time
-   * @param v Function which returns a [[scalafx.animation.KeyValue]] [[scala.collection.immutable.Set]]
-   * @return new KeyFrame
-   */
+    *
+    * @param time Duration time
+    * @param v Function which returns a [[scalafx.animation.KeyValue]] [[scala.collection.immutable.Set]]
+    * @return new KeyFrame
+    */
   def at(time: Duration)(v: => Set[KeyValue[_, _ <: Object]]) = KeyFrame(time, values = v)
 
   /**
-   * Wraps a [[scalafx.animation.KeyValue]] in a `Set`.
-   *
-   * @param kv `KeyValue` to be injected.
-   * @return `Set` wrapping the `KeyValue`
-   */
-  implicit def wrapKeyValueInSet[T, J <: Object](kv: KeyValue[T, J]): Set[KeyValue[_, _ <: Object]] = Set[KeyValue[_, _ <: Object]](kv)
+    * Wraps a [[scalafx.animation.KeyValue]] in a `Set`.
+    *
+    * @param kv `KeyValue` to be injected.
+    * @return `Set` wrapping the `KeyValue`
+    */
+  implicit def wrapKeyValueInSet[T, J <: Object](kv: KeyValue[T, J]): Set[KeyValue[_, _ <: Object]] =
+    Set[KeyValue[_, _ <: Object]](kv)
 
   /**
-   * Wraps a [[scalafx.animation.Tweenable]] in a `Set`.
-   *
-   * @param t `Tweenable` to be injected.
-   * @return `Set` wrapping the `Tweenable`
-   */
-  implicit def wrapTweenableInSet[T, J <: Object](t: Tweenable[T, J]): Set[KeyValue[_, _ <: Object]] = Set[KeyValue[_, _ <: Object]](t.linear)
+    * Wraps a [[scalafx.animation.Tweenable]] in a `Set`.
+    *
+    * @param t `Tweenable` to be injected.
+    * @return `Set` wrapping the `Tweenable`
+    */
+  implicit def wrapTweenableInSet[T, J <: Object](t: Tweenable[T, J]): Set[KeyValue[_, _ <: Object]] =
+    Set[KeyValue[_, _ <: Object]](t.linear)
 
   /**
-   * Converts a `Set` of [[scalafx.animation.Tweenable]]s in a `Set` of [[scalafx.animation.KeyValue]]s.
-   *
-   * @param ts `Set` of [[scalafx.animation.Tweenable]]s
-   * @return `Set` of [[scalafx.animation.KeyValue]]s.
-   */
-  implicit def tweenableSet2KeyValueSet(ts: Set[Tweenable[_, _ <: Object]]): Set[(KeyValue[_, _ <: Object])] = ts.map(_.linear)
+    * Converts a `Set` of [[scalafx.animation.Tweenable]]s in a `Set` of [[scalafx.animation.KeyValue]]s.
+    *
+    * @param ts `Set` of [[scalafx.animation.Tweenable]]s
+    * @return `Set` of [[scalafx.animation.KeyValue]]s.
+    */
+  implicit def tweenableSet2KeyValueSet(ts: Set[Tweenable[_, _ <: Object]]): Set[(KeyValue[_, _ <: Object])] =
+    ts.map(_.linear)
 
   /**
-   * Wraps a [[scalafx.animation.KeyFrame]] in a `Seq`.
-   *
-   * @param kf `KeyFrame` to be wrapped.
-   * @return `Seq` wrapping the `KeyFrame`.
-   */
+    * Wraps a [[scalafx.animation.KeyFrame]] in a `Seq`.
+    *
+    * @param kf `KeyFrame` to be wrapped.
+    * @return `Seq` wrapping the `KeyFrame`.
+    */
   implicit def wrapKeyFrameInSeq[T <: KeyFrame](kf: T): Seq[T] = Seq[T](kf)
 
   /**
-   * Converts a $INTERP to a [[scala.Function2]].
-   *
-   * @tparam T type of function
-   * @param i $INTERP instance
-   * @return A [[scala.Function2]] that receives a instance of T and a Double (between 0.0 and 1.0) and returns a T Instance
-   *         according $INTERPM
-   */
+    * Converts a $INTERP to a [[scala.Function2]].
+    *
+    * @tparam T type of function
+    * @param i $INTERP instance
+    * @return A [[scala.Function2]] that receives a instance of T and a Double (between 0.0 and 1.0) and returns a T Instance
+    *         according $INTERPM
+    */
   implicit def jfxInterpolatable2sfxFunction2[T](i: jfxa.Interpolatable[T]): ((T, Double) => T) =
     (endValue: T, t: Double) => i.interpolate(endValue, t)
 
   /**
-   * Converts a [[scala.Function2]] to a $INTERP Implementation.
-   *
-   * @tparam T Type of Function
-   * @param f Function that receives a instance of T and a Double (between 0.0 and 1.0) and returns a T Instance.
-   * @return A new instance of $INTERP which $INTERPM calls `f` function.
-   */
-  implicit def sfxFunction2jfxInterpolatable[T](f: ((T, Double) => T)): jfxa.Interpolatable[T] = new jfxa.Interpolatable[T] {
-    def interpolate(endValue: T, t: Double): T = f(endValue, t)
-  }
+    * Converts a [[scala.Function2]] to a $INTERP Implementation.
+    *
+    * @tparam T Type of Function
+    * @param f Function that receives a instance of T and a Double (between 0.0 and 1.0) and returns a T Instance.
+    * @return A new instance of $INTERP which $INTERPM calls `f` function.
+    */
+  implicit def sfxFunction2jfxInterpolatable[T](f: ((T, Double) => T)): jfxa.Interpolatable[T] =
+    new jfxa.Interpolatable[T] {
+      def interpolate(endValue: T, t: Double): T = f(endValue, t)
+    }
 
   /**
-   * $GENERATE `Animation` $FROM
-   */
+    * $GENERATE `Animation` $FROM
+    */
   implicit def jfxAnimation2sfx(v: jfxa.Animation): Animation = if (v != null) new Animation(v) {} else null
 
   /**
-   * $GENERATE `Animation.Status` $FROM
-   */
+    * $GENERATE `Animation.Status` $FROM
+    */
   implicit def jfxAnimationStatus2sfx(v: jfxa.Animation.Status): Status = Animation.Status.jfxEnum2sfx(v)
 
   /**
-   * $GENERATE `AnimationTimer` $FROM
-   */
-  implicit def jfxAnimationTimer2sfx(at: jfxa.AnimationTimer): AnimationTimer = if (at != null) new AnimationTimer(at) {} else null
+    * $GENERATE `AnimationTimer` $FROM
+    */
+  implicit def jfxAnimationTimer2sfx(at: jfxa.AnimationTimer): AnimationTimer =
+    if (at != null) new AnimationTimer(at) {} else null
 
   /**
-   * $GENERATE `FadeTransition` $FROM
-   */
-  implicit def jfxFadeTransition2sfx(v: jfxa.FadeTransition): FadeTransition = if (v != null) new FadeTransition(v) else null
+    * $GENERATE `FadeTransition` $FROM
+    */
+  implicit def jfxFadeTransition2sfx(v: jfxa.FadeTransition): FadeTransition =
+    if (v != null) new FadeTransition(v) else null
 
   /**
-   * $GENERATE `FillTransition` $FROM
-   */
-  implicit def jfxFillTransition2sfx(v: jfxa.FillTransition): FillTransition = if (v != null) new FillTransition(v) else null
+    * $GENERATE `FillTransition` $FROM
+    */
+  implicit def jfxFillTransition2sfx(v: jfxa.FillTransition): FillTransition =
+    if (v != null) new FillTransition(v) else null
 
   /**
-   * $GENERATE `KeyFrame` $FROM
-   */
+    * $GENERATE `KeyFrame` $FROM
+    */
   implicit def jfxKeyFrame2sfx(v: jfxa.KeyFrame): KeyFrame = if (v != null) new KeyFrame(v) else null
 
   /**
-   * $GENERATE `KeyValue` $FROM
-   */
+    * $GENERATE `KeyValue` $FROM
+    */
   implicit def jfxKeyValue2sfx(v: jfxa.KeyValue): KeyValue[Nothing, Nothing] = if (v != null) new KeyValue(v) else null
 
   /**
-   * $GENERATE `ParallelTransition` $FROM
-   */
-  implicit def jfxParallelTransition2sfx(v: jfxa.ParallelTransition): ParallelTransition = if (v != null) new ParallelTransition(v) else null
+    * $GENERATE `ParallelTransition` $FROM
+    */
+  implicit def jfxParallelTransition2sfx(v: jfxa.ParallelTransition): ParallelTransition =
+    if (v != null) new ParallelTransition(v) else null
 
   /**
-   * $GENERATE `PathTransition` $FROM
-   */
-  implicit def jfxPathTransition2sfx(v: jfxa.PathTransition): PathTransition = if (v != null) new PathTransition(v) else null
+    * $GENERATE `PathTransition` $FROM
+    */
+  implicit def jfxPathTransition2sfx(v: jfxa.PathTransition): PathTransition =
+    if (v != null) new PathTransition(v) else null
 
   /**
-   * $GENERATE `PathTransition.OrientationType` $FROM
-   */
-  implicit def jfxPathTransitionOrientationType2sfx(v: jfxa.PathTransition.OrientationType): OrientationType = if (v != null) PathTransition.OrientationType(v) else null
+    * $GENERATE `PathTransition.OrientationType` $FROM
+    */
+  implicit def jfxPathTransitionOrientationType2sfx(v: jfxa.PathTransition.OrientationType): OrientationType =
+    if (v != null) PathTransition.OrientationType(v) else null
 
   /**
-   * $GENERATE `PauseTransition` $FROM
-   */
-  implicit def jfxPauseTransition2sfx(v: jfxa.PauseTransition): PauseTransition = if (v != null) new PauseTransition(v) else null
+    * $GENERATE `PauseTransition` $FROM
+    */
+  implicit def jfxPauseTransition2sfx(v: jfxa.PauseTransition): PauseTransition =
+    if (v != null) new PauseTransition(v) else null
 
   /**
-   * $GENERATE `RotateTransition` $FROM
-   */
-  implicit def jfxRotateTransition2sfx(v: jfxa.RotateTransition): RotateTransition = if (v != null) new RotateTransition(v) else null
+    * $GENERATE `RotateTransition` $FROM
+    */
+  implicit def jfxRotateTransition2sfx(v: jfxa.RotateTransition): RotateTransition =
+    if (v != null) new RotateTransition(v) else null
 
   /**
-   * $GENERATE `ScaleTransition` $FROM
-   */
-  implicit def jfxScaleTransition2sfx(v: jfxa.ScaleTransition): ScaleTransition = if (v != null) new ScaleTransition(v) else null
+    * $GENERATE `ScaleTransition` $FROM
+    */
+  implicit def jfxScaleTransition2sfx(v: jfxa.ScaleTransition): ScaleTransition =
+    if (v != null) new ScaleTransition(v) else null
 
   /**
-   * $GENERATE `SequentialTransition` $FROM
-   */
-  implicit def jfxSequentialTransition2sfx(v: jfxa.SequentialTransition): SequentialTransition = if (v != null) new SequentialTransition(v) else null
+    * $GENERATE `SequentialTransition` $FROM
+    */
+  implicit def jfxSequentialTransition2sfx(v: jfxa.SequentialTransition): SequentialTransition =
+    if (v != null) new SequentialTransition(v) else null
 
   /**
-   * $GENERATE `StrokeTransition` $FROM
-   */
-  implicit def jfxStrokeTransition2sfx(v: jfxa.StrokeTransition): StrokeTransition = if (v != null) new StrokeTransition(v) else null
+    * $GENERATE `StrokeTransition` $FROM
+    */
+  implicit def jfxStrokeTransition2sfx(v: jfxa.StrokeTransition): StrokeTransition =
+    if (v != null) new StrokeTransition(v) else null
 
   /**
-   * $GENERATE `Timeline` $FROM
-   */
+    * $GENERATE `Timeline` $FROM
+    */
   implicit def jfxTimeline2sfx(v: jfxa.Timeline): Timeline = if (v != null) new Timeline(v) else null
 
   /**
-   * $GENERATE `Transition` $FROM
-   */
+    * $GENERATE `Transition` $FROM
+    */
   implicit def jfxTransition2sfx(v: jfxa.Transition): Transition = if (v != null) new Transition(v) {} else null
 
   /**
-   * $GENERATE `TranslateTransition` $FROM
-   */
-  implicit def jfxTranslateTransition2sfx(v: jfxa.TranslateTransition): TranslateTransition = if (v != null) new TranslateTransition(v) else null
+    * $GENERATE `TranslateTransition` $FROM
+    */
+  implicit def jfxTranslateTransition2sfx(v: jfxa.TranslateTransition): TranslateTransition =
+    if (v != null) new TranslateTransition(v) else null
 }

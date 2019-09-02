@@ -36,68 +36,68 @@ object CollectionIncludes extends CollectionIncludes
 //trait CollectionIncludes extends TransformationIncludes with LowerPriorityIncludes
 
 /**
- * Contains implicit methods to convert from 
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/package-summary.html `javafx.collections`]]
- * Classes to their ScalaFX counterparts.
- */
+  * Contains implicit methods to convert from
+  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/package-summary.html `javafx.collections`]]
+  * Classes to their ScalaFX counterparts.
+  */
 trait CollectionIncludes extends TransformationIncludes {
 
   /**
-   * Converts a [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html `ObservableList`]]
-   * to a [[scalafx.collections.ObservableBuffer]].
-   *
-   * @tparam T List Type
-   * @param ol JavaFX ObservableList
-   * @return ScalaFX ObservableBuffer
-   */
+    * Converts a [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html `ObservableList`]]
+    * to a [[scalafx.collections.ObservableBuffer]].
+    *
+    * @tparam T List Type
+    * @param ol JavaFX ObservableList
+    * @return ScalaFX ObservableBuffer
+    */
   implicit def observableList2ObservableBuffer[T](ol: jfxc.ObservableList[T]): ObservableBuffer[T] =
     if (ol != null) new ObservableBuffer[T](ol)
     else null
 
   /**
-   * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html `ObservableMap`]]
-   * to a ScalaFX [[scalafx.collections.ObservableMap]].
-   *
-   * @tparam K Key Type
-   * @tparam V Value Type
-   * @param om JavaFX ObservableMap
-   * @return ScalaFX ObservableMap
-   */
+    * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html `ObservableMap`]]
+    * to a ScalaFX [[scalafx.collections.ObservableMap]].
+    *
+    * @tparam K Key Type
+    * @tparam V Value Type
+    * @param om JavaFX ObservableMap
+    * @return ScalaFX ObservableMap
+    */
   implicit def jfxObservableMap2sfxObservableMap[K, V](om: jfxc.ObservableMap[K, V]): ObservableMap[K, V] =
     if (om != null) new ObservableMap[K, V] {
       override val delegate: jfxc.ObservableMap[K, V] = om
-    }
-    else null
+    } else null
 
   /**
-   * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableSet.html `ObservableSet`]]
-   * to a ScalaFX [[scalafx.collections.ObservableSet]].
-   *
-   * @tparam T Set Type
-   * @param os JavaFX ObservableSet
-   * @return ScalaFX ObservableSet
-   */
+    * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableSet.html `ObservableSet`]]
+    * to a ScalaFX [[scalafx.collections.ObservableSet]].
+    *
+    * @tparam T Set Type
+    * @param os JavaFX ObservableSet
+    * @return ScalaFX ObservableSet
+    */
   implicit def jfxObservableSet2sfxObservableSet[T](os: jfxc.ObservableSet[T]): ObservableHashSet[T] =
     if (os != null) new ObservableHashSet[T] {
       override val delegate: jfxc.ObservableSet[T] = os
-    }
-    else null
+    } else null
 
   /**
-   * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableFloatArray.html]] `ObservableFloatArray` to a ScalaFX [[scalafx.collections.ObservableFloatArray]].
-   *
-   * @param ofa JavaFX ObservableFloatArray
-   * @return ScalaFX ObservableFloatArray
-   */
+    * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableFloatArray.html]] `ObservableFloatArray` to a ScalaFX [[scalafx.collections.ObservableFloatArray]].
+    *
+    * @param ofa JavaFX ObservableFloatArray
+    * @return ScalaFX ObservableFloatArray
+    */
   implicit def jfxObservableFloatArray2sfxObservableFloatArray(ofa: jfxc.ObservableFloatArray): ObservableFloatArray =
     if (ofa != null) new ObservableFloatArray(ofa) else null
 
   /**
-   * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableIntegerArray.html]] `ObservableIntegerArray` to a ScalaFX [[scalafx.collections.ObservableIntegerArray]].
-   *
-   * @param oia JavaFX ObservableIntegerArray
-   * @return ScalaFX ObservableIntegerArray
-   */
-  implicit def jfxObservableIntegerArray2sfxObservableIntegerArray(oia: jfxc.ObservableIntegerArray): ObservableIntegerArray =
+    * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableIntegerArray.html]] `ObservableIntegerArray` to a ScalaFX [[scalafx.collections.ObservableIntegerArray]].
+    *
+    * @param oia JavaFX ObservableIntegerArray
+    * @return ScalaFX ObservableIntegerArray
+    */
+  implicit def jfxObservableIntegerArray2sfxObservableIntegerArray(
+      oia: jfxc.ObservableIntegerArray
+  ): ObservableIntegerArray =
     if (oia != null) new ObservableIntegerArray(oia) else null
 }

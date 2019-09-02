@@ -39,8 +39,8 @@ import scalafx.scene.paint.Color
 import scalafx.scene.{Group, Scene}
 
 /**
- * Example adapted from code showed in [[http://docs.oracle.com/javafx/2/canvas/jfxpub-canvas.htm]].
- */
+  * Example adapted from code showed in [[http://docs.oracle.com/javafx/2/canvas/jfxpub-canvas.htm]].
+  */
 object LayerTest extends JFXApp {
 
   //  Create Layers

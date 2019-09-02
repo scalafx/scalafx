@@ -40,92 +40,102 @@ object TreeView {
   implicit def sfxTreeView2jfx[T](v: TreeView[T]): jfxsc.TreeView[T] = if (v != null) v.delegate else null
 
   object EditEvent {
-    implicit def sfxTreeViewEditEvent2jfx[T](v: EditEvent[T]): jfxsc.TreeView.EditEvent[T] = if (v != null) v.delegate else null
+    implicit def sfxTreeViewEditEvent2jfx[T](v: EditEvent[T]): jfxsc.TreeView.EditEvent[T] =
+      if (v != null) v.delegate else null
   }
 
   class EditEvent[T](override val delegate: jfxsc.TreeView.EditEvent[T])
-    extends Event(delegate)
-    with SFXDelegate[jfxsc.TreeView.EditEvent[T]] {
+      extends Event(delegate)
+      with SFXDelegate[jfxsc.TreeView.EditEvent[T]] {
 
     /**
-     * Creates a new EditEvent instance to represent an edit event.
-     */
-    def this(source: TreeView[T], eventType: jfxe.EventType[_ <: jfxsc.TreeView.EditEvent[T]], treeItem: TreeItem[T], oldValue: T, newValue: T) =
+      * Creates a new EditEvent instance to represent an edit event.
+      */
+    def this(
+        source: TreeView[T],
+        eventType: jfxe.EventType[_ <: jfxsc.TreeView.EditEvent[T]],
+        treeItem: TreeItem[T],
+        oldValue: T,
+        newValue: T
+    ) =
       this(new jfxsc.TreeView.EditEvent[T](source, eventType, treeItem, oldValue, newValue))
 
     /**
-     * Returns the new value input into the TreeItem by the end user.
-     */
+      * Returns the new value input into the TreeItem by the end user.
+      */
     def newValue: T = delegate.getNewValue
 
     /**
-     * Returns the old value that existed in the TreeItem prior to the current edit event.
-     */
+      * Returns the old value that existed in the TreeItem prior to the current edit event.
+      */
     def oldValue: T = delegate.getOldValue
 
     /**
-     * Returns the TreeView upon which the edit took place.
-     */
+      * Returns the TreeView upon which the edit took place.
+      */
     override def source: TreeView[T] = delegate.getSource
 
     /**
-     * Returns the `TreeItem` upon which the edit took place.
-     */
+      * Returns the `TreeItem` upon which the edit took place.
+      */
     def treeItem: TreeItem[T] = delegate.getTreeItem
 
   }
 
   /**
-   * An EventType that indicates some edit event has occurred.
-   */
+    * An EventType that indicates some edit event has occurred.
+    */
   def editAnyEvent = jfxsc.TreeView.editAnyEvent
 
   /**
-   * An EventType used to indicate that an edit event has just been canceled
-   * within the TreeView upon which the event was fired.
-   */
+    * An EventType used to indicate that an edit event has just been canceled
+    * within the TreeView upon which the event was fired.
+    */
   def editCancelEvent = jfxsc.TreeView.editCancelEvent
 
   /**
-   * An EventType that is used to indicate that an edit in a TreeView has been
-   * committed.
-   */
+    * An EventType that is used to indicate that an edit in a TreeView has been
+    * committed.
+    */
   def editCommitEvent = jfxsc.TreeView.editCommitEvent
 
   /**
-   * An EventType used to indicate that an edit event has started within the
-   * TreeView upon which the event was fired.
-   */
+    * An EventType used to indicate that an edit event has started within the
+    * TreeView upon which the event was fired.
+    */
   def editStartEvent = jfxsc.TreeView.editStartEvent
 
   /**
-   * Returns the number of levels of 'indentation' of the given TreeItem,
-   * based on how many times getParent() can be recursively called.
-   */
+    * Returns the number of levels of 'indentation' of the given TreeItem,
+    * based on how many times getParent() can be recursively called.
+    */
   @deprecated(
     "This method does not correctly calculate the distance from the given TreeItem to the root of the TreeView. " +
-      "As of JavaFX 8.0_20, the proper way to do this is via getTreeItemLevel(TreeItem)", since = "8.0_20")
+      "As of JavaFX 8.0_20, the proper way to do this is via getTreeItemLevel(TreeItem)",
+    since = "8.0_20"
+  )
   def nodeLevel(node: TreeItem[_]) = jfxsc.TreeView.getNodeLevel(node)
 
   /**
-   * Creates a new TreeView overriding layoutChildren method from JavaFX's
-   * TreeView.
-   */
-  def apply[T](layoutChildrenOp: () => Unit) = new TreeView[T](new jfxsc.TreeView[T] {
-    override def layoutChildren() {
-      layoutChildrenOp()
-    }
-  })
+    * Creates a new TreeView overriding layoutChildren method from JavaFX's
+    * TreeView.
+    */
+  def apply[T](layoutChildrenOp: () => Unit) =
+    new TreeView[T](new jfxsc.TreeView[T] {
+      override def layoutChildren() {
+        layoutChildrenOp()
+      }
+    })
 
 }
 
 class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[T])
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.TreeView[T]] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.TreeView[T]] {
 
   /**
-   * Creates a TreeView with the provided root node.
-   */
+    * Creates a TreeView with the provided root node.
+    */
   def this(rootItem: TreeItem[T]) = this(new jfxsc.TreeView[T](rootItem))
 
   def cellFactory = delegate.cellFactoryProperty
@@ -138,19 +148,19 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   }
 
   /**
-   * Specifies whether this TreeView is editable - only if the TreeView and
-   * the TreeCells within it are both editable will a TreeCell be able to go
-   * into their editing state.
-   */
+    * Specifies whether this TreeView is editable - only if the TreeView and
+    * the TreeCells within it are both editable will a TreeCell be able to go
+    * into their editing state.
+    */
   def editable: BooleanProperty = delegate.editableProperty
   def editable_=(v: Boolean) {
     editable() = v
   }
 
   /**
-   * A property used to represent the TreeItem currently being edited in the
-   * TreeView, if editing is taking place, or -1 if no item is being edited.
-   */
+    * A property used to represent the TreeItem currently being edited in the
+    * TreeView, if editing is taking place, or -1 if no item is being edited.
+    */
   def editingItem: ReadOnlyObjectProperty[jfxsc.TreeItem[T]] = delegate.editingItemProperty
 
   /** Represents the number of tree nodes presently able to be visible in the TreeView. */
@@ -163,101 +173,101 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   }
 
   /**
-   * The FocusModel provides the API through which it is possible to control
-   * focus on zero or one rows of the TreeView.
-   */
+    * The FocusModel provides the API through which it is possible to control
+    * focus on zero or one rows of the TreeView.
+    */
   def focusModel: ObjectProperty[jfxsc.FocusModel[jfxsc.TreeItem[T]]] = delegate.focusModelProperty
   def focusModel_=(v: FocusModel[jfxsc.TreeItem[T]]) {
     focusModel() = v
   }
 
   /**
-   * This event handler will be fired when the user cancels editing a cell.
-   */
+    * This event handler will be fired when the user cancels editing a cell.
+    */
   def onEditCancel = delegate.onEditCancelProperty
   def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
     onEditCancel() = v
   }
 
   /**
-   * This event handler will be fired when the user commits editing a cell.
-   */
+    * This event handler will be fired when the user commits editing a cell.
+    */
   def onEditCommit = delegate.onEditCommitProperty
   def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
     onEditCommit() = v
   }
 
   /**
-   * This event handler will be fired when the user starts editing a cell.
-   */
+    * This event handler will be fired when the user starts editing a cell.
+    */
   def onEditStart = delegate.onEditStartProperty
   def onEditStart_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
     onEditStart() = v
   }
 
   /**
-   * Called when there's a request to scroll an index into view using `scrollTo(Int)`
-   */
+    * Called when there's a request to scroll an index into view using `scrollTo(Int)`
+    */
   def onScrollTo: ObjectProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]] = delegate.onScrollToProperty
   def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]) {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]](onScrollTo, v)
   }
 
   /**
-   * Property representing the root node of the TreeView.
-   */
+    * Property representing the root node of the TreeView.
+    */
   def root: ObjectProperty[jfxsc.TreeItem[T]] = delegate.rootProperty
   def root_=(v: TreeItem[T]) {
     root() = v
   }
 
   /**
-   * Scrolls the TreeView such that the item in the given index is visible to the end user.
-   */
+    * Scrolls the TreeView such that the item in the given index is visible to the end user.
+    */
   def scrollTo(index: Int) {
     delegate.scrollTo(index)
   }
 
   /**
-   *
-   */
+    *
+    */
   def selectionModel: ObjectProperty[jfxsc.MultipleSelectionModel[jfxsc.TreeItem[T]]] = delegate.selectionModelProperty
   def selectionModel_=(v: MultipleSelectionModel[jfxsc.TreeItem[T]]) {
     selectionModel() = v
   }
 
   /**
-   * Property that represents whether or not the TreeView root node is visible.
-   */
+    * Property that represents whether or not the TreeView root node is visible.
+    */
   def showRoot: BooleanProperty = delegate.showRootProperty
   def showRoot_=(v: Boolean) {
     showRoot() = v
   }
 
   /**
-   * Returns the number of levels of 'indentation' of the given TreeItem, based on how many times getParent()
-   * can be recursively called.
-   * If the given TreeItem is the root node of this TreeView, or if the TreeItem does not have any parent set,
-   * the returned value will be zero. For each time getParent() is recursively called,
-   * the returned value is incremented by one.
-   *
-   * @param node  The `TreeItem` for which the level is needed.
-   * @return An integer representing the number of parents above the given node, or -1 if the given `TreeItem` is `null`.
-   */
+    * Returns the number of levels of 'indentation' of the given TreeItem, based on how many times getParent()
+    * can be recursively called.
+    * If the given TreeItem is the root node of this TreeView, or if the TreeItem does not have any parent set,
+    * the returned value will be zero. For each time getParent() is recursively called,
+    * the returned value is incremented by one.
+    *
+    * @param node  The `TreeItem` for which the level is needed.
+    * @return An integer representing the number of parents above the given node, or -1 if the given `TreeItem` is `null`.
+    */
   def treeItemLevel(node: TreeItem[_]): Int = delegate.getTreeItemLevel(node)
 
   /**
-   * Instructs the TreeView to begin editing the given TreeItem, if the
-   * TreeView is `editable`.
-   */
+    * Instructs the TreeView to begin editing the given TreeItem, if the
+    * TreeView is `editable`.
+    */
   def edit(item: TreeItem[T]) {
     delegate.edit(item)
   }
 
   /**
-   * Returns the index position of the given TreeItem, taking into account the
-   * current state of each TreeItem (i.e. whether or not it is expanded).
-   */
+    * Returns the index position of the given TreeItem, taking into account the
+    * current state of each TreeItem (i.e. whether or not it is expanded).
+    */
   def row(item: TreeItem[T]) = delegate.getRow(item)
 
 }

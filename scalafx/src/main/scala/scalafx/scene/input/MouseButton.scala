@@ -60,6 +60,4 @@ object MouseButton extends SFXEnumDelegateCompanion[jfxsi.MouseButton, MouseButt
   protected override def unsortedValues: Array[MouseButton] = Array(None, Primary, Middle, Secondary, Back, Forward)
 }
 
-
-sealed abstract class MouseButton(override val delegate: jfxsi.MouseButton)
-  extends SFXEnumDelegate[jfxsi.MouseButton]
+sealed abstract class MouseButton(override val delegate: jfxsi.MouseButton) extends SFXEnumDelegate[jfxsi.MouseButton]

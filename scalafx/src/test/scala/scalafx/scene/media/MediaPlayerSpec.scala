@@ -32,13 +32,13 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * MediaPlayer Spec tests.
- *
- *
- */
+  * MediaPlayer Spec tests.
+  *
+  *
+  */
 class MediaPlayerSpec
-  extends SimpleSFXDelegateSpec[jfxsm.MediaPlayer, MediaPlayer](classOf[jfxsm.MediaPlayer], classOf[MediaPlayer])
-  with UrlMedia {
+    extends SimpleSFXDelegateSpec[jfxsm.MediaPlayer, MediaPlayer](classOf[jfxsm.MediaPlayer], classOf[MediaPlayer])
+    with UrlMedia {
 
   override protected def getJavaClassInstance = new jfxsm.MediaPlayer(new jfxsm.Media(url))
 

@@ -35,27 +35,27 @@ import scala.collection.JavaConverters._
 import scala.language.implicitConversions
 
 /**
- * Companion Object for [[scalafx.animation.Timeline]].
- *
- * @define TM `Timeline`
- */
+  * Companion Object for [[scalafx.animation.Timeline]].
+  *
+  * @define TM `Timeline`
+  */
 object Timeline extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $TM to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Timeline.html $TM]],
-   * extracting its delegate.
-   *
-   * @param v ScalaFX $TM
-   * @return JavaFX $TM extracted from `v`.
-   */
+    * Converts a ScalaFX $TM to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Timeline.html $TM]],
+    * extracting its delegate.
+    *
+    * @param v ScalaFX $TM
+    * @return JavaFX $TM extracted from `v`.
+    */
   implicit def sfxTimeline2jfx(v: Timeline): jfxa.Timeline = if (v != null) v.delegate else null
 
   /**
-   * Creates a new $TM from a sequence of [[scalafx.animation.KeyFrame]]s.
-   *
-   * @param keyFrames sequence of [[scalafx.animation.KeyFrame]]s.
-   * @return A new $TM
-   */
+    * Creates a new $TM from a sequence of [[scalafx.animation.KeyFrame]]s.
+    *
+    * @param keyFrames sequence of [[scalafx.animation.KeyFrame]]s.
+    * @return A new $TM
+    */
   def apply(keyFrames: Seq[_ <: KeyFrame]): Timeline = {
     def kf: Seq[_ <: KeyFrame] = keyFrames
 
@@ -66,35 +66,35 @@ object Timeline extends AnimationStatics {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Timeline.html Timeline]].
- *
- * @constructor Creates a new ScalaFX $TM from a JavaFX $TM.
- * @param delegate JavaFX $TM to be delegated.
- *
- * @define TM `Timeline`
- * @define CONST The constructor of $TM
- * @define KF The [[scalafx.animation.KeyFrame]]s of this $TM.
- * @define DV Default value:
- */
+  * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Timeline.html Timeline]].
+  *
+  * @constructor Creates a new ScalaFX $TM from a JavaFX $TM.
+  * @param delegate JavaFX $TM to be delegated.
+  *
+  * @define TM `Timeline`
+  * @define CONST The constructor of $TM
+  * @define KF The [[scalafx.animation.KeyFrame]]s of this $TM.
+  * @define DV Default value:
+  */
 class Timeline(override val delegate: jfxa.Timeline = new jfxa.Timeline())
-  extends Animation(delegate)
-  with SFXDelegate[jfxa.Timeline] {
+    extends Animation(delegate)
+    with SFXDelegate[jfxa.Timeline] {
 
   // CONSTRUCTORS
 
   /**
-   * $CONST
-   *
-   * @param targetFramerate The custom target frame rate for this $TM
-   */
+    * $CONST
+    *
+    * @param targetFramerate The custom target frame rate for this $TM
+    */
   def this(targetFramerate: Double) = this(new jfxa.Timeline(targetFramerate))
 
   /**
-   * $CONST
-   *
-   * @param targetFramerate The custom target frame rate for this $TM
-   * @param keyFrames $KF
-   */
+    * $CONST
+    *
+    * @param targetFramerate The custom target frame rate for this $TM
+    * @param keyFrames $KF
+    */
   def this(targetFramerate: Double, keyFrames: Seq[_ <: KeyFrame]) = {
     // HACK: for some reason this does not compile with scala 2.10.0-M7
     // this(new jfxa.Timeline(targetFramerate, keyFrames.map(_.delegate).toArray: _*))
@@ -106,8 +106,8 @@ class Timeline(override val delegate: jfxa.Timeline = new jfxa.Timeline())
   // PROPERTIES
 
   /**
-   * $KF
-   */
+    * $KF
+    */
   def keyFrames: ObservableBuffer[jfxa.KeyFrame] = delegate.getKeyFrames
   def keyFrames_=(kfs: Seq[_ <: KeyFrame]) {
     val mapped = kfs.map((x: KeyFrame) => x.delegate)

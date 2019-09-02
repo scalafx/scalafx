@@ -52,6 +52,5 @@ object TextAlignment extends SFXEnumDelegateCompanion[jfxst.TextAlignment, TextA
   protected override def unsortedValues: Array[TextAlignment] = Array(Left, Center, Right, Justify)
 }
 
-
 sealed abstract class TextAlignment(override val delegate: jfxst.TextAlignment)
-  extends SFXEnumDelegate[jfxst.TextAlignment]
+    extends SFXEnumDelegate[jfxst.TextAlignment]

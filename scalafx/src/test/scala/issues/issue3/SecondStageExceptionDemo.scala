@@ -40,8 +40,8 @@ import scalafx.scene.layout.StackPane
 import scalafx.stage.Stage
 
 /**
- * Illustration of problem with creating and showing a second stage using `showAndWait()`.
- */
+  * Illustration of problem with creating and showing a second stage using `showAndWait()`.
+  */
 object SecondStageExceptionDemo extends JFXApp {
 
   stage = new PrimaryStage {

@@ -39,13 +39,15 @@ object BoundingBox {
 class BoundingBox(override val delegate: jfxg.BoundingBox) extends Bounds(delegate) with SFXDelegate[jfxg.BoundingBox] {
 
   /**
-   * Creates a new instance of 2D BoundingBox.
-   */
-  def this(minX: Double, minY: Double, width: Double, height: Double) = this(new jfxg.BoundingBox(minX, minY, width, height))
+    * Creates a new instance of 2D BoundingBox.
+    */
+  def this(minX: Double, minY: Double, width: Double, height: Double) =
+    this(new jfxg.BoundingBox(minX, minY, width, height))
 
   /**
-   * Creates a new instance of 3D BoundingBox.
-   */
-  def this(minX: Double, minY: Double, minZ: Double, width: Double, height: Double, depth: Double) = this(new jfxg.BoundingBox(minX, minY, minZ, width, height, depth))
+    * Creates a new instance of 3D BoundingBox.
+    */
+  def this(minX: Double, minY: Double, minZ: Double, width: Double, height: Double, depth: Double) =
+    this(new jfxg.BoundingBox(minX, minY, minZ, width, height, depth))
 
 }

@@ -38,22 +38,22 @@ object BoxBlur {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/BoxBlur.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/BoxBlur.html]]
+  */
 class BoxBlur(override val delegate: jfxse.BoxBlur = new jfxse.BoxBlur)
-  extends Effect(delegate)
-  with DimensionDelegate[jfxse.BoxBlur]
-  with InputDelegate[jfxse.BoxBlur]
-  with SFXDelegate[jfxse.BoxBlur] {
+    extends Effect(delegate)
+    with DimensionDelegate[jfxse.BoxBlur]
+    with InputDelegate[jfxse.BoxBlur]
+    with SFXDelegate[jfxse.BoxBlur] {
 
   /**
-   * Creates a new instance of BoxBlur with specified width, height and iterations.
-   */
+    * Creates a new instance of BoxBlur with specified width, height and iterations.
+    */
   def this(width: Double, height: Double, iterations: Int) = this(new jfxse.BoxBlur(width, height, iterations))
 
   /**
-   * The number of times to iterate the blur effect to improve its "quality" or "smoothness".
-   */
+    * The number of times to iterate the blur effect to improve its "quality" or "smoothness".
+    */
   def iterations: IntegerProperty = delegate.iterationsProperty
   def iterations_=(v: Int) {
     iterations() = v

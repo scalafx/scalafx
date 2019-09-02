@@ -32,9 +32,9 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * TextArea Spec tests.
- *
- */
+  * TextArea Spec tests.
+  *
+  */
 class TextAreaSpec
-  extends SimpleSFXDelegateSpec[jfxsc.TextArea, TextArea](classOf[jfxsc.TextArea], classOf[TextArea])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.TextArea, TextArea](classOf[jfxsc.TextArea], classOf[TextArea])
+    with RunOnApplicationThread

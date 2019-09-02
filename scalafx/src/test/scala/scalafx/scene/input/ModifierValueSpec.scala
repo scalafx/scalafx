@@ -33,7 +33,8 @@ import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.scene.input.KeyCombination.ModifierValue]]. */
 class ModifierValueSpec
-  extends SFXEnumDelegateSpec[jfxsi.KeyCombination.ModifierValue, KeyCombination.ModifierValue](
-    classOf[jfxsi.KeyCombination.ModifierValue],
-    classOf[KeyCombination.ModifierValue],
-    KeyCombination.ModifierValue)
+    extends SFXEnumDelegateSpec[jfxsi.KeyCombination.ModifierValue, KeyCombination.ModifierValue](
+      classOf[jfxsi.KeyCombination.ModifierValue],
+      classOf[KeyCombination.ModifierValue],
+      KeyCombination.ModifierValue
+    )

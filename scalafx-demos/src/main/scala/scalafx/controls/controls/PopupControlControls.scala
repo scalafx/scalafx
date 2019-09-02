@@ -26,13 +26,14 @@
  */
 
 /**
- *
- */
+  *
+  */
 package scalafx.controls.controls
 
 import scalafx.scene.control._
 
-class PopupControlControls(target: PopupControl) extends PropertiesNodes[PopupControl](target, "Popup Control Properties") {
+class PopupControlControls(target: PopupControl)
+    extends PropertiesNodes[PopupControl](target, "Popup Control Properties") {
 
   val originalId: String = target.id.get()
   val txfID = new TextField {
@@ -48,7 +49,6 @@ class PopupControlControls(target: PopupControl) extends PropertiesNodes[PopupCo
   val originalPrefWidth = target.prefWidth
   val originalMinWidth = target.minWidth
   val originalMaxWidth = target.maxWidth
-
 
   super.addNode("ID", txfID)
   super.addNode("Pref Width", new SliderLabelControl(target.prefWidth))
@@ -66,4 +66,4 @@ class PopupControlControls(target: PopupControl) extends PropertiesNodes[PopupCo
 def id = delegate.idProperty
 def skin = delegate.skinProperty
 def style_=(v: String) {
-*/
+ */

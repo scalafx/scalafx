@@ -32,10 +32,12 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * PasswordField Spec tests.
- *
- */
+  * PasswordField Spec tests.
+  *
+  */
 class PasswordFieldSpec
-  extends SimpleSFXDelegateSpec[jfxsc.PasswordField, PasswordField](
-    classOf[jfxsc.PasswordField], classOf[PasswordField])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.PasswordField, PasswordField](
+      classOf[jfxsc.PasswordField],
+      classOf[PasswordField]
+    )
+    with RunOnApplicationThread

@@ -41,96 +41,109 @@ object Image {
 class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image] {
 
   /**
-   * Construct an Image which pixels are loaded from the specified input stream.
-   */
+    * Construct an Image which pixels are loaded from the specified input stream.
+    */
   def this(inputStream: InputStream) = this(new jfxsi.Image(inputStream))
 
   /**
-   * Construct a new Image with the specified parameters.
-   */
-  def this(inputStream: InputStream, requestedWidth: Double, requestedHeight: Double, preserveRatio: Boolean, smooth: Boolean) =
+    * Construct a new Image with the specified parameters.
+    */
+  def this(
+      inputStream: InputStream,
+      requestedWidth: Double,
+      requestedHeight: Double,
+      preserveRatio: Boolean,
+      smooth: Boolean
+  ) =
     this(new jfxsi.Image(inputStream, requestedWidth, requestedHeight, preserveRatio, smooth))
 
   /**
-   * Construct an Image which pixels are loaded from the specified url.
-   */
+    * Construct an Image which pixels are loaded from the specified url.
+    */
   def this(url: String) = this(new jfxsi.Image(url))
 
   /**
-   * Construct a new Image with the specified parameters.
-   */
+    * Construct a new Image with the specified parameters.
+    */
   def this(url: String, backgroundLoading: Boolean) = this(new jfxsi.Image(url, backgroundLoading))
 
   /**
-   * Construct a new Image with the specified parameters.
-   */
+    * Construct a new Image with the specified parameters.
+    */
   def this(url: String, requestedWidth: Double, requestedHeight: Double, preserveRatio: Boolean, smooth: Boolean) =
     this(new jfxsi.Image(url, requestedWidth, requestedHeight, preserveRatio, smooth))
 
   /**
-   * Construct a new Image with the specified parameters.
-   */
-  def this(url: String, requestedWidth: Double, requestedHeight: Double, preserveRatio: Boolean, smooth: Boolean, backgroundLoading: Boolean) =
+    * Construct a new Image with the specified parameters.
+    */
+  def this(
+      url: String,
+      requestedWidth: Double,
+      requestedHeight: Double,
+      preserveRatio: Boolean,
+      smooth: Boolean,
+      backgroundLoading: Boolean
+  ) =
     this(new jfxsi.Image(url, requestedWidth, requestedHeight, preserveRatio, smooth, backgroundLoading))
 
   /**
-   *
-   */
+    *
+    */
   def this(that: AnyRef, imagePath: String) = this(new jfxsi.Image(that.getClass.getResourceAsStream(imagePath)))
 
   /**
-   * Indicates whether an error was detected while loading an image.
-   */
+    * Indicates whether an error was detected while loading an image.
+    */
   def error: ReadOnlyBooleanProperty = delegate.errorProperty
 
   /** The exception which caused image loading to fail. */
   def exception: ReadOnlyObjectProperty[java.lang.Exception] = delegate.exceptionProperty
 
   /**
-   * The image height or 0 if the image loading fails.
-   */
+    * The image height or 0 if the image loading fails.
+    */
   def height: ReadOnlyDoubleProperty = delegate.heightProperty
 
   /**
-   * The approximate percentage of image's loading that has been completed.
-   */
+    * The approximate percentage of image's loading that has been completed.
+    */
   def progress: ReadOnlyDoubleProperty = delegate.progressProperty
 
   /**
-   * The image width or 0 if the image loading fails.
-   */
+    * The image width or 0 if the image loading fails.
+    */
   def width: ReadOnlyDoubleProperty = delegate.widthProperty
 
   /**
-   * Cancels the background loading of this image.
-   */
+    * Cancels the background loading of this image.
+    */
   def cancel() {
     delegate.cancel()
   }
 
   /**
-   * Indicates whether the image is being loaded in the background.
-   */
+    * Indicates whether the image is being loaded in the background.
+    */
   def backgroundLoading = delegate.isBackgroundLoading
 
   /**
-   * Indicates whether to preserve the aspect ratio of the original image when
-   * scaling to fit the image within the bounding box provided by `width` and
-   * `height`.
-   */
+    * Indicates whether to preserve the aspect ratio of the original image when
+    * scaling to fit the image within the bounding box provided by `width` and
+    * `height`.
+    */
   def preserveRatio = delegate.isPreserveRatio
 
   /**
-   * This method returns a Option of [[scalafx.scene.image.PixelReader]] that provides access to read
-   * the pixels of the image, if the image is readable.
-   */
+    * This method returns a Option of [[scalafx.scene.image.PixelReader]] that provides access to read
+    * the pixels of the image, if the image is readable.
+    */
   def pixelReader: Option[PixelReader] = Option(delegate.getPixelReader)
 
   /**
-   * Indicates whether to use a better quality filtering algorithm or a faster
-   * one when scaling this image to fit within the bounding box provided by
-   * `width` and `height`.
-   */
+    * Indicates whether to use a better quality filtering algorithm or a faster
+    * one when scaling this image to fit within the bounding box provided by
+    * `width` and `height`.
+    */
   def smooth = delegate.isSmooth
 
 }

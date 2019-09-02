@@ -33,13 +33,13 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * Screen Spec tests.
- *
- *
- */
+  * Screen Spec tests.
+  *
+  *
+  */
 class ScreenSpec
-  extends SimpleSFXDelegateSpec[jfxs.Screen, Screen](classOf[jfxs.Screen], classOf[Screen])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxs.Screen, Screen](classOf[jfxs.Screen], classOf[Screen])
+    with RunOnApplicationThread {
 
   override protected def getJavaClassInstance = jfxs.Screen.getPrimary
 

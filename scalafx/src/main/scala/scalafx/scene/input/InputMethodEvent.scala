@@ -35,26 +35,29 @@ import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
 
 object InputMethodEvent {
-  implicit def sfxInputMethodEvent2jfx(ime: InputMethodEvent): jfxsi.InputMethodEvent = if (ime != null) ime.delegate else null
+  implicit def sfxInputMethodEvent2jfx(ime: InputMethodEvent): jfxsi.InputMethodEvent =
+    if (ime != null) ime.delegate else null
 
   val InputMethodTextChanged: EventType[jfxsi.InputMethodEvent] = jfxsi.InputMethodEvent.INPUT_METHOD_TEXT_CHANGED
 }
 
-class InputMethodEvent(override val delegate: jfxsi.InputMethodEvent) extends InputEvent(delegate) with SFXDelegate[jfxsi.InputMethodEvent] {
+class InputMethodEvent(override val delegate: jfxsi.InputMethodEvent)
+    extends InputEvent(delegate)
+    with SFXDelegate[jfxsi.InputMethodEvent] {
 
   /**
-   * The input method caret position within the composed text.
-   */
+    * The input method caret position within the composed text.
+    */
   def caretPosition: Int = delegate.getCaretPosition
 
   /**
-   * Gets the text that is committed by the input method as the result of the composition.
-   */
+    * Gets the text that is committed by the input method as the result of the composition.
+    */
   def committed: String = delegate.getCommitted
 
   /**
-   * Gets the text under composition.
-   */
+    * Gets the text under composition.
+    */
   def composed: ObservableBuffer[jfxsi.InputMethodTextRun] = delegate.getComposed
 
 }

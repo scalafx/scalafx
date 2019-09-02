@@ -32,14 +32,16 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * BarChart Spec tests.
- *
- *
- */
+  * BarChart Spec tests.
+  *
+  *
+  */
 class BarChartSpec
-  extends SimpleSFXDelegateSpec[jfxsc.BarChart[String, Number], BarChart[String, Number]](
-    classOf[jfxsc.BarChart[String, Number]], classOf[BarChart[String, Number]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.BarChart[String, Number], BarChart[String, Number]](
+      classOf[jfxsc.BarChart[String, Number]],
+      classOf[BarChart[String, Number]]
+    )
+    with RunOnApplicationThread {
 
   override def getScalaClassInstance = new BarChart[String, Number](getJavaClassInstance)
 

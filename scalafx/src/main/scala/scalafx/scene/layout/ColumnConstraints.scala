@@ -36,79 +36,89 @@ import scalafx.delegate.SFXDelegate
 import scalafx.geometry.HPos
 
 object ColumnConstraints {
-  implicit def sfxColumnConstraints2jfx(v: ColumnConstraints): jfxsl.ColumnConstraints = if (v != null) v.delegate else null
+  implicit def sfxColumnConstraints2jfx(v: ColumnConstraints): jfxsl.ColumnConstraints =
+    if (v != null) v.delegate else null
 }
 
 class ColumnConstraints(override val delegate: jfxsl.ColumnConstraints = new jfxsl.ColumnConstraints)
-  extends ConstraintsBase(delegate) with SFXDelegate[jfxsl.ColumnConstraints] {
+    extends ConstraintsBase(delegate)
+    with SFXDelegate[jfxsl.ColumnConstraints] {
 
   /**
-   * Creates a column constraint object with a fixed width.
-   */
+    * Creates a column constraint object with a fixed width.
+    */
   def this(width: Double) = this(new jfxsl.ColumnConstraints(width))
 
   /**
-   * Creates a column constraint object with a fixed size range.
-   */
-  def this(minWidth: Double, prefWidth: Double, maxWidth: Double) = this(new jfxsl.ColumnConstraints(minWidth, prefWidth, maxWidth))
+    * Creates a column constraint object with a fixed size range.
+    */
+  def this(minWidth: Double, prefWidth: Double, maxWidth: Double) =
+    this(new jfxsl.ColumnConstraints(minWidth, prefWidth, maxWidth))
 
   /**
-   * Creates a column constraint object with a fixed size range, horizontal grow priority, horizontal alignment, and horizontal fill behavior.
-   */
-  def this(minWidth: Double, prefWidth: Double, maxWidth: Double, hgrow: jfxsl.Priority, halignment: jfxg.HPos, fillWidth: Boolean) =
+    * Creates a column constraint object with a fixed size range, horizontal grow priority, horizontal alignment, and horizontal fill behavior.
+    */
+  def this(
+      minWidth: Double,
+      prefWidth: Double,
+      maxWidth: Double,
+      hgrow: jfxsl.Priority,
+      halignment: jfxg.HPos,
+      fillWidth: Boolean
+  ) =
     this(new jfxsl.ColumnConstraints(minWidth, prefWidth, maxWidth, hgrow, halignment, fillWidth))
 
   /**
-   * The horizontal fill policy for the column.
-   */
+    * The horizontal fill policy for the column.
+    */
   def fillWidth: BooleanProperty = delegate.fillWidthProperty
   def fillWidth_=(v: Boolean) {
     fillWidth() = v
   }
 
   /**
-   * The horizontal alignment for the column.
-   */
+    * The horizontal alignment for the column.
+    */
   def halignment: ObjectProperty[jfxg.HPos] = delegate.halignmentProperty
   def halignment_=(v: HPos) {
     halignment() = v
   }
 
   /**
-   * The horizontal grow priority for the column.
-   */
+    * The horizontal grow priority for the column.
+    */
   def hgrow: ObjectProperty[jfxsl.Priority] = delegate.hgrowProperty
   def hgrow_=(v: Priority) {
     hgrow() = v
   }
 
   /**
-   * The maximum width for the column.
-   */
+    * The maximum width for the column.
+    */
   def maxWidth: DoubleProperty = delegate.maxWidthProperty
   def maxWidth_=(v: Double) {
     maxWidth() = v
   }
 
   /**
-   * The minimum width for the column.
-   */
+    * The minimum width for the column.
+    */
   def minWidth: DoubleProperty = delegate.minWidthProperty
   def minWidth_=(v: Double) {
     minWidth() = v
   }
 
   /**
-   * The width percentage of the column.
-   */
+    * The width percentage of the column.
+    */
   def percentWidth: DoubleProperty = delegate.percentWidthProperty
   def percentWidth_=(v: Double) {
     percentWidth() = v
   }
 
   /**
-   * The preferred width for the column.
-   */
+    * The preferred width for the column.
+    */
   def prefWidth: DoubleProperty = delegate.prefWidthProperty
   def prefWidth_=(v: Double) {
     prefWidth() = v

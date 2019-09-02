@@ -39,95 +39,107 @@ object CornerRadii {
 }
 
 /**
- * Defines the radii of each of the four corners of a BorderStroke.
- */
-class CornerRadii(override val delegate: jfxsl.CornerRadii)
-  extends SFXDelegate[jfxsl.CornerRadii] {
+  * Defines the radii of each of the four corners of a BorderStroke.
+  */
+class CornerRadii(override val delegate: jfxsl.CornerRadii) extends SFXDelegate[jfxsl.CornerRadii] {
 
   /**
-   * Create a new CornerRadii with a single uniform radii value for all components of all corners.
-   */
+    * Create a new CornerRadii with a single uniform radii value for all components of all corners.
+    */
   def this(radius: Double) = this(new jfxsl.CornerRadii(radius))
 
   /**
-   * Create a new CornerRadii with the given radii for each corner.
-   */
+    * Create a new CornerRadii with the given radii for each corner.
+    */
   def this(radius: Double, asPercent: Boolean) = this(new jfxsl.CornerRadii(radius, asPercent))
 
   /**
-   * Create a new CornerRadii with uniform yet independent radii for each corner.
-   */
-  def this(topLeft: Double, topRight: Double, bottomRight: Double, bottomLeft: Double,
-           asPercent: Boolean) =
+    * Create a new CornerRadii with uniform yet independent radii for each corner.
+    */
+  def this(topLeft: Double, topRight: Double, bottomRight: Double, bottomLeft: Double, asPercent: Boolean) =
     this(new jfxsl.CornerRadii(topLeft, topRight, bottomRight, bottomLeft, asPercent))
 
   /**
-   * Creates a new `CornerRadii`, allowing for specification of each component of each corner radii
-   * and whether each component should be treated as a value or percentage.
-   */
-  def this(topLeftHorizontalRadius: Double, topLeftVerticalRadius: Double,
-           topRightVerticalRadius: Double, topRightHorizontalRadius: Double,
-           bottomRightHorizontalRadius: Double, bottomRightVerticalRadius: Double,
-           bottomLeftVerticalRadius: Double, bottomLeftHorizontalRadius: Double,
-           topLeftHorizontalRadiusAsPercent: Boolean, topLeftVerticalRadiusAsPercent: Boolean,
-           topRightVerticalRadiusAsPercent: Boolean, topRightHorizontalRadiusAsPercent: Boolean,
-           bottomRightHorizontalRadiusAsPercent: Boolean, bottomRightVerticalRadiusAsPercent: Boolean,
-           bottomLeftVerticalRadiusAsPercent: Boolean, bottomLeftHorizontalRadiusAsPercent: Boolean) =
-    this(new jfxsl.CornerRadii(
-      topLeftHorizontalRadius, topLeftVerticalRadius,
-      topRightVerticalRadius, topRightHorizontalRadius,
-      bottomRightHorizontalRadius, bottomRightVerticalRadius,
-      bottomLeftVerticalRadius, bottomLeftHorizontalRadius,
-      topLeftHorizontalRadiusAsPercent, topLeftVerticalRadiusAsPercent,
-      topRightVerticalRadiusAsPercent, topRightHorizontalRadiusAsPercent,
-      bottomRightHorizontalRadiusAsPercent, bottomRightVerticalRadiusAsPercent,
-      bottomLeftVerticalRadiusAsPercent, bottomLeftHorizontalRadiusAsPercent))
+    * Creates a new `CornerRadii`, allowing for specification of each component of each corner radii
+    * and whether each component should be treated as a value or percentage.
+    */
+  def this(
+      topLeftHorizontalRadius: Double,
+      topLeftVerticalRadius: Double,
+      topRightVerticalRadius: Double,
+      topRightHorizontalRadius: Double,
+      bottomRightHorizontalRadius: Double,
+      bottomRightVerticalRadius: Double,
+      bottomLeftVerticalRadius: Double,
+      bottomLeftHorizontalRadius: Double,
+      topLeftHorizontalRadiusAsPercent: Boolean,
+      topLeftVerticalRadiusAsPercent: Boolean,
+      topRightVerticalRadiusAsPercent: Boolean,
+      topRightHorizontalRadiusAsPercent: Boolean,
+      bottomRightHorizontalRadiusAsPercent: Boolean,
+      bottomRightVerticalRadiusAsPercent: Boolean,
+      bottomLeftVerticalRadiusAsPercent: Boolean,
+      bottomLeftHorizontalRadiusAsPercent: Boolean
+  ) =
+    this(
+      new jfxsl.CornerRadii(
+        topLeftHorizontalRadius,
+        topLeftVerticalRadius,
+        topRightVerticalRadius,
+        topRightHorizontalRadius,
+        bottomRightHorizontalRadius,
+        bottomRightVerticalRadius,
+        bottomLeftVerticalRadius,
+        bottomLeftHorizontalRadius,
+        topLeftHorizontalRadiusAsPercent,
+        topLeftVerticalRadiusAsPercent,
+        topRightVerticalRadiusAsPercent,
+        topRightHorizontalRadiusAsPercent,
+        bottomRightHorizontalRadiusAsPercent,
+        bottomRightVerticalRadiusAsPercent,
+        bottomLeftVerticalRadiusAsPercent,
+        bottomLeftHorizontalRadiusAsPercent
+      )
+    )
 
   /**
-   * The length of the horizontal radii of the bottom-left corner.
-   */
+    * The length of the horizontal radii of the bottom-left corner.
+    */
   def BottomLeftHorizontalRadius: Double = delegate.getBottomLeftHorizontalRadius
 
-
   /**
-   * The length of the vertical radii of the bottom-left corner.
-   */
+    * The length of the vertical radii of the bottom-left corner.
+    */
   def bottomLeftVerticalRadius: Double = delegate.getBottomLeftVerticalRadius
 
-
   /**
-   * The length of the horizontal radii of the bottom-right corner.
-   */
+    * The length of the horizontal radii of the bottom-right corner.
+    */
   def bottomRightHorizontalRadius: Double = delegate.getBottomRightHorizontalRadius
 
-
   /**
-   * The length of the vertical radii of the bottom-right corner.
-   */
+    * The length of the vertical radii of the bottom-right corner.
+    */
   def bottomRightVerticalRadius: Double = delegate.getBottomRightVerticalRadius
 
-
   /**
-   * The length of the horizontal radii of the top-left corner.
-   */
+    * The length of the horizontal radii of the top-left corner.
+    */
   def topLeftHorizontalRadius: Double = delegate.getTopLeftHorizontalRadius
 
-
   /**
-   * The length of the vertical radii of the top-left corner.
-   */
+    * The length of the vertical radii of the top-left corner.
+    */
   def topLeftVerticalRadius: Double = delegate.getTopLeftVerticalRadius
 
-
   /**
-   * The length of the horizontal radii of the top-right corner.
-   */
+    * The length of the horizontal radii of the top-right corner.
+    */
   def topRightHorizontalRadius: Double = delegate.getTopRightHorizontalRadius
 
-
   /**
-   * The length of the vertical radii of the top-right corner.
-   */
+    * The length of the vertical radii of the top-right corner.
+    */
   def topRightVerticalRadius: Double = delegate.getTopRightVerticalRadius
 
 }

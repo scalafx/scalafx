@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,14 +40,13 @@ object PickResult {
 
   /** An undefined face. This value is used for the intersected face if the picked node has no user-specified faces. */
   val FaceUndefined: Int = jfxsi.PickResult.FACE_UNDEFINED
-  @deprecated ("Use FaceUndefined; FACE_UNDEFINED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use FaceUndefined; FACE_UNDEFINED will be removed in a future release", "8.0.60-R10")
   val FACE_UNDEFINED = FaceUndefined
 }
 
 /** A container for the result of a pick event. Wrapper for JavaFX's
   * [[http://download.java.net/jdk8/jfxdocs/javafx/scene/input/PickResult.html PickResult]]. */
-class PickResult(override val delegate: jfxsi.PickResult)
-  extends SFXDelegate[jfxsi.PickResult] {
+class PickResult(override val delegate: jfxsi.PickResult) extends SFXDelegate[jfxsi.PickResult] {
 
   /** Creates a pick result for a 2D case where no additional information is needed.
     *

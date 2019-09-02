@@ -39,28 +39,26 @@ object Parent {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Parent.html]].
- */
-abstract class Parent(override val delegate: jfxs.Parent)
-  extends Node(delegate)
-  with SFXDelegate[jfxs.Parent] {
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Parent.html]].
+  */
+abstract class Parent(override val delegate: jfxs.Parent) extends Node(delegate) with SFXDelegate[jfxs.Parent] {
 
   /**
-   * Indicates that this Node and its subnodes requires a layout pass on the next pulse.
-   */
+    * Indicates that this Node and its subnodes requires a layout pass on the next pulse.
+    */
   def needsLayout: ReadOnlyBooleanProperty = delegate.needsLayoutProperty
 
   /**
-   * Gets an observable list of string URLs linking to the stylesheets to use with this Parent's contents.
-   */
+    * Gets an observable list of string URLs linking to the stylesheets to use with this Parent's contents.
+    */
   def stylesheets = delegate.getStylesheets
 
   /**
-   * Sets the list of stylesheets URLs, replacing the prior content. If you want append to current content, use `add` or
-   * similar.
-   *
-   * @param c list of stylesheets URLs to replace prior content.
-   */
+    * Sets the list of stylesheets URLs, replacing the prior content. If you want append to current content, use `add` or
+    * similar.
+    *
+    * @param c list of stylesheets URLs to replace prior content.
+    */
   def stylesheets_=(c: Iterable[String]) {
     fillCollection(this.stylesheets, c)
   }

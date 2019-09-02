@@ -34,73 +34,74 @@ import scalafx.delegate.SFXDelegate
 import scalafx.event.{Event, EventType}
 
 /**
- * Companion object for [[scalafx.scene.web.WebEvent]].
- */
+  * Companion object for [[scalafx.scene.web.WebEvent]].
+  */
 object WebEvent {
 
   /**
-   * Converts a ScalaFX WebEvent to its JavaFX counterpart.
-   *
-   * @param we ScalaFX WebEvent
-   * @return JavaFX WebEvent
-   */
+    * Converts a ScalaFX WebEvent to its JavaFX counterpart.
+    *
+    * @param we ScalaFX WebEvent
+    * @return JavaFX WebEvent
+    */
   implicit def sfxWebEvent2jfx[T](we: WebEvent[T]): jfxsw.WebEvent[T] = if (we != null) we.delegate else null
 
   /**
-   * This event occurs when a script calls the JavaScript alert function.
-   */
+    * This event occurs when a script calls the JavaScript alert function.
+    */
   val Alert: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.ALERT
-  @deprecated ("Use Alert; ALERT will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Alert; ALERT will be removed in a future release", "8.0.60-R10")
   val ALERT = Alert
 
   /**
-   * Common supertype for all Web event types.
-   */
+    * Common supertype for all Web event types.
+    */
   val Any: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.ANY
-  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
   val ANY = Any
 
   /**
-   * This event occurs when a script changes location of the JavaScript window object.
-   */
+    * This event occurs when a script changes location of the JavaScript window object.
+    */
   val Resized: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.RESIZED
-  @deprecated ("Use Resized; RESIZED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Resized; RESIZED will be removed in a future release", "8.0.60-R10")
   val RESIZED = Resized
 
   /**
-   * This event occurs when a script changes status line text.
-   */
+    * This event occurs when a script changes status line text.
+    */
   val StatusChanged: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.STATUS_CHANGED
-  @deprecated ("Use StatusChanged; STATUS_CHANGED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use StatusChanged; STATUS_CHANGED will be removed in a future release", "8.0.60-R10")
   val STATUS_CHANGED = StatusChanged
 
   /**
-   * This event occurs when a script changes visibility of the JavaScript window object.
-   */
+    * This event occurs when a script changes visibility of the JavaScript window object.
+    */
   val VisibilityChanged: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.VISIBILITY_CHANGED
-  @deprecated ("Use VisibilityChanged; VISIBILITY_CHANGED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use VisibilityChanged; VISIBILITY_CHANGED will be removed in a future release", "8.0.60-R10")
   val VISIBILITY_CHANGED = VisibilityChanged
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEvent.html JavaFX WebEvent]].
- *
- * @constructor Creates a new ScalaFX WebEvent from its JavaFX equivalent.
- * @param delegate JavaFX WebEvent. Since it has no default constructor, there is not default value.
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEvent.html JavaFX WebEvent]].
+  *
+  * @constructor Creates a new ScalaFX WebEvent from its JavaFX equivalent.
+  * @param delegate JavaFX WebEvent. Since it has no default constructor, there is not default value.
+  */
 final class WebEvent[T](override val delegate: jfxsw.WebEvent[T])
-  extends Event(delegate)
-  with SFXDelegate[jfxsw.WebEvent[T]] {
+    extends Event(delegate)
+    with SFXDelegate[jfxsw.WebEvent[T]] {
 
   /**
-   * Creates a new event object.
-   *
-   */
-  def this(source: Any, eventType: EventType[jfxsw.WebEvent[_]], data: T) = this(new jfxsw.WebEvent(source, eventType, data))
+    * Creates a new event object.
+    *
+    */
+  def this(source: Any, eventType: EventType[jfxsw.WebEvent[_]], data: T) =
+    this(new jfxsw.WebEvent(source, eventType, data))
 
   /**
-   * Returns data item carried by this event.
-   */
+    * Returns data item carried by this event.
+    */
   def data: T = delegate.getData
 
 }

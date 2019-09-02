@@ -41,23 +41,23 @@ object Media {
 class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.Media] {
 
   /**
-   * Constructs a Media instance.
-   */
+    * Constructs a Media instance.
+    */
   def this(source: String) = this(new jfxsm.Media(source))
 
   /**
-   * The duration in seconds of the source media.
-   */
+    * The duration in seconds of the source media.
+    */
   def duration: ReadOnlyObjectProperty[jfxu.Duration] = delegate.durationProperty
 
   /**
-   * A property set to a MediaException value when an error occurs.
-   */
+    * A property set to a MediaException value when an error occurs.
+    */
   def error: ReadOnlyObjectProperty[jfxsm.MediaException] = delegate.errorProperty
 
   /**
-   * The height in pixels of the source media.
-   */
+    * The height in pixels of the source media.
+    */
   def height: ReadOnlyIntegerProperty = delegate.heightProperty
 
   /** Retrieve the markers defined on this Media instance. */
@@ -67,8 +67,8 @@ class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.Media]
   def metadata = delegate.getMetadata
 
   /**
-   * Event handler called when an error occurs.
-   */
+    * Event handler called when an error occurs.
+    */
   def onError = delegate.onErrorProperty
   def onError_=(v: Runnable) {
     onError() = v
@@ -82,18 +82,18 @@ class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.Media]
   }
 
   /**
-   * Retrieve the source URI of the media.
-   */
+    * Retrieve the source URI of the media.
+    */
   def source = delegate.getSource
 
   /**
-   * Retrieve the tracks contained in this media source.
-   */
+    * Retrieve the tracks contained in this media source.
+    */
   def tracks = delegate.getTracks
 
   /**
-   * The width in pixels of the source media.
-   */
+    * The width in pixels of the source media.
+    */
   def width: ReadOnlyIntegerProperty = delegate.widthProperty
 
 }

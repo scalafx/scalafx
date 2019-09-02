@@ -32,25 +32,36 @@ import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object KeyCharacterCombination {
-  implicit def sfxKeyCharacterCombination2jfx(kcc: KeyCharacterCombination): jfxsi.KeyCharacterCombination = if (kcc != null) kcc.delegate else null
+  implicit def sfxKeyCharacterCombination2jfx(kcc: KeyCharacterCombination): jfxsi.KeyCharacterCombination =
+    if (kcc != null) kcc.delegate else null
 }
 
-class KeyCharacterCombination(override val delegate: jfxsi.KeyCharacterCombination) extends KeyCombination(delegate) with SFXDelegate[jfxsi.KeyCharacterCombination] {
+class KeyCharacterCombination(override val delegate: jfxsi.KeyCharacterCombination)
+    extends KeyCombination(delegate)
+    with SFXDelegate[jfxsi.KeyCharacterCombination] {
 
   /**
-   * Constructs a KeyCodeCombination for the specified main key and with the specified list of modifiers.
-   */
-  def this(character: String, modifiers: jfxsi.KeyCombination.Modifier*) = this(new jfxsi.KeyCharacterCombination(character, modifiers: _*))
+    * Constructs a KeyCodeCombination for the specified main key and with the specified list of modifiers.
+    */
+  def this(character: String, modifiers: jfxsi.KeyCombination.Modifier*) =
+    this(new jfxsi.KeyCharacterCombination(character, modifiers: _*))
 
   /**
-   * Constructs a KeyCodeCombination for the specified main key and with an explicit specification of all modifier keys.
-   */
-  def this(character: String, shift: jfxsi.KeyCombination.ModifierValue, control: jfxsi.KeyCombination.ModifierValue, alt: jfxsi.KeyCombination.ModifierValue, meta: jfxsi.KeyCombination.ModifierValue, shortcut: jfxsi.KeyCombination.ModifierValue) =
+    * Constructs a KeyCodeCombination for the specified main key and with an explicit specification of all modifier keys.
+    */
+  def this(
+      character: String,
+      shift: jfxsi.KeyCombination.ModifierValue,
+      control: jfxsi.KeyCombination.ModifierValue,
+      alt: jfxsi.KeyCombination.ModifierValue,
+      meta: jfxsi.KeyCombination.ModifierValue,
+      shortcut: jfxsi.KeyCombination.ModifierValue
+  ) =
     this(new jfxsi.KeyCharacterCombination(character, shift, control, alt, meta, shortcut))
 
   /**
-   * Gets the key character associated with this key combination.
-   */
+    * Gets the key character associated with this key combination.
+    */
   def character = delegate.getCharacter
 
 }

@@ -44,24 +44,23 @@ object PositionDelegate {
 }
 
 /**
- * Trait that unifies JavaFX classes that contains properties indicating localization in 2
- * dimensions, represented by `xProperty` and `yProperty` and their respective getter and setters.
- *
- */
-trait PositionDelegate[J <: Object with Positioned]
-  extends SFXDelegate[J] {
+  * Trait that unifies JavaFX classes that contains properties indicating localization in 2
+  * dimensions, represented by `xProperty` and `yProperty` and their respective getter and setters.
+  *
+  */
+trait PositionDelegate[J <: Object with Positioned] extends SFXDelegate[J] {
 
   /**
-   * X Position
-   */
+    * X Position
+    */
   def x: DoubleProperty = delegate.xProperty()
   def x_=(v: Double) {
     x() = v
   }
 
   /**
-   * Y Position
-   */
+    * Y Position
+    */
   def y: DoubleProperty = delegate.yProperty()
   def y_=(v: Double) {
     y() = v

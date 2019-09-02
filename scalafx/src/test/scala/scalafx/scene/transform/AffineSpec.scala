@@ -32,9 +32,8 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Affine Spec tests.
- *
- *
- */
-class AffineSpec
-  extends SimpleSFXDelegateSpec[jfxst.Affine, Affine](classOf[jfxst.Affine], classOf[Affine])
+  * Affine Spec tests.
+  *
+  *
+  */
+class AffineSpec extends SimpleSFXDelegateSpec[jfxst.Affine, Affine](classOf[jfxst.Affine], classOf[Affine])

@@ -44,24 +44,24 @@ object ComboBox {
 }
 
 class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[T])
-  extends ComboBoxBase(delegate)
-  with SFXDelegate[jfxsc.ComboBox[T]] {
+    extends ComboBoxBase(delegate)
+    with SFXDelegate[jfxsc.ComboBox[T]] {
 
   /**
-   * Creates a default ComboBox instance from a [[scalafx.collections.ObservableBuffer]]
-   * with the provided items list and a default selection model.
-   */
+    * Creates a default ComboBox instance from a [[scalafx.collections.ObservableBuffer]]
+    * with the provided items list and a default selection model.
+    */
   def this(items: ObservableBuffer[T]) = this(new jfxsc.ComboBox[T](items))
 
   /**
-   * Creates a default ComboBox instance from a [[scala.Seq]]
-   * with the provided items list and a default selection model.
-   */
+    * Creates a default ComboBox instance from a [[scala.Seq]]
+    * with the provided items list and a default selection model.
+    */
   def this(items: Seq[T]) = this(new jfxsc.ComboBox[T](ObservableBuffer(items)))
 
   /**
-   * Providing a custom cell factory allows for complete customization of the rendering of items in the ComboBox.
-   */
+    * Providing a custom cell factory allows for complete customization of the rendering of items in the ComboBox.
+    */
   def cellFactory: ObjectProperty[ListView[T] => ListCell[T]] =
     ObjectProperty((view: ListView[T]) => new ListCell(delegate.cellFactoryProperty.getValue.call(view)))
   def cellFactory_=(f: ListView[T] => ListCell[T]) {
@@ -73,81 +73,80 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
   }
 
   /**
-   * Converts the user-typed input (when the ComboBox is editable) to an object of type T, such that the input may be retrieved via the value property.
-   */
+    * Converts the user-typed input (when the ComboBox is editable) to an object of type T, such that the input may be retrieved via the value property.
+    */
   def converter: ObjectProperty[jfxu.StringConverter[T]] = delegate.converterProperty
   def converter_=(v: StringConverter[T]) {
     converter() = v
   }
 
   /**
-   * The list of items to show within the ComboBox popup.
-   */
+    * The list of items to show within the ComboBox popup.
+    */
   def items = delegate.itemsProperty
   def items_=(v: ObservableBuffer[T]) {
     items() = v
   }
 
   /**
-   * This Node is shown to the user when the ComboBox has no content to show.
-   */
+    * This Node is shown to the user when the ComboBox has no content to show.
+    */
   def placeholder: ObjectProperty[jfxs.Node] = delegate.placeholderProperty
   def placeholder_=(v: Node) {
     ObjectProperty.fillProperty[jfxs.Node](placeholder, v)
   }
 
   /**
-   * The selection model for the ComboBox.
-   */
+    * The selection model for the ComboBox.
+    */
   def selectionModel: ObjectProperty[jfxsc.SingleSelectionModel[T]] = delegate.selectionModelProperty
   def selectionModel_=(v: SingleSelectionModel[T]) {
     selectionModel() = v.delegate
   }
 
   /**
-   * The maximum number of rows to be visible in the ComboBox popup when it is showing.
-   */
+    * The maximum number of rows to be visible in the ComboBox popup when it is showing.
+    */
   def visibleRowCount: IntegerProperty = delegate.visibleRowCountProperty
   def visibleRowCount_=(v: Int) {
     visibleRowCount() = v
   }
 
   /**
-   * The button cell is used to render what is shown in the ComboBox 'button' area.
-   * If a cell is set here, it does not change the rendering of the ComboBox popup list -
-   * that rendering is controlled via the cell factory API.
-   *
-   * @since 2.2
-   */
+    * The button cell is used to render what is shown in the ComboBox 'button' area.
+    * If a cell is set here, it does not change the rendering of the ComboBox popup list -
+    * that rendering is controlled via the cell factory API.
+    *
+    * @since 2.2
+    */
   def buttonCell: ObjectProperty[jfxsc.ListCell[T]] = delegate.buttonCellProperty()
   def buttonCell_=(v: ListCell[T]) {
     buttonCell() = v
   }
 
   /**
-   * The editor for the ComboBox.
-   *
-   * @since 2.2
-   */
+    * The editor for the ComboBox.
+    *
+    * @since 2.2
+    */
   def editor: ReadOnlyObjectProperty[jfxsc.TextField] = delegate.editorProperty()
 
-
   /**
-   * Append a item at end of list of items
-   *
-   * @param item Item to be added.
-   * @return Combobox itself
-   */
+    * Append a item at end of list of items
+    *
+    * @param item Item to be added.
+    * @return Combobox itself
+    */
   def +=(item: T) {
     this.items.get += item
   }
 
   /**
-   * Remove a item in list of items
-   *
-   * @param item Item to be removed.
-   * @return Combobox itself
-   */
+    * Remove a item in list of items
+    *
+    * @param item Item to be removed.
+    * @return Combobox itself
+    */
   def -=(item: T) {
     this.items.get -= item
   }

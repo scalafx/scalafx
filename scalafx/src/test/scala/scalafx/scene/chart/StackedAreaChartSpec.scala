@@ -32,15 +32,18 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * StackedAreaChart Spec tests.
- *
- *
- */
+  * StackedAreaChart Spec tests.
+  *
+  *
+  */
 class StackedAreaChartSpec
-  extends SimpleSFXDelegateSpec[jfxsc.StackedAreaChart[Number, Number], StackedAreaChart[Number, Number]](
-    classOf[jfxsc.StackedAreaChart[Number, Number]], classOf[StackedAreaChart[Number, Number]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.StackedAreaChart[Number, Number], StackedAreaChart[Number, Number]](
+      classOf[jfxsc.StackedAreaChart[Number, Number]],
+      classOf[StackedAreaChart[Number, Number]]
+    )
+    with RunOnApplicationThread {
 
-  override def getJavaClassInstance = new jfxsc.StackedAreaChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
+  override def getJavaClassInstance =
+    new jfxsc.StackedAreaChart[Number, Number](new jfxsc.NumberAxis, new jfxsc.NumberAxis)
 
 }

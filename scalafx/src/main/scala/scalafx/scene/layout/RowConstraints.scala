@@ -39,77 +39,86 @@ object RowConstraints {
   implicit def sfxRowConstraints2jfx(v: RowConstraints): jfxsl.RowConstraints = if (v != null) v.delegate else null
 }
 
-class RowConstraints(override val delegate: jfxsl.RowConstraints = new jfxsl.RowConstraints) extends ConstraintsBase(delegate) with SFXDelegate[jfxsl.RowConstraints] {
+class RowConstraints(override val delegate: jfxsl.RowConstraints = new jfxsl.RowConstraints)
+    extends ConstraintsBase(delegate)
+    with SFXDelegate[jfxsl.RowConstraints] {
 
   /**
-   * Creates a row constraint object with a fixed height.
-   */
+    * Creates a row constraint object with a fixed height.
+    */
   def this(height: Double) = this(new jfxsl.RowConstraints(height))
 
   /**
-   * Creates a row constraint object with a fixed size range.
-   */
+    * Creates a row constraint object with a fixed size range.
+    */
   def this(minHeight: Double, prefHeight: Double, maxHeight: Double) =
     this(new jfxsl.RowConstraints(minHeight, prefHeight, maxHeight))
 
   /**
-   * Creates a row constraint object with a fixed size range, vertical grow priority, vertical 
-   * alignment, and vertical fill behavior.
-   */
-  def this(minHeight: Double, prefHeight: Double, maxHeight: Double, vgrow: jfxsl.Priority, valignment: jfxg.VPos, fillHeight: Boolean) =
+    * Creates a row constraint object with a fixed size range, vertical grow priority, vertical
+    * alignment, and vertical fill behavior.
+    */
+  def this(
+      minHeight: Double,
+      prefHeight: Double,
+      maxHeight: Double,
+      vgrow: jfxsl.Priority,
+      valignment: jfxg.VPos,
+      fillHeight: Boolean
+  ) =
     this(new jfxsl.RowConstraints(minHeight, prefHeight, maxHeight, vgrow, valignment, fillHeight))
 
   /**
-   * The vertical fill policy for the row.
-   */
+    * The vertical fill policy for the row.
+    */
   def fillHeight: BooleanProperty = delegate.fillHeightProperty
   def fillHeight_=(v: Boolean) {
     fillHeight() = v
   }
 
   /**
-   * The maximum height for the row.
-   */
+    * The maximum height for the row.
+    */
   def maxHeight: DoubleProperty = delegate.maxHeightProperty
   def maxHeight_=(v: Double) {
     maxHeight() = v
   }
 
   /**
-   * The minimum height for the row.
-   */
+    * The minimum height for the row.
+    */
   def minHeight: DoubleProperty = delegate.minHeightProperty
   def minHeight_=(v: Double) {
     minHeight() = v
   }
 
   /**
-   * The height percentage of the row.
-   */
+    * The height percentage of the row.
+    */
   def percentHeight: DoubleProperty = delegate.percentHeightProperty
   def percentHeight_=(v: Double) {
     percentHeight() = v
   }
 
   /**
-   * The preferred height for the row.
-   */
+    * The preferred height for the row.
+    */
   def prefHeight: DoubleProperty = delegate.prefHeightProperty
   def prefHeight_=(v: Double) {
     prefHeight() = v
   }
 
   /**
-   * The vertical alignment for the row.
-   */
+    * The vertical alignment for the row.
+    */
   def valignment: ObjectProperty[jfxg.VPos] = delegate.valignmentProperty
   def valignment_=(v: VPos) {
     valignment() = v
   }
 
   /**
-   * The vertical grow priority for the row.
-   */
+    * The vertical grow priority for the row.
+    */
   def vgrow: ObjectProperty[jfxsl.Priority] = delegate.vgrowProperty
   def vgrow_=(v: Priority) {
     vgrow() = v

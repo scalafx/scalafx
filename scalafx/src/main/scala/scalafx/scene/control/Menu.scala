@@ -41,54 +41,55 @@ object Menu {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Menu.html]].
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Menu.html]].
+  */
 class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
-  extends MenuItem(delegate)
-  with jfxe.EventTarget
-  with SFXDelegate[jfxsc.Menu] {
+    extends MenuItem(delegate)
+    with jfxe.EventTarget
+    with SFXDelegate[jfxsc.Menu] {
 
   /**
-   * Constructs a Menu and sets the display text with the specified text and sets the graphic Node to the given node.
-   */
+    * Constructs a Menu and sets the display text with the specified text and sets the graphic Node to the given node.
+    */
   def this(label: String, node: Node) = this(new jfxsc.Menu(label, node))
 
   /**
-   * Constructs a Menu and sets the display text with the specified text.
-   */
+    * Constructs a Menu and sets the display text with the specified text.
+    */
   def this(label: String) = this(new jfxsc.Menu(label))
 
   /**
-   * The items to show within this menu.
-   */
+    * The items to show within this menu.
+    */
   def items = delegate.getItems
+
   /**
-   * Sets the menu items, replacing the prior content. If you want append to current content, use `add` or
-   * similar.
-   *
-   * @param c Menu items to replace prior content.
-   */
+    * Sets the menu items, replacing the prior content. If you want append to current content, use `add` or
+    * similar.
+    *
+    * @param c Menu items to replace prior content.
+    */
   def items_=(c: Iterable[MenuItem]) {
     fillSFXCollection(this.items, c)
   }
 
   /**
-   * Hides the ContextMenu if it was previously showing, and any showing submenus.
-   */
+    * Hides the ContextMenu if it was previously showing, and any showing submenus.
+    */
   def hide() {
     delegate.hide()
   }
 
   /**
-   * If the Menu is not disabled and the ContextMenu is not already showing, then this will cause the ContextMenu to be shown.
-   */
+    * If the Menu is not disabled and the ContextMenu is not already showing, then this will cause the ContextMenu to be shown.
+    */
   def show() {
     delegate.show()
   }
 
   /**
-   * Gets the value of the property showing.
-   */
+    * Gets the value of the property showing.
+    */
   def showing = delegate.isShowing
 
   def onHidden = delegate.onHiddenProperty

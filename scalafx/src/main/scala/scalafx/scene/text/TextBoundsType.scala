@@ -34,20 +34,19 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object TextBoundsType extends SFXEnumDelegateCompanion[jfxst.TextBoundsType, TextBoundsType] {
 
   case object Logical extends TextBoundsType(jfxst.TextBoundsType.LOGICAL)
-  @deprecated ("Use Logical; LOGICAL will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Logical; LOGICAL will be removed in a future release", "8.0.60-R10")
   val LOGICAL = Logical
 
   case object LogicalVerticalCenter extends TextBoundsType(jfxst.TextBoundsType.LOGICAL_VERTICAL_CENTER)
-  @deprecated ("Use LogicalVerticalCenter; LOGICAL_VERTICAL_CENTER will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use LogicalVerticalCenter; LOGICAL_VERTICAL_CENTER will be removed in a future release", "8.0.60-R10")
   val LOGICAL_VERTICAL_CENTER = LogicalVerticalCenter
 
   case object Visual extends TextBoundsType(jfxst.TextBoundsType.VISUAL)
-  @deprecated ("Use Visual; VISUAL will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Visual; VISUAL will be removed in a future release", "8.0.60-R10")
   val VISUAL = Visual
 
   protected override def unsortedValues: Array[TextBoundsType] = Array(Logical, Visual, LogicalVerticalCenter)
 }
 
-
 sealed abstract class TextBoundsType(override val delegate: jfxst.TextBoundsType)
-  extends SFXEnumDelegate[jfxst.TextBoundsType]
+    extends SFXEnumDelegate[jfxst.TextBoundsType]

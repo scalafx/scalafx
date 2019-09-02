@@ -32,9 +32,10 @@ import javafx.scene.{text => jfxst}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Test for [[scalafx.scene.text.TextAlignment]] */
-class TextAlignmentSpec extends SFXEnumDelegateSpec[jfxst.TextAlignment, TextAlignment](
-  javaClass = classOf[jfxst.TextAlignment],
-  scalaClass = classOf[TextAlignment],
-  companion = TextAlignment)
+class TextAlignmentSpec
+    extends SFXEnumDelegateSpec[jfxst.TextAlignment, TextAlignment](
+      javaClass = classOf[jfxst.TextAlignment],
+      scalaClass = classOf[TextAlignment],
+      companion = TextAlignment
+    )

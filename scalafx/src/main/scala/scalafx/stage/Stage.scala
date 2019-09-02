@@ -42,36 +42,34 @@ object Stage {
 }
 
 /**
- * The primary stage for your application has to be created by wrapping the `JFXApp.STAGE` object.
- * <pre>
- * stage = new JFXApp.PrimaryStage {
- * // your definitions
- * }
- * </pre>
- * Any further stage would be simply instantiated by the no-arg constructor.
- */
-class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
-  extends Window(delegate)
-  with SFXDelegate[jfxs.Stage] {
+  * The primary stage for your application has to be created by wrapping the `JFXApp.STAGE` object.
+  * <pre>
+  * stage = new JFXApp.PrimaryStage {
+  * // your definitions
+  * }
+  * </pre>
+  * Any further stage would be simply instantiated by the no-arg constructor.
+  */
+class Stage(override val delegate: jfxs.Stage = new jfxs.Stage) extends Window(delegate) with SFXDelegate[jfxs.Stage] {
 
   /**
-   * Creates a new instance of Stage.
-   */
+    * Creates a new instance of Stage.
+    */
   def this(style: jfxs.StageStyle) = this(new jfxs.Stage(style))
 
   /**
-   * Defines whether this `Stage` is kept on top of other windows.
-   *
-   * If some other window is already always-on-top then the relative order between these windows
-   * is unspecified (depends on platform).
-   *
-   * There are differences in behavior between applications if a security manager is present.
-   * Applications with permissions are allowed to set "always on top" flag on a Stage.
-   * In applications without the proper permissions, an attempt to set the flag will be ignored and the property
-   * value will be restored to "false".
-   *
-   * The property is read only because it can be changed externally by the underlying platform and therefore must not be bindable.
-   */
+    * Defines whether this `Stage` is kept on top of other windows.
+    *
+    * If some other window is already always-on-top then the relative order between these windows
+    * is unspecified (depends on platform).
+    *
+    * There are differences in behavior between applications if a security manager is present.
+    * Applications with permissions are allowed to set "always on top" flag on a Stage.
+    * In applications without the proper permissions, an attempt to set the flag will be ignored and the property
+    * value will be restored to "false".
+    *
+    * The property is read only because it can be changed externally by the underlying platform and therefore must not be bindable.
+    */
   def alwaysOnTop: ReadOnlyBooleanProperty = delegate.alwaysOnTopProperty
   def alwaysOnTop_=(value: Boolean) {
     delegate.setAlwaysOnTop(value)
@@ -83,16 +81,16 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
   }
 
   /**
-   * Specifies the Full Screen exit key combination
-   */
+    * Specifies the Full Screen exit key combination
+    */
   def fullScreenExitKey: ObjectProperty[jfxsi.KeyCombination] = delegate.fullScreenExitKeyProperty
   def fullScreenExitKey_=(value: KeyCombination) {
     fullScreenExitKey() = value
   }
 
   /**
-   * Specifies whether this Stage should be a full-screen, undecorated window.
-   */
+    * Specifies whether this Stage should be a full-screen, undecorated window.
+    */
   def fullScreen: ReadOnlyBooleanProperty = delegate.fullScreenProperty
   def fullScreen_=(value: Boolean) {
     delegate.setFullScreen(value)
@@ -105,73 +103,73 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
   }
 
   /**
-   * Defines the title of the Stage.
-   */
+    * Defines the title of the Stage.
+    */
   def title: StringProperty = delegate.titleProperty
   def title_=(v: String) {
     title() = v
   }
 
   /**
-   * Gets the icon images to be used in the window decorations and when minimized.
-   */
+    * Gets the icon images to be used in the window decorations and when minimized.
+    */
   def icons = delegate.getIcons
 
   /**
-   * Defines whether the Stage is iconified or not.
-   */
+    * Defines whether the Stage is iconified or not.
+    */
   def iconified: ReadOnlyBooleanProperty = delegate.iconifiedProperty
 
   /**
-   * Defines whether the Stage is resizable or not by the user.
-   */
+    * Defines whether the Stage is resizable or not by the user.
+    */
   def resizable: BooleanProperty = delegate.resizableProperty
   def resizable_=(v: Boolean) {
     resizable() = v
   }
 
   /**
-   * Specify the scene to be used on this stage.
-   */
+    * Specify the scene to be used on this stage.
+    */
   def scene_=(s: Scene) {
     delegate.setScene(s.delegate)
   }
 
   /**
-   * Defines the minimum width of this Stage.
-   */
+    * Defines the minimum width of this Stage.
+    */
   def minWidth: Double = delegate.getMinWidth
   def minWidth_=(w: Double) {
     delegate.setMinWidth(w)
   }
 
   /**
-   * Defines the minimum height of this Stage.
-   */
+    * Defines the minimum height of this Stage.
+    */
   def minHeight: Double = delegate.getMinHeight
   def minHeight_=(h: Double) {
     delegate.setMinHeight(h)
   }
 
   /**
-   * Defines the maximum width of this Stage.
-   */
+    * Defines the maximum width of this Stage.
+    */
   def maxWidth: Double = delegate.getMaxWidth
   def maxWidth_=(w: Double) {
     delegate.setMaxWidth(w)
   }
 
   /**
-   * Defines the maximum height of this Stage.
-   */
+    * Defines the maximum height of this Stage.
+    */
   def maxHeight: Double = delegate.getMaxHeight
   def maxHeight_=(h: Double) {
     delegate.setMaxHeight(h)
   }
 
   /**
-   * Attempts to show or hide this Window.
-   */
+    * Attempts to show or hide this Window.
+    */
   def showing_=(v: Boolean) {
     v match {
       case true  => delegate.show()
@@ -180,76 +178,76 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
   }
 
   /**
-   * Retrieves the style attribute for this stage.
-   */
+    * Retrieves the style attribute for this stage.
+    */
   def style: StageStyle = delegate.getStyle
 
   /**
-   * Closes this Stage.
-   */
+    * Closes this Stage.
+    */
   def close() {
     delegate.close()
   }
 
   /**
-   * Retrieves the modality attribute for this stage.
-   */
+    * Retrieves the modality attribute for this stage.
+    */
   def modality: Modality = delegate.getModality
 
   /**
-   * Retrieves a [[scala.Some]] with the owner Window for this stage, or
-   * [[scala.None]] for an unowned stage.
-   */
+    * Retrieves a [[scala.Some]] with the owner Window for this stage, or
+    * [[scala.None]] for an unowned stage.
+    */
   def owner: Option[Window] = Option(delegate.getOwner)
 
   /**
-   * Specifies the modality for this stage.
-   */
+    * Specifies the modality for this stage.
+    */
   def initModality(modality: Modality) {
     delegate.initModality(modality)
   }
 
   /**
-   * Specifies the owner Window for this stage, or null for a top-level,
-   * unowned stage.
-   */
+    * Specifies the owner Window for this stage, or null for a top-level,
+    * unowned stage.
+    */
   def initOwner(owner: Window) {
     delegate.initOwner(owner)
   }
 
   /**
-   * Specifies the style for this stage.
-   */
+    * Specifies the style for this stage.
+    */
   def initStyle(style: StageStyle) {
     delegate.initStyle(style)
   }
 
   /**
-   * Attempts to show this Window by setting visibility to true.
-   */
+    * Attempts to show this Window by setting visibility to true.
+    */
   def show() {
     delegate.show()
   }
 
   /**
-   * Shows this stage and waits for it to be hidden (closed) before returning to the caller.
-   * This method temporarily blocks processing of the current event, and starts a nested event loop to handle other events.
-   * This method must be called on the FX Application thread.
-   */
+    * Shows this stage and waits for it to be hidden (closed) before returning to the caller.
+    * This method temporarily blocks processing of the current event, and starts a nested event loop to handle other events.
+    * This method must be called on the FX Application thread.
+    */
   def showAndWait() {
     delegate.showAndWait()
   }
 
   /**
-   * Send the Window to the background.
-   */
+    * Send the Window to the background.
+    */
   def toBack() {
     delegate.toBack()
   }
 
   /**
-   * Bring the Window to the foreground.
-   */
+    * Bring the Window to the foreground.
+    */
   def toFront() {
     delegate.toFront()
   }

@@ -31,26 +31,22 @@ import javafx.{geometry => jfxg}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/NodeOrientation.html javafx.geometry.NodeOrientation]] */
-object NodeOrientation
-  extends SFXEnumDelegateCompanion[jfxg.NodeOrientation, NodeOrientation] {
+object NodeOrientation extends SFXEnumDelegateCompanion[jfxg.NodeOrientation, NodeOrientation] {
 
   case object Inherit extends NodeOrientation(jfxg.NodeOrientation.INHERIT)
-  @deprecated ("Use Inherit; INHERIT will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Inherit; INHERIT will be removed in a future release", "8.0.60-R10")
   val INHERIT = Inherit
 
   case object LeftToRight extends NodeOrientation(jfxg.NodeOrientation.LEFT_TO_RIGHT)
-  @deprecated ("Use LeftToRight; LEFT_TO_RIGHT will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use LeftToRight; LEFT_TO_RIGHT will be removed in a future release", "8.0.60-R10")
   val LEFT_TO_RIGHT = LeftToRight
 
   case object RightToLeft extends NodeOrientation(jfxg.NodeOrientation.RIGHT_TO_LEFT)
-  @deprecated ("Use RightToLeft; RIGHT_TO_LEFT will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use RightToLeft; RIGHT_TO_LEFT will be removed in a future release", "8.0.60-R10")
   val RIGHT_TO_LEFT = RightToLeft
 
   protected override def unsortedValues: Array[NodeOrientation] = Array(Inherit, LeftToRight, RightToLeft)
 }
 
-
 sealed abstract class NodeOrientation(override val delegate: jfxg.NodeOrientation)
-  extends SFXEnumDelegate[jfxg.NodeOrientation]
-
-
+    extends SFXEnumDelegate[jfxg.NodeOrientation]

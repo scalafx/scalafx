@@ -36,6 +36,7 @@ import scalafx.beans.property.{ReadOnlyBooleanProperty, ReadOnlyIntegerProperty}
 import scalafx.collections.ObservableSet
 
 object SetExpression {
+
   /**
     * Converts a ScalaFX SetExpression to its JavaFX counterpart.
     *
@@ -55,6 +56,7 @@ object SetExpression {
   * @define ORIGINALDOC Original Documentation]].
   **/
 class SetExpression[E <: Any](val delegate: jfxbb.SetExpression[E]) {
+
   /**
     * A boolean property that is `true`, if the the set is empty.
     */

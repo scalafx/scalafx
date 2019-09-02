@@ -31,10 +31,10 @@ import org.scalatest.Matchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
 /**
- * StringProperty Spec tests.
- *
- *
- */
+  * StringProperty Spec tests.
+  *
+  *
+  */
 class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
   var booleanProperty: BooleanProperty = null

@@ -32,14 +32,16 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * BubbleChart Spec tests.
- *
- *
- */
+  * BubbleChart Spec tests.
+  *
+  *
+  */
 class BubbleChartSpec
-  extends SimpleSFXDelegateSpec[jfxsc.BubbleChart[Number, Number], BubbleChart[Number, Number]](
-    classOf[jfxsc.BubbleChart[Number, Number]], classOf[BubbleChart[Number, Number]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.BubbleChart[Number, Number], BubbleChart[Number, Number]](
+      classOf[jfxsc.BubbleChart[Number, Number]],
+      classOf[BubbleChart[Number, Number]]
+    )
+    with RunOnApplicationThread {
 
   override def getScalaClassInstance = new BubbleChart[Number, Number](getJavaClassInstance)
 

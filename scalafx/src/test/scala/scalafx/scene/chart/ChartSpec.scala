@@ -32,13 +32,13 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * CategoryAxis Spec tests.
- *
- *
- */
+  * CategoryAxis Spec tests.
+  *
+  *
+  */
 class ChartSpec
-  extends SimpleSFXDelegateSpec[jfxsc.Chart, Chart](classOf[jfxsc.Chart], classOf[Chart])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.Chart, Chart](classOf[jfxsc.Chart], classOf[Chart])
+    with RunOnApplicationThread {
 
   override def getScalaClassInstance = new Chart(getJavaClassInstance) {}
 

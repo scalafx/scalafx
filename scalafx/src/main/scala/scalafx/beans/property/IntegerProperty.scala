@@ -32,21 +32,22 @@ import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object IntegerProperty {
-  implicit def sfxIntegerProperty2jfx(ip: IntegerProperty): jfxbp.IntegerProperty = if (ip != null) ip.delegate else null
+  implicit def sfxIntegerProperty2jfx(ip: IntegerProperty): jfxbp.IntegerProperty =
+    if (ip != null) ip.delegate else null
 
   /**
-   * Creates a new IntegerProperty instance using the SimpleIntegerProperty as the target.
-   *
-   * @param value the initial value
-   * @return      the observable instance
-   */
+    * Creates a new IntegerProperty instance using the SimpleIntegerProperty as the target.
+    *
+    * @param value the initial value
+    * @return      the observable instance
+    */
   def apply(value: Int) = new IntegerProperty(new jfxbp.SimpleIntegerProperty(value))
 }
 
 class IntegerProperty(override val delegate: jfxbp.IntegerProperty = new jfxbp.SimpleIntegerProperty)
-  extends ReadOnlyIntegerProperty(delegate)
-  with Property[Int, Number]
-  with SFXDelegate[jfxbp.IntegerProperty] {
+    extends ReadOnlyIntegerProperty(delegate)
+    with Property[Int, Number]
+    with SFXDelegate[jfxbp.IntegerProperty] {
 
   def this(bean: Object, name: String) = this(new jfxbp.SimpleIntegerProperty(bean, name))
 

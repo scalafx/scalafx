@@ -33,46 +33,45 @@ import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 /**
- * Companion Object for [[scalafx.event.ActionEvent]].
- */
+  * Companion Object for [[scalafx.event.ActionEvent]].
+  */
 object ActionEvent {
 
   /**
-   * Converts a ScalaFX ActionEvent to its JavaFX counterpart.
-   *
-   * @param ie ScalaFX ActionEvent
-   * @return JavaFX ActionEvent
-   */
+    * Converts a ScalaFX ActionEvent to its JavaFX counterpart.
+    *
+    * @param ie ScalaFX ActionEvent
+    * @return JavaFX ActionEvent
+    */
   implicit def sfxActionEvent2jfx(ie: ActionEvent): jfxe.ActionEvent = if (ie != null) ie.delegate else null
 
   @deprecated("Use scalafx.event.ActionEvent.Any instead", "8.0")
   val ACTION: EventType[jfxe.ActionEvent] = jfxe.ActionEvent.ACTION
 
   /**
-   * The only valid EventType for the ActionEvent.
-   * @since 8.0
-   */
+    * The only valid EventType for the ActionEvent.
+    * @since 8.0
+    */
   val Action: EventType[jfxe.ActionEvent] = jfxe.ActionEvent.ACTION
 
   /**
-   * Common supertype for all action event types.
-   * @since 8.0
-   */
+    * Common supertype for all action event types.
+    * @since 8.0
+    */
   val Any: EventType[jfxe.ActionEvent] = jfxe.ActionEvent.ANY
 
 }
 
-
 /**
- * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/ActionEvent.html ActionEvent]].
- */
+  * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/ActionEvent.html ActionEvent]].
+  */
 class ActionEvent(override val delegate: jfxe.ActionEvent = new jfxe.ActionEvent)
-  extends Event(delegate)
-  with SFXDelegate[jfxe.ActionEvent] {
+    extends Event(delegate)
+    with SFXDelegate[jfxe.ActionEvent] {
 
   /**
-   * Construct a new ActionEvent with the specified event source and target.
-   */
+    * Construct a new ActionEvent with the specified event source and target.
+    */
   def this(source: Any, target: jfxe.EventTarget) = this(new jfxe.ActionEvent(source, target))
 
 }

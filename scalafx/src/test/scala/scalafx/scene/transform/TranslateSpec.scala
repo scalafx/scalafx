@@ -32,13 +32,13 @@ import scalafx.Includes._
 import scalafx.testutil.{PositionDelegateSpec, SimpleSFXDelegateSpec}
 
 /**
- * Translate Spec tests.
- *
- *
- */
+  * Translate Spec tests.
+  *
+  *
+  */
 class TranslateSpec
-  extends SimpleSFXDelegateSpec[jfxst.Translate, Translate](classOf[jfxst.Translate], classOf[Translate])
-  with PositionDelegateSpec[Translate] {
+    extends SimpleSFXDelegateSpec[jfxst.Translate, Translate](classOf[jfxst.Translate], classOf[Translate])
+    with PositionDelegateSpec[Translate] {
 
   val positionDelegate = getScalaClassInstance
 

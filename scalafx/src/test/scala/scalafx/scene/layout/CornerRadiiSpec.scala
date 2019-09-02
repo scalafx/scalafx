@@ -33,11 +33,10 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * CornerRadii Spec tests.
- */
+  * CornerRadii Spec tests.
+  */
 class CornerRadiiSpec
-  extends SimpleSFXDelegateSpec[jfxsl.CornerRadii, CornerRadii](
-    classOf[jfxsl.CornerRadii], classOf[CornerRadii]) {
+    extends SimpleSFXDelegateSpec[jfxsl.CornerRadii, CornerRadii](classOf[jfxsl.CornerRadii], classOf[CornerRadii]) {
 
   override protected def getScalaClassInstance = new CornerRadii(getJavaClassInstance) {}
 

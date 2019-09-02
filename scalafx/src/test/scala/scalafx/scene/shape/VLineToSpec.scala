@@ -33,12 +33,11 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * VLineTo Spec tests.
- *
- *
- */
-class VLineToSpec
-  extends SimpleSFXDelegateSpec[jfxss.VLineTo, VLineTo](classOf[jfxss.VLineTo], classOf[VLineTo]) {
+  * VLineTo Spec tests.
+  *
+  *
+  */
+class VLineToSpec extends SimpleSFXDelegateSpec[jfxss.VLineTo, VLineTo](classOf[jfxss.VLineTo], classOf[VLineTo]) {
 
   val positionDelegate = getScalaClassInstance
 

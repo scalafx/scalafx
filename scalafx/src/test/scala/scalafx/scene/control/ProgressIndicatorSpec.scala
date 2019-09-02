@@ -32,10 +32,12 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * ProgressIndicator Spec tests.
- *
- */
+  * ProgressIndicator Spec tests.
+  *
+  */
 class ProgressIndicatorSpec
-  extends SimpleSFXDelegateSpec[jfxsc.ProgressIndicator, ProgressIndicator](
-    classOf[jfxsc.ProgressIndicator], classOf[ProgressIndicator])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.ProgressIndicator, ProgressIndicator](
+      classOf[jfxsc.ProgressIndicator],
+      classOf[ProgressIndicator]
+    )
+    with RunOnApplicationThread

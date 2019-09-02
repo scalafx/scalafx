@@ -33,12 +33,14 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * MultipleSelectionModel Spec tests.
- *
- */
+  * MultipleSelectionModel Spec tests.
+  *
+  */
 class MultipleMultipleSelectionModelSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.MultipleSelectionModel[T], MultipleSelectionModel[T]](
-    classOf[jfxsc.MultipleSelectionModel[T]], classOf[MultipleSelectionModel[T]]) {
+    extends SimpleSFXDelegateSpec[jfxsc.MultipleSelectionModel[T], MultipleSelectionModel[T]](
+      classOf[jfxsc.MultipleSelectionModel[T]],
+      classOf[MultipleSelectionModel[T]]
+    ) {
 
   class SimpleMultipleSelectionModel[T1] extends jfxsc.MultipleSelectionModel[T1] {
     def getSelectedIndices: jfxc.ObservableList[java.lang.Integer] = null

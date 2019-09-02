@@ -32,10 +32,10 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * PieChart Spec tests.
- *
- *
- */
+  * PieChart Spec tests.
+  *
+  *
+  */
 class PieChartSpec
-  extends SimpleSFXDelegateSpec[jfxsc.PieChart, PieChart](classOf[jfxsc.PieChart], classOf[PieChart])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.PieChart, PieChart](classOf[jfxsc.PieChart], classOf[PieChart])
+    with RunOnApplicationThread

@@ -33,13 +33,15 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * SpinnerValueFactory Spec tests.
- *
- */
+  * SpinnerValueFactory Spec tests.
+  *
+  */
 class SpinnerValueFactorySpec[Integer]
-  extends SimpleSFXDelegateSpec[jfxsc.SpinnerValueFactory[Integer], SpinnerValueFactory[Integer]](
-    classOf[jfxsc.SpinnerValueFactory[Integer]], classOf[SpinnerValueFactory[Integer]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.SpinnerValueFactory[Integer], SpinnerValueFactory[Integer]](
+      classOf[jfxsc.SpinnerValueFactory[Integer]],
+      classOf[SpinnerValueFactory[Integer]]
+    )
+    with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new SpinnerValueFactory[Integer](getJavaClassInstance) {}
 

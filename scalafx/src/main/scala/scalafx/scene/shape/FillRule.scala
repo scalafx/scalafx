@@ -34,16 +34,14 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object FillRule extends SFXEnumDelegateCompanion[jfxss.FillRule, FillRule] {
 
   case object EvenOdd extends FillRule(jfxss.FillRule.EVEN_ODD)
-  @deprecated ("Use EvenOdd; EVEN_ODD will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use EvenOdd; EVEN_ODD will be removed in a future release", "8.0.60-R10")
   val EVEN_ODD = EvenOdd
 
   case object NonZero extends FillRule(jfxss.FillRule.NON_ZERO)
-  @deprecated ("Use NonZero; NON_ZERO will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use NonZero; NON_ZERO will be removed in a future release", "8.0.60-R10")
   val NON_ZERO = NonZero
 
   protected override def unsortedValues: Array[FillRule] = Array(EvenOdd, NonZero)
 }
 
-
-sealed abstract class FillRule(override val delegate: jfxss.FillRule)
-  extends SFXEnumDelegate[jfxss.FillRule]
+sealed abstract class FillRule(override val delegate: jfxss.FillRule) extends SFXEnumDelegate[jfxss.FillRule]

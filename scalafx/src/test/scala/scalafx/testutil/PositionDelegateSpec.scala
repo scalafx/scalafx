@@ -32,8 +32,8 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.PositionDelegate
 
 /**
- * Trait to test PositionDelegate subclasses
- */
+  * Trait to test PositionDelegate subclasses
+  */
 trait PositionDelegateSpec[D <: PositionDelegate[_]] extends FlatSpec {
 
   val positionDelegate: D

@@ -35,7 +35,6 @@ import org.scalatest.{FlatSpec, Matchers}
 import scalafx.Includes._
 import scalafx.testutil.RunOnApplicationThread
 
-
 class PlatformSpec extends FlatSpec with Matchers with RunOnApplicationThread {
 
   "Platform" should "declare all public static methods of javafx.application.Platform" in {
@@ -49,10 +48,10 @@ class PlatformSpec extends FlatSpec with Matchers with RunOnApplicationThread {
           val javaName = jm.getName
           val scalaName = sm.getName
           scalaName == javaName ||
-            "is" + firstToUpper(scalaName) == javaName ||
-            "get" + firstToUpper(scalaName) == javaName ||
-            "set" + firstToUpper(scalaName) == javaName ||
-            scalaName + "Property" == javaName
+          "is" + firstToUpper(scalaName) == javaName ||
+          "get" + firstToUpper(scalaName) == javaName ||
+          "set" + firstToUpper(scalaName) == javaName ||
+          scalaName + "Property" == javaName
         }
       )
 
@@ -60,11 +59,9 @@ class PlatformSpec extends FlatSpec with Matchers with RunOnApplicationThread {
     }
   }
 
-
   it should "support isFxApplicationThread" in {
     Platform.isFxApplicationThread should equal(jfxa.Platform.isFxApplicationThread)
   }
-
 
   it should "support implicitExit read/write" in {
     val oldImplicitExit = jfxa.Platform.isImplicitExit
@@ -80,7 +77,6 @@ class PlatformSpec extends FlatSpec with Matchers with RunOnApplicationThread {
     jfxa.Platform.isImplicitExit should equal(oldImplicitExit)
   }
 
-
   it should "support isSupported(ConditionalFeature)" in {
     // Check values for each ConditionalFeature
     for (cf <- jfxa.ConditionalFeature.values()) {
@@ -88,16 +84,13 @@ class PlatformSpec extends FlatSpec with Matchers with RunOnApplicationThread {
     }
   }
 
-
   it should "support runLater(Runnable)" in {
     hasMethodWithSingleArgument("runLater", classOf[java.lang.Runnable]) should equal(true)
   }
 
-
   it should "support runLater(op: => Unit)" in {
     hasMethodWithSingleArgument("runLater", classOf[() => Unit]) should equal(true)
   }
-
 
   /** Check if Platform has a `method` with exactly one parameter of a given `parameterType`. */
   def hasMethodWithSingleArgument(method: String, parameterType: Class[_]): Boolean = {

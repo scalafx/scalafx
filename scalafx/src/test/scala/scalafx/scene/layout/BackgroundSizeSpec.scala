@@ -33,11 +33,13 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * BackgroundSize Spec tests.
- */
+  * BackgroundSize Spec tests.
+  */
 class BackgroundSizeSpec
-  extends SimpleSFXDelegateSpec[jfxsl.BackgroundSize, BackgroundSize](
-    classOf[jfxsl.BackgroundSize], classOf[BackgroundSize]) {
+    extends SimpleSFXDelegateSpec[jfxsl.BackgroundSize, BackgroundSize](
+      classOf[jfxsl.BackgroundSize],
+      classOf[BackgroundSize]
+    ) {
 
   override protected def getScalaClassInstance = new BackgroundSize(getJavaClassInstance) {}
 

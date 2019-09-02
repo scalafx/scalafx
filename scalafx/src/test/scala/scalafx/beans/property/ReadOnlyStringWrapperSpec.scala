@@ -30,7 +30,6 @@ package scalafx.beans.property
 import org.scalatest.Matchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
-
 /** ReadOnlyStringWrapper Spec tests. */
 class ReadOnlyStringWrapperSpec extends FlatSpec with BeforeAndAfterEach {
 

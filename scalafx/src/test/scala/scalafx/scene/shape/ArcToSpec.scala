@@ -33,13 +33,13 @@ import scalafx.Includes._
 import scalafx.testutil.{PositionDelegateSpec, SimpleSFXDelegateSpec}
 
 /**
- * ArcTo Spec tests.
- *
- *
- */
+  * ArcTo Spec tests.
+  *
+  *
+  */
 class ArcToSpec
-  extends SimpleSFXDelegateSpec[jfxss.ArcTo, ArcTo](classOf[jfxss.ArcTo], classOf[ArcTo])
-  with PositionDelegateSpec[ArcTo] {
+    extends SimpleSFXDelegateSpec[jfxss.ArcTo, ArcTo](classOf[jfxss.ArcTo], classOf[ArcTo])
+    with PositionDelegateSpec[ArcTo] {
 
   val positionDelegate = getScalaClassInstance
 

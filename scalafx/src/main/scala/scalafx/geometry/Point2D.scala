@@ -35,8 +35,8 @@ object Point2D {
   implicit def sfxPoint2D2jfx(p: Point2D): jfxg.Point2D = if (p != null) p.delegate else null
 
   /**
-   * Point or vector with both coordinates set to zero.
-   */
+    * Point or vector with both coordinates set to zero.
+    */
   val Zero = new Point2D(jfxg.Point2D.ZERO)
 }
 
@@ -45,23 +45,23 @@ class Point2D(override val delegate: jfxg.Point2D) extends SFXDelegate[jfxg.Poin
   def this(x: Double, y: Double) = this(new jfxg.Point2D(x, y))
 
   /**
-   * The x coordinate.
-   */
+    * The x coordinate.
+    */
   def x = delegate.getX
 
   /**
-   * The y coordinate.
-   */
+    * The y coordinate.
+    */
   def y = delegate.getY
 
   /**
-   * Computes the distance between this point and point (x1, y1).
-   */
+    * Computes the distance between this point and point (x1, y1).
+    */
   def distance(x1: Double, y1: Double) = delegate.distance(x1, y1)
 
   /**
-   * Computes the distance between this point and point p.
-   */
+    * Computes the distance between this point and point p.
+    */
   def distance(p: Point2D) = delegate.distance(p)
 
 }

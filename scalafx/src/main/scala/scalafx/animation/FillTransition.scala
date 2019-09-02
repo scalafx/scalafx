@@ -38,100 +38,100 @@ import scalafx.scene.shape.Shape
 import scalafx.util.Duration
 
 /**
- * Companion Object for [[scalafx.animation.FadeTransition]].
- *
- * @define FT `FillTransition`
- */
+  * Companion Object for [[scalafx.animation.FadeTransition]].
+  *
+  * @define FT `FillTransition`
+  */
 object FillTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $FT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FillTransition.html $FT]],
-   * extracting its delegate.
-   *
-   * @param v ScalaFX $FT
-   * @return Delegated JavaFX $FT extracted from `v`.
-   */
+    * Converts a ScalaFX $FT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FillTransition.html $FT]],
+    * extracting its delegate.
+    *
+    * @param v ScalaFX $FT
+    * @return Delegated JavaFX $FT extracted from `v`.
+    */
   implicit def sfxFillTransition2jfx(v: FillTransition): jfxa.FillTransition = if (v != null) v.delegate else null
 
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FillTransition.html $FT]].
- *
- * @constructor Creates a new ScalaFX $FT from a JavaFX $FT.
- * @param delegate JavaFX $FT to be delegated.
- *
- * @define FT `FillTransition`
- * @define DV Default value:
- */
+  * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FillTransition.html $FT]].
+  *
+  * @constructor Creates a new ScalaFX $FT from a JavaFX $FT.
+  * @param delegate JavaFX $FT to be delegated.
+  *
+  * @define FT `FillTransition`
+  * @define DV Default value:
+  */
 class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillTransition())
-  extends Transition(delegate)
-  with SFXDelegate[jfxa.FillTransition] {
+    extends Transition(delegate)
+    with SFXDelegate[jfxa.FillTransition] {
 
   /**
-   * The constructor of $FT
-   *
-   * @param duration The duration of the $FT
-   * @param shape The shape which filling will be animated
-   * @param fromValue The start value of the color-animation
-   * @param toValue The end value of the color-animation
-   */
+    * The constructor of $FT
+    *
+    * @param duration The duration of the $FT
+    * @param shape The shape which filling will be animated
+    * @param fromValue The start value of the color-animation
+    * @param toValue The end value of the color-animation
+    */
   def this(duration: Duration, shape: Shape, fromValue: Color, toValue: Color) =
     this(new jfxa.FillTransition(duration, shape, fromValue, toValue))
 
   /**
-   * The constructor of $FT
-   *
-   * @param duration The duration of the $FT
-   * @param fromValue The start value of the color-animation
-   * @param toValue The end value of the color-animation
-   */
+    * The constructor of $FT
+    *
+    * @param duration The duration of the $FT
+    * @param fromValue The start value of the color-animation
+    * @param toValue The end value of the color-animation
+    */
   def this(duration: Duration, fromValue: Color, toValue: Color) =
     this(new jfxa.FillTransition(duration, fromValue, toValue))
 
   /**
-   * The constructor of $FT
-   *
-   * @param duration The duration of the $FT
-   * @param shape The shape which filling will be animated
-   */
+    * The constructor of $FT
+    *
+    * @param duration The duration of the $FT
+    * @param shape The shape which filling will be animated
+    */
   def this(duration: Duration, shape: Shape) =
     this(new jfxa.FillTransition(duration, shape))
 
   /**
-   * The constructor of $FT
-   *
-   * @param duration The duration of the $FT
-   */
+    * The constructor of $FT
+    *
+    * @param duration The duration of the $FT
+    */
   def this(duration: Duration) = this(new jfxa.FillTransition(duration))
 
   /**
-   * The target shape of this $FT.
-   */
+    * The target shape of this $FT.
+    */
   def shape: ObjectProperty[jfxss.Shape] = delegate.shapeProperty
   def shape_=(s: Shape) {
     shape() = s
   }
 
   /**
-   * The duration of this $FT. $DV 400ms
-   */
+    * The duration of this $FT. $DV 400ms
+    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
 
   /**
-   * Specifies the start color value for this $FT. $DV `null`
-   */
+    * Specifies the start color value for this $FT. $DV `null`
+    */
   def fromValue: ObjectProperty[jfxsp.Color] = delegate.fromValueProperty
   def fromValue_=(from: Color) {
     fromValue() = from
   }
 
   /**
-   * Specifies the stop color value for this $FT. $DV `null`.
-   */
+    * Specifies the stop color value for this $FT. $DV `null`.
+    */
   def toValue: ObjectProperty[jfxsp.Color] = delegate.toValueProperty
   def toValue_=(to: Color) {
     toValue() = to

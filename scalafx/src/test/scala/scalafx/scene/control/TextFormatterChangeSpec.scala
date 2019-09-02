@@ -36,14 +36,15 @@ import scalafx.Includes._
 import scalafx.testutil.{BootstrapApplication, RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- *
- * Test for [[scalafx.scene.control.TextFormatter.Change]].
- */
+  *
+  * Test for [[scalafx.scene.control.TextFormatter.Change]].
+  */
 class TextFormatterChangeSpec
-  extends SimpleSFXDelegateSpec[jfxsc.TextFormatter.Change, TextFormatter.Change](
-    classOf[jfxsc.TextFormatter.Change], classOf[TextFormatter.Change])
-  with RunOnApplicationThread {
-
+    extends SimpleSFXDelegateSpec[jfxsc.TextFormatter.Change, TextFormatter.Change](
+      classOf[jfxsc.TextFormatter.Change],
+      classOf[TextFormatter.Change]
+    )
+    with RunOnApplicationThread {
 
   // A bit elaborated way of creating an instance of TextFormatter.Change that cannot be created directly.
   val change = {
@@ -60,7 +61,7 @@ class TextFormatterChangeSpec
         c
       }
 
-      new TextField {textFormatter = new TextFormatter[Number](converter, 1000, filter)}
+      new TextField { textFormatter = new TextFormatter[Number](converter, 1000, filter) }
     }
 
     textField.text = "250"

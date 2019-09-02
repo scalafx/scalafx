@@ -33,10 +33,9 @@ import scalafx.delegate.AlignmentDelegate._
 import scalafx.geometry.Pos
 
 /**
- * Trait to test AlignmentDelegate subclasses
- */
-trait AlignmentDelegateSpec[J <: Object with Aligned, D <: AlignmentDelegate[J]]
-  extends SFXDelegateSpec[J, D] {
+  * Trait to test AlignmentDelegate subclasses
+  */
+trait AlignmentDelegateSpec[J <: Object with Aligned, D <: AlignmentDelegate[J]] extends SFXDelegateSpec[J, D] {
 
   it should "have its Alignment observed when changed" in {
     var changed = false

@@ -33,12 +33,11 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Window Spec tests.
- *
- *
- */
-class WindowSpec
-  extends SimpleSFXDelegateSpec[jfxs.Window, Window](classOf[jfxs.Window], classOf[Window]) {
+  * Window Spec tests.
+  *
+  *
+  */
+class WindowSpec extends SimpleSFXDelegateSpec[jfxs.Window, Window](classOf[jfxs.Window], classOf[Window]) {
 
   override protected def getScalaClassInstance = new Window(this.getJavaClassInstance) {}
 

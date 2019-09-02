@@ -31,89 +31,97 @@ import javafx.scene.{control => jfxsc, text => jfxst}
 
 import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.{BooleanProperty, ReadOnlyIntegerProperty, ReadOnlyObjectProperty, ReadOnlyStringProperty, StringProperty, _}
+import scalafx.beans.property.{
+  BooleanProperty,
+  ReadOnlyIntegerProperty,
+  ReadOnlyObjectProperty,
+  ReadOnlyStringProperty,
+  StringProperty,
+  _
+}
 import scalafx.delegate.SFXDelegate
 
 object TextInputControl {
-  implicit def sfxTextInputControl2jfx(v: TextInputControl): jfxsc.TextInputControl = if (v != null) v.delegate else null
+  implicit def sfxTextInputControl2jfx(v: TextInputControl): jfxsc.TextInputControl =
+    if (v != null) v.delegate else null
 }
 
 abstract class TextInputControl(override val delegate: jfxsc.TextInputControl)
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.TextInputControl] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.TextInputControl] {
 
   /**
-   * The anchor of the text selection.
-   */
+    * The anchor of the text selection.
+    */
   def anchor: ReadOnlyIntegerProperty = delegate.anchorProperty
 
   /**
-   * The current position of the caret within the text.
-   */
+    * The current position of the caret within the text.
+    */
   def caretPosition: ReadOnlyIntegerProperty = delegate.caretPositionProperty
 
   /**
-   * Indicates whether this TextInputControl can be edited by the user.
-   */
+    * Indicates whether this TextInputControl can be edited by the user.
+    */
   def editable: BooleanProperty = delegate.editableProperty
   def editable_=(v: Boolean) {
     editable() = v
   }
 
   /**
-   * The default font to use for text in the TextInputControl.
-   */
+    * The default font to use for text in the TextInputControl.
+    */
   def font: ObjectProperty[jfxst.Font] = delegate.fontProperty()
   def font_=(v: jfxst.Font) {
     ObjectProperty.fillProperty[jfxst.Font](font, v)
   }
 
   /**
-   * The number of characters in the text input.
-   */
+    * The number of characters in the text input.
+    */
   def length: ReadOnlyIntegerProperty = delegate.lengthProperty
 
   /**
-   * Defines the characters in the TextInputControl which are selected
-   */
+    * Defines the characters in the TextInputControl which are selected
+    */
   def selectedText: ReadOnlyStringProperty = delegate.selectedTextProperty
 
   /**
-   * The current selection.
-   */
+    * The current selection.
+    */
   def selection: ReadOnlyObjectProperty[jfxsc.IndexRange] = delegate.selectionProperty
 
   /**
-   * The property describes if it's currently possible to undo the latest change of the content that was done.
-   */
+    * The property describes if it's currently possible to undo the latest change of the content that was done.
+    */
   def undoable: ReadOnlyBooleanProperty = delegate.undoableProperty()
 
   /**
-   * The property describes if it's currently possible to redo the latest change of the content that was undone.
-   */
+    * The property describes if it's currently possible to redo the latest change of the content that was undone.
+    */
   def redoable: ReadOnlyBooleanProperty = delegate.redoableProperty()
 
   /**
-   * The textual content of this TextInputControl.
-   */
+    * The textual content of this TextInputControl.
+    */
   def text: StringProperty = delegate.textProperty
   def text_=(v: String) {
     text() = v
   }
 
   /**
-   * The prompt text to display in the TextInputControl, or null if no prompt text is displayed.
-   * @since 2.2
-   */
+    * The prompt text to display in the TextInputControl, or null if no prompt text is displayed.
+    * @since 2.2
+    */
   def promptText: StringProperty = delegate.promptTextProperty()
   def promptText_=(v: String) {
     promptText() = v
   }
 
   /**
-   * The property contains currently attached `TextFormatter`.
-   * Since the value is part of the `Formatter`, changing the TextFormatter will update the text based on the new textFormatter.
-   */
+    * The property contains currently attached `TextFormatter`.
+    * Since the value is part of the `Formatter`, changing the TextFormatter will update the text based on the new textFormatter.
+    */
   def textFormatter: ObjectProperty[jfxsc.TextFormatter[_]] = delegate.textFormatterProperty()
   def textFormatter_=(v: TextFormatter[_]): Unit = {
     ObjectProperty.fillProperty(textFormatter, v)

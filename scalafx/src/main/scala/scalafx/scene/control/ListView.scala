@@ -46,81 +46,86 @@ object ListView {
   }
 
   class EditEvent[T](override val delegate: jfxsc.ListView.EditEvent[T])
-    extends Event(delegate)
-    with SFXDelegate[jfxsc.ListView.EditEvent[T]] {
+      extends Event(delegate)
+      with SFXDelegate[jfxsc.ListView.EditEvent[T]] {
 
     /**
-     * Creates a new EditEvent instance to represent an edit event. This event is used for
-     * ListView.EDIT_START_EVENT, ListView.EDIT_COMMIT_EVENT and ListView.EDIT_CANCEL_EVENT types.
-     */
-    def this(source: ListView[T], eventType: jfxe.EventType[_ <: jfxsc.ListView.EditEvent[T]], newValue: T, editIndex: Int) =
+      * Creates a new EditEvent instance to represent an edit event. This event is used for
+      * ListView.EDIT_START_EVENT, ListView.EDIT_COMMIT_EVENT and ListView.EDIT_CANCEL_EVENT types.
+      */
+    def this(
+        source: ListView[T],
+        eventType: jfxe.EventType[_ <: jfxsc.ListView.EditEvent[T]],
+        newValue: T,
+        editIndex: Int
+    ) =
       this(new jfxsc.ListView.EditEvent[T](source, eventType, newValue, editIndex))
 
     /**
-     * Returns the ListView upon which the edit took place.
-     */
+      * Returns the ListView upon which the edit took place.
+      */
     override def source: ListView[T] = delegate.getSource
 
     /**
-     * Returns the value of the new input provided by the end user.
-     */
+      * Returns the value of the new input provided by the end user.
+      */
     def newValue: T = delegate.getNewValue
 
     /**
-     * Returns the index in which the edit took place.
-     */
+      * Returns the index in which the edit took place.
+      */
     def index: Int = delegate.getIndex
 
   }
 
   /**
-   * An EventType that indicates some edit event has occurred.
-   */
+    * An EventType that indicates some edit event has occurred.
+    */
   def editAnyEvent = jfxsc.ListView.editAnyEvent
 
   /**
-   * An EventType used to indicate that an edit event has just been canceled within the ListView
-   * upon which the event was fired.
-   */
+    * An EventType used to indicate that an edit event has just been canceled within the ListView
+    * upon which the event was fired.
+    */
   def editCancelEvent = jfxsc.ListView.editCancelEvent
 
   /**
-   * An EventType used to indicate that an edit event has been committed within the ListView
-   * upon which the event was fired.
-   */
+    * An EventType used to indicate that an edit event has been committed within the ListView
+    * upon which the event was fired.
+    */
   def editCommitEvent = jfxsc.ListView.editCommitEvent
 
   /**
-   * An EventType used to indicate that an edit event has started within the ListView
-   * upon which the event was fired.
-   */
+    * An EventType used to indicate that an edit event has started within the ListView
+    * upon which the event was fired.
+    */
   def editStartEvent = jfxsc.ListView.editStartEvent
 }
 
 /**
- * @constructor Creates a default ListView which will display contents stacked vertically.
- */
+  * @constructor Creates a default ListView which will display contents stacked vertically.
+  */
 class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[T])
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.ListView[T]] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.ListView[T]] {
 
   /**
-   * Creates a default ListView which will stack the contents retrieved from the provided
-   * [[scalafx.collections.ObservableBuffer]] vertically.
-   *
-   */
+    * Creates a default ListView which will stack the contents retrieved from the provided
+    * [[scalafx.collections.ObservableBuffer]] vertically.
+    *
+    */
   def this(items: ObservableBuffer[T]) = this(new jfxsc.ListView[T](items))
 
   /**
-   * Creates a default ListView which will stack the contents retrieved from the provided
-   * [[scala.Seq]] vertically.
-   */
+    * Creates a default ListView which will stack the contents retrieved from the provided
+    * [[scala.Seq]] vertically.
+    */
   def this(items: Seq[T]) = this(new jfxsc.ListView[T](ObservableBuffer(items)))
 
   /**
-   * Setting a custom cell factory has the effect of deferring all cell creation, allowing for 
-   * total customization of the cell.
-   */
+    * Setting a custom cell factory has the effect of deferring all cell creation, allowing for
+    * total customization of the cell.
+    */
   def cellFactory = delegate.cellFactoryProperty
   def cellFactory_=(v: (ListView[T] => ListCell[T])) {
     cellFactory() = new jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] {
@@ -131,18 +136,18 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
   }
 
   /**
-   * Specifies whether this ListView is editable - only if the ListView and the ListCells within
-   * it are both editable will a ListCell be able to go into their editing state.
-   */
+    * Specifies whether this ListView is editable - only if the ListView and the ListCells within
+    * it are both editable will a ListCell be able to go into their editing state.
+    */
   def editable: BooleanProperty = delegate.editableProperty
   def editable_=(v: Boolean) {
     editable() = v
   }
 
   /**
-   * A property used to represent the index of the item currently being edited in the ListView,
-   * if editing is taking place, or -1 if no item is being edited.
-   */
+    * A property used to represent the index of the item currently being edited in the ListView,
+    * if editing is taking place, or -1 if no item is being edited.
+    */
   def editingIndex: ReadOnlyIntegerProperty = delegate.editingIndexProperty
 
   /** Specifies whether this control has cells that are a fixed height (of the specified value). */
@@ -152,55 +157,54 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
   }
 
   /**
-   * The FocusModel provides the API through which it is possible to both get and set the focus on
-   * a single item within a ListView.
-   */
+    * The FocusModel provides the API through which it is possible to both get and set the focus on
+    * a single item within a ListView.
+    */
   def focusModel: ObjectProperty[jfxsc.FocusModel[T]] = delegate.focusModelProperty
   def focusModel_=(v: FocusModel[T]) {
     focusModel() = v
   }
 
   /**
-   * The underlying data model for the ListView.
-   */
+    * The underlying data model for the ListView.
+    */
   def items = delegate.itemsProperty
   def items_=(v: ObservableBuffer[T]) {
     items() = v
   }
 
   /**
-   * This event handler will be fired when the user cancels editing a cell.
-   */
+    * This event handler will be fired when the user cancels editing a cell.
+    */
   def onEditCancel = delegate.onEditCancelProperty
   def onEditCancel_=(v: jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]) {
     onEditCancel() = v
   }
 
   /**
-   * This property is used when the user performs an action that should result in their editing
-   * input being persisted.
-   */
+    * This property is used when the user performs an action that should result in their editing
+    * input being persisted.
+    */
   def onEditCommit = delegate.onEditCommitProperty
   def onEditCommit_=(v: jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]) {
     onEditCommit() = v
   }
 
   /**
-   * This event handler will be fired when the user successfully initiates editing.
-   */
+    * This event handler will be fired when the user successfully initiates editing.
+    */
   def onEditStart = delegate.onEditStartProperty
   def onEditStart_=(v: jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]) {
     onEditStart() = v
   }
 
   /**
-   * The orientation of the ListView - this can either be horizontal or vertical.
-   */
+    * The orientation of the ListView - this can either be horizontal or vertical.
+    */
   def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
   def orientation_=(v: Orientation) {
     orientation() = v
   }
-
 
   /** This Node is shown to the user when the listview has no content to show. */
   def placeholder: ObjectProperty[jfxs.Node] = delegate.placeholderProperty
@@ -209,33 +213,33 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
   }
 
   /**
-   * The SelectionModel provides the API through which it is possible to select single or multiple
-   * items within a ListView, as well as inspect which items have been selected by the user.
-   */
+    * The SelectionModel provides the API through which it is possible to select single or multiple
+    * items within a ListView, as well as inspect which items have been selected by the user.
+    */
   def selectionModel: ObjectProperty[jfxsc.MultipleSelectionModel[T]] = delegate.selectionModelProperty
   def selectionModel_=(v: MultipleSelectionModel[T]) {
     selectionModel() = v
   }
 
   /**
-   * Instructs the ListView to begin editing the item in the given index, if the ListView is
-   * editable.
-   */
+    * Instructs the ListView to begin editing the item in the given index, if the ListView is
+    * editable.
+    */
   def edit(itemIndex: Int) {
     delegate.edit(itemIndex)
   }
 
   /**
-   * Called when there's a request to scroll an index into view using scrollTo(int) or #scrollTo(S)
-   */
+    * Called when there's a request to scroll an index into view using scrollTo(int) or #scrollTo(S)
+    */
   def onScrollTo: ObjectProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]] = delegate.onScrollToProperty
   def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]) {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]](onScrollTo, v)
   }
 
   /**
-   * Scrolls the ListView such that the item in the given index is visible to the end user.
-   */
+    * Scrolls the ListView such that the item in the given index is visible to the end user.
+    */
   def scrollTo(index: Int) {
     delegate.scrollTo(index)
   }

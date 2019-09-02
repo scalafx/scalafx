@@ -33,12 +33,15 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * ConstraintsBase Spec tests.
- *
- *
- */
+  * ConstraintsBase Spec tests.
+  *
+  *
+  */
 class ConstraintsBaseSpec
-  extends SimpleSFXDelegateSpec[jfxsl.ConstraintsBase, ConstraintsBase](classOf[jfxsl.ConstraintsBase], classOf[ConstraintsBase]) {
+    extends SimpleSFXDelegateSpec[jfxsl.ConstraintsBase, ConstraintsBase](
+      classOf[jfxsl.ConstraintsBase],
+      classOf[ConstraintsBase]
+    ) {
 
   override protected def getScalaClassInstance = new RowConstraints
 

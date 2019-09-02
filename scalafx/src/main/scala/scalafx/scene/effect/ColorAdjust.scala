@@ -38,42 +38,43 @@ object ColorAdjust {
 }
 
 class ColorAdjust(override val delegate: jfxse.ColorAdjust = new jfxse.ColorAdjust)
-  extends Effect(delegate)
-  with InputDelegate[jfxse.ColorAdjust]
-  with SFXDelegate[jfxse.ColorAdjust] {
+    extends Effect(delegate)
+    with InputDelegate[jfxse.ColorAdjust]
+    with SFXDelegate[jfxse.ColorAdjust] {
 
   /**
-   * Creates a new instance of ColorAdjust with the specified hue, saturation, brightness, and contrast.
-   */
-  def this(hue: Double, saturation: Double, brightness: Double, contrast: Double) = this(new jfxse.ColorAdjust(hue, saturation, brightness, contrast))
+    * Creates a new instance of ColorAdjust with the specified hue, saturation, brightness, and contrast.
+    */
+  def this(hue: Double, saturation: Double, brightness: Double, contrast: Double) =
+    this(new jfxse.ColorAdjust(hue, saturation, brightness, contrast))
 
   /**
-   * The brightness adjustment value.
-   */
+    * The brightness adjustment value.
+    */
   def brightness: DoubleProperty = delegate.brightnessProperty
   def brightness_=(v: Double) {
     brightness() = v
   }
 
   /**
-   * The contrast adjustment value.
-   */
+    * The contrast adjustment value.
+    */
   def contrast: DoubleProperty = delegate.contrastProperty
   def contrast_=(v: Double) {
     contrast() = v
   }
 
   /**
-   * The hue adjustment value.
-   */
+    * The hue adjustment value.
+    */
   def hue: DoubleProperty = delegate.hueProperty
   def hue_=(v: Double) {
     hue() = v
   }
 
   /**
-   * The saturation adjustment value.
-   */
+    * The saturation adjustment value.
+    */
   def saturation: DoubleProperty = delegate.saturationProperty
   def saturation_=(v: Double) {
     saturation() = v

@@ -33,7 +33,8 @@ import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.scene.input.ScrollEvent.VerticalTextScrollUnits]]. */
 class ScrollEventVerticalTextScrollUnitsSpec
-  extends SFXEnumDelegateSpec[jfxsi.ScrollEvent.VerticalTextScrollUnits, ScrollEvent.VerticalTextScrollUnits](
-    classOf[jfxsi.ScrollEvent.VerticalTextScrollUnits],
-    classOf[ScrollEvent.VerticalTextScrollUnits],
-    ScrollEvent.VerticalTextScrollUnits)
+    extends SFXEnumDelegateSpec[jfxsi.ScrollEvent.VerticalTextScrollUnits, ScrollEvent.VerticalTextScrollUnits](
+      classOf[jfxsi.ScrollEvent.VerticalTextScrollUnits],
+      classOf[ScrollEvent.VerticalTextScrollUnits],
+      ScrollEvent.VerticalTextScrollUnits
+    )

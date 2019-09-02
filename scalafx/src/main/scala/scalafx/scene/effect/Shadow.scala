@@ -39,36 +39,36 @@ object Shadow {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/Shadow.html]].
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/Shadow.html]].
+  */
 class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
-  extends Effect(delegate)
-  with ColorDelegate[jfxse.Shadow]
-  with InputDelegate[jfxse.Shadow]
-  with DimensionDelegate[jfxse.Shadow]
-  with SFXDelegate[jfxse.Shadow] {
+    extends Effect(delegate)
+    with ColorDelegate[jfxse.Shadow]
+    with InputDelegate[jfxse.Shadow]
+    with DimensionDelegate[jfxse.Shadow]
+    with SFXDelegate[jfxse.Shadow] {
 
   /**
-   * Creates a new instance of Shadow with the specified blurType, color, radius.
-   */
+    * Creates a new instance of Shadow with the specified blurType, color, radius.
+    */
   def this(blurType: BlurType, color: Color, radius: Double) = this(new jfxse.Shadow(blurType, color, radius))
 
   /**
-   * Creates a new instance of Shadow with specified radius and color.
-   */
+    * Creates a new instance of Shadow with specified radius and color.
+    */
   def this(radius: Double, color: Color) = this(new jfxse.Shadow(radius, color))
 
   /**
-   * The algorithm used to blur the shadow.
-   */
+    * The algorithm used to blur the shadow.
+    */
   def blurType: ObjectProperty[jfxse.BlurType] = delegate.blurTypeProperty
   def blurType_=(v: BlurType) {
     blurType() = v
   }
 
   /**
-   * The radius of the shadow blur kernel.
-   */
+    * The radius of the shadow blur kernel.
+    */
   def radius: DoubleProperty = delegate.radiusProperty
   def radius_=(v: Double) {
     radius() = v

@@ -35,55 +35,56 @@ import scalafx.collections.{ObservableBuffer, ObservableBufferBase}
 import scalafx.delegate.SFXDelegate
 
 object TransformationBuffer {
+
   /**
-   * Converts a ScalaFX TransformationBuffer to its JavaFX counterpart TransformationList.
-   *
-   * @param v ScalaFX TransformationBuffer
-   * @return JavaFX TransformationList
-   */
+    * Converts a ScalaFX TransformationBuffer to its JavaFX counterpart TransformationList.
+    *
+    * @param v ScalaFX TransformationBuffer
+    * @return JavaFX TransformationList
+    */
   implicit def sfxTransformationBuffer2jfx[E, F](v: TransformationBuffer[E, F]): jfxct.TransformationList[E, F] =
     if (v != null) v.delegate else null
 }
 
 /**
- * A base class for all buffers that wraps other buffers in a way that changes the buffer's elements, order,
- * size or generally it's structure. If the source list is observable, a listener is automatically added to it and
- * the events are delegated.
- *
- * Wraps a $JFX $URL0 $TC]].
- *
- * @tparam E - the type parameter of this buffer.
- * @tparam F - the upper bound of the type of the source buffer.
- *
- * @define TC TransformationList
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections.transformation/TransformationList.html
- * @define JFX JavaFX
- * @define ORIGINALDOC Original Documentation]].
- */
+  * A base class for all buffers that wraps other buffers in a way that changes the buffer's elements, order,
+  * size or generally it's structure. If the source list is observable, a listener is automatically added to it and
+  * the events are delegated.
+  *
+  * Wraps a $JFX $URL0 $TC]].
+  *
+  * @tparam E - the type parameter of this buffer.
+  * @tparam F - the upper bound of the type of the source buffer.
+  *
+  * @define TC TransformationList
+  * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections.transformation/TransformationList.html
+  * @define JFX JavaFX
+  * @define ORIGINALDOC Original Documentation]].
+  */
 abstract class TransformationBuffer[E, F](override val delegate: jfxct.TransformationList[E, F])
-  extends ObservableBufferBase[E](delegate)
-  with SFXDelegate[jfxct.TransformationList[E, F]] {
+    extends ObservableBufferBase[E](delegate)
+    with SFXDelegate[jfxct.TransformationList[E, F]] {
 
   /**
-   * The source list specified in the constructor of this transformation list.
-   */
+    * The source list specified in the constructor of this transformation list.
+    */
   def source: ObservableBuffer[_ <: F] = delegate.getSource
 
   /**
-   * Maps the index of this buffer's element to an index in the direct source buffer.
-   * @param index  the index in this buffer
-   * @return  the index of the element's origin in the source buffer.
-   */
+    * Maps the index of this buffer's element to an index in the direct source buffer.
+    * @param index  the index in this buffer
+    * @return  the index of the element's origin in the source buffer.
+    */
   def getSourceIndex(index: Int): Int = delegate.getSourceIndex(index)
 
+  /**
+    * Maps the index of this list's element to an index of the provided list.
+    */
+  def getSourceIndexFor(buffer: ObservableBuffer[E], index: Int): Int =
+    delegate.getSourceIndexFor(buffer.delegate, index)
 
   /**
-   * Maps the index of this list's element to an index of the provided list.
-   */
-  def getSourceIndexFor(buffer: ObservableBuffer[E], index: Int): Int = delegate.getSourceIndexFor(buffer.delegate, index)
-
-  /**
-   * Checks whether the provided list is in the chain under this TransformationList.
-   */
+    * Checks whether the provided list is in the chain under this TransformationList.
+    */
   def isInTransformationChain(buffer: ObservableBuffer[_]): Boolean = delegate.isInTransformationChain(buffer.delegate)
 }

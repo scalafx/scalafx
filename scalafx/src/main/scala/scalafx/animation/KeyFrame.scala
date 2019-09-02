@@ -35,34 +35,36 @@ import scala.collection.mutable
 import scala.language.implicitConversions
 
 /**
- * Companion Object for [[scalafx.animation.KeyFrame]].
- *
- * @define KF `KeyFrame`
- */
+  * Companion Object for [[scalafx.animation.KeyFrame]].
+  *
+  * @define KF `KeyFrame`
+  */
 object KeyFrame {
 
   /**
-   * Converts a ScalaFX $KF to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyFrame.html $KF]],
-   * extracting its delegate.
-   *
-   * @param v ScalaFX $KF
-   * @return JavaFX $KF extracted from `v`.
-   */
+    * Converts a ScalaFX $KF to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyFrame.html $KF]],
+    * extracting its delegate.
+    *
+    * @param v ScalaFX $KF
+    * @return JavaFX $KF extracted from `v`.
+    */
   implicit def sfxKeyFrame2jfx(v: KeyFrame): jfxa.KeyFrame = if (v != null) v.delegate else null
 
   /**
-   * Creates a new $KF instance
-   *
-   * @param time the time
-   * @param name the Name. Default Value: `null`.
-   * @param onFinished the onFinished-handler. Default Value: `null`.
-   * @param values a `Set` of [[scalafx.animation.KeyValue]] instances. Default Value: empty Set.
-   * @return A new $KF
-   */
-  def apply(time: Duration,
-            name: String = null,
-            onFinished: jfxe.EventHandler[jfxe.ActionEvent] = null,
-            values: Set[_ <: KeyValue[_, _]] = Set.empty): KeyFrame = {
+    * Creates a new $KF instance
+    *
+    * @param time the time
+    * @param name the Name. Default Value: `null`.
+    * @param onFinished the onFinished-handler. Default Value: `null`.
+    * @param values a `Set` of [[scalafx.animation.KeyValue]] instances. Default Value: empty Set.
+    * @return A new $KF
+    */
+  def apply(
+      time: Duration,
+      name: String = null,
+      onFinished: jfxe.EventHandler[jfxe.ActionEvent] = null,
+      values: Set[_ <: KeyValue[_, _]] = Set.empty
+  ): KeyFrame = {
     val mappedValues: Set[jfxa.KeyValue] = values.map((x: KeyValue[_, _]) => x.delegate)
     new KeyFrame(new jfxa.KeyFrame(time, name, onFinished, mappedValues.asJava))
   }
@@ -70,35 +72,34 @@ object KeyFrame {
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyFrame.html $KF]].
- *
- * @constructor Creates a new ScalaFX $KF from a JavaFX $KF.
- * @param delegate JavaFX $KF to be delegated.
- *
- * @define KF `KeyFrame`
- */
-class KeyFrame(override val delegate: jfxa.KeyFrame)
-  extends SFXDelegate[jfxa.KeyFrame] {
+  * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyFrame.html $KF]].
+  *
+  * @constructor Creates a new ScalaFX $KF from a JavaFX $KF.
+  * @param delegate JavaFX $KF to be delegated.
+  *
+  * @define KF `KeyFrame`
+  */
+class KeyFrame(override val delegate: jfxa.KeyFrame) extends SFXDelegate[jfxa.KeyFrame] {
 
   /**
-   * Returns the time offset of this $KF.
-   */
+    * Returns the time offset of this $KF.
+    */
   def time = new Duration(delegate.getTime)
 
   /**
-   * Returns the name of this $KF.
-   */
+    * Returns the name of this $KF.
+    */
   def name: String = delegate.getName
 
   /**
-   * Returns the onFinished event handler of this $KF.
-   */
+    * Returns the onFinished event handler of this $KF.
+    */
   def onFinished: jfxe.EventHandler[jfxe.ActionEvent] = delegate.getOnFinished
 
   /**
-   * Returns an immutable Set of [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyValue.html `KeyValue`]]
-   * instances.
-   */
+    * Returns an immutable Set of [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/KeyValue.html `KeyValue`]]
+    * instances.
+    */
   def values: mutable.Set[jfxa.KeyValue] = delegate.getValues.asScala
 
 }

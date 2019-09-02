@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,91 +38,92 @@ import scala.reflect.ClassTag
 import scala.language.implicitConversions
 
 /**
- * @define OA `ObservableArray`
- * @define ARY `Array`
- *
- *         Abstract base class for observable array subclass companion objects.
- *
- * @tparam V Value type to be stored in this array.
- * @tparam T Type of this ScalaFX $ARY.
- * @tparam D Type of the delegated JavaFX $ARY.
- *
- * @constructor Create new base $OA.
- */
-private[collections] abstract class ObservableArrayCompanionBase[V: ClassTag, T <: ObservableArray[V, T, D],
-D <: jfxc.ObservableArray[D]] {
+  * @define OA `ObservableArray`
+  * @define ARY `Array`
+  *
+  *         Abstract base class for observable array subclass companion objects.
+  *
+  * @tparam V Value type to be stored in this array.
+  * @tparam T Type of this ScalaFX $ARY.
+  * @tparam D Type of the delegated JavaFX $ARY.
+  *
+  * @constructor Create new base $OA.
+  */
+private[collections] abstract class ObservableArrayCompanionBase[V: ClassTag, T <: ObservableArray[V, T, D], D <: jfxc.ObservableArray[
+  D
+]] {
 
   // TODO: Enter link when JavaFX 8 API Docs are available on-line.
   /**
-   * Extract a JavaFX $OA from a ScalaFX $OA.
-   *
-   * @param oa ScalaFX $OA.
-   * @return JavaFX $OA inside parameter.
-   */
+    * Extract a JavaFX $OA from a ScalaFX $OA.
+    *
+    * @param oa ScalaFX $OA.
+    * @return JavaFX $OA inside parameter.
+    */
   implicit def sfxObservableArray2jfxObservableArray(oa: T): D = if (oa != null) oa.delegate else null.asInstanceOf[D]
 
   /**
-   * Create new $OA from a vararg list.
-   *
-   * @param v Value varargs.
-   * @return New $OA storing `v`
-   */
+    * Create new $OA from a vararg list.
+    *
+    * @param v Value varargs.
+    * @return New $OA storing `v`
+    */
   def apply(v: V*): T
 
   /**
-   * Create new $OA from an existing array.
-   *
-   * @param a Array to be converted..
-   * @return New $OA storing `a`.
-   */
+    * Create new $OA from an existing array.
+    *
+    * @param a Array to be converted..
+    * @return New $OA storing `a`.
+    */
   def apply(a: Array[V]): T = apply(a: _*)
 
   /**
-   * Create an observable array with given dimension.
-   *
-   * @param n Size of the new array.  This value cannot be negative.
-   * @return An observable array with the specified dimension and zeroed elements.
-   * @throws NegativeArraySizeException if `n` is negative.
-   */
+    * Create an observable array with given dimension.
+    *
+    * @param n Size of the new array.  This value cannot be negative.
+    * @return An observable array with the specified dimension and zeroed elements.
+    * @throws NegativeArraySizeException if `n` is negative.
+    */
   def ofDim(n: Int): T = apply(Array.ofDim(n))
 
   /**
-   * Return an empty $OA
-   *
-   * @return New empty $OA
-   */
+    * Return an empty $OA
+    *
+    * @return New empty $OA
+    */
   def empty(): T = ofDim(0)
 
   /**
-   * Returns an observable array containing the results of some element computation.
-   *
-   * Note that `elem` is computed `n` times in total; it is not simply calculated once and reused.
-   *
-   * @param n Size of the new array.  If this value is less than 1, an empty array is returned (matching the behavior
-   *          of Scala's Array[T].fill function).
-   * @param elem Computation to be calculated for each element.
-   * @return Observable array of size `n`, with each element containing the result of computation `elem`.
-   */
+    * Returns an observable array containing the results of some element computation.
+    *
+    * Note that `elem` is computed `n` times in total; it is not simply calculated once and reused.
+    *
+    * @param n Size of the new array.  If this value is less than 1, an empty array is returned (matching the behavior
+    *          of Scala's Array[T].fill function).
+    * @param elem Computation to be calculated for each element.
+    * @return Observable array of size `n`, with each element containing the result of computation `elem`.
+    */
   def fill(n: Int)(elem: => V): T = apply(Array.fill(n)(elem))
 
   /**
-   * Returns an array containing the results of some element computation that takes the element index as an argument.
-   *
-   * @param n Size of the new array.  If this value is less than 1, an empty array is returned (matching the behavior
-   *          of Scala's Array[T].tabulate function).
-   * @param f Function to be used to initialize element whose index is passed as an argument.
-   * @return Observable array of size `n`, with each element initialized by `f`.
-   */
+    * Returns an array containing the results of some element computation that takes the element index as an argument.
+    *
+    * @param n Size of the new array.  If this value is less than 1, an empty array is returned (matching the behavior
+    *          of Scala's Array[T].tabulate function).
+    * @param f Function to be used to initialize element whose index is passed as an argument.
+    * @return Observable array of size `n`, with each element initialized by `f`.
+    */
   def tabulate(n: Int)(f: Int => V): T = apply(Array.tabulate(n)(f))
 
   /**
-   * Return an array returning repeated applications of a function to a start value.
-   *
-   * @param start Start value of the array.
-   * @param n Size of the new array.  If this value is less than 1, an empty array is returned (matching the behavior
-   *          of Scala's Array[T].iterate function).
-   * @param f Function to be repeatedly applied to previous element's value.
-   * @return Array containing elements `start, f(start), f(f(start)), ...`.
-   */
+    * Return an array returning repeated applications of a function to a start value.
+    *
+    * @param start Start value of the array.
+    * @param n Size of the new array.  If this value is less than 1, an empty array is returned (matching the behavior
+    *          of Scala's Array[T].iterate function).
+    * @param f Function to be repeatedly applied to previous element's value.
+    * @return Array containing elements `start, f(start), f(f(start)), ...`.
+    */
   def iterate(start: V, n: Int)(f: V => V): T = apply(Array.iterate(start, n)(f))
 }

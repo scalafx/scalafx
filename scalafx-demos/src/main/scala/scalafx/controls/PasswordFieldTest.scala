@@ -46,7 +46,12 @@ object PasswordFieldTest extends JFXApp {
     fillWidth = true
     alignment = Pos.Center
     hgrow = Priority.Never
-    children = List(new PasswordFieldControls(passwordField), new TextFieldControls(passwordField), new TextInputControlControls(passwordField), new ControlControls(passwordField))
+    children = List(
+      new PasswordFieldControls(passwordField),
+      new TextFieldControls(passwordField),
+      new TextInputControlControls(passwordField),
+      new ControlControls(passwordField)
+    )
   }
 
   val mainPane = new BorderPane {
@@ -70,24 +75,25 @@ object PasswordFieldTest extends JFXApp {
 
 }
 
-class PasswordFieldControls(target: PasswordField) extends PropertiesNodes[PasswordField](target, "PasswordField Properties") {
+class PasswordFieldControls(target: PasswordField)
+    extends PropertiesNodes[PasswordField](target, "PasswordField Properties") {
 
   val lblText = new Label {
     text <== target.text
   }
 
   /**
-   * It is not really working. Probably because when the button is clicked, password field lose its focus. To make Copy and cut work a possibility could be use
-   * a keyboard shortcut. And they must be different Ctrl + C and Ctrl + X to not confuse with traditional shortcuts.
-   */
+    * It is not really working. Probably because when the button is clicked, password field lose its focus. To make Copy and cut work a possibility could be use
+    * a keyboard shortcut. And they must be different Ctrl + C and Ctrl + X to not confuse with traditional shortcuts.
+    */
   val btnCopy = new Button {
     text = "Copy"
-    onAction = handle {target.copy()}
+    onAction = handle { target.copy() }
   }
 
   val btnCut = new Button {
     text = "Cut"
-    onAction = handle {target.cut()}
+    onAction = handle { target.cut() }
   }
 
   super.addNode("Typed Text", lblText)

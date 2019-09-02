@@ -36,48 +36,48 @@ import scalafx.stage.Window
 import scala.language.implicitConversions
 
 /**
- * Companion Object for [[scalafx.print.PrinterJob]].
- */
+  * Companion Object for [[scalafx.print.PrinterJob]].
+  */
 object PrinterJob {
 
   /**
-   * Converts a ScalaFX PrinterJob to its JavaFX counterpart.
-   *
-   * @param pj ScalaFX PrinterJob
-   * @return JavaFX PrinterJob
-   */
+    * Converts a ScalaFX PrinterJob to its JavaFX counterpart.
+    *
+    * @param pj ScalaFX PrinterJob
+    * @return JavaFX PrinterJob
+    */
   implicit def sfxPrinterJob2jfx(pj: PrinterJob): jfxp.PrinterJob = if (pj != null) pj.delegate else null
 
   // JobStatus - begin
 
   /**
-   * Companion Object for [[scalafx.print.PrinterJob.JobStatus]].
-   */
+    * Companion Object for [[scalafx.print.PrinterJob.JobStatus]].
+    */
   object JobStatus extends SFXEnumDelegateCompanion[jfxp.PrinterJob.JobStatus, PrinterJob.JobStatus] {
 
     /**
-     * The job has been cancelled by the application.
-     */
+      * The job has been cancelled by the application.
+      */
     case object Canceled extends JobStatus(jfxp.PrinterJob.JobStatus.CANCELED)
 
     /**
-     * The job initiated printing and later called endJob() which reported success.
-     */
+      * The job initiated printing and later called endJob() which reported success.
+      */
     case object Done extends JobStatus(jfxp.PrinterJob.JobStatus.DONE)
 
     /**
-     * The job encountered an error.
-     */
+      * The job encountered an error.
+      */
     case object Error extends JobStatus(jfxp.PrinterJob.JobStatus.ERROR)
 
     /**
-     * The new job status.
-     */
+      * The new job status.
+      */
     case object NotStarted extends JobStatus(jfxp.PrinterJob.JobStatus.NOT_STARTED)
 
     /**
-     * The job has requested to print at least one page, and has not terminated printing.
-     */
+      * The job has requested to print at least one page, and has not terminated printing.
+      */
     case object Printing extends JobStatus(jfxp.PrinterJob.JobStatus.PRINTING)
 
     protected override def unsortedValues: Array[PrinterJob.JobStatus] =
@@ -86,108 +86,107 @@ object PrinterJob {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterJob.JobStatus.html JavaFX JobStatus]].
-   */
+    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterJob.JobStatus.html JavaFX JobStatus]].
+    */
   sealed abstract class JobStatus(override val delegate: jfxp.PrinterJob.JobStatus)
-    extends SFXEnumDelegate[jfxp.PrinterJob.JobStatus]
+      extends SFXEnumDelegate[jfxp.PrinterJob.JobStatus]
 
   // JobStatus - end
 
   /**
-   * Factory method to create a job. If there are no printers available, this will return `null`.
-   */
+    * Factory method to create a job. If there are no printers available, this will return `null`.
+    */
   def createPrinterJob: PrinterJob = jfxp.PrinterJob.createPrinterJob
 
   /**
-   * Factory method to create a job for a specified printer.
-   *
-   * @param printer to use for the job. If the printer is currently unavailable (e.g. offline)
-   *                then this may return 'null'.
-   * @return a new PrinterJob, or 'null'.
-   */
+    * Factory method to create a job for a specified printer.
+    *
+    * @param printer to use for the job. If the printer is currently unavailable (e.g. offline)
+    *                then this may return 'null'.
+    * @return a new PrinterJob, or 'null'.
+    */
   def createPrinterJob(printer: Printer): PrinterJob = jfxp.PrinterJob.createPrinterJob(printer)
 
   /**
-   * Added just to satisfy Spec tests.
-   */
+    * Added just to satisfy Spec tests.
+    */
   @deprecated(message = "Use createPrinterJob(Printer): PrinterJob instead", since = "8.0")
   def createPrinterJob(printer: jfxp.Printer): jfxp.PrinterJob = jfxp.PrinterJob.createPrinterJob(printer)
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterJob.html JavaFX PrinterJob]].
- *
- * @constructor Creates a new ScalaFX PrinterJob from its JavaFX counterpart.
- * @param delegate JavaFX PrinterJob. Since there is no public constructor for it, there is not a default value.
- *
- * @since 8.0
- */
-final class PrinterJob(override val delegate: jfxp.PrinterJob)
-  extends SFXDelegate[jfxp.PrinterJob] {
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterJob.html JavaFX PrinterJob]].
+  *
+  * @constructor Creates a new ScalaFX PrinterJob from its JavaFX counterpart.
+  * @param delegate JavaFX PrinterJob. Since there is no public constructor for it, there is not a default value.
+  *
+  * @since 8.0
+  */
+final class PrinterJob(override val delegate: jfxp.PrinterJob) extends SFXDelegate[jfxp.PrinterJob] {
 
   /**
-   * The JobSettings encapsulates all the API supported job configuration options such as
-   * number of copies, collation option, duplex option, etc.
-   */
+    * The JobSettings encapsulates all the API supported job configuration options such as
+    * number of copies, collation option, duplex option, etc.
+    */
   def jobSettings: JobSettings = delegate.getJobSettings
 
   /**
-   * A read only object property representing the current JobStatus
-   */
+    * A read only object property representing the current JobStatus
+    */
   def jobStatus: ReadOnlyObjectProperty[jfxp.PrinterJob.JobStatus] = delegate.jobStatusProperty
 
   /**
-   * Property representing the Printer for this job.
-   */
+    * Property representing the Printer for this job.
+    */
   def printer: ObjectProperty[jfxp.Printer] = delegate.printerProperty
   def printer_=(v: Printer) {
     printer() = v
   }
 
   /**
-   * Cancel the underlying print job at the earliest opportunity.
-   */
+    * Cancel the underlying print job at the earliest opportunity.
+    */
   def cancelJob(): Unit = delegate.cancelJob()
 
   /**
-   * If the job can be successfully spooled to the printer queue this will return true.
-   */
+    * If the job can be successfully spooled to the printer queue this will return true.
+    */
   def endJob: Boolean = delegate.endJob
 
   /**
-   * Print the specified node.
-   *
-   * @param node The node to print.
-   * @return whether rendering was successful.
-   */
+    * Print the specified node.
+    *
+    * @param node The node to print.
+    * @return whether rendering was successful.
+    */
   def printPage(node: Node): Boolean = delegate.printPage(node)
 
   /**
-   * Print the specified node using the specified page layout.
-   *
-   * @param pageLayout  Layout for this page.
-   * @param node The node to print.
-   * @return whether rendering was successful.
-   */
+    * Print the specified node using the specified page layout.
+    *
+    * @param pageLayout  Layout for this page.
+    * @param node The node to print.
+    * @return whether rendering was successful.
+    */
   def printPage(pageLayout: PageLayout, node: Node): Boolean = delegate.printPage(pageLayout, node)
 
   /**
-   * Displays a Page Setup dialog.
-   *
-   * @param owner owner to block input, or 'null'.
-   * @return false if the user opts to cancel the dialog, or the job is not in the new state.
-   *         That is if it has already started, has failed, or has been cancelled, or ended.
-   */
+    * Displays a Page Setup dialog.
+    *
+    * @param owner owner to block input, or 'null'.
+    * @return false if the user opts to cancel the dialog, or the job is not in the new state.
+    *         That is if it has already started, has failed, or has been cancelled, or ended.
+    */
   def showPageSetupDialog(owner: Window): Boolean = delegate.showPageSetupDialog(owner)
 
   /**
-   * Displays a Print Dialog.
-   *
-   * @param owner owner to which to block input, or 'null'.
-   * @return false if the user opts to cancel printing, or the job is not in the new state.
-   *         That is if it has already started, has failed, or has been cancelled, or ended.
-   */
+    * Displays a Print Dialog.
+    *
+    * @param owner owner to which to block input, or 'null'.
+    * @return false if the user opts to cancel printing, or the job is not in the new state.
+    *         That is if it has already started, has failed, or has been cancelled, or ended.
+    */
   def showPrintDialog(owner: Window): Boolean = delegate.showPrintDialog(owner)
 
 }

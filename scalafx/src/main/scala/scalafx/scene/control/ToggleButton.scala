@@ -37,18 +37,18 @@ object ToggleButton {
 }
 
 class ToggleButton(override val delegate: jfxsc.ToggleButton = new jfxsc.ToggleButton)
-  extends ButtonBase(delegate)
-  with Toggle
-  with SFXDelegate[jfxsc.ToggleButton] {
+    extends ButtonBase(delegate)
+    with Toggle
+    with SFXDelegate[jfxsc.ToggleButton] {
 
   /**
-   * Creates a toggle button with the specified text as its label.
-   */
+    * Creates a toggle button with the specified text as its label.
+    */
   def this(text: String) = this(new jfxsc.ToggleButton(text))
 
   /**
-   * Creates a toggle button with the specified text and icon for its label.
-   */
+    * Creates a toggle button with the specified text and icon for its label.
+    */
   def this(text: String, graphic: Node) = this(new jfxsc.ToggleButton(text, graphic))
 
 }

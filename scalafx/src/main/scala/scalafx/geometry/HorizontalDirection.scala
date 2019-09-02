@@ -31,22 +31,20 @@ import javafx.{geometry => jfxg}
 import scalafx.delegate._
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/HorizontalDirection.html javafx.geometry.HorizontalDirection]] */
-object HorizontalDirection
-  extends SFXEnumDelegateCompanion[jfxg.HorizontalDirection, HorizontalDirection] {
+object HorizontalDirection extends SFXEnumDelegateCompanion[jfxg.HorizontalDirection, HorizontalDirection] {
 
   /** A direction to the left. */
   case object Left extends HorizontalDirection(jfxg.HorizontalDirection.LEFT)
-  @deprecated ("Use Left; LEFT will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Left; LEFT will be removed in a future release", "8.0.60-R10")
   val LEFT = Left
 
   /** A direction to the right. */
   case object Right extends HorizontalDirection(jfxg.HorizontalDirection.RIGHT)
-  @deprecated ("Use Right; RIGHT will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Right; RIGHT will be removed in a future release", "8.0.60-R10")
   val RIGHT = Right
 
   protected override def unsortedValues: Array[HorizontalDirection] = Array(Left, Right)
 }
 
-
 sealed abstract class HorizontalDirection(override val delegate: jfxg.HorizontalDirection)
-  extends SFXEnumDelegate[jfxg.HorizontalDirection]
+    extends SFXEnumDelegate[jfxg.HorizontalDirection]

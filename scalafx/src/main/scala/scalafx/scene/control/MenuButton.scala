@@ -41,7 +41,6 @@ import scalafx.geometry.Side
 import scalafx.scene.Node
 import scalafx.scene.Node._
 
-
 object MenuButton {
   implicit def sfxToggleButton2jfx(mb: MenuButton): jfxsc.MenuButton = if (mb != null) mb.delegate else null
 
@@ -59,11 +58,11 @@ object MenuButton {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/MenuButton.html]].
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/MenuButton.html]].
+  */
 class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
-  extends ButtonBase(delegate)
-  with SFXDelegate[jfxsc.MenuButton] {
+    extends ButtonBase(delegate)
+    with SFXDelegate[jfxsc.MenuButton] {
 
   /** Creates a toggle button with the specified text as its label. */
   def this(text: String) = this(new jfxsc.MenuButton(text))
@@ -73,16 +72,16 @@ class MenuButton(override val delegate: jfxsc.MenuButton = new jfxsc.MenuButton)
 
   /** The items to show within this buttons menu. */
   def items: jfxc.ObservableList[jfxsc.MenuItem] = delegate.getItems
+
   /**
-   * Sets the items, replacing the prior content. If you want append to current content, use `add` or
-   * similar.
-   *
-   * @param c Items to replace prior content.
-   */
+    * Sets the items, replacing the prior content. If you want append to current content, use `add` or
+    * similar.
+    *
+    * @param c Items to replace prior content.
+    */
   def items_=(c: Iterable[MenuItem]) {
     fillSFXCollection(this.items, c)
   }
-
 
   /** Indicates on which side the ContextMenu should open in relation to the MenuButton. */
   def popupSide: jfxbp.ObjectProperty[jfxg.Side] = delegate.popupSideProperty()

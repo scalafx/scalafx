@@ -35,70 +35,69 @@ import scala.collection.JavaConverters._
 import scala.language.implicitConversions
 
 /**
- * Companion object for [[scalafx.css.Styleable]].
- */
+  * Companion object for [[scalafx.css.Styleable]].
+  */
 object Styleable {
 
   /**
-   * Converts a ScalaFX Styleable to its JavaFX counterpart.
-   *
-   * @param s ScalaFX Styleable
-   * @return JavaFX Styleable
-   */
+    * Converts a ScalaFX Styleable to its JavaFX counterpart.
+    *
+    * @param s ScalaFX Styleable
+    * @return JavaFX Styleable
+    */
   implicit def sfxStyleable2jfx(s: Styleable): jfxcss.Styleable = if (s != null) s.delegate else null
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/Styleable.html JavaFX Styleable]].
- *
- * @since 8.0
- */
-trait Styleable
-  extends SFXDelegate[jfxcss.Styleable] {
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/Styleable.html JavaFX Styleable]].
+  *
+  * @since 8.0
+  */
+trait Styleable extends SFXDelegate[jfxcss.Styleable] {
 
   /**
-   * The CssMetaData of this Styleable.
-   */
+    * The CssMetaData of this Styleable.
+    */
   def cssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getCssMetaData.asScala.toSeq
 
   /**
-   * The id of this Styleable.
-   *
-   * IMPLEMENTATION NOTE: For this method was adopted the name `getId` instead `id` to not 
-   * conflict with its subclasses already have a method with this name which returns a 
-   * `StringProperty`. 
-   */
+    * The id of this Styleable.
+    *
+    * IMPLEMENTATION NOTE: For this method was adopted the name `getId` instead `id` to not
+    * conflict with its subclasses already have a method with this name which returns a
+    * `StringProperty`.
+    */
   def getId: String = delegate.getId
 
   /**
-   * The pseudo-class state of this Styleable.
-   */
+    * The pseudo-class state of this Styleable.
+    */
   def pseudoClassStates: ObservableSet[jfxcss.PseudoClass] = delegate.getPseudoClassStates
 
   /**
-   * A string representation of the CSS style associated with this specific Node.
-   *
-   * IMPLEMENTATION NOTE: For this method was adopted the name `getStyle` instead `style` to not 
-   * conflict with its subclasses already have a method with this name which returns a 
-   * `StringProperty`. 
-   */
+    * A string representation of the CSS style associated with this specific Node.
+    *
+    * IMPLEMENTATION NOTE: For this method was adopted the name `getStyle` instead `style` to not
+    * conflict with its subclasses already have a method with this name which returns a
+    * `StringProperty`.
+    */
   def getStyle: String = delegate.getStyle
 
   /**
-   * The parent of this Styleable, or null if there is no parent.
-   */
+    * The parent of this Styleable, or null if there is no parent.
+    */
   def styleableParent: Styleable = delegate.getStyleableParent
 
   /**
-   * A list of String identifiers which can be used to logically group Nodes, specifically for an
-   * external style engine.
-   */
+    * A list of String identifiers which can be used to logically group Nodes, specifically for an
+    * external style engine.
+    */
   def styleClass: ObservableBuffer[String] = delegate.getStyleClass
 
   /**
-   * The type of this `Styleable` that is to be used in selector matching.
-   */
+    * The type of this `Styleable` that is to be used in selector matching.
+    */
   def typeSelector: String = delegate.getTypeSelector
 
 }

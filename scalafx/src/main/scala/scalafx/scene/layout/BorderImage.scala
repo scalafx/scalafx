@@ -39,51 +39,57 @@ object BorderImage {
 }
 
 /**
- * Defines properties describing how to render an image as the background to some
- * [[scalafx.scene.layout.Region]].
- */
-class BorderImage(override val delegate: jfxsl.BorderImage)
-  extends SFXDelegate[jfxsl.BorderImage] {
+  * Defines properties describing how to render an image as the background to some
+  * [[scalafx.scene.layout.Region]].
+  */
+class BorderImage(override val delegate: jfxsl.BorderImage) extends SFXDelegate[jfxsl.BorderImage] {
 
   /**
-   * Creates a new BackgroundImage.Defines properties describing how to render an image as
-   * the border of some Region.
-   */
-  def this(image: Image, widths: BorderWidths, insets: Insets, slices: BorderWidths,
-           filled: Boolean, repeatX: BorderRepeat, repeatY: BorderRepeat) =
+    * Creates a new BackgroundImage.Defines properties describing how to render an image as
+    * the border of some Region.
+    */
+  def this(
+      image: Image,
+      widths: BorderWidths,
+      insets: Insets,
+      slices: BorderWidths,
+      filled: Boolean,
+      repeatX: BorderRepeat,
+      repeatY: BorderRepeat
+  ) =
     this(new jfxsl.BorderImage(image, widths, insets, slices, filled, repeatX, repeatY))
 
   /**
-   * The image to be used.
-   */
+    * The image to be used.
+    */
   def image: Image = delegate.getImage
 
   /**
-   * The insets of the BorderImage define where the border should be positioned relative
-   * to the edge of the Region.
-   */
+    * The insets of the BorderImage define where the border should be positioned relative
+    * to the edge of the Region.
+    */
   def insets: Insets = delegate.getInsets
 
   /**
-   * Indicates in what manner (if at all) the background image is to be repeated along
-   * the x-axis of the region.
-   */
+    * Indicates in what manner (if at all) the background image is to be repeated along
+    * the x-axis of the region.
+    */
   def repeatX: BorderRepeat = delegate.getRepeatX
 
   /**
-   * Indicates in what manner (if at all) the background image is to be repeated along
-   * the y-axis of the region.
-   */
+    * Indicates in what manner (if at all) the background image is to be repeated along
+    * the y-axis of the region.
+    */
   def repeatY: BorderRepeat = delegate.getRepeatY
 
   /**
-   * Defines the slices of the image.@return
-   */
+    * Defines the slices of the image.@return
+    */
   def slices: BorderWidths = delegate.getSlices
 
   /**
-   * The widths of the border on each side.
-   */
+    * The widths of the border on each side.
+    */
   def widths: BorderWidths = delegate.getWidths
 
 }

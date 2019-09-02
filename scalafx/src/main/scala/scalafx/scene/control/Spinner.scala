@@ -37,11 +37,9 @@ import scalafx.util.Duration
 
 import scala.language.implicitConversions
 
-
 object Spinner {
 
   implicit def sfxSpinner2jfx[T](v: Spinner[T]): jfxsc.Spinner[T] = if (v != null) v.delegate else null
-
 
   /** The arrows are placed on the right of the Spinner, pointing horizontally (i.e. left and right). */
   val StyleClassArrowsOnRightHorizontal: String = jfxsc.Spinner.STYLE_CLASS_ARROWS_ON_RIGHT_HORIZONTAL
@@ -72,7 +70,7 @@ object Spinner {
   *
   */
 class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
-  extends Control(delegate)
+    extends Control(delegate)
     with SFXDelegate[jfxsc.Spinner[T]] {
 
   /**
@@ -241,8 +239,6 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
     repeatDelay() = value
   }
 
-
   def editor: ReadOnlyObjectProperty[jfxsc.TextField] = delegate.editorProperty()
-
 
 }

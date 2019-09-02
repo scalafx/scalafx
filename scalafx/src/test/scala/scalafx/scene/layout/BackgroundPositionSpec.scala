@@ -33,11 +33,13 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * BackgroundPosition Spec tests.
- */
+  * BackgroundPosition Spec tests.
+  */
 class BackgroundPositionSpec
-  extends SimpleSFXDelegateSpec[jfxsl.BackgroundPosition, BackgroundPosition](
-    classOf[jfxsl.BackgroundPosition], classOf[BackgroundPosition]) {
+    extends SimpleSFXDelegateSpec[jfxsl.BackgroundPosition, BackgroundPosition](
+      classOf[jfxsl.BackgroundPosition],
+      classOf[BackgroundPosition]
+    ) {
 
   override protected def getScalaClassInstance = new BackgroundPosition(getJavaClassInstance) {}
 

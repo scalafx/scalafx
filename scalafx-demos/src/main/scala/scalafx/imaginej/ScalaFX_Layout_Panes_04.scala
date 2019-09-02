@@ -50,18 +50,16 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.text.{Font, FontWeight, Text}
 
-
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
- *
- *         based upon: Example 1-4 Create a Stack Pane
- *
- *         note: no linear gradient and hard coded positioning of stack pane
- *
- *         http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
- *
- */
-
+  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+  *
+  *         based upon: Example 1-4 Create a Stack Pane
+  *
+  *         note: no linear gradient and hard coded positioning of stack pane
+  *
+  *         http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
+  *
+  */
 object ScalaFX_Layout_Panes_04 extends JFXApp {
   val currentButton = new Button {
     text = "Current"
@@ -145,4 +143,3 @@ object ScalaFX_Layout_Panes_04 extends JFXApp {
     }
   }
 }
-

@@ -33,13 +33,13 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * Scene Spec tests.
- *
- *
- */
+  * Scene Spec tests.
+  *
+  *
+  */
 class SceneSpec
-  extends SimpleSFXDelegateSpec[jfxs.Scene, Scene](classOf[jfxs.Scene], classOf[Scene])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxs.Scene, Scene](classOf[jfxs.Scene], classOf[Scene])
+    with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new Scene(getJavaClassInstance)
 

@@ -32,8 +32,8 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * CubicCurve Spec tests.
- *
- */
+  * CubicCurve Spec tests.
+  *
+  */
 class CubicCurveSpec
-  extends SimpleSFXDelegateSpec[jfxss.CubicCurve, CubicCurve](classOf[jfxss.CubicCurve], classOf[CubicCurve])
+    extends SimpleSFXDelegateSpec[jfxss.CubicCurve, CubicCurve](classOf[jfxss.CubicCurve], classOf[CubicCurve])

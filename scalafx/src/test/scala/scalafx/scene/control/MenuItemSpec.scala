@@ -32,9 +32,8 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * MenuItem Spec tests.
- *
- *
- */
-class MenuItemSpec
-  extends SimpleSFXDelegateSpec[jfxsc.MenuItem, MenuItem](classOf[jfxsc.MenuItem], classOf[MenuItem])
+  * MenuItem Spec tests.
+  *
+  *
+  */
+class MenuItemSpec extends SimpleSFXDelegateSpec[jfxsc.MenuItem, MenuItem](classOf[jfxsc.MenuItem], classOf[MenuItem])

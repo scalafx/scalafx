@@ -34,78 +34,80 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 
 object PerspectiveTransform {
-  implicit def sfxPerspectiveTransform2jfx(pt: PerspectiveTransform): jfxse.PerspectiveTransform = if (pt != null) pt.delegate else null
+  implicit def sfxPerspectiveTransform2jfx(pt: PerspectiveTransform): jfxse.PerspectiveTransform =
+    if (pt != null) pt.delegate else null
 }
 
 class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = new jfxse.PerspectiveTransform)
-  extends Effect(delegate)
-  with InputDelegate[jfxse.PerspectiveTransform]
-  with SFXDelegate[jfxse.PerspectiveTransform] {
+    extends Effect(delegate)
+    with InputDelegate[jfxse.PerspectiveTransform]
+    with SFXDelegate[jfxse.PerspectiveTransform] {
 
   /**
-   * Creates a new instance of PerspectiveTransform with the specified ulx, uly, urx, ury, lrx, lry, llx, and lly.
-   */
-  def this(ulx: Double, uly: Double, urx: Double, ury: Double, lrx: Double, lry: Double, llx: Double, lly: Double) = this(new jfxse.PerspectiveTransform(ulx, uly, urx, ury, lrx, lry, llx, lly))
+    * Creates a new instance of PerspectiveTransform with the specified ulx, uly, urx, ury, lrx, lry, llx, and lly.
+    */
+  def this(ulx: Double, uly: Double, urx: Double, ury: Double, lrx: Double, lry: Double, llx: Double, lly: Double) =
+    this(new jfxse.PerspectiveTransform(ulx, uly, urx, ury, lrx, lry, llx, lly))
 
   /**
-   * The x coordinate of the output location onto which the lower left corner of the source is mapped.
-   */
+    * The x coordinate of the output location onto which the lower left corner of the source is mapped.
+    */
   def llx: DoubleProperty = delegate.llxProperty
   def llx_=(v: Double) {
     llx() = v
   }
 
   /**
-   * The y coordinate of the output location onto which the lower left corner of the source is mapped.
-   */
+    * The y coordinate of the output location onto which the lower left corner of the source is mapped.
+    */
   def lly: DoubleProperty = delegate.llyProperty
   def lly_=(v: Double) {
     lly() = v
   }
 
   /**
-   * The x coordinate of the output location onto which the lower right corner of the source is mapped.
-   */
+    * The x coordinate of the output location onto which the lower right corner of the source is mapped.
+    */
   def lrx: DoubleProperty = delegate.lrxProperty
   def lrx_=(v: Double) {
     lrx() = v
   }
 
   /**
-   * The y coordinate of the output location onto which the lower right corner of the source is mapped.
-   */
+    * The y coordinate of the output location onto which the lower right corner of the source is mapped.
+    */
   def lry: DoubleProperty = delegate.lryProperty
   def lry_=(v: Double) {
     lry() = v
   }
 
   /**
-   * The x coordinate of the output location onto which the upper left corner of the source is mapped.
-   */
+    * The x coordinate of the output location onto which the upper left corner of the source is mapped.
+    */
   def ulx: DoubleProperty = delegate.ulxProperty
   def ulx_=(v: Double) {
     ulx() = v
   }
 
   /**
-   * The y coordinate of the output location onto which the upper left corner of the source is mapped.
-   */
+    * The y coordinate of the output location onto which the upper left corner of the source is mapped.
+    */
   def uly: DoubleProperty = delegate.ulyProperty
   def uly_=(v: Double) {
     uly() = v
   }
 
   /**
-   * The x coordinate of the output location onto which the upper right corner of the source is mapped.
-   */
+    * The x coordinate of the output location onto which the upper right corner of the source is mapped.
+    */
   def urx: DoubleProperty = delegate.urxProperty
   def urx_=(v: Double) {
     urx() = v
   }
 
   /**
-   * The y coordinate of the output location onto which the upper right corner of the source is mapped.
-   */
+    * The y coordinate of the output location onto which the upper right corner of the source is mapped.
+    */
   def ury: DoubleProperty = delegate.uryProperty
   def ury_=(v: Double) {
     ury() = v

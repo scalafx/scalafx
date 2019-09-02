@@ -32,9 +32,12 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * ProgressBarTableCell Spec tests.
- *
- */
+  * ProgressBarTableCell Spec tests.
+  *
+  */
 class ProgressBarTableCellSpec[S]
-  extends SimpleSFXDelegateSpec[jfxscc.ProgressBarTableCell[S], ProgressBarTableCell[S]](classOf[jfxscc.ProgressBarTableCell[S]], classOf[ProgressBarTableCell[S]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxscc.ProgressBarTableCell[S], ProgressBarTableCell[S]](
+      classOf[jfxscc.ProgressBarTableCell[S]],
+      classOf[ProgressBarTableCell[S]]
+    )
+    with RunOnApplicationThread

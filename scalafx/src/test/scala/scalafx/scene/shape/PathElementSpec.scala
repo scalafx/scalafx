@@ -33,12 +33,12 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * PathElement Spec tests.
- *
- *
- */
+  * PathElement Spec tests.
+  *
+  *
+  */
 class PathElementSpec
-  extends SimpleSFXDelegateSpec[jfxss.PathElement, PathElement](classOf[jfxss.PathElement], classOf[PathElement]) {
+    extends SimpleSFXDelegateSpec[jfxss.PathElement, PathElement](classOf[jfxss.PathElement], classOf[PathElement]) {
 
   override protected def getScalaClassInstance = new ClosePath
 

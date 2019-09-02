@@ -32,8 +32,8 @@ import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 /**
- * Companion Object for [[scalafx.util.Duration]].
- */
+  * Companion Object for [[scalafx.util.Duration]].
+  */
 object Duration {
   implicit def sfxDuration2jfx(d: Duration): jfxu.Duration = if (d != null) d.delegate else null
 
@@ -47,37 +47,37 @@ object Duration {
   }
 
   def Indefinite = new Duration(jfxu.Duration.INDEFINITE)
-  @deprecated ("Use Indefinite; INDEFINITE will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Indefinite; INDEFINITE will be removed in a future release", "8.0.60-R10")
   def INDEFINITE = Indefinite
 
   def One = new Duration(jfxu.Duration.ONE)
-  @deprecated ("Use One; ONE will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use One; ONE will be removed in a future release", "8.0.60-R10")
   def ONE = One
 
   def Unknown = new Duration(jfxu.Duration.UNKNOWN)
-  @deprecated ("Use Unknown; UNKNOWN will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Unknown; UNKNOWN will be removed in a future release", "8.0.60-R10")
   def UNKNOWN = Unknown
 
   def Zero = new Duration(jfxu.Duration.ZERO)
-  @deprecated ("Use Zero; ZERO will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Zero; ZERO will be removed in a future release", "8.0.60-R10")
   def ZERO = Zero
 }
 
 /**
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Duration.html $D]].
- *
- * @constructor Creates a new $D from a JavaFX $D.
- * @param delegate JavaFX $D to be delegated.
- *
- * @define D `Duration`
- */
+  * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Duration.html $D]].
+  *
+  * @constructor Creates a new $D from a JavaFX $D.
+  * @param delegate JavaFX $D to be delegated.
+  *
+  * @define D `Duration`
+  */
 class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Duration] with Ordered[Duration] {
 
   /**
-   * The constructor of $D
-   *
-   * @param millis The length of the $D in milliseconds
-   */
+    * The constructor of $D
+    *
+    * @param millis The length of the $D in milliseconds
+    */
   def this(millis: Double) =
     this(jfxu.Duration.millis(millis))
 

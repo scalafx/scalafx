@@ -34,68 +34,68 @@ import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object TextInputDialog {
+
   /**
-   * Converts a ScalaFX TextInputDialog to its JavaFX counterpart.
-   *
-   * @param v ScalaFX TextInputDialog
-   * @return JavaFX TextInputDialog
-   */
+    * Converts a ScalaFX TextInputDialog to its JavaFX counterpart.
+    *
+    * @param v ScalaFX TextInputDialog
+    * @return JavaFX TextInputDialog
+    */
   implicit def sfxTextInputDialog2jfx(v: TextInputDialog): jfxsc.TextInputDialog =
     if (v != null) v.delegate else null
 }
 
 /**
- * A dialog that shows a text input control to the user.
- *
- * Wraps a $JFX $URL0 $TC]].
- *
- * @constructor Creates a new TextInputDialog without a default value entered into the dialog.
- *
- * @define TC TextInputDialog
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene/TextInputDialog.html
- * @define JFX JavaFX
- * @define ORIGINALDOC Original Documentation]].
- */
+  * A dialog that shows a text input control to the user.
+  *
+  * Wraps a $JFX $URL0 $TC]].
+  *
+  * @constructor Creates a new TextInputDialog without a default value entered into the dialog.
+  *
+  * @define TC TextInputDialog
+  * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene/TextInputDialog.html
+  * @define JFX JavaFX
+  * @define ORIGINALDOC Original Documentation]].
+  */
 class TextInputDialog(override val delegate: jfxsc.TextInputDialog = new jfxsc.TextInputDialog())
-  extends Dialog[String](delegate)
-  with SFXDelegate[jfxsc.TextInputDialog] {
+    extends Dialog[String](delegate)
+    with SFXDelegate[jfxsc.TextInputDialog] {
 
   /**
-   * Creates a new TextInputDialog with the default value entered into the
-   * dialog `TextField`.
-   */
+    * Creates a new TextInputDialog with the default value entered into the
+    * dialog `TextField`.
+    */
   def this(defaultValue: String) = this(new jfxsc.TextInputDialog(defaultValue))
 
-
   /**
-   * Shows the dialog and waits for the user response (in other words, brings
-   * up a blocking dialog, with the returned value the users input).
-   *
-   * {{{
-   *   dialog.showAndWait()
-   * }}}
-   * Or when return value is required:
-   * {{{
-   *   val r = dialog.showAndWait()
-   *   r match {
-   *     case Some(v) => ...
-   *     case None    => ...
-   *   }
-   * }}}
-   *
-   * @return An `Option` that contains the `result`.
-   */
+    * Shows the dialog and waits for the user response (in other words, brings
+    * up a blocking dialog, with the returned value the users input).
+    *
+    * {{{
+    *   dialog.showAndWait()
+    * }}}
+    * Or when return value is required:
+    * {{{
+    *   val r = dialog.showAndWait()
+    *   r match {
+    *     case Some(v) => ...
+    *     case None    => ...
+    *   }
+    * }}}
+    *
+    * @return An `Option` that contains the `result`.
+    */
   def showAndWait(): Option[String] = {
     super.showAndWait((x: String) => x).asInstanceOf[Option[String]]
   }
 
   /**
-   * The `TextField` used within this dialog.
-   */
+    * The `TextField` used within this dialog.
+    */
   def editor: TextField = delegate.getEditor
 
   /**
-   * The default value that was specified in the constructor.
-   */
+    * The default value that was specified in the constructor.
+    */
   def defaultValue: String = delegate.getDefaultValue
 }

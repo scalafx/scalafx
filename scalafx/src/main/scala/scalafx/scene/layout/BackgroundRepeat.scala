@@ -48,12 +48,15 @@ object BackgroundRepeat extends SFXEnumDelegateCompanion[jfxsl.BackgroundRepeat,
   case object Space extends BackgroundRepeat(jfxsl.BackgroundRepeat.SPACE)
 
   protected override def unsortedValues: Array[BackgroundRepeat] = Array(
-    NoRepeat, Repeat, Round, Space
+    NoRepeat,
+    Repeat,
+    Round,
+    Space
   )
 }
 
 /**
- * Enumeration of options for repeating images in backgrounds
- */
+  * Enumeration of options for repeating images in backgrounds
+  */
 sealed abstract class BackgroundRepeat(override val delegate: jfxsl.BackgroundRepeat)
-  extends SFXEnumDelegate[jfxsl.BackgroundRepeat]
+    extends SFXEnumDelegate[jfxsl.BackgroundRepeat]

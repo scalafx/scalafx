@@ -35,10 +35,10 @@ import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 import scalafx.Includes._
 
 /**
- * DoubleProperty Spec tests.
- *
- *
- */
+  * DoubleProperty Spec tests.
+  *
+  *
+  */
 class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
   var doubleProperty: jfxbp.DoubleProperty = null
@@ -113,7 +113,7 @@ class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix addition of constants" in {
-    doubleProperty3 <== doubleProperty + 35 + 35l + 35f + 35d
+    doubleProperty3 <== doubleProperty + 35 + 35L + 35f + 35d
     doubleProperty() = 21
     doubleProperty3() should equal(161)
   }
@@ -126,7 +126,7 @@ class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix subtraction of constants" in {
-    doubleProperty3 <== doubleProperty - 12 - 12l - 12f - 12d
+    doubleProperty3 <== doubleProperty - 12 - 12L - 12f - 12d
     doubleProperty() = 40
     doubleProperty3() should equal(-8)
   }
@@ -139,7 +139,7 @@ class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix multiplication of constants" in {
-    doubleProperty3 <== doubleProperty * 2 * 2l * 2f * 2d
+    doubleProperty3 <== doubleProperty * 2 * 2L * 2f * 2d
     doubleProperty() = 5
     doubleProperty3() should equal(80)
   }
@@ -152,7 +152,7 @@ class DoublePropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix division of constants" in {
-    doubleProperty3 <== doubleProperty / 2 / 2l / 5f / 5d
+    doubleProperty3 <== doubleProperty / 2 / 2L / 5f / 5d
     doubleProperty() = 100
     doubleProperty3() should equal(1)
   }

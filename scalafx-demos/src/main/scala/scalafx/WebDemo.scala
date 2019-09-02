@@ -46,7 +46,6 @@ object WebDemo extends JFXApp {
     onVisibilityChanged = (e: WebEvent[_]) => println("onVisibilityChanged: " + e)
   }
 
-
   val engine = browser.engine
   engine.load("http://www.scalafx.org/")
 
@@ -55,7 +54,7 @@ object WebDemo extends JFXApp {
     hgrow = Priority.Always
     vgrow = Priority.Never
   }
-  txfUrl.onAction = handle {engine.load(txfUrl.text.get)}
+  txfUrl.onAction = handle { engine.load(txfUrl.text.get) }
 
   stage = new PrimaryStage {
     title = "ScalaFX Web Demo"

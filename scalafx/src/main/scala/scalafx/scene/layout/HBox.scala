@@ -42,32 +42,32 @@ object HBox {
   implicit def sfxHBox2jfx(v: HBox): jfxsl.HBox = if (v != null) v.delegate else null
 
   /**
-   * Removes all hbox constraints from the child node.
-   */
+    * Removes all hbox constraints from the child node.
+    */
   def clearConstraints(child: jfxs.Node) {
     jfxsl.HBox.clearConstraints(child)
   }
 
   /**
-   * Returns the child's hgrow constraint if set.
-   */
+    * Returns the child's hgrow constraint if set.
+    */
   def getHgrow(child: Node) = jfxsl.HBox.getHgrow(child)
 
   /**
-   * Sets the horizontal grow priority for the child when contained by an hbox.
-   */
+    * Sets the horizontal grow priority for the child when contained by an hbox.
+    */
   def setHgrow(child: Node, value: Priority) {
     jfxsl.HBox.setHgrow(child, value)
   }
 
   /**
-   * Returns the child's margin constraint if set.
-   */
+    * Returns the child's margin constraint if set.
+    */
   def getMargin(child: Node) = jfxsl.HBox.getMargin(child)
 
   /**
-   * Sets the margin for the child when contained by an hbox.
-   */
+    * Sets the margin for the child when contained by an hbox.
+    */
   def setMargin(child: Node, value: Insets) {
     jfxsl.HBox.setMargin(child, value)
   }
@@ -75,43 +75,43 @@ object HBox {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/HBox.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/HBox.html]]
+  */
 class HBox(override val delegate: jfxsl.HBox = new jfxsl.HBox)
-  extends Pane(delegate)
-  with AlignmentDelegate[jfxsl.HBox]
-  with SFXDelegate[jfxsl.HBox] {
+    extends Pane(delegate)
+    with AlignmentDelegate[jfxsl.HBox]
+    with SFXDelegate[jfxsl.HBox] {
 
   /**
-   * Creates an HBox layout with the specified spacing between children.
-   */
+    * Creates an HBox layout with the specified spacing between children.
+    */
   def this(spacing: Double) = this(new jfxsl.HBox(spacing))
 
   /**
-   * Creates an HBox layout with spacing = 0.
-   * @param children The initial set of children for this pane.
-   */
+    * Creates an HBox layout with spacing = 0.
+    * @param children The initial set of children for this pane.
+    */
   def this(children: Node*) = this(new jfxsl.HBox(children.map(_.delegate): _*))
 
   /**
-   * Creates an HBox layout with the specified spacing between children.
-   * @param spacing  The amount of horizontal space between each child.
-   * @param children  The initial set of children for this pane.
-   */
+    * Creates an HBox layout with the specified spacing between children.
+    * @param spacing  The amount of horizontal space between each child.
+    * @param children  The initial set of children for this pane.
+    */
   def this(spacing: Double, children: Node*) = this(new jfxsl.HBox(spacing, children.map(_.delegate): _*))
 
   /**
-   * The amount of horizontal space between each child in the hbox.
-   */
+    * The amount of horizontal space between each child in the hbox.
+    */
   def spacing: DoubleProperty = delegate.spacingProperty
   def spacing_=(v: Double) {
     spacing() = v
   }
 
   /**
-   * Whether or not resizable children will be resized to fill the full height of the hbox or be
-   * kept to their preferred height and aligned according to the alignment vpos value.
-   */
+    * Whether or not resizable children will be resized to fill the full height of the hbox or be
+    * kept to their preferred height and aligned according to the alignment vpos value.
+    */
   def fillHeight: BooleanProperty = delegate.fillHeightProperty
   def fillHeight_=(v: Boolean) {
     fillHeight() = v

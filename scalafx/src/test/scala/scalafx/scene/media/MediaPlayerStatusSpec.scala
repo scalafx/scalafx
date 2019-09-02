@@ -33,7 +33,8 @@ import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.scene.media.MediaPlayer.Status]]. */
 class MediaPlayerStatusSpec
-  extends SFXEnumDelegateSpec[jfxsm.MediaPlayer.Status, MediaPlayer.Status](
-    classOf[jfxsm.MediaPlayer.Status],
-    classOf[MediaPlayer.Status],
-    MediaPlayer.Status)
+    extends SFXEnumDelegateSpec[jfxsm.MediaPlayer.Status, MediaPlayer.Status](
+      classOf[jfxsm.MediaPlayer.Status],
+      classOf[MediaPlayer.Status],
+      MediaPlayer.Status
+    )

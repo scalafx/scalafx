@@ -35,10 +35,10 @@ import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 import scalafx.Includes._
 
 /**
- * BooleanProperty Spec tests.
- *
- *
- */
+  * BooleanProperty Spec tests.
+  *
+  *
+  */
 class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
   var booleanProperty: jfxbp.BooleanProperty = null

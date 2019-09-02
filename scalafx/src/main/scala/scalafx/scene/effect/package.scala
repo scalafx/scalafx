@@ -36,26 +36,25 @@ import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/package-summary.html `javafx.scene.effect`]] package.
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/package-summary.html `javafx.scene.effect`]] package.
+  */
 package object effect {
 
   /**
-   * Type that indicates a JavaFX class that has the Property `inputProperty` of kind `ObjectProperty[Effect]`
-   */
+    * Type that indicates a JavaFX class that has the Property `inputProperty` of kind `ObjectProperty[Effect]`
+    */
   type Inputed = {
     def inputProperty(): jfxbp.ObjectProperty[jfxse.Effect]
   }
 
   /**
-   * Trait that unifies all Effect subclasses whose Java counterpart have input Property. See type Inputed.
-   */
-  trait InputDelegate[J <: Object with Inputed]
-    extends SFXDelegate[J] {
+    * Trait that unifies all Effect subclasses whose Java counterpart have input Property. See type Inputed.
+    */
+  trait InputDelegate[J <: Object with Inputed] extends SFXDelegate[J] {
 
     /**
-     * The input for this Effect.
-     */
+      * The input for this Effect.
+      */
     def input: ObjectProperty[jfxse.Effect] = delegate.inputProperty()
     def input_=(v: Effect) {
       input() = v
@@ -64,21 +63,20 @@ package object effect {
   }
 
   /**
-   * Type that indicates a JavaFX class that has the Property `colorProperty` of kind `ObjectProperty[Color]`
-   */
+    * Type that indicates a JavaFX class that has the Property `colorProperty` of kind `ObjectProperty[Color]`
+    */
   type Colored = {
     def colorProperty(): jfxbp.ObjectProperty[jfxsp.Color]
   }
 
   /**
-   * Trait that unify all Effect subclasses whose Java counterpart have color Property. See type Colored.
-   */
-  trait ColorDelegate[J <: Object with Colored]
-    extends SFXDelegate[J] {
+    * Trait that unify all Effect subclasses whose Java counterpart have color Property. See type Colored.
+    */
+  trait ColorDelegate[J <: Object with Colored] extends SFXDelegate[J] {
 
     /**
-     * The Effect's color.
-     */
+      * The Effect's color.
+      */
     def color: ObjectProperty[jfxsp.Color] = delegate.colorProperty()
     def color_=(c: Color) {
       color() = c

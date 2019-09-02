@@ -34,44 +34,44 @@ import scalafx.print.PrinterJob
 import scalafx.scene.control.Control
 
 /**
- * Companion object for [[scalafx.scene.web.HTMLEditor]]
- */
+  * Companion object for [[scalafx.scene.web.HTMLEditor]]
+  */
 object HTMLEditor {
 
   /**
-   * Converts a ScalaFX HTMLEditor to its JavaFX counterpart.
-   *
-   * @param he ScalaFX HTMLEditor
-   * @return JavaFX HTMLEditor
-   */
+    * Converts a ScalaFX HTMLEditor to its JavaFX counterpart.
+    *
+    * @param he ScalaFX HTMLEditor
+    * @return JavaFX HTMLEditor
+    */
   implicit def sfxHTMLEditor2jfx(he: HTMLEditor): jfxsw.HTMLEditor = if (he != null) he.delegate else null
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/HTMLEditor.html JavaFX HTMLEditor]]
- *
- * @constructor Creates a new HTMLEditor from its JavaFX counterpart.
- * @param delegate JavaFX HTMLEditor. Its default value is a new instance.
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/HTMLEditor.html JavaFX HTMLEditor]]
+  *
+  * @constructor Creates a new HTMLEditor from its JavaFX counterpart.
+  * @param delegate JavaFX HTMLEditor. Its default value is a new instance.
+  */
 class HTMLEditor(override val delegate: jfxsw.HTMLEditor = new jfxsw.HTMLEditor)
-  extends Control(delegate)
-  with SFXDelegate[jfxsw.HTMLEditor] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsw.HTMLEditor] {
 
   /**
-   * Returns the HTML content of the editor.
-   */
+    * Returns the HTML content of the editor.
+    */
   def htmlText = delegate.getHtmlText
   def htmlText_=(htmlText: String) {
     delegate.setHtmlText(htmlText)
   }
 
   /**
-   * Prints the content of the editor using the given printer job.
-   *
-   * @param job printer job used for printing
-   * @since 8.0
-   */
+    * Prints the content of the editor using the given printer job.
+    *
+    * @param job printer job used for printing
+    * @since 8.0
+    */
   def print(job: PrinterJob): Unit = delegate.print(job)
 
 }

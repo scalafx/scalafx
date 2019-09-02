@@ -26,7 +26,6 @@
  */
 package scalafx.application
 
-
 import javafx.{application => jfxa}
 
 import scala.collection.JavaConverters._
@@ -36,20 +35,20 @@ import scala.language.implicitConversions
 object ApplicationIncludes extends ApplicationIncludes
 
 /**
- * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/package-summary.html `javafx.application`]] Classes to 
- * their ScalaFX counterparts.
- */
+  * Contains implicit methods to convert from
+  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/package-summary.html `javafx.application`]] Classes to
+  * their ScalaFX counterparts.
+  */
 trait ApplicationIncludes {
 
   /**
-   * Converts a 
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html `javafx.application.Application.Parameters`]]
-   * instance to its ScalaFX counterpart.
-   *
-   * @param p JavaFX Parameters
-   * @return ScalaFX Parameters
-   */
+    * Converts a
+    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Application.Parameters.html `javafx.application.Application.Parameters`]]
+    * instance to its ScalaFX counterpart.
+    *
+    * @param p JavaFX Parameters
+    * @return ScalaFX Parameters
+    */
   implicit def jfxParameters2sfx(p: jfxa.Application.Parameters): JFXApp.Parameters =
     if (p != null) new JFXApp.Parameters {
       def raw: mutable.Buffer[String] = p.getRaw.asScala
@@ -59,18 +58,18 @@ trait ApplicationIncludes {
       def unnamed: mutable.Buffer[String] = p.getUnnamed.asScala
 
       def delegate: jfxa.Application.Parameters = p
-    }
-    else null
+    } else null
 
   /**
-   * Converts a 
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/ConditionalFeature.html `javafx.application.ConditionalFeature`]]
-   * instance to its ScalaFX counterpart.
-   *
-   * @param e JavaFX ConditionalFeature
-   * @return ScalaFX ConditionalFeature
-   */
-  implicit def jfxConditionalFeature2sfx(e: jfxa.ConditionalFeature): ConditionalFeature = ConditionalFeature.jfxEnum2sfx(e)
+    * Converts a
+    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/ConditionalFeature.html `javafx.application.ConditionalFeature`]]
+    * instance to its ScalaFX counterpart.
+    *
+    * @param e JavaFX ConditionalFeature
+    * @return ScalaFX ConditionalFeature
+    */
+  implicit def jfxConditionalFeature2sfx(e: jfxa.ConditionalFeature): ConditionalFeature =
+    ConditionalFeature.jfxEnum2sfx(e)
 
   implicit def jfxHostServices2sfx(e: jfxa.HostServices): HostServices = new HostServices(e)
 }

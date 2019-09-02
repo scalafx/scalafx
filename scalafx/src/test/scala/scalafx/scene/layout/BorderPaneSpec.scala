@@ -33,9 +33,9 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * BorderPane Spec tests.
- *
- *
- */
+  * BorderPane Spec tests.
+  *
+  *
+  */
 class BorderPaneSpec
-  extends SimpleSFXDelegateSpec[jfxsl.BorderPane, BorderPane](classOf[jfxsl.BorderPane], classOf[BorderPane])
+    extends SimpleSFXDelegateSpec[jfxsl.BorderPane, BorderPane](classOf[jfxsl.BorderPane], classOf[BorderPane])

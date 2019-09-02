@@ -32,9 +32,8 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Rotate Spec tests.
- *
- *
- */
-class RotateSpec
-  extends SimpleSFXDelegateSpec[jfxst.Rotate, Rotate](classOf[jfxst.Rotate], classOf[Rotate])
+  * Rotate Spec tests.
+  *
+  *
+  */
+class RotateSpec extends SimpleSFXDelegateSpec[jfxst.Rotate, Rotate](classOf[jfxst.Rotate], classOf[Rotate])

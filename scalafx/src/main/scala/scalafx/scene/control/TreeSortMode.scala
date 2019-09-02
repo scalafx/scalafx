@@ -37,8 +37,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
   * @define JFX         JavaFX
   * @define ORIGINALDOC Original Documentation]].
   **/
-object TreeSortMode
-  extends SFXEnumDelegateCompanion[jfxsc.TreeSortMode, TreeSortMode] {
+object TreeSortMode extends SFXEnumDelegateCompanion[jfxsc.TreeSortMode, TreeSortMode] {
 
   /**
     * Default; sort all nodes.
@@ -67,4 +66,4 @@ object TreeSortMode
   * @since 8.0
   */
 sealed abstract class TreeSortMode(override val delegate: jfxsc.TreeSortMode)
-  extends SFXEnumDelegate[jfxsc.TreeSortMode] 
+    extends SFXEnumDelegate[jfxsc.TreeSortMode]

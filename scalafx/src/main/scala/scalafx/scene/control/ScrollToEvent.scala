@@ -36,60 +36,61 @@ import scalafx.delegate.SFXDelegate
 import scalafx.event.{Event, EventType}
 
 /**
- * Companion Object for [[scalafx.scene.control.ScrollToEvent]].
- */
+  * Companion Object for [[scalafx.scene.control.ScrollToEvent]].
+  */
 object ScrollToEvent {
 
   /**
-   * Converts a ScalaFX ScrollToEvent to its JavaFX couterpart
-   *
-   * @param event ScalaFX ScrollToEvent
-   * @return JavaFX ScrollToEvent
-   */
+    * Converts a ScalaFX ScrollToEvent to its JavaFX couterpart
+    *
+    * @param event ScalaFX ScrollToEvent
+    * @return JavaFX ScrollToEvent
+    */
   implicit def sfxScrollToEvent2jfx[T](event: ScrollToEvent[T]): jfxsc.ScrollToEvent[T] =
     if (event != null) event.delegate else null
 
   /**
-   * Common supertype for all scroll-to event types.
-   */
+    * Common supertype for all scroll-to event types.
+    */
   val Any: EventType[jfxsc.ScrollToEvent[_]] = jfxsc.ScrollToEvent.ANY
 
   /**
-   * This event occurs if the user requests scrolling a `TableColumnBase` (ie `TableColumn` or `TreeTableColumn`) into view.
-   */
+    * This event occurs if the user requests scrolling a `TableColumnBase` (ie `TableColumn` or `TreeTableColumn`) into view.
+    */
   def scrollToColumn[T <: jfxsc.TableColumnBase[_, _]]() = jfxsc.ScrollToEvent.scrollToColumn()
 
   /**
-   * This event occurs if the user requests scrolling a given index into view.
-   */
+    * This event occurs if the user requests scrolling a given index into view.
+    */
   def scrollToTopIndex(): EventType[jfxsc.ScrollToEvent[Integer]] = jfxsc.ScrollToEvent.scrollToTopIndex()
 
 }
 
 /**
- * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ScrollToEvent.html ScrollToEvent]].
- *
- * @constructor Creates a new ScrollToEvent from its JavaFX counterpart.
- * @param delegate JavaFX ScrollToEvent
- * @tparam T scroll target type
- */
+  * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ScrollToEvent.html ScrollToEvent]].
+  *
+  * @constructor Creates a new ScrollToEvent from its JavaFX counterpart.
+  * @param delegate JavaFX ScrollToEvent
+  * @tparam T scroll target type
+  */
 class ScrollToEvent[T](override val delegate: jfxsc.ScrollToEvent[T])
-  extends Event(delegate)
-  with SFXDelegate[jfxsc.ScrollToEvent[T]] {
+    extends Event(delegate)
+    with SFXDelegate[jfxsc.ScrollToEvent[T]] {
 
   /**
-   * Construct a new Event with the specified event source, target and type.
-   *
-   * @param source the event source which sent the event
-   * @param target the event source which receives the event
-   * @param eventType the event type
-   * @param scrollTarget the target of the scroll to operation
-   */
-  def this(source: Any, target: jfxe.EventTarget, eventType: jfxe.EventType[jfxsc.ScrollToEvent[T]], scrollTarget: T) = this(new jfxsc.ScrollToEvent[T](source, target, eventType, scrollTarget))
+    * Construct a new Event with the specified event source, target and type.
+    *
+    * @param source the event source which sent the event
+    * @param target the event source which receives the event
+    * @param eventType the event type
+    * @param scrollTarget the target of the scroll to operation
+    */
+  def this(source: Any, target: jfxe.EventTarget, eventType: jfxe.EventType[jfxsc.ScrollToEvent[T]], scrollTarget: T) =
+    this(new jfxsc.ScrollToEvent[T](source, target, eventType, scrollTarget))
 
   /**
-   *
-   */
+    *
+    */
   def scrollTarget: T = delegate.getScrollTarget
 
 }

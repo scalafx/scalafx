@@ -32,13 +32,13 @@ import scalafx.Includes._
 import scalafx.testutil.{PositionDelegateSpec, SimpleSFXDelegateSpec}
 
 /**
- * ImageInput Spec tests.
- *
- *
- */
+  * ImageInput Spec tests.
+  *
+  *
+  */
 class ImageInputSpec
-  extends SimpleSFXDelegateSpec[jfxse.ImageInput, ImageInput](classOf[jfxse.ImageInput], classOf[ImageInput])
-  with PositionDelegateSpec[ImageInput] {
+    extends SimpleSFXDelegateSpec[jfxse.ImageInput, ImageInput](classOf[jfxse.ImageInput], classOf[ImageInput])
+    with PositionDelegateSpec[ImageInput] {
 
   val positionDelegate = new ImageInput
 

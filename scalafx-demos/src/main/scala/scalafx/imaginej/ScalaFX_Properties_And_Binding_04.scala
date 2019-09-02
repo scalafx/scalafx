@@ -44,15 +44,14 @@ import scalafx.beans.binding.Bindings
 import scalafx.beans.property.IntegerProperty
 
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
- *
- *         based upon: Example 5 Combining Both Approaches
- *         (slightly changed)
- *
- *         http://docs.oracle.com/javafx/2.0/binding/jfxpub-binding.htm
- *
- */
-
+  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+  *
+  *         based upon: Example 5 Combining Both Approaches
+  *         (slightly changed)
+  *
+  *         http://docs.oracle.com/javafx/2.0/binding/jfxpub-binding.htm
+  *
+  */
 object ScalaFX_Properties_And_Binding_04 {
   def main(args: Array[String]) {
     val num1 = new IntegerProperty(null, "num1")

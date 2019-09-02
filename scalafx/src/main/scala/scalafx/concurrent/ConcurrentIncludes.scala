@@ -34,29 +34,29 @@ import scalafx.concurrent.Worker.State
 object ConcurrentIncludes extends ConcurrentIncludes
 
 /**
- * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/package-summary.html `javafx.concurrent`]]
- * Classes to their ScalaFX counterparts.
- *
- * @define JFX JavaFX
- * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/
- * @define END ]]` instance to its $SFX counterpart.
- * @define SER Service
- * @define SSER ScheduledService
- * @define TSK Task
- * @define WRK Worker
- * @define WRS Worker.State
- * @define WSE WorkerStateEvent
- */
+  * Contains implicit methods to convert from
+  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/package-summary.html `javafx.concurrent`]]
+  * Classes to their ScalaFX counterparts.
+  *
+  * @define JFX JavaFX
+  * @define SFX ScalaFX
+  * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/
+  * @define END ]]` instance to its $SFX counterpart.
+  * @define SER Service
+  * @define SSER ScheduledService
+  * @define TSK Task
+  * @define WRK Worker
+  * @define WRS Worker.State
+  * @define WSE WorkerStateEvent
+  */
 trait ConcurrentIncludes {
 
   /**
-   * $START$SER.html $SER$END
-   *
-   * @param s $JFX $SER
-   * @return $SFX $SER
-   */
+    * $START$SER.html $SER$END
+    *
+    * @param s $JFX $SER
+    * @return $SFX $SER
+    */
   implicit def jfxService2sfxService[T](s: jfxc.Service[T]): Service[T] = if (s != null) new Service[T](s) {} else null
 
   /**
@@ -65,42 +65,43 @@ trait ConcurrentIncludes {
     * @param s $JFX $SSER
     * @return $SFX $SSER
     */
-  implicit def jfxScheduledService2sfxScheduledService[T](s: jfxc.ScheduledService[T]): ScheduledService[T] = if (s != null) new ScheduledService[T](s) {} else null
+  implicit def jfxScheduledService2sfxScheduledService[T](s: jfxc.ScheduledService[T]): ScheduledService[T] =
+    if (s != null) new ScheduledService[T](s) {} else null
 
   /**
-   * $START$TSK.html $TSK$END
-   *
-   * @param t $JFX $TSK
-   * @return $SFX $TSK
-   */
+    * $START$TSK.html $TSK$END
+    *
+    * @param t $JFX $TSK
+    * @return $SFX $TSK
+    */
   implicit def jfxTask2sfxTask[T](t: jfxc.Task[T]): Task[T] = if (t != null) new Task[T](t) {} else null
 
   /**
-   * $START$WRK.html $WRK$END
-   *
-   * @param w $JFX $WRK
-   * @return $SFX $WRK
-   */
+    * $START$WRK.html $WRK$END
+    *
+    * @param w $JFX $WRK
+    * @return $SFX $WRK
+    */
   implicit def jfxWorker2sfxWorker[T](w: jfxc.Worker[T]): Worker[T] =
     if (w != null) new Worker[T] {
       override val delegate = w
-    }
-    else null
+    } else null
 
   /**
-   * $START$WRS.html $WRS$END
-   *
-   * @param s $JFX $WRS
-   * @return $SFX $WRS
-   */
+    * $START$WRS.html $WRS$END
+    *
+    * @param s $JFX $WRS
+    * @return $SFX $WRS
+    */
   implicit def jfxWorkerState2sfxWorkerState(s: jfxc.Worker.State): State = Worker.State.jfxEnum2sfx(s)
 
   /**
-   * $START$WSE.html $WSE$END
-   *
-   * @param w $JFX $WSE
-   * @return $SFX $WSE
-   */
-  implicit def jfxWorkerStateEvent2sfxWorkerStateEvent(w: jfxc.WorkerStateEvent): WorkerStateEvent = if (w != null) new WorkerStateEvent(w) else null
+    * $START$WSE.html $WSE$END
+    *
+    * @param w $JFX $WSE
+    * @return $SFX $WSE
+    */
+  implicit def jfxWorkerStateEvent2sfxWorkerStateEvent(w: jfxc.WorkerStateEvent): WorkerStateEvent =
+    if (w != null) new WorkerStateEvent(w) else null
 
 }

@@ -59,6 +59,7 @@ class Dragboard(override val delegate: jfxsi.Dragboard) extends Clipboard(delega
   def dragView_=(image: Image): Unit = {
     delegate.setDragView(image)
   }
+
   /**
     * Sets the visual representation of data being transfered in a drag and drop gesture.
     */

@@ -37,45 +37,47 @@ object Blend {
   implicit def sfxBlend2jfx(b: Blend): jfxse.Blend = if (b != null) b.delegate else null
 }
 
-class Blend(override val delegate: jfxse.Blend = new jfxse.Blend) extends Effect(delegate) with SFXDelegate[jfxse.Blend] {
+class Blend(override val delegate: jfxse.Blend = new jfxse.Blend)
+    extends Effect(delegate)
+    with SFXDelegate[jfxse.Blend] {
 
   /**
-   * Creates a new instance of Blend with the specified mode.
-   */
+    * Creates a new instance of Blend with the specified mode.
+    */
   def this(mode: BlendMode) = this(new jfxse.Blend(mode))
 
   /**
-   * Creates a new instance of Blend with the specified mode and bottom and top inputs.
-   */
+    * Creates a new instance of Blend with the specified mode and bottom and top inputs.
+    */
   def this(mode: BlendMode, bottomInput: Effect, topInput: Effect) = this(new jfxse.Blend(mode, bottomInput, topInput))
 
   /**
-   * The bottom input for this Blend operation.
-   */
+    * The bottom input for this Blend operation.
+    */
   def bottomInput: ObjectProperty[jfxse.Effect] = delegate.bottomInputProperty
   def bottomInput_=(v: Effect) {
     bottomInput() = v
   }
 
   /**
-   * The BlendMode used to blend the two inputs together.
-   */
+    * The BlendMode used to blend the two inputs together.
+    */
   def mode: ObjectProperty[jfxse.BlendMode] = delegate.modeProperty
   def mode_=(v: BlendMode) {
     mode() = v
   }
 
   /**
-   * The opacity value, which is modulated with the top input prior to blending.
-   */
+    * The opacity value, which is modulated with the top input prior to blending.
+    */
   def opacity: DoubleProperty = delegate.opacityProperty
   def opacity_=(v: Double) {
     opacity() = v
   }
 
   /**
-   * The top input for this Blend operation.
-   */
+    * The top input for this Blend operation.
+    */
   def topInput: ObjectProperty[jfxse.Effect] = delegate.topInputProperty
   def topInput_=(v: Effect) {
     topInput() = v

@@ -37,52 +37,52 @@ object SwipeEvent {
   implicit def sfxSwipeEvent2jfx(se: SwipeEvent): jfxsi.SwipeEvent = if (se != null) se.delegate else null
 
   /**
-   * Common supertype for all Swipe event types.
-   */
+    * Common supertype for all Swipe event types.
+    */
   val Any: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.ANY
-  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
   val ANY = Any
 
   /**
-   * This event occurs when user performs downward swipe gesture.
-   */
+    * This event occurs when user performs downward swipe gesture.
+    */
   val SwipeDown: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_DOWN
-  @deprecated ("Use SwipeDown; SWIPE_DOWN will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use SwipeDown; SWIPE_DOWN will be removed in a future release", "8.0.60-R10")
   val SWIPE_DOWN = SwipeDown
 
   /**
-   * This event occurs when user performs leftward swipe gesture.
-   */
+    * This event occurs when user performs leftward swipe gesture.
+    */
   val SwipeLeft: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_LEFT
-  @deprecated ("Use SwipeLeft; SWIPE_LEFT will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use SwipeLeft; SWIPE_LEFT will be removed in a future release", "8.0.60-R10")
   val SWIPE_LEFT = SwipeLeft
 
   /**
-   * This event occurs when user performs rightward swipe gesture.
-   */
+    * This event occurs when user performs rightward swipe gesture.
+    */
   val SwipeRight: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_RIGHT
-  @deprecated ("Use SwipeRight; SWIPE_RIGHT will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use SwipeRight; SWIPE_RIGHT will be removed in a future release", "8.0.60-R10")
   val SWIPE_RIGHT = SwipeRight
 
   /**
-   * This event occurs when user performs upward swipe gesture.
-   */
+    * This event occurs when user performs upward swipe gesture.
+    */
   val SwipeUp: EventType[jfxsi.SwipeEvent] = jfxsi.SwipeEvent.SWIPE_UP
-  @deprecated ("Use SwipeUp; SWIPE_UP will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use SwipeUp; SWIPE_UP will be removed in a future release", "8.0.60-R10")
   val SWIPE_UP = SwipeUp
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/SwipeEvent.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/SwipeEvent.html]]
+  */
 class SwipeEvent(override val delegate: jfxsi.SwipeEvent)
-  extends GestureEvent(delegate)
-  with SFXDelegate[jfxsi.SwipeEvent] {
+    extends GestureEvent(delegate)
+    with SFXDelegate[jfxsi.SwipeEvent] {
 
   /**
-   * Gets number of touch points that caused this event.
-   */
+    * Gets number of touch points that caused this event.
+    */
   def touchCount: Int = delegate.getTouchCount
 
 }

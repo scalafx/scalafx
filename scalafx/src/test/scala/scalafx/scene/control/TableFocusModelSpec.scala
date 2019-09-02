@@ -32,10 +32,13 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * TableViewFocusModel tests.
- */
+  * TableViewFocusModel tests.
+  */
 class TableFocusModelSpec[T, TC <: jfxsc.TableColumnBase[T, _]]
-  extends SimpleSFXDelegateSpec[jfxsc.TableFocusModel[T, TC], TableFocusModel[T, TC]](classOf[jfxsc.TableFocusModel[T, TC]], classOf[TableFocusModel[T, TC]]) {
+    extends SimpleSFXDelegateSpec[jfxsc.TableFocusModel[T, TC], TableFocusModel[T, TC]](
+      classOf[jfxsc.TableFocusModel[T, TC]],
+      classOf[TableFocusModel[T, TC]]
+    ) {
 
   override def getScalaClassInstance = new TableFocusModel[T, TC](this.getJavaClassInstance) {}
 

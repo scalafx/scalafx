@@ -37,44 +37,43 @@ object Screen {
   implicit def sfxScreen2jfx(v: Screen): jfxs.Screen = if (v != null) v.delegate else null
 
   /**
-   * The primary Screen.
-   */
+    * The primary Screen.
+    */
   def primary: Screen = jfxs.Screen.getPrimary
 
   /**
-   * The observable list of currently available Screens
-   */
+    * The observable list of currently available Screens
+    */
   def screens = jfxs.Screen.getScreens
 
   /**
-   * Returns a ObservableList of Screens that intersects the provided rectangle.
-   */
+    * Returns a ObservableList of Screens that intersects the provided rectangle.
+    */
   def screensForRectangle(x: Double, y: Double, width: Double, height: Double) =
     jfxs.Screen.getScreensForRectangle(x, y, width, height)
 
   /**
-   * Returns a ObservableList of Screens that intersects the provided rectangle.
-   */
+    * Returns a ObservableList of Screens that intersects the provided rectangle.
+    */
   def screensForRectangle(r: Rectangle2D) = jfxs.Screen.getScreensForRectangle(r)
 
 }
 
-class Screen(override val delegate: jfxs.Screen)
-  extends SFXDelegate[jfxs.Screen] {
+class Screen(override val delegate: jfxs.Screen) extends SFXDelegate[jfxs.Screen] {
 
   /**
-   * Gets the bounds of this Screen.
-   */
+    * Gets the bounds of this Screen.
+    */
   def bounds: Rectangle2D = delegate.getBounds
 
   /**
-   * Gets the resolution (dots per inch) of this Screen.
-   */
+    * Gets the resolution (dots per inch) of this Screen.
+    */
   def dpi = delegate.getDpi
 
   /**
-   * Gets the visual bounds of this Screen.
-   */
+    * Gets the visual bounds of this Screen.
+    */
   def visualBounds: Rectangle2D = delegate.getVisualBounds
 
 }

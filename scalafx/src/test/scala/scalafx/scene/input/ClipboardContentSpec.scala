@@ -32,10 +32,12 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * ClipboardContent Spec tests.
- *
- *
- */
+  * ClipboardContent Spec tests.
+  *
+  *
+  */
 class ClipboardContentSpec
-  extends SimpleSFXDelegateSpec[jfxsi.ClipboardContent, ClipboardContent](
-    classOf[jfxsi.ClipboardContent], classOf[ClipboardContent])
+    extends SimpleSFXDelegateSpec[jfxsi.ClipboardContent, ClipboardContent](
+      classOf[jfxsi.ClipboardContent],
+      classOf[ClipboardContent]
+    )

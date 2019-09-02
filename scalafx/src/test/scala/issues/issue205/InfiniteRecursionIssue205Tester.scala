@@ -38,8 +38,8 @@ import scalafx.scene.layout.VBox
 import scalafx.scene.{Scene, SnapshotResult}
 
 /**
- * Helper app used to reproduce and then test fixes for issue #205 and related infinite recursions.
- */
+  * Helper app used to reproduce and then test fixes for issue #205 and related infinite recursions.
+  */
 object InfiniteRecursionIssue205Tester extends JFXApp {
 
   class Person(firstName_ : String, lastName_ : String) {
@@ -114,7 +114,6 @@ object InfiniteRecursionIssue205Tester extends JFXApp {
     }
 
   }
-
 
   stage = new PrimaryStage {
     title = "Simple Table View"

@@ -32,10 +32,10 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Styleable Spec tests.
- */
+  * Styleable Spec tests.
+  */
 class StyleableSpec
-  extends SimpleSFXDelegateSpec[jfxcss.Styleable, Styleable](classOf[jfxcss.Styleable], classOf[Styleable]) {
+    extends SimpleSFXDelegateSpec[jfxcss.Styleable, Styleable](classOf[jfxcss.Styleable], classOf[Styleable]) {
 
   override protected def getScalaClassInstance = new Styleable {
     override val delegate = getJavaClassInstance

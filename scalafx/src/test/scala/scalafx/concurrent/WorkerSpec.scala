@@ -32,12 +32,12 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Worker Spec tests.
- *
- *
- */
+  * Worker Spec tests.
+  *
+  *
+  */
 class WorkerSpec[T]
-  extends SimpleSFXDelegateSpec[jfxc.Worker[T], Worker[T]](classOf[jfxc.Worker[T]], classOf[Worker[T]]) {
+    extends SimpleSFXDelegateSpec[jfxc.Worker[T], Worker[T]](classOf[jfxc.Worker[T]], classOf[Worker[T]]) {
 
   override protected def getScalaClassInstance = Task[T](null.asInstanceOf[T])
 

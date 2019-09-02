@@ -33,12 +33,11 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * BoundingBox Spec tests.
- *
- */
+  * BoundingBox Spec tests.
+  *
+  */
 class BoundingBoxSpec
-  extends SimpleSFXDelegateSpec[jfxg.BoundingBox, BoundingBox](
-    classOf[jfxg.BoundingBox], classOf[BoundingBox]) {
+    extends SimpleSFXDelegateSpec[jfxg.BoundingBox, BoundingBox](classOf[jfxg.BoundingBox], classOf[BoundingBox]) {
 
   override protected def getScalaClassInstance = new BoundingBox(0, 0, 0, 0)
 

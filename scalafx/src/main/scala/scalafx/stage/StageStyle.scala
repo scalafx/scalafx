@@ -29,48 +29,47 @@ package scalafx.stage
 import javafx.{stage => jfxs}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-object StageStyle
-  extends SFXEnumDelegateCompanion[jfxs.StageStyle, StageStyle] {
+object StageStyle extends SFXEnumDelegateCompanion[jfxs.StageStyle, StageStyle] {
 
   /**
-   * Defines a normal Stage style with a solid white background and platform decorations.
-   */
+    * Defines a normal Stage style with a solid white background and platform decorations.
+    */
   case object Decorated extends StageStyle(jfxs.StageStyle.DECORATED)
-  @deprecated ("Use Decorated; DECORATED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Decorated; DECORATED will be removed in a future release", "8.0.60-R10")
   val DECORATED = Decorated
 
   /**
-   * Defines a Stage style with a solid white background and no decorations.
-   */
+    * Defines a Stage style with a solid white background and no decorations.
+    */
   case object Undecorated extends StageStyle(jfxs.StageStyle.UNDECORATED)
-  @deprecated ("Use Undecorated; UNDECORATED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Undecorated; UNDECORATED will be removed in a future release", "8.0.60-R10")
   val UNDECORATED = Undecorated
 
   /**
-   * Defines a Stage style with a transparent background and no decorations.
-   */
+    * Defines a Stage style with a transparent background and no decorations.
+    */
   case object Transparent extends StageStyle(jfxs.StageStyle.TRANSPARENT)
-  @deprecated ("Use Transparent; TRANSPARENT will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Transparent; TRANSPARENT will be removed in a future release", "8.0.60-R10")
   val TRANSPARENT = Transparent
 
   /**
-   * Defines a Stage style with a solid white background and minimal platform decorations used for a utility window.
-   */
+    * Defines a Stage style with a solid white background and minimal platform decorations used for a utility window.
+    */
   case object Utility extends StageStyle(jfxs.StageStyle.UTILITY)
-  @deprecated ("Use Utility; UTILITY will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Utility; UTILITY will be removed in a future release", "8.0.60-R10")
   val UTILITY = Utility
 
   /** Defines a Stage style with platform decorations and eliminates the border between client area and decorations. */
   case object Unified extends StageStyle(jfxs.StageStyle.UNIFIED)
-  @deprecated ("Use Unified; UNIFIED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Unified; UNIFIED will be removed in a future release", "8.0.60-R10")
   val UNIFIED = Unified
 
-  protected override def unsortedValues: Array[StageStyle] = Array(Decorated, Undecorated, Transparent, Utility, Unified)
+  protected override def unsortedValues: Array[StageStyle] =
+    Array(Decorated, Undecorated, Transparent, Utility, Unified)
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/stage/StageStyle.html]]
- */
-sealed abstract class StageStyle(override val delegate: jfxs.StageStyle)
-  extends SFXEnumDelegate[jfxs.StageStyle]
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/stage/StageStyle.html]]
+  */
+sealed abstract class StageStyle(override val delegate: jfxs.StageStyle) extends SFXEnumDelegate[jfxs.StageStyle]

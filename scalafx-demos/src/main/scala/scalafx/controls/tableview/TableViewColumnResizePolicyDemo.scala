@@ -37,12 +37,12 @@ import scalafx.scene.control.{Label, TableColumn, TableView}
 import scalafx.scene.layout.VBox
 
 /**
- * Demonstrates difference between [[scalafx.scene.control.TableView#UnconstrainedResizePolicy UnconstrainedResizePolicy]]
- * and [[scalafx.scene.control.TableView#ConstrainedResizePolicy ConstrainedResizePolicy]] in
- * [[scalafx.scene.control.TableView TableView]].
- *
- * Based on JavaFX example from [[https://gist.github.com/SaiPradeepDandem/1581600]].
- */
+  * Demonstrates difference between [[scalafx.scene.control.TableView#UnconstrainedResizePolicy UnconstrainedResizePolicy]]
+  * and [[scalafx.scene.control.TableView#ConstrainedResizePolicy ConstrainedResizePolicy]] in
+  * [[scalafx.scene.control.TableView TableView]].
+  *
+  * Based on JavaFX example from [[https://gist.github.com/SaiPradeepDandem/1581600]].
+  */
 object TableViewColumnResizePolicyDemo extends JFXApp {
 
   private val box = new VBox {
@@ -58,7 +58,6 @@ object TableViewColumnResizePolicyDemo extends JFXApp {
   }
 
   configureTable(box)
-
 
   private def configureTable(root: VBox): Unit = {
     val data = ObservableBuffer(
@@ -84,7 +83,6 @@ object TableViewColumnResizePolicyDemo extends JFXApp {
       table2
     )
 
-
   }
 
   private def createTableView(data: ObservableBuffer[MyDomain]): TableView[MyDomain] = {
@@ -93,17 +91,17 @@ object TableViewColumnResizePolicyDemo extends JFXApp {
         new TableColumn[MyDomain, String] {
           text = "Title"
           prefWidth = 100
-          cellValueFactory = {_.value.name}
+          cellValueFactory = { _.value.name }
         }.delegate,
         new TableColumn[MyDomain, String] {
           text = "Description"
           prefWidth = 250
-          cellValueFactory = {_.value.description}
+          cellValueFactory = { _.value.description }
         }.delegate,
         new TableColumn[MyDomain, String] {
           text = "Color"
           prefWidth = 100
-          cellValueFactory = {_.value.color}
+          cellValueFactory = { _.value.color }
         }.delegate
       )
       items = data
@@ -112,9 +110,7 @@ object TableViewColumnResizePolicyDemo extends JFXApp {
     table
   }
 
-  class MyDomain(val nameValue: String,
-                 val descriptionValue: String,
-                 val colorValue: String) {
+  class MyDomain(val nameValue: String, val descriptionValue: String, val colorValue: String) {
     val name = new StringProperty(nameValue)
     val description = new StringProperty(descriptionValue)
     val color = new StringProperty(colorValue)

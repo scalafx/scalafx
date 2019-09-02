@@ -48,6 +48,4 @@ object StrokeType extends SFXEnumDelegateCompanion[jfxss.StrokeType, StrokeType]
   protected override def unsortedValues: Array[StrokeType] = Array(Inside, Outside, Centered)
 }
 
-
-sealed abstract class StrokeType(override val delegate: jfxss.StrokeType)
-  extends SFXEnumDelegate[jfxss.StrokeType]
+sealed abstract class StrokeType(override val delegate: jfxss.StrokeType) extends SFXEnumDelegate[jfxss.StrokeType]

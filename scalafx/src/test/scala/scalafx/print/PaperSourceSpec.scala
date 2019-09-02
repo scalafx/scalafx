@@ -33,7 +33,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** Tests for [[scalafx.print.PaperSource]]. */
 class PaperSourceSpec
-  extends SimpleSFXDelegateSpec[jfxp.PaperSource, PaperSource](classOf[jfxp.PaperSource], classOf[PaperSource]) {
+    extends SimpleSFXDelegateSpec[jfxp.PaperSource, PaperSource](classOf[jfxp.PaperSource], classOf[PaperSource]) {
 
   override protected def getScalaClassInstance = PaperSource.Automatic
 

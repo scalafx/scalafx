@@ -33,11 +33,11 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Dimension2D Spec tests.
- *
- */
+  * Dimension2D Spec tests.
+  *
+  */
 class Dimension2DSpec
-  extends SimpleSFXDelegateSpec[jfxg.Dimension2D, Dimension2D](classOf[jfxg.Dimension2D], classOf[Dimension2D]) {
+    extends SimpleSFXDelegateSpec[jfxg.Dimension2D, Dimension2D](classOf[jfxg.Dimension2D], classOf[Dimension2D]) {
 
   override protected def getScalaClassInstance = new Dimension2D(0, 0)
 

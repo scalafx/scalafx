@@ -33,19 +33,22 @@ import scalafx.beans.binding.ObjectExpression
 import scalafx.delegate.SFXDelegate
 
 object ReadOnlyObjectProperty {
-  implicit def sfxReadOnlyObjectProperty2jfx[T <: Any](roop: ReadOnlyObjectProperty[T]): jfxbp.ReadOnlyObjectProperty[T] = roop.delegate
+  implicit def sfxReadOnlyObjectProperty2jfx[T <: Any](
+      roop: ReadOnlyObjectProperty[T]
+  ): jfxbp.ReadOnlyObjectProperty[T] = roop.delegate
 }
 
 class ReadOnlyObjectProperty[T <: Any](override val delegate: jfxbp.ReadOnlyObjectProperty[T])
-  extends ObjectExpression[T](delegate)
-  with ReadOnlyProperty[T, T]
-  with SFXDelegate[jfxbp.ReadOnlyObjectProperty[T]] {
+    extends ObjectExpression[T](delegate)
+    with ReadOnlyProperty[T, T]
+    with SFXDelegate[jfxbp.ReadOnlyObjectProperty[T]] {
 
-  def this(bean: Object, name: String, value: T) = this(new jfxbp.ReadOnlyObjectPropertyBase[T]() {
-    def getBean = bean
-    def getName = name
-    override def get = value
-  })
+  def this(bean: Object, name: String, value: T) =
+    this(new jfxbp.ReadOnlyObjectPropertyBase[T]() {
+      def getBean = bean
+      def getName = name
+      override def get = value
+    })
 
   def value = delegate.get
 }

@@ -33,9 +33,12 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * ParallelCamera Spec tests.
- *
- *
- */
+  * ParallelCamera Spec tests.
+  *
+  *
+  */
 class ParallelCameraSpec
-  extends SimpleSFXDelegateSpec[jfxs.ParallelCamera, ParallelCamera](classOf[jfxs.ParallelCamera], classOf[ParallelCamera])
+    extends SimpleSFXDelegateSpec[jfxs.ParallelCamera, ParallelCamera](
+      classOf[jfxs.ParallelCamera],
+      classOf[ParallelCamera]
+    )

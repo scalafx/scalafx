@@ -37,12 +37,15 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 import scala.collection.JavaConverters._
 
 /**
- * JFXApp.Parameters Spec tests.
- *
- *
- */
+  * JFXApp.Parameters Spec tests.
+  *
+  *
+  */
 class JFXAppParametersSpec
-  extends SimpleSFXDelegateSpec[jfxa.Application.Parameters, JFXApp.Parameters](classOf[jfxa.Application.Parameters], classOf[JFXApp.Parameters]) {
+    extends SimpleSFXDelegateSpec[jfxa.Application.Parameters, JFXApp.Parameters](
+      classOf[jfxa.Application.Parameters],
+      classOf[JFXApp.Parameters]
+    ) {
 
   override protected def getScalaClassInstance = new JFXApp.ParametersImpl(Seq.empty[String])
 

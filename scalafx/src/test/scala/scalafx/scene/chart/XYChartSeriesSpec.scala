@@ -32,9 +32,12 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * XYChart.Series Spec tests.
- *
- *
- */
+  * XYChart.Series Spec tests.
+  *
+  *
+  */
 class XYChartSeriesSpec
-  extends SimpleSFXDelegateSpec[jfxsc.XYChart.Series[Int, Int], XYChart.Series[Int, Int]](classOf[jfxsc.XYChart.Series[Int, Int]], classOf[XYChart.Series[Int, Int]])
+    extends SimpleSFXDelegateSpec[jfxsc.XYChart.Series[Int, Int], XYChart.Series[Int, Int]](
+      classOf[jfxsc.XYChart.Series[Int, Int]],
+      classOf[XYChart.Series[Int, Int]]
+    )

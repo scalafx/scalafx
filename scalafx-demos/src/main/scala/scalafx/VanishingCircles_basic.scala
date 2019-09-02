@@ -35,10 +35,9 @@ import scalafx.scene.effect.BoxBlur
 import scalafx.scene.paint.Color._
 import scalafx.scene.shape.Circle
 
-
 /**
- * Vanishing Circles Basic
- */
+  * Vanishing Circles Basic
+  */
 object VanishingCircles_basic extends JFXApp {
   stage = new PrimaryStage {
     title = "Vanishing Circles"

@@ -36,32 +36,33 @@ import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
 
 object DirectoryChooser {
-  implicit def sfxDirectoryChooser2jfx(dc: DirectoryChooser): jfxs.DirectoryChooser = if (dc != null) dc.delegate else null
+  implicit def sfxDirectoryChooser2jfx(dc: DirectoryChooser): jfxs.DirectoryChooser =
+    if (dc != null) dc.delegate else null
 }
 
 class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.DirectoryChooser)
-  extends SFXDelegate[jfxs.DirectoryChooser] {
+    extends SFXDelegate[jfxs.DirectoryChooser] {
 
   /**
-   * The initial directory for the displayed dialog.
-   */
+    * The initial directory for the displayed dialog.
+    */
   def initialDirectory: ObjectProperty[File] = delegate.initialDirectoryProperty
   def initialDirectory_=(v: File) {
     initialDirectory() = v
   }
 
   /**
-   * The title of the displayed dialog.
-   */
+    * The title of the displayed dialog.
+    */
   def title: StringProperty = delegate.titleProperty
   def title_=(v: String) {
     title() = v
   }
 
   /**
-   * Shows a new directory selection dialog.
-   *
-   * @return the selected directory or null if no directory has been selected
-   */
+    * Shows a new directory selection dialog.
+    *
+    * @return the selected directory or null if no directory has been selected
+    */
   def showDialog(ownerWindow: Window): File = delegate.showDialog(ownerWindow)
 }

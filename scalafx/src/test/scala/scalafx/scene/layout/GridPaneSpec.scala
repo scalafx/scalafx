@@ -32,8 +32,8 @@ import scalafx.Includes._
 import scalafx.testutil.{AlignmentDelegateSpec, SimpleSFXDelegateSpec}
 
 /**
- * GridPane Spec tests.
- */
+  * GridPane Spec tests.
+  */
 class GridPaneSpec
-  extends SimpleSFXDelegateSpec[jfxsl.GridPane, GridPane](classOf[jfxsl.GridPane], classOf[GridPane])
-  with AlignmentDelegateSpec[jfxsl.GridPane, GridPane]
+    extends SimpleSFXDelegateSpec[jfxsl.GridPane, GridPane](classOf[jfxsl.GridPane], classOf[GridPane])
+    with AlignmentDelegateSpec[jfxsl.GridPane, GridPane]

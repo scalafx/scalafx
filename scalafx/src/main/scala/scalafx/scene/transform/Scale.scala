@@ -38,61 +38,61 @@ object Scale {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Scale.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Scale.html]]
+  */
 class Scale(override val delegate: jfxst.Scale = new jfxst.Scale)
-  extends Transform(delegate)
-  with PositionDelegate[jfxst.Scale]
-  with SFXDelegate[jfxst.Scale] {
+    extends Transform(delegate)
+    with PositionDelegate[jfxst.Scale]
+    with SFXDelegate[jfxst.Scale] {
 
   /**
-   * Creates a two-dimensional Scale.
-   */
+    * Creates a two-dimensional Scale.
+    */
   def this(x: Double, y: Double) = this(new jfxst.Scale(x, y))
 
   /**
-   * Creates a three-dimensional Scale.
-   */
+    * Creates a three-dimensional Scale.
+    */
   def this(x: Double, y: Double, z: Double) = this(new jfxst.Scale(x, y, z))
 
   /**
-   * Creates a two-dimensional Scale with pivot.
-   */
+    * Creates a two-dimensional Scale with pivot.
+    */
   def this(x: Double, y: Double, pivotX: Double, pivotY: Double) = this(new jfxst.Scale(x, y, pivotX, pivotY))
 
   /**
-   * Creates a three-dimensional Scale with pivot.
-   */
+    * Creates a three-dimensional Scale with pivot.
+    */
   def this(x: Double, y: Double, z: Double, pivotX: Double, pivotY: Double, pivotZ: Double) =
     this(new jfxst.Scale(x, y, z, pivotX, pivotY, pivotZ))
 
   /**
-   * Defines the X coordinate about which point the scale occurs.
-   */
+    * Defines the X coordinate about which point the scale occurs.
+    */
   def pivotX: DoubleProperty = delegate.pivotXProperty()
   def pivotX_=(v: Double) {
     pivotX() = v
   }
 
   /**
-   * Defines the Y coordinate about which point the scale occurs.
-   */
+    * Defines the Y coordinate about which point the scale occurs.
+    */
   def pivotY: DoubleProperty = delegate.pivotYProperty()
   def pivotY_=(v: Double) {
     pivotY() = v
   }
 
   /**
-   * Defines the Z coordinate about which point the scale occurs.
-   */
+    * Defines the Z coordinate about which point the scale occurs.
+    */
   def pivotZ: DoubleProperty = delegate.pivotZProperty()
   def pivotZ_=(v: Double) {
     pivotZ() = v
   }
 
   /**
-   * Defines the factor by which coordinates are scaled along the Z axis direction.
-   */
+    * Defines the factor by which coordinates are scaled along the Z axis direction.
+    */
   def z: DoubleProperty = delegate.zProperty()
   def z_=(v: Double) {
     z() = v

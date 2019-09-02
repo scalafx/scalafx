@@ -36,10 +36,9 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Color Spec tests.
- */
-class ColorSpec
-  extends SimpleSFXDelegateSpec[jfxsp.Color, Color](classOf[jfxsp.Color], classOf[Color]) {
+  * Color Spec tests.
+  */
+class ColorSpec extends SimpleSFXDelegateSpec[jfxsp.Color, Color](classOf[jfxsp.Color], classOf[Color]) {
 
   override protected def getJavaClassInstance = new jfxsp.Color(0, 0, 0, 0)
 
@@ -56,7 +55,8 @@ class ColorSpec
     assertComponent(c.opacity, o)
   }
 
-  private def testSfxColor(c: Color, r: Int, g: Int, b: Int, o: Int = 255) = compareSfxColors(c, intToDouble(r), intToDouble(g), intToDouble(b), intToDouble(o))
+  private def testSfxColor(c: Color, r: Int, g: Int, b: Int, o: Int = 255) =
+    compareSfxColors(c, intToDouble(r), intToDouble(g), intToDouble(b), intToDouble(o))
 
   private def compareJfxColors(c: JColor, r: Double, g: Double, b: Double, o: Double = 1.0) {
     assertComponent(c.getRed, r)
@@ -65,7 +65,8 @@ class ColorSpec
     assertComponent(c.getOpacity, o)
   }
 
-  private def testJfxColor(c: JColor, r: Int, g: Int, b: Int, o: Int = 255) = compareJfxColors(c, intToDouble(r), intToDouble(g), intToDouble(b), intToDouble(o))
+  private def testJfxColor(c: JColor, r: Int, g: Int, b: Int, o: Int = 255) =
+    compareJfxColors(c, intToDouble(r), intToDouble(g), intToDouble(b), intToDouble(o))
 
   it should "convert a webcolor to a ScalaFX Color" in {
     compareSfxColors("orange", Color.Orange.red, Color.Orange.green, Color.Orange.blue, Color.Orange.opacity)
@@ -84,7 +85,13 @@ class ColorSpec
   }
 
   it should "convert a webcolor to a JavaFX Color" in {
-    compareJfxColors("orange", JColor.ORANGE.getRed, JColor.ORANGE.getGreen, JColor.ORANGE.getBlue, JColor.ORANGE.getOpacity)
+    compareJfxColors(
+      "orange",
+      JColor.ORANGE.getRed,
+      JColor.ORANGE.getGreen,
+      JColor.ORANGE.getBlue,
+      JColor.ORANGE.getOpacity
+    )
     testJfxColor("transparent", 0, 0, 0, 0)
     testJfxColor("0xff668840", 0xff, 0x66, 0x88, 0x40)
     testJfxColor("0xff6688", 0xff, 0x66, 0x88)

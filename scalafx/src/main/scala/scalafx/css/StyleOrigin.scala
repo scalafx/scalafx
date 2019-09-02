@@ -31,29 +31,28 @@ import javafx.{css => jfxcss}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
- * Companion object for [[scalafx.css.StyleOrigin]].
- */
-object StyleOrigin
-  extends SFXEnumDelegateCompanion[jfxcss.StyleOrigin, StyleOrigin] {
+  * Companion object for [[scalafx.css.StyleOrigin]].
+  */
+object StyleOrigin extends SFXEnumDelegateCompanion[jfxcss.StyleOrigin, StyleOrigin] {
 
   /**
-   * The stylesheet is an external file
-   */
+    * The stylesheet is an external file
+    */
   val Author: StyleOrigin = new StyleOrigin(jfxcss.StyleOrigin.AUTHOR)
 
   /**
-   * The style is from the Node via setStyle
-   */
+    * The style is from the Node via setStyle
+    */
   val Inline: StyleOrigin = new StyleOrigin(jfxcss.StyleOrigin.INLINE)
 
   /**
-   * The value of a property was set by the user through a call to a set method
-   */
+    * The value of a property was set by the user through a call to a set method
+    */
   val User: StyleOrigin = new StyleOrigin(jfxcss.StyleOrigin.USER)
 
   /**
-   * The stylesheet is a user-agent stylesheet
-   */
+    * The stylesheet is a user-agent stylesheet
+    */
   val UserAgent: StyleOrigin = new StyleOrigin(jfxcss.StyleOrigin.USER_AGENT)
 
   override val unsortedValues = Array(Author, Inline, User, UserAgent)
@@ -61,9 +60,8 @@ object StyleOrigin
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/StyleOrigin.html JavaFX StyleOrigin]].
- *
- * @since 8.0
- */
-class StyleOrigin(override val delegate: jfxcss.StyleOrigin)
-  extends SFXEnumDelegate[jfxcss.StyleOrigin]
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/StyleOrigin.html JavaFX StyleOrigin]].
+  *
+  * @since 8.0
+  */
+class StyleOrigin(override val delegate: jfxcss.StyleOrigin) extends SFXEnumDelegate[jfxcss.StyleOrigin]

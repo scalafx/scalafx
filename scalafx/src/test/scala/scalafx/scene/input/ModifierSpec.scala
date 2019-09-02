@@ -32,10 +32,13 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * KeyCombination Spec tests.
- */
+  * KeyCombination Spec tests.
+  */
 class ModifierSpec
-  extends SimpleSFXDelegateSpec[jfxsi.KeyCombination.Modifier, KeyCombination.Modifier](classOf[jfxsi.KeyCombination.Modifier], classOf[KeyCombination.Modifier]) {
+    extends SimpleSFXDelegateSpec[jfxsi.KeyCombination.Modifier, KeyCombination.Modifier](
+      classOf[jfxsi.KeyCombination.Modifier],
+      classOf[KeyCombination.Modifier]
+    ) {
 
   override protected def getJavaClassInstance = jfxsi.KeyCombination.ALT_ANY
 

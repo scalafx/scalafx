@@ -26,7 +26,6 @@
  */
 package scalafx.beans.binding
 
-
 import javafx.beans.value.ObservableBooleanValue
 import javafx.beans.{binding => jfxbb}
 

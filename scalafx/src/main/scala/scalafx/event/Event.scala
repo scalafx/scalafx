@@ -38,79 +38,79 @@ object Event {
   def apply[T <: jfxe.Event](eventType: jfxe.EventType[T]) = new Event(new jfxe.Event(eventType))
 
   /**
-   * Fires the specified event.
-   */
+    * Fires the specified event.
+    */
   def fireEvent(eventTarget: jfxe.EventTarget, event: jfxe.Event) {
     jfxe.Event.fireEvent(eventTarget, event)
   }
 
   /**
-   * Common supertype for all event types.
-   */
+    * Common supertype for all event types.
+    */
   val ANY: EventType[jfxe.Event] = jfxe.Event.ANY
 
   /**
-   * The constant which represents an unknown event source / target.
-   */
+    * The constant which represents an unknown event source / target.
+    */
   val NullSourceTarget: jfxe.EventTarget = jfxe.Event.NULL_SOURCE_TARGET
-  @deprecated ("Use NullSourceTarget; NULL_SOURCE_TARGET will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use NullSourceTarget; NULL_SOURCE_TARGET will be removed in a future release", "8.0.60-R10")
   val NULL_SOURCE_TARGET = NullSourceTarget
 
 }
 
 /**
- * Wrapper class for [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/Event.html Event]].
- */
+  * Wrapper class for [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/Event.html Event]].
+  */
 class Event(override val delegate: jfxe.Event) extends SFXDelegate[jfxe.Event] {
 
   /**
-   * Construct a new Event with the specified event type.
-   *
-   * @param eventType The event type
-   */
+    * Construct a new Event with the specified event type.
+    *
+    * @param eventType The event type
+    */
   def this(eventType: EventType[_ <: Event]) = this(new Event(eventType))
 
   /**
-   * Construct a new Event with the specified event source, target and type.
-   *
-   * @param source the event source which sent the event
-   * @param target the event target to associate with the event
-   * @param eventType The event type
-   */
+    * Construct a new Event with the specified event source, target and type.
+    *
+    * @param source the event source which sent the event
+    * @param target the event target to associate with the event
+    * @param eventType The event type
+    */
   def this(source: Any, target: jfxe.EventTarget, eventType: EventType[_ <: Event]) =
     this(new Event(source, target, eventType))
 
   /**
-   * Marks this Event as consumed. This stops its further propagation.
-   */
+    * Marks this Event as consumed. This stops its further propagation.
+    */
   def consume() {
     delegate.consume()
   }
 
   /**
-   * Indicates whether this Event has been consumed by any filter or handler.
-   */
+    * Indicates whether this Event has been consumed by any filter or handler.
+    */
   def consumed: Boolean = delegate.isConsumed
 
   /**
-   * Creates and returns a copy of this event with the specified event source and target.
-   */
+    * Creates and returns a copy of this event with the specified event source and target.
+    */
   def copyFor(newSource: AnyRef, newTarget: jfxe.EventTarget): Event =
     new Event(delegate.copyFor(newSource, newTarget))
 
   /**
-   * Gets the event type of this event.
-   */
+    * Gets the event type of this event.
+    */
   def eventType: EventType[_ <: jfxe.Event] = delegate.getEventType
 
   /**
-   * Returns the object on which the Event initially occurred.
-   */
+    * Returns the object on which the Event initially occurred.
+    */
   def source: Object = delegate.getSource
 
   /**
-   * Returns the event target of this event.
-   */
+    * Returns the event target of this event.
+    */
   def target: jfxe.EventTarget = delegate.getTarget
 
 }

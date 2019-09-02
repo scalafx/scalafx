@@ -65,8 +65,8 @@ object PieChart {
 }
 
 class PieChart(override val delegate: jfxsc.PieChart = new jfxsc.PieChart())
-  extends Chart(delegate)
-  with SFXDelegate[jfxsc.PieChart] {
+    extends Chart(delegate)
+    with SFXDelegate[jfxsc.PieChart] {
 
   def this(data: ObservableBuffer[jfxsc.PieChart.Data]) {
     this(new jfxsc.PieChart(data))
@@ -84,7 +84,6 @@ class PieChart(override val delegate: jfxsc.PieChart = new jfxsc.PieChart())
   def data_=(v: Seq[jfxsc.PieChart.Data]) {
     data() = ObservableBuffer(v)
   }
-
 
   def labelLineLength: DoubleProperty = delegate.labelLineLengthProperty
   def labelLineLength_=(v: Double) {

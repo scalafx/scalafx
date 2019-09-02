@@ -35,10 +35,10 @@ import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 import scalafx.Includes._
 
 /**
- * ReadOnlyIntegerProperty Spec tests.
- *
- *
- */
+  * ReadOnlyIntegerProperty Spec tests.
+  *
+  *
+  */
 class ReadOnlyIntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
   var readOnlyIntegerProperty: jfxbp.ReadOnlyIntegerProperty = null
@@ -83,7 +83,7 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix addition of constants" in {
-    integerProperty2 <== readOnlyIntegerProperty + 35 + 35l + 35f + 35d
+    integerProperty2 <== readOnlyIntegerProperty + 35 + 35L + 35f + 35d
     integerProperty2() should equal(190)
     integerProperty2.unbind()
   }
@@ -96,7 +96,7 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix subtraction of constants" in {
-    integerProperty2 <== readOnlyIntegerProperty - 12 - 12l - 12f - 12d
+    integerProperty2 <== readOnlyIntegerProperty - 12 - 12L - 12f - 12d
     integerProperty2() should equal(2)
     integerProperty2.unbind()
   }
@@ -109,7 +109,7 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix multiplication of constants" in {
-    integerProperty2 <== readOnlyIntegerProperty * 2 * 2l * 2f * 2d
+    integerProperty2 <== readOnlyIntegerProperty * 2 * 2L * 2f * 2d
     integerProperty2() should equal(800)
     integerProperty2.unbind()
   }
@@ -122,7 +122,7 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix division of constants" in {
-    integerProperty2 <== readOnlyIntegerProperty / 2 / 2l / 5f / 5d
+    integerProperty2 <== readOnlyIntegerProperty / 2 / 2L / 5f / 5d
     integerProperty2() should equal(0)
     integerProperty2.unbind()
   }

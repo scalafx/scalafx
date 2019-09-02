@@ -35,7 +35,6 @@ import scalafx.beans.property.DoubleProperty
   */
 object CreateDoubleBindingDemo extends App {
 
-
   val a = new DoubleProperty()
   val b = Bindings.createDoubleBinding(() => a.value * a.value, a)
 

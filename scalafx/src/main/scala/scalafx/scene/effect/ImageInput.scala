@@ -39,23 +39,23 @@ object ImageInput {
 }
 
 class ImageInput(override val delegate: jfxse.ImageInput = new jfxse.ImageInput)
-  extends Effect(delegate)
-  with PositionDelegate[jfxse.ImageInput]
-  with SFXDelegate[jfxse.ImageInput] {
+    extends Effect(delegate)
+    with PositionDelegate[jfxse.ImageInput]
+    with SFXDelegate[jfxse.ImageInput] {
 
   /**
-   * Creates a new instance of ImageInput with the specified source.
-   */
+    * Creates a new instance of ImageInput with the specified source.
+    */
   def this(source: Image) = this(new jfxse.ImageInput(source))
 
   /**
-   * Creates a new instance of ImageInput with the specified source, x and y.
-   */
+    * Creates a new instance of ImageInput with the specified source, x and y.
+    */
   def this(source: Image, x: Double, y: Double) = this(new jfxse.ImageInput(source, x, y))
 
   /**
-   * The source Image.
-   */
+    * The source Image.
+    */
   def source: ObjectProperty[jfxsi.Image] = delegate.sourceProperty
   def source_=(v: Image) {
     source() = v

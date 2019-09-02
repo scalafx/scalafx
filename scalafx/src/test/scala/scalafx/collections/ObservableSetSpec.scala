@@ -37,23 +37,29 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 import scala.collection.mutable
 
 /**
- * ObservableSet[T] Spec tests.
- *
- *
- */
+  * ObservableSet[T] Spec tests.
+  *
+  *
+  */
 class ObservableSetSpec[T]
-  extends SimpleSFXDelegateSpec[jfxc.ObservableSet[T], ObservableSet[T]](classOf[jfxc.ObservableSet[T]], classOf[ObservableSet[T]]) {
+    extends SimpleSFXDelegateSpec[jfxc.ObservableSet[T], ObservableSet[T]](
+      classOf[jfxc.ObservableSet[T]],
+      classOf[ObservableSet[T]]
+    ) {
 
   /**
-   * Verifies if a generated Set is the same instance than a original Set. If it should not be,
-   * generated map must be a ObservableSet.
-   *
-   * @param generatedSet Generated Set, that should be a ObservableSet.
-   * @param originalSet Set Original ObservableSet.
-   * @param shouldBeTheSame If both maps should be same instance.
-   */
-  private def compareInstances(generatedSet: mutable.Set[Int],
-                               originalSet: ObservableSet[Int], shouldBeTheSame: Boolean) {
+    * Verifies if a generated Set is the same instance than a original Set. If it should not be,
+    * generated map must be a ObservableSet.
+    *
+    * @param generatedSet Generated Set, that should be a ObservableSet.
+    * @param originalSet Set Original ObservableSet.
+    * @param shouldBeTheSame If both maps should be same instance.
+    */
+  private def compareInstances(
+      generatedSet: mutable.Set[Int],
+      originalSet: ObservableSet[Int],
+      shouldBeTheSame: Boolean
+  ) {
     if (shouldBeTheSame) {
       generatedSet should be theSameInstanceAs originalSet
     } else {
@@ -122,8 +128,8 @@ class ObservableSetSpec[T]
   it should "return changed set" in {
     // Preparation
     val set = ObservableSet(1, 2)
-    set onChange {
-      (sourceSet, _) => sourceSet should be(set)
+    set onChange { (sourceSet, _) =>
+      sourceSet should be(set)
     }
 
     // Execution
@@ -134,12 +140,11 @@ class ObservableSetSpec[T]
     // Preparation
     val set = ObservableSet.empty[Int]
     val addedValues = mutable.Buffer.empty[Int]
-    set onChange {
-      (_, change) =>
-        change match {
-          case Add(value) => addedValues += value
-          case _          => fail("Unexpected change: " + change)
-        }
+    set onChange { (_, change) =>
+      change match {
+        case Add(value) => addedValues += value
+        case _          => fail("Unexpected change: " + change)
+      }
     }
 
     // Execution
@@ -158,20 +163,19 @@ class ObservableSetSpec[T]
     (set add 1) should be(false)
     set(2) = true
 
-    // Verification 
+    // Verification
     addedValues should equal((0 to 7).toBuffer)
   }
 
   it should "notify each removal individually" in {
-    // Preparation 
+    // Preparation
     val set = ObservableSet(0 to 15)
     val removedValues = mutable.Buffer.empty[Int]
-    set onChange {
-      (_, change) =>
-        change match {
-          case Remove(value) => removedValues += value
-          case _             => fail("Unexpected change: " + change)
-        }
+    set onChange { (_, change) =>
+      change match {
+        case Remove(value) => removedValues += value
+        case _             => fail("Unexpected change: " + change)
+      }
     }
 
     // Execution
@@ -210,12 +214,11 @@ class ObservableSetSpec[T]
     val set = ObservableSet(new mutable.LinkedHashSet[Int])
     val addedValues = mutable.Buffer.empty[Int]
     val removedValues = mutable.Buffer.empty[Int]
-    set onChange {
-      (_, change) =>
-        change match {
-          case Add(value)    => addedValues += value
-          case Remove(value) => removedValues += value
-        }
+    set onChange { (_, change) =>
+      change match {
+        case Add(value)    => addedValues += value
+        case Remove(value) => removedValues += value
+      }
     }
 
     // Execution

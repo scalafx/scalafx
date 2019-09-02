@@ -37,41 +37,42 @@ object WindowEvent {
   implicit def sfxWindowEvent2jfx(v: WindowEvent): jfxs.WindowEvent = if (v != null) v.delegate else null
 
   /**
-   * Common supertype for all window event types.
-   */
+    * Common supertype for all window event types.
+    */
   val Any: EventType[jfxs.WindowEvent] = jfxs.WindowEvent.ANY
 
   /**
-   * This event is delivered to a window when there is an external request to close that window.
-   */
+    * This event is delivered to a window when there is an external request to close that window.
+    */
   val WindowCloseRequest: EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_CLOSE_REQUEST
 
   /**
-   * This event occurs on window just after it is hidden.
-   */
+    * This event occurs on window just after it is hidden.
+    */
   val WindowHidden: EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_HIDDEN
 
   /**
-   * This event occurs on window just before it is hidden.
-   */
+    * This event occurs on window just before it is hidden.
+    */
   val WindowHiding: EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_HIDING
 
   /**
-   * This event occurs on window just before it is shown.
-   */
+    * This event occurs on window just before it is shown.
+    */
   val WindowShowing: EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_SHOWING
 
   /**
-   * This event occurs on window just after it is shown.
-   */
+    * This event occurs on window just after it is shown.
+    */
   val WindowShown: EventType[jfxs.WindowEvent] = jfxs.WindowEvent.WINDOW_SHOWN
 }
 
 class WindowEvent(override val delegate: jfxs.WindowEvent) extends Event(delegate) with SFXDelegate[jfxs.WindowEvent] {
 
   /**
-   * Construct a new Event with the specified event source, target and type.
-   */
-  def this(source: Window, eventType: EventType[_ <: javafx.event.Event]) = this(new jfxs.WindowEvent(source, eventType))
+    * Construct a new Event with the specified event source, target and type.
+    */
+  def this(source: Window, eventType: EventType[_ <: javafx.event.Event]) =
+    this(new jfxs.WindowEvent(source, eventType))
 
 }

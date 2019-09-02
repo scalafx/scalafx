@@ -38,41 +38,40 @@ import scalafx.util.Duration
 import scala.language.implicitConversions
 
 /**
- * Companion Object for [[scalafx.animation.PathTransition]].
- *
- * @define PT `PathTransition`
- * @define OT `OrientationType`
- */
+  * Companion Object for [[scalafx.animation.PathTransition]].
+  *
+  * @define PT `PathTransition`
+  * @define OT `OrientationType`
+  */
 object PathTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $PT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.html $PT]],
-   * extracting its delegate.
-   *
-   * @param v ScalaFX $PT
-   * @return JavaFX $PT extracted from `v`.
-   */
+    * Converts a ScalaFX $PT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.html $PT]],
+    * extracting its delegate.
+    *
+    * @param v ScalaFX $PT
+    * @return JavaFX $PT extracted from `v`.
+    */
   implicit def sfxPathTransition2jfx(v: PathTransition): jfxa.PathTransition = if (v != null) v.delegate else null
 
   /**
-   * Companion Object for $OT, where its values are defined.
-   */
-  object OrientationType
-    extends SFXEnumDelegateCompanion[jfxa.PathTransition.OrientationType, OrientationType] {
+    * Companion Object for $OT, where its values are defined.
+    */
+  object OrientationType extends SFXEnumDelegateCompanion[jfxa.PathTransition.OrientationType, OrientationType] {
 
     /**
-     * The targeted node's rotation matrix stays unchanged along the geometric path.
-     */
+      * The targeted node's rotation matrix stays unchanged along the geometric path.
+      */
     case object None extends OrientationType(jfxa.PathTransition.OrientationType.NONE)
-    @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use None; NONE will be removed in a future release", "8.0.60-R10")
     val NONE = None
 
     /**
-     * The targeted node's rotation matrix is set to keep node perpendicular to the path's tangent along the geometric
-     * path.
-     */
+      * The targeted node's rotation matrix is set to keep node perpendicular to the path's tangent along the geometric
+      * path.
+      */
     case object OrthogonalToTangent extends OrientationType(jfxa.PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT)
-    @deprecated ("Use OrthogonalToTangent; ORTHOGONAL_TO_TANGENT will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use OrthogonalToTangent; ORTHOGONAL_TO_TANGENT will be removed in a future release", "8.0.60-R10")
     val ORTHOGONAL_TO_TANGENT = OrthogonalToTangent
 
     protected override def unsortedValues: Array[OrientationType] = Array(None, OrthogonalToTangent)
@@ -80,75 +79,75 @@ object PathTransition extends AnimationStatics {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.OrientationType.html $OT]].
-   *
-   * @constructor Creates a new ScalaFX $OT from a JavaFX $OT.
-   * @param delegate JavaFX $OT to be delegated.
-   */
+    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.OrientationType.html $OT]].
+    *
+    * @constructor Creates a new ScalaFX $OT from a JavaFX $OT.
+    * @param delegate JavaFX $OT to be delegated.
+    */
   sealed abstract class OrientationType(override val delegate: jfxa.PathTransition.OrientationType)
-    extends SFXEnumDelegate[jfxa.PathTransition.OrientationType]
+      extends SFXEnumDelegate[jfxa.PathTransition.OrientationType]
 
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.html PathTransition]].
- *
- * @constructor Creates a new ScalaFX $PT from a JavaFX $PT.
- * @param delegate JavaFX $PT to be delegated.
- *
- * @define PT `PathTransition`
- * @define CONSTR The constructor of $PT.
- */
+  * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.html PathTransition]].
+  *
+  * @constructor Creates a new ScalaFX $PT from a JavaFX $PT.
+  * @param delegate JavaFX $PT to be delegated.
+  *
+  * @define PT `PathTransition`
+  * @define CONSTR The constructor of $PT.
+  */
 class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathTransition)
-  extends Transition(delegate)
-  with SFXDelegate[jfxa.PathTransition] {
+    extends Transition(delegate)
+    with SFXDelegate[jfxa.PathTransition] {
 
   /**
-   * $CONSTR
-   *
-   * @param duration The duration of this $PT.
-   * @param path The path of this $PT.
-   * @param node The node of this $PT.
-   */
+    * $CONSTR
+    *
+    * @param duration The duration of this $PT.
+    * @param path The path of this $PT.
+    * @param node The node of this $PT.
+    */
   def this(duration: Duration, path: Shape, node: Node) =
     this(new jfxa.PathTransition(duration, path, node))
 
   /**
-   * $CONSTR
-   *
-   * @param duration The duration of this $PT.
-   * @param path The path of this $PT.
-   */
+    * $CONSTR
+    *
+    * @param duration The duration of this $PT.
+    * @param path The path of this $PT.
+    */
   def this(duration: Duration, path: Shape) =
     this(new jfxa.PathTransition(duration, path))
 
   /**
-   * The target node of this $PT.
-   */
+    * The target node of this $PT.
+    */
   def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }
 
   /**
-   * The duration of this `Transition`.
-   */
+    * The duration of this `Transition`.
+    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
 
   /**
-   * The shape on which outline the node should be animated.
-   */
+    * The shape on which outline the node should be animated.
+    */
   def path: ObjectProperty[jfxss.Shape] = delegate.pathProperty
   def path_=(s: Shape) {
     path() = s
   }
 
   /**
-   * Specifies the upright orientation of node along the path.
-   */
+    * Specifies the upright orientation of node along the path.
+    */
   def orientation: ObjectProperty[jfxa.PathTransition.OrientationType] = delegate.orientationProperty
   def orientation_=(o: PathTransition.OrientationType) {
     orientation() = o

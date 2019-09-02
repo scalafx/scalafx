@@ -39,36 +39,35 @@ import scalafx.delegate.SFXDelegate
 import scalafx.print.PrinterJob
 
 /**
- * Companion object for [[scalafx.scene.web.WebEngine]]
- */
+  * Companion object for [[scalafx.scene.web.WebEngine]]
+  */
 object WebEngine {
 
   /**
-   * Converts a ScalaFX WebEngine to its JavaFX counterpart.
-   *
-   * @param we ScalaFX WebEngine
-   * @return JavaFX WebEngine
-   */
+    * Converts a ScalaFX WebEngine to its JavaFX counterpart.
+    *
+    * @param we ScalaFX WebEngine
+    * @return JavaFX WebEngine
+    */
   implicit def sfxWebEngine2jfx(we: WebEngine): jfxsw.WebEngine = if (we != null) we.delegate else null
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEngine.html JavaFX WebEngine]].
- *
- * @constructor Creates a new WebEngine from its JavaFX counterpart.
- * @param delegate A JavaFX WebEngine. Its default value is a new instance.
- */
-class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
-  extends SFXDelegate[jfxsw.WebEngine] {
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEngine.html JavaFX WebEngine]].
+  *
+  * @constructor Creates a new WebEngine from its JavaFX counterpart.
+  * @param delegate A JavaFX WebEngine. Its default value is a new instance.
+  */
+class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) extends SFXDelegate[jfxsw.WebEngine] {
 
   /**
-   * Creates a new engine and loads a Web page into it.
-   */
+    * Creates a new engine and loads a Web page into it.
+    */
   def this(url: String) = this(new jfxsw.WebEngine(url))
 
   /**
-   * JavaScript confirm handler property.
-   */
+    * JavaScript confirm handler property.
+    */
   def confirmHandler = delegate.confirmHandlerProperty
   def confirmHandler_=(f: String => Boolean) {
     confirmHandler() = new jfxu.Callback[java.lang.String, java.lang.Boolean] {
@@ -77,8 +76,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   }
 
   /**
-   * JavaScript popup handler property.
-   */
+    * JavaScript popup handler property.
+    */
   def createPopupHandler = delegate.createPopupHandlerProperty
   def createPopupHandler_=(f: jfxsw.PopupFeatures => WebEngine) {
     createPopupHandler() = new jfxu.Callback[jfxsw.PopupFeatures, jfxsw.WebEngine] {
@@ -87,60 +86,60 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   }
 
   /**
-   * Document object for the current Web page.
-   */
+    * Document object for the current Web page.
+    */
   def document: Document = delegate.getDocument
 
   /**
-   * URL of the current Web page.
-   */
+    * URL of the current Web page.
+    */
   def location: ReadOnlyStringProperty = delegate.locationProperty
 
   /**
-   * JavaScript alert handler property.
-   */
+    * JavaScript alert handler property.
+    */
   def onAlert = delegate.onAlertProperty
   def onAlert_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]) {
     onAlert() = v
   }
 
   /**
-   * The event handler called when an error occurs.
-   *
-   * @since 8.0
-   */
+    * The event handler called when an error occurs.
+    *
+    * @since 8.0
+    */
   def onError = delegate.onErrorProperty
   def onError_=(v: jfxe.EventHandler[jfxsw.WebErrorEvent]) {
     onError() = v
   }
 
   /**
-   * JavaScript window resize handler property.
-   */
+    * JavaScript window resize handler property.
+    */
   def onResized = delegate.onResizedProperty
   def onResized_=(v: jfxe.EventHandler[jfxsw.WebEvent[Rectangle2D]]) {
     onResized() = v
   }
 
   /**
-   * JavaScript status handler property.
-   */
+    * JavaScript status handler property.
+    */
   def onStatusChanged = delegate.onStatusChangedProperty
   def onStatusChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]) {
     onStatusChanged() = v
   }
 
   /**
-   * JavaScript window visibility handler property.
-   */
+    * JavaScript window visibility handler property.
+    */
   def onVisibilityChanged = delegate.onVisibilityChangedProperty
   def onVisibilityChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]]) {
     onVisibilityChanged() = v
   }
 
   /**
-   * JavaScript prompt handler property.
-   */
+    * JavaScript prompt handler property.
+    */
   def promptHandler = delegate.promptHandlerProperty
   def promptHandler_=(f: PromptData => String) {
     promptHandler() = new jfxu.Callback[jfxsw.PromptData, String] {
@@ -149,77 +148,77 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   }
 
   /**
-   * JavaScript enabled handler property.
-   *
-   * @since 2.2
-   */
+    * JavaScript enabled handler property.
+    *
+    * @since 2.2
+    */
   def javaScriptEnabled: BooleanProperty = delegate.javaScriptEnabledProperty
   def javaScriptEnabled_=(v: Boolean) {
     javaScriptEnabled() = v
   }
 
   /**
-   * Specifies the directory to be used by this WebEngine to store local user data.
-   *
-   * @since 8.0
-   */
+    * Specifies the directory to be used by this WebEngine to store local user data.
+    *
+    * @since 8.0
+    */
   def userDataDirectory: ObjectProperty[java.io.File] = delegate.userDataDirectoryProperty
   def userDataDirectory_=(v: java.io.File) {
     ObjectProperty.fillProperty[java.io.File](this.userDataDirectory, v)
   }
 
   /**
-   * JavaScript enabled handler property.
-   *
-   * @since 2.2
-   */
+    * JavaScript enabled handler property.
+    *
+    * @since 2.2
+    */
   def userStyleSheetLocation: StringProperty = delegate.userStyleSheetLocationProperty
   def userStyleSheetLocation_=(v: String) {
     userStyleSheetLocation() = v
   }
 
   /**
-   * Title of the current Web page.
-   */
+    * Title of the current Web page.
+    */
   def title: ReadOnlyStringProperty = delegate.titleProperty
 
   /**
-   * Loads a Web page into this engine.
-   */
+    * Loads a Web page into this engine.
+    */
   def load(url: String) {
     delegate.load(url)
   }
 
   /**
-   * Loads the given HTML content directly.
-   */
+    * Loads the given HTML content directly.
+    */
   def loadContent(content: String) {
     delegate.loadContent(content)
   }
 
   /**
-   * Loads the given content directly.
-   */
+    * Loads the given content directly.
+    */
   def loadContent(content: String, contentType: String) {
     delegate.loadContent(content, contentType)
   }
 
   /**
-   * Specifies user agent ID string.
-   *
-   * @since 8.0
-   */
+    * Specifies user agent ID string.
+    *
+    * @since 8.0
+    */
   def userAgent: StringProperty = delegate.userAgentProperty
   def userAgent_=(v: String) {
     userAgent() = v
   }
 
   /**
-   * Prints the content of the editor using the given printer job.
-   *
-   * @param job printer job used for printing
-   * @since 8.0
-   */
+    * Prints the content of the editor using the given printer job.
+    *
+    * @param job printer job used for printing
+    * @since 8.0
+    */
   def print(job: PrinterJob): Unit = delegate.print(job)
 
 }

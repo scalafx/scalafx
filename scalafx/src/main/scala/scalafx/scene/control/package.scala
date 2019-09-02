@@ -27,8 +27,6 @@
 package scalafx.scene
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/package-summary.html `javafx.scene.control`]] package.
- */
-package object control {
-
-}
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/package-summary.html `javafx.scene.control`]] package.
+  */
+package object control {}

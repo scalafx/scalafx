@@ -33,15 +33,15 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object SelectionMode extends SFXEnumDelegateCompanion[jfxsc.SelectionMode, SelectionMode] {
 
   case object Multiple extends SelectionMode(jfxsc.SelectionMode.MULTIPLE)
-  @deprecated ("Use Multiple; MULTIPLE will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Multiple; MULTIPLE will be removed in a future release", "8.0.60-R10")
   val MULTIPLE = Multiple
 
   case object Single extends SelectionMode(jfxsc.SelectionMode.SINGLE)
-  @deprecated ("Use Single; SINGLE will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Single; SINGLE will be removed in a future release", "8.0.60-R10")
   val SINGLE = Single
 
   protected override def unsortedValues: Array[SelectionMode] = Array(Single, Multiple)
 }
 
-
-sealed abstract class SelectionMode(override val delegate: jfxsc.SelectionMode) extends SFXEnumDelegate[jfxsc.SelectionMode]
+sealed abstract class SelectionMode(override val delegate: jfxsc.SelectionMode)
+    extends SFXEnumDelegate[jfxsc.SelectionMode]

@@ -32,10 +32,12 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * ScaleTransition Spec tests.
- *
- *
- */
+  * ScaleTransition Spec tests.
+  *
+  *
+  */
 class ScaleTransitionSpec
-  extends SimpleSFXDelegateSpec[jfxa.ScaleTransition, ScaleTransition](
-    classOf[jfxa.ScaleTransition], classOf[ScaleTransition])
+    extends SimpleSFXDelegateSpec[jfxa.ScaleTransition, ScaleTransition](
+      classOf[jfxa.ScaleTransition],
+      classOf[ScaleTransition]
+    )

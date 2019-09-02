@@ -40,8 +40,8 @@ import scalafx.scene.layout.{Region, VBox}
 import scalafx.util.converter.FormatStringConverter
 
 /**
- * Demonstrates a TextField control with a TextFormatter that formats the content.
- */
+  * Demonstrates a TextField control with a TextFormatter that formats the content.
+  */
 object TextFormatterDemo extends JFXApp {
 
   val infoLabel = new Label {

@@ -121,7 +121,6 @@ object PickingDemo extends JFXApp {
       angleY() = anchorAngleY + anchorX - event.sceneX
     }
 
-
   }
 
   private def createMarker(x: Double, y: Double, z: Double): Sphere = new Sphere(35) {

@@ -48,6 +48,4 @@ object ArcType extends SFXEnumDelegateCompanion[jfxss.ArcType, ArcType] {
   protected override def unsortedValues: Array[ArcType] = Array(Open, Chord, Round)
 }
 
-
-sealed abstract class ArcType(override val delegate: jfxss.ArcType)
-  extends SFXEnumDelegate[jfxss.ArcType]
+sealed abstract class ArcType(override val delegate: jfxss.ArcType) extends SFXEnumDelegate[jfxss.ArcType]

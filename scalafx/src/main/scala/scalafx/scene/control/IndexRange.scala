@@ -35,22 +35,22 @@ object IndexRange {
   implicit def sfxIndexRange(r: IndexRange): jfxsc.IndexRange = if (r != null) r.delegate else null
 
   /**
-   * Index range value delimiter.
-   */
+    * Index range value delimiter.
+    */
   val ValueDelimiter = jfxsc.IndexRange.VALUE_DELIMITER
-  @deprecated ("Use ValueDelimiter; VALUE_DELIMITER will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use ValueDelimiter; VALUE_DELIMITER will be removed in a future release", "8.0.60-R10")
   val VALUE_DELIMITER = ValueDelimiter
 
   /**
-   * Convenience method to create an IndexRange instance that has the smaller value as the start
-   * index, and the larger value as the end index.
-   */
+    * Convenience method to create an IndexRange instance that has the smaller value as the start
+    * index, and the larger value as the end index.
+    */
   def normalize(v1: Int, v2: Int): IndexRange = new IndexRange(jfxsc.IndexRange.normalize(v1, v2))
 
   /**
-   * Convenience method to parse in a String of the form '2,6', which will create an IndexRange
-   * instance with a start value of 2, and an end value of 6.
-   */
+    * Convenience method to parse in a String of the form '2,6', which will create an IndexRange
+    * instance with a start value of 2, and an end value of 6.
+    */
   def valueOf(value: String): IndexRange = new IndexRange(jfxsc.IndexRange.valueOf(value))
 
 }
@@ -58,28 +58,28 @@ object IndexRange {
 class IndexRange(override val delegate: jfxsc.IndexRange) extends SFXDelegate[jfxsc.IndexRange] {
 
   /**
-   * Creates an instance of IndexRange by copying the values from the given IndexRange object.
-   */
+    * Creates an instance of IndexRange by copying the values from the given IndexRange object.
+    */
   def this(range: IndexRange) = this(new jfxsc.IndexRange(range))
 
   /**
-   * Creates an instance of IndexRange representing the range between start and end.
-   */
+    * Creates an instance of IndexRange representing the range between start and end.
+    */
   def this(start: Int, end: Int) = this(new jfxsc.IndexRange(start, end))
 
   /**
-   * Returns the start position of the range.
-   */
+    * Returns the start position of the range.
+    */
   def start = delegate.getStart
 
   /**
-   * Returns the end position of the range (exclusive).
-   */
+    * Returns the end position of the range (exclusive).
+    */
   def end = delegate.getEnd
 
   /**
-   * Returns the length of the range.
-   */
+    * Returns the length of the range.
+    */
   def length = delegate.getLength
 
 }

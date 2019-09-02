@@ -26,8 +26,6 @@
  */
 
 /**
- * Base package for ScalaFX classes.
- */
-package object scalafx {
-
-}
+  * Base package for ScalaFX classes.
+  */
+package object scalafx {}

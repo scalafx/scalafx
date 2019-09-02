@@ -34,26 +34,28 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object InputMethodHighlight extends SFXEnumDelegateCompanion[jfxsi.InputMethodHighlight, InputMethodHighlight] {
 
   case object UnselectedRaw extends InputMethodHighlight(jfxsi.InputMethodHighlight.UNSELECTED_RAW)
-  @deprecated ("Use UnselectedRaw; UNSELECTED_RAW will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use UnselectedRaw; UNSELECTED_RAW will be removed in a future release", "8.0.60-R10")
   val UNSELECTED_RAW = UnselectedRaw
 
   case object SelectedRaw extends InputMethodHighlight(jfxsi.InputMethodHighlight.SELECTED_RAW)
-  @deprecated ("Use SelectedRaw; SELECTED_RAW will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use SelectedRaw; SELECTED_RAW will be removed in a future release", "8.0.60-R10")
   val SELECTED_RAW = SelectedRaw
 
   case object UnselectedConverted extends InputMethodHighlight(jfxsi.InputMethodHighlight.UNSELECTED_CONVERTED)
-  @deprecated ("Use UnselectedConverted; UNSELECTED_CONVERTED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use UnselectedConverted; UNSELECTED_CONVERTED will be removed in a future release", "8.0.60-R10")
   val UNSELECTED_CONVERTED = UnselectedConverted
 
   case object SelectedConverted extends InputMethodHighlight(jfxsi.InputMethodHighlight.SELECTED_CONVERTED)
-  @deprecated ("Use SelectedConverted; SELECTED_CONVERTED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use SelectedConverted; SELECTED_CONVERTED will be removed in a future release", "8.0.60-R10")
   val SELECTED_CONVERTED = SelectedConverted
 
   protected override def unsortedValues: Array[InputMethodHighlight] = Array(
-    UnselectedRaw, SelectedRaw, UnselectedConverted, SelectedConverted
+    UnselectedRaw,
+    SelectedRaw,
+    UnselectedConverted,
+    SelectedConverted
   )
 }
 
-
 sealed abstract class InputMethodHighlight(override val delegate: jfxsi.InputMethodHighlight)
-  extends SFXEnumDelegate[jfxsi.InputMethodHighlight]
+    extends SFXEnumDelegate[jfxsi.InputMethodHighlight]

@@ -30,19 +30,18 @@ import javafx.{print => jfxp}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
- * Companion Object for [[scalafx.print.Collation]].
- */
-object Collation
-  extends SFXEnumDelegateCompanion[jfxp.Collation, Collation] {
+  * Companion Object for [[scalafx.print.Collation]].
+  */
+object Collation extends SFXEnumDelegateCompanion[jfxp.Collation, Collation] {
 
   /**
-   * Each copy of a document is printed together.
-   */
+    * Each copy of a document is printed together.
+    */
   case object Collated extends Collation(jfxp.Collation.COLLATED)
 
   /**
-   * The same numbered pages are consecutive in the output.
-   */
+    * The same numbered pages are consecutive in the output.
+    */
   case object Uncollated extends Collation(jfxp.Collation.UNCOLLATED)
 
   protected override def unsortedValues: Array[Collation] = Array(Collated, Uncollated)
@@ -50,7 +49,6 @@ object Collation
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Collation.html JavaFX Collation]].
- */
-sealed abstract class Collation(override val delegate: jfxp.Collation)
-  extends SFXEnumDelegate[jfxp.Collation] 
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Collation.html JavaFX Collation]].
+  */
+sealed abstract class Collation(override val delegate: jfxp.Collation) extends SFXEnumDelegate[jfxp.Collation]

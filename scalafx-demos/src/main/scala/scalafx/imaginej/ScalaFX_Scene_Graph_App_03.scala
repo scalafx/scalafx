@@ -48,16 +48,14 @@ import scalafx.scene.Scene
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
-
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
- *
- * based upon: Example 3 Animating the Scene
- *
- * http://docs.oracle.com/javafx/2.0/scenegraph/jfxpub-scenegraph.htm
- *
- */
-
+  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+  *
+  * based upon: Example 3 Animating the Scene
+  *
+  * http://docs.oracle.com/javafx/2.0/scenegraph/jfxpub-scenegraph.htm
+  *
+  */
 object ScalaFX_Scene_Graph_App_03 extends JFXApp {
   val rectangle = new Rectangle {
     x = 0

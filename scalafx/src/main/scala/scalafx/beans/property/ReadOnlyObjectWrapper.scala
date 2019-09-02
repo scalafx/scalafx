@@ -33,9 +33,9 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
-
 object ReadOnlyObjectWrapper {
-  implicit def sfxReadOnlyObjectWrapper2jfx[T <: Any](roow: ReadOnlyObjectWrapper[T]): jfxbp.ReadOnlyObjectWrapper[T] = roow.delegate
+  implicit def sfxReadOnlyObjectWrapper2jfx[T <: Any](roow: ReadOnlyObjectWrapper[T]): jfxbp.ReadOnlyObjectWrapper[T] =
+    roow.delegate
 
   /** Creates a new ReadOnlyObjectWrapper instance with a given initial wrapped value. */
   def apply[T <: Any](value: T): ReadOnlyObjectWrapper[T] =
@@ -78,11 +78,10 @@ object ReadOnlyObjectWrapper {
     new ReadOnlyObjectWrapper[J](bean, name, value.delegate)
 }
 
-
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyObjectWrapper.html javafx.beans.property.ReadOnlyObjectWrapper]] */
 class ReadOnlyObjectWrapper[T <: Any](override val delegate: jfxbp.ReadOnlyObjectWrapper[T])
-  extends ObjectProperty[T](delegate)
-  with SFXDelegate[jfxbp.ReadOnlyObjectWrapper[T]] {
+    extends ObjectProperty[T](delegate)
+    with SFXDelegate[jfxbp.ReadOnlyObjectWrapper[T]] {
 
   /** Creates a new ReadOnlyObjectWrapper instance.
     * @param bean the bean of this ReadOnlyObjectWrapper

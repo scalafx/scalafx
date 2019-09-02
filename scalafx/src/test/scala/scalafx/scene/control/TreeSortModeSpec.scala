@@ -33,7 +33,8 @@ import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.scene.control.TreeSortMode]]. */
 class TreeSortModeSpec
-  extends SFXEnumDelegateSpec[jfxsc.TreeSortMode, TreeSortMode](
-    classOf[jfxsc.TreeSortMode],
-    classOf[TreeSortMode],
-    TreeSortMode)
+    extends SFXEnumDelegateSpec[jfxsc.TreeSortMode, TreeSortMode](
+      classOf[jfxsc.TreeSortMode],
+      classOf[TreeSortMode],
+      TreeSortMode
+    )

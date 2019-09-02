@@ -68,7 +68,7 @@ object WebView {
   * @param delegate A JavaFX WebView. Its default value is a new instance.
   */
 class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
-  extends Parent(delegate)
+    extends Parent(delegate)
     with SFXDelegate[jfxsw.WebView] {
 
   /**
@@ -160,7 +160,8 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
   /**
     * JavaScript popup handler property.
     */
-  def createPopupHandler: ObjectProperty[jfxu.Callback[jfxsw.PopupFeatures, jfxsw.WebEngine]] = delegate.engine.createPopupHandler
+  def createPopupHandler: ObjectProperty[jfxu.Callback[jfxsw.PopupFeatures, jfxsw.WebEngine]] =
+    delegate.engine.createPopupHandler
 
   def createPopupHandler_=(f: jfxsw.PopupFeatures => WebEngine): Unit = {
     delegate.engine.createPopupHandler = f
@@ -201,7 +202,8 @@ class WebView(override val delegate: jfxsw.WebView = new jfxsw.WebView)
   /**
     * JavaScript window visibility handler property.
     */
-  def onVisibilityChanged: ObjectProperty[jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]]] = delegate.engine.onVisibilityChanged
+  def onVisibilityChanged: ObjectProperty[jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]]] =
+    delegate.engine.onVisibilityChanged
 
   def onVisibilityChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]]): Unit = {
     delegate.engine.onVisibilityChanged = v

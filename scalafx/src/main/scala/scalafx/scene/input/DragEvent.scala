@@ -37,43 +37,43 @@ object DragEvent {
   implicit def sfxDragEvent2jfx(de: DragEvent): jfxsi.DragEvent = if (de != null) de.delegate else null
 
   /**
-   * Common supertype for all drag event types.
-   */
+    * Common supertype for all drag event types.
+    */
   val Any: EventType[jfxsi.DragEvent] = jfxsi.DragEvent.ANY
 
   /**
-   * This event occurs on drag-and-drop gesture source after its data has been dropped on a drop target.
-   */
+    * This event occurs on drag-and-drop gesture source after its data has been dropped on a drop target.
+    */
   val DragDone: EventType[jfxsi.DragEvent] = jfxsi.DragEvent.DRAG_DONE
 
   /**
-   * This event occurs when the mouse button is released during drag and drop gesture on a drop target.
-   */
+    * This event occurs when the mouse button is released during drag and drop gesture on a drop target.
+    */
   val DragDropped: EventType[jfxsi.DragEvent] = jfxsi.DragEvent.DRAG_DROPPED
 
   /**
-   * This event occurs when drag gesture enters a node.
-   */
+    * This event occurs when drag gesture enters a node.
+    */
   val DragEntered: EventType[jfxsi.DragEvent] = jfxsi.DragEvent.DRAG_ENTERED
 
   /**
-   * This event occurs when drag gesture enters a node.
-   */
+    * This event occurs when drag gesture enters a node.
+    */
   val DragEnteredTarget: EventType[jfxsi.DragEvent] = jfxsi.DragEvent.DRAG_ENTERED_TARGET
 
   /**
-   * This event occurs when drag gesture exits a node.
-   */
+    * This event occurs when drag gesture exits a node.
+    */
   val DragExited: EventType[jfxsi.DragEvent] = jfxsi.DragEvent.DRAG_EXITED
 
   /**
-   * This event occurs when drag gesture exits a node.
-   */
+    * This event occurs when drag gesture exits a node.
+    */
   val DragExitedTarget: EventType[jfxsi.DragEvent] = jfxsi.DragEvent.DRAG_EXITED_TARGET
 
   /**
-   * This event occurs when drag gesture progresses within this node.
-   */
+    * This event occurs when drag gesture progresses within this node.
+    */
   val DragOver: EventType[jfxsi.DragEvent] = jfxsi.DragEvent.DRAG_OVER
 
 }
@@ -81,79 +81,80 @@ object DragEvent {
 class DragEvent(override val delegate: jfxsi.DragEvent) extends InputEvent(delegate) with SFXDelegate[jfxsi.DragEvent] {
 
   /**
-   * Accepts this DragEvent, choosing the transfer mode for the drop operation.
-   */
+    * Accepts this DragEvent, choosing the transfer mode for the drop operation.
+    */
   def acceptTransferModes(transferModes: jfxsi.TransferMode*) {
     delegate.acceptTransferModes(transferModes: _*)
   }
 
   /**
-   * Gets transfer mode accepted by potential target.
-   */
+    * Gets transfer mode accepted by potential target.
+    */
   def acceptedTransferMode: TransferMode = delegate.getAcceptedTransferMode
 
   /**
-   * A dragboard that is available to transfer data.
-   */
+    * A dragboard that is available to transfer data.
+    */
   def dragboard: Dragboard = delegate.getDragboard
 
   /**
-   * The source object of the drag and drop gesture.
-   */
+    * The source object of the drag and drop gesture.
+    */
   def gestureSource: Object = delegate.getGestureSource
 
   /**
-   * The target object of the drag and drop gesture.
-   */
+    * The target object of the drag and drop gesture.
+    */
   def gestureTarget: Object = delegate.getGestureTarget
 
   /**
-   * Returns horizontal position of the event relative to the origin of the Scene that contains the DragEvent's source.
-   */
+    * Returns horizontal position of the event relative to the origin of the Scene that contains the DragEvent's source.
+    */
   def sceneX: Double = delegate.getSceneX
 
   /**
-   * Returns vertical position of the event relative to the origin of the Scene that contains the DragEvent's source.
-   */
+    * Returns vertical position of the event relative to the origin of the Scene that contains the DragEvent's source.
+    */
   def sceneY: Double = delegate.getSceneY
 
   /**
-   * Returns absolute horizontal position of the event.
-   */
+    * Returns absolute horizontal position of the event.
+    */
   def screenX: Double = delegate.getScreenX
 
   /**
-   * Returns absolute vertical position of the event.
-   */
+    * Returns absolute vertical position of the event.
+    */
   def screenY: Double = delegate.getScreenY
 
   /**
-   * Data transfer mode.
-   */
+    * Data transfer mode.
+    */
   def transferMode: TransferMode = delegate.getTransferMode
 
   /**
-   * Horizontal position of the event relative to the origin of the DragEvent's source.
-   */
+    * Horizontal position of the event relative to the origin of the DragEvent's source.
+    */
   def x: Double = delegate.getX
 
   /**
-   * Vertical position of the event relative to the origin of the DragEvent's source.
-   */
+    * Vertical position of the event relative to the origin of the DragEvent's source.
+    */
   def y: Double = delegate.getY
 
   /**
-   * Indicates if this event has been accepted.
-   */
+    * Indicates if this event has been accepted.
+    */
   def accepted: Boolean = delegate.isAccepted
 
   /**
-   * Whether setDropCompleted(true) has been called on this event.
-   */
+    * Whether setDropCompleted(true) has been called on this event.
+    */
   def dropCompleted: Boolean = delegate.isDropCompleted
+
   /**
-   * Indicates that transfer handling of this DragEvent was completed successfully during a DRAG_DROPPED event handler.
-   */
+    * Indicates that transfer handling of this DragEvent was completed successfully during a DRAG_DROPPED event handler.
+    */
   def dropCompleted_=(isTransferDone: Boolean) {
     delegate.setDropCompleted(isTransferDone)
   }
@@ -163,4 +164,4 @@ class DragEvent(override val delegate: jfxsi.DragEvent) extends InputEvent(deleg
 /*
 Event	copyFor(java.lang.Object newSource, EventTarget newTarget)
 Creates and returns a copy of this event with the specified event source and target.
-*/
+ */

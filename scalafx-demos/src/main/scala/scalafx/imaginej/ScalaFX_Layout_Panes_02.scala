@@ -50,14 +50,13 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
- *
- *         based upon: Example 1-2 Create an HBox Pane
- *
- *         http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
- *
- */
-
+  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+  *
+  *         based upon: Example 1-2 Create an HBox Pane
+  *
+  *         http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
+  *
+  */
 object ScalaFX_Layout_Panes_02 extends JFXApp {
   stage = new PrimaryStage {
     title = "ScalaFX Layout Panes 02"
@@ -67,16 +66,15 @@ object ScalaFX_Layout_Panes_02 extends JFXApp {
           spacing = 10
           padding = Insets(15, 12, 15, 12)
           style = "-fx-background-color: #336699"
-          children = List(
-            new Button {
-              text = "Current"
-              prefWidth = 100
-              prefHeight = 20
-            }, new Button {
-              text = "Projected"
-              prefWidth = 100
-              prefHeight = 20
-            })
+          children = List(new Button {
+            text = "Current"
+            prefWidth = 100
+            prefHeight = 20
+          }, new Button {
+            text = "Projected"
+            prefWidth = 100
+            prefHeight = 20
+          })
         }
         center = new Rectangle {
           width = 480
@@ -87,4 +85,3 @@ object ScalaFX_Layout_Panes_02 extends JFXApp {
     }
   }
 }
-

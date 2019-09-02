@@ -49,7 +49,7 @@ object Axis {
   }
 
   class TickMark[T](override val delegate: jfxsc.Axis.TickMark[T] = new jfxsc.Axis.TickMark[T]())
-    extends SFXDelegate[jfxsc.Axis.TickMark[T]] {
+      extends SFXDelegate[jfxsc.Axis.TickMark[T]] {
 
     def label: StringExpression = delegate.labelProperty
 
@@ -78,9 +78,7 @@ object Axis {
 
 }
 
-abstract class Axis[T](override val delegate: jfxsc.Axis[T])
-  extends Region(delegate)
-    with SFXDelegate[jfxsc.Axis[T]] {
+abstract class Axis[T](override val delegate: jfxsc.Axis[T]) extends Region(delegate) with SFXDelegate[jfxsc.Axis[T]] {
 
   def animated: BooleanProperty = delegate.animatedProperty
 

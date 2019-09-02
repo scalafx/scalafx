@@ -42,6 +42,5 @@ object FontSmoothingType extends SFXEnumDelegateCompanion[jfxst.FontSmoothingTyp
   protected override def unsortedValues: Array[FontSmoothingType] = Array(Gray, LCD)
 }
 
-
 sealed abstract class FontSmoothingType(override val delegate: jfxst.FontSmoothingType)
-  extends SFXEnumDelegate[jfxst.FontSmoothingType]
+    extends SFXEnumDelegate[jfxst.FontSmoothingType]

@@ -31,35 +31,33 @@ import javafx.{stage => jfxs}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/stage/Modality.html javafx.stage.Modality]] */
-object Modality
-  extends SFXEnumDelegateCompanion[jfxs.Modality, Modality] {
+object Modality extends SFXEnumDelegateCompanion[jfxs.Modality, Modality] {
 
   /**
-   * Defines a top-level window that is not modal and does not block any other window.
-   */
+    * Defines a top-level window that is not modal and does not block any other window.
+    */
   case object None extends Modality(jfxs.Modality.NONE)
-  @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use None; NONE will be removed in a future release", "8.0.60-R10")
   val NONE = None
 
   /**
-   * Defines a modal window that block events from being delivered to its entire owner window hierarchy.
-   */
+    * Defines a modal window that block events from being delivered to its entire owner window hierarchy.
+    */
   case object WindowModal extends Modality(jfxs.Modality.WINDOW_MODAL)
-  @deprecated ("Use WindowModal; WINDOW_MODAL will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use WindowModal; WINDOW_MODAL will be removed in a future release", "8.0.60-R10")
   val WINDOW_MODAL = WindowModal
 
   /**
-   * Defines a modal window that blocks events from being delivered to any other application window.
-   */
+    * Defines a modal window that blocks events from being delivered to any other application window.
+    */
   case object ApplicationModal extends Modality(jfxs.Modality.APPLICATION_MODAL)
-  @deprecated ("Use ApplicationModal; APPLICATION_MODAL will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use ApplicationModal; APPLICATION_MODAL will be removed in a future release", "8.0.60-R10")
   val APPLICATION_MODAL = ApplicationModal
 
   protected override def unsortedValues: Array[Modality] = Array(None, WindowModal, ApplicationModal)
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/stage/Modality.html javafx.stage.Modality]].
- */
-sealed abstract class Modality(override val delegate: jfxs.Modality)
-  extends SFXEnumDelegate[jfxs.Modality]
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/stage/Modality.html javafx.stage.Modality]].
+  */
+sealed abstract class Modality(override val delegate: jfxs.Modality) extends SFXEnumDelegate[jfxs.Modality]

@@ -35,7 +35,7 @@ object Bounds {
   implicit def sfxBounds2jfx(b: Bounds): jfxg.Bounds = if (b != null) b.delegate else null
 }
 
-abstract class Bounds protected(override val delegate: jfxg.Bounds) extends SFXDelegate[jfxg.Bounds] {
+abstract class Bounds protected (override val delegate: jfxg.Bounds) extends SFXDelegate[jfxg.Bounds] {
 
   /*
    * Creates a new instance of Bounds class.
@@ -43,129 +43,130 @@ abstract class Bounds protected(override val delegate: jfxg.Bounds) extends SFXD
   //  protected def this(minX: Double, minY: Double, minZ: Double, width: Double, height: Double, depth: Double) = this(new jfxg.Bounds(minX, minY, minZ, width, height, depth) {})
 
   /**
-   * Tests if the interior of this Bounds entirely contains the specified Bounds, b.
-   */
+    * Tests if the interior of this Bounds entirely contains the specified Bounds, b.
+    */
   def contains(b: Bounds) = delegate.contains(b)
 
   /**
-   * Tests if the specified (x, y) coordinates are inside the boundary of Bounds.
-   */
+    * Tests if the specified (x, y) coordinates are inside the boundary of Bounds.
+    */
   def contains(x: Double, y: Double) = delegate.contains(x, y)
 
   /**
-   * Tests if the specified (x, y, z) coordinates are inside the boundary of Bounds.
-   */
+    * Tests if the specified (x, y, z) coordinates are inside the boundary of Bounds.
+    */
   def contains(x: Double, y: Double, z: Double) = delegate.contains(x, y, z)
 
   /**
-   * Tests if the interior of this Bounds entirely contains the specified rectangular area.
-   */
+    * Tests if the interior of this Bounds entirely contains the specified rectangular area.
+    */
   def contains(x: Double, y: Double, w: Double, h: Double) = delegate.contains(x, y, w, h)
 
   /**
-   * Tests if the interior of this Bounds entirely contains the specified rectangular area.
-   */
+    * Tests if the interior of this Bounds entirely contains the specified rectangular area.
+    */
   def contains(x: Double, y: Double, z: Double, w: Double, h: Double, d: Double) = delegate.contains(x, y, z, w, h, d)
 
   /**
-   * Tests if the specified point is inside the boundary of Bounds.
-   */
+    * Tests if the specified point is inside the boundary of Bounds.
+    */
   def contains(p: Point2D) = delegate.contains(p)
 
   /**
-   * Tests if the specified point is inside the boundary of Bounds.
-   */
+    * Tests if the specified point is inside the boundary of Bounds.
+    */
   def contains(p: Point3D) = delegate.contains(p)
 
   /**
-   * The depth of this Bounds.
-   */
+    * The depth of this Bounds.
+    */
   def depth = delegate.getDepth
 
   /**
-   * Indicates whether any of the dimensions(width, height or depth) of this bounds is less than zero.
-   */
+    * Indicates whether any of the dimensions(width, height or depth) of this bounds is less than zero.
+    */
   def empty = delegate.isEmpty
 
   /**
-   * The height of this Bounds.
-   */
+    * The height of this Bounds.
+    */
   def height = delegate.getHeight
 
   /**
-   * Tests if the interior of this Bounds intersects the interior of a specified Bounds, b.
-   */
+    * Tests if the interior of this Bounds intersects the interior of a specified Bounds, b.
+    */
   def intersects(b: Bounds) = delegate.intersects(b)
 
   /**
-   * Tests if the interior of this Bounds intersects the interior of a specified rectangular area.
-   */
+    * Tests if the interior of this Bounds intersects the interior of a specified rectangular area.
+    */
   def intersects(x: Double, y: Double, w: Double, h: Double) = delegate.intersects(x, y, w, h)
 
   /**
-   * Tests if the interior of this Bounds intersects the interior of a specified rectangular area.
-   */
-  def intersects(x: Double, y: Double, z: Double, w: Double, h: Double, d: Double) = delegate.intersects(x, y, z, w, h, d)
+    * Tests if the interior of this Bounds intersects the interior of a specified rectangular area.
+    */
+  def intersects(x: Double, y: Double, z: Double, w: Double, h: Double, d: Double) =
+    delegate.intersects(x, y, z, w, h, d)
 
   /**
-   * The x coordinate of the lower-right corner of this Bounds.
-   */
+    * The x coordinate of the lower-right corner of this Bounds.
+    */
   def maxX = delegate.getMaxX
 
   /**
-   * The y coordinate of the lower-right corner of this Bounds.
-   */
+    * The y coordinate of the lower-right corner of this Bounds.
+    */
   def maxY = delegate.getMaxY
 
   /**
-   * The maximum z coordinate of this Bounds.
-   */
+    * The maximum z coordinate of this Bounds.
+    */
   def maxZ = delegate.getMaxZ
 
   /**
-   * The x coordinate of the upper-left corner of this Bounds.
-   */
+    * The x coordinate of the upper-left corner of this Bounds.
+    */
   def minX = delegate.getMinX
 
   /**
-   * The y coordinate of the upper-left corner of this Bounds.
-   */
+    * The y coordinate of the upper-left corner of this Bounds.
+    */
   def minY = delegate.getMinY
 
   /**
-   * The minimum z coordinate of this Bounds.
-   */
+    * The minimum z coordinate of this Bounds.
+    */
   def minZ = delegate.getMinZ
 
   /**
-   * The width of this Bounds.
-   */
+    * The width of this Bounds.
+    */
   def width = delegate.getWidth
 
   /**
-   * The central x coordinate of this [[Bounds]].
-   *
-   * @return the central x coordinate
-   * This call is equivalent to {{{(getMaxX() + getMinX())/2.0}}}.
-   * @since 11
-   */
+    * The central x coordinate of this [[Bounds]].
+    *
+    * @return the central x coordinate
+    * This call is equivalent to {{{(getMaxX() + getMinX())/2.0}}}.
+    * @since 11
+    */
   def centerX: Double = delegate.getCenterX
 
   /**
-   * The central y coordinate of this [[Bounds]].
-   *
-   * @return the central y coordinate
-   * This call is equivalent to {{{(getMaxY() + getMinY())/2.0}}}.
-   * @since 11
-   */
+    * The central y coordinate of this [[Bounds]].
+    *
+    * @return the central y coordinate
+    * This call is equivalent to {{{(getMaxY() + getMinY())/2.0}}}.
+    * @since 11
+    */
   def centerY: Double = delegate.getCenterY
 
   /**
-   * The central z coordinate of this [[Bounds]].
-   *
-   * @return the central z coordinate
-   * This call is equivalent to {{{(getMaxZ() + getMinZ())/2.0}}}.
-   * @since 11
-   */
+    * The central z coordinate of this [[Bounds]].
+    *
+    * @return the central z coordinate
+    * This call is equivalent to {{{(getMaxZ() + getMinZ())/2.0}}}.
+    * @since 11
+    */
   def centerZ: Double = delegate.getCenterZ
 }

@@ -33,7 +33,6 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * TextFlow Spec tests.
- */
-class TextFlowSpec
-  extends SimpleSFXDelegateSpec[jfxst.TextFlow, TextFlow](classOf[jfxst.TextFlow], classOf[TextFlow])
+  * TextFlow Spec tests.
+  */
+class TextFlowSpec extends SimpleSFXDelegateSpec[jfxst.TextFlow, TextFlow](classOf[jfxst.TextFlow], classOf[TextFlow])

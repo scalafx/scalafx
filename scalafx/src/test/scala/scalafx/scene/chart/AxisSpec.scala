@@ -32,13 +32,13 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * Axis Spec tests.
- *
- *
- */
+  * Axis Spec tests.
+  *
+  *
+  */
 class AxisSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.Axis[T], Axis[T]](classOf[jfxsc.Axis[T]], classOf[Axis[T]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.Axis[T], Axis[T]](classOf[jfxsc.Axis[T]], classOf[Axis[T]])
+    with RunOnApplicationThread {
 
   override def getScalaClassInstance = new Axis[T](getJavaClassInstance) {}
 

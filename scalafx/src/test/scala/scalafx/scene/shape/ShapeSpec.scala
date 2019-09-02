@@ -33,12 +33,11 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Shape Spec tests.
- *
- *
- */
-class ShapeSpec
-  extends SimpleSFXDelegateSpec[jfxss.Shape, Shape](classOf[jfxss.Shape], classOf[Shape]) {
+  * Shape Spec tests.
+  *
+  *
+  */
+class ShapeSpec extends SimpleSFXDelegateSpec[jfxss.Shape, Shape](classOf[jfxss.Shape], classOf[Shape]) {
 
   override protected def getScalaClassInstance = new Rectangle
 

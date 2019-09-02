@@ -34,98 +34,99 @@ import scalafx.beans.property.{ReadOnlyIntegerProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
 
 object SelectionModel {
-  implicit def sfxSelectionModel2jfx[T](v: SelectionModel[T]): jfxsc.SelectionModel[T] = if (v != null) v.delegate else null
+  implicit def sfxSelectionModel2jfx[T](v: SelectionModel[T]): jfxsc.SelectionModel[T] =
+    if (v != null) v.delegate else null
 }
 
 abstract class SelectionModel[T](override val delegate: jfxsc.SelectionModel[T])
-  extends SFXDelegate[jfxsc.SelectionModel[T]] {
+    extends SFXDelegate[jfxsc.SelectionModel[T]] {
 
   /**
-   * Refers to the selected index property, which is used to indicate the
-   * currently selected index value in the selection model.
-   */
+    * Refers to the selected index property, which is used to indicate the
+    * currently selected index value in the selection model.
+    */
   def selectedIndex: ReadOnlyIntegerProperty = delegate.selectedIndexProperty
 
   /**
-   * Refers to the selected item property, which is used to indicate the
-   * currently selected item in the selection model.
-   */
+    * Refers to the selected item property, which is used to indicate the
+    * currently selected item in the selection model.
+    */
   def selectedItem: ReadOnlyObjectProperty[T] =
     new ReadOnlyObjectProperty[T](delegate.selectedItemProperty)
 
   /**
-   * A method that clears any selection prior to setting the selection to the
-   * given index.
-   */
+    * A method that clears any selection prior to setting the selection to the
+    * given index.
+    */
   def clearAndSelect(index: Int) {
     delegate.clearAndSelect(index)
   }
 
   /**
-   * Clears the selection model of all selected indices.
-   */
+    * Clears the selection model of all selected indices.
+    */
   def clearSelection() {
     delegate.clearSelection()
   }
 
   /**
-   * This method will clear the selection of the item in the given index.
-   */
+    * This method will clear the selection of the item in the given index.
+    */
   def clearSelection(index: Int) {
     delegate.clearSelection(index)
   }
 
   /**
-   * This method is available to test whether there are any selected
-   * indices/items.
-   */
+    * This method is available to test whether there are any selected
+    * indices/items.
+    */
   def isEmpty: Boolean = delegate.isEmpty
 
   /**
-   * Convenience method to inform if the given index is currently selected in this SelectionModel.
-   */
+    * Convenience method to inform if the given index is currently selected in this SelectionModel.
+    */
   def isSelected(index: Int): Boolean = delegate.isSelected(index)
 
   /**
-   * This will select the given index in the selection model, assuming the
-   * index is within the valid range (i.e.
-   */
+    * This will select the given index in the selection model, assuming the
+    * index is within the valid range (i.e.
+    */
   def select(index: Int) {
     delegate.select(index)
   }
 
   /**
-   * This method will attempt to select the index that contains the given object.
-   */
+    * This method will attempt to select the index that contains the given object.
+    */
   def select(obj: T) {
     delegate.select(obj)
   }
 
   /**
-   * This method will attempt to select the first index in the control.
-   */
+    * This method will attempt to select the first index in the control.
+    */
   def selectFirst() {
     delegate.selectFirst()
   }
 
   /**
-   * This method will attempt to select the last index in the control.
-   */
+    * This method will attempt to select the last index in the control.
+    */
   def selectLast() {
     delegate.selectLast()
   }
 
   /**
-   * This method will attempt to select the index directly after the current
-   * focused index.
-   */
+    * This method will attempt to select the index directly after the current
+    * focused index.
+    */
   def selectNext() {
     delegate.selectNext()
   }
 
   /**
-   * This method will attempt to select the index directly before the current focused index.
-   */
+    * This method will attempt to select the index directly before the current focused index.
+    */
   def selectPrevious() {
     delegate.selectPrevious()
   }

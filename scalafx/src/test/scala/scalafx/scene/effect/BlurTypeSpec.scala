@@ -32,9 +32,10 @@ import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Tests for [[scalafx.scene.effect.BlurType]]. */
-class BlurTypeSpec extends SFXEnumDelegateSpec[jfxse.BlurType, BlurType](
-  javaClass = classOf[jfxse.BlurType],
-  scalaClass = classOf[BlurType],
-  companion = BlurType)
+class BlurTypeSpec
+    extends SFXEnumDelegateSpec[jfxse.BlurType, BlurType](
+      javaClass = classOf[jfxse.BlurType],
+      scalaClass = classOf[BlurType],
+      companion = BlurType
+    )

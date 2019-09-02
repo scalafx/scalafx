@@ -182,7 +182,9 @@ class Clipboard(override val delegate: jfxsi.Clipboard) extends SFXDelegate[jfxs
     * Return a ```copy``` of the clipboard content.
     */
   def content: ClipboardContent = {
-    val v = contentTypes.map { df => new DataFormat(df) -> delegate.getContent(df) }
+    val v = contentTypes.map { df =>
+      new DataFormat(df) -> delegate.getContent(df)
+    }
     ClipboardContent(v.toSeq: _*)
   }
 

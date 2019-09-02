@@ -46,7 +46,6 @@ import scalafx.scene.paint.Color
 import scalafx.scene.text.TextAlignment
 import scalafx.util.StringConverter
 
-
 object ColorSelector extends JFXApp {
 
   // VAL'S DEFINITION - BEGIN
@@ -74,19 +73,19 @@ object ColorSelector extends JFXApp {
   private def changeColor() {
     val newAlphaValue = if (controlAlpha.disabled.value) 1.0 else (controlAlpha.value.toDouble / colorselector.Max)
 
-    this.currentColor() = Color.rgb(controlRed.value.toInt, controlGreen.value.toInt,
-      controlBlue.value.toInt, newAlphaValue)
+    this.currentColor() =
+      Color.rgb(controlRed.value.toInt, controlGreen.value.toInt, controlBlue.value.toInt, newAlphaValue)
   }
 
   private def synchronizeValues(buffer: ObservableBuffer[SliderControl], changes: Seq[Change[SliderControl]]) {
     changes.head match {
-      case Add(pos, added)      =>
+      case Add(pos, added) =>
         val media = buffer.map(_.value.value).sum / buffer.size
         added.last.value <==> synchronizedValue
         buffer.foreach(_.value = media)
       case Remove(pos, removed) =>
         removed.last.value unbind synchronizedValue
-      case _@otherChange        =>
+      case _ @otherChange =>
         throw new UnsupportedOperationException("Only add and remove defined for the ColorSelector SliderControl sync")
     }
   }
@@ -109,7 +108,8 @@ object ColorSelector extends JFXApp {
   }
 
   private def formatColor() {
-    this.txfColorValue.text() = this.cmbColorFormat.value.value.format(this.currentColor(), !this.chbDisableAlpha.selected.value)
+    this.txfColorValue.text() =
+      this.cmbColorFormat.value.value.format(this.currentColor(), !this.chbDisableAlpha.selected.value)
   }
 
   private def getForegroundColor(d: Double) = if (d > Max / 2) Color.Black else Color.White
@@ -140,7 +140,10 @@ object ColorSelector extends JFXApp {
     }
   }
 
-  currentColor.onChange(rectangleRegion.setStyle("-fx-background-color: " + RgbFormatter.format(currentColor(), !this.chbDisableAlpha.selected.value)))
+  currentColor.onChange(
+    rectangleRegion
+      .setStyle("-fx-background-color: " + RgbFormatter.format(currentColor(), !this.chbDisableAlpha.selected.value))
+  )
 
   val controlRed = new SliderControl("R") {
     value = 255
@@ -157,10 +160,14 @@ object ColorSelector extends JFXApp {
   }
   controlGreen.value.onChange({
     changeColor()
-    controlGreen.changeColor(Color.rgb(0, controlGreen.value.value.toInt, 0), getForegroundColor(controlGreen.value.value))
+    controlGreen
+      .changeColor(Color.rgb(0, controlGreen.value.value.toInt, 0), getForegroundColor(controlGreen.value.value))
   })
   controlGreen.selectedControl.onChange(controlSelected(controlGreen))
-  controlGreen.changeColor(Color.rgb(0, controlGreen.value.value.toInt, 0), getForegroundColor(controlGreen.value.value))
+  controlGreen.changeColor(
+    Color.rgb(0, controlGreen.value.value.toInt, 0),
+    getForegroundColor(controlGreen.value.value)
+  )
 
   val controlBlue = new SliderControl("B") {
     value = 255
@@ -239,8 +246,8 @@ object ColorSelector extends JFXApp {
   val pnlMain = new GridPane {
     hgap = 5.0
     vgap = 5.0
-    rowConstraints = List(rectangleRowsConstraint, otherRowsConstraint, otherRowsConstraint,
-      otherRowsConstraint, otherRowsConstraint)
+    rowConstraints =
+      List(rectangleRowsConstraint, otherRowsConstraint, otherRowsConstraint, otherRowsConstraint, otherRowsConstraint)
     columnConstraints = List(column0Constraint, column1Constraint)
     padding = colorselector.insets
 

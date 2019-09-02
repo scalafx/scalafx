@@ -39,25 +39,25 @@ object Skin {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Skinnable.html javafx.scene.control.Skinnable]] interface.
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Skinnable.html javafx.scene.control.Skinnable]] interface.
+  */
 trait Skin[C <: jfxsc.Skinnable] extends SFXDelegate[jfxsc.Skin[C]] {
 
   /**
-   * Called by a Skinnable when the Skin is replaced on the Skinnable.
-   */
+    * Called by a Skinnable when the Skin is replaced on the Skinnable.
+    */
   def dispose() {
     delegate.dispose()
   }
 
   /**
-   * Gets the Node which represents this Skin.
-   */
+    * Gets the Node which represents this Skin.
+    */
   def node: Node = delegate.getNode
 
   /**
-   * Gets the Skinnable to which this Skin is assigned.
-   */
+    * Gets the Skinnable to which this Skin is assigned.
+    */
   def skinnable: C = delegate.getSkinnable
 
 }

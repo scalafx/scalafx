@@ -32,12 +32,12 @@ import scalafx.Includes._
 import scalafx.testutil.{AlignmentDelegateSpec, RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * Labeled Spec tests.
- */
+  * Labeled Spec tests.
+  */
 class LabeledSpec
-  extends SimpleSFXDelegateSpec[jfxsc.Labeled, Labeled](classOf[jfxsc.Labeled], classOf[Labeled])
-  with AlignmentDelegateSpec[jfxsc.Labeled, Labeled]
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.Labeled, Labeled](classOf[jfxsc.Labeled], classOf[Labeled])
+    with AlignmentDelegateSpec[jfxsc.Labeled, Labeled]
+    with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new Labeled(new Label) {}
 

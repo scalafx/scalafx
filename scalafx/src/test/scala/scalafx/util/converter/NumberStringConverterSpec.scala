@@ -31,14 +31,18 @@ import javafx.util.{converter => jfxuc}
 import scalafx.Includes._
 
 /**
- * NumberStringConverter Spec tests.
- *
- *
- */
+  * NumberStringConverter Spec tests.
+  *
+  *
+  */
 class NumberStringConverterSpec
-  extends AbstractStringConverterDelegateSpec[Number, jfxuc.NumberStringConverter, Number, NumberStringConverter](classOf[jfxuc.NumberStringConverter], classOf[NumberStringConverter], classOf[Number]) {
+    extends AbstractStringConverterDelegateSpec[Number, jfxuc.NumberStringConverter, Number, NumberStringConverter](
+      classOf[jfxuc.NumberStringConverter],
+      classOf[NumberStringConverter],
+      classOf[Number]
+    ) {
 
-  val examples = List((new java.lang.Integer(10), "10"), (new java.lang.Integer(0), "0"),
-    (new java.lang.Integer(-10), "-10"))
+  val examples =
+    List((new java.lang.Integer(10), "10"), (new java.lang.Integer(0), "0"), (new java.lang.Integer(-10), "-10"))
 
 }

@@ -32,10 +32,12 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * SequentialTransition Spec tests.
- *
- *
- */
+  * SequentialTransition Spec tests.
+  *
+  *
+  */
 class SequentialTransitionSpec
-  extends SimpleSFXDelegateSpec[jfxa.SequentialTransition, SequentialTransition](
-    classOf[jfxa.SequentialTransition], classOf[SequentialTransition])
+    extends SimpleSFXDelegateSpec[jfxa.SequentialTransition, SequentialTransition](
+      classOf[jfxa.SequentialTransition],
+      classOf[SequentialTransition]
+    )

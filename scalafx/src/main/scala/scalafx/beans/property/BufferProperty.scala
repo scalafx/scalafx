@@ -34,8 +34,8 @@ import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
 
-
 object BufferProperty {
+
   /**
     * Converts a ScalaFX BufferProperty to its JavaFX counterpart ListProperty.
     *
@@ -80,8 +80,7 @@ object BufferProperty {
     */
   def apply[E <: Any](items: Seq[E]): BufferProperty[E] = {
     import scala.collection.JavaConverters._
-    new BufferProperty[E](
-      new jfxbp.SimpleListProperty(jfxc.FXCollections.observableArrayList[E](items.asJava)))
+    new BufferProperty[E](new jfxbp.SimpleListProperty(jfxc.FXCollections.observableArrayList[E](items.asJava)))
   }
 
   /**
@@ -98,10 +97,11 @@ object BufferProperty {
       new jfxbp.SimpleListProperty(
         bean,
         name,
-        jfxc.FXCollections.observableArrayList[E](seqAsJavaListConverter(items).asJava)))
+        jfxc.FXCollections.observableArrayList[E](seqAsJavaListConverter(items).asJava)
+      )
+    )
   }
 }
-
 
 /**
   * Wraps a $JFX [[ $URL0 ListProperty]].
@@ -111,7 +111,7 @@ object BufferProperty {
   * @define JFX  JavaFX
   */
 class BufferProperty[E <: Any](override val delegate: jfxbp.ListProperty[E] = new jfxbp.SimpleListProperty[E])
-  extends ReadOnlyBufferProperty[E](delegate)
+    extends ReadOnlyBufferProperty[E](delegate)
     with Property[ObservableBuffer[E], jfxc.ObservableList[E]]
     with SFXDelegate[jfxbp.ListProperty[E]] {
 
@@ -149,9 +149,11 @@ class BufferProperty[E <: Any](override val delegate: jfxbp.ListProperty[E] = ne
     * @return new BufferProperty from items
     */
   def this(items: Seq[E]) = {
-    this(new jfxbp.SimpleListProperty(
-      jfxc.FXCollections.observableArrayList[E](
-        scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava)))
+    this(
+      new jfxbp.SimpleListProperty(
+        jfxc.FXCollections.observableArrayList[E](scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava)
+      )
+    )
   }
 
   /**
@@ -163,11 +165,13 @@ class BufferProperty[E <: Any](override val delegate: jfxbp.ListProperty[E] = ne
     * @return new BufferProperty from items
     */
   def this(bean: Any, name: String, items: Seq[E]) = {
-    this(new jfxbp.SimpleListProperty(
-      bean,
-      name,
-      jfxc.FXCollections.observableArrayList[E](
-        scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava)))
+    this(
+      new jfxbp.SimpleListProperty(
+        bean,
+        name,
+        jfxc.FXCollections.observableArrayList[E](scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava)
+      )
+    )
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,8 +41,8 @@ object PointLight {
   * in all directions away from itself.
   */
 class PointLight(override val delegate: jfxs.PointLight = new jfxs.PointLight())
-  extends LightBase(delegate)
-  with SFXDelegate[jfxs.PointLight] {
+    extends LightBase(delegate)
+    with SFXDelegate[jfxs.PointLight] {
 
   /** Creates a new instance of `PointLight` class using the specified color. */
   def this(color: Color) {

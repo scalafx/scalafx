@@ -32,10 +32,12 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * TranslateTransition Spec tests.
- *
- *
- */
+  * TranslateTransition Spec tests.
+  *
+  *
+  */
 class TranslateTransitionSpec
-  extends SimpleSFXDelegateSpec[jfxa.TranslateTransition, TranslateTransition](
-    classOf[jfxa.TranslateTransition], classOf[TranslateTransition])
+    extends SimpleSFXDelegateSpec[jfxa.TranslateTransition, TranslateTransition](
+      classOf[jfxa.TranslateTransition],
+      classOf[TranslateTransition]
+    )

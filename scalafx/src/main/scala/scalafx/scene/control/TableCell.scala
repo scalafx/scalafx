@@ -34,28 +34,29 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object TableCell {
-  implicit def sfxTableCell2jfx[S, T](tc: TableCell[S, T]): jfxsc.TableCell[S, T] = if (tc != null) tc.delegate else null
+  implicit def sfxTableCell2jfx[S, T](tc: TableCell[S, T]): jfxsc.TableCell[S, T] =
+    if (tc != null) tc.delegate else null
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableCell.html]].
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableCell.html]].
+  */
 class TableCell[S, T](override val delegate: jfxsc.TableCell[S, T] = new jfxsc.TableCell[S, T]())
-  extends IndexedCell[T]
-  with SFXDelegate[jfxsc.TableCell[S, T]] {
+    extends IndexedCell[T]
+    with SFXDelegate[jfxsc.TableCell[S, T]] {
 
   /**
-   * The TableColumn instance that backs this TableCell.
-   */
+    * The TableColumn instance that backs this TableCell.
+    */
   def tableColumn: ReadOnlyObjectProperty[jfxsc.TableColumn[S, T]] = delegate.tableColumnProperty
 
   /**
-   * The TableRow that this TableCell currently finds itself placed within.
-   */
+    * The TableRow that this TableCell currently finds itself placed within.
+    */
   def tableRow: ReadOnlyObjectProperty[jfxsc.TableRow[S]] = delegate.tableRowProperty
 
   /**
-   * The TableView associated with this TableCell.
-   */
+    * The TableView associated with this TableCell.
+    */
   def tableView: ReadOnlyObjectProperty[jfxsc.TableView[S]] = delegate.tableViewProperty
 }

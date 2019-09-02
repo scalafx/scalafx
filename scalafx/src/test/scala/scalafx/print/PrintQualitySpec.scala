@@ -32,7 +32,9 @@ import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.print.PrintQuality]]. */
-class PrintQualitySpec extends SFXEnumDelegateSpec[jfxp.PrintQuality, PrintQuality](
-  javaClass = classOf[jfxp.PrintQuality],
-  scalaClass = classOf[PrintQuality],
-  companion = PrintQuality)
+class PrintQualitySpec
+    extends SFXEnumDelegateSpec[jfxp.PrintQuality, PrintQuality](
+      javaClass = classOf[jfxp.PrintQuality],
+      scalaClass = classOf[PrintQuality],
+      companion = PrintQuality
+    )

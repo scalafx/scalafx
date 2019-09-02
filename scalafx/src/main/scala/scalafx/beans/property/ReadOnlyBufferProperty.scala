@@ -37,6 +37,7 @@ import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 object ReadOnlyBufferProperty {
+
   /**
     * Converts a ScalaFX ReadOnlyBufferProperty to its JavaFX counterpart ReadOnlyListProperty.
     *
@@ -56,10 +57,9 @@ object ReadOnlyBufferProperty {
   * @define ORIGINALDOC Original Documentation]].
   **/
 class ReadOnlyBufferProperty[E <: Any](override val delegate: jfxbp.ReadOnlyListProperty[E])
-  extends BufferExpression[E](delegate)
+    extends BufferExpression[E](delegate)
     with ReadOnlyProperty[ObservableBuffer[E], jfxc.ObservableList[E]]
     with SFXDelegate[jfxbp.ReadOnlyListProperty[E]] {
-
 
   override def value: ObservableBuffer[E] = delegate.get()
 
@@ -102,5 +102,6 @@ class ReadOnlyBufferProperty[E <: Any](override val delegate: jfxbp.ReadOnlyList
     *
     * @param sfx the SFXDelegate object to which the binding should be removed
     */
-  def unbindContentBidirectional[T <: Object](sfx: SFXDelegate[T]): Unit = delegate.unbindContentBidirectional(sfx.delegate)
+  def unbindContentBidirectional[T <: Object](sfx: SFXDelegate[T]): Unit =
+    delegate.unbindContentBidirectional(sfx.delegate)
 }

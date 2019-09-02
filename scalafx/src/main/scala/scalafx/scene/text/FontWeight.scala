@@ -71,7 +71,15 @@ object FontWeight extends SFXEnumDelegateCompanion[jfxst.FontWeight, FontWeight]
   val BLACK = Black
 
   protected override def unsortedValues: Array[FontWeight] = Array(
-    Thin, ExtraLight, Light, Normal, Medium, SemiBold, Bold, ExtraBold, Black
+    Thin,
+    ExtraLight,
+    Light,
+    Normal,
+    Medium,
+    SemiBold,
+    Bold,
+    ExtraBold,
+    Black
   )
 
   /** Returns FontWeight by its name. */
@@ -83,9 +91,7 @@ object FontWeight extends SFXEnumDelegateCompanion[jfxst.FontWeight, FontWeight]
   def findByWeight(weight: Int): FontWeight = jfxst.FontWeight.findByWeight(weight)
 }
 
-
-sealed abstract class FontWeight(override val delegate: jfxst.FontWeight)
-  extends SFXEnumDelegate[jfxst.FontWeight] {
+sealed abstract class FontWeight(override val delegate: jfxst.FontWeight) extends SFXEnumDelegate[jfxst.FontWeight] {
 
   /** Return the visual weight (degree of blackness or thickness) specified by this FontWeight.  */
   def weight = delegate.getWeight

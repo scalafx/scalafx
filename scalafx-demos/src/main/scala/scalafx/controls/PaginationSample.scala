@@ -34,8 +34,8 @@ import scalafx.scene.control.{Hyperlink, Label, Pagination}
 import scalafx.scene.layout.{AnchorPane, VBox}
 
 /**
- * Demo application based on Pagination example at [[http://docs.oracle.com/javafx/2/ui_controls/pagination.htm]].
- */
+  * Demo application based on Pagination example at [[http://docs.oracle.com/javafx/2/ui_controls/pagination.htm]].
+  */
 object PaginationSample extends JFXApp {
 
   private val itemsPerPage = 8
@@ -48,8 +48,7 @@ object PaginationSample extends JFXApp {
         visited = true
       }
       new VBox {
-        children = List(link,
-          new Label( """|Search results
+        children = List(link, new Label("""|Search results
                        |for %s""".stripMargin.format(link.text.value)))
       }
     }

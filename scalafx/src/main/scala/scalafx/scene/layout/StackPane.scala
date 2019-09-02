@@ -41,32 +41,32 @@ object StackPane {
   implicit def sfxStackPane2jfx(v: StackPane): jfxsl.StackPane = if (v != null) v.delegate else null
 
   /**
-   * Removes all hbox constraints from the child node.
-   */
+    * Removes all hbox constraints from the child node.
+    */
   def clearConstraints(child: jfxs.Node) {
     jfxsl.StackPane.clearConstraints(child)
   }
 
   /**
-   * Returns the child's alignment constraint if set.
-   */
+    * Returns the child's alignment constraint if set.
+    */
   def getAlignment(child: Node) = jfxsl.StackPane.getAlignment(child)
 
   /**
-   * Sets the alignment for the child when contained by a stackpane.
-   */
+    * Sets the alignment for the child when contained by a stackpane.
+    */
   def setAlignment(child: Node, value: Pos) {
     jfxsl.StackPane.setAlignment(child, value)
   }
 
   /**
-   * Returns the child's margin constraint if set.
-   */
+    * Returns the child's margin constraint if set.
+    */
   def getMargin(child: Node) = jfxsl.StackPane.getMargin(child)
 
   /**
-   * Sets the margin for the child when contained by an hbox.
-   */
+    * Sets the margin for the child when contained by an hbox.
+    */
   def setMargin(child: Node, value: Insets) {
     jfxsl.StackPane.setMargin(child, value)
   }
@@ -74,9 +74,9 @@ object StackPane {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/StackPane.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/StackPane.html]]
+  */
 class StackPane(override val delegate: jfxsl.StackPane = new jfxsl.StackPane)
-  extends Pane(delegate)
-  with AlignmentDelegate[jfxsl.StackPane]
-  with SFXDelegate[jfxsl.StackPane]
+    extends Pane(delegate)
+    with AlignmentDelegate[jfxsl.StackPane]
+    with SFXDelegate[jfxsl.StackPane]

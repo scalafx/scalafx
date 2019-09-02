@@ -37,59 +37,61 @@ import scalafx.scene.control.Alert.AlertType
 import scala.language.implicitConversions
 
 object Alert {
+
   /**
-   * Converts a ScalaFX Alert to its JavaFX counterpart.
-   *
-   * @param v ScalaFX Alert
-   * @return JavaFX Alert
-   */
+    * Converts a ScalaFX Alert to its JavaFX counterpart.
+    *
+    * @param v ScalaFX Alert
+    * @return JavaFX Alert
+    */
   implicit def sfxAlert2jfx(v: Alert): jfxsc.Alert =
     if (v != null) v.delegate else null
 
   /**
-   * An enumeration containing the available, pre-built alert types that
-   * the `Alert` class can use to pre-populate various properties.
-   */
+    * An enumeration containing the available, pre-built alert types that
+    * the `Alert` class can use to pre-populate various properties.
+    */
   object AlertType extends SFXEnumDelegateCompanion[jfxsc.Alert.AlertType, AlertType] {
+
     /**
-     * The `None` alert type has the effect of not setting any default properties
-     * in the Alert.
-     */
+      * The `None` alert type has the effect of not setting any default properties
+      * in the Alert.
+      */
     case object None extends AlertType(jfxsc.Alert.AlertType.NONE)
 
     /**
-     * The `INFORMATION` alert type configures the Alert dialog to appear in a
-     * way that suggests the content of the dialog is informing the user of
-     * a piece of information. This includes an 'information' image, an
-     * appropriate title and header, and just an OK button for the user to
-     * click on to dismiss the dialog.
-     */
+      * The `INFORMATION` alert type configures the Alert dialog to appear in a
+      * way that suggests the content of the dialog is informing the user of
+      * a piece of information. This includes an 'information' image, an
+      * appropriate title and header, and just an OK button for the user to
+      * click on to dismiss the dialog.
+      */
     case object Information extends AlertType(jfxsc.Alert.AlertType.INFORMATION)
 
     /**
-     * The `Warning` alert type configures the Alert dialog to appear in a
-     * way that suggests the content of the dialog is warning the user about
-     * some fact or action. This includes a 'warning' image, an
-     * appropriate title and header, and just an OK button for the user to
-     * click on to dismiss the dialog.
-     */
+      * The `Warning` alert type configures the Alert dialog to appear in a
+      * way that suggests the content of the dialog is warning the user about
+      * some fact or action. This includes a 'warning' image, an
+      * appropriate title and header, and just an OK button for the user to
+      * click on to dismiss the dialog.
+      */
     case object Warning extends AlertType(jfxsc.Alert.AlertType.WARNING)
 
     /**
-     * The `Confirmation` alert type configures the Alert dialog to appear in a
-     * way that suggests the content of the dialog is seeking confirmation from
-     * the user. This includes a 'confirmation' image, an
-     * appropriate title and header, and both OK and Cancel buttons for the
-     * user to click on to dismiss the dialog.
-     */
+      * The `Confirmation` alert type configures the Alert dialog to appear in a
+      * way that suggests the content of the dialog is seeking confirmation from
+      * the user. This includes a 'confirmation' image, an
+      * appropriate title and header, and both OK and Cancel buttons for the
+      * user to click on to dismiss the dialog.
+      */
     case object Confirmation extends AlertType(jfxsc.Alert.AlertType.CONFIRMATION)
 
     /**
-     * The `Error` alert type configures the Alert dialog to appear in a
-     * way that suggests that something has gone wrong. This includes an
-     * 'error' image, an appropriate title and header, and just an OK button
-     * for the user to click on to dismiss the dialog.
-     */
+      * The `Error` alert type configures the Alert dialog to appear in a
+      * way that suggests that something has gone wrong. This includes an
+      * 'error' image, an appropriate title and header, and just an OK button
+      * for the user to click on to dismiss the dialog.
+      */
     case object Error extends AlertType(jfxsc.Alert.AlertType.ERROR)
 
     /** Contain constants which will be source for `values` List  */
@@ -97,105 +99,105 @@ object Alert {
   }
 
   sealed abstract class AlertType(override val delegate: jfxsc.Alert.AlertType)
-    extends SFXEnumDelegate[jfxsc.Alert.AlertType]
+      extends SFXEnumDelegate[jfxsc.Alert.AlertType]
 
 }
 
 /**
- * The Alert class subclasses the `Dialog` class, and provides support for a number
- * of pre-built dialog types that can be easily shown to users to prompt for a
- * response.
- *
- * Wraps a $JFX $URL0 $TC]].
- *
- * Example of displaying an information dialog:
- * {{{
- *   new Alert(AlertType.Information) {
+  * The Alert class subclasses the `Dialog` class, and provides support for a number
+  * of pre-built dialog types that can be easily shown to users to prompt for a
+  * response.
+  *
+  * Wraps a $JFX $URL0 $TC]].
+  *
+  * Example of displaying an information dialog:
+  * {{{
+  *   new Alert(AlertType.Information) {
        title = "Information Dialog"
        headerText = "Look, an Information Dialog"
        contentText = "I have a great message for you!"
      }.showAndWait()
- * }}}
- *
- * A bit more elaborated example that is using a custom buttons:
- *
- * {{{
- *  val One = new ButtonType("One")
- *  val Two = new ButtonType("Two")
- *  val Three = new ButtonType("Three")
- *
- *  val alert = new Alert(AlertType.Confirmation) {
- *    title = "Confirmation Dialog with Custom Actions"
- *    headerText = "Look, a Confirmation Dialog with Custom Actions"
- *    contentText = "Choose your option."
- *    buttonTypes = Seq(One, Two, Three, ButtonType.Cancel)
- *  }
- *
- *  val result = alert.showAndWait()
- *  result match {
- *    case Some(One)   => println("... user chose \"One\"")
- *    case Some(Two)   => println("... user chose \"Two\"")
- *    case Some(Three) => println("... user chose \"Three\"")
- *    case _           => println("... user chose CANCEL or closed the dialog")
- *  }
- * }}}
- *
- * @define TC Alert
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene.control/Alert.html
- * @define JFX JavaFX
- * @define ORIGINALDOC Original Documentation]].
- */
+  * }}}
+  *
+  * A bit more elaborated example that is using a custom buttons:
+  *
+  * {{{
+  *  val One = new ButtonType("One")
+  *  val Two = new ButtonType("Two")
+  *  val Three = new ButtonType("Three")
+  *
+  *  val alert = new Alert(AlertType.Confirmation) {
+  *    title = "Confirmation Dialog with Custom Actions"
+  *    headerText = "Look, a Confirmation Dialog with Custom Actions"
+  *    contentText = "Choose your option."
+  *    buttonTypes = Seq(One, Two, Three, ButtonType.Cancel)
+  *  }
+  *
+  *  val result = alert.showAndWait()
+  *  result match {
+  *    case Some(One)   => println("... user chose \"One\"")
+  *    case Some(Two)   => println("... user chose \"Two\"")
+  *    case Some(Three) => println("... user chose \"Three\"")
+  *    case _           => println("... user chose CANCEL or closed the dialog")
+  *  }
+  * }}}
+  *
+  * @define TC Alert
+  * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene.control/Alert.html
+  * @define JFX JavaFX
+  * @define ORIGINALDOC Original Documentation]].
+  */
 class Alert(override val delegate: jfxsc.Alert)
-  extends Dialog[jfxsc.ButtonType](delegate)
-  with SFXDelegate[jfxsc.Alert] {
+    extends Dialog[jfxsc.ButtonType](delegate)
+    with SFXDelegate[jfxsc.Alert] {
 
   /**
-   * Creates an alert with the given AlertType (refer to the `AlertType`
-   * documentation for clarification over which one is most appropriate).
-   *
-   * By passing in an AlertType, default values for the
-   * `title` property, `headerText` property, `graphic` property properties are set. Once the Alert
-   * is instantiated, developers are able to modify the values of the alert as
-   * desired.
-   */
+    * Creates an alert with the given AlertType (refer to the `AlertType`
+    * documentation for clarification over which one is most appropriate).
+    *
+    * By passing in an AlertType, default values for the
+    * `title` property, `headerText` property, `graphic` property properties are set. Once the Alert
+    * is instantiated, developers are able to modify the values of the alert as
+    * desired.
+    */
   def this(alertType: AlertType) = this(new jfxsc.Alert(alertType))
 
   /**
-   * Creates an alert with the given contentText, ButtonTypes, and AlertType
-   * (refer to the `AlertType` documentation for clarification over which
-   * one is most appropriate).
-   *
-   * By passing in a variable number of ButtonType arguments, the developer
-   * is directly overriding the default buttons that will be displayed in the
-   * dialog, replacing the pre-defined buttons with whatever is specified in the
-   * varargs array.
-   *
-   * By passing in an AlertType, default values for the
-   * `title` property, `headerText` property, `graphic` property properties are set. Once the Alert
-   * is instantiated, developers are able to modify the values of the alert as
-   * desired.
-   */
+    * Creates an alert with the given contentText, ButtonTypes, and AlertType
+    * (refer to the `AlertType` documentation for clarification over which
+    * one is most appropriate).
+    *
+    * By passing in a variable number of ButtonType arguments, the developer
+    * is directly overriding the default buttons that will be displayed in the
+    * dialog, replacing the pre-defined buttons with whatever is specified in the
+    * varargs array.
+    *
+    * By passing in an AlertType, default values for the
+    * `title` property, `headerText` property, `graphic` property properties are set. Once the Alert
+    * is instantiated, developers are able to modify the values of the alert as
+    * desired.
+    */
   def this(alertType: AlertType, contentText: String, buttons: ButtonType*) =
     this(new jfxsc.Alert(alertType, contentText, buttons.map(_.delegate): _*))
 
   /**
-   * Shows the dialog and waits for the user response (in other words, brings
-   * up a blocking dialog, with the returned value the users input).
-   *
-   * {{{
-   *   dialog.showAndWait()
-   * }}}
-   * Or when return value is required:
-   * {{{
-   *   val r = dialog.showAndWait()
-   *   r match {
-   *     case Some(v) => ...
-   *     case None    => ...
-   *   }
-   * }}}
-   *
-   * @return An `Option` that contains the `result`.
-   */
+    * Shows the dialog and waits for the user response (in other words, brings
+    * up a blocking dialog, with the returned value the users input).
+    *
+    * {{{
+    *   dialog.showAndWait()
+    * }}}
+    * Or when return value is required:
+    * {{{
+    *   val r = dialog.showAndWait()
+    *   r match {
+    *     case Some(v) => ...
+    *     case None    => ...
+    *   }
+    * }}}
+    *
+    * @return An `Option` that contains the `result`.
+    */
   def showAndWait(): Option[ButtonType] = {
     super.showAndWait((x: jfxsc.ButtonType) => new ButtonType(x)).asInstanceOf[Option[ButtonType]]
   }
@@ -205,11 +207,10 @@ class Alert(override val delegate: jfxsc.Alert)
     alertType() = v
   }
 
-
   /**
-   * Returns an `ObservableBuffer` of all `ButtonType` instances that
-   * are currently set inside this Alert instance.
-   */
+    * Returns an `ObservableBuffer` of all `ButtonType` instances that
+    * are currently set inside this Alert instance.
+    */
   def buttonTypes: ObservableBuffer[jfxsc.ButtonType] = delegate.getButtonTypes
   def buttonTypes_=(types: Iterable[ButtonType]): Unit = {
     buttonTypes.clear()

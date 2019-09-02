@@ -38,18 +38,18 @@ object Glow {
 }
 
 class Glow(override val delegate: jfxse.Glow = new jfxse.Glow)
-  extends Effect(delegate)
-  with InputDelegate[jfxse.Glow]
-  with SFXDelegate[jfxse.Glow] {
+    extends Effect(delegate)
+    with InputDelegate[jfxse.Glow]
+    with SFXDelegate[jfxse.Glow] {
 
   /**
-   * Creates a new instance of Glow with specified level.
-   */
+    * Creates a new instance of Glow with specified level.
+    */
   def this(level: Double) = this(new jfxse.Glow(level))
 
   /**
-   * The level value, which controls the intensity of the glow effect.
-   */
+    * The level value, which controls the intensity of the glow effect.
+    */
   def level: DoubleProperty = delegate.levelProperty
   def level_=(v: Double) {
     level() = v

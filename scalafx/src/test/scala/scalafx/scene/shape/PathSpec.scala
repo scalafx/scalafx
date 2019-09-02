@@ -33,9 +33,8 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Path Spec tests.
- *
- *
- */
-class PathSpec
-  extends SimpleSFXDelegateSpec[jfxss.Path, Path](classOf[jfxss.Path], classOf[Path])
+  * Path Spec tests.
+  *
+  *
+  */
+class PathSpec extends SimpleSFXDelegateSpec[jfxss.Path, Path](classOf[jfxss.Path], classOf[Path])

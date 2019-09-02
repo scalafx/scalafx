@@ -32,13 +32,13 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * ValueAxis Spec tests.
- *
- *
- */
+  * ValueAxis Spec tests.
+  *
+  *
+  */
 class ValueAxisSpec[T <: Number]
-  extends SimpleSFXDelegateSpec[jfxsc.ValueAxis[T], ValueAxis[T]](classOf[jfxsc.ValueAxis[T]], classOf[ValueAxis[T]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.ValueAxis[T], ValueAxis[T]](classOf[jfxsc.ValueAxis[T]], classOf[ValueAxis[T]])
+    with RunOnApplicationThread {
 
   override def getScalaClassInstance = new ValueAxis[T](getJavaClassInstance) {}
 

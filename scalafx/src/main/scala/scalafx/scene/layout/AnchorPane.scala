@@ -38,69 +38,69 @@ object AnchorPane {
   implicit def sfxAnchorPane2jfx(ap: AnchorPane): jfxsl.AnchorPane = if (ap != null) ap.delegate else null
 
   /**
-   * Removes all anchorpane constraints from the child node.
-   */
+    * Removes all anchorpane constraints from the child node.
+    */
   def clearConstraints(child: javafx.scene.Node) {
     jfxsl.AnchorPane.clearConstraints(child)
   }
 
   /**
-   * Returns the child's bottom anchor constraint if set.
-   */
+    * Returns the child's bottom anchor constraint if set.
+    */
   def getBottomAnchor(child: Node) = jfxsl.AnchorPane.getBottomAnchor(child)
 
   /**
-   * Returns the child's left anchor constraint if set.
-   */
+    * Returns the child's left anchor constraint if set.
+    */
   def getLeftAnchor(child: Node) = jfxsl.AnchorPane.getLeftAnchor(child)
 
   /**
-   * Returns the child's right anchor constraint if set.
-   */
+    * Returns the child's right anchor constraint if set.
+    */
   def getRightAnchor(child: Node) = jfxsl.AnchorPane.getRightAnchor(child)
 
   /**
-   * Returns the child's top anchor constraint if set.
-   */
+    * Returns the child's top anchor constraint if set.
+    */
   def getTopAnchor(child: Node) = jfxsl.AnchorPane.getTopAnchor(child)
 
   /**
-   * Sets the bottom anchor for the child when contained by an anchorpane.
-   */
+    * Sets the bottom anchor for the child when contained by an anchorpane.
+    */
   def setBottomAnchor(child: Node, value: Double) {
     jfxsl.AnchorPane.setBottomAnchor(child, value)
   }
 
   /**
-   * Sets the left anchor for the child when contained by an anchorpane.
-   */
+    * Sets the left anchor for the child when contained by an anchorpane.
+    */
   def setLeftAnchor(child: Node, value: Double) {
     jfxsl.AnchorPane.setLeftAnchor(child, value)
   }
 
   /**
-   * Sets the bottom anchor for the child when contained by an anchorpane.
-   */
+    * Sets the bottom anchor for the child when contained by an anchorpane.
+    */
   def setRightAnchor(child: Node, value: Double) {
     jfxsl.AnchorPane.setRightAnchor(child, value)
   }
 
   /**
-   * Sets the top anchor for the child when contained by an anchorpane.
-   */
+    * Sets the top anchor for the child when contained by an anchorpane.
+    */
   def setTopAnchor(child: Node, value: Double) {
     jfxsl.AnchorPane.setTopAnchor(child, value)
   }
 
   /**
-   * Sets the anchors for the child when contained by an anchorpane.
-   *
-   * @param child Node to be set
-   * @param top Top Anchor
-   * @param right Right Anchor
-   * @param bottom Bottom Anchor
-   * @param left Left Anchor
-   */
+    * Sets the anchors for the child when contained by an anchorpane.
+    *
+    * @param child Node to be set
+    * @param top Top Anchor
+    * @param right Right Anchor
+    * @param bottom Bottom Anchor
+    * @param left Left Anchor
+    */
   def setAnchors(child: Node, top: Double, right: Double, bottom: Double, left: Double) {
     setTopAnchor(child, top)
     setRightAnchor(child, right)
@@ -110,6 +110,6 @@ object AnchorPane {
 
 }
 
-class AnchorPane(override val delegate: jfxsl.AnchorPane = new jfxsl.AnchorPane) extends Pane(delegate) with SFXDelegate[jfxsl.AnchorPane] {
-
-}
+class AnchorPane(override val delegate: jfxsl.AnchorPane = new jfxsl.AnchorPane)
+    extends Pane(delegate)
+    with SFXDelegate[jfxsl.AnchorPane] {}

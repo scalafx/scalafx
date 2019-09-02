@@ -33,34 +33,35 @@ import scala.language.implicitConversions
 object CanvasIncludes extends CanvasIncludes
 
 /**
- * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/package-summary.html `javafx.scene.canvas`]]
- * Classes/Traits to their $SFX counterparts.
- *
- * @define JFX JavaFX
- * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/
- * @define END ]]` instance to its $SFX counterpart.
- *
- * @define CANV Canvas
- * @define GRCT GraphicsContext
- */
+  * Contains implcit methods to convert from
+  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/package-summary.html `javafx.scene.canvas`]]
+  * Classes/Traits to their $SFX counterparts.
+  *
+  * @define JFX JavaFX
+  * @define SFX ScalaFX
+  * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/
+  * @define END ]]` instance to its $SFX counterpart.
+  *
+  * @define CANV Canvas
+  * @define GRCT GraphicsContext
+  */
 trait CanvasIncludes {
 
   /**
-   * $START$CANV.html $CANV$END
-   *
-   * @param c $JFX $CANV
-   * @return $SFX $CANV
-   */
+    * $START$CANV.html $CANV$END
+    *
+    * @param c $JFX $CANV
+    * @return $SFX $CANV
+    */
   implicit def jfxCanvas2sfx(c: jfxsc.Canvas): Canvas = if (c != null) new Canvas(c) else null
 
   /**
-   * $START$GRCT.html $GRCT$END
-   *
-   * @param gc $JFX $GRCT
-   * @return $SFX $GRCT
-   */
-  implicit def jfxGraphicsContext2sfx(gc: jfxsc.GraphicsContext): GraphicsContext = if (gc != null) new GraphicsContext(gc) else null
+    * $START$GRCT.html $GRCT$END
+    *
+    * @param gc $JFX $GRCT
+    * @return $SFX $GRCT
+    */
+  implicit def jfxGraphicsContext2sfx(gc: jfxsc.GraphicsContext): GraphicsContext =
+    if (gc != null) new GraphicsContext(gc) else null
 
 }

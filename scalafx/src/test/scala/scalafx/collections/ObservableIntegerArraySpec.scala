@@ -35,17 +35,17 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 import scala.collection.mutable.Buffer
 
 /**
- * ObservableIntegerArray Spec tests.
- */
+  * ObservableIntegerArray Spec tests.
+  */
 class ObservableIntegerArraySpec
-  extends SimpleSFXDelegateSpec[jfxc.ObservableIntegerArray, ObservableIntegerArray](
-    classOf[jfxc.ObservableIntegerArray], classOf[ObservableIntegerArray]
-  ) {
+    extends SimpleSFXDelegateSpec[jfxc.ObservableIntegerArray, ObservableIntegerArray](
+      classOf[jfxc.ObservableIntegerArray],
+      classOf[ObservableIntegerArray]
+    ) {
 
   /**
-   * Test trait for instance testing.
-   */
-
+    * Test trait for instance testing.
+    */
   trait InstanceTests {
     val array0: Array[Int] = Array.empty
     val array1 = Array(4, 5, 6, 7)
@@ -77,15 +77,15 @@ class ObservableIntegerArraySpec
   }
 
   /**
-   * @inheritdoc
-   *
-   * Overridden to create empty JFX ObservableIntegerArray (inherited method fails).
-   */
+    * @inheritdoc
+    *
+    * Overridden to create empty JFX ObservableIntegerArray (inherited method fails).
+    */
   override protected def getJavaClassInstance = jfxc.FXCollections.observableIntegerArray()
 
   /**
-   * Test that a function to access/change an array element with an invalid index yields an out of bounds exception.
-   */
+    * Test that a function to access/change an array element with an invalid index yields an out of bounds exception.
+    */
   def testOutOfBoundsExceptionThrown(f: => Unit) {
     intercept[ArrayIndexOutOfBoundsException] {
       f
@@ -93,8 +93,8 @@ class ObservableIntegerArraySpec
   }
 
   /**
-   * Test that a function results in an NegativeArraySizeException being thrown.
-   */
+    * Test that a function results in an NegativeArraySizeException being thrown.
+    */
   def testNegativeArraySizeExceptionThrown(f: => Unit) {
     intercept[NegativeArraySizeException] {
       f
@@ -102,16 +102,17 @@ class ObservableIntegerArraySpec
   }
 
   /**
-   * Test that a function results in an IllegalArgumentException being thrown.
-   */
+    * Test that a function results in an IllegalArgumentException being thrown.
+    */
   def testIllegalArgumentExceptionThrown(f: => Unit) {
     intercept[IllegalArgumentException] {
       f
     }
   }
+
   /**
-   * Common tests for an empty array.
-   */
+    * Common tests for an empty array.
+    */
   def testEmpty(oa: ObservableIntegerArray) {
     assert(oa.length === 0)
     assert(oa.size === 0)
@@ -122,8 +123,8 @@ class ObservableIntegerArraySpec
   }
 
   /**
-   * Common tests for a non-empty array with known contents.
-   */
+    * Common tests for a non-empty array with known contents.
+    */
   def testNonEmpty(oa: ObservableIntegerArray, expected: Array[Int]) {
     assert(oa.length === expected.length)
     assert(oa.size === expected.length)
@@ -136,8 +137,8 @@ class ObservableIntegerArraySpec
   }
 
   /**
-   * Test that arrays are equal.
-   */
+    * Test that arrays are equal.
+    */
   def testEqual(oa: ObservableIntegerArray, expected: ObservableIntegerArray) {
     assert(oa.length === expected.length)
     assert(oa.size === expected.length)
@@ -147,10 +148,9 @@ class ObservableIntegerArraySpec
     }
   }
 
-
   /**
-   * Class tests.
-   */
+    * Class tests.
+    */
   it should "allow construct an empty array by default" in {
     testEmpty(new ObservableIntegerArray())
   }
@@ -275,8 +275,8 @@ class ObservableIntegerArraySpec
   }
 
   /**
-   * Companion tests.
-   */
+    * Companion tests.
+    */
   it should "return an empty observable array from companion's empty()" in {
     testEmpty(ObservableIntegerArray.empty())
   }
@@ -353,7 +353,6 @@ class ObservableIntegerArraySpec
     testNonEmpty(ObservableIntegerArray.range(5, 0, -2), a531)
     testNonEmpty(ObservableIntegerArray.range(5, -1, -2), a531)
   }
-
 
   it should "support element access through (i) operator" in {
     val a = ObservableIntegerArray(1, 2, 3, 4, 5)

@@ -36,6 +36,7 @@ import scalafx.beans.property.{ReadOnlyBooleanProperty, ReadOnlyIntegerProperty}
 import scalafx.collections.ObservableMap
 
 object MapExpression {
+
   /**
     * Converts a ScalaFX MapExpression to its JavaFX counterpart MapProperty.
     *
@@ -55,6 +56,7 @@ object MapExpression {
   * @define ORIGINALDOC Original Documentation]].
   **/
 class MapExpression[K, V](val delegate: jfxbb.MapExpression[K, V]) {
+
   /**
     * A boolean property that is `true`, if the the map is empty.
     */

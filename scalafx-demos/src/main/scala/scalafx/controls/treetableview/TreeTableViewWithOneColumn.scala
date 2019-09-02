@@ -57,7 +57,9 @@ object TreeTableViewWithOneColumn extends JFXApp {
       root = new TreeTableView(rootNode) {
         columns += new TreeTableColumn[String, String]("Column") {
           prefWidth = 150
-          cellValueFactory = { p => p.value.value }
+          cellValueFactory = { p =>
+            p.value.value
+          }
         }
         prefWidth = 152
         showRoot = true

@@ -32,9 +32,10 @@ import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Test for [[scalafx.scene.layout.BorderRepeat]] */
-class BorderRepeatSpec extends SFXEnumDelegateSpec[jfxsl.BorderRepeat, BorderRepeat](
-  javaClass = classOf[jfxsl.BorderRepeat],
-  scalaClass = classOf[BorderRepeat],
-  companion = BorderRepeat)
+class BorderRepeatSpec
+    extends SFXEnumDelegateSpec[jfxsl.BorderRepeat, BorderRepeat](
+      javaClass = classOf[jfxsl.BorderRepeat],
+      scalaClass = classOf[BorderRepeat],
+      companion = BorderRepeat
+    )

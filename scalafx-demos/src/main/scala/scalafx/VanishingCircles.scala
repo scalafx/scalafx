@@ -39,10 +39,9 @@ import scalafx.scene.effect.BoxBlur
 import scalafx.scene.paint.Color._
 import scalafx.scene.shape.Circle
 
-
 /**
- * Vanishing Circles
- */
+  * Vanishing Circles
+  */
 object VanishingCircles extends JFXApp {
   var circles: Seq[Circle] = null
   stage = new PrimaryStage {
@@ -62,7 +61,7 @@ object VanishingCircles extends JFXApp {
         stroke = White
         // add this for event listeners:
         onMouseClicked = handle {
-          Timeline(at(3 s) {radius -> 0}).play()
+          Timeline(at(3 s) { radius -> 0 }).play()
         }
       }
       content = circles

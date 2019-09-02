@@ -35,8 +35,8 @@ import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectWrapper}
 
 /**
- * Verify that code causing Issue 36 behaves correctly after fix.
- */
+  * Verify that code causing Issue 36 behaves correctly after fix.
+  */
 class Issue36Spec extends FlatSpec {
 
   "Issue 36 - ObjectProperty[Int]" should "be able to instantiate" in {

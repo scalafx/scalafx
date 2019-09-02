@@ -34,8 +34,8 @@ import scalafx.Includes._
 import scalafx.collections.ObservableMap
 
 /**
- * ReadOnlyMapProperty Spec tests.
- */
+  * ReadOnlyMapProperty Spec tests.
+  */
 class ReadOnlyMapPropertySpec extends FlatSpec with BeforeAndAfterEach {
 
   private val valueAsSeq = Seq("one" -> 1, "two" -> 2, "seven" -> 7)

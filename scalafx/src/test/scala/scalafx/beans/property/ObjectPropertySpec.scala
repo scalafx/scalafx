@@ -34,7 +34,12 @@ import javafx.scene.{control => jfxsc}
 import org.scalatest.Matchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
-import scalafx.Includes.{jfxBooleanBinding2sfx, jfxBooleanProperty2sfx, jfxObjectProperty2sfx, sfxObjectPropertyWithSFXDelegate2jfxObjectProperty}
+import scalafx.Includes.{
+  jfxBooleanBinding2sfx,
+  jfxBooleanProperty2sfx,
+  jfxObjectProperty2sfx,
+  sfxObjectPropertyWithSFXDelegate2jfxObjectProperty
+}
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.beans.property.ObjectProperty.sfxObjectProperty2jfx
 import scalafx.scene.control.Button
@@ -276,4 +281,3 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach with RunOnAppl
     evaluateFillProperty(ObjectProperty[ju.Date](new java.sql.Date(1234678L)), new ju.Date)
   }
 }
-

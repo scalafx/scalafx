@@ -93,50 +93,49 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   val originalValue = target.value.get
   val txfValue = new TextField
   target.value.onChange(txfValue.text = target.value.get.toString)
-  txfValue.onAction = handle {super.fillDoublePropertyFromText(target.value, txfValue, false)}
+  txfValue.onAction = handle { super.fillDoublePropertyFromText(target.value, txfValue, false) }
 
   val originalBlockIncrement = target.blockIncrement.get
   val txfBlockIncrement = new TextField {
     text = originalBlockIncrement.get.toString
   }
   target.blockIncrement.onChange(txfBlockIncrement.text = target.blockIncrement.get.toString)
-  txfBlockIncrement.onAction = handle {fillDoublePropertyFromText(target.blockIncrement, txfBlockIncrement, false)}
+  txfBlockIncrement.onAction = handle { fillDoublePropertyFromText(target.blockIncrement, txfBlockIncrement, false) }
 
   val txfLabelFormatter = new TextField
-  txfLabelFormatter.text.onChange(
-    if (txfLabelFormatter.text.get.isEmpty) {
-      target.labelFormatter = null
-    } else {
-      target.labelFormatter = new DoubleStringConverter
-    })
+  txfLabelFormatter.text.onChange(if (txfLabelFormatter.text.get.isEmpty) {
+    target.labelFormatter = null
+  } else {
+    target.labelFormatter = new DoubleStringConverter
+  })
 
   val originalMajorTickUnit = target.majorTickUnit.get()
   val txfMajorTickUnit = new TextField {
     text = originalMajorTickUnit.toString
   }
   target.majorTickUnit.onChange(txfMajorTickUnit.text = target.majorTickUnit.get.toString)
-  txfMajorTickUnit.onAction = handle {fillDoublePropertyFromText(target.majorTickUnit, txfMajorTickUnit, false)}
+  txfMajorTickUnit.onAction = handle { fillDoublePropertyFromText(target.majorTickUnit, txfMajorTickUnit, false) }
 
   val originalMax = target.max.get()
   val txfMax = new TextField {
     text = originalMax.toString
   }
   target.max.onChange(txfMax.text = target.max.get.toString)
-  txfMax.onAction = handle {fillDoublePropertyFromText(target.max, txfMax, false)}
+  txfMax.onAction = handle { fillDoublePropertyFromText(target.max, txfMax, false) }
 
   val originalMinorTickCount = target.minorTickCount.get()
   val txfMinorTickCount = new TextField {
     text = originalMinorTickCount.toString
   }
   target.minorTickCount.onChange(txfMinorTickCount.text = target.minorTickCount.get.toString)
-  txfMinorTickCount.onAction = handle {fillIntPropertyFromText(target.minorTickCount, txfMinorTickCount, false)}
+  txfMinorTickCount.onAction = handle { fillIntPropertyFromText(target.minorTickCount, txfMinorTickCount, false) }
 
   val originalMin = target.min.get()
   val txfMin = new TextField {
     text = originalMin.toString
   }
   target.min.onChange(txfMin.text = target.min.get.toString)
-  txfMin.onAction = handle {fillDoublePropertyFromText(target.min, txfMin, false)}
+  txfMin.onAction = handle { fillDoublePropertyFromText(target.min, txfMin, false) }
 
   val originalShowTickLabels = target.showTickLabels.get
   val chbShowTickLabels = new CheckBox {

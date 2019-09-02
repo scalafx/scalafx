@@ -30,29 +30,28 @@ import javafx.{print => jfxp}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
- * Companion Object for [[scalafx.print.PageOrientation]].
- */
-object PageOrientation
-  extends SFXEnumDelegateCompanion[jfxp.PageOrientation, PageOrientation] {
+  * Companion Object for [[scalafx.print.PageOrientation]].
+  */
+object PageOrientation extends SFXEnumDelegateCompanion[jfxp.PageOrientation, PageOrientation] {
 
   /**
-   * The printable area's origin is at the bottom left of the paper.
-   */
+    * The printable area's origin is at the bottom left of the paper.
+    */
   case object Landscape extends PageOrientation(jfxp.PageOrientation.LANDSCAPE)
 
   /**
-   * The printable area's origin is at the top left of the paper.
-   */
+    * The printable area's origin is at the top left of the paper.
+    */
   case object Portrait extends PageOrientation(jfxp.PageOrientation.PORTRAIT)
 
   /**
-   * The printable area's origin is at the top right of the paper.
-   */
+    * The printable area's origin is at the top right of the paper.
+    */
   case object ReverseLandcsape extends PageOrientation(jfxp.PageOrientation.REVERSE_LANDSCAPE)
 
   /**
-   * The printable area's origin is at the bottom right of the paper.
-   */
+    * The printable area's origin is at the bottom right of the paper.
+    */
   case object ReversePortrait extends PageOrientation(jfxp.PageOrientation.REVERSE_PORTRAIT)
 
   protected override def unsortedValues: Array[PageOrientation] =
@@ -61,7 +60,7 @@ object PageOrientation
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PageOrientation.html JavaFX PageOrientation]].
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PageOrientation.html JavaFX PageOrientation]].
+  */
 sealed abstract class PageOrientation(override val delegate: jfxp.PageOrientation)
-  extends SFXEnumDelegate[jfxp.PageOrientation]
+    extends SFXEnumDelegate[jfxp.PageOrientation]

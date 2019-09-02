@@ -32,7 +32,9 @@ import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.animation.Worker.State]]. */
-class WorkerStateSpec extends SFXEnumDelegateSpec[jfxc.Worker.State, Worker.State](
-  classOf[jfxc.Worker.State],
-  classOf[Worker.State],
-  Worker.State)
+class WorkerStateSpec
+    extends SFXEnumDelegateSpec[jfxc.Worker.State, Worker.State](
+      classOf[jfxc.Worker.State],
+      classOf[Worker.State],
+      Worker.State
+    )

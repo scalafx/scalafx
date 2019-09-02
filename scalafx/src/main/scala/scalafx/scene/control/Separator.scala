@@ -44,7 +44,9 @@ object Separator {
   def apply(orientation: Orientation): Separator = new jfxsc.Separator(orientation)
 }
 
-class Separator(override val delegate: jfxsc.Separator = new jfxsc.Separator) extends Control(delegate) with SFXDelegate[jfxsc.Separator] {
+class Separator(override val delegate: jfxsc.Separator = new jfxsc.Separator)
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.Separator] {
 
   def halignment: ObjectProperty[jfxg.HPos] = delegate.halignmentProperty
   def halignment_=(v: HPos) {

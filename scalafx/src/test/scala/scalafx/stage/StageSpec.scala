@@ -33,10 +33,10 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * Stage Spec tests.
- *
- *
- */
+  * Stage Spec tests.
+  *
+  *
+  */
 class StageSpec
-  extends SimpleSFXDelegateSpec[jfxs.Stage, Stage](classOf[jfxs.Stage], classOf[Stage])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxs.Stage, Stage](classOf[jfxs.Stage], classOf[Stage])
+    with RunOnApplicationThread

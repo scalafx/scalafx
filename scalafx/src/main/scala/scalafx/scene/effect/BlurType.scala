@@ -35,23 +35,26 @@ import scala.language.implicitConversions
 object BlurType extends SFXEnumDelegateCompanion[jfxse.BlurType, BlurType] {
 
   case object Gaussian extends BlurType(jfxse.BlurType.GAUSSIAN)
-  @deprecated ("Use Gaussian; GAUSSIAN will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Gaussian; GAUSSIAN will be removed in a future release", "8.0.60-R10")
   val GAUSSIAN = Gaussian
 
   case object OnePassBox extends BlurType(jfxse.BlurType.ONE_PASS_BOX)
-  @deprecated ("Use OnePassBox; ONE_PASS_BOX will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use OnePassBox; ONE_PASS_BOX will be removed in a future release", "8.0.60-R10")
   val ONE_PASS_BOX = OnePassBox
 
   case object ThreePassBox extends BlurType(jfxse.BlurType.THREE_PASS_BOX)
-  @deprecated ("Use ThreePassBox; THREE_PASS_BOX will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use ThreePassBox; THREE_PASS_BOX will be removed in a future release", "8.0.60-R10")
   val THREE_PASS_BOX = ThreePassBox
 
   case object TwoPassBox extends BlurType(jfxse.BlurType.TWO_PASS_BOX)
-  @deprecated ("Use TwoPassBox; TWO_PASS_BOX will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use TwoPassBox; TWO_PASS_BOX will be removed in a future release", "8.0.60-R10")
   val TWO_PASS_BOX = TwoPassBox
 
   protected override def unsortedValues: Array[BlurType] = Array(
-    OnePassBox, TwoPassBox, ThreePassBox, Gaussian
+    OnePassBox,
+    TwoPassBox,
+    ThreePassBox,
+    Gaussian
   )
 }
 

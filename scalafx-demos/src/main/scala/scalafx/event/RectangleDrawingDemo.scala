@@ -77,8 +77,8 @@ object RectangleDrawingDemo extends JFXApp {
   }
 
   // Define handling of mouse events
-  pane.handleEvent(MouseEvent.Any) {
-    me: MouseEvent => {
+  pane.handleEvent(MouseEvent.Any) { me: MouseEvent =>
+    {
       me.eventType match {
         case MouseEvent.MousePressed => {
           // Reset the shape
@@ -89,7 +89,7 @@ object RectangleDrawingDemo extends JFXApp {
           // Adjust the shape
           Updater.update(end = new Point2D(me.x, me.y))
         }
-        case _                       => {}
+        case _ => {}
       }
     }
   }

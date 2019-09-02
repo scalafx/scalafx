@@ -56,7 +56,9 @@ object TreeViewCellFactoryDemo extends JFXApp {
         showRoot = false
         root = new TreeItem[Person] {
           expanded = true
-          children = characters.map { p => new TreeItem(p) }.toSeq
+          children = characters.map { p =>
+            new TreeItem(p)
+          }.toSeq
         }
         // Following statement, if uncommented, fails during compilation with error:
         //   type mismatch;
@@ -64,11 +66,12 @@ object TreeViewCellFactoryDemo extends JFXApp {
         //     required: javafx.scene.control.TreeCell[issues.issue108.TreeViewCellFactoryDemo.Person]
         //         cellFactory = (v: TreeView[Person]) => new TreeCell[Person] {
         //                                  ^
-        cellFactory = (v: TreeView[Person]) => new TreeCell[Person] {
-          treeItem.onChange((_, _, p) =>
-            text = if (p != null) p.value().firstName + " " + p.value().lastName else "?"
-          )
-        }
+        cellFactory = (v: TreeView[Person]) =>
+          new TreeCell[Person] {
+            treeItem.onChange(
+              (_, _, p) => text = if (p != null) p.value().firstName + " " + p.value().lastName else "?"
+            )
+          }
       }
     }
   }

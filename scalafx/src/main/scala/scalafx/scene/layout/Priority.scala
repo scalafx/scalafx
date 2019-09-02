@@ -54,6 +54,4 @@ object Priority extends SFXEnumDelegateCompanion[jfxsl.Priority, Priority] {
   def min(a: jfxsl.Priority, b: jfxsl.Priority) = jfxsl.Priority.min(a, b)
 }
 
-
-sealed abstract class Priority(override val delegate: jfxsl.Priority)
-  extends SFXEnumDelegate[jfxsl.Priority]
+sealed abstract class Priority(override val delegate: jfxsl.Priority) extends SFXEnumDelegate[jfxsl.Priority]

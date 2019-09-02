@@ -40,66 +40,67 @@ object Pagination {
   implicit def sfxPagination2jfx(p: Pagination): jfxsc.Pagination = if (p != null) p.delegate else null
 
   /**
-   * The style class to change the numeric page indicators to bullet indicators.
-   */
+    * The style class to change the numeric page indicators to bullet indicators.
+    */
   val StyleClassBullet = jfxsc.Pagination.STYLE_CLASS_BULLET
-  @deprecated ("Use StyleClassBullet; STYLE_CLASS_BULLET will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use StyleClassBullet; STYLE_CLASS_BULLET will be removed in a future release", "8.0.60-R10")
   val STYLE_CLASS_BULLET = StyleClassBullet
 
   /**
-   * Value for indicating that the page count is indeterminate.
-   */
+    * Value for indicating that the page count is indeterminate.
+    */
   val Indeterminate = jfxsc.Pagination.INDETERMINATE
-  @deprecated ("Use Indeterminate; INDETERMINATE will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Indeterminate; INDETERMINATE will be removed in a future release", "8.0.60-R10")
   val INDETERMINATE = Indeterminate
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Pagination.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Pagination.html]]
+  */
 class Pagination(override val delegate: jfxsc.Pagination = new jfxsc.Pagination)
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.Pagination] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.Pagination] {
 
   /**
-   * Constructs a new Pagination control with the specified page count.
-   */
+    * Constructs a new Pagination control with the specified page count.
+    */
   def this(pageCount: Int) = this(new jfxsc.Pagination(pageCount))
 
   /**
-   * Constructs a new Pagination control with the specified page count and page index.
-   */
+    * Constructs a new Pagination control with the specified page count and page index.
+    */
   def this(pageCount: Int, pageIndex: Int) = this(new jfxsc.Pagination(pageCount, pageIndex))
 
   /**
-   * The current page index to display for this pagination control.
-   */
+    * The current page index to display for this pagination control.
+    */
   def currentPageIndex: IntegerProperty = delegate.currentPageIndexProperty
   def currentPageIndex_=(value: Int) {
     currentPageIndex() = value
   }
 
   /**
-   * The maximum number of page indicators to use for this pagination control.
-   */
+    * The maximum number of page indicators to use for this pagination control.
+    */
   def maxPageIndicatorCount: IntegerProperty = delegate.maxPageIndicatorCountProperty
   def maxPageIndicatorCount_=(value: Int) {
     maxPageIndicatorCount() = value
   }
 
   /**
-   * The number of pages for this pagination control.
-   */
+    * The number of pages for this pagination control.
+    */
   def pageCount: IntegerProperty = delegate.pageCountProperty
   def pageCount_=(value: Int) {
     pageCount() = value
   }
 
   /**
-   * The pageFactory callback function that is called when a page has been selected by the application or the user.
-   */
-  def pageFactory: ObjectProperty[Int => Node] = ObjectProperty((page: Int) => delegate.pageFactoryProperty.get.call(page))
+    * The pageFactory callback function that is called when a page has been selected by the application or the user.
+    */
+  def pageFactory: ObjectProperty[Int => Node] =
+    ObjectProperty((page: Int) => delegate.pageFactoryProperty.get.call(page))
   def pageFactory_=(callback: Int => Node) {
     val jCallback = new jfxu.Callback[java.lang.Integer, jfxs.Node] {
       def call(pageIndex: java.lang.Integer) = callback(pageIndex).delegate

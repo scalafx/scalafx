@@ -33,10 +33,10 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * Popup Spec tests.
- *
- *
- */
+  * Popup Spec tests.
+  *
+  *
+  */
 class PopupSpec
-  extends SimpleSFXDelegateSpec[jfxs.Popup, Popup](classOf[jfxs.Popup], classOf[Popup])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxs.Popup, Popup](classOf[jfxs.Popup], classOf[Popup])
+    with RunOnApplicationThread

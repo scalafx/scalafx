@@ -36,12 +36,12 @@ object ConstraintsBase {
   implicit def sfxConstraintsBase2jfx(v: ConstraintsBase): jfxsl.ConstraintsBase = if (v != null) v.delegate else null
 
   /**
-   * If set as max value indicates that the pref value should be used as the max.
-   */
+    * If set as max value indicates that the pref value should be used as the max.
+    */
   val ConstrainToPref = jfxsl.ConstraintsBase.CONSTRAIN_TO_PREF
-  @deprecated ("Use ConstrainToPref; CONSTRAIN_TO_PREF will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use ConstrainToPref; CONSTRAIN_TO_PREF will be removed in a future release", "8.0.60-R10")
   val CONSTRAIN_TO_PREF = ConstrainToPref
 }
 
-abstract class ConstraintsBase(override val delegate: jfxsl.ConstraintsBase) extends SFXDelegate[jfxsl.ConstraintsBase] {
-}
+abstract class ConstraintsBase(override val delegate: jfxsl.ConstraintsBase)
+    extends SFXDelegate[jfxsl.ConstraintsBase] {}

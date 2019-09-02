@@ -36,7 +36,6 @@ import scalafx.scene.Scene
 import scalafx.scene.control.{MenuItem, SplitMenuButton}
 import scalafx.scene.layout.VBox
 
-
 object SplitMenuButtonDemo extends JFXApp {
 
   stage = new PrimaryStage {
@@ -47,10 +46,14 @@ object SplitMenuButtonDemo extends JFXApp {
         children = List(
           new SplitMenuButton {
             text = "SplitMenuButton 1"
-            onAction = {ae: ActionEvent => {println(ae.eventType + " occurred on SplitMenuButton")}}
+            onAction = { ae: ActionEvent =>
+              { println(ae.eventType + " occurred on SplitMenuButton") }
+            }
             items = List(
               new MenuItem("MenuItem A") {
-                onAction = {ae: ActionEvent => {println(ae.eventType + " occurred on Menu Item A")}}
+                onAction = { ae: ActionEvent =>
+                  { println(ae.eventType + " occurred on Menu Item A") }
+                }
               },
               new MenuItem("MenuItem B")
             )
@@ -67,6 +70,5 @@ object SplitMenuButtonDemo extends JFXApp {
       }
     }
   }
-
 
 }

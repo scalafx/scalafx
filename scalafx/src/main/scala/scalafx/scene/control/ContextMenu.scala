@@ -40,34 +40,34 @@ object ContextMenu {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ContextMenu.html]].
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ContextMenu.html]].
+  */
 class ContextMenu(override val delegate: jfxsc.ContextMenu = new jfxsc.ContextMenu)
-  extends PopupControl(delegate)
-  with SFXDelegate[jfxsc.ContextMenu] {
+    extends PopupControl(delegate)
+    with SFXDelegate[jfxsc.ContextMenu] {
 
   /**
-   * Create a new ContextMenu initialized with the given items
-   */
+    * Create a new ContextMenu initialized with the given items
+    */
   def this(items: MenuItem*) = this(new jfxsc.ContextMenu(items.map(_.delegate): _*))
 
   /**
-   * Callback function to be informed when an item contained within this ContextMenu has been activated.
-   */
+    * Callback function to be informed when an item contained within this ContextMenu has been activated.
+    */
   def onAction = delegate.onActionProperty
   def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]) {
     onAction() = v
   }
 
   /**
-   * The menu items on the context menu.
-   */
+    * The menu items on the context menu.
+    */
   def items: ObservableBuffer[jfxsc.MenuItem] = delegate.getItems
 
   /**
-   * Shows the `ContextMenu` relative to the given anchor node, on the side specified by the hpos and vpos parameters,
-   * and offset by the given dx and dy values for the x-axis and y-axis, respectively.
-   */
+    * Shows the `ContextMenu` relative to the given anchor node, on the side specified by the hpos and vpos parameters,
+    * and offset by the given dx and dy values for the x-axis and y-axis, respectively.
+    */
   def show(anchor: Node, side: jfxg.Side, screenX: Double, screenY: Double) {
     delegate.show(anchor, side, screenX, screenY)
   }

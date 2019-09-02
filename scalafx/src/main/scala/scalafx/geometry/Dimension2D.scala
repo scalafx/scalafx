@@ -38,18 +38,18 @@ object Dimension2D {
 class Dimension2D(override val delegate: jfxg.Dimension2D) extends SFXDelegate[jfxg.Dimension2D] {
 
   /**
-   * Constructs a Dimension2D with the specified width and height.
-   */
+    * Constructs a Dimension2D with the specified width and height.
+    */
   def this(width: Double, height: Double) = this(new jfxg.Dimension2D(width, height))
 
   /**
-   * The height of the dimension.
-   */
+    * The height of the dimension.
+    */
   def height = delegate.getHeight
 
   /**
-   * The width of the dimension.
-   */
+    * The width of the dimension.
+    */
   def width = delegate.getWidth
 
 }

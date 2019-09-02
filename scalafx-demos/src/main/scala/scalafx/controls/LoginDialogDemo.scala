@@ -44,7 +44,7 @@ object LoginDialogDemo extends JFXApp {
       title = "Custom Dialog Demo"
       content = new VBox {
         children = new Button("Show Login Dialog") {
-          onAction = handle {onShowLoginDialog()}
+          onAction = handle { onShowLoginDialog() }
         }
         padding = Insets(top = 24, right = 64, bottom = 24, left = 64)
       }
@@ -91,7 +91,9 @@ object LoginDialogDemo extends JFXApp {
     loginButton.disable = true
 
     // Do some validation (disable when username is empty).
-    username.text.onChange { (_, _, newValue) => loginButton.disable = newValue.trim().isEmpty}
+    username.text.onChange { (_, _, newValue) =>
+      loginButton.disable = newValue.trim().isEmpty
+    }
 
     dialog.dialogPane().content = grid
 

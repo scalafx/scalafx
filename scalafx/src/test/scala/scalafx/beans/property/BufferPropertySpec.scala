@@ -40,8 +40,10 @@ import scalafx.testutil.SimpleSFXDelegateSpec
   * Test for [[scalafx.beans.property.BufferProperty]].
   */
 class BufferPropertySpec
-  extends SimpleSFXDelegateSpec[jfxbp.ListProperty[Int], BufferProperty[Int]](
-    classOf[jfxbp.ListProperty[Int]], classOf[BufferProperty[Int]]) {
+    extends SimpleSFXDelegateSpec[jfxbp.ListProperty[Int], BufferProperty[Int]](
+      classOf[jfxbp.ListProperty[Int]],
+      classOf[BufferProperty[Int]]
+    ) {
 
   val bean = new Object()
   val name = "Bean Name X"

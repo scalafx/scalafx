@@ -37,101 +37,101 @@ import scalafx.scene.Node
 import scalafx.util.Duration
 
 /**
- * Companion Object for [[scalafx.animation.RotateTransition]].
- *
- * @define RT `RotateTransition`
- */
+  * Companion Object for [[scalafx.animation.RotateTransition]].
+  *
+  * @define RT `RotateTransition`
+  */
 object RotateTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $RT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/RotateTransition.html $RT]],
-   * extracting its delegate.
-   *
-   * @param v ScalaFX $RT
-   * @return JavaFX $RT extracted from `v`.
-   */
+    * Converts a ScalaFX $RT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/RotateTransition.html $RT]],
+    * extracting its delegate.
+    *
+    * @param v ScalaFX $RT
+    * @return JavaFX $RT extracted from `v`.
+    */
   implicit def sfxRotateTransition2jfx(v: RotateTransition): jfxa.RotateTransition = if (v != null) v.delegate else null
 
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/RotateTransition.html $RT]].
- *
- * @constructor Creates a new ScalaFX $RT from a JavaFX $RT.
- * @param delegate JavaFX $RT to be delegated.
- *
- * @define RT `RotateTransition`
- * @define CONST The constructor of $RT
- * @define DUR The duration of the $RT
- * @define DV Default value:
- */
+  * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/RotateTransition.html $RT]].
+  *
+  * @constructor Creates a new ScalaFX $RT from a JavaFX $RT.
+  * @param delegate JavaFX $RT to be delegated.
+  *
+  * @define RT `RotateTransition`
+  * @define CONST The constructor of $RT
+  * @define DUR The duration of the $RT
+  * @define DV Default value:
+  */
 class RotateTransition(override val delegate: jfxa.RotateTransition = new jfxa.RotateTransition)
-  extends Transition(delegate)
-  with SFXDelegate[jfxa.RotateTransition] {
+    extends Transition(delegate)
+    with SFXDelegate[jfxa.RotateTransition] {
 
   // CONSTRUCTOR
 
   /**
-   * $CONST
-   *
-   * @param duration $DUR
-   */
+    * $CONST
+    *
+    * @param duration $DUR
+    */
   def this(duration: Duration) = this(new jfxa.RotateTransition(duration))
 
   /**
-   * $CONST
-   *
-   * @param duration $DUR
-   * @param node The node which will be rotated
-   */
+    * $CONST
+    *
+    * @param duration $DUR
+    * @param node The node which will be rotated
+    */
   def this(duration: Duration, node: Node) =
     this(new jfxa.RotateTransition(duration, node))
 
   // PROPERTIES
 
   /**
-   * $DUR. $DV 400ms
-   */
+    * $DUR. $DV 400ms
+    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
 
   /**
-   * Specifies the incremented stop angle value, from the start, of this $RT.
-   */
+    * Specifies the incremented stop angle value, from the start, of this $RT.
+    */
   def byAngle: DoubleProperty = delegate.byAngleProperty
   def byAngle_=(by: Double) {
     byAngle() = by
   }
 
   /**
-   * Specifies the stop angle value for this $RT. $DV Double.NaN
-   */
+    * Specifies the stop angle value for this $RT. $DV Double.NaN
+    */
   def toAngle: DoubleProperty = delegate.toAngleProperty
   def toAngle_=(to: Double) {
     toAngle() = to
   }
 
   /**
-   * The target node of this $RT.
-   */
+    * The target node of this $RT.
+    */
   def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }
 
   /**
-   * Specifies the axis of rotation for this $RT. $DV `null`
-   */
+    * Specifies the axis of rotation for this $RT. $DV `null`
+    */
   def axis: ObjectProperty[jfxg.Point3D] = delegate.axisProperty
   def axis_=(p: Point3D) {
     axis() = p
   }
 
   /**
-   * Specifies the start angle value for this $RT. $DV Double.NaN
-   */
+    * Specifies the start angle value for this $RT. $DV Double.NaN
+    */
   def fromAngle: DoubleProperty = delegate.fromAngleProperty
   def fromAngle_=(from: Double) {
     fromAngle() = from

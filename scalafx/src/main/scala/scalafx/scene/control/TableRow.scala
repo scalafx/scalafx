@@ -36,20 +36,20 @@ object TableRow {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableRow.html]].
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableRow.html]].
+  */
 class TableRow[T](override val delegate: jfxsc.TableRow[T] = new jfxsc.TableRow[T])
-  extends IndexedCell[T]
-  with SFXDelegate[jfxsc.TableRow[T]] {
+    extends IndexedCell[T]
+    with SFXDelegate[jfxsc.TableRow[T]] {
 
   /**
-   * The TableView associated with this Cell.
-   */
+    * The TableView associated with this Cell.
+    */
   def tableView = delegate.getTableView
 
   /**
-   * Updates the TableView associated with this TableCell.
-   */
+    * Updates the TableView associated with this TableCell.
+    */
   def updateTableView(tv: TableView[T]) {
     delegate.updateTableView(tv)
   }

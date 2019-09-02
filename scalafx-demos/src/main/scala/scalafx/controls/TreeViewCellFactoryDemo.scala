@@ -56,14 +56,17 @@ object TreeViewCellFactoryDemo extends JFXApp {
         showRoot = false
         root = new TreeItem[Person] {
           expanded = true
-          children = characters.map { p => new TreeItem(p) }.toSeq
+          children = characters.map { p =>
+            new TreeItem(p)
+          }.toSeq
         }
         // Use CellFactory to do custom rendering of a TreeCell
-        cellFactory = (v: TreeView[Person]) => new TreeCell[Person] {
-          treeItem.onChange((_, _, p) =>
-            text = if (p != null) p.value().firstName + " " + p.value().lastName else null
-          )
-        }
+        cellFactory = (v: TreeView[Person]) =>
+          new TreeCell[Person] {
+            treeItem.onChange(
+              (_, _, p) => text = if (p != null) p.value().firstName + " " + p.value().lastName else null
+            )
+          }
       }
     }
   }

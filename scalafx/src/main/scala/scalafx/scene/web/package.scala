@@ -27,8 +27,6 @@
 package scalafx.scene
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/package-summary.html `javafx.scene.web`]] package.
- */
-package object web {
-
-}
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/package-summary.html `javafx.scene.web`]] package.
+  */
+package object web {}

@@ -43,8 +43,10 @@ import scalafx.testutil.SimpleSFXDelegateSpec
   * Test for [[scalafx.collections.transformation.FilteredBuffer]].
   */
 class FilteredBufferSpec[E]
-  extends SimpleSFXDelegateSpec[jfxct.FilteredList[E], FilteredBuffer[E]](
-    classOf[jfxct.FilteredList[E]], classOf[FilteredBuffer[E]]) {
+    extends SimpleSFXDelegateSpec[jfxct.FilteredList[E], FilteredBuffer[E]](
+      classOf[jfxct.FilteredList[E]],
+      classOf[FilteredBuffer[E]]
+    ) {
 
   override def getScalaClassInstance = new FilteredBuffer(ObservableBuffer.empty[E])
 
@@ -52,7 +54,9 @@ class FilteredBufferSpec[E]
 
   it should "assing comparator correctly" in {
 
-    val sb = new FilteredBuffer(ObservableBuffer(3, 4, 1), { _: Int => true })
+    val sb = new FilteredBuffer(ObservableBuffer(3, 4, 1), { _: Int =>
+      true
+    })
 
     sb.toList should equal(List(3, 4, 1))
 

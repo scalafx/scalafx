@@ -32,8 +32,10 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * CheckBoxTreeTableCell Spec tests.
- */
+  * CheckBoxTreeTableCell Spec tests.
+  */
 class CheckBoxTreeTableCellSpec[S, T]
-  extends SimpleSFXDelegateSpec[jfxscc.CheckBoxTreeTableCell[S, T], CheckBoxTreeTableCell[S, T]](
-    classOf[jfxscc.CheckBoxTreeTableCell[S, T]], classOf[CheckBoxTreeTableCell[S, T]])
+    extends SimpleSFXDelegateSpec[jfxscc.CheckBoxTreeTableCell[S, T], CheckBoxTreeTableCell[S, T]](
+      classOf[jfxscc.CheckBoxTreeTableCell[S, T]],
+      classOf[CheckBoxTreeTableCell[S, T]]
+    )

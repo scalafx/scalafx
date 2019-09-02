@@ -37,44 +37,44 @@ object EqualizerBand {
   implicit def sfxEqualizerBand2jfx(eb: EqualizerBand): jfxsm.EqualizerBand = if (eb != null) eb.delegate else null
 
   /**
-   * Maximum possible gain value.
-   */
+    * Maximum possible gain value.
+    */
   val MAX_GAIN = jfxsm.EqualizerBand.MAX_GAIN
 
   /**
-   * Minimum possible gain value.
-   */
+    * Minimum possible gain value.
+    */
   val MIN_GAIN = jfxsm.EqualizerBand.MIN_GAIN
 }
 
 class EqualizerBand(override val delegate: jfxsm.EqualizerBand = new jfxsm.EqualizerBand)
-  extends SFXDelegate[jfxsm.EqualizerBand] {
+    extends SFXDelegate[jfxsm.EqualizerBand] {
 
   /**
-   * Custom EqualizerBand constructor.
-   */
+    * Custom EqualizerBand constructor.
+    */
   def this(centerFrequency: Double, bandwidth: Double, gain: Double) =
     this(new jfxsm.EqualizerBand(centerFrequency, bandwidth, gain))
 
   /**
-   * Bandwidth of the band in Hertz.
-   */
+    * Bandwidth of the band in Hertz.
+    */
   def bandwidth: DoubleProperty = delegate.bandwidthProperty
   def bandwidth_=(v: Double) {
     bandwidth() = v
   }
 
   /**
-   * Center frequency of the band in Hertz.
-   */
+    * Center frequency of the band in Hertz.
+    */
   def centerFrequency: DoubleProperty = delegate.centerFrequencyProperty
   def centerFrequency_=(v: Double) {
     centerFrequency() = v
   }
 
   /**
-   * The gain to be applied to the frequencies of this band.
-   */
+    * The gain to be applied to the frequencies of this band.
+    */
   def gain: DoubleProperty = delegate.gainProperty
   def gain_=(v: Double) {
     gain() = v

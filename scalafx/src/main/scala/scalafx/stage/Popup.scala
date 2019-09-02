@@ -36,8 +36,8 @@ object Popup {
 }
 
 class Popup(override val delegate: jfxs.Popup = new jfxs.Popup)
-  extends PopupWindow(delegate)
-  with SFXDelegate[jfxs.Popup] {
+    extends PopupWindow(delegate)
+    with SFXDelegate[jfxs.Popup] {
 
   def content = delegate.getContent
 

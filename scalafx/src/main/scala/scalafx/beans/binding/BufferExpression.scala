@@ -38,6 +38,7 @@ import scalafx.beans.property.{ReadOnlyBooleanProperty, ReadOnlyIntegerProperty}
 import scalafx.collections.ObservableBuffer
 
 object BufferExpression {
+
   /**
     * Converts a ScalaFX BufferExpression to its JavaFX counterpart ListProperty.
     *
@@ -57,6 +58,7 @@ object BufferExpression {
   * @define ORIGINALDOC Original Documentation]].
   **/
 class BufferExpression[E <: Any](val delegate: jfxbb.ListExpression[E]) {
+
   /**
     * A boolean property that is `true`, if the the buffer is empty.
     */
@@ -109,6 +111,7 @@ class BufferExpression[E <: Any](val delegate: jfxbb.ListExpression[E]) {
     * Clears the ObservableBuffer and add all the elements passed as var-args.
     */
   def setAll(elem1: E, elem2: E, elems: E*): Boolean = this.setAll(Seq(elem1, elem2) ++ elems)
+
   /**
     * Clears the ObservableBuffer and add all elements from the collection.
     */

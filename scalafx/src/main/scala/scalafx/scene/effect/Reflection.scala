@@ -38,42 +38,43 @@ object Reflection {
 }
 
 class Reflection(override val delegate: jfxse.Reflection = new jfxse.Reflection)
-  extends Effect(delegate)
-  with InputDelegate[jfxse.Reflection]
-  with SFXDelegate[jfxse.Reflection] {
+    extends Effect(delegate)
+    with InputDelegate[jfxse.Reflection]
+    with SFXDelegate[jfxse.Reflection] {
 
   /**
-   * Creates a new instance of Reflection with the specified topOffset, fraction, topOpacity and bottomOpacity.
-   */
-  def this(topOffset: Double, fraction: Double, topOpacity: Double, bottomOpacity: Double) = this(new jfxse.Reflection(topOffset, fraction, topOpacity, bottomOpacity))
+    * Creates a new instance of Reflection with the specified topOffset, fraction, topOpacity and bottomOpacity.
+    */
+  def this(topOffset: Double, fraction: Double, topOpacity: Double, bottomOpacity: Double) =
+    this(new jfxse.Reflection(topOffset, fraction, topOpacity, bottomOpacity))
 
   /**
-   * The bottom opacity value, which is the opacity of the reflection at its bottom extreme.
-   */
+    * The bottom opacity value, which is the opacity of the reflection at its bottom extreme.
+    */
   def bottomOpacity: DoubleProperty = delegate.bottomOpacityProperty
   def bottomOpacity_=(v: Double) {
     bottomOpacity() = v
   }
 
   /**
-   * The fraction of the input that is visible in the reflection.
-   */
+    * The fraction of the input that is visible in the reflection.
+    */
   def fraction: DoubleProperty = delegate.fractionProperty
   def fraction_=(v: Double) {
     fraction() = v
   }
 
   /**
-   * The top offset adjustment, which is the distance between the bottom of the input and the top of the reflection.
-   */
+    * The top offset adjustment, which is the distance between the bottom of the input and the top of the reflection.
+    */
   def topOffset: DoubleProperty = delegate.topOffsetProperty
   def topOffset_=(v: Double) {
     topOffset() = v
   }
 
   /**
-   * The top opacity value, which is the opacity of the reflection at its top extreme.
-   */
+    * The top opacity value, which is the opacity of the reflection at its top extreme.
+    */
   def topOpacity: DoubleProperty = delegate.topOpacityProperty
   def topOpacity_=(v: Double) {
     topOpacity() = v

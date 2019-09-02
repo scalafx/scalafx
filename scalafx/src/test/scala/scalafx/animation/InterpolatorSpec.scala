@@ -37,10 +37,10 @@ import scalafx.beans.property._
 import scalafx.testutil.PropertyComparator
 
 /**
- * FadeTransition Spec tests.
- *
- * @todo When Interpolator is converted to SFXEnumDelegate, this test should be converted to a SFXEnumDelegateSpec
- */
+  * FadeTransition Spec tests.
+  *
+  * @todo When Interpolator is converted to SFXEnumDelegate, this test should be converted to a SFXEnumDelegateSpec
+  */
 class InterpolatorSpec extends FlatSpec with PropertyComparator {
   "Interpolators" should "support all the built-in interpolators" in {
     val doubleProperty = new DoubleProperty(null, "test")

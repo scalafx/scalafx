@@ -39,15 +39,14 @@ object Background {
 
   /** An empty Background, useful to use instead of null. */
   val Empty: Background = jfxsl.Background.EMPTY
-  @deprecated ("Use Empty; EMPTY will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Empty; EMPTY will be removed in a future release", "8.0.60-R10")
   val EMPTY: Background = Empty
 
   def classCssMetaData: Seq[javafx.css.CssMetaData[_ <: javafx.css.Styleable, _]] =
     jfxsl.Background.getClassCssMetaData.asScala.toSeq
 }
 
-class Background(override val delegate: jfxsl.Background)
-  extends SFXDelegate[jfxsl.Background] {
+class Background(override val delegate: jfxsl.Background) extends SFXDelegate[jfxsl.Background] {
 
   /** Create a new Background by supplying an array of BackgroundFills. */
   def this(fills: Array[BackgroundFill]) = this(new jfxsl.Background(fills.map(_.delegate): _*))
@@ -64,16 +63,17 @@ class Background(override val delegate: jfxsl.Background)
     this(new jfxsl.Background(fills.map(_.delegate).asJava, images.map(_.delegate).asJava))
 
   /**
-   * * The list of BackgroundFills which together define the filled portion of this Background.
-   */
+    * * The list of BackgroundFills which together define the filled portion of this Background.
+    */
   def fills: Seq[jfxsl.BackgroundFill] = delegate.getFills.asScala.toSeq
+
   /**
-   * The list of BackgroundImages which together define the image portion of this Background.
-   */
+    * The list of BackgroundImages which together define the image portion of this Background.
+    */
   def images: Seq[jfxsl.BackgroundImage] = delegate.getImages.asScala.toSeq
 
   /**
-   * The outsets of this Background.
-   */
+    * The outsets of this Background.
+    */
   def outsets: Insets = delegate.getOutsets
 }

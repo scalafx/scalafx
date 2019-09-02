@@ -34,42 +34,43 @@ import scalafx.css.PseudoClass.sfxPseudoClass2jfx
 import scalafx.delegate.SFXDelegate
 
 object SkinBase {
-  implicit def sfxSkinBase2jfx[C <: jfxsc.Control](v: SkinBase[C]): jfxsc.SkinBase[C] = if (v != null) v.delegate else null
+  implicit def sfxSkinBase2jfx[C <: jfxsc.Control](v: SkinBase[C]): jfxsc.SkinBase[C] =
+    if (v != null) v.delegate else null
 
   def classCssMetaData = jfxsc.SkinBase.getClassCssMetaData
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SkinBase.html]].
- */
-abstract class SkinBase[C <: jfxsc.Control] protected(override val delegate: jfxsc.SkinBase[C])
-  extends SFXDelegate[jfxsc.SkinBase[C]] {
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SkinBase.html]].
+  */
+abstract class SkinBase[C <: jfxsc.Control] protected (override val delegate: jfxsc.SkinBase[C])
+    extends SFXDelegate[jfxsc.SkinBase[C]] {
 
   /**
-   * Called by a `Skinnable` when the `Skin` is replaced on the `Skinnable`.
-   */
+    * Called by a `Skinnable` when the `Skin` is replaced on the `Skinnable`.
+    */
   def dispose() {
     delegate.dispose()
   }
 
   /**
-   * Returns the children of the skin.
-   */
+    * Returns the children of the skin.
+    */
   def children = delegate.getChildren
 
   /**
-   * This method should delegate to Node.getClassCssMetaData() so that a `Node`'s `CssMetaData` can be accessed without the need for reflection.
-   */
+    * This method should delegate to Node.getClassCssMetaData() so that a `Node`'s `CssMetaData` can be accessed without the need for reflection.
+    */
   def cssMetaData = delegate.getCssMetaData
 
   /**
-   * Gets the `Node` which represents this `Skin`.
-   */
+    * Gets the `Node` which represents this `Skin`.
+    */
   def node = delegate.getNode
 
   /**
-   * Gets the `Skinnable` to which this `Skin` is assigned.
-   */
+    * Gets the `Skinnable` to which this `Skin` is assigned.
+    */
   def skinnable = delegate.getSkinnable
 
   def pseudoClassStateChanged(pseudoClass: PseudoClass, active: Boolean) {

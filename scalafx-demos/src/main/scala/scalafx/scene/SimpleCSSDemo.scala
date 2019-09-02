@@ -34,8 +34,8 @@ import scalafx.scene.control.Button
 import scalafx.scene.layout.BorderPane
 
 /**
- * An example of using CSS create custom button.
- */
+  * An example of using CSS create custom button.
+  */
 object SimpleCSSDemo extends JFXApp {
 
   stage = new PrimaryStage {

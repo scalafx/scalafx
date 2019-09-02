@@ -37,6 +37,7 @@ import scalafx.collections.ObservableSet
 import scalafx.delegate.SFXDelegate
 
 object ReadOnlySetProperty {
+
   /**
     * Converts a ScalaFX ReadOnlySetProperty to its JavaFX counterpart ReadOnlySetProperty.
     *
@@ -56,10 +57,9 @@ object ReadOnlySetProperty {
   * @define ORIGINALDOC Original Documentation]].
   **/
 class ReadOnlySetProperty[E <: Any](override val delegate: jfxbp.ReadOnlySetProperty[E])
-  extends SetExpression[E](delegate)
+    extends SetExpression[E](delegate)
     with ReadOnlyProperty[ObservableSet[E], jfxc.ObservableSet[E]]
     with SFXDelegate[jfxbp.ReadOnlySetProperty[E]] {
-
 
   override def value: ObservableSet[E] = delegate.get()
 
@@ -102,5 +102,6 @@ class ReadOnlySetProperty[E <: Any](override val delegate: jfxbp.ReadOnlySetProp
     *
     * @param sfx the SFXDelegate object to which the binding should be removed
     */
-  def unbindContentBidirectional[T <: Object](sfx: SFXDelegate[T]): Unit = delegate.unbindContentBidirectional(sfx.delegate)
+  def unbindContentBidirectional[T <: Object](sfx: SFXDelegate[T]): Unit =
+    delegate.unbindContentBidirectional(sfx.delegate)
 }

@@ -37,17 +37,16 @@ import scalafx.scene.transform.{Rotate, Translate}
 import scalafx.scene.{Group, Node, PerspectiveCamera, Scene, SceneAntialiasing}
 
 /**
- * A port of the JavaFX Ensemble CubeSampleDemo
- *
- * A sample that demonstrates an animated rotation of 3D cubes. When the
- * application runs in standalone mode, the scene must be constructed with
- * the depthBuffer argument set to true, and the root node must have depthTest
- * set to true.
- *
- * @author Peter Pilgrim (peter)
- * @author JavaFX SDK Team
- */
-
+  * A port of the JavaFX Ensemble CubeSampleDemo
+  *
+  * A sample that demonstrates an animated rotation of 3D cubes. When the
+  * application runs in standalone mode, the scene must be constructed with
+  * the depthBuffer argument set to true, and the root node must have depthTest
+  * set to true.
+  *
+  * @author Peter Pilgrim (peter)
+  * @author JavaFX SDK Team
+  */
 object CubeSampleDemo extends JFXApp {
 
   var animation: Timeline = _
@@ -66,7 +65,6 @@ object CubeSampleDemo extends JFXApp {
 
   root.children.add(create3dContent())
 
-
   def create3dContent(): Node = {
     val c = new Cube(50, Color.Red, 1)
     c.rx.setAngle(45)
@@ -83,12 +81,12 @@ object CubeSampleDemo extends JFXApp {
     animation = new Timeline {
       cycleCount = Timeline.Indefinite
       keyFrames = Seq(
-        at(0 s) {c.ry.angle -> 0d},
-        at(0 s) {c2.rx.angle -> 0d},
-        at(0 s) {c3.rz.angle -> 0d},
-        at(1 s) {c.ry.angle -> 360d},
-        at(1 s) {c2.rx.angle -> 360d},
-        at(1 s) {c3.rz.angle -> 360d}
+        at(0 s) { c.ry.angle -> 0d },
+        at(0 s) { c2.rx.angle -> 0d },
+        at(0 s) { c3.rz.angle -> 0d },
+        at(1 s) { c.ry.angle -> 360d },
+        at(1 s) { c2.rx.angle -> 360d },
+        at(1 s) { c3.rz.angle -> 360d }
       )
     }
 
@@ -105,7 +103,6 @@ object CubeSampleDemo extends JFXApp {
 
   play()
 }
-
 
 class Cube(size: Double, color: Color, shade: Double) extends Group {
   val rx = new Rotate(0, Rotate.XAxis)

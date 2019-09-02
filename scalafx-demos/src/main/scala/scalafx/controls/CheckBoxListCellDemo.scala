@@ -39,8 +39,8 @@ import scalafx.scene.control.{Button, ListView}
 import scalafx.scene.layout.VBox
 
 /**
- * Example of using `CheckBoxListCell` in `ListView`.
- */
+  * Example of using `CheckBoxListCell` in `ListView`.
+  */
 object CheckBoxListCellDemo extends JFXApp {
 
   class Item(initialSelection: Boolean, val name: String) {
@@ -49,7 +49,9 @@ object CheckBoxListCellDemo extends JFXApp {
   }
 
   val data = ObservableBuffer[Item](
-    (1 to 10).map { i => new Item(i % 2 == 0, s"Item $i") }
+    (1 to 10).map { i =>
+      new Item(i % 2 == 0, s"Item $i")
+    }
   )
 
   stage = new PrimaryStage {

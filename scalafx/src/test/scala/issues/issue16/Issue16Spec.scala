@@ -37,8 +37,8 @@ import scalafx.beans.property.{ObjectProperty, ReadOnlyBooleanProperty}
 import scalafx.scene.paint.Color
 
 /**
- * Verify that code causing Issue 16 behaves correctly after fix.
- */
+  * Verify that code causing Issue 16 behaves correctly after fix.
+  */
 class Issue16Spec extends FlatSpec {
 
   "Issue 16 - binding" should "respond to changes in `when` condition" in {

@@ -32,12 +32,15 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Stop Spec tests.
- *
- *
- */
+  * Stop Spec tests.
+  *
+  *
+  */
 class PhongMaterialSpec
-  extends SimpleSFXDelegateSpec[jfxsp.PhongMaterial, PhongMaterial](classOf[jfxsp.PhongMaterial], classOf[PhongMaterial]) {
+    extends SimpleSFXDelegateSpec[jfxsp.PhongMaterial, PhongMaterial](
+      classOf[jfxsp.PhongMaterial],
+      classOf[PhongMaterial]
+    ) {
 
   override protected def getJavaClassInstance = new jfxsp.PhongMaterial()
 

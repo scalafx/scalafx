@@ -34,8 +34,8 @@ import scalafx.beans.property.PropertyIncludes.jfxReadOnlyMapProperty2sfx
 import scalafx.collections.ObservableMap
 import scalafx.delegate.SFXDelegate
 
-
 object ReadOnlyMapWrapper {
+
   /**
     * Converts a ScalaFX ReadOnlyMapWrapper to its JavaFX counterpart ReadOnlyMapWrapper.
     *
@@ -71,12 +71,12 @@ object ReadOnlyMapWrapper {
     new ReadOnlyMapWrapper(new jfxbp.ReadOnlyMapWrapper(bean, name, value.delegate))
 }
 
-
 /**
   * Wraps `javafx.beans.property.ReadOnlyMapWrapper`.
   */
-class ReadOnlyMapWrapper[K, V](override val delegate: jfxbp.ReadOnlyMapWrapper[K, V] = new jfxbp.ReadOnlyMapWrapper[K, V])
-  extends MapProperty[K, V]
+class ReadOnlyMapWrapper[K, V](
+    override val delegate: jfxbp.ReadOnlyMapWrapper[K, V] = new jfxbp.ReadOnlyMapWrapper[K, V]
+) extends MapProperty[K, V]
     with SFXDelegate[jfxbp.ReadOnlyMapWrapper[K, V]] {
 
   /** Creates a new ReadOnlyMapWrapper instance.

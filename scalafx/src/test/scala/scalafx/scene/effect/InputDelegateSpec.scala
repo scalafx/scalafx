@@ -30,8 +30,8 @@ import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
 
 /**
- * Trait to test InputDelegate subclasses
- */
+  * Trait to test InputDelegate subclasses
+  */
 trait InputDelegateSpec[D <: InputDelegate[_]] extends FlatSpec {
 
   protected val inputDelegate: D

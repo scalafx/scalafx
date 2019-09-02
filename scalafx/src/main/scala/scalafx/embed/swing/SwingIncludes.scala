@@ -31,41 +31,40 @@ import javafx.embed.{swing => jfxes}
 import scala.language.implicitConversions
 
 /**
- * Companion Object for [[scalafx.embed.swing.SwingIncludes]].
- */
-object SwingIncludes
-  extends SwingIncludes
+  * Companion Object for [[scalafx.embed.swing.SwingIncludes]].
+  */
+object SwingIncludes extends SwingIncludes
 
 /**
- * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/package-summary.html `embed.swing`]]
- * Classes to their $SFX counterparts.
- *
- * @define JFX JavaFX
- * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/
- * @define END ]]` instance to its $SFX counterpart.
- *
- * @define SPN SFXPanel
- * @define JPN JFXPanel
- * @define SND SwingNode
- */
+  * Contains implicit methods to convert from
+  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/package-summary.html `embed.swing`]]
+  * Classes to their $SFX counterparts.
+  *
+  * @define JFX JavaFX
+  * @define SFX ScalaFX
+  * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/
+  * @define END ]]` instance to its $SFX counterpart.
+  *
+  * @define SPN SFXPanel
+  * @define JPN JFXPanel
+  * @define SND SwingNode
+  */
 trait SwingIncludes {
 
   /**
-   * $START$JPN$.html $JPN$END
-   *
-   * @param p $JPN
-   * @return $SPN
-   */
+    * $START$JPN$.html $JPN$END
+    *
+    * @param p $JPN
+    * @return $SPN
+    */
   implicit def jfxPanel2sfx(p: jfxes.JFXPanel): SFXPanel = if (p != null) new SFXPanel(p) else null
 
   /**
-   * $START$SND$.html $SND$END
-   *
-   * @param n $JFX $SND
-   * @return $SFX $SND
-   */
+    * $START$SND$.html $SND$END
+    *
+    * @param n $JFX $SND
+    * @return $SFX $SND
+    */
   implicit def jfxSwingNode2sfx(n: jfxes.SwingNode): SwingNode = if (n != null) new SwingNode(n) else null
 
 }

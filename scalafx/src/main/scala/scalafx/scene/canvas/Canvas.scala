@@ -39,36 +39,36 @@ object Canvas {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/Canvas.html JavaFX Canvas]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/Canvas.html JavaFX Canvas]]
+  */
 class Canvas(override val delegate: jfxsc.Canvas = new jfxsc.Canvas)
-  extends Node(delegate)
-  with SFXDelegate[jfxsc.Canvas] {
+    extends Node(delegate)
+    with SFXDelegate[jfxsc.Canvas] {
 
   /**
-   * Creates a new instance of Canvas with the given size.
-   */
+    * Creates a new instance of Canvas with the given size.
+    */
   def this(width: Double, height: Double) = this(new jfxsc.Canvas(width, height))
 
   /**
-   * Defines the height of the canvas.
-   */
+    * Defines the height of the canvas.
+    */
   def height: DoubleProperty = delegate.heightProperty
   def height_=(v: Double) {
     height() = v
   }
 
   /**
-   * Defines the width of the canvas.
-   */
+    * Defines the width of the canvas.
+    */
   def width: DoubleProperty = delegate.widthProperty
   def width_=(v: Double) {
     width() = v
   }
 
   /**
-   * returns the `GraphicsContext` associated with this `Canvas`.
-   */
+    * returns the `GraphicsContext` associated with this `Canvas`.
+    */
   def graphicsContext2D: GraphicsContext = delegate.getGraphicsContext2D
 
 }

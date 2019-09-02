@@ -34,7 +34,6 @@ import scalafx.scene.Scene
 import scalafx.scene.control.{Button, Label}
 import scalafx.scene.layout.{StackPane, VBox}
 
-
 /** Illustrated [[https://github.com/scalafx/scalafx/issues/102 Issue 102]]
   *
   * When event handler is created from a code block (rather than a function),

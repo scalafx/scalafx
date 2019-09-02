@@ -40,10 +40,9 @@ import scalafx.scene.input.{Clipboard, ClipboardContent, DataFormat}
 import scalafx.scene.layout.VBox
 
 /**
- * @author Jarek Sacha 
- */
+  * @author Jarek Sacha
+  */
 object ClipboardTester extends JFXApp {
-
 
   stage = new PrimaryStage {
     scene = new Scene {
@@ -113,8 +112,6 @@ object ClipboardTester extends JFXApp {
               )
             }
           }
-
-
         )
       }
     }

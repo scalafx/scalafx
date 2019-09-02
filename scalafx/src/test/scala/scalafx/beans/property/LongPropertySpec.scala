@@ -35,10 +35,10 @@ import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 import scalafx.Includes._
 
 /**
- * LongProperty Spec tests.
- *
- *
- */
+  * LongProperty Spec tests.
+  *
+  *
+  */
 class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
   var longProperty: jfxbp.LongProperty = null
@@ -115,7 +115,7 @@ class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix addition of constants" in {
-    longProperty3 <== longProperty + 35 + 35l + 35f + 35d
+    longProperty3 <== longProperty + 35 + 35L + 35f + 35d
     longProperty() = 21
     longProperty3() should equal(161)
     longProperty3.unbind()
@@ -130,7 +130,7 @@ class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix subtraction of constants" in {
-    longProperty3 <== longProperty - 12 - 12l - 12f - 12d
+    longProperty3 <== longProperty - 12 - 12L - 12f - 12d
     longProperty() = 40
     longProperty3() should equal(-8)
     longProperty3.unbind()
@@ -145,7 +145,7 @@ class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix multiplication of constants" in {
-    longProperty3 <== longProperty * 2 * 2l * 2f * 2d
+    longProperty3 <== longProperty * 2 * 2L * 2f * 2d
     longProperty() = 5
     longProperty3() should equal(80)
     longProperty3.unbind()
@@ -160,7 +160,7 @@ class LongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix division of constants" in {
-    longProperty3 <== longProperty / 2 / 2l / 5f / 5d
+    longProperty3 <== longProperty / 2 / 2L / 5f / 5d
     longProperty() = 100
     longProperty3() should equal(1)
     longProperty3.unbind()

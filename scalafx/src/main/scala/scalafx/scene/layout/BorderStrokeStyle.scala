@@ -36,73 +36,79 @@ import scala.collection.JavaConverters._
 import scala.language.implicitConversions
 
 object BorderStrokeStyle {
-  implicit def sfxBorderStrokeStyle2jfx(v: BorderStrokeStyle): jfxsl.BorderStrokeStyle = if (v != null) v.delegate else null
+  implicit def sfxBorderStrokeStyle2jfx(v: BorderStrokeStyle): jfxsl.BorderStrokeStyle =
+    if (v != null) v.delegate else null
 
   /**
-   * A predefined dashed pattern to be used for stroking
-   */
+    * A predefined dashed pattern to be used for stroking
+    */
   val Dashed: BorderStrokeStyle = jfxsl.BorderStrokeStyle.DASHED
 
   /**
-   * A predefined dotted pattern to be used for stroking
-   */
+    * A predefined dotted pattern to be used for stroking
+    */
   val Dotted: BorderStrokeStyle = jfxsl.BorderStrokeStyle.DOTTED
 
   /**
-   * Indicates that no stroke should be drawn.
-   */
+    * Indicates that no stroke should be drawn.
+    */
   val None: BorderStrokeStyle = jfxsl.BorderStrokeStyle.NONE
 
   /**
-   * A predefined solid line to be used for stroking
-   */
+    * A predefined solid line to be used for stroking
+    */
   val Solid: BorderStrokeStyle = jfxsl.BorderStrokeStyle.SOLID
 }
 
 /**
- * Defines the style of the stroke to use on one side of a BorderStroke.
- *
- * Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderStrokeStyle.html javafx.scene.layout.BorderStrokeStyle]].
- */
-class BorderStrokeStyle(override val delegate: jfxsl.BorderStrokeStyle)
-  extends SFXDelegate[jfxsl.BorderStrokeStyle] {
+  * Defines the style of the stroke to use on one side of a BorderStroke.
+  *
+  * Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderStrokeStyle.html javafx.scene.layout.BorderStrokeStyle]].
+  */
+class BorderStrokeStyle(override val delegate: jfxsl.BorderStrokeStyle) extends SFXDelegate[jfxsl.BorderStrokeStyle] {
 
   /**
-   * Creates a new BorderStrokeStyle.
-   */
-  def this(strokeType: StrokeType, lineJoin: StrokeLineJoin, lineCap: StrokeLineCap,
-           miterLimit: Double, dashOffset: Double, dashArray: Seq[java.lang.Double]) =
+    * Creates a new BorderStrokeStyle.
+    */
+  def this(
+      strokeType: StrokeType,
+      lineJoin: StrokeLineJoin,
+      lineCap: StrokeLineCap,
+      miterLimit: Double,
+      dashOffset: Double,
+      dashArray: Seq[java.lang.Double]
+  ) =
     this(new jfxsl.BorderStrokeStyle(strokeType, lineJoin, lineCap, miterLimit, dashOffset, dashArray.asJava))
 
   /**
-   * Defines the array representing the lengths of the dash segments.
-   */
+    * Defines the array representing the lengths of the dash segments.
+    */
   def dashArray: Seq[java.lang.Double] = delegate.getDashArray.asScala.toSeq
 
   /**
-   * Defines a distance specified in user coordinates that represents an offset into the dashing pattern.
-   */
+    * Defines a distance specified in user coordinates that represents an offset into the dashing pattern.
+    */
   def dashOffset: Double = delegate.getDashOffset
 
   /**
-   * The end cap style of this Shape as one of the following values that define possible end cap
-   * styles: StrokeLineCap.BUTT, StrokeLineCap.ROUND, and StrokeLineCap.SQUARE.
-   */
+    * The end cap style of this Shape as one of the following values that define possible end cap
+    * styles: StrokeLineCap.BUTT, StrokeLineCap.ROUND, and StrokeLineCap.SQUARE.
+    */
   def lineCap: StrokeLineCap = delegate.getLineCap
 
   /**
-   * Defines the decoration applied where path segments meet.
-   */
+    * Defines the decoration applied where path segments meet.
+    */
   def lineJoin: StrokeLineJoin = delegate.getLineJoin
 
   /**
-   * Defines the limit for the StrokeLineJoin.MITER line join style.
-   */
+    * Defines the limit for the StrokeLineJoin.MITER line join style.
+    */
   def miterLimit: Double = delegate.getMiterLimit
 
   /**
-   * Defines the direction (inside, outside, or both) that the strokeWidth
-   * is applied to the boundary of the shape.
-   */
+    * Defines the direction (inside, outside, or both) that the strokeWidth
+    * is applied to the boundary of the shape.
+    */
   def strokeType: StrokeType = delegate.getType
 }

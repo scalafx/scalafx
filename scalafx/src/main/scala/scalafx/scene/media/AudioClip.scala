@@ -37,10 +37,10 @@ object AudioClip {
   implicit def sfxAudioClip2jfx(ac: AudioClip): jfxsm.AudioClip = if (ac != null) ac.delegate else null
 
   /**
-   * When cycleCount is set to this value, the AudioClip will loop continuously until stopped.
-   */
+    * When cycleCount is set to this value, the AudioClip will loop continuously until stopped.
+    */
   val Indefinite = jfxsm.AudioClip.INDEFINITE
-  @deprecated ("Use Indefinite; INDEFINITE will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Indefinite; INDEFINITE will be removed in a future release", "8.0.60-R10")
   val INDEFINITE = Indefinite
 
 }
@@ -48,58 +48,58 @@ object AudioClip {
 class AudioClip(override val delegate: jfxsm.AudioClip) extends SFXDelegate[jfxsm.AudioClip] {
 
   /**
-   * Create an AudioClip loaded from the supplied source URL
-   */
+    * Create an AudioClip loaded from the supplied source URL
+    */
   def this(source: String) = this(new jfxsm.AudioClip(source))
 
   /**
-   * The relative left and right volume levels of the clip.
-   */
+    * The relative left and right volume levels of the clip.
+    */
   def balance: DoubleProperty = delegate.balanceProperty
   def balance_=(v: Double) {
     balance() = v
   }
 
   /**
-   * The number of times the clip will be played when play() is called.
-   */
+    * The number of times the clip will be played when play() is called.
+    */
   def cycleCount: IntegerProperty = delegate.cycleCountProperty
   def cycleCount_=(v: Int) {
     cycleCount() = v
   }
 
   /**
-   * The relative "center" of the clip.
-   */
+    * The relative "center" of the clip.
+    */
   def pan: DoubleProperty = delegate.panProperty
   def pan_=(v: Double) {
     pan() = v
   }
 
   /**
-   * The relative priority of the clip with respect to other clips.
-   */
+    * The relative priority of the clip with respect to other clips.
+    */
   def priority: IntegerProperty = delegate.priorityProperty
   def priority_=(v: Int) {
     priority() = v
   }
 
   /**
-   * The relative rate at which the clip is played.
-   */
+    * The relative rate at which the clip is played.
+    */
   def rate: DoubleProperty = delegate.rateProperty
   def rate_=(v: Double) {
     rate() = v
   }
 
   /**
-   * Get the source URL used to create this AudioClip.
-   */
+    * Get the source URL used to create this AudioClip.
+    */
   def source = delegate.getSource
 
   /**
-   * The relative volume level at which the clip is played.
-   */
+    * The relative volume level at which the clip is played.
+    */
   def volume: DoubleProperty = delegate.volumeProperty
   def volume_=(v: Double) {
     volume() = v

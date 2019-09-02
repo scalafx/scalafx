@@ -32,9 +32,10 @@ import javafx.scene.{input => jfxsi}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Tests for [[scalafx.scene.input.KeyCode]]. */
-class KeyCodeSpec extends SFXEnumDelegateSpec[jfxsi.KeyCode, KeyCode](
-  javaClass = classOf[jfxsi.KeyCode],
-  scalaClass = classOf[KeyCode],
-  companion = KeyCode)
+class KeyCodeSpec
+    extends SFXEnumDelegateSpec[jfxsi.KeyCode, KeyCode](
+      javaClass = classOf[jfxsi.KeyCode],
+      scalaClass = classOf[KeyCode],
+      companion = KeyCode
+    )

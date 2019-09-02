@@ -34,28 +34,29 @@ import scalafx.beans.property.{DoubleProperty, ReadOnlyBooleanProperty}
 import scalafx.delegate.SFXDelegate
 
 object ProgressIndicator {
-  implicit def sfxProgressIndicator2jfx(v: ProgressIndicator): jfxsc.ProgressIndicator = if (v != null) v.delegate else null
+  implicit def sfxProgressIndicator2jfx(v: ProgressIndicator): jfxsc.ProgressIndicator =
+    if (v != null) v.delegate else null
 
   val IndeterminateProgress = jfxsc.ProgressIndicator.INDETERMINATE_PROGRESS
-  @deprecated ("Use IndeterminateProgress; INDETERMINATE_PROGRESS will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use IndeterminateProgress; INDETERMINATE_PROGRESS will be removed in a future release", "8.0.60-R10")
   val INDETERMINATE_PROGRESS = IndeterminateProgress
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ProgressIndicator.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ProgressIndicator.html]]
+  */
 class ProgressIndicator(override val delegate: jfxsc.ProgressIndicator = new jfxsc.ProgressIndicator)
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.ProgressIndicator] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.ProgressIndicator] {
 
   /**
-   * A flag indicating whether it is possible to determine the progress of the ProgressIndicator.
-   */
+    * A flag indicating whether it is possible to determine the progress of the ProgressIndicator.
+    */
   def indeterminate: ReadOnlyBooleanProperty = delegate.indeterminateProperty
 
   /**
-   * The actual progress of the ProgressIndicator.
-   */
+    * The actual progress of the ProgressIndicator.
+    */
   def progress: DoubleProperty = delegate.progressProperty
   def progress_=(v: Double) {
     progress() = v

@@ -49,8 +49,8 @@ object CategoryAxis {
 }
 
 class CategoryAxis(override val delegate: jfxsc.CategoryAxis = new jfxsc.CategoryAxis)
-  extends Axis[String](delegate)
-  with SFXDelegate[jfxsc.CategoryAxis] {
+    extends Axis[String](delegate)
+    with SFXDelegate[jfxsc.CategoryAxis] {
 
   def categorySpacing: ReadOnlyDoubleProperty = delegate.categorySpacingProperty
 

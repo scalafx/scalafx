@@ -32,10 +32,10 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Node Spec tests.
- */
+  * Node Spec tests.
+  */
 class LightBaseSpec
-  extends SimpleSFXDelegateSpec[jfxs.LightBase, LightBase](classOf[jfxs.LightBase], classOf[LightBase]) {
+    extends SimpleSFXDelegateSpec[jfxs.LightBase, LightBase](classOf[jfxs.LightBase], classOf[LightBase]) {
 
   override protected def getScalaClassInstance = new AmbientLight(getJavaClassInstance) {}
 

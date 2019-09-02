@@ -39,7 +39,6 @@ import scalafx.scene.layout.{BorderPane, HBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
-
 /** Example for ScalaFX [[https://github.com/scalafx/scalafx/issues/14 Issue 14]].
   *
   * The example illustrates problem with `ObjectProperty` holding a ScalaFX wrapper,

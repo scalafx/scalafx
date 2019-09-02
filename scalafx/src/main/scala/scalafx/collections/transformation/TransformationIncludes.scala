@@ -33,10 +33,10 @@ import scala.language.implicitConversions
 object TransformationIncludes extends TransformationIncludes
 
 /**
- * Contains implicit methods to convert from 
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/transformation/package-summary.html javafx.collections.transformation]]
- * Classes to their ScalaFX counterparts.
- */
+  * Contains implicit methods to convert from
+  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/transformation/package-summary.html javafx.collections.transformation]]
+  * Classes to their ScalaFX counterparts.
+  */
 trait TransformationIncludes {
 
   implicit def sortedList2SortedBuffer[T](ol: jfxct.SortedList[T]): SortedBuffer[T] =

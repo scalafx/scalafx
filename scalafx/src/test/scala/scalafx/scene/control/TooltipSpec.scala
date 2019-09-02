@@ -33,11 +33,11 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * Tooltip Spec tests.
- */
+  * Tooltip Spec tests.
+  */
 class TooltipSpec
-  extends SimpleSFXDelegateSpec[jfxsc.Tooltip, Tooltip](classOf[jfxsc.Tooltip], classOf[Tooltip])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.Tooltip, Tooltip](classOf[jfxsc.Tooltip], classOf[Tooltip])
+    with RunOnApplicationThread {
 
   it should "generate a new Tooltip from a String" in {
     val text = "Tooltip text"

@@ -60,7 +60,9 @@ object MouseEvent {
 
 }
 
-class MouseEvent(override val delegate: jfxsi.MouseEvent) extends InputEvent(delegate) with SFXDelegate[jfxsi.MouseEvent] {
+class MouseEvent(override val delegate: jfxsi.MouseEvent)
+    extends InputEvent(delegate)
+    with SFXDelegate[jfxsi.MouseEvent] {
 
   /**
     * Constructs new MouseEvent event with null source and target.
@@ -87,14 +89,48 @@ class MouseEvent(override val delegate: jfxsi.MouseEvent) extends InputEvent(del
     *                            based on the scene coordinates
     * @since JavaFX 8.0
     */
-  def this(eventType: EventType[_ <: jfxsi.MouseEvent], x: Double, y: Double, screenX: Double, screenY: Double,
-           button: MouseButton, clickCount: Int, shiftDown: Boolean, controlDown: Boolean, altDown: Boolean,
-           metaDown: Boolean, primaryButtonDown: Boolean, middleButtonDown: Boolean,
-           secondaryButtonDown: Boolean, synthesized: Boolean, popupTrigger: Boolean,
-           stillSincePress: Boolean, pickResult: PickResult) {
-    this(new jfxsi.MouseEvent(eventType.delegate, x, y, screenX, screenY, button.delegate, clickCount,
-      shiftDown, controlDown, altDown, metaDown, primaryButtonDown, middleButtonDown, secondaryButtonDown,
-      synthesized, popupTrigger, stillSincePress, pickResult.delegate))
+  def this(
+      eventType: EventType[_ <: jfxsi.MouseEvent],
+      x: Double,
+      y: Double,
+      screenX: Double,
+      screenY: Double,
+      button: MouseButton,
+      clickCount: Int,
+      shiftDown: Boolean,
+      controlDown: Boolean,
+      altDown: Boolean,
+      metaDown: Boolean,
+      primaryButtonDown: Boolean,
+      middleButtonDown: Boolean,
+      secondaryButtonDown: Boolean,
+      synthesized: Boolean,
+      popupTrigger: Boolean,
+      stillSincePress: Boolean,
+      pickResult: PickResult
+  ) {
+    this(
+      new jfxsi.MouseEvent(
+        eventType.delegate,
+        x,
+        y,
+        screenX,
+        screenY,
+        button.delegate,
+        clickCount,
+        shiftDown,
+        controlDown,
+        altDown,
+        metaDown,
+        primaryButtonDown,
+        middleButtonDown,
+        secondaryButtonDown,
+        synthesized,
+        popupTrigger,
+        stillSincePress,
+        pickResult.delegate
+      )
+    )
   }
 
   /**
@@ -124,16 +160,53 @@ class MouseEvent(override val delegate: jfxsi.MouseEvent) extends InputEvent(del
     *                            based on the scene coordinates and target
     * @since JavaFX 8.0
     */
-  def this(source: Any, target: EventTarget, eventType: EventType[_ <: jfxsi.MouseEvent],
-           x: Double, y: Double, screenX: Double, screenY: Double, button: MouseButton, clickCount: Int,
-           shiftDown: Boolean, controlDown: Boolean, altDown: Boolean, metaDown: Boolean,
-           primaryButtonDown: Boolean, middleButtonDown: Boolean, secondaryButtonDown: Boolean,
-           synthesized: Boolean, popupTrigger: Boolean, stillSincePress: Boolean, pickResult: PickResult) {
-    this(new jfxsi.MouseEvent(source, target.delegate, eventType.delegate, x, y, screenX, screenY, button.delegate, clickCount,
-      shiftDown, controlDown, altDown, metaDown, primaryButtonDown, middleButtonDown, secondaryButtonDown,
-      synthesized, popupTrigger, stillSincePress, pickResult.delegate))
+  def this(
+      source: Any,
+      target: EventTarget,
+      eventType: EventType[_ <: jfxsi.MouseEvent],
+      x: Double,
+      y: Double,
+      screenX: Double,
+      screenY: Double,
+      button: MouseButton,
+      clickCount: Int,
+      shiftDown: Boolean,
+      controlDown: Boolean,
+      altDown: Boolean,
+      metaDown: Boolean,
+      primaryButtonDown: Boolean,
+      middleButtonDown: Boolean,
+      secondaryButtonDown: Boolean,
+      synthesized: Boolean,
+      popupTrigger: Boolean,
+      stillSincePress: Boolean,
+      pickResult: PickResult
+  ) {
+    this(
+      new jfxsi.MouseEvent(
+        source,
+        target.delegate,
+        eventType.delegate,
+        x,
+        y,
+        screenX,
+        screenY,
+        button.delegate,
+        clickCount,
+        shiftDown,
+        controlDown,
+        altDown,
+        metaDown,
+        primaryButtonDown,
+        middleButtonDown,
+        secondaryButtonDown,
+        synthesized,
+        popupTrigger,
+        stillSincePress,
+        pickResult.delegate
+      )
+    )
   }
-
 
   /**
     * Which, if any, of the mouse buttons is responsible for this event.

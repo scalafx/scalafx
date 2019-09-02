@@ -34,8 +34,8 @@ import scala.language.implicitConversions
 import scalafx.collections.ObservableMap
 import scalafx.delegate.SFXDelegate
 
-
 object MapProperty {
+
   /**
     * Converts a ScalaFX MapProperty to its JavaFX counterpart MapProperty.
     *
@@ -73,7 +73,6 @@ object MapProperty {
     new MapProperty(new jfxbp.SimpleMapProperty(bean, name, value.delegate))
 }
 
-
 /**
   * Wraps a $JFX $URL0 MapProperty]].
   *
@@ -83,7 +82,7 @@ object MapProperty {
   * @define ORIGINALDOC Original Documentation]].
   **/
 class MapProperty[K, V](override val delegate: jfxbp.MapProperty[K, V] = new jfxbp.SimpleMapProperty[K, V])
-  extends ReadOnlyMapProperty[K, V](delegate)
+    extends ReadOnlyMapProperty[K, V](delegate)
     with Property[ObservableMap[K, V], jfxc.ObservableMap[K, V]]
     with SFXDelegate[jfxbp.MapProperty[K, V]] {
 

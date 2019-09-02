@@ -39,51 +39,52 @@ object ImageCursor {
   implicit def sfxImageCursor2jfx(c: ImageCursor): jfxs.ImageCursor = if (c != null) c.delegate else null
 
   /**
-   * Creates a custom image cursor from one of the specified images.
-   */
+    * Creates a custom image cursor from one of the specified images.
+    */
   def chooseBestCursor(images: Array[jfxsi.Image], hotspotX: Double, hotspotY: Double) =
     jfxs.ImageCursor.chooseBestCursor(images, hotspotX, hotspotX)
 
   /**
-   * Gets the supported cursor size that is closest to the specified preferred size.
-   */
+    * Gets the supported cursor size that is closest to the specified preferred size.
+    */
   def getBestSize(preferredWidth: Double, preferredHeight: Double) =
     jfxs.ImageCursor.getBestSize(preferredWidth, preferredHeight)
 
   /**
-   * Returns the maximum number of colors supported in a custom image cursor palette.
-   */
+    * Returns the maximum number of colors supported in a custom image cursor palette.
+    */
   def getMaximumColors = jfxs.ImageCursor.getMaximumColors
 
 }
 
 class ImageCursor(override val delegate: jfxs.ImageCursor = new jfxs.ImageCursor)
-  extends Cursor(delegate) with SFXDelegate[jfxs.ImageCursor] {
+    extends Cursor(delegate)
+    with SFXDelegate[jfxs.ImageCursor] {
 
   /**
-   * Constructs an ImageCursor from the specified image.
-   */
+    * Constructs an ImageCursor from the specified image.
+    */
   def this(image: Image) = this(new jfxs.ImageCursor(image))
 
   /**
-   * Constructs an ImageCursor from the specified image and hotspot coordinates.
-   */
+    * Constructs an ImageCursor from the specified image and hotspot coordinates.
+    */
   def this(image: Image, hotspotX: Double, hotspotY: Double) =
     this(new jfxs.ImageCursor(image, hotspotX, hotspotY))
 
   /**
-   * The X coordinate of the cursor's hot spot.
-   */
+    * The X coordinate of the cursor's hot spot.
+    */
   def hotspotX: ReadOnlyDoubleProperty = delegate.hotspotXProperty
 
   /**
-   * The Y coordinate of the cursor's hot spot.
-   */
+    * The Y coordinate of the cursor's hot spot.
+    */
   def hotspotY: ReadOnlyDoubleProperty = delegate.hotspotYProperty
 
   /**
-   * The image to display when the cursor is active.
-   */
+    * The image to display when the cursor is active.
+    */
   def image: ReadOnlyObjectProperty[jfxsi.Image] = delegate.imageProperty
 
 }

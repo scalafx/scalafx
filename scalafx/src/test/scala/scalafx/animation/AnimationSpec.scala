@@ -31,14 +31,13 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * Animation Spec tests.
- *
- *
- */
+  * Animation Spec tests.
+  *
+  *
+  */
 class AnimationSpec
-  extends SimpleSFXDelegateSpec[jfxa.Animation, Animation](
-    classOf[jfxa.Animation], classOf[Animation])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxa.Animation, Animation](classOf[jfxa.Animation], classOf[Animation])
+    with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new Animation(new jfxa.Timeline) {}
 

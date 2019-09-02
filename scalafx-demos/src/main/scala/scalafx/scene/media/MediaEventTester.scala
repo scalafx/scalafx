@@ -55,13 +55,13 @@ object MediaEventTester extends JFXApp {
   )
 
   val mediaPlayer = new MediaPlayer(media)
-  mediaPlayer.onMarker = (event: MediaMarkerEvent) => Platform.runLater {markerText.text = event.marker.getKey}
+  mediaPlayer.onMarker = (event: MediaMarkerEvent) => Platform.runLater { markerText.text = event.marker.getKey }
 
   val mediaView = new MediaView(mediaPlayer) {
     onError = (event: MediaErrorEvent) => println("Media view error: " + event)
   }
   val root = new StackPane {
-    children +=(mediaView, markerText)
+    children += (mediaView, markerText)
     style = "-fx-background-color: black;"
   }
 

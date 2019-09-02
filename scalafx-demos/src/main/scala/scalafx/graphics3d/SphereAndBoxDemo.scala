@@ -37,7 +37,6 @@ import scalafx.scene.paint.{Color, PhongMaterial}
 import scalafx.scene.shape.{Box, Sphere}
 import scalafx.scene.transform.Rotate
 
-
 /** ScalaFX version of the demo from projavafx8-scratchpad */
 object SphereAndBoxDemo extends JFXApp {
 

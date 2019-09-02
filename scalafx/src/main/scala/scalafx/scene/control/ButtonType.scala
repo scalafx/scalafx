@@ -35,106 +35,106 @@ import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.ButtonBar.ButtonData
 
 /**
- * Object companion for [[scalafx.scene.control.ButtonType]].
- */
+  * Object companion for [[scalafx.scene.control.ButtonType]].
+  */
 object ButtonType {
+
   /**
-   * Converts a ScalaFX ButtonType to its JavaFX counterpart.
-   *
-   * @param v ScalaFX ButtonType
-   * @return JavaFX ButtonType
-   */
+    * Converts a ScalaFX ButtonType to its JavaFX counterpart.
+    *
+    * @param v ScalaFX ButtonType
+    * @return JavaFX ButtonType
+    */
   implicit def sfxButtonType2jfx(v: ButtonType): jfxsc.ButtonType =
     if (v != null) v.delegate else null
 
   /**
-   * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Apply" and has a
-   * [[scalafx.scene.control.ButtonBar.ButtonData]] of [[scalafx.scene.control.ButtonBar.ButtonData.Apply]].
-   */
+    * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Apply" and has a
+    * [[scalafx.scene.control.ButtonBar.ButtonData]] of [[scalafx.scene.control.ButtonBar.ButtonData.Apply]].
+    */
   val Apply: ButtonType = jfxsc.ButtonType.APPLY
 
   /**
-   * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "OK" and has a
-   * [[scalafx.scene.control.ButtonBar.ButtonData]] of 
-   * [[scalafx.scene.control.ButtonBar.ButtonData.OKDone]].
-   */
+    * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "OK" and has a
+    * [[scalafx.scene.control.ButtonBar.ButtonData]] of
+    * [[scalafx.scene.control.ButtonBar.ButtonData.OKDone]].
+    */
   val OK: ButtonType = jfxsc.ButtonType.OK
 
   /**
-   * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Cancel" and has a
-   * [[scalafx.scene.control.ButtonBar.ButtonData]] of
-   * [[scalafx.scene.control.ButtonBar.ButtonData.CancelClose]]\.
-   */
+    * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Cancel" and has a
+    * [[scalafx.scene.control.ButtonBar.ButtonData]] of
+    * [[scalafx.scene.control.ButtonBar.ButtonData.CancelClose]]\.
+    */
   val Cancel: ButtonType = jfxsc.ButtonType.CANCEL
 
   /**
-   * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Close" and has a
-   * [[scalafx.scene.control.ButtonBar.ButtonData]] of
-   * [[scalafx.scene.control.ButtonBar.ButtonData.CancelClose]]\.
-   */
+    * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Close" and has a
+    * [[scalafx.scene.control.ButtonBar.ButtonData]] of
+    * [[scalafx.scene.control.ButtonBar.ButtonData.CancelClose]]\.
+    */
   val Close: ButtonType = jfxsc.ButtonType.CLOSE
 
   /**
-   * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Yes" and has a
-   * [[scalafx.scene.control.ButtonBar.ButtonData]] of
-   * [[scalafx.scene.control.ButtonBar.ButtonData.Yes]].
-   */
+    * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Yes" and has a
+    * [[scalafx.scene.control.ButtonBar.ButtonData]] of
+    * [[scalafx.scene.control.ButtonBar.ButtonData.Yes]].
+    */
   val Yes: ButtonType = jfxsc.ButtonType.YES
 
   /**
-   * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "No" and has a
-   * [[scalafx.scene.control.ButtonBar.ButtonData]] of
-   * [[scalafx.scene.control.ButtonBar.ButtonData.No]].
-   */
+    * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "No" and has a
+    * [[scalafx.scene.control.ButtonBar.ButtonData]] of
+    * [[scalafx.scene.control.ButtonBar.ButtonData.No]].
+    */
   val No: ButtonType = jfxsc.ButtonType.NO
 
   /**
-   * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Finish" and has a
-   * [[scalafx.scene.control.ButtonBar.ButtonData]] of
-   * [[scalafx.scene.control.ButtonBar.ButtonData.Finish]].
-   */
+    * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Finish" and has a
+    * [[scalafx.scene.control.ButtonBar.ButtonData]] of
+    * [[scalafx.scene.control.ButtonBar.ButtonData.Finish]].
+    */
   val Finish: ButtonType = jfxsc.ButtonType.FINISH
 
   /**
-   * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Next" and has a
-   * [[scalafx.scene.control.ButtonBar.ButtonData]] of
-   * [[scalafx.scene.control.ButtonBar.ButtonData.NextForward]].
-   */
+    * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Next" and has a
+    * [[scalafx.scene.control.ButtonBar.ButtonData]] of
+    * [[scalafx.scene.control.ButtonBar.ButtonData.NextForward]].
+    */
   val Next: ButtonType = jfxsc.ButtonType.NEXT
 
   /**
-   * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Previous" and has a
-   * [[scalafx.scene.control.ButtonBar.ButtonData]] of
-   * [[scalafx.scene.control.ButtonBar.ButtonData.BackPrevious]].
-   */
+    * A pre-defined [[scalafx.scene.control.ButtonType]] that displays "Previous" and has a
+    * [[scalafx.scene.control.ButtonBar.ButtonData]] of
+    * [[scalafx.scene.control.ButtonBar.ButtonData.BackPrevious]].
+    */
   val Previous: ButtonType = jfxsc.ButtonType.PREVIOUS
 }
 
 /**
- *
- * The ButtonType is used to specify which buttons should be shown to users in the dialogs.
- *
- * Wraps a $JFX $URL0 $TC]].
- *
- * @define TC ButtonType
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ButtonType.html
- * @define JFX JavaFX
- * @define ORIGINALDOC Original Documentation]].
- */
-class ButtonType(override val delegate: jfxsc.ButtonType)
-  extends SFXDelegate[jfxsc.ButtonType] {
+  *
+  * The ButtonType is used to specify which buttons should be shown to users in the dialogs.
+  *
+  * Wraps a $JFX $URL0 $TC]].
+  *
+  * @define TC ButtonType
+  * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ButtonType.html
+  * @define JFX JavaFX
+  * @define ORIGINALDOC Original Documentation]].
+  */
+class ButtonType(override val delegate: jfxsc.ButtonType) extends SFXDelegate[jfxsc.ButtonType] {
 
   def this(text: String) = this(new jfxsc.ButtonType(text))
 
   def this(text: String, buttonData: ButtonData) = this(new jfxsc.ButtonType(text, buttonData))
 
   /**
-   * Returns the ButtonData specified for this ButtonType in the constructor.
-   */
+    * Returns the ButtonData specified for this ButtonType in the constructor.
+    */
   val buttonData: ButtonData = delegate.getButtonData
 
   /**
-   * Returns the text specified for this ButtonType in the constructor;
-   */
+    * Returns the text specified for this ButtonType in the constructor;
+    */
   val text: String = delegate.getText
 }

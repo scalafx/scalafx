@@ -30,7 +30,8 @@ package scalafx.controls.controls
 import scalafx.Includes._
 import scalafx.scene.control._
 
-class ComboBoxBaseControls[T](target: ComboBoxBase[T]) extends PropertiesNodes[ComboBoxBase[T]](target, "ComboBoxBase Properties") {
+class ComboBoxBaseControls[T](target: ComboBoxBase[T])
+    extends PropertiesNodes[ComboBoxBase[T]](target, "ComboBoxBase Properties") {
 
   //  val lblValue = super.getLabel(target.value.selectString())
 

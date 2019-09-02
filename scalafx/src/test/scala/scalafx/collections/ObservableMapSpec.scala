@@ -36,23 +36,29 @@ import scala.collection.JavaConverters._
 import scala.collection.mutable._
 
 /**
- * ObservableMap[K, V] Spec tests.
- *
- *
- */
+  * ObservableMap[K, V] Spec tests.
+  *
+  *
+  */
 class ObservableMapSpec[K, V]
-  extends SimpleSFXDelegateSpec[jfxc.ObservableMap[K, V], ObservableMap[K, V]](classOf[jfxc.ObservableMap[K, V]], classOf[ObservableMap[K, V]]) {
+    extends SimpleSFXDelegateSpec[jfxc.ObservableMap[K, V], ObservableMap[K, V]](
+      classOf[jfxc.ObservableMap[K, V]],
+      classOf[ObservableMap[K, V]]
+    ) {
 
   /**
-   * Verifies if a generated Map is the same instance than a original Map. If it should not be,
-   * generated map must be a ObservableMap.
-   *
-   * @param generatedMap Generated Map, that should be a ObservableMap.
-   * @param originalMap Map Original ObservableMap.
-   * @param shouldBeTheSame If both maps should be same instance.
-   */
-  private def compareInstances(generatedMap: Map[Int, String],
-                               originalMap: ObservableMap[Int, String], shouldBeTheSame: Boolean) {
+    * Verifies if a generated Map is the same instance than a original Map. If it should not be,
+    * generated map must be a ObservableMap.
+    *
+    * @param generatedMap Generated Map, that should be a ObservableMap.
+    * @param originalMap Map Original ObservableMap.
+    * @param shouldBeTheSame If both maps should be same instance.
+    */
+  private def compareInstances(
+      generatedMap: Map[Int, String],
+      originalMap: ObservableMap[Int, String],
+      shouldBeTheSame: Boolean
+  ) {
     if (shouldBeTheSame) {
       generatedMap should be theSameInstanceAs (originalMap)
     } else {
@@ -79,7 +85,7 @@ class ObservableMapSpec[K, V]
     assertGeneratedMap(ObservableMap(map1.asScala))
 
     val map2 = Map.empty[Int, String]
-    map2 +=((1, "one"), (2, "two"))
+    map2 += ((1, "one"), (2, "two"))
     assertGeneratedMap(ObservableMap(map2))
   }
 
@@ -118,8 +124,8 @@ class ObservableMapSpec[K, V]
   it should "return changed map" in {
     // Preparation
     val map = ObservableMap((1, "one"), (2, "two"))
-    map onChange {
-      (sourceMap, change) => sourceMap should be(map)
+    map onChange { (sourceMap, change) =>
+      sourceMap should be(map)
     }
 
     // Execution
@@ -130,14 +136,13 @@ class ObservableMapSpec[K, V]
     // Preparation
     val map = ObservableMap.empty[Int, String]
     val addedEntries = Buffer.empty[(Int, String)]
-    map onChange {
-      (sourceMap, change) =>
-        change match {
-          case Add(key, valueAdded) => {
-            addedEntries += ((key, valueAdded))
-          }
-          case _                    => fail("Unexpected change: " + change)
+    map onChange { (sourceMap, change) =>
+      change match {
+        case Add(key, valueAdded) => {
+          addedEntries += ((key, valueAdded))
         }
+        case _ => fail("Unexpected change: " + change)
+      }
     }
 
     // Execution
@@ -145,18 +150,18 @@ class ObservableMapSpec[K, V]
     compareInstances((map += (1 -> 1.toString)), map, true)
     compareInstances((map += (2 -> 2.toString) += (3 -> 3.toString)), map, true)
     compareInstances((map += ((4, 4.toString))), map, true)
-    compareInstances((map +=((5, 5.toString), (6, 6.toString))), map, true)
-    compareInstances((map +=(7 -> 7.toString, 8 -> 8.toString)), map, true)
+    compareInstances((map += ((5, 5.toString), (6, 6.toString))), map, true)
+    compareInstances((map += (7 -> 7.toString, 8 -> 8.toString)), map, true)
     compareInstances((map ++= List((9, 9.toString))), map, true)
     compareInstances((map ++= List((10, 10.toString), (11, 11.toString))), map, true)
-    (map put(12, 12.toString)) should be(None)
-    (map getOrElseUpdate(13, 13.toString)) should equal(13.toString)
+    (map put (12, 12.toString)) should be(None)
+    (map getOrElseUpdate (13, 13.toString)) should equal(13.toString)
     // Next operations must not affect original map, so they must not call onchange function
     compareInstances((map + (100 -> 100.toString)), map, false)
     compareInstances((map + (101 -> 101.toString) + (102 -> 102.toString)), map, false)
     compareInstances((map + ((103, 103.toString))), map, false)
-    compareInstances((map +((104, 104.toString), (105, 105.toString))), map, false)
-    compareInstances((map +(106 -> 106.toString, 107 -> 107.toString)), map, false)
+    compareInstances((map + ((104, 104.toString), (105, 105.toString))), map, false)
+    compareInstances((map + (106 -> 106.toString, 107 -> 107.toString)), map, false)
     compareInstances((map ++ List((108, 108.toString))), map, false)
     compareInstances((map ++ List((109, 109.toString), (110, 110.toString))), map, false)
     compareInstances((map.updated(111, 111.toString)), map, false)
@@ -169,21 +174,20 @@ class ObservableMapSpec[K, V]
     // Preparation
     val map = ObservableMap((0 to 20).map(i => (i, i.toString)))
     val removedEntries = Buffer.empty[(Int, String)]
-    map onChange {
-      (sourceMap, change) =>
-        change match {
-          case Remove(key, valueRemoved) => {
-            removedEntries += ((key, valueRemoved))
-          }
-          case _                         => fail("Unexpected change: " + change)
+    map onChange { (sourceMap, change) =>
+      change match {
+        case Remove(key, valueRemoved) => {
+          removedEntries += ((key, valueRemoved))
         }
+        case _ => fail("Unexpected change: " + change)
+      }
     }
 
     // Execution
     compareInstances((map -= 0), map, true)
     compareInstances((map -= 1 -= 2), map, true)
     compareInstances((map -= (3)), map, true)
-    compareInstances((map -=(4, 5)), map, true)
+    compareInstances((map -= (4, 5)), map, true)
     compareInstances((map --= List(6)), map, true)
     compareInstances((map --= List(7, 8)), map, true)
     (map remove (9)) should equal(Option(9.toString))
@@ -194,7 +198,7 @@ class ObservableMapSpec[K, V]
     compareInstances((map - 10), map, false)
     compareInstances((map - 11 - 12), map, false)
     compareInstances((map - (13)), map, false)
-    compareInstances((map -(14, 15)), map, false)
+    compareInstances((map - (14, 15)), map, false)
     compareInstances((map -- List(16)), map, false)
     compareInstances((map -- List(17, 18)), map, false)
 
@@ -208,14 +212,18 @@ class ObservableMapSpec[K, V]
     //      The `for` loop implements operation equivalent to `map.retain`
     //      without throwing ConcurrentModificationException.
     //    compareInstances(map.retain((i, str) => i % 2 == 0), map, true)
-    for (k <- map.keys.toArray if (k % 2 != 0)) {map.remove(k)}
+    for (k <- map.keys.toArray if (k % 2 != 0)) { map.remove(k) }
     map should equal(ObservableMap((10 to 20).filter(_ % 2 == 0).map(i => (i, i.toString))))
-    removedEntries.toList.sortWith(_._1 < _._1) should equal((10 to 20).filter(_ % 2 != 0).map(i => (i, i.toString)).toList)
+    removedEntries.toList.sortWith(_._1 < _._1) should equal(
+      (10 to 20).filter(_ % 2 != 0).map(i => (i, i.toString)).toList
+    )
 
     removedEntries.clear()
     // Clear Map
     map.clear()
-    removedEntries.toList.sortWith(_._1 < _._1) should equal((10 to 20).filter(_ % 2 == 0).map(i => (i, i.toString)).toList)
+    removedEntries.toList.sortWith(_._1 < _._1) should equal(
+      (10 to 20).filter(_ % 2 == 0).map(i => (i, i.toString)).toList
+    )
     map should be('empty)
   }
 
@@ -223,14 +231,13 @@ class ObservableMapSpec[K, V]
     // Preparation
     val map = ObservableMap((0 to 20).map(i => (i, i.toString)))
     val replacedEntries = Buffer.empty[(Int, String, String)]
-    map onChange {
-      (sourceMap, change) =>
-        change match {
-          case Replace(key, valueAdded, valueRemoved) => {
-            replacedEntries += ((key, valueAdded, valueRemoved))
-          }
-          case _                                      => fail("Unexpected change: " + change)
+    map onChange { (sourceMap, change) =>
+      change match {
+        case Replace(key, valueAdded, valueRemoved) => {
+          replacedEntries += ((key, valueAdded, valueRemoved))
         }
+        case _ => fail("Unexpected change: " + change)
+      }
     }
     val expectedEntries = Buffer.empty[(Int, String, String)]
 
@@ -241,27 +248,27 @@ class ObservableMapSpec[K, V]
     map += (1 -> "one")
     expectedEntries += ((1, "one", 1.toString))
     map += (2 -> "two") += (3 -> "three")
-    expectedEntries +=((2, "two", 2.toString), (3, "three", 3.toString))
+    expectedEntries += ((2, "two", 2.toString), (3, "three", 3.toString))
     map += ((4, "four"))
     expectedEntries += ((4, "four", 4.toString))
-    map +=((5, "five"), (6, "six"))
-    expectedEntries +=((5, "five", 5.toString), (6, "six", 6.toString))
-    map +=(7 -> "seven", 8 -> "eight")
-    expectedEntries +=((7, "seven", 7.toString), (8, "eight", 8.toString))
+    map += ((5, "five"), (6, "six"))
+    expectedEntries += ((5, "five", 5.toString), (6, "six", 6.toString))
+    map += (7 -> "seven", 8 -> "eight")
+    expectedEntries += ((7, "seven", 7.toString), (8, "eight", 8.toString))
     map ++= List((9, "nine"))
     expectedEntries += ((9, "nine", 9.toString))
     map ++= List((10, "ten"), (11, "eleven"))
-    expectedEntries +=((10, "ten", 10.toString), (11, "eleven", 11.toString))
-    map put(12, 12.toString) // repeating a value. It will not be change the map
-    map put(12, "twelve")
+    expectedEntries += ((10, "ten", 10.toString), (11, "eleven", 11.toString))
+    map put (12, 12.toString) // repeating a value. It will not be change the map
+    map put (12, "twelve")
     expectedEntries += ((12, "twelve", 12.toString))
-    map getOrElseUpdate(13, "thirteen") // Map will not be updated
+    map getOrElseUpdate (13, "thirteen") // Map will not be updated
     // Operations that not change this set
     map + (14 -> "fourteen")
     map + (15 -> "fifteen") + (16 -> "sixteen")
     map + ((17, "seventeen"))
-    map +((18, "eighteen"), (19, "nineteen"))
-    map +(20 -> "twenty", 21 -> "twenty-one")
+    map + ((18, "eighteen"), (19, "nineteen"))
+    map + (20 -> "twenty", 21 -> "twenty-one")
     map ++ List((22, "twenty-two"))
     map ++ List((23, "twenty-three"), (24, "twenty-four"))
     map.updated(25, "twenty-five")
@@ -275,21 +282,20 @@ class ObservableMapSpec[K, V]
     val map = ObservableMap(new LinkedHashMap[Int, String])
     val addedValues = Buffer.empty[(Int, String)]
     val removedValues = Buffer.empty[(Int, String)]
-    map onChange {
-      (sourceSet, change) =>
-        change match {
-          case Add(key, value)              => addedValues += ((key, value))
-          case Remove(key, value)           => removedValues += ((key, value))
-          case Replace(key, added, removed) => {
-            addedValues += ((key, added))
-            removedValues += ((key, removed))
-          }
+    map onChange { (sourceSet, change) =>
+      change match {
+        case Add(key, value)    => addedValues += ((key, value))
+        case Remove(key, value) => removedValues += ((key, value))
+        case Replace(key, added, removed) => {
+          addedValues += ((key, added))
+          removedValues += ((key, removed))
         }
+      }
     }
 
     // Execution
-    compareInstances((map +=((3, 3.toString), (1, 1.toString), (5, 5.toString))), map, true)
-    compareInstances((map -=(1, 4)), map, true)
+    compareInstances((map += ((3, 3.toString), (1, 1.toString), (5, 5.toString))), map, true)
+    compareInstances((map -= (1, 4)), map, true)
     map(3) = "three"
 
     // Verification

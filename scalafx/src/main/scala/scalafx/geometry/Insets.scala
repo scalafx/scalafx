@@ -35,18 +35,18 @@ object Insets {
   implicit def sfxInsets2jfx(i: Insets): jfxg.Insets = if (i != null) i.delegate else null
 
   /**
-   * Empty insets. An Insets instance with all offsets equal to zero.
-   */
+    * Empty insets. An Insets instance with all offsets equal to zero.
+    */
   val Empty: Insets = new Insets(jfxg.Insets.EMPTY)
 
   /**
-   * Constructs a new Insets instance with same value for all four offsets.
-   */
+    * Constructs a new Insets instance with same value for all four offsets.
+    */
   def apply(topRightBottomLeft: Double): Insets = new Insets(new jfxg.Insets(topRightBottomLeft))
 
   /**
-   * Constructs a new Insets instance with four different offsets.
-   */
+    * Constructs a new Insets instance with four different offsets.
+    */
   def apply(top: Double, right: Double, bottom: Double, left: Double): Insets =
     new Insets(new jfxg.Insets(top, right, bottom, left))
 
@@ -55,23 +55,23 @@ object Insets {
 class Insets(override val delegate: jfxg.Insets) extends SFXDelegate[jfxg.Insets] {
 
   /**
-   * The inset on the top side
-   */
+    * The inset on the top side
+    */
   def top = delegate.getTop
 
   /**
-   * The inset on the right side
-   */
+    * The inset on the right side
+    */
   def right = delegate.getRight
 
   /**
-   * The inset on the bottom side
-   */
+    * The inset on the bottom side
+    */
   def bottom = delegate.getBottom
 
   /**
-   * The inset on the left side
-   */
+    * The inset on the left side
+    */
   def left = delegate.getLeft
 
 }

@@ -38,82 +38,81 @@ import scala.language.implicitConversions
 object MediaPlayer {
   implicit def sfxMediaPlayer2jfx(mp: MediaPlayer): jfxsm.MediaPlayer = if (mp != null) mp.delegate else null
 
-  object Status
-    extends SFXEnumDelegateCompanion[jfxsm.MediaPlayer.Status, Status] {
+  object Status extends SFXEnumDelegateCompanion[jfxsm.MediaPlayer.Status, Status] {
 
     /**
-     * State of the player after dispose() method is invoked.
-     *
-     * This state indicates player is disposed, all resources are free and player SHOULD NOT be used again.
-     * Media and MediaView objects associated with disposed player can be reused.
-     */
+      * State of the player after dispose() method is invoked.
+      *
+      * This state indicates player is disposed, all resources are free and player SHOULD NOT be used again.
+      * Media and MediaView objects associated with disposed player can be reused.
+      */
     case object Disposed extends Status(jfxsm.MediaPlayer.Status.DISPOSED)
-    @deprecated ("Use Disposed; DISPOSED will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use Disposed; DISPOSED will be removed in a future release", "8.0.60-R10")
     val DISPOSED = Disposed
 
     /**
-     * State of the player when a critical error has occurred.
-     */
+      * State of the player when a critical error has occurred.
+      */
     case object Halted extends Status(jfxsm.MediaPlayer.Status.HALTED)
-    @deprecated ("Use Halted; HALTED will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use Halted; HALTED will be removed in a future release", "8.0.60-R10")
     val HALTED = Halted
 
     /**
-     * State of the player when playback is paused.
-     */
+      * State of the player when playback is paused.
+      */
     case object Paused extends Status(jfxsm.MediaPlayer.Status.PAUSED)
-    @deprecated ("Use Paused; PAUSED will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use Paused; PAUSED will be removed in a future release", "8.0.60-R10")
     val PAUSED = Paused
 
     /**
-     * State of the player when it is currently playing.
-     */
+      * State of the player when it is currently playing.
+      */
     case object Playing extends Status(jfxsm.MediaPlayer.Status.PLAYING)
-    @deprecated ("Use Playing; PLAYING will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use Playing; PLAYING will be removed in a future release", "8.0.60-R10")
     val PLAYING = Playing
 
     /**
-     * State of the player once it is prepared to play.
-     */
+      * State of the player once it is prepared to play.
+      */
     case object Ready extends Status(jfxsm.MediaPlayer.Status.READY)
-    @deprecated ("Use Ready; READY will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use Ready; READY will be removed in a future release", "8.0.60-R10")
     val READY = Ready
 
     /**
-     * State of the player when data coming into the buffer has slowed or stopped and the playback buffer does not
-     * have enough data to continue playing.
-     */
+      * State of the player when data coming into the buffer has slowed or stopped and the playback buffer does not
+      * have enough data to continue playing.
+      */
     case object Stalled extends Status(jfxsm.MediaPlayer.Status.STALLED)
-    @deprecated ("Use Stalled; STALLED will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use Stalled; STALLED will be removed in a future release", "8.0.60-R10")
     val STALLED = Stalled
 
     /**
-     * State of the player when playback has stopped.
-     */
+      * State of the player when playback has stopped.
+      */
     case object Stopped extends Status(jfxsm.MediaPlayer.Status.STOPPED)
-    @deprecated ("Use Stopped; STOPPED will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use Stopped; STOPPED will be removed in a future release", "8.0.60-R10")
     val STOPPED = Stopped
 
     /**
-     * State of the player immediately after creation.
-     */
+      * State of the player immediately after creation.
+      */
     case object Unknown extends Status(jfxsm.MediaPlayer.Status.UNKNOWN)
-    @deprecated ("Use Unknown; UNKNOWN will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use Unknown; UNKNOWN will be removed in a future release", "8.0.60-R10")
     val UNKNOWN = Unknown
 
-    protected override def unsortedValues: Array[Status] = Array(Disposed, Halted, Paused, Playing,
-      Ready, Stalled, Stopped, Unknown)
+    protected override def unsortedValues: Array[Status] =
+      Array(Disposed, Halted, Paused, Playing, Ready, Stalled, Stopped, Unknown)
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/MediaPlayer.Status.html]]
-   */
+    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/MediaPlayer.Status.html]]
+    */
   sealed abstract class Status(override val delegate: jfxsm.MediaPlayer.Status)
-    extends SFXEnumDelegate[jfxsm.MediaPlayer.Status]
+      extends SFXEnumDelegate[jfxsm.MediaPlayer.Status]
 
   /**
-   * A value representing an effectively infinite number of playback cycles.
-   */
+    * A value representing an effectively infinite number of playback cycles.
+    */
   val Indefinite: Int = jfxsm.MediaPlayer.INDEFINITE
 
   private def runnable(op: => Unit): Runnable = new Runnable {
@@ -126,112 +125,112 @@ object MediaPlayer {
 class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[jfxsm.MediaPlayer] {
 
   /**
-   * Create a player for a specific media.
-   */
+    * Create a player for a specific media.
+    */
   def this(media: Media) = this(new jfxsm.MediaPlayer(media))
 
   /**
-   * The interval between spectrum updates in seconds.
-   */
+    * The interval between spectrum updates in seconds.
+    */
   def audioSpectrumInterval: DoubleProperty = delegate.audioSpectrumIntervalProperty
   def audioSpectrumInterval_=(v: Double) {
     audioSpectrumInterval() = v
   }
 
   /**
-   * A listener for audio spectrum updates.
-   */
+    * A listener for audio spectrum updates.
+    */
   def audioSpectrumListener: ObjectProperty[jfxsm.AudioSpectrumListener] = delegate.audioSpectrumListenerProperty
   def audioSpectrumListener_=(v: jfxsm.AudioSpectrumListener) {
     audioSpectrumListener() = v
   }
 
   /**
-   * The number of bands in the audio spectrum.
-   */
+    * The number of bands in the audio spectrum.
+    */
   def audioSpectrumNumBands: IntegerProperty = delegate.audioSpectrumNumBandsProperty
   def audioSpectrumNumBands_=(v: Int) {
     audioSpectrumNumBands() = v
   }
 
   /**
-   * The sensitivity threshold in decibels; must be non-positive.
-   */
+    * The sensitivity threshold in decibels; must be non-positive.
+    */
   def audioSpectrumThreshold: IntegerProperty = delegate.audioSpectrumThresholdProperty
   def audioSpectrumThreshold_=(v: Int) {
     audioSpectrumThreshold() = v
   }
 
   /**
-   * Whether playing should start as soon as possible.
-   */
+    * Whether playing should start as soon as possible.
+    */
   def autoPlay: BooleanProperty = delegate.autoPlayProperty
   def autoPlay_=(v: Boolean) {
     autoPlay() = v
   }
 
   /**
-   * The balance, or left-right setting, of the audio output.
-   */
+    * The balance, or left-right setting, of the audio output.
+    */
   def balance: DoubleProperty = delegate.balanceProperty
   def balance_=(v: Double) {
     balance() = v
   }
 
   /**
-   * The current buffer position indicating how much media can be played without stalling the MediaPlayer.
-   */
+    * The current buffer position indicating how much media can be played without stalling the MediaPlayer.
+    */
   def bufferProgressTime: ReadOnlyObjectProperty[jfxu.Duration] = delegate.bufferProgressTimeProperty
 
   /**
-   * The number of completed playback cycles.
-   */
+    * The number of completed playback cycles.
+    */
   def currentCount: ReadOnlyIntegerProperty = delegate.currentCountProperty
 
   /**
-   * The current rate of playback regardless of settings.
-   */
+    * The current rate of playback regardless of settings.
+    */
   def currentRate: ReadOnlyDoubleProperty = delegate.currentRateProperty
 
   /**
-   * The current media playback time.
-   */
+    * The current media playback time.
+    */
   def currentTime: ReadOnlyObjectProperty[jfxu.Duration] = delegate.currentTimeProperty
 
   /**
-   * The number of times the media will be played.
-   */
+    * The number of times the media will be played.
+    */
   def cycleCount: IntegerProperty = delegate.cycleCountProperty
   def cycleCount_=(v: Int) {
     cycleCount() = v
   }
 
   /**
-   * The amount of time between the startTime and stopTime of this player.
-   */
+    * The amount of time between the startTime and stopTime of this player.
+    */
   def cycleDuration: ReadOnlyObjectProperty[jfxu.Duration] = delegate.cycleDurationProperty
 
   /**
-   * Observable property set to a MediaException if an error occurs.
-   */
+    * Observable property set to a MediaException if an error occurs.
+    */
   def error: ReadOnlyObjectProperty[jfxsm.MediaException] = delegate.errorProperty
 
   /**
-   * Retrieves the Media instance being played.
-   */
+    * Retrieves the Media instance being played.
+    */
   def media = delegate.getMedia
 
   /**
-   * Whether the player audio is muted.
-   */
+    * Whether the player audio is muted.
+    */
   def mute: BooleanProperty = delegate.muteProperty
   def mute_=(v: Boolean) {
     mute() = v
   }
 
   /**
-   * Event handler invoked when the player currentTime reaches stopTime and is not repeating.
-   */
+    * Event handler invoked when the player currentTime reaches stopTime and is not repeating.
+    */
   def onEndOfMedia: ObjectProperty[Runnable] = delegate.onEndOfMediaProperty
   def onEndOfMedia_=(v: Runnable) {
     onEndOfMedia() = v
@@ -241,8 +240,8 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
   }
 
   /**
-   * Event handler invoked when an error occurs.
-   */
+    * Event handler invoked when an error occurs.
+    */
   def onError: ObjectProperty[Runnable] = delegate.onErrorProperty
   def onError_=(v: Runnable) {
     onError() = v
@@ -252,8 +251,8 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
   }
 
   /**
-   * Event handler invoked when the status changes to HALTED.
-   */
+    * Event handler invoked when the status changes to HALTED.
+    */
   def onHalted: ObjectProperty[Runnable] = delegate.onHaltedProperty
   def onHalted_=(v: Runnable) {
     onHalted() = v
@@ -263,16 +262,16 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
   }
 
   /**
-   * Event handler invoked when the player currentTime reaches a media marker.
-   */
+    * Event handler invoked when the player currentTime reaches a media marker.
+    */
   def onMarker = delegate.onMarkerProperty
   def onMarker_=(v: jfxe.EventHandler[jfxsm.MediaMarkerEvent]) {
     onMarker() = v
   }
 
   /**
-   * Event handler invoked when the status changes to PAUSED.
-   */
+    * Event handler invoked when the status changes to PAUSED.
+    */
   def onPaused: ObjectProperty[Runnable] = delegate.onPausedProperty
   def onPaused_=(v: Runnable) {
     onPaused() = v
@@ -281,10 +280,9 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
     onPaused() = MediaPlayer.runnable(op)
   }
 
-
   /**
-   * Event handler invoked when the status changes to PLAYING.
-   */
+    * Event handler invoked when the status changes to PLAYING.
+    */
   def onPlaying: ObjectProperty[Runnable] = delegate.onPlayingProperty
   def onPlaying_=(v: Runnable) {
     onPlaying() = v
@@ -293,10 +291,9 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
     onPlaying() = MediaPlayer.runnable(op)
   }
 
-
   /**
-   * Event handler invoked when the status changes to READY.
-   */
+    * Event handler invoked when the status changes to READY.
+    */
   def onReady: ObjectProperty[Runnable] = delegate.onReadyProperty
   def onReady_=(v: Runnable) {
     onReady() = v
@@ -305,10 +302,9 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
     onReady() = MediaPlayer.runnable(op)
   }
 
-
   /**
-   * Event handler invoked when the player currentTime reaches stopTime and will be repeating.
-   */
+    * Event handler invoked when the player currentTime reaches stopTime and will be repeating.
+    */
   def onRepeat: ObjectProperty[Runnable] = delegate.onRepeatProperty
   def onRepeat_=(v: Runnable) {
     onRepeat() = v
@@ -317,10 +313,9 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
     onRepeat() = MediaPlayer.runnable(op)
   }
 
-
   /**
-   * Event handler invoked when the status changes to STALLED.
-   */
+    * Event handler invoked when the status changes to STALLED.
+    */
   def onStalled: ObjectProperty[Runnable] = delegate.onStalledProperty
   def onStalled_=(v: Runnable) {
     onStalled() = v
@@ -329,10 +324,9 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
     onStalled() = MediaPlayer.runnable(op)
   }
 
-
   /**
-   * Event handler invoked when the status changes to STOPPED.
-   */
+    * Event handler invoked when the status changes to STOPPED.
+    */
   def onStopped: ObjectProperty[Runnable] = delegate.onStoppedProperty
   def onStopped_=(v: Runnable) {
     onStopped() = v
@@ -341,44 +335,43 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
     onStopped() = MediaPlayer.runnable(op)
   }
 
-
   /**
-   * The rate at which the media should be played.
-   */
+    * The rate at which the media should be played.
+    */
   def rate: DoubleProperty = delegate.rateProperty
   def rate_=(v: Double) {
     rate() = v
   }
 
   /**
-   * The time offset where media should start playing, or restart from when repeating.
-   */
+    * The time offset where media should start playing, or restart from when repeating.
+    */
   def startTime: ObjectProperty[jfxu.Duration] = delegate.startTimeProperty
   def startTime_=(v: Duration) {
     startTime() = v
   }
 
   /**
-   * The current state of the MediaPlayer.
-   */
+    * The current state of the MediaPlayer.
+    */
   def status: ReadOnlyObjectProperty[jfxsm.MediaPlayer.Status] = delegate.statusProperty
 
   /**
-   * The time offset where media should stop playing or restart when repeating.
-   */
+    * The time offset where media should stop playing or restart when repeating.
+    */
   def stopTime: ObjectProperty[jfxu.Duration] = delegate.stopTimeProperty
   def stopTime_=(v: Duration) {
     stopTime() = v
   }
 
   /**
-   * The total amount of play time if allowed to play until finished.
-   */
+    * The total amount of play time if allowed to play until finished.
+    */
   def totalDuration: ReadOnlyObjectProperty[jfxu.Duration] = delegate.totalDurationProperty
 
   /**
-   * The volume at which the media should be played.
-   */
+    * The volume at which the media should be played.
+    */
   def volume: DoubleProperty = delegate.volumeProperty
   def volume_=(v: Double) {
     volume() = v

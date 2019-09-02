@@ -30,19 +30,18 @@ import javafx.{print => jfxp}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
- * Companion Object for [[scalafx.print.PrintColor]].
- */
-object PrintColor
-  extends SFXEnumDelegateCompanion[jfxp.PrintColor, PrintColor] {
+  * Companion Object for [[scalafx.print.PrintColor]].
+  */
+object PrintColor extends SFXEnumDelegateCompanion[jfxp.PrintColor, PrintColor] {
 
   /**
-   * Specifies color printing.
-   */
+    * Specifies color printing.
+    */
   case object Color extends PrintColor(jfxp.PrintColor.COLOR)
 
   /**
-   * Specifies monochrome or grey scale printing.
-   */
+    * Specifies monochrome or grey scale printing.
+    */
   case object Monochrome extends PrintColor(jfxp.PrintColor.MONOCHROME)
 
   protected override def unsortedValues: Array[PrintColor] = Array(Color, Monochrome)
@@ -50,7 +49,6 @@ object PrintColor
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintColor.html JavaFX PrintColor]].
- */
-sealed abstract class PrintColor(override val delegate: jfxp.PrintColor)
-  extends SFXEnumDelegate[jfxp.PrintColor]
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintColor.html JavaFX PrintColor]].
+  */
+sealed abstract class PrintColor(override val delegate: jfxp.PrintColor) extends SFXEnumDelegate[jfxp.PrintColor]

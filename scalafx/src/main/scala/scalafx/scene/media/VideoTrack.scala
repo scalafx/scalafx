@@ -38,13 +38,13 @@ object VideoTrack {
 class VideoTrack(override val delegate: jfxsm.VideoTrack) extends Track(delegate) with SFXDelegate[jfxsm.VideoTrack] {
 
   /**
-   * Retrieves the height of the track.
-   */
+    * Retrieves the height of the track.
+    */
   def height = delegate.getHeight
 
   /**
-   * Retrieves the width of the track.
-   */
+    * Retrieves the width of the track.
+    */
   def width = delegate.getWidth
 
 }

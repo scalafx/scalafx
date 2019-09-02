@@ -42,22 +42,26 @@ object BackgroundSize {
   val Auto: Double = jfxsl.BackgroundSize.AUTO
 
   /**
-   * The default BackgroundSize used by BackgroundImages when an explicit size is not defined.
-   */
+    * The default BackgroundSize used by BackgroundImages when an explicit size is not defined.
+    */
   val Default = new BackgroundSize(jfxsl.BackgroundSize.DEFAULT)
 }
 
 /**
- * @author Jarek Sacha 
- */
-class BackgroundSize(override val delegate: jfxsl.BackgroundSize)
-  extends SFXDelegate[jfxsl.BackgroundSize] {
+  * @author Jarek Sacha
+  */
+class BackgroundSize(override val delegate: jfxsl.BackgroundSize) extends SFXDelegate[jfxsl.BackgroundSize] {
 
   /** Create a new BackgroundSize. */
-  def this(width: Double, height: Double, widthAsPercentage: Boolean, heightAsPercentage: Boolean,
-           contain: Boolean, cover: Boolean) =
-    this(new jfxsl.BackgroundSize(width, height, widthAsPercentage, heightAsPercentage,
-      contain, cover))
+  def this(
+      width: Double,
+      height: Double,
+      widthAsPercentage: Boolean,
+      heightAsPercentage: Boolean,
+      contain: Boolean,
+      cover: Boolean
+  ) =
+    this(new jfxsl.BackgroundSize(width, height, widthAsPercentage, heightAsPercentage, contain, cover))
 
   /** The height of the area within the Region where the associated BackgroundImage should render. */
   def width: Double = delegate.getHeight

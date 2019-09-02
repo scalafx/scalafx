@@ -35,16 +35,17 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 import scala.collection.mutable.Buffer
 
 /**
- * ObservableFloatArray Spec tests.
- */
+  * ObservableFloatArray Spec tests.
+  */
 class ObservableFloatArraySpec
-  extends SimpleSFXDelegateSpec[jfxc.ObservableFloatArray, ObservableFloatArray](classOf[jfxc.ObservableFloatArray],
-    classOf[ObservableFloatArray]) {
+    extends SimpleSFXDelegateSpec[jfxc.ObservableFloatArray, ObservableFloatArray](
+      classOf[jfxc.ObservableFloatArray],
+      classOf[ObservableFloatArray]
+    ) {
 
   /**
-   * Test trait for instance testing.
-   */
-
+    * Test trait for instance testing.
+    */
   trait InstanceTests {
     val array0: Array[Float] = Array.empty
     val array1 = Array(4.0f, 5.0f, 6.0f, 7.0f)
@@ -66,8 +67,7 @@ class ObservableFloatArraySpec
     instance1.onChange(onChangeBrief)
     instance2.onChange(onChangeFull(_, _))
     instance2.onChange(onChangeBrief)
-    def verifyChange(n: Int, array: ObservableFloatArray, sizeChanged:
-    Boolean, start: Int, end: Int) {
+    def verifyChange(n: Int, array: ObservableFloatArray, sizeChanged: Boolean, start: Int, end: Int) {
       val (a, c) = change(n)
       assert(a eq array)
       assert(c.sizeChanged === sizeChanged)
@@ -77,15 +77,15 @@ class ObservableFloatArraySpec
   }
 
   /**
-   * @inheritdoc
-   *
-   * Overridden to create empty JFX ObservableFloatArray (inherited method fails).
-   */
+    * @inheritdoc
+    *
+    * Overridden to create empty JFX ObservableFloatArray (inherited method fails).
+    */
   override protected def getJavaClassInstance = jfxc.FXCollections.observableFloatArray()
 
   /**
-   * Test that a function to access/change an array element with an invalid index yields an out of bounds exception.
-   */
+    * Test that a function to access/change an array element with an invalid index yields an out of bounds exception.
+    */
   def testOutOfBoundsExceptionThrown(f: => Unit) {
     intercept[ArrayIndexOutOfBoundsException] {
       f
@@ -93,8 +93,8 @@ class ObservableFloatArraySpec
   }
 
   /**
-   * Test that a function results in an NegativeArraySizeException being thrown.
-   */
+    * Test that a function results in an NegativeArraySizeException being thrown.
+    */
   def testNegativeArraySizeExceptionThrown(f: => Unit) {
     intercept[NegativeArraySizeException] {
       f
@@ -102,16 +102,17 @@ class ObservableFloatArraySpec
   }
 
   /**
-   * Test that a function results in an IllegalArgumentException being thrown.
-   */
+    * Test that a function results in an IllegalArgumentException being thrown.
+    */
   def testIllegalArgumentExceptionThrown(f: => Unit) {
     intercept[IllegalArgumentException] {
       f
     }
   }
+
   /**
-   * Common tests for an empty array.
-   */
+    * Common tests for an empty array.
+    */
   def testEmpty(oa: ObservableFloatArray) {
     assert(oa.length === 0)
     assert(oa.size === 0)
@@ -122,8 +123,8 @@ class ObservableFloatArraySpec
   }
 
   /**
-   * Common tests for a non-empty array with known contents.
-   */
+    * Common tests for a non-empty array with known contents.
+    */
   def testNonEmpty(oa: ObservableFloatArray, expected: Array[Float]) {
     assert(oa.length === expected.length)
     assert(oa.size === expected.length)
@@ -136,8 +137,8 @@ class ObservableFloatArraySpec
   }
 
   /**
-   * Test that arrays are equal.
-   */
+    * Test that arrays are equal.
+    */
   def testEqual(oa: ObservableFloatArray, expected: ObservableFloatArray) {
     assert(oa.length === expected.length)
     assert(oa.size === expected.length)
@@ -148,8 +149,8 @@ class ObservableFloatArraySpec
   }
 
   /**
-   * Class tests.
-   */
+    * Class tests.
+    */
   it should "allow construct an empty array by default" in {
     testEmpty(new ObservableFloatArray())
   }
@@ -274,8 +275,8 @@ class ObservableFloatArraySpec
   }
 
   /**
-   * Companion tests.
-   */
+    * Companion tests.
+    */
   it should "return an empty observable array from companion's empty()" in {
     testEmpty(ObservableFloatArray.empty())
   }

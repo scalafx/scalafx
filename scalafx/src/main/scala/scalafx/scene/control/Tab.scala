@@ -43,130 +43,128 @@ object Tab {
 
 }
 
-class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
-  extends Styleable
-  with SFXDelegate[jfxsc.Tab] {
+class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends Styleable with SFXDelegate[jfxsc.Tab] {
 
   /**
-   * The closable state for this tab.
-   */
+    * The closable state for this tab.
+    */
   def closable: BooleanProperty = delegate.closableProperty
   def closable_=(v: Boolean) {
     closable() = v
   }
 
   /**
-   * The content associated with the tab.
-   */
+    * The content associated with the tab.
+    */
   def content: ObjectProperty[jfxs.Node] = delegate.contentProperty
   def content_=(v: Node) {
     content() = v
   }
 
   /**
-   * The context menu associated with the tab.
-   */
+    * The context menu associated with the tab.
+    */
   def contextMenu: ObjectProperty[jfxsc.ContextMenu] = delegate.contextMenuProperty
   def contextMenu_=(v: ContextMenu) {
     contextMenu() = v
   }
 
   /**
-   * The graphic in the tab.
-   */
+    * The graphic in the tab.
+    */
   def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
   def graphic_=(v: Node) {
     graphic() = v
   }
 
   /**
-   * The id of this tab.
-   */
+    * The id of this tab.
+    */
   def id: StringProperty = delegate.idProperty
   def id_=(v: String) {
     id() = v
   }
 
   /**
-   * The event handler that is associated with the tab when the tab is closed.
-   */
+    * The event handler that is associated with the tab when the tab is closed.
+    */
   def onClosed = delegate.onClosedProperty
   def onClosed_=(v: jfxe.EventHandler[jfxe.Event]) {
     onClosed() = v
   }
 
   /**
-   * Called when there is an external request to close this Tab.
-   */
+    * Called when there is an external request to close this Tab.
+    */
   def onCloseRequest: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onCloseRequestProperty()
   def onCloseRequest_=(v: jfxe.EventHandler[jfxe.Event]) {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxe.Event]](onCloseRequest, v)
   }
 
   /**
-   * The event handler that is associated with a selection on the tab.
-   */
+    * The event handler that is associated with a selection on the tab.
+    */
   def onSelectionChanged = delegate.onSelectionChangedProperty
   def onSelectionChanged_=(v: jfxe.EventHandler[jfxe.Event]) {
     onSelectionChanged() = v
   }
 
   /**
-   * The currently selected tab.
-   */
+    * The currently selected tab.
+    */
   def selected: ReadOnlyBooleanProperty = delegate.selectedProperty
 
   /**
-   * The CSS style string associated to this tab.
-   */
+    * The CSS style string associated to this tab.
+    */
   def style: StringProperty = delegate.styleProperty
   def style_=(v: String) {
     style() = v
   }
 
   /**
-   * The TabPane that contains this tab.
-   */
+    * The TabPane that contains this tab.
+    */
   def tabPane: ReadOnlyObjectProperty[jfxsc.TabPane] = delegate.tabPaneProperty
 
   /**
-   * The text shown in the tab.
-   */
+    * The text shown in the tab.
+    */
   def text: StringProperty = delegate.textProperty
   def text_=(v: String) {
     text() = v
   }
 
   /**
-   * The tooltip associated with this tab.
-   */
+    * The tooltip associated with this tab.
+    */
   def tooltip: ObjectProperty[jfxsc.Tooltip] = delegate.tooltipProperty
   def tooltip_=(v: Tooltip) {
     tooltip() = v
   }
 
   /**
-   * Sets the disabled state of this tab. A disable tab is no longer interactive or traversable,
-   * but the contents remain interactive. A disable tab can be selected using TabPane.getSelectionModel().
-   *
-   * @since 2.2
-   */
+    * Sets the disabled state of this tab. A disable tab is no longer interactive or traversable,
+    * but the contents remain interactive. A disable tab can be selected using TabPane.getSelectionModel().
+    *
+    * @since 2.2
+    */
   def disable: BooleanProperty = delegate.disableProperty()
   def disable_=(v: Boolean) {
     disable() = v
   }
 
   /**
-   * Indicates whether or not this Tab is disabled. A Tab will become disabled if disable is set to true
-   * on either itself or if the TabPane is disabled.
-   * @since 2.2
-   */
+    * Indicates whether or not this Tab is disabled. A Tab will become disabled if disable is set to true
+    * on either itself or if the TabPane is disabled.
+    * @since 2.2
+    */
   def disabled: ReadOnlyBooleanProperty = delegate.disabledProperty()
 
   /**
-   * Set the value of the userData property for the instance constructed by this builder.
-   * @since 2.2
-   */
+    * Set the value of the userData property for the instance constructed by this builder.
+    * @since 2.2
+    */
   def userData: AnyRef = delegate.getUserData
   def userData_=(v: AnyRef) {
     delegate.setUserData(v)

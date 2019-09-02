@@ -33,8 +33,8 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * Spinner Spec tests.
- */
+  * Spinner Spec tests.
+  */
 class SpinnerSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.Spinner[T], Spinner[T]](classOf[jfxsc.Spinner[T]], classOf[Spinner[T]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.Spinner[T], Spinner[T]](classOf[jfxsc.Spinner[T]], classOf[Spinner[T]])
+    with RunOnApplicationThread

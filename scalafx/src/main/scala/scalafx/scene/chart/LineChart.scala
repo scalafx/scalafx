@@ -45,30 +45,33 @@ object LineChart {
     new LineChart[X, Y](new jfxsc.LineChart[X, Y](xAxis, yAxis, data))
 
   object SortingPolicy extends SFXEnumDelegateCompanion[jfxsc.LineChart.SortingPolicy, SortingPolicy] {
+
     /**
-     * The data should be left in the order defined by the list in [[scalafx.scene.chart.LineChart.data]] property.
-     */
+      * The data should be left in the order defined by the list in [[scalafx.scene.chart.LineChart.data]] property.
+      */
     case object None extends SortingPolicy(jfxsc.LineChart.SortingPolicy.NONE)
+
     /**
-     * The data is ordered by x axis.
-     */
+      * The data is ordered by x axis.
+      */
     case object XAxis extends SortingPolicy(jfxsc.LineChart.SortingPolicy.X_AXIS)
+
     /**
-     * The data is ordered by y axis.
-     */
+      * The data is ordered by y axis.
+      */
     case object YAxis extends SortingPolicy(jfxsc.LineChart.SortingPolicy.Y_AXIS)
 
     protected override def unsortedValues: Array[SortingPolicy] = Array(None, XAxis, YAxis)
   }
 
   sealed abstract class SortingPolicy(override val delegate: jfxsc.LineChart.SortingPolicy)
-    extends SFXEnumDelegate[jfxsc.LineChart.SortingPolicy]
+      extends SFXEnumDelegate[jfxsc.LineChart.SortingPolicy]
 
 }
 
 class LineChart[X, Y](override val delegate: jfxsc.LineChart[X, Y])
-  extends XYChart[X, Y](delegate)
-  with SFXDelegate[jfxsc.LineChart[X, Y]] {
+    extends XYChart[X, Y](delegate)
+    with SFXDelegate[jfxsc.LineChart[X, Y]] {
 
   def this(xAxis: Axis[X], yAxis: Axis[Y]) {
     this(new jfxsc.LineChart[X, Y](xAxis, yAxis))
@@ -79,8 +82,8 @@ class LineChart[X, Y](override val delegate: jfxsc.LineChart[X, Y])
   }
 
   /**
-   * Indicates whether the data passed to LineChart should be sorted by natural order of one of the axes.
-   */
+    * Indicates whether the data passed to LineChart should be sorted by natural order of one of the axes.
+    */
   def axisSortingPolicy: ObjectProperty[jfxsc.LineChart.SortingPolicy] = delegate.axisSortingPolicyProperty
   def axisSortingPolicy_=(v: LineChart.SortingPolicy) {
     ObjectProperty.fillProperty(axisSortingPolicy, v)

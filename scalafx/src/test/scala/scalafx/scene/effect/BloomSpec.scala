@@ -32,13 +32,13 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Bloom Spec tests.
- *
- *
- */
+  * Bloom Spec tests.
+  *
+  *
+  */
 class BloomSpec
-  extends SimpleSFXDelegateSpec[jfxse.Bloom, Bloom](classOf[jfxse.Bloom], classOf[Bloom])
-  with InputDelegateSpec[Bloom] {
+    extends SimpleSFXDelegateSpec[jfxse.Bloom, Bloom](classOf[jfxse.Bloom], classOf[Bloom])
+    with InputDelegateSpec[Bloom] {
 
   val inputDelegate = getScalaClassInstance
 

@@ -39,55 +39,80 @@ object PixelWriter {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/PixelWriter.html]]
- */
-trait PixelWriter
-  extends SFXDelegate[jfxsi.PixelWriter] {
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/PixelWriter.html]]
+  */
+trait PixelWriter extends SFXDelegate[jfxsi.PixelWriter] {
 
   /**
-   * This method returns the PixelFormat in which the surface stores its pixels, or a roughly equivalent pixel format
-   * from which it can easily convert pixels for purposes of writing them.
-   */
+    * This method returns the PixelFormat in which the surface stores its pixels, or a roughly equivalent pixel format
+    * from which it can easily convert pixels for purposes of writing them.
+    */
   def pixelFormat: PixelFormat[_] = delegate.getPixelFormat
 
   /**
-   * Stores pixel data for a color into the specified coordinates of the surface.
-   */
+    * Stores pixel data for a color into the specified coordinates of the surface.
+    */
   def setArgb(x: Int, y: Int, argb: Int) {
     delegate.setArgb(x, y, argb)
   }
 
   /**
-   * Stores pixel data for a Color into the specified coordinates of the surface.
-   */
+    * Stores pixel data for a Color into the specified coordinates of the surface.
+    */
   def setColor(x: Int, y: Int, c: Color) {
     delegate.setColor(x, y, c)
   }
 
   /**
-   * Stores pixel data from a byte array into a rectangular region of the surface.
-   */
-  def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: PixelFormat[java.nio.ByteBuffer], buffer: Array[Byte], offset: Int, scanlineStride: Int) {
+    * Stores pixel data from a byte array into a rectangular region of the surface.
+    */
+  def setPixels(
+      x: Int,
+      y: Int,
+      w: Int,
+      h: Int,
+      pixelformat: PixelFormat[java.nio.ByteBuffer],
+      buffer: Array[Byte],
+      offset: Int,
+      scanlineStride: Int
+  ) {
     delegate.setPixels(x, y, w, h, pixelformat, buffer, offset, scanlineStride)
   }
 
   /**
-   * Stores pixel data from an int array into a rectangular region of the surface.
-   */
-  def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: PixelFormat[java.nio.IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int) {
+    * Stores pixel data from an int array into a rectangular region of the surface.
+    */
+  def setPixels(
+      x: Int,
+      y: Int,
+      w: Int,
+      h: Int,
+      pixelformat: PixelFormat[java.nio.IntBuffer],
+      buffer: Array[Int],
+      offset: Int,
+      scanlineStride: Int
+  ) {
     delegate.setPixels(x, y, w, h, pixelformat, buffer, offset, scanlineStride)
   }
 
   /**
-   * Stores pixel data from a buffer into a rectangular region of the surface.
-   */
-  def setPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: PixelFormat[B], buffer: B, scanlineStride: Int) {
+    * Stores pixel data from a buffer into a rectangular region of the surface.
+    */
+  def setPixels[B <: Buffer](
+      x: Int,
+      y: Int,
+      w: Int,
+      h: Int,
+      pixelformat: PixelFormat[B],
+      buffer: B,
+      scanlineStride: Int
+  ) {
     delegate.setPixels(x, y, w, h, pixelformat, buffer, scanlineStride)
   }
 
   /**
-   * Stores pixel data retrieved from a PixelReader instance into a rectangular region of the surface.
-   */
+    * Stores pixel data retrieved from a PixelReader instance into a rectangular region of the surface.
+    */
   def setPixels(dstx: Int, dsty: Int, w: Int, h: Int, reader: PixelReader, srcx: Int, srcy: Int) {
     delegate.setPixels(dstx, dsty, w, h, reader, srcx, srcy)
   }

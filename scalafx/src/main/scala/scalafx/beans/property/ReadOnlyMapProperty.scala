@@ -37,6 +37,7 @@ import scalafx.collections.ObservableMap
 import scalafx.delegate.SFXDelegate
 
 object ReadOnlyMapProperty {
+
   /**
     * Converts a ScalaFX ReadOnlyMapProperty to its JavaFX counterpart ReadOnlyMapProperty.
     *
@@ -56,10 +57,9 @@ object ReadOnlyMapProperty {
   * @define ORIGINALDOC Original Documentation]].
   **/
 class ReadOnlyMapProperty[K, V](override val delegate: jfxbp.ReadOnlyMapProperty[K, V])
-  extends MapExpression[K, V](delegate)
+    extends MapExpression[K, V](delegate)
     with ReadOnlyProperty[ObservableMap[K, V], jfxc.ObservableMap[K, V]]
     with SFXDelegate[jfxbp.ReadOnlyMapProperty[K, V]] {
-
 
   override def value: ObservableMap[K, V] = delegate.get()
 
@@ -102,5 +102,6 @@ class ReadOnlyMapProperty[K, V](override val delegate: jfxbp.ReadOnlyMapProperty
     *
     * @param sfx the SFXDelegate object to which the binding should be removed
     */
-  def unbindContentBidirectional[T <: Object](sfx: SFXDelegate[T]): Unit = delegate.unbindContentBidirectional(sfx.delegate)
+  def unbindContentBidirectional[T <: Object](sfx: SFXDelegate[T]): Unit =
+    delegate.unbindContentBidirectional(sfx.delegate)
 }

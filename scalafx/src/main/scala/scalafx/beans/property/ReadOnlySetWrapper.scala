@@ -34,8 +34,8 @@ import scalafx.beans.property.PropertyIncludes.jfxReadOnlySetProperty2sfx
 import scalafx.collections.ObservableSet
 import scalafx.delegate.SFXDelegate
 
-
 object ReadOnlySetWrapper {
+
   /**
     * Converts a ScalaFX ReadOnlySetWrapper to its JavaFX counterpart ReadOnlySetWrapper.
     *
@@ -71,12 +71,11 @@ object ReadOnlySetWrapper {
     new ReadOnlySetWrapper(new jfxbp.ReadOnlySetWrapper(bean, name, value.delegate))
 }
 
-
 /**
   * Wraps `javafx.beans.property.ReadOnlySetWrapper`.
   */
 class ReadOnlySetWrapper[E <: Any](override val delegate: jfxbp.ReadOnlySetWrapper[E] = new jfxbp.ReadOnlySetWrapper[E])
-  extends SetProperty[E]
+    extends SetProperty[E]
     with SFXDelegate[jfxbp.ReadOnlySetWrapper[E]] {
 
   /** Creates a new ReadOnlySetWrapper instance.

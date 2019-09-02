@@ -33,11 +33,10 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Bounds Spec tests.
- *
- */
-class BoundsSpec
-  extends SimpleSFXDelegateSpec[jfxg.Bounds, Bounds](classOf[jfxg.Bounds], classOf[Bounds]) {
+  * Bounds Spec tests.
+  *
+  */
+class BoundsSpec extends SimpleSFXDelegateSpec[jfxg.Bounds, Bounds](classOf[jfxg.Bounds], classOf[Bounds]) {
 
   override protected def getScalaClassInstance = new Bounds(getJavaClassInstance) {}
 

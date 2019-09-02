@@ -40,10 +40,10 @@ import scalafx.scene.transform.Rotate
 import scalafx.scene.{AmbientLight, Group, Node, PerspectiveCamera, PointLight, Scene, SceneAntialiasing}
 
 /**
- * Demonstrates custom 3D shapes.
- *
- * @author Mike Allen (mike@hindsight-consulting.com).
- */
+  * Demonstrates custom 3D shapes.
+  *
+  * @author Mike Allen (mike@hindsight-consulting.com).
+  */
 object TriangleMeshDemo extends JFXApp {
 
   stage = new PrimaryStage {
@@ -89,18 +89,18 @@ object TriangleMeshDemo extends JFXApp {
   }
 
   /**
-   * Create a simple regular tetrahedron.
-   *
-   * The shape's origin is at the center of its base face.
-   *
-   * A regular tetrahedron has four faces, each made up of one triangular face.
-   *
-   * @param length Length of any side of the tetrahedron. This value must be greater than zero.
-   *
-   * @return TriangularMesh instance defining the resulting tetrahedron.
-   *
-   * @throws java.lang.IllegalArgumentException if `length` is not greater than zero.
-   */
+    * Create a simple regular tetrahedron.
+    *
+    * The shape's origin is at the center of its base face.
+    *
+    * A regular tetrahedron has four faces, each made up of one triangular face.
+    *
+    * @param length Length of any side of the tetrahedron. This value must be greater than zero.
+    *
+    * @return TriangularMesh instance defining the resulting tetrahedron.
+    *
+    * @throws java.lang.IllegalArgumentException if `length` is not greater than zero.
+    */
   private def tetrahedron(length: Double) = {
     require(length > 0.0)
 
@@ -121,10 +121,18 @@ object TriangleMeshDemo extends JFXApp {
      * and 3D Studio, the Z-axis points Up, while in X3D/VRML it points North).
      */
     mesh.points = Array(
-      0.0f, -(length * sqrt(3.0) / 3.0).toFloat, 0.0f, // Base rear point, point 0.
-      (length / 2.0).toFloat, (length * sqrt(3.0) / 6.0).toFloat, 0.0f, // Base front right point, point 1.
-      -(length / 2.0).toFloat, (length * sqrt(3.0) / 6.0).toFloat, 0.0f, // Base front left point, point 2.
-      0.0f, 0.0f, -(length * sqrt(2.0 / 3.0)).toFloat // Top point, point 3.
+      0.0f,
+      -(length * sqrt(3.0) / 3.0).toFloat,
+      0.0f, // Base rear point, point 0.
+      (length / 2.0).toFloat,
+      (length * sqrt(3.0) / 6.0).toFloat,
+      0.0f, // Base front right point, point 1.
+      -(length / 2.0).toFloat,
+      (length * sqrt(3.0) / 6.0).toFloat,
+      0.0f, // Base front left point, point 2.
+      0.0f,
+      0.0f,
+      -(length * sqrt(2.0 / 3.0)).toFloat // Top point, point 3.
     )
 
     /*
@@ -138,12 +146,18 @@ object TriangleMeshDemo extends JFXApp {
      * image).
      */
     mesh.texCoords = Array(
-      0.5f, 1.0f, // Base face, rear point (left face, right point; right face, left point), point 0.
-      0.75f, (1.0 - sqrt(3.0) / 4.0).toFloat, // Base face, right point (right face, right point; front face, right point), point 1.
-      0.25f, (1.0 - sqrt(3.0) / 4.0).toFloat, // Base face, left point (left face, left point; front face, left point), point 2.
-      1.0f, 1.0f, // Right face, top point, point 3.
-      0.5f, (1.0 - sqrt(3.0) / 2.0).toFloat, // Front face, top point, point 4.
-      0.0f, 1.0f // Left face, top point, point 5.
+      0.5f,
+      1.0f, // Base face, rear point (left face, right point; right face, left point), point 0.
+      0.75f,
+      (1.0 - sqrt(3.0) / 4.0).toFloat, // Base face, right point (right face, right point; front face, right point), point 1.
+      0.25f,
+      (1.0 - sqrt(3.0) / 4.0).toFloat, // Base face, left point (left face, left point; front face, left point), point 2.
+      1.0f,
+      1.0f, // Right face, top point, point 3.
+      0.5f,
+      (1.0 - sqrt(3.0) / 2.0).toFloat, // Front face, top point, point 4.
+      0.0f,
+      1.0f // Left face, top point, point 5.
     )
 
     /*

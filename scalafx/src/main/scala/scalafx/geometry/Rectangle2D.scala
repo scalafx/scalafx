@@ -35,74 +35,75 @@ object Rectangle2D {
   implicit def sfxRectangle2D2jfx(r: Rectangle2D): jfxg.Rectangle2D = if (r != null) r.delegate else null
 
   /**
-   * An empty Rectangle2D instance (with all coordinates equal to zero).
-   */
+    * An empty Rectangle2D instance (with all coordinates equal to zero).
+    */
   val Empty = jfxg.Rectangle2D.EMPTY
 
 }
 
 class Rectangle2D(override val delegate: jfxg.Rectangle2D) extends SFXDelegate[jfxg.Rectangle2D] {
 
-  def this(minX: Double, minY: Double, width: Double, height: Double) = this(new jfxg.Rectangle2D(minX, minY, width, height))
+  def this(minX: Double, minY: Double, width: Double, height: Double) =
+    this(new jfxg.Rectangle2D(minX, minY, width, height))
 
   /**
-   * Tests if the specified (x, y) coordinates are inside the boundary of Rectangle2D.
-   */
+    * Tests if the specified (x, y) coordinates are inside the boundary of Rectangle2D.
+    */
   def contains(x: Double, y: Double) = delegate.contains(x, y)
 
   /**
-   * Tests if the interior of this Rectangle2D entirely contains the specified rectangular area.
-   */
+    * Tests if the interior of this Rectangle2D entirely contains the specified rectangular area.
+    */
   def contains(x: Double, y: Double, w: Double, h: Double) = delegate.contains(x, y, w, h)
 
   /**
-   * Tests if the specified point is inside the boundary of Rectangle2D.
-   */
+    * Tests if the specified point is inside the boundary of Rectangle2D.
+    */
   def contains(p: Point2D) = delegate.contains(p)
 
   /**
-   * Tests if the interior of this Rectangle2D entirely contains the specified Rectangle2D, r.
-   */
+    * Tests if the interior of this Rectangle2D entirely contains the specified Rectangle2D, r.
+    */
   def contains(r: Rectangle2D) = delegate.contains(r)
 
   /**
-   * The height of this Rectangle2D.
-   */
+    * The height of this Rectangle2D.
+    */
   def height = delegate.getHeight
 
   /**
-   * Tests if the interior of this Rectangle2D intersects the interior of a specified rectangular area.
-   */
+    * Tests if the interior of this Rectangle2D intersects the interior of a specified rectangular area.
+    */
   def intersects(x: Double, y: Double, w: Double, h: Double) = delegate.intersects(x, y, w, h)
 
   /**
-   * Tests if the interior of this Rectangle2D intersects the interior of a specified Rectangle2D, r.
-   */
+    * Tests if the interior of this Rectangle2D intersects the interior of a specified Rectangle2D, r.
+    */
   def intersects(r: Rectangle2D) = delegate.intersects(r)
 
   /**
-   * The x coordinate of the lower-right corner of this Rectangle2D.
-   */
+    * The x coordinate of the lower-right corner of this Rectangle2D.
+    */
   def maxX = delegate.getMaxX
 
   /**
-   * The y coordinate of the lower-right corner of this Rectangle2D.
-   */
+    * The y coordinate of the lower-right corner of this Rectangle2D.
+    */
   def maxY = delegate.getMaxY
 
   /**
-   * The x coordinate of the upper-left corner of this Rectangle2D.
-   */
+    * The x coordinate of the upper-left corner of this Rectangle2D.
+    */
   def minX = delegate.getMinX
 
   /**
-   * The y coordinate of the upper-left corner of this Rectangle2D.
-   */
+    * The y coordinate of the upper-left corner of this Rectangle2D.
+    */
   def minY = delegate.getMinY
 
   /**
-   * The width of this Rectangle2D.
-   */
+    * The width of this Rectangle2D.
+    */
   def width = delegate.getWidth
 
 }

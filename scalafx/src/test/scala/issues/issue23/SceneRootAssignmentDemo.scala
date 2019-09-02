@@ -36,15 +36,15 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
 /**
- * Issue 23: Cannot assign a ScalaFX object to "scene.root".
- * An attempt to do so resulted (before issue was fixed) in compilation error:
- * {{{
- *   error: type mismatch;
- *   found   : scalafx.scene.layout.StackPane
- *   required: javafx.scene.Parent
- *   root = new StackPane {
- * }}}
- */
+  * Issue 23: Cannot assign a ScalaFX object to "scene.root".
+  * An attempt to do so resulted (before issue was fixed) in compilation error:
+  * {{{
+  *   error: type mismatch;
+  *   found   : scalafx.scene.layout.StackPane
+  *   required: javafx.scene.Parent
+  *   root = new StackPane {
+  * }}}
+  */
 object SceneRootAssignmentDemo extends JFXApp {
 
   stage = new PrimaryStage {

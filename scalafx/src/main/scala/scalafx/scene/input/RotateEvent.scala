@@ -37,50 +37,50 @@ object RotateEvent {
   implicit def sfxRotateEvent2jfx(re: RotateEvent): jfxsi.RotateEvent = if (re != null) re.delegate else null
 
   /**
-   * Common supertype for all rotate event types.
-   */
+    * Common supertype for all rotate event types.
+    */
   val Any: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ANY
-  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
   val ANY = Any
 
   /**
-   * This event occurs when user performs a rotating gesture such as dragging two fingers around each other.
-   */
+    * This event occurs when user performs a rotating gesture such as dragging two fingers around each other.
+    */
   val Rotate: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATE
-  @deprecated ("Use Rotate; ROTATE will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Rotate; ROTATE will be removed in a future release", "8.0.60-R10")
   val ROTATE = Rotate
 
   /**
-   * This event occurs when a rotating gesture ends.
-   */
+    * This event occurs when a rotating gesture ends.
+    */
   val RotationFinished: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATION_FINISHED
-  @deprecated ("Use RotationFinished; ROTATION_FINISHED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use RotationFinished; ROTATION_FINISHED will be removed in a future release", "8.0.60-R10")
   val ROTATION_FINISHED = RotationFinished
 
   /**
-   * This event occurs when a rotating gesture is detected.
-   */
+    * This event occurs when a rotating gesture is detected.
+    */
   val RotationStarted: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATION_STARTED
-  @deprecated ("Use RotationStarted; ROTATION_STARTED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use RotationStarted; ROTATION_STARTED will be removed in a future release", "8.0.60-R10")
   val ROTATION_STARTED = RotationStarted
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/RotateEvent.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/RotateEvent.html]]
+  */
 class RotateEvent(override val delegate: jfxsi.RotateEvent)
-  extends InputEvent(delegate)
-  with SFXDelegate[jfxsi.RotateEvent] {
+    extends InputEvent(delegate)
+    with SFXDelegate[jfxsi.RotateEvent] {
 
   /**
-   * Gets the rotation angle of this event.
-   */
+    * Gets the rotation angle of this event.
+    */
   def angle: Double = delegate.getAngle
 
   /**
-   * Gets the cumulative rotation angle of this gesture.
-   */
+    * Gets the cumulative rotation angle of this gesture.
+    */
   def totalAngle: Double = delegate.getTotalAngle
 
 }

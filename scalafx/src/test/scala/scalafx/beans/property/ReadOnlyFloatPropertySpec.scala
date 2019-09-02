@@ -35,10 +35,10 @@ import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 import scalafx.Includes._
 
 /**
- * ReadOnlyFloatProperty Spec tests.
- *
- *
- */
+  * ReadOnlyFloatProperty Spec tests.
+  *
+  *
+  */
 class ReadOnlyFloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   val bean = new Object()
   var readOnlyFloatProperty: jfxbp.ReadOnlyFloatProperty = null
@@ -83,7 +83,7 @@ class ReadOnlyFloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix addition of constants" in {
-    floatProperty2 <== readOnlyFloatProperty + 35 + 35l + 35f + 35d
+    floatProperty2 <== readOnlyFloatProperty + 35 + 35L + 35f + 35d
     floatProperty2() should equal(190)
     floatProperty2.unbind()
   }
@@ -96,7 +96,7 @@ class ReadOnlyFloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix subtraction of constants" in {
-    floatProperty2 <== readOnlyFloatProperty - 12 - 12l - 12f - 12d
+    floatProperty2 <== readOnlyFloatProperty - 12 - 12L - 12f - 12d
     floatProperty2() should equal(2)
     floatProperty2.unbind()
   }
@@ -109,7 +109,7 @@ class ReadOnlyFloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix multiplication of constants" in {
-    floatProperty2 <== readOnlyFloatProperty * 2 * 2l * 2f * 2d
+    floatProperty2 <== readOnlyFloatProperty * 2 * 2L * 2f * 2d
     floatProperty2() should equal(800)
     floatProperty2.unbind()
   }
@@ -122,7 +122,7 @@ class ReadOnlyFloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix division of constants" in {
-    floatProperty2 <== readOnlyFloatProperty / 2 / 2l / 5f / 5d
+    floatProperty2 <== readOnlyFloatProperty / 2 / 2L / 5f / 5d
     floatProperty2() should equal(.5)
     floatProperty2.unbind()
   }

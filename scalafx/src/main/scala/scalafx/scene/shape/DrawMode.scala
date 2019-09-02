@@ -34,30 +34,28 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object DrawMode extends SFXEnumDelegateCompanion[jfxss.DrawMode, DrawMode] {
 
   /**
-   * Render polygonal faces as solid surfaces.
-   */
+    * Render polygonal faces as solid surfaces.
+    */
   case object Fill extends DrawMode(jfxss.DrawMode.FILL)
 
   /**
-   * Render polygonal faces as solid surfaces.
-   */
+    * Render polygonal faces as solid surfaces.
+    */
   @deprecated("Use Fill instead; FILL will be removed in a future release.", "8.0.0-M4")
   val FILL = Fill
 
   /**
-   * Render polygonal faces as wireframes, with lines linking consecutive vertices.
-   */
+    * Render polygonal faces as wireframes, with lines linking consecutive vertices.
+    */
   case object Line extends DrawMode(jfxss.DrawMode.LINE)
 
   /**
-   * Render polygonal faces as wireframes, with lines linking consecutive vertices.
-   */
+    * Render polygonal faces as wireframes, with lines linking consecutive vertices.
+    */
   @deprecated("Use Line instead; LINE will be removed in a future release.", "8.0.0-M4")
   val LINE = Line
 
   protected override def unsortedValues: Array[DrawMode] = Array(Fill, Line)
 }
 
-
-sealed abstract class DrawMode(override val delegate: jfxss.DrawMode)
-  extends SFXEnumDelegate[jfxss.DrawMode]
+sealed abstract class DrawMode(override val delegate: jfxss.DrawMode) extends SFXEnumDelegate[jfxss.DrawMode]

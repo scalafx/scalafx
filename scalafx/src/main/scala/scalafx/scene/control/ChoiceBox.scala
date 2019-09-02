@@ -54,46 +54,46 @@ object ChoiceBox {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ChoiceBox.html]].
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ChoiceBox.html]].
+  */
 class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.ChoiceBox[J])
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.ChoiceBox[J]] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.ChoiceBox[J]] {
 
   /**
-   * Create a new ChoiceBox with the given set of items.
-   */
+    * Create a new ChoiceBox with the given set of items.
+    */
   def this(items: ObservableBuffer[J]) = this(new jfxsc.ChoiceBox[J](items))
 
   /**
-   * Allows a way to specify how to represent objects in the items list.
-   */
+    * Allows a way to specify how to represent objects in the items list.
+    */
   def converter: ObjectProperty[jfxu.StringConverter[J]] = delegate.converterProperty
   def converter_=(v: StringConverter[J]) {
     converter() = v
   }
 
   /**
-   * The items to display in the choice box.
-   */
+    * The items to display in the choice box.
+    */
   def items = delegate.itemsProperty
   def items_=(v: ObservableBuffer[J]) {
     items() = v
   }
 
   /**
-   * The selection model for the ChoiceBox.
-   */
+    * The selection model for the ChoiceBox.
+    */
   def selectionModel: ObjectProperty[jfxsc.SingleSelectionModel[J]] = delegate.selectionModelProperty
   def selectionModel_=(v: SingleSelectionModel[J]) {
     selectionModel() = v
   }
 
   /**
-   * Indicates whether the drop down is displaying the list of choices to the
-   * user. Although showing be a ReadOnlyBooleanProperty, a setter method is
-   * implemented using `show()` and `hide()` method from ChoiceBox JavaFX.
-   */
+    * Indicates whether the drop down is displaying the list of choices to the
+    * user. Although showing be a ReadOnlyBooleanProperty, a setter method is
+    * implemented using `show()` and `hide()` method from ChoiceBox JavaFX.
+    */
   def showing: ReadOnlyBooleanProperty = delegate.showingProperty
   def showing_=(show: Boolean) {
     if (show) delegate.show()
@@ -101,55 +101,53 @@ class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.
   }
 
   /**
-   * The value of this ChoiceBox is defined as the selected item in the
-   * ChoiceBox selection model.
-   *
-   */
+    * The value of this ChoiceBox is defined as the selected item in the
+    * ChoiceBox selection model.
+    *
+    */
   def value: ObjectProperty[J] = delegate.valueProperty
   def value_=(v: J) {
     value() = v
   }
 
-
   /**
-   * The ChoiceBox action, which is invoked whenever the ChoiceBox value property is changed.
-   */
+    * The ChoiceBox action, which is invoked whenever the ChoiceBox value property is changed.
+    */
   def onAction = delegate.onActionProperty
   def onAction_=(implicit aeh: jfxe.EventHandler[jfxe.ActionEvent]) {
     onAction() = aeh
   }
 
   /**
-   * Called just prior to the ChoiceBox popup being shown.
-   */
+    * Called just prior to the ChoiceBox popup being shown.
+    */
   def onShowing = delegate.onShowingProperty
   def onShowing_=(implicit aeh: jfxe.EventHandler[jfxe.Event]) {
     onShowing() = aeh
   }
 
   /**
-   * Called just after the ChoiceBox popup is shown.
-   */
+    * Called just after the ChoiceBox popup is shown.
+    */
   def onShown = delegate.onShownProperty
   def onShown_=(implicit aeh: jfxe.EventHandler[jfxe.Event]) {
     onShown() = aeh
   }
 
   /**
-   * Called just prior to the ChoiceBox popup being hidden.
-   */
+    * Called just prior to the ChoiceBox popup being hidden.
+    */
   def onHiding = delegate.onHidingProperty
   def onHiding_=(implicit aeh: jfxe.EventHandler[jfxe.Event]) {
     onHiding() = aeh
   }
 
   /**
-   * Called just after the ChoiceBox popup has been hidden.
-   */
+    * Called just after the ChoiceBox popup has been hidden.
+    */
   def onHidden = delegate.onHiddenProperty
   def onHidden_=(implicit aeh: jfxe.EventHandler[jfxe.Event]) {
     onHidden() = aeh
   }
-
 
 }

@@ -34,67 +34,69 @@ import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 
 object DisplacementMap {
-  implicit def sfxDisplacementMap2jfx(dm: DisplacementMap): jfxse.DisplacementMap = if (dm != null) dm.delegate else null
+  implicit def sfxDisplacementMap2jfx(dm: DisplacementMap): jfxse.DisplacementMap =
+    if (dm != null) dm.delegate else null
 }
 
 class DisplacementMap(override val delegate: jfxse.DisplacementMap = new jfxse.DisplacementMap)
-  extends Effect(delegate)
-  with InputDelegate[jfxse.DisplacementMap]
-  with SFXDelegate[jfxse.DisplacementMap] {
+    extends Effect(delegate)
+    with InputDelegate[jfxse.DisplacementMap]
+    with SFXDelegate[jfxse.DisplacementMap] {
 
   /**
-   * Creates a new instance of DisplacementMap with the specified mapData.
-   */
+    * Creates a new instance of DisplacementMap with the specified mapData.
+    */
   def this(mapData: FloatMap) = this(new jfxse.DisplacementMap(mapData))
 
   /**
-   * Creates a new instance of DisplacementMap with the specified mapData, offsetX, offsetY, scaleX, and scaleY.
-   */
-  def this(mapData: FloatMap, offsetX: Double, offsetY: Double, scaleX: Double, scaleY: Double) = this(new jfxse.DisplacementMap(mapData, offsetX, offsetY, scaleX, scaleY))
+    * Creates a new instance of DisplacementMap with the specified mapData, offsetX, offsetY, scaleX, and scaleY.
+    */
+  def this(mapData: FloatMap, offsetX: Double, offsetY: Double, scaleX: Double, scaleY: Double) =
+    this(new jfxse.DisplacementMap(mapData, offsetX, offsetY, scaleX, scaleY))
 
   /**
-   * The map data for this Effect.
-   */
+    * The map data for this Effect.
+    */
   def mapData: ObjectProperty[jfxse.FloatMap] = delegate.mapDataProperty
   def mapData_=(v: FloatMap) {
     mapData() = v
   }
 
   /**
-   * The offset by which all x coordinate offset values in the FloatMap are displaced after they are scaled.
-   */
+    * The offset by which all x coordinate offset values in the FloatMap are displaced after they are scaled.
+    */
   def offsetX: DoubleProperty = delegate.offsetXProperty
   def offsetX_=(v: Double) {
     offsetX() = v
   }
 
   /**
-   * The offset by which all y coordinate offset values in the FloatMap are displaced after they are scaled.
-   */
+    * The offset by which all y coordinate offset values in the FloatMap are displaced after they are scaled.
+    */
   def offsetY: DoubleProperty = delegate.offsetYProperty
   def offsetY_=(v: Double) {
     offsetX() = v
   }
 
   /**
-   * The scale factor by which all x coordinate offset values in the FloatMap are multiplied.
-   */
+    * The scale factor by which all x coordinate offset values in the FloatMap are multiplied.
+    */
   def scaleX: DoubleProperty = delegate.scaleXProperty
   def scaleX_=(v: Double) {
     scaleX() = v
   }
 
   /**
-   * The scale factor by which all y coordinate offset values in the FloatMap are multiplied.
-   */
+    * The scale factor by which all y coordinate offset values in the FloatMap are multiplied.
+    */
   def scaleY: DoubleProperty = delegate.scaleYProperty
   def scaleY_=(v: Double) {
     scaleY() = v
   }
 
   /**
-   * Defines whether values taken from outside the edges of the map "wrap around" or not.
-   */
+    * Defines whether values taken from outside the edges of the map "wrap around" or not.
+    */
   def wrap: BooleanProperty = delegate.wrapProperty
   def wrap_=(v: Boolean) {
     wrap() = v

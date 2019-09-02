@@ -37,14 +37,15 @@ object DateCell {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/DateCell.html]].
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/DateCell.html]].
+  */
 class DateCell(override val delegate: jfxsc.DateCell = new jfxsc.DateCell())
-  extends Cell[LocalDate](delegate) with SFXDelegate[jfxsc.DateCell] {
+    extends Cell[LocalDate](delegate)
+    with SFXDelegate[jfxsc.DateCell] {
 
   /**
-   * Updates the item associated with this `Cell`.
-   */
+    * Updates the item associated with this `Cell`.
+    */
   def updateItem(item: LocalDate, empty: Boolean) {
     delegate.updateItem(item, empty)
   }

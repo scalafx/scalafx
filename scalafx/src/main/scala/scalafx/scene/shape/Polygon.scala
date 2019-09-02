@@ -37,11 +37,13 @@ object Polygon {
   def apply(points: Double*) = new Polygon(new jfxss.Polygon(points: _*))
 }
 
-class Polygon(override val delegate: jfxss.Polygon = new jfxss.Polygon) extends Shape(delegate) with SFXDelegate[jfxss.Polygon] {
+class Polygon(override val delegate: jfxss.Polygon = new jfxss.Polygon)
+    extends Shape(delegate)
+    with SFXDelegate[jfxss.Polygon] {
 
   /**
-   * Gets the coordinates of the PolyLine segments.
-   */
+    * Gets the coordinates of the PolyLine segments.
+    */
   def points = delegate.getPoints
 
 }

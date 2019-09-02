@@ -44,14 +44,13 @@ import scalafx.beans.binding.Bindings
 import scalafx.beans.property.DoubleProperty
 
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
- *
- *         based upon: Example 6 Using an InvalidationListener
- *
- *         http://docs.oracle.com/javafx/2.0/binding/jfxpub-binding.htm
- *
- */
-
+  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+  *
+  *         based upon: Example 6 Using an InvalidationListener
+  *
+  *         http://docs.oracle.com/javafx/2.0/binding/jfxpub-binding.htm
+  *
+  */
 object ScalaFX_Properties_And_Binding_05 {
   def main(args: Array[String]) {
     val bill1 = new Bill(new DoubleProperty(null, "Bill 1"))
@@ -60,8 +59,8 @@ object ScalaFX_Properties_And_Binding_05 {
 
     val total = Bindings.add(bill1.amountDue, bill2.amountDue, bill3.amountDue)
 
-    total onInvalidate {
-      observable => println("the total double binding has been invalidated")
+    total onInvalidate { observable =>
+      println("the total double binding has been invalidated")
     }
 
     bill1.amountDue() = 100.0

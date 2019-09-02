@@ -35,8 +35,8 @@ import scalafx.beans.value.ObservableValue
 import scalafx.collections.CollectionIncludes.jfxObservableSet2sfxObservableSet
 import scalafx.collections.ObservableSet
 
-
 object SetBinding {
+
   /**
     * Converts a ScalaFX SetBinding to its JavaFX counterpart LisBinding.
     *
@@ -56,7 +56,7 @@ object SetBinding {
   * @define ORIGINALDOC Original Documentation]].
   **/
 class SetBinding[E <: Any](override val delegate: jfxbb.SetBinding[E])
-  extends SetExpression(delegate)
+    extends SetExpression(delegate)
     with ObservableValue[ObservableSet[E], jfxc.ObservableSet[E]] {
 
   override def value: ObservableSet[E] = delegate.get

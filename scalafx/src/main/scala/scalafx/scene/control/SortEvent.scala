@@ -35,24 +35,24 @@ import scalafx.delegate.SFXDelegate
 import scalafx.event.Event
 
 /**
- * Object Companion for [[scalafx.scene.control.SortEvent]]
- *
- * @since 8.0
- */
+  * Object Companion for [[scalafx.scene.control.SortEvent]]
+  *
+  * @since 8.0
+  */
 object SortEvent {
 
   /**
-   * Converts a ScalaFX SortEvent to its JavaFX couterpart.
-   *
-   * @param se ScalaFX SortEvent
-   * @tparam C SortEvent Type
-   * @return JavaFX SortEvent
-   */
+    * Converts a ScalaFX SortEvent to its JavaFX couterpart.
+    *
+    * @param se ScalaFX SortEvent
+    * @tparam C SortEvent Type
+    * @return JavaFX SortEvent
+    */
   implicit def sfxSortEvent2jfx[C](se: SortEvent[C]): jfxsc.SortEvent[C] = if (se != null) se.delegate else null
 
   /**
-   * Common supertype for all sort event types.
-   */
+    * Common supertype for all sort event types.
+    */
   val Any: jfxe.EventType[jfxsc.SortEvent[_]] = jfxsc.SortEvent.ANY
 
   def sortEvent[C]: jfxe.EventType[jfxsc.SortEvent[C]] = jfxsc.SortEvent.sortEvent()
@@ -60,26 +60,26 @@ object SortEvent {
 }
 
 /**
- * Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SortEvent.html SortEvent]].
- *
- * @constructor Creates a new ScalaFX SortEvent from a JavaFX one.
- * @param delegate JavaFX SortEvent to be wrapped.
- * @tparam C Event Type
- * @since 8.0
- *
- * @define JFX JavaFX
- */
+  * Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SortEvent.html SortEvent]].
+  *
+  * @constructor Creates a new ScalaFX SortEvent from a JavaFX one.
+  * @param delegate JavaFX SortEvent to be wrapped.
+  * @tparam C Event Type
+  * @since 8.0
+  *
+  * @define JFX JavaFX
+  */
 class SortEvent[C](override val delegate: jfxsc.SortEvent[C])
-  extends Event(delegate)
-  with SFXDelegate[jfxsc.SortEvent[C]] {
+    extends Event(delegate)
+    with SFXDelegate[jfxsc.SortEvent[C]] {
 
   /**
-   * Constructor with source and target
-   *
-   * @param source Event Source
-   * @param target Event Target
-   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SortEvent.html#SortEvent-C-javafx.event.EventTarget- Original Documentation]].
-   */
+    * Constructor with source and target
+    *
+    * @param source Event Source
+    * @param target Event Target
+    * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SortEvent.html#SortEvent-C-javafx.event.EventTarget- Original Documentation]].
+    */
   def this(source: C, target: jfxe.EventTarget) = this(new jfxsc.SortEvent[C](source, target))
 
 }

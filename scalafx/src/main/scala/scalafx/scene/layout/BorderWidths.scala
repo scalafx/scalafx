@@ -36,77 +36,91 @@ object BorderWidths {
   implicit def sfxBorderWidths2jfx(v: BorderWidths): jfxsl.BorderWidths = if (v != null) v.delegate else null
 
   /**
-   * When used by a BorderStroke, the value of AUTO is interpreted as the value of
-   * BorderStroke.MEDIUM for the corresponding side.
-   */
+    * When used by a BorderStroke, the value of AUTO is interpreted as the value of
+    * BorderStroke.MEDIUM for the corresponding side.
+    */
   val Auto: Double = jfxsl.BorderWidths.AUTO
 
   /**
-   * The default BorderWidths that is used by a BorderImage when null is specified.
-   */
+    * The default BorderWidths that is used by a BorderImage when null is specified.
+    */
   val Default: BorderWidths = jfxsl.BorderWidths.DEFAULT
 
-
   /**
-   * An empty set of widths, such that all values are 0 and are literal values.
-   */
+    * An empty set of widths, such that all values are 0 and are literal values.
+    */
   val Empty: BorderWidths = jfxsl.BorderWidths.EMPTY
 
-
   /**
-   * A set of widths representing 100% on each side.
-   */
+    * A set of widths representing 100% on each side.
+    */
   val Full: BorderWidths = jfxsl.BorderWidths.FULL
 }
 
 /**
- * Defines widths for four components (top, right, bottom, and left).
- */
-class BorderWidths(override val delegate: jfxsl.BorderWidths)
-  extends SFXDelegate[jfxsl.BorderWidths] {
+  * Defines widths for four components (top, right, bottom, and left).
+  */
+class BorderWidths(override val delegate: jfxsl.BorderWidths) extends SFXDelegate[jfxsl.BorderWidths] {
 
   /**
-   * Creates a new BorderWidths using the given width for all four borders, and treating this
-   * width as a literal value, and not a percentage.
-   */
+    * Creates a new BorderWidths using the given width for all four borders, and treating this
+    * width as a literal value, and not a percentage.
+    */
   def this(width: Double) = this(new jfxsl.BorderWidths(width))
 
   /**
-   * Creates a new BorderWidths with the specified widths for top, right, bottom, and left.
-   */
+    * Creates a new BorderWidths with the specified widths for top, right, bottom, and left.
+    */
   def this(top: Double, right: Double, bottom: Double, left: Double) =
     this(new jfxsl.BorderWidths(top, right, bottom, left))
 
   /**
-   * Creates a new BorderWidths.
-   */
-  def this(top: Double, right: Double, bottom: Double, left: Double,
-           topAsPercentage: Boolean, rightAsPercentage: Boolean,
-           bottomAsPercentage: Boolean, leftAsPercentage: Boolean) =
-    this(new jfxsl.BorderWidths(top, right, bottom, left,
-      topAsPercentage, rightAsPercentage, bottomAsPercentage, leftAsPercentage))
+    * Creates a new BorderWidths.
+    */
+  def this(
+      top: Double,
+      right: Double,
+      bottom: Double,
+      left: Double,
+      topAsPercentage: Boolean,
+      rightAsPercentage: Boolean,
+      bottomAsPercentage: Boolean,
+      leftAsPercentage: Boolean
+  ) =
+    this(
+      new jfxsl.BorderWidths(
+        top,
+        right,
+        bottom,
+        left,
+        topAsPercentage,
+        rightAsPercentage,
+        bottomAsPercentage,
+        leftAsPercentage
+      )
+    )
 
   /**
-   * The non-negative value (with the exception of AUTO) indicating the border thickness on
-   * the bottom of the border.
-   */
+    * The non-negative value (with the exception of AUTO) indicating the border thickness on
+    * the bottom of the border.
+    */
   def bottom: Double = delegate.getBottom
 
   /**
-   * The non-negative value (with the exception of AUTO) indicating the border thickness on
-   * the left of the border.
-   */
+    * The non-negative value (with the exception of AUTO) indicating the border thickness on
+    * the left of the border.
+    */
   def left: Double = delegate.getLeft
 
   /**
-   * The non-negative value (with the exception of AUTO) indicating the border thickness on
-   * the right of the border.
-   */
+    * The non-negative value (with the exception of AUTO) indicating the border thickness on
+    * the right of the border.
+    */
   def right: Double = delegate.getRight
 
   /**
-   * A non-negative value (with the exception of AUTO) indicating the border thickness on
-   * the top of the border.
-   */
+    * A non-negative value (with the exception of AUTO) indicating the border thickness on
+    * the top of the border.
+    */
   def top: Double = delegate.getTop
 }

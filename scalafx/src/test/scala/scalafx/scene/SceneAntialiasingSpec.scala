@@ -33,21 +33,23 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Scene Spec tests.
- *
- *
- */
+  * Scene Spec tests.
+  *
+  *
+  */
 class SceneAntialiasingSpec
-  extends SimpleSFXDelegateSpec[jfxs.SceneAntialiasing, SceneAntialiasing](
-    classOf[jfxs.SceneAntialiasing], classOf[SceneAntialiasing]) {
+    extends SimpleSFXDelegateSpec[jfxs.SceneAntialiasing, SceneAntialiasing](
+      classOf[jfxs.SceneAntialiasing],
+      classOf[SceneAntialiasing]
+    ) {
 
   override protected def getScalaClassInstance = SceneAntialiasing.Balanced
   override protected def getJavaClassInstance = jfxs.SceneAntialiasing.DISABLED
   override protected def expectedNullJFXToSFXValue = SceneAntialiasing.Disabled
 
   /**
-   * Class tests.
-   */
+    * Class tests.
+    */
   it should "treat a null JFX SceneAntialiasing reference as disabled" in {
     val jfxNull: jfxs.SceneAntialiasing = null
     val scalaEquiv: SceneAntialiasing = jfxNull

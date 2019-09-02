@@ -26,8 +26,8 @@
  */
 
 /**
- *
- */
+  *
+  */
 package scalafx.util
 
 import java.text.{DecimalFormatSymbols, ParseException}
@@ -41,9 +41,9 @@ import scalafx.Includes._
 import scalafx.util.StringConverter._
 
 /**
- * StringConverter Spec tests.
- *
- */
+  * StringConverter Spec tests.
+  *
+  */
 class StringConverterSpec extends FlatSpec {
 
   // Just For Fun
@@ -57,7 +57,7 @@ class StringConverterSpec extends FlatSpec {
     }
   }
 
-  // Getting decimal and group separator from current Locale 
+  // Getting decimal and group separator from current Locale
   private val symbols = DecimalFormatSymbols.getInstance()
   val decimalSeparator = symbols.getDecimalSeparator
   val groupSeparator = symbols.getGroupingSeparator
@@ -92,7 +92,13 @@ class StringConverterSpec extends FlatSpec {
     }
   }
 
-  private def testConversion[T](converter: StringConverter[T], string: String, value: T, converterName: String, typeName: String) {
+  private def testConversion[T](
+      converter: StringConverter[T],
+      string: String,
+      value: T,
+      converterName: String,
+      typeName: String
+  ) {
     converterName should "convert '%s' in a %s and vice-versa".format(string, typeName) in {
       val numericValue = converter.fromString(string)
       numericValue should equal(value)

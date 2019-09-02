@@ -37,28 +37,28 @@ object KeyEvent {
   implicit def sfxKeyEvent2jfx(ke: KeyEvent): jfxsi.KeyEvent = if (ke != null) ke.delegate else null
 
   /**
-   * Common supertype for all key event types.
-   */
+    * Common supertype for all key event types.
+    */
   val Any: EventType[jfxsi.KeyEvent] = jfxsi.KeyEvent.ANY
 
   /**
-   * KEY_PRESSED and KEY_RELEASED events which do not map to a valid Unicode character use this for the keyChar value.
-   */
+    * KEY_PRESSED and KEY_RELEASED events which do not map to a valid Unicode character use this for the keyChar value.
+    */
   val CharUndefined: String = jfxsi.KeyEvent.CHAR_UNDEFINED
 
   /**
-   * This event occurs when a key has been pressed.
-   */
+    * This event occurs when a key has been pressed.
+    */
   val KeyPressed: EventType[jfxsi.KeyEvent] = jfxsi.KeyEvent.KEY_PRESSED
 
   /**
-   * This event occurs when a key has been released.
-   */
+    * This event occurs when a key has been released.
+    */
   val KeyReleased: EventType[jfxsi.KeyEvent] = jfxsi.KeyEvent.KEY_RELEASED
 
   /**
-   * This event occurs when a key has been typed (pressed and released).
-   */
+    * This event occurs when a key has been typed (pressed and released).
+    */
   val KeyTyped: EventType[jfxsi.KeyEvent] = jfxsi.KeyEvent.KEY_TYPED
 
 }
@@ -66,44 +66,44 @@ object KeyEvent {
 class KeyEvent(override val delegate: jfxsi.KeyEvent) extends InputEvent(delegate) with SFXDelegate[jfxsi.KeyEvent] {
 
   /**
-   * The unicode character associated with the key typed event.
-   */
+    * The unicode character associated with the key typed event.
+    */
   def character: String = delegate.getCharacter
 
   /**
-   * The key code associated with the key in this key pressed or key released event.
-   *
-   */
+    * The key code associated with the key in this key pressed or key released event.
+    *
+    */
   def code: KeyCode = delegate.getCode
 
   /**
-   * A String describing the key code, such as "HOME", "F1" or "A", for key pressed and key released events.
-   */
+    * A String describing the key code, such as "HOME", "F1" or "A", for key pressed and key released events.
+    */
   def text: String = delegate.getText
 
   /**
-   * Returns whether or not the Alt modifier is down on this event.
-   */
+    * Returns whether or not the Alt modifier is down on this event.
+    */
   def altDown: Boolean = delegate.isAltDown
 
   /**
-   * Returns whether or not the Control modifier is down on this event.
-   */
+    * Returns whether or not the Control modifier is down on this event.
+    */
   def controlDown: Boolean = delegate.isControlDown
 
   /**
-   * Returns whether or not the Meta modifier is down on this event.
-   */
+    * Returns whether or not the Meta modifier is down on this event.
+    */
   def metaDown: Boolean = delegate.isMetaDown
 
   /**
-   * Returns whether or not the Shift modifier is down on this event.
-   */
+    * Returns whether or not the Shift modifier is down on this event.
+    */
   def shiftDown: Boolean = delegate.isShiftDown
 
   /**
-   * Returns whether or not the host platform common shortcut modifier is down on this event.
-   */
+    * Returns whether or not the host platform common shortcut modifier is down on this event.
+    */
   def shortcutDown: Boolean = delegate.isShortcutDown
 
 }

@@ -40,85 +40,85 @@ object ScrollBar {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ScrollBar.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ScrollBar.html]]
+  */
 class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.ScrollBar] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.ScrollBar] {
 
   /**
-   * The amount by which to adjust the scrollbar if the track of the bar is clicked.
-   */
+    * The amount by which to adjust the scrollbar if the track of the bar is clicked.
+    */
   def blockIncrement: DoubleProperty = delegate.blockIncrementProperty
   def blockIncrement_=(v: Double) {
     blockIncrement() = v
   }
 
   /**
-   * The maximum value represented by this ScrollBar.
-   */
+    * The maximum value represented by this ScrollBar.
+    */
   def max: DoubleProperty = delegate.maxProperty
   def max_=(v: Double) {
     max() = v
   }
 
   /**
-   * The minimum value represented by this ScrollBar.
-   */
+    * The minimum value represented by this ScrollBar.
+    */
   def min: DoubleProperty = delegate.minProperty
   def min_=(v: Double) {
     min() = v
   }
 
   /**
-   * The orientation of the ScrollBar can either be HORIZONTAL or VERTICAL.
-   */
+    * The orientation of the ScrollBar can either be HORIZONTAL or VERTICAL.
+    */
   def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
   def orientation_=(v: Orientation) {
     orientation() = v
   }
 
   /**
-   * The amount by which to adjust the ScrollBar when the increment or decrement methods are called.
-   */
+    * The amount by which to adjust the ScrollBar when the increment or decrement methods are called.
+    */
   def unitIncrement: DoubleProperty = delegate.unitIncrementProperty
   def unitIncrement_=(v: Double) {
     unitIncrement() = v
   }
 
   /**
-   * The current value represented by this ScrollBar.
-   */
+    * The current value represented by this ScrollBar.
+    */
   def value: DoubleProperty = delegate.valueProperty
   def value_=(v: Double) {
     value() = v
   }
 
   /**
-   * Visible amount of the scrollbar's range, typically represented by the size of the scroll bar's thumb.
-   */
+    * Visible amount of the scrollbar's range, typically represented by the size of the scroll bar's thumb.
+    */
   def visibleAmount: DoubleProperty = delegate.visibleAmountProperty
   def visibleAmount_=(v: Double) {
     visibleAmount() = v
   }
 
   /**
-   * Adjusts the `value` property by `blockIncrement`.
-   */
+    * Adjusts the `value` property by `blockIncrement`.
+    */
   def adjustValue(position: Double) {
     delegate.adjustValue(position)
   }
 
   /**
-   * Decrements the value of the ScrollBar by the `unitIncrement`.
-   */
+    * Decrements the value of the ScrollBar by the `unitIncrement`.
+    */
   def decrement() {
     delegate.decrement()
   }
 
   /**
-   * Increments the value of the ScrollBar by the `unitIncrement`.
-   */
+    * Increments the value of the ScrollBar by the `unitIncrement`.
+    */
   def increment() {
     delegate.increment()
   }

@@ -32,9 +32,10 @@ import javafx.{scene => jfxs}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Tests for [[scalafx.scene.CacheHint]]. */
-class CacheHintSpec extends SFXEnumDelegateSpec[jfxs.CacheHint, CacheHint](
-  javaClass = classOf[jfxs.CacheHint],
-  scalaClass = classOf[CacheHint],
-  companion = CacheHint)
+class CacheHintSpec
+    extends SFXEnumDelegateSpec[jfxs.CacheHint, CacheHint](
+      javaClass = classOf[jfxs.CacheHint],
+      scalaClass = classOf[CacheHint],
+      companion = CacheHint
+    )

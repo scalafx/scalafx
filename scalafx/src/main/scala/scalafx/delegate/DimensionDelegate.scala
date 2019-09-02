@@ -36,8 +36,8 @@ import scalafx.delegate.DimensionDelegate._
 object DimensionDelegate {
 
   /**
-   * Types that contains `height` and `width` properties.
-   */
+    * Types that contains `height` and `width` properties.
+    */
   type Dimensioned = {
 
     def heightProperty(): jfxbp.DoubleProperty
@@ -47,25 +47,24 @@ object DimensionDelegate {
 }
 
 /**
- * Trait that unifies JavaFX classes that contains properties indicating height and width,
- * represented by `heightProperty` and `widthProperty` and their respective getter and setters.
- *
- * @tparam J Original JavaFX type that contains `height` and `width` properties.
- */
-trait DimensionDelegate[J <: Object with Dimensioned]
-  extends SFXDelegate[J] {
+  * Trait that unifies JavaFX classes that contains properties indicating height and width,
+  * represented by `heightProperty` and `widthProperty` and their respective getter and setters.
+  *
+  * @tparam J Original JavaFX type that contains `height` and `width` properties.
+  */
+trait DimensionDelegate[J <: Object with Dimensioned] extends SFXDelegate[J] {
 
   /**
-   * Indicates the height of object.
-   */
+    * Indicates the height of object.
+    */
   def height: DoubleProperty = delegate.heightProperty()
   def height_=(h: Double) {
     height() = h
   }
 
   /**
-   * Indicates the width of object.
-   */
+    * Indicates the width of object.
+    */
   def width: DoubleProperty = delegate.widthProperty()
   def width_=(w: Double) {
     width() = w

@@ -32,12 +32,11 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Stop Spec tests.
- *
- *
- */
-class StopSpec
-  extends SimpleSFXDelegateSpec[jfxsp.Stop, Stop](classOf[jfxsp.Stop], classOf[Stop]) {
+  * Stop Spec tests.
+  *
+  *
+  */
+class StopSpec extends SimpleSFXDelegateSpec[jfxsp.Stop, Stop](classOf[jfxsp.Stop], classOf[Stop]) {
 
   override protected def getJavaClassInstance = new jfxsp.Stop(0, 0)
 

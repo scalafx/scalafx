@@ -38,8 +38,11 @@ import scalafx.testutil.SimpleSFXDelegateSpec
   * Test for [[scalafx.beans.property.MapProperty]].
   */
 class MapPropertySpec
-  extends SimpleSFXDelegateSpec[jfxbp.MapProperty[String, Int], MapProperty[String, Int]](
-    classOf[jfxbp.MapProperty[String, Int]], classOf[MapProperty[String, Int]]) {
+    extends SimpleSFXDelegateSpec[jfxbp.MapProperty[String, Int], MapProperty[String, Int]](
+      classOf[jfxbp.MapProperty[String, Int]],
+      classOf[MapProperty[String, Int]]
+    ) {
 
-  override protected def getJavaClassInstance: jfxbp.MapProperty[String, Int] = new jfxbp.SimpleMapProperty[String, Int]()
+  override protected def getJavaClassInstance: jfxbp.MapProperty[String, Int] =
+    new jfxbp.SimpleMapProperty[String, Int]()
 }

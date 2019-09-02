@@ -39,94 +39,94 @@ object TouchEvent {
   implicit def sfxTouchEvent2jfx(se: TouchEvent): jfxsi.TouchEvent = if (se != null) se.delegate else null
 
   /**
-   * Common supertype for all touch event types.
-   */
+    * Common supertype for all touch event types.
+    */
   val Any: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.ANY
-  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
   val ANY: EventType[jfxsi.TouchEvent] = Any
 
   /**
-   * This event occurs when the touch point is pressed (touched for the first time).
-   */
+    * This event occurs when the touch point is pressed (touched for the first time).
+    */
   val TouchPressed: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.TOUCH_PRESSED
-  @deprecated ("Use TouchPressed; TOUCH_PRESSED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use TouchPressed; TOUCH_PRESSED will be removed in a future release", "8.0.60-R10")
   val TOUCH_PRESSED: EventType[jfxsi.TouchEvent] = TouchPressed
 
   /**
-   * This event occurs when the touch point is moved.
-   */
+    * This event occurs when the touch point is moved.
+    */
   val TouchMoved: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.TOUCH_MOVED
-  @deprecated ("Use TouchMoved; TOUCH_MOVED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use TouchMoved; TOUCH_MOVED will be removed in a future release", "8.0.60-R10")
   val TOUCH_MOVED: EventType[jfxsi.TouchEvent] = TouchMoved
 
   /**
-   * This event occurs when the touch point is released.
-   */
+    * This event occurs when the touch point is released.
+    */
   val TouchReleased: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.TOUCH_RELEASED
-  @deprecated ("Use TouchReleased; TOUCH_RELEASED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use TouchReleased; TOUCH_RELEASED will be removed in a future release", "8.0.60-R10")
   val TOUCH_RELEASED: EventType[jfxsi.TouchEvent] = TouchReleased
 
   /**
-   * This event occurs when the touch point is pressed and still (doesn't move).
-   */
+    * This event occurs when the touch point is pressed and still (doesn't move).
+    */
   val TouchStationary: EventType[jfxsi.TouchEvent] = jfxsi.TouchEvent.TOUCH_STATIONARY
-  @deprecated ("Use TouchStationary; TOUCH_STATIONARY will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use TouchStationary; TOUCH_STATIONARY will be removed in a future release", "8.0.60-R10")
   val TOUCH_STATIONARY: EventType[jfxsi.TouchEvent] = TouchStationary
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/TouchEvent.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/TouchEvent.html]]
+  */
 class TouchEvent(override val delegate: jfxsi.TouchEvent)
-  extends InputEvent(delegate)
-  with SFXDelegate[jfxsi.TouchEvent] {
+    extends InputEvent(delegate)
+    with SFXDelegate[jfxsi.TouchEvent] {
 
   /**
-   * Returns number of touch points represented by this touch event set.
-   * The returned number matches the size of the touchPoints list.
-   */
+    * Returns number of touch points represented by this touch event set.
+    * The returned number matches the size of the touchPoints list.
+    */
   def touchCount: Int = delegate.getTouchCount
 
   /**
-   * Gets all the touch points represented by this set of touch events, including the touch point of this event.
-   * The list is unmodifiable and is sorted by their IDs, which means it is also sorted by the time they were pressed.
-   * To distinguish between touch points belonging to a node and unrelated touch points, TouchPoint's belongsTo method can be used.
-   */
+    * Gets all the touch points represented by this set of touch events, including the touch point of this event.
+    * The list is unmodifiable and is sorted by their IDs, which means it is also sorted by the time they were pressed.
+    * To distinguish between touch points belonging to a node and unrelated touch points, TouchPoint's belongsTo method can be used.
+    */
   def touchPoints: mutable.Buffer[jfxsi.TouchPoint] = delegate.getTouchPoints.asScala
 
   /**
-   * Gets the touch point of this event.
-   */
+    * Gets the touch point of this event.
+    */
   def touchPoint: TouchPoint = delegate.getTouchPoint
 
   /**
-   * Gets sequential number of the set of touch events representing the same multi-touch action.
-   * For a multi-touch user action, number of touch points may exist; each of them produces a touch event,
-   * each of those touch events carry the same list of touch points - and all of them return the same number from this method.
-   * Then state of some of the touch points changes and the new set of events has new id.
-   * The id is guaranteed to be sequential and unique in scope of one gesture (is reset when all touch points are released).
-   */
+    * Gets sequential number of the set of touch events representing the same multi-touch action.
+    * For a multi-touch user action, number of touch points may exist; each of them produces a touch event,
+    * each of those touch events carry the same list of touch points - and all of them return the same number from this method.
+    * Then state of some of the touch points changes and the new set of events has new id.
+    * The id is guaranteed to be sequential and unique in scope of one gesture (is reset when all touch points are released).
+    */
   def eventSetId: Int = delegate.getEventSetId
 
   /**
-   * Indicates whether or not the Alt modifier is down on this event.
-   */
+    * Indicates whether or not the Alt modifier is down on this event.
+    */
   def altDown: Boolean = delegate.isAltDown
 
   /**
-   * Indicates whether or not the Control modifier is down on this event.
-   */
+    * Indicates whether or not the Control modifier is down on this event.
+    */
   def controlDown: Boolean = delegate.isControlDown
 
   /**
-   * Indicates whether or not the Meta modifier is down on this event.
-   */
+    * Indicates whether or not the Meta modifier is down on this event.
+    */
   def metaDown: Boolean = delegate.isMetaDown
 
   /**
-   * Indicates whether or not the Shift modifier is down on this event.
-   */
+    * Indicates whether or not the Shift modifier is down on this event.
+    */
   def shiftDown: Boolean = delegate.isShiftDown
 
 }

@@ -34,7 +34,6 @@ import scalafx.scene.Scene
 import scalafx.scene.control.{Button, ButtonBar, Label}
 import scalafx.scene.layout.VBox
 
-
 object ButtonBarDemo extends JFXApp {
 
   stage = new PrimaryStage {

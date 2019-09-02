@@ -44,10 +44,9 @@ import scalafx.scene.shape.StrokeType.Outside
 import scalafx.scene.shape.{Circle, Rectangle}
 import scalafx.scene.{Group, Scene}
 
-
 /**
- * ColorfulCircles
- */
+  * ColorfulCircles
+  */
 object ColorfulCircles extends JFXApp {
   val circlesToAnimate = new VectorBuilder[Circle]()
   stage = new PrimaryStage {
@@ -99,13 +98,21 @@ object ColorfulCircles extends JFXApp {
               children = circles
               circlesToAnimate ++= circles
               effect = new BoxBlur(10, 10, 3)
-            })
+            }
+          )
         },
         new Rectangle {
           width <== _scene.width
           height <== _scene.height
-          fill = new LinearGradient(0, 1, 1, 0, true, NoCycle,
-            Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f))
+          fill = new LinearGradient(
+            0,
+            1,
+            1,
+            0,
+            true,
+            NoCycle,
+            Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f)
+          )
           blendMode = Overlay
         }
       )
@@ -114,15 +121,14 @@ object ColorfulCircles extends JFXApp {
   new Timeline {
     cycleCount = Indefinite
     autoReverse = true
-    keyFrames = (for (circle <- circlesToAnimate.result()) yield Seq(
-      at(0 s) {
-        Set(circle.centerX -> random * 800,
-          circle.centerY -> random * 600)
-      },
-      at(40 s) {
-        Set(circle.centerX -> random * 800,
-          circle.centerY -> random * 600)
-      }
-    )).flatten
+    keyFrames = (for (circle <- circlesToAnimate.result())
+      yield Seq(
+        at(0 s) {
+          Set(circle.centerX -> random * 800, circle.centerY -> random * 600)
+        },
+        at(40 s) {
+          Set(circle.centerX -> random * 800, circle.centerY -> random * 600)
+        }
+      )).flatten
   }.play()
 }

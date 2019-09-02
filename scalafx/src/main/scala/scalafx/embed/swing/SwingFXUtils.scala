@@ -33,31 +33,31 @@ import scalafx.Includes._
 import scalafx.scene.image.{Image, WritableImage}
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingFXUtils.html JavaFX SwingFXUtils]].
- *
- * @since 8.0
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingFXUtils.html JavaFX SwingFXUtils]].
+  *
+  * @since 8.0
+  */
 object SwingFXUtils {
 
   /**
-   * Snapshots the specified ScalaFX [[scalafx.scene.image.Image Image]] object and stores a copy
-   * of its pixels into a BufferedImage object, creating a new object if needed.
-   *
-   * @param img the JavaFX Image to be converted
-   * @param bimg an optional BufferedImage object that may be used to store the returned pixel data
-   * @return a BufferedImage containing a snapshot of the JavaFX Image, or `null` if the Image is not readable.
-   */
+    * Snapshots the specified ScalaFX [[scalafx.scene.image.Image Image]] object and stores a copy
+    * of its pixels into a BufferedImage object, creating a new object if needed.
+    *
+    * @param img the JavaFX Image to be converted
+    * @param bimg an optional BufferedImage object that may be used to store the returned pixel data
+    * @return a BufferedImage containing a snapshot of the JavaFX Image, or `null` if the Image is not readable.
+    */
   def fromFXImage(img: Image, bimg: BufferedImage): BufferedImage =
     jfxes.SwingFXUtils.fromFXImage(img, bimg)
 
   /**
-   * Snapshots the specified BufferedImage and stores a copy of its pixels into a ScalaFX
-   * [[scalafx.scene.image.Image Image]] object, creating a new object if needed.
-   *
-   * @param bimg the BufferedImage object to be converted
-   * @param wimg an optional WritableImage object that can be used to store the returned pixel data
-   * @return an Image object representing a snapshot of the current pixels in the BufferedImage.
-   */
+    * Snapshots the specified BufferedImage and stores a copy of its pixels into a ScalaFX
+    * [[scalafx.scene.image.Image Image]] object, creating a new object if needed.
+    *
+    * @param bimg the BufferedImage object to be converted
+    * @param wimg an optional WritableImage object that can be used to store the returned pixel data
+    * @return an Image object representing a snapshot of the current pixels in the BufferedImage.
+    */
   def toFXImage(bimg: BufferedImage, wimg: WritableImage): WritableImage =
     jfxes.SwingFXUtils.toFXImage(bimg, wimg)
 }

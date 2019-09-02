@@ -40,7 +40,8 @@ import scala.jdk.CollectionConverters._
 import scala.language.implicitConversions
 
 object ClipboardContent {
-  implicit def sfxClipboardContent2jfx(c: ClipboardContent): jfxsi.ClipboardContent = if (c != null) c.delegate else null
+  implicit def sfxClipboardContent2jfx(c: ClipboardContent): jfxsi.ClipboardContent =
+    if (c != null) c.delegate else null
 
   def apply[T <: AnyRef](arg: Map[DataFormat, T]): ClipboardContent = {
     val c = new jfxsi.ClipboardContent()
@@ -96,7 +97,7 @@ object ClipboardContent {
   * @define JFX  JavaFX
   */
 class ClipboardContent(override val delegate: jfxsi.ClipboardContent = new jfxsi.ClipboardContent)
-  extends JMapWrapperLike[jfxsi.DataFormat, AnyRef]
+    extends JMapWrapperLike[jfxsi.DataFormat, AnyRef]
     with SFXDelegate[jfxsi.ClipboardContent] {
 
   override def underlying: java.util.Map[jfxsi.DataFormat, AnyRef] = delegate

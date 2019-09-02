@@ -39,26 +39,26 @@ object DropShadow {
 }
 
 class DropShadow(override val delegate: jfxse.DropShadow = new jfxse.DropShadow())
-  extends Effect(delegate)
-  with ColorDelegate[jfxse.DropShadow]
-  with DimensionDelegate[jfxse.DropShadow]
-  with InputDelegate[jfxse.DropShadow]
-  with SFXDelegate[jfxse.DropShadow] {
+    extends Effect(delegate)
+    with ColorDelegate[jfxse.DropShadow]
+    with DimensionDelegate[jfxse.DropShadow]
+    with InputDelegate[jfxse.DropShadow]
+    with SFXDelegate[jfxse.DropShadow] {
 
   /**
-   * Creates a new instance of DropShadow with the specified blurType, color, radius, spread, offsetX and offsetY.
-   */
+    * Creates a new instance of DropShadow with the specified blurType, color, radius, spread, offsetX and offsetY.
+    */
   def this(blurType: jfxse.BlurType, color: Color, radius: Double, spread: Double, offsetX: Double, offsetY: Double) =
     this(new jfxse.DropShadow(blurType, color, radius, spread, offsetX, offsetY))
 
   /**
-   * Creates a new instance of DropShadow with specified radius and color.
-   */
+    * Creates a new instance of DropShadow with specified radius and color.
+    */
   def this(radius: Double, color: Color) = this(new jfxse.DropShadow(radius, color))
 
   /**
-   * Creates a new instance of DropShadow with the specified radius, offsetX, offsetY and color.
-   */
+    * Creates a new instance of DropShadow with the specified radius, offsetX, offsetY and color.
+    */
   def this(radius: Double, offsetX: Double, offsetY: Double, color: Color) =
     this(new jfxse.DropShadow(radius, offsetX, offsetY, color))
 

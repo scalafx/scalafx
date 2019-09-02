@@ -39,14 +39,14 @@ object TextArea {
 }
 
 class TextArea(override val delegate: jfxsc.TextArea = new jfxsc.TextArea())
-  extends TextInputControl(delegate)
-  with SFXDelegate[jfxsc.TextArea] {
+    extends TextInputControl(delegate)
+    with SFXDelegate[jfxsc.TextArea] {
 
   /**
-   * Creates a TextArea with initial text content.
-   *
-   * @param text - A string for text content.
-   */
+    * Creates a TextArea with initial text content.
+    *
+    * @param text - A string for text content.
+    */
   def this(text: String) = this(new jfxsc.TextArea(text))
 
   def prefColumnCount: IntegerProperty = delegate.prefColumnCountProperty()

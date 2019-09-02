@@ -32,11 +32,12 @@ import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
-
 class SplitMenuButtonSpec
-  extends SimpleSFXDelegateSpec[jfxsc.SplitMenuButton, SplitMenuButton](
-    classOf[jfxsc.SplitMenuButton], classOf[SplitMenuButton])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.SplitMenuButton, SplitMenuButton](
+      classOf[jfxsc.SplitMenuButton],
+      classOf[SplitMenuButton]
+    )
+    with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new SplitMenuButton(new jfxsc.SplitMenuButton())
 

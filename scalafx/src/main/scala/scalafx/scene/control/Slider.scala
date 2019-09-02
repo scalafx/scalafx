@@ -40,7 +40,9 @@ object Slider {
   implicit def sfxSlider2jfx(v: Slider): jfxsc.Slider = if (v != null) v.delegate else null
 }
 
-class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Control(delegate) with SFXDelegate[jfxsc.Slider] {
+class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider)
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.Slider] {
 
   /** Constructs a Slider control with the specified slider min, max and current value values. */
   def this(min: Double, max: Double, value: Double) {
@@ -48,16 +50,16 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
   }
 
   /**
-   * The amount by which to adjust the slider if the track of the slider is clicked.
-   */
+    * The amount by which to adjust the slider if the track of the slider is clicked.
+    */
   def blockIncrement: DoubleProperty = delegate.blockIncrementProperty
   def blockIncrement_=(v: Double) {
     blockIncrement() = v
   }
 
   /**
-   * A function for formatting the label for a major tick.
-   */
+    * A function for formatting the label for a major tick.
+    */
   def labelFormatter: ObjectProperty[jfxu.StringConverter[java.lang.Double]] = delegate.labelFormatterProperty
   def labelFormatter_=(v: StringConverter[Double]) {
     labelFormatter() = new jfxu.StringConverter[java.lang.Double] {
@@ -67,80 +69,80 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
   }
 
   /**
-   * The unit distance between major tick marks.
-   */
+    * The unit distance between major tick marks.
+    */
   def majorTickUnit: DoubleProperty = delegate.majorTickUnitProperty
   def majorTickUnit_=(v: Double) {
     majorTickUnit() = v
   }
 
   /**
-   * The maximum value represented by this Slider.
-   */
+    * The maximum value represented by this Slider.
+    */
   def max: DoubleProperty = delegate.maxProperty
   def max_=(v: Double) {
     max() = v
   }
 
   /**
-   * The number of minor ticks to place between any two major ticks.
-   */
+    * The number of minor ticks to place between any two major ticks.
+    */
   def minorTickCount: IntegerProperty = delegate.minorTickCountProperty
   def minorTickCount_=(v: Int) {
     minorTickCount() = v
   }
 
   /**
-   * The minimum value represented by this Slider.
-   */
+    * The minimum value represented by this Slider.
+    */
   def min: DoubleProperty = delegate.minProperty
   def min_=(v: Double) {
     min() = v
   }
 
   /**
-   * The orientation of the Slider can either be horizontal or vertical.
-   */
+    * The orientation of the Slider can either be horizontal or vertical.
+    */
   def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
   def orientation_=(v: Orientation) {
     orientation() = v
   }
 
   /**
-   * Indicates that the labels for tick marks should be shown.
-   */
+    * Indicates that the labels for tick marks should be shown.
+    */
   def showTickLabels: BooleanProperty = delegate.showTickLabelsProperty
   def showTickLabels_=(v: Boolean) {
     showTickLabels() = v
   }
 
   /**
-   * Specifies whether the Skin implementation should show tick marks.
-   */
+    * Specifies whether the Skin implementation should show tick marks.
+    */
   def showTickMarks: BooleanProperty = delegate.showTickMarksProperty
   def showTickMarks_=(v: Boolean) {
     showTickMarks() = v
   }
 
   /**
-   * Indicates whether the value of the Slider should always be aligned with the tick marks.
-   */
+    * Indicates whether the value of the Slider should always be aligned with the tick marks.
+    */
   def snapToTicks: BooleanProperty = delegate.snapToTicksProperty
   def snapToTicks_=(v: Boolean) {
     snapToTicks() = v
   }
 
   /**
-   * When true, indicates the current value of this Slider is changing.
-   */
+    * When true, indicates the current value of this Slider is changing.
+    */
   def valueChanging: BooleanProperty = delegate.valueChangingProperty
   def valueChanging_=(v: Boolean) {
     valueChanging() = v
   }
 
   /**
-   * The current value represented by this Slider.
-   */
+    * The current value represented by this Slider.
+    */
   def value: DoubleProperty = delegate.valueProperty
   def value_=(v: Double) {
     value() = v

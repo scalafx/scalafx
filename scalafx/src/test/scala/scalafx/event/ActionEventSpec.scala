@@ -33,9 +33,9 @@ import scalafx.event.ActionEvent.sfxActionEvent2jfx
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * ActionEvent Spec tests.
- *
- *
- */
+  * ActionEvent Spec tests.
+  *
+  *
+  */
 class ActionEventSpec
-  extends SimpleSFXDelegateSpec[jfxe.ActionEvent, ActionEvent](classOf[jfxe.ActionEvent], classOf[ActionEvent])
+    extends SimpleSFXDelegateSpec[jfxe.ActionEvent, ActionEvent](classOf[jfxe.ActionEvent], classOf[ActionEvent])

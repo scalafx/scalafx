@@ -34,8 +34,8 @@ import scala.language.implicitConversions
 import scalafx.collections.ObservableSet
 import scalafx.delegate.SFXDelegate
 
-
 object SetProperty {
+
   /**
     * Converts a ScalaFX SetProperty to its JavaFX counterpart SetProperty.
     *
@@ -73,7 +73,6 @@ object SetProperty {
     new SetProperty(new jfxbp.SimpleSetProperty(bean, name, value.delegate))
 }
 
-
 /**
   * Wraps a $JFX $URL0 SetProperty]].
   *
@@ -83,7 +82,7 @@ object SetProperty {
   * @define ORIGINALDOC Original Documentation]].
   **/
 class SetProperty[E <: Any](override val delegate: jfxbp.SetProperty[E] = new jfxbp.SimpleSetProperty[E])
-  extends ReadOnlySetProperty[E](delegate)
+    extends ReadOnlySetProperty[E](delegate)
     with Property[ObservableSet[E], jfxc.ObservableSet[E]]
     with SFXDelegate[jfxbp.SetProperty[E]] {
 

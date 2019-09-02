@@ -37,18 +37,18 @@ import scala.collection.JavaConverters._
 import scala.language.implicitConversions
 
 /**
- * Companion object for [[scalafx.css.StyleConverter]].
- */
+  * Companion object for [[scalafx.css.StyleConverter]].
+  */
 object StyleConverter {
 
   /**
-   * Converts a ScalaFX StyleConverter to its JavaFX counterpart.
-   *
-   * @param s ScalaFX StyleConverter
-   * @tparam F
-   * @tparam T
-   * @return JavaFX StyleConverter
-   */
+    * Converts a ScalaFX StyleConverter to its JavaFX counterpart.
+    *
+    * @param s ScalaFX StyleConverter
+    * @tparam F
+    * @tparam T
+    * @return JavaFX StyleConverter
+    */
   implicit def sfxStyleConverterProperty2jfx[F, T](s: StyleConverter[F, T]): jfxcss.StyleConverter[F, T] =
     if (s != null) s.delegate else null
 
@@ -76,48 +76,48 @@ object StyleConverter {
     new StyleConverter(jfxcss.StyleConverter.getPaintConverter)
 
   /**
-   * CSS length and number values are parsed into a Size object that is converted to a Number
-   * before the value is applied.
-   */
+    * CSS length and number values are parsed into a Size object that is converted to a Number
+    * before the value is applied.
+    */
   def sizeConverter: StyleConverter[_, Number] =
     new StyleConverter(jfxcss.StyleConverter.getSizeConverter)
 
   /**
-   * A converter for quoted strings which may have embedded unicode characters.
-   */
+    * A converter for quoted strings which may have embedded unicode characters.
+    */
   def stringConverter: StyleConverter[String, String] =
     new StyleConverter(jfxcss.StyleConverter.getStringConverter)
 
   /**
-   * A converter for URL strings.
-   */
+    * A converter for URL strings.
+    */
   def urlConverter: StyleConverter[Array[jfxcss.ParsedValue[_, _]], String] =
     new StyleConverter(jfxcss.StyleConverter.getUrlConverter)
 
   /**
-   * Read binary data stream.
-   * @param is      the data input stream
-   * @param strings the strings
-   * @return the style converter
-   * @throws java.io.IOException the exception
-   * @since 9
-   */
+    * Read binary data stream.
+    * @param is      the data input stream
+    * @param strings the strings
+    * @return the style converter
+    * @throws java.io.IOException the exception
+    * @since 9
+    */
   def readBinary(is: DataInputStream, strings: Array[String]): StyleConverter[_, _] =
     new StyleConverter(jfxcss.StyleConverter.readBinary(is, strings))
 
   /**
-   * Clear the cache.
-   * @since 9
-   */
+    * Clear the cache.
+    * @since 9
+    */
   def clearCache(): Unit = jfxcss.StyleConverter.clearCache()
 
   /**
-   * The StringStore class
-   *
-   * @since 9
-   */
+    * The StringStore class
+    *
+    * @since 9
+    */
   class StringStore(override val delegate: jfxcss.StyleConverter.StringStore = new jfxcss.StyleConverter.StringStore)
-    extends SFXDelegate[jfxcss.StyleConverter.StringStore]{
+      extends SFXDelegate[jfxcss.StyleConverter.StringStore] {
 
     def strings: Seq[String] = delegate.strings.asScala.toSeq
 
@@ -130,25 +130,25 @@ object StyleConverter {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/StyleConverter.html JavaFX
- * StyleConverter]].
- *
- * @constructor Creates a new ScalaFX StyleConverter from a JavaFX StyleConverter. 
- *              Its default value is a new JavaFX StyleConverter.
- * @param delegate JavaFX StyleConverter.
- * @tparam F
- * @tparam T
- * @since 8.0
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/StyleConverter.html JavaFX
+  * StyleConverter]].
+  *
+  * @constructor Creates a new ScalaFX StyleConverter from a JavaFX StyleConverter.
+  *              Its default value is a new JavaFX StyleConverter.
+  * @param delegate JavaFX StyleConverter.
+  * @tparam F
+  * @tparam T
+  * @since 8.0
+  */
 class StyleConverter[F, T](override val delegate: jfxcss.StyleConverter[F, T] = new jfxcss.StyleConverter)
-  extends SFXDelegate[jfxcss.StyleConverter[F, T]] {
+    extends SFXDelegate[jfxcss.StyleConverter[F, T]] {
 
   /**
-   * Convert from the parsed CSS value to the target property type.
-   *
-   * @param value The ParsedValue to convert
-   * @param font The Font to use when converting a relative value
-   */
+    * Convert from the parsed CSS value to the target property type.
+    *
+    * @param value The ParsedValue to convert
+    * @param font The Font to use when converting a relative value
+    */
   def convert(value: jfxcss.ParsedValue[F, T], font: Font): T = delegate.convert(value, font)
 
 }

@@ -32,10 +32,13 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * TableViewSelectionModel tests.
- */
+  * TableViewSelectionModel tests.
+  */
 class TableViewTableViewSelectionModelSpec[S]
-  extends SimpleSFXDelegateSpec[jfxsc.TableView.TableViewSelectionModel[S], TableView.TableViewSelectionModel[S]](classOf[jfxsc.TableView.TableViewSelectionModel[S]], classOf[TableView.TableViewSelectionModel[S]]) {
+    extends SimpleSFXDelegateSpec[jfxsc.TableView.TableViewSelectionModel[S], TableView.TableViewSelectionModel[S]](
+      classOf[jfxsc.TableView.TableViewSelectionModel[S]],
+      classOf[TableView.TableViewSelectionModel[S]]
+    ) {
 
   override def getScalaClassInstance = new TableView.TableViewSelectionModel[S](this.getJavaClassInstance) {}
 

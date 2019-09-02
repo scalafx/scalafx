@@ -108,15 +108,17 @@ object JFXApp {
 
     private var namedArguments: mutable.Map[String, String] = mutable.Map.empty[String, String]
     private var unnamedArguments = mutable.Buffer.empty[String]
-    private var filled                                      = false
+    private var filled = false
 
     private def parseArguments(): Unit = {
       if (!filled) {
-        arguments.foreach(arg =>
-          keyValue.findFirstMatchIn(arg) match {
-            case None => unnamedArguments += arg
-            case Some(matcher) => namedArguments(matcher.group(1)) = matcher.group(2)
-          })
+        arguments.foreach(
+          arg =>
+            keyValue.findFirstMatchIn(arg) match {
+              case None          => unnamedArguments += arg
+              case Some(matcher) => namedArguments(matcher.group(1)) = matcher.group(2)
+            }
+        )
         filled = true
       }
     }
@@ -168,7 +170,6 @@ object JFXApp {
     * @param url  The URL to the stylesheet as a String.
     */
   def userAgentStylesheet_=(url: String): Unit = jfxa.Application.setUserAgentStylesheet(url)
-
 
   /**
     * Empty parameters for an application
@@ -290,7 +291,7 @@ trait JFXApp extends DelayedInit {
     arguments = args
     // Put any further non-essential initialization here.
     /* Launch the JFX application.
-    */
+     */
     jfxa.Application.launch(classOf[AppHelper], args: _*)
   }
 
@@ -312,6 +313,5 @@ trait JFXApp extends DelayedInit {
     *
     * NOTE: This method is called on the JavaFX Application Thread, the same as javafx.Application.stop method.
     */
-  def stopApp(): Unit = {
-  }
+  def stopApp(): Unit = {}
 }

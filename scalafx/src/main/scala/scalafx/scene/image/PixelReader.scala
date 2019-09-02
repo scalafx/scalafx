@@ -39,44 +39,70 @@ object PixelReader {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/PixelReader.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/PixelReader.html]]
+  */
 trait PixelReader extends SFXDelegate[jfxsi.PixelReader] {
 
   /**
-   * Reads a 32-bit integer representation of the color of a pixel from the specified coordinates in the surface.
-   */
+    * Reads a 32-bit integer representation of the color of a pixel from the specified coordinates in the surface.
+    */
   def getArgb(x: Int, y: Int): Int = delegate.getArgb(x, y)
 
   /**
-   * Reads the color of a pixel from the specified coordinates in the surface and returns the value as a Color object.
-   */
+    * Reads the color of a pixel from the specified coordinates in the surface and returns the value as a Color object.
+    */
   def getColor(x: Int, y: Int): Color = delegate.getColor(x, y)
 
   /**
-   * This method returns the PixelFormat in which the surface stores its pixels, or a roughly equivalent pixel format
-   * into which it can easily convert its pixels for purposes of reading them.
-   */
+    * This method returns the PixelFormat in which the surface stores its pixels, or a roughly equivalent pixel format
+    * into which it can easily convert its pixels for purposes of reading them.
+    */
   def pixelFormat: PixelFormat[_] = delegate.getPixelFormat
 
   /**
-   * Reads pixel data from a rectangular region of the surface into the specified byte array.
-   */
-  def getPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: WritablePixelFormat[ByteBuffer], buffer: Array[Byte], offset: Int, scanlineStride: Int) {
+    * Reads pixel data from a rectangular region of the surface into the specified byte array.
+    */
+  def getPixels(
+      x: Int,
+      y: Int,
+      w: Int,
+      h: Int,
+      pixelformat: WritablePixelFormat[ByteBuffer],
+      buffer: Array[Byte],
+      offset: Int,
+      scanlineStride: Int
+  ) {
     delegate.getPixels(x, y, w, h, pixelformat, buffer, offset, scanlineStride)
   }
 
   /**
-   * Reads pixel data from a rectangular region of the surface into the specified int array.
-   */
-  def getPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: WritablePixelFormat[IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int) {
+    * Reads pixel data from a rectangular region of the surface into the specified int array.
+    */
+  def getPixels(
+      x: Int,
+      y: Int,
+      w: Int,
+      h: Int,
+      pixelformat: WritablePixelFormat[IntBuffer],
+      buffer: Array[Int],
+      offset: Int,
+      scanlineStride: Int
+  ) {
     delegate.getPixels(x, y, w, h, pixelformat, buffer, offset, scanlineStride)
   }
 
   /**
-   * Reads pixel data from a rectangular region of the surface into the specified buffer.
-   */
-  def getPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: WritablePixelFormat[B], buffer: B, scanlineStride: Int) {
+    * Reads pixel data from a rectangular region of the surface into the specified buffer.
+    */
+  def getPixels[B <: Buffer](
+      x: Int,
+      y: Int,
+      w: Int,
+      h: Int,
+      pixelformat: WritablePixelFormat[B],
+      buffer: B,
+      scanlineStride: Int
+  ) {
     delegate.getPixels(x, y, w, h, pixelformat, buffer, scanlineStride)
   }
 

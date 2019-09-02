@@ -33,24 +33,25 @@ import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object InputMethodTextRun {
-  implicit def sfxInputMethodTextRun2jfx(imtr: InputMethodTextRun): jfxsi.InputMethodTextRun = if (imtr != null) imtr.delegate else null
+  implicit def sfxInputMethodTextRun2jfx(imtr: InputMethodTextRun): jfxsi.InputMethodTextRun =
+    if (imtr != null) imtr.delegate else null
 }
 
 class InputMethodTextRun(override val delegate: jfxsi.InputMethodTextRun)
-  extends SFXDelegate[jfxsi.InputMethodTextRun] {
+    extends SFXDelegate[jfxsi.InputMethodTextRun] {
 
   def this(text: String, highlight: InputMethodHighlight) {
     this(new jfxsi.InputMethodTextRun(text, highlight))
   }
 
   /**
-   * Gets the highlight used for displaying this text.
-   */
+    * Gets the highlight used for displaying this text.
+    */
   def highlight = delegate.getHighlight
 
   /**
-   * Gets the text in this run.
-   */
+    * Gets the text in this run.
+    */
   def text = delegate.getText
 
 }

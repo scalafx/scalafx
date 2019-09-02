@@ -32,12 +32,11 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Mnemonic Spec tests.
- *
- *
- */
-class MnemonicSpec
-  extends SimpleSFXDelegateSpec[jfxsi.Mnemonic, Mnemonic](classOf[jfxsi.Mnemonic], classOf[Mnemonic]) {
+  * Mnemonic Spec tests.
+  *
+  *
+  */
+class MnemonicSpec extends SimpleSFXDelegateSpec[jfxsi.Mnemonic, Mnemonic](classOf[jfxsi.Mnemonic], classOf[Mnemonic]) {
 
   override protected def getJavaClassInstance = new jfxsi.Mnemonic(null, null)
 

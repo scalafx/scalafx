@@ -32,11 +32,13 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * TextFieldTableCell Spec tests.
- *
- *
- */
+  * TextFieldTableCell Spec tests.
+  *
+  *
+  */
 class TextFieldTableCellSpec[S, T]
-  extends SimpleSFXDelegateSpec[jfxscc.TextFieldTableCell[S, T], TextFieldTableCell[S, T]](
-    classOf[jfxscc.TextFieldTableCell[S, T]], classOf[TextFieldTableCell[S, T]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxscc.TextFieldTableCell[S, T], TextFieldTableCell[S, T]](
+      classOf[jfxscc.TextFieldTableCell[S, T]],
+      classOf[TextFieldTableCell[S, T]]
+    )
+    with RunOnApplicationThread

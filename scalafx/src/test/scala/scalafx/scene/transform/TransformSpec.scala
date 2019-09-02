@@ -32,12 +32,12 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Transform Spec tests.
- *
- *
- */
+  * Transform Spec tests.
+  *
+  *
+  */
 class TransformSpec
-  extends SimpleSFXDelegateSpec[jfxst.Transform, Transform](classOf[jfxst.Transform], classOf[Transform]) {
+    extends SimpleSFXDelegateSpec[jfxst.Transform, Transform](classOf[jfxst.Transform], classOf[Transform]) {
 
   override def getScalaClassInstance = new Transform(getJavaClassInstance) {}
 

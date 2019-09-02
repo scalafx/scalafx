@@ -32,10 +32,10 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * TableRowSpec tests.
- *
- *
- */
+  * TableRowSpec tests.
+  *
+  *
+  */
 class TableRowSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.TableRow[T], TableRow[T]](classOf[jfxsc.TableRow[T]], classOf[TableRow[T]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.TableRow[T], TableRow[T]](classOf[jfxsc.TableRow[T]], classOf[TableRow[T]])
+    with RunOnApplicationThread

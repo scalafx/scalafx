@@ -56,7 +56,6 @@ object TreeViewCellFactoryDemo extends JFXApp {
     Person("Loretta", "Martin")
   )
 
-
   val parents = ObservableBuffer[Person](
     Person("Eleanor", "Rigby", children1),
     Person("Rocky", "Raccoon", children2)
@@ -64,9 +63,10 @@ object TreeViewCellFactoryDemo extends JFXApp {
 
   def toTreeItem(p: Person): TreeItem[Person] = {
     if (p.children.isEmpty) new TreeItem(p)
-    else new TreeItem(p) {
-      children = p.children map toTreeItem
-    }
+    else
+      new TreeItem(p) {
+        children = p.children map toTreeItem
+      }
   }
 
   stage = new PrimaryStage {
@@ -103,7 +103,7 @@ object TreeViewCellFactoryDemo extends JFXApp {
               self.graphic = null
               self.text = item match {
                 case p: Person => p.firstName + " " + p.lastName
-                case null => null
+                case null      => null
               }
             }
           }

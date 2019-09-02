@@ -32,9 +32,10 @@ import javafx.scene.{text => jfxst}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Test for [[scalafx.scene.text.FontPosture]] */
-class FontPostureSpec extends SFXEnumDelegateSpec[jfxst.FontPosture, FontPosture](
-  javaClass = classOf[jfxst.FontPosture],
-  scalaClass = classOf[FontPosture],
-  companion = FontPosture)
+class FontPostureSpec
+    extends SFXEnumDelegateSpec[jfxst.FontPosture, FontPosture](
+      javaClass = classOf[jfxst.FontPosture],
+      scalaClass = classOf[FontPosture],
+      companion = FontPosture
+    )

@@ -41,46 +41,84 @@ object Region {
   implicit def sfxRegion2jfx(v: Region): jfxsl.Region = if (v != null) v.delegate else null
 
   /**
-   * Sentinel value which can be passed to a region's minWidth, minHeight, prefWidth, prefHeight,
-   * maxWidth, maxHeight properties to reset the region's size constraint back to it's intrinsic
-   * size returned by computeMinWidth(), computeMinHeight(), computePrefWidth(),
-   * computePrefHeight(), computeMaxWidth(), or computeMaxHeight().
-   */
+    * Sentinel value which can be passed to a region's minWidth, minHeight, prefWidth, prefHeight,
+    * maxWidth, maxHeight properties to reset the region's size constraint back to it's intrinsic
+    * size returned by computeMinWidth(), computeMinHeight(), computePrefWidth(),
+    * computePrefHeight(), computeMaxWidth(), or computeMaxHeight().
+    */
   val USE_COMPUTED_SIZE = jfxsl.Region.USE_COMPUTED_SIZE
+
   /**
-   * Sentinel value which can be passed to a region's minWidth, minHeight, prefWidth, prefHeight,
-   * maxWidth, maxHeight properties to indicate that the preferred dimension should be used for
-   * that max and/or min constraint.
-   */
+    * Sentinel value which can be passed to a region's minWidth, minHeight, prefWidth, prefHeight,
+    * maxWidth, maxHeight properties to indicate that the preferred dimension should be used for
+    * that max and/or min constraint.
+    */
   val USE_PREF_SIZE = jfxsl.Region.USE_PREF_SIZE
 
   /** Utility method which lays out the child within an area of it's parent defined by areaX, areaY,
     * areaWidth x areaHeight, with a baseline offset relative to that area. */
-  def layoutInArea(child: javafx.scene.Node,
-                   areaX: Double, areaY: Double, areaWidth: Double, areaHeight: Double, areaBaselineOffset: Double,
-                   margin: jfxg.Insets, fillWidth: Boolean, fillHeight: Boolean,
-                   halignment: jfxg.HPos, valignment: jfxg.VPos, isSnapToPixel: Boolean) {
+  def layoutInArea(
+      child: javafx.scene.Node,
+      areaX: Double,
+      areaY: Double,
+      areaWidth: Double,
+      areaHeight: Double,
+      areaBaselineOffset: Double,
+      margin: jfxg.Insets,
+      fillWidth: Boolean,
+      fillHeight: Boolean,
+      halignment: jfxg.HPos,
+      valignment: jfxg.VPos,
+      isSnapToPixel: Boolean
+  ) {
     jfxsl.Region.layoutInArea(
       child,
-      areaX, areaY, areaWidth, areaHeight, areaBaselineOffset,
-      margin, fillWidth, fillHeight,
-      halignment, valignment, isSnapToPixel)
+      areaX,
+      areaY,
+      areaWidth,
+      areaHeight,
+      areaBaselineOffset,
+      margin,
+      fillWidth,
+      fillHeight,
+      halignment,
+      valignment,
+      isSnapToPixel
+    )
   }
 
   /** Utility method which positions the child within an area of this region defined by areaX, areaY,
     * areaWidth x areaHeight, with a baseline offset relative to that area. */
-  def positionInArea(child: javafx.scene.Node,
-                     areaX: Double, areaY: Double, areaWidth: Double, areaHeight: Double, areaBaselineOffset: Double,
-                     margin: jfxg.Insets, halignment: jfxg.HPos, valignment: jfxg.VPos, isSnapToPixel: Boolean) {
-    jfxsl.Region.positionInArea(child,
-      areaX, areaY, areaWidth, areaHeight,
-      areaBaselineOffset, margin, halignment, valignment, isSnapToPixel)
+  def positionInArea(
+      child: javafx.scene.Node,
+      areaX: Double,
+      areaY: Double,
+      areaWidth: Double,
+      areaHeight: Double,
+      areaBaselineOffset: Double,
+      margin: jfxg.Insets,
+      halignment: jfxg.HPos,
+      valignment: jfxg.VPos,
+      isSnapToPixel: Boolean
+  ) {
+    jfxsl.Region.positionInArea(
+      child,
+      areaX,
+      areaY,
+      areaWidth,
+      areaHeight,
+      areaBaselineOffset,
+      margin,
+      halignment,
+      valignment,
+      isSnapToPixel
+    )
   }
 }
 
 class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
-  extends Parent(delegate)
-  with SFXDelegate[jfxsl.Region] {
+    extends Parent(delegate)
+    with SFXDelegate[jfxsl.Region] {
 
   /** The background of the Region, which is made up of zero or more BackgroundFills,
     * and zero or more BackgroundImages.
@@ -110,42 +148,42 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   }
 
   /**
-   * The height of this resizable node.
-   */
+    * The height of this resizable node.
+    */
   def height: ReadOnlyDoubleProperty = delegate.heightProperty
 
   /**
-   * The width of this resizable node.
-   */
+    * The width of this resizable node.
+    */
   def width: ReadOnlyDoubleProperty = delegate.widthProperty
 
   /**
-   * Property for overriding the region's computed maximum height.
-   */
+    * Property for overriding the region's computed maximum height.
+    */
   def maxHeight: DoubleProperty = delegate.maxHeightProperty
   def maxHeight_=(v: Double) {
     maxHeight() = v
   }
 
   /**
-   * Property for overriding the region's computed maximum width.
-   */
+    * Property for overriding the region's computed maximum width.
+    */
   def maxWidth: DoubleProperty = delegate.maxWidthProperty
   def maxWidth_=(v: Double) {
     maxWidth() = v
   }
 
   /**
-   * Property for overriding the region's computed minimum height.
-   */
+    * Property for overriding the region's computed minimum height.
+    */
   def minHeight: DoubleProperty = delegate.minHeightProperty
   def minHeight_=(v: Double) {
     minHeight() = v
   }
 
   /**
-   * Property for overriding the region's computed minimum width.
-   */
+    * Property for overriding the region's computed minimum width.
+    */
   def minWidth: DoubleProperty = delegate.minWidthProperty
   def minWidth_=(v: Double) {
     minWidth() = v
@@ -158,24 +196,24 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   }
 
   /**
-   * The top,right,bottom,left padding around the region's content.
-   */
+    * The top,right,bottom,left padding around the region's content.
+    */
   def padding: ObjectProperty[jfxg.Insets] = delegate.paddingProperty
   def padding_=(v: Insets) {
     padding() = v
   }
 
   /**
-   * Property for overriding the region's computed preferred height.
-   */
+    * Property for overriding the region's computed preferred height.
+    */
   def prefHeight: DoubleProperty = delegate.prefHeightProperty
   def prefHeight_=(v: Double) {
     prefHeight() = v
   }
 
   /**
-   * Property for overriding the region's computed preferred width.
-   */
+    * Property for overriding the region's computed preferred width.
+    */
   def prefWidth: DoubleProperty = delegate.prefWidthProperty
   def prefWidth_=(v: Double) {
     prefWidth() = v
@@ -188,22 +226,22 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   }
 
   /**
-   * Defines whether this region rounds position/spacing and cell size values to pixel boundaries
-   * when laying out its children.
-   */
+    * Defines whether this region rounds position/spacing and cell size values to pixel boundaries
+    * when laying out its children.
+    */
   def snapToPixel: BooleanProperty = delegate.snapToPixelProperty
   def snapToPixel_=(v: Boolean) {
     snapToPixel() = v
   }
 
   /**
-   * Returns true since all Regions are resizable.
-   */
+    * Returns true since all Regions are resizable.
+    */
   def resize = delegate.isResizable
 
   /**
-   * Invoked by the region's parent during layout to set the region's width and height.
-   */
+    * Invoked by the region's parent during layout to set the region's width and height.
+    */
   override def resize(width: Double, height: Double) {
     delegate.resize(width, height)
   }
@@ -215,7 +253,7 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   }
 
   /**
-   * Gets the space around content, which will include any borders plus padding if set.
-   */
+    * Gets the space around content, which will include any borders plus padding if set.
+    */
   def insets = delegate.getInsets
 }

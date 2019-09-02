@@ -40,7 +40,6 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
@@ -51,23 +50,20 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
- *
- *         based upon:
- *
- *         http://docs.oracle.com/javafx/2.0/ui_controls/toggle-button.htm
- *
- */
-
+  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+  *
+  *         based upon:
+  *
+  *         http://docs.oracle.com/javafx/2.0/ui_controls/toggle-button.htm
+  *
+  */
 object ScalaFX_Controls_04 extends JFXApp {
 
   val priorityLabel = new Label {
     text = "Priority:"
   }
 
-  val theToggleGroup = new ToggleGroup {
-
-  }
+  val theToggleGroup = new ToggleGroup {}
 
   val minorToggleButton = new ToggleButton {
     text = "Minor"
@@ -120,15 +116,14 @@ object ScalaFX_Controls_04 extends JFXApp {
     )
   }
 
-  theToggleGroup.selectedToggle onChange {
-    (_, _, newToggle) =>
-      if (newToggle != null) {
-        val selectedToggle = theToggleGroup.getSelectedToggle
-        val userDataColor = selectedToggle.getUserData.asInstanceOf[Color]
-        rectangle.fill = userDataColor
-      } else {
-        rectangle.fill = Color.White
-      }
+  theToggleGroup.selectedToggle onChange { (_, _, newToggle) =>
+    if (newToggle != null) {
+      val selectedToggle = theToggleGroup.getSelectedToggle
+      val userDataColor = selectedToggle.getUserData.asInstanceOf[Color]
+      rectangle.fill = userDataColor
+    } else {
+      rectangle.fill = Color.White
+    }
   }
 
   stage = new PrimaryStage {
@@ -140,6 +135,3 @@ object ScalaFX_Controls_04 extends JFXApp {
     }
   }
 }
-
-
-

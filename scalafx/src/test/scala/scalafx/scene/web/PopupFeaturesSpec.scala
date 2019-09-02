@@ -32,12 +32,15 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * PopupFeatures Spec tests.
- *
- *
- */
+  * PopupFeatures Spec tests.
+  *
+  *
+  */
 class PopupFeaturesSpec
-  extends SimpleSFXDelegateSpec[jfxsw.PopupFeatures, PopupFeatures](classOf[jfxsw.PopupFeatures], classOf[PopupFeatures]) {
+    extends SimpleSFXDelegateSpec[jfxsw.PopupFeatures, PopupFeatures](
+      classOf[jfxsw.PopupFeatures],
+      classOf[PopupFeatures]
+    ) {
 
   override protected def getScalaClassInstance = new PopupFeatures(true, true, true, true)
 

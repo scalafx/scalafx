@@ -39,22 +39,22 @@ object Hyperlink {
 }
 
 class Hyperlink(override val delegate: jfxsc.Hyperlink = new jfxsc.Hyperlink)
-  extends ButtonBase(delegate)
-  with SFXDelegate[jfxsc.Hyperlink] {
+    extends ButtonBase(delegate)
+    with SFXDelegate[jfxsc.Hyperlink] {
 
   /**
-   * Create a hyperlink with the specified text as its label.
-   */
+    * Create a hyperlink with the specified text as its label.
+    */
   def this(text: String) = this(new jfxsc.Hyperlink(text))
 
   /**
-   * Create a hyperlink with the specified text and graphic as its label.
-   */
+    * Create a hyperlink with the specified text and graphic as its label.
+    */
   def this(text: String, graphic: Node) = this(new jfxsc.Hyperlink(text, graphic))
 
   /**
-   * Indicates whether this link has already been "visited".
-   */
+    * Indicates whether this link has already been "visited".
+    */
   def visited: BooleanProperty = delegate.visitedProperty
   def visited_=(v: Boolean) {
     visited() = v

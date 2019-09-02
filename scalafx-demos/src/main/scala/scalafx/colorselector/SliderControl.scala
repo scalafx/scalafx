@@ -37,9 +37,9 @@ import scalafx.scene.paint.Color
 import scalafx.scene.text.{Font, FontWeight}
 
 /**
- * @author Rafael
- *
- */
+  * @author Rafael
+  *
+  */
 class SliderControl(title: String) extends HBox {
 
   private val strBackground = "-fx-background-color: rgb(%d, %d, %d);"
@@ -114,12 +114,17 @@ class SliderControl(title: String) extends HBox {
     }
   }
 
-
   def changeColor(backgroundColor: Color, foregroundColor: Color) {
-    this.cssBackground() = strBackground.format(doubleToInt(backgroundColor.red),
-      doubleToInt(backgroundColor.green), doubleToInt(backgroundColor.blue))
-    this.cssForeground() = strForeground.format(doubleToInt(foregroundColor.red),
-      doubleToInt(foregroundColor.green), doubleToInt(foregroundColor.blue))
+    this.cssBackground() = strBackground.format(
+      doubleToInt(backgroundColor.red),
+      doubleToInt(backgroundColor.green),
+      doubleToInt(backgroundColor.blue)
+    )
+    this.cssForeground() = strForeground.format(
+      doubleToInt(foregroundColor.red),
+      doubleToInt(foregroundColor.green),
+      doubleToInt(foregroundColor.blue)
+    )
   }
 
   override def toString = "%s[%s, %b]".format(title, lblValue.text.get, selectedControl.value)

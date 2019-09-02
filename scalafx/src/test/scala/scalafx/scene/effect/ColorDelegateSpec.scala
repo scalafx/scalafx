@@ -34,8 +34,8 @@ import org.scalatest.Matchers._
 import scalafx.scene.paint.Color
 
 /**
- * Trait to test ColorDelegate subclasses
- */
+  * Trait to test ColorDelegate subclasses
+  */
 trait ColorDelegateSpec[D <: ColorDelegate[_]] extends FlatSpec {
 
   protected val colorDelegate: D

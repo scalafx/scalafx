@@ -38,88 +38,88 @@ object GestureEvent {
   implicit def sfxGestureEvent2jfx(ge: GestureEvent): jfxsi.GestureEvent = if (ge != null) ge.delegate else null
 
   /**
-   * Common supertype for all gestures.
-   */
+    * Common supertype for all gestures.
+    */
   val ANY: EventType[jfxsi.GestureEvent] = jfxsi.GestureEvent.ANY
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/GestureEvent.html]]
- *
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/GestureEvent.html]]
+  *
+  */
 class GestureEvent(override val delegate: jfxsi.GestureEvent)
-  extends InputEvent(delegate)
-  with SFXDelegate[jfxsi.GestureEvent] {
+    extends InputEvent(delegate)
+    with SFXDelegate[jfxsi.GestureEvent] {
 
   /**
-   * Creates and returns a copy of this event with the specified event source and target.
-   */
+    * Creates and returns a copy of this event with the specified event source and target.
+    */
   override def copyFor(newSource: AnyRef, newTarget: jfxe.EventTarget): Event = delegate.copyFor(newSource, newTarget)
 
   /**
-   * Gets the horizontal position of the event relative to the origin of the event's source.
-   */
+    * Gets the horizontal position of the event relative to the origin of the event's source.
+    */
   def x: Double = delegate.getX
 
   /**
-   * Gets the vertical position of the event relative to the origin of the event's source.
-   */
+    * Gets the vertical position of the event relative to the origin of the event's source.
+    */
   def y: Double = delegate.getY
 
   /**
-   * Gets the horizontal position of the event relative to the origin of the Scene that contains the event's source.
-   */
+    * Gets the horizontal position of the event relative to the origin of the Scene that contains the event's source.
+    */
   def sceneX: Double = delegate.getSceneX
 
   /**
-   * Gets the vertical position of the event relative to the origin of the Scene that contains the event's source.
-   */
+    * Gets the vertical position of the event relative to the origin of the Scene that contains the event's source.
+    */
   def sceneY: Double = delegate.getSceneY
 
   /**
-   * Gets the absolute horizontal position of the event.
-   */
+    * Gets the absolute horizontal position of the event.
+    */
   def screenX: Double = delegate.getScreenX
 
   /**
-   * Gets the absolute vertical position of the event.
-   */
+    * Gets the absolute vertical position of the event.
+    */
   def screenY: Double = delegate.getScreenY
 
   /**
-   * Indicates whether or not the Alt modifier is down on this event.
-   */
+    * Indicates whether or not the Alt modifier is down on this event.
+    */
   def altDown: Boolean = delegate.isAltDown
 
   /**
-   * Indicates whether or not the Control modifier is down on this event.
-   */
+    * Indicates whether or not the Control modifier is down on this event.
+    */
   def controlDown: Boolean = delegate.isControlDown
 
   /**
-   * Indicates whether this gesture is caused by a direct or indirect input device.
-   */
+    * Indicates whether this gesture is caused by a direct or indirect input device.
+    */
   def direct: Boolean = delegate.isDirect
 
   /**
-   * Indicates if this event represents an inertia of an already finished gesture.
-   */
+    * Indicates if this event represents an inertia of an already finished gesture.
+    */
   def inertia: Boolean = delegate.isInertia
 
   /**
-   * Indicates whether or not the Meta modifier is down on this event.
-   */
+    * Indicates whether or not the Meta modifier is down on this event.
+    */
   def metaDown: Boolean = delegate.isMetaDown
 
   /**
-   * Indicates whether or not the Shift modifier is down on this event.
-   */
+    * Indicates whether or not the Shift modifier is down on this event.
+    */
   def shiftDown: Boolean = delegate.isShiftDown
 
   /**
-   * Indicates whether or not the host platform common shortcut modifier is down on this event.
-   */
+    * Indicates whether or not the host platform common shortcut modifier is down on this event.
+    */
   def shortcutDown: Boolean = delegate.isShortcutDown
 
 }

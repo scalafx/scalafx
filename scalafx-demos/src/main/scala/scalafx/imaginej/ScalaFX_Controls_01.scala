@@ -52,14 +52,13 @@ import scalafx.scene.paint.Color
 import scalafx.scene.text.{Font, TextAlignment}
 
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
- *
- *         based upon:
- *
- *         http://docs.oracle.com/javafx/2.0/ui_controls/label.htm
- *
- */
-
+  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+  *
+  *         based upon:
+  *
+  *         http://docs.oracle.com/javafx/2.0/ui_controls/label.htm
+  *
+  */
 object ScalaFX_Controls_01 extends JFXApp {
   val labelsImageView = new ImageView {
     image = new Image(this, "images/labels.jpg")
@@ -82,15 +81,13 @@ object ScalaFX_Controls_01 extends JFXApp {
     wrapText = true
     translateY = 50
     prefWidth = 100
-    onMouseEntered = {
-      (_: MouseEvent) =>
-        scaleX = 1.5
-        scaleY = 1.5
+    onMouseEntered = { (_: MouseEvent) =>
+      scaleX = 1.5
+      scaleY = 1.5
     }
-    onMouseExited = {
-      (_: MouseEvent) =>
-        scaleX = 1
-        scaleY = 1
+    onMouseExited = { (_: MouseEvent) =>
+      scaleX = 1
+      scaleY = 1
     }
   }
   val hBox = new HBox {

@@ -30,7 +30,6 @@ package scalafx.beans.property
 import org.scalatest.Matchers.{convertToAnyShouldWrapper, equal}
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
 
-
 /** ReadOnlyDoubleWrapper Spec tests. */
 class ReadOnlyDoubleWrapperSpec extends FlatSpec with BeforeAndAfterEach {
 

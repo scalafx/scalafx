@@ -33,6 +33,7 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object HostServices {
+
   /**
     * Converts a ScalaFX HostServices to its JavaFX counterpart.
     *
@@ -56,8 +57,7 @@ object HostServices {
   * @define JFX JavaFX
   * @define ORIGINALDOC Original Documentation]].
   */
-class HostServices(override val delegate: jfx.HostServices)
-  extends SFXDelegate[jfx.HostServices] {
+class HostServices(override val delegate: jfx.HostServices) extends SFXDelegate[jfx.HostServices] {
 
   /**
     * Gets the code base URI for this application.

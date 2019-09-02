@@ -37,10 +37,12 @@ object Polyline {
   def apply(points: Double*) = new Polyline(new jfxss.Polyline(points: _*))
 }
 
-class Polyline(override val delegate: jfxss.Polyline = new jfxss.Polyline) extends Shape(delegate) with SFXDelegate[jfxss.Polyline] {
+class Polyline(override val delegate: jfxss.Polyline = new jfxss.Polyline)
+    extends Shape(delegate)
+    with SFXDelegate[jfxss.Polyline] {
 
   /**
-   * Gets the coordinates of the PolyLine segments.
-   */
+    * Gets the coordinates of the PolyLine segments.
+    */
   def points = delegate.getPoints
 }

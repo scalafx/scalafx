@@ -32,12 +32,15 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * PieChart.Data Spec tests.
- *
- *
- */
+  * PieChart.Data Spec tests.
+  *
+  *
+  */
 class PieChartDataSpec
-  extends SimpleSFXDelegateSpec[jfxsc.PieChart.Data, PieChart.Data](classOf[jfxsc.PieChart.Data], classOf[PieChart.Data]) {
+    extends SimpleSFXDelegateSpec[jfxsc.PieChart.Data, PieChart.Data](
+      classOf[jfxsc.PieChart.Data],
+      classOf[PieChart.Data]
+    ) {
 
   override def getJavaClassInstance = new jfxsc.PieChart.Data("", 0.0)
 

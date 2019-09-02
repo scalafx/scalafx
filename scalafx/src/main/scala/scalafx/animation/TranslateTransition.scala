@@ -36,141 +36,142 @@ import scalafx.scene.Node
 import scalafx.util.Duration
 
 /**
- * Companion Object for [[scalafx.animation.TranslateTransition]].
- *
- * @define TT `TranslateTransition`
- */
+  * Companion Object for [[scalafx.animation.TranslateTransition]].
+  *
+  * @define TT `TranslateTransition`
+  */
 object TranslateTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $TT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/TranslateTransition.html $TT]],
-   * extracting its delegate.
-   *
-   * @param v ScalaFX $TT
-   * @return JavaFX $TT extracted from `v`.
-   */
-  implicit def sfxTranslateTransition2jfx(v: TranslateTransition): jfxa.TranslateTransition = if (v != null) v.delegate else null
+    * Converts a ScalaFX $TT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/TranslateTransition.html $TT]],
+    * extracting its delegate.
+    *
+    * @param v ScalaFX $TT
+    * @return JavaFX $TT extracted from `v`.
+    */
+  implicit def sfxTranslateTransition2jfx(v: TranslateTransition): jfxa.TranslateTransition =
+    if (v != null) v.delegate else null
 
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/TranslateTransition.html TranslateTransition]].
- *
- * @constructor Creates a new ScalaFX $TT from a JavaFX $TT.
- * @param delegate JavaFX $TT to be delegated.
- *
- * @define TT `TranslateTransition`
- * @define CONST The constructor of $TT
- * @define DUR The duration of the $TT
- * @define DV Default value:
- */
+  * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/TranslateTransition.html TranslateTransition]].
+  *
+  * @constructor Creates a new ScalaFX $TT from a JavaFX $TT.
+  * @param delegate JavaFX $TT to be delegated.
+  *
+  * @define TT `TranslateTransition`
+  * @define CONST The constructor of $TT
+  * @define DUR The duration of the $TT
+  * @define DV Default value:
+  */
 class TranslateTransition(override val delegate: jfxa.TranslateTransition = new jfxa.TranslateTransition())
-  extends Transition(delegate)
-  with SFXDelegate[jfxa.TranslateTransition] {
+    extends Transition(delegate)
+    with SFXDelegate[jfxa.TranslateTransition] {
 
   // CONSTRUCTORS
 
   /**
-   * $CONST
-   *
-   * @param duration $DUR
-   */
+    * $CONST
+    *
+    * @param duration $DUR
+    */
   def this(duration: Duration) = this(new jfxa.TranslateTransition(duration))
 
   /**
-   * $CONST
-   *
-   * @param duration $DUR
-   * @param node The node which will be translated
-   */
+    * $CONST
+    *
+    * @param duration $DUR
+    * @param node The node which will be translated
+    */
   def this(duration: Duration, node: Node) =
     this(new jfxa.TranslateTransition(duration, node))
 
   // PROPERTIES
 
   /**
-   * $DUR. $DV 400ms
-   */
+    * $DUR. $DV 400ms
+    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
 
   /**
-   * The target node of this $TT.
-   */
+    * The target node of this $TT.
+    */
   def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
   def node_=(n: Node) {
     node() = n
   }
 
   /**
-   * Specifies the incremented stop X coordinate value, from the start, of this $TT.
-   */
+    * Specifies the incremented stop X coordinate value, from the start, of this $TT.
+    */
   def byX: DoubleProperty = delegate.byXProperty
   def byX_=(x: Double) {
     byX() = x
   }
 
   /**
-   * Specifies the incremented stop Y coordinate value, from the start, of this $TT.
-   */
+    * Specifies the incremented stop Y coordinate value, from the start, of this $TT.
+    */
   def byY: DoubleProperty = delegate.byYProperty
   def byY_=(y: Double) {
     byY() = y
   }
 
   /**
-   * Specifies the incremented stop Z coordinate value, from the start, of this $TT.
-   */
+    * Specifies the incremented stop Z coordinate value, from the start, of this $TT.
+    */
   def byZ: DoubleProperty = delegate.byZProperty
   def byZ_=(z: Double) {
     byZ() = z
   }
 
   /**
-   * Specifies the start X coordinate value of this $TT. $DV `Double.NaN`
-   */
+    * Specifies the start X coordinate value of this $TT. $DV `Double.NaN`
+    */
   def fromX: DoubleProperty = delegate.fromXProperty
   def fromX_=(x: Double) {
     fromX() = x
   }
 
   /**
-   * Specifies the start Y coordinate value of this $TT. $DV `Double.NaN`
-   */
+    * Specifies the start Y coordinate value of this $TT. $DV `Double.NaN`
+    */
   def fromY: DoubleProperty = delegate.fromYProperty
   def fromY_=(y: Double) {
     fromY() = y
   }
 
   /**
-   * Specifies the start Z coordinate value of this $TT. $DV `Double.NaN`
-   */
+    * Specifies the start Z coordinate value of this $TT. $DV `Double.NaN`
+    */
   def fromZ: DoubleProperty = delegate.fromZProperty
   def fromZ_=(z: Double) {
     fromZ() = z
   }
 
   /**
-   * Specifies the stop X coordinate value of this $TT. $DV `Double.NaN`
-   */
+    * Specifies the stop X coordinate value of this $TT. $DV `Double.NaN`
+    */
   def toX: DoubleProperty = delegate.toXProperty
   def toX_=(x: Double) {
     toX() = x
   }
 
   /**
-   * Specifies the stop Y coordinate value of this $TT. $DV `Double.NaN`
-   */
+    * Specifies the stop Y coordinate value of this $TT. $DV `Double.NaN`
+    */
   def toY: DoubleProperty = delegate.toYProperty
   def toY_=(y: Double) {
     toY() = y
   }
 
   /**
-   * Specifies the stop Z coordinate value of this $TT. $DV `Double.NaN`
-   */
+    * Specifies the stop Z coordinate value of this $TT. $DV `Double.NaN`
+    */
   def toZ: DoubleProperty = delegate.toZProperty
   def toZ_=(z: Double) {
     toZ() = z

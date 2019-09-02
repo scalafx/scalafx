@@ -30,24 +30,23 @@ import javafx.{print => jfxp}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
- * Companion Object for [[scalafx.print.PrintSides]].
- */
-object PrintSides
-  extends SFXEnumDelegateCompanion[jfxp.PrintSides, PrintSides] {
+  * Companion Object for [[scalafx.print.PrintSides]].
+  */
+object PrintSides extends SFXEnumDelegateCompanion[jfxp.PrintSides, PrintSides] {
 
   /**
-   * Two sided printing where the vertical edge of the paper is to be used for binding such as in a book.
-   */
+    * Two sided printing where the vertical edge of the paper is to be used for binding such as in a book.
+    */
   case object Duplex extends PrintSides(jfxp.PrintSides.DUPLEX)
 
   /**
-   * One sided printing.
-   */
+    * One sided printing.
+    */
   case object OneSided extends PrintSides(jfxp.PrintSides.ONE_SIDED)
 
   /**
-   * Two sided printing where the horizontal edge of the paper is to be used for binding such as in a notepad.
-   */
+    * Two sided printing where the horizontal edge of the paper is to be used for binding such as in a notepad.
+    */
   case object Tumble extends PrintSides(jfxp.PrintSides.TUMBLE)
 
   protected override def unsortedValues: Array[PrintSides] = Array(Duplex, OneSided, Tumble)
@@ -55,9 +54,8 @@ object PrintSides
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintSides.html JavaFX PrintSides]].
- *
- * @since 8.0
- */
-sealed abstract class PrintSides(override val delegate: jfxp.PrintSides)
-  extends SFXEnumDelegate[jfxp.PrintSides]
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintSides.html JavaFX PrintSides]].
+  *
+  * @since 8.0
+  */
+sealed abstract class PrintSides(override val delegate: jfxp.PrintSides) extends SFXEnumDelegate[jfxp.PrintSides]

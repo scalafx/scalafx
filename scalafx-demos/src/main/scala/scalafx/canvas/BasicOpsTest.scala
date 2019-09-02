@@ -34,8 +34,8 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.ArcType
 
 /**
- * Example adapted from code showed in [[http://docs.oracle.com/javafx/2/canvas/jfxpub-canvas.htm]].
- */
+  * Example adapted from code showed in [[http://docs.oracle.com/javafx/2/canvas/jfxpub-canvas.htm]].
+  */
 object BasicOpsTest extends JFXApp {
 
   val canvas = new Canvas(300, 300)

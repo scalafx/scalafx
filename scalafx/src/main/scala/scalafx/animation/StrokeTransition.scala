@@ -38,106 +38,106 @@ import scalafx.scene.shape.Shape
 import scalafx.util.Duration
 
 /**
- * Companion Object for [[scalafx.animation.StrokeTransition]].
- *
- * @define ST `StrokeTransition`
- */
+  * Companion Object for [[scalafx.animation.StrokeTransition]].
+  *
+  * @define ST `StrokeTransition`
+  */
 object StrokeTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/StrokeTransition.html $ST]],
-   * extracting its delegate.
-   *
-   * @param v ScalaFX $ST
-   * @return JavaFX $ST extracted from `v`.
-   */
+    * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/StrokeTransition.html $ST]],
+    * extracting its delegate.
+    *
+    * @param v ScalaFX $ST
+    * @return JavaFX $ST extracted from `v`.
+    */
   implicit def sfxStrokeTransition2jfx(v: StrokeTransition): jfxa.StrokeTransition = if (v != null) v.delegate else null
 
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/StrokeTransition.html StrokeTransition]].
- *
- * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
- * @param delegate JavaFX $ST to be delegated.
- *
- * @define ST `StrokeTransition`
- * @define CONST The constructor of $ST
- * @define DUR The duration of the $ST.
- * @define DV Default value:
- */
+  * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/StrokeTransition.html StrokeTransition]].
+  *
+  * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
+  * @param delegate JavaFX $ST to be delegated.
+  *
+  * @define ST `StrokeTransition`
+  * @define CONST The constructor of $ST
+  * @define DUR The duration of the $ST.
+  * @define DV Default value:
+  */
 class StrokeTransition(override val delegate: jfxa.StrokeTransition = new jfxa.StrokeTransition)
-  extends Transition(delegate)
-  with SFXDelegate[jfxa.StrokeTransition] {
+    extends Transition(delegate)
+    with SFXDelegate[jfxa.StrokeTransition] {
 
   // CONSTRUCTORS
 
   /**
-   * $CONST
-   *
-   * @param duration $DUR
-   * @param shape The shape which filling will be animated
-   * @param fromValue The start value of the color-animation
-   * @param toValue The end value of the color-animation
-   */
+    * $CONST
+    *
+    * @param duration $DUR
+    * @param shape The shape which filling will be animated
+    * @param fromValue The start value of the color-animation
+    * @param toValue The end value of the color-animation
+    */
   def this(duration: Duration, shape: Shape, fromValue: Color, toValue: Color) =
     this(new jfxa.StrokeTransition(duration, shape, fromValue, toValue))
 
   /**
-   * $CONST
-   *
-   * @param duration $DUR
-   * @param fromValue The start value of the color-animation
-   * @param toValue The end value of the color-animation
-   */
+    * $CONST
+    *
+    * @param duration $DUR
+    * @param fromValue The start value of the color-animation
+    * @param toValue The end value of the color-animation
+    */
   def this(duration: Duration, fromValue: Color, toValue: Color) =
     this(new jfxa.StrokeTransition(duration, fromValue, toValue))
 
   /**
-   * $CONST
-   *
-   * @param duration $DUR
-   * @param shape The shape which filling will be animated
-   */
+    * $CONST
+    *
+    * @param duration $DUR
+    * @param shape The shape which filling will be animated
+    */
   def this(duration: Duration, shape: Shape) =
     this(new jfxa.StrokeTransition(duration, shape))
 
   /**
-   * $CONST
-   *
-   * @param duration $DUR
-   */
+    * $CONST
+    *
+    * @param duration $DUR
+    */
   def this(duration: Duration) = this(new jfxa.StrokeTransition(duration))
 
   // PROPERTIES
 
   /**
-   * The target shape of this $ST.
-   */
+    * The target shape of this $ST.
+    */
   def shape: ObjectProperty[jfxss.Shape] = delegate.shapeProperty
   def shape_=(s: Shape) {
     shape() = s
   }
 
   /**
-   * $DUR. $DV 400ms
-   */
+    * $DUR. $DV 400ms
+    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
   def duration_=(d: Duration) {
     duration() = d
   }
 
   /**
-   * Specifies the start color value for this $ST. $DV `null`
-   */
+    * Specifies the start color value for this $ST. $DV `null`
+    */
   def fromValue: ObjectProperty[jfxsp.Color] = delegate.fromValueProperty
   def fromValue_=(from: Color) {
     fromValue() = from
   }
 
   /**
-   * Specifies the stop color value for this $ST. $DV `null`
-   */
+    * Specifies the stop color value for this $ST. $DV `null`
+    */
   def toValue: ObjectProperty[jfxsp.Color] = delegate.toValueProperty
   def toValue_=(to: Color) {
     toValue() = to

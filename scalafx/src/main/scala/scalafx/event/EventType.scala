@@ -32,48 +32,49 @@ import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object EventType {
-  implicit def sfxEventType2jfx[T <: jfxe.Event](et: EventType[T]): jfxe.EventType[T] = if (et != null) et.delegate else null
+  implicit def sfxEventType2jfx[T <: jfxe.Event](et: EventType[T]): jfxe.EventType[T] =
+    if (et != null) et.delegate else null
 
   /**
-   * The root event type. All other event types are either direct or indirect sub types of it.
-   * It is also the only event type which has its super event type set to null.
-   */
+    * The root event type. All other event types are either direct or indirect sub types of it.
+    * It is also the only event type which has its super event type set to null.
+    */
   val Root = new EventType(jfxe.EventType.ROOT)
-  @deprecated ("Use Root; ROOT will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Root; ROOT will be removed in a future release", "8.0.60-R10")
   val ROOT = Root
 }
 
 class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T]) extends SFXDelegate[jfxe.EventType[T]] {
 
   /**
-   * Constructs a new `EventType` with the specified super type and the name set to null. 
-   */
+    * Constructs a new `EventType` with the specified super type and the name set to null.
+    */
   // Dummy implicit is used to disambiguate this auxiliary constructor from the main constructor - otherwise, they both have the same type after erasure, and the code cannot compile.
   def this(superType: jfxe.EventType[_ >: T])(implicit d: DummyImplicit) =
     this(new jfxe.EventType[T](superType))
 
   /**
-   * Constructs a new `EventType` with the specified super type and name.
-   */
+    * Constructs a new `EventType` with the specified super type and name.
+    */
   def this(superType: jfxe.EventType[_ >: T], name: String) =
     this(new jfxe.EventType[T](superType, name))
 
   /**
-   * Constructs a new `EventType` with the specified name and the EventType.ROOT as its super type.
-   *
-   * @param name The name
-   */
+    * Constructs a new `EventType` with the specified name and the EventType.ROOT as its super type.
+    *
+    * @param name The name
+    */
   def this(name: String) =
     this(new jfxe.EventType[T](name))
 
   /**
-   * Gets the name of this event type.
-   */
+    * Gets the name of this event type.
+    */
   def name = delegate.getName
 
   /**
-   * Gets the super type of this event type.
-   */
+    * Gets the super type of this event type.
+    */
   def superType = delegate.getSuperType
 
 }

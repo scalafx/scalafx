@@ -44,47 +44,47 @@ object TextFlow {
 }
 
 /**
- * TextFlow is special layout designed to lay out rich text. It can be used to layout several
- * `Text` nodes in a single text flow. The `TextFlow` uses the text and the font of each `Text`
- * node inside of it plus it own width and text alignment to determine the location for each child.
- * A single `Text` node can span over several lines due to wrapping and the visual location
- * of `Text` node can differ from the logical location due to bidi reordering.
- *
- * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/text/TextFlow.html]]
- */
+  * TextFlow is special layout designed to lay out rich text. It can be used to layout several
+  * `Text` nodes in a single text flow. The `TextFlow` uses the text and the font of each `Text`
+  * node inside of it plus it own width and text alignment to determine the location for each child.
+  * A single `Text` node can span over several lines due to wrapping and the visual location
+  * of `Text` node can differ from the logical location due to bidi reordering.
+  *
+  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/text/TextFlow.html]]
+  */
 class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
-  extends Pane(delegate)
-  with SFXDelegate[jfxst.TextFlow] {
+    extends Pane(delegate)
+    with SFXDelegate[jfxst.TextFlow] {
 
   /**
-   * Defines horizontal text alignment.
-   */
+    * Defines horizontal text alignment.
+    */
   def this(children: Node*) = this(new jfxst.TextFlow(children.map(_.delegate): _*))
 
   /**
-   * Defines the vertical space in pixel between lines.
-   */
+    * Defines the vertical space in pixel between lines.
+    */
   def lineSpacing: DoubleProperty = delegate.lineSpacingProperty
   def lineSpacing_=(v: Double) {
     lineSpacing() = v
   }
 
   /**
-   * Defines horizontal text alignment.
-   */
+    * Defines horizontal text alignment.
+    */
   def textAlignment: ObjectProperty[jfxst.TextAlignment] = delegate.textAlignmentProperty
   def textAlignment_=(v: TextAlignment) {
     textAlignment() = v
   }
 
   /**
-   * Calculates the baseline offset based on the first managed child.
-   */
+    * Calculates the baseline offset based on the first managed child.
+    */
   override def baselineOffset: Double = delegate.getBaselineOffset
 
   /**
-   * Requests a layout pass to be performed before the next scene is rendered.
-   */
+    * Requests a layout pass to be performed before the next scene is rendered.
+    */
   def requestLayout() {
     delegate.requestLayout()
   }

@@ -31,9 +31,10 @@ import scalafx.Includes._
 import scalafx.scene.control._
 
 /**
- *
- */
-class ComboBoxControls(target: ComboBox[String]) extends PropertiesNodes[ComboBox[String]](target, "ComboBox Properties") {
+  *
+  */
+class ComboBoxControls(target: ComboBox[String])
+    extends PropertiesNodes[ComboBox[String]](target, "ComboBox Properties") {
 
   var itemIndex = 0
 
@@ -49,7 +50,7 @@ class ComboBoxControls(target: ComboBox[String]) extends PropertiesNodes[ComboBo
   val txfVisibleRowCount = new TextField {
     text = target.visibleRowCount.get.toString
   }
-  txfVisibleRowCount.onAction = handle {  fillIntPropertyFromText(target.visibleRowCount, txfVisibleRowCount, false) }
+  txfVisibleRowCount.onAction = handle { fillIntPropertyFromText(target.visibleRowCount, txfVisibleRowCount, false) }
 
   val btnAddItem = new Button {
     text = "Add new Item"

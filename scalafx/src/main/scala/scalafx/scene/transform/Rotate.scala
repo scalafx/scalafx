@@ -40,88 +40,90 @@ object Rotate {
   implicit def sfxRotate2jfx(v: Rotate): jfxst.Rotate = if (v != null) v.delegate else null
 
   /**
-   * Specifies the X-axis as the axis of rotation.
-   */
+    * Specifies the X-axis as the axis of rotation.
+    */
   val XAxis = new Point3D(jfxst.Rotate.X_AXIS)
 
   /**
-   * Specifies the Y-axis as the axis of rotation.
-   */
+    * Specifies the Y-axis as the axis of rotation.
+    */
   val YAxis = new Point3D(jfxst.Rotate.Y_AXIS)
 
   /**
-   * Specifies the Z-axis as the axis of rotation.
-   */
+    * Specifies the Z-axis as the axis of rotation.
+    */
   val ZAxis = new Point3D(jfxst.Rotate.Z_AXIS)
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Rotate.html]]
- */
-class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate) extends Transform(delegate) with SFXDelegate[jfxst.Rotate] {
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Rotate.html]]
+  */
+class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate)
+    extends Transform(delegate)
+    with SFXDelegate[jfxst.Rotate] {
 
   /**
-   * Creates a two-dimensional Rotate transform.
-   */
+    * Creates a two-dimensional Rotate transform.
+    */
   def this(angle: Double) = this(new jfxst.Rotate(angle))
 
   /**
-   * Creates a two-dimensional Rotate transform with pivot.
-   */
+    * Creates a two-dimensional Rotate transform with pivot.
+    */
   def this(angle: Double, pivotX: Double, pivotY: Double) = this(new jfxst.Rotate(angle, pivotX, pivotY))
 
   /**
-   * Creates a simple Rotate transform with three-dimensional pivot.
-   */
+    * Creates a simple Rotate transform with three-dimensional pivot.
+    */
   def this(angle: Double, pivotX: Double, pivotY: Double, pivotZ: Double) =
     this(new jfxst.Rotate(angle, pivotX, pivotY, pivotZ))
 
   /**
-   * Creates a three-dimensional Rotate transform with pivot.
-   */
+    * Creates a three-dimensional Rotate transform with pivot.
+    */
   def this(angle: Double, pivotX: Double, pivotY: Double, pivotZ: Double, axis: Point3D) =
     this(new jfxst.Rotate(angle, pivotX, pivotY, pivotZ, axis))
 
   /**
-   * Creates a three-dimensional Rotate transform.
-   */
+    * Creates a three-dimensional Rotate transform.
+    */
   def this(angle: Double, axis: Point3D) = this(new jfxst.Rotate(angle, axis))
 
   /**
-   * Defines the angle of rotation measured in degrees.
-   */
+    * Defines the angle of rotation measured in degrees.
+    */
   def angle: DoubleProperty = delegate.angleProperty()
   def angle_=(v: Double) {
     angle() = v
   }
 
   /**
-   * Defines the axis of rotation at the pivot point.
-   */
+    * Defines the axis of rotation at the pivot point.
+    */
   def axis: ObjectProperty[jfxg.Point3D] = delegate.axisProperty()
   def axis_=(v: Point3D) {
     axis() = v
   }
 
   /**
-   * Defines the X coordinate of the rotation pivot point.
-   */
+    * Defines the X coordinate of the rotation pivot point.
+    */
   def pivotX: DoubleProperty = delegate.pivotXProperty()
   def pivotX_=(v: Double) {
     pivotX() = v
   }
 
   /**
-   * Defines the Y coordinate of the rotation pivot point.
-   */
+    * Defines the Y coordinate of the rotation pivot point.
+    */
   def pivotY: DoubleProperty = delegate.pivotYProperty()
   def pivotY_=(v: Double) {
     pivotY() = v
   }
 
   /**
-   * Defines the Z coordinate of the rotation pivot point.
-   */
+    * Defines the Z coordinate of the rotation pivot point.
+    */
   def pivotZ: DoubleProperty = delegate.pivotZProperty()
   def pivotZ_=(v: Double) {
     pivotZ() = v

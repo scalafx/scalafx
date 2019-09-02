@@ -34,59 +34,58 @@ import scalafx.beans.property.{ReadOnlyIntegerProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
 
 /**
- * Object companion for [[scalafx.scene.control.FocusModel]].
- */
+  * Object companion for [[scalafx.scene.control.FocusModel]].
+  */
 object FocusModel {
 
   /**
-   * Converts a ScalaFX FocusModel to its JavaFX counterpart
-   *
-   * @param v ScalaFX FocusModel
-   * @return JavaFX FocusModel
-   * @tparam T The type of the underlying data model for the UI control.
-   */
+    * Converts a ScalaFX FocusModel to its JavaFX counterpart
+    *
+    * @param v ScalaFX FocusModel
+    * @return JavaFX FocusModel
+    * @tparam T The type of the underlying data model for the UI control.
+    */
   implicit def sfxFocusModel2jfx[T](v: FocusModel[T]): jfxsc.FocusModel[T] = if (v != null) v.delegate else null
 }
 
 /**
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/FocusModel.html FocusModel]].
- *
- * @constructor Creates a new ScalaFX FocusModel from its JavaFX counterpart.
- * @param delegate JavaFX FocusModel to be wrapped.
- * @tparam T The type of the underlying data model for the UI control.
- */
-abstract class FocusModel[T](override val delegate: jfxsc.FocusModel[T])
-  extends SFXDelegate[jfxsc.FocusModel[T]] {
+  * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/FocusModel.html FocusModel]].
+  *
+  * @constructor Creates a new ScalaFX FocusModel from its JavaFX counterpart.
+  * @param delegate JavaFX FocusModel to be wrapped.
+  * @tparam T The type of the underlying data model for the UI control.
+  */
+abstract class FocusModel[T](override val delegate: jfxsc.FocusModel[T]) extends SFXDelegate[jfxsc.FocusModel[T]] {
 
   /**
-   * The index of the current item in the FocusModel which has the focus.
-   */
+    * The index of the current item in the FocusModel which has the focus.
+    */
   def focusedIndex: ReadOnlyIntegerProperty = delegate.focusedIndexProperty
 
   /**
-   * The current item in the FocusModel which has the focus.
-   */
+    * The current item in the FocusModel which has the focus.
+    */
   def focusedItem: ReadOnlyObjectProperty[T] = delegate.focusedItemProperty
 
   /**
-   * Causes the item at the given index to receive the focus.
-   *
-   * @param index The index of the item to get focus.
-   */
+    * Causes the item at the given index to receive the focus.
+    *
+    * @param index The index of the item to get focus.
+    */
   def focus(index: Int) {
     delegate.focus(index)
   }
 
   /**
-   * Attempts to give focus to the row after to the currently focused row.
-   */
+    * Attempts to give focus to the row after to the currently focused row.
+    */
   def focusNext() {
     delegate.focusNext()
   }
 
   /**
-   * Attempts to give focus to the row previous to the currently focused row.
-   */
+    * Attempts to give focus to the row previous to the currently focused row.
+    */
   def focusPrevious() {
     delegate.focusPrevious()
   }

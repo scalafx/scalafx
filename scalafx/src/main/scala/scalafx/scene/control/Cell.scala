@@ -39,63 +39,63 @@ object Cell {
 }
 
 class Cell[T](override val delegate: jfxsc.Cell[T] = new jfxsc.Cell[T])
-  extends Labeled(delegate)
-  with SFXDelegate[jfxsc.Cell[T]] {
+    extends Labeled(delegate)
+    with SFXDelegate[jfxsc.Cell[T]] {
 
   /**
-   * A property representing whether this cell is allowed to be put into an editing state.
-   */
+    * A property representing whether this cell is allowed to be put into an editing state.
+    */
   def editable: BooleanProperty = delegate.editableProperty
   def editable_=(v: Boolean) {
     editable() = v
   }
 
   /**
-   * Property representing whether this cell is currently in its editing state.
-   */
+    * Property representing whether this cell is currently in its editing state.
+    */
   def editing: ReadOnlyBooleanProperty = delegate.editingProperty
 
   /**
-   * A property used to represent whether the cell has any contents.
-   */
+    * A property used to represent whether the cell has any contents.
+    */
   def empty: ReadOnlyBooleanProperty = delegate.emptyProperty
 
   /**
-   * The data value associated with this Cell.
-   */
+    * The data value associated with this Cell.
+    */
   def item: ObjectProperty[T] = delegate.itemProperty
   def item_=(v: T) {
     item.set(v)
   }
 
   /**
-   * Indicates whether or not this cell has been selected.
-   */
+    * Indicates whether or not this cell has been selected.
+    */
   def selected: ReadOnlyBooleanProperty = delegate.selectedProperty
   def selected_=(s: Boolean) {
     delegate.updateSelected(s)
   }
 
   /**
-   * Call this function to transition from an editing state into a non-editing state, without 
-   * saving any user input.
-   */
+    * Call this function to transition from an editing state into a non-editing state, without
+    * saving any user input.
+    */
   def cancelEdit() {
     delegate.cancelEdit()
   }
 
   /**
-   * Call this function to transition from an editing state into a non-editing state, and in the 
-   * process saving any user input.
-   */
+    * Call this function to transition from an editing state into a non-editing state, and in the
+    * process saving any user input.
+    */
   def commitEdit(newValue: T) {
     delegate.commitEdit(newValue)
   }
 
   /**
-   * Call this function to transition from a non-editing state into an editing state, if the cell 
-   * is editable.
-   */
+    * Call this function to transition from a non-editing state into an editing state, if the cell
+    * is editable.
+    */
   def startEdit() {
     delegate.startEdit()
   }

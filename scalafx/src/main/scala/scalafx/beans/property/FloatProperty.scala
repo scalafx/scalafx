@@ -35,18 +35,18 @@ object FloatProperty {
   implicit def sfxFloatProperty2jfx(fp: FloatProperty): jfxbp.FloatProperty = if (fp != null) fp.delegate else null
 
   /**
-   * Creates a new FloatProperty instance using the SimpleFloatProperty as the target.
-   *
-   * @param value the initial value
-   * @return      the observable instance
-   */
+    * Creates a new FloatProperty instance using the SimpleFloatProperty as the target.
+    *
+    * @param value the initial value
+    * @return      the observable instance
+    */
   def apply(value: Float) = new FloatProperty(new jfxbp.SimpleFloatProperty(value))
 }
 
 class FloatProperty(override val delegate: jfxbp.FloatProperty = new jfxbp.SimpleFloatProperty)
-  extends ReadOnlyFloatProperty(delegate)
-  with Property[Float, Number]
-  with SFXDelegate[jfxbp.FloatProperty] {
+    extends ReadOnlyFloatProperty(delegate)
+    with Property[Float, Number]
+    with SFXDelegate[jfxbp.FloatProperty] {
 
   def this(bean: Object, name: String) = this(new jfxbp.SimpleFloatProperty(bean, name))
 

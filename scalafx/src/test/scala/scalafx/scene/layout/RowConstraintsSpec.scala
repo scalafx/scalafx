@@ -33,10 +33,12 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * RowConstraints Spec tests.
- *
- *
- */
+  * RowConstraints Spec tests.
+  *
+  *
+  */
 class RowConstraintsSpec
-  extends SimpleSFXDelegateSpec[jfxsl.RowConstraints, RowConstraints](
-    classOf[jfxsl.RowConstraints], classOf[RowConstraints])
+    extends SimpleSFXDelegateSpec[jfxsl.RowConstraints, RowConstraints](
+      classOf[jfxsl.RowConstraints],
+      classOf[RowConstraints]
+    )

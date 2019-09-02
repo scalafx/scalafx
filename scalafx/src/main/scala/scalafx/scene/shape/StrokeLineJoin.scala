@@ -34,20 +34,19 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object StrokeLineJoin extends SFXEnumDelegateCompanion[jfxss.StrokeLineJoin, StrokeLineJoin] {
 
   case object Miter extends StrokeLineJoin(jfxss.StrokeLineJoin.MITER)
-  @deprecated ("Use Miter; MITER will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Miter; MITER will be removed in a future release", "8.0.60-R10")
   val MITER = Miter
 
   case object Bevel extends StrokeLineJoin(jfxss.StrokeLineJoin.BEVEL)
-  @deprecated ("Use Bevel; BEVEL will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Bevel; BEVEL will be removed in a future release", "8.0.60-R10")
   val BEVEL = Bevel
 
   case object Round extends StrokeLineJoin(jfxss.StrokeLineJoin.ROUND)
-  @deprecated ("Use Round; ROUND will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Round; ROUND will be removed in a future release", "8.0.60-R10")
   val ROUND = Round
 
   protected override def unsortedValues: Array[StrokeLineJoin] = Array(Miter, Bevel, Round)
 }
 
-
 sealed abstract class StrokeLineJoin(override val delegate: jfxss.StrokeLineJoin)
-  extends SFXEnumDelegate[jfxss.StrokeLineJoin]
+    extends SFXEnumDelegate[jfxss.StrokeLineJoin]

@@ -31,30 +31,28 @@ import javafx.{geometry => jfxg}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Side.html javafx.geometry.Side]] */
-object Side
-  extends SFXEnumDelegateCompanion[jfxg.Side, Side] {
+object Side extends SFXEnumDelegateCompanion[jfxg.Side, Side] {
 
   case object Bottom extends Side(jfxg.Side.BOTTOM)
-  @deprecated ("Use Bottom; BOTTOM will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Bottom; BOTTOM will be removed in a future release", "8.0.60-R10")
   val BOTTOM = Bottom
 
   case object Left extends Side(jfxg.Side.LEFT)
-  @deprecated ("Use Left; LEFT will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Left; LEFT will be removed in a future release", "8.0.60-R10")
   val LEFT = Left
 
   case object Right extends Side(jfxg.Side.RIGHT)
-  @deprecated ("Use Right; RIGHT will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Right; RIGHT will be removed in a future release", "8.0.60-R10")
   val RIGHT = Right
 
   case object Top extends Side(jfxg.Side.TOP)
-  @deprecated ("Use Top; TOP will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Top; TOP will be removed in a future release", "8.0.60-R10")
   val TOP = Top
 
   protected override def unsortedValues: Array[Side] = Array(Top, Bottom, Left, Right)
 }
 
-sealed abstract class Side(override val delegate: jfxg.Side)
-  extends SFXEnumDelegate[jfxg.Side] {
+sealed abstract class Side(override val delegate: jfxg.Side) extends SFXEnumDelegate[jfxg.Side] {
 
   /** Indicates whether this is horizontal side of a rectangle (returns true for `TOP` and `BOTTOM`). */
   def isHorizontal = delegate.isHorizontal

@@ -32,10 +32,10 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * Pagination Spec tests.
- *
- *
- */
+  * Pagination Spec tests.
+  *
+  *
+  */
 class PaginationSpec
-  extends SimpleSFXDelegateSpec[jfxsc.Pagination, Pagination](classOf[jfxsc.Pagination], classOf[Pagination])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.Pagination, Pagination](classOf[jfxsc.Pagination], classOf[Pagination])
+    with RunOnApplicationThread

@@ -39,18 +39,16 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-
 import scalafx.application.JFXApp
 
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
- *
- *         based upon:
- *
- *         http://docs.oracle.com/javafx/2.0/ui_controls/checkbox.htm#CHDFEJCD
- *
- */
-
+  * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+  *
+  *         based upon:
+  *
+  *         http://docs.oracle.com/javafx/2.0/ui_controls/checkbox.htm#CHDFEJCD
+  *
+  */
 object ScalaFX_Controls_05 extends JFXApp {
 
   //  val priorityLabel = new Label {
@@ -132,6 +130,3 @@ object ScalaFX_Controls_05 extends JFXApp {
   //    }
   //  }
 }
-
-
-

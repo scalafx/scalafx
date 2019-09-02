@@ -33,11 +33,11 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * PixelWriter Spec tests.
- *
- */
+  * PixelWriter Spec tests.
+  *
+  */
 class PixelWriterSpec
-  extends SimpleSFXDelegateSpec[jfxsi.PixelWriter, PixelWriter](classOf[jfxsi.PixelWriter], classOf[PixelWriter]) {
+    extends SimpleSFXDelegateSpec[jfxsi.PixelWriter, PixelWriter](classOf[jfxsi.PixelWriter], classOf[PixelWriter]) {
 
   override protected def getScalaClassInstance = new PixelWriter {
     override val delegate = getJavaClassInstance
@@ -47,9 +47,35 @@ class PixelWriterSpec
     def getPixelFormat = null
     def setArgb(x: Int, y: Int, argb: Int) {}
     def setColor(x: Int, y: Int, c: jfxsp.Color) {}
-    def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.PixelFormat[java.nio.ByteBuffer], buffer: Array[Byte], offset: Int, scanlineStride: Int) {}
-    def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.PixelFormat[java.nio.IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int) {}
-    def setPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.PixelFormat[B], buffer: B, scanlineStride: Int) {}
+    def setPixels(
+        x: Int,
+        y: Int,
+        w: Int,
+        h: Int,
+        pixelformat: jfxsi.PixelFormat[java.nio.ByteBuffer],
+        buffer: Array[Byte],
+        offset: Int,
+        scanlineStride: Int
+    ) {}
+    def setPixels(
+        x: Int,
+        y: Int,
+        w: Int,
+        h: Int,
+        pixelformat: jfxsi.PixelFormat[java.nio.IntBuffer],
+        buffer: Array[Int],
+        offset: Int,
+        scanlineStride: Int
+    ) {}
+    def setPixels[B <: Buffer](
+        x: Int,
+        y: Int,
+        w: Int,
+        h: Int,
+        pixelformat: jfxsi.PixelFormat[B],
+        buffer: B,
+        scanlineStride: Int
+    ) {}
     def setPixels(dstx: Int, dsty: Int, w: Int, h: Int, reader: jfxsi.PixelReader, srcx: Int, srcy: Int) {}
   }
 }

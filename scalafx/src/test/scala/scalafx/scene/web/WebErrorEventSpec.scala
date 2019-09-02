@@ -32,10 +32,13 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * WebErrorEvent Spec tests.
- */
+  * WebErrorEvent Spec tests.
+  */
 class WebErrorEventSpec
-  extends SimpleSFXDelegateSpec[jfxsw.WebErrorEvent, WebErrorEvent](classOf[jfxsw.WebErrorEvent], classOf[WebErrorEvent]) {
+    extends SimpleSFXDelegateSpec[jfxsw.WebErrorEvent, WebErrorEvent](
+      classOf[jfxsw.WebErrorEvent],
+      classOf[WebErrorEvent]
+    ) {
 
   override protected def getJavaClassInstance = new jfxsw.WebErrorEvent(null, null, null, null)
 

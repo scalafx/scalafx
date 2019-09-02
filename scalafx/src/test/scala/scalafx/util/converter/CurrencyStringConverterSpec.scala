@@ -32,18 +32,23 @@ import javafx.util.{converter => jfxuc}
 import scalafx.Includes._
 
 /**
- * CurrencyStringConverter Spec tests.
- *
- *
- */
+  * CurrencyStringConverter Spec tests.
+  *
+  *
+  */
 class CurrencyStringConverterSpec
-  extends AbstractStringConverterDelegateSpec[Number, jfxuc.CurrencyStringConverter, Number, CurrencyStringConverter](classOf[jfxuc.CurrencyStringConverter], classOf[CurrencyStringConverter], classOf[Number]) {
+    extends AbstractStringConverterDelegateSpec[Number, jfxuc.CurrencyStringConverter, Number, CurrencyStringConverter](
+      classOf[jfxuc.CurrencyStringConverter],
+      classOf[CurrencyStringConverter],
+      classOf[Number]
+    ) {
 
   override protected def getConverterForExample = new CurrencyStringConverter(Locale.US)
 
   val examples = List(
     (java.lang.Long.valueOf(123), "$123.00"),
     (java.lang.Long.valueOf(0), "$0.00"),
-    (java.lang.Long.valueOf(-123), "-$123.00"))
+    (java.lang.Long.valueOf(-123), "-$123.00")
+  )
 
 }

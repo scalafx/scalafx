@@ -41,16 +41,20 @@ object LayoutDemo extends JFXApp {
   val hello = new Accordion {
     panes = List(
       new TitledPane {
-        content = new Label {text = "Hello"}
+        content = new Label { text = "Hello" }
       }
     )
   }
 
-  val hbox1 = new HBox {children = List(hello, new Label {text = "Goodbye"})}
-  val hbox2 = new HBox {children = List(new Circle {radius = 20}, new Label {text = "Strange"})}
+  val hbox1 = new HBox { children = List(hello, new Label { text = "Goodbye" }) }
+  val hbox2 = new HBox { children = List(new Circle { radius = 20 }, new Label { text = "Strange" }) }
 
-  val charm = new Text("charm") {font = new Font(24); alignmentInParent = Pos.BaselineLeft; textOrigin = VPos.Baseline}
-  val strange = new Text("strange") {font = new Font(12); alignmentInParent = Pos.BaselineLeft; textOrigin = VPos.Baseline}
+  val charm = new Text("charm") {
+    font = new Font(24); alignmentInParent = Pos.BaselineLeft; textOrigin = VPos.Baseline
+  }
+  val strange = new Text("strange") {
+    font = new Font(12); alignmentInParent = Pos.BaselineLeft; textOrigin = VPos.Baseline
+  }
 
   stage = new PrimaryStage {
     width = 1024

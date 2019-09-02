@@ -33,12 +33,11 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * PerspectiveCamera Spec tests.
- *
- *
- */
-class CameraSpec
-  extends SimpleSFXDelegateSpec[jfxs.Camera, Camera](classOf[jfxs.Camera], classOf[Camera]) {
+  * PerspectiveCamera Spec tests.
+  *
+  *
+  */
+class CameraSpec extends SimpleSFXDelegateSpec[jfxs.Camera, Camera](classOf[jfxs.Camera], classOf[Camera]) {
 
   override protected def getScalaClassInstance = new PerspectiveCamera()
   override protected def getJavaClassInstance = getScalaClassInstance.delegate

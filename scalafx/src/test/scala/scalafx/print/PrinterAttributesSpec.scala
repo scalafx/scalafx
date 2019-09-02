@@ -32,24 +32,28 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Tests for [[scalafx.print.PrinterAttributes]] temporarily inactive.
- *
- * When running in an enviroment with no defined printer,
- * '[[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.html#getDefaultPrinter--
- * Printer.getDefaultPrinter()]]' will return 'null'. Consequently, there will be a
- * 'NullPointerException'. Since JobSettings is a final class, it is not possible create a mock.
- * Therefore, it is necessary to skip the conversion tests when there is no printer defined in 
- * environment.
- */
+  * Tests for [[scalafx.print.PrinterAttributes]] temporarily inactive.
+  *
+  * When running in an enviroment with no defined printer,
+  * '[[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.html#getDefaultPrinter--
+  * Printer.getDefaultPrinter()]]' will return 'null'. Consequently, there will be a
+  * 'NullPointerException'. Since JobSettings is a final class, it is not possible create a mock.
+  * Therefore, it is necessary to skip the conversion tests when there is no printer defined in
+  * environment.
+  */
 class PrinterAttributesSpec
-  extends SimpleSFXDelegateSpec[jfxp.PrinterAttributes, PrinterAttributes](classOf[jfxp.PrinterAttributes], classOf[PrinterAttributes]) {
+    extends SimpleSFXDelegateSpec[jfxp.PrinterAttributes, PrinterAttributes](
+      classOf[jfxp.PrinterAttributes],
+      classOf[PrinterAttributes]
+    ) {
 
-  val skipingMessage: String = if (jfxp.Printer.getDefaultPrinter == null
-    || jfxp.Printer.getDefaultPrinter.getPrinterAttributes == null) {
-    "Neither Default Printer nor Printer Attributes defined."
-  } else {
-    ""
-  }
+  val skipingMessage: String =
+    if (jfxp.Printer.getDefaultPrinter == null
+        || jfxp.Printer.getDefaultPrinter.getPrinterAttributes == null) {
+      "Neither Default Printer nor Printer Attributes defined."
+    } else {
+      ""
+    }
 
   override val skipJfxToSfxCause = skipingMessage
 

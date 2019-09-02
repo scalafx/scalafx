@@ -43,12 +43,13 @@ object NumberAxis {
   def apply(axisLabel: String, lowerBound: Double, upperBound: Double, tickUnit: Double) =
     new NumberAxis(new jfxsc.NumberAxis(axisLabel, lowerBound, upperBound, tickUnit))
 
-  def apply(axisLabel: String) = new NumberAxis {label = axisLabel}
+  def apply(axisLabel: String) = new NumberAxis { label = axisLabel }
 
   def apply() = new NumberAxis()
 
   object DefaultFormatter {
-    implicit def sfxDefaultFormatter2jfx(v: DefaultFormatter): jfxsc.NumberAxis.DefaultFormatter = if (v != null) v.delegate else null
+    implicit def sfxDefaultFormatter2jfx(v: DefaultFormatter): jfxsc.NumberAxis.DefaultFormatter =
+      if (v != null) v.delegate else null
 
     def apply(axis: NumberAxis) =
       new DefaultFormatter(new jfxsc.NumberAxis.DefaultFormatter(axis))
@@ -58,13 +59,13 @@ object NumberAxis {
   }
 
   class DefaultFormatter(override val delegate: jfxsc.NumberAxis.DefaultFormatter)
-    extends StringConverterDelegate[java.lang.Number, Number, jfxsc.NumberAxis.DefaultFormatter](delegate)
+      extends StringConverterDelegate[java.lang.Number, Number, jfxsc.NumberAxis.DefaultFormatter](delegate)
 
 }
 
 class NumberAxis(override val delegate: jfxsc.NumberAxis = new jfxsc.NumberAxis)
-  extends ValueAxis[Number](delegate)
-  with SFXDelegate[jfxsc.NumberAxis] {
+    extends ValueAxis[Number](delegate)
+    with SFXDelegate[jfxsc.NumberAxis] {
 
   def this(lowerBound: Double, upperBound: Double, tickUnit: Double) {
     this(new jfxsc.NumberAxis(lowerBound, upperBound, tickUnit))
@@ -74,18 +75,17 @@ class NumberAxis(override val delegate: jfxsc.NumberAxis = new jfxsc.NumberAxis)
     this(new jfxsc.NumberAxis(axisLabel, lowerBound, upperBound, tickUnit))
   }
 
-
   /**
-   * When `true` zero is always included in the visible range.
-   */
+    * When `true` zero is always included in the visible range.
+    */
   def forceZeroInRange: BooleanProperty = delegate.forceZeroInRangeProperty
   def forceZeroInRange_=(v: Boolean) {
     forceZeroInRange() = v
   }
 
   /**
-   * The value between each major tick mark in data units.
-   */
+    * The value between each major tick mark in data units.
+    */
   def tickUnit: DoubleProperty = delegate.tickUnitProperty
   def tickUnit_=(v: Double) {
     tickUnit() = v

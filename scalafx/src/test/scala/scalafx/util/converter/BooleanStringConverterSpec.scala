@@ -31,12 +31,17 @@ import javafx.util.{converter => jfxuc}
 import scalafx.Includes._
 
 /**
- * BooleanStringConverter Spec tests.
- *
- *
- */
+  * BooleanStringConverter Spec tests.
+  *
+  *
+  */
 class BooleanStringConverterSpec
-  extends AbstractStringConverterDelegateSpec[java.lang.Boolean, jfxuc.BooleanStringConverter, Boolean, BooleanStringConverter](classOf[jfxuc.BooleanStringConverter], classOf[BooleanStringConverter], classOf[Boolean]) {
+    extends AbstractStringConverterDelegateSpec[
+      java.lang.Boolean,
+      jfxuc.BooleanStringConverter,
+      Boolean,
+      BooleanStringConverter
+    ](classOf[jfxuc.BooleanStringConverter], classOf[BooleanStringConverter], classOf[Boolean]) {
 
   val examples = List((true, "true"), (false, "false"))
 

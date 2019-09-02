@@ -32,10 +32,10 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * ListView[T] Spec tests.
- *
- *
- */
+  * ListView[T] Spec tests.
+  *
+  *
+  */
 class ListViewSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.ListView[T], ListView[T]](classOf[jfxsc.ListView[T]], classOf[ListView[T]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.ListView[T], ListView[T]](classOf[jfxsc.ListView[T]], classOf[ListView[T]])
+    with RunOnApplicationThread

@@ -41,70 +41,70 @@ object MediaView {
 }
 
 class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
-  extends Node(delegate)
-  with PositionDelegate[jfxsm.MediaView]
-  with SFXDelegate[jfxsm.MediaView] {
+    extends Node(delegate)
+    with PositionDelegate[jfxsm.MediaView]
+    with SFXDelegate[jfxsm.MediaView] {
 
   /**
-   * Creates a MediaView instance associated with the specified MediaPlayer.
-   */
+    * Creates a MediaView instance associated with the specified MediaPlayer.
+    */
   def this(mediaPlayer: MediaPlayer) = this(new jfxsm.MediaView(mediaPlayer))
 
   /**
-   * Determines the height of the bounding box within which the source media is resized as
-   * necessary to fit.
-   */
+    * Determines the height of the bounding box within which the source media is resized as
+    * necessary to fit.
+    */
   def fitHeight: DoubleProperty = delegate.fitHeightProperty
   def fitHeight_=(v: Double) {
     fitHeight() = v
   }
 
   /**
-   * Determines the width of the bounding box within which the source media is resized as
-   * necessary to fit.
-   */
+    * Determines the width of the bounding box within which the source media is resized as
+    * necessary to fit.
+    */
   def fitWidth: DoubleProperty = delegate.fitWidthProperty
   def fitWidth_=(v: Double) {
     fitWidth() = v
   }
 
   /**
-   * The mediaPlayer whose output will be handled by this view.
-   */
+    * The mediaPlayer whose output will be handled by this view.
+    */
   def mediaPlayer: ObjectProperty[jfxsm.MediaPlayer] = delegate.mediaPlayerProperty
   def mediaPlayer_=(v: MediaPlayer) {
     mediaPlayer() = v
   }
 
   /**
-   * Event handler to be invoked whenever an error occurs on this MediaView.
-   */
+    * Event handler to be invoked whenever an error occurs on this MediaView.
+    */
   def onError = delegate.onErrorProperty
   def onError_=(v: jfxe.EventHandler[jfxsm.MediaErrorEvent]) {
     onError() = v
   }
 
   /**
-   * Whether to preserve the aspect ratio (width / height) of the media when scaling it to fit the
-   * node.
-   */
+    * Whether to preserve the aspect ratio (width / height) of the media when scaling it to fit the
+    * node.
+    */
   def preserveRatio: BooleanProperty = delegate.preserveRatioProperty
   def preserveRatio_=(v: Boolean) {
     preserveRatio() = v
   }
 
   /**
-   * If set to true a better quality filtering algorithm will be used when scaling this video to
-   * fit within the bounding box provided by fitWidth and fitHeight or when transforming.
-   */
+    * If set to true a better quality filtering algorithm will be used when scaling this video to
+    * fit within the bounding box provided by fitWidth and fitHeight or when transforming.
+    */
   def smooth: BooleanProperty = delegate.smoothProperty
   def smooth_=(v: Boolean) {
     smooth() = v
   }
 
   /**
-   * Specifies a rectangular viewport into the media frame.
-   */
+    * Specifies a rectangular viewport into the media frame.
+    */
   def viewport: ObjectProperty[jfxg.Rectangle2D] = delegate.viewportProperty
   def viewport_=(v: Rectangle2D) {
     viewport() = v

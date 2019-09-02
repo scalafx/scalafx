@@ -37,20 +37,20 @@ object ScrollEvent {
   implicit def sfxScrollEvent2jfx(se: ScrollEvent): jfxsi.ScrollEvent = if (se != null) se.delegate else null
 
   object HorizontalTextScrollUnits
-    extends SFXEnumDelegateCompanion[jfxsi.ScrollEvent.HorizontalTextScrollUnits, HorizontalTextScrollUnits] {
+      extends SFXEnumDelegateCompanion[jfxsi.ScrollEvent.HorizontalTextScrollUnits, HorizontalTextScrollUnits] {
 
     /**
-     * The horizontal text-based scrolling amount is a number of characters to scroll.
-     */
+      * The horizontal text-based scrolling amount is a number of characters to scroll.
+      */
     case object Characters extends HorizontalTextScrollUnits(jfxsi.ScrollEvent.HorizontalTextScrollUnits.CHARACTERS)
-    @deprecated ("Use Characters; CHARACTERS will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use Characters; CHARACTERS will be removed in a future release", "8.0.60-R10")
     val CHARACTERS = Characters
 
     /**
-     * The horizontal text-based scrolling data is not available (not provided by the underlying platform).
-     */
+      * The horizontal text-based scrolling data is not available (not provided by the underlying platform).
+      */
     case object None extends HorizontalTextScrollUnits(jfxsi.ScrollEvent.HorizontalTextScrollUnits.NONE)
-    @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use None; NONE will be removed in a future release", "8.0.60-R10")
     val NONE = None
 
     protected override def unsortedValues: Array[HorizontalTextScrollUnits] = Array(None, Characters)
@@ -58,33 +58,33 @@ object ScrollEvent {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.HorizontalTextScrollUnits.html]]
-   */
+    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.HorizontalTextScrollUnits.html]]
+    */
   sealed abstract class HorizontalTextScrollUnits(override val delegate: jfxsi.ScrollEvent.HorizontalTextScrollUnits)
-    extends SFXEnumDelegate[jfxsi.ScrollEvent.HorizontalTextScrollUnits]
+      extends SFXEnumDelegate[jfxsi.ScrollEvent.HorizontalTextScrollUnits]
 
   object VerticalTextScrollUnits
-    extends SFXEnumDelegateCompanion[jfxsi.ScrollEvent.VerticalTextScrollUnits, VerticalTextScrollUnits] {
+      extends SFXEnumDelegateCompanion[jfxsi.ScrollEvent.VerticalTextScrollUnits, VerticalTextScrollUnits] {
 
     /**
-     * The vertical text-based scrolling amount is a number of lines to scroll.
-     */
+      * The vertical text-based scrolling amount is a number of lines to scroll.
+      */
     case object Lines extends VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.LINES)
-    @deprecated ("Use Lines; LINES will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use Lines; LINES will be removed in a future release", "8.0.60-R10")
     val LINES = Lines
 
     /**
-     * The vertical text-based scrolling amount is a number of pages to scroll.
-     */
+      * The vertical text-based scrolling amount is a number of pages to scroll.
+      */
     case object Pages extends VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.PAGES)
-    @deprecated ("Use Pages; PAGES will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use Pages; PAGES will be removed in a future release", "8.0.60-R10")
     val PAGES = Pages
 
     /**
-     * The vertical text-based scrolling data is not available (not provided by the underlying platform).
-     */
+      * The vertical text-based scrolling data is not available (not provided by the underlying platform).
+      */
     case object None extends VerticalTextScrollUnits(jfxsi.ScrollEvent.VerticalTextScrollUnits.NONE)
-    @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
+    @deprecated("Use None; NONE will be removed in a future release", "8.0.60-R10")
     val NONE = None
 
     protected override def unsortedValues: Array[VerticalTextScrollUnits] = Array(None, Lines, Pages)
@@ -92,78 +92,78 @@ object ScrollEvent {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.VerticalTextScrollUnits.html]]
-   */
+    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.VerticalTextScrollUnits.html]]
+    */
   sealed abstract class VerticalTextScrollUnits(override val delegate: jfxsi.ScrollEvent.VerticalTextScrollUnits)
-    extends SFXEnumDelegate[jfxsi.ScrollEvent.VerticalTextScrollUnits]
+      extends SFXEnumDelegate[jfxsi.ScrollEvent.VerticalTextScrollUnits]
 
   /**
-   * Common supertype for all scroll event types.
-   */
+    * Common supertype for all scroll event types.
+    */
   val Any: EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.ANY
-  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
   val ANY = Any
 
   /**
-   * This event occurs when user performs a scrolling action such as rotating mouse wheel or dragging a finger over
-   * touch screen.
-   */
+    * This event occurs when user performs a scrolling action such as rotating mouse wheel or dragging a finger over
+    * touch screen.
+    */
   val Scroll: EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.SCROLL
-  @deprecated ("Use Scroll; SCROLL will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Scroll; SCROLL will be removed in a future release", "8.0.60-R10")
   val SCROLL = Scroll
 
   /**
-   * This event occurs when a scrolling gesture ends.
-   */
+    * This event occurs when a scrolling gesture ends.
+    */
   val ScrollFinished: EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.SCROLL_FINISHED
-  @deprecated ("Use ScrollFinished; SCROLL_FINISHED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use ScrollFinished; SCROLL_FINISHED will be removed in a future release", "8.0.60-R10")
   val SCROLL_FINISHED = ScrollFinished
 
   /**
-   * This event occurs when a scrolling gesture is detected.
-   */
+    * This event occurs when a scrolling gesture is detected.
+    */
   val ScrollStarted: EventType[jfxsi.ScrollEvent] = jfxsi.ScrollEvent.SCROLL_STARTED
-  @deprecated ("Use ScrollStarted; SCROLL_STARTED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use ScrollStarted; SCROLL_STARTED will be removed in a future release", "8.0.60-R10")
   val SCROLL_STARTED = ScrollStarted
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.html]]
+  */
 class ScrollEvent(override val delegate: jfxsi.ScrollEvent)
-  extends GestureEvent(delegate)
-  with SFXDelegate[jfxsi.ScrollEvent] {
+    extends GestureEvent(delegate)
+    with SFXDelegate[jfxsi.ScrollEvent] {
 
   /**
-   * Gets the horizontal scroll amount.
-   */
+    * Gets the horizontal scroll amount.
+    */
   def deltaX: Double = delegate.getDeltaX
 
   /**
-   * Gets the vertical scroll amount.
-   */
+    * Gets the vertical scroll amount.
+    */
   def deltaY: Double = delegate.getDeltaY
 
   /**
-   * Gets the horizontal text-based scroll amount.
-   */
+    * Gets the horizontal text-based scroll amount.
+    */
   def textDeltaX: Double = delegate.getTextDeltaX
 
   /**
-   * Gets the horizontal scrolling units for text-based scrolling.
-   */
+    * Gets the horizontal scrolling units for text-based scrolling.
+    */
   def textDeltaXUnits: ScrollEvent.HorizontalTextScrollUnits =
     ScrollEvent.HorizontalTextScrollUnits.jfxEnum2sfx(delegate.getTextDeltaXUnits)
 
   /**
-   * Gets the vertical text-based scroll amount.
-   */
+    * Gets the vertical text-based scroll amount.
+    */
   def textDeltaY: Double = delegate.getTextDeltaY
 
   /**
-   * Gets the vertical scrolling units for text-based scrolling.
-   */
+    * Gets the vertical scrolling units for text-based scrolling.
+    */
   def textDeltaYUnits: ScrollEvent.VerticalTextScrollUnits =
     ScrollEvent.VerticalTextScrollUnits.jfxEnum2sfx(delegate.getTextDeltaYUnits)
 

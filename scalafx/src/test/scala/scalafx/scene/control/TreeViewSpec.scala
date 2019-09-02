@@ -32,9 +32,9 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * TreeView Spec tests.
- *
- */
+  * TreeView Spec tests.
+  *
+  */
 class TreeViewSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.TreeView[T], TreeView[T]](classOf[jfxsc.TreeView[T]], classOf[TreeView[T]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.TreeView[T], TreeView[T]](classOf[jfxsc.TreeView[T]], classOf[TreeView[T]])
+    with RunOnApplicationThread

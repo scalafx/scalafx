@@ -33,7 +33,8 @@ import scala.language.implicitConversions
 import scalafx.beans.value.ObservableValue
 
 object ObjectExpression {
-  implicit def sfxObjectExpression2jfx[J](oe: ObjectExpression[J]): jfxbb.ObjectExpression[J] = if (oe != null) oe.delegate else null
+  implicit def sfxObjectExpression2jfx[J](oe: ObjectExpression[J]): jfxbb.ObjectExpression[J] =
+    if (oe != null) oe.delegate else null
 }
 
 class ObjectExpression[J](val delegate: jfxbb.ObjectExpression[J]) {

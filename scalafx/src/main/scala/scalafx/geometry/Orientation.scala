@@ -31,20 +31,17 @@ import javafx.{geometry => jfxg}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Orientation.html javafx.geometry.Orientation]] */
-object Orientation
-  extends SFXEnumDelegateCompanion[jfxg.Orientation, Orientation] {
+object Orientation extends SFXEnumDelegateCompanion[jfxg.Orientation, Orientation] {
 
   case object Horizontal extends Orientation(jfxg.Orientation.HORIZONTAL)
-  @deprecated ("Use Horizontal; HORIZONTAL will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Horizontal; HORIZONTAL will be removed in a future release", "8.0.60-R10")
   val HORIZONTAL = Horizontal
 
   case object Vertical extends Orientation(jfxg.Orientation.VERTICAL)
-  @deprecated ("Use Vertical; VERTICAL will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Vertical; VERTICAL will be removed in a future release", "8.0.60-R10")
   val VERTICAL = Vertical
 
   protected override def unsortedValues: Array[Orientation] = Array(Horizontal, Vertical)
 }
 
-
-sealed abstract class Orientation(override val delegate: jfxg.Orientation)
-  extends SFXEnumDelegate[jfxg.Orientation]
+sealed abstract class Orientation(override val delegate: jfxg.Orientation) extends SFXEnumDelegate[jfxg.Orientation]

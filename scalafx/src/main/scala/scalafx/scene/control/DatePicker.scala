@@ -41,36 +41,36 @@ object DatePicker {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/DatePicker.html]].
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/DatePicker.html]].
+  */
 class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker())
-  extends ComboBoxBase[LocalDate](delegate) with SFXDelegate[jfxsc.DatePicker] {
-
+    extends ComboBoxBase[LocalDate](delegate)
+    with SFXDelegate[jfxsc.DatePicker] {
 
   /**
-   * Creates a `DatePicker` instance and sets the value to the given date.
-   */
+    * Creates a `DatePicker` instance and sets the value to the given date.
+    */
   def this(localDate: LocalDate) = this(new jfxsc.DatePicker(localDate))
 
   /**
-   * The calendar system used for parsing, displaying, and choosing dates in the DatePicker control.
-   */
+    * The calendar system used for parsing, displaying, and choosing dates in the DatePicker control.
+    */
   def chronology = delegate.chronologyProperty
   def chronology_=(value: Chronology) {
     chronology() = value
   }
 
   /**
-   * Converts the input text to an object of type `LocalDate` and vice versa.
-   */
+    * Converts the input text to an object of type `LocalDate` and vice versa.
+    */
   def converter = delegate.converterProperty
   def converter_=(value: StringConverter[LocalDate]) {
     converter() = value
   }
 
   /**
-   * A custom cell factory can be provided to customize individual day cells in the `DatePicker` popup.
-   */
+    * A custom cell factory can be provided to customize individual day cells in the `DatePicker` popup.
+    */
   def dayCellFactory = delegate.dayCellFactoryProperty
   def dayCellFactory_=(value: DatePicker => DateCell) {
     dayCellFactory() = new jfxu.Callback[jfxsc.DatePicker, jfxsc.DateCell] {
@@ -81,13 +81,13 @@ class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker(
   }
 
   /**
-   * The editor for the `DatePicker`.
-   */
+    * The editor for the `DatePicker`.
+    */
   def editor = delegate.editorProperty
 
   /**
-   * Whether the `DatePicker` popup should display a column showing week numbers.
-   */
+    * Whether the `DatePicker` popup should display a column showing week numbers.
+    */
   def showWeekNumbers = delegate.showWeekNumbersProperty
   def showWeekNumbers_=(value: Boolean) = {
     showWeekNumbers() = value

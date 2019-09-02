@@ -54,6 +54,6 @@ object BubbleChartDemo extends JFXApp {
   def xyrSeries(name: String, data: Seq[(Int, Int, Int)]) =
     XYChart.Series[Number, Number](
       name,
-      ObservableBuffer(data.map {case (x, y, r) => XYChart.Data[Number, Number](x, y, r)})
+      ObservableBuffer(data.map { case (x, y, r) => XYChart.Data[Number, Number](x, y, r) })
     )
 }

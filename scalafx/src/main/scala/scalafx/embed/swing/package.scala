@@ -27,11 +27,9 @@
 package scalafx.embed
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/package-summary.html JavaFX `javafx.embed.swing`]]
- * package.
- * 
- * @since 8.0
- */
-package object swing {
-
-}
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/package-summary.html JavaFX `javafx.embed.swing`]]
+  * package.
+  *
+  * @since 8.0
+  */
+package object swing {}

@@ -27,42 +27,42 @@
 
 package scalafx.collections
 
-
 import javafx.{collections => jfxc}
 
 import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object ObservableBufferBase {
+
   /**
-   * Converts a ScalaFX ObservableBufferBase to its JavaFX counterpart ObservableListBase.
-   *
-   * @param v ScalaFX ObservableBufferBase
-   * @return JavaFX ObservableListBase
-   */
+    * Converts a ScalaFX ObservableBufferBase to its JavaFX counterpart ObservableListBase.
+    *
+    * @param v ScalaFX ObservableBufferBase
+    * @return JavaFX ObservableListBase
+    */
   implicit def sfxObservableListBase2jfx[E](v: ObservableBufferBase[E]): jfxc.ObservableListBase[E] =
     if (v != null) v.delegate else null
 }
 
 /**
- * There is no need in ScalaFX to use this class. `ObservableListBase` is really an implementation detail of JavaFX,
- * that is added in ScalaFX as `ObservableBufferBase` to keep type hierarchies in `scalafx.collections.transformation` correct.
- * Note that `Buffer` is used instead of Java `List`, since it is a closer equivalent to java `List` than Scala `List`
- * (Java and Scala `List` are quite different).
- * There should be bo need to use this class from ScalaFX.
- * On JavaFX side this is an abstract class that serves as a base class for ObservableList implementations that wa added in JavFX 8.
- * In ScalaFX 8 the implementation is actually in ObservableBuffer.
- *
- *
- * Wraps a $JFX $URL0 $TC]].
- *
- * @tparam E - the type of the elements contained in the List
- *
- * @define TC ObservableListBase
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections/ObservableListBase.html
- * @define JFX JavaFX
- * @define ORIGINALDOC Original Documentation]].
- */
+  * There is no need in ScalaFX to use this class. `ObservableListBase` is really an implementation detail of JavaFX,
+  * that is added in ScalaFX as `ObservableBufferBase` to keep type hierarchies in `scalafx.collections.transformation` correct.
+  * Note that `Buffer` is used instead of Java `List`, since it is a closer equivalent to java `List` than Scala `List`
+  * (Java and Scala `List` are quite different).
+  * There should be bo need to use this class from ScalaFX.
+  * On JavaFX side this is an abstract class that serves as a base class for ObservableList implementations that wa added in JavFX 8.
+  * In ScalaFX 8 the implementation is actually in ObservableBuffer.
+  *
+  *
+  * Wraps a $JFX $URL0 $TC]].
+  *
+  * @tparam E - the type of the elements contained in the List
+  *
+  * @define TC ObservableListBase
+  * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections/ObservableListBase.html
+  * @define JFX JavaFX
+  * @define ORIGINALDOC Original Documentation]].
+  */
 abstract class ObservableBufferBase[E](override val delegate: jfxc.ObservableListBase[E])
-  extends ObservableBuffer[E](delegate)
-  with SFXDelegate[jfxc.ObservableListBase[E]]
+    extends ObservableBuffer[E](delegate)
+    with SFXDelegate[jfxc.ObservableListBase[E]]

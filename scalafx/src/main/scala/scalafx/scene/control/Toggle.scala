@@ -38,22 +38,22 @@ object Toggle {
 }
 
 /**
- * Wrapper trait to [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Toggle.html Toggle]]
- * interface.
- */
+  * Wrapper trait to [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Toggle.html Toggle]]
+  * interface.
+  */
 trait Toggle extends SFXDelegate[jfxsc.Toggle] {
 
   /**
-   * The selected state for this Toggle. Indicates whether this Control is selected.
-   */
+    * The selected state for this Toggle. Indicates whether this Control is selected.
+    */
   def selected: BooleanProperty = delegate.selectedProperty
   def selected_=(v: Boolean) {
     selected() = v
   }
 
   /**
-   * The [[scalafx.scene.control.ToggleGroup]] to which this Toggle belongs.
-   */
+    * The [[scalafx.scene.control.ToggleGroup]] to which this Toggle belongs.
+    */
   def toggleGroup: ObjectProperty[jfxsc.ToggleGroup] = delegate.toggleGroupProperty
   def toggleGroup_=(v: ToggleGroup) {
     toggleGroup() = v
@@ -63,9 +63,9 @@ trait Toggle extends SFXDelegate[jfxsc.Toggle] {
   def userData_=(v: AnyRef)
 
   /**
-   * Returns an observable map of properties on this toggle for use primarily by application
-   * developers.
-   */
+    * Returns an observable map of properties on this toggle for use primarily by application
+    * developers.
+    */
   def properties = delegate.getProperties
 
 }

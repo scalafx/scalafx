@@ -32,13 +32,13 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Light.Spot Spec tests.
- *
- *
- */
+  * Light.Spot Spec tests.
+  *
+  *
+  */
 class LightSpotSpec
-  extends SimpleSFXDelegateSpec[jfxse.Light.Spot, Light.Spot](classOf[jfxse.Light.Spot], classOf[Light.Spot])
-  with ColorDelegateSpec[Light.Spot] {
+    extends SimpleSFXDelegateSpec[jfxse.Light.Spot, Light.Spot](classOf[jfxse.Light.Spot], classOf[Light.Spot])
+    with ColorDelegateSpec[Light.Spot] {
 
   val colorDelegate = getScalaClassInstance
 

@@ -34,7 +34,6 @@ import scalafx.beans.property.StringProperty
   */
 object CreateStringBindingDemo extends App {
 
-
   val a = new StringProperty()
   val b = Bindings.createStringBinding(() => Option(a.value).getOrElse("").toLowerCase(), a)
 

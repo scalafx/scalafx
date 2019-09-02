@@ -34,11 +34,13 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * TableColumnSpec tests.
- */
+  * TableColumnSpec tests.
+  */
 class TableColumnSpec[S, T]
-  extends SimpleSFXDelegateSpec[jfxsc.TableColumn[S, T], TableColumn[S, T]](
-    classOf[jfxsc.TableColumn[S, T]], classOf[TableColumn[S, T]]) {
+    extends SimpleSFXDelegateSpec[jfxsc.TableColumn[S, T], TableColumn[S, T]](
+      classOf[jfxsc.TableColumn[S, T]],
+      classOf[TableColumn[S, T]]
+    ) {
 
   it should " have parametrized default constructor - Issue 40" in {
     // Without correctly parametrized default constructor following line was throwing exception:
@@ -55,7 +57,7 @@ class TableColumnSpec[S, T]
     val nameTC = new TableColumn[String, String]("Name")
     nameTC.columns.size should (equal(0))
 
-    nameTC.columns +=(firstTC, lastTC)
+    nameTC.columns += (firstTC, lastTC)
     nameTC.columns.size should (equal(2))
 
     nameTC.columns.clear()

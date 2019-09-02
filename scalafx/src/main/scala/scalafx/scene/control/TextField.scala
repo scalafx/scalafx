@@ -39,21 +39,21 @@ object TextField {
 }
 
 class TextField(override val delegate: jfxsc.TextField = new jfxsc.TextField)
-  extends TextInputControl(delegate)
-  with AlignmentDelegate[jfxsc.TextField]
-  with SFXDelegate[jfxsc.TextField] {
+    extends TextInputControl(delegate)
+    with AlignmentDelegate[jfxsc.TextField]
+    with SFXDelegate[jfxsc.TextField] {
 
   /**
-   * The action handler associated with this text field, or null if no action handler is assigned.
-   */
+    * The action handler associated with this text field, or null if no action handler is assigned.
+    */
   def onAction = delegate.onActionProperty
   def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]) {
     onAction() = v
   }
 
   /**
-   * The preferred number of text columns.
-   */
+    * The preferred number of text columns.
+    */
   def prefColumnCount: IntegerProperty = delegate.prefColumnCountProperty
   def prefColumnCount_=(v: Int) {
     prefColumnCount() = v

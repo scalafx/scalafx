@@ -32,9 +32,9 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * WebView Spec tests.
- *
- */
+  * WebView Spec tests.
+  *
+  */
 class WebViewSpec
-  extends SimpleSFXDelegateSpec[jfxsw.WebView, WebView](classOf[jfxsw.WebView], classOf[WebView])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsw.WebView, WebView](classOf[jfxsw.WebView], classOf[WebView])
+    with RunOnApplicationThread

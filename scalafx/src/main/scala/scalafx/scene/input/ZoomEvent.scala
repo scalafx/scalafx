@@ -37,50 +37,50 @@ object ZoomEvent {
   implicit def sfxZoomEvent2jfx(ze: ZoomEvent): jfxsi.ZoomEvent = if (ze != null) ze.delegate else null
 
   /**
-   * Common supertype for all Zoom event types.
-   */
+    * Common supertype for all Zoom event types.
+    */
   val Any: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ANY
-  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
   val ANY = Any
 
   /**
-   * This event occurs when user performs a zooming gesture such as dragging two fingers apart.
-   */
+    * This event occurs when user performs a zooming gesture such as dragging two fingers apart.
+    */
   val Zoom: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM
-  @deprecated ("Use Zoom; ZOOM will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Zoom; ZOOM will be removed in a future release", "8.0.60-R10")
   val ZOOM = Zoom
 
   /**
-   * This event occurs when a zooming gesture is detected.
-   */
+    * This event occurs when a zooming gesture is detected.
+    */
   val ZoomStarted: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM_STARTED
-  @deprecated ("Use ZoomStarted; ZOOM_STARTED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use ZoomStarted; ZOOM_STARTED will be removed in a future release", "8.0.60-R10")
   val ZOOM_STARTED = ZoomStarted
 
   /**
-   * This event occurs when a zooming gesture ends.
-   */
+    * This event occurs when a zooming gesture ends.
+    */
   val ZoomFinished: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM_FINISHED
-  @deprecated ("Use ZoomFinished; ZOOM_FINISHED will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use ZoomFinished; ZOOM_FINISHED will be removed in a future release", "8.0.60-R10")
   val ZOOM_FINISHED = ZoomFinished
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ZoomEvent.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ZoomEvent.html]]
+  */
 class ZoomEvent(override val delegate: jfxsi.ZoomEvent)
-  extends GestureEvent(delegate)
-  with SFXDelegate[jfxsi.ZoomEvent] {
+    extends GestureEvent(delegate)
+    with SFXDelegate[jfxsi.ZoomEvent] {
 
   /**
-   * Gets the zooming amount of this gesture.
-   */
+    * Gets the zooming amount of this gesture.
+    */
   def totalZoomFactor: Double = delegate.getTotalZoomFactor
 
   /**
-   * Gets the zooming amount of this event.
-   */
+    * Gets the zooming amount of this event.
+    */
   def zoomFactor: Double = delegate.getZoomFactor
 
 }

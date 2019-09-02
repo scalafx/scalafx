@@ -33,71 +33,71 @@ import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object VertexFormat {
+
   /**
-   * Converts a ScalaFX VertexFormat to its JavaFX counterpart.
-   *
-   * @param v ScalaFX VertexFormat
-   * @return JavaFX VertexFormat
-   */
+    * Converts a ScalaFX VertexFormat to its JavaFX counterpart.
+    *
+    * @param v ScalaFX VertexFormat
+    * @return JavaFX VertexFormat
+    */
   implicit def sfxVertexFormat2jfx(v: VertexFormat): jfxss.VertexFormat =
     if (v != null) v.delegate else null
 
   /**
-   * Specifies the format of a vertex that consists of a point and texture coordinates.
-   */
+    * Specifies the format of a vertex that consists of a point and texture coordinates.
+    */
   val PointTexcoord: VertexFormat = new VertexFormat(jfxss.VertexFormat.POINT_TEXCOORD)
 
   /**
-   * Specifies the format of a vertex that consists of a point, normal and texture coordinates.
-   */
+    * Specifies the format of a vertex that consists of a point, normal and texture coordinates.
+    */
   val PointNormalTexcoord = new VertexFormat(jfxss.VertexFormat.POINT_NORMAL_TEXCOORD)
 }
 
 /**
- * Defines the format of the vertices in a mesh. A vertex consists of an array
- * of points, normals (optional), and texture coordinates.
- *
- * Wraps a $JFX $URL0 $TC]].
- *
- * @define TC VertexFormat
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx/scene/shape/VertexFormat.html
- * @define JFX JavaFX
- * @define ORIGINALDOC Original Documentation]].
- */
-class VertexFormat(override val delegate: jfxss.VertexFormat)
-  extends SFXDelegate[jfxss.VertexFormat] {
+  * Defines the format of the vertices in a mesh. A vertex consists of an array
+  * of points, normals (optional), and texture coordinates.
+  *
+  * Wraps a $JFX $URL0 $TC]].
+  *
+  * @define TC VertexFormat
+  * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx/scene/shape/VertexFormat.html
+  * @define JFX JavaFX
+  * @define ORIGINALDOC Original Documentation]].
+  */
+class VertexFormat(override val delegate: jfxss.VertexFormat) extends SFXDelegate[jfxss.VertexFormat] {
 
   /**
-   * Returns the number of component indices that represents a vertex. For example,
-   * a `PointTexcoord` vertex consists of 2 indices, one for point component and
-   * the other for texture coordinates component. Hence its value will be 2.
-   *
-   * @return the number of component indices
-   */
+    * Returns the number of component indices that represents a vertex. For example,
+    * a `PointTexcoord` vertex consists of 2 indices, one for point component and
+    * the other for texture coordinates component. Hence its value will be 2.
+    *
+    * @return the number of component indices
+    */
   def vertexIndexSize: Int = delegate.getVertexIndexSize
 
   /**
-   * Returns the index offset in the face array of the point component within
-   * a vertex.
-   *
-   * @return the offset to the point component.
-   */
+    * Returns the index offset in the face array of the point component within
+    * a vertex.
+    *
+    * @return the offset to the point component.
+    */
   def pointIndexOffset: Int = delegate.getPointIndexOffset
 
   /**
-   * Returns the index offset in the face array of the normal component within
-   * a vertex.
-   *
-   * @return the offset to the normal component.
-   */
+    * Returns the index offset in the face array of the normal component within
+    * a vertex.
+    *
+    * @return the offset to the normal component.
+    */
   def normalIndexOffset: Int = delegate.getNormalIndexOffset
 
   /**
-   * Returns the index offset in the face array of the texture coordinates
-   * component within a vertex.
-   *
-   * @return the offset to the texture coordinates component.
-   */
+    * Returns the index offset in the face array of the texture coordinates
+    * component within a vertex.
+    *
+    * @return the offset to the texture coordinates component.
+    */
   def texCoordIndexOffset: Int = delegate.getTexCoordIndexOffset
 
 }

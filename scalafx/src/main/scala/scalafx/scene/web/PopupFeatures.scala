@@ -32,57 +32,56 @@ import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 /**
- * Companion object for [[scalafx.scene.web.PopupFeatures]]
- */
+  * Companion object for [[scalafx.scene.web.PopupFeatures]]
+  */
 object PopupFeatures {
 
   /**
-   * Converts a ScalaFX PopupFeatures to its JavaFX counterpart.
-   *
-   * @param pe ScalaFX PopupFeatures
-   * @return JavaFX PopupFeatures
-   */
+    * Converts a ScalaFX PopupFeatures to its JavaFX counterpart.
+    *
+    * @param pe ScalaFX PopupFeatures
+    * @return JavaFX PopupFeatures
+    */
   implicit def sfxPopupFeatures2jfx(pe: PopupFeatures): jfxsw.PopupFeatures = if (pe != null) pe.delegate else null
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/PopupFeatures.html JavaFX PopupFeatures]]
- *
- * @constructor Creates a new PopupFeatures from its JavaFX counterpart.
- * @param delegate JavaFX PopupFeatures.
- */
-class PopupFeatures(override val delegate: jfxsw.PopupFeatures)
-  extends SFXDelegate[jfxsw.PopupFeatures] {
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/PopupFeatures.html JavaFX PopupFeatures]]
+  *
+  * @constructor Creates a new PopupFeatures from its JavaFX counterpart.
+  * @param delegate JavaFX PopupFeatures.
+  */
+class PopupFeatures(override val delegate: jfxsw.PopupFeatures) extends SFXDelegate[jfxsw.PopupFeatures] {
 
   /**
-   * Creates a new instance.
-   *
-   * @param menu whether menu bar should be present
-   * @param status whether status bar should be present
-   * @param toolbar whether tool bar should be present
-   * @param resizable whether popup window should be resizable
-   */
+    * Creates a new instance.
+    *
+    * @param menu whether menu bar should be present
+    * @param status whether status bar should be present
+    * @param toolbar whether tool bar should be present
+    * @param resizable whether popup window should be resizable
+    */
   def this(menu: Boolean, status: Boolean, toolbar: Boolean, resizable: Boolean) =
     this(new jfxsw.PopupFeatures(menu, status, toolbar, resizable))
 
   /**
-   * Returns whether menu bar should be present.
-   */
+    * Returns whether menu bar should be present.
+    */
   def hasMenu = delegate.hasMenu
 
   /**
-   * Returns whether status bar should be present.
-   */
+    * Returns whether status bar should be present.
+    */
   def hasStatus = delegate.hasStatus
 
   /**
-   * Returns whether tool bar should be present.
-   */
+    * Returns whether tool bar should be present.
+    */
   def hasToolbar = delegate.hasToolbar
 
   /**
-   * Returns whether popup window should be resizable.
-   */
+    * Returns whether popup window should be resizable.
+    */
   def resizable = delegate.isResizable
 
 }

@@ -32,42 +32,41 @@ import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 /**
- * Companion object for [[scalafx.scene.web.PromptData]]
- */
+  * Companion object for [[scalafx.scene.web.PromptData]]
+  */
 object PromptData {
 
   /**
-   * Converts a ScalaFX PromptData to its JavaFX counterpart.
-   *
-   * @param pd ScalaFX PromptData
-   * @return JavaFX PromptData
-   */
+    * Converts a ScalaFX PromptData to its JavaFX counterpart.
+    *
+    * @param pd ScalaFX PromptData
+    * @return JavaFX PromptData
+    */
   implicit def sfxPromptData2jfx(pd: PromptData): jfxsw.PromptData = if (pd != null) pd.delegate else null
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/PromptData.html JavaFX PromptData]]
- *
- * @constructor Creates a new PromptData from its JavaFX counterpart.
- * @param delegate JavaFX PromptData.
- */
-class PromptData(override val delegate: jfxsw.PromptData)
-  extends SFXDelegate[jfxsw.PromptData] {
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/PromptData.html JavaFX PromptData]]
+  *
+  * @constructor Creates a new PromptData from its JavaFX counterpart.
+  * @param delegate JavaFX PromptData.
+  */
+class PromptData(override val delegate: jfxsw.PromptData) extends SFXDelegate[jfxsw.PromptData] {
 
   /**
-   * .
-   * Creates a new instance.
-   */
+    * .
+    * Creates a new instance.
+    */
   def this(message: String, defaultValue: String) = this(new jfxsw.PromptData(message, defaultValue))
 
   /**
-   * Returns default value carried by this data object.
-   */
+    * Returns default value carried by this data object.
+    */
   def defaultValue = delegate.getDefaultValue
 
   /**
-   * Returns message carried by this data object.
-   */
+    * Returns message carried by this data object.
+    */
   def message = delegate.getMessage
 
 }

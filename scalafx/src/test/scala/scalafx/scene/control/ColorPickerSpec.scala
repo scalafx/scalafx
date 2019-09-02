@@ -32,10 +32,10 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * ColorPicker Spec tests.
- *
- *
- */
+  * ColorPicker Spec tests.
+  *
+  *
+  */
 class ColorPickerSpec
-  extends SimpleSFXDelegateSpec[jfxsc.ColorPicker, ColorPicker](classOf[jfxsc.ColorPicker], classOf[ColorPicker])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.ColorPicker, ColorPicker](classOf[jfxsc.ColorPicker], classOf[ColorPicker])
+    with RunOnApplicationThread

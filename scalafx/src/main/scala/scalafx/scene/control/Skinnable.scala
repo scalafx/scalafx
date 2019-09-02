@@ -40,8 +40,8 @@ object Skinnable {
 trait Skinnable extends SFXDelegate[jfxsc.Skinnable] {
 
   /**
-   * Skin is responsible for rendering this `Control`.
-   */
+    * Skin is responsible for rendering this `Control`.
+    */
   def skin: ObjectProperty[jfxsc.Skin[_]] = delegate.skinProperty
   def skin_=(v: Skin[_]) {
     skin() = v.delegate

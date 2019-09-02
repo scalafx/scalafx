@@ -33,4 +33,4 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** Tests for [[scalafx.embed.swing.SwingNode]]. */
 class SwingNodeSpec
-  extends SimpleSFXDelegateSpec[jfxes.SwingNode, SwingNode](classOf[jfxes.SwingNode], classOf[SwingNode])
+    extends SimpleSFXDelegateSpec[jfxes.SwingNode, SwingNode](classOf[jfxes.SwingNode], classOf[SwingNode])

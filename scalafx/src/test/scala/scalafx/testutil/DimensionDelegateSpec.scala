@@ -32,8 +32,8 @@ import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.DimensionDelegate
 
 /**
- * Trait to test DimensionDelegate subclasses
- */
+  * Trait to test DimensionDelegate subclasses
+  */
 trait DimensionDelegateSpec[D <: DimensionDelegate[_]] extends FlatSpec {
 
   val dimensionDelegate: D

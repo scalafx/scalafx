@@ -40,28 +40,28 @@ object FlowPane {
   implicit def sfxFlowPane2jfx(v: FlowPane): jfxsl.FlowPane = if (v != null) v.delegate else null
 
   /**
-   * Removes all flowpane constraints from the child node.
-   */
+    * Removes all flowpane constraints from the child node.
+    */
   def clearConstraints(child: Node) {
     jfxsl.FlowPane.clearConstraints(child)
   }
 
   /**
-   * Added just for satisfy tests.
-   */
+    * Added just for satisfy tests.
+    */
   @deprecated("Use clearConstraints(scalafx.scene.Node) instead", "1.0")
   def clearConstraints(child: javafx.scene.Node) {
     jfxsl.FlowPane.clearConstraints(child)
   }
 
   /**
-   * Returns the child's margin constraint if set.
-   */
+    * Returns the child's margin constraint if set.
+    */
   def getMargin(child: Node): Insets = jfxsl.FlowPane.getMargin(child)
 
   /**
-   * Sets the margin for the child when contained by a flowpane.
-   */
+    * Sets the margin for the child when contained by a flowpane.
+    */
   def setMargin(child: Node, value: Insets) {
     jfxsl.FlowPane.setMargin(child, value)
   }
@@ -69,74 +69,74 @@ object FlowPane {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/FlowPane.html]]
- */
+  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/FlowPane.html]]
+  */
 class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
-  extends Pane(delegate)
-  with AlignmentDelegate[jfxsl.FlowPane]
-  with SFXDelegate[jfxsl.FlowPane] {
+    extends Pane(delegate)
+    with AlignmentDelegate[jfxsl.FlowPane]
+    with SFXDelegate[jfxsl.FlowPane] {
 
   /**
-   * Creates a horizontal FlowPane layout with the specified hgap/vgap.
-   */
+    * Creates a horizontal FlowPane layout with the specified hgap/vgap.
+    */
   def this(hgap: Double, vgap: Double) = this(new jfxsl.FlowPane(hgap, vgap))
 
   /**
-   * Creates a FlowPane layout with the specified orientation and hgap/vgap = 0.
-   */
+    * Creates a FlowPane layout with the specified orientation and hgap/vgap = 0.
+    */
   def this(orientation: Orientation) = this(new jfxsl.FlowPane(orientation))
 
   /**
-   * Creates a FlowPane layout with the specified orientation and hgap/vgap.
-   */
+    * Creates a FlowPane layout with the specified orientation and hgap/vgap.
+    */
   def this(orientation: Orientation, hgap: Double, vgap: Double) = this(new jfxsl.FlowPane(orientation, hgap, vgap))
 
   /**
-   * The horizontal alignment of nodes within each column of a vertical flowpane.
-   */
+    * The horizontal alignment of nodes within each column of a vertical flowpane.
+    */
   def columnHalignment: ObjectProperty[jfxg.HPos] = delegate.columnHalignmentProperty
   def columnHalignment_=(v: HPos) {
     columnHalignment() = v
   }
 
   /**
-   * The amount of horizontal space between each node in a horizontal flowpane or the space between columns in a
-   * vertical flowpane.
-   */
+    * The amount of horizontal space between each node in a horizontal flowpane or the space between columns in a
+    * vertical flowpane.
+    */
   def hgap: DoubleProperty = delegate.hgapProperty
   def hgap_=(v: Double) {
     hgap() = v
   }
 
   /**
-   * The orientation of this flowpane.
-   */
+    * The orientation of this flowpane.
+    */
   def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
   def orientation_=(v: Orientation) {
     orientation() = v
   }
 
   /**
-   * The preferred width where content should wrap in a horizontal flowpane or the preferred height where content
-   * should wrap in a vertical flowpane.
-   */
+    * The preferred width where content should wrap in a horizontal flowpane or the preferred height where content
+    * should wrap in a vertical flowpane.
+    */
   def prefWrapLength: DoubleProperty = delegate.prefWrapLengthProperty
   def prefWrapLength_=(v: Double) {
     prefWrapLength() = v
   }
 
   /**
-   * The vertical alignment of nodes within each row of a horizontal flowpane.
-   */
+    * The vertical alignment of nodes within each row of a horizontal flowpane.
+    */
   def rowValignment: ObjectProperty[jfxg.VPos] = delegate.rowValignmentProperty
   def rowValignment_=(v: VPos) {
     rowValignment() = v
   }
 
   /**
-   * The amount of vertical space between each node in a vertical flowpane or the space between rows in a horizontal
-   * flowpane.
-   */
+    * The amount of vertical space between each node in a vertical flowpane or the space between rows in a horizontal
+    * flowpane.
+    */
   def vgap: DoubleProperty = delegate.vgapProperty
   def vgap_=(v: Double) {
     vgap() = v

@@ -45,6 +45,7 @@ class InputEvent(override val delegate: jfxsi.InputEvent) extends Event(delegate
 
   def this(eventType: jfxe.EventType[jfxsi.InputEvent]) = this(new jfxsi.InputEvent(eventType))
 
-  def this(source: AnyRef, target: jfxe.EventTarget, eventType: jfxe.EventType[jfxsi.InputEvent]) = this(new jfxsi.InputEvent(source, target, eventType))
+  def this(source: AnyRef, target: jfxe.EventTarget, eventType: jfxe.EventType[jfxsi.InputEvent]) =
+    this(new jfxsi.InputEvent(source, target, eventType))
 
 }

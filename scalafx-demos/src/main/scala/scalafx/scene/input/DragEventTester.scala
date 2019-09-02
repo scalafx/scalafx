@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.

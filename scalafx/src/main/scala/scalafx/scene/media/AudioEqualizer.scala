@@ -37,24 +37,24 @@ object AudioEqualizer {
   implicit def sfxAudioEqualizer2jfx(ae: AudioEqualizer): jfxsm.AudioEqualizer = if (ae != null) ae.delegate else null
 
   /**
-   * Maximum number of bands an AudioEqualizer may contain.
-   */
+    * Maximum number of bands an AudioEqualizer may contain.
+    */
   val MAX_NUM_BANDS = jfxsm.AudioEqualizer.MAX_NUM_BANDS
 }
 
 class AudioEqualizer(override val delegate: jfxsm.AudioEqualizer) extends SFXDelegate[jfxsm.AudioEqualizer] {
 
   /**
-   * Whether the AudioEqualizer is enabled.
-   */
+    * Whether the AudioEqualizer is enabled.
+    */
   def enabled: BooleanProperty = delegate.enabledProperty
   def enabled_=(v: Boolean) {
     enabled() = v
   }
 
   /**
-   * ObservableList containing EqualizerBand elements.
-   */
+    * ObservableList containing EqualizerBand elements.
+    */
   def bands = delegate.getBands
 
 }

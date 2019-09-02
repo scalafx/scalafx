@@ -35,12 +35,11 @@ import scalafx.collections.ObservableBuffer
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- * TableViewSpec tests.
- */
+  * TableViewSpec tests.
+  */
 class TableViewSpec[S]
-  extends SimpleSFXDelegateSpec[jfxsc.TableView[S], TableView[S]](
-    classOf[jfxsc.TableView[S]], classOf[TableView[S]])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.TableView[S], TableView[S]](classOf[jfxsc.TableView[S]], classOf[TableView[S]])
+    with RunOnApplicationThread {
 
   it should "not drop assigned columns - Issue 41" in {
     val firstTC = new TableColumn[String, String]("First Name")
@@ -49,7 +48,7 @@ class TableViewSpec[S]
     val tableView = new TableView[String]()
     tableView.columns.size should (equal(0))
 
-    tableView.columns +=(firstTC, lastTC)
+    tableView.columns += (firstTC, lastTC)
     tableView.columns.size should (equal(2))
   }
 
@@ -60,7 +59,7 @@ class TableViewSpec[S]
     val tableView = new TableView[String]()
     tableView.columns.size should (equal(0))
 
-    tableView.columns +=(firstTC, lastTC)
+    tableView.columns += (firstTC, lastTC)
     tableView.columns.size should (equal(2))
 
     tableView.sortOrder.size should (equal(0))

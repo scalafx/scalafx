@@ -37,27 +37,31 @@ object DelegateIncludes extends DelegateIncludes
 trait DelegateIncludes {
 
   /**
-   * Converts a Scala's [[scalafx.beans.property.ObjectProperty]] that wraps a
-   * [[scalafx.delegate.SFXDelegate]] to a Java's [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ObjectProperty.html javafx.beans.property.ObjectProperty]].
-   *
-   * @tparam D Type wrapped by SFXDelegate
-   * @tparam S A SFXDelegate subtype that wraps D.
-   * @param obj ObjectProperty that a wraps Scala's SFXDelegate
-   * @return A new Java's ObjectProperty
-   */
-  implicit def sfxObjectPropertyWithSFXDelegate2jfxObjectProperty[D <: Object, S <: SFXDelegate[D]](obj: ObjectProperty[S]): jfxbp.ObjectProperty[D] =
+    * Converts a Scala's [[scalafx.beans.property.ObjectProperty]] that wraps a
+    * [[scalafx.delegate.SFXDelegate]] to a Java's [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ObjectProperty.html javafx.beans.property.ObjectProperty]].
+    *
+    * @tparam D Type wrapped by SFXDelegate
+    * @tparam S A SFXDelegate subtype that wraps D.
+    * @param obj ObjectProperty that a wraps Scala's SFXDelegate
+    * @return A new Java's ObjectProperty
+    */
+  implicit def sfxObjectPropertyWithSFXDelegate2jfxObjectProperty[D <: Object, S <: SFXDelegate[D]](
+      obj: ObjectProperty[S]
+  ): jfxbp.ObjectProperty[D] =
     new jfxbp.SimpleObjectProperty[D](obj.get.delegate)
 
   /**
-   * Converts a Scala's [[scalafx.beans.property.ReadOnlyObjectWrapper]] that wraps a
-   * [[scalafx.delegate.SFXDelegate]] to a Java's [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyObjectWrapper.html javafx.beans.property.ReadOnlyObjectWrapper]].
-   *
-   * @tparam D Type wrapped by SFXDelegate
-   * @tparam S A SFXDelegate subtype that wraps D.
-   * @param obj ObjectProperty that a wraps Scala's SFXDelegate
-   * @return A new Java's ObjectProperty
-   */
-  implicit def sfxReadOnlyObjectWrapperWithSFXDelegate2jfxReadOnlyObjectWrapper[D <: Object, S <: SFXDelegate[D]](obj: ReadOnlyObjectWrapper[S]): jfxbp.ReadOnlyObjectWrapper[D] =
+    * Converts a Scala's [[scalafx.beans.property.ReadOnlyObjectWrapper]] that wraps a
+    * [[scalafx.delegate.SFXDelegate]] to a Java's [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyObjectWrapper.html javafx.beans.property.ReadOnlyObjectWrapper]].
+    *
+    * @tparam D Type wrapped by SFXDelegate
+    * @tparam S A SFXDelegate subtype that wraps D.
+    * @param obj ObjectProperty that a wraps Scala's SFXDelegate
+    * @return A new Java's ObjectProperty
+    */
+  implicit def sfxReadOnlyObjectWrapperWithSFXDelegate2jfxReadOnlyObjectWrapper[D <: Object, S <: SFXDelegate[D]](
+      obj: ReadOnlyObjectWrapper[S]
+  ): jfxbp.ReadOnlyObjectWrapper[D] =
     new jfxbp.ReadOnlyObjectWrapper[D](obj.get.delegate)
 
 }

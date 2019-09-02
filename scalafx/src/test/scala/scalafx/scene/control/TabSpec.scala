@@ -32,8 +32,7 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Tab Spec tests.
- *
- */
-class TabSpec
-  extends SimpleSFXDelegateSpec[jfxsc.Tab, Tab](classOf[jfxsc.Tab], classOf[Tab])
+  * Tab Spec tests.
+  *
+  */
+class TabSpec extends SimpleSFXDelegateSpec[jfxsc.Tab, Tab](classOf[jfxsc.Tab], classOf[Tab])

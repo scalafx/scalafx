@@ -36,7 +36,6 @@ import scalafx.scene.control.{Label, Menu, MenuBar, MenuItem, SeparatorMenuItem}
 import scalafx.scene.layout.{BorderPane, VBox}
 import scalafx.scene.paint.Color
 
-
 object MenuTest extends JFXApp {
 
   val menu = new Menu("File") {
@@ -50,10 +49,10 @@ object MenuTest extends JFXApp {
       }
     )
 
-    onShowing = handle {printEvent("on showing")}
-    onShown = handle {printEvent("on shown")}
-    onHiding = handle {printEvent("on hiding")}
-    onHidden = handle {printEvent("on hidden")}
+    onShowing = handle { printEvent("on showing") }
+    onShown = handle { printEvent("on shown") }
+    onHiding = handle { printEvent("on hiding") }
+    onHidden = handle { printEvent("on hidden") }
   }
 
   val history = new VBox()

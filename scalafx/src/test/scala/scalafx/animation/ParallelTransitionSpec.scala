@@ -32,10 +32,12 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * ParallelTransition Spec tests.
- *
- *
- */
+  * ParallelTransition Spec tests.
+  *
+  *
+  */
 class ParallelTransitionSpec
-  extends SimpleSFXDelegateSpec[jfxa.ParallelTransition, ParallelTransition](
-    classOf[jfxa.ParallelTransition], classOf[ParallelTransition])
+    extends SimpleSFXDelegateSpec[jfxa.ParallelTransition, ParallelTransition](
+      classOf[jfxa.ParallelTransition],
+      classOf[ParallelTransition]
+    )

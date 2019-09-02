@@ -40,14 +40,16 @@ object SplitPane {
   implicit def sfxSplitPane2jfx(v: SplitPane): jfxsc.SplitPane = if (v != null) v.delegate else null
 
   object Divider {
-    implicit def sfxSplitPaneDivider2jfx(v: SplitPane.Divider): jfxsc.SplitPane.Divider = if (v != null) v.delegate else null
+    implicit def sfxSplitPaneDivider2jfx(v: SplitPane.Divider): jfxsc.SplitPane.Divider =
+      if (v != null) v.delegate else null
   }
 
-  class Divider(override val delegate: jfxsc.SplitPane.Divider = new jfxsc.SplitPane.Divider) extends SFXDelegate[jfxsc.SplitPane.Divider] {
+  class Divider(override val delegate: jfxsc.SplitPane.Divider = new jfxsc.SplitPane.Divider)
+      extends SFXDelegate[jfxsc.SplitPane.Divider] {
 
     /**
-     * Represents the location where the divider should ideally be positioned, between 0.0 and 1.0 (inclusive).
-     */
+      * Represents the location where the divider should ideally be positioned, between 0.0 and 1.0 (inclusive).
+      */
     def position: DoubleProperty = delegate.positionProperty
     def position_=(v: Double) {
       position() = v
@@ -56,53 +58,55 @@ object SplitPane {
   }
 
   /**
-   * Return true if the node is resizable when the parent container is resized false otherwise.
-   */
+    * Return true if the node is resizable when the parent container is resized false otherwise.
+    */
   def isResizableWithParent(node: Node) = jfxsc.SplitPane.isResizableWithParent(node)
 
   /**
-   * Sets a node in the SplitPane to be resizable or not when the SplitPane is resized.
-   */
+    * Sets a node in the SplitPane to be resizable or not when the SplitPane is resized.
+    */
   def setResizableWithParent(node: Node, value: Boolean) {
     jfxsc.SplitPane.setResizableWithParent(node, value)
   }
 
 }
 
-class SplitPane(override val delegate: jfxsc.SplitPane = new jfxsc.SplitPane) extends Control(delegate) with SFXDelegate[jfxsc.SplitPane] {
+class SplitPane(override val delegate: jfxsc.SplitPane = new jfxsc.SplitPane)
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.SplitPane] {
 
   /**
-   * The orientation for the SplitPane.
-   */
+    * The orientation for the SplitPane.
+    */
   def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
   def orientation_=(v: Orientation) {
     orientation() = v
   }
 
   /**
-   * Returns an array of double containing the position of each divider.
-   */
+    * Returns an array of double containing the position of each divider.
+    */
   def dividerPositions = delegate.getDividerPositions
   def dividerPositions_=(positions: Double*) {
     delegate.setDividerPositions(positions: _*)
   }
 
   /**
-   * Sets the position of the divider at the specified divider index.
-   * @todo Change to a Scala notation
-   */
+    * Sets the position of the divider at the specified divider index.
+    * @todo Change to a Scala notation
+    */
   def setDividerPosition(dividerIndex: Int, position: Double) {
     delegate.setDividerPosition(dividerIndex, position)
   }
 
   /**
-   * Returns an unmodifiable list of all the dividers in this SplitPane.
-   */
+    * Returns an unmodifiable list of all the dividers in this SplitPane.
+    */
   def dividers = delegate.getDividers
 
   /**
-   * Returns an ObservableList which can be use to modify the contents of the SplitPane.
-   */
+    * Returns an ObservableList which can be use to modify the contents of the SplitPane.
+    */
   def items = delegate.getItems
 
 }
