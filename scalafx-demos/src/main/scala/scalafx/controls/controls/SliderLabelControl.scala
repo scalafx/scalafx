@@ -46,7 +46,7 @@ class SliderLabelControl(property: DoubleProperty) extends FlowPane {
 
   def this(intProp: IntegerProperty) = this(new DoubleProperty(intProp.getValue, intProp.name) {
     override def value = intProp.value.toDouble
-    override def value_=(v: Double) {
+    override def value_=(v: Double): Unit = {
       intProp.value = v.toInt
     }
   })
@@ -64,42 +64,42 @@ class SliderLabelControl(property: DoubleProperty) extends FlowPane {
     hgrow = Priority.Sometimes
   }
 
-  def blockIncrement_=(v: Double) {
+  def blockIncrement_=(v: Double): Unit = {
     slider.blockIncrement = v
   }
 
-  def pattern_=(v: String) {
+  def pattern_=(v: String): Unit = {
     slider.labelFormatter = new DoubleStringConverter
     lblValue.text <== slider.value.asString(v)
   }
 
-  def majorTickUnit_=(v: Double) {
+  def majorTickUnit_=(v: Double): Unit = {
     slider.majorTickUnit = v
   }
 
   def max = slider.max
-  def max_=(v: Double) {
+  def max_=(v: Double): Unit = {
     slider.max = v
   }
 
   def min = slider.min
-  def min_=(v: Double) {
+  def min_=(v: Double): Unit = {
     slider.min = v
   }
 
-  def minorTickCount_=(v: Int) {
+  def minorTickCount_=(v: Int): Unit = {
     slider.minorTickCount = v
   }
 
-  def showTickLabels_=(v: Boolean) {
+  def showTickLabels_=(v: Boolean): Unit = {
     slider.showTickLabels = v
   }
 
-  def showTickMarks_=(v: Boolean) {
+  def showTickMarks_=(v: Boolean): Unit = {
     slider.showTickMarks = v
   }
 
-  def snapToTicks_=(v: Boolean) {
+  def snapToTicks_=(v: Boolean): Unit = {
     slider.snapToTicks = v
   }
 

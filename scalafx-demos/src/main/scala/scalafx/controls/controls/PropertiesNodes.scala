@@ -48,7 +48,7 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
 
   private var index = 0
 
-  protected def resetProperties() {}
+  protected def resetProperties(): Unit = {}
 
   protected val btnReset = new Button {
     text = "Reset"
@@ -68,7 +68,7 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
    * @param title Control Node title
    * @param control Control Node
    */
-  protected def addNode(title: String, control: Node) {
+  protected def addNode(title: String, control: Node): Unit = {
     controlsPane.add(new Label {
       font = PropertiesNodes.TitleFont
       labelFor = control
@@ -84,7 +84,7 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
    *
    * @param control Control Node
    */
-  protected def addNode(control: Node) {
+  protected def addNode(control: Node): Unit = {
     controlsPane.add(control, 0, index, 2, 1)
     index += 1
   }
@@ -95,13 +95,13 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
    * @param control1 Control Node 1
    * @param control2 Control Node 2
    */
-  protected def addNodes(control1: Node, control2: Node) {
+  protected def addNodes(control1: Node, control2: Node): Unit = {
     controlsPane.add(control1, 0, index)
     controlsPane.add(control2, 1, index)
     index += 1
   }
 
-  protected def fillDoublePropertyFromText(property: DoubleProperty, field: TextField, cleanAfterAction: Boolean = true, onError: () => Unit = () => ()) {
+  protected def fillDoublePropertyFromText(property: DoubleProperty, field: TextField, cleanAfterAction: Boolean = true, onError: () => Unit = () => ()): Unit = {
     try {
       val txt = field.text.get
       property.value = txt.toDouble
@@ -115,7 +115,7 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
 
   }
 
-  protected def fillIntPropertyFromText(property: IntegerProperty, field: TextField, cleanAfterAction: Boolean = true, onError: () => Unit = () => ()) {
+  protected def fillIntPropertyFromText(property: IntegerProperty, field: TextField, cleanAfterAction: Boolean = true, onError: () => Unit = () => ()): Unit = {
     try {
       val txt = field.text.get
       property.value = txt.toInt

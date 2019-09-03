@@ -86,7 +86,7 @@ object CanvasDoodleTest extends JFXApp {
    *
    * @param color The color to fill
    */
-  private def reset(color: Color) {
+  private def reset(color: Color): Unit = {
     gc.fill = color
     gc.fillRect(0, 0, canvas.width.get, canvas.height.get)
   }

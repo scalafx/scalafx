@@ -364,7 +364,7 @@ class View(position: FrogShape => Int, val frogShapes: List[FrogShape]) {
 // control
 //
 class Control {
-  def update(model: Model, view: View) {
+  def update(model: Model, view: View): Unit = {
     view.frogShapes.foreach {
       case `theDummyFrogShape` =>
       case frogShape           => frogShape.onMouseClicked = {

@@ -57,7 +57,7 @@ object MultipleShapeDrawingDemo extends JFXApp {
       fill = Color.web("RED", 0.5)
     }
     /** Update the shape using current `start` and `end` points. */
-    override def update() {
+    override def update(): Unit = {
       rectangle.x = math.min(start.x, end.x)
       rectangle.y = math.min(start.y, end.y)
       rectangle.width = math.abs(start.x - end.x)
@@ -71,7 +71,7 @@ object MultipleShapeDrawingDemo extends JFXApp {
       fill = Color.web("GREEN", 0.5)
     }
     /** Update the shape using current `start` and `end` points. */
-    override def update() {
+    override def update(): Unit = {
       ellipse.centerX = start.x
       ellipse.centerY = start.y
       ellipse.radiusX = math.abs(start.x - end.x)
@@ -86,7 +86,7 @@ object MultipleShapeDrawingDemo extends JFXApp {
       strokeWidth = 3
     }
     /** Update the shape using current `start` and `end` points. */
-    override def update() {
+    override def update(): Unit = {
       line.startX = start.x
       line.startY = start.y
       line.endX = end.x
@@ -180,20 +180,20 @@ object MultipleShapeDrawingDemo extends JFXApp {
     private var _end = new Point2D(0, 0)
 
     def start: Point2D = _start
-    def start_=(p: Point2D) {
+    def start_=(p: Point2D): Unit = {
       _start = p
       _end = p
       update()
     }
 
     def end: Point2D = _end
-    def end_=(p: Point2D) {
+    def end_=(p: Point2D): Unit = {
       _end = p
       update()
     }
 
     /** Update the shape using current `start` and `end` points. */
-    def update()
+    def update(): Unit
 
     override def handler: MouseEvent => Unit = {
       me: MouseEvent => {

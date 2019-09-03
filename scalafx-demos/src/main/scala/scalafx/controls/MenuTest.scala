@@ -77,7 +77,7 @@ object MenuTest extends JFXApp {
     }
   }
 
-  def printEvent(eventStr: String)() {
+  def printEvent(eventStr: String)(): Unit = {
     history.children += new Label(eventStr)
   }
 

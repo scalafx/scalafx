@@ -52,7 +52,7 @@ import scalafx.beans.property.IntegerProperty
  */
 
 object ScalaFX_Properties_And_Binding_02 {
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
     val num1 = new IntegerProperty(null, "num1")
     val num2 = new IntegerProperty(null, "num2")
     val sum: NumberBinding = num1 + num2

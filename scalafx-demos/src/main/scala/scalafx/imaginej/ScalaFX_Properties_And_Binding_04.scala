@@ -54,7 +54,7 @@ import scalafx.beans.property.IntegerProperty
  */
 
 object ScalaFX_Properties_And_Binding_04 {
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
     val num1 = new IntegerProperty(null, "num1")
     val num2 = new IntegerProperty(null, "num2")
     val num3 = new IntegerProperty(null, "num3")

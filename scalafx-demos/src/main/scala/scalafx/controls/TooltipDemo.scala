@@ -113,7 +113,7 @@ class TooltipControls(target: Tooltip) extends PropertiesNodes[Tooltip](target, 
     selected <==> target.wrapText
   }
 
-  override protected def resetProperties() {
+  override protected def resetProperties(): Unit = {
     target.contentDisplay = originalContentDisplay
     target.text = originalText
     target.textAlignment = originalTextAlignment

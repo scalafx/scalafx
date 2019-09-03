@@ -51,7 +51,7 @@ import scalafx.beans.property.DoubleProperty
  */
 
 object ScalaFX_Properties_And_Binding_01 {
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
     val bill = new Bill(new DoubleProperty(null, "Bill"))
     bill.amountDue onChange {
       (_, oldAmountDue, newAmountDue) =>
