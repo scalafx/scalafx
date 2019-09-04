@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,8 @@
 package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
-
 import scalafx.Includes._
+import scalafx.collections.ObservableBuffer
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
@@ -54,6 +54,11 @@ class AxisSpec[T]
     protected def setRange(range: Any, animate: Boolean) {}
     protected def toNumericValue(value: T) = 0.0
     protected def toRealValue(value: Double) = null.asInstanceOf[T]
+  }
+
+  it should "correctly implement invalidateRange [Issue #310]" in {
+    val a = new NumberAxis()
+    a.invalidateRange(ObservableBuffer.empty[Number])
   }
 
 }

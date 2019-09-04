@@ -39,6 +39,7 @@ import scalafx.scene.paint.Paint
 import scalafx.scene.text.Font
 
 import scala.collection.mutable
+import scala.jdk.CollectionConverters._
 import scala.language.implicitConversions
 
 object Axis {
@@ -156,7 +157,7 @@ abstract class Axis[T](override val delegate: jfxsc.Axis[T])
   def zeroPosition: Double = delegate.getZeroPosition
 
   def invalidateRange(data: mutable.Buffer[T]): Unit = {
-    delegate.invalidateRange(data)
+    delegate.invalidateRange(data.asJava)
   }
 
   def isValueOnAxis(value: T): Boolean = delegate.isValueOnAxis(value)
