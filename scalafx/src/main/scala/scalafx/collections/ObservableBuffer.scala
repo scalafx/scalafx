@@ -276,6 +276,17 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
   }
 
   /**
+   * A convenience method for var-arg addition of elements.
+   *
+   * @param elem elements the elements to add
+   * @return $ownOB
+   */
+  def addAll(elem: T*): ObservableBuffer.this.type = {
+    delegate.addAll(elem: _*)
+    this
+  }
+
+  /**
    * Prepends a single element to this buffer. $WhyOverride
    *
    * @param elem Element to prepend

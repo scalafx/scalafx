@@ -94,6 +94,14 @@ class ObservableBufferSpec[T]
     (first, second, third) should equal("a", "b", "c")
   }
 
+  it should "should support addAll(elem: T*)" in {
+    val buffer = ObservableBuffer.empty[String]
+    buffer should have length 0
+
+    buffer.addAll("a", "b", "c")
+    buffer should have length 3
+  }
+
   it should "notify on invalidation" in {
     // Preparation
     val buffer = ObservableBuffer("a", "b", "c")
@@ -212,7 +220,7 @@ class ObservableBufferSpec[T]
     changeCount should equal(-1)
   }
 
-  it should "notify individuals remotions" in {
+  it should "notify individual removals" in {
     // Preparation
     val buffer = ObservableBuffer("a", "b", "c", "d", "e", "f")
     var changeCount = 0
@@ -495,7 +503,7 @@ class ObservableBufferSpec[T]
     removeCount should equal(1)
   }
 
-  it should "retain continous elements with 2 changes" in {
+  it should "retain continuous elements with 2 changes" in {
     // Preparation
     val buffer = ObservableBuffer("a", "b", "c", "d", "e")
     buffer onChange {
@@ -512,7 +520,7 @@ class ObservableBufferSpec[T]
     buffer.toList should equal(List("c", "d"))
   }
 
-  it should "retain non continous elements with 3 changes" in {
+  it should "retain non continuous elements with 3 changes" in {
     // Preparation
     val buffer = ObservableBuffer("a", "b", "c", "d", "e")
     buffer onChange {
