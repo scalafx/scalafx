@@ -65,8 +65,17 @@ lazy val scalafxSettings = Seq(
   version := scalafxVersion,
   crossScalaVersions := Seq("2.10.7", "2.11.12", "2.12.8"),
   scalaVersion := crossScalaVersions.value.head,
+  // Add src/main/scala-2.13+ for Scala 2.13 and newer
+  // and src/main/scala-2.12- for Scala versions older than 2.13
   unmanagedSourceDirectories in Compile += {
     val sourceDir = (sourceDirectory in Compile).value
+    CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((2, n)) if n >= 13 => sourceDir / "scala-2.13+"
+      case _ => sourceDir / "scala-2.12-"
+    }
+  },
+  unmanagedSourceDirectories in Test += {
+    val sourceDir = (sourceDirectory in Test).value
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((2, n)) if n >= 13 => sourceDir / "scala-2.13+"
       case _ => sourceDir / "scala-2.12-"
