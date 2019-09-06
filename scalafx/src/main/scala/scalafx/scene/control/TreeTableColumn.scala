@@ -228,7 +228,7 @@ object TreeTableColumn {
     * The CssMetaData of this Styleable. This may be returned as an unmodifiable list.
     */
   def classCssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] =
-    jfxsc.TreeTableColumn.getClassCssMetaData.asScala
+    jfxsc.TreeTableColumn.getClassCssMetaData.asScala.toSeq
 
 }
 
@@ -415,6 +415,6 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
   /**
     * The CssMetaData of this Styleable. This may be returned as an unmodifiable list.
     */
-  override def cssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getCssMetaData.asScala
+  override def cssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getCssMetaData.asScala.toSeq
 
 }

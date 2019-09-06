@@ -24,41 +24,58 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package scalafx.scene.chart
 
-import javafx.scene.{chart => jfxsc}
-import scalafx.Includes._
-import scalafx.collections.ObservableBuffer
-import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
+package scalafx.scene.input
 
-/**
- * Axis Spec tests.
- *
- *
- */
-class AxisSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.Axis[T], Axis[T]](classOf[jfxsc.Axis[T]], classOf[Axis[T]])
-  with RunOnApplicationThread {
+import java.{util => ju}
 
-  override def getScalaClassInstance = new Axis[T](getJavaClassInstance) {}
+import scala.collection.{Iterator, mutable}
 
-  override def getJavaClassInstance = new jfxsc.Axis[T] {
-    protected def autoRange(length: Double) = null
-    protected def calculateTickValues(length: Double, range: Any) = new java.util.ArrayList[T]
-    protected def getDisplayPosition(value: T) = 0.0
-    protected def getRange = null
-    protected def getTickMarkLabel(value: T) = ""
-    protected def getValueForDisplay(displayPosition: Double) = null.asInstanceOf[T]
-    protected def getZeroPosition = 0.0
-    protected def isValueOnAxis(value: T) = false
-    protected def setRange(range: Any, animate: Boolean) {}
-    protected def toNumericValue(value: T) = 0.0
-    protected def toRealValue(value: Double) = null.asInstanceOf[T]
+private[input] trait JMapWrapperLike[A, B]
+  extends mutable.Map[A, B] {
+
+  def underlying: ju.Map[A, B]
+
+  override def size = underlying.size
+
+  def get(k: A) = {
+    val v = underlying get k
+    if (v != null)
+      Some(v)
+    else if (underlying containsKey k)
+      Some(null.asInstanceOf[B])
+    else
+      None
   }
 
-  it should "correctly implement invalidateRange [Issue #310]" in {
-    val a = new NumberAxis()
-    a.invalidateRange(ObservableBuffer.empty[Number])
+  override def addOne(kv: (A, B)): this.type = {
+    underlying.put(kv._1, kv._2);
+    this
   }
 
+  override def subtractOne(key: A): this.type = {
+    underlying remove key;
+    this
+  }
+
+  override def put(k: A, v: B): Option[B] = {
+    val r = underlying.put(k, v)
+    if (r != null) Some(r) else None
+  }
+
+  override def update(k: A, v: B) { underlying.put(k, v) }
+
+  override def remove(k: A): Option[B] = {
+    val r = underlying remove k
+    if (r != null) Some(r) else None
+  }
+
+  //  def iterator: Iterator[(A, B)] = new AbstractIterator[(A, B)] {
+  def iterator: Iterator[(A, B)] = new Iterator[(A, B)] {
+    val ui = underlying.entrySet.iterator
+    def hasNext = ui.hasNext
+    def next() = { val e = ui.next(); (e.getKey, e.getValue) }
+  }
+
+  override def clear() = underlying.clear()
 }

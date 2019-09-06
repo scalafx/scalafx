@@ -297,7 +297,7 @@ object TreeTableView {
       * modify this list, please use the other methods provided in the TreeTableViewSelectionModel.
       */
     def selectedCells: ObservableBuffer[TreeTablePosition[S, _]] =
-      ObservableBuffer(delegate.getSelectedCells.map(ttp => new TreeTablePosition(ttp)))
+      ObservableBuffer(delegate.getSelectedCells.map(ttp => new TreeTablePosition(ttp)).toSeq)
 
     /**
       * Returns the TreeTableView instance that this selection model is installed in.
@@ -933,5 +933,5 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
   /**
     * Returns the CssMetaData associated with this class, which may include the CssMetaData of its super classes.
     */
-  def controlCssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getControlCssMetaData.asScala
+  def controlCssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getControlCssMetaData.asScala.toSeq
 }

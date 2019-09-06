@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,16 @@
 package scalafx.testutil
 
 import java.util.concurrent.CountDownLatch
-import javafx.application.Platform
 
+import javafx.application.Platform
 import org.scalatest.{Outcome, TestSuite, TestSuiteMixin}
 
-trait RunOnApplicationThread extends TestSuiteMixin {
+trait RunOnApplicationThread extends TestSuiteMixin with TestSuite {
+  // "with TestSuite" added above to avoid compilation error introduced in Scala 2.13 with ScalaTest 3.0.8
+  //    Error:(39, 7) illegal trait super target found for method withFixture required by trait RunOnApplicationThread;
+  //      found   : protected def withFixture: ((test: _1.NoArgTest)org.scalatest.Outcome) forSome { val _1: [T]scalafx.scene.chart.AxisSpec[T] } in trait TestSuite;
+  //      expected: protected def withFixture: ((test: _1.NoArgTest)org.scalatest.Outcome) forSome { val _1: [T]scalafx.scene.chart.AxisSpec[T] } in trait TestSuiteMixin
+  //    class AxisSpec[T]
   this: TestSuite =>
   abstract override def withFixture(test: NoArgTest): Outcome = {
     BootstrapApplication.launch()

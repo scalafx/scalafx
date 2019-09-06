@@ -2,29 +2,24 @@ sudo: false
 
 language: scala
 scala:
-- 2.10.7
-- 2.11.12
-- 2.12.8
+  - 2.13.0
+  - 2.12.8
+  - 2.11.12
+  - 2.10.7
 
 dist: xenial
 services:
   - xvfb
 
 jdk:
+  - oraclejdk11
+  - oraclejdk12
   - openjdk11
+  - openjdk12
 
 install: true
 
 script:
   - java -version
   - sbt test
-
-branches:
-  only:
-    - master
-    - stable
-
-notifications:
-  email:
-    - scalafx-build@googlegroups.com
 
