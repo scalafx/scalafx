@@ -65,6 +65,13 @@ lazy val scalafxSettings = Seq(
   version := scalafxVersion,
   crossScalaVersions := Seq("2.10.7", "2.11.12", "2.12.8"),
   scalaVersion := crossScalaVersions.value.head,
+  unmanagedSourceDirectories in Compile += {
+    val sourceDir = (sourceDirectory in Compile).value
+    CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((2, n)) if n >= 13 => sourceDir / "scala-2.13+"
+      case _ => sourceDir / "scala-2.12-"
+    }
+  },
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
