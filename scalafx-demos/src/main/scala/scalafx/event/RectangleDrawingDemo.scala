@@ -61,7 +61,7 @@ object RectangleDrawingDemo extends JFXApp {
     }
 
     /** Update location of the rectangle proving two defining point (along the diameter) */
-    def update(start: Point2D = _start, end: Point2D = _end) {
+    def update(start: Point2D = _start, end: Point2D = _end): Unit = {
       _start = start
       _end = end
       rectangle.x = math.min(_start.x, _end.x)

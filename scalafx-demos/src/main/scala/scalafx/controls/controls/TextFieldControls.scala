@@ -43,7 +43,7 @@ class TextFieldControls(target: TextField) extends PropertiesNodes[TextField](ta
   }
   // In JAvaFX 2.1, bind TextArea.prefRowCount with value
   chbPrefColumnCount.delegate.selectionModelProperty.addListener(new ChangeListener[Any] {
-    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
+    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any): Unit = {
       target.prefColumnCount = chbPrefColumnCount.items.get().get(newValue.toString.toInt)
     }
   })

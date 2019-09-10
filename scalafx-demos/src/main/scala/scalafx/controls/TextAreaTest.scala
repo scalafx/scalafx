@@ -83,7 +83,7 @@ class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](targe
   }
   // In JAvaFX 2.1, bind TextArea.prefColumnCount with value
   chbPrefColumnCount.delegate.selectionModelProperty.addListener(new ChangeListener[Any] {
-    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
+    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any): Unit = {
       target.prefColumnCount = newValue.toString.toInt
     }
   })
@@ -93,7 +93,7 @@ class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](targe
   }
   // In JAvaFX 2.1, bind TextArea.prefRowCount with value
   chbPrefRowCount.delegate.selectionModelProperty.addListener(new ChangeListener[Any] {
-    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
+    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any): Unit = {
       target.prefRowCount = newValue.toString.toInt
     }
   })
@@ -104,7 +104,7 @@ class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](targe
   //  chbScrollLeft.delegate.selectionModelProperty.set
   // In JAvaFX 2.1, bind TextArea.prefRowCount with value
   chbPrefRowCount.delegate.selectionModelProperty.addListener(new ChangeListener[Any] {
-    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
+    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any): Unit = {
       target.scrollLeft = chbScrollLeft.items.get().get(newValue.toString.toInt)
     }
   })
@@ -114,7 +114,7 @@ class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](targe
   }
   // In JAvaFX 2.1, bind TextArea.prefRowCount with value
   chbPrefRowCount.delegate.selectionModelProperty.addListener(new ChangeListener[Any] {
-    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
+    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any): Unit = {
       target.scrollTop = chbScrollTop.items.get().get(newValue.toString.toInt)
     }
   })

@@ -89,7 +89,7 @@ object PickingDemo extends JFXApp {
   }
 
   /** Add mouse interaction to a scene, rotating given node. */
-  private def addMouseInteraction(scene: Scene, group: Group) {
+  private def addMouseInteraction(scene: Scene, group: Group): Unit = {
     val angleY = DoubleProperty(-50)
     val yRotate = new Rotate {
       angle <== angleY

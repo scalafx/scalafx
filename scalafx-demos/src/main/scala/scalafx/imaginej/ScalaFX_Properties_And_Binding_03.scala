@@ -53,7 +53,7 @@ import scalafx.beans.property.IntegerProperty
  */
 
 object ScalaFX_Properties_And_Binding_03 {
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
     val num1 = new IntegerProperty(null, "num1")
     val num2 = new IntegerProperty(null, "num2")
     val max = Bindings.max(num1, num2)

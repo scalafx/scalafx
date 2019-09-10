@@ -75,7 +75,7 @@ object SliderTest extends JFXApp {
 
 class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Slider Properties") {
 
-  override protected def resetProperties() {
+  override protected def resetProperties(): Unit = {
     target.value = originalValue
     target.blockIncrement = originalBlockIncrement
     txfLabelFormatter.text = null

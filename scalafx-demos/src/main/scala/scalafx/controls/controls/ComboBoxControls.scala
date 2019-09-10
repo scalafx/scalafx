@@ -37,12 +37,12 @@ class ComboBoxControls(target: ComboBox[String]) extends PropertiesNodes[ComboBo
 
   var itemIndex = 0
 
-  def addNewTab() {
+  def addNewTab(): Unit = {
     itemIndex += 1
     target += "Item %d".format(itemIndex)
   }
 
-  def removeCurrentItem() {
+  def removeCurrentItem(): Unit = {
     target -= target.value.get
   }
 

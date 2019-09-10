@@ -95,11 +95,11 @@ object CubeSampleDemo extends JFXApp {
     new Group(c, c2, c3)
   }
 
-  def play() {
+  def play(): Unit = {
     animation.play()
   }
 
-  def stop() {
+  def stop(): Unit = {
     animation.pause()
   }
 

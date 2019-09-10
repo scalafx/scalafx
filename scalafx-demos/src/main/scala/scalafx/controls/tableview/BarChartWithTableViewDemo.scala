@@ -89,7 +89,7 @@ object BarChartWithTableViewDemo extends JFXApp {
     }
 
 
-  private def showAsTable(name: String, data: ObservableBuffer[Position]) {
+  private def showAsTable(name: String, data: ObservableBuffer[Position]): Unit = {
 
     val tableView = new TableView[Position](data) {
       columns ++= List(
