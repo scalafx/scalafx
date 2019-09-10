@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -126,7 +126,8 @@ class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathT
    * The target node of this $PT.
    */
   def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
-  def node_=(n: Node) {
+
+  def node_=(n: Node): Unit = {
     node() = n
   }
 
@@ -134,7 +135,8 @@ class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathT
    * The duration of this `Transition`.
    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
-  def duration_=(d: Duration) {
+
+  def duration_=(d: Duration): Unit = {
     duration() = d
   }
 
@@ -142,7 +144,8 @@ class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathT
    * The shape on which outline the node should be animated.
    */
   def path: ObjectProperty[jfxss.Shape] = delegate.pathProperty
-  def path_=(s: Shape) {
+
+  def path_=(s: Shape): Unit = {
     path() = s
   }
 
@@ -150,7 +153,8 @@ class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathT
    * Specifies the upright orientation of node along the path.
    */
   def orientation: ObjectProperty[jfxa.PathTransition.OrientationType] = delegate.orientationProperty
-  def orientation_=(o: PathTransition.OrientationType) {
+
+  def orientation_=(o: PathTransition.OrientationType): Unit = {
     orientation() = o
   }
 

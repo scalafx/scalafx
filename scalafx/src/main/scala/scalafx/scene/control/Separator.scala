@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,12 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{geometry => jfxg}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.{HPos, Orientation, VPos}
+
+import scala.language.implicitConversions
 
 object Separator {
   implicit def sfxSeparator2jfx(v: Separator): jfxsc.Separator = if (v != null) v.delegate else null
@@ -47,17 +47,20 @@ object Separator {
 class Separator(override val delegate: jfxsc.Separator = new jfxsc.Separator) extends Control(delegate) with SFXDelegate[jfxsc.Separator] {
 
   def halignment: ObjectProperty[jfxg.HPos] = delegate.halignmentProperty
-  def halignment_=(v: HPos) {
+
+  def halignment_=(v: HPos): Unit = {
     halignment() = v
   }
 
   def valignment: ObjectProperty[jfxg.VPos] = delegate.valignmentProperty
-  def valignment_=(v: VPos) {
+
+  def valignment_=(v: VPos): Unit = {
     valignment() = v
   }
 
   def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
-  def orientation_=(v: Orientation) {
+
+  def orientation_=(v: Orientation): Unit = {
     orientation() = v
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,13 +30,13 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, IntegerProperty, ObjectProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
+
+import scala.language.implicitConversions
 
 
 object SpinnerValueFactory {
@@ -76,7 +76,8 @@ object SpinnerValueFactory {
      * type that must match the type of the ListView itself.
      */
     def items: ObjectProperty[jfxc.ObservableList[T]] = delegate.itemsProperty
-    def items_=(v: ObservableBuffer[T]) {
+
+    def items_=(v: ObservableBuffer[T]): Unit = {
       items() = v
     }
   }
@@ -133,7 +134,8 @@ object SpinnerValueFactory {
      * Sets the minimum allowable value for this value factory
      */
     def min: IntegerProperty = delegate.minProperty
-    def min_=(value: Int) {
+
+    def min_=(value: Int): Unit = {
       min() = value
     }
 
@@ -141,7 +143,8 @@ object SpinnerValueFactory {
      * Sets the maximum allowable value for this value factory
      */
     def max: IntegerProperty = delegate.maxProperty
-    def max_=(value: Int) {
+
+    def max_=(value: Int): Unit = {
       max() = value
     }
 
@@ -149,7 +152,8 @@ object SpinnerValueFactory {
      * Sets the amount to increment or decrement by, per step.
      */
     def amountToStepBy: IntegerProperty = delegate.amountToStepByProperty
-    def amountToStepBy_=(value: Int) {
+
+    def amountToStepBy_=(value: Int): Unit = {
       amountToStepBy() = value
     }
   }
@@ -213,7 +217,8 @@ object SpinnerValueFactory {
      * Sets the minimum allowable value for this value factory
      */
     def min: DoubleProperty = delegate.minProperty
-    def min_=(value: Double) {
+
+    def min_=(value: Double): Unit = {
       min() = value
     }
 
@@ -221,7 +226,8 @@ object SpinnerValueFactory {
      * Sets the maximum allowable value for this value factory
      */
     def max: DoubleProperty = delegate.maxProperty
-    def max_=(value: Double) {
+
+    def max_=(value: Double): Unit = {
       max() = value
     }
 
@@ -229,7 +235,8 @@ object SpinnerValueFactory {
      * Sets the amount to increment or decrement by, per step.
      */
     def amountToStepBy: DoubleProperty = delegate.amountToStepByProperty
-    def amountToStepBy_=(value: Double) {
+
+    def amountToStepBy_=(value: Double): Unit = {
       amountToStepBy() = value
     }
   }

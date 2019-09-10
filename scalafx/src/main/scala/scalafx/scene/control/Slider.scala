@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,13 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{geometry => jfxg, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, IntegerProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Orientation
 import scalafx.util.StringConverter
+
+import scala.language.implicitConversions
 
 object Slider {
   implicit def sfxSlider2jfx(v: Slider): jfxsc.Slider = if (v != null) v.delegate else null
@@ -51,7 +51,8 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
    * The amount by which to adjust the slider if the track of the slider is clicked.
    */
   def blockIncrement: DoubleProperty = delegate.blockIncrementProperty
-  def blockIncrement_=(v: Double) {
+
+  def blockIncrement_=(v: Double): Unit = {
     blockIncrement() = v
   }
 
@@ -59,7 +60,8 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
    * A function for formatting the label for a major tick.
    */
   def labelFormatter: ObjectProperty[jfxu.StringConverter[java.lang.Double]] = delegate.labelFormatterProperty
-  def labelFormatter_=(v: StringConverter[Double]) {
+
+  def labelFormatter_=(v: StringConverter[Double]): Unit = {
     labelFormatter() = new jfxu.StringConverter[java.lang.Double] {
       def fromString(s: String) = v.fromString(s)
       def toString(d: java.lang.Double) = v.toString(d)
@@ -70,7 +72,8 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
    * The unit distance between major tick marks.
    */
   def majorTickUnit: DoubleProperty = delegate.majorTickUnitProperty
-  def majorTickUnit_=(v: Double) {
+
+  def majorTickUnit_=(v: Double): Unit = {
     majorTickUnit() = v
   }
 
@@ -78,7 +81,8 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
    * The maximum value represented by this Slider.
    */
   def max: DoubleProperty = delegate.maxProperty
-  def max_=(v: Double) {
+
+  def max_=(v: Double): Unit = {
     max() = v
   }
 
@@ -86,7 +90,8 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
    * The number of minor ticks to place between any two major ticks.
    */
   def minorTickCount: IntegerProperty = delegate.minorTickCountProperty
-  def minorTickCount_=(v: Int) {
+
+  def minorTickCount_=(v: Int): Unit = {
     minorTickCount() = v
   }
 
@@ -94,7 +99,8 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
    * The minimum value represented by this Slider.
    */
   def min: DoubleProperty = delegate.minProperty
-  def min_=(v: Double) {
+
+  def min_=(v: Double): Unit = {
     min() = v
   }
 
@@ -102,7 +108,8 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
    * The orientation of the Slider can either be horizontal or vertical.
    */
   def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
-  def orientation_=(v: Orientation) {
+
+  def orientation_=(v: Orientation): Unit = {
     orientation() = v
   }
 
@@ -110,7 +117,8 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
    * Indicates that the labels for tick marks should be shown.
    */
   def showTickLabels: BooleanProperty = delegate.showTickLabelsProperty
-  def showTickLabels_=(v: Boolean) {
+
+  def showTickLabels_=(v: Boolean): Unit = {
     showTickLabels() = v
   }
 
@@ -118,7 +126,8 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
    * Specifies whether the Skin implementation should show tick marks.
    */
   def showTickMarks: BooleanProperty = delegate.showTickMarksProperty
-  def showTickMarks_=(v: Boolean) {
+
+  def showTickMarks_=(v: Boolean): Unit = {
     showTickMarks() = v
   }
 
@@ -126,7 +135,8 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
    * Indicates whether the value of the Slider should always be aligned with the tick marks.
    */
   def snapToTicks: BooleanProperty = delegate.snapToTicksProperty
-  def snapToTicks_=(v: Boolean) {
+
+  def snapToTicks_=(v: Boolean): Unit = {
     snapToTicks() = v
   }
 
@@ -134,7 +144,8 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
    * When true, indicates the current value of this Slider is changing.
    */
   def valueChanging: BooleanProperty = delegate.valueChangingProperty
-  def valueChanging_=(v: Boolean) {
+
+  def valueChanging_=(v: Boolean): Unit = {
     valueChanging() = v
   }
 
@@ -142,7 +153,8 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
    * The current value represented by this Slider.
    */
   def value: DoubleProperty = delegate.valueProperty
-  def value_=(v: Double) {
+
+  def value_=(v: Double): Unit = {
     value() = v
   }
 

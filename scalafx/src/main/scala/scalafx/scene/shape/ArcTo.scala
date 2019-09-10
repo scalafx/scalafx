@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty}
 import scalafx.delegate.{PositionDelegate, SFXDelegate}
+
+import scala.language.implicitConversions
 
 object ArcTo {
   implicit def sfxArcTo2jfx(v: ArcTo): jfxss.ArcTo = if (v != null) v.delegate else null
@@ -49,7 +49,8 @@ class ArcTo(override val delegate: jfxss.ArcTo = new jfxss.ArcTo)
    * The x-axis rotation in degrees.
    */
   def XAxisRotation: DoubleProperty = delegate.XAxisRotationProperty
-  def XAxisRotation_=(v: Double) {
+
+  def XAxisRotation_=(v: Double): Unit = {
     XAxisRotation() = v
   }
 
@@ -57,7 +58,8 @@ class ArcTo(override val delegate: jfxss.ArcTo = new jfxss.ArcTo)
    * The sweep flag
    */
   def sweepFlag: BooleanProperty = delegate.sweepFlagProperty
-  def sweepFlag_=(v: Boolean) {
+
+  def sweepFlag_=(v: Boolean): Unit = {
     sweepFlag() = v
   }
 
@@ -65,7 +67,8 @@ class ArcTo(override val delegate: jfxss.ArcTo = new jfxss.ArcTo)
    * The vertical radius to use for the arc.
    */
   def radiusY: DoubleProperty = delegate.radiusYProperty
-  def radiusY_=(v: Double) {
+
+  def radiusY_=(v: Double): Unit = {
     radiusY() = v
   }
 
@@ -73,7 +76,8 @@ class ArcTo(override val delegate: jfxss.ArcTo = new jfxss.ArcTo)
    * The horizontal radius to use for the arc.
    */
   def radiusX: DoubleProperty = delegate.radiusXProperty
-  def radiusX_=(v: Double) {
+
+  def radiusX_=(v: Double): Unit = {
     radiusX() = v
   }
 
@@ -81,7 +85,8 @@ class ArcTo(override val delegate: jfxss.ArcTo = new jfxss.ArcTo)
    * The large arc flag.
    */
   def largeArcFlag: BooleanProperty = delegate.largeArcFlagProperty
-  def largeArcFlag_=(v: Boolean) {
+
+  def largeArcFlag_=(v: Boolean): Unit = {
     largeArcFlag() = v
   }
 

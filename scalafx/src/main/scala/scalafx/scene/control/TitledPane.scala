@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,12 +29,12 @@ package scalafx.scene.control
 import javafx.beans.property.BooleanProperty
 import javafx.scene.{control => jfxsc}
 import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene._
+
+import scala.language.implicitConversions
 
 object TitledPane {
   implicit def sfxTitledPane2jfx(v: TitledPane): jfxs.control.TitledPane = if (v != null) v.delegate else null
@@ -45,22 +45,26 @@ class TitledPane(override val delegate: jfxsc.TitledPane = new jfxsc.TitledPane)
   with SFXDelegate[jfxsc.TitledPane] {
 
   def animated: BooleanProperty = delegate.animatedProperty
-  def animated_=(v: Boolean) {
+
+  def animated_=(v: Boolean): Unit = {
     animated() = v
   }
 
   def collapsible: BooleanProperty = delegate.collapsibleProperty
-  def collapsible_=(v: Boolean) {
+
+  def collapsible_=(v: Boolean): Unit = {
     collapsible() = v
   }
 
   def content: ObjectProperty[jfxs.Node] = delegate.contentProperty
-  def content_=(v: Node) {
+
+  def content_=(v: Node): Unit = {
     content() = v
   }
 
   def expanded: BooleanProperty = delegate.expandedProperty
-  def expanded_=(v: Boolean) {
+
+  def expanded_=(v: Boolean): Unit = {
     expanded() = v
   }
 }

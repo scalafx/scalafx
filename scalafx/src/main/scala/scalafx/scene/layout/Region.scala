@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,14 +28,14 @@ package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl, shape => jfxss}
 import javafx.{geometry => jfxg}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyDoubleProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Insets
 import scalafx.scene.Parent
 import scalafx.scene.shape.Shape
+
+import scala.language.implicitConversions
 
 object Region {
   implicit def sfxRegion2jfx(v: Region): jfxsl.Region = if (v != null) v.delegate else null
@@ -59,7 +59,7 @@ object Region {
   def layoutInArea(child: javafx.scene.Node,
                    areaX: Double, areaY: Double, areaWidth: Double, areaHeight: Double, areaBaselineOffset: Double,
                    margin: jfxg.Insets, fillWidth: Boolean, fillHeight: Boolean,
-                   halignment: jfxg.HPos, valignment: jfxg.VPos, isSnapToPixel: Boolean) {
+                   halignment: jfxg.HPos, valignment: jfxg.VPos, isSnapToPixel: Boolean): Unit = {
     jfxsl.Region.layoutInArea(
       child,
       areaX, areaY, areaWidth, areaHeight, areaBaselineOffset,
@@ -71,7 +71,7 @@ object Region {
     * areaWidth x areaHeight, with a baseline offset relative to that area. */
   def positionInArea(child: javafx.scene.Node,
                      areaX: Double, areaY: Double, areaWidth: Double, areaHeight: Double, areaBaselineOffset: Double,
-                     margin: jfxg.Insets, halignment: jfxg.HPos, valignment: jfxg.VPos, isSnapToPixel: Boolean) {
+                     margin: jfxg.Insets, halignment: jfxg.HPos, valignment: jfxg.VPos, isSnapToPixel: Boolean): Unit = {
     jfxsl.Region.positionInArea(child,
       areaX, areaY, areaWidth, areaHeight,
       areaBaselineOffset, margin, halignment, valignment, isSnapToPixel)
@@ -86,26 +86,30 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
     * and zero or more BackgroundImages.
     */
   def background: ObjectProperty[jfxsl.Background] = delegate.backgroundProperty()
-  def background_=(v: Background) {
+
+  def background_=(v: Background): Unit = {
     background() = v
   }
 
   /** The border of the Region, which is made up of zero or more BorderStrokes, and zero or more BorderImages. */
   def border: ObjectProperty[jfxsl.Border] = delegate.borderProperty()
-  def border_=(v: Border) {
+
+  def border_=(v: Border): Unit = {
     border() = v
   }
 
   /** Defines a hint to the system indicating that the Shape used to define the region's
     * background is stable and would benefit from caching. */
   def cacheShape: BooleanProperty = delegate.cacheProperty()
-  def cacheShape_=(v: Boolean) {
+
+  def cacheShape_=(v: Boolean): Unit = {
     cacheShape() = v
   }
 
   /** Defines whether the shape is centered within the Region's width or height. */
   def centerShape: BooleanProperty = delegate.centerShapeProperty()
-  def centerShape_=(v: Boolean) {
+
+  def centerShape_=(v: Boolean): Unit = {
     centerShape() = v
   }
 
@@ -123,7 +127,8 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
    * Property for overriding the region's computed maximum height.
    */
   def maxHeight: DoubleProperty = delegate.maxHeightProperty
-  def maxHeight_=(v: Double) {
+
+  def maxHeight_=(v: Double): Unit = {
     maxHeight() = v
   }
 
@@ -131,7 +136,8 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
    * Property for overriding the region's computed maximum width.
    */
   def maxWidth: DoubleProperty = delegate.maxWidthProperty
-  def maxWidth_=(v: Double) {
+
+  def maxWidth_=(v: Double): Unit = {
     maxWidth() = v
   }
 
@@ -139,7 +145,8 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
    * Property for overriding the region's computed minimum height.
    */
   def minHeight: DoubleProperty = delegate.minHeightProperty
-  def minHeight_=(v: Double) {
+
+  def minHeight_=(v: Double): Unit = {
     minHeight() = v
   }
 
@@ -147,13 +154,15 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
    * Property for overriding the region's computed minimum width.
    */
   def minWidth: DoubleProperty = delegate.minWidthProperty
-  def minWidth_=(v: Double) {
+
+  def minWidth_=(v: Double): Unit = {
     minWidth() = v
   }
 
   /** Defines the area of the region within which completely opaque pixels are drawn. */
   def opaqueInsets: ObjectProperty[jfxg.Insets] = delegate.opaqueInsetsProperty()
-  def opaqueInsets_=(v: Insets) {
+
+  def opaqueInsets_=(v: Insets): Unit = {
     opaqueInsets() = v
   }
 
@@ -161,7 +170,8 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
    * The top,right,bottom,left padding around the region's content.
    */
   def padding: ObjectProperty[jfxg.Insets] = delegate.paddingProperty
-  def padding_=(v: Insets) {
+
+  def padding_=(v: Insets): Unit = {
     padding() = v
   }
 
@@ -169,7 +179,8 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
    * Property for overriding the region's computed preferred height.
    */
   def prefHeight: DoubleProperty = delegate.prefHeightProperty
-  def prefHeight_=(v: Double) {
+
+  def prefHeight_=(v: Double): Unit = {
     prefHeight() = v
   }
 
@@ -177,13 +188,15 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
    * Property for overriding the region's computed preferred width.
    */
   def prefWidth: DoubleProperty = delegate.prefWidthProperty
-  def prefWidth_=(v: Double) {
+
+  def prefWidth_=(v: Double): Unit = {
     prefWidth() = v
   }
 
   /** When specified, the shape will cause the region to be rendered as the specified shape rather than as a rounded rectangle. */
   def shape: ObjectProperty[jfxss.Shape] = delegate.shapeProperty()
-  def shape_=(v: Shape) {
+
+  def shape_=(v: Shape): Unit = {
     shape() = v
   }
 
@@ -192,7 +205,8 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
    * when laying out its children.
    */
   def snapToPixel: BooleanProperty = delegate.snapToPixelProperty
-  def snapToPixel_=(v: Boolean) {
+
+  def snapToPixel_=(v: Boolean): Unit = {
     snapToPixel() = v
   }
 
@@ -204,13 +218,14 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   /**
    * Invoked by the region's parent during layout to set the region's width and height.
    */
-  override def resize(width: Double, height: Double) {
+  override def resize(width: Double, height: Double): Unit = {
     delegate.resize(width, height)
   }
 
   /** Specifies whether the shape, if defined, is scaled to match the size of the Region. */
   def scaleShape: BooleanProperty = delegate.scaleShapeProperty()
-  def scaleShape_=(v: Boolean) {
+
+  def scaleShape_=(v: Boolean): Unit = {
     scaleShape() = v
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,14 @@ package scalafx.scene.control
 
 import java.time.LocalDate
 import java.time.chrono.Chronology
+
 import javafx.scene.{control => jfxsc}
 import javafx.{util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
+
+import scala.language.implicitConversions
 
 object DatePicker {
   implicit def sfxDatePicker2jfx(v: DatePicker): jfxsc.DatePicker = if (v != null) v.delegate else null
@@ -56,7 +57,8 @@ class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker(
    * The calendar system used for parsing, displaying, and choosing dates in the DatePicker control.
    */
   def chronology = delegate.chronologyProperty
-  def chronology_=(value: Chronology) {
+
+  def chronology_=(value: Chronology): Unit = {
     chronology() = value
   }
 
@@ -64,7 +66,8 @@ class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker(
    * Converts the input text to an object of type `LocalDate` and vice versa.
    */
   def converter = delegate.converterProperty
-  def converter_=(value: StringConverter[LocalDate]) {
+
+  def converter_=(value: StringConverter[LocalDate]): Unit = {
     converter() = value
   }
 
@@ -72,7 +75,8 @@ class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker(
    * A custom cell factory can be provided to customize individual day cells in the `DatePicker` popup.
    */
   def dayCellFactory = delegate.dayCellFactoryProperty
-  def dayCellFactory_=(value: DatePicker => DateCell) {
+
+  def dayCellFactory_=(value: DatePicker => DateCell): Unit = {
     dayCellFactory() = new jfxu.Callback[jfxsc.DatePicker, jfxsc.DateCell] {
       def call(result: jfxsc.DatePicker) = {
         value(result)

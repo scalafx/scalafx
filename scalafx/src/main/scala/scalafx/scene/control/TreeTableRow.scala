@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,12 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 /**
  * Object companion for [[scalafx.scene.control.TreeTableRow]].
@@ -80,7 +80,8 @@ class TreeTableRow[T](override val delegate: jfxsc.TreeTableRow[T] = new jfxsc.T
    * @see $URL0#disclosureNodeProperty $ORIGINALDOC
    */
   def disclosureNode: ObjectProperty[jfxs.Node] = delegate.disclosureNodeProperty
-  def disclosureNode_=(node: Node) {
+
+  def disclosureNode_=(node: Node): Unit = {
     disclosureNode() = node
   }
 
@@ -105,7 +106,7 @@ class TreeTableRow[T](override val delegate: jfxsc.TreeTableRow[T] = new jfxsc.T
    * @param treeItem The new TreeItem that should be associated with this TreeTableCell.
    * @see $URL0#updateTreeTableView-javafx.scene.control.TreeTableView- $ORIGINALDOC
    */
-  def updateTreeItem(treeItem: TreeItem[T]) {
+  def updateTreeItem(treeItem: TreeItem[T]): Unit = {
     delegate.updateTreeItem(treeItem)
   }
 

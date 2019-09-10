@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.canvas
 
 import javafx.scene.{canvas => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object Canvas {
   implicit def sfxCanvas2jfx(c: Canvas): jfxsc.Canvas = if (c != null) c.delegate else null
@@ -54,7 +54,8 @@ class Canvas(override val delegate: jfxsc.Canvas = new jfxsc.Canvas)
    * Defines the height of the canvas.
    */
   def height: DoubleProperty = delegate.heightProperty
-  def height_=(v: Double) {
+
+  def height_=(v: Double): Unit = {
     height() = v
   }
 
@@ -62,7 +63,8 @@ class Canvas(override val delegate: jfxsc.Canvas = new jfxsc.Canvas)
    * Defines the width of the canvas.
    */
   def width: DoubleProperty = delegate.widthProperty
-  def width_=(v: Double) {
+
+  def width_=(v: Double): Unit = {
     width() = v
   }
 

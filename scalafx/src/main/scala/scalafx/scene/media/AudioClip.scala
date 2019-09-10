@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.media
 
 import javafx.scene.{media => jfxsm}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, IntegerProperty}
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object AudioClip {
   implicit def sfxAudioClip2jfx(ac: AudioClip): jfxsm.AudioClip = if (ac != null) ac.delegate else null
@@ -56,7 +56,8 @@ class AudioClip(override val delegate: jfxsm.AudioClip) extends SFXDelegate[jfxs
    * The relative left and right volume levels of the clip.
    */
   def balance: DoubleProperty = delegate.balanceProperty
-  def balance_=(v: Double) {
+
+  def balance_=(v: Double): Unit = {
     balance() = v
   }
 
@@ -64,7 +65,8 @@ class AudioClip(override val delegate: jfxsm.AudioClip) extends SFXDelegate[jfxs
    * The number of times the clip will be played when play() is called.
    */
   def cycleCount: IntegerProperty = delegate.cycleCountProperty
-  def cycleCount_=(v: Int) {
+
+  def cycleCount_=(v: Int): Unit = {
     cycleCount() = v
   }
 
@@ -72,7 +74,8 @@ class AudioClip(override val delegate: jfxsm.AudioClip) extends SFXDelegate[jfxs
    * The relative "center" of the clip.
    */
   def pan: DoubleProperty = delegate.panProperty
-  def pan_=(v: Double) {
+
+  def pan_=(v: Double): Unit = {
     pan() = v
   }
 
@@ -80,7 +83,8 @@ class AudioClip(override val delegate: jfxsm.AudioClip) extends SFXDelegate[jfxs
    * The relative priority of the clip with respect to other clips.
    */
   def priority: IntegerProperty = delegate.priorityProperty
-  def priority_=(v: Int) {
+
+  def priority_=(v: Int): Unit = {
     priority() = v
   }
 
@@ -88,7 +92,8 @@ class AudioClip(override val delegate: jfxsm.AudioClip) extends SFXDelegate[jfxs
    * The relative rate at which the clip is played.
    */
   def rate: DoubleProperty = delegate.rateProperty
-  def rate_=(v: Double) {
+
+  def rate_=(v: Double): Unit = {
     rate() = v
   }
 
@@ -101,7 +106,8 @@ class AudioClip(override val delegate: jfxsm.AudioClip) extends SFXDelegate[jfxs
    * The relative volume level at which the clip is played.
    */
   def volume: DoubleProperty = delegate.volumeProperty
-  def volume_=(v: Double) {
+
+  def volume_=(v: Double): Unit = {
     volume() = v
   }
 

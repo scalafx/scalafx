@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse, paint => jfxsp}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.{DimensionDelegate, PositionDelegate, SFXDelegate}
 import scalafx.scene.paint._
+
+import scala.language.implicitConversions
 
 object ColorInput {
   implicit def sfxColorInput2jfx(ci: ColorInput): jfxse.ColorInput = if (ci != null) ci.delegate else null
@@ -54,7 +54,8 @@ class ColorInput(override val delegate: jfxse.ColorInput = new jfxse.ColorInput)
    * The Paint used to flood the region.
    */
   def paint: ObjectProperty[jfxsp.Paint] = delegate.paintProperty
-  def paint_=(v: Paint) {
+
+  def paint_=(v: Paint): Unit = {
     paint() = v
   }
 

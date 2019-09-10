@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,8 +28,6 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyIntegerProperty}
 import scalafx.collections.ObservableBuffer
@@ -37,6 +35,8 @@ import scalafx.delegate.SFXDelegate
 import scalafx.event.Event
 import scalafx.geometry.Orientation
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object ListView {
   implicit def sfxListView2jfx[T](l: ListView[T]): jfxsc.ListView[T] = if (l != null) l.delegate else null
@@ -122,7 +122,8 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * total customization of the cell.
    */
   def cellFactory = delegate.cellFactoryProperty
-  def cellFactory_=(v: (ListView[T] => ListCell[T])) {
+
+  def cellFactory_=(v: (ListView[T] => ListCell[T])): Unit = {
     cellFactory() = new jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] {
       def call(lv: jfxsc.ListView[T]) = {
         v(lv)
@@ -135,7 +136,8 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * it are both editable will a ListCell be able to go into their editing state.
    */
   def editable: BooleanProperty = delegate.editableProperty
-  def editable_=(v: Boolean) {
+
+  def editable_=(v: Boolean): Unit = {
     editable() = v
   }
 
@@ -147,7 +149,8 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
 
   /** Specifies whether this control has cells that are a fixed height (of the specified value). */
   def fixedCellSize: DoubleProperty = delegate.fixedCellSizeProperty
-  def fixedCellSize_=(v: Double) {
+
+  def fixedCellSize_=(v: Double): Unit = {
     fixedCellSize() = v
   }
 
@@ -156,7 +159,8 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * a single item within a ListView.
    */
   def focusModel: ObjectProperty[jfxsc.FocusModel[T]] = delegate.focusModelProperty
-  def focusModel_=(v: FocusModel[T]) {
+
+  def focusModel_=(v: FocusModel[T]): Unit = {
     focusModel() = v
   }
 
@@ -164,7 +168,8 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * The underlying data model for the ListView.
    */
   def items = delegate.itemsProperty
-  def items_=(v: ObservableBuffer[T]) {
+
+  def items_=(v: ObservableBuffer[T]): Unit = {
     items() = v
   }
 
@@ -172,7 +177,8 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * This event handler will be fired when the user cancels editing a cell.
    */
   def onEditCancel = delegate.onEditCancelProperty
-  def onEditCancel_=(v: jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]) {
+
+  def onEditCancel_=(v: jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]): Unit = {
     onEditCancel() = v
   }
 
@@ -181,7 +187,8 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * input being persisted.
    */
   def onEditCommit = delegate.onEditCommitProperty
-  def onEditCommit_=(v: jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]) {
+
+  def onEditCommit_=(v: jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]): Unit = {
     onEditCommit() = v
   }
 
@@ -189,7 +196,8 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * This event handler will be fired when the user successfully initiates editing.
    */
   def onEditStart = delegate.onEditStartProperty
-  def onEditStart_=(v: jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]) {
+
+  def onEditStart_=(v: jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]): Unit = {
     onEditStart() = v
   }
 
@@ -197,14 +205,16 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * The orientation of the ListView - this can either be horizontal or vertical.
    */
   def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
-  def orientation_=(v: Orientation) {
+
+  def orientation_=(v: Orientation): Unit = {
     orientation() = v
   }
 
 
   /** This Node is shown to the user when the listview has no content to show. */
   def placeholder: ObjectProperty[jfxs.Node] = delegate.placeholderProperty
-  def placeholder_=(v: Node) {
+
+  def placeholder_=(v: Node): Unit = {
     ObjectProperty.fillProperty[jfxs.Node](placeholder, v)
   }
 
@@ -213,7 +223,8 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * items within a ListView, as well as inspect which items have been selected by the user.
    */
   def selectionModel: ObjectProperty[jfxsc.MultipleSelectionModel[T]] = delegate.selectionModelProperty
-  def selectionModel_=(v: MultipleSelectionModel[T]) {
+
+  def selectionModel_=(v: MultipleSelectionModel[T]): Unit = {
     selectionModel() = v
   }
 
@@ -221,7 +232,7 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * Instructs the ListView to begin editing the item in the given index, if the ListView is
    * editable.
    */
-  def edit(itemIndex: Int) {
+  def edit(itemIndex: Int): Unit = {
     delegate.edit(itemIndex)
   }
 
@@ -229,19 +240,20 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * Called when there's a request to scroll an index into view using scrollTo(int) or #scrollTo(S)
    */
   def onScrollTo: ObjectProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]] = delegate.onScrollToProperty
-  def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]) {
+
+  def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]): Unit = {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]](onScrollTo, v)
   }
 
   /**
    * Scrolls the ListView such that the item in the given index is visible to the end user.
    */
-  def scrollTo(index: Int) {
+  def scrollTo(index: Int): Unit = {
     delegate.scrollTo(index)
   }
 
   /** Scrolls the TableView so that the given object is visible within the viewport. */
-  def scrollTo(o: T) {
+  def scrollTo(o: T): Unit = {
     delegate.scrollTo(o)
   }
 }

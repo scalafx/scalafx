@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 package scalafx.application
 
 private[application] class AppHelper extends javafx.application.Application {
-  def start(stage: javafx.stage.Stage) {
+  def start(stage: javafx.stage.Stage): Unit = {
     JFXApp.ActiveJFXApp = this
     JFXApp.Stage = stage
     JFXApp.ActiveApp.init()
@@ -36,7 +36,7 @@ private[application] class AppHelper extends javafx.application.Application {
     }
   }
 
-  override def stop() {
+  override def stop(): Unit = {
     JFXApp.ActiveApp.stopApp()
   }
 }

@@ -68,14 +68,14 @@ class ObservableFloatArray(delegate: jfxc.ObservableFloatArray = jfxc.FXCollecti
   /**
    * @inheritdoc
    */
-  override def copyTo(srcIdx: Int, dest: Array[Float], destIdx: Int, length:Int) {
+  override def copyTo(srcIdx: Int, dest: Array[Float], destIdx: Int, length: Int): Unit = {
     delegate.copyTo(srcIdx, dest, destIdx, length)
   }
 
   /**
    * @inheritdoc
    */
-  override def copyTo(srcIdx: Int, dest: ObservableFloatArray, destIdx: Int, length: Int) {
+  override def copyTo(srcIdx: Int, dest: ObservableFloatArray, destIdx: Int, length: Int): Unit = {
     delegate.copyTo(srcIdx, dest.delegate, destIdx, length)
   }
 
@@ -87,77 +87,77 @@ class ObservableFloatArray(delegate: jfxc.ObservableFloatArray = jfxc.FXCollecti
   /**
    * @inheritdoc
    */
-  override def addAll(elems: Float*) {
+  override def addAll(elems: Float*): Unit = {
     delegate.addAll(elems:_*)
   }
 
   /**
    * @inheritdoc
    */
-  override def addAll(src: ObservableFloatArray) {
+  override def addAll(src: ObservableFloatArray): Unit = {
     delegate.addAll(src.delegate)
   }
 
   /**
    * @inheritdoc
    */
-  override def addAll(src: Array[Float], srcIdx: Int, length: Int) {
+  override def addAll(src: Array[Float], srcIdx: Int, length: Int): Unit = {
     delegate.addAll(src, srcIdx, length)
   }
 
   /**
    * @inheritdoc
    */
-  override def addAll(src: ObservableFloatArray, srcIdx: Int, length: Int) {
+  override def addAll(src: ObservableFloatArray, srcIdx: Int, length: Int): Unit = {
     delegate.addAll(src.delegate, srcIdx, length)
   }
 
   /**
    * @inheritdoc
    */
-  override def setAll(elems: Float*) {
+  override def setAll(elems: Float*): Unit = {
     delegate.setAll(elems:_*)
   }
 
   /**
    * @inheritdoc
    */
-  override def setAll(src: ObservableFloatArray) {
+  override def setAll(src: ObservableFloatArray): Unit = {
     delegate.setAll(src.delegate)
   }
 
   /**
    * @inheritdoc
    */
-  override def setAll(src: Array[Float], srcIdx: Int, length: Int) {
+  override def setAll(src: Array[Float], srcIdx: Int, length: Int): Unit = {
     delegate.setAll(src, srcIdx, length)
   }
 
   /**
    * @inheritdoc
    */
-  override def setAll(src: ObservableFloatArray, srcIdx: Int, length: Int) {
+  override def setAll(src: ObservableFloatArray, srcIdx: Int, length: Int): Unit = {
     delegate.setAll(src.delegate, srcIdx, length)
   }
 
   /**
    * @inheritdoc
    */
-  override def set(idx: Int, elem: Float) {
+  override def set(idx: Int, elem: Float): Unit = {
     delegate.set(idx, elem)
   }
 
   /**
    * @inheritdoc
    */
-  override def set(destIdx: Int, src: Array[Float], srcIdx: Int, length: Int) {
+  override def set(destIdx: Int, src: Array[Float], srcIdx: Int, length: Int): Unit = {
     delegate.set(destIdx, src, srcIdx, length)
   }
 
   /**
    * @inheritdoc
    */
-  override def set(destIdx: Int, src: ObservableFloatArray, srcIdx: Int, length: Int) {
+  override def set(destIdx: Int, src: ObservableFloatArray, srcIdx: Int, length: Int): Unit = {
     delegate.set(destIdx, src.delegate, srcIdx, length)
   }
 

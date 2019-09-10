@@ -268,7 +268,7 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
   def cellFactory: ObjectProperty[TreeTableColumn[S, T] => TreeTableCell[S, T]] =
     ObjectProperty((column: TreeTableColumn[S, T]) => new TreeTableCell(delegate.cellFactoryProperty.getValue.call(column)))
 
-  def cellFactory_=(f: TreeTableColumn[S, T] => TreeTableCell[S, T]) {
+  def cellFactory_=(f: TreeTableColumn[S, T] => TreeTableCell[S, T]): Unit = {
     delegate.cellFactoryProperty.setValue(
       new jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] {
         def call(v: jfxsc.TreeTableColumn[S, T]): jfxsc.TreeTableCell[S, T] = {
@@ -308,7 +308,7 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
       (features: TreeTableColumn.CellDataFeatures[S, T]) =>
         jfxObservableValue2sfx[T](delegate.cellValueFactoryProperty.getValue.call(features)))
 
-  def cellValueFactory_=(f: TreeTableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]) {
+  def cellValueFactory_=(f: TreeTableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]): Unit = {
     delegate.cellValueFactoryProperty.setValue(
       new jfxu.Callback[jfxsc.TreeTableColumn.CellDataFeatures[S, T], jfxbv.ObservableValue[T]] {
         def call(v: jfxsc.TreeTableColumn.CellDataFeatures[S, T]): jfxbv.ObservableValue[T] = {
@@ -332,7 +332,7 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
     */
   def onEditStart: ObjectProperty[jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]] = delegate.onEditCommitProperty
 
-  def onEditStart_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]) {
+  def onEditStart_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]): Unit = {
     onEditStart() = v
   }
 
@@ -341,7 +341,7 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
     */
   def onEditCommit: ObjectProperty[jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]] = delegate.onEditCommitProperty
 
-  def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]) {
+  def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]): Unit = {
     onEditCommit() = v
   }
 
@@ -350,7 +350,7 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
     */
   def onEditCancel: ObjectProperty[jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]] = delegate.onEditCancelProperty
 
-  def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]) {
+  def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]): Unit = {
     onEditCancel() = v
   }
 

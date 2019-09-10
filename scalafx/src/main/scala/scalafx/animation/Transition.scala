@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.animation.Transition]].
@@ -66,7 +66,8 @@ abstract class Transition(override val delegate: jfxa.Transition)
    * Controls the timing for acceleration and deceleration at each $TR cycle. Default Value: `Interpolator.EASE_BOTH`.
    */
   def interpolator: ObjectProperty[jfxa.Interpolator] = delegate.interpolatorProperty
-  def interpolator_=(i: jfxa.Interpolator) {
+
+  def interpolator_=(i: jfxa.Interpolator): Unit = {
     interpolator() = i
   }
 

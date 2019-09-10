@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,11 +28,11 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, IntegerProperty}
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object TextArea {
   implicit def sfxTextArea2jfx(v: TextArea): jfxsc.TextArea = if (v != null) v.delegate else null
@@ -50,27 +50,32 @@ class TextArea(override val delegate: jfxsc.TextArea = new jfxsc.TextArea())
   def this(text: String) = this(new jfxsc.TextArea(text))
 
   def prefColumnCount: IntegerProperty = delegate.prefColumnCountProperty()
-  def prefColumnCount_=(v: Int) {
+
+  def prefColumnCount_=(v: Int): Unit = {
     prefColumnCount() = v
   }
 
   def prefRowCount: IntegerProperty = delegate.prefRowCountProperty()
-  def prefRowCount_=(v: Int) {
+
+  def prefRowCount_=(v: Int): Unit = {
     prefRowCount() = v
   }
 
   def scrollLeft: DoubleProperty = delegate.scrollLeftProperty()
-  def scrollLeft_=(v: Double) {
+
+  def scrollLeft_=(v: Double): Unit = {
     scrollLeft() = v
   }
 
   def scrollTop: DoubleProperty = delegate.scrollTopProperty()
-  def scrollTop_=(v: Double) {
+
+  def scrollTop_=(v: Double): Unit = {
     scrollTop() = v
   }
 
   def wrapText: BooleanProperty = delegate.wrapTextProperty()
-  def wrapText_=(v: Boolean) {
+
+  def wrapText_=(v: Boolean): Unit = {
     wrapText() = v
   }
 

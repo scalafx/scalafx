@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,13 @@
 package scalafx.scene
 
 import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Rectangle2D
 import scalafx.scene.paint.Paint
 import scalafx.scene.transform.Transform
+
+import scala.language.implicitConversions
 
 object SnapshotParameters {
   implicit def sfxSnapshotParameters2jfx(sp: SnapshotParameters): jfxs.SnapshotParameters = if (sp != null) sp.delegate else null
@@ -51,7 +51,8 @@ class SnapshotParameters(override val delegate: jfxs.SnapshotParameters = new jf
    * The current camera.
    */
   def camera: Camera = delegate.getCamera
-  def camera_=(c: Camera) {
+
+  def camera_=(c: Camera): Unit = {
     delegate.setCamera(c)
   }
 
@@ -59,7 +60,8 @@ class SnapshotParameters(override val delegate: jfxs.SnapshotParameters = new jf
    * The current depthBuffer flag.
    */
   def depthBuffer = delegate.isDepthBuffer
-  def depthBuffer_=(db: Boolean) {
+
+  def depthBuffer_=(db: Boolean): Unit = {
     delegate.setDepthBuffer(db)
   }
 
@@ -67,7 +69,8 @@ class SnapshotParameters(override val delegate: jfxs.SnapshotParameters = new jf
    * The current fill.
    */
   def fill: Paint = delegate.getFill
-  def fill_=(p: Paint) {
+
+  def fill_=(p: Paint): Unit = {
     delegate.setFill(p)
   }
 
@@ -75,7 +78,8 @@ class SnapshotParameters(override val delegate: jfxs.SnapshotParameters = new jf
    * The current transform.
    */
   def transform: Transform = delegate.getTransform
-  def transform_=(t: Transform) {
+
+  def transform_=(t: Transform): Unit = {
     delegate.setTransform(t)
   }
 
@@ -83,7 +87,8 @@ class SnapshotParameters(override val delegate: jfxs.SnapshotParameters = new jf
    * The current viewport.
    */
   def viewport: Rectangle2D = delegate.getViewport
-  def viewport_=(v: Rectangle2D) {
+
+  def viewport_=(v: Rectangle2D): Unit = {
     delegate.setViewport(v)
   }
 

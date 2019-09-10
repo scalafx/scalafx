@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,11 @@
 package scalafx.scene.image
 
 import java.nio.Buffer
+
 import javafx.scene.{image => jfxsi}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object WritablePixelFormat {
   implicit def sfxWritablePixelFormat2jfx[B <: Buffer](wpf: WritablePixelFormat[B]): jfxsi.WritablePixelFormat[B] =
@@ -47,7 +48,7 @@ abstract class WritablePixelFormat[B <: Buffer](override val delegate: jfxsi.Wri
   /**
    * Stores a 32-bit integer representation of the color in the buffer at the specified coordinates.
    */
-  def setArgb(buf: B, x: Int, y: Int, scanlineStride: Int, argb: Int) {
+  def setArgb(buf: B, x: Int, y: Int, scanlineStride: Int, argb: Int): Unit = {
     delegate.setArgb(buf, x, y, scanlineStride, argb)
   }
 

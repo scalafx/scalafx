@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,7 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import javafx.{collections => jfxc, scene => jfxs, util => jfxu}
-
-import scala.language.implicitConversions
+import javafx.{scene => jfxs, util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.{IntegerProperty, ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.collections.ObservableBuffer
@@ -38,6 +36,8 @@ import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.util.StringConverter
 import scalafx.util.StringConverter._
+
+import scala.language.implicitConversions
 
 object ComboBox {
   implicit def sfxComboBox2jfx[T](cb: ComboBox[T]): jfxsc.ComboBox[T] = if (cb != null) cb.delegate else null
@@ -64,7 +64,8 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    */
   def cellFactory: ObjectProperty[ListView[T] => ListCell[T]] =
     ObjectProperty((view: ListView[T]) => new ListCell(delegate.cellFactoryProperty.getValue.call(view)))
-  def cellFactory_=(f: ListView[T] => ListCell[T]) {
+
+  def cellFactory_=(f: ListView[T] => ListCell[T]): Unit = {
     delegate.cellFactoryProperty.setValue(new jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] {
       def call(v: jfxsc.ListView[T]): jfxsc.ListCell[T] = {
         f(v)
@@ -76,7 +77,8 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    * Converts the user-typed input (when the ComboBox is editable) to an object of type T, such that the input may be retrieved via the value property.
    */
   def converter: ObjectProperty[jfxu.StringConverter[T]] = delegate.converterProperty
-  def converter_=(v: StringConverter[T]) {
+
+  def converter_=(v: StringConverter[T]): Unit = {
     converter() = v
   }
 
@@ -84,7 +86,8 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    * The list of items to show within the ComboBox popup.
    */
   def items = delegate.itemsProperty
-  def items_=(v: ObservableBuffer[T]) {
+
+  def items_=(v: ObservableBuffer[T]): Unit = {
     items() = v
   }
 
@@ -92,7 +95,8 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    * This Node is shown to the user when the ComboBox has no content to show.
    */
   def placeholder: ObjectProperty[jfxs.Node] = delegate.placeholderProperty
-  def placeholder_=(v: Node) {
+
+  def placeholder_=(v: Node): Unit = {
     ObjectProperty.fillProperty[jfxs.Node](placeholder, v)
   }
 
@@ -100,7 +104,8 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    * The selection model for the ComboBox.
    */
   def selectionModel: ObjectProperty[jfxsc.SingleSelectionModel[T]] = delegate.selectionModelProperty
-  def selectionModel_=(v: SingleSelectionModel[T]) {
+
+  def selectionModel_=(v: SingleSelectionModel[T]): Unit = {
     selectionModel() = v.delegate
   }
 
@@ -108,7 +113,8 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    * The maximum number of rows to be visible in the ComboBox popup when it is showing.
    */
   def visibleRowCount: IntegerProperty = delegate.visibleRowCountProperty
-  def visibleRowCount_=(v: Int) {
+
+  def visibleRowCount_=(v: Int): Unit = {
     visibleRowCount() = v
   }
 
@@ -120,7 +126,8 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    * @since 2.2
    */
   def buttonCell: ObjectProperty[jfxsc.ListCell[T]] = delegate.buttonCellProperty()
-  def buttonCell_=(v: ListCell[T]) {
+
+  def buttonCell_=(v: ListCell[T]): Unit = {
     buttonCell() = v
   }
 
@@ -138,7 +145,7 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    * @param item Item to be added.
    * @return Combobox itself
    */
-  def +=(item: T) {
+  def +=(item: T): Unit = {
     this.items.get += item
   }
 
@@ -148,7 +155,7 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    * @param item Item to be removed.
    * @return Combobox itself
    */
-  def -=(item: T) {
+  def -=(item: T): Unit = {
     this.items.get -= item
   }
 

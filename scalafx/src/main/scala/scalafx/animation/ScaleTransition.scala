@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,13 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa, scene => jfxs, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.util.Duration
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.animation.ScaleTransition]].
@@ -92,7 +92,8 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
    * $DUR. $DV 400ms
    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
-  def duration_=(d: Duration) {
+
+  def duration_=(d: Duration): Unit = {
     duration() = d
   }
 
@@ -100,7 +101,8 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
    * The target node of this $ST.
    */
   def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
-  def node_=(n: Node) {
+
+  def node_=(n: Node): Unit = {
     node() = n
   }
 
@@ -108,7 +110,8 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
    * Specifies the incremented stop X scale value, from the start, of this $ST.
    */
   def byX: DoubleProperty = delegate.byXProperty
-  def byX_=(x: Double) {
+
+  def byX_=(x: Double): Unit = {
     byX() = x
   }
 
@@ -116,7 +119,8 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
    * Specifies the incremented stop Y scale value, from the start, of this $ST.
    */
   def byY: DoubleProperty = delegate.byYProperty
-  def byY_=(y: Double) {
+
+  def byY_=(y: Double): Unit = {
     byY() = y
   }
 
@@ -124,7 +128,8 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
    * Specifies the incremented stop Z scale value, from the start, of this $ST.
    */
   def byZ: DoubleProperty = delegate.byZProperty
-  def byZ_=(z: Double) {
+
+  def byZ_=(z: Double): Unit = {
     byZ() = z
   }
 
@@ -132,7 +137,8 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
    * Specifies the start X scale value of this $ST. $DV `Double.NaN`
    */
   def fromX: DoubleProperty = delegate.fromXProperty
-  def fromX_=(x: Double) {
+
+  def fromX_=(x: Double): Unit = {
     fromX() = x
   }
 
@@ -140,7 +146,8 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
    * Specifies the start Y scale value of this $ST. $DV `Double.NaN`
    */
   def fromY: DoubleProperty = delegate.fromYProperty
-  def fromY_=(y: Double) {
+
+  def fromY_=(y: Double): Unit = {
     fromY() = y
   }
 
@@ -148,7 +155,8 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
    * Specifies the start Z scale value of this $ST. $DV `Double.NaN`
    */
   def fromZ: DoubleProperty = delegate.fromZProperty
-  def fromZ_=(z: Double) {
+
+  def fromZ_=(z: Double): Unit = {
     fromZ() = z
   }
 
@@ -156,7 +164,8 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
    * Specifies the stop X scale value of this $ST. $DV `Double.NaN`
    */
   def toX: DoubleProperty = delegate.toXProperty
-  def toX_=(x: Double) {
+
+  def toX_=(x: Double): Unit = {
     toX() = x
   }
 
@@ -164,7 +173,8 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
    * The stop Y scale value of this $ST. $DV `Double.NaN`
    */
   def toY: DoubleProperty = delegate.toYProperty
-  def toY_=(y: Double) {
+
+  def toY_=(y: Double): Unit = {
     toY() = y
   }
 
@@ -172,7 +182,8 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
    * The stop Z scale value of this $ST. $DV `Double.NaN`
    */
   def toZ: DoubleProperty = delegate.toZProperty
-  def toZ_=(z: Double) {
+
+  def toZ_=(z: Double): Unit = {
     toZ() = z
   }
 

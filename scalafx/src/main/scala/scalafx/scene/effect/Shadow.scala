@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.{DimensionDelegate, SFXDelegate}
 import scalafx.scene.paint.Color
+
+import scala.language.implicitConversions
 
 object Shadow {
   implicit def sfxShadow2jfx(s: Shadow): jfxse.Shadow = if (s != null) s.delegate else null
@@ -62,7 +62,8 @@ class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
    * The algorithm used to blur the shadow.
    */
   def blurType: ObjectProperty[jfxse.BlurType] = delegate.blurTypeProperty
-  def blurType_=(v: BlurType) {
+
+  def blurType_=(v: BlurType): Unit = {
     blurType() = v
   }
 
@@ -70,7 +71,8 @@ class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
    * The radius of the shadow blur kernel.
    */
   def radius: DoubleProperty = delegate.radiusProperty
-  def radius_=(v: Double) {
+
+  def radius_=(v: Double): Unit = {
     radius() = v
   }
 

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,6 @@
 package scalafx.print
 
 import javafx.{print => jfxp}
-
-import scala.language.implicitConversions
 import scalafx.Includes.{jfxIntegerProperty2sfx, jfxObjectProperty2sfx, jfxStringProperty2sfx}
 import scalafx.beans.property.{IntegerProperty, ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
@@ -36,6 +34,8 @@ import scalafx.print.PageLayout.sfxPageLayout2jfx
 import scalafx.print.PaperSource.sfxPaperSource2jfx
 import scalafx.print.PrintResolution.sfxPrintResolution2jfx
 import scalafx.print.PrintSides.sfxEnum2jfx
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.print.JobSettings]].
@@ -67,7 +67,8 @@ final class JobSettings(override val delegate: jfxp.JobSettings)
    * Property representing an instance of `Collation`.
    */
   def collation: ObjectProperty[jfxp.Collation] = delegate.collationProperty
-  def collation_=(v: Collation) {
+
+  def collation_=(v: Collation): Unit = {
     collation() = v
   }
 
@@ -75,7 +76,8 @@ final class JobSettings(override val delegate: jfxp.JobSettings)
    * IntegerProperty representing the number of copies of the job to print.
    */
   def copies: IntegerProperty = delegate.copiesProperty
-  def copies_=(v: Int) {
+
+  def copies_=(v: Int): Unit = {
     copies() = v
   }
 
@@ -83,7 +85,8 @@ final class JobSettings(override val delegate: jfxp.JobSettings)
    * StringProperty representing the name of a job.
    */
   def jobName: StringProperty = delegate.jobNameProperty
-  def jobName_=(v: String) {
+
+  def jobName_=(v: String): Unit = {
     jobName() = v
   }
 
@@ -91,7 +94,8 @@ final class JobSettings(override val delegate: jfxp.JobSettings)
    * Property representing an instance of PageLayout.
    */
   def pageLayout: ObjectProperty[jfxp.PageLayout] = delegate.pageLayoutProperty
-  def pageLayout_=(v: PageLayout) {
+
+  def pageLayout_=(v: PageLayout): Unit = {
     pageLayout() = v
   }
 
@@ -99,7 +103,8 @@ final class JobSettings(override val delegate: jfxp.JobSettings)
    * An ObjectProperty whose value represents the job pages to print as an array of PageRange.
    */
   def pageRanges: ObjectProperty[_] = delegate.pageRangesProperty
-  def pageRanges_=(v: PageRange*) {
+
+  def pageRanges_=(v: PageRange*): Unit = {
     delegate.setPageRanges(v.map(_.delegate): _*)
   }
 
@@ -107,7 +112,8 @@ final class JobSettings(override val delegate: jfxp.JobSettings)
    * Property representing an instance of PaperSource.
    */
   def paperSource: ObjectProperty[jfxp.PaperSource] = delegate.paperSourceProperty
-  def paperSource_=(v: PaperSource) {
+
+  def paperSource_=(v: PaperSource): Unit = {
     paperSource() = v
   }
 
@@ -115,7 +121,8 @@ final class JobSettings(override val delegate: jfxp.JobSettings)
    * Property representing an instance of PrintColor.
    */
   def printColor: ObjectProperty[jfxp.PrintColor] = delegate.printColorProperty
-  def printColor_=(v: PrintColor) {
+
+  def printColor_=(v: PrintColor): Unit = {
     printColor() = v
   }
 
@@ -123,7 +130,8 @@ final class JobSettings(override val delegate: jfxp.JobSettings)
    * Property representing an instance of PrintQuality.
    */
   def printQuality: ObjectProperty[jfxp.PrintQuality] = delegate.printQualityProperty
-  def printQuality_=(v: PrintQuality) {
+
+  def printQuality_=(v: PrintQuality): Unit = {
     printQuality() = v
   }
 
@@ -131,7 +139,8 @@ final class JobSettings(override val delegate: jfxp.JobSettings)
    * Property representing an instance of PrintResolution.
    */
   def printResolution: ObjectProperty[jfxp.PrintResolution] = delegate.printResolutionProperty
-  def printResolution_=(v: PrintResolution) {
+
+  def printResolution_=(v: PrintResolution): Unit = {
     printResolution() = v
   }
 
@@ -139,7 +148,8 @@ final class JobSettings(override val delegate: jfxp.JobSettings)
    * Property representing an instance of PrintSides.
    */
   def printSides: ObjectProperty[jfxp.PrintSides] = delegate.printSidesProperty
-  def printSides_=(v: PrintSides) {
+
+  def printSides_=(v: PrintSides): Unit = {
     printSides() = v
   }
 

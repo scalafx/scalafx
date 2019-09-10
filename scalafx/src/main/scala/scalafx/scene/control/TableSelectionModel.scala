@@ -1,17 +1,17 @@
-/**
- * Copyright (c) 2011-2014, ScalaFX Project
+/*
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- * * Redistributions of source code must retain the above copyright
- * notice, this list of conditions and the following disclaimer.
- * * Redistributions in binary form must reproduce the above copyright
- * notice, this list of conditions and the following disclaimer in the
- * documentation and/or other materials provided with the distribution.
- * * Neither the name of the ScalaFX Project nor the
- * names of its contributors may be used to endorse or promote products
- * derived from this software without specific prior written permission.
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of the ScalaFX Project nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -27,11 +27,11 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 /**
  * Object companion for [[scalafx.scene.control.TablePositionBase]]
@@ -75,7 +75,8 @@ class TableSelectionModel[T](override val delegate: jfxsc.TableSelectionModel[T]
    * A boolean property used to represent whether the TableView is in row or cell selection modes.
    */
   def cellSelectionEnabled: BooleanProperty = delegate.cellSelectionEnabledProperty
-  def cellSelectionEnabled_=(v: Boolean) {
+
+  def cellSelectionEnabled_=(v: Boolean): Unit = {
     cellSelectionEnabled() = v
   }
 
@@ -88,56 +89,56 @@ class TableSelectionModel[T](override val delegate: jfxsc.TableSelectionModel[T]
   /**
    * Selects the cell at the given row/column intersection.
    */
-  def select(row: Int, column: TableColumnBase[T, _]) {
+  def select(row: Int, column: TableColumnBase[T, _]): Unit = {
     delegate.select(row, column)
   }
 
   /**
    * Clears all selection, and then selects the cell at the given row/column intersection.
    */
-  def clearAndSelect(row: Int, column: TableColumnBase[T, _]) {
+  def clearAndSelect(row: Int, column: TableColumnBase[T, _]): Unit = {
     delegate.clearAndSelect(row, column)
   }
 
   /**
    * Removes selection from the specified row/column position (in view indexes).
    */
-  def clearSelection(row: Int, column: TableColumnBase[T, _]) {
+  def clearSelection(row: Int, column: TableColumnBase[T, _]): Unit = {
     delegate.clearSelection(row, column)
   }
 
   /**
    * Selects the cell directly above the currently selected cell.
    */
-  def selectAboveCell() {
+  def selectAboveCell(): Unit = {
     delegate.selectAboveCell()
   }
 
   /**
    * Selects the cell directly below the currently selected cell.
    */
-  def selectBelowCell() {
+  def selectBelowCell(): Unit = {
     delegate.selectBelowCell()
   }
 
   /**
    * Selects the cell to the left of the currently selected cell.
    */
-  def selectLeftCell() {
+  def selectLeftCell(): Unit = {
     delegate.selectLeftCell()
   }
 
   /**
    * Selects the cell to the right of the currently selected cell.
    */
-  def selectRightCell() {
+  def selectRightCell(): Unit = {
     delegate.selectRightCell()
   }
 
   /**
    * Selects the cells in the range (minRow, minColumn) to (maxRow, maxColumn), inclusive.
    */
-  def selectRange(minRow: Int, minColumn: TableColumnBase[T, _], maxRow: Int, maxColumn: TableColumnBase[T, _]) {
+  def selectRange(minRow: Int, minColumn: TableColumnBase[T, _], maxRow: Int, maxColumn: TableColumnBase[T, _]): Unit = {
     delegate.selectRange(minRow, minColumn, maxRow, maxColumn)
   }
 

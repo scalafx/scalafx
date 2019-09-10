@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,13 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa, scene => jfxs, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.util.Duration
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.animation.FadeTransition]].
@@ -90,7 +90,8 @@ class FadeTransition(override val delegate: jfxa.FadeTransition = new jfxa.FadeT
    * $FT.
    */
   def byValue: DoubleProperty = delegate.byValueProperty
-  def byValue_=(by: Double) {
+
+  def byValue_=(by: Double): Unit = {
     byValue() = by
   }
 
@@ -98,7 +99,8 @@ class FadeTransition(override val delegate: jfxa.FadeTransition = new jfxa.FadeT
    * The duration of this $FT. $DV 400ms
    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
-  def duration_=(d: Duration) {
+
+  def duration_=(d: Duration): Unit = {
     duration() = d
   }
 
@@ -106,7 +108,8 @@ class FadeTransition(override val delegate: jfxa.FadeTransition = new jfxa.FadeT
    * Specifies the start opacity value for this $FT. $DV Double.NaN
    */
   def fromValue: DoubleProperty = delegate.fromValueProperty
-  def fromValue_=(from: Double) {
+
+  def fromValue_=(from: Double): Unit = {
     fromValue() = from
   }
 
@@ -114,7 +117,8 @@ class FadeTransition(override val delegate: jfxa.FadeTransition = new jfxa.FadeT
    * The target node of this `Transition`.
    */
   def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
-  def node_=(n: Node) {
+
+  def node_=(n: Node): Unit = {
     node() = n
   }
 
@@ -122,7 +126,8 @@ class FadeTransition(override val delegate: jfxa.FadeTransition = new jfxa.FadeT
    * Specifies the stop opacity value for this $FT. $DV Double.NaN
    */
   def toValue: DoubleProperty = delegate.toValueProperty
-  def toValue_=(to: Double) {
+
+  def toValue_=(to: Double): Unit = {
     toValue() = to
   }
 

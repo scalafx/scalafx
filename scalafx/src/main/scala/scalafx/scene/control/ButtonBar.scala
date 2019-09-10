@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -76,7 +76,7 @@ object ButtonBar {
    * @param button The button to annotate with the given { @link ButtonData} value.
    * @param buttonData The ButtonData to designate the button as.
    */
-  def setButtonData(button: Node, buttonData: ButtonBar.ButtonData) {
+  def setButtonData(button: Node, buttonData: ButtonBar.ButtonData): Unit = {
     jfxsc.ButtonBar.setButtonData(button, buttonData)
   }
   /**
@@ -101,7 +101,7 @@ object ButtonBar {
    * @param uniformSize Boolean true to force uniform sizing on the button,
    *                    false to exclude the button from uniform sizing.
    */
-  def setButtonUniformSize(button: Node, uniformSize: Boolean) {
+  def setButtonUniformSize(button: Node, uniformSize: Boolean): Unit = {
     jfxsc.ButtonBar.setButtonUniformSize(button, uniformSize)
   }
   /**
@@ -294,7 +294,8 @@ class ButtonBar(override val delegate: jfxsc.ButtonBar = new jfxsc.ButtonBar())
    * [[scalafx.scene.control.ButtonBar.ButtonOrderMacOs]], and [[scalafx.scene.control.ButtonBar.ButtonOrderLinux]].
    */
   def buttonOrder: StringProperty = delegate.buttonOrderProperty
-  def buttonOrder_=(v: String) {
+
+  def buttonOrder_=(v: String): Unit = {
     buttonOrder() = v
   }
 
@@ -302,7 +303,8 @@ class ButtonBar(override val delegate: jfxsc.ButtonBar = new jfxsc.ButtonBar())
    * Specifies the minimum width of all buttons placed in this button bar.
    */
   def buttonMinWidth: DoubleProperty = delegate.buttonMinWidthProperty
-  def buttonMinWidth_=(v: Double) {
+
+  def buttonMinWidth_=(v: Double): Unit = {
     buttonMinWidth() = v
   }
 }

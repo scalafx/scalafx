@@ -156,7 +156,7 @@ object ObservableBuffer extends StrictOptimizedSeqFactory[ObservableBuffer] {
    *
    * @param buffer Buffer to be shuffled
    */
-  def shuffle[T](buffer: ObservableBuffer[T]) {
+  def shuffle[T](buffer: ObservableBuffer[T]): Unit = {
     jfxc.FXCollections.shuffle(buffer)
   }
 
@@ -166,7 +166,7 @@ object ObservableBuffer extends StrictOptimizedSeqFactory[ObservableBuffer] {
    * @param buffer Buffer to be shuffled
    * @param rnd    the random generator used for shuffling
    */
-  def shuffle[T](buffer: ObservableBuffer[T], rnd: ju.Random) {
+  def shuffle[T](buffer: ObservableBuffer[T], rnd: ju.Random): Unit = {
     jfxc.FXCollections.shuffle(buffer, rnd)
   }
 
@@ -193,7 +193,7 @@ object ObservableBuffer extends StrictOptimizedSeqFactory[ObservableBuffer] {
    *
    * @param buffer $buf to be reverted.
    */
-  def revertBuffer[T](buffer: ObservableBuffer[T]) {
+  def revertBuffer[T](buffer: ObservableBuffer[T]): Unit = {
     jfxc.FXCollections.reverse(buffer.delegate)
   }
 
@@ -203,7 +203,7 @@ object ObservableBuffer extends StrictOptimizedSeqFactory[ObservableBuffer] {
    * @param buffer $buf to Fill
    * @param obj    the object to fill the $buf with
    */
-  def fillAll[T](buffer: ObservableBuffer[T], obj: T) {
+  def fillAll[T](buffer: ObservableBuffer[T], obj: T): Unit = {
     jfxc.FXCollections.fill(buffer, obj)
   }
 
@@ -213,7 +213,7 @@ object ObservableBuffer extends StrictOptimizedSeqFactory[ObservableBuffer] {
    * @param buffer   the $buf to be rotated
    * @param distance the distance of rotation
    */
-  def rotate[T](buffer: ObservableBuffer[T], distance: Int) {
+  def rotate[T](buffer: ObservableBuffer[T], distance: Int): Unit = {
     jfxc.FXCollections.rotate(buffer, distance)
   }
 
@@ -361,7 +361,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     delegate.clear()
   }
 
-  override def insert(idx: Int, elem: T) {
+  override def insert(idx: Int, elem: T): Unit = {
     delegate.add(idx, elem)
   }
 
@@ -506,7 +506,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    */
   def onChange[T1 >: T](op: (ObservableBuffer[T], Seq[Change[T1]]) => Unit): Subscription = {
     val listener = new jfxc.ListChangeListener[T1] {
-      def onChanged(c: jfxc.ListChangeListener.Change[_ <: T1]) {
+      def onChanged(c: jfxc.ListChangeListener.Change[_ <: T1]): Unit = {
         var changes = ArrayBuffer.empty[Change[T1]]
         while (c.next()) {
           if (c.wasPermutated()) {
@@ -531,7 +531,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     delegate.addListener(listener)
 
     new Subscription {
-      def cancel() {
+      def cancel(): Unit = {
         delegate.removeListener(listener)
       }
     }
@@ -546,7 +546,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    */
   def onChange[T1 >: T](op: => Unit): Subscription = {
     val listener = new jfxc.ListChangeListener[T1] {
-      def onChanged(c: jfxc.ListChangeListener.Change[_ <: T1]) {
+      def onChanged(c: jfxc.ListChangeListener.Change[_ <: T1]): Unit = {
         op
       }
     }
@@ -554,7 +554,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
     delegate.addListener(listener)
 
     new Subscription {
-      def cancel() {
+      def cancel(): Unit = {
         delegate.removeListener(listener)
       }
     }

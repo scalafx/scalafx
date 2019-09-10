@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,10 @@
 package scalafx.beans
 
 import javafx.{beans => jfxb}
-
-import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
+
+import scala.language.implicitConversions
 
 object Observable {
   implicit def sfxObservable2jfx(o: Observable): jfxb.Observable = if (o != null) o.delegate else null
@@ -56,7 +56,7 @@ trait Observable extends SFXDelegate[jfxb.Observable] {
    */
   def onInvalidate(op: Observable => Unit): Subscription = {
     val listener = new jfxb.InvalidationListener {
-      def invalidated(observable: jfxb.Observable) {
+      def invalidated(observable: jfxb.Observable): Unit = {
         op(Observable.this)
       }
     }
@@ -64,7 +64,7 @@ trait Observable extends SFXDelegate[jfxb.Observable] {
     delegate.addListener(listener)
 
     new Subscription {
-      def cancel() {
+      def cancel(): Unit = {
         delegate.removeListener(listener)
       }
     }
@@ -79,7 +79,7 @@ trait Observable extends SFXDelegate[jfxb.Observable] {
    */
   def onInvalidate(op: => Unit): Subscription = {
     val listener = new jfxb.InvalidationListener {
-      def invalidated(observable: jfxb.Observable) {
+      def invalidated(observable: jfxb.Observable): Unit = {
         op
       }
     }
@@ -87,7 +87,7 @@ trait Observable extends SFXDelegate[jfxb.Observable] {
     delegate.addListener(listener)
 
     new Subscription {
-      def cancel() {
+      def cancel(): Unit = {
         delegate.removeListener(listener)
       }
     }

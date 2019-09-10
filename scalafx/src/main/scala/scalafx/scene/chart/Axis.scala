@@ -38,8 +38,8 @@ import scalafx.scene.layout.Region
 import scalafx.scene.paint.Paint
 import scalafx.scene.text.Font
 
-import scala.collection.mutable
 import scala.collection.JavaConverters._
+import scala.collection.mutable
 import scala.language.implicitConversions
 
 object Axis {
@@ -138,7 +138,8 @@ abstract class Axis[T](override val delegate: jfxsc.Axis[T])
   }
 
   def tickLength: DoubleProperty = delegate.tickLengthProperty
-  def tickLength_=(v: Double) {
+
+  def tickLength_=(v: Double): Unit = {
     tickLength() = v
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,12 @@ package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
 import javafx.{geometry => jfxg}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.HPos
+
+import scala.language.implicitConversions
 
 object ColumnConstraints {
   implicit def sfxColumnConstraints2jfx(v: ColumnConstraints): jfxsl.ColumnConstraints = if (v != null) v.delegate else null
@@ -62,7 +62,8 @@ class ColumnConstraints(override val delegate: jfxsl.ColumnConstraints = new jfx
    * The horizontal fill policy for the column.
    */
   def fillWidth: BooleanProperty = delegate.fillWidthProperty
-  def fillWidth_=(v: Boolean) {
+
+  def fillWidth_=(v: Boolean): Unit = {
     fillWidth() = v
   }
 
@@ -70,7 +71,8 @@ class ColumnConstraints(override val delegate: jfxsl.ColumnConstraints = new jfx
    * The horizontal alignment for the column.
    */
   def halignment: ObjectProperty[jfxg.HPos] = delegate.halignmentProperty
-  def halignment_=(v: HPos) {
+
+  def halignment_=(v: HPos): Unit = {
     halignment() = v
   }
 
@@ -78,7 +80,8 @@ class ColumnConstraints(override val delegate: jfxsl.ColumnConstraints = new jfx
    * The horizontal grow priority for the column.
    */
   def hgrow: ObjectProperty[jfxsl.Priority] = delegate.hgrowProperty
-  def hgrow_=(v: Priority) {
+
+  def hgrow_=(v: Priority): Unit = {
     hgrow() = v
   }
 
@@ -86,7 +89,8 @@ class ColumnConstraints(override val delegate: jfxsl.ColumnConstraints = new jfx
    * The maximum width for the column.
    */
   def maxWidth: DoubleProperty = delegate.maxWidthProperty
-  def maxWidth_=(v: Double) {
+
+  def maxWidth_=(v: Double): Unit = {
     maxWidth() = v
   }
 
@@ -94,7 +98,8 @@ class ColumnConstraints(override val delegate: jfxsl.ColumnConstraints = new jfx
    * The minimum width for the column.
    */
   def minWidth: DoubleProperty = delegate.minWidthProperty
-  def minWidth_=(v: Double) {
+
+  def minWidth_=(v: Double): Unit = {
     minWidth() = v
   }
 
@@ -102,7 +107,8 @@ class ColumnConstraints(override val delegate: jfxsl.ColumnConstraints = new jfx
    * The width percentage of the column.
    */
   def percentWidth: DoubleProperty = delegate.percentWidthProperty
-  def percentWidth_=(v: Double) {
+
+  def percentWidth_=(v: Double): Unit = {
     percentWidth() = v
   }
 
@@ -110,7 +116,8 @@ class ColumnConstraints(override val delegate: jfxsl.ColumnConstraints = new jfx
    * The preferred width for the column.
    */
   def prefWidth: DoubleProperty = delegate.prefWidthProperty
-  def prefWidth_=(v: Double) {
+
+  def prefWidth_=(v: Double): Unit = {
     prefWidth() = v
   }
 }

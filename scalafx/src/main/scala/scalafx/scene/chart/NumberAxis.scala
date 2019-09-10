@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.util.converter.StringConverterDelegate
+
+import scala.language.implicitConversions
 
 object NumberAxis {
   implicit def sfxNumberAxis2jfx(v: NumberAxis): jfxsc.NumberAxis = if (v != null) v.delegate else null
@@ -79,7 +79,8 @@ class NumberAxis(override val delegate: jfxsc.NumberAxis = new jfxsc.NumberAxis)
    * When `true` zero is always included in the visible range.
    */
   def forceZeroInRange: BooleanProperty = delegate.forceZeroInRangeProperty
-  def forceZeroInRange_=(v: Boolean) {
+
+  def forceZeroInRange_=(v: Boolean): Unit = {
     forceZeroInRange() = v
   }
 
@@ -87,7 +88,8 @@ class NumberAxis(override val delegate: jfxsc.NumberAxis = new jfxsc.NumberAxis)
    * The value between each major tick mark in data units.
    */
   def tickUnit: DoubleProperty = delegate.tickUnitProperty
-  def tickUnit_=(v: Double) {
+
+  def tickUnit_=(v: Double): Unit = {
     tickUnit() = v
   }
 

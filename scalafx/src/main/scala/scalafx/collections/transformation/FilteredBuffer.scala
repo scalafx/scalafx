@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,14 @@
 package scalafx.collections.transformation
 
 import java.{util => ju}
-import javafx.collections.{transformation => jfxct}
 
-import scala.language.implicitConversions
+import javafx.collections.{transformation => jfxct}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object FilteredBuffer {
   /**
@@ -87,7 +88,8 @@ class FilteredBuffer[E](override val delegate: jfxct.FilteredList[E])
   def predicate_=(v: ju.function.Predicate[_ >: E]): Unit = {
     ObjectProperty.fillProperty(delegate.predicateProperty, v)
   }
-  def predicate_=(predicate: (E) => Boolean) {
+
+  def predicate_=(predicate: (E) => Boolean): Unit = {
     ObjectProperty.fillProperty(delegate.predicateProperty, new ju.function.Predicate[E] {
       override def test(t: E): Boolean = predicate(t)
     })

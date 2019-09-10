@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,13 @@ package scalafx.scene.media
 
 import javafx.scene.{media => jfxsm}
 import javafx.{event => jfxe, geometry => jfxg}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.delegate.{PositionDelegate, SFXDelegate}
 import scalafx.geometry.Rectangle2D
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object MediaView {
   implicit def sfxMediaView2jfx(mv: MediaView): jfxsm.MediaView = if (mv != null) mv.delegate else null
@@ -55,7 +55,8 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
    * necessary to fit.
    */
   def fitHeight: DoubleProperty = delegate.fitHeightProperty
-  def fitHeight_=(v: Double) {
+
+  def fitHeight_=(v: Double): Unit = {
     fitHeight() = v
   }
 
@@ -64,7 +65,8 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
    * necessary to fit.
    */
   def fitWidth: DoubleProperty = delegate.fitWidthProperty
-  def fitWidth_=(v: Double) {
+
+  def fitWidth_=(v: Double): Unit = {
     fitWidth() = v
   }
 
@@ -72,7 +74,8 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
    * The mediaPlayer whose output will be handled by this view.
    */
   def mediaPlayer: ObjectProperty[jfxsm.MediaPlayer] = delegate.mediaPlayerProperty
-  def mediaPlayer_=(v: MediaPlayer) {
+
+  def mediaPlayer_=(v: MediaPlayer): Unit = {
     mediaPlayer() = v
   }
 
@@ -80,7 +83,8 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
    * Event handler to be invoked whenever an error occurs on this MediaView.
    */
   def onError = delegate.onErrorProperty
-  def onError_=(v: jfxe.EventHandler[jfxsm.MediaErrorEvent]) {
+
+  def onError_=(v: jfxe.EventHandler[jfxsm.MediaErrorEvent]): Unit = {
     onError() = v
   }
 
@@ -89,7 +93,8 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
    * node.
    */
   def preserveRatio: BooleanProperty = delegate.preserveRatioProperty
-  def preserveRatio_=(v: Boolean) {
+
+  def preserveRatio_=(v: Boolean): Unit = {
     preserveRatio() = v
   }
 
@@ -98,7 +103,8 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
    * fit within the bounding box provided by fitWidth and fitHeight or when transforming.
    */
   def smooth: BooleanProperty = delegate.smoothProperty
-  def smooth_=(v: Boolean) {
+
+  def smooth_=(v: Boolean): Unit = {
     smooth() = v
   }
 
@@ -106,7 +112,8 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
    * Specifies a rectangular viewport into the media frame.
    */
   def viewport: ObjectProperty[jfxg.Rectangle2D] = delegate.viewportProperty
-  def viewport_=(v: Rectangle2D) {
+
+  def viewport_=(v: Rectangle2D): Unit = {
     viewport() = v
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Paint
+
+import scala.language.implicitConversions
 
 object Circle {
   implicit def sfxCircle2jfx(v: Circle): jfxss.Circle = if (v != null) v.delegate else null
@@ -48,17 +48,20 @@ object Circle {
 
 class Circle(override val delegate: jfxss.Circle = new jfxss.Circle()) extends Shape(delegate) with SFXDelegate[jfxss.Circle] {
   def centerX: DoubleProperty = delegate.centerXProperty
-  def centerX_=(v: Double) {
+
+  def centerX_=(v: Double): Unit = {
     centerX() = v
   }
 
   def centerY: DoubleProperty = delegate.centerYProperty
-  def centerY_=(v: Double) {
+
+  def centerY_=(v: Double): Unit = {
     centerY() = v
   }
 
   def radius: DoubleProperty = delegate.radiusProperty
-  def radius_=(v: Double) {
+
+  def radius_=(v: Double): Unit = {
     radius() = v
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,12 @@
  */
 package scalafx.scene.shape
 
-import javafx.beans.{property => jfxbp}
 import javafx.scene.{shape => jfxss}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object PathElement {
   implicit def sfxPathElement2jfx(v: PathElement): jfxss.PathElement = if (v != null) v.delegate else null
@@ -40,7 +39,8 @@ object PathElement {
 
 abstract class PathElement(override val delegate: jfxss.PathElement) extends SFXDelegate[jfxss.PathElement] {
   def absolute: BooleanProperty = delegate.absoluteProperty
-  def absolute_=(v: Boolean) {
+
+  def absolute_=(v: Boolean): Unit = {
     absolute() = v
   }
 }

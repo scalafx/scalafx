@@ -322,7 +322,7 @@ object TreeTableView {
     /**
       * Selects the cells in the range (minRow, minColumn) to (maxRow, maxColumn), inclusive.
       */
-    def selectRange(minRow: Int, minColumn: TableColumnBase[jfxsc.TreeItem[S], _], maxRow: Int, maxColumn: TableColumnBase[jfxsc.TreeItem[S], _]) {
+    def selectRange(minRow: Int, minColumn: TableColumnBase[jfxsc.TreeItem[S], _], maxRow: Int, maxColumn: TableColumnBase[jfxsc.TreeItem[S], _]): Unit = {
       delegate.selectRange(minRow, minColumn.delegate, maxRow, maxColumn.delegate)
     }
 
@@ -610,7 +610,8 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
     * Property representing the root node of the TreeView.
     */
   def root: ObjectProperty[jfxsc.TreeItem[S]] = delegate.rootProperty
-  def root_=(v: TreeItem[S]) {
+
+  def root_=(v: TreeItem[S]): Unit = {
     root() = v
   }
 

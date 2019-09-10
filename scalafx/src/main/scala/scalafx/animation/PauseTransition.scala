@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.util.Duration
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.animation.PauseTransition]].
@@ -75,7 +75,8 @@ class PauseTransition(override val delegate: jfxa.PauseTransition = new jfxa.Pau
    * The duration of this `Transition`. Default value: 400ms
    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
-  def duration_=(d: Duration) {
+
+  def duration_=(d: Duration): Unit = {
     duration() = d
   }
 

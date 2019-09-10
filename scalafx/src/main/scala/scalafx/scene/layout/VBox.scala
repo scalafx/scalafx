@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,14 +27,14 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-import javafx.{geometry => jfxg, scene => jfxs}
-
-import scala.language.implicitConversions
+import javafx.{scene => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty}
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
 import scalafx.geometry.Insets
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object VBox {
   implicit def sfxVBox2jfx(v: VBox): jfxsl.VBox = if (v != null) v.delegate else null
@@ -42,7 +42,7 @@ object VBox {
   /**
    * Removes all vbox constraints from the child node.
    */
-  def clearConstraints(child: jfxs.Node) {
+  def clearConstraints(child: jfxs.Node): Unit = {
     jfxsl.VBox.clearConstraints(child)
   }
 
@@ -54,7 +54,7 @@ object VBox {
   /**
    * Sets the margin for the child when contained by a vbox.
    */
-  def setMargin(child: Node, value: Insets) {
+  def setMargin(child: Node, value: Insets): Unit = {
     jfxsl.VBox.setMargin(child, value)
   }
 
@@ -66,7 +66,7 @@ object VBox {
   /**
    * Sets the vertical grow priority for the child when contained by a vbox.
    */
-  def setVgrow(child: Node, value: Priority) {
+  def setVgrow(child: Node, value: Priority): Unit = {
     jfxsl.VBox.setVgrow(child, value)
   }
 
@@ -102,7 +102,8 @@ class VBox(override val delegate: jfxsl.VBox = new jfxsl.VBox)
    * The amount of vertical space between each child in the vbox.
    */
   def spacing: DoubleProperty = delegate.spacingProperty
-  def spacing_=(v: Double) {
+
+  def spacing_=(v: Double): Unit = {
     spacing() = v
   }
 
@@ -111,7 +112,8 @@ class VBox(override val delegate: jfxsl.VBox = new jfxsl.VBox)
    * kept to their preferred width and aligned according to the alignment hpos value.
    */
   def fillWidth: BooleanProperty = delegate.fillWidthProperty
-  def fillWidth_=(v: Boolean) {
+
+  def fillWidth_=(v: Boolean): Unit = {
     fillWidth() = v
   }
 
@@ -123,7 +125,7 @@ class VBox(override val delegate: jfxsl.VBox = new jfxsl.VBox)
   /**
    * Requests a layout pass to be performed before the next scene is rendered.
    */
-  def requestLayout() {
+  def requestLayout(): Unit = {
     delegate.requestLayout()
   }
 

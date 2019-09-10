@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 
 object Box {
@@ -49,19 +49,22 @@ class Box(override val delegate: jfxss.Box = new jfxss.Box())
 
   /** Defines the depth or the Z dimension of the Box. */
   def depth: DoubleProperty = delegate.depthProperty
-  def depth_=(v: Double) {
+
+  def depth_=(v: Double): Unit = {
     depth() = v
   }
 
   /** Defines the height or the Y dimension of the Box. */
   def height: DoubleProperty = delegate.heightProperty
-  def height_=(v: Double) {
+
+  def height_=(v: Double): Unit = {
     height() = v
   }
 
   /** Defines the width or the Z dimension of the Box. */
   def width: DoubleProperty = delegate.widthProperty
-  def width_=(v: Double) {
+
+  def width_=(v: Double): Unit = {
     width() = v
   }
 }

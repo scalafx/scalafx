@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -726,7 +726,8 @@ trait ControlIncludes
   implicit def jfxToggle2sfx(t: jfxsc.Toggle): Toggle = if (t != null) new Toggle {
     override val delegate = t
     def userData: AnyRef = delegate.getUserData
-    def userData_=(v: AnyRef) {
+
+    def userData_=(v: AnyRef): Unit = {
       delegate.setUserData(v)
     }
   } else null

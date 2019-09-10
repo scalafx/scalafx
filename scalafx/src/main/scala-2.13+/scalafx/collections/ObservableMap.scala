@@ -249,7 +249,7 @@ trait ObservableMap[K, V]
    */
   def onChange(op: (ObservableMap[K, V], Change[K, V]) => Unit): Subscription = {
     val listener = new jfxc.MapChangeListener[K, V] {
-      override def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]) {
+      override def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]): Unit = {
         val changeEvent: Change[K, V] = (change.wasAdded, change.wasRemoved) match {
           case (true, true)   => Replace(change.getKey, change.getValueAdded, change.getValueRemoved)
           case (true, false)  => Add(change.getKey, change.getValueAdded)

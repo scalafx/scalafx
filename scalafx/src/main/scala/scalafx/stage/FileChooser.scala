@@ -109,20 +109,23 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
    * The initial directory for the displayed dialog.
    */
   def initialDirectory: ObjectProperty[File] = delegate.initialDirectoryProperty
-  def initialDirectory_=(v: File) {
+
+  def initialDirectory_=(v: File): Unit = {
     ObjectProperty.fillProperty[File](initialDirectory, v)
   }
 
   /** The initial file name for the displayed dialog. */
   def initialFileName: ObjectProperty[String] = delegate.initialFileNameProperty
-  def initialFileName_=(v: String) {
+
+  def initialFileName_=(v: String): Unit = {
     ObjectProperty.fillProperty[String](initialFileName, v)
   }
 
   /** This property is used to pre-select the extension filter for the next displayed dialog
     * and to read the user-selected extension filter from the dismissed dialog. */
   def selectedExtensionFilter: ObjectProperty[jfxs.FileChooser.ExtensionFilter] = delegate.selectedExtensionFilterProperty
-  def selectedExtensionFilter_=(v: ExtensionFilter) {
+
+  def selectedExtensionFilter_=(v: ExtensionFilter): Unit = {
     ObjectProperty.fillProperty[jfxs.FileChooser.ExtensionFilter](selectedExtensionFilter, v)
   }
 
@@ -130,7 +133,8 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
    * The title of the displayed dialog.
    */
   def title: StringProperty = delegate.titleProperty
-  def title_=(v: String) {
+
+  def title_=(v: String): Unit = {
     title() = v
   }
 

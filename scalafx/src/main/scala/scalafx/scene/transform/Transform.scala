@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,11 +28,11 @@ package scalafx.scene.transform
 
 import javafx.scene.{transform => jfxst}
 import javafx.{event => jfxe}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyBooleanProperty}
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 
 object Transform {
@@ -94,7 +94,8 @@ abstract class Transform(override val delegate: jfxst.Transform) extends SFXDele
 
   /** The onTransformChanged event handler is called whenever the transform changes any of its parameters. */
   def onTransformChanged: ObjectProperty[jfxe.EventHandler[_ >: jfxst.TransformChangedEvent]] = delegate.onTransformChangedProperty
-  def onTransformChanged_=(v: jfxe.EventHandler[_ >: jfxst.TransformChangedEvent]) {
+
+  def onTransformChanged_=(v: jfxe.EventHandler[_ >: jfxst.TransformChangedEvent]): Unit = {
     ObjectProperty.fillProperty[jfxe.EventHandler[_ >: jfxst.TransformChangedEvent]](this.onTransformChanged, v)
   }
 

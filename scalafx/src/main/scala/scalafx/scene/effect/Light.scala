@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.{PositionDelegate, SFXDelegate}
 import scalafx.scene.paint.Color
+
+import scala.language.implicitConversions
 
 object Light {
   implicit def sfxLight2jfx(l: Light): jfxse.Light = if (l != null) l.delegate else null
@@ -54,7 +54,8 @@ object Light {
      * The azimuth of the light.
      */
     def azimuth: DoubleProperty = delegate.azimuthProperty
-    def azimuth_=(v: Double) {
+
+    def azimuth_=(v: Double): Unit = {
       azimuth() = v
     }
 
@@ -62,7 +63,8 @@ object Light {
      * The elevation of the light.
      */
     def elevation: DoubleProperty = delegate.elevationProperty
-    def elevation_=(v: Double) {
+
+    def elevation_=(v: Double): Unit = {
       elevation() = v
     }
 
@@ -88,7 +90,8 @@ object Light {
      * The z coordinate of the light position.
      */
     def z: DoubleProperty = delegate.zProperty
-    def z_=(v: Double) {
+
+    def z_=(v: Double): Unit = {
       z() = v
     }
 
@@ -114,7 +117,8 @@ object Light {
      * The x coordinate of the direction vector for this light.
      */
     def pointsAtX: DoubleProperty = delegate.pointsAtXProperty
-    def pointsAtX_=(v: Double) {
+
+    def pointsAtX_=(v: Double): Unit = {
       pointsAtX() = v
     }
 
@@ -122,7 +126,8 @@ object Light {
      * The y coordinate of the direction vector for this light.
      */
     def pointsAtY: DoubleProperty = delegate.pointsAtYProperty
-    def pointsAtY_=(v: Double) {
+
+    def pointsAtY_=(v: Double): Unit = {
       pointsAtY() = v
     }
 
@@ -130,7 +135,8 @@ object Light {
      * The z coordinate of the direction vector for this light.
      */
     def pointsAtZ: DoubleProperty = delegate.pointsAtZProperty
-    def pointsAtZ_=(v: Double) {
+
+    def pointsAtZ_=(v: Double): Unit = {
       pointsAtZ() = v
     }
 
@@ -138,7 +144,8 @@ object Light {
      * The specular exponent, which controls the focus of this light source.
      */
     def specularExponent: DoubleProperty = delegate.specularExponentProperty
-    def specularExponent_=(v: Double) {
+
+    def specularExponent_=(v: Double): Unit = {
       specularExponent() = v
     }
 

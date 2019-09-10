@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.IntegerProperty
 import scalafx.delegate.{DimensionDelegate, SFXDelegate}
+
+import scala.language.implicitConversions
 
 object BoxBlur {
   implicit def sfxBoxBlur2jfx(bb: BoxBlur): jfxse.BoxBlur = if (bb != null) bb.delegate else null
@@ -55,7 +55,8 @@ class BoxBlur(override val delegate: jfxse.BoxBlur = new jfxse.BoxBlur)
    * The number of times to iterate the blur effect to improve its "quality" or "smoothness".
    */
   def iterations: IntegerProperty = delegate.iterationsProperty
-  def iterations_=(v: Int) {
+
+  def iterations_=(v: Int): Unit = {
     iterations() = v
   }
 

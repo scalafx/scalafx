@@ -109,7 +109,8 @@ class Timeline(override val delegate: jfxa.Timeline = new jfxa.Timeline())
    * $KF
    */
   def keyFrames: ObservableBuffer[jfxa.KeyFrame] = delegate.getKeyFrames
-  def keyFrames_=(kfs: Seq[_ <: KeyFrame]) {
+
+  def keyFrames_=(kfs: Seq[_ <: KeyFrame]): Unit = {
     val mapped = kfs.map((x: KeyFrame) => x.delegate)
     keyFrames.setAll(mapped.asJava)
   }

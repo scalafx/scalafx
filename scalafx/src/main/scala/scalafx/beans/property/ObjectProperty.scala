@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,9 @@ package scalafx.beans.property
 
 
 import javafx.beans.{property => jfxbp}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 /**
  * Factory for `[[scalafx.beans.property.ObjectProperty]]` instances.
@@ -112,7 +112,7 @@ object ObjectProperty {
    * @param property $OP to be filled.
    * @param value Value to be injected in $OP, to avoid implicit conversion and NPE is `value` is `null`.
    */
-  def fillProperty[J <: AnyRef](property: ObjectProperty[J], value: SFXDelegate[J]) {
+  def fillProperty[J <: AnyRef](property: ObjectProperty[J], value: SFXDelegate[J]): Unit = {
     if (value == null) {
       property.delegate.setValue(null.asInstanceOf[J])
     } else {
@@ -131,7 +131,7 @@ object ObjectProperty {
    * @param property $OP to be filled.
    * @param value Value to be injected in $OP.
    */
-  def fillProperty[J <: AnyRef](property: ObjectProperty[J], value: J) {
+  def fillProperty[J <: AnyRef](property: ObjectProperty[J], value: J): Unit = {
     if (value == null) {
       property.delegate.setValue(null.asInstanceOf[J])
     } else {
@@ -163,7 +163,7 @@ class ObjectProperty[T <: Any](override val delegate: jfxbp.ObjectProperty[T] = 
   def this(bean: Object, name: String, initialValue: T) =
     this(new jfxbp.SimpleObjectProperty[T](bean, name, initialValue))
 
-  def value_=(v: T) {
+  def value_=(v: T): Unit = {
     delegate.set(v)
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,14 +27,14 @@
 package scalafx.scene.image
 
 import javafx.scene.{image => jfxsi}
-import javafx.{geometry => jfxg, scene => jfxs}
-
-import scala.language.implicitConversions
+import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
 import scalafx.delegate.{PositionDelegate, SFXDelegate}
 import scalafx.geometry.Rectangle2D
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object ImageView {
   implicit def sfxImageView2jfx(iv: ImageView): jfxsi.ImageView = if (iv != null) iv.delegate else null
@@ -57,37 +57,37 @@ class ImageView(override val delegate: jfxsi.ImageView = new jfxsi.ImageView())
 
   def fitHeight: DoubleProperty = delegate.fitHeightProperty
 
-  def fitHeight_=(v: Double) {
+  def fitHeight_=(v: Double): Unit = {
     fitHeight() = v
   }
 
   def fitWidth: DoubleProperty = delegate.fitWidthProperty
 
-  def fitWidth_=(v: Double) {
+  def fitWidth_=(v: Double): Unit = {
     fitWidth() = v
   }
 
   def image: ObjectProperty[jfxsi.Image] = delegate.imageProperty
 
-  def image_=(v: Image) {
+  def image_=(v: Image): Unit = {
     image() = v
   }
 
   def preserveRatio: BooleanProperty = delegate.preserveRatioProperty
 
-  def preserveRatio_=(v: Boolean) {
+  def preserveRatio_=(v: Boolean): Unit = {
     preserveRatio() = v
   }
 
   def smooth: BooleanProperty = delegate.smoothProperty
 
-  def smooth_=(v: Boolean) {
+  def smooth_=(v: Boolean): Unit = {
     smooth() = v
   }
 
   def viewport: ObjectProperty[jfxg.Rectangle2D] = delegate.viewportProperty
 
-  def viewport_=(v: Rectangle2D) {
+  def viewport_=(v: Rectangle2D): Unit = {
     viewport() = v
   }
 

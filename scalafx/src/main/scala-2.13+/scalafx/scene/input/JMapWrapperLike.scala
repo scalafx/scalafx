@@ -63,7 +63,9 @@ private[input] trait JMapWrapperLike[A, B]
     if (r != null) Some(r) else None
   }
 
-  override def update(k: A, v: B) { underlying.put(k, v) }
+  override def update(k: A, v: B): Unit = {
+    underlying.put(k, v)
+  }
 
   override def remove(k: A): Option[B] = {
     val r = underlying remove k

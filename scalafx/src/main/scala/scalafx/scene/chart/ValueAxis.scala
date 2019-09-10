@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,12 @@ package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
 import javafx.{util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
-import scalafx.beans.property.{BooleanProperty, DoubleProperty, IntegerProperty, ObjectProperty, ReadOnlyDoubleProperty}
+import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
+
+import scala.language.implicitConversions
 
 object ValueAxis {
   implicit def sfxValueAxis2jfx[T <: Number](v: ValueAxis[T]): jfxsc.ValueAxis[T] = if (v != null) v.delegate else null
@@ -44,34 +44,40 @@ abstract class ValueAxis[T <: Number](override val delegate: jfxsc.ValueAxis[T])
   with SFXDelegate[jfxsc.ValueAxis[T]] {
 
   def lowerBound: DoubleProperty = delegate.lowerBoundProperty
-  def lowerBound_=(v: Double) {
+
+  def lowerBound_=(v: Double): Unit = {
     lowerBound() = v
   }
 
   def minorTickCount: IntegerProperty = delegate.minorTickCountProperty
-  def minorTickCount_=(v: Int) {
+
+  def minorTickCount_=(v: Int): Unit = {
     minorTickCount() = v
   }
 
   def minorTickLength: DoubleProperty = delegate.minorTickLengthProperty
-  def minorTickLength_=(v: Double) {
+
+  def minorTickLength_=(v: Double): Unit = {
     minorTickLength() = v
   }
 
   def minorTickVisible: BooleanProperty = delegate.minorTickVisibleProperty
-  def minorTickVisible_=(v: Boolean) {
+
+  def minorTickVisible_=(v: Boolean): Unit = {
     minorTickVisible() = v
   }
 
   def scale: ReadOnlyDoubleProperty = delegate.scaleProperty
 
   def tickLabelFormatter: ObjectProperty[jfxu.StringConverter[T]] = delegate.tickLabelFormatterProperty
-  def tickLabelFormatter_=(v: StringConverter[T]) {
+
+  def tickLabelFormatter_=(v: StringConverter[T]): Unit = {
     tickLabelFormatter() = v
   }
 
   def upperBound: DoubleProperty = delegate.upperBoundProperty
-  def upperBound_=(v: Double) {
+
+  def upperBound_=(v: Double): Unit = {
     upperBound() = v
   }
 }

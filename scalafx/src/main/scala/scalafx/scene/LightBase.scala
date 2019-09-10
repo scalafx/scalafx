@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,13 @@ package scalafx.scene
 
 import javafx.scene.{paint => jfxsp}
 import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color
+
+import scala.language.implicitConversions
 
 object LightBase {
   implicit def sfxLightBase2jfx(lb: LightBase): jfxs.LightBase = if (lb != null) lb.delegate else null
@@ -48,13 +48,15 @@ abstract class LightBase(override val delegate: jfxs.LightBase)
 
   /** Specifies the color of light source. */
   def color: ObjectProperty[jfxsp.Color] = delegate.colorProperty
-  def color_=(v: Color) {
+
+  def color_=(v: Color): Unit = {
     ObjectProperty.fillProperty[jfxsp.Color](this.color, v)
   }
 
   /** Defines the light on or off. */
   def lightOn: BooleanProperty = delegate.lightOnProperty
-  def lightOn_=(v: Boolean) {
+
+  def lightOn_=(v: Boolean): Unit = {
     lightOn() = v
   }
 

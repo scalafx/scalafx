@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,8 +29,6 @@ package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
 import javafx.{geometry => jfxg, scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
@@ -39,13 +37,15 @@ import scalafx.geometry.Insets._
 import scalafx.scene.Node
 import scalafx.scene.Node._
 
+import scala.language.implicitConversions
+
 object BorderPane {
   implicit def sfxBorderPane2jfx(v: BorderPane): jfxsl.BorderPane = if (v != null) v.delegate else null
 
   /**
    * Removes all borderpane constraints from the child node.
    */
-  def clearConstraints(child: javafx.scene.Node) {
+  def clearConstraints(child: javafx.scene.Node): Unit = {
     jfxsl.BorderPane.clearConstraints(child)
   }
 
@@ -62,14 +62,14 @@ object BorderPane {
   /**
    * Sets the alignment for the child when contained by a borderpane.
    */
-  def setAlignment(child: Node, value: jfxg.Pos) {
+  def setAlignment(child: Node, value: jfxg.Pos): Unit = {
     jfxsl.BorderPane.setAlignment(child, value)
   }
 
   /**
    * Sets the margin for the child when contained by a borderpane.
    */
-  def setMargin(child: Node, value: Insets) {
+  def setMargin(child: Node, value: Insets): Unit = {
     jfxsl.BorderPane.setMargin(child, value)
   }
 }
@@ -86,7 +86,8 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    * The node placed on the bottom edge of this border pane.
    */
   def bottom: ObjectProperty[jfxs.Node] = delegate.bottomProperty()
-  def bottom_=(v: Node) {
+
+  def bottom_=(v: Node): Unit = {
     ObjectProperty.fillProperty[jfxs.Node](this.bottom, v)
   }
 
@@ -94,7 +95,8 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    * The node placed in the center of this border pane.
    */
   def center: ObjectProperty[jfxs.Node] = delegate.centerProperty()
-  def center_=(v: Node) {
+
+  def center_=(v: Node): Unit = {
     ObjectProperty.fillProperty[jfxs.Node](this.center, v)
   }
 
@@ -102,7 +104,8 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    * The node placed on the left edge of this border pane.
    */
   def left: ObjectProperty[jfxs.Node] = delegate.leftProperty()
-  def left_=(v: Node) {
+
+  def left_=(v: Node): Unit = {
     ObjectProperty.fillProperty[jfxs.Node](this.left, v)
   }
 
@@ -110,7 +113,8 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    * The node placed on the right edge of this border pane.
    */
   def right: ObjectProperty[jfxs.Node] = delegate.rightProperty()
-  def right_=(v: Node) {
+
+  def right_=(v: Node): Unit = {
     ObjectProperty.fillProperty[jfxs.Node](this.right, v)
   }
 
@@ -118,7 +122,8 @@ class BorderPane(override val delegate: jfxsl.BorderPane = new jfxsl.BorderPane(
    * The node placed on the top edge of this border pane.
    */
   def top: ObjectProperty[jfxs.Node] = delegate.topProperty()
-  def top_=(v: Node) {
+
+  def top_=(v: Node): Unit = {
     ObjectProperty.fillProperty[jfxs.Node](this.top, v)
   }
 }

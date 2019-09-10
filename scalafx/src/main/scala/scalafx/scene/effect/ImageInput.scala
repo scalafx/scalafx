@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse, image => jfxsi}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.{PositionDelegate, SFXDelegate}
 import scalafx.scene.image.Image
+
+import scala.language.implicitConversions
 
 object ImageInput {
   implicit def sfxImageInput2jfx(ii: ImageInput): jfxse.ImageInput = if (ii != null) ii.delegate else null
@@ -57,7 +57,8 @@ class ImageInput(override val delegate: jfxse.ImageInput = new jfxse.ImageInput)
    * The source Image.
    */
   def source: ObjectProperty[jfxsi.Image] = delegate.sourceProperty
-  def source_=(v: Image) {
+
+  def source_=(v: Image): Unit = {
     source() = v
   }
 

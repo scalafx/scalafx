@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,14 +28,15 @@
 package scalafx.collections.transformation
 
 import java.{util => ju}
-import javafx.collections.{transformation => jfxct}
 
-import scala.language.implicitConversions
-import scala.math.Ordering
+import javafx.collections.{transformation => jfxct}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
+import scala.math.Ordering
 
 object SortedBuffer {
   /**
@@ -82,7 +83,8 @@ class SortedBuffer[E](override val delegate: jfxct.SortedList[E])
    * The comparator that denotes the order of this SortedList.
    */
   def comparator: ObjectProperty[ju.Comparator[_ >: E]] = delegate.comparatorProperty
-  def comparator_=(v: Ordering[_ >: E]) {
+
+  def comparator_=(v: Ordering[_ >: E]): Unit = {
     ObjectProperty.fillProperty(delegate.comparatorProperty, v)
   }
 
@@ -91,7 +93,7 @@ class SortedBuffer[E](override val delegate: jfxct.SortedList[E])
    *
    * @param lessThan Comparison function that returns `true` if first element was lesser than second or `false` otherwise.
    */
-  def comparator_[T >: E](lessThan: (T, T) => Boolean) {
+  def comparator_[T >: E](lessThan: (T, T) => Boolean): Unit = {
     val c = new ju.Comparator[T] {
       def compare(p1: T, p2: T) = if (lessThan(p1, p2)) -1 else if (lessThan(p2, p1)) 1 else 0
     }

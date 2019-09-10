@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -201,7 +201,8 @@ class Alert(override val delegate: jfxsc.Alert)
   }
 
   def alertType: ObjectProperty[jfxsc.Alert.AlertType] = delegate.alertTypeProperty
-  def alertType_=(v: AlertType) {
+
+  def alertType_=(v: AlertType): Unit = {
     alertType() = v
   }
 

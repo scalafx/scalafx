@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,12 +29,12 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty, _}
 import scalafx.delegate.SFXDelegate
 import scalafx.event.Event
+
+import scala.language.implicitConversions
 
 object TreeView {
   implicit def sfxTreeView2jfx[T](v: TreeView[T]): jfxsc.TreeView[T] = if (v != null) v.delegate else null
@@ -112,7 +112,7 @@ object TreeView {
    * TreeView.
    */
   def apply[T](layoutChildrenOp: () => Unit) = new TreeView[T](new jfxsc.TreeView[T] {
-    override def layoutChildren() {
+    override def layoutChildren(): Unit = {
       layoutChildrenOp()
     }
   })
@@ -129,7 +129,8 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   def this(rootItem: TreeItem[T]) = this(new jfxsc.TreeView[T](rootItem))
 
   def cellFactory = delegate.cellFactoryProperty
-  def cellFactory_=(v: (TreeView[T] => TreeCell[T])) {
+
+  def cellFactory_=(v: (TreeView[T] => TreeCell[T])): Unit = {
     cellFactory() = new jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] {
       def call(tv: jfxsc.TreeView[T]): jfxsc.TreeCell[T] = {
         v(tv)
@@ -143,7 +144,8 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * into their editing state.
    */
   def editable: BooleanProperty = delegate.editableProperty
-  def editable_=(v: Boolean) {
+
+  def editable_=(v: Boolean): Unit = {
     editable() = v
   }
 
@@ -158,7 +160,8 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
 
   /** Specifies whether this control has cells that are a fixed height (of the specified value). */
   def fixedCellSize: DoubleProperty = delegate.fixedCellSizeProperty
-  def fixedCellSize_=(v: Double) {
+
+  def fixedCellSize_=(v: Double): Unit = {
     fixedCellSize() = v
   }
 
@@ -167,7 +170,8 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * focus on zero or one rows of the TreeView.
    */
   def focusModel: ObjectProperty[jfxsc.FocusModel[jfxsc.TreeItem[T]]] = delegate.focusModelProperty
-  def focusModel_=(v: FocusModel[jfxsc.TreeItem[T]]) {
+
+  def focusModel_=(v: FocusModel[jfxsc.TreeItem[T]]): Unit = {
     focusModel() = v
   }
 
@@ -175,7 +179,8 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * This event handler will be fired when the user cancels editing a cell.
    */
   def onEditCancel = delegate.onEditCancelProperty
-  def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
+
+  def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]): Unit = {
     onEditCancel() = v
   }
 
@@ -183,7 +188,8 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * This event handler will be fired when the user commits editing a cell.
    */
   def onEditCommit = delegate.onEditCommitProperty
-  def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
+
+  def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]): Unit = {
     onEditCommit() = v
   }
 
@@ -191,7 +197,8 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * This event handler will be fired when the user starts editing a cell.
    */
   def onEditStart = delegate.onEditStartProperty
-  def onEditStart_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]) {
+
+  def onEditStart_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]): Unit = {
     onEditStart() = v
   }
 
@@ -199,7 +206,8 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * Called when there's a request to scroll an index into view using `scrollTo(Int)`
    */
   def onScrollTo: ObjectProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]] = delegate.onScrollToProperty
-  def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]) {
+
+  def onScrollTo_=(v: jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]): Unit = {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxsc.ScrollToEvent[Integer]]](onScrollTo, v)
   }
 
@@ -207,14 +215,15 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * Property representing the root node of the TreeView.
    */
   def root: ObjectProperty[jfxsc.TreeItem[T]] = delegate.rootProperty
-  def root_=(v: TreeItem[T]) {
+
+  def root_=(v: TreeItem[T]): Unit = {
     root() = v
   }
 
   /**
    * Scrolls the TreeView such that the item in the given index is visible to the end user.
    */
-  def scrollTo(index: Int) {
+  def scrollTo(index: Int): Unit = {
     delegate.scrollTo(index)
   }
 
@@ -222,7 +231,8 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    *
    */
   def selectionModel: ObjectProperty[jfxsc.MultipleSelectionModel[jfxsc.TreeItem[T]]] = delegate.selectionModelProperty
-  def selectionModel_=(v: MultipleSelectionModel[jfxsc.TreeItem[T]]) {
+
+  def selectionModel_=(v: MultipleSelectionModel[jfxsc.TreeItem[T]]): Unit = {
     selectionModel() = v
   }
 
@@ -230,7 +240,8 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * Property that represents whether or not the TreeView root node is visible.
    */
   def showRoot: BooleanProperty = delegate.showRootProperty
-  def showRoot_=(v: Boolean) {
+
+  def showRoot_=(v: Boolean): Unit = {
     showRoot() = v
   }
 
@@ -250,7 +261,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * Instructs the TreeView to begin editing the given TreeItem, if the
    * TreeView is `editable`.
    */
-  def edit(item: TreeItem[T]) {
+  def edit(item: TreeItem[T]): Unit = {
     delegate.edit(item)
   }
 

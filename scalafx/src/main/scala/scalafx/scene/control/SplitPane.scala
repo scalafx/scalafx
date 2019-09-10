@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,13 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{geometry => jfxg}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Orientation
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object SplitPane {
   implicit def sfxSplitPane2jfx(v: SplitPane): jfxsc.SplitPane = if (v != null) v.delegate else null
@@ -49,7 +49,8 @@ object SplitPane {
      * Represents the location where the divider should ideally be positioned, between 0.0 and 1.0 (inclusive).
      */
     def position: DoubleProperty = delegate.positionProperty
-    def position_=(v: Double) {
+
+    def position_=(v: Double): Unit = {
       position() = v
     }
 
@@ -63,7 +64,7 @@ object SplitPane {
   /**
    * Sets a node in the SplitPane to be resizable or not when the SplitPane is resized.
    */
-  def setResizableWithParent(node: Node, value: Boolean) {
+  def setResizableWithParent(node: Node, value: Boolean): Unit = {
     jfxsc.SplitPane.setResizableWithParent(node, value)
   }
 
@@ -75,7 +76,8 @@ class SplitPane(override val delegate: jfxsc.SplitPane = new jfxsc.SplitPane) ex
    * The orientation for the SplitPane.
    */
   def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
-  def orientation_=(v: Orientation) {
+
+  def orientation_=(v: Orientation): Unit = {
     orientation() = v
   }
 
@@ -83,7 +85,8 @@ class SplitPane(override val delegate: jfxsc.SplitPane = new jfxsc.SplitPane) ex
    * Returns an array of double containing the position of each divider.
    */
   def dividerPositions = delegate.getDividerPositions
-  def dividerPositions_=(positions: Double*) {
+
+  def dividerPositions_=(positions: Double*): Unit = {
     delegate.setDividerPositions(positions: _*)
   }
 
@@ -91,7 +94,7 @@ class SplitPane(override val delegate: jfxsc.SplitPane = new jfxsc.SplitPane) ex
    * Sets the position of the divider at the specified divider index.
    * @todo Change to a Scala notation
    */
-  def setDividerPosition(dividerIndex: Int, position: Double) {
+  def setDividerPosition(dividerIndex: Int, position: Double): Unit = {
     delegate.setDividerPosition(dividerIndex, position)
   }
 

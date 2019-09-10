@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 
 object CheckMenuItem {
@@ -59,7 +59,8 @@ class CheckMenuItem(override val delegate: jfxsc.CheckMenuItem = new jfxsc.Check
     * (and causes the selected state to be toggled).
     */
   def selected: BooleanProperty = delegate.selectedProperty
-  def selected_=(v: Boolean) {
+
+  def selected_=(v: Boolean): Unit = {
     selected() = v
   }
 }

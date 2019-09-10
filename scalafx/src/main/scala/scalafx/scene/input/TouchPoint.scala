@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -90,14 +90,14 @@ class TouchPoint(override val delegate: jfxsi.TouchPoint)
   /**
    * Grabs this touch point by current event source.
    */
-  def grab() {
+  def grab(): Unit = {
     delegate.grab()
   }
 
   /**
    * Grabs this touch point by the given target.
    */
-  def grab(target: jfxe.EventTarget) {
+  def grab(target: jfxe.EventTarget): Unit = {
     delegate.grab(target)
   }
 
@@ -156,7 +156,7 @@ class TouchPoint(override val delegate: jfxsi.TouchPoint)
   /**
    *
    */
-  def ungrab() {
+  def ungrab(): Unit = {
     delegate.ungrab()
   }
 }

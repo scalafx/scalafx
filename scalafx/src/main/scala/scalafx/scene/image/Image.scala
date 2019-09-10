@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,13 @@
 package scalafx.scene.image
 
 import java.io.InputStream
-import javafx.scene.{image => jfxsi}
 
-import scala.language.implicitConversions
+import javafx.scene.{image => jfxsi}
 import scalafx.Includes._
 import scalafx.beans.property.{ReadOnlyBooleanProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object Image {
   implicit def sfxImage2jfx(i: Image): jfxsi.Image = if (i != null) i.delegate else null
@@ -104,7 +105,7 @@ class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image]
   /**
    * Cancels the background loading of this image.
    */
-  def cancel() {
+  def cancel(): Unit = {
     delegate.cancel()
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.transform
 
 import javafx.scene.{transform => jfxst}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.{PositionDelegate, SFXDelegate}
+
+import scala.language.implicitConversions
 
 object Scale {
   implicit def sfxScale2jfx(v: Scale): jfxst.Scale = if (v != null) v.delegate else null
@@ -70,7 +70,8 @@ class Scale(override val delegate: jfxst.Scale = new jfxst.Scale)
    * Defines the X coordinate about which point the scale occurs.
    */
   def pivotX: DoubleProperty = delegate.pivotXProperty()
-  def pivotX_=(v: Double) {
+
+  def pivotX_=(v: Double): Unit = {
     pivotX() = v
   }
 
@@ -78,7 +79,8 @@ class Scale(override val delegate: jfxst.Scale = new jfxst.Scale)
    * Defines the Y coordinate about which point the scale occurs.
    */
   def pivotY: DoubleProperty = delegate.pivotYProperty()
-  def pivotY_=(v: Double) {
+
+  def pivotY_=(v: Double): Unit = {
     pivotY() = v
   }
 
@@ -86,7 +88,8 @@ class Scale(override val delegate: jfxst.Scale = new jfxst.Scale)
    * Defines the Z coordinate about which point the scale occurs.
    */
   def pivotZ: DoubleProperty = delegate.pivotZProperty()
-  def pivotZ_=(v: Double) {
+
+  def pivotZ_=(v: Double): Unit = {
     pivotZ() = v
   }
 
@@ -94,7 +97,8 @@ class Scale(override val delegate: jfxst.Scale = new jfxst.Scale)
    * Defines the factor by which coordinates are scaled along the Z axis direction.
    */
   def z: DoubleProperty = delegate.zProperty()
-  def z_=(v: Double) {
+
+  def z_=(v: Double): Unit = {
     z() = v
   }
 

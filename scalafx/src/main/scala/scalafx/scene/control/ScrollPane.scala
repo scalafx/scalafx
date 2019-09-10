@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -77,7 +77,7 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    */
   def content: ObjectProperty[jfxs.Node] = delegate.contentProperty
 
-  def content_=(v: Node) {
+  def content_=(v: Node): Unit = {
     content() = v
   }
 
@@ -86,7 +86,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * ScrollPane's viewport.
    */
   def fitToHeight: BooleanProperty = delegate.fitToHeightProperty
-  def fitToHeight_=(v: Boolean) {
+
+  def fitToHeight_=(v: Boolean): Unit = {
     fitToHeight() = v
   }
 
@@ -95,7 +96,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * ScrollPane's viewport.
    */
   def fitToWidth: BooleanProperty = delegate.fitToWidthProperty
-  def fitToWidth_=(v: Boolean) {
+
+  def fitToWidth_=(v: Boolean): Unit = {
     fitToWidth() = v
   }
 
@@ -103,7 +105,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * Specifies the policy for showing the horizontal scroll bar.
    */
   def hbarPolicy: ObjectProperty[jfxsc.ScrollPane.ScrollBarPolicy] = delegate.hbarPolicyProperty
-  def hbarPolicy_=(v: ScrollPane.ScrollBarPolicy) {
+
+  def hbarPolicy_=(v: ScrollPane.ScrollBarPolicy): Unit = {
     hbarPolicy() = v
   }
 
@@ -111,7 +114,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * The maximum allowable hvalue for this ScrollPane.
    */
   def hmax: DoubleProperty = delegate.hmaxProperty
-  def hmax_=(v: Double) {
+
+  def hmax_=(v: Double): Unit = {
     hmax() = v
   }
 
@@ -119,7 +123,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * The minimum allowable hvalue for this ScrollPane.
    */
   def hmin: DoubleProperty = delegate.hminProperty
-  def hmin_=(v: Double) {
+
+  def hmin_=(v: Double): Unit = {
     hmin() = v
   }
 
@@ -127,7 +132,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * The current horizontal scroll position of the ScrollPane.
    */
   def hvalue: DoubleProperty = delegate.hvalueProperty
-  def hvalue_=(v: Double) {
+
+  def hvalue_=(v: Double): Unit = {
     hvalue() = v
   }
 
@@ -135,7 +141,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * Specifies whether the user should be able to pan the viewport by using the mouse.
    */
   def pannable: BooleanProperty = delegate.pannableProperty
-  def pannable_=(v: Boolean) {
+
+  def pannable_=(v: Boolean): Unit = {
     pannable() = v
   }
 
@@ -152,7 +159,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * Specify the preferred height of the ScrollPane Viewport.
    */
   def prefViewportHeight: DoubleProperty = delegate.prefViewportHeightProperty
-  def prefViewportHeight_=(v: Double) {
+
+  def prefViewportHeight_=(v: Double): Unit = {
     prefViewportHeight() = v
   }
 
@@ -169,7 +177,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * Specify the preferred width of the ScrollPane Viewport.
    */
   def prefViewportWidth: DoubleProperty = delegate.prefViewportWidthProperty
-  def prefViewportWidth_=(v: Double) {
+
+  def prefViewportWidth_=(v: Double): Unit = {
     prefViewportWidth() = v
   }
 
@@ -177,7 +186,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * Specifies the policy for showing the vertical scroll bar.
    */
   def vbarPolicy: ObjectProperty[jfxsc.ScrollPane.ScrollBarPolicy] = delegate.vbarPolicyProperty
-  def vbarPolicy_=(v: ScrollPane.ScrollBarPolicy) {
+
+  def vbarPolicy_=(v: ScrollPane.ScrollBarPolicy): Unit = {
     vbarPolicy() = v
   }
 
@@ -185,7 +195,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * The actual Bounds of the ScrollPane Viewport.
    */
   def viewportBounds: ObjectProperty[jfxg.Bounds] = delegate.viewportBoundsProperty
-  def viewportBounds_=(v: Bounds) {
+
+  def viewportBounds_=(v: Bounds): Unit = {
     viewportBounds() = v
   }
 
@@ -193,7 +204,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * The maximum allowable vvalue for this ScrollPane.
    */
   def vmax: DoubleProperty = delegate.vmaxProperty
-  def vmax_=(v: Double) {
+
+  def vmax_=(v: Double): Unit = {
     vmax() = v
   }
 
@@ -201,7 +213,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * The minimum allowable vvalue for this ScrollPane.
    */
   def vmin: DoubleProperty = delegate.vminProperty
-  def vmin_=(v: Double) {
+
+  def vmin_=(v: Double): Unit = {
     vmin() = v
   }
 
@@ -209,7 +222,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
    * The current vertical scroll position of the ScrollPane.
    */
   def vvalue: DoubleProperty = delegate.vvalueProperty
-  def vvalue_=(v: Double) {
+
+  def vvalue_=(v: Double): Unit = {
     vvalue() = v
   }
 

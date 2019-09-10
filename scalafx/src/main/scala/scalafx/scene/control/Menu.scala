@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,13 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.Node._
+
+import scala.language.implicitConversions
 
 object Menu {
   implicit def sfxMenu2jfx(cb: Menu): jfxsc.Menu = if (cb != null) cb.delegate else null
@@ -68,21 +68,21 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
    *
    * @param c Menu items to replace prior content.
    */
-  def items_=(c: Iterable[MenuItem]) {
+  def items_=(c: Iterable[MenuItem]): Unit = {
     fillSFXCollection(this.items, c)
   }
 
   /**
    * Hides the ContextMenu if it was previously showing, and any showing submenus.
    */
-  def hide() {
+  def hide(): Unit = {
     delegate.hide()
   }
 
   /**
    * If the Menu is not disabled and the ContextMenu is not already showing, then this will cause the ContextMenu to be shown.
    */
-  def show() {
+  def show(): Unit = {
     delegate.show()
   }
 
@@ -92,22 +92,26 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
   def showing = delegate.isShowing
 
   def onHidden = delegate.onHiddenProperty
-  def onHidden_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
+
+  def onHidden_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onHidden() = eventHandler
   }
 
   def onHiding = delegate.onHidingProperty
-  def onHiding_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
+
+  def onHiding_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onHiding() = eventHandler
   }
 
   def onShowing = delegate.onShowingProperty
-  def onShowing_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
+
+  def onShowing_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onShowing() = eventHandler
   }
 
   def onShown = delegate.onShownProperty
-  def onShown_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]) {
+
+  def onShown_=(implicit eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onShown() = eventHandler
   }
 

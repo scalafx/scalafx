@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,13 @@
 package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.layout.Pane
+
+import scala.language.implicitConversions
 
 object TextFlow {
   implicit def sfxTextFlow2jfx(v: TextFlow): jfxst.TextFlow = if (v != null) v.delegate else null
@@ -65,7 +65,8 @@ class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
    * Defines the vertical space in pixel between lines.
    */
   def lineSpacing: DoubleProperty = delegate.lineSpacingProperty
-  def lineSpacing_=(v: Double) {
+
+  def lineSpacing_=(v: Double): Unit = {
     lineSpacing() = v
   }
 
@@ -73,7 +74,8 @@ class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
    * Defines horizontal text alignment.
    */
   def textAlignment: ObjectProperty[jfxst.TextAlignment] = delegate.textAlignmentProperty
-  def textAlignment_=(v: TextAlignment) {
+
+  def textAlignment_=(v: TextAlignment): Unit = {
     textAlignment() = v
   }
 
@@ -85,7 +87,7 @@ class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
   /**
    * Requests a layout pass to be performed before the next scene is rendered.
    */
-  def requestLayout() {
+  def requestLayout(): Unit = {
     delegate.requestLayout()
   }
 

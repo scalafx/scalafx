@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 /**
  * Object companion for [[scalafx.scene.control.TableFocusModel]].
@@ -72,27 +72,27 @@ abstract class TableFocusModel[T, TC <: jfxsc.TableColumnBase[T, _]](override va
    * @param row The row index of the item to give focus to.
    * @param column The column of the item to give focus to. Can be null.
    */
-  def focus(row: Int, column: TC) {
+  def focus(row: Int, column: TC): Unit = {
     delegate.focus(row, column)
   }
 
   /** Attempts to move focus to the cell above the currently focused cell. */
-  def focusAboveCell() {
+  def focusAboveCell(): Unit = {
     delegate.focusAboveCell
   }
 
   /** Attempts to move focus to the cell below the currently focused cell. */
-  def focusBelowCell() {
+  def focusBelowCell(): Unit = {
     delegate.focusBelowCell
   }
 
   /** Attempts to move focus to the cell to the left of the currently focused cell. */
-  def focusLeftCell() {
+  def focusLeftCell(): Unit = {
     delegate.focusLeftCell
   }
 
   /** Attempts to move focus to the cell to the right of the the currently focused cell. */
-  def focusRightCell() {
+  def focusRightCell(): Unit = {
     delegate.focusRightCell
   }
 

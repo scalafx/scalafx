@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,10 +28,10 @@ package scalafx.embed.swing
 
 import javafx.embed.{swing => jfxes}
 import javax.swing.JComponent
-
-import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.embed.swing.SwingNode]].
@@ -65,7 +65,8 @@ class SwingNode(override val delegate: jfxes.SwingNode = new jfxes.SwingNode)
    * the JComponent instance attached to this SwingNode.
    */
   def content: JComponent = delegate.getContent
-  def content_=(c: JComponent) {
+
+  def content_=(c: JComponent): Unit = {
     delegate.setContent(c)
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -284,7 +284,8 @@ trait LowerPriorityIncludes {
   implicit def jfxProperty2sfx[T <: AnyRef](p: jfxbp.Property[T]): Property[T, T] = new Property[T, T] {
     override def delegate = p
     override def value = delegate.getValue
-    override def value_=(v: T) {
+
+    override def value_=(v: T): Unit = {
       delegate.setValue(v)
     }
   }

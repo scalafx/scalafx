@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 /**
  * Companion Object for [[scalafx.animation.AnimationTimer]].
@@ -54,7 +54,7 @@ object AnimationTimer {
    * @return a new $AT.
    */
   def apply(handler: Long => Unit): AnimationTimer = new AnimationTimer(new jfxa.AnimationTimer {
-    def handle(now: Long) {
+    def handle(now: Long): Unit = {
       handler(now)
     }
   }) {}
@@ -78,21 +78,21 @@ abstract class AnimationTimer(override val delegate: jfxa.AnimationTimer)
    * @param now The timestamp of the current frame given in nanoseconds. This value will be the same for all $AT's
    *            called during one frame.
    */
-  def handle(now: Long) {
+  def handle(now: Long): Unit = {
     delegate.handle(now)
   }
 
   /**
    * Starts the $AT's.
    */
-  def start() {
+  def start(): Unit = {
     delegate.start()
   }
 
   /**
    * Stops the $AT's. It can be activated again by calling `start`.
    */
-  def stop() {
+  def stop(): Unit = {
     delegate.stop()
   }
 

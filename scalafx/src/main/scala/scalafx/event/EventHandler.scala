@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,10 @@
 package scalafx.event
 
 import javafx.{event => jfxe}
-
-import scala.language.{implicitConversions, reflectiveCalls}
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
+
+import scala.language.{implicitConversions, reflectiveCalls}
 
 /**
  * Companion Object for [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.html EventHandler]]
@@ -57,16 +57,16 @@ trait EventHandlerDelegate {
    */
   type EventHandled = {
     // Registers an event handler to this type.
-    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_])
+    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_]): Unit
 
     // Unregisters a previously registered event handler from this type.
-    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_])
+    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_]): Unit
 
     // Registers an event filter to this type.
-    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_])
+    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_]): Unit
 
     // Unregisters a previously registered event filter from this type.
-    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_])
+    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_]): Unit
 
     // Construct an event dispatch chain for this target.
     def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain
@@ -87,7 +87,7 @@ trait EventHandlerDelegate {
    * @param eventType  the type of the events to receive by the handler
    * @param eventHandler the handler to register that will manipulate event
    */
-  def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) {
+  def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]): Unit = {
     eventHandlerDelegate.addEventHandler(eventType, eventHandler)
   }
 
@@ -102,7 +102,7 @@ trait EventHandlerDelegate {
     def apply(eventType: EventType[J]): Subscription = {
       EventHandlerDelegate.this.addEventHandler(eventType.delegate, eventHandler)
       new Subscription {
-        def cancel() {
+        def cancel(): Unit = {
           EventHandlerDelegate.this.removeEventHandler(eventType.delegate, eventHandler)
         }
       }
@@ -117,7 +117,7 @@ trait EventHandlerDelegate {
     implicit def fromParen[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: () => Unit): HandlerMagnet[J, S] = {
       new HandlerMagnet[J, S] {
         override val eventHandler = new jfxe.EventHandler[J] {
-          def handle(event: J) {
+          def handle(event: J): Unit = {
             op()
           }
         }
@@ -127,7 +127,7 @@ trait EventHandlerDelegate {
     implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S): HandlerMagnet[J, S] = {
       new HandlerMagnet[J, S] {
         override val eventHandler = new jfxe.EventHandler[J] {
-          def handle(event: J) {
+          def handle(event: J): Unit = {
             op(jfx2sfx(event))
           }
         }
@@ -175,7 +175,7 @@ trait EventHandlerDelegate {
    * @param eventType  the event type from which to unregister
    * @param eventHandler  the handler to unregister
    */
-  def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) {
+  def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]): Unit = {
     eventHandlerDelegate.removeEventHandler(eventType, eventHandler)
   }
 
@@ -187,7 +187,7 @@ trait EventHandlerDelegate {
    * @param eventType  the type of the events to receive by the filter
    * @param eventHandler the filter to register that will filter event
    */
-  def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) {
+  def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]): Unit = {
     eventHandlerDelegate.addEventFilter(eventType, eventHandler)
   }
 
@@ -201,7 +201,7 @@ trait EventHandlerDelegate {
     def apply(eventType: EventType[J]): Subscription = {
       EventHandlerDelegate.this.addEventFilter(eventType.delegate, eventFilter)
       new Subscription {
-        def cancel() {
+        def cancel(): Unit = {
           EventHandlerDelegate.this.removeEventFilter(eventType.delegate, eventFilter)
         }
       }
@@ -216,7 +216,7 @@ trait EventHandlerDelegate {
     implicit def fromParen[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: () => Unit): FilterMagnet[J, S] = {
       new FilterMagnet[J, S] {
         override val eventFilter = new jfxe.EventHandler[J] {
-          def handle(event: J) {
+          def handle(event: J): Unit = {
             op()
           }
         }
@@ -226,7 +226,7 @@ trait EventHandlerDelegate {
     implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S): FilterMagnet[J, S] = {
       new FilterMagnet[J, S] {
         override val eventFilter = new jfxe.EventHandler[J] {
-          def handle(event: J) {
+          def handle(event: J): Unit = {
             op(jfx2sfx(event))
           }
         }
@@ -279,7 +279,7 @@ trait EventHandlerDelegate {
    * @param eventType the event type from which to unregister
    * @param eventHandler the filter to unregister
    */
-  def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]) {
+  def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]): Unit = {
     eventHandlerDelegate.removeEventFilter(eventType, eventHandler)
   }
 

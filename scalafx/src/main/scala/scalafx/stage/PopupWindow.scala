@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -103,7 +103,8 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
 
   /** Specifies the popup anchor point which is used in popup positioning. */
   def anchorLocation: ObjectProperty[jfxs.PopupWindow.AnchorLocation] = delegate.anchorLocationProperty
-  def anchorLocation_=(v: PopupWindow.AnchorLocation) {
+
+  def anchorLocation_=(v: PopupWindow.AnchorLocation): Unit = {
     ObjectProperty.fillProperty[jfxs.PopupWindow.AnchorLocation](this.anchorLocation, v)
   }
 
@@ -118,7 +119,8 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
    * such that it doesn't end up positioned off the screen.
    */
   def autoFix: BooleanProperty = delegate.autoFixProperty
-  def autoFix_=(v: Boolean) {
+
+  def autoFix_=(v: Boolean): Unit = {
     autoFix() = v
   }
 
@@ -126,7 +128,8 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
    * Specifies whether Popups should auto hide.
    */
   def autoHide: BooleanProperty = delegate.autoHideProperty
-  def autoHide_=(v: Boolean) {
+
+  def autoHide_=(v: Boolean): Unit = {
     autoHide() = v
   }
 
@@ -135,7 +138,8 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
    * focus.
    */
   def hideOnEscape: BooleanProperty = delegate.hideOnEscapeProperty
-  def hideOnEscape_=(v: Boolean) {
+
+  def hideOnEscape_=(v: Boolean): Unit = {
     hideOnEscape() = v
   }
 
@@ -143,7 +147,8 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
    * Called after autoHide is run.
    */
   def onAutoHide = delegate.onAutoHideProperty
-  def onAutoHide_=(v: jfxe.EventHandler[jfxe.Event]) {
+
+  def onAutoHide_=(v: jfxe.EventHandler[jfxe.Event]): Unit = {
     onAutoHide() = v
   }
 
@@ -161,21 +166,21 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
   /**
    * Show the Popup at the specified x,y location relative to the screen
    */
-  def show(owner: Node, screenX: Double, screenY: Double) {
+  def show(owner: Node, screenX: Double, screenY: Double): Unit = {
     delegate.show(owner, screenX, screenY)
   }
 
   /**
    * Show the popup.
    */
-  def show(owner: Window) {
+  def show(owner: Window): Unit = {
     delegate.show(owner)
   }
 
   /**
    * Show the Popup at the specified x,y location relative to the screen
    */
-  def show(owner: Window, screenX: Double, screenY: Double) {
+  def show(owner: Window, screenX: Double, screenY: Double): Unit = {
     delegate.show(owner, screenX, screenY)
   }
 
@@ -184,7 +189,8 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
    * @since 2.2
    */
   def consumeAutoHidingEvents: BooleanProperty = delegate.consumeAutoHidingEventsProperty
-  def consumeAutoHidingEvents_=(v: Boolean) {
+
+  def consumeAutoHidingEvents_=(v: Boolean): Unit = {
     consumeAutoHidingEvents() = v
   }
 

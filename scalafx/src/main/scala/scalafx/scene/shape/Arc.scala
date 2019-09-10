@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object Arc {
   implicit def sfxArc2jfx(v: Arc): jfxss.Arc = if (v != null) v.delegate else null
@@ -42,37 +42,44 @@ object Arc {
 
 class Arc(override val delegate: jfxss.Arc = new jfxss.Arc()) extends Shape(delegate) with SFXDelegate[jfxss.Arc] {
   def centerX: DoubleProperty = delegate.centerXProperty
-  def centerX_=(v: Double) {
+
+  def centerX_=(v: Double): Unit = {
     centerX() = v
   }
 
   def centerY: DoubleProperty = delegate.centerYProperty
-  def centerY_=(v: Double) {
+
+  def centerY_=(v: Double): Unit = {
     centerY() = v
   }
 
   def length: DoubleProperty = delegate.lengthProperty
-  def length_=(v: Double) {
+
+  def length_=(v: Double): Unit = {
     length() = v
   }
 
   def radiusX: DoubleProperty = delegate.radiusXProperty
-  def radiusX_=(v: Double) {
+
+  def radiusX_=(v: Double): Unit = {
     radiusX() = v
   }
 
   def radiusY: DoubleProperty = delegate.radiusYProperty
-  def radiusY_=(v: Double) {
+
+  def radiusY_=(v: Double): Unit = {
     radiusY() = v
   }
 
   def startAngle: DoubleProperty = delegate.startAngleProperty
-  def startAngle_=(v: Double) {
+
+  def startAngle_=(v: Double): Unit = {
     startAngle() = v
   }
 
   def `type`: ObjectProperty[jfxss.ArcType] = delegate.typeProperty
-  def `type_=`(v: ArcType) {
+
+  def `type_=`(v: ArcType): Unit = {
     `type`() = v
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,12 +29,12 @@ package scalafx.beans.value
 
 import javafx.beans.{value => jfxbv}
 import javafx.{collections => jfxc}
-
-import scala.language.implicitConversions
 import scalafx.beans.Observable
 import scalafx.collections.{ObservableBuffer, ObservableMap, ObservableSet}
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
+
+import scala.language.implicitConversions
 
 object ObservableValue {
   implicit def sfxObservableValue2jfx[T, J](ov: ObservableValue[T, J]): jfxbv.ObservableValue[J] = if (ov != null) ov.delegate else null
@@ -112,7 +112,7 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
    */
   def onChange[J1 >: J](op: (ObservableValue[T, J], J1, J1) => Unit): Subscription = {
     val listener = new jfxbv.ChangeListener[J1] {
-      def changed(observable: jfxbv.ObservableValue[_ <: J1], oldValue: J1, newValue: J1) {
+      def changed(observable: jfxbv.ObservableValue[_ <: J1], oldValue: J1, newValue: J1): Unit = {
         op(ObservableValue.this, oldValue, newValue)
       }
     }
@@ -120,7 +120,7 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
     delegate.addListener(listener)
 
     new Subscription {
-      def cancel() {
+      def cancel(): Unit = {
         delegate.removeListener(listener)
       }
     }
@@ -134,7 +134,7 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
    */
   def onChange[J1 >: J](op: => Unit): Subscription = {
     val listener = new jfxbv.ChangeListener[J1] {
-      def changed(observable: jfxbv.ObservableValue[_ <: J1], oldValue: J1, newValue: J1) {
+      def changed(observable: jfxbv.ObservableValue[_ <: J1], oldValue: J1, newValue: J1): Unit = {
         op
       }
     }
@@ -142,7 +142,7 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
     delegate.addListener(listener)
 
     new Subscription {
-      def cancel() {
+      def cancel(): Unit = {
         delegate.removeListener(listener)
       }
     }

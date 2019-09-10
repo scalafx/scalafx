@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,11 +28,11 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.IntegerProperty
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
+
+import scala.language.implicitConversions
 
 object TextField {
   implicit def sfxTextField2jfx(v: TextField): jfxsc.TextField = if (v != null) v.delegate else null
@@ -47,7 +47,8 @@ class TextField(override val delegate: jfxsc.TextField = new jfxsc.TextField)
    * The action handler associated with this text field, or null if no action handler is assigned.
    */
   def onAction = delegate.onActionProperty
-  def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]) {
+
+  def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]): Unit = {
     onAction() = v
   }
 
@@ -55,7 +56,8 @@ class TextField(override val delegate: jfxsc.TextField = new jfxsc.TextField)
    * The preferred number of text columns.
    */
   def prefColumnCount: IntegerProperty = delegate.prefColumnCountProperty
-  def prefColumnCount_=(v: Int) {
+
+  def prefColumnCount_=(v: Int): Unit = {
     prefColumnCount() = v
   }
 

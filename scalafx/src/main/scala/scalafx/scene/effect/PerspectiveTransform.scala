@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object PerspectiveTransform {
   implicit def sfxPerspectiveTransform2jfx(pt: PerspectiveTransform): jfxse.PerspectiveTransform = if (pt != null) pt.delegate else null
@@ -51,7 +51,8 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
    * The x coordinate of the output location onto which the lower left corner of the source is mapped.
    */
   def llx: DoubleProperty = delegate.llxProperty
-  def llx_=(v: Double) {
+
+  def llx_=(v: Double): Unit = {
     llx() = v
   }
 
@@ -59,7 +60,8 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
    * The y coordinate of the output location onto which the lower left corner of the source is mapped.
    */
   def lly: DoubleProperty = delegate.llyProperty
-  def lly_=(v: Double) {
+
+  def lly_=(v: Double): Unit = {
     lly() = v
   }
 
@@ -67,7 +69,8 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
    * The x coordinate of the output location onto which the lower right corner of the source is mapped.
    */
   def lrx: DoubleProperty = delegate.lrxProperty
-  def lrx_=(v: Double) {
+
+  def lrx_=(v: Double): Unit = {
     lrx() = v
   }
 
@@ -75,7 +78,8 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
    * The y coordinate of the output location onto which the lower right corner of the source is mapped.
    */
   def lry: DoubleProperty = delegate.lryProperty
-  def lry_=(v: Double) {
+
+  def lry_=(v: Double): Unit = {
     lry() = v
   }
 
@@ -83,7 +87,8 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
    * The x coordinate of the output location onto which the upper left corner of the source is mapped.
    */
   def ulx: DoubleProperty = delegate.ulxProperty
-  def ulx_=(v: Double) {
+
+  def ulx_=(v: Double): Unit = {
     ulx() = v
   }
 
@@ -91,7 +96,8 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
    * The y coordinate of the output location onto which the upper left corner of the source is mapped.
    */
   def uly: DoubleProperty = delegate.ulyProperty
-  def uly_=(v: Double) {
+
+  def uly_=(v: Double): Unit = {
     uly() = v
   }
 
@@ -99,7 +105,8 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
    * The x coordinate of the output location onto which the upper right corner of the source is mapped.
    */
   def urx: DoubleProperty = delegate.urxProperty
-  def urx_=(v: Double) {
+
+  def urx_=(v: Double): Unit = {
     urx() = v
   }
 
@@ -107,7 +114,8 @@ class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = n
    * The y coordinate of the output location onto which the upper right corner of the source is mapped.
    */
   def ury: DoubleProperty = delegate.uryProperty
-  def ury_=(v: Double) {
+
+  def ury_=(v: Double): Unit = {
     ury() = v
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,14 +28,14 @@ package scalafx.animation
 
 import javafx.scene.{paint => jfxsp, shape => jfxss}
 import javafx.{animation => jfxa, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Shape
 import scalafx.util.Duration
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.animation.FadeTransition]].
@@ -109,7 +109,8 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
    * The target shape of this $FT.
    */
   def shape: ObjectProperty[jfxss.Shape] = delegate.shapeProperty
-  def shape_=(s: Shape) {
+
+  def shape_=(s: Shape): Unit = {
     shape() = s
   }
 
@@ -117,7 +118,8 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
    * The duration of this $FT. $DV 400ms
    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
-  def duration_=(d: Duration) {
+
+  def duration_=(d: Duration): Unit = {
     duration() = d
   }
 
@@ -125,7 +127,8 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
    * Specifies the start color value for this $FT. $DV `null`
    */
   def fromValue: ObjectProperty[jfxsp.Color] = delegate.fromValueProperty
-  def fromValue_=(from: Color) {
+
+  def fromValue_=(from: Color): Unit = {
     fromValue() = from
   }
 
@@ -133,7 +136,8 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
    * Specifies the stop color value for this $FT. $DV `null`.
    */
   def toValue: ObjectProperty[jfxsp.Color] = delegate.toValueProperty
-  def toValue_=(to: Color) {
+
+  def toValue_=(to: Color): Unit = {
     toValue() = to
   }
 

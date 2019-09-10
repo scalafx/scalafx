@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,14 +29,14 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, StringProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.layout.Pane
+
+import scala.language.implicitConversions
 
 /**
  * Object companion for [[scalafx.scene.control.DialogPane]].
@@ -137,7 +137,8 @@ class DialogPane(override val delegate: jfxsc.DialogPane = new jfxsc.DialogPane(
    * Represents whether the dialogPane is expanded.
    */
   def expanded: BooleanProperty = delegate.expandedProperty
-  def expanded_=(v: Boolean) {
+
+  def expanded_=(v: Boolean): Unit = {
     expanded() = v
   }
 

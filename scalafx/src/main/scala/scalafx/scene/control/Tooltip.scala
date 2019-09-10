@@ -178,7 +178,8 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip)
     * elapsed the tooltip will hide. The default value is 200ms.
     */
   def hideDelay: ObjectProperty[jfxu.Duration] = delegate.hideDelayProperty
-  def hideDelay_=(v: Duration) {
+
+  def hideDelay_=(v: Duration): Unit = {
     hideDelay() = v
   }
 
@@ -187,7 +188,8 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip)
     * The default delay is 1000ms.
     */
   def showDelay: ObjectProperty[jfxu.Duration] = delegate.showDelayProperty
-  def showDelay_=(v: Duration) {
+
+  def showDelay_=(v: Duration): Unit = {
     showDelay() = v
   }
 
@@ -196,7 +198,8 @@ class Tooltip(override val delegate: jfxsc.Tooltip = new jfxsc.Tooltip)
     * The duration that the tooltip should remain showing for until it is no longer visible to the user.
     */
   def showDuration: ObjectProperty[jfxu.Duration] = delegate.showDurationProperty
-  def showDuration_=(v: Duration) {
+
+  def showDuration_=(v: Duration): Unit = {
     showDuration() = v
   }
   

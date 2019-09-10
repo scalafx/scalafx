@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object BooleanProperty {
   implicit def sfxBooleanProperty2jfx(bp: BooleanProperty): jfxbp.BooleanProperty = if (bp != null) bp.delegate else null
@@ -54,7 +54,7 @@ class BooleanProperty(override val delegate: jfxbp.BooleanProperty = new jfxbp.S
   def this(bean: Object, name: String, initialValue: Boolean) =
     this(new jfxbp.SimpleBooleanProperty(bean, name, initialValue))
 
-  def value_=(v: Boolean) {
+  def value_=(v: Boolean): Unit = {
     delegate.set(v)
   }
 }
