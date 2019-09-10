@@ -45,6 +45,10 @@ libraryDependencies ++= javaFXModules.map( m =>
 )
 ```
 
+### What is in the version number
+
+ScalaFX version number has two part. The first part corresponds to latest JavaFX version it was tested with. The second part is an incremental release number. For instance, version `12.0.2-R18` means that it was tested with JavaFX version `12.0.2` and that is the 18th release of ScalaFX. 
+
 #### Legacy Releases
 
 ##### ScalaFX 10
