@@ -29,7 +29,8 @@ lazy val scalafx = (project in file("scalafx")).settings(
   ) ++ (Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
     case Some(path) => Seq("-diagrams", "-diagrams-dot-path", path)
     case None => Seq.empty[String]
-  })
+  }),
+  publishArtifact := true
 )
 
 // ScalaFX Demos project
@@ -57,13 +58,9 @@ val osName = System.getProperty("os.name") match {
 val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
 lazy val scalatest = "org.scalatest" %% "scalatest" % "3.0.8"
 
-// Resolvers
-lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
-lazy val sonatypeNexusStaging = "Sonatype Nexus Staging" at "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-
 // Add snapshots to root project to enable compilation with Scala SNAPSHOT compiler,
 // e.g., 2.11.0-SNAPSHOT
-resolvers += sonatypeNexusSnapshots
+resolvers += Resolver.sonatypeRepo("snapshots")
 
 // Common settings
 lazy val scalafxSettings = Seq(
@@ -72,7 +69,7 @@ lazy val scalafxSettings = Seq(
   crossScalaVersions := Seq("2.13.0", "2.12.9", "2.11.12", "2.10.7"),
   scalaVersion := crossScalaVersions.value.head,
   // Add src/main/scala-2.13+ for Scala 2.13 and newer
-  // and src/main/scala-2.12- for Scala versions older than 2.13
+  //   and src/main/scala-2.12- for Scala versions older than 2.13
   unmanagedSourceDirectories in Compile += {
     val sourceDir = (sourceDirectory in Compile).value
     CrossVersion.partialVersion(scalaVersion.value) match {
@@ -117,10 +114,9 @@ lazy val scalafxSettings = Seq(
   },
   autoAPIMappings := true,
   manifestSetting,
-  publishSetting,
   fork in Test := true,
   parallelExecution in Test := false,
-  resolvers += sonatypeNexusSnapshots,
+  resolvers += Resolver.sonatypeRepo("snapshots"),
   // print junit-style XML for CI
   testOptions in Test += {
     val t = (target in Test).value
@@ -143,14 +139,6 @@ lazy val manifestSetting = packageOptions += {
     "Implementation-Vendor-Id" -> organization.value,
     "Implementation-Vendor" -> organization.value
   )
-}
-
-lazy val publishSetting = publishTo := {
-  val version: String = scalafxVersion
-  if (version.trim.endsWith("SNAPSHOT"))
-    Some(sonatypeNexusSnapshots)
-  else
-    Some(sonatypeNexusStaging)
 }
 
 // Metadata needed by Maven Central
