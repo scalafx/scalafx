@@ -18,6 +18,9 @@ val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v" +
 lazy val scalafx = (project in file("scalafx")).settings(
   scalafxSettings,
   description := "The ScalaFX framework",
+  // Add JavaFX dependencies, mark as "provided", so they can be later removed from published POM
+  libraryDependencies ++= javafxModules.map(
+    m => "org.openjfx" % s"javafx-$m" % javaFXVersion % "provided" classifier osName),
   fork in run := true,
   scalacOptions in(Compile, doc) ++= Seq(
     "-sourcepath", baseDirectory.value.toString,
@@ -33,6 +36,8 @@ lazy val scalafx = (project in file("scalafx")).settings(
 lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   scalafxSettings,
   description := "The ScalaFX demonstrations",
+  libraryDependencies ++= javafxModules.map(
+    m => "org.openjfx" % s"javafx-$m" % javaFXVersion classifier osName),
   fork in run := true,
   javaOptions ++= Seq(
     "-Xmx512M",
@@ -49,6 +54,7 @@ val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Windows") => "win"
   case _ => throw new Exception("Unknown platform!")
 }
+val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
 lazy val scalatest = "org.scalatest" %% "scalatest" % "3.0.8"
 
 // Resolvers
@@ -90,9 +96,6 @@ lazy val scalafxSettings = Seq(
     "-target", "1.8",
     "-source", "1.8",
     "-Xlint:deprecation"),
-  // Add JavaFX dependencies, mark as "provided", so they can be later removed from published POM
-  libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web").map(
-    m => "org.openjfx" % s"javafx-$m" % javaFXVersion % "provided" classifier osName),
   // Add other dependencies
   libraryDependencies ++= Seq(
     "org.scala-lang" % "scala-reflect" % scalaVersion.value,
