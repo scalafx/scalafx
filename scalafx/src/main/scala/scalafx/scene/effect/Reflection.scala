@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object Reflection {
   implicit def sfxReflection2jfx(r: Reflection): jfxse.Reflection = if (r != null) r.delegate else null
@@ -51,7 +51,8 @@ class Reflection(override val delegate: jfxse.Reflection = new jfxse.Reflection)
    * The bottom opacity value, which is the opacity of the reflection at its bottom extreme.
    */
   def bottomOpacity: DoubleProperty = delegate.bottomOpacityProperty
-  def bottomOpacity_=(v: Double) {
+
+  def bottomOpacity_=(v: Double): Unit = {
     bottomOpacity() = v
   }
 
@@ -59,7 +60,8 @@ class Reflection(override val delegate: jfxse.Reflection = new jfxse.Reflection)
    * The fraction of the input that is visible in the reflection.
    */
   def fraction: DoubleProperty = delegate.fractionProperty
-  def fraction_=(v: Double) {
+
+  def fraction_=(v: Double): Unit = {
     fraction() = v
   }
 
@@ -67,7 +69,8 @@ class Reflection(override val delegate: jfxse.Reflection = new jfxse.Reflection)
    * The top offset adjustment, which is the distance between the bottom of the input and the top of the reflection.
    */
   def topOffset: DoubleProperty = delegate.topOffsetProperty
-  def topOffset_=(v: Double) {
+
+  def topOffset_=(v: Double): Unit = {
     topOffset() = v
   }
 
@@ -75,7 +78,8 @@ class Reflection(override val delegate: jfxse.Reflection = new jfxse.Reflection)
    * The top opacity value, which is the opacity of the reflection at its top extreme.
    */
   def topOpacity: DoubleProperty = delegate.topOpacityProperty
-  def topOpacity_=(v: Double) {
+
+  def topOpacity_=(v: Double): Unit = {
     topOpacity() = v
   }
 

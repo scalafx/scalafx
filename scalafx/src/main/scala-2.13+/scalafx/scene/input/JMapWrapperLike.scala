@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,10 +31,8 @@ import java.{util => ju}
 
 import scala.collection.{Iterator, mutable}
 
-private[input] trait JMapWrapperLike[A, B, +Repr <: mutable.MapLike[A, B, Repr]
-  with mutable.Map[A, B]]
-  extends mutable.Map[A, B]
-  with mutable.MapLike[A, B, Repr] {
+private[input] trait JMapWrapperLike[A, B]
+  extends mutable.Map[A, B] {
 
   def underlying: ju.Map[A, B]
 
@@ -50,15 +48,24 @@ private[input] trait JMapWrapperLike[A, B, +Repr <: mutable.MapLike[A, B, Repr]
       None
   }
 
-  def +=(kv: (A, B)): this.type = { underlying.put(kv._1, kv._2); this }
-  def -=(key: A): this.type = { underlying remove key; this }
+  override def addOne(kv: (A, B)): this.type = {
+    underlying.put(kv._1, kv._2);
+    this
+  }
+
+  override def subtractOne(key: A): this.type = {
+    underlying remove key;
+    this
+  }
 
   override def put(k: A, v: B): Option[B] = {
     val r = underlying.put(k, v)
     if (r != null) Some(r) else None
   }
 
-  override def update(k: A, v: B) { underlying.put(k, v) }
+  override def update(k: A, v: B): Unit = {
+    underlying.put(k, v)
+  }
 
   override def remove(k: A): Option[B] = {
     val r = underlying remove k
@@ -73,6 +80,4 @@ private[input] trait JMapWrapperLike[A, B, +Repr <: mutable.MapLike[A, B, Repr]
   }
 
   override def clear() = underlying.clear()
-
-  override def empty: Repr = null.asInstanceOf[Repr]
 }

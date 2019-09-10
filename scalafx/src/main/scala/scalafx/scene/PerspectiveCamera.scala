@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene
 
 import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty}
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object PerspectiveCamera {
   implicit def sfxPerspectiveCamera2jfx(c: PerspectiveCamera): jfxs.PerspectiveCamera = if (c != null) c.delegate else null
@@ -47,7 +47,8 @@ class PerspectiveCamera(override val delegate: jfxs.PerspectiveCamera = new jfxs
    * Specifies the vertical angle of the camera's projection.
    */
   def fieldOfView: DoubleProperty = delegate.fieldOfViewProperty
-  def fieldOfView_=(v: Double) {
+
+  def fieldOfView_=(v: Double): Unit = {
     fieldOfView() = v
   }
 
@@ -55,7 +56,8 @@ class PerspectiveCamera(override val delegate: jfxs.PerspectiveCamera = new jfxs
    * Defines whether the `fieldOfView` property is to apply to the vertical dimension of the projection plane.
    */
   def verticalFieldOfView: BooleanProperty = delegate.verticalFieldOfViewProperty
-  def verticalFieldOfView_=(v: Boolean) {
+
+  def verticalFieldOfView_=(v: Boolean): Unit = {
     verticalFieldOfView() = v
   }
 

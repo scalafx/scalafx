@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,9 @@
  */
 package scalafx.delegate
 
-import scala.language.reflectiveCalls
 import scalafx.delegate.FireDelegate._
+
+import scala.language.reflectiveCalls
 
 object FireDelegate {
 
@@ -35,7 +36,7 @@ object FireDelegate {
    * Defines a Type that contains a `fire()` method that has no return (`void`).
    */
   type Fired = {
-    def fire()
+    def fire(): Unit
   }
 
 }
@@ -49,7 +50,7 @@ trait FireDelegate[J <: Object with Fired]
   /**
    * Fires some kind of event.
    */
-  def fire() {
+  def fire(): Unit = {
     delegate.fire()
   }
 

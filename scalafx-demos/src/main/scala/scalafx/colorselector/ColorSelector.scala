@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 
 package scalafx.colorselector
 
-import scala.collection.Seq
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -46,6 +45,8 @@ import scalafx.scene.paint.Color
 import scalafx.scene.text.TextAlignment
 import scalafx.util.StringConverter
 
+import scala.collection.Seq
+
 
 object ColorSelector extends JFXApp {
 
@@ -63,7 +64,7 @@ object ColorSelector extends JFXApp {
 
   // METHODS - BEGIN
 
-  private def controlSelected(control: SliderControl) {
+  private def controlSelected(control: SliderControl): Unit = {
     if (control.selectedControl.value) {
       synchronizedControls.add(control)
     } else {
@@ -71,14 +72,14 @@ object ColorSelector extends JFXApp {
     }
   }
 
-  private def changeColor() {
+  private def changeColor(): Unit = {
     val newAlphaValue = if (controlAlpha.disabled.value) 1.0 else (controlAlpha.value.toDouble / colorselector.Max)
 
     this.currentColor() = Color.rgb(controlRed.value.toInt, controlGreen.value.toInt,
       controlBlue.value.toInt, newAlphaValue)
   }
 
-  private def synchronizeValues(buffer: ObservableBuffer[SliderControl], changes: Seq[Change[SliderControl]]) {
+  private def synchronizeValues(buffer: ObservableBuffer[SliderControl], changes: Seq[Change[SliderControl]]): Unit = {
     changes.head match {
       case Add(pos, added)      =>
         val media = buffer.map(_.value.value).sum / buffer.size
@@ -91,7 +92,7 @@ object ColorSelector extends JFXApp {
     }
   }
 
-  private def randomizeColors() {
+  private def randomizeColors(): Unit = {
     if (synchronizedControls.nonEmpty) {
       this.synchronizedValue() = math.random * colorselector.Max
     }
@@ -103,22 +104,22 @@ object ColorSelector extends JFXApp {
     }
   }
 
-  private def colorChanged() {
+  private def colorChanged(): Unit = {
     formatColor()
     verifyWebColor()
   }
 
-  private def formatColor() {
+  private def formatColor(): Unit = {
     this.txfColorValue.text() = this.cmbColorFormat.value.value.format(this.currentColor(), !this.chbDisableAlpha.selected.value)
   }
 
   private def getForegroundColor(d: Double) = if (d > Max / 2) Color.Black else Color.White
 
-  private def verifyWebColor() {
+  private def verifyWebColor(): Unit = {
     cmbWebColor.value() = WebColor.colors.find(_.sameColor(currentColor())).orNull
   }
 
-  private def webColorSelected() {
+  private def webColorSelected(): Unit = {
     if (this.cmbWebColor.value.value != null) {
       val color = this.cmbWebColor.value.value.color
       controlRed.value() = doubleToInt(color.red)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -82,12 +82,14 @@ class LineChart[X, Y](override val delegate: jfxsc.LineChart[X, Y])
    * Indicates whether the data passed to LineChart should be sorted by natural order of one of the axes.
    */
   def axisSortingPolicy: ObjectProperty[jfxsc.LineChart.SortingPolicy] = delegate.axisSortingPolicyProperty
-  def axisSortingPolicy_=(v: LineChart.SortingPolicy) {
+
+  def axisSortingPolicy_=(v: LineChart.SortingPolicy): Unit = {
     ObjectProperty.fillProperty(axisSortingPolicy, v)
   }
 
   def createSymbols: BooleanProperty = delegate.createSymbolsProperty
-  def createSymbols_=(v: Boolean) {
+
+  def createSymbols_=(v: Boolean): Unit = {
     createSymbols() = v
   }
 }

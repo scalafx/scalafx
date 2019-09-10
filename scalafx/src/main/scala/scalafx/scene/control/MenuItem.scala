@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,8 +28,6 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc, input => jfxsi}
 import javafx.{event => jfxe, scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty, StringProperty}
 import scalafx.css.Styleable
@@ -37,6 +35,8 @@ import scalafx.delegate.{FireDelegate, SFXDelegate}
 import scalafx.event.EventHandlerDelegate
 import scalafx.scene.Node
 import scalafx.scene.input.KeyCombination
+
+import scala.language.implicitConversions
 
 object MenuItem {
   implicit def sfxMenuItem2jfx(m: MenuItem): jfxsc.MenuItem = if (m != null) m.delegate else null
@@ -64,7 +64,8 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    *
    */
   def accelerator: ObjectProperty[jfxsi.KeyCombination] = delegate.acceleratorProperty
-  def accelerator_=(v: KeyCombination) {
+
+  def accelerator_=(v: KeyCombination): Unit = {
     accelerator() = v
   }
 
@@ -72,7 +73,8 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    *
    */
   def disable: BooleanProperty = delegate.disableProperty
-  def disable_=(v: Boolean) {
+
+  def disable_=(v: Boolean): Unit = {
     disable() = v
   }
 
@@ -80,7 +82,8 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    *
    */
   def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
-  def graphic_=(v: Node) {
+
+  def graphic_=(v: Node): Unit = {
     graphic() = v
   }
 
@@ -88,7 +91,8 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    *
    */
   def id: StringProperty = delegate.idProperty
-  def id_=(v: String) {
+
+  def id_=(v: String): Unit = {
     id() = v
   }
 
@@ -96,7 +100,8 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    * MnemonicParsing property to enable/disable text parsing.
    */
   def mnemonicParsing: BooleanProperty = delegate.mnemonicParsingProperty
-  def mnemonicParsing_=(v: Boolean) {
+
+  def mnemonicParsing_=(v: Boolean): Unit = {
     mnemonicParsing() = v
   }
 
@@ -104,7 +109,8 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    *
    */
   def onAction = delegate.onActionProperty
-  def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]) {
+
+  def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]): Unit = {
     onAction() = v
   }
 
@@ -122,7 +128,8 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    *
    */
   def style: StringProperty = delegate.styleProperty
-  def style_=(v: String) {
+
+  def style_=(v: String): Unit = {
     style() = v
   }
 
@@ -130,7 +137,8 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    *
    */
   def text: StringProperty = delegate.textProperty
-  def text_=(v: String) {
+
+  def text_=(v: String): Unit = {
     text() = v
   }
 
@@ -138,7 +146,8 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    *
    */
   def visible: BooleanProperty = delegate.visibleProperty
-  def visible_=(v: Boolean) {
+
+  def visible_=(v: Boolean): Unit = {
     visible() = v
   }
 
@@ -154,7 +163,8 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    * setUserData(java.lang.Object) method.
    */
   def userData: AnyRef = delegate.getUserData
-  def userData_=(v: AnyRef) {
+
+  def userData_=(v: AnyRef): Unit = {
     delegate.setUserData(v)
   }
 
@@ -165,7 +175,8 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    * @since 2.2
    */
   def onMenuValidation = delegate.onMenuValidationProperty()
-  def onMenuValidation_=(eventHandler: jfxe.EventHandler[jfxe.Event]) {
+
+  def onMenuValidation_=(eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onMenuValidation() = eventHandler
   }
 

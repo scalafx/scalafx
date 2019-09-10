@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object MultipleSelectionModel {
   implicit def sfxMultipleSelectionModel2jfx[T](v: MultipleSelectionModel[T]): jfxsc.MultipleSelectionModel[T] =
@@ -52,7 +52,8 @@ abstract class MultipleSelectionModel[T](override val delegate: jfxsc.MultipleSe
    * By default, the selection mode is SelectionMode.SINGLE.
    */
   def selectionMode: ObjectProperty[jfxsc.SelectionMode] = delegate.selectionModeProperty
-  def selectionMode_=(v: SelectionMode) {
+
+  def selectionMode_=(v: SelectionMode): Unit = {
     selectionMode() = v
   }
 
@@ -111,7 +112,7 @@ abstract class MultipleSelectionModel[T](override val delegate: jfxsc.MultipleSe
   /**
    * Convenience method to select all available indices.
    */
-  def selectAll() {
+  def selectAll(): Unit = {
     delegate.selectAll()
   }
 

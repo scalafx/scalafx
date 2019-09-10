@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,26 +28,22 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
-
 import org.scalatest.Matchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
-
 import scalafx.Includes._
 import scalafx.collections.ObservableMap
 
 /**
-  * ReadOnlyMapProperty Spec tests.
-  *
-  *
-  */
+ * ReadOnlyMapProperty Spec tests.
+ */
 class ReadOnlyMapPropertySpec extends FlatSpec with BeforeAndAfterEach {
 
-  val valueAsSeq = Seq("one" -> 1, "two" -> 2, "seven" -> 7)
-  val bean = new Object()
+  private val valueAsSeq = Seq("one" -> 1, "two" -> 2, "seven" -> 7)
+  private val bean = new Object()
 
-  var readOnlyMapProperty: jfxbp.ReadOnlyMapProperty[String, Int] = _
-  var mapProperty1: jfxbp.MapProperty[String, Int] = _
-  var mapProperty2: jfxbp.MapProperty[String, Int] = _
+  private var readOnlyMapProperty: jfxbp.ReadOnlyMapProperty[String, Int] = _
+  private var mapProperty1: jfxbp.MapProperty[String, Int] = _
+  private var mapProperty2: jfxbp.MapProperty[String, Int] = _
 
   override def beforeEach() {
 

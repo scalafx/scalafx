@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,14 +27,14 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa, geometry => jfxg, scene => jfxs, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Point3D
 import scalafx.scene.Node
 import scalafx.util.Duration
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.animation.RotateTransition]].
@@ -93,7 +93,8 @@ class RotateTransition(override val delegate: jfxa.RotateTransition = new jfxa.R
    * $DUR. $DV 400ms
    */
   def duration: ObjectProperty[jfxu.Duration] = delegate.durationProperty
-  def duration_=(d: Duration) {
+
+  def duration_=(d: Duration): Unit = {
     duration() = d
   }
 
@@ -101,7 +102,8 @@ class RotateTransition(override val delegate: jfxa.RotateTransition = new jfxa.R
    * Specifies the incremented stop angle value, from the start, of this $RT.
    */
   def byAngle: DoubleProperty = delegate.byAngleProperty
-  def byAngle_=(by: Double) {
+
+  def byAngle_=(by: Double): Unit = {
     byAngle() = by
   }
 
@@ -109,7 +111,8 @@ class RotateTransition(override val delegate: jfxa.RotateTransition = new jfxa.R
    * Specifies the stop angle value for this $RT. $DV Double.NaN
    */
   def toAngle: DoubleProperty = delegate.toAngleProperty
-  def toAngle_=(to: Double) {
+
+  def toAngle_=(to: Double): Unit = {
     toAngle() = to
   }
 
@@ -117,7 +120,8 @@ class RotateTransition(override val delegate: jfxa.RotateTransition = new jfxa.R
    * The target node of this $RT.
    */
   def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
-  def node_=(n: Node) {
+
+  def node_=(n: Node): Unit = {
     node() = n
   }
 
@@ -125,7 +129,8 @@ class RotateTransition(override val delegate: jfxa.RotateTransition = new jfxa.R
    * Specifies the axis of rotation for this $RT. $DV `null`
    */
   def axis: ObjectProperty[jfxg.Point3D] = delegate.axisProperty
-  def axis_=(p: Point3D) {
+
+  def axis_=(p: Point3D): Unit = {
     axis() = p
   }
 
@@ -133,7 +138,8 @@ class RotateTransition(override val delegate: jfxa.RotateTransition = new jfxa.R
    * Specifies the start angle value for this $RT. $DV Double.NaN
    */
   def fromAngle: DoubleProperty = delegate.fromAngleProperty
-  def fromAngle_=(from: Double) {
+
+  def fromAngle_=(from: Double): Unit = {
     fromAngle() = from
   }
 

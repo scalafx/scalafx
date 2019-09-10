@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -78,7 +78,7 @@ object TreeViewCellFactoryDemo extends JFXApp {
         showRoot = false
         root = new TreeItem[Person] {
           expanded = true
-          children = ObservableBuffer(parents map toTreeItem)
+          children = parents.map(toTreeItem).toSeq
         }
         //        // Do not implement CellFactory through `treeItem.onChange` it results in rendering artifacts
         //        cellFactory = (v: TreeView[Person]) => new TreeCell[Person] {

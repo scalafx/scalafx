@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene
 
 import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyBooleanProperty
 import scalafx.collections._
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object Parent {
   implicit def sfxParent2jfx(v: Parent): jfxs.Parent = if (v != null) v.delegate else null
@@ -61,7 +61,7 @@ abstract class Parent(override val delegate: jfxs.Parent)
    *
    * @param c list of stylesheets URLs to replace prior content.
    */
-  def stylesheets_=(c: Iterable[String]) {
+  def stylesheets_=(c: Iterable[String]): Unit = {
     fillCollection(this.stylesheets, c)
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,11 +28,11 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object Skin {
   implicit def sfxSkin2jfx[C <: jfxsc.Skinnable](s: Skin[C]): jfxsc.Skin[C] = if (s != null) s.delegate else null
@@ -46,7 +46,7 @@ trait Skin[C <: jfxsc.Skinnable] extends SFXDelegate[jfxsc.Skin[C]] {
   /**
    * Called by a Skinnable when the Skin is replaced on the Skinnable.
    */
-  def dispose() {
+  def dispose(): Unit = {
     delegate.dispose()
   }
 

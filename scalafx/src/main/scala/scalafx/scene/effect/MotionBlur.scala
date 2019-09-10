@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object MotionBlur {
   implicit def sfxMotionBlur2jfx(mb: MotionBlur): jfxse.MotionBlur = if (mb != null) mb.delegate else null
@@ -51,7 +51,8 @@ class MotionBlur(override val delegate: jfxse.MotionBlur = new jfxse.MotionBlur)
    * The angle of the motion effect, in degrees.
    */
   def angle: DoubleProperty = delegate.angleProperty
-  def angle_=(v: Double) {
+
+  def angle_=(v: Double): Unit = {
     angle() = v
   }
 
@@ -59,7 +60,8 @@ class MotionBlur(override val delegate: jfxse.MotionBlur = new jfxse.MotionBlur)
    * The radius of the blur kernel.
    */
   def radius: DoubleProperty = delegate.radiusProperty
-  def radius_=(v: Double) {
+
+  def radius_=(v: Double): Unit = {
     radius() = v
   }
 

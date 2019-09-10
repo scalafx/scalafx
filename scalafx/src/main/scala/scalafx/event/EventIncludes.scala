@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.event
 
 import javafx.{event => jfxe}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object EventIncludes extends EventIncludes
 
@@ -109,7 +109,7 @@ trait EventIncludes {
    * @return JavaFX EventHandler which will wrap the input code `handler`.
    */
   def handle[J <: jfxe.Event, R](handler: => R) = new jfxe.EventHandler[J] {
-    def handle(event: J) {
+    def handle(event: J): Unit = {
       handler
     }
   }
@@ -131,7 +131,7 @@ trait EventIncludes {
    */
   implicit def eventClosureWrapperWithZeroParam[T <: jfxe.Event, R](handler: () => R): jfxe.EventHandler[T] =
     new jfxe.EventHandler[T] {
-      def handle(event: T) {
+      def handle(event: T): Unit = {
         handler()
       }
     }
@@ -153,7 +153,7 @@ trait EventIncludes {
    */
   implicit def eventClosureWrapperWithParam[J <: jfxe.Event, S <: SFXDelegate[J], R](handler: (S) => R)(implicit jfx2sfx: J => S): jfxe.EventHandler[J] =
     new jfxe.EventHandler[J] {
-      def handle(event: J) {
+      def handle(event: J): Unit = {
         handler(event)
       }
     }

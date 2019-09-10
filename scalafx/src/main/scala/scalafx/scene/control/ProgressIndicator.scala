@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ReadOnlyBooleanProperty}
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object ProgressIndicator {
   implicit def sfxProgressIndicator2jfx(v: ProgressIndicator): jfxsc.ProgressIndicator = if (v != null) v.delegate else null
@@ -57,7 +57,8 @@ class ProgressIndicator(override val delegate: jfxsc.ProgressIndicator = new jfx
    * The actual progress of the ProgressIndicator.
    */
   def progress: DoubleProperty = delegate.progressProperty
-  def progress_=(v: Double) {
+
+  def progress_=(v: Double): Unit = {
     progress() = v
   }
 

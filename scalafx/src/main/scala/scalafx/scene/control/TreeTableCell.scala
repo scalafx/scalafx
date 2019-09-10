@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyObjectProperty
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 /**
  * Object Companion for [[scalafx.scene.control.SortEvent]]
@@ -93,7 +93,7 @@ class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new
    *
    * @see $URL0#updateTreeTableView-javafx.scene.control.TreeTableView- $ORIGINALDOC
    */
-  def updateTreeTableView(tv: TreeTableView[S]) {
+  def updateTreeTableView(tv: TreeTableView[S]): Unit = {
     delegate.updateTreeTableView(tv)
   }
 
@@ -102,7 +102,7 @@ class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new
    *
    * @see $URL0#updateTreeTableRow-javafx.scene.control.TreeTableRow- $ORIGINALDOC
    */
-  def updateTreeTableRow(treeTableRow: TreeTableRow[S]) {
+  def updateTreeTableRow(treeTableRow: TreeTableRow[S]): Unit = {
     delegate.updateTreeTableRow(treeTableRow)
   }
 
@@ -111,7 +111,7 @@ class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new
    *
    * @see $URL0#updateTreeTableColumn-javafx.scene.control.TreeTableColumn- $ORIGINALDOC
    */
-  def updateTreeTableColumn(col: TreeTableColumn[S, T]) {
+  def updateTreeTableColumn(col: TreeTableColumn[S, T]): Unit = {
     delegate.updateTreeTableColumn(col)
   }
 

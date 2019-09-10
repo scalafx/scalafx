@@ -144,7 +144,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * The BlendMode used to blend this individual node into the scene behind it.
    */
   def blendMode: ObjectProperty[jfxse.BlendMode] = delegate.blendModeProperty
-  def blendMode_=(v: BlendMode) {
+
+  def blendMode_=(v: BlendMode): Unit = {
     blendMode() = v
   }
 
@@ -162,7 +163,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Additional hint for controlling bitmap caching.
    */
   def cacheHint: ObjectProperty[jfxs.CacheHint] = delegate.cacheHintProperty
-  def cacheHint_=(v: CacheHint) {
+
+  def cacheHint_=(v: CacheHint): Unit = {
     cacheHint() = v
   }
 
@@ -170,7 +172,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * A performance hint to the system to indicate that this Node should be cached as a bitmap.
    */
   def cache: BooleanProperty = delegate.cacheProperty
-  def cache_=(v: Boolean) {
+
+  def cache_=(v: Boolean): Unit = {
     cache() = v
   }
 
@@ -178,7 +181,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Specifies a Node to use to define the the clipping shape for this Node.
    */
   def clip: ObjectProperty[jfxs.Node] = delegate.clipProperty
-  def clip_=(v: Node) {
+
+  def clip_=(v: Node): Unit = {
     clip() = v
   }
 
@@ -198,7 +202,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Defines the mouse cursor for this Node and subnodes.
    */
   def cursor: ObjectProperty[jfxs.Cursor] = delegate.cursorProperty
-  def cursor_=(v: Cursor) {
+
+  def cursor_=(v: Cursor): Unit = {
     cursor() = v
   }
 
@@ -206,7 +211,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Indicates whether depth testing is used when rendering this node.
    */
   def depthTest: ObjectProperty[jfxs.DepthTest] = delegate.depthTestProperty
-  def depthTest_=(v: DepthTest) {
+
+  def depthTest_=(v: DepthTest): Unit = {
     depthTest() = v
   }
 
@@ -219,7 +225,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Sets the individual disabled state of this Node.
    */
   def disable: BooleanProperty = delegate.disableProperty
-  def disable_=(v: Boolean) {
+
+  def disable_=(v: Boolean): Unit = {
     disable() = v
   }
 
@@ -227,7 +234,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Specifies an effect to apply to this Node.
    */
   def effect: ObjectProperty[jfxse.Effect] = delegate.effectProperty
-  def effect_=(v: Effect) {
+
+  def effect_=(v: Effect): Unit = {
     ObjectProperty.fillProperty[jfxse.Effect](this.effect, v)
   }
 
@@ -235,7 +243,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Specifies the event dispatcher for this node.
    */
   def eventDispatcher: ObjectProperty[jfxe.EventDispatcher] = delegate.eventDispatcherProperty
-  def eventDispatcher_=(v: jfxe.EventDispatcher) {
+
+  def eventDispatcher_=(v: jfxe.EventDispatcher): Unit = {
     eventDispatcher() = v
   }
 
@@ -248,7 +257,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Specifies whether this Node should be a part of focus traversal cycle.
    */
   def focusTraversable: BooleanProperty = delegate.focusTraversableProperty
-  def focusTraversable_=(v: Boolean) {
+
+  def focusTraversable_=(v: Boolean): Unit = {
     focusTraversable() = v
   }
 
@@ -261,7 +271,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * The id of this Node.
    */
   def id: StringProperty = delegate.idProperty
-  def id_=(v: String) {
+
+  def id_=(v: String): Unit = {
     id() = v
   }
 
@@ -269,7 +280,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Property holding InputMethodRequests.
    */
   def inputMethodRequests: ObjectProperty[jfxsi.InputMethodRequests] = delegate.inputMethodRequestsProperty
-  def inputMethodRequests_=(v: jfxsi.InputMethodRequests) {
+
+  def inputMethodRequests_=(v: jfxsi.InputMethodRequests): Unit = {
     inputMethodRequests() = v
   }
 
@@ -283,7 +295,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * purpose of layout.
    */
   def layoutX: DoubleProperty = delegate.layoutXProperty
-  def layoutX_=(v: Double) {
+
+  def layoutX_=(v: Double): Unit = {
     layoutX() = v
   }
 
@@ -293,7 +306,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def layoutY: DoubleProperty = delegate.layoutYProperty
 
-  def layoutY_=(v: Double) {
+  def layoutY_=(v: Double): Unit = {
     layoutY() = v
   }
 
@@ -302,7 +315,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def managed: BooleanProperty = delegate.managedProperty
 
-  def managed_=(v: Boolean) {
+  def managed_=(v: Boolean): Unit = {
     managed() = v
   }
 
@@ -311,7 +324,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def mouseTransparent: BooleanProperty = delegate.mouseTransparentProperty
 
-  def mouseTransparent_=(v: Boolean) {
+  def mouseTransparent_=(v: Boolean): Unit = {
     mouseTransparent() = v
   }
 
@@ -319,7 +332,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Node orientation describes the flow of visual data within a node.
    */
   def nodeOrientation: ObjectProperty[jfxg.NodeOrientation] = delegate.nodeOrientationProperty
-  def nodeOrientation_=(v: NodeOrientation) {
+
+  def nodeOrientation_=(v: NodeOrientation): Unit = {
     ObjectProperty.fillProperty[jfxg.NodeOrientation](this.nodeOrientation, v)
   }
 
@@ -333,7 +347,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onContextMenuRequested = delegate.onContextMenuRequestedProperty
 
-  def onContextMenuRequested_=(v: jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]) {
+  def onContextMenuRequested_=(v: jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]): Unit = {
     onContextMenuRequested() = v
   }
 
@@ -342,7 +356,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onDragDetected = delegate.onDragDetectedProperty
 
-  def onDragDetected_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onDragDetected_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]): Unit = {
     onDragDetected() = v
   }
 
@@ -352,7 +366,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onDragDone = delegate.onDragDoneProperty
 
-  def onDragDone_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
+  def onDragDone_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]): Unit = {
     onDragDone() = v
   }
 
@@ -362,7 +376,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onDragDropped = delegate.onDragDroppedProperty
 
-  def onDragDropped_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
+  def onDragDropped_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]): Unit = {
     onDragDropped() = v
   }
 
@@ -371,7 +385,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onDragEntered = delegate.onDragEnteredProperty
 
-  def onDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
+  def onDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]): Unit = {
     onDragEntered() = v
   }
 
@@ -380,7 +394,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onDragExited = delegate.onDragExitedProperty
 
-  def onDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
+  def onDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]): Unit = {
     onDragExited() = v
   }
 
@@ -389,7 +403,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onDragOver = delegate.onDragOverProperty
 
-  def onDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]) {
+  def onDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.DragEvent]): Unit = {
     onDragOver() = v
   }
 
@@ -399,7 +413,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onInputMethodTextChanged = delegate.onInputMethodTextChangedProperty
 
-  def onInputMethodTextChanged_=(v: jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]) {
+  def onInputMethodTextChanged_=(v: jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]): Unit = {
     onInputMethodTextChanged() = v
   }
 
@@ -409,7 +423,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onKeyPressed = delegate.onKeyPressedProperty
 
-  def onKeyPressed_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
+  def onKeyPressed_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]): Unit = {
     onKeyPressed() = v
   }
 
@@ -419,7 +433,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onKeyReleased = delegate.onKeyReleasedProperty
 
-  def onKeyReleased_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
+  def onKeyReleased_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]): Unit = {
     onKeyReleased() = v
   }
 
@@ -429,7 +443,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onKeyTyped = delegate.onKeyTypedProperty
 
-  def onKeyTyped_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]) {
+  def onKeyTyped_=(v: jfxe.EventHandler[_ >: jfxsi.KeyEvent]): Unit = {
     onKeyTyped() = v
   }
 
@@ -439,7 +453,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onMouseClicked = delegate.onMouseClickedProperty
 
-  def onMouseClicked_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseClicked_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]): Unit = {
     onMouseClicked() = v
   }
 
@@ -448,7 +462,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onMouseDragged = delegate.onMouseDraggedProperty
 
-  def onMouseDragged_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseDragged_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]): Unit = {
     onMouseDragged() = v
   }
 
@@ -457,7 +471,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onMouseDragEntered = delegate.onMouseDragEnteredProperty
 
-  def onMouseDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]) {
+  def onMouseDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragEntered() = v
   }
 
@@ -466,7 +480,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onMouseDragExited = delegate.onMouseDragExitedProperty
 
-  def onMouseDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]) {
+  def onMouseDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragExited() = v
   }
 
@@ -475,7 +489,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onMouseDragOver = delegate.onMouseDragOverProperty
 
-  def onMouseDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]) {
+  def onMouseDragOver_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragOver() = v
   }
 
@@ -485,7 +499,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onMouseDragReleased = delegate.onMouseDragReleasedProperty
 
-  def onMouseDragReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]) {
+  def onMouseDragReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragReleased() = v
   }
 
@@ -494,7 +508,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onMouseEntered = delegate.onMouseEnteredProperty
 
-  def onMouseEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]): Unit = {
     onMouseEntered() = v
   }
 
@@ -503,13 +517,13 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onMouseExited = delegate.onMouseExitedProperty
 
-  def onMouseExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]): Unit = {
     onMouseExited() = v
   }
 
   def onMouseMoved = delegate.onMouseMovedProperty
 
-  def onMouseMoved_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseMoved_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]): Unit = {
     onMouseMoved() = v
   }
 
@@ -518,7 +532,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onMousePressed = delegate.onMousePressedProperty
 
-  def onMousePressed_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMousePressed_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]): Unit = {
     onMousePressed() = v
   }
 
@@ -527,7 +541,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onMouseReleased = delegate.onMouseReleasedProperty
 
-  def onMouseReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]) {
+  def onMouseReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseEvent]): Unit = {
     onMouseReleased() = v
   }
 
@@ -536,7 +550,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def onScroll = delegate.onScrollProperty
 
-  def onScroll_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]) {
+  def onScroll_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]): Unit = {
     onScroll() = v
   }
 
@@ -545,7 +559,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def opacity: DoubleProperty = delegate.opacityProperty
 
-  def opacity_=(v: Double) {
+  def opacity_=(v: Double): Unit = {
     opacity() = v
   }
 
@@ -560,7 +574,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def pickOnBounds: BooleanProperty = delegate.pickOnBoundsProperty
 
-  def pickOnBounds_=(v: Boolean) {
+  def pickOnBounds_=(v: Boolean): Unit = {
     pickOnBounds() = v
   }
 
@@ -574,7 +588,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def rotate: DoubleProperty = delegate.rotateProperty
 
-  def rotate_=(v: Double) {
+  def rotate_=(v: Double): Unit = {
     rotate() = v
   }
 
@@ -583,7 +597,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def rotationAxis: ObjectProperty[jfxg.Point3D] = delegate.rotationAxisProperty
 
-  def rotationAxis_=(v: Point3D) {
+  def rotationAxis_=(v: Point3D): Unit = {
     rotationAxis() = v
   }
 
@@ -593,7 +607,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def scaleX: DoubleProperty = delegate.scaleXProperty
 
-  def scaleX_=(v: Double) {
+  def scaleX_=(v: Double): Unit = {
     scaleX() = v
   }
 
@@ -603,7 +617,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def scaleY: DoubleProperty = delegate.scaleYProperty
 
-  def scaleY_=(v: Double) {
+  def scaleY_=(v: Double): Unit = {
     scaleY() = v
   }
 
@@ -613,7 +627,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def scaleZ: DoubleProperty = delegate.scaleZProperty
 
-  def scaleZ_=(v: Double) {
+  def scaleZ_=(v: Double): Unit = {
     scaleZ() = v
   }
 
@@ -627,7 +641,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def style: StringProperty = delegate.styleProperty
 
-  def style_=(v: String) {
+  def style_=(v: String): Unit = {
     style() = v
   }
 
@@ -637,7 +651,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    *
    * @param c list of CSS styles classes to replace prior content.
    */
-  def styleClass_=(c: Iterable[String]) {
+  def styleClass_=(c: Iterable[String]): Unit = {
     fillCollection(styleClass, c)
   }
 
@@ -652,7 +666,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    *
    * @param c list of transforms to replace prior content.
    */
-  def transforms_=(c: Iterable[Transform]) {
+  def transforms_=(c: Iterable[Transform]): Unit = {
     fillSFXCollection(transforms, c)
   }
 
@@ -661,7 +675,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def translateX: DoubleProperty = delegate.translateXProperty
 
-  def translateX_=(v: Double) {
+  def translateX_=(v: Double): Unit = {
     translateX() = v
   }
 
@@ -670,7 +684,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def translateY: DoubleProperty = delegate.translateYProperty
 
-  def translateY_=(v: Double) {
+  def translateY_=(v: Double): Unit = {
     translateY() = v
   }
 
@@ -680,7 +694,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def translateZ: DoubleProperty = delegate.translateZProperty
 
-  def translateZ_=(v: Double) {
+  def translateZ_=(v: Double): Unit = {
     translateZ() = v
   }
 
@@ -690,7 +704,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def userData = delegate.getUserData
 
-  def userData_=(v: AnyRef) {
+  def userData_=(v: AnyRef): Unit = {
     delegate.setUserData(v)
   }
 
@@ -699,7 +713,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    */
   def visible: BooleanProperty = delegate.visibleProperty
 
-  def visible_=(v: Boolean) {
+  def visible_=(v: Boolean): Unit = {
     visible() = v
   }
 
@@ -731,7 +745,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    *
    * @param p New node's Position
    */
-  def alignmentInParent_=(p: Pos) {
+  def alignmentInParent_=(p: Pos): Unit = {
     val delegateProperties = delegate.getProperties
     delegateProperties.put("alignment", delegateOrNull(p))
     delegateProperties("halignment") = if (p != null) p.hpos.delegate else null
@@ -759,7 +773,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    *
    * @param i The margin of space around this Node inside its parent.
    */
-  def margin_=(i: Insets) {
+  def margin_=(i: Insets): Unit = {
     delegate.getProperties.put("margin", delegateOrNull(i))
     // for compatibility with layouts, which all use different keys
     jfxsl.BorderPane.setMargin(delegate, i)
@@ -786,7 +800,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    *
    * @param p the horizontal grow priority for this Node
    */
-  def hgrow_=(p: Priority) {
+  def hgrow_=(p: Priority): Unit = {
     delegate.getProperties("hgrow") = delegateOrNull(p)
     // for compatibility with layouts, which all use different keys
     jfxsl.GridPane.setHgrow(delegate, p)
@@ -808,7 +822,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    *
    * @param p the vertical grow priority for this Node
    */
-  def vgrow_=(p: Priority) {
+  def vgrow_=(p: Priority): Unit = {
     delegate.getProperties("vgrow") = delegateOrNull(p)
     // for compatibility with layouts, which all use different keys
     jfxsl.GridPane.setVgrow(delegate, p)
@@ -818,7 +832,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
   /**
    * If the node is resizable, will set its layout bounds to its current preferred width and height.
    */
-  def autosize() {
+  def autosize(): Unit = {
     delegate.autosize()
   }
 
@@ -837,7 +851,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
   /**
    * Fires the specified event.
    */
-  def fireEvent(event: Event) {
+  def fireEvent(event: Event): Unit = {
     delegate.fireEvent(event)
   }
 
@@ -948,7 +962,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Sets the node's layoutX and layoutY translation properties in order to relocate this node
    * to the x,y location in the parent.
    */
-  def relocate(x: Double, y: Double) {
+  def relocate(x: Double, y: Double): Unit = {
     delegate.relocate(x, y)
   }
 
@@ -956,21 +970,21 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Requests that this Node get the input focus, and that this Node's top-level ancestor become
    * the focused window.
    */
-  def requestFocus() {
+  def requestFocus(): Unit = {
     delegate.requestFocus()
   }
 
   /**
    * If the node is resizable, will set its layout bounds to the specified width and height.
    */
-  def resize(width: Double, height: Double) {
+  def resize(width: Double, height: Double): Unit = {
     delegate.resize(width, height)
   }
 
   /**
    * If the node is resizable, will set its layout bounds to the specified width and height.
    */
-  def resizeRelocate(x: Double, y: Double, width: Double, height: Double) {
+  def resizeRelocate(x: Double, y: Double, width: Double, height: Double): Unit = {
     delegate.resizeRelocate(x, y, width, height)
   }
 
@@ -1002,7 +1016,7 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * Takes a snapshot of this node at the next frame and calls the specified callback method when the image is ready.
    * Arguments `params` and `image` can be null.
    */
-  def snapshot(callback: SnapshotResult => Unit, params: SnapshotParameters, image: WritableImage) {
+  def snapshot(callback: SnapshotResult => Unit, params: SnapshotParameters, image: WritableImage): Unit = {
     val jfxCallback = new Callback[jfxs.SnapshotResult, java.lang.Void] {
       override def call(result: jfxs.SnapshotResult): java.lang.Void = {
         callback(new SnapshotResult(result))
@@ -1021,21 +1035,21 @@ abstract class Node protected(override val delegate: jfxs.Node)
   /**
    * Starts a full press-drag-release gesture with this node as gesture source.
    */
-  def startFullDrag() {
+  def startFullDrag(): Unit = {
     delegate.startFullDrag()
   }
 
   /**
    * Moves this Node to the back of its sibling nodes in terms of z-order.
    */
-  def toBack() {
+  def toBack(): Unit = {
     delegate.toBack()
   }
 
   /**
    * Moves this Node to the front of its sibling nodes in terms of z-order.
    */
-  def toFront() {
+  def toFront(): Unit = {
     delegate.toFront()
   }
 
@@ -1062,7 +1076,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onRotate = delegate.onRotateProperty
-  def onRotate_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]) {
+
+  def onRotate_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]): Unit = {
     onRotate() = v
   }
 
@@ -1072,7 +1087,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onRotationFinished = delegate.onRotationFinishedProperty()
-  def onRotationFinished_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]) {
+
+  def onRotationFinished_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]): Unit = {
     onRotationFinished() = v
   }
 
@@ -1082,7 +1098,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onRotationStarted = delegate.onRotationFinishedProperty()
-  def onRotationStarted_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]) {
+
+  def onRotationStarted_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]): Unit = {
     onRotationStarted() = v
   }
 
@@ -1092,7 +1109,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onScrollFinished = delegate.onScrollFinishedProperty()
-  def onScrollFinished_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]) {
+
+  def onScrollFinished_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]): Unit = {
     onScrollFinished() = v
   }
 
@@ -1102,7 +1120,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onScrollStarted = delegate.onScrollStartedProperty()
-  def onScrollStarted_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]) {
+
+  def onScrollStarted_=(v: jfxe.EventHandler[_ >: jfxsi.ScrollEvent]): Unit = {
     onScrollStarted() = v
   }
 
@@ -1112,7 +1131,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onSwipeDown = delegate.onSwipeDownProperty()
-  def onSwipeDown_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]) {
+
+  def onSwipeDown_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]): Unit = {
     onSwipeDown() = v
   }
 
@@ -1122,7 +1142,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onSwipeLeft = delegate.onSwipeLeftProperty()
-  def onSwipeLeft_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]) {
+
+  def onSwipeLeft_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]): Unit = {
     onSwipeLeft() = v
   }
 
@@ -1132,7 +1153,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onSwipeUp = delegate.onSwipeUpProperty()
-  def onSwipeUp_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]) {
+
+  def onSwipeUp_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]): Unit = {
     onSwipeUp() = v
   }
 
@@ -1142,7 +1164,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onSwipeRight = delegate.onSwipeRightProperty()
-  def onSwipeRight_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]) {
+
+  def onSwipeRight_=(v: jfxe.EventHandler[_ >: jfxsi.SwipeEvent]): Unit = {
     onSwipeRight() = v
   }
 
@@ -1152,7 +1175,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onZoom = delegate.onZoomProperty()
-  def onZoom_=(v: jfxe.EventHandler[_ >: jfxsi.ZoomEvent]) {
+
+  def onZoom_=(v: jfxe.EventHandler[_ >: jfxsi.ZoomEvent]): Unit = {
     onZoom() = v
   }
 
@@ -1162,7 +1186,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onZoomFinished = delegate.onZoomFinishedProperty()
-  def onZoomFinished_=(v: jfxe.EventHandler[_ >: jfxsi.ZoomEvent]) {
+
+  def onZoomFinished_=(v: jfxe.EventHandler[_ >: jfxsi.ZoomEvent]): Unit = {
     onZoomFinished() = v
   }
 
@@ -1172,7 +1197,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onZoomStarted = delegate.onZoomStartedProperty()
-  def onZoomStarted_=(v: jfxe.EventHandler[_ >: jfxsi.ZoomEvent]) {
+
+  def onZoomStarted_=(v: jfxe.EventHandler[_ >: jfxsi.ZoomEvent]): Unit = {
     onZoomStarted() = v
   }
 
@@ -1182,7 +1208,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onTouchMoved = delegate.onTouchMovedProperty()
-  def onTouchMoved_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]) {
+
+  def onTouchMoved_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]): Unit = {
     onTouchMoved() = v
   }
 
@@ -1192,7 +1219,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onTouchPressed = delegate.onTouchPressedProperty()
-  def onTouchPressed_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]) {
+
+  def onTouchPressed_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]): Unit = {
     onTouchPressed() = v
   }
 
@@ -1202,7 +1230,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onTouchReleased = delegate.onTouchReleasedProperty()
-  def onTouchReleased_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]) {
+
+  def onTouchReleased_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]): Unit = {
     onTouchReleased() = v
   }
 
@@ -1212,7 +1241,8 @@ abstract class Node protected(override val delegate: jfxs.Node)
    * @since 2.2
    */
   def onTouchStationary = delegate.onTouchStationaryProperty()
-  def onTouchStationary_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]) {
+
+  def onTouchStationary_=(v: jfxe.EventHandler[_ >: jfxsi.TouchEvent]): Unit = {
     onTouchStationary() = v
   }
 

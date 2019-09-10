@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.IntegerProperty
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object FloatMap {
   implicit def sfxFloatMap2jfx(fm: FloatMap): jfxse.FloatMap = if (fm != null) fm.delegate else null
@@ -45,7 +45,8 @@ class FloatMap(override val delegate: jfxse.FloatMap = new jfxse.FloatMap) exten
    * The height of the map, in pixels.
    */
   def height: IntegerProperty = delegate.heightProperty
-  def height_=(v: Int) {
+
+  def height_=(v: Int): Unit = {
     height() = v
   }
 
@@ -53,42 +54,43 @@ class FloatMap(override val delegate: jfxse.FloatMap = new jfxse.FloatMap) exten
    * The width of the map, in pixels.
    */
   def width: IntegerProperty = delegate.widthProperty
-  def width_=(v: Int) {
+
+  def width_=(v: Int): Unit = {
     width() = v
   }
 
   /**
    * Sets the sample for a specific band at the given (x,y) location.
    */
-  def setSample(x: Int, y: Int, band: Int, s: Float) {
+  def setSample(x: Int, y: Int, band: Int, s: Float): Unit = {
     delegate.setSample(x, y, band, s)
   }
 
   /**
    * Sets the sample for the first band at the given (x,y) location.
    */
-  def setSamples(x: Int, y: Int, s0: Float) {
+  def setSamples(x: Int, y: Int, s0: Float): Unit = {
     delegate.setSamples(x, y, s0)
   }
 
   /**
    * Sets the sample for the first two bands at the given (x,y) location.
    */
-  def setSamples(x: Int, y: Int, s0: Float, s1: Float) {
+  def setSamples(x: Int, y: Int, s0: Float, s1: Float): Unit = {
     delegate.setSamples(x, y, s0, s1)
   }
 
   /**
    * Sets the sample for the first three bands at the given (x,y) location.
    */
-  def setSamples(x: Int, y: Int, s0: Float, s1: Float, s2: Float) {
+  def setSamples(x: Int, y: Int, s0: Float, s1: Float, s2: Float): Unit = {
     delegate.setSamples(x, y, s0, s1, s2)
   }
 
   /**
    * Sets the sample for each of the four bands at the given (x,y) location.
    */
-  def setSamples(x: Int, y: Int, s0: Float, s1: Float, s2: Float, s3: Float) {
+  def setSamples(x: Int, y: Int, s0: Float, s1: Float, s2: Float, s3: Float): Unit = {
     delegate.setSamples(x, y, s0, s1, s2, s3)
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,12 @@ package scalafx.scene
 
 import javafx.beans.{property => jfxbp}
 import javafx.scene.{effect => jfxse, paint => jfxsp}
-
-import scala.language.reflectiveCalls
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color
+
+import scala.language.reflectiveCalls
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/package-summary.html `javafx.scene.effect`]] package.
@@ -57,7 +57,8 @@ package object effect {
      * The input for this Effect.
      */
     def input: ObjectProperty[jfxse.Effect] = delegate.inputProperty()
-    def input_=(v: Effect) {
+
+    def input_=(v: Effect): Unit = {
       input() = v
     }
 
@@ -80,7 +81,8 @@ package object effect {
      * The Effect's color.
      */
     def color: ObjectProperty[jfxsp.Color] = delegate.colorProperty()
-    def color_=(c: Color) {
+
+    def color_=(c: Color): Unit = {
       color() = c
     }
 

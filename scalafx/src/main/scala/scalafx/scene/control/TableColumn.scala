@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -198,14 +198,16 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    */
   def cellFactory: ObjectProperty[TableColumn[S, T] => TableCell[S, T]] =
     ObjectProperty((column: TableColumn[S, T]) => new TableCell(delegate.cellFactoryProperty.getValue.call(column)))
-  def cellFactory_=(f: TableColumn[S, T] => TableCell[S, T]) {
+
+  def cellFactory_=(f: TableColumn[S, T] => TableCell[S, T]): Unit = {
     delegate.cellFactoryProperty.setValue(new jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] {
       def call(v: jfxsc.TableColumn[S, T]): jfxsc.TableCell[S, T] = {
         f(v)
       }
     })
   }
-  def cellFactory_=(callback: jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]]) {
+
+  def cellFactory_=(callback: jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]]): Unit = {
     delegate.cellFactoryProperty.setValue(callback)
   }
 
@@ -236,7 +238,8 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    */
   def cellValueFactory: ObjectProperty[TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]] =
     ObjectProperty((features: TableColumn.CellDataFeatures[S, T]) => delegate.cellValueFactoryProperty.getValue.call(features))
-  def cellValueFactory_=(f: TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]) {
+
+  def cellValueFactory_=(f: TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]): Unit = {
     delegate.cellValueFactoryProperty.setValue(new jfxu.Callback[jfxsc.TableColumn.CellDataFeatures[S, T], jfxbv.ObservableValue[T]] {
       def call(v: jfxsc.TableColumn.CellDataFeatures[S, T]): jfxbv.ObservableValue[T] = {
         f(v).delegate
@@ -254,7 +257,8 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    * This event handler will be fired when the user cancels editing a cell.
    */
   def onEditCancel = delegate.onEditCancelProperty
-  def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]) {
+
+  def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]): Unit = {
     onEditCancel() = v
   }
 
@@ -262,7 +266,8 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    * This event handler will be fired when the user successfully commits their editing.
    */
   def onEditCommit = delegate.onEditCommitProperty
-  def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]) {
+
+  def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]): Unit = {
     onEditCommit() = v
   }
 
@@ -270,7 +275,8 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    * This event handler will be fired when the user successfully initiates editing.
    */
   def onEditStart = delegate.onEditCommitProperty
-  def onEditStart_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]) {
+
+  def onEditStart_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]): Unit = {
     onEditStart() = v
   }
 
@@ -279,7 +285,8 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    * ascending or descending order.
    */
   def sortType: ObjectProperty[jfxsc.TableColumn.SortType] = delegate.sortTypeProperty
-  def sortType_=(v: TableColumn.SortType) {
+
+  def sortType_=(v: TableColumn.SortType): Unit = {
     sortType() = v
   }
 

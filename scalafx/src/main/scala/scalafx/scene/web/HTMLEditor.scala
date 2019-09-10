@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.web
 
 import javafx.scene.{web => jfxsw}
-
-import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.print.PrinterJob
 import scalafx.scene.control.Control
+
+import scala.language.implicitConversions
 
 /**
  * Companion object for [[scalafx.scene.web.HTMLEditor]]
@@ -62,7 +62,8 @@ class HTMLEditor(override val delegate: jfxsw.HTMLEditor = new jfxsw.HTMLEditor)
    * Returns the HTML content of the editor.
    */
   def htmlText = delegate.getHtmlText
-  def htmlText_=(htmlText: String) {
+
+  def htmlText_=(htmlText: String): Unit = {
     delegate.setHtmlText(htmlText)
   }
 

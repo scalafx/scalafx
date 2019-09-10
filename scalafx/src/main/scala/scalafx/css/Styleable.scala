@@ -60,7 +60,7 @@ trait Styleable
   /**
    * The CssMetaData of this Styleable.
    */
-  def cssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getCssMetaData.asScala
+  def cssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getCssMetaData.asScala.toSeq
 
   /**
    * The id of this Styleable.

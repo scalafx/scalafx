@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,13 @@ package scalafx.scene.transform
 
 import javafx.scene.{transform => jfxst}
 import javafx.{geometry => jfxg}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Point3D
 import scalafx.geometry.Point3D._
+
+import scala.language.implicitConversions
 
 object Rotate {
   implicit def sfxRotate2jfx(v: Rotate): jfxst.Rotate = if (v != null) v.delegate else null
@@ -91,7 +91,8 @@ class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate) extends Tra
    * Defines the angle of rotation measured in degrees.
    */
   def angle: DoubleProperty = delegate.angleProperty()
-  def angle_=(v: Double) {
+
+  def angle_=(v: Double): Unit = {
     angle() = v
   }
 
@@ -99,7 +100,8 @@ class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate) extends Tra
    * Defines the axis of rotation at the pivot point.
    */
   def axis: ObjectProperty[jfxg.Point3D] = delegate.axisProperty()
-  def axis_=(v: Point3D) {
+
+  def axis_=(v: Point3D): Unit = {
     axis() = v
   }
 
@@ -107,7 +109,8 @@ class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate) extends Tra
    * Defines the X coordinate of the rotation pivot point.
    */
   def pivotX: DoubleProperty = delegate.pivotXProperty()
-  def pivotX_=(v: Double) {
+
+  def pivotX_=(v: Double): Unit = {
     pivotX() = v
   }
 
@@ -115,7 +118,8 @@ class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate) extends Tra
    * Defines the Y coordinate of the rotation pivot point.
    */
   def pivotY: DoubleProperty = delegate.pivotYProperty()
-  def pivotY_=(v: Double) {
+
+  def pivotY_=(v: Double): Unit = {
     pivotY() = v
   }
 
@@ -123,7 +127,8 @@ class Rotate(override val delegate: jfxst.Rotate = new jfxst.Rotate) extends Tra
    * Defines the Z coordinate of the rotation pivot point.
    */
   def pivotZ: DoubleProperty = delegate.pivotZProperty()
-  def pivotZ_=(v: Double) {
+
+  def pivotZ_=(v: Double): Unit = {
     pivotZ() = v
   }
 

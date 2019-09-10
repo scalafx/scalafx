@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.layout.Region
+
+import scala.language.implicitConversions
 
 object Control {
   implicit def sfxControl2jfx(v: Control): jfxsc.Control = if (v != null) v.delegate else null
@@ -47,7 +47,8 @@ abstract class Control(override val delegate: jfxsc.Control)
    * The ContextMenu to show for this control.
    */
   def contextMenu: ObjectProperty[jfxsc.ContextMenu] = delegate.contextMenuProperty
-  def contextMenu_=(v: ContextMenu) {
+
+  def contextMenu_=(v: ContextMenu): Unit = {
     contextMenu() = v
   }
 
@@ -55,7 +56,8 @@ abstract class Control(override val delegate: jfxsc.Control)
    * The ToolTip for this control.
    */
   def tooltip: ObjectProperty[jfxsc.Tooltip] = delegate.tooltipProperty
-  def tooltip_=(v: Tooltip) {
+
+  def tooltip_=(v: Tooltip): Unit = {
     tooltip() = v
   }
 

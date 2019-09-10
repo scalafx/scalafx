@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,13 @@ package scalafx.animation
 
 
 import javafx.{animation => jfxa, scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.collections._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.animation.SequentialTransition]].
@@ -101,7 +101,8 @@ class SequentialTransition(override val delegate: jfxa.SequentialTransition = ne
    * This Node is used in all child Transitions, that do not define a target Node themselves.
    */
   def node: ObjectProperty[jfxs.Node] = delegate.nodeProperty
-  def node_=(n: Node) {
+
+  def node_=(n: Node): Unit = {
     node() = n
   }
 
@@ -115,7 +116,7 @@ class SequentialTransition(override val delegate: jfxa.SequentialTransition = ne
    *
    * @param c list of $ANS to replace prior content.
    */
-  def children_=(c: Iterable[Animation]) {
+  def children_=(c: Iterable[Animation]): Unit = {
     fillSFXCollection(this.children, c)
   }
 }

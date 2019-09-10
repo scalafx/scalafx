@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,6 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.animation.Timeline
 import scalafx.application.JFXApp
@@ -49,6 +48,8 @@ import scalafx.scene.Scene
 import scalafx.scene.input.MouseEvent
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.{Circle, Rectangle}
+
+import scala.language.postfixOps
 
 
 /**
@@ -364,7 +365,7 @@ class View(position: FrogShape => Int, val frogShapes: List[FrogShape]) {
 // control
 //
 class Control {
-  def update(model: Model, view: View) {
+  def update(model: Model, view: View): Unit = {
     view.frogShapes.foreach {
       case `theDummyFrogShape` =>
       case frogShape           => frogShape.onMouseClicked = {

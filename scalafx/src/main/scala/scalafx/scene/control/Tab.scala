@@ -51,7 +51,8 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
    * The closable state for this tab.
    */
   def closable: BooleanProperty = delegate.closableProperty
-  def closable_=(v: Boolean) {
+
+  def closable_=(v: Boolean): Unit = {
     closable() = v
   }
 
@@ -59,7 +60,8 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
    * The content associated with the tab.
    */
   def content: ObjectProperty[jfxs.Node] = delegate.contentProperty
-  def content_=(v: Node) {
+
+  def content_=(v: Node): Unit = {
     content() = v
   }
 
@@ -67,7 +69,8 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
    * The context menu associated with the tab.
    */
   def contextMenu: ObjectProperty[jfxsc.ContextMenu] = delegate.contextMenuProperty
-  def contextMenu_=(v: ContextMenu) {
+
+  def contextMenu_=(v: ContextMenu): Unit = {
     contextMenu() = v
   }
 
@@ -75,7 +78,8 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
    * The graphic in the tab.
    */
   def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
-  def graphic_=(v: Node) {
+
+  def graphic_=(v: Node): Unit = {
     graphic() = v
   }
 
@@ -83,7 +87,8 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
    * The id of this tab.
    */
   def id: StringProperty = delegate.idProperty
-  def id_=(v: String) {
+
+  def id_=(v: String): Unit = {
     id() = v
   }
 
@@ -91,7 +96,8 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
    * The event handler that is associated with the tab when the tab is closed.
    */
   def onClosed = delegate.onClosedProperty
-  def onClosed_=(v: jfxe.EventHandler[jfxe.Event]) {
+
+  def onClosed_=(v: jfxe.EventHandler[jfxe.Event]): Unit = {
     onClosed() = v
   }
 
@@ -99,7 +105,8 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
    * Called when there is an external request to close this Tab.
    */
   def onCloseRequest: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onCloseRequestProperty()
-  def onCloseRequest_=(v: jfxe.EventHandler[jfxe.Event]) {
+
+  def onCloseRequest_=(v: jfxe.EventHandler[jfxe.Event]): Unit = {
     ObjectProperty.fillProperty[jfxe.EventHandler[jfxe.Event]](onCloseRequest, v)
   }
 
@@ -107,7 +114,8 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
    * The event handler that is associated with a selection on the tab.
    */
   def onSelectionChanged = delegate.onSelectionChangedProperty
-  def onSelectionChanged_=(v: jfxe.EventHandler[jfxe.Event]) {
+
+  def onSelectionChanged_=(v: jfxe.EventHandler[jfxe.Event]): Unit = {
     onSelectionChanged() = v
   }
 
@@ -120,7 +128,8 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
    * The CSS style string associated to this tab.
    */
   def style: StringProperty = delegate.styleProperty
-  def style_=(v: String) {
+
+  def style_=(v: String): Unit = {
     style() = v
   }
 
@@ -133,7 +142,8 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
    * The text shown in the tab.
    */
   def text: StringProperty = delegate.textProperty
-  def text_=(v: String) {
+
+  def text_=(v: String): Unit = {
     text() = v
   }
 
@@ -141,7 +151,8 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
    * The tooltip associated with this tab.
    */
   def tooltip: ObjectProperty[jfxsc.Tooltip] = delegate.tooltipProperty
-  def tooltip_=(v: Tooltip) {
+
+  def tooltip_=(v: Tooltip): Unit = {
     tooltip() = v
   }
 
@@ -152,7 +163,8 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
    * @since 2.2
    */
   def disable: BooleanProperty = delegate.disableProperty()
-  def disable_=(v: Boolean) {
+
+  def disable_=(v: Boolean): Unit = {
     disable() = v
   }
 
@@ -168,7 +180,8 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
    * @since 2.2
    */
   def userData: AnyRef = delegate.getUserData
-  def userData_=(v: AnyRef) {
+
+  def userData_=(v: AnyRef): Unit = {
     delegate.setUserData(v)
   }
 

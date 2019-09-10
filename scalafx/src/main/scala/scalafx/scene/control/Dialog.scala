@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,14 +29,14 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe, scene => jfxs, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventTarget
 import scalafx.scene.Node
 import scalafx.stage.{Modality, StageStyle, Window}
+
+import scala.language.implicitConversions
 
 /** Helper trait for converting dialog return type. Not intended for separate use. */
 trait DConvert[T, F] {
@@ -118,7 +118,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    *                               has ever been made visible.
    *
    */
-  def initStyle(style: StageStyle) {
+  def initStyle(style: StageStyle): Unit = {
     delegate.initStyle(style)
   }
 
@@ -132,7 +132,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * @throws IllegalStateException if this property is set after the dialog
    *                               has ever been made visible.
    */
-  def initModality(modality: Modality) {
+  def initModality(modality: Modality): Unit = {
     delegate.initModality(modality)
   }
 
@@ -153,7 +153,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * @throws IllegalStateException if this property is set after the dialog
    *                               has ever been made visible.
    */
-  def initOwner(window: Window) {
+  def initOwner(window: Window): Unit = {
     delegate.initOwner(window)
   }
 
@@ -255,7 +255,8 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * Represents whether the dialog is resizable.
    */
   def resizable: BooleanProperty = delegate.resizableProperty
-  def resizable_=(v: Boolean) {
+
+  def resizable_=(v: Boolean): Unit = {
     resizable() = v
   }
 
@@ -263,7 +264,8 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * Return the title of the dialog.
    */
   def title: StringProperty = delegate.titleProperty
-  def title_=(v: String) {
+
+  def title_=(v: String): Unit = {
     title() = v
   }
 
@@ -271,7 +273,8 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * Property representing the height of the dialog.
    */
   def height: ReadOnlyDoubleProperty = delegate.heightProperty()
-  def height_=(h: Double) {
+
+  def height_=(h: Double): Unit = {
     delegate.setHeight(h)
   }
 
@@ -279,7 +282,8 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * Property representing the width of the dialog.
    */
   def width: ReadOnlyDoubleProperty = delegate.widthProperty()
-  def width_=(w: Double) {
+
+  def width_=(w: Double): Unit = {
     delegate.setWidth(w)
   }
 
@@ -297,7 +301,8 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * will move the [[scalafx.scene.control.Dialog]] vertically.
    */
   def y: ReadOnlyDoubleProperty = delegate.yProperty()
-  def y_=(v: Double) {
+
+  def y_=(v: Double): Unit = {
     delegate.setY(v)
   }
 
@@ -306,7 +311,8 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * Called just prior to the Dialog being shown.
    */
   def onShowing = delegate.onShowingProperty
-  def onShowing_=(v: jfxe.EventHandler[jfxsc.DialogEvent]) {
+
+  def onShowing_=(v: jfxe.EventHandler[jfxsc.DialogEvent]): Unit = {
     onShowing() = v
   }
 
@@ -314,7 +320,8 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * Called just after the Dialog is shown.
    */
   def onShown = delegate.onShownProperty
-  def onShown_=(v: jfxe.EventHandler[jfxsc.DialogEvent]) {
+
+  def onShown_=(v: jfxe.EventHandler[jfxsc.DialogEvent]): Unit = {
     onShown() = v
   }
 
@@ -322,7 +329,8 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * Called just prior to the Dialog being hidden.
    */
   def onHiding = delegate.onHidingProperty
-  def onHiding_=(v: jfxe.EventHandler[jfxsc.DialogEvent]) {
+
+  def onHiding_=(v: jfxe.EventHandler[jfxsc.DialogEvent]): Unit = {
     onHiding() = v
   }
 
@@ -333,12 +341,14 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * [[scalafx.scene.control.Dialog]] is closed.
    */
   def onHidden = delegate.onHiddenProperty
-  def onHidden_=(v: jfxe.EventHandler[jfxsc.DialogEvent]) {
+
+  def onHidden_=(v: jfxe.EventHandler[jfxsc.DialogEvent]): Unit = {
     onHidden() = v
   }
 
   def onCloseRequest = delegate.onCloseRequestProperty
-  def onCloseRequest_=(v: jfxe.EventHandler[jfxsc.DialogEvent]) {
+
+  def onCloseRequest_=(v: jfxe.EventHandler[jfxsc.DialogEvent]): Unit = {
     onCloseRequest() = v
   }
 

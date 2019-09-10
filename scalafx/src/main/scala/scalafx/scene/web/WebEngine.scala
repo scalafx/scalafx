@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,14 +29,13 @@ package scalafx.scene.web
 import javafx.geometry.Rectangle2D
 import javafx.scene.{web => jfxsw}
 import javafx.{event => jfxe, util => jfxu}
-
 import org.w3c.dom.Document
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate
 import scalafx.print.PrinterJob
+
+import scala.language.implicitConversions
 
 /**
  * Companion object for [[scalafx.scene.web.WebEngine]]
@@ -70,7 +69,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
    * JavaScript confirm handler property.
    */
   def confirmHandler = delegate.confirmHandlerProperty
-  def confirmHandler_=(f: String => Boolean) {
+
+  def confirmHandler_=(f: String => Boolean): Unit = {
     confirmHandler() = new jfxu.Callback[java.lang.String, java.lang.Boolean] {
       def call(msg: java.lang.String) = f(msg)
     }
@@ -80,7 +80,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
    * JavaScript popup handler property.
    */
   def createPopupHandler = delegate.createPopupHandlerProperty
-  def createPopupHandler_=(f: jfxsw.PopupFeatures => WebEngine) {
+
+  def createPopupHandler_=(f: jfxsw.PopupFeatures => WebEngine): Unit = {
     createPopupHandler() = new jfxu.Callback[jfxsw.PopupFeatures, jfxsw.WebEngine] {
       def call(pf: jfxsw.PopupFeatures) = f(pf)
     }
@@ -100,7 +101,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
    * JavaScript alert handler property.
    */
   def onAlert = delegate.onAlertProperty
-  def onAlert_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]) {
+
+  def onAlert_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]): Unit = {
     onAlert() = v
   }
 
@@ -110,7 +112,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
    * @since 8.0
    */
   def onError = delegate.onErrorProperty
-  def onError_=(v: jfxe.EventHandler[jfxsw.WebErrorEvent]) {
+
+  def onError_=(v: jfxe.EventHandler[jfxsw.WebErrorEvent]): Unit = {
     onError() = v
   }
 
@@ -118,7 +121,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
    * JavaScript window resize handler property.
    */
   def onResized = delegate.onResizedProperty
-  def onResized_=(v: jfxe.EventHandler[jfxsw.WebEvent[Rectangle2D]]) {
+
+  def onResized_=(v: jfxe.EventHandler[jfxsw.WebEvent[Rectangle2D]]): Unit = {
     onResized() = v
   }
 
@@ -126,7 +130,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
    * JavaScript status handler property.
    */
   def onStatusChanged = delegate.onStatusChangedProperty
-  def onStatusChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]) {
+
+  def onStatusChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[String]]): Unit = {
     onStatusChanged() = v
   }
 
@@ -134,7 +139,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
    * JavaScript window visibility handler property.
    */
   def onVisibilityChanged = delegate.onVisibilityChangedProperty
-  def onVisibilityChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]]) {
+
+  def onVisibilityChanged_=(v: jfxe.EventHandler[jfxsw.WebEvent[java.lang.Boolean]]): Unit = {
     onVisibilityChanged() = v
   }
 
@@ -142,7 +148,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
    * JavaScript prompt handler property.
    */
   def promptHandler = delegate.promptHandlerProperty
-  def promptHandler_=(f: PromptData => String) {
+
+  def promptHandler_=(f: PromptData => String): Unit = {
     promptHandler() = new jfxu.Callback[jfxsw.PromptData, String] {
       def call(pd: jfxsw.PromptData) = f(pd)
     }
@@ -154,7 +161,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
    * @since 2.2
    */
   def javaScriptEnabled: BooleanProperty = delegate.javaScriptEnabledProperty
-  def javaScriptEnabled_=(v: Boolean) {
+
+  def javaScriptEnabled_=(v: Boolean): Unit = {
     javaScriptEnabled() = v
   }
 
@@ -164,7 +172,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
    * @since 8.0
    */
   def userDataDirectory: ObjectProperty[java.io.File] = delegate.userDataDirectoryProperty
-  def userDataDirectory_=(v: java.io.File) {
+
+  def userDataDirectory_=(v: java.io.File): Unit = {
     ObjectProperty.fillProperty[java.io.File](this.userDataDirectory, v)
   }
 
@@ -174,7 +183,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
    * @since 2.2
    */
   def userStyleSheetLocation: StringProperty = delegate.userStyleSheetLocationProperty
-  def userStyleSheetLocation_=(v: String) {
+
+  def userStyleSheetLocation_=(v: String): Unit = {
     userStyleSheetLocation() = v
   }
 
@@ -186,21 +196,21 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   /**
    * Loads a Web page into this engine.
    */
-  def load(url: String) {
+  def load(url: String): Unit = {
     delegate.load(url)
   }
 
   /**
    * Loads the given HTML content directly.
    */
-  def loadContent(content: String) {
+  def loadContent(content: String): Unit = {
     delegate.loadContent(content)
   }
 
   /**
    * Loads the given content directly.
    */
-  def loadContent(content: String, contentType: String) {
+  def loadContent(content: String, contentType: String): Unit = {
     delegate.loadContent(content, contentType)
   }
 
@@ -210,7 +220,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
    * @since 8.0
    */
   def userAgent: StringProperty = delegate.userAgentProperty
-  def userAgent_=(v: String) {
+
+  def userAgent_=(v: String): Unit = {
     userAgent() = v
   }
 

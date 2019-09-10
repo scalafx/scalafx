@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,13 @@
 package scalafx.scene.image
 
 import java.nio.Buffer
-import javafx.scene.{image => jfxsi}
 
-import scala.language.implicitConversions
+import javafx.scene.{image => jfxsi}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color
+
+import scala.language.implicitConversions
 
 object PixelWriter {
   implicit def sfxPixelWriter2jfx(pw: PixelWriter): jfxsi.PixelWriter = if (pw != null) pw.delegate else null
@@ -53,42 +54,42 @@ trait PixelWriter
   /**
    * Stores pixel data for a color into the specified coordinates of the surface.
    */
-  def setArgb(x: Int, y: Int, argb: Int) {
+  def setArgb(x: Int, y: Int, argb: Int): Unit = {
     delegate.setArgb(x, y, argb)
   }
 
   /**
    * Stores pixel data for a Color into the specified coordinates of the surface.
    */
-  def setColor(x: Int, y: Int, c: Color) {
+  def setColor(x: Int, y: Int, c: Color): Unit = {
     delegate.setColor(x, y, c)
   }
 
   /**
    * Stores pixel data from a byte array into a rectangular region of the surface.
    */
-  def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: PixelFormat[java.nio.ByteBuffer], buffer: Array[Byte], offset: Int, scanlineStride: Int) {
+  def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: PixelFormat[java.nio.ByteBuffer], buffer: Array[Byte], offset: Int, scanlineStride: Int): Unit = {
     delegate.setPixels(x, y, w, h, pixelformat, buffer, offset, scanlineStride)
   }
 
   /**
    * Stores pixel data from an int array into a rectangular region of the surface.
    */
-  def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: PixelFormat[java.nio.IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int) {
+  def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: PixelFormat[java.nio.IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int): Unit = {
     delegate.setPixels(x, y, w, h, pixelformat, buffer, offset, scanlineStride)
   }
 
   /**
    * Stores pixel data from a buffer into a rectangular region of the surface.
    */
-  def setPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: PixelFormat[B], buffer: B, scanlineStride: Int) {
+  def setPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: PixelFormat[B], buffer: B, scanlineStride: Int): Unit = {
     delegate.setPixels(x, y, w, h, pixelformat, buffer, scanlineStride)
   }
 
   /**
    * Stores pixel data retrieved from a PixelReader instance into a rectangular region of the surface.
    */
-  def setPixels(dstx: Int, dsty: Int, w: Int, h: Int, reader: PixelReader, srcx: Int, srcy: Int) {
+  def setPixels(dstx: Int, dsty: Int, w: Int, h: Int, reader: PixelReader, srcx: Int, srcy: Int): Unit = {
     delegate.setPixels(dstx, dsty, w, h, reader, srcx, srcy)
   }
 

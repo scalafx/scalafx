@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.collections._
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object Path {
   implicit def sfxPath2jfx(v: Path): jfxss.Path = if (v != null) v.delegate else null
@@ -49,7 +49,8 @@ class Path(override val delegate: jfxss.Path = new jfxss.Path())
    * The filling rule constant for determining the interior of the path.
    */
   def fillRule: ObjectProperty[jfxss.FillRule] = delegate.fillRuleProperty
-  def fillRule_=(v: FillRule) {
+
+  def fillRule_=(v: FillRule): Unit = {
     fillRule() = v
   }
 
@@ -63,7 +64,7 @@ class Path(override val delegate: jfxss.Path = new jfxss.Path())
    *
    * @param c list of path elements to replace prior content.
    */
-  def elements_=(c: Iterable[PathElement]) {
+  def elements_=(c: Iterable[PathElement]): Unit = {
     fillSFXCollection(this.elements, c)
   }
 }

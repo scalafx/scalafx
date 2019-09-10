@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,12 +29,12 @@ package scalafx.css
 import java.io.{DataInputStream, DataOutputStream}
 
 import javafx.{css => jfxcss}
-
-import scala.collection.JavaConverters._
-import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.text.Font
 import scalafx.scene.text.Font.sfxFont2jfx
+
+import scala.collection.JavaConverters._
+import scala.language.implicitConversions
 
 /**
  * Companion object for [[scalafx.css.StyleConverter]].
@@ -119,7 +119,7 @@ object StyleConverter {
   class StringStore(override val delegate: jfxcss.StyleConverter.StringStore = new jfxcss.StyleConverter.StringStore)
     extends SFXDelegate[jfxcss.StyleConverter.StringStore]{
 
-    def strings: Seq[String] = delegate.strings.asScala
+    def strings: Seq[String] = delegate.strings.asScala.toSeq
 
     def addString(s: String): Int = delegate.addString(s)
 

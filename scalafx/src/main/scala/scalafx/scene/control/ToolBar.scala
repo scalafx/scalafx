@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,15 +27,15 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe, geometry => jfxg}
-
-import scala.language.implicitConversions
+import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.collections._
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Orientation
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object ToolBar {
   implicit def sfxToolBarToJfx(v: ToolBar): jfxsc.ToolBar = if (v != null) v.delegate else null
@@ -57,7 +57,7 @@ class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar)
    *
    * @param c list of items to replace prior items.
    */
-  def items_=(c: Iterable[Node]) {
+  def items_=(c: Iterable[Node]): Unit = {
     fillSFXCollection(this.items, c)
   }
   /**
@@ -65,7 +65,7 @@ class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar)
    *
    * @param n Node to replace prior content.
    */
-  def items_=(n: Node) {
+  def items_=(n: Node): Unit = {
     fillSFXCollectionWithOne(this.items, n)
   }
   /**
@@ -77,7 +77,7 @@ class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar)
    *
    * @param c list of items to replace prior items.
    */
-  def content_=(c: Iterable[Node]) {
+  def content_=(c: Iterable[Node]): Unit = {
     items = c
   }
   /**
@@ -85,7 +85,7 @@ class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar)
    *
    * @param n Node to replace prior content.
    */
-  def content_=(n: Node) {
+  def content_=(n: Node): Unit = {
     items = n
   }
 
@@ -93,7 +93,8 @@ class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar)
    * The orientation of the ToolBar - this can either be horizontal or vertical.
    */
   def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
-  def orientation_=(v: Orientation) {
+
+  def orientation_=(v: Orientation): Unit = {
     orientation() = v
   }
 }

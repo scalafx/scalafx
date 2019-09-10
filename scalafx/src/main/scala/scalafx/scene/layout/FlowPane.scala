@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,13 @@ package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
 import javafx.{geometry => jfxg}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
 import scalafx.geometry.{HPos, Insets, Orientation, VPos}
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object FlowPane {
   implicit def sfxFlowPane2jfx(v: FlowPane): jfxsl.FlowPane = if (v != null) v.delegate else null
@@ -42,7 +42,7 @@ object FlowPane {
   /**
    * Removes all flowpane constraints from the child node.
    */
-  def clearConstraints(child: Node) {
+  def clearConstraints(child: Node): Unit = {
     jfxsl.FlowPane.clearConstraints(child)
   }
 
@@ -50,7 +50,7 @@ object FlowPane {
    * Added just for satisfy tests.
    */
   @deprecated("Use clearConstraints(scalafx.scene.Node) instead", "1.0")
-  def clearConstraints(child: javafx.scene.Node) {
+  def clearConstraints(child: javafx.scene.Node): Unit = {
     jfxsl.FlowPane.clearConstraints(child)
   }
 
@@ -62,7 +62,7 @@ object FlowPane {
   /**
    * Sets the margin for the child when contained by a flowpane.
    */
-  def setMargin(child: Node, value: Insets) {
+  def setMargin(child: Node, value: Insets): Unit = {
     jfxsl.FlowPane.setMargin(child, value)
   }
 
@@ -95,7 +95,8 @@ class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
    * The horizontal alignment of nodes within each column of a vertical flowpane.
    */
   def columnHalignment: ObjectProperty[jfxg.HPos] = delegate.columnHalignmentProperty
-  def columnHalignment_=(v: HPos) {
+
+  def columnHalignment_=(v: HPos): Unit = {
     columnHalignment() = v
   }
 
@@ -104,7 +105,8 @@ class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
    * vertical flowpane.
    */
   def hgap: DoubleProperty = delegate.hgapProperty
-  def hgap_=(v: Double) {
+
+  def hgap_=(v: Double): Unit = {
     hgap() = v
   }
 
@@ -112,7 +114,8 @@ class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
    * The orientation of this flowpane.
    */
   def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
-  def orientation_=(v: Orientation) {
+
+  def orientation_=(v: Orientation): Unit = {
     orientation() = v
   }
 
@@ -121,7 +124,8 @@ class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
    * should wrap in a vertical flowpane.
    */
   def prefWrapLength: DoubleProperty = delegate.prefWrapLengthProperty
-  def prefWrapLength_=(v: Double) {
+
+  def prefWrapLength_=(v: Double): Unit = {
     prefWrapLength() = v
   }
 
@@ -129,7 +133,8 @@ class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
    * The vertical alignment of nodes within each row of a horizontal flowpane.
    */
   def rowValignment: ObjectProperty[jfxg.VPos] = delegate.rowValignmentProperty
-  def rowValignment_=(v: VPos) {
+
+  def rowValignment_=(v: VPos): Unit = {
     rowValignment() = v
   }
 
@@ -138,7 +143,8 @@ class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
    * flowpane.
    */
   def vgap: DoubleProperty = delegate.vgapProperty
-  def vgap_=(v: Double) {
+
+  def vgap_=(v: Double): Unit = {
     vgap() = v
   }
 

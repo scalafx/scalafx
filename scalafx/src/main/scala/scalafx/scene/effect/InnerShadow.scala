@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.{DimensionDelegate, SFXDelegate}
 import scalafx.scene.paint.Color
+
+import scala.language.implicitConversions
 
 object InnerShadow {
   implicit def sfxInnerShadow2jfx(ii: InnerShadow): jfxse.InnerShadow = if (ii != null) ii.delegate else null
@@ -69,7 +69,8 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
    * The algorithm used to blur the shadow.
    */
   def blurType: ObjectProperty[jfxse.BlurType] = delegate.blurTypeProperty
-  def blurType_=(v: BlurType) {
+
+  def blurType_=(v: BlurType): Unit = {
     blurType() = v
   }
 
@@ -77,7 +78,8 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
    * The choke of the shadow.
    */
   def choke: DoubleProperty = delegate.chokeProperty
-  def choke_=(v: Double) {
+
+  def choke_=(v: Double): Unit = {
     choke() = v
   }
 
@@ -85,7 +87,8 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
    * The shadow offset in the x direction, in pixels.
    */
   def offsetX: DoubleProperty = delegate.offsetXProperty
-  def offsetX_=(v: Double) {
+
+  def offsetX_=(v: Double): Unit = {
     offsetX() = v
   }
 
@@ -93,7 +96,8 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
    * The shadow offset in the y direction, in pixels.
    */
   def offsetY: DoubleProperty = delegate.offsetYProperty
-  def offsetY_=(v: Double) {
+
+  def offsetY_=(v: Double): Unit = {
     offsetY() = v
   }
 
@@ -101,7 +105,8 @@ class InnerShadow(override val delegate: jfxse.InnerShadow = new jfxse.InnerShad
    * The radius of the shadow blur kernel.
    */
   def radius: DoubleProperty = delegate.radiusProperty
-  def radius_=(v: Double) {
+
+  def radius_=(v: Double): Unit = {
     radius() = v
   }
 

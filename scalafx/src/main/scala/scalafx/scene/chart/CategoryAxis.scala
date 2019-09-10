@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ReadOnlyDoubleProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object CategoryAxis {
   implicit def sfxCategoryAxis2jfx(v: CategoryAxis): jfxsc.CategoryAxis = if (v != null) v.delegate else null
@@ -55,22 +55,26 @@ class CategoryAxis(override val delegate: jfxsc.CategoryAxis = new jfxsc.Categor
   def categorySpacing: ReadOnlyDoubleProperty = delegate.categorySpacingProperty
 
   def endMargin: DoubleProperty = delegate.endMarginProperty
-  def endMargin_=(v: Double) {
+
+  def endMargin_=(v: Double): Unit = {
     endMargin() = v
   }
 
   def gapStartAndEnd: BooleanProperty = delegate.gapStartAndEndProperty
-  def gapStartAndEnd_=(v: Boolean) {
+
+  def gapStartAndEnd_=(v: Boolean): Unit = {
     gapStartAndEnd() = v
   }
 
   def startMargin: DoubleProperty = delegate.startMarginProperty
-  def startMargin_=(v: Double) {
+
+  def startMargin_=(v: Double): Unit = {
     startMargin() = v
   }
 
   def categories = delegate.getCategories
-  def categories_=(value: ObservableBuffer[String]) {
+
+  def categories_=(value: ObservableBuffer[String]): Unit = {
     delegate.setCategories(value)
   }
 

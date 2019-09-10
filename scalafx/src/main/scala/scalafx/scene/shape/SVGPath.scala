@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object SVGPath {
   implicit def sfxSVGPath2jfx(v: SVGPath): jfxss.SVGPath = if (v != null) v.delegate else null
@@ -39,12 +39,14 @@ object SVGPath {
 
 class SVGPath(override val delegate: jfxss.SVGPath = new jfxss.SVGPath()) extends Shape(delegate) with SFXDelegate[jfxss.SVGPath] {
   def content: StringProperty = delegate.contentProperty
-  def content_=(v: String) {
+
+  def content_=(v: String): Unit = {
     content() = v
   }
 
   def fillRule: ObjectProperty[jfxss.FillRule] = delegate.fillRuleProperty
-  def fillRule_=(v: FillRule) {
+
+  def fillRule_=(v: FillRule): Unit = {
     fillRule() = v
   }
 }

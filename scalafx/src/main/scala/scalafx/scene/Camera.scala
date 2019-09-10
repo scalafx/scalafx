@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene
 
 import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object Camera {
   implicit def sfxCamera2jfx(c: Camera): jfxs.Camera = if (c != null) c.delegate else null
@@ -47,7 +47,8 @@ abstract class Camera(override val delegate: jfxs.Camera)
    * Objects farther away from the eye than the farClip plane are not drawn.
    */
   def farClip: DoubleProperty = delegate.farClipProperty
-  def farClip_=(v: Double) {
+
+  def farClip_=(v: Double): Unit = {
     farClip() = v
   }
 
@@ -57,7 +58,8 @@ abstract class Camera(override val delegate: jfxs.Camera)
    * Objects closer to the eye than the nearClip plane are not drawn.
    */
   def nearClip: DoubleProperty = delegate.nearClipProperty
-  def nearClip_=(v: Double) {
+
+  def nearClip_=(v: Double): Unit = {
     nearClip() = v
   }
 }

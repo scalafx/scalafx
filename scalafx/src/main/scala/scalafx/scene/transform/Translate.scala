@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.transform
 
 import javafx.scene.{transform => jfxst}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.{PositionDelegate, SFXDelegate}
+
+import scala.language.implicitConversions
 
 object Translate {
   implicit def sfxTranslate2jfx(v: Translate): jfxst.Translate = if (v != null) v.delegate else null
@@ -53,7 +53,8 @@ class Translate(override val delegate: jfxst.Translate = new jfxst.Translate)
    * Defines the distance by which coordinates are translated in the Z axis direction
    */
   def z: DoubleProperty = delegate.zProperty
-  def z_=(v: Double) {
+
+  def z_=(v: Double): Unit = {
     z() = v
   }
 

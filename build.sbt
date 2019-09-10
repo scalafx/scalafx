@@ -9,8 +9,8 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion = "12.0.1"
-val scalafxVersion = s"$javaFXVersion-R17"
+val javaFXVersion = "12.0.2"
+val scalafxVersion = s"$javaFXVersion-R18-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v" + scalafxVersion
 
@@ -18,6 +18,9 @@ val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v" +
 lazy val scalafx = (project in file("scalafx")).settings(
   scalafxSettings,
   description := "The ScalaFX framework",
+  // Add JavaFX dependencies, mark as "provided", so they can be later removed from published POM
+  libraryDependencies ++= javafxModules.map(
+    m => "org.openjfx" % s"javafx-$m" % javaFXVersion % "provided" classifier osName),
   fork in run := true,
   scalacOptions in(Compile, doc) ++= Seq(
     "-sourcepath", baseDirectory.value.toString,
@@ -26,13 +29,16 @@ lazy val scalafx = (project in file("scalafx")).settings(
   ) ++ (Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
     case Some(path) => Seq("-diagrams", "-diagrams-dot-path", path)
     case None => Seq.empty[String]
-  })
+  }),
+  publishArtifact := true
 )
 
 // ScalaFX Demos project
 lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   scalafxSettings,
   description := "The ScalaFX demonstrations",
+  libraryDependencies ++= javafxModules.map(
+    m => "org.openjfx" % s"javafx-$m" % javaFXVersion classifier osName),
   fork in run := true,
   javaOptions ++= Seq(
     "-Xmx512M",
@@ -49,22 +55,35 @@ val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Windows") => "win"
   case _ => throw new Exception("Unknown platform!")
 }
-lazy val scalatest = "org.scalatest" %% "scalatest" % "3.0.7"
-
-// Resolvers
-lazy val sonatypeNexusSnapshots = "Sonatype Nexus Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
-lazy val sonatypeNexusStaging = "Sonatype Nexus Staging" at "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
+lazy val scalatest = "org.scalatest" %% "scalatest" % "3.0.8"
 
 // Add snapshots to root project to enable compilation with Scala SNAPSHOT compiler,
 // e.g., 2.11.0-SNAPSHOT
-resolvers += sonatypeNexusSnapshots
+resolvers += Resolver.sonatypeRepo("snapshots")
 
 // Common settings
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.10.7", "2.11.12", "2.12.8"),
+  crossScalaVersions := Seq("2.13.0", "2.12.9", "2.11.12", "2.10.7"),
   scalaVersion := crossScalaVersions.value.head,
+  // Add src/main/scala-2.13+ for Scala 2.13 and newer
+  //   and src/main/scala-2.12- for Scala versions older than 2.13
+  unmanagedSourceDirectories in Compile += {
+    val sourceDir = (sourceDirectory in Compile).value
+    CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((2, n)) if n >= 13 => sourceDir / "scala-2.13+"
+      case _ => sourceDir / "scala-2.12-"
+    }
+  },
+  unmanagedSourceDirectories in Test += {
+    val sourceDir = (sourceDirectory in Test).value
+    CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((2, n)) if n >= 13 => sourceDir / "scala-2.13+"
+      case _ => sourceDir / "scala-2.12-"
+    }
+  },
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
@@ -74,9 +93,6 @@ lazy val scalafxSettings = Seq(
     "-target", "1.8",
     "-source", "1.8",
     "-Xlint:deprecation"),
-  // Add JavaFX dependencies, mark as "provided", so they can be later removed from published POM
-  libraryDependencies ++= Seq("base", "controls", "fxml", "graphics", "media", "swing", "web").map(
-    m => "org.openjfx" % s"javafx-$m" % javaFXVersion % "provided" classifier osName),
   // Add other dependencies
   libraryDependencies ++= Seq(
     "org.scala-lang" % "scala-reflect" % scalaVersion.value,
@@ -98,10 +114,9 @@ lazy val scalafxSettings = Seq(
   },
   autoAPIMappings := true,
   manifestSetting,
-  publishSetting,
   fork in Test := true,
   parallelExecution in Test := false,
-  resolvers += sonatypeNexusSnapshots,
+  resolvers += Resolver.sonatypeRepo("snapshots"),
   // print junit-style XML for CI
   testOptions in Test += {
     val t = (target in Test).value
@@ -124,14 +139,6 @@ lazy val manifestSetting = packageOptions += {
     "Implementation-Vendor-Id" -> organization.value,
     "Implementation-Vendor" -> organization.value
   )
-}
-
-lazy val publishSetting = publishTo := {
-  val version: String = scalafxVersion
-  if (version.trim.endsWith("SNAPSHOT"))
-    Some(sonatypeNexusSnapshots)
-  else
-    Some(sonatypeNexusStaging)
 }
 
 // Metadata needed by Maven Central

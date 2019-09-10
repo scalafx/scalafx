@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.collections
 
 import javafx.{collections => jfxc}
+import scalafx.collections.transformation.TransformationIncludes
 
 import scala.language.implicitConversions
-import scalafx.collections.transformation.TransformationIncludes
 
 object CollectionIncludes extends CollectionIncludes
 
@@ -65,7 +65,7 @@ trait CollectionIncludes extends TransformationIncludes {
    */
   implicit def jfxObservableMap2sfxObservableMap[K, V](om: jfxc.ObservableMap[K, V]): ObservableMap[K, V] =
     if (om != null) new ObservableMap[K, V] {
-      override val delegate = om
+      override val delegate: jfxc.ObservableMap[K, V] = om
     }
     else null
 
@@ -74,12 +74,12 @@ trait CollectionIncludes extends TransformationIncludes {
    * to a ScalaFX [[scalafx.collections.ObservableSet]].
    *
    * @tparam T Set Type
-   * @param os JavaFX Observableset
+   * @param os JavaFX ObservableSet
    * @return ScalaFX ObservableSet
    */
   implicit def jfxObservableSet2sfxObservableSet[T](os: jfxc.ObservableSet[T]): ObservableHashSet[T] =
     if (os != null) new ObservableHashSet[T] {
-      override val delegate = os
+      override val delegate: jfxc.ObservableSet[T] = os
     }
     else null
 

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,13 @@
 package scalafx.scene.shape
 
 import javafx.scene.{paint => jfxsp, shape => jfxss}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.paint.Material
+
+import scala.language.implicitConversions
 
 object Shape3D {
   implicit def sfxShape3D2jfx(v: Shape3D): jfxss.Shape3D = if (v != null) v.delegate else null
@@ -47,19 +47,22 @@ abstract class Shape3D(override val delegate: jfxss.Shape3D)
 
   /** Defines the cullFace this Shape3D. */
   def cullFace: ObjectProperty[jfxss.CullFace] = delegate.cullFaceProperty
-  def cullFace_=(v: CullFace) {
+
+  def cullFace_=(v: CullFace): Unit = {
     ObjectProperty.fillProperty[jfxss.CullFace](this.cullFace, v)
   }
 
   /** Defines the drawMode this Shape3D. */
   def drawMode: ObjectProperty[jfxss.DrawMode] = delegate.drawModeProperty
-  def drawMode_=(v: DrawMode) {
+
+  def drawMode_=(v: DrawMode): Unit = {
     ObjectProperty.fillProperty[jfxss.DrawMode](this.drawMode, v)
   }
 
   /** Defines the material this Shape3D. */
   def material: ObjectProperty[jfxsp.Material] = delegate.materialProperty
-  def material_=(v: Material) {
+
+  def material_=(v: Material): Unit = {
     ObjectProperty.fillProperty[jfxsp.Material](this.material, v)
   }
 }

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object Cylinder {
   implicit def sfxCylinder2jfx(c: Cylinder): jfxss.Cylinder = if (c != null) c.delegate else null
@@ -60,13 +60,15 @@ class Cylinder(override val delegate: jfxss.Cylinder = new jfxss.Cylinder())
 
   /** Defines the height or the Y dimension of the cylinder. */
   def height: DoubleProperty = delegate.heightProperty
-  def height_=(v: Double) {
+
+  def height_=(v: Double): Unit = {
     height() = v
   }
 
   /** Defines the radius in the Z plane of the cylinder. */
   def radius: DoubleProperty = delegate.radiusProperty
-  def radius_=(v: Double) {
+
+  def radius_=(v: Double): Unit = {
     radius() = v
   }
 }

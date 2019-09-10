@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object Button {
   implicit def sfxButton2jfx(v: Button): jfxsc.Button = if (v != null) v.delegate else null
@@ -55,7 +55,8 @@ class Button(override val delegate: jfxsc.Button = new jfxsc.Button) extends But
    * scene consumes it.
    */
   def cancelButton: BooleanProperty = delegate.cancelButtonProperty
-  def cancelButton_=(b: Boolean) {
+
+  def cancelButton_=(b: Boolean): Unit = {
     cancelButton() = b
   }
 
@@ -64,7 +65,8 @@ class Button(override val delegate: jfxsc.Button = new jfxsc.Button) extends But
    * scene consumes it.
    */
   def defaultButton: BooleanProperty = delegate.defaultButtonProperty
-  def defaultButton_=(b: Boolean) {
+
+  def defaultButton_=(b: Boolean): Unit = {
     defaultButton() = b
   }
 

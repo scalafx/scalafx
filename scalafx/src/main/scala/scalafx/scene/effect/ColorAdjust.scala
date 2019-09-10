@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object ColorAdjust {
   implicit def sfxColorAdjust2jfx(ca: ColorAdjust): jfxse.ColorAdjust = if (ca != null) ca.delegate else null
@@ -51,7 +51,8 @@ class ColorAdjust(override val delegate: jfxse.ColorAdjust = new jfxse.ColorAdju
    * The brightness adjustment value.
    */
   def brightness: DoubleProperty = delegate.brightnessProperty
-  def brightness_=(v: Double) {
+
+  def brightness_=(v: Double): Unit = {
     brightness() = v
   }
 
@@ -59,7 +60,8 @@ class ColorAdjust(override val delegate: jfxse.ColorAdjust = new jfxse.ColorAdju
    * The contrast adjustment value.
    */
   def contrast: DoubleProperty = delegate.contrastProperty
-  def contrast_=(v: Double) {
+
+  def contrast_=(v: Double): Unit = {
     contrast() = v
   }
 
@@ -67,7 +69,8 @@ class ColorAdjust(override val delegate: jfxse.ColorAdjust = new jfxse.ColorAdju
    * The hue adjustment value.
    */
   def hue: DoubleProperty = delegate.hueProperty
-  def hue_=(v: Double) {
+
+  def hue_=(v: Double): Unit = {
     hue() = v
   }
 
@@ -75,7 +78,8 @@ class ColorAdjust(override val delegate: jfxse.ColorAdjust = new jfxse.ColorAdju
    * The saturation adjustment value.
    */
   def saturation: DoubleProperty = delegate.saturationProperty
-  def saturation_=(v: Double) {
+
+  def saturation_=(v: Double): Unit = {
     saturation() = v
   }
 

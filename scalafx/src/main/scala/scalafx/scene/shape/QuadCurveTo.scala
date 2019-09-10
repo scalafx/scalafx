@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.{PositionDelegate, SFXDelegate}
+
+import scala.language.implicitConversions
 
 object QuadCurveTo {
   implicit def sfxQuadCurveTo2jfx(v: QuadCurveTo): jfxss.QuadCurveTo = if (v != null) v.delegate else null
@@ -46,12 +46,14 @@ class QuadCurveTo(override val delegate: jfxss.QuadCurveTo = new jfxss.QuadCurve
   with SFXDelegate[jfxss.QuadCurveTo] {
 
   def controlX: DoubleProperty = delegate.controlXProperty
-  def controlX_=(v: Double) {
+
+  def controlX_=(v: Double): Unit = {
     controlX() = v
   }
 
   def controlY: DoubleProperty = delegate.controlYProperty
-  def controlY_=(v: Double) {
+
+  def controlY_=(v: Double): Unit = {
     controlY() = v
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object StringProperty {
   implicit def sfxStringProperty2jfx(sp: StringProperty): jfxbp.StringProperty = if (sp != null) sp.delegate else null
@@ -55,7 +55,7 @@ class StringProperty(override val delegate: jfxbp.StringProperty = new jfxbp.Sim
   def this(bean: Object, name: String, initialValue: String) =
     this(new jfxbp.SimpleStringProperty(bean, name, initialValue))
 
-  def value_=(v: String) {
+  def value_=(v: String): Unit = {
     delegate.set(v)
   }
 }

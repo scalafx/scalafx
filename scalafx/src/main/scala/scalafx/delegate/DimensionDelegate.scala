@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.delegate
 
 import javafx.beans.{property => jfxbp}
-
-import scala.language.reflectiveCalls
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.DimensionDelegate._
+
+import scala.language.reflectiveCalls
 
 object DimensionDelegate {
 
@@ -59,7 +59,8 @@ trait DimensionDelegate[J <: Object with Dimensioned]
    * Indicates the height of object.
    */
   def height: DoubleProperty = delegate.heightProperty()
-  def height_=(h: Double) {
+
+  def height_=(h: Double): Unit = {
     height() = h
   }
 
@@ -67,7 +68,8 @@ trait DimensionDelegate[J <: Object with Dimensioned]
    * Indicates the width of object.
    */
   def width: DoubleProperty = delegate.widthProperty()
-  def width_=(w: Double) {
+
+  def width_=(w: Double): Unit = {
     width() = w
   }
 

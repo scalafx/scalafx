@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes.jfxReadOnlyIntegerProperty2sfx
 import scalafx.beans.property.{ReadOnlyIntegerProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object SelectionModel {
   implicit def sfxSelectionModel2jfx[T](v: SelectionModel[T]): jfxsc.SelectionModel[T] = if (v != null) v.delegate else null
@@ -57,21 +57,21 @@ abstract class SelectionModel[T](override val delegate: jfxsc.SelectionModel[T])
    * A method that clears any selection prior to setting the selection to the
    * given index.
    */
-  def clearAndSelect(index: Int) {
+  def clearAndSelect(index: Int): Unit = {
     delegate.clearAndSelect(index)
   }
 
   /**
    * Clears the selection model of all selected indices.
    */
-  def clearSelection() {
+  def clearSelection(): Unit = {
     delegate.clearSelection()
   }
 
   /**
    * This method will clear the selection of the item in the given index.
    */
-  def clearSelection(index: Int) {
+  def clearSelection(index: Int): Unit = {
     delegate.clearSelection(index)
   }
 
@@ -90,28 +90,28 @@ abstract class SelectionModel[T](override val delegate: jfxsc.SelectionModel[T])
    * This will select the given index in the selection model, assuming the
    * index is within the valid range (i.e.
    */
-  def select(index: Int) {
+  def select(index: Int): Unit = {
     delegate.select(index)
   }
 
   /**
    * This method will attempt to select the index that contains the given object.
    */
-  def select(obj: T) {
+  def select(obj: T): Unit = {
     delegate.select(obj)
   }
 
   /**
    * This method will attempt to select the first index in the control.
    */
-  def selectFirst() {
+  def selectFirst(): Unit = {
     delegate.selectFirst()
   }
 
   /**
    * This method will attempt to select the last index in the control.
    */
-  def selectLast() {
+  def selectLast(): Unit = {
     delegate.selectLast()
   }
 
@@ -119,14 +119,14 @@ abstract class SelectionModel[T](override val delegate: jfxsc.SelectionModel[T])
    * This method will attempt to select the index directly after the current
    * focused index.
    */
-  def selectNext() {
+  def selectNext(): Unit = {
     delegate.selectNext()
   }
 
   /**
    * This method will attempt to select the index directly before the current focused index.
    */
-  def selectPrevious() {
+  def selectPrevious(): Unit = {
     delegate.selectPrevious()
   }
 

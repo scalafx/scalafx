@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,7 @@ object RectangleDrawingDemo extends JFXApp {
     }
 
     /** Update location of the rectangle proving two defining point (along the diameter) */
-    def update(start: Point2D = _start, end: Point2D = _end) {
+    def update(start: Point2D = _start, end: Point2D = _end): Unit = {
       _start = start
       _end = end
       rectangle.x = math.min(_start.x, _end.x)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,12 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{geometry => jfxg}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Orientation
+
+import scala.language.implicitConversions
 
 object ScrollBar {
   implicit def sfxScrollBar2jfx(sc: ScrollBar): jfxsc.ScrollBar = if (sc != null) sc.delegate else null
@@ -50,7 +50,8 @@ class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
    * The amount by which to adjust the scrollbar if the track of the bar is clicked.
    */
   def blockIncrement: DoubleProperty = delegate.blockIncrementProperty
-  def blockIncrement_=(v: Double) {
+
+  def blockIncrement_=(v: Double): Unit = {
     blockIncrement() = v
   }
 
@@ -58,7 +59,8 @@ class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
    * The maximum value represented by this ScrollBar.
    */
   def max: DoubleProperty = delegate.maxProperty
-  def max_=(v: Double) {
+
+  def max_=(v: Double): Unit = {
     max() = v
   }
 
@@ -66,7 +68,8 @@ class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
    * The minimum value represented by this ScrollBar.
    */
   def min: DoubleProperty = delegate.minProperty
-  def min_=(v: Double) {
+
+  def min_=(v: Double): Unit = {
     min() = v
   }
 
@@ -74,7 +77,8 @@ class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
    * The orientation of the ScrollBar can either be HORIZONTAL or VERTICAL.
    */
   def orientation: ObjectProperty[jfxg.Orientation] = delegate.orientationProperty
-  def orientation_=(v: Orientation) {
+
+  def orientation_=(v: Orientation): Unit = {
     orientation() = v
   }
 
@@ -82,7 +86,8 @@ class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
    * The amount by which to adjust the ScrollBar when the increment or decrement methods are called.
    */
   def unitIncrement: DoubleProperty = delegate.unitIncrementProperty
-  def unitIncrement_=(v: Double) {
+
+  def unitIncrement_=(v: Double): Unit = {
     unitIncrement() = v
   }
 
@@ -90,7 +95,8 @@ class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
    * The current value represented by this ScrollBar.
    */
   def value: DoubleProperty = delegate.valueProperty
-  def value_=(v: Double) {
+
+  def value_=(v: Double): Unit = {
     value() = v
   }
 
@@ -98,28 +104,29 @@ class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
    * Visible amount of the scrollbar's range, typically represented by the size of the scroll bar's thumb.
    */
   def visibleAmount: DoubleProperty = delegate.visibleAmountProperty
-  def visibleAmount_=(v: Double) {
+
+  def visibleAmount_=(v: Double): Unit = {
     visibleAmount() = v
   }
 
   /**
    * Adjusts the `value` property by `blockIncrement`.
    */
-  def adjustValue(position: Double) {
+  def adjustValue(position: Double): Unit = {
     delegate.adjustValue(position)
   }
 
   /**
    * Decrements the value of the ScrollBar by the `unitIncrement`.
    */
-  def decrement() {
+  def decrement(): Unit = {
     delegate.decrement()
   }
 
   /**
    * Increments the value of the ScrollBar by the `unitIncrement`.
    */
-  def increment() {
+  def increment(): Unit = {
     delegate.increment()
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.media
 
 import javafx.scene.{media => jfxsm}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object EqualizerBand {
   implicit def sfxEqualizerBand2jfx(eb: EqualizerBand): jfxsm.EqualizerBand = if (eb != null) eb.delegate else null
@@ -60,7 +60,8 @@ class EqualizerBand(override val delegate: jfxsm.EqualizerBand = new jfxsm.Equal
    * Bandwidth of the band in Hertz.
    */
   def bandwidth: DoubleProperty = delegate.bandwidthProperty
-  def bandwidth_=(v: Double) {
+
+  def bandwidth_=(v: Double): Unit = {
     bandwidth() = v
   }
 
@@ -68,7 +69,8 @@ class EqualizerBand(override val delegate: jfxsm.EqualizerBand = new jfxsm.Equal
    * Center frequency of the band in Hertz.
    */
   def centerFrequency: DoubleProperty = delegate.centerFrequencyProperty
-  def centerFrequency_=(v: Double) {
+
+  def centerFrequency_=(v: Double): Unit = {
     centerFrequency() = v
   }
 
@@ -76,7 +78,8 @@ class EqualizerBand(override val delegate: jfxsm.EqualizerBand = new jfxsm.Equal
    * The gain to be applied to the frequencies of this band.
    */
   def gain: DoubleProperty = delegate.gainProperty
-  def gain_=(v: Double) {
+
+  def gain_=(v: Double): Unit = {
     gain() = v
   }
 

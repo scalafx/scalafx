@@ -85,7 +85,7 @@ object GridPane {
   /**
    * Sets the horizontal alignment for the child when contained by a GridPane.
    */
-  def setHalignment(node: Node, hp: HPos) {
+  def setHalignment(node: Node, hp: HPos): Unit = {
     jfxsl.GridPane.setHalignment(node, hp)
   }
 
@@ -227,7 +227,8 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
    * columns.
    */
   def gridLinesVisible: BooleanProperty = delegate.gridLinesVisibleProperty
-  def gridLinesVisible_=(v: Boolean) {
+
+  def gridLinesVisible_=(v: Boolean): Unit = {
     gridLinesVisible() = v
   }
 
@@ -235,7 +236,8 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
    * The width of the horizontal gaps between columns.
    */
   def hgap: DoubleProperty = delegate.hgapProperty
-  def hgap_=(v: Double) {
+
+  def hgap_=(v: Double): Unit = {
     hgap() = v
   }
 
@@ -243,7 +245,8 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
    * The height of the vertical gaps between rows.
    */
   def vgap: DoubleProperty = delegate.vgapProperty
-  def vgap_=(v: Double) {
+
+  def vgap_=(v: Double): Unit = {
     vgap() = v
   }
 
@@ -286,35 +289,35 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
   /**
    * Adds a child to the gridpane at the specified column,row position.
    */
-  def add(child: Node, columnIndex: Int, rowIndex: Int) {
+  def add(child: Node, columnIndex: Int, rowIndex: Int): Unit = {
     delegate.add(child, columnIndex, rowIndex)
   }
 
   /**
    * Adds a child to the gridpane at the specified column,row position and spans.
    */
-  def add(child: Node, columnIndex: Int, rowIndex: Int, colspan: Int, rowspan: Int) {
+  def add(child: Node, columnIndex: Int, rowIndex: Int, colspan: Int, rowspan: Int): Unit = {
     delegate.add(child, columnIndex, rowIndex, colspan, rowspan)
   }
 
   /**
    * Convenience method for placing the specified nodes sequentially in a given column of the gridpane.
    */
-  def addColumn(columnIndex: Int, children: jfxs.Node*) {
+  def addColumn(columnIndex: Int, children: jfxs.Node*): Unit = {
     delegate.addColumn(columnIndex, children: _*)
   }
 
   /**
    * Convenience method for placing the specified nodes sequentially in a given row of the gridpane.
    */
-  def addRow(rowIndex: Int, children: jfxs.Node*) {
+  def addRow(rowIndex: Int, children: jfxs.Node*): Unit = {
     delegate.addRow(rowIndex, children: _*)
   }
 
   /**
    * Requests a layout pass to be performed before the next scene is rendered.
    */
-  def requestLayout() {
+  def requestLayout(): Unit = {
     delegate.requestLayout()
   }
 

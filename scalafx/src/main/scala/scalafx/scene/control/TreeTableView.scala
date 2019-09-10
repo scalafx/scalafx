@@ -297,7 +297,7 @@ object TreeTableView {
       * modify this list, please use the other methods provided in the TreeTableViewSelectionModel.
       */
     def selectedCells: ObservableBuffer[TreeTablePosition[S, _]] =
-      ObservableBuffer(delegate.getSelectedCells.map(ttp => new TreeTablePosition(ttp)))
+      ObservableBuffer(delegate.getSelectedCells.map(ttp => new TreeTablePosition(ttp)).toSeq)
 
     /**
       * Returns the TreeTableView instance that this selection model is installed in.
@@ -322,7 +322,7 @@ object TreeTableView {
     /**
       * Selects the cells in the range (minRow, minColumn) to (maxRow, maxColumn), inclusive.
       */
-    def selectRange(minRow: Int, minColumn: TableColumnBase[jfxsc.TreeItem[S], _], maxRow: Int, maxColumn: TableColumnBase[jfxsc.TreeItem[S], _]) {
+    def selectRange(minRow: Int, minColumn: TableColumnBase[jfxsc.TreeItem[S], _], maxRow: Int, maxColumn: TableColumnBase[jfxsc.TreeItem[S], _]): Unit = {
       delegate.selectRange(minRow, minColumn.delegate, maxRow, maxColumn.delegate)
     }
 
@@ -610,7 +610,8 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
     * Property representing the root node of the TreeView.
     */
   def root: ObjectProperty[jfxsc.TreeItem[S]] = delegate.rootProperty
-  def root_=(v: TreeItem[S]) {
+
+  def root_=(v: TreeItem[S]): Unit = {
     root() = v
   }
 
@@ -933,5 +934,5 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
   /**
     * Returns the CssMetaData associated with this class, which may include the CssMetaData of its super classes.
     */
-  def controlCssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getControlCssMetaData.asScala
+  def controlCssMetaData: Seq[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getControlCssMetaData.asScala.toSeq
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,11 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-import javafx.{geometry => jfxg}
-
-import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.Node._
+
+import scala.language.implicitConversions
 
 object AnchorPane {
   implicit def sfxAnchorPane2jfx(ap: AnchorPane): jfxsl.AnchorPane = if (ap != null) ap.delegate else null
@@ -40,7 +39,7 @@ object AnchorPane {
   /**
    * Removes all anchorpane constraints from the child node.
    */
-  def clearConstraints(child: javafx.scene.Node) {
+  def clearConstraints(child: javafx.scene.Node): Unit = {
     jfxsl.AnchorPane.clearConstraints(child)
   }
 
@@ -67,28 +66,28 @@ object AnchorPane {
   /**
    * Sets the bottom anchor for the child when contained by an anchorpane.
    */
-  def setBottomAnchor(child: Node, value: Double) {
+  def setBottomAnchor(child: Node, value: Double): Unit = {
     jfxsl.AnchorPane.setBottomAnchor(child, value)
   }
 
   /**
    * Sets the left anchor for the child when contained by an anchorpane.
    */
-  def setLeftAnchor(child: Node, value: Double) {
+  def setLeftAnchor(child: Node, value: Double): Unit = {
     jfxsl.AnchorPane.setLeftAnchor(child, value)
   }
 
   /**
    * Sets the bottom anchor for the child when contained by an anchorpane.
    */
-  def setRightAnchor(child: Node, value: Double) {
+  def setRightAnchor(child: Node, value: Double): Unit = {
     jfxsl.AnchorPane.setRightAnchor(child, value)
   }
 
   /**
    * Sets the top anchor for the child when contained by an anchorpane.
    */
-  def setTopAnchor(child: Node, value: Double) {
+  def setTopAnchor(child: Node, value: Double): Unit = {
     jfxsl.AnchorPane.setTopAnchor(child, value)
   }
 
@@ -101,7 +100,7 @@ object AnchorPane {
    * @param bottom Bottom Anchor
    * @param left Left Anchor
    */
-  def setAnchors(child: Node, top: Double, right: Double, bottom: Double, left: Double) {
+  def setAnchors(child: Node, top: Double, right: Double, bottom: Double, left: Double): Unit = {
     setTopAnchor(child, top)
     setRightAnchor(child, right)
     setBottomAnchor(child, bottom)

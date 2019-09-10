@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.{EventTarget, EventType}
+
+import scala.language.implicitConversions
 
 object MouseEvent {
   implicit def sfxMouseEvent2jfx(me: MouseEvent): jfxsi.MouseEvent = if (me != null) me.delegate else null
@@ -184,7 +184,7 @@ class MouseEvent(override val delegate: jfxsi.MouseEvent) extends InputEvent(del
   /**
     * Augments drag detection behavior.
     */
-  def dragDetect_=(detected: Boolean) {
+  def dragDetect_=(detected: Boolean): Unit = {
     delegate.setDragDetect(detected)
   }
 

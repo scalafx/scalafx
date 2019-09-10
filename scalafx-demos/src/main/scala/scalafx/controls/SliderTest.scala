@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -75,7 +75,7 @@ object SliderTest extends JFXApp {
 
 class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Slider Properties") {
 
-  override protected def resetProperties() {
+  override protected def resetProperties(): Unit = {
     target.value = originalValue
     target.blockIncrement = originalBlockIncrement
     txfLabelFormatter.text = null

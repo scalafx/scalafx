@@ -43,7 +43,7 @@ object Background {
   val EMPTY: Background = Empty
 
   def classCssMetaData: Seq[javafx.css.CssMetaData[_ <: javafx.css.Styleable, _]] =
-    jfxsl.Background.getClassCssMetaData.asScala
+    jfxsl.Background.getClassCssMetaData.asScala.toSeq
 }
 
 class Background(override val delegate: jfxsl.Background)
@@ -66,11 +66,11 @@ class Background(override val delegate: jfxsl.Background)
   /**
    * * The list of BackgroundFills which together define the filled portion of this Background.
    */
-  def fills: Seq[jfxsl.BackgroundFill] = delegate.getFills.asScala
+  def fills: Seq[jfxsl.BackgroundFill] = delegate.getFills.asScala.toSeq
   /**
    * The list of BackgroundImages which together define the image portion of this Background.
    */
-  def images: Seq[jfxsl.BackgroundImage] = delegate.getImages.asScala
+  def images: Seq[jfxsl.BackgroundImage] = delegate.getImages.asScala.toSeq
 
   /**
    * The outsets of this Background.

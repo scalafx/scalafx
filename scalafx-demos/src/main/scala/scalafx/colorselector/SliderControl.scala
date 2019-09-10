@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@ class SliderControl(title: String) extends HBox {
 
   def value = this.realValue
 
-  def value_=(d: Double) {
+  def value_=(d: Double): Unit = {
     if (d < Min) {
       value() = Min
     } else if (d > Max) {
@@ -115,7 +115,7 @@ class SliderControl(title: String) extends HBox {
   }
 
 
-  def changeColor(backgroundColor: Color, foregroundColor: Color) {
+  def changeColor(backgroundColor: Color, foregroundColor: Color): Unit = {
     this.cssBackground() = strBackground.format(doubleToInt(backgroundColor.red),
       doubleToInt(backgroundColor.green), doubleToInt(backgroundColor.blue))
     this.cssForeground() = strForeground.format(doubleToInt(foregroundColor.red),

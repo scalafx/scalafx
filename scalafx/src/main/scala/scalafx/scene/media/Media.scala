@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,11 +28,11 @@ package scalafx.scene.media
 
 import javafx.scene.{media => jfxsm}
 import javafx.{util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{ReadOnlyIntegerProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object Media {
   implicit def sfxMedia2jfx(m: Media): jfxsm.Media = if (m != null) m.delegate else null
@@ -70,12 +70,14 @@ class Media(override val delegate: jfxsm.Media) extends SFXDelegate[jfxsm.Media]
    * Event handler called when an error occurs.
    */
   def onError = delegate.onErrorProperty
-  def onError_=(v: Runnable) {
+
+  def onError_=(v: Runnable): Unit = {
     onError() = v
   }
-  def onError_=(op: => Unit) {
+
+  def onError_=(op: => Unit): Unit = {
     onError() = new Runnable {
-      def run() {
+      def run(): Unit = {
         op
       }
     }

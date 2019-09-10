@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object StackedBarChart {
   implicit def sfxStackedBarChart2jfx[X, Y](v: StackedBarChart[X, Y]): jfxsc.StackedBarChart[X, Y] = if (v != null) v.delegate else null
@@ -67,7 +67,8 @@ class StackedBarChart[X, Y](override val delegate: jfxsc.StackedBarChart[X, Y])
   }
 
   def categoryGap: DoubleProperty = delegate.categoryGapProperty
-  def categoryGap_=(v: Double) {
+
+  def categoryGap_=(v: Double): Unit = {
     categoryGap() = v
   }
 }

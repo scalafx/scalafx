@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 
 package scalafx.graphics3d
 
-import scala.math.sqrt
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -37,7 +36,9 @@ import scalafx.scene.input.MouseEvent
 import scalafx.scene.paint.{Color, PhongMaterial}
 import scalafx.scene.shape.{MeshView, TriangleMesh}
 import scalafx.scene.transform.Rotate
-import scalafx.scene.{AmbientLight, Group, Node, PerspectiveCamera, PointLight, Scene, SceneAntialiasing}
+import scalafx.scene._
+
+import scala.math.sqrt
 
 /**
  * Demonstrates custom 3D shapes.
@@ -194,7 +195,7 @@ object TriangleMeshDemo extends JFXApp {
   }
 
   /** Add mouse interaction to a scene, rotating given node. */
-  private def addMouseInteraction(scene: Scene, node: Node) {
+  private def addMouseInteraction(scene: Scene, node: Node): Unit = {
     val angleY = DoubleProperty(0)
     val yRotate = new Rotate {
       angle <== angleY

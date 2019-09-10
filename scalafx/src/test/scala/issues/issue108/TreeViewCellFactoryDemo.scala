@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@ object TreeViewCellFactoryDemo extends JFXApp {
         showRoot = false
         root = new TreeItem[Person] {
           expanded = true
-          children = ObservableBuffer(characters.map { p => new TreeItem(p) })
+          children = characters.map { p => new TreeItem(p) }.toSeq
         }
         // Following statement, if uncommented, fails during compilation with error:
         //   type mismatch;

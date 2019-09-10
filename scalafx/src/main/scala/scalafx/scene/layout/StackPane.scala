@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,13 +29,13 @@ package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
 import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
 import scalafx.geometry.Insets.sfxInsets2jfx
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Node
 import scalafx.scene.Node.sfxNode2jfx
+
+import scala.language.implicitConversions
 
 object StackPane {
   implicit def sfxStackPane2jfx(v: StackPane): jfxsl.StackPane = if (v != null) v.delegate else null
@@ -43,7 +43,7 @@ object StackPane {
   /**
    * Removes all hbox constraints from the child node.
    */
-  def clearConstraints(child: jfxs.Node) {
+  def clearConstraints(child: jfxs.Node): Unit = {
     jfxsl.StackPane.clearConstraints(child)
   }
 
@@ -55,7 +55,7 @@ object StackPane {
   /**
    * Sets the alignment for the child when contained by a stackpane.
    */
-  def setAlignment(child: Node, value: Pos) {
+  def setAlignment(child: Node, value: Pos): Unit = {
     jfxsl.StackPane.setAlignment(child, value)
   }
 
@@ -67,7 +67,7 @@ object StackPane {
   /**
    * Sets the margin for the child when contained by an hbox.
    */
-  def setMargin(child: Node, value: Insets) {
+  def setMargin(child: Node, value: Insets): Unit = {
     jfxsl.StackPane.setMargin(child, value)
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,6 @@ package scalafx.testutil
 
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers.{be, convertToAnyShouldWrapper}
-
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.PositionDelegate
 
@@ -45,7 +44,9 @@ trait PositionDelegateSpec[D <: PositionDelegate[_]] extends FlatSpec {
 
     testedProperty.value = -10.0
 
-    testedProperty.onChange(moved = true)
+    testedProperty.onChange({
+      moved = true
+    })
     observerDouble <== testedProperty
 
     testedProperty.value = +101.0

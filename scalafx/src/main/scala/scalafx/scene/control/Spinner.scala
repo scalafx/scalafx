@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -185,7 +185,8 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
     *
     */
   def valueFactory: ObjectProperty[jfxsc.SpinnerValueFactory[T]] = delegate.valueFactoryProperty()
-  def valueFactory_=(value: SpinnerValueFactory[T]) {
+
+  def valueFactory_=(value: SpinnerValueFactory[T]): Unit = {
     valueFactory() = value
   }
 

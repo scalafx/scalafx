@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -123,7 +123,7 @@ trait WebIncludes {
    * @return $RETWR $WE
    */
   implicit def webEventClosureWrapper[T](handler: (WebEvent[T]) => Any): EventHandler[jfxsw.WebEvent[T]] = new jfxe.EventHandler[jfxsw.WebEvent[T]] {
-    def handle(event: jfxsw.WebEvent[T]) {
+    def handle(event: jfxsw.WebEvent[T]): Unit = {
       handler(event)
     }
   }

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.collections
 
 import javafx.{collections => jfxc}
-
-import scala.collection.mutable.{ArrayLike, Builder}
-import scala.reflect.ClassTag
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
+
+import scala.collection.mutable.{ArrayLike, Builder}
+import scala.reflect.ClassTag
 
 /**
  * Companion Object for `[[scalafx.collections.ObservableArray]]`.

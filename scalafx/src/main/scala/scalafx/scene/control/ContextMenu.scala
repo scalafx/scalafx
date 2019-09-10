@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,12 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe, geometry => jfxg}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object ContextMenu {
   implicit def sfxContextMenu2jfx(cm: ContextMenu): jfxsc.ContextMenu = if (cm != null) cm.delegate else null
@@ -55,7 +55,8 @@ class ContextMenu(override val delegate: jfxsc.ContextMenu = new jfxsc.ContextMe
    * Callback function to be informed when an item contained within this ContextMenu has been activated.
    */
   def onAction = delegate.onActionProperty
-  def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]) {
+
+  def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]): Unit = {
     onAction() = v
   }
 
@@ -68,7 +69,7 @@ class ContextMenu(override val delegate: jfxsc.ContextMenu = new jfxsc.ContextMe
    * Shows the `ContextMenu` relative to the given anchor node, on the side specified by the hpos and vpos parameters,
    * and offset by the given dx and dy values for the x-axis and y-axis, respectively.
    */
-  def show(anchor: Node, side: jfxg.Side, screenX: Double, screenY: Double) {
+  def show(anchor: Node, side: jfxg.Side, screenX: Double, screenY: Double): Unit = {
     delegate.show(anchor, side, screenX, screenY)
   }
 

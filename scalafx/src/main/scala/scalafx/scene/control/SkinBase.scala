@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.css.PseudoClass
 import scalafx.css.PseudoClass.sfxPseudoClass2jfx
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object SkinBase {
   implicit def sfxSkinBase2jfx[C <: jfxsc.Control](v: SkinBase[C]): jfxsc.SkinBase[C] = if (v != null) v.delegate else null
@@ -48,7 +48,7 @@ abstract class SkinBase[C <: jfxsc.Control] protected(override val delegate: jfx
   /**
    * Called by a `Skinnable` when the `Skin` is replaced on the `Skinnable`.
    */
-  def dispose() {
+  def dispose(): Unit = {
     delegate.dispose()
   }
 
@@ -72,7 +72,7 @@ abstract class SkinBase[C <: jfxsc.Control] protected(override val delegate: jfx
    */
   def skinnable = delegate.getSkinnable
 
-  def pseudoClassStateChanged(pseudoClass: PseudoClass, active: Boolean) {
+  def pseudoClassStateChanged(pseudoClass: PseudoClass, active: Boolean): Unit = {
     delegate.pseudoClassStateChanged(pseudoClass, active)
   }
 }

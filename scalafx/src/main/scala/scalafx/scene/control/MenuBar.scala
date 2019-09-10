@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.collections._
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object MenuBar {
   implicit def sfxMenuBar2jfx(cb: MenuBar): jfxsc.MenuBar = if (cb != null) cb.delegate else null
@@ -48,7 +48,7 @@ class MenuBar(override val delegate: jfxsc.MenuBar = new jfxsc.MenuBar()) extend
   /**
    * Sets the list of Menus for this instance.
    */
-  def menus_=(c: Iterable[Menu]) {
+  def menus_=(c: Iterable[Menu]): Unit = {
     fillSFXCollection(this.menus, c)
   }
 
@@ -60,7 +60,7 @@ class MenuBar(override val delegate: jfxsc.MenuBar = new jfxsc.MenuBar()) extend
   /**
    * Sets the useSystemMenuBar for this instance.
    */
-  def useSystemMenuBar_=(v: Boolean) {
+  def useSystemMenuBar_=(v: Boolean): Unit = {
     useSystemMenuBar() = v
   }
 

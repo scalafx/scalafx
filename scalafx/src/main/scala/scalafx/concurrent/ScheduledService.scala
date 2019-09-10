@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.concurrent
 
 import javafx.{concurrent => jfxc, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object ScheduledService {
   implicit def sfxScheduledService2jfx[T](s: ScheduledService[T]): jfxc.ScheduledService[T] = if (s != null) s.delegate else null
@@ -94,7 +94,8 @@ abstract class ScheduledService[T](override val delegate: jfxc.ScheduledService[
    * operation.
    */
   def delay: ObjectProperty[jfxu.Duration] = delegate.delayProperty
-  def delay_=(v: jfxu.Duration) {
+
+  def delay_=(v: jfxu.Duration): Unit = {
     delay() = v
   }
 
@@ -102,7 +103,8 @@ abstract class ScheduledService[T](override val delegate: jfxc.ScheduledService[
    * The maximum allowed value for the cumulativePeriod.
    */
   def maximumCumulativePeriod: ObjectProperty[jfxu.Duration] = delegate.maximumCumulativePeriodProperty
-  def maximumCumulativePeriod_=(v: jfxu.Duration) {
+
+  def maximumCumulativePeriod_=(v: jfxu.Duration): Unit = {
     maximumCumulativePeriod() = v
   }
 
@@ -110,7 +112,8 @@ abstract class ScheduledService[T](override val delegate: jfxc.ScheduledService[
    * Indicates whether the ScheduledService should automatically restart in the case of a failure in the Task.
    */
   def restartOnFailure: BooleanProperty = delegate.restartOnFailureProperty
-  def restartOnFailure_=(v: Boolean) {
+
+  def restartOnFailure_=(v: Boolean): Unit = {
     restartOnFailure() = v
   }
 
@@ -134,7 +137,8 @@ abstract class ScheduledService[T](override val delegate: jfxc.ScheduledService[
    * state.
    */
   def maximumFailureCount: IntegerProperty = delegate.maximumFailureCountProperty
-  def maximumFailureCount_=(v: Int) {
+
+  def maximumFailureCount_=(v: Int): Unit = {
     maximumFailureCount() = v
   }
 
@@ -142,7 +146,8 @@ abstract class ScheduledService[T](override val delegate: jfxc.ScheduledService[
    * The minimum amount of time to allow between the start of the last run and the start of the next run.
    */
   def period: ObjectProperty[jfxu.Duration] = delegate.periodProperty
-  def period_=(v: jfxu.Duration) {
+
+  def period_=(v: jfxu.Duration): Unit = {
     period() = v
   }
 
@@ -150,7 +155,8 @@ abstract class ScheduledService[T](override val delegate: jfxc.ScheduledService[
    * Computes the amount of time to add to the period on each failure.
    */
   def backoffStrategy: ObjectProperty[jfxu.Callback[jfxc.ScheduledService[_], jfxu.Duration]] = delegate.backoffStrategyProperty
-  def backoffStrategy_=(v: jfxu.Callback[jfxc.ScheduledService[_], jfxu.Duration]) {
+
+  def backoffStrategy_=(v: jfxu.Callback[jfxc.ScheduledService[_], jfxu.Duration]): Unit = {
     backoffStrategy() = v
   }
 }

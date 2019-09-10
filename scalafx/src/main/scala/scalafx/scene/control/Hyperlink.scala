@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,12 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object Hyperlink {
   implicit def sfxHyperlink2jfx(h: Hyperlink): jfxsc.Hyperlink = if (h != null) h.delegate else null
@@ -56,7 +56,8 @@ class Hyperlink(override val delegate: jfxsc.Hyperlink = new jfxsc.Hyperlink)
    * Indicates whether this link has already been "visited".
    */
   def visited: BooleanProperty = delegate.visitedProperty
-  def visited_=(v: Boolean) {
+
+  def visited_=(v: Boolean): Unit = {
     visited() = v
   }
 

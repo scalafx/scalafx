@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,11 @@
 package scalafx.scene.control
 
 import java.{util => ju}
+
 import javafx.scene.{control => jfxsc}
 import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
-import scala.math.Ordering
 import scalafx.Includes._
-import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyDoubleProperty, ReadOnlyObjectProperty, StringProperty}
+import scalafx.beans.property._
 import scalafx.collections.ObservableBuffer
 import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
@@ -41,6 +39,9 @@ import scalafx.event.EventHandlerDelegate
 import scalafx.scene.Node
 import scalafx.scene.Node.sfxNode2jfx
 import scalafx.scene.control.ContextMenu._
+
+import scala.language.implicitConversions
+import scala.math.Ordering
 
 object TableColumnBase {
   implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]): jfxsc.TableColumnBase[S, T] = if (tc != null) tc.delegate else null
@@ -70,7 +71,8 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * Comparator function used when sorting this TableColumnBase.
    */
   def comparator: ObjectProperty[ju.Comparator[T]] = delegate.comparatorProperty
-  def comparator_=(v: Ordering[T]) {
+
+  def comparator_=(v: Ordering[T]): Unit = {
     ObjectProperty.fillProperty(delegate.comparatorProperty, v)
   }
 
@@ -78,7 +80,8 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * This menu will be shown whenever the user right clicks within the header area of this TableColumnBase.
    */
   def contextMenu: ObjectProperty[jfxsc.ContextMenu] = delegate.contextMenuProperty
-  def contextMenu_=(v: ContextMenu) {
+
+  def contextMenu_=(v: ContextMenu): Unit = {
     contextMenu() = v
   }
 
@@ -86,7 +89,8 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * Specifies whether this TableColumnBase allows editing.
    */
   def editable: BooleanProperty = delegate.editableProperty
-  def editable_=(v: Boolean) {
+
+  def editable_=(v: Boolean): Unit = {
     editable() = v
   }
 
@@ -94,7 +98,8 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * The graphic in the TableColumnBase.
    */
   def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
-  def graphic_=(v: Node) {
+
+  def graphic_=(v: Node): Unit = {
     graphic() = v
   }
 
@@ -102,7 +107,8 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * The id of this TableColumnBase.
    */
   def id: StringProperty = delegate.idProperty
-  def id_=(v: String) {
+
+  def id_=(v: String): Unit = {
     id() = v
   }
 
@@ -110,7 +116,8 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * The maximum width the TableColumnBase is permitted to be resized to.
    */
   def maxWidth: DoubleProperty = delegate.maxWidthProperty
-  def maxWidth_=(v: Double) {
+
+  def maxWidth_=(v: Double): Unit = {
     maxWidth() = v
   }
 
@@ -118,7 +125,8 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * The minimum width the TableColumnBase is permitted to be resized to.
    */
   def minWidth: DoubleProperty = delegate.minWidthProperty
-  def minWidth_=(v: Double) {
+
+  def minWidth_=(v: Double): Unit = {
     minWidth() = v
   }
 
@@ -131,7 +139,8 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * The preferred width of the TableColumnBase.
    */
   def prefWidth: DoubleProperty = delegate.prefWidthProperty
-  def prefWidth_=(v: Double) {
+
+  def prefWidth_=(v: Double): Unit = {
     prefWidth() = v
   }
 
@@ -139,7 +148,8 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * Used to indicate whether the width of this column can change.
    */
   def resizable: BooleanProperty = delegate.resizableProperty
-  def resizable_=(v: Boolean) {
+
+  def resizable_=(v: Boolean): Unit = {
     resizable() = v
   }
 
@@ -147,7 +157,8 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * A boolean property to toggle on and off the sortability of this column.
    */
   def sortable: BooleanProperty = delegate.sortableProperty
-  def sortable_=(v: Boolean) {
+
+  def sortable_=(v: Boolean): Unit = {
     sortable() = v
   }
 
@@ -156,7 +167,8 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * TableColumnBase is part of the sort order, and if so, what position in the sort order it is in.
    */
   def sortNode: ObjectProperty[jfxs.Node] = delegate.sortNodeProperty
-  def sortNode_=(v: Node) {
+
+  def sortNode_=(v: Node): Unit = {
     sortNode() = v
   }
 
@@ -164,7 +176,8 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * The CSS style string associated to this TableColumnBase.
    */
   def style: StringProperty = delegate.styleProperty
-  def style_=(v: String) {
+
+  def style_=(v: String): Unit = {
     style() = v
   }
 
@@ -172,7 +185,8 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * This is the text to show in the header for this column.
    */
   def text: StringProperty = delegate.textProperty
-  def text_=(v: String) {
+
+  def text_=(v: String): Unit = {
     text() = v
   }
 
@@ -186,7 +200,8 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * Toggling this will immediately toggle the visibility of this column, and all children columns.
    */
   def visible: BooleanProperty = delegate.visibleProperty
-  def visible_=(v: Boolean) {
+
+  def visible_=(v: Boolean): Unit = {
     visible() = v
   }
 

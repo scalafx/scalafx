@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,6 @@
 package scalafx.controls
 
 import javafx.beans.value.{ChangeListener, ObservableValue}
-
 import scalafx.Includes.{observableList2ObservableBuffer, _}
 import scalafx.application.JFXApp
 import scalafx.collections.ObservableBuffer
@@ -83,7 +82,7 @@ class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](targe
   }
   // In JAvaFX 2.1, bind TextArea.prefColumnCount with value
   chbPrefColumnCount.delegate.selectionModelProperty.addListener(new ChangeListener[Any] {
-    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
+    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any): Unit = {
       target.prefColumnCount = newValue.toString.toInt
     }
   })
@@ -93,7 +92,7 @@ class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](targe
   }
   // In JAvaFX 2.1, bind TextArea.prefRowCount with value
   chbPrefRowCount.delegate.selectionModelProperty.addListener(new ChangeListener[Any] {
-    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
+    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any): Unit = {
       target.prefRowCount = newValue.toString.toInt
     }
   })
@@ -104,7 +103,7 @@ class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](targe
   //  chbScrollLeft.delegate.selectionModelProperty.set
   // In JAvaFX 2.1, bind TextArea.prefRowCount with value
   chbPrefRowCount.delegate.selectionModelProperty.addListener(new ChangeListener[Any] {
-    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
+    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any): Unit = {
       target.scrollLeft = chbScrollLeft.items.get().get(newValue.toString.toInt)
     }
   })
@@ -114,7 +113,7 @@ class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](targe
   }
   // In JAvaFX 2.1, bind TextArea.prefRowCount with value
   chbPrefRowCount.delegate.selectionModelProperty.addListener(new ChangeListener[Any] {
-    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
+    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any): Unit = {
       target.scrollTop = chbScrollTop.items.get().get(newValue.toString.toInt)
     }
   })

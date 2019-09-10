@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,6 @@
 package scalafx.application
 
 import javafx.{application => jfxa}
-
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyBooleanProperty
 
@@ -37,7 +36,7 @@ import scalafx.beans.property.ReadOnlyBooleanProperty
 object Platform {
 
   /** Causes the JavaFX application to terminate. */
-  def exit() {
+  def exit(): Unit = {
     jfxa.Platform.exit()
   }
 
@@ -62,7 +61,7 @@ object Platform {
   def implicitExit: Boolean = jfxa.Platform.isImplicitExit
 
   /** Sets the implicitExit attribute to the specified value. */
-  def implicitExit_=(implicitExit: Boolean) {
+  def implicitExit_=(implicitExit: Boolean): Unit = {
     jfxa.Platform.setImplicitExit(implicitExit)
   }
 
@@ -128,7 +127,7 @@ object Platform {
   /** Run the specified Runnable on the JavaFX Application Thread at some unspecified time in the future.
     * Returns immediately.
     */
-  def runLater(runnable: java.lang.Runnable) {
+  def runLater(runnable: java.lang.Runnable): Unit = {
     jfxa.Platform.runLater(runnable)
   }
 
@@ -142,9 +141,9 @@ object Platform {
     *   }
     * }}}
     */
-  def runLater[R](op: => R) {
+  def runLater[R](op: => R): Unit = {
     runLater(new Runnable {
-      def run() {
+      def run(): Unit = {
         op
       }
     })

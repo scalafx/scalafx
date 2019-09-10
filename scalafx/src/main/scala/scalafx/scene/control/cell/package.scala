@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,13 +30,13 @@ package scalafx.scene.control
 import javafx.beans.{property => jfxbp, value => jfxbv}
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, util => jfxu}
-
-import scala.language.{implicitConversions, reflectiveCalls}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty}
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
+
+import scala.language.{implicitConversions, reflectiveCalls}
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/package-summary.html `javafx.scene.control.cell`]] package.
@@ -66,7 +66,8 @@ package object cell {
      * The `StringConverter` property.
      */
     def converter: ObjectProperty[jfxu.StringConverter[J]] = delegate.converterProperty()
-    def converter_=(v: StringConverter[J]) {
+
+    def converter_=(v: StringConverter[J]): Unit = {
       converter() = v
     }
 
@@ -92,7 +93,8 @@ package object cell {
      * A property representing whether the `ComboBox`, when shown to the user, is editable or not.
      */
     def comboBoxEditable: BooleanProperty = delegate.comboBoxEditableProperty()
-    def comboBoxEditable_=(v: Boolean) {
+
+    def comboBoxEditable_=(v: Boolean): Unit = {
       comboBoxEditable() = v
     }
 
@@ -118,7 +120,7 @@ package object cell {
      * Types that contains the method `updateItem(item: Any, empty: Boolean): Unit`
      */
     type Updated = {
-      def updateItem(item: Any, empty: Boolean)
+      def updateItem(item: Any, empty: Boolean): Unit
     }
 
     /**
@@ -128,7 +130,7 @@ package object cell {
      * @param empty whether or not this cell represents data from the list. If it is empty, then it does not
      *              represent any domain data, but is a cell being used to render an "empty" row.
      */
-    def updateItem(item: T, empty: Boolean) {
+    def updateItem(item: T, empty: Boolean): Unit = {
       delegate.asInstanceOf[Updated].updateItem(item, empty)
     }
 
@@ -196,7 +198,8 @@ package object cell {
      * Property representing the Callback that is bound to by the element inside the Cell shown on screen.
      */
     def selectedStateCallback = delegate.selectedStateCallbackProperty()
-    def selectedStateCallback_=(v: J => ObservableValue[Boolean, java.lang.Boolean]) {
+
+    def selectedStateCallback_=(v: J => ObservableValue[Boolean, java.lang.Boolean]): Unit = {
       selectedStateCallback() = v
     }
 

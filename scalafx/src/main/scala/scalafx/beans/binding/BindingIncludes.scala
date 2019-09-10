@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,10 +30,10 @@ package scalafx.beans.binding
 
 import javafx.beans.{binding => jfxbb, value => jfxbv}
 import javafx.{beans => jfxb}
-
-import scala.language.implicitConversions
 import scalafx.beans.Observable
 import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
+
+import scala.language.implicitConversions
 
 object BindingIncludes extends BindingIncludes
 
@@ -164,7 +164,7 @@ trait BindingIncludes extends Bindings {
    * @return a new $JFX InvalidationListener.
    */
   implicit def closure2InvalidationListener[R](il: jfxb.Observable => R): jfxb.InvalidationListener = new jfxb.InvalidationListener {
-    def invalidated(observable: jfxb.Observable) {
+    def invalidated(observable: jfxb.Observable): Unit = {
       il(observable)
     }
   }
@@ -178,7 +178,7 @@ trait BindingIncludes extends Bindings {
     * @return a new $JFX InvalidationListener.
     */
   implicit def closureSFX2InvalidationListener[R](il: Observable => R): jfxb.InvalidationListener = new jfxb.InvalidationListener {
-    def invalidated(observable: jfxb.Observable) {
+    def invalidated(observable: jfxb.Observable): Unit = {
       il(scalafx.beans.BeanIncludes.jfxObservable2sfx(observable))
     }
   }
@@ -193,7 +193,7 @@ trait BindingIncludes extends Bindings {
    * @return a new $JFX ChangeListener.
    */
   implicit def closure2ChangedListener[P, R](cl: (jfxbv.ObservableValue[_ <: P], P, P) => R): jfxbv.ChangeListener[P] = new jfxbv.ChangeListener[P]() {
-    def changed(observable: jfxbv.ObservableValue[_ <: P], oldValue: P, newValue: P) {
+    def changed(observable: jfxbv.ObservableValue[_ <: P], oldValue: P, newValue: P): Unit = {
       cl(observable, oldValue, newValue)
     }
   }

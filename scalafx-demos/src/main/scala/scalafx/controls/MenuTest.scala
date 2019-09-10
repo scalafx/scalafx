@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@ import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.event.ActionEvent
 import scalafx.scene.Scene
-import scalafx.scene.control.{Label, Menu, MenuBar, MenuItem, SeparatorMenuItem}
+import scalafx.scene.control._
 import scalafx.scene.layout.{BorderPane, VBox}
 import scalafx.scene.paint.Color
 
@@ -77,7 +77,7 @@ object MenuTest extends JFXApp {
     }
   }
 
-  def printEvent(eventStr: String)() {
+  def printEvent(eventStr: String)(): Unit = {
     history.children += new Label(eventStr)
   }
 

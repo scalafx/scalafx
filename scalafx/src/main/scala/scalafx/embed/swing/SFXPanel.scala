@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,13 @@ package scalafx.embed.swing
 
 import java.awt.Dimension
 import java.awt.im.InputMethodRequests
-import javafx.embed.{swing => jfxes}
 
-import scala.language.implicitConversions
+import javafx.embed.{swing => jfxes}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Scene
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.embed.swing.SFXPanel]].
@@ -78,7 +79,8 @@ class SFXPanel(override val delegate: jfxes.JFXPanel = new jfxes.JFXPanel)
    * the ScalaFX scene attached to this JFXPanel.
    */
   def scene: Scene = delegate.getScene
-  def scene_=(s: Scene) {
+
+  def scene_=(s: Scene): Unit = {
     delegate.setScene(s)
   }
 
@@ -91,7 +93,7 @@ class SFXPanel(override val delegate: jfxes.JFXPanel = new jfxes.JFXPanel)
    * SFXPanel's opacity is controlled by the JavaFX content which is displayed in this component,
    * so this method overrides JComponent.setOpaque(boolean) to only accept a false value.
    */
-  def opaque_=(b: Boolean) {
+  def opaque_=(b: Boolean): Unit = {
     delegate.setOpaque(b)
   }
 

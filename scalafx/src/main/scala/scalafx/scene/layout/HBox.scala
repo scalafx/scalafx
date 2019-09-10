@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,7 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-import javafx.{geometry => jfxg, scene => jfxs}
-
-import scala.language.implicitConversions
+import javafx.{scene => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty}
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
@@ -38,13 +36,15 @@ import scalafx.geometry.Insets._
 import scalafx.scene.Node
 import scalafx.scene.Node._
 
+import scala.language.implicitConversions
+
 object HBox {
   implicit def sfxHBox2jfx(v: HBox): jfxsl.HBox = if (v != null) v.delegate else null
 
   /**
    * Removes all hbox constraints from the child node.
    */
-  def clearConstraints(child: jfxs.Node) {
+  def clearConstraints(child: jfxs.Node): Unit = {
     jfxsl.HBox.clearConstraints(child)
   }
 
@@ -56,7 +56,7 @@ object HBox {
   /**
    * Sets the horizontal grow priority for the child when contained by an hbox.
    */
-  def setHgrow(child: Node, value: Priority) {
+  def setHgrow(child: Node, value: Priority): Unit = {
     jfxsl.HBox.setHgrow(child, value)
   }
 
@@ -68,7 +68,7 @@ object HBox {
   /**
    * Sets the margin for the child when contained by an hbox.
    */
-  def setMargin(child: Node, value: Insets) {
+  def setMargin(child: Node, value: Insets): Unit = {
     jfxsl.HBox.setMargin(child, value)
   }
 
@@ -104,7 +104,8 @@ class HBox(override val delegate: jfxsl.HBox = new jfxsl.HBox)
    * The amount of horizontal space between each child in the hbox.
    */
   def spacing: DoubleProperty = delegate.spacingProperty
-  def spacing_=(v: Double) {
+
+  def spacing_=(v: Double): Unit = {
     spacing() = v
   }
 
@@ -113,7 +114,8 @@ class HBox(override val delegate: jfxsl.HBox = new jfxsl.HBox)
    * kept to their preferred height and aligned according to the alignment vpos value.
    */
   def fillHeight: BooleanProperty = delegate.fillHeightProperty
-  def fillHeight_=(v: Boolean) {
+
+  def fillHeight_=(v: Boolean): Unit = {
     fillHeight() = v
   }
 

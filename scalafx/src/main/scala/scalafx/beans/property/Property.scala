@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,11 +28,11 @@ package scalafx.beans.property
 
 import javafx.beans.value.{ObservableValue => JFXObservableValue}
 import javafx.beans.{property => jfxbp}
-
-import scala.language.implicitConversions
 import scalafx.animation.Tweenable
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object Property {
   implicit def sfxProperty2jfx[T, J <: Any](p: Property[T, J]): jfxbp.Property[J] = p.delegate
@@ -54,14 +54,14 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: Any]
    *
    * @param v The new value
    */
-  def value_=(v: T)
+  def value_=(v: T): Unit
 
   /**
    * Set the wrapped value.
    *
    * @param v The new value
    */
-  def update(v: T) {
+  def update(v: T): Unit = {
     value_=(v)
   }
 
@@ -70,7 +70,7 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: Any]
    *
    * @param v JavaFX ObservableValue this Property should be bound to.
    */
-  def <==(v: JFXObservableValue[_ <: J]) {
+  def <==(v: JFXObservableValue[_ <: J]): Unit = {
     delegate.bind(v)
   }
 
@@ -79,7 +79,7 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: Any]
    *
    * @param v ScalaFX ObservableValue this Property should be bound to.
    */
-  def <==(v: ObservableValue[_ <: T, _ <: J]) {
+  def <==(v: ObservableValue[_ <: T, _ <: J]): Unit = {
     delegate.bind(v.delegate)
   }
 
@@ -88,7 +88,7 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: Any]
    *
    * @param  v the other ScalaFX Property
    */
-  def <==>(v: Property[T, J]) {
+  def <==>(v: Property[T, J]): Unit = {
     delegate.bindBidirectional(v.delegate)
   }
 
@@ -97,7 +97,7 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: Any]
    *
    * @param  v the other JavaFX Property
    */
-  def <==>(v: jfxbp.Property[J]) {
+  def <==>(v: jfxbp.Property[J]): Unit = {
     delegate.bindBidirectional(v)
   }
 
@@ -105,7 +105,7 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: Any]
    * Remove the unidirectional binding for this Property. If the Property is not bound,
    * calling this method has no effect.
    */
-  def unbind() {
+  def unbind(): Unit = {
     delegate.unbind()
   }
 
@@ -115,7 +115,7 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: Any]
    *
    * @param v - the other Property
    */
-  def unbind(v: Property[T, J]) {
+  def unbind(v: Property[T, J]): Unit = {
     delegate.unbindBidirectional(v.delegate)
   }
 
@@ -125,7 +125,7 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: Any]
    *
    * @param v - the other Property
    */
-  def unbind(v: jfxbp.Property[J]) {
+  def unbind(v: jfxbp.Property[J]): Unit = {
     delegate.unbindBidirectional(v)
   }
 

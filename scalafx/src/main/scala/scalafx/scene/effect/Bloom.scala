@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.effect
 
 import javafx.scene.{effect => jfxse}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object Bloom {
   implicit def sfxBloom2jfx(b: Bloom): jfxse.Bloom = if (b != null) b.delegate else null
@@ -51,7 +51,8 @@ class Bloom(override val delegate: jfxse.Bloom = new jfxse.Bloom)
    * The threshold value controls the minimum luminosity value of the pixels that will be made to glow.
    */
   def threshold: DoubleProperty = delegate.thresholdProperty
-  def threshold_=(v: Double) {
+
+  def threshold_=(v: Double): Unit = {
     threshold() = v
   }
 

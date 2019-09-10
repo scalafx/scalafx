@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,12 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object TreeCell {
   implicit def sfxTreeCell2jfx[T](t: TreeCell[T]): jfxsc.TreeCell[T] = if (t != null) t.delegate else null
@@ -53,7 +53,8 @@ class TreeCell[T](override val delegate: jfxsc.TreeCell[T] = new jfxsc.TreeCell[
    * not the TreeItem that it is placed beside is expanded or collapsed.
    */
   def disclosureNode: ObjectProperty[jfxs.Node] = delegate.disclosureNodeProperty
-  def disclosureNode_=(v: Node) {
+
+  def disclosureNode_=(v: Node): Unit = {
     disclosureNode() = v
   }
 
@@ -61,7 +62,8 @@ class TreeCell[T](override val delegate: jfxsc.TreeCell[T] = new jfxsc.TreeCell[
    * Each TreeCell represents at most a single `TreeItem`, which is represented by this property.
    */
   def treeItem: ReadOnlyObjectProperty[jfxsc.TreeItem[T]] = delegate.treeItemProperty
-  def treeItem_=(treeItem: TreeItem[T]) {
+
+  def treeItem_=(treeItem: TreeItem[T]): Unit = {
     delegate.updateTreeItem(treeItem)
   }
 
@@ -69,7 +71,8 @@ class TreeCell[T](override val delegate: jfxsc.TreeCell[T] = new jfxsc.TreeCell[
    * A TreeCell is explicitly linked to a single `TreeView` instance, which is represented by this property.
    */
   def treeView: ReadOnlyObjectProperty[jfxsc.TreeView[T]] = delegate.treeViewProperty
-  def treeView_=(tree: TreeView[T]) {
+
+  def treeView_=(tree: TreeView[T]): Unit = {
     delegate.updateTreeView(tree)
   }
 }
