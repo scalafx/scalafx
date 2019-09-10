@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,6 @@
 package scalafx.controls
 
 import javafx.scene.{control => jfxsc, text => jfxst}
-
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.collections.ObservableBuffer
@@ -113,7 +112,7 @@ class TooltipControls(target: Tooltip) extends PropertiesNodes[Tooltip](target, 
     selected <==> target.wrapText
   }
 
-  override protected def resetProperties() {
+  override protected def resetProperties(): Unit = {
     target.contentDisplay = originalContentDisplay
     target.text = originalText
     target.textAlignment = originalTextAlignment

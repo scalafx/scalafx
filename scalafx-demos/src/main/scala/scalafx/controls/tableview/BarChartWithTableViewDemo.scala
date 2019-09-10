@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -89,7 +89,7 @@ object BarChartWithTableViewDemo extends JFXApp {
     }
 
 
-  private def showAsTable(name: String, data: ObservableBuffer[Position]) {
+  private def showAsTable(name: String, data: ObservableBuffer[Position]): Unit = {
 
     val tableView = new TableView[Position](data) {
       columns ++= List(

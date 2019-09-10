@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@ import scalafx.beans.property.IntegerProperty
  */
 
 object ScalaFX_Properties_And_Binding_03 {
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
     val num1 = new IntegerProperty(null, "num1")
     val num2 = new IntegerProperty(null, "num2")
     val max = Bindings.max(num1, num2)

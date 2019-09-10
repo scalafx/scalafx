@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,6 @@ package scalafx.graphics3d
 
 import java.io.File
 
-import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.animation.Timeline
 import scalafx.application.JFXApp
@@ -40,7 +39,9 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.text.{Font, Text}
 import scalafx.scene.transform.Rotate
-import scalafx.scene.{DepthTest, Group, Node, PerspectiveCamera, Scene, SceneAntialiasing}
+import scalafx.scene._
+
+import scala.language.postfixOps
 
 /**
  * The type VideoCubeDemo a demonstration of the JavaOne 2011 key note with
@@ -155,12 +156,12 @@ object VideoCubeDemo extends JFXApp {
     new Group(c1)
   }
 
-  def play() {
+  def play(): Unit = {
     animation.play()
     for (mp <- mediaPlayers) {mp.play()}
   }
 
-  def stop() {
+  def stop(): Unit = {
     animation.pause()
     for (mp <- mediaPlayers) {mp.stop()}
   }
@@ -279,7 +280,8 @@ class VideoCube(val mediaPlayers: List[MediaPlayer], size: Double) extends Group
     children = Seq(backRect, mediaView, debugText)
 
     def fitHeight = mediaView.fitHeightProperty
-    def fitHeight_=(v: Double) {
+
+    def fitHeight_=(v: Double): Unit = {
       fitHeight() = v
       backRect.height = v
       mediaView.layoutY = v / 4
@@ -291,24 +293,28 @@ class VideoCube(val mediaPlayers: List[MediaPlayer], size: Double) extends Group
      * necessary to fit.
      */
     def fitWidth = mediaView.fitWidthProperty
-    def fitWidth_=(v: Double) {
+
+    def fitWidth_=(v: Double): Unit = {
       fitWidth() = v
       backRect.width = v
       debugText.layoutX = v / 4
     }
 
     def preserveRatio = mediaView.preserveRatioProperty
-    def preserveRatio_=(v: Boolean) {
+
+    def preserveRatio_=(v: Boolean): Unit = {
       preserveRatio() = v
     }
 
     def smooth = mediaView.smoothProperty
-    def smooth_=(v: Boolean) {
+
+    def smooth_=(v: Boolean): Unit = {
       smooth() = v
     }
 
     def text = debugText.text
-    def text_=(v: String) {
+
+    def text_=(v: String): Unit = {
       debugText.text = v
     }
 

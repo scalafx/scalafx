@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,6 @@
  */
 package scalafx.graphics3d
 
-import scala.language.postfixOps
 import scalafx.Includes._
 import scalafx.animation._
 import scalafx.application.JFXApp
@@ -34,7 +33,9 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.transform.{Rotate, Translate}
-import scalafx.scene.{Group, Node, PerspectiveCamera, Scene, SceneAntialiasing}
+import scalafx.scene._
+
+import scala.language.postfixOps
 
 /**
  * A port of the JavaFX Ensemble CubeSampleDemo
@@ -95,11 +96,11 @@ object CubeSampleDemo extends JFXApp {
     new Group(c, c2, c3)
   }
 
-  def play() {
+  def play(): Unit = {
     animation.play()
   }
 
-  def stop() {
+  def stop(): Unit = {
     animation.pause()
   }
 

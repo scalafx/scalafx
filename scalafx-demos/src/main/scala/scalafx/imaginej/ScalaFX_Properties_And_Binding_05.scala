@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@ import scalafx.beans.property.DoubleProperty
  */
 
 object ScalaFX_Properties_And_Binding_05 {
-  def main(args: Array[String]) {
+  def main(args: Array[String]): Unit = {
     val bill1 = new Bill(new DoubleProperty(null, "Bill 1"))
     val bill2 = new Bill(new DoubleProperty(null, "Bill 2"))
     val bill3 = new Bill(new DoubleProperty(null, "Bill 3"))

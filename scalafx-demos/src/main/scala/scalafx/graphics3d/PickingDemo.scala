@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2019, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -89,7 +89,7 @@ object PickingDemo extends JFXApp {
   }
 
   /** Add mouse interaction to a scene, rotating given node. */
-  private def addMouseInteraction(scene: Scene, group: Group) {
+  private def addMouseInteraction(scene: Scene, group: Group): Unit = {
     val angleY = DoubleProperty(-50)
     val yRotate = new Rotate {
       angle <== angleY
