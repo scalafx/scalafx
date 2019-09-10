@@ -1,6 +1,6 @@
 //
 // Publishing setup for sbt-sonatype plugin
-// [[]]
+// [[https://github.com/xerial/sbt-sonatype]]
 //
 import xerial.sbt.Sonatype._
 
@@ -14,4 +14,4 @@ startYear := Some(2011)
 // Enables publishing to maven repo
 publishMavenStyle := true
 
-//publishTo := sonatypePublishTo.value
+publishTo := sonatypePublishTo.value
