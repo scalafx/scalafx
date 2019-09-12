@@ -10,9 +10,11 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 //
 
 val javaFXVersion = "12.0.2"
-val scalafxVersion = s"$javaFXVersion-R18-SNAPSHOT"
+val scalafxVersion = s"$javaFXVersion-R18"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v" + scalafxVersion
+
+publishArtifact := false
 
 // ScalaFX project
 lazy val scalafx = (project in file("scalafx")).settings(
@@ -30,7 +32,8 @@ lazy val scalafx = (project in file("scalafx")).settings(
     case Some(path) => Seq("-diagrams", "-diagrams-dot-path", path)
     case None => Seq.empty[String]
   }),
-  publishArtifact := true
+  publishArtifact := true,
+  publishArtifact in Test := false
 )
 
 // ScalaFX Demos project
@@ -143,15 +146,17 @@ lazy val manifestSetting = packageOptions += {
 
 // Metadata needed by Maven Central
 // See also http://maven.apache.org/pom.html#Developers
+import xerial.sbt.Sonatype._
 lazy val mavenCentralSettings = Seq(
   homepage := Some(new URL("http://www.scalafx.org/")),
   startYear := Some(2011),
   licenses := Seq(("BSD", new URL("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
+  sonatypeProfileName := "org.scalafx",
+  sonatypeProjectHosting := Some(GitHubHosting("scalafx", "scalafx", "scalafx-dev@googlegroups.com")),
+  publishMavenStyle := true,
+  publishTo := sonatypePublishTo.value,
+  sonatypeBundleDirectory := (ThisBuild / baseDirectory).value / target.value.getName / "sonatype-staging" / s"${version.value}",
   pomExtra :=
-    <scm>
-      <url>https://github.com/scalafx/scalafx</url>
-      <connection>scm:git:https://github.com/scalafx/scalafx.git</connection>
-    </scm>
       <developers>
         <developer>
           <id>rafael.afonso</id>
