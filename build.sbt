@@ -155,7 +155,6 @@ lazy val mavenCentralSettings = Seq(
   sonatypeProjectHosting := Some(GitHubHosting("scalafx", "scalafx", "scalafx-dev@googlegroups.com")),
   publishMavenStyle := true,
   publishTo := sonatypePublishTo.value,
-  sonatypeBundleDirectory := (ThisBuild / baseDirectory).value / target.value.getName / "sonatype-staging" / s"${version.value}",
   pomExtra :=
       <developers>
         <developer>
