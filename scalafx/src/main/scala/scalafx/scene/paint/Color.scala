@@ -90,12 +90,12 @@ object Color {
   /**
    * This is a shortcut for rgb(gray, gray, gray).
    */
-  def grayRgb(gray: Int) = new Color(jfxsp.Color.gray(gray))
+  def grayRgb(gray: Int) = new Color(jfxsp.Color.grayRgb(gray))
 
   /**
    * This is a shortcut for rgb(gray, gray, gray, opacity).
    */
-  def grayRgb(gray: Int, opacity: Double) = new Color(jfxsp.Color.gray(gray, opacity))
+  def grayRgb(gray: Int, opacity: Double) = new Color(jfxsp.Color.grayRgb(gray, opacity))
 
   /**
    * Creates a color value from a string representation.  The format of the string representation is the same as in web(String).
