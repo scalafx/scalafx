@@ -632,3 +632,4 @@ class Color(override val delegate: jfxsp.Color) extends Paint(delegate) with SFX
   def saturate: Color = delegate.saturate
 
 }
+
