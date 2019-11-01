@@ -12,7 +12,7 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 val javaFXVersion = "13.0.1"
 val scalafxVersion = s"$javaFXVersion-R19-SNAPSHOT"
 
-val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v" + scalafxVersion
+val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v." + scalafxVersion
 
 publishArtifact := false
 
@@ -27,7 +27,7 @@ lazy val scalafx = (project in file("scalafx")).settings(
   scalacOptions in(Compile, doc) ++= Seq(
     "-sourcepath", baseDirectory.value.toString,
     "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.creole",
-    "-doc-source-url", "https://github.com/scalafx/scalafx/blob/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala"
+    "-doc-source-url", "https://github.com/scalafx/scalafx/tree/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala"
   ) ++ (Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
     case Some(path) => Seq(
       "-diagrams",
