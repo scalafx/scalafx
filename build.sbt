@@ -9,7 +9,7 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion = "12.0.2"
+val javaFXVersion = "13.0.1"
 val scalafxVersion = s"$javaFXVersion-R19-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v" + scalafxVersion
@@ -29,7 +29,11 @@ lazy val scalafx = (project in file("scalafx")).settings(
     "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.creole",
     "-doc-source-url", "https://github.com/scalafx/scalafx/blob/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala"
   ) ++ (Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
-    case Some(path) => Seq("-diagrams", "-diagrams-dot-path", path)
+    case Some(path) => Seq(
+      "-diagrams",
+      "-diagrams-dot-path", path,
+      "-diagrams-debug"
+    )
     case None => Seq.empty[String]
   }),
   publishArtifact := true,
@@ -90,7 +94,7 @@ lazy val scalafxSettings = Seq(
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
-  scalacOptions in(Compile, doc) += s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
+  //  scalacOptions in(Compile, doc) += s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
   scalacOptions in(Compile, doc) ++= Seq("-doc-footer", s"ScalaFX API v.$scalafxVersion"),
   javacOptions ++= Seq(
     "-target", "1.8",
@@ -146,7 +150,9 @@ lazy val manifestSetting = packageOptions += {
 
 // Metadata needed by Maven Central
 // See also http://maven.apache.org/pom.html#Developers
+
 import xerial.sbt.Sonatype._
+
 lazy val mavenCentralSettings = Seq(
   homepage := Some(new URL("http://www.scalafx.org/")),
   startYear := Some(2011),
@@ -156,58 +162,58 @@ lazy val mavenCentralSettings = Seq(
   publishMavenStyle := true,
   publishTo := sonatypePublishTo.value,
   pomExtra :=
-      <developers>
-        <developer>
-          <id>rafael.afonso</id>
-          <name>Rafael Afonso</name>
-          <url>https://github.com/rafonso</url>
-        </developer>
-        <developer>
-          <name>Mike Allen</name>
-        </developer>
-        <developer>
-          <id>Alain.Fagot.Bearez</id>
-          <name>Alain Béarez</name>
-          <url>http://cua.li/TI/</url>
-        </developer>
-        <developer>
-          <id>steveonjava</id>
-          <name>Stephen Chin</name>
-          <url>http://www.nighthacking.com/</url>
-        </developer>
-        <developer>
-          <id>KevinCoghlan</id>
-          <name>Kevin Coghlan</name>
-          <url>http://www.kevincoghlan.com</url>
-        </developer>
-        <developer>
-          <id>akauppi</id>
-          <name>Asko Kauppi</name>
-        </developer>
-        <developer>
-          <id>rladstaetter</id>
-          <name>Robert Ladstätter</name>
-        </developer>
-        <developer>
-          <id>peter.pilgrim</id>
-          <name>Peter Pilgrim</name>
-          <url>http://www.xenonique.co.uk/blog/</url>
-        </developer>
-        <developer>
-          <name>Matthew Pocock</name>
-        </developer>
-        <developer>
-          <id>sven.reimers</id>
-          <name>Sven Reimers</name>
-          <url>http://wiki.netbeans.org/SvenReimers/</url>
-        </developer>
-        <developer>
-          <id>jpsacha</id>
-          <name>Jarek Sacha</name>
-        </developer>
-        <developer>
-          <name>Curtis Stanford</name>
-        </developer>
-      </developers>
+    <developers>
+      <developer>
+        <id>rafael.afonso</id>
+        <name>Rafael Afonso</name>
+        <url>https://github.com/rafonso</url>
+      </developer>
+      <developer>
+        <name>Mike Allen</name>
+      </developer>
+      <developer>
+        <id>Alain.Fagot.Bearez</id>
+        <name>Alain Béarez</name>
+        <url>http://cua.li/TI/</url>
+      </developer>
+      <developer>
+        <id>steveonjava</id>
+        <name>Stephen Chin</name>
+        <url>http://www.nighthacking.com/</url>
+      </developer>
+      <developer>
+        <id>KevinCoghlan</id>
+        <name>Kevin Coghlan</name>
+        <url>http://www.kevincoghlan.com</url>
+      </developer>
+      <developer>
+        <id>akauppi</id>
+        <name>Asko Kauppi</name>
+      </developer>
+      <developer>
+        <id>rladstaetter</id>
+        <name>Robert Ladstätter</name>
+      </developer>
+      <developer>
+        <id>peter.pilgrim</id>
+        <name>Peter Pilgrim</name>
+        <url>http://www.xenonique.co.uk/blog/</url>
+      </developer>
+      <developer>
+        <name>Matthew Pocock</name>
+      </developer>
+      <developer>
+        <id>sven.reimers</id>
+        <name>Sven Reimers</name>
+        <url>http://wiki.netbeans.org/SvenReimers/</url>
+      </developer>
+      <developer>
+        <id>jpsacha</id>
+        <name>Jarek Sacha</name>
+      </developer>
+      <developer>
+        <name>Curtis Stanford</name>
+      </developer>
+    </developers>
 
 )
