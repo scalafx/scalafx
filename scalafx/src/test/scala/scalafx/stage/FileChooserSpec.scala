@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,17 +26,44 @@
  */
 
 package scalafx.stage
-
 import javafx.{stage => jfxs}
-
+import org.scalatest.Matchers._
 import scalafx.Includes._
+import scalafx.stage.FileChooser.ExtensionFilter
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * FileChooser Spec tests.
- *
- *
  */
 class FileChooserSpec
   extends SimpleSFXDelegateSpec[jfxs.FileChooser, FileChooser](classOf[jfxs.FileChooser], classOf[FileChooser])
-  with RunOnApplicationThread
+    with RunOnApplicationThread {
+
+  it should "Allow `Seq` of ScalaFX `ExtensionFilter`s" in {
+    val fileChooser = new FileChooser {
+      title = "Open Resource File"
+      extensionFilters ++= Seq(
+        new ExtensionFilter("Text Files", "*.txt"),
+        new ExtensionFilter("Image Files", Seq("*.png", "*.jpg", "*.gif")),
+        new ExtensionFilter("Audio Files", Seq("*.wav", "*.mp3", "*.aac")),
+        new ExtensionFilter("All Files", "*.*")
+      )
+    }
+
+    fileChooser.extensionFilters.size() should be(4)
+  }
+
+  it should "Allow `Seq` of JavaFX `ExtensionFilter`s" in {
+    val fileChooser = new FileChooser {
+      title = "Open Resource File"
+      extensionFilters ++= Seq(
+        new jfxs.FileChooser.ExtensionFilter("Text Files", "*.txt"),
+        new jfxs.FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
+        new jfxs.FileChooser.ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
+        new jfxs.FileChooser.ExtensionFilter("All Files", "*.*")
+      )
+    }
+
+    fileChooser.extensionFilters.size() should be(4)
+  }
+}
