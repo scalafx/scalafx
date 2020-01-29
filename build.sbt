@@ -63,7 +63,7 @@ val osName = System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 }
 val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-lazy val scalatest = "org.scalatest" %% "scalatest" % "3.0.8"
+lazy val scalatest = "org.scalatest" %% "scalatest" % "3.1.0"
 
 // Add snapshots to root project to enable compilation with Scala SNAPSHOT compiler,
 // e.g., 2.11.0-SNAPSHOT
