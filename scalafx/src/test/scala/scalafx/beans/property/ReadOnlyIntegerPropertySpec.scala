@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,10 +28,8 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
-
 import org.scalatest.Matchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
-
 import scalafx.Includes._
 
 /**
@@ -46,7 +44,7 @@ class ReadOnlyIntegerPropertySpec extends FlatSpec with BeforeAndAfterEach {
   var integerProperty2: jfxbp.IntegerProperty = null
   var booleanProperty: jfxbp.BooleanProperty = null
 
-  override def beforeEach() {
+  override def beforeEach(): Unit = {
     readOnlyIntegerProperty = new ReadOnlyIntegerProperty(bean, "Test Read-only Integer", 50)
     integerProperty1 = new IntegerProperty(bean, "Test Integer 1")
     integerProperty2 = new IntegerProperty(bean, "Test Integer 2")

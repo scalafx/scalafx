@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
@@ -46,7 +45,8 @@ class SkinnableSpec
   override protected def getJavaClassInstance = new jfxsc.Skinnable {
     def skinProperty = null
     def getSkin = null
-    def setSkin(s: jfxsc.Skin[_]) {}
+
+    def setSkin(s: jfxsc.Skin[_]): Unit = {}
   }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,8 @@
 package scalafx.scene.image
 
 import java.nio.{Buffer, ByteBuffer, IntBuffer}
-import javafx.scene.{image => jfxsi}
 
+import javafx.scene.{image => jfxsi}
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
@@ -45,10 +45,15 @@ class PixelReaderSpec
 
   override protected def getJavaClassInstance = new jfxsi.PixelReader {
     def getArgb(x: Int, y: Int) = 0
+
     def getColor(x: Int, y: Int) = null
+
     def getPixelFormat = null
-    def getPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.WritablePixelFormat[ByteBuffer], buffer: Array[Byte], offset: Int, scanlineStride: Int) {}
-    def getPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.WritablePixelFormat[IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int) {}
-    def getPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.WritablePixelFormat[B], buffer: B, scanlineStride: Int) {}
+
+    def getPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.WritablePixelFormat[ByteBuffer], buffer: Array[Byte], offset: Int, scanlineStride: Int): Unit = {}
+
+    def getPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.WritablePixelFormat[IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int): Unit = {}
+
+    def getPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.WritablePixelFormat[B], buffer: B, scanlineStride: Int): Unit = {}
   }
 }

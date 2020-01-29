@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,12 +48,12 @@ class ObservableSetSpec[T]
    * Verifies if a generated Set is the same instance than a original Set. If it should not be,
    * generated map must be a ObservableSet.
    *
-   * @param generatedSet Generated Set, that should be a ObservableSet.
-   * @param originalSet Set Original ObservableSet.
+   * @param generatedSet    Generated Set, that should be a ObservableSet.
+   * @param originalSet     Set Original ObservableSet.
    * @param shouldBeTheSame If both maps should be same instance.
    */
   private def compareInstances(generatedSet: Set[Int],
-                               originalSet: ObservableSet[Int], shouldBeTheSame: Boolean) {
+                               originalSet: ObservableSet[Int], shouldBeTheSame: Boolean): Unit = {
     if (shouldBeTheSame) {
       generatedSet should be theSameInstanceAs (originalSet)
     } else {
@@ -68,7 +68,7 @@ class ObservableSetSpec[T]
 
   it should "generate new instances using Companion's apply" in {
 
-    def assertGeneratedSet(set: ObservableSet[Int]) {
+    def assertGeneratedSet(set: ObservableSet[Int]): Unit = {
       set should have size (2)
       set should contain(1)
       set should contain(2)

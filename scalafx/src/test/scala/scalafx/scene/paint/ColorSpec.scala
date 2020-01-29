@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,10 +28,8 @@ package scalafx.scene.paint
 
 import javafx.scene.paint.{Color => JColor}
 import javafx.scene.{paint => jfxsp}
-
 import org.scalactic.Tolerance.convertNumericToPlusOrMinusWrapper
 import org.scalatest.Matchers._
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
@@ -43,13 +41,13 @@ class ColorSpec
 
   override protected def getJavaClassInstance = new jfxsp.Color(0, 0, 0, 0)
 
-  private def assertComponent(realValue: Double, expectedValue: Double) {
+  private def assertComponent(realValue: Double, expectedValue: Double): Unit = {
     realValue should be(convertNumericToPlusOrMinusWrapper(expectedValue) +- 0.01)
   }
 
   private def intToDouble(i: Int): Double = i.toDouble / 255.0
 
-  private def compareSfxColors(c: Color, r: Double, g: Double, b: Double, o: Double = 1.0) {
+  private def compareSfxColors(c: Color, r: Double, g: Double, b: Double, o: Double = 1.0): Unit = {
     assertComponent(c.red, r)
     assertComponent(c.green, g)
     assertComponent(c.blue, b)
@@ -58,7 +56,7 @@ class ColorSpec
 
   private def testSfxColor(c: Color, r: Int, g: Int, b: Int, o: Int = 255) = compareSfxColors(c, intToDouble(r), intToDouble(g), intToDouble(b), intToDouble(o))
 
-  private def compareJfxColors(c: JColor, r: Double, g: Double, b: Double, o: Double = 1.0) {
+  private def compareJfxColors(c: JColor, r: Double, g: Double, b: Double, o: Double = 1.0): Unit = {
     assertComponent(c.getRed, r)
     assertComponent(c.getGreen, g)
     assertComponent(c.getBlue, b)

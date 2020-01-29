@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,7 @@ trait RunOnApplicationThread extends TestSuiteMixin with TestSuite {
     var testException: Exception = null
     var outcome: Outcome = null
     Platform.runLater(new Runnable() {
-      override def run() {
+      override def run(): Unit = {
         try {
           outcome = superWith(test)
         } catch {

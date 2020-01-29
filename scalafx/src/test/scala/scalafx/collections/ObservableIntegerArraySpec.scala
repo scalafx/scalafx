@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,10 +55,11 @@ class ObservableIntegerArraySpec
     val instance2 = ObservableIntegerArray(array2)
     val change = Buffer.empty[(ObservableIntegerArray, Change)]
     var changes = 0
-    def onChangeFull(a: ObservableIntegerArray, c: Change) {
+    def onChangeFull(a: ObservableIntegerArray, c: Change): Unit = {
       change += ((a, c))
     }
-    def onChangeBrief() {
+
+    def onChangeBrief(): Unit = {
       changes += 1
     }
     instance0.onChange(onChangeFull(_, _))
@@ -67,7 +68,8 @@ class ObservableIntegerArraySpec
     instance1.onChange(onChangeBrief)
     instance2.onChange(onChangeFull(_, _))
     instance2.onChange(onChangeBrief)
-    def verifyChange(n: Int, array: ObservableIntegerArray, sizeChanged: Boolean, start: Int, end: Int) {
+
+    def verifyChange(n: Int, array: ObservableIntegerArray, sizeChanged: Boolean, start: Int, end: Int): Unit = {
       val (a, c) = change(n)
       assert(a eq array)
       assert(c.sizeChanged === sizeChanged)
@@ -86,7 +88,7 @@ class ObservableIntegerArraySpec
   /**
    * Test that a function to access/change an array element with an invalid index yields an out of bounds exception.
    */
-  def testOutOfBoundsExceptionThrown(f: => Unit) {
+  def testOutOfBoundsExceptionThrown(f: => Unit): Unit = {
     intercept[ArrayIndexOutOfBoundsException] {
       f
     }
@@ -95,7 +97,7 @@ class ObservableIntegerArraySpec
   /**
    * Test that a function results in an NegativeArraySizeException being thrown.
    */
-  def testNegativeArraySizeExceptionThrown(f: => Unit) {
+  def testNegativeArraySizeExceptionThrown(f: => Unit): Unit = {
     intercept[NegativeArraySizeException] {
       f
     }
@@ -104,15 +106,16 @@ class ObservableIntegerArraySpec
   /**
    * Test that a function results in an IllegalArgumentException being thrown.
    */
-  def testIllegalArgumentExceptionThrown(f: => Unit) {
+  def testIllegalArgumentExceptionThrown(f: => Unit): Unit = {
     intercept[IllegalArgumentException] {
       f
     }
   }
+
   /**
    * Common tests for an empty array.
    */
-  def testEmpty(oa: ObservableIntegerArray) {
+  def testEmpty(oa: ObservableIntegerArray): Unit = {
     assert(oa.length === 0)
     assert(oa.size === 0)
     assert(oa.isEmpty === true)
@@ -124,7 +127,7 @@ class ObservableIntegerArraySpec
   /**
    * Common tests for a non-empty array with known contents.
    */
-  def testNonEmpty(oa: ObservableIntegerArray, expected: Array[Int]) {
+  def testNonEmpty(oa: ObservableIntegerArray, expected: Array[Int]): Unit = {
     assert(oa.length === expected.length)
     assert(oa.size === expected.length)
     assert(oa.isEmpty === false)
@@ -138,7 +141,7 @@ class ObservableIntegerArraySpec
   /**
    * Test that arrays are equal.
    */
-  def testEqual(oa: ObservableIntegerArray, expected: ObservableIntegerArray) {
+  def testEqual(oa: ObservableIntegerArray, expected: ObservableIntegerArray): Unit = {
     assert(oa.length === expected.length)
     assert(oa.size === expected.length)
     assert(oa.isEmpty === false)

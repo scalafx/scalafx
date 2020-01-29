@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,15 +46,15 @@ class ObservableBufferSpec[T]
   extends SimpleSFXDelegateSpec[jfxc.ObservableList[T], ObservableBuffer[T]](classOf[jfxc.ObservableList[T]], classOf[ObservableBuffer[T]]) {
 
   /**
-    * Verifies if a generated Buffer is the same instance than a original Buffer. If it should not be,
-    * generated map must be a ObservableBuffer.
-    *
-    * @param generatedBuffer Generated Buffer, that should be a ObservableBuffer.
-    * @param originalBuffer  Buffer Original ObservableBuffer.
-    * @param shouldBeTheSame If both maps should be same instance.
-    */
+   * Verifies if a generated Buffer is the same instance than a original Buffer. If it should not be,
+   * generated map must be a ObservableBuffer.
+   *
+   * @param generatedBuffer Generated Buffer, that should be a ObservableBuffer.
+   * @param originalBuffer  Buffer Original ObservableBuffer.
+   * @param shouldBeTheSame If both maps should be same instance.
+   */
   private def compareInstances(generatedBuffer: Buffer[_],
-                               originalBuffer: ObservableBuffer[_], shouldBeTheSame: Boolean) {
+                               originalBuffer: ObservableBuffer[_], shouldBeTheSame: Boolean): Unit = {
     if (shouldBeTheSame) {
       generatedBuffer should be theSameInstanceAs originalBuffer
     } else {
@@ -64,7 +64,7 @@ class ObservableBufferSpec[T]
   }
 
   private def compareAfterRemoving[T1](generatedBuffer: Buffer[T1],
-                                       originalBuffer: ObservableBuffer[T1], expectedResult: T1*) {
+                                       originalBuffer: ObservableBuffer[T1], expectedResult: T1*): Unit = {
     generatedBuffer.toList should equal(expectedResult.toList)
     generatedBuffer should not be theSameInstanceAs(originalBuffer)
     generatedBuffer.getClass should be(classOf[ObservableBuffer[T1]])

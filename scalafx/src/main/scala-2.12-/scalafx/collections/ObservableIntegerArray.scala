@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -83,14 +83,14 @@ class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXColl
   /**
    * @inheritdoc
    */
-  override def copyTo(srcIdx: Int, dest: Array[Int], destIdx: Int, length: Int) {
+  override def copyTo(srcIdx: Int, dest: Array[Int], destIdx: Int, length: Int): Unit = {
     delegate.copyTo(srcIdx, dest, destIdx, length)
   }
 
   /**
    * @inheritdoc
    */
-  override def copyTo(srcIdx: Int, dest: ObservableIntegerArray, destIdx: Int, length: Int) {
+  override def copyTo(srcIdx: Int, dest: ObservableIntegerArray, destIdx: Int, length: Int): Unit = {
     delegate.copyTo(srcIdx, dest.delegate, destIdx, length)
   }
 
@@ -109,70 +109,70 @@ class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXColl
   /**
    * @inheritdoc.
    */
-  override def addAll(src: ObservableIntegerArray) {
+  override def addAll(src: ObservableIntegerArray): Unit = {
     delegate.addAll(src.delegate)
   }
 
   /**
    * @inheritdoc.
    */
-  override def addAll(src: Array[Int], srcIdx: Int, length: Int) {
+  override def addAll(src: Array[Int], srcIdx: Int, length: Int): Unit = {
     delegate.addAll(src, srcIdx, length)
   }
 
   /**
    * @inheritdoc.
    */
-  override def addAll(src: ObservableIntegerArray, srcIdx: Int, length: Int) {
+  override def addAll(src: ObservableIntegerArray, srcIdx: Int, length: Int): Unit = {
     delegate.addAll(src.delegate, srcIdx, length)
   }
 
   /**
    * @inheritdoc.
    */
-  override def setAll(elements: Int*) {
-    delegate.setAll(elements:_*)
+  override def setAll(elements: Int*): Unit = {
+    delegate.setAll(elements: _*)
   }
 
   /**
    * @inheritdoc.
    */
-  override def setAll(src: ObservableIntegerArray) {
+  override def setAll(src: ObservableIntegerArray): Unit = {
     delegate.setAll(src.delegate)
   }
 
   /**
    * @inheritdoc.
    */
-  override def setAll(src: Array[Int], srcIdx: Int, length: Int) {
+  override def setAll(src: Array[Int], srcIdx: Int, length: Int): Unit = {
     delegate.setAll(src, srcIdx, length)
   }
 
   /**
    * @inheritdoc.
    */
-  override def setAll(src: ObservableIntegerArray, srcIdx: Int, length: Int) {
+  override def setAll(src: ObservableIntegerArray, srcIdx: Int, length: Int): Unit = {
     delegate.setAll(src.delegate, srcIdx, length)
   }
 
   /**
    * @inheritdoc
    */
-  override def set(idx: Int, elem: Int) {
+  override def set(idx: Int, elem: Int): Unit = {
     delegate.set(idx, elem)
   }
 
   /**
    * @inheritdoc
    */
-  override def set(destIdx: Int, src: Array[Int], srcIdx: Int, length: Int) {
+  override def set(destIdx: Int, src: Array[Int], srcIdx: Int, length: Int): Unit = {
     delegate.set(destIdx, src, srcIdx, length)
   }
 
   /**
    * @inheritdoc
    */
-  override def set(destIdx: Int, src: ObservableIntegerArray, srcIdx: Int, length: Int) {
+  override def set(destIdx: Int, src: ObservableIntegerArray, srcIdx: Int, length: Int): Unit = {
     delegate.set(destIdx, src.delegate, srcIdx, length)
   }
 

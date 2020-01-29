@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,6 @@
 package scalafx.scene.shape
 
 import javafx.scene.{shape => jfxss}
-
 import scalafx.Includes._
 import scalafx.collections.{ObservableFloatArray, ObservableIntegerArray}
 import scalafx.testutil.SimpleSFXDelegateSpec
@@ -51,9 +50,9 @@ class TriangleMeshSpec
    * Test integer array contents.
    *
    * @param ao Observable array
-   * @param a Basic array.
+   * @param a  Basic array.
    */
-  def testIntArray(oa: ObservableIntegerArray, a: Array[Int]) {
+  def testIntArray(oa: ObservableIntegerArray, a: Array[Int]): Unit = {
     assert(oa.isEmpty === a.isEmpty)
     assert(oa.length === a.length)
     for (i <- 0 until oa.length) {
@@ -68,9 +67,9 @@ class TriangleMeshSpec
    * Test integer array contents.
    *
    * @param ao Observable array
-   * @param a Basic array.
+   * @param a  Basic array.
    */
-  def testFloatArray(oa: ObservableFloatArray, a: Array[Float]) {
+  def testFloatArray(oa: ObservableFloatArray, a: Array[Float]): Unit = {
     assert(oa.isEmpty === a.isEmpty)
     assert(oa.length === a.length)
     for (i <- 0 until oa.length) {

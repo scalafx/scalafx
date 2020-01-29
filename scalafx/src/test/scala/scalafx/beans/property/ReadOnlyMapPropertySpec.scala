@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,7 @@ class ReadOnlyMapPropertySpec extends FlatSpec with BeforeAndAfterEach {
   private var mapProperty1: jfxbp.MapProperty[String, Int] = _
   private var mapProperty2: jfxbp.MapProperty[String, Int] = _
 
-  override def beforeEach() {
+  override def beforeEach(): Unit = {
 
     val roWrapper = new ReadOnlyMapWrapper(bean, "Test Read-only Boolean", ObservableMap(valueAsSeq))
     readOnlyMapProperty = roWrapper.readOnlyProperty

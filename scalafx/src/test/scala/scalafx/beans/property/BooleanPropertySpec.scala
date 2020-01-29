@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,10 +28,8 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
-
 import org.scalatest.Matchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
-
 import scalafx.Includes._
 
 /**
@@ -46,7 +44,7 @@ class BooleanPropertySpec extends FlatSpec with BeforeAndAfterEach {
   var booleanProperty3: jfxbp.BooleanProperty = null
   var sfxBooleanProperty: BooleanProperty = null
 
-  override def beforeEach() {
+  override def beforeEach(): Unit = {
     booleanProperty = new BooleanProperty(bean, "Test Boolean")
     booleanProperty2 = new BooleanProperty(bean, "Test Boolean 2")
     booleanProperty3 = new BooleanProperty(bean, "Test Boolean 3")

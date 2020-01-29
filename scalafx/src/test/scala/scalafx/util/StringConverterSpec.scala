@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,12 +31,10 @@
 package scalafx.util
 
 import java.text.{DecimalFormatSymbols, ParseException}
-import java.{text => jt}
-import javafx.{util => jfxu}
 
+import javafx.{util => jfxu}
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers._
-
 import scalafx.Includes._
 import scalafx.util.StringConverter._
 
@@ -64,7 +62,7 @@ class StringConverterSpec extends FlatSpec {
 
   // HELPER METHODS - BEGIN
 
-  private def testIrregularStringConversion[T](converter: StringConverter[T], isNumberFormat: Boolean) {
+  private def testIrregularStringConversion[T](converter: StringConverter[T], isNumberFormat: Boolean): Unit = {
     it should "not convert a Irregular String" in {
       if (isNumberFormat) {
         intercept[NumberFormatException] {
@@ -78,7 +76,7 @@ class StringConverterSpec extends FlatSpec {
     }
   }
 
-  private def testNullStringConversion[T](converter: StringConverter[T], isNumberFormat: Boolean) {
+  private def testNullStringConversion[T](converter: StringConverter[T], isNumberFormat: Boolean): Unit = {
     it should "not convert a Null String" in {
       if (isNumberFormat) {
         intercept[NumberFormatException] {
@@ -92,7 +90,7 @@ class StringConverterSpec extends FlatSpec {
     }
   }
 
-  private def testConversion[T](converter: StringConverter[T], string: String, value: T, converterName: String, typeName: String) {
+  private def testConversion[T](converter: StringConverter[T], string: String, value: T, converterName: String, typeName: String): Unit = {
     converterName should "convert '%s' in a %s and vice-versa".format(string, typeName) in {
       val numericValue = converter.fromString(string)
       numericValue should equal(value)
@@ -104,7 +102,7 @@ class StringConverterSpec extends FlatSpec {
 
   // TESTING METHODS - BEGIN
 
-  private def testImplicitConversion() {
+  private def testImplicitConversion(): Unit = {
     "A Scala StringConverter" should "be convertible to a JavaFX StringConverter" in {
       val sc = StringConverter[Char](s => s.charAt(0), ch => ch.toString)
       val jc: jfxu.StringConverter[Char] = sc

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,10 +28,8 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
-
 import org.scalatest.Matchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
-
 import scalafx.Includes._
 
 /**
@@ -46,7 +44,7 @@ class ReadOnlyLongPropertySpec extends FlatSpec with BeforeAndAfterEach {
   var longProperty2: jfxbp.LongProperty = null
   var booleanProperty: jfxbp.BooleanProperty = null
 
-  override def beforeEach() {
+  override def beforeEach(): Unit = {
     readOnlyLongProperty = new ReadOnlyLongProperty(bean, "Test Read-only Long", 50)
     longProperty1 = new LongProperty(bean, "Test Long 1")
     longProperty2 = new LongProperty(bean, "Test Long 2")

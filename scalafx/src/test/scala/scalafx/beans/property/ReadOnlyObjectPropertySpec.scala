@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,10 +29,8 @@ package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
 import javafx.scene.{paint => jfxsp}
-
 import org.scalatest.Matchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
-
 import scalafx.Includes._
 
 /**
@@ -48,7 +46,7 @@ class ReadOnlyObjectPropertySpec extends FlatSpec with BeforeAndAfterEach {
   var sfxObjectProperty: ObjectProperty[jfxsp.Paint] = null
   var booleanProperty: jfxbp.BooleanProperty = null
 
-  override def beforeEach() {
+  override def beforeEach(): Unit = {
     readOnlyObjectProperty = new ReadOnlyObjectProperty[jfxsp.Paint](bean, "Test Read-only Object", jfxsp.Color.BLACK)
     objectProperty1 = ObjectProperty[jfxsp.Paint](bean, "Test Object 1")
     objectProperty2 = ObjectProperty[jfxsp.Paint](bean, "Test Object 2")

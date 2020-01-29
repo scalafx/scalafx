@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,10 +29,8 @@ package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
 import javafx.scene.{control => jfxsc}
-
 import org.scalatest.Matchers._
 import org.scalatest.{BeforeAndAfterEach, FlatSpec}
-
 import scalafx.Includes.{jfxBooleanBinding2sfx, jfxBooleanProperty2sfx, jfxObjectProperty2sfx, sfxReadOnlyObjectWrapperWithSFXDelegate2jfxReadOnlyObjectWrapper}
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectWrapper2sfx
@@ -56,7 +54,7 @@ class ReadOnlyObjectWrapperSpec
   var sfxObjectProperty: ReadOnlyObjectWrapper[String] = null
   var booleanProperty: jfxbp.BooleanProperty = null
 
-  override protected def beforeEach() {
+  override protected def beforeEach(): Unit = {
     objectProperty = new ReadOnlyObjectWrapper[String](bean, "Test Object")
     objectProperty2 = new ReadOnlyObjectWrapper[String](bean, "Test Object 2")
     sfxObjectProperty = new ReadOnlyObjectWrapper[String](bean, "SFX Test Object")

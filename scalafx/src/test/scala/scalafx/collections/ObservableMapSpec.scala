@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,12 +47,12 @@ class ObservableMapSpec[K, V]
    * Verifies if a generated Map is the same instance than a original Map. If it should not be,
    * generated map must be a ObservableMap.
    *
-   * @param generatedMap Generated Map, that should be a ObservableMap.
-   * @param originalMap Map Original ObservableMap.
+   * @param generatedMap    Generated Map, that should be a ObservableMap.
+   * @param originalMap     Map Original ObservableMap.
    * @param shouldBeTheSame If both maps should be same instance.
    */
   private def compareInstances(generatedMap: Map[Int, String],
-                               originalMap: ObservableMap[Int, String], shouldBeTheSame: Boolean) {
+                               originalMap: ObservableMap[Int, String], shouldBeTheSame: Boolean): Unit = {
     if (shouldBeTheSame) {
       generatedMap should be theSameInstanceAs (originalMap)
     } else {
@@ -66,7 +66,7 @@ class ObservableMapSpec[K, V]
   override def getJavaClassInstance = jfxc.FXCollections.observableHashMap[K, V]
 
   it should "generate new instances using Companion's apply" in {
-    def assertGeneratedMap(map: Map[Int, String]) {
+    def assertGeneratedMap(map: Map[Int, String]): Unit = {
       map.toSet should equal(Map((1, "one"), (2, "two")).toSet)
     }
 

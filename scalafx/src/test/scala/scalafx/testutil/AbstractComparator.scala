@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -213,11 +213,11 @@ private[testutil] trait AbstractComparator extends Assertions {
    * Verify if all public methods from a Java class are mirrored in a Scala class. It means the same name,
    * return type, and parameters.
    *
-   * @param javaClass Java Class
+   * @param javaClass  Java Class
    * @param scalaClass Scala Class, that presumably must have the same public methods as javaClass
-   * @param useStatic If it will be compared only static methods (`true`) or only declared methods (`false`).
+   * @param useStatic  If it will be compared only static methods (`true`) or only declared methods (`false`).
    */
-  private def compareMethods(javaClass: Class[_], scalaClass: Class[_], useStatic: Boolean) {
+  private def compareMethods(javaClass: Class[_], scalaClass: Class[_], useStatic: Boolean): Unit = {
     val javaMethods = groupMethods(javaClass, useStatic)
     val scalaMethods = groupMethods(scalaClass, useStatic)
 
@@ -271,10 +271,10 @@ private[testutil] trait AbstractComparator extends Assertions {
    * conversions. However, having written the code, I'm leaving it in, in case it might prove useful as a way of
    * exploring the method signatures of a javafx class.
    *
-   * @param javaClass JavaFx class
+   * @param javaClass  JavaFx class
    * @param scalaClass ScalaFX class
    */
-  def compareDeclaredMethods(javaClass: Class[_], scalaClass: Class[_]) {
+  def compareDeclaredMethods(javaClass: Class[_], scalaClass: Class[_]): Unit = {
     compareMethods(javaClass, scalaClass, false)
   }
 
@@ -282,10 +282,10 @@ private[testutil] trait AbstractComparator extends Assertions {
    * Similar to "compareProperties", the following compares the static methods in a javafx class
    * to the methods defined on a scalafx object.
    *
-   * @param javaClass JavaFx class
+   * @param javaClass  JavaFx class
    * @param scalaClass ScalaFX class
    */
-  def compareStaticMethods(javaClass: Class[_], scalaClass: Class[_]) {
+  def compareStaticMethods(javaClass: Class[_], scalaClass: Class[_]): Unit = {
     compareMethods(javaClass, scalaClass, true)
   }
 

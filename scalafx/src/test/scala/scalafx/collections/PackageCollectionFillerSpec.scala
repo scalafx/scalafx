@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -85,7 +85,7 @@ class PackageCollectionFillerSpec extends FlatSpec with RunOnApplicationThread {
     analyzer.secondChange should be(false)
   }
 
-  private def executeAndTestChanges[T](originalList: jfxc.ObservableList[T], newContent: Iterable[T]) {
+  private def executeAndTestChanges[T](originalList: jfxc.ObservableList[T], newContent: Iterable[T]): Unit = {
     val analyzer = Analyzer(originalList)
 
     fillCollection(originalList, newContent)
