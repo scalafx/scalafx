@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,7 +29,7 @@ package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
 import scalafx.Includes._
-import scalafx.beans.property.{DoubleProperty, ObjectProperty}
+import scalafx.beans.property.{DoubleProperty, IntegerProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.layout.Pane
@@ -54,7 +54,7 @@ object TextFlow {
  */
 class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
   extends Pane(delegate)
-  with SFXDelegate[jfxst.TextFlow] {
+    with SFXDelegate[jfxst.TextFlow] {
 
   /**
    * Defines horizontal text alignment.
@@ -68,6 +68,16 @@ class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
 
   def lineSpacing_=(v: Double): Unit = {
     lineSpacing() = v
+  }
+
+  /**
+   * The size of a tab stop in spaces.
+   * Values less than 1 are treated as 1. This value overrides the `tabSize` of contained [[scalafx.scene.text.TextFlow Text]] nodes.
+   */
+  def tabSize: IntegerProperty = delegate.tabSizeProperty()
+
+  def tabSize_=(v: Int): Unit = {
+    tabSize() = v
   }
 
   /**
