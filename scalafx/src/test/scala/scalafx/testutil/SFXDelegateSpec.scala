@@ -74,7 +74,7 @@ abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaC
    * override protected def getJavaClassInstance = new jfxg.BoundingBox(0, 0, 0, 0, 0, 0)
    * }}}
    */
-  protected def getJavaClassInstance: J = javaClass.newInstance
+  protected def getJavaClassInstance: J = javaClass.getDeclaredConstructor().newInstance()
 
   /**
    * Flag used to skip Java to Scala Conversion test. To Skip, it is necessary override it with a 
