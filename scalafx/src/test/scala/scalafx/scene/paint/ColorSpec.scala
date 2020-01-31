@@ -29,7 +29,7 @@ package scalafx.scene.paint
 import javafx.scene.paint.{Color => JColor}
 import javafx.scene.{paint => jfxsp}
 import org.scalactic.Tolerance.convertNumericToPlusOrMinusWrapper
-import org.scalatest.Matchers._
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 

@@ -29,8 +29,9 @@ package scalafx.beans.binding
 
 import javafx.beans.{property => jfxbp}
 import org.scalactic.TripleEqualsSupport.Spread
-import org.scalatest.Matchers._
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import org.scalatest.BeforeAndAfterEach
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate
@@ -40,8 +41,9 @@ import scalafx.delegate.SFXDelegate
  *
  *
  */
-class BindingsSpec extends FlatSpec with BeforeAndAfterEach {
+class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
   def bean = new Object()
+
   var booleanProperty1: jfxbp.BooleanProperty = null
   var booleanProperty2: jfxbp.BooleanProperty = null
   var booleanProperty3: jfxbp.BooleanProperty = null

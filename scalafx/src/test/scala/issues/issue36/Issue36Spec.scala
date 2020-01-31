@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,16 +28,14 @@
 package issues.issue36
 
 import javafx.beans.{property => jfxbp}
-
-import org.scalatest.FlatSpec
-
+import org.scalatest.flatspec.AnyFlatSpec
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectWrapper}
 
 /**
  * Verify that code causing Issue 36 behaves correctly after fix.
  */
-class Issue36Spec extends FlatSpec {
+class Issue36Spec extends AnyFlatSpec {
 
   "Issue 36 - ObjectProperty[Int]" should "be able to instantiate" in {
 

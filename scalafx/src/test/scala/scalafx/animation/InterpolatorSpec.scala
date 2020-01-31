@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,21 +27,20 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa}
-
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers._
-
-import scala.language.postfixOps
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.testutil.PropertyComparator
+
+import scala.language.postfixOps
 
 /**
  * FadeTransition Spec tests.
  *
  * @todo When Interpolator is converted to SFXEnumDelegate, this test should be converted to a SFXEnumDelegateSpec
  */
-class InterpolatorSpec extends FlatSpec with PropertyComparator {
+class InterpolatorSpec extends AnyFlatSpec with PropertyComparator {
   "Interpolators" should "support all the built-in interpolators" in {
     val doubleProperty = new DoubleProperty(null, "test")
     val kv1 = doubleProperty -> 50 tween Interpolator.Discrete

@@ -31,7 +31,7 @@ import java.text.NumberFormat
 import java.util.Locale
 
 import javafx.util.{converter => jfxuc}
-import org.scalatest.Matchers._
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 

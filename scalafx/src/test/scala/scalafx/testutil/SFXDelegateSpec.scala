@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,9 +26,8 @@
  */
 package scalafx.testutil
 
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers._
-
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.delegate.SFXDelegate
 
 /**
@@ -42,7 +41,6 @@ import scalafx.delegate.SFXDelegate
  *
  * @tparam J JavaFX class to be wrapped by SFXDelegate class
  * @tparam S SFXDelegate subclass who will wrap JavaFX class
- *
  * @param javaClass JavaFX class
  * @param scalaClass SFXDelegate subclass related with JavaFX class
  * @param jfx2sfx Implicit conversion from JavaFX to ScalaFX, it should not be assigned,
@@ -52,8 +50,8 @@ import scalafx.delegate.SFXDelegate
  *
  */
 abstract class SFXDelegateSpec[J <: Object, S <: SFXDelegate[J]] protected(javaClass: Class[J], scalaClass: Class[S])(implicit jfx2sfx: J => S = null, sfx2jfx: S => J = null)
-  extends FlatSpec
-  with AbstractComparator {
+  extends AnyFlatSpec
+    with AbstractComparator {
 
   /////////////////////////////
   // PROTECTED METHODS - BEGIN 

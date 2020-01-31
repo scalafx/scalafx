@@ -26,15 +26,15 @@
  */
 package scalafx.testutil
 
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers.{be, convertToAnyShouldWrapper}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers.{be, convertToAnyShouldWrapper}
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.PositionDelegate
 
 /**
  * Trait to test PositionDelegate subclasses
  */
-trait PositionDelegateSpec[D <: PositionDelegate[_]] extends FlatSpec {
+trait PositionDelegateSpec[D <: PositionDelegate[_]] extends AnyFlatSpec {
 
   val positionDelegate: D
 

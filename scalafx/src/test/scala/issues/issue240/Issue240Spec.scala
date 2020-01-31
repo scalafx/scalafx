@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,14 +27,13 @@
 
 package issues.issue240
 
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers._
-
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.scene.text.Text
 import scalafx.testutil.RunOnApplicationThread
 
 /** Issue 240: Text.strikethrough_=(v: Boolean) doesn't work. */
-class Issue240Spec extends FlatSpec with RunOnApplicationThread {
+class Issue240Spec extends AnyFlatSpec with RunOnApplicationThread {
 
 
   "Text" should "allow asining to `strikethrough`" in {

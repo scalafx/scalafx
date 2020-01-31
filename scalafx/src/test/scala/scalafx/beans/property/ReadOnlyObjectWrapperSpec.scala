@@ -29,8 +29,9 @@ package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
 import javafx.scene.{control => jfxsc}
-import org.scalatest.Matchers._
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import org.scalatest.BeforeAndAfterEach
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes.{jfxBooleanBinding2sfx, jfxBooleanProperty2sfx, jfxObjectProperty2sfx, sfxReadOnlyObjectWrapperWithSFXDelegate2jfxReadOnlyObjectWrapper}
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.beans.property.PropertyIncludes.jfxReadOnlyObjectWrapper2sfx
@@ -44,9 +45,9 @@ import scalafx.testutil.RunOnApplicationThread
  *
  */
 class ReadOnlyObjectWrapperSpec
-  extends FlatSpec
-  with BeforeAndAfterEach
-  with RunOnApplicationThread {
+  extends AnyFlatSpec
+    with BeforeAndAfterEach
+    with RunOnApplicationThread {
 
   val bean = new Object()
   var objectProperty: jfxbp.ReadOnlyObjectWrapper[String] = null

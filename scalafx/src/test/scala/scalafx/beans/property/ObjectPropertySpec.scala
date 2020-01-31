@@ -31,8 +31,9 @@ import java.{util => ju}
 
 import javafx.beans.{property => jfxbp, value => jfxbv}
 import javafx.scene.{control => jfxsc}
-import org.scalatest.Matchers._
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import org.scalatest.BeforeAndAfterEach
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes.{jfxBooleanBinding2sfx, jfxBooleanProperty2sfx, jfxObjectProperty2sfx, sfxObjectPropertyWithSFXDelegate2jfxObjectProperty}
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.beans.property.ObjectProperty.sfxObjectProperty2jfx
@@ -40,11 +41,11 @@ import scalafx.scene.control.Button
 import scalafx.testutil.RunOnApplicationThread
 
 /**
-  * ObjectProperty Spec tests.
-  *
-  *
-  */
-class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach with RunOnApplicationThread {
+ * ObjectProperty Spec tests.
+ *
+ *
+ */
+class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnApplicationThread {
   val bean = new Object()
   var objectProperty: jfxbp.ObjectProperty[String] = _
   var objectProperty2: jfxbp.ObjectProperty[String] = _

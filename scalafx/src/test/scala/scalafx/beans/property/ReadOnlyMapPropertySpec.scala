@@ -28,15 +28,16 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
-import org.scalatest.Matchers._
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import org.scalatest.BeforeAndAfterEach
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.collections.ObservableMap
 
 /**
  * ReadOnlyMapProperty Spec tests.
  */
-class ReadOnlyMapPropertySpec extends FlatSpec with BeforeAndAfterEach {
+class ReadOnlyMapPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   private val valueAsSeq = Seq("one" -> 1, "two" -> 2, "seven" -> 7)
   private val bean = new Object()

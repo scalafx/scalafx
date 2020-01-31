@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,15 +28,15 @@
 package scalafx.collections.transformation
 
 import java.{util => ju}
+
 import javafx.collections.{transformation => jfxct}
 import javafx.{collections => jfxc}
-
-import org.scalatest.Matchers._
-
-import scala.language.implicitConversions
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.testutil.SimpleSFXDelegateSpec
+
+import scala.language.implicitConversions
 
 /**
  *

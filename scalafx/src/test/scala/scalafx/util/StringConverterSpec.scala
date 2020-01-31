@@ -33,8 +33,8 @@ package scalafx.util
 import java.text.{DecimalFormatSymbols, ParseException}
 
 import javafx.{util => jfxu}
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.util.StringConverter._
 
@@ -42,7 +42,7 @@ import scalafx.util.StringConverter._
  * StringConverter Spec tests.
  *
  */
-class StringConverterSpec extends FlatSpec {
+class StringConverterSpec extends AnyFlatSpec {
 
   // Just For Fun
   object TFBooleanConverter extends StringConverter[Boolean] {
@@ -51,7 +51,7 @@ class StringConverterSpec extends FlatSpec {
     def fromString(s: String) = s match {
       case "t" => true
       case "f" => false
-      case _   => throw new java.text.ParseException("'%s' can not be converted to a boolean".format(s), 0)
+      case _ => throw new java.text.ParseException("'%s' can not be converted to a boolean".format(s), 0)
     }
   }
 

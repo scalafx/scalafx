@@ -27,7 +27,7 @@
 package scalafx.collections
 
 import javafx.{collections => jfxc}
-import org.scalatest.Matchers._
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.collections.ObservableMap._
 import scalafx.testutil.SimpleSFXDelegateSpec

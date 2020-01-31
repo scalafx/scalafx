@@ -27,7 +27,7 @@
 
 package scalafx.stage
 import javafx.{stage => jfxs}
-import org.scalatest.Matchers._
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.stage.FileChooser.ExtensionFilter
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}

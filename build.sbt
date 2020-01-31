@@ -73,7 +73,7 @@ resolvers += Resolver.sonatypeRepo("snapshots")
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.13.1", "2.12.9", "2.11.12", "2.10.7"),
+  crossScalaVersions := Seq("2.13.1", "2.12.10", "2.11.12", "2.10.7"),
   scalaVersion := crossScalaVersions.value.head,
   // Add src/main/scala-2.13+ for Scala 2.13 and newer
   //   and src/main/scala-2.12- for Scala versions older than 2.13

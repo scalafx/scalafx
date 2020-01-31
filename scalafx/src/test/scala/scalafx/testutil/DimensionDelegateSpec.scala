@@ -26,15 +26,15 @@
  */
 package scalafx.testutil
 
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.DimensionDelegate
 
 /**
  * Trait to test DimensionDelegate subclasses
  */
-trait DimensionDelegateSpec[D <: DimensionDelegate[_]] extends FlatSpec {
+trait DimensionDelegateSpec[D <: DimensionDelegate[_]] extends AnyFlatSpec {
 
   val dimensionDelegate: D
 

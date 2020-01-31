@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,7 @@
  */
 package scalafx.testutil
 
-import org.scalatest.Matchers._
-
+import org.scalatest.matchers.should.Matchers._
 import scalafx.delegate.AlignmentDelegate
 import scalafx.delegate.AlignmentDelegate._
 import scalafx.geometry.Pos

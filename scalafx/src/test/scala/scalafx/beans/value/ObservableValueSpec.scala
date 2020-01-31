@@ -28,8 +28,9 @@
 package scalafx.beans.value
 
 import javafx.beans.value.{ChangeListener, ObservableValue => JFXObservableValue}
-import org.scalatest.Matchers._
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import org.scalatest.BeforeAndAfterEach
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.beans.binding.BindingIncludes._
 import scalafx.beans.property.DoubleProperty
 
@@ -38,7 +39,7 @@ import scalafx.beans.property.DoubleProperty
  *
  *
  */
-class ObservableValueSpec extends FlatSpec with BeforeAndAfterEach {
+class ObservableValueSpec extends AnyFlatSpec with BeforeAndAfterEach {
   var property: DoubleProperty = null
 
   override def beforeEach(): Unit = {

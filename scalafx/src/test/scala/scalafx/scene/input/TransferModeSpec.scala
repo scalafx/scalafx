@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,7 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
-
-import org.scalatest.Matchers._
-
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 

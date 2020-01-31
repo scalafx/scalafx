@@ -28,17 +28,18 @@
 package scalafx.beans
 
 import javafx.{beans => jfxb}
-import org.scalatest.Matchers._
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import org.scalatest.BeforeAndAfterEach
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.beans.binding.BindingIncludes._
 import scalafx.beans.property.DoubleProperty
 
 /**
-  * Observable Spec tests.
-  *
-  *
-  */
-class ObservableSpec extends FlatSpec with BeforeAndAfterEach {
+ * Observable Spec tests.
+ *
+ *
+ */
+class ObservableSpec extends AnyFlatSpec with BeforeAndAfterEach {
   var property: DoubleProperty = _
 
   override def beforeEach(): Unit = {
