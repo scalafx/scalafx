@@ -45,6 +45,31 @@ libraryDependencies ++= javaFXModules.map( m =>
 )
 ```
 
+If you're using [Mill](http://www.lihaoyi.com/mill/):
+
+```scala
+object yourProject extends ScalaModule {
+
+  // Determine OS version of JavaFX binaries
+  lazy val osName = System.getProperty("os.name") match {
+    case n if n.startsWith("Linux")   => "linux"
+    case n if n.startsWith("Mac")     => "mac"
+    case n if n.startsWith("Windows") => "win"
+    case _                            => throw new Exception("Unknown platform!")
+  }
+
+  // Add dependency on JavaFX libraries, OS dependent
+  val javaFXModules = List("base", "controls", "fxml", "graphics", "media", "swing", "web")
+    .map(m => ivy"org.openjfx:javafx-$m:12.0.2;classifier=$osName")
+
+  def ivyDeps = {
+    Agg(
+      ivy"org.scalafx::scalafx:12.0.2-R18"
+    ) ++ javaFXModules
+  }
+}
+```
+
 ### What is in the version number
 
 ScalaFX version number has two part. The first part corresponds to latest JavaFX version it was tested with. The second part is an incremental release number. For instance, version `12.0.2-R18` means that it was tested with JavaFX version `12.0.2` and that is the 18th release of ScalaFX. 
