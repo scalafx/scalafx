@@ -151,16 +151,14 @@ lazy val manifestSetting = packageOptions += {
 // Metadata needed by Maven Central
 // See also http://maven.apache.org/pom.html#Developers
 
-import xerial.sbt.Sonatype._
-
 lazy val mavenCentralSettings = Seq(
   homepage := Some(new URL("http://www.scalafx.org/")),
   startYear := Some(2011),
   licenses := Seq(("BSD", new URL("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
   sonatypeProfileName := "org.scalafx",
-  sonatypeProjectHosting := Some(GitHubHosting("scalafx", "scalafx", "scalafx-dev@googlegroups.com")),
+  scmInfo := Some(ScmInfo(url("https://github.com/scalafx/scalafx"), "scm:git@github.com:scalafx/scalafx.git")),
   publishMavenStyle := true,
-  publishTo := sonatypePublishTo.value,
+  publishTo := sonatypePublishToBundle.value,
   pomExtra :=
     <developers>
       <developer>
@@ -210,10 +208,94 @@ lazy val mavenCentralSettings = Seq(
       <developer>
         <id>jpsacha</id>
         <name>Jarek Sacha</name>
+        <url>https://github.com/jpsacha</url>
       </developer>
       <developer>
         <name>Curtis Stanford</name>
       </developer>
+      <developer>
+        <name>Facsimiler</name>
+        <url>https://github.com/Facsimiler</url>
+      </developer>
+      <developer>
+        <name>Romain DEP.</name>
+        <url>https://github.com/rom1dep</url>
+      </developer>
+      <developer>
+        <name>estanislaobosch</name>
+        <url>https://github.com/estanislaobosch</url>
+      </developer>
+      <developer>
+        <name>Ken McDonald</name>
+        <url>https://github.com/KenMcDonald</url>
+      </developer>
+      <developer>
+        <name>Brian Schlining</name>
+        <url>https://www.mbari.org/schlining-brian/</url>
+      </developer>
+      <developer>
+        <name>Yusuke Izawa</name>
+        <url>https://github.com/3tty0n</url>
+      </developer>
+      <developer>
+        <name>Roman Hargrave</name>
+        <url>https://github.com/RomanHargrave</url>
+      </developer>
+      <devloper>
+        <name>Johannes Mockenhaupt</name>
+        <url>https://github.com/jotomo</url>
+      </devloper>
+      <developer>
+        <name>Piotr Mardziel</name>
+        <url>https://piotr.mardziel.com/</url>
+      </developer>
+      <developer>
+        <name>nigredo-tori</name>
+        <url>https://github.com/nigredo-tori</url>
+      </developer>
+      <developer>
+        <name>Damian Bronecki</name>
+        <url>https://github.com/dbronecki</url>
+      </developer>
+      <developer>
+        <name>SwhGo_oN</name>
+        <url>https://github.com/swhgoon</url>
+      </developer>
+      <developer>
+        <name>Rajmahendra</name>
+        <url>https://github.com/rajmahendra</url>
+      </developer>
+      <developer>
+        <name>Sam Privett</name>
+        <url>https://github.com/maspe36</url>
+      </developer>
+      <developer>
+        <name>Eric Zoerner</name>
+        <url>https://github.com/ezoerner</url>
+      </developer>
+      <developer>
+        <name>Edward Samson</name>
+        <url>https://github.com/esamson</url>
+      </developer>
+      <developer>
+        <name>Emily Herbert</name>
+        <url>https://github.com/emilyaherbert</url>
+      </developer>
+      <developer>
+        <name>Brandon Stilson</name>
+        <url>https://github.com/bbstilson</url>
+      </developer>
+      <developer>
+        <name>Anatoly Trosinenko</name>
+        <url>https://github.com/atrosinenko</url>
+      </developer>
+      <developer>
+        <name>Mark Lewis</name>
+        <url>https://github.com/MarkCLewis</url>
+      </developer>
+      <developer>
+        <name>Jeansen</name>
+        <url>https://github.com/Jeansen</url>
+      </developer>
     </developers>
-
 )
