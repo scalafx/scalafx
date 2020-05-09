@@ -9,7 +9,7 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion = "14-ea+7"
+val javaFXVersion = "14.0.1"
 val scalafxVersion = s"14-R19-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v." + scalafxVersion
@@ -63,7 +63,7 @@ val osName = System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 }
 val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-lazy val scalatest = "org.scalatest" %% "scalatest" % "3.1.0"
+lazy val scalatest = "org.scalatest" %% "scalatest" % "3.1.1"
 
 // Add snapshots to root project to enable compilation with Scala SNAPSHOT compiler,
 // e.g., 2.11.0-SNAPSHOT
@@ -73,7 +73,7 @@ resolvers += Resolver.sonatypeRepo("snapshots")
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.13.1", "2.12.10", "2.11.12", "2.10.7"),
+  crossScalaVersions := Seq("2.13.1", "2.12.11", "2.11.12", "2.10.7"),
   scalaVersion := crossScalaVersions.value.head,
   // Add src/main/scala-2.13+ for Scala 2.13 and newer
   //   and src/main/scala-2.12- for Scala versions older than 2.13
