@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,7 +51,9 @@ class AxisSpec[T]
     protected def getValueForDisplay(displayPosition: Double) = null.asInstanceOf[T]
     protected def getZeroPosition = 0.0
     protected def isValueOnAxis(value: T) = false
-    protected def setRange(range: Any, animate: Boolean) {}
+
+    protected def setRange(range: Any, animate: Boolean): Unit = {}
+
     protected def toNumericValue(value: T) = 0.0
     protected def toRealValue(value: Double) = null.asInstanceOf[T]
   }

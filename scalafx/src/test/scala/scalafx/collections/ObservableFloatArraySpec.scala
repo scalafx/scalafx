@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,10 +54,11 @@ class ObservableFloatArraySpec
     val instance2 = ObservableFloatArray(array2)
     val change = Buffer.empty[(ObservableFloatArray, Change)]
     var changes = 0
-    def onChangeFull(a: ObservableFloatArray, c: Change) {
+    def onChangeFull(a: ObservableFloatArray, c: Change): Unit = {
       change += ((a, c))
     }
-    def onChangeBrief() {
+
+    def onChangeBrief(): Unit = {
       changes += 1
     }
     instance0.onChange(onChangeFull(_, _))
@@ -66,8 +67,9 @@ class ObservableFloatArraySpec
     instance1.onChange(onChangeBrief)
     instance2.onChange(onChangeFull(_, _))
     instance2.onChange(onChangeBrief)
+
     def verifyChange(n: Int, array: ObservableFloatArray, sizeChanged:
-    Boolean, start: Int, end: Int) {
+    Boolean, start: Int, end: Int): Unit = {
       val (a, c) = change(n)
       assert(a eq array)
       assert(c.sizeChanged === sizeChanged)
@@ -86,7 +88,7 @@ class ObservableFloatArraySpec
   /**
    * Test that a function to access/change an array element with an invalid index yields an out of bounds exception.
    */
-  def testOutOfBoundsExceptionThrown(f: => Unit) {
+  def testOutOfBoundsExceptionThrown(f: => Unit): Unit = {
     intercept[ArrayIndexOutOfBoundsException] {
       f
     }
@@ -95,7 +97,7 @@ class ObservableFloatArraySpec
   /**
    * Test that a function results in an NegativeArraySizeException being thrown.
    */
-  def testNegativeArraySizeExceptionThrown(f: => Unit) {
+  def testNegativeArraySizeExceptionThrown(f: => Unit): Unit = {
     intercept[NegativeArraySizeException] {
       f
     }
@@ -104,15 +106,16 @@ class ObservableFloatArraySpec
   /**
    * Test that a function results in an IllegalArgumentException being thrown.
    */
-  def testIllegalArgumentExceptionThrown(f: => Unit) {
+  def testIllegalArgumentExceptionThrown(f: => Unit): Unit = {
     intercept[IllegalArgumentException] {
       f
     }
   }
+
   /**
    * Common tests for an empty array.
    */
-  def testEmpty(oa: ObservableFloatArray) {
+  def testEmpty(oa: ObservableFloatArray): Unit = {
     assert(oa.length === 0)
     assert(oa.size === 0)
     assert(oa.isEmpty === true)
@@ -124,7 +127,7 @@ class ObservableFloatArraySpec
   /**
    * Common tests for a non-empty array with known contents.
    */
-  def testNonEmpty(oa: ObservableFloatArray, expected: Array[Float]) {
+  def testNonEmpty(oa: ObservableFloatArray, expected: Array[Float]): Unit = {
     assert(oa.length === expected.length)
     assert(oa.size === expected.length)
     assert(oa.isEmpty === false)
@@ -138,7 +141,7 @@ class ObservableFloatArraySpec
   /**
    * Test that arrays are equal.
    */
-  def testEqual(oa: ObservableFloatArray, expected: ObservableFloatArray) {
+  def testEqual(oa: ObservableFloatArray, expected: ObservableFloatArray): Unit = {
     assert(oa.length === expected.length)
     assert(oa.size === expected.length)
     assert(oa.isEmpty === false)

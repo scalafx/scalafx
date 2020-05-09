@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,6 +32,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
 import scala.collection.mutable.{ArrayLike, Builder}
+import scala.collection.mutable.Builder
 import scala.reflect.ClassTag
 
 /**
@@ -82,7 +83,7 @@ abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: 
   /**
    * Shrinks capacity to current length of data in this array.
    */
-  def trimToSize() {
+  def trimToSize(): Unit = {
     delegate.trimToSize()
   }
 
@@ -91,7 +92,7 @@ abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: 
    *
    * @param capacity Required capacity.
    */
-  def ensureCapacity(capacity: Int) {
+  def ensureCapacity(capacity: Int): Unit = {
     delegate.ensureCapacity(capacity)
   }
 
@@ -326,11 +327,11 @@ abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: 
   /**
    * Set the element at `idx` in the array to `value`.
    *
-   * @param idx Index of element to be changed.
+   * @param idx   Index of element to be changed.
    * @param value New value for element at `idx`.
    * @throws java.lang.ArrayIndexOutOfBoundsException if `idx` does not satisfy `0 <= idx < length`.
    */
-  def update(idx: Int, value: V) {
+  def update(idx: Int, value: V): Unit = {
     set(idx, value)
   }
 
@@ -383,7 +384,7 @@ abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: 
    *
    * Capacity is unchanged.
    */
-  override def clear() {
+  override def clear(): Unit = {
     delegate.clear()
   }
 
@@ -417,7 +418,7 @@ abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: 
 
   def onChange(op: (T, ObservableArray.Change) => Unit): Subscription = {
     val listener = new jfxc.ArrayChangeListener[D] {
-      override def onChanged(array: D, sizeChanged: Boolean, start: Int, end: Int) {
+      override def onChanged(array: D, sizeChanged: Boolean, start: Int, end: Int): Unit = {
         op(ObservableArray.this.asInstanceOf[T], ObservableArray.Change(sizeChanged, start, end))
       }
     }
@@ -425,7 +426,7 @@ abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: 
     delegate.addListener(listener)
 
     new Subscription {
-      def cancel() {
+      def cancel(): Unit = {
         delegate.removeListener(listener)
       }
     }
@@ -442,7 +443,7 @@ abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: 
 
   def onChange(op: => Unit): Subscription = {
     val listener = new jfxc.ArrayChangeListener[D] {
-      override def onChanged(array: D, sizeChanged: Boolean, start: Int, end: Int) {
+      override def onChanged(array: D, sizeChanged: Boolean, start: Int, end: Int): Unit = {
         op
       }
     }
@@ -450,7 +451,7 @@ abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: 
     delegate.addListener(listener)
 
     new Subscription {
-      def cancel() {
+      def cancel(): Unit = {
         delegate.removeListener(listener)
       }
     }

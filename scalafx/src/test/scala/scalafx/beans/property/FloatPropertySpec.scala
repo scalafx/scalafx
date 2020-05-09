@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,10 +28,9 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
-
-import org.scalatest.Matchers._
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
-
+import org.scalatest.BeforeAndAfterEach
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 
 /**
@@ -39,14 +38,14 @@ import scalafx.Includes._
  *
  *
  */
-class FloatPropertySpec extends FlatSpec with BeforeAndAfterEach {
+class FloatPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   val bean = new Object()
   var floatProperty: jfxbp.FloatProperty = null
   var floatProperty2: jfxbp.FloatProperty = null
   var floatProperty3: jfxbp.FloatProperty = null
   var booleanProperty: jfxbp.BooleanProperty = null
 
-  override def beforeEach() {
+  override def beforeEach(): Unit = {
     floatProperty = new FloatProperty(bean, "Test Float")
     floatProperty2 = new FloatProperty(bean, "Test Float 2")
     floatProperty3 = new FloatProperty(bean, "Test Float 3")

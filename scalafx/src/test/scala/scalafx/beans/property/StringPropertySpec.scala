@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,15 +27,16 @@
 
 package scalafx.beans.property
 
-import org.scalatest.Matchers._
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import org.scalatest.BeforeAndAfterEach
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 
 /**
  * StringProperty Spec tests.
  *
  *
  */
-class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
+class StringPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   val bean = new Object()
   var booleanProperty: BooleanProperty = null
   var stringProperty: StringProperty = null
@@ -43,7 +44,7 @@ class StringPropertySpec extends FlatSpec with BeforeAndAfterEach {
   var stringProperty3: StringProperty = null
   var sfxStringProperty: StringProperty = null
 
-  override def beforeEach() {
+  override def beforeEach(): Unit = {
     booleanProperty = new BooleanProperty(bean, "Test Boolean")
     stringProperty = new StringProperty(bean, "Test String")
     stringProperty2 = new StringProperty(bean, "Test String 2")

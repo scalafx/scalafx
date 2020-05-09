@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,20 +26,22 @@
  */
 package issues.issue070
 
-import org.scalatest.FlatSpec
 
+import org.scalatest.flatspec.AnyFlatSpec
 import scalafx.Includes._
 import scalafx.concurrent.{Task, WorkerStateEvent}
 import scalafx.testutil.RunOnApplicationThread
 
-class Issue070Spec extends FlatSpec with RunOnApplicationThread {
+class Issue070Spec extends AnyFlatSpec with RunOnApplicationThread {
 
   "Issue 70 - code using handleEvent()" should "compile" in {
 
     val expectedResult = "Hello"
 
     // Setup a simple task that returns a string
-    val task = Task[String] {expectedResult}
+    val task = Task[String] {
+      expectedResult
+    }
 
     // Add simple event handler that ignores event value
     // Issue 70 prevent following code from compiling with "error: ambiguous reference to overloaded definition"

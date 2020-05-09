@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -171,7 +171,7 @@ trait ObservableSet[T]
   /**
    * Removes all elements from the $SET. After this operation has completed, the $SET will be empty.
    */
-  override def clear() {
+  override def clear(): Unit = {
     delegate.clear()
   }
 
@@ -206,11 +206,11 @@ trait ObservableSet[T]
    */
   def onChange[J >: T](op: (ObservableSet[T], Change[J]) => Unit): Subscription = {
     val listener = new jfxc.SetChangeListener[T] {
-      def onChanged(change: jfxc.SetChangeListener.Change[_ <: T]) {
+      def onChanged(change: jfxc.SetChangeListener.Change[_ <: T]): Unit = {
         val changeEvent: Change[J] = (change.wasAdded, change.wasRemoved) match {
           case (true, false) => ObservableSet.Add(change.getElementAdded)
           case (false, true) => ObservableSet.Remove(change.getElementRemoved)
-          case _             => throw new IllegalStateException("Irregular Change. Added: " +
+          case _ => throw new IllegalStateException("Irregular Change. Added: " +
             change.getElementAdded + ", Removed: " + change.getElementRemoved)
         }
 
@@ -221,7 +221,7 @@ trait ObservableSet[T]
     delegate.addListener(listener)
 
     new Subscription {
-      def cancel() {
+      def cancel(): Unit = {
         delegate.removeListener(listener)
       }
     }
@@ -234,7 +234,7 @@ trait ObservableSet[T]
    */
   def onChange(op: => Unit): Subscription = {
     val listener = new jfxc.SetChangeListener[T] {
-      def onChanged(change: jfxc.SetChangeListener.Change[_ <: T]) {
+      def onChanged(change: jfxc.SetChangeListener.Change[_ <: T]): Unit = {
         op
       }
     }
@@ -242,7 +242,7 @@ trait ObservableSet[T]
     delegate.addListener(listener)
 
     new Subscription {
-      def cancel() {
+      def cancel(): Unit = {
         delegate.removeListener(listener)
       }
     }

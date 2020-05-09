@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,15 +28,13 @@
 package issues.issue262
 
 import javafx.util.converter.IntegerStringConverter
-
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers._
-
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.scene.control.cell.TextFieldListCell
 import scalafx.testutil.RunOnApplicationThread
 
-class Issue262Spec extends FlatSpec with RunOnApplicationThread {
+class Issue262Spec extends AnyFlatSpec with RunOnApplicationThread {
   "TextFieldListCell" should "support changing of StringConverter" in {
     val cell = new TextFieldListCell[Integer]
     cell.converter = new IntegerStringConverter

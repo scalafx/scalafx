@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 package scalafx.animation
 
 import javafx.{animation => jfxa, event => jfxe}
-import org.scalatest.Matchers._
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 import scalafx.event.ActionEvent
@@ -57,7 +57,7 @@ class KeyFrameSpec
 
   it should "have a convenient apply construction format and property access for finish handlers" in {
     val finishHandler = new jfxe.EventHandler[jfxe.ActionEvent] {
-      def handle(p1: jfxe.ActionEvent) {}
+      def handle(p1: jfxe.ActionEvent): Unit = {}
     }
     KeyFrame(10 ms, onFinished = finishHandler).onFinished should equal(finishHandler)
   }

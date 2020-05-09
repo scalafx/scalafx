@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,9 @@
 package scalafx.util.converter
 
 import java.text.SimpleDateFormat
+
 import javafx.{util => jfxu}
-
-import org.scalatest.Matchers._
-
+import org.scalatest.matchers.should.Matchers._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
@@ -57,11 +56,11 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 abstract private[converter] class AbstractStringConverterDelegateSpec[J <: java.lang.Object, C <: jfxu.StringConverter[J], S <: Any, D <: StringConverterDelegate[_, S, C]] protected(javaConverterClass: Class[C], scalaConverterClass: Class[D], scalaClass: Class[S])(implicit jfx2sfx: C => D = null, sfx2jfx: D => C = null)
   extends SimpleSFXDelegateSpec[C, D](javaConverterClass, scalaConverterClass) {
 
-  private def runConverterForExamples() {
+  private def runConverterForExamples(): Unit = {
 
     val converter = getConverterForExample
 
-    def runConversionsForExamples(s: S, string: String) {
+    def runConversionsForExamples(s: S, string: String): Unit = {
       val sToString = converter.toString(s)
       sToString should equal(string)
 

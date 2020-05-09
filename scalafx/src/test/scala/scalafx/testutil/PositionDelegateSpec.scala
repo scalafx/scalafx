@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,19 +26,19 @@
  */
 package scalafx.testutil
 
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers.{be, convertToAnyShouldWrapper}
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers.{be, convertToAnyShouldWrapper}
 import scalafx.beans.property.DoubleProperty
 import scalafx.delegate.PositionDelegate
 
 /**
  * Trait to test PositionDelegate subclasses
  */
-trait PositionDelegateSpec[D <: PositionDelegate[_]] extends FlatSpec {
+trait PositionDelegateSpec[D <: PositionDelegate[_]] extends AnyFlatSpec {
 
   val positionDelegate: D
 
-  private def testDoublePropertyUpdate(testedProperty: DoubleProperty, propertyName: String) {
+  private def testDoublePropertyUpdate(testedProperty: DoubleProperty, propertyName: String): Unit = {
     var moved = false
     val observerDouble = new DoubleProperty(positionDelegate, propertyName)
 

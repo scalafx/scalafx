@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,12 @@
 package scalafx.beans.property
 
 import java.{util => ju}
+
 import javafx.beans.{property => jfxbp, value => jfxbv}
 import javafx.scene.{control => jfxsc}
-
-import org.scalatest.Matchers._
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
-
+import org.scalatest.BeforeAndAfterEach
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes.{jfxBooleanBinding2sfx, jfxBooleanProperty2sfx, jfxObjectProperty2sfx, sfxObjectPropertyWithSFXDelegate2jfxObjectProperty}
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.beans.property.ObjectProperty.sfxObjectProperty2jfx
@@ -41,18 +41,18 @@ import scalafx.scene.control.Button
 import scalafx.testutil.RunOnApplicationThread
 
 /**
-  * ObjectProperty Spec tests.
-  *
-  *
-  */
-class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach with RunOnApplicationThread {
+ * ObjectProperty Spec tests.
+ *
+ *
+ */
+class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnApplicationThread {
   val bean = new Object()
   var objectProperty: jfxbp.ObjectProperty[String] = _
   var objectProperty2: jfxbp.ObjectProperty[String] = _
   var sfxObjectProperty: ObjectProperty[String] = _
   var booleanProperty: jfxbp.BooleanProperty = _
 
-  override protected def beforeEach() {
+  override protected def beforeEach(): Unit = {
     objectProperty = ObjectProperty[String](bean, "Test Object")
     objectProperty2 = ObjectProperty[String](bean, "Test Object 2")
     sfxObjectProperty = ObjectProperty[String](bean, "SFX Test Object")
@@ -242,12 +242,12 @@ class ObjectPropertySpec extends FlatSpec with BeforeAndAfterEach with RunOnAppl
 
   // Testing fillProperty method from companion.
 
-  private def evaluateFillProperty[T <: Object](property: ObjectProperty[T], newValue: T) {
+  private def evaluateFillProperty[T <: Object](property: ObjectProperty[T], newValue: T): Unit = {
     val originalValue: T = property.value
     var oldVal: T = null.asInstanceOf[T]
     var newVal: T = null.asInstanceOf[T]
     property.delegate.addListener(new jfxbv.ChangeListener[T] {
-      def changed(obs: jfxbv.ObservableValue[_ <: T], oldV: T, newV: T) {
+      def changed(obs: jfxbv.ObservableValue[_ <: T], oldV: T, newV: T): Unit = {
         oldVal = oldV
         newVal = newV
       }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -240,11 +240,11 @@ trait ObservableMap[K, V]
    */
   def onChange(op: (ObservableMap[K, V], Change[K, V]) => Unit): Subscription = {
     val listener = new jfxc.MapChangeListener[K, V] {
-      def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]) {
+      def onChanged(change: jfxc.MapChangeListener.Change[_ <: K, _ <: V]): Unit = {
         val changeEvent: Change[K, V] = (change.wasAdded, change.wasRemoved) match {
-          case (true, true)   => Replace(change.getKey, change.getValueAdded, change.getValueRemoved)
-          case (true, false)  => Add(change.getKey, change.getValueAdded)
-          case (false, true)  => Remove(change.getKey, change.getValueRemoved)
+          case (true, true) => Replace(change.getKey, change.getValueAdded, change.getValueRemoved)
+          case (true, false) => Add(change.getKey, change.getValueAdded)
+          case (false, true) => Remove(change.getKey, change.getValueRemoved)
           case (false, false) => throw new IllegalStateException("Irregular Change: neither addition nor remotion")
         }
 

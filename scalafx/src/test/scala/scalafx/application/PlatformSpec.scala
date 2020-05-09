@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,15 +28,15 @@
 package scalafx.application
 
 import java.lang.reflect.Modifier
+
 import javafx.{application => jfxa}
-
-import org.scalatest.{FlatSpec, Matchers}
-
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 import scalafx.Includes._
 import scalafx.testutil.RunOnApplicationThread
 
 
-class PlatformSpec extends FlatSpec with Matchers with RunOnApplicationThread {
+class PlatformSpec extends AnyFlatSpec with Matchers with RunOnApplicationThread {
 
   "Platform" should "declare all public static methods of javafx.application.Platform" in {
     val javaMethods = classOf[jfxa.Platform].getMethods

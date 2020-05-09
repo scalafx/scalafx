@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,12 +26,11 @@
  */
 package scalafx.delegate
 
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers._
-
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.beans.property.DoubleProperty
 
-class SFXDelegateSpec extends FlatSpec {
+class SFXDelegateSpec extends AnyFlatSpec {
   val doubleProperty = new DoubleProperty(null, "double property")
   val doublePropertyWithSameName = new DoubleProperty(null, "double property")
   val doublePropertyWithDifferentName = new DoubleProperty(null, "double property (with different name)")

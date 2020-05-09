@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,13 @@
 
 package issues.issue241
 
-import org.scalatest.FlatSpec
 
+import org.scalatest.flatspec.AnyFlatSpec
 import scalafx.scene.shape.Line
 import scalafx.testutil.RunOnApplicationThread
 
 /** Issue #241: Shape.stroke_=(v: Paint) doesn't accept null as v */
-class Issue241Spec extends FlatSpec with RunOnApplicationThread {
+class Issue241Spec extends AnyFlatSpec with RunOnApplicationThread {
 
   "Shape" should "accept null `stroke` value" in {
     val shape = new Line()

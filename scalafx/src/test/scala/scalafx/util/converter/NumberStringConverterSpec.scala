@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 package scalafx.util.converter
 
 import javafx.util.{converter => jfxuc}
-
 import scalafx.Includes._
 
 /**
@@ -38,7 +37,7 @@ import scalafx.Includes._
 class NumberStringConverterSpec
   extends AbstractStringConverterDelegateSpec[Number, jfxuc.NumberStringConverter, Number, NumberStringConverter](classOf[jfxuc.NumberStringConverter], classOf[NumberStringConverter], classOf[Number]) {
 
-  val examples = List((new java.lang.Integer(10), "10"), (new java.lang.Integer(0), "0"),
-    (new java.lang.Integer(-10), "-10"))
+  val examples = List((java.lang.Integer.valueOf(10), "10"), (java.lang.Integer.valueOf(0), "0"),
+    (java.lang.Integer.valueOf(-10), "-10"))
 
 }

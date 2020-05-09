@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,6 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc}
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
@@ -42,20 +41,34 @@ class MultipleSelectionModelSpec[T]
 
   class SimpleMultipleSelectionModel extends jfxsc.MultipleSelectionModel[T] {
     def getSelectedIndices: jfxc.ObservableList[java.lang.Integer] = null
+
     def getSelectedItems: jfxc.ObservableList[T] = null
-    def selectAll() {}
-    def selectFirst() {}
-    def selectIndices(index: Int, indices: Int*) {}
-    def selectLast() {}
-    def clearAndSelect(index: Int) {}
-    def clearSelection() {}
-    def clearSelection(index: Int) {}
+
+    def selectAll(): Unit = {}
+
+    def selectFirst(): Unit = {}
+
+    def selectIndices(index: Int, indices: Int*): Unit = {}
+
+    def selectLast(): Unit = {}
+
+    def clearAndSelect(index: Int): Unit = {}
+
+    def clearSelection(): Unit = {}
+
+    def clearSelection(index: Int): Unit = {}
+
     def isEmpty: Boolean = false
+
     def isSelected(index: Int): Boolean = false
-    def select(index: Int) {}
-    def select(obj: T) {}
-    def selectNext() {}
-    def selectPrevious() {}
+
+    def select(index: Int): Unit = {}
+
+    def select(obj: T): Unit = {}
+
+    def selectNext(): Unit = {}
+
+    def selectPrevious(): Unit = {}
   }
 
   override protected def getScalaClassInstance = new MultipleSelectionModel[T](getJavaClassInstance) {}

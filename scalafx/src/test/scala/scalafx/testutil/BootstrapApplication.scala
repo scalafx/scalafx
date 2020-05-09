@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,16 +27,17 @@
 package scalafx.testutil
 
 import java.util.concurrent.CountDownLatch
+
 import javafx.application.Application
 import javafx.stage.Stage
 
 object BootstrapApplication {
   private val launchLatch = new CountDownLatch(1)
   var launched = false
-  def launch() {
+  def launch(): Unit = {
     if (!launched) {
       new Thread(new Runnable() {
-        def run() {
+        def run(): Unit = {
           Application.launch(classOf[BootstrapApplication])
         }
       }).start()
@@ -47,7 +48,7 @@ object BootstrapApplication {
 }
 
 class BootstrapApplication extends Application {
-  override def start(stage: Stage) {
+  override def start(stage: Stage): Unit = {
     BootstrapApplication.launchLatch.countDown()
   }
 }

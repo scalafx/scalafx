@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,17 +28,16 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
-
-import org.scalatest.Matchers._
-
-import scala.language.implicitConversions
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
+import scala.language.implicitConversions
+
 /**
-  *
-  * Test for [[scalafx.beans.property.ReadOnlyBufferWrapper]].
-  */
+ *
+ * Test for [[scalafx.beans.property.ReadOnlyBufferWrapper]].
+ */
 class ReadOnlyBufferWrapperSpec
   extends SimpleSFXDelegateSpec[jfxbp.ReadOnlyListWrapper[Int], ReadOnlyBufferWrapper[Int]](
     classOf[jfxbp.ReadOnlyListWrapper[Int]], classOf[ReadOnlyBufferWrapper[Int]]) {

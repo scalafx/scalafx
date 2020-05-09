@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,13 @@
 
 package scalafx.beans.property
 
-import org.scalatest.Matchers.{convertToAnyShouldWrapper, equal}
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import org.scalatest.BeforeAndAfterEach
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers.{convertToAnyShouldWrapper, equal}
 
 
 /** ReadOnlyFloatWrapper Spec tests. */
-class ReadOnlyFloatWrapperSpec extends FlatSpec with BeforeAndAfterEach {
+class ReadOnlyFloatWrapperSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   "A ReadOnlyFloatWrapper" should "be an instance of FloatProperty" in {
     val p = new ReadOnlyFloatWrapper()

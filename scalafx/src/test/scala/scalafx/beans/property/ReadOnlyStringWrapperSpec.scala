@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,13 @@
 
 package scalafx.beans.property
 
-import org.scalatest.Matchers._
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
+import org.scalatest.BeforeAndAfterEach
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 
 
 /** ReadOnlyStringWrapper Spec tests. */
-class ReadOnlyStringWrapperSpec extends FlatSpec with BeforeAndAfterEach {
+class ReadOnlyStringWrapperSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   "A ReadOnlyStringWrapper" should "be an instance of StringProperty" in {
     val p = new ReadOnlyStringWrapper()

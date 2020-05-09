@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,15 +26,15 @@
  */
 
 
-import org.scalatest.FlatSpec
 
+import org.scalatest.flatspec.AnyFlatSpec
 import scalafx.Includes._
 import scalafx.event.{ActionEvent, Event}
 import scalafx.scene.Group
 import scalafx.scene.control.Button
 import scalafx.testutil.RunOnApplicationThread
 
-class EventHandlerSpec extends FlatSpec with RunOnApplicationThread {
+class EventHandlerSpec extends AnyFlatSpec with RunOnApplicationThread {
 
   "`handleEvent`" should "create subscription and cancel for Event Handlers" in {
 

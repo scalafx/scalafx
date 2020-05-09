@@ -1,7 +1,7 @@
 # ScalaFX
 [![Join the chat at https://gitter.im/scalafx/scalafx](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/scalafx/scalafx?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[![Build Status](https://travis-ci.org/scalafx/scalafx.svg?branch=master)](https://travis-ci.org/scalafx/scalafx)   [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.11) [![Scaladoc](http://javadoc-badge.appspot.com/org.scalafx/scalafx_2.11.svg?label=scaladoc)](http://javadoc-badge.appspot.com/org.scalafx/scalafx_2.11)
+[![Build Status](https://travis-ci.org/scalafx/scalafx.svg?branch=master)](https://travis-ci.org/scalafx/scalafx)   [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.13/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.13) [![Scaladoc](http://javadoc-badge.appspot.com/org.scalafx/scalafx_2.13.svg?label=scaladoc)](http://javadoc-badge.appspot.com/org.scalafx/scalafx_2.13)
 
 ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX.
 This means that every ScalaFX application is also a valid Scala application.
@@ -28,7 +28,7 @@ JavaFX binaries depend on operating system used.
 Add following to SBT configuration:
 ```scala
 // Add dependency on ScalaFX library
-libraryDependencies += "org.scalafx" %% "scalafx" % "12.0.1-R17"
+libraryDependencies += "org.scalafx" %% "scalafx" % "14-R19"
 
 // Determine OS version of JavaFX binaries
 lazy val osName = System.getProperty("os.name") match {
@@ -41,13 +41,38 @@ lazy val osName = System.getProperty("os.name") match {
 // Add dependency on JavaFX libraries, OS dependent
 lazy val javaFXModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
 libraryDependencies ++= javaFXModules.map( m =>
-  "org.openjfx" % s"javafx-$m" % "12.0.1" classifier osName
+  "org.openjfx" % s"javafx-$m" % "14.0.1" classifier osName
 )
+```
+
+If you're using [Mill](http://www.lihaoyi.com/mill/):
+
+```scala
+object yourProject extends ScalaModule {
+
+  // Determine OS version of JavaFX binaries
+  lazy val osName = System.getProperty("os.name") match {
+    case n if n.startsWith("Linux")   => "linux"
+    case n if n.startsWith("Mac")     => "mac"
+    case n if n.startsWith("Windows") => "win"
+    case _                            => throw new Exception("Unknown platform!")
+  }
+
+  // Add dependency on JavaFX libraries, OS dependent
+  val javaFXModules = List("base", "controls", "fxml", "graphics", "media", "swing", "web")
+    .map(m => ivy"org.openjfx:javafx-$m:14.0.1;classifier=$osName")
+
+  def ivyDeps = {
+    Agg(
+      ivy"org.scalafx::scalafx:14-R19"
+    ) ++ javaFXModules
+  }
+}
 ```
 
 ### What is in the version number
 
-ScalaFX version number has two part. The first part corresponds to latest JavaFX version it was tested with. The second part is an incremental release number. For instance, version `12.0.2-R18` means that it was tested with JavaFX version `12.0.2` and that is the 18th release of ScalaFX. 
+ScalaFX version number has two part. The first part corresponds to latest JavaFX version it was tested with. The second part is an incremental release number. For instance, version `14-R19` means that it was tested with JavaFX version `14` and that is the 18th release of ScalaFX. 
 
 #### Legacy Releases
 

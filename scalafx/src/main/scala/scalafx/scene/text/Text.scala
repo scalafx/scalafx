@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -102,8 +102,8 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   }
 
   /**
-    * Defines if each line of text should have a line through it.
-    */
+   * Defines if each line of text should have a line through it.
+   */
   def strikethrough: BooleanProperty = delegate.strikethroughProperty
 
   def strikethrough_=(v: Boolean): Unit = {
@@ -111,8 +111,17 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   }
 
   /**
-    * Defines text string that is to be displayed.
-    */
+   * The size of a tab stop in spaces. Values less than 1 are treated as 1.
+   */
+  def tabSize: IntegerProperty = delegate.tabSizeProperty()
+
+  def tabSize_=(v: Int): Unit = {
+    tabSize() = v
+  }
+
+  /**
+   * Defines text string that is to be displayed.
+   */
   def text: StringProperty = delegate.textProperty
 
   def text_=(v: String): Unit = {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,19 +28,18 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
-
-import org.scalatest.Matchers._
-import org.scalatest.{BeforeAndAfterEach, FlatSpec}
-
+import org.scalatest.BeforeAndAfterEach
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 
 /**
-  * ReadOnlyBufferProperty Spec tests.
-  *
-  *
-  */
-class ReadOnlyBufferPropertySpec extends FlatSpec with BeforeAndAfterEach {
+ * ReadOnlyBufferProperty Spec tests.
+ *
+ *
+ */
+class ReadOnlyBufferPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   val valueAsSeq = Seq(1, 2, 7)
   val bean = new Object()
@@ -49,7 +48,7 @@ class ReadOnlyBufferPropertySpec extends FlatSpec with BeforeAndAfterEach {
   var listProperty1: jfxbp.ListProperty[Int] = _
   var listProperty2: jfxbp.ListProperty[Int] = _
 
-  override def beforeEach() {
+  override def beforeEach(): Unit = {
 
     val roWrapper = new ReadOnlyBufferWrapper(bean, "Test Read-only Boolean", ObservableBuffer(valueAsSeq))
     readOnlyListProperty = roWrapper.readOnlyProperty

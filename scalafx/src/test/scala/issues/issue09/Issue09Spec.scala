@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,13 @@
  */
 package issues.issue09
 
-import org.scalatest.FlatSpec
 
+import org.scalatest.flatspec.AnyFlatSpec
 import scalafx.Includes._
 import scalafx.beans.property.DoubleProperty
 
 /** Verify that code causing Issue 9 behaves correctly after fix. */
-class Issue09Spec extends FlatSpec {
+class Issue09Spec extends AnyFlatSpec {
 
   "Issue 9 fix" should "run HeronsFormulaExample without exceptions" in {
     val a = DoubleProperty(0)

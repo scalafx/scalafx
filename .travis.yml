@@ -2,8 +2,8 @@ sudo: false
 
 language: scala
 scala:
-  - 2.13.0
-  - 2.12.8
+  - 2.13.1
+  - 2.12.11
   - 2.11.12
   - 2.10.7
 
@@ -13,9 +13,9 @@ services:
 
 jdk:
   - oraclejdk11
-  - oraclejdk12
+  - oraclejdk14
   - openjdk11
-  - openjdk12
+  - openjdk14
 
 install: true
 
