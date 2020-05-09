@@ -28,7 +28,7 @@ JavaFX binaries depend on operating system used.
 Add following to SBT configuration:
 ```scala
 // Add dependency on ScalaFX library
-libraryDependencies += "org.scalafx" %% "scalafx" % "12.0.2-R18"
+libraryDependencies += "org.scalafx" %% "scalafx" % "14-R19"
 
 // Determine OS version of JavaFX binaries
 lazy val osName = System.getProperty("os.name") match {
@@ -41,7 +41,7 @@ lazy val osName = System.getProperty("os.name") match {
 // Add dependency on JavaFX libraries, OS dependent
 lazy val javaFXModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
 libraryDependencies ++= javaFXModules.map( m =>
-  "org.openjfx" % s"javafx-$m" % "12.0.2" classifier osName
+  "org.openjfx" % s"javafx-$m" % "14.0.1" classifier osName
 )
 ```
 
@@ -60,11 +60,11 @@ object yourProject extends ScalaModule {
 
   // Add dependency on JavaFX libraries, OS dependent
   val javaFXModules = List("base", "controls", "fxml", "graphics", "media", "swing", "web")
-    .map(m => ivy"org.openjfx:javafx-$m:12.0.2;classifier=$osName")
+    .map(m => ivy"org.openjfx:javafx-$m:14.0.1;classifier=$osName")
 
   def ivyDeps = {
     Agg(
-      ivy"org.scalafx::scalafx:12.0.2-R18"
+      ivy"org.scalafx::scalafx:14-R19"
     ) ++ javaFXModules
   }
 }
@@ -72,7 +72,7 @@ object yourProject extends ScalaModule {
 
 ### What is in the version number
 
-ScalaFX version number has two part. The first part corresponds to latest JavaFX version it was tested with. The second part is an incremental release number. For instance, version `12.0.2-R18` means that it was tested with JavaFX version `12.0.2` and that is the 18th release of ScalaFX. 
+ScalaFX version number has two part. The first part corresponds to latest JavaFX version it was tested with. The second part is an incremental release number. For instance, version `14-R19` means that it was tested with JavaFX version `14` and that is the 18th release of ScalaFX. 
 
 #### Legacy Releases
 
