@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,23 +30,22 @@ package scalafx.scene.control.cell
 import javafx.scene.control.{cell => jfxscc}
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.TreeTableCell
 import scalafx.util.StringConverter
 
+import scala.language.implicitConversions
+
 /**
  * Companion Object for [[scalafx.scene.control.cell.ChoiceBoxTreeTableCell]].
  *
  * @since 8.0
  * @todo Replace all references to $JFX $TTC to its $SFX counterpart when it was created
- *
- * @define CBTTC `ChoiceBoxTreeTableCell`
- * @define CONVPARAM A StringConverter to convert the given item (of type T) to a String for displaying to the user.
- * @define ITEMSPARAM Zero or more items that will be shown to the user when the `ChoiceBox` menu is showing. These items must be of the same type as the TreeTableColumn.
+ * @define CBTTC       `ChoiceBoxTreeTableCell`
+ * @define CONVPARAM   A StringConverter to convert the given item (of type T) to a String for displaying to the user.
+ * @define ITEMSPARAM  Zero or more items that will be shown to the user when the `ChoiceBox` menu is showing. These items must be of the same type as the TreeTableColumn.
  * @define TTC TreeTableColumn
  * @define TTCL TreeTableCell
  * @define FTTC Creates a [[scalafx.scene.control.ChoiceBox ChoiceBox]] cell factory for use in $TTC controls.
@@ -85,7 +84,7 @@ object ChoiceBoxTreeTableCell {
    * $SATISFY
    */
   @deprecated(message = "Use forTreeTableColumn[S, T](ObservableBuffer[T])", since = "1.0")
-  def forTreeTableColumn[S, T](items: jfxc.ObservableList[T]) = jfxscc.ChoiceBoxTreeTableCell.forTreeTableColumn[S, T](items)
+  def forTreeTableColumn[S, T](items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] = jfxscc.ChoiceBoxTreeTableCell.forTreeTableColumn[S, T](items)
 
   /**
    * $FTTC
@@ -103,7 +102,7 @@ object ChoiceBoxTreeTableCell {
    * $SATISFY
    */
   @deprecated(message = "Use forTreeTableColumn[S, T](StringConverter[T], ObservableBuffer[T])", since = "1.0")
-  def forTreeTableColumn[S, T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]) =
+  def forTreeTableColumn[S, T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] =
     jfxscc.ChoiceBoxTreeTableCell.forTreeTableColumn[S, T](converter, items)
 
   /**
@@ -122,7 +121,7 @@ object ChoiceBoxTreeTableCell {
    * $SATISFY
    */
   @deprecated(message = "Use forTreeTableColumn[S, T](StringConverter[T], T*)", since = "1.0")
-  def forTreeTableColumn[S, T](converter: jfxu.StringConverter[T], items: T*) = jfxscc.ChoiceBoxTreeTableCell.forTreeTableColumn[S, T](converter, items: _*)
+  def forTreeTableColumn[S, T](converter: jfxu.StringConverter[T], items: T*): jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] = jfxscc.ChoiceBoxTreeTableCell.forTreeTableColumn[S, T](converter, items: _*)
 
   /**
    * $FTTC
@@ -139,7 +138,7 @@ object ChoiceBoxTreeTableCell {
    * $SATISFY
    */
   @deprecated(message = "Use forTreeTableColumn[S, T](T*)", since = "1.0")
-  def forTreeTableColumn[S, T](items: Array[T]) = jfxscc.ChoiceBoxTreeTableCell.forTreeTableColumn[S, T](items: _*)
+  def forTreeTableColumn[S, T](items: Array[T]): jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] = jfxscc.ChoiceBoxTreeTableCell.forTreeTableColumn[S, T](items: _*)
 
 }
 

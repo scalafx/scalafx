@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import javafx.{geometry => jfxg}
+import javafx.{geometry => jfxg, scene => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.collections._
@@ -51,7 +51,8 @@ class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar)
   /**
    * The items contained in the ToolBar.
    */
-  def items = delegate.getItems
+  def items: ObservableBuffer[jfxs.Node] = delegate.getItems
+
   /**
    * Sets the items, replacing the prior items. If you want append to current items, use `add` or similar.
    *
@@ -68,10 +69,12 @@ class ToolBar(override val delegate: jfxsc.ToolBar = new jfxsc.ToolBar)
   def items_=(n: Node): Unit = {
     fillSFXCollectionWithOne(this.items, n)
   }
+
   /**
    * The items contained in the ToolBar.
    */
-  def content = items
+  def content: ObservableBuffer[jfxs.Node] = items
+
   /**
    * Sets the items, replacing the prior items. If you want append to current items, use `add` or similar.
    *

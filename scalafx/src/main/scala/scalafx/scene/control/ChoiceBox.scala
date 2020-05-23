@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe, util => jfxu}
+import javafx.{collections => jfxc, event => jfxe, util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyBooleanProperty}
 import scalafx.collections.ObservableBuffer
@@ -77,7 +77,7 @@ class ChoiceBox[J <: Any](override val delegate: jfxsc.ChoiceBox[J] = new jfxsc.
   /**
    * The items to display in the choice box.
    */
-  def items = delegate.itemsProperty
+  def items: ObjectProperty[jfxc.ObservableList[J]] = delegate.itemsProperty
 
   def items_=(v: ObservableBuffer[J]): Unit = {
     items() = v

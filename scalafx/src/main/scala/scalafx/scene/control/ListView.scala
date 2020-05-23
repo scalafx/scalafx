@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
+import javafx.{collections => jfxc, event => jfxe, geometry => jfxg, scene => jfxs, util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyIntegerProperty}
 import scalafx.collections.ObservableBuffer
@@ -121,11 +121,11 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * Setting a custom cell factory has the effect of deferring all cell creation, allowing for 
    * total customization of the cell.
    */
-  def cellFactory = delegate.cellFactoryProperty
+  def cellFactory: ObjectProperty[jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]]] = delegate.cellFactoryProperty
 
   def cellFactory_=(v: (ListView[T] => ListCell[T])): Unit = {
     cellFactory() = new jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] {
-      def call(lv: jfxsc.ListView[T]) = {
+      def call(lv: jfxsc.ListView[T]): jfxsc.ListCell[T] = {
         v(lv)
       }
     }
@@ -167,7 +167,7 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
   /**
    * The underlying data model for the ListView.
    */
-  def items = delegate.itemsProperty
+  def items: ObjectProperty[jfxc.ObservableList[T]] = delegate.itemsProperty
 
   def items_=(v: ObservableBuffer[T]): Unit = {
     items() = v

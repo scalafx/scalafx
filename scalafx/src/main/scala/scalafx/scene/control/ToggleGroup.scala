@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,8 @@ class ToggleGroup(override val delegate: jfxsc.ToggleGroup = new jfxsc.ToggleGro
   /**
    * The list of toggles within the ToggleGroup.
    */
-  def toggles = delegate.getToggles
+  def toggles: ObservableBuffer[jfxsc.Toggle] = delegate.getToggles
+
   /**
    * Sets the list of toggles, replacing the prior toggles. If you want append to current toggles, use `add` or
    * similar.

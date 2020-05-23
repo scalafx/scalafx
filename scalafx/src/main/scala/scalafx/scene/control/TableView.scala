@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ package scalafx.scene.control
 import java.lang
 
 import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe, scene => jfxs, util => jfxu}
+import javafx.{collections => jfxc, event => jfxe, scene => jfxs, util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.collections.ObservableBuffer
@@ -353,7 +353,7 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   /**
    * The underlying data model for the TableView.
    */
-  def items = delegate.itemsProperty
+  def items: ObjectProperty[jfxc.ObservableList[S]] = delegate.itemsProperty
 
   def items_=(v: ObservableBuffer[S]): Unit = {
     items() = v
@@ -419,7 +419,7 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
    * Applies the currently installed resize policy against the given column, resizing it based on the delta value
    * provided.
    */
-  def resizeColumn(column: TableColumn[S, _], delta: Double) = delegate.resizeColumn(column.delegate, delta)
+  def resizeColumn(column: TableColumn[S, _], delta: Double): Boolean = delegate.resizeColumn(column.delegate, delta)
 
   /**
    * Called when there's a request to scroll an index into view using `scrollTo(int)` or `scrollTo(Object)`

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,14 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+import javafx.{scene => jfxs}
+import scalafx.Includes._
+import scalafx.collections.CollectionIncludes.observableList2ObservableBuffer
+import scalafx.collections.ObservableBuffer
 import scalafx.css.PseudoClass
 import scalafx.css.PseudoClass.sfxPseudoClass2jfx
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 
 import scala.language.implicitConversions
 
@@ -55,7 +60,7 @@ abstract class SkinBase[C <: jfxsc.Control] protected(override val delegate: jfx
   /**
    * Returns the children of the skin.
    */
-  def children = delegate.getChildren
+  def children: ObservableBuffer[jfxs.Node] = delegate.getChildren
 
   /**
    * This method should delegate to Node.getClassCssMetaData() so that a `Node`'s `CssMetaData` can be accessed without the need for reflection.
@@ -65,7 +70,7 @@ abstract class SkinBase[C <: jfxsc.Control] protected(override val delegate: jfx
   /**
    * Gets the `Node` which represents this `Skin`.
    */
-  def node = delegate.getNode
+  def node: Node = delegate.getNode
 
   /**
    * Gets the `Skinnable` to which this `Skin` is assigned.

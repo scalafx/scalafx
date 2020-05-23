@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,23 +27,23 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc, paint => jfxsp}
-
-import scala.language.implicitConversions
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.paint.Color
 import scalafx.scene.paint.Color.sfxColor2jfx
 
+import scala.language.implicitConversions
+
 object ColorPicker {
   implicit def sfxColorPicker2jfx(cp: ColorPicker): jfxsc.ColorPicker = if (cp != null) cp.delegate else null
 
-  val StyleClassButton = jfxsc.ColorPicker.STYLE_CLASS_BUTTON
-  @deprecated ("Use StyleClassButton; STYLE_CLASS_BUTTON will be removed in a future release", "8.0.60-R10")
-  val STYLE_CLASS_BUTTON = StyleClassButton
+  val StyleClassButton: String = jfxsc.ColorPicker.STYLE_CLASS_BUTTON
+  @deprecated("Use StyleClassButton; STYLE_CLASS_BUTTON will be removed in a future release", "8.0.60-R10")
+  val STYLE_CLASS_BUTTON: String = StyleClassButton
 
-  val StyleClassSplitButton = jfxsc.ColorPicker.STYLE_CLASS_SPLIT_BUTTON
-  @deprecated ("Use StyleClassSplitButton; STYLE_CLASS_SPLIT_BUTTON will be removed in a future release", "8.0.60-R10")
-  val STYLE_CLASS_SPLIT_BUTTON = StyleClassSplitButton
+  val StyleClassSplitButton: String = jfxsc.ColorPicker.STYLE_CLASS_SPLIT_BUTTON
+  @deprecated("Use StyleClassSplitButton; STYLE_CLASS_SPLIT_BUTTON will be removed in a future release", "8.0.60-R10")
+  val STYLE_CLASS_SPLIT_BUTTON: String = StyleClassSplitButton
 }
 
 /**

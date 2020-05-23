@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,23 +27,24 @@
 package scalafx.scene.control.cell
 
 import javafx.scene.control.{cell => jfxscc}
+import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.{TableCell, TableColumn}
 import scalafx.util.StringConverter
 
+import scala.language.implicitConversions
+
 /**
  * Companion Object for [[scalafx.scene.control.cell.ChoiceBoxTableCell]].
  *
- * @define CBTC `ChoiceBoxTableCell`
- * @define FTCINIT Creates a [[scalafx.scene.control.ChoiceBox]] cell factory for use in [[scalafx.scene.control.TableColumn]] controls.
- * @define TTYPE  The type of the elements contained within the `TableColumn`.
- * @define CONVPARAM A `StringConverter` to convert the given item (of type T) to a String for displaying to the user.
- * @define ITEMSPARAM Zero or more items that will be shown to the user when the ChoiceBox menu is showing. 
+ * @define CBTC          `ChoiceBoxTableCell`
+ * @define FTCINIT       Creates a [[scalafx.scene.control.ChoiceBox]] cell factory for use in [[scalafx.scene.control.TableColumn]] controls.
+ * @define TTYPE         The type of the elements contained within the `TableColumn`.
+ * @define CONVPARAM     A `StringConverter` to convert the given item (of type T) to a String for displaying to the user.
+ * @define ITEMSPARAM    Zero or more items that will be shown to the user when the ChoiceBox menu is showing.
  * @define BUFITEMSPARAM A `ObservableBuffer` containing $ITEMSPARAM
  * @define FTCRET A Function that will return a `TableCell` that is able to work on the type of element contained within the `TableColumn`.
  */
@@ -72,7 +73,7 @@ object ChoiceBoxTableCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTableColumn[S, T](ObservableBuffer[T])", since = "1.0")
-  def forTableColumn[S, T](items: jfxc.ObservableList[T]) = jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](items)
+  def forTableColumn[S, T](items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] = jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](items)
 
   /**
    * $FTCINIT
@@ -89,7 +90,7 @@ object ChoiceBoxTableCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTableColumn[S, T](StringConverter[T], ObservableBuffer[T])", since = "1.0")
-  def forTableColumn[S, T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]) =
+  def forTableColumn[S, T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] =
     jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](converter, items)
 
   /**
@@ -107,7 +108,7 @@ object ChoiceBoxTableCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTableColumn[S, T](StringConverter[T], T*)", since = "1.0")
-  def forTableColumn[S, T](converter: jfxu.StringConverter[T], items: T*) = jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](converter, items: _*)
+  def forTableColumn[S, T](converter: jfxu.StringConverter[T], items: T*): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] = jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](converter, items: _*)
 
   /**
    * $FTCINIT
@@ -123,7 +124,7 @@ object ChoiceBoxTableCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTableColumn[S, T](T*)", since = "1.0")
-  def forTableColumn[S, T](items: Array[T]) = jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](items: _*)
+  def forTableColumn[S, T](items: Array[T]): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] = jfxscc.ChoiceBoxTableCell.forTableColumn[S, T](items: _*)
 
 }
 

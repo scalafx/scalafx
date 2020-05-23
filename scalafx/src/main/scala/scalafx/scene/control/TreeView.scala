@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -105,7 +105,7 @@ object TreeView {
   @deprecated(
     "This method does not correctly calculate the distance from the given TreeItem to the root of the TreeView. " +
       "As of JavaFX 8.0_20, the proper way to do this is via getTreeItemLevel(TreeItem)", since = "8.0_20")
-  def nodeLevel(node: TreeItem[_]) = jfxsc.TreeView.getNodeLevel(node)
+  def nodeLevel(node: TreeItem[_]): Int = jfxsc.TreeView.getNodeLevel(node)
 
   /**
    * Creates a new TreeView overriding layoutChildren method from JavaFX's
@@ -128,7 +128,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    */
   def this(rootItem: TreeItem[T]) = this(new jfxsc.TreeView[T](rootItem))
 
-  def cellFactory = delegate.cellFactoryProperty
+  def cellFactory: ObjectProperty[jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]]] = delegate.cellFactoryProperty
 
   def cellFactory_=(v: (TreeView[T] => TreeCell[T])): Unit = {
     cellFactory() = new jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] {
@@ -269,6 +269,6 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * Returns the index position of the given TreeItem, taking into account the
    * current state of each TreeItem (i.e. whether or not it is expanded).
    */
-  def row(item: TreeItem[T]) = delegate.getRow(item)
+  def row(item: TreeItem[T]): Int = delegate.getRow(item)
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -280,10 +280,12 @@ class ButtonBar(override val delegate: jfxsc.ButtonBar = new jfxsc.ButtonBar())
 
 
   def buttons: ObservableBuffer[jfxs.Node] = delegate.getButtons
-  def buttons_=(c: Node) = {
+
+  def buttons_=(c: Node): Unit = {
     fillSFXCollectionWithOne(delegate.getButtons, c)
   }
-  def buttons_=(c: Iterable[Node]) = {
+
+  def buttons_=(c: Iterable[Node]): Unit = {
     fillSFXCollection(delegate.getButtons, c)
   }
 

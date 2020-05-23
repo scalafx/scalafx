@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,24 +27,25 @@
 package scalafx.scene.control.cell
 
 import javafx.scene.control.{cell => jfxscc}
+import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.{ListCell, ListView}
 import scalafx.util.StringConverter
 
+import scala.language.implicitConversions
+
 /**
  * Companion Object for [[scalafx.scene.control.cell.ComboBoxListCell]].
  *
- * @define CBLC `ComboBoxListCell`
- * @define TTYPE  The type of the elements contained within the `TableColumn`.
- * @define FLVINIT Creates a ComboBox cell factory for use in [[scalafx.scene.control.ListView]] controls.
+ * @define CBLC          `ComboBoxListCell`
+ * @define TTYPE         The type of the elements contained within the `TableColumn`.
+ * @define FLVINIT       Creates a ComboBox cell factory for use in [[scalafx.scene.control.ListView]] controls.
  * @define FLVINITDEPREC Added to satisfy Spec tests.
- * @define ITEMSPARAM Zero or more items that will be shown to the user when the `ComboBox` menu is showing.
- * @define CONVPARAM A [[scalafx.util.StringConverter]] to convert the given item (of type T) to a String for displaying to the user.
+ * @define ITEMSPARAM    Zero or more items that will be shown to the user when the `ComboBox` menu is showing.
+ * @define CONVPARAM     A [[scalafx.util.StringConverter]] to convert the given item (of type T) to a String for displaying to the user.
  * @define RET A function that will return a ListCell that is able to work on the type of element contained within the ListView. 
  */
 object ComboBoxListCell {
@@ -71,7 +72,7 @@ object ComboBoxListCell {
    * $FLVINITDEPREC
    */
   @deprecated(message = "Use forListView[T](T => ObservableValue[Boolean, java.lang.Boolean])", since = "1.0")
-  def forListView[T](items: jfxc.ObservableList[T]) = jfxscc.ComboBoxListCell.forListView(items)
+  def forListView[T](items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] = jfxscc.ComboBoxListCell.forListView(items)
 
   /**
    * $FLVINIT
@@ -87,7 +88,7 @@ object ComboBoxListCell {
    * $FLVINITDEPREC
    */
   @deprecated(message = "Use forListView[T](StringConverter[T], ObservableBuffer[T])", since = "1.0")
-  def forListView[T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]) =
+  def forListView[T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] =
     jfxscc.ComboBoxListCell.forListView(converter, items)
 
   /**
@@ -104,7 +105,7 @@ object ComboBoxListCell {
    * $FLVINITDEPREC
    */
   @deprecated(message = "Use forListView[T](StringConverter[T], T*)", since = "1.0")
-  def forListView[T](converter: jfxu.StringConverter[T], items: T*) =
+  def forListView[T](converter: jfxu.StringConverter[T], items: T*): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] =
     jfxscc.ComboBoxListCell.forListView[T](converter, items: _*)
 
   /**

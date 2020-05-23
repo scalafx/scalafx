@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,31 +34,37 @@ object ContentDisplay extends SFXEnumDelegateCompanion[jfxsc.ContentDisplay, Con
 
   case object Bottom extends ContentDisplay(jfxsc.ContentDisplay.BOTTOM)
   @deprecated("Use Bottom; BOTTOM will be removed in a future release", "2.2.60")
-  val BOTTOM = Bottom
+  val BOTTOM: ContentDisplay = Bottom
 
   case object Center extends ContentDisplay(jfxsc.ContentDisplay.CENTER)
+
   @deprecated("Use Center; CENTER will be removed in a future release", "2.2.60")
-  val CENTER = Center
+  val CENTER: ContentDisplay = Center
 
   case object GraphicOnly extends ContentDisplay(jfxsc.ContentDisplay.GRAPHIC_ONLY)
+
   @deprecated("Use GraphicOnly; GRAPHIC_ONLY will be removed in a future release", "2.2.60")
-  val GRAPHIC_ONLY = GraphicOnly
+  val GRAPHIC_ONLY: ContentDisplay = GraphicOnly
 
   case object Left extends ContentDisplay(jfxsc.ContentDisplay.LEFT)
+
   @deprecated("Use Left; LEFT will be removed in a future release", "2.2.60")
-  val LEFT = Left
+  val LEFT: ContentDisplay = Left
 
   case object Right extends ContentDisplay(jfxsc.ContentDisplay.RIGHT)
+
   @deprecated("Use Right; RIGHT will be removed in a future release", "2.2.60")
-  val RIGHT = Right
+  val RIGHT: ContentDisplay = Right
 
   case object TextOnly extends ContentDisplay(jfxsc.ContentDisplay.TEXT_ONLY)
+
   @deprecated("Use TextOnly; TEXT_ONLY will be removed in a future release", "2.2.60")
-  val TEXT_ONLY = TextOnly
+  val TEXT_ONLY: ContentDisplay = TextOnly
 
   case object Top extends ContentDisplay(jfxsc.ContentDisplay.TOP)
+
   @deprecated("Use Top; TOP will be removed in a future release", "2.2.60")
-  val TOP = Top
+  val TOP: ContentDisplay = Top
 
   protected override def unsortedValues: Array[ContentDisplay] = Array(
     Top, Right, Bottom, Left, Center, GraphicOnly, TextOnly

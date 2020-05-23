@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,7 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, IntegerProperty}
+import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
@@ -79,6 +80,6 @@ class TextArea(override val delegate: jfxsc.TextArea = new jfxsc.TextArea())
     wrapText() = v
   }
 
-  def paragraphs = delegate.getParagraphs
+  def paragraphs: ObservableBuffer[CharSequence] = delegate.getParagraphs
 
 }

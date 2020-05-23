@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,17 +61,17 @@ object TableColumn {
     /**
      * Returns the TableColumn passed in to the constructor.
      */
-    def tableColumn = delegate.getTableColumn
+    def tableColumn: TableColumn[S, T] = delegate.getTableColumn
 
     /**
      * Returns the TableView passed in to the constructor.
      */
-    def tableView = delegate.getTableView
+    def tableView: TableView[S] = delegate.getTableView
 
     /**
      * Returns the value passed in to the constructor.
      */
-    def value = delegate.getValue
+    def value: S = delegate.getValue
 
   }
 
@@ -131,13 +131,15 @@ object TableColumn {
 
     /** Column will be sorted in an ascending order. */
     case object Ascending extends SortType(jfxsc.TableColumn.SortType.ASCENDING)
-    @deprecated ("Use Ascending; ASCENDING will be removed in a future release", "8.0.60-R10")
-    val ASCENDING = Ascending
+
+    @deprecated("Use Ascending; ASCENDING will be removed in a future release", "8.0.60-R10")
+    val ASCENDING: SortType = Ascending
 
     /** Column will be sorted in a descending order. */
     case object Descending extends SortType(jfxsc.TableColumn.SortType.DESCENDING)
-    @deprecated ("Use Descending; DESCENDING will be removed in a future release", "8.0.60-R10")
-    val DESCENDING = Descending
+
+    @deprecated("Use Descending; DESCENDING will be removed in a future release", "8.0.60-R10")
+    val DESCENDING: SortType = Descending
 
     protected override def unsortedValues: Array[SortType] = Array(Ascending, Descending)
 
@@ -152,8 +154,8 @@ object TableColumn {
    */
   val DefaultCellFactory: (TableColumn[_, _] => TableCell[_, _]) = (column: TableColumn[_, _]) =>
     jfxsc.TableColumn.DEFAULT_CELL_FACTORY.call(column)
-  @deprecated ("Use DefaultCellFactory; DEFAULT_CELL_FACTORY will be removed in a future release", "8.0.60-R10")
-  val DEFAULT_CELL_FACTORY = DefaultCellFactory
+  @deprecated("Use DefaultCellFactory; DEFAULT_CELL_FACTORY will be removed in a future release", "8.0.60-R10")
+  val DEFAULT_CELL_FACTORY: TableColumn[_, _] => TableCell[_, _] = DefaultCellFactory
 
 
   /**

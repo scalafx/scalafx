@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,15 @@
 
 package scalafx.scene.control
 
+import java.lang
+
 import javafx.beans.{property => jfxbp, value => jfxbv}
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty}
 import scalafx.beans.value.ObservableValue
+import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
@@ -157,7 +160,7 @@ package object cell {
     /**
      * Returns the items to be displayed in the ChoiceBox when it is showing.
      */
-    def items = delegate.getItems()
+    def items: ObservableBuffer[T] = delegate.getItems()
   }
 
   /**
@@ -168,7 +171,7 @@ package object cell {
    */
   private[cell] implicit def selectedBooleanPropertyToGetSelectedProperty[T](selectedProperty: T => ObservableValue[Boolean, java.lang.Boolean]): jfxu.Callback[T, jfxbv.ObservableValue[java.lang.Boolean]] =
     new jfxu.Callback[T, jfxbv.ObservableValue[java.lang.Boolean]] {
-      def call(x: T) = selectedProperty(x)
+      def call(x: T): jfxbv.ObservableBooleanValue = selectedProperty(x)
     }
 
   /**
@@ -197,7 +200,7 @@ package object cell {
     /**
      * Property representing the Callback that is bound to by the element inside the Cell shown on screen.
      */
-    def selectedStateCallback = delegate.selectedStateCallbackProperty()
+    def selectedStateCallback: ObjectProperty[jfxu.Callback[J, jfxbv.ObservableValue[lang.Boolean]]] = delegate.selectedStateCallbackProperty()
 
     def selectedStateCallback_=(v: J => ObservableValue[Boolean, java.lang.Boolean]): Unit = {
       selectedStateCallback() = v

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,18 +45,20 @@ object ScrollPane {
 
     /** Indicates that a scroll bar should always be shown. */
     case object Always extends ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.ALWAYS)
-    @deprecated ("Use Always; ALWAYS will be removed in a future release", "8.0.60-R10")
-    val ALWAYS = Always
+    @deprecated("Use Always; ALWAYS will be removed in a future release", "8.0.60-R10")
+    val ALWAYS: ScrollBarPolicy = Always
 
     /** Indicates that a scroll bar should be shown when required. */
     case object AsNeeded extends ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.AS_NEEDED)
-    @deprecated ("Use AsNeeded; AS_NEEDED will be removed in a future release", "8.0.60-R10")
-    val AS_NEEDED = AsNeeded
+
+    @deprecated("Use AsNeeded; AS_NEEDED will be removed in a future release", "8.0.60-R10")
+    val AS_NEEDED: ScrollBarPolicy = AsNeeded
 
     /** Indicates that a scroll bar should never be shown */
     case object Never extends ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.NEVER)
-    @deprecated ("Use Never; NEVER will be removed in a future release", "8.0.60-R10")
-    val NEVER = Never
+
+    @deprecated("Use Never; NEVER will be removed in a future release", "8.0.60-R10")
+    val NEVER: ScrollBarPolicy = Never
 
     protected override def unsortedValues: Array[ScrollBarPolicy] = Array(Always, AsNeeded, Never)
 

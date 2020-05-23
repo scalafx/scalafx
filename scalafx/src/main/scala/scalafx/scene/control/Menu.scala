@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,8 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
   /**
    * The items to show within this menu.
    */
-  def items = delegate.getItems
+  def items: ObservableBuffer[jfxsc.MenuItem] = delegate.getItems
+
   /**
    * Sets the menu items, replacing the prior content. If you want append to current content, use `add` or
    * similar.
@@ -89,7 +90,7 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
   /**
    * Gets the value of the property showing.
    */
-  def showing = delegate.isShowing
+  def showing: Boolean = delegate.isShowing
 
   def onHidden = delegate.onHiddenProperty
 

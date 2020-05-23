@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,15 +35,17 @@ object ArcType extends SFXEnumDelegateCompanion[jfxss.ArcType, ArcType] {
 
   case object Open extends ArcType(jfxss.ArcType.OPEN)
   @deprecated("Use Open; OPEN will be removed in a future release", "2.2.60")
-  val OPEN = Open
+  val OPEN: ArcType = Open
 
   case object Chord extends ArcType(jfxss.ArcType.CHORD)
+
   @deprecated("Use Chord; CHORD will be removed in a future release", "2.2.60")
-  val CHORD = Chord
+  val CHORD: ArcType = Chord
 
   case object Round extends ArcType(jfxss.ArcType.ROUND)
+
   @deprecated("Use Round; ROUND will be removed in a future release", "2.2.60")
-  val ROUND = Round
+  val ROUND: ArcType = Round
 
   protected override def unsortedValues: Array[ArcType] = Array(Open, Chord, Round)
 }

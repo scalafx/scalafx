@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ class MenuBar(override val delegate: jfxsc.MenuBar = new jfxsc.MenuBar()) extend
   /**
    * Gets the list of Menus for this instance.
    */
-  def menus = delegate.getMenus
+  def menus: ObservableBuffer[jfxsc.Menu] = delegate.getMenus
 
   /**
    * Sets the list of Menus for this instance.

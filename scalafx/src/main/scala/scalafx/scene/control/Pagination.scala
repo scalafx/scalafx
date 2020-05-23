@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,16 +42,16 @@ object Pagination {
   /**
    * The style class to change the numeric page indicators to bullet indicators.
    */
-  val StyleClassBullet = jfxsc.Pagination.STYLE_CLASS_BULLET
-  @deprecated ("Use StyleClassBullet; STYLE_CLASS_BULLET will be removed in a future release", "8.0.60-R10")
-  val STYLE_CLASS_BULLET = StyleClassBullet
+  val StyleClassBullet: String = jfxsc.Pagination.STYLE_CLASS_BULLET
+  @deprecated("Use StyleClassBullet; STYLE_CLASS_BULLET will be removed in a future release", "8.0.60-R10")
+  val STYLE_CLASS_BULLET: String = StyleClassBullet
 
   /**
    * Value for indicating that the page count is indeterminate.
    */
-  val Indeterminate = jfxsc.Pagination.INDETERMINATE
-  @deprecated ("Use Indeterminate; INDETERMINATE will be removed in a future release", "8.0.60-R10")
-  val INDETERMINATE = Indeterminate
+  val Indeterminate: Int = jfxsc.Pagination.INDETERMINATE
+  @deprecated("Use Indeterminate; INDETERMINATE will be removed in a future release", "8.0.60-R10")
+  val INDETERMINATE: Int = Indeterminate
 
 }
 
@@ -106,7 +106,7 @@ class Pagination(override val delegate: jfxsc.Pagination = new jfxsc.Pagination)
 
   def pageFactory_=(callback: Int => Node): Unit = {
     val jCallback = new jfxu.Callback[java.lang.Integer, jfxs.Node] {
-      def call(pageIndex: java.lang.Integer) = callback(pageIndex).delegate
+      def call(pageIndex: java.lang.Integer): jfxs.Node = callback(pageIndex).delegate
     }
 
     delegate.setPageFactory(jCallback)

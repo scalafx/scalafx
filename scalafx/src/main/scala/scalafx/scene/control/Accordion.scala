@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,8 @@ class Accordion(override val delegate: jfxsc.Accordion = new jfxsc.Accordion)
   /**
    * The list of TitledPane in this Accordion.
    */
-  def panes = delegate.getPanes
+  def panes: ObservableBuffer[jfxsc.TitledPane] = delegate.getPanes
+
   /**
    * Sets the list of TitledPane in this Accordion, replacing the prior content. If you want append to current content,
    * use `add` or similar.
