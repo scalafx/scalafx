@@ -101,7 +101,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * @return An `Option` that contains the `result`.
    * @see $URL0#showAndWait showAndWait $ORIGINALDOC
    */
-  def showAndWait[F](j2s: F = { x: R => x})(implicit convert: DConvert[R, F]): Option[convert.S] = {
+  def showAndWait[F](j2s: F = { (x: R) => x})(implicit convert: DConvert[R, F]): Option[convert.S] = {
     val v = delegate.showAndWait()
     if (v.isPresent) Some(convert(v.get, j2s)) else None
   }

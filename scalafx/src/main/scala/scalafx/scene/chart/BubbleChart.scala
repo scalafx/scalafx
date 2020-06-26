@@ -47,11 +47,11 @@ class BubbleChart[X, Y](override val delegate: jfxsc.BubbleChart[X, Y])
   extends XYChart[X, Y](delegate)
   with SFXDelegate[jfxsc.BubbleChart[X, Y]] {
 
-  def this(xAxis: Axis[X], yAxis: Axis[Y]) {
+  def this(xAxis: Axis[X], yAxis: Axis[Y]) = {
     this(new jfxsc.BubbleChart[X, Y](xAxis, yAxis))
   }
 
-  def this(xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) {
+  def this(xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) = {
     this(new jfxsc.BubbleChart[X, Y](xAxis, yAxis, data))
   }
 }

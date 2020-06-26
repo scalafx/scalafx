@@ -54,15 +54,15 @@ class StackedBarChart[X, Y](override val delegate: jfxsc.StackedBarChart[X, Y])
   extends XYChart[X, Y](delegate)
   with SFXDelegate[jfxsc.StackedBarChart[X, Y]] {
 
-  def this(xAxis: Axis[X], yAxis: Axis[Y]) {
+  def this(xAxis: Axis[X], yAxis: Axis[Y]) = {
     this(new jfxsc.StackedBarChart[X, Y](xAxis, yAxis))
   }
 
-  def this(xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) {
+  def this(xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) = {
     this(new jfxsc.StackedBarChart[X, Y](xAxis, yAxis, data))
   }
 
-  def this(xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]], categoryGap: Double) {
+  def this(xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]], categoryGap: Double) = {
     this(new jfxsc.StackedBarChart[X, Y](xAxis, yAxis, data, categoryGap))
   }
 

@@ -41,7 +41,7 @@ class SplitMenuButton(override val delegate: jfxsc.SplitMenuButton = new jfxsc.S
   with SFXDelegate[jfxsc.SplitMenuButton] {
 
   /** Creates a new split menu button with the given list of menu items. */
-  def this(items: MenuItem*) {
+  def this(items: MenuItem*) = {
     this(new jfxsc.SplitMenuButton(items.map(_.delegate): _*))
   }
 }

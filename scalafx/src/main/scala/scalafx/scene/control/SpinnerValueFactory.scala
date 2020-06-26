@@ -67,7 +67,7 @@ object SpinnerValueFactory {
      *
      * @param items The list of items to step through with the Spinner.
      */
-    def this(items: ObservableBuffer[T]) {
+    def this(items: ObservableBuffer[T]) = {
       this(new jfxsc.SpinnerValueFactory.ListSpinnerValueFactory(items.delegate))
     }
 
@@ -98,7 +98,7 @@ object SpinnerValueFactory {
      * @param min The minimum allowed integer value for the Spinner.
      * @param max The maximum allowed integer value for the Spinner.
      */
-    def this(min: Int, max: Int) {
+    def this(min: Int, max: Int) = {
       this(new jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory(min, max))
     }
 
@@ -112,7 +112,7 @@ object SpinnerValueFactory {
      *                     be within the bounds of the min and max arguments, or
      *                     else the min value will be used.
      */
-    def this(min: Int, max: Int, initialValue: Int) {
+    def this(min: Int, max: Int, initialValue: Int) = {
       this(new jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory(min, max, initialValue))
     }
 
@@ -126,7 +126,7 @@ object SpinnerValueFactory {
      *                     else the min value will be used.
      * @param amountToStepBy The amount to increment or decrement by, per step.
      */
-    def this(min: Int, max: Int, initialValue: Int, amountToStepBy: Int) {
+    def this(min: Int, max: Int, initialValue: Int, amountToStepBy: Int) = {
       this(new jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory(min, max, initialValue, amountToStepBy))
     }
 
@@ -181,7 +181,7 @@ object SpinnerValueFactory {
      * @param min The minimum allowed double value for the Spinner.
      * @param max The maximum allowed double value for the Spinner.
      */
-    def this(min: Double, max: Double) {
+    def this(min: Double, max: Double) = {
       this(new jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory(min, max))
     }
 
@@ -195,7 +195,7 @@ object SpinnerValueFactory {
      *                     be within the bounds of the min and max arguments, or
      *                     else the min value will be used.
      */
-    def this(min: Double, max: Double, initialValue: Double) {
+    def this(min: Double, max: Double, initialValue: Double) = {
       this(new jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory(min, max, initialValue))
     }
 
@@ -209,7 +209,7 @@ object SpinnerValueFactory {
      *                     else the min value will be used.
      * @param amountToStepBy The amount to increment or decrement by, per step.
      */
-    def this(min: Double, max: Double, initialValue: Double, amountToStepBy: Double) {
+    def this(min: Double, max: Double, initialValue: Double, amountToStepBy: Double) = {
       this(new jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory(min, max, initialValue, amountToStepBy))
     }
 

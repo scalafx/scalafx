@@ -51,7 +51,7 @@ object TransformChangedEvent {
 class TransformChangedEvent(override val delegate: jfxst.TransformChangedEvent = new jfxst.TransformChangedEvent())
   extends Event(delegate) with SFXDelegate[jfxst.TransformChangedEvent] {
 
-  def this(source: Any, target: jfxe.EventTarget) {
+  def this(source: Any, target: jfxe.EventTarget) = {
     this(new jfxst.TransformChangedEvent(source, target))
   }
 }

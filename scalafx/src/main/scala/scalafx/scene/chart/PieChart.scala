@@ -70,7 +70,7 @@ class PieChart(override val delegate: jfxsc.PieChart = new jfxsc.PieChart())
   extends Chart(delegate)
   with SFXDelegate[jfxsc.PieChart] {
 
-  def this(data: ObservableBuffer[jfxsc.PieChart.Data]) {
+  def this(data: ObservableBuffer[jfxsc.PieChart.Data]) = {
     this(new jfxsc.PieChart(data))
   }
 

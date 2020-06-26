@@ -87,7 +87,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
     *                     be within the bounds of the min and max arguments, or
     *                     else the min value will be used.
     */
-  def this(min: Int, max: Int, initialValue: Int) {
+  def this(min: Int, max: Int, initialValue: Int) = {
     this(new jfxsc.Spinner[T](min, max, initialValue))
   }
 
@@ -104,7 +104,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
     *                       else the min value will be used.
     * @param amountToStepBy The amount to increment or decrement by, per step.
     */
-  def this(min: Int, max: Int, initialValue: Int, amountToStepBy: Int) {
+  def this(min: Int, max: Int, initialValue: Int, amountToStepBy: Int) = {
     this(new jfxsc.Spinner[T](min, max, initialValue, amountToStepBy))
   }
 
@@ -120,7 +120,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
     *                     be within the bounds of the min and max arguments, or
     *                     else the min value will be used.
     */
-  def this(min: Double, max: Double, initialValue: Double) {
+  def this(min: Double, max: Double, initialValue: Double) = {
     this(new jfxsc.Spinner[T](min, max, initialValue))
   }
 
@@ -137,7 +137,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
     *                       else the min value will be used.
     * @param amountToStepBy The amount to increment or decrement by, per step.
     */
-  def this(min: Double, max: Double, initialValue: Double, amountToStepBy: Double) {
+  def this(min: Double, max: Double, initialValue: Double, amountToStepBy: Double) = {
     this(new jfxsc.Spinner[T](min, max, initialValue, amountToStepBy))
   }
 
@@ -149,7 +149,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
     *
     * @param items A list of items that will be stepped through in the Spinner.
     */
-  def this(items: ObservableBuffer[T]) {
+  def this(items: ObservableBuffer[T]) = {
     this(new jfxsc.Spinner[T](items))
   }
 
@@ -158,7 +158,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
     *
     * @param valueFactory The value factory to use.
     */
-  def this(valueFactory: SpinnerValueFactory[T]) {
+  def this(valueFactory: SpinnerValueFactory[T]) = {
     this(new jfxsc.Spinner[T](valueFactory.delegate))
   }
 
