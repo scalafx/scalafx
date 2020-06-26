@@ -43,35 +43,35 @@ object Interpolator {
    * Built-in $INT that provides discrete time interpolation.
    */
   def Discrete = jfxa.Interpolator.DISCRETE
-	@deprecated ("Use Discrete; DISCRETE will be removed in a future release", "8.0.60-R10")
+  @deprecated ("Use Discrete; DISCRETE will be removed in a future release", "8.0.60-R10")
   def DISCRETE = Discrete
 
   /**
    * Built-in $INT instance that provides ease in/out behavior.
    */
   def EaseBoth = jfxa.Interpolator.EASE_BOTH
-	@deprecated ("Use EaseBoth; EASE_BOTH will be removed in a future release", "8.0.60-R10")
+  @deprecated ("Use EaseBoth; EASE_BOTH will be removed in a future release", "8.0.60-R10")
   def EASE_BOTH = EaseBoth
 
   /**
    * Built-in $INT instance that provides ease in behavior.
    */
   def EaseIn = jfxa.Interpolator.EASE_IN
-	@deprecated ("Use EaseIn; EASE_IN will be removed in a future release", "8.0.60-R10")
+  @deprecated ("Use EaseIn; EASE_IN will be removed in a future release", "8.0.60-R10")
   def EASE_IN = EaseIn
 
   /**
    * Built-in $INT instance that provides ease out behavior.
    */
   def EaseOut = jfxa.Interpolator.EASE_OUT
-	@deprecated ("Use EaseOut; EASE_OUT will be removed in a future release", "8.0.60-R10")
+  @deprecated ("Use EaseOut; EASE_OUT will be removed in a future release", "8.0.60-R10")
   def EASE_OUT = EaseOut
 
   /**
    * Built-in $INT that provides linear time interpolation.
    */
   def Linear = jfxa.Interpolator.LINEAR
-	@deprecated ("Use Linear; LINEAR will be removed in a future release", "8.0.60-R10")
+  @deprecated ("Use Linear; LINEAR will be removed in a future release", "8.0.60-R10")
   def LINEAR = Linear
 
   /**
@@ -84,7 +84,7 @@ object Interpolator {
    * @return A spline interpolator
    */
   def Spline(x1: Double, y1: Double, x2: Double, y2: Double) = jfxa.Interpolator.SPLINE(x1, y1, x2, y2)
-	@deprecated ("Use Spline; SPLINE will be removed in a future release", "8.0.60-R10")
+  @deprecated ("Use Spline; SPLINE will be removed in a future release", "8.0.60-R10")
   def SPLINE(x1: Double, y1: Double, x2: Double, y2: Double) = Spline(x1, y1, x2, y2)
 
   /**
@@ -95,7 +95,7 @@ object Interpolator {
    * @return the new Tangent interpolator
    */
   def Tangent(t: Duration, v: Double) = jfxa.Interpolator.TANGENT(t, v)
-	@deprecated ("Use Tangent; TANGENT will be removed in a future release", "8.0.60-R10")
+  @deprecated ("Use Tangent; TANGENT will be removed in a future release", "8.0.60-R10")
   def TANGENT(t: Duration, v: Double) = Tangent(t, v)
 
   /**
@@ -108,7 +108,7 @@ object Interpolator {
    * @return the new tangent interpolator
    */
   def Tangent(t1: Duration, v1: Double, t2: Duration, v2: Double) = jfxa.Interpolator.TANGENT(t1, v1, t2, v2)
-	@deprecated ("Use Tangent; TANGENT will be removed in a future release", "8.0.60-R10")
+  @deprecated ("Use Tangent; TANGENT will be removed in a future release", "8.0.60-R10")
   def TANGENT(t1: Duration, v1: Double, t2: Duration, v2: Double) = Tangent(t1, v1, t2, v2)
 
 }

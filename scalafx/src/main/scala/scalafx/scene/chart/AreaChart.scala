@@ -48,11 +48,11 @@ class AreaChart[X, Y](override val delegate: jfxsc.AreaChart[X, Y])
   extends XYChart[X, Y](delegate)
   with SFXDelegate[jfxsc.AreaChart[X, Y]] {
 
-  def this(xAxis: Axis[X], yAxis: Axis[Y]) {
+  def this(xAxis: Axis[X], yAxis: Axis[Y]) = {
     this(new jfxsc.AreaChart[X, Y](xAxis, yAxis))
   }
 
-  def this(xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) {
+  def this(xAxis: Axis[X], yAxis: Axis[Y], data: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]) = {
     this(new jfxsc.AreaChart[X, Y](xAxis, yAxis, data))
   }
 

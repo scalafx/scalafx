@@ -91,7 +91,7 @@ class MouseEvent(override val delegate: jfxsi.MouseEvent) extends InputEvent(del
            button: MouseButton, clickCount: Int, shiftDown: Boolean, controlDown: Boolean, altDown: Boolean,
            metaDown: Boolean, primaryButtonDown: Boolean, middleButtonDown: Boolean,
            secondaryButtonDown: Boolean, synthesized: Boolean, popupTrigger: Boolean,
-           stillSincePress: Boolean, pickResult: PickResult) {
+           stillSincePress: Boolean, pickResult: PickResult) = {
     this(new jfxsi.MouseEvent(eventType.delegate, x, y, screenX, screenY, button.delegate, clickCount,
       shiftDown, controlDown, altDown, metaDown, primaryButtonDown, middleButtonDown, secondaryButtonDown,
       synthesized, popupTrigger, stillSincePress, pickResult.delegate))
@@ -128,7 +128,7 @@ class MouseEvent(override val delegate: jfxsi.MouseEvent) extends InputEvent(del
            x: Double, y: Double, screenX: Double, screenY: Double, button: MouseButton, clickCount: Int,
            shiftDown: Boolean, controlDown: Boolean, altDown: Boolean, metaDown: Boolean,
            primaryButtonDown: Boolean, middleButtonDown: Boolean, secondaryButtonDown: Boolean,
-           synthesized: Boolean, popupTrigger: Boolean, stillSincePress: Boolean, pickResult: PickResult) {
+           synthesized: Boolean, popupTrigger: Boolean, stillSincePress: Boolean, pickResult: PickResult) = {
     this(new jfxsi.MouseEvent(source, target.delegate, eventType.delegate, x, y, screenX, screenY, button.delegate, clickCount,
       shiftDown, controlDown, altDown, metaDown, primaryButtonDown, middleButtonDown, secondaryButtonDown,
       synthesized, popupTrigger, stillSincePress, pickResult.delegate))
