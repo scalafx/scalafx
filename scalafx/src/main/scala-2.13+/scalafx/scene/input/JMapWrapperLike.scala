@@ -36,14 +36,14 @@ private[input] trait JMapWrapperLike[A, B]
 
   def underlying: ju.Map[A, B]
 
-  override def size = underlying.size
+  override def size: Int = underlying.size
 
-  def get(k: A) = {
+  def get(k: A): Option[B] = {
     val v = underlying get k
     if (v != null)
-      Some(v)
+      Option(v)
     else if (underlying containsKey k)
-      Some(null.asInstanceOf[B])
+      Option(null.asInstanceOf[B])
     else
       None
   }
@@ -72,10 +72,14 @@ private[input] trait JMapWrapperLike[A, B]
 
   //  def iterator: Iterator[(A, B)] = new AbstractIterator[(A, B)] {
   def iterator: Iterator[(A, B)] = new Iterator[(A, B)] {
-    val ui = underlying.entrySet.iterator
-    def hasNext = ui.hasNext
-    def next() = { val e = ui.next(); (e.getKey, e.getValue) }
+    val ui: ju.Iterator[ju.Map.Entry[A, B]] = underlying.entrySet.iterator
+
+    def hasNext: Boolean = ui.hasNext
+
+    def next(): (A, B) = {
+      val e = ui.next(); (e.getKey, e.getValue)
+    }
   }
 
-  override def clear() = underlying.clear()
+  override def clear(): Unit = underlying.clear()
 }
