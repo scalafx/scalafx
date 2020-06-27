@@ -54,7 +54,7 @@ class ObservableBufferSpec[T]
    * @param shouldBeTheSame If both maps should be same instance.
    */
   private def compareInstances(generatedBuffer: mutable.Buffer[_],
-                               originalBuffer: ObservableBuffer[_], shouldBeTheSame: Boolean) {
+                               originalBuffer: ObservableBuffer[_], shouldBeTheSame: Boolean): Unit = {
     if (shouldBeTheSame) {
       generatedBuffer should be theSameInstanceAs originalBuffer
     } else {
@@ -64,7 +64,7 @@ class ObservableBufferSpec[T]
   }
 
   private def compareAfterRemoving[T1](generatedBuffer: mutable.Buffer[T1],
-                                       originalBuffer: ObservableBuffer[T1], expectedResult: T1*) {
+                                       originalBuffer: ObservableBuffer[T1], expectedResult: T1*): Unit = {
     generatedBuffer.toList should equal(expectedResult.toList)
     generatedBuffer should not be theSameInstanceAs(originalBuffer)
     generatedBuffer.getClass should be(classOf[ObservableBuffer[T1]])
