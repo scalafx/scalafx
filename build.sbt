@@ -56,18 +56,27 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
 
 
 // Dependencies
-val osName = System.getProperty("os.name") match {
+lazy val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Linux") => "linux"
   case n if n.startsWith("Mac") => "mac"
   case n if n.startsWith("Windows") => "win"
   case _ => throw new Exception("Unknown platform!")
 }
-val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-lazy val scalatest = "org.scalatest" %% "scalatest" % "3.1.1"
+lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
+lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.0"
+def scalaReflectLib(scalaVersion: String): ModuleID = "org.scala-lang" % "scala-reflect" % scalaVersion
 
 // Add snapshots to root project to enable compilation with Scala SNAPSHOT compiler,
 // e.g., 2.11.0-SNAPSHOT
 resolvers += Resolver.sonatypeRepo("snapshots")
+
+// Add src/main/scala-2.13+ for Scala 2.13 and newer
+//   and src/main/scala-2.12- for Scala versions older than 2.13
+def versionSubDir(scalaVersion: String): String =
+  CrossVersion.partialVersion(scalaVersion) match {
+    case Some((2, n)) if n < 13 => "scala-2.12-"
+    case _ => "scala-2.13+"
+  }
 
 // Common settings
 lazy val scalafxSettings = Seq(
@@ -75,22 +84,8 @@ lazy val scalafxSettings = Seq(
   version := scalafxVersion,
   crossScalaVersions := Seq("2.13.1", "2.12.11", "2.11.12"),
   scalaVersion := crossScalaVersions.value.head,
-  // Add src/main/scala-2.13+ for Scala 2.13 and newer
-  //   and src/main/scala-2.12- for Scala versions older than 2.13
-  unmanagedSourceDirectories in Compile += {
-    val sourceDir = (sourceDirectory in Compile).value
-    CrossVersion.partialVersion(scalaVersion.value) match {
-      case Some((2, n)) if n >= 13 => sourceDir / "scala-2.13+"
-      case _ => sourceDir / "scala-2.12-"
-    }
-  },
-  unmanagedSourceDirectories in Test += {
-    val sourceDir = (sourceDirectory in Test).value
-    CrossVersion.partialVersion(scalaVersion.value) match {
-      case Some((2, n)) if n >= 13 => sourceDir / "scala-2.13+"
-      case _ => sourceDir / "scala-2.12-"
-    }
-  },
+  unmanagedSourceDirectories in Compile += (sourceDirectory in Compile).value / versionSubDir(scalaVersion.value),
+  unmanagedSourceDirectories in Test += (sourceDirectory in Test).value / versionSubDir(scalaVersion.value),
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
@@ -102,8 +97,8 @@ lazy val scalafxSettings = Seq(
     "-Xlint:deprecation"),
   // Add other dependencies
   libraryDependencies ++= Seq(
-    "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-    scalatest % "test"),
+    scalaReflectLib(scalaVersion.value),
+    scalaTestLib % "test"),
   // Use `pomPostProcess` to remove dependencies marked as "provided" from publishing in POM
   // This is to avoid dependency on wrong OS version JavaFX libraries [Issue #289]
   // See also [https://stackoverflow.com/questions/27835740/sbt-exclude-certain-dependency-only-during-publish]
