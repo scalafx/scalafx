@@ -1041,7 +1041,7 @@ trait ControlIncludes
    * @return $SFX $TTVW
    * @since 8.0
    */
-  implicit def jfxTreeTableViewEditEvent2sfx[T](t: jfxsc.TreeTableView.EditEvent[T]) =
+  implicit def jfxTreeTableViewEditEvent2sfx[T](t: jfxsc.TreeTableView.EditEvent[T]): TreeTableView.EditEvent[T] =
     if (t != null) new TreeTableView.EditEvent[T](t) else null
 
   /**
@@ -1051,7 +1051,7 @@ trait ControlIncludes
    * @param rf $JFX $TTVE
    * @return $SFX $TVVE
    */
-  implicit def jfxTreeTableViewResizeFeatures2sfx[S](rf: jfxsc.TreeTableView.ResizeFeatures[S]) =
+  implicit def jfxTreeTableViewResizeFeatures2sfx[S](rf: jfxsc.TreeTableView.ResizeFeatures[S]): TreeTableView.ResizeFeatures[S] =
     if (rf != null) new TreeTableView.ResizeFeatures[S](rf) else null
 
   /**
