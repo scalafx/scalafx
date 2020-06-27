@@ -83,11 +83,11 @@ object ScalaFX_Collections_01 {
     println("observable string buffer after  changes05 " + observableStringBuffer)
   }
 
-  private def changes06(observableStringBuffer: ObservableBuffer[String]): Unit = {
-    println("observable string buffer before changes06 " + observableStringBuffer)
-    observableStringBuffer.sort()
-    println("observable string buffer after  changes06 " + observableStringBuffer)
-  }
+//  private def changes06(observableStringBuffer: ObservableBuffer[String]): Unit = {
+//    println("observable string buffer before changes06 " + observableStringBuffer)
+//    observableStringBuffer.sort()
+//    println("observable string buffer after  changes06 " + observableStringBuffer)
+//  }
 
   def main(args: Array[String]): Unit = {
     val observableStringBuffer = ObservableBuffer[String]()
@@ -117,8 +117,8 @@ object ScalaFX_Collections_01 {
     changes04(observableStringBuffer)
     println("======================================================================")
     changes05(observableStringBuffer)
-    println("======================================================================")
-    changes06(observableStringBuffer)
+//    println("======================================================================")
+//    changes06(observableStringBuffer)
     println("======================================================================")
   }
 }

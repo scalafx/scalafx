@@ -63,8 +63,16 @@ lazy val osName = System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 }
 lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.0"
-def scalaReflectLib(scalaVersion: String): ModuleID = "org.scala-lang" % "scala-reflect" % scalaVersion
+def scalaTestLib(scalaVersion: String): ModuleID  =
+  CrossVersion.partialVersion(scalaVersion) match {
+    case Some((0, _)) => "org.scalatest" % "scalatest_2.13" % "3.2.0"
+    case _ => "org.scalatest" %% "scalatest" % "3.2.0"
+  }
+def scalaReflectLib(scalaVersion: String): ModuleID =
+  CrossVersion.partialVersion(scalaVersion) match {
+    case Some((0, _)) => "org.scala-lang" % "scala-reflect" % "2.13.1"
+    case _ => "org.scala-lang" % "scala-reflect" % scalaVersion
+  }
 
 // Add snapshots to root project to enable compilation with Scala SNAPSHOT compiler,
 // e.g., 2.11.0-SNAPSHOT
@@ -75,14 +83,14 @@ resolvers += Resolver.sonatypeRepo("snapshots")
 def versionSubDir(scalaVersion: String): String =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((2, n)) if n < 13 => "scala-2.12-"
-    case _ => "scala-2.13+"
+    case Some((_, _)) => "scala-2.13+"
   }
 
 // Common settings
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.13.1", "2.12.11", "2.11.12"),
+  crossScalaVersions := Seq("2.13.1", "2.12.11", "2.11.12", "0.24.0-RC1"),
   scalaVersion := crossScalaVersions.value.head,
   unmanagedSourceDirectories in Compile += (sourceDirectory in Compile).value / versionSubDir(scalaVersion.value),
   unmanagedSourceDirectories in Test += (sourceDirectory in Test).value / versionSubDir(scalaVersion.value),
@@ -98,7 +106,7 @@ lazy val scalafxSettings = Seq(
   // Add other dependencies
   libraryDependencies ++= Seq(
     scalaReflectLib(scalaVersion.value),
-    scalaTestLib % "test"),
+    scalaTestLib(scalaVersion.value) % "test"),
   // Use `pomPostProcess` to remove dependencies marked as "provided" from publishing in POM
   // This is to avoid dependency on wrong OS version JavaFX libraries [Issue #289]
   // See also [https://stackoverflow.com/questions/27835740/sbt-exclude-certain-dependency-only-during-publish]
