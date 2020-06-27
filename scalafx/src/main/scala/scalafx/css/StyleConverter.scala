@@ -63,7 +63,7 @@ object StyleConverter {
   def effectConverter: StyleConverter[Array[jfxcss.ParsedValue[_, _]], javafx.scene.effect.Effect] =
     new StyleConverter(jfxcss.StyleConverter.getEffectConverter)
 
-  def enumConverter[E <: Enum[E]](enumClass: Class[E]): StyleConverter[String, _ <: Enum[_]] =
+  def enumConverter[E <: java.lang.Enum[E]](enumClass: Class[E]): StyleConverter[String, _ <: java.lang.Enum[_]] =
     new StyleConverter(jfxcss.StyleConverter.getEnumConverter(enumClass))
 
   def fontConverter: StyleConverter[Array[jfxcss.ParsedValue[_, _]], javafx.scene.text.Font] =
