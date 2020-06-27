@@ -56,14 +56,15 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
 
 
 // Dependencies
-val osName = System.getProperty("os.name") match {
+lazy val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Linux") => "linux"
   case n if n.startsWith("Mac") => "mac"
   case n if n.startsWith("Windows") => "win"
   case _ => throw new Exception("Unknown platform!")
 }
-val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-lazy val scalatest = "org.scalatest" %% "scalatest" % "3.1.1"
+lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
+lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.0"
+def scalaReflectLib(scalaVersion: String): ModuleID = "org.scala-lang" % "scala-reflect" % scalaVersion
 
 // Add snapshots to root project to enable compilation with Scala SNAPSHOT compiler,
 // e.g., 2.11.0-SNAPSHOT
@@ -96,8 +97,8 @@ lazy val scalafxSettings = Seq(
     "-Xlint:deprecation"),
   // Add other dependencies
   libraryDependencies ++= Seq(
-    "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-    scalatest % "test"),
+    scalaReflectLib(scalaVersion.value),
+    scalaTestLib % "test"),
   // Use `pomPostProcess` to remove dependencies marked as "provided" from publishing in POM
   // This is to avoid dependency on wrong OS version JavaFX libraries [Issue #289]
   // See also [https://stackoverflow.com/questions/27835740/sbt-exclude-certain-dependency-only-during-publish]
