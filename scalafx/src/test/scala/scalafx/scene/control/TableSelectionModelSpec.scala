@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,19 +27,18 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * TableSelectionModel tests.
  */
-class TableViewTableSelectionModelSpec[T]
+class TableSelectionModelSpec[T]
   extends SimpleSFXDelegateSpec[jfxsc.TableSelectionModel[T], TableSelectionModel[T]](classOf[jfxsc.TableSelectionModel[T]], classOf[TableSelectionModel[T]]) {
 
-  override def getScalaClassInstance = new TableSelectionModel[T](this.getJavaClassInstance) {}
+  override def getScalaClassInstance: TableSelectionModel[T] = new TableSelectionModel[T](this.getJavaClassInstance) {}
 
-  override def getJavaClassInstance = {
+  override def getJavaClassInstance: jfxsc.TableView.TableViewSelectionModel[T] = {
     val jtv = new jfxsc.TableView[T]
     jtv.getSelectionModel
   }

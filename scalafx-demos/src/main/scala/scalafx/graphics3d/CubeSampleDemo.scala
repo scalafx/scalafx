@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,10 +30,10 @@ import scalafx.Includes._
 import scalafx.animation._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
+import scalafx.scene._
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.transform.{Rotate, Translate}
-import scalafx.scene._
 
 import scala.language.postfixOps
 
@@ -127,7 +127,7 @@ class Cube(size: Double, color: Color, shade: Double) extends Group {
     },
     new Rectangle {
       // bottom face
-      width = size;
+      width = size
       height = size
       fill = color.deriveColor(0.0, 1.0, (1 - 0.4 * shade), 1.0)
       translateX = -0.5 * size
@@ -137,7 +137,7 @@ class Cube(size: Double, color: Color, shade: Double) extends Group {
     },
     new Rectangle {
       // right face
-      width = size;
+      width = size
       height = size
       fill = color.deriveColor(0.0, 1.0, (1 - 0.3 * shade), 1.0)
       translateX = -1 * size
@@ -147,7 +147,7 @@ class Cube(size: Double, color: Color, shade: Double) extends Group {
     },
     new Rectangle {
       // left face
-      width = size;
+      width = size
       height = size
       fill = color.deriveColor(0.0, 1.0, (1 - 0.2 * shade), 1.0)
       translateX = 0
@@ -157,7 +157,7 @@ class Cube(size: Double, color: Color, shade: Double) extends Group {
     },
     new Rectangle {
       // top face
-      width = size;
+      width = size
       height = size
       fill = color.deriveColor(0.0, 1.0, (1 - 0.1 * shade), 1.0)
       translateX = -0.5 * size
@@ -167,7 +167,7 @@ class Cube(size: Double, color: Color, shade: Double) extends Group {
     },
     new Rectangle {
       // top face
-      width = size;
+      width = size
       height = size
       fill = color
       translateX = -0.5 * size

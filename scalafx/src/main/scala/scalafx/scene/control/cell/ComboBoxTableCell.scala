@@ -62,7 +62,7 @@ object ComboBoxTableCell {
   /**
    * $FTCINIT
    *
-   * @tparam $TTYPE
+   * @tparam T $TTYPE
    * @param items $ITEMSPARAM
    * @return $RET
    */
@@ -78,9 +78,9 @@ object ComboBoxTableCell {
   /**
    * $FTCINIT
    *
-   * @tparam $TTYPE
+   * @tparam T $TTYPE
    * @param converter $CONVPARAM
-   * @param items $ITEMSPARAM
+   * @param items     $ITEMSPARAM
    * @return $RET
    */
   def forTableColumn[S, T](converter: StringConverter[T], items: ObservableBuffer[T]): (TableColumn[S, T] => TableCell[S, T]) =
@@ -96,9 +96,9 @@ object ComboBoxTableCell {
   /**
    * $FTCINIT
    *
-   * @tparam $TTYPE
+   * @tparam T $TTYPE
    * @param converter $CONVPARAM
-   * @param items $ITEMSPARAM
+   * @param items     $ITEMSPARAM
    * @return $RET
    */
   def forTableColumn[S, T](converter: StringConverter[T], items: T*): (TableColumn[S, T] => TableCell[S, T]) =
@@ -113,7 +113,7 @@ object ComboBoxTableCell {
   /**
    * $FTCINIT
    *
-   * @tparam $TTYPE
+   * @tparam T $TTYPE
    * @param items $ITEMSPARAM
    * @return $RET
    */

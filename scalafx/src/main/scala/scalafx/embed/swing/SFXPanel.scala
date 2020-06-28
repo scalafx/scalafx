@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,8 +56,7 @@ object SFXPanel {
  * JFXPanel]]. To use methods and properties from JComponent, use its delegate. 
  *
  * @constructor Creates a new SFXPanel from its JavaFX counterpart.
- * @param delegate JavaFX JFXPanel. Its defaul value is a new JFXPanel
- *
+ * @param delegate JavaFX JFXPanel. Its default value is a new JFXPanel
  * @since 8.0
  */
 class SFXPanel(override val delegate: jfxes.JFXPanel = new jfxes.JFXPanel)
@@ -100,11 +99,11 @@ class SFXPanel(override val delegate: jfxes.JFXPanel = new jfxes.JFXPanel)
   /**
    * Notifies this component that it now has a parent component.
    */
-  def addNotify: Unit = delegate.addNotify
+  def addNotify(): Unit = delegate.addNotify()
 
   /**
    * Notifies this component that it no longer has a parent component.
    */
-  def removeNotify: Unit = delegate.removeNotify
+  def removeNotify(): Unit = delegate.removeNotify()
 
 }
