@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,6 @@ import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.beans.value.ObservableValue
 import scalafx.collections.ObservableBuffer
-import scalafx.css.Styleable
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.event.Event
 
@@ -396,21 +395,6 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
     * @return An ObservableValue<T> for this specific table column.
     */
   def cellObservableValue(item: TreeItem[S]): ObservableValue[T, T] = delegate.getCellObservableValue(item)
-
-  /**
-    * The type of this Styleable that is to be used in selector matching. This is analogous to an "element" in HTML.
-    * (CSS Type Selector).
-    *
-    * @return "TreeTableColumn"
-    */
-  override def typeSelector: String = delegate.getTypeSelector
-
-  /**
-    * Return the parent of this Styleable, or null if there is no parent.
-    *
-    * @return getTreeTableView()
-    */
-  override def styleableParent: Styleable = delegate.getStyleableParent
 
   /**
     * The CssMetaData of this Styleable. This may be returned as an unmodifiable list.
