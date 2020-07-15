@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -76,8 +76,8 @@ object ScheduledService {
    * @param op [[scala.Function]] that returns a [[scalafx.concurrent.Task]] to be invoked after this was started on
    *           the JavaFX Application Thread.
    */
-  def apply[T](op: => jfxc.Task[T]) = new ScheduledService[T](new jfxc.ScheduledService[T] {
-    protected def createTask = op
+  def apply[T](op: => Task[T]): ScheduledService[T] = new ScheduledService[T](new jfxc.ScheduledService[T] {
+    protected def createTask: jfxc.Task[T] = op
   }) {}
 }
 

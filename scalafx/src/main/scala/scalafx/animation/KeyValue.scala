@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,10 +28,10 @@ package scalafx.animation
 
 import javafx.beans.{value => jfxbv}
 import javafx.{animation => jfxa}
-
-import scala.language.implicitConversions
 import scalafx.beans.property.Property
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.animation.KeyValue]].
@@ -149,10 +149,10 @@ class Tweenable[T <: Any, J <: Any](target: jfxbv.WritableValue[J], endValue: J)
    *
    * @param interpolator Interpolator to be used in KeyFrame.
    */
-  def tween(interpolator: jfxa.Interpolator) = KeyValue[J](target, endValue, interpolator)
+  def tween(interpolator: jfxa.Interpolator): KeyValue[J, J] = KeyValue[J](target, endValue, interpolator)
 
   /**
-   * Returns a new [[scalafx.animation.KeyValue]] with [[scalafx.animation.Interpolator.LINEAR]] Interpolator.
+   * Returns a new [[scalafx.animation.KeyValue]] with [[scalafx.animation.Interpolator.Linear]] Interpolator.
    */
   def linear: KeyValue[J, J] = KeyValue[J](target, endValue)
 }
