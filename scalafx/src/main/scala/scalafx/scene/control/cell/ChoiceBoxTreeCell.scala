@@ -90,7 +90,7 @@ object ChoiceBoxTreeCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTreeView[T](StringConverter[T], ObservableBuffer[T])", since = "1.0")
-  def forTreeView[T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]) =
+  def forTreeView[T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] =
     jfxscc.ChoiceBoxTreeCell.forTreeView[T](converter, items)
 
   /**

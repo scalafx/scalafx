@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 package scalafx.css
 
 import javafx.{css => jfxcss}
-
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
@@ -56,7 +55,7 @@ object StyleOrigin
    */
   val UserAgent: StyleOrigin = new StyleOrigin(jfxcss.StyleOrigin.USER_AGENT)
 
-  override val unsortedValues = Array(Author, Inline, User, UserAgent)
+  override val unsortedValues: Array[StyleOrigin] = Array(Author, Inline, User, UserAgent)
 
 }
 

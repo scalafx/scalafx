@@ -42,17 +42,17 @@ object ObservableIntegerArray extends ObservableArrayCompanionBase[Int, Observab
   /**
     * Returns an array containing equally spaced values in some integer interval.
     *
-    * @param start Start value of the array.
-    * @param end End value of the array, exclusive (that is, first value '''not''' included in array).  If `start`
-    * exceeds `end` (>= `end` if `step` is positive or <= `end` if `step` is negative), then an empty array will
-    * result.
-    * @param step Increment value of the array.  This value can be negative, but not zero.  If omitted, this value
-    * defaults to 1.
-    * @return Observable array with values: `start, start + step, start + 2 * step, ...`, up to, but not including,
-    * `end`.
-    * @throws IllegalArgumentException if `step` is 0.
-    */
-  def range(start: Int, end: Int, step: Int = 1) = apply(Array.range(start, end, step))
+   * @param start Start value of the array.
+   * @param end   End value of the array, exclusive (that is, first value '''not''' included in array).  If `start`
+   *              exceeds `end` (>= `end` if `step` is positive or <= `end` if `step` is negative), then an empty array will
+   *              result.
+   * @param step  Increment value of the array.  This value can be negative, but not zero.  If omitted, this value
+   *              defaults to 1.
+   * @return Observable array with values: `start, start + step, start + 2 * step, ...`, up to, but not including,
+   *         `end`.
+   * @throws IllegalArgumentException if `step` is 0.
+   */
+  def range(start: Int, end: Int, step: Int = 1): ObservableIntegerArray = apply(Array.range(start, end, step))
 }
 
 // TODO: Enter link when JavaFX 8 API Docs are available on-line.
@@ -97,13 +97,13 @@ class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXColl
   /**
    * @inheritdoc
    */
-  override def get(idx: Int) = delegate.get(idx)
+  override def get(idx: Int): Int = delegate.get(idx)
 
   /**
    * @inheritdoc.
    */
-  override def addAll(elems: Int*) = {
-    delegate.addAll(elems:_*)
+  override def addAll(elems: Int*): Unit = {
+    delegate.addAll(elems: _*)
   }
 
   /**
@@ -179,12 +179,12 @@ class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXColl
   /**
    * @inheritdoc
    */
-  override def toArray(dest: Array[Int]) = delegate.toArray(dest)
+  override def toArray(dest: Array[Int]): Array[Int] = delegate.toArray(dest)
 
   /**
    * @inheritdoc
    */
-  override def toArray(srcIdx: Int, dest: Array[Int], length: Int) =
+  override def toArray(srcIdx: Int, dest: Array[Int], length: Int): Array[Int] =
     delegate.toArray(srcIdx, dest, length)
 
   // ArrayLike[V, T] abstract member function implementations.
@@ -193,5 +193,5 @@ class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXColl
    *
    * @return New empty $OIA.
    */
-  protected[this] override def newBuilder = ObservableIntegerArray.empty()
+  protected[this] override def newBuilder: ObservableIntegerArray = ObservableIntegerArray.empty()
 }

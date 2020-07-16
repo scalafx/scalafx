@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,7 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty}
+import scalafx.collections.ObservableMap
 import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
@@ -69,6 +70,6 @@ trait Toggle extends SFXDelegate[jfxsc.Toggle] {
    * Returns an observable map of properties on this toggle for use primarily by application
    * developers.
    */
-  def properties = delegate.getProperties
+  def properties: ObservableMap[AnyRef, AnyRef] = delegate.getProperties
 
 }

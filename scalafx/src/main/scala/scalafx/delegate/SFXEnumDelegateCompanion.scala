@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,13 +64,13 @@ trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] 
   lazy val values: List[S] = unsortedValues.sortWith(_.delegate.ordinal < _.delegate.ordinal).toList
 
   /**
-    * Returns the `enum` constant of this type with the specified name.
-    *
-    * @param name the name of the constant to return
-    * @throws IllegalArgumentException If the specified `enum` type has no constant with the specified name,
-    *                                  or the specified class object does not represent an `enum` type.
-    */
-  def apply(name: String) = values.find(_.name == name) match {
+   * Returns the `enum` constant of this type with the specified name.
+   *
+   * @param name the name of the constant to return
+   * @throws IllegalArgumentException If the specified `enum` type has no constant with the specified name,
+   *                                  or the specified class object does not represent an `enum` type.
+   */
+  def apply(name: String): S = values.find(_.name == name) match {
     case Some(e) => e
     case None => throw new IllegalArgumentException("No enum constant %s.%s".format(values.head.getClass.getName, name))
   }

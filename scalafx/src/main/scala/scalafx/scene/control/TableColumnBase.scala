@@ -225,5 +225,5 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    */
   def hasProperties: Boolean = delegate.hasProperties
 
-  override protected def eventHandlerDelegate = delegate.asInstanceOf[EventHandled]
+  override protected def eventHandlerDelegate: EventHandled = delegate.asInstanceOf[EventHandled]
 }

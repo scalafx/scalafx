@@ -82,7 +82,7 @@ class ObservableFloatArray(delegate: jfxc.ObservableFloatArray = jfxc.FXCollecti
   /**
    * @inheritdoc
    */
-  override def get(idx: Int) = delegate.get(idx)
+  override def get(idx: Int): Float = delegate.get(idx)
 
   /**
    * @inheritdoc.
@@ -164,12 +164,12 @@ class ObservableFloatArray(delegate: jfxc.ObservableFloatArray = jfxc.FXCollecti
   /**
    * @inheritdoc
    */
-  override def toArray(dest: Array[Float]) = delegate.toArray(dest)
+  override def toArray(dest: Array[Float]): Array[Float] = delegate.toArray(dest)
 
   /**
    * @inheritdoc
    */
-  override def toArray(srcIdx: Int, dest: Array[Float], length: Int) = delegate.toArray(srcIdx, dest, length)
+  override def toArray(srcIdx: Int, dest: Array[Float], length: Int): Array[Float] = delegate.toArray(srcIdx, dest, length)
 
   // ArrayLike[V, T] abstract member function implementations.
   /**
@@ -177,5 +177,5 @@ class ObservableFloatArray(delegate: jfxc.ObservableFloatArray = jfxc.FXCollecti
    *
    * @return New empty $OFA.
    */
-  protected[this] override def newBuilder = ObservableFloatArray.empty()
+  protected[this] override def newBuilder: ObservableFloatArray = ObservableFloatArray.empty()
 }

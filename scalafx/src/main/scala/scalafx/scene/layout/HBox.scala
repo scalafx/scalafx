@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -51,7 +51,7 @@ object HBox {
   /**
    * Returns the child's hgrow constraint if set.
    */
-  def getHgrow(child: Node) = jfxsl.HBox.getHgrow(child)
+  def getHgrow(child: Node): Priority = jfxsl.HBox.getHgrow(child)
 
   /**
    * Sets the horizontal grow priority for the child when contained by an hbox.
@@ -63,7 +63,7 @@ object HBox {
   /**
    * Returns the child's margin constraint if set.
    */
-  def getMargin(child: Node) = jfxsl.HBox.getMargin(child)
+  def getMargin(child: Node): Insets = jfxsl.HBox.getMargin(child)
 
   /**
    * Sets the margin for the child when contained by an hbox.

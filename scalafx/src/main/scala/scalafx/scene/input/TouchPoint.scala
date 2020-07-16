@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,8 @@ package scalafx.scene.input
 import javafx.scene.{input => jfxsi}
 import javafx.{event => jfxe}
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
+import scalafx.event.EventIncludes.jfxEventTarget2sfx
+import scalafx.event.EventTarget
 
 import scala.language.implicitConversions
 
@@ -42,29 +44,33 @@ object TouchPoint {
      * The touch point has been moved
      */
     case object Moved extends State(jfxsi.TouchPoint.State.MOVED)
-    @deprecated ("Use Moved; MOVED will be removed in a future release", "8.0.60-R10")
-    val MOVED = Moved
+
+    @deprecated("Use Moved; MOVED will be removed in a future release", "8.0.60-R10")
+    val MOVED: State = Moved
 
     /**
      * The touch point has been moved
      */
     case object Pressed extends State(jfxsi.TouchPoint.State.PRESSED)
-    @deprecated ("Use Pressed; PRESSED will be removed in a future release", "8.0.60-R10")
-    val PRESSED = Pressed
+
+    @deprecated("Use Pressed; PRESSED will be removed in a future release", "8.0.60-R10")
+    val PRESSED: State = Pressed
 
     /**
      * The touch point remains pressed and still (without moving)
      */
     case object Stationary extends State(jfxsi.TouchPoint.State.STATIONARY)
-    @deprecated ("Use Stationary; STATIONARY will be removed in a future release", "8.0.60-R10")
-    val STATIONARY = Stationary
+
+    @deprecated("Use Stationary; STATIONARY will be removed in a future release", "8.0.60-R10")
+    val STATIONARY: State = Stationary
 
     /**
      * The touch point has been released
      */
     case object Released extends State(jfxsi.TouchPoint.State.RELEASED)
-    @deprecated ("Use Released; RELEASED will be removed in a future release", "8.0.60-R10")
-    val RELEASED = Released
+
+    @deprecated("Use Released; RELEASED will be removed in a future release", "8.0.60-R10")
+    val RELEASED: State = Released
 
     protected override def unsortedValues: Array[State] = Array(Moved, Pressed, Stationary, Released)
 
@@ -85,7 +91,7 @@ class TouchPoint(override val delegate: jfxsi.TouchPoint)
    * Distinguishes between touch points targeted to the given node or some of its children from touch points targeted
    * somewhere else.
    */
-  def belongsTo(target: jfxe.EventTarget) = delegate.belongsTo(target)
+  def belongsTo(target: jfxe.EventTarget): Boolean = delegate.belongsTo(target)
 
   /**
    * Grabs this touch point by current event source.
@@ -97,41 +103,41 @@ class TouchPoint(override val delegate: jfxsi.TouchPoint)
   /**
    * Grabs this touch point by the given target.
    */
-  def grab(target: jfxe.EventTarget): Unit = {
+  def grab(target: EventTarget): Unit = {
     delegate.grab(target)
   }
 
   /**
    * Gets event target which has grabbed this touch point.
    */
-  def grabbed = delegate.getGrabbed
+  def grabbed: EventTarget = delegate.getGrabbed
 
   /**
    * Gets identifier of this touch point.
    */
-  def id = delegate.getId
+  def id: Int = delegate.getId
 
   /**
    * Gets the horizontal position of the touch point relative to the origin of the Scene that contains the TouchEvent's
    * source.
    */
-  def sceneX = delegate.getSceneX
+  def sceneX: Double = delegate.getSceneX
 
   /**
    * Gets the vertical position of the touch point relative to the origin of the Scene that contains the TouchEvent's
    * source.
    */
-  def sceneY = delegate.getSceneY
+  def sceneY: Double = delegate.getSceneY
 
   /**
    * Gets the absolute horizontal position of the touch point.
    */
-  def screenX = delegate.getScreenX
+  def screenX: Double = delegate.getScreenX
 
   /**
    * Gets the absolute vertical position of the touch point.
    */
-  def screenY = delegate.getScreenY
+  def screenY: Double = delegate.getScreenY
 
   /**
    * Gets state of this touch point
@@ -141,17 +147,17 @@ class TouchPoint(override val delegate: jfxsi.TouchPoint)
   /**
    * Gets event target on which the touch event carrying this touch point is fired.
    */
-  def target = delegate.getTarget
+  def target: EventTarget = delegate.getTarget
 
   /**
    * Gets the horizontal position of the touch point relative to the origin of the TouchEvent's source.
    */
-  def x = delegate.getX
+  def x: Double = delegate.getX
 
   /**
    * Gets the vertical position of the touch point relative to the origin of the TouchEvent's source.
    */
-  def y = delegate.getY
+  def y: Double = delegate.getY
 
   /**
    *
