@@ -35,6 +35,7 @@ import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.TreeTableCell
 import scalafx.util.StringConverter
+import scalafx.util.StringConverter.sfxStringConverter2jfx
 
 import scala.language.implicitConversions
 
@@ -177,25 +178,27 @@ class ChoiceBoxTreeTableCell[S, T](override val delegate: jfxscc.ChoiceBoxTreeTa
    * @param items $BUFITEMSPARAM
    * @see $URL0#ChoiceBoxTreeTableCell-javafx.collections.ObservableList- $ORIGINALDOC
    */
-  def this(items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxTreeTableCell[S, T](items))
+  def this(items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxTreeTableCell[S, T](items.delegate))
 
   /**
    * $CONSCOMPL
    *
    * @param converter $CONVPARAM
-   * @param items $BUFITEMSPARAM
+   * @param items     $BUFITEMSPARAM
    * @see $URL0#ChoiceBoxTreeTableCell-javafx.util.StringConverter-javafx.collections.ObservableList- $ORIGINALDOC
    */
-  def this(converter: StringConverter[T], items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxTreeTableCell[S, T](converter, items))
+  def this(converter: StringConverter[T], items: ObservableBuffer[T]) =
+    this(new jfxscc.ChoiceBoxTreeTableCell[S, T](sfxStringConverter2jfx(converter), items.delegate))
 
   /**
    * $CONSCOMPL
    *
    * @param converter $CONVPARAM
-   * @param items $ITEMSPARAM
+   * @param items     $ITEMSPARAM
    * @see $URL0#ChoiceBoxTreeTableCell-javafx.util.StringConverter-T...- $ORIGINALDOC
    */
-  def this(converter: StringConverter[T], items: T*) = this(new jfxscc.ChoiceBoxTreeTableCell[S, T](converter, items: _*))
+  def this(converter: StringConverter[T], items: T*) =
+    this(new jfxscc.ChoiceBoxTreeTableCell[S, T](sfxStringConverter2jfx(converter), items: _*))
 
   /**
    * $CONSCOMPL

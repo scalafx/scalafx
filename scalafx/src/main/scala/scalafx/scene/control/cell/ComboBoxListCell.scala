@@ -34,6 +34,7 @@ import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.{ListCell, ListView}
 import scalafx.util.StringConverter
+import scalafx.util.StringConverter.sfxStringConverter2jfx
 
 import scala.language.implicitConversions
 
@@ -147,23 +148,25 @@ class ComboBoxListCell[T](override val delegate: jfxscc.ComboBoxListCell[T] = ne
    *
    * @param items $ITEMSPARAM
    */
-  def this(items: ObservableBuffer[T]) = this(new jfxscc.ComboBoxListCell[T](items))
+  def this(items: ObservableBuffer[T]) = this(new jfxscc.ComboBoxListCell[T](items.delegate))
 
   /**
    * $CONSTRCONVERTER
    *
    * @param converter $CONVPARAM
-   * @param items $ITEMSPARAM
+   * @param items     $ITEMSPARAM
    */
-  def this(converter: StringConverter[T], items: ObservableBuffer[T]) = this(new jfxscc.ComboBoxListCell[T](converter, items))
+  def this(converter: StringConverter[T], items: ObservableBuffer[T]) =
+    this(new jfxscc.ComboBoxListCell[T](sfxStringConverter2jfx(converter), items.delegate))
 
   /**
    * $CONSTRCONVERTER
    *
    * @param converter $CONVPARAM
-   * @param items $ITEMSPARAM
+   * @param items     $ITEMSPARAM
    */
-  def this(converter: StringConverter[T], items: T*) = this(new jfxscc.ComboBoxListCell[T](converter, items: _*))
+  def this(converter: StringConverter[T], items: T*) =
+    this(new jfxscc.ComboBoxListCell[T](sfxStringConverter2jfx(converter), items: _*))
 
   /**
    * $CONSTITEMS

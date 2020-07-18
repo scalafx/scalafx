@@ -168,7 +168,7 @@ class ComboBoxTreeTableCell[S, T](override val delegate: jfxscc.ComboBoxTreeTabl
    *
    * @param items $ITEMSPARAM
    */
-  def this(items: ObservableBuffer[T]) = this(new jfxscc.ComboBoxTreeTableCell[S, T](items))
+  def this(items: ObservableBuffer[T]) = this(new jfxscc.ComboBoxTreeTableCell[S, T](items.delegate))
 
   /**
    * $CONSTRCONVERTER
@@ -177,7 +177,7 @@ class ComboBoxTreeTableCell[S, T](override val delegate: jfxscc.ComboBoxTreeTabl
    * @param items $ITEMSPARAM
    */
   def this(converter: StringConverter[T], items: ObservableBuffer[T]) =
-    this(new jfxscc.ComboBoxTreeTableCell[S, T](converter, items))
+    this(new jfxscc.ComboBoxTreeTableCell[S, T](sfxStringConverter2jfx(converter), items.delegate))
 
   /**
    * $CONSTRCONVERTER
@@ -186,7 +186,7 @@ class ComboBoxTreeTableCell[S, T](override val delegate: jfxscc.ComboBoxTreeTabl
    * @param items $ITEMSPARAM
    */
   def this(converter: StringConverter[T], items: T*) =
-    this(new jfxscc.ComboBoxTreeTableCell[S, T](converter, items: _*))
+    this(new jfxscc.ComboBoxTreeTableCell[S, T](sfxStringConverter2jfx(converter), items: _*))
 
   /**
    * $CONSTITEMS
