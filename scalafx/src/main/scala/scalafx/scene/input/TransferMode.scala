@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,31 +34,33 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object TransferMode extends SFXEnumDelegateCompanion[jfxsi.TransferMode, TransferMode] {
 
   case object Copy extends TransferMode(jfxsi.TransferMode.COPY)
-  @deprecated ("Use Copy; COPY will be removed in a future release", "8.0.60-R10")
-  val COPY = Copy
+  @deprecated("Use Copy; COPY will be removed in a future release", "8.0.60-R10")
+  val COPY: TransferMode = Copy
 
   case object Move extends TransferMode(jfxsi.TransferMode.MOVE)
-  @deprecated ("Use Move; MOVE will be removed in a future release", "8.0.60-R10")
-  val MOVE = Move
+
+  @deprecated("Use Move; MOVE will be removed in a future release", "8.0.60-R10")
+  val MOVE: TransferMode = Move
 
   case object Link extends TransferMode(jfxsi.TransferMode.LINK)
-  @deprecated ("Use Link; LINK will be removed in a future release", "8.0.60-R10")
-  val LINK = Link
+
+  @deprecated("Use Link; LINK will be removed in a future release", "8.0.60-R10")
+  val LINK: TransferMode = Link
 
   /** Array containing all transfer modes. */
-  val Any = jfxsi.TransferMode.ANY
-  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
-  val ANY = Any
+  val Any: Array[TransferMode] = jfxsi.TransferMode.ANY.map(TransferMode(_))
+  @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  val ANY: Array[TransferMode] = Any
 
   /** Array containing transfer modes COPY and MOVE. */
-  val CopyOrMove = jfxsi.TransferMode.COPY_OR_MOVE
-  @deprecated ("Use CopyOrMove; COPY_OR_MOVE will be removed in a future release", "8.0.60-R10")
-  val COPY_OR_MOVE = CopyOrMove
+  val CopyOrMove: Array[TransferMode] = jfxsi.TransferMode.COPY_OR_MOVE.map(TransferMode(_))
+  @deprecated("Use CopyOrMove; COPY_OR_MOVE will be removed in a future release", "8.0.60-R10")
+  val COPY_OR_MOVE: Array[TransferMode] = CopyOrMove
 
   /** Empty array of transfer modes. */
-  val None = jfxsi.TransferMode.NONE
-  @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
-  val NONE = None
+  val None: Array[TransferMode] = jfxsi.TransferMode.NONE.map(TransferMode(_))
+  @deprecated("Use None; NONE will be removed in a future release", "8.0.60-R10")
+  val NONE: Array[TransferMode] = None
 
   protected override def unsortedValues: Array[TransferMode] = Array(Copy, Move, Link)
 }

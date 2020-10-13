@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,16 +34,18 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object StrokeLineCap extends SFXEnumDelegateCompanion[jfxss.StrokeLineCap, StrokeLineCap] {
 
   case object Square extends StrokeLineCap(jfxss.StrokeLineCap.SQUARE)
-  @deprecated ("Use Square; SQUARE will be removed in a future release", "8.0.60-R10")
-  val SQUARE = Square
+  @deprecated("Use Square; SQUARE will be removed in a future release", "8.0.60-R10")
+  val SQUARE: StrokeLineCap = Square
 
   case object Butt extends StrokeLineCap(jfxss.StrokeLineCap.BUTT)
-  @deprecated ("Use Butt; BUTT will be removed in a future release", "8.0.60-R10")
-  val BUTT = Butt
+
+  @deprecated("Use Butt; BUTT will be removed in a future release", "8.0.60-R10")
+  val BUTT: StrokeLineCap = Butt
 
   case object Round extends StrokeLineCap(jfxss.StrokeLineCap.ROUND)
-  @deprecated ("Use Round; ROUND will be removed in a future release", "8.0.60-R10")
-  val ROUND = Round
+
+  @deprecated("Use Round; ROUND will be removed in a future release", "8.0.60-R10")
+  val ROUND: StrokeLineCap = Round
 
   protected override def unsortedValues: Array[StrokeLineCap] = Array(Square, Butt, Round)
 }

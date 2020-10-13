@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,20 +27,20 @@
 package scalafx.event
 
 import javafx.{event => jfxe}
-
-import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
+import scala.language.implicitConversions
+
 object EventType {
-  implicit def sfxEventType2jfx[T <: jfxe.Event](et: EventType[T]): jfxe.EventType[T] = if (et != null) et.delegate else null
+  implicit def sfxEventType2jfx[T <: jfxe.Event](et: EventType[T]): jfxe.EventType[T] = Option(et).map(_.delegate).orNull
 
   /**
    * The root event type. All other event types are either direct or indirect sub types of it.
    * It is also the only event type which has its super event type set to null.
    */
-  val Root = new EventType(jfxe.EventType.ROOT)
-  @deprecated ("Use Root; ROOT will be removed in a future release", "8.0.60-R10")
-  val ROOT = Root
+  val Root: EventType[jfxe.Event] = new EventType(jfxe.EventType.ROOT)
+  @deprecated("Use Root; ROOT will be removed in a future release", "8.0.60-R10")
+  val ROOT: EventType[jfxe.Event] = Root
 }
 
 class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T]) extends SFXDelegate[jfxe.EventType[T]] {
@@ -69,11 +69,11 @@ class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T]) exten
   /**
    * Gets the name of this event type.
    */
-  def name = delegate.getName
+  def name: String = delegate.getName
 
   /**
    * Gets the super type of this event type.
    */
-  def superType = delegate.getSuperType
+  def superType: jfxe.EventType[_ >: T] = delegate.getSuperType
 
 }

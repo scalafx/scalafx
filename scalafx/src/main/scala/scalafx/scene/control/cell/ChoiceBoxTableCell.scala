@@ -34,6 +34,7 @@ import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.{TableCell, TableColumn}
 import scalafx.util.StringConverter
+import scalafx.util.StringConverter.sfxStringConverter2jfx
 
 import scala.language.implicitConversions
 
@@ -153,25 +154,27 @@ class ChoiceBoxTableCell[S, T](override val delegate: jfxscc.ChoiceBoxTableCell[
    *
    * @param items $BUFITEMSPARAM
    */
-  def this(items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxTableCell[S, T](items))
+  def this(items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxTableCell[S, T](items.delegate))
 
   /**
    * Creates a $CBLC instance with the given items being used to populate the `ChoiceBox` when it is
    * shown, and the StringConverter being used to convert the item in to a user-readable form.
    *
    * @param converter $CONVPARAM
-   * @param items $BUFITEMSPARAM
+   * @param items     $BUFITEMSPARAM
    */
-  def this(converter: StringConverter[T], items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxTableCell[S, T](converter, items))
+  def this(converter: StringConverter[T], items: ObservableBuffer[T]) =
+    this(new jfxscc.ChoiceBoxTableCell[S, T](sfxStringConverter2jfx(converter), items.delegate))
 
   /**
    * Creates a $CBLC instance with the given items being used to populate the `ChoiceBox` when it is
    * shown, and the StringConverter being used to convert the item in to a user-readable form.
    *
    * @param converter $CONVPARAM
-   * @param items $ITEMSPARAM
+   * @param items     $ITEMSPARAM
    */
-  def this(converter: StringConverter[T], items: T*) = this(new jfxscc.ChoiceBoxTableCell[S, T](converter, items: _*))
+  def this(converter: StringConverter[T], items: T*) =
+    this(new jfxscc.ChoiceBoxTableCell[S, T](sfxStringConverter2jfx(converter), items: _*))
 
   /**
    * Creates a default $CBLC instance with the given items being used to populate the `ChoiceBox` when

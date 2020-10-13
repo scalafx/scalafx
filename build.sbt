@@ -9,8 +9,8 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion = "14.0.1"
-val scalafxVersion = s"14-R20-SNAPSHOT"
+val javaFXVersion = "14.0.2"
+val scalafxVersion = s"14.0.2-R20-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v." + scalafxVersion
 
@@ -65,12 +65,12 @@ lazy val osName = System.getProperty("os.name") match {
 lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
 def scalaTestLib(scalaVersion: String): ModuleID  =
   CrossVersion.partialVersion(scalaVersion) match {
-    case Some((0, _)) => "org.scalatest" % "scalatest_2.13" % "3.2.0"
-    case _ => "org.scalatest" %% "scalatest" % "3.2.0"
+    case Some((0, _)) => "org.scalatest" % "scalatest_2.13" % "3.2.2"
+    case _ => "org.scalatest" %% "scalatest" % "3.2.2"
   }
 def scalaReflectLib(scalaVersion: String): ModuleID =
   CrossVersion.partialVersion(scalaVersion) match {
-    case Some((0, _)) => "org.scala-lang" % "scala-reflect" % "2.13.1"
+    case Some((0, _)) => "org.scala-lang" % "scala-reflect" % "2.13.3"
     case _ => "org.scala-lang" % "scala-reflect" % scalaVersion
   }
 
@@ -90,7 +90,7 @@ def versionSubDir(scalaVersion: String): String =
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.13.1", "2.12.11", "2.11.12", "0.24.0-RC1"),
+  crossScalaVersions := Seq("2.13.3", "2.12.12", "2.11.12", "0.24.0-RC1"),
   scalaVersion := crossScalaVersions.value.head,
   unmanagedSourceDirectories in Compile += (sourceDirectory in Compile).value / versionSubDir(scalaVersion.value),
   unmanagedSourceDirectories in Test += (sourceDirectory in Test).value / versionSubDir(scalaVersion.value),

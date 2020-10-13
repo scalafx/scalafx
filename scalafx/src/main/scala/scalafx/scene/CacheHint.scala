@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,29 +34,34 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object CacheHint extends SFXEnumDelegateCompanion[jfxs.CacheHint, CacheHint] {
 
   case object Default extends CacheHint(jfxs.CacheHint.DEFAULT)
-  @deprecated ("Use Default; DEFAULT will be removed in a future release", "8.0.60-R10")
-  val DEFAULT = Default
+  @deprecated("Use Default; DEFAULT will be removed in a future release", "8.0.60-R10")
+  val DEFAULT: CacheHint = Default
 
 
   case object Quality extends CacheHint(jfxs.CacheHint.QUALITY)
-  @deprecated ("Use Quality; QUALITY will be removed in a future release", "8.0.60-R10")
-  val QUALITY = Quality
+
+  @deprecated("Use Quality; QUALITY will be removed in a future release", "8.0.60-R10")
+  val QUALITY: CacheHint = Quality
 
   case object Rotate extends CacheHint(jfxs.CacheHint.ROTATE)
-  @deprecated ("Use Rotate; ROTATE will be removed in a future release", "8.0.60-R10")
-  val ROTATE = Rotate
+
+  @deprecated("Use Rotate; ROTATE will be removed in a future release", "8.0.60-R10")
+  val ROTATE: CacheHint = Rotate
 
   case object Scale extends CacheHint(jfxs.CacheHint.SCALE)
-  @deprecated ("Use Scale; SCALE will be removed in a future release", "8.0.60-R10")
-  val SCALE = Scale
+
+  @deprecated("Use Scale; SCALE will be removed in a future release", "8.0.60-R10")
+  val SCALE: CacheHint = Scale
 
   case object ScaleAndRotate extends CacheHint(jfxs.CacheHint.SCALE_AND_ROTATE)
-  @deprecated ("Use ScaleAndRotate; SCALE_AND_ROTATE will be removed in a future release", "8.0.60-R10")
-  val SCALE_AND_ROTATE = ScaleAndRotate
+
+  @deprecated("Use ScaleAndRotate; SCALE_AND_ROTATE will be removed in a future release", "8.0.60-R10")
+  val SCALE_AND_ROTATE: CacheHint = ScaleAndRotate
 
   case object Speed extends CacheHint(jfxs.CacheHint.SPEED)
-  @deprecated ("Use Speed; SPEED will be removed in a future release", "8.0.60-R10")
-  val SPEED = Speed
+
+  @deprecated("Use Speed; SPEED will be removed in a future release", "8.0.60-R10")
+  val SPEED: CacheHint = Speed
 
   protected override def unsortedValues: Array[CacheHint] = Array(
     Default, Speed, Quality, Scale, Rotate, ScaleAndRotate

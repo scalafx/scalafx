@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,11 +29,11 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe}
+import scalafx.delegate.SFXDelegate
+import scalafx.event.EventIncludes.jfxEventType2sfx
+import scalafx.event.{Event, EventType}
 
 import scala.language.implicitConversions
-import scalafx.Includes._
-import scalafx.delegate.SFXDelegate
-import scalafx.event.{Event, EventType}
 
 /**
  * Companion Object for [[scalafx.scene.control.ScrollToEvent]].
@@ -41,7 +41,7 @@ import scalafx.event.{Event, EventType}
 object ScrollToEvent {
 
   /**
-   * Converts a ScalaFX ScrollToEvent to its JavaFX couterpart
+   * Converts a ScalaFX ScrollToEvent to its JavaFX counterpart
    *
    * @param event ScalaFX ScrollToEvent
    * @return JavaFX ScrollToEvent
@@ -57,7 +57,7 @@ object ScrollToEvent {
   /**
    * This event occurs if the user requests scrolling a `TableColumnBase` (ie `TableColumn` or `TreeTableColumn`) into view.
    */
-  def scrollToColumn[T <: jfxsc.TableColumnBase[_, _]]() = jfxsc.ScrollToEvent.scrollToColumn()
+  def scrollToColumn[T <: jfxsc.TableColumnBase[_, _]](): jfxe.EventType[jfxsc.ScrollToEvent[T]] = jfxsc.ScrollToEvent.scrollToColumn()
 
   /**
    * This event occurs if the user requests scrolling a given index into view.

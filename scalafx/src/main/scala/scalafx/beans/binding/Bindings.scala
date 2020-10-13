@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,9 @@
 
 package scalafx.beans.binding
 
-import javafx.beans.{binding => jfxbb, value => jfxbv}
+import java.lang
 
+import javafx.beans.{binding => jfxbb, value => jfxbv}
 import scalafx.beans.Observable
 import scalafx.beans.binding.BindingIncludes._
 import scalafx.beans.value.ObservableValue
@@ -44,34 +45,34 @@ object Bindings extends Bindings
 trait Bindings {
 
   /**
-    * Returns the highest value among a collection of $JFX
-    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
-    *
-    * @param v1     First Value
-    * @param values Collection of values
-    * @return The highest Value
-    */
-  def min(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values) (jfxbb.Bindings.min)
+   * Returns the highest value among a collection of $JFX
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+   *
+   * @param v1     First Value
+   * @param values Collection of values
+   * @return The highest Value
+   */
+  def min(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*): jfxbv.ObservableNumberValue = (v1 /: values) (jfxbb.Bindings.min)
 
   /**
-    * Returns the Lowest value among a collection of $JFX
-    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
-    *
-    * @param v1     First Value
-    * @param values Collection of values
-    * @return The Lowest Value
-    */
-  def max(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values) (jfxbb.Bindings.max)
+   * Returns the Lowest value among a collection of $JFX
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+   *
+   * @param v1     First Value
+   * @param values Collection of values
+   * @return The Lowest Value
+   */
+  def max(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*): jfxbv.ObservableNumberValue = (v1 /: values) (jfxbb.Bindings.max)
 
   /**
-    * Returns the sum of a collection of $JFX
-    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
-    *
-    * @param v1     First Value
-    * @param values Collection of values
-    * @return The Value sum.
-    */
-  def add(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*) = (v1 /: values) (jfxbb.Bindings.add)
+   * Returns the sum of a collection of $JFX
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ObservableNumberValue.html `ObservableNumberValue`]]s.
+   *
+   * @param v1     First Value
+   * @param values Collection of values
+   * @return The Value sum.
+   */
+  def add(v1: jfxbv.ObservableNumberValue, values: jfxbv.ObservableNumberValue*): jfxbv.ObservableNumberValue = (v1 /: values) (jfxbb.Bindings.add)
 
   /**
     *
@@ -108,28 +109,36 @@ trait Bindings {
   }
 
   protected class NumberConditionBuilder(whenBuilder: jfxbb.When#NumberConditionBuilder) {
-    def otherwise(otherwiseExpression: jfxbv.ObservableNumberValue) = whenBuilder.otherwise(otherwiseExpression)
-    def otherwise(otherwiseExpression: Int) = whenBuilder.otherwise(otherwiseExpression)
-    def otherwise(otherwiseExpression: Long) = whenBuilder.otherwise(otherwiseExpression)
-    def otherwise(otherwiseExpression: Float) = whenBuilder.otherwise(otherwiseExpression)
-    def otherwise(otherwiseExpression: Double) = whenBuilder.otherwise(otherwiseExpression)
+    def otherwise(otherwiseExpression: jfxbv.ObservableNumberValue): NumberBinding = whenBuilder.otherwise(otherwiseExpression)
+
+    def otherwise(otherwiseExpression: Int): NumberBinding = whenBuilder.otherwise(otherwiseExpression)
+
+    def otherwise(otherwiseExpression: Long): NumberBinding = whenBuilder.otherwise(otherwiseExpression)
+
+    def otherwise(otherwiseExpression: Float): NumberBinding = whenBuilder.otherwise(otherwiseExpression)
+
+    def otherwise(otherwiseExpression: Double): jfxbb.DoubleBinding = whenBuilder.otherwise(otherwiseExpression)
   }
 
   protected class BooleanConditionBuilder(whenBuilder: jfxbb.When#BooleanConditionBuilder) {
-    def otherwise(otherwiseExpression: jfxbv.ObservableBooleanValue) = whenBuilder.otherwise(otherwiseExpression)
-    def otherwise(otherwiseExpression: Boolean) = whenBuilder.otherwise(otherwiseExpression)
+    def otherwise(otherwiseExpression: jfxbv.ObservableBooleanValue): BooleanBinding = whenBuilder.otherwise(otherwiseExpression)
+
+    def otherwise(otherwiseExpression: Boolean): BooleanBinding = whenBuilder.otherwise(otherwiseExpression)
   }
 
   protected class StringConditionBuilder(whenBuilder: jfxbb.When#StringConditionBuilder) {
-    def otherwise(otherwiseExpression: jfxbv.ObservableStringValue) = whenBuilder.otherwise(otherwiseExpression)
-    def otherwise(otherwiseExpression: String) = whenBuilder.otherwise(otherwiseExpression)
+    def otherwise(otherwiseExpression: jfxbv.ObservableStringValue): StringBinding = whenBuilder.otherwise(otherwiseExpression)
+
+    def otherwise(otherwiseExpression: String): StringBinding = whenBuilder.otherwise(otherwiseExpression)
   }
 
   protected class ObjectConditionBuilder[T](whenBuilder: jfxbb.When#ObjectConditionBuilder[T]) {
     // explicit conversion needed due to T(Any) typed method
-    def otherwise(otherwiseExpression: ObservableValue[T, T]) = whenBuilder.otherwise(ObservableValue.sfxObservableValue2jfxObjectValue[T](otherwiseExpression))
-    def otherwise(otherwiseExpression: jfxbv.ObservableObjectValue[T]) = whenBuilder.otherwise(otherwiseExpression)
-    def otherwise(otherwiseExpression: T) = whenBuilder.otherwise(otherwiseExpression)
+    def otherwise(otherwiseExpression: ObservableValue[T, T]): ObjectBinding[T] = whenBuilder.otherwise(ObservableValue.sfxObservableValue2jfxObjectValue[T](otherwiseExpression))
+
+    def otherwise(otherwiseExpression: jfxbv.ObservableObjectValue[T]): ObjectBinding[T] = whenBuilder.otherwise(otherwiseExpression)
+
+    def otherwise(otherwiseExpression: T): ObjectBinding[T] = whenBuilder.otherwise(otherwiseExpression)
   }
 
   /**
@@ -143,11 +152,12 @@ trait Bindings {
     */
   def createBooleanBinding(func: () => Boolean, dependencies: Observable*): BooleanBinding = {
     import java.util.{concurrent => jfxuc}
+
     import javafx.beans.{binding => jfxbb}
 
     jfxbb.Bindings.createBooleanBinding(
       new jfxuc.Callable[java.lang.Boolean] {
-        override def call() = func()
+        override def call(): lang.Boolean = func()
       },
       dependencies.map(_.delegate): _*)
   }
@@ -163,11 +173,12 @@ trait Bindings {
     */
   def createDoubleBinding(func: () => Double, dependencies: Observable*): jfxbb.DoubleBinding = {
     import java.util.{concurrent => jfxuc}
+
     import javafx.beans.{binding => jfxbb}
 
     jfxbb.Bindings.createDoubleBinding(
       new jfxuc.Callable[java.lang.Double] {
-        override def call() = func()
+        override def call(): lang.Double = func()
       },
       dependencies.map(_.delegate): _*)
   }
@@ -183,11 +194,12 @@ trait Bindings {
     */
   def createFloatBinding(func: () => Float, dependencies: Observable*): jfxbb.FloatBinding = {
     import java.util.{concurrent => jfxuc}
+
     import javafx.beans.{binding => jfxbb}
 
     jfxbb.Bindings.createFloatBinding(
       new jfxuc.Callable[java.lang.Float] {
-        override def call() = func()
+        override def call(): lang.Float = func()
       },
       dependencies.map(_.delegate): _*)
   }
@@ -203,11 +215,12 @@ trait Bindings {
     */
   def createIntegerBinding(func: () => Int, dependencies: Observable*): jfxbb.IntegerBinding = {
     import java.util.{concurrent => jfxuc}
+
     import javafx.beans.{binding => jfxbb}
 
     jfxbb.Bindings.createIntegerBinding(
       new jfxuc.Callable[java.lang.Integer] {
-        override def call() = func()
+        override def call(): Integer = func()
       },
       dependencies.map(_.delegate): _*)
   }
@@ -224,11 +237,12 @@ trait Bindings {
     */
   def createLongBinding(func: () => Long, dependencies: Observable*): jfxbb.LongBinding = {
     import java.util.{concurrent => jfxuc}
+
     import javafx.beans.{binding => jfxbb}
 
     jfxbb.Bindings.createLongBinding(
       new jfxuc.Callable[java.lang.Long] {
-        override def call() = func()
+        override def call(): lang.Long = func()
       },
       dependencies.map(_.delegate): _*)
   }
@@ -244,11 +258,12 @@ trait Bindings {
     */
   def createObjectBinding[T](func: () => T, dependencies: Observable*): ObjectBinding[T] = {
     import java.util.{concurrent => jfxuc}
+
     import javafx.beans.{binding => jfxbb}
 
     jfxbb.Bindings.createObjectBinding(
       new jfxuc.Callable[T] {
-        override def call() = func()
+        override def call(): T = func()
       },
       dependencies.map(_.delegate): _*)
   }
@@ -264,11 +279,12 @@ trait Bindings {
     */
   def createStringBinding(func: () => String, dependencies: Observable*): StringBinding = {
     import java.util.{concurrent => jfxuc}
+
     import javafx.beans.{binding => jfxbb}
 
     jfxbb.Bindings.createStringBinding(
       new jfxuc.Callable[String] {
-        override def call() = func()
+        override def call(): String = func()
       },
       dependencies.map(_.delegate): _*)
   }

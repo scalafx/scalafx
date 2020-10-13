@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,19 +49,19 @@ object TilePane {
   /**
    * Returns the child's alignment constraint if set.
    */
-  def getAlignment(child: Node) = jfxsl.TilePane.getAlignment(child)
+  def getAlignment(child: Node): Pos = jfxsl.TilePane.getAlignment(child)
 
   /**
    * Sets the alignment for the child when contained by a stackpane.
    */
-  def setAlignment(child: Node, value: jfxg.Pos): Unit = {
+  def setAlignment(child: Node, value: Pos): Unit = {
     jfxsl.TilePane.setAlignment(child, value)
   }
 
   /**
    * Returns the child's margin constraint if set.
    */
-  def getMargin(child: Node) = jfxsl.TilePane.getMargin(child)
+  def getMargin(child: Node): Insets = jfxsl.TilePane.getMargin(child)
 
   /**
    * Sets the margin for the child when contained by an hbox.
@@ -74,8 +74,8 @@ object TilePane {
 
 class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane)
   extends Pane(delegate)
-  with AlignmentDelegate[jfxsl.TilePane]
-  with SFXDelegate[jfxsl.TilePane] {
+    with AlignmentDelegate[jfxsl.TilePane]
+    with SFXDelegate[jfxsl.TilePane] {
 
   /**
    * The amount of horizontal space between each tile in a row.

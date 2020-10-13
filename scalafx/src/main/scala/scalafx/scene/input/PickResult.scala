@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,20 +28,20 @@ package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
 import javafx.{event => jfxe}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.{Point2D, Point3D}
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object PickResult {
   implicit def sfxPickResult2jfx(m: PickResult): jfxsi.PickResult = if (m != null) m.delegate else null
 
   /** An undefined face. This value is used for the intersected face if the picked node has no user-specified faces. */
   val FaceUndefined: Int = jfxsi.PickResult.FACE_UNDEFINED
-  @deprecated ("Use FaceUndefined; FACE_UNDEFINED will be removed in a future release", "8.0.60-R10")
-  val FACE_UNDEFINED = FaceUndefined
+  @deprecated("Use FaceUndefined; FACE_UNDEFINED will be removed in a future release", "8.0.60-R10")
+  val FACE_UNDEFINED: Int = FaceUndefined
 }
 
 /** A container for the result of a pick event. Wrapper for JavaFX's

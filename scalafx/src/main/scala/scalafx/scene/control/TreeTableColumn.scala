@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,9 +34,8 @@ import scalafx.Includes._
 import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.beans.value.ObservableValue
 import scalafx.collections.ObservableBuffer
-import scalafx.css.Styleable
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
-import scalafx.event.Event
+import scalafx.event.{Event, EventType}
 
 import scala.collection.JavaConverters._
 import scala.language.implicitConversions
@@ -203,26 +202,26 @@ object TreeTableColumn {
     (column: TreeTableColumn[_, _]) => jfxsc.TreeTableColumn.DEFAULT_CELL_FACTORY.call(column)
 
   /**
-    * Parent event for any TreeTableColumn edit event.
-    */
-  def editAnyEvent = jfxsc.TreeTableColumn.editAnyEvent
+   * Parent event for any TreeTableColumn edit event.
+   */
+  def editAnyEvent: EventType[jfxsc.TreeTableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TreeTableColumn.editAnyEvent)
 
   /**
-    * Indicates that the editing has been canceled, meaning that no change should be made to the backing data source.
-    */
-  def editCancelEvent = jfxsc.TreeTableColumn.editCancelEvent
+   * Indicates that the editing has been canceled, meaning that no change should be made to the backing data source.
+   */
+  def editCancelEvent: EventType[jfxsc.TreeTableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TreeTableColumn.editCancelEvent)
 
   /**
-    * Indicates that the editing has been committed by the user, meaning that a change should be made to the backing
-    * data source to reflect the new data.
-    */
-  def editCommitEvent = jfxsc.TreeTableColumn.editCommitEvent
+   * Indicates that the editing has been committed by the user, meaning that a change should be made to the backing
+   * data source to reflect the new data.
+   */
+  def editCommitEvent: EventType[jfxsc.TreeTableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TreeTableColumn.editCommitEvent)
 
   /**
-    * Indicates that the user has performed some interaction to start an edit event, or alternatively the
-    * TableView.edit(Int, TableColumn) method has been called.
-    */
-  def editStartEvent = jfxsc.TreeTableColumn.editStartEvent
+   * Indicates that the user has performed some interaction to start an edit event, or alternatively the
+   * TableView.edit(Int, TableColumn) method has been called.
+   */
+  def editStartEvent: EventType[jfxsc.TreeTableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TreeTableColumn.editStartEvent)
 
   /**
     * The CssMetaData of this Styleable. This may be returned as an unmodifiable list.
@@ -396,21 +395,6 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
     * @return An ObservableValue<T> for this specific table column.
     */
   def cellObservableValue(item: TreeItem[S]): ObservableValue[T, T] = delegate.getCellObservableValue(item)
-
-  /**
-    * The type of this Styleable that is to be used in selector matching. This is analogous to an "element" in HTML.
-    * (CSS Type Selector).
-    *
-    * @return "TreeTableColumn"
-    */
-  override def typeSelector: String = delegate.getTypeSelector
-
-  /**
-    * Return the parent of this Styleable, or null if there is no parent.
-    *
-    * @return getTreeTableView()
-    */
-  override def styleableParent: Styleable = delegate.getStyleableParent
 
   /**
     * The CssMetaData of this Styleable. This may be returned as an unmodifiable list.

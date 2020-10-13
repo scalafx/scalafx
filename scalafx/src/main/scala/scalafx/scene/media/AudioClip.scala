@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,9 +39,9 @@ object AudioClip {
   /**
    * When cycleCount is set to this value, the AudioClip will loop continuously until stopped.
    */
-  val Indefinite = jfxsm.AudioClip.INDEFINITE
-  @deprecated ("Use Indefinite; INDEFINITE will be removed in a future release", "8.0.60-R10")
-  val INDEFINITE = Indefinite
+  val Indefinite: Int = jfxsm.AudioClip.INDEFINITE
+  @deprecated("Use Indefinite; INDEFINITE will be removed in a future release", "8.0.60-R10")
+  val INDEFINITE: Int = Indefinite
 
 }
 
@@ -100,7 +100,7 @@ class AudioClip(override val delegate: jfxsm.AudioClip) extends SFXDelegate[jfxs
   /**
    * Get the source URL used to create this AudioClip.
    */
-  def source = delegate.getSource
+  def source: String = delegate.getSource
 
   /**
    * The relative volume level at which the clip is played.

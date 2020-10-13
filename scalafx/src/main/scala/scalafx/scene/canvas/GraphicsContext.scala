@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,18 +26,15 @@
  */
 package scalafx.scene.canvas
 
-import javafx.geometry.VPos
-import javafx.scene.effect.BlendMode
-import javafx.scene.shape.FillRule
-import javafx.scene.text.TextAlignment
 import javafx.scene.{canvas => jfxsc}
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
-import scalafx.scene.effect.Effect
-import scalafx.scene.image.Image
+import scalafx.geometry.VPos
+import scalafx.scene.effect.{BlendMode, Effect}
+import scalafx.scene.image.{Image, PixelWriter}
 import scalafx.scene.paint.Paint
-import scalafx.scene.shape.{ArcType, StrokeLineCap, StrokeLineJoin}
-import scalafx.scene.text.Font
+import scalafx.scene.shape.{ArcType, FillRule, StrokeLineCap, StrokeLineJoin}
+import scalafx.scene.text.{Font, TextAlignment}
 import scalafx.scene.transform.Affine
 
 import scala.collection.mutable.ArrayBuffer
@@ -68,8 +65,8 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * Appends an SVG Path string to the current path.
    */
-  def appendSVGPath(svgpath: String): Unit = {
-    delegate.appendSVGPath(svgpath)
+  def appendSVGPath(s: String): Unit = {
+    delegate.appendSVGPath(s)
   }
 
   /**
@@ -110,7 +107,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * Gets the Canvas that the GraphicsContext is issuing draw commands to.
    */
-  def canvas = delegate.getCanvas
+  def canvas: Canvas = delegate.getCanvas
 
   /**
    * Clears a portion of the canvas with a transparent color value.
@@ -254,7 +251,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * the filling rule constant for determining the interior of the path.
    */
-  def fillRule = delegate.getFillRule
+  def fillRule: FillRule = delegate.getFillRule
 
   def fillRule_=(fillRule: FillRule): Unit = {
     delegate.setFillRule(fillRule)
@@ -272,7 +269,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * the current global alpha.
    */
-  def globalAlpha = delegate.getGlobalAlpha
+  def globalAlpha: Double = delegate.getGlobalAlpha
 
   def globalAlpha_=(alpha: Double): Unit = {
     delegate.setGlobalAlpha(alpha)
@@ -281,7 +278,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * the global blend mode.
    */
-  def globalBlendMode = delegate.getGlobalBlendMode
+  def globalBlendMode: BlendMode = delegate.getGlobalBlendMode
 
   def globalBlendMode_=(op: BlendMode): Unit = {
     delegate.setGlobalBlendMode(op)
@@ -308,7 +305,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * the current line width.
    */
-  def lineWidth = delegate.getLineWidth
+  def lineWidth: Double = delegate.getLineWidth
 
   def lineWidth_=(lw: Double): Unit = {
     delegate.setLineWidth(lw)
@@ -324,7 +321,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * the current miter limit.
    */
-  def miterLimit = delegate.getMiterLimit
+  def miterLimit: Double = delegate.getMiterLimit
 
   def miterLimit_=(ml: Double): Unit = {
     delegate.setMiterLimit(ml)
@@ -341,12 +338,12 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
    * Returns a PixelWriter object that can be used to modify the pixels of the Canvas associated with this
    * GraphicsContext.
    */
-  def pixelWriter = delegate.getPixelWriter
+  def pixelWriter: PixelWriter = delegate.getPixelWriter
 
   /**
    * Returns true if the the given x,y point is inside the path.
    */
-  def pointInPath(x: Double, y: Double) = delegate.isPointInPath(x, y)
+  def pointInPath(x: Double, y: Double): Boolean = delegate.isPointInPath(x, y)
 
   /**
    * Adds segments to the current path to make a quadratic curve.
@@ -423,7 +420,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   }
 
   /**
-    * Strokes an oval using the current stroke paint.
+   * Strokes an oval using the current stroke paint.
    */
   def strokeOval(x: Double, y: Double, w: Double, h: Double): Unit = {
     delegate.strokeOval(x, y, w, h)
@@ -488,7 +485,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * the current TextAlignment.
    */
-  def textAlign = delegate.getTextAlign
+  def textAlign: TextAlignment = delegate.getTextAlign
 
   def textAlign_=(align: TextAlignment): Unit = {
     delegate.setTextAlign(align)
@@ -497,7 +494,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * the current Text Baseline.
    */
-  def textBaseline = delegate.getTextBaseline
+  def textBaseline: VPos = delegate.getTextBaseline
 
   def textBaseline_=(baseline: VPos): Unit = {
     delegate.setTextBaseline(baseline)

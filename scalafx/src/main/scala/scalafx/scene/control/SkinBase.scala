@@ -27,7 +27,7 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import javafx.{scene => jfxs}
+import javafx.{css => jfxcss, scene => jfxs}
 import scalafx.Includes._
 import scalafx.collections.CollectionIncludes.observableList2ObservableBuffer
 import scalafx.collections.ObservableBuffer
@@ -36,12 +36,14 @@ import scalafx.css.PseudoClass.sfxPseudoClass2jfx
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 
+import scala.collection.JavaConverters._
+import scala.collection.mutable
 import scala.language.implicitConversions
 
 object SkinBase {
   implicit def sfxSkinBase2jfx[C <: jfxsc.Control](v: SkinBase[C]): jfxsc.SkinBase[C] = if (v != null) v.delegate else null
 
-  def classCssMetaData = jfxsc.SkinBase.getClassCssMetaData
+  def classCssMetaData: mutable.Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = jfxsc.SkinBase.getClassCssMetaData.asScala
 }
 
 /**
@@ -65,7 +67,7 @@ abstract class SkinBase[C <: jfxsc.Control] protected(override val delegate: jfx
   /**
    * This method should delegate to Node.getClassCssMetaData() so that a `Node`'s `CssMetaData` can be accessed without the need for reflection.
    */
-  def cssMetaData = delegate.getCssMetaData
+  def cssMetaData: mutable.Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getCssMetaData.asScala
 
   /**
    * Gets the `Node` which represents this `Skin`.
@@ -75,7 +77,7 @@ abstract class SkinBase[C <: jfxsc.Control] protected(override val delegate: jfx
   /**
    * Gets the `Skinnable` to which this `Skin` is assigned.
    */
-  def skinnable = delegate.getSkinnable
+  def skinnable: C = delegate.getSkinnable
 
   def pseudoClassStateChanged(pseudoClass: PseudoClass, active: Boolean): Unit = {
     delegate.pseudoClassStateChanged(pseudoClass, active)

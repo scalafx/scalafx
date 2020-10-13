@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,8 +53,8 @@ object Event {
    * The constant which represents an unknown event source / target.
    */
   val NullSourceTarget: jfxe.EventTarget = jfxe.Event.NULL_SOURCE_TARGET
-  @deprecated ("Use NullSourceTarget; NULL_SOURCE_TARGET will be removed in a future release", "8.0.60-R10")
-  val NULL_SOURCE_TARGET = NullSourceTarget
+  @deprecated("Use NullSourceTarget; NULL_SOURCE_TARGET will be removed in a future release", "8.0.60-R10")
+  val NULL_SOURCE_TARGET: jfxe.EventTarget = NullSourceTarget
 
 }
 

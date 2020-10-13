@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,10 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
+import scalafx.delegate.SFXDelegate
+import scalafx.scene.input.InputIncludes.jfxKeyCode2sfx
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object KeyCodeCombination {
   implicit def sfxKeyCodeCombination2jfx(kcc: KeyCodeCombination): jfxsi.KeyCodeCombination = if (kcc != null) kcc.delegate else null
@@ -51,6 +52,6 @@ class KeyCodeCombination(override val delegate: jfxsi.KeyCodeCombination) extend
   /**
    * Gets the key code associated with this key combination.
    */
-  def code = delegate.getCode
+  def code: KeyCode = delegate.getCode
 
 }

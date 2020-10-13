@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,29 +29,33 @@ package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
+import scalafx.scene.layout.LayoutIncludes.jfxPriority2sfx
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Priority.html javafx.scene.layout.Priority]] */
 object Priority extends SFXEnumDelegateCompanion[jfxsl.Priority, Priority] {
 
   case object Always extends Priority(jfxsl.Priority.ALWAYS)
+
   @deprecated("Use Always; ALWAYS will be removed in a future release", "2.2.60")
-  val ALWAYS = Always
+  val ALWAYS: Priority = Always
 
   case object Sometimes extends Priority(jfxsl.Priority.SOMETIMES)
+
   @deprecated("Use Sometimes; SOMETIMES will be removed in a future release", "2.2.60")
-  val SOMETIMES = Sometimes
+  val SOMETIMES: Priority = Sometimes
 
   case object Never extends Priority(jfxsl.Priority.NEVER)
+
   @deprecated("Use Never; NEVER will be removed in a future release", "2.2.60")
-  val NEVER = Never
+  val NEVER: Priority = Never
 
   protected override def unsortedValues: Array[Priority] = Array(Always, Sometimes, Never)
 
   /** Convenience method for returning the higher of two priorities. */
-  def max(a: jfxsl.Priority, b: jfxsl.Priority) = jfxsl.Priority.max(a, b)
+  def max(a: jfxsl.Priority, b: jfxsl.Priority): Priority = jfxsl.Priority.max(a, b)
 
   /** Convenience method for returning the lower of two priorities. */
-  def min(a: jfxsl.Priority, b: jfxsl.Priority) = jfxsl.Priority.min(a, b)
+  def min(a: jfxsl.Priority, b: jfxsl.Priority): Priority = jfxsl.Priority.min(a, b)
 }
 
 

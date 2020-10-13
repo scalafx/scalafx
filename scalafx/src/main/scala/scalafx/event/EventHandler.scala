@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -116,7 +116,7 @@ trait EventHandlerDelegate {
   object HandlerMagnet {
     implicit def fromParen[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: () => Unit): HandlerMagnet[J, S] = {
       new HandlerMagnet[J, S] {
-        override val eventHandler = new jfxe.EventHandler[J] {
+        override val eventHandler: jfxe.EventHandler[J] = new jfxe.EventHandler[J] {
           def handle(event: J): Unit = {
             op()
           }
@@ -126,7 +126,7 @@ trait EventHandlerDelegate {
 
     implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S): HandlerMagnet[J, S] = {
       new HandlerMagnet[J, S] {
-        override val eventHandler = new jfxe.EventHandler[J] {
+        override val eventHandler: jfxe.EventHandler[J] = new jfxe.EventHandler[J] {
           def handle(event: J): Unit = {
             op(jfx2sfx(event))
           }
@@ -215,7 +215,7 @@ trait EventHandlerDelegate {
   object FilterMagnet {
     implicit def fromParen[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: () => Unit): FilterMagnet[J, S] = {
       new FilterMagnet[J, S] {
-        override val eventFilter = new jfxe.EventHandler[J] {
+        override val eventFilter: jfxe.EventHandler[J] = new jfxe.EventHandler[J] {
           def handle(event: J): Unit = {
             op()
           }
@@ -225,7 +225,7 @@ trait EventHandlerDelegate {
 
     implicit def fromEvent[J <: jfxe.Event, S <: Event with SFXDelegate[J]](op: S => Unit)(implicit jfx2sfx: J => S): FilterMagnet[J, S] = {
       new FilterMagnet[J, S] {
-        override val eventFilter = new jfxe.EventHandler[J] {
+        override val eventFilter: jfxe.EventHandler[J] = new jfxe.EventHandler[J] {
           def handle(event: J): Unit = {
             op(jfx2sfx(event))
           }
@@ -286,6 +286,6 @@ trait EventHandlerDelegate {
   /**
    * Construct an event dispatch chain for this target.
    */
-  def buildEventDispatchChain(chain: jfxe.EventDispatchChain) = eventHandlerDelegate.buildEventDispatchChain(chain)
+  def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain = eventHandlerDelegate.buildEventDispatchChain(chain)
 
 }

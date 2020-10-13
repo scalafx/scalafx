@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,25 +27,24 @@
 
 package scalafx.controls.controls
 
-import javafx.beans.value.{ChangeListener, ObservableValue}
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.control.{ChoiceBox, TextField}
 
 class TextFieldControls(target: TextField) extends PropertiesNodes[TextField](target, "TextField Properties") {
 
-  val txfPromptText = new TextField {
+  val txfPromptText: TextField = new TextField {
     text <==> target.promptText
   }
 
-  val chbPrefColumnCount = new ChoiceBox[Int] {
+  val chbPrefColumnCount: ChoiceBox[Int] = new ChoiceBox[Int] {
     items = ObservableBuffer[Int](0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15)
+    value = items.value.get(7)
   }
   // In JAvaFX 2.1, bind TextArea.prefRowCount with value
-  chbPrefColumnCount.delegate.selectionModelProperty.addListener(new ChangeListener[Any] {
-    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any): Unit = {
-      target.prefColumnCount = chbPrefColumnCount.items.get().get(newValue.toString.toInt)
-    }
-  })
+  chbPrefColumnCount.value.onChange { (_, _, newValue) =>
+    target.prefColumnCount = chbPrefColumnCount.items.value.get(newValue.toString.toInt)
+  }
+  target.prefColumnCount = chbPrefColumnCount.value()
 
   super.addNode("Prompt Text", txfPromptText)
   super.addNode("Text columns", chbPrefColumnCount)

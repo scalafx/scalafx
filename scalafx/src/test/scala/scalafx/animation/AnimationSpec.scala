@@ -40,9 +40,9 @@ class AnimationSpec
     classOf[jfxa.Animation], classOf[Animation])
   with RunOnApplicationThread {
 
-  override protected def getScalaClassInstance = new Animation(new jfxa.Timeline) {}
+  override protected def getScalaClassInstance: Animation = new Animation(new jfxa.Timeline) {}
 
-  override def getJavaClassInstance = new jfxa.Animation {
+  override def getJavaClassInstance: jfxa.Animation = new jfxa.Animation {
     def doPlayTo(p1: Long, p2: Long): Unit = {}
 
     def doJumpTo(p1: Long, p2: Long, p3: Boolean): Unit = {}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,7 @@ package scalafx.scene.layout
 import javafx.scene.{layout => jfxsl}
 import javafx.{scene => jfxs}
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
+import scalafx.geometry.GeometryIncludes.{jfxInsets2sfx, jfxPos2sfx}
 import scalafx.geometry.Insets.sfxInsets2jfx
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Node
@@ -50,7 +51,7 @@ object StackPane {
   /**
    * Returns the child's alignment constraint if set.
    */
-  def getAlignment(child: Node) = jfxsl.StackPane.getAlignment(child)
+  def getAlignment(child: Node): Pos = jfxsl.StackPane.getAlignment(child)
 
   /**
    * Sets the alignment for the child when contained by a stackpane.
@@ -62,7 +63,7 @@ object StackPane {
   /**
    * Returns the child's margin constraint if set.
    */
-  def getMargin(child: Node) = jfxsl.StackPane.getMargin(child)
+  def getMargin(child: Node): Insets = jfxsl.StackPane.getMargin(child)
 
   /**
    * Sets the margin for the child when contained by an hbox.
@@ -78,5 +79,5 @@ object StackPane {
  */
 class StackPane(override val delegate: jfxsl.StackPane = new jfxsl.StackPane)
   extends Pane(delegate)
-  with AlignmentDelegate[jfxsl.StackPane]
-  with SFXDelegate[jfxsl.StackPane]
+    with AlignmentDelegate[jfxsl.StackPane]
+    with SFXDelegate[jfxsl.StackPane]

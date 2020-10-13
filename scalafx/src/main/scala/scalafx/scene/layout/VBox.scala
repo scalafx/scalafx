@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,7 +31,7 @@ import javafx.{scene => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty}
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
-import scalafx.geometry.Insets
+import scalafx.geometry.{Insets, Orientation}
 import scalafx.scene.Node
 
 import scala.language.implicitConversions
@@ -49,7 +49,7 @@ object VBox {
   /**
    * Returns the child's margin constraint if set.
    */
-  def getMargin(child: Node) = jfxsl.VBox.getMargin(child)
+  def getMargin(child: Node): Insets = jfxsl.VBox.getMargin(child)
 
   /**
    * Sets the margin for the child when contained by a vbox.
@@ -61,7 +61,7 @@ object VBox {
   /**
    * Returns the child's vgrow constraint if set.
    */
-  def getVgrow(child: Node) = jfxsl.VBox.getVgrow(child)
+  def getVgrow(child: Node): Priority = jfxsl.VBox.getVgrow(child)
 
   /**
    * Sets the vertical grow priority for the child when contained by a vbox.
@@ -77,8 +77,8 @@ object VBox {
  */
 class VBox(override val delegate: jfxsl.VBox = new jfxsl.VBox)
   extends Pane(delegate)
-  with AlignmentDelegate[jfxsl.VBox]
-  with SFXDelegate[jfxsl.VBox] {
+    with AlignmentDelegate[jfxsl.VBox]
+    with SFXDelegate[jfxsl.VBox] {
 
   /**
    * Creates a VBox layout with the specified spacing between children.
@@ -87,14 +87,16 @@ class VBox(override val delegate: jfxsl.VBox = new jfxsl.VBox)
 
   /**
    * Creates an HBox layout with spacing = 0.
+   *
    * @param children The initial set of children for this pane.
    */
   def this(children: Node*) = this(new jfxsl.VBox(children.map(_.delegate): _*))
 
   /**
    * Creates an HBox layout with the specified spacing between children.
+   *
    * @param spacing  The amount of horizontal space between each child.
-   * @param children  The initial set of children for this pane.
+   * @param children The initial set of children for this pane.
    */
   def this(spacing: Double, children: Node*) = this(new jfxsl.VBox(spacing, children.map(_.delegate): _*))
 
@@ -120,7 +122,7 @@ class VBox(override val delegate: jfxsl.VBox = new jfxsl.VBox)
   /**
    * Returns the orientation of a node's resizing bias for layout purposes.
    */
-  def getContentBias = delegate.getContentBias
+  def getContentBias: Orientation = delegate.getContentBias
 
   /**
    * Requests a layout pass to be performed before the next scene is rendered.

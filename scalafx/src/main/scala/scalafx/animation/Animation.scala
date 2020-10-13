@@ -169,7 +169,7 @@ abstract class Animation protected(override val delegate: jfxa.Animation)
   /**
    * The action to be executed at the conclusion of this $AN.
    */
-  def onFinished = delegate.onFinishedProperty
+  def onFinished: ObjectProperty[jfxe.EventHandler[jfxe.ActionEvent]] = delegate.onFinishedProperty
 
   def onFinished_=(handler: jfxe.EventHandler[jfxe.ActionEvent]): Unit = {
     onFinished() = handler

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -47,43 +47,50 @@ object PopupWindow {
 
     /** Represents bottom left content corner. */
     case object ContentBottomLeft extends AnchorLocation(jfxs.PopupWindow.AnchorLocation.CONTENT_BOTTOM_LEFT)
-    @deprecated ("Use ContentBottomLeft; CONTENT_BOTTOM_LEFT will be removed in a future release", "8.0.60-R10")
-    val CONTENT_BOTTOM_LEFT = ContentBottomLeft
+    @deprecated("Use ContentBottomLeft; CONTENT_BOTTOM_LEFT will be removed in a future release", "8.0.60-R10")
+    val CONTENT_BOTTOM_LEFT: AnchorLocation = ContentBottomLeft
 
     /** Represents bottom right content corner. */
     case object ContentBottomRight extends AnchorLocation(jfxs.PopupWindow.AnchorLocation.CONTENT_BOTTOM_RIGHT)
-    @deprecated ("Use ContentBottomRight; CONTENT_BOTTOM_RIGHT will be removed in a future release", "8.0.60-R10")
-    val CONTENT_BOTTOM_RIGHT = ContentBottomRight
+
+    @deprecated("Use ContentBottomRight; CONTENT_BOTTOM_RIGHT will be removed in a future release", "8.0.60-R10")
+    val CONTENT_BOTTOM_RIGHT: AnchorLocation = ContentBottomRight
 
     /** Represents top left content corner. */
     case object ContentTopLeft extends AnchorLocation(jfxs.PopupWindow.AnchorLocation.CONTENT_TOP_LEFT)
-    @deprecated ("Use ContentTopLeft; CONTENT_TOP_LEFT will be removed in a future release", "8.0.60-R10")
-    val CONTENT_TOP_LEFT = ContentTopLeft
+
+    @deprecated("Use ContentTopLeft; CONTENT_TOP_LEFT will be removed in a future release", "8.0.60-R10")
+    val CONTENT_TOP_LEFT: AnchorLocation = ContentTopLeft
 
     /** Represents top right content corner. */
     case object ContentTopRight extends AnchorLocation(jfxs.PopupWindow.AnchorLocation.CONTENT_TOP_RIGHT)
-    @deprecated ("Use ContentTopRight; CONTENT_TOP_RIGHT will be removed in a future release", "8.0.60-R10")
-    val CONTENT_TOP_RIGHT = ContentTopRight
+
+    @deprecated("Use ContentTopRight; CONTENT_TOP_RIGHT will be removed in a future release", "8.0.60-R10")
+    val CONTENT_TOP_RIGHT: AnchorLocation = ContentTopRight
 
     /** Represents bottom left window corner. */
     case object WindowBottomLeft extends AnchorLocation(jfxs.PopupWindow.AnchorLocation.WINDOW_BOTTOM_LEFT)
-    @deprecated ("Use WindowBottomLeft; WINDOW_BOTTOM_LEFT will be removed in a future release", "8.0.60-R10")
-    val WINDOW_BOTTOM_LEFT = WindowBottomLeft
+
+    @deprecated("Use WindowBottomLeft; WINDOW_BOTTOM_LEFT will be removed in a future release", "8.0.60-R10")
+    val WINDOW_BOTTOM_LEFT: AnchorLocation = WindowBottomLeft
 
     /** Represents bottom right window corner. */
     case object WindowBottomRight extends AnchorLocation(jfxs.PopupWindow.AnchorLocation.WINDOW_BOTTOM_RIGHT)
-    @deprecated ("Use WindowBottomRight; WINDOW_BOTTOM_RIGHT will be removed in a future release", "8.0.60-R10")
-    val WINDOW_BOTTOM_RIGHT = WindowBottomRight
+
+    @deprecated("Use WindowBottomRight; WINDOW_BOTTOM_RIGHT will be removed in a future release", "8.0.60-R10")
+    val WINDOW_BOTTOM_RIGHT: AnchorLocation = WindowBottomRight
 
     /** Represents top left window corner. */
     case object WindowTopLeft extends AnchorLocation(jfxs.PopupWindow.AnchorLocation.WINDOW_TOP_LEFT)
-    @deprecated ("Use WindowTopLeft; WINDOW_TOP_LEFT will be removed in a future release", "8.0.60-R10")
-    val WINDOW_TOP_LEFT = WindowTopLeft
+
+    @deprecated("Use WindowTopLeft; WINDOW_TOP_LEFT will be removed in a future release", "8.0.60-R10")
+    val WINDOW_TOP_LEFT: AnchorLocation = WindowTopLeft
 
     /** Represents top right window corner. */
     case object WindowTopRight extends AnchorLocation(jfxs.PopupWindow.AnchorLocation.WINDOW_TOP_RIGHT)
-    @deprecated ("Use WindowTopRight; WINDOW_TOP_RIGHT will be removed in a future release", "8.0.60-R10")
-    val WINDOW_TOP_RIGHT = WindowTopRight
+
+    @deprecated("Use WindowTopRight; WINDOW_TOP_RIGHT will be removed in a future release", "8.0.60-R10")
+    val WINDOW_TOP_RIGHT: AnchorLocation = WindowTopRight
 
     protected override def unsortedValues: Array[AnchorLocation] = Array(ContentBottomLeft, ContentBottomRight,
       ContentTopLeft, ContentTopRight, WindowBottomLeft, WindowBottomRight, WindowTopLeft, WindowTopRight)
@@ -146,7 +153,7 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
   /**
    * Called after autoHide is run.
    */
-  def onAutoHide = delegate.onAutoHideProperty
+  def onAutoHide: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onAutoHideProperty
 
   def onAutoHide_=(v: jfxe.EventHandler[jfxe.Event]): Unit = {
     onAutoHide() = v

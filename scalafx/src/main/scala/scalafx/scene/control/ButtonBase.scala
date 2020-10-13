@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,7 +29,7 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc, input => jfxsi}
 import javafx.{event => jfxe}
 import scalafx.Includes._
-import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.beans.property.{ObjectProperty, ReadOnlyBooleanProperty}
 import scalafx.delegate.{FireDelegate, SFXDelegate}
 import scalafx.scene.input.MouseEvent
 
@@ -52,7 +52,7 @@ abstract class ButtonBase(override val delegate: jfxsc.ButtonBase)
   /**
    * The button's action, which is invoked whenever the button is fired.
    */
-  def onAction = delegate.onActionProperty
+  def onAction: ObjectProperty[jfxe.EventHandler[jfxe.ActionEvent]] = delegate.onActionProperty
 
   def onAction_=(implicit aeh: jfxe.EventHandler[jfxe.ActionEvent]): Unit = {
     onAction() = aeh

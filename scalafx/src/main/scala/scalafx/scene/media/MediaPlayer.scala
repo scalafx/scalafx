@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,58 +48,65 @@ object MediaPlayer {
      * Media and MediaView objects associated with disposed player can be reused.
      */
     case object Disposed extends Status(jfxsm.MediaPlayer.Status.DISPOSED)
-    @deprecated ("Use Disposed; DISPOSED will be removed in a future release", "8.0.60-R10")
-    val DISPOSED = Disposed
+    @deprecated("Use Disposed; DISPOSED will be removed in a future release", "8.0.60-R10")
+    val DISPOSED: Status = Disposed
 
     /**
      * State of the player when a critical error has occurred.
      */
     case object Halted extends Status(jfxsm.MediaPlayer.Status.HALTED)
-    @deprecated ("Use Halted; HALTED will be removed in a future release", "8.0.60-R10")
-    val HALTED = Halted
+
+    @deprecated("Use Halted; HALTED will be removed in a future release", "8.0.60-R10")
+    val HALTED: Status = Halted
 
     /**
      * State of the player when playback is paused.
      */
     case object Paused extends Status(jfxsm.MediaPlayer.Status.PAUSED)
-    @deprecated ("Use Paused; PAUSED will be removed in a future release", "8.0.60-R10")
-    val PAUSED = Paused
+
+    @deprecated("Use Paused; PAUSED will be removed in a future release", "8.0.60-R10")
+    val PAUSED: Status = Paused
 
     /**
      * State of the player when it is currently playing.
      */
     case object Playing extends Status(jfxsm.MediaPlayer.Status.PLAYING)
-    @deprecated ("Use Playing; PLAYING will be removed in a future release", "8.0.60-R10")
-    val PLAYING = Playing
+
+    @deprecated("Use Playing; PLAYING will be removed in a future release", "8.0.60-R10")
+    val PLAYING: Status = Playing
 
     /**
      * State of the player once it is prepared to play.
      */
     case object Ready extends Status(jfxsm.MediaPlayer.Status.READY)
-    @deprecated ("Use Ready; READY will be removed in a future release", "8.0.60-R10")
-    val READY = Ready
+
+    @deprecated("Use Ready; READY will be removed in a future release", "8.0.60-R10")
+    val READY: Status = Ready
 
     /**
      * State of the player when data coming into the buffer has slowed or stopped and the playback buffer does not
      * have enough data to continue playing.
      */
     case object Stalled extends Status(jfxsm.MediaPlayer.Status.STALLED)
-    @deprecated ("Use Stalled; STALLED will be removed in a future release", "8.0.60-R10")
-    val STALLED = Stalled
+
+    @deprecated("Use Stalled; STALLED will be removed in a future release", "8.0.60-R10")
+    val STALLED: Status = Stalled
 
     /**
      * State of the player when playback has stopped.
      */
     case object Stopped extends Status(jfxsm.MediaPlayer.Status.STOPPED)
-    @deprecated ("Use Stopped; STOPPED will be removed in a future release", "8.0.60-R10")
-    val STOPPED = Stopped
+
+    @deprecated("Use Stopped; STOPPED will be removed in a future release", "8.0.60-R10")
+    val STOPPED: Status = Stopped
 
     /**
      * State of the player immediately after creation.
      */
     case object Unknown extends Status(jfxsm.MediaPlayer.Status.UNKNOWN)
-    @deprecated ("Use Unknown; UNKNOWN will be removed in a future release", "8.0.60-R10")
-    val UNKNOWN = Unknown
+
+    @deprecated("Use Unknown; UNKNOWN will be removed in a future release", "8.0.60-R10")
+    val UNKNOWN: Status = Unknown
 
     protected override def unsortedValues: Array[Status] = Array(Disposed, Halted, Paused, Playing,
       Ready, Stalled, Stopped, Unknown)
@@ -226,7 +233,7 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
   /**
    * Retrieves the Media instance being played.
    */
-  def media = delegate.getMedia
+  def media: Media = delegate.getMedia
 
   /**
    * Whether the player audio is muted.
@@ -279,7 +286,7 @@ class MediaPlayer(override val delegate: jfxsm.MediaPlayer) extends SFXDelegate[
   /**
    * Event handler invoked when the player currentTime reaches a media marker.
    */
-  def onMarker = delegate.onMarkerProperty
+  def onMarker: ObjectProperty[jfxe.EventHandler[jfxsm.MediaMarkerEvent]] = delegate.onMarkerProperty
 
   def onMarker_=(v: jfxe.EventHandler[jfxsm.MediaMarkerEvent]): Unit = {
     onMarker() = v

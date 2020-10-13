@@ -35,7 +35,7 @@ import scalafx.beans.property.{ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.beans.value.ObservableValue
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
-import scalafx.event.Event
+import scalafx.event.{Event, EventType}
 
 import scala.language.implicitConversions
 
@@ -161,24 +161,24 @@ object TableColumn {
   /**
    * Parent event for any TableColumn edit event.
    */
-  def editAnyEvent = jfxsc.TableColumn.editAnyEvent
+  def editAnyEvent: EventType[jfxsc.TableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TableColumn.editAnyEvent)
 
   /**
    * Indicates that the editing has been canceled, meaning that no change should be made to the backing data source.
    */
-  def editCancelEvent = jfxsc.TableColumn.editCancelEvent
+  def editCancelEvent: EventType[jfxsc.TableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TableColumn.editCancelEvent)
 
   /**
    * Indicates that the editing has been committed by the user, meaning that a change should be made to the backing
    * data source to reflect the new data.
    */
-  def editCommitEvent = jfxsc.TableColumn.editCommitEvent
+  def editCommitEvent: EventType[jfxsc.TableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TableColumn.editCommitEvent)
 
   /**
    * Indicates that the user has performed some interaction to start an edit event, or alternatively the
    * TableView.edit(Int, TableColumn) method has been called.
    */
-  def editStartEvent = jfxsc.TableColumn.editStartEvent
+  def editStartEvent: EventType[jfxsc.TableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TableColumn.editStartEvent)
 
 }
 
@@ -258,7 +258,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * This event handler will be fired when the user cancels editing a cell.
    */
-  def onEditCancel = delegate.onEditCancelProperty
+  def onEditCancel: ObjectProperty[jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]] = delegate.onEditCancelProperty
 
   def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]): Unit = {
     onEditCancel() = v
@@ -267,7 +267,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * This event handler will be fired when the user successfully commits their editing.
    */
-  def onEditCommit = delegate.onEditCommitProperty
+  def onEditCommit: ObjectProperty[jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]] = delegate.onEditCommitProperty
 
   def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]): Unit = {
     onEditCommit() = v
@@ -276,7 +276,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * This event handler will be fired when the user successfully initiates editing.
    */
-  def onEditStart = delegate.onEditCommitProperty
+  def onEditStart: ObjectProperty[jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]] = delegate.onEditCommitProperty
 
   def onEditStart_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]): Unit = {
     onEditStart() = v

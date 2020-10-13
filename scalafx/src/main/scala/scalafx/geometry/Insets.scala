@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object Insets {
   implicit def sfxInsets2jfx(i: Insets): jfxg.Insets = if (i != null) i.delegate else null
@@ -57,21 +57,21 @@ class Insets(override val delegate: jfxg.Insets) extends SFXDelegate[jfxg.Insets
   /**
    * The inset on the top side
    */
-  def top = delegate.getTop
+  def top: Double = delegate.getTop
 
   /**
    * The inset on the right side
    */
-  def right = delegate.getRight
+  def right: Double = delegate.getRight
 
   /**
    * The inset on the bottom side
    */
-  def bottom = delegate.getBottom
+  def bottom: Double = delegate.getBottom
 
   /**
    * The inset on the left side
    */
-  def left = delegate.getLeft
+  def left: Double = delegate.getLeft
 
 }

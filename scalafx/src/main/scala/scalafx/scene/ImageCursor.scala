@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,13 @@ package scalafx.scene
 
 import javafx.scene.{image => jfxsi}
 import javafx.{scene => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.property.{ReadOnlyDoubleProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
+import scalafx.geometry.Dimension2D
 import scalafx.scene.image.Image
+
+import scala.language.implicitConversions
 
 object ImageCursor {
   implicit def sfxImageCursor2jfx(c: ImageCursor): jfxs.ImageCursor = if (c != null) c.delegate else null
@@ -41,19 +42,19 @@ object ImageCursor {
   /**
    * Creates a custom image cursor from one of the specified images.
    */
-  def chooseBestCursor(images: Array[jfxsi.Image], hotspotX: Double, hotspotY: Double) =
+  def chooseBestCursor(images: Array[jfxsi.Image], hotspotX: Double, hotspotY: Double): jfxs.ImageCursor =
     jfxs.ImageCursor.chooseBestCursor(images, hotspotX, hotspotX)
 
   /**
    * Gets the supported cursor size that is closest to the specified preferred size.
    */
-  def getBestSize(preferredWidth: Double, preferredHeight: Double) =
+  def getBestSize(preferredWidth: Double, preferredHeight: Double): Dimension2D =
     jfxs.ImageCursor.getBestSize(preferredWidth, preferredHeight)
 
   /**
    * Returns the maximum number of colors supported in a custom image cursor palette.
    */
-  def getMaximumColors = jfxs.ImageCursor.getMaximumColors
+  def getMaximumColors: Int = jfxs.ImageCursor.getMaximumColors
 
 }
 

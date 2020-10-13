@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
+
+import scala.language.implicitConversions
 
 object RotateEvent {
   implicit def sfxRotateEvent2jfx(re: RotateEvent): jfxsi.RotateEvent = if (re != null) re.delegate else null
@@ -40,29 +40,29 @@ object RotateEvent {
    * Common supertype for all rotate event types.
    */
   val Any: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ANY
-  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
-  val ANY = Any
+  @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  val ANY: EventType[jfxsi.RotateEvent] = Any
 
   /**
    * This event occurs when user performs a rotating gesture such as dragging two fingers around each other.
    */
   val Rotate: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATE
-  @deprecated ("Use Rotate; ROTATE will be removed in a future release", "8.0.60-R10")
-  val ROTATE = Rotate
+  @deprecated("Use Rotate; ROTATE will be removed in a future release", "8.0.60-R10")
+  val ROTATE: EventType[jfxsi.RotateEvent] = Rotate
 
   /**
    * This event occurs when a rotating gesture ends.
    */
   val RotationFinished: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATION_FINISHED
-  @deprecated ("Use RotationFinished; ROTATION_FINISHED will be removed in a future release", "8.0.60-R10")
-  val ROTATION_FINISHED = RotationFinished
+  @deprecated("Use RotationFinished; ROTATION_FINISHED will be removed in a future release", "8.0.60-R10")
+  val ROTATION_FINISHED: EventType[jfxsi.RotateEvent] = RotationFinished
 
   /**
    * This event occurs when a rotating gesture is detected.
    */
   val RotationStarted: EventType[jfxsi.RotateEvent] = jfxsi.RotateEvent.ROTATION_STARTED
-  @deprecated ("Use RotationStarted; ROTATION_STARTED will be removed in a future release", "8.0.60-R10")
-  val ROTATION_STARTED = RotationStarted
+  @deprecated("Use RotationStarted; ROTATION_STARTED will be removed in a future release", "8.0.60-R10")
+  val ROTATION_STARTED: EventType[jfxsi.RotateEvent] = RotationStarted
 
 }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,12 +35,13 @@ object Orientation
   extends SFXEnumDelegateCompanion[jfxg.Orientation, Orientation] {
 
   case object Horizontal extends Orientation(jfxg.Orientation.HORIZONTAL)
-  @deprecated ("Use Horizontal; HORIZONTAL will be removed in a future release", "8.0.60-R10")
-  val HORIZONTAL = Horizontal
+  @deprecated("Use Horizontal; HORIZONTAL will be removed in a future release", "8.0.60-R10")
+  val HORIZONTAL: Orientation = Horizontal
 
   case object Vertical extends Orientation(jfxg.Orientation.VERTICAL)
-  @deprecated ("Use Vertical; VERTICAL will be removed in a future release", "8.0.60-R10")
-  val VERTICAL = Vertical
+
+  @deprecated("Use Vertical; VERTICAL will be removed in a future release", "8.0.60-R10")
+  val VERTICAL: Orientation = Vertical
 
   protected override def unsortedValues: Array[Orientation] = Array(Horizontal, Vertical)
 }

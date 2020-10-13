@@ -32,7 +32,7 @@ import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty, ReadOnlyIntegerProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
-import scalafx.event.Event
+import scalafx.event.{Event, EventType}
 import scalafx.geometry.Orientation
 import scalafx.scene.Node
 
@@ -76,25 +76,25 @@ object ListView {
   /**
    * An EventType that indicates some edit event has occurred.
    */
-  def editAnyEvent = jfxsc.ListView.editAnyEvent
+  def editAnyEvent: EventType[jfxsc.ListView.EditEvent[Nothing]] = new EventType(jfxsc.ListView.editAnyEvent)
 
   /**
    * An EventType used to indicate that an edit event has just been canceled within the ListView
    * upon which the event was fired.
    */
-  def editCancelEvent = jfxsc.ListView.editCancelEvent
+  def editCancelEvent: EventType[jfxsc.ListView.EditEvent[Nothing]] = new EventType(jfxsc.ListView.editCancelEvent)
 
   /**
    * An EventType used to indicate that an edit event has been committed within the ListView
    * upon which the event was fired.
    */
-  def editCommitEvent = jfxsc.ListView.editCommitEvent
+  def editCommitEvent: EventType[jfxsc.ListView.EditEvent[Nothing]] = new EventType(jfxsc.ListView.editCommitEvent)
 
   /**
    * An EventType used to indicate that an edit event has started within the ListView
    * upon which the event was fired.
    */
-  def editStartEvent = jfxsc.ListView.editStartEvent
+  def editStartEvent: EventType[jfxsc.ListView.EditEvent[Nothing]] = new EventType(jfxsc.ListView.editStartEvent)
 }
 
 /**
@@ -176,7 +176,7 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
   /**
    * This event handler will be fired when the user cancels editing a cell.
    */
-  def onEditCancel = delegate.onEditCancelProperty
+  def onEditCancel: ObjectProperty[jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]] = delegate.onEditCancelProperty
 
   def onEditCancel_=(v: jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]): Unit = {
     onEditCancel() = v
@@ -186,7 +186,7 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * This property is used when the user performs an action that should result in their editing
    * input being persisted.
    */
-  def onEditCommit = delegate.onEditCommitProperty
+  def onEditCommit: ObjectProperty[jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]] = delegate.onEditCommitProperty
 
   def onEditCommit_=(v: jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]): Unit = {
     onEditCommit() = v
@@ -195,7 +195,7 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
   /**
    * This event handler will be fired when the user successfully initiates editing.
    */
-  def onEditStart = delegate.onEditStartProperty
+  def onEditStart: ObjectProperty[jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]] = delegate.onEditStartProperty
 
   def onEditStart_=(v: jfxe.EventHandler[jfxsc.ListView.EditEvent[T]]): Unit = {
     onEditStart() = v

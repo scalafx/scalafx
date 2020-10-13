@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,14 +27,14 @@
 package scalafx.beans.binding
 
 import javafx.beans.{binding => jfxbb}
+import scalafx.beans.value.ObservableValue
 
 import scala.language.implicitConversions
-import scalafx.beans.value.ObservableValue
 
 object ObjectBinding {
   implicit def sfxObjectBinding2jfx[T](ob: ObjectBinding[T]): jfxbb.ObjectBinding[T] = if (ob != null) ob.delegate else null
 }
 
 class ObjectBinding[T](override val delegate: jfxbb.ObjectBinding[T]) extends ObjectExpression[T](delegate) with ObservableValue[T, T] {
-  def value = delegate.get
+  def value: T = delegate.get
 }

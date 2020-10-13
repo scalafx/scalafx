@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,10 @@
 package scalafx.scene.paint
 
 import javafx.scene.{paint => jfxsp}
+import scalafx.delegate.SFXDelegate
+import scalafx.scene.paint.PaintIncludes.jfxColor2sfx
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object Stop {
   implicit def sfxStop2jfx(s: Stop): jfxsp.Stop = if (s != null) s.delegate else null
@@ -43,10 +44,10 @@ class Stop(override val delegate: jfxsp.Stop) extends SFXDelegate[jfxsp.Stop] {
   /**
    * Gets a number ranging from 0 to 1 that indicates where this gradient stop is placed.
    */
-  def offset = delegate.getOffset
+  def offset: Double = delegate.getOffset
 
   /**
    * Gets the color of the gradient at this offset.
    */
-  def color = delegate.getColor
+  def color: Color = delegate.getColor
 }

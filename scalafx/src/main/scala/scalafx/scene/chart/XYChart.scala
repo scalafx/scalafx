@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 package scalafx.scene.chart
 
 import javafx.scene.{chart => jfxsc}
-import javafx.{scene => jfxs}
+import javafx.{collections => jfxc, scene => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty, StringProperty}
 import scalafx.collections.ObservableBuffer
@@ -90,7 +90,7 @@ object XYChart {
 
     def chart: ReadOnlyObjectProperty[jfxsc.XYChart[X, Y]] = delegate.chartProperty
 
-    def data = delegate.dataProperty
+    def data: ObjectProperty[jfxc.ObservableList[jfxsc.XYChart.Data[X, Y]]] = delegate.dataProperty
 
     def data_=(v: ObservableBuffer[jfxsc.XYChart.Data[X, Y]]): Unit = {
       data() = v
@@ -131,7 +131,7 @@ abstract class XYChart[X, Y](override val delegate: jfxsc.XYChart[X, Y])
     alternativeRowFillVisible() = v
   }
 
-  def data = delegate.dataProperty
+  def data: ObjectProperty[jfxc.ObservableList[jfxsc.XYChart.Series[X, Y]]] = delegate.dataProperty
 
   def data_=(v: ObservableBuffer[jfxsc.XYChart.Series[X, Y]]): Unit = {
     data() = v

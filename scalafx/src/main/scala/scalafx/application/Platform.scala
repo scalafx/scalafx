@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -66,7 +66,7 @@ object Platform {
   }
 
   /** Queries whether a specific conditional feature is supported by the platform. */
-  def isSupported(feature: ConditionalFeature) = jfxa.Platform.isSupported(feature)
+  def isSupported(feature: ConditionalFeature): Boolean = jfxa.Platform.isSupported(feature)
 
   /**
    * This method starts the JavaFX runtime. The specified Runnable will then be

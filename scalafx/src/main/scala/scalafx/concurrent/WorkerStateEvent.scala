@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,11 +28,11 @@
 package scalafx.concurrent
 
 import javafx.{concurrent => jfxc}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.{Event, EventType}
+
+import scala.language.implicitConversions
 
 object WorkerStateEvent {
   implicit def sfxWorkerStateEvent2jfx(w: WorkerStateEvent): jfxc.WorkerStateEvent = if (w != null) w.delegate else null
@@ -47,48 +47,48 @@ object WorkerStateEvent {
    * CANCELLED state.
    */
   val WorkerStateCancelled: EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_CANCELLED
-  @deprecated ("Use WorkerStateCancelled; WORKER_STATE_CANCELLED will be removed in a future release", "8.0.60-R10")
-  val WORKER_STATE_CANCELLED = WorkerStateCancelled
+  @deprecated("Use WorkerStateCancelled; WORKER_STATE_CANCELLED will be removed in a future release", "8.0.60-R10")
+  val WORKER_STATE_CANCELLED: EventType[jfxc.WorkerStateEvent] = WorkerStateCancelled
 
   /**
    * This event occurs when the state of a Worker implementation has transitioned to the
    * FAILED state.
    */
   val WorkerStateFailed: EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_FAILED
-  @deprecated ("Use WorkerStateFailed; WORKER_STATE_FAILED will be removed in a future release", "8.0.60-R10")
-  val WORKER_STATE_FAILED = WorkerStateFailed
+  @deprecated("Use WorkerStateFailed; WORKER_STATE_FAILED will be removed in a future release", "8.0.60-R10")
+  val WORKER_STATE_FAILED: EventType[jfxc.WorkerStateEvent] = WorkerStateFailed
 
   /**
    * This event occurs when the state of a Worker implementation has transitioned to the
    * READY state.
    */
   val WorkerStateReady: EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_READY
-  @deprecated ("Use WorkerStateReady; WORKER_STATE_READY will be removed in a future release", "8.0.60-R10")
-  val WORKER_STATE_READY = WorkerStateReady
+  @deprecated("Use WorkerStateReady; WORKER_STATE_READY will be removed in a future release", "8.0.60-R10")
+  val WORKER_STATE_READY: EventType[jfxc.WorkerStateEvent] = WorkerStateReady
 
   /**
    * This event occurs when the state of a Worker implementation has transitioned to the
    * RUNNING state.
    */
   val WorkerStateRunning: EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_RUNNING
-  @deprecated ("Use WorkerStateRunning; WORKER_STATE_RUNNING will be removed in a future release", "8.0.60-R10")
-  val WORKER_STATE_RUNNING = WorkerStateRunning
+  @deprecated("Use WorkerStateRunning; WORKER_STATE_RUNNING will be removed in a future release", "8.0.60-R10")
+  val WORKER_STATE_RUNNING: EventType[jfxc.WorkerStateEvent] = WorkerStateRunning
 
   /**
    * This event occurs when the state of a Worker implementation has transitioned to the
    * SCHEDULED state.
    */
   val WorkerStateScheduled: EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_SCHEDULED
-  @deprecated ("Use WorkerStateScheduled; WORKER_STATE_SCHEDULED will be removed in a future release", "8.0.60-R10")
-  val WORKER_STATE_SCHEDULED = WorkerStateScheduled
+  @deprecated("Use WorkerStateScheduled; WORKER_STATE_SCHEDULED will be removed in a future release", "8.0.60-R10")
+  val WORKER_STATE_SCHEDULED: EventType[jfxc.WorkerStateEvent] = WorkerStateScheduled
 
   /**
    * This event occurs when the state of a Worker implementation has transitioned to the
    * SUCCEEDED state.
    */
   val WorkerStateSucceeded: EventType[jfxc.WorkerStateEvent] = jfxc.WorkerStateEvent.WORKER_STATE_SUCCEEDED
-  @deprecated ("Use WorkerStateSucceeded; WORKER_STATE_SUCCEEDED will be removed in a future release", "8.0.60-R10")
-  val WORKER_STATE_SUCCEEDED = WorkerStateSucceeded
+  @deprecated("Use WorkerStateSucceeded; WORKER_STATE_SUCCEEDED will be removed in a future release", "8.0.60-R10")
+  val WORKER_STATE_SUCCEEDED: EventType[jfxc.WorkerStateEvent] = WorkerStateSucceeded
 
 }
 

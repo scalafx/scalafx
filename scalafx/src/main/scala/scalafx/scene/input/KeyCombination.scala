@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,7 @@ package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
+import scalafx.scene.input.InputIncludes.jfxKeyCombination2sfx
 
 import scala.language.implicitConversions
 
@@ -41,22 +42,25 @@ object KeyCombination {
      * Constant which indicates that the modifier key can be either up or down.
      */
     case object Any extends ModifierValue(jfxsi.KeyCombination.ModifierValue.ANY)
-    @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
-    val ANY = Any
+
+    @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+    val ANY: ModifierValue = Any
 
     /**
      * Constant which indicates that the modifier key must be down.
      */
     case object Down extends ModifierValue(jfxsi.KeyCombination.ModifierValue.DOWN)
-    @deprecated ("Use Down; DOWN will be removed in a future release", "8.0.60-R10")
-    val DOWN = Down
+
+    @deprecated("Use Down; DOWN will be removed in a future release", "8.0.60-R10")
+    val DOWN: ModifierValue = Down
 
     /**
      * Constant which indicates that the modifier key must be up.
      */
     case object Up extends ModifierValue(jfxsi.KeyCombination.ModifierValue.UP)
-    @deprecated ("Use Up; UP will be removed in a future release", "8.0.60-R10")
-    val UP = Up
+
+    @deprecated("Use Up; UP will be removed in a future release", "8.0.60-R10")
+    val UP: ModifierValue = Up
 
     protected override def unsortedValues: Array[ModifierValue] = Array(Any, Down, Up)
 
@@ -147,7 +151,7 @@ object KeyCombination {
    * Constructs a new KeyCombination from the specified string.
    */
   @deprecated("Use apply instead", "1.0")
-  def valueOf(value: String) = jfxsi.KeyCombination.valueOf(value)
+  def valueOf(value: String): KeyCombination = jfxsi.KeyCombination.valueOf(value)
 
   /**
    * Constructs a new KeyCombination from the specified string.
@@ -184,7 +188,7 @@ abstract class KeyCombination protected(override val delegate: jfxsi.KeyCombinat
   /**
    * Returns a string representation of this KeyCombination.
    */
-  def name = delegate.getName
+  def name: String = delegate.getName
 
   /**
    * The state of the shift key in this key combination.
@@ -199,6 +203,6 @@ abstract class KeyCombination protected(override val delegate: jfxsi.KeyCombinat
   /**
    * Tests whether this key combination matches the combination in the given KeyEvent.
    */
-  def `match`(event: KeyEvent) = delegate.`match`(event)
+  def `match`(event: KeyEvent): Boolean = delegate.`match`(event)
 
 }

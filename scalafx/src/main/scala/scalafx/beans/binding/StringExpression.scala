@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,11 +26,11 @@
  */
 package scalafx.beans.binding
 
-import javafx.beans.value.ObservableStringValue
-import javafx.beans.{binding => jfxbb}
+import javafx.beans.{binding => jfxbb, value => jfxbv}
+import scalafx.beans.binding.BindingIncludes._
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object StringExpression {
   implicit def sfxStringExpression2jfx(se: StringExpression): jfxbb.StringExpression =
@@ -38,42 +38,58 @@ object StringExpression {
 }
 
 class StringExpression(val delegate: jfxbb.StringExpression) {
-  def ===(v: Null) = delegate.isNull
-  def ===(v: String) = delegate.isEqualTo(v)
-  def ===(v: ObservableStringValue) = delegate.isEqualTo(v)
+  def ===(v: Null): BooleanBinding = delegate.isNull
 
-  def =!=(v: Null) = delegate.isNotNull
-  def =!=(v: String) = delegate.isNotEqualTo(v)
-  def =!=(v: ObservableStringValue) = delegate.isNotEqualTo(v)
+  def ===(v: String): BooleanBinding = delegate.isEqualTo(v)
 
-  def ==~(v: Null) = delegate.isNull
-  def ==~(v: String) = delegate.isEqualToIgnoreCase(v)
-  def ==~(v: ObservableStringValue) = delegate.isEqualToIgnoreCase(v)
+  def ===(v: jfxbv.ObservableStringValue): BooleanBinding = delegate.isEqualTo(v)
 
-  def !=~(v: Null) = delegate.isNotNull
-  def !=~(v: String) = delegate.isNotEqualToIgnoreCase(v)
-  def !=~(v: ObservableStringValue) = delegate.isNotEqualToIgnoreCase(v)
+  def =!=(v: Null): BooleanBinding = delegate.isNotNull
 
-  def <(v: Null) = delegate.lessThan(v.asInstanceOf[String])
-  def <(v: String) = delegate.lessThan(v)
-  def <(v: ObservableStringValue) = delegate.lessThan(v)
+  def =!=(v: String): BooleanBinding = delegate.isNotEqualTo(v)
 
-  def <=(v: Null) = delegate.lessThanOrEqualTo(v.asInstanceOf[String])
-  def <=(v: String) = delegate.lessThanOrEqualTo(v)
-  def <=(v: ObservableStringValue) = delegate.lessThanOrEqualTo(v)
+  def =!=(v: jfxbv.ObservableStringValue): BooleanBinding = delegate.isNotEqualTo(v)
 
-  def >(v: Null) = delegate.greaterThan(v.asInstanceOf[String])
-  def >(v: String) = delegate.greaterThan(v)
-  def >(v: ObservableStringValue) = delegate.greaterThan(v)
+  def ==~(v: Null): BooleanBinding = delegate.isNull
 
-  def >=(v: Null) = delegate.greaterThanOrEqualTo(v.asInstanceOf[String])
-  def >=(v: String) = delegate.greaterThanOrEqualTo(v)
-  def >=(v: ObservableStringValue) = delegate.greaterThanOrEqualTo(v)
+  def ==~(v: String): BooleanBinding = delegate.isEqualToIgnoreCase(v)
+
+  def ==~(v: jfxbv.ObservableStringValue): BooleanBinding = delegate.isEqualToIgnoreCase(v)
+
+  def !=~(v: Null): BooleanBinding = delegate.isNotNull
+
+  def !=~(v: String): BooleanBinding = delegate.isNotEqualToIgnoreCase(v)
+
+  def !=~(v: jfxbv.ObservableStringValue): BooleanBinding = delegate.isNotEqualToIgnoreCase(v)
+
+  def <(v: Null): BooleanBinding = delegate.lessThan(v.asInstanceOf[String])
+
+  def <(v: String): BooleanBinding = delegate.lessThan(v)
+
+  def <(v: jfxbv.ObservableStringValue): BooleanBinding = delegate.lessThan(v)
+
+  def <=(v: Null): BooleanBinding = delegate.lessThanOrEqualTo(v.asInstanceOf[String])
+
+  def <=(v: String): BooleanBinding = delegate.lessThanOrEqualTo(v)
+
+  def <=(v: jfxbv.ObservableStringValue): BooleanBinding = delegate.lessThanOrEqualTo(v)
+
+  def >(v: Null): BooleanBinding = delegate.greaterThan(v.asInstanceOf[String])
+
+  def >(v: String): BooleanBinding = delegate.greaterThan(v)
+
+  def >(v: jfxbv.ObservableStringValue): BooleanBinding = delegate.greaterThan(v)
+
+  def >=(v: Null): BooleanBinding = delegate.greaterThanOrEqualTo(v.asInstanceOf[String])
+
+  def >=(v: String): BooleanBinding = delegate.greaterThanOrEqualTo(v)
+
+  def >=(v: jfxbv.ObservableStringValue): BooleanBinding = delegate.greaterThanOrEqualTo(v)
 
   // Kind of an odd case that concat is not observable, but this is how it is coded in JavaFX
-  def + = concat _
+  def + : Any => StringExpression = concat
 
-  def concat(v: Any) = {
+  def concat(v: Any): StringExpression = {
     val jfxV = v match {
       case d: SFXDelegate[_] => d.delegate
       case a => a

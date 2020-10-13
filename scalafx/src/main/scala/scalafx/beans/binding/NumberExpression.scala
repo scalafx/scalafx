@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,10 @@ package scalafx.beans.binding
 
 import javafx.beans.value.ObservableNumberValue
 import javafx.beans.{binding => jfxbb}
+import scalafx.beans.binding.BindingIncludes.jfxBooleanBinding2sfx
+import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
 
 import scala.language.implicitConversions
-import scalafx.beans.binding.NumberExpression.VariablePrecisionNumber
 
 object NumberExpression {
   implicit def sfxNumberExpression2jfx(ne: NumberExpression): jfxbb.NumberExpression = if (ne != null) ne.delegate else null
@@ -70,48 +71,48 @@ class NumberExpression(val delegate: jfxbb.NumberExpression) {
   def /(v: Double) = new NumberBinding(delegate.divide(v))
   def /(v: ObservableNumberValue) = new NumberBinding(delegate.divide(v))
 
-  def ===(v: Int) = delegate.isEqualTo(v)
-  def ===(v: Long) = delegate.isEqualTo(v)
-  def ===(v: Float) = delegate.isEqualTo(v, 0)
-  def ===(v: Double) = delegate.isEqualTo(v, 0)
-  def ===(v: VariablePrecisionNumber) = delegate.isEqualTo(v.number, v.precision)
-  def ===(v: ObservableNumberValue) = delegate.isEqualTo(v)
+  def ===(v: Int): BooleanBinding = delegate.isEqualTo(v)
+  def ===(v: Long): BooleanBinding = delegate.isEqualTo(v)
+  def ===(v: Float): BooleanBinding = delegate.isEqualTo(v, 0)
+  def ===(v: Double): BooleanBinding = delegate.isEqualTo(v, 0)
+  def ===(v: VariablePrecisionNumber): BooleanBinding = delegate.isEqualTo(v.number, v.precision)
+  def ===(v: ObservableNumberValue): BooleanBinding = delegate.isEqualTo(v)
 
-  def =!=(v: Int) = delegate.isNotEqualTo(v)
-  def =!=(v: Long) = delegate.isNotEqualTo(v)
-  def =!=(v: Float) = delegate.isNotEqualTo(v, 0)
-  def =!=(v: Double) = delegate.isNotEqualTo(v, 0)
-  def =!=(v: VariablePrecisionNumber) = delegate.isNotEqualTo(v.number, v.precision)
-  def =!=(v: ObservableNumberValue) = delegate.isNotEqualTo(v)
+  def =!=(v: Int): BooleanBinding = delegate.isNotEqualTo(v)
+  def =!=(v: Long): BooleanBinding = delegate.isNotEqualTo(v)
+  def =!=(v: Float): BooleanBinding = delegate.isNotEqualTo(v, 0)
+  def =!=(v: Double): BooleanBinding = delegate.isNotEqualTo(v, 0)
+  def =!=(v: VariablePrecisionNumber): BooleanBinding = delegate.isNotEqualTo(v.number, v.precision)
+  def =!=(v: ObservableNumberValue): BooleanBinding = delegate.isNotEqualTo(v)
 
-  def <(v: Int) = delegate.lessThan(v)
-  def <(v: Long) = delegate.lessThan(v)
-  def <(v: Float) = delegate.lessThan(v)
-  def <(v: Double) = delegate.lessThan(v)
-  def <(v: ObservableNumberValue) = delegate.lessThan(v)
+  def <(v: Int): BooleanBinding = delegate.lessThan(v)
+  def <(v: Long): BooleanBinding = delegate.lessThan(v)
+  def <(v: Float): BooleanBinding = delegate.lessThan(v)
+  def <(v: Double): BooleanBinding = delegate.lessThan(v)
+  def <(v: ObservableNumberValue): BooleanBinding = delegate.lessThan(v)
 
-  def >(v: Int) = delegate.greaterThan(v)
-  def >(v: Long) = delegate.greaterThan(v)
-  def >(v: Float) = delegate.greaterThan(v)
-  def >(v: Double) = delegate.greaterThan(v)
-  def >(v: ObservableNumberValue) = delegate.greaterThan(v)
+  def >(v: Int): BooleanBinding = delegate.greaterThan(v)
+  def >(v: Long): BooleanBinding = delegate.greaterThan(v)
+  def >(v: Float): BooleanBinding = delegate.greaterThan(v)
+  def >(v: Double): BooleanBinding = delegate.greaterThan(v)
+  def >(v: ObservableNumberValue): BooleanBinding = delegate.greaterThan(v)
 
-  def <=(v: Int) = delegate.lessThanOrEqualTo(v)
-  def <=(v: Long) = delegate.lessThanOrEqualTo(v)
-  def <=(v: Float) = delegate.lessThanOrEqualTo(v)
-  def <=(v: Double) = delegate.lessThanOrEqualTo(v)
-  def <=(v: ObservableNumberValue) = delegate.lessThanOrEqualTo(v)
+  def <=(v: Int): BooleanBinding = delegate.lessThanOrEqualTo(v)
+  def <=(v: Long): BooleanBinding = delegate.lessThanOrEqualTo(v)
+  def <=(v: Float): BooleanBinding = delegate.lessThanOrEqualTo(v)
+  def <=(v: Double): BooleanBinding = delegate.lessThanOrEqualTo(v)
+  def <=(v: ObservableNumberValue): BooleanBinding = delegate.lessThanOrEqualTo(v)
 
-  def >=(v: Int) = delegate.greaterThanOrEqualTo(v)
-  def >=(v: Long) = delegate.greaterThanOrEqualTo(v)
-  def >=(v: Float) = delegate.greaterThanOrEqualTo(v)
-  def >=(v: Double) = delegate.greaterThanOrEqualTo(v)
-  def >=(v: ObservableNumberValue) = delegate.greaterThanOrEqualTo(v)
+  def >=(v: Int): BooleanBinding = delegate.greaterThanOrEqualTo(v)
+  def >=(v: Long): BooleanBinding = delegate.greaterThanOrEqualTo(v)
+  def >=(v: Float): BooleanBinding = delegate.greaterThanOrEqualTo(v)
+  def >=(v: Double): BooleanBinding = delegate.greaterThanOrEqualTo(v)
+  def >=(v: ObservableNumberValue): BooleanBinding = delegate.greaterThanOrEqualTo(v)
 
   def unary_- = new NumberBinding(delegate.negate())
 
-  def toInt = delegate.intValue
-  def toLong = delegate.longValue
-  def toFloat = delegate.floatValue
-  def toDouble = delegate.doubleValue
+  def toInt: Int = delegate.intValue
+  def toLong: Long = delegate.longValue
+  def toFloat: Float = delegate.floatValue
+  def toDouble: Double = delegate.doubleValue
 }

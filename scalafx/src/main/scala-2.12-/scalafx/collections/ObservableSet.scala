@@ -137,7 +137,7 @@ trait ObservableSet[T]
   /**
    * The result when this set is used as a builder
    */
-  override def result() = this
+  override def result(): ObservableSet[T] = this
 
   /**
    * Generates a empty $OS.
@@ -178,16 +178,18 @@ trait ObservableSet[T]
   /**
    * Creates a new iterator over elements of this set
    */
-  def iterator = new Iterator[T] {
+  def iterator: Iterator[T] = new Iterator[T] {
     val it = delegate.iterator
+
     def hasNext = it.hasNext
-    def next() = it.next()
+
+    def next(): T = it.next()
   }
 
   /**
    * @return This $SET's size.
    */
-  override def size = delegate.size
+  override def size: Int = delegate.size
 
   /**
    * Tests if some element is contained in this $SET.
@@ -195,7 +197,7 @@ trait ObservableSet[T]
    * @param elem the element to test for membership.
    * @return `true` if `elem` is contained in this $SET, `false` otherwise.
    */
-  def contains(elem: T) = delegate.contains(elem)
+  def contains(elem: T): Boolean = delegate.contains(elem)
 
   import scalafx.collections.ObservableSet._
 

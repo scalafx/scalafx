@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -80,7 +80,7 @@ trait CssIncludes {
   implicit def jfxStyleable2sfx(s: jfxcss.Styleable): Styleable =
     if (s != null)
       new Styleable {
-        override val delegate = s
+        override val delegate: jfxcss.Styleable = s
       }
     else null
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.scene.media
 
 import javafx.scene.{media => jfxsm}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object VideoTrack {
   implicit def sfxVideoTrack2jfx(at: VideoTrack): jfxsm.VideoTrack = if (at != null) at.delegate else null
@@ -40,11 +40,11 @@ class VideoTrack(override val delegate: jfxsm.VideoTrack) extends Track(delegate
   /**
    * Retrieves the height of the track.
    */
-  def height = delegate.getHeight
+  def height: Int = delegate.getHeight
 
   /**
    * Retrieves the width of the track.
    */
-  def width = delegate.getWidth
+  def width: Int = delegate.getWidth
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,10 @@
 package scalafx.scene.paint
 
 import javafx.scene.{paint => jfxsp}
+import scalafx.delegate.SFXDelegate
+import scalafx.scene.SceneIncludes.jfxPaint2sfx
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object Paint {
   implicit def sfxPaint2jfx(p: Paint): jfxsp.Paint = if (p != null) p.delegate else null
@@ -38,7 +39,7 @@ object Paint {
    * Creates a paint value from a string representation.  Recognizes strings representing Color, RadialGradient or LinearGradient. String specifying
    * LinearGradient must begin with linear-gradient keyword and string specifying RadialGradient must begin with radial-gradient.
    */
-  def valueOf(value: String) = jfxsp.Paint.valueOf(value)
+  def valueOf(value: String): Paint = jfxsp.Paint.valueOf(value)
 
 }
 

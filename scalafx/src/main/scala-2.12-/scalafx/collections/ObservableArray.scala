@@ -322,7 +322,7 @@ abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: 
    * @return Element at given `idx`.
    * @throws java.lang.ArrayIndexOutOfBoundsException if `idx` does not satisfy `0 <= idx < length`.
    */
-  def apply(idx: Int) = get(idx)
+  def apply(idx: Int): V = get(idx)
 
   /**
    * Set the element at `idx` in the array to `value`.
@@ -394,7 +394,7 @@ abstract class ObservableArray[V: ClassTag, T <: ObservableArray[V, T, D], D <: 
    * @return This $OA.
    */
 
-  override def result() = this.asInstanceOf[T]
+  override def result(): T = this.asInstanceOf[T]
 
   /**
    * Append new element to this $OA.

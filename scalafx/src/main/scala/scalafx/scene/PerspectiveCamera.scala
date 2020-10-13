@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,5 +61,5 @@ class PerspectiveCamera(override val delegate: jfxs.PerspectiveCamera = new jfxs
     verticalFieldOfView() = v
   }
 
-  def isFixedEyeAtCameraZero = delegate.isFixedEyeAtCameraZero
+  def isFixedEyeAtCameraZero: Boolean = delegate.isFixedEyeAtCameraZero
 }

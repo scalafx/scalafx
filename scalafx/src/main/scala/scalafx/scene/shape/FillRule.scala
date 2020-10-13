@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,12 +34,13 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object FillRule extends SFXEnumDelegateCompanion[jfxss.FillRule, FillRule] {
 
   case object EvenOdd extends FillRule(jfxss.FillRule.EVEN_ODD)
-  @deprecated ("Use EvenOdd; EVEN_ODD will be removed in a future release", "8.0.60-R10")
-  val EVEN_ODD = EvenOdd
+  @deprecated("Use EvenOdd; EVEN_ODD will be removed in a future release", "8.0.60-R10")
+  val EVEN_ODD: FillRule = EvenOdd
 
   case object NonZero extends FillRule(jfxss.FillRule.NON_ZERO)
-  @deprecated ("Use NonZero; NON_ZERO will be removed in a future release", "8.0.60-R10")
-  val NON_ZERO = NonZero
+
+  @deprecated("Use NonZero; NON_ZERO will be removed in a future release", "8.0.60-R10")
+  val NON_ZERO: FillRule = NonZero
 
   protected override def unsortedValues: Array[FillRule] = Array(EvenOdd, NonZero)
 }

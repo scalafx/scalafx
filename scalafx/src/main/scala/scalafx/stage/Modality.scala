@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,22 +38,24 @@ object Modality
    * Defines a top-level window that is not modal and does not block any other window.
    */
   case object None extends Modality(jfxs.Modality.NONE)
-  @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
-  val NONE = None
+  @deprecated("Use None; NONE will be removed in a future release", "8.0.60-R10")
+  val NONE: Modality = None
 
   /**
    * Defines a modal window that block events from being delivered to its entire owner window hierarchy.
    */
   case object WindowModal extends Modality(jfxs.Modality.WINDOW_MODAL)
-  @deprecated ("Use WindowModal; WINDOW_MODAL will be removed in a future release", "8.0.60-R10")
-  val WINDOW_MODAL = WindowModal
+
+  @deprecated("Use WindowModal; WINDOW_MODAL will be removed in a future release", "8.0.60-R10")
+  val WINDOW_MODAL: Modality = WindowModal
 
   /**
    * Defines a modal window that blocks events from being delivered to any other application window.
    */
   case object ApplicationModal extends Modality(jfxs.Modality.APPLICATION_MODAL)
-  @deprecated ("Use ApplicationModal; APPLICATION_MODAL will be removed in a future release", "8.0.60-R10")
-  val APPLICATION_MODAL = ApplicationModal
+
+  @deprecated("Use ApplicationModal; APPLICATION_MODAL will be removed in a future release", "8.0.60-R10")
+  val APPLICATION_MODAL: Modality = ApplicationModal
 
   protected override def unsortedValues: Array[Modality] = Array(None, WindowModal, ApplicationModal)
 }
