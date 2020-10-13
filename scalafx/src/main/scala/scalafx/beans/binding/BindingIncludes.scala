@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -208,7 +208,7 @@ trait BindingIncludes extends Bindings {
     * @return a new IntegerBinding generated from the Integer.
    */
   implicit def integer2IntegerBinding(i: Int): jfxbb.IntegerBinding = new jfxbb.IntegerBinding {
-    def computeValue() = i
+    def computeValue(): Int = i
   }
 
   /**
@@ -218,7 +218,7 @@ trait BindingIncludes extends Bindings {
    * @return a new LongBinding generated from the Long.
    */
   implicit def long2LongBinding(i: Long): jfxbb.LongBinding = new jfxbb.LongBinding {
-    def computeValue() = i
+    def computeValue(): Long = i
   }
 
   /**
@@ -228,7 +228,7 @@ trait BindingIncludes extends Bindings {
    * @return a new FloatBinding generated from the Float.
    */
   implicit def float2FloatBinding(i: Float): jfxbb.FloatBinding = new jfxbb.FloatBinding {
-    def computeValue() = i
+    def computeValue(): Float = i
   }
 
   /**
@@ -238,7 +238,7 @@ trait BindingIncludes extends Bindings {
    * @return a new DoubleBinding generated from the Double.
    */
   implicit def double2DoubleBinding(i: Double): jfxbb.DoubleBinding = new jfxbb.DoubleBinding {
-    def computeValue() = i
+    def computeValue(): Double = i
   }
 
 }

@@ -42,7 +42,7 @@ private[testutil] trait AbstractComparator extends Assertions {
      * @param method Method to be analyzed.
      * @return `true` if scalaMethod has no parameters, `false` otherwise.
      */
-    private def methodHasNoArgs(method: Method): Boolean = (method.getParameterTypes.length == 0)
+    private def methodHasNoArgs(method: Method): Boolean = method.getParameterTypes.length == 0
 
     /**
      * Verifies if a Scala method has as last argument a vararg. To be more precisely, this argument must be a
@@ -53,7 +53,7 @@ private[testutil] trait AbstractComparator extends Assertions {
      * @param method Method to be analyzed.
      * @return `true` if method's last argument is (potentially) vararg (ie, a `Seq`), `false` otherwise.
      */
-    private def lastArgumentIsVararg(method: Method): Boolean = (method.getParameterTypes.last == classOf[Seq[_]])
+    private def lastArgumentIsVararg(method: Method): Boolean = method.getParameterTypes.last == classOf[Seq[_]]
 
     /**
      * Verifies if a method has only one argument ''and'' this argument is a vararg.
@@ -78,21 +78,21 @@ private[testutil] trait AbstractComparator extends Assertions {
         (method.getParameterTypes.init.toList == argTypesExceptLast) &&
         lastArgumentIsVararg(method)
 
-    def getFinderMethod(javaMethod: Method) = (javaMethod.getParameterTypes.size, javaMethod.isVarArgs) match {
-      case (0, _)     => methodHasNoArgs _
-      case (1, true)  => methodHasOneArgVararg _
-      case (_, true)  => findMethodWithManyArgsVarargs(javaMethod.getParameterTypes.toList.init) _
-      case (_, false) => findMethodWithManyArgs(javaMethod.getParameterTypes.toList) _
+    def getFinderMethod(javaMethod: Method): Method => Boolean = (javaMethod.getParameterTypes.length, javaMethod.isVarArgs) match {
+      case (0, _) => methodHasNoArgs
+      case (1, true) => methodHasOneArgVararg
+      case (_, true) => findMethodWithManyArgsVarargs(javaMethod.getParameterTypes.toList.init)
+      case (_, false) => findMethodWithManyArgs(javaMethod.getParameterTypes.toList)
     }
 
     /**
      * Verifies if a method has a determined name.
      *
      * @param methodName Name of method wanted
-     * @param method Method to be analyzed.
+     * @param method     Method to be analyzed.
      * @return `true` if scalaMethod has the requested name, `false` otherwise.
      */
-    def sameName(methodName: String, method: Method): Boolean = (method.getName == methodName)
+    def sameName(methodName: String, method: Method): Boolean = method.getName == methodName
 
   }
 
@@ -110,11 +110,11 @@ private[testutil] trait AbstractComparator extends Assertions {
     private def isValid(m: Method, pattern: String, parametersLength: Int, returnEvaluator: Class[_] => Boolean) =
       m.getName.matches(pattern) && (m.getParameterTypes.length == parametersLength) && returnEvaluator(m.getReturnType)
 
-    private def isSetter(m: Method): Boolean = isValid(m, setterPattern, 1, (_ == JVoid))
+    private def isSetter(m: Method): Boolean = isValid(m, setterPattern, 1, _ == JVoid)
 
-    private def isBooleanGetter(m: Method): Boolean = isValid(m, boolGetterPattern, 0, (_ == JBoolean))
+    private def isBooleanGetter(m: Method): Boolean = isValid(m, boolGetterPattern, 0, _ == JBoolean)
 
-    private def isGetter(m: Method): Boolean = isValid(m, getterPattern, 0, (_ != JVoid))
+    private def isGetter(m: Method): Boolean = isValid(m, getterPattern, 0, _ != JVoid)
 
     /**
      * It takes a Java method and, if it fits in Java Beans standards, returns this name "scalaized". Its operation
@@ -146,20 +146,20 @@ private[testutil] trait AbstractComparator extends Assertions {
   private def methodToString(m: Method) = {
 
     def classParameterToString(classParameter: Class[_], isVarargs: Boolean = false) = {
-      (classParameter.isArray, classParameter.getName.matches( """^\[.$"""), isVarargs) match {
-        case (true, true, true)   => classParameter.getName.last + "..."
-        case (true, true, false)  => classParameter.getName.last + "[]"
-        case (true, false, true)  => classParameter.getName.substring(2).init + "..."
+      (classParameter.isArray, classParameter.getName.matches("""^\[.$"""), isVarargs) match {
+        case (true, true, true) => classParameter.getName.last + "..."
+        case (true, true, false) => classParameter.getName.last + "[]"
+        case (true, false, true) => classParameter.getName.substring(2).init + "..."
         case (true, false, false) => classParameter.getName.substring(2).init + "[]"
-        case (false, _, _)        => classParameter.getName
+        case (false, _, _) => classParameter.getName
       }
     }
 
-    val strParameters = (m.getParameterTypes.size, m.isVarArgs) match {
-      case (0, _)     => ""
-      case (1, true)  => classParameterToString(m.getParameterTypes.last, true)
-      case (_, true)  => m.getParameterTypes.init.map(classParameterToString(_)).mkString("", ", ", ", ") +
-        classParameterToString(m.getParameterTypes.last, true)
+    val strParameters = (m.getParameterTypes.length, m.isVarArgs) match {
+      case (0, _) => ""
+      case (1, true) => classParameterToString(m.getParameterTypes.last, isVarargs = true)
+      case (_, true) => m.getParameterTypes.init.map(classParameterToString(_)).mkString("", ", ", ", ") +
+        classParameterToString(m.getParameterTypes.last, isVarargs = true)
       case (_, false) => m.getParameterTypes.map(classParameterToString(_)).mkString(", ")
     }
 
@@ -171,14 +171,14 @@ private[testutil] trait AbstractComparator extends Assertions {
   /**
    * Returns a List with public methods (static or not) of a class.
    *
-   * @param cls Class to be analyzed.
+   * @param cls       Class to be analyzed.
    * @param useStatic If we are looking for static methods or not
    * @return List with public methods (static or not) from cls.
    */
   private def groupMethods(cls: Class[_], useStatic: Boolean) = {
-    val staticIndicator: Boolean => Boolean = if (useStatic) (b => b) else (b => !b)
+    val staticIndicator: Boolean => Boolean = if (useStatic) b => b else b => !b
     val isAcceptable: Method => Boolean =
-      (m => isPublicMethod(m) && staticIndicator(Modifier.isStatic(m.getModifiers)) && !isSpecialMethodName(m.getName))
+      m => isPublicMethod(m) && staticIndicator(Modifier.isStatic(m.getModifiers)) && !isSpecialMethodName(m.getName)
 
     cls.getDeclaredMethods
       .filter(isAcceptable)
@@ -189,23 +189,22 @@ private[testutil] trait AbstractComparator extends Assertions {
   /**
    *
    *
-   * @param javaMethods Relation of methods from a Java class
-   * @param scalaMethods Relation of methods from a Scala class.
+   * @param javaMethods            Relation of methods from a Java class
+   * @param scalaMethods           Relation of methods from a Scala class.
    * @param javaMethodsNotMirrored Relation of javaMethods that are not reflected in the scalaMethods. Default value:
    *                               [[scala.Nil]].
    */
   @tailrec
   private def compare(javaMethods: List[Method], scalaMethods: List[Method], javaMethodsNotMirrored: List[Method] = Nil): List[Method] = {
     javaMethods match {
-      case Nil                        => javaMethodsNotMirrored
-      case javaMethod :: otherMethods => {
+      case Nil => javaMethodsNotMirrored
+      case javaMethod :: otherMethods =>
         val finderMethod = MethodsComparators.getFinderMethod(javaMethod)
         val desirableName = getDesirableMethodName(javaMethod)
         val scalaHasMethod = scalaMethods.filter(MethodsComparators.sameName(desirableName, _)).exists(finderMethod)
         val javaMethods = if (scalaHasMethod) javaMethodsNotMirrored else javaMethod :: javaMethodsNotMirrored
 
         compare(otherMethods, scalaMethods, javaMethods)
-      }
     }
   }
 
@@ -234,7 +233,7 @@ private[testutil] trait AbstractComparator extends Assertions {
    * Indicates if a Java method name starts with `impl_`, indicating that its is just for internal use of JavaFX API.
    */
   @inline
-  protected def isImplementation(methodName: String) = methodName.startsWith("impl_")
+  protected def isImplementation(methodName: String): Boolean = methodName.startsWith("impl_")
 
   /**
    * Convenience method to indicate if a Java method has public visibility.
@@ -275,7 +274,7 @@ private[testutil] trait AbstractComparator extends Assertions {
    * @param scalaClass ScalaFX class
    */
   def compareDeclaredMethods(javaClass: Class[_], scalaClass: Class[_]): Unit = {
-    compareMethods(javaClass, scalaClass, false)
+    compareMethods(javaClass, scalaClass, useStatic = false)
   }
 
   /**
@@ -286,7 +285,7 @@ private[testutil] trait AbstractComparator extends Assertions {
    * @param scalaClass ScalaFX class
    */
   def compareStaticMethods(javaClass: Class[_], scalaClass: Class[_]): Unit = {
-    compareMethods(javaClass, scalaClass, true)
+    compareMethods(javaClass, scalaClass, useStatic = true)
   }
 
 }

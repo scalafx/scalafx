@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,6 +28,8 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
+import javafx.{scene => jfxs}
+import scalafx.collections.CollectionIncludes.observableList2ObservableBuffer
 import scalafx.collections._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
@@ -43,12 +45,12 @@ object Pane {
  */
 class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
   extends Region(delegate)
-  with SFXDelegate[jfxsl.Pane] {
+    with SFXDelegate[jfxsl.Pane] {
 
   /**
    * Gets the list of children of this Parent.
    */
-  def children = delegate.getChildren
+  def children: ObservableBuffer[jfxs.Node] = delegate.getChildren
   /**
    * Sets the list of children, replacing the prior content. If you want append to current content, use `add`, `+=` or
    * similar.

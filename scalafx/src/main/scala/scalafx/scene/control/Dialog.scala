@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,14 +41,17 @@ import scala.language.implicitConversions
 /** Helper trait for converting dialog return type. Not intended for separate use. */
 trait DConvert[T, F] {
   type S
+
   def apply(t: T, f: F): S
 }
 
 object DConvert {
-  def apply[T, F](implicit conv: DConvert[T, F]) = conv
+  def apply[T, F](implicit conv: DConvert[T, F]): DConvert[T, F] = conv
+
   implicit def t2r[T, R]: DConvert[T, T => R] = new DConvert[T, T => R] {
     type S = R
-    def apply(t: T, f: T => R) = f(t)
+
+    def apply(t: T, f: T => R): R = f(t)
   }
 }
 
@@ -71,15 +74,14 @@ object Dialog {
  * Wraps a $JFX $URL0 $TC]].
  *
  * @tparam R The default return type of the dialog, via the result property or `showAndWait` method.
- *
- * @define TC Dialog
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Dialog.html
+ * @define TC          Dialog
+ * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Dialog.html
  * @define JFX JavaFX
  * @define ORIGINALDOC Original Documentation]].
  */
 class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   extends EventTarget(delegate)
-  with SFXDelegate[jfxsc.Dialog[R]] {
+    with SFXDelegate[jfxsc.Dialog[R]] {
 
   /**
    * Shows the dialog and waits for the user response (in other words, brings
@@ -101,7 +103,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * @return An `Option` that contains the `result`.
    * @see $URL0#showAndWait showAndWait $ORIGINALDOC
    */
-  def showAndWait[F](j2s: F = { (x: R) => x})(implicit convert: DConvert[R, F]): Option[convert.S] = {
+  def showAndWait[F](j2s: F = (x: R) => x)(implicit convert: DConvert[R, F]): Option[convert.S] = {
     val v = delegate.showAndWait()
     if (v.isPresent) Some(convert(v.get, j2s)) else None
   }
@@ -113,7 +115,6 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * or StageStyle.UNIFIED.
    *
    * @param style the style for this dialog.
-   *
    * @throws IllegalStateException if this property is set after the dialog
    *                               has ever been made visible.
    *
@@ -128,7 +129,6 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * Modality.WINDOW_MODAL, or Modality.APPLICATION_MODAL.
    *
    * @param modality the modality for this dialog.
-   *
    * @throws IllegalStateException if this property is set after the dialog
    *                               has ever been made visible.
    */
@@ -149,7 +149,6 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * unowned dialog. This must be done prior to making the dialog visible.
    *
    * @param window the owner [[Window]] for this dialog.
-   *
    * @throws IllegalStateException if this property is set after the dialog
    *                               has ever been made visible.
    */
@@ -166,6 +165,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   def owner: Window = delegate.getOwner
 
   def dialogPane: ObjectProperty[jfxsc.DialogPane] = delegate.dialogPaneProperty
+
   def dialogPane_=(value: DialogPane): Unit = {
     ObjectProperty.fillProperty[jfxsc.DialogPane](this.dialogPane, value)
   }
@@ -179,6 +179,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * @see $URL0#contentTextProperty  $ORIGINALDOC
    */
   def contentText: StringProperty = delegate.contentTextProperty
+
   def contentText_=(value: String): Unit = {
     contentText() = value
   }
@@ -192,9 +193,11 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * @see $URL0#headerTextProperty  $ORIGINALDOC
    */
   def headerText: StringProperty = delegate.headerTextProperty
+
   def headerText_=(value: String): Unit = {
     headerText() = value
   }
+
   def headerText_=(value: Option[String]): Unit = {
     headerText() = value.orNull
   }
@@ -206,6 +209,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * @see $URL0#headerTextProperty  $ORIGINALDOC
    */
   def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
+
   def graphic_=(value: Node): Unit = {
     ObjectProperty.fillProperty[jfxs.Node](this.graphic, value)
   }
@@ -219,6 +223,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * @see $URL0#resultProperty  $ORIGINALDOC
    */
   def result: ObjectProperty[R] = delegate.resultProperty
+
   def result_=(value: R): Unit = {
     if (value == null) {
       delegate.setResult(null.asInstanceOf[R])
@@ -240,6 +245,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    */
   def resultConverter: ObjectProperty[ButtonType => R] =
     ObjectProperty((bt: ButtonType) => delegate.resultConverterProperty.getValue.call(bt))
+
   def resultConverter_=(f: ButtonType => R): Unit = {
     delegate.setResultConverter(new jfxu.Callback[jfxsc.ButtonType, R] {
       override def call(param: jfxsc.ButtonType): R = f(param)
@@ -292,6 +298,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * will move the [[scalafx.scene.control.Dialog]] horizontally.
    */
   def x: ReadOnlyDoubleProperty = delegate.xProperty()
+
   def x_=(v: Double): Unit = {
     delegate.setX(v)
   }
@@ -310,7 +317,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   /**
    * Called just prior to the Dialog being shown.
    */
-  def onShowing = delegate.onShowingProperty
+  def onShowing: ObjectProperty[jfxe.EventHandler[jfxsc.DialogEvent]] = delegate.onShowingProperty
 
   def onShowing_=(v: jfxe.EventHandler[jfxsc.DialogEvent]): Unit = {
     onShowing() = v
@@ -319,7 +326,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   /**
    * Called just after the Dialog is shown.
    */
-  def onShown = delegate.onShownProperty
+  def onShown: ObjectProperty[jfxe.EventHandler[jfxsc.DialogEvent]] = delegate.onShownProperty
 
   def onShown_=(v: jfxe.EventHandler[jfxsc.DialogEvent]): Unit = {
     onShown() = v
@@ -328,7 +335,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   /**
    * Called just prior to the Dialog being hidden.
    */
-  def onHiding = delegate.onHidingProperty
+  def onHiding: ObjectProperty[jfxe.EventHandler[jfxsc.DialogEvent]] = delegate.onHidingProperty
 
   def onHiding_=(v: jfxe.EventHandler[jfxsc.DialogEvent]): Unit = {
     onHiding() = v
@@ -340,13 +347,13 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    * the developer to clean up resources or perform other tasks when the
    * [[scalafx.scene.control.Dialog]] is closed.
    */
-  def onHidden = delegate.onHiddenProperty
+  def onHidden: ObjectProperty[jfxe.EventHandler[jfxsc.DialogEvent]] = delegate.onHiddenProperty
 
   def onHidden_=(v: jfxe.EventHandler[jfxsc.DialogEvent]): Unit = {
     onHidden() = v
   }
 
-  def onCloseRequest = delegate.onCloseRequestProperty
+  def onCloseRequest: ObjectProperty[jfxe.EventHandler[jfxsc.DialogEvent]] = delegate.onCloseRequestProperty
 
   def onCloseRequest_=(v: jfxe.EventHandler[jfxsc.DialogEvent]): Unit = {
     onCloseRequest() = v

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,7 +46,7 @@ object CullFace extends SFXEnumDelegateCompanion[jfxss.CullFace, CullFace] {
    * All back-faces, identified by clockwise vertex winding, will be culled.
    */
   @deprecated("Use Back instead; BACK will be removed in a future release.", "8.0.0-M4")
-  val BACK = Back
+  val BACK: CullFace = Back
 
   /**
    * Perform front-face culling.
@@ -61,7 +61,7 @@ object CullFace extends SFXEnumDelegateCompanion[jfxss.CullFace, CullFace] {
    * All front-faces, identified by counterclockwise vertex winding, will be culled.
    */
   @deprecated("Use Front instead; FRONT will be removed in a future release.", "8.0.0-M4")
-  val FRONT = Front
+  val FRONT: CullFace = Front
 
   /**
    * Perform no face culling.
@@ -72,7 +72,7 @@ object CullFace extends SFXEnumDelegateCompanion[jfxss.CullFace, CullFace] {
    * Perform no face culling.
    */
   @deprecated("Use None instead; NONE will be removed in a future release.", "8.0.0-M4")
-  val NONE = None
+  val NONE: CullFace = None
 
   protected override def unsortedValues: Array[CullFace] = Array(Back, Front, None)
 }

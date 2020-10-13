@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,12 +39,12 @@ object EqualizerBand {
   /**
    * Maximum possible gain value.
    */
-  val MAX_GAIN = jfxsm.EqualizerBand.MAX_GAIN
+  val MAX_GAIN: Double = jfxsm.EqualizerBand.MAX_GAIN
 
   /**
    * Minimum possible gain value.
    */
-  val MIN_GAIN = jfxsm.EqualizerBand.MIN_GAIN
+  val MIN_GAIN: Double = jfxsm.EqualizerBand.MIN_GAIN
 }
 
 class EqualizerBand(override val delegate: jfxsm.EqualizerBand = new jfxsm.EqualizerBand)

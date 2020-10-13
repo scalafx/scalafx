@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,10 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
-
-import scala.language.implicitConversions
 import scalafx.beans.binding.ObjectExpression
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object ReadOnlyObjectProperty {
   implicit def sfxReadOnlyObjectProperty2jfx[T <: Any](roop: ReadOnlyObjectProperty[T]): jfxbp.ReadOnlyObjectProperty[T] = roop.delegate
@@ -38,14 +38,14 @@ object ReadOnlyObjectProperty {
 
 class ReadOnlyObjectProperty[T <: Any](override val delegate: jfxbp.ReadOnlyObjectProperty[T])
   extends ObjectExpression[T](delegate)
-  with ReadOnlyProperty[T, T]
-  with SFXDelegate[jfxbp.ReadOnlyObjectProperty[T]] {
+    with ReadOnlyProperty[T, T]
+    with SFXDelegate[jfxbp.ReadOnlyObjectProperty[T]] {
 
   def this(bean: Object, name: String, value: T) = this(new jfxbp.ReadOnlyObjectPropertyBase[T]() {
-    def getBean = bean
-    def getName = name
-    override def get = value
+    def getBean: AnyRef = bean
+    def getName: String = name
+    override def get: T = value
   })
 
-  def value = delegate.get
+  def value: T = delegate.get
 }

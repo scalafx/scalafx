@@ -724,7 +724,7 @@ trait ControlIncludes
    * @return $SFX $TGGL
    */
   implicit def jfxToggle2sfx(t: jfxsc.Toggle): Toggle = if (t != null) new Toggle {
-    override val delegate = t
+    override val delegate: jfxsc.Toggle = t
     def userData: AnyRef = delegate.getUserData
 
     def userData_=(v: AnyRef): Unit = {
@@ -748,7 +748,7 @@ trait ControlIncludes
    * @return $SFX $SKIN
    */
   implicit def jfxSkin2sfxSkin[C <: jfxsc.Skinnable](s: jfxsc.Skin[C]): Skin[C] = if (s != null) new Skin[C] {
-    override val delegate = s
+    override val delegate: jfxsc.Skin[C] = s
   } else null
 
   /**
@@ -767,7 +767,7 @@ trait ControlIncludes
    * @return $SFX $SKNB
    */
   implicit def jfxSkinnable2sfxSkinnable(s: jfxsc.Skinnable): Skinnable = if (s != null) new Skinnable {
-    override val delegate = s
+    override val delegate: jfxsc.Skinnable = s
   } else null
 
   /**

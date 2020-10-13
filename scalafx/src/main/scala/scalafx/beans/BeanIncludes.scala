@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,11 +29,11 @@ package scalafx.beans
 
 import javafx.beans.{value => jfxbv}
 import javafx.{beans => jfxb}
-
-import scala.language.implicitConversions
 import scalafx.beans.binding.BindingIncludes
 import scalafx.beans.property.PropertyIncludes
 import scalafx.beans.value.ObservableValue
+
+import scala.language.implicitConversions
 
 object BeanIncludes extends BeanIncludes
 
@@ -60,7 +60,7 @@ trait LowerPriorityIncludes {
    * @return ScalaFX Observable
    */
   implicit def jfxObservable2sfx(o: jfxb.Observable): Observable = new Observable {
-    override def delegate = o
+    override def delegate: jfxb.Observable = o
   }
 
   /**
@@ -72,7 +72,7 @@ trait LowerPriorityIncludes {
    * @return ScalaFX ObservableValue ''which Java Type and Scala Type are the same''. 
    */
   implicit def jfxObservableValue2sfx[T](o: jfxbv.ObservableValue[T]): ObservableValue[T, T] = new ObservableValue[T, T] {
-    override def delegate = o
-    override def value = delegate.getValue
+    override def delegate: jfxbv.ObservableValue[T] = o
+    override def value: T = delegate.getValue
   }
 }

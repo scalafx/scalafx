@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -97,7 +97,7 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
    *
    * @return $OV
    */
-  def apply() = value
+  def apply(): T = value
 
   /**
    * Adds a function as a $URLCV. This function has all arguments from

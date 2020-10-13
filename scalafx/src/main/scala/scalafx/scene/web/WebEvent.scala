@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.web
 
 import javafx.scene.{web => jfxsw}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.{Event, EventType}
+
+import scala.language.implicitConversions
 
 /**
  * Companion object for [[scalafx.scene.web.WebEvent]].
@@ -50,36 +50,36 @@ object WebEvent {
    * This event occurs when a script calls the JavaScript alert function.
    */
   val Alert: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.ALERT
-  @deprecated ("Use Alert; ALERT will be removed in a future release", "8.0.60-R10")
-  val ALERT = Alert
+  @deprecated("Use Alert; ALERT will be removed in a future release", "8.0.60-R10")
+  val ALERT: EventType[jfxsw.WebEvent[_]] = Alert
 
   /**
    * Common supertype for all Web event types.
    */
   val Any: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.ANY
-  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
-  val ANY = Any
+  @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  val ANY: EventType[jfxsw.WebEvent[_]] = Any
 
   /**
    * This event occurs when a script changes location of the JavaScript window object.
    */
   val Resized: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.RESIZED
-  @deprecated ("Use Resized; RESIZED will be removed in a future release", "8.0.60-R10")
-  val RESIZED = Resized
+  @deprecated("Use Resized; RESIZED will be removed in a future release", "8.0.60-R10")
+  val RESIZED: EventType[jfxsw.WebEvent[_]] = Resized
 
   /**
    * This event occurs when a script changes status line text.
    */
   val StatusChanged: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.STATUS_CHANGED
-  @deprecated ("Use StatusChanged; STATUS_CHANGED will be removed in a future release", "8.0.60-R10")
-  val STATUS_CHANGED = StatusChanged
+  @deprecated("Use StatusChanged; STATUS_CHANGED will be removed in a future release", "8.0.60-R10")
+  val STATUS_CHANGED: EventType[jfxsw.WebEvent[_]] = StatusChanged
 
   /**
    * This event occurs when a script changes visibility of the JavaScript window object.
    */
   val VisibilityChanged: EventType[jfxsw.WebEvent[_]] = jfxsw.WebEvent.VISIBILITY_CHANGED
-  @deprecated ("Use VisibilityChanged; VISIBILITY_CHANGED will be removed in a future release", "8.0.60-R10")
-  val VISIBILITY_CHANGED = VisibilityChanged
+  @deprecated("Use VisibilityChanged; VISIBILITY_CHANGED will be removed in a future release", "8.0.60-R10")
+  val VISIBILITY_CHANGED: EventType[jfxsw.WebEvent[_]] = VisibilityChanged
 }
 
 /**

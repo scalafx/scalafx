@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,18 +27,18 @@
 package scalafx.scene.media
 
 import javafx.scene.{media => jfxsm}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event._
+
+import scala.language.implicitConversions
 
 object MediaErrorEvent {
   implicit def sfxMediaErrorEvent2jfx(mee: MediaErrorEvent): jfxsm.MediaErrorEvent = if (mee != null) mee.delegate else null
 
   val MediaError: EventType[jfxsm.MediaErrorEvent] = jfxsm.MediaErrorEvent.MEDIA_ERROR
-  @deprecated ("Use MediaError; MEDIA_ERROR will be removed in a future release", "8.0.60-R10")
-  val MEDIA_ERROR = MediaError
+  @deprecated("Use MediaError; MEDIA_ERROR will be removed in a future release", "8.0.60-R10")
+  val MEDIA_ERROR: EventType[jfxsm.MediaErrorEvent] = MediaError
 }
 
 class MediaErrorEvent(override val delegate: jfxsm.MediaErrorEvent) extends Event(delegate) with SFXDelegate[jfxsm.MediaErrorEvent] {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,17 +37,19 @@ object HPos
   /** Indicates centered horizontal position. */
   case object Center extends HPos(jfxg.HPos.CENTER)
   @deprecated("Use Center; CENTER will be removed in a future release", "2.2.60")
-  val CENTER = Center
+  val CENTER: HPos = Center
 
   /** Indicates left horizontal position. */
   case object Left extends HPos(jfxg.HPos.LEFT)
+
   @deprecated("Use Left; LEFT will be removed in a future release", "2.2.60")
-  val LEFT = Left
+  val LEFT: HPos = Left
 
   /** Indicates right horizontal position. */
   case object Right extends HPos(jfxg.HPos.RIGHT)
+
   @deprecated("Use Right; RIGHT will be removed in a future release", "2.2.60")
-  val RIGHT = Right
+  val RIGHT: HPos = Right
 
   protected override def unsortedValues: Array[HPos] = Array(Left, Center, Right)
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,13 +36,14 @@ object HorizontalDirection
 
   /** A direction to the left. */
   case object Left extends HorizontalDirection(jfxg.HorizontalDirection.LEFT)
-  @deprecated ("Use Left; LEFT will be removed in a future release", "8.0.60-R10")
-  val LEFT = Left
+  @deprecated("Use Left; LEFT will be removed in a future release", "8.0.60-R10")
+  val LEFT: HorizontalDirection = Left
 
   /** A direction to the right. */
   case object Right extends HorizontalDirection(jfxg.HorizontalDirection.RIGHT)
-  @deprecated ("Use Right; RIGHT will be removed in a future release", "8.0.60-R10")
-  val RIGHT = Right
+
+  @deprecated("Use Right; RIGHT will be removed in a future release", "8.0.60-R10")
+  val RIGHT: HorizontalDirection = Right
 
   protected override def unsortedValues: Array[HorizontalDirection] = Array(Left, Right)
 }

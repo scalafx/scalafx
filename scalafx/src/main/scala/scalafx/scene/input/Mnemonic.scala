@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@ class Mnemonic(override val delegate: jfxsi.Mnemonic)
   /**
    * The KeyCombination
    */
-  def keyCombination = delegate.getKeyCombination
+  def keyCombination: KeyCombination = delegate.getKeyCombination
 
   def keyCombination_=(v: KeyCombination): Unit = {
     delegate.setKeyCombination(v)

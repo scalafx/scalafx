@@ -194,7 +194,7 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * Returns a previously set Object property, or null if no such property has been set using the
    * setUserData(Any) method.
    */
-  def userData = delegate.getUserData
+  def userData: AnyRef = delegate.getUserData
 
   /**
    * Toggling this will immediately toggle the visibility of this column, and all children columns.

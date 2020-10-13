@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,6 +26,7 @@
  */
 package scalafx.scene.media
 
+import javafx.collections.ObservableList
 import javafx.scene.{media => jfxsm}
 import scalafx.Includes._
 import scalafx.beans.property.BooleanProperty
@@ -39,7 +40,7 @@ object AudioEqualizer {
   /**
    * Maximum number of bands an AudioEqualizer may contain.
    */
-  val MAX_NUM_BANDS = jfxsm.AudioEqualizer.MAX_NUM_BANDS
+  val MAX_NUM_BANDS: Int = jfxsm.AudioEqualizer.MAX_NUM_BANDS
 }
 
 class AudioEqualizer(override val delegate: jfxsm.AudioEqualizer) extends SFXDelegate[jfxsm.AudioEqualizer] {
@@ -56,6 +57,6 @@ class AudioEqualizer(override val delegate: jfxsm.AudioEqualizer) extends SFXDel
   /**
    * ObservableList containing EqualizerBand elements.
    */
-  def bands = delegate.getBands
+  def bands: ObservableList[jfxsm.EqualizerBand] = delegate.getBands
 
 }

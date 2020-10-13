@@ -109,7 +109,7 @@ class KeyValue[T, J](override val delegate: jfxa.KeyValue)
   /**
    * Interpolator to be used for calculating the key value along the particular interval.
    */
-  def interpolator = delegate.getInterpolator
+  def interpolator: jfxa.Interpolator = delegate.getInterpolator
 
 }
 

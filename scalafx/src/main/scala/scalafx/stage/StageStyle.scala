@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,34 +36,38 @@ object StageStyle
    * Defines a normal Stage style with a solid white background and platform decorations.
    */
   case object Decorated extends StageStyle(jfxs.StageStyle.DECORATED)
-  @deprecated ("Use Decorated; DECORATED will be removed in a future release", "8.0.60-R10")
-  val DECORATED = Decorated
+  @deprecated("Use Decorated; DECORATED will be removed in a future release", "8.0.60-R10")
+  val DECORATED: StageStyle = Decorated
 
   /**
    * Defines a Stage style with a solid white background and no decorations.
    */
   case object Undecorated extends StageStyle(jfxs.StageStyle.UNDECORATED)
-  @deprecated ("Use Undecorated; UNDECORATED will be removed in a future release", "8.0.60-R10")
-  val UNDECORATED = Undecorated
+
+  @deprecated("Use Undecorated; UNDECORATED will be removed in a future release", "8.0.60-R10")
+  val UNDECORATED: StageStyle = Undecorated
 
   /**
    * Defines a Stage style with a transparent background and no decorations.
    */
   case object Transparent extends StageStyle(jfxs.StageStyle.TRANSPARENT)
-  @deprecated ("Use Transparent; TRANSPARENT will be removed in a future release", "8.0.60-R10")
-  val TRANSPARENT = Transparent
+
+  @deprecated("Use Transparent; TRANSPARENT will be removed in a future release", "8.0.60-R10")
+  val TRANSPARENT: StageStyle = Transparent
 
   /**
    * Defines a Stage style with a solid white background and minimal platform decorations used for a utility window.
    */
   case object Utility extends StageStyle(jfxs.StageStyle.UTILITY)
-  @deprecated ("Use Utility; UTILITY will be removed in a future release", "8.0.60-R10")
-  val UTILITY = Utility
+
+  @deprecated("Use Utility; UTILITY will be removed in a future release", "8.0.60-R10")
+  val UTILITY: StageStyle = Utility
 
   /** Defines a Stage style with platform decorations and eliminates the border between client area and decorations. */
   case object Unified extends StageStyle(jfxs.StageStyle.UNIFIED)
-  @deprecated ("Use Unified; UNIFIED will be removed in a future release", "8.0.60-R10")
-  val UNIFIED = Unified
+
+  @deprecated("Use Unified; UNIFIED will be removed in a future release", "8.0.60-R10")
+  val UNIFIED: StageStyle = Unified
 
   protected override def unsortedValues: Array[StageStyle] = Array(Decorated, Undecorated, Transparent, Utility, Unified)
 

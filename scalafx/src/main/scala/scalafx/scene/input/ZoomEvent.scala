@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,11 @@
 package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.EventType
+
+import scala.language.implicitConversions
 
 object ZoomEvent {
   implicit def sfxZoomEvent2jfx(ze: ZoomEvent): jfxsi.ZoomEvent = if (ze != null) ze.delegate else null
@@ -40,29 +40,29 @@ object ZoomEvent {
    * Common supertype for all Zoom event types.
    */
   val Any: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ANY
-  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
-  val ANY = Any
+  @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  val ANY: EventType[jfxsi.ZoomEvent] = Any
 
   /**
    * This event occurs when user performs a zooming gesture such as dragging two fingers apart.
    */
   val Zoom: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM
-  @deprecated ("Use Zoom; ZOOM will be removed in a future release", "8.0.60-R10")
-  val ZOOM = Zoom
+  @deprecated("Use Zoom; ZOOM will be removed in a future release", "8.0.60-R10")
+  val ZOOM: EventType[jfxsi.ZoomEvent] = Zoom
 
   /**
    * This event occurs when a zooming gesture is detected.
    */
   val ZoomStarted: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM_STARTED
-  @deprecated ("Use ZoomStarted; ZOOM_STARTED will be removed in a future release", "8.0.60-R10")
-  val ZOOM_STARTED = ZoomStarted
+  @deprecated("Use ZoomStarted; ZOOM_STARTED will be removed in a future release", "8.0.60-R10")
+  val ZOOM_STARTED: EventType[jfxsi.ZoomEvent] = ZoomStarted
 
   /**
    * This event occurs when a zooming gesture ends.
    */
   val ZoomFinished: EventType[jfxsi.ZoomEvent] = jfxsi.ZoomEvent.ZOOM_FINISHED
-  @deprecated ("Use ZoomFinished; ZOOM_FINISHED will be removed in a future release", "8.0.60-R10")
-  val ZOOM_FINISHED = ZoomFinished
+  @deprecated("Use ZoomFinished; ZOOM_FINISHED will be removed in a future release", "8.0.60-R10")
+  val ZOOM_FINISHED: EventType[jfxsi.ZoomEvent] = ZoomFinished
 
 }
 

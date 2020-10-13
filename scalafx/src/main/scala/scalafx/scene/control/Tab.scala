@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -95,7 +95,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
   /**
    * The event handler that is associated with the tab when the tab is closed.
    */
-  def onClosed = delegate.onClosedProperty
+  def onClosed: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onClosedProperty
 
   def onClosed_=(v: jfxe.EventHandler[jfxe.Event]): Unit = {
     onClosed() = v
@@ -113,7 +113,7 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
   /**
    * The event handler that is associated with a selection on the tab.
    */
-  def onSelectionChanged = delegate.onSelectionChangedProperty
+  def onSelectionChanged: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onSelectionChangedProperty
 
   def onSelectionChanged_=(v: jfxe.EventHandler[jfxe.Event]): Unit = {
     onSelectionChanged() = v

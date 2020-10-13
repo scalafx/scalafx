@@ -75,7 +75,7 @@ abstract private[converter] class AbstractStringConverterDelegateSpec[J <: java.
 
   protected val examples: List[(S, String)]
 
-  protected def getConverterForExample = this.getScalaClassInstance
+  protected def getConverterForExample: D = this.getScalaClassInstance
 
   it should "convert %s to String and vice-versa".format(scalaClass) in {
     this.runConverterForExamples()

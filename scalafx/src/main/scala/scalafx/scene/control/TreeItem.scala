@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -153,32 +153,32 @@ object TreeItem {
    * An EventType used when the TreeItem receives a modification to its
    * expanded property, such that the TreeItem is now in the collapsed state.
    */
-  def branchCollapsedEvent[T] = jfxsc.TreeItem.branchCollapsedEvent
+  def branchCollapsedEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] = new EventType(jfxsc.TreeItem.branchCollapsedEvent)
 
   /**
    * An EventType used when the TreeItem receives a modification to its
    * expanded property, such that the TreeItem is now in the expanded state.
    */
-  def branchExpandedEvent[T] = jfxsc.TreeItem.branchExpandedEvent
+  def branchExpandedEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] = new EventType(jfxsc.TreeItem.branchExpandedEvent)
 
   /**
    * An EventType used when the TreeItem receives a direct modification to its
    * children list.
    */
-  def childrenModificationEvent[T] = jfxsc.TreeItem.childrenModificationEvent
+  def childrenModificationEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] = new EventType(jfxsc.TreeItem.childrenModificationEvent)
 
   /** The general EventType used when the TreeItem receives a modification
-    * that results in the number of children being visible changes.
-    *
-    * @since 8.0  
-    */
-  def expandedItemCountChangeEvent[T] = jfxsc.TreeItem.expandedItemCountChangeEvent
+   * that results in the number of children being visible changes.
+   *
+   * @since 8.0
+   */
+  def expandedItemCountChangeEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] = new EventType(jfxsc.TreeItem.expandedItemCountChangeEvent)
 
   /**
    * An EventType used when the TreeItem receives a modification to its
    * graphic property.
    */
-  def graphicChangedEvent[T] = jfxsc.TreeItem.graphicChangedEvent
+  def graphicChangedEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] = new EventType(jfxsc.TreeItem.graphicChangedEvent)
 
   /**
    * The general EventType used when the TreeItem receives a modification that
@@ -191,13 +191,13 @@ object TreeItem {
    * The base EventType used to indicate that an event has occurred within a
    * TreeItem.
    */
-  def treeNotificationEvent[T] = jfxsc.TreeItem.treeNotificationEvent
+  def treeNotificationEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] = new EventType(jfxsc.TreeItem.treeNotificationEvent)
 
   /**
    * An EventType used when the TreeItem receives a modification to its value
    * property.
    */
-  def valueChangedEvent[T] = jfxsc.TreeItem.valueChangedEvent
+  def valueChangedEvent[T]: EventType[jfxsc.TreeItem.TreeModificationEvent[Nothing]] = new EventType(jfxsc.TreeItem.valueChangedEvent)
 
 }
 

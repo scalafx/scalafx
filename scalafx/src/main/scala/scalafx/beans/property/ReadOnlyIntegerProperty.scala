@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,10 @@
 package scalafx.beans.property
 
 import javafx.beans.{property => jfxbp}
-
-import scala.language.implicitConversions
 import scalafx.beans.binding.NumberExpression
 import scalafx.delegate.SFXDelegate
+
+import scala.language.implicitConversions
 
 object ReadOnlyIntegerProperty {
   implicit def sfxReadOnlyIntegerProperty2jfx(roip: ReadOnlyIntegerProperty): jfxbp.ReadOnlyIntegerProperty = if (roip != null) roip.delegate else null
@@ -38,10 +38,10 @@ object ReadOnlyIntegerProperty {
 
 class ReadOnlyIntegerProperty(override val delegate: jfxbp.ReadOnlyIntegerProperty) extends NumberExpression(delegate) with ReadOnlyProperty[Int, Number] with SFXDelegate[jfxbp.ReadOnlyIntegerProperty] {
   def this(bean: Object, name: String, value: Int) = this(new jfxbp.ReadOnlyIntegerPropertyBase() {
-    def getBean = bean
-    def getName = name
-    def get = value
+    def getBean: AnyRef = bean
+    def getName: String = name
+    def get: Int = value
   })
 
-  override def value = delegate.get
+  override def value: Int = delegate.get
 }

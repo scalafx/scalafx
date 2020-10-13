@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,11 +28,11 @@ package scalafx.scene.web
 
 import javafx.scene.{web => jfxsw}
 import javafx.{event => jfxe}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.event.{Event, EventType}
+
+import scala.language.implicitConversions
 
 /**
  * Companion object for [[scalafx.scene.web.WebErrorEvent]].
@@ -52,8 +52,8 @@ object WebErrorEvent {
    * Common supertype for all WebErrorEvent types.
    */
   val Any: EventType[jfxsw.WebErrorEvent] = jfxsw.WebErrorEvent.ANY
-  @deprecated ("Use Any; ANY will be removed in a future release", "8.0.60-R10")
-  val ANY = Any
+  @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
+  val ANY: EventType[jfxsw.WebErrorEvent] = Any
 
   /**
    * This event occurs when a [[scalafx.scene.web.WebEngine]] detects that
@@ -61,8 +61,8 @@ object WebErrorEvent {
    */
   val UserDataDirectoryAlreadyInUse: EventType[jfxsw.WebErrorEvent] =
     jfxsw.WebErrorEvent.USER_DATA_DIRECTORY_ALREADY_IN_USE
-  @deprecated ("Use UserDataDirectoryAlreadyInUse; USER_DATA_DIRECTORY_ALREADY_IN_USE will be removed in a future release", "8.0.60-R10")
-  val USER_DATA_DIRECTORY_ALREADY_IN_USE = UserDataDirectoryAlreadyInUse
+  @deprecated("Use UserDataDirectoryAlreadyInUse; USER_DATA_DIRECTORY_ALREADY_IN_USE will be removed in a future release", "8.0.60-R10")
+  val USER_DATA_DIRECTORY_ALREADY_IN_USE: EventType[jfxsw.WebErrorEvent] = UserDataDirectoryAlreadyInUse
 
   /**
    * This event occurs when a [[scalafx.scene.web.WebEngine]] encounters an I/O error
@@ -70,8 +70,8 @@ object WebErrorEvent {
    */
   val UserDataDirectoryIOError: EventType[jfxsw.WebErrorEvent] =
     jfxsw.WebErrorEvent.USER_DATA_DIRECTORY_IO_ERROR
-  @deprecated ("Use UserDataDirectoryIOError; USER_DATA_DIRECTORY_IO_ERROR will be removed in a future release", "8.0.60-R10")
-  val USER_DATA_DIRECTORY_IO_ERROR = UserDataDirectoryIOError
+  @deprecated("Use UserDataDirectoryIOError; USER_DATA_DIRECTORY_IO_ERROR will be removed in a future release", "8.0.60-R10")
+  val USER_DATA_DIRECTORY_IO_ERROR: EventType[jfxsw.WebErrorEvent] = UserDataDirectoryIOError
 
   /**
    * This event occurs when a [[scalafx.scene.web.WebEngine]] encounters a security error
@@ -79,8 +79,8 @@ object WebErrorEvent {
    */
   val UserDataDirectorySecurityError: EventType[jfxsw.WebErrorEvent] =
     jfxsw.WebErrorEvent.USER_DATA_DIRECTORY_SECURITY_ERROR
-  @deprecated ("Use UserDataDirectorySecurityError; USER_DATA_DIRECTORY_SECURITY_ERROR will be removed in a future release", "8.0.60-R10")
-  val USER_DATA_DIRECTORY_SECURITY_ERROR = UserDataDirectorySecurityError
+  @deprecated("Use UserDataDirectorySecurityError; USER_DATA_DIRECTORY_SECURITY_ERROR will be removed in a future release", "8.0.60-R10")
+  val USER_DATA_DIRECTORY_SECURITY_ERROR: EventType[jfxsw.WebErrorEvent] = UserDataDirectorySecurityError
 
 }
 

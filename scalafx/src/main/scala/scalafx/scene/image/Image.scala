@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -112,14 +112,14 @@ class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image]
   /**
    * Indicates whether the image is being loaded in the background.
    */
-  def backgroundLoading = delegate.isBackgroundLoading
+  def backgroundLoading: Boolean = delegate.isBackgroundLoading
 
   /**
    * Indicates whether to preserve the aspect ratio of the original image when
    * scaling to fit the image within the bounding box provided by `width` and
    * `height`.
    */
-  def preserveRatio = delegate.isPreserveRatio
+  def preserveRatio: Boolean = delegate.isPreserveRatio
 
   /**
    * This method returns a Option of [[scalafx.scene.image.PixelReader]] that provides access to read
@@ -132,6 +132,6 @@ class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image]
    * one when scaling this image to fit within the bounding box provided by
    * `width` and `height`.
    */
-  def smooth = delegate.isSmooth
+  def smooth: Boolean = delegate.isSmooth
 
 }

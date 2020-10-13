@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ object Parent {
  */
 abstract class Parent(override val delegate: jfxs.Parent)
   extends Node(delegate)
-  with SFXDelegate[jfxs.Parent] {
+    with SFXDelegate[jfxs.Parent] {
 
   /**
    * Indicates that this Node and its subnodes requires a layout pass on the next pulse.
@@ -53,7 +53,7 @@ abstract class Parent(override val delegate: jfxs.Parent)
   /**
    * Gets an observable list of string URLs linking to the stylesheets to use with this Parent's contents.
    */
-  def stylesheets = delegate.getStylesheets
+  def stylesheets: ObservableBuffer[String] = delegate.getStylesheets
 
   /**
    * Sets the list of stylesheets URLs, replacing the prior content. If you want append to current content, use `add` or

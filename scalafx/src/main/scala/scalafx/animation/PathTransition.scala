@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -64,16 +64,17 @@ object PathTransition extends AnimationStatics {
      * The targeted node's rotation matrix stays unchanged along the geometric path.
      */
     case object None extends OrientationType(jfxa.PathTransition.OrientationType.NONE)
-    @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
-    val NONE = None
+    @deprecated("Use None; NONE will be removed in a future release", "8.0.60-R10")
+    val NONE: OrientationType = None
 
     /**
      * The targeted node's rotation matrix is set to keep node perpendicular to the path's tangent along the geometric
      * path.
      */
     case object OrthogonalToTangent extends OrientationType(jfxa.PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT)
-    @deprecated ("Use OrthogonalToTangent; ORTHOGONAL_TO_TANGENT will be removed in a future release", "8.0.60-R10")
-    val ORTHOGONAL_TO_TANGENT = OrthogonalToTangent
+
+    @deprecated("Use OrthogonalToTangent; ORTHOGONAL_TO_TANGENT will be removed in a future release", "8.0.60-R10")
+    val ORTHOGONAL_TO_TANGENT: OrientationType = OrthogonalToTangent
 
     protected override def unsortedValues: Array[OrientationType] = Array(None, OrthogonalToTangent)
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,39 +36,47 @@ object FontWeight extends SFXEnumDelegateCompanion[jfxst.FontWeight, FontWeight]
 
   case object Thin extends FontWeight(jfxst.FontWeight.THIN)
   @deprecated("Use Thin; THIN will be removed in a future release", "2.2.60")
-  val THIN = Thin
+  val THIN: FontWeight = Thin
 
   case object ExtraLight extends FontWeight(jfxst.FontWeight.EXTRA_LIGHT)
+
   @deprecated("Use ExtraLight; EXTRA_LIGHT will be removed in a future release", "2.2.60")
-  val EXTRA_LIGHT = ExtraLight
+  val EXTRA_LIGHT: FontWeight = ExtraLight
 
   case object Light extends FontWeight(jfxst.FontWeight.LIGHT)
+
   @deprecated("Use Light; LIGHT will be removed in a future release", "2.2.60")
-  val LIGHT = Light
+  val LIGHT: FontWeight = Light
 
   case object Normal extends FontWeight(jfxst.FontWeight.NORMAL)
+
   @deprecated("Use Normal; NORMAL will be removed in a future release", "2.2.60")
-  val NORMAL = Normal
+  val NORMAL: FontWeight = Normal
 
   case object Medium extends FontWeight(jfxst.FontWeight.MEDIUM)
+
   @deprecated("Use Medium; MEDIUM will be removed in a future release", "2.2.60")
-  val MEDIUM = Medium
+  val MEDIUM: FontWeight = Medium
 
   case object SemiBold extends FontWeight(jfxst.FontWeight.SEMI_BOLD)
+
   @deprecated("Use SemiBold; SEMI_BOLD will be removed in a future release", "2.2.60")
-  val SEMI_BOLD = SemiBold
+  val SEMI_BOLD: FontWeight = SemiBold
 
   case object Bold extends FontWeight(jfxst.FontWeight.BOLD)
+
   @deprecated("Use Bold; BOLD will be removed in a future release", "2.2.60")
-  val BOLD = Bold
+  val BOLD: FontWeight = Bold
 
   case object ExtraBold extends FontWeight(jfxst.FontWeight.EXTRA_BOLD)
+
   @deprecated("Use ExtraBold; EXTRA_BOLD will be removed in a future release", "2.2.60")
-  val EXTRA_BOLD = ExtraBold
+  val EXTRA_BOLD: FontWeight = ExtraBold
 
   case object Black extends FontWeight(jfxst.FontWeight.BLACK)
+
   @deprecated("Use Black; BLACK will be removed in a future release", "2.2.60")
-  val BLACK = Black
+  val BLACK: FontWeight = Black
 
   protected override def unsortedValues: Array[FontWeight] = Array(
     Thin, ExtraLight, Light, Normal, Medium, SemiBold, Bold, ExtraBold, Black
@@ -87,6 +95,6 @@ object FontWeight extends SFXEnumDelegateCompanion[jfxst.FontWeight, FontWeight]
 sealed abstract class FontWeight(override val delegate: jfxst.FontWeight)
   extends SFXEnumDelegate[jfxst.FontWeight] {
 
-  /** Return the visual weight (degree of blackness or thickness) specified by this FontWeight.  */
-  def weight = delegate.getWeight
+  /** Return the visual weight (degree of blackness or thickness) specified by this FontWeight. */
+  def weight: Int = delegate.getWeight
 }

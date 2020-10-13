@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,22 +37,25 @@ object VPos
   /** Indicates baseline vertical position. */
   case object Baseline extends VPos(jfxg.VPos.BASELINE)
   @deprecated("Use Baseline; BASELINE will be removed in a future release", "2.2.60")
-  val BASELINE = Baseline
+  val BASELINE: VPos = Baseline
 
   /** Indicates bottom vertical position. */
   case object Bottom extends VPos(jfxg.VPos.BOTTOM)
+
   @deprecated("Use Bottom; BOTTOM will be removed in a future release", "2.2.60")
-  val BOTTOM = Bottom
+  val BOTTOM: VPos = Bottom
 
   /** Indicates centered vertical position. */
   case object Center extends VPos(jfxg.VPos.CENTER)
+
   @deprecated("Use Center; CENTER will be removed in a future release", "2.2.60")
-  val CENTER = Center
+  val CENTER: VPos = Center
 
   /** Indicates top vertical position. */
   case object Top extends VPos(jfxg.VPos.TOP)
+
   @deprecated("Use Top; TOP will be removed in a future release", "2.2.60")
-  val TOP = Top
+  val TOP: VPos = Top
 
   protected override def unsortedValues: Array[VPos] = Array(Top, Center, Baseline, Bottom)
 }

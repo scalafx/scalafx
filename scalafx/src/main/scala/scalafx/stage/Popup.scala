@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,11 @@
 package scalafx.stage
 
 import javafx.{stage => jfxs}
+import scalafx.collections.CollectionIncludes.observableList2ObservableBuffer
+import scalafx.collections.ObservableBuffer
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object Popup {
   implicit def sfxPopup2jfx(p: Popup): jfxs.Popup = if (p != null) p.delegate else null
@@ -37,8 +39,8 @@ object Popup {
 
 class Popup(override val delegate: jfxs.Popup = new jfxs.Popup)
   extends PopupWindow(delegate)
-  with SFXDelegate[jfxs.Popup] {
+    with SFXDelegate[jfxs.Popup] {
 
-  def content = delegate.getContent
+  def content: ObservableBuffer[javafx.scene.Node] = delegate.getContent
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 package scalafx.scene.media
 
 import javafx.scene.{media => jfxsm}
-
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
@@ -40,6 +39,6 @@ class AudioEqualizerSpec
   extends SimpleSFXDelegateSpec[jfxsm.AudioEqualizer, AudioEqualizer](classOf[jfxsm.AudioEqualizer], classOf[AudioEqualizer])
   with UrlMedia {
 
-  override protected def getJavaClassInstance = new jfxsm.MediaPlayer(new jfxsm.Media(url)).getAudioEqualizer
+  override protected def getJavaClassInstance: jfxsm.AudioEqualizer = new jfxsm.MediaPlayer(new jfxsm.Media(url)).getAudioEqualizer
 
 }

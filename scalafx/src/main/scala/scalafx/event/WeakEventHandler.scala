@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,9 +28,9 @@
 package scalafx.event
 
 import javafx.{event => jfxe}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 /**
  * Object Companion for [[scalafx.event.WeakEventHandler]]
@@ -67,7 +67,7 @@ class WeakEventHandler[T <: jfxe.Event](override val delegate: jfxe.WeakEventHan
    * @param eventHandler The original event handler to which to forward event notifications
    */
   def this(eventHandler: (T) => Unit) = this(new jfxe.WeakEventHandler[T](new jfxe.EventHandler[T] {
-    def handle(event: T) = eventHandler(event)
+    def handle(event: T): Unit = eventHandler(event)
   }))
 
   /**

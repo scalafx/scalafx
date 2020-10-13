@@ -28,18 +28,21 @@
 package scalafx.scene.text
 
 import javafx.scene.{text => jfxst}
+import javafx.{css => jfxcss}
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, IntegerProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 import scalafx.scene.layout.Pane
 
+import scala.collection.JavaConverters._
+import scala.collection.mutable
 import scala.language.implicitConversions
 
 object TextFlow {
   implicit def sfxTextFlow2jfx(v: TextFlow): jfxst.TextFlow = if (v != null) v.delegate else null
 
-  def classCssMetaData = jfxst.TextFlow.getClassCssMetaData
+  def classCssMetaData: mutable.Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = jfxst.TextFlow.getClassCssMetaData.asScala
 
 }
 
