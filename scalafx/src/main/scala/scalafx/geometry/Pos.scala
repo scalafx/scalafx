@@ -31,11 +31,14 @@ import javafx.{geometry => jfxg}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.geometry.GeometryIncludes.{jfxHPos2sfx, jfxVPos2sfx}
 
+import scala.language.implicitConversions
+
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Pos.html javafx.geometry.Pos]] */
 object Pos
   extends SFXEnumDelegateCompanion[jfxg.Pos, Pos] {
 
   case object BaselineCenter extends Pos(jfxg.Pos.BASELINE_CENTER)
+
   @deprecated("Use BaselineCenter; BASELINE_CENTER will be removed in a future release", "2.2.60")
   val BASELINE_CENTER: Pos = BaselineCenter
 

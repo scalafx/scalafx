@@ -28,6 +28,8 @@ package scalafx.scene.paint
 
 import javafx.scene.{paint => jfxsp}
 
+import scala.language.implicitConversions
+
 object Stops {
   def apply(colors: Color*): Seq[jfxsp.Stop] = colors.toSeq.map(c => new jfxsp.Stop(colors.indexOf(c).toDouble / (colors.length - 1), c))
 }

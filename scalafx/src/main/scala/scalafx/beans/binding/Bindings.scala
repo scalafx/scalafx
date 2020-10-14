@@ -35,13 +35,15 @@ import scalafx.beans.binding.BindingIncludes._
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
 
+import scala.language.implicitConversions
+
 object Bindings extends Bindings
 
 /**
-  * Contains Methods for Bindings.
-  *
-  * @define JFX JavaFX
-  */
+ * Contains Methods for Bindings.
+ *
+ * @define JFX JavaFX
+ */
 trait Bindings {
 
   /**

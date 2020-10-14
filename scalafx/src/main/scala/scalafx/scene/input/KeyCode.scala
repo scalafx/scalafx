@@ -31,10 +31,13 @@ import javafx.scene.{input => jfxsi}
 import scalafx.Includes._
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
+import scala.language.implicitConversions
+
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/KeyCode.html javafx.scene.input.KeyCode]] */
 object KeyCode extends SFXEnumDelegateCompanion[jfxsi.KeyCode, KeyCode] {
 
   case object Enter extends KeyCode(jfxsi.KeyCode.ENTER)
+
   @deprecated("Use Enter; ENTER will be removed in a future release", "8.0.60-R10")
   val ENTER: KeyCode = Enter
 

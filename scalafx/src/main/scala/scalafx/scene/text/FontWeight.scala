@@ -31,10 +31,13 @@ import javafx.scene.{text => jfxst}
 import scalafx.Includes._
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
+import scala.language.implicitConversions
+
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontWeight.html javafx.scene.text.FontWeight]] */
 object FontWeight extends SFXEnumDelegateCompanion[jfxst.FontWeight, FontWeight] {
 
   case object Thin extends FontWeight(jfxst.FontWeight.THIN)
+
   @deprecated("Use Thin; THIN will be removed in a future release", "2.2.60")
   val THIN: FontWeight = Thin
 

@@ -26,11 +26,11 @@
  */
 package scalafx.scene.control
 
-import javafx.beans.property.IntegerProperty
+import javafx.beans.{property => jfxbp}
 import javafx.scene.{control => jfxsc}
 import javafx.{scene => jfxs, util => jfxu}
 import scalafx.Includes._
-import scalafx.beans.property.ObjectProperty
+import scalafx.beans.property.{IntegerProperty, ObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Node
 
@@ -102,7 +102,7 @@ class Pagination(override val delegate: jfxsc.Pagination = new jfxsc.Pagination)
   /**
    * The pageFactory callback function that is called when a page has been selected by the application or the user.
    */
-  def pageFactory: ObjectProperty[Int => Node] = ObjectProperty((page: Int) => delegate.pageFactoryProperty.get.call(page))
+  def pageFactory: ObjectProperty[Int => Node] = ObjectProperty((page: Int) => new Node(delegate.pageFactoryProperty.get.call(page)))
 
   def pageFactory_=(callback: Int => Node): Unit = {
     val jCallback = new jfxu.Callback[java.lang.Integer, jfxs.Node] {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,7 @@ package scalafx.delegate
 
 import scalafx.delegate.FireDelegate._
 
-import scala.language.reflectiveCalls
+import scala.language.{implicitConversions, reflectiveCalls}
 
 object FireDelegate {
 

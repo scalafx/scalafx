@@ -31,6 +31,7 @@ import javafx.{application => jfxa}
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyBooleanProperty
 
+import scala.language.implicitConversions
 
 /** Application platform support, wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Platform.html javafx.application.Platform]]. */
 object Platform {

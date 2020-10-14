@@ -31,6 +31,8 @@ import javafx.{geometry => jfxg}
 import scalafx.beans.binding.BindingIncludes.jfxObjectBinding2sfx
 import scalafx.beans.binding.ObjectBinding
 
+import scala.language.implicitConversions
+
 trait AlignmentPropertyDelegate extends SFXDelegate[jfxbp.ReadOnlyObjectProperty[_]] {
   def alignment: ObjectBinding[jfxg.Pos] = jfxbb.Bindings.select[jfxg.Pos](delegate, "alignment")
 }

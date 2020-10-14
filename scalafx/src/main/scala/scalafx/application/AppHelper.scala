@@ -28,6 +28,8 @@ package scalafx.application
 
 import scalafx.stage.StageIncludes._
 
+import scala.language.implicitConversions
+
 private[application] class AppHelper extends javafx.application.Application {
   def start(stage: javafx.stage.Stage): Unit = {
     JFXApp.ActiveJFXApp = this
