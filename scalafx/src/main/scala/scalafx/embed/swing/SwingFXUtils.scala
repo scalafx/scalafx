@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,12 @@
 package scalafx.embed.swing
 
 import java.awt.image.BufferedImage
-import javafx.embed.{swing => jfxes}
 
+import javafx.embed.{swing => jfxes}
 import scalafx.Includes._
 import scalafx.scene.image.{Image, WritableImage}
+
+import scala.language.implicitConversions
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingFXUtils.html JavaFX SwingFXUtils]].

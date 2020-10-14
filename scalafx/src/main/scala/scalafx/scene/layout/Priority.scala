@@ -31,6 +31,8 @@ import javafx.scene.{layout => jfxsl}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.scene.layout.LayoutIncludes.jfxPriority2sfx
 
+import scala.language.implicitConversions
+
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Priority.html javafx.scene.layout.Priority]] */
 object Priority extends SFXEnumDelegateCompanion[jfxsl.Priority, Priority] {
 
