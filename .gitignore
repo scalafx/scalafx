@@ -4,6 +4,8 @@ syntax: glob
 build/
 out/
 lib/
+.bsp/
+.sbtserver/
 .settings/
 .cache
 .metadata/
