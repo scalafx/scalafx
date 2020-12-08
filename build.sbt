@@ -10,15 +10,23 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 //
 
 val javaFXVersion = "14.0.2"
-val scalafxVersion = s"14.0.2-R20-SNAPSHOT"
+val scalafxVersion = "14.0.2-R20-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v." + scalafxVersion
 
-publishArtifact := false
+// Root project
+lazy val scalafxProject = (project in file("."))
+  .settings(
+    name := "scalafx-project",
+    publishArtifact := false
+  )
+  .aggregate(scalafx, scalafxDemos)
+
 
 // ScalaFX project
 lazy val scalafx = (project in file("scalafx")).settings(
   scalafxSettings,
+  name := "scalafx",
   description := "The ScalaFX framework",
   // Add JavaFX dependencies, mark as "provided", so they can be later removed from published POM
   libraryDependencies ++= javafxModules.map(
@@ -43,6 +51,7 @@ lazy val scalafx = (project in file("scalafx")).settings(
 // ScalaFX Demos project
 lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   scalafxSettings,
+  name := "scalafx-demos",
   description := "The ScalaFX demonstrations",
   libraryDependencies ++= javafxModules.map(
     m => "org.openjfx" % s"javafx-$m" % javaFXVersion classifier osName),
