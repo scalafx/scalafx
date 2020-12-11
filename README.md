@@ -5,8 +5,13 @@
 
 ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX.
 This means that every ScalaFX application is also a valid Scala application.
-By extension it supports full interoperability with Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX
+By extension, it supports full interoperability with Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX
 are supported.
+
+If you have ScalaFX related questions please use [ScalaFX Discussions](https://github.com/scalafx/scalafx/discussions), 
+or [ScalaFX Users Group](https://groups.google.com/forum/#!forum/scalafx-users), 
+or [ScalaFX on StackOverflow](https://stackoverflow.com/questions/tagged/scalafx).
+Please report any problems using [ScalaFX Issue Tracker](https://github.com/scalafx/scalafx/issues).
 
 
 ## Getting Started
@@ -28,7 +33,7 @@ JavaFX binaries depend on operating system used.
 Add following to SBT configuration:
 ```scala
 // Add dependency on ScalaFX library
-libraryDependencies += "org.scalafx" %% "scalafx" % "14-R19"
+libraryDependencies += "org.scalafx" %% "scalafx" % "15.0.1-R20"
 
 // Determine OS version of JavaFX binaries
 lazy val osName = System.getProperty("os.name") match {
@@ -41,7 +46,7 @@ lazy val osName = System.getProperty("os.name") match {
 // Add dependency on JavaFX libraries, OS dependent
 lazy val javaFXModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
 libraryDependencies ++= javaFXModules.map( m =>
-  "org.openjfx" % s"javafx-$m" % "14.0.1" classifier osName
+  "org.openjfx" % s"javafx-$m" % "15.0.1" classifier osName
 )
 ```
 
@@ -60,11 +65,11 @@ object yourProject extends ScalaModule {
 
   // Add dependency on JavaFX libraries, OS dependent
   val javaFXModules = List("base", "controls", "fxml", "graphics", "media", "swing", "web")
-    .map(m => ivy"org.openjfx:javafx-$m:14.0.1;classifier=$osName")
+    .map(m => ivy"org.openjfx:javafx-$m:15.0.1;classifier=$osName")
 
   def ivyDeps = {
     Agg(
-      ivy"org.scalafx::scalafx:14-R19"
+      ivy"org.scalafx::scalafx:15.0.1-R20"
     ) ++ javaFXModules
   }
 }
@@ -72,7 +77,7 @@ object yourProject extends ScalaModule {
 
 ### What is in the version number
 
-ScalaFX version number has two part. The first part corresponds to latest JavaFX version it was tested with. The second part is an incremental release number. For instance, version `14-R19` means that it was tested with JavaFX version `14` and that is the 18th release of ScalaFX. 
+ScalaFX version number has two part. The first part corresponds to the latest JavaFX version it was tested with. The second part is an incremental release number. For instance, version `15.0.1-R20` means that it was tested with JavaFX version `15` and that is the 20th release of ScalaFX. 
 
 #### Legacy Releases
 

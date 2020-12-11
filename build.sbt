@@ -9,7 +9,7 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 //
 
 val javaFXVersion = "15.0.1"
-val scalafxVersion = "15.0.1-R20-SNAPSHOT"
+val scalafxVersion = "15.0.1-R20"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v." + scalafxVersion
 
@@ -244,10 +244,10 @@ lazy val mavenCentralSettings = Seq(
         <name>Roman Hargrave</name>
         <url>https://github.com/RomanHargrave</url>
       </developer>
-      <devloper>
+      <developer>
         <name>Johannes Mockenhaupt</name>
         <url>https://github.com/jotomo</url>
-      </devloper>
+      </developer>
       <developer>
         <name>Piotr Mardziel</name>
         <url>https://piotr.mardziel.com/</url>
