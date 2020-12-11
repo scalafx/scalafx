@@ -1,5 +1,4 @@
 import java.net.URL
-
 import scala.xml.transform.{RewriteRule, RuleTransformer}
 import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 
@@ -65,12 +64,12 @@ lazy val osName = System.getProperty("os.name") match {
 lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
 def scalaTestLib(scalaVersion: String): ModuleID  =
   CrossVersion.partialVersion(scalaVersion) match {
-    case Some((0, _)) => "org.scalatest" % "scalatest_2.13" % "3.2.2"
-    case _ => "org.scalatest" %% "scalatest" % "3.2.2"
+    case Some((3, _)) => "org.scalatest" % "scalatest_2.13" % "3.2.3"
+    case _ => "org.scalatest" %% "scalatest" % "3.2.3"
   }
 def scalaReflectLib(scalaVersion: String): ModuleID =
   CrossVersion.partialVersion(scalaVersion) match {
-    case Some((0, _)) => "org.scala-lang" % "scala-reflect" % "2.13.3"
+    case Some((3, _)) => "org.scala-lang" % "scala-reflect" % "2.13.4"
     case _ => "org.scala-lang" % "scala-reflect" % scalaVersion
   }
 
@@ -90,8 +89,9 @@ def versionSubDir(scalaVersion: String): String =
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.13.3", "2.12.12", "2.11.12", "0.24.0-RC1"),
-  scalaVersion := crossScalaVersions.value.head,
+  crossScalaVersions := Seq("2.13.4", "2.12.12", "2.11.12", "3.0.0-M2"),
+  //  scalaVersion := crossScalaVersions.value.head,
+  scalaVersion := "3.0.0-M2",
   unmanagedSourceDirectories in Compile += (sourceDirectory in Compile).value / versionSubDir(scalaVersion.value),
   unmanagedSourceDirectories in Test += (sourceDirectory in Test).value / versionSubDir(scalaVersion.value),
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
