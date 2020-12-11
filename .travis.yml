@@ -11,10 +11,8 @@ services:
   - xvfb
 
 jdk:
-  - oraclejdk11
-  - oraclejdk14
   - openjdk11
-  - openjdk14
+  - openjdk15
 
 install: true
 
