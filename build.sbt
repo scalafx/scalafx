@@ -244,10 +244,10 @@ lazy val mavenCentralSettings = Seq(
         <name>Roman Hargrave</name>
         <url>https://github.com/RomanHargrave</url>
       </developer>
-      <devloper>
+      <developer>
         <name>Johannes Mockenhaupt</name>
         <url>https://github.com/jotomo</url>
-      </devloper>
+      </developer>
       <developer>
         <name>Piotr Mardziel</name>
         <url>https://piotr.mardziel.com/</url>
