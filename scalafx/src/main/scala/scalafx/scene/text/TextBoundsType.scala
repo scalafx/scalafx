@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,16 +34,18 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object TextBoundsType extends SFXEnumDelegateCompanion[jfxst.TextBoundsType, TextBoundsType] {
 
   case object Logical extends TextBoundsType(jfxst.TextBoundsType.LOGICAL)
-  @deprecated ("Use Logical; LOGICAL will be removed in a future release", "8.0.60-R10")
-  val LOGICAL = Logical
+  @deprecated("Use Logical; LOGICAL will be removed in a future release", "8.0.60-R10")
+  val LOGICAL: TextBoundsType = Logical
 
   case object LogicalVerticalCenter extends TextBoundsType(jfxst.TextBoundsType.LOGICAL_VERTICAL_CENTER)
-  @deprecated ("Use LogicalVerticalCenter; LOGICAL_VERTICAL_CENTER will be removed in a future release", "8.0.60-R10")
-  val LOGICAL_VERTICAL_CENTER = LogicalVerticalCenter
+
+  @deprecated("Use LogicalVerticalCenter; LOGICAL_VERTICAL_CENTER will be removed in a future release", "8.0.60-R10")
+  val LOGICAL_VERTICAL_CENTER: TextBoundsType = LogicalVerticalCenter
 
   case object Visual extends TextBoundsType(jfxst.TextBoundsType.VISUAL)
-  @deprecated ("Use Visual; VISUAL will be removed in a future release", "8.0.60-R10")
-  val VISUAL = Visual
+
+  @deprecated("Use Visual; VISUAL will be removed in a future release", "8.0.60-R10")
+  val VISUAL: TextBoundsType = Visual
 
   protected override def unsortedValues: Array[TextBoundsType] = Array(Logical, Visual, LogicalVerticalCenter)
 }

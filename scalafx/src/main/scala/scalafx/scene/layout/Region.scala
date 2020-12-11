@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,13 +46,13 @@ object Region {
    * size returned by computeMinWidth(), computeMinHeight(), computePrefWidth(),
    * computePrefHeight(), computeMaxWidth(), or computeMaxHeight().
    */
-  val USE_COMPUTED_SIZE = jfxsl.Region.USE_COMPUTED_SIZE
+  val USE_COMPUTED_SIZE: Double = jfxsl.Region.USE_COMPUTED_SIZE
   /**
    * Sentinel value which can be passed to a region's minWidth, minHeight, prefWidth, prefHeight,
    * maxWidth, maxHeight properties to indicate that the preferred dimension should be used for
    * that max and/or min constraint.
    */
-  val USE_PREF_SIZE = jfxsl.Region.USE_PREF_SIZE
+  val USE_PREF_SIZE: Double = jfxsl.Region.USE_PREF_SIZE
 
   /** Utility method which lays out the child within an area of it's parent defined by areaX, areaY,
     * areaWidth x areaHeight, with a baseline offset relative to that area. */
@@ -213,7 +213,7 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   /**
    * Returns true since all Regions are resizable.
    */
-  def resize = delegate.isResizable
+  def resize: Boolean = delegate.isResizable
 
   /**
    * Invoked by the region's parent during layout to set the region's width and height.
@@ -232,5 +232,5 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   /**
    * Gets the space around content, which will include any borders plus padding if set.
    */
-  def insets = delegate.getInsets
+  def insets: Insets = delegate.getInsets
 }

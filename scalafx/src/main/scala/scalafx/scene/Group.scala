@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@ class Group(override val delegate: jfxs.Group = new jfxs.Group())
   /**
    * Gets the list of children of this `Group`.
    */
-  def children = delegate.getChildren
+  def children: ObservableBuffer[jfxs.Node] = delegate.getChildren
   /**
    * Sets the list of children, replacing the prior content. If you want append to current content, use `add` or
    * similar.

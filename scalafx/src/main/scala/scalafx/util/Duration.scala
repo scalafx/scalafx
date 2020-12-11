@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.util
 
 import javafx.{util => jfxu}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 /**
  * Companion Object for [[scalafx.util.Duration]].
@@ -40,27 +40,32 @@ object Duration {
   def apply(millis: Double) = new Duration(millis)
 
   private[util] class DurationHelper(d: Double) {
-    def ms = apply(d)
+    def ms: Duration = apply(d)
+
     def s = new Duration(jfxu.Duration.seconds(d))
     def m = new Duration(jfxu.Duration.minutes(d))
     def h = new Duration(jfxu.Duration.hours(d))
   }
 
   def Indefinite = new Duration(jfxu.Duration.INDEFINITE)
-  @deprecated ("Use Indefinite; INDEFINITE will be removed in a future release", "8.0.60-R10")
-  def INDEFINITE = Indefinite
+
+  @deprecated("Use Indefinite; INDEFINITE will be removed in a future release", "8.0.60-R10")
+  def INDEFINITE: Duration = Indefinite
 
   def One = new Duration(jfxu.Duration.ONE)
-  @deprecated ("Use One; ONE will be removed in a future release", "8.0.60-R10")
-  def ONE = One
+
+  @deprecated("Use One; ONE will be removed in a future release", "8.0.60-R10")
+  def ONE: Duration = One
 
   def Unknown = new Duration(jfxu.Duration.UNKNOWN)
-  @deprecated ("Use Unknown; UNKNOWN will be removed in a future release", "8.0.60-R10")
-  def UNKNOWN = Unknown
+
+  @deprecated("Use Unknown; UNKNOWN will be removed in a future release", "8.0.60-R10")
+  def UNKNOWN: Duration = Unknown
 
   def Zero = new Duration(jfxu.Duration.ZERO)
-  @deprecated ("Use Zero; ZERO will be removed in a future release", "8.0.60-R10")
-  def ZERO = Zero
+
+  @deprecated("Use Zero; ZERO will be removed in a future release", "8.0.60-R10")
+  def ZERO: Duration = Zero
 }
 
 /**
@@ -82,26 +87,36 @@ class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Du
     this(jfxu.Duration.millis(millis))
 
   def +(d: jfxu.Duration) = new Duration(delegate.add(d))
+
   def -(d: jfxu.Duration) = new Duration(delegate.subtract(d))
 
   def *(d: Double) = new Duration(delegate.multiply(d))
+
   // Note: We are intentionally *not* supporting this...  there is no use case for multiplication with disregard to units
   // def *(d: jfxu.Duration) = delegate.multiply(d)
 
   def /(d: Double) = new Duration(delegate.divide(d))
+
   // Note: This is a "fixed" function...  rather than returning a duration we properly cancel units and return a Double
-  def /(d: jfxu.Duration) = delegate.toMillis / d.toMillis
+  def /(d: jfxu.Duration): Double = delegate.toMillis / d.toMillis
 
-  override def compare(that: Duration) = delegate.compareTo(that)
-  def <(d: jfxu.Duration) = delegate.lessThan(d)
-  def <=(d: jfxu.Duration) = delegate.lessThanOrEqualTo(d)
-  def >(d: jfxu.Duration) = delegate.greaterThan(d)
-  def >=(d: jfxu.Duration) = delegate.greaterThanOrEqualTo(d)
+  override def compare(that: Duration): Int = delegate.compareTo(that)
 
-  def ==(d: jfxu.Duration) = delegate.equals(d)
-  def !=(d: jfxu.Duration) = !delegate.equals(d)
-  def ===(d: jfxu.Duration) = delegate.equals(d)
-  def =!=(d: jfxu.Duration) = !delegate.equals(d)
+  def <(d: jfxu.Duration): Boolean = delegate.lessThan(d)
+
+  def <=(d: jfxu.Duration): Boolean = delegate.lessThanOrEqualTo(d)
+
+  def >(d: jfxu.Duration): Boolean = delegate.greaterThan(d)
+
+  def >=(d: jfxu.Duration): Boolean = delegate.greaterThanOrEqualTo(d)
+
+  def ==(d: jfxu.Duration): Boolean = delegate.equals(d)
+
+  def !=(d: jfxu.Duration): Boolean = !delegate.equals(d)
+
+  def ===(d: jfxu.Duration): Boolean = delegate.equals(d)
+
+  def =!=(d: jfxu.Duration): Boolean = !delegate.equals(d)
 
   def unary_-() = new Duration(delegate.negate())
 

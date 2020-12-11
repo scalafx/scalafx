@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,20 +35,23 @@ import scala.language.implicitConversions
 object BlurType extends SFXEnumDelegateCompanion[jfxse.BlurType, BlurType] {
 
   case object Gaussian extends BlurType(jfxse.BlurType.GAUSSIAN)
-  @deprecated ("Use Gaussian; GAUSSIAN will be removed in a future release", "8.0.60-R10")
-  val GAUSSIAN = Gaussian
+  @deprecated("Use Gaussian; GAUSSIAN will be removed in a future release", "8.0.60-R10")
+  val GAUSSIAN: BlurType = Gaussian
 
   case object OnePassBox extends BlurType(jfxse.BlurType.ONE_PASS_BOX)
-  @deprecated ("Use OnePassBox; ONE_PASS_BOX will be removed in a future release", "8.0.60-R10")
-  val ONE_PASS_BOX = OnePassBox
+
+  @deprecated("Use OnePassBox; ONE_PASS_BOX will be removed in a future release", "8.0.60-R10")
+  val ONE_PASS_BOX: BlurType = OnePassBox
 
   case object ThreePassBox extends BlurType(jfxse.BlurType.THREE_PASS_BOX)
-  @deprecated ("Use ThreePassBox; THREE_PASS_BOX will be removed in a future release", "8.0.60-R10")
-  val THREE_PASS_BOX = ThreePassBox
+
+  @deprecated("Use ThreePassBox; THREE_PASS_BOX will be removed in a future release", "8.0.60-R10")
+  val THREE_PASS_BOX: BlurType = ThreePassBox
 
   case object TwoPassBox extends BlurType(jfxse.BlurType.TWO_PASS_BOX)
-  @deprecated ("Use TwoPassBox; TWO_PASS_BOX will be removed in a future release", "8.0.60-R10")
-  val TWO_PASS_BOX = TwoPassBox
+
+  @deprecated("Use TwoPassBox; TWO_PASS_BOX will be removed in a future release", "8.0.60-R10")
+  val TWO_PASS_BOX: BlurType = TwoPassBox
 
   protected override def unsortedValues: Array[BlurType] = Array(
     OnePassBox, TwoPassBox, ThreePassBox, Gaussian

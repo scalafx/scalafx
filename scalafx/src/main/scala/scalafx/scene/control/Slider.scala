@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,7 @@ object Slider {
 class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Control(delegate) with SFXDelegate[jfxsc.Slider] {
 
   /** Constructs a Slider control with the specified slider min, max and current value values. */
-  def this(min: Double, max: Double, value: Double) {
+  def this(min: Double, max: Double, value: Double) = {
     this(new jfxsc.Slider(min, max, value))
   }
 
@@ -63,8 +63,9 @@ class Slider(override val delegate: jfxsc.Slider = new jfxsc.Slider) extends Con
 
   def labelFormatter_=(v: StringConverter[Double]): Unit = {
     labelFormatter() = new jfxu.StringConverter[java.lang.Double] {
-      def fromString(s: String) = v.fromString(s)
-      def toString(d: java.lang.Double) = v.toString(d)
+      def fromString(s: String): java.lang.Double = v.fromString(s)
+
+      def toString(d: java.lang.Double): String = v.toString(d)
     }
   }
 

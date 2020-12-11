@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -59,7 +59,7 @@ class SnapshotParameters(override val delegate: jfxs.SnapshotParameters = new jf
   /**
    * The current depthBuffer flag.
    */
-  def depthBuffer = delegate.isDepthBuffer
+  def depthBuffer: Boolean = delegate.isDepthBuffer
 
   def depthBuffer_=(db: Boolean): Unit = {
     delegate.setDepthBuffer(db)

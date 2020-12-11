@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -724,7 +724,7 @@ trait ControlIncludes
    * @return $SFX $TGGL
    */
   implicit def jfxToggle2sfx(t: jfxsc.Toggle): Toggle = if (t != null) new Toggle {
-    override val delegate = t
+    override val delegate: jfxsc.Toggle = t
     def userData: AnyRef = delegate.getUserData
 
     def userData_=(v: AnyRef): Unit = {
@@ -748,7 +748,7 @@ trait ControlIncludes
    * @return $SFX $SKIN
    */
   implicit def jfxSkin2sfxSkin[C <: jfxsc.Skinnable](s: jfxsc.Skin[C]): Skin[C] = if (s != null) new Skin[C] {
-    override val delegate = s
+    override val delegate: jfxsc.Skin[C] = s
   } else null
 
   /**
@@ -767,7 +767,7 @@ trait ControlIncludes
    * @return $SFX $SKNB
    */
   implicit def jfxSkinnable2sfxSkinnable(s: jfxsc.Skinnable): Skinnable = if (s != null) new Skinnable {
-    override val delegate = s
+    override val delegate: jfxsc.Skinnable = s
   } else null
 
   /**
@@ -1016,11 +1016,11 @@ trait ControlIncludes
   implicit def jfxTreeTablePosition2sfx[S, T](ttp: jfxsc.TreeTablePosition[S, T]): TreeTablePosition[S, T] =
     if (ttp != null) new TreeTablePosition[S, T](ttp) else null
 
-  implicit def jfxTreeTableColumn2sfx[S,T](a: jfxsc.TreeTableColumn[S,T]) =
-    if (a != null) new TreeTableColumn[S,T](a) else null
+  implicit def jfxTreeTableColumn2sfx[S, T](a: jfxsc.TreeTableColumn[S, T]): TreeTableColumn[S, T] =
+    if (a != null) new TreeTableColumn[S, T](a) else null
 
-  implicit def jfxTreeCellDataFeatures2sfx[S,T](a: jfxsc.TreeTableColumn.CellDataFeatures[S,T]) =
-    if (a != null) new TreeTableColumn.CellDataFeatures[S,T](a) else null
+  implicit def jfxTreeCellDataFeatures2sfx[S, T](a: jfxsc.TreeTableColumn.CellDataFeatures[S, T]): TreeTableColumn.CellDataFeatures[S, T] =
+    if (a != null) new TreeTableColumn.CellDataFeatures[S, T](a) else null
 
   /**
    * $START$TTVW.html $TTVW$END
@@ -1030,7 +1030,7 @@ trait ControlIncludes
    * @return $SFX $TTVW
    * @since 8.0
    */
-  implicit def jfxTreeTableView2sfx[S](a: jfxsc.TreeTableView[S]) =
+  implicit def jfxTreeTableView2sfx[S](a: jfxsc.TreeTableView[S]): TreeTableView[S] =
     if (a != null) new TreeTableView[S](a) else null
 
   /**
@@ -1041,7 +1041,7 @@ trait ControlIncludes
    * @return $SFX $TTVW
    * @since 8.0
    */
-  implicit def jfxTreeTableViewEditEvent2sfx[T](t: jfxsc.TreeTableView.EditEvent[T]) =
+  implicit def jfxTreeTableViewEditEvent2sfx[T](t: jfxsc.TreeTableView.EditEvent[T]): TreeTableView.EditEvent[T] =
     if (t != null) new TreeTableView.EditEvent[T](t) else null
 
   /**
@@ -1051,7 +1051,7 @@ trait ControlIncludes
    * @param rf $JFX $TTVE
    * @return $SFX $TVVE
    */
-  implicit def jfxTreeTableViewResizeFeatures2sfx[S](rf: jfxsc.TreeTableView.ResizeFeatures[S]) =
+  implicit def jfxTreeTableViewResizeFeatures2sfx[S](rf: jfxsc.TreeTableView.ResizeFeatures[S]): TreeTableView.ResizeFeatures[S] =
     if (rf != null) new TreeTableView.ResizeFeatures[S](rf) else null
 
   /**
@@ -1061,7 +1061,7 @@ trait ControlIncludes
    * @param ttvsm $JFX $TTVS
    * @return $SFX $TTVS
    */
-  implicit def jfxTreeTableViewSelectionModel2sfx[S](ttvsm: jfxsc.TreeTableView.TreeTableViewSelectionModel[S]) =
+  implicit def jfxTreeTableViewSelectionModel2sfx[S](ttvsm: jfxsc.TreeTableView.TreeTableViewSelectionModel[S]): TreeTableView.TreeTableViewSelectionModel[S] =
     if (ttvsm != null) new TreeTableView.TreeTableViewSelectionModel[S](ttvsm) {} else null
 
   /**
@@ -1071,7 +1071,7 @@ trait ControlIncludes
    * @param ttvfm $JFX $TTVF
    * @return $SFX $TTVF
    */
-  implicit def jfxTreeTableViewFocusModel2sfx[S](ttvfm: jfxsc.TreeTableView.TreeTableViewFocusModel[S]) =
+  implicit def jfxTreeTableViewFocusModel2sfx[S](ttvfm: jfxsc.TreeTableView.TreeTableViewFocusModel[S]): TreeTableView.TreeTableViewFocusModel[S] =
     if (ttvfm != null) new TreeTableView.TreeTableViewFocusModel[S](ttvfm) else null
 
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -82,7 +82,7 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
   /**
    * Event handler to be invoked whenever an error occurs on this MediaView.
    */
-  def onError = delegate.onErrorProperty
+  def onError: ObjectProperty[jfxe.EventHandler[jfxsm.MediaErrorEvent]] = delegate.onErrorProperty
 
   def onError_=(v: jfxe.EventHandler[jfxsm.MediaErrorEvent]): Unit = {
     onError() = v

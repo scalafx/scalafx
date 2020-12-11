@@ -39,9 +39,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 class AnimationTimerSpec
   extends SimpleSFXDelegateSpec[jfxa.AnimationTimer, AnimationTimer](classOf[jfxa.AnimationTimer], classOf[AnimationTimer]) {
 
-  override protected def getScalaClassInstance = AnimationTimer((now: Long) => ())
+  override protected def getScalaClassInstance: AnimationTimer = AnimationTimer((now: Long) => ())
 
-  override def getJavaClassInstance = new jfxa.AnimationTimer {
+  override def getJavaClassInstance: jfxa.AnimationTimer = new jfxa.AnimationTimer {
     def handle(now: Long): Unit = {}
   }
 }

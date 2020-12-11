@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -82,10 +82,10 @@ class SubScene(override val delegate: jfxs.SubScene)
   /**
    * Returns Nodes children from this Scene's `root`.
    */
-  def getChildren = root.value match {
+  def getChildren: ObservableBuffer[jfxs.Node] = root.value match {
     case group: jfxs.Group => group.getChildren
-    case pane: jfxsl.Pane  => pane.getChildren
-    case _                 => throw new IllegalStateException("Cannot access children of root: " + root +
+    case pane: jfxsl.Pane => pane.getChildren
+    case _ => throw new IllegalStateException("Cannot access children of root: " + root +
       "\nUse a class that extends Group or Pane, or override the getChildren method.")
   }
 

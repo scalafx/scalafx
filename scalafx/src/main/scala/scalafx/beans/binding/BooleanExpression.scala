@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,7 @@ package scalafx.beans.binding
 
 import javafx.beans.value.ObservableBooleanValue
 import javafx.beans.{binding => jfxbb}
+import scalafx.beans.binding.BindingIncludes.jfxBooleanBinding2sfx
 
 import scala.language.implicitConversions
 
@@ -38,17 +39,17 @@ object BooleanExpression {
 }
 
 class BooleanExpression(val delegate: jfxbb.BooleanExpression) {
-  def ===(v: ObservableBooleanValue) = delegate.isEqualTo(v)
-  def ===(v: BooleanExpression) = delegate.isEqualTo(v.delegate)
+  def ===(v: ObservableBooleanValue): BooleanBinding = delegate.isEqualTo(v)
+  def ===(v: BooleanExpression): BooleanBinding = delegate.isEqualTo(v.delegate)
 
-  def =!=(v: ObservableBooleanValue) = delegate.isNotEqualTo(v)
-  def =!=(v: BooleanExpression) = delegate.isNotEqualTo(v.delegate)
+  def =!=(v: ObservableBooleanValue): BooleanBinding = delegate.isNotEqualTo(v)
+  def =!=(v: BooleanExpression): BooleanBinding = delegate.isNotEqualTo(v.delegate)
 
-  def &&(v: ObservableBooleanValue) = delegate.and(v)
-  def &&(v: BooleanExpression) = delegate.and(v.delegate)
+  def &&(v: ObservableBooleanValue): BooleanBinding = delegate.and(v)
+  def &&(v: BooleanExpression): BooleanBinding = delegate.and(v.delegate)
 
-  def ||(v: ObservableBooleanValue) = delegate.or(v)
-  def ||(v: BooleanExpression) = delegate.or(v.delegate)
+  def ||(v: ObservableBooleanValue): BooleanBinding = delegate.or(v)
+  def ||(v: BooleanExpression): BooleanBinding = delegate.or(v.delegate)
 
-  def unary_!() = delegate.not()
+  def unary_! : BooleanBinding = delegate.not()
 }

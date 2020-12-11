@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,14 +27,14 @@
 package scalafx.beans.binding
 
 import javafx.beans.{binding => jfxbb}
+import scalafx.beans.value.ObservableValue
 
 import scala.language.implicitConversions
-import scalafx.beans.value.ObservableValue
 
 object NumberBinding {
   implicit def sfxNumberBinding2jfx(nb: NumberBinding): jfxbb.NumberBinding = if (nb != null) nb.delegate else null
 }
 
 class NumberBinding(override val delegate: jfxbb.NumberBinding) extends NumberExpression(delegate) with ObservableValue[Number, Number] {
-  def value = delegate.getValue
+  def value: Number = delegate.getValue
 }

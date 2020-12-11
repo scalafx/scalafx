@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,15 +35,17 @@ object StrokeType extends SFXEnumDelegateCompanion[jfxss.StrokeType, StrokeType]
 
   case object Inside extends StrokeType(jfxss.StrokeType.INSIDE)
   @deprecated("Use Inside; INSIDE will be removed in a future release", "2.2.60")
-  val INSIDE = Inside
+  val INSIDE: StrokeType = Inside
 
   case object Outside extends StrokeType(jfxss.StrokeType.OUTSIDE)
+
   @deprecated("Use Outside; OUTSIDE will be removed in a future release", "2.2.60")
-  val OUTSIDE = Outside
+  val OUTSIDE: StrokeType = Outside
 
   case object Centered extends StrokeType(jfxss.StrokeType.CENTERED)
+
   @deprecated("Use Centered; CENTERED will be removed in a future release", "2.2.60")
-  val CENTERED = Centered
+  val CENTERED: StrokeType = Centered
 
   protected override def unsortedValues: Array[StrokeType] = Array(Inside, Outside, Centered)
 }

@@ -76,7 +76,7 @@ object ReadOnlySetWrapper {
   * Wraps `javafx.beans.property.ReadOnlySetWrapper`.
   */
 class ReadOnlySetWrapper[E <: Any](override val delegate: jfxbp.ReadOnlySetWrapper[E] = new jfxbp.ReadOnlySetWrapper[E])
-  extends SetProperty[E]
+  extends SetProperty[E](delegate)
     with SFXDelegate[jfxbp.ReadOnlySetWrapper[E]] {
 
   /** Creates a new ReadOnlySetWrapper instance.

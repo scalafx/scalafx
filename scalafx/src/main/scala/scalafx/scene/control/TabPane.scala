@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,7 @@ import javafx.scene.{control => jfxsc}
 import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, DoubleProperty, ObjectProperty}
+import scalafx.collections.ObservableBuffer
 import scalafx.delegate.{SFXDelegate, SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scalafx.geometry.Side
 
@@ -46,23 +47,26 @@ object TabPane {
      * All tabs will have the option to be closed.
      */
     case object AllTabs extends TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.ALL_TABS)
-    @deprecated ("Use AllTabs; ALL_TABS will be removed in a future release", "8.0.60-R10")
-    val ALL_TABS = AllTabs
+
+    @deprecated("Use AllTabs; ALL_TABS will be removed in a future release", "8.0.60-R10")
+    val ALL_TABS: TabClosingPolicy = AllTabs
 
     /**
      * Only the currently selected tab will have the option to be closed, with a graphic next to the tab text being
      * shown.
      */
     case object SelectedTab extends TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.SELECTED_TAB)
-    @deprecated ("Use SelectedTab; SELECTED_TAB will be removed in a future release", "8.0.60-R10")
-    val SELECTED_TAB = SelectedTab
+
+    @deprecated("Use SelectedTab; SELECTED_TAB will be removed in a future release", "8.0.60-R10")
+    val SELECTED_TAB: TabClosingPolicy = SelectedTab
 
     /**
      * Tabs can not be closed by the user.
      */
     case object Unavailable extends TabClosingPolicy(jfxsc.TabPane.TabClosingPolicy.UNAVAILABLE)
-    @deprecated ("Use Unavailable; UNAVAILABLE will be removed in a future release", "8.0.60-R10")
-    val UNAVAILABLE = Unavailable
+
+    @deprecated("Use Unavailable; UNAVAILABLE will be removed in a future release", "8.0.60-R10")
+    val UNAVAILABLE: TabClosingPolicy = Unavailable
 
     protected override def unsortedValues: Array[TabClosingPolicy] = Array(AllTabs, SelectedTab, Unavailable)
 
@@ -75,7 +79,7 @@ object TabPane {
   /**
    * TabPane mode will be changed to floating allowing the TabPane to be placed alongside other control.
    */
-  val StyleClassFloating = jfxsc.TabPane.STYLE_CLASS_FLOATING
+  val StyleClassFloating: String = jfxsc.TabPane.STYLE_CLASS_FLOATING
 
 }
 
@@ -158,7 +162,7 @@ class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane)
   /**
    * The tabs to display in this TabPane.
    */
-  def tabs = delegate.getTabs
+  def tabs: ObservableBuffer[jfxsc.Tab] = delegate.getTabs
 
   def tabs_=(tabSeq: Seq[Tab]): Unit = {
     delegate.getTabs.clear()
@@ -168,7 +172,7 @@ class TabPane(override val delegate: jfxsc.TabPane = new jfxsc.TabPane)
   /**
    * Append a new Tab to tabs
    */
-  def +=(tab: Tab) = {
+  def +=(tab: Tab): TabPane = {
     tabs.add(tab)
     this
   }

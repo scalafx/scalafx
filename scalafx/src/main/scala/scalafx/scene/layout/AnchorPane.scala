@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,22 +46,22 @@ object AnchorPane {
   /**
    * Returns the child's bottom anchor constraint if set.
    */
-  def getBottomAnchor(child: Node) = jfxsl.AnchorPane.getBottomAnchor(child)
+  def getBottomAnchor(child: Node): Double = jfxsl.AnchorPane.getBottomAnchor(child)
 
   /**
    * Returns the child's left anchor constraint if set.
    */
-  def getLeftAnchor(child: Node) = jfxsl.AnchorPane.getLeftAnchor(child)
+  def getLeftAnchor(child: Node): Double = jfxsl.AnchorPane.getLeftAnchor(child)
 
   /**
    * Returns the child's right anchor constraint if set.
    */
-  def getRightAnchor(child: Node) = jfxsl.AnchorPane.getRightAnchor(child)
+  def getRightAnchor(child: Node): Double = jfxsl.AnchorPane.getRightAnchor(child)
 
   /**
    * Returns the child's top anchor constraint if set.
    */
-  def getTopAnchor(child: Node) = jfxsl.AnchorPane.getTopAnchor(child)
+  def getTopAnchor(child: Node): Double = jfxsl.AnchorPane.getTopAnchor(child)
 
   /**
    * Sets the bottom anchor for the child when contained by an anchorpane.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object IndexRange {
   implicit def sfxIndexRange(r: IndexRange): jfxsc.IndexRange = if (r != null) r.delegate else null
@@ -37,9 +37,9 @@ object IndexRange {
   /**
    * Index range value delimiter.
    */
-  val ValueDelimiter = jfxsc.IndexRange.VALUE_DELIMITER
-  @deprecated ("Use ValueDelimiter; VALUE_DELIMITER will be removed in a future release", "8.0.60-R10")
-  val VALUE_DELIMITER = ValueDelimiter
+  val ValueDelimiter: String = jfxsc.IndexRange.VALUE_DELIMITER
+  @deprecated("Use ValueDelimiter; VALUE_DELIMITER will be removed in a future release", "8.0.60-R10")
+  val VALUE_DELIMITER: String = ValueDelimiter
 
   /**
    * Convenience method to create an IndexRange instance that has the smaller value as the start
@@ -70,16 +70,16 @@ class IndexRange(override val delegate: jfxsc.IndexRange) extends SFXDelegate[jf
   /**
    * Returns the start position of the range.
    */
-  def start = delegate.getStart
+  def start: Int = delegate.getStart
 
   /**
    * Returns the end position of the range (exclusive).
    */
-  def end = delegate.getEnd
+  def end: Int = delegate.getEnd
 
   /**
    * Returns the length of the range.
    */
-  def length = delegate.getLength
+  def length: Int = delegate.getLength
 
 }

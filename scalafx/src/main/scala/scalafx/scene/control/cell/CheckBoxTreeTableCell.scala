@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,23 +31,22 @@ import javafx.beans.{value => jfxbv}
 import javafx.scene.control.{cell => jfxscc}
 import javafx.scene.{control => jfxsc}
 import javafx.{util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.TreeTableCell
 import scalafx.util.StringConverter
 
+import scala.language.implicitConversions
+
 /**
  * Companion Object for [[scalafx.scene.control.cell.CheckBoxTreeTableCell]].
  *
  * @since 8.0
  * @todo Replace all references to $JFX $TTC to its $SFX counterpart when it was created
- *
- * @define CBTTC `CheckBoxTreeTableCell`
- * @define TTC TreeTableColumn
- * @define SP A Function that, given an object of type $TTC[S, T], will return an ObservableValue[Boolean]
+ * @define CBTTC       `CheckBoxTreeTableCell`
+ * @define TTC         TreeTableColumn
+ * @define SP          A Function that, given an object of type $TTC[S, T], will return an ObservableValue[Boolean]
  *         that represents whether the given item is selected or not.
  * @define FTTC Creates a cell factory for use in a [[scalafx.scene.control.TreeTableCell $ T T C]] cell factory.
  * @define RETFTTC A Callback that will return a TreeTableCell that is able to work on the type of element contained within the $TTC.
@@ -92,7 +91,7 @@ object CheckBoxTreeTableCell {
    * $SATISFY
    */
   @deprecated(message = "Use forTreeTableColumn[S, T](Integer => ObservableValue[Boolean, java.lang.Boolean]))", since = "8.0")
-  def forTreeTableColumn[S, T](selectedProperty: JCallIntToBool) = jfxscc.CheckBoxTreeTableCell.forTreeTableColumn[S, T](selectedProperty)
+  def forTreeTableColumn[S, T](selectedProperty: JCallIntToBool): jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] = jfxscc.CheckBoxTreeTableCell.forTreeTableColumn[S, T](selectedProperty)
 
   /**
    * $FTTC
@@ -112,7 +111,7 @@ object CheckBoxTreeTableCell {
    * $SATISFY
    */
   @deprecated(message = "Use forTreeTableColumn[S, T](Integer => ObservableValue[Boolean, java.lang.Boolean], Boolean))", since = "8.0")
-  def forTreeTableColumn[S, T](selectedProperty: JCallIntToBool, showLabel: Boolean) = jfxscc.CheckBoxTreeTableCell.forTreeTableColumn[S, T](selectedProperty, showLabel)
+  def forTreeTableColumn[S, T](selectedProperty: JCallIntToBool, showLabel: Boolean): jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] = jfxscc.CheckBoxTreeTableCell.forTreeTableColumn[S, T](selectedProperty, showLabel)
 
   /**
    * $FTTC
@@ -133,7 +132,7 @@ object CheckBoxTreeTableCell {
    * $SATISFY
    */
   @deprecated(message = "Use forTreeTableColumn[S, T](Integer => ObservableValue[Boolean, java.lang.Boolean], StringConverter[T]))", since = "8.0")
-  def forTreeTableColumn[S, T](selectedProperty: JCallIntToBool, converter: jfxu.StringConverter[T]) = jfxscc.CheckBoxTreeTableCell.forTreeTableColumn[S, T](selectedProperty, converter)
+  def forTreeTableColumn[S, T](selectedProperty: JCallIntToBool, converter: jfxu.StringConverter[T]): jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] = jfxscc.CheckBoxTreeTableCell.forTreeTableColumn[S, T](selectedProperty, converter)
 
   /**
    * $FTTC

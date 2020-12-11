@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,21 +27,22 @@
 package scalafx.scene.control.cell
 
 import javafx.scene.control.{cell => jfxscc}
+import javafx.scene.{control => jfxsc}
 import javafx.{util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.{ListCell, ListView}
 import scalafx.util.StringConverter
 
+import scala.language.implicitConversions
+
 /**
  * Companion Object for [[scalafx.scene.control.cell.TextFieldListCell]].
  *
- * @define TFLC `TextFieldListCell`
- * @define TTYPE  The type of the elements contained within the `ListView`.
+ * @define TFLC    `TextFieldListCell`
+ * @define TTYPE   The type of the elements contained within the `ListView`.
  * @define FLVINTI Provides a `TextField` that allows editing of the cell content when the cell is double-clicked, or when `ListView.edit(int)` is called.
- * @define FLVRET A Function that can be inserted into the cell factory property of a `ListView`, that enables textual editing of the content.
+ * @define FLVRET  A Function that can be inserted into the cell factory property of a `ListView`, that enables textual editing of the content.
  */
 object TextFieldListCell {
 
@@ -75,7 +76,7 @@ object TextFieldListCell {
    * Added to satisfy Spec Texts.
    */
   @deprecated(message = "Use forListView[T](StringConverter[T])", since = "1.0")
-  def forListView[T](converter: jfxu.StringConverter[T]) = jfxscc.TextFieldListCell.forListView[T](converter)
+  def forListView[T](converter: jfxu.StringConverter[T]): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] = jfxscc.TextFieldListCell.forListView[T](converter)
 
 }
 

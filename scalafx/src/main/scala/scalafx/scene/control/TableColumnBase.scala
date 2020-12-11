@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,8 +50,8 @@ object TableColumnBase {
    * By default all columns will use this comparator to perform sorting.
    */
   val DefaultComparator: Ordering[_] = Ordering.comparatorToOrdering(jfxsc.TableColumnBase.DEFAULT_COMPARATOR)
-  @deprecated ("Use DefaultComparator; DEFAULT_COMPARATOR will be removed in a future release", "8.0.60-R10")
-  val DEFAULT_COMPARATOR = DefaultComparator
+  @deprecated("Use DefaultComparator; DEFAULT_COMPARATOR will be removed in a future release", "8.0.60-R10")
+  val DEFAULT_COMPARATOR: Ordering[_] = DefaultComparator
 }
 
 /**
@@ -194,7 +194,7 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    * Returns a previously set Object property, or null if no such property has been set using the
    * setUserData(Any) method.
    */
-  def userData = delegate.getUserData
+  def userData: AnyRef = delegate.getUserData
 
   /**
    * Toggling this will immediately toggle the visibility of this column, and all children columns.
@@ -213,17 +213,17 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
   /**
    * Returns the actual value for a cell at a given row index (and which belongs to this TableColumnBase).
    */
-  def getCellData(index: Int) = delegate.getCellData(index)
+  def getCellData(index: Int): T = delegate.getCellData(index)
 
   /**
    * Returns the actual value for a cell from the given item.
    */
-  def getCellData(index: S) = delegate.getCellData(index)
+  def getCellData(index: S): T = delegate.getCellData(index)
 
   /**
    * Tests if this TableColumnBase has properties.
    */
-  def hasProperties = delegate.hasProperties
+  def hasProperties: Boolean = delegate.hasProperties
 
-  override protected def eventHandlerDelegate = delegate.asInstanceOf[EventHandled]
+  override protected def eventHandlerDelegate: EventHandled = delegate.asInstanceOf[EventHandled]
 }

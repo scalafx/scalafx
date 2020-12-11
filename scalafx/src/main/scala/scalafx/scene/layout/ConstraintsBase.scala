@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,9 @@
 package scalafx.scene.layout
 
 import javafx.scene.{layout => jfxsl}
-import javafx.{geometry => jfxg}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object ConstraintsBase {
   implicit def sfxConstraintsBase2jfx(v: ConstraintsBase): jfxsl.ConstraintsBase = if (v != null) v.delegate else null
@@ -38,9 +37,9 @@ object ConstraintsBase {
   /**
    * If set as max value indicates that the pref value should be used as the max.
    */
-  val ConstrainToPref = jfxsl.ConstraintsBase.CONSTRAIN_TO_PREF
-  @deprecated ("Use ConstrainToPref; CONSTRAIN_TO_PREF will be removed in a future release", "8.0.60-R10")
-  val CONSTRAIN_TO_PREF = ConstrainToPref
+  val ConstrainToPref: Double = jfxsl.ConstraintsBase.CONSTRAIN_TO_PREF
+  @deprecated("Use ConstrainToPref; CONSTRAIN_TO_PREF will be removed in a future release", "8.0.60-R10")
+  val CONSTRAIN_TO_PREF: Double = ConstrainToPref
 }
 
 abstract class ConstraintsBase(override val delegate: jfxsl.ConstraintsBase) extends SFXDelegate[jfxsl.ConstraintsBase] {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,34 +26,46 @@
  */
 package scalafx.beans.binding
 
-import javafx.beans.value.ObservableObjectValue
-import javafx.beans.{binding => jfxbb}
+import javafx.beans.{binding => jfxbb, value => jfxbv}
+import scalafx.beans.binding.BindingIncludes._
+import scalafx.beans.value.ObservableValue
 
 import scala.language.implicitConversions
-import scalafx.beans.value.ObservableValue
 
 object ObjectExpression {
   implicit def sfxObjectExpression2jfx[J](oe: ObjectExpression[J]): jfxbb.ObjectExpression[J] = if (oe != null) oe.delegate else null
 }
 
 class ObjectExpression[J](val delegate: jfxbb.ObjectExpression[J]) {
-  def ===(v: Null) = delegate.isNull
-  def ===(v: ObservableObjectValue[_]) = delegate.isEqualTo(v)
-  // explicit conversion needed due to AnyRef typed method
-  def ===[T](v: ObservableValue[T, T]) = delegate.isEqualTo(ObservableValue.sfxObservableValue2jfxObjectValue[T](v))
-  def ===(v: AnyRef) = delegate.isEqualTo(v)
+  def ===(v: Null): BooleanBinding = delegate.isNull
 
-  def =!=(v: Null) = delegate.isNotNull
-  def =!=(v: ObservableObjectValue[_]) = delegate.isNotEqualTo(v)
-  // explicit conversion needed due to AnyRef typed method
-  def =!=[T](v: ObservableValue[T, T]) = delegate.isNotEqualTo(ObservableValue.sfxObservableValue2jfxObjectValue[T](v))
-  def =!=(v: AnyRef) = delegate.isNotEqualTo(v)
+  def ===(v: jfxbv.ObservableObjectValue[_]): BooleanBinding = delegate.isEqualTo(v)
 
-  def selectDouble(s: String) = jfxbb.Bindings.selectDouble(this.delegate, s)
-  def selectBoolean(s: String) = jfxbb.Bindings.selectBoolean(this.delegate, s)
-  def selectFloat(s: String) = jfxbb.Bindings.selectFloat(this.delegate, s)
-  def selectInteger(s: String) = jfxbb.Bindings.selectInteger(this.delegate, s)
-  def selectLong(s: String) = jfxbb.Bindings.selectLong(this.delegate, s)
-  def selectString(s: String) = jfxbb.Bindings.selectString(this.delegate, s)
-  def select[T](s: String) = jfxbb.Bindings.select[T](this.delegate, s)
+  // explicit conversion needed due to AnyRef typed method
+  def ===[T](v: ObservableValue[T, T]): BooleanBinding = delegate.isEqualTo(ObservableValue.sfxObservableValue2jfxObjectValue[T](v))
+
+  def ===(v: AnyRef): BooleanBinding = delegate.isEqualTo(v)
+
+  def =!=(v: Null): BooleanBinding = delegate.isNotNull
+
+  def =!=(v: jfxbv.ObservableObjectValue[_]): BooleanBinding = delegate.isNotEqualTo(v)
+
+  // explicit conversion needed due to AnyRef typed method
+  def =!=[T](v: ObservableValue[T, T]): BooleanBinding = delegate.isNotEqualTo(ObservableValue.sfxObservableValue2jfxObjectValue[T](v))
+
+  def =!=(v: AnyRef): BooleanBinding = delegate.isNotEqualTo(v)
+
+  def selectDouble(s: String): jfxbb.DoubleBinding = jfxbb.Bindings.selectDouble(this.delegate, s)
+
+  def selectBoolean(s: String): BooleanBinding = jfxbb.Bindings.selectBoolean(this.delegate, s)
+
+  def selectFloat(s: String): jfxbb.FloatBinding = jfxbb.Bindings.selectFloat(this.delegate, s)
+
+  def selectInteger(s: String): jfxbb.IntegerBinding = jfxbb.Bindings.selectInteger(this.delegate, s)
+
+  def selectLong(s: String): jfxbb.LongBinding = jfxbb.Bindings.selectLong(this.delegate, s)
+
+  def selectString(s: String): StringBinding = jfxbb.Bindings.selectString(this.delegate, s)
+
+  def select[T](s: String): ObjectBinding[T] = jfxbb.Bindings.select[T](this.delegate, s)
 }

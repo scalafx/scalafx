@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,31 +36,30 @@ private[input] trait JMapWrapperLike[A, B]
 
   def underlying: ju.Map[A, B]
 
-  override def size = underlying.size
+  override def size: Int = underlying.size
 
-  def get(k: A) = {
+  def get(k: A): Option[B] = {
     val v = underlying get k
     if (v != null)
-      Some(v)
+      Option(v)
     else if (underlying containsKey k)
-      Some(null.asInstanceOf[B])
+      Option(null.asInstanceOf[B])
     else
       None
   }
 
   override def addOne(kv: (A, B)): this.type = {
-    underlying.put(kv._1, kv._2);
+    underlying.put(kv._1, kv._2)
     this
   }
 
   override def subtractOne(key: A): this.type = {
-    underlying remove key;
+    underlying remove key
     this
   }
 
   override def put(k: A, v: B): Option[B] = {
-    val r = underlying.put(k, v)
-    if (r != null) Some(r) else None
+    Option(underlying.put(k, v))
   }
 
   override def update(k: A, v: B): Unit = {
@@ -68,16 +67,19 @@ private[input] trait JMapWrapperLike[A, B]
   }
 
   override def remove(k: A): Option[B] = {
-    val r = underlying remove k
-    if (r != null) Some(r) else None
+    Option(underlying remove k)
   }
 
   //  def iterator: Iterator[(A, B)] = new AbstractIterator[(A, B)] {
   def iterator: Iterator[(A, B)] = new Iterator[(A, B)] {
-    val ui = underlying.entrySet.iterator
-    def hasNext = ui.hasNext
-    def next() = { val e = ui.next(); (e.getKey, e.getValue) }
+    val ui: ju.Iterator[ju.Map.Entry[A, B]] = underlying.entrySet.iterator
+
+    def hasNext: Boolean = ui.hasNext
+
+    def next(): (A, B) = {
+      val e = ui.next(); (e.getKey, e.getValue)
+    }
   }
 
-  override def clear() = underlying.clear()
+  override def clear(): Unit = underlying.clear()
 }

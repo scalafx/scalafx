@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,24 +27,26 @@
 package scalafx.scene.control.cell
 
 import javafx.scene.control.{cell => jfxscc}
+import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.{TreeCell, TreeView}
 import scalafx.util.StringConverter
+import scalafx.util.StringConverter.sfxStringConverter2jfx
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.scene.control.cell.ComboBoxTreeCell]].
  *
- * @define CBTC `ComboBoxTreeCell`
- * @define TTYPE  The type of the elements contained within the `TreeView`.
- * @define FTCINIT Creates a ComboBox cell factory for use in [[scalafx.scene.control.TreeView]] controls.
+ * @define CBTC          `ComboBoxTreeCell`
+ * @define TTYPE         The type of the elements contained within the `TreeView`.
+ * @define FTCINIT       Creates a ComboBox cell factory for use in [[scalafx.scene.control.TreeView]] controls.
  * @define FTCINITDEPREC Added to satisfy Spec tests.
- * @define ITEMSPARAM Zero or more items that will be shown to the user when the `ComboBox` menu is showing.
- * @define CONVPARAM A [[scalafx.util.StringConverter]] to convert the given item (of type T) to a String for displaying to the user.
+ * @define ITEMSPARAM    Zero or more items that will be shown to the user when the `ComboBox` menu is showing.
+ * @define CONVPARAM     A [[scalafx.util.StringConverter]] to convert the given item (of type T) to a String for displaying to the user.
  * @define RET A function that will return a TableCell that is able to work on the type of element contained within the TableColumn.
  */
 object ComboBoxTreeCell {
@@ -72,7 +74,7 @@ object ComboBoxTreeCell {
    * $FTCINITDEPREC
    */
   @deprecated(message = "Use forTreeView[T](ObservableBuffer[T])", since = "1.0")
-  def forTreeView[T](items: jfxc.ObservableList[T]) = jfxscc.ComboBoxTreeCell.forTreeView[T](items)
+  def forTreeView[T](items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] = jfxscc.ComboBoxTreeCell.forTreeView[T](items)
 
   /**
    * $FTCINIT
@@ -89,7 +91,7 @@ object ComboBoxTreeCell {
    * $FTCINITDEPREC
    */
   @deprecated(message = "Use forTreeView[T](StringConverter[T], ObservableBuffer[T])", since = "1.0")
-  def forTreeView[T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]) =
+  def forTreeView[T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] =
     jfxscc.ComboBoxTreeCell.forTreeView[T](converter, items)
 
   /**
@@ -107,7 +109,7 @@ object ComboBoxTreeCell {
    * $FTCINITDEPREC
    */
   @deprecated(message = "Use forTreeView[T](StringConverter[T], T*)", since = "1.0")
-  def forTreeView[T](converter: jfxu.StringConverter[T], items: T*) = jfxscc.ComboBoxTreeCell.forTreeView[T](converter, items: _*)
+  def forTreeView[T](converter: jfxu.StringConverter[T], items: T*): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] = jfxscc.ComboBoxTreeCell.forTreeView[T](converter, items: _*)
 
   /**
    * $FTCINIT
@@ -123,7 +125,7 @@ object ComboBoxTreeCell {
    * $FTCINITDEPREC
    */
   @deprecated(message = "Use forTreeView[T](T*)", since = "1.0")
-  def forTreeView[T](items: Array[T]) = jfxscc.ComboBoxTreeCell.forTreeView[T](items: _*)
+  def forTreeView[T](items: Array[T]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] = jfxscc.ComboBoxTreeCell.forTreeView[T](items: _*)
 
 }
 
@@ -155,23 +157,25 @@ class ComboBoxTreeCell[T](override val delegate: jfxscc.ComboBoxTreeCell[T] = ne
    *
    * @param items $ITEMSPARAM
    */
-  def this(items: ObservableBuffer[T]) = this(new jfxscc.ComboBoxTreeCell[T](items))
+  def this(items: ObservableBuffer[T]) = this(new jfxscc.ComboBoxTreeCell[T](items.delegate))
 
   /**
    * $CONSTRCONVERTER
    *
    * @param converter $CONVPARAM
-   * @param items $ITEMSPARAM
+   * @param items     $ITEMSPARAM
    */
-  def this(converter: StringConverter[T], items: ObservableBuffer[T]) = this(new jfxscc.ComboBoxTreeCell[T](converter, items))
+  def this(converter: StringConverter[T], items: ObservableBuffer[T]) =
+    this(new jfxscc.ComboBoxTreeCell[T](sfxStringConverter2jfx(converter), items.delegate))
 
   /**
    * $CONSTRCONVERTER
    *
    * @param converter $CONVPARAM
-   * @param items $ITEMSPARAM
+   * @param items     $ITEMSPARAM
    */
-  def this(converter: StringConverter[T], items: T*) = this(new jfxscc.ComboBoxTreeCell[T](converter, items: _*))
+  def this(converter: StringConverter[T], items: T*) =
+    this(new jfxscc.ComboBoxTreeCell[T](sfxStringConverter2jfx(converter), items: _*))
 
   /**
    * $CONSTITEMS

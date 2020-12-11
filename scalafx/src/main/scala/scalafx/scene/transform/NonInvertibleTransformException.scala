@@ -40,7 +40,7 @@ object NonInvertibleTransformException {
 class NonInvertibleTransformException(override val delegate: jfxst.NonInvertibleTransformException)
   extends Exception(delegate) with SFXDelegate[jfxst.NonInvertibleTransformException] {
 
-  def this(message: String) {
+  def this(message: String) = {
     this(new jfxst.NonInvertibleTransformException(message))
   }
 }

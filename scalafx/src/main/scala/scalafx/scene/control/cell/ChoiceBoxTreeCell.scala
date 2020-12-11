@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,23 +27,25 @@
 package scalafx.scene.control.cell
 
 import javafx.scene.control.{cell => jfxscc}
+import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.{TreeCell, TreeView}
 import scalafx.util.StringConverter
+import scalafx.util.StringConverter.sfxStringConverter2jfx
+
+import scala.language.implicitConversions
 
 /**
  * Companion Object for [[scalafx.scene.control.cell.ChoiceBoxTreeCell]].
  *
- * @define CBTC `ChoiceBoxTreeCell`
- * @define FTVINIT Creates a `ChoiceBox` cell factory for use in `TreeView` controls. 
- * @define TTYPE  The type of the elements contained within the `TableColumn`.
- * @define CONVPARAM A `StringConverter` to convert the given item (of type T) to a String for displaying to the user.
- * @define ITEMSPARAM Zero or more items that will be shown to the user when the ChoiceBox menu is showing. 
+ * @define CBTC          `ChoiceBoxTreeCell`
+ * @define FTVINIT       Creates a `ChoiceBox` cell factory for use in `TreeView` controls.
+ * @define TTYPE         The type of the elements contained within the `TableColumn`.
+ * @define CONVPARAM     A `StringConverter` to convert the given item (of type T) to a String for displaying to the user.
+ * @define ITEMSPARAM    Zero or more items that will be shown to the user when the ChoiceBox menu is showing.
  * @define BUFITEMSPARAM A `ObservableBuffer` containing $ITEMSPARAM
  * @define FTVRET A Function  that will return a `TreeCell` that is able to work on the type of element contained within the `TreeView`.
  */
@@ -72,7 +74,7 @@ object ChoiceBoxTreeCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTreeView[T](ObservableBuffer[T])", since = "1.0")
-  def forTreeView[T](items: jfxc.ObservableList[T]) = jfxscc.ChoiceBoxTreeCell.forTreeView[T](items)
+  def forTreeView[T](items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] = jfxscc.ChoiceBoxTreeCell.forTreeView[T](items)
 
   /**
    * $FTVINIT
@@ -89,7 +91,7 @@ object ChoiceBoxTreeCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTreeView[T](StringConverter[T], ObservableBuffer[T])", since = "1.0")
-  def forTreeView[T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]) =
+  def forTreeView[T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] =
     jfxscc.ChoiceBoxTreeCell.forTreeView[T](converter, items)
 
   /**
@@ -107,7 +109,7 @@ object ChoiceBoxTreeCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTreeView[T](StringConverter[T], T*)", since = "1.0")
-  def forTreeView[T](converter: jfxu.StringConverter[T], items: T*) = jfxscc.ChoiceBoxTreeCell.forTreeView[T](converter, items: _*)
+  def forTreeView[T](converter: jfxu.StringConverter[T], items: T*): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] = jfxscc.ChoiceBoxTreeCell.forTreeView[T](converter, items: _*)
 
   /**
    * $FTVINIT
@@ -123,7 +125,7 @@ object ChoiceBoxTreeCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTreeView[T](T*)", since = "1.0")
-  def forTreeView[T](items: Array[T]) = jfxscc.ChoiceBoxTreeCell.forTreeView[T](items: _*)
+  def forTreeView[T](items: Array[T]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] = jfxscc.ChoiceBoxTreeCell.forTreeView[T](items: _*)
 
 }
 
@@ -152,25 +154,27 @@ class ChoiceBoxTreeCell[T](override val delegate: jfxscc.ChoiceBoxTreeCell[T] = 
    *
    * @param items $BUFITEMSPARAM
    */
-  def this(items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxTreeCell[T](items))
+  def this(items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxTreeCell[T](items.delegate))
 
   /**
    * Creates a $CBTC instance with the given items being used to populate the `ChoiceBox` when it is
    * shown, and the StringConverter being used to convert the item in to a user-readable form.
    *
    * @param converter $CONVPARAM
-   * @param items $BUFITEMSPARAM
+   * @param items     $BUFITEMSPARAM
    */
-  def this(converter: StringConverter[T], items: ObservableBuffer[T]) = this(new jfxscc.ChoiceBoxTreeCell[T](converter, items))
+  def this(converter: StringConverter[T], items: ObservableBuffer[T]) =
+    this(new jfxscc.ChoiceBoxTreeCell[T](sfxStringConverter2jfx(converter), items.delegate))
 
   /**
    * Creates a $CBTC instance with the given items being used to populate the `ChoiceBox` when it is
    * shown, and the StringConverter being used to convert the item in to a user-readable form.
    *
    * @param converter $CONVPARAM
-   * @param items $ITEMSPARAM
+   * @param items     $ITEMSPARAM
    */
-  def this(converter: StringConverter[T], items: T*) = this(new jfxscc.ChoiceBoxTreeCell[T](converter, items: _*))
+  def this(converter: StringConverter[T], items: T*) =
+    this(new jfxscc.ChoiceBoxTreeCell[T](sfxStringConverter2jfx(converter), items: _*))
 
   /**
    * Creates a default $CBTC instance with the given items being used to populate the `ChoiceBox` when

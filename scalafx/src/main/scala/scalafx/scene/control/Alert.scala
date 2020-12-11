@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -93,7 +93,7 @@ object Alert {
     case object Error extends AlertType(jfxsc.Alert.AlertType.ERROR)
 
     /** Contain constants which will be source for `values` List  */
-    override protected def unsortedValues = Array(None, Information, Warning, Confirmation, Error)
+    override protected def unsortedValues: Array[AlertType] = Array(None, Information, Warning, Confirmation, Error)
   }
 
   sealed abstract class AlertType(override val delegate: jfxsc.Alert.AlertType)

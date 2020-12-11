@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,9 +43,9 @@ trait AnimationStatics {
   /**
    * Used to specify an animation that repeats indefinitely, until the stop() method is called.
    */
-  val Indefinite = jfxa.Animation.INDEFINITE
+  val Indefinite: Int = jfxa.Animation.INDEFINITE
   @deprecated("Use Indefinite; INDEFINITE will be removed in a future release", "2.2.60")
-  val INDEFINITE = Indefinite
+  val INDEFINITE: Int = Indefinite
 }
 
 /**
@@ -75,22 +75,25 @@ object Animation extends AnimationStatics {
      * The paused state.
      */
     case object Paused extends Status(jfxa.Animation.Status.PAUSED)
+
     @deprecated("Use Paused; PAUSED will be removed in a future release", "2.2.60")
-    val PAUSED = Paused
+    val PAUSED: Status = Paused
 
     /**
      * The running state.
      */
     case object Running extends Status(jfxa.Animation.Status.RUNNING)
+
     @deprecated("Use Running; RUNNING will be removed in a future release", "2.2.60")
-    val RUNNING = Running
+    val RUNNING: Status = Running
 
     /**
      * The stopped state.
      */
     case object Stopped extends Status(jfxa.Animation.Status.STOPPED)
+
     @deprecated("Use Stopped; STOPPED will be removed in a future release", "2.2.60")
-    val STOPPED = Stopped
+    val STOPPED: Status = Stopped
 
     protected override def unsortedValues: Array[Status] = Array(Paused, Running, Stopped)
 
@@ -166,7 +169,7 @@ abstract class Animation protected(override val delegate: jfxa.Animation)
   /**
    * The action to be executed at the conclusion of this $AN.
    */
-  def onFinished = delegate.onFinishedProperty
+  def onFinished: ObjectProperty[jfxe.EventHandler[jfxe.ActionEvent]] = delegate.onFinishedProperty
 
   def onFinished_=(handler: jfxe.EventHandler[jfxe.ActionEvent]): Unit = {
     onFinished() = handler
@@ -260,6 +263,6 @@ abstract class Animation protected(override val delegate: jfxa.Animation)
   /**
    * The target framerate is the maximum framerate at which this $AN will run, in frames per second.
    */
-  def targetFramerate = delegate.getTargetFramerate
+  def targetFramerate: Double = delegate.getTargetFramerate
 
 }

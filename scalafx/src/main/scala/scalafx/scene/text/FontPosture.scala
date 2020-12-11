@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,16 +31,20 @@ import javafx.scene.{text => jfxst}
 import scalafx.Includes._
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
+import scala.language.implicitConversions
+
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontPosture.html javafx.scene.text.FontPosture]] */
 object FontPosture extends SFXEnumDelegateCompanion[jfxst.FontPosture, FontPosture] {
 
   case object Regular extends FontPosture(jfxst.FontPosture.REGULAR)
-  @deprecated ("Use Regular; REGULAR will be removed in a future release", "8.0.60-R10")
-  val REGULAR = Regular
+
+  @deprecated("Use Regular; REGULAR will be removed in a future release", "8.0.60-R10")
+  val REGULAR: FontPosture = Regular
 
   case object Italic extends FontPosture(jfxst.FontPosture.ITALIC)
-  @deprecated ("Use Italic; ITALIC will be removed in a future release", "8.0.60-R10")
-  val ITALIC = Italic
+
+  @deprecated("Use Italic; ITALIC will be removed in a future release", "8.0.60-R10")
+  val ITALIC: FontPosture = Italic
 
   protected override def unsortedValues: Array[FontPosture] = Array(Regular, Italic)
 

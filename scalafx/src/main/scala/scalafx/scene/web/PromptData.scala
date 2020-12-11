@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.scene.web
 
 import javafx.scene.{web => jfxsw}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 /**
  * Companion object for [[scalafx.scene.web.PromptData]]
@@ -63,11 +63,11 @@ class PromptData(override val delegate: jfxsw.PromptData)
   /**
    * Returns default value carried by this data object.
    */
-  def defaultValue = delegate.getDefaultValue
+  def defaultValue: String = delegate.getDefaultValue
 
   /**
    * Returns message carried by this data object.
    */
-  def message = delegate.getMessage
+  def message: String = delegate.getMessage
 
 }

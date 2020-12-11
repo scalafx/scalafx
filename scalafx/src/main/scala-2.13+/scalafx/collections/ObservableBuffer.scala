@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,7 +29,6 @@ package scalafx.collections
 
 import java.{util => ju}
 
-import javafx.collections.ObservableList
 import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
@@ -55,7 +54,7 @@ object ObservableBuffer extends StrictOptimizedSeqFactory[ObservableBuffer] {
    *
    * @param ob ObservableBuffer
    */
-  implicit def observableBuffer2ObservableList[T](ob: ObservableBuffer[T]): ObservableList[T] = if (ob != null) ob.delegate else null
+  implicit def observableBuffer2ObservableList[T](ob: ObservableBuffer[T]): jfxc.ObservableList[T] = if (ob != null) ob.delegate else null
 
   override def from[T](source: IterableOnce[T]): ObservableBuffer[T] = (newBuilder[T] ++= source).result()
 

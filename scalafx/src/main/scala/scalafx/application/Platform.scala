@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,6 +31,7 @@ import javafx.{application => jfxa}
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyBooleanProperty
 
+import scala.language.implicitConversions
 
 /** Application platform support, wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/application/Platform.html javafx.application.Platform]]. */
 object Platform {
@@ -66,7 +67,7 @@ object Platform {
   }
 
   /** Queries whether a specific conditional feature is supported by the platform. */
-  def isSupported(feature: ConditionalFeature) = jfxa.Platform.isSupported(feature)
+  def isSupported(feature: ConditionalFeature): Boolean = jfxa.Platform.isSupported(feature)
 
   /**
    * This method starts the JavaFX runtime. The specified Runnable will then be

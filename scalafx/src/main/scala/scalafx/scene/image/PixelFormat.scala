@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,48 +45,53 @@ object PixelFormat {
      * index: blue, green, red, alpha.
      */
     case object ByteBGRA extends Type(jfxsi.PixelFormat.Type.BYTE_BGRA)
-    @deprecated ("Use ByteBGRA; BYTE_BGRA will be removed in a future release", "8.0.60-R10")
-    val BYTE_BGRA = ByteBGRA
+    @deprecated("Use ByteBGRA; BYTE_BGRA will be removed in a future release", "8.0.60-R10")
+    val BYTE_BGRA: Type = ByteBGRA
 
     /**
      * The pixels are stored in adjacent bytes with the premultiplied components stored in order of increasing index: 
      * blue, green, red, alpha.
      */
     case object ByteBRGAPre extends Type(jfxsi.PixelFormat.Type.BYTE_BGRA_PRE)
-    @deprecated ("Use ByteBRGAPre; BYTE_BGRA_PRE will be removed in a future release", "8.0.60-R10")
-    val BYTE_BGRA_PRE = ByteBRGAPre
+
+    @deprecated("Use ByteBRGAPre; BYTE_BGRA_PRE will be removed in a future release", "8.0.60-R10")
+    val BYTE_BGRA_PRE: Type = ByteBRGAPre
 
     /**
      * The pixel colors are referenced by byte indices stored in the pixel array, with the byte interpreted as an 
      * unsigned index into a list of colors provided by the PixelFormat object.
      */
     case object ByteIndexed extends Type(jfxsi.PixelFormat.Type.BYTE_INDEXED)
-    @deprecated ("Use ByteIndexed; BYTE_INDEXED will be removed in a future release", "8.0.60-R10")
-    val BYTE_INDEXED = ByteIndexed
+
+    @deprecated("Use ByteIndexed; BYTE_INDEXED will be removed in a future release", "8.0.60-R10")
+    val BYTE_INDEXED: Type = ByteIndexed
 
     /**
      * The opaque pixels are stored in adjacent bytes with the color components stored in order of increasing index: 
      * red, green, blue.
      */
     case object ByteRGB extends Type(jfxsi.PixelFormat.Type.BYTE_RGB)
-    @deprecated ("Use ByteRGB; BYTE_RGB will be removed in a future release", "8.0.60-R10")
-    val BYTE_RGB = ByteRGB
+
+    @deprecated("Use ByteRGB; BYTE_RGB will be removed in a future release", "8.0.60-R10")
+    val BYTE_RGB: Type = ByteRGB
 
     /**
      * The pixels are stored in 32-bit integers with the non-premultiplied components stored in order, from MSb to LSb: 
      * alpha, red, green, blue.
      */
     case object IntARGB extends Type(jfxsi.PixelFormat.Type.INT_ARGB)
-    @deprecated ("Use IntARGB; INT_ARGB will be removed in a future release", "8.0.60-R10")
-    val INT_ARGB = IntARGB
+
+    @deprecated("Use IntARGB; INT_ARGB will be removed in a future release", "8.0.60-R10")
+    val INT_ARGB: Type = IntARGB
 
     /**
      * The pixels are stored in 32-bit integers with the premultiplied components stored in order, from MSb to LSb: 
      * alpha, red, green, blue.
      */
     case object IntARGBPre extends Type(jfxsi.PixelFormat.Type.INT_ARGB_PRE)
-    @deprecated ("Use IntARGBPre; INT_ARGB_PRE will be removed in a future release", "8.0.60-R10")
-    val INT_ARGB_PRE = IntARGBPre
+
+    @deprecated("Use IntARGBPre; INT_ARGB_PRE will be removed in a future release", "8.0.60-R10")
+    val INT_ARGB_PRE: Type = IntARGBPre
 
     protected override def unsortedValues: Array[Type] = Array(ByteBGRA, ByteBRGAPre, ByteIndexed, ByteRGB,
       IntARGB, IntARGBPre)
@@ -131,8 +136,8 @@ abstract class PixelFormat[B <: Buffer](override val delegate: jfxsi.PixelFormat
    */
   def getType: PixelFormat.Type = delegate.getType
 
-  def premultiplied = delegate.isPremultiplied
+  def premultiplied: Boolean = delegate.isPremultiplied
 
-  def writable = delegate.isWritable
+  def writable: Boolean = delegate.isWritable
 
 }

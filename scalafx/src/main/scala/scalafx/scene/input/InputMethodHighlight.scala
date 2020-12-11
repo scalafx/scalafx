@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,20 +34,23 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 object InputMethodHighlight extends SFXEnumDelegateCompanion[jfxsi.InputMethodHighlight, InputMethodHighlight] {
 
   case object UnselectedRaw extends InputMethodHighlight(jfxsi.InputMethodHighlight.UNSELECTED_RAW)
-  @deprecated ("Use UnselectedRaw; UNSELECTED_RAW will be removed in a future release", "8.0.60-R10")
-  val UNSELECTED_RAW = UnselectedRaw
+  @deprecated("Use UnselectedRaw; UNSELECTED_RAW will be removed in a future release", "8.0.60-R10")
+  val UNSELECTED_RAW: InputMethodHighlight = UnselectedRaw
 
   case object SelectedRaw extends InputMethodHighlight(jfxsi.InputMethodHighlight.SELECTED_RAW)
-  @deprecated ("Use SelectedRaw; SELECTED_RAW will be removed in a future release", "8.0.60-R10")
-  val SELECTED_RAW = SelectedRaw
+
+  @deprecated("Use SelectedRaw; SELECTED_RAW will be removed in a future release", "8.0.60-R10")
+  val SELECTED_RAW: InputMethodHighlight = SelectedRaw
 
   case object UnselectedConverted extends InputMethodHighlight(jfxsi.InputMethodHighlight.UNSELECTED_CONVERTED)
-  @deprecated ("Use UnselectedConverted; UNSELECTED_CONVERTED will be removed in a future release", "8.0.60-R10")
-  val UNSELECTED_CONVERTED = UnselectedConverted
+
+  @deprecated("Use UnselectedConverted; UNSELECTED_CONVERTED will be removed in a future release", "8.0.60-R10")
+  val UNSELECTED_CONVERTED: InputMethodHighlight = UnselectedConverted
 
   case object SelectedConverted extends InputMethodHighlight(jfxsi.InputMethodHighlight.SELECTED_CONVERTED)
-  @deprecated ("Use SelectedConverted; SELECTED_CONVERTED will be removed in a future release", "8.0.60-R10")
-  val SELECTED_CONVERTED = SelectedConverted
+
+  @deprecated("Use SelectedConverted; SELECTED_CONVERTED will be removed in a future release", "8.0.60-R10")
+  val SELECTED_CONVERTED: InputMethodHighlight = SelectedConverted
 
   protected override def unsortedValues: Array[InputMethodHighlight] = Array(
     UnselectedRaw, SelectedRaw, UnselectedConverted, SelectedConverted

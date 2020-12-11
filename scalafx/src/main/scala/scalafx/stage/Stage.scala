@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,10 +26,11 @@
  */
 package scalafx.stage
 
-import javafx.scene.{input => jfxsi}
+import javafx.scene.{image => jfxsim, input => jfxsi}
 import javafx.{stage => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyBooleanProperty, StringProperty}
+import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.Scene
 import scalafx.scene.input.KeyCombination
@@ -52,7 +53,7 @@ object Stage {
  */
 class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
   extends Window(delegate)
-  with SFXDelegate[jfxs.Stage] {
+    with SFXDelegate[jfxs.Stage] {
 
   /**
    * Creates a new instance of Stage.
@@ -121,7 +122,7 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
   /**
    * Gets the icon images to be used in the window decorations and when minimized.
    */
-  def icons = delegate.getIcons
+  def icons: ObservableBuffer[jfxsim.Image] = delegate.getIcons
 
   /**
    * Defines whether the Stage is iconified or not.
@@ -184,9 +185,10 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
    * Attempts to show or hide this Window.
    */
   def showing_=(v: Boolean): Unit = {
-    v match {
-      case true  => delegate.show()
-      case false => delegate.hide()
+    if (v) {
+      delegate.show()
+    } else {
+      delegate.hide()
     }
   }
 

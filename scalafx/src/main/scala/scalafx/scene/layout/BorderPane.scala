@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,8 +32,8 @@ import javafx.{geometry => jfxg, scene => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.delegate.SFXDelegate
-import scalafx.geometry.Insets
 import scalafx.geometry.Insets._
+import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Node
 import scalafx.scene.Node._
 
@@ -52,7 +52,7 @@ object BorderPane {
   /**
    * Returns the child's alignment constraint if set.
    */
-  def getAlignment(child: Node) = jfxsl.BorderPane.getAlignment(child)
+  def getAlignment(child: Node): Pos = jfxsl.BorderPane.getAlignment(child)
 
   /**
    * Returns the child's margin constraint if set.

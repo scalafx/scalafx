@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,22 +29,23 @@ package scalafx.scene.control.cell
 
 import javafx.beans.{value => jfxbv}
 import javafx.scene.control.{cell => jfxscc}
+import javafx.scene.{control => jfxsc}
 import javafx.{util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.control.{ListCell, ListView}
 import scalafx.util.StringConverter
 
+import scala.language.implicitConversions
+
 /**
  * Companion Object for [[scalafx.scene.control.cell.CheckBoxListCell]].
  *
  * @define CBLC `CheckBoxListCell`
- * @define SP A Function that, given an object of type T (which is a value taken out of the
- *         ListView[T] list), will return an ObservableValue[Boolean] that represents whether the given item is selected or
- *         not.
+ * @define SP   A Function that, given an object of type T (which is a value taken out of the
+ *              ListView[T] list), will return an ObservableValue[Boolean] that represents whether the given item is selected or
+ *              not.
  */
 object CheckBoxListCell {
 
@@ -68,7 +69,7 @@ object CheckBoxListCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forListView[T](T => ObservableValue[Boolean, java.lang.Boolean])", since = "1.0")
-  def forListView[T](getSelectedProperty: jfxu.Callback[T, jfxbv.ObservableValue[java.lang.Boolean]]) =
+  def forListView[T](getSelectedProperty: jfxu.Callback[T, jfxbv.ObservableValue[java.lang.Boolean]]): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] =
     jfxscc.CheckBoxListCell.forListView(getSelectedProperty)
 
   /**
@@ -85,7 +86,8 @@ object CheckBoxListCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forListView[T](T => ObservableValue[Boolean, java.lang.Boolean])", since = "1.0")
-  def forListView[T](getSelectedProperty: jfxu.Callback[T, jfxbv.ObservableValue[java.lang.Boolean]], converter: jfxu.StringConverter[T]) =
+  def forListView[T](getSelectedProperty: jfxu.Callback[T, jfxbv.ObservableValue[java.lang.Boolean]],
+                     converter: jfxu.StringConverter[T]): jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] =
     jfxscc.CheckBoxListCell.forListView(getSelectedProperty, converter)
 }
 

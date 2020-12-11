@@ -4,6 +4,8 @@ syntax: glob
 build/
 out/
 lib/
+.bsp/
+.sbtserver/
 .settings/
 .cache
 .metadata/
@@ -14,6 +16,7 @@ lib/
 target
 lib_managed
 project/boot
+project/project
 project/target
 *.iml
 *.log

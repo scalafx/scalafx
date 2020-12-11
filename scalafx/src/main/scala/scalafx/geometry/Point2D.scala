@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object Point2D {
   implicit def sfxPoint2D2jfx(p: Point2D): jfxg.Point2D = if (p != null) p.delegate else null
@@ -47,21 +47,21 @@ class Point2D(override val delegate: jfxg.Point2D) extends SFXDelegate[jfxg.Poin
   /**
    * The x coordinate.
    */
-  def x = delegate.getX
+  def x: Double = delegate.getX
 
   /**
    * The y coordinate.
    */
-  def y = delegate.getY
+  def y: Double = delegate.getY
 
   /**
    * Computes the distance between this point and point (x1, y1).
    */
-  def distance(x1: Double, y1: Double) = delegate.distance(x1, y1)
+  def distance(x1: Double, y1: Double): Double = delegate.distance(x1, y1)
 
   /**
    * Computes the distance between this point and point p.
    */
-  def distance(p: Point2D) = delegate.distance(p)
+  def distance(p: Point2D): Double = delegate.distance(p)
 
 }

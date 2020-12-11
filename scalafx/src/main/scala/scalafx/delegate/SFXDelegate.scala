@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -63,9 +63,9 @@ trait SFXDelegate[+D <: Object] extends AnyRef {
   def delegate: D
 
   /**
-    * @return Returns the original delegate's `toString()` adding a `[SFX]` prefix.
-    */
-  override def toString = "[SFX]" + delegate.toString
+   * @return Returns the original delegate's `toString()` adding a `[SFX]` prefix.
+   */
+  override def toString: String = "[SFX]" + delegate.toString
 
   /**
     * Verifies if a object is equals to this delegate.
@@ -81,7 +81,7 @@ trait SFXDelegate[+D <: Object] extends AnyRef {
   }
 
   /**
-    * @return The delegate hashcode
-    */
-  override def hashCode = delegate.hashCode
+   * @return The delegate hashcode
+   */
+  override def hashCode: Int = delegate.hashCode
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,7 @@ class HTMLEditor(override val delegate: jfxsw.HTMLEditor = new jfxsw.HTMLEditor)
   /**
    * Returns the HTML content of the editor.
    */
-  def htmlText = delegate.getHtmlText
+  def htmlText: String = delegate.getHtmlText
 
   def htmlText_=(htmlText: String): Unit = {
     delegate.setHtmlText(htmlText)

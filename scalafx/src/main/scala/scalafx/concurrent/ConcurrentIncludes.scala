@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.concurrent
 
 import javafx.{concurrent => jfxc}
+import scalafx.concurrent.Worker.State
 
 import scala.language.implicitConversions
-import scalafx.concurrent.Worker.State
 
 object ConcurrentIncludes extends ConcurrentIncludes
 
@@ -38,8 +38,8 @@ object ConcurrentIncludes extends ConcurrentIncludes
  * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/package-summary.html `javafx.concurrent`]]
  * Classes to their ScalaFX counterparts.
  *
- * @define JFX JavaFX
- * @define SFX ScalaFX
+ * @define JFX   JavaFX
+ * @define SFX   ScalaFX
  * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/
  * @define END ]]` instance to its $SFX counterpart.
  * @define SER Service
@@ -83,7 +83,7 @@ trait ConcurrentIncludes {
    */
   implicit def jfxWorker2sfxWorker[T](w: jfxc.Worker[T]): Worker[T] =
     if (w != null) new Worker[T] {
-      override val delegate = w
+      override val delegate: jfxc.Worker[T] = w
     }
     else null
 

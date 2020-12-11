@@ -42,7 +42,7 @@ class AmbientLight(override val delegate: jfxs.AmbientLight = new jfxs.AmbientLi
   with SFXDelegate[jfxs.AmbientLight] {
 
   /** Creates a new instance of `AmbientLight` class using the specified color. */
-  def this(color: Color) {
+  def this(color: Color) = {
     this(new jfxs.AmbientLight(color))
   }
 }

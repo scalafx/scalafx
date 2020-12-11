@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,7 +43,9 @@ object NumberAxis {
   def apply(axisLabel: String, lowerBound: Double, upperBound: Double, tickUnit: Double) =
     new NumberAxis(new jfxsc.NumberAxis(axisLabel, lowerBound, upperBound, tickUnit))
 
-  def apply(axisLabel: String) = new NumberAxis {label = axisLabel}
+  def apply(axisLabel: String): NumberAxis = new NumberAxis {
+    label = axisLabel
+  }
 
   def apply() = new NumberAxis()
 
@@ -66,11 +68,11 @@ class NumberAxis(override val delegate: jfxsc.NumberAxis = new jfxsc.NumberAxis)
   extends ValueAxis[Number](delegate)
   with SFXDelegate[jfxsc.NumberAxis] {
 
-  def this(lowerBound: Double, upperBound: Double, tickUnit: Double) {
+  def this(lowerBound: Double, upperBound: Double, tickUnit: Double) = {
     this(new jfxsc.NumberAxis(lowerBound, upperBound, tickUnit))
   }
 
-  def this(axisLabel: String, lowerBound: Double, upperBound: Double, tickUnit: Double) {
+  def this(axisLabel: String, lowerBound: Double, upperBound: Double, tickUnit: Double) = {
     this(new jfxsc.NumberAxis(axisLabel, lowerBound, upperBound, tickUnit))
   }
 

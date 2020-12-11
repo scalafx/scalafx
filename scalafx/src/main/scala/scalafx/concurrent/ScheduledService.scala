@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,12 +26,13 @@
  */
 package scalafx.concurrent
 
+import javafx.util.{Callback, Duration}
 import javafx.{concurrent => jfxc, util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate
 
-import scala.language.implicitConversions
+import scala.language.{existentials, implicitConversions}
 
 object ScheduledService {
   implicit def sfxScheduledService2jfx[T](s: ScheduledService[T]): jfxc.ScheduledService[T] = if (s != null) s.delegate else null
@@ -45,7 +46,7 @@ object ScheduledService {
    * It delegates to JavaFX
    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.html#EXPONENTIAL_BACKOFF_STRATEGY EXPONENTIAL_BACKOFF_STRATEGY]]
    */
-  val ExponentialBackoffStrategy = jfxc.ScheduledService.EXPONENTIAL_BACKOFF_STRATEGY
+  val ExponentialBackoffStrategy: (Callback[jfxc.ScheduledService[_], Duration]) = jfxc.ScheduledService.EXPONENTIAL_BACKOFF_STRATEGY
 
   /**
    * A Callback implementation for the <code>backoffStrategy</code> property which
@@ -56,7 +57,7 @@ object ScheduledService {
    * It delegates to JavaFX
    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.html#LOGARITHMIC_BACKOFF_STRATEGY LOGARITHMIC_BACKOFF_STRATEGY]]
    */
-  val LogarithmicBackoffStrategy = jfxc.ScheduledService.LOGARITHMIC_BACKOFF_STRATEGY
+  val LogarithmicBackoffStrategy: (Callback[jfxc.ScheduledService[_], Duration]) = jfxc.ScheduledService.LOGARITHMIC_BACKOFF_STRATEGY
 
   /**
    * A Callback implementation for the <code>backoffStrategy</code> property which
@@ -67,7 +68,7 @@ object ScheduledService {
    * It delegates to JavaFX
    * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.html#LINEAR_BACKOFF_STRATEGY LINEAR_BACKOFF_STRATEGY]]
    */
-  val LinearBackoffStrategy = jfxc.ScheduledService.LINEAR_BACKOFF_STRATEGY
+  val LinearBackoffStrategy: (Callback[jfxc.ScheduledService[_], Duration]) = jfxc.ScheduledService.LINEAR_BACKOFF_STRATEGY
 
   /**
    * Create a new [[scalafx.concurrent.ScheduledService]] with a operation to be invoked after this was started on the JavaFX
@@ -76,8 +77,8 @@ object ScheduledService {
    * @param op [[scala.Function]] that returns a [[scalafx.concurrent.Task]] to be invoked after this was started on
    *           the JavaFX Application Thread.
    */
-  def apply[T](op: => jfxc.Task[T]) = new ScheduledService[T](new jfxc.ScheduledService[T] {
-    protected def createTask = op
+  def apply[T](op: => Task[T]): ScheduledService[T] = new ScheduledService[T](new jfxc.ScheduledService[T] {
+    protected def createTask: jfxc.Task[T] = op
   }) {}
 }
 

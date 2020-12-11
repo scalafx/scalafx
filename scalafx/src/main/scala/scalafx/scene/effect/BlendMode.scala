@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,71 +36,87 @@ object BlendMode extends SFXEnumDelegateCompanion[jfxse.BlendMode, BlendMode] {
 
   case object Add extends BlendMode(jfxse.BlendMode.ADD)
   @deprecated("Use Add; ADD will be removed in a future release", "2.2.60")
-  val ADD = Add
+  val ADD: BlendMode = Add
 
   case object Blue extends BlendMode(jfxse.BlendMode.BLUE)
+
   @deprecated("Use Blue; BLUE will be removed in a future release", "2.2.60")
-  val BLUE = Blue
+  val BLUE: BlendMode = Blue
 
   case object ColorBurn extends BlendMode(jfxse.BlendMode.COLOR_BURN)
+
   @deprecated("Use ColorBurn; COLOR_BURN will be removed in a future release", "2.2.60")
-  val COLOR_BURN = ColorBurn
+  val COLOR_BURN: BlendMode = ColorBurn
 
   case object ColorDodge extends BlendMode(jfxse.BlendMode.COLOR_DODGE)
+
   @deprecated("Use ColorDodge; COLOR_DODGE will be removed in a future release", "2.2.60")
-  val COLOR_DODGE = ColorDodge
+  val COLOR_DODGE: BlendMode = ColorDodge
 
   case object Darken extends BlendMode(jfxse.BlendMode.DARKEN)
+
   @deprecated("Use Darken; DARKEN will be removed in a future release", "2.2.60")
-  val DARKEN = Darken
+  val DARKEN: BlendMode = Darken
 
   case object Difference extends BlendMode(jfxse.BlendMode.DIFFERENCE)
+
   @deprecated("Use Difference; DIFFERENCE will be removed in a future release", "2.2.60")
-  val DIFFERENCE = Difference
+  val DIFFERENCE: BlendMode = Difference
 
   case object Exclusion extends BlendMode(jfxse.BlendMode.EXCLUSION)
+
   @deprecated("Use Exclusion; EXCLUSION will be removed in a future release", "2.2.60")
-  val EXCLUSION = Exclusion
+  val EXCLUSION: BlendMode = Exclusion
 
   case object Green extends BlendMode(jfxse.BlendMode.GREEN)
+
   @deprecated("Use Green; GREEN will be removed in a future release", "2.2.60")
-  val GREEN = Green
+  val GREEN: BlendMode = Green
 
   case object HardLight extends BlendMode(jfxse.BlendMode.HARD_LIGHT)
+
   @deprecated("Use HardLight; HARD_LIGHT will be removed in a future release", "2.2.60")
-  val HARD_LIGHT = HardLight
+  val HARD_LIGHT: BlendMode = HardLight
 
   case object Lighten extends BlendMode(jfxse.BlendMode.LIGHTEN)
+
   @deprecated("Use Lighten; LIGHTEN will be removed in a future release", "2.2.60")
-  val LIGHTEN = Lighten
+  val LIGHTEN: BlendMode = Lighten
 
   case object Multiply extends BlendMode(jfxse.BlendMode.MULTIPLY)
+
   @deprecated("Use Multiply; MULTIPLY will be removed in a future release", "2.2.60")
-  val MULTIPLY = Multiply
+  val MULTIPLY: BlendMode = Multiply
 
   case object Overlay extends BlendMode(jfxse.BlendMode.OVERLAY)
+
   @deprecated("Use Overlay; OVERLAY will be removed in a future release", "2.2.60")
-  val OVERLAY = Overlay
+  val OVERLAY: BlendMode = Overlay
 
   case object Red extends BlendMode(jfxse.BlendMode.RED)
+
   @deprecated("Use Red; RED will be removed in a future release", "2.2.60")
-  val RED = Red
+  val RED: BlendMode = Red
 
   case object Screen extends BlendMode(jfxse.BlendMode.SCREEN)
+
   @deprecated("Use Screen; SCREEN will be removed in a future release", "2.2.60")
-  val SCREEN = Screen
+  val SCREEN: BlendMode = Screen
 
   case object SoftLight extends BlendMode(jfxse.BlendMode.SOFT_LIGHT)
+
   @deprecated("Use SoftLight; SOFT_LIGHT will be removed in a future release", "2.2.60")
-  val SOFT_LIGHT = SoftLight
+  val SOFT_LIGHT: BlendMode = SoftLight
 
   case object SrcAtop extends BlendMode(jfxse.BlendMode.SRC_ATOP)
+
   @deprecated("Use SrcAtop; SRC_ATOP will be removed in a future release", "2.2.60")
-  val SRC_ATOP = SrcAtop
+  val SRC_ATOP: BlendMode = SrcAtop
 
   case object SrcOver extends BlendMode(jfxse.BlendMode.SRC_OVER)
+
   @deprecated("Use SrcOver; SRC_OVER will be removed in a future release", "2.2.60")
-  val SRC_OVER = SrcOver
+  val SRC_OVER: BlendMode = SrcOver
 
   protected override def unsortedValues: Array[BlendMode] = Array(
     SrcOver, SrcAtop, Add, Multiply, Screen, Overlay, Darken, Lighten, ColorDodge, ColorBurn,

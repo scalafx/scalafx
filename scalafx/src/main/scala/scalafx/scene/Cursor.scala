@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.scene
 
 import javafx.{scene => jfxs}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object Cursor {
   implicit def sfxCursor2jfx(c: Cursor): jfxs.Cursor = if (c != null) c.delegate else null
@@ -37,149 +37,149 @@ object Cursor {
   /**
    * Returns a cursor for the specified identifier.
    */
-  def apply(identifier: String) = new Cursor(jfxs.Cursor.cursor(identifier)) {}
+  def apply(identifier: String): Cursor = new Cursor(jfxs.Cursor.cursor(identifier)) {}
 
   /**
    * A cursor with a hand that is closed, often used when "grabbing", for example, when panning.
    */
-  val ClosedHand = new Cursor(jfxs.Cursor.CLOSED_HAND) {}
-  @deprecated ("Use ClosedHand; CLOSED_HAND will be removed in a future release", "8.0.60-R10")
-  val CLOSED_HAND = ClosedHand
+  val ClosedHand: Cursor = new Cursor(jfxs.Cursor.CLOSED_HAND) {}
+  @deprecated("Use ClosedHand; CLOSED_HAND will be removed in a future release", "8.0.60-R10")
+  val CLOSED_HAND: Cursor = ClosedHand
 
 
   /**
    * The crosshair cursor type.
    */
-  val Crosshair = new Cursor(jfxs.Cursor.CROSSHAIR) {}
-  @deprecated ("Use Crosshair; CROSSHAIR will be removed in a future release", "8.0.60-R10")
-  val CROSSHAIR = Crosshair
+  val Crosshair: Cursor = new Cursor(jfxs.Cursor.CROSSHAIR) {}
+  @deprecated("Use Crosshair; CROSSHAIR will be removed in a future release", "8.0.60-R10")
+  val CROSSHAIR: Cursor = Crosshair
 
   /**
    * The default cursor type (gets set if no cursor is defined) {}.
    */
-  val Default = new Cursor(jfxs.Cursor.DEFAULT) {}
-  @deprecated ("Use Default; DEFAULT will be removed in a future release", "8.0.60-R10")
-  val DEFAULT = Default
+  val Default: Cursor = new Cursor(jfxs.Cursor.DEFAULT) {}
+  @deprecated("Use Default; DEFAULT will be removed in a future release", "8.0.60-R10")
+  val DEFAULT: Cursor = Default
 
   /**
    * The disappear cursor type.
    */
-  val Disappear = new Cursor(jfxs.Cursor.DISAPPEAR) {}
-  @deprecated ("Use Disappear; DISAPPEAR will be removed in a future release", "8.0.60-R10")
-  val DISAPPEAR = Disappear
+  val Disappear: Cursor = new Cursor(jfxs.Cursor.DISAPPEAR) {}
+  @deprecated("Use Disappear; DISAPPEAR will be removed in a future release", "8.0.60-R10")
+  val DISAPPEAR: Cursor = Disappear
 
   /**
    * The east-resize cursor type.
    */
-  val EResize = new Cursor(jfxs.Cursor.E_RESIZE) {}
-  @deprecated ("Use EResize; E_RESIZE will be removed in a future release", "8.0.60-R10")
-  val E_RESIZE = EResize
+  val EResize: Cursor = new Cursor(jfxs.Cursor.E_RESIZE) {}
+  @deprecated("Use EResize; E_RESIZE will be removed in a future release", "8.0.60-R10")
+  val E_RESIZE: Cursor = EResize
 
   /**
    * The horizontal cursor type.
    */
-  val HResize = new Cursor(jfxs.Cursor.HAND) {}
-  @deprecated ("Use HResize; H_RESIZE will be removed in a future release", "8.0.60-R10")
-  val H_RESIZE = HResize
+  val HResize: Cursor = new Cursor(jfxs.Cursor.HAND) {}
+  @deprecated("Use HResize; H_RESIZE will be removed in a future release", "8.0.60-R10")
+  val H_RESIZE: Cursor = HResize
 
   /**
    * The hand cursor type, resembling a pointing hand, often used to indicate that something 
    * can be clicked, such as a hyperlink.
    */
-  val Hand = new Cursor(jfxs.Cursor.HAND) {}
-  @deprecated ("Use Hand; HAND will be removed in a future release", "8.0.60-R10")
-  val HAND = Hand
+  val Hand: Cursor = new Cursor(jfxs.Cursor.HAND) {}
+  @deprecated("Use Hand; HAND will be removed in a future release", "8.0.60-R10")
+  val HAND: Cursor = Hand
 
   /**
    * The move cursor type.
    */
-  val Move = new Cursor(jfxs.Cursor.MOVE) {}
-  @deprecated ("Use Move; MOVE will be removed in a future release", "8.0.60-R10")
-  val MOVE = Move
+  val Move: Cursor = new Cursor(jfxs.Cursor.MOVE) {}
+  @deprecated("Use Move; MOVE will be removed in a future release", "8.0.60-R10")
+  val MOVE: Cursor = Move
 
   /**
    * The north-resize cursor type.
    */
-  val NResize = new Cursor(jfxs.Cursor.N_RESIZE) {}
-  @deprecated ("Use NResize; N_RESIZE will be removed in a future release", "8.0.60-R10")
-  val N_RESIZE = NResize
+  val NResize: Cursor = new Cursor(jfxs.Cursor.N_RESIZE) {}
+  @deprecated("Use NResize; N_RESIZE will be removed in a future release", "8.0.60-R10")
+  val N_RESIZE: Cursor = NResize
 
   /**
    * The north-east-resize cursor type.
    */
-  val NEResize = new Cursor(jfxs.Cursor.NE_RESIZE) {}
-  @deprecated ("Use NEResize; NE_RESIZE will be removed in a future release", "8.0.60-R10")
-  val NE_RESIZE = NEResize
+  val NEResize: Cursor = new Cursor(jfxs.Cursor.NE_RESIZE) {}
+  @deprecated("Use NEResize; NE_RESIZE will be removed in a future release", "8.0.60-R10")
+  val NE_RESIZE: Cursor = NEResize
 
   /**
    * The none cursor type.
    */
-  val None = new Cursor(jfxs.Cursor.NONE) {}
-  @deprecated ("Use None; NONE will be removed in a future release", "8.0.60-R10")
-  val NONE = None
+  val None: Cursor = new Cursor(jfxs.Cursor.NONE) {}
+  @deprecated("Use None; NONE will be removed in a future release", "8.0.60-R10")
+  val NONE: Cursor = None
 
   /**
    * The north-west-resize cursor type.
    */
-  val NWResize = new Cursor(jfxs.Cursor.NW_RESIZE) {}
-  @deprecated ("Use NWResize; NW_RESIZE will be removed in a future release", "8.0.60-R10")
-  val NW_RESIZE = NWResize
+  val NWResize: Cursor = new Cursor(jfxs.Cursor.NW_RESIZE) {}
+  @deprecated("Use NWResize; NW_RESIZE will be removed in a future release", "8.0.60-R10")
+  val NW_RESIZE: Cursor = NWResize
 
   /**
    * A cursor with a hand which is open
    */
-  val OpenHand = new Cursor(jfxs.Cursor.OPEN_HAND) {}
-  @deprecated ("Use OpenHand; OPEN_HAND will be removed in a future release", "8.0.60-R10")
-  val OPEN_HAND = OpenHand
+  val OpenHand: Cursor = new Cursor(jfxs.Cursor.OPEN_HAND) {}
+  @deprecated("Use OpenHand; OPEN_HAND will be removed in a future release", "8.0.60-R10")
+  val OPEN_HAND: Cursor = OpenHand
 
   /**
    * The south-resize cursor type.
    */
-  val SResize = new Cursor(jfxs.Cursor.S_RESIZE) {}
-  @deprecated ("Use SResize; S_RESIZE will be removed in a future release", "8.0.60-R10")
-  val S_RESIZE = SResize
+  val SResize: Cursor = new Cursor(jfxs.Cursor.S_RESIZE) {}
+  @deprecated("Use SResize; S_RESIZE will be removed in a future release", "8.0.60-R10")
+  val S_RESIZE: Cursor = SResize
 
   /**
    * The south-east-resize cursor type.
    */
-  val SEResize = new Cursor(jfxs.Cursor.SE_RESIZE) {}
-  @deprecated ("Use SEResize; SE_RESIZE will be removed in a future release", "8.0.60-R10")
-  val SE_RESIZE = SEResize
+  val SEResize: Cursor = new Cursor(jfxs.Cursor.SE_RESIZE) {}
+  @deprecated("Use SEResize; SE_RESIZE will be removed in a future release", "8.0.60-R10")
+  val SE_RESIZE: Cursor = SEResize
 
   /**
    * The south-west-resize cursor type.
    */
-  val SWResize = new Cursor(jfxs.Cursor.SW_RESIZE) {}
-  @deprecated ("Use SWResize; SW_RESIZE will be removed in a future release", "8.0.60-R10")
-  val SW_RESIZE = SWResize
+  val SWResize: Cursor = new Cursor(jfxs.Cursor.SW_RESIZE) {}
+  @deprecated("Use SWResize; SW_RESIZE will be removed in a future release", "8.0.60-R10")
+  val SW_RESIZE: Cursor = SWResize
 
   /**
    * The text cursor type.
    */
-  val Text = new Cursor(jfxs.Cursor.TEXT) {}
-  @deprecated ("Use Text; TEXT will be removed in a future release", "8.0.60-R10")
-  val TEXT = Text
+  val Text: Cursor = new Cursor(jfxs.Cursor.TEXT) {}
+  @deprecated("Use Text; TEXT will be removed in a future release", "8.0.60-R10")
+  val TEXT: Cursor = Text
 
   /**
    * The vertical cursor type.
    */
-  val VResize = new Cursor(jfxs.Cursor.V_RESIZE) {}
-  @deprecated ("Use VResize; V_RESIZE will be removed in a future release", "8.0.60-R10")
-  val V_RESIZE = VResize
+  val VResize: Cursor = new Cursor(jfxs.Cursor.V_RESIZE) {}
+  @deprecated("Use VResize; V_RESIZE will be removed in a future release", "8.0.60-R10")
+  val V_RESIZE: Cursor = VResize
 
   /**
    * The west-resize cursor type.
    */
-  val WResize = new Cursor(jfxs.Cursor.W_RESIZE) {}
-  @deprecated ("Use WResize; W_RESIZE will be removed in a future release", "8.0.60-R10")
-  val W_RESIZE = WResize
+  val WResize: Cursor = new Cursor(jfxs.Cursor.W_RESIZE) {}
+  @deprecated("Use WResize; W_RESIZE will be removed in a future release", "8.0.60-R10")
+  val W_RESIZE: Cursor = WResize
 
   /**
    * The wait cursor type.
    */
-  val Wait = new Cursor(jfxs.Cursor.WAIT) {}
-  @deprecated ("Use Wait; WAIT will be removed in a future release", "8.0.60-R10")
-  val WAIT = Wait
+  val Wait: Cursor = new Cursor(jfxs.Cursor.WAIT) {}
+  @deprecated("Use Wait; WAIT will be removed in a future release", "8.0.60-R10")
+  val WAIT: Cursor = Wait
 
 }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,6 +32,7 @@ import java.time.chrono.Chronology
 import javafx.scene.{control => jfxsc}
 import javafx.{util => jfxu}
 import scalafx.Includes._
+import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty}
 import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
@@ -56,7 +57,7 @@ class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker(
   /**
    * The calendar system used for parsing, displaying, and choosing dates in the DatePicker control.
    */
-  def chronology = delegate.chronologyProperty
+  def chronology: ObjectProperty[Chronology] = delegate.chronologyProperty
 
   def chronology_=(value: Chronology): Unit = {
     chronology() = value
@@ -65,7 +66,7 @@ class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker(
   /**
    * Converts the input text to an object of type `LocalDate` and vice versa.
    */
-  def converter = delegate.converterProperty
+  def converter: ObjectProperty[jfxu.StringConverter[LocalDate]] = delegate.converterProperty
 
   def converter_=(value: StringConverter[LocalDate]): Unit = {
     converter() = value
@@ -74,11 +75,11 @@ class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker(
   /**
    * A custom cell factory can be provided to customize individual day cells in the `DatePicker` popup.
    */
-  def dayCellFactory = delegate.dayCellFactoryProperty
+  def dayCellFactory: ObjectProperty[jfxu.Callback[jfxsc.DatePicker, jfxsc.DateCell]] = delegate.dayCellFactoryProperty
 
   def dayCellFactory_=(value: DatePicker => DateCell): Unit = {
     dayCellFactory() = new jfxu.Callback[jfxsc.DatePicker, jfxsc.DateCell] {
-      def call(result: jfxsc.DatePicker) = {
+      def call(result: jfxsc.DatePicker): jfxsc.DateCell = {
         value(result)
       }
     }
@@ -87,13 +88,14 @@ class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker(
   /**
    * The editor for the `DatePicker`.
    */
-  def editor = delegate.editorProperty
+  def editor: ReadOnlyObjectProperty[jfxsc.TextField] = delegate.editorProperty
 
   /**
    * Whether the `DatePicker` popup should display a column showing week numbers.
    */
-  def showWeekNumbers = delegate.showWeekNumbersProperty
-  def showWeekNumbers_=(value: Boolean) = {
+  def showWeekNumbers: BooleanProperty = delegate.showWeekNumbersProperty
+
+  def showWeekNumbers_=(value: Boolean): Unit = {
     showWeekNumbers() = value
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,9 +36,9 @@ import scala.language.implicitConversions
 object ProgressIndicator {
   implicit def sfxProgressIndicator2jfx(v: ProgressIndicator): jfxsc.ProgressIndicator = if (v != null) v.delegate else null
 
-  val IndeterminateProgress = jfxsc.ProgressIndicator.INDETERMINATE_PROGRESS
-  @deprecated ("Use IndeterminateProgress; INDETERMINATE_PROGRESS will be removed in a future release", "8.0.60-R10")
-  val INDETERMINATE_PROGRESS = IndeterminateProgress
+  val IndeterminateProgress: Double = jfxsc.ProgressIndicator.INDETERMINATE_PROGRESS
+  @deprecated("Use IndeterminateProgress; INDETERMINATE_PROGRESS will be removed in a future release", "8.0.60-R10")
+  val INDETERMINATE_PROGRESS: Double = IndeterminateProgress
 }
 
 /**

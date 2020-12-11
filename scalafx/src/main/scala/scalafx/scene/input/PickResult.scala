@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,20 +28,20 @@ package scalafx.scene.input
 
 import javafx.scene.{input => jfxsi}
 import javafx.{event => jfxe}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.{Point2D, Point3D}
 import scalafx.scene.Node
+
+import scala.language.implicitConversions
 
 object PickResult {
   implicit def sfxPickResult2jfx(m: PickResult): jfxsi.PickResult = if (m != null) m.delegate else null
 
   /** An undefined face. This value is used for the intersected face if the picked node has no user-specified faces. */
   val FaceUndefined: Int = jfxsi.PickResult.FACE_UNDEFINED
-  @deprecated ("Use FaceUndefined; FACE_UNDEFINED will be removed in a future release", "8.0.60-R10")
-  val FACE_UNDEFINED = FaceUndefined
+  @deprecated("Use FaceUndefined; FACE_UNDEFINED will be removed in a future release", "8.0.60-R10")
+  val FACE_UNDEFINED: Int = FaceUndefined
 }
 
 /** A container for the result of a pick event. Wrapper for JavaFX's
@@ -59,7 +59,7 @@ class PickResult(override val delegate: jfxsi.PickResult)
     * @param sceneX - The scene X coordinate
     * @param sceneY - The scene Y coordinate
     */
-  def this(target: jfxe.EventTarget, sceneX: Double, sceneY: Double) {
+  def this(target: jfxe.EventTarget, sceneX: Double, sceneY: Double) = {
     this(new jfxsi.PickResult(target, sceneX, sceneY))
   }
 
@@ -71,7 +71,7 @@ class PickResult(override val delegate: jfxsi.PickResult)
     * @param point - The intersected point in local coordinate of the picked Node
     * @param distance - The intersected distance between camera position and the picked Node
     */
-  def this(node: Node, point: Point3D, distance: Double) {
+  def this(node: Node, point: Point3D, distance: Double) = {
     this(new jfxsi.PickResult(node, point, distance))
   }
 
@@ -82,7 +82,7 @@ class PickResult(override val delegate: jfxsi.PickResult)
     * @param face - The intersected face of the picked Node
     * @param texCoord - The intersected texture coordinates of the picked Node
     */
-  def this(node: Node, point: Point3D, distance: Double, face: Int, texCoord: Point2D) {
+  def this(node: Node, point: Point3D, distance: Double, face: Int, texCoord: Point2D) = {
     this(new jfxsi.PickResult(node, point, distance, face, texCoord))
   }
 

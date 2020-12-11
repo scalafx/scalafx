@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,16 +35,18 @@ object NodeOrientation
   extends SFXEnumDelegateCompanion[jfxg.NodeOrientation, NodeOrientation] {
 
   case object Inherit extends NodeOrientation(jfxg.NodeOrientation.INHERIT)
-  @deprecated ("Use Inherit; INHERIT will be removed in a future release", "8.0.60-R10")
-  val INHERIT = Inherit
+  @deprecated("Use Inherit; INHERIT will be removed in a future release", "8.0.60-R10")
+  val INHERIT: NodeOrientation = Inherit
 
   case object LeftToRight extends NodeOrientation(jfxg.NodeOrientation.LEFT_TO_RIGHT)
-  @deprecated ("Use LeftToRight; LEFT_TO_RIGHT will be removed in a future release", "8.0.60-R10")
-  val LEFT_TO_RIGHT = LeftToRight
+
+  @deprecated("Use LeftToRight; LEFT_TO_RIGHT will be removed in a future release", "8.0.60-R10")
+  val LEFT_TO_RIGHT: NodeOrientation = LeftToRight
 
   case object RightToLeft extends NodeOrientation(jfxg.NodeOrientation.RIGHT_TO_LEFT)
-  @deprecated ("Use RightToLeft; RIGHT_TO_LEFT will be removed in a future release", "8.0.60-R10")
-  val RIGHT_TO_LEFT = RightToLeft
+
+  @deprecated("Use RightToLeft; RIGHT_TO_LEFT will be removed in a future release", "8.0.60-R10")
+  val RIGHT_TO_LEFT: NodeOrientation = RightToLeft
 
   protected override def unsortedValues: Array[NodeOrientation] = Array(Inherit, LeftToRight, RightToLeft)
 }

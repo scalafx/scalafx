@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2018, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,20 +35,23 @@ object Side
   extends SFXEnumDelegateCompanion[jfxg.Side, Side] {
 
   case object Bottom extends Side(jfxg.Side.BOTTOM)
-  @deprecated ("Use Bottom; BOTTOM will be removed in a future release", "8.0.60-R10")
-  val BOTTOM = Bottom
+  @deprecated("Use Bottom; BOTTOM will be removed in a future release", "8.0.60-R10")
+  val BOTTOM: Side = Bottom
 
   case object Left extends Side(jfxg.Side.LEFT)
-  @deprecated ("Use Left; LEFT will be removed in a future release", "8.0.60-R10")
-  val LEFT = Left
+
+  @deprecated("Use Left; LEFT will be removed in a future release", "8.0.60-R10")
+  val LEFT: Side = Left
 
   case object Right extends Side(jfxg.Side.RIGHT)
-  @deprecated ("Use Right; RIGHT will be removed in a future release", "8.0.60-R10")
-  val RIGHT = Right
+
+  @deprecated("Use Right; RIGHT will be removed in a future release", "8.0.60-R10")
+  val RIGHT: Side = Right
 
   case object Top extends Side(jfxg.Side.TOP)
-  @deprecated ("Use Top; TOP will be removed in a future release", "8.0.60-R10")
-  val TOP = Top
+
+  @deprecated("Use Top; TOP will be removed in a future release", "8.0.60-R10")
+  val TOP: Side = Top
 
   protected override def unsortedValues: Array[Side] = Array(Top, Bottom, Left, Right)
 }
@@ -57,8 +60,8 @@ sealed abstract class Side(override val delegate: jfxg.Side)
   extends SFXEnumDelegate[jfxg.Side] {
 
   /** Indicates whether this is horizontal side of a rectangle (returns true for `TOP` and `BOTTOM`). */
-  def isHorizontal = delegate.isHorizontal
+  def isHorizontal: Boolean = delegate.isHorizontal
 
   /** Indicates whether this is vertical side of a rectangle (returns true for `LEFT` and `RIGHT`). */
-  def isVertical = delegate.isVertical
+  def isVertical: Boolean = delegate.isVertical
 }

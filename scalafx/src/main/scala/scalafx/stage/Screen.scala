@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,12 @@
 package scalafx.stage
 
 import javafx.{stage => jfxs}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
+import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Rectangle2D
+
+import scala.language.implicitConversions
 
 object Screen {
   implicit def sfxScreen2jfx(v: Screen): jfxs.Screen = if (v != null) v.delegate else null
@@ -44,18 +45,18 @@ object Screen {
   /**
    * The observable list of currently available Screens
    */
-  def screens = jfxs.Screen.getScreens
+  def screens: ObservableBuffer[jfxs.Screen] = jfxs.Screen.getScreens
 
   /**
    * Returns a ObservableList of Screens that intersects the provided rectangle.
    */
-  def screensForRectangle(x: Double, y: Double, width: Double, height: Double) =
+  def screensForRectangle(x: Double, y: Double, width: Double, height: Double): ObservableBuffer[jfxs.Screen] =
     jfxs.Screen.getScreensForRectangle(x, y, width, height)
 
   /**
    * Returns a ObservableList of Screens that intersects the provided rectangle.
    */
-  def screensForRectangle(r: Rectangle2D) = jfxs.Screen.getScreensForRectangle(r)
+  def screensForRectangle(r: Rectangle2D): ObservableBuffer[jfxs.Screen] = jfxs.Screen.getScreensForRectangle(r)
 
 }
 
@@ -70,7 +71,7 @@ class Screen(override val delegate: jfxs.Screen)
   /**
    * Gets the resolution (dots per inch) of this Screen.
    */
-  def dpi = delegate.getDpi
+  def dpi: Double = delegate.getDpi
 
   /**
    * Gets the visual bounds of this Screen.

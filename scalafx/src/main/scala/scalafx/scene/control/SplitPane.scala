@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,10 @@
 package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc}
-import javafx.{geometry => jfxg}
+import javafx.{geometry => jfxg, scene => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.{DoubleProperty, ObjectProperty}
+import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Orientation
 import scalafx.scene.Node
@@ -59,7 +60,7 @@ object SplitPane {
   /**
    * Return true if the node is resizable when the parent container is resized false otherwise.
    */
-  def isResizableWithParent(node: Node) = jfxsc.SplitPane.isResizableWithParent(node)
+  def isResizableWithParent(node: Node): Boolean = jfxsc.SplitPane.isResizableWithParent(node)
 
   /**
    * Sets a node in the SplitPane to be resizable or not when the SplitPane is resized.
@@ -84,7 +85,7 @@ class SplitPane(override val delegate: jfxsc.SplitPane = new jfxsc.SplitPane) ex
   /**
    * Returns an array of double containing the position of each divider.
    */
-  def dividerPositions = delegate.getDividerPositions
+  def dividerPositions: Array[Double] = delegate.getDividerPositions
 
   def dividerPositions_=(positions: Double*): Unit = {
     delegate.setDividerPositions(positions: _*)
@@ -101,11 +102,11 @@ class SplitPane(override val delegate: jfxsc.SplitPane = new jfxsc.SplitPane) ex
   /**
    * Returns an unmodifiable list of all the dividers in this SplitPane.
    */
-  def dividers = delegate.getDividers
+  def dividers: ObservableBuffer[jfxsc.SplitPane.Divider] = delegate.getDividers
 
   /**
    * Returns an ObservableList which can be use to modify the contents of the SplitPane.
    */
-  def items = delegate.getItems
+  def items: ObservableBuffer[jfxs.Node] = delegate.getItems
 
 }

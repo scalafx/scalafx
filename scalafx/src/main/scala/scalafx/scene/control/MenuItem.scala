@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,7 @@ import javafx.scene.{control => jfxsc, input => jfxsi}
 import javafx.{event => jfxe, scene => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty, StringProperty}
+import scalafx.collections.ObservableMap
 import scalafx.css.Styleable
 import scalafx.delegate.{FireDelegate, SFXDelegate}
 import scalafx.event.EventHandlerDelegate
@@ -108,7 +109,7 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   /**
    *
    */
-  def onAction = delegate.onActionProperty
+  def onAction: ObjectProperty[jfxe.EventHandler[jfxe.ActionEvent]] = delegate.onActionProperty
 
   def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]): Unit = {
     onAction() = v
@@ -156,7 +157,7 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    * Returns an observable map of properties on this menu item for use primarily by application
    * developers.
    */
-  def properties = delegate.getProperties
+  def properties: ObservableMap[AnyRef, AnyRef] = delegate.getProperties
 
   /**
    * Returns a previously set Object property, or null if no such property has been set using the
@@ -172,13 +173,14 @@ class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
    * The event handler that is associated with invocation of an accelerator for a MenuItem.
    * This can happen when a key sequence for an accelerator is pressed.
    * The event handler is also invoked when onShowing event handler is called.
+   *
    * @since 2.2
    */
-  def onMenuValidation = delegate.onMenuValidationProperty()
+  def onMenuValidation: ObjectProperty[jfxe.EventHandler[jfxe.Event]] = delegate.onMenuValidationProperty()
 
   def onMenuValidation_=(eventHandler: jfxe.EventHandler[jfxe.Event]): Unit = {
     onMenuValidation() = eventHandler
   }
 
-  override protected def eventHandlerDelegate = delegate.asInstanceOf[EventHandled]
+  override protected def eventHandlerDelegate: EventHandled = delegate.asInstanceOf[EventHandled]
 }

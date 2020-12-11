@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,7 @@ import javafx.{css => jfxcss}
 import scalafx.Includes._
 import scalafx.collections.{ObservableBuffer, ObservableSet}
 import scalafx.delegate.SFXDelegate
+import scalafx.scene.Node
 
 import scala.collection.JavaConverters._
 import scala.language.implicitConversions
@@ -84,6 +85,19 @@ trait Styleable
    * `StringProperty`. 
    */
   def getStyle: String = delegate.getStyle
+
+  /**
+   * Returns the Node that represents this Styleable object.  This method
+   * should be overridden in cases where the Styleable is not itself a Node,
+   * so that it may optionally return the relevant root node representation of
+   * itself.  By default this method returns null, which can mean that either
+   * the Styleable itself is a Node, or if that is not the case, that the
+   * Styleable does not have a node representation available at the time of request.
+   *
+   * @return the Node that represents this Styleable object
+   * @since 9
+   */
+  def styleableNode: Node = delegate.getStyleableNode
 
   /**
    * The parent of this Styleable, or null if there is no parent.

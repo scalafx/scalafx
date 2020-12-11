@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,8 +31,6 @@ import javafx.beans.{value => jfxbv}
 import javafx.scene.control.{cell => jfxscc}
 import javafx.scene.{control => jfxsc}
 import javafx.{util => jfxu}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
@@ -40,12 +38,14 @@ import scalafx.scene.control.cell.CheckBoxTableCell._
 import scalafx.scene.control.{TableCell, TableColumn}
 import scalafx.util.StringConverter
 
+import scala.language.implicitConversions
+
 /**
  * Companion Object for [[scalafx.scene.control.cell.CheckBoxTableCell]].
  *
  * @define CBTC `CheckBoxTableCell`
- * @define SP A Callback that, given an object of type TableColumn[S,T], will return an ObservableValue[Boolean] that
- *         represents whether the given item is selected or not.
+ * @define SP   A Callback that, given an object of type TableColumn[S,T], will return an ObservableValue[Boolean] that
+ *              represents whether the given item is selected or not.
  */
 object CheckBoxTableCell {
 
@@ -60,7 +60,7 @@ object CheckBoxTableCell {
   private[cell] implicit def selectedIntPropertyToGetSelectedProperty(selectedProperty: Int => ObservableValue[Boolean, java.lang.Boolean])
   : jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]] =
     new jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]] {
-      def call(x: java.lang.Integer) = selectedProperty(x)
+      def call(x: java.lang.Integer): jfxbv.ObservableBooleanValue = selectedProperty(x)
     }
 
   /**
@@ -76,7 +76,7 @@ object CheckBoxTableCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTableView[S, T](Int => ObservableValue[Boolean, java.lang.Boolean])", since = "1.0")
-  def forTableColumn[S, T](getSelectedProperty: jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]]) =
+  def forTableColumn[S, T](getSelectedProperty: jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]]): jfxu.Callback[jfxsc.TableColumn[Any, Any], jfxsc.TableCell[Any, Any]] =
     jfxscc.CheckBoxTableCell.forTableColumn(getSelectedProperty)
 
   /**
@@ -93,8 +93,9 @@ object CheckBoxTableCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTableView[S, T](Int => ObservableValue[Boolean, java.lang.Boolean], Boolean)", since = "1.0")
-  def forTableColumn[S, T](getSelectedProperty: jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]],
-                           showLabel: Boolean) =
+  def
+  forTableColumn[S, T](getSelectedProperty: jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]],
+                       showLabel: Boolean): jfxu.Callback[jfxsc.TableColumn[Any, Any], jfxsc.TableCell[Any, Any]] =
     jfxscc.CheckBoxTableCell.forTableColumn(getSelectedProperty, showLabel)
 
   /**
@@ -112,7 +113,7 @@ object CheckBoxTableCell {
    */
   @deprecated(message = "Use forTableView[S, T](Int => ObservableValue[Boolean, java.lang.Boolean], StringConverter[T])", since = "1.0")
   def forTableColumn[S, T](getSelectedProperty: jfxu.Callback[java.lang.Integer, jfxbv.ObservableValue[java.lang.Boolean]],
-                           converter: jfxu.StringConverter[T]) =
+                           converter: jfxu.StringConverter[T]): jfxu.Callback[jfxsc.TableColumn[Any, T], jfxsc.TableCell[Any, T]] =
     jfxscc.CheckBoxTableCell.forTableColumn(getSelectedProperty, converter)
 
   /**
@@ -135,7 +136,7 @@ object CheckBoxTableCell {
    * @tparam S cell value type.
    * @return Cell factory
    */
-  def forTableColumn[S](column: jfxsc.TableColumn[S, java.lang.Boolean]) = jfxscc.CheckBoxTableCell.forTableColumn(column)
+  def forTableColumn[S](column: jfxsc.TableColumn[S, java.lang.Boolean]): jfxu.Callback[jfxsc.TableColumn[S, java.lang.Boolean], jfxsc.TableCell[S, java.lang.Boolean]] = jfxscc.CheckBoxTableCell.forTableColumn(column)
 }
 
 /**

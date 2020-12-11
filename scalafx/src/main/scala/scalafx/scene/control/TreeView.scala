@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@ import javafx.{event => jfxe, util => jfxu}
 import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty, _}
 import scalafx.delegate.SFXDelegate
-import scalafx.event.Event
+import scalafx.event.{Event, EventType}
 
 import scala.language.implicitConversions
 
@@ -78,25 +78,25 @@ object TreeView {
   /**
    * An EventType that indicates some edit event has occurred.
    */
-  def editAnyEvent = jfxsc.TreeView.editAnyEvent
+  def editAnyEvent: EventType[jfxsc.TreeView.EditEvent[Nothing]] = new EventType(jfxsc.TreeView.editAnyEvent)
 
   /**
    * An EventType used to indicate that an edit event has just been canceled
    * within the TreeView upon which the event was fired.
    */
-  def editCancelEvent = jfxsc.TreeView.editCancelEvent
+  def editCancelEvent: EventType[jfxsc.TreeView.EditEvent[Nothing]] = new EventType(jfxsc.TreeView.editCancelEvent)
 
   /**
    * An EventType that is used to indicate that an edit in a TreeView has been
    * committed.
    */
-  def editCommitEvent = jfxsc.TreeView.editCommitEvent
+  def editCommitEvent: EventType[jfxsc.TreeView.EditEvent[Nothing]] = new EventType(jfxsc.TreeView.editCommitEvent)
 
   /**
    * An EventType used to indicate that an edit event has started within the
    * TreeView upon which the event was fired.
    */
-  def editStartEvent = jfxsc.TreeView.editStartEvent
+  def editStartEvent: EventType[jfxsc.TreeView.EditEvent[Nothing]] = new EventType(jfxsc.TreeView.editStartEvent)
 
   /**
    * Returns the number of levels of 'indentation' of the given TreeItem,
@@ -105,7 +105,7 @@ object TreeView {
   @deprecated(
     "This method does not correctly calculate the distance from the given TreeItem to the root of the TreeView. " +
       "As of JavaFX 8.0_20, the proper way to do this is via getTreeItemLevel(TreeItem)", since = "8.0_20")
-  def nodeLevel(node: TreeItem[_]) = jfxsc.TreeView.getNodeLevel(node)
+  def nodeLevel(node: TreeItem[_]): Int = jfxsc.TreeView.getNodeLevel(node)
 
   /**
    * Creates a new TreeView overriding layoutChildren method from JavaFX's
@@ -128,7 +128,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    */
   def this(rootItem: TreeItem[T]) = this(new jfxsc.TreeView[T](rootItem))
 
-  def cellFactory = delegate.cellFactoryProperty
+  def cellFactory: ObjectProperty[jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]]] = delegate.cellFactoryProperty
 
   def cellFactory_=(v: (TreeView[T] => TreeCell[T])): Unit = {
     cellFactory() = new jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] {
@@ -178,7 +178,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   /**
    * This event handler will be fired when the user cancels editing a cell.
    */
-  def onEditCancel = delegate.onEditCancelProperty
+  def onEditCancel: ObjectProperty[jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]] = delegate.onEditCancelProperty
 
   def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]): Unit = {
     onEditCancel() = v
@@ -187,7 +187,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   /**
    * This event handler will be fired when the user commits editing a cell.
    */
-  def onEditCommit = delegate.onEditCommitProperty
+  def onEditCommit: ObjectProperty[jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]] = delegate.onEditCommitProperty
 
   def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]): Unit = {
     onEditCommit() = v
@@ -196,7 +196,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   /**
    * This event handler will be fired when the user starts editing a cell.
    */
-  def onEditStart = delegate.onEditStartProperty
+  def onEditStart: ObjectProperty[jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]] = delegate.onEditStartProperty
 
   def onEditStart_=(v: jfxe.EventHandler[jfxsc.TreeView.EditEvent[T]]): Unit = {
     onEditStart() = v
@@ -269,6 +269,6 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * Returns the index position of the given TreeItem, taking into account the
    * current state of each TreeItem (i.e. whether or not it is expanded).
    */
-  def row(item: TreeItem[T]) = delegate.getRow(item)
+  def row(item: TreeItem[T]): Int = delegate.getRow(item)
 
 }

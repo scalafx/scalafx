@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,12 +27,11 @@
 package scalafx.print
 
 import javafx.{print => jfxp}
-
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-/** Tests for [[scalafx.print.PrinterJob.JobStatus]]. */
-class PrinterJobJobStatus extends SFXEnumDelegateSpec[jfxp.PrinterJob.JobStatus, PrinterJob.JobStatus](
-  javaClass = classOf[jfxp.PrinterJob.JobStatus],
-  scalaClass = classOf[PrinterJob.JobStatus],
-  companion = PrinterJob.JobStatus)
+/** Tests for [[scalafx.print.Printer.MarginType]]. */
+class PrinterMarginTypeSpec extends SFXEnumDelegateSpec[jfxp.Printer.MarginType, Printer.MarginType](
+  javaClass = classOf[jfxp.Printer.MarginType],
+  scalaClass = classOf[Printer.MarginType],
+  companion = Printer.MarginType)

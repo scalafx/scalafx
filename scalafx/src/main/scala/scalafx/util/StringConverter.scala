@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,11 +53,10 @@ object StringConverter {
    * Generates a StringConverter from a Pair of Conversions Functions
    *
    * @tparam T Type to convert
-   *
    * @param fromStringFunction Function that converts a String to a new T instance
-   * @param toStringFunction Function that converts a T instance to a new String
+   * @param toStringFunction   Function that converts a T instance to a new String
    */
-  def apply[T](fromStringFunction: String => T, toStringFunction: T => String) = new StringConverter[T] {
+  def apply[T](fromStringFunction: String => T, toStringFunction: T => String): StringConverter[T] = new StringConverter[T] {
 
     def fromString(string: String): T = fromStringFunction(string)
 
@@ -71,10 +70,9 @@ object StringConverter {
    * `java.lang.UnsupportedOperationException`.
    *
    * @tparam T Type to convert
-   *
    * @param toStringFunction Function that converts a T instance to a new String
    */
-  def toStringConverter[T](toStringFunction: T => String) = new StringConverter[T] {
+  def toStringConverter[T](toStringFunction: T => String): StringConverter[T] = new StringConverter[T] {
 
     def fromString(string: String): T =
       throw new UnsupportedOperationException("Conversion from String not supported. Consider create a new StringConverter implementation that support it.")
@@ -89,10 +87,9 @@ object StringConverter {
    * `java.lang.UnsupportedOperationException`.
    *
    * @tparam T Type to convert
-   *
    * @param fromStringFunction Function that converts a String to a new T instance
    */
-  def fromStringConverter[T](fromStringFunction: String => T) = new StringConverter[T] {
+  def fromStringConverter[T](fromStringFunction: String => T): StringConverter[T] = new StringConverter[T] {
 
     def fromString(string: String): T = fromStringFunction(string)
 

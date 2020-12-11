@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,7 +29,7 @@ package scalafx.scene.control
 import javafx.scene.{control => jfxsc}
 import javafx.{event => jfxe}
 import scalafx.Includes._
-import scalafx.beans.property.IntegerProperty
+import scalafx.beans.property.{IntegerProperty, ObjectProperty}
 import scalafx.delegate.{AlignmentDelegate, SFXDelegate}
 
 import scala.language.implicitConversions
@@ -46,7 +46,7 @@ class TextField(override val delegate: jfxsc.TextField = new jfxsc.TextField)
   /**
    * The action handler associated with this text field, or null if no action handler is assigned.
    */
-  def onAction = delegate.onActionProperty
+  def onAction: ObjectProperty[jfxe.EventHandler[jfxe.ActionEvent]] = delegate.onActionProperty
 
   def onAction_=(v: jfxe.EventHandler[jfxe.ActionEvent]): Unit = {
     onAction() = v

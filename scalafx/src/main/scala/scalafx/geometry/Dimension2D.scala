@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2020, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,9 @@
 package scalafx.geometry
 
 import javafx.{geometry => jfxg}
+import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
-import scalafx.delegate.SFXDelegate
 
 object Dimension2D {
   implicit def sfxDimension2D2jfx(d: Dimension2D): jfxg.Dimension2D = if (d != null) d.delegate else null
@@ -45,11 +45,11 @@ class Dimension2D(override val delegate: jfxg.Dimension2D) extends SFXDelegate[j
   /**
    * The height of the dimension.
    */
-  def height = delegate.getHeight
+  def height: Double = delegate.getHeight
 
   /**
    * The width of the dimension.
    */
-  def width = delegate.getWidth
+  def width: Double = delegate.getWidth
 
 }
