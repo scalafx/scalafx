@@ -142,7 +142,7 @@ abstract class XYChart[X, Y](override val delegate: jfxsc.XYChart[X, Y])
   }
 
   def data_=(v: XYChart.Series[X, Y]): Unit = {
-    data() = ObservableBuffer[jfxsc.XYChart.Series[X, Y]](v)
+    data() = ObservableBuffer[jfxsc.XYChart.Series[X, Y]](Seq(v.delegate))
   }
 
   def horizontalGridLinesVisible: BooleanProperty = delegate.horizontalGridLinesVisibleProperty
