@@ -1,5 +1,4 @@
 import java.net.URL
-
 import scala.xml.transform.{RewriteRule, RuleTransformer}
 import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 
@@ -156,11 +155,11 @@ lazy val manifestSetting = packageOptions += {
 // See also http://maven.apache.org/pom.html#Developers
 
 lazy val mavenCentralSettings = Seq(
-  homepage := Some(new URL("http://www.scalafx.org/")),
-  startYear := Some(2011),
+  homepage := Option(new URL("http://www.scalafx.org/")),
+  startYear := Option(2011),
   licenses := Seq(("BSD", new URL("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
   sonatypeProfileName := "org.scalafx",
-  scmInfo := Some(ScmInfo(url("https://github.com/scalafx/scalafx"), "scm:git@github.com:scalafx/scalafx.git")),
+  scmInfo := Option(ScmInfo(url("https://github.com/scalafx/scalafx"), "scm:git@github.com:scalafx/scalafx.git")),
   publishMavenStyle := true,
   publishTo := sonatypePublishToBundle.value,
   pomExtra :=
