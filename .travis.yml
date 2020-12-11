@@ -2,7 +2,7 @@ sudo: false
 
 language: scala
 scala:
-  - 2.13.3
+  - 2.13.4
   - 2.12.12
   - 2.11.12
 
@@ -11,10 +11,8 @@ services:
   - xvfb
 
 jdk:
-  - oraclejdk11
-  - oraclejdk14
   - openjdk11
-  - openjdk14
+  - openjdk15
 
 install: true
 

@@ -8,16 +8,24 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion = "14.0.2"
-val scalafxVersion = s"14.0.2-R20-SNAPSHOT"
+val javaFXVersion = "15.0.1"
+val scalafxVersion = "15.0.1-R21-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v." + scalafxVersion
 
-publishArtifact := false
+// Root project
+lazy val scalafxProject = (project in file("."))
+  .settings(
+    name := "scalafx-project",
+    publishArtifact := false
+  )
+  .aggregate(scalafx, scalafxDemos)
+
 
 // ScalaFX project
 lazy val scalafx = (project in file("scalafx")).settings(
   scalafxSettings,
+  name := "scalafx",
   description := "The ScalaFX framework",
   // Add JavaFX dependencies, mark as "provided", so they can be later removed from published POM
   libraryDependencies ++= javafxModules.map(
@@ -42,6 +50,7 @@ lazy val scalafx = (project in file("scalafx")).settings(
 // ScalaFX Demos project
 lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   scalafxSettings,
+  name := "scalafx-demos",
   description := "The ScalaFX demonstrations",
   libraryDependencies ++= javafxModules.map(
     m => "org.openjfx" % s"javafx-$m" % javaFXVersion classifier osName),
@@ -155,11 +164,11 @@ lazy val manifestSetting = packageOptions += {
 // See also http://maven.apache.org/pom.html#Developers
 
 lazy val mavenCentralSettings = Seq(
-  homepage := Some(new URL("http://www.scalafx.org/")),
-  startYear := Some(2011),
+  homepage := Option(new URL("http://www.scalafx.org/")),
+  startYear := Option(2011),
   licenses := Seq(("BSD", new URL("https://github.com/scalafx/scalafx/blob/master/LICENSE.txt"))),
   sonatypeProfileName := "org.scalafx",
-  scmInfo := Some(ScmInfo(url("https://github.com/scalafx/scalafx"), "scm:git@github.com:scalafx/scalafx.git")),
+  scmInfo := Option(ScmInfo(url("https://github.com/scalafx/scalafx"), "scm:git@github.com:scalafx/scalafx.git")),
   publishMavenStyle := true,
   publishTo := sonatypePublishToBundle.value,
   pomExtra :=
@@ -244,10 +253,10 @@ lazy val mavenCentralSettings = Seq(
         <name>Roman Hargrave</name>
         <url>https://github.com/RomanHargrave</url>
       </developer>
-      <devloper>
+      <developer>
         <name>Johannes Mockenhaupt</name>
         <url>https://github.com/jotomo</url>
-      </devloper>
+      </developer>
       <developer>
         <name>Piotr Mardziel</name>
         <url>https://piotr.mardziel.com/</url>
