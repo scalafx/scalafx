@@ -20,3 +20,7 @@ script:
   - java -version
   - sbt test
 
+# Disable testing broken branches
+branches:
+  except:
+    - Scala3
