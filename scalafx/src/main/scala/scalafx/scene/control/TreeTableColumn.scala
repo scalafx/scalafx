@@ -276,6 +276,10 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
       })
   }
 
+  def cellFactory_=(callback: jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]]): Unit = {
+    delegate.cellFactoryProperty.setValue(callback)
+  }
+
   /**
    * The TreeTableView that this TreeTableColumn belongs to.
    */

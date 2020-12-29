@@ -141,8 +141,9 @@ object CheckBoxTreeTableCell {
    * @return $RETFTTC
    * @see $URL0#forTreeTableColumn-javafx.scene.control.TreeTableColumn- $ORIGINALDOC
    */
-  def forTreeTableColumn[S](column: jfxsc.TreeTableColumn[S, JBoolean]): (jfxsc.TreeTableColumn[S, JBoolean] => TreeTableCell[S, JBoolean]) = {
-    (c: jfxsc.TreeTableColumn[S, JBoolean]) => jfxscc.CheckBoxTreeTableCell.forTreeTableColumn(column).call(c)
+  def forTreeTableColumn[S](column: jfxsc.TreeTableColumn[S, JBoolean])
+  : jfxu.Callback[jfxsc.TreeTableColumn[S, JBoolean], jfxsc.TreeTableCell[S, JBoolean]] = {
+    jfxscc.CheckBoxTreeTableCell.forTreeTableColumn(column)
   }
 
   /*
