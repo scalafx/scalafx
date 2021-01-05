@@ -213,7 +213,7 @@ following example of the `sbt' shell script.
     # based on SBT 0.13.11
     export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_76.jdk/Contents/Home
     export PATH=${JAVA_HOME}/bin:${JAVA_HOME}/jre/bin:${PATH}
-    java -Xms512M -Xmx1536M -Xss2M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=512M -jar `dirname $0`/sbt-launch.jar "$@"
+    java -Xms512M -Xmx1536M -Xss2M -XX:MaxPermSize=512M -jar `dirname $0`/sbt-launch.jar "$@"
     # End.
 
 Of course, your mileage will indeed vary on your own workstation.

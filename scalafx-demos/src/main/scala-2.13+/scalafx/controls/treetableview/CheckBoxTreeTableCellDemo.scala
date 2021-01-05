@@ -25,62 +25,58 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-//noinspection TypeAnnotation
-
 package scalafx.controls.treetableview
 
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{BooleanProperty, StringProperty}
+import scalafx.beans.value.ObservableValue
 import scalafx.scene.Scene
+import scalafx.scene.control.cell.CheckBoxTreeTableCell
 import scalafx.scene.control.{TreeItem, TreeTableColumn, TreeTableView}
-import scalafx.scene.image.Image
+
+import scala.language.implicitConversions
 
 /**
- * ScalaFX version of the example from http://tutorials.jenkov.com/javafx/treetableview.html
+ * Example of using `CheckBoxTableCell` in `TableView`.
  */
-object TreeTableViewDemo extends JFXApp {
+object CheckBoxTreeTableCellDemo extends JFXApp {
 
-  class Car(brandName: String, modelName: String) {
-    val brand = StringProperty(brandName)
-    val model = StringProperty(modelName)
+  class Item(selected_ : Boolean, name_ : String) {
+    val selected = new BooleanProperty(this, "selected", selected_)
+    val name = new StringProperty(this, "name", name_)
   }
 
-  val brandColumn = new TreeTableColumn[Car, String]("Brand") {
-    cellValueFactory = p => p.value.value.value.brand
-    prefWidth = 150
-  }
 
-  val modelColumn = new TreeTableColumn[Car, String]("Model") {
-    cellValueFactory = p => p.value.value.value.model
-    prefWidth = 120
-  }
-
-  val mercedes = new TreeItem(new Car("Mercedes", "...")) {
-    children = Seq(
-      new TreeItem(new Car("Mercedes", "SL500")),
-      new TreeItem(new Car("Mercedes", "SL500 AMG")),
-      new TreeItem(new Car("Mercedes", "CLA 200"))
-    )
-  }
-
-  val audi = new TreeItem(new Car("Audi", "...")) {
-    children = Seq(
-      new TreeItem(new Car("Audi", "A1")),
-      new TreeItem(new Car("Audi", "A5")),
-      new TreeItem(new Car("Audi", "A7"))
-    )
+  val data = new TreeItem[Item](new Item(false, ""))
+  for (i <- 1 to 10) {
+    data.children.add(new TreeItem[Item](new Item(i % 2 == 0, s"Item $i")))
   }
 
   stage = new PrimaryStage {
-    title = "TreeTableView CellFactory Demo"
-    icons += new Image("/scalafx/sfx.png")
+    title = "Example of a TreeTableView with Check Boxes"
     scene = new Scene {
-      root = new TreeTableView[Car] {
-        columns ++= Seq(brandColumn, modelColumn)
-        root = new TreeItem(new Car("Cars", "...")) {
-          children = Seq(audi, mercedes)
-        }
+      root = new TreeTableView[Item](data) {
+        columns ++= List(
+          new TreeTableColumn[Item, String] {
+            text = "Name"
+            cellValueFactory = {
+              _.value.getValue.name
+            }
+            prefWidth = 180
+          },
+          new TreeTableColumn[Item, java.lang.Boolean] {
+            text = "Selected"
+            // We need to explicitly cast `_.value.selected` to modify boolean type parameters.
+            // `scala.Boolean` type is different from `java.lang.Boolean`, but eventually represented the same way
+            // by the compiler.
+            cellValueFactory = _.value.getValue.selected.asInstanceOf[ObservableValue[java.lang.Boolean, java.lang.Boolean]]
+            cellFactory = CheckBoxTreeTableCell.forTreeTableColumn(this)
+            editable = true
+            prefWidth = 180
+          }
+        )
+        editable = true
       }
     }
   }
