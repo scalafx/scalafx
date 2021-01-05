@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,6 +34,7 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.StringProperty
 import scalafx.scene.Scene
 import scalafx.scene.control.{TreeItem, TreeTableColumn, TreeTableView}
+import scalafx.scene.image.Image
 
 /**
  * ScalaFX version of the example from http://tutorials.jenkov.com/javafx/treetableview.html
@@ -47,10 +48,12 @@ object TreeTableViewDemo extends JFXApp {
 
   val brandColumn = new TreeTableColumn[Car, String]("Brand") {
     cellValueFactory = p => p.value.value.value.brand
+    prefWidth = 150
   }
 
   val modelColumn = new TreeTableColumn[Car, String]("Model") {
     cellValueFactory = p => p.value.value.value.model
+    prefWidth = 120
   }
 
   val mercedes = new TreeItem(new Car("Mercedes", "...")) {
@@ -71,6 +74,7 @@ object TreeTableViewDemo extends JFXApp {
 
   stage = new PrimaryStage {
     title = "TreeTableView CellFactory Demo"
+    icons += new Image("/scalafx/sfx.png")
     scene = new Scene {
       root = new TreeTableView[Car] {
         columns ++= Seq(brandColumn, modelColumn)
