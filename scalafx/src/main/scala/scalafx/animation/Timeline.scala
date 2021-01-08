@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,7 +60,7 @@ object Timeline extends AnimationStatics {
     def kf: Seq[_ <: KeyFrame] = keyFrames
 
     new Timeline {
-      keyFrames = kf
+      super.keyFrames = kf
     }
   }
 }
