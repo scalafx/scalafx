@@ -71,11 +71,7 @@ lazy val osName = System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 }
 lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-def scalaTestLib(scalaVersion: String): ModuleID  =
-  CrossVersion.partialVersion(scalaVersion) match {
-    case Some((3, _)) => "org.scalatest" % "scalatest_2.13" % "3.2.3"
-    case _ => "org.scalatest" %% "scalatest" % "3.2.3"
-  }
+lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.3"
 def scalaReflectLib(scalaVersion: String): ModuleID =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((3, _)) => "org.scala-lang" % "scala-reflect" % "2.13.4"
@@ -115,7 +111,7 @@ lazy val scalafxSettings = Seq(
   // Add other dependencies
   libraryDependencies ++= Seq(
     scalaReflectLib(scalaVersion.value),
-    scalaTestLib(scalaVersion.value) % "test"),
+    (scalaTestLib).withDottyCompat(scalaVersion.value) % "test"),
   // Use `pomPostProcess` to remove dependencies marked as "provided" from publishing in POM
   // This is to avoid dependency on wrong OS version JavaFX libraries [Issue #289]
   // See also [https://stackoverflow.com/questions/27835740/sbt-exclude-certain-dependency-only-during-publish]
