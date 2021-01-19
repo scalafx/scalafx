@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,7 @@ object LoginDialogDemo extends JFXApp {
       title = "Custom Dialog Demo"
       content = new VBox {
         children = new Button("Show Login Dialog") {
-          onAction = handle {onShowLoginDialog()}
+          onAction = _ => onShowLoginDialog()
         }
         padding = Insets(top = 24, right = 64, bottom = 24, left = 64)
       }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,6 @@
 
 package scalafx
 
-import scala.language.postfixOps
-import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Animation.Indefinite
 import scalafx.animation.Timeline
@@ -38,6 +36,9 @@ import scalafx.scene.Scene
 import scalafx.scene.effect.BoxBlur
 import scalafx.scene.paint.Color._
 import scalafx.scene.shape.Circle
+
+import scala.language.postfixOps
+import scala.math.random
 
 
 /**
@@ -61,9 +62,9 @@ object VanishingCircles extends JFXApp {
         strokeWidth <== when(hover) choose 4 otherwise 0
         stroke = White
         // add this for event listeners:
-        onMouseClicked = handle {
-          Timeline(at(3 s) {radius -> 0}).play()
-        }
+        onMouseClicked = _ => Timeline(at(3 s) {
+          radius -> 0
+        }).play()
       }
       content = circles
     }

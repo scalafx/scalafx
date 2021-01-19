@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 
 package scalafx.controls
 
-import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.controls.controls.{ControlControls, PropertiesNodes, TextFieldControls, TextInputControlControls}
@@ -86,16 +85,12 @@ class PasswordFieldControls(target: PasswordField) extends PropertiesNodes[Passw
    */
   val btnCopy: Button = new Button {
     text = "Copy"
-    onAction = handle {
-      target.copy()
-    }
+    onAction = _ => target.copy()
   }
 
   val btnCut: Button = new Button {
     text = "Cut"
-    onAction = handle {
-      target.cut()
-    }
+    onAction = _ => target.cut()
   }
 
   super.addNode("Typed Text", lblText)

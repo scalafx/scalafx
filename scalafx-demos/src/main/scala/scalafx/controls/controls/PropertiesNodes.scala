@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -52,7 +52,7 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
 
   protected val btnReset = new Button {
     text = "Reset"
-    onAction = handle {resetProperties()}
+    onAction = _ => resetProperties()
     alignmentInParent = Pos.Center
   }
 

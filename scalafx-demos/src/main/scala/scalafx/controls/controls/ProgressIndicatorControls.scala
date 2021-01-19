@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,17 +26,16 @@
  */
 package scalafx.controls.controls
 
-import scalafx.Includes._
 import scalafx.scene.control.{Label, ProgressIndicator, TextField}
 
 class ProgressIndicatorControls(target: ProgressIndicator)
   extends PropertiesNodes[ProgressIndicator](target, target.getClass.getSimpleName + " Properties") {
 
   val txfValue = new TextField
-  txfValue.onAction = handle {
+  txfValue.onAction = _ =>
     fillDoublePropertyFromText(
       target.progress, txfValue, true, () => (target.progress = ProgressIndicator.IndeterminateProgress))
-  }
+
 
   val lblRealValue = new Label {
     text <== target.progress.asString()

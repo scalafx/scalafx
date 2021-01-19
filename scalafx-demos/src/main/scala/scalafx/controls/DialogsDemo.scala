@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,6 @@
 
 package scalafx.controls
 
-import java.io.{FileNotFoundException, PrintWriter, StringWriter}
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -39,6 +36,9 @@ import scalafx.scene.control.Alert.AlertType
 import scalafx.scene.control._
 import scalafx.scene.image.Image
 import scalafx.scene.layout.{GridPane, Priority, VBox}
+
+import java.io.{FileNotFoundException, PrintWriter, StringWriter}
+import scala.language.implicitConversions
 
 /**
  * Based on JavaFX version discussed in blog: [[http://code.makery.ch/blog/javafx-dialogs-official/ JavaFX Dialogs]]
@@ -70,7 +70,7 @@ object DialogsDemo extends JFXApp {
   }
 
   def button[R](text: String, action: () => R) = new Button(text) {
-    onAction = handle {action()}
+    onAction = _ => action()
     alignmentInParent = Pos.Center
     hgrow = Priority.Always
     maxWidth = Double.MaxValue

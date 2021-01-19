@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,12 @@
 
 package scalafx.colorselector
 
-import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.{HPos, Pos, VPos}
 import scalafx.scene.Scene
 import scalafx.scene.control.{CheckBox, Label, TextField}
-import scalafx.scene.layout.{AnchorPane, ColumnConstraints, GridPane, Priority, VBox}
+import scalafx.scene.layout._
 import scalafx.scene.paint.Color
 
 object SliderControlDemo extends JFXApp {
@@ -46,9 +45,8 @@ object SliderControlDemo extends JFXApp {
     alignmentInParent = Pos.BaselineLeft
     promptText = "Enter the value"
     hgrow = Priority.Never
-    onAction = handle {
-      sliderControl.value = text.get.toDouble
-    }
+    onAction = _ => sliderControl.value = text.get.toDouble
+
   }
 
   val lblOutputValue = new Label {
