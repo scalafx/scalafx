@@ -27,6 +27,7 @@
 
 package scalafx.controls.tableview
 
+import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.beans.property.{ObjectProperty, StringProperty}
