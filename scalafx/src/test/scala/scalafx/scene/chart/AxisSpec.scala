@@ -45,17 +45,17 @@ class AxisSpec[T]
   override def getJavaClassInstance = new jfxsc.Axis[T] {
     protected def autoRange(length: Double) = null
     protected def calculateTickValues(length: Double, range: Any) = new java.util.ArrayList[T]
-    protected def getDisplayPosition(value: T) = 0.0
+    def getDisplayPosition(value: T) = 0.0
     protected def getRange = null
     protected def getTickMarkLabel(value: T) = ""
-    protected def getValueForDisplay(displayPosition: Double) = null.asInstanceOf[T]
-    protected def getZeroPosition = 0.0
-    protected def isValueOnAxis(value: T) = false
+    def getValueForDisplay(displayPosition: Double) = null.asInstanceOf[T]
+    def getZeroPosition = 0.0
+    def isValueOnAxis(value: T) = false
 
     protected def setRange(range: Any, animate: Boolean): Unit = {}
 
-    protected def toNumericValue(value: T) = 0.0
-    protected def toRealValue(value: Double) = null.asInstanceOf[T]
+    def toNumericValue(value: T) = 0.0
+    def toRealValue(value: Double) = null.asInstanceOf[T]
   }
 
   it should "correctly implement invalidateRange [Issue #310]" in {
