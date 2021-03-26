@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -55,7 +55,7 @@ object WebDemo extends JFXApp {
     hgrow = Priority.Always
     vgrow = Priority.Never
   }
-  txfUrl.onAction = handle {engine.load(txfUrl.text.get)}
+  txfUrl.onAction = _ => engine.load(txfUrl.text.get)
 
   stage = new PrimaryStage {
     title = "ScalaFX Web Demo"

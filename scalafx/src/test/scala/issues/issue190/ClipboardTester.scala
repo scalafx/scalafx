@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,17 +27,16 @@
 
 package issues.issue190
 
-import java.io.File
-
-import scala.collection.JavaConverters._
-import scala.language.implicitConversions
-import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
 import scalafx.scene.input.{Clipboard, ClipboardContent, DataFormat}
 import scalafx.scene.layout.VBox
+
+import java.io.File
+import scala.collection.JavaConverters._
+import scala.language.implicitConversions
 
 /**
  * @author Jarek Sacha 
@@ -52,7 +51,7 @@ object ClipboardTester extends JFXApp {
         children = Seq(
           new Button {
             text = "Print clipboard"
-            onAction = handle {
+            onAction = _ => {
               val systemClipboard = Clipboard.systemClipboard
               val contentTypes = systemClipboard.contentTypes
               println(s"\nClipboard contains " + contentTypes.size + " type(s).")
@@ -65,13 +64,11 @@ object ClipboardTester extends JFXApp {
           },
           new Button {
             text = "Clear clipboard"
-            onAction = handle {
-              Clipboard.systemClipboard.clear()
-            }
+            onAction = _ => Clipboard.systemClipboard.clear()
           },
           new Button {
             text = "Add file content (1)"
-            onAction = handle {
+            onAction = _ => {
               val cc = new ClipboardContent()
               cc.putFiles(Seq(new File("one"), new File("two")))
               Clipboard.systemClipboard.content = cc
@@ -79,7 +76,7 @@ object ClipboardTester extends JFXApp {
           },
           new Button {
             text = "Add file content (2)"
-            onAction = handle {
+            onAction = _ => {
               val cc = new ClipboardContent()
               cc.put(DataFormat.Files, Seq(new File("c:/tmp")).asJava)
               Clipboard.systemClipboard.content = cc
@@ -87,7 +84,7 @@ object ClipboardTester extends JFXApp {
           },
           new Button {
             text = "Add file content (3)"
-            onAction = handle {
+            onAction = _ => {
               Clipboard.systemClipboard.content = ClipboardContent(
                 DataFormat.Files -> Seq(new File("c:/tmp")).asJava,
                 DataFormat.PlainText -> "Hello Clipboard!"
@@ -96,7 +93,7 @@ object ClipboardTester extends JFXApp {
           },
           new Button {
             text = "Add text/HTML content (1)"
-            onAction = handle {
+            onAction = _ => {
               val clipboard = Clipboard.systemClipboard
               val content = new ClipboardContent()
               content.putString("Some text")
@@ -106,7 +103,7 @@ object ClipboardTester extends JFXApp {
           },
           new Button {
             text = "Add text/HTML content (2)"
-            onAction = handle {
+            onAction = _ => {
               Clipboard.systemClipboard.content = ClipboardContent(
                 DataFormat.PlainText -> "Some text",
                 DataFormat.Html -> "<b>Some</b> text"

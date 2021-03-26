@@ -25,60 +25,32 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package scalafx.controls
+package scalafx.scene.input
 
-import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.event.ActionEvent
-import scalafx.scene.Scene
-import scalafx.scene.control._
-import scalafx.scene.layout.{BorderPane, VBox}
-import scalafx.scene.paint.Color
+import javafx.scene.{input => jfxsi}
+import org.scalatest.flatspec.AnyFlatSpec
 
+class DragEventTest extends AnyFlatSpec {
 
-object MenuTest extends JFXApp {
-
-  val menu = new Menu("File") {
-    items = List(
-      new MenuItem("Open") {
-        onAction = (ae: ActionEvent) => history.children += new Label("Selected item `Open`")
-      },
-      new SeparatorMenuItem,
-      new MenuItem("Close") {
-        onAction = (ae: ActionEvent) => history.children += new Label("Selected item `Close`")
-      }
-    )
-
-    onShowing = _ => printEvent("on showing")
-    onShown = _ => printEvent("on shown")
-    onHiding = _ => printEvent("on hiding")
-    onHidden = _ => printEvent("on hidden")
-  }
-
-  val history = new VBox()
-
-  val menuBar = new MenuBar {
-    useSystemMenuBar = true
-    minWidth = 100
-    menus.add(menu)
-  }
-
-  stage = new PrimaryStage {
-    title = "Menu test"
-    width = 300
-    height = 225
-    scene = new Scene {
-      fill = Color.LightGray
-      root = new BorderPane {
-        top = menuBar
-        bottom = history
-      }
+  it should "allow to use `acceptTransferModes(...)` with `TransferMode` constants directly #339" in {
+    // Create an event object, it internal state is not important for the test
+    val event = {
+      val e = new jfxsi.DragEvent(jfxsi.DragEvent.ANY, null, 0, 0, 0, 0, jfxsi.TransferMode.COPY, null, null, null)
+      new DragEvent(e)
     }
-  }
 
-  def printEvent(eventStr: String)(): Unit = {
-    history.children += new Label(eventStr)
+    //
+    // Following code should compile
+    //
+
+    // Compatibility mode requiring explicit expansion of into repeated parameters
+    event.acceptTransferModes(TransferMode.Any: _*)
+
+    // Simpler call using array argument
+    event.acceptTransferModes(TransferMode.Any)
+
+    // Single argument
+    event.acceptTransferModes(TransferMode.Copy)
   }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -85,7 +85,7 @@ object BarChartWithTableViewDemo extends JFXApp {
       title = chartTitle
       data = XYChart.Series(chartData.map(d => XYChart.Data[String, Number](d.name(), d.value())))
       legendVisible = false
-      onMouseClicked = handle {showAsTable(title(), chartData)}
+      onMouseClicked = _ => showAsTable(title(), chartData)
     }
 
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,6 @@
 
 package issues.issue178
 
-import scala.language.implicitConversions
-import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
@@ -36,6 +34,8 @@ import scalafx.scene.Scene
 import scalafx.scene.control.Button
 import scalafx.scene.layout.VBox
 import scalafx.stage.FileChooser
+
+import scala.language.implicitConversions
 
 /**
  * Demo for Issue #178: FileChooser does not handle a the value returned when the user cancels file selection.
@@ -51,7 +51,7 @@ object MultipleFileChooserDemo extends JFXApp {
         padding = Insets(12)
         children = new Button {
           text = "Open file chooser and select multiple files or Cancel"
-          onAction = handle {
+          onAction = _ => {
             val fc = new FileChooser()
             val selection = fc.showOpenMultipleDialog(stage)
 
