@@ -62,6 +62,9 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   publishArtifact := false
 ).dependsOn(scalafx % "compile;test->test")
 
+val Scala2_12 = "2.12.13"
+val Scala2_13 = "2.13.5"
+val Scala3_00 = "3.0.0-RC1"
 
 // Dependencies
 lazy val osName = System.getProperty("os.name") match {
@@ -74,7 +77,7 @@ lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "s
 lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.6"
 def scalaReflectLib(scalaVersion: String): ModuleID =
   CrossVersion.partialVersion(scalaVersion) match {
-    case Some((3, _)) => "org.scala-lang" % "scala-reflect" % "2.13.5"
+    case Some((3, _)) => "org.scala-lang" % "scala-reflect" % Scala2_13
     case _ => "org.scala-lang" % "scala-reflect" % scalaVersion
   }
 
@@ -94,9 +97,9 @@ def versionSubDir(scalaVersion: String): String =
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq("2.13.5", "2.12.13", "3.0.0-M2"),
+  crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_00),
   //  scalaVersion := crossScalaVersions.value.head,
-  scalaVersion := "3.0.0-M2",
+  scalaVersion := Scala3_00,
   unmanagedSourceDirectories in Compile += (sourceDirectory in Compile).value / versionSubDir(scalaVersion.value),
   unmanagedSourceDirectories in Test += (sourceDirectory in Test).value / versionSubDir(scalaVersion.value),
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
