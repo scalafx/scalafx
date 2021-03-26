@@ -71,7 +71,7 @@ lazy val osName = System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 }
 lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.3"
+lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.6"
 def scalaReflectLib(scalaVersion: String): ModuleID = "org.scala-lang" % "scala-reflect" % scalaVersion
 
 // Add snapshots to root project to enable compilation with Scala SNAPSHOT compiler,
