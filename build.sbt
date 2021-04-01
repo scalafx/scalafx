@@ -64,7 +64,7 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
 
 val Scala2_12 = "2.12.13"
 val Scala2_13 = "2.13.5"
-val Scala3_00 = "3.0.0-RC1"
+val Scala3_00 = "3.0.0-RC2"
 
 // Dependencies
 lazy val osName = System.getProperty("os.name") match {
