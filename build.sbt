@@ -103,6 +103,7 @@ lazy val scalafxSettings = Seq(
   unmanagedSourceDirectories in Compile += (sourceDirectory in Compile).value / versionSubDir(scalaVersion.value),
   unmanagedSourceDirectories in Test += (sourceDirectory in Test).value / versionSubDir(scalaVersion.value),
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
+  scalacOptions ++= Seq("-source:3.0-migration"),
   scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
   scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
   //  scalacOptions in(Compile, doc) += s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
@@ -114,7 +115,7 @@ lazy val scalafxSettings = Seq(
   // Add other dependencies
   libraryDependencies ++= Seq(
     scalaReflectLib(scalaVersion.value),
-    (scalaTestLib).withDottyCompat(scalaVersion.value) % "test"),
+    scalaTestLib % "test"),
   // Use `pomPostProcess` to remove dependencies marked as "provided" from publishing in POM
   // This is to avoid dependency on wrong OS version JavaFX libraries [Issue #289]
   // See also [https://stackoverflow.com/questions/27835740/sbt-exclude-certain-dependency-only-during-publish]
