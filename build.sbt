@@ -74,7 +74,7 @@ lazy val osName = System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 }
 lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.6"
+lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.7"
 def scalaReflectLib(scalaVersion: String): ModuleID =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((3, _)) => "org.scala-lang" % "scala-reflect" % Scala2_13
