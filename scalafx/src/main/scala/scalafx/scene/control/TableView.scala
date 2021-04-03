@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,6 @@
 
 package scalafx.scene.control
 
-import java.lang
-
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, event => jfxe, scene => jfxs, util => jfxu}
 import scalafx.Includes._
@@ -38,6 +36,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.delegate.SFXDelegate.delegateOrNull
 import scalafx.scene.Node
 
+import java.lang
 import scala.language.implicitConversions
 
 
@@ -180,7 +179,7 @@ object TableView {
      * A read-only ObservableList representing the currently selected cells in this TableView.
      */
     def selectedCells: ObservableBuffer[TablePosition[_, _]] =
-      ObservableBuffer(delegate.getSelectedCells.map(jtp => new TablePosition(jtp)).toSeq)
+      ObservableBuffer.from(delegate.getSelectedCells.map(jtp => new TablePosition(jtp)))
 
     /**
      * Returns the TableView instance that this selection model is installed in.

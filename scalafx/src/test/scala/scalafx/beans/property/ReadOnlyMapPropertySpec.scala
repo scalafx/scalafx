@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -48,18 +48,18 @@ class ReadOnlyMapPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   override def beforeEach(): Unit = {
 
-    val roWrapper = new ReadOnlyMapWrapper(bean, "Test Read-only Boolean", ObservableMap(valueAsSeq))
+    val roWrapper = new ReadOnlyMapWrapper(bean, "Test Read-only Boolean", ObservableMap.from(valueAsSeq))
     readOnlyMapProperty = roWrapper.readOnlyProperty
     mapProperty1 = MapProperty[String, Int](bean, "Test Boolean 2")
     mapProperty2 = new MapProperty[String, Int](bean, "Test Boolean 3")
   }
 
   "A Read-only Boolean Property" should "return a fixed value" in {
-    readOnlyMapProperty.value should be(ObservableMap(valueAsSeq).delegate)
+    readOnlyMapProperty.value should be(ObservableMap.from(valueAsSeq).delegate)
   }
 
   it should "return its value using apply" in {
-    readOnlyMapProperty() should be(ObservableMap(valueAsSeq).delegate)
+    readOnlyMapProperty() should be(ObservableMap.from(valueAsSeq).delegate)
   }
 
   it should "know its name" in {
@@ -80,12 +80,12 @@ class ReadOnlyMapPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "be bindable to another Boolean Property" in {
     mapProperty1 <== readOnlyMapProperty
-    mapProperty1() should be(ObservableMap(valueAsSeq).delegate)
+    mapProperty1() should be(ObservableMap.from(valueAsSeq).delegate)
   }
 
   it should "support unbinding from another Boolean Property" in {
     mapProperty1 <== readOnlyMapProperty
-    mapProperty1() should be(ObservableMap(valueAsSeq).delegate)
+    mapProperty1() should be(ObservableMap.from(valueAsSeq).delegate)
     mapProperty1.unbind()
     mapProperty1() = ObservableMap("zero" -> 0, "seven" -> 7)
     mapProperty1() should be(ObservableMap("zero" -> 0, "seven" -> 7).delegate)

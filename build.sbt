@@ -30,8 +30,8 @@ lazy val scalafx = (project in file("scalafx")).settings(
   // Add JavaFX dependencies, mark as "provided", so they can be later removed from published POM
   libraryDependencies ++= javafxModules.map(
     m => "org.openjfx" % s"javafx-$m" % javaFXVersion % "provided" classifier osName),
-  fork in run := true,
-  scalacOptions in(Compile, doc) ++= Seq(
+  run / fork := true,
+  Compile / doc / scalacOptions ++= Seq(
     "-sourcepath", baseDirectory.value.toString,
     "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.creole",
     "-doc-source-url", "https://github.com/scalafx/scalafx/tree/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala"
@@ -44,7 +44,7 @@ lazy val scalafx = (project in file("scalafx")).settings(
     case None => Seq.empty[String]
   }),
   publishArtifact := true,
-  publishArtifact in Test := false
+  Test / publishArtifact := false
 )
 
 // ScalaFX Demos project
@@ -54,7 +54,7 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   description := "The ScalaFX demonstrations",
   libraryDependencies ++= javafxModules.map(
     m => "org.openjfx" % s"javafx-$m" % javaFXVersion classifier osName),
-  fork in run := true,
+  run / fork := true,
   javaOptions ++= Seq(
     "-Xmx512M",
     "-Djavafx.verbose"
@@ -100,14 +100,14 @@ lazy val scalafxSettings = Seq(
   crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_00),
   //  scalaVersion := crossScalaVersions.value.head,
   scalaVersion := Scala3_00,
-  unmanagedSourceDirectories in Compile += (sourceDirectory in Compile).value / versionSubDir(scalaVersion.value),
-  unmanagedSourceDirectories in Test += (sourceDirectory in Test).value / versionSubDir(scalaVersion.value),
+  Compile / unmanagedSourceDirectories += (Compile / sourceDirectory).value / versionSubDir(scalaVersion.value),
+  Test / unmanagedSourceDirectories += (Test / sourceDirectory).value / versionSubDir(scalaVersion.value),
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
   scalacOptions ++= Seq("-source:3.0-migration"),
-  scalacOptions in(Compile, doc) ++= Opts.doc.title("ScalaFX API"),
-  scalacOptions in(Compile, doc) ++= Opts.doc.version(scalafxVersion),
-  //  scalacOptions in(Compile, doc) += s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
-  scalacOptions in(Compile, doc) ++= Seq("-doc-footer", s"ScalaFX API v.$scalafxVersion"),
+  Compile / doc / scalacOptions ++= Opts.doc.title("ScalaFX API"),
+  Compile / doc / scalacOptions ++= Opts.doc.version(scalafxVersion),
+  //  Compile / doc / scalacOptions += s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
+  Compile / doc / scalacOptions ++= Seq("-doc-footer", s"ScalaFX API v.$scalafxVersion"),
   javacOptions ++= Seq(
     "-target", "1.8",
     "-source", "1.8",
@@ -133,15 +133,14 @@ lazy val scalafxSettings = Seq(
   },
   autoAPIMappings := true,
   manifestSetting,
-  fork in Test := true,
-  parallelExecution in Test := false,
+  Test / fork := true,
+  Test / parallelExecution := false,
   resolvers += Resolver.sonatypeRepo("snapshots"),
   // print junit-style XML for CI
-  testOptions in Test += {
-    val t = (target in Test).value
+  Test / testOptions += {
+    val t = (Test / target).value
     Tests.Argument(TestFrameworks.ScalaTest, "-u", s"$t/junitxmldir")
-  },
-  shellPrompt in ThisBuild := { state => "sbt:" + Project.extract(state).currentRef.project + "> " }
+  }
 ) ++ mavenCentralSettings
 
 

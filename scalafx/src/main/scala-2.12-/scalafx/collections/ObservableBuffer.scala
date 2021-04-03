@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,14 +27,13 @@
 
 package scalafx.collections
 
-import java.{util => ju}
-
 import javafx.collections.ObservableList
 import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
+import java.{util => ju}
 import scala.collection.JavaConverters._
 import scala.collection.generic.{CanBuildFrom, GenericCompanion, GenericTraversableTemplate, SeqFactory}
 import scala.collection.mutable.ArrayBuffer
@@ -149,12 +148,12 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
   // CREATION METHODS - BEGIN
 
   /**
-    * Creates a new $OB from a sequence of elements.
-    *
-    * @param items Sequence of elements
-    * @return new $OB from items
-    */
-  def apply[T](items: Seq[T]): ObservableBuffer[T] =
+   * Creates a new $OB from a sequence of elements.
+   *
+   * @param items Sequence of elements
+   * @return new $OB from items
+   */
+  def from[T](items: Seq[T]): ObservableBuffer[T] =
     new ObservableBuffer[T](jfxc.FXCollections.observableArrayList[T](items.asJava))
 
   // CREATION METHODS - END
@@ -189,7 +188,7 @@ object ObservableBuffer extends SeqFactory[ObservableBuffer] {
     val lists: java.util.List[jfxc.ObservableList[T]] = new java.util.ArrayList[jfxc.ObservableList[T]]
     buffers.foreach(buf => lists.add(buf.delegate))
 
-    ObservableBuffer[T](jfxc.FXCollections.concat(lists.asScala: _*).asScala)
+    ObservableBuffer.from[T](jfxc.FXCollections.concat(lists.asScala: _*).asScala)
   }
 
   /**
