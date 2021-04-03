@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,15 +26,13 @@
  */
 package scalafx.collections
 
-import java.{util => ju}
-
 import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
+import java.{util => ju}
 import scala.collection.{IterableFactory, mutable}
-import scala.jdk.CollectionConverters._
 import scala.language.implicitConversions
 
 /**
@@ -95,27 +93,6 @@ object ObservableSet extends IterableFactory[ObservableSet] {
   //   * @return a Empty [[scalafx.collections.ObservableHashSet]]
   //   */
   //  override def empty[T]: ObservableSet[T] = new ObservableHashSet[T]
-
-  /**
-   * Creates a new $OS from a sequence.
-   *
-   * @param elems Sequence source of Set
-   * @return new [[scalafx.collections.ObservableHashSet]] generated from elems
-   */
-  def apply[T](elems: Seq[T]): ObservableSet[T] =
-    new ObservableHashSet[T](jfxc.FXCollections.observableSet(elems: _*))
-
-  /**
-   * Creates a new $OS from a mutable [[scala.collection.mutable.Set]] by wrapping the input argument.
-   * Operation on $OS will be delegated to the wrapped argument.
-   *
-   * @param set Mutable Set to be wrapped.
-   * @return new [[scalafx.collections.ObservableHashSet]] wrapping ''set''
-   */
-  def apply[T](set: mutable.Set[T]): ObservableSet[T] =
-    new ObservableSet[T] {
-      override val delegate: jfxc.ObservableSet[T] = jfxc.FXCollections.observableSet(set.asJava)
-    }
 
   // CREATION METHODS - END
 

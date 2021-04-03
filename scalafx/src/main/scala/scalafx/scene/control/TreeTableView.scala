@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -297,7 +297,7 @@ object TreeTableView {
       * modify this list, please use the other methods provided in the TreeTableViewSelectionModel.
       */
     def selectedCells: ObservableBuffer[TreeTablePosition[S, _]] =
-      ObservableBuffer(delegate.getSelectedCells.map(ttp => new TreeTablePosition(ttp)).toSeq)
+      ObservableBuffer.from(delegate.getSelectedCells.map(ttp => new TreeTablePosition(ttp)))
 
     /**
       * Returns the TreeTableView instance that this selection model is installed in.

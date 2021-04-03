@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -115,7 +115,7 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * Creates a default ListView which will stack the contents retrieved from the provided
    * [[scala.Seq]] vertically.
    */
-  def this(items: Seq[T]) = this(new jfxsc.ListView[T](ObservableBuffer(items)))
+  def this(items: Seq[T]) = this(new jfxsc.ListView[T](ObservableBuffer.from(items)))
 
   /**
    * Setting a custom cell factory has the effect of deferring all cell creation, allowing for 

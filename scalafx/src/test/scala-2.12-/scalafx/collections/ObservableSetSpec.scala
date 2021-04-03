@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,14 +26,13 @@
  */
 package scalafx.collections
 
-import java.{util => ju}
-
 import javafx.{collections => jfxc}
 import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.collections.ObservableSet._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
+import java.{util => ju}
 import scala.collection.mutable._
 
 /**
@@ -75,12 +74,12 @@ class ObservableSetSpec[T]
     }
 
     assertGeneratedSet(ObservableSet(1, 2))
-    assertGeneratedSet(ObservableSet(List(1, 2)))
-    assertGeneratedSet(ObservableSet(Set(1, 2)))
+    assertGeneratedSet(ObservableSet.from(List(1, 2)))
+    assertGeneratedSet(ObservableSet.from(Set(1, 2)))
 
     val scalaHashSet = new HashSet[Int]
     scalaHashSet += 1 += 2
-    assertGeneratedSet(ObservableSet(scalaHashSet))
+    assertGeneratedSet(ObservableSet.from(scalaHashSet))
   }
 
   it should "notify on invalidation" in {
@@ -164,7 +163,7 @@ class ObservableSetSpec[T]
 
   it should "notify each remotion individually" in {
     // Preparation 
-    val set = ObservableSet((0 to 15))
+    val set = ObservableSet.from((0 to 15))
     val removedValues = Buffer.empty[Int]
     set onChange {
       (sourceSet, change) =>
@@ -207,7 +206,7 @@ class ObservableSetSpec[T]
 
   it should "keep his behavior with other types of sets beyond HashSet" in {
     // Preparation
-    val set = ObservableSet(new LinkedHashSet[Int])
+    val set = ObservableSet.from(new LinkedHashSet[Int])
     val addedValues = Buffer.empty[Int]
     val removedValues = Buffer.empty[Int]
     set onChange {

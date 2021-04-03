@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,12 @@
 
 package scalafx.collections
 
-import java.{util => ju}
-
 import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
+import java.{util => ju}
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.{IterableFactoryDefaults, SeqFactory, StrictOptimizedSeqFactory, StrictOptimizedSeqOps, mutable}
 import scala.jdk.CollectionConverters._
@@ -134,19 +133,6 @@ object ObservableBuffer extends StrictOptimizedSeqFactory[ObservableBuffer] {
 
 
   // CHANGING INDICATORS - END
-
-  // CREATION METHODS - BEGIN
-
-  /**
-   * Creates a new $OB from a sequence of elements.
-   *
-   * @param items Sequence of elements
-   * @return new $OB from items
-   */
-  def apply[T](items: Seq[T]): ObservableBuffer[T] =
-    new ObservableBuffer[T](jfxc.FXCollections.observableArrayList[T](items.asJava))
-
-  // CREATION METHODS - END
 
   // HELPER METHODS (ORIGINATED FROM FXCOLLECTIONS) - BEGIN
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -87,7 +87,7 @@ class PieChart(override val delegate: jfxsc.PieChart = new jfxsc.PieChart())
   }
 
   def data_=(v: Seq[jfxsc.PieChart.Data]): Unit = {
-    data() = ObservableBuffer(v)
+    data() = ObservableBuffer.from(v)
   }
 
 

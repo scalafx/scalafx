@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,12 @@
  */
 package scalafx.collections
 
-import java.{util => ju}
-
 import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
+import java.{util => ju}
 import scala.collection.JavaConverters._
 import scala.collection.generic.{GenericCompanion, GenericSetTemplate, MutableSetFactory}
 import scala.collection.mutable.{Builder, Set, SetLike}
@@ -95,7 +94,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
    * @param elems Sequence source of Set
    * @return new [[scalafx.collections.ObservableHashSet]] generated from elems
    */
-  def apply[T](elems: Seq[T]): ObservableSet[T] =
+  def from[T](elems: Seq[T]): ObservableSet[T] =
     new ObservableHashSet[T](jfxc.FXCollections.observableSet(elems: _*))
 
   /**
@@ -104,7 +103,7 @@ object ObservableSet extends MutableSetFactory[ObservableSet] {
    * @param set Mutable Set to be wrapped.
    * @return new [[scalafx.collections.ObservableHashSet]] wrapping ''set''
    */
-  def apply[T](set: Set[T]): ObservableSet[T] =
+  def from[T](set: Set[T]): ObservableSet[T] =
     new ObservableSet[T] {
       override val delegate = jfxc.FXCollections.observableSet(set.asJava)
     }

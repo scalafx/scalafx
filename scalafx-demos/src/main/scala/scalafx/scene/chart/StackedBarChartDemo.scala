@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,7 +35,7 @@ object StackedBarChartDemo extends JFXApp {
 
   val years = Seq("2007", "2008", "2009")
 
-  val xAxis = CategoryAxis(ObservableBuffer(years))
+  val xAxis = CategoryAxis(years)
   val yAxis = NumberAxis(
     axisLabel = "Units Sold",
     lowerBound = 0,
@@ -63,7 +63,7 @@ object StackedBarChartDemo extends JFXApp {
     val series = years zip data
     XYChart.Series[String, Number](
       name,
-      ObservableBuffer(series.map {case (x, y) => XYChart.Data[String, Number](x, y)})
+      ObservableBuffer.from(series.map { case (x, y) => XYChart.Data[String, Number](x, y) })
     )
   }
 }

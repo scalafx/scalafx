@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    * Creates a default ComboBox instance from a [[scala.Seq]]
    * with the provided items list and a default selection model.
    */
-  def this(items: Seq[T]) = this(new jfxsc.ComboBox[T](ObservableBuffer(items)))
+  def this(items: Seq[T]) = this(new jfxsc.ComboBox[T](ObservableBuffer.from(items)))
 
   /**
    * Providing a custom cell factory allows for complete customization of the rendering of items in the ComboBox.
