@@ -156,18 +156,6 @@ object ObservableBuffer extends StrictOptimizedSeqFactory[ObservableBuffer] {
   }
 
   /**
-   * Concatenates more $OB's into one.
-   *
-   * @param buffers $buf to concatenate
-   */
-  def concat[T](buffers: ObservableBuffer[T]*): ObservableBuffer[T] = {
-    val lists: java.util.List[jfxc.ObservableList[T]] = new java.util.ArrayList[jfxc.ObservableList[T]]
-    buffers.foreach(buf => lists.add(buf.delegate))
-
-    new ObservableBuffer[T](jfxc.FXCollections.concat(lists.asScala.toSeq: _*))
-  }
-
-  /**
    * Revert the order in the $OB. Fires only '''one''' change notification on the list.
    *
    * ''Implementation note'': This method uses
