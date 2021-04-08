@@ -484,7 +484,7 @@ class ObservableBufferSpec[T]
   }
 
 
-  it should "shufle with a only change" in {
+  it should "shuffle with a only change" in {
     // Preparation
     val buffer = ObservableBuffer("a", "b", "c", "d", "e")
     var removeCount = 0
@@ -653,7 +653,6 @@ class ObservableBufferSpec[T]
 
     type ElementType = jfxc.ObservableList[String]
 
-    //    val items = new ObservableBuffer(jfxc.FXCollections.observableArrayList[ElementType]((elem: ElementType) => Array[jfxb.Observable](elem)))
     val items = new ObservableBuffer(
       jfxc.FXCollections.observableArrayList[ElementType](
         (elem: ElementType) => Array[jfxb.Observable](elem)
