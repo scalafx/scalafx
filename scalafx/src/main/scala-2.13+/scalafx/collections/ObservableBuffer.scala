@@ -303,6 +303,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * @param elems Other elements to remove
    * @return $ownOB
    */
+  @deprecated("Super method -= is deprecated. Use `--=` aka `subtractAll` instead of varargs `-=`; infix operations with an operand of multiple args will be deprecated", "R22")
   override def -=(elem1: T, elem2: T, elems: T*): ObservableBuffer.this.type = {
     // Custom implementation to minimize number of change notification.
     // This will issue only one change notification for all xs element,
