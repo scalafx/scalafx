@@ -37,7 +37,6 @@ import scala.collection.mutable.ArrayBuffer
 import scala.collection.{IterableFactoryDefaults, SeqFactory, StrictOptimizedSeqFactory, StrictOptimizedSeqOps, mutable}
 import scala.jdk.CollectionConverters._
 import scala.language.implicitConversions
-import scala.reflect.runtime.universe._
 
 /**
  * Companion Object for [[scalafx.collections.ObservableBuffer]].
@@ -442,25 +441,24 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
   def replaceAll(oldVal: T, newVal: T): Boolean = jfxc.FXCollections.replaceAll(this.delegate, oldVal, newVal)
 
   /**
-   * Sorts this $OB if its type implements ''natural ordering''. This type must be a
-   * [[http://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html `java.util.Comparable`]] subclass.
-   * Otherwise it will throws a `IllegalStateException`.
+   * Sorts this $OB if its type implements "natural ordering" using using JavaFX `FXCollections.sort`.
    *
-   * @param typeTag information about if this type is a `Comparable` subclass or not.
+   * It is similar to Scala's `sortInPlace()`.
+   * It will produce the same result,
+   * but may produce different number of change notifications as different sorting algorithms are used.
    */
-  def sort()(implicit typeTag: WeakTypeTag[T]): Unit = {
-    if (typeTag.tpe <:< typeOf[Comparable[_]]) {
-      jfxc.FXCollections.sort(delegate, (p1: T, p2: T) => p1.asInstanceOf[Comparable[T]].compareTo(p2))
-    } else {
-      throw new IllegalStateException("Type of this Observable List does not implement " +
-        "java.util.Comparable. Please use a Comparator function.")
-    }
+  def sort[B >: T]()(implicit ord: Ordering[B]): Unit = {
+    jfxc.FXCollections.sort(delegate, (o1: B, o2: B) => ord.compare(o1, o2))
   }
 
   /**
-   * Sorts this $OB using a Comparator function
+   * Sorts this $OB using a comparator function using JavaFX `FXCollections.sort`.
    *
-   * @param lt Comparator function that returns `true` if first element was lesser than second
+   * It is similar to Scala's `sortInPlaceWith(c)`.
+   * It will produce the same result,
+   * but may produce different number of change notifications as different sorting algorithms are used.
+   *
+   * @param lt comparator function that returns `true` if first element was lesser than second
    *           or `false` otherwise.
    */
   def sort(lt: (T, T) => Boolean): Unit = {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,14 +27,13 @@
 
 package scalafx.collections
 
-import java.{util => ju}
-
 import javafx.{beans => jfxb, collections => jfxc}
 import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
+import java.{util => ju}
 import scala.collection.mutable
 
 /**
@@ -436,16 +435,6 @@ class ObservableBufferSpec[T]
     changeCount should equal(1)
   }
 
-  it should "throws a exception when sort a buffer that is composed by non Comparable subtypes" in {
-    // Preparation
-    case class A(value: Int)
-    val buffer = ObservableBuffer(A(4), A(3), A(1), A(5), A(2))
-
-    // Execution
-    intercept[IllegalStateException] {
-      buffer.sort
-    }
-  }
 
   it should "notify on a sort order change with a reorder from a member method with a comparison function" in {
     // Preparation
@@ -471,6 +460,33 @@ class ObservableBufferSpec[T]
     // Verification
     changeCount should equal(1)
   }
+
+  it should "`sort()` `sortInPlace()` should produce the same order of elements" in {
+    // Preparation
+    val srcSeq = Seq("c", "b", "a", "f", "e", "d")
+    val bufferFX = ObservableBuffer.from(srcSeq)
+    val bufferS = ObservableBuffer.from(srcSeq)
+
+    // Execution
+    bufferFX.sort()
+    bufferS.sortInPlace()
+
+    assert(bufferFX == bufferS)
+  }
+
+  it should "`sort(lt)` `sortInPlaceWith(lt)` should produce the same order of elements" in {
+    // Preparation
+    val srcSeq = Seq("c", "b", "a", "f", "e", "d")
+    val bufferFX = ObservableBuffer.from(srcSeq)
+    val bufferS = ObservableBuffer.from(srcSeq)
+
+    // Execution
+    bufferFX.sort((a, b) => a > b)
+    bufferS.sortInPlaceWith((a, b) => a > b)
+
+    assert(bufferFX == bufferS)
+  }
+
 
   it should "shufle with a only change" in {
     // Preparation
