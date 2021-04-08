@@ -301,7 +301,7 @@ class ObservableBufferSpec[T]
     buffer.toList should equal(List("a", "b", "c"))
 
     // Verification
-    changeCount should equal(7)
+    changeCount should equal(6)
   }
 
   it should "notify when it is removed a range of elements" in {
