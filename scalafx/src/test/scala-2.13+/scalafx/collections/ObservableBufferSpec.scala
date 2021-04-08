@@ -496,12 +496,12 @@ class ObservableBufferSpec[T]
             addCount += 1
             pos should equal(0)
             addedBuffer.size should equal(buffer.size)
-            addedBuffer.toBuffer.sameElements(buffer)
+            addedBuffer.toBuffer should contain theSameElementsAs (buffer)
           case Remove(pos, removedBuffer) =>
             removeCount += 1
             pos should equal(0)
             removedBuffer.size should equal(buffer.size)
-            removedBuffer.toBuffer.sameElements(buffer)
+            removedBuffer.toBuffer should contain theSameElementsAs (buffer)
           case _@otherChange => fail(otherChange.toString)
         }
     }
