@@ -501,11 +501,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
 
     delegate.addListener(listener)
 
-    new Subscription {
-      def cancel(): Unit = {
-        delegate.removeListener(listener)
-      }
-    }
+    () => delegate.removeListener(listener)
   }
 
   /**
@@ -524,11 +520,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
 
     delegate.addListener(listener)
 
-    new Subscription {
-      def cancel(): Unit = {
-        delegate.removeListener(listener)
-      }
-    }
+    () => delegate.removeListener(listener)
   }
 
 }
