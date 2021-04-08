@@ -290,10 +290,6 @@ class ObservableBufferSpec[T]
     buffer should be(Symbol("empty"))
 
     buffer ++= Seq("a", "b", "c")
-    compareInstances(buffer -= ("a", "b", "c"), buffer, shouldBeTheSame = true)
-    buffer should be(Symbol("empty"))
-
-    buffer ++= Seq("a", "b", "c")
     compareInstances(buffer --= List("a", "b", "c"), buffer, shouldBeTheSame = true)
     buffer should be(Symbol("empty"))
 
