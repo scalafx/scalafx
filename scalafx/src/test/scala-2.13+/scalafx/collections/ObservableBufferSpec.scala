@@ -274,11 +274,11 @@ class ObservableBufferSpec[T]
 
     // Execution
     buffer.setAll("a", "b", "c") should be(true)
-    buffer.trimEnd(3)
+    buffer.dropRightInPlace(3)
     buffer should be(Symbol("empty"))
 
     buffer ++= Seq("a", "b", "c")
-    buffer.trimStart(3)
+    buffer.dropInPlace(3)
     buffer should be(Symbol("empty"))
 
     buffer ++= Seq("a", "b", "c")
@@ -425,7 +425,7 @@ class ObservableBufferSpec[T]
     }
 
     // Execution
-    buffer.sort
+    buffer.sort()
 
     // Verification
     changeCount should equal(1)
