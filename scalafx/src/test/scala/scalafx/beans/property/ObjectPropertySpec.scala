@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -201,7 +201,7 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
     val scalaObjProperty: ObjectProperty[Button] = ObjectProperty[Button](new Button("Test"))
     val javaObjProperty: jfxbp.ObjectProperty[jfxsc.Button] = scalaObjProperty
 
-    javaObjProperty.get should be(scalaObjProperty.get.delegate)
+    javaObjProperty.get should be(scalaObjProperty.value.delegate)
   }
 
   it should "be able to hold a value type like Double" in {
