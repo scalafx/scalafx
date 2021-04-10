@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -204,7 +204,7 @@ class ReadOnlyObjectWrapperSpec
     val scalaObjProperty: ReadOnlyObjectWrapper[Button] = ReadOnlyObjectWrapper[Button](new Button("Test"))
     val javaObjProperty: jfxbp.ReadOnlyObjectWrapper[jfxsc.Button] = scalaObjProperty
 
-    javaObjProperty.get should be(scalaObjProperty.get.delegate)
+    javaObjProperty.get should be(scalaObjProperty.value.delegate)
   }
 
   it should "support readOnlyProperty" in {
