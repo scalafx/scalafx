@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,7 +53,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  *                it has to be resolved automatically by the compiler.
  *
  */
-abstract private[converter] class AbstractStringConverterDelegateSpec[J <: java.lang.Object, C <: jfxu.StringConverter[J], S <: Any, D <: StringConverterDelegate[_, S, C]] protected(javaConverterClass: Class[C], scalaConverterClass: Class[D], scalaClass: Class[S])(implicit jfx2sfx: C => D = null, sfx2jfx: D => C = null)
+abstract private[converter] class AbstractStringConverterDelegateSpec[J <: java.lang.Object, C <: jfxu.StringConverter[J], S <: Any, D <: StringConverterDelegate[J, S, C]] protected(javaConverterClass: Class[C], scalaConverterClass: Class[D], scalaClass: Class[S])(implicit jfx2sfx: C => D = null, sfx2jfx: D => C = null)
   extends SimpleSFXDelegateSpec[C, D](javaConverterClass, scalaConverterClass) {
 
   private def runConverterForExamples(): Unit = {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -70,8 +70,8 @@ class ObservableValueSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support adding explicit listeners as a clojure" in {
     var invalidateCalled = false
-    property addListener {
-      (obs: JFXObservableValue[_ <: Number], oldV: Number, newV: Number) =>
+    property.addListener {
+      (obs, oldV, newV) =>
         invalidateCalled = true
         obs should equal(property.delegate)
         oldV should equal(0)
