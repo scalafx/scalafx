@@ -102,8 +102,14 @@ lazy val scalafxSettings = Seq(
   scalaVersion := Scala3_00,
   Compile / unmanagedSourceDirectories += (Compile / sourceDirectory).value / versionSubDir(scalaVersion.value),
   Test / unmanagedSourceDirectories += (Test / sourceDirectory).value / versionSubDir(scalaVersion.value),
-  scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8", "-feature"),
-  scalacOptions ++= Seq("-source:3.0-migration"),
+  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature"),
+  scalacOptions ++= {
+    CrossVersion.partialVersion(scalaVersion.value) match {
+        case Some((2, 13)) => Seq("-Xcheckinit")
+        case Some((3, _))  => Seq("-source:3.0-migration", "-explain", "-explain-types")
+        case _             => Seq.empty[String]
+      }
+  },
   Compile / doc / scalacOptions ++= Opts.doc.title("ScalaFX API"),
   Compile / doc / scalacOptions ++= Opts.doc.version(scalafxVersion),
   //  Compile / doc / scalacOptions += s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
