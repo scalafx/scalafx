@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@ import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectPr
 import scalafx.collections.ObservableMap
 import scalafx.css.Styleable
 import scalafx.delegate.{FireDelegate, SFXDelegate}
-import scalafx.event.EventHandlerDelegate
+import scalafx.event.EventHandlerDelegate1
 import scalafx.scene.Node
 import scalafx.scene.input.KeyCombination
 
@@ -45,10 +45,10 @@ object MenuItem {
 
 class MenuItem(override val delegate: jfxsc.MenuItem = new jfxsc.MenuItem)
   extends jfxe.EventTarget
-  with Styleable
-  with EventHandlerDelegate
-  with FireDelegate[jfxsc.MenuItem]
-  with SFXDelegate[jfxsc.MenuItem] {
+    with Styleable
+    with EventHandlerDelegate1
+    with FireDelegate[jfxsc.MenuItem]
+    with SFXDelegate[jfxsc.MenuItem] {
 
   /**
    * Constructs a MenuItem and sets the display text with the specified text

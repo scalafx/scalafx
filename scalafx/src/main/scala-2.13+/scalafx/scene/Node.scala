@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,10 +36,10 @@ import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
 import scalafx.delegate.SFXDelegate.delegateOrNull
 import scalafx.event.Event._
-import scalafx.event.{Event, EventHandlerDelegate}
+import scalafx.event.{Event, EventHandlerDelegate2}
 import scalafx.geometry.Bounds._
 import scalafx.geometry.Point2D._
-import scalafx.geometry.{Bounds, Insets, Point2D, Point3D, Pos, _}
+import scalafx.geometry._
 import scalafx.scene.effect.{BlendMode, Effect}
 import scalafx.scene.image.WritableImage
 import scalafx.scene.input.Dragboard
@@ -70,7 +70,7 @@ object Node {
  * @param delegate JavaFX Node
  */
 abstract class Node protected(override val delegate: jfxs.Node)
-  extends EventHandlerDelegate
+  extends EventHandlerDelegate2
     with Styleable
     with SFXDelegate[jfxs.Node] {
 
@@ -1250,7 +1250,26 @@ abstract class Node protected(override val delegate: jfxs.Node)
     onTouchStationary() = v
   }
 
-  override protected def eventHandlerDelegate: EventHandled = delegate.asInstanceOf[EventHandled]
+  override def eventHandlerDelegate: EventHandled = new EventHandled {
+    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                         eventHandler: jfxe.EventHandler[_ >: E]): Unit =
+      delegate.addEventHandler(eventType, eventHandler)
+
+    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                            eventHandler: jfxe.EventHandler[_ >: E]): Unit =
+      delegate.removeEventHandler(eventType, eventHandler)
+
+    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                        eventFilter: jfxe.EventHandler[_ >: E]): Unit =
+      delegate.addEventFilter(eventType, eventFilter)
+
+    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                           eventFilter: jfxe.EventHandler[_ >: E]): Unit =
+      delegate.removeEventFilter(eventType, eventFilter)
+
+    def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =
+      delegate.buildEventDispatchChain(chain)
+  }
 
   /**
    * Defines the rendering and picking order of this `Node` within its

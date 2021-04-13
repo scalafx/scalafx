@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@ import scalafx.Includes._
 import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyBooleanProperty, ReadOnlyObjectProperty}
 import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
-import scalafx.event.{Event, EventHandlerDelegate, EventType}
+import scalafx.event.{Event, EventHandlerDelegate1, EventType}
 import scalafx.scene.Node
 
 import scala.collection.JavaConverters._
@@ -49,7 +49,7 @@ object TreeItem {
 
   class TreeModificationEvent[T](override val delegate: jfxsc.TreeItem.TreeModificationEvent[T])
     extends Event(delegate)
-    with SFXDelegate[jfxsc.TreeItem.TreeModificationEvent[T]] {
+      with SFXDelegate[jfxsc.TreeItem.TreeModificationEvent[T]] {
 
     /**
      * Constructs a basic TreeModificationEvent - this is useful in situations
@@ -205,8 +205,8 @@ object TreeItem {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeItem.html javafx.scene.control.TreeItem]] class.
  */
 class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[T])
-  extends EventHandlerDelegate
-  with SFXDelegate[jfxsc.TreeItem[T]] {
+  extends EventHandlerDelegate1
+    with SFXDelegate[jfxsc.TreeItem[T]] {
 
   /**
    * Creates a TreeItem with the value property set to the provided object.
@@ -287,5 +287,25 @@ class TreeItem[T](override val delegate: jfxsc.TreeItem[T] = new jfxsc.TreeItem[
    */
   def previousSibling(afterNode: TreeItem[T]): TreeItem[T] = delegate.previousSibling(afterNode)
 
-  override protected def eventHandlerDelegate: EventHandled = delegate.asInstanceOf[EventHandled]
+  override def eventHandlerDelegate: EventHandled = new EventHandled {
+
+    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                         eventHandler: jfxe.EventHandler[E]): Unit =
+      delegate.addEventHandler(eventType, eventHandler)
+
+    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                            eventHandler: jfxe.EventHandler[E]): Unit =
+      delegate.removeEventHandler(eventType, eventHandler)
+
+    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                        eventFilter: jfxe.EventHandler[E]): Unit =
+      delegate.addEventFilter(eventType, eventFilter)
+
+    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                           eventFilter: jfxe.EventHandler[E]): Unit =
+      delegate.removeEventFilter(eventType, eventFilter)
+
+    def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =
+      delegate.buildEventDispatchChain(chain)
+  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,20 +26,19 @@
  */
 package scalafx.scene.control
 
-import java.{util => ju}
-
 import javafx.scene.{control => jfxsc}
-import javafx.{scene => jfxs}
+import javafx.{event => jfxe, scene => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.collections.ObservableBuffer
 import scalafx.css.Styleable
 import scalafx.delegate.SFXDelegate
-import scalafx.event.EventHandlerDelegate
+import scalafx.event.EventHandlerDelegate1
 import scalafx.scene.Node
 import scalafx.scene.Node.sfxNode2jfx
 import scalafx.scene.control.ContextMenu._
 
+import java.{util => ju}
 import scala.language.implicitConversions
 import scala.math.Ordering
 
@@ -58,9 +57,9 @@ object TableColumnBase {
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/control/TableColumnBase.html]].
  */
 abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.TableColumnBase[S, T])
-  extends EventHandlerDelegate
-  with Styleable
-  with SFXDelegate[jfxsc.TableColumnBase[S, T]] {
+  extends EventHandlerDelegate1
+    with Styleable
+    with SFXDelegate[jfxsc.TableColumnBase[S, T]] {
 
   /**
    * This enables support for nested columns, which can be useful to group together related data.
@@ -225,5 +224,24 @@ abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.Tabl
    */
   def hasProperties: Boolean = delegate.hasProperties
 
-  override protected def eventHandlerDelegate: EventHandled = delegate.asInstanceOf[EventHandled]
+  override def eventHandlerDelegate: EventHandled = new EventHandled {
+    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                         eventHandler: jfxe.EventHandler[E]): Unit =
+      delegate.addEventHandler(eventType, eventHandler)
+
+    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                            eventHandler: jfxe.EventHandler[E]): Unit =
+      delegate.removeEventHandler(eventType, eventHandler)
+
+    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                        eventFilter: jfxe.EventHandler[E]): Unit =
+      delegate.addEventFilter(eventType, eventFilter)
+
+    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                           eventFilter: jfxe.EventHandler[E]): Unit =
+      delegate.removeEventFilter(eventType, eventFilter)
+
+    def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =
+      delegate.buildEventDispatchChain(chain)
+  }
 }

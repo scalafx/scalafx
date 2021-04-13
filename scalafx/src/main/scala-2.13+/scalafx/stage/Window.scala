@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ import javafx.{event => jfxe, stage => jfxs}
 import scalafx.Includes._
 import scalafx.beans.property._
 import scalafx.delegate.SFXDelegate
-import scalafx.event.{Event, EventHandlerDelegate}
+import scalafx.event.{Event, EventHandlerDelegate2}
 
 import scala.language.implicitConversions
 
@@ -39,7 +39,7 @@ object Window {
 }
 
 class Window protected(override val delegate: jfxs.Window)
-  extends EventHandlerDelegate
+  extends EventHandlerDelegate2
     with SFXDelegate[jfxs.Window]
     with jfxe.EventTarget {
 
@@ -197,7 +197,27 @@ class Window protected(override val delegate: jfxs.Window)
     delegate.sizeToScene()
   }
 
-  override protected def eventHandlerDelegate: EventHandled = delegate.asInstanceOf[EventHandled]
+  override def eventHandlerDelegate: EventHandled = new EventHandled {
+
+    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                         eventHandler: jfxe.EventHandler[_ >: E]): Unit =
+      delegate.addEventHandler(eventType, eventHandler)
+
+    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                            eventHandler: jfxe.EventHandler[_ >: E]): Unit =
+      delegate.removeEventHandler(eventType, eventHandler)
+
+    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                        eventFilter: jfxe.EventHandler[_ >: E]): Unit =
+      delegate.addEventFilter(eventType, eventFilter)
+
+    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                           eventFilter: jfxe.EventHandler[_ >: E]): Unit =
+      delegate.removeEventFilter(eventType, eventFilter)
+
+    def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =
+      delegate.buildEventDispatchChain(chain)
+  }
 
   /**
    * The horizontal scale that the `Window` will use when rendering
