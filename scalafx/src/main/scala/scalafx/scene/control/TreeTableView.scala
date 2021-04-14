@@ -690,8 +690,14 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
     * available as static functions in the TableView class: [[TreeTableView#UNCONSTRAINED_RESIZE_POLICY]] and
     * [[TreeTableView#CONSTRAINED_RESIZE_POLICY]].
     */
-  def columnResizePolicy: ObjectProperty[TreeTableView.ResizeFeatures[S] => Boolean] =
-    ObjectProperty((features: TreeTableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features))
+  def columnResizePolicy: ObjectProperty[TreeTableView.ResizeFeatures[S] => Boolean] = {
+    // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2
+    // ObjectProperty((features: TreeTableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features))
+    val f:TreeTableView.ResizeFeatures[S] => Boolean =
+      (features: TreeTableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features)
+    ObjectProperty(f)
+  }
+
   def columnResizePolicy_=(p: TreeTableView.ResizeFeatures[_] => Boolean): Unit = {
     delegate.columnResizePolicyProperty().setValue(new jfxu.Callback[jfxsc.TreeTableView.ResizeFeatures[_], java.lang.Boolean] {
       def call(v: jfxsc.TreeTableView.ResizeFeatures[_]): java.lang.Boolean = {
@@ -779,8 +785,11 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
     *
     * It is recommended that rather than override the sort method that a different sort policy be provided instead.
     */
-  def sortPolicy: ObjectProperty[TreeTableView[S] => Boolean] =
-    ObjectProperty((ttv: TreeTableView[S]) => delegate.sortPolicyProperty.get().call(ttv))
+  def sortPolicy: ObjectProperty[TreeTableView[S] => Boolean] = {
+    val f:TreeTableView[S] => Boolean = (ttv: TreeTableView[S]) => delegate.sortPolicyProperty.get().call(ttv)
+    ObjectProperty(f)
+  }
+
   def sortPolicy_=(v: TreeTableView[S] => Boolean): Unit = {
     ObjectProperty.fillProperty[TreeTableView[S] => Boolean](sortPolicy, v)
   }

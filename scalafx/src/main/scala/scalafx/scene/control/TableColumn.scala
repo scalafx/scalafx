@@ -238,8 +238,13 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    * }
    * }}}
    */
-  def cellValueFactory: ObjectProperty[TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]] =
-    ObjectProperty((features: TableColumn.CellDataFeatures[S, T]) => delegate.cellValueFactoryProperty.getValue.call(features))
+  def cellValueFactory: ObjectProperty[TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]] = {
+    // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2 
+    //  ObjectProperty((features: TableColumn.CellDataFeatures[S, T]) => delegate.cellValueFactoryProperty.getValue.call(features))
+    val f:TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]  = 
+      (features: TableColumn.CellDataFeatures[S, T]) => delegate.cellValueFactoryProperty.getValue.call(features)
+    ObjectProperty(f)
+  }
 
   def cellValueFactory_=(f: TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]): Unit = {
     delegate.cellValueFactoryProperty.setValue(new jfxu.Callback[jfxsc.TableColumn.CellDataFeatures[S, T], jfxbv.ObservableValue[T]] {

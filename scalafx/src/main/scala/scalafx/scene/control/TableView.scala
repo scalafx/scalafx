@@ -300,8 +300,13 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
    *   tableView.columnResizePolicy = TableView.UnconstrainedResizePolicy
    * }}}
    */
-  def columnResizePolicy: ObjectProperty[TableView.ResizeFeatures[S] => Boolean] =
-    ObjectProperty((features: TableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features))
+  def columnResizePolicy: ObjectProperty[TableView.ResizeFeatures[S] => Boolean] = {
+    // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2 
+    // ObjectProperty((features: TableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features))
+    val f:TableView.ResizeFeatures[S] => Boolean = 
+      (features: TableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features)
+    ObjectProperty(f)
+  }
 
   def columnResizePolicy_=(p: TableView.ResizeFeatures[_] => Boolean): Unit = {
     delegate.columnResizePolicyProperty().setValue(new jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], java.lang.Boolean] {
@@ -370,8 +375,10 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   /**
    * A function which produces a TableRow.
    */
-  def rowFactory: ObjectProperty[TableView[S] => TableRow[S]] =
-    ObjectProperty((view: TableView[S]) => delegate.rowFactoryProperty.value.call(view))
+  def rowFactory: ObjectProperty[TableView[S] => TableRow[S]] = {
+    val f:TableView[S] => TableRow[S] = (view: TableView[S]) => delegate.rowFactoryProperty.value.call(view)
+    ObjectProperty(f)
+  }
 
   def rowFactory_=(factory: TableView[S] => TableRow[S]): Unit = {
     delegate.rowFactoryProperty.setValue(new jfxu.Callback[jfxsc.TableView[S], jfxsc.TableRow[S]] {
