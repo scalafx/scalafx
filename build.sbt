@@ -8,7 +8,7 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion = "15.0.1"
+val javaFXVersion  = "15.0.1"
 val scalafxVersion = "15.0.1-R22-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v." + scalafxVersion
@@ -18,7 +18,7 @@ lazy val scalafxProject = (project in file("."))
   .settings(
     name := "scalafx-project",
     publishArtifact := false
-  )
+    )
   .aggregate(scalafx, scalafxDemos)
 
 
@@ -31,21 +31,9 @@ lazy val scalafx = (project in file("scalafx")).settings(
   libraryDependencies ++= javafxModules.map(
     m => "org.openjfx" % s"javafx-$m" % javaFXVersion % "provided" classifier osName),
   run / fork := true,
-  Compile / doc / scalacOptions ++= Seq(
-    "-sourcepath", baseDirectory.value.toString,
-    "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.creole",
-    "-doc-source-url", "https://github.com/scalafx/scalafx/tree/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala"
-  ) ++ (Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
-    case Some(path) => Seq(
-      "-diagrams",
-      "-diagrams-dot-path", path,
-      "-diagrams-debug"
-    )
-    case None => Seq.empty[String]
-  }),
   publishArtifact := true,
   Test / publishArtifact := false
-)
+  )
 
 // ScalaFX Demos project
 lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
@@ -58,23 +46,23 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   javaOptions ++= Seq(
     "-Xmx512M",
     "-Djavafx.verbose"
-  ),
+    ),
   publishArtifact := false
-).dependsOn(scalafx % "compile;test->test")
+  ).dependsOn(scalafx % "compile;test->test")
 
 val Scala2_12 = "2.12.13"
 val Scala2_13 = "2.13.5"
 val Scala3_00 = "3.0.0-RC2"
 
 // Dependencies
-lazy val osName = System.getProperty("os.name") match {
+lazy val osName        = System.getProperty("os.name") match {
   case n if n.startsWith("Linux") => "linux"
   case n if n.startsWith("Mac") => "mac"
   case n if n.startsWith("Windows") => "win"
   case _ => throw new Exception("Unknown platform!")
 }
 lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.7"
+lazy val scalaTestLib  = "org.scalatest" %% "scalatest" % "3.2.7"
 def scalaReflectLib(scalaVersion: String): ModuleID =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((3, _)) => "org.scala-lang" % "scala-reflect" % Scala2_13
@@ -105,15 +93,36 @@ lazy val scalafxSettings = Seq(
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature"),
   scalacOptions ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
-        case Some((2, 13)) => Seq("-Xcheckinit")
-        case Some((3, _))  => Seq("-source:3.0-migration", "-explain", "-explain-types")
-        case _             => Seq.empty[String]
-      }
+      case Some((2, _)) => Seq("-Xcheckinit")
+      case Some((3, _)) => Seq("-source:3.0-migration", "-explain", "-explain-types")
+      case _ => Seq.empty[String]
+    }
   },
-  Compile / doc / scalacOptions ++= Opts.doc.title("ScalaFX API"),
-  Compile / doc / scalacOptions ++= Opts.doc.version(scalafxVersion),
-  //  Compile / doc / scalacOptions += s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
-  Compile / doc / scalacOptions ++= Seq("-doc-footer", s"ScalaFX API v.$scalafxVersion"),
+  Compile / doc / scalacOptions ++= {
+    CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((2, _)) =>
+        Opts.doc.title("ScalaFX API") ++
+          Opts.doc.version(scalafxVersion) ++
+          Seq(
+            "-sourcepath", baseDirectory.value.toString,
+            "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.creole",
+            "-doc-source-url", "https://github.com/scalafx/scalafx/tree/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala",
+            s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
+            "-doc-footer", s"ScalaFX API v.$scalafxVersion"
+            ) ++
+          (
+            Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
+              case Some(path) => Seq(
+                "-diagrams",
+                "-diagrams-dot-path", path,
+                "-diagrams-debug"
+                )
+              case None => Seq.empty[String]
+            }
+            )
+      case _ => Seq.empty[String]
+    }
+  },
   javacOptions ++= Seq(
     "-target", "1.8",
     "-source", "1.8",
@@ -130,8 +139,8 @@ lazy val scalafxSettings = Seq(
       override def transform(node: XmlNode): XmlNodeSeq = node match {
         case e: Elem if e.label == "dependency" && e.child.exists(c => c.label == "scope" && c.text == "provided") =>
           val organization = e.child.filter(_.label == "groupId").flatMap(_.text).mkString
-          val artifact = e.child.filter(_.label == "artifactId").flatMap(_.text).mkString
-          val version = e.child.filter(_.label == "version").flatMap(_.text).mkString
+          val artifact     = e.child.filter(_.label == "artifactId").flatMap(_.text).mkString
+          val version      = e.child.filter(_.label == "version").flatMap(_.text).mkString
           Comment(s"provided dependency $organization#$artifact;$version has been omitted")
         case _ => node
       }
@@ -147,7 +156,7 @@ lazy val scalafxSettings = Seq(
     val t = (Test / target).value
     Tests.Argument(TestFrameworks.ScalaTest, "-u", s"$t/junitxmldir")
   }
-) ++ mavenCentralSettings
+  ) ++ mavenCentralSettings
 
 
 lazy val manifestSetting = packageOptions += {
@@ -162,7 +171,7 @@ lazy val manifestSetting = packageOptions += {
     "Implementation-Version" -> version.value,
     "Implementation-Vendor-Id" -> organization.value,
     "Implementation-Vendor" -> organization.value
-  )
+    )
 }
 
 // Metadata needed by Maven Central
@@ -315,4 +324,4 @@ lazy val mavenCentralSettings = Seq(
         <url>https://github.com/Jeansen</url>
       </developer>
     </developers>
-)
+  )
