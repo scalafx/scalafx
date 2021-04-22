@@ -49,7 +49,7 @@ libraryDependencies ++= javaFXModules.map(m =>
 )
 ```
 
-If you're using [Mill](http://www.lihaoyi.com/mill/):
+If you're using [Mill](http://www.lihaoyi.com/mill/) (note https://github.com/com-lihaoyi/mill/issues/767):
 
 ```scala
 object yourProject extends ScalaModule {
