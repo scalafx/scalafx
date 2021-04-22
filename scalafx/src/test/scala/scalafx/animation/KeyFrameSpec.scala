@@ -106,7 +106,7 @@ class KeyFrameSpec
     var callCount1 = 0
     var callCount2 = 0
     val actionEvent = new jfxe.ActionEvent()
-    val finishHandler = { event: ActionEvent =>
+    val finishHandler = { (event: ActionEvent) =>
       callCount1 += 1
       callCount2 += 1
       event should equal(actionEvent)

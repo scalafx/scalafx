@@ -68,7 +68,7 @@ object TextFormatterWithChangeFilterDemo extends JFXApp {
   }
 
   // Filter the change restoring prompt if it was removed and correcting caret position
-  val filter: (Change) => Change = { change: Change =>
+  val filter: (Change) => Change = { (change: Change) =>
     // Restore prompt if part was deleted
     if (change.controlNewText.length <= prompt.length) {
       change.text = prompt.substring(change.controlNewText.length)

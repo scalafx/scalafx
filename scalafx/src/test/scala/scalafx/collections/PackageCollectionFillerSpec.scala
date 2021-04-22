@@ -26,8 +26,6 @@
  */
 package scalafx.collections
 
-import java.{util => ju}
-
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, scene => jfxs}
 import org.scalatest.flatspec.AnyFlatSpec
@@ -38,6 +36,7 @@ import scalafx.scene.Node
 import scalafx.scene.control._
 import scalafx.testutil.RunOnApplicationThread
 
+import java.{util => ju}
 import scala.collection.JavaConverters._
 
 /**
@@ -68,7 +67,7 @@ class PackageCollectionFillerSpec extends AnyFlatSpec with RunOnApplicationThrea
   }
 
   def emptyEvaluation(analyzer: Analyzer[_], list: jfxc.ObservableList[_]): Unit = {
-    list should be('empty)
+    list should be(Symbol("empty"))
     analyzer.wasAdded should be(false)
     analyzer.addedElements.size should be(0)
   }

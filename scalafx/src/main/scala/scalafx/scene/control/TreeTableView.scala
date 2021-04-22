@@ -681,17 +681,24 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
     * and hide all TreeTableColumns easily.
     */
   def tableMenuButtonVisible: BooleanProperty = delegate.tableMenuButtonVisibleProperty
+
   def tableMenuButtonVisible_=(v: Boolean): Unit = {
     tableMenuButtonVisible() = v
   }
 
   /**
-    * This is the function called when the user completes a column-resize operation. The two most common policies are
-    * available as static functions in the TableView class: [[TreeTableView#UNCONSTRAINED_RESIZE_POLICY]] and
-    * [[TreeTableView#CONSTRAINED_RESIZE_POLICY]].
-    */
-  def columnResizePolicy: ObjectProperty[TreeTableView.ResizeFeatures[S] => Boolean] =
-    ObjectProperty((features: TreeTableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features))
+   * This is the function called when the user completes a column-resize operation. The two most common policies are
+   * available as static functions in the TableView class: [[TreeTableView#UNCONSTRAINED_RESIZE_POLICY]] and
+   * [[TreeTableView#CONSTRAINED_RESIZE_POLICY]].
+   */
+  def columnResizePolicy: ObjectProperty[TreeTableView.ResizeFeatures[S] => Boolean] = {
+    // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2
+    // ObjectProperty((features: TreeTableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features))
+    val f: TreeTableView.ResizeFeatures[S] => Boolean =
+    (features: TreeTableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features)
+    ObjectProperty(f)
+  }
+
   def columnResizePolicy_=(p: TreeTableView.ResizeFeatures[_] => Boolean): Unit = {
     delegate.columnResizePolicyProperty().setValue(new jfxu.Callback[jfxsc.TreeTableView.ResizeFeatures[_], java.lang.Boolean] {
       def call(v: jfxsc.TreeTableView.ResizeFeatures[_]): java.lang.Boolean = {
@@ -699,6 +706,7 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
       }
     })
   }
+
   def columnResizePolicy_=(p: jfxu.Callback[jfxsc.TreeTableView.ResizeFeatures[_], java.lang.Boolean]): Unit = {
     delegate.columnResizePolicyProperty().setValue(p)
   }
@@ -771,16 +779,21 @@ class TreeTableView[S](override val delegate: jfxsc.TreeTableView[S] = new jfxsc
   def comparator: ReadOnlyObjectProperty[java.util.Comparator[jfxsc.TreeItem[S]]] = delegate.comparatorProperty
 
   /** The sort policy specifies how sorting in this TreeTableView should be performed. For example, a basic sort policy
-    * may just recursively sort the children of the root tree item, whereas a more advanced sort policy may call to a
-    * database to perform the necessary sorting on the server-side.
-    *
-    * TreeTableView ships with a default sort policy that does precisely as mentioned above: it simply attempts to sort
-    * the tree hierarchy in-place.
-    *
-    * It is recommended that rather than override the sort method that a different sort policy be provided instead.
-    */
-  def sortPolicy: ObjectProperty[TreeTableView[S] => Boolean] =
-    ObjectProperty((ttv: TreeTableView[S]) => delegate.sortPolicyProperty.get().call(ttv))
+   * may just recursively sort the children of the root tree item, whereas a more advanced sort policy may call to a
+   * database to perform the necessary sorting on the server-side.
+   *
+   * TreeTableView ships with a default sort policy that does precisely as mentioned above: it simply attempts to sort
+   * the tree hierarchy in-place.
+   *
+   * It is recommended that rather than override the sort method that a different sort policy be provided instead.
+   */
+  def sortPolicy: ObjectProperty[TreeTableView[S] => Boolean] = {
+    // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2
+    // ObjectProperty((ttv: TreeTableView[S]) => delegate.sortPolicyProperty.get().call(ttv))
+    val f: TreeTableView[S] => Boolean = (ttv: TreeTableView[S]) => delegate.sortPolicyProperty.get().call(ttv)
+    ObjectProperty(f)
+  }
+
   def sortPolicy_=(v: TreeTableView[S] => Boolean): Unit = {
     ObjectProperty.fillProperty[TreeTableView[S] => Boolean](sortPolicy, v)
   }

@@ -216,7 +216,7 @@ class ObservableMapSpec[K, V]
     // Clear Map
     map.clear()
     removedEntries.toList.sortWith(_._1 < _._1) should equal((10 to 20).filter(_ % 2 == 0).map(i => (i, i.toString)).toList)
-    map should be('empty)
+    map should be(Symbol("empty"))
   }
 
   it should "notify any replacement individually" in {
