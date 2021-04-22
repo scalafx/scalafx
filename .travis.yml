@@ -12,7 +12,7 @@ services:
 
 jdk:
   - openjdk11
-  - openjdk15
+  - openjdk16
 
 install:
   - |
