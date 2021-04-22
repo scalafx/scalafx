@@ -27,13 +27,13 @@
 
 package scalafx.scene.control
 
-import java.text.NumberFormat
 import javafx.scene.{control => jfxsc}
 import javafx.util.converter.FormatStringConverter
-
-import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.testutil.{BootstrapApplication, RunOnApplicationThread, SimpleSFXDelegateSpec}
+
+import java.text.NumberFormat
+import scala.language.implicitConversions
 
 /**
  *
@@ -42,7 +42,7 @@ import scalafx.testutil.{BootstrapApplication, RunOnApplicationThread, SimpleSFX
 class TextFormatterChangeSpec
   extends SimpleSFXDelegateSpec[jfxsc.TextFormatter.Change, TextFormatter.Change](
     classOf[jfxsc.TextFormatter.Change], classOf[TextFormatter.Change])
-  with RunOnApplicationThread {
+    with RunOnApplicationThread {
 
 
   // A bit elaborated way of creating an instance of TextFormatter.Change that cannot be created directly.
@@ -54,7 +54,7 @@ class TextFormatterChangeSpec
     var changeOption: Option[jfxsc.TextFormatter.Change] = None
     val textField = {
       val converter = new FormatStringConverter[Number](NumberFormat.getCurrencyInstance)
-      val filter: (TextFormatter.Change) => TextFormatter.Change = { c: TextFormatter.Change =>
+      val filter: (TextFormatter.Change) => TextFormatter.Change = { (c: TextFormatter.Change) =>
         // Capture `change` object created by JavaFX
         changeOption = Some(c)
         c

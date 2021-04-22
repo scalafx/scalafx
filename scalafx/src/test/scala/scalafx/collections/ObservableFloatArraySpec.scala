@@ -62,11 +62,11 @@ class ObservableFloatArraySpec
       changes += 1
     }
     instance0.onChange(onChangeFull(_, _))
-    instance0.onChange(onChangeBrief)
+    instance0.onChange(onChangeBrief())
     instance1.onChange(onChangeFull(_, _))
-    instance1.onChange(onChangeBrief)
+    instance1.onChange(onChangeBrief())
     instance2.onChange(onChangeFull(_, _))
-    instance2.onChange(onChangeBrief)
+    instance2.onChange(onChangeBrief())
 
     def verifyChange(n: Int, array: ObservableFloatArray, sizeChanged:
     Boolean, start: Int, end: Int): Unit = {
