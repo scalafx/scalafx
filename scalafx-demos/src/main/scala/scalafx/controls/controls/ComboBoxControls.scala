@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -49,16 +49,16 @@ class ComboBoxControls(target: ComboBox[String]) extends PropertiesNodes[ComboBo
   val txfVisibleRowCount = new TextField {
     text = target.visibleRowCount.get.toString
   }
-  txfVisibleRowCount.onAction = handle {  fillIntPropertyFromText(target.visibleRowCount, txfVisibleRowCount, false) }
+  txfVisibleRowCount.onAction = _ => fillIntPropertyFromText(target.visibleRowCount, txfVisibleRowCount, false)
 
   val btnAddItem = new Button {
     text = "Add new Item"
-    onAction = handle { addNewTab() }
+    onAction = _ => addNewTab()
   }
 
   val btnRemoveItem = new Button {
     text = "Remove Item"
-    onAction = handle { removeCurrentItem() }
+    onAction = _ => removeCurrentItem()
   }
 
   super.addNode("Visible Rows", txfVisibleRowCount)

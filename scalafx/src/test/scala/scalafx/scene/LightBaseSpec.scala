@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,8 +37,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 class LightBaseSpec
   extends SimpleSFXDelegateSpec[jfxs.LightBase, LightBase](classOf[jfxs.LightBase], classOf[LightBase]) {
 
-  override protected def getScalaClassInstance = new AmbientLight(getJavaClassInstance) {}
+  override protected def getScalaClassInstance:AmbientLight = new AmbientLight(getJavaClassInstance) {}
 
-  override protected def getJavaClassInstance = new jfxs.AmbientLight
+  override protected def getJavaClassInstance:jfxs.AmbientLight = new jfxs.AmbientLight
 
 }

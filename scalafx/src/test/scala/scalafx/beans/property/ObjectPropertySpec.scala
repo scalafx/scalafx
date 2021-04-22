@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,7 @@ import javafx.scene.{control => jfxsc}
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers._
-import scalafx.Includes.{jfxBooleanBinding2sfx, jfxBooleanProperty2sfx, jfxObjectProperty2sfx, sfxObjectPropertyWithSFXDelegate2jfxObjectProperty}
+import scalafx.Includes.{jfxBooleanProperty2sfx, jfxObjectProperty2sfx, sfxObjectPropertyWithSFXDelegate2jfxObjectProperty}
 import scalafx.beans.property.BooleanProperty.sfxBooleanProperty2jfx
 import scalafx.beans.property.ObjectProperty.sfxObjectProperty2jfx
 import scalafx.scene.control.Button
@@ -195,13 +195,13 @@ class ObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach with RunOnA
     changeCount should equal(2)
   }
 
-  it should "support implicit conversion to a String Binding" is (pending)
+  it should "support implicit conversion to a String Binding" is pending
 
   it should "support implicit conversion from a ScalaFX ObjectProperty with a SFXDelegate of a type T to a JavaFX ObjectProperty of type T" in {
     val scalaObjProperty: ObjectProperty[Button] = ObjectProperty[Button](new Button("Test"))
     val javaObjProperty: jfxbp.ObjectProperty[jfxsc.Button] = scalaObjProperty
 
-    javaObjProperty.get should be(scalaObjProperty.get.delegate)
+    javaObjProperty.get should be(scalaObjProperty.value.delegate)
   }
 
   it should "be able to hold a value type like Double" in {

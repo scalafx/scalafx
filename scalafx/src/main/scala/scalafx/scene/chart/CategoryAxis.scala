@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ object CategoryAxis {
 
   def apply(categories: ObservableBuffer[String]) = new CategoryAxis(new jfxsc.CategoryAxis(categories))
 
-  def apply(categories: Seq[String]) = new CategoryAxis(new jfxsc.CategoryAxis(ObservableBuffer(categories)))
+  def apply(categories: Seq[String]) = new CategoryAxis(new jfxsc.CategoryAxis(ObservableBuffer.from(categories)))
 
   def apply(axisLabel: String): CategoryAxis = new CategoryAxis {
     label = axisLabel

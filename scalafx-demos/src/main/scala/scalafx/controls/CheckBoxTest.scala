@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,7 @@ import scalafx.controls.controls.{ControlControls, PropertiesNodes}
 import scalafx.event.ActionEvent
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
-import scalafx.scene.control.{Button, CheckBox, Label, TextField, ToggleButton}
+import scalafx.scene.control._
 import scalafx.scene.layout.{BorderPane, Priority, VBox}
 import scalafx.scene.paint.Color
 
@@ -88,7 +88,7 @@ class CheckBoxControls(check: CheckBox) extends PropertiesNodes[CheckBox](check,
 
   val btnFire = new Button {
     text = "Fire!"
-    onAction = handle {check.fire()}
+    onAction = _ => check.fire()
   }
 
   val txfText = new TextField {

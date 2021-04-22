@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -86,6 +86,14 @@ class DragEvent(override val delegate: jfxsi.DragEvent) extends InputEvent(deleg
   def acceptTransferModes(transferModes: jfxsi.TransferMode*): Unit = {
     delegate.acceptTransferModes(transferModes: _*)
   }
+
+  /**
+   * Accepts this DragEvent, choosing the transfer mode for the drop operation.
+   */
+  def acceptTransferModes(transferModes: Array[jfxsi.TransferMode]): Unit = {
+    delegate.acceptTransferModes(transferModes: _*)
+  }
+
 
   /**
    * Gets transfer mode accepted by potential target.

@@ -1,26 +1,25 @@
 # ScalaFX
+
 [![Join the chat at https://gitter.im/scalafx/scalafx](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/scalafx/scalafx?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![Build Status](https://travis-ci.org/scalafx/scalafx.svg?branch=master)](https://travis-ci.org/scalafx/scalafx)   [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.13/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.scalafx/scalafx_2.13) [![Scaladoc](http://javadoc-badge.appspot.com/org.scalafx/scalafx_2.13.svg?label=scaladoc)](http://javadoc-badge.appspot.com/org.scalafx/scalafx_2.13)
 
-ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX.
-This means that every ScalaFX application is also a valid Scala application.
-By extension, it supports full interoperability with Java and can run anywhere the Java Virtual Machine (JVM) and JavaFX
-are supported.
+ScalaFX is a UI DSL written within the Scala Language that sits on top of JavaFX. This means that every ScalaFX
+application is also a valid Scala application. By extension, it supports full interoperability with Java and can run
+anywhere the Java Virtual Machine (JVM) and JavaFX are supported.
 
-If you have ScalaFX related questions please use [ScalaFX Discussions](https://github.com/scalafx/scalafx/discussions), 
-or [ScalaFX Users Group](https://groups.google.com/forum/#!forum/scalafx-users), 
-or [ScalaFX on StackOverflow](https://stackoverflow.com/questions/tagged/scalafx).
-Please report any problems using [ScalaFX Issue Tracker](https://github.com/scalafx/scalafx/issues).
-
+If you have ScalaFX related questions please use [ScalaFX Discussions](https://github.com/scalafx/scalafx/discussions),
+or [ScalaFX Users Group](https://groups.google.com/forum/#!forum/scalafx-users),
+or [ScalaFX on StackOverflow](https://stackoverflow.com/questions/tagged/scalafx). Please report any problems
+using [ScalaFX Issue Tracker](https://github.com/scalafx/scalafx/issues).
 
 ## Getting Started
 
 ScalaFX binaries are published in the Maven Central repository:
 [http://search.maven.org/#search|ga|1|scalafx](http://search.maven.org/#search%7Cga%7C1%7Cscalafx)
 
-ScalaFX source code is using the SBT build system.
-For information on building with SBT see [README-SBT.txt](README-SBT.txt).
+ScalaFX source code is using the SBT build system. For information on building with SBT
+see [README-SBT.txt](README-SBT.txt).
 
 The official web site for ScalaFX is http://scalafx.org.
 
@@ -33,7 +32,7 @@ JavaFX binaries depend on operating system used.
 Add following to SBT configuration:
 ```scala
 // Add dependency on ScalaFX library
-libraryDependencies += "org.scalafx" %% "scalafx" % "15.0.1-R20"
+libraryDependencies += "org.scalafx" %% "scalafx" % "15.0.1-R21"
 
 // Determine OS version of JavaFX binaries
 lazy val osName = System.getProperty("os.name") match {
@@ -69,7 +68,7 @@ object yourProject extends ScalaModule {
 
   def ivyDeps = {
     Agg(
-      ivy"org.scalafx::scalafx:15.0.1-R20"
+      ivy"org.scalafx::scalafx:15.0.1-R21"
     ) ++ javaFXModules
   }
 }
@@ -77,7 +76,9 @@ object yourProject extends ScalaModule {
 
 ### What is in the version number
 
-ScalaFX version number has two part. The first part corresponds to the latest JavaFX version it was tested with. The second part is an incremental release number. For instance, version `15.0.1-R20` means that it was tested with JavaFX version `15` and that is the 20th release of ScalaFX. 
+ScalaFX version number has two part. The first part corresponds to the latest JavaFX version it was tested with. The
+second part is an incremental release number. For instance, version `15.0.1-R20` means that it was tested with JavaFX
+version `15` and that is the 20th release of ScalaFX.
 
 #### Legacy Releases
 

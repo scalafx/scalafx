@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -70,22 +70,22 @@ class ObservableMapSpec[K, V]
       map.toSet should equal(Map((1, "one"), (2, "two")).toSet)
     }
 
-    assertGeneratedMap(ObservableMap(List((1, "one"), (2, "two"))))
+    assertGeneratedMap(ObservableMap.from(List((1, "one"), (2, "two"))))
     assertGeneratedMap(ObservableMap((1, "one"), (2, "two")))
 
     val map1 = new java.util.HashMap[Int, String]
     map1.put(1, "one")
     map1.put(2, "two")
-    assertGeneratedMap(ObservableMap(map1.asScala))
+    assertGeneratedMap(ObservableMap.from(map1.asScala))
 
     val map2 = Map.empty[Int, String]
     map2 +=((1, "one"), (2, "two"))
-    assertGeneratedMap(ObservableMap(map2))
+    assertGeneratedMap(ObservableMap.from(map2))
   }
 
   it should "notify on invalidation" in {
     // Preparation
-    val map = ObservableMap(List((1, "one"), (2, "two")))
+    val map = ObservableMap.from(List((1, "one"), (2, "two")))
     var invalidateCount = 0
     map onInvalidate {
       invalidateCount += 1
@@ -167,7 +167,7 @@ class ObservableMapSpec[K, V]
 
   it should "notify each removing individually" in {
     // Preparation
-    val map = ObservableMap((0 to 20).map(i => (i, i.toString)))
+    val map = ObservableMap.from((0 to 20).map(i => (i, i.toString)))
     val removedEntries = Buffer.empty[(Int, String)]
     map onChange {
       (sourceMap, change) =>
@@ -199,7 +199,7 @@ class ObservableMapSpec[K, V]
     compareInstances((map -- List(17, 18)), map, false)
 
     // First Verification
-    map should equal(ObservableMap((10 to 20).map(i => (i, i.toString))))
+    map should equal(ObservableMap.from((10 to 20).map(i => (i, i.toString))))
     removedEntries.toList should equal((0 to 9).map(i => (i, i.toString)).toList)
 
     removedEntries.clear()
@@ -209,19 +209,19 @@ class ObservableMapSpec[K, V]
     //      without throwing ConcurrentModificationException.
     //    compareInstances(map.retain((i, str) => i % 2 == 0), map, true)
     for (k <- map.keys.toArray if (k % 2 != 0)) {map.remove(k)}
-    map should equal(ObservableMap((10 to 20).filter(_ % 2 == 0).map(i => (i, i.toString))))
+    map should equal(ObservableMap.from((10 to 20).filter(_ % 2 == 0).map(i => (i, i.toString))))
     removedEntries.toList.sortWith(_._1 < _._1) should equal((10 to 20).filter(_ % 2 != 0).map(i => (i, i.toString)).toList)
 
     removedEntries.clear()
     // Clear Map
     map.clear()
     removedEntries.toList.sortWith(_._1 < _._1) should equal((10 to 20).filter(_ % 2 == 0).map(i => (i, i.toString)).toList)
-    map should be('empty)
+    map should be(Symbol("empty"))
   }
 
   it should "notify any replacement individually" in {
     // Preparation
-    val map = ObservableMap((0 to 20).map(i => (i, i.toString)))
+    val map = ObservableMap.from((0 to 20).map(i => (i, i.toString)))
     val replacedEntries = Buffer.empty[(Int, String, String)]
     map onChange {
       (sourceMap, change) =>
@@ -272,7 +272,7 @@ class ObservableMapSpec[K, V]
 
   it should "keep his behavior with other types of sets beyond HashMap" in {
     // Preparation
-    val map = ObservableMap(new LinkedHashMap[Int, String])
+    val map = ObservableMap.from(new LinkedHashMap[Int, String])
     val addedValues = Buffer.empty[(Int, String)]
     val removedValues = Buffer.empty[(Int, String)]
     map onChange {

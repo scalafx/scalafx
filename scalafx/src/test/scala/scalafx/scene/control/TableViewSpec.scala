@@ -82,7 +82,11 @@ class TableViewSpec[S]
     tableView.getSelectionModel.selectedItem.value should equal(rocky)
 
     // Clear selection
-    tableView.selectionModel.value.clearSelection()
+    // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2
+    //   Workaround for Scala 3 bug https://github.com/lampepfl/dotty/issues/12091
+    // tableView.selectionModel.value.clearSelection()
+    val value = tableView.selectionModel.value
+    value.clearSelection()
     tableView.getSelectionModel.selectedItem.value should equal(null)
 
     tableView.selectionModel().select(rocky)

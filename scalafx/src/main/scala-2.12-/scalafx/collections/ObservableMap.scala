@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,13 +26,12 @@
  */
 package scalafx.collections
 
-import java.{util => ju}
-
 import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
+import java.{util => ju}
 import scala.collection.JavaConverters._
 import scala.collection.generic.MutableMapFactory
 import scala.collection.mutable
@@ -109,10 +108,9 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    * Creates a new $OM from a sequence of tuples
    *
    * @param keyValues Sequence of tuples
-   *
    * @return A newly created $OM.
    */
-  def apply[K, V](keyValues: Seq[(K, V)]): ObservableMap[K, V] = {
+  def from[K, V](keyValues: Seq[(K, V)]): ObservableMap[K, V] = {
     val map = empty[K, V]
     keyValues.foreach(keyValue => map(keyValue._1) = keyValue._2)
     map
@@ -124,10 +122,9 @@ object ObservableMap extends MutableMapFactory[ObservableMap] {
    * map are not reported to observers of any $OM that wraps it.
    *
    * @param originalMap A Map that backs this $OM.
-   *
    * @return A newly created $OM.
    */
-  def apply[K, V](originalMap: mutable.Map[K, V]): ObservableMap[K, V] =
+  def from[K, V](originalMap: mutable.Map[K, V]): ObservableMap[K, V] =
     new ObservableMap[K, V] {
       override val delegate: jfxc.ObservableMap[K, V] = jfxc.FXCollections.observableMap(originalMap.asJava)
     }

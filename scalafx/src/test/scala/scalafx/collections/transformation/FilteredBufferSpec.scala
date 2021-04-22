@@ -27,8 +27,6 @@
 
 package scalafx.collections.transformation
 
-import java.{util => ju}
-
 import javafx.collections.{transformation => jfxct}
 import javafx.{collections => jfxc}
 import org.scalatest.matchers.should.Matchers._
@@ -36,6 +34,7 @@ import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.testutil.SimpleSFXDelegateSpec
 
+import java.{util => ju}
 import scala.language.implicitConversions
 
 /**
@@ -52,7 +51,7 @@ class FilteredBufferSpec[E]
 
   it should "assing comparator correctly" in {
 
-    val sb = new FilteredBuffer(ObservableBuffer(3, 4, 1), { _: Int => true })
+    val sb = new FilteredBuffer(ObservableBuffer(3, 4, 1), { (_: Int) => true })
 
     sb.toList should equal(List(3, 4, 1))
 

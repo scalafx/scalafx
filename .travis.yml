@@ -2,9 +2,9 @@ sudo: false
 
 language: scala
 scala:
-  - 2.13.4
-  - 2.12.12
-  - 2.11.12
+  - 2.13.5
+  - 2.12.13
+  - 3.0.0-RC3
 
 dist: xenial
 services:
@@ -12,11 +12,18 @@ services:
 
 jdk:
   - openjdk11
-  - openjdk15
+  - openjdk16
 
-install: true
+install:
+  - |
+    # update this only when sbt-the-bash-script needs to be updated
+    export SBT_LAUNCHER=1.5.0
+    export SBT_OPTS="-Dfile.encoding=UTF-8"
+    curl -L --silent "https://github.com/sbt/sbt/releases/download/v$SBT_LAUNCHER/sbt-$SBT_LAUNCHER.tgz" > $HOME/sbt.tgz
+    tar zxf $HOME/sbt.tgz -C $HOME
+    sudo rm /usr/local/bin/sbt
+    sudo ln -s $HOME/sbt/bin/sbt /usr/local/bin/sbt
 
 script:
   - java -version
-  - sbt test
-
+  - sbt ++$TRAVIS_SCALA_VERSION test

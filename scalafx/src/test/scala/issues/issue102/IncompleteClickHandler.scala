@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -121,7 +121,7 @@ object IncompleteClickHandler extends JFXApp {
             },
             new Button {
               text = "Button 6: New fine approach using `handle {}`"
-              onAction = handle {
+              onAction = _ => {
                 println("Button 6 - Message 1")
                 println("Button 6 - Message 2")
               }

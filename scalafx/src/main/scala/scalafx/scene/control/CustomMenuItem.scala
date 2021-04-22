@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -79,7 +79,7 @@ class CustomMenuItem(override val delegate: jfxsc.CustomMenuItem = new jfxsc.Cus
    */
   def content: ObjectProperty[jfxs.Node] = delegate.contentProperty()
   def content_=(value: Node): Unit = {
-    ObjectProperty.fillProperty(delegate.contentProperty, value)
+    ObjectProperty.fillProperty(content, value)
   }
 
   /**

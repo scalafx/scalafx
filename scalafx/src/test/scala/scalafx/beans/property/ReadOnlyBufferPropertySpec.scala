@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,18 +50,18 @@ class ReadOnlyBufferPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   override def beforeEach(): Unit = {
 
-    val roWrapper = new ReadOnlyBufferWrapper(bean, "Test Read-only Boolean", ObservableBuffer(valueAsSeq))
+    val roWrapper = new ReadOnlyBufferWrapper(bean, "Test Read-only Boolean", ObservableBuffer.from(valueAsSeq))
     readOnlyListProperty = roWrapper.readOnlyProperty
     listProperty1 = BufferProperty[Int](bean, "Test Boolean 2")
     listProperty2 = new BufferProperty[Int](bean, "Test Boolean 3")
   }
 
   "A Read-only Boolean Property" should "return a fixed value" in {
-    readOnlyListProperty.value should be(ObservableBuffer(valueAsSeq).delegate)
+    readOnlyListProperty.value should be(ObservableBuffer.from(valueAsSeq).delegate)
   }
 
-  it should "return its value using apply" in {
-    readOnlyListProperty() should be(ObservableBuffer(valueAsSeq).delegate)
+  it should "return its value using from" in {
+    readOnlyListProperty() should be(ObservableBuffer.from(valueAsSeq).delegate)
   }
 
   it should "know its name" in {
@@ -82,12 +82,12 @@ class ReadOnlyBufferPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "be bindable to another Boolean Property" in {
     listProperty1 <== readOnlyListProperty
-    listProperty1() should be(ObservableBuffer(valueAsSeq).delegate)
+    listProperty1() should be(ObservableBuffer.from(valueAsSeq).delegate)
   }
 
   it should "support unbinding from another Boolean Property" in {
     listProperty1 <== readOnlyListProperty
-    listProperty1() should be(ObservableBuffer(valueAsSeq).delegate)
+    listProperty1() should be(ObservableBuffer.from(valueAsSeq).delegate)
     listProperty1.unbind()
     listProperty1() = ObservableBuffer(0, 0, 7)
     listProperty1() should be(ObservableBuffer(0, 0, 7).delegate)

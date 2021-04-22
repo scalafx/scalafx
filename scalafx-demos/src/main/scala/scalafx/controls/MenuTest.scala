@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,10 +50,10 @@ object MenuTest extends JFXApp {
       }
     )
 
-    onShowing = handle {printEvent("on showing")}
-    onShown = handle {printEvent("on shown")}
-    onHiding = handle {printEvent("on hiding")}
-    onHidden = handle {printEvent("on hidden")}
+    onShowing = _ => printEvent("on showing")()
+    onShown = _ => printEvent("on shown")()
+    onHiding = _ => printEvent("on hiding")()
+    onHidden = _ => printEvent("on hidden")()
   }
 
   val history = new VBox()

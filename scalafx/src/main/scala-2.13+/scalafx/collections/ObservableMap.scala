@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,15 +26,13 @@
  */
 package scalafx.collections
 
-import java.{util => ju}
-
 import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
+import java.{util => ju}
 import scala.collection.{MapFactory, MapFactoryDefaults, StrictOptimizedIterableOps, mutable}
-import scala.jdk.CollectionConverters._
 import scala.language.implicitConversions
 
 /**
@@ -110,33 +108,6 @@ object ObservableMap extends MapFactory[ObservableMap] {
    * @return a Empty [[scalafx.collections.ObservableHashMap]]
    */
   override def empty[K, V]: ObservableMap[K, V] = new ObservableHashMap[K, V]()
-
-  /**
-   * Creates a new $OM from a sequence of tuples
-   *
-   * @param keyValues Sequence of tuples
-   *
-   * @return A newly created $OM.
-   */
-  def apply[K, V](keyValues: Seq[(K, V)]): ObservableMap[K, V] = {
-    val map = empty[K, V]
-    keyValues.foreach(keyValue => map(keyValue._1) = keyValue._2)
-    map
-  }
-
-  /**
-   * Creates a new $OM that is backed by the specified map. Mutation operations on the $OM instance will be reported
-   * to observers that have registered on that instance. Note that mutation operations made directly to the underlying
-   * map are not reported to observers of any $OM that wraps it.
-   *
-   * @param originalMap A Map that backs this $OM.
-   *
-   * @return A newly created $OM.
-   */
-  def apply[K, V](originalMap: mutable.Map[K, V]): ObservableMap[K, V] =
-    new ObservableMap[K, V] {
-      override val delegate: jfxc.ObservableMap[K, V] = jfxc.FXCollections.observableMap(originalMap.asJava)
-    }
 
   // CREATION METHODS - END
 

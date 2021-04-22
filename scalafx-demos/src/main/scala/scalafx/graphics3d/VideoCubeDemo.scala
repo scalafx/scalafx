@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -119,7 +119,7 @@ object VideoCubeDemo extends JFXApp {
   val highX = 900
   val highY = 700
   val starryBackground = new Group {
-    val stars = (1 to 500).map(x => new Rectangle {
+    val stars = (1 to 500).map(_ => new Rectangle {
       x = lowX + scala.math.random * (highX - lowX)
       y = lowY + scala.math.random * (highY - lowY)
       //      printf("x=%5.1f, y=%5.1f\n", x.get(), y.get() )

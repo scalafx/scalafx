@@ -88,7 +88,7 @@ class SliderControl(title: String) extends HBox {
     //    style = ".slider .axis {-fx-tick-label-fill: green;}"
     hgrow = Priority.Always
     style <== cssForeground
-    value <==> realValue
+    this.value <==> realValue
   }
 
   val lblValue = new Label {

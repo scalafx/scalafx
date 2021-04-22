@@ -78,7 +78,7 @@ object RectangleDrawingDemo extends JFXApp {
 
   // Define handling of mouse events
   pane.handleEvent(MouseEvent.Any) {
-    me: MouseEvent => {
+    (me: MouseEvent) => {
       me.eventType match {
         case MouseEvent.MousePressed => {
           // Reset the shape

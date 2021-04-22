@@ -60,6 +60,26 @@ abstract class LightBase(override val delegate: jfxs.LightBase)
     lightOn() = v
   }
 
-  /** Gets the list of nodes that specifies the hierarchical scope of this Light. */
+  /**
+   * Gets the list of nodes that specifies the hierarchical scope of this light. Any `Shape3D`s in this list or
+   * under a `Parent` in this list are affected by this light, unless a closer parent exists in the
+   * `exclusionScope` list. If the list is empty, all nodes under the light's scene/subscene are affected by it
+   * (unless they are in the `exclusionScope`).
+   *
+   * @return the list of nodes that specifies the hierarchical scope of this light
+   * @see [[exclusionScope]]
+   */
   def scope: ObservableBuffer[jfxs.Node] = delegate.getScope
+
+  /**
+   * Gets the list of nodes that specifies the hierarchical exclusion scope of this light. Any `Shape3D`s in
+   * this list or under a `Parent` in this list are not affected by this light, unless a closer parent exists in
+   * the `scope` list. <br>
+   * This is a convenience list for excluding nodes that would otherwise be in scope of the light.
+   *
+   * @return the list of nodes that specifies the hierarchical exclusion scope of this light
+   * @see [[scope]]
+   * @since JavaFX 13
+   */
+  def exclusionScope: ObservableBuffer[jfxs.Node] = delegate.getExclusionScope
 }

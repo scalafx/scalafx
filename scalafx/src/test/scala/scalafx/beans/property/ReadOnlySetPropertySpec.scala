@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,18 +50,18 @@ class ReadOnlySetPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   override def beforeEach(): Unit = {
 
-    val roWrapper = new ReadOnlySetWrapper(bean, "Test Read-only Boolean", ObservableSet(valueAsSeq))
+    val roWrapper = new ReadOnlySetWrapper(bean, "Test Read-only Boolean", ObservableSet.from(valueAsSeq))
     readOnlySetProperty = roWrapper.readOnlyProperty
     setProperty1 = SetProperty[Int](bean, "Test Boolean 2")
     setProperty2 = new SetProperty[Int](bean, "Test Boolean 3")
   }
 
   "A Read-only Boolean Property" should "return a fixed value" in {
-    readOnlySetProperty.value should be(ObservableSet(valueAsSeq).delegate)
+    readOnlySetProperty.value should be(ObservableSet.from(valueAsSeq).delegate)
   }
 
   it should "return its value using apply" in {
-    readOnlySetProperty() should be(ObservableSet(valueAsSeq).delegate)
+    readOnlySetProperty() should be(ObservableSet.from(valueAsSeq).delegate)
   }
 
   it should "know its name" in {
@@ -82,12 +82,12 @@ class ReadOnlySetPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "be bindable to another Boolean Property" in {
     setProperty1 <== readOnlySetProperty
-    setProperty1() should be(ObservableSet(valueAsSeq).delegate)
+    setProperty1() should be(ObservableSet.from(valueAsSeq).delegate)
   }
 
   it should "support unbinding from another Boolean Property" in {
     setProperty1 <== readOnlySetProperty
-    setProperty1() should be(ObservableSet(valueAsSeq).delegate)
+    setProperty1() should be(ObservableSet.from(valueAsSeq).delegate)
     setProperty1.unbind()
     setProperty1() = ObservableSet(0, 0, 7)
     setProperty1() should be(ObservableSet(0, 0, 7).delegate)

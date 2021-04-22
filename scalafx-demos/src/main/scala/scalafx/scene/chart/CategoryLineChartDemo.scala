@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,7 +45,7 @@ object CategoryLineChartDemo extends JFXApp {
         legendSide = Side.Right
         data = XYChart.Series[String, Number](
           "Series 1",
-          ObservableBuffer(dataPairs.map {case (x, y) => XYChart.Data[String, Number](x, y)})
+          ObservableBuffer.from(dataPairs.map { case (x, y) => XYChart.Data[String, Number](x, y) })
         )
       }
     }

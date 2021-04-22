@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,7 +41,7 @@ object PieChartDemo extends JFXApp {
       root = new PieChart {
         title = "Pie Chart"
         clockwise = false
-        data = ObservableBuffer(dataPairs.map {case (x, y) => PieChart.Data(x, y)})
+        data = ObservableBuffer.from(dataPairs.map { case (x, y) => PieChart.Data(x, y) })
       }
     }
   }

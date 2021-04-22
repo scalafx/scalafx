@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -97,7 +97,7 @@ object XYChart {
     }
 
     def data_=(v: Seq[jfxsc.XYChart.Data[X, Y]]): Unit = {
-      data() = ObservableBuffer(v)
+      data() = ObservableBuffer.from(v)
     }
 
     def name: StringProperty = delegate.nameProperty
@@ -138,11 +138,11 @@ abstract class XYChart[X, Y](override val delegate: jfxsc.XYChart[X, Y])
   }
 
   def data_=(v: Seq[jfxsc.XYChart.Series[X, Y]]): Unit = {
-    data() = ObservableBuffer(v)
+    data() = ObservableBuffer.from(v)
   }
 
   def data_=(v: XYChart.Series[X, Y]): Unit = {
-    data() = ObservableBuffer[jfxsc.XYChart.Series[X, Y]](v)
+    data() = ObservableBuffer[jfxsc.XYChart.Series[X, Y]](v.delegate)
   }
 
   def horizontalGridLinesVisible: BooleanProperty = delegate.horizontalGridLinesVisibleProperty

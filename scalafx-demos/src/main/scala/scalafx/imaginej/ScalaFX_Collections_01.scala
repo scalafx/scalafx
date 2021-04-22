@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -90,7 +90,7 @@ object ScalaFX_Collections_01 {
   }
 
   def main(args: Array[String]): Unit = {
-    val observableStringBuffer = ObservableBuffer[String]()
+    val observableStringBuffer = new ObservableBuffer[String]()
     observableStringBuffer onInvalidate {
       println("observable string buffer invalidated")
     }

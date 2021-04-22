@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,6 @@
 
 package scalafx.scene.control
 
-import java.lang
-
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, event => jfxe, scene => jfxs, util => jfxu}
 import scalafx.Includes._
@@ -38,6 +36,7 @@ import scalafx.delegate.SFXDelegate
 import scalafx.delegate.SFXDelegate.delegateOrNull
 import scalafx.scene.Node
 
+import java.lang
 import scala.language.implicitConversions
 
 
@@ -180,7 +179,7 @@ object TableView {
      * A read-only ObservableList representing the currently selected cells in this TableView.
      */
     def selectedCells: ObservableBuffer[TablePosition[_, _]] =
-      ObservableBuffer(delegate.getSelectedCells.map(jtp => new TablePosition(jtp)).toSeq)
+      ObservableBuffer.from(delegate.getSelectedCells.map(jtp => new TablePosition(jtp)))
 
     /**
      * Returns the TableView instance that this selection model is installed in.
@@ -301,8 +300,13 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
    *   tableView.columnResizePolicy = TableView.UnconstrainedResizePolicy
    * }}}
    */
-  def columnResizePolicy: ObjectProperty[TableView.ResizeFeatures[S] => Boolean] =
-    ObjectProperty((features: TableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features))
+  def columnResizePolicy: ObjectProperty[TableView.ResizeFeatures[S] => Boolean] = {
+    // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2
+    // ObjectProperty((features: TableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features))
+    val f: TableView.ResizeFeatures[S] => Boolean =
+    (features: TableView.ResizeFeatures[S]) => delegate.columnResizePolicyProperty.value.call(features)
+    ObjectProperty(f)
+  }
 
   def columnResizePolicy_=(p: TableView.ResizeFeatures[_] => Boolean): Unit = {
     delegate.columnResizePolicyProperty().setValue(new jfxu.Callback[jfxsc.TableView.ResizeFeatures[_], java.lang.Boolean] {
@@ -371,8 +375,12 @@ class TableView[S](override val delegate: jfxsc.TableView[S] = new jfxsc.TableVi
   /**
    * A function which produces a TableRow.
    */
-  def rowFactory: ObjectProperty[TableView[S] => TableRow[S]] =
-    ObjectProperty((view: TableView[S]) => delegate.rowFactoryProperty.value.call(view))
+  def rowFactory: ObjectProperty[TableView[S] => TableRow[S]] = {
+    // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2
+    // ObjectProperty((view: TableView[S]) => delegate.rowFactoryProperty.value.call(view))
+    val f: TableView[S] => TableRow[S] = (view: TableView[S]) => delegate.rowFactoryProperty.value.call(view)
+    ObjectProperty(f)
+  }
 
   def rowFactory_=(factory: TableView[S] => TableRow[S]): Unit = {
     delegate.rowFactoryProperty.setValue(new jfxu.Callback[jfxsc.TableView[S], jfxsc.TableRow[S]] {

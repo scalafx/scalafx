@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,14 +27,13 @@
 
 package scalafx.collections
 
-import java.{util => ju}
-
 import javafx.{beans => jfxb, collections => jfxc, util => jfxu}
 import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
+import java.{util => ju}
 import scala.collection.mutable.Buffer
 
 /**
@@ -593,7 +592,7 @@ class ObservableBufferSpec[T]
 
   it should "keep his behavior with other types of sets beyond default implementation" in {
     // Preparation
-    val buffer = ObservableBuffer(new StringBuilder)
+    val buffer = ObservableBuffer.from(new StringBuilder)
     val addedValues = Buffer.empty[Any]
     val removedValues = Buffer.empty[Any]
     val permutations = Buffer.empty[Buffer[(Int, Int)]]

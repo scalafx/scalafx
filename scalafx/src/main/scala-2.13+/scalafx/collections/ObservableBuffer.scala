@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,18 +27,16 @@
 
 package scalafx.collections
 
-import java.{util => ju}
-
 import javafx.{collections => jfxc}
 import scalafx.beans.Observable
 import scalafx.delegate.SFXDelegate
 import scalafx.event.subscriptions.Subscription
 
+import java.{util => ju}
 import scala.collection.mutable.ArrayBuffer
 import scala.collection.{IterableFactoryDefaults, SeqFactory, StrictOptimizedSeqFactory, StrictOptimizedSeqOps, mutable}
 import scala.jdk.CollectionConverters._
 import scala.language.implicitConversions
-import scala.reflect.runtime.universe._
 
 /**
  * Companion Object for [[scalafx.collections.ObservableBuffer]].
@@ -135,19 +133,6 @@ object ObservableBuffer extends StrictOptimizedSeqFactory[ObservableBuffer] {
 
   // CHANGING INDICATORS - END
 
-  // CREATION METHODS - BEGIN
-
-  /**
-   * Creates a new $OB from a sequence of elements.
-   *
-   * @param items Sequence of elements
-   * @return new $OB from items
-   */
-  def apply[T](items: Seq[T]): ObservableBuffer[T] =
-    new ObservableBuffer[T](jfxc.FXCollections.observableArrayList[T](items.asJava))
-
-  // CREATION METHODS - END
-
   // HELPER METHODS (ORIGINATED FROM FXCOLLECTIONS) - BEGIN
 
   /**
@@ -167,18 +152,6 @@ object ObservableBuffer extends StrictOptimizedSeqFactory[ObservableBuffer] {
    */
   def shuffle[T](buffer: ObservableBuffer[T], rnd: ju.Random): Unit = {
     jfxc.FXCollections.shuffle(buffer, rnd)
-  }
-
-  /**
-   * Concatenates more $OB's into one.
-   *
-   * @param buffers $buf to concatenate
-   */
-  def concat[T](buffers: ObservableBuffer[T]*): ObservableBuffer[T] = {
-    val lists: java.util.List[jfxc.ObservableList[T]] = new java.util.ArrayList[jfxc.ObservableList[T]]
-    buffers.foreach(buf => lists.add(buf.delegate))
-
-    new ObservableBuffer[T](jfxc.FXCollections.concat(lists.asScala.toSeq: _*))
   }
 
   /**
@@ -330,6 +303,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
    * @param elems Other elements to remove
    * @return $ownOB
    */
+  @deprecated("Super method -= is deprecated. Use `--=` aka `subtractAll` instead of varargs `-=`; infix operations with an operand of multiple args will be deprecated", "R22")
   override def -=(elem1: T, elem2: T, elems: T*): ObservableBuffer.this.type = {
     // Custom implementation to minimize number of change notification.
     // This will issue only one change notification for all xs element,
@@ -468,25 +442,24 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
   def replaceAll(oldVal: T, newVal: T): Boolean = jfxc.FXCollections.replaceAll(this.delegate, oldVal, newVal)
 
   /**
-   * Sorts this $OB if its type implements ''natural ordering''. This type must be a
-   * [[http://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html `java.util.Comparable`]] subclass.
-   * Otherwise it will throws a `IllegalStateException`.
+   * Sorts this $OB if its type implements "natural ordering" using using JavaFX `FXCollections.sort`.
    *
-   * @param typeTag information about if this type is a `Comparable` subclass or not.
+   * It is similar to Scala's `sortInPlace()`.
+   * It will produce the same result,
+   * but may produce different number of change notifications as different sorting algorithms are used.
    */
-  def sort()(implicit typeTag: WeakTypeTag[T]): Unit = {
-    if (typeTag.tpe <:< typeOf[Comparable[_]]) {
-      jfxc.FXCollections.sort(delegate, (p1: T, p2: T) => p1.asInstanceOf[Comparable[T]].compareTo(p2))
-    } else {
-      throw new IllegalStateException("Type of this Observable List does not implement " +
-        "java.util.Comparable. Please use a Comparator function.")
-    }
+  def sort[B >: T]()(implicit ord: Ordering[B]): Unit = {
+    jfxc.FXCollections.sort(delegate, (o1: B, o2: B) => ord.compare(o1, o2))
   }
 
   /**
-   * Sorts this $OB using a Comparator function
+   * Sorts this $OB using a comparator function using JavaFX `FXCollections.sort`.
    *
-   * @param lt Comparator function that returns `true` if first element was lesser than second
+   * It is similar to Scala's `sortInPlaceWith(c)`.
+   * It will produce the same result,
+   * but may produce different number of change notifications as different sorting algorithms are used.
+   *
+   * @param lt comparator function that returns `true` if first element was lesser than second
    *           or `false` otherwise.
    */
   def sort(lt: (T, T) => Boolean): Unit = {
@@ -506,7 +479,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
   def onChange[T1 >: T](op: (ObservableBuffer[T], Seq[Change[T1]]) => Unit): Subscription = {
     val listener = new jfxc.ListChangeListener[T1] {
       def onChanged(c: jfxc.ListChangeListener.Change[_ <: T1]): Unit = {
-        var changes = ArrayBuffer.empty[Change[T1]]
+        val changes = ArrayBuffer.empty[Change[T1]]
         while (c.next()) {
           if (c.wasPermutated()) {
             changes += Reorder(c.getFrom, c.getTo, {
@@ -529,11 +502,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
 
     delegate.addListener(listener)
 
-    new Subscription {
-      def cancel(): Unit = {
-        delegate.removeListener(listener)
-      }
-    }
+    () => delegate.removeListener(listener)
   }
 
   /**
@@ -552,11 +521,7 @@ class ObservableBuffer[T](override val delegate: jfxc.ObservableList[T] = jfxc.F
 
     delegate.addListener(listener)
 
-    new Subscription {
-      def cancel(): Unit = {
-        delegate.removeListener(listener)
-      }
-    }
+    () => delegate.removeListener(listener)
   }
 
 }
