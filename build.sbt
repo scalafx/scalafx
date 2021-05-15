@@ -52,7 +52,7 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
 
 val Scala2_12 = "2.12.13"
 val Scala2_13 = "2.13.5"
-val Scala3_00 = "3.0.0-RC3"
+val Scala3_00 = "3.0.0"
 
 // Dependencies
 lazy val osName        = System.getProperty("os.name") match {
@@ -62,7 +62,7 @@ lazy val osName        = System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 }
 lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.8"
+lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.9"
 def scalaReflectLib(scalaVersion: String): ModuleID =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((3, _)) => "org.scala-lang" % "scala-reflect" % Scala2_13
