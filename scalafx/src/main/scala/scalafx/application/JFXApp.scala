@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -246,7 +246,9 @@ object JFXApp {
  *   }
  * }}}
  *
+ * @deprecated `JFXApp` depends on `DelayedInit` that is deprecated since Scala 2.11.0 and no longer works in Scala 3. Use `JFXApp3` instead.
  */
+@deprecated("`JFXApp` depends on `DelayedInit` that is deprecated since Scala 2.11.0 and no longer works in Scala 3. Use `JFXApp3` instead.", since = "16.0.0-R23")
 trait JFXApp extends DelayedInit {
 
   // Since JFXApp is now a trait, it is immune from the behavior of the DelayedInit marker trait. All JFXApp
