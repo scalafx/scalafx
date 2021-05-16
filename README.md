@@ -21,18 +21,18 @@ ScalaFX binaries are published in the Maven Central repository:
 ScalaFX source code is using the SBT build system. For information on building with SBT
 see [README-SBT.txt](README-SBT.txt).
 
-The official web site for ScalaFX is http://scalafx.org.
+The official website for ScalaFX is http://scalafx.org.
 
 ### ScalaFX Dependencies
 
-__ScalaFX 12__ is the current actively maintained version. ScalaFX 12 is intended to support __Java 11 and newer__. 
+__ScalaFX 11+__ is the current actively maintained version. ScalaFX 11+ is intended to support __Java 11 and newer__. 
 Staring with Java 11 JavaFX is no longer part of Java distribution.
 In addition to ScalaFX, JavaFX binaries needs to be explicitly added to a project.
-JavaFX binaries depend on operating system used.
+JavaFX's binaries depend on operating system used.
 Add following to SBT configuration:
 ```scala
 // Add dependency on ScalaFX library
-libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R22"
+libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R23"
 
 // Determine OS version of JavaFX binaries
 lazy val osName = System.getProperty("os.name") match {
@@ -53,20 +53,20 @@ If you're using [Mill](https://com-lihaoyi.github.io/mill/):
 
 ```scala
 object yourProject extends ScalaModule {
-  def scalaVersion = "3.0.0-RC3"
+  def scalaVersion = "3.0.0"
 
   // Customize coursier resolution to discover the OS-specific artifacts required by JavaFX
   // Note: this requires mill >= 0.9.7 (with pr/775 merged)
   def resolutionCustomizer = T.task {
     Some((r: coursier.core.Resolution) =>
-       r.withOsInfo(coursier.core.Activation.Os.fromProperties(sys.props.toMap))
+      r.withOsInfo(coursier.core.Activation.Os.fromProperties(sys.props.toMap))
     )
   }
 
   // Add dependency on JavaFX libraries
-  val javaFXVersion  = "16"
-  val scalaFXVersion = "16.0.0-R22"
-  val javaFXModules  = List("base", "controls", "fxml", "graphics", "media", "swing", "web")
+  val javaFXVersion = "16"
+  val scalaFXVersion = "16.0.0-R23"
+  val javaFXModules = List("base", "controls", "fxml", "graphics", "media", "swing", "web")
     .map(m => ivy"org.openjfx:javafx-$m:$javaFXVersion")
 
   def ivyDeps = {
@@ -75,13 +75,14 @@ object yourProject extends ScalaModule {
       //...
     ) ++ javaFXModules
   }
+}
 ```
 
 ### What is in the version number
 
 ScalaFX version number has two part. The first part corresponds to the latest JavaFX version it was tested with. The
 second part is an incremental release number. For instance, version `15.0.1-R20` means that it was tested with JavaFX
-version `15` and that is the 20th release of ScalaFX.
+version `15.0.1` and that is the 20th release of ScalaFX.
 
 #### Legacy Releases
 
@@ -156,13 +157,13 @@ The current project directory structure:
     ./scalafx
     ./scalafx-demos
 
-Where `.` is a the root folder of the project.
+Where `.` is the root folder of the project.
 
 The `notes` folder contains release notes for past releases.
 
-The `scalafx` folder is the sub project for the ScalaFX Framework.
+The `scalafx` folder is the sub-project for the ScalaFX Framework.
 
-The `scalafx-demos` is the sub project for the ScalaFX Framework Demonstrations (some are a bit out of date, help needed here :).
+The `scalafx-demos` is the sub-project for the ScalaFX Framework Demonstrations, some are a bit out of date, help needed here :).
 
 The `project` folder is reserved for SBT build system setup.
 
@@ -194,7 +195,7 @@ The most up to date list of contributors to the project can be found on the [Con
 
 
 ## Community
-We request all the team members to follow the [Typelevel Code of Conduct](http://typelevel.org/conduct.html) in our mailinglist, issue discussion, Gitter room or any of ScalaFX meetups.
+We request all the team members to follow the [Typelevel Code of Conduct](http://typelevel.org/conduct.html) in our mailing list, issue discussion, Gitter room or any of ScalaFX meetups.
 
 For more info on Contribute, check our [Contributing page](http://http://www.scalafx.org/docs/contributing/).
 
