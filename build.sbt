@@ -17,7 +17,8 @@ val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v." 
 lazy val scalafxProject = (project in file("."))
   .settings(
     name := "scalafx-project",
-    publishArtifact := false
+    publishArtifact := false,
+    publish / skip  := true
   )
   .aggregate(scalafx, scalafxDemos)
 
@@ -47,7 +48,8 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
     "-Xmx512M",
     "-Djavafx.verbose"
     ),
-  publishArtifact := false
+  publishArtifact := false,
+  publish / skip  := true
   ).dependsOn(scalafx % "compile;test->test")
 
 val Scala2_12 = "2.12.13"
