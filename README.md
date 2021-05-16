@@ -32,7 +32,7 @@ JavaFX binaries depend on operating system used.
 Add following to SBT configuration:
 ```scala
 // Add dependency on ScalaFX library
-libraryDependencies += "org.scalafx" %% "scalafx" % "15.0.1-R21"
+libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R22"
 
 // Determine OS version of JavaFX binaries
 lazy val osName = System.getProperty("os.name") match {
@@ -44,8 +44,8 @@ lazy val osName = System.getProperty("os.name") match {
 
 // Add dependency on JavaFX libraries, OS dependent
 lazy val javaFXModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-libraryDependencies ++= javaFXModules.map( m =>
-  "org.openjfx" % s"javafx-$m" % "15.0.1" classifier osName
+libraryDependencies ++= javaFXModules.map(m =>
+  "org.openjfx" % s"javafx-$m" % "16" classifier osName
 )
 ```
 
@@ -53,25 +53,28 @@ If you're using [Mill](http://www.lihaoyi.com/mill/):
 
 ```scala
 object yourProject extends ScalaModule {
+  def scalaVersion = "3.0.0-RC3"
 
-  // Determine OS version of JavaFX binaries
-  lazy val osName = System.getProperty("os.name") match {
-    case n if n.startsWith("Linux")   => "linux"
-    case n if n.startsWith("Mac")     => "mac"
-    case n if n.startsWith("Windows") => "win"
-    case _                            => throw new Exception("Unknown platform!")
+  // Customize coursier resolution to discover the OS-specific artifacts required by JavaFX
+  // Note: this requires mill >= 0.9.7 (with pr/775 merged)
+  def resolutionCustomizer = T.task {
+    Some((r: coursier.core.Resolution) =>
+       r.withOsInfo(coursier.core.Activation.Os.fromProperties(sys.props.toMap))
+    )
   }
 
-  // Add dependency on JavaFX libraries, OS dependent
-  val javaFXModules = List("base", "controls", "fxml", "graphics", "media", "swing", "web")
-    .map(m => ivy"org.openjfx:javafx-$m:15.0.1;classifier=$osName")
+  // Add dependency on JavaFX libraries
+  val javaFXVersion  = "16"
+  val scalaFXVersion = "16.0.0-R22"
+  val javaFXModules  = List("base", "controls", "fxml", "graphics", "media", "swing", "web")
+    .map(m => ivy"org.openjfx:javafx-$m:$javaFXVersion")
 
   def ivyDeps = {
     Agg(
-      ivy"org.scalafx::scalafx:15.0.1-R21"
+      ivy"org.scalafx::scalafx:$scalaFXVersion",
+      //...
     ) ++ javaFXModules
   }
-}
 ```
 
 ### What is in the version number
