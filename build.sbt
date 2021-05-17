@@ -65,15 +65,11 @@ lazy val osName        = System.getProperty("os.name") match {
 }
 lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
 lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.9"
-def scalaReflectLib(scalaVersion: String): ModuleID =
+def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
   CrossVersion.partialVersion(scalaVersion) match {
-    case Some((3, _)) => "org.scala-lang" % "scala-reflect" % Scala2_13
-    case _ => "org.scala-lang" % "scala-reflect" % scalaVersion
+    case Some((2, _)) => Seq("org.scala-lang" % "scala-reflect" % scalaVersion)
+    case _ => Seq.empty[ModuleID]
   }
-
-// Add snapshots to root project to enable compilation with Scala SNAPSHOT compiler,
-// e.g., 2.11.0-SNAPSHOT
-resolvers += Resolver.sonatypeRepo("snapshots")
 
 // Add src/main/scala-2.13+ for Scala 2.13 and newer
 //   and src/main/scala-2.12- for Scala versions older than 2.13
@@ -130,9 +126,8 @@ lazy val scalafxSettings = Seq(
     "-source", "1.8",
     "-Xlint:deprecation"),
   // Add other dependencies
-  libraryDependencies ++= Seq(
-    scalaReflectLib(scalaVersion.value),
-    scalaTestLib % "test"),
+  libraryDependencies ++= scalaReflectLibs(scalaVersion.value),
+  libraryDependencies  += scalaTestLib % "test",
   // Use `pomPostProcess` to remove dependencies marked as "provided" from publishing in POM
   // This is to avoid dependency on wrong OS version JavaFX libraries [Issue #289]
   // See also [https://stackoverflow.com/questions/27835740/sbt-exclude-certain-dependency-only-during-publish]
@@ -152,7 +147,6 @@ lazy val scalafxSettings = Seq(
   manifestSetting,
   Test / fork := true,
   Test / parallelExecution := false,
-  resolvers += Resolver.sonatypeRepo("snapshots"),
   // print junit-style XML for CI
   Test / testOptions += {
     val t = (Test / target).value
