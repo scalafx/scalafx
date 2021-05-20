@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,6 +42,7 @@ import scalafx.scene.effect.Reflection
 import scalafx.scene.input.{MouseButton, MouseEvent}
 import scalafx.scene.layout._
 import scalafx.scene.paint.Color
+import scalafx.scene.shape.Rectangle
 import scalafx.scene.text.TextAlignment
 import scalafx.util.StringConverter
 
@@ -190,7 +191,18 @@ object ColorSelector extends JFXApp {
   val cmbWebColor = new ComboBox[WebColor](WebColor.colors) {
     promptText = "Web Color"
     converter = StringConverter.toStringConverter((wc: WebColor) => wc.name)
-    onAction = (event: ActionEvent) => webColorSelected()
+    onAction = _ => webColorSelected()
+    cellFactory = (cell, webColor) => {
+      cell.graphic = new Rectangle {
+        fill = webColor.color
+        stroke = Color.DarkGray
+        width = 16
+        height = 16
+        arcWidth = 5
+        arcHeight = 5
+      }
+      cell.text = webColor.name
+    }
   }
 
   val txfColorValue = new TextField {
