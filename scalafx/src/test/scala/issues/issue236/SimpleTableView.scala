@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,6 @@ import scalafx.beans.property.StringProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
 import scalafx.scene.control.TableColumn._
-import scalafx.scene.control.cell.TextFieldTableCell
 import scalafx.scene.control.{TableColumn, TableView}
 
 
@@ -55,10 +54,7 @@ object SimpleTableView extends JFXApp {
         columns ++= List(
           new TableColumn[Person, String] {
             text = "First Name"
-            cellValueFactory = {
-              _.value.name
-            }
-            cellFactory = (_: TableColumn[Person, String]) => new TextFieldTableCell[Person, String]()
+            cellValueFactory = _.value.name
             prefWidth = 180
           }
         )

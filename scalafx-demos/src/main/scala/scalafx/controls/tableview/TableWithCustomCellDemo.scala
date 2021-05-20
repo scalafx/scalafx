@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
 import scalafx.scene.control.TableColumn._
-import scalafx.scene.control.{TableCell, TableColumn, TableView}
+import scalafx.scene.control.{TableColumn, TableView}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Circle
 
@@ -62,21 +62,14 @@ object TableWithCustomCellDemo extends JFXApp {
           },
           new TableColumn[Person, Color] {
             text = "Favorite Color"
-            cellValueFactory = {_.value.favoriteColor}
+            cellValueFactory = {
+              _.value.favoriteColor
+            }
             // Render the property value when it changes, including initial assignment
-            cellFactory = {
-              (_: TableColumn[Person, Color]) =>
-                new TableCell[Person, Color] {
-                  item.onChange { (_, _, newColor) =>
-                    graphic =
-                      if (newColor != null)
-                        new Circle {
-                          fill = newColor
-                          radius = 8
-                        }
-                      else
-                        null
-                  }
+            cellFactory = (tc, color) => {
+              tc.graphic = new Circle {
+                fill = color
+                radius = 8
               }
             }
             prefWidth = 100
