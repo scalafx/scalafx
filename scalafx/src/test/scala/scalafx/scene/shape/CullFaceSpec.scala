@@ -32,9 +32,10 @@ import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Test for [[scalafx.scene.shape.CullFace]] */
-class CullFaceSpec extends SFXEnumDelegateSpec[jfxss.CullFace, CullFace](
-  javaClass = classOf[jfxss.CullFace],
-  scalaClass = classOf[CullFace],
-  companion = CullFace)
+class CullFaceSpec
+    extends SFXEnumDelegateSpec[jfxss.CullFace, CullFace](
+      javaClass = classOf[jfxss.CullFace],
+      scalaClass = classOf[CullFace],
+      companion = CullFace
+    )

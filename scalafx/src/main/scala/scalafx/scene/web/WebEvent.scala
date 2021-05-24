@@ -41,8 +41,10 @@ object WebEvent {
   /**
    * Converts a ScalaFX WebEvent to its JavaFX counterpart.
    *
-   * @param we ScalaFX WebEvent
-   * @return JavaFX WebEvent
+   * @param we
+   *   ScalaFX WebEvent
+   * @return
+   *   JavaFX WebEvent
    */
   implicit def sfxWebEvent2jfx[T](we: WebEvent[T]): jfxsw.WebEvent[T] = if (we != null) we.delegate else null
 
@@ -83,20 +85,22 @@ object WebEvent {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEvent.html JavaFX WebEvent]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEvent.htmlJavaFX WebEvent]].
  *
- * @constructor Creates a new ScalaFX WebEvent from its JavaFX equivalent.
- * @param delegate JavaFX WebEvent. Since it has no default constructor, there is not default value.
+ * @constructor
+ *   Creates a new ScalaFX WebEvent from its JavaFX equivalent.
+ * @param delegate
+ *   JavaFX WebEvent. Since it has no default constructor, there is not default value.
  */
 final class WebEvent[T](override val delegate: jfxsw.WebEvent[T])
-  extends Event(delegate)
-  with SFXDelegate[jfxsw.WebEvent[T]] {
+    extends Event(delegate)
+    with SFXDelegate[jfxsw.WebEvent[T]] {
 
   /**
    * Creates a new event object.
-   *
    */
-  def this(source: Any, eventType: EventType[jfxsw.WebEvent[_]], data: T) = this(new jfxsw.WebEvent(source, eventType, data))
+  def this(source: Any, eventType: EventType[jfxsw.WebEvent[_]], data: T) =
+    this(new jfxsw.WebEvent(source, eventType, data))
 
   /**
    * Returns data item carried by this event.

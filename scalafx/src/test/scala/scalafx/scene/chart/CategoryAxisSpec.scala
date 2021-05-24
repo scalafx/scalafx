@@ -33,10 +33,7 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * CategoryAxis Spec tests.
- *
- *
  */
 class CategoryAxisSpec
-  extends SimpleSFXDelegateSpec[jfxsc.CategoryAxis, CategoryAxis](
-    classOf[jfxsc.CategoryAxis], classOf[CategoryAxis])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.CategoryAxis, CategoryAxis](classOf[jfxsc.CategoryAxis], classOf[CategoryAxis])
+    with RunOnApplicationThread

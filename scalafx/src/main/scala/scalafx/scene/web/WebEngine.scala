@@ -46,20 +46,23 @@ object WebEngine {
   /**
    * Converts a ScalaFX WebEngine to its JavaFX counterpart.
    *
-   * @param we ScalaFX WebEngine
-   * @return JavaFX WebEngine
+   * @param we
+   *   ScalaFX WebEngine
+   * @return
+   *   JavaFX WebEngine
    */
   implicit def sfxWebEngine2jfx(we: WebEngine): jfxsw.WebEngine = if (we != null) we.delegate else null
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEngine.html JavaFX WebEngine]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEngine.htmlJavaFX WebEngine]].
  *
- * @constructor Creates a new WebEngine from its JavaFX counterpart.
- * @param delegate A JavaFX WebEngine. Its default value is a new instance.
+ * @constructor
+ *   Creates a new WebEngine from its JavaFX counterpart.
+ * @param delegate
+ *   A JavaFX WebEngine. Its default value is a new instance.
  */
-class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
-  extends SFXDelegate[jfxsw.WebEngine] {
+class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine) extends SFXDelegate[jfxsw.WebEngine] {
 
   /**
    * Creates a new engine and loads a Web page into it.
@@ -80,7 +83,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   /**
    * JavaScript popup handler property.
    */
-  def createPopupHandler: ObjectProperty[jfxu.Callback[jfxsw.PopupFeatures, jfxsw.WebEngine]] = delegate.createPopupHandlerProperty
+  def createPopupHandler: ObjectProperty[jfxu.Callback[jfxsw.PopupFeatures, jfxsw.WebEngine]] =
+    delegate.createPopupHandlerProperty
 
   def createPopupHandler_=(f: jfxsw.PopupFeatures => WebEngine): Unit = {
     createPopupHandler() = new jfxu.Callback[jfxsw.PopupFeatures, jfxsw.WebEngine] {
@@ -110,7 +114,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   /**
    * The event handler called when an error occurs.
    *
-   * @since 8.0
+   * @since
+   *   8.0
    */
   def onError: ObjectProperty[jfxe.EventHandler[jfxsw.WebErrorEvent]] = delegate.onErrorProperty
 
@@ -160,7 +165,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   /**
    * JavaScript enabled handler property.
    *
-   * @since 2.2
+   * @since
+   *   2.2
    */
   def javaScriptEnabled: BooleanProperty = delegate.javaScriptEnabledProperty
 
@@ -171,7 +177,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   /**
    * Specifies the directory to be used by this WebEngine to store local user data.
    *
-   * @since 8.0
+   * @since
+   *   8.0
    */
   def userDataDirectory: ObjectProperty[java.io.File] = delegate.userDataDirectoryProperty
 
@@ -182,7 +189,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   /**
    * JavaScript enabled handler property.
    *
-   * @since 2.2
+   * @since
+   *   2.2
    */
   def userStyleSheetLocation: StringProperty = delegate.userStyleSheetLocationProperty
 
@@ -219,7 +227,8 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   /**
    * Specifies user agent ID string.
    *
-   * @since 8.0
+   * @since
+   *   8.0
    */
   def userAgent: StringProperty = delegate.userAgentProperty
 
@@ -230,8 +239,10 @@ class WebEngine(override val delegate: jfxsw.WebEngine = new jfxsw.WebEngine)
   /**
    * Prints the content of the editor using the given printer job.
    *
-   * @param job printer job used for printing
-   * @since 8.0
+   * @param job
+   *   printer job used for printing
+   * @since
+   *   8.0
    */
   def print(job: PrinterJob): Unit = delegate.print(job)
 

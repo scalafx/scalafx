@@ -41,8 +41,7 @@ object BackgroundFill {
 /**
  * The fill and associated properties that direct how to fill the background of a Region.
  */
-class BackgroundFill(override val delegate: jfxsl.BackgroundFill)
-  extends SFXDelegate[jfxsl.BackgroundFill] {
+class BackgroundFill(override val delegate: jfxsl.BackgroundFill) extends SFXDelegate[jfxsl.BackgroundFill] {
 
   /**
    * Creates a new BackgroundFill with the specified fill, radii, and insets.

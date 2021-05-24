@@ -36,13 +36,12 @@ object Paint {
   implicit def sfxPaint2jfx(p: Paint): jfxsp.Paint = if (p != null) p.delegate else null
 
   /**
-   * Creates a paint value from a string representation.  Recognizes strings representing Color, RadialGradient or LinearGradient. String specifying
-   * LinearGradient must begin with linear-gradient keyword and string specifying RadialGradient must begin with radial-gradient.
+   * Creates a paint value from a string representation. Recognizes strings representing Color, RadialGradient or
+   * LinearGradient. String specifying LinearGradient must begin with linear-gradient keyword and string specifying
+   * RadialGradient must begin with radial-gradient.
    */
   def valueOf(value: String): Paint = jfxsp.Paint.valueOf(value)
 
 }
 
-abstract class Paint(override val delegate: jfxsp.Paint) extends SFXDelegate[jfxsp.Paint] {
-
-}
+abstract class Paint(override val delegate: jfxsp.Paint) extends SFXDelegate[jfxsp.Paint] {}

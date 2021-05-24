@@ -31,36 +31,41 @@ import javafx.{collections => jfxc}
 /**
  * Companion Object for [[scalafx.collections.ObservableFloatArray]].
  */
-object ObservableFloatArray extends ObservableArrayCompanionBase[Float, ObservableFloatArray,
-  jfxc.ObservableFloatArray] {
+object ObservableFloatArray
+    extends ObservableArrayCompanionBase[Float, ObservableFloatArray, jfxc.ObservableFloatArray] {
 
   /**
    * @inheritdoc
    */
-  override def apply(v: Float*) = new ObservableFloatArray(jfxc.FXCollections.observableFloatArray(v:_*))
+  override def apply(v: Float*) = new ObservableFloatArray(jfxc.FXCollections.observableFloatArray(v: _*))
 }
 
 // TODO: Enter link when JavaFX 8 API Docs are available on-line.
 /**
  * Wrapper class to JavaFX's `ObservableFloatArray`.
  *
- * @param delegate Wrapped JavaFX $OFA providing implementation.
-
- * @define OFA `ObservableFloatArray`
- * @define ARY `Array`
+ * @param delegate
+ *   Wrapped JavaFX $OFA providing implementation.
+ *
+ * @define
+ *   OFA `ObservableFloatArray`
+ * @define
+ *   ARY `Array`
  */
 class ObservableFloatArray(delegate: jfxc.ObservableFloatArray = jfxc.FXCollections.observableFloatArray())
-  extends ObservableArray[Float, ObservableFloatArray, jfxc.ObservableFloatArray](delegate) {
+    extends ObservableArray[Float, ObservableFloatArray, jfxc.ObservableFloatArray](delegate) {
 
   /**
    * Create $OFA with specified capacity.
    *
    * Elements will be zeroed out.
    *
-   * @param n Size of new $OFA.  This value cannot be negative.
-   * @throws NegativeArraySizeException if `n` is negative.
+   * @param n
+   *   Size of new $OFA. This value cannot be negative.
+   * @throws
+   *   NegativeArraySizeException if `n` is negative.
    */
-  def this(n: Int) = this(jfxc.FXCollections.observableFloatArray(new Array[Float](n):_*))
+  def this(n: Int) = this(jfxc.FXCollections.observableFloatArray(new Array[Float](n): _*))
 
   // ObservableFloatArray interface functions, allow class to act like it
   // implements the JavaFX ObservableFloatArray interface, without actually
@@ -169,13 +174,15 @@ class ObservableFloatArray(delegate: jfxc.ObservableFloatArray = jfxc.FXCollecti
   /**
    * @inheritdoc
    */
-  override def toArray(srcIdx: Int, dest: Array[Float], length: Int): Array[Float] = delegate.toArray(srcIdx, dest, length)
+  override def toArray(srcIdx: Int, dest: Array[Float], length: Int): Array[Float] =
+    delegate.toArray(srcIdx, dest, length)
 
   // ArrayLike[V, T] abstract member function implementations.
   /**
    * Create new builder for this collection.
    *
-   * @return New empty $OFA.
+   * @return
+   *   New empty $OFA.
    */
   protected[this] override def newBuilder: ObservableFloatArray = ObservableFloatArray.empty()
 }

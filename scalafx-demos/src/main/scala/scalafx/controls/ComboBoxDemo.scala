@@ -35,7 +35,6 @@ import scalafx.scene.control.ComboBox
 import scalafx.scene.layout.{BorderPane, Priority, VBox}
 import scalafx.scene.paint.Color
 
-
 object ComboBoxDemo extends JFXApp {
 
   val comboBox = new ComboBox[String]
@@ -60,6 +59,5 @@ object ComboBoxDemo extends JFXApp {
       content = mainPane
     }
   }
-
 
 }

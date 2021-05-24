@@ -37,8 +37,10 @@ import scalafx.scene.paint.{Color, PhongMaterial}
 import scalafx.scene.shape.{Box, Sphere}
 import scalafx.scene.transform.Rotate
 
-/** Illustrates picking of 3D objects.
-  * When user picks (clocks) on an object in a 3D scene the object name is printed to console. */
+/**
+ * Illustrates picking of 3D objects. When user picks (clocks) on an object in a 3D scene the object name is printed to
+ * console.
+ */
 object PickingDemo extends JFXApp {
 
   stage = new PrimaryStage {
@@ -95,7 +97,7 @@ object PickingDemo extends JFXApp {
       angle <== angleY
       axis = Rotate.YAxis
     }
-    var anchorX: Double = 0
+    var anchorX: Double      = 0
     var anchorAngleY: Double = 0
 
     group.transforms = Seq(yRotate)
@@ -120,7 +122,6 @@ object PickingDemo extends JFXApp {
     scene.onMouseDragged = (event: MouseEvent) => {
       angleY() = anchorAngleY + anchorX - event.sceneX
     }
-
 
   }
 

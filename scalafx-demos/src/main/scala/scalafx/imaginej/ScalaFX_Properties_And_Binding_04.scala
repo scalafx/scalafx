@@ -44,13 +44,12 @@ import scalafx.beans.binding.Bindings
 import scalafx.beans.property.IntegerProperty
 
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+ * @author
+ *   Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- *         based upon: Example 5 Combining Both Approaches
- *         (slightly changed)
+ * based upon: Example 5 Combining Both Approaches (slightly changed)
  *
- *         http://docs.oracle.com/javafx/2.0/binding/jfxpub-binding.htm
- *
+ * http://docs.oracle.com/javafx/2.0/binding/jfxpub-binding.htm
  */
 
 object ScalaFX_Properties_And_Binding_04 {
@@ -59,7 +58,7 @@ object ScalaFX_Properties_And_Binding_04 {
     val num2 = new IntegerProperty(null, "num2")
     val num3 = new IntegerProperty(null, "num3")
     val num4 = new IntegerProperty(null, "num4")
-    val max = Bindings.max(num1 + num2, num3 + num4)
+    val max  = Bindings.max(num1 + num2, num3 + num4)
     println("before property changes: max = " + max())
     num1() = 1
     num2() = 2

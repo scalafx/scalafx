@@ -91,7 +91,7 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   }
 
   val originalValue = target.value.get
-  val txfValue = new TextField
+  val txfValue      = new TextField
   target.value.onChange(txfValue.text = target.value.get.toString)
   txfValue.onAction = _ => super.fillDoublePropertyFromText(target.value, txfValue, false)
 
@@ -103,12 +103,11 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   txfBlockIncrement.onAction = _ => fillDoublePropertyFromText(target.blockIncrement, txfBlockIncrement, false)
 
   val txfLabelFormatter = new TextField
-  txfLabelFormatter.text.onChange(
-    if (txfLabelFormatter.text.get.isEmpty) {
-      target.labelFormatter = null
-    } else {
-      target.labelFormatter = new DoubleStringConverter
-    })
+  txfLabelFormatter.text.onChange(if (txfLabelFormatter.text.get.isEmpty) {
+    target.labelFormatter = null
+  } else {
+    target.labelFormatter = new DoubleStringConverter
+  })
 
   val originalMajorTickUnit = target.majorTickUnit.get()
   val txfMajorTickUnit = new TextField {
@@ -159,7 +158,7 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   }
 
   val originalOrientation = target.orientation.get()
-  val tggOrientation = new ToggleGroup
+  val tggOrientation      = new ToggleGroup
   val rdbHorizontal = new RadioButton {
     text = Orientation.Horizontal.toString
     toggleGroup = tggOrientation
@@ -185,9 +184,12 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   super.addNode("Show Tick Marks", chbShowTickMarks)
   super.addNode("Snap To Ticks", chbSnapToTicks)
   super.addNode("Value Changing", chbValueChanging)
-  super.addNode("Orientation", new VBox {
-    children = List(rdbHorizontal, rdbVertical)
-  })
+  super.addNode(
+    "Orientation",
+    new VBox {
+      children = List(rdbHorizontal, rdbVertical)
+    }
+  )
 
   super.addNode(btnReset)
 

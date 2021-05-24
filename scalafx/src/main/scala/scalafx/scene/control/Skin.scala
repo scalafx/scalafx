@@ -39,7 +39,9 @@ object Skin {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Skinnable.html javafx.scene.control.Skinnable]] interface.
+ * Wraps
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Skinnable.htmljavafx.scene.control.Skinnable]]
+ * interface.
  */
 trait Skin[C <: jfxsc.Skinnable] extends SFXDelegate[jfxsc.Skin[C]] {
 

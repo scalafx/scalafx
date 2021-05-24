@@ -50,7 +50,8 @@ object NumberAxis {
   def apply() = new NumberAxis()
 
   object DefaultFormatter {
-    implicit def sfxDefaultFormatter2jfx(v: DefaultFormatter): jfxsc.NumberAxis.DefaultFormatter = if (v != null) v.delegate else null
+    implicit def sfxDefaultFormatter2jfx(v: DefaultFormatter): jfxsc.NumberAxis.DefaultFormatter =
+      if (v != null) v.delegate else null
 
     def apply(axis: NumberAxis) =
       new DefaultFormatter(new jfxsc.NumberAxis.DefaultFormatter(axis))
@@ -60,13 +61,13 @@ object NumberAxis {
   }
 
   class DefaultFormatter(override val delegate: jfxsc.NumberAxis.DefaultFormatter)
-    extends StringConverterDelegate[java.lang.Number, Number, jfxsc.NumberAxis.DefaultFormatter](delegate)
+      extends StringConverterDelegate[java.lang.Number, Number, jfxsc.NumberAxis.DefaultFormatter](delegate)
 
 }
 
 class NumberAxis(override val delegate: jfxsc.NumberAxis = new jfxsc.NumberAxis)
-  extends ValueAxis[Number](delegate)
-  with SFXDelegate[jfxsc.NumberAxis] {
+    extends ValueAxis[Number](delegate)
+    with SFXDelegate[jfxsc.NumberAxis] {
 
   def this(lowerBound: Double, upperBound: Double, tickUnit: Double) = {
     this(new jfxsc.NumberAxis(lowerBound, upperBound, tickUnit))
@@ -75,7 +76,6 @@ class NumberAxis(override val delegate: jfxsc.NumberAxis = new jfxsc.NumberAxis)
   def this(axisLabel: String, lowerBound: Double, upperBound: Double, tickUnit: Double) = {
     this(new jfxsc.NumberAxis(axisLabel, lowerBound, upperBound, tickUnit))
   }
-
 
   /**
    * When `true` zero is always included in the visible range.

@@ -34,81 +34,97 @@ import scalafx.beans.property.PropertyIncludes.jfxReadOnlySetProperty2sfx
 import scalafx.collections.ObservableSet
 import scalafx.delegate.SFXDelegate
 
-
 object ReadOnlySetWrapper {
+
   /**
-    * Converts a ScalaFX ReadOnlySetWrapper to its JavaFX counterpart ReadOnlySetWrapper.
-    *
-    * @param v ScalaFX ReadOnlySetWrapper
-    * @return JavaFX ReadOnlySetWrapper
-    */
+   * Converts a ScalaFX ReadOnlySetWrapper to its JavaFX counterpart ReadOnlySetWrapper.
+   *
+   * @param v
+   *   ScalaFX ReadOnlySetWrapper
+   * @return
+   *   JavaFX ReadOnlySetWrapper
+   */
   implicit def sfxReadOnlySetWrapper2jfx[E <: Any](v: ReadOnlySetWrapper[E]): jfxbp.ReadOnlySetWrapper[E] =
     if (v != null) v.delegate else null
 
-  /** Creates a new ReadOnlySetWrapper instance.
-    *
-    * @param value the initial value of the wrapped value
-    */
+  /**
+   * Creates a new ReadOnlySetWrapper instance.
+   *
+   * @param value
+   *   the initial value of the wrapped value
+   */
   def apply[E <: Any](value: ObservableSet[E]) = new ReadOnlySetWrapper(new jfxbp.ReadOnlySetWrapper(value))
 
   /**
-    * Creates a new ReadOnlySetWrapper.
-    *
-    * @param bean the bean of this SetProperty
-    * @param name the name of this SetProperty
-    */
+   * Creates a new ReadOnlySetWrapper.
+   *
+   * @param bean
+   *   the bean of this SetProperty
+   * @param name
+   *   the name of this SetProperty
+   */
   def apply[E <: Any](bean: Any, name: String) =
     new ReadOnlySetWrapper(new jfxbp.ReadOnlySetWrapper[E](bean, name))
 
   /**
-    * Creates a new ReadOnlySetWrapper.
-    *
-    * @param bean  the bean of this SetProperty
-    * @param name  the name of this SetProperty
-    * @param value the initial value
-    */
+   * Creates a new ReadOnlySetWrapper.
+   *
+   * @param bean
+   *   the bean of this SetProperty
+   * @param name
+   *   the name of this SetProperty
+   * @param value
+   *   the initial value
+   */
   def apply[E <: Any](bean: Any, name: String, value: ObservableSet[E]) =
     new ReadOnlySetWrapper(new jfxbp.ReadOnlySetWrapper(bean, name, value.delegate))
 }
 
-
 /**
-  * Wraps `javafx.beans.property.ReadOnlySetWrapper`.
-  */
+ * Wraps `javafx.beans.property.ReadOnlySetWrapper`.
+ */
 class ReadOnlySetWrapper[E <: Any](override val delegate: jfxbp.ReadOnlySetWrapper[E] = new jfxbp.ReadOnlySetWrapper[E])
-  extends SetProperty[E](delegate)
+    extends SetProperty[E](delegate)
     with SFXDelegate[jfxbp.ReadOnlySetWrapper[E]] {
 
-  /** Creates a new ReadOnlySetWrapper instance.
-    *
-    * @param value the initial value of the wrapped value
-    */
+  /**
+   * Creates a new ReadOnlySetWrapper instance.
+   *
+   * @param value
+   *   the initial value of the wrapped value
+   */
   def this(value: ObservableSet[E]) =
     this(new jfxbp.ReadOnlySetWrapper[E](value))
 
   /**
-    * Creates a new ReadOnlySetWrapper.
-    *
-    * @param bean the bean of this SetProperty
-    * @param name the name of this SetProperty
-    */
+   * Creates a new ReadOnlySetWrapper.
+   *
+   * @param bean
+   *   the bean of this SetProperty
+   * @param name
+   *   the name of this SetProperty
+   */
   def this(bean: Any, name: String) =
     this(new jfxbp.ReadOnlySetWrapper[E](bean, name))
 
   /**
-    * Creates a new ReadOnlySetWrapper.
-    *
-    * @param bean  the bean of this SetProperty
-    * @param name  the name of this SetProperty
-    * @param value the initial value
-    */
+   * Creates a new ReadOnlySetWrapper.
+   *
+   * @param bean
+   *   the bean of this SetProperty
+   * @param name
+   *   the name of this SetProperty
+   * @param value
+   *   the initial value
+   */
   def this(bean: Any, name: String, value: ObservableSet[E]) =
     this(new jfxbp.ReadOnlySetWrapper[E](bean, name, value))
 
   /**
-    * Returns the readonly property, that is synchronized with this ReadOnlySetWrapper.
-    *
-    * @return the readonly property
-    */
+   * Returns the readonly property, that is synchronized with this ReadOnlySetWrapper.
+   *
+   * @return
+   *   the readonly property
+   */
   def readOnlyProperty: ReadOnlySetProperty[E] = delegate.getReadOnlyProperty
 }

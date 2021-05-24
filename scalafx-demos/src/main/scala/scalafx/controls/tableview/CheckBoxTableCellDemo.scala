@@ -46,7 +46,7 @@ object CheckBoxTableCellDemo extends JFXApp {
 
   class Item(selected_ : Boolean, name_ : String) {
     val selected = new BooleanProperty(this, "selected", selected_)
-    val name = new StringProperty(this, "name", name_)
+    val name     = new StringProperty(this, "name", name_)
   }
 
   val data = ObservableBuffer.from[Item](
@@ -70,7 +70,7 @@ object CheckBoxTableCellDemo extends JFXApp {
           },
           new TableColumn[Item, String] {
             text = "Name"
-            cellValueFactory = {_.value.name}
+            cellValueFactory = { _.value.name }
             prefWidth = 180
           }
         )

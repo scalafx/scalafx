@@ -38,11 +38,14 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object FilteredBuffer {
+
   /**
    * Converts a ScalaFX FilteredBuffer to its JavaFX counterpart FilteredList.
    *
-   * @param v ScalaFX FilteredBuffer
-   * @return JavaFX FilteredList
+   * @param v
+   *   ScalaFX FilteredBuffer
+   * @return
+   *   JavaFX FilteredList
    */
   implicit def sfxFilteredList2jfx[E](v: FilteredBuffer[E]): jfxct.FilteredList[E] =
     if (v != null) v.delegate else null
@@ -51,37 +54,44 @@ object FilteredBuffer {
 /**
  * Wraps a $JFX $URL0 $TC]].
  *
- * @define TC FilteredList
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections.transformation/FilteredList.html
- * @define JFX JavaFX
- * @define ORIGINALDOC Original Documentation]].
+ * @define
+ *   TC FilteredList
+ * @define
+ *   URL0
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections.transformation/FilteredList.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class FilteredBuffer[E](override val delegate: jfxct.FilteredList[E])
-  extends TransformationBuffer[E, E](delegate)
-  with SFXDelegate[jfxct.FilteredList[E]] {
+    extends TransformationBuffer[E, E](delegate)
+    with SFXDelegate[jfxct.FilteredList[E]] {
 
   /**
-   * Constructs a new FilteredBuffer wrapper around the source buffer.
-   * This list has an "always true" predicate, containing all the elements of the source list.
+   * Constructs a new FilteredBuffer wrapper around the source buffer. This list has an "always true" predicate,
+   * containing all the elements of the source list.
    *
-   * @param source the source buffer.
+   * @param source
+   *   the source buffer.
    */
   def this(source: ObservableBuffer[E]) = this(delegate = new jfxct.FilteredList[E](source.delegate))
 
   /**
    * Constructs a new FilteredBuffer wrapper around the source buffer.
    *
-   * @param source the source buffer.
-   * @param predicate the predicate to match the elements. Cannot be null.
+   * @param source
+   *   the source buffer.
+   * @param predicate
+   *   the predicate to match the elements. Cannot be null.
    */
   def this(source: ObservableBuffer[E], predicate: (_ >: E) => Boolean) =
-    this(delegate = new jfxct.FilteredList[E](source.delegate, new ju.function.Predicate[E] {
-      override def test(t: E): Boolean = predicate(t)
-    }))
-
+    this(
+      delegate = new jfxct.FilteredList[E](
+        source.delegate,
+        new ju.function.Predicate[E] {
+          override def test(t: E): Boolean = predicate(t)
+        }
+      )
+    )
 
   /**
-   *
    * The predicate that will match the elements that will be in this FilteredBuffer.
    */
   def predicate: ObjectProperty[ju.function.Predicate[_ >: E]] = delegate.predicateProperty
@@ -90,8 +100,11 @@ class FilteredBuffer[E](override val delegate: jfxct.FilteredList[E])
   }
 
   def predicate_=(predicate: (E) => Boolean): Unit = {
-    ObjectProperty.fillProperty(delegate.predicateProperty, new ju.function.Predicate[E] {
-      override def test(t: E): Boolean = predicate(t)
-    })
+    ObjectProperty.fillProperty(
+      delegate.predicateProperty,
+      new ju.function.Predicate[E] {
+        override def test(t: E): Boolean = predicate(t)
+      }
+    )
   }
 }

@@ -41,73 +41,85 @@ import scala.language.implicitConversions
  * Object companion for [[scalafx.scene.control.ButtonBar]].
  */
 object ButtonBar {
+
   /**
    * The default button ordering on Windows.
    */
   val ButtonOrderWindows: String = jfxsc.ButtonBar.BUTTON_ORDER_WINDOWS
+
   /**
    * The default button ordering on Mac OS.
    */
   val ButtonOrderMacOs: String = jfxsc.ButtonBar.BUTTON_ORDER_MAC_OS
+
   /**
    * The default button ordering on Linux (specifically, GNOME).
    */
   val ButtonOrderLinux: String = jfxsc.ButtonBar.BUTTON_ORDER_LINUX
+
   /**
-   * A button ordering string that specifies there is no button ordering. In
-   * other words, buttons will be placed in the order that exist in the
-   * [[scalafx.scene.control.ButtonBar.buttons]] list. The only aspect of layout that makes this
+   * A button ordering string that specifies there is no button ordering. In other words, buttons will be placed in the
+   * order that exist in the [[scalafx.scene.control.ButtonBar.buttons]] list. The only aspect of layout that makes this
    * different than using an HBox is that the buttons are right-aligned.
    */
   val ButtonOrderNone: String = jfxsc.ButtonBar.BUTTON_ORDER_NONE
+
   /**
    * Converts a ScalaFX ButtonBar to its JavaFX counterpart.
    *
-   * @param v ScalaFX ButtonBar
-   * @return JavaFX ButtonBar
+   * @param v
+   *   ScalaFX ButtonBar
+   * @return
+   *   JavaFX ButtonBar
    */
   implicit def sfxButtonBar2jfx(v: ButtonBar): jfxsc.ButtonBar =
     if (v != null) v.delegate else null
+
   /**
-   * Sets the given ButtonData on the given button. If this button is
-   * subsequently placed in a [[scalafx.scene.control.ButtonBar]] it will be placed in the
-   * correct position relative to all other buttons in the bar.
+   * Sets the given ButtonData on the given button. If this button is subsequently placed in a
+   * [[scalafx.scene.control.ButtonBar]] it will be placed in the correct position relative to all other buttons in the
+   * bar.
    *
-   * @param button The button to annotate with the given { @link ButtonData} value.
-   * @param buttonData The ButtonData to designate the button as.
+   * @param button
+   *   The button to annotate with the given { @link ButtonData} value.
+   * @param buttonData
+   *   The ButtonData to designate the button as.
    */
   def setButtonData(button: Node, buttonData: ButtonBar.ButtonData): Unit = {
     jfxsc.ButtonBar.setButtonData(button, buttonData)
   }
+
   /**
-   * Returns the previously set ButtonData property on the given button. If this
-   * was never set, this method will return null.
+   * Returns the previously set ButtonData property on the given button. If this was never set, this method will return
+   * null.
    *
-   * @param button The button to return the previously set ButtonData for.
+   * @param button
+   *   The button to return the previously set ButtonData for.
    */
   def getButtonData(button: Node): ButtonBar.ButtonData = jfxsc.ButtonBar.getButtonData(button)
+
   /**
-   * By default all buttons are uniformly sized in a ButtonBar, meaning that all
-   * buttons take the width of the widest button. It is possible to opt-out of this
-   * on a per-button basis, but calling the setButtonUniformSize method with
-   * a boolean value of false.
+   * By default all buttons are uniformly sized in a ButtonBar, meaning that all buttons take the width of the widest
+   * button. It is possible to opt-out of this on a per-button basis, but calling the setButtonUniformSize method with a
+   * boolean value of false.
    *
-   * <p>If a button is excluded from uniform sizing, it is both excluded from
-   * being resized away from its preferred size, and also excluded from the
-   * measuring process, so its size will not influence the maximum size calculated
-   * for all buttons in the ButtonBar.
+   * <p>If a button is excluded from uniform sizing, it is both excluded from being resized away from its preferred
+   * size, and also excluded from the measuring process, so its size will not influence the maximum size calculated for
+   * all buttons in the ButtonBar.
    *
-   * @param button The button to include / exclude from uniform sizing.
-   * @param uniformSize Boolean true to force uniform sizing on the button,
-   *                    false to exclude the button from uniform sizing.
+   * @param button
+   *   The button to include / exclude from uniform sizing.
+   * @param uniformSize
+   *   Boolean true to force uniform sizing on the button, false to exclude the button from uniform sizing.
    */
   def setButtonUniformSize(button: Node, uniformSize: Boolean): Unit = {
     jfxsc.ButtonBar.setButtonUniformSize(button, uniformSize)
   }
+
   /**
-   * Returns whether the given node is part of the uniform sizing calculations
-   * or not. By default all nodes that have not opted out (via
-   * [[scalafx.scene.control.ButtonBar.setButtonUniformSize( N o d e, b o o l e a n]]) will return true here.
+   * Returns whether the given node is part of the uniform sizing calculations or not. By default all nodes that have
+   * not opted out (via [[scalafx.scene.control.ButtonBar.setButtonUniformSize(N o d e, b o o l e a n]] ) will return
+   * true here.
    */
   def isButtonUniformSize(button: Node): Boolean = {
     jfxsc.ButtonBar.isButtonUniformSize(button)
@@ -116,22 +128,25 @@ object ButtonBar {
   /**
    * Wraps a $JFX $URL0 $FC]].
    *
-   * @constructor Creates a new ButtonData from a JavaFX one.
-   * @param delegate JavaFX ButtonData
+   * @constructor
+   *   Creates a new ButtonData from a JavaFX one.
+   * @param delegate
+   *   JavaFX ButtonData
    */
   sealed abstract class ButtonData(override val delegate: jfxsc.ButtonBar.ButtonData)
-    extends SFXEnumDelegate[jfxsc.ButtonBar.ButtonData] {
+      extends SFXEnumDelegate[jfxsc.ButtonBar.ButtonData] {
     def typeCode: String = delegate.getTypeCode
   }
 
   /**
    * Wraps a $JFX $URL0 $FC]].
    *
-   * @define EN          ButtonData
-    * @define URL0       [[http://docs.oracle.com/javase/8/javafx/api/javafx/javafx/scene/control/ButtonBar.ButtonData.html
-    * @define JFX        JavaFX
-   * @define ORIGINALDOC Original Documentation]].
-    **/
+   * @define
+   *   EN ButtonData
+   * @define
+   *   URL0
+   *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/javafx/scene/control/ButtonBar.ButtonData.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+   */
   object ButtonData extends SFXEnumDelegateCompanion[jfxsc.ButtonBar.ButtonData, ButtonData] {
 
     /**
@@ -165,24 +180,21 @@ object ButtonBar {
     /**
      * A tag for the "yes" button.
      *
-     * <p><strong>Is default button:</strong> True
-     * <p><strong>Button order code:</strong> Y
+     * <p><strong>Is default button:</strong> True <p><strong>Button order code:</strong> Y
      */
     case object Yes extends ButtonData(jfxsc.ButtonBar.ButtonData.YES)
 
     /**
      * A tag for the "no" button.
      *
-     * <p><strong>Is cancel button:</strong> True
-     * <p><strong>Button order code:</strong> N
+     * <p><strong>Is cancel button:</strong> True <p><strong>Button order code:</strong> N
      */
     case object No extends ButtonData(jfxsc.ButtonBar.ButtonData.NO)
 
     /**
      * A tag for the "next" or "forward" button.
      *
-     * <p><strong>Is default button:</strong> True
-     * <p><strong>Button order code:</strong> X
+     * <p><strong>Is default button:</strong> True <p><strong>Button order code:</strong> X
      */
     case object NextForward extends ButtonData(jfxsc.ButtonBar.ButtonData.NEXT_FORWARD)
 
@@ -196,8 +208,7 @@ object ButtonBar {
     /**
      * A tag for the "finish".
      *
-     * <p><strong>Is default button:</strong> True
-     * <p><strong>Button order code:</strong> I
+     * <p><strong>Is default button:</strong> True <p><strong>Button order code:</strong> I
      */
     case object Finish extends ButtonData(jfxsc.ButtonBar.ButtonData.FINISH)
 
@@ -211,16 +222,14 @@ object ButtonBar {
     /**
      * A tag for the "cancel" or "close" button.
      *
-     * <p><strong>Is cancel button:</strong> True
-     * <p><strong>Button order code:</strong> C
+     * <p><strong>Is cancel button:</strong> True <p><strong>Button order code:</strong> C
      */
     case object CancelClose extends ButtonData(jfxsc.ButtonBar.ButtonData.CANCEL_CLOSE)
 
     /**
      * A tag for the "ok" or "done" button.
      *
-     * <p><strong>Is default button:</strong> True
-     * <p><strong>Button order code:</strong> O
+     * <p><strong>Is default button:</strong> True <p><strong>Button order code:</strong> O
      */
     case object OKDone extends ButtonData(jfxsc.ButtonBar.ButtonData.OK_DONE)
 
@@ -231,10 +240,8 @@ object ButtonBar {
      */
     case object Other extends ButtonData(jfxsc.ButtonBar.ButtonData.OTHER)
 
-
     /**
-     * A glue push gap that will take as much space as it can and at least
-     * an "unrelated" gap. (Platform dependent)
+     * A glue push gap that will take as much space as it can and at least an "unrelated" gap. (Platform dependent)
      *
      * <p><strong>Button order code:</strong> +
      */
@@ -247,8 +254,23 @@ object ButtonBar {
      */
     case object SmallGap extends ButtonData(jfxsc.ButtonBar.ButtonData.SMALL_GAP)
 
-    protected override def unsortedValues: Array[ButtonData] = Array(Left, Right, Help, Help2, Yes, No,
-      NextForward, BackPrevious, Finish, Apply, CancelClose, OKDone, Other, BigGap, SmallGap)
+    protected override def unsortedValues: Array[ButtonData] = Array(
+      Left,
+      Right,
+      Help,
+      Help2,
+      Yes,
+      No,
+      NextForward,
+      BackPrevious,
+      Finish,
+      Apply,
+      CancelClose,
+      OKDone,
+      Other,
+      BigGap,
+      SmallGap
+    )
   }
 
 }
@@ -258,26 +280,25 @@ object ButtonBar {
  *
  * Wraps a $JFX $URL0 $TC]].
  *
- * @define TC ButtonBar
- * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ButtonBar.html
- * @define JFX JavaFX
- * @define ORIGINALDOC Original Documentation]].
- * @constructor      Creates a default ButtonBar instance using the default properties for
- *                   the users operating system.
-
+ * @define
+ *   TC ButtonBar
+ * @define
+ *   URL0
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ButtonBar.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ * @constructor
+ *   Creates a default ButtonBar instance using the default properties for the users operating system.
  */
 class ButtonBar(override val delegate: jfxsc.ButtonBar = new jfxsc.ButtonBar())
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.ButtonBar] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.ButtonBar] {
 
   /**
-   * Creates a ButtonBar with the given button order (refer to
-   * 'buttonOrder' property for more information).
+   * Creates a ButtonBar with the given button order (refer to 'buttonOrder' property for more information).
    *
-   * @param buttonOrder The button order to use in this button bar instance.
+   * @param buttonOrder
+   *   The button order to use in this button bar instance.
    */
   def this(buttonOrder: String) = this(new jfxsc.ButtonBar(buttonOrder))
-
 
   def buttons: ObservableBuffer[jfxs.Node] = delegate.getButtons
 
@@ -290,9 +311,9 @@ class ButtonBar(override val delegate: jfxsc.ButtonBar = new jfxsc.ButtonBar())
   }
 
   /**
-   * The order for the typical buttons in a standard button bar. It is
-   * one letter per [[scalafx.scene.control.ButtonBar.ButtonData]] enumeration value. Default button orders
-   * for operating systems are also available: [[scalafx.scene.control.ButtonBar.ButtonOrderWindows]],
+   * The order for the typical buttons in a standard button bar. It is one letter per
+   * [[scalafx.scene.control.ButtonBar.ButtonData]] enumeration value. Default button orders for operating systems are
+   * also available: [[scalafx.scene.control.ButtonBar.ButtonOrderWindows]],
    * [[scalafx.scene.control.ButtonBar.ButtonOrderMacOs]], and [[scalafx.scene.control.ButtonBar.ButtonOrderLinux]].
    */
   def buttonOrder: StringProperty = delegate.buttonOrderProperty

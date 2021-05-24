@@ -41,9 +41,9 @@ object Scale {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Scale.html]]
  */
 class Scale(override val delegate: jfxst.Scale = new jfxst.Scale)
-  extends Transform(delegate)
-  with PositionDelegate[jfxst.Scale]
-  with SFXDelegate[jfxst.Scale] {
+    extends Transform(delegate)
+    with PositionDelegate[jfxst.Scale]
+    with SFXDelegate[jfxst.Scale] {
 
   /**
    * Creates a two-dimensional Scale.

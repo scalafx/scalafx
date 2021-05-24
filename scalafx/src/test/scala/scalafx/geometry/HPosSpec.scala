@@ -32,9 +32,10 @@ import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Tests for [[scalafx.geometry.HPos]]. */
-class HPosSpec extends SFXEnumDelegateSpec[jfxg.HPos, HPos](
-  javaClass = classOf[jfxg.HPos],
-  scalaClass = classOf[HPos],
-  companion = HPos)
+class HPosSpec
+    extends SFXEnumDelegateSpec[jfxg.HPos, HPos](
+      javaClass = classOf[jfxg.HPos],
+      scalaClass = classOf[HPos],
+      companion = HPos
+    )

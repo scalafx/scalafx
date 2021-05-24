@@ -33,9 +33,7 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Accordion Spec tests.
- *
- *
  */
 class AccordionSpec
-  extends SimpleSFXDelegateSpec[jfxsc.Accordion, Accordion](classOf[jfxsc.Accordion], classOf[Accordion])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.Accordion, Accordion](classOf[jfxsc.Accordion], classOf[Accordion])
+    with RunOnApplicationThread

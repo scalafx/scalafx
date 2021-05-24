@@ -43,27 +43,29 @@ object Pane {
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Pane.html]].
  */
-class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane)
-  extends Region(delegate)
-    with SFXDelegate[jfxsl.Pane] {
+class Pane(override val delegate: jfxsl.Pane = new jfxsl.Pane) extends Region(delegate) with SFXDelegate[jfxsl.Pane] {
 
   /**
    * Gets the list of children of this Parent.
    */
   def children: ObservableBuffer[jfxs.Node] = delegate.getChildren
+
   /**
    * Sets the list of children, replacing the prior content. If you want append to current content, use `add`, `+=` or
    * similar.
    *
-   * @param c list of children to replace prior content.
+   * @param c
+   *   list of children to replace prior content.
    */
   def children_=(c: Iterable[Node]): Unit = {
     fillSFXCollection(this.children, c)
   }
+
   /**
    * Sets a child, replacing the prior content. If you want append to current content, use `add`, `+=` or similar.
    *
-   * @param n Node to replace prior content.
+   * @param n
+   *   Node to replace prior content.
    */
   def children_=(n: Node): Unit = {
     fillSFXCollectionWithOne(this.children, n)

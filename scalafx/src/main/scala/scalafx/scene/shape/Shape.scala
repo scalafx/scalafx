@@ -60,18 +60,18 @@ object Shape {
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/Shape.html]].
  */
-abstract class Shape(override val delegate: jfxss.Shape)
-  extends Node(delegate)
-  with SFXDelegate[jfxss.Shape] {
+abstract class Shape(override val delegate: jfxss.Shape) extends Node(delegate) with SFXDelegate[jfxss.Shape] {
 
   /**
    * Defines parameters to fill the interior of an Shape using the settings of the Paint context.
    */
   def fill: ObjectProperty[jfxsp.Paint] = delegate.fillProperty
+
   /**
    * Sets parameters to fill the interior of an Shape using the settings of the Paint context.
    *
-   * @param v Filling Parameters.
+   * @param v
+   *   Filling Parameters.
    */
   def fill_=(v: Paint): Unit = {
     ObjectProperty.fillProperty[jfxsp.Paint](this.fill, v)
@@ -96,7 +96,7 @@ abstract class Shape(override val delegate: jfxss.Shape)
   }
 
   /**
-   * The end cap style of this Shape as one of the following values that define possible end cap styles: 
+   * The end cap style of this Shape as one of the following values that define possible end cap styles:
    * `StrokeLineCap.BUTT`, `StrokeLineCap.ROUND`, and `StrokeLineCap.SQUARE`.
    */
   def strokeLineCap: ObjectProperty[jfxss.StrokeLineCap] = delegate.strokeLineCapProperty
@@ -124,7 +124,7 @@ abstract class Shape(override val delegate: jfxss.Shape)
   }
 
   /**
-   * Defines parameters of a stroke that is drawn around the outline of a Shape using the settings of the specified 
+   * Defines parameters of a stroke that is drawn around the outline of a Shape using the settings of the specified
    * Paint.
    */
   def stroke: ObjectProperty[jfxsp.Paint] = delegate.strokeProperty
@@ -155,11 +155,13 @@ abstract class Shape(override val delegate: jfxss.Shape)
    * Defines the array representing the lengths of the dash segments.
    */
   def strokeDashArray: ObservableBuffer[java.lang.Double] = delegate.getStrokeDashArray
+
   /**
-   * Sets the list of lengths of the dash segments, replacing the prior content. If you want append to current 
-   * content, use `+==` or similar.
+   * Sets the list of lengths of the dash segments, replacing the prior content. If you want append to current content,
+   * use `+==` or similar.
    *
-   * @param c List of lengths of the dash segments to replace prior content.
+   * @param c
+   *   List of lengths of the dash segments to replace prior content.
    */
   def strokeDashArray_=(c: Iterable[java.lang.Double]): Unit = {
     if (null == c) {

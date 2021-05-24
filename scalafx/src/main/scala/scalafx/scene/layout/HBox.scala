@@ -78,9 +78,9 @@ object HBox {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/HBox.html]]
  */
 class HBox(override val delegate: jfxsl.HBox = new jfxsl.HBox)
-  extends Pane(delegate)
-  with AlignmentDelegate[jfxsl.HBox]
-  with SFXDelegate[jfxsl.HBox] {
+    extends Pane(delegate)
+    with AlignmentDelegate[jfxsl.HBox]
+    with SFXDelegate[jfxsl.HBox] {
 
   /**
    * Creates an HBox layout with the specified spacing between children.
@@ -89,14 +89,17 @@ class HBox(override val delegate: jfxsl.HBox = new jfxsl.HBox)
 
   /**
    * Creates an HBox layout with spacing = 0.
-   * @param children The initial set of children for this pane.
+   * @param children
+   *   The initial set of children for this pane.
    */
   def this(children: Node*) = this(new jfxsl.HBox(children.map(_.delegate): _*))
 
   /**
    * Creates an HBox layout with the specified spacing between children.
-   * @param spacing  The amount of horizontal space between each child.
-   * @param children  The initial set of children for this pane.
+   * @param spacing
+   *   The amount of horizontal space between each child.
+   * @param children
+   *   The initial set of children for this pane.
    */
   def this(spacing: Double, children: Node*) = this(new jfxsl.HBox(spacing, children.map(_.delegate): _*))
 
@@ -110,8 +113,8 @@ class HBox(override val delegate: jfxsl.HBox = new jfxsl.HBox)
   }
 
   /**
-   * Whether or not resizable children will be resized to fill the full height of the hbox or be
-   * kept to their preferred height and aligned according to the alignment vpos value.
+   * Whether or not resizable children will be resized to fill the full height of the hbox or be kept to their preferred
+   * height and aligned according to the alignment vpos value.
    */
   def fillHeight: BooleanProperty = delegate.fillHeightProperty
 

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,4 +38,6 @@ object SubtitleTrack {
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/media/SubtitleTrack.html]].
  */
-class SubtitleTrack(override val delegate: jfxsm.SubtitleTrack) extends Track(delegate) with SFXDelegate[jfxsm.SubtitleTrack] {}
+class SubtitleTrack(override val delegate: jfxsm.SubtitleTrack)
+    extends Track(delegate)
+    with SFXDelegate[jfxsm.SubtitleTrack] {}

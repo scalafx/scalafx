@@ -34,11 +34,10 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * KeyCharacterCombination Spec tests.
- *
- *
  */
 class ClipboardSpec
-  extends SimpleSFXDelegateSpec[jfxsi.Clipboard, Clipboard](classOf[jfxsi.Clipboard], classOf[Clipboard]) with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsi.Clipboard, Clipboard](classOf[jfxsi.Clipboard], classOf[Clipboard])
+    with RunOnApplicationThread {
 
   override protected def getJavaClassInstance = jfxsi.Clipboard.getSystemClipboard
 

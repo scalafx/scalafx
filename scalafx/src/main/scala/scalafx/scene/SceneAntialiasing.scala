@@ -34,8 +34,9 @@ import scala.language.implicitConversions
 /**
  * Specifies the level of antialiasing desired when rendering 3D primitives.
  *
- * @note In order for scene antialiasing to have an affect, the underlying system must support:
- *       ConditionalFeature.SCENE3D and anti-aliasing.
+ * @note
+ *   In order for scene antialiasing to have an affect, the underlying system must support: ConditionalFeature.SCENE3D
+ *   and anti-aliasing.
  */
 object SceneAntialiasing {
 
@@ -46,11 +47,13 @@ object SceneAntialiasing {
     if (v != null) v.delegate else null.asInstanceOf[jfxs.SceneAntialiasing]
 
   /**
-    * Converts a JavaFX `SceneAntialiasing` to its respective `SceneAntialiasing`.
-    *
-    * @param e JavaFX `SceneAntialiasing`
-    * @return `ScalaFX` equivalent to argument.
-    */
+   * Converts a JavaFX `SceneAntialiasing` to its respective `SceneAntialiasing`.
+   *
+   * @param e
+   *   JavaFX `SceneAntialiasing`
+   * @return
+   *   `ScalaFX` equivalent to argument.
+   */
   def apply(e: jfxs.SceneAntialiasing): SceneAntialiasing =
     if (e != null) values.find(_.delegate == e).get
     else null.asInstanceOf[SceneAntialiasing]
@@ -72,4 +75,4 @@ object SceneAntialiasing {
 }
 
 sealed abstract class SceneAntialiasing(override val delegate: jfxs.SceneAntialiasing)
-  extends SFXDelegate[jfxs.SceneAntialiasing]
+    extends SFXDelegate[jfxs.SceneAntialiasing]

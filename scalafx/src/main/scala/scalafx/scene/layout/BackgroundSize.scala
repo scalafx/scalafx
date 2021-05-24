@@ -34,11 +34,11 @@ import scalafx.delegate.SFXDelegate
 object BackgroundSize {
   implicit def sfxBackgroundSize2jfx(v: BackgroundSize): jfxsl.BackgroundSize = if (v != null) v.delegate else null
 
-  /** From the CSS Specification:
-    * An "auto" value for one dimension is resolved by using the image's intrinsic ratio and
-    * the size of the other dimension, or failing that, using the image's intrinsic size,
-    * or failing that, treating it as 100%.
-    */
+  /**
+   * From the CSS Specification: An "auto" value for one dimension is resolved by using the image's intrinsic ratio and
+   * the size of the other dimension, or failing that, using the image's intrinsic size, or failing that, treating it as
+   * 100%.
+   */
   val Auto: Double = jfxsl.BackgroundSize.AUTO
 
   /**
@@ -48,16 +48,21 @@ object BackgroundSize {
 }
 
 /**
- * @author Jarek Sacha 
+ * @author
+ *   Jarek Sacha
  */
-class BackgroundSize(override val delegate: jfxsl.BackgroundSize)
-  extends SFXDelegate[jfxsl.BackgroundSize] {
+class BackgroundSize(override val delegate: jfxsl.BackgroundSize) extends SFXDelegate[jfxsl.BackgroundSize] {
 
   /** Create a new BackgroundSize. */
-  def this(width: Double, height: Double, widthAsPercentage: Boolean, heightAsPercentage: Boolean,
-           contain: Boolean, cover: Boolean) =
-    this(new jfxsl.BackgroundSize(width, height, widthAsPercentage, heightAsPercentage,
-      contain, cover))
+  def this(
+      width: Double,
+      height: Double,
+      widthAsPercentage: Boolean,
+      heightAsPercentage: Boolean,
+      contain: Boolean,
+      cover: Boolean
+  ) =
+    this(new jfxsl.BackgroundSize(width, height, widthAsPercentage, heightAsPercentage, contain, cover))
 
   /** The height of the area within the Region where the associated BackgroundImage should render. */
   def width: Double = delegate.getHeight

@@ -34,10 +34,11 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- *
  * Test for [[scalafx.scene.control.TextInputDialog]].
  */
 class TextInputDialogSpec
-  extends SimpleSFXDelegateSpec[jfxsc.TextInputDialog, TextInputDialog](
-    classOf[jfxsc.TextInputDialog], classOf[TextInputDialog])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.TextInputDialog, TextInputDialog](
+      classOf[jfxsc.TextInputDialog],
+      classOf[TextInputDialog]
+    )
+    with RunOnApplicationThread

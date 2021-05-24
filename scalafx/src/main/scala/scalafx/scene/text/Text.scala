@@ -44,30 +44,29 @@ object Text {
 }
 
 class Text(override val delegate: jfxst.Text = new jfxst.Text)
-  extends Shape(delegate)
+    extends Shape(delegate)
     with PositionDelegate[jfxst.Text]
     with SFXDelegate[jfxst.Text] {
 
   /**
-    * Creates an instance of Text containing the given string.
-    */
+   * Creates an instance of Text containing the given string.
+   */
   def this(t: String) = this(new jfxst.Text(t))
 
   /**
-    * Creates an instance of Text on the given coordinates containing the given string.
-    */
+   * Creates an instance of Text on the given coordinates containing the given string.
+   */
   def this(x: Double, y: Double, t: String) = this(new jfxst.Text(x, y, t))
 
   /**
-    * The 'alphabetic' (or roman) baseline offset from the Text node's layoutBounds.minY location.
-    *
-    */
+   * The 'alphabetic' (or roman) baseline offset from the Text node's layoutBounds.minY location.
+   */
   // NOTE IMPLEMENTATION: Added "Property" suffix to not conflict with Node.baselineOffset() method.
   def baselineOffsetProperty: ReadOnlyDoubleProperty = delegate.baselineOffsetProperty
 
   /**
-    * Determines how the bounds of the text node are calculated.
-    */
+   * Determines how the bounds of the text node are calculated.
+   */
   def boundsType: ObjectProperty[jfxst.TextBoundsType] = delegate.boundsTypeProperty
 
   def boundsType_=(v: TextBoundsType): Unit = {
@@ -75,8 +74,8 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   }
 
   /**
-    * Defines the font of text.
-    */
+   * Defines the font of text.
+   */
   def font: ObjectProperty[jfxst.Font] = delegate.fontProperty
 
   def font_=(v: Font): Unit = {
@@ -84,8 +83,8 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   }
 
   /**
-    * Specifies a requested font smoothing type : gray or LCD.
-    */
+   * Specifies a requested font smoothing type : gray or LCD.
+   */
   def fontSmoothingType: ObjectProperty[jfxst.FontSmoothingType] = delegate.fontSmoothingTypeProperty
 
   def fontSmoothingType_=(v: FontSmoothingType): Unit = {
@@ -93,8 +92,8 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   }
 
   /**
-    * Defines the vertical space in pixel between lines.
-    */
+   * Defines the vertical space in pixel between lines.
+   */
   def lineSpacing: DoubleProperty = delegate.lineSpacingProperty
 
   def lineSpacing_=(v: Double): Unit = {
@@ -129,8 +128,8 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   }
 
   /**
-    * Defines horizontal text alignment in the bounding box.
-    */
+   * Defines horizontal text alignment in the bounding box.
+   */
   def textAlignment: ObjectProperty[jfxst.TextAlignment] = delegate.textAlignmentProperty
 
   def textAlignment_=(v: TextAlignment): Unit = {
@@ -138,8 +137,8 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   }
 
   /**
-    * Defines the origin of text coordinate system in local coordinates.
-    */
+   * Defines the origin of text coordinate system in local coordinates.
+   */
   def textOrigin: ObjectProperty[jfxg.VPos] = delegate.textOriginProperty
 
   def textOrigin_=(v: VPos): Unit = {
@@ -147,8 +146,8 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   }
 
   /**
-    * Defines if each line of text should have a line below it.
-    */
+   * Defines if each line of text should have a line below it.
+   */
   def underline: BooleanProperty = delegate.underlineProperty
 
   def underline_=(v: Boolean): Unit = {
@@ -156,20 +155,17 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   }
 
   /**
-    * Defines a width constraint for the text in user space coordinates, e.g. pixels, not glyph or
-    * character count.
-    */
+   * Defines a width constraint for the text in user space coordinates, e.g. pixels, not glyph or character count.
+   */
   def wrappingWidth: DoubleProperty = delegate.wrappingWidthProperty
 
   def wrappingWidth_=(v: Double): Unit = {
     wrappingWidth() = v
   }
 
-
   /**
-    * Caret bias in the content. `true` means a bias towards the leading character edge.
-    * (true=leading/false=trailing)
-    */
+   * Caret bias in the content. `true` means a bias towards the leading character edge. (true=leading/false=trailing)
+   */
   def caretBias: BooleanProperty = delegate.caretBiasProperty
 
   def caretBias_=(v: Boolean): Unit = {
@@ -177,8 +173,8 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   }
 
   /**
-    * The fill color of selected text.
-    */
+   * The fill color of selected text.
+   */
   def selectionFill: ObjectProperty[jfxsp.Paint] = delegate.selectionFillProperty
 
   def selectionFill_=(v: Paint): Unit = {
@@ -186,8 +182,8 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   }
 
   /**
-    * Caret index in the content. Set to `-1` to unset caret.
-    */
+   * Caret index in the content. Set to `-1` to unset caret.
+   */
   def caretPosition: IntegerProperty = delegate.caretPositionProperty
 
   def caretPosition_=(v: Int): Unit = {
@@ -195,19 +191,18 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   }
 
   /**
-    * Shape of caret in local coordinates.
-    */
+   * Shape of caret in local coordinates.
+   */
   def caretShape: ReadOnlyObjectProperty[Array[jfxss.PathElement]] = delegate.caretShapeProperty
 
   /**
-    * Shape of selection in local coordinates.
-    */
+   * Shape of selection in local coordinates.
+   */
   def selectionShape: ReadOnlyObjectProperty[Array[jfxss.PathElement]] = delegate.selectionShapeProperty
 
   /**
-    * Selection start index in the content.
-    * Set to `-1` to unset selection.
-    */
+   * Selection start index in the content. Set to `-1` to unset selection.
+   */
   def selectionStart: IntegerProperty = delegate.selectionStartProperty
 
   def selectionStart_=(v: Int): Unit = {
@@ -215,9 +210,8 @@ class Text(override val delegate: jfxst.Text = new jfxst.Text)
   }
 
   /**
-    * Selection end index in the content.
-    * Set to `-1` to unset selection.
-    */
+   * Selection end index in the content. Set to `-1` to unset selection.
+   */
   def selectionEnd: IntegerProperty = delegate.selectionEndProperty
 
   def selectionEnd_=(v: Int): Unit = {

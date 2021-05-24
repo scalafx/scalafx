@@ -34,7 +34,6 @@ import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
 
-
 object TriangleMesh {
   implicit def sfxTriangleMesh2jfx(tm: TriangleMesh): jfxss.TriangleMesh = if (tm != null) tm.delegate else null
 }
@@ -43,19 +42,20 @@ object TriangleMesh {
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/TriangleMesh.html]].
  */
 class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.TriangleMesh())
-  extends Mesh(delegate)
+    extends Mesh(delegate)
     with SFXDelegate[jfxss.TriangleMesh] {
 
   /**
    * Creates a new instance of `TriangleMesh` class with the specified `VertexFormat`.
    *
-   * @param vertexFormat specifies the vertex format type.
+   * @param vertexFormat
+   *   specifies the vertex format type.
    */
   def this(vertexFormat: VertexFormat) = this(new jfxss.TriangleMesh(vertexFormat))
 
   /**
-   * Specifies the vertex format of this `TriangleMesh`, one of
-   * [[VertexFormat.PointTexcoord]] or [[VertexFormat.PointNormalTexcoord]].
+   * Specifies the vertex format of this `TriangleMesh`, one of [[VertexFormat.PointTexcoord]] or
+   * [[VertexFormat.PointNormalTexcoord]].
    *
    * Default value [[VertexFormat.PointTexcoord]]
    */
@@ -74,7 +74,8 @@ class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.Triangl
   /**
    * Set faces to given array.
    *
-   * @param a Integer array to replace the contents of the faces array.
+   * @param a
+   *   Integer array to replace the contents of the faces array.
    */
   def faces_=(a: Array[Int]): Unit = {
     delegate.getFaces.setAll(a, 0, a.length)
@@ -86,7 +87,8 @@ class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.Triangl
   /**
    * Set face smoothing groups to given array.
    *
-   * @param a Integer array to replace the contents of the face smoothing groups array.
+   * @param a
+   *   Integer array to replace the contents of the face smoothing groups array.
    */
   def faceSmoothingGroups_=(a: Array[Int]): Unit = {
     delegate.getFaceSmoothingGroups.setAll(a, 0, a.length)
@@ -101,7 +103,8 @@ class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.Triangl
   /**
    * Set points to given array.
    *
-   * @param a Float array to replace the contents of the points array.
+   * @param a
+   *   Float array to replace the contents of the points array.
    */
   def points_=(a: Array[Float]): Unit = {
     delegate.getPoints.setAll(a, 0, a.length)
@@ -116,7 +119,8 @@ class TriangleMesh(override val delegate: jfxss.TriangleMesh = new jfxss.Triangl
   /**
    * Set texture coordinates to given array.
    *
-   * @param a Float array to replace the contents of the texture coordinates array.
+   * @param a
+   *   Float array to replace the contents of the texture coordinates array.
    */
   def texCoords_=(a: Array[Float]): Unit = {
     delegate.getTexCoords.setAll(a, 0, a.length)

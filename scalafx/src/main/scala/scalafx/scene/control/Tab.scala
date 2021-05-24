@@ -43,9 +43,7 @@ object Tab {
 
 }
 
-class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
-  extends Styleable
-  with SFXDelegate[jfxsc.Tab] {
+class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab) extends Styleable with SFXDelegate[jfxsc.Tab] {
 
   /**
    * The closable state for this tab.
@@ -157,10 +155,11 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
   }
 
   /**
-   * Sets the disabled state of this tab. A disable tab is no longer interactive or traversable,
-   * but the contents remain interactive. A disable tab can be selected using TabPane.getSelectionModel().
+   * Sets the disabled state of this tab. A disable tab is no longer interactive or traversable, but the contents remain
+   * interactive. A disable tab can be selected using TabPane.getSelectionModel().
    *
-   * @since 2.2
+   * @since
+   *   2.2
    */
   def disable: BooleanProperty = delegate.disableProperty()
 
@@ -169,15 +168,17 @@ class Tab(override val delegate: jfxsc.Tab = new jfxsc.Tab)
   }
 
   /**
-   * Indicates whether or not this Tab is disabled. A Tab will become disabled if disable is set to true
-   * on either itself or if the TabPane is disabled.
-   * @since 2.2
+   * Indicates whether or not this Tab is disabled. A Tab will become disabled if disable is set to true on either
+   * itself or if the TabPane is disabled.
+   * @since
+   *   2.2
    */
   def disabled: ReadOnlyBooleanProperty = delegate.disabledProperty()
 
   /**
    * Set the value of the userData property for the instance constructed by this builder.
-   * @since 2.2
+   * @since
+   *   2.2
    */
   def userData: AnyRef = delegate.getUserData
 

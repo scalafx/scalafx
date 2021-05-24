@@ -39,14 +39,13 @@ import scalafx.scene.layout.{BorderPane, HBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
-
-/** Example for ScalaFX [[https://github.com/scalafx/scalafx/issues/14 Issue 14]].
-  *
-  * The example illustrates problem with `ObjectProperty` holding a ScalaFX wrapper,
-  * it cannot bind to component properties.
-  * In example here we have to use JavaFX `Color` as value type for `ObjectProperty` to able to bind it
-  * to `Rectangle#fill`.
-  */
+/**
+ * Example for ScalaFX [[https://github.com/scalafx/scalafx/issues/14Issue 14]].
+ *
+ * The example illustrates problem with `ObjectProperty` holding a ScalaFX wrapper, it cannot bind to component
+ * properties. In example here we have to use JavaFX `Color` as value type for `ObjectProperty` to able to bind it to
+ * `Rectangle#fill`.
+ */
 object ChangeFillExample extends JFXApp {
 
   // NOTE: We use here `ObjectProperty` factory method rather than constructor to indirectly create
@@ -59,8 +58,8 @@ object ChangeFillExample extends JFXApp {
   //   cannot be applied to (scalafx.beans.property.ObjectProperty[scalafx.scene.paint.Paint])
   //   fill <== fillPaint
   val fillPaint = ObjectProperty(this, "fillPaint", Color.LightGray)
-  val Light = Color.LightGray
-  val Dark = Color.Gray
+  val Light     = Color.LightGray
+  val Dark      = Color.Gray
 
   stage = new PrimaryStage {
     title = "Change Fill Example"

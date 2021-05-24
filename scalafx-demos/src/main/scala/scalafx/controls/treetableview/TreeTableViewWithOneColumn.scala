@@ -34,10 +34,9 @@ import scalafx.scene.control.TreeTableColumn.sfxTreeTableColumn2jfx
 import scalafx.scene.control.{TreeItem, TreeTableColumn, TreeTableView}
 
 /**
-  * TreeTableView with One Column.
-  * ScalaFX version of example 15-1 in JavaFX
-  * [[https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/tree-table-view.htm Tree Table View tutorial]].
-  */
+ * TreeTableView with One Column. ScalaFX version of example 15-1 in JavaFX
+ * [[https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/tree-table-view.htmTree Table View tutorial]].
+ */
 object TreeTableViewWithOneColumn extends JFXApp {
 
   // Creating items to be displayed in the TreeTableView

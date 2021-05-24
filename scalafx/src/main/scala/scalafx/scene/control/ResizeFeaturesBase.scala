@@ -34,17 +34,21 @@ import scalafx.scene.control.ControlIncludes.jfxTableColumnBase2sfx
 
 /**
  * Object companion for [[scalafx.scene.control.ResizeFeaturesBase]]
-  *
-  * @since 8.0
+ *
+ * @since
+ *   8.0
  */
 object ResizeFeaturesBase {
 
   /**
    * Converts a ScalaFX ResizeFeaturesBase to its JavaFX counterpart.
    *
-   * @param rfb A ScalaFX ResizeFeaturesBase
-   * @return JavaFX ResizeFeaturesBase
-   * @tparam S The type of the UI control (e.g. the type of the 'row').
+   * @param rfb
+   *   A ScalaFX ResizeFeaturesBase
+   * @return
+   *   JavaFX ResizeFeaturesBase
+   * @tparam S
+   *   The type of the UI control (e.g. the type of the 'row').
    */
   implicit def sfxResizeFeaturesBase2jfx[S](rfb: ResizeFeaturesBase[S]): jfxsc.ResizeFeaturesBase[S] =
     if (rfb != null) rfb.delegate else null
@@ -52,31 +56,37 @@ object ResizeFeaturesBase {
 }
 
 /**
- * Wraps JavaFX [[http://docs.oracle.com/javafx/8/api/javafx/scene/control/ResizeFeaturesBase.html ResizeFeaturesBase]].
+ * Wraps JavaFX [[http://docs.oracle.com/javafx/8/api/javafx/scene/control/ResizeFeaturesBase.htmlResizeFeaturesBase]].
  *
- * @constructor Creates a new ScalaFX ResizeFeaturesBase from a JavaFX ResizeFeaturesBase.
- * @param delegate JavaFX ResizeFeaturesBase to be wrapped.
- * @tparam S The type of the UI control (e.g. the type of the 'row').
- * @since 8.0
+ * @constructor
+ *   Creates a new ScalaFX ResizeFeaturesBase from a JavaFX ResizeFeaturesBase.
+ * @param delegate
+ *   JavaFX ResizeFeaturesBase to be wrapped.
+ * @tparam S
+ *   The type of the UI control (e.g. the type of the 'row').
+ * @since
+ *   8.0
  */
 class ResizeFeaturesBase[S](override val delegate: jfxsc.ResizeFeaturesBase[S])
-  extends SFXDelegate[jfxsc.ResizeFeaturesBase[S]] {
+    extends SFXDelegate[jfxsc.ResizeFeaturesBase[S]] {
 
   /**
-   * Creates an instance of this class, with the provided TableColumnBase and delta values being
-   * set and stored in this immutable instance.
+   * Creates an instance of this class, with the provided TableColumnBase and delta values being set and stored in this
+   * immutable instance.
    *
-   * @param column  The column upon which the resize is occurring, or null if this ResizeFeatures
-   *                instance is being created as a result of a resize operation.
-   * @param delta The amount of horizontal space added or removed in the resize operation.
+   * @param column
+   *   The column upon which the resize is occurring, or null if this ResizeFeatures instance is being created as a
+   *   result of a resize operation.
+   * @param delta
+   *   The amount of horizontal space added or removed in the resize operation.
    */
   def this(column: TableColumnBase[S, _], delta: Double) =
     this(new jfxsc.ResizeFeaturesBase[S](column, delta))
 
   /**
-   * The column upon which the resize is occurring, or null if this ResizeFeatures instance was
-   * created as a result of a resize operation.
-    */
+   * The column upon which the resize is occurring, or null if this ResizeFeatures instance was created as a result of a
+   * resize operation.
+   */
   def column: TableColumnBase[S, _] = jfxTableColumnBase2sfx(delegate.getColumn)
 
   /**

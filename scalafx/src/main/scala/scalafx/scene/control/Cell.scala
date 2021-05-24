@@ -38,8 +38,8 @@ object Cell {
 }
 
 class Cell[T](override val delegate: jfxsc.Cell[T] = new jfxsc.Cell[T])
-  extends Labeled(delegate)
-  with SFXDelegate[jfxsc.Cell[T]] {
+    extends Labeled(delegate)
+    with SFXDelegate[jfxsc.Cell[T]] {
 
   /**
    * A property representing whether this cell is allowed to be put into an editing state.
@@ -79,24 +79,22 @@ class Cell[T](override val delegate: jfxsc.Cell[T] = new jfxsc.Cell[T])
   }
 
   /**
-   * Call this function to transition from an editing state into a non-editing state, without 
-   * saving any user input.
+   * Call this function to transition from an editing state into a non-editing state, without saving any user input.
    */
   def cancelEdit(): Unit = {
     delegate.cancelEdit()
   }
 
   /**
-   * Call this function to transition from an editing state into a non-editing state, and in the 
-   * process saving any user input.
+   * Call this function to transition from an editing state into a non-editing state, and in the process saving any user
+   * input.
    */
   def commitEdit(newValue: T): Unit = {
     delegate.commitEdit(newValue)
   }
 
   /**
-   * Call this function to transition from a non-editing state into an editing state, if the cell 
-   * is editable.
+   * Call this function to transition from a non-editing state into an editing state, if the cell is editable.
    */
   def startEdit(): Unit = {
     delegate.startEdit()

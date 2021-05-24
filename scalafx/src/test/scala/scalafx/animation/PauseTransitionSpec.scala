@@ -33,9 +33,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * PauseTransition Spec tests.
- *
- *
  */
 class PauseTransitionSpec
-  extends SimpleSFXDelegateSpec[jfxa.PauseTransition, PauseTransition](
-    classOf[jfxa.PauseTransition], classOf[PauseTransition])
+    extends SimpleSFXDelegateSpec[jfxa.PauseTransition, PauseTransition](
+      classOf[jfxa.PauseTransition],
+      classOf[PauseTransition]
+    )

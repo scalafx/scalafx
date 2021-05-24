@@ -26,7 +26,6 @@
  */
 
 /**
- *
  */
 package scalafx.controls.controls
 
@@ -39,8 +38,8 @@ import scalafx.scene.layout._
 import scalafx.util.converter.DoubleStringConverter
 
 /**
- * @author rafael
- *
+ * @author
+ *   rafael
  */
 class SliderLabelControl(property: DoubleProperty) extends FlowPane {
 
@@ -113,7 +112,7 @@ class SliderLabelControl(property: DoubleProperty) extends FlowPane {
 object SliderLabelControlDemo extends JFXApp {
 
   val x: java.lang.Double = 5.0
-  val value = new IntegerProperty(1.asInstanceOf[java.lang.Object], "value")
+  val value               = new IntegerProperty(1.asInstanceOf[java.lang.Object], "value")
   //new DoubleProperty(x, "Value")
 
   val lblValue = new Label {
@@ -127,10 +126,9 @@ object SliderLabelControlDemo extends JFXApp {
     width = 200
     title = "Slider Label Control Demo"
     scene = new Scene {
-      content =
-        new FlowPane {
-          children = List(lblValue, sldValue)
-        }
+      content = new FlowPane {
+        children = List(lblValue, sldValue)
+      }
     }
   }
 

@@ -31,8 +31,7 @@ import javafx.{geometry => jfxg}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Side.html javafx.geometry.Side]] */
-object Side
-  extends SFXEnumDelegateCompanion[jfxg.Side, Side] {
+object Side extends SFXEnumDelegateCompanion[jfxg.Side, Side] {
 
   case object Bottom extends Side(jfxg.Side.BOTTOM)
   @deprecated("Use Bottom; BOTTOM will be removed in a future release", "8.0.60-R10")
@@ -56,8 +55,7 @@ object Side
   protected override def unsortedValues: Array[Side] = Array(Top, Bottom, Left, Right)
 }
 
-sealed abstract class Side(override val delegate: jfxg.Side)
-  extends SFXEnumDelegate[jfxg.Side] {
+sealed abstract class Side(override val delegate: jfxg.Side) extends SFXEnumDelegate[jfxg.Side] {
 
   /** Indicates whether this is horizontal side of a rectangle (returns true for `TOP` and `BOTTOM`). */
   def isHorizontal: Boolean = delegate.isHorizontal

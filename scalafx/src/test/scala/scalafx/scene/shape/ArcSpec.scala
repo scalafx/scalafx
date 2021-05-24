@@ -34,8 +34,5 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Arc Spec tests.
- *
- *
  */
-class ArcSpec
-  extends SimpleSFXDelegateSpec[jfxss.Arc, Arc](classOf[jfxss.Arc], classOf[Arc])
+class ArcSpec extends SimpleSFXDelegateSpec[jfxss.Arc, Arc](classOf[jfxss.Arc], classOf[Arc])

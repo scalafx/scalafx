@@ -41,10 +41,9 @@ import java.io.{FileNotFoundException, PrintWriter, StringWriter}
 import scala.language.implicitConversions
 
 /**
- * Based on JavaFX version discussed in blog: [[http://code.makery.ch/blog/javafx-dialogs-official/ JavaFX Dialogs]]
+ * Based on JavaFX version discussed in blog: [[http://code.makery.ch/blog/javafx-dialogs-official/JavaFX Dialogs]]
  */
 object DialogsDemo extends JFXApp {
-
 
   stage = new PrimaryStage {
     scene = new Scene {
@@ -166,8 +165,8 @@ object DialogsDemo extends JFXApp {
   }
 
   def confirmationWithCustomActions(): Unit = {
-    val ButtonTypeOne = new ButtonType("One")
-    val ButtonTypeTwo = new ButtonType("Two")
+    val ButtonTypeOne   = new ButtonType("One")
+    val ButtonTypeTwo   = new ButtonType("Two")
     val ButtonTypeThree = new ButtonType("Three")
 
     val alert = new Alert(AlertType.Confirmation) {

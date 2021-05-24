@@ -44,14 +44,13 @@ import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.paint.Color
 
-
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+ * @author
+ *   Luc Duponcheel <luc.duponcheel@gmail.com>
  *
  * based upon: Example 1 Creating the Application Frame
  *
  * http://docs.oracle.com/javafx/2.0/scenegraph/jfxpub-scenegraph.htm
- *
  */
 
 object ScalaFX_Scene_Graph_App_01 extends JFXApp {
@@ -62,4 +61,3 @@ object ScalaFX_Scene_Graph_App_01 extends JFXApp {
     }
   }
 }
-

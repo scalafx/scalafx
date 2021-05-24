@@ -45,7 +45,8 @@ object TextFieldTest extends JFXApp {
     fillWidth = true
     alignment = Pos.Center
     hgrow = Priority.Never
-    children = List(new TextFieldControls(textField), new TextInputControlControls(textField), new ControlControls(textField))
+    children =
+      List(new TextFieldControls(textField), new TextInputControlControls(textField), new ControlControls(textField))
   }
 
   val mainPane = new BorderPane {
@@ -69,6 +70,4 @@ object TextFieldTest extends JFXApp {
   mainPane.prefHeight <== stage.scene().height
   mainPane.prefWidth <== stage.scene().width
 
-
 }
-

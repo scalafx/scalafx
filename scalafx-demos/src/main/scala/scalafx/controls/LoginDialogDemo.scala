@@ -91,7 +91,7 @@ object LoginDialogDemo extends JFXApp {
     loginButton.disable = true
 
     // Do some validation (disable when username is empty).
-    username.text.onChange { (_, _, newValue) => loginButton.disable = newValue.trim().isEmpty}
+    username.text.onChange { (_, _, newValue) => loginButton.disable = newValue.trim().isEmpty }
 
     dialog.dialogPane().content = grid
 

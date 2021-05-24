@@ -41,16 +41,18 @@ import scala.collection.mutable
 import scala.language.implicitConversions
 
 object SkinBase {
-  implicit def sfxSkinBase2jfx[C <: jfxsc.Control](v: SkinBase[C]): jfxsc.SkinBase[C] = if (v != null) v.delegate else null
+  implicit def sfxSkinBase2jfx[C <: jfxsc.Control](v: SkinBase[C]): jfxsc.SkinBase[C] =
+    if (v != null) v.delegate else null
 
-  def classCssMetaData: mutable.Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = jfxsc.SkinBase.getClassCssMetaData.asScala
+  def classCssMetaData: mutable.Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] =
+    jfxsc.SkinBase.getClassCssMetaData.asScala
 }
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SkinBase.html]].
  */
-abstract class SkinBase[C <: jfxsc.Control] protected(override val delegate: jfxsc.SkinBase[C])
-  extends SFXDelegate[jfxsc.SkinBase[C]] {
+abstract class SkinBase[C <: jfxsc.Control] protected (override val delegate: jfxsc.SkinBase[C])
+    extends SFXDelegate[jfxsc.SkinBase[C]] {
 
   /**
    * Called by a `Skinnable` when the `Skin` is replaced on the `Skinnable`.
@@ -65,7 +67,8 @@ abstract class SkinBase[C <: jfxsc.Control] protected(override val delegate: jfx
   def children: ObservableBuffer[jfxs.Node] = delegate.getChildren
 
   /**
-   * This method should delegate to Node.getClassCssMetaData() so that a `Node`'s `CssMetaData` can be accessed without the need for reflection.
+   * This method should delegate to Node.getClassCssMetaData() so that a `Node`'s `CssMetaData` can be accessed without
+   * the need for reflection.
    */
   def cssMetaData: mutable.Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = delegate.getCssMetaData.asScala
 

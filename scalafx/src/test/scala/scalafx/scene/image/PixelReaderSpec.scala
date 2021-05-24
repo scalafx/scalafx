@@ -34,10 +34,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * PixelReader Spec tests.
- *
  */
 class PixelReaderSpec
-  extends SimpleSFXDelegateSpec[jfxsi.PixelReader, PixelReader](classOf[jfxsi.PixelReader], classOf[PixelReader]) {
+    extends SimpleSFXDelegateSpec[jfxsi.PixelReader, PixelReader](classOf[jfxsi.PixelReader], classOf[PixelReader]) {
 
   override protected def getScalaClassInstance = new PixelReader {
     override val delegate = getJavaClassInstance
@@ -50,10 +49,36 @@ class PixelReaderSpec
 
     def getPixelFormat = null
 
-    def getPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.WritablePixelFormat[ByteBuffer], buffer: Array[Byte], offset: Int, scanlineStride: Int): Unit = {}
+    def getPixels(
+        x: Int,
+        y: Int,
+        w: Int,
+        h: Int,
+        pixelformat: jfxsi.WritablePixelFormat[ByteBuffer],
+        buffer: Array[Byte],
+        offset: Int,
+        scanlineStride: Int
+    ): Unit = {}
 
-    def getPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.WritablePixelFormat[IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int): Unit = {}
+    def getPixels(
+        x: Int,
+        y: Int,
+        w: Int,
+        h: Int,
+        pixelformat: jfxsi.WritablePixelFormat[IntBuffer],
+        buffer: Array[Int],
+        offset: Int,
+        scanlineStride: Int
+    ): Unit = {}
 
-    def getPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: jfxsi.WritablePixelFormat[B], buffer: B, scanlineStride: Int): Unit = {}
+    def getPixels[B <: Buffer](
+        x: Int,
+        y: Int,
+        w: Int,
+        h: Int,
+        pixelformat: jfxsi.WritablePixelFormat[B],
+        buffer: B,
+        scanlineStride: Int
+    ): Unit = {}
   }
 }

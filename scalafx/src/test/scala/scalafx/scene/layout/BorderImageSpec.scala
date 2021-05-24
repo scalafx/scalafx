@@ -34,12 +34,10 @@ import scalafx.geometry.Insets
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- *
  * Test for [[scalafx.scene.layout.BorderImageSpec]].
  */
 class BorderImageSpec
-  extends SimpleSFXDelegateSpec[jfxsl.BorderImage, BorderImage](
-    classOf[jfxsl.BorderImage], classOf[BorderImage]) {
+    extends SimpleSFXDelegateSpec[jfxsl.BorderImage, BorderImage](classOf[jfxsl.BorderImage], classOf[BorderImage]) {
 
   override protected def getScalaClassInstance = new BorderImage(getJavaClassInstance) {}
 

@@ -35,5 +35,5 @@ import scalafx.testutil.{AlignmentDelegateSpec, SimpleSFXDelegateSpec}
  * VBox Spec tests.
  */
 class VBoxSpec
-  extends SimpleSFXDelegateSpec[jfxsl.VBox, VBox](classOf[jfxsl.VBox], classOf[VBox])
-  with AlignmentDelegateSpec[jfxsl.VBox, VBox]
+    extends SimpleSFXDelegateSpec[jfxsl.VBox, VBox](classOf[jfxsl.VBox], classOf[VBox])
+    with AlignmentDelegateSpec[jfxsl.VBox, VBox]

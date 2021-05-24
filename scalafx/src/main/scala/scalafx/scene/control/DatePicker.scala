@@ -42,15 +42,15 @@ object DatePicker {
 }
 
 /**
- * The DatePicker control allows the user to enter a date as text or to select a date from a calendar popup.
- * The calendar is based on either the standard ISO-8601 chronology or any of the other chronology classes defined in the
+ * The DatePicker control allows the user to enter a date as text or to select a date from a calendar popup. The
+ * calendar is based on either the standard ISO-8601 chronology or any of the other chronology classes defined in the
  * `java.time.chrono` package.
  *
  * Wraps [[https://openjfx.io/javadoc/16/javafx.controls/javafx/scene/control/DatePicker.html]].
  */
 class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker())
-  extends ComboBoxBase[LocalDate](delegate) with SFXDelegate[jfxsc.DatePicker] {
-
+    extends ComboBoxBase[LocalDate](delegate)
+    with SFXDelegate[jfxsc.DatePicker] {
 
   /**
    * Creates a `DatePicker` instance and sets the value to the given date.
@@ -83,12 +83,14 @@ class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker(
   def dayCellFactory_=(callback: jfxu.Callback[jfxsc.DatePicker, jfxsc.DateCell]): Unit = {
     delegate.dayCellFactoryProperty().setValue(callback)
   }
-  @deprecated(message = "" +
-    "This method does not allow for correct handling of empty cells leading to possible rendering artifacts. " +
-    "See explanation in [[https://github.com/scalafx/scalafx/issues/256 ScalaFX Issue #256]]. " +
-    "Use the new `dayCellFactory` assignment method: `dayCellFactory = (cell, value) => {...}` that automatically " +
-    "handles empty cells.",
-    since = "16.0.0-R25")
+  @deprecated(
+    message = "" +
+      "This method does not allow for correct handling of empty cells leading to possible rendering artifacts. " +
+      "See explanation in [[https://github.com/scalafx/scalafx/issues/256 ScalaFX Issue #256]]. " +
+      "Use the new `dayCellFactory` assignment method: `dayCellFactory = (cell, value) => {...}` that automatically " +
+      "handles empty cells.",
+    since = "16.0.0-R25"
+  )
   def dayCellFactory_=(value: DatePicker => DateCell): Unit = {
     dayCellFactory() = new jfxu.Callback[jfxsc.DatePicker, jfxsc.DateCell] {
       override def call(result: jfxsc.DatePicker): jfxsc.DateCell = {
@@ -98,10 +100,9 @@ class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker(
   }
 
   /**
-   * A custom cell factory can be provided to customize individual day cells in the `DatePicker` popup.
-   * This is a helper method for easy creation of day cell factories.
-   * A day cell is automatically created, and it handles rendering of default cells.
-   * The user is only responsible for providing an operation `op` that customizes individual cells.
+   * A custom cell factory can be provided to customize individual day cells in the `DatePicker` popup. This is a helper
+   * method for easy creation of day cell factories. A day cell is automatically created, and it handles rendering of
+   * default cells. The user is only responsible for providing an operation `op` that customizes individual cells.
    *
    * The operation `op` provides as input the already created custom `cell` and `value` of that cell.
    * {{{
@@ -124,34 +125,32 @@ class DatePicker(override val delegate: jfxsc.DatePicker = new jfxsc.DatePicker(
    *   }
    * }}}
    *
-   * @param op operation that modifies given cell for a given date.
+   * @param op
+   *   operation that modifies given cell for a given date.
    */
   def dayCellFactory_=(op: (DateCell, LocalDate) => Unit): Unit = {
     val callback =
-      Option(op)
-        .map { op =>
-          new jfxu.Callback[jfxsc.DatePicker, jfxsc.DateCell] {
-            override def call(v: jfxsc.DatePicker): jfxsc.DateCell = {
-              new jfxsc.DateCell {
-                val sfxThis = new DateCell(this)
-                override def updateItem(item: LocalDate, empty: Boolean): Unit = {
-                  super.updateItem(item, empty)
-                  if (empty || item == null) {
-                    setText(null)
-                    setGraphic(null)
-                  } else {
-                    op(sfxThis, item)
-                  }
+      Option(op).map { op =>
+        new jfxu.Callback[jfxsc.DatePicker, jfxsc.DateCell] {
+          override def call(v: jfxsc.DatePicker): jfxsc.DateCell = {
+            new jfxsc.DateCell {
+              val sfxThis = new DateCell(this)
+              override def updateItem(item: LocalDate, empty: Boolean): Unit = {
+                super.updateItem(item, empty)
+                if (empty || item == null) {
+                  setText(null)
+                  setGraphic(null)
+                } else {
+                  op(sfxThis, item)
                 }
               }
             }
           }
         }
-        .orNull
+      }.orNull
 
     delegate.dayCellFactoryProperty.setValue(callback)
   }
-
 
   /**
    * The editor for the `DatePicker`.

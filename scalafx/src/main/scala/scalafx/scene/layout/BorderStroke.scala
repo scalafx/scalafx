@@ -60,11 +60,10 @@ object BorderStroke {
 }
 
 /**
- *
- * Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderStroke.html javafx.scene.layout.BorderStroke]].
+ * Wrapper for
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderStroke.htmljavafx.scene.layout.BorderStroke]].
  */
-class BorderStroke(override val delegate: jfxsl.BorderStroke)
-  extends SFXDelegate[jfxsl.BorderStroke] {
+class BorderStroke(override val delegate: jfxsl.BorderStroke) extends SFXDelegate[jfxsl.BorderStroke] {
 
   /**
    * Creates a new BorderStroke.
@@ -75,12 +74,34 @@ class BorderStroke(override val delegate: jfxsl.BorderStroke)
   /**
    * Create a new BorderStroke, specifying all construction parameters.
    */
-  def this(topStroke: Paint, rightStroke: Paint, bottomStroke: Paint, leftStroke: Paint,
-           topStyle: BorderStrokeStyle, rightStyle: BorderStrokeStyle,
-           bottomStyle: BorderStrokeStyle, leftStyle: BorderStrokeStyle,
-           radii: CornerRadii, widths: BorderWidths, insets: Insets) =
-    this(new jfxsl.BorderStroke(topStroke, rightStroke, bottomStroke, leftStroke, topStyle,
-      rightStyle, bottomStyle, leftStyle, radii, widths, insets))
+  def this(
+      topStroke: Paint,
+      rightStroke: Paint,
+      bottomStroke: Paint,
+      leftStroke: Paint,
+      topStyle: BorderStrokeStyle,
+      rightStyle: BorderStrokeStyle,
+      bottomStyle: BorderStrokeStyle,
+      leftStyle: BorderStrokeStyle,
+      radii: CornerRadii,
+      widths: BorderWidths,
+      insets: Insets
+  ) =
+    this(
+      new jfxsl.BorderStroke(
+        topStroke,
+        rightStroke,
+        bottomStroke,
+        leftStroke,
+        topStyle,
+        rightStyle,
+        bottomStyle,
+        leftStyle,
+        radii,
+        widths,
+        insets
+      )
+    )
 
   /**
    * Defines the fill of bottom side of this border.

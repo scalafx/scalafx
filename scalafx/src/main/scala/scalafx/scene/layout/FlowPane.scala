@@ -72,9 +72,9 @@ object FlowPane {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/FlowPane.html]]
  */
 class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
-  extends Pane(delegate)
-  with AlignmentDelegate[jfxsl.FlowPane]
-  with SFXDelegate[jfxsl.FlowPane] {
+    extends Pane(delegate)
+    with AlignmentDelegate[jfxsl.FlowPane]
+    with SFXDelegate[jfxsl.FlowPane] {
 
   /**
    * Creates a horizontal FlowPane layout with the specified hgap/vgap.
@@ -120,8 +120,8 @@ class FlowPane(override val delegate: jfxsl.FlowPane = new jfxsl.FlowPane)
   }
 
   /**
-   * The preferred width where content should wrap in a horizontal flowpane or the preferred height where content
-   * should wrap in a vertical flowpane.
+   * The preferred width where content should wrap in a horizontal flowpane or the preferred height where content should
+   * wrap in a vertical flowpane.
    */
   def prefWrapLength: DoubleProperty = delegate.prefWrapLengthProperty
 

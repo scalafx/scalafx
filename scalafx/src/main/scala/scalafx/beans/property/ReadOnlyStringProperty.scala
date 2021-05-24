@@ -33,13 +33,17 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object ReadOnlyStringProperty {
-  implicit def sfxReadOnlyStringProperty2jfx(rosp: ReadOnlyStringProperty): jfxbp.ReadOnlyStringProperty = if (rosp != null) rosp.delegate else null
+  implicit def sfxReadOnlyStringProperty2jfx(rosp: ReadOnlyStringProperty): jfxbp.ReadOnlyStringProperty =
+    if (rosp != null) rosp.delegate else null
 }
 
-class ReadOnlyStringProperty(override val delegate: jfxbp.ReadOnlyStringProperty) extends StringExpression(delegate) with ReadOnlyProperty[String, String] with SFXDelegate[jfxbp.ReadOnlyStringProperty] {
+class ReadOnlyStringProperty(override val delegate: jfxbp.ReadOnlyStringProperty)
+    extends StringExpression(delegate)
+    with ReadOnlyProperty[String, String]
+    with SFXDelegate[jfxbp.ReadOnlyStringProperty] {
   def this(bean: Object, name: String, value: String) = this(new jfxbp.ReadOnlyStringPropertyBase() {
-    def getBean: AnyRef = bean
-    def getName: String = name
+    def getBean: AnyRef      = bean
+    def getName: String      = name
     override def get: String = value
   })
 

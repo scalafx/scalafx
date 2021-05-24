@@ -35,7 +35,6 @@ import scalafx.scene.Scene
 import scalafx.scene.control.TableColumn._
 import scalafx.scene.control.{TableColumn, TableView}
 
-
 class Person(name_ : String) {
   val name = new StringProperty(this, "firstName", name_)
 }

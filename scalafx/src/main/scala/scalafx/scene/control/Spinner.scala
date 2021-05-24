@@ -37,11 +37,9 @@ import scalafx.util.Duration
 
 import scala.language.implicitConversions
 
-
 object Spinner {
 
   implicit def sfxSpinner2jfx[T](v: Spinner[T]): jfxsc.Spinner[T] = if (v != null) v.delegate else null
-
 
   /** The arrows are placed on the right of the Spinner, pointing horizontally (i.e. left and right). */
   val StyleClassArrowsOnRightHorizontal: String = jfxsc.Spinner.STYLE_CLASS_ARROWS_ON_RIGHT_HORIZONTAL
@@ -61,129 +59,132 @@ object Spinner {
 }
 
 /**
-  * A single line text field that lets the user select a number or an object
-  * value from an ordered sequence.
-  *
-  * Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Spinner.html]].
-  *
-  * @constructor Constructs a default Spinner instance, with the default 'spinner' style class and a non-editable editor.
-  * @param delegate A JavaFX Spinner to be wrapped. Its default value is a new JavaFX Spinner.
-  * @tparam T The type of all values that can be iterated through in the Spinner. Common types include Integer and String.
-  *
-  */
+ * A single line text field that lets the user select a number or an object value from an ordered sequence.
+ *
+ * Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Spinner.html]].
+ *
+ * @constructor
+ *   Constructs a default Spinner instance, with the default 'spinner' style class and a non-editable editor.
+ * @param delegate
+ *   A JavaFX Spinner to be wrapped. Its default value is a new JavaFX Spinner.
+ * @tparam T
+ *   The type of all values that can be iterated through in the Spinner. Common types include Integer and String.
+ */
 class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
-  extends Control(delegate)
+    extends Control(delegate)
     with SFXDelegate[jfxsc.Spinner[T]] {
 
   /**
-    * Creates a Spinner instance with the value factory set to be an instance
-    * of `IntegerSpinnerValueFactory`. Note that
-    * if this constructor is called, the only valid generic type for the
-    * Spinner instance is Integer, i.e. Spinner[Integer].
-    *
-    * @param min          The minimum allowed integer value for the Spinner.
-    * @param max          The maximum allowed integer value for the Spinner.
-    * @param initialValue The value of the Spinner when first instantiated, must
-    *                     be within the bounds of the min and max arguments, or
-    *                     else the min value will be used.
-    */
+   * Creates a Spinner instance with the value factory set to be an instance of `IntegerSpinnerValueFactory`. Note that
+   * if this constructor is called, the only valid generic type for the Spinner instance is Integer, i.e.
+   * Spinner[Integer].
+   *
+   * @param min
+   *   The minimum allowed integer value for the Spinner.
+   * @param max
+   *   The maximum allowed integer value for the Spinner.
+   * @param initialValue
+   *   The value of the Spinner when first instantiated, must be within the bounds of the min and max arguments, or else
+   *   the min value will be used.
+   */
   def this(min: Int, max: Int, initialValue: Int) = {
     this(new jfxsc.Spinner[T](min, max, initialValue))
   }
 
   /**
-    * Creates a Spinner instance with the value factory set to be an instance
-    * of `IntegerSpinnerValueFactory`. Note that
-    * if this constructor is called, the only valid generic type for the
-    * Spinner instance is Integer, i.e. Spinner[Integer].
-    *
-    * @param min            The minimum allowed integer value for the Spinner.
-    * @param max            The maximum allowed integer value for the Spinner.
-    * @param initialValue   The value of the Spinner when first instantiated, must
-    *                       be within the bounds of the min and max arguments, or
-    *                       else the min value will be used.
-    * @param amountToStepBy The amount to increment or decrement by, per step.
-    */
+   * Creates a Spinner instance with the value factory set to be an instance of `IntegerSpinnerValueFactory`. Note that
+   * if this constructor is called, the only valid generic type for the Spinner instance is Integer, i.e.
+   * Spinner[Integer].
+   *
+   * @param min
+   *   The minimum allowed integer value for the Spinner.
+   * @param max
+   *   The maximum allowed integer value for the Spinner.
+   * @param initialValue
+   *   The value of the Spinner when first instantiated, must be within the bounds of the min and max arguments, or else
+   *   the min value will be used.
+   * @param amountToStepBy
+   *   The amount to increment or decrement by, per step.
+   */
   def this(min: Int, max: Int, initialValue: Int, amountToStepBy: Int) = {
     this(new jfxsc.Spinner[T](min, max, initialValue, amountToStepBy))
   }
 
   /**
-    * Creates a Spinner instance with the value factory set to be an instance
-    * of `DoubleSpinnerValueFactory`. Note that
-    * if this constructor is called, the only valid generic type for the
-    * Spinner instance is Double, i.e. Spinner[Double].
-    *
-    * @param min          The minimum allowed double value for the Spinner.
-    * @param max          The maximum allowed double value for the Spinner.
-    * @param initialValue The value of the Spinner when first instantiated, must
-    *                     be within the bounds of the min and max arguments, or
-    *                     else the min value will be used.
-    */
+   * Creates a Spinner instance with the value factory set to be an instance of `DoubleSpinnerValueFactory`. Note that
+   * if this constructor is called, the only valid generic type for the Spinner instance is Double, i.e.
+   * Spinner[Double].
+   *
+   * @param min
+   *   The minimum allowed double value for the Spinner.
+   * @param max
+   *   The maximum allowed double value for the Spinner.
+   * @param initialValue
+   *   The value of the Spinner when first instantiated, must be within the bounds of the min and max arguments, or else
+   *   the min value will be used.
+   */
   def this(min: Double, max: Double, initialValue: Double) = {
     this(new jfxsc.Spinner[T](min, max, initialValue))
   }
 
   /**
-    * Creates a Spinner instance with the value factory set to be an instance
-    * of `DoubleSpinnerValueFactory`. Note that
-    * if this constructor is called, the only valid generic type for the
-    * Spinner instance is Double, i.e. Spinner[Double].
-    *
-    * @param min            The minimum allowed double value for the Spinner.
-    * @param max            The maximum allowed double value for the Spinner.
-    * @param initialValue   The value of the Spinner when first instantiated, must
-    *                       be within the bounds of the min and max arguments, or
-    *                       else the min value will be used.
-    * @param amountToStepBy The amount to increment or decrement by, per step.
-    */
+   * Creates a Spinner instance with the value factory set to be an instance of `DoubleSpinnerValueFactory`. Note that
+   * if this constructor is called, the only valid generic type for the Spinner instance is Double, i.e.
+   * Spinner[Double].
+   *
+   * @param min
+   *   The minimum allowed double value for the Spinner.
+   * @param max
+   *   The maximum allowed double value for the Spinner.
+   * @param initialValue
+   *   The value of the Spinner when first instantiated, must be within the bounds of the min and max arguments, or else
+   *   the min value will be used.
+   * @param amountToStepBy
+   *   The amount to increment or decrement by, per step.
+   */
   def this(min: Double, max: Double, initialValue: Double, amountToStepBy: Double) = {
     this(new jfxsc.Spinner[T](min, max, initialValue, amountToStepBy))
   }
 
   /**
-    * Creates a Spinner instance with the value factory set to be an instance
-    * of `ListSpinnerValueFactory`. The
-    * Spinner `value` property will be set to the first
-    * element of the list, if an element exists, or null otherwise.
-    *
-    * @param items A list of items that will be stepped through in the Spinner.
-    */
+   * Creates a Spinner instance with the value factory set to be an instance of `ListSpinnerValueFactory`. The Spinner
+   * `value` property will be set to the first element of the list, if an element exists, or null otherwise.
+   *
+   * @param items
+   *   A list of items that will be stepped through in the Spinner.
+   */
   def this(items: ObservableBuffer[T]) = {
     this(new jfxsc.Spinner[T](items))
   }
 
   /**
-    * Creates a Spinner instance with the given value factory set.
-    *
-    * @param valueFactory The value factory to use.
-    */
+   * Creates a Spinner instance with the given value factory set.
+   *
+   * @param valueFactory
+   *   The value factory to use.
+   */
   def this(valueFactory: SpinnerValueFactory[T]) = {
     this(new jfxsc.Spinner[T](valueFactory.delegate))
   }
 
   /**
-    * The value property on Spinner is a read-only property, as it is bound to
-    * the SpinnerValueFactory [[scalafx.scene.control.Spinner#valueFactory() valueFactory property]].
-    * Should the value factory change, this value property
-    * will be unbound from the old value factory and bound to the new one.
-    *
-    * <p>If developers wish to modify the value property, they may do so with
-    * code in the following form:
-    *
-    * {{{
-    * val newValue = ...;
-    * spinner.valueFactory().value = newValue
-    * }}}
-    */
+   * The value property on Spinner is a read-only property, as it is bound to the SpinnerValueFactory
+   * [[scalafx.scene.control.Spinner#valueFactory()valueFactory property]]. Should the value factory change, this value
+   * property will be unbound from the old value factory and bound to the new one.
+   *
+   * <p>If developers wish to modify the value property, they may do so with code in the following form:
+   *
+   * {{{
+   * val newValue = ...;
+   * spinner.valueFactory().value = newValue
+   * }}}
+   */
   def value: ReadOnlyObjectProperty[T] = delegate.valueProperty()
 
   /**
-    * The value factory is the model behind the JavaFX Spinner control - without
-    * a value factory installed a Spinner is unusable. It is the role of the
-    * value factory to handle almost all aspects of the Spinner.
-    *
-    */
+   * The value factory is the model behind the JavaFX Spinner control - without a value factory installed a Spinner is
+   * unusable. It is the role of the value factory to handle almost all aspects of the Spinner.
+   */
   def valueFactory: ObjectProperty[jfxsc.SpinnerValueFactory[T]] = delegate.valueFactoryProperty()
 
   def valueFactory_=(value: SpinnerValueFactory[T]): Unit = {
@@ -191,59 +192,59 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
   }
 
   /**
-    * The editable property is used to specify whether user input is able to
-    * be typed into the Spinner `editor`. If editable
-    * is true, user input will be received once the user types and presses
-    * the Enter key. At this point the input is passed to the
-    * SpinnerValueFactory `converter` StringConverter#fromString(String) method.
-    * The returned value from this call (of type T) is then sent to the
-    * `SpinnerValueFactory#setValue(Object)` method. If the value
-    * is valid, it will remain as the value. If it is invalid, the value factory
-    * will need to react accordingly and back out this change.
-    */
+   * The editable property is used to specify whether user input is able to be typed into the Spinner `editor`. If
+   * editable is true, user input will be received once the user types and presses the Enter key. At this point the
+   * input is passed to the SpinnerValueFactory `converter` StringConverter#fromString(String) method. The returned
+   * value from this call (of type T) is then sent to the `SpinnerValueFactory#setValue(Object)` method. If the value is
+   * valid, it will remain as the value. If it is invalid, the value factory will need to react accordingly and back out
+   * this change.
+   */
   def editable: BooleanProperty = delegate.editableProperty()
   def editable_=(value: Boolean): Unit = {
     editable() = value
   }
 
   /**
-    * The prompt text to display in the `Spinner`, or
-    * `null` if no prompt text is displayed.
-    *
-    * @return the prompt text property
-    * @since 9
-    */
+   * The prompt text to display in the `Spinner`, or `null` if no prompt text is displayed.
+   *
+   * @return
+   *   the prompt text property
+   * @since
+   *   9
+   */
   def promptText: StringProperty = delegate.promptTextProperty()
   def promptText_=(value: String): Unit = {
     promptText() = value
   }
 
   /**
-    * The duration that the mouse has to be pressed on an arrow button before the next value steps.
-    * Successive step duration is set using [[scalafx.scene.control.Spinner#repeatDelay() repeat delay]].
-    *
-    * @return the initial delay property
-    * @since 11
-    */
+   * The duration that the mouse has to be pressed on an arrow button before the next value steps. Successive step
+   * duration is set using [[scalafx.scene.control.Spinner#repeatDelay()repeat delay]].
+   *
+   * @return
+   *   the initial delay property
+   * @since
+   *   11
+   */
   def initialDelay: ObjectProperty[jfxu.Duration] = delegate.initialDelayProperty()
   def initialDelay_=(value: Duration): Unit = {
     initialDelay() = value
   }
 
   /**
-    * The duration that the mouse has to be pressed for each successive step after the first value steps.
-    * Initial step duration is set using [[scalafx.scene.control.Spinner#initialDelay() initial delay]].
-    *
-    * @return the repeat delay property
-    * @since 11
-    */
+   * The duration that the mouse has to be pressed for each successive step after the first value steps. Initial step
+   * duration is set using [[scalafx.scene.control.Spinner#initialDelay()initial delay]].
+   *
+   * @return
+   *   the repeat delay property
+   * @since
+   *   11
+   */
   def repeatDelay: ObjectProperty[jfxu.Duration] = delegate.repeatDelayProperty()
   def repeatDelay_=(value: Duration): Unit = {
     repeatDelay() = value
   }
 
-
   def editor: ReadOnlyObjectProperty[jfxsc.TextField] = delegate.editorProperty()
-
 
 }

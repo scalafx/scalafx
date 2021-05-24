@@ -36,7 +36,6 @@ import scalafx.scene.Scene
 import scalafx.scene.control.{MenuItem, SplitMenuButton}
 import scalafx.scene.layout.VBox
 
-
 object SplitMenuButtonDemo extends JFXApp {
 
   stage = new PrimaryStage {
@@ -67,6 +66,5 @@ object SplitMenuButtonDemo extends JFXApp {
       }
     }
   }
-
 
 }

@@ -37,70 +37,80 @@ import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 object ReadOnlyBufferProperty {
+
   /**
-    * Converts a ScalaFX ReadOnlyBufferProperty to its JavaFX counterpart ReadOnlyListProperty.
-    *
-    * @param v ScalaFX ReadOnlyBufferProperty
-    * @return JavaFX ReadOnlyListProperty
-    */
+   * Converts a ScalaFX ReadOnlyBufferProperty to its JavaFX counterpart ReadOnlyListProperty.
+   *
+   * @param v
+   *   ScalaFX ReadOnlyBufferProperty
+   * @return
+   *   JavaFX ReadOnlyListProperty
+   */
   implicit def sfxReadOnlyBufferProperty2jfx[E <: Any](v: ReadOnlyBufferProperty[E]): jfxbp.ReadOnlyListProperty[E] =
     if (v != null) v.delegate else null
 }
 
 /**
-  * Wraps a $JFX $URL0 ReadOnlyListProperty]].
-  *
-  * @define TC          ReadOnlyBufferProperty
-  * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyListProperty.html
-  * @define JFX         JavaFX
-  * @define ORIGINALDOC Original Documentation]].
-  **/
+ * Wraps a $JFX $URL0 ReadOnlyListProperty]].
+ *
+ * @define
+ *   TC ReadOnlyBufferProperty
+ * @define
+ *   URL0
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyListProperty.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ */
 class ReadOnlyBufferProperty[E <: Any](override val delegate: jfxbp.ReadOnlyListProperty[E])
-  extends BufferExpression[E](delegate)
+    extends BufferExpression[E](delegate)
     with ReadOnlyProperty[ObservableBuffer[E], jfxc.ObservableList[E]]
     with SFXDelegate[jfxbp.ReadOnlyListProperty[E]] {
-
 
   override def value: ObservableBuffer[E] = delegate.get()
 
   /**
-    * Creates a content binding between the ObservableBuffer, that is wrapped in this ReadOnlyBufferProperty,
-    * and another ObservableBuffer.
-    *
-    * A content binding ensures that the content of the wrapped ObservableBuffers is the same as that of the other buffer.
-    * If the content of the other buffer changes, the wrapped buffer will be updated automatically.
-    * Once the wrapped buffer is bound to another buffer, you must not change it directly.
-    *
-    * @param buffer the ObservableBuffer this property should be bound to
-    */
+   * Creates a content binding between the ObservableBuffer, that is wrapped in this ReadOnlyBufferProperty, and another
+   * ObservableBuffer.
+   *
+   * A content binding ensures that the content of the wrapped ObservableBuffers is the same as that of the other
+   * buffer. If the content of the other buffer changes, the wrapped buffer will be updated automatically. Once the
+   * wrapped buffer is bound to another buffer, you must not change it directly.
+   *
+   * @param buffer
+   *   the ObservableBuffer this property should be bound to
+   */
   def bindContent(buffer: ObservableBuffer[E]): Unit = delegate.bindContent(buffer.delegate)
 
   /**
-    * Creates a bidirectional content binding of the ObservableBuffer, that is wrapped in this ReadOnlyBufferProperty,
-    * and another ObservableBuffer.
-    *
-    * A bidirectional content binding ensures that the content of two ObservableBuffers is the same.
-    * If the content of one of the buffers changes, the other one will be updated automatically.
-    *
-    * @param buffer the ObservableBuffer this property should be bound to
-    */
+   * Creates a bidirectional content binding of the ObservableBuffer, that is wrapped in this ReadOnlyBufferProperty,
+   * and another ObservableBuffer.
+   *
+   * A bidirectional content binding ensures that the content of two ObservableBuffers is the same. If the content of
+   * one of the buffers changes, the other one will be updated automatically.
+   *
+   * @param buffer
+   *   the ObservableBuffer this property should be bound to
+   */
   def bindContentBidirectional(buffer: ObservableBuffer[E]): Unit = delegate.bindContentBidirectional(buffer.delegate)
 
   /**
-    * Deletes a content binding between the ObservableBuffer, that is wrapped in this ReadOnlyBufferProperty, and another Object.
-    *
-    * This is a helper method that calls the JavaFX counterpart with a delegate rather than the original object.
-    *
-    * @param sfx the SFXDelegate object to which the binding should be removed
-    */
+   * Deletes a content binding between the ObservableBuffer, that is wrapped in this ReadOnlyBufferProperty, and another
+   * Object.
+   *
+   * This is a helper method that calls the JavaFX counterpart with a delegate rather than the original object.
+   *
+   * @param sfx
+   *   the SFXDelegate object to which the binding should be removed
+   */
   def unbindContent[T <: Object](sfx: SFXDelegate[T]): Unit = delegate.unbindContent(sfx.delegate)
 
   /**
-    * Deletes a bidirectional content binding between the ObservableBuffer, that is wrapped in this ReadOnlyBufferProperty, and another Object.
-    *
-    * This is a helper method that calls the JavaFX counterpart with a delegate rather than the original object.
-    *
-    * @param sfx the SFXDelegate object to which the binding should be removed
-    */
-  def unbindContentBidirectional[T <: Object](sfx: SFXDelegate[T]): Unit = delegate.unbindContentBidirectional(sfx.delegate)
+   * Deletes a bidirectional content binding between the ObservableBuffer, that is wrapped in this
+   * ReadOnlyBufferProperty, and another Object.
+   *
+   * This is a helper method that calls the JavaFX counterpart with a delegate rather than the original object.
+   *
+   * @param sfx
+   *   the SFXDelegate object to which the binding should be removed
+   */
+  def unbindContentBidirectional[T <: Object](sfx: SFXDelegate[T]): Unit =
+    delegate.unbindContentBidirectional(sfx.delegate)
 }

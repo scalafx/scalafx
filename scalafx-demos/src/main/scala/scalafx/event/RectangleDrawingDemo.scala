@@ -38,23 +38,24 @@ import scalafx.scene.layout.{BorderPane, Pane}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
-/** Demo illustrating basic use of `handleEvent(..){...}` construct provided by `EventHandlerDelegate`.
-  * Here we will handle mouse events. When user presses and drags the mouse over
-  * the central pane a rectangle is drawn. Opposite corners of the rectangle are defined
-  * by the points where user pressed the mouse and position of the mouse during dragging.
-  *
-  * Note that is important to use `import scalafx.Includes._`, without it you may get errors like:
-  * {{{
-  *   error No implicit view available from javafx.scene.input.MouseEvent => scalafx.scene.input.MouseEvent.
-  *   me: MouseEvent => ...
-  * }}}
-  */
+/**
+ * Demo illustrating basic use of `handleEvent(..){...}` construct provided by `EventHandlerDelegate`. Here we will
+ * handle mouse events. When user presses and drags the mouse over the central pane a rectangle is drawn. Opposite
+ * corners of the rectangle are defined by the points where user pressed the mouse and position of the mouse during
+ * dragging.
+ *
+ * Note that is important to use `import scalafx.Includes._`, without it you may get errors like:
+ * {{{
+ *   error No implicit view available from javafx.scene.input.MouseEvent => scalafx.scene.input.MouseEvent.
+ *   me: MouseEvent => ...
+ * }}}
+ */
 object RectangleDrawingDemo extends JFXApp {
 
   /** Encapsulate handle updates to the rectangle */
   object Updater {
     private var _start = new Point2D(0, 0)
-    private var _end = new Point2D(0, 0)
+    private var _end   = new Point2D(0, 0)
 
     val rectangle = new Rectangle {
       fill = Color.Blue
@@ -77,8 +78,8 @@ object RectangleDrawingDemo extends JFXApp {
   }
 
   // Define handling of mouse events
-  pane.handleEvent(MouseEvent.Any) {
-    (me: MouseEvent) => {
+  pane.handleEvent(MouseEvent.Any) { (me: MouseEvent) =>
+    {
       me.eventType match {
         case MouseEvent.MousePressed => {
           // Reset the shape
@@ -89,7 +90,7 @@ object RectangleDrawingDemo extends JFXApp {
           // Adjust the shape
           Updater.update(end = new Point2D(me.x, me.y))
         }
-        case _                       => {}
+        case _ => {}
       }
     }
   }

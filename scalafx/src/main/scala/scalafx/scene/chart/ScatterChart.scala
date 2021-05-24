@@ -33,7 +33,8 @@ import scalafx.collections.ObservableBuffer
 import scalafx.delegate.SFXDelegate
 
 object ScatterChart {
-  implicit def sfxScatterChart2jfx[X, Y](v: ScatterChart[X, Y]): jfxsc.ScatterChart[X, Y] = if (v != null) v.delegate else null
+  implicit def sfxScatterChart2jfx[X, Y](v: ScatterChart[X, Y]): jfxsc.ScatterChart[X, Y] =
+    if (v != null) v.delegate else null
 
   def apply[X, Y](xAxis: Axis[X], yAxis: Axis[Y]) =
     new ScatterChart[X, Y](new jfxsc.ScatterChart[X, Y](xAxis, yAxis))
@@ -43,8 +44,8 @@ object ScatterChart {
 }
 
 class ScatterChart[X, Y](override val delegate: jfxsc.ScatterChart[X, Y])
-  extends XYChart[X, Y](delegate)
-  with SFXDelegate[jfxsc.ScatterChart[X, Y]] {
+    extends XYChart[X, Y](delegate)
+    with SFXDelegate[jfxsc.ScatterChart[X, Y]] {
 
   def this(xAxis: Axis[X], yAxis: Axis[Y]) = {
     this(new jfxsc.ScatterChart[X, Y](xAxis, yAxis))

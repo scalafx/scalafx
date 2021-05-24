@@ -40,9 +40,12 @@ object WeakEventHandler {
   /**
    * Converts a ScalaFX WeakEventHandler to a JavaFX WeakEventHandler.
    *
-   * @param weh ScalaFX WeakEventHandler
-   * @tparam T JavaFX Event subclass
-   * @return JavaFX WeakEventHandler
+   * @param weh
+   *   ScalaFX WeakEventHandler
+   * @tparam T
+   *   JavaFX Event subclass
+   * @return
+   *   JavaFX WeakEventHandler
    */
   implicit def sfxWeakEventHandler2jfx[T <: jfxe.Event](weh: WeakEventHandler[T]): jfxe.WeakEventHandler[T] =
     if (weh != null) weh.delegate else null
@@ -50,21 +53,25 @@ object WeakEventHandler {
 }
 
 /**
- * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/WeakEventHandler.html WeakEventHandler]].
+ * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/WeakEventHandler.htmlWeakEventHandler]].
  *
- * @constructor Creates a new ScalaFX WeakEventHandler from a JavaFX WeakEventHandler.
- * @param delegate JavaFX WeakEventHandler to be wrapped
- * @tparam T JavaFX Event subclass
- * @since 8.0
+ * @constructor
+ *   Creates a new ScalaFX WeakEventHandler from a JavaFX WeakEventHandler.
+ * @param delegate
+ *   JavaFX WeakEventHandler to be wrapped
+ * @tparam T
+ *   JavaFX Event subclass
+ * @since
+ *   8.0
  */
 class WeakEventHandler[T <: jfxe.Event](override val delegate: jfxe.WeakEventHandler[T])
-  extends SFXDelegate[jfxe.WeakEventHandler[T]] {
-
+    extends SFXDelegate[jfxe.WeakEventHandler[T]] {
 
   /**
    * Creates a new instance of WeakEventHandler.
    *
-   * @param eventHandler The original event handler to which to forward event notifications
+   * @param eventHandler
+   *   The original event handler to which to forward event notifications
    */
   def this(eventHandler: (T) => Unit) = this(new jfxe.WeakEventHandler[T](new jfxe.EventHandler[T] {
     def handle(event: T): Unit = eventHandler(event)
@@ -78,7 +85,8 @@ class WeakEventHandler[T <: jfxe.Event](override val delegate: jfxe.WeakEventHan
   /**
    * Forwards event notification to the associated event handler.
    *
-   * @param event The event to be handled
+   * @param event
+   *   The event to be handled
    */
   def handle(event: T): Unit = delegate.handle(event)
 

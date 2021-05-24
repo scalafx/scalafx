@@ -32,7 +32,9 @@ import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.css.StyleOrigin]]. */
-class StyleOriginSpec extends SFXEnumDelegateSpec[jfxcss.StyleOrigin, StyleOrigin](
-  javaClass = classOf[jfxcss.StyleOrigin],
-  scalaClass = classOf[StyleOrigin],
-  companion = StyleOrigin)
+class StyleOriginSpec
+    extends SFXEnumDelegateSpec[jfxcss.StyleOrigin, StyleOrigin](
+      javaClass = classOf[jfxcss.StyleOrigin],
+      scalaClass = classOf[StyleOrigin],
+      companion = StyleOrigin
+    )

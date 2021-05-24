@@ -47,13 +47,13 @@ object DimensionDelegate {
 }
 
 /**
- * Trait that unifies JavaFX classes that contains properties indicating height and width,
- * represented by `heightProperty` and `widthProperty` and their respective getter and setters.
+ * Trait that unifies JavaFX classes that contains properties indicating height and width, represented by
+ * `heightProperty` and `widthProperty` and their respective getter and setters.
  *
- * @tparam J Original JavaFX type that contains `height` and `width` properties.
+ * @tparam J
+ *   Original JavaFX type that contains `height` and `width` properties.
  */
-trait DimensionDelegate[J <: Object with Dimensioned]
-  extends SFXDelegate[J] {
+trait DimensionDelegate[J <: Object with Dimensioned] extends SFXDelegate[J] {
 
   /**
    * Indicates the height of object.

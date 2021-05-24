@@ -41,7 +41,7 @@ object FormatStringConverter {
  * `StringConverter` implementation that can use a `Format` instance.
  */
 class FormatStringConverter[T <: AnyRef](delegate: jfxuc.FormatStringConverter[T])
-  extends StringConverterDelegate[T, T, jfxuc.FormatStringConverter[T]](delegate) {
+    extends StringConverterDelegate[T, T, jfxuc.FormatStringConverter[T]](delegate) {
 
   def this(format: Format) = this(new jfxuc.FormatStringConverter[T](format))
 }

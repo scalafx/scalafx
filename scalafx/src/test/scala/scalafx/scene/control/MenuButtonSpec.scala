@@ -32,10 +32,9 @@ import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
-
 class MenuButtonSpec
-  extends SimpleSFXDelegateSpec[jfxsc.MenuButton, MenuButton](classOf[jfxsc.MenuButton], classOf[MenuButton])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.MenuButton, MenuButton](classOf[jfxsc.MenuButton], classOf[MenuButton])
+    with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new MenuButton(new jfxsc.MenuButton())
 

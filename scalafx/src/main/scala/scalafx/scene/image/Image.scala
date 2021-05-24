@@ -49,7 +49,13 @@ class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image]
   /**
    * Construct a new Image with the specified parameters.
    */
-  def this(inputStream: InputStream, requestedWidth: Double, requestedHeight: Double, preserveRatio: Boolean, smooth: Boolean) =
+  def this(
+      inputStream: InputStream,
+      requestedWidth: Double,
+      requestedHeight: Double,
+      preserveRatio: Boolean,
+      smooth: Boolean
+  ) =
     this(new jfxsi.Image(inputStream, requestedWidth, requestedHeight, preserveRatio, smooth))
 
   /**
@@ -71,11 +77,17 @@ class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image]
   /**
    * Construct a new Image with the specified parameters.
    */
-  def this(url: String, requestedWidth: Double, requestedHeight: Double, preserveRatio: Boolean, smooth: Boolean, backgroundLoading: Boolean) =
+  def this(
+      url: String,
+      requestedWidth: Double,
+      requestedHeight: Double,
+      preserveRatio: Boolean,
+      smooth: Boolean,
+      backgroundLoading: Boolean
+  ) =
     this(new jfxsi.Image(url, requestedWidth, requestedHeight, preserveRatio, smooth, backgroundLoading))
 
   /**
-   *
    */
   def this(that: AnyRef, imagePath: String) = this(new jfxsi.Image(that.getClass.getResourceAsStream(imagePath)))
 
@@ -115,22 +127,20 @@ class Image(override val delegate: jfxsi.Image) extends SFXDelegate[jfxsi.Image]
   def backgroundLoading: Boolean = delegate.isBackgroundLoading
 
   /**
-   * Indicates whether to preserve the aspect ratio of the original image when
-   * scaling to fit the image within the bounding box provided by `width` and
-   * `height`.
+   * Indicates whether to preserve the aspect ratio of the original image when scaling to fit the image within the
+   * bounding box provided by `width` and `height`.
    */
   def preserveRatio: Boolean = delegate.isPreserveRatio
 
   /**
-   * This method returns a Option of [[scalafx.scene.image.PixelReader]] that provides access to read
-   * the pixels of the image, if the image is readable.
+   * This method returns a Option of [[scalafx.scene.image.PixelReader]] that provides access to read the pixels of the
+   * image, if the image is readable.
    */
   def pixelReader: Option[PixelReader] = Option(delegate.getPixelReader)
 
   /**
-   * Indicates whether to use a better quality filtering algorithm or a faster
-   * one when scaling this image to fit within the bounding box provided by
-   * `width` and `height`.
+   * Indicates whether to use a better quality filtering algorithm or a faster one when scaling this image to fit within
+   * the bounding box provided by `width` and `height`.
    */
   def smooth: Boolean = delegate.isSmooth
 

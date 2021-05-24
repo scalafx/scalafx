@@ -35,15 +35,13 @@ import scalafx.Includes._
 
 /**
  * BooleanProperty Spec tests.
- *
- *
  */
 class BooleanPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
-  val bean = new Object()
-  var booleanProperty: jfxbp.BooleanProperty = null
+  val bean                                    = new Object()
+  var booleanProperty: jfxbp.BooleanProperty  = null
   var booleanProperty2: jfxbp.BooleanProperty = null
   var booleanProperty3: jfxbp.BooleanProperty = null
-  var sfxBooleanProperty: BooleanProperty = null
+  var sfxBooleanProperty: BooleanProperty     = null
 
   override def beforeEach(): Unit = {
     booleanProperty = new BooleanProperty(bean, "Test Boolean")
@@ -203,8 +201,8 @@ class BooleanPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support invalidate/change triggers on binding expressions" in {
     var invalidateCount = 0
-    var changeCount = 0
-    val binding = booleanProperty2 || booleanProperty3
+    var changeCount     = 0
+    val binding         = booleanProperty2 || booleanProperty3
     binding onInvalidate {
       invalidateCount += 1
     }

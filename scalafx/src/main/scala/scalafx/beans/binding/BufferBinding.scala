@@ -35,28 +35,31 @@ import scalafx.beans.value.ObservableValue
 import scalafx.collections.CollectionIncludes.observableList2ObservableBuffer
 import scalafx.collections.ObservableBuffer
 
-
 object BufferBinding {
+
   /**
-    * Converts a ScalaFX BufferBinding to its JavaFX counterpart LisBinding.
-    *
-    * @param v ScalaFX BufferBinding
-    * @return JavaFX ListBinding
-    */
+   * Converts a ScalaFX BufferBinding to its JavaFX counterpart LisBinding.
+   *
+   * @param v
+   *   ScalaFX BufferBinding
+   * @return
+   *   JavaFX ListBinding
+   */
   implicit def sfxBufferBinding2jfx[E <: Any](v: BufferBinding[E]): jfxbb.ListBinding[E] =
     if (v != null) v.delegate else null
 }
 
 /**
-  * Wraps a $JFX $URL0 ListBinding]].
-  *
-  * @define TC          BufferBinding
-  * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/ListBinding.html
-  * @define JFX         JavaFX
-  * @define ORIGINALDOC Original Documentation]].
-  **/
+ * Wraps a $JFX $URL0 ListBinding]].
+ *
+ * @define
+ *   TC BufferBinding
+ * @define
+ *   URL0
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/ListBinding.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ */
 class BufferBinding[E <: Any](override val delegate: jfxbb.ListBinding[E])
-  extends BufferExpression(delegate)
+    extends BufferExpression(delegate)
     with ObservableValue[ObservableBuffer[E], jfxc.ObservableList[E]] {
 
   override def value: ObservableBuffer[E] = delegate.get

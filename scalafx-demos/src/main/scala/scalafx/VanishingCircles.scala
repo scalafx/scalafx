@@ -40,7 +40,6 @@ import scalafx.scene.shape.Circle
 import scala.language.postfixOps
 import scala.math.random
 
-
 /**
  * Vanishing Circles
  */
@@ -62,9 +61,10 @@ object VanishingCircles extends JFXApp {
         strokeWidth <== when(hover) choose 4 otherwise 0
         stroke = White
         // add this for event listeners:
-        onMouseClicked = _ => Timeline(at(3 s) {
-          radius -> 0
-        }).play()
+        onMouseClicked = _ =>
+          Timeline(at(3 s) {
+            radius -> 0
+          }).play()
       }
       content = circles
     }

@@ -33,8 +33,5 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Blend Spec tests.
- *
- *
  */
-class BlendSpec
-  extends SimpleSFXDelegateSpec[jfxse.Blend, Blend](classOf[jfxse.Blend], classOf[Blend])
+class BlendSpec extends SimpleSFXDelegateSpec[jfxse.Blend, Blend](classOf[jfxse.Blend], classOf[Blend])

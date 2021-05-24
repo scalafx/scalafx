@@ -36,8 +36,6 @@ import scalafx.beans.property.DoubleProperty
 
 /**
  * Observable Spec tests.
- *
- *
  */
 class ObservableSpec extends AnyFlatSpec with BeforeAndAfterEach {
   var property: DoubleProperty = _
@@ -58,10 +56,9 @@ class ObservableSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support anonymous invalidation listeners with parameters" in {
     var invalidateCalled = false
-    property onInvalidate {
-      obs =>
-        invalidateCalled = true
-        obs should equal(property)
+    property onInvalidate { obs =>
+      invalidateCalled = true
+      obs should equal(property)
     }
     invalidateCalled should be(false)
     property() = 100
@@ -92,7 +89,7 @@ class ObservableSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support removing explicit listeners JFX => ..." in {
     var invalidateCalled = false
-    val listener = (obs: jfxb.Observable) => invalidateCalled = true
+    val listener         = (obs: jfxb.Observable) => invalidateCalled = true
     property addListener listener
     invalidateCalled should be(false)
     property() = 100
@@ -105,7 +102,7 @@ class ObservableSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support removing explicit listeners SFX => ..." in {
     var invalidateCalled = false
-    val listener = (obs: Observable) => invalidateCalled = true
+    val listener         = (obs: Observable) => invalidateCalled = true
     property addListener listener
     invalidateCalled should be(false)
     property() = 100

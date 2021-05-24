@@ -34,11 +34,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Parent Spec tests.
- *
- *
  */
-class ParentSpec
-  extends SimpleSFXDelegateSpec[jfxs.Parent, Parent](classOf[jfxs.Parent], classOf[Parent]) {
+class ParentSpec extends SimpleSFXDelegateSpec[jfxs.Parent, Parent](classOf[jfxs.Parent], classOf[Parent]) {
 
   override protected def getScalaClassInstance = new Parent(getJavaClassInstance) {}
 

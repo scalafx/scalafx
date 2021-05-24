@@ -34,12 +34,13 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
-  *
-  * Test for [[scalafx.beans.property.ReadOnlySetWrapper]].
-  */
+ * Test for [[scalafx.beans.property.ReadOnlySetWrapper]].
+ */
 class ReadOnlySetWrapperSpec
-  extends SimpleSFXDelegateSpec[jfxbp.ReadOnlySetWrapper[Int], ReadOnlySetWrapper[Int]](
-    classOf[jfxbp.ReadOnlySetWrapper[Int]], classOf[ReadOnlySetWrapper[Int]]) {
+    extends SimpleSFXDelegateSpec[jfxbp.ReadOnlySetWrapper[Int], ReadOnlySetWrapper[Int]](
+      classOf[jfxbp.ReadOnlySetWrapper[Int]],
+      classOf[ReadOnlySetWrapper[Int]]
+    ) {
 
   // Ignore property comparison, it cannot deal with 'getReadOnlyProperty' correctly
   override def compareProperties(javafxClass: Class[_], scalafxClass: Class[_]): Unit = {}

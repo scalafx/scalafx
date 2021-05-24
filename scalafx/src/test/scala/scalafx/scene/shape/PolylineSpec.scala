@@ -34,8 +34,5 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Polyline Spec tests.
- *
- *
  */
-class PolylineSpec
-  extends SimpleSFXDelegateSpec[jfxss.Polyline, Polyline](classOf[jfxss.Polyline], classOf[Polyline])
+class PolylineSpec extends SimpleSFXDelegateSpec[jfxss.Polyline, Polyline](classOf[jfxss.Polyline], classOf[Polyline])

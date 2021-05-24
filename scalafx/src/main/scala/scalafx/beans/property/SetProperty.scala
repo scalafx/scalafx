@@ -34,90 +34,105 @@ import scala.language.implicitConversions
 import scalafx.collections.ObservableSet
 import scalafx.delegate.SFXDelegate
 
-
 object SetProperty {
+
   /**
-    * Converts a ScalaFX SetProperty to its JavaFX counterpart SetProperty.
-    *
-    * @param v ScalaFX SetProperty
-    * @return JavaFX SetProperty
-    */
+   * Converts a ScalaFX SetProperty to its JavaFX counterpart SetProperty.
+   *
+   * @param v
+   *   ScalaFX SetProperty
+   * @return
+   *   JavaFX SetProperty
+   */
   implicit def sfxSetProperty2jfx[E <: Any](v: SetProperty[E]): jfxbp.SetProperty[E] =
     if (v != null) v.delegate else null
 
   /**
-    * Creates a new SetProperty instance using the ObservableSet as the value.
-    *
-    * @param value the initial value
-    */
+   * Creates a new SetProperty instance using the ObservableSet as the value.
+   *
+   * @param value
+   *   the initial value
+   */
   def apply[E <: Any](value: ObservableSet[E]) =
     new SetProperty(new jfxbp.SimpleSetProperty(value.delegate))
 
   /**
-    * Creates a new SetProperty instance.
-    *
-    * @param bean the bean of this SetProperty
-    * @param name the name of this SetProperty
-    */
+   * Creates a new SetProperty instance.
+   *
+   * @param bean
+   *   the bean of this SetProperty
+   * @param name
+   *   the name of this SetProperty
+   */
   def apply[E <: Any](bean: Any, name: String) =
     new SetProperty(new jfxbp.SimpleSetProperty[E](bean, name))
 
   /**
-    * Creates a new SetProperty instance.
-    *
-    * @param bean  the bean of this SetProperty
-    * @param name  the name of this SetProperty
-    * @param value the initial value
-    */
+   * Creates a new SetProperty instance.
+   *
+   * @param bean
+   *   the bean of this SetProperty
+   * @param name
+   *   the name of this SetProperty
+   * @param value
+   *   the initial value
+   */
   def apply[E <: Any](bean: Any, name: String, value: ObservableSet[E]) =
     new SetProperty(new jfxbp.SimpleSetProperty(bean, name, value.delegate))
 }
 
-
 /**
-  * Wraps a $JFX $URL0 SetProperty]].
-  *
-  * @define TC          SetProperty
-  * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/SetProperty.html
-  * @define JFX         JavaFX
-  * @define ORIGINALDOC Original Documentation]].
-  **/
+ * Wraps a $JFX $URL0 SetProperty]].
+ *
+ * @define
+ *   TC SetProperty
+ * @define
+ *   URL0
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/SetProperty.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ */
 class SetProperty[E <: Any](override val delegate: jfxbp.SetProperty[E] = new jfxbp.SimpleSetProperty[E])
-  extends ReadOnlySetProperty[E](delegate)
+    extends ReadOnlySetProperty[E](delegate)
     with Property[ObservableSet[E], jfxc.ObservableSet[E]]
     with SFXDelegate[jfxbp.SetProperty[E]] {
 
   /**
-    * The constructor of SetProperty
-    *
-    * @param value the initial value of the wrapped value
-    */
+   * The constructor of SetProperty
+   *
+   * @param value
+   *   the initial value of the wrapped value
+   */
   def this(value: ObservableSet[E]) =
     this(new jfxbp.SimpleSetProperty(value.delegate))
 
   /**
-    * The constructor of SetProperty
-    *
-    * @param bean the bean of this SetProperty
-    * @param name the name of this SetProperty
-    */
+   * The constructor of SetProperty
+   *
+   * @param bean
+   *   the bean of this SetProperty
+   * @param name
+   *   the name of this SetProperty
+   */
   def this(bean: Any, name: String) =
     this(new jfxbp.SimpleSetProperty[E](bean, name))
 
   /**
-    * The constructor of SetProperty
-    *
-    * @param bean  the bean of this SetProperty
-    * @param name  the name of this SetProperty
-    * @param value the initial value of the wrapped value
-    */
+   * The constructor of SetProperty
+   *
+   * @param bean
+   *   the bean of this SetProperty
+   * @param name
+   *   the name of this SetProperty
+   * @param value
+   *   the initial value of the wrapped value
+   */
   def this(bean: Any, name: String, value: ObservableSet[E]) =
     this(new jfxbp.SimpleSetProperty(bean, name, value.delegate))
 
   /**
-    * Set the wrapped value.
-    *
-    * @param v The new value
-    */
+   * Set the wrapped value.
+   *
+   * @param v
+   *   The new value
+   */
   override def value_=(v: ObservableSet[E]): Unit = delegate.setValue(v)
 }

@@ -35,5 +35,5 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  * DatePicker Spec tests.
  */
 class DatePickerSpec
-  extends SimpleSFXDelegateSpec[jfxsc.DatePicker, DatePicker](classOf[jfxsc.DatePicker], classOf[DatePicker])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.DatePicker, DatePicker](classOf[jfxsc.DatePicker], classOf[DatePicker])
+    with RunOnApplicationThread

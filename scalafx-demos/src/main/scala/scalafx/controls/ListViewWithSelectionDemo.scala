@@ -54,8 +54,8 @@ object ListViewWithSelectionDemo extends JFXApp {
     scene = new Scene {
       content = new ListView[Person] {
         items = characters
-        selectionModel().selectedItem.onChange {
-          (_, _, newValue) => println("Selection Changed: " + newValue)
+        selectionModel().selectedItem.onChange { (_, _, newValue) =>
+          println("Selection Changed: " + newValue)
         }
       }
     }

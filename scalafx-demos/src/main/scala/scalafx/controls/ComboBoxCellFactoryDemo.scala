@@ -37,8 +37,8 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
 /**
- * Example of using ComboBox with ScalaFX cellFactory helper.
- * Based on example in ComboBox API documentation. ScalaFX allows for safe and simple implementation.
+ * Example of using ComboBox with ScalaFX cellFactory helper. Based on example in ComboBox API documentation. ScalaFX
+ * allows for safe and simple implementation.
  *
  * Compare ScalaFX:
  * {{{

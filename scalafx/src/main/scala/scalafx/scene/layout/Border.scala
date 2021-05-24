@@ -42,8 +42,7 @@ object Border {
   val EMPTY: Border = Empty
 }
 
-class Border(override val delegate: jfxsl.Border)
-  extends SFXDelegate[jfxsl.Border] {
+class Border(override val delegate: jfxsl.Border) extends SFXDelegate[jfxsl.Border] {
 
   /** Creates a new Border by supplying an array of BorderImages. */
   def this(images: BorderImage*) = {

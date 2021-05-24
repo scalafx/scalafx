@@ -44,16 +44,16 @@ import scalafx.scene._
 import scala.language.postfixOps
 
 /**
- * The type VideoCubeDemo a demonstration of the JavaOne 2011 key note with
- * {@link Media}, {@link MediaView}, and {@link MediaPlayer} for
- * six videos that are displayed as a 3D graphic cube.
+ * The type VideoCubeDemo a demonstration of the JavaOne 2011 key note with {@link Media}, {@link MediaView}, and {@link
+ * MediaPlayer} for six videos that are displayed as a 3D graphic cube.
  *
- * @author Peter Pilgrim (peter)
+ * @author
+ *   Peter Pilgrim (peter)
  */
 object VideoCubeDemo extends JFXApp {
 
   var animation: Timeline = _
-  var root = new Group
+  var root                = new Group
   stage = new PrimaryStage {
     scene = new Scene(root, 800, 600, true, SceneAntialiasing.Balanced) {
       fill = Color.Black
@@ -61,7 +61,6 @@ object VideoCubeDemo extends JFXApp {
     resizable = false
     title = "Graphics 3D Video Cube Demo in ScalaFX"
   }
-
 
   // Obviously, you need put videos files into an accessible on your local machine ;-)
   // Downloading from the net
@@ -73,16 +72,19 @@ object VideoCubeDemo extends JFXApp {
   // Location of the movie files has to be defined using system property `scalafx.graphics3d.VideoCubeDemo.folder`
   // For instance using command line option `-Dscalafx.graphics3d.VideoCubeDemo.folder=/tmp/videos`
   val folderSysProperty = "scalafx.graphics3d.VideoCubeDemo.folder"
-  val folderOption = Option[String](System.getProperty(folderSysProperty))
+  val folderOption      = Option[String](System.getProperty(folderSysProperty))
 
   val folder = folderOption match {
     case Some(folderName) => {
       val file = new File(folderName)
       if (file.exists() && file.isDirectory) file
-      else throw new IllegalArgumentException("System property `" + folderSysProperty + " = " + folderName + "` " +
-        "has to point to an existing directory.")
+      else
+        throw new IllegalArgumentException(
+          "System property `" + folderSysProperty + " = " + folderName + "` " +
+            "has to point to an existing directory."
+        )
     }
-    case None             => throw new IllegalArgumentException("System property `" + folderSysProperty + "` is not defined.")
+    case None => throw new IllegalArgumentException("System property `" + folderSysProperty + "` is not defined.")
   }
 
   // You need your video files ;-) Cannot redistribute MOVIE FILES!!!
@@ -93,11 +95,12 @@ object VideoCubeDemo extends JFXApp {
     "PROMETHEUS Trailer 2 - 2012 Movie - Official [HD].mp4",
     "RESIDENT EVIL 5 Retribution Trailer 2 - 2012 Movie - Official.mp4",
     "TED Movie Trailer 2012 - Official [HD].mp4",
-    "THE HOBBIT Trailer - 2012 Movie - Official [HD].mp4")
+    "THE HOBBIT Trailer - 2012 Movie - Official [HD].mp4"
+  )
 
-  val mediaPlayers = vidFiles.map {
-    filename => {
-      val file = new File(folder, filename)
+  val mediaPlayers = vidFiles.map { filename =>
+    {
+      val file  = new File(folder, filename)
       val media = new Media(file.toURI.toURL.toExternalForm)
       new MediaPlayer(media) {
         volume = 0.5
@@ -114,20 +117,22 @@ object VideoCubeDemo extends JFXApp {
 
   stage.getScene.setCamera(new PerspectiveCamera())
 
-  val lowX = -75
-  val lowY = -75
+  val lowX  = -75
+  val lowY  = -75
   val highX = 900
   val highY = 700
   val starryBackground = new Group {
-    val stars = (1 to 500).map(_ => new Rectangle {
-      x = lowX + scala.math.random * (highX - lowX)
-      y = lowY + scala.math.random * (highY - lowY)
-      //      printf("x=%5.1f, y=%5.1f\n", x.get(), y.get() )
-      val s = 1 + scala.math.random * 3
-      width = s
-      height = s
-      fill = Color.White
-    })
+    val stars = (1 to 500).map(_ =>
+      new Rectangle {
+        x = lowX + scala.math.random * (highX - lowX)
+        y = lowY + scala.math.random * (highY - lowY)
+        //      printf("x=%5.1f, y=%5.1f\n", x.get(), y.get() )
+        val s = 1 + scala.math.random * 3
+        width = s
+        height = s
+        fill = Color.White
+      }
+    )
     //    printf("stars=%s\n", stars)
     children = stars
     translateZ = 100.0
@@ -145,11 +150,11 @@ object VideoCubeDemo extends JFXApp {
     animation = new Timeline {
       cycleCount = Timeline.Indefinite
       keyFrames = Seq(
-        at(0 s) {c1.ry.angle -> 0d; c1.rx.angle -> 0d; c1.rz.angle -> 0d},
-        at(4 s) {c1.rx.angle -> 360d; c1.ry.angle -> 520d;},
+        at(0 s) { c1.ry.angle -> 0d; c1.rx.angle -> 0d; c1.rz.angle -> 0d },
+        at(4 s) { c1.rx.angle -> 360d; c1.ry.angle -> 520d; },
         //        at (4 s) { c1.rz.angle -> 0d ; c1.ry.angle -> 720d; }
-        at(7 s) {c1.rx.angle -> 360d; c1.ry.angle -> 520d},
-        at(10 s) {c1.rz.angle -> 1080d}
+        at(7 s) { c1.rx.angle -> 360d; c1.ry.angle -> 520d },
+        at(10 s) { c1.rz.angle -> 1080d }
       )
     }
 
@@ -158,17 +163,16 @@ object VideoCubeDemo extends JFXApp {
 
   def play(): Unit = {
     animation.play()
-    for (mp <- mediaPlayers) {mp.play()}
+    for (mp <- mediaPlayers) { mp.play() }
   }
 
   def stop(): Unit = {
     animation.pause()
-    for (mp <- mediaPlayers) {mp.stop()}
+    for (mp <- mediaPlayers) { mp.stop() }
   }
 
   play()
 }
-
 
 class VideoCube(val mediaPlayers: List[MediaPlayer], size: Double) extends Group {
   val rx = new Rotate(0, Rotate.XAxis)
@@ -242,15 +246,24 @@ class VideoCube(val mediaPlayers: List[MediaPlayer], size: Double) extends Group
   )
 
   /**
-   * This is a custom node that associates a {@link MediaView} with a backing {@link Rectangle}
-   * that represents a cube face
-   * @param mediaPlayer the media player
-   * @param size the square size of the cube face
-   * @param color the colour of the cube face
-   * @param shade the derived colour
+   * This is a custom node that associates a {@link MediaView} with a backing {@link Rectangle} that represents a cube
+   * face
+   * @param mediaPlayer
+   *   the media player
+   * @param size
+   *   the square size of the cube face
+   * @param color
+   *   the colour of the cube face
+   * @param shade
+   *   the derived colour
    */
-  class MediaViewCubeFace(val mediaPlayer: MediaPlayer, size: Double, offset: Double = -0.01,
-                          color: Color = Color.LightBlue, shade: Double = 1.0) extends Group {
+  class MediaViewCubeFace(
+      val mediaPlayer: MediaPlayer,
+      size: Double,
+      offset: Double = -0.01,
+      color: Color = Color.LightBlue,
+      shade: Double = 1.0
+  ) extends Group {
 
     def this(mediaPlayer: MediaPlayer, offset: Double) = this(mediaPlayer, 0.0, offset)
 
@@ -289,8 +302,7 @@ class VideoCube(val mediaPlayers: List[MediaPlayer], size: Double) extends Group
     }
 
     /**
-     * Determines the width of the bounding box within which the source media is resized as
-     * necessary to fit.
+     * Determines the width of the bounding box within which the source media is resized as necessary to fit.
      */
     def fitWidth = mediaView.fitWidthProperty
 

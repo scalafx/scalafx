@@ -31,7 +31,6 @@ import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
-
 /** Border Spec tests. */
 class BorderSpec extends SimpleSFXDelegateSpec[jfxsl.Border, Border](classOf[jfxsl.Border], classOf[Border]) {
 

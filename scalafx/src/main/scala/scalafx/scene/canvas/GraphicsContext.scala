@@ -41,16 +41,19 @@ import scala.collection.mutable.ArrayBuffer
 import scala.language.implicitConversions
 
 object GraphicsContext {
-  implicit def sfxGraphicsContext2jfx(gc: GraphicsContext): jfxsc.GraphicsContext = if (gc != null) gc.delegate else null
+  implicit def sfxGraphicsContext2jfx(gc: GraphicsContext): jfxsc.GraphicsContext =
+    if (gc != null) gc.delegate else null
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/GraphicsContext.html JavaFX GraphicsContext]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/canvas/GraphicsContext.htmlJavaFX GraphicsContext]]
  */
-class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
-  extends SFXDelegate[jfxsc.GraphicsContext] {
+class GraphicsContext(override val delegate: jfxsc.GraphicsContext) extends SFXDelegate[jfxsc.GraphicsContext] {
 
-  private def executeWithPoints(action: (Array[Double], Array[Double], Int) => Unit, points: Seq[(Double, Double)]): Unit = {
+  private def executeWithPoints(
+      action: (Array[Double], Array[Double], Int) => Unit,
+      points: Seq[(Double, Double)]
+  ): Unit = {
     val xPoints = new ArrayBuffer[Double](points.size)
     val yPoints = new ArrayBuffer[Double](points.size)
 
@@ -79,7 +82,14 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * Adds path elements to the current path to make an arc that uses Euclidean degrees.
    */
-  def arc(centerX: Double, centerY: Double, radiusX: Double, radiusY: Double, startAngle: Double, length: Double): Unit = {
+  def arc(
+      centerX: Double,
+      centerY: Double,
+      radiusX: Double,
+      radiusY: Double,
+      startAngle: Double,
+      length: Double
+  ): Unit = {
     delegate.arc(centerX, centerY, radiusX, radiusY, startAngle, length)
   }
 
@@ -147,13 +157,23 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * Draws the current source rectangle of the given image to the given destination rectangle of the Canvas.
    */
-  def drawImage(img: Image, sx: Double, sy: Double, sw: Double, sh: Double, dx: Double, dy: Double, dw: Double, dh: Double): Unit = {
+  def drawImage(
+      img: Image,
+      sx: Double,
+      sy: Double,
+      sw: Double,
+      sh: Double,
+      dx: Double,
+      dy: Double,
+      dw: Double,
+      dh: Double
+  ): Unit = {
     delegate.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh)
   }
 
   /*
-   * IMPLEMENTATION NOTE ABOUT EFFECT: Although there is a "getter" and a setter for Effect, the getEffect in JavaFX 
-   * class has a parameter (in this case the Effect to be used) I decided not to use the Scala pattern for getters and 
+   * IMPLEMENTATION NOTE ABOUT EFFECT: Although there is a "getter" and a setter for Effect, the getEffect in JavaFX
+   * class has a parameter (in this case the Effect to be used) I decided not to use the Scala pattern for getters and
    * setters.
    */
 
@@ -170,8 +190,8 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   }
 
   /*
-   * IMPLEMENTATION NOTE ABOUT FILL: In original JavaFX class there is a getter and setter for fill. However, there 
-   * is a method called fill(). Then, in order to use Scala pattern for getter and setter, the fill() method in JavaFX 
+   * IMPLEMENTATION NOTE ABOUT FILL: In original JavaFX class there is a getter and setter for fill. However, there
+   * is a method called fill(). Then, in order to use Scala pattern for getter and setter, the fill() method in JavaFX
    * class was renamed to fillPath.
    */
 
@@ -185,8 +205,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   }
 
   /**
-   * Fills the path with the current fill paint.
-   * This method is correspondent to fill() method in JavaFx class.
+   * Fills the path with the current fill paint. This method is correspondent to fill() method in JavaFx class.
    */
   def fillPath(): Unit = {
     delegate.fill()
@@ -195,7 +214,15 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * Fills an arc using the current fill paint.
    */
-  def fillArc(x: Double, y: Double, w: Double, h: Double, startAngle: Double, arcExtent: Double, closure: ArcType): Unit = {
+  def fillArc(
+      x: Double,
+      y: Double,
+      w: Double,
+      h: Double,
+      startAngle: Double,
+      arcExtent: Double,
+      closure: ArcType
+  ): Unit = {
     delegate.fillArc(x, y, w, h, startAngle, arcExtent, closure)
   }
 
@@ -398,8 +425,7 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   }
 
   /**
-   * Strokes the path with the current stroke paint.
-   * This method is correspondent to stroke() method in JavaFx class.
+   * Strokes the path with the current stroke paint. This method is correspondent to stroke() method in JavaFx class.
    */
   def strokePath(): Unit = {
     delegate.stroke()
@@ -408,7 +434,15 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
   /**
    * Strokes an Arc using the current stroke paint.
    */
-  def strokeArc(x: Double, y: Double, w: Double, h: Double, startAngle: Double, arcExtent: Double, closure: ArcType): Unit = {
+  def strokeArc(
+      x: Double,
+      y: Double,
+      w: Double,
+      h: Double,
+      startAngle: Double,
+      arcExtent: Double,
+      closure: ArcType
+  ): Unit = {
     delegate.strokeArc(x, y, w, h, startAngle, arcExtent, closure)
   }
 
@@ -502,8 +536,8 @@ class GraphicsContext(override val delegate: jfxsc.GraphicsContext)
 
   /*
    * IMPLEMENTATION NOTE ABOUT TRANSFORM: Although there is more than a getter and setter for Transform. Besides, one
-   * of getters has parameter (in this case the Effect to be used). Furthermore, there is two transform methods in 
-   * original class. So I decided not to use the Scala pattern for getters and setters. 
+   * of getters has parameter (in this case the Effect to be used). Furthermore, there is two transform methods in
+   * original class. So I decided not to use the Scala pattern for getters and setters.
    */
 
   /**

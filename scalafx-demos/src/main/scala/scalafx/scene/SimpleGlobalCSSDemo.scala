@@ -33,8 +33,8 @@ import scalafx.scene.control.Button
 import scalafx.scene.layout.BorderPane
 
 /**
-  * An example of replacing global CSS stylesheet.
-  */
+ * An example of replacing global CSS stylesheet.
+ */
 object SimpleGlobalCSSDemo extends JFXApp {
 
   // Replace global stylesheet.

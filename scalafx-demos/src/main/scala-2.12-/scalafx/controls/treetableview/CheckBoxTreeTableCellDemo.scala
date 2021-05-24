@@ -44,9 +44,8 @@ object CheckBoxTreeTableCellDemo extends JFXApp {
 
   class Item(selected_ : Boolean, name_ : String) {
     val selected = new BooleanProperty(this, "selected", selected_)
-    val name = new StringProperty(this, "name", name_)
+    val name     = new StringProperty(this, "name", name_)
   }
-
 
   val data = new TreeItem[Item](new Item(false, ""))
   for (i <- 1 to 10) {
@@ -70,7 +69,8 @@ object CheckBoxTreeTableCellDemo extends JFXApp {
             // We need to explicitly cast `_.value.selected` to modify boolean type parameters.
             // `scala.Boolean` type is different from `java.lang.Boolean`, but eventually represented the same way
             // by the compiler.
-            cellValueFactory = _.value.getValue.selected.asInstanceOf[ObservableValue[java.lang.Boolean, java.lang.Boolean]]
+            cellValueFactory =
+              _.value.getValue.selected.asInstanceOf[ObservableValue[java.lang.Boolean, java.lang.Boolean]]
             cellFactory = CheckBoxTreeTableCell.forTreeTableColumn(this.delegate)
             editable = true
             prefWidth = 180

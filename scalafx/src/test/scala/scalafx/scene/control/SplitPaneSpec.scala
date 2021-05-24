@@ -33,9 +33,7 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * SplitPane Spec tests.
- *
- *
  */
 class SplitPaneSpec
-  extends SimpleSFXDelegateSpec[jfxsc.SplitPane, SplitPane](classOf[jfxsc.SplitPane], classOf[SplitPane])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.SplitPane, SplitPane](classOf[jfxsc.SplitPane], classOf[SplitPane])
+    with RunOnApplicationThread

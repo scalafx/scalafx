@@ -37,10 +37,9 @@ import scalafx.scene.image.ImageView
 import scalafx.scene.paint.Color
 
 /**
-  * TreeTableView with One Column.
-  * ScalaFX version of example 15-2 in JavaFX
-  * [[https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/tree-table-view.htm Tree Table View tutorial]].
-  */
+ * TreeTableView with One Column. ScalaFX version of example 15-2 in JavaFX
+ * [[https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/tree-table-view.htmTree Table View tutorial]].
+ */
 object TreeTableViewWithTwoColumns extends JFXApp {
 
   case class Employee(name: StringProperty, email: StringProperty) {
@@ -53,7 +52,8 @@ object TreeTableViewWithTwoColumns extends JFXApp {
     new Employee("Michael Brown", "michael.brown@example.com"),
     new Employee("Anna Black", "anna.black@example.com"),
     new Employee("Rodger York", "roger.york@example.com"),
-    new Employee("Susan Collins", "susan.collins@example.com"))
+    new Employee("Susan Collins", "susan.collins@example.com")
+  )
 
   val depIcon = new ImageView(getClass.getResource("department.png").toExternalForm)
 

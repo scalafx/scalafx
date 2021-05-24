@@ -33,10 +33,11 @@ import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /**
- *
  * Test for [[scalafx.scene.control.ButtonData]].
  */
-class ButtonDataSpec extends SFXEnumDelegateSpec[jfxsc.ButtonBar.ButtonData, ButtonBar.ButtonData](
-  javaClass = classOf[jfxsc.ButtonBar.ButtonData],
-  scalaClass = classOf[ButtonBar.ButtonData],
-  companion = ButtonBar.ButtonData)
+class ButtonDataSpec
+    extends SFXEnumDelegateSpec[jfxsc.ButtonBar.ButtonData, ButtonBar.ButtonData](
+      javaClass = classOf[jfxsc.ButtonBar.ButtonData],
+      scalaClass = classOf[ButtonBar.ButtonData],
+      companion = ButtonBar.ButtonData
+    )

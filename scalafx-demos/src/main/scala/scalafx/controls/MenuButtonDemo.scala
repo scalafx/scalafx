@@ -47,9 +47,10 @@ object MenuButtonDemo extends JFXApp {
           new MenuButton("MenuButton 1") {
             items = List(
               new MenuItem("MenuItem A") {
-                onAction = { (ae: ActionEvent) => {
-                  println(s"${ae.eventType} occurred on Menu Item A")
-                }
+                onAction = { (ae: ActionEvent) =>
+                  {
+                    println(s"${ae.eventType} occurred on Menu Item A")
+                  }
                 }
               },
               new MenuItem("MenuItem B")
@@ -59,15 +60,15 @@ object MenuButtonDemo extends JFXApp {
             text = "MenuButton 2"
             items = List(
               new MenuItem("MenuItem C") {
-                onAction = { (ae: ActionEvent) => {
-                  println(s"${ae.eventType} occurred on Menu Item C")
-                }
+                onAction = { (ae: ActionEvent) =>
+                  {
+                    println(s"${ae.eventType} occurred on Menu Item C")
+                  }
                 }
               },
               new MenuItem("MenuItem D")
             )
           }
-
         )
       }
     }

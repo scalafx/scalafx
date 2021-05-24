@@ -41,9 +41,9 @@ object ImageView {
 }
 
 class ImageView(override val delegate: jfxsi.ImageView = new jfxsi.ImageView())
-  extends Node(delegate)
-  with PositionDelegate[jfxsi.ImageView]
-  with SFXDelegate[jfxsi.ImageView] {
+    extends Node(delegate)
+    with PositionDelegate[jfxsi.ImageView]
+    with SFXDelegate[jfxsi.ImageView] {
 
   /** Allocates a new ImageView object using the given image. */
   def this(image: Image) = {

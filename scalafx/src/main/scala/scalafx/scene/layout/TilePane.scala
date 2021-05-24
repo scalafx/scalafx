@@ -73,7 +73,7 @@ object TilePane {
 }
 
 class TilePane(override val delegate: jfxsl.TilePane = new jfxsl.TilePane)
-  extends Pane(delegate)
+    extends Pane(delegate)
     with AlignmentDelegate[jfxsl.TilePane]
     with SFXDelegate[jfxsl.TilePane] {
 

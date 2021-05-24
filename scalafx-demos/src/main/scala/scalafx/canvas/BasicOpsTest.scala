@@ -39,7 +39,7 @@ import scalafx.scene.shape.ArcType
 object BasicOpsTest extends JFXApp {
 
   val canvas = new Canvas(300, 300)
-  val gc = canvas.graphicsContext2D
+  val gc     = canvas.graphicsContext2D
 
   gc.fill = Color.Green
   gc.stroke = Color.Blue

@@ -38,6 +38,6 @@ object LineTo {
 }
 
 class LineTo(override val delegate: jfxss.LineTo = new jfxss.LineTo())
-  extends PathElement(delegate)
-  with PositionDelegate[jfxss.LineTo]
-  with SFXDelegate[jfxss.LineTo] 
+    extends PathElement(delegate)
+    with PositionDelegate[jfxss.LineTo]
+    with SFXDelegate[jfxss.LineTo]

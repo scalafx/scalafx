@@ -32,8 +32,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 /**
  * Companion Object for [[scalafx.print.PrintColor]].
  */
-object PrintColor
-  extends SFXEnumDelegateCompanion[jfxp.PrintColor, PrintColor] {
+object PrintColor extends SFXEnumDelegateCompanion[jfxp.PrintColor, PrintColor] {
 
   /**
    * Specifies color printing.
@@ -50,7 +49,6 @@ object PrintColor
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintColor.html JavaFX PrintColor]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintColor.htmlJavaFX PrintColor]].
  */
-sealed abstract class PrintColor(override val delegate: jfxp.PrintColor)
-  extends SFXEnumDelegate[jfxp.PrintColor]
+sealed abstract class PrintColor(override val delegate: jfxp.PrintColor) extends SFXEnumDelegate[jfxp.PrintColor]

@@ -33,10 +33,10 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * CheckBoxTreeCell Spec tests.
- *
- *
  */
 class CheckBoxTreeCellSpec[T]
-  extends SimpleSFXDelegateSpec[jfxscc.CheckBoxTreeCell[T], CheckBoxTreeCell[T]](
-    classOf[jfxscc.CheckBoxTreeCell[T]], classOf[CheckBoxTreeCell[T]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxscc.CheckBoxTreeCell[T], CheckBoxTreeCell[T]](
+      classOf[jfxscc.CheckBoxTreeCell[T]],
+      classOf[CheckBoxTreeCell[T]]
+    )
+    with RunOnApplicationThread

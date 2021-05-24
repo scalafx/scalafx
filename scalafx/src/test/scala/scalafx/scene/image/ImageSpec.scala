@@ -34,11 +34,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Image Spec tests.
- *
- *
  */
-class ImageSpec
-  extends SimpleSFXDelegateSpec[jfxsi.Image, Image](classOf[jfxsi.Image], classOf[Image]) {
+class ImageSpec extends SimpleSFXDelegateSpec[jfxsi.Image, Image](classOf[jfxsi.Image], classOf[Image]) {
 
   override protected def getJavaClassInstance = new jfxsi.Image(this.getClass.getResourceAsStream(""))
 

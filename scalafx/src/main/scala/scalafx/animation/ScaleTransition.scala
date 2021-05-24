@@ -38,43 +38,54 @@ import scala.language.implicitConversions
 /**
  * Companion Object for [[scalafx.animation.ScaleTransition]].
  *
- * @define ST `ScaleTransition`
+ * @define
+ *   ST `ScaleTransition`
  */
 object ScaleTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/ScaleTransition.html $ST]],
-   * extracting its delegate.
+   * Converts a ScalaFX $ST to a JavaFX
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/ScaleTransition.html$ST]], extracting its delegate.
    *
-   * @param v ScalaFX $ST
-   * @return JavaFX $ST extracted from `v`.
+   * @param v
+   *   ScalaFX $ST
+   * @return
+   *   JavaFX $ST extracted from `v`.
    */
   implicit def sfxScaleTransition2jfx(v: ScaleTransition): jfxa.ScaleTransition = if (v != null) v.delegate else null
 
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/ScaleTransition.html $ST]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/ScaleTransition.html$ST]].
  *
- * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
- * @param delegate JavaFX $ST to be delegated.
+ * @constructor
+ *   Creates a new ScalaFX $ST from a JavaFX $ST.
+ * @param delegate
+ *   JavaFX $ST to be delegated.
  *
- * @define ST `ScaleTransition`
- * @define CONST The constructor of $ST
- * @define DUR The duration of the $ST
- * @define DV Default value:
+ * @define
+ *   ST `ScaleTransition`
+ * @define
+ *   CONST The constructor of $ST
+ * @define
+ *   DUR The duration of the $ST
+ * @define
+ *   DV Default value:
  */
 class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.ScaleTransition)
-  extends Transition(delegate)
-  with SFXDelegate[jfxa.ScaleTransition] {
+    extends Transition(delegate)
+    with SFXDelegate[jfxa.ScaleTransition] {
 
   // CONSTRUCTORS
 
   /**
    * $CONST
    *
-   * @param duration $DUR
-   * @param node The node which will be scaled
+   * @param duration
+   *   $DUR
+   * @param node
+   *   The node which will be scaled
    */
   def this(duration: Duration, node: Node) =
     this(new jfxa.ScaleTransition(duration, node))
@@ -82,7 +93,8 @@ class ScaleTransition(override val delegate: jfxa.ScaleTransition = new jfxa.Sca
   /**
    * $CONST
    *
-   * @param duration $DUR
+   * @param duration
+   *   $DUR
    */
   def this(duration: Duration) = this(new jfxa.ScaleTransition(duration))
 

@@ -36,8 +36,8 @@ object PasswordField {
 }
 
 class PasswordField(override val delegate: jfxsc.PasswordField = new jfxsc.PasswordField())
-  extends TextField(delegate)
-  with SFXDelegate[jfxsc.PasswordField] {
+    extends TextField(delegate)
+    with SFXDelegate[jfxsc.PasswordField] {
 
   def cut(): Unit = {
     delegate.cut()

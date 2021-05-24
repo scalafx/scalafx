@@ -29,35 +29,41 @@ package scalafx.delegate
 import scala.language.implicitConversions
 
 /**
-  * Base trait for all Companion objects `SFXEnumDelegate` subclasses. It mirrors static methods for
-  * [[http://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html `Enum`]].
-  *
-  * @tparam E Original JavaFX `enum`
-  * @tparam S `SFXEnumDelegate` that wrappers `E`
-  */
+ * Base trait for all Companion objects `SFXEnumDelegate` subclasses. It mirrors static methods for
+ * [[http://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html`Enum`]].
+ *
+ * @tparam E
+ *   Original JavaFX `enum`
+ * @tparam S
+ *   `SFXEnumDelegate` that wrappers `E`
+ */
 trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] {
 
   /**
-    * Converts a `SFXEnumDelegate` to its respective JavaFX `Enum`.
-    *
-    * @param s `SFXEnumDelegate` instance
-    * @return Delegated `enum`
-    */
+   * Converts a `SFXEnumDelegate` to its respective JavaFX `Enum`.
+   *
+   * @param s
+   *   `SFXEnumDelegate` instance
+   * @return
+   *   Delegated `enum`
+   */
   implicit def sfxEnum2jfx(s: S): E =
     if (s != null) s.delegate
     else null.asInstanceOf[E]
 
   /**
-    * Converts a JavaFX `enum` to its respective `SFXEnumDelegate`.
-    *
-    * @param e JavaFX `enum`
-    * @return `[[scalafx.delegate.SFXEnumDelegate]]` equivalent to argument.
-    */
+   * Converts a JavaFX `enum` to its respective `SFXEnumDelegate`.
+   *
+   * @param e
+   *   JavaFX `enum`
+   * @return
+   *   `[[scalafx.delegate.SFXEnumDelegate]]` equivalent to argument.
+   */
   def jfxEnum2sfx(e: E): S =
     if (e != null) values.find(_.delegate == e).get
     else null.asInstanceOf[S]
 
-  /** Contain constants which will be source for `values` List  */
+  /** Contain constants which will be source for `values` List */
   protected def unsortedValues: Array[S]
 
   /** Returns a List containing the constants of this `enum` type, in the order they are declared. */
@@ -66,9 +72,11 @@ trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] 
   /**
    * Returns the `enum` constant of this type with the specified name.
    *
-   * @param name the name of the constant to return
-   * @throws IllegalArgumentException If the specified `enum` type has no constant with the specified name,
-   *                                  or the specified class object does not represent an `enum` type.
+   * @param name
+   *   the name of the constant to return
+   * @throws
+   *   IllegalArgumentException If the specified `enum` type has no constant with the specified name, or the specified
+   *   class object does not represent an `enum` type.
    */
   def apply(name: String): S = values.find(_.name == name) match {
     case Some(e) => e
@@ -76,11 +84,13 @@ trait SFXEnumDelegateCompanion[E <: java.lang.Enum[E], S <: SFXEnumDelegate[E]] 
   }
 
   /**
-    * Converts a JavaFX `enum` to its respective `SFXEnumDelegate`.
-    *
-    * @param e JavaFX `enum`
-    * @return `[[scalafx.delegate.SFXEnumDelegate]]` equivalent to argument.
-    */
+   * Converts a JavaFX `enum` to its respective `SFXEnumDelegate`.
+   *
+   * @param e
+   *   JavaFX `enum`
+   * @return
+   *   `[[scalafx.delegate.SFXEnumDelegate]]` equivalent to argument.
+   */
   def apply(e: E): S = jfxEnum2sfx(e)
 
 }

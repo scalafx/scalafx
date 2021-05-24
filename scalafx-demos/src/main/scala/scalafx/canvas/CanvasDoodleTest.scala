@@ -81,10 +81,11 @@ object CanvasDoodleTest extends JFXApp {
   }
 
   /**
-   * Resets the canvas to its original look by filling in a rectangle covering
-   * its entire width and height. Color.Blue is used in this demo.
+   * Resets the canvas to its original look by filling in a rectangle covering its entire width and height. Color.Blue
+   * is used in this demo.
    *
-   * @param color The color to fill
+   * @param color
+   *   The color to fill
    */
   private def reset(color: Color): Unit = {
     gc.fill = color

@@ -33,11 +33,13 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object ReadOnlyObjectProperty {
-  implicit def sfxReadOnlyObjectProperty2jfx[T <: Any](roop: ReadOnlyObjectProperty[T]): jfxbp.ReadOnlyObjectProperty[T] = roop.delegate
+  implicit def sfxReadOnlyObjectProperty2jfx[T <: Any](
+      roop: ReadOnlyObjectProperty[T]
+  ): jfxbp.ReadOnlyObjectProperty[T] = roop.delegate
 }
 
 class ReadOnlyObjectProperty[T <: Any](override val delegate: jfxbp.ReadOnlyObjectProperty[T])
-  extends ObjectExpression[T](delegate)
+    extends ObjectExpression[T](delegate)
     with ReadOnlyProperty[T, T]
     with SFXDelegate[jfxbp.ReadOnlyObjectProperty[T]] {
 

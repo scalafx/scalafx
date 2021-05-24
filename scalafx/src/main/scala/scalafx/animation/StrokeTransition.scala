@@ -40,45 +40,58 @@ import scala.language.implicitConversions
 /**
  * Companion Object for [[scalafx.animation.StrokeTransition]].
  *
- * @define ST `StrokeTransition`
+ * @define
+ *   ST `StrokeTransition`
  */
 object StrokeTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $ST to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/StrokeTransition.html $ST]],
-   * extracting its delegate.
+   * Converts a ScalaFX $ST to a JavaFX
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/StrokeTransition.html$ST]], extracting its delegate.
    *
-   * @param v ScalaFX $ST
-   * @return JavaFX $ST extracted from `v`.
+   * @param v
+   *   ScalaFX $ST
+   * @return
+   *   JavaFX $ST extracted from `v`.
    */
   implicit def sfxStrokeTransition2jfx(v: StrokeTransition): jfxa.StrokeTransition = if (v != null) v.delegate else null
 
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/StrokeTransition.html StrokeTransition]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/StrokeTransition.htmlStrokeTransition]].
  *
- * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
- * @param delegate JavaFX $ST to be delegated.
+ * @constructor
+ *   Creates a new ScalaFX $ST from a JavaFX $ST.
+ * @param delegate
+ *   JavaFX $ST to be delegated.
  *
- * @define ST `StrokeTransition`
- * @define CONST The constructor of $ST
- * @define DUR The duration of the $ST.
- * @define DV Default value:
+ * @define
+ *   ST `StrokeTransition`
+ * @define
+ *   CONST The constructor of $ST
+ * @define
+ *   DUR The duration of the $ST.
+ * @define
+ *   DV Default value:
  */
 class StrokeTransition(override val delegate: jfxa.StrokeTransition = new jfxa.StrokeTransition)
-  extends Transition(delegate)
-  with SFXDelegate[jfxa.StrokeTransition] {
+    extends Transition(delegate)
+    with SFXDelegate[jfxa.StrokeTransition] {
 
   // CONSTRUCTORS
 
   /**
    * $CONST
    *
-   * @param duration $DUR
-   * @param shape The shape which filling will be animated
-   * @param fromValue The start value of the color-animation
-   * @param toValue The end value of the color-animation
+   * @param duration
+   *   $DUR
+   * @param shape
+   *   The shape which filling will be animated
+   * @param fromValue
+   *   The start value of the color-animation
+   * @param toValue
+   *   The end value of the color-animation
    */
   def this(duration: Duration, shape: Shape, fromValue: Color, toValue: Color) =
     this(new jfxa.StrokeTransition(duration, shape, fromValue, toValue))
@@ -86,9 +99,12 @@ class StrokeTransition(override val delegate: jfxa.StrokeTransition = new jfxa.S
   /**
    * $CONST
    *
-   * @param duration $DUR
-   * @param fromValue The start value of the color-animation
-   * @param toValue The end value of the color-animation
+   * @param duration
+   *   $DUR
+   * @param fromValue
+   *   The start value of the color-animation
+   * @param toValue
+   *   The end value of the color-animation
    */
   def this(duration: Duration, fromValue: Color, toValue: Color) =
     this(new jfxa.StrokeTransition(duration, fromValue, toValue))
@@ -96,8 +112,10 @@ class StrokeTransition(override val delegate: jfxa.StrokeTransition = new jfxa.S
   /**
    * $CONST
    *
-   * @param duration $DUR
-   * @param shape The shape which filling will be animated
+   * @param duration
+   *   $DUR
+   * @param shape
+   *   The shape which filling will be animated
    */
   def this(duration: Duration, shape: Shape) =
     this(new jfxa.StrokeTransition(duration, shape))
@@ -105,7 +123,8 @@ class StrokeTransition(override val delegate: jfxa.StrokeTransition = new jfxa.S
   /**
    * $CONST
    *
-   * @param duration $DUR
+   * @param duration
+   *   $DUR
    */
   def this(duration: Duration) = this(new jfxa.StrokeTransition(duration))
 

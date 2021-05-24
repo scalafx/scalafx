@@ -39,9 +39,9 @@ object ImageInput {
 }
 
 class ImageInput(override val delegate: jfxse.ImageInput = new jfxse.ImageInput)
-  extends Effect(delegate)
-  with PositionDelegate[jfxse.ImageInput]
-  with SFXDelegate[jfxse.ImageInput] {
+    extends Effect(delegate)
+    with PositionDelegate[jfxse.ImageInput]
+    with SFXDelegate[jfxse.ImageInput] {
 
   /**
    * Creates a new instance of ImageInput with the specified source.

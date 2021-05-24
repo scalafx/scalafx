@@ -33,9 +33,7 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Cell[T] Spec tests.
- *
- *
  */
 class CellSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.Cell[T], Cell[T]](classOf[jfxsc.Cell[T]], classOf[Cell[T]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.Cell[T], Cell[T]](classOf[jfxsc.Cell[T]], classOf[Cell[T]])
+    with RunOnApplicationThread

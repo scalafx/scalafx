@@ -27,7 +27,6 @@
 
 package issues.issue241
 
-
 import org.scalatest.flatspec.AnyFlatSpec
 import scalafx.scene.shape.Line
 import scalafx.testutil.RunOnApplicationThread

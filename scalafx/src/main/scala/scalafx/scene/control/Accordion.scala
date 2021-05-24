@@ -42,8 +42,8 @@ object Accordion {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Accordion.html]].
  */
 class Accordion(override val delegate: jfxsc.Accordion = new jfxsc.Accordion)
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.Accordion] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.Accordion] {
 
   /**
    * The expanded TitledPane in the Accordion.
@@ -63,7 +63,8 @@ class Accordion(override val delegate: jfxsc.Accordion = new jfxsc.Accordion)
    * Sets the list of TitledPane in this Accordion, replacing the prior content. If you want append to current content,
    * use `add` or similar.
    *
-   * @param c list of TitledPane in this Accordion to replace prior content.
+   * @param c
+   *   list of TitledPane in this Accordion to replace prior content.
    */
   def panes_=(c: Iterable[TitledPane]): Unit = {
     fillSFXCollection(this.panes, c)

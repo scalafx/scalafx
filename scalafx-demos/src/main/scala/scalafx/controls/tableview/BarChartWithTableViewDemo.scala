@@ -44,7 +44,7 @@ import scalafx.stage.{Modality, Stage}
 object BarChartWithTableViewDemo extends JFXApp {
 
   class Position(name_ : String, value_ : Int) {
-    val name = new StringProperty(this, "name", name_)
+    val name  = new StringProperty(this, "name", name_)
     val value = new ObjectProperty[Int](this, "value", value_)
   }
 
@@ -79,7 +79,6 @@ object BarChartWithTableViewDemo extends JFXApp {
     }
   }
 
-
   def createBarChart(chartTitle: String, chartData: ObservableBuffer[Position]): BarChart[String, Number] =
     new BarChart(CategoryAxis(), NumberAxis()) {
       title = chartTitle
@@ -88,19 +87,18 @@ object BarChartWithTableViewDemo extends JFXApp {
       onMouseClicked = _ => showAsTable(title(), chartData)
     }
 
-
   private def showAsTable(name: String, data: ObservableBuffer[Position]): Unit = {
 
     val tableView = new TableView[Position](data) {
       columns ++= List(
         new TableColumn[Position, String] {
           text = "Position"
-          cellValueFactory = {_.value.name}
+          cellValueFactory = { _.value.name }
           prefWidth = 180
         },
         new TableColumn[Position, Int] {
           text = "Value"
-          cellValueFactory = {_.value.value}
+          cellValueFactory = { _.value.value }
           prefWidth = 180
         }
       )
@@ -119,5 +117,3 @@ object BarChartWithTableViewDemo extends JFXApp {
     }.showAndWait()
   }
 }
-
-

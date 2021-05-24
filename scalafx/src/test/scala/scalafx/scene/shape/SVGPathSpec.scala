@@ -34,8 +34,5 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * SVGPath Spec tests.
- *
- *
  */
-class SVGPathSpec
-  extends SimpleSFXDelegateSpec[jfxss.SVGPath, SVGPath](classOf[jfxss.SVGPath], classOf[SVGPath])
+class SVGPathSpec extends SimpleSFXDelegateSpec[jfxss.SVGPath, SVGPath](classOf[jfxss.SVGPath], classOf[SVGPath])

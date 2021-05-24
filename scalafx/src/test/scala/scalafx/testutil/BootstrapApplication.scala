@@ -33,7 +33,7 @@ import javafx.stage.Stage
 
 object BootstrapApplication {
   private val launchLatch = new CountDownLatch(1)
-  var launched = false
+  var launched            = false
   def launch(): Unit = {
     if (!launched) {
       new Thread(new Runnable() {

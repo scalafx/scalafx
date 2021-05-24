@@ -35,4 +35,4 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * Node Spec tests.
  */
 class PointLightSpec
-  extends SimpleSFXDelegateSpec[jfxs.PointLight, PointLight](classOf[jfxs.PointLight], classOf[PointLight])
+    extends SimpleSFXDelegateSpec[jfxs.PointLight, PointLight](classOf[jfxs.PointLight], classOf[PointLight])

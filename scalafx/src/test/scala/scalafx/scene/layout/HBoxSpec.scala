@@ -35,5 +35,5 @@ import scalafx.testutil.{AlignmentDelegateSpec, SimpleSFXDelegateSpec}
  * HBox Spec tests.
  */
 class HBoxSpec
-  extends SimpleSFXDelegateSpec[jfxsl.HBox, HBox](classOf[jfxsl.HBox], classOf[HBox])
-  with AlignmentDelegateSpec[jfxsl.HBox, HBox]
+    extends SimpleSFXDelegateSpec[jfxsl.HBox, HBox](classOf[jfxsl.HBox], classOf[HBox])
+    with AlignmentDelegateSpec[jfxsl.HBox, HBox]

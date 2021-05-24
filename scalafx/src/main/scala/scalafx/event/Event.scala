@@ -59,23 +59,27 @@ object Event {
 }
 
 /**
- * Wrapper class for [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/Event.html Event]].
+ * Wrapper class for [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/Event.htmlEvent]].
  */
 class Event(override val delegate: jfxe.Event) extends SFXDelegate[jfxe.Event] {
 
   /**
    * Construct a new Event with the specified event type.
    *
-   * @param eventType The event type
+   * @param eventType
+   *   The event type
    */
   def this(eventType: EventType[_ <: Event]) = this(new Event(eventType))
 
   /**
    * Construct a new Event with the specified event source, target and type.
    *
-   * @param source the event source which sent the event
-   * @param target the event target to associate with the event
-   * @param eventType The event type
+   * @param source
+   *   the event source which sent the event
+   * @param target
+   *   the event target to associate with the event
+   * @param eventType
+   *   The event type
    */
   def this(source: Any, target: jfxe.EventTarget, eventType: EventType[_ <: Event]) =
     this(new Event(source, target, eventType))

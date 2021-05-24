@@ -37,16 +37,18 @@ object LongProperty {
   /**
    * Creates a new LongProperty instance using the SimpleLongProperty as the target.
    *
-   * @param value the initial value
-   * @return      the observable instance
+   * @param value
+   *   the initial value
+   * @return
+   *   the observable instance
    */
   def apply(value: Long) = new LongProperty(new jfxbp.SimpleLongProperty(value))
 }
 
 class LongProperty(override val delegate: jfxbp.LongProperty = new jfxbp.SimpleLongProperty)
-  extends ReadOnlyLongProperty(delegate)
-  with Property[Long, Number]
-  with SFXDelegate[jfxbp.LongProperty] {
+    extends ReadOnlyLongProperty(delegate)
+    with Property[Long, Number]
+    with SFXDelegate[jfxbp.LongProperty] {
 
   def this(bean: Object, name: String) = this(new jfxbp.SimpleLongProperty(bean, name))
 

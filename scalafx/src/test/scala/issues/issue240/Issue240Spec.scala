@@ -35,7 +35,6 @@ import scalafx.testutil.RunOnApplicationThread
 /** Issue 240: Text.strikethrough_=(v: Boolean) doesn't work. */
 class Issue240Spec extends AnyFlatSpec with RunOnApplicationThread {
 
-
   "Text" should "allow asining to `strikethrough`" in {
     val text = new Text("hello, world")
 

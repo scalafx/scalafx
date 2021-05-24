@@ -33,5 +33,4 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** MeshView Spec tests. */
-class MeshViewSpec
-  extends SimpleSFXDelegateSpec[jfxss.MeshView, MeshView](classOf[jfxss.MeshView], classOf[MeshView])
+class MeshViewSpec extends SimpleSFXDelegateSpec[jfxss.MeshView, MeshView](classOf[jfxss.MeshView], classOf[MeshView])

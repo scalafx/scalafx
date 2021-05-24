@@ -40,17 +40,19 @@ import scalafx.event.{Event, EventType}
 import scala.language.implicitConversions
 
 object TableColumn {
-  implicit def sfxTableColumn2jfx[S, T](tc: TableColumn[S, T]): jfxsc.TableColumn[S, T] = if (tc != null) tc.delegate else null
+  implicit def sfxTableColumn2jfx[S, T](tc: TableColumn[S, T]): jfxsc.TableColumn[S, T] =
+    if (tc != null) tc.delegate else null
 
   object CellDataFeatures {
-    implicit def sfxCellDataFeatures2jfx[S, T](cdf: CellDataFeatures[S, T]): jfxsc.TableColumn.CellDataFeatures[S, T] = if (cdf != null) cdf.delegate else null
+    implicit def sfxCellDataFeatures2jfx[S, T](cdf: CellDataFeatures[S, T]): jfxsc.TableColumn.CellDataFeatures[S, T] =
+      if (cdf != null) cdf.delegate else null
   }
 
   /**
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.CellDataFeatures.html]].
    */
   class CellDataFeatures[S, T](override val delegate: jfxsc.TableColumn.CellDataFeatures[S, T])
-    extends SFXDelegate[jfxsc.TableColumn.CellDataFeatures[S, T]] {
+      extends SFXDelegate[jfxsc.TableColumn.CellDataFeatures[S, T]] {
 
     /**
      * Instantiates a CellDataFeatures instance with the given properties set as read-only values of this instance.
@@ -76,24 +78,30 @@ object TableColumn {
   }
 
   object CellEditEvent {
-    implicit def sfxCellEditEvent2jfx[S, T](cee: CellEditEvent[S, T]): jfxsc.TableColumn.CellEditEvent[S, T] = if (cee != null) cee.delegate else null
+    implicit def sfxCellEditEvent2jfx[S, T](cee: CellEditEvent[S, T]): jfxsc.TableColumn.CellEditEvent[S, T] =
+      if (cee != null) cee.delegate else null
 
   }
 
   /**
-   * A TableView is made up of a number of TableColumn instances.
-   * Each TableColumn in a table is responsible for displaying (and editing) the contents of that column.
+   * A TableView is made up of a number of TableColumn instances. Each TableColumn in a table is responsible for
+   * displaying (and editing) the contents of that column.
    *
    * Wraps [[https://openjfx.io/javadoc/16/javafx.controls/javafx/scene/control/TableColumn.html]].
    */
   class CellEditEvent[S, T](override val delegate: jfxsc.TableColumn.CellEditEvent[S, T])
-    extends Event(delegate)
+      extends Event(delegate)
       with SFXDelegate[jfxsc.TableColumn.CellEditEvent[S, T]] {
 
     /**
      * Creates a new event that can be subsequently fired to the relevant listeners.
      */
-    def this(table: TableView[S], pos: TablePosition[S, T], eventType: jfxe.EventType[jfxsc.TableColumn.CellEditEvent[S, T]], newValue: T) =
+    def this(
+        table: TableView[S],
+        pos: TablePosition[S, T],
+        eventType: jfxe.EventType[jfxsc.TableColumn.CellEditEvent[S, T]],
+        newValue: T
+    ) =
       this(new jfxsc.TableColumn.CellEditEvent(table, pos, eventType, newValue))
 
     /**
@@ -129,8 +137,7 @@ object TableColumn {
 
   }
 
-  object SortType
-    extends SFXEnumDelegateCompanion[jfxsc.TableColumn.SortType, SortType] {
+  object SortType extends SFXEnumDelegateCompanion[jfxsc.TableColumn.SortType, SortType] {
 
     /** Column will be sorted in an ascending order. */
     case object Ascending extends SortType(jfxsc.TableColumn.SortType.ASCENDING)
@@ -150,7 +157,7 @@ object TableColumn {
 
   /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.SortType.html]] */
   sealed abstract class SortType(override val delegate: jfxsc.TableColumn.SortType)
-    extends SFXEnumDelegate[jfxsc.TableColumn.SortType]
+      extends SFXEnumDelegate[jfxsc.TableColumn.SortType]
 
   /**
    * If no cellFactory is specified on a TableColumn instance, then this one will be used by default.
@@ -160,28 +167,35 @@ object TableColumn {
   @deprecated("Use DefaultCellFactory; DEFAULT_CELL_FACTORY will be removed in a future release", "8.0.60-R10")
   val DEFAULT_CELL_FACTORY: TableColumn[_, _] => TableCell[_, _] = DefaultCellFactory
 
-
   /**
    * Parent event for any TableColumn edit event.
    */
-  def editAnyEvent: EventType[jfxsc.TableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TableColumn.editAnyEvent)
+  def editAnyEvent: EventType[jfxsc.TableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(
+    jfxsc.TableColumn.editAnyEvent
+  )
 
   /**
    * Indicates that the editing has been canceled, meaning that no change should be made to the backing data source.
    */
-  def editCancelEvent: EventType[jfxsc.TableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TableColumn.editCancelEvent)
+  def editCancelEvent: EventType[jfxsc.TableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(
+    jfxsc.TableColumn.editCancelEvent
+  )
 
   /**
-   * Indicates that the editing has been committed by the user, meaning that a change should be made to the backing
-   * data source to reflect the new data.
+   * Indicates that the editing has been committed by the user, meaning that a change should be made to the backing data
+   * source to reflect the new data.
    */
-  def editCommitEvent: EventType[jfxsc.TableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TableColumn.editCommitEvent)
+  def editCommitEvent: EventType[jfxsc.TableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(
+    jfxsc.TableColumn.editCommitEvent
+  )
 
   /**
    * Indicates that the user has performed some interaction to start an edit event, or alternatively the
    * TableView.edit(Int, TableColumn) method has been called.
    */
-  def editStartEvent: EventType[jfxsc.TableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TableColumn.editStartEvent)
+  def editStartEvent: EventType[jfxsc.TableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(
+    jfxsc.TableColumn.editStartEvent
+  )
 
 }
 
@@ -189,7 +203,7 @@ object TableColumn {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.html]].
  */
 class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfxsc.TableColumn[S, T]())
-  extends TableColumnBase[S, T](delegate)
+    extends TableColumnBase[S, T](delegate)
     with SFXDelegate[jfxsc.TableColumn[S, T]] {
 
   /**
@@ -207,12 +221,14 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
     delegate.cellFactoryProperty.setValue(callback)
   }
 
-  @deprecated(message = "" +
-    "This method does not allow for correct handling of empty cells leading to possible rendering artifacts. " +
-    "See explanation in [[https://github.com/scalafx/scalafx/issues/256 ScalaFX Issue #256]]. " +
-    "Use the new `cellFactory` assignment method: `cellFactory_=(op: (TableCell[S, T], T) => Unit)` that automatically " +
-    "handles empty cells.",
-    since = "16.0.0-R25")
+  @deprecated(
+    message = "" +
+      "This method does not allow for correct handling of empty cells leading to possible rendering artifacts. " +
+      "See explanation in [[https://github.com/scalafx/scalafx/issues/256 ScalaFX Issue #256]]. " +
+      "Use the new `cellFactory` assignment method: `cellFactory_=(op: (TableCell[S, T], T) => Unit)` that automatically " +
+      "handles empty cells.",
+    since = "16.0.0-R25"
+  )
   def cellFactory_=(f: TableColumn[S, T] => TableCell[S, T]): Unit = {
     delegate.cellFactoryProperty.setValue(new jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] {
       def call(v: jfxsc.TableColumn[S, T]): jfxsc.TableCell[S, T] = {
@@ -222,15 +238,16 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   }
 
   /**
-   * This is a helper method for easy creation of custom cell factories.
-   * The custom cell is automatically created, and it handles rendering of empty cells.
-   * The user is only responsible for providing an operation `op` that renders non-empty cells.
+   * This is a helper method for easy creation of custom cell factories. The custom cell is automatically created, and
+   * it handles rendering of empty cells. The user is only responsible for providing an operation `op` that renders
+   * non-empty cells.
    *
-   * The operation `op` provides as input the already created custom `cell` and `value` of that cell.
-   * The `value` is provided by the `cellValueFactory`. The `value` is guaranteed to be non `null`.
-   * The `null` values are automatically rendered as empty cells by the provided `cell` object.
+   * The operation `op` provides as input the already created custom `cell` and `value` of that cell. The `value` is
+   * provided by the `cellValueFactory`. The `value` is guaranteed to be non `null`. The `null` values are automatically
+   * rendered as empty cells by the provided `cell` object.
    *
-   * Here is an example where value's type is a case class `Person` that contains two text fields: `firstName` and `lastName`.
+   * Here is an example where value's type is a case class `Person` that contains two text fields: `firstName` and
+   * `lastName`.
    * {{{
    *   case class Person(firstName:String, lastName:String)
    *   ...
@@ -244,38 +261,36 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    * {{{
    *   cellFactory = (cell, value) => {
    *     cell.graphic = new Circle {
-   *        fill = value
-   *        radius = 8
+   *       fill = value
+   *       radius = 8
    *     }
    *   }
    * }}}
    *
-   * @param op a method that will create content for a given `cell`.
-   *           It gets as an input automatically created custom `cell` and a non-null `value` of that cell.
-   *           `op` is called in the cell's `updateItem` method.
+   * @param op
+   *   a method that will create content for a given `cell`. It gets as an input automatically created custom `cell` and
+   *   a non-null `value` of that cell. `op` is called in the cell's `updateItem` method.
    */
   def cellFactory_=(op: (TableCell[S, T], T) => Unit): Unit = {
     val callback = {
-      Option(op)
-        .map { op =>
-          new jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] {
-            def call(tv: jfxsc.TableColumn[S, T]): jfxsc.TableCell[S, T] = {
-              new jfxsc.TableCell[S, T] {
-                val sfxThis = new TableCell(this)
-                override def updateItem(item: T, empty: Boolean): Unit = {
-                  super.updateItem(item, empty)
-                  if (empty || item == null) {
-                    setText(null)
-                    setGraphic(null)
-                  } else {
-                    op(sfxThis, item)
-                  }
+      Option(op).map { op =>
+        new jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] {
+          def call(tv: jfxsc.TableColumn[S, T]): jfxsc.TableCell[S, T] = {
+            new jfxsc.TableCell[S, T] {
+              val sfxThis = new TableCell(this)
+              override def updateItem(item: T, empty: Boolean): Unit = {
+                super.updateItem(item, empty)
+                if (empty || item == null) {
+                  setText(null)
+                  setGraphic(null)
+                } else {
+                  op(sfxThis, item)
                 }
               }
             }
           }
         }
-        .orNull
+      }.orNull
     }
 
     delegate.cellFactoryProperty.setValue(callback)
@@ -310,16 +325,18 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
     // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2
     //  ObjectProperty((features: TableColumn.CellDataFeatures[S, T]) => delegate.cellValueFactoryProperty.getValue.call(features))
     val f: TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T] =
-    (features: TableColumn.CellDataFeatures[S, T]) => delegate.cellValueFactoryProperty.getValue.call(features)
+      (features: TableColumn.CellDataFeatures[S, T]) => delegate.cellValueFactoryProperty.getValue.call(features)
     ObjectProperty(f)
   }
 
   def cellValueFactory_=(f: TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]): Unit = {
-    delegate.cellValueFactoryProperty.setValue(new jfxu.Callback[jfxsc.TableColumn.CellDataFeatures[S, T], jfxbv.ObservableValue[T]] {
-      def call(v: jfxsc.TableColumn.CellDataFeatures[S, T]): jfxbv.ObservableValue[T] = {
-        f(v).delegate
+    delegate.cellValueFactoryProperty.setValue(
+      new jfxu.Callback[jfxsc.TableColumn.CellDataFeatures[S, T], jfxbv.ObservableValue[T]] {
+        def call(v: jfxsc.TableColumn.CellDataFeatures[S, T]): jfxbv.ObservableValue[T] = {
+          f(v).delegate
+        }
       }
-    })
+    )
   }
 
   /**
@@ -327,11 +344,11 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
    */
   def columns: ObservableBuffer[jfxsc.TableColumn[S, _]] = delegate.getColumns
 
-
   /**
    * This event handler will be fired when the user cancels editing a cell.
    */
-  def onEditCancel: ObjectProperty[jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]] = delegate.onEditCancelProperty
+  def onEditCancel: ObjectProperty[jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]] =
+    delegate.onEditCancelProperty
 
   def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]): Unit = {
     onEditCancel() = v
@@ -340,7 +357,8 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * This event handler will be fired when the user successfully commits their editing.
    */
-  def onEditCommit: ObjectProperty[jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]] = delegate.onEditCommitProperty
+  def onEditCommit: ObjectProperty[jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]] =
+    delegate.onEditCommitProperty
 
   def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]): Unit = {
     onEditCommit() = v
@@ -349,7 +367,8 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * This event handler will be fired when the user successfully initiates editing.
    */
-  def onEditStart: ObjectProperty[jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]] = delegate.onEditCommitProperty
+  def onEditStart: ObjectProperty[jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]] =
+    delegate.onEditCommitProperty
 
   def onEditStart_=(v: jfxe.EventHandler[jfxsc.TableColumn.CellEditEvent[S, T]]): Unit = {
     onEditStart() = v
@@ -364,7 +383,6 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   def sortType_=(v: TableColumn.SortType): Unit = {
     sortType() = v
   }
-
 
   /**
    * The TableView that this TableColumn belongs to.

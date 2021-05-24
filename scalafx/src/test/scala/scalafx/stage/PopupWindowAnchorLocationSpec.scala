@@ -32,10 +32,10 @@ import javafx.{stage => jfxs}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Tests for [[scalafx.stage.PopupWindow.AnchorLocation]]. */
 class PopupWindowAnchorLocationSpec
-  extends SFXEnumDelegateSpec[jfxs.PopupWindow.AnchorLocation, PopupWindow.AnchorLocation](
-    classOf[jfxs.PopupWindow.AnchorLocation],
-    classOf[PopupWindow.AnchorLocation],
-    PopupWindow.AnchorLocation)
+    extends SFXEnumDelegateSpec[jfxs.PopupWindow.AnchorLocation, PopupWindow.AnchorLocation](
+      classOf[jfxs.PopupWindow.AnchorLocation],
+      classOf[PopupWindow.AnchorLocation],
+      PopupWindow.AnchorLocation
+    )

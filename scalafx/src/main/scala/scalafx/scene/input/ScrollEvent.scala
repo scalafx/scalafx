@@ -37,7 +37,7 @@ object ScrollEvent {
   implicit def sfxScrollEvent2jfx(se: ScrollEvent): jfxsi.ScrollEvent = if (se != null) se.delegate else null
 
   object HorizontalTextScrollUnits
-    extends SFXEnumDelegateCompanion[jfxsi.ScrollEvent.HorizontalTextScrollUnits, HorizontalTextScrollUnits] {
+      extends SFXEnumDelegateCompanion[jfxsi.ScrollEvent.HorizontalTextScrollUnits, HorizontalTextScrollUnits] {
 
     /**
      * The horizontal text-based scrolling amount is a number of characters to scroll.
@@ -62,10 +62,10 @@ object ScrollEvent {
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.HorizontalTextScrollUnits.html]]
    */
   sealed abstract class HorizontalTextScrollUnits(override val delegate: jfxsi.ScrollEvent.HorizontalTextScrollUnits)
-    extends SFXEnumDelegate[jfxsi.ScrollEvent.HorizontalTextScrollUnits]
+      extends SFXEnumDelegate[jfxsi.ScrollEvent.HorizontalTextScrollUnits]
 
   object VerticalTextScrollUnits
-    extends SFXEnumDelegateCompanion[jfxsi.ScrollEvent.VerticalTextScrollUnits, VerticalTextScrollUnits] {
+      extends SFXEnumDelegateCompanion[jfxsi.ScrollEvent.VerticalTextScrollUnits, VerticalTextScrollUnits] {
 
     /**
      * The vertical text-based scrolling amount is a number of lines to scroll.
@@ -99,7 +99,7 @@ object ScrollEvent {
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.VerticalTextScrollUnits.html]]
    */
   sealed abstract class VerticalTextScrollUnits(override val delegate: jfxsi.ScrollEvent.VerticalTextScrollUnits)
-    extends SFXEnumDelegate[jfxsi.ScrollEvent.VerticalTextScrollUnits]
+      extends SFXEnumDelegate[jfxsi.ScrollEvent.VerticalTextScrollUnits]
 
   /**
    * Common supertype for all scroll event types.
@@ -136,8 +136,8 @@ object ScrollEvent {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/ScrollEvent.html]]
  */
 class ScrollEvent(override val delegate: jfxsi.ScrollEvent)
-  extends GestureEvent(delegate)
-  with SFXDelegate[jfxsi.ScrollEvent] {
+    extends GestureEvent(delegate)
+    with SFXDelegate[jfxsi.ScrollEvent] {
 
   /**
    * Gets the horizontal scroll amount.

@@ -40,9 +40,9 @@ object ButtonBase {
 }
 
 abstract class ButtonBase(override val delegate: jfxsc.ButtonBase)
-  extends Labeled(delegate)
-  with FireDelegate[jfxsc.ButtonBase]
-  with SFXDelegate[jfxsc.ButtonBase] {
+    extends Labeled(delegate)
+    with FireDelegate[jfxsc.ButtonBase]
+    with SFXDelegate[jfxsc.ButtonBase] {
 
   /**
    * Indicates that the button has been "armed" such that a mouse release will cause the button's action to be invoked.
@@ -75,23 +75,27 @@ abstract class ButtonBase(override val delegate: jfxsc.ButtonBase)
   // for now only a few examples
 
   def addOnMouseEnteredHandler(handler: (MouseEvent) => Unit): Unit = {
-    delegate.addEventHandler(jfxsi.MouseEvent.MOUSE_ENTERED,
+    delegate.addEventHandler(
+      jfxsi.MouseEvent.MOUSE_ENTERED,
       new jfxe.EventHandler[jfxsi.MouseEvent]() {
         @Override
         def handle(me: jfxsi.MouseEvent): Unit = {
           handler(new MouseEvent(me))
         }
-      })
+      }
+    )
   }
 
   def addOnMouseExitedHandler(handler: (MouseEvent) => Unit): Unit = {
-    delegate.addEventHandler(jfxsi.MouseEvent.MOUSE_EXITED,
+    delegate.addEventHandler(
+      jfxsi.MouseEvent.MOUSE_EXITED,
       new jfxe.EventHandler[jfxsi.MouseEvent]() {
         @Override
         def handle(me: jfxsi.MouseEvent): Unit = {
           handler(new MouseEvent(me))
         }
-      })
+      }
+    )
   }
 
 }

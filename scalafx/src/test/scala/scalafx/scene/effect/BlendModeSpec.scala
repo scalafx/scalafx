@@ -32,10 +32,10 @@ import javafx.scene.{effect => jfxse}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Tests for [[scalafx.scene.effect.BlendMode]]. */
-class BlendModeSpec extends SFXEnumDelegateSpec[jfxse.BlendMode, BlendMode](
-  javaClass = classOf[jfxse.BlendMode],
-  scalaClass = classOf[BlendMode],
-  companion = BlendMode)
-
+class BlendModeSpec
+    extends SFXEnumDelegateSpec[jfxse.BlendMode, BlendMode](
+      javaClass = classOf[jfxse.BlendMode],
+      scalaClass = classOf[BlendMode],
+      companion = BlendMode
+    )

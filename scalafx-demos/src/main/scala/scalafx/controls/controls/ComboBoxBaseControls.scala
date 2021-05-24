@@ -30,15 +30,19 @@ package scalafx.controls.controls
 import scalafx.Includes._
 import scalafx.scene.control._
 
-class ComboBoxBaseControls[T](target: ComboBoxBase[T]) extends PropertiesNodes[ComboBoxBase[T]](target, "ComboBoxBase Properties") {
+class ComboBoxBaseControls[T](target: ComboBoxBase[T])
+    extends PropertiesNodes[ComboBoxBase[T]](target, "ComboBoxBase Properties") {
 
   //  val lblValue = super.getLabel(target.value.selectString())
 
   super.addNode("Armed", super.getCheckBox(target.armed))
   super.addNode("Editable", super.getCheckBox(target.editable))
   super.addNode("Prompt Text", super.getTextField(target.promptText))
-  super.addNode("Showing", new Label {
-    text <== when(target.showing) choose "Showing" otherwise "Not Showing"
-  })
+  super.addNode(
+    "Showing",
+    new Label {
+      text <== when(target.showing) choose "Showing" otherwise "Not Showing"
+    }
+  )
 
 }

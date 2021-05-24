@@ -56,7 +56,7 @@ object TextFormatterDemo extends JFXApp {
 
   val textField = {
     val currencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
-    val converter = new FormatStringConverter[Number](currencyFormat)
+    val converter      = new FormatStringConverter[Number](currencyFormat)
     new TextField {
       textFormatter = new TextFormatter(converter) {
         value <==> slider.value

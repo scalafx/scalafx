@@ -34,23 +34,28 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** TriangleMesh Spec tests. */
 class TriangleMeshSpec
-  extends SimpleSFXDelegateSpec[jfxss.TriangleMesh, TriangleMesh](classOf[jfxss.TriangleMesh], classOf[TriangleMesh]) {
+    extends SimpleSFXDelegateSpec[jfxss.TriangleMesh, TriangleMesh](
+      classOf[jfxss.TriangleMesh],
+      classOf[TriangleMesh]
+    ) {
 
   trait TestData {
-    val mesh = new TriangleMesh()
-    val emptyIntArray = Array[Int]()
+    val mesh            = new TriangleMesh()
+    val emptyIntArray   = Array[Int]()
     val emptyFloatArray = Array[Float]()
     // Making arrays length 6 should satisfy all size constraints.
     // TODO: Add tests for invalid array lengths.
-    val intArray = Array(0, 1, 2, 3, 4, 5)
+    val intArray   = Array(0, 1, 2, 3, 4, 5)
     val floatArray = Array(0.0f, 1.0f, 2.0f, 3.0f, 4.0f, 6.0f)
   }
 
   /**
    * Test integer array contents.
    *
-   * @param ao Observable array
-   * @param a  Basic array.
+   * @param ao
+   *   Observable array
+   * @param a
+   *   Basic array.
    */
   def testIntArray(oa: ObservableIntegerArray, a: Array[Int]): Unit = {
     assert(oa.isEmpty === a.isEmpty)
@@ -66,8 +71,10 @@ class TriangleMeshSpec
   /**
    * Test integer array contents.
    *
-   * @param ao Observable array
-   * @param a  Basic array.
+   * @param ao
+   *   Observable array
+   * @param a
+   *   Basic array.
    */
   def testFloatArray(oa: ObservableFloatArray, a: Array[Float]): Unit = {
     assert(oa.isEmpty === a.isEmpty)

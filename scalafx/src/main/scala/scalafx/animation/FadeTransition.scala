@@ -38,56 +38,65 @@ import scala.language.implicitConversions
 /**
  * Companion Object for [[scalafx.animation.FadeTransition]].
  *
- * @define FT `FadeTransition`
+ * @define
+ *   FT `FadeTransition`
  */
 object FadeTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $FT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FadeTransition.html $FT]], 
-   * extracting its delegate.
+   * Converts a ScalaFX $FT to a JavaFX
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FadeTransition.html$FT]], extracting its delegate.
    *
-   * @param v ScalaFX $FT
-   * @return Delegated JavaFX $FT extracted from `v`.
+   * @param v
+   *   ScalaFX $FT
+   * @return
+   *   Delegated JavaFX $FT extracted from `v`.
    */
   implicit def sfxFadeTransition2jfx(v: FadeTransition): jfxa.FadeTransition = if (v != null) v.delegate else null
 
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FadeTransition.html $FT]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FadeTransition.html$FT]].
  *
- * @constructor Creates a new ScalaFX $FT from a JavaFX $FT.
- * @param delegate JavaFX $FT to be delegated.
+ * @constructor
+ *   Creates a new ScalaFX $FT from a JavaFX $FT.
+ * @param delegate
+ *   JavaFX $FT to be delegated.
  *
- * @define FT `FadeTransition`
- * @define DV Default value:
+ * @define
+ *   FT `FadeTransition`
+ * @define
+ *   DV Default value:
  */
 class FadeTransition(override val delegate: jfxa.FadeTransition = new jfxa.FadeTransition)
-  extends Transition(delegate)
-  with SFXDelegate[jfxa.FadeTransition] {
+    extends Transition(delegate)
+    with SFXDelegate[jfxa.FadeTransition] {
 
   // CONSTRUCTORS
 
   /**
    * The constructor of $FT.
    *
-   * @param duration The duration of the $FT.
+   * @param duration
+   *   The duration of the $FT.
    */
   def this(duration: Duration) = this(new jfxa.FadeTransition(duration))
 
   /**
    * The constructor of $FT.
    *
-   * @param duration The duration of the $FT.
-   * @param node The node which opacity will be animated
+   * @param duration
+   *   The duration of the $FT.
+   * @param node
+   *   The node which opacity will be animated
    */
   def this(duration: Duration, node: Node) = this(new jfxa.FadeTransition(duration, node))
 
   // PROPERTIES
 
   /**
-   * Specifies the incremented stop opacity value, from the start, of this
-   * $FT.
+   * Specifies the incremented stop opacity value, from the start, of this $FT.
    */
   def byValue: DoubleProperty = delegate.byValueProperty
 

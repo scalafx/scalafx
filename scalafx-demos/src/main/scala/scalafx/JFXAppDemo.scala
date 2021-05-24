@@ -47,9 +47,7 @@ object JFXAppDemo extends JFXApp {
           new Text {
             text = "Hello World!"
             style = "-fx-font: normal bold 100pt sans-serif"
-            fill = new LinearGradient(
-              endX = 0,
-              stops = Stops(Red, DarkRed))
+            fill = new LinearGradient(endX = 0, stops = Stops(Red, DarkRed))
           }
         )
       }

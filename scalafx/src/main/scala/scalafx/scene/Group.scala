@@ -43,8 +43,8 @@ object Group {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.html]].
  */
 class Group(override val delegate: jfxs.Group = new jfxs.Group())
-  extends Parent(delegate)
-  with SFXDelegate[jfxs.Group] {
+    extends Parent(delegate)
+    with SFXDelegate[jfxs.Group] {
 
   /**
    * Constructs a group consisting of children.
@@ -55,27 +55,31 @@ class Group(override val delegate: jfxs.Group = new jfxs.Group())
    * Gets the list of children of this `Group`.
    */
   def children: ObservableBuffer[jfxs.Node] = delegate.getChildren
+
   /**
    * Sets the list of children, replacing the prior content. If you want append to current content, use `add` or
    * similar.
    *
-   * @param c list of children to replace prior content.
+   * @param c
+   *   list of children to replace prior content.
    */
   def children_=(c: Iterable[Node]): Unit = {
     fillSFXCollection(this.children, c)
   }
+
   /**
    * Sets a child, replacing the prior content. If you want append to current content, use `add` or similar.
    *
-   * @param n Node to replace prior content.
+   * @param n
+   *   Node to replace prior content.
    */
   def children_=(n: Node): Unit = {
     fillSFXCollectionWithOne(this.children, n)
   }
 
   /**
-   * Controls whether or not this Group will automatically resize any managed resizable children
-   * to their preferred sizes during the layout pass.
+   * Controls whether or not this Group will automatically resize any managed resizable children to their preferred
+   * sizes during the layout pass.
    */
   def autoSizeChildren: BooleanProperty = delegate.autoSizeChildrenProperty
 

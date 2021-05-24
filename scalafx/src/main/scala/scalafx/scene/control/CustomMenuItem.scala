@@ -48,29 +48,35 @@ object CustomMenuItem {
  *
  * Wraps a $JFX $URL0 $FC]].
  *
- * @constructor Creates a new $FC from a $JFX one.
- * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
+ * @constructor
+ *   Creates a new $FC from a $JFX one.
+ * @param delegate
+ *   A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
  *
- * @define FC CustomMenuItem
- * @define URL0 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/CustomMenuItem.html
- * @define JFX JavaFX
- * @define ORIGINALDOC Original Documentation]].
+ * @define
+ *   FC CustomMenuItem
+ * @define
+ *   URL0
+ *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/CustomMenuItem.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class CustomMenuItem(override val delegate: jfxsc.CustomMenuItem = new jfxsc.CustomMenuItem)
-  extends MenuItem(delegate)
-  with SFXDelegate[jfxsc.CustomMenuItem] {
+    extends MenuItem(delegate)
+    with SFXDelegate[jfxsc.CustomMenuItem] {
 
   /**
    * Constructs a CustomMenuItem and initializes its content with the node specified.
    *
-   * @param node to be embedded inside this CustomMenuItem
+   * @param node
+   *   to be embedded inside this CustomMenuItem
    */
   def this(node: Node) = this(new jfxsc.CustomMenuItem(node))
 
   /**
-   * Bridge constructor for [[jfxsc.CustomMenuItem(Node, boolean)]]
-   * @param node to be embedded inside this CustomMenuItem
-   * @param hidOnClick if false the menu will not hide when the user interacts with the node.
+   * Bridge constructor for [[jfxsc.CustomMenuItem(Node,boolean)]]
+   * @param node
+   *   to be embedded inside this CustomMenuItem
+   * @param hidOnClick
+   *   if false the menu will not hide when the user interacts with the node.
    */
   def this(node: Node, hidOnClick: Boolean) = this(new jfxsc.CustomMenuItem(node, hidOnClick))
 

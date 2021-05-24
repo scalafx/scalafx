@@ -42,8 +42,9 @@ object Service {
    * Create a new [[scalafx.concurrent.Service]] with a operation to be invoked after this was started on the JavaFX
    * Application Thread.
    *
-   * @param op [[scala.Function]] that returns a [[scalafx.concurrent.Task]] to be invoked after this was started on
-   *           the JavaFX Application Thread.
+   * @param op
+   *   [[scala.Function]] that returns a [[scalafx.concurrent.Task]] to be invoked after this was started on the JavaFX
+   *   Application Thread.
    */
   def apply[T](op: => jfxc.Task[T]): Service[T] = new Service[T](new jfxc.Service[T] {
     protected def createTask: jfxc.Task[T] = op
@@ -51,42 +52,37 @@ object Service {
 }
 
 /**
- * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/Service.html Service]]
- * Class.
+ * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/Service.htmlService]] Class.
  */
 abstract class Service[T](override val delegate: jfxc.Service[T])
-  extends Worker[T]
+    extends Worker[T]
     with jfxe.EventTarget
     with EventHandlerDelegate2
     with SFXDelegate[jfxc.Service[T]] {
 
   override def eventHandlerDelegate: EventHandled = new EventHandled {
 
-    type EventTypeType[E <: jfxe.Event] = jfxe.EventType[E]
+    type EventTypeType[E <: jfxe.Event]    = jfxe.EventType[E]
     type EventHandlerType[E <: jfxe.Event] = jfxe.EventHandler[_ >: E]
 
     // Registers an event handler to this type.
-    def addEventHandler[E <: jfxe.Event](eventType: EventTypeType[E],
-                                         eventHandler: EventHandlerType[E]): Unit =
+    def addEventHandler[E <: jfxe.Event](eventType: EventTypeType[E], eventHandler: EventHandlerType[E]): Unit =
       delegate.addEventHandler(eventType, eventHandler)
 
     // Unregisters a previously registered event handler from this type.
-    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                            eventHandler: jfxe.EventHandler[_ >: E]): Unit =
+    def removeEventHandler[E <: jfxe.Event](
+        eventType: jfxe.EventType[E],
+        eventHandler: jfxe.EventHandler[_ >: E]
+    ): Unit =
       delegate.removeEventHandler(eventType, eventHandler)
 
-
     // Registers an event filter to this type.
-    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                        eventFilter: jfxe.EventHandler[_ >: E]): Unit =
+    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[_ >: E]): Unit =
       delegate.addEventFilter(eventType, eventFilter)
 
-
     // Unregisters a previously registered event filter from this type.
-    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
-                                           eventFilter: jfxe.EventHandler[_ >: E]): Unit =
+    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[_ >: E]): Unit =
       delegate.removeEventFilter(eventType, eventFilter)
-
 
     // Construct an event dispatch chain for this target.
     def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =
@@ -103,8 +99,7 @@ abstract class Service[T](override val delegate: jfxc.Service[T])
   }
 
   /**
-   * The onCancelled event handler is called whenever the Task state transitions to the CANCELLED
-   * state.
+   * The onCancelled event handler is called whenever the Task state transitions to the CANCELLED state.
    */
   def onCancelled: ObjectProperty[jfxe.EventHandler[jfxc.WorkerStateEvent]] = delegate.onCancelledProperty
 
@@ -140,8 +135,7 @@ abstract class Service[T](override val delegate: jfxc.Service[T])
   }
 
   /**
-   * The onSchedule event handler is called whenever the Task state transitions to the SCHEDULED
-   * state.
+   * The onSchedule event handler is called whenever the Task state transitions to the SCHEDULED state.
    */
   def onScheduled: ObjectProperty[jfxe.EventHandler[jfxc.WorkerStateEvent]] = delegate.onScheduledProperty
 
@@ -150,8 +144,7 @@ abstract class Service[T](override val delegate: jfxc.Service[T])
   }
 
   /**
-   * The onSucceeded event handler is called whenever the Task state transitions to the SUCCEEDED
-   * state.
+   * The onSucceeded event handler is called whenever the Task state transitions to the SUCCEEDED state.
    */
   def onSucceeded: ObjectProperty[jfxe.EventHandler[jfxc.WorkerStateEvent]] = delegate.onSucceededProperty
 

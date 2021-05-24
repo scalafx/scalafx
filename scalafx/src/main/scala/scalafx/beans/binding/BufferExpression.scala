@@ -38,33 +38,38 @@ import scalafx.beans.property.{ReadOnlyBooleanProperty, ReadOnlyIntegerProperty}
 import scalafx.collections.ObservableBuffer
 
 object BufferExpression {
+
   /**
-    * Converts a ScalaFX BufferExpression to its JavaFX counterpart ListProperty.
-    *
-    * @param v ScalaFX BufferExpression
-    * @return JavaFX ListExpression
-    */
+   * Converts a ScalaFX BufferExpression to its JavaFX counterpart ListProperty.
+   *
+   * @param v
+   *   ScalaFX BufferExpression
+   * @return
+   *   JavaFX ListExpression
+   */
   implicit def sfxBufferExpression2jfx[E <: Any](v: BufferExpression[E]): jfxbb.ListExpression[E] =
     if (v != null) v.delegate else null
 }
 
 /**
-  * Wraps a $JFX $URL0 ListExpression]].
-  *
-  * @define TC          BufferExpression
-  * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/ListExpression.html
-  * @define JFX         JavaFX
-  * @define ORIGINALDOC Original Documentation]].
-  **/
+ * Wraps a $JFX $URL0 ListExpression]].
+ *
+ * @define
+ *   TC BufferExpression
+ * @define
+ *   URL0
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/ListExpression.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ */
 class BufferExpression[E <: Any](val delegate: jfxbb.ListExpression[E]) {
+
   /**
-    * A boolean property that is `true`, if the the buffer is empty.
-    */
+   * A boolean property that is `true`, if the the buffer is empty.
+   */
   def empty: ReadOnlyBooleanProperty = delegate.emptyProperty()
 
   /**
-    * An integer property that represents the size of the buffer.
-    */
+   * An integer property that represents the size of the buffer.
+   */
   def size: ReadOnlyIntegerProperty = delegate.sizeProperty()
 
   def +=(element: E): Boolean = delegate.add(element)
@@ -76,19 +81,23 @@ class BufferExpression[E <: Any](val delegate: jfxbb.ListExpression[E]) {
   }
 
   /**
-    * Creates a new BooleanBinding that holds true if this list is equal to another ObservableBuffer.
-    *
-    * @param other the other ObservableList
-    * @return the new BooleanBinding
-    */
+   * Creates a new BooleanBinding that holds true if this list is equal to another ObservableBuffer.
+   *
+   * @param other
+   *   the other ObservableList
+   * @return
+   *   the new BooleanBinding
+   */
   def isEqualTo(other: ObservableBuffer[_]): BooleanBinding = delegate.isEqualTo(other.delegate)
 
   /**
-    * Creates a new BooleanBinding that holds true if this list is not equal to another ObservableBuffer.
-    *
-    * @param other the other ObservableList
-    * @return the new BooleanBinding
-    */
+   * Creates a new BooleanBinding that holds true if this list is not equal to another ObservableBuffer.
+   *
+   * @param other
+   *   the other ObservableList
+   * @return
+   *   the new BooleanBinding
+   */
   def isNotEqualTo(other: ObservableBuffer[_]): BooleanBinding = delegate.isNotEqualTo(other.delegate)
 
   def -=(element: E): Boolean = this.delegate.remove(element)
@@ -106,12 +115,13 @@ class BufferExpression[E <: Any](val delegate: jfxbb.ListExpression[E]) {
   }
 
   /**
-    * Clears the ObservableBuffer and add all the elements passed as var-args.
-    */
+   * Clears the ObservableBuffer and add all the elements passed as var-args.
+   */
   def setAll(elem1: E, elem2: E, elems: E*): Boolean = this.setAll(Seq(elem1, elem2) ++ elems)
+
   /**
-    * Clears the ObservableBuffer and add all elements from the collection.
-    */
+   * Clears the ObservableBuffer and add all elements from the collection.
+   */
   def setAll(xs: Seq[E]): Boolean = {
     import scala.collection.JavaConverters._
     delegate.setAll(xs.asJavaCollection)

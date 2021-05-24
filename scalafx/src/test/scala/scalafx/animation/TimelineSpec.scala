@@ -33,8 +33,5 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Timeline Spec tests.
- *
- *
  */
-class TimelineSpec
-  extends SimpleSFXDelegateSpec[jfxa.Timeline, Timeline](classOf[jfxa.Timeline], classOf[Timeline])
+class TimelineSpec extends SimpleSFXDelegateSpec[jfxa.Timeline, Timeline](classOf[jfxa.Timeline], classOf[Timeline])

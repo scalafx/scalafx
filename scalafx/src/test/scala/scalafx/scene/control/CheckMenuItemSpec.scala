@@ -32,8 +32,9 @@ import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
-
 /** CheckMenuItem Spec tests. */
 class CheckMenuItemSpec
-  extends SimpleSFXDelegateSpec[jfxsc.CheckMenuItem, CheckMenuItem](
-    classOf[jfxsc.CheckMenuItem], classOf[CheckMenuItem])
+    extends SimpleSFXDelegateSpec[jfxsc.CheckMenuItem, CheckMenuItem](
+      classOf[jfxsc.CheckMenuItem],
+      classOf[CheckMenuItem]
+    )

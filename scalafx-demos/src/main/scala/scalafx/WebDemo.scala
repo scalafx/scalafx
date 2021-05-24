@@ -46,7 +46,6 @@ object WebDemo extends JFXApp {
     onVisibilityChanged = (e: WebEvent[_]) => println("onVisibilityChanged: " + e)
   }
 
-
   val engine = browser.engine
   engine.load("http://www.scalafx.org/")
 

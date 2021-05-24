@@ -42,8 +42,8 @@ object WritablePixelFormat {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/WritablePixelFormat.html]]
  */
 abstract class WritablePixelFormat[B <: Buffer](override val delegate: jfxsi.WritablePixelFormat[B])
-  extends PixelFormat(delegate)
-  with SFXDelegate[jfxsi.WritablePixelFormat[B]] {
+    extends PixelFormat(delegate)
+    with SFXDelegate[jfxsi.WritablePixelFormat[B]] {
 
   /**
    * Stores a 32-bit integer representation of the color in the buffer at the specified coordinates.

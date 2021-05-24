@@ -33,12 +33,10 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ButtonBase Spec tests.
- *
  */
 class ButtonBaseSpec
-  extends SimpleSFXDelegateSpec[jfxsc.ButtonBase, ButtonBase](
-    classOf[jfxsc.ButtonBase], classOf[ButtonBase])
-  with RunOnApplicationThread {
+    extends SimpleSFXDelegateSpec[jfxsc.ButtonBase, ButtonBase](classOf[jfxsc.ButtonBase], classOf[ButtonBase])
+    with RunOnApplicationThread {
 
   override protected def getScalaClassInstance = new ButtonBase(new jfxsc.Button) {}
 

@@ -33,11 +33,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Service Spec tests.
- *
- *
  */
 class ServiceSpec[T]
-  extends SimpleSFXDelegateSpec[jfxc.Service[T], Service[T]](classOf[jfxc.Service[T]], classOf[Service[T]]) {
+    extends SimpleSFXDelegateSpec[jfxc.Service[T], Service[T]](classOf[jfxc.Service[T]], classOf[Service[T]]) {
 
   override protected def getScalaClassInstance = Service[T](null)
 

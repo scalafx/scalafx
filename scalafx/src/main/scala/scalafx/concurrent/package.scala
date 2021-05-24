@@ -27,8 +27,7 @@
 package scalafx
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/package-summary.html `javafx.concurrent`]] package.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/package-summary.html`javafx.concurrent`]]
+ * package.
  */
-package object concurrent {
-
-}
+package object concurrent {}

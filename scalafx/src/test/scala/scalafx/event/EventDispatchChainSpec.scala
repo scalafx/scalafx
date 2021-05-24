@@ -33,19 +33,19 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- *
  * Test for [[scalafx.event.EventDispatchChainSpec]].
  */
 class EventDispatchChainSpec
-  extends SimpleSFXDelegateSpec[jfxe.EventDispatchChain, EventDispatchChain](
-    classOf[jfxe.EventDispatchChain], classOf[EventDispatchChain]) {
-
+    extends SimpleSFXDelegateSpec[jfxe.EventDispatchChain, EventDispatchChain](
+      classOf[jfxe.EventDispatchChain],
+      classOf[EventDispatchChain]
+    ) {
 
   override protected def getScalaClassInstance: EventDispatchChain = getJavaClassInstance
 
   override protected def getJavaClassInstance = new jfxe.EventDispatchChain() {
-    override def append(eventDispatcher: jfxe.EventDispatcher) = ???
+    override def append(eventDispatcher: jfxe.EventDispatcher)  = ???
     override def prepend(eventDispatcher: jfxe.EventDispatcher) = ???
-    override def dispatchEvent(event: jfxe.Event) = ???
+    override def dispatchEvent(event: jfxe.Event)               = ???
   }
 }

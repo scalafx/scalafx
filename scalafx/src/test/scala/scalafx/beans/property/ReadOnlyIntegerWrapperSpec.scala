@@ -31,7 +31,6 @@ import org.scalatest.BeforeAndAfterEach
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers._
 
-
 /** ReadOnlyIntegerWrapper Spec tests. */
 class ReadOnlyIntegerWrapperSpec extends AnyFlatSpec with BeforeAndAfterEach {
 

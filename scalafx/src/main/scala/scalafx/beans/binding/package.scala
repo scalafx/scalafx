@@ -27,9 +27,7 @@
 package scalafx.beans
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/package-summary.html `javafx.beans.binding`]] package.
- *
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/package-summary.html`javafx.beans.binding`]]
+ * package.
  */
-package object binding {
-
-}
+package object binding {}

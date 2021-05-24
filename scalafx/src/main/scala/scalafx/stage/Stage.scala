@@ -43,17 +43,11 @@ object Stage {
 }
 
 /**
- * The primary stage for your application has to be created by wrapping the `JFXApp.STAGE` object.
- * <pre>
- * stage = new JFXApp.PrimaryStage {
- * // your definitions
- * }
- * </pre>
- * Any further stage would be simply instantiated by the no-arg constructor.
+ * The primary stage for your application has to be created by wrapping the `JFXApp.STAGE` object. <pre> stage = new
+ * JFXApp.PrimaryStage { // your definitions } </pre> Any further stage would be simply instantiated by the no-arg
+ * constructor.
  */
-class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
-  extends Window(delegate)
-    with SFXDelegate[jfxs.Stage] {
+class Stage(override val delegate: jfxs.Stage = new jfxs.Stage) extends Window(delegate) with SFXDelegate[jfxs.Stage] {
 
   /**
    * Creates a new instance of Stage.
@@ -63,15 +57,15 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
   /**
    * Defines whether this `Stage` is kept on top of other windows.
    *
-   * If some other window is already always-on-top then the relative order between these windows
-   * is unspecified (depends on platform).
+   * If some other window is already always-on-top then the relative order between these windows is unspecified (depends
+   * on platform).
    *
-   * There are differences in behavior between applications if a security manager is present.
-   * Applications with permissions are allowed to set "always on top" flag on a Stage.
-   * In applications without the proper permissions, an attempt to set the flag will be ignored and the property
-   * value will be restored to "false".
+   * There are differences in behavior between applications if a security manager is present. Applications with
+   * permissions are allowed to set "always on top" flag on a Stage. In applications without the proper permissions, an
+   * attempt to set the flag will be ignored and the property value will be restored to "false".
    *
-   * The property is read only because it can be changed externally by the underlying platform and therefore must not be bindable.
+   * The property is read only because it can be changed externally by the underlying platform and therefore must not be
+   * bindable.
    */
   def alwaysOnTop: ReadOnlyBooleanProperty = delegate.alwaysOnTopProperty
 
@@ -210,8 +204,7 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
   def modality: Modality = delegate.getModality
 
   /**
-   * Retrieves a [[scala.Some]] with the owner Window for this stage, or
-   * [[scala.None]] for an unowned stage.
+   * Retrieves a [[scala.Some]] with the owner Window for this stage, or [[scala.None]] for an unowned stage.
    */
   def owner: Option[Window] = Option(delegate.getOwner)
 
@@ -223,8 +216,7 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
   }
 
   /**
-   * Specifies the owner Window for this stage, or null for a top-level,
-   * unowned stage.
+   * Specifies the owner Window for this stage, or null for a top-level, unowned stage.
    */
   def initOwner(owner: Window): Unit = {
     delegate.initOwner(owner)
@@ -245,9 +237,9 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
   }
 
   /**
-   * Shows this stage and waits for it to be hidden (closed) before returning to the caller.
-   * This method temporarily blocks processing of the current event, and starts a nested event loop to handle other events.
-   * This method must be called on the FX Application thread.
+   * Shows this stage and waits for it to be hidden (closed) before returning to the caller. This method temporarily
+   * blocks processing of the current event, and starts a nested event loop to handle other events. This method must be
+   * called on the FX Application thread.
    */
   def showAndWait(): Unit = {
     delegate.showAndWait()

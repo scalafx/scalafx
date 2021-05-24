@@ -32,9 +32,10 @@ import javafx.scene.{transform => jfxst}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Test for [[scalafx.scene.transform.MatrixType]] */
-class MatrixTypeSpec extends SFXEnumDelegateSpec[jfxst.MatrixType, MatrixType](
-  javaClass = classOf[jfxst.MatrixType],
-  scalaClass = classOf[MatrixType],
-  companion = MatrixType)
+class MatrixTypeSpec
+    extends SFXEnumDelegateSpec[jfxst.MatrixType, MatrixType](
+      javaClass = classOf[jfxst.MatrixType],
+      scalaClass = classOf[MatrixType],
+      companion = MatrixType
+    )

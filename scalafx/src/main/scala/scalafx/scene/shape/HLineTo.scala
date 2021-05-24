@@ -39,7 +39,9 @@ object HLineTo {
   def apply(x: Double) = new HLineTo(new jfxss.HLineTo(x))
 }
 
-class HLineTo(override val delegate: jfxss.HLineTo = new jfxss.HLineTo()) extends PathElement(delegate) with SFXDelegate[jfxss.HLineTo] {
+class HLineTo(override val delegate: jfxss.HLineTo = new jfxss.HLineTo())
+    extends PathElement(delegate)
+    with SFXDelegate[jfxss.HLineTo] {
 
   /**
    * Defines the X coordinate.

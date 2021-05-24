@@ -72,6 +72,7 @@ class WindowEvent(override val delegate: jfxs.WindowEvent) extends Event(delegat
   /**
    * Construct a new Event with the specified event source, target and type.
    */
-  def this(source: Window, eventType: EventType[_ <: javafx.event.Event]) = this(new jfxs.WindowEvent(source, eventType))
+  def this(source: Window, eventType: EventType[_ <: javafx.event.Event]) =
+    this(new jfxs.WindowEvent(source, eventType))
 
 }

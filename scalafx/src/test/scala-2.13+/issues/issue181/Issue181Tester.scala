@@ -40,7 +40,7 @@ import scalafx.scene.layout.{HBox, VBox}
  *   type mismatch;
  *       found   : scalafx.scene.layout.HBox
  *       required: javafx.scene.Node
- *          children += new HBox(5) {
+ *         children += new HBox(5) {
  * }}}
  * The issue is only reproducible in Scala 2.12, not in 2.13 and newer
  */

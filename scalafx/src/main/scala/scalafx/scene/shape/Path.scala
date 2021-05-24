@@ -41,9 +41,7 @@ object Path {
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/Path.html]].
  */
-class Path(override val delegate: jfxss.Path = new jfxss.Path())
-  extends Shape(delegate)
-  with SFXDelegate[jfxss.Path] {
+class Path(override val delegate: jfxss.Path = new jfxss.Path()) extends Shape(delegate) with SFXDelegate[jfxss.Path] {
 
   /**
    * The filling rule constant for determining the interior of the path.
@@ -58,11 +56,13 @@ class Path(override val delegate: jfxss.Path = new jfxss.Path())
    * Observable list of path elements of this path.
    */
   def elements: ObservableBuffer[jfxss.PathElement] = delegate.getElements
+
   /**
    * Sets the list of path elements, replacing the prior content. If you want append to current content, use `add` or
    * similar.
    *
-   * @param c list of path elements to replace prior content.
+   * @param c
+   *   list of path elements to replace prior content.
    */
   def elements_=(c: Iterable[PathElement]): Unit = {
     fillSFXCollection(this.elements, c)

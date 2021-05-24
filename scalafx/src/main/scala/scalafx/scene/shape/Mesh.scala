@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,6 +36,4 @@ object Mesh {
 }
 
 /** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/Mesh.html]]. */
-abstract class Mesh(override val delegate: jfxss.Mesh)
-  extends SFXDelegate[jfxss.Mesh] {
-}
+abstract class Mesh(override val delegate: jfxss.Mesh) extends SFXDelegate[jfxss.Mesh] {}

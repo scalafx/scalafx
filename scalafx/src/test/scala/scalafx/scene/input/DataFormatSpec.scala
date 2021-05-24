@@ -34,11 +34,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * DataFormat Spec tests.
- *
- *
  */
 class DataFormatSpec
-  extends SimpleSFXDelegateSpec[jfxsi.DataFormat, DataFormat](classOf[jfxsi.DataFormat], classOf[DataFormat]) {
+    extends SimpleSFXDelegateSpec[jfxsi.DataFormat, DataFormat](classOf[jfxsi.DataFormat], classOf[DataFormat]) {
 
   override protected def getJavaClassInstance = new jfxsi.DataFormat
 

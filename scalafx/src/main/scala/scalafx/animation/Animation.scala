@@ -36,7 +36,7 @@ import scalafx.util.Duration.sfxDuration2jfx
 import scala.language.implicitConversions
 
 /**
- * Defines Constants to be used for all [[scalafx.animation.Animation]]s object companions.
+ * Defines Constants to be used for all [[scalafx.animation.Animation]] s object companions.
  */
 trait AnimationStatics {
 
@@ -51,25 +51,28 @@ trait AnimationStatics {
 /**
  * Companion Object for [[scalafx.animation.Animation]].
  *
- * @define AN `Animation`
- * @define ST `Status`
+ * @define
+ *   AN `Animation`
+ * @define
+ *   ST `Status`
  */
 object Animation extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $AN to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.html $AN]],
-   * extracting its delegate.
+   * Converts a ScalaFX $AN to a JavaFX
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.html$AN]], extracting its delegate.
    *
-   * @param v ScalaFX $AN
-   * @return Delegated JavaFX $AN extracted from `v`.
+   * @param v
+   *   ScalaFX $AN
+   * @return
+   *   Delegated JavaFX $AN extracted from `v`.
    */
   implicit def sfxAnimation2jfx(v: Animation): jfxa.Animation = if (v != null) v.delegate else null
 
   /**
    * Companion Object for $ST, where its values are defined.
    */
-  object Status
-    extends SFXEnumDelegateCompanion[jfxa.Animation.Status, Status] {
+  object Status extends SFXEnumDelegateCompanion[jfxa.Animation.Status, Status] {
 
     /**
      * The paused state.
@@ -100,24 +103,27 @@ object Animation extends AnimationStatics {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.Status.html $ST]]
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.Status.html$ST]]
    *
-   * @constructor Creates a new ScalaFX $ST from a JavaFX $ST.
-   * @param delegate JavaFX $ST to be delegated.
+   * @constructor
+   *   Creates a new ScalaFX $ST from a JavaFX $ST.
+   * @param delegate
+   *   JavaFX $ST to be delegated.
    */
   sealed abstract class Status(override val delegate: jfxa.Animation.Status)
-    extends SFXEnumDelegate[jfxa.Animation.Status]
+      extends SFXEnumDelegate[jfxa.Animation.Status]
 
 }
 
 /**
- * Wraps JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.html $AN]].
+ * Wraps JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/Animation.html$AN]].
  *
- * @define AN `Animation`
- * @define DV Default value:
+ * @define
+ *   AN `Animation`
+ * @define
+ *   DV Default value:
  */
-abstract class Animation protected(override val delegate: jfxa.Animation)
-  extends SFXDelegate[jfxa.Animation] {
+abstract class Animation protected (override val delegate: jfxa.Animation) extends SFXDelegate[jfxa.Animation] {
 
   // Properties
 
@@ -131,8 +137,7 @@ abstract class Animation protected(override val delegate: jfxa.Animation)
   }
 
   /**
-   * Read-only variable to indicate current direction/speed at which the
-   * $AN is being played. $DV 0.0.
+   * Read-only variable to indicate current direction/speed at which the $AN is being played. $DV 0.0.
    */
   def currentRate: ReadOnlyDoubleProperty = delegate.currentRateProperty
 
@@ -151,9 +156,8 @@ abstract class Animation protected(override val delegate: jfxa.Animation)
   }
 
   /**
-   * Read-only variable to indicate the duration of one cycle of this
-   * $AN: the time it takes to play from time 0 to the KeyFrame with
-   * the largest time. $DV 1.0
+   * Read-only variable to indicate the duration of one cycle of this $AN: the time it takes to play from time 0 to the
+   * KeyFrame with the largest time. $DV 1.0
    */
   def cycleDuration: ReadOnlyObjectProperty[jfxu.Duration] = delegate.cycleDurationProperty
 
@@ -199,7 +203,8 @@ abstract class Animation protected(override val delegate: jfxa.Animation)
   /**
    * Jumps to a given position in this $AN.
    *
-   * @param time the new position
+   * @param time
+   *   the new position
    */
   def jumpTo(time: Duration): Unit = {
     delegate.jumpTo(time)
@@ -208,7 +213,8 @@ abstract class Animation protected(override val delegate: jfxa.Animation)
   /**
    * Jumps to a predefined position in this $AN.
    *
-   * @param cuePoint the name of the cue point
+   * @param cuePoint
+   *   the name of the cue point
    */
   def jumpTo(cuePoint: String): Unit = {
     delegate.jumpTo(cuePoint)
@@ -231,7 +237,8 @@ abstract class Animation protected(override val delegate: jfxa.Animation)
   /**
    * A convenience method to play this $AN from a specific position.
    *
-   * @param time position where to play from
+   * @param time
+   *   position where to play from
    */
   def playFrom(time: Duration): Unit = {
     delegate.playFrom(time)
@@ -240,7 +247,8 @@ abstract class Animation protected(override val delegate: jfxa.Animation)
   /**
    * A convenience method to play this $AN from a predefined position.
    *
-   * @param cuePoint name of the cue point
+   * @param cuePoint
+   *   name of the cue point
    */
   def playFrom(cuePoint: String): Unit = {
     delegate.playFrom(cuePoint)

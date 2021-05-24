@@ -30,7 +30,10 @@ package scalafx.scene.shape
 import javafx.scene.{shape => jfxss}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/DrawMode.html javafx.scene.shape.DrawMode]] */
+/**
+ * Wrapper for
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/DrawMode.htmljavafx.scene.shape.DrawMode]]
+ */
 object DrawMode extends SFXEnumDelegateCompanion[jfxss.DrawMode, DrawMode] {
 
   /**
@@ -58,6 +61,4 @@ object DrawMode extends SFXEnumDelegateCompanion[jfxss.DrawMode, DrawMode] {
   protected override def unsortedValues: Array[DrawMode] = Array(Fill, Line)
 }
 
-
-sealed abstract class DrawMode(override val delegate: jfxss.DrawMode)
-  extends SFXEnumDelegate[jfxss.DrawMode]
+sealed abstract class DrawMode(override val delegate: jfxss.DrawMode) extends SFXEnumDelegate[jfxss.DrawMode]

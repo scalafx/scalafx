@@ -41,8 +41,10 @@ object PrinterAttributes {
   /**
    * Converts a ScalaFX PrinterAttributes to its JavaFX counterpart.
    *
-   * @param pa ScalaFX PrinterAttributes
-   * @return JavaFX PrinterAttributes
+   * @param pa
+   *   ScalaFX PrinterAttributes
+   * @return
+   *   JavaFX PrinterAttributes
    */
   implicit def sfxPrinterAttributes2jfx(pa: PrinterAttributes): jfxp.PrinterAttributes =
     if (pa != null) pa.delegate else null
@@ -50,15 +52,18 @@ object PrinterAttributes {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterAttributes.html JavaFX PrinterAttributes]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterAttributes.htmlJavaFX PrinterAttributes]].
  *
- * @constructor Creates a new ScalaFX PrinterAttributes from its JavaFX counterpart.
- * @param delegate JavaFX PrinterAttributes. Since there is no public constructor for it, there is not a default value.
+ * @constructor
+ *   Creates a new ScalaFX PrinterAttributes from its JavaFX counterpart.
+ * @param delegate
+ *   JavaFX PrinterAttributes. Since there is no public constructor for it, there is not a default value.
  *
- * @since 8.0
+ * @since
+ *   8.0
  */
 final class PrinterAttributes(override val delegate: jfxp.PrinterAttributes)
-  extends SFXDelegate[jfxp.PrinterAttributes] {
+    extends SFXDelegate[jfxp.PrinterAttributes] {
 
   /**
    * The default collation setting.

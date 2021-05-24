@@ -33,8 +33,7 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ScrollPane Spec tests.
- *
  */
 class ScrollPaneSpec
-  extends SimpleSFXDelegateSpec[jfxsc.ScrollPane, ScrollPane](classOf[jfxsc.ScrollPane], classOf[ScrollPane])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.ScrollPane, ScrollPane](classOf[jfxsc.ScrollPane], classOf[ScrollPane])
+    with RunOnApplicationThread

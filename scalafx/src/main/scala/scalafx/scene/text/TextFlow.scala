@@ -42,21 +42,21 @@ import scala.language.implicitConversions
 object TextFlow {
   implicit def sfxTextFlow2jfx(v: TextFlow): jfxst.TextFlow = if (v != null) v.delegate else null
 
-  def classCssMetaData: mutable.Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] = jfxst.TextFlow.getClassCssMetaData.asScala
+  def classCssMetaData: mutable.Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] =
+    jfxst.TextFlow.getClassCssMetaData.asScala
 
 }
 
 /**
- * TextFlow is special layout designed to lay out rich text. It can be used to layout several
- * `Text` nodes in a single text flow. The `TextFlow` uses the text and the font of each `Text`
- * node inside of it plus it own width and text alignment to determine the location for each child.
- * A single `Text` node can span over several lines due to wrapping and the visual location
- * of `Text` node can differ from the logical location due to bidi reordering.
+ * TextFlow is special layout designed to lay out rich text. It can be used to layout several `Text` nodes in a single
+ * text flow. The `TextFlow` uses the text and the font of each `Text` node inside of it plus it own width and text
+ * alignment to determine the location for each child. A single `Text` node can span over several lines due to wrapping
+ * and the visual location of `Text` node can differ from the logical location due to bidi reordering.
  *
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/text/TextFlow.html]]
  */
 class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
-  extends Pane(delegate)
+    extends Pane(delegate)
     with SFXDelegate[jfxst.TextFlow] {
 
   /**
@@ -74,8 +74,8 @@ class TextFlow(override val delegate: jfxst.TextFlow = new jfxst.TextFlow)
   }
 
   /**
-   * The size of a tab stop in spaces.
-   * Values less than 1 are treated as 1. This value overrides the `tabSize` of contained [[scalafx.scene.text.TextFlow Text]] nodes.
+   * The size of a tab stop in spaces. Values less than 1 are treated as 1. This value overrides the `tabSize` of
+   * contained [[scalafx.scene.text.TextFlowText]] nodes.
    */
   def tabSize: IntegerProperty = delegate.tabSizeProperty()
 

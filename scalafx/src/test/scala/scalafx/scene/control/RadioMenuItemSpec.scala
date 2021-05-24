@@ -33,12 +33,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * RadioMenuItem Spec tests.
- *
- *
  */
 class RadioMenuItemSpec
-  extends SimpleSFXDelegateSpec[jfxsc.RadioMenuItem, RadioMenuItem](
-    classOf[jfxsc.RadioMenuItem], classOf[RadioMenuItem]) {
+    extends SimpleSFXDelegateSpec[jfxsc.RadioMenuItem, RadioMenuItem](
+      classOf[jfxsc.RadioMenuItem],
+      classOf[RadioMenuItem]
+    ) {
 
   override def getJavaClassInstance = new jfxsc.RadioMenuItem("")
 

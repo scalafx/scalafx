@@ -36,17 +36,15 @@ import scalafx.collections.ObservableSet
 
 /**
  * ReadOnlySetProperty Spec tests.
- *
- *
  */
 class ReadOnlySetPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   val valueAsSeq = Seq(1, 2, 7)
-  val bean = new Object()
+  val bean       = new Object()
 
   var readOnlySetProperty: jfxbp.ReadOnlySetProperty[Int] = _
-  var setProperty1: jfxbp.SetProperty[Int] = _
-  var setProperty2: jfxbp.SetProperty[Int] = _
+  var setProperty1: jfxbp.SetProperty[Int]                = _
+  var setProperty2: jfxbp.SetProperty[Int]                = _
 
   override def beforeEach(): Unit = {
 
@@ -138,7 +136,7 @@ class ReadOnlySetPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "Have working 'size' property" in {
-    val set = ObservableSet(2, 1, 3)
+    val set         = ObservableSet(2, 1, 3)
     val setProperty = new SetProperty[Int](set)
     setProperty.size.value should be(3)
 
@@ -159,8 +157,8 @@ class ReadOnlySetPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "bindContent and unbindContent" in {
-    val set = ObservableSet(1, 2, 3, 5, 7)
-    val roWrapper = new ReadOnlySetWrapper(ObservableSet(0))
+    val set        = ObservableSet(1, 2, 3, 5, 7)
+    val roWrapper  = new ReadOnlySetWrapper(ObservableSet(0))
     val roProperty = roWrapper.readOnlyProperty
 
     set.size should be(5)
@@ -184,8 +182,8 @@ class ReadOnlySetPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "bindContentBidirectional and unbindContentBidirectional" in {
-    val set = ObservableSet(1, 2, 3, 5, 7)
-    val roWrapper = new ReadOnlySetWrapper(ObservableSet(0))
+    val set        = ObservableSet(1, 2, 3, 5, 7)
+    val roWrapper  = new ReadOnlySetWrapper(ObservableSet(0))
     val roProperty = roWrapper.readOnlyProperty
 
     set.size should be(5)

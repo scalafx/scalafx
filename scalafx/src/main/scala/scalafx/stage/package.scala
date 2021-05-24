@@ -27,8 +27,6 @@
 package scalafx
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/stage/package-summary.html `javafx.stage`]] package.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/stage/package-summary.html`javafx.stage`]] package.
  */
-package object stage {
-
-}
+package object stage {}

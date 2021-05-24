@@ -37,37 +37,44 @@ import scala.language.implicitConversions
 /**
  * Companion Object for [[scalafx.animation.PauseTransition]].
  *
- * @define PT `PauseTransition`
+ * @define
+ *   PT `PauseTransition`
  */
 object PauseTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $PT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PauseTransition.html $PT]],
-   * extracting its delegate.
+   * Converts a ScalaFX $PT to a JavaFX
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PauseTransition.html$PT]], extracting its delegate.
    *
-   * @param v ScalaFX $PT
-   * @return JavaFX $PT extracted from `v`.
+   * @param v
+   *   ScalaFX $PT
+   * @return
+   *   JavaFX $PT extracted from `v`.
    */
   implicit def sfxPauseTransition2jfx(v: PauseTransition): jfxa.PauseTransition = if (v != null) v.delegate else null
 
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PauseTransition.html $PT]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PauseTransition.html$PT]].
  *
- * @constructor Creates a new ScalaFX $PT from a JavaFX $PT.
- * @param delegate JavaFX $PT to be delegated.
+ * @constructor
+ *   Creates a new ScalaFX $PT from a JavaFX $PT.
+ * @param delegate
+ *   JavaFX $PT to be delegated.
  *
- * @define PT `PauseTransition`
+ * @define
+ *   PT `PauseTransition`
  */
 class PauseTransition(override val delegate: jfxa.PauseTransition = new jfxa.PauseTransition)
-  extends Transition(delegate)
-  with SFXDelegate[jfxa.PauseTransition] {
+    extends Transition(delegate)
+    with SFXDelegate[jfxa.PauseTransition] {
 
   /**
    * The constructor of $PT.
    *
-   * @param duration The duration of the $PT.
+   * @param duration
+   *   The duration of the $PT.
    */
   def this(duration: Duration) = this(new jfxa.PauseTransition(duration))
 

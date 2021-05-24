@@ -8,7 +8,7 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion = "16"
+val javaFXVersion  = "16"
 val scalafxVersion = "16.0.0-R25-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v." + scalafxVersion
@@ -18,10 +18,9 @@ lazy val scalafxProject = (project in file("."))
   .settings(
     name := "scalafx-project",
     publishArtifact := false,
-    publish / skip  := true
+    publish / skip := true
   )
   .aggregate(scalafx, scalafxDemos)
-
 
 // ScalaFX project
 lazy val scalafx = (project in file("scalafx")).settings(
@@ -29,46 +28,48 @@ lazy val scalafx = (project in file("scalafx")).settings(
   name := "scalafx",
   description := "The ScalaFX framework",
   // Add JavaFX dependencies, mark as "provided", so they can be later removed from published POM
-  libraryDependencies ++= javafxModules.map(
-    m => "org.openjfx" % s"javafx-$m" % javaFXVersion % "provided" classifier osName),
+  libraryDependencies ++= javafxModules.map(m =>
+    "org.openjfx" % s"javafx-$m" % javaFXVersion % "provided" classifier osName
+  ),
   run / fork := true,
   publishArtifact := true,
   Test / publishArtifact := false
-  )
+)
 
 // ScalaFX Demos project
-lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
-  scalafxSettings,
-  name := "scalafx-demos",
-  description := "The ScalaFX demonstrations",
-  libraryDependencies ++= javafxModules.map(
-    m => "org.openjfx" % s"javafx-$m" % javaFXVersion classifier osName),
-  run / fork := true,
-  javaOptions ++= Seq(
-    "-Xmx512M",
-    "-Djavafx.verbose"
+lazy val scalafxDemos = (project in file("scalafx-demos"))
+  .settings(
+    scalafxSettings,
+    name := "scalafx-demos",
+    description := "The ScalaFX demonstrations",
+    libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % javaFXVersion classifier osName),
+    run / fork := true,
+    javaOptions ++= Seq(
+      "-Xmx512M",
+      "-Djavafx.verbose"
     ),
-  publishArtifact := false,
-  publish / skip  := true
-  ).dependsOn(scalafx % "compile;test->test")
+    publishArtifact := false,
+    publish / skip := true
+  )
+  .dependsOn(scalafx % "compile;test->test")
 
 val Scala2_12 = "2.12.13"
 val Scala2_13 = "2.13.6"
 val Scala3_00 = "3.0.0"
 
 // Dependencies
-lazy val osName        = System.getProperty("os.name") match {
-  case n if n.startsWith("Linux") => "linux"
-  case n if n.startsWith("Mac") => "mac"
+lazy val osName = System.getProperty("os.name") match {
+  case n if n.startsWith("Linux")   => "linux"
+  case n if n.startsWith("Mac")     => "mac"
   case n if n.startsWith("Windows") => "win"
-  case _ => throw new Exception("Unknown platform!")
+  case _                            => throw new Exception("Unknown platform!")
 }
 lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.9"
+lazy val scalaTestLib  = "org.scalatest" %% "scalatest" % "3.2.9"
 def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((2, _)) => Seq("org.scala-lang" % "scala-reflect" % scalaVersion)
-    case _ => Seq.empty[ModuleID]
+    case _            => Seq.empty[ModuleID]
   }
 
 // Add src/main/scala-2.13+ for Scala 2.13 and newer
@@ -76,7 +77,7 @@ def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
 def versionSubDir(scalaVersion: String): String =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((2, n)) if n < 13 => "scala-2.12-"
-    case Some((_, _)) => "scala-2.13+"
+    case Some((_, _))           => "scala-2.13+"
   }
 
 // Common settings
@@ -93,7 +94,7 @@ lazy val scalafxSettings = Seq(
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((2, _)) => Seq("-Xcheckinit")
       case Some((3, _)) => Seq("-source:3.0-migration", "-explain", "-explain-types")
-      case _ => Seq.empty[String]
+      case _            => Seq.empty[String]
     }
   },
   Compile / doc / scalacOptions ++= {
@@ -102,32 +103,35 @@ lazy val scalafxSettings = Seq(
         Opts.doc.title("ScalaFX API") ++
           Opts.doc.version(scalafxVersion) ++
           Seq(
-            "-sourcepath", baseDirectory.value.toString,
-            "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.creole",
-            "-doc-source-url", "https://github.com/scalafx/scalafx/tree/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala",
+            "-sourcepath",
+            baseDirectory.value.toString,
+            "-doc-root-content",
+            baseDirectory.value + "/src/main/scala/root-doc.creole",
+            "-doc-source-url",
+            "https://github.com/scalafx/scalafx/tree/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala",
             s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
-            "-doc-footer", s"ScalaFX API v.$scalafxVersion"
-            ) ++
+            "-doc-footer",
+            s"ScalaFX API v.$scalafxVersion"
+          ) ++
           (
             Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
-              case Some(path) => Seq(
-                "-diagrams",
-                "-diagrams-dot-path", path,
-                "-diagrams-debug"
+              case Some(path) =>
+                Seq(
+                  "-diagrams",
+                  "-diagrams-dot-path",
+                  path,
+                  "-diagrams-debug"
                 )
               case None => Seq.empty[String]
             }
-            )
+          )
       case _ => Seq.empty[String]
     }
   },
-  javacOptions ++= Seq(
-    "-target", "1.8",
-    "-source", "1.8",
-    "-Xlint:deprecation"),
+  javacOptions ++= Seq("-target", "1.8", "-source", "1.8", "-Xlint:deprecation"),
   // Add other dependencies
   libraryDependencies ++= scalaReflectLibs(scalaVersion.value),
-  libraryDependencies  += scalaTestLib % "test",
+  libraryDependencies += scalaTestLib % "test",
   // Use `pomPostProcess` to remove dependencies marked as "provided" from publishing in POM
   // This is to avoid dependency on wrong OS version JavaFX libraries [Issue #289]
   // See also [https://stackoverflow.com/questions/27835740/sbt-exclude-certain-dependency-only-during-publish]
@@ -152,22 +156,21 @@ lazy val scalafxSettings = Seq(
     val t = (Test / target).value
     Tests.Argument(TestFrameworks.ScalaTest, "-u", s"$t/junitxmldir")
   }
-  ) ++ mavenCentralSettings
-
+) ++ mavenCentralSettings
 
 lazy val manifestSetting = packageOptions += {
   Package.ManifestAttributes(
-    "Created-By" -> "Simple Build Tool",
-    "Built-By" -> Option(System.getenv("JAR_BUILT_BY")).getOrElse(System.getProperty("user.name")),
-    "Build-Jdk" -> System.getProperty("java.version"),
-    "Specification-Title" -> name.value,
-    "Specification-Version" -> version.value,
-    "Specification-Vendor" -> organization.value,
-    "Implementation-Title" -> name.value,
-    "Implementation-Version" -> version.value,
+    "Created-By"               -> "Simple Build Tool",
+    "Built-By"                 -> Option(System.getenv("JAR_BUILT_BY")).getOrElse(System.getProperty("user.name")),
+    "Build-Jdk"                -> System.getProperty("java.version"),
+    "Specification-Title"      -> name.value,
+    "Specification-Version"    -> version.value,
+    "Specification-Vendor"     -> organization.value,
+    "Implementation-Title"     -> name.value,
+    "Implementation-Version"   -> version.value,
     "Implementation-Vendor-Id" -> organization.value,
-    "Implementation-Vendor" -> organization.value
-    )
+    "Implementation-Vendor"    -> organization.value
+  )
 }
 
 // Metadata needed by Maven Central
@@ -320,4 +323,4 @@ lazy val mavenCentralSettings = Seq(
         <url>https://github.com/Jeansen</url>
       </developer>
     </developers>
-  )
+)

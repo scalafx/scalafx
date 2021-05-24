@@ -28,8 +28,7 @@ package scalafx.testutil
 
 import java.lang.reflect.Method
 
-trait PropertyComparator
-  extends AbstractComparator {
+trait PropertyComparator extends AbstractComparator {
 
   private def getScalaFXProperties(scalafxClass: Class[_]) = {
     scalafxClass.getMethods

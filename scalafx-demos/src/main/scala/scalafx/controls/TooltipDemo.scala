@@ -83,9 +83,16 @@ class TooltipControls(target: Tooltip) extends PropertiesNodes[Tooltip](target, 
   }
 
   val originalContentDisplay = target.contentDisplay()
-  val chbContentDisplay      = new ChoiceBox[jfxsc.ContentDisplay] {
-    items = ObservableBuffer(ContentDisplay.Bottom, ContentDisplay.Center, ContentDisplay.GraphicOnly, ContentDisplay.Left, ContentDisplay.Right,
-      ContentDisplay.TextOnly, ContentDisplay.Top)
+  val chbContentDisplay = new ChoiceBox[jfxsc.ContentDisplay] {
+    items = ObservableBuffer(
+      ContentDisplay.Bottom,
+      ContentDisplay.Center,
+      ContentDisplay.GraphicOnly,
+      ContentDisplay.Left,
+      ContentDisplay.Right,
+      ContentDisplay.TextOnly,
+      ContentDisplay.Top
+    )
     value <==> target.contentDisplay
   }
 
@@ -102,8 +109,15 @@ class TooltipControls(target: Tooltip) extends PropertiesNodes[Tooltip](target, 
 
   val originalTextOverrun = target.textOverrun()
   val chbTextOverrun = new ChoiceBox[jfxsc.OverrunStyle] {
-    items = ObservableBuffer(OverrunStyle.CenterEllipsis, OverrunStyle.CenterWordEllipsis, OverrunStyle.Clip, OverrunStyle.Ellipsis,
-      OverrunStyle.LeadingEllipsis, OverrunStyle.LeadingWordEllipsis, OverrunStyle.WordEllipsis)
+    items = ObservableBuffer(
+      OverrunStyle.CenterEllipsis,
+      OverrunStyle.CenterWordEllipsis,
+      OverrunStyle.Clip,
+      OverrunStyle.Ellipsis,
+      OverrunStyle.LeadingEllipsis,
+      OverrunStyle.LeadingWordEllipsis,
+      OverrunStyle.WordEllipsis
+    )
     value <==> target.textOverrun
   }
 
@@ -135,4 +149,4 @@ class TooltipControls(target: Tooltip) extends PropertiesNodes[Tooltip](target, 
 def font_=(v: Font) {
 def graphic_=(v: Node) {
 def graphicTextGap_=(v: Double) {
-*/
+ */

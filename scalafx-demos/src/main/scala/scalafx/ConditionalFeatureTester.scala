@@ -32,11 +32,12 @@ import scalafx.application.{ConditionalFeature, JFXApp, Platform}
 object ConditionalFeatureTester extends JFXApp {
 
   for (cf <- ConditionalFeature.values) {
-    val isSupported = try {
-      Platform.isSupported(cf)
-    } catch {
-      case _: Throwable => false
-    }
+    val isSupported =
+      try {
+        Platform.isSupported(cf)
+      } catch {
+        case _: Throwable => false
+      }
 
     println(cf.toString + " : " + isSupported)
   }

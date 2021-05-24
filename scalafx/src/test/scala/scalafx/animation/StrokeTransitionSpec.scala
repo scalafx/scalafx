@@ -33,9 +33,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * StrokeTransition Spec tests.
- *
- *
  */
 class StrokeTransitionSpec
-  extends SimpleSFXDelegateSpec[jfxa.StrokeTransition, StrokeTransition](
-    classOf[jfxa.StrokeTransition], classOf[StrokeTransition])
+    extends SimpleSFXDelegateSpec[jfxa.StrokeTransition, StrokeTransition](
+      classOf[jfxa.StrokeTransition],
+      classOf[StrokeTransition]
+    )

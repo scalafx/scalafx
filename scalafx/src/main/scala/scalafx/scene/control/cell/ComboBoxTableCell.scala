@@ -41,31 +41,47 @@ import scala.language.implicitConversions
 /**
  * Companion Object for [[scalafx.scene.control.cell.ComboBoxTableCell]].
  *
- * @define CBTC          `ComboBoxTableCell`
- * @define TTYPE         The type of the elements contained within the `TableColumn`.
- * @define FTCINIT       Creates a ComboBox cell factory for use in [[scalafx.scene.control.TableColumn]] controls.
- * @define FTCINITDEPREC Added to satisfy Spec tests.
- * @define ITEMSPARAM    Zero or more items that will be shown to the user when the `ComboBox` menu is showing.
- * @define CONVPARAM     A [[scalafx.util.StringConverter]] to convert the given item (of type T) to a String for displaying to the user.
- * @define RET A function that will return a TableCell that is able to work on the type of element contained within the TableColumn.
+ * @define
+ *   CBTC `ComboBoxTableCell`
+ * @define
+ *   TTYPE The type of the elements contained within the `TableColumn`.
+ * @define
+ *   FTCINIT Creates a ComboBox cell factory for use in [[scalafx.scene.control.TableColumn]] controls.
+ * @define
+ *   FTCINITDEPREC Added to satisfy Spec tests.
+ * @define
+ *   ITEMSPARAM Zero or more items that will be shown to the user when the `ComboBox` menu is showing.
+ * @define
+ *   CONVPARAM A [[scalafx.util.StringConverter]] to convert the given item (of type T) to a String for displaying to
+ *   the user.
+ * @define
+ *   RET A function that will return a TableCell that is able to work on the type of element contained within the
+ *   TableColumn.
  */
 object ComboBoxTableCell {
 
   /**
    * Converts a ScalaFX $CBTC to its JavaFX counterpart.
    *
-   * @tparam T $TTYPE
-   * @param cell ScalaFX $CBTC
-   * @return JavaFX $CBTC
+   * @tparam T
+   *   $TTYPE
+   * @param cell
+   *   ScalaFX $CBTC
+   * @return
+   *   JavaFX $CBTC
    */
-  implicit def sfxComboBoxTableCell2jfx[S, T](cell: ComboBoxTableCell[S, T]): jfxscc.ComboBoxTableCell[S, T] = if (cell != null) cell.delegate else null
+  implicit def sfxComboBoxTableCell2jfx[S, T](cell: ComboBoxTableCell[S, T]): jfxscc.ComboBoxTableCell[S, T] =
+    if (cell != null) cell.delegate else null
 
   /**
    * $FTCINIT
    *
-   * @tparam T $TTYPE
-   * @param items $ITEMSPARAM
-   * @return $RET
+   * @tparam T
+   *   $TTYPE
+   * @param items
+   *   $ITEMSPARAM
+   * @return
+   *   $RET
    */
   def forTableColumn[S, T](items: ObservableBuffer[T]): (TableColumn[S, T] => TableCell[S, T]) =
     (view: TableColumn[S, T]) => jfxscc.ComboBoxTableCell.forTableColumn[S, T](items).call(view)
@@ -74,33 +90,50 @@ object ComboBoxTableCell {
    * $FTCINITDEPREC
    */
   @deprecated(message = "Use forTableColumn[S, T](ObservableBuffer[T])", since = "1.0")
-  def forTableColumn[S, T](items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] = jfxscc.ComboBoxTableCell.forTableColumn[S, T](items)
+  def forTableColumn[S, T](
+      items: jfxc.ObservableList[T]
+  ): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] =
+    jfxscc.ComboBoxTableCell.forTableColumn[S, T](items)
 
   /**
    * $FTCINIT
    *
-   * @tparam T $TTYPE
-   * @param converter $CONVPARAM
-   * @param items     $ITEMSPARAM
-   * @return $RET
+   * @tparam T
+   *   $TTYPE
+   * @param converter
+   *   $CONVPARAM
+   * @param items
+   *   $ITEMSPARAM
+   * @return
+   *   $RET
    */
-  def forTableColumn[S, T](converter: StringConverter[T], items: ObservableBuffer[T]): (TableColumn[S, T] => TableCell[S, T]) =
+  def forTableColumn[S, T](
+      converter: StringConverter[T],
+      items: ObservableBuffer[T]
+  ): (TableColumn[S, T] => TableCell[S, T]) =
     (view: TableColumn[S, T]) => jfxscc.ComboBoxTableCell.forTableColumn[S, T](converter, items).call(view)
 
   /**
    * $FTCINITDEPREC
    */
   @deprecated(message = "Use forTableColumn[S, T](StringConverter[T], ObservableBuffer[T])", since = "1.0")
-  def forTableColumn[S, T](converter: jfxu.StringConverter[T], items: jfxc.ObservableList[T]): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] =
+  def forTableColumn[S, T](
+      converter: jfxu.StringConverter[T],
+      items: jfxc.ObservableList[T]
+  ): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] =
     jfxscc.ComboBoxTableCell.forTableColumn[S, T](converter, items)
 
   /**
    * $FTCINIT
    *
-   * @tparam T $TTYPE
-   * @param converter $CONVPARAM
-   * @param items     $ITEMSPARAM
-   * @return $RET
+   * @tparam T
+   *   $TTYPE
+   * @param converter
+   *   $CONVPARAM
+   * @param items
+   *   $ITEMSPARAM
+   * @return
+   *   $RET
    */
   def forTableColumn[S, T](converter: StringConverter[T], items: T*): (TableColumn[S, T] => TableCell[S, T]) =
     (view: TableColumn[S, T]) => jfxscc.ComboBoxTableCell.forTableColumn[S, T](converter, items: _*).call(view)
@@ -109,14 +142,21 @@ object ComboBoxTableCell {
    * $FTCINITDEPREC
    */
   @deprecated(message = "Use forTableColumn[S, T](StringConverter[T], T*)", since = "1.0")
-  def forTableColumn[S, T](converter: jfxu.StringConverter[T], items: T*): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] = jfxscc.ComboBoxTableCell.forTableColumn[S, T](converter, items: _*)
+  def forTableColumn[S, T](
+      converter: jfxu.StringConverter[T],
+      items: T*
+  ): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] =
+    jfxscc.ComboBoxTableCell.forTableColumn[S, T](converter, items: _*)
 
   /**
    * $FTCINIT
    *
-   * @tparam T $TTYPE
-   * @param items $ITEMSPARAM
-   * @return $RET
+   * @tparam T
+   *   $TTYPE
+   * @param items
+   *   $ITEMSPARAM
+   * @return
+   *   $RET
    */
   def forTableColumn[S, T](items: T*): (TableColumn[S, T] => TableCell[S, T]) =
     (view: TableColumn[S, T]) => jfxscc.ComboBoxTableCell.forTableColumn[S, T](items: _*).call(view)
@@ -125,46 +165,62 @@ object ComboBoxTableCell {
    * $FTCINITDEPREC
    */
   @deprecated(message = "Use forTableColumn[S, T](T*)", since = "1.0")
-  def forTableColumn[S, T](items: Array[T]): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] = jfxscc.ComboBoxTableCell.forTableColumn[S, T](items: _*)
+  def forTableColumn[S, T](items: Array[T]): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] =
+    jfxscc.ComboBoxTableCell.forTableColumn[S, T](items: _*)
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ComboBoxListCell.html $CBTC]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ComboBoxListCell.html$CBTC]]
  *
+ * @tparam T
+ *   Type used in this cell
+ * @constructor
+ *   Creates a new $CBTC from a JavaFX $CBTC
+ * @param delegate
+ *   JavaFX $CBTC
  *
- * @tparam T Type used in this cell
- * @constructor Creates a new $CBTC from a JavaFX $CBTC
- * @param delegate JavaFX $CBTC
- *
- * @define CBTC `ComboBoxTableCell`
- * @define CMBX `ComboBox`
- * @define STCV `StringConverter`
- * @define CONSTRCONVERTER Creates a $CBTC instance with the given items being used to populate the $CMBX when it is shown, and the $STCV being used to convert the item in to a user-readable form.
- * @define CONSTITEMS Creates a default $CBTC instance with the given items being used to populate the $CMBX when it is shown.
- * @define CONVPARAM A $STCV that can convert an item of type T into a user-readable string so that it may then be shown in the $CMBX popup menu.
- * @define ITEMSPARAM The items to show in the $CMBX popup menu when selected by the user.
+ * @define
+ *   CBTC `ComboBoxTableCell`
+ * @define
+ *   CMBX `ComboBox`
+ * @define
+ *   STCV `StringConverter`
+ * @define
+ *   CONSTRCONVERTER Creates a $CBTC instance with the given items being used to populate the $CMBX when it is shown,
+ *   and the $STCV being used to convert the item in to a user-readable form.
+ * @define
+ *   CONSTITEMS Creates a default $CBTC instance with the given items being used to populate the $CMBX when it is shown.
+ * @define
+ *   CONVPARAM A $STCV that can convert an item of type T into a user-readable string so that it may then be shown in
+ *   the $CMBX popup menu.
+ * @define
+ *   ITEMSPARAM The items to show in the $CMBX popup menu when selected by the user.
  */
-class ComboBoxTableCell[S, T](override val delegate: jfxscc.ComboBoxTableCell[S, T] = new jfxscc.ComboBoxTableCell[S, T])
-  extends TableCell[S, T](delegate)
-  with ConvertableCell[jfxscc.ComboBoxTableCell[S, T], T, T]
-  with ComboBoxEditableCell[jfxscc.ComboBoxTableCell[S, T], T]
-  with UpdatableCell[jfxscc.ComboBoxTableCell[S, T], T]
-  with ItemableCell[jfxscc.ComboBoxTableCell[S, T], T]
-  with SFXDelegate[jfxscc.ComboBoxTableCell[S, T]] {
+class ComboBoxTableCell[S, T](
+    override val delegate: jfxscc.ComboBoxTableCell[S, T] = new jfxscc.ComboBoxTableCell[S, T]
+) extends TableCell[S, T](delegate)
+    with ConvertableCell[jfxscc.ComboBoxTableCell[S, T], T, T]
+    with ComboBoxEditableCell[jfxscc.ComboBoxTableCell[S, T], T]
+    with UpdatableCell[jfxscc.ComboBoxTableCell[S, T], T]
+    with ItemableCell[jfxscc.ComboBoxTableCell[S, T], T]
+    with SFXDelegate[jfxscc.ComboBoxTableCell[S, T]] {
 
   /**
    * $CONSTITEMS
    *
-   * @param items $ITEMSPARAM
+   * @param items
+   *   $ITEMSPARAM
    */
   def this(items: ObservableBuffer[T]) = this(new jfxscc.ComboBoxTableCell[S, T](items.delegate))
 
   /**
    * $CONSTRCONVERTER
    *
-   * @param converter $CONVPARAM
-   * @param items     $ITEMSPARAM
+   * @param converter
+   *   $CONVPARAM
+   * @param items
+   *   $ITEMSPARAM
    */
   def this(converter: StringConverter[T], items: ObservableBuffer[T]) =
     this(new jfxscc.ComboBoxTableCell[S, T](sfxStringConverter2jfx(converter), items.delegate))
@@ -172,8 +228,10 @@ class ComboBoxTableCell[S, T](override val delegate: jfxscc.ComboBoxTableCell[S,
   /**
    * $CONSTRCONVERTER
    *
-   * @param converter $CONVPARAM
-   * @param items     $ITEMSPARAM
+   * @param converter
+   *   $CONVPARAM
+   * @param items
+   *   $ITEMSPARAM
    */
   def this(converter: StringConverter[T], items: T*) =
     this(new jfxscc.ComboBoxTableCell[S, T](sfxStringConverter2jfx(converter), items: _*))
@@ -181,7 +239,8 @@ class ComboBoxTableCell[S, T](override val delegate: jfxscc.ComboBoxTableCell[S,
   /**
    * $CONSTITEMS
    *
-   * @param items $ITEMSPARAM
+   * @param items
+   *   $ITEMSPARAM
    */
   def this(items: T*) = this(new jfxscc.ComboBoxTableCell[S, T](items: _*))
 

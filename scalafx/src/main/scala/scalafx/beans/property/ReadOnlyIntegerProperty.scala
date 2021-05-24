@@ -33,14 +33,18 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object ReadOnlyIntegerProperty {
-  implicit def sfxReadOnlyIntegerProperty2jfx(roip: ReadOnlyIntegerProperty): jfxbp.ReadOnlyIntegerProperty = if (roip != null) roip.delegate else null
+  implicit def sfxReadOnlyIntegerProperty2jfx(roip: ReadOnlyIntegerProperty): jfxbp.ReadOnlyIntegerProperty =
+    if (roip != null) roip.delegate else null
 }
 
-class ReadOnlyIntegerProperty(override val delegate: jfxbp.ReadOnlyIntegerProperty) extends NumberExpression(delegate) with ReadOnlyProperty[Int, Number] with SFXDelegate[jfxbp.ReadOnlyIntegerProperty] {
+class ReadOnlyIntegerProperty(override val delegate: jfxbp.ReadOnlyIntegerProperty)
+    extends NumberExpression(delegate)
+    with ReadOnlyProperty[Int, Number]
+    with SFXDelegate[jfxbp.ReadOnlyIntegerProperty] {
   def this(bean: Object, name: String, value: Int) = this(new jfxbp.ReadOnlyIntegerPropertyBase() {
     def getBean: AnyRef = bean
     def getName: String = name
-    def get: Int = value
+    def get: Int        = value
   })
 
   override def value: Int = delegate.get

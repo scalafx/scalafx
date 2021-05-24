@@ -37,7 +37,6 @@ import scalafx.scene.paint.{Color, PhongMaterial}
 import scalafx.scene.shape.{Box, Sphere}
 import scalafx.scene.transform.Rotate
 
-
 /** ScalaFX version of the demo from projavafx8-scratchpad */
 object SphereAndBoxDemo extends JFXApp {
 
@@ -93,7 +92,7 @@ object SphereAndBoxDemo extends JFXApp {
       angle <== angleY
       axis = Rotate.YAxis
     }
-    var anchorX: Double = 0
+    var anchorX: Double      = 0
     var anchorAngleY: Double = 0
 
     node.transforms = Seq(yRotate)

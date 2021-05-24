@@ -94,11 +94,16 @@ object AnchorPane {
   /**
    * Sets the anchors for the child when contained by an anchorpane.
    *
-   * @param child Node to be set
-   * @param top Top Anchor
-   * @param right Right Anchor
-   * @param bottom Bottom Anchor
-   * @param left Left Anchor
+   * @param child
+   *   Node to be set
+   * @param top
+   *   Top Anchor
+   * @param right
+   *   Right Anchor
+   * @param bottom
+   *   Bottom Anchor
+   * @param left
+   *   Left Anchor
    */
   def setAnchors(child: Node, top: Double, right: Double, bottom: Double, left: Double): Unit = {
     setTopAnchor(child, top)
@@ -109,6 +114,6 @@ object AnchorPane {
 
 }
 
-class AnchorPane(override val delegate: jfxsl.AnchorPane = new jfxsl.AnchorPane) extends Pane(delegate) with SFXDelegate[jfxsl.AnchorPane] {
-
-}
+class AnchorPane(override val delegate: jfxsl.AnchorPane = new jfxsl.AnchorPane)
+    extends Pane(delegate)
+    with SFXDelegate[jfxsl.AnchorPane] {}

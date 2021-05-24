@@ -33,10 +33,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * WritableImage Spec tests.
- *
  */
 class WritableImageSpec
-  extends SimpleSFXDelegateSpec[jfxsi.WritableImage, WritableImage](classOf[jfxsi.WritableImage], classOf[WritableImage]) {
+    extends SimpleSFXDelegateSpec[jfxsi.WritableImage, WritableImage](
+      classOf[jfxsi.WritableImage],
+      classOf[WritableImage]
+    ) {
 
   override protected def getScalaClassInstance = new WritableImage(getJavaClassInstance)
 

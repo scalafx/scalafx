@@ -25,8 +25,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
-
 import org.scalatest.flatspec.AnyFlatSpec
 import scalafx.Includes._
 import scalafx.event.{ActionEvent, Event}
@@ -41,11 +39,10 @@ class EventHandlerSpec extends AnyFlatSpec with RunOnApplicationThread {
     val group = new Group()
 
     var counter = 0
-    val subscription = group.handleEvent(Event.ANY) {
-      () =>
-        // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
-        counter += 1
-        counter += 1
+    val subscription = group.handleEvent(Event.ANY) { () =>
+      // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
+      counter += 1
+      counter += 1
     }
 
     assert(counter === 0)
@@ -71,18 +68,16 @@ class EventHandlerSpec extends AnyFlatSpec with RunOnApplicationThread {
     }
 
     var groupCounter = 0
-    val groupSubscription = group.filterEvent(ActionEvent.Action) {
-      () =>
-        // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
-        groupCounter += 1
-        groupCounter += 1
+    val groupSubscription = group.filterEvent(ActionEvent.Action) { () =>
+      // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
+      groupCounter += 1
+      groupCounter += 1
     }
     var buttonCounter = 0
-    button.handleEvent(ActionEvent.Action) {
-      () =>
-        // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
-        buttonCounter += 3
-        buttonCounter += 3
+    button.handleEvent(ActionEvent.Action) { () =>
+      // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
+      buttonCounter += 3
+      buttonCounter += 3
     }
 
     assert(groupCounter === 0)
@@ -111,13 +106,12 @@ class EventHandlerSpec extends AnyFlatSpec with RunOnApplicationThread {
       children = button
     }
 
-    var groupCounter = 0
+    var groupCounter  = 0
     var buttonCounter = 0
-    button.handleEvent(ActionEvent.Action) {
-      () =>
-        // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
-        buttonCounter += 3
-        buttonCounter += 3
+    button.handleEvent(ActionEvent.Action) { () =>
+      // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
+      buttonCounter += 3
+      buttonCounter += 3
     }
 
     assert(groupCounter === 0)
@@ -129,12 +123,11 @@ class EventHandlerSpec extends AnyFlatSpec with RunOnApplicationThread {
     assert(groupCounter === 0)
     assert(buttonCounter === 6)
 
-    val groupSubscription = group.filterEvent(ActionEvent.Action) {
-      (ae: ActionEvent) =>
-        // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
-        groupCounter += 1
-        groupCounter += 1
-        ae.consume()
+    val groupSubscription = group.filterEvent(ActionEvent.Action) { (ae: ActionEvent) =>
+      // Counter is incremented twice to make sure that both instructions are executed, similar to Issue 102
+      groupCounter += 1
+      groupCounter += 1
+      ae.consume()
     }
 
     button.fireEvent(actionEvent)

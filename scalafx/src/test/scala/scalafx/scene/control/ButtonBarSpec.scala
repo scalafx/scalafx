@@ -33,10 +33,8 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
- *
  * Test for [[scalafx.scene.control.ButtonBarSpec]].
  */
 class ButtonBarSpec
-  extends SimpleSFXDelegateSpec[jfxsc.ButtonBar, ButtonBar](
-    classOf[jfxsc.ButtonBar], classOf[ButtonBar])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.ButtonBar, ButtonBar](classOf[jfxsc.ButtonBar], classOf[ButtonBar])
+    with RunOnApplicationThread

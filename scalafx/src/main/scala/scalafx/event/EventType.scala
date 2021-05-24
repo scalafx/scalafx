@@ -32,11 +32,12 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object EventType {
-  implicit def sfxEventType2jfx[T <: jfxe.Event](et: EventType[T]): jfxe.EventType[T] = Option(et).map(_.delegate).orNull
+  implicit def sfxEventType2jfx[T <: jfxe.Event](et: EventType[T]): jfxe.EventType[T] =
+    Option(et).map(_.delegate).orNull
 
   /**
-   * The root event type. All other event types are either direct or indirect sub types of it.
-   * It is also the only event type which has its super event type set to null.
+   * The root event type. All other event types are either direct or indirect sub types of it. It is also the only event
+   * type which has its super event type set to null.
    */
   val Root: EventType[jfxe.Event] = new EventType(jfxe.EventType.ROOT)
   @deprecated("Use Root; ROOT will be removed in a future release", "8.0.60-R10")
@@ -46,7 +47,7 @@ object EventType {
 class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T]) extends SFXDelegate[jfxe.EventType[T]] {
 
   /**
-   * Constructs a new `EventType` with the specified super type and the name set to null. 
+   * Constructs a new `EventType` with the specified super type and the name set to null.
    */
   // Dummy implicit is used to disambiguate this auxiliary constructor from the main constructor - otherwise, they both have the same type after erasure, and the code cannot compile.
   def this(superType: jfxe.EventType[_ >: T])(implicit d: DummyImplicit) =
@@ -61,7 +62,8 @@ class EventType[T <: jfxe.Event](override val delegate: jfxe.EventType[T]) exten
   /**
    * Constructs a new `EventType` with the specified name and the EventType.ROOT as its super type.
    *
-   * @param name The name
+   * @param name
+   *   The name
    */
   def this(name: String) =
     this(new jfxe.EventType[T](name))

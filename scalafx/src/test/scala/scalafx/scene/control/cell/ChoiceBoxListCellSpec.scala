@@ -33,10 +33,10 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ChoiceBoxListCell Spec tests.
- *
- *
  */
 class ChoiceBoxListCellSpec[T]
-  extends SimpleSFXDelegateSpec[jfxscc.ChoiceBoxListCell[T], ChoiceBoxListCell[T]](
-    classOf[jfxscc.ChoiceBoxListCell[T]], classOf[ChoiceBoxListCell[T]])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxscc.ChoiceBoxListCell[T], ChoiceBoxListCell[T]](
+      classOf[jfxscc.ChoiceBoxListCell[T]],
+      classOf[ChoiceBoxListCell[T]]
+    )
+    with RunOnApplicationThread

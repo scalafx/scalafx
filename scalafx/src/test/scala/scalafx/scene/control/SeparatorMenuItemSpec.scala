@@ -34,10 +34,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * SeparatorMenuItem Spec tests.
- *
- *
  */
 class SeparatorMenuItemSpec
-  extends SimpleSFXDelegateSpec[jfxsc.SeparatorMenuItem, SeparatorMenuItem](
-      classOf[jfxsc.SeparatorMenuItem], classOf[SeparatorMenuItem])
-
+    extends SimpleSFXDelegateSpec[jfxsc.SeparatorMenuItem, SeparatorMenuItem](
+      classOf[jfxsc.SeparatorMenuItem],
+      classOf[SeparatorMenuItem]
+    )

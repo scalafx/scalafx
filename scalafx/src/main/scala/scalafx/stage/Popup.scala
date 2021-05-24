@@ -38,7 +38,7 @@ object Popup {
 }
 
 class Popup(override val delegate: jfxs.Popup = new jfxs.Popup)
-  extends PopupWindow(delegate)
+    extends PopupWindow(delegate)
     with SFXDelegate[jfxs.Popup] {
 
   def content: ObservableBuffer[javafx.scene.Node] = delegate.getContent

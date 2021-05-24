@@ -34,12 +34,10 @@ import scalafx.testutil.{PositionDelegateSpec, SimpleSFXDelegateSpec}
 
 /**
  * Text Spec tests.
- *
- *
  */
 class TextSpec
-  extends SimpleSFXDelegateSpec[jfxst.Text, Text](classOf[jfxst.Text], classOf[Text])
-  with PositionDelegateSpec[Text] {
+    extends SimpleSFXDelegateSpec[jfxst.Text, Text](classOf[jfxst.Text], classOf[Text])
+    with PositionDelegateSpec[Text] {
 
   val positionDelegate = new Text
 

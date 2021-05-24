@@ -36,7 +36,6 @@ import scalafx.scene.control._
 import scalafx.scene.layout.{BorderPane, VBox}
 import scalafx.scene.paint.Color
 
-
 object MenuTest extends JFXApp {
 
   val menu = new Menu("File") {

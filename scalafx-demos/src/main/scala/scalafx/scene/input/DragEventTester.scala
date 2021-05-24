@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2011-2015, ScalaFX Project
  * All rights reserved.
@@ -36,12 +35,14 @@ import scalafx.scene.Scene
 import scalafx.scene.control.Label
 import scalafx.scene.layout.StackPane
 
-/** Helper for manual testing of DragEvents.
-  *
-  * Drag files or other items on the application window, see events processed printed in the console.
-  *
-  * @author Jarek Sacha
-  */
+/**
+ * Helper for manual testing of DragEvents.
+ *
+ * Drag files or other items on the application window, see events processed printed in the console.
+ *
+ * @author
+ *   Jarek Sacha
+ */
 object DragEventTester extends JFXApp {
 
   val stackPane = new StackPane {

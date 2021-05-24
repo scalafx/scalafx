@@ -36,16 +36,20 @@ import scala.language.implicitConversions
 /**
  * Object Companion for [[scalafx.scene.control.SortEvent]]
  *
- * @since 8.0
+ * @since
+ *   8.0
  */
 object TreeTableCell {
 
   /**
    * Converts a ScalaFX TreeTableCell to its JavaFX counterpart.
    *
-   * @param ttc ScalaFX TreeTableCell
-   * @tparam T The type of the item contained within the Cell.
-   * @return JavaFX TreeTableCell
+   * @param ttc
+   *   ScalaFX TreeTableCell
+   * @tparam T
+   *   The type of the item contained within the Cell.
+   * @return
+   *   JavaFX TreeTableCell
    */
   implicit def sfxTreeTableCell2jfx[S, T](ttc: TreeTableCell[S, T]): jfxsc.TreeTableCell[S, T] =
     if (ttc != null) ttc.delegate else null
@@ -55,43 +59,53 @@ object TreeTableCell {
 /**
  * Wraps a $JFX $URL0 $TTC]].
  *
- * @constructor Creates a new $TTC from a $JFX one.
- * @param delegate A $JFX $TTC to be wrapped. Its defaul value is a new $JFX $TTC.
- * @tparam T The type of the item contained within the Cell.
- * @tparam S The type of the item contained within the Cell.
- * @since 8.0
+ * @constructor
+ *   Creates a new $TTC from a $JFX one.
+ * @param delegate
+ *   A $JFX $TTC to be wrapped. Its defaul value is a new $JFX $TTC.
+ * @tparam T
+ *   The type of the item contained within the Cell.
+ * @tparam S
+ *   The type of the item contained within the Cell.
+ * @since
+ *   8.0
  *
- * @define TTC TreeTableCell
- * @define URL0 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableCell.html
- * @define JFX JavaFX
- * @define ORIGINALDOC Original Documentation]].
+ * @define
+ *   TTC TreeTableCell
+ * @define
+ *   URL0
+ *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableCell.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new jfxsc.TreeTableCell[S, T])
-  extends IndexedCell[T](delegate)
-  with SFXDelegate[jfxsc.TreeTableCell[S, T]] {
+    extends IndexedCell[T](delegate)
+    with SFXDelegate[jfxsc.TreeTableCell[S, T]] {
 
   /**
-   * @see $URL0#tableColumnProperty $ORIGINALDOC
+   * @see
+   *   $URL0#tableColumnProperty $ORIGINALDOC
    */
   def tableColumn: ReadOnlyObjectProperty[jfxsc.TreeTableColumn[S, T]] = delegate.tableColumnProperty
 
   /**
-   * @see $URL0#tableRowProperty $ORIGINALDOC
+   * @see
+   *   $URL0#tableRowProperty $ORIGINALDOC
    */
   def tableRow: ReadOnlyObjectProperty[jfxsc.TreeTableRow[S]] = delegate.tableRowProperty
 
   /**
    * The TreeTableView associated with this $TTC.
    *
-   * @see $URL0#treeTableViewProperty $ORIGINALDOC
+   * @see
+   *   $URL0#treeTableViewProperty $ORIGINALDOC
    */
   def treeTableView: ReadOnlyObjectProperty[jfxsc.TreeTableView[S]] = delegate.treeTableViewProperty
 
   /**
-   * Updates the TreeTableView associated with this $TTC. This is typically only done once when
-   * the $TTC is first added to the TreeTableView.
+   * Updates the TreeTableView associated with this $TTC. This is typically only done once when the $TTC is first added
+   * to the TreeTableView.
    *
-   * @see $URL0#updateTreeTableView-javafx.scene.control.TreeTableView- $ORIGINALDOC
+   * @see
+   *   $URL0#updateTreeTableView-javafx.scene.control.TreeTableView- $ORIGINALDOC
    */
   def updateTreeTableView(tv: TreeTableView[S]): Unit = {
     delegate.updateTreeTableView(tv)
@@ -100,7 +114,8 @@ class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new
   /**
    * Updates the TreeTableRow associated with this $TTC.
    *
-   * @see $URL0#updateTreeTableRow-javafx.scene.control.TreeTableRow- $ORIGINALDOC
+   * @see
+   *   $URL0#updateTreeTableRow-javafx.scene.control.TreeTableRow- $ORIGINALDOC
    */
   def updateTreeTableRow(treeTableRow: TreeTableRow[S]): Unit = {
     delegate.updateTreeTableRow(treeTableRow)
@@ -109,7 +124,8 @@ class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new
   /**
    * Updates the TreeTableColumn associated with this $TTC.
    *
-   * @see $URL0#updateTreeTableColumn-javafx.scene.control.TreeTableColumn- $ORIGINALDOC
+   * @see
+   *   $URL0#updateTreeTableColumn-javafx.scene.control.TreeTableColumn- $ORIGINALDOC
    */
   def updateTreeTableColumn(col: TreeTableColumn[S, T]): Unit = {
     delegate.updateTreeTableColumn(col)

@@ -52,11 +52,10 @@ object AlignmentDelegate {
 }
 
 /**
- * Trait that unifies JavaFX classes that contains properties indicating component's internal alignment,
- * represented by `alignmentProperty` and its respective getter and setters.
+ * Trait that unifies JavaFX classes that contains properties indicating component's internal alignment, represented by
+ * `alignmentProperty` and its respective getter and setters.
  */
-trait AlignmentDelegate[J <: Object with Aligned]
-  extends SFXDelegate[J] {
+trait AlignmentDelegate[J <: Object with Aligned] extends SFXDelegate[J] {
 
   /**
    * The overall alignment of children (or text) within the component's width and height.

@@ -39,8 +39,7 @@ object Toggle {
 }
 
 /**
- * Wrapper trait to [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Toggle.html Toggle]]
- * interface.
+ * Wrapper trait to [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Toggle.htmlToggle]] interface.
  */
 trait Toggle extends SFXDelegate[jfxsc.Toggle] {
 
@@ -67,8 +66,7 @@ trait Toggle extends SFXDelegate[jfxsc.Toggle] {
   def userData_=(v: AnyRef): Unit
 
   /**
-   * Returns an observable map of properties on this toggle for use primarily by application
-   * developers.
+   * Returns an observable map of properties on this toggle for use primarily by application developers.
    */
   def properties: ObservableMap[AnyRef, AnyRef] = delegate.getProperties
 

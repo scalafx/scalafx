@@ -34,11 +34,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * InputEvent Spec tests.
- *
- *
  */
 class InputEventSpec
-  extends SimpleSFXDelegateSpec[jfxsi.InputEvent, InputEvent](classOf[jfxsi.InputEvent], classOf[InputEvent]) {
+    extends SimpleSFXDelegateSpec[jfxsi.InputEvent, InputEvent](classOf[jfxsi.InputEvent], classOf[InputEvent]) {
 
   override protected def getJavaClassInstance = new jfxsi.InputEvent(InputEvent.Any)
 

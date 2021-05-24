@@ -92,7 +92,7 @@ class StringExpression(val delegate: jfxbb.StringExpression) {
   def concat(v: Any): StringExpression = {
     val jfxV = v match {
       case d: SFXDelegate[_] => d.delegate
-      case a => a
+      case a                 => a
     }
     new StringExpression(delegate.concat(jfxV))
   }

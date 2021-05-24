@@ -33,5 +33,4 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** Box Spec tests. */
-class BoxSpec
-  extends SimpleSFXDelegateSpec[jfxss.Box, Box](classOf[jfxss.Box], classOf[Box])
+class BoxSpec extends SimpleSFXDelegateSpec[jfxss.Box, Box](classOf[jfxss.Box], classOf[Box])

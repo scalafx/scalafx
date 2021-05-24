@@ -33,14 +33,18 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object ReadOnlyFloatProperty {
-  implicit def sfxReadOnlyFloatProperty2jfx(rofp: ReadOnlyFloatProperty): jfxbp.ReadOnlyFloatProperty = if (rofp != null) rofp.delegate else null
+  implicit def sfxReadOnlyFloatProperty2jfx(rofp: ReadOnlyFloatProperty): jfxbp.ReadOnlyFloatProperty =
+    if (rofp != null) rofp.delegate else null
 }
 
-class ReadOnlyFloatProperty(override val delegate: jfxbp.ReadOnlyFloatProperty) extends NumberExpression(delegate) with ReadOnlyProperty[Float, Number] with SFXDelegate[jfxbp.ReadOnlyFloatProperty] {
+class ReadOnlyFloatProperty(override val delegate: jfxbp.ReadOnlyFloatProperty)
+    extends NumberExpression(delegate)
+    with ReadOnlyProperty[Float, Number]
+    with SFXDelegate[jfxbp.ReadOnlyFloatProperty] {
   def this(bean: Object, name: String, value: Float) = this(new jfxbp.ReadOnlyFloatPropertyBase() {
     def getBean: AnyRef = bean
     def getName: String = name
-    def get: Float = value
+    def get: Float      = value
   })
 
   override def value: Float = delegate.get

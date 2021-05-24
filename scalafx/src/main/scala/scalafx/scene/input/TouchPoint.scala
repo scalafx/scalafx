@@ -37,8 +37,7 @@ import scala.language.implicitConversions
 object TouchPoint {
   implicit def sfxTouchPoint2jfx(tp: TouchPoint): jfxsi.TouchPoint = if (tp != null) tp.delegate else null
 
-  object State
-    extends SFXEnumDelegateCompanion[jfxsi.TouchPoint.State, State] {
+  object State extends SFXEnumDelegateCompanion[jfxsi.TouchPoint.State, State] {
 
     /**
      * The touch point has been moved
@@ -80,12 +79,11 @@ object TouchPoint {
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/TouchPoint.State.html]]
    */
   sealed abstract class State(override val delegate: jfxsi.TouchPoint.State)
-    extends SFXEnumDelegate[jfxsi.TouchPoint.State]
+      extends SFXEnumDelegate[jfxsi.TouchPoint.State]
 
 }
 
-class TouchPoint(override val delegate: jfxsi.TouchPoint)
-  extends SFXDelegate[jfxsi.TouchPoint] {
+class TouchPoint(override val delegate: jfxsi.TouchPoint) extends SFXDelegate[jfxsi.TouchPoint] {
 
   /**
    * Distinguishes between touch points targeted to the given node or some of its children from touch points targeted
@@ -160,7 +158,6 @@ class TouchPoint(override val delegate: jfxsi.TouchPoint)
   def y: Double = delegate.getY
 
   /**
-   *
    */
   def ungrab(): Unit = {
     delegate.ungrab()

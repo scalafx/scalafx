@@ -32,8 +32,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 /**
  * Companion object for [[scalafx.css.StyleOrigin]].
  */
-object StyleOrigin
-  extends SFXEnumDelegateCompanion[jfxcss.StyleOrigin, StyleOrigin] {
+object StyleOrigin extends SFXEnumDelegateCompanion[jfxcss.StyleOrigin, StyleOrigin] {
 
   /**
    * The stylesheet is an external file
@@ -60,9 +59,9 @@ object StyleOrigin
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/StyleOrigin.html JavaFX StyleOrigin]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/StyleOrigin.htmlJavaFX StyleOrigin]].
  *
- * @since 8.0
+ * @since
+ *   8.0
  */
-class StyleOrigin(override val delegate: jfxcss.StyleOrigin)
-  extends SFXEnumDelegate[jfxcss.StyleOrigin]
+class StyleOrigin(override val delegate: jfxcss.StyleOrigin) extends SFXEnumDelegate[jfxcss.StyleOrigin]

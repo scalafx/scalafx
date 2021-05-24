@@ -30,10 +30,9 @@ package scalafx.beans.binding
 import scalafx.beans.property.StringProperty
 
 /**
-  * Create custom string binding that maps string content to lower case.
-  */
+ * Create custom string binding that maps string content to lower case.
+ */
 object CreateStringBindingDemo extends App {
-
 
   val a = new StringProperty()
   val b = Bindings.createStringBinding(() => Option(a.value).getOrElse("").toLowerCase(), a)

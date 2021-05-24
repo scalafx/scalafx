@@ -34,43 +34,59 @@ import scala.language.implicitConversions
 /**
  * Object companion for [[scalafx.scene.control.TableFocusModel]].
  *
- * @since 8.0
+ * @since
+ *   8.0
  */
 object TableFocusModel {
 
   /**
    * Converts a ScalaFX TableFocusModel to its JavaFX counterpart
    *
-   * @param tfm ScalaFX TableFocusModel
-   * @return JavaFX TableFocusModel
-   * @tparam T The type of the underlying data model for the UI control.
-   * @tparam TC The concrete subclass of [[scalafx.scene.control.TableColumnBase]] that is used by
-   *            the underlying UI control (e.g. [[scalafx.scene.control.TableColumn]] or `TreeTableColumn`).
+   * @param tfm
+   *   ScalaFX TableFocusModel
+   * @return
+   *   JavaFX TableFocusModel
+   * @tparam T
+   *   The type of the underlying data model for the UI control.
+   * @tparam TC
+   *   The concrete subclass of [[scalafx.scene.control.TableColumnBase]] that is used by the underlying UI control
+   *   (e.g. [[scalafx.scene.control.TableColumn]] or `TreeTableColumn`).
    */
-  implicit def sfxTableFocusModel2jfx[T, TC <: jfxsc.TableColumnBase[T, _]](tfm: TableFocusModel[T, TC]): jfxsc.TableFocusModel[T, TC] =
+  implicit def sfxTableFocusModel2jfx[T, TC <: jfxsc.TableColumnBase[T, _]](
+      tfm: TableFocusModel[T, TC]
+  ): jfxsc.TableFocusModel[T, TC] =
     if (tfm != null) tfm.delegate else null
 
 }
 
 /**
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableFocusModel.html TableFocusModel]].
+ * Wraps a JavaFX
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableFocusModel.htmlTableFocusModel]].
  *
- * @constructor Creates a new ScalaFX TableFocusModel from its JavaFX counterpart.
- * @param delegate JavaFX TableFocusModel to be wrapped.
- * @tparam T The type of the underlying data model for the UI control.
- * @tparam TC The concrete subclass of [[scalafx.scene.control.TableColumnBase]] that is used by
- *            the underlying UI control (e.g. [[scalafx.scene.control.TableColumn]] or `TreeTableColumn`).
- * @since 8.0
+ * @constructor
+ *   Creates a new ScalaFX TableFocusModel from its JavaFX counterpart.
+ * @param delegate
+ *   JavaFX TableFocusModel to be wrapped.
+ * @tparam T
+ *   The type of the underlying data model for the UI control.
+ * @tparam TC
+ *   The concrete subclass of [[scalafx.scene.control.TableColumnBase]] that is used by the underlying UI control (e.g.
+ *   [[scalafx.scene.control.TableColumn]] or `TreeTableColumn`).
+ * @since
+ *   8.0
  */
-abstract class TableFocusModel[T, TC <: jfxsc.TableColumnBase[T, _]](override val delegate: jfxsc.TableFocusModel[T, TC])
-  extends FocusModel[T](delegate)
-  with SFXDelegate[jfxsc.TableFocusModel[T, TC]] {
+abstract class TableFocusModel[T, TC <: jfxsc.TableColumnBase[T, _]](
+    override val delegate: jfxsc.TableFocusModel[T, TC]
+) extends FocusModel[T](delegate)
+    with SFXDelegate[jfxsc.TableFocusModel[T, TC]] {
 
   /**
    * Causes the item at the given index to receive the focus.
    *
-   * @param row The row index of the item to give focus to.
-   * @param column The column of the item to give focus to. Can be null.
+   * @param row
+   *   The row index of the item to give focus to.
+   * @param column
+   *   The column of the item to give focus to. Can be null.
    */
   def focus(row: Int, column: TC): Unit = {
     delegate.focus(row, column)
@@ -99,9 +115,12 @@ abstract class TableFocusModel[T, TC <: jfxsc.TableColumnBase[T, _]](override va
   /**
    * Tests whether the row / cell at the given location currently has the focus within the UI control.
    *
-   * @param row The row index of the item to give focus to.
-   * @param column The column of the item to give focus to. Can be null.
-   * @return `true` whether the row / cell at the given location currently has the focus within the UI control.
+   * @param row
+   *   The row index of the item to give focus to.
+   * @param column
+   *   The column of the item to give focus to. Can be null.
+   * @return
+   *   `true` whether the row / cell at the given location currently has the focus within the UI control.
    */
   def isFocused(row: Integer, column: TC): Boolean = delegate.isFocused(row, column)
 

@@ -27,8 +27,7 @@
 package scalafx.scene
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/package-summary.html `javafx.scene.chart`]] package.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/chart/package-summary.html`javafx.scene.chart`]]
+ * package.
  */
-package object chart {
-
-}
+package object chart {}

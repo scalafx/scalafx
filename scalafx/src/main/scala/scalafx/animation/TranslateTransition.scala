@@ -38,50 +38,64 @@ import scala.language.implicitConversions
 /**
  * Companion Object for [[scalafx.animation.TranslateTransition]].
  *
- * @define TT `TranslateTransition`
+ * @define
+ *   TT `TranslateTransition`
  */
 object TranslateTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $TT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/TranslateTransition.html $TT]],
-   * extracting its delegate.
+   * Converts a ScalaFX $TT to a JavaFX
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/TranslateTransition.html$TT]], extracting its
+   * delegate.
    *
-   * @param v ScalaFX $TT
-   * @return JavaFX $TT extracted from `v`.
+   * @param v
+   *   ScalaFX $TT
+   * @return
+   *   JavaFX $TT extracted from `v`.
    */
-  implicit def sfxTranslateTransition2jfx(v: TranslateTransition): jfxa.TranslateTransition = if (v != null) v.delegate else null
+  implicit def sfxTranslateTransition2jfx(v: TranslateTransition): jfxa.TranslateTransition =
+    if (v != null) v.delegate else null
 
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/TranslateTransition.html TranslateTransition]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/TranslateTransition.htmlTranslateTransition]].
  *
- * @constructor Creates a new ScalaFX $TT from a JavaFX $TT.
- * @param delegate JavaFX $TT to be delegated.
+ * @constructor
+ *   Creates a new ScalaFX $TT from a JavaFX $TT.
+ * @param delegate
+ *   JavaFX $TT to be delegated.
  *
- * @define TT `TranslateTransition`
- * @define CONST The constructor of $TT
- * @define DUR The duration of the $TT
- * @define DV Default value:
+ * @define
+ *   TT `TranslateTransition`
+ * @define
+ *   CONST The constructor of $TT
+ * @define
+ *   DUR The duration of the $TT
+ * @define
+ *   DV Default value:
  */
 class TranslateTransition(override val delegate: jfxa.TranslateTransition = new jfxa.TranslateTransition())
-  extends Transition(delegate)
-  with SFXDelegate[jfxa.TranslateTransition] {
+    extends Transition(delegate)
+    with SFXDelegate[jfxa.TranslateTransition] {
 
   // CONSTRUCTORS
 
   /**
    * $CONST
    *
-   * @param duration $DUR
+   * @param duration
+   *   $DUR
    */
   def this(duration: Duration) = this(new jfxa.TranslateTransition(duration))
 
   /**
    * $CONST
    *
-   * @param duration $DUR
-   * @param node The node which will be translated
+   * @param duration
+   *   $DUR
+   * @param node
+   *   The node which will be translated
    */
   def this(duration: Duration, node: Node) =
     this(new jfxa.TranslateTransition(duration, node))

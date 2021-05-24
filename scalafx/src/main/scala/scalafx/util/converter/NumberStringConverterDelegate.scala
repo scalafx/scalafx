@@ -28,5 +28,6 @@ package scalafx.util.converter
 
 import javafx.util.{converter => jfxuc}
 
-private[converter] abstract class NumberStringConverterDelegate[C <: jfxuc.NumberStringConverter] protected(delegate: C)
-  extends StringConverterJavaToJavaDelegate[Number, C](delegate)
+private[converter] abstract class NumberStringConverterDelegate[C <: jfxuc.NumberStringConverter] protected (
+    delegate: C
+) extends StringConverterJavaToJavaDelegate[Number, C](delegate)

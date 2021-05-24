@@ -29,18 +29,26 @@ package scalafx.scene.control
 
 import javafx.scene.{control => jfxsc, text => jfxst}
 import scalafx.Includes._
-import scalafx.beans.property.{BooleanProperty, ReadOnlyIntegerProperty, ReadOnlyObjectProperty, ReadOnlyStringProperty, StringProperty, _}
+import scalafx.beans.property.{
+  BooleanProperty,
+  ReadOnlyIntegerProperty,
+  ReadOnlyObjectProperty,
+  ReadOnlyStringProperty,
+  StringProperty,
+  _
+}
 import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
 
 object TextInputControl {
-  implicit def sfxTextInputControl2jfx(v: TextInputControl): jfxsc.TextInputControl = if (v != null) v.delegate else null
+  implicit def sfxTextInputControl2jfx(v: TextInputControl): jfxsc.TextInputControl =
+    if (v != null) v.delegate else null
 }
 
 abstract class TextInputControl(override val delegate: jfxsc.TextInputControl)
-  extends Control(delegate)
-  with SFXDelegate[jfxsc.TextInputControl] {
+    extends Control(delegate)
+    with SFXDelegate[jfxsc.TextInputControl] {
 
   /**
    * The anchor of the text selection.
@@ -106,7 +114,8 @@ abstract class TextInputControl(override val delegate: jfxsc.TextInputControl)
 
   /**
    * The prompt text to display in the TextInputControl, or null if no prompt text is displayed.
-   * @since 2.2
+   * @since
+   *   2.2
    */
   def promptText: StringProperty = delegate.promptTextProperty()
 
@@ -115,8 +124,8 @@ abstract class TextInputControl(override val delegate: jfxsc.TextInputControl)
   }
 
   /**
-   * The property contains currently attached `TextFormatter`.
-   * Since the value is part of the `Formatter`, changing the TextFormatter will update the text based on the new textFormatter.
+   * The property contains currently attached `TextFormatter`. Since the value is part of the `Formatter`, changing the
+   * TextFormatter will update the text based on the new textFormatter.
    */
   def textFormatter: ObjectProperty[jfxsc.TextFormatter[_]] = delegate.textFormatterProperty()
   def textFormatter_=(v: TextFormatter[_]): Unit = {

@@ -41,11 +41,11 @@ import scalafx.util.StringConverter
 /**
  * Demonstrates a TextField control with a TextFormatter that filters changes.
  *
- * The text field at a top is an input area. It should have a prompt-like text "> " that cannot be edited.
- * When pressing "Enter" the text after the prompt is copied to bottom output area.
+ * The text field at a top is an input area. It should have a prompt-like text "> " that cannot be edited. When pressing
+ * "Enter" the text after the prompt is copied to bottom output area.
  *
- * The changes in the input text field are monitored and filtered using TextFormatter parameter `filter`.
- * The examines the change and modifies it as needed to preserve the prompt text "> " at the beginning.
+ * The changes in the input text field are monitored and filtered using TextFormatter parameter `filter`. The examines
+ * the change and modifies it as needed to preserve the prompt text "> " at the beginning.
  */
 object TextFormatterWithChangeFilterDemo extends JFXApp {
 
@@ -89,7 +89,7 @@ object TextFormatterWithChangeFilterDemo extends JFXApp {
     text = prompt
     textFormatter = formatter
     onAction = (a: ActionEvent) => {
-      val str = text()
+      val str     = text()
       val message = s"${converter.fromString(str)}\n"
       outputTextArea.text = message + outputTextArea.text()
       text() = ""

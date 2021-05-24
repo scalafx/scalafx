@@ -33,40 +33,42 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object HostServices {
+
   /**
-    * Converts a ScalaFX HostServices to its JavaFX counterpart.
-    *
-    * @param v ScalaFX HostServices
-    * @return JavaFX HostServices
-    */
+   * Converts a ScalaFX HostServices to its JavaFX counterpart.
+   *
+   * @param v
+   *   ScalaFX HostServices
+   * @return
+   *   JavaFX HostServices
+   */
   implicit def sfxHostServices2jfx(v: HostServices): jfx.HostServices =
     if (v != null) v.delegate else null
 }
 
 /**
-  * This class provides HostServices for an Application.
-  * This includes methods to get the code base and document base for an Application,
-  * show a web page in a browser, and communicate with the enclosing web page using JavaScript
-  * if the Application is running in a browser.
-  *
-  * Wraps a $JFX $URL0 $TC]].
-  *
-  * @define TC HostServices
-  * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/application/HostServices.html
-  * @define JFX JavaFX
-  * @define ORIGINALDOC Original Documentation]].
-  */
-class HostServices(override val delegate: jfx.HostServices)
-  extends SFXDelegate[jfx.HostServices] {
+ * This class provides HostServices for an Application. This includes methods to get the code base and document base for
+ * an Application, show a web page in a browser, and communicate with the enclosing web page using JavaScript if the
+ * Application is running in a browser.
+ *
+ * Wraps a $JFX $URL0 $TC]].
+ *
+ * @define
+ *   TC HostServices
+ * @define
+ *   URL0
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/application/HostServices.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ */
+class HostServices(override val delegate: jfx.HostServices) extends SFXDelegate[jfx.HostServices] {
 
   /**
-    * Gets the code base URI for this application.
-    */
+   * Gets the code base URI for this application.
+   */
   def codeBase: String = delegate.getCodeBase
 
   /**
-    * Gets the document base URI for this application.
-    */
+   * Gets the document base URI for this application.
+   */
   def documentBase: String = delegate.getDocumentBase
 
 }

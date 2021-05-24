@@ -40,7 +40,9 @@ object Affine {
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/scene/transform/Affine.html]]
  */
-class Affine(override val delegate: jfxst.Affine = new jfxst.Affine) extends Transform(delegate) with SFXDelegate[jfxst.Affine] {
+class Affine(override val delegate: jfxst.Affine = new jfxst.Affine)
+    extends Transform(delegate)
+    with SFXDelegate[jfxst.Affine] {
 
   /**
    * Defines the X coordinate scaling element of the 3x4 matrix.

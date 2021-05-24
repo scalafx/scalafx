@@ -50,12 +50,12 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+ * @author
+ *   Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- *         based upon: Example 1-2 Create an HBox Pane
+ * based upon: Example 1-2 Create an HBox Pane
  *
- *         http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
- *
+ * http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
  */
 
 object ScalaFX_Layout_Panes_02 extends JFXApp {
@@ -72,11 +72,13 @@ object ScalaFX_Layout_Panes_02 extends JFXApp {
               text = "Current"
               prefWidth = 100
               prefHeight = 20
-            }, new Button {
+            },
+            new Button {
               text = "Projected"
               prefWidth = 100
               prefHeight = 20
-            })
+            }
+          )
         }
         center = new Rectangle {
           width = 480
@@ -87,4 +89,3 @@ object ScalaFX_Layout_Panes_02 extends JFXApp {
     }
   }
 }
-

@@ -32,9 +32,10 @@ import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Tests for [[scalafx.scene.control.SelectionMode]]. */
-class SelectionModeSpec extends SFXEnumDelegateSpec[jfxsc.SelectionMode, SelectionMode](
-  javaClass = classOf[jfxsc.SelectionMode],
-  scalaClass = classOf[SelectionMode],
-  companion = SelectionMode)
+class SelectionModeSpec
+    extends SFXEnumDelegateSpec[jfxsc.SelectionMode, SelectionMode](
+      javaClass = classOf[jfxsc.SelectionMode],
+      scalaClass = classOf[SelectionMode],
+      companion = SelectionMode
+    )

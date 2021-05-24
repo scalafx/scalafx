@@ -33,10 +33,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * SelectionModel[T] Spec tests.
- *
  */
 class SelectionModelSpec[T]
-  extends SimpleSFXDelegateSpec[jfxsc.SelectionModel[T], SelectionModel[T]](classOf[jfxsc.SelectionModel[T]], classOf[SelectionModel[T]]) {
+    extends SimpleSFXDelegateSpec[jfxsc.SelectionModel[T], SelectionModel[T]](
+      classOf[jfxsc.SelectionModel[T]],
+      classOf[SelectionModel[T]]
+    ) {
 
   override protected def getScalaClassInstance = new SelectionModel[T](getJavaClassInstance) {}
 

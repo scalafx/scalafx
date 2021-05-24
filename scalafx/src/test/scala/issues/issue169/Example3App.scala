@@ -33,10 +33,9 @@ import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 
 /**
-  * Example of `Update` notification. Based on example for Issue #169:
-  * [[https://github.com/scalafx/scalafx/issues/169#issuecomment-67577800]]
-  *
-  */
+ * Example of `Update` notification. Based on example for Issue #169:
+ * [[https://github.com/scalafx/scalafx/issues/169#issuecomment-67577800]]
+ */
 object Example3App extends App {
 
   val items: ObservableBuffer[jfxc.ObservableList[String]] = new ObservableBuffer(
@@ -51,10 +50,10 @@ object Example3App extends App {
     println(s"onChange(_, $changes")
     for (change <- changes)
       change match {
-        case ObservableBuffer.Add(_, _) => println(s"  case Add: $change")
-        case ObservableBuffer.Remove(_, _) => println(s"  case Remove: $change")
+        case ObservableBuffer.Add(_, _)        => println(s"  case Add: $change")
+        case ObservableBuffer.Remove(_, _)     => println(s"  case Remove: $change")
         case ObservableBuffer.Reorder(_, _, _) => println(s"  case Reorder: $change")
-        case ObservableBuffer.Update(_, _) => println(s"  case Update: $change")
+        case ObservableBuffer.Update(_, _)     => println(s"  case Update: $change")
       }
   })
 

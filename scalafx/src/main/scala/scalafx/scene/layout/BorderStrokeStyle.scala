@@ -36,7 +36,8 @@ import scala.collection.JavaConverters._
 import scala.language.implicitConversions
 
 object BorderStrokeStyle {
-  implicit def sfxBorderStrokeStyle2jfx(v: BorderStrokeStyle): jfxsl.BorderStrokeStyle = if (v != null) v.delegate else null
+  implicit def sfxBorderStrokeStyle2jfx(v: BorderStrokeStyle): jfxsl.BorderStrokeStyle =
+    if (v != null) v.delegate else null
 
   /**
    * A predefined dashed pattern to be used for stroking
@@ -62,16 +63,22 @@ object BorderStrokeStyle {
 /**
  * Defines the style of the stroke to use on one side of a BorderStroke.
  *
- * Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderStrokeStyle.html javafx.scene.layout.BorderStrokeStyle]].
+ * Wrapper for
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderStrokeStyle.htmljavafx.scene.layout.BorderStrokeStyle]].
  */
-class BorderStrokeStyle(override val delegate: jfxsl.BorderStrokeStyle)
-  extends SFXDelegate[jfxsl.BorderStrokeStyle] {
+class BorderStrokeStyle(override val delegate: jfxsl.BorderStrokeStyle) extends SFXDelegate[jfxsl.BorderStrokeStyle] {
 
   /**
    * Creates a new BorderStrokeStyle.
    */
-  def this(strokeType: StrokeType, lineJoin: StrokeLineJoin, lineCap: StrokeLineCap,
-           miterLimit: Double, dashOffset: Double, dashArray: Seq[java.lang.Double]) =
+  def this(
+      strokeType: StrokeType,
+      lineJoin: StrokeLineJoin,
+      lineCap: StrokeLineCap,
+      miterLimit: Double,
+      dashOffset: Double,
+      dashArray: Seq[java.lang.Double]
+  ) =
     this(new jfxsl.BorderStrokeStyle(strokeType, lineJoin, lineCap, miterLimit, dashOffset, dashArray.asJava))
 
   /**
@@ -85,8 +92,8 @@ class BorderStrokeStyle(override val delegate: jfxsl.BorderStrokeStyle)
   def dashOffset: Double = delegate.getDashOffset
 
   /**
-   * The end cap style of this Shape as one of the following values that define possible end cap
-   * styles: StrokeLineCap.BUTT, StrokeLineCap.ROUND, and StrokeLineCap.SQUARE.
+   * The end cap style of this Shape as one of the following values that define possible end cap styles:
+   * StrokeLineCap.BUTT, StrokeLineCap.ROUND, and StrokeLineCap.SQUARE.
    */
   def lineCap: StrokeLineCap = delegate.getLineCap
 
@@ -101,8 +108,7 @@ class BorderStrokeStyle(override val delegate: jfxsl.BorderStrokeStyle)
   def miterLimit: Double = delegate.getMiterLimit
 
   /**
-   * Defines the direction (inside, outside, or both) that the strokeWidth
-   * is applied to the boundary of the shape.
+   * Defines the direction (inside, outside, or both) that the strokeWidth is applied to the boundary of the shape.
    */
   def strokeType: StrokeType = delegate.getType
 }

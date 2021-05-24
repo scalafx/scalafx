@@ -32,12 +32,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * LinearGradient Spec tests.
- *
- *
  */
 class LinearGradientSpec
-  extends SimpleSFXDelegateSpec[jfxsp.LinearGradient, LinearGradient](
-    classOf[jfxsp.LinearGradient], classOf[LinearGradient]) {
+    extends SimpleSFXDelegateSpec[jfxsp.LinearGradient, LinearGradient](
+      classOf[jfxsp.LinearGradient],
+      classOf[LinearGradient]
+    ) {
 
   override protected def getScalaClassInstance = new LinearGradient()
 

@@ -38,8 +38,8 @@ object IndexedCell {
 }
 
 class IndexedCell[T](override val delegate: jfxsc.IndexedCell[T] = new jfxsc.IndexedCell[T])
-  extends Cell(delegate)
-  with SFXDelegate[jfxsc.IndexedCell[T]] {
+    extends Cell(delegate)
+    with SFXDelegate[jfxsc.IndexedCell[T]] {
 
   /**
    * The location of this cell in the virtualized control (e.g: ListView, TreeView, TableView, etc).

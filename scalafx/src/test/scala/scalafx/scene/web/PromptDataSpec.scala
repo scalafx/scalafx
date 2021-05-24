@@ -32,7 +32,8 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** PromptData Spec tests. */
-class PromptDataSpec extends SimpleSFXDelegateSpec[jfxsw.PromptData, PromptData](classOf[jfxsw.PromptData], classOf[PromptData]) {
+class PromptDataSpec
+    extends SimpleSFXDelegateSpec[jfxsw.PromptData, PromptData](classOf[jfxsw.PromptData], classOf[PromptData]) {
 
   override protected def getScalaClassInstance = new PromptData("", "")
 

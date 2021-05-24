@@ -34,13 +34,11 @@ import scalafx.testutil.{DimensionDelegateSpec, PositionDelegateSpec, SimpleSFXD
 
 /**
  * Rectangle Spec tests.
- *
- *
  */
 class RectangleSpec
-  extends SimpleSFXDelegateSpec[jfxss.Rectangle, Rectangle](classOf[jfxss.Rectangle], classOf[Rectangle])
-  with PositionDelegateSpec[Rectangle]
-  with DimensionDelegateSpec[Rectangle] {
+    extends SimpleSFXDelegateSpec[jfxss.Rectangle, Rectangle](classOf[jfxss.Rectangle], classOf[Rectangle])
+    with PositionDelegateSpec[Rectangle]
+    with DimensionDelegateSpec[Rectangle] {
 
   val positionDelegate = getScalaClassInstance
 

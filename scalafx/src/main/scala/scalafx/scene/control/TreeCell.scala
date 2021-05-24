@@ -42,15 +42,16 @@ object TreeCell {
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeCell.html]]
  *
- * @tparam T The type of the value contained within the `TreeItem` property.
+ * @tparam T
+ *   The type of the value contained within the `TreeItem` property.
  */
 class TreeCell[T](override val delegate: jfxsc.TreeCell[T] = new jfxsc.TreeCell[T])
-  extends IndexedCell(delegate)
-  with SFXDelegate[jfxsc.TreeCell[T]] {
+    extends IndexedCell(delegate)
+    with SFXDelegate[jfxsc.TreeCell[T]] {
 
   /**
-   * The disclosure node is commonly seen represented as a triangle that rotates on screen to indicate whether or
-   * not the TreeItem that it is placed beside is expanded or collapsed.
+   * The disclosure node is commonly seen represented as a triangle that rotates on screen to indicate whether or not
+   * the TreeItem that it is placed beside is expanded or collapsed.
    */
   def disclosureNode: ObjectProperty[jfxs.Node] = delegate.disclosureNodeProperty
 

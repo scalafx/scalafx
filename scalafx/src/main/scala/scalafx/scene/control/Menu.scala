@@ -45,9 +45,9 @@ object Menu {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Menu.html]].
  */
 class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
-  extends MenuItem(delegate)
-  with jfxe.EventTarget
-  with SFXDelegate[jfxsc.Menu] {
+    extends MenuItem(delegate)
+    with jfxe.EventTarget
+    with SFXDelegate[jfxsc.Menu] {
 
   /**
    * Constructs a Menu and sets the display text with the specified text and sets the graphic Node to the given node.
@@ -65,10 +65,10 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
   def items: ObservableBuffer[jfxsc.MenuItem] = delegate.getItems
 
   /**
-   * Sets the menu items, replacing the prior content. If you want append to current content, use `add` or
-   * similar.
+   * Sets the menu items, replacing the prior content. If you want append to current content, use `add` or similar.
    *
-   * @param c Menu items to replace prior content.
+   * @param c
+   *   Menu items to replace prior content.
    */
   def items_=(c: Iterable[MenuItem]): Unit = {
     fillSFXCollection(this.items, c)
@@ -82,7 +82,8 @@ class Menu(override val delegate: jfxsc.Menu = new jfxsc.Menu("default"))
   }
 
   /**
-   * If the Menu is not disabled and the ContextMenu is not already showing, then this will cause the ContextMenu to be shown.
+   * If the Menu is not disabled and the ContextMenu is not already showing, then this will cause the ContextMenu to be
+   * shown.
    */
   def show(): Unit = {
     delegate.show()

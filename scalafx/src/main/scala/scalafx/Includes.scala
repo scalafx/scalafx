@@ -49,32 +49,31 @@ import scalafx.util.UtilIncludes
 import scalafx.util.converter.ConverterIncludes
 
 /**
- * Include file that contains all the necessary declarations for jfx->sfx implicit conversions
- * and other syntactic sugar.
+ * Include file that contains all the necessary declarations for jfx->sfx implicit conversions and other syntactic
+ * sugar.
  *
- * This file is tiered both for modularity and to prioritize the implicits
- * (the order of the withs matter a lot!)
+ * This file is tiered both for modularity and to prioritize the implicits (the order of the withs matter a lot!)
  */
 object Includes extends Includes
 
 trait Includes
-  extends AnimationIncludes
-  with DelegateIncludes
-  with CollectionIncludes
-  with EventIncludes
-  with SceneIncludes
-  with BeanIncludes
-  with UtilIncludes
-  with GeometryIncludes
-  with TransformIncludes
-  with InputIncludes
-  with StageIncludes
-  with WebIncludes
-  with MediaIncludes
-  with ConverterIncludes
-  with ConcurrentIncludes
-  with CanvasIncludes
-  with ApplicationIncludes
-  with CssIncludes
-  with PrintIncludes
-  with SwingIncludes
+    extends AnimationIncludes
+    with DelegateIncludes
+    with CollectionIncludes
+    with EventIncludes
+    with SceneIncludes
+    with BeanIncludes
+    with UtilIncludes
+    with GeometryIncludes
+    with TransformIncludes
+    with InputIncludes
+    with StageIncludes
+    with WebIncludes
+    with MediaIncludes
+    with ConverterIncludes
+    with ConcurrentIncludes
+    with CanvasIncludes
+    with ApplicationIncludes
+    with CssIncludes
+    with PrintIncludes
+    with SwingIncludes

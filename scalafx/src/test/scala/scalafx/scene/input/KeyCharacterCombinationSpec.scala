@@ -33,12 +33,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * KeyCharacterCombination Spec tests.
- *
- *
  */
 class KeyCharacterCombinationSpec
-  extends SimpleSFXDelegateSpec[jfxsi.KeyCharacterCombination, KeyCharacterCombination](
-    classOf[jfxsi.KeyCharacterCombination], classOf[KeyCharacterCombination]) {
+    extends SimpleSFXDelegateSpec[jfxsi.KeyCharacterCombination, KeyCharacterCombination](
+      classOf[jfxsi.KeyCharacterCombination],
+      classOf[KeyCharacterCombination]
+    ) {
 
   override protected def getJavaClassInstance = new jfxsi.KeyCharacterCombination("A")
 

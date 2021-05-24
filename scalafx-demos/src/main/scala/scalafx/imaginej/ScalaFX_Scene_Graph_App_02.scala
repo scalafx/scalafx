@@ -45,14 +45,13 @@ import scalafx.scene.Scene
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
-
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+ * @author
+ *   Luc Duponcheel <luc.duponcheel@gmail.com>
  *
  * based upon: Example 2 Adding a Leaf Node
  *
  * http://docs.oracle.com/javafx/2.0/scenegraph/jfxpub-scenegraph.htm
- *
  */
 
 object ScalaFX_Scene_Graph_App_02 extends JFXApp {

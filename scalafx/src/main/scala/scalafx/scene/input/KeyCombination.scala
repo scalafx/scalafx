@@ -35,8 +35,7 @@ import scala.language.implicitConversions
 
 object KeyCombination {
 
-  object ModifierValue
-    extends SFXEnumDelegateCompanion[jfxsi.KeyCombination.ModifierValue, ModifierValue] {
+  object ModifierValue extends SFXEnumDelegateCompanion[jfxsi.KeyCombination.ModifierValue, ModifierValue] {
 
     /**
      * Constant which indicates that the modifier key can be either up or down.
@@ -70,13 +69,14 @@ object KeyCombination {
    * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/KeyCombination.ModifierValue.html]]
    */
   sealed abstract class ModifierValue(override val delegate: jfxsi.KeyCombination.ModifierValue)
-    extends SFXEnumDelegate[jfxsi.KeyCombination.ModifierValue]
+      extends SFXEnumDelegate[jfxsi.KeyCombination.ModifierValue]
 
   object Modifier {
     implicit def sfxModifier2jfx(m: Modifier): jfxsi.KeyCombination.Modifier = if (m != null) m.delegate else null
   }
 
-  class Modifier(override val delegate: jfxsi.KeyCombination.Modifier) extends SFXDelegate[jfxsi.KeyCombination.Modifier] {
+  class Modifier(override val delegate: jfxsi.KeyCombination.Modifier)
+      extends SFXDelegate[jfxsi.KeyCombination.Modifier] {
 
     /**
      * Gets the modifier key of this Modifier.
@@ -160,7 +160,8 @@ object KeyCombination {
 
 }
 
-abstract class KeyCombination protected(override val delegate: jfxsi.KeyCombination) extends SFXDelegate[jfxsi.KeyCombination] {
+abstract class KeyCombination protected (override val delegate: jfxsi.KeyCombination)
+    extends SFXDelegate[jfxsi.KeyCombination] {
 
   /**
    * The state of the alt key in this key combination.
@@ -173,10 +174,11 @@ abstract class KeyCombination protected(override val delegate: jfxsi.KeyCombinat
   def control: KeyCombination.ModifierValue = KeyCombination.ModifierValue.jfxEnum2sfx(delegate.getControl)
 
   /**
-   * Returns a string representation of this KeyCombination that is suitable for display in a user interface
-   * (for example, beside a menu item).
+   * Returns a string representation of this KeyCombination that is suitable for display in a user interface (for
+   * example, beside a menu item).
    *
-   * @return A string representation of this KeyCombination, suitable for display in a user interface.
+   * @return
+   *   A string representation of this KeyCombination, suitable for display in a user interface.
    */
   def displayText: String = delegate.getDisplayText
 

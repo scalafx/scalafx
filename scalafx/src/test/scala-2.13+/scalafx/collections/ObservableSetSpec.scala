@@ -37,22 +37,29 @@ import scala.collection.mutable
 
 /**
  * ObservableSet[T] Spec tests.
- *
- *
  */
 class ObservableSetSpec[T]
-  extends SimpleSFXDelegateSpec[jfxc.ObservableSet[T], ObservableSet[T]](classOf[jfxc.ObservableSet[T]], classOf[ObservableSet[T]]) {
+    extends SimpleSFXDelegateSpec[jfxc.ObservableSet[T], ObservableSet[T]](
+      classOf[jfxc.ObservableSet[T]],
+      classOf[ObservableSet[T]]
+    ) {
 
   /**
-   * Verifies if a generated Set is the same instance than a original Set. If it should not be,
-   * generated map must be a ObservableSet.
+   * Verifies if a generated Set is the same instance than a original Set. If it should not be, generated map must be a
+   * ObservableSet.
    *
-   * @param generatedSet    Generated Set, that should be a ObservableSet.
-   * @param originalSet     Set Original ObservableSet.
-   * @param shouldBeTheSame If both maps should be same instance.
+   * @param generatedSet
+   *   Generated Set, that should be a ObservableSet.
+   * @param originalSet
+   *   Set Original ObservableSet.
+   * @param shouldBeTheSame
+   *   If both maps should be same instance.
    */
-  private def compareInstances(generatedSet: mutable.Set[Int],
-                               originalSet: ObservableSet[Int], shouldBeTheSame: Boolean): Unit = {
+  private def compareInstances(
+      generatedSet: mutable.Set[Int],
+      originalSet: ObservableSet[Int],
+      shouldBeTheSame: Boolean
+  ): Unit = {
     if (shouldBeTheSame) {
       generatedSet should be theSameInstanceAs originalSet
     } else {
@@ -84,7 +91,7 @@ class ObservableSetSpec[T]
 
   it should "notify on invalidation" in {
     // Preparation
-    val set = ObservableSet(1, 2)
+    val set             = ObservableSet(1, 2)
     var invalidateCount = 0
     set onInvalidate {
       invalidateCount += 1
@@ -103,7 +110,7 @@ class ObservableSetSpec[T]
 
   it should "notify on changes" in {
     // Preparation
-    val set = ObservableSet(1, 2)
+    val set         = ObservableSet(1, 2)
     var changeCount = 0
     set onChange {
       changeCount += 1
@@ -121,8 +128,8 @@ class ObservableSetSpec[T]
   it should "return changed set" in {
     // Preparation
     val set = ObservableSet(1, 2)
-    set onChange {
-      (sourceSet, _) => sourceSet should be(set)
+    set onChange { (sourceSet, _) =>
+      sourceSet should be(set)
     }
 
     // Execution
@@ -131,14 +138,13 @@ class ObservableSetSpec[T]
 
   it should "notify each addition individually" in {
     // Preparation
-    val set = ObservableSet.empty[Int]
+    val set         = ObservableSet.empty[Int]
     val addedValues = mutable.Buffer.empty[Int]
-    set onChange {
-      (_, change) =>
-        change match {
-          case Add(value) => addedValues += value
-          case _          => fail("Unexpected change: " + change)
-        }
+    set onChange { (_, change) =>
+      change match {
+        case Add(value) => addedValues += value
+        case _          => fail("Unexpected change: " + change)
+      }
     }
 
     // Execution
@@ -157,20 +163,19 @@ class ObservableSetSpec[T]
     (set add 1) should be(false)
     set(2) = true
 
-    // Verification 
+    // Verification
     addedValues should equal((0 to 7).toBuffer)
   }
 
   it should "notify each removal individually" in {
-    // Preparation 
-    val set = ObservableSet.from(0 to 15)
+    // Preparation
+    val set           = ObservableSet.from(0 to 15)
     val removedValues = mutable.Buffer.empty[Int]
-    set onChange {
-      (_, change) =>
-        change match {
-          case Remove(value) => removedValues += value
-          case _             => fail("Unexpected change: " + change)
-        }
+    set onChange { (_, change) =>
+      change match {
+        case Remove(value) => removedValues += value
+        case _             => fail("Unexpected change: " + change)
+      }
     }
 
     // Execution
@@ -206,15 +211,14 @@ class ObservableSetSpec[T]
 
   it should "keep his behavior with other types of sets beyond HashSet" in {
     // Preparation
-    val set = ObservableSet.from(new mutable.LinkedHashSet[Int])
-    val addedValues = mutable.Buffer.empty[Int]
+    val set           = ObservableSet.from(new mutable.LinkedHashSet[Int])
+    val addedValues   = mutable.Buffer.empty[Int]
     val removedValues = mutable.Buffer.empty[Int]
-    set onChange {
-      (_, change) =>
-        change match {
-          case Add(value)    => addedValues += value
-          case Remove(value) => removedValues += value
-        }
+    set onChange { (_, change) =>
+      change match {
+        case Add(value)    => addedValues += value
+        case Remove(value) => removedValues += value
+      }
     }
 
     // Execution

@@ -30,7 +30,10 @@ package scalafx.scene.text
 import javafx.scene.{text => jfxst}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontSmoothingType.html javafx.scene.text.FontSmoothingType]] */
+/**
+ * Wrapper for
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/FontSmoothingType.htmljavafx.scene.text.FontSmoothingType]]
+ */
 object FontSmoothingType extends SFXEnumDelegateCompanion[jfxst.FontSmoothingType, FontSmoothingType] {
 
   case object Gray extends FontSmoothingType(jfxst.FontSmoothingType.GRAY)
@@ -42,6 +45,5 @@ object FontSmoothingType extends SFXEnumDelegateCompanion[jfxst.FontSmoothingTyp
   protected override def unsortedValues: Array[FontSmoothingType] = Array(Gray, LCD)
 }
 
-
 sealed abstract class FontSmoothingType(override val delegate: jfxst.FontSmoothingType)
-  extends SFXEnumDelegate[jfxst.FontSmoothingType]
+    extends SFXEnumDelegate[jfxst.FontSmoothingType]

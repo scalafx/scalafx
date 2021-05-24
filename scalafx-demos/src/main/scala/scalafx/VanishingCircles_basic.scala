@@ -35,7 +35,6 @@ import scalafx.scene.effect.BoxBlur
 import scalafx.scene.paint.Color._
 import scalafx.scene.shape.Circle
 
-
 /**
  * Vanishing Circles Basic
  */

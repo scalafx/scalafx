@@ -32,22 +32,25 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object BooleanProperty {
-  implicit def sfxBooleanProperty2jfx(bp: BooleanProperty): jfxbp.BooleanProperty = if (bp != null) bp.delegate else null
+  implicit def sfxBooleanProperty2jfx(bp: BooleanProperty): jfxbp.BooleanProperty =
+    if (bp != null) bp.delegate else null
 
   /**
    * Creates a new BooleanProperty instance using the SimpleBooleanProperty as the target.
    *
-   * @param value the initial value
-   * @return      the observable instance
+   * @param value
+   *   the initial value
+   * @return
+   *   the observable instance
    */
   def apply(value: Boolean) =
     new BooleanProperty(new jfxbp.SimpleBooleanProperty(value))
 }
 
 class BooleanProperty(override val delegate: jfxbp.BooleanProperty = new jfxbp.SimpleBooleanProperty)
-  extends ReadOnlyBooleanProperty(delegate)
-  with Property[Boolean, java.lang.Boolean]
-  with SFXDelegate[jfxbp.BooleanProperty] {
+    extends ReadOnlyBooleanProperty(delegate)
+    with Property[Boolean, java.lang.Boolean]
+    with SFXDelegate[jfxbp.BooleanProperty] {
 
   def this(bean: Object, name: String) = this(new jfxbp.SimpleBooleanProperty(bean, name))
 

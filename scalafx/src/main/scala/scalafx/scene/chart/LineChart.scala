@@ -45,14 +45,17 @@ object LineChart {
     new LineChart[X, Y](new jfxsc.LineChart[X, Y](xAxis, yAxis, data))
 
   object SortingPolicy extends SFXEnumDelegateCompanion[jfxsc.LineChart.SortingPolicy, SortingPolicy] {
+
     /**
      * The data should be left in the order defined by the list in [[scalafx.scene.chart.LineChart.data]] property.
      */
     case object None extends SortingPolicy(jfxsc.LineChart.SortingPolicy.NONE)
+
     /**
      * The data is ordered by x axis.
      */
     case object XAxis extends SortingPolicy(jfxsc.LineChart.SortingPolicy.X_AXIS)
+
     /**
      * The data is ordered by y axis.
      */
@@ -62,13 +65,13 @@ object LineChart {
   }
 
   sealed abstract class SortingPolicy(override val delegate: jfxsc.LineChart.SortingPolicy)
-    extends SFXEnumDelegate[jfxsc.LineChart.SortingPolicy]
+      extends SFXEnumDelegate[jfxsc.LineChart.SortingPolicy]
 
 }
 
 class LineChart[X, Y](override val delegate: jfxsc.LineChart[X, Y])
-  extends XYChart[X, Y](delegate)
-  with SFXDelegate[jfxsc.LineChart[X, Y]] {
+    extends XYChart[X, Y](delegate)
+    with SFXDelegate[jfxsc.LineChart[X, Y]] {
 
   def this(xAxis: Axis[X], yAxis: Axis[Y]) = {
     this(new jfxsc.LineChart[X, Y](xAxis, yAxis))

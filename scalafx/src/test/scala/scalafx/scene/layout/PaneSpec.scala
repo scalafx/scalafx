@@ -34,8 +34,5 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Pane Spec tests.
- *
- *
  */
-class PaneSpec
-  extends SimpleSFXDelegateSpec[jfxsl.Pane, Pane](classOf[jfxsl.Pane], classOf[Pane])
+class PaneSpec extends SimpleSFXDelegateSpec[jfxsl.Pane, Pane](classOf[jfxsl.Pane], classOf[Pane])

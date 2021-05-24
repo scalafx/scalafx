@@ -48,7 +48,7 @@ object EqualizerBand {
 }
 
 class EqualizerBand(override val delegate: jfxsm.EqualizerBand = new jfxsm.EqualizerBand)
-  extends SFXDelegate[jfxsm.EqualizerBand] {
+    extends SFXDelegate[jfxsm.EqualizerBand] {
 
   /**
    * Custom EqualizerBand constructor.

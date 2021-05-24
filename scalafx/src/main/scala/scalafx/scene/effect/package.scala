@@ -36,7 +36,8 @@ import scalafx.scene.paint.Color
 import scala.language.{implicitConversions, reflectiveCalls}
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/package-summary.html `javafx.scene.effect`]] package.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/package-summary.html`javafx.scene.effect`]]
+ * package.
  */
 package object effect {
 
@@ -50,8 +51,7 @@ package object effect {
   /**
    * Trait that unifies all Effect subclasses whose Java counterpart have input Property. See type Inputed.
    */
-  trait InputDelegate[J <: Object with Inputed]
-    extends SFXDelegate[J] {
+  trait InputDelegate[J <: Object with Inputed] extends SFXDelegate[J] {
 
     /**
      * The input for this Effect.
@@ -74,8 +74,7 @@ package object effect {
   /**
    * Trait that unify all Effect subclasses whose Java counterpart have color Property. See type Colored.
    */
-  trait ColorDelegate[J <: Object with Colored]
-    extends SFXDelegate[J] {
+  trait ColorDelegate[J <: Object with Colored] extends SFXDelegate[J] {
 
     /**
      * The Effect's color.

@@ -34,8 +34,5 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Ellipse Spec tests.
- *
- *
  */
-class EllipseSpec
-  extends SimpleSFXDelegateSpec[jfxss.Ellipse, Ellipse](classOf[jfxss.Ellipse], classOf[Ellipse])
+class EllipseSpec extends SimpleSFXDelegateSpec[jfxss.Ellipse, Ellipse](classOf[jfxss.Ellipse], classOf[Ellipse])

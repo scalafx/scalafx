@@ -39,16 +39,17 @@ import scalafx.scene.layout.{BorderPane, Pane}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.{Circle, Ellipse, Line, Rectangle}
 
-/** Demo illustrating use of event handler subscription.
-  *
-  * User can draw rectangles, ellipses, or lines. Shape type is selected by pressing corresponding
-  * toggle button. For the sake of simplicity of the demo code, only one instance of shape of each
-  * type is used. User draws a shape by pressing and dragging a mouse.
-  *
-  * Each shape type has its own mouse event handler. Only one handler is used at a time.
-  * Handlers are implemented using a simple method `MouseEvent => Unit`. When switching handlers,
-  * previous handler, if any, is cancelled using a `Subscription` pattern.
-  */
+/**
+ * Demo illustrating use of event handler subscription.
+ *
+ * User can draw rectangles, ellipses, or lines. Shape type is selected by pressing corresponding toggle button. For the
+ * sake of simplicity of the demo code, only one instance of shape of each type is used. User draws a shape by pressing
+ * and dragging a mouse.
+ *
+ * Each shape type has its own mouse event handler. Only one handler is used at a time. Handlers are implemented using a
+ * simple method `MouseEvent => Unit`. When switching handlers, previous handler, if any, is cancelled using a
+ * `Subscription` pattern.
+ */
 object MultipleShapeDrawingDemo extends JFXApp {
 
   /** Handles drawing of rectangles */
@@ -56,6 +57,7 @@ object MultipleShapeDrawingDemo extends JFXApp {
     val rectangle = new Rectangle {
       fill = Color.web("RED", 0.5)
     }
+
     /** Update the shape using current `start` and `end` points. */
     override def update(): Unit = {
       rectangle.x = math.min(start.x, end.x)
@@ -70,6 +72,7 @@ object MultipleShapeDrawingDemo extends JFXApp {
     val ellipse = new Ellipse {
       fill = Color.web("GREEN", 0.5)
     }
+
     /** Update the shape using current `start` and `end` points. */
     override def update(): Unit = {
       ellipse.centerX = start.x
@@ -85,6 +88,7 @@ object MultipleShapeDrawingDemo extends JFXApp {
       stroke = Color.web("BLUE", 0.5)
       strokeWidth = 3
     }
+
     /** Update the shape using current `start` and `end` points. */
     override def update(): Unit = {
       line.startX = start.x
@@ -170,6 +174,7 @@ object MultipleShapeDrawingDemo extends JFXApp {
   }
 
   trait MouseHandler {
+
     /** Return event handling method */
     def handler: MouseEvent => Unit
   }
@@ -177,7 +182,7 @@ object MultipleShapeDrawingDemo extends JFXApp {
   /** Encapsulates common behaviour of interaction when drawing a shape based on two points. */
   trait ShapeDrawInteractor extends MouseHandler {
     private var _start = new Point2D(0, 0)
-    private var _end = new Point2D(0, 0)
+    private var _end   = new Point2D(0, 0)
 
     def start: Point2D = _start
 
@@ -197,12 +202,12 @@ object MultipleShapeDrawingDemo extends JFXApp {
     /** Update the shape using current `start` and `end` points. */
     def update(): Unit
 
-    override def handler: MouseEvent => Unit = {
-      (me: MouseEvent) => {
+    override def handler: MouseEvent => Unit = { (me: MouseEvent) =>
+      {
         me.eventType match {
           case MouseEvent.MousePressed => start = new Point2D(me.x, me.y)
           case MouseEvent.MouseDragged => end = new Point2D(me.x, me.y)
-          case _ => {}
+          case _                       => {}
         }
       }
     }

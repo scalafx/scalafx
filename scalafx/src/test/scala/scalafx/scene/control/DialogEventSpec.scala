@@ -33,13 +33,11 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- *
  * Test for [[scalafx.scene.control.DialogEvent]].
  */
 class DialogEventSpec
-  extends SimpleSFXDelegateSpec[jfxsc.DialogEvent, DialogEvent](
-    classOf[jfxsc.DialogEvent], classOf[DialogEvent]) {
+    extends SimpleSFXDelegateSpec[jfxsc.DialogEvent, DialogEvent](classOf[jfxsc.DialogEvent], classOf[DialogEvent]) {
 
   override protected def getScalaClassInstance = new DialogEvent(getJavaClassInstance)
-  override protected def getJavaClassInstance = new jfxsc.DialogEvent(null, jfxsc.DialogEvent.ANY)
+  override protected def getJavaClassInstance  = new jfxsc.DialogEvent(null, jfxsc.DialogEvent.ANY)
 }

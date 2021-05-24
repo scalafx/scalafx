@@ -27,18 +27,18 @@
 package scalafx.delegate
 
 /**
- * Base trait for JavaFX [[http://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html `enum`]] wrappers.
+ * Base trait for JavaFX [[http://docs.oracle.com/javase/7/docs/api/java/lang/Enum.html`enum`]] wrappers.
  *
- * @tparam E Original JavaFX `enum`
+ * @tparam E
+ *   Original JavaFX `enum`
  */
-trait SFXEnumDelegate[E <: java.lang.Enum[E]]
-  extends SFXDelegate[E] {
+trait SFXEnumDelegate[E <: java.lang.Enum[E]] extends SFXDelegate[E] {
 
   /**
    * Return the same string value as enum `delegate`.
    *
-   * This is important since we want to be able to look it up using enums `valueOf` method.
-   * Default `toString` provided by the `SFXDelegate` prepends "[SFX]"
+   * This is important since we want to be able to look it up using enums `valueOf` method. Default `toString` provided
+   * by the `SFXDelegate` prepends "[SFX]"
    */
   override def toString: String = delegate.toString
 

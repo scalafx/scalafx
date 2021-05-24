@@ -32,7 +32,9 @@ import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.PathTransition.PathTransition.OrientationType]]. */
-class PathTransitionOrientationTypeSpec extends SFXEnumDelegateSpec[jfxa.PathTransition.OrientationType, PathTransition.OrientationType](
-  classOf[jfxa.PathTransition.OrientationType],
-  classOf[PathTransition.OrientationType],
-  PathTransition.OrientationType)
+class PathTransitionOrientationTypeSpec
+    extends SFXEnumDelegateSpec[jfxa.PathTransition.OrientationType, PathTransition.OrientationType](
+      classOf[jfxa.PathTransition.OrientationType],
+      classOf[PathTransition.OrientationType],
+      PathTransition.OrientationType
+    )

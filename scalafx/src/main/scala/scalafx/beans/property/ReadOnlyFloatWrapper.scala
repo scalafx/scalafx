@@ -33,33 +33,44 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
-
 object ReadOnlyFloatWrapper {
-  implicit def sfxReadOnlyFloatWrapper2jfx(w: ReadOnlyFloatWrapper): jfxbp.ReadOnlyFloatWrapper = if (w != null) w.delegate else null
+  implicit def sfxReadOnlyFloatWrapper2jfx(w: ReadOnlyFloatWrapper): jfxbp.ReadOnlyFloatWrapper =
+    if (w != null) w.delegate else null
 
-  /** Creates a new ReadOnlyFloatWrapper instance.
-    * @param value the initial value of the wrapped value
-    */
+  /**
+   * Creates a new ReadOnlyFloatWrapper instance.
+   * @param value
+   *   the initial value of the wrapped value
+   */
   def apply(value: Float) = new ReadOnlyFloatWrapper(new jfxbp.ReadOnlyFloatWrapper(value))
 }
 
-
-/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyFloatWrapper.html javafx.beans.property.ReadOnlyFloatWrapper]] */
+/**
+ * Wrapper for
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyFloatWrapper.htmljavafx.beans.property.ReadOnlyFloatWrapper]]
+ */
 class ReadOnlyFloatWrapper(override val delegate: jfxbp.ReadOnlyFloatWrapper = new jfxbp.ReadOnlyFloatWrapper())
-  extends FloatProperty(delegate)
-  with SFXDelegate[jfxbp.ReadOnlyFloatWrapper] {
+    extends FloatProperty(delegate)
+    with SFXDelegate[jfxbp.ReadOnlyFloatWrapper] {
 
-  /** Creates a new ReadOnlyFloatWrapper instance.
-    * @param bean the bean of this ReadOnlyFloatWrapper
-    * @param name the name of this ReadOnlyFloatWrapper
-    */
+  /**
+   * Creates a new ReadOnlyFloatWrapper instance.
+   * @param bean
+   *   the bean of this ReadOnlyFloatWrapper
+   * @param name
+   *   the name of this ReadOnlyFloatWrapper
+   */
   def this(bean: Object, name: String) = this(new jfxbp.ReadOnlyFloatWrapper(bean, name))
 
-  /** Creates a new ReadOnlyFloatWrapper instance.
-    * @param value the initial value of the wrapped value
-    * @param bean the bean of this ReadOnlyFloatWrapper
-    * @param name the name of this ReadOnlyFloatWrapper
-    */
+  /**
+   * Creates a new ReadOnlyFloatWrapper instance.
+   * @param value
+   *   the initial value of the wrapped value
+   * @param bean
+   *   the bean of this ReadOnlyFloatWrapper
+   * @param name
+   *   the name of this ReadOnlyFloatWrapper
+   */
   def this(bean: Object, name: String, value: Float) = this(new jfxbp.ReadOnlyFloatWrapper(bean, name, value))
 
   /** The read-only property, that is synchronized with this ReadOnlyFloatWrapper. */

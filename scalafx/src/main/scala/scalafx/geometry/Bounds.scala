@@ -35,7 +35,7 @@ object Bounds {
   implicit def sfxBounds2jfx(b: Bounds): jfxg.Bounds = if (b != null) b.delegate else null
 }
 
-abstract class Bounds protected(override val delegate: jfxg.Bounds) extends SFXDelegate[jfxg.Bounds] {
+abstract class Bounds protected (override val delegate: jfxg.Bounds) extends SFXDelegate[jfxg.Bounds] {
 
   /*
    * Creates a new instance of Bounds class.
@@ -65,7 +65,8 @@ abstract class Bounds protected(override val delegate: jfxg.Bounds) extends SFXD
   /**
    * Tests if the interior of this Bounds entirely contains the specified rectangular area.
    */
-  def contains(x: Double, y: Double, z: Double, w: Double, h: Double, d: Double): Boolean = delegate.contains(x, y, z, w, h, d)
+  def contains(x: Double, y: Double, z: Double, w: Double, h: Double, d: Double): Boolean =
+    delegate.contains(x, y, z, w, h, d)
 
   /**
    * Tests if the specified point is inside the boundary of Bounds.
@@ -105,7 +106,8 @@ abstract class Bounds protected(override val delegate: jfxg.Bounds) extends SFXD
   /**
    * Tests if the interior of this Bounds intersects the interior of a specified rectangular area.
    */
-  def intersects(x: Double, y: Double, z: Double, w: Double, h: Double, d: Double): Boolean = delegate.intersects(x, y, z, w, h, d)
+  def intersects(x: Double, y: Double, z: Double, w: Double, h: Double, d: Double): Boolean =
+    delegate.intersects(x, y, z, w, h, d)
 
   /**
    * The x coordinate of the lower-right corner of this Bounds.
@@ -145,27 +147,30 @@ abstract class Bounds protected(override val delegate: jfxg.Bounds) extends SFXD
   /**
    * The central x coordinate of this [[Bounds]].
    *
-   * @return the central x coordinate
-   * This call is equivalent to {{{(getMaxX() + getMinX())/2.0}}}.
-   * @since 11
+   * @return
+   *   the central x coordinate This call is equivalent to {{{(getMaxX() + getMinX())/2.0}}}.
+   * @since
+   *   11
    */
   def centerX: Double = delegate.getCenterX
 
   /**
    * The central y coordinate of this [[Bounds]].
    *
-   * @return the central y coordinate
-   * This call is equivalent to {{{(getMaxY() + getMinY())/2.0}}}.
-   * @since 11
+   * @return
+   *   the central y coordinate This call is equivalent to {{{(getMaxY() + getMinY())/2.0}}}.
+   * @since
+   *   11
    */
   def centerY: Double = delegate.getCenterY
 
   /**
    * The central z coordinate of this [[Bounds]].
    *
-   * @return the central z coordinate
-   * This call is equivalent to {{{(getMaxZ() + getMinZ())/2.0}}}.
-   * @since 11
+   * @return
+   *   the central z coordinate This call is equivalent to {{{(getMaxZ() + getMinZ())/2.0}}}.
+   * @since
+   *   11
    */
   def centerZ: Double = delegate.getCenterZ
 }

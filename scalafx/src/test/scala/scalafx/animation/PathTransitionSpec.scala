@@ -33,9 +33,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * PathTransition Spec tests.
- *
- *
  */
 class PathTransitionSpec
-  extends SimpleSFXDelegateSpec[jfxa.PathTransition, PathTransition](
-    classOf[jfxa.PathTransition], classOf[PathTransition])
+    extends SimpleSFXDelegateSpec[jfxa.PathTransition, PathTransition](
+      classOf[jfxa.PathTransition],
+      classOf[PathTransition]
+    )

@@ -33,9 +33,7 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * RadioButton Spec tests.
- *
- *
  */
 class RadioButtonSpec
-  extends SimpleSFXDelegateSpec[jfxsc.RadioButton, RadioButton](classOf[jfxsc.RadioButton], classOf[RadioButton])
-  with RunOnApplicationThread
+    extends SimpleSFXDelegateSpec[jfxsc.RadioButton, RadioButton](classOf[jfxsc.RadioButton], classOf[RadioButton])
+    with RunOnApplicationThread

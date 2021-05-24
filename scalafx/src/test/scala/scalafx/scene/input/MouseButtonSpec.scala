@@ -32,9 +32,10 @@ import javafx.scene.{input => jfxsi}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Tests for [[scalafx.scene.input.MouseButton]]. */
-class MouseButtonSpec extends SFXEnumDelegateSpec[jfxsi.MouseButton, MouseButton](
-  javaClass = classOf[jfxsi.MouseButton],
-  scalaClass = classOf[MouseButton],
-  companion = MouseButton)
+class MouseButtonSpec
+    extends SFXEnumDelegateSpec[jfxsi.MouseButton, MouseButton](
+      javaClass = classOf[jfxsi.MouseButton],
+      scalaClass = classOf[MouseButton],
+      companion = MouseButton
+    )

@@ -43,44 +43,64 @@ object SceneIncludes extends SceneIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/package-summary.html `javafx.scene`]] and subpackages
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/package-summary.html`javafx.scene`]] and subpackages
  * Classes/Traits to their ScalaFX counterparts.
  */
-trait SceneIncludes extends ChartIncludes
-with LayoutIncludes
-with PaintIncludes
-with ShapeIncludes
-with TextIncludes
-with ImageIncludes
-with EffectIncludes
-with LowerPriorityIncludes
-with ControlIncludes
+trait SceneIncludes
+    extends ChartIncludes
+    with LayoutIncludes
+    with PaintIncludes
+    with ShapeIncludes
+    with TextIncludes
+    with ImageIncludes
+    with EffectIncludes
+    with LowerPriorityIncludes
+    with ControlIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/package-summary.html `javafx.scene`]]
- * Classes/Traits to their $SFX counterparts.
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/package-summary.html`javafx.scene`]] Classes/Traits to
+ * their $SFX counterparts.
  *
- * @define JFX JavaFX
- * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define
+ *   JFX JavaFX
+ * @define
+ *   SFX ScalaFX
+ * @define
+ *   START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/
+ * @define
+ *   END ]]` instance to its $SFX counterpart.
  *
- * @define CHI CacheHint
- * @define CAM Camera
- * @define CUR Cursor
- * @define DPT DepthTest
- * @define GRP Group
- * @define IMC ImageCursor
- * @define NOD Node
- * @define PRC ParallelCamera
- * @define PAR Parent
- * @define PEC PerspectiveCamera
- * @define SCE Scene
- * @define SCA SceneAntialiasing
- * @define SCP SceneProperty
- * @define SNP SnapshotParameters
- * @define SSCE SubScene
+ * @define
+ *   CHI CacheHint
+ * @define
+ *   CAM Camera
+ * @define
+ *   CUR Cursor
+ * @define
+ *   DPT DepthTest
+ * @define
+ *   GRP Group
+ * @define
+ *   IMC ImageCursor
+ * @define
+ *   NOD Node
+ * @define
+ *   PRC ParallelCamera
+ * @define
+ *   PAR Parent
+ * @define
+ *   PEC PerspectiveCamera
+ * @define
+ *   SCE Scene
+ * @define
+ *   SCA SceneAntialiasing
+ * @define
+ *   SCP SceneProperty
+ * @define
+ *   SNP SnapshotParameters
+ * @define
+ *   SSCE SubScene
  */
 trait LowerPriorityIncludes {
 
@@ -93,102 +113,134 @@ trait LowerPriorityIncludes {
   /**
    * $START$CHI.html $CHI$END
    *
-   * @param e $JFX $CHI
-   * @return $SFX $CHI
+   * @param e
+   *   $JFX $CHI
+   * @return
+   *   $SFX $CHI
    */
   implicit def jfxCacheHint2sfx(e: jfxs.CacheHint): CacheHint = CacheHint.jfxEnum2sfx(e)
 
   /**
    * $START$CAM.html $CAM$END
    *
-   * @param v $JFX $CAM
-   * @return $SFX $CAM
+   * @param v
+   *   $JFX $CAM
+   * @return
+   *   $SFX $CAM
    */
-  implicit def jfxCamera2sfx(v: jfxs.Camera): Camera = if (v != null) new Camera(v) {} else null
+  implicit def jfxCamera2sfx(v: jfxs.Camera): Camera = if (v != null) new Camera(v) {}
+  else null
 
   /**
    * $START$CUR.html $CUR$END
    *
-   * @param v $JFX $CUR
-   * @return $SFX $CUR
+   * @param v
+   *   $JFX $CUR
+   * @return
+   *   $SFX $CUR
    */
-  implicit def jfxCursor2sfx(v: jfxs.Cursor): Cursor = if (v != null) new Cursor(v) {} else null
+  implicit def jfxCursor2sfx(v: jfxs.Cursor): Cursor = if (v != null) new Cursor(v) {}
+  else null
 
   /**
    * $START$DPT.html $DPT$END
    *
-   * @param e $JFX $DPT
-   * @return $SFX $DPT
+   * @param e
+   *   $JFX $DPT
+   * @return
+   *   $SFX $DPT
    */
   implicit def jfxDepthTest2sfx(e: jfxs.DepthTest): DepthTest = DepthTest.jfxEnum2sfx(e)
 
   /**
    * $START$GRP.html $GRP$END
    *
-   * @param v $JFX $GRP
-   * @return $SFX $GRP
+   * @param v
+   *   $JFX $GRP
+   * @return
+   *   $SFX $GRP
    */
   implicit def jfxGroup2sfx(v: jfxs.Group): Group = if (v != null) new Group(v) else null
 
   /**
    * $START$IMC.html $IMC$END
    *
-   * @param ic $JFX $IMC
-   * @return $SFX $IMC
+   * @param ic
+   *   $JFX $IMC
+   * @return
+   *   $SFX $IMC
    */
   implicit def jfxImageCursor2sfx(ic: jfxs.ImageCursor): ImageCursor = if (ic != null) new ImageCursor(ic) else null
 
-  implicit def jfxLightBase2sfx(v: jfxs.LightBase): LightBase = if (v != null) new LightBase(v) {} else null
+  implicit def jfxLightBase2sfx(v: jfxs.LightBase): LightBase = if (v != null) new LightBase(v) {}
+  else null
 
   /**
    * $START$NOD.html $NOD$END
    *
-   * @param v $JFX $NOD
-   * @return $SFX $NOD
+   * @param v
+   *   $JFX $NOD
+   * @return
+   *   $SFX $NOD
    */
-  implicit def jfxNode2sfx(v: jfxs.Node): Node = if (v != null) new Node(v) {} else null
+  implicit def jfxNode2sfx(v: jfxs.Node): Node = if (v != null) new Node(v) {}
+  else null
 
   /**
    * $START$PRC.html $PRC$END
    *
-   * @param v $JFX $PRC
-   * @return $SFX $PRC
+   * @param v
+   *   $JFX $PRC
+   * @return
+   *   $SFX $PRC
    */
-  implicit def jfxParallelCamera2sfx(v: jfxs.ParallelCamera): ParallelCamera = if (v != null) new ParallelCamera(v) else null
+  implicit def jfxParallelCamera2sfx(v: jfxs.ParallelCamera): ParallelCamera =
+    if (v != null) new ParallelCamera(v) else null
 
   /**
    * $START$PAR.html $PAR$END
    *
-   * @param v $JFX $PAR
-   * @return $SFX $PAR
+   * @param v
+   *   $JFX $PAR
+   * @return
+   *   $SFX $PAR
    */
-  implicit def jfxParent2sfx(v: jfxs.Parent): Parent = if (v != null) new Parent(v) {} else null
+  implicit def jfxParent2sfx(v: jfxs.Parent): Parent = if (v != null) new Parent(v) {}
+  else null
 
   /**
    * $START$PEC.html $PEC$END
    *
-   * @param v $JFX $PEC
-   * @return $SFX $PEC
+   * @param v
+   *   $JFX $PEC
+   * @return
+   *   $SFX $PEC
    */
-  implicit def jfxPerspectiveCamera2sfx(v: jfxs.PerspectiveCamera): PerspectiveCamera = if (v != null) new PerspectiveCamera(v) else null
+  implicit def jfxPerspectiveCamera2sfx(v: jfxs.PerspectiveCamera): PerspectiveCamera =
+    if (v != null) new PerspectiveCamera(v) else null
 
   implicit def jfxPointLight2sfx(v: jfxs.PointLight): PointLight = if (v != null) new PointLight(v) else null
 
   /**
    * $START$SCE.html $SCE$END
    *
-   * @param v $JFX $SCE
-   * @return $SFX $SCE
+   * @param v
+   *   $JFX $SCE
+   * @return
+   *   $SFX $SCE
    */
   implicit def jfxScene2sfx(v: jfxs.Scene): Scene = if (v != null) new Scene(v) else null
 
   /**
    * $START$SCA.html $SCA$END
    *
-   * @param v $JFX $SCA
-   * @return $SFX $SCA
+   * @param v
+   *   $JFX $SCA
+   * @return
+   *   $SFX $SCA
    *
-   * @throws java.lang.IllegalArgumentException if `v` has no known correspondence in ScalaFX.
+   * @throws
+   *   java.lang.IllegalArgumentException if `v` has no known correspondence in ScalaFX.
    */
   implicit def jfxSceneAntialiasing2sfx(v: jfxs.SceneAntialiasing): SceneAntialiasing = {
     // A value of null is treated as though antialiasing is disabled.
@@ -199,24 +251,32 @@ trait LowerPriorityIncludes {
   /**
    * Generates a $SCP from a $JFX $SCE.
    *
-   * @param p A $SFX [[scalafx.beans.property.ReadOnlyObjectProperty]] containing a $JFX $SCE.
-   * @return $SFX $SCP
+   * @param p
+   *   A $SFX [[scalafx.beans.property.ReadOnlyObjectProperty]] containing a $JFX $SCE.
+   * @return
+   *   $SFX $SCP
    */
-  implicit def jfxSceneProperty2sfx(p: ReadOnlyObjectProperty[jfxs.Scene]): SceneProperty = if (p != null) new SceneProperty(p) else null
+  implicit def jfxSceneProperty2sfx(p: ReadOnlyObjectProperty[jfxs.Scene]): SceneProperty =
+    if (p != null) new SceneProperty(p) else null
 
   /**
    * $START$SNP.html $SNP$END
    *
-   * @param sp $JFX $SNP
-   * @return $SFX $SNP
+   * @param sp
+   *   $JFX $SNP
+   * @return
+   *   $SFX $SNP
    */
-  implicit def jfxSnapshotParameters2sfx(sp: jfxs.SnapshotParameters): SnapshotParameters = if (sp != null) new SnapshotParameters(sp) else null
+  implicit def jfxSnapshotParameters2sfx(sp: jfxs.SnapshotParameters): SnapshotParameters =
+    if (sp != null) new SnapshotParameters(sp) else null
 
   /**
    * $START$SSCE.html $SSCE$END
    *
-   * @param v $JFX $SSCE
-   * @return $SFX $SSCE
+   * @param v
+   *   $JFX $SSCE
+   * @return
+   *   $SFX $SSCE
    */
   implicit def jfxSubScene2sfx(v: jfxs.SubScene): SubScene = if (v != null) new SubScene(v) else null
 }

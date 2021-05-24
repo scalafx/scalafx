@@ -36,123 +36,169 @@ object StageIncludes extends StageIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://download.java.net/jdk8/jfxdocs/javafx/stage/package-summary.html `javafx.stage`]]
- * Classes/Traits to their $SFX counterparts.
+ * [[http://download.java.net/jdk8/jfxdocs/javafx/stage/package-summary.html`javafx.stage`]] Classes/Traits to their
+ * $SFX counterparts.
  *
- * @define JFX JavaFX
- * @define SFX ScalaFX
- * @define START Converts a $JFX `[[http://download.java.net/jdk8/jfxdocs/javafx/stage/
- * @define END ]]` instance to its $SFX counterpart.
+ * @define
+ *   JFX JavaFX
+ * @define
+ *   SFX ScalaFX
+ * @define
+ *   START Converts a $JFX `[[http://download.java.net/jdk8/jfxdocs/javafx/stage/
+ * @define
+ *   END ]]` instance to its $SFX counterpart.
  *
- * @define DC DirectoryChooser
- * @define FC FileChooser
- * @define FE FileChooser.ExtensionFilter
- * @define PW PopupWindow
- * @define PWAL PopupWindow.AnchorLocation
- * @define PP Popup
- * @define MD Modality
- * @define SC Screen
- * @define ST Stage
- * @define SS StageStyle
- * @define WN Window
- * @define WE WindowEvent
+ * @define
+ *   DC DirectoryChooser
+ * @define
+ *   FC FileChooser
+ * @define
+ *   FE FileChooser.ExtensionFilter
+ * @define
+ *   PW PopupWindow
+ * @define
+ *   PWAL PopupWindow.AnchorLocation
+ * @define
+ *   PP Popup
+ * @define
+ *   MD Modality
+ * @define
+ *   SC Screen
+ * @define
+ *   ST Stage
+ * @define
+ *   SS StageStyle
+ * @define
+ *   WN Window
+ * @define
+ *   WE WindowEvent
  */
 trait StageIncludes {
 
   /**
    * $START$DC.html $DC$END
    *
-   * @param dc $JFX $DC
-   * @return $SFX $DC
+   * @param dc
+   *   $JFX $DC
+   * @return
+   *   $SFX $DC
    */
-  implicit def jfxDirectoryChooser2sfx(dc: jfxs.DirectoryChooser): DirectoryChooser = if (dc != null) new DirectoryChooser(dc) else null
+  implicit def jfxDirectoryChooser2sfx(dc: jfxs.DirectoryChooser): DirectoryChooser =
+    if (dc != null) new DirectoryChooser(dc) else null
 
   /**
    * $START$FC.html $FC$END
    *
-   * @param fc $JFX $FC
-   * @return $SFX $FC
+   * @param fc
+   *   $JFX $FC
+   * @return
+   *   $SFX $FC
    */
   implicit def jfxFileChooser2sfx(fc: jfxs.FileChooser): FileChooser = if (fc != null) new FileChooser(fc) else null
 
   /**
    * $START$FE.html $FE$END
    *
-   * @param ef $JFX $FE
-   * @return $SFX $FE
+   * @param ef
+   *   $JFX $FE
+   * @return
+   *   $SFX $FE
    */
-  implicit def jfxFileChooserExtensionFilter2sfx(ef: jfxs.FileChooser.ExtensionFilter): ExtensionFilter = if (ef != null) new FileChooser.ExtensionFilter(ef) else null
+  implicit def jfxFileChooserExtensionFilter2sfx(ef: jfxs.FileChooser.ExtensionFilter): ExtensionFilter =
+    if (ef != null) new FileChooser.ExtensionFilter(ef) else null
 
   /**
    * $START$PW.html $PW$END
    *
-   * @param pw $JFX $PW
-   * @return $SFX $PW
+   * @param pw
+   *   $JFX $PW
+   * @return
+   *   $SFX $PW
    */
-  implicit def jfxPopupWindow2sfx(pw: jfxs.PopupWindow): PopupWindow = if (pw != null) new PopupWindow(pw) {} else null
+  implicit def jfxPopupWindow2sfx(pw: jfxs.PopupWindow): PopupWindow = if (pw != null) new PopupWindow(pw) {}
+  else null
 
   /**
    * $START$PWAL.html $PWAL$END
    *
-   * @param v $JFX $PWAL
-   * @return $SFX $PWAL
+   * @param v
+   *   $JFX $PWAL
+   * @return
+   *   $SFX $PWAL
    */
-  implicit def jfxPopupWindowAnchorLocation2sfx(v: jfxs.PopupWindow.AnchorLocation): AnchorLocation = PopupWindow.AnchorLocation.jfxEnum2sfx(v)
+  implicit def jfxPopupWindowAnchorLocation2sfx(v: jfxs.PopupWindow.AnchorLocation): AnchorLocation =
+    PopupWindow.AnchorLocation.jfxEnum2sfx(v)
 
   /**
    * $START$PP.html $PP$END
    *
-   * @param p $JFX $PP
-   * @return $SFX $PP
+   * @param p
+   *   $JFX $PP
+   * @return
+   *   $SFX $PP
    */
   implicit def jfxPopup2sfx(p: jfxs.Popup): Popup = if (p != null) new Popup(p) else null
 
   /**
    * $START$MD.html $MD$END
    *
-   * @param e $JFX $MD
-   * @return $SFX $MD
+   * @param e
+   *   $JFX $MD
+   * @return
+   *   $SFX $MD
    */
   implicit def jfxModality2sfx(e: jfxs.Modality): Modality = Modality.jfxEnum2sfx(e)
 
   /**
    * $START$SC.html $SC$END
    *
-   * @param s $JFX $SC
-   * @return $SFX $SC
+   * @param s
+   *   $JFX $SC
+   * @return
+   *   $SFX $SC
    */
   implicit def jfxScreen2sfx(s: jfxs.Screen): Screen = if (s != null) new Screen(s) else null
 
   /**
    * $START$ST.html $ST$END
    *
-   * @param s $JFX $ST
-   * @return $SFX $ST
+   * @param s
+   *   $JFX $ST
+   * @return
+   *   $SFX $ST
    */
   implicit def jfxStage2sfx(s: jfxs.Stage): Stage = if (s != null) new Stage(s) else null
 
   /**
    * $START$SS.html $SS$END
    *
-   * @param e $JFX $SS
-   * @return $SFX $SS
+   * @param e
+   *   $JFX $SS
+   * @return
+   *   $SFX $SS
    */
   implicit def jfxStageStyle2sfx(e: jfxs.StageStyle): StageStyle = StageStyle.jfxEnum2sfx(e)
 
   /**
    * $START$WN.html $WN$END
    *
-   * @param w $JFX $WN
-   * @return $SFX $WN
+   * @param w
+   *   $JFX $WN
+   * @return
+   *   $SFX $WN
    */
-  implicit def jfxWindow2sfx(w: jfxs.Window): Window = if (w != null) new Window(w) {} else null
+  implicit def jfxWindow2sfx(w: jfxs.Window): Window = if (w != null) new Window(w) {}
+  else null
 
   /**
    * $START$WE.html $WE$END
    *
-   * @param we $JFX $WE
-   * @return $SFX $WE
+   * @param we
+   *   $JFX $WE
+   * @return
+   *   $SFX $WE
    */
-  implicit def jfxWindowEvent2sfx(we: jfxs.WindowEvent): WindowEvent = if (we != null) new WindowEvent(we) {} else null
+  implicit def jfxWindowEvent2sfx(we: jfxs.WindowEvent): WindowEvent = if (we != null) new WindowEvent(we) {}
+  else null
 
 }

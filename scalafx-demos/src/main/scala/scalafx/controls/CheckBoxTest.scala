@@ -80,7 +80,6 @@ class CheckBoxControls(check: CheckBox) extends PropertiesNodes[CheckBox](check,
     lblSelected.text = if (check.indeterminate()) "Indeterminate" else check.selected().toString
   }
 
-
   val btnAllowIndeterminate = new ToggleButton {
     text = "Allow Indeterminate"
     selected <==> check.allowIndeterminate

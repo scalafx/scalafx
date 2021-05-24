@@ -32,13 +32,20 @@ import scalafx.Includes._
 
 /**
  * ByteStringConverter Spec tests.
- *
- *
  */
 class ByteStringConverterSpec
-  extends AbstractStringConverterDelegateSpec[java.lang.Byte, jfxuc.ByteStringConverter, Byte, ByteStringConverter](classOf[jfxuc.ByteStringConverter], classOf[ByteStringConverter], classOf[Byte]) {
+    extends AbstractStringConverterDelegateSpec[java.lang.Byte, jfxuc.ByteStringConverter, Byte, ByteStringConverter](
+      classOf[jfxuc.ByteStringConverter],
+      classOf[ByteStringConverter],
+      classOf[Byte]
+    ) {
 
-  val examples = List((0.toByte, "0"), (12.toByte, "12"), (-12.toByte, "-12"),
-    (Byte.MaxValue, Byte.MaxValue.toString), (Byte.MinValue, Byte.MinValue.toString))
+  val examples = List(
+    (0.toByte, "0"),
+    (12.toByte, "12"),
+    (-12.toByte, "-12"),
+    (Byte.MaxValue, Byte.MaxValue.toString),
+    (Byte.MinValue, Byte.MinValue.toString)
+  )
 
 }

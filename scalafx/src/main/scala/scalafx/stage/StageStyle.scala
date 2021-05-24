@@ -29,8 +29,7 @@ package scalafx.stage
 import javafx.{stage => jfxs}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-object StageStyle
-  extends SFXEnumDelegateCompanion[jfxs.StageStyle, StageStyle] {
+object StageStyle extends SFXEnumDelegateCompanion[jfxs.StageStyle, StageStyle] {
 
   /**
    * Defines a normal Stage style with a solid white background and platform decorations.
@@ -69,12 +68,12 @@ object StageStyle
   @deprecated("Use Unified; UNIFIED will be removed in a future release", "8.0.60-R10")
   val UNIFIED: StageStyle = Unified
 
-  protected override def unsortedValues: Array[StageStyle] = Array(Decorated, Undecorated, Transparent, Utility, Unified)
+  protected override def unsortedValues: Array[StageStyle] =
+    Array(Decorated, Undecorated, Transparent, Utility, Unified)
 
 }
 
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/stage/StageStyle.html]]
  */
-sealed abstract class StageStyle(override val delegate: jfxs.StageStyle)
-  extends SFXEnumDelegate[jfxs.StageStyle]
+sealed abstract class StageStyle(override val delegate: jfxs.StageStyle) extends SFXEnumDelegate[jfxs.StageStyle]

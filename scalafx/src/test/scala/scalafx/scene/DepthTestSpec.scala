@@ -32,10 +32,10 @@ import javafx.{scene => jfxs}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Tests for [[scalafx.scene.DepthTest]]. */
-class DepthTestSpec extends SFXEnumDelegateSpec[jfxs.DepthTest, DepthTest](
-  javaClass = classOf[jfxs.DepthTest],
-  scalaClass = classOf[DepthTest],
-  companion = DepthTest)
-
+class DepthTestSpec
+    extends SFXEnumDelegateSpec[jfxs.DepthTest, DepthTest](
+      javaClass = classOf[jfxs.DepthTest],
+      scalaClass = classOf[DepthTest],
+      companion = DepthTest
+    )

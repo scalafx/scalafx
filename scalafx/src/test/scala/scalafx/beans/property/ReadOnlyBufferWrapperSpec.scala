@@ -35,12 +35,13 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 import scala.language.implicitConversions
 
 /**
- *
  * Test for [[scalafx.beans.property.ReadOnlyBufferWrapper]].
  */
 class ReadOnlyBufferWrapperSpec
-  extends SimpleSFXDelegateSpec[jfxbp.ReadOnlyListWrapper[Int], ReadOnlyBufferWrapper[Int]](
-    classOf[jfxbp.ReadOnlyListWrapper[Int]], classOf[ReadOnlyBufferWrapper[Int]]) {
+    extends SimpleSFXDelegateSpec[jfxbp.ReadOnlyListWrapper[Int], ReadOnlyBufferWrapper[Int]](
+      classOf[jfxbp.ReadOnlyListWrapper[Int]],
+      classOf[ReadOnlyBufferWrapper[Int]]
+    ) {
 
   val bean = new Object()
   val name = "Bean Name X"

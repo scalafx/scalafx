@@ -32,9 +32,10 @@ import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
-
 /** Test for [[scalafx.scene.layout.BackgroundRepeat]] */
-class BackgroundRepeatSpec extends SFXEnumDelegateSpec[jfxsl.BackgroundRepeat, BackgroundRepeat](
-  javaClass = classOf[jfxsl.BackgroundRepeat],
-  scalaClass = classOf[BackgroundRepeat],
-  companion = BackgroundRepeat)
+class BackgroundRepeatSpec
+    extends SFXEnumDelegateSpec[jfxsl.BackgroundRepeat, BackgroundRepeat](
+      javaClass = classOf[jfxsl.BackgroundRepeat],
+      scalaClass = classOf[BackgroundRepeat],
+      companion = BackgroundRepeat
+    )
