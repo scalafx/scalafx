@@ -51,7 +51,7 @@ object PageRange {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PageRange.htmlJavaFX PageRange]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PageRange.htmlJavaFXPageRange]].
  *
  * @constructor
  *   Creates a new ScalaFX PageRange from its JavaFX counterpart.

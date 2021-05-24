@@ -69,7 +69,7 @@ import scala.language.implicitConversions
  *   SFX ScalaFX
  * @define
  *   URL0
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/CheckBoxTreeTableCell.html@define ORIGINALDOC Original Documentation]].
+ *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/CheckBoxTreeTableCell.html@defineORIGINALDOC Original Documentation]].
  * @define
  *   SATISFY Added just to satisfy Spec tests.
  */

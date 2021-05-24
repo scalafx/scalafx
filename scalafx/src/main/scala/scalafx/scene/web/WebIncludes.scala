@@ -49,7 +49,7 @@ object WebIncludes extends WebIncludes
  * @define
  *   END ]]` instance to its $SFX counterpart.
  * @define
- *   BEGINWR Converts a Function that manipulates a $SFX [[scalafx.scene.web.@define FINISHWR]] and returns a
+ *   BEGINWR Converts a Function that manipulates a $SFX [[scalafx.scene.web.@defineFINISHWR]] and returns a
  *   [[http://www.scala-lang.org/api/current/scala/Any.htmlscala.Any]] into a $JFX's
  *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/event/EventHandler.htmlEventHandler]] that manipulates it's
  *   $JFX counterpart.

@@ -34,7 +34,12 @@ import scalafx.scene.control.{TableColumn, TableView}
 
 object SimpleTableViewSorted extends JFXApp3 {
   override def start(): Unit = {
-    val characters = ObservableBuffer[Person](new Person("Peggy", "Sue", "555-6798"), new Person("Desmond", "Sue", "555-6798"), new Person("Rocky", "Raccoon", "555-8036"), new Person("Molly", "Raccoon", "555-0789"))
+    val characters = ObservableBuffer[Person](
+      new Person("Peggy", "Sue", "555-6798"),
+      new Person("Desmond", "Sue", "555-6798"),
+      new Person("Rocky", "Raccoon", "555-8036"),
+      new Person("Molly", "Raccoon", "555-0789")
+    )
     stage = new PrimaryStage {
       title = "Simple Table View Sorted"
       scene = new Scene {

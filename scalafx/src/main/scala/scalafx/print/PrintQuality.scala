@@ -59,6 +59,6 @@ object PrintQuality extends SFXEnumDelegateCompanion[jfxp.PrintQuality, PrintQua
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintQuality.htmlJavaFX PrintQuality]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintQuality.htmlJavaFXPrintQuality]].
  */
 sealed abstract class PrintQuality(override val delegate: jfxp.PrintQuality) extends SFXEnumDelegate[jfxp.PrintQuality]

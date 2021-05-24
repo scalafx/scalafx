@@ -44,7 +44,8 @@ object TextFieldTest extends JFXApp3 {
       fillWidth = true
       alignment = Pos.Center
       hgrow = Priority.Never
-      children = List(new TextFieldControls(textField), new TextInputControlControls(textField), new ControlControls(textField))
+      children =
+        List(new TextFieldControls(textField), new TextInputControlControls(textField), new ControlControls(textField))
     }
     val mainPane = new BorderPane {
       top = new FlowPane { children = List(textField) }

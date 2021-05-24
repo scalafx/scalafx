@@ -88,7 +88,7 @@ object SetProperty {
  *   TC SetProperty
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/SetProperty.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/SetProperty.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class SetProperty[E <: Any](override val delegate: jfxbp.SetProperty[E] = new jfxbp.SimpleSetProperty[E])
     extends ReadOnlySetProperty[E](delegate)

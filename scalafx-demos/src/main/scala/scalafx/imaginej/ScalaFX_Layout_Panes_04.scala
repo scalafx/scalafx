@@ -97,10 +97,16 @@ object ScalaFX_Layout_Panes_04 extends JFXApp3 {
       style = "-fx-background-color: #336699"
       children = List(currentButton, projectedButton, new Rectangle { width = 200 }, stackPane)
     }
-    val data = List(new Text {
-      font = Font.font("Amble CN", FontWeight.Bold, 14)
-      text = "Data"
-    }, new Text { text = "  Sales" }, new Text { text = "  Marketing" }, new Text { text = "  Distribution" }, new Text { text = "  Costs" })
+    val data = List(
+      new Text {
+        font = Font.font("Amble CN", FontWeight.Bold, 14)
+        text = "Data"
+      },
+      new Text { text = "  Sales"        },
+      new Text { text = "  Marketing"    },
+      new Text { text = "  Distribution" },
+      new Text { text = "  Costs"        }
+    )
     val vBox = new VBox {
       spacing = 10
       padding = Insets(10, 10, 10, 10)

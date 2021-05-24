@@ -76,7 +76,7 @@ object PaperSource {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PaperSource.htmlJavaFX PaperSource]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PaperSource.htmlJavaFXPaperSource]].
  *
  * @constructor
  *   Creates a new ScalaFX PaperSource from its JavaFX counterpart.

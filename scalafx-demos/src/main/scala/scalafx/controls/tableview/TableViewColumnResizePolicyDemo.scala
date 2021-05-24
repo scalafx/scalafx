@@ -58,42 +58,55 @@ object TableViewColumnResizePolicyDemo extends JFXApp3 {
     }
     configureTable(box)
     def configureTable(root: VBox): Unit = {
-      val data = ObservableBuffer(new MyDomain("Apple", "This is a fruit.", "Red"), new MyDomain("Orange", "This is also a fruit.", "Orange"), new MyDomain("Potato", "This is a vegetable.", "Brown"))
+      val data = ObservableBuffer(
+        new MyDomain("Apple", "This is a fruit.", "Red"),
+        new MyDomain("Orange", "This is also a fruit.", "Orange"),
+        new MyDomain("Potato", "This is a vegetable.", "Brown")
+      )
       val table1 = createTableView(data)
       table1.columnResizePolicy = TableView.ConstrainedResizePolicy
       val table2 = createTableView(data)
       table2.columnResizePolicy = TableView.UnconstrainedResizePolicy
-      root.children = Seq(new Label("Constrained Resize Policy") { style = "-fx-font-weight:bold;" }, table1, new Label("Unconstrained Resize Policy") { style = "-fx-font-weight:bold;" }, table2)
+      root.children = Seq(
+        new Label("Constrained Resize Policy") { style = "-fx-font-weight:bold;" },
+        table1,
+        new Label("Unconstrained Resize Policy") { style = "-fx-font-weight:bold;" },
+        table2
+      )
     }
     def createTableView(data: ObservableBuffer[MyDomain]): TableView[MyDomain] = {
       val table = new TableView[MyDomain] {
-        columns ++= Seq(new TableColumn[MyDomain, String] {
-          text = "Title"
-          prefWidth = 100
-          cellValueFactory = {
-            _.value.name
-          }
-        }.delegate, new TableColumn[MyDomain, String] {
-          text = "Description"
-          prefWidth = 250
-          cellValueFactory = {
-            _.value.description
-          }
-        }.delegate, new TableColumn[MyDomain, String] {
-          text = "Color"
-          prefWidth = 100
-          cellValueFactory = {
-            _.value.color
-          }
-        }.delegate)
+        columns ++= Seq(
+          new TableColumn[MyDomain, String] {
+            text = "Title"
+            prefWidth = 100
+            cellValueFactory = {
+              _.value.name
+            }
+          }.delegate,
+          new TableColumn[MyDomain, String] {
+            text = "Description"
+            prefWidth = 250
+            cellValueFactory = {
+              _.value.description
+            }
+          }.delegate,
+          new TableColumn[MyDomain, String] {
+            text = "Color"
+            prefWidth = 100
+            cellValueFactory = {
+              _.value.color
+            }
+          }.delegate
+        )
         items = data
       }
       table
     }
     class MyDomain(val nameValue: String, val descriptionValue: String, val colorValue: String) {
-      val name = new StringProperty(nameValue)
+      val name        = new StringProperty(nameValue)
       val description = new StringProperty(descriptionValue)
-      val color = new StringProperty(colorValue)
+      val color       = new StringProperty(colorValue)
     }
   }
 }

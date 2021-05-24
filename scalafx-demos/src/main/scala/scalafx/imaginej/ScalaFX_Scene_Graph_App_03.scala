@@ -77,27 +77,35 @@ object ScalaFX_Scene_Graph_App_03 extends JFXApp3 {
         cycleCount = Timeline.Indefinite
         autoReverse = true
         interpolator = Interpolator.EaseBoth
-        children = Seq(new TranslateTransition {
-          duration = 2.s
-          toX = 390
-          toY = 390
-        }, new FillTransition {
-          duration = 2.s
-          toValue = Color.Red
-        }, new RotateTransition {
-          duration = 2.s
-          toAngle = 360
-        }, new SequentialTransition {
-          children = Seq(new ScaleTransition {
-            duration = 1.s
-            toX = 0.1d
-            toY = 0.1d
-          }, new ScaleTransition {
-            duration = 1.s
-            toX = 1
-            toY = 1
-          })
-        })
+        children = Seq(
+          new TranslateTransition {
+            duration = 2.s
+            toX = 390
+            toY = 390
+          },
+          new FillTransition {
+            duration = 2.s
+            toValue = Color.Red
+          },
+          new RotateTransition {
+            duration = 2.s
+            toAngle = 360
+          },
+          new SequentialTransition {
+            children = Seq(
+              new ScaleTransition {
+                duration = 1.s
+                toX = 0.1d
+                toY = 0.1d
+              },
+              new ScaleTransition {
+                duration = 1.s
+                toX = 1
+                toY = 1
+              }
+            )
+          }
+        )
       }
       parallelTransition.play()
     }

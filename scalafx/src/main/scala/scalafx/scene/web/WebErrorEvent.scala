@@ -96,7 +96,7 @@ object WebErrorEvent {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEvent.htmlJavaFX WebEvent]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEvent.htmlJavaFXWebEvent]].
  *
  * @constructor
  *   Creates a new ScalaFX WebErrorEvent from its JavaFX equivalent.

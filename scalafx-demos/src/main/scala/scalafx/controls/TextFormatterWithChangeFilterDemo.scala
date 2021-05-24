@@ -60,7 +60,7 @@ object TextFormatterWithChangeFilterDemo extends JFXApp3 {
         prompt + v.text
       }
     }
-    val filter: Change => Change = { (change: Change) => 
+    val filter: Change => Change = { (change: Change) =>
       if (change.controlNewText.length <= prompt.length) {
         change.text = prompt.substring(change.controlNewText.length)
       }
@@ -77,7 +77,7 @@ object TextFormatterWithChangeFilterDemo extends JFXApp3 {
       text = prompt
       textFormatter = formatter
       onAction = (a: ActionEvent) => {
-        val str = text()
+        val str     = text()
         val message = s"${converter.fromString(str)}\n"
         outputTextArea.text = message + outputTextArea.text()
         text() = ""
@@ -89,10 +89,16 @@ object TextFormatterWithChangeFilterDemo extends JFXApp3 {
         root = new VBox {
           spacing = 6
           padding = Insets(10)
-          children = Seq(new Label("Example of using `TextFormatter` to ensure that the input field includes prompt text \"> \".") { wrapText = true }, new Label("Type message at the prompt. Press \"Enter\" to send."), new BorderPane {
-            top = textField
-            center = outputTextArea
-          })
+          children = Seq(
+            new Label("Example of using `TextFormatter` to ensure that the input field includes prompt text \"> \".") {
+              wrapText = true
+            },
+            new Label("Type message at the prompt. Press \"Enter\" to send."),
+            new BorderPane {
+              top = textField
+              center = outputTextArea
+            }
+          )
         }
       }
     }

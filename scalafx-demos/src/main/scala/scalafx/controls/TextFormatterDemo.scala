@@ -45,14 +45,15 @@ import scalafx.util.converter.FormatStringConverter
 object TextFormatterDemo extends JFXApp3 {
   override def start(): Unit = {
     val infoLabel = new Label {
-      text = "" + "Demonstrates a TextField control with a TextFormatter. Text is formatted as a currency. " + "Move slider or edit the text field content."
+      text =
+        "" + "Demonstrates a TextField control with a TextFormatter. Text is formatted as a currency. " + "Move slider or edit the text field content."
       wrapText = true
       prefHeight = Region.USE_COMPUTED_SIZE
     }
     val slider = new Slider(0, 10000, 1000)
     val textField = {
       val currencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
-      val converter = new FormatStringConverter[Number](currencyFormat)
+      val converter      = new FormatStringConverter[Number](currencyFormat)
       new TextField {
         textFormatter = new TextFormatter(converter) { value <==> slider.value }
         maxWidth = 140

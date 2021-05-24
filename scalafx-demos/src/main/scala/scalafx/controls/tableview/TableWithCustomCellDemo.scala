@@ -39,36 +39,44 @@ import scalafx.scene.shape.Circle
 /** Illustrates use of TableColumn CellFactory to do custom rendering of a TableCell. */
 object TableWithCustomCellDemo extends JFXApp3 {
   override def start(): Unit = {
-    val characters = ObservableBuffer[Person](new Person("Peggy", "Sue", "555-6798", Color.Violet), new Person("Rocky", "Raccoon", "555-6798", Color.GreenYellow), new Person("Bungalow ", "Bill", "555-9275", Color.DarkSalmon))
+    val characters = ObservableBuffer[Person](
+      new Person("Peggy", "Sue", "555-6798", Color.Violet),
+      new Person("Rocky", "Raccoon", "555-6798", Color.GreenYellow),
+      new Person("Bungalow ", "Bill", "555-9275", Color.DarkSalmon)
+    )
     stage = new PrimaryStage {
       title = "TableView with custom color cell"
       scene = new Scene {
         root = new TableView[Person](characters) {
-          columns ++= List(new TableColumn[Person, String] {
-            text = "First Name"
-            cellValueFactory = {
-              _.value.firstName
-            }
-            prefWidth = 100
-          }, new TableColumn[Person, String]() {
-            text = "Last Name"
-            cellValueFactory = {
-              _.value.lastName
-            }
-            prefWidth = 100
-          }, new TableColumn[Person, Color] {
-            text = "Favorite Color"
-            cellValueFactory = {
-              _.value.favoriteColor
-            }
-            cellFactory = (tc, color) => {
-              tc.graphic = new Circle {
-                fill = color
-                radius = 8
+          columns ++= List(
+            new TableColumn[Person, String] {
+              text = "First Name"
+              cellValueFactory = {
+                _.value.firstName
               }
+              prefWidth = 100
+            },
+            new TableColumn[Person, String]() {
+              text = "Last Name"
+              cellValueFactory = {
+                _.value.lastName
+              }
+              prefWidth = 100
+            },
+            new TableColumn[Person, Color] {
+              text = "Favorite Color"
+              cellValueFactory = {
+                _.value.favoriteColor
+              }
+              cellFactory = (tc, color) => {
+                tc.graphic = new Circle {
+                  fill = color
+                  radius = 8
+                }
+              }
+              prefWidth = 100
             }
-            prefWidth = 100
-          })
+          )
         }
       }
     }

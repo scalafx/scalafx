@@ -34,7 +34,7 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
 /**
- * Example for [[https://github.com/scalafx/scalafx/issues/16Issue 16]] provided by "Alain.Fa...@gmail.com".
+ * Example for [[https://github.com/scalafx/scalafx/issues/16Issue16]] provided by "Alain.Fa...@gmail.com".
  *
  * When replacing the javafx.scene.paint.Color import by its ScalaFX counterpart, the rectangle would be Blue forever.
  * The rectangle should normally be RED, but when mouse hovers above it it should change color to GREEN.

@@ -45,7 +45,7 @@ object LayerTest extends JFXApp3 {
   override def start(): Unit = {
     val layer1 = new Canvas(300, 250)
     val layer2 = new Canvas(300, 250)
-    val gc1 = layer1.graphicsContext2D
+    val gc1    = layer1.graphicsContext2D
     gc1.fill = Color.Green
     gc1.fillOval(50, 50, 20, 20)
     val gc2 = layer2.graphicsContext2D
@@ -59,15 +59,17 @@ object LayerTest extends JFXApp3 {
     }
     val layer1Title = "Layer 1 is Green"
     val layer2Title = "Layer 2 is Blue"
-    val cb = new ChoiceBox[String] { items = ObservableBuffer(layer1Title, layer2Title) }
+    val cb          = new ChoiceBox[String] { items = ObservableBuffer(layer1Title, layer2Title) }
     val selectionModel: SelectionModel[String] = cb.selectionModel.get
-    selectionModel.selectedItem.onChange { (ov: Any, olaValue: Any, newValue: Any) => {
-      if (newValue == layer1Title) {
-        layer1.toFront()
-      } else if (newValue == layer2Title) {
-        layer2.toFront()
+    selectionModel.selectedItem.onChange { (ov: Any, olaValue: Any, newValue: Any) =>
+      {
+        if (newValue == layer1Title) {
+          layer1.toFront()
+        } else if (newValue == layer2Title) {
+          layer2.toFront()
+        }
       }
-    } }
+    }
     cb.value = layer1Title
     val borderPane = new BorderPane()
     borderPane.top = cb

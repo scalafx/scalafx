@@ -57,7 +57,7 @@ object ReadOnlyBufferProperty {
  *   TC ReadOnlyBufferProperty
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyListProperty.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyListProperty.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class ReadOnlyBufferProperty[E <: Any](override val delegate: jfxbp.ReadOnlyListProperty[E])
     extends BufferExpression[E](delegate)

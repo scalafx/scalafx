@@ -47,7 +47,8 @@ object TextAreaTest extends JFXApp3 {
       alignment = Pos.Center
       prefHeight <== stage.scene().height
       hgrow = Priority.Never
-      children = List(new TextAreaControls(textArea), new TextInputControlControls(textArea), new ControlControls(textArea))
+      children =
+        List(new TextAreaControls(textArea), new TextInputControlControls(textArea), new ControlControls(textArea))
     }
     val mainPane = new BorderPane {
       top = textArea

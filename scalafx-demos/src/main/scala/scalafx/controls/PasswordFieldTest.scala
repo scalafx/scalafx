@@ -44,7 +44,12 @@ object PasswordFieldTest extends JFXApp3 {
       fillWidth = true
       alignment = Pos.Center
       hgrow = Priority.Never
-      children = Seq(new PasswordFieldControls(passwordField), new TextFieldControls(passwordField), new TextInputControlControls(passwordField), new ControlControls(passwordField))
+      children = Seq(
+        new PasswordFieldControls(passwordField),
+        new TextFieldControls(passwordField),
+        new TextInputControlControls(passwordField),
+        new ControlControls(passwordField)
+      )
     }
     val mainPane: BorderPane = new BorderPane {
       top = new FlowPane { children = List(passwordField) }

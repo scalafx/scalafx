@@ -40,32 +40,36 @@ object HelloJavaFX extends JFXApp3 {
       height = 450
       scene = new Scene {
         fill = Color.LightGreen
-        content = List(new Rectangle {
-          x = 25
-          y = 40
-          width = 100
-          height = 50
-          fill = Color.Red
-          stroke = Color.Blue
-          strokeWidth = 5
-        }, new Circle {
-          centerX = 30
-          centerY = 50
-          radius = 25
-          fill = Color.Blue
-          stroke = Color.Blue.brighter
-          strokeWidth = 3
-        }, new Arc {
-          centerX = 100
-          centerY = 50
-          radiusX = 25
-          radiusY = 50
-          startAngle = 135
-          length = 45
-          fill = Color.Black
-          stroke = Color.Yellow
-          strokeWidth = 3
-        })
+        content = List(
+          new Rectangle {
+            x = 25
+            y = 40
+            width = 100
+            height = 50
+            fill = Color.Red
+            stroke = Color.Blue
+            strokeWidth = 5
+          },
+          new Circle {
+            centerX = 30
+            centerY = 50
+            radius = 25
+            fill = Color.Blue
+            stroke = Color.Blue.brighter
+            strokeWidth = 3
+          },
+          new Arc {
+            centerX = 100
+            centerY = 50
+            radiusX = 25
+            radiusY = 50
+            startAngle = 135
+            length = 45
+            fill = Color.Black
+            stroke = Color.Yellow
+            strokeWidth = 3
+          }
+        )
       }
     }
   }

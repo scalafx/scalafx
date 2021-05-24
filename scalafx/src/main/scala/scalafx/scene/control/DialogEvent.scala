@@ -90,7 +90,7 @@ object DialogEvent {
  *   TC DialogEvent
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/DialogEvent.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/DialogEvent.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class DialogEvent(override val delegate: jfxsc.DialogEvent)
     extends Event(delegate)

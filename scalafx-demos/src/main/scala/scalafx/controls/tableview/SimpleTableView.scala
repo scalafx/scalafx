@@ -35,24 +35,28 @@ import scalafx.scene.control.{TableColumn, TableView}
 
 object SimpleTableView extends JFXApp3 {
   override def start(): Unit = {
-    val characters = ObservableBuffer[Person](new Person("Peggy", "Sue", "555-6798"), new Person("Rocky", "Raccoon", "555-6798"))
+    val characters =
+      ObservableBuffer[Person](new Person("Peggy", "Sue", "555-6798"), new Person("Rocky", "Raccoon", "555-6798"))
     stage = new PrimaryStage {
       title = "Simple Table View"
       scene = new Scene {
         content = new TableView[Person](characters) {
-          columns ++= List(new TableColumn[Person, String] {
-            text = "First Name"
-            cellValueFactory = {
-              _.value.firstName
+          columns ++= List(
+            new TableColumn[Person, String] {
+              text = "First Name"
+              cellValueFactory = {
+                _.value.firstName
+              }
+              prefWidth = 180
+            },
+            new TableColumn[Person, String]() {
+              text = "Last Name"
+              cellValueFactory = {
+                _.value.lastName
+              }
+              prefWidth = 180
             }
-            prefWidth = 180
-          }, new TableColumn[Person, String]() {
-            text = "Last Name"
-            cellValueFactory = {
-              _.value.lastName
-            }
-            prefWidth = 180
-          })
+          )
         }
       }
     }

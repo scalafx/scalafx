@@ -55,7 +55,7 @@ object WebEngine {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEngine.htmlJavaFX WebEngine]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebEngine.htmlJavaFXWebEngine]].
  *
  * @constructor
  *   Creates a new WebEngine from its JavaFX counterpart.

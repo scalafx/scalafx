@@ -51,7 +51,7 @@ object HTMLEditor {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/HTMLEditor.htmlJavaFX HTMLEditor]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/HTMLEditor.htmlJavaFXHTMLEditor]]
  *
  * @constructor
  *   Creates a new HTMLEditor from its JavaFX counterpart.

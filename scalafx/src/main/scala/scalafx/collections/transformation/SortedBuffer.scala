@@ -59,7 +59,7 @@ object SortedBuffer {
  *   TC SortedList
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections.transformation/SortedList.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections.transformation/SortedList.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class SortedBuffer[E](override val delegate: jfxct.SortedList[E])
     extends TransformationBuffer[E, E](delegate)

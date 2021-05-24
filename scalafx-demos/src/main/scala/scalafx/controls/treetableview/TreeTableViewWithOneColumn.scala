@@ -35,7 +35,7 @@ import scalafx.scene.control.{TreeItem, TreeTableColumn, TreeTableView}
 
 /**
  * TreeTableView with One Column. ScalaFX version of example 15-1 in JavaFX
- * [[https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/tree-table-view.htmTree Table View tutorial]].
+ * [[https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/tree-table-view.htmTreeTable View tutorial]].
  */
 object TreeTableViewWithOneColumn extends JFXApp3 {
   override def start(): Unit = {
@@ -49,8 +49,8 @@ object TreeTableViewWithOneColumn extends JFXApp3 {
         root = new TreeTableView(rootNode) {
           columns += (new TreeTableColumn[String, String]("Column") {
             prefWidth = 150
-            cellValueFactory = {
-              p => p.value.value
+            cellValueFactory = { p =>
+              p.value.value
             }
           })
           prefWidth = 152

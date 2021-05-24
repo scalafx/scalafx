@@ -56,7 +56,7 @@ object MapExpression {
  *   TC MapExpression
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/MapExpression.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/MapExpression.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class MapExpression[K, V](val delegate: jfxbb.MapExpression[K, V]) {
 

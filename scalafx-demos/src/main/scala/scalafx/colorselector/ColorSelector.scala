@@ -50,13 +50,13 @@ import scala.collection.Seq
 
 object ColorSelector extends JFXApp3 {
   override def start(): Unit = {
-    val controlRed = new SliderControl("R") { value = 255 }
-    val controlGreen = new SliderControl("G") { value = 255 }
-    val controlBlue = new SliderControl("B") { value = 255 }
-    val controlAlpha = new SliderControl("A") { value = 255 }
-    lazy val allControls = List(controlRed, controlGreen, controlBlue, controlAlpha)
-    val currentColor = ObjectProperty(this, "Color", Color.White)
-    val synchronizedValue = new DoubleProperty()
+    val controlRed           = new SliderControl("R") { value = 255 }
+    val controlGreen         = new SliderControl("G") { value = 255 }
+    val controlBlue          = new SliderControl("B") { value = 255 }
+    val controlAlpha         = new SliderControl("A") { value = 255 }
+    lazy val allControls     = List(controlRed, controlGreen, controlBlue, controlAlpha)
+    val currentColor         = ObjectProperty(this, "Color", Color.White)
+    val synchronizedValue    = new DoubleProperty()
     val synchronizedControls = new ObservableBuffer[SliderControl]
     def synchronizeValues(buffer: ObservableBuffer[SliderControl], changes: Seq[Change[SliderControl]]): Unit = {
       changes.head match {
@@ -67,7 +67,9 @@ object ColorSelector extends JFXApp3 {
         case Remove(pos, removed) =>
           removed.last.value unbind synchronizedValue
         case otherChange =>
-          throw new UnsupportedOperationException("Only add and remove defined for the ColorSelector SliderControl sync")
+          throw new UnsupportedOperationException(
+            "Only add and remove defined for the ColorSelector SliderControl sync"
+          )
       }
     }
     synchronizedControls.onChange((buffer, changes) => synchronizeValues(buffer, changes))
@@ -104,7 +106,8 @@ object ColorSelector extends JFXApp3 {
     }
     def changeColor(): Unit = {
       val newAlphaValue = if (controlAlpha.disabled.value) 1.0d else controlAlpha.value.toDouble / colorselector.Max
-      currentColor() = Color.rgb(controlRed.value.toInt, controlGreen.value.toInt, controlBlue.value.toInt, newAlphaValue)
+      currentColor() =
+        Color.rgb(controlRed.value.toInt, controlGreen.value.toInt, controlBlue.value.toInt, newAlphaValue)
     }
 
     def randomizeColors(): Unit = {
@@ -112,7 +115,10 @@ object ColorSelector extends JFXApp3 {
         synchronizedValue() = math.random * colorselector.Max
       }
       if (synchronizedControls.size < 4) {
-        allControls.filterNot(_.selectedControl.value).filterNot(_.disabled.value).foreach(_.value() = math.random * colorselector.Max)
+        allControls
+          .filterNot(_.selectedControl.value)
+          .filterNot(_.disabled.value)
+          .foreach(_.value() = math.random * colorselector.Max)
       }
     }
     val txfColorValue = new TextField {
@@ -149,7 +155,11 @@ object ColorSelector extends JFXApp3 {
         }
       }
     }
-    currentColor.onChange(rectangleRegion.setStyle("-fx-background-color: " + RgbFormatter.format(currentColor(), !chbDisableAlpha.selected.value)))
+    currentColor.onChange(
+      rectangleRegion.setStyle(
+        "-fx-background-color: " + RgbFormatter.format(currentColor(), !chbDisableAlpha.selected.value)
+      )
+    )
     controlRed.value.onChange {
       changeColor()
       controlRed.changeColor(Color.rgb(controlRed.value.value.toInt, 0, 0), getForegroundColor(controlRed.value.value))
@@ -158,10 +168,16 @@ object ColorSelector extends JFXApp3 {
     controlRed.changeColor(Color.rgb(controlRed.value.value.toInt, 0, 0), getForegroundColor(controlRed.value.value))
     controlGreen.value.onChange {
       changeColor()
-      controlGreen.changeColor(Color.rgb(0, controlGreen.value.value.toInt, 0), getForegroundColor(controlGreen.value.value))
+      controlGreen.changeColor(
+        Color.rgb(0, controlGreen.value.value.toInt, 0),
+        getForegroundColor(controlGreen.value.value)
+      )
     }
     controlGreen.selectedControl.onChange(controlSelected(controlGreen))
-    controlGreen.changeColor(Color.rgb(0, controlGreen.value.value.toInt, 0), getForegroundColor(controlGreen.value.value))
+    controlGreen.changeColor(
+      Color.rgb(0, controlGreen.value.value.toInt, 0),
+      getForegroundColor(controlGreen.value.value)
+    )
     controlBlue.value.onChange {
       changeColor()
       controlBlue.changeColor(Color.rgb(0, 0, controlBlue.value.value.toInt), Color.White)
@@ -172,12 +188,12 @@ object ColorSelector extends JFXApp3 {
     controlAlpha.selectedControl.onChange(controlSelected(controlAlpha))
     controlAlpha.disable.onChange {
       if (controlAlpha.selectedControl.value) {
-        if (controlAlpha.disable.value) synchronizedControls.remove(controlAlpha) else synchronizedControls.add(controlAlpha)
+        if (controlAlpha.disable.value) synchronizedControls.remove(controlAlpha)
+        else synchronizedControls.add(controlAlpha)
       }
       changeColor()
       formatColor()
     }
-
 
     val rectangleRowsConstraint = new RowConstraints {
       vgrow = Priority.Always
@@ -207,45 +223,67 @@ object ColorSelector extends JFXApp3 {
     val pnlMain = new GridPane {
       hgap = 5.0d
       vgap = 5.0d
-      rowConstraints = List(rectangleRowsConstraint, otherRowsConstraint, otherRowsConstraint, otherRowsConstraint, otherRowsConstraint)
+      rowConstraints = List(
+        rectangleRowsConstraint,
+        otherRowsConstraint,
+        otherRowsConstraint,
+        otherRowsConstraint,
+        otherRowsConstraint
+      )
       columnConstraints = List(column0Constraint, column1Constraint)
       padding = colorselector.insets
       add(rectangleRegion, 0, 0, 3, 1)
       add(controlRed, 0, 1)
-      add(new Label {
-        alignmentInParent = Pos.TopRight
-        labelFor = cmbWebColor
-        text = "Web Color"
-        textAlignment = TextAlignment.Right
-        wrapText = true
-      }, 1, 1)
+      add(
+        new Label {
+          alignmentInParent = Pos.TopRight
+          labelFor = cmbWebColor
+          text = "Web Color"
+          textAlignment = TextAlignment.Right
+          wrapText = true
+        },
+        1,
+        1
+      )
       add(cmbWebColor, 2, 1)
       add(controlGreen, 0, 2)
-      add(new Label {
-        alignmentInParent = Pos.TopRight
-        labelFor = txfColorValue
-        text = "Color Value"
-        textAlignment = TextAlignment.Right
-        wrapText = true
-      }, 1, 2)
+      add(
+        new Label {
+          alignmentInParent = Pos.TopRight
+          labelFor = txfColorValue
+          text = "Color Value"
+          textAlignment = TextAlignment.Right
+          wrapText = true
+        },
+        1,
+        2
+      )
       add(txfColorValue, 2, 2)
       add(controlBlue, 0, 3)
-      add(new Label {
-        alignmentInParent = Pos.TopRight
-        labelFor = cmbColorFormat
-        text = "Color Format"
-        textAlignment = TextAlignment.Right
-        wrapText = true
-      }, 1, 3)
+      add(
+        new Label {
+          alignmentInParent = Pos.TopRight
+          labelFor = cmbColorFormat
+          text = "Color Format"
+          textAlignment = TextAlignment.Right
+          wrapText = true
+        },
+        1,
+        3
+      )
       add(cmbColorFormat, 2, 3)
       add(controlAlpha, 0, 4)
-      add(new Label {
-        alignmentInParent = Pos.TopRight
-        labelFor = chbDisableAlpha
-        text = "Disable Alpha"
-        textAlignment = TextAlignment.Right
-        wrapText = true
-      }, 1, 4)
+      add(
+        new Label {
+          alignmentInParent = Pos.TopRight
+          labelFor = chbDisableAlpha
+          text = "Disable Alpha"
+          textAlignment = TextAlignment.Right
+          wrapText = true
+        },
+        1,
+        4
+      )
       add(chbDisableAlpha, 2, 4)
     }
     val pnlMain0 = new AnchorPane {

@@ -54,8 +54,8 @@ object RectangleDrawingDemo extends JFXApp3 {
   override def start(): Unit = {
     object Updater {
       private var _start = new Point2D(0, 0)
-      private var _end = new Point2D(0, 0)
-      val rectangle = new Rectangle { fill = Color.Blue }
+      private var _end   = new Point2D(0, 0)
+      val rectangle      = new Rectangle { fill = Color.Blue }
       def update(start: Point2D = _start, end: Point2D = _end): Unit = {
         _start = start
         _end = end
@@ -66,7 +66,7 @@ object RectangleDrawingDemo extends JFXApp3 {
       }
     }
     val pane = new Pane { children += Updater.rectangle }
-    pane.handleEvent(MouseEvent.Any) { (me: MouseEvent) => 
+    pane.handleEvent(MouseEvent.Any) { (me: MouseEvent) =>
       me.eventType match {
         case MouseEvent.MousePressed =>
           val p = new Point2D(me.x, me.y)

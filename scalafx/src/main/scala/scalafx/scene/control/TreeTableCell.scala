@@ -74,7 +74,7 @@ object TreeTableCell {
  *   TTC TreeTableCell
  * @define
  *   URL0
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableCell.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableCell.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new jfxsc.TreeTableCell[S, T])
     extends IndexedCell[T](delegate)

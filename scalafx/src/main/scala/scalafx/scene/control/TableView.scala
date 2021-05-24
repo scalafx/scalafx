@@ -43,13 +43,13 @@ import scala.language.implicitConversions
  * $OBJCOMPSTA$TV$OBJCOMPEND
  *
  * @define
- *   OBJCOMPSTA Object companion for [[scalafx.scene.control@define OBJCOMPEND]].
+ *   OBJCOMPSTA Object companion for [[scalafx.scene.control@defineOBJCOMPEND]].
  * @define
  *   JFX JavaFX
  * @define
  *   SFX ScalaFX
  * @define
- *   WRAPSTA Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/@define WRAPEND]].
+ *   WRAPSTA Wraps a $JFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/@defineWRAPEND]].
  * @define
  *   CONSSTA Creates a new $SFX
  * @define

@@ -37,11 +37,13 @@ import scalafx.scene.paint.Color
 
 object ComboBoxDemo extends JFXApp3 {
   override def start(): Unit = {
-    val comboBox = new ComboBox[String]
+    val comboBox         = new ComboBox[String]
     val comboBoxControls = new ComboBoxControls(comboBox)
     val mainPane = new BorderPane {
       top = comboBox
-      center = new VBox { children = List(comboBoxControls, new ComboBoxBaseControls[String](comboBox), new ControlControls(comboBox)) }
+      center = new VBox {
+        children = List(comboBoxControls, new ComboBoxBaseControls[String](comboBox), new ControlControls(comboBox))
+      }
       vgrow = Priority.Always
       hgrow = Priority.Always
     }

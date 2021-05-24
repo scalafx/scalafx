@@ -65,7 +65,7 @@ object WebView {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebView.htmlJavaFX WebView]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/WebView.htmlJavaFXWebView]].
  *
  * @constructor
  *   Creates a new WebView from its JavaFX counterpart.

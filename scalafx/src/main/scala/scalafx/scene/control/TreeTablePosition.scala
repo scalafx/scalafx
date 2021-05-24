@@ -74,7 +74,7 @@ object TreeTablePosition {
  *   TTP TreeTablePosition
  * @define
  *   URL0
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TTP.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TTP.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class TreeTablePosition[S, T](override val delegate: jfxsc.TreeTablePosition[S, T])
     extends TablePositionBase[jfxsc.TreeTableColumn[S, T]](delegate)

@@ -88,7 +88,7 @@ object ClipboardContent {
  *   )
  * }}}
  *
- * Wraps a [[$JFX$URL0 $FC]].
+ * Wraps a [[$JFX$URL0$FC]].
  *
  * @constructor
  *   Creates a new $FC from a $JFX one.

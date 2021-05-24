@@ -59,7 +59,7 @@ object StyleOrigin extends SFXEnumDelegateCompanion[jfxcss.StyleOrigin, StyleOri
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/StyleOrigin.htmlJavaFX StyleOrigin]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/StyleOrigin.htmlJavaFXStyleOrigin]].
  *
  * @since
  *   8.0

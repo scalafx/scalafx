@@ -92,7 +92,7 @@ trait EventHandlerDelegate {
   }
 
   /**
-   * Trait implementing [[http://spray.io/blog/2012-12-13-the-magnet-pattern/Magnet Pattern]] to avoid compilation error
+   * Trait implementing [[http://spray.io/blog/2012-12-13-the-magnet-pattern/MagnetPattern]] to avoid compilation error
    * "ambiguous reference to overloaded definition"
    */
   sealed trait HandlerMagnet[J <: jfxe.Event, S <: SFXDelegate[J]] {
@@ -109,7 +109,7 @@ trait EventHandlerDelegate {
   }
 
   /**
-   * Companion object implementing Magnet Pattern [[http://spray.io/blog/2012-12-13-the-magnet-pattern/Magnet Pattern]]
+   * Companion object implementing Magnet Pattern [[http://spray.io/blog/2012-12-13-the-magnet-pattern/MagnetPattern]]
    * to avoid compilation error "ambiguous reference to overloaded definition"
    */
   object HandlerMagnet {
@@ -208,7 +208,7 @@ trait EventHandlerDelegate {
   }
 
   /**
-   * Trait implementing [[http://spray.io/blog/2012-12-13-the-magnet-pattern/Magnet Pattern]] to avoid compilation error
+   * Trait implementing [[http://spray.io/blog/2012-12-13-the-magnet-pattern/MagnetPattern]] to avoid compilation error
    * "ambiguous reference to overloaded definition"
    */
   sealed trait FilterMagnet[J <: jfxe.Event, S <: SFXDelegate[J]] {
@@ -225,7 +225,7 @@ trait EventHandlerDelegate {
   }
 
   /**
-   * Companion object implementing Magnet Pattern [[http://spray.io/blog/2012-12-13-the-magnet-pattern/Magnet Pattern]]
+   * Companion object implementing Magnet Pattern [[http://spray.io/blog/2012-12-13-the-magnet-pattern/MagnetPattern]]
    * to avoid compilation error "ambiguous reference to overloaded definition"
    */
   object FilterMagnet {

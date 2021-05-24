@@ -49,7 +49,7 @@ object EventDispatcher {
  *   FC EventDispatcher
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/event/EventDispatcher.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/event/EventDispatcher.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 abstract class EventDispatcher(override val delegate: jfxe.EventDispatcher) extends SFXDelegate[jfxe.EventDispatcher] {
 

@@ -40,7 +40,7 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
 /**
- * Example for ScalaFX [[https://github.com/scalafx/scalafx/issues/14Issue 14]].
+ * Example for ScalaFX [[https://github.com/scalafx/scalafx/issues/14Issue14]].
  *
  * The example illustrates problem with `ObjectProperty` holding a ScalaFX wrapper, it cannot bind to component
  * properties. In example here we have to use JavaFX `Color` as value type for `ObjectProperty` to able to bind it to

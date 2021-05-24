@@ -56,7 +56,7 @@ object SetBinding {
  *   TC SetBinding
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/SetBinding.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/SetBinding.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class SetBinding[E <: Any](override val delegate: jfxbb.SetBinding[E])
     extends SetExpression(delegate)

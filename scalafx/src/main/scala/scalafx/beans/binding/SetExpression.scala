@@ -56,7 +56,7 @@ object SetExpression {
  *   TC SetExpression
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/SetExpression.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/SetExpression.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class SetExpression[E <: Any](val delegate: jfxbb.SetExpression[E]) {
 

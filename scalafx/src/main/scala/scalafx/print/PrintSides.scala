@@ -54,7 +54,7 @@ object PrintSides extends SFXEnumDelegateCompanion[jfxp.PrintSides, PrintSides] 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintSides.htmlJavaFX PrintSides]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintSides.htmlJavaFXPrintSides]].
  *
  * @since
  *   8.0

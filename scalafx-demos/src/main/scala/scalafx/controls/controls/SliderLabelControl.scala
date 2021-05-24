@@ -112,9 +112,9 @@ class SliderLabelControl(property: DoubleProperty) extends FlowPane {
 object SliderLabelControlDemo extends JFXApp3 {
   override def start(): Unit = {
     val x: java.lang.Double = 5.0d
-    val value = new IntegerProperty(1.asInstanceOf[java.lang.Object], "value")
-    val lblValue = new Label { text <== value.asString("%2d") }
-    val sldValue = new SliderLabelControl(value)
+    val value               = new IntegerProperty(1.asInstanceOf[java.lang.Object], "value")
+    val lblValue            = new Label { text <== value.asString("%2d") }
+    val sldValue            = new SliderLabelControl(value)
     stage = new PrimaryStage {
       height = 100
       width = 200

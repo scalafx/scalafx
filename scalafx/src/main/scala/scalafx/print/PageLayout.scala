@@ -50,7 +50,7 @@ object PageLayout {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PageLayout.htmlJavaFX PageLayout]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PageLayout.htmlJavaFXPageLayout]].
  *
  * @constructor
  *   Creates a new ScalaFX PageLayout from its JavaFX counterpart.

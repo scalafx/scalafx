@@ -114,7 +114,7 @@ object ButtonType {
  *   TC ButtonType
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ButtonType.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ButtonType.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class ButtonType(override val delegate: jfxsc.ButtonType) extends SFXDelegate[jfxsc.ButtonType] {
 

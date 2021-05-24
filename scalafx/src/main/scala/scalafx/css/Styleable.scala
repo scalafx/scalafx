@@ -53,7 +53,7 @@ object Styleable {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/Styleable.htmlJavaFX Styleable]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/Styleable.htmlJavaFXStyleable]].
  *
  * @since
  *   8.0

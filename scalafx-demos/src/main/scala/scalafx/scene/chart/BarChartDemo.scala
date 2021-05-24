@@ -39,16 +39,22 @@ object BarChartDemo extends JFXApp3 {
       scene = new Scene {
         root = new BarChart(CategoryAxis(), NumberAxis("Y Values")) {
           title = "Bar Chart"
-          data = ObservableBuffer(xySeries("Apples", Seq(567, 1292, 1290)), xySeries("Lemons", Seq(956, 1665, 2559)), xySeries("Oranges", Seq(1154, 1927, 2774)))
+          data = ObservableBuffer(
+            xySeries("Apples", Seq(567, 1292, 1290)),
+            xySeries("Lemons", Seq(956, 1665, 2559)),
+            xySeries("Oranges", Seq(1154, 1927, 2774))
+          )
         }
       }
     }
     def xySeries(name: String, data: Seq[Int]) = {
       val series = years zip data
-      XYChart.Series[String, Number](name, ObservableBuffer.from(series.map({
-        case (x, y) =>
+      XYChart.Series[String, Number](
+        name,
+        ObservableBuffer.from(series.map({ case (x, y) =>
           XYChart.Data[String, Number](x, y)
-      })))
+        }))
+      )
     }
   }
 }

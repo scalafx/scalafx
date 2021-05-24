@@ -58,7 +58,7 @@ object BufferExpression {
  *   TC BufferExpression
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/ListExpression.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/ListExpression.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class BufferExpression[E <: Any](val delegate: jfxbb.ListExpression[E]) {
 

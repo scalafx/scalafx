@@ -38,10 +38,18 @@ import scalafx.scene.paint.Color
 
 object MenuTest extends JFXApp3 {
   override def start(): Unit = {
-    val history = new VBox()
+    val history                              = new VBox()
     def printEvent(eventStr: String)(): Unit = history.children += (new Label(eventStr))
     val menu = new Menu("File") {
-      items = List(new MenuItem("Open") { onAction = (ae: ActionEvent) => history.children += (new Label("Selected item `Open`")) }, new SeparatorMenuItem, new MenuItem("Close") { onAction = (ae: ActionEvent) => history.children += (new Label("Selected item `Close`")) })
+      items = List(
+        new MenuItem("Open") {
+          onAction = (ae: ActionEvent) => history.children += (new Label("Selected item `Open`"))
+        },
+        new SeparatorMenuItem,
+        new MenuItem("Close") {
+          onAction = (ae: ActionEvent) => history.children += (new Label("Selected item `Close`"))
+        }
+      )
       onShowing = _ => printEvent("on showing")()
       onShown = _ => printEvent("on shown")()
       onHiding = _ => printEvent("on hiding")()

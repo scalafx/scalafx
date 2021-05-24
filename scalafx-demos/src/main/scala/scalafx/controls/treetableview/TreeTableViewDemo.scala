@@ -53,8 +53,20 @@ object TreeTableViewDemo extends JFXApp3 {
       cellValueFactory = p => p.value.value.value.model
       prefWidth = 120
     }
-    val mercedes = new TreeItem(new Car("Mercedes", "...")) { children = Seq(new TreeItem(new Car("Mercedes", "SL500")), new TreeItem(new Car("Mercedes", "SL500 AMG")), new TreeItem(new Car("Mercedes", "CLA 200"))) }
-    val audi = new TreeItem(new Car("Audi", "...")) { children = Seq(new TreeItem(new Car("Audi", "A1")), new TreeItem(new Car("Audi", "A5")), new TreeItem(new Car("Audi", "A7"))) }
+    val mercedes = new TreeItem(new Car("Mercedes", "...")) {
+      children = Seq(
+        new TreeItem(new Car("Mercedes", "SL500")),
+        new TreeItem(new Car("Mercedes", "SL500 AMG")),
+        new TreeItem(new Car("Mercedes", "CLA 200"))
+      )
+    }
+    val audi = new TreeItem(new Car("Audi", "...")) {
+      children = Seq(
+        new TreeItem(new Car("Audi", "A1")),
+        new TreeItem(new Car("Audi", "A5")),
+        new TreeItem(new Car("Audi", "A7"))
+      )
+    }
     stage = new PrimaryStage {
       title = "TreeTableView CellFactory Demo"
       icons += (new Image("/scalafx/sfx.png"))

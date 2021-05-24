@@ -86,7 +86,7 @@ object PickingDemo extends JFXApp3 {
         angle <== angleY
         axis = Rotate.YAxis
       }
-      var anchorX: Double = 0
+      var anchorX: Double      = 0
       var anchorAngleY: Double = 0
       group.transforms = Seq(yRotate)
       scene.onMousePressed = (event: MouseEvent) => {

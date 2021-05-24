@@ -36,7 +36,7 @@ import scalafx.scene.paint.Color
 
 object ProgressIndicatorTest extends JFXApp3 {
   override def start(): Unit = {
-    val progressIndicator = new ProgressIndicator
+    val progressIndicator           = new ProgressIndicator
     val progressIndicatorController = new ProgressIndicatorControls(progressIndicator)
     val mainPane = new BorderPane {
       top = progressIndicator

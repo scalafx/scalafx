@@ -81,11 +81,11 @@ object ScalaFX_Controls_01 extends JFXApp3 {
       wrapText = true
       translateY = 50
       prefWidth = 100
-      onMouseEntered = { _ => 
+      onMouseEntered = { _ =>
         scaleX = 1.5d
         scaleY = 1.5d
       }
-      onMouseExited = { _ => 
+      onMouseExited = { _ =>
         scaleX = 1
         scaleY = 1
       }

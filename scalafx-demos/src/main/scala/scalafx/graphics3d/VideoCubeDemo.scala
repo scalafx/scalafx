@@ -53,24 +53,35 @@ import scala.language.postfixOps
 object VideoCubeDemo extends JFXApp3 {
   override def start(): Unit = {
     var animation: Timeline = null
-    var root = new Group
+    var root                = new Group
     stage = new PrimaryStage {
       scene = new Scene(root, 800, 600, true, SceneAntialiasing.Balanced) { fill = Color.Black }
       resizable = false
       title = "Graphics 3D Video Cube Demo in ScalaFX"
     }
     val folderSysProperty = "scalafx.graphics3d.VideoCubeDemo.folder"
-    val folderOption = Option[String](System.getProperty(folderSysProperty))
+    val folderOption      = Option[String](System.getProperty(folderSysProperty))
     val folder = folderOption match {
       case Some(folderName) =>
         val file = new File(folderName)
-        if (file.exists() && file.isDirectory) file else throw new IllegalArgumentException("System property `" + folderSysProperty + " = " + folderName + "` " + "has to point to an existing directory.")
+        if (file.exists() && file.isDirectory) file
+        else
+          throw new IllegalArgumentException(
+            "System property `" + folderSysProperty + " = " + folderName + "` " + "has to point to an existing directory."
+          )
       case None =>
         throw new IllegalArgumentException("System property `" + folderSysProperty + "` is not defined.")
     }
-    val vidFiles = List("FLIGHT Trailer 2012 Denzel Washington Movie - Official [HD].mp4", "LOOPER Trailer 2012 Bruce Willis Movie - Official [HD].mp4", "PROMETHEUS Trailer 2 - 2012 Movie - Official [HD].mp4", "RESIDENT EVIL 5 Retribution Trailer 2 - 2012 Movie - Official.mp4", "TED Movie Trailer 2012 - Official [HD].mp4", "THE HOBBIT Trailer - 2012 Movie - Official [HD].mp4")
-    val mediaPlayers = vidFiles.map { filename => 
-      val file = new File(folder, filename)
+    val vidFiles = List(
+      "FLIGHT Trailer 2012 Denzel Washington Movie - Official [HD].mp4",
+      "LOOPER Trailer 2012 Bruce Willis Movie - Official [HD].mp4",
+      "PROMETHEUS Trailer 2 - 2012 Movie - Official [HD].mp4",
+      "RESIDENT EVIL 5 Retribution Trailer 2 - 2012 Movie - Official.mp4",
+      "TED Movie Trailer 2012 - Official [HD].mp4",
+      "THE HOBBIT Trailer - 2012 Movie - Official [HD].mp4"
+    )
+    val mediaPlayers = vidFiles.map { filename =>
+      val file  = new File(folder, filename)
       val media = new Media(file.toURI.toURL.toExternalForm)
       new MediaPlayer(media) {
         volume = 0.5d
@@ -85,19 +96,24 @@ object VideoCubeDemo extends JFXApp3 {
       c1.translateY = -200
       animation = new Timeline {
         cycleCount = Timeline.Indefinite
-        keyFrames = Seq(at(0.s) {
-          c1.ry.angle -> 0d
-          c1.rx.angle -> 0d
-          c1.rz.angle -> 0d
-        }, at(4.s) {
-          c1.rx.angle -> 360d
-          c1.ry.angle -> 520d
-        }, at(7.s) {
-          c1.rx.angle -> 360d
-          c1.ry.angle -> 520d
-        }, at(10.s) {
-          c1.rz.angle -> 1080d
-        })
+        keyFrames = Seq(
+          at(0.s) {
+            c1.ry.angle -> 0d
+            c1.rx.angle -> 0d
+            c1.rz.angle -> 0d
+          },
+          at(4.s) {
+            c1.rx.angle -> 360d
+            c1.ry.angle -> 520d
+          },
+          at(7.s) {
+            c1.rx.angle -> 360d
+            c1.ry.angle -> 520d
+          },
+          at(10.s) {
+            c1.rz.angle -> 1080d
+          }
+        )
       }
       new Group(c1)
     }
@@ -117,19 +133,21 @@ object VideoCubeDemo extends JFXApp3 {
     cubeSystem.translateX = 800 / 2
     cubeSystem.translateY = 600 / 2
     stage.getScene.setCamera(new PerspectiveCamera())
-    val lowX = -75
-    val lowY = -75
+    val lowX  = -75
+    val lowY  = -75
     val highX = 900
     val highY = 700
     val starryBackground = new Group {
-      val stars = (1 to 500).map(_ => new Rectangle {
-        x = lowX + scala.math.random * (highX - lowX)
-        y = lowY + scala.math.random * (highY - lowY)
-        val s = 1 + scala.math.random * 3
-        width = s
-        height = s
-        fill = Color.White
-      })
+      val stars = (1 to 500).map(_ =>
+        new Rectangle {
+          x = lowX + scala.math.random * (highX - lowX)
+          y = lowY + scala.math.random * (highY - lowY)
+          val s = 1 + scala.math.random * 3
+          width = s
+          height = s
+          fill = Color.White
+        }
+      )
       children = stars
       translateZ = 100.0d
     }

@@ -71,12 +71,13 @@ object LoginDialogDemo extends JFXApp3 {
       }
       val loginButton = dialog.dialogPane().lookupButton(loginButtonType)
       loginButton.disable = true
-      username.text.onChange {
-        (_, _, newValue) => loginButton.disable = newValue.trim().isEmpty
+      username.text.onChange { (_, _, newValue) =>
+        loginButton.disable = newValue.trim().isEmpty
       }
       dialog.dialogPane().content = grid
       Platform.runLater(username.requestFocus())
-      dialog.resultConverter = dialogButton => if (dialogButton == loginButtonType) Result(username.text(), password.text()) else null
+      dialog.resultConverter = dialogButton =>
+        if (dialogButton == loginButtonType) Result(username.text(), password.text()) else null
       val result = dialog.showAndWait()
       result match {
         case Some(Result(u, p)) =>

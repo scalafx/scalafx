@@ -60,7 +60,7 @@ object PageOrientation extends SFXEnumDelegateCompanion[jfxp.PageOrientation, Pa
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PageOrientation.htmlJavaFX PageOrientation]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PageOrientation.htmlJavaFXPageOrientation]].
  */
 sealed abstract class PageOrientation(override val delegate: jfxp.PageOrientation)
     extends SFXEnumDelegate[jfxp.PageOrientation]

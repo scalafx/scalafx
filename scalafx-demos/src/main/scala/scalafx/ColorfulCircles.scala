@@ -55,61 +55,81 @@ object ColorfulCircles extends JFXApp3 {
       height = 600
       scene = new Scene { _scene =>
         fill = Black
-        content = Seq(new Group {
-          children = Seq(new Rectangle {
+        content = Seq(
+          new Group {
+            children = Seq(
+              new Rectangle {
+                width <== _scene.width
+                height <== _scene.height
+                fill = Black
+              },
+              new Group {
+                val circles = for (i <- 0 until 15) yield new Circle {
+                  radius = 200
+                  fill = White opacity 0.05d
+                  stroke = White opacity 0.2d
+                  strokeWidth = 4
+                  strokeType = Outside
+                }
+                children = circles
+                circlesToAnimate ++= circles
+                effect = new BoxBlur(30, 30, 3)
+              },
+              new Group {
+                val circles = for (i <- 0 until 20) yield new Circle {
+                  radius = 70
+                  fill = White opacity 0.05d
+                  stroke = White opacity 0.1d
+                  strokeWidth = 2
+                  strokeType = Outside
+                }
+                children = circles
+                circlesToAnimate ++= circles
+                effect = new BoxBlur(2, 2, 2)
+              },
+              new Group {
+                val circles = for (i <- 0 until 10) yield new Circle {
+                  radius = 150
+                  fill = White opacity 0.05d
+                  stroke = White opacity 0.16d
+                  strokeWidth = 4
+                  strokeType = Outside
+                }
+                children = circles
+                circlesToAnimate ++= circles
+                effect = new BoxBlur(10, 10, 3)
+              }
+            )
+          },
+          new Rectangle {
             width <== _scene.width
             height <== _scene.height
-            fill = Black
-          }, new Group {
-            val circles = for (i <- 0 until 15) yield new Circle {
-              radius = 200
-              fill = White opacity 0.05d
-              stroke = White opacity 0.2d
-              strokeWidth = 4
-              strokeType = Outside
-            }
-            children = circles
-            circlesToAnimate ++= circles
-            effect = new BoxBlur(30, 30, 3)
-          }, new Group {
-            val circles = for (i <- 0 until 20) yield new Circle {
-              radius = 70
-              fill = White opacity 0.05d
-              stroke = White opacity 0.1d
-              strokeWidth = 2
-              strokeType = Outside
-            }
-            children = circles
-            circlesToAnimate ++= circles
-            effect = new BoxBlur(2, 2, 2)
-          }, new Group {
-            val circles = for (i <- 0 until 10) yield new Circle {
-              radius = 150
-              fill = White opacity 0.05d
-              stroke = White opacity 0.16d
-              strokeWidth = 4
-              strokeType = Outside
-            }
-            children = circles
-            circlesToAnimate ++= circles
-            effect = new BoxBlur(10, 10, 3)
-          })
-        }, new Rectangle {
-          width <== _scene.width
-          height <== _scene.height
-          fill = new LinearGradient(0, 1, 1, 0, true, NoCycle, Stops(16301397, 12648022, 6159297, 6603512, 12471031, 15556546, 15683660, 15885839))
-          blendMode = Overlay
-        })
+            fill = new LinearGradient(
+              0,
+              1,
+              1,
+              0,
+              true,
+              NoCycle,
+              Stops(16301397, 12648022, 6159297, 6603512, 12471031, 15556546, 15683660, 15885839)
+            )
+            blendMode = Overlay
+          }
+        )
       }
     }
     new Timeline {
       cycleCount = Indefinite
       autoReverse = true
-      keyFrames = (for (circle <- circlesToAnimate.result()) yield Seq(at(0.s) {
-        Set(circle.centerX -> random * 800, circle.centerY -> random * 600)
-      }, at(40.s) {
-        Set(circle.centerX -> random * 800, circle.centerY -> random * 600)
-      })).flatten
+      keyFrames = (for (circle <- circlesToAnimate.result())
+        yield Seq(
+          at(0.s) {
+            Set(circle.centerX -> random * 800, circle.centerY -> random * 600)
+          },
+          at(40.s) {
+            Set(circle.centerX -> random * 800, circle.centerY -> random * 600)
+          }
+        )).flatten
     }.play()
   }
 }

@@ -75,7 +75,7 @@ abstract class MultipleSelectionModel[T](override val delegate: jfxsc.MultipleSe
    * underlying data model). Any duplication of indices will be ignored.
    *
    * If there is already one or more indices selected in this model, calling this method will not clear these selections
-   * - to do so it is necessary to first call clearSelection.
+   *   - to do so it is necessary to first call clearSelection.
    *
    * The last valid value given will become the selected index / selected item.
    */
@@ -91,7 +91,7 @@ abstract class MultipleSelectionModel[T](override val delegate: jfxsc.MultipleSe
    * selected index.
    *
    * If there is already one or more indices selected in this model, calling this method will not clear these selections
-   * - to do so it is necessary to first call clearSelection.
+   *   - to do so it is necessary to first call clearSelection.
    *
    * @param start
    *   The first index to select - this index will be selected.

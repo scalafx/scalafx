@@ -54,7 +54,7 @@ object SFXPanel {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/JFXPanel.htmlJavaFX JFXPanel]]. To use methods
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/JFXPanel.htmlJavaFXJFXPanel]]. To use methods
  * and properties from JComponent, use its delegate.
  *
  * @constructor

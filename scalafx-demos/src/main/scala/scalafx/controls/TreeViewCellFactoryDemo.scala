@@ -38,7 +38,13 @@ import scalafx.scene.control._
 object TreeViewCellFactoryDemo extends JFXApp3 {
   override def start(): Unit = {
     case class Person(firstName: String, lastName: String)
-    val characters = ObservableBuffer[Person](Person("Bungalow ", "Bill"), Person("Dennis", "O\u2019Dell"), Person("Eleanor", "Rigby"), Person("Rocky", "Raccoon"), Person("Peggy", "Sue"))
+    val characters = ObservableBuffer[Person](
+      Person("Bungalow ", "Bill"),
+      Person("Dennis", "O\u2019Dell"),
+      Person("Eleanor", "Rigby"),
+      Person("Rocky", "Raccoon"),
+      Person("Peggy", "Sue")
+    )
     stage = new PrimaryStage {
       title = "TreeView CellFactory Demo"
       scene = new Scene {
@@ -48,11 +54,16 @@ object TreeViewCellFactoryDemo extends JFXApp3 {
           showRoot = false
           root = new TreeItem[Person] {
             expanded = true
-            children = characters.map {
-              p => new TreeItem(p)
+            children = characters.map { p =>
+              new TreeItem(p)
             }.toSeq
           }
-          cellFactory = (v: TreeView[Person]) => new TreeCell[Person] { treeItem.onChange((_, _, p) => text = if (p != null) p.value().firstName + " " + p.value().lastName else null) }
+          cellFactory = (v: TreeView[Person]) =>
+            new TreeCell[Person] {
+              treeItem.onChange((_, _, p) =>
+                text = if (p != null) p.value().firstName + " " + p.value().lastName else null
+              )
+            }
         }
       }
     }

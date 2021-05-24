@@ -81,8 +81,34 @@ object TriangleMeshDemo extends JFXApp3 {
     def tetrahedron(length: Double) = {
       require(length > 0.0d)
       val mesh = new TriangleMesh()
-      mesh.points = Array(0.0f, -(length * sqrt(3.0d) / 3.0d).toFloat, 0.0f, (length / 2.0d).toFloat, (length * sqrt(3.0d) / 6.0d).toFloat, 0.0f, -(length / 2.0d).toFloat, (length * sqrt(3.0d) / 6.0d).toFloat, 0.0f, 0.0f, 0.0f, -(length * sqrt(2.0d / 3.0d)).toFloat)
-      mesh.texCoords = Array(0.5f, 1.0f, 0.75f, (1.0d - sqrt(3.0d) / 4.0d).toFloat, 0.25f, (1.0d - sqrt(3.0d) / 4.0d).toFloat, 1.0f, 1.0f, 0.5f, (1.0d - sqrt(3.0d) / 2.0d).toFloat, 0.0f, 1.0f)
+      mesh.points = Array(
+        0.0f,
+        -(length * sqrt(3.0d) / 3.0d).toFloat,
+        0.0f,
+        (length / 2.0d).toFloat,
+        (length * sqrt(3.0d) / 6.0d).toFloat,
+        0.0f,
+        -(length / 2.0d).toFloat,
+        (length * sqrt(3.0d) / 6.0d).toFloat,
+        0.0f,
+        0.0f,
+        0.0f,
+        -(length * sqrt(2.0d / 3.0d)).toFloat
+      )
+      mesh.texCoords = Array(
+        0.5f,
+        1.0f,
+        0.75f,
+        (1.0d - sqrt(3.0d) / 4.0d).toFloat,
+        0.25f,
+        (1.0d - sqrt(3.0d) / 4.0d).toFloat,
+        1.0f,
+        1.0f,
+        0.5f,
+        (1.0d - sqrt(3.0d) / 2.0d).toFloat,
+        0.0f,
+        1.0f
+      )
       mesh.faces = Array(0, 0, 1, 1, 2, 2, 1, 1, 0, 0, 3, 3, 2, 2, 1, 1, 3, 4, 0, 0, 2, 2, 3, 5)
       mesh.faceSmoothingGroups = Array(1, 2, 4, 8)
       mesh
@@ -93,7 +119,7 @@ object TriangleMeshDemo extends JFXApp3 {
         angle <== angleY
         axis = Rotate.YAxis
       }
-      var anchorX: Double = 0
+      var anchorX: Double      = 0
       var anchorAngleY: Double = 0
       node.transforms = Seq(yRotate)
       scene.onMousePressed = (event: MouseEvent) => {

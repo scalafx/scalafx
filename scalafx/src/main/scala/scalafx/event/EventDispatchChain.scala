@@ -50,7 +50,7 @@ object EventDispatchChain {
  *   FC EventDispatchChain
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/event/EventDispatchChain.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/event/EventDispatchChain.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 abstract class EventDispatchChain(override val delegate: jfxe.EventDispatchChain)
     extends SFXDelegate[jfxe.EventDispatchChain] {

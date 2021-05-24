@@ -109,7 +109,7 @@ object Paper {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Paper.htmlJavaFX Paper]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Paper.htmlJavaFXPaper]].
  *
  * @constructor
  *   Creates a new ScalaFX Paper from its JavaFX counterpart.

@@ -90,7 +90,7 @@ class SortEvent[C](override val delegate: jfxsc.SortEvent[C])
    * @param target
    *   Event Target
    * @see
-   *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SortEvent.html#SortEvent-C-javafx.event.EventTarget-Original Documentation]].
+   *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SortEvent.html#SortEvent-C-javafx.event.EventTarget-OriginalDocumentation]].
    */
   def this(source: C, target: jfxe.EventTarget) = this(new jfxsc.SortEvent[C](source, target))
 

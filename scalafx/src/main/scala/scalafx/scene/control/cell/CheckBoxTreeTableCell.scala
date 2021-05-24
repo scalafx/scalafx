@@ -54,7 +54,7 @@ import scala.language.implicitConversions
  *   SP A Function that, given an object of type $TTC[S, T], will return an ObservableValue[Boolean] that represents
  *   whether the given item is selected or not.
  * @define
- *   FTTC Creates a cell factory for use in a [[scalafx.scene.control.TreeTableCell$ T T C]] cell factory.
+ *   FTTC Creates a cell factory for use in a [[scalafx.scene.control.TreeTableCell$T T C]] cell factory.
  * @define
  *   RETFTTC A Callback that will return a TreeTableCell that is able to work on the type of element contained within
  *   the $TTC.
@@ -68,7 +68,7 @@ import scala.language.implicitConversions
  *   SFX ScalaFX
  * @define
  *   URL0
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/CheckBoxTreeTableCell.html@define ORIGINALDOC Original Documentation]].
+ *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/CheckBoxTreeTableCell.html@defineORIGINALDOC Original Documentation]].
  * @define
  *   SATISFY Added just to satisfy Spec tests.
  */
@@ -171,7 +171,7 @@ object CheckBoxTreeTableCell {
    * @param selectedProperty
    *   $SP
    * @param converter
-   *   A [[scalafx.util.StringConverterS t r i n g C o n v e r t e r]] that, give an object of type T, will return a
+   *   A [[scalafx.util.StringConverterSt r i n g C o n v e r t e r]] that, give an object of type T, will return a
    *   String that can be used to represent the object visually.
    * @return
    *   $RETFTTC
@@ -246,7 +246,7 @@ object CheckBoxTreeTableCell {
  *   SP Function that will return an $OV given an index from the TreeTableColumn.
  * @define
  *   URL0
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/CheckBoxTreeTableCell.html@define ORIGINALDOC Original Documentation]].
+ *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/CheckBoxTreeTableCell.html@defineORIGINALDOC Original Documentation]].
  */
 class CheckBoxTreeTableCell[S, T](
     override val delegate: jfxscc.CheckBoxTreeTableCell[S, T] = new jfxscc.CheckBoxTreeTableCell[S, T]

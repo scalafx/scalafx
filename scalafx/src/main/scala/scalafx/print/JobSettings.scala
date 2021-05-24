@@ -55,7 +55,7 @@ object JobSettings {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/JobSettings.htmlJavaFX JobSettings]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/JobSettings.htmlJavaFXJobSettings]].
  *
  * @constructor
  *   Creates a new ScalaFX JobSettings from its JavaFX counterpart.

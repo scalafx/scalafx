@@ -42,16 +42,22 @@ object StackedBarChartDemo extends JFXApp3 {
         root = new StackedBarChart(xAxis, yAxis) {
           title = "Stacked Bar Chart"
           categoryGap = 25
-          data = ObservableBuffer(xySeries("Region 1", Seq(567, 1292, 1290)), xySeries("Region 2", Seq(956, 1665, 2559)), xySeries("Region 3", Seq(1154, 1927, 2774)))
+          data = ObservableBuffer(
+            xySeries("Region 1", Seq(567, 1292, 1290)),
+            xySeries("Region 2", Seq(956, 1665, 2559)),
+            xySeries("Region 3", Seq(1154, 1927, 2774))
+          )
         }
       }
     }
     def xySeries(name: String, data: Seq[Int]) = {
       val series = years zip data
-      XYChart.Series[String, Number](name, ObservableBuffer.from(series.map({
-        case (x, y) =>
+      XYChart.Series[String, Number](
+        name,
+        ObservableBuffer.from(series.map({ case (x, y) =>
           XYChart.Data[String, Number](x, y)
-      })))
+        }))
+      )
     }
   }
 }

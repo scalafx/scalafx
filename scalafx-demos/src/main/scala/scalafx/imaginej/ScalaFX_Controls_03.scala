@@ -59,7 +59,7 @@ import scalafx.scene.layout.{HBox, VBox}
 
 object ScalaFX_Controls_03 extends JFXApp3 {
   override def start(): Unit = {
-    val iconImageView = new ImageView {}
+    val iconImageView  = new ImageView {}
     val theToggleGroup = new ToggleGroup {}
     theToggleGroup.selectedToggle onChange ({ (_, _, _) =>
       val selectedToggle = theToggleGroup.getSelectedToggle

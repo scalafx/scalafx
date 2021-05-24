@@ -44,7 +44,7 @@ object CheckBoxTreeTableCellDemo extends JFXApp3 {
   override def start(): Unit = {
     class Item(selected_ : Boolean, name_ : String) {
       val selected = new BooleanProperty(this, "selected", selected_)
-      val name = new StringProperty(this, "name", name_)
+      val name     = new StringProperty(this, "name", name_)
     }
     val data = new TreeItem[Item](new Item(false, ""))
     for (i <- 1 to 10) {
@@ -54,19 +54,23 @@ object CheckBoxTreeTableCellDemo extends JFXApp3 {
       title = "Example of a TreeTableView with Check Boxes"
       scene = new Scene {
         root = new TreeTableView[Item](data) {
-          columns ++= List(new TreeTableColumn[Item, String] {
-            text = "Name"
-            cellValueFactory = {
-              _.value.getValue.name
+          columns ++= List(
+            new TreeTableColumn[Item, String] {
+              text = "Name"
+              cellValueFactory = {
+                _.value.getValue.name
+              }
+              prefWidth = 180
+            },
+            new TreeTableColumn[Item, java.lang.Boolean] {
+              text = "Selected"
+              cellValueFactory =
+                _.value.getValue.selected.asInstanceOf[ObservableValue[java.lang.Boolean, java.lang.Boolean]]
+              cellFactory = CheckBoxTreeTableCell.forTreeTableColumn(this)
+              editable = true
+              prefWidth = 180
             }
-            prefWidth = 180
-          }, new TreeTableColumn[Item, java.lang.Boolean] {
-            text = "Selected"
-            cellValueFactory = _.value.getValue.selected.asInstanceOf[ObservableValue[java.lang.Boolean, java.lang.Boolean]]
-            cellFactory = CheckBoxTreeTableCell.forTreeTableColumn(this)
-            editable = true
-            prefWidth = 180
-          })
+          )
           editable = true
         }
       }

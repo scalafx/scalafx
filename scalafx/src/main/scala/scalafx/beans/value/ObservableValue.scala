@@ -123,7 +123,7 @@ trait ObservableValue[@specialized(Int, Long, Float, Double, Boolean) T, J]
 
   /**
    * Adds a function as a $URLCV. This function has all arguments from
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ChangeListener.html#changed(javafx.beans.value.ObservableValue,T, T) `changed`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/value/ChangeListener.html#changed(javafx.beans.value.ObservableValue,T,T) `changed`]]
    * method from $CV.
    *
    * @tparam J1

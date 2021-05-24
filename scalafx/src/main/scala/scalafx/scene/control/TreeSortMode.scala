@@ -36,7 +36,7 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
  *   TSM TreeSortMode
  * @define
  *   URL0
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TSM.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TSM.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 object TreeSortMode extends SFXEnumDelegateCompanion[jfxsc.TreeSortMode, TreeSortMode] {
 

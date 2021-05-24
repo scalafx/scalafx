@@ -41,7 +41,12 @@ import scalafx.scene.control._
 object TreeViewCellFactoryDemo extends JFXApp3 {
   override def start(): Unit = {
     case class Person(firstName: String, lastName: String, children: List[Person] = Nil)
-    val children1 = List(Person("Bungalow", "Bill"), Person("Dennis", "O\u2019Dell"), Person("Peggy", "Sue"), Person("Molly", "Jones"))
+    val children1 = List(
+      Person("Bungalow", "Bill"),
+      Person("Dennis", "O\u2019Dell"),
+      Person("Peggy", "Sue"),
+      Person("Molly", "Jones")
+    )
     val children2 = List(Person("Maxwell", "Edison"), Person("Desmond", "Jones"), Person("Loretta", "Martin"))
     val parents = ObservableBuffer[Person](Person("Eleanor", "Rigby", children1), Person("Rocky", "Raccoon", children2))
     def toTreeItem(p: Person): TreeItem[Person] = {
@@ -58,19 +63,20 @@ object TreeViewCellFactoryDemo extends JFXApp3 {
             expanded = true
             children = parents.map(toTreeItem).toSeq
           }
-          cellFactory = _ => new javafx.scene.control.TreeCell[Person] {
-            val self: TreeCell[Person] = this
-            override def updateItem(item: Person, empty: Boolean): Unit = {
-              super.updateItem(item, empty)
-              self.graphic = null
-              self.text = item match {
-                case p: Person =>
-                  p.firstName + " " + p.lastName
-                case null =>
-                  null
+          cellFactory = _ =>
+            new javafx.scene.control.TreeCell[Person] {
+              val self: TreeCell[Person] = this
+              override def updateItem(item: Person, empty: Boolean): Unit = {
+                super.updateItem(item, empty)
+                self.graphic = null
+                self.text = item match {
+                  case p: Person =>
+                    p.firstName + " " + p.lastName
+                  case null =>
+                    null
+                }
               }
             }
-          }
         }
       }
     }

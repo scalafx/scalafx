@@ -48,7 +48,7 @@ object PromptData {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/PromptData.htmlJavaFX PromptData]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/PromptData.htmlJavaFXPromptData]]
  *
  * @constructor
  *   Creates a new PromptData from its JavaFX counterpart.

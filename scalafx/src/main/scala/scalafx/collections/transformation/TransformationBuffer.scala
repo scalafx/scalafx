@@ -64,7 +64,7 @@ object TransformationBuffer {
  *   TC TransformationList
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections.transformation/TransformationList.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections.transformation/TransformationList.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 abstract class TransformationBuffer[E, F](override val delegate: jfxct.TransformationList[E, F])
     extends ObservableBufferBase[E](delegate)

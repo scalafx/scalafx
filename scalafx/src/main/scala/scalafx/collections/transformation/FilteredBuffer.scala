@@ -58,7 +58,7 @@ object FilteredBuffer {
  *   TC FilteredList
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections.transformation/FilteredList.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections.transformation/FilteredList.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class FilteredBuffer[E](override val delegate: jfxct.FilteredList[E])
     extends TransformationBuffer[E, E](delegate)

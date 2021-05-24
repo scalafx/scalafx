@@ -48,7 +48,9 @@ object Simple3DBoxApp extends JFXApp3 {
           drawMode = DrawMode.Line
         }
         fill = Color.AliceBlue
-        camera = new PerspectiveCamera(true) { transforms += (new Rotate(-20, Rotate.YAxis), new Rotate(-20, Rotate.XAxis), new Translate(0, 0, -15)) }
+        camera = new PerspectiveCamera(true) {
+          transforms += (new Rotate(-20, Rotate.YAxis), new Rotate(-20, Rotate.XAxis), new Translate(0, 0, -15))
+        }
       }
     }
   }

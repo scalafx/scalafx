@@ -57,7 +57,7 @@ object HostServices {
  *   TC HostServices
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/application/HostServices.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/application/HostServices.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class HostServices(override val delegate: jfx.HostServices) extends SFXDelegate[jfx.HostServices] {
 

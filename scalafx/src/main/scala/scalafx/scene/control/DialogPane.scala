@@ -64,7 +64,7 @@ object DialogPane {
  *   TC DialogPane
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/DialogPane.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/DialogPane.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class DialogPane(override val delegate: jfxsc.DialogPane = new jfxsc.DialogPane())
     extends Pane(delegate)

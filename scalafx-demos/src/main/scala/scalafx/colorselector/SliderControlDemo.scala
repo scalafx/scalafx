@@ -37,7 +37,7 @@ import scalafx.scene.paint.Color
 
 object SliderControlDemo extends JFXApp3 {
   override def start(): Unit = {
-    var initialized = false
+    var initialized   = false
     val sliderControl = new SliderControl("X")
     val txfInputValue = new TextField {
       alignmentInParent = Pos.BaselineLeft

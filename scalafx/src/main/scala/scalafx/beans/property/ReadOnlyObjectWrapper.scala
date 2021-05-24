@@ -60,7 +60,7 @@ object ReadOnlyObjectWrapper {
    * Creates a new ReadOnlyObjectWrapper with a `delegate` as initial value.
    *
    * Special case when value is an ScalaFX wrapper, to be used as a work around for
-   * [[https://github.com/scalafx/scalafx/issues/14Issue 14]]. Created object property will have value type of the
+   * [[https://github.com/scalafx/scalafx/issues/14Issue14]]. Created object property will have value type of the
    * wrapped JavaFX type to simplify use with binding.
    *
    * @param value
@@ -75,7 +75,7 @@ object ReadOnlyObjectWrapper {
    * Creates a new ReadOnlyObjectWrapper with a [[scalafx.delegate.SFXDelegate]] as initial value.
    *
    * Special case when value is an ScalaFX wrapper, to be used as a work around for
-   * [[https://github.com/scalafx/scalafx/issues/14Issue 14]]. Created object property will have value type of the
+   * [[https://github.com/scalafx/scalafx/issues/14Issue14]]. Created object property will have value type of the
    * wrapped JavaFX type to simplify use with binding.
    *
    * @param bean

@@ -60,9 +60,10 @@ object VanishingCircles extends JFXApp3 {
           effect = new BoxBlur(10, 10, 3)
           strokeWidth <== when(hover) choose 4 otherwise 0
           stroke = White
-          onMouseClicked = _ => Timeline(at(3.s) {
-            radius -> 0
-          }).play()
+          onMouseClicked = _ =>
+            Timeline(at(3.s) {
+              radius -> 0
+            }).play()
         }
         content = circles
       }

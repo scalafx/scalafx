@@ -40,7 +40,14 @@ import scalafx.scene.layout.{HBox, VBox}
  */
 object SpinnersDemo extends JFXApp3 {
   override def start(): Unit = {
-    val styles = Seq("spinner", Spinner.StyleClassArrowsOnRightHorizontal, Spinner.StyleClassArrowsOnLeftVertical, Spinner.StyleClassArrowsOnLeftHorizontal, Spinner.StyleClassSplitArrowsVertical, Spinner.StyleClassSplitArrowsHorizontal)
+    val styles = Seq(
+      "spinner",
+      Spinner.StyleClassArrowsOnRightHorizontal,
+      Spinner.StyleClassArrowsOnLeftVertical,
+      Spinner.StyleClassArrowsOnLeftHorizontal,
+      Spinner.StyleClassSplitArrowsVertical,
+      Spinner.StyleClassSplitArrowsHorizontal
+    )
     val intSpinners = for (s <- styles) yield new Spinner[Integer](1, 99, 5) {
       styleClass += s
       prefWidth = 100
@@ -57,7 +64,8 @@ object SpinnersDemo extends JFXApp3 {
       title = "Spinners Demo"
       scene = new Scene {
         content = new VBox(30) {
-          children = Seq(new HBox(30, intSpinners: _*), new HBox(30, doubleSpinners: _*), new HBox(30, stringSpinners: _*))
+          children =
+            Seq(new HBox(30, intSpinners: _*), new HBox(30, doubleSpinners: _*), new HBox(30, stringSpinners: _*))
           padding = Insets(24)
         }
       }

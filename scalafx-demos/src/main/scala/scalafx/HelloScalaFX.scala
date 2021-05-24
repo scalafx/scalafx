@@ -45,20 +45,23 @@ object HelloScalaFX extends JFXApp3 {
       scene = new Scene {
         fill = Black
         content = new HBox {
-          children = Seq(new Text {
-            text = "Scala"
-            style = "-fx-font-size: 100pt"
-            fill = new LinearGradient(endX = 0, stops = Stops(PaleGreen, SeaGreen))
-          }, new Text {
-            text = "FX"
-            style = "-fx-font-size: 100pt"
-            fill = new LinearGradient(endX = 0, stops = Stops(Cyan, DodgerBlue))
-            effect = new DropShadow {
-              color = DodgerBlue
-              radius = 25
-              spread = 0.25d
+          children = Seq(
+            new Text {
+              text = "Scala"
+              style = "-fx-font-size: 100pt"
+              fill = new LinearGradient(endX = 0, stops = Stops(PaleGreen, SeaGreen))
+            },
+            new Text {
+              text = "FX"
+              style = "-fx-font-size: 100pt"
+              fill = new LinearGradient(endX = 0, stops = Stops(Cyan, DodgerBlue))
+              effect = new DropShadow {
+                color = DodgerBlue
+                radius = 25
+                spread = 0.25d
+              }
             }
-          })
+          )
           effect = new Reflection {
             fraction = 0.5d
             topOffset = -5.0d

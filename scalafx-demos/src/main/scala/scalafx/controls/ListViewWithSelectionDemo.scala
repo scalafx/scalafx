@@ -38,14 +38,20 @@ import scalafx.scene.control.ListView
 object ListViewWithSelectionDemo extends JFXApp3 {
   override def start(): Unit = {
     case class Person(firstName: String, lastName: String) { override def toString = firstName + " " + lastName }
-    val characters = ObservableBuffer[Person](Person("Bungalow ", "Bill"), Person("Dennis", "O\u2019Dell"), Person("Eleanor", "Rigby"), Person("Rocky", "Raccoon"), Person("Peggy", "Sue"))
+    val characters = ObservableBuffer[Person](
+      Person("Bungalow ", "Bill"),
+      Person("Dennis", "O\u2019Dell"),
+      Person("Eleanor", "Rigby"),
+      Person("Rocky", "Raccoon"),
+      Person("Peggy", "Sue")
+    )
     stage = new PrimaryStage {
       title = "ListView with Selection Demo"
       scene = new Scene {
         content = new ListView[Person] {
           items = characters
-          selectionModel().selectedItem.onChange {
-            (_, _, newValue) => println("Selection Changed: " + newValue)
+          selectionModel().selectedItem.onChange { (_, _, newValue) =>
+            println("Selection Changed: " + newValue)
           }
         }
       }

@@ -63,7 +63,7 @@ object ObservableBufferBase {
  *   TC ObservableListBase
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections/ObservableListBase.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.collections/ObservableListBase.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 abstract class ObservableBufferBase[E](override val delegate: jfxc.ObservableListBase[E])
     extends ObservableBuffer[E](delegate)

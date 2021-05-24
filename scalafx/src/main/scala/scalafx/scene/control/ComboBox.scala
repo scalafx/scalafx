@@ -44,7 +44,7 @@ object ComboBox {
 }
 
 /**
- * Wraps [[https://openjfx.io/javadoc/16/javafx.controls/javafx/scene/control/ComboBox.htmlJavaFX ComboBox]], an
+ * Wraps [[https://openjfx.io/javadoc/16/javafx.controls/javafx/scene/control/ComboBox.htmlJavaFXComboBox]], an
  * implementation of the ComboBoxBase abstract class for the most common form of ComboBox, where a popup list is shown
  * to users providing them with a choice that they may select from.
  *

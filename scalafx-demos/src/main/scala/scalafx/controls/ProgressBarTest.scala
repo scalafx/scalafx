@@ -36,7 +36,7 @@ import scalafx.scene.paint.Color
 
 object ProgressBarTest extends JFXApp3 {
   override def start(): Unit = {
-    val progressBar = new ProgressBar
+    val progressBar           = new ProgressBar
     val progressBarController = new ProgressIndicatorControls(progressBar)
     val mainPane = new BorderPane {
       top = progressBar

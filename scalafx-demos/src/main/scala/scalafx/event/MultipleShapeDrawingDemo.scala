@@ -82,40 +82,46 @@ object MultipleShapeDrawingDemo extends JFXApp3 {
         line.endY = end.y
       }
     }
-    val drawingPane = new Pane { children ++= Seq(RectangleInteractor.rectangle, EllipseInteractor.ellipse, LineInteractor.line) }
+    val drawingPane = new Pane {
+      children ++= Seq(RectangleInteractor.rectangle, EllipseInteractor.ellipse, LineInteractor.line)
+    }
     stage = new PrimaryStage {
       title = "Multiple Shape Drawing Demo"
       scene = new Scene(600, 400) {
         root = new BorderPane {
           top = new ToolBar {
             val alignToggleGroup = new ToggleGroup()
-            content = List(new ToggleButton {
-              id = "rectangle"
-              graphic = new Rectangle {
-                fill = Color.web("RED", 0.5d)
-                width = 32
-                height = 32
+            content = List(
+              new ToggleButton {
+                id = "rectangle"
+                graphic = new Rectangle {
+                  fill = Color.web("RED", 0.5d)
+                  width = 32
+                  height = 32
+                }
+                toggleGroup = alignToggleGroup
+              },
+              new ToggleButton {
+                id = "ellipse"
+                graphic = new Circle {
+                  fill = Color.web("GREEN", 0.5d)
+                  radius = 16
+                }
+                toggleGroup = alignToggleGroup
+              },
+              new ToggleButton {
+                id = "line"
+                graphic = new Line {
+                  stroke = Color.web("BLUE", 0.5d)
+                  startX = 0
+                  startY = 0
+                  endX = 28
+                  endY = 28
+                  strokeWidth = 3
+                }
+                toggleGroup = alignToggleGroup
               }
-              toggleGroup = alignToggleGroup
-            }, new ToggleButton {
-              id = "ellipse"
-              graphic = new Circle {
-                fill = Color.web("GREEN", 0.5d)
-                radius = 16
-              }
-              toggleGroup = alignToggleGroup
-            }, new ToggleButton {
-              id = "line"
-              graphic = new Line {
-                stroke = Color.web("BLUE", 0.5d)
-                startX = 0
-                startY = 0
-                endX = 28
-                endY = 28
-                strokeWidth = 3
-              }
-              toggleGroup = alignToggleGroup
-            })
+            )
             var mouseHandlerSubscription: Option[Subscription] = None
             alignToggleGroup.selectedToggle.onChange {
               mouseHandlerSubscription.foreach(_.cancel())
@@ -146,7 +152,7 @@ object MultipleShapeDrawingDemo extends JFXApp3 {
     trait MouseHandler { def handler: MouseEvent => Unit }
     trait ShapeDrawInteractor extends MouseHandler {
       private var _start = new Point2D(0, 0)
-      private var _end = new Point2D(0, 0)
+      private var _end   = new Point2D(0, 0)
       def start: Point2D = _start
       def start_=(p: Point2D): Unit = {
         _start = p
@@ -159,7 +165,7 @@ object MultipleShapeDrawingDemo extends JFXApp3 {
         update()
       }
       def update(): Unit
-      override def handler: MouseEvent => Unit = { (me: MouseEvent) => 
+      override def handler: MouseEvent => Unit = { (me: MouseEvent) =>
         me.eventType match {
           case MouseEvent.MousePressed =>
             start = new Point2D(me.x, me.y)

@@ -57,7 +57,7 @@ object ReadOnlyMapProperty {
  *   TC ReadOnlyMapProperty
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyMapProperty.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyMapProperty.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class ReadOnlyMapProperty[K, V](override val delegate: jfxbp.ReadOnlyMapProperty[K, V])
     extends MapExpression[K, V](delegate)

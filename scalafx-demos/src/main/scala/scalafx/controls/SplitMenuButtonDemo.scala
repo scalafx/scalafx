@@ -43,11 +43,25 @@ object SplitMenuButtonDemo extends JFXApp3 {
         content = new VBox {
           padding = Insets(10)
           spacing = 10
-          children = List(new SplitMenuButton {
-            text = "SplitMenuButton 1"
-            onAction = (e: ActionEvent) => println(s"${e.eventType} occurred on SplitMenuButton")
-            items = List(new MenuItem("MenuItem A") { onAction = (e: ActionEvent) => println(s"${e.eventType} occurred on Menu Item A") }, new MenuItem("MenuItem B"))
-          }, new SplitMenuButton(new MenuItem("MenuItem C") { onAction = (ae: ActionEvent) => println(s"${ae.eventType}  occurred on Menu Item C") }, new MenuItem("MenuItem D"), new MenuItem("MenuItem E")))
+          children = List(
+            new SplitMenuButton {
+              text = "SplitMenuButton 1"
+              onAction = (e: ActionEvent) => println(s"${e.eventType} occurred on SplitMenuButton")
+              items = List(
+                new MenuItem("MenuItem A") {
+                  onAction = (e: ActionEvent) => println(s"${e.eventType} occurred on Menu Item A")
+                },
+                new MenuItem("MenuItem B")
+              )
+            },
+            new SplitMenuButton(
+              new MenuItem("MenuItem C") {
+                onAction = (ae: ActionEvent) => println(s"${ae.eventType}  occurred on Menu Item C")
+              },
+              new MenuItem("MenuItem D"),
+              new MenuItem("MenuItem E")
+            )
+          )
         }
       }
     }

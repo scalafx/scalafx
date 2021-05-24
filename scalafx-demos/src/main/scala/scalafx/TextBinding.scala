@@ -40,7 +40,9 @@ object TextBinding extends JFXApp3 {
     stage = new PrimaryStage {
       width = 800
       height = 600
-      scene = new Scene { content = Seq(new VBox { children = Seq(comboBox, new Label { text <== comboBox.editor().text }) }) }
+      scene = new Scene {
+        content = Seq(new VBox { children = Seq(comboBox, new Label { text <== comboBox.editor().text }) })
+      }
     }
     comboBox.editable = false
     println(comboBox.editor())

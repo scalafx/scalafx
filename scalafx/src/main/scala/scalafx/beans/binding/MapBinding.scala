@@ -56,7 +56,7 @@ object MapBinding {
  *   TC MapBinding
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/MapBinding.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/MapBinding.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class MapBinding[K, V](override val delegate: jfxbb.MapBinding[K, V])
     extends MapExpression(delegate)

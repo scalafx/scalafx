@@ -48,7 +48,7 @@ object PopupFeatures {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/PopupFeatures.htmlJavaFX PopupFeatures]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/web/PopupFeatures.htmlJavaFXPopupFeatures]]
  *
  * @constructor
  *   Creates a new PopupFeatures from its JavaFX counterpart.

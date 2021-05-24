@@ -169,7 +169,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
 
   /**
    * The value property on Spinner is a read-only property, as it is bound to the SpinnerValueFactory
-   * [[scalafx.scene.control.Spinner#valueFactory()valueFactory property]]. Should the value factory change, this value
+   * [[scalafx.scene.control.Spinner#valueFactory()valueFactoryproperty]]. Should the value factory change, this value
    * property will be unbound from the old value factory and bound to the new one.
    *
    * <p>If developers wish to modify the value property, they may do so with code in the following form:
@@ -219,7 +219,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
 
   /**
    * The duration that the mouse has to be pressed on an arrow button before the next value steps. Successive step
-   * duration is set using [[scalafx.scene.control.Spinner#repeatDelay()repeat delay]].
+   * duration is set using [[scalafx.scene.control.Spinner#repeatDelay()repeatdelay]].
    *
    * @return
    *   the initial delay property
@@ -233,7 +233,7 @@ class Spinner[T](override val delegate: jfxsc.Spinner[T] = new jfxsc.Spinner[T])
 
   /**
    * The duration that the mouse has to be pressed for each successive step after the first value steps. Initial step
-   * duration is set using [[scalafx.scene.control.Spinner#initialDelay()initial delay]].
+   * duration is set using [[scalafx.scene.control.Spinner#initialDelay()initialdelay]].
    *
    * @return
    *   the repeat delay property

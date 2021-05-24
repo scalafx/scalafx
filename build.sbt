@@ -24,11 +24,11 @@ lazy val scalafxProject = (project in file("."))
   )
   .aggregate(scalafx, scalafxDemos)
   .dependsOn(`scalafix-rules` % ScalafixConfig)
-lazy val `scalafix-input`  = (project in file("scalafix/input"))
+lazy val `scalafix-input` = (project in file("scalafix/input"))
   .disablePlugins(ScalafixPlugin)
 lazy val `scalafix-output` = (project in file("scalafix/output"))
   .disablePlugins(ScalafixPlugin)
-lazy val `scalafix-rules`  = (project in file("scalafix/rules"))
+lazy val `scalafix-rules` = (project in file("scalafix/rules"))
   .disablePlugins(ScalafixPlugin)
   .settings(
     libraryDependencies +=
@@ -73,7 +73,7 @@ val Scala2_13 = "2.13.6"
 val Scala3_00 = "3.0.0"
 
 // Dependencies
-lazy val osName        = System.getProperty("os.name") match {
+lazy val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Linux")   => "linux"
   case n if n.startsWith("Mac")     => "mac"
   case n if n.startsWith("Windows") => "win"
@@ -137,10 +137,10 @@ lazy val scalafxSettings = Seq(
                   path,
                   "-diagrams-debug"
                 )
-              case None       => Seq.empty[String]
+              case None => Seq.empty[String]
             }
-            )
-      case _            => Seq.empty[String]
+          )
+      case _ => Seq.empty[String]
     }
   },
   javacOptions ++= Seq("-target", "1.8", "-source", "1.8", "-Xlint:deprecation"),
@@ -158,7 +158,7 @@ lazy val scalafxSettings = Seq(
           val artifact     = e.child.filter(_.label == "artifactId").flatMap(_.text).mkString
           val version      = e.child.filter(_.label == "version").flatMap(_.text).mkString
           Comment(s"provided dependency $organization#$artifact;$version has been omitted")
-        case _                                                                                                     => node
+        case _ => node
       }
     }).transform(node).head
   },
@@ -175,16 +175,16 @@ lazy val scalafxSettings = Seq(
 
 lazy val manifestSetting = packageOptions += {
   Package.ManifestAttributes(
-    "Created-By" -> "Simple Build Tool",
-    "Built-By" -> Option(System.getenv("JAR_BUILT_BY")).getOrElse(System.getProperty("user.name")),
-    "Build-Jdk" -> System.getProperty("java.version"),
-    "Specification-Title" -> name.value,
-    "Specification-Version" -> version.value,
-    "Specification-Vendor" -> organization.value,
-    "Implementation-Title" -> name.value,
-    "Implementation-Version" -> version.value,
+    "Created-By"               -> "Simple Build Tool",
+    "Built-By"                 -> Option(System.getenv("JAR_BUILT_BY")).getOrElse(System.getProperty("user.name")),
+    "Build-Jdk"                -> System.getProperty("java.version"),
+    "Specification-Title"      -> name.value,
+    "Specification-Version"    -> version.value,
+    "Specification-Vendor"     -> organization.value,
+    "Implementation-Title"     -> name.value,
+    "Implementation-Version"   -> version.value,
     "Implementation-Vendor-Id" -> organization.value,
-    "Implementation-Vendor" -> organization.value
+    "Implementation-Vendor"    -> organization.value
   )
 }
 

@@ -139,7 +139,7 @@ object Alert {
  *   TC Alert
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene.control/Alert.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene.control/Alert.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class Alert(override val delegate: jfxsc.Alert)
     extends Dialog[jfxsc.ButtonType](delegate)

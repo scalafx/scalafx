@@ -56,7 +56,7 @@ object BufferBinding {
  *   TC BufferBinding
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/ListBinding.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/ListBinding.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class BufferBinding[E <: Any](override val delegate: jfxbb.ListBinding[E])
     extends BufferExpression(delegate)

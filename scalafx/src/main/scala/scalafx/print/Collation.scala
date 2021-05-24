@@ -49,6 +49,6 @@ object Collation extends SFXEnumDelegateCompanion[jfxp.Collation, Collation] {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Collation.htmlJavaFX Collation]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Collation.htmlJavaFXCollation]].
  */
 sealed abstract class Collation(override val delegate: jfxp.Collation) extends SFXEnumDelegate[jfxp.Collation]

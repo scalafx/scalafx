@@ -52,7 +52,7 @@ object PrinterAttributes {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterAttributes.htmlJavaFX PrinterAttributes]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterAttributes.htmlJavaFXPrinterAttributes]].
  *
  * @constructor
  *   Creates a new ScalaFX PrinterAttributes from its JavaFX counterpart.

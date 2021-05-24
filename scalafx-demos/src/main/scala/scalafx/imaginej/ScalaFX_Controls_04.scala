@@ -60,7 +60,7 @@ import scalafx.scene.shape.Rectangle
 
 object ScalaFX_Controls_04 extends JFXApp3 {
   override def start(): Unit = {
-    val priorityLabel = new Label { text = "Priority:" }
+    val priorityLabel  = new Label { text = "Priority:" }
     val theToggleGroup = new ToggleGroup {}
     val minorToggleButton = new ToggleButton {
       text = "Minor"
@@ -97,10 +97,10 @@ object ScalaFX_Controls_04 extends JFXApp3 {
       padding = Insets(20, 10, 10, 20)
       children = List(priorityLabel, hBox, rectangle)
     }
-    theToggleGroup.selectedToggle onChange ({
-      (_, _, newToggle) => if (newToggle != null) {
+    theToggleGroup.selectedToggle onChange ({ (_, _, newToggle) =>
+      if (newToggle != null) {
         val selectedToggle = theToggleGroup.getSelectedToggle
-        val userDataColor = selectedToggle.getUserData.asInstanceOf[Color]
+        val userDataColor  = selectedToggle.getUserData.asInstanceOf[Color]
         rectangle.fill = userDataColor
       } else {
         rectangle.fill = Color.White

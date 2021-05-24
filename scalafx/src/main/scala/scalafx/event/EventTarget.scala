@@ -44,7 +44,7 @@ object EventTarget {
  *   FC EventTarget
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/event/EventTarget.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/event/EventTarget.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 abstract class EventTarget(override val delegate: jfxe.EventTarget) extends SFXDelegate[jfxe.EventTarget] {
 

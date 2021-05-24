@@ -50,7 +50,7 @@ object PrintResolution {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintResolution.htmlJavaFx PrintResolution]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintResolution.htmlJavaFxPrintResolution]].
  *
  * @constructor
  *   Creates a new ScalaFX PrintResolution from its JavaFX counterpart.

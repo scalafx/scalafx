@@ -42,10 +42,12 @@ object CategoryLineChartDemo extends JFXApp3 {
         root = new LineChart(CategoryAxis("X Axis"), NumberAxis("Y Axis")) {
           title = "LineChart with Category Axis"
           legendSide = Side.Right
-          data = XYChart.Series[String, Number]("Series 1", ObservableBuffer.from(dataPairs.map({
-            case (x, y) =>
+          data = XYChart.Series[String, Number](
+            "Series 1",
+            ObservableBuffer.from(dataPairs.map({ case (x, y) =>
               XYChart.Data[String, Number](x, y)
-          })))
+            }))
+          )
         }
       }
     }

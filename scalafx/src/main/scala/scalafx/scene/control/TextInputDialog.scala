@@ -59,7 +59,7 @@ object TextInputDialog {
  *   TC TextInputDialog
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene/TextInputDialog.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene/TextInputDialog.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class TextInputDialog(override val delegate: jfxsc.TextInputDialog = new jfxsc.TextInputDialog())
     extends Dialog[String](delegate)

@@ -40,16 +40,26 @@ import scalafx.scene.paint.{Color, CycleMethod, LinearGradient, RadialGradient, 
 object CanvasTest extends JFXApp3 {
   override def start(): Unit = {
     val canvas = new Canvas(200, 200)
-    val gc = canvas.graphicsContext2D
+    val gc     = canvas.graphicsContext2D
     canvas.translateX = 0
     canvas.translateY = 0
     gc.beginPath()
     gc.moveTo(50, 50)
     gc.bezierCurveTo(150, 20, 150, 150, 75, 150)
     gc.closePath()
-    gc.fill = new RadialGradient(0, 0, 0.5d, 0.5d, 0.1d, true, CycleMethod.Reflect, List(Stop(0.0d, Color.Red), Stop(1.0d, Color.Yellow)))
+    gc.fill = new RadialGradient(
+      0,
+      0,
+      0.5d,
+      0.5d,
+      0.1d,
+      true,
+      CycleMethod.Reflect,
+      List(Stop(0.0d, Color.Red), Stop(1.0d, Color.Yellow))
+    )
     gc.fillPath()
-    val lg = new LinearGradient(0, 0, 1, 1, true, CycleMethod.Reflect, List(Stop(0.0d, Color.Blue), Stop(1.0d, Color.Green)))
+    val lg =
+      new LinearGradient(0, 0, 1, 1, true, CycleMethod.Reflect, List(Stop(0.0d, Color.Blue), Stop(1.0d, Color.Green)))
     gc.stroke = lg
     gc.lineWidth = 20
     gc.strokePath()

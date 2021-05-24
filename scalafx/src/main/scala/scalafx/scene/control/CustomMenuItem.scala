@@ -57,7 +57,7 @@ object CustomMenuItem {
  *   FC CustomMenuItem
  * @define
  *   URL0
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/CustomMenuItem.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/CustomMenuItem.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class CustomMenuItem(override val delegate: jfxsc.CustomMenuItem = new jfxsc.CustomMenuItem)
     extends MenuItem(delegate)

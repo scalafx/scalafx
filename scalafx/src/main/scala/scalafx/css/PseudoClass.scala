@@ -61,7 +61,7 @@ object PseudoClass {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/PseudoClass.htmlJavaFX PseudoClass]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/PseudoClass.htmlJavaFXPseudoClass]].
  *
  * @constructor
  *   Creates a new ScalaFX PseudoClass from its JavaFX counterpart.

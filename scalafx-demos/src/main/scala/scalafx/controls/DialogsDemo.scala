@@ -41,7 +41,7 @@ import java.io.{FileNotFoundException, PrintWriter, StringWriter}
 import scala.language.implicitConversions
 
 /**
- * Based on JavaFX version discussed in blog: [[http://code.makery.ch/blog/javafx-dialogs-official/JavaFX Dialogs]]
+ * Based on JavaFX version discussed in blog: [[http://code.makery.ch/blog/javafx-dialogs-official/JavaFXDialogs]]
  */
 object DialogsDemo extends JFXApp3 {
   override def start(): Unit = {
@@ -50,7 +50,17 @@ object DialogsDemo extends JFXApp3 {
         icons += (new Image("/scalafx/sfx.png"))
         title = "Dialogs Demo"
         root = new VBox {
-          children = Seq(button("Information", informationDialog), button("Without Header Text", withoutHeader), button("Warning", warningDialog), button("Error", errorDialog), button("Exception", exceptionDialog), button("Confirmation", confirmationDialog), button("Confirmation Dialog with Custom Actions", confirmationWithCustomActions), button("Text Input", textInputDialog), button("Choice", choiceDialog))
+          children = Seq(
+            button("Information", informationDialog),
+            button("Without Header Text", withoutHeader),
+            button("Warning", warningDialog),
+            button("Error", errorDialog),
+            button("Exception", exceptionDialog),
+            button("Confirmation", confirmationDialog),
+            button("Confirmation Dialog with Custom Actions", confirmationWithCustomActions),
+            button("Text Input", textInputDialog),
+            button("Choice", choiceDialog)
+          )
           spacing = 6
           padding = Insets(10)
           alignment = Pos.Center
@@ -143,8 +153,8 @@ object DialogsDemo extends JFXApp3 {
       }
     }
     def confirmationWithCustomActions(): Unit = {
-      val ButtonTypeOne = new ButtonType("One")
-      val ButtonTypeTwo = new ButtonType("Two")
+      val ButtonTypeOne   = new ButtonType("One")
+      val ButtonTypeTwo   = new ButtonType("Two")
       val ButtonTypeThree = new ButtonType("Three")
       val alert = new Alert(AlertType.Confirmation) {
         initOwner(stage)

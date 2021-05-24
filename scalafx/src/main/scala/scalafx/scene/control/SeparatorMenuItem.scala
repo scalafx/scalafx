@@ -55,7 +55,7 @@ object SeparatorMenuItem {
  *   FC SeparatorMenuItem
  * @define
  *   URL0
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SeparatorMenuItem.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SeparatorMenuItem.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class SeparatorMenuItem(override val delegate: jfxsc.SeparatorMenuItem)
     extends CustomMenuItem(delegate)

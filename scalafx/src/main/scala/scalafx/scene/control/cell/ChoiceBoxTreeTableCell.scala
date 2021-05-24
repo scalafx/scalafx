@@ -71,7 +71,7 @@ import scala.language.implicitConversions
  *   SFX ScalaFX
  * @define
  *   URL0
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxTreeTableCell.html@define ORIGINALDOC Original Documentation]].
+ *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxTreeTableCell.html@defineORIGINALDOC Original Documentation]].
  * @define
  *   SATISFY Added just to satisfy Spec tests.
  */
@@ -225,15 +225,15 @@ object ChoiceBoxTreeTableCell {
  *   BUFITEMSPARAM A `ObservableBuffer` containing $ITEMSPARAM
  * @define
  *   DEFCOMPL Creates a default $CBTTC instance with the given items being used to populate the
- *   [[scalafx.scene.control.ChoiceBoxC h o i c e B o x]] when it is shown.
+ *   [[scalafx.scene.control.ChoiceBoxCh o i c e B o x]] when it is shown.
  * @define
  *   CONSCOMPL Creates a `$CBTTC` instance with the given items being used to populate the
- *   [[scalafx.scene.control.ChoiceBoxC h o i c e B o x]] when it is shown, and the
- *   [[scalafx.util.StringConverterS t r i n g C o n v e r t e r]] being used to convert the item in to a user-readable
+ *   [[scalafx.scene.control.ChoiceBoxCh o i c e B o x]] when it is shown, and the
+ *   [[scalafx.util.StringConverterSt r i n g C o n v e r t e r]] being used to convert the item in to a user-readable
  *   form.
  * @define
  *   URL0
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxTreeTableCell.html@define ORIGINALDOC Original Documentation]].
+ *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxTreeTableCell.html@defineORIGINALDOC Original Documentation]].
  */
 class ChoiceBoxTreeTableCell[S, T](
     override val delegate: jfxscc.ChoiceBoxTreeTableCell[S, T] = new jfxscc.ChoiceBoxTreeTableCell[S, T]

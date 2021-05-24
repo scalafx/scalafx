@@ -88,7 +88,7 @@ object PrinterJob {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterJob.JobStatus.htmlJavaFX JobStatus]].
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterJob.JobStatus.htmlJavaFXJobStatus]].
    */
   sealed abstract class JobStatus(override val delegate: jfxp.PrinterJob.JobStatus)
       extends SFXEnumDelegate[jfxp.PrinterJob.JobStatus]
@@ -119,7 +119,7 @@ object PrinterJob {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterJob.htmlJavaFX PrinterJob]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrinterJob.htmlJavaFXPrinterJob]].
  *
  * @constructor
  *   Creates a new ScalaFX PrinterJob from its JavaFX counterpart.

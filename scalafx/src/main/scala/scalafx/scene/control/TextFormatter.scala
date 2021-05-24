@@ -210,7 +210,7 @@ object TextFormatter {
  *   TC TextFormatter
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx/scene/control/TextFormatter.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx/scene/control/TextFormatter.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class TextFormatter[V](override val delegate: jfxsc.TextFormatter[V]) extends SFXDelegate[jfxsc.TextFormatter[V]] {
 

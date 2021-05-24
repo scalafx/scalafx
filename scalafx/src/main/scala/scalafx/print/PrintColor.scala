@@ -49,6 +49,6 @@ object PrintColor extends SFXEnumDelegateCompanion[jfxp.PrintColor, PrintColor] 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintColor.htmlJavaFX PrintColor]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintColor.htmlJavaFXPrintColor]].
  */
 sealed abstract class PrintColor(override val delegate: jfxp.PrintColor) extends SFXEnumDelegate[jfxp.PrintColor]

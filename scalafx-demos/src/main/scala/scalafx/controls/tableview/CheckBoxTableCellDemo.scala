@@ -46,28 +46,31 @@ object CheckBoxTableCellDemo extends JFXApp3 {
   override def start(): Unit = {
     class Item(selected_ : Boolean, name_ : String) {
       val selected = new BooleanProperty(this, "selected", selected_)
-      val name = new StringProperty(this, "name", name_)
+      val name     = new StringProperty(this, "name", name_)
     }
-    val data = ObservableBuffer.from[Item]((1 to 10).map {
-      i => new Item(i % 2 == 0, s"Item $i")
+    val data = ObservableBuffer.from[Item]((1 to 10).map { i =>
+      new Item(i % 2 == 0, s"Item $i")
     })
     stage = new PrimaryStage {
       title = "Example of a Table View with Check Boxes"
       scene = new Scene {
         root = new TableView[Item](data) {
-          columns ++= List(new TableColumn[Item, java.lang.Boolean] {
-            text = "Selected"
-            cellValueFactory = _.value.selected.asInstanceOf[ObservableValue[java.lang.Boolean, java.lang.Boolean]]
-            cellFactory = CheckBoxTableCell.forTableColumn(this)
-            editable = true
-            prefWidth = 180
-          }, new TableColumn[Item, String] {
-            text = "Name"
-            cellValueFactory = {
-              _.value.name
+          columns ++= List(
+            new TableColumn[Item, java.lang.Boolean] {
+              text = "Selected"
+              cellValueFactory = _.value.selected.asInstanceOf[ObservableValue[java.lang.Boolean, java.lang.Boolean]]
+              cellFactory = CheckBoxTableCell.forTableColumn(this)
+              editable = true
+              prefWidth = 180
+            },
+            new TableColumn[Item, String] {
+              text = "Name"
+              cellValueFactory = {
+                _.value.name
+              }
+              prefWidth = 180
             }
-            prefWidth = 180
-          })
+          )
           editable = true
         }
       }

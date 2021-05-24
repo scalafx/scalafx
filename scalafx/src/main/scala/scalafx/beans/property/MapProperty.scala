@@ -88,7 +88,7 @@ object MapProperty {
  *   TC MapProperty
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/MapProperty.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/MapProperty.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class MapProperty[K, V](override val delegate: jfxbp.MapProperty[K, V] = new jfxbp.SimpleMapProperty[K, V])
     extends ReadOnlyMapProperty[K, V](delegate)

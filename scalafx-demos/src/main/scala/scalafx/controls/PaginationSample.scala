@@ -46,8 +46,11 @@ object PaginationSample extends JFXApp3 {
           visited = true
         }
         new VBox {
-          children = List(link, new Label("""|Search results
-                       |for %s""".stripMargin.format(link.text.value)))
+          children = List(
+            link,
+            new Label("""|Search results
+                       |for %s""".stripMargin.format(link.text.value))
+          )
         }
       }
       val page = pageIndex * itemsPerPage

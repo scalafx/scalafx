@@ -57,7 +57,7 @@ object ReadOnlySetProperty {
  *   TC ReadOnlySetProperty
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlySetProperty.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlySetProperty.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class ReadOnlySetProperty[E <: Any](override val delegate: jfxbp.ReadOnlySetProperty[E])
     extends SetExpression[E](delegate)

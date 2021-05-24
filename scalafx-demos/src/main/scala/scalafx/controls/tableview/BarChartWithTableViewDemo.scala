@@ -44,7 +44,7 @@ import scalafx.stage.{Modality, Stage}
 object BarChartWithTableViewDemo extends JFXApp3 {
   override def start(): Unit = {
     class Position(name_ : String, value_ : Int) {
-      val name = new StringProperty(this, "name", name_)
+      val name  = new StringProperty(this, "name", name_)
       val value = new ObjectProperty[Int](this, "value", value_)
     }
     val data1 = ObservableBuffer[Position](new Position("A", 26), new Position("B", 35), new Position("C", 18))
@@ -58,31 +58,37 @@ object BarChartWithTableViewDemo extends JFXApp3 {
             alignmentInParent = Pos.Center
             margin = Insets(25)
           }
-          center = new HBox { children = Seq(createBarChart("Speculations", data1), createBarChart("Predictions", data2)) }
+          center = new HBox {
+            children = Seq(createBarChart("Speculations", data1), createBarChart("Predictions", data2))
+          }
         }
       }
     }
-    def createBarChart(chartTitle: String, chartData: ObservableBuffer[Position]): BarChart[String, Number] = new BarChart(CategoryAxis(), NumberAxis()) {
-      title = chartTitle
-      data = XYChart.Series(chartData.map(d => XYChart.Data[String, Number](d.name(), d.value())))
-      legendVisible = false
-      onMouseClicked = _ => showAsTable(title(), chartData)
-    }
+    def createBarChart(chartTitle: String, chartData: ObservableBuffer[Position]): BarChart[String, Number] =
+      new BarChart(CategoryAxis(), NumberAxis()) {
+        title = chartTitle
+        data = XYChart.Series(chartData.map(d => XYChart.Data[String, Number](d.name(), d.value())))
+        legendVisible = false
+        onMouseClicked = _ => showAsTable(title(), chartData)
+      }
     def showAsTable(name: String, data: ObservableBuffer[Position]): Unit = {
       val tableView = new TableView[Position](data) {
-        columns ++= List(new TableColumn[Position, String] {
-          text = "Position"
-          cellValueFactory = {
-            _.value.name
+        columns ++= List(
+          new TableColumn[Position, String] {
+            text = "Position"
+            cellValueFactory = {
+              _.value.name
+            }
+            prefWidth = 180
+          },
+          new TableColumn[Position, Int] {
+            text = "Value"
+            cellValueFactory = {
+              _.value.value
+            }
+            prefWidth = 180
           }
-          prefWidth = 180
-        }, new TableColumn[Position, Int] {
-          text = "Value"
-          cellValueFactory = {
-            _.value.value
-          }
-          prefWidth = 180
-        })
+        )
       }
       new Stage {
         title = name

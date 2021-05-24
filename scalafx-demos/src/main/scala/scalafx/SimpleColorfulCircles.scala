@@ -67,7 +67,15 @@ object SimpleColorfulCircles extends JFXApp3 {
         content = circles :+ (new Rectangle {
           width <== _scene.width
           height <== _scene.height
-          fill = new LinearGradient(0, 1, 1, 0, true, NoCycle, Stops(16301397, 12648022, 6159297, 6603512, 12471031, 15556546, 15683660, 15885839))
+          fill = new LinearGradient(
+            0,
+            1,
+            1,
+            0,
+            true,
+            NoCycle,
+            Stops(16301397, 12648022, 6159297, 6603512, 12471031, 15556546, 15683660, 15885839)
+          )
           blendMode = Overlay
         })
       }

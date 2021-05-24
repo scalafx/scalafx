@@ -66,7 +66,7 @@ object VertexFormat {
  *   TC VertexFormat
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx/scene/shape/VertexFormat.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx/scene/shape/VertexFormat.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class VertexFormat(override val delegate: jfxss.VertexFormat) extends SFXDelegate[jfxss.VertexFormat] {
 

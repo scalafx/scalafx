@@ -40,7 +40,7 @@ object TextFlowDemo extends JFXApp3 {
         fill = Color.White
         root = new TextFlow {
           val family = "Helvetica"
-          val size = 20d
+          val size   = 20d
           val text1 = new Text {
             text = "Hello "
             font = Font(family, size)

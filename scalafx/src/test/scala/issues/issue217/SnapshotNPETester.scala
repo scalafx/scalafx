@@ -37,7 +37,7 @@ import scalafx.scene.media.{Media, MediaPlayer, MediaView}
 
 /**
  * Illustration ofd Issue 217. Originallu reported on ScalaFX Users
- * [[https://groups.google.com/forum/#!topic/scalafx-users/-NWgd40U_W0snapshot problem after upgrade to scalafx 8.0.60-R9]]
+ * [[https://groups.google.com/forum/#!topic/scalafx-users/-NWgd40U_W0snapshotproblem after upgrade to scalafx 8.0.60-R9]]
  */
 object SnapshotNPETester extends JFXApp {
   val movie     = "http://download.oracle.com/otndocs/products/javafx/oow2010-2.flv"

@@ -35,7 +35,7 @@ import scalafx.scene.image.{Image, WritableImage}
 import scala.language.implicitConversions
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingFXUtils.htmlJavaFX SwingFXUtils]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingFXUtils.htmlJavaFXSwingFXUtils]].
  *
  * @since
  *   8.0

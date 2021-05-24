@@ -147,7 +147,7 @@ class SubScene(override val delegate: jfxs.SubScene) extends Node(delegate) with
    * will be used.
    *
    * For additional information about using CSS with the scene graph, see the
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.htmlCSS Reference Guide]].
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.htmlCSSReference Guide]].
    *
    * @return
    *   The URL of the user-agent stylesheet that will be used by this SubScene, or null if has not been set.
@@ -160,7 +160,7 @@ class SubScene(override val delegate: jfxs.SubScene) extends Node(delegate) with
    * will be used.
    *
    * For additional information about using CSS with the scene graph, see the
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.htmlCSS Reference Guide]].
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.htmlCSSReference Guide]].
    *
    * @param url
    *   The URL is a hierarchical URI of the form `[scheme:][//authority][path]`. If the URL does not have a `[scheme:]`

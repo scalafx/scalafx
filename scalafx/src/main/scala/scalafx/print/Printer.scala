@@ -84,7 +84,7 @@ object Printer {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.MarginType.htmlJavaFX MarginType]].
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.MarginType.htmlJavaFXMarginType]].
    *
    * @since
    *   8.0
@@ -113,7 +113,7 @@ object Printer {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.htmlJavaFX Printer]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.htmlJavaFXPrinter]].
  *
  * @constructor
  *   Creates a new ScalaFX Printer from its JavaFX counterpart.

@@ -82,7 +82,7 @@ object Dialog {
  *   TC Dialog
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Dialog.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Dialog.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  */
 class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
     extends EventTarget(delegate)

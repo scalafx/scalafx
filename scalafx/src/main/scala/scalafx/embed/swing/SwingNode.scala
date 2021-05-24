@@ -51,7 +51,7 @@ object SwingNode {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingNode.htmlJavaFX SwingNode]]. This class is
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingNode.htmlJavaFXSwingNode]]. This class is
  * not implementing the `impl_*` methods from the original class.
  *
  * @constructor

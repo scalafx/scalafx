@@ -118,7 +118,7 @@ object ButtonBar {
 
   /**
    * Returns whether the given node is part of the uniform sizing calculations or not. By default all nodes that have
-   * not opted out (via [[scalafx.scene.control.ButtonBar.setButtonUniformSize(N o d e, b o o l e a n]] ) will return
+   * not opted out (via [[scalafx.scene.control.ButtonBar.setButtonUniformSize(No d e, b o o l e a n]] ) will return
    * true here.
    */
   def isButtonUniformSize(button: Node): Boolean = {
@@ -145,7 +145,7 @@ object ButtonBar {
    *   EN ButtonData
    * @define
    *   URL0
-   *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/javafx/scene/control/ButtonBar.ButtonData.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+   *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/javafx/scene/control/ButtonBar.ButtonData.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
    */
   object ButtonData extends SFXEnumDelegateCompanion[jfxsc.ButtonBar.ButtonData, ButtonData] {
 
@@ -284,7 +284,7 @@ object ButtonBar {
  *   TC ButtonBar
  * @define
  *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ButtonBar.html@define JFX JavaFX @define ORIGINALDOC Original Documentation]].
+ *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ButtonBar.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
  * @constructor
  *   Creates a default ButtonBar instance using the default properties for the users operating system.
  */
