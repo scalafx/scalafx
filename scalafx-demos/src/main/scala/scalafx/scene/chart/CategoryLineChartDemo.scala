@@ -28,25 +28,25 @@
 package scalafx.scene.chart
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
+import scalafx.application.JFXApp3
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.Side
 import scalafx.scene.Scene
 
-object CategoryLineChartDemo extends JFXApp {
-
-  val dataPairs = Seq(("Alpha", 50), ("Beta", 80), ("RC1", 90), ("RC2", 30), ("1.0", 122), ("1.1", 10))
-
-  stage = new JFXApp.PrimaryStage {
-    title = "CategoryLineChartDemo"
-    scene = new Scene {
-      root = new LineChart(CategoryAxis("X Axis"), NumberAxis("Y Axis")) {
-        title = "LineChart with Category Axis"
-        legendSide = Side.Right
-        data = XYChart.Series[String, Number](
-          "Series 1",
-          ObservableBuffer.from(dataPairs.map { case (x, y) => XYChart.Data[String, Number](x, y) })
-        )
+object CategoryLineChartDemo extends JFXApp3 {
+  override def start(): Unit = {
+    val dataPairs = Seq(("Alpha", 50), ("Beta", 80), ("RC1", 90), ("RC2", 30), ("1.0", 122), ("1.1", 10))
+    stage = new JFXApp3.PrimaryStage {
+      title = "CategoryLineChartDemo"
+      scene = new Scene {
+        root = new LineChart(CategoryAxis("X Axis"), NumberAxis("Y Axis")) {
+          title = "LineChart with Category Axis"
+          legendSide = Side.Right
+          data = XYChart.Series[String, Number]("Series 1", ObservableBuffer.from(dataPairs.map({
+            case (x, y) =>
+              XYChart.Data[String, Number](x, y)
+          })))
+        }
       }
     }
   }

@@ -28,8 +28,8 @@
 package scalafx.scene.input
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.Label
@@ -43,44 +43,39 @@ import scalafx.scene.layout.StackPane
  * @author
  *   Jarek Sacha
  */
-object DragEventTester extends JFXApp {
-
-  val stackPane = new StackPane {
-    padding = Insets(10)
-    children = new Label("Drop things here...")
-  }
-
-  stage = new PrimaryStage {
-    title = "DragEvent Tester"
-    scene = new Scene(stackPane, 200, 200) {
-      onDragOver = (event: DragEvent) => {
-        println("onDragOver: " + event)
-        event.consume()
-      }
-
-      onDragDone = (event: DragEvent) => {
-        println("onDragDone: " + event)
-        event.consume()
-      }
-
-      onDragDropped = (event: DragEvent) => {
-        println("onDragDropped: " + event)
-        event.consume()
-      }
-
-      onDragEntered = (event: DragEvent) => {
-        println("onDragEntered: " + event)
-        event.consume()
-      }
-
-      onDragExited = (event: DragEvent) => {
-        println("onDragExited: " + event)
-        event.consume()
-      }
-
-      onDragOver = (event: DragEvent) => {
-        println("onDragOver: " + event)
-        event.consume()
+object DragEventTester extends JFXApp3 {
+  override def start(): Unit = {
+    val stackPane = new StackPane {
+      padding = Insets(10)
+      children = new Label("Drop things here...")
+    }
+    stage = new PrimaryStage {
+      title = "DragEvent Tester"
+      scene = new Scene(stackPane, 200, 200) {
+        onDragOver = (event: DragEvent) => {
+          println("onDragOver: " + event)
+          event.consume()
+        }
+        onDragDone = (event: DragEvent) => {
+          println("onDragDone: " + event)
+          event.consume()
+        }
+        onDragDropped = (event: DragEvent) => {
+          println("onDragDropped: " + event)
+          event.consume()
+        }
+        onDragEntered = (event: DragEvent) => {
+          println("onDragEntered: " + event)
+          event.consume()
+        }
+        onDragExited = (event: DragEvent) => {
+          println("onDragExited: " + event)
+          event.consume()
+        }
+        onDragOver = (event: DragEvent) => {
+          println("onDragOver: " + event)
+          event.consume()
+        }
       }
     }
   }

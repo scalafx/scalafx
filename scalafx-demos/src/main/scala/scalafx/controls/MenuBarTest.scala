@@ -26,26 +26,27 @@
  */
 package scalafx.controls
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control.{Menu, MenuBar}
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.paint.Color
 
-object MenuBarTest extends JFXApp {
-
-  stage = new PrimaryStage {
-    title = "MenuBar Test"
-    width = 300
-    height = 225
-    scene = new Scene {
-      fill = Color.LightGray
-      root = new BorderPane {
-        top = new MenuBar {
-          useSystemMenuBar = true
-          minWidth = 100
-          menus.add(new Menu("test"))
+object MenuBarTest extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      title = "MenuBar Test"
+      width = 300
+      height = 225
+      scene = new Scene {
+        fill = Color.LightGray
+        root = new BorderPane {
+          top = new MenuBar {
+            useSystemMenuBar = true
+            minWidth = 100
+            menus.add(new Menu("test"))
+          }
         }
       }
     }

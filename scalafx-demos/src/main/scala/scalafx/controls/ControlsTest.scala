@@ -28,61 +28,33 @@
 package scalafx.controls
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
+import scalafx.application.JFXApp3
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.layout._
 
-object ControlsTest extends JFXApp {
-
-  val indicatorPane = new VBox {
-    children = List(new Label {
-      text = "LEFT"
-
-    })
-  }
-
-  val controlsPane = new VBox {
-    children = List(new Label {
-      text = "RIGHT"
-    })
-  }
-
-  val centerPane = new BorderPane {
-    top = new Label {
-      text = "Label"
+object ControlsTest extends JFXApp3 {
+  override def start(): Unit = {
+    val indicatorPane = new VBox { children = List(new Label { text = "LEFT" }) }
+    val controlsPane = new VBox { children = List(new Label { text = "RIGHT" }) }
+    val centerPane = new BorderPane {
+      top = new Label { text = "Label" }
+      center = new StackPane { children = List(new Button { text = "Button" }) }
     }
-    center = new StackPane {
-      children = List(new Button {
-        text = "Button"
-      })
+    val mainContent = new BorderPane {
+      left = indicatorPane
+      center = centerPane
+      right = controlsPane
     }
-  }
-
-  val mainContent = new BorderPane {
-    left = indicatorPane
-    center = centerPane
-    right = controlsPane
-  }
-
-  stage = new JFXApp.PrimaryStage {
-    title = "CheckBox Test"
-    width = 800
-    height = 600
-    scene = new Scene {
-      //      fill = Color.LIGHTGRAY
-      content = mainContent
+    stage = new JFXApp3.PrimaryStage {
+      title = "CheckBox Test"
+      width = 800
+      height = 600
+      scene = new Scene { content = mainContent }
     }
+    mainContent.prefHeight <== stage.scene().height
+    mainContent.prefWidth <== stage.scene().width
+    indicatorPane.prefWidth <== mainContent.width * 0.2d
+    controlsPane.prefWidth <== mainContent.width * 0.2d
   }
-  mainContent.prefHeight <== stage.scene().height
-  mainContent.prefWidth <== stage.scene().width
-  //  setPrefSize(stage.scene.width.get, stage.scene.height.get)
-
-  //  indicatorPane.prefHeight <== stage.scene.height
-  indicatorPane.prefWidth <== mainContent.width * 0.2
-  //  controlsPane.prefHeight <== stage.scene.height
-  controlsPane.prefWidth <== mainContent.width * 0.2
-  //  centerPane.prefHeight <== stage.scene.height
-  //  centerPane.prefWidth <== stage.scene.width * 0.6
-
 }

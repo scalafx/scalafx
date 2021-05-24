@@ -27,33 +27,28 @@
 
 package scalafx.scene.chart
 
-import scalafx.application.JFXApp
+import scalafx.application.JFXApp3
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.Side
 import scalafx.scene.Scene
 
-object BubbleChartDemo extends JFXApp {
-
-  stage = new JFXApp.PrimaryStage {
-    title = "BubbleChartDemo"
-    scene = new Scene {
-      val xAxis = NumberAxis("X", lowerBound = 0, upperBound = 150, tickUnit = 20)
-      val yAxis = NumberAxis("Y", lowerBound = 0, upperBound = 150, tickUnit = 20)
-      root = new BubbleChart(xAxis, yAxis) {
-        title = "Bubble Chart"
-        legendSide = Side.Right
-        data = ObservableBuffer(
-          xyrSeries("Series 1", Seq((30, 40, 10), (60, 20, 13), (10, 90, 7), (100, 40, 10), (50, 23, 5))),
-          xyrSeries("Series 2", Seq((13, 100, 7), (20, 80, 13), (100, 60, 10), (30, 40, 6), (50, 20, 12)))
-        )
+object BubbleChartDemo extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new JFXApp3.PrimaryStage {
+      title = "BubbleChartDemo"
+      scene = new Scene {
+        val xAxis = NumberAxis("X", lowerBound = 0, upperBound = 150, tickUnit = 20)
+        val yAxis = NumberAxis("Y", lowerBound = 0, upperBound = 150, tickUnit = 20)
+        root = new BubbleChart(xAxis, yAxis) {
+          title = "Bubble Chart"
+          legendSide = Side.Right
+          data = ObservableBuffer(xyrSeries("Series 1", Seq((30, 40, 10), (60, 20, 13), (10, 90, 7), (100, 40, 10), (50, 23, 5))), xyrSeries("Series 2", Seq((13, 100, 7), (20, 80, 13), (100, 60, 10), (30, 40, 6), (50, 20, 12))))
+        }
       }
     }
+    def xyrSeries(name: String, data: Seq[(Int, Int, Int)]) = XYChart.Series[Number, Number](name, ObservableBuffer.from(data.map({
+      case (x, y, r) =>
+        XYChart.Data[Number, Number](x, y, r)
+    })))
   }
-
-  /** Create XYChart.Series from a sequence of number triplets (x, y, radius). */
-  def xyrSeries(name: String, data: Seq[(Int, Int, Int)]) =
-    XYChart.Series[Number, Number](
-      name,
-      ObservableBuffer.from(data.map { case (x, y, r) => XYChart.Data[Number, Number](x, y, r) })
-    )
 }

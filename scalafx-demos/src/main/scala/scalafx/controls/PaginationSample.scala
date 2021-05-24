@@ -27,8 +27,8 @@
 
 package scalafx.controls
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control.{Hyperlink, Label, Pagination}
 import scalafx.scene.layout.{AnchorPane, VBox}
@@ -36,54 +36,38 @@ import scalafx.scene.layout.{AnchorPane, VBox}
 /**
  * Demo application based on Pagination example at [[http://docs.oracle.com/javafx/2/ui_controls/pagination.htm]].
  */
-object PaginationSample extends JFXApp {
-
-  private val itemsPerPage = 8
-
-  private def createPage(pageIndex: Int): VBox = {
-
-    def getPage(i: Int) = {
-      val link = new Hyperlink {
-        text = "Item " + (i + 1)
-        visited = true
+object PaginationSample extends JFXApp3 {
+  override def start(): Unit = {
+    val itemsPerPage = 8
+    def createPage(pageIndex: Int): VBox = {
+      def getPage(i: Int) = {
+        val link = new Hyperlink {
+          text = "Item " + (i + 1)
+          visited = true
+        }
+        new VBox {
+          children = List(link, new Label("""|Search results
+                       |for %s""".stripMargin.format(link.text.value)))
+        }
       }
-      new VBox {
-        children = List(
-          link,
-          new Label("""|Search results
-                       |for %s""".stripMargin.format(link.text.value))
-        )
-      }
+      val page = pageIndex * itemsPerPage
+      new VBox(5) { children = (page until page + itemsPerPage).map(getPage(_)) }
     }
-
-    val page = pageIndex * itemsPerPage
-    new VBox(5) {
-      children = (page until (page + itemsPerPage)).map(getPage(_))
+    def getAnchorPage(pagination: Pagination): AnchorPane = {
+      AnchorPane.setTopAnchor(pagination, 10.0d)
+      AnchorPane.setRightAnchor(pagination, 10.0d)
+      AnchorPane.setBottomAnchor(pagination, 10.0d)
+      AnchorPane.setLeftAnchor(pagination, 10.0d)
+      new AnchorPane { children = pagination }
     }
-  }
-
-  private def getAnchorPage(pagination: Pagination): AnchorPane = {
-    AnchorPane.setTopAnchor(pagination, 10.0)
-    AnchorPane.setRightAnchor(pagination, 10.0)
-    AnchorPane.setBottomAnchor(pagination, 10.0)
-    AnchorPane.setLeftAnchor(pagination, 10.0)
-
-    new AnchorPane {
-      children = pagination
+    val pagination = new Pagination(28, 0) {
+      style = "-fx-border-color:red;"
+      pageFactory = (pageIndex: Int) => createPage(pageIndex)
+    }
+    val anchor = this.getAnchorPage(pagination)
+    stage = new PrimaryStage {
+      title = "PaginationSample by ScalaFX"
+      scene = new Scene { content = anchor }
     }
   }
-
-  val pagination = new Pagination(28, 0) {
-    style = "-fx-border-color:red;"
-    pageFactory = (pageIndex: Int) => createPage(pageIndex)
-  }
-  val anchor = this.getAnchorPage(pagination)
-
-  stage = new PrimaryStage {
-    title = "PaginationSample by ScalaFX"
-    scene = new Scene {
-      content = anchor
-    }
-  }
-
 }

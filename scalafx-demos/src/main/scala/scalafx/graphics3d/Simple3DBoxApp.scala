@@ -27,8 +27,8 @@
 package scalafx.graphics3d
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene._
 import scalafx.scene.paint.{Color, PhongMaterial}
 import scalafx.scene.shape.{Box, DrawMode}
@@ -36,27 +36,19 @@ import scalafx.scene.transform.Transform._
 import scalafx.scene.transform.{Rotate, Translate}
 
 /** Demo of a triangular frame of a 3D box, originally based on example in Ensemble 8. */
-object Simple3DBoxApp extends JFXApp {
-
-  stage = new PrimaryStage {
-    scene = new Scene(300, 300, true, SceneAntialiasing.Balanced) {
-      // 3D content
-      content = new Box {
-        width = 5
-        height = 5
-        depth = 5
-        material = new PhongMaterial(Color.Red)
-        drawMode = DrawMode.Line
-      }
-
-      // Background
-      fill = Color.AliceBlue
-
-      // Modify point of view
-      camera = new PerspectiveCamera(true) {
-        transforms += (new Rotate(-20, Rotate.YAxis),
-        new Rotate(-20, Rotate.XAxis),
-        new Translate(0, 0, -15))
+object Simple3DBoxApp extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      scene = new Scene(300, 300, true, SceneAntialiasing.Balanced) {
+        content = new Box {
+          width = 5
+          height = 5
+          depth = 5
+          material = new PhongMaterial(Color.Red)
+          drawMode = DrawMode.Line
+        }
+        fill = Color.AliceBlue
+        camera = new PerspectiveCamera(true) { transforms += (new Rotate(-20, Rotate.YAxis), new Rotate(-20, Rotate.XAxis), new Translate(0, 0, -15)) }
       }
     }
   }

@@ -29,7 +29,7 @@ package scalafx.controls
 
 import javafx.scene.{control => jfxsc, text => jfxst}
 import scalafx.Includes._
-import scalafx.application.JFXApp
+import scalafx.application.JFXApp3
 import scalafx.collections.ObservableBuffer
 import scalafx.controls.controls._
 import scalafx.geometry.Pos
@@ -39,41 +39,35 @@ import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.text.TextAlignment
 
-object TooltipDemo extends JFXApp {
-
-  val myTooltip = new Tooltip
-
-  val btnTooltip = new Button {
-    text = "Mouse over me to see Tooltip"
-    tooltip = myTooltip
-    alignmentInParent = Pos.Center
-  }
-
-  val controlsPane = new VBox {
-    spacing = 5
-    fillWidth = true
-    alignment = Pos.Center
-    alignmentInParent = Pos.TopCenter
-    hgrow = Priority.Always
-    children = List(new TooltipControls(myTooltip), new PopupControlControls(myTooltip))
-  }
-
-  val mainPane = new VBox {
-    children = List(btnTooltip, controlsPane)
-  }
-
-  stage = new JFXApp.PrimaryStage {
-    title = "Tooltip Test"
-    width = 300
-    height = 600
-    scene = new Scene {
-      fill = Color.LightGray
-      content = mainPane
+object TooltipDemo extends JFXApp3 {
+  override def start(): Unit = {
+    val myTooltip = new Tooltip
+    val btnTooltip = new Button {
+      text = "Mouse over me to see Tooltip"
+      tooltip = myTooltip
+      alignmentInParent = Pos.Center
     }
+    val controlsPane = new VBox {
+      spacing = 5
+      fillWidth = true
+      alignment = Pos.Center
+      alignmentInParent = Pos.TopCenter
+      hgrow = Priority.Always
+      children = List(new TooltipControls(myTooltip), new PopupControlControls(myTooltip))
+    }
+    val mainPane = new VBox { children = List(btnTooltip, controlsPane) }
+    stage = new JFXApp3.PrimaryStage {
+      title = "Tooltip Test"
+      width = 300
+      height = 600
+      scene = new Scene {
+        fill = Color.LightGray
+        content = mainPane
+      }
+    }
+    mainPane.prefHeight <== stage.scene().height
+    mainPane.prefWidth <== stage.scene().width
   }
-  mainPane.prefHeight <== stage.scene().height
-  mainPane.prefWidth <== stage.scene().width
-
 }
 
 class TooltipControls(target: Tooltip) extends PropertiesNodes[Tooltip](target, "Tooltip Properties") {

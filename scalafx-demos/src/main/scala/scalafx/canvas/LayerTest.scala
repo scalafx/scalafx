@@ -28,8 +28,8 @@
 package scalafx.canvas
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.canvas.Canvas
 import scalafx.scene.control.{ChoiceBox, SelectionModel}
@@ -41,62 +41,43 @@ import scalafx.scene.{Group, Scene}
 /**
  * Example adapted from code showed in [[http://docs.oracle.com/javafx/2/canvas/jfxpub-canvas.htm]].
  */
-object LayerTest extends JFXApp {
-
-  //  Create Layers
-  // Layers 1&2 are the same size
-  private val layer1 = new Canvas(300, 250)
-  private val layer2 = new Canvas(300, 250)
-
-  // Obtain Graphics Contexts
-  private val gc1 = layer1.graphicsContext2D
-  gc1.fill = Color.Green
-  gc1.fillOval(50, 50, 20, 20)
-  private val gc2 = layer2.graphicsContext2D
-  gc2.fill = Color.Blue
-  gc2.fillOval(100, 100, 20, 20)
-
-  // Handle Layers
-  // Handler for Layer 1
-  layer1.onMousePressed = (e: MouseEvent) => {
-    gc1.fillOval(e.x, e.y, 20, 20)
-  }
-  // Handler for Layer 2
-  layer2.onMousePressed = (e: MouseEvent) => {
-    gc2.fillOval(e.x, e.y, 20, 20)
-  }
-
-  // Create Choice Box
-  val layer1Title = "Layer 1 is Green"
-  val layer2Title = "Layer 2 is Blue"
-  private val cb = new ChoiceBox[String] {
-    items = ObservableBuffer(layer1Title, layer2Title)
-  }
-  val selectionModel: SelectionModel[String] = cb.selectionModel.get
-  selectionModel.selectedItem.onChange((ov: Any, olaValue: Any, newValue: Any) => {
-    if (newValue == layer1Title) {
-      layer1.toFront()
-    } else if (newValue == layer2Title) {
-      layer2.toFront()
+object LayerTest extends JFXApp3 {
+  override def start(): Unit = {
+    val layer1 = new Canvas(300, 250)
+    val layer2 = new Canvas(300, 250)
+    val gc1 = layer1.graphicsContext2D
+    gc1.fill = Color.Green
+    gc1.fillOval(50, 50, 20, 20)
+    val gc2 = layer2.graphicsContext2D
+    gc2.fill = Color.Blue
+    gc2.fillOval(100, 100, 20, 20)
+    layer1.onMousePressed = (e: MouseEvent) => {
+      gc1.fillOval(e.x, e.y, 20, 20)
     }
-  })
-  cb.value = layer1Title
-
-  // Build GUI
-  private val borderPane = new BorderPane()
-  // Add Layers
-  borderPane.top = cb
-  borderPane.center = new Pane {
-    children = List(layer1, layer2)
+    layer2.onMousePressed = (e: MouseEvent) => {
+      gc2.fillOval(e.x, e.y, 20, 20)
+    }
+    val layer1Title = "Layer 1 is Green"
+    val layer2Title = "Layer 2 is Blue"
+    val cb = new ChoiceBox[String] { items = ObservableBuffer(layer1Title, layer2Title) }
+    val selectionModel: SelectionModel[String] = cb.selectionModel.get
+    selectionModel.selectedItem.onChange { (ov: Any, olaValue: Any, newValue: Any) => {
+      if (newValue == layer1Title) {
+        layer1.toFront()
+      } else if (newValue == layer2Title) {
+        layer2.toFront()
+      }
+    } }
+    cb.value = layer1Title
+    val borderPane = new BorderPane()
+    borderPane.top = cb
+    borderPane.center = new Pane { children = List(layer1, layer2) }
+    layer1.toFront()
+    val root = new Group
+    root.children = borderPane
+    stage = new PrimaryStage {
+      title = "Layer Test"
+      scene = new Scene(root)
+    }
   }
-  layer1.toFront()
-
-  private val root = new Group
-  root.children = borderPane
-
-  stage = new PrimaryStage {
-    title = "Layer Test"
-    scene = new Scene(root)
-  }
-
 }

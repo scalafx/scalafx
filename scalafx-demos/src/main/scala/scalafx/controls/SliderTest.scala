@@ -28,8 +28,8 @@
 package scalafx.controls
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.controls.controls.{PropertiesNodes, _}
 import scalafx.geometry.{Orientation, Pos}
 import scalafx.scene.Scene
@@ -38,39 +38,32 @@ import scalafx.scene.layout.{BorderPane, FlowPane, Priority, VBox}
 import scalafx.scene.paint.Color
 import scalafx.util.converter.DoubleStringConverter
 
-object SliderTest extends JFXApp {
-
-  val slider = new Slider {
-    alignmentInParent = Pos.Center
-  }
-
-  val controlsPane = new VBox {
-    spacing = 5
-    fillWidth = true
-    alignment = Pos.Center
-    hgrow = Priority.Never
-    children = List(new SliderControls(slider), new ControlControls(slider))
-  }
-
-  val mainPane = new BorderPane {
-    top = new FlowPane {
-      children = List(slider)
+object SliderTest extends JFXApp3 {
+  override def start(): Unit = {
+    val slider = new Slider { alignmentInParent = Pos.Center }
+    val controlsPane = new VBox {
+      spacing = 5
+      fillWidth = true
+      alignment = Pos.Center
+      hgrow = Priority.Never
+      children = List(new SliderControls(slider), new ControlControls(slider))
     }
-    center = controlsPane
-    vgrow = Priority.Always
-    hgrow = Priority.Always
-  }
-
-  stage = new PrimaryStage {
-    title = "Slider Test"
-    width = 300
-    height = 380
-    scene = new Scene {
-      fill = Color.LightGray
-      content = mainPane
+    val mainPane = new BorderPane {
+      top = new FlowPane { children = List(slider) }
+      center = controlsPane
+      vgrow = Priority.Always
+      hgrow = Priority.Always
+    }
+    stage = new PrimaryStage {
+      title = "Slider Test"
+      width = 300
+      height = 380
+      scene = new Scene {
+        fill = Color.LightGray
+        content = mainPane
+      }
     }
   }
-
 }
 
 class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Slider Properties") {

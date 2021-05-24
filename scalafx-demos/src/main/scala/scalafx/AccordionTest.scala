@@ -32,23 +32,22 @@
 
 package scalafx
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.paint.Color
 import scalafx.scene.shape._
 
-object AccordionTest extends JFXApp {
-
-  stage = new PrimaryStage {
-    width = 600
-    height = 450
-    scene = new Scene {
-      fill = Color.LightGreen
-      content = new Accordion {
-        panes = List(
-          new TitledPane {
+object AccordionTest extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      width = 600
+      height = 450
+      scene = new Scene {
+        fill = Color.LightGreen
+        content = new Accordion {
+          panes = List(new TitledPane {
             content = new Arc {
               radiusX = 25
               radiusY = 50
@@ -58,8 +57,8 @@ object AccordionTest extends JFXApp {
               stroke = Color.Yellow
               strokeWidth = 3
             }
-          }
-        )
+          })
+        }
       }
     }
   }

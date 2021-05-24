@@ -29,8 +29,8 @@
  */
 package scalafx.controls.controls
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.beans.property._
 import scalafx.scene.Scene
 import scalafx.scene.control._
@@ -109,27 +109,17 @@ class SliderLabelControl(property: DoubleProperty) extends FlowPane {
   super.hgap = 5.0
 }
 
-object SliderLabelControlDemo extends JFXApp {
-
-  val x: java.lang.Double = 5.0
-  val value               = new IntegerProperty(1.asInstanceOf[java.lang.Object], "value")
-  //new DoubleProperty(x, "Value")
-
-  val lblValue = new Label {
-    text <== value.asString("%2d")
-  }
-
-  val sldValue = new SliderLabelControl(value)
-
-  stage = new PrimaryStage {
-    height = 100
-    width = 200
-    title = "Slider Label Control Demo"
-    scene = new Scene {
-      content = new FlowPane {
-        children = List(lblValue, sldValue)
-      }
+object SliderLabelControlDemo extends JFXApp3 {
+  override def start(): Unit = {
+    val x: java.lang.Double = 5.0d
+    val value = new IntegerProperty(1.asInstanceOf[java.lang.Object], "value")
+    val lblValue = new Label { text <== value.asString("%2d") }
+    val sldValue = new SliderLabelControl(value)
+    stage = new PrimaryStage {
+      height = 100
+      width = 200
+      title = "Slider Label Control Demo"
+      scene = new Scene { content = new FlowPane { children = List(lblValue, sldValue) } }
     }
   }
-
 }

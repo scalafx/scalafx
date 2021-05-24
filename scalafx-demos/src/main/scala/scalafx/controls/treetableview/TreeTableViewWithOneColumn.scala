@@ -27,8 +27,8 @@
 
 package scalafx.controls.treetableview
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control.TreeTableColumn.sfxTreeTableColumn2jfx
 import scalafx.scene.control.{TreeItem, TreeTableColumn, TreeTableView}
@@ -37,31 +37,26 @@ import scalafx.scene.control.{TreeItem, TreeTableColumn, TreeTableView}
  * TreeTableView with One Column. ScalaFX version of example 15-1 in JavaFX
  * [[https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/tree-table-view.htmTree Table View tutorial]].
  */
-object TreeTableViewWithOneColumn extends JFXApp {
-
-  // Creating items to be displayed in the TreeTableView
-  val rootNode = new TreeItem("Root node") {
-    expanded = true
-    children = Seq(
-      new TreeItem("Child Node 1"),
-      new TreeItem("Child Node 2"),
-      new TreeItem("Child Node 3")
-    )
-  }
-
-  // Creating a stage with tree table view
-  stage = new PrimaryStage {
-    scene = new Scene {
-      title = "TreeTableView with One Column"
-      root = new TreeTableView(rootNode) {
-        columns += new TreeTableColumn[String, String]("Column") {
-          prefWidth = 150
-          cellValueFactory = { p => p.value.value }
+object TreeTableViewWithOneColumn extends JFXApp3 {
+  override def start(): Unit = {
+    val rootNode = new TreeItem("Root node") {
+      expanded = true
+      children = Seq(new TreeItem("Child Node 1"), new TreeItem("Child Node 2"), new TreeItem("Child Node 3"))
+    }
+    stage = new PrimaryStage {
+      scene = new Scene {
+        title = "TreeTableView with One Column"
+        root = new TreeTableView(rootNode) {
+          columns += (new TreeTableColumn[String, String]("Column") {
+            prefWidth = 150
+            cellValueFactory = {
+              p => p.value.value
+            }
+          })
+          prefWidth = 152
+          showRoot = true
         }
-        prefWidth = 152
-        showRoot = true
       }
     }
   }
-
 }

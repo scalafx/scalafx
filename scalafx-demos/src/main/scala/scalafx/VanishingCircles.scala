@@ -30,8 +30,8 @@ package scalafx
 import scalafx.Includes._
 import scalafx.animation.Animation.Indefinite
 import scalafx.animation.Timeline
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.effect.BoxBlur
 import scalafx.scene.paint.Color._
@@ -43,41 +43,36 @@ import scala.math.random
 /**
  * Vanishing Circles
  */
-object VanishingCircles extends JFXApp {
-  var circles: Seq[Circle] = null
-  stage = new PrimaryStage {
-    title = "Vanishing Circles"
-    width = 800
-    height = 600
-    scene = new Scene {
-      fill = Black
-      circles = for (i <- 0 until 50) yield new Circle {
-        centerX = random * 800
-        centerY = random * 600
-        radius = 150
-        fill = color(random, random, random, .2)
-        effect = new BoxBlur(10, 10, 3)
-        // add this for binding:
-        strokeWidth <== when(hover) choose 4 otherwise 0
-        stroke = White
-        // add this for event listeners:
-        onMouseClicked = _ =>
-          Timeline(at(3 s) {
+object VanishingCircles extends JFXApp3 {
+  override def start(): Unit = {
+    var circles: Seq[Circle] = null
+    stage = new PrimaryStage {
+      title = "Vanishing Circles"
+      width = 800
+      height = 600
+      scene = new Scene {
+        fill = Black
+        circles = for (i <- 0 until 50) yield new Circle {
+          centerX = random * 800
+          centerY = random * 600
+          radius = 150
+          fill = color(random, random, random, 0.2d)
+          effect = new BoxBlur(10, 10, 3)
+          strokeWidth <== when(hover) choose 4 otherwise 0
+          stroke = White
+          onMouseClicked = _ => Timeline(at(3.s) {
             radius -> 0
           }).play()
+        }
+        content = circles
       }
-      content = circles
     }
+    new Timeline {
+      cycleCount = Indefinite
+      autoReverse = true
+      keyFrames = for (circle <- circles) yield at(40.s) {
+        Set(circle.centerX -> random * stage.width(), circle.centerY -> random * stage.height())
+      }
+    }.play()
   }
-  // add this for animation:
-  new Timeline {
-    cycleCount = Indefinite
-    autoReverse = true
-    keyFrames = for (circle <- circles) yield at(40 s) {
-      Set(
-        circle.centerX -> random * stage.width(),
-        circle.centerY -> random * stage.height()
-      )
-    }
-  }.play()
 }

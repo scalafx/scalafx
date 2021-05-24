@@ -26,8 +26,8 @@
  */
 package scalafx.canvas
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.canvas.Canvas
 import scalafx.scene.paint.Color
@@ -36,33 +36,30 @@ import scalafx.scene.shape.ArcType
 /**
  * Example adapted from code showed in [[http://docs.oracle.com/javafx/2/canvas/jfxpub-canvas.htm]].
  */
-object BasicOpsTest extends JFXApp {
-
-  val canvas = new Canvas(300, 300)
-  val gc     = canvas.graphicsContext2D
-
-  gc.fill = Color.Green
-  gc.stroke = Color.Blue
-  gc.lineWidth = 5
-  gc.strokeLine(40, 10, 10, 40)
-  gc.fillOval(10, 60, 30, 30)
-  gc.strokeOval(60, 60, 30, 30)
-  gc.fillRoundRect(110, 60, 30, 30, 10, 10)
-  gc.strokeRoundRect(160, 60, 30, 30, 10, 10)
-  gc.fillArc(10, 110, 30, 30, 45, 240, ArcType.Open)
-  gc.fillArc(60, 110, 30, 30, 45, 240, ArcType.Chord)
-  gc.fillArc(110, 110, 30, 30, 45, 240, ArcType.Round)
-  gc.strokeArc(10, 160, 30, 30, 45, 240, ArcType.Open)
-  gc.strokeArc(60, 160, 30, 30, 45, 240, ArcType.Chord)
-  gc.strokeArc(110, 160, 30, 30, 45, 240, ArcType.Round)
-  gc.fillPolygon(Seq((10.0, 210), (40, 210), (10, 240), (40, 240)))
-  gc.strokePolygon(Seq((60.0, 210), (90, 210), (60, 240), (90, 240)))
-  gc.strokePolyline(Seq((110.0, 210), (140, 210), (110, 240), (140, 240)))
-
-  stage = new PrimaryStage {
-    title = "Drawing Operations Test"
-    scene = new Scene {
-      content = canvas
+object BasicOpsTest extends JFXApp3 {
+  override def start(): Unit = {
+    val canvas = new Canvas(300, 300)
+    val gc = canvas.graphicsContext2D
+    gc.fill = Color.Green
+    gc.stroke = Color.Blue
+    gc.lineWidth = 5
+    gc.strokeLine(40, 10, 10, 40)
+    gc.fillOval(10, 60, 30, 30)
+    gc.strokeOval(60, 60, 30, 30)
+    gc.fillRoundRect(110, 60, 30, 30, 10, 10)
+    gc.strokeRoundRect(160, 60, 30, 30, 10, 10)
+    gc.fillArc(10, 110, 30, 30, 45, 240, ArcType.Open)
+    gc.fillArc(60, 110, 30, 30, 45, 240, ArcType.Chord)
+    gc.fillArc(110, 110, 30, 30, 45, 240, ArcType.Round)
+    gc.strokeArc(10, 160, 30, 30, 45, 240, ArcType.Open)
+    gc.strokeArc(60, 160, 30, 30, 45, 240, ArcType.Chord)
+    gc.strokeArc(110, 160, 30, 30, 45, 240, ArcType.Round)
+    gc.fillPolygon(Seq((10.0d, 210), (40, 210), (10, 240), (40, 240)))
+    gc.strokePolygon(Seq((60.0d, 210), (90, 210), (60, 240), (90, 240)))
+    gc.strokePolyline(Seq((110.0d, 210), (140, 210), (110, 240), (140, 240)))
+    stage = new PrimaryStage {
+      title = "Drawing Operations Test"
+      scene = new Scene { content = canvas }
     }
   }
 }

@@ -27,29 +27,24 @@
 
 package scalafx.controls
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.{Button, ButtonBar, Label}
 import scalafx.scene.layout.VBox
 
-object ButtonBarDemo extends JFXApp {
-
-  stage = new PrimaryStage {
-    scene = new Scene {
-      title = "ButtonBar Demo"
-      root = new VBox {
-        children = Seq(
-          new Label("Three buttons are placed on a button bar below."),
-          new ButtonBar {
-            buttons = Seq(new Button("One"), new Button("Two"), new Button("Three"))
-          }
-        )
-        spacing = 10
-        padding = Insets(10)
+object ButtonBarDemo extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      scene = new Scene {
+        title = "ButtonBar Demo"
+        root = new VBox {
+          children = Seq(new Label("Three buttons are placed on a button bar below."), new ButtonBar { buttons = Seq(new Button("One"), new Button("Two"), new Button("Three")) })
+          spacing = 10
+          padding = Insets(10)
+        }
       }
     }
   }
-
 }

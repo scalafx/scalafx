@@ -41,8 +41,8 @@ package scalafx.imaginej
 
 import scalafx.Includes._
 import scalafx.animation.Timeline
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.imaginej.Constants._
 import scalafx.scene.Scene
 import scalafx.scene.input.MouseEvent
@@ -404,12 +404,11 @@ object theControl extends Control
 // jumping frogs puzzle //
 //////////////////////////
 
-object JumpingFrogsPuzzle extends JFXApp {
-
-  stage = new PrimaryStage {
-    title = TITLE
-    scene = new Scene {
-      content = theViewValues.canvasShape :: theViewValues.stoneShapes ::: theView.frogShapes
+object JumpingFrogsPuzzle extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      title = TITLE
+      scene = new Scene { content = theViewValues.canvasShape :: theViewValues.stoneShapes ::: theView.frogShapes }
     }
   }
 }

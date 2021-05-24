@@ -27,20 +27,20 @@
 
 package scalafx
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.{Arc, Circle, Rectangle}
 
-object HelloJavaFX extends JFXApp {
-  stage = new PrimaryStage {
-    width = 600
-    height = 450
-    scene = new Scene {
-      fill = Color.LightGreen
-      content = List(
-        new Rectangle {
+object HelloJavaFX extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      width = 600
+      height = 450
+      scene = new Scene {
+        fill = Color.LightGreen
+        content = List(new Rectangle {
           x = 25
           y = 40
           width = 100
@@ -48,16 +48,14 @@ object HelloJavaFX extends JFXApp {
           fill = Color.Red
           stroke = Color.Blue
           strokeWidth = 5
-        },
-        new Circle {
+        }, new Circle {
           centerX = 30
           centerY = 50
           radius = 25
           fill = Color.Blue
           stroke = Color.Blue.brighter
           strokeWidth = 3
-        },
-        new Arc {
+        }, new Arc {
           centerX = 100
           centerY = 50
           radiusX = 25
@@ -67,8 +65,8 @@ object HelloJavaFX extends JFXApp {
           fill = Color.Black
           stroke = Color.Yellow
           strokeWidth = 3
-        }
-      )
+        })
+      }
     }
   }
 }

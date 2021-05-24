@@ -28,7 +28,7 @@
 package scalafx.controls
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
+import scalafx.application.JFXApp3
 import scalafx.controls.controls.{ControlControls, TextFieldControls, TextInputControlControls}
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
@@ -36,38 +36,32 @@ import scalafx.scene.control.TextField
 import scalafx.scene.layout.{BorderPane, FlowPane, Priority, VBox}
 import scalafx.scene.paint.Color
 
-object TextFieldTest extends JFXApp {
-
-  val textField = new TextField
-
-  val controlsPane = new VBox {
-    spacing = 5
-    fillWidth = true
-    alignment = Pos.Center
-    hgrow = Priority.Never
-    children =
-      List(new TextFieldControls(textField), new TextInputControlControls(textField), new ControlControls(textField))
-  }
-
-  val mainPane = new BorderPane {
-    top = new FlowPane {
-      children = List(textField)
+object TextFieldTest extends JFXApp3 {
+  override def start(): Unit = {
+    val textField = new TextField
+    val controlsPane = new VBox {
+      spacing = 5
+      fillWidth = true
+      alignment = Pos.Center
+      hgrow = Priority.Never
+      children = List(new TextFieldControls(textField), new TextInputControlControls(textField), new ControlControls(textField))
     }
-    center = controlsPane
-    vgrow = Priority.Always
-    hgrow = Priority.Always
-  }
-
-  stage = new JFXApp.PrimaryStage {
-    title = "TextField Test"
-    width = 300
-    height = 400
-    scene = new Scene {
-      fill = Color.LightGray
-      content = mainPane
+    val mainPane = new BorderPane {
+      top = new FlowPane { children = List(textField) }
+      center = controlsPane
+      vgrow = Priority.Always
+      hgrow = Priority.Always
     }
+    stage = new JFXApp3.PrimaryStage {
+      title = "TextField Test"
+      width = 300
+      height = 400
+      scene = new Scene {
+        fill = Color.LightGray
+        content = mainPane
+      }
+    }
+    mainPane.prefHeight <== stage.scene().height
+    mainPane.prefWidth <== stage.scene().width
   }
-  mainPane.prefHeight <== stage.scene().height
-  mainPane.prefWidth <== stage.scene().width
-
 }

@@ -28,8 +28,8 @@
 package scalafx.controls
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.event.ActionEvent
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
@@ -47,71 +47,53 @@ import scalafx.util.StringConverter
  * The changes in the input text field are monitored and filtered using TextFormatter parameter `filter`. The examines
  * the change and modifies it as needed to preserve the prompt text "> " at the beginning.
  */
-object TextFormatterWithChangeFilterDemo extends JFXApp {
-
-  case class Message(text: String) {
-    override def toString = "\"" + text + "\""
-  }
-
-  val prompt = "> "
-
-  val converter = new StringConverter[Message] {
-    override def fromString(s: String): Message = {
-      val r =
-        if (s.startsWith(prompt)) s.substring(prompt.length)
-        else s
-      Message(r)
+object TextFormatterWithChangeFilterDemo extends JFXApp3 {
+  override def start(): Unit = {
+    case class Message(text: String) { override def toString = "\"" + text + "\"" }
+    val prompt = "> "
+    val converter = new StringConverter[Message] {
+      override def fromString(s: String): Message = {
+        val r = if (s.startsWith(prompt)) s.substring(prompt.length) else s
+        Message(r)
+      }
+      override def toString(v: Message): String = {
+        prompt + v.text
+      }
     }
-    override def toString(v: Message): String = {
-      prompt + v.text
+    val filter: Change => Change = { (change: Change) => 
+      if (change.controlNewText.length <= prompt.length) {
+        change.text = prompt.substring(change.controlNewText.length)
+      }
+      if (change.anchor < prompt.length) change.anchor = prompt.length
+      if (change.caretPosition < prompt.length) change.caretPosition = prompt.length
+      change
     }
-  }
-
-  // Filter the change restoring prompt if it was removed and correcting caret position
-  val filter: (Change) => Change = { (change: Change) =>
-    // Restore prompt if part was deleted
-    if (change.controlNewText.length <= prompt.length) {
-      change.text = prompt.substring(change.controlNewText.length)
+    val formatter = new TextFormatter[Message](converter, Message("hello"), filter)
+    val outputTextArea = new TextArea {
+      editable = false
+      focusTraversable = false
     }
-    // Restore caret position if it moved over the prompt
-    if (change.anchor < prompt.length) change.anchor = prompt.length
-    if (change.caretPosition < prompt.length) change.caretPosition = prompt.length
-    change
-  }
-  val formatter = new TextFormatter[Message](converter, Message("hello"), filter)
-
-  val outputTextArea = new TextArea {
-    editable = false
-    focusTraversable = false
-  }
-
-  val textField = new TextField {
-    text = prompt
-    textFormatter = formatter
-    onAction = (a: ActionEvent) => {
-      val str     = text()
-      val message = s"${converter.fromString(str)}\n"
-      outputTextArea.text = message + outputTextArea.text()
-      text() = ""
+    val textField = new TextField {
+      text = prompt
+      textFormatter = formatter
+      onAction = (a: ActionEvent) => {
+        val str = text()
+        val message = s"${converter.fromString(str)}\n"
+        outputTextArea.text = message + outputTextArea.text()
+        text() = ""
+      }
     }
-  }
-
-  stage = new PrimaryStage {
-    scene = new Scene(300, 300) {
-      title = "TextFormatter Demo"
-      root = new VBox {
-        spacing = 6
-        padding = Insets(10)
-        children = Seq(
-          new Label("Example of using `TextFormatter` to ensure that the input field includes prompt text \"> \".") {
-            wrapText = true
-          },
-          new Label("Type message at the prompt. Press \"Enter\" to send."),
-          new BorderPane {
+    stage = new PrimaryStage {
+      scene = new Scene(300, 300) {
+        title = "TextFormatter Demo"
+        root = new VBox {
+          spacing = 6
+          padding = Insets(10)
+          children = Seq(new Label("Example of using `TextFormatter` to ensure that the input field includes prompt text \"> \".") { wrapText = true }, new Label("Type message at the prompt. Press \"Enter\" to send."), new BorderPane {
             top = textField
             center = outputTextArea
-          }
-        )
+          })
+        }
       }
     }
   }

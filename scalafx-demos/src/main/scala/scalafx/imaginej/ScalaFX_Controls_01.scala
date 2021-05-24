@@ -41,8 +41,8 @@ package scalafx.imaginej
 //
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control.Label
 import scalafx.scene.image.{Image, ImageView}
@@ -60,51 +60,45 @@ import scalafx.scene.text.{Font, TextAlignment}
  * http://docs.oracle.com/javafx/2.0/ui_controls/label.htm
  */
 
-object ScalaFX_Controls_01 extends JFXApp {
-  val labelsImageView = new ImageView {
-    image = new Image(this, "images/labels.jpg")
-  }
-  val searchLabel = new Label {
-    text = "Search"
-    graphic = labelsImageView
-    font = Font.font("Arial", 30)
-    textFill = Color.web("#0076a3")
-    textAlignment = TextAlignment.Justify
-  }
-  val valuesLabel = new Label {
-    text = "Values"
-    font = Font.font("Cambria", 32)
-    rotate = 270
-    translateY = 50
-  }
-  val wrappedLabel = new Label {
-    text = "A label that needs to be wrapped"
-    wrapText = true
-    translateY = 50
-    prefWidth = 100
-    onMouseEntered = { (_: MouseEvent) =>
-      scaleX = 1.5
-      scaleY = 1.5
+object ScalaFX_Controls_01 extends JFXApp3 {
+  override def start(): Unit = {
+    val labelsImageView = new ImageView { image = new Image(this, "images/labels.jpg") }
+    val searchLabel = new Label {
+      text = "Search"
+      graphic = labelsImageView
+      font = Font.font("Arial", 30)
+      textFill = Color.web("#0076a3")
+      textAlignment = TextAlignment.Justify
     }
-    onMouseExited = { (_: MouseEvent) =>
-      scaleX = 1
-      scaleY = 1
+    val valuesLabel = new Label {
+      text = "Values"
+      font = Font.font("Cambria", 32)
+      rotate = 270
+      translateY = 50
     }
-  }
-  val hBox = new HBox {
-    spacing = 10
-    children = List(
-      searchLabel,
-      valuesLabel,
-      wrappedLabel
-    )
-  }
-  stage = new PrimaryStage {
-    title = "ScalaFX Controls 01"
-    width = 500
-    height = 180
-    scene = new Scene {
-      content = hBox
+    val wrappedLabel = new Label {
+      text = "A label that needs to be wrapped"
+      wrapText = true
+      translateY = 50
+      prefWidth = 100
+      onMouseEntered = { _ => 
+        scaleX = 1.5d
+        scaleY = 1.5d
+      }
+      onMouseExited = { _ => 
+        scaleX = 1
+        scaleY = 1
+      }
+    }
+    val hBox = new HBox {
+      spacing = 10
+      children = List(searchLabel, valuesLabel, wrappedLabel)
+    }
+    stage = new PrimaryStage {
+      title = "ScalaFX Controls 01"
+      width = 500
+      height = 180
+      scene = new Scene { content = hBox }
     }
   }
 }

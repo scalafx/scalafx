@@ -27,8 +27,8 @@
 
 package scalafx.controls
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
@@ -38,42 +38,28 @@ import scalafx.scene.layout.{HBox, VBox}
 /**
  * A sample that demonstrates the Spinner control.
  */
-object SpinnersDemo extends JFXApp {
-
-  val styles = Seq(
-    "spinner", // defaults to arrows on right stacked vertically
-    Spinner.StyleClassArrowsOnRightHorizontal,
-    Spinner.StyleClassArrowsOnLeftVertical,
-    Spinner.StyleClassArrowsOnLeftHorizontal,
-    Spinner.StyleClassSplitArrowsVertical,
-    Spinner.StyleClassSplitArrowsHorizontal
-  )
-
-  val intSpinners = for (s <- styles) yield new Spinner[Integer](1, 99, 5) {
-    styleClass += s
-    prefWidth = 100
-  }
-
-  val stringSpinners = for (s <- styles) yield new Spinner[String](ObservableBuffer("Grace", "Matt", "Katie")) {
-    styleClass += s
-    prefWidth = 100
-  }
-
-  val doubleSpinners = for (s <- styles) yield new Spinner[Double](0.0, 1.0, 0.5, 0.01) {
-    styleClass += s
-    prefWidth = 100
-  }
-
-  stage = new PrimaryStage {
-    title = "Spinners Demo"
-    scene = new Scene {
-      content = new VBox(30) {
-        children = Seq(
-          new HBox(30, intSpinners: _*),
-          new HBox(30, doubleSpinners: _*),
-          new HBox(30, stringSpinners: _*)
-        )
-        padding = Insets(24)
+object SpinnersDemo extends JFXApp3 {
+  override def start(): Unit = {
+    val styles = Seq("spinner", Spinner.StyleClassArrowsOnRightHorizontal, Spinner.StyleClassArrowsOnLeftVertical, Spinner.StyleClassArrowsOnLeftHorizontal, Spinner.StyleClassSplitArrowsVertical, Spinner.StyleClassSplitArrowsHorizontal)
+    val intSpinners = for (s <- styles) yield new Spinner[Integer](1, 99, 5) {
+      styleClass += s
+      prefWidth = 100
+    }
+    val stringSpinners = for (s <- styles) yield new Spinner[String](ObservableBuffer("Grace", "Matt", "Katie")) {
+      styleClass += s
+      prefWidth = 100
+    }
+    val doubleSpinners = for (s <- styles) yield new Spinner[Double](0.0d, 1.0d, 0.5d, 0.01d) {
+      styleClass += s
+      prefWidth = 100
+    }
+    stage = new PrimaryStage {
+      title = "Spinners Demo"
+      scene = new Scene {
+        content = new VBox(30) {
+          children = Seq(new HBox(30, intSpinners: _*), new HBox(30, doubleSpinners: _*), new HBox(30, stringSpinners: _*))
+          padding = Insets(24)
+        }
       }
     }
   }

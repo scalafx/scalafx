@@ -39,7 +39,7 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import scalafx.application.JFXApp
+import scalafx.application.JFXApp3
 
 /**
  * @author
@@ -50,84 +50,4 @@ import scalafx.application.JFXApp
  * http://docs.oracle.com/javafx/2.0/ui_controls/checkbox.htm#CHDFEJCD
  */
 
-object ScalaFX_Controls_05 extends JFXApp {
-
-  //  val priorityLabel = new Label {
-  //    text = "Priority:"
-  //  }
-  //
-  //  val theToggleGroup = new ToggleGroup {
-  //
-  //  }
-  //
-  //  val minorToggleButton = new ToggleButton {
-  //    text = "Minor"
-  //    toggleGroup = theToggleGroup
-  //    userData = Color.LIGHTGREEN
-  //    selected = true
-  //    style = "-fx-base: lightgreen;"
-  //  }
-  //
-  //  val majorToggleButton = new ToggleButton {
-  //    text = "Major"
-  //    toggleGroup = theToggleGroup
-  //    userData = Color.LIGHTBLUE
-  //    selected = true
-  //    style = "-fx-base: lightblue;"
-  //  }
-  //
-  //  val criticalToggleButton = new ToggleButton {
-  //    text = "Critical"
-  //    toggleGroup = theToggleGroup
-  //    userData = Color.SALMON
-  //    selected = true
-  //    style = "-fx-base: salmon;"
-  //  }
-  //
-  //  val hBox = new HBox {
-  //    content = List(
-  //      minorToggleButton,
-  //      majorToggleButton,
-  //      criticalToggleButton
-  //    )
-  //  }
-  //
-  //  val rectangle = new Rectangle {
-  //    width = 158
-  //    height = 50
-  //    fill = Color.WHITE
-  //    stroke = Color.DARKGRAY
-  //    strokeWidth = 2
-  //    arcHeight = 10
-  //    arcWidth = 10
-  //  }
-  //
-  //  val vBox = new VBox {
-  //    padding = Insets(20, 10, 10, 20)
-  //    content = List(
-  //      priorityLabel,
-  //      hBox,
-  //      rectangle
-  //    )
-  //  }
-  //
-  //  theToggleGroup.selectedToggle onChange {
-  //    (_, _, newToggle) =>
-  //      if (newToggle != null) {
-  //        val selectedToggle = theToggleGroup.getSelectedToggle()
-  //        val userDataColor = selectedToggle.getUserData().asInstanceOf[Color]
-  //        rectangle.fill = userDataColor
-  //      } else {
-  //        rectangle.fill = Color.WHITE
-  //      }
-  //  }
-  //
-  //  stage = new PrimaryStage {
-  //    title = "ScalaFX Controls 05"
-  //    width = 250
-  //    height = 180
-  //    scene = new Scene {
-  //      content = vBox
-  //    }
-  //  }
-}
+object ScalaFX_Controls_05 extends JFXApp3 { override def start(): Unit = {} }

@@ -40,8 +40,8 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
@@ -61,85 +61,64 @@ import scalafx.scene.text.{Font, FontWeight, Text}
  * http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
  */
 
-object ScalaFX_Layout_Panes_04 extends JFXApp {
-  val currentButton = new Button {
-    text = "Current"
-    prefWidth = 100
-    prefHeight = 20
-  }
-  val projectedButton = new Button {
-    text = "Projected"
-    prefWidth = 100
-    prefHeight = 20
-  }
-  val questionText: Text = new Text {
-    fill = Color.White
-    stroke = Color.DarkBlue
-    font = Font.font("Amble Cn", FontWeight.Bold, 18)
-    text = " ? "
-  }
-  val questionRectangle = new Rectangle {
-    fill = Color.LightBlue
-    stroke = Color.White
-    arcHeight = 3.5
-    arcWidth = 3.5
-    width = questionText.boundsInLocal.getValue.getWidth + 10
-    height = questionText.boundsInLocal.getValue.getHeight + 10
-  }
-  val stackPane = new StackPane {
-    alignment = Pos.Center
-    children = List(questionRectangle, questionText)
-  }
-  val hBox = new HBox {
-    spacing = 10
-    padding = Insets(15, 12, 15, 12)
-    style = "-fx-background-color: #336699"
-    children = List(
-      currentButton,
-      projectedButton,
-      new Rectangle {
-        width = 200
-      },
-      stackPane
-    )
-  }
-  val data = List(
-    new Text {
+object ScalaFX_Layout_Panes_04 extends JFXApp3 {
+  override def start(): Unit = {
+    val currentButton = new Button {
+      text = "Current"
+      prefWidth = 100
+      prefHeight = 20
+    }
+    val projectedButton = new Button {
+      text = "Projected"
+      prefWidth = 100
+      prefHeight = 20
+    }
+    val questionText: Text = new Text {
+      fill = Color.White
+      stroke = Color.DarkBlue
+      font = Font.font("Amble Cn", FontWeight.Bold, 18)
+      text = " ? "
+    }
+    val questionRectangle = new Rectangle {
+      fill = Color.LightBlue
+      stroke = Color.White
+      arcHeight = 3.5d
+      arcWidth = 3.5d
+      width = questionText.boundsInLocal.getValue.getWidth + 10
+      height = questionText.boundsInLocal.getValue.getHeight + 10
+    }
+    val stackPane = new StackPane {
+      alignment = Pos.Center
+      children = List(questionRectangle, questionText)
+    }
+    val hBox = new HBox {
+      spacing = 10
+      padding = Insets(15, 12, 15, 12)
+      style = "-fx-background-color: #336699"
+      children = List(currentButton, projectedButton, new Rectangle { width = 200 }, stackPane)
+    }
+    val data = List(new Text {
       font = Font.font("Amble CN", FontWeight.Bold, 14)
       text = "Data"
-    },
-    new Text {
-      text = "  Sales"
-    },
-    new Text {
-      text = "  Marketing"
-    },
-    new Text {
-      text = "  Distribution"
-    },
-    new Text {
-      text = "  Costs"
+    }, new Text { text = "  Sales" }, new Text { text = "  Marketing" }, new Text { text = "  Distribution" }, new Text { text = "  Costs" })
+    val vBox = new VBox {
+      spacing = 10
+      padding = Insets(10, 10, 10, 10)
+      children = data
     }
-  )
-  val vBox = new VBox {
-    spacing = 10
-    padding = Insets(10, 10, 10, 10)
-    children = data
-  }
-
-  val rectangle = new Rectangle {
-    width = 380
-    height = 220
-    fill = Color.White
-  }
-
-  stage = new PrimaryStage {
-    title = "ScalaFX Layout Panes 04"
-    scene = new Scene {
-      content = new BorderPane {
-        top = hBox
-        left = vBox
-        center = rectangle
+    val rectangle = new Rectangle {
+      width = 380
+      height = 220
+      fill = Color.White
+    }
+    stage = new PrimaryStage {
+      title = "ScalaFX Layout Panes 04"
+      scene = new Scene {
+        content = new BorderPane {
+          top = hBox
+          left = vBox
+          center = rectangle
+        }
       }
     }
   }

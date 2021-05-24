@@ -28,8 +28,8 @@ package scalafx.graphics3d
 
 import scalafx.Includes._
 import scalafx.animation._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene._
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
@@ -49,61 +49,56 @@ import scala.language.postfixOps
  *   JavaFX SDK Team
  */
 
-object CubeSampleDemo extends JFXApp {
-
-  var animation: Timeline = _
-  var root                = new Group
-  stage = new PrimaryStage {
-    //      width = 800
-    //      height = 600
-    scene = new Scene(root, 400, 150, true, SceneAntialiasing.Balanced)
-    resizable = false
-    title = "Graphics 3D Cubes Sample Demo in ScalaFX"
-  }
-
-  root.getTransforms.addAll(new Translate(400 / 2, 150 / 2), new Rotate(180, Rotate.XAxis))
-
-  stage.getScene.setCamera(new PerspectiveCamera())
-
-  root.children.add(create3dContent())
-
-  def create3dContent(): Node = {
-    val c = new Cube(50, Color.Red, 1)
-    c.rx.setAngle(45)
-    c.ry.setAngle(45)
-    val c2 = new Cube(50, Color.Green, 1)
-    c2.setTranslateX(100)
-    c2.rx.setAngle(45)
-    c2.ry.setAngle(45)
-    val c3 = new Cube(50, Color.Orange, 1)
-    c3.setTranslateX(-100)
-    c3.rx.setAngle(45)
-    c3.ry.setAngle(45)
-
-    animation = new Timeline {
-      cycleCount = Timeline.Indefinite
-      keyFrames = Seq(
-        at(0 s) { c.ry.angle -> 0d },
-        at(0 s) { c2.rx.angle -> 0d },
-        at(0 s) { c3.rz.angle -> 0d },
-        at(1 s) { c.ry.angle -> 360d },
-        at(1 s) { c2.rx.angle -> 360d },
-        at(1 s) { c3.rz.angle -> 360d }
-      )
+object CubeSampleDemo extends JFXApp3 {
+  override def start(): Unit = {
+    var animation: Timeline = _
+    var root = new Group
+    stage = new PrimaryStage {
+      scene = new Scene(root, 400, 150, true, SceneAntialiasing.Balanced)
+      resizable = false
+      title = "Graphics 3D Cubes Sample Demo in ScalaFX"
     }
-
-    new Group(c, c2, c3)
+    root.getTransforms.addAll(new Translate(400 / 2, 150 / 2), new Rotate(180, Rotate.XAxis))
+    stage.getScene.setCamera(new PerspectiveCamera())
+    root.children.add(create3dContent())
+    def create3dContent(): Node = {
+      val c = new Cube(50, Color.Red, 1)
+      c.rx.setAngle(45)
+      c.ry.setAngle(45)
+      val c2 = new Cube(50, Color.Green, 1)
+      c2.setTranslateX(100)
+      c2.rx.setAngle(45)
+      c2.ry.setAngle(45)
+      val c3 = new Cube(50, Color.Orange, 1)
+      c3.setTranslateX(-100)
+      c3.rx.setAngle(45)
+      c3.ry.setAngle(45)
+      animation = new Timeline {
+        cycleCount = Timeline.Indefinite
+        keyFrames = Seq(at(0.s) {
+          c.ry.angle -> 0d
+        }, at(0.s) {
+          c2.rx.angle -> 0d
+        }, at(0.s) {
+          c3.rz.angle -> 0d
+        }, at(1.s) {
+          c.ry.angle -> 360d
+        }, at(1.s) {
+          c2.rx.angle -> 360d
+        }, at(1.s) {
+          c3.rz.angle -> 360d
+        })
+      }
+      new Group(c, c2, c3)
+    }
+    def play(): Unit = {
+      animation.play()
+    }
+    def stop(): Unit = {
+      animation.pause()
+    }
+    play()
   }
-
-  def play(): Unit = {
-    animation.play()
-  }
-
-  def stop(): Unit = {
-    animation.pause()
-  }
-
-  play()
 }
 
 class Cube(size: Double, color: Color, shade: Double) extends Group {

@@ -29,8 +29,8 @@ package scalafx.controls
 
 import javafx.{geometry => jfxg}
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.controls.controls._
 import scalafx.geometry._
@@ -39,42 +39,38 @@ import scalafx.scene.control._
 import scalafx.scene.layout._
 import scalafx.scene.paint.Color
 
-object SeparatorDemo extends JFXApp {
-
-  val separator = new Separator
-
-  val pnlSeparator = new FlowPane {
-    children = List(new Button { text = "Button 1" }, separator, new Button { text = "Button 2" })
-    minHeight = 100
-    prefHeight = 100
-    minWidth = 100
-    prefWidth = 300
-  }
-
-  val controlsPane = new VBox {
-    spacing = 5
-    fillWidth = true
-    alignment = Pos.Center
-    alignmentInParent = Pos.TopCenter
-    hgrow = Priority.Always
-    children = List(new SeparatorControls(separator), new ControlControls(separator))
-  }
-
-  val mainPane = new BorderPane {
-    top = pnlSeparator
-    center = controlsPane
-  }
-
-  stage = new PrimaryStage {
-    title = "Tooltip Test"
-    width = 300
-    height = 600
-    scene = new Scene {
-      fill = Color.White
-      content = mainPane
+object SeparatorDemo extends JFXApp3 {
+  override def start(): Unit = {
+    val separator = new Separator
+    val pnlSeparator = new FlowPane {
+      children = List(new Button { text = "Button 1" }, separator, new Button { text = "Button 2" })
+      minHeight = 100
+      prefHeight = 100
+      minWidth = 100
+      prefWidth = 300
+    }
+    val controlsPane = new VBox {
+      spacing = 5
+      fillWidth = true
+      alignment = Pos.Center
+      alignmentInParent = Pos.TopCenter
+      hgrow = Priority.Always
+      children = List(new SeparatorControls(separator), new ControlControls(separator))
+    }
+    val mainPane = new BorderPane {
+      top = pnlSeparator
+      center = controlsPane
+    }
+    stage = new PrimaryStage {
+      title = "Tooltip Test"
+      width = 300
+      height = 600
+      scene = new Scene {
+        fill = Color.White
+        content = mainPane
+      }
     }
   }
-
 }
 
 class SeparatorControls(target: Separator) extends PropertiesNodes[Separator](target, "Separator Controls") {

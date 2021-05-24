@@ -29,8 +29,8 @@
 
 package scalafx.controls.treetableview
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.beans.property.StringProperty
 import scalafx.scene.Scene
 import scalafx.scene.control.{TreeItem, TreeTableColumn, TreeTableView}
@@ -39,47 +39,29 @@ import scalafx.scene.image.Image
 /**
  * ScalaFX version of the example from http://tutorials.jenkov.com/javafx/treetableview.html
  */
-object TreeTableViewDemo extends JFXApp {
-
-  class Car(brandName: String, modelName: String) {
-    val brand = StringProperty(brandName)
-    val model = StringProperty(modelName)
-  }
-
-  val brandColumn = new TreeTableColumn[Car, String]("Brand") {
-    cellValueFactory = p => p.value.value.value.brand
-    prefWidth = 150
-  }
-
-  val modelColumn = new TreeTableColumn[Car, String]("Model") {
-    cellValueFactory = p => p.value.value.value.model
-    prefWidth = 120
-  }
-
-  val mercedes = new TreeItem(new Car("Mercedes", "...")) {
-    children = Seq(
-      new TreeItem(new Car("Mercedes", "SL500")),
-      new TreeItem(new Car("Mercedes", "SL500 AMG")),
-      new TreeItem(new Car("Mercedes", "CLA 200"))
-    )
-  }
-
-  val audi = new TreeItem(new Car("Audi", "...")) {
-    children = Seq(
-      new TreeItem(new Car("Audi", "A1")),
-      new TreeItem(new Car("Audi", "A5")),
-      new TreeItem(new Car("Audi", "A7"))
-    )
-  }
-
-  stage = new PrimaryStage {
-    title = "TreeTableView CellFactory Demo"
-    icons += new Image("/scalafx/sfx.png")
-    scene = new Scene {
-      root = new TreeTableView[Car] {
-        columns ++= Seq(brandColumn, modelColumn)
-        root = new TreeItem(new Car("Cars", "...")) {
-          children = Seq(audi, mercedes)
+object TreeTableViewDemo extends JFXApp3 {
+  override def start(): Unit = {
+    class Car(brandName: String, modelName: String) {
+      val brand = StringProperty(brandName)
+      val model = StringProperty(modelName)
+    }
+    val brandColumn = new TreeTableColumn[Car, String]("Brand") {
+      cellValueFactory = p => p.value.value.value.brand
+      prefWidth = 150
+    }
+    val modelColumn = new TreeTableColumn[Car, String]("Model") {
+      cellValueFactory = p => p.value.value.value.model
+      prefWidth = 120
+    }
+    val mercedes = new TreeItem(new Car("Mercedes", "...")) { children = Seq(new TreeItem(new Car("Mercedes", "SL500")), new TreeItem(new Car("Mercedes", "SL500 AMG")), new TreeItem(new Car("Mercedes", "CLA 200"))) }
+    val audi = new TreeItem(new Car("Audi", "...")) { children = Seq(new TreeItem(new Car("Audi", "A1")), new TreeItem(new Car("Audi", "A5")), new TreeItem(new Car("Audi", "A7"))) }
+    stage = new PrimaryStage {
+      title = "TreeTableView CellFactory Demo"
+      icons += (new Image("/scalafx/sfx.png"))
+      scene = new Scene {
+        root = new TreeTableView[Car] {
+          columns ++= Seq(brandColumn, modelColumn)
+          root = new TreeItem(new Car("Cars", "...")) { children = Seq(audi, mercedes) }
         }
       }
     }

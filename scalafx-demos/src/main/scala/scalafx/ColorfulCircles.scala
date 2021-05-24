@@ -33,8 +33,8 @@ import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Timeline
 import scalafx.animation.Timeline.Indefinite
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.effect.BlendMode.Overlay
 import scalafx.scene.effect.BoxBlur
 import scalafx.scene.paint.Color.{Black, White}
@@ -47,88 +47,69 @@ import scalafx.scene.{Group, Scene}
 /**
  * ColorfulCircles
  */
-object ColorfulCircles extends JFXApp {
-  val circlesToAnimate = new VectorBuilder[Circle]()
-  stage = new PrimaryStage {
-    width = 800
-    height = 600
-    scene = new Scene {
-      _scene =>
-      fill = Black
-      content = Seq(
-        new Group {
-          children = Seq(
-            new Rectangle {
-              width <== _scene.width
-              height <== _scene.height
-              fill = Black
-            },
-            new Group {
-              val circles = for (i <- 0 until 15) yield new Circle {
-                radius = 200
-                fill = White opacity 0.05
-                stroke = White opacity 0.2
-                strokeWidth = 4
-                strokeType = Outside
-              }
-              children = circles
-              circlesToAnimate ++= circles
-              effect = new BoxBlur(30, 30, 3)
-            },
-            new Group {
-              val circles = for (i <- 0 until 20) yield new Circle {
-                radius = 70
-                fill = White opacity 0.05
-                stroke = White opacity 0.1
-                strokeWidth = 2
-                strokeType = Outside
-              }
-              children = circles
-              circlesToAnimate ++= circles
-              effect = new BoxBlur(2, 2, 2)
-            },
-            new Group {
-              val circles = for (i <- 0 until 10) yield new Circle {
-                radius = 150
-                fill = White opacity 0.05
-                stroke = White opacity 0.16
-                strokeWidth = 4
-                strokeType = Outside
-              }
-              children = circles
-              circlesToAnimate ++= circles
-              effect = new BoxBlur(10, 10, 3)
+object ColorfulCircles extends JFXApp3 {
+  override def start(): Unit = {
+    val circlesToAnimate = new VectorBuilder[Circle]()
+    stage = new PrimaryStage {
+      width = 800
+      height = 600
+      scene = new Scene { _scene =>
+        fill = Black
+        content = Seq(new Group {
+          children = Seq(new Rectangle {
+            width <== _scene.width
+            height <== _scene.height
+            fill = Black
+          }, new Group {
+            val circles = for (i <- 0 until 15) yield new Circle {
+              radius = 200
+              fill = White opacity 0.05d
+              stroke = White opacity 0.2d
+              strokeWidth = 4
+              strokeType = Outside
             }
-          )
-        },
-        new Rectangle {
+            children = circles
+            circlesToAnimate ++= circles
+            effect = new BoxBlur(30, 30, 3)
+          }, new Group {
+            val circles = for (i <- 0 until 20) yield new Circle {
+              radius = 70
+              fill = White opacity 0.05d
+              stroke = White opacity 0.1d
+              strokeWidth = 2
+              strokeType = Outside
+            }
+            children = circles
+            circlesToAnimate ++= circles
+            effect = new BoxBlur(2, 2, 2)
+          }, new Group {
+            val circles = for (i <- 0 until 10) yield new Circle {
+              radius = 150
+              fill = White opacity 0.05d
+              stroke = White opacity 0.16d
+              strokeWidth = 4
+              strokeType = Outside
+            }
+            children = circles
+            circlesToAnimate ++= circles
+            effect = new BoxBlur(10, 10, 3)
+          })
+        }, new Rectangle {
           width <== _scene.width
           height <== _scene.height
-          fill = new LinearGradient(
-            0,
-            1,
-            1,
-            0,
-            true,
-            NoCycle,
-            Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f)
-          )
+          fill = new LinearGradient(0, 1, 1, 0, true, NoCycle, Stops(16301397, 12648022, 6159297, 6603512, 12471031, 15556546, 15683660, 15885839))
           blendMode = Overlay
-        }
-      )
+        })
+      }
     }
+    new Timeline {
+      cycleCount = Indefinite
+      autoReverse = true
+      keyFrames = (for (circle <- circlesToAnimate.result()) yield Seq(at(0.s) {
+        Set(circle.centerX -> random * 800, circle.centerY -> random * 600)
+      }, at(40.s) {
+        Set(circle.centerX -> random * 800, circle.centerY -> random * 600)
+      })).flatten
+    }.play()
   }
-  new Timeline {
-    cycleCount = Indefinite
-    autoReverse = true
-    keyFrames = (for (circle <- circlesToAnimate.result())
-      yield Seq(
-        at(0 s) {
-          Set(circle.centerX -> random * 800, circle.centerY -> random * 600)
-        },
-        at(40 s) {
-          Set(circle.centerX -> random * 800, circle.centerY -> random * 600)
-        }
-      )).flatten
-  }.play()
 }

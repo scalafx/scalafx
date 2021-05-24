@@ -27,8 +27,8 @@
 
 package scalafx.controls
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.beans.property.BooleanProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
@@ -41,35 +41,31 @@ import scala.language.implicitConversions
 /**
  * Example of using `CheckBoxListCell` in `ListView`.
  */
-object CheckBoxListCellDemo extends JFXApp {
-
-  class Item(initialSelection: Boolean, val name: String) {
-    val selected = BooleanProperty(initialSelection)
-
-    override def toString = name
-  }
-
-  val data = ObservableBuffer.from[Item](
-    (1 to 10).map { i => new Item(i % 2 == 0, s"Item $i") }
-  )
-
-  stage = new PrimaryStage {
-    scene = new Scene {
-      title = "CheckBoxListCell Demo"
-      root = new VBox {
-        children = Seq(
-          new ListView[Item] {
+object CheckBoxListCellDemo extends JFXApp3 {
+  override def start(): Unit = {
+    class Item(initialSelection: Boolean, val name: String) {
+      val selected = BooleanProperty(initialSelection)
+      override def toString = name
+    }
+    val data = ObservableBuffer.from[Item]((1 to 10).map {
+      i => new Item(i % 2 == 0, s"Item $i")
+    })
+    stage = new PrimaryStage {
+      scene = new Scene {
+        title = "CheckBoxListCell Demo"
+        root = new VBox {
+          children = Seq(new ListView[Item] {
             prefHeight = 250
             items = data
-            cellFactory = CheckBoxListCell.forListView((i: Item) => i.selected)
-          },
-          new Button("Print State ") {
+            cellFactory = CheckBoxListCell.forListView { (i: Item) => i.selected }
+          }, new Button("Print State ") {
             onAction = _ => {
               println("-------------")
-              println(data.map(d => d.name + ": " + d.selected()).mkString("\n"))
+              println(data.map(d => d.name + ": " + d.selected()).mkString("""
+"""))
             }
-          }
-        )
+          })
+        }
       }
     }
   }

@@ -26,8 +26,8 @@
  */
 package scalafx.canvas
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.canvas.Canvas
 import scalafx.scene.effect.DropShadow
@@ -37,76 +37,29 @@ import scalafx.scene.paint.{Color, CycleMethod, LinearGradient, RadialGradient, 
 /**
  * Example adapted from code showed in [[http://docs.oracle.com/javafx/2/canvas/jfxpub-canvas.htm]].
  */
-object CanvasTest extends JFXApp {
-
-  val canvas = new Canvas(200, 200)
-  val gc     = canvas.graphicsContext2D
-
-  /*
-   * Moves the canvas to a new location within the Scene. This is accomplished
-   * by performing a translation transformation on the Canvas object, passing
-   * in the desired x and y coordinates. Passing in values of 0,0 will position
-   * the Canvas in the upper left corner of the Scene.
-   */
-  //  moveCanvas(0, 0)-
-  canvas.translateX = 0
-  canvas.translateY = 0
-
-  /*
-   * Draws an area in the shape of a capital letter "D."
-   * The user can try substituting numbers
-   * of their own in the bezierCurveTo parameters to
-   * warp the shape away from the letter "D."
-   */
-  //  drawDShape
-  gc.beginPath()
-  gc.moveTo(50, 50)
-  gc.bezierCurveTo(150, 20, 150, 150, 75, 150)
-  gc.closePath()
-
-  /*
-   * Draws a radial gradient on the Canvas object, which appears as a series of
-   * circles radiating outward. This demo uses Red and YELLOW by default.
-   */
-  //  drawRadialGradient(Color.Red, Color.Yellow)
-  gc.fill = new RadialGradient(
-    0,
-    0,
-    0.5,
-    0.5,
-    0.1,
-    true,
-    CycleMethod.Reflect,
-    List(Stop(0.0, Color.Red), Stop(1.0, Color.Yellow))
-  )
-  gc.fillPath()
-
-  /*
-   * Draws a radial gradient on the Canvas object, which appears as a series of
-   * circles radiating outward. This demo uses Red and YELLOW by default.
-   */
-  //  drawLinearGradient(Color.Blue, Color.Green)
-  val lg =
-    new LinearGradient(0, 0, 1, 1, true, CycleMethod.Reflect, List(Stop(0.0, Color.Blue), Stop(1.0, Color.Green)))
-  gc.stroke = lg
-  gc.lineWidth = 20
-  gc.strokePath()
-
-  /**
-   * Draws a radial gradient on the Canvas object, which appears as a series of circles radiating outward. This demo
-   * uses Red and YELLOW by default.
-   */
-  //  drawDropShadow(Color.Gray, Color.Blue, Color.Green, Color.Red)
-  gc.applyEffect(new DropShadow(20, 20, 0, Color.Gray))
-  gc.applyEffect(new DropShadow(20, 0, 20, Color.Blue))
-  gc.applyEffect(new DropShadow(20, -20, 0, Color.Green))
-  gc.applyEffect(new DropShadow(20, 0, -20, Color.Red))
-
-  stage = new PrimaryStage {
-    title = "Canvas Test"
-    scene = new Scene(400, 400) {
-      content = canvas
+object CanvasTest extends JFXApp3 {
+  override def start(): Unit = {
+    val canvas = new Canvas(200, 200)
+    val gc = canvas.graphicsContext2D
+    canvas.translateX = 0
+    canvas.translateY = 0
+    gc.beginPath()
+    gc.moveTo(50, 50)
+    gc.bezierCurveTo(150, 20, 150, 150, 75, 150)
+    gc.closePath()
+    gc.fill = new RadialGradient(0, 0, 0.5d, 0.5d, 0.1d, true, CycleMethod.Reflect, List(Stop(0.0d, Color.Red), Stop(1.0d, Color.Yellow)))
+    gc.fillPath()
+    val lg = new LinearGradient(0, 0, 1, 1, true, CycleMethod.Reflect, List(Stop(0.0d, Color.Blue), Stop(1.0d, Color.Green)))
+    gc.stroke = lg
+    gc.lineWidth = 20
+    gc.strokePath()
+    gc.applyEffect(new DropShadow(20, 20, 0, Color.Gray))
+    gc.applyEffect(new DropShadow(20, 0, 20, Color.Blue))
+    gc.applyEffect(new DropShadow(20, -20, 0, Color.Green))
+    gc.applyEffect(new DropShadow(20, 0, -20, Color.Red))
+    stage = new PrimaryStage {
+      title = "Canvas Test"
+      scene = new Scene(400, 400) { content = canvas }
     }
   }
-
 }
