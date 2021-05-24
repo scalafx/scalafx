@@ -40,15 +40,6 @@ import scalafx.scene.paint.Color
 
 object TextAreaTest extends JFXApp3 {
   override def start(): Unit = {
-    stage = new JFXApp3.PrimaryStage {
-      title = "TextArea Test"
-      width = 450
-      height = 380
-      scene = new Scene {
-        fill = Color.LightGray
-        content = mainPane
-      }
-    }
     lazy val textArea = new TextArea { prefColumnCount = 20 }
     val controlsPane = new VBox {
       spacing = 5
@@ -58,9 +49,18 @@ object TextAreaTest extends JFXApp3 {
       hgrow = Priority.Never
       children = List(new TextAreaControls(textArea), new TextInputControlControls(textArea), new ControlControls(textArea))
     }
-    lazy val mainPane = new BorderPane {
+    val mainPane = new BorderPane {
       top = textArea
       center = controlsPane
+    }
+    stage = new JFXApp3.PrimaryStage {
+      title = "TextArea Test"
+      width = 450
+      height = 380
+      scene = new Scene {
+        fill = Color.LightGray
+        content = mainPane
+      }
     }
   }
 }

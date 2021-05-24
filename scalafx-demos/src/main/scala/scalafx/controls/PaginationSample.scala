@@ -64,7 +64,7 @@ object PaginationSample extends JFXApp3 {
       style = "-fx-border-color:red;"
       pageFactory = (pageIndex: Int) => createPage(pageIndex)
     }
-    val anchor = this.getAnchorPage(pagination)
+    val anchor = getAnchorPage(pagination)
     stage = new PrimaryStage {
       title = "PaginationSample by ScalaFX"
       scene = new Scene { content = anchor }

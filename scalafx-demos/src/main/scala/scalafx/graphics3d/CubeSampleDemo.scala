@@ -51,7 +51,7 @@ import scala.language.postfixOps
 
 object CubeSampleDemo extends JFXApp3 {
   override def start(): Unit = {
-    var animation: Timeline = _
+    var animation: Timeline = null
     var root = new Group
     stage = new PrimaryStage {
       scene = new Scene(root, 400, 150, true, SceneAntialiasing.Balanced)

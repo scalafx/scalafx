@@ -59,8 +59,9 @@ import scalafx.scene.layout.{HBox, VBox}
 
 object ScalaFX_Controls_03 extends JFXApp3 {
   override def start(): Unit = {
+    val iconImageView = new ImageView {}
     val theToggleGroup = new ToggleGroup {}
-    theToggleGroup.selectedToggle onChange ({ (_, _, _) => 
+    theToggleGroup.selectedToggle onChange ({ (_, _, _) =>
       val selectedToggle = theToggleGroup.getSelectedToggle
       if (selectedToggle != null) {
         val userDataString = selectedToggle.getUserData.toString
@@ -83,7 +84,6 @@ object ScalaFX_Controls_03 extends JFXApp3 {
       spacing = 10
       children = List(homeRadioButton, calendarRadioButton, contactsRadioButton)
     }
-    val iconImageView = new ImageView {}
     val hBox = new HBox {
       spacing = 50
       padding = Insets(20, 10, 10, 20)

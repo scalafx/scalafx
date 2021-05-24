@@ -50,23 +50,14 @@ import scala.collection.Seq
 
 object ColorSelector extends JFXApp3 {
   override def start(): Unit = {
+    val controlRed = new SliderControl("R") { value = 255 }
+    val controlGreen = new SliderControl("G") { value = 255 }
+    val controlBlue = new SliderControl("B") { value = 255 }
+    val controlAlpha = new SliderControl("A") { value = 255 }
     lazy val allControls = List(controlRed, controlGreen, controlBlue, controlAlpha)
     val currentColor = ObjectProperty(this, "Color", Color.White)
-    currentColor.onChange(colorChanged())
     val synchronizedValue = new DoubleProperty()
     val synchronizedControls = new ObservableBuffer[SliderControl]
-    synchronizedControls.onChange((buffer, changes) => synchronizeValues(buffer, changes))
-    def controlSelected(control: SliderControl): Unit = {
-      if (control.selectedControl.value) {
-        synchronizedControls.add(control)
-      } else {
-        synchronizedControls.remove(control)
-      }
-    }
-    def changeColor(): Unit = {
-      val newAlphaValue = if (controlAlpha.disabled.value) 1.0d else controlAlpha.value.toDouble / colorselector.Max
-      this.currentColor() = Color.rgb(controlRed.value.toInt, controlGreen.value.toInt, controlBlue.value.toInt, newAlphaValue)
-    }
     def synchronizeValues(buffer: ObservableBuffer[SliderControl], changes: Seq[Change[SliderControl]]): Unit = {
       changes.head match {
         case Add(pos, added) =>
@@ -79,74 +70,16 @@ object ColorSelector extends JFXApp3 {
           throw new UnsupportedOperationException("Only add and remove defined for the ColorSelector SliderControl sync")
       }
     }
-    def randomizeColors(): Unit = {
-      if (synchronizedControls.nonEmpty) {
-        this.synchronizedValue() = math.random * colorselector.Max
-      }
-      if (synchronizedControls.size < 4) {
-        this.allControls.filterNot(_.selectedControl.value).filterNot(_.disabled.value).foreach(_.value() = math.random * colorselector.Max)
-      }
-    }
-    def colorChanged(): Unit = {
-      formatColor()
-      verifyWebColor()
-    }
-    def formatColor(): Unit = {
-      this.txfColorValue.text() = this.cmbColorFormat.value.value.format(this.currentColor(), !this.chbDisableAlpha.selected.value)
-    }
-    def getForegroundColor(d: Double) = if (d > Max / 2) Color.Black else Color.White
-    def verifyWebColor(): Unit = {
-      cmbWebColor.value() = WebColor.colors.find(_.sameColor(currentColor())).orNull
-    }
+    synchronizedControls.onChange((buffer, changes) => synchronizeValues(buffer, changes))
     def webColorSelected(): Unit = {
-      if (this.cmbWebColor.value.value != null) {
-        val color = this.cmbWebColor.value.value.color
+      if (cmbWebColor.value.value != null) {
+        val color = cmbWebColor.value.value.color
         controlRed.value() = doubleToInt(color.red)
         controlGreen.value() = doubleToInt(color.green)
         controlBlue.value() = doubleToInt(color.blue)
       }
     }
-    val rectangleRegion = new Region {
-      effect = new Reflection { fraction = 0.45d }
-      onMouseClicked = (event: MouseEvent) => {
-        if (event.getClickCount == 2 && event.button == MouseButton.Primary) {
-          randomizeColors()
-        }
-      }
-    }
-    currentColor.onChange(rectangleRegion.setStyle("-fx-background-color: " + RgbFormatter.format(currentColor(), !this.chbDisableAlpha.selected.value)))
-    val controlRed = new SliderControl("R") { value = 255 }
-    controlRed.value.onChange {
-      changeColor()
-      controlRed.changeColor(Color.rgb(controlRed.value.value.toInt, 0, 0), getForegroundColor(controlRed.value.value))
-    }
-    controlRed.selectedControl.onChange(controlSelected(controlRed))
-    controlRed.changeColor(Color.rgb(controlRed.value.value.toInt, 0, 0), getForegroundColor(controlRed.value.value))
-    val controlGreen = new SliderControl("G") { value = 255 }
-    controlGreen.value.onChange {
-      changeColor()
-      controlGreen.changeColor(Color.rgb(0, controlGreen.value.value.toInt, 0), getForegroundColor(controlGreen.value.value))
-    }
-    controlGreen.selectedControl.onChange(controlSelected(controlGreen))
-    controlGreen.changeColor(Color.rgb(0, controlGreen.value.value.toInt, 0), getForegroundColor(controlGreen.value.value))
-    val controlBlue = new SliderControl("B") { value = 255 }
-    controlBlue.value.onChange {
-      changeColor()
-      controlBlue.changeColor(Color.rgb(0, 0, controlBlue.value.value.toInt), Color.White)
-    }
-    controlBlue.selectedControl.onChange(controlSelected(controlBlue))
-    controlBlue.changeColor(Color.rgb(0, 0, controlBlue.value.value.toInt), Color.White)
-    val controlAlpha = new SliderControl("A") { value = 255 }
-    controlAlpha.value.onChange(changeColor())
-    controlAlpha.selectedControl.onChange(controlSelected(controlAlpha))
-    controlAlpha.disable.onChange {
-      if (controlAlpha.selectedControl.value) {
-        if (controlAlpha.disable.value) synchronizedControls.remove(controlAlpha) else synchronizedControls.add(controlAlpha)
-      }
-      changeColor()
-      formatColor()
-    }
-    val cmbWebColor = new ComboBox[WebColor](WebColor.colors) {
+    lazy val cmbWebColor = new ComboBox[WebColor](WebColor.colors) {
       promptText = "Web Color"
       converter = StringConverter.toStringConverter { (wc: WebColor) => wc.name }
       onAction = _ => webColorSelected()
@@ -162,6 +95,26 @@ object ColorSelector extends JFXApp3 {
         cell.text = webColor.name
       }
     }
+    def controlSelected(control: SliderControl): Unit = {
+      if (control.selectedControl.value) {
+        synchronizedControls.add(control)
+      } else {
+        synchronizedControls.remove(control)
+      }
+    }
+    def changeColor(): Unit = {
+      val newAlphaValue = if (controlAlpha.disabled.value) 1.0d else controlAlpha.value.toDouble / colorselector.Max
+      currentColor() = Color.rgb(controlRed.value.toInt, controlGreen.value.toInt, controlBlue.value.toInt, newAlphaValue)
+    }
+
+    def randomizeColors(): Unit = {
+      if (synchronizedControls.nonEmpty) {
+        synchronizedValue() = math.random * colorselector.Max
+      }
+      if (synchronizedControls.size < 4) {
+        allControls.filterNot(_.selectedControl.value).filterNot(_.disabled.value).foreach(_.value() = math.random * colorselector.Max)
+      }
+    }
     val txfColorValue = new TextField {
       promptText = "Color Value"
       editable = false
@@ -169,13 +122,63 @@ object ColorSelector extends JFXApp3 {
       hgrow = Priority.Never
       style = "-fx-font-family: Consolas;"
     }
-    val cmbColorFormat = new ComboBox[Formatter](Formatter.formatters) {
+    val chbDisableAlpha = new CheckBox { selected <==> controlAlpha.disable }
+    def formatColor(): Unit = {
+      txfColorValue.text() = cmbColorFormat.value.value.format(currentColor(), !chbDisableAlpha.selected.value)
+    }
+    lazy val cmbColorFormat = new ComboBox[Formatter](Formatter.formatters) {
       promptText = "Color Format"
       converter = StringConverter.toStringConverter { (f: Formatter) => f.description }
       value = RgbFormatter
       onAction = (event: ActionEvent) => formatColor()
     }
-    val chbDisableAlpha = new CheckBox { selected <==> controlAlpha.disable }
+    def verifyWebColor(): Unit = {
+      cmbWebColor.value() = WebColor.colors.find(_.sameColor(currentColor())).orNull
+    }
+    def colorChanged(): Unit = {
+      formatColor()
+      verifyWebColor()
+    }
+    currentColor.onChange(colorChanged())
+    def getForegroundColor(d: Double) = if (d > Max / 2) Color.Black else Color.White
+    val rectangleRegion = new Region {
+      effect = new Reflection { fraction = 0.45d }
+      onMouseClicked = (event: MouseEvent) => {
+        if (event.getClickCount == 2 && event.button == MouseButton.Primary) {
+          randomizeColors()
+        }
+      }
+    }
+    currentColor.onChange(rectangleRegion.setStyle("-fx-background-color: " + RgbFormatter.format(currentColor(), !chbDisableAlpha.selected.value)))
+    controlRed.value.onChange {
+      changeColor()
+      controlRed.changeColor(Color.rgb(controlRed.value.value.toInt, 0, 0), getForegroundColor(controlRed.value.value))
+    }
+    controlRed.selectedControl.onChange(controlSelected(controlRed))
+    controlRed.changeColor(Color.rgb(controlRed.value.value.toInt, 0, 0), getForegroundColor(controlRed.value.value))
+    controlGreen.value.onChange {
+      changeColor()
+      controlGreen.changeColor(Color.rgb(0, controlGreen.value.value.toInt, 0), getForegroundColor(controlGreen.value.value))
+    }
+    controlGreen.selectedControl.onChange(controlSelected(controlGreen))
+    controlGreen.changeColor(Color.rgb(0, controlGreen.value.value.toInt, 0), getForegroundColor(controlGreen.value.value))
+    controlBlue.value.onChange {
+      changeColor()
+      controlBlue.changeColor(Color.rgb(0, 0, controlBlue.value.value.toInt), Color.White)
+    }
+    controlBlue.selectedControl.onChange(controlSelected(controlBlue))
+    controlBlue.changeColor(Color.rgb(0, 0, controlBlue.value.value.toInt), Color.White)
+    controlAlpha.value.onChange(changeColor())
+    controlAlpha.selectedControl.onChange(controlSelected(controlAlpha))
+    controlAlpha.disable.onChange {
+      if (controlAlpha.selectedControl.value) {
+        if (controlAlpha.disable.value) synchronizedControls.remove(controlAlpha) else synchronizedControls.add(controlAlpha)
+      }
+      changeColor()
+      formatColor()
+    }
+
+
     val rectangleRowsConstraint = new RowConstraints {
       vgrow = Priority.Always
       prefHeight = Region.USE_COMPUTED_SIZE

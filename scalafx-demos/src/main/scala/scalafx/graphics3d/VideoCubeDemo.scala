@@ -52,7 +52,7 @@ import scala.language.postfixOps
  */
 object VideoCubeDemo extends JFXApp3 {
   override def start(): Unit = {
-    var animation: Timeline = _
+    var animation: Timeline = null
     var root = new Group
     stage = new PrimaryStage {
       scene = new Scene(root, 800, 600, true, SceneAntialiasing.Balanced) { fill = Color.Black }
@@ -77,27 +77,6 @@ object VideoCubeDemo extends JFXApp3 {
         cycleCount = MediaPlayer.Indefinite
       }
     }
-    val cubeSystem = create3dContent()
-    cubeSystem.translateX = 800 / 2
-    cubeSystem.translateY = 600 / 2
-    stage.getScene.setCamera(new PerspectiveCamera())
-    val lowX = -75
-    val lowY = -75
-    val highX = 900
-    val highY = 700
-    val starryBackground = new Group {
-      val stars = (1 to 500).map(_ => new Rectangle {
-        x = lowX + scala.math.random * (highX - lowX)
-        y = lowY + scala.math.random * (highY - lowY)
-        val s = 1 + scala.math.random * 3
-        width = s
-        height = s
-        fill = Color.White
-      })
-      children = stars
-      translateZ = 100.0d
-    }
-    root.children.addAll(starryBackground, cubeSystem)
     def create3dContent(): Node = {
       val c1 = new VideoCube(mediaPlayers, 300)
       c1.rx.angle = 45
@@ -134,6 +113,27 @@ object VideoCubeDemo extends JFXApp3 {
         mp.stop()
       }
     }
+    val cubeSystem = create3dContent()
+    cubeSystem.translateX = 800 / 2
+    cubeSystem.translateY = 600 / 2
+    stage.getScene.setCamera(new PerspectiveCamera())
+    val lowX = -75
+    val lowY = -75
+    val highX = 900
+    val highY = 700
+    val starryBackground = new Group {
+      val stars = (1 to 500).map(_ => new Rectangle {
+        x = lowX + scala.math.random * (highX - lowX)
+        y = lowY + scala.math.random * (highY - lowY)
+        val s = 1 + scala.math.random * 3
+        width = s
+        height = s
+        fill = Color.White
+      })
+      children = stars
+      translateZ = 100.0d
+    }
+    root.children.addAll(starryBackground, cubeSystem)
     play()
   }
 }

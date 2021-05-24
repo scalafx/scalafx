@@ -40,10 +40,10 @@ import scalafx.scene.paint.Color
 object CheckBoxTest extends JFXApp3 {
   override def start(): Unit = {
     val check = new CheckBox { text = "CheckBox" }
+    val lblCheckState = new Label { text = check.selected.get().toString }
     check.onAction = (event: ActionEvent) => {
       lblCheckState.text = if (check.indeterminate.get) "Indeterminate" else check.selected.get().toString
     }
-    val lblCheckState = new Label { text = check.selected.get().toString }
     val btnAllowIndeterminate = new scalafx.scene.control.Button { text = "Allow Indeterminate" }
     btnAllowIndeterminate.onAction = (event: ActionEvent) => {
       check.allowIndeterminate = !check.allowIndeterminate.get()
