@@ -32,7 +32,8 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 /**
  * Companion Object for [[scalafx.print.PrintSides]].
  */
-object PrintSides extends SFXEnumDelegateCompanion[jfxp.PrintSides, PrintSides] {
+object PrintSides
+  extends SFXEnumDelegateCompanion[jfxp.PrintSides, PrintSides] {
 
   /**
    * Two sided printing where the vertical edge of the paper is to be used for binding such as in a book.
@@ -54,9 +55,9 @@ object PrintSides extends SFXEnumDelegateCompanion[jfxp.PrintSides, PrintSides] 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintSides.htmlJavaFXPrintSides]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PrintSides.html JavaFX PrintSides]].
  *
- * @since
- *   8.0
+ * @since 8.0
  */
-sealed abstract class PrintSides(override val delegate: jfxp.PrintSides) extends SFXEnumDelegate[jfxp.PrintSides]
+sealed abstract class PrintSides(override val delegate: jfxp.PrintSides)
+  extends SFXEnumDelegate[jfxp.PrintSides]

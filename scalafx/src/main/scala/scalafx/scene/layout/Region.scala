@@ -41,90 +41,50 @@ object Region {
   implicit def sfxRegion2jfx(v: Region): jfxsl.Region = if (v != null) v.delegate else null
 
   /**
-   * Sentinel value which can be passed to a region's minWidth, minHeight, prefWidth, prefHeight, maxWidth, maxHeight
-   * properties to reset the region's size constraint back to it's intrinsic size returned by computeMinWidth(),
-   * computeMinHeight(), computePrefWidth(), computePrefHeight(), computeMaxWidth(), or computeMaxHeight().
+   * Sentinel value which can be passed to a region's minWidth, minHeight, prefWidth, prefHeight,
+   * maxWidth, maxHeight properties to reset the region's size constraint back to it's intrinsic
+   * size returned by computeMinWidth(), computeMinHeight(), computePrefWidth(),
+   * computePrefHeight(), computeMaxWidth(), or computeMaxHeight().
    */
   val USE_COMPUTED_SIZE: Double = jfxsl.Region.USE_COMPUTED_SIZE
-
   /**
-   * Sentinel value which can be passed to a region's minWidth, minHeight, prefWidth, prefHeight, maxWidth, maxHeight
-   * properties to indicate that the preferred dimension should be used for that max and/or min constraint.
+   * Sentinel value which can be passed to a region's minWidth, minHeight, prefWidth, prefHeight,
+   * maxWidth, maxHeight properties to indicate that the preferred dimension should be used for
+   * that max and/or min constraint.
    */
   val USE_PREF_SIZE: Double = jfxsl.Region.USE_PREF_SIZE
 
-  /**
-   * Utility method which lays out the child within an area of it's parent defined by areaX, areaY, areaWidth x
-   * areaHeight, with a baseline offset relative to that area.
-   */
-  def layoutInArea(
-      child: javafx.scene.Node,
-      areaX: Double,
-      areaY: Double,
-      areaWidth: Double,
-      areaHeight: Double,
-      areaBaselineOffset: Double,
-      margin: jfxg.Insets,
-      fillWidth: Boolean,
-      fillHeight: Boolean,
-      halignment: jfxg.HPos,
-      valignment: jfxg.VPos,
-      isSnapToPixel: Boolean
-  ): Unit = {
+  /** Utility method which lays out the child within an area of it's parent defined by areaX, areaY,
+    * areaWidth x areaHeight, with a baseline offset relative to that area. */
+  def layoutInArea(child: javafx.scene.Node,
+                   areaX: Double, areaY: Double, areaWidth: Double, areaHeight: Double, areaBaselineOffset: Double,
+                   margin: jfxg.Insets, fillWidth: Boolean, fillHeight: Boolean,
+                   halignment: jfxg.HPos, valignment: jfxg.VPos, isSnapToPixel: Boolean): Unit = {
     jfxsl.Region.layoutInArea(
       child,
-      areaX,
-      areaY,
-      areaWidth,
-      areaHeight,
-      areaBaselineOffset,
-      margin,
-      fillWidth,
-      fillHeight,
-      halignment,
-      valignment,
-      isSnapToPixel
-    )
+      areaX, areaY, areaWidth, areaHeight, areaBaselineOffset,
+      margin, fillWidth, fillHeight,
+      halignment, valignment, isSnapToPixel)
   }
 
-  /**
-   * Utility method which positions the child within an area of this region defined by areaX, areaY, areaWidth x
-   * areaHeight, with a baseline offset relative to that area.
-   */
-  def positionInArea(
-      child: javafx.scene.Node,
-      areaX: Double,
-      areaY: Double,
-      areaWidth: Double,
-      areaHeight: Double,
-      areaBaselineOffset: Double,
-      margin: jfxg.Insets,
-      halignment: jfxg.HPos,
-      valignment: jfxg.VPos,
-      isSnapToPixel: Boolean
-  ): Unit = {
-    jfxsl.Region.positionInArea(
-      child,
-      areaX,
-      areaY,
-      areaWidth,
-      areaHeight,
-      areaBaselineOffset,
-      margin,
-      halignment,
-      valignment,
-      isSnapToPixel
-    )
+  /** Utility method which positions the child within an area of this region defined by areaX, areaY,
+    * areaWidth x areaHeight, with a baseline offset relative to that area. */
+  def positionInArea(child: javafx.scene.Node,
+                     areaX: Double, areaY: Double, areaWidth: Double, areaHeight: Double, areaBaselineOffset: Double,
+                     margin: jfxg.Insets, halignment: jfxg.HPos, valignment: jfxg.VPos, isSnapToPixel: Boolean): Unit = {
+    jfxsl.Region.positionInArea(child,
+      areaX, areaY, areaWidth, areaHeight,
+      areaBaselineOffset, margin, halignment, valignment, isSnapToPixel)
   }
 }
 
 class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
-    extends Parent(delegate)
-    with SFXDelegate[jfxsl.Region] {
+  extends Parent(delegate)
+  with SFXDelegate[jfxsl.Region] {
 
-  /**
-   * The background of the Region, which is made up of zero or more BackgroundFills, and zero or more BackgroundImages.
-   */
+  /** The background of the Region, which is made up of zero or more BackgroundFills,
+    * and zero or more BackgroundImages.
+    */
   def background: ObjectProperty[jfxsl.Background] = delegate.backgroundProperty()
 
   def background_=(v: Background): Unit = {
@@ -138,10 +98,8 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
     border() = v
   }
 
-  /**
-   * Defines a hint to the system indicating that the Shape used to define the region's background is stable and would
-   * benefit from caching.
-   */
+  /** Defines a hint to the system indicating that the Shape used to define the region's
+    * background is stable and would benefit from caching. */
   def cacheShape: BooleanProperty = delegate.cacheProperty()
 
   def cacheShape_=(v: Boolean): Unit = {
@@ -235,10 +193,7 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
     prefWidth() = v
   }
 
-  /**
-   * When specified, the shape will cause the region to be rendered as the specified shape rather than as a rounded
-   * rectangle.
-   */
+  /** When specified, the shape will cause the region to be rendered as the specified shape rather than as a rounded rectangle. */
   def shape: ObjectProperty[jfxss.Shape] = delegate.shapeProperty()
 
   def shape_=(v: Shape): Unit = {
@@ -246,8 +201,8 @@ class Region(override val delegate: jfxsl.Region = new jfxsl.Region())
   }
 
   /**
-   * Defines whether this region rounds position/spacing and cell size values to pixel boundaries when laying out its
-   * children.
+   * Defines whether this region rounds position/spacing and cell size values to pixel boundaries
+   * when laying out its children.
    */
   def snapToPixel: BooleanProperty = delegate.snapToPixelProperty
 

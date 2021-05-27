@@ -33,24 +33,18 @@ import scalafx.delegate.SFXDelegate
 
 /**
  * Object companion for [[scalafx.scene.control.TablePositionBase]]
- * @since
- *   8.0
+ * @since 8.0
  */
 object TablePositionBase {
 
   /**
    * Converts a ScalaFX TablePositionBase into a JavaFX version.
    *
-   * @param tpb
-   *   ScalaFX TablePositionBase
-   * @return
-   *   JavaFX TablePositionBase
-   * @since
-   *   8.0
+   * @param tpb ScalaFX TablePositionBase
+   * @return JavaFX TablePositionBase
+   * @since 8.0
    */
-  implicit def sfxTablePositionBase2jfx[TC <: jfxsc.TableColumnBase[_, _]](
-      tpb: TablePositionBase[TC]
-  ): jfxsc.TablePositionBase[TC] =
+  implicit def sfxTablePositionBase2jfx[TC <: jfxsc.TableColumnBase[_, _]](tpb: TablePositionBase[TC]): jfxsc.TablePositionBase[TC] =
     if (tpb != null) tpb.delegate else null
 
 }
@@ -58,17 +52,13 @@ object TablePositionBase {
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TablePosition.html]].
  *
- * @constructor
- *   creates a new ScalaFX TablePositionBase from a JavaFX one.
- * @param delegate
- *   JavaFX TablePositionBase
- * @tparam TC
- *   A JavaFX TableColumnBase subclass
- * @since
- *   8.0
+ * @constructor creates a new ScalaFX TablePositionBase from a JavaFX one.
+ * @param delegate JavaFX TablePositionBase
+ * @tparam TC A JavaFX TableColumnBase subclass
+ * @since 8.0
  */
 abstract class TablePositionBase[TC <: jfxsc.TableColumnBase[_, _]](override val delegate: jfxsc.TablePositionBase[TC])
-    extends SFXDelegate[jfxsc.TablePositionBase[TC]] {
+  extends SFXDelegate[jfxsc.TablePositionBase[TC]] {
 
   //  protected	TablePositionBase(int row, TC tableColumn)
 

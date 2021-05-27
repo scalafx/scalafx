@@ -64,12 +64,11 @@ object TreeViewCellFactoryDemo extends JFXApp {
         //     required: javafx.scene.control.TreeCell[issues.issue108.TreeViewCellFactoryDemo.Person]
         //         cellFactory = (v: TreeView[Person]) => new TreeCell[Person] {
         //                                  ^
-        cellFactory = (v: TreeView[Person]) =>
-          new TreeCell[Person] {
-            treeItem.onChange((_, _, p) =>
-              text = if (p != null) p.value().firstName + " " + p.value().lastName else "?"
-            )
-          }
+        cellFactory = (v: TreeView[Person]) => new TreeCell[Person] {
+          treeItem.onChange((_, _, p) =>
+            text = if (p != null) p.value().firstName + " " + p.value().lastName else "?"
+          )
+        }
       }
     }
   }

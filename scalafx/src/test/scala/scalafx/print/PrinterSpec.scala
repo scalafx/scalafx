@@ -32,7 +32,8 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** Tests for [[scalafx.print.Printer]]. */
-class PrinterSpec extends SimpleSFXDelegateSpec[jfxp.Printer, Printer](classOf[jfxp.Printer], classOf[Printer]) {
+class PrinterSpec
+  extends SimpleSFXDelegateSpec[jfxp.Printer, Printer](classOf[jfxp.Printer], classOf[Printer]) {
 
   lazy val skippingMessage: String = if (jfxp.PrinterJob.createPrinterJob == null) {
     "No default printer defined."

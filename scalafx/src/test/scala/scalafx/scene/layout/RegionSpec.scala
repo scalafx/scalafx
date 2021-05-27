@@ -33,5 +33,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Region Spec tests.
+ *
+ *
  */
-class RegionSpec extends SimpleSFXDelegateSpec[jfxsl.Region, Region](classOf[jfxsl.Region], classOf[Region])
+class RegionSpec
+  extends SimpleSFXDelegateSpec[jfxsl.Region, Region](classOf[jfxsl.Region], classOf[Region])

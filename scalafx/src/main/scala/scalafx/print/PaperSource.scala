@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+* Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,10 +39,8 @@ object PaperSource {
   /**
    * Converts a ScalaFX PaperSource to its JavaFX counterpart.
    *
-   * @param ps
-   *   ScalaFX PaperSource
-   * @return
-   *   JavaFX PaperSource
+   * @param ps ScalaFX PaperSource
+   * @return JavaFX PaperSource
    */
   implicit def sfxPaperSource2jfx(ps: PaperSource): jfxp.PaperSource = if (ps != null) ps.delegate else null
 
@@ -76,17 +74,15 @@ object PaperSource {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PaperSource.htmlJavaFXPaperSource]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PaperSource.html JavaFX PaperSource]].
  *
- * @constructor
- *   Creates a new ScalaFX PaperSource from its JavaFX counterpart.
- * @param delegate
- *   JavaFX PaperSource. Since there is no public constructor for it, there is not a default value.
+ * @constructor Creates a new ScalaFX PaperSource from its JavaFX counterpart.
+ * @param delegate JavaFX PaperSource. Since there is no public constructor for it, there is not a default value.
  *
- * @since
- *   8.0
+ * @since 8.0
  */
-final class PaperSource(override val delegate: jfxp.PaperSource) extends SFXDelegate[jfxp.PaperSource] {
+final class PaperSource(override val delegate: jfxp.PaperSource)
+  extends SFXDelegate[jfxp.PaperSource] {
 
   /**
    * The name of this paper source.

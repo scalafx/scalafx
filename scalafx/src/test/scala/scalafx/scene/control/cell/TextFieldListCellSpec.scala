@@ -33,10 +33,10 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TextFieldListCell Spec tests.
+ *
+ *
  */
 class TextFieldListCellSpec[T]
-    extends SimpleSFXDelegateSpec[jfxscc.TextFieldListCell[T], TextFieldListCell[T]](
-      classOf[jfxscc.TextFieldListCell[T]],
-      classOf[TextFieldListCell[T]]
-    )
-    with RunOnApplicationThread
+  extends SimpleSFXDelegateSpec[jfxscc.TextFieldListCell[T], TextFieldListCell[T]](
+    classOf[jfxscc.TextFieldListCell[T]], classOf[TextFieldListCell[T]])
+  with RunOnApplicationThread

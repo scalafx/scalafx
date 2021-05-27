@@ -44,8 +44,7 @@ import scala.language.implicitConversions
 import scala.math.Ordering
 
 object TableColumnBase {
-  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]): jfxsc.TableColumnBase[S, T] =
-    if (tc != null) tc.delegate else null
+  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]): jfxsc.TableColumnBase[S, T] = if (tc != null) tc.delegate else null
 
   /**
    * By default all columns will use this comparator to perform sorting.
@@ -58,10 +57,10 @@ object TableColumnBase {
 /**
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/control/TableColumnBase.html]].
  */
-abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.TableColumnBase[S, T])
-    extends EventHandlerDelegate
-    with Styleable
-    with SFXDelegate[jfxsc.TableColumnBase[S, T]] {
+abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.TableColumnBase[S, T])
+  extends EventHandlerDelegate
+  with Styleable
+  with SFXDelegate[jfxsc.TableColumnBase[S, T]] {
 
   /**
    * This enables support for nested columns, which can be useful to group together related data.
@@ -132,8 +131,7 @@ abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.Tab
   }
 
   /**
-   * This read-only property will always refer to the parent of this column, in the situation where nested columns are
-   * being used.
+   * This read-only property will always refer to the parent of this column, in the situation where nested columns are being used.
    */
   def parentColumn: ReadOnlyObjectProperty[jfxsc.TableColumnBase[S, _]] = delegate.parentColumnProperty
 
@@ -193,8 +191,8 @@ abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.Tab
   }
 
   /**
-   * Returns a previously set Object property, or null if no such property has been set using the setUserData(Any)
-   * method.
+   * Returns a previously set Object property, or null if no such property has been set using the
+   * setUserData(Any) method.
    */
   def userData: AnyRef = delegate.getUserData
 

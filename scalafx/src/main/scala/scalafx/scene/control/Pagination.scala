@@ -59,8 +59,8 @@ object Pagination {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Pagination.html]]
  */
 class Pagination(override val delegate: jfxsc.Pagination = new jfxsc.Pagination)
-    extends Control(delegate)
-    with SFXDelegate[jfxsc.Pagination] {
+  extends Control(delegate)
+  with SFXDelegate[jfxsc.Pagination] {
 
   /**
    * Constructs a new Pagination control with the specified page count.
@@ -102,8 +102,7 @@ class Pagination(override val delegate: jfxsc.Pagination = new jfxsc.Pagination)
   /**
    * The pageFactory callback function that is called when a page has been selected by the application or the user.
    */
-  def pageFactory: ObjectProperty[Int => Node] =
-    ObjectProperty((page: Int) => new Node(delegate.pageFactoryProperty.get.call(page)) {})
+  def pageFactory: ObjectProperty[Int => Node] = ObjectProperty((page: Int) => new Node(delegate.pageFactoryProperty.get.call(page)) {})
 
   def pageFactory_=(callback: Int => Node): Unit = {
     val jCallback = new jfxu.Callback[java.lang.Integer, jfxs.Node] {

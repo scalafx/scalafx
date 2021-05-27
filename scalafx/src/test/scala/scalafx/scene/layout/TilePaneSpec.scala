@@ -35,5 +35,5 @@ import scalafx.testutil.{AlignmentDelegateSpec, SimpleSFXDelegateSpec}
  * TilePane Spec tests.
  */
 class TilePaneSpec
-    extends SimpleSFXDelegateSpec[jfxsl.TilePane, TilePane](classOf[jfxsl.TilePane], classOf[TilePane])
-    with AlignmentDelegateSpec[jfxsl.TilePane, TilePane]
+  extends SimpleSFXDelegateSpec[jfxsl.TilePane, TilePane](classOf[jfxsl.TilePane], classOf[TilePane])
+  with AlignmentDelegateSpec[jfxsl.TilePane, TilePane]

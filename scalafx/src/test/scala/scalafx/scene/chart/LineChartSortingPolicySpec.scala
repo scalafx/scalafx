@@ -32,10 +32,9 @@ import javafx.scene.{chart => jfxsc}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Test for [[scalafx.scene.layout.Priority]] */
-class LineChartSortingPolicySpec
-    extends SFXEnumDelegateSpec[jfxsc.LineChart.SortingPolicy, LineChart.SortingPolicy](
-      javaClass = classOf[jfxsc.LineChart.SortingPolicy],
-      scalaClass = classOf[LineChart.SortingPolicy],
-      companion = LineChart.SortingPolicy
-    )
+class LineChartSortingPolicySpec extends SFXEnumDelegateSpec[jfxsc.LineChart.SortingPolicy, LineChart.SortingPolicy](
+  javaClass = classOf[jfxsc.LineChart.SortingPolicy],
+  scalaClass = classOf[LineChart.SortingPolicy],
+  companion = LineChart.SortingPolicy)

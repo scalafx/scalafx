@@ -30,10 +30,7 @@ package scalafx.scene.shape
 import javafx.scene.{shape => jfxss}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/**
- * Wrapper for
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/StrokeLineJoin.htmljavafx.scene.shape.StrokeLineJoin]]
- */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/StrokeLineJoin.html javafx.scene.shape.StrokeLineJoin]] */
 object StrokeLineJoin extends SFXEnumDelegateCompanion[jfxss.StrokeLineJoin, StrokeLineJoin] {
 
   case object Miter extends StrokeLineJoin(jfxss.StrokeLineJoin.MITER)
@@ -53,5 +50,6 @@ object StrokeLineJoin extends SFXEnumDelegateCompanion[jfxss.StrokeLineJoin, Str
   protected override def unsortedValues: Array[StrokeLineJoin] = Array(Miter, Bevel, Round)
 }
 
+
 sealed abstract class StrokeLineJoin(override val delegate: jfxss.StrokeLineJoin)
-    extends SFXEnumDelegate[jfxss.StrokeLineJoin]
+  extends SFXEnumDelegate[jfxss.StrokeLineJoin]

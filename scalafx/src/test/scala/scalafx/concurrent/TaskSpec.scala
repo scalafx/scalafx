@@ -33,8 +33,11 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Task Spec tests.
+ *
+ *
  */
-class TaskSpec[T] extends SimpleSFXDelegateSpec[jfxc.Task[T], Task[T]](classOf[jfxc.Task[T]], classOf[Task[T]]) {
+class TaskSpec[T]
+  extends SimpleSFXDelegateSpec[jfxc.Task[T], Task[T]](classOf[jfxc.Task[T]], classOf[Task[T]]) {
 
   override protected def getScalaClassInstance = Task[T](null.asInstanceOf[T])
 

@@ -34,5 +34,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Polygon Spec tests.
+ *
+ *
  */
-class PolygonSpec extends SimpleSFXDelegateSpec[jfxss.Polygon, Polygon](classOf[jfxss.Polygon], classOf[Polygon])
+class PolygonSpec
+  extends SimpleSFXDelegateSpec[jfxss.Polygon, Polygon](classOf[jfxss.Polygon], classOf[Polygon])

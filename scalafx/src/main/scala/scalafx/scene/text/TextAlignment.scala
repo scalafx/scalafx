@@ -30,10 +30,7 @@ package scalafx.scene.text
 import javafx.scene.{text => jfxst}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/**
- * Wrapper for
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/TextAlignment.htmljavafx.scene.text.TextAlignment]]
- */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/text/TextAlignment.html javafx.scene.text.TextAlignment]] */
 object TextAlignment extends SFXEnumDelegateCompanion[jfxst.TextAlignment, TextAlignment] {
 
   case object Left extends TextAlignment(jfxst.TextAlignment.LEFT)
@@ -58,5 +55,6 @@ object TextAlignment extends SFXEnumDelegateCompanion[jfxst.TextAlignment, TextA
   protected override def unsortedValues: Array[TextAlignment] = Array(Left, Center, Right, Justify)
 }
 
+
 sealed abstract class TextAlignment(override val delegate: jfxst.TextAlignment)
-    extends SFXEnumDelegate[jfxst.TextAlignment]
+  extends SFXEnumDelegate[jfxst.TextAlignment]

@@ -38,8 +38,9 @@ import scalafx.stage.FileChooser
 import scala.language.implicitConversions
 
 /**
- * Demo for Issue #178: FileChooser does not handle a the value returned when the user cancels file selection. If
- * FileChooser.showOpenMultipleDialog was used and user cancelled selection an NPE was thrown.
+ * Demo for Issue #178: FileChooser does not handle a the value returned when the user cancels file selection.
+ * If FileChooser.showOpenMultipleDialog was used and user cancelled selection an NPE was thrown.
+ *
  */
 object MultipleFileChooserDemo extends JFXApp {
 
@@ -51,7 +52,7 @@ object MultipleFileChooserDemo extends JFXApp {
         children = new Button {
           text = "Open file chooser and select multiple files or Cancel"
           onAction = _ => {
-            val fc        = new FileChooser()
+            val fc = new FileChooser()
             val selection = fc.showOpenMultipleDialog(stage)
 
             println("Selection: " + selection)

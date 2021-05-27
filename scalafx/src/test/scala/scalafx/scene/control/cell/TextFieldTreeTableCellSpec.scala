@@ -35,7 +35,5 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * TextFieldTreeTableCell Spec tests.
  */
 class TextFieldTreeTableCellSpec[S, T]
-    extends SimpleSFXDelegateSpec[jfxscc.TextFieldTreeTableCell[S, T], TextFieldTreeTableCell[S, T]](
-      classOf[jfxscc.TextFieldTreeTableCell[S, T]],
-      classOf[TextFieldTreeTableCell[S, T]]
-    )
+  extends SimpleSFXDelegateSpec[jfxscc.TextFieldTreeTableCell[S, T], TextFieldTreeTableCell[S, T]](
+    classOf[jfxscc.TextFieldTreeTableCell[S, T]], classOf[TextFieldTreeTableCell[S, T]])

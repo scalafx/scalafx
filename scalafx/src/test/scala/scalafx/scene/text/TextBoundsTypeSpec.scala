@@ -32,10 +32,10 @@ import javafx.scene.{text => jfxst}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Test for [[scalafx.scene.text.TextBoundsType]] */
-class TextBoundsTypeSpec
-    extends SFXEnumDelegateSpec[jfxst.TextBoundsType, TextBoundsType](
-      javaClass = classOf[jfxst.TextBoundsType],
-      scalaClass = classOf[TextBoundsType],
-      companion = TextBoundsType
-    )
+class TextBoundsTypeSpec extends SFXEnumDelegateSpec[jfxst.TextBoundsType, TextBoundsType](
+  javaClass = classOf[jfxst.TextBoundsType],
+  scalaClass = classOf[TextBoundsType],
+  companion = TextBoundsType)
+

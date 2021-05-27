@@ -34,14 +34,13 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object DisplacementMap {
-  implicit def sfxDisplacementMap2jfx(dm: DisplacementMap): jfxse.DisplacementMap =
-    if (dm != null) dm.delegate else null
+  implicit def sfxDisplacementMap2jfx(dm: DisplacementMap): jfxse.DisplacementMap = if (dm != null) dm.delegate else null
 }
 
 class DisplacementMap(override val delegate: jfxse.DisplacementMap = new jfxse.DisplacementMap)
-    extends Effect(delegate)
-    with InputDelegate[jfxse.DisplacementMap]
-    with SFXDelegate[jfxse.DisplacementMap] {
+  extends Effect(delegate)
+  with InputDelegate[jfxse.DisplacementMap]
+  with SFXDelegate[jfxse.DisplacementMap] {
 
   /**
    * Creates a new instance of DisplacementMap with the specified mapData.
@@ -51,8 +50,7 @@ class DisplacementMap(override val delegate: jfxse.DisplacementMap = new jfxse.D
   /**
    * Creates a new instance of DisplacementMap with the specified mapData, offsetX, offsetY, scaleX, and scaleY.
    */
-  def this(mapData: FloatMap, offsetX: Double, offsetY: Double, scaleX: Double, scaleY: Double) =
-    this(new jfxse.DisplacementMap(mapData, offsetX, offsetY, scaleX, scaleY))
+  def this(mapData: FloatMap, offsetX: Double, offsetY: Double, scaleX: Double, scaleY: Double) = this(new jfxse.DisplacementMap(mapData, offsetX, offsetY, scaleX, scaleY))
 
   /**
    * The map data for this Effect.

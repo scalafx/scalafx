@@ -27,6 +27,8 @@
 package scalafx
 
 /**
- * Contains traits and objects to help to wrap JavaFx classes in their equivalent ScalaFX classes/traits.
+ * Contains traits and objects to help to wrap JavaFx classes in their equivalent ScalaFX classes/traits.   
  */
-package object delegate {}
+package object delegate {
+
+}

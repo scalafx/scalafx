@@ -39,8 +39,8 @@ object Hyperlink {
 }
 
 class Hyperlink(override val delegate: jfxsc.Hyperlink = new jfxsc.Hyperlink)
-    extends ButtonBase(delegate)
-    with SFXDelegate[jfxsc.Hyperlink] {
+  extends ButtonBase(delegate)
+  with SFXDelegate[jfxsc.Hyperlink] {
 
   /**
    * Create a hyperlink with the specified text as its label.

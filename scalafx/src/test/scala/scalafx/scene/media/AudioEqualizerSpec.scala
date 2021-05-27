@@ -32,15 +32,13 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * AudioEqualizer Spec tests.
+ *
+ *
  */
 class AudioEqualizerSpec
-    extends SimpleSFXDelegateSpec[jfxsm.AudioEqualizer, AudioEqualizer](
-      classOf[jfxsm.AudioEqualizer],
-      classOf[AudioEqualizer]
-    )
-    with UrlMedia {
+  extends SimpleSFXDelegateSpec[jfxsm.AudioEqualizer, AudioEqualizer](classOf[jfxsm.AudioEqualizer], classOf[AudioEqualizer])
+  with UrlMedia {
 
-  override protected def getJavaClassInstance: jfxsm.AudioEqualizer =
-    new jfxsm.MediaPlayer(new jfxsm.Media(url)).getAudioEqualizer
+  override protected def getJavaClassInstance: jfxsm.AudioEqualizer = new jfxsm.MediaPlayer(new jfxsm.Media(url)).getAudioEqualizer
 
 }

@@ -40,39 +40,27 @@ import scala.language.implicitConversions
 /**
  * Companion Object for [[scalafx.scene.control.cell.TextFieldTreeTableCell]].
  *
- * @define
- *   TFTC `TextFieldTreeTableCell`
- * @define
- *   TTYPE The type of the elements contained within the `ListView`.
- * @define
- *   FLVINIT Provides a `TextField that allows editing of the cell content when the cell is double-clicked, or when
- *   TreeView.edit(javafx.scene.control.TreeItem) is called.
- * @define
- *   FLVRET A Function that can be inserted into the cell factory property of a `TreeView`, that enables textual editing
- *   of the content.
- */
+ * @define TFTC    `TextFieldTreeTableCell`
+ * @define TTYPE   The type of the elements contained within the `ListView`.
+ * @define FLVINIT Provides a `TextField that allows editing of the cell content when the cell is double-clicked, or when TreeView.edit(javafx.scene.control.TreeItem) is called.
+ *                 @define FLVRET A Function that can be inserted into the cell factory property of a `TreeView`, that enables textual editing of the content.
+ **/
 object TextFieldTreeTableCell {
 
   /**
    * Converts a ScalaFX $TFTC to its JavaFX counterpart.
    *
-   * @tparam T
-   *   $TTYPE
-   * @param cell
-   *   ScalaFX $TFTC
-   * @return
-   *   JavaFX $TFTC
+   * @tparam T $TTYPE
+   * @param cell ScalaFX $TFTC
+   * @return JavaFX $TFTC
    */
-  implicit def sfxTextFieldTreeTableCell2jfx[S, T](
-      cell: TextFieldTreeTableCell[S, T]
-  ): jfxsc.cell.TextFieldTreeTableCell[S, T] =
+  implicit def sfxTextFieldTreeTableCell2jfx[S, T](cell: TextFieldTreeTableCell[S, T]): jfxsc.cell.TextFieldTreeTableCell[S, T] =
     if (cell != null) cell.delegate else null
 
   /**
    * $FLVINIT
    *
-   * @return
-   *   $FLVRET
+   * @return $FLVRET
    */
   def forTreeTableColumn[S](): (jfxsc.TreeTableColumn[S, String] => TreeTableCell[S, String]) =
     (view: jfxsc.TreeTableColumn[S, String]) => jfxscc.TextFieldTreeTableCell.forTreeTableColumn[S]().call(view)
@@ -80,10 +68,8 @@ object TextFieldTreeTableCell {
   /**
    * $FLVINIT
    *
-   * @param converter
-   *   A `StringConverter` that can convert the given String (from what the user typed in) into an instance of type T.
-   * @return
-   *   $FLVRET
+   * @param converter A `StringConverter` that can convert the given String (from what the user typed in) into an instance of type T.
+   * @return $FLVRET
    */
   def forTreeTableColumn[S, T](converter: StringConverter[T]): (jfxsc.TreeTableColumn[S, T] => TreeTableCell[S, T]) =
     (view: jfxsc.TreeTableColumn[S, T]) => jfxscc.TextFieldTreeTableCell.forTreeTableColumn[S, T](converter).call(view)
@@ -92,39 +78,30 @@ object TextFieldTreeTableCell {
    * Added to satisfy Spec tests.
    */
   @deprecated(message = "Use forTreeTableColumn[S, T](StringConverter[T])", since = "1.0")
-  def forTreeTableColumn[S, T](
-      converter: jfxu.StringConverter[T]
-  ): jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] =
-    jfxscc.TextFieldTreeTableCell.forTreeTableColumn[S, T](converter)
+  def forTreeTableColumn[S, T](converter: jfxu.StringConverter[T]): jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] = jfxscc.TextFieldTreeTableCell.forTreeTableColumn[S, T](converter)
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/TextFieldTreeTableCell.html$TFTC]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/TextFieldTreeTableCell.html $TFTC]]
  *
- * @tparam T
- *   Type used in this cell
- * @constructor
- *   Creates a new $TFTC from a JavaFX $TFTC
- * @param delegate
- *   JavaFX $TFTC
+ * @tparam T Type used in this cell
+ * @constructor Creates a new $TFTC from a JavaFX $TFTC
+ * @param delegate JavaFX $TFTC
  *
- * @define
- *   TFTC `TextFieldTreeTableCell`
+ * @define TFTC `TextFieldTreeTableCell`
  */
-class TextFieldTreeTableCell[S, T](
-    override val delegate: jfxscc.TextFieldTreeTableCell[S, T] = new jfxscc.TextFieldTreeTableCell[S, T]
-) extends TreeTableCell[S, T](delegate)
-    with ConvertableCell[jfxscc.TextFieldTreeTableCell[S, T], T, T]
-    with UpdatableCell[jfxscc.TextFieldTreeTableCell[S, T], T]
-    with SFXDelegate[jfxscc.TextFieldTreeTableCell[S, T]] {
+class TextFieldTreeTableCell[S, T](override val delegate: jfxscc.TextFieldTreeTableCell[S, T] = new jfxscc.TextFieldTreeTableCell[S, T])
+  extends TreeTableCell[S, T](delegate)
+  with ConvertableCell[jfxscc.TextFieldTreeTableCell[S, T], T, T]
+  with UpdatableCell[jfxscc.TextFieldTreeTableCell[S, T], T]
+  with SFXDelegate[jfxscc.TextFieldTreeTableCell[S, T]] {
 
   /**
-   * Creates a `TextFieldTreeTableCell` that provides a `TextField` when put into editing mode that allows editing of
-   * the cell content.
+   * Creates a `TextFieldTreeTableCell` that provides a `TextField` when put into editing mode that allows editing of the
+   * cell content.
    *
-   * @param converter
-   *   A `converter` that can convert the given String (from what the user typed in) into an instance of type T.
+   * @param converter A `converter` that can convert the given String (from what the user typed in) into an instance of type T.
    */
   def this(converter: StringConverter[T]) = this(new jfxscc.TextFieldTreeTableCell[S, T](converter))
 

@@ -33,8 +33,7 @@ import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.scene.control.TabPane.TabClosingPolicy]]. */
 class TabPaneTabClosingPolicySpec
-    extends SFXEnumDelegateSpec[jfxsc.TabPane.TabClosingPolicy, TabPane.TabClosingPolicy](
-      classOf[jfxsc.TabPane.TabClosingPolicy],
-      classOf[TabPane.TabClosingPolicy],
-      TabPane.TabClosingPolicy
-    )
+  extends SFXEnumDelegateSpec[jfxsc.TabPane.TabClosingPolicy, TabPane.TabClosingPolicy](
+    classOf[jfxsc.TabPane.TabClosingPolicy],
+    classOf[TabPane.TabClosingPolicy],
+    TabPane.TabClosingPolicy)

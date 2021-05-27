@@ -35,8 +35,6 @@ object StringBinding {
   implicit def sfxStringBinding2jfx(sb: StringBinding): jfxbb.StringBinding = if (sb != null) sb.delegate else null
 }
 
-class StringBinding(override val delegate: jfxbb.StringBinding)
-    extends StringExpression(delegate)
-    with ObservableValue[String, String] {
+class StringBinding(override val delegate: jfxbb.StringBinding) extends StringExpression(delegate) with ObservableValue[String, String] {
   def value: String = delegate.get
 }

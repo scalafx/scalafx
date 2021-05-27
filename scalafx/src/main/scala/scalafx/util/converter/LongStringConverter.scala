@@ -36,4 +36,4 @@ object LongStringConverter {
 }
 
 class LongStringConverter(delegate: jfxuc.LongStringConverter = new jfxuc.LongStringConverter)
-    extends StringConverterDelegate[java.lang.Long, Long, jfxuc.LongStringConverter](delegate)
+  extends StringConverterDelegate[java.lang.Long, Long, jfxuc.LongStringConverter](delegate)

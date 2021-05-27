@@ -34,14 +34,11 @@ import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
 object TextInputDialog {
-
   /**
    * Converts a ScalaFX TextInputDialog to its JavaFX counterpart.
    *
-   * @param v
-   *   ScalaFX TextInputDialog
-   * @return
-   *   JavaFX TextInputDialog
+   * @param v ScalaFX TextInputDialog
+   * @return JavaFX TextInputDialog
    */
   implicit def sfxTextInputDialog2jfx(v: TextInputDialog): jfxsc.TextInputDialog =
     if (v != null) v.delegate else null
@@ -52,27 +49,27 @@ object TextInputDialog {
  *
  * Wraps a $JFX $URL0 $TC]].
  *
- * @constructor
- *   Creates a new TextInputDialog without a default value entered into the dialog.
+ * @constructor Creates a new TextInputDialog without a default value entered into the dialog.
  *
- * @define
- *   TC TextInputDialog
- * @define
- *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene/TextInputDialog.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
+ * @define TC TextInputDialog
+ * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx.scene/TextInputDialog.html
+ * @define JFX JavaFX
+ * @define ORIGINALDOC Original Documentation]].
  */
 class TextInputDialog(override val delegate: jfxsc.TextInputDialog = new jfxsc.TextInputDialog())
-    extends Dialog[String](delegate)
-    with SFXDelegate[jfxsc.TextInputDialog] {
+  extends Dialog[String](delegate)
+  with SFXDelegate[jfxsc.TextInputDialog] {
 
   /**
-   * Creates a new TextInputDialog with the default value entered into the dialog `TextField`.
+   * Creates a new TextInputDialog with the default value entered into the
+   * dialog `TextField`.
    */
   def this(defaultValue: String) = this(new jfxsc.TextInputDialog(defaultValue))
 
+
   /**
-   * Shows the dialog and waits for the user response (in other words, brings up a blocking dialog, with the returned
-   * value the users input).
+   * Shows the dialog and waits for the user response (in other words, brings
+   * up a blocking dialog, with the returned value the users input).
    *
    * {{{
    *   dialog.showAndWait()
@@ -86,8 +83,7 @@ class TextInputDialog(override val delegate: jfxsc.TextInputDialog = new jfxsc.T
    *   }
    * }}}
    *
-   * @return
-   *   An `Option` that contains the `result`.
+   * @return An `Option` that contains the `result`.
    */
   def showAndWait(): Option[String] = {
     super.showAndWait((x: String) => x).asInstanceOf[Option[String]]

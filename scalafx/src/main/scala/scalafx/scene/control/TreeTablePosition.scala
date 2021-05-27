@@ -34,22 +34,17 @@ import scalafx.delegate.SFXDelegate
 /**
  * Object companion for [[scalafx.scene.control.TreeTablePosition]].
  *
- * @since
- *   8.0
+ * @since 8.0
  */
 object TreeTablePosition {
 
   /**
    * Converts a ScalaFX TreeTablePosition to its JavaFX couterpart.
    *
-   * @param ttp
-   *   ScalaFX TreeTablePosition
-   * @tparam S
-   *   The type of the TreeItem instances contained within the TreeTableView.
-   * @tparam T
-   *   The type of the items contained within the TreeTableColumn.
-   * @return
-   *   JavaFX TreeTablePosition
+   * @param ttp ScalaFX TreeTablePosition
+   * @tparam S The type of the TreeItem instances contained within the TreeTableView.
+   * @tparam T The type of the items contained within the TreeTableColumn.
+   * @return JavaFX TreeTablePosition
    */
   implicit def sfxTreeTablePosition2jfx[S, T](ttp: TreeTablePosition[S, T]): jfxsc.TreeTablePosition[S, T] =
     if (ttp != null) ttp.delegate else null
@@ -59,39 +54,29 @@ object TreeTablePosition {
 /**
  * Wraps a $JFX $URL0 $TTP]].
  *
- * @constructor
- *   Creates a new $TTP from a $JFX one.
- * @tparam S
- *   The type of the TreeItem instances contained within the TreeTableView.
- * @tparam T
- *   The type of the items contained within the TreeTableColumn.
- * @param delegate
- *   A $JFX $TTP to be wrapped. Its defaul value is a new $JFX $TTP.
- * @since
- *   8.0
+ * @constructor Creates a new $TTP from a $JFX one.
+ * @tparam S The type of the TreeItem instances contained within the TreeTableView.
+ * @tparam T The type of the items contained within the TreeTableColumn.
+ * @param delegate A $JFX $TTP to be wrapped. Its defaul value is a new $JFX $TTP.
+ * @since 8.0
  *
- * @define
- *   TTP TreeTablePosition
- * @define
- *   URL0
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TTP.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
+ * @define TTP TreeTablePosition
+ * @define URL0 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TTP.html
+ * @define JFX JavaFX
+ * @define ORIGINALDOC Original Documentation]].
  */
 class TreeTablePosition[S, T](override val delegate: jfxsc.TreeTablePosition[S, T])
-    extends TablePositionBase[jfxsc.TreeTableColumn[S, T]](delegate)
-    with SFXDelegate[jfxsc.TreeTablePosition[S, T]] {
+  extends TablePositionBase[jfxsc.TreeTableColumn[S, T]](delegate)
+  with SFXDelegate[jfxsc.TreeTablePosition[S, T]] {
 
   /**
-   * Constructs a TreeTablePosition instance to represent the given row/column position in the given TreeTableView
-   * instance.
+   * Constructs a TreeTablePosition instance to represent the given row/column position in the
+   * given TreeTableView instance.
    *
-   * @param treeTableView
-   *   The TreeTableView that this position is related to.
-   * @param row
-   *   The row that this TreeTablePosition is representing.
-   * @param tableColumn
-   *   The TreeTableColumn instance that this TreeTablePosition represents.
-   * @see
-   *   $URL0#TreeTablePosition-javafx.scene.control.TreeTableView-int-javafx.scene.control.TreeTableColumn- $ORIGINALDOC
+   * @param treeTableView The TreeTableView that this position is related to.
+   * @param row           The row that this TreeTablePosition is representing.
+   * @param tableColumn   The TreeTableColumn instance that this TreeTablePosition represents.
+   * @see $URL0#TreeTablePosition-javafx.scene.control.TreeTableView-int-javafx.scene.control.TreeTableColumn- $ORIGINALDOC
    */
   def this(treeTableView: jfxsc.TreeTableView[S], row: Int, tableColumn: jfxsc.TreeTableColumn[S, T]) =
     this(new jfxsc.TreeTablePosition(treeTableView, row, tableColumn))
@@ -99,16 +84,14 @@ class TreeTablePosition[S, T](override val delegate: jfxsc.TreeTablePosition[S, 
   /**
    * The TreeTableView that this TreeTablePosition is related to.
    *
-   * @see
-   *   $URL0#getTreeTableView-- $ORIGINALDOC
+   * @see $URL0#getTreeTableView-- $ORIGINALDOC
    */
   def treeTableView: jfxsc.TreeTableView[S] = delegate.getTreeTableView
 
   /**
    * Returns the TreeItem that backs the TablePositionBase.row
    *
-   * @see
-   *   $URL0#getTreeItem-- $ORIGINALDOC
+   * @see $URL0#getTreeItem-- $ORIGINALDOC
    */
   def treeItem: jfxsc.TreeItem[S] = delegate.getTreeItem
 

@@ -49,7 +49,7 @@ object GridPane {
    * remaining rows/columns.
    */
   val Remaining: Int = jfxsl.GridPane.REMAINING
-  @deprecated("Use Remaining; REMAINING will be removed in a future release", "8.0.60-R10")
+  @deprecated ("Use Remaining; REMAINING will be removed in a future release", "8.0.60-R10")
   val REMAINING: Int = Remaining
 
   /**
@@ -65,8 +65,8 @@ object GridPane {
   def getColumnIndex(child: Node): Integer = jfxsl.GridPane.getColumnIndex(child)
 
   /**
-   * Sets the column index for the child when contained by a gridpane so that it will be positioned starting in that
-   * column of the gridpane.
+   * Sets the column index for the child when contained by a gridpane so that it will be positioned
+   * starting in that column of the gridpane.
    */
   def setColumnIndex(child: Node, value: Int): Unit = {
     jfxsl.GridPane.setColumnIndex(child, value)
@@ -119,8 +119,8 @@ object GridPane {
   def getRowIndex(child: Node): Integer = jfxsl.GridPane.getRowIndex(child)
 
   /**
-   * Sets the row index for the child when contained by a gridpane so that it will be positioned starting in that row of
-   * the gridpane.
+   * Sets the row index for the child when contained by a gridpane so that it will be positioned
+   * starting in that row of the gridpane.
    */
   def setRowIndex(child: Node, value: Int): Unit = {
     jfxsl.GridPane.setRowIndex(child, value)
@@ -132,7 +132,8 @@ object GridPane {
   def getRowSpan(child: Node): Integer = jfxsl.GridPane.getRowSpan(child)
 
   /**
-   * Sets the row span for the child when contained by a gridpane so that it will span that number of rows vertically.
+   * Sets the row span for the child when contained by a gridpane so that it will span that number
+   * of rows vertically.
    */
   def setRowSpan(child: Node, value: Int): Unit = {
     jfxsl.GridPane.setRowSpan(child, value)
@@ -164,8 +165,8 @@ object GridPane {
   }
 
   /**
-   * Sets the column span for the child when contained by a gridpane so that it will span that number of columns
-   * horizontally.
+   * Sets the column span for the child when contained by a gridpane so that it will span that
+   * number of columns horizontally.
    */
   def setColumnSpan(child: Node, value: Int): Unit = {
     jfxsl.GridPane.setColumnSpan(child, value)
@@ -179,7 +180,8 @@ object GridPane {
   }
 
   /**
-   * Sets the column, row, column-span, and row-span value for the child when contained in a gridpane.
+   * Sets the column, row, column-span, and row-span value for the child when contained in a
+   * gridpane.
    */
   def setConstraints(child: Node, columnIndex: Int, rowIndex: Int, columnspan: Int, rowspan: Int): Unit = {
     jfxsl.GridPane.setConstraints(child, columnIndex, rowIndex, columnspan, rowspan)
@@ -188,72 +190,26 @@ object GridPane {
   /**
    * Sets the grid position, spans, and alignment for the child when contained in a gridpane.
    */
-  def setConstraints(
-      child: Node,
-      columnIndex: Int,
-      rowIndex: Int,
-      columnspan: Int,
-      rowspan: Int,
-      halignment: HPos,
-      valignment: VPos
-  ): Unit = {
+  def setConstraints(child: Node, columnIndex: Int, rowIndex: Int, columnspan: Int, rowspan: Int,
+                     halignment: HPos, valignment: VPos): Unit = {
     jfxsl.GridPane.setConstraints(child, columnIndex, rowIndex, columnspan, rowspan, halignment, valignment)
   }
 
   /**
    * Sets the grid position, spans, and alignment for the child when contained in a gridpane.
    */
-  def setConstraints(
-      child: Node,
-      columnIndex: Int,
-      rowIndex: Int,
-      columnspan: Int,
-      rowspan: Int,
-      halignment: HPos,
-      valignment: VPos,
-      hgrow: Priority,
-      vgrow: Priority
-  ): Unit = {
-    jfxsl.GridPane.setConstraints(
-      child,
-      columnIndex,
-      rowIndex,
-      columnspan,
-      rowspan,
-      halignment,
-      valignment,
-      hgrow,
-      vgrow
-    )
+  def setConstraints(child: Node, columnIndex: Int, rowIndex: Int, columnspan: Int, rowspan: Int,
+                     halignment: HPos, valignment: VPos, hgrow: Priority, vgrow: Priority): Unit = {
+    jfxsl.GridPane.setConstraints(child, columnIndex, rowIndex, columnspan, rowspan, halignment, valignment, hgrow, vgrow)
   }
 
   /**
-   * Sets the grid position, spans, alignment, grow priorities, and margin for the child when contained in a gridpane.
+   * Sets the grid position, spans, alignment, grow priorities, and margin for the child when
+   * contained in a gridpane.
    */
-  def setConstraints(
-      child: Node,
-      columnIndex: Int,
-      rowIndex: Int,
-      columnspan: Int,
-      rowspan: Int,
-      halignment: HPos,
-      valignment: VPos,
-      hgrow: Priority,
-      vgrow: Priority,
-      margin: Insets
-  ): Unit = {
-    jfxsl.GridPane.setConstraints(
-      child,
-      columnIndex,
-      rowIndex,
-      columnspan,
-      rowspan,
-      halignment,
-      valignment,
-      hgrow,
-      vgrow,
-      margin
-    )
+  def setConstraints(child: Node, columnIndex: Int, rowIndex: Int, columnspan: Int, rowspan: Int,
+                     halignment: HPos, valignment: VPos, hgrow: Priority, vgrow: Priority, margin: Insets): Unit = {
+    jfxsl.GridPane.setConstraints(child, columnIndex, rowIndex, columnspan, rowspan, halignment, valignment, hgrow, vgrow, margin)
   }
 
 }
@@ -262,12 +218,13 @@ object GridPane {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/GridPane.html]]
  */
 class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
-    extends Pane(delegate)
-    with AlignmentDelegate[jfxsl.GridPane]
-    with SFXDelegate[jfxsl.GridPane] {
+  extends Pane(delegate)
+  with AlignmentDelegate[jfxsl.GridPane]
+  with SFXDelegate[jfxsl.GridPane] {
 
   /**
-   * For debug purposes only: controls whether lines are displayed to show the gridpane's rows and columns.
+   * For debug purposes only: controls whether lines are displayed to show the gridpane's rows and
+   * columns.
    */
   def gridLinesVisible: BooleanProperty = delegate.gridLinesVisibleProperty
 
@@ -297,13 +254,11 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
    * List of column constraints.
    */
   def columnConstraints: ObservableList[jfxsl.ColumnConstraints] = delegate.getColumnConstraints
-
   /**
-   * Sets the list of column constraints, replacing the prior content. If you want append to current content, use `add`
-   * or similar.
+   * Sets the list of column constraints, replacing the prior content. If you want append to current content, use `add` or
+   * similar.
    *
-   * @param c
-   *   list of column constraints to replace prior content.
+   * @param c list of column constraints to replace prior content.
    */
   def columnConstraints_=(c: Iterable[ColumnConstraints]): Unit = {
     if (null == c) {
@@ -317,13 +272,11 @@ class GridPane(override val delegate: jfxsl.GridPane = new jfxsl.GridPane)
    * List of row constraints.
    */
   def rowConstraints: ObservableList[jfxsl.RowConstraints] = delegate.getRowConstraints
-
   /**
    * Sets the list of row constraints, replacing the prior content. If you want append to current content, use `add` or
    * similar.
    *
-   * @param c
-   *   list of row constraints to replace prior content.
+   * @param c list of row constraints to replace prior content.
    */
   def rowConstraints_=(c: Iterable[RowConstraints]): Unit = {
     if (null == c) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+* Copyright (c) 2011-2014, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,35 +41,29 @@ object PageRange {
   /**
    * Converts a ScalaFX PageRange to its JavaFX counterpart.
    *
-   * @param pr
-   *   ScalaFX PageRange
-   * @return
-   *   JavaFX PageRange
+   * @param pr ScalaFX PageRange
+   * @return JavaFX PageRange
    */
   implicit def sfxPageRange2jfx(pr: PageRange): jfxp.PageRange = if (pr != null) pr.delegate else null
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PageRange.htmlJavaFXPageRange]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/PageRange.html JavaFX PageRange]].
  *
- * @constructor
- *   Creates a new ScalaFX PageRange from its JavaFX counterpart.
- * @param delegate
- *   JavaFX PageRange. Since there is no public 'default' constructor for it, there is not a default value.
+ * @constructor Creates a new ScalaFX PageRange from its JavaFX counterpart.
+ * @param delegate JavaFX PageRange. Since there is no public 'default' constructor for it, there is not a default value.
  *
- * @since
- *   8.0
+ * @since 8.0
  */
-final class PageRange(override val delegate: jfxp.PageRange) extends SFXDelegate[jfxp.PageRange] {
+final class PageRange(override val delegate: jfxp.PageRange)
+  extends SFXDelegate[jfxp.PageRange] {
 
   /**
    * Create a new PageRange with the specified start and end page numbers.
    *
-   * @param startPage
-   *   the first page in the range.
-   * @param endPage
-   *   the last page in the range.
+   * @param startPage the first page in the range.
+   * @param endPage the last page in the range.
    */
   def this(startPage: Int, endPage: Int) = this(new jfxp.PageRange(startPage, endPage))
 

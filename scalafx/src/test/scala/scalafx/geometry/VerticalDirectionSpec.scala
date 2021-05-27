@@ -32,10 +32,9 @@ import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Tests for [[scalafx.geometry.VerticalDirection]]. */
-class VerticalDirectionSpec
-    extends SFXEnumDelegateSpec[jfxg.VerticalDirection, VerticalDirection](
-      javaClass = classOf[jfxg.VerticalDirection],
-      scalaClass = classOf[VerticalDirection],
-      companion = VerticalDirection
-    )
+class VerticalDirectionSpec extends SFXEnumDelegateSpec[jfxg.VerticalDirection, VerticalDirection](
+  javaClass = classOf[jfxg.VerticalDirection],
+  scalaClass = classOf[VerticalDirection],
+  companion = VerticalDirection)

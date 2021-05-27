@@ -32,10 +32,9 @@ import javafx.scene.{text => jfxst}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Test for [[scalafx.scene.text.FontWeight]] */
-class FontWeightSpec
-    extends SFXEnumDelegateSpec[jfxst.FontWeight, FontWeight](
-      javaClass = classOf[jfxst.FontWeight],
-      scalaClass = classOf[FontWeight],
-      companion = FontWeight
-    )
+class FontWeightSpec extends SFXEnumDelegateSpec[jfxst.FontWeight, FontWeight](
+  javaClass = classOf[jfxst.FontWeight],
+  scalaClass = classOf[FontWeight],
+  companion = FontWeight)

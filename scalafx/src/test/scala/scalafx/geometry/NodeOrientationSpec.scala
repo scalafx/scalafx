@@ -32,10 +32,9 @@ import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Tests for [[scalafx.geometry.NodeOrientation]]. */
-class NodeOrientationSpec
-    extends SFXEnumDelegateSpec[jfxg.NodeOrientation, NodeOrientation](
-      javaClass = classOf[jfxg.NodeOrientation],
-      scalaClass = classOf[NodeOrientation],
-      companion = NodeOrientation
-    )
+class NodeOrientationSpec extends SFXEnumDelegateSpec[jfxg.NodeOrientation, NodeOrientation](
+  javaClass = classOf[jfxg.NodeOrientation],
+  scalaClass = classOf[NodeOrientation],
+  companion = NodeOrientation)

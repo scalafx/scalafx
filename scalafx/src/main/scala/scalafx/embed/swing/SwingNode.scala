@@ -41,30 +41,25 @@ object SwingNode {
   /**
    * Converts a ScalaFX SwingNode to its JavaFX counterpart.
    *
-   * @param node
-   *   ScalaFX SwingNode
-   * @return
-   *   JavaFX SwingNode
+   * @param node ScalaFX SwingNode
+   * @return JavaFX SwingNode
    */
   implicit def sfxPanel2jfx(node: SwingNode): jfxes.SwingNode = if (node != null) node.delegate else null
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingNode.htmlJavaFXSwingNode]]. This class is
- * not implementing the `impl_*` methods from the original class.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/embed/swing/SwingNode.html JavaFX
+ * SwingNode]]. This class is not implementing the `impl_*` methods from the original class.
  *
- * @constructor
- *   Creates a new ScalaFX SwingNode from its JavaFX counterpart.
- * @param delegate
- *   JavaFX SwingNode. Its defaul value is a new SwingNode
+ * @constructor Creates a new ScalaFX SwingNode from its JavaFX counterpart.
+ * @param delegate JavaFX SwingNode. Its defaul value is a new SwingNode
  *
- * @since
- *   8.0
+ * @since 8.0
  */
 class SwingNode(override val delegate: jfxes.SwingNode = new jfxes.SwingNode)
-    extends Node(delegate)
-    with SFXDelegate[jfxes.SwingNode] {
+  extends Node(delegate)
+  with SFXDelegate[jfxes.SwingNode] {
 
   /**
    * the JComponent instance attached to this SwingNode.

@@ -45,7 +45,7 @@ object InfiniteRecursionIssue205Tester extends JFXApp {
   class Person(firstName_ : String, lastName_ : String) {
 
     val firstName = new StringProperty(this, "firstName", firstName_)
-    val lastName  = new StringProperty(this, "lastName", lastName_)
+    val lastName = new StringProperty(this, "lastName", lastName_)
   }
 
   val characters = ObservableBuffer[Person](
@@ -114,6 +114,7 @@ object InfiniteRecursionIssue205Tester extends JFXApp {
     }
 
   }
+
 
   stage = new PrimaryStage {
     title = "Simple Table View"

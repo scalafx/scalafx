@@ -39,37 +39,26 @@ import scala.language.implicitConversions
 /**
  * Companion Object for [[scalafx.scene.control.cell.TextFieldTableCell]].
  *
- * @define
- *   TFTC `TextFieldTableCell`
- * @define
- *   TTYPE The type of the elements contained within the `ListView`.
- * @define
- *   FLVINIT Provides a `TextField` that allows editing of the cell content when the cell is double-clicked, or when
- *   `TableView.edit(int, scalafx.scene.control.TableColumn)` is called.
- * @define
- *   FLVRET A Function that can be inserted into the cell factory property of a `TableColumn`, that enables textual
- *   editing of the content.
+ * @define TFTC    `TextFieldTableCell`
+ * @define TTYPE   The type of the elements contained within the `ListView`.
+ * @define FLVINIT Provides a `TextField` that allows editing of the cell content when the cell is double-clicked, or when `TableView.edit(int, scalafx.scene.control.TableColumn)` is called.
+ * @define FLVRET  A Function  that can be inserted into the cell factory property of a `TableColumn`, that enables textual editing of the content.
  */
 object TextFieldTableCell {
 
   /**
    * Converts a ScalaFX $TFTC to its JavaFX counterpart.
    *
-   * @tparam T
-   *   $TTYPE
-   * @param cell
-   *   ScalaFX $TFTC
-   * @return
-   *   JavaFX $TFTC
+   * @tparam T $TTYPE
+   * @param cell ScalaFX $TFTC
+   * @return JavaFX $TFTC
    */
-  implicit def sfxTextFieldTableCell2jfx[S, T](cell: TextFieldTableCell[S, T]): jfxscc.TextFieldTableCell[S, T] =
-    if (cell != null) cell.delegate else null
+  implicit def sfxTextFieldTableCell2jfx[S, T](cell: TextFieldTableCell[S, T]): jfxscc.TextFieldTableCell[S, T] = if (cell != null) cell.delegate else null
 
   /**
    * $FLVINIT
    *
-   * @return
-   *   $FLVRET
+   * @return $FLVRET
    */
   def forTableColumn[S](): (TableColumn[S, String] => TableCell[S, String]) =
     (view: TableColumn[S, String]) => jfxscc.TextFieldTableCell.forTableColumn[S]().call(view)
@@ -77,10 +66,8 @@ object TextFieldTableCell {
   /**
    * $FLVINIT
    *
-   * @param converter
-   *   A `StringConverter` that can convert the given String (from what the user typed in) into an instance of type T.
-   * @return
-   *   $FLVRET
+   * @param converter A `StringConverter` that can convert the given String (from what the user typed in) into an instance of type T.
+   * @return $FLVRET
    */
   def forTableColumn[S, T](converter: StringConverter[T]): (TableColumn[S, T] => TableCell[S, T]) =
     (view: TableColumn[S, T]) => jfxscc.TextFieldTableCell.forTableColumn[S, T](converter).call(view)
@@ -89,39 +76,30 @@ object TextFieldTableCell {
    * Added to satisfy Spec Texts.
    */
   @deprecated(message = "Use forTableColumn[S, T](StringConverter[T])", since = "1.0")
-  def forTableColumn[S, T](
-      converter: jfxu.StringConverter[T]
-  ): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] =
-    jfxscc.TextFieldTableCell.forTableColumn[S, T](converter)
+  def forTableColumn[S, T](converter: jfxu.StringConverter[T]): jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] = jfxscc.TextFieldTableCell.forTableColumn[S, T](converter)
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/TextFieldTableCell.html$TFTC]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/TextFieldTableCell.html $TFTC]]
  *
- * @tparam T
- *   Type used in this cell
- * @constructor
- *   Creates a new $TFTC from a JavaFX $TFTC
- * @param delegate
- *   JavaFX $TFTC
+ * @tparam T Type used in this cell
+ * @constructor Creates a new $TFTC from a JavaFX $TFTC
+ * @param delegate JavaFX $TFTC
  *
- * @define
- *   TFTC `TextFieldTableCell`
+ * @define TFTC `TextFieldTableCell`
  */
-class TextFieldTableCell[S, T](
-    override val delegate: jfxscc.TextFieldTableCell[S, T] = new jfxscc.TextFieldTableCell[S, T]
-) extends TableCell[S, T](delegate)
-    with ConvertableCell[jfxscc.TextFieldTableCell[S, T], T, T]
-    with UpdatableCell[jfxscc.TextFieldTableCell[S, T], T]
-    with SFXDelegate[jfxscc.TextFieldTableCell[S, T]] {
+class TextFieldTableCell[S, T](override val delegate: jfxscc.TextFieldTableCell[S, T] = new jfxscc.TextFieldTableCell[S, T])
+  extends TableCell[S, T](delegate)
+  with ConvertableCell[jfxscc.TextFieldTableCell[S, T], T, T]
+  with UpdatableCell[jfxscc.TextFieldTableCell[S, T], T]
+  with SFXDelegate[jfxscc.TextFieldTableCell[S, T]] {
 
   /**
-   * Creates a `TextFieldTableCell` that provides a TextField when put into editing mode that allows editing of the cell
-   * content.
+   * Creates a `TextFieldTableCell` that provides a TextField when put into editing mode that allows editing of the
+   * cell content.
    *
-   * @param converter
-   *   A `converter` that can convert the given String (from what the user typed in) into an instance of type T.
+   * @param converter A `converter` that can convert the given String (from what the user typed in) into an instance of type T.
    */
   def this(converter: StringConverter[T]) = this(new jfxscc.TextFieldTableCell[S, T](converter))
 

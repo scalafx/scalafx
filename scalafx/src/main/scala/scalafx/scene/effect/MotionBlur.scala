@@ -38,9 +38,9 @@ object MotionBlur {
 }
 
 class MotionBlur(override val delegate: jfxse.MotionBlur = new jfxse.MotionBlur)
-    extends Effect(delegate)
-    with InputDelegate[jfxse.MotionBlur]
-    with SFXDelegate[jfxse.MotionBlur] {
+  extends Effect(delegate)
+  with InputDelegate[jfxse.MotionBlur]
+  with SFXDelegate[jfxse.MotionBlur] {
 
   /**
    * Creates a new instance of MotionBlur with the specified angle and radius.

@@ -33,7 +33,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** Tests for [[scalafx.print.PageRange]]. */
 class PageRangeSpec
-    extends SimpleSFXDelegateSpec[jfxp.PageRange, PageRange](classOf[jfxp.PageRange], classOf[PageRange]) {
+  extends SimpleSFXDelegateSpec[jfxp.PageRange, PageRange](classOf[jfxp.PageRange], classOf[PageRange]) {
 
   override protected def getScalaClassInstance = new PageRange(1, 1)
 

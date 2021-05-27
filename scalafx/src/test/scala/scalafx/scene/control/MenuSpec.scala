@@ -31,7 +31,8 @@ import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
-class MenuSpec extends SimpleSFXDelegateSpec[jfxsc.Menu, Menu](classOf[jfxsc.Menu], classOf[Menu]) {
+class MenuSpec
+  extends SimpleSFXDelegateSpec[jfxsc.Menu, Menu](classOf[jfxsc.Menu], classOf[Menu]) {
 
   override protected def getScalaClassInstance = new Menu(new jfxsc.Menu("default"))
 

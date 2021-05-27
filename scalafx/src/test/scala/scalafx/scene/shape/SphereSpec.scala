@@ -33,4 +33,5 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** Sphere Spec tests. */
-class SphereSpec extends SimpleSFXDelegateSpec[jfxss.Sphere, Sphere](classOf[jfxss.Sphere], classOf[Sphere])
+class SphereSpec
+  extends SimpleSFXDelegateSpec[jfxss.Sphere, Sphere](classOf[jfxss.Sphere], classOf[Sphere])

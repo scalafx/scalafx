@@ -33,13 +33,12 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * DisplacementMap Spec tests.
+ *
  */
 class DisplacementMapSpec
-    extends SimpleSFXDelegateSpec[jfxse.DisplacementMap, DisplacementMap](
-      classOf[jfxse.DisplacementMap],
-      classOf[DisplacementMap]
-    )
-    with InputDelegateSpec[DisplacementMap] {
+  extends SimpleSFXDelegateSpec[jfxse.DisplacementMap, DisplacementMap](
+    classOf[jfxse.DisplacementMap], classOf[DisplacementMap])
+  with InputDelegateSpec[DisplacementMap] {
 
   val inputDelegate = getScalaClassInstance
 

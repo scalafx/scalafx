@@ -64,7 +64,7 @@ class Issue190Spec extends AnyFlatSpec with RunOnApplicationThread {
 
     //    Clipboard.systemClipboard.content = ClipboardContent(
     val content = ClipboardContent(
-      DataFormat.Files     -> Seq(new File("Test"), new File("Test2")).asJava,
+      DataFormat.Files -> Seq(new File("Test"), new File("Test2")).asJava,
       DataFormat.PlainText -> "Test3"
     )
 

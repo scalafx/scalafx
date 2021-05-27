@@ -31,10 +31,9 @@ import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Tests for [[scalafx.geometry.Pos]]. */
-class PosSpec
-    extends SFXEnumDelegateSpec[jfxg.Pos, Pos](
-      javaClass = classOf[jfxg.Pos],
-      scalaClass = classOf[Pos],
-      companion = Pos
-    )
+class PosSpec extends SFXEnumDelegateSpec[jfxg.Pos, Pos](
+  javaClass = classOf[jfxg.Pos],
+  scalaClass = classOf[Pos],
+  companion = Pos)

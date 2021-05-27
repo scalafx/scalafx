@@ -38,9 +38,9 @@ object Bloom {
 }
 
 class Bloom(override val delegate: jfxse.Bloom = new jfxse.Bloom)
-    extends Effect(delegate)
-    with InputDelegate[jfxse.Bloom]
-    with SFXDelegate[jfxse.Bloom] {
+  extends Effect(delegate)
+  with InputDelegate[jfxse.Bloom]
+  with SFXDelegate[jfxse.Bloom] {
 
   /**
    * Creates a new instance of Bloom with the specified threshold.

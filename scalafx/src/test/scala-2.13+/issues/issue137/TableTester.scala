@@ -35,8 +35,9 @@ import scalafx.scene.control.{TableColumn, TableView}
 import scalafx.scene.paint.Color
 
 /**
- * Sample code from https://github.com/scalafx/scalafx/issues/137#issuecomment-45469050 In issue 137 code compilation
- * fails on line with TableColumn The issue is only reproducible in Scala 2.12, not in 2.13 and newer
+ * Sample code from https://github.com/scalafx/scalafx/issues/137#issuecomment-45469050
+ * In issue 137 code compilation fails on line with TableColumn
+ * The issue is only reproducible in Scala 2.12, not in 2.13 and newer
  */
 object TableTester extends JFXApp {
 

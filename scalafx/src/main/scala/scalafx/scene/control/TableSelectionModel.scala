@@ -35,20 +35,16 @@ import scala.language.implicitConversions
 
 /**
  * Object companion for [[scalafx.scene.control.TablePositionBase]]
- * @since
- *   8.0
+ * @since 8.0
  */
 object TableSelectionModel {
 
   /**
    * Converts a ScalaFX TablePositionBase into a JavaFX version.
    *
-   * @param tsm
-   *   ScalaFX TablePositionBase
-   * @return
-   *   JavaFX TablePositionBase
-   * @since
-   *   8.0
+   * @param tsm ScalaFX TablePositionBase
+   * @return JavaFX TablePositionBase
+   * @since 8.0
    */
   implicit def sfxTableSelectionModel2jfx[T](tsm: TableSelectionModel[T]): jfxsc.TableSelectionModel[T] =
     if (tsm != null) tsm.delegate else null
@@ -56,21 +52,16 @@ object TableSelectionModel {
 }
 
 /**
- * Wraps JavaFX
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableSelectionModel.htmlTableSelectionModel]].
+ * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableSelectionModel.html TableSelectionModel]].
  *
- * @constructor
- *   creates a new ScalaFX TableSelectionModel from a JavaFX one.
- * @param delegate
- *   JavaFX TableSelectionModel
- * @tparam T
- *   The type of the underlying data model for the UI control.
- * @since
- *   8.0
+ * @constructor creates a new ScalaFX TableSelectionModel from a JavaFX one.
+ * @param delegate JavaFX TableSelectionModel
+ * @tparam T The type of the underlying data model for the UI control.
+ * @since 8.0
  */
 class TableSelectionModel[T](override val delegate: jfxsc.TableSelectionModel[T])
-    extends MultipleSelectionModel[T](delegate)
-    with SFXDelegate[jfxsc.TableSelectionModel[T]] {
+  extends MultipleSelectionModel[T](delegate)
+  with SFXDelegate[jfxsc.TableSelectionModel[T]] {
 
   //    protected abstract int getItemCount()
 
@@ -90,8 +81,8 @@ class TableSelectionModel[T](override val delegate: jfxsc.TableSelectionModel[T]
   }
 
   /**
-   * Convenience function which tests whether the given row and column index is currently selected in this TableView
-   * instance.
+   * Convenience function which tests whether the given row and column index is currently selected in this
+   * TableView instance.
    */
   def isSelected(row: Int, column: TableColumnBase[T, _]): Boolean = delegate.isSelected(row, column)
 
@@ -147,12 +138,7 @@ class TableSelectionModel[T](override val delegate: jfxsc.TableSelectionModel[T]
   /**
    * Selects the cells in the range (minRow, minColumn) to (maxRow, maxColumn), inclusive.
    */
-  def selectRange(
-      minRow: Int,
-      minColumn: TableColumnBase[T, _],
-      maxRow: Int,
-      maxColumn: TableColumnBase[T, _]
-  ): Unit = {
+  def selectRange(minRow: Int, minColumn: TableColumnBase[T, _], maxRow: Int, maxColumn: TableColumnBase[T, _]): Unit = {
     delegate.selectRange(minRow, minColumn, maxRow, maxColumn)
   }
 

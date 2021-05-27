@@ -33,5 +33,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * FloatMap Spec tests.
+ *
+ *
  */
-class FloatMapSpec extends SimpleSFXDelegateSpec[jfxse.FloatMap, FloatMap](classOf[jfxse.FloatMap], classOf[FloatMap])
+class FloatMapSpec
+  extends SimpleSFXDelegateSpec[jfxse.FloatMap, FloatMap](classOf[jfxse.FloatMap], classOf[FloatMap])

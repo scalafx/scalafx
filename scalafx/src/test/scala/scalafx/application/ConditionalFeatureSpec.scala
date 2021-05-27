@@ -32,10 +32,10 @@ import javafx.{application => jfxa}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Tests for [[scalafx.application.ConditionalFeature]]. */
-class ConditionalFeatureSpec
-    extends SFXEnumDelegateSpec[jfxa.ConditionalFeature, ConditionalFeature](
-      javaClass = classOf[jfxa.ConditionalFeature],
-      scalaClass = classOf[ConditionalFeature],
-      companion = ConditionalFeature
-    )
+class ConditionalFeatureSpec extends SFXEnumDelegateSpec[jfxa.ConditionalFeature, ConditionalFeature](
+  javaClass = classOf[jfxa.ConditionalFeature],
+  scalaClass = classOf[ConditionalFeature],
+  companion = ConditionalFeature)
+

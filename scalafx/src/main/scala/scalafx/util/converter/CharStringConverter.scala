@@ -36,4 +36,4 @@ object CharStringConverter {
 }
 
 class CharStringConverter(delegate: jfxuc.CharacterStringConverter = new jfxuc.CharacterStringConverter)
-    extends StringConverterDelegate[java.lang.Character, Char, jfxuc.CharacterStringConverter](delegate)
+  extends StringConverterDelegate[java.lang.Character, Char, jfxuc.CharacterStringConverter](delegate)

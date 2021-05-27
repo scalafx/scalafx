@@ -39,11 +39,11 @@ object DropShadow {
 }
 
 class DropShadow(override val delegate: jfxse.DropShadow = new jfxse.DropShadow())
-    extends Effect(delegate)
-    with ColorDelegate[jfxse.DropShadow]
-    with DimensionDelegate[jfxse.DropShadow]
-    with InputDelegate[jfxse.DropShadow]
-    with SFXDelegate[jfxse.DropShadow] {
+  extends Effect(delegate)
+  with ColorDelegate[jfxse.DropShadow]
+  with DimensionDelegate[jfxse.DropShadow]
+  with InputDelegate[jfxse.DropShadow]
+  with SFXDelegate[jfxse.DropShadow] {
 
   /**
    * Creates a new instance of DropShadow with the specified blurType, color, radius, spread, offsetX and offsetY.

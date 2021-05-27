@@ -33,9 +33,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * SplitPane.Divider Spec tests.
+ *
+ *
  */
 class SplitPaneDividerSpec
-    extends SimpleSFXDelegateSpec[jfxsc.SplitPane.Divider, SplitPane.Divider](
-      classOf[jfxsc.SplitPane.Divider],
-      classOf[SplitPane.Divider]
-    )
+  extends SimpleSFXDelegateSpec[jfxsc.SplitPane.Divider, SplitPane.Divider](classOf[jfxsc.SplitPane.Divider], classOf[SplitPane.Divider])

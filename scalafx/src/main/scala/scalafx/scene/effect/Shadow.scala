@@ -42,11 +42,11 @@ object Shadow {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/Shadow.html]].
  */
 class Shadow(override val delegate: jfxse.Shadow = new jfxse.Shadow)
-    extends Effect(delegate)
-    with ColorDelegate[jfxse.Shadow]
-    with InputDelegate[jfxse.Shadow]
-    with DimensionDelegate[jfxse.Shadow]
-    with SFXDelegate[jfxse.Shadow] {
+  extends Effect(delegate)
+  with ColorDelegate[jfxse.Shadow]
+  with InputDelegate[jfxse.Shadow]
+  with DimensionDelegate[jfxse.Shadow]
+  with SFXDelegate[jfxse.Shadow] {
 
   /**
    * Creates a new instance of Shadow with the specified blurType, color, radius.

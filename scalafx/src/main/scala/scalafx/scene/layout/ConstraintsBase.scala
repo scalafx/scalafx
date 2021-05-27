@@ -42,5 +42,5 @@ object ConstraintsBase {
   val CONSTRAIN_TO_PREF: Double = ConstrainToPref
 }
 
-abstract class ConstraintsBase(override val delegate: jfxsl.ConstraintsBase)
-    extends SFXDelegate[jfxsl.ConstraintsBase] {}
+abstract class ConstraintsBase(override val delegate: jfxsl.ConstraintsBase) extends SFXDelegate[jfxsl.ConstraintsBase] {
+}

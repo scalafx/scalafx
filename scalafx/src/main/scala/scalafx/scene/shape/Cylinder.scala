@@ -41,19 +41,18 @@ object Cylinder {
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/Cylinder.html]].
  */
 class Cylinder(override val delegate: jfxss.Cylinder = new jfxss.Cylinder())
-    extends Shape3D(delegate)
-    with SFXDelegate[jfxss.Cylinder] {
+  extends Shape3D(delegate)
+  with SFXDelegate[jfxss.Cylinder] {
 
-  /**
-   * Creates a new instance of Cylinder of a given radius and height. Resolution defaults to 15 divisions along X and Z
-   * axis.
-   */
+  /** Creates a new instance of Cylinder of a given radius and height.
+    * Resolution defaults to 15 divisions along X and Z axis.
+    */
   def this(radius: Double, height: Double) = this(new jfxss.Cylinder(radius, height))
 
-  /**
-   * Creates a new instance of Cylinder of a given radius, height, and divisions. Resolution defaults to 15 divisions
-   * along X and Z axis. Note that divisions should be at least 3. Any value less than that will be clamped to 3.
-   */
+  /** Creates a new instance of Cylinder of a given radius, height, and divisions.
+    * Resolution defaults to 15 divisions along X and Z axis.
+    * Note that divisions should be at least 3.
+    * Any value less than that will be clamped to 3. */
   def this(radius: Double, height: Double, divisions: Int) = this(new jfxss.Cylinder(radius, height, divisions))
 
   /** Divisions attribute use to generate this cylinder. */

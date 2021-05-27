@@ -35,5 +35,5 @@ import scalafx.testutil.{AlignmentDelegateSpec, SimpleSFXDelegateSpec}
  * FlowPane Spec tests.
  */
 class FlowPaneSpec
-    extends SimpleSFXDelegateSpec[jfxsl.FlowPane, FlowPane](classOf[jfxsl.FlowPane], classOf[FlowPane])
-    with AlignmentDelegateSpec[jfxsl.FlowPane, FlowPane]
+  extends SimpleSFXDelegateSpec[jfxsl.FlowPane, FlowPane](classOf[jfxsl.FlowPane], classOf[FlowPane])
+  with AlignmentDelegateSpec[jfxsl.FlowPane, FlowPane]

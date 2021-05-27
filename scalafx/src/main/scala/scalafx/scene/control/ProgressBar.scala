@@ -36,5 +36,7 @@ object ProgressBar {
 }
 
 class ProgressBar(override val delegate: jfxsc.ProgressBar = new jfxsc.ProgressBar)
-    extends ProgressIndicator(delegate)
-    with SFXDelegate[jfxsc.ProgressBar] {}
+  extends ProgressIndicator(delegate)
+  with SFXDelegate[jfxsc.ProgressBar] {
+
+}

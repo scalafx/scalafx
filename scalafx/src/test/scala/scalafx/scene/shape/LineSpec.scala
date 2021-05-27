@@ -34,5 +34,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Line Spec tests.
+ *
+ *
  */
-class LineSpec extends SimpleSFXDelegateSpec[jfxss.Line, Line](classOf[jfxss.Line], classOf[Line])
+class LineSpec
+  extends SimpleSFXDelegateSpec[jfxss.Line, Line](classOf[jfxss.Line], classOf[Line])

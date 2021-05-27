@@ -42,8 +42,8 @@ class Issue16Spec extends AnyFlatSpec {
   "Issue 16 - binding" should "respond to changes in `when` condition" in {
 
     // Recreate situation in Issue 16 using properties of the same types.
-    val hoverWrapper                      = new jfxbp.ReadOnlyBooleanWrapper(true)
-    val hover: ReadOnlyBooleanProperty    = hoverWrapper.getReadOnlyProperty
+    val hoverWrapper = new jfxbp.ReadOnlyBooleanWrapper(true)
+    val hover: ReadOnlyBooleanProperty = hoverWrapper.getReadOnlyProperty
     val fill: ObjectProperty[jfxsp.Color] = ObjectProperty(jfxsp.Color.BLUE)
 
     // Before binding is created `fill` should have its original value

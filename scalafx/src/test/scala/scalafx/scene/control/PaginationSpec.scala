@@ -33,7 +33,9 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Pagination Spec tests.
+ *
+ *
  */
 class PaginationSpec
-    extends SimpleSFXDelegateSpec[jfxsc.Pagination, Pagination](classOf[jfxsc.Pagination], classOf[Pagination])
-    with RunOnApplicationThread
+  extends SimpleSFXDelegateSpec[jfxsc.Pagination, Pagination](classOf[jfxsc.Pagination], classOf[Pagination])
+  with RunOnApplicationThread

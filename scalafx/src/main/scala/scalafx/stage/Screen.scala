@@ -60,7 +60,8 @@ object Screen {
 
 }
 
-class Screen(override val delegate: jfxs.Screen) extends SFXDelegate[jfxs.Screen] {
+class Screen(override val delegate: jfxs.Screen)
+  extends SFXDelegate[jfxs.Screen] {
 
   /**
    * Gets the bounds of this Screen.

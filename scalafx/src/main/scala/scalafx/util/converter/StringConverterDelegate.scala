@@ -32,25 +32,21 @@ import scalafx.delegate.SFXDelegate
 import scalafx.util.StringConverter
 
 /**
- * Class responsible for wrap a StringConverter from a Java type to a Scala type (eg: java.lang.Integer to Int,
- * java.lang.Character to Char). Eventually Java and Scala types can be the same (like java.util.Date or
- * java.lang.Number), so it must be used StringConverterJavaToJavaDelegate class.
+ * Class responsible for wrap a StringConverter from a Java type to a Scala type (eg:
+ * java.lang.Integer to Int, java.lang.Character to Char). Eventually Java and Scala types can be
+ * the same (like java.util.Date or java.lang.Number), so it must be used
+ * StringConverterJavaToJavaDelegate class.
  *
- * @tparam J
- *   Java Class (e.g. java.lang.Integer, java.lang.Number, java.util.BigInteger, java.util.Date)
- * @tparam S
- *   Scala CLass (e.g. Int, BigInt)
- * @tparam C
- *   JavaFX StringConverter using type J (e.g. javafx.util.converter.IntegerStringConverter,
- *   javafx.util.converter.BigIntegerStringConverter, javafx.util.converter.DateStringConverter)
+ * @tparam J Java Class (e.g. java.lang.Integer, java.lang.Number, java.util.BigInteger, java.util.Date)
+ * @tparam S Scala CLass (e.g. Int, BigInt)
+ * @tparam C JavaFX StringConverter using type J (e.g. javafx.util.converter.IntegerStringConverter,
+ *           javafx.util.converter.BigIntegerStringConverter, javafx.util.converter.DateStringConverter)
  *
- * @param delegate
- *   JavaFx StringConverter to be wrapped.
+ * @param delegate JavaFx StringConverter to be wrapped.
  */
-abstract class StringConverterDelegate[J <: java.lang.Object, S <: Any, C <: jfxu.StringConverter[J]] protected (
-    override val delegate: C
-) extends StringConverter[S]
-    with SFXDelegate[C] {
+abstract class StringConverterDelegate[J <: java.lang.Object, S <: Any, C <: jfxu.StringConverter[J]] protected(override val delegate: C)
+  extends StringConverter[S]
+  with SFXDelegate[C] {
 
   def fromString(string: String): S = delegate.fromString(string).asInstanceOf[S]
 
@@ -59,18 +55,15 @@ abstract class StringConverterDelegate[J <: java.lang.Object, S <: Any, C <: jfx
 }
 
 /**
- * Class responsible for wrap a StringConverter from and to a Java type(eg: java.util.Date or java.lang.Number).
+ * Class responsible for wrap a StringConverter from and to a Java type(eg: java.util.Date or
+ * java.lang.Number).
  *
- * @tparam J
- *   Java Class (e.g. java.lang.Number, java.util.Date)
- * @tparam C
- *   JavaFX StringConverter using type J (e.g. javafx.util.converter.IntegerStringConverter,
- *   javafx.util.converter.NumberStringConverter, javafx.util.converter.BigIntegerStringConverter,
- *   javafx.util.converter.DateStringConverter)
+ * @tparam J Java Class (e.g. java.lang.Number, java.util.Date)
+ * @tparam C JavaFX StringConverter using type J (e.g. javafx.util.converter.IntegerStringConverter,
+ *           javafx.util.converter.NumberStringConverter, javafx.util.converter.BigIntegerStringConverter,
+ *           javafx.util.converter.DateStringConverter)
  *
- * @param delegate
- *   JavaFx StringConverter to be wrapped.
+ * @param delegate JavaFx StringConverter to be wrapped.
  */
-abstract class StringConverterJavaToJavaDelegate[J <: java.lang.Object, C <: jfxu.StringConverter[J]] protected (
-    override val delegate: C
-) extends StringConverterDelegate[J, J, C](delegate)
+abstract class StringConverterJavaToJavaDelegate[J <: java.lang.Object, C <: jfxu.StringConverter[J]] protected(override val delegate: C)
+  extends StringConverterDelegate[J, J, C](delegate)

@@ -40,7 +40,8 @@ import scala.language.implicitConversions
 object ScrollPane {
   implicit def sfxScrollPane2jfx(v: ScrollPane): jfxsc.ScrollPane = if (v != null) v.delegate else null
 
-  object ScrollBarPolicy extends SFXEnumDelegateCompanion[jfxsc.ScrollPane.ScrollBarPolicy, ScrollBarPolicy] {
+  object ScrollBarPolicy
+    extends SFXEnumDelegateCompanion[jfxsc.ScrollPane.ScrollBarPolicy, ScrollBarPolicy] {
 
     /** Indicates that a scroll bar should always be shown. */
     case object Always extends ScrollBarPolicy(jfxsc.ScrollPane.ScrollBarPolicy.ALWAYS)
@@ -65,13 +66,13 @@ object ScrollPane {
 
   /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ScrollPane.ScrollBarPolicy.html]] */
   sealed abstract class ScrollBarPolicy(override val delegate: jfxsc.ScrollPane.ScrollBarPolicy)
-      extends SFXEnumDelegate[jfxsc.ScrollPane.ScrollBarPolicy]
+    extends SFXEnumDelegate[jfxsc.ScrollPane.ScrollBarPolicy]
 
 }
 
 class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
-    extends Control(delegate)
-    with SFXDelegate[jfxsc.ScrollPane] {
+  extends Control(delegate)
+  with SFXDelegate[jfxsc.ScrollPane] {
 
   /**
    * The node used as the content of this ScrollPane.
@@ -83,7 +84,7 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
   }
 
   /**
-   * If true and if the contained node is a Resizable, then the node will be kept resized to match the height of the
+   * If true and if the contained node is a Resizable, then the node will be kept resized to match the height of the 
    * ScrollPane's viewport.
    */
   def fitToHeight: BooleanProperty = delegate.fitToHeightProperty
@@ -93,7 +94,7 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
   }
 
   /**
-   * If true and if the contained node is a Resizable, then the node will be kept resized to match the width of the
+   * If true and if the contained node is a Resizable, then the node will be kept resized to match the width of the 
    * ScrollPane's viewport.
    */
   def fitToWidth: BooleanProperty = delegate.fitToWidthProperty
@@ -148,7 +149,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
   }
 
   /**
-   * Specify the minimum width of the ScrollPane Viewport. This is the width that will be available to the content node.
+   * Specify the minimum width of the ScrollPane Viewport.
+   * This is the width that will be available to the content node.
    */
   def minViewportHeight: DoubleProperty = delegate.minViewportHeightProperty()
   def minViewportHeight_=(v: Double): Unit = {
@@ -165,7 +167,8 @@ class ScrollPane(override val delegate: jfxsc.ScrollPane = new jfxsc.ScrollPane)
   }
 
   /**
-   * Specify the minimum width of the ScrollPane Viewport. This is the width that will be available to the content node.
+   * Specify the minimum width of the ScrollPane Viewport.
+   * This is the width that will be available to the content node.
    */
   def minViewportWidth: DoubleProperty = delegate.minViewportWidthProperty()
   def minViewportWidth_=(v: Double): Unit = {

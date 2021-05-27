@@ -57,10 +57,8 @@ object Node {
   /**
    * Converts a ScalaFX Node to its JavaFX counterpart.
    *
-   * @param v
-   *   ScalaFX Node
-   * @return
-   *   JavaFX Node
+   * @param v ScalaFX Node
+   * @return JavaFX Node
    */
   implicit def sfxNode2jfx(v: Node): jfxs.Node = if (v != null) v.delegate else null
 }
@@ -68,27 +66,26 @@ object Node {
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Node.html]].
  *
- * @constructor
- *   creates a new ScalaFX Node from a JavaFX Node.
- * @param delegate
- *   JavaFX Node
+ * @constructor creates a new ScalaFX Node from a JavaFX Node.
+ * @param delegate JavaFX Node
  */
-abstract class Node protected (override val delegate: jfxs.Node)
-    extends EventHandlerDelegate2
+abstract class Node protected(override val delegate: jfxs.Node)
+  extends EventHandlerDelegate2
     with Styleable
     with SFXDelegate[jfxs.Node] {
 
   /**
    * The accessible text for this `Node`.
    *
-   * This property is used to set the text that the screen reader will speak. If a node normally speaks text, that text
-   * is overriden. For example, a button usually speaks using the text in the control but will no longer do this when
-   * this value is set.
+   * This property is used to set the text that the screen
+   * reader will speak.  If a node normally speaks text,
+   * that text is overriden.  For example, a button
+   * usually speaks using the text in the control but will
+   * no longer do this when this value is set.
    *
    * Default value is `null`.
    *
-   * @since
-   *   JavaFX 8u40
+   * @since JavaFX 8u40
    */
   def accessibleText: ObjectProperty[String] = delegate.accessibleTextProperty
 
@@ -99,13 +96,13 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * The accessible help text for this `Node`.
    *
-   * The help text provides a more detailed description of the accessible text for a node. By default, if the node has a
-   * tool tip, this text is used.
+   * The help text provides a more detailed description of the
+   * accessible text for a node.  By default, if the node has
+   * a tool tip, this text is used.
    *
    * Default value is `null`.
    *
-   * @since
-   *   JavaFX 8u40
+   * @since JavaFX 8u40
    */
   def accessibleHelp: ObjectProperty[String] = delegate.accessibleHelpProperty
 
@@ -116,10 +113,10 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * The accessible role for this `Node`.
    *
-   * The screen reader uses the role of a node to determine the attributes and actions that are supported.
+   * The screen reader uses the role of a node to determine the
+   * attributes and actions that are supported.
    *
-   * @since
-   *   JavaFX 8u40
+   * @since JavaFX 8u40
    */
   def accessibleRole: ObjectProperty[jfxs.AccessibleRole] = delegate.accessibleRoleProperty
 
@@ -130,15 +127,16 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * The role description of this `Node`.
    *
-   * Noramlly, when a role is provided for a node, the screen reader speaks the role as well as the contents of the
-   * node. When this value is set, it is possbile to override the default. This is useful because the set of roles is
-   * predefined. For example, it is possible to set the role of a node to be a button, but have the role description be
-   * arbitrary text.
+   * Noramlly, when a role is provided for a node, the screen reader
+   * speaks the role as well as the contents of the node.  When this
+   * value is set, it is possbile to override the default.  This is
+   * useful because the set of roles is predefined.  For example,
+   * it is possible to set the role of a node to be a button, but
+   * have the role description be arbitrary text.
    *
    * Default value is `null`.
    *
-   * @since
-   *   JavaFX 8u40
+   * @since JavaFX 8u40
    */
   def accessibleRoleDescription: ObjectProperty[String] = delegate.accessibleRoleDescriptionProperty
 
@@ -193,14 +191,14 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Returns the orientation of a node's resizing bias for layout purposes. If the node type has no bias, returns
-   * `null`. If the node is resizable and it's height depends on its width, returns HORIZONTAL, else if its width
-   * depends on its height, returns VERTICAL.
+   * Returns the orientation of a node's resizing bias for layout purposes.
+   * If the node type has no bias, returns `null`.
+   * If the node is resizable and it's height depends on its width, returns HORIZONTAL, else
+   * if its width depends on its height, returns VERTICAL.
    *
    * Resizable subclasses should override this method to return an appropriate value.
    *
-   * @return
-   *   orientation of width/height dependency or `null` if there is none
+   * @return orientation of width/height dependency or `null` if there is none
    */
   def contentBias: Orientation = delegate.getContentBias
 
@@ -297,7 +295,8 @@ abstract class Node protected (override val delegate: jfxs.Node)
   def layoutBounds: ReadOnlyObjectProperty[jfxg.Bounds] = delegate.layoutBoundsProperty
 
   /**
-   * Defines the x coordinate of the translation that is added to this Node's transform for the purpose of layout.
+   * Defines the x coordinate of the translation that is added to this Node's transform for the
+   * purpose of layout.
    */
   def layoutX: DoubleProperty = delegate.layoutXProperty
 
@@ -306,7 +305,8 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines the y coordinate of the translation that is added to this Node's transform for the purpose of layout.
+   * Defines the y coordinate of the translation that is added to this Node's transform for the
+   * purpose of layout.
    */
   def layoutY: DoubleProperty = delegate.layoutYProperty
 
@@ -342,16 +342,14 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * The effective orientation of a node resolves the inheritance of node orientation, returning either left-to-right or
-   * right-to-left.
+   * The effective orientation of a node resolves the inheritance of node orientation, returning either left-to-right or right-to-left.
    */
   def effectiveNodeOrientation: ReadOnlyObjectProperty[jfxg.NodeOrientation] = delegate.effectiveNodeOrientationProperty
 
   /**
    * Defines a function to be called when a context menu has been requested on this Node.
    */
-  def onContextMenuRequested: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]] =
-    delegate.onContextMenuRequestedProperty
+  def onContextMenuRequested: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]] = delegate.onContextMenuRequestedProperty
 
   def onContextMenuRequested_=(v: jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]): Unit = {
     onContextMenuRequested() = v
@@ -367,8 +365,8 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines a function to be called when this Node is a drag and drop gesture source after its data has been dropped on
-   * a drop target.
+   * Defines a function to be called when this Node is a drag and drop gesture source after its
+   * data has been dropped on a drop target.
    */
   def onDragDone: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.DragEvent]] = delegate.onDragDoneProperty
 
@@ -377,7 +375,8 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines a function to be called when the mouse button is released on this Node during drag and drop gesture.
+   * Defines a function to be called when the mouse button is released on this Node during drag
+   * and drop gesture.
    */
   def onDragDropped: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.DragEvent]] = delegate.onDragDroppedProperty
 
@@ -413,17 +412,18 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines a function to be called when this Node has input focus and the input method text has changed.
+   * Defines a function to be called when this Node has input focus and the input method text has
+   * changed.
    */
-  def onInputMethodTextChanged: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]] =
-    delegate.onInputMethodTextChangedProperty
+  def onInputMethodTextChanged: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]] = delegate.onInputMethodTextChangedProperty
 
   def onInputMethodTextChanged_=(v: jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]): Unit = {
     onInputMethodTextChanged() = v
   }
 
   /**
-   * Defines a function to be called when this Node or its child Node has input focus and a key has been pressed.
+   * Defines a function to be called when this Node or its child Node has input focus and a key
+   * has been pressed.
    */
   def onKeyPressed: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.KeyEvent]] = delegate.onKeyPressedProperty
 
@@ -432,7 +432,8 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines a function to be called when this Node or its child Node has input focus and a key has been released.
+   * Defines a function to be called when this Node or its child Node has input focus and a key
+   * has been released.
    */
   def onKeyReleased: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.KeyEvent]] = delegate.onKeyReleasedProperty
 
@@ -441,7 +442,8 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines a function to be called when this Node or its child Node has input focus and a key has been typed.
+   * Defines a function to be called when this Node or its child Node has input focus and a key
+   * has been typed.
    */
   def onKeyTyped: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.KeyEvent]] = delegate.onKeyTypedProperty
 
@@ -450,7 +452,8 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines a function to be called when a mouse button has been clicked (pressed and released) on this Node.
+   * Defines a function to be called when a mouse button has been clicked (pressed and released)
+   * on this Node.
    */
   def onMouseClicked: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseEvent]] = delegate.onMouseClickedProperty
 
@@ -470,8 +473,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a full press-drag-release gesture enters this Node.
    */
-  def onMouseDragEntered: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] =
-    delegate.onMouseDragEnteredProperty
+  def onMouseDragEntered: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] = delegate.onMouseDragEnteredProperty
 
   def onMouseDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragEntered() = v
@@ -480,8 +482,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a full press-drag-release gesture leaves this Node.
    */
-  def onMouseDragExited: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] =
-    delegate.onMouseDragExitedProperty
+  def onMouseDragExited: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] = delegate.onMouseDragExitedProperty
 
   def onMouseDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragExited() = v
@@ -497,11 +498,10 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines a function to be called when a full press-drag-release gesture ends (by releasing mouse button) within this
-   * Node.
+   * Defines a function to be called when a full press-drag-release gesture ends (by releasing mouse button) within 
+   * this Node.
    */
-  def onMouseDragReleased: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] =
-    delegate.onMouseDragReleasedProperty
+  def onMouseDragReleased: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] = delegate.onMouseDragReleasedProperty
 
   def onMouseDragReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragReleased() = v
@@ -573,8 +573,8 @@ abstract class Node protected (override val delegate: jfxs.Node)
   def parent: ReadOnlyObjectProperty[jfxs.Parent] = delegate.parentProperty
 
   /**
-   * Defines how the picking computation is done for this node when triggered by a MouseEvent or a contains function
-   * call.
+   * Defines how the picking computation is done for this node when triggered by a MouseEvent or a
+   * contains function call.
    */
   def pickOnBounds: BooleanProperty = delegate.pickOnBoundsProperty
 
@@ -606,7 +606,8 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines the factor by which coordinates are scaled about the center of the object along the X axis of this Node.
+   * Defines the factor by which coordinates are scaled about the center of the object along
+   * the X axis of this Node.
    */
   def scaleX: DoubleProperty = delegate.scaleXProperty
 
@@ -615,7 +616,8 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines the factor by which coordinates are scaled about the center of the object along the Y axis of this Node.
+   * Defines the factor by which coordinates are scaled about the center of the object along the
+   * Y axis of this Node.
    */
   def scaleY: DoubleProperty = delegate.scaleYProperty
 
@@ -624,7 +626,8 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines the factor by which coordinates are scaled about the center of the object along the Z axis of this Node.
+   * Defines the factor by which coordinates are scaled about the center of the object along the
+   * Z axis of this Node.
    */
   def scaleZ: DoubleProperty = delegate.scaleZProperty
 
@@ -650,8 +653,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * Sets the list of CSS styles classes, replacing the prior content. If you want append to current content, use `add`
    * or similar.
    *
-   * @param c
-   *   list of CSS styles classes to replace prior content.
+   * @param c list of CSS styles classes to replace prior content.
    */
   def styleClass_=(c: Iterable[String]): Unit = {
     fillCollection(styleClass, c)
@@ -666,8 +668,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
    * Sets the list of transforms, replacing the prior content. If you want append to current content, use `add` or
    * similar.
    *
-   * @param c
-   *   list of transforms to replace prior content.
+   * @param c list of transforms to replace prior content.
    */
   def transforms_=(c: Iterable[Transform]): Unit = {
     fillSFXCollection(transforms, c)
@@ -692,7 +693,8 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines the Z coordinate of the translation that is added to the transformed coordinates of this Node.
+   * Defines the Z coordinate of the translation that is added to the transformed coordinates of
+   * this Node.
    */
   def translateZ: DoubleProperty = delegate.translateZProperty
 
@@ -701,8 +703,8 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Returns a previously set Object property, or null if no such property has been set using the setUserData(AnyRef)
-   * method.
+   * Returns a previously set Object property, or null if no such property has been set using the
+   * setUserData(AnyRef) method.
    */
   def userData: AnyRef = delegate.getUserData
 
@@ -728,24 +730,24 @@ abstract class Node protected (override val delegate: jfxs.Node)
 
   /**
    * Sets this Node's alignment constraint inside its Parent. If set, will override the Parent's default alignment.
-   * Setting the value to `null` will remove the constraint. Internally it calls `setAlignment(Node, Pos)` static method
-   * JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderPane.htmlBorderPane]],
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/StackPane.htmlStackPane]] and
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/TilePane.htmlTilePane]]. Furthermore, it is set
+   * Setting the value to `null` will remove the constraint.
+   * Internally it calls `setAlignment(Node, Pos)` static method JavaFX's
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderPane.html BorderPane]],
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/StackPane.html StackPane]] and
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/TilePane.html TilePane]]. Furthermore, it is set
    * `halignment` and `valignment` property (using JavaFX Node's `getProperties()`) and called
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/GridPane.html#setHalignment(javafx.scene.Node,javafx.geometry.HPos)setHalignment]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/GridPane.html#setHalignment(javafx.scene.Node, javafx.geometry.HPos) setHalignment]]
    * and
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/GridPane.html#setValignment(javafx.scene.Node,javafx.geometry.VPos)setValignment]]
-   * static methods from [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/GridPane.htmlGridPane]]; this
-   * time using `hpos` and `vpos` from Pos argument. Besides, it sets this node `alignment` property towards
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Node.html#getProperties()JavaFXNode's getProperties()]]
-   * and `setAlignment` static method from
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/GridPane.html#setValignment(javafx.scene.Node, javafx.geometry.VPos) setValignment]]
+   * static methods from [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/GridPane.html GridPane]]; this time
+   * using `hpos` and `vpos` from Pos argument. Besides, it sets this node `alignment` property towards
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Node.html#getProperties() JavaFX Node's getProperties()]] and
+   * `setAlignment` static method from
    *
    * '''Do not confuse''' with `alignment` property from [[scalafx.delegate.AlignmentDelegate]]! It refers to alignment
    * ''inside'' element, while `alignmentInParent` refers to element's alignment inside its parent.
    *
-   * @param p
-   *   New node's Position
+   * @param p New node's Position
    */
   def alignmentInParent_=(p: Pos): Unit = {
     val delegateProperties = delegate.getProperties
@@ -763,19 +765,17 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Pseudo-property that returns this Node's margin constraint inside its Parent if set.
    *
-   * @return
-   *   this Node's margin constraint inside its Parent or `null` if no margin was set.
+   * @return this Node's margin constraint inside its Parent or `null` if no margin was set.
    */
   def margin: Insets = delegate.getProperties.get("margin").asInstanceOf[jfxg.Insets]
 
   /**
    * Sets this Node's margin constraint inside its Parent if set. If set, the parent will layout the child with the
-   * margin space around it. Setting the value to `null` will remove the constraint. Internally it calls
-   * `setMargin(Node, Insets)` static method from JavaFX's `BorderPane`, `FlowPane`, `GridPane`, `HBox`, `StackPane` and
-   * `VBox` besides fill this Node's "margin" property.
+   * margin space around it. Setting the value to `null` will remove the constraint.
+   * Internally it calls `setMargin(Node, Insets)` static method from JavaFX's `BorderPane`, `FlowPane`,
+   * `GridPane`, `HBox`, `StackPane` and `VBox` besides fill this Node's "margin" property.
    *
-   * @param i
-   *   The margin of space around this Node inside its parent.
+   * @param i The margin of space around this Node inside its parent.
    */
   def margin_=(i: Insets): Unit = {
     delegate.getProperties.put("margin", delegateOrNull(i))
@@ -792,18 +792,17 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Pseudo-property that returns this Node's hgrow constraint if set.
    *
-   * @return
-   *   the horizontal grow priority for the child or `null` if no priority was set
+   * @return the horizontal grow priority for the child or `null` if no priority was set
    */
   def hgrow: Priority = delegate.getProperties.get("hgrow").asInstanceOf[jfxsl.Priority]
 
   /**
-   * Sets the horizontal grow priority for this Node inside its parent. Setting the value to `null` will remove the
-   * constraint. Internally it calls `setHgrow(Node, Priority)` static method from JavaFX's `GridPane` and `HBox`
-   * besides fill this Node's "hgrow" property.
+   * Sets the horizontal grow priority for this Node inside its parent. Setting the value to `null` will remove
+   * the constraint.
+   * Internally it calls `setHgrow(Node, Priority)` static method from JavaFX's `GridPane` and `HBox` besides fill
+   * this Node's "hgrow" property.
    *
-   * @param p
-   *   the horizontal grow priority for this Node
+   * @param p the horizontal grow priority for this Node
    */
   def hgrow_=(p: Priority): Unit = {
     delegate.getProperties("hgrow") = delegateOrNull(p)
@@ -815,18 +814,17 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Pseudo-property that returns this Node's vgrow constraint if set.
    *
-   * @return
-   *   the vertical grow priority for the child or `null` if no priority was set
+   * @return the vertical grow priority for the child or `null` if no priority was set
    */
   def vgrow: Priority = delegate.getProperties.get("vgrow").asInstanceOf[jfxsl.Priority]
 
   /**
-   * Sets the vertical grow priority for this Node inside its parent. Setting the value to `null` will remove the
-   * constraint. Internally it calls `setVgrow(Node, Priority)` static method from JavaFX's `GridPane` and `VBox`
-   * besides fill this Node's "vgrow" property.
+   * Sets the vertical grow priority for this Node inside its parent. Setting the value to `null` will remove
+   * the constraint.
+   * Internally it calls `setVgrow(Node, Priority)` static method from JavaFX's `GridPane` and `VBox` besides fill
+   * this Node's "vgrow" property.
    *
-   * @param p
-   *   the vertical grow priority for this Node
+   * @param p the vertical grow priority for this Node
    */
   def vgrow_=(p: Priority): Unit = {
     delegate.getProperties("vgrow") = delegateOrNull(p)
@@ -843,14 +841,14 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Returns true if the given point (specified in the local coordinate space of this Node) is contained within the
-   * shape of this Node.
+   * Returns true if the given point (specified in the local coordinate space of this Node) is
+   * contained within the shape of this Node.
    */
   def contains(localX: Double, localY: Double): Boolean = delegate.contains(localX, localY)
 
   /**
-   * Returns true if the given point (specified in the local coordinate space of this Node) is contained within the
-   * shape of this Node.
+   * Returns true if the given point (specified in the local coordinate space of this Node) is
+   * contained within the shape of this Node.
    */
   def contains(localPoint: Point2D): Boolean = delegate.contains(localPoint)
 
@@ -862,51 +860,57 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * The 'alphabetic' (or 'roman') baseline offset from the node's layoutBounds.minY location that should be used when
-   * this node is being vertically aligned by baseline with other nodes.
+   * The 'alphabetic' (or 'roman') baseline offset from the node's layoutBounds.minY location
+   * that should be used when this node is being vertically aligned by baseline with other nodes.
    */
   def baselineOffset: Double = delegate.getBaselineOffset
 
   /**
-   * Returns true if the given bounds (specified in the local coordinate space of this Node) intersects the shape of
-   * this Node.
+   * Returns true if the given bounds (specified in the local coordinate space of this Node)
+   * intersects the shape of this Node.
    */
   def intersects(localBounds: Bounds): Boolean = delegate.intersects(localBounds)
 
   /**
-   * Returns true if the given rectangle (specified in the local coordinate space of this Node) intersects the shape of
-   * this Node.
+   * Returns true if the given rectangle (specified in the local coordinate space of this Node)
+   * intersects the shape of this Node.
    */
   def intersects(localX: Double, localY: Double, localWidth: Double, localHeight: Double): Boolean =
     delegate.intersects(localX, localY, localWidth, localHeight)
 
   /**
-   * Transforms a bounds from the local coordinate space of this Node into the coordinate space of its parent.
+   * Transforms a bounds from the local coordinate space of this Node into the coordinate space of
+   * its parent.
    */
   def localToParent(localBounds: Bounds): Bounds = delegate.localToParent(localBounds)
 
   /**
-   * Transforms a point from the local coordinate space of this Node into the coordinate space of its parent.
+   * Transforms a point from the local coordinate space of this Node into the coordinate space of
+   * its parent.
    */
   def localToParent(localX: Double, localY: Double): Point2D = delegate.localToParent(localX, localY)
 
   /**
-   * Transforms a point from the local coordinate space of this Node into the coordinate space of its parent.
+   * Transforms a point from the local coordinate space of this Node into the coordinate space of
+   * its parent.
    */
   def localToParent(localPoint: Point2D): Point2D = delegate.localToParent(localPoint)
 
   /**
-   * Transforms a bounds from the local coordinate space of this Node into the coordinate space of its Scene.
+   * Transforms a bounds from the local coordinate space of this Node into the coordinate space of
+   * its Scene.
    */
   def localToScene(localBounds: Bounds): Bounds = delegate.localToScene(localBounds)
 
   /**
-   * Transforms a point from the local coordinate space of this Node into the coordinate space of its Scene.
+   * Transforms a point from the local coordinate space of this Node into the coordinate space of
+   * its Scene.
    */
   def localToScene(localX: Double, localY: Double): Point2D = delegate.localToScene(localX, localY)
 
   /**
-   * Transforms a point from the local coordinate space of this Node into the coordinate space of its Scene.
+   * Transforms a point from the local coordinate space of this Node into the coordinate space of
+   * its Scene.
    */
   def localToScene(localPoint: Point2D): Point2D = delegate.localToScene(localPoint)
 
@@ -941,30 +945,34 @@ abstract class Node protected (override val delegate: jfxs.Node)
   def minWidth(width: Double): Double = delegate.minWidth(width)
 
   /**
-   * Transforms a rectangle from the coordinate space of the parent into the local coordinate space of this Node.
+   * Transforms a rectangle from the coordinate space of the parent into the local coordinate
+   * space of this Node.
    */
   def parentToLocal(parentBounds: Bounds): Bounds = delegate.parentToLocal(parentBounds)
 
   /**
-   * Transforms a point from the coordinate space of the parent into the local coordinate space of this Node.
+   * Transforms a point from the coordinate space of the parent into the local coordinate space
+   * of this Node.
    */
   def parentToLocal(parentX: Double, parentY: Double): Point2D = delegate.parentToLocal(parentX, parentY)
 
   /**
-   * Transforms a point from the coordinate space of the parent into the local coordinate space of this Node.
+   * Transforms a point from the coordinate space of the parent into the local coordinate space
+   * of this Node.
    */
   def parentToLocal(parentPoint: Point2D): Point2D = delegate.parentToLocal(parentPoint)
 
   /**
-   * Sets the node's layoutX and layoutY translation properties in order to relocate this node to the x,y location in
-   * the parent.
+   * Sets the node's layoutX and layoutY translation properties in order to relocate this node
+   * to the x,y location in the parent.
    */
   def relocate(x: Double, y: Double): Unit = {
     delegate.relocate(x, y)
   }
 
   /**
-   * Requests that this Node get the input focus, and that this Node's top-level ancestor become the focused window.
+   * Requests that this Node get the input focus, and that this Node's top-level ancestor become
+   * the focused window.
    */
   def requestFocus(): Unit = {
     delegate.requestFocus()
@@ -985,17 +993,20 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Transforms a rectangle from the coordinate space of the Scene into the local coordinate space of this Node.
+   * Transforms a rectangle from the coordinate space of the Scene into the local coordinate space
+   * of this Node.
    */
   def sceneToLocal(sceneBounds: Bounds): Bounds = delegate.sceneToLocal(sceneBounds)
 
   /**
-   * Transforms a point from the coordinate space of the Scene into the local coordinate space of this Node.
+   * Transforms a point from the coordinate space of the Scene into the local coordinate space
+   * of this Node.
    */
   def sceneToLocal(sceneX: Double, sceneY: Double): Point2D = delegate.sceneToLocal(sceneX, sceneY)
 
   /**
-   * Transforms a point from the coordinate space of the Scene into the local coordinate space of this Node.
+   * Transforms a point from the coordinate space of the Scene into the local coordinate space
+   * of this Node.
    */
   def sceneToLocal(scenePoint: Point2D): Point2D = delegate.sceneToLocal(scenePoint)
 
@@ -1047,28 +1058,26 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * An affine transform that holds the computed local-to-parent transform. This is the concatenation of all transforms
-   * in this node, including all of the convenience transforms.
+   * An affine transform that holds the computed local-to-parent transform.
+   * This is the concatenation of all transforms in this node, including all of the convenience transforms.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def localToParentTransform: Transform = delegate.getLocalToParentTransform
 
   /**
-   * An affine transform that holds the computed local-to-scene transform. This is the concatenation of all transforms
-   * in this node's parents and in this node, including all of the convenience transforms.
+   * An affine transform that holds the computed local-to-scene transform.
+   * This is the concatenation of all transforms in this node's parents and in this node,
+   * including all of the convenience transforms.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def localToSceneTransform: Transform = delegate.getLocalToSceneTransform
 
   /**
    * Defines a function to be called when user performs a rotation action.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onRotate: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] = delegate.onRotateProperty
 
@@ -1079,11 +1088,9 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a rotation gesture ends.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
-  def onRotationFinished: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] =
-    delegate.onRotationFinishedProperty()
+  def onRotationFinished: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] = delegate.onRotationFinishedProperty()
 
   def onRotationFinished_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]): Unit = {
     onRotationFinished() = v
@@ -1092,11 +1099,9 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a rotation gesture starts.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
-  def onRotationStarted: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] =
-    delegate.onRotationFinishedProperty()
+  def onRotationStarted: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] = delegate.onRotationFinishedProperty()
 
   def onRotationStarted_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]): Unit = {
     onRotationStarted() = v
@@ -1105,8 +1110,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a Scroll gesture ends.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onScrollFinished: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ScrollEvent]] = delegate.onScrollFinishedProperty()
 
@@ -1117,8 +1121,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a Scroll gesture starts.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onScrollStarted: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ScrollEvent]] = delegate.onScrollStartedProperty()
 
@@ -1129,8 +1132,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a Swipe Down gesture starts.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onSwipeDown: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.SwipeEvent]] = delegate.onSwipeDownProperty()
 
@@ -1141,8 +1143,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a Swipe Down gesture starts.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onSwipeLeft: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.SwipeEvent]] = delegate.onSwipeLeftProperty()
 
@@ -1153,8 +1154,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a Swipe Up gesture starts.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onSwipeUp: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.SwipeEvent]] = delegate.onSwipeUpProperty()
 
@@ -1165,8 +1165,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a Swipe Right gesture starts.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onSwipeRight: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.SwipeEvent]] = delegate.onSwipeRightProperty()
 
@@ -1177,8 +1176,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when user performs a Touch action.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onZoom: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ZoomEvent]] = delegate.onZoomProperty()
 
@@ -1189,8 +1187,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a Zoom gesture ends.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onZoomFinished: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ZoomEvent]] = delegate.onZoomFinishedProperty()
 
@@ -1201,8 +1198,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when a Zoom gesture starts.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onZoomStarted: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ZoomEvent]] = delegate.onZoomStartedProperty()
 
@@ -1213,8 +1209,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when user performs a Touch Moved action.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onTouchMoved: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.TouchEvent]] = delegate.onTouchMovedProperty()
 
@@ -1225,8 +1220,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when user performs a Touch Pressed action.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onTouchPressed: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.TouchEvent]] = delegate.onTouchPressedProperty()
 
@@ -1237,8 +1231,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when user performs a Touch Released action.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onTouchReleased: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.TouchEvent]] = delegate.onTouchReleasedProperty()
 
@@ -1249,8 +1242,7 @@ abstract class Node protected (override val delegate: jfxs.Node)
   /**
    * Defines a function to be called when user performs a Touch Stationary action.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onTouchStationary: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.TouchEvent]] = delegate.onTouchStationaryProperty()
 
@@ -1259,19 +1251,20 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   override def eventHandlerDelegate: EventHandled = new EventHandled {
-    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]): Unit =
+    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                         eventHandler: jfxe.EventHandler[_ >: E]): Unit =
       delegate.addEventHandler(eventType, eventHandler)
 
-    def removeEventHandler[E <: jfxe.Event](
-        eventType: jfxe.EventType[E],
-        eventHandler: jfxe.EventHandler[_ >: E]
-    ): Unit =
+    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                            eventHandler: jfxe.EventHandler[_ >: E]): Unit =
       delegate.removeEventHandler(eventType, eventHandler)
 
-    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[_ >: E]): Unit =
+    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                        eventFilter: jfxe.EventHandler[_ >: E]): Unit =
       delegate.addEventFilter(eventType, eventFilter)
 
-    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[_ >: E]): Unit =
+    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                           eventFilter: jfxe.EventHandler[_ >: E]): Unit =
       delegate.removeEventFilter(eventType, eventFilter)
 
     def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =
@@ -1279,20 +1272,33 @@ abstract class Node protected (override val delegate: jfxs.Node)
   }
 
   /**
-   * Defines the rendering and picking order of this `Node` within its parent. <p> This property is used to alter the
-   * rendering and picking order of a node within its parent without reordering the parent's `children` list. For
-   * example, this can be used as a more efficient way to implement transparency sorting. To do this, an application can
-   * assign the viewOrder value of each node to the computed distance between that node and the viewer. </p> <p> The
-   * parent will traverse its `children` in decreasing `viewOrder` order. This means that a child with a lower
-   * `viewOrder` will be in front of a child with a higher `viewOrder`. If two children have the same `viewOrder`, the
-   * parent will traverse them in the order they appear in the parent's `children` list. </p> <p> However, `viewOrder`
-   * does not alter the layout and focus traversal order of this Node within its parent. A parent always traverses its
-   * `children` list in order when doing layout or focus traversal. </p>
+   * Defines the rendering and picking order of this `Node` within its
+   * parent.
+   * <p>
+   * This property is used to alter the rendering and picking order of a node
+   * within its parent without reordering the parent's `children` list.
+   * For example, this can be used as a more efficient way to implement
+   * transparency sorting. To do this, an application can assign the viewOrder
+   * value of each node to the computed distance between that node and the
+   * viewer.
+   * </p>
+   * <p>
+   * The parent will traverse its `children` in decreasing
+   * `viewOrder` order. This means that a child with a lower
+   * `viewOrder` will be in front of a child with a higher
+   * `viewOrder`. If two children have the same `viewOrder`, the
+   * parent will traverse them in the order they appear in the parent's
+   * `children` list.
+   * </p>
+   * <p>
+   * However, `viewOrder` does not alter the layout and focus traversal
+   * order of this Node within its parent. A parent always traverses its
+   * `children` list in order when doing layout or focus traversal.
+   * </p>
    *
-   * @return
-   *   the view order for this `Node`
-   * @since
-   *   9 Default value is 0.0
+   * @return the view order for this `Node`
+   * @since 9
+   *        Default value is 0.0
    */
   def viewOrder: DoubleProperty = delegate.viewOrderProperty
 

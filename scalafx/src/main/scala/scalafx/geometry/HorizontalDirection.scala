@@ -30,11 +30,9 @@ package scalafx.geometry
 import javafx.{geometry => jfxg}
 import scalafx.delegate._
 
-/**
- * Wrapper for
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/HorizontalDirection.htmljavafx.geometry.HorizontalDirection]]
- */
-object HorizontalDirection extends SFXEnumDelegateCompanion[jfxg.HorizontalDirection, HorizontalDirection] {
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/HorizontalDirection.html javafx.geometry.HorizontalDirection]] */
+object HorizontalDirection
+  extends SFXEnumDelegateCompanion[jfxg.HorizontalDirection, HorizontalDirection] {
 
   /** A direction to the left. */
   case object Left extends HorizontalDirection(jfxg.HorizontalDirection.LEFT)
@@ -50,5 +48,6 @@ object HorizontalDirection extends SFXEnumDelegateCompanion[jfxg.HorizontalDirec
   protected override def unsortedValues: Array[HorizontalDirection] = Array(Left, Right)
 }
 
+
 sealed abstract class HorizontalDirection(override val delegate: jfxg.HorizontalDirection)
-    extends SFXEnumDelegate[jfxg.HorizontalDirection]
+  extends SFXEnumDelegate[jfxg.HorizontalDirection]

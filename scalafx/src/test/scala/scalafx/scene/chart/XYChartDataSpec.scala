@@ -33,9 +33,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * XYChart.Data Spec tests.
+ *
+ *
  */
 class XYChartDataSpec
-    extends SimpleSFXDelegateSpec[jfxsc.XYChart.Data[Int, Int], XYChart.Data[Int, Int]](
-      classOf[jfxsc.XYChart.Data[Int, Int]],
-      classOf[XYChart.Data[Int, Int]]
-    )
+  extends SimpleSFXDelegateSpec[jfxsc.XYChart.Data[Int, Int], XYChart.Data[Int, Int]](classOf[jfxsc.XYChart.Data[Int, Int]], classOf[XYChart.Data[Int, Int]])

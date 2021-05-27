@@ -26,6 +26,7 @@
  */
 package scalafx.beans.property
 
+
 import javafx.beans.{property => jfxbp}
 import scalafx.delegate.SFXDelegate
 
@@ -34,32 +35,26 @@ import scala.language.implicitConversions
 /**
  * Factory for `[[scalafx.beans.property.ObjectProperty]]` instances.
  *
- * @define
- *   OP `ObjectProperty`
- * @define
- *   ISSUE14 Special case when value is an ScalaFX wrapper, to be used as a work around for
- *   [[https://github.com/scalafx/scalafx/issues/14]]. Created object property will have value type of the wrapped
- *   JavaFX type to simplify use with binding.
+ * @define OP `ObjectProperty`
+ * @define ISSUE14 Special case when value is an ScalaFX wrapper, to be used as a work around for
+ *                 [[https://github.com/scalafx/scalafx/issues/14]]. Created object property will have value type
+ *                 of the wrapped JavaFX type to simplify use with binding.
  */
 object ObjectProperty {
 
   /**
    * Implicit conversion from a ScalaFX's $OP to a JavaFX's
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ObjectProperty.html$OP]], extracting its
-   * delegate.
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ObjectProperty.html $OP]], extracting its delegate.
    *
-   * @param op
-   *   ScalaFX's $OP
-   * @return
-   *   JavaFX's $OP, extracted from op's delegate.
+   * @param op ScalaFX's $OP
+   * @return JavaFX's $OP, extracted from op's delegate.
    */
   implicit def sfxObjectProperty2jfx[T <: Any](op: ObjectProperty[T]): jfxbp.ObjectProperty[T] = op.delegate
 
   /**
    * Creates a new $OP.
    *
-   * @param initialValue
-   *   the initial value.
+   * @param initialValue the initial value.
    */
   def apply[T <: Any](initialValue: T) = new ObjectProperty[T](new jfxbp.SimpleObjectProperty[T](initialValue))
 
@@ -68,10 +63,8 @@ object ObjectProperty {
    *
    * $ISSUE14
    *
-   * @param value
-   *   the initial value.
-   * @tparam J
-   *   the JavaFX type of the value hold by this object property.
+   * @param value the initial value.
+   * @tparam J the JavaFX type of the value hold by this object property.
    */
   def apply[J <: Object](value: SFXDelegate[J]): ObjectProperty[J] =
     new ObjectProperty[J](new jfxbp.SimpleObjectProperty[J](value.delegate))
@@ -79,10 +72,8 @@ object ObjectProperty {
   /**
    * Creates a new $OP with its reference bean and name.
    *
-   * @param bean
-   *   The bean of this $OP
-   * @param name
-   *   The name of this $OP
+   * @param bean The bean of this $OP
+   * @param name The name of this $OP
    */
   def apply[T <: Any](bean: Object, name: String): ObjectProperty[T] =
     new ObjectProperty(new jfxbp.SimpleObjectProperty[T](bean, name))
@@ -90,12 +81,9 @@ object ObjectProperty {
   /**
    * Creates a new $OP with with its reference bean and name and initial value.
    *
-   * @param bean
-   *   The bean of this $OP
-   * @param name
-   *   The name of this $OP
-   * @param initialValue
-   *   The initial value of the wrapped value
+   * @param bean The bean of this $OP
+   * @param name The name of this $OP
+   * @param initialValue The initial value of the wrapped value
    */
   def apply[T <: Any](bean: Object, name: String, initialValue: T): ObjectProperty[T] =
     new ObjectProperty(new jfxbp.SimpleObjectProperty[T](bean, name, initialValue))
@@ -105,30 +93,24 @@ object ObjectProperty {
    *
    * $ISSUE14
    *
-   * @tparam J
-   *   the JavaFX type of the value hold by this object property.
-   * @param bean
-   *   The bean of this $OP
-   * @param name
-   *   The name of this $OP
-   * @param initialValue
-   *   The initial value of the wrapped value
+   * @tparam J the JavaFX type of the value hold by this object property.
+   * @param bean The bean of this $OP
+   * @param name The name of this $OP
+   * @param initialValue The initial value of the wrapped value
    */
   def apply[J <: Object](bean: Object, name: String, initialValue: SFXDelegate[J]): ObjectProperty[J] =
     new ObjectProperty(new jfxbp.SimpleObjectProperty[J](bean, name, initialValue.delegate))
 
   /**
-   * Helper method for setting a value of an `ObjectProperty`, it gracefully deals with `value` that could be `null`,
+   * Helper method for setting a value of an `ObjectProperty`,
+   * it gracefully deals with `value` that could be `null`,
    * without causing `NullPointerException`.
    *
    * Handles situation when `value` is of ScalaFX type, to avoid implicit conversion and NPE is `value` is `null`.
    *
-   * @tparam J
-   *   $OP type
-   * @param property
-   *   $OP to be filled.
-   * @param value
-   *   Value to be injected in $OP, to avoid implicit conversion and NPE is `value` is `null`.
+   * @tparam J $OP type
+   * @param property $OP to be filled.
+   * @param value Value to be injected in $OP, to avoid implicit conversion and NPE is `value` is `null`.
    */
   def fillProperty[J <: AnyRef](property: ObjectProperty[J], value: SFXDelegate[J]): Unit = {
     if (value == null) {
@@ -139,17 +121,15 @@ object ObjectProperty {
   }
 
   /**
-   * Helper method for setting a value of an `ObjectProperty`, it gracefully deals with `value` that could be `null`,
+   * Helper method for setting a value of an `ObjectProperty`,
+   * it gracefully deals with `value` that could be `null`,
    * without causing `NullPointerException`.
    *
    * Handles situation when `value` is of JavaFX type, to avoid implicit conversion and NPE is `value` is `null`.
    *
-   * @tparam J
-   *   $OP type
-   * @param property
-   *   $OP to be filled.
-   * @param value
-   *   Value to be injected in $OP.
+   * @tparam J $OP type
+   * @param property $OP to be filled.
+   * @param value Value to be injected in $OP.
    */
   def fillProperty[J <: AnyRef](property: ObjectProperty[J], value: J): Unit = {
     if (value == null) {
@@ -174,9 +154,9 @@ object ObjectProperty {
  * This assumes that will not provide property type but let Scala compiler infer correct one.
  */
 class ObjectProperty[T <: Any](override val delegate: jfxbp.ObjectProperty[T] = new jfxbp.SimpleObjectProperty[T])
-    extends ReadOnlyObjectProperty[T](delegate)
-    with Property[T, T]
-    with SFXDelegate[jfxbp.ObjectProperty[T]] {
+  extends ReadOnlyObjectProperty[T](delegate)
+  with Property[T, T]
+  with SFXDelegate[jfxbp.ObjectProperty[T]] {
 
   def this(bean: Object, name: String) = this(new jfxbp.SimpleObjectProperty[T](bean, name))
 

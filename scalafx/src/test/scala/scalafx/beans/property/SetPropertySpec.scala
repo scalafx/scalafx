@@ -34,13 +34,12 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
- * Test for [[scalafx.beans.property.SetProperty]].
- */
+  *
+  * Test for [[scalafx.beans.property.SetProperty]].
+  */
 class SetPropertySpec
-    extends SimpleSFXDelegateSpec[jfxbp.SetProperty[Int], SetProperty[Int]](
-      classOf[jfxbp.SetProperty[Int]],
-      classOf[SetProperty[Int]]
-    ) {
+  extends SimpleSFXDelegateSpec[jfxbp.SetProperty[Int], SetProperty[Int]](
+    classOf[jfxbp.SetProperty[Int]], classOf[SetProperty[Int]]) {
 
   override protected def getJavaClassInstance: jfxbp.SetProperty[Int] = new jfxbp.SimpleSetProperty[Int]()
 }

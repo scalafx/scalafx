@@ -43,8 +43,8 @@ object ScrollBar {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ScrollBar.html]]
  */
 class ScrollBar(override val delegate: jfxsc.ScrollBar = new jfxsc.ScrollBar)
-    extends Control(delegate)
-    with SFXDelegate[jfxsc.ScrollBar] {
+  extends Control(delegate)
+  with SFXDelegate[jfxsc.ScrollBar] {
 
   /**
    * The amount by which to adjust the scrollbar if the track of the bar is clicked.

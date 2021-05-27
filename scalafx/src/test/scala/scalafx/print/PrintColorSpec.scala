@@ -32,9 +32,7 @@ import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.print.PrintColor]]. */
-class PrintColorSpec
-    extends SFXEnumDelegateSpec[jfxp.PrintColor, PrintColor](
-      javaClass = classOf[jfxp.PrintColor],
-      scalaClass = classOf[PrintColor],
-      companion = PrintColor
-    )
+class PrintColorSpec extends SFXEnumDelegateSpec[jfxp.PrintColor, PrintColor](
+  javaClass = classOf[jfxp.PrintColor],
+  scalaClass = classOf[PrintColor],
+  companion = PrintColor)

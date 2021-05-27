@@ -32,4 +32,5 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** Tests for [[scalafx.embed.swing.SFXPanel]]. */
-class SFXPanelSpec extends SimpleSFXDelegateSpec[jfxes.JFXPanel, SFXPanel](classOf[jfxes.JFXPanel], classOf[SFXPanel])
+class SFXPanelSpec
+  extends SimpleSFXDelegateSpec[jfxes.JFXPanel, SFXPanel](classOf[jfxes.JFXPanel], classOf[SFXPanel])

@@ -43,22 +43,20 @@ object Styleable {
   /**
    * Converts a ScalaFX Styleable to its JavaFX counterpart.
    *
-   * @param s
-   *   ScalaFX Styleable
-   * @return
-   *   JavaFX Styleable
+   * @param s ScalaFX Styleable
+   * @return JavaFX Styleable
    */
   implicit def sfxStyleable2jfx(s: Styleable): jfxcss.Styleable = if (s != null) s.delegate else null
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/Styleable.htmlJavaFXStyleable]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/Styleable.html JavaFX Styleable]].
  *
- * @since
- *   8.0
+ * @since 8.0
  */
-trait Styleable extends SFXDelegate[jfxcss.Styleable] {
+trait Styleable
+  extends SFXDelegate[jfxcss.Styleable] {
 
   /**
    * The CssMetaData of this Styleable.
@@ -68,8 +66,9 @@ trait Styleable extends SFXDelegate[jfxcss.Styleable] {
   /**
    * The id of this Styleable.
    *
-   * IMPLEMENTATION NOTE: For this method was adopted the name `getId` instead `id` to not conflict with its subclasses
-   * already have a method with this name which returns a `StringProperty`.
+   * IMPLEMENTATION NOTE: For this method was adopted the name `getId` instead `id` to not 
+   * conflict with its subclasses already have a method with this name which returns a 
+   * `StringProperty`. 
    */
   def getId: String = delegate.getId
 
@@ -81,21 +80,22 @@ trait Styleable extends SFXDelegate[jfxcss.Styleable] {
   /**
    * A string representation of the CSS style associated with this specific Node.
    *
-   * IMPLEMENTATION NOTE: For this method was adopted the name `getStyle` instead `style` to not conflict with its
-   * subclasses already have a method with this name which returns a `StringProperty`.
+   * IMPLEMENTATION NOTE: For this method was adopted the name `getStyle` instead `style` to not 
+   * conflict with its subclasses already have a method with this name which returns a 
+   * `StringProperty`. 
    */
   def getStyle: String = delegate.getStyle
 
   /**
-   * Returns the Node that represents this Styleable object. This method should be overridden in cases where the
-   * Styleable is not itself a Node, so that it may optionally return the relevant root node representation of itself.
-   * By default this method returns null, which can mean that either the Styleable itself is a Node, or if that is not
-   * the case, that the Styleable does not have a node representation available at the time of request.
+   * Returns the Node that represents this Styleable object.  This method
+   * should be overridden in cases where the Styleable is not itself a Node,
+   * so that it may optionally return the relevant root node representation of
+   * itself.  By default this method returns null, which can mean that either
+   * the Styleable itself is a Node, or if that is not the case, that the
+   * Styleable does not have a node representation available at the time of request.
    *
-   * @return
-   *   the Node that represents this Styleable object
-   * @since
-   *   9
+   * @return the Node that represents this Styleable object
+   * @since 9
    */
   def styleableNode: Node = delegate.getStyleableNode
 
@@ -105,7 +105,8 @@ trait Styleable extends SFXDelegate[jfxcss.Styleable] {
   def styleableParent: Styleable = delegate.getStyleableParent
 
   /**
-   * A list of String identifiers which can be used to logically group Nodes, specifically for an external style engine.
+   * A list of String identifiers which can be used to logically group Nodes, specifically for an
+   * external style engine.
    */
   def styleClass: ObservableBuffer[String] = delegate.getStyleClass
 

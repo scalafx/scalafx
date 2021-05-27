@@ -33,12 +33,11 @@ import scalafx.scene.input.InputIncludes.jfxInputMethodHighlight2sfx
 import scala.language.implicitConversions
 
 object InputMethodTextRun {
-  implicit def sfxInputMethodTextRun2jfx(imtr: InputMethodTextRun): jfxsi.InputMethodTextRun =
-    if (imtr != null) imtr.delegate else null
+  implicit def sfxInputMethodTextRun2jfx(imtr: InputMethodTextRun): jfxsi.InputMethodTextRun = if (imtr != null) imtr.delegate else null
 }
 
 class InputMethodTextRun(override val delegate: jfxsi.InputMethodTextRun)
-    extends SFXDelegate[jfxsi.InputMethodTextRun] {
+  extends SFXDelegate[jfxsi.InputMethodTextRun] {
 
   def this(text: String, highlight: InputMethodHighlight) = {
     this(new jfxsi.InputMethodTextRun(text, highlight))

@@ -30,9 +30,7 @@ package scalafx.scene.shape
 import javafx.scene.{shape => jfxss}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/**
- * Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/ArcType.htmljavafx.scene.shape.ArcType]]
- */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/ArcType.html javafx.scene.shape.ArcType]] */
 object ArcType extends SFXEnumDelegateCompanion[jfxss.ArcType, ArcType] {
 
   case object Open extends ArcType(jfxss.ArcType.OPEN)
@@ -52,4 +50,6 @@ object ArcType extends SFXEnumDelegateCompanion[jfxss.ArcType, ArcType] {
   protected override def unsortedValues: Array[ArcType] = Array(Open, Chord, Round)
 }
 
-sealed abstract class ArcType(override val delegate: jfxss.ArcType) extends SFXEnumDelegate[jfxss.ArcType]
+
+sealed abstract class ArcType(override val delegate: jfxss.ArcType)
+  extends SFXEnumDelegate[jfxss.ArcType]

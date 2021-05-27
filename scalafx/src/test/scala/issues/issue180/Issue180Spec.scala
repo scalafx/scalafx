@@ -27,6 +27,7 @@
 
 package issues.issue180
 
+
 import org.scalatest.flatspec.AnyFlatSpec
 import scalafx.scene.Group
 import scalafx.testutil.RunOnApplicationThread

@@ -59,8 +59,7 @@ object ImageCursor {
 }
 
 class ImageCursor(override val delegate: jfxs.ImageCursor = new jfxs.ImageCursor)
-    extends Cursor(delegate)
-    with SFXDelegate[jfxs.ImageCursor] {
+  extends Cursor(delegate) with SFXDelegate[jfxs.ImageCursor] {
 
   /**
    * Constructs an ImageCursor from the specified image.

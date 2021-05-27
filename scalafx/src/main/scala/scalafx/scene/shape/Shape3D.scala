@@ -39,8 +39,11 @@ object Shape3D {
   implicit def sfxShape3D2jfx(v: Shape3D): jfxss.Shape3D = if (v != null) v.delegate else null
 }
 
+
 /** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/Shape3D.html]]. */
-abstract class Shape3D(override val delegate: jfxss.Shape3D) extends Node(delegate) with SFXDelegate[jfxss.Shape3D] {
+abstract class Shape3D(override val delegate: jfxss.Shape3D)
+  extends Node(delegate)
+  with SFXDelegate[jfxss.Shape3D] {
 
   /** Defines the cullFace this Shape3D. */
   def cullFace: ObjectProperty[jfxss.CullFace] = delegate.cullFaceProperty

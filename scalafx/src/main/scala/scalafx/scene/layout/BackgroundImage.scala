@@ -40,18 +40,14 @@ object BackgroundImage {
 /**
  * Defines properties describing how to render an image as the background to some `Region`.
  */
-class BackgroundImage(override val delegate: jfxsl.BackgroundImage) extends SFXDelegate[jfxsl.BackgroundImage] {
+class BackgroundImage(override val delegate: jfxsl.BackgroundImage)
+  extends SFXDelegate[jfxsl.BackgroundImage] {
 
   /**
    * Creates a new BackgroundImage.
    */
-  def this(
-      image: Image,
-      repeatX: BackgroundRepeat,
-      repeatY: BackgroundRepeat,
-      position: BackgroundPosition,
-      size: BackgroundSize
-  ) =
+  def this(image: Image, repeatX: BackgroundRepeat, repeatY: BackgroundRepeat,
+           position: BackgroundPosition, size: BackgroundSize) =
     this(new jfxsl.BackgroundImage(image, repeatX, repeatY, position, size))
 
   /**

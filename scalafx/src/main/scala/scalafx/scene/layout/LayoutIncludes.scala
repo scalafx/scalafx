@@ -34,95 +34,65 @@ object LayoutIncludes extends LayoutIncludes
 
 /**
  * Contains implcit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/package-summary.html`javafx.scene.layout`]]
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/package-summary.html `javafx.scene.layout`]]
  * Classes/Traits to their $SFX counterparts.
  *
- * @define
- *   JFX JavaFX
- * @define
- *   SFX ScalaFX
- * @define
- *   START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/
- * @define
- *   END ]]` instance to its $SFX counterpart.
+ * @define JFX JavaFX
+ * @define SFX ScalaFX
+ * @define START Converts a $JFX `[[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/
+ * @define END ]]` instance to its $SFX counterpart.
  *
- * @define
- *   ACPN AnchorPane
- * @define
- *   BKGN Background
- * @define
- *   BRDR Border
- * @define
- *   BDPN BorderPane
- * @define
- *   CLCT ColumnConstraints
- * @define
- *   CTBS ConstraintsBase
- * @define
- *   FLPN FlowPane
- * @define
- *   GDPN GridPane
- * @define
- *   HBOX HBox
- * @define
- *   PANE Pane
- * @define
- *   PRIO Priority
- * @define
- *   REGI Region
- * @define
- *   RWCT RowConstraints
- * @define
- *   STPN StackPane
- * @define
- *   TLPN TilePane
- * @define
- *   VBOX VBox
+ * @define ACPN AnchorPane
+ * @define BKGN Background
+ * @define BRDR Border
+ * @define BDPN BorderPane
+ * @define CLCT ColumnConstraints
+ * @define CTBS ConstraintsBase
+ * @define FLPN FlowPane
+ * @define GDPN GridPane
+ * @define HBOX HBox
+ * @define PANE Pane
+ * @define PRIO Priority
+ * @define REGI Region
+ * @define RWCT RowConstraints
+ * @define STPN StackPane
+ * @define TLPN TilePane
+ * @define VBOX  VBox
  */
 trait LayoutIncludes {
 
   /**
    * $START$ACPN.html $ACPN$END
    *
-   * @param a
-   *   $JFX $ACPN
-   * @return
-   *   $SFX $ACPN
+   * @param a $JFX $ACPN
+   * @return $SFX $ACPN
    */
   implicit def jfxAnchorPane2sfx(a: jfxsl.AnchorPane): AnchorPane = if (a != null) new AnchorPane(a) else null
 
   /**
    * $START$BKGN.html $BKGN$END
    *
-   * @param v
-   *   $JFX $BKGN
-   * @return
-   *   $SFX $BKGN
+   * @param v $JFX $BKGN
+   * @return $SFX $BKGN
    */
   implicit def jfxBackground2sfx(v: jfxsl.Background): Background = if (v != null) new Background(v) else null
 
-  implicit def jfxBackgroundFill2sfx(v: jfxsl.BackgroundFill): BackgroundFill =
-    if (v != null) new BackgroundFill(v) else null
+  implicit def jfxBackgroundFill2sfx(v: jfxsl.BackgroundFill): BackgroundFill = if (v != null) new BackgroundFill(v) else null
 
-  implicit def jfxBackgroundImage2sfx(v: jfxsl.BackgroundImage): BackgroundImage =
-    if (v != null) new BackgroundImage(v) else null
+  implicit def jfxBackgroundImage2sfx(v: jfxsl.BackgroundImage): BackgroundImage = if (v != null) new BackgroundImage(v) else null
 
   implicit def jfxBackgroundPosition2sfx(v: jfxsl.BackgroundPosition): BackgroundPosition =
     if (v != null) new BackgroundPosition(v) else null
 
-  implicit def jfxBackgroundRepeat2sfx(v: jfxsl.BackgroundRepeat): BackgroundRepeat =
-    if (v != null) BackgroundRepeat(v) else null
+  implicit def jfxBackgroundRepeat2sfx(v: jfxsl.BackgroundRepeat): BackgroundRepeat = if (v != null) BackgroundRepeat(v) else null
 
-  implicit def jfxBackgroundSize2sfx(v: jfxsl.BackgroundSize): BackgroundSize =
-    if (v != null) new BackgroundSize(v) else null
+  implicit def jfxBackgroundSize2sfx(v: jfxsl.BackgroundSize): BackgroundSize = if (v != null) new BackgroundSize(v) else null
 
   /**
    * $START$BRDR.html $BRDR$END
    *
-   * @param v
-   *   $JFX $BRDR
-   * @return
-   *   $SFX $BRDR
+   * @param v $JFX $BRDR
+   * @return $SFX $BRDR
    */
   implicit def jfxBorder2sfx(v: jfxsl.Border): Border = if (v != null) new Border(v) else null
 
@@ -131,10 +101,8 @@ trait LayoutIncludes {
   /**
    * $START$BDPN.html $BDPN$END
    *
-   * @param v
-   *   $JFX $BDPN
-   * @return
-   *   $SFX $BDPN
+   * @param v $JFX $BDPN
+   * @return $SFX $BDPN
    */
   implicit def jfxBorderPane2sfx(v: jfxsl.BorderPane): BorderPane = if (v != null) new BorderPane(v) else null
 
@@ -150,127 +118,98 @@ trait LayoutIncludes {
   /**
    * $START$CLCT.html $CLCT$END
    *
-   * @param v
-   *   $JFX $CLCT
-   * @return
-   *   $SFX $CLCT
+   * @param v $JFX $CLCT
+   * @return $SFX $CLCT
    */
-  implicit def jfxColumnConstraints2sfx(v: jfxsl.ColumnConstraints): ColumnConstraints =
-    if (v != null) new ColumnConstraints(v) else null
+  implicit def jfxColumnConstraints2sfx(v: jfxsl.ColumnConstraints): ColumnConstraints = if (v != null) new ColumnConstraints(v) else null
 
   /**
    * $START$CTBS.html $CTBS$END
    *
-   * @param v
-   *   $JFX $CTBS
-   * @return
-   *   $SFX $CTBS
+   * @param v $JFX $CTBS
+   * @return $SFX $CTBS
    */
-  implicit def jfxConstraintsBase2sfx(v: jfxsl.ConstraintsBase): ConstraintsBase = if (v != null)
-    new ConstraintsBase(v) {}
-  else null
+  implicit def jfxConstraintsBase2sfx(v: jfxsl.ConstraintsBase): ConstraintsBase = if (v != null) new ConstraintsBase(v) {} else null
 
-  implicit def jfxCornerRadii2sfx(v: jfxsl.CornerRadii): CornerRadii = if (v != null) new CornerRadii(v) {}
-  else null
+  implicit def jfxCornerRadii2sfx(v: jfxsl.CornerRadii): CornerRadii = if (v != null) new CornerRadii(v) {} else null
 
   /**
    * $START$FLPN.html $FLPN$END
    *
-   * @param v
-   *   $JFX $FLPN
-   * @return
-   *   $SFX $FLPN
+   * @param v $JFX $FLPN
+   * @return $SFX $FLPN
    */
   implicit def jfxFlowPane2sfx(v: jfxsl.FlowPane): FlowPane = if (v != null) new FlowPane(v) else null
 
   /**
    * $START$GDPN.html $GDPN$END
    *
-   * @param v
-   *   $JFX $GDPN
-   * @return
-   *   $SFX $GDPN
+   * @param v $JFX $GDPN
+   * @return $SFX $GDPN
    */
   implicit def jfxGridPane2sfx(v: jfxsl.GridPane): GridPane = if (v != null) new GridPane(v) else null
 
   /**
    * $START$HBOX.html $HBOX$END
    *
-   * @param v
-   *   $JFX $HBOX
-   * @return
-   *   $SFX $HBOX
+   * @param v $JFX $HBOX
+   * @return $SFX $HBOX
    */
   implicit def jfxHBox2sfx(v: jfxsl.HBox): HBox = if (v != null) new HBox(v) else null
 
   /**
    * $START$PANE.html $PANE$END
    *
-   * @param v
-   *   $JFX $PANE
-   * @return
-   *   $SFX $PANE
+   * @param v $JFX $PANE
+   * @return $SFX $PANE
    */
   implicit def jfxPane2sfx(v: jfxsl.Pane): Pane = if (v != null) new Pane(v) else null
 
   /**
    * $START$PRIO.html $PRIO$END
    *
-   * @param e
-   *   $JFX $PRIO
-   * @return
-   *   $SFX $PRIO
+   * @param e $JFX $PRIO
+   * @return $SFX $PRIO
    */
   implicit def jfxPriority2sfx(e: jfxsl.Priority): Priority = Priority.jfxEnum2sfx(e)
 
   /**
    * $START$REGI.html $REGI$END
    *
-   * @param v
-   *   $JFX $REGI
-   * @return
-   *   $SFX $REGI
+   * @param v $JFX $REGI
+   * @return $SFX $REGI
    */
   implicit def jfxRegion2sfx(v: jfxsl.Region): Region = if (v != null) new Region(v) else null
 
   /**
    * $START$RWCT.html $RWCT$END
    *
-   * @param v
-   *   $JFX $RWCT
-   * @return
-   *   $SFX $RWCT
+   * @param v $JFX $RWCT
+   * @return $SFX $RWCT
    */
-  implicit def jfxRowConstraints2sfx(v: jfxsl.RowConstraints): RowConstraints =
-    if (v != null) new RowConstraints(v) else null
+  implicit def jfxRowConstraints2sfx(v: jfxsl.RowConstraints): RowConstraints = if (v != null) new RowConstraints(v) else null
 
   /**
    * $START$STPN.html $STPN$END
    *
-   * @param v
-   *   $JFX $STPN
-   * @return
-   *   $SFX $STPN
+   * @param v $JFX $STPN
+   * @return $SFX $STPN
    */
   implicit def jfxStackPane2sfx(v: jfxsl.StackPane): StackPane = if (v != null) new StackPane(v) else null
 
   /**
    * $START$TLPN.html $TLPN$END
    *
-   * @param v
-   *   $JFX $TLPN
-   * @return
-   *   $SFX $TLPN
+   * @param v $JFX $TLPN
+   * @return $SFX $TLPN
    */
   implicit def jfxTilePane2sfx(v: jfxsl.TilePane): TilePane = if (v != null) new TilePane(v) else null
 
   /**
    * $START$VBOX.html $VBOX$END
    *
-   * @param v
-   *   $JFX $VBOX
-   * @return
-   *   $SFX $VBOX
+   * @param v $JFX $VBOX
+   * @return $SFX $VBOX
    */
   implicit def jfxVBox2sfx(v: jfxsl.VBox): VBox = if (v != null) new VBox(v) else null
 

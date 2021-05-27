@@ -32,10 +32,9 @@ import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Test for [[scalafx.scene.shape.StrokeType]] */
-class StrokeTypeSpec
-    extends SFXEnumDelegateSpec[jfxss.StrokeType, StrokeType](
-      javaClass = classOf[jfxss.StrokeType],
-      scalaClass = classOf[StrokeType],
-      companion = StrokeType
-    )
+class StrokeTypeSpec extends SFXEnumDelegateSpec[jfxss.StrokeType, StrokeType](
+  javaClass = classOf[jfxss.StrokeType],
+  scalaClass = classOf[StrokeType],
+  companion = StrokeType)

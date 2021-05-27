@@ -70,8 +70,8 @@ object RotateEvent {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/RotateEvent.html]]
  */
 class RotateEvent(override val delegate: jfxsi.RotateEvent)
-    extends InputEvent(delegate)
-    with SFXDelegate[jfxsi.RotateEvent] {
+  extends InputEvent(delegate)
+  with SFXDelegate[jfxsi.RotateEvent] {
 
   /**
    * Gets the rotation angle of this event.

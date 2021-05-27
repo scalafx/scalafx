@@ -32,9 +32,10 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Skinnable Spec tests.
+ *
  */
 class SkinnableSpec
-    extends SimpleSFXDelegateSpec[jfxsc.Skinnable, Skinnable](classOf[jfxsc.Skinnable], classOf[Skinnable]) {
+  extends SimpleSFXDelegateSpec[jfxsc.Skinnable, Skinnable](classOf[jfxsc.Skinnable], classOf[Skinnable]) {
 
   override protected def getScalaClassInstance = new Skinnable {
     override val delegate = getJavaClassInstance
@@ -43,7 +44,7 @@ class SkinnableSpec
   // How Skinnable is a abstract class, it is done a basic implementation
   override protected def getJavaClassInstance = new jfxsc.Skinnable {
     def skinProperty = null
-    def getSkin      = null
+    def getSkin = null
 
     def setSkin(s: jfxsc.Skin[_]): Unit = {}
   }

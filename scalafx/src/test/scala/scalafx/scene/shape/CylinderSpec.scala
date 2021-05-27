@@ -33,4 +33,5 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** Cylinder Spec tests. */
-class CylinderSpec extends SimpleSFXDelegateSpec[jfxss.Cylinder, Cylinder](classOf[jfxss.Cylinder], classOf[Cylinder])
+class CylinderSpec
+  extends SimpleSFXDelegateSpec[jfxss.Cylinder, Cylinder](classOf[jfxss.Cylinder], classOf[Cylinder])

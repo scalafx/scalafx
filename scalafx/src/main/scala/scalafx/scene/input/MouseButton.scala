@@ -30,10 +30,7 @@ package scalafx.scene.input
 import javafx.scene.{input => jfxsi}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/**
- * Wrapper for
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/MouseButton.htmljavafx.scene.input.MouseButton]]
- */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/MouseButton.html javafx.scene.input.MouseButton]] */
 object MouseButton extends SFXEnumDelegateCompanion[jfxsi.MouseButton, MouseButton] {
 
   case object None extends MouseButton(jfxsi.MouseButton.NONE)
@@ -63,4 +60,6 @@ object MouseButton extends SFXEnumDelegateCompanion[jfxsi.MouseButton, MouseButt
   protected override def unsortedValues: Array[MouseButton] = Array(None, Primary, Middle, Secondary, Back, Forward)
 }
 
-sealed abstract class MouseButton(override val delegate: jfxsi.MouseButton) extends SFXEnumDelegate[jfxsi.MouseButton]
+
+sealed abstract class MouseButton(override val delegate: jfxsi.MouseButton)
+  extends SFXEnumDelegate[jfxsi.MouseButton]

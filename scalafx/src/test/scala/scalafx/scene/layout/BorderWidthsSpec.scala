@@ -33,13 +33,12 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
+ *
  * Test for [[scalafx.scene.layout.BorderWidthsSpec]].
  */
 class BorderWidthsSpec
-    extends SimpleSFXDelegateSpec[jfxsl.BorderWidths, BorderWidths](
-      classOf[jfxsl.BorderWidths],
-      classOf[BorderWidths]
-    ) {
+  extends SimpleSFXDelegateSpec[jfxsl.BorderWidths, BorderWidths](
+    classOf[jfxsl.BorderWidths], classOf[BorderWidths]) {
 
   override protected def getScalaClassInstance = new BorderWidths(getJavaClassInstance) {}
 

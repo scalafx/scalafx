@@ -40,20 +40,16 @@ object PseudoClass {
   /**
    * Converts a ScalaFX PseudoClass to its JavaFX counterpart.
    *
-   * @param v
-   *   ScalaFX PseudoClass
-   * @return
-   *   JavaFX PseudoClass
+   * @param v ScalaFX PseudoClass
+   * @return JavaFX PseudoClass
    */
   implicit def sfxPseudoClass2jfx(v: PseudoClass): jfxcss.PseudoClass = if (v != null) v.delegate else null
 
   /**
    * There is only one PseudoClass instance for a given pseudoClass.
    *
-   * @param pseudoClass
-   *   PseudoClass name
-   * @return
-   *   The PseudoClass for the given pseudoClass. Will not return null.
+   * @param pseudoClass PseudoClass name
+   * @return The PseudoClass for the given pseudoClass. Will not return null.
    */
   def apply(pseudoClass: String): PseudoClass =
     jfxcss.PseudoClass.getPseudoClass(pseudoClass)
@@ -61,17 +57,15 @@ object PseudoClass {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/PseudoClass.htmlJavaFXPseudoClass]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/css/PseudoClass.html JavaFX PseudoClass]].
  *
- * @constructor
- *   Creates a new ScalaFX PseudoClass from its JavaFX counterpart.
- * @param delegate
- *   JavaFX PseudoClass.
+ * @constructor Creates a new ScalaFX PseudoClass from its JavaFX counterpart.
+ * @param delegate JavaFX PseudoClass.
  *
- * @since
- *   8.0
+ * @since 8.0
  */
-abstract class PseudoClass(override val delegate: jfxcss.PseudoClass) extends SFXDelegate[jfxcss.PseudoClass] {
+abstract class PseudoClass(override val delegate: jfxcss.PseudoClass)
+  extends SFXDelegate[jfxcss.PseudoClass] {
 
   /**
    * There is only one `PseudoClass` instance for a given pseudoClass.

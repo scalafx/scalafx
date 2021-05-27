@@ -38,8 +38,8 @@ object Window {
   implicit def sfxWindow2jfx(v: Window): jfxs.Window = if (v != null) v.delegate else null
 }
 
-class Window protected (override val delegate: jfxs.Window)
-    extends EventHandlerDelegate
+class Window protected(override val delegate: jfxs.Window)
+  extends EventHandlerDelegate
     with SFXDelegate[jfxs.Window]
     with jfxe.EventTarget {
 
@@ -200,19 +200,18 @@ class Window protected (override val delegate: jfxs.Window)
   override protected def eventHandlerDelegate: EventHandled = delegate.asInstanceOf[EventHandled]
 
   /**
-   * The horizontal scale that the `Window` will use when rendering its `Scene` to the rendering buffer. This property
-   * is automatically updated whenever there is a change in the [[outputScaleX]] property and can be overridden either
-   * by calling `setRenderScaleX()` in response to a listener on the `outputScaleX` property or by binding it
-   * appropriately.
+   * The horizontal scale that the `Window` will use when rendering
+   * its `Scene` to the rendering buffer.
+   * This property is automatically updated whenever there is a change in
+   * the [[outputScaleX]] property and can be overridden either by
+   * calling `setRenderScaleX()` in response to a listener on the
+   * `outputScaleX` property or by binding it appropriately.
    *
    * Default value is outputScaleX
    *
-   * @see
-   *   [[outputScaleX]]
-   * @see
-   *   [[forceIntegerRenderScale]]
-   * @since
-   *   9
+   * @see [[outputScaleX]]
+   * @see [[forceIntegerRenderScale]]
+   * @since 9
    */
   def renderScaleX: DoubleProperty = delegate.renderScaleXProperty
 
@@ -221,19 +220,18 @@ class Window protected (override val delegate: jfxs.Window)
   }
 
   /**
-   * The vertical scale that the `Window` will use when rendering its `Scene` to the rendering buffer. This property is
-   * automatically updated whenever there is a change in the [[outputScaleY]] property and can be overridden either by
-   * calling `setRenderScaleY()` in response to a listener on the `outputScaleY` property or by binding it
-   * appropriately.
+   * The vertical scale that the `Window` will use when rendering
+   * its `Scene` to the rendering buffer.
+   * This property is automatically updated whenever there is a change in
+   * the [[outputScaleY]] property and can be overridden either by
+   * calling `setRenderScaleY()` in response to a listener on the
+   * `outputScaleY` property or by binding it appropriately.
    *
    * DefaultValue is outputScaleY
    *
-   * @see
-   *   [[outputScaleY]]
-   * @see
-   *   [[forceIntegerRenderScale]]
-   * @since
-   *   9
+   * @see [[outputScaleY]]
+   * @see [[forceIntegerRenderScale]]
+   * @since 9
    */
   def renderScaleY: DoubleProperty = delegate.renderScaleYProperty
 
@@ -242,16 +240,20 @@ class Window protected (override val delegate: jfxs.Window)
   }
 
   /**
-   * The scale that the `Window` will apply to horizontal scene coordinates in all stages of rendering and compositing
-   * the output to the screen or other destination device. This property is updated asynchronously by the system at
-   * various times including: <ul> <li>Window creation <li>At some point during moving a window to a new `Screen` which
-   * may be before or after the [[Screen]] property is updated. <li>In response to a change in user preferences for
-   * output scaling. </ul>
+   * The scale that the `Window` will apply to horizontal scene
+   * coordinates in all stages of rendering and compositing the output
+   * to the screen or other destination device.
+   * This property is updated asynchronously by the system at various
+   * times including:
+   * <ul>
+   * <li>Window creation
+   * <li>At some point during moving a window to a new `Screen`
+   * which may be before or after the [[Screen]] property is updated.
+   * <li>In response to a change in user preferences for output scaling.
+   * </ul>
    *
-   * @see
-   *   [[renderScaleX]]
-   * @since
-   *   9
+   * @see [[renderScaleX]]
+   * @since 9
    */
   def outputScaleX: ReadOnlyDoubleProperty = delegate.outputScaleXProperty
 
@@ -260,16 +262,20 @@ class Window protected (override val delegate: jfxs.Window)
   }
 
   /**
-   * The scale that the `Window` will apply to vertical scene coordinates in all stages of rendering and compositing the
-   * output to the screen or other destination device. This property is updated asynchronously by the system at various
-   * times including: <ul> <li>Window creation <li>At some point during moving a window to a new `Screen` which may be
-   * before or after the [[Screen]] property is updated. <li>In response to a change in user preferences for output
-   * scaling. </ul>
+   * The scale that the `Window` will apply to vertical scene
+   * coordinates in all stages of rendering and compositing the output
+   * to the screen or other destination device.
+   * This property is updated asynchronously by the system at various
+   * times including:
+   * <ul>
+   * <li>Window creation
+   * <li>At some point during moving a window to a new `Screen`
+   * which may be before or after the [[Screen]] property is updated.
+   * <li>In response to a change in user preferences for output scaling.
+   * </ul>
    *
-   * @see
-   *   [[renderScaleY]]
-   * @since
-   *   9
+   * @see [[renderScaleY]]
+   * @since 9
    */
   def outputScaleY: ReadOnlyDoubleProperty = delegate.outputScaleYProperty
 
@@ -278,20 +284,23 @@ class Window protected (override val delegate: jfxs.Window)
   }
 
   /**
-   * Boolean property that controls whether only integer render scales are set by default by the system when there is a
-   * change in the associated output scale. The `renderScale` properties will be updated directly and simultaneously
-   * with any changes in the associated `outputScale` properties, but the values can be overridden by subsequent calls
-   * to the `setRenderScale` setters or through appropriate use of binding. This property will not prevent setting
-   * non-integer scales directly using the `renderScale` property object or the convenience setter method.
+   * Boolean property that controls whether only integer render scales
+   * are set by default by the system when there is a change in the
+   * associated output scale.
+   * The `renderScale` properties will be updated directly and
+   * simultaneously with any changes in the associated `outputScale`
+   * properties, but the values can be overridden by subsequent calls to
+   * the `setRenderScale` setters or through appropriate use of
+   * binding.
+   * This property will not prevent setting non-integer scales
+   * directly using the `renderScale` property object or the
+   * convenience setter method.
    *
    * Default value is false
    *
-   * @see
-   *   [[renderScaleX]]
-   * @see
-   *   [[renderScaleY]]
-   * @since
-   *   9
+   * @see [[renderScaleX]]
+   * @see [[renderScaleY]]
+   * @since 9
    */
   def forceIntegerRenderScale: BooleanProperty = delegate.forceIntegerRenderScaleProperty
 

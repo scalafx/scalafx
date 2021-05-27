@@ -31,29 +31,27 @@ import javafx.{collections => jfxc}
 /**
  * Companion Object for [[scalafx.collections.ObservableIntegerArray]].
  */
-object ObservableIntegerArray
-    extends ObservableArrayCompanionBase[Int, ObservableIntegerArray, jfxc.ObservableIntegerArray] {
+object ObservableIntegerArray extends ObservableArrayCompanionBase[Int, ObservableIntegerArray,
+  jfxc.ObservableIntegerArray] {
 
   /**
    * @inheritdoc
    */
-  override def apply(v: Int*) = new ObservableIntegerArray(jfxc.FXCollections.observableIntegerArray(v: _*))
+  override def apply(v: Int*) = new ObservableIntegerArray(jfxc.FXCollections.observableIntegerArray(v:_*))
 
   /**
-   * Returns an array containing equally spaced values in some integer interval.
-   *
-   * @param start
-   *   Start value of the array.
-   * @param end
-   *   End value of the array, exclusive (that is, first value '''not''' included in array). If `start` exceeds `end`
-   *   (>= `end` if `step` is positive or <= `end` if `step` is negative), then an empty array will result.
-   * @param step
-   *   Increment value of the array. This value can be negative, but not zero. If omitted, this value defaults to 1.
-   * @return
-   *   Observable array with values: `start, start + step, start + 2 * step, ...`, up to, but not including, `end`.
-   * @throws
-   *   IllegalArgumentException if `step` is 0.
-   */
+    * Returns an array containing equally spaced values in some integer interval.
+    *
+    * @param start Start value of the array.
+    * @param end End value of the array, exclusive (that is, first value '''not''' included in array).  If `start`
+    * exceeds `end` (>= `end` if `step` is positive or <= `end` if `step` is negative), then an empty array will
+    * result.
+    * @param step Increment value of the array.  This value can be negative, but not zero.  If omitted, this value
+    * defaults to 1.
+    * @return Observable array with values: `start, start + step, start + 2 * step, ...`, up to, but not including,
+    * `end`.
+    * @throws IllegalArgumentException if `step` is 0.
+    */
   def range(start: Int, end: Int, step: Int = 1): ObservableIntegerArray = apply(Array.range(start, end, step))
 }
 
@@ -61,28 +59,24 @@ object ObservableIntegerArray
 /**
  * Wrapper class to JavaFX's `ObservableIntegerArray`.
  *
- * @param delegate
- *   Wrapped JavaFX $OIA providing implementation.
+ * @param delegate Wrapped JavaFX $OIA providing implementation.
  *
- * @define
- *   OIA `ObservableIntegerArray`
- * @define
- *   ARY `Array`
+ * @define OIA `ObservableIntegerArray`
+ * @define ARY `Array`
  */
 class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXCollections.observableIntegerArray())
-    extends ObservableArray[Int, ObservableIntegerArray, jfxc.ObservableIntegerArray](delegate) {
+  extends ObservableArray[Int, ObservableIntegerArray, jfxc.ObservableIntegerArray](delegate) {
 
   /**
    * Create $OIA with specified capacity.
    *
    * Elements will be zeroed out.
    *
-   * @param n
-   *   Size of new $OIA. This value cannot be negative.
-   * @throws
-   *   NegativeArraySizeException if `n` is negative.
+   * @param n Size of new $OIA.  This value cannot be negative.
+   * @throws NegativeArraySizeException if `n` is negative.
    */
-  def this(n: Int) = this(jfxc.FXCollections.observableIntegerArray(new Array[Int](n): _*))
+  def this(n: Int) = this(jfxc.FXCollections.observableIntegerArray(new Array[Int](n):_*))
+
 
   // ObservableIntegerArray interface functions, allow class to act like it implements the JavaFX
   // ObservableIntegerArray interface, without actually being interchangeable with one.
@@ -109,7 +103,7 @@ class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXColl
    * @inheritdoc
    */
   override def addAll(elems: Int*): Unit = {
-    delegate.addAll(elems: _*)
+    delegate.addAll(elems:_*)
   }
 
   /**
@@ -137,7 +131,7 @@ class ObservableIntegerArray(delegate: jfxc.ObservableIntegerArray = jfxc.FXColl
    * @inheritdoc
    */
   override def setAll(elements: Int*): Unit = {
-    delegate.setAll(elements: _*)
+    delegate.setAll(elements:_*)
   }
 
   /**

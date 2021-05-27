@@ -33,7 +33,8 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TitledPane Spec tests.
+ *
  */
 class TitledPaneSpec
-    extends SimpleSFXDelegateSpec[jfxsc.TitledPane, TitledPane](classOf[jfxsc.TitledPane], classOf[TitledPane])
-    with RunOnApplicationThread
+  extends SimpleSFXDelegateSpec[jfxsc.TitledPane, TitledPane](classOf[jfxsc.TitledPane], classOf[TitledPane])
+  with RunOnApplicationThread

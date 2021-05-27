@@ -39,7 +39,7 @@ trait DimensionDelegateSpec[D <: DimensionDelegate[_]] extends AnyFlatSpec {
   val dimensionDelegate: D
 
   private def testDoublePropertyUpdate(testedProperty: DoubleProperty, propertyName: String): Unit = {
-    var moved          = false
+    var moved = false
     val observerDouble = new DoubleProperty(dimensionDelegate, propertyName)
 
     testedProperty.value = -10.0

@@ -33,7 +33,9 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Button Spec tests.
+ *
+ *
  */
 class ButtonSpec
-    extends SimpleSFXDelegateSpec[jfxsc.Button, Button](classOf[jfxsc.Button], classOf[Button])
-    with RunOnApplicationThread
+  extends SimpleSFXDelegateSpec[jfxsc.Button, Button](classOf[jfxsc.Button], classOf[Button])
+  with RunOnApplicationThread

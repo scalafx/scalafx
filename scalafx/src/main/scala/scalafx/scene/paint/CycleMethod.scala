@@ -30,10 +30,7 @@ package scalafx.scene.paint
 import javafx.scene.{paint => jfxsp}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/**
- * Wrapper for
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/paint/CycleMethod.htmljavafx.scene.paint.CycleMethod]]
- */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/paint/CycleMethod.html javafx.scene.paint.CycleMethod]] */
 object CycleMethod extends SFXEnumDelegateCompanion[jfxsp.CycleMethod, CycleMethod] {
 
   case object NoCycle extends CycleMethod(jfxsp.CycleMethod.NO_CYCLE)

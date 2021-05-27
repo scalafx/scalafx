@@ -39,10 +39,10 @@ object ColorInput {
 }
 
 class ColorInput(override val delegate: jfxse.ColorInput = new jfxse.ColorInput)
-    extends Effect(delegate)
-    with PositionDelegate[jfxse.ColorInput]
-    with DimensionDelegate[jfxse.ColorInput]
-    with SFXDelegate[jfxse.ColorInput] {
+  extends Effect(delegate)
+  with PositionDelegate[jfxse.ColorInput]
+  with DimensionDelegate[jfxse.ColorInput]
+  with SFXDelegate[jfxse.ColorInput] {
 
   /**
    * Creates a new instance of ColorInput with the specified x, y, width, height, and paint.

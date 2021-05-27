@@ -40,9 +40,10 @@ object RadioMenuItem {
 
 /**
  * Wrapper class for [[scalafx.scene.control.RadioMenuItem]]
+ *
  */
 class RadioMenuItem(override val delegate: jfxsc.RadioMenuItem)
-    extends MenuItem(delegate)
+  extends MenuItem(delegate)
     with Toggle
     with SFXDelegate[jfxsc.RadioMenuItem] {
 
@@ -52,8 +53,8 @@ class RadioMenuItem(override val delegate: jfxsc.RadioMenuItem)
   def this(text: String) = this(new jfxsc.RadioMenuItem(text))
 
   /**
-   * Constructs a RadioMenuItem and sets the display text with the specified text and sets the graphic
-   * [[scalafx.scene.Node]] to the given node.
+   * Constructs a RadioMenuItem and sets the display text with the specified text and sets the
+   * graphic [[scalafx.scene.Node]] to the given node.
    */
   def this(text: String, graphic: Node) = this(new jfxsc.RadioMenuItem(text, graphic))
 

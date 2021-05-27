@@ -34,37 +34,39 @@ import scalafx.scene.Scene
 import scalafx.scene.control.{Button, Label}
 import scalafx.scene.layout.{StackPane, VBox}
 
-/**
- * Illustrated [[https://github.com/scalafx/scalafx/issues/102Issue102]]
- *
- * When event handler is created from a code block (rather than a function), only it's last instruction is used when
- * event handler is invoked. Everything else is invoked only once when event handler is created.
- *
- * When we run this application, with bug 102 in effect, and click three tomes on the button, we will have following
- * printout
- * {{{
- *   Creating primary stage ...
- *   Button 1 - Message 1
- *   Creating primary stage - done
- *   Button 1 - Message 2
- *   Button 1 - Message 2
- *   Button 1 - Message 2
- * }}}
- * Notice that first `println` in the handler is executed during construction, before it is shown on the screen.
- * Clicking on Button 1 produces only the second message. If the event handler was working correctly we should have:
- * {{{
- *   Creating primary stage ...
- *   Creating primary stage - done
- *   Button 1 - Message 1
- *   Button 1 - Message 2
- *   Button 1 - Message 1
- *   Button 1 - Message 2
- *   Button 1 - Message 1
- *   Button 1 - Message 2
- * }}}
- *
- * In certain situations we can have a
- */
+
+/** Illustrated [[https://github.com/scalafx/scalafx/issues/102 Issue 102]]
+  *
+  * When event handler is created from a code block (rather than a function),
+  * only it's last instruction is used when event handler is invoked.
+  * Everything else is invoked only once when event handler is created.
+  *
+  * When we run this application, with bug 102 in effect, and click three tomes on the
+  * button, we will have following printout
+  * {{{
+  *   Creating primary stage ...
+  *   Button 1 - Message 1
+  *   Creating primary stage - done
+  *   Button 1 - Message 2
+  *   Button 1 - Message 2
+  *   Button 1 - Message 2
+  * }}}
+  * Notice that first `println` in the handler is executed during construction,
+  * before it is shown on the screen. Clicking on Button 1 produces only the second message.
+  * If the event handler was working correctly we should have:
+  * {{{
+  *   Creating primary stage ...
+  *   Creating primary stage - done
+  *   Button 1 - Message 1
+  *   Button 1 - Message 2
+  *   Button 1 - Message 1
+  *   Button 1 - Message 2
+  *   Button 1 - Message 1
+  *   Button 1 - Message 2
+  * }}}
+  *
+  * In certain situations we can have a
+  */
 object IncompleteClickHandler extends JFXApp {
   println("Creating primary stage ...")
   stage = new JFXApp.PrimaryStage {

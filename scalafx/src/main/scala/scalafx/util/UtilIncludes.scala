@@ -37,23 +37,18 @@ object UtilIncludes extends UtilIncludes
 
 /**
  * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/package-summary.html`javafx.util`]] Classes to their ScalaFX
- * counterparts.
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/package-summary.html `javafx.util`]]
+ * Classes to their ScalaFX counterparts.
  */
 trait UtilIncludes {
 
   /**
-   * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Callback.html`Callback`]] to a
-   * Function1.
+   * Converts a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Callback.html `Callback`]] to a Function1.
    *
-   * @tparam P
-   *   Callback parameter type
-   * @tparam R
-   *   Callback return type.
-   * @param c
-   *   JavaFX Callback
-   * @return
-   *   A function would call Callback.
+   * @tparam P Callback parameter type
+   * @tparam R Callback  return type.
+   * @param c JavaFX Callback
+   * @return A function would call Callback.
    */
   implicit def jfxCallbackToFunction1[P, R](c: jfxu.Callback[P, R]): (P) => R = (param: P) => c.call(param)
 
@@ -70,71 +65,55 @@ trait UtilIncludes {
   //  }
 
   /**
-   * Convert a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Pair.htmlPair]] in a Scala Tuple2.
+   * Convert a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Pair.html Pair]] in a Scala Tuple2.
    *
-   * @tparam K
-   *   Key Type
-   * @tparam V
-   *   Value Type
-   * @param p
-   *   JavaFX Pair
-   * @return
-   *   A Scala Tuple2 generated from Pair.
+   * @tparam K Key Type
+   * @tparam V Value Type
+   * @param p JavaFX Pair
+   * @return A Scala Tuple2 generated from Pair.
    */
   implicit def jfxPair2Tuple2[K, V](p: jfxu.Pair[K, V]): (K, V) = (p.getKey, p.getValue)
 
   /**
-   * Convert a Scala Tuple2 to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Pair.htmlPair]].
+   * Convert a Scala Tuple2 to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Pair.html Pair]].
    *
-   * @tparam K
-   *   Key Type
-   * @tparam V
-   *   Value Type
-   * @param t
-   *   A Scala Tuple2
-   * @return
-   *   A JavaFX Pair generated from Scala Tuple2.
+   * @tparam K Key Type
+   * @tparam V Value Type
+   * @param t A Scala Tuple2
+   * @return A JavaFX Pair generated from Scala Tuple2.
    */
-  implicit def tuple22jfxPair[K, V](t: (K, V)): jfxu.Pair[K, V] =
-    if (t != null) new jfxu.Pair[K, V](t._1, t._2) else null
+  implicit def tuple22jfxPair[K, V](t: (K, V)): jfxu.Pair[K, V] = if (t != null) new jfxu.Pair[K, V](t._1, t._2) else null
 
   /**
    * Converts a Double to a Duration.
    *
-   * @param d
-   *   Double to convert
-   * @return
-   *   A [[scalafx.util.Duration.DurationHelper]] from where it is possible create a new [[scalafx.util.Duration]]
-   *   instance.
+   * @param d Double to convert
+   * @return A [[scalafx.util.Duration.DurationHelper]] from where it is possible create a new [[scalafx.util.Duration]] instance.
    */
   implicit def double2DurationHelper(d: Double): DurationHelper = new DurationHelper(d)
 
   /**
-   * Converts a [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Duration.html`javafx.util.Duration`]] instance
-   * to its ScalaFX counterpart.
+   * Converts a
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Duration.html `javafx.util.Duration`]]
+   * instance to its ScalaFX counterpart.
    *
-   * @param d
-   *   JavaFX Duration
-   * @return
-   *   ScalaFX Duration
+   * @param d JavaFX Duration
+   * @return ScalaFX Duration
    */
   implicit def jfxDuration2sfx(d: jfxu.Duration): Duration = if (d != null) new Duration(d) else null
 
   /**
    * Converts a
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/StringConverter.html`javafx.util.StringConverter`]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/StringConverter.html `javafx.util.StringConverter`]]
    * instance to its ScalaFX counterpart.
    *
-   * @tparam T
-   *   StringConverter Type
-   * @param c
-   *   JavaFX StringConverter
-   * @return
-   *   ScalaFX StringConverter
+   * @tparam T StringConverter Type
+   * @param c JavaFX StringConverter
+   * @return ScalaFX StringConverter
    */
   implicit def jfxStringConverter2sfx[T](c: jfxu.StringConverter[T]): StringConverter[T] = new StringConverter[T] {
     def fromString(string: String): T = c.fromString(string)
-    def toString(t: T): String        = c.toString(t)
+    def toString(t: T): String = c.toString(t)
   }
 
 }

@@ -31,7 +31,8 @@ import java.{util => ju}
 
 import scala.collection.{Iterator, mutable}
 
-private[input] trait JMapWrapperLike[A, B] extends mutable.Map[A, B] {
+private[input] trait JMapWrapperLike[A, B]
+  extends mutable.Map[A, B] {
 
   def underlying: ju.Map[A, B]
 

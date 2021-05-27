@@ -44,7 +44,8 @@ object FireDelegate {
 /**
  * Unify classes that contains a `fire()` method that has no return (`void`)
  */
-trait FireDelegate[J <: Object with Fired] extends SFXDelegate[J] {
+trait FireDelegate[J <: Object with Fired]
+  extends SFXDelegate[J] {
 
   /**
    * Fires some kind of event.

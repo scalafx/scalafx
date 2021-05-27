@@ -44,50 +44,39 @@ import scala.language.implicitConversions
 /**
  * Companion Object for [[scalafx.scene.control.cell.CheckBoxTreeCell]].
  *
- * @define
- *   CBTC `CheckBoxTableCell`
- * @define
- *   SP A Function that, given an object of type `TreeItem`, will return an `ObservableValue[Boolean]` that represents
- *   whether the given item is selected or not.
- * @define
- *   FTVRET A Function that will return a TreeCell that is able to work on the type of element contained within the
- *   TreeView root, and all of its children (recursively).
+ * @define CBTC   `CheckBoxTableCell`
+ * @define SP     A Function that, given an object of type `TreeItem`, will return an `ObservableValue[Boolean]` that
+ *                represents whether the given item is selected or not.
+ * @define FTVRET A Function that will return a TreeCell that is able to work on the type of element contained within the
+ *                TreeView root, and all of its children (recursively).
  */
 object CheckBoxTreeCell {
 
   /**
    * Converts a ScalaFX $CBTC to its JavaFX counterpart.
    *
-   * @param cell
-   *   ScalaFX $CBTC
+   * @param cell ScalaFX $CBTC
    */
-  implicit def sfxCheckBoxTreeCell2jfx[T](cell: CheckBoxTreeCell[T]): jfxsc.cell.CheckBoxTreeCell[T] =
-    if (cell != null) cell.delegate else null
+  implicit def sfxCheckBoxTreeCell2jfx[T](cell: CheckBoxTreeCell[T]): jfxsc.cell.CheckBoxTreeCell[T] = if (cell != null) cell.delegate else null
 
-  private[cell] implicit def selectedTreeItemPropertyToGetSelectedProperty[T](
-      selectedProperty: TreeItem[T] => ObservableValue[Boolean, java.lang.Boolean]
-  ): jfxu.Callback[jfxsc.TreeItem[T], jfxbv.ObservableValue[JBoolean]] =
+  private[cell] implicit def selectedTreeItemPropertyToGetSelectedProperty[T](selectedProperty: TreeItem[T] => ObservableValue[Boolean, java.lang.Boolean]): jfxu.Callback[jfxsc.TreeItem[T], jfxbv.ObservableValue[JBoolean]] =
     new jfxu.Callback[jfxsc.TreeItem[T], jfxbv.ObservableValue[JBoolean]] {
       def call(x: jfxsc.TreeItem[T]): jfxbv.ObservableBooleanValue = selectedProperty(x)
     }
 
-  private[cell] implicit def sfxStringConverterTreeItem2jfxConverter[T](
-      converter: StringConverter[TreeItem[T]]
-  ): jfxu.StringConverter[jfxsc.TreeItem[T]] = new jfxu.StringConverter[jfxsc.TreeItem[T]] {
+  private[cell] implicit def sfxStringConverterTreeItem2jfxConverter[T](converter: StringConverter[TreeItem[T]]): jfxu.StringConverter[jfxsc.TreeItem[T]] = new jfxu.StringConverter[jfxsc.TreeItem[T]] {
     def fromString(str: String): jfxsc.TreeItem[T] = converter.fromString(str)
 
     def toString(item: jfxsc.TreeItem[T]): String = converter.toString(item)
   }
 
   /**
-   * Creates a cell factory for use in a TreeView control, although there is a major assumption when used in a TreeView:
-   * this cell factory assumes that the TreeView root, and all children are instances of CheckBoxTreeItem, rather than
-   * the default TreeItem class that is used normally.
+   * Creates a cell factory for use in a TreeView control, although there is a major assumption when used in a
+   * TreeView: this cell factory assumes that the TreeView root, and all children are instances of CheckBoxTreeItem,
+   * rather than the default TreeItem class that is used normally.
    *
-   * @tparam T
-   *   The type of the elements contained within the CheckBoxTreeItem instances.
-   * @return
-   *   $FTVRET
+   * @tparam T The type of the elements contained within the CheckBoxTreeItem instances.
+   * @return $FTVRET
    */
   def forTreeView[T]: (TreeView[T]) => (TreeCell[T]) =
     (view: TreeView[T]) => jfxscc.CheckBoxTreeCell.forTreeView[T].call(view)
@@ -95,92 +84,62 @@ object CheckBoxTreeCell {
   /**
    * Creates a cell factory for use in a TreeView control.
    *
-   * @tparam T
-   *   The type of the elements contained within the TreeItem instances.
-   * @param selectedProperty
-   *   $SP
-   * @return
-   *   $FTVRET
+   * @tparam T  The type of the elements contained within the TreeItem instances.
+   * @param selectedProperty $SP
+   * @return $FTVRET
    */
-  def forTreeView[T](
-      selectedProperty: TreeItem[T] => ObservableValue[Boolean, JBoolean]
-  ): (TreeView[T]) => (TreeCell[T]) =
+  def forTreeView[T](selectedProperty: TreeItem[T] => ObservableValue[Boolean, JBoolean]): (TreeView[T]) => (TreeCell[T]) =
     (view: TreeView[T]) => jfxscc.CheckBoxTreeCell.forTreeView[T](selectedProperty).call(view)
 
   /**
    * Added to satisfy Spec tests.
    */
-  @deprecated(
-    message = "Use forTreeView[T](TreeItem[T] => ObservableValue[Boolean, java.lang.Boolean]])",
-    since = "1.0"
-  )
-  def forTreeView[T](
-      getSelectedProperty: jfxu.Callback[jfxsc.TreeItem[T], jfxbv.ObservableValue[JBoolean]]
-  ): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] =
+  @deprecated(message = "Use forTreeView[T](TreeItem[T] => ObservableValue[Boolean, java.lang.Boolean]])", since = "1.0")
+  def forTreeView[T](getSelectedProperty: jfxu.Callback[jfxsc.TreeItem[T], jfxbv.ObservableValue[JBoolean]]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] =
     jfxscc.CheckBoxTreeCell.forTreeView[T](getSelectedProperty)
 
   /**
    * Creates a cell factory for use in a TreeView control.
    *
-   * @tparam T
-   *   The type of the elements contained within the TreeItem instances.
-   * @param selectedProperty
-   *   $SP
-   * @param converter
-   *   A StringConverter that, give an object of type TreeItem, will return a String that can be used to represent the
-   *   object visually.
-   * @return
-   *   $FTVRET
+   * @tparam T  The type of the elements contained within the TreeItem instances.
+   * @param selectedProperty $SP
+   * @param converter A StringConverter that, give an object of type TreeItem, will return a String that can be used
+   *                  to represent the object visually.
+   * @return $FTVRET
    */
-  def forTreeView[T](
-      selectedProperty: TreeItem[T] => ObservableValue[Boolean, JBoolean],
-      converter: StringConverter[TreeItem[T]]
-  ): (TreeView[T]) => (TreeCell[T]) =
+  def forTreeView[T](selectedProperty: TreeItem[T] => ObservableValue[Boolean, JBoolean], converter: StringConverter[TreeItem[T]]): (TreeView[T]) => (TreeCell[T]) =
     (view: TreeView[T]) => jfxscc.CheckBoxTreeCell.forTreeView[T](selectedProperty, converter).call(view)
 
   /**
    * Added to satisfy Spec tests.
    */
-  @deprecated(
-    message =
-      "Use forTreeView[T](TreeItem[T] => ObservableValue[Boolean, java.lang.Boolean], StringConverter[TreeItem[T]])",
-    since = "1.0"
-  )
-  def forTreeView[T](
-      getSelectedProperty: jfxu.Callback[jfxsc.TreeItem[T], jfxbv.ObservableValue[JBoolean]],
-      converter: jfxu.StringConverter[jfxsc.TreeItem[T]]
-  ): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] =
+  @deprecated(message = "Use forTreeView[T](TreeItem[T] => ObservableValue[Boolean, java.lang.Boolean], StringConverter[TreeItem[T]])", since = "1.0")
+  def forTreeView[T](getSelectedProperty: jfxu.Callback[jfxsc.TreeItem[T], jfxbv.ObservableValue[JBoolean]], converter: jfxu.StringConverter[jfxsc.TreeItem[T]]): jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] =
     jfxscc.CheckBoxTreeCell.forTreeView[T](getSelectedProperty, converter)
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxListCell.html$CBTC]]
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/cell/ChoiceBoxListCell.html $CBTC]]
  *
- * @tparam T
- *   Type used in this cell
- * @constructor
- *   Creates a new $CBTC from a JavaFX $CBTC
- * @param delegate
- *   JavaFX $CBTC
+ * @tparam T Type used in this cell
+ * @constructor Creates a new $CBTC from a JavaFX $CBTC
+ * @param delegate JavaFX $CBTC
  *
- * @define
- *   CBTC `CheckBoxTreeCell`
- * @define
- *   SP A Function that will return an ObservableValue<Boolean> that represents whether the given item is selected or
- *   not.
+ * @define CBTC `CheckBoxTreeCell`
+ * @define SP A Function that will return an ObservableValue<Boolean> that represents whether the given item is
+ *         selected or not.
  */
 class CheckBoxTreeCell[T](override val delegate: jfxscc.CheckBoxTreeCell[T] = new jfxscc.CheckBoxTreeCell[T])
-    extends TreeCell[T](delegate)
-    with ConvertableCell[jfxscc.CheckBoxTreeCell[T], T, jfxsc.TreeItem[T]]
-    with StateSelectableCell[jfxscc.CheckBoxTreeCell[T], T, jfxsc.TreeItem[T]]
-    with UpdatableCell[jfxscc.CheckBoxTreeCell[T], T]
-    with SFXDelegate[jfxscc.CheckBoxTreeCell[T]] {
+  extends TreeCell[T](delegate)
+  with ConvertableCell[jfxscc.CheckBoxTreeCell[T], T, jfxsc.TreeItem[T]]
+  with StateSelectableCell[jfxscc.CheckBoxTreeCell[T], T, jfxsc.TreeItem[T]]
+  with UpdatableCell[jfxscc.CheckBoxTreeCell[T], T]
+  with SFXDelegate[jfxscc.CheckBoxTreeCell[T]] {
 
   /**
    * Creates a $CBTC for use in a TreeView control via a cell factory.
    *
-   * @param selectedProperty
-   *   $SP
+   * @param selectedProperty $SP
    */
   def this(selectedProperty: TreeItem[T] => ObservableValue[Boolean, JBoolean]) =
     this(new jfxscc.CheckBoxTreeCell[T](selectedProperty))
@@ -188,16 +147,11 @@ class CheckBoxTreeCell[T](override val delegate: jfxscc.CheckBoxTreeCell[T] = ne
   /**
    * Creates a $CBTC for use in a TreeView control via a cell factory.
    *
-   * @param selectedProperty
-   *   $SP
-   * @param converter
-   *   A StringConverter that, give an object of type TreeItem, will return a String that can be used to represent the
-   *   object visually.
+   * @param selectedProperty $SP
+   * @param converter A StringConverter that, give an object of type TreeItem, will return a String that can be used
+   *                  to represent the object visually.
    */
-  def this(
-      selectedProperty: TreeItem[T] => ObservableValue[Boolean, JBoolean],
-      converter: StringConverter[TreeItem[T]]
-  ) =
+  def this(selectedProperty: TreeItem[T] => ObservableValue[Boolean, JBoolean], converter: StringConverter[TreeItem[T]]) =
     this(new jfxscc.CheckBoxTreeCell[T](selectedProperty, converter))
 
 }

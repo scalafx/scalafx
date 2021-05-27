@@ -33,7 +33,8 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * TabPane Spec tests.
+ *
  */
 class TabPaneSpec
-    extends SimpleSFXDelegateSpec[jfxsc.TabPane, TabPane](classOf[jfxsc.TabPane], classOf[TabPane])
-    with RunOnApplicationThread
+  extends SimpleSFXDelegateSpec[jfxsc.TabPane, TabPane](classOf[jfxsc.TabPane], classOf[TabPane])
+  with RunOnApplicationThread

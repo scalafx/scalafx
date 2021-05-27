@@ -32,10 +32,9 @@ import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Test for [[scalafx.scene.shape.ArcType]] */
-class ArcTypeSpec
-    extends SFXEnumDelegateSpec[jfxss.ArcType, ArcType](
-      javaClass = classOf[jfxss.ArcType],
-      scalaClass = classOf[ArcType],
-      companion = ArcType
-    )
+class ArcTypeSpec extends SFXEnumDelegateSpec[jfxss.ArcType, ArcType](
+  javaClass = classOf[jfxss.ArcType],
+  scalaClass = classOf[ArcType],
+  companion = ArcType)

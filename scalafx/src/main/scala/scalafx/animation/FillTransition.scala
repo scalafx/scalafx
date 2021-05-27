@@ -40,52 +40,41 @@ import scala.language.implicitConversions
 /**
  * Companion Object for [[scalafx.animation.FadeTransition]].
  *
- * @define
- *   FT `FillTransition`
+ * @define FT `FillTransition`
  */
 object FillTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $FT to a JavaFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FillTransition.html$FT]], extracting its delegate.
+   * Converts a ScalaFX $FT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FillTransition.html $FT]],
+   * extracting its delegate.
    *
-   * @param v
-   *   ScalaFX $FT
-   * @return
-   *   Delegated JavaFX $FT extracted from `v`.
+   * @param v ScalaFX $FT
+   * @return Delegated JavaFX $FT extracted from `v`.
    */
   implicit def sfxFillTransition2jfx(v: FillTransition): jfxa.FillTransition = if (v != null) v.delegate else null
 
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FillTransition.html$FT]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/FillTransition.html $FT]].
  *
- * @constructor
- *   Creates a new ScalaFX $FT from a JavaFX $FT.
- * @param delegate
- *   JavaFX $FT to be delegated.
+ * @constructor Creates a new ScalaFX $FT from a JavaFX $FT.
+ * @param delegate JavaFX $FT to be delegated.
  *
- * @define
- *   FT `FillTransition`
- * @define
- *   DV Default value:
+ * @define FT `FillTransition`
+ * @define DV Default value:
  */
 class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillTransition())
-    extends Transition(delegate)
-    with SFXDelegate[jfxa.FillTransition] {
+  extends Transition(delegate)
+  with SFXDelegate[jfxa.FillTransition] {
 
   /**
    * The constructor of $FT
    *
-   * @param duration
-   *   The duration of the $FT
-   * @param shape
-   *   The shape which filling will be animated
-   * @param fromValue
-   *   The start value of the color-animation
-   * @param toValue
-   *   The end value of the color-animation
+   * @param duration The duration of the $FT
+   * @param shape The shape which filling will be animated
+   * @param fromValue The start value of the color-animation
+   * @param toValue The end value of the color-animation
    */
   def this(duration: Duration, shape: Shape, fromValue: Color, toValue: Color) =
     this(new jfxa.FillTransition(duration, shape, fromValue, toValue))
@@ -93,12 +82,9 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
   /**
    * The constructor of $FT
    *
-   * @param duration
-   *   The duration of the $FT
-   * @param fromValue
-   *   The start value of the color-animation
-   * @param toValue
-   *   The end value of the color-animation
+   * @param duration The duration of the $FT
+   * @param fromValue The start value of the color-animation
+   * @param toValue The end value of the color-animation
    */
   def this(duration: Duration, fromValue: Color, toValue: Color) =
     this(new jfxa.FillTransition(duration, fromValue, toValue))
@@ -106,10 +92,8 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
   /**
    * The constructor of $FT
    *
-   * @param duration
-   *   The duration of the $FT
-   * @param shape
-   *   The shape which filling will be animated
+   * @param duration The duration of the $FT
+   * @param shape The shape which filling will be animated
    */
   def this(duration: Duration, shape: Shape) =
     this(new jfxa.FillTransition(duration, shape))
@@ -117,8 +101,7 @@ class FillTransition(override val delegate: jfxa.FillTransition = new jfxa.FillT
   /**
    * The constructor of $FT
    *
-   * @param duration
-   *   The duration of the $FT
+   * @param duration The duration of the $FT
    */
   def this(duration: Duration) = this(new jfxa.FillTransition(duration))
 

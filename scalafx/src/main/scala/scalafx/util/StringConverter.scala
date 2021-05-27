@@ -39,8 +39,7 @@ object StringConverter {
   /**
    * Converts a ScalaFX StringConverter to a JavaFX StringConverter
    *
-   * @param s
-   *   ScalaFX StringConverter
+   * @param s ScalaFX StringConverter
    */
   implicit def sfxStringConverter2jfx[T](s: StringConverter[T]): jfxu.StringConverter[T] = new jfxu.StringConverter[T] {
 
@@ -53,92 +52,77 @@ object StringConverter {
   /**
    * Generates a StringConverter from a Pair of Conversions Functions
    *
-   * @tparam T
-   *   Type to convert
-   * @param fromStringFunction
-   *   Function that converts a String to a new T instance
-   * @param toStringFunction
-   *   Function that converts a T instance to a new String
+   * @tparam T Type to convert
+   * @param fromStringFunction Function that converts a String to a new T instance
+   * @param toStringFunction   Function that converts a T instance to a new String
    */
-  def apply[T](fromStringFunction: String => T, toStringFunction: T => String): StringConverter[T] =
-    new StringConverter[T] {
+  def apply[T](fromStringFunction: String => T, toStringFunction: T => String): StringConverter[T] = new StringConverter[T] {
 
-      def fromString(string: String): T = fromStringFunction(string)
-
-      def toString(t: T): String = toStringFunction(t)
-
-    }
-
-  /**
-   * Convenience method that will create a StringConverter implementation that just makes conversion from object to
-   * String. [[scalafx.util.StringConverter#fromString]] method will throw a `java.lang.UnsupportedOperationException`.
-   *
-   * @tparam T
-   *   Type to convert
-   * @param toStringFunction
-   *   Function that converts a T instance to a new String
-   */
-  def toStringConverter[T](toStringFunction: T => String): StringConverter[T] = new StringConverter[T] {
-
-    def fromString(string: String): T =
-      throw new UnsupportedOperationException(
-        "Conversion from String not supported. Consider create a new StringConverter implementation that support it."
-      )
+    def fromString(string: String): T = fromStringFunction(string)
 
     def toString(t: T): String = toStringFunction(t)
 
   }
 
   /**
-   * Convenience method that will create a StringConverter implementation that just makes conversion from String to
-   * object. [[scalafx.util.StringConverter#toString]] method will throw a `java.lang.UnsupportedOperationException`.
+   * Convenience method that will create a StringConverter implementation that just makes
+   * conversion from object to String. [[scalafx.util.StringConverter#fromString]] method will throw a
+   * `java.lang.UnsupportedOperationException`.
    *
-   * @tparam T
-   *   Type to convert
-   * @param fromStringFunction
-   *   Function that converts a String to a new T instance
+   * @tparam T Type to convert
+   * @param toStringFunction Function that converts a T instance to a new String
+   */
+  def toStringConverter[T](toStringFunction: T => String): StringConverter[T] = new StringConverter[T] {
+
+    def fromString(string: String): T =
+      throw new UnsupportedOperationException("Conversion from String not supported. Consider create a new StringConverter implementation that support it.")
+
+    def toString(t: T): String = toStringFunction(t)
+
+  }
+
+  /**
+   * Convenience method that will create a StringConverter implementation that just makes
+   * conversion from String to object. [[scalafx.util.StringConverter#toString]] method will throw a
+   * `java.lang.UnsupportedOperationException`.
+   *
+   * @tparam T Type to convert
+   * @param fromStringFunction Function that converts a String to a new T instance
    */
   def fromStringConverter[T](fromStringFunction: String => T): StringConverter[T] = new StringConverter[T] {
 
     def fromString(string: String): T = fromStringFunction(string)
 
     def toString(t: T): String =
-      throw new UnsupportedOperationException(
-        "Conversion to String not supported. Consider create a new StringConverter implementation that support it."
-      )
+      throw new UnsupportedOperationException("Conversion to String not supported. Consider create a new StringConverter implementation that support it.")
 
   }
 
 }
 
 /**
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/StringConverter.html`StringConverter`]].
+ * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/StringConverter.html `StringConverter`]].
  *
- * @constructor
- *   Creates a new ScalaFX StringConverter from a JavaFX StringConverter.
- * @tparam T
- *   Type to be converted from/to `String`.
+ * @constructor Creates a new ScalaFX StringConverter from a JavaFX StringConverter.
+ * @tparam T Type to be converted from/to `String`.
  */
 abstract class StringConverter[T] {
 
   /**
    * Converts the string provided into an object defined by the specific converter.
    *
-   * @param string
-   *   `String` to be converted to a T instance.
-   * @return
-   *   A new T instance generated from argument.
+   * @param string `String` to be converted to a T instance.
+   * @return A new T instance generated from argument.
    */
   def fromString(string: String): T
 
   /**
    * Converts the object provided into its string form.
    *
-   * @param t
-   *   A T instance to be its String version.
-   * @return
-   *   String version of argument.
+   * @param t A T instance to be its String version.
+   * @return String version of argument.
    */
   def toString(t: T): String
 
 }
+

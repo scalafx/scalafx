@@ -43,9 +43,8 @@ object Service {
    * Create a new [[scalafx.concurrent.Service]] with a operation to be invoked after this was started on the JavaFX
    * Application Thread.
    *
-   * @param op
-   *   [[scala.Function]] that returns a [[scalafx.concurrent.Task]] to be invoked after this was started on the JavaFX
-   *   Application Thread.
+   * @param op [[scala.Function]] that returns a [[scalafx.concurrent.Task]] to be invoked after this was started on
+   *           the JavaFX Application Thread.
    */
   def apply[T](op: => jfxc.Task[T]): Service[T] = new Service[T](new jfxc.Service[T] {
     protected def createTask: jfxc.Task[T] = op
@@ -53,13 +52,14 @@ object Service {
 }
 
 /**
- * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/Service.htmlService]] Class.
+ * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/Service.html Service]]
+ * Class.
  */
 abstract class Service[T](override val delegate: jfxc.Service[T])
-    extends Worker[T]
-    with jfxe.EventTarget
-    with EventHandlerDelegate
-    with SFXDelegate[jfxc.Service[T]] {
+  extends Worker[T]
+  with jfxe.EventTarget
+  with EventHandlerDelegate
+  with SFXDelegate[jfxc.Service[T]] {
 
   def eventHandlerDelegate: EventHandled = delegate.asInstanceOf[EventHandled]
 
@@ -73,7 +73,8 @@ abstract class Service[T](override val delegate: jfxc.Service[T])
   }
 
   /**
-   * The onCancelled event handler is called whenever the Task state transitions to the CANCELLED state.
+   * The onCancelled event handler is called whenever the Task state transitions to the CANCELLED
+   * state.
    */
   def onCancelled: ObjectProperty[jfxe.EventHandler[jfxc.WorkerStateEvent]] = delegate.onCancelledProperty
 
@@ -109,7 +110,8 @@ abstract class Service[T](override val delegate: jfxc.Service[T])
   }
 
   /**
-   * The onSchedule event handler is called whenever the Task state transitions to the SCHEDULED state.
+   * The onSchedule event handler is called whenever the Task state transitions to the SCHEDULED
+   * state.
    */
   def onScheduled: ObjectProperty[jfxe.EventHandler[jfxc.WorkerStateEvent]] = delegate.onScheduledProperty
 
@@ -118,7 +120,8 @@ abstract class Service[T](override val delegate: jfxc.Service[T])
   }
 
   /**
-   * The onSucceeded event handler is called whenever the Task state transitions to the SUCCEEDED state.
+   * The onSucceeded event handler is called whenever the Task state transitions to the SUCCEEDED
+   * state.
    */
   def onSucceeded: ObjectProperty[jfxe.EventHandler[jfxc.WorkerStateEvent]] = delegate.onSucceededProperty
 

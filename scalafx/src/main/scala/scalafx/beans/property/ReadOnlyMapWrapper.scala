@@ -34,98 +34,81 @@ import scalafx.beans.property.PropertyIncludes.jfxReadOnlyMapProperty2sfx
 import scalafx.collections.ObservableMap
 import scalafx.delegate.SFXDelegate
 
-object ReadOnlyMapWrapper {
 
+object ReadOnlyMapWrapper {
   /**
-   * Converts a ScalaFX ReadOnlyMapWrapper to its JavaFX counterpart ReadOnlyMapWrapper.
-   *
-   * @param v
-   *   ScalaFX ReadOnlyMapWrapper
-   * @return
-   *   JavaFX ReadOnlyMapWrapper
-   */
+    * Converts a ScalaFX ReadOnlyMapWrapper to its JavaFX counterpart ReadOnlyMapWrapper.
+    *
+    * @param v ScalaFX ReadOnlyMapWrapper
+    * @return JavaFX ReadOnlyMapWrapper
+    */
   implicit def sfxReadOnlyMapWrapper2jfx[K, V](v: ReadOnlyMapWrapper[K, V]): jfxbp.ReadOnlyMapWrapper[K, V] =
     if (v != null) v.delegate else null
 
-  /**
-   * Creates a new ReadOnlyMapWrapper instance.
-   *
-   * @param value
-   *   the initial value of the wrapped value
-   */
+  /** Creates a new ReadOnlyMapWrapper instance.
+    *
+    * @param value the initial value of the wrapped value
+    */
   def apply[K, V](value: ObservableMap[K, V]) = new ReadOnlyMapWrapper(new jfxbp.ReadOnlyMapWrapper(value))
 
   /**
-   * Creates a new ReadOnlyMapWrapper.
-   *
-   * @param bean
-   *   the bean of this MapProperty
-   * @param name
-   *   the name of this MapProperty
-   */
+    * Creates a new ReadOnlyMapWrapper.
+    *
+    * @param bean the bean of this MapProperty
+    * @param name the name of this MapProperty
+    */
   def apply[K, V](bean: Any, name: String) =
     new ReadOnlyMapWrapper(new jfxbp.ReadOnlyMapWrapper[K, V](bean, name))
 
   /**
-   * Creates a new ReadOnlyMapWrapper.
-   *
-   * @param bean
-   *   the bean of this MapProperty
-   * @param name
-   *   the name of this MapProperty
-   * @param value
-   *   the initial value
-   */
+    * Creates a new ReadOnlyMapWrapper.
+    *
+    * @param bean  the bean of this MapProperty
+    * @param name  the name of this MapProperty
+    * @param value the initial value
+    */
   def apply[K, V](bean: Any, name: String, value: ObservableMap[K, V]) =
     new ReadOnlyMapWrapper(new jfxbp.ReadOnlyMapWrapper(bean, name, value.delegate))
 }
 
+
 /**
- * Wraps `javafx.beans.property.ReadOnlyMapWrapper`.
- */
-class ReadOnlyMapWrapper[K, V](
-    override val delegate: jfxbp.ReadOnlyMapWrapper[K, V] = new jfxbp.ReadOnlyMapWrapper[K, V]
-) extends MapProperty[K, V]
+  * Wraps `javafx.beans.property.ReadOnlyMapWrapper`.
+  */
+class ReadOnlyMapWrapper[K, V](override val delegate: jfxbp.ReadOnlyMapWrapper[K, V] = new jfxbp.ReadOnlyMapWrapper[K, V])
+  extends MapProperty[K, V]
     with SFXDelegate[jfxbp.ReadOnlyMapWrapper[K, V]] {
 
-  /**
-   * Creates a new ReadOnlyMapWrapper instance.
-   *
-   * @param value
-   *   the initial value of the wrapped value
-   */
+  /** Creates a new ReadOnlyMapWrapper instance.
+    *
+    * @param value the initial value of the wrapped value
+    */
   def this(value: ObservableMap[K, V]) =
     this(new jfxbp.ReadOnlyMapWrapper[K, V](value))
 
   /**
-   * Creates a new ReadOnlyMapWrapper.
-   *
-   * @param bean
-   *   the bean of this MapProperty
-   * @param name
-   *   the name of this MapProperty
-   */
+    * Creates a new ReadOnlyMapWrapper.
+    *
+    * @param bean the bean of this MapProperty
+    * @param name the name of this MapProperty
+    */
   def this(bean: Any, name: String) =
     this(new jfxbp.ReadOnlyMapWrapper[K, V](bean, name))
 
   /**
-   * Creates a new ReadOnlyMapWrapper.
-   *
-   * @param bean
-   *   the bean of this MapProperty
-   * @param name
-   *   the name of this MapProperty
-   * @param value
-   *   the initial value
-   */
+    * Creates a new ReadOnlyMapWrapper.
+    *
+    * @param bean  the bean of this MapProperty
+    * @param name  the name of this MapProperty
+    * @param value the initial value
+    */
   def this(bean: Any, name: String, value: ObservableMap[K, V]) =
     this(new jfxbp.ReadOnlyMapWrapper[K, V](bean, name, value))
 
   /**
-   * Returns the readonly property, that is synchronized with this ReadOnlyMapWrapper.
-   *
-   * @return
-   *   the readonly property
-   */
+    * Returns the readonly property, that is synchronized with this ReadOnlyMapWrapper.
+    *
+    * @return the readonly property
+    */
   def readOnlyProperty: ReadOnlyMapProperty[K, V] = delegate.getReadOnlyProperty
 }

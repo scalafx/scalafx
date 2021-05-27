@@ -31,15 +31,14 @@ import javafx.{collections => jfxc}
 import scalafx.collections.ObservableBuffer
 
 /**
- * * Based on example case from reporter `scalasolist`
- * [[https://github.com/scalafx/scalafx/issues/169#issuecomment-67262542]]:
+ * * Based on example case from reporter `scalasolist` [[https://github.com/scalafx/scalafx/issues/169#issuecomment-67262542]]:
  *
  * It show how scalafx listener lose information.
  *
- * The key is that original javafx listener is equivalent to Seq[Set[Change]] not to Seq[Change]. When two changes take
- * place inside single step that means that changes are correlated. Added and Removed when correlated become Replaced.
- * Replaced shows that item in fact was modified. It is very important for cost-significant computation performed when
- * list is actually reducing or expanding.
+ * The key is that original javafx listener is equivalent to Seq[Set[Change]] not to Seq[Change].
+ * When two changes take place inside single step that means that changes are correlated.
+ * Added and Removed when correlated become Replaced. Replaced shows that item in fact was modified.
+ * It is very important for cost-significant computation performed when list is actually reducing or expanding.
  */
 object Example2App extends App {
   val items: ObservableBuffer[String] = ObservableBuffer()

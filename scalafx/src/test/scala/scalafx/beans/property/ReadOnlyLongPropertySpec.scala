@@ -35,13 +35,15 @@ import scalafx.Includes._
 
 /**
  * ReadOnlyLongProperty Spec tests.
+ *
+ *
  */
 class ReadOnlyLongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
-  val bean                                             = new Object()
+  val bean = new Object()
   var readOnlyLongProperty: jfxbp.ReadOnlyLongProperty = null
-  var longProperty1: jfxbp.LongProperty                = null
-  var longProperty2: jfxbp.LongProperty                = null
-  var booleanProperty: jfxbp.BooleanProperty           = null
+  var longProperty1: jfxbp.LongProperty = null
+  var longProperty2: jfxbp.LongProperty = null
+  var booleanProperty: jfxbp.BooleanProperty = null
 
   override def beforeEach(): Unit = {
     readOnlyLongProperty = new ReadOnlyLongProperty(bean, "Test Read-only Long", 50)
@@ -80,7 +82,7 @@ class ReadOnlyLongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix addition of constants" in {
-    longProperty2 <== readOnlyLongProperty + 35 + 35L + 35f + 35d
+    longProperty2 <== readOnlyLongProperty + 35 + 35l + 35f + 35d
     longProperty2() should equal(190)
     longProperty2.unbind()
   }
@@ -93,7 +95,7 @@ class ReadOnlyLongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix subtraction of constants" in {
-    longProperty2 <== readOnlyLongProperty - 12 - 12L - 12f - 12d
+    longProperty2 <== readOnlyLongProperty - 12 - 12l - 12f - 12d
     longProperty2() should equal(2)
     longProperty2.unbind()
   }
@@ -106,7 +108,7 @@ class ReadOnlyLongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix multiplication of constants" in {
-    longProperty2 <== readOnlyLongProperty * 2 * 2L * 2f * 2d
+    longProperty2 <== readOnlyLongProperty * 2 * 2l * 2f * 2d
     longProperty2() should equal(800)
     longProperty2.unbind()
   }
@@ -119,7 +121,7 @@ class ReadOnlyLongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support bindable infix division of constants" in {
-    longProperty2 <== readOnlyLongProperty / 2 / 2L / 5f / 5d
+    longProperty2 <== readOnlyLongProperty / 2 / 2l / 5f / 5d
     longProperty2() should equal(0)
     longProperty2.unbind()
   }
@@ -240,8 +242,8 @@ class ReadOnlyLongPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support invalidate/change triggers on binding expressions" in {
     var invalidateCount = 0
-    var changeCount     = 0
-    val binding         = readOnlyLongProperty * longProperty2
+    var changeCount = 0
+    val binding = readOnlyLongProperty * longProperty2
     binding onInvalidate {
       invalidateCount += 1
     }

@@ -39,11 +39,11 @@ import scala.language.implicitConversions
 object PopupWindow {
   implicit def sfxPopupWindow2jfx(v: PopupWindow): jfxs.PopupWindow = if (v != null) v.delegate else null
 
-  /**
-   * Anchor location constants for popup anchor point selection. Wraps
-   * [[http://download.java.net/jdk8/jfxdocs/javafx/stage/PopupWindow.AnchorLocation.htmlAnchorLocation]]
-   */
-  object AnchorLocation extends SFXEnumDelegateCompanion[jfxs.PopupWindow.AnchorLocation, AnchorLocation] {
+  /** Anchor location constants for popup anchor point selection.
+    * Wraps [[http://download.java.net/jdk8/jfxdocs/javafx/stage/PopupWindow.AnchorLocation.html AnchorLocation]]
+    */
+  object AnchorLocation
+    extends SFXEnumDelegateCompanion[jfxs.PopupWindow.AnchorLocation, AnchorLocation] {
 
     /** Represents bottom left content corner. */
     case object ContentBottomLeft extends AnchorLocation(jfxs.PopupWindow.AnchorLocation.CONTENT_BOTTOM_LEFT)
@@ -92,30 +92,21 @@ object PopupWindow {
     @deprecated("Use WindowTopRight; WINDOW_TOP_RIGHT will be removed in a future release", "8.0.60-R10")
     val WINDOW_TOP_RIGHT: AnchorLocation = WindowTopRight
 
-    protected override def unsortedValues: Array[AnchorLocation] = Array(
-      ContentBottomLeft,
-      ContentBottomRight,
-      ContentTopLeft,
-      ContentTopRight,
-      WindowBottomLeft,
-      WindowBottomRight,
-      WindowTopLeft,
-      WindowTopRight
-    )
+    protected override def unsortedValues: Array[AnchorLocation] = Array(ContentBottomLeft, ContentBottomRight,
+      ContentTopLeft, ContentTopRight, WindowBottomLeft, WindowBottomRight, WindowTopLeft, WindowTopRight)
   }
 
-  /**
-   * Anchor location constants for popup anchor point selection. Wraps
-   * [[http://download.java.net/jdk8/jfxdocs/javafx/stage/PopupWindow.AnchorLocation.htmlAnchorLocation]]
-   */
+  /** Anchor location constants for popup anchor point selection.
+    * Wraps [[http://download.java.net/jdk8/jfxdocs/javafx/stage/PopupWindow.AnchorLocation.html AnchorLocation]]
+    */
   sealed abstract class AnchorLocation(override val delegate: jfxs.PopupWindow.AnchorLocation)
-      extends SFXEnumDelegate[jfxs.PopupWindow.AnchorLocation]
+    extends SFXEnumDelegate[jfxs.PopupWindow.AnchorLocation]
 
 }
 
 abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
-    extends Window(delegate)
-    with SFXDelegate[jfxs.PopupWindow] {
+  extends Window(delegate)
+  with SFXDelegate[jfxs.PopupWindow] {
 
   /** Specifies the popup anchor point which is used in popup positioning. */
   def anchorLocation: ObjectProperty[jfxs.PopupWindow.AnchorLocation] = delegate.anchorLocationProperty
@@ -170,6 +161,7 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
 
   /**
    * The window which is the parent of this popup.
+   *
    */
   def ownerWindow: ReadOnlyObjectProperty[jfxs.Window] = delegate.ownerWindowProperty
 
@@ -201,8 +193,7 @@ abstract class PopupWindow(override val delegate: jfxs.PopupWindow)
 
   /**
    * Specifies whether the event, which caused the Popup to hide, should be consumed.
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def consumeAutoHidingEvents: BooleanProperty = delegate.consumeAutoHidingEventsProperty
 

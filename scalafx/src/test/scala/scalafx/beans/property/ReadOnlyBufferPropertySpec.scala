@@ -36,15 +36,17 @@ import scalafx.collections.ObservableBuffer
 
 /**
  * ReadOnlyBufferProperty Spec tests.
+ *
+ *
  */
 class ReadOnlyBufferPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   val valueAsSeq = Seq(1, 2, 7)
-  val bean       = new Object()
+  val bean = new Object()
 
   var readOnlyListProperty: jfxbp.ReadOnlyListProperty[Int] = _
-  var listProperty1: jfxbp.ListProperty[Int]                = _
-  var listProperty2: jfxbp.ListProperty[Int]                = _
+  var listProperty1: jfxbp.ListProperty[Int] = _
+  var listProperty2: jfxbp.ListProperty[Int] = _
 
   override def beforeEach(): Unit = {
 
@@ -136,7 +138,7 @@ class ReadOnlyBufferPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "Have working 'size' property" in {
-    val buffer         = ObservableBuffer(2, 1, 3)
+    val buffer = ObservableBuffer(2, 1, 3)
     val bufferProperty = new BufferProperty[Int](buffer)
     bufferProperty.size.value should be(3)
 
@@ -157,8 +159,8 @@ class ReadOnlyBufferPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "bindContent and unbindContent" in {
-    val buffer     = ObservableBuffer(1, 2, 3, 5, 7)
-    val roWrapper  = new ReadOnlyBufferWrapper(ObservableBuffer(0))
+    val buffer = ObservableBuffer(1, 2, 3, 5, 7)
+    val roWrapper = new ReadOnlyBufferWrapper(ObservableBuffer(0))
     val roProperty = roWrapper.readOnlyProperty
 
     buffer.size should be(5)
@@ -182,8 +184,8 @@ class ReadOnlyBufferPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "bindContentBidirectional and unbindContentBidirectional" in {
-    val buffer     = ObservableBuffer(1, 2, 3, 5, 7)
-    val roWrapper  = new ReadOnlyBufferWrapper(ObservableBuffer(0))
+    val buffer = ObservableBuffer(1, 2, 3, 5, 7)
+    val roWrapper = new ReadOnlyBufferWrapper(ObservableBuffer(0))
     val roProperty = roWrapper.readOnlyProperty
 
     buffer.size should be(5)

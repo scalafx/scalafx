@@ -33,12 +33,11 @@ import javafx.util.{converter => jfxuc}
 import scala.language.implicitConversions
 
 object DateTimeStringConverter {
-  implicit def sfxDateTimeStringConverter2jfx(c: DateTimeStringConverter): jfxuc.DateTimeStringConverter =
-    if (c != null) c.delegate else null
+  implicit def sfxDateTimeStringConverter2jfx(c: DateTimeStringConverter): jfxuc.DateTimeStringConverter = if (c != null) c.delegate else null
 }
 
 class DateTimeStringConverter(delegate: jfxuc.DateTimeStringConverter = new jfxuc.DateTimeStringConverter)
-    extends DateTimeStringConverterDelegate[jfxuc.DateTimeStringConverter](delegate) {
+  extends DateTimeStringConverterDelegate[jfxuc.DateTimeStringConverter](delegate) {
 
   def this(locale: Locale) = this(new jfxuc.DateTimeStringConverter(locale))
 

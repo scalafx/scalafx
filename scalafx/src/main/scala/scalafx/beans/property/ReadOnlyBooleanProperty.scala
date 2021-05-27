@@ -38,14 +38,14 @@ object ReadOnlyBooleanProperty {
 }
 
 class ReadOnlyBooleanProperty(override val delegate: jfxbp.ReadOnlyBooleanProperty)
-    extends BooleanExpression(delegate)
+  extends BooleanExpression(delegate)
     with ReadOnlyProperty[Boolean, java.lang.Boolean]
     with SFXDelegate[jfxbp.ReadOnlyBooleanProperty] {
 
   def this(bean: Object, name: String, value: Boolean) = this(new jfxbp.ReadOnlyBooleanPropertyBase() {
     def getBean: AnyRef = bean
     def getName: String = name
-    def get: Boolean    = value
+    def get: Boolean = value
   })
 
   override def value: Boolean = delegate.get

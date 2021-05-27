@@ -33,9 +33,9 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * RotateTransition Spec tests.
+ *
+ *
  */
 class RotateTransitionSpec
-    extends SimpleSFXDelegateSpec[jfxa.RotateTransition, RotateTransition](
-      classOf[jfxa.RotateTransition],
-      classOf[RotateTransition]
-    )
+  extends SimpleSFXDelegateSpec[jfxa.RotateTransition, RotateTransition](
+    classOf[jfxa.RotateTransition], classOf[RotateTransition])

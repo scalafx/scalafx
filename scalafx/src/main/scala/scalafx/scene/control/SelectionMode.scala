@@ -44,5 +44,5 @@ object SelectionMode extends SFXEnumDelegateCompanion[jfxsc.SelectionMode, Selec
   protected override def unsortedValues: Array[SelectionMode] = Array(Single, Multiple)
 }
 
-sealed abstract class SelectionMode(override val delegate: jfxsc.SelectionMode)
-    extends SFXEnumDelegate[jfxsc.SelectionMode]
+
+sealed abstract class SelectionMode(override val delegate: jfxsc.SelectionMode) extends SFXEnumDelegate[jfxsc.SelectionMode]

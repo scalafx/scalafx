@@ -32,10 +32,10 @@ import javafx.{scene => jfxs}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Tests for [[scalafx.scene.AccessibleAction]]. */
-class AccessibleRoleSpec
-    extends SFXEnumDelegateSpec[jfxs.AccessibleRole, AccessibleRole](
-      javaClass = classOf[jfxs.AccessibleRole],
-      scalaClass = classOf[AccessibleRole],
-      companion = AccessibleRole
-    )
+class AccessibleRoleSpec extends SFXEnumDelegateSpec[jfxs.AccessibleRole, AccessibleRole](
+  javaClass = classOf[jfxs.AccessibleRole],
+  scalaClass = classOf[AccessibleRole],
+  companion = AccessibleRole)
+

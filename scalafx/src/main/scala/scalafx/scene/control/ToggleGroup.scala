@@ -42,7 +42,7 @@ object ToggleGroup {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/ToggleGroup.html]].
  */
 class ToggleGroup(override val delegate: jfxsc.ToggleGroup = new jfxsc.ToggleGroup)
-    extends SFXDelegate[jfxsc.ToggleGroup] {
+  extends SFXDelegate[jfxsc.ToggleGroup] {
 
   /**
    * The selected toggle.
@@ -55,10 +55,10 @@ class ToggleGroup(override val delegate: jfxsc.ToggleGroup = new jfxsc.ToggleGro
   def toggles: ObservableBuffer[jfxsc.Toggle] = delegate.getToggles
 
   /**
-   * Sets the list of toggles, replacing the prior toggles. If you want append to current toggles, use `add` or similar.
+   * Sets the list of toggles, replacing the prior toggles. If you want append to current toggles, use `add` or
+   * similar.
    *
-   * @param c
-   *   list of toggles to replace prior toggles.
+   * @param c list of toggles to replace prior toggles.
    */
   def toggles_=(c: Iterable[Toggle]): Unit = {
     fillSFXCollection(this.toggles, c)

@@ -33,6 +33,7 @@ import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
 
+
 object Box {
   implicit def sfxBox2jfx(v: Box): jfxss.Box = if (v != null) v.delegate else null
 }
@@ -40,7 +41,9 @@ object Box {
 /**
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/shape/Box.html]].
  */
-class Box(override val delegate: jfxss.Box = new jfxss.Box()) extends Shape3D(delegate) with SFXDelegate[jfxss.Box] {
+class Box(override val delegate: jfxss.Box = new jfxss.Box())
+  extends Shape3D(delegate)
+  with SFXDelegate[jfxss.Box] {
 
   def this(width: Double, height: Double, depth: Double) = this(new jfxss.Box(width, height, depth))
 

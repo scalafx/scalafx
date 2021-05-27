@@ -30,10 +30,7 @@ package scalafx.scene.input
 import javafx.scene.{input => jfxsi}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/**
- * Wrapper for
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/InputMethodHighlight.htmljavafx.scene.input.InputMethodHighlight]]
- */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/InputMethodHighlight.html javafx.scene.input.InputMethodHighlight]] */
 object InputMethodHighlight extends SFXEnumDelegateCompanion[jfxsi.InputMethodHighlight, InputMethodHighlight] {
 
   case object UnselectedRaw extends InputMethodHighlight(jfxsi.InputMethodHighlight.UNSELECTED_RAW)
@@ -56,12 +53,10 @@ object InputMethodHighlight extends SFXEnumDelegateCompanion[jfxsi.InputMethodHi
   val SELECTED_CONVERTED: InputMethodHighlight = SelectedConverted
 
   protected override def unsortedValues: Array[InputMethodHighlight] = Array(
-    UnselectedRaw,
-    SelectedRaw,
-    UnselectedConverted,
-    SelectedConverted
+    UnselectedRaw, SelectedRaw, UnselectedConverted, SelectedConverted
   )
 }
 
+
 sealed abstract class InputMethodHighlight(override val delegate: jfxsi.InputMethodHighlight)
-    extends SFXEnumDelegate[jfxsi.InputMethodHighlight]
+  extends SFXEnumDelegate[jfxsi.InputMethodHighlight]

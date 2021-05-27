@@ -35,4 +35,4 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * Node Spec tests.
  */
 class AmbientLightSpec
-    extends SimpleSFXDelegateSpec[jfxs.AmbientLight, AmbientLight](classOf[jfxs.AmbientLight], classOf[AmbientLight])
+  extends SimpleSFXDelegateSpec[jfxs.AmbientLight, AmbientLight](classOf[jfxs.AmbientLight], classOf[AmbientLight])

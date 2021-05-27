@@ -30,12 +30,11 @@ package issues.issue169
 import scalafx.collections.ObservableBuffer
 
 /**
- * Based on example case from reporter `scalasolist`
- * [[https://github.com/scalafx/scalafx/issues/169#issuecomment-67260390]]:
+ * Based on example case from reporter `scalasolist` [[https://github.com/scalafx/scalafx/issues/169#issuecomment-67260390]]:
  *
- * I expect that update method would generate update change, but javafx generated instead pair of delete-remove changes.
- * It differs from its own documentation. Theoretically I still can create delegate object that would generate such
- * change.
+ * I expect that update method would generate update change,
+ * but javafx generated instead pair of delete-remove changes. It differs from its own documentation.
+ * Theoretically I still can create delegate object that would generate such change.
  */
 object Example1App extends App {
   val items: ObservableBuffer[String] = ObservableBuffer()
@@ -47,7 +46,7 @@ object Example1App extends App {
         case ObservableBuffer.Add(_, _)        => println(s"  case Add    : $change")
         case ObservableBuffer.Remove(_, _)     => println(s"  case Remove : $change")
         case ObservableBuffer.Reorder(_, _, _) => println(s"  case Reorder: $change")
-        case ObservableBuffer.Update(_, _)     => println(s"  case Update: $change")
+        case ObservableBuffer.Update(_, _) => println(s"  case Update: $change")
       }
   })
 

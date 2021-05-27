@@ -31,7 +31,8 @@ import javafx.{stage => jfxs}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/stage/Modality.html javafx.stage.Modality]] */
-object Modality extends SFXEnumDelegateCompanion[jfxs.Modality, Modality] {
+object Modality
+  extends SFXEnumDelegateCompanion[jfxs.Modality, Modality] {
 
   /**
    * Defines a top-level window that is not modal and does not block any other window.
@@ -60,6 +61,7 @@ object Modality extends SFXEnumDelegateCompanion[jfxs.Modality, Modality] {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/stage/Modality.htmljavafx.stage.Modality]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/stage/Modality.html javafx.stage.Modality]].
  */
-sealed abstract class Modality(override val delegate: jfxs.Modality) extends SFXEnumDelegate[jfxs.Modality]
+sealed abstract class Modality(override val delegate: jfxs.Modality)
+  extends SFXEnumDelegate[jfxs.Modality]

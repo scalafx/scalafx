@@ -30,30 +30,28 @@ import javafx.scene.{control => jfxsc}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
 /**
- * Wrapper for [[scalafx.scene.control.$TSM]]
- *
- * @define
- *   TSM TreeSortMode
- * @define
- *   URL0
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TSM.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
- */
-object TreeSortMode extends SFXEnumDelegateCompanion[jfxsc.TreeSortMode, TreeSortMode] {
+  * Wrapper for [[scalafx.scene.control.$TSM]]
+  *
+  * @define TSM         TreeSortMode
+  * @define URL0        [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/$TSM.html
+  * @define JFX         JavaFX
+  * @define ORIGINALDOC Original Documentation]].
+  **/
+object TreeSortMode
+  extends SFXEnumDelegateCompanion[jfxsc.TreeSortMode, TreeSortMode] {
 
   /**
-   * Default; sort all nodes.
-   *
-   * @see
-   *   $URL0#ALL_DESCENDANTS $ORIGINALDOC
-   */
+    * Default; sort all nodes.
+    *
+    * @see $URL0#ALL_DESCENDANTS $ORIGINALDOC
+    */
   case object AllDescendants extends TreeSortMode(jfxsc.TreeSortMode.ALL_DESCENDANTS)
 
   /**
-   * Sort first level nodes only regardless of whether the root is actually being shown or not
-   *
-   * @see
-   *   $URL0#ONLY_FIRST_LEVEL $ORIGINALDOC
-   */
+    * Sort first level nodes only regardless of whether the root is actually being shown or not
+    *
+    * @see $URL0#ONLY_FIRST_LEVEL $ORIGINALDOC
+    */
   case object OnlyFirstModel extends TreeSortMode(jfxsc.TreeSortMode.ONLY_FIRST_LEVEL)
 
   protected override def unsortedValues: Array[TreeSortMode] =
@@ -62,14 +60,11 @@ object TreeSortMode extends SFXEnumDelegateCompanion[jfxsc.TreeSortMode, TreeSor
 }
 
 /**
- * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeSortMode.htmlTreeSortMode]].
- *
- * @constructor
- *   Creates a new TreeSortMode from a JavaFX one.
- * @param delegate
- *   JavaFX TreeSortMode
- * @since
- *   8.0
- */
+  * Wraps JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeSortMode.html TreeSortMode]].
+  *
+  * @constructor Creates a new TreeSortMode from a JavaFX one.
+  * @param delegate JavaFX TreeSortMode
+  * @since 8.0
+  */
 sealed abstract class TreeSortMode(override val delegate: jfxsc.TreeSortMode)
-    extends SFXEnumDelegate[jfxsc.TreeSortMode]
+  extends SFXEnumDelegate[jfxsc.TreeSortMode] 

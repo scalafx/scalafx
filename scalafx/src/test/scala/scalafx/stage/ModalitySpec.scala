@@ -32,10 +32,9 @@ import javafx.{stage => jfxs}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Test for [[scalafx.stage.Modality]] */
-class ModalitySpec
-    extends SFXEnumDelegateSpec[jfxs.Modality, Modality](
-      javaClass = classOf[jfxs.Modality],
-      scalaClass = classOf[Modality],
-      companion = Modality
-    )
+class ModalitySpec extends SFXEnumDelegateSpec[jfxs.Modality, Modality](
+  javaClass = classOf[jfxs.Modality],
+  scalaClass = classOf[Modality],
+  companion = Modality)

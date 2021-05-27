@@ -32,7 +32,8 @@ import scalafx.Includes._
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** Tests for [[scalafx.print.Paper]]. */
-class PaperSpec extends SimpleSFXDelegateSpec[jfxp.Paper, Paper](classOf[jfxp.Paper], classOf[Paper]) {
+class PaperSpec
+  extends SimpleSFXDelegateSpec[jfxp.Paper, Paper](classOf[jfxp.Paper], classOf[Paper]) {
 
   override protected def getScalaClassInstance = Paper.A0
 

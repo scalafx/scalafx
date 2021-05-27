@@ -34,7 +34,8 @@ import scalafx.geometry.GeometryIncludes.{jfxHPos2sfx, jfxVPos2sfx}
 import scala.language.implicitConversions
 
 /** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/geometry/Pos.html javafx.geometry.Pos]] */
-object Pos extends SFXEnumDelegateCompanion[jfxg.Pos, Pos] {
+object Pos
+  extends SFXEnumDelegateCompanion[jfxg.Pos, Pos] {
 
   case object BaselineCenter extends Pos(jfxg.Pos.BASELINE_CENTER)
 
@@ -97,26 +98,19 @@ object Pos extends SFXEnumDelegateCompanion[jfxg.Pos, Pos] {
   val TOP_RIGHT: Pos = TopRight
 
   protected override def unsortedValues: Array[Pos] = Array(
-    TopLeft,
-    TopCenter,
-    TopRight,
-    CenterLeft,
-    Center,
-    CenterRight,
-    BottomLeft,
-    BottomCenter,
-    BottomRight,
-    BaselineLeft,
-    BaselineCenter,
-    BaselineRight
+    TopLeft, TopCenter, TopRight,
+    CenterLeft, Center, CenterRight,
+    BottomLeft, BottomCenter, BottomRight,
+    BaselineLeft, BaselineCenter, BaselineRight
   )
 }
 
-sealed abstract class Pos(override val delegate: jfxg.Pos) extends SFXEnumDelegate[jfxg.Pos] {
+sealed abstract class Pos(override val delegate: jfxg.Pos)
+  extends SFXEnumDelegate[jfxg.Pos] {
 
   /** Returns the horizontal positioning/alignment. */
   def hpos: HPos = delegate.getHpos
 
-  /** Returns the vertical positioning/alignment. * */
+  /** Returns the vertical positioning/alignment. **/
   def vpos: VPos = delegate.getVpos
 }

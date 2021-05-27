@@ -34,6 +34,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Font Spec tests.
+ *
+ *
  */
 class FontSpec extends SimpleSFXDelegateSpec[jfxst.Font, Font](classOf[jfxst.Font], classOf[Font]) {
 

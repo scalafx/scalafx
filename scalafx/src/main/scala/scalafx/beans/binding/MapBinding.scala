@@ -35,31 +35,28 @@ import scalafx.beans.value.ObservableValue
 import scalafx.collections.CollectionIncludes.jfxObservableMap2sfxObservableMap
 import scalafx.collections.ObservableMap
 
-object MapBinding {
 
+object MapBinding {
   /**
-   * Converts a ScalaFX MapBinding to its JavaFX counterpart LisBinding.
-   *
-   * @param v
-   *   ScalaFX MapBinding
-   * @return
-   *   JavaFX MapBinding
-   */
+    * Converts a ScalaFX MapBinding to its JavaFX counterpart LisBinding.
+    *
+    * @param v ScalaFX MapBinding
+    * @return JavaFX MapBinding
+    */
   implicit def sfxMapBinding2jfx[K, V](v: MapBinding[K, V]): jfxbb.MapBinding[K, V] =
     if (v != null) v.delegate else null
 }
 
 /**
- * Wraps a $JFX $URL0 MapBinding]].
- *
- * @define
- *   TC MapBinding
- * @define
- *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/MapBinding.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
- */
+  * Wraps a $JFX $URL0 MapBinding]].
+  *
+  * @define TC          MapBinding
+  * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/binding/MapBinding.html
+  * @define JFX         JavaFX
+  * @define ORIGINALDOC Original Documentation]].
+  **/
 class MapBinding[K, V](override val delegate: jfxbb.MapBinding[K, V])
-    extends MapExpression(delegate)
+  extends MapExpression(delegate)
     with ObservableValue[ObservableMap[K, V], jfxc.ObservableMap[K, V]] {
 
   override def value: ObservableMap[K, V] = delegate.get

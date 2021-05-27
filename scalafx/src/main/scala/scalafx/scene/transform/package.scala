@@ -27,8 +27,8 @@
 package scalafx.scene
 
 /**
- * Wraps
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/transform/package-summary.html`javafx.scene.transform`]]
- * package.
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/transform/package-summary.html `javafx.scene.transform`]] package.
  */
-package object transform {}
+package object transform {
+
+}

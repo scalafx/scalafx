@@ -33,20 +33,14 @@ import scalafx.Includes._
 
 /**
  * PercentageStringConverter Spec tests.
+ *
+ *
  */
 class PercentageStringConverterSpec
-    extends AbstractStringConverterDelegateSpec[
-      Number,
-      jfxuc.PercentageStringConverter,
-      Number,
-      PercentageStringConverter
-    ](classOf[jfxuc.PercentageStringConverter], classOf[PercentageStringConverter], classOf[Number]) {
+  extends AbstractStringConverterDelegateSpec[Number, jfxuc.PercentageStringConverter, Number, PercentageStringConverter](classOf[jfxuc.PercentageStringConverter], classOf[PercentageStringConverter], classOf[Number]) {
 
-  val examples = List(
-    (java.lang.Integer.valueOf(10), "1,000%"),
-    (java.lang.Integer.valueOf(0), "0%"),
-    (java.lang.Integer.valueOf(-10), "-1,000%")
-  )
+  val examples = List((java.lang.Integer.valueOf(10), "1,000%"), (java.lang.Integer.valueOf(0), "0%"),
+    (java.lang.Integer.valueOf(-10), "-1,000%"))
 
   override protected def getScalaClassInstance = new PercentageStringConverter(Locale.US)
 

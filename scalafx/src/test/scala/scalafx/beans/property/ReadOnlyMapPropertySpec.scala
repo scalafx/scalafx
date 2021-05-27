@@ -40,11 +40,11 @@ import scalafx.collections.ObservableMap
 class ReadOnlyMapPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   private val valueAsSeq = Seq("one" -> 1, "two" -> 2, "seven" -> 7)
-  private val bean       = new Object()
+  private val bean = new Object()
 
   private var readOnlyMapProperty: jfxbp.ReadOnlyMapProperty[String, Int] = _
-  private var mapProperty1: jfxbp.MapProperty[String, Int]                = _
-  private var mapProperty2: jfxbp.MapProperty[String, Int]                = _
+  private var mapProperty1: jfxbp.MapProperty[String, Int] = _
+  private var mapProperty2: jfxbp.MapProperty[String, Int] = _
 
   override def beforeEach(): Unit = {
 
@@ -102,7 +102,7 @@ class ReadOnlyMapPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
     mapProperty2() should be(ObservableMap("two" -> 2, "one" -> 1, "three" -> 3).delegate)
 
     map += ("seven" -> 7)
-    map += ("nine"  -> 9)
+    map += ("nine" -> 9)
     mapProperty1() should be(ObservableMap("two" -> 2, "one" -> 1, "three" -> 3, "seven" -> 7, "nine" -> 9).delegate)
     mapProperty2() should be(ObservableMap("two" -> 2, "one" -> 1, "three" -> 3, "seven" -> 7, "nine" -> 9).delegate)
   }
@@ -118,7 +118,7 @@ class ReadOnlyMapPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
     mapProperty2() should be(ObservableMap("two" -> 2, "one" -> 1, "three" -> 3).delegate)
 
     map += ("seven" -> 7)
-    map += ("nine"  -> 9)
+    map += ("nine" -> 9)
     mapProperty1() should be(ObservableMap("two" -> 2, "one" -> 1, "three" -> 3, "seven" -> 7, "nine" -> 9).delegate)
     mapProperty2() should be(ObservableMap("two" -> 2, "one" -> 1, "three" -> 3, "seven" -> 7, "nine" -> 9).delegate)
   }
@@ -136,12 +136,12 @@ class ReadOnlyMapPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "Have working 'size' property" in {
-    val map         = ObservableMap("two" -> 2, "one" -> 1, "three" -> 3)
+    val map = ObservableMap("two" -> 2, "one" -> 1, "three" -> 3)
     val mapProperty = new MapProperty[String, Int](map)
     mapProperty.size.value should be(3)
 
     map += ("seven" -> 7)
-    map += ("nine"  -> 9)
+    map += ("nine" -> 9)
     mapProperty.size.value should be(5)
 
     mapProperty += ("thirteen" -> 13)
@@ -159,8 +159,8 @@ class ReadOnlyMapPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "bindContent and unbindContent" in {
-    val map        = ObservableMap("two" -> 2, "one" -> 1, "three" -> 3, "seven" -> 7, "nine" -> 9)
-    val roWrapper  = new ReadOnlyMapWrapper(ObservableMap("zero" -> 0))
+    val map = ObservableMap("two" -> 2, "one" -> 1, "three" -> 3, "seven" -> 7, "nine" -> 9)
+    val roWrapper = new ReadOnlyMapWrapper(ObservableMap("zero" -> 0))
     val roProperty = roWrapper.readOnlyProperty
 
     map.size should be(5)
@@ -184,8 +184,8 @@ class ReadOnlyMapPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "bindContentBidirectional and unbindContentBidirectional" in {
-    val map        = ObservableMap("two" -> 2, "one" -> 1, "three" -> 3, "seven" -> 7, "nine" -> 9)
-    val roWrapper  = new ReadOnlyMapWrapper(ObservableMap("zero" -> 0))
+    val map = ObservableMap("two" -> 2, "one" -> 1, "three" -> 3, "seven" -> 7, "nine" -> 9)
+    val roWrapper = new ReadOnlyMapWrapper(ObservableMap("zero" -> 0))
     val roProperty = roWrapper.readOnlyProperty
 
     map.size should be(5)

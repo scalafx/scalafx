@@ -32,10 +32,9 @@ import javafx.{geometry => jfxg}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Tests for [[scalafx.geometry.Side]]. */
-class SideSpec
-    extends SFXEnumDelegateSpec[jfxg.Side, Side](
-      javaClass = classOf[jfxg.Side],
-      scalaClass = classOf[Side],
-      companion = Side
-    )
+class SideSpec extends SFXEnumDelegateSpec[jfxg.Side, Side](
+  javaClass = classOf[jfxg.Side],
+  scalaClass = classOf[Side],
+  companion = Side)

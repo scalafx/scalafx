@@ -38,10 +38,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * BackgroundFill Spec tests.
  */
 class BackgroundFillSpec
-    extends SimpleSFXDelegateSpec[jfxsl.BackgroundFill, BackgroundFill](
-      classOf[jfxsl.BackgroundFill],
-      classOf[BackgroundFill]
-    ) {
+  extends SimpleSFXDelegateSpec[jfxsl.BackgroundFill, BackgroundFill](
+    classOf[jfxsl.BackgroundFill], classOf[BackgroundFill]) {
 
   override protected def getScalaClassInstance = new BackgroundFill(getJavaClassInstance) {}
 

@@ -38,22 +38,17 @@ import scala.language.implicitConversions
 /**
  * Companion Object for `[[scalafx.collections.ObservableMap]]`.
  *
- * @define
- *   OM `ObservableMap`
+ * @define OM `ObservableMap`
  */
 object ObservableMap extends MapFactory[ObservableMap] {
-
   /**
-   * Extracts a JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html$OM]] from a
+   * Extracts a JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html $OM]] from a 
    * ScalaFX's $OM.
    *
-   * @param om
-   *   ScalaFX's $OM.
-   * @return
-   *   JavaFX's $OM inside parameter.
+   * @param om ScalaFX's $OM.
+   * @return JavaFX's $OM inside parameter.
    */
-  implicit def sfxObservableMap2sfxObservableMap[K, V](om: ObservableMap[K, V]): jfxc.ObservableMap[K, V] =
-    if (om != null) om.delegate else null
+  implicit def sfxObservableMap2sfxObservableMap[K, V](om: ObservableMap[K, V]): jfxc.ObservableMap[K, V] = if (om != null) om.delegate else null
 
   override def from[K, V](source: IterableOnce[(K, V)]): ObservableMap[K, V] = empty.addAll(source)
 
@@ -61,11 +56,12 @@ object ObservableMap extends MapFactory[ObservableMap] {
     new mutable.GrowableBuilder[(K, V), ObservableMap[K, V]](empty[K, V])
   }
 
+
   // CHANGING INDICATORS - BEGIN
 
   /**
    * Indicates a change in an $OM. It is a simpler version of JavaFX's
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html`MapChangeListener.Change`]],
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html `MapChangeListener.Change`]],
    * where each subclass indicates a specific change operation.
    */
   trait Change[K, V]
@@ -73,46 +69,32 @@ object ObservableMap extends MapFactory[ObservableMap] {
   /**
    * Indicates an addition in an $OM.
    *
-   * @param key
-   *   Handled Key.
-   * @param added
-   *   Added element.
-   * @see
-   *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getKey()`MapChangeListener.Change.getKey()`]]
-   * @see
-   *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getValueAdded()`MapChangeListener.Change.getValueAdded()`]]
+   * @param key Handled Key.
+   * @param added Added element.
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getKey() `MapChangeListener.Change.getKey()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getValueAdded() `MapChangeListener.Change.getValueAdded()`]]
    */
   case class Add[K, V](key: K, added: V) extends Change[K, V]
 
   /**
    * Indicates a removal in an $OM.
    *
-   * @param key
-   *   Handled Key.
-   * @param removed
-   *   Removed element.
-   * @see
-   *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getKey()`MapChangeListener.Change.getKey()`]]
-   * @see
-   *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getValueRemoved()`MapChangeListener.Change.getValueRemoved()`]]
+   * @param key Handled Key.
+   * @param removed Removed element.
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getKey() `MapChangeListener.Change.getKey()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getValueRemoved() `MapChangeListener.Change.getValueRemoved()`]]
    */
   case class Remove[K, V](key: K, removed: V) extends Change[K, V]
 
   /**
    * Indicates a replacement in an $OM.
    *
-   * @param key
-   *   Handled Key.
-   * @param added
-   *   Added Value.
-   * @param removed
-   *   Removed Value.
-   * @see
-   *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getKey()`MapChangeListener.Change.getKey()`]]
-   * @see
-   *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getValueAdded()`MapChangeListener.Change.getValueAdded()`]]
-   * @see
-   *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getValueRemoved()`MapChangeListener.Change.getValueRemoved()`]]
+   * @param key Handled Key.
+   * @param added Added Value.
+   * @param removed Removed Value.
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getKey() `MapChangeListener.Change.getKey()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getValueAdded() `MapChangeListener.Change.getValueAdded()`]]
+   * @see [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/http://docs.oracle.com/javase/8/javafx/api/javafx/collections/MapChangeListener.Change.html#getValueRemoved() `MapChangeListener.Change.getValueRemoved()`]]
    */
   case class Replace[K, V](key: K, added: V, removed: V) extends Change[K, V]
 
@@ -123,8 +105,7 @@ object ObservableMap extends MapFactory[ObservableMap] {
   /**
    * Creates an empty $OM.
    *
-   * @return
-   *   a Empty [[scalafx.collections.ObservableHashMap]]
+   * @return a Empty [[scalafx.collections.ObservableHashMap]]
    */
   override def empty[K, V]: ObservableMap[K, V] = new ObservableHashMap[K, V]()
 
@@ -133,27 +114,25 @@ object ObservableMap extends MapFactory[ObservableMap] {
 }
 
 /**
- * Wrapper class to JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html$OM]].
+ * Wrapper class to JavaFX's [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html $OM]].
  *
- * @tparam K
- *   Key type
- * @tparam V
- *   Value type. returned by
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html#observableHashMap()observableHashMap]]
- *   method from [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.htmlFXCollections]].
+ * @tparam K Key type
+ * @tparam V Value type.
+ *           returned by
+ *           [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html#observableHashMap() observableHashMap]]
+ *           method from
+ *           [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html FXCollections]].
  *
- * @define
- *   OM `ObservableMap`
- * @define
- *   MAP `Map`
+ * @define OM `ObservableMap`
+ * @define MAP `Map`
  */
 trait ObservableMap[K, V]
-    extends mutable.Map[K, V]
+  extends mutable.Map[K, V]
     with mutable.MapOps[K, V, mutable.Map, ObservableMap[K, V]]
     with StrictOptimizedIterableOps[(K, V), mutable.Iterable, ObservableMap[K, V]]
     with MapFactoryDefaults[K, V, ObservableMap, mutable.Iterable]
-    with Observable
-    with SFXDelegate[jfxc.ObservableMap[K, V]] {
+  with Observable
+  with SFXDelegate[jfxc.ObservableMap[K, V]] {
 
   override def mapFactory: MapFactory[ObservableMap] = ObservableMap
 
@@ -165,18 +144,15 @@ trait ObservableMap[K, V]
   /**
    * The empty map of the same type as this $MAP.
    *
-   * @return
-   *   An empty $OM
+   * @return An empty $OM
    */
   override def empty = new ObservableHashMap[K, V]()
 
   /**
    * Adds a new key/value pair to this $MAP.
    *
-   * @param kv
-   *   the key/value pair.
-   * @return
-   *   The $OM itself
+   * @param kv the key/value pair.
+   * @return The $OM itself
    */
   override def addOne(kv: (K, V)): ObservableMap.this.type = {
     delegate.put(kv._1, kv._2)
@@ -186,10 +162,8 @@ trait ObservableMap[K, V]
   /**
    * Removes a key from this $MAP.
    *
-   * @param key
-   *   the key to be removed
-   * @return
-   *   The $OM itself.
+   * @param key the key to be removed
+   * @return The $OM itself.
    */
   override def subtractOne(key: K): ObservableMap.this.type = {
     delegate.remove(key)
@@ -204,11 +178,10 @@ trait ObservableMap[K, V]
   }
 
   /**
-   * Creates a new [[http://www.scala-lang.org/api/current/scala/collection/Iterator.html`Iterator`]] over all key/value
-   * pairs of this $OM.
+   * Creates a new [[http://www.scala-lang.org/api/current/scala/collection/Iterator.html `Iterator`]] over all
+   * key/value pairs of this $OM.
    *
-   * @return
-   *   The new `iterator`.
+   * @return The new `iterator`.
    */
   def iterator: Iterator[(K, V)] = new Iterator[(K, V)] {
     // Definition copied from JavaConversions.JMapWrapperLike.iterator
@@ -225,18 +198,16 @@ trait ObservableMap[K, V]
   /**
    * This $MAP's size.
    *
-   * @return
-   *   This $MAP's size.
+   * @return This $MAP's size.
    */
   override def size: Int = delegate.size
 
   /**
    * Optionally returns the value associated with a key.
    *
-   * @param key
-   *   the key value
-   * @return
-   *   an option value containing the value associated with key in this $MAP, or None if none exists.
+   * @param key the key value
+   * @return an option value containing the value associated with key in this $MAP, or None if
+   *         none exists.
    */
   override def get(key: K): Option[V] = if (delegate.containsKey(key)) Option(delegate.get(key)) else None
 
@@ -245,8 +216,7 @@ trait ObservableMap[K, V]
   /**
    * Add a listener function to $MAP's changes. This function '''will handle''' this map's modifications data.
    *
-   * @param op
-   *   Function that will handle this $OM's modifications data to be activated when some change was made.
+   * @param op Function that will handle this $OM's modifications data to be activated when some change was made.
    */
   def onChange(op: (ObservableMap[K, V], Change[K, V]) => Unit): Subscription = {
     val listener = new jfxc.MapChangeListener[K, V] {
@@ -274,8 +244,7 @@ trait ObservableMap[K, V]
   /**
    * Add a listener function to $MAP's changes. This function '''will not handle''' this $MAP's modifications data.
    *
-   * @param op
-   *   No-argument function to be activated when some change in this $OM was made.
+   * @param op No-argument function to be activated when some change in this $OM was made.
    */
   def onChange(op: => Unit): Subscription = {
     val listener = new jfxc.MapChangeListener[K, V] {
@@ -297,15 +266,15 @@ trait ObservableMap[K, V]
 
 /**
  * [[scalafx.collections.ObservableMap]] implementation backed for a
- * [[http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html`HashMap`]] from Java Collection.
+ * [[http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html `HashMap`]] from Java Collection.
  *
- * @param delegate
- *   JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html`ObservableMap`]] instance
- *   to be wrapped by this class. By default it is a
- *   [[http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html`HashMap`]] wrapped by
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html#observableMap(java.util.Map)`observableMap`]]
- *   method from [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html`FXCollections`]].
+ * @param delegate JavaFX
+ *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableMap.html `ObservableMap`]]
+ *                 instance to be wrapped by this class. By default it is a
+ *                 [[http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html `HashMap`]] wrapped by
+ *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html#observableMap(java.util.Map) `observableMap`]]
+ *                 method from
+ *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/FXCollections.html `FXCollections`]].
  */
-class ObservableHashMap[K, V](
-    override val delegate: jfxc.ObservableMap[K, V] = jfxc.FXCollections.observableMap(new ju.HashMap[K, V])
-) extends ObservableMap[K, V]
+class ObservableHashMap[K, V](override val delegate: jfxc.ObservableMap[K, V] = jfxc.FXCollections.observableMap(new ju.HashMap[K, V]))
+  extends ObservableMap[K, V] 

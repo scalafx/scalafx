@@ -37,18 +37,16 @@ object StringProperty {
   /**
    * Creates a new StringProperty instance using the SimpleStringProperty as the target observable.
    *
-   * @param value
-   *   the initial value
-   * @return
-   *   the StringProperty instance
+   * @param value the initial value
+   * @return      the StringProperty instance
    */
   def apply(value: String) = new StringProperty(value)
 }
 
 class StringProperty(override val delegate: jfxbp.StringProperty = new jfxbp.SimpleStringProperty)
-    extends ReadOnlyStringProperty(delegate)
-    with Property[String, String]
-    with SFXDelegate[jfxbp.StringProperty] {
+  extends ReadOnlyStringProperty(delegate)
+  with Property[String, String]
+  with SFXDelegate[jfxbp.StringProperty] {
 
   def this(initialValue: String) = this(new jfxbp.SimpleStringProperty(initialValue))
 

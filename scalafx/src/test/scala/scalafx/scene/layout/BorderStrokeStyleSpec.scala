@@ -34,13 +34,12 @@ import scalafx.scene.shape.{StrokeLineCap, StrokeLineJoin, StrokeType}
 import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
+ *
  * Test for [[scalafx.scene.layout.BorderStrokeStyleSpec]].
  */
 class BorderStrokeStyleSpec
-    extends SimpleSFXDelegateSpec[jfxsl.BorderStrokeStyle, BorderStrokeStyle](
-      classOf[jfxsl.BorderStrokeStyle],
-      classOf[BorderStrokeStyle]
-    ) {
+  extends SimpleSFXDelegateSpec[jfxsl.BorderStrokeStyle, BorderStrokeStyle](
+    classOf[jfxsl.BorderStrokeStyle], classOf[BorderStrokeStyle]) {
 
   override protected def getScalaClassInstance = new BorderStrokeStyle(getJavaClassInstance) {}
 

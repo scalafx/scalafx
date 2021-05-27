@@ -46,31 +46,31 @@ object PopupControl {
   /**
    * Converts a ScalaFX PopupControl to its JavaFX counterpart
    *
-   * @param v
-   *   ScalaFX PopupControl
-   * @return
-   *   JavaFX PopupControl
+   * @param v ScalaFX PopupControl
+   * @return JavaFX PopupControl
    */
   implicit def sfxPopupControl2jfx(v: PopupControl): jfxsc.PopupControl = if (v != null) v.delegate else null
 
   /**
-   * Sentinel value which can be passed to a control's minWidth, minHeight, prefWidth, prefHeight, maxWidth, maxHeight
-   * setters to reset the control's size constraint back to it's intrinsic size returned by computeMinWidth,
-   * computeMinHeight, computePrefWidth, computePrefHeight, computeMaxWidth, or computeMaxHeight.
+   * Sentinel value which can be passed to a control's minWidth, minHeight, prefWidth, prefHeight,
+   * maxWidth, maxHeight setters to reset the control's size constraint back to it's intrinsic
+   * size returned by computeMinWidth, computeMinHeight, computePrefWidth, computePrefHeight,
+   * computeMaxWidth, or computeMaxHeight.
    */
   val UseComputedSize: Double = jfxsc.PopupControl.USE_COMPUTED_SIZE
 
   /**
-   * Sentinel value which can be passed to a control's minWidth, minHeight, maxWidth or maxHeight setters to indicate
-   * that the preferred dimension should be used for that max and/or min constraint.
+   * Sentinel value which can be passed to a control's minWidth, minHeight, maxWidth or maxHeight
+   * setters to indicate that the preferred dimension should be used for that max and/or min
+   * constraint.
    */
   val UsePrefSize: Double = jfxsc.PopupControl.USE_PREF_SIZE
 
   /**
-   * The CssMetaData associated with this class, which may include the CssMetaData of its super classes.
+   * The CssMetaData associated with this class, which may include the CssMetaData of its super
+   * classes.
    *
-   * @since
-   *   8.0
+   * @since 8.0
    */
   def classCssMetaData: mutable.Buffer[jfxcss.CssMetaData[_ <: jfxcss.Styleable, _]] =
     jfxsc.PopupControl.getClassCssMetaData.asScala
@@ -78,18 +78,16 @@ object PopupControl {
 }
 
 /**
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/PopupControl.htmlPopupControl]].
+ * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/PopupControl.html PopupControl]].
  *
- * @constructor
- *   Creates a new ScalaFX PopupControl from its JavaFX counterpart.
- * @param delegate
- *   JavaFX PopupControl to be wrapped. It defaul value is a new JavaFX PopupControl
+ * @constructor Creates a new ScalaFX PopupControl from its JavaFX counterpart.
+ * @param delegate JavaFX PopupControl to be wrapped. It defaul value is a new JavaFX PopupControl
  */
 class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupControl)
-    extends PopupWindow(delegate)
-    with Styleable
-    with Skinnable
-    with SFXDelegate[jfxsc.PopupControl] {
+  extends PopupWindow(delegate)
+  with Styleable
+  with Skinnable
+  with SFXDelegate[jfxsc.PopupControl] {
 
   /**
    * The id of this Node.
@@ -138,6 +136,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
 
   /**
    * Property for overriding the control's computed preferred height.
+   *
    */
   def prefHeight: DoubleProperty = delegate.prefHeightProperty
 
@@ -164,8 +163,7 @@ class PopupControl(override val delegate: jfxsc.PopupControl = new jfxsc.PopupCo
   }
 
   /**
-   * @since
-   *   8.0
+   * @since 8.0
    */
   def pseudoClassStateChanged(pseudoClass: PseudoClass, active: Boolean): Unit = {
     delegate.pseudoClassStateChanged(pseudoClass, active)

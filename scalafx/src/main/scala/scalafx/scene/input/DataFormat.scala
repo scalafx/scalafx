@@ -40,72 +40,65 @@ object DataFormat {
   implicit def sfxDataFormat2jfx(ie: DataFormat): jfxsi.DataFormat = if (ie != null) ie.delegate else null
 
   /**
-   * Looks for the DataFormat which has been previously created with the given mime type as one of its ids.
-   */
+    * Looks for the DataFormat which has been previously created with the given mime type as one of its ids.
+    */
   def lookupMimeType(mimeType: String): DataFormat = jfxsi.DataFormat.lookupMimeType(mimeType)
 
   /**
-   * Represents a List of Files.
-   */
+    * Represents a List of Files.
+    */
   val Files: DataFormat = jfxsi.DataFormat.FILES
 
   /**
-   * Represents an HTML formatted string.
-   */
+    * Represents an HTML formatted string.
+    */
   val Html: DataFormat = jfxsi.DataFormat.HTML
 
   /**
-   * A special platform specific image type, such as is commonly used on the clipboard and interoperates widely with
-   * other applications.
-   */
+    * A special platform specific image type, such as is commonly used on the clipboard and interoperates widely with other applications.
+    */
   val Image: DataFormat = jfxsi.DataFormat.IMAGE
 
   /**
-   * Represents a plain text string.
-   */
+    * Represents a plain text string.
+    */
   val PlainText: DataFormat = jfxsi.DataFormat.PLAIN_TEXT
 
   /**
-   * Represents an RTF formatted string
-   */
+    * Represents an RTF formatted string
+    */
   val Rtf: DataFormat = jfxsi.DataFormat.RTF
 
   /**
-   * Represents a URL, encoded as a String
-   */
+    * Represents a URL, encoded as a String
+    */
   val Url: DataFormat = jfxsi.DataFormat.URL
 
 }
 
 /**
- * Data format identifier used as means of identifying the data stored on a clipboard/dragboard.
- *
- * Wraps a $JFX [[$URL0$FC]].
- *
- * @constructor
- *   Creates a new $FC from a $JFX one.
- * @param delegate
- *   A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
- * @define
- *   FC DataFormat
- * @define
- *   URL0 http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/DataFormat.html
- * @define
- *   JFX JavaFX
- */
+  * Data format identifier used as means of identifying the data stored on a clipboard/dragboard.
+  *
+  * Wraps a $JFX [[ $URL0 $FC]].
+  *
+  * @constructor Creates a new $FC from a $JFX one.
+  * @param delegate A $JFX $FC to be wrapped. Its default value is a new $JFX $FC.
+  * @define FC   DataFormat
+  * @define URL0 http://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/DataFormat.html
+  * @define JFX  JavaFX
+  */
 class DataFormat(override val delegate: jfxsi.DataFormat = new jfxsi.DataFormat) extends SFXDelegate[jfxsi.DataFormat] {
 
   /**
-   * Create a new DataFormat, specifying the set of ids that are associated with this data format.
-   *
-   * @param ids
-   *   - The set of ids used to represent this DataFormat on the clipboard.
-   */
+    * Create a new DataFormat, specifying the set of ids that are associated with this data format.
+    *
+    * @param ids - The set of ids used to represent this DataFormat on the clipboard.
+    */
   def this(ids: String*) = this(new jfxsi.DataFormat(ids: _*))
 
   /**
-   * Gets the unmodifiable set of identifiers for this DataFormat.
-   */
+    * Gets the unmodifiable set of identifiers for this DataFormat.
+    */
   def identifiers: Set[String] = delegate.getIdentifiers.asScala
 
 }

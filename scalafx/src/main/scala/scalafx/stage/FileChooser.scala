@@ -39,37 +39,35 @@ import scalafx.stage.FileChooser.ExtensionFilter
 import scala.collection.JavaConverters._
 import scala.language.implicitConversions
 
+
 object FileChooser {
   implicit def sfxFileChooser2jfx(fc: FileChooser): jfxs.FileChooser = if (fc != null) fc.delegate else null
 
   object ExtensionFilter {
-    implicit def sfxExtensionFilter2jfx(ef: ExtensionFilter): jfxs.FileChooser.ExtensionFilter =
-      if (ef != null) ef.delegate else null
+    implicit def sfxExtensionFilter2jfx(ef: ExtensionFilter): jfxs.FileChooser.ExtensionFilter = if (ef != null) ef.delegate else null
   }
 
-  class ExtensionFilter(override val delegate: jfxs.FileChooser.ExtensionFilter)
-      extends SFXDelegate[jfxs.FileChooser.ExtensionFilter] {
+  class ExtensionFilter(override val delegate: jfxs.FileChooser.ExtensionFilter) extends SFXDelegate[jfxs.FileChooser.ExtensionFilter] {
 
     /**
-     * Creates an ExtensionFilter with the specified description and the file name extensions. File name extension
-     * should be specified in the `*.<extension>` format.
+     * Creates an ExtensionFilter with the specified description and the file name extensions.
+     * File name extension should be specified in the `*.<extension>` format.
      */
     def this(description: String, extensions: Seq[String]) =
       this(new jfxs.FileChooser.ExtensionFilter(description, extensions.asJava))
 
     /**
-     * Creates an ExtensionFilter with the specified description and the file name extension. This is a convenience
-     * constructor for a common situations when only one extension is used. File name extension should be specified in
-     * the `*.<extension>` format.
+     * Creates an ExtensionFilter with the specified description and the file name extension.
+     * This is a convenience constructor for a common situations when only one extension is used.
+     * File name extension should be specified in the `*.<extension>` format.
      */
-    def this(description: String, extension: String) =
-      this(new jfxs.FileChooser.ExtensionFilter(description, extension))
+    def this(description: String, extension: String) = this(new jfxs.FileChooser.ExtensionFilter(description, extension))
 
     /*
      * Creates an ExtensionFilter with the specified description and the file name extensions.
-     * NOTE IMPLEMENTATION: for constructor with extensions varargs compile complaints with message: "double definition: constructor
-     * ExtensionFilter:(description: String, extensions: String*)scalafx.stage.FileChooser.ExtensionFilter and constructor
-     * ExtensionFilter:(description: String, extensions: Seq[String])scalafx.stage.FileChooser.ExtensionFilter
+     * NOTE IMPLEMENTATION: for constructor with extensions varargs compile complaints with message: "double definition: constructor 
+     * ExtensionFilter:(description: String, extensions: String*)scalafx.stage.FileChooser.ExtensionFilter and constructor 
+     * ExtensionFilter:(description: String, extensions: Seq[String])scalafx.stage.FileChooser.ExtensionFilter 
      * at line XX have same type after erasure: (description: java.lang.String, extensions: Seq)scalafx.stage.FileChooser#ExtensionFilter".
      * So I decided maintain just Seq constructor.
      */
@@ -84,8 +82,8 @@ object FileChooser {
 }
 
 /**
- * Provides support for standard platform file dialogs. These dialogs have look and feel of the platform UI components
- * which is independent of JavaFX.
+ * Provides support for standard platform file dialogs.
+ * These dialogs have look and feel of the platform UI components which is independent of JavaFX.
  *
  * Example:
  * {{{
@@ -96,22 +94,22 @@ object FileChooser {
  * ...
  *
  * val fileChooser = new FileChooser {
- * title = "Open Resource File"
- * extensionFilters ++= Seq(
- *   new ExtensionFilter("Text Files", "*.txt"),
- *   new ExtensionFilter("Image Files", Seq("*.png", "*.jpg", "*.gif")),
- *   new ExtensionFilter("Audio Files", Seq("*.wav", "*.mp3", "*.aac")),
- *   new ExtensionFilter("All Files", "*.*")
- * )
+ *  title = "Open Resource File"
+ *  extensionFilters ++= Seq(
+ *    new ExtensionFilter("Text Files", "*.txt"),
+ *    new ExtensionFilter("Image Files", Seq("*.png", "*.jpg", "*.gif")),
+ *    new ExtensionFilter("Audio Files", Seq("*.wav", "*.mp3", "*.aac")),
+ *    new ExtensionFilter("All Files", "*.*")
+ *  )
  * }
  * val selectedFile = fileChooser.showOpenDialog(stage)
  * if (selectedFile != null) {
- * stage.display(selectedFile);
+ *  stage.display(selectedFile);
  * }
  * }}}
  */
 class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser)
-    extends SFXDelegate[jfxs.FileChooser] {
+  extends SFXDelegate[jfxs.FileChooser] {
 
   /**
    * The initial directory for the displayed dialog.
@@ -129,12 +127,9 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
     ObjectProperty.fillProperty[String](initialFileName, v)
   }
 
-  /**
-   * This property is used to pre-select the extension filter for the next displayed dialog and to read the
-   * user-selected extension filter from the dismissed dialog.
-   */
-  def selectedExtensionFilter: ObjectProperty[jfxs.FileChooser.ExtensionFilter] =
-    delegate.selectedExtensionFilterProperty
+  /** This property is used to pre-select the extension filter for the next displayed dialog
+    * and to read the user-selected extension filter from the dismissed dialog. */
+  def selectedExtensionFilter: ObjectProperty[jfxs.FileChooser.ExtensionFilter] = delegate.selectedExtensionFilterProperty
 
   def selectedExtensionFilter_=(v: ExtensionFilter): Unit = {
     ObjectProperty.fillProperty[jfxs.FileChooser.ExtensionFilter](selectedExtensionFilter, v)
@@ -157,16 +152,14 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
   /**
    * Shows a new file open dialog.
    *
-   * @return
-   *   the selected file or null if no file has been selected
+   * @return the selected file or null if no file has been selected
    */
   def showOpenDialog(ownerWindow: Window): File = delegate.showOpenDialog(ownerWindow)
 
   /**
    * Shows a new file open dialog in which multiple files can be selected.
    *
-   * @return
-   *   the selected files or null if no file has been selected
+   * @return the selected files or null if no file has been selected
    */
   def showOpenMultipleDialog(ownerWindow: Window): Seq[File] = {
     val selection = delegate.showOpenMultipleDialog(ownerWindow)
@@ -176,8 +169,7 @@ class FileChooser(override val delegate: jfxs.FileChooser = new jfxs.FileChooser
   /**
    * Shows a new file save dialog.
    *
-   * @return
-   *   the selected file or null if no file has been selected
+   * @return the selected file or null if no file has been selected
    */
   def showSaveDialog(ownerWindow: Window): File = delegate.showSaveDialog(ownerWindow)
 

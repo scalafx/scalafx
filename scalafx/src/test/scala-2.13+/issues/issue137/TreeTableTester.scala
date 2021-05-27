@@ -37,10 +37,11 @@ import scalafx.scene.control.{Button, TreeTableView, _}
 import scalafx.scene.layout._
 import scalafx.scene.paint.Color
 
+
 /**
- * Sample code from https://github.com/scalafx/scalafx/issues/137#issuecomment-345154588 This not likely related to
- * actual issue 137, but included for completeness of issue 137 discussion. The compilation is supposed to fail in line
- * with `foo`
+ * Sample code from https://github.com/scalafx/scalafx/issues/137#issuecomment-345154588
+ * This not likely related to actual issue 137, but included for completeness of issue 137 discussion.
+ * The compilation is supposed to fail in line with `foo`
  */
 object TreeTableTester extends JFXApp {
 
@@ -50,10 +51,11 @@ object TreeTableTester extends JFXApp {
     new Person("Bungalow ", "Bill", "789", Color.DarkSalmon)
   )
 
-  val table = new TreeTableView[Person](new TreeItem[Person](new Person("", "", "", Color.Red)) {
-    expanded = true
-    children = characters.map(new TreeItem[Person](_)).toSeq
-  }) {
+  val table = new TreeTableView[Person](
+    new TreeItem[Person](new Person("", "", "", Color.Red)) {
+      expanded = true
+      children = characters.map(new TreeItem[Person](_)).toSeq
+    }) {
     columns ++= List(
       new TreeTableColumn[Person, String] {
         text = "First Name"
@@ -86,9 +88,9 @@ object TreeTableTester extends JFXApp {
               table.root.value.children = foo.toSeq
             }
           },
-          table
-        )
+          table)
       }
     }
   }
 }
+

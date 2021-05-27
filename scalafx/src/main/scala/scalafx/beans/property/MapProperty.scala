@@ -34,105 +34,90 @@ import scala.language.implicitConversions
 import scalafx.collections.ObservableMap
 import scalafx.delegate.SFXDelegate
 
-object MapProperty {
 
+object MapProperty {
   /**
-   * Converts a ScalaFX MapProperty to its JavaFX counterpart MapProperty.
-   *
-   * @param v
-   *   ScalaFX MapProperty
-   * @return
-   *   JavaFX MapProperty
-   */
+    * Converts a ScalaFX MapProperty to its JavaFX counterpart MapProperty.
+    *
+    * @param v ScalaFX MapProperty
+    * @return JavaFX MapProperty
+    */
   implicit def sfxMapProperty2jfx[K, V](v: MapProperty[K, V]): jfxbp.MapProperty[K, V] =
     if (v != null) v.delegate else null
 
   /**
-   * Creates a new MapProperty instance using the ObservableMap as the value.
-   *
-   * @param value
-   *   the initial value
-   */
+    * Creates a new MapProperty instance using the ObservableMap as the value.
+    *
+    * @param value the initial value
+    */
   def apply[K, V](value: ObservableMap[K, V]) =
     new MapProperty(new jfxbp.SimpleMapProperty(value.delegate))
 
   /**
-   * Creates a new MapProperty instance.
-   *
-   * @param bean
-   *   the bean of this MapProperty
-   * @param name
-   *   the name of this MapProperty
-   */
+    * Creates a new MapProperty instance.
+    *
+    * @param bean the bean of this MapProperty
+    * @param name the name of this MapProperty
+    */
   def apply[K, V](bean: Any, name: String) =
     new MapProperty(new jfxbp.SimpleMapProperty[K, V](bean, name))
 
   /**
-   * Creates a new MapProperty instance.
-   *
-   * @param bean
-   *   the bean of this MapProperty
-   * @param name
-   *   the name of this MapProperty
-   * @param value
-   *   the initial value
-   */
+    * Creates a new MapProperty instance.
+    *
+    * @param bean  the bean of this MapProperty
+    * @param name  the name of this MapProperty
+    * @param value the initial value
+    */
   def apply[K, V](bean: Any, name: String, value: ObservableMap[K, V]) =
     new MapProperty(new jfxbp.SimpleMapProperty(bean, name, value.delegate))
 }
 
+
 /**
- * Wraps a $JFX $URL0 MapProperty]].
- *
- * @define
- *   TC MapProperty
- * @define
- *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/MapProperty.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
- */
+  * Wraps a $JFX $URL0 MapProperty]].
+  *
+  * @define TC          MapProperty
+  * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/MapProperty.html
+  * @define JFX         JavaFX
+  * @define ORIGINALDOC Original Documentation]].
+  **/
 class MapProperty[K, V](override val delegate: jfxbp.MapProperty[K, V] = new jfxbp.SimpleMapProperty[K, V])
-    extends ReadOnlyMapProperty[K, V](delegate)
+  extends ReadOnlyMapProperty[K, V](delegate)
     with Property[ObservableMap[K, V], jfxc.ObservableMap[K, V]]
     with SFXDelegate[jfxbp.MapProperty[K, V]] {
 
   /**
-   * The constructor of MapProperty
-   *
-   * @param value
-   *   the initial value of the wrapped value
-   */
+    * The constructor of MapProperty
+    *
+    * @param value the initial value of the wrapped value
+    */
   def this(value: ObservableMap[K, V]) =
     this(new jfxbp.SimpleMapProperty(value.delegate))
 
   /**
-   * The constructor of MapProperty
-   *
-   * @param bean
-   *   the bean of this MapProperty
-   * @param name
-   *   the name of this MapProperty
-   */
+    * The constructor of MapProperty
+    *
+    * @param bean the bean of this MapProperty
+    * @param name the name of this MapProperty
+    */
   def this(bean: Any, name: String) =
     this(new jfxbp.SimpleMapProperty[K, V](bean, name))
 
   /**
-   * The constructor of MapProperty
-   *
-   * @param bean
-   *   the bean of this MapProperty
-   * @param name
-   *   the name of this MapProperty
-   * @param value
-   *   the initial value of the wrapped value
-   */
+    * The constructor of MapProperty
+    *
+    * @param bean  the bean of this MapProperty
+    * @param name  the name of this MapProperty
+    * @param value the initial value of the wrapped value
+    */
   def this(bean: Any, name: String, value: ObservableMap[K, V]) =
     this(new jfxbp.SimpleMapProperty(bean, name, value.delegate))
 
   /**
-   * Set the wrapped value.
-   *
-   * @param v
-   *   The new value
-   */
+    * Set the wrapped value.
+    *
+    * @param v The new value
+    */
   override def value_=(v: ObservableMap[K, V]): Unit = delegate.setValue(v)
 }

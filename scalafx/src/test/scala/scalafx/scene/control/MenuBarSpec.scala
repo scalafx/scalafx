@@ -32,5 +32,5 @@ import scalafx.Includes._
 import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 class MenuBarSpec
-    extends SimpleSFXDelegateSpec[jfxsc.MenuBar, MenuBar](classOf[jfxsc.MenuBar], classOf[MenuBar])
-    with RunOnApplicationThread
+  extends SimpleSFXDelegateSpec[jfxsc.MenuBar, MenuBar](classOf[jfxsc.MenuBar], classOf[MenuBar])
+  with RunOnApplicationThread

@@ -38,12 +38,11 @@ import scala.collection.JavaConverters._
 
 /**
  * JFXApp.Parameters Spec tests.
+ *
+ *
  */
 class JFXAppParametersSpec
-    extends SimpleSFXDelegateSpec[jfxa.Application.Parameters, JFXApp.Parameters](
-      classOf[jfxa.Application.Parameters],
-      classOf[JFXApp.Parameters]
-    ) {
+  extends SimpleSFXDelegateSpec[jfxa.Application.Parameters, JFXApp.Parameters](classOf[jfxa.Application.Parameters], classOf[JFXApp.Parameters]) {
 
   override protected def getScalaClassInstance = new JFXApp.ParametersImpl(Seq.empty[String])
 
@@ -62,7 +61,7 @@ class JFXAppParametersSpec
   }
 
   it should "allows raw arguments" in {
-    val args       = Array("arg1", "arg2")
+    val args = Array("arg1", "arg2")
     val parameters = getParameters(args)
 
     parameters.raw should contain theSameElementsInOrderAs args.toSeq
@@ -71,7 +70,7 @@ class JFXAppParametersSpec
   }
 
   it should "allows named arguments" in {
-    val args       = Array("--arg1=value1", "--arg2=value2")
+    val args = Array("--arg1=value1", "--arg2=value2")
     val parameters = getParameters(args)
 
     parameters.raw should contain theSameElementsInOrderAs args.toSeq
@@ -80,7 +79,7 @@ class JFXAppParametersSpec
   }
 
   it should "allows mix raw and named arguments" in {
-    val args       = Array("arg1", "--arg2=value2", "-arg3=value3")
+    val args = Array("arg1", "--arg2=value2", "-arg3=value3")
     val parameters = getParameters(args)
 
     parameters.raw should contain theSameElementsInOrderAs args.toSeq

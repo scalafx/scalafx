@@ -33,14 +33,11 @@ import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object VertexFormat {
-
   /**
    * Converts a ScalaFX VertexFormat to its JavaFX counterpart.
    *
-   * @param v
-   *   ScalaFX VertexFormat
-   * @return
-   *   JavaFX VertexFormat
+   * @param v ScalaFX VertexFormat
+   * @return JavaFX VertexFormat
    */
   implicit def sfxVertexFormat2jfx(v: VertexFormat): jfxss.VertexFormat =
     if (v != null) v.delegate else null
@@ -57,49 +54,49 @@ object VertexFormat {
 }
 
 /**
- * Defines the format of the vertices in a mesh. A vertex consists of an array of points, normals (optional), and
- * texture coordinates.
+ * Defines the format of the vertices in a mesh. A vertex consists of an array
+ * of points, normals (optional), and texture coordinates.
  *
  * Wraps a $JFX $URL0 $TC]].
  *
- * @define
- *   TC VertexFormat
- * @define
- *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx/scene/shape/VertexFormat.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
+ * @define TC VertexFormat
+ * @define URL0 [[https://docs.oracle.com/javase/8/javafx/api/javafx/scalafx/scene/shape/VertexFormat.html
+ * @define JFX JavaFX
+ * @define ORIGINALDOC Original Documentation]].
  */
-class VertexFormat(override val delegate: jfxss.VertexFormat) extends SFXDelegate[jfxss.VertexFormat] {
+class VertexFormat(override val delegate: jfxss.VertexFormat)
+  extends SFXDelegate[jfxss.VertexFormat] {
 
   /**
-   * Returns the number of component indices that represents a vertex. For example, a `PointTexcoord` vertex consists of
-   * 2 indices, one for point component and the other for texture coordinates component. Hence its value will be 2.
+   * Returns the number of component indices that represents a vertex. For example,
+   * a `PointTexcoord` vertex consists of 2 indices, one for point component and
+   * the other for texture coordinates component. Hence its value will be 2.
    *
-   * @return
-   *   the number of component indices
+   * @return the number of component indices
    */
   def vertexIndexSize: Int = delegate.getVertexIndexSize
 
   /**
-   * Returns the index offset in the face array of the point component within a vertex.
+   * Returns the index offset in the face array of the point component within
+   * a vertex.
    *
-   * @return
-   *   the offset to the point component.
+   * @return the offset to the point component.
    */
   def pointIndexOffset: Int = delegate.getPointIndexOffset
 
   /**
-   * Returns the index offset in the face array of the normal component within a vertex.
+   * Returns the index offset in the face array of the normal component within
+   * a vertex.
    *
-   * @return
-   *   the offset to the normal component.
+   * @return the offset to the normal component.
    */
   def normalIndexOffset: Int = delegate.getNormalIndexOffset
 
   /**
-   * Returns the index offset in the face array of the texture coordinates component within a vertex.
+   * Returns the index offset in the face array of the texture coordinates
+   * component within a vertex.
    *
-   * @return
-   *   the offset to the texture coordinates component.
+   * @return the offset to the texture coordinates component.
    */
   def texCoordIndexOffset: Int = delegate.getTexCoordIndexOffset
 

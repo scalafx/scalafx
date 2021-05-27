@@ -32,9 +32,7 @@ import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.print.PrintSides]]. */
-class PrintSidesSpec
-    extends SFXEnumDelegateSpec[jfxp.PrintSides, PrintSides](
-      javaClass = classOf[jfxp.PrintSides],
-      scalaClass = classOf[PrintSides],
-      companion = PrintSides
-    )
+class PrintSidesSpec extends SFXEnumDelegateSpec[jfxp.PrintSides, PrintSides](
+  javaClass = classOf[jfxp.PrintSides],
+  scalaClass = classOf[PrintSides],
+  companion = PrintSides)

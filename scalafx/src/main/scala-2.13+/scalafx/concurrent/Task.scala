@@ -46,29 +46,32 @@ object Task {
 }
 
 /**
- * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/Task.htmlTask]] Class.
+ * Wrapper trait for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/Task.html Task]]
+ * Class.
  */
 abstract class Task[T](override val delegate: jfxc.Task[T])
-    extends Worker[T]
+  extends Worker[T]
     with jfxe.EventTarget
     with EventHandlerDelegate2
     with SFXDelegate[jfxc.Task[T]] {
 
   override def eventHandlerDelegate: EventHandled = new EventHandled {
 
-    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[_ >: E]): Unit =
+    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                         eventHandler: jfxe.EventHandler[_ >: E]): Unit =
       delegate.addEventHandler(eventType, eventHandler)
 
-    def removeEventHandler[E <: jfxe.Event](
-        eventType: jfxe.EventType[E],
-        eventHandler: jfxe.EventHandler[_ >: E]
-    ): Unit =
+    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                            eventHandler: jfxe.EventHandler[_ >: E]): Unit =
       delegate.removeEventHandler(eventType, eventHandler)
 
-    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[_ >: E]): Unit =
+
+    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                        eventFilter: jfxe.EventHandler[_ >: E]): Unit =
       delegate.addEventFilter(eventType, eventFilter)
 
-    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[_ >: E]): Unit =
+    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                           eventFilter: jfxe.EventHandler[_ >: E]): Unit =
       delegate.removeEventFilter(eventType, eventFilter)
 
     def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =
@@ -76,7 +79,8 @@ abstract class Task[T](override val delegate: jfxc.Task[T])
   }
 
   /**
-   * The onCancelled event handler is called whenever the Task state transitions to the CANCELLED state.
+   * The onCancelled event handler is called whenever the Task state transitions to the CANCELLED
+   * state.
    */
   def onCancelled: ObjectProperty[jfxe.EventHandler[jfxc.WorkerStateEvent]] = delegate.onCancelledProperty
 
@@ -103,7 +107,8 @@ abstract class Task[T](override val delegate: jfxc.Task[T])
   }
 
   /**
-   * The onSchedule event handler is called whenever the Task state transitions to the SCHEDULED state.
+   * The onSchedule event handler is called whenever the Task state transitions to the SCHEDULED
+   * state.
    */
   def onScheduled: ObjectProperty[jfxe.EventHandler[jfxc.WorkerStateEvent]] = delegate.onScheduledProperty
 
@@ -112,7 +117,8 @@ abstract class Task[T](override val delegate: jfxc.Task[T])
   }
 
   /**
-   * The onSucceeded event handler is called whenever the Task state transitions to the SUCCEEDED state.
+   * The onSucceeded event handler is called whenever the Task state transitions to the SUCCEEDED
+   * state.
    */
   def onSucceeded: ObjectProperty[jfxe.EventHandler[jfxc.WorkerStateEvent]] = delegate.onSucceededProperty
 

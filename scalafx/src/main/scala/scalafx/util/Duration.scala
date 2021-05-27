@@ -69,23 +69,19 @@ object Duration {
 }
 
 /**
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Duration.html$D]].
+ * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/util/Duration.html $D]].
  *
- * @constructor
- *   Creates a new $D from a JavaFX $D.
- * @param delegate
- *   JavaFX $D to be delegated.
+ * @constructor Creates a new $D from a JavaFX $D.
+ * @param delegate JavaFX $D to be delegated.
  *
- * @define
- *   D `Duration`
+ * @define D `Duration`
  */
 class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Duration] with Ordered[Duration] {
 
   /**
    * The constructor of $D
    *
-   * @param millis
-   *   The length of the $D in milliseconds
+   * @param millis The length of the $D in milliseconds
    */
   def this(millis: Double) =
     this(jfxu.Duration.millis(millis))

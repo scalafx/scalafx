@@ -37,12 +37,11 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object DirectoryChooser {
-  implicit def sfxDirectoryChooser2jfx(dc: DirectoryChooser): jfxs.DirectoryChooser =
-    if (dc != null) dc.delegate else null
+  implicit def sfxDirectoryChooser2jfx(dc: DirectoryChooser): jfxs.DirectoryChooser = if (dc != null) dc.delegate else null
 }
 
 class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.DirectoryChooser)
-    extends SFXDelegate[jfxs.DirectoryChooser] {
+  extends SFXDelegate[jfxs.DirectoryChooser] {
 
   /**
    * The initial directory for the displayed dialog.
@@ -65,8 +64,7 @@ class DirectoryChooser(override val delegate: jfxs.DirectoryChooser = new jfxs.D
   /**
    * Shows a new directory selection dialog.
    *
-   * @return
-   *   the selected directory or null if no directory has been selected
+   * @return the selected directory or null if no directory has been selected
    */
   def showDialog(ownerWindow: Window): File = delegate.showDialog(ownerWindow)
 }

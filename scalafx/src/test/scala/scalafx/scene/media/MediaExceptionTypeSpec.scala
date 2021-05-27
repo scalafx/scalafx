@@ -33,8 +33,7 @@ import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.scene.media.MediaException.Type]]. */
 class MediaExceptionTypeSpec
-    extends SFXEnumDelegateSpec[jfxsm.MediaException.Type, MediaException.Type](
-      classOf[jfxsm.MediaException.Type],
-      classOf[MediaException.Type],
-      MediaException.Type
-    )
+  extends SFXEnumDelegateSpec[jfxsm.MediaException.Type, MediaException.Type](
+    classOf[jfxsm.MediaException.Type],
+    classOf[MediaException.Type],
+    MediaException.Type)

@@ -36,6 +36,8 @@ import scalafx.beans.property.DoubleProperty
 
 /**
  * ObservableValue Spec tests.
+ *
+ *
  */
 class ObservableValueSpec extends AnyFlatSpec with BeforeAndAfterEach {
   var property: DoubleProperty = null
@@ -56,9 +58,10 @@ class ObservableValueSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support anonymous change listeners with parameters" in {
     var invalidateCalled = false
-    property onChange { (obs, oldV, newV) =>
-      invalidateCalled = true
-      obs should equal(property)
+    property onChange {
+      (obs, oldV, newV) =>
+        invalidateCalled = true
+        obs should equal(property)
     }
     invalidateCalled should be(false)
     property() = 100
@@ -67,11 +70,12 @@ class ObservableValueSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support adding explicit listeners as a clojure" in {
     var invalidateCalled = false
-    property.addListener { (obs, oldV, newV) =>
-      invalidateCalled = true
-      obs should equal(property.delegate)
-      oldV should equal(0)
-      newV should equal(100)
+    property.addListener {
+      (obs, oldV, newV) =>
+        invalidateCalled = true
+        obs should equal(property.delegate)
+        oldV should equal(0)
+        newV should equal(100)
     }
     invalidateCalled should be(false)
     property() = 100
@@ -88,8 +92,7 @@ class ObservableValueSpec extends AnyFlatSpec with BeforeAndAfterEach {
     // val subscription = property.onChange ...
     // ...
     // subscription.cancel()
-    val listener: ChangeListener[Number] =
-      (obs: JFXObservableValue[_ <: Number], oldV: Number, newV: Number) => invalidateCalled = true
+    val listener: ChangeListener[Number] = (obs: JFXObservableValue[_ <: Number], oldV: Number, newV: Number) => invalidateCalled = true
     property addListener listener
     invalidateCalled should be(false)
     property() = 100

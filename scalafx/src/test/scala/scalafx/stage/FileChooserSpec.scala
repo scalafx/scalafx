@@ -36,7 +36,7 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
  * FileChooser Spec tests.
  */
 class FileChooserSpec
-    extends SimpleSFXDelegateSpec[jfxs.FileChooser, FileChooser](classOf[jfxs.FileChooser], classOf[FileChooser])
+  extends SimpleSFXDelegateSpec[jfxs.FileChooser, FileChooser](classOf[jfxs.FileChooser], classOf[FileChooser])
     with RunOnApplicationThread {
 
   it should "Allow `Seq` of ScalaFX `ExtensionFilter`s" in {

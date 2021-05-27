@@ -45,27 +45,23 @@ object JobSettings {
   /**
    * Converts a ScalaFX JobSettings to its JavaFX counterpart.
    *
-   * @param js
-   *   ScalaFX JobSettings
-   * @return
-   *   JavaFX JobSettings
+   * @param js ScalaFX JobSettings
+   * @return JavaFX JobSettings
    */
   implicit def sfxJobSettings2jfx(js: JobSettings): jfxp.JobSettings = if (js != null) js.delegate else null
 
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/JobSettings.htmlJavaFXJobSettings]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/JobSettings.html JavaFX JobSettings]].
  *
- * @constructor
- *   Creates a new ScalaFX JobSettings from its JavaFX counterpart.
- * @param delegate
- *   JavaFX JobSettings. Since there is no public constructor for it, there is not a default value.
+ * @constructor Creates a new ScalaFX JobSettings from its JavaFX counterpart.
+ * @param delegate JavaFX JobSettings. Since there is no public constructor for it, there is not a default value.
  *
- * @since
- *   8.0
+ * @since 8.0
  */
-final class JobSettings(override val delegate: jfxp.JobSettings) extends SFXDelegate[jfxp.JobSettings] {
+final class JobSettings(override val delegate: jfxp.JobSettings)
+  extends SFXDelegate[jfxp.JobSettings] {
 
   /**
    * Property representing an instance of `Collation`.

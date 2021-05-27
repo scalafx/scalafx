@@ -33,13 +33,13 @@ import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 import scala.language.implicitConversions
 
 /**
- * Enum indicating the repetition rules for border images. Wrapper for
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderRepeat.htmljavafx.scene.layout.BorderRepeat]].
+ * Enum indicating the repetition rules for border images.
+ * Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/BorderRepeat.html javafx.scene.layout.BorderRepeat]].
  */
 object BorderRepeat extends SFXEnumDelegateCompanion[jfxsl.BorderRepeat, BorderRepeat] {
 
   /**
-   * The image is tiled (repeated) to fill the area.
+   * The image is tiled (repeated) to fill the area. 
    */
   case object Repeat extends BorderRepeat(jfxsl.BorderRepeat.REPEAT)
 
@@ -61,5 +61,6 @@ object BorderRepeat extends SFXEnumDelegateCompanion[jfxsl.BorderRepeat, BorderR
   protected override def unsortedValues: Array[BorderRepeat] = Array(Repeat, Round, Space, Stretch)
 }
 
+
 sealed abstract class BorderRepeat(override val delegate: jfxsl.BorderRepeat)
-    extends SFXEnumDelegate[jfxsl.BorderRepeat]
+  extends SFXEnumDelegate[jfxsl.BorderRepeat]

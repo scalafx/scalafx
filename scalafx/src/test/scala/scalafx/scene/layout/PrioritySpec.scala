@@ -32,10 +32,9 @@ import javafx.scene.{layout => jfxsl}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Test for [[scalafx.scene.layout.Priority]] */
-class PrioritySpec
-    extends SFXEnumDelegateSpec[jfxsl.Priority, Priority](
-      javaClass = classOf[jfxsl.Priority],
-      scalaClass = classOf[Priority],
-      companion = Priority
-    )
+class PrioritySpec extends SFXEnumDelegateSpec[jfxsl.Priority, Priority](
+  javaClass = classOf[jfxsl.Priority],
+  scalaClass = classOf[Priority],
+  companion = Priority)

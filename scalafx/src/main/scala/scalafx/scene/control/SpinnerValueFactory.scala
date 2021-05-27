@@ -27,6 +27,7 @@
 
 package scalafx.scene.control
 
+
 import javafx.scene.{control => jfxsc}
 import javafx.{collections => jfxc, util => jfxu}
 import scalafx.Includes._
@@ -37,41 +38,42 @@ import scalafx.util.StringConverter
 
 import scala.language.implicitConversions
 
+
 object SpinnerValueFactory {
 
   implicit def sfxSpinnerValueFactory2jfx[T](v: SpinnerValueFactory[T]): jfxsc.SpinnerValueFactory[T] =
     if (v != null) v.delegate else null
 
   object ListSpinnerValueFactory {
-    implicit def sfxListSpinnerValueFactory2jfx[T](
-        v: ListSpinnerValueFactory[T]
-    ): jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[T] =
+    implicit def sfxListSpinnerValueFactory2jfx[T](v: ListSpinnerValueFactory[T]): jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[T] =
       if (v != null) v.delegate else null
   }
 
+
   /**
-   * A SpinnerValueFactory implementation designed to iterate through a list of values.
+   * A SpinnerValueFactory implementation designed to iterate through
+   * a list of values.
    *
-   * @tparam T
-   *   The type of the elements in the List.
+   *
+   * @tparam T The type of the elements in the List.
    */
   class ListSpinnerValueFactory[T](override val delegate: jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[T])
-      extends SpinnerValueFactory(delegate)
-      with SFXDelegate[jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[T]] {
+    extends SpinnerValueFactory(delegate)
+    with SFXDelegate[jfxsc.SpinnerValueFactory.ListSpinnerValueFactory[T]] {
 
     /**
-     * Creates a new instance of the ListSpinnerValueFactory with the given list used as the list to step through.
+     * Creates a new instance of the ListSpinnerValueFactory with the given
+     * list used as the list to step through.
      *
-     * @param items
-     *   The list of items to step through with the Spinner.
+     * @param items The list of items to step through with the Spinner.
      */
     def this(items: ObservableBuffer[T]) = {
       this(new jfxsc.SpinnerValueFactory.ListSpinnerValueFactory(items.delegate))
     }
 
     /**
-     * The underlying data model for the ListView. Note that it has a generic type that must match the type of the
-     * ListView itself.
+     * The underlying data model for the ListView. Note that it has a generic
+     * type that must match the type of the ListView itself.
      */
     def items: ObjectProperty[jfxc.ObservableList[T]] = delegate.itemsProperty
 
@@ -81,39 +83,34 @@ object SpinnerValueFactory {
   }
 
   object IntegerSpinnerValueFactory {
-    implicit def sfxIntegerSpinnerValueFactory2jfx(
-        v: IntegerSpinnerValueFactory
-    ): jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory =
+    implicit def sfxIntegerSpinnerValueFactory2jfx(v: IntegerSpinnerValueFactory): jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory =
       if (v != null) v.delegate else null
   }
 
   class IntegerSpinnerValueFactory(override val delegate: jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory)
-      extends SpinnerValueFactory[Integer](delegate)
-      with SFXDelegate[jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory] {
+    extends SpinnerValueFactory[Integer](delegate)
+    with SFXDelegate[jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory] {
 
     /**
-     * Constructs a new IntegerSpinnerValueFactory that sets the initial value to be equal to the min value, and a
-     * default `amountToStepBy` of one.
+     * Constructs a new IntegerSpinnerValueFactory that sets the initial value
+     * to be equal to the min value, and a default `amountToStepBy` of one.
      *
-     * @param min
-     *   The minimum allowed integer value for the Spinner.
-     * @param max
-     *   The maximum allowed integer value for the Spinner.
+     * @param min The minimum allowed integer value for the Spinner.
+     * @param max The maximum allowed integer value for the Spinner.
      */
     def this(min: Int, max: Int) = {
       this(new jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory(min, max))
     }
 
     /**
-     * Constructs a new IntegerSpinnerValueFactory with a default `amountToStepBy` of one.
+     * Constructs a new IntegerSpinnerValueFactory with a default
+     * `amountToStepBy` of one.
      *
-     * @param min
-     *   The minimum allowed integer value for the Spinner.
-     * @param max
-     *   The maximum allowed integer value for the Spinner.
-     * @param initialValue
-     *   The value of the Spinner when first instantiated, must be within the bounds of the min and max arguments, or
-     *   else the min value will be used.
+     * @param min The minimum allowed integer value for the Spinner.
+     * @param max The maximum allowed integer value for the Spinner.
+     * @param initialValue The value of the Spinner when first instantiated, must
+     *                     be within the bounds of the min and max arguments, or
+     *                     else the min value will be used.
      */
     def this(min: Int, max: Int, initialValue: Int) = {
       this(new jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory(min, max, initialValue))
@@ -122,15 +119,12 @@ object SpinnerValueFactory {
     /**
      * Constructs a new IntegerSpinnerValueFactory.
      *
-     * @param min
-     *   The minimum allowed integer value for the Spinner.
-     * @param max
-     *   The maximum allowed integer value for the Spinner.
-     * @param initialValue
-     *   The value of the Spinner when first instantiated, must be within the bounds of the min and max arguments, or
-     *   else the min value will be used.
-     * @param amountToStepBy
-     *   The amount to increment or decrement by, per step.
+     * @param min The minimum allowed integer value for the Spinner.
+     * @param max The maximum allowed integer value for the Spinner.
+     * @param initialValue The value of the Spinner when first instantiated, must
+     *                     be within the bounds of the min and max arguments, or
+     *                     else the min value will be used.
+     * @param amountToStepBy The amount to increment or decrement by, per step.
      */
     def this(min: Int, max: Int, initialValue: Int, amountToStepBy: Int) = {
       this(new jfxsc.SpinnerValueFactory.IntegerSpinnerValueFactory(min, max, initialValue, amountToStepBy))
@@ -165,42 +159,41 @@ object SpinnerValueFactory {
   }
 
   object DoubleSpinnerValueFactory {
-    implicit def sfxDoubleSpinnerValueFactory2jfx(
-        v: DoubleSpinnerValueFactory
-    ): jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory =
+    implicit def sfxDoubleSpinnerValueFactory2jfx(v: DoubleSpinnerValueFactory): jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory =
       if (v != null) v.delegate else null
   }
 
+
   /**
-   * A `SpinnerValueFactory` implementation designed to iterate through double values.
+   * A `SpinnerValueFactory` implementation designed to iterate through
+   * double values.
+   *
    */
   class DoubleSpinnerValueFactory(override val delegate: jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory)
-      extends SpinnerValueFactory(delegate)
-      with SFXDelegate[jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory] {
+    extends SpinnerValueFactory(delegate)
+    with SFXDelegate[jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory] {
 
     /**
-     * Constructs a new DoubleSpinnerValueFactory that sets the initial value to be equal to the min value, and a
-     * default `amountToStepBy` of one.
+     * Constructs a new DoubleSpinnerValueFactory that sets the initial value
+     * to be equal to the min value, and a default `amountToStepBy` of
+     * one.
      *
-     * @param min
-     *   The minimum allowed double value for the Spinner.
-     * @param max
-     *   The maximum allowed double value for the Spinner.
+     * @param min The minimum allowed double value for the Spinner.
+     * @param max The maximum allowed double value for the Spinner.
      */
     def this(min: Double, max: Double) = {
       this(new jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory(min, max))
     }
 
     /**
-     * Constructs a new DoubleSpinnerValueFactory with a default `amountToStepBy` of one.
+     * Constructs a new DoubleSpinnerValueFactory with a default
+     * `amountToStepBy` of one.
      *
-     * @param min
-     *   The minimum allowed double value for the Spinner.
-     * @param max
-     *   The maximum allowed double value for the Spinner.
-     * @param initialValue
-     *   The value of the Spinner when first instantiated, must be within the bounds of the min and max arguments, or
-     *   else the min value will be used.
+     * @param min The minimum allowed double value for the Spinner.
+     * @param max The maximum allowed double value for the Spinner.
+     * @param initialValue The value of the Spinner when first instantiated, must
+     *                     be within the bounds of the min and max arguments, or
+     *                     else the min value will be used.
      */
     def this(min: Double, max: Double, initialValue: Double) = {
       this(new jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory(min, max, initialValue))
@@ -209,15 +202,12 @@ object SpinnerValueFactory {
     /**
      * Constructs a new DoubleSpinnerValueFactory.
      *
-     * @param min
-     *   The minimum allowed double value for the Spinner.
-     * @param max
-     *   The maximum allowed double value for the Spinner.
-     * @param initialValue
-     *   The value of the Spinner when first instantiated, must be within the bounds of the min and max arguments, or
-     *   else the min value will be used.
-     * @param amountToStepBy
-     *   The amount to increment or decrement by, per step.
+     * @param min The minimum allowed double value for the Spinner.
+     * @param max The maximum allowed double value for the Spinner.
+     * @param initialValue The value of the Spinner when first instantiated, must
+     *                     be within the bounds of the min and max arguments, or
+     *                     else the min value will be used.
+     * @param amountToStepBy The amount to increment or decrement by, per step.
      */
     def this(min: Double, max: Double, initialValue: Double, amountToStepBy: Double) = {
       this(new jfxsc.SpinnerValueFactory.DoubleSpinnerValueFactory(min, max, initialValue, amountToStepBy))
@@ -254,22 +244,21 @@ object SpinnerValueFactory {
 }
 
 /**
- * The SpinnerValueFactory is the model behind the `Spinner` control - without a value factory installed a `Spinner` is
- * unusable.
+ * The SpinnerValueFactory is the model behind the `Spinner` control - without a value factory installed a
+ * `Spinner` is unusable.
  *
  * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/SpinnerValueFactory.html]].
  *
- * @param delegate
- *   A JavaFX SpinnerValueFactory to be wrapped. Its default value is a new JavaFX SpinnerValueFactory.
- * @tparam T
- *   The type of the data this value factory deals with, which must coincide with the type of the Spinner that the value
- *   factory is set on.
+ * @param delegate A JavaFX SpinnerValueFactory to be wrapped. Its default value is a new JavaFX SpinnerValueFactory.
+ * @tparam T The type of the data this value factory deals with, which must
+ *           coincide with the type of the Spinner that the value factory is set on.
  */
 abstract class SpinnerValueFactory[T](override val delegate: jfxsc.SpinnerValueFactory[T])
-    extends SFXDelegate[jfxsc.SpinnerValueFactory[T]] {
+  extends SFXDelegate[jfxsc.SpinnerValueFactory[T]] {
 
   /**
-   * Represents the current value of the SpinnerValueFactory, or null if no value has been set.
+   * Represents the current value of the SpinnerValueFactory, or null if no
+   * value has been set.
    */
   def value: ObjectProperty[T] = delegate.valueProperty()
   def value_=(newValue: T): Unit = {
@@ -277,8 +266,9 @@ abstract class SpinnerValueFactory[T](override val delegate: jfxsc.SpinnerValueF
   }
 
   /**
-   * Converts the user-typed input (when the Spinner is `editable`) to an object of type T, such that the input may be
-   * retrieved via the `value` property.
+   * Converts the user-typed input (when the Spinner is `editable`) to an object of type T,
+   * such that the input may be retrieved via the  `value`
+   * property.
    */
   def converter: ObjectProperty[jfxu.StringConverter[T]] = delegate.converterProperty()
   def converter_=(newValue: StringConverter[T]): Unit = {
@@ -286,8 +276,9 @@ abstract class SpinnerValueFactory[T](override val delegate: jfxsc.SpinnerValueF
   }
 
   /**
-   * The wrapAround property is used to specify whether the value factory should be circular. For example, should an
-   * integer-based value model increment from the maximum value back to the minimum value (and vice versa).
+   * The wrapAround property is used to specify whether the value factory should
+   * be circular. For example, should an integer-based value model increment
+   * from the maximum value back to the minimum value (and vice versa).
    */
   def wrapAround: BooleanProperty = delegate.wrapAroundProperty()
   def wrapAround_=(value: Boolean): Unit = {
@@ -295,3 +286,4 @@ abstract class SpinnerValueFactory[T](override val delegate: jfxsc.SpinnerValueF
   }
 
 }
+

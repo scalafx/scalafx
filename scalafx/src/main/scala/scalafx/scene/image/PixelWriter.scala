@@ -42,7 +42,8 @@ object PixelWriter {
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/image/PixelWriter.html]]
  */
-trait PixelWriter extends SFXDelegate[jfxsi.PixelWriter] {
+trait PixelWriter
+  extends SFXDelegate[jfxsi.PixelWriter] {
 
   /**
    * This method returns the PixelFormat in which the surface stores its pixels, or a roughly equivalent pixel format
@@ -67,47 +68,21 @@ trait PixelWriter extends SFXDelegate[jfxsi.PixelWriter] {
   /**
    * Stores pixel data from a byte array into a rectangular region of the surface.
    */
-  def setPixels(
-      x: Int,
-      y: Int,
-      w: Int,
-      h: Int,
-      pixelformat: PixelFormat[java.nio.ByteBuffer],
-      buffer: Array[Byte],
-      offset: Int,
-      scanlineStride: Int
-  ): Unit = {
+  def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: PixelFormat[java.nio.ByteBuffer], buffer: Array[Byte], offset: Int, scanlineStride: Int): Unit = {
     delegate.setPixels(x, y, w, h, pixelformat, buffer, offset, scanlineStride)
   }
 
   /**
    * Stores pixel data from an int array into a rectangular region of the surface.
    */
-  def setPixels(
-      x: Int,
-      y: Int,
-      w: Int,
-      h: Int,
-      pixelformat: PixelFormat[java.nio.IntBuffer],
-      buffer: Array[Int],
-      offset: Int,
-      scanlineStride: Int
-  ): Unit = {
+  def setPixels(x: Int, y: Int, w: Int, h: Int, pixelformat: PixelFormat[java.nio.IntBuffer], buffer: Array[Int], offset: Int, scanlineStride: Int): Unit = {
     delegate.setPixels(x, y, w, h, pixelformat, buffer, offset, scanlineStride)
   }
 
   /**
    * Stores pixel data from a buffer into a rectangular region of the surface.
    */
-  def setPixels[B <: Buffer](
-      x: Int,
-      y: Int,
-      w: Int,
-      h: Int,
-      pixelformat: PixelFormat[B],
-      buffer: B,
-      scanlineStride: Int
-  ): Unit = {
+  def setPixels[B <: Buffer](x: Int, y: Int, w: Int, h: Int, pixelformat: PixelFormat[B], buffer: B, scanlineStride: Int): Unit = {
     delegate.setPixels(x, y, w, h, pixelformat, buffer, scanlineStride)
   }
 

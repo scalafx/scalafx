@@ -32,10 +32,9 @@ import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Test for [[scalafx.scene.shape.DrawMode]] */
-class DrawModeSpec
-    extends SFXEnumDelegateSpec[jfxss.DrawMode, DrawMode](
-      javaClass = classOf[jfxss.DrawMode],
-      scalaClass = classOf[DrawMode],
-      companion = DrawMode
-    )
+class DrawModeSpec extends SFXEnumDelegateSpec[jfxss.DrawMode, DrawMode](
+  javaClass = classOf[jfxss.DrawMode],
+  scalaClass = classOf[DrawMode],
+  companion = DrawMode)

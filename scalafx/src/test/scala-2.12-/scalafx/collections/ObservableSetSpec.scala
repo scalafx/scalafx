@@ -37,29 +37,22 @@ import scala.collection.mutable._
 
 /**
  * ObservableSet[T] Spec tests.
+ *
+ *
  */
 class ObservableSetSpec[T]
-    extends SimpleSFXDelegateSpec[jfxc.ObservableSet[T], ObservableSet[T]](
-      classOf[jfxc.ObservableSet[T]],
-      classOf[ObservableSet[T]]
-    ) {
+  extends SimpleSFXDelegateSpec[jfxc.ObservableSet[T], ObservableSet[T]](classOf[jfxc.ObservableSet[T]], classOf[ObservableSet[T]]) {
 
   /**
-   * Verifies if a generated Set is the same instance than a original Set. If it should not be, generated map must be a
-   * ObservableSet.
+   * Verifies if a generated Set is the same instance than a original Set. If it should not be,
+   * generated map must be a ObservableSet.
    *
-   * @param generatedSet
-   *   Generated Set, that should be a ObservableSet.
-   * @param originalSet
-   *   Set Original ObservableSet.
-   * @param shouldBeTheSame
-   *   If both maps should be same instance.
+   * @param generatedSet    Generated Set, that should be a ObservableSet.
+   * @param originalSet     Set Original ObservableSet.
+   * @param shouldBeTheSame If both maps should be same instance.
    */
-  private def compareInstances(
-      generatedSet: Set[Int],
-      originalSet: ObservableSet[Int],
-      shouldBeTheSame: Boolean
-  ): Unit = {
+  private def compareInstances(generatedSet: Set[Int],
+                               originalSet: ObservableSet[Int], shouldBeTheSame: Boolean): Unit = {
     if (shouldBeTheSame) {
       generatedSet should be theSameInstanceAs (originalSet)
     } else {
@@ -91,7 +84,7 @@ class ObservableSetSpec[T]
 
   it should "notify on invalidation" in {
     // Preparation
-    val set             = ObservableSet(1, 2)
+    val set = ObservableSet(1, 2)
     var invalidateCount = 0
     set onInvalidate {
       invalidateCount += 1
@@ -110,7 +103,7 @@ class ObservableSetSpec[T]
 
   it should "notify on changes" in {
     // Preparation
-    val set         = ObservableSet(1, 2)
+    val set = ObservableSet(1, 2)
     var changeCount = 0
     set onChange {
       changeCount += 1
@@ -128,8 +121,8 @@ class ObservableSetSpec[T]
   it should "return changed set" in {
     // Preparation
     val set = ObservableSet(1, 2)
-    set onChange { (sourceSet, change) =>
-      sourceSet should be(set)
+    set onChange {
+      (sourceSet, change) => sourceSet should be(set)
     }
 
     // Execution
@@ -138,57 +131,59 @@ class ObservableSetSpec[T]
 
   it should "notify each addition individually" in {
     // Preparation
-    val set         = ObservableSet.empty[Int]
+    val set = ObservableSet.empty[Int]
     val addedValues = Buffer.empty[Int]
-    set onChange { (sourceSet, change) =>
-      change match {
-        case Add(value) => addedValues += value
-        case _          => fail("Unexpected change: " + change)
-      }
+    set onChange {
+      (sourceSet, change) =>
+        change match {
+          case Add(value) => addedValues += value
+          case _          => fail("Unexpected change: " + change)
+        }
     }
 
     // Execution
     // Operations that change this set
     compareInstances(set += 0, set, true)
-    compareInstances(set += (1, 2), set, true)
+    compareInstances(set +=(1, 2), set, true)
     compareInstances(set ++= List(3), set, true)
     compareInstances(set ++= List(4, 5), set, true)
     (set add 6) should be(true)
     set(7) = true
     // Operations that not change this set
     compareInstances(set + 100, set, false)
-    compareInstances(set + (101, 102), set, false)
+    compareInstances(set +(101, 102), set, false)
     compareInstances(set ++ List(103), set, false)
     compareInstances(set ++ List(104, 105), set, false)
     (set add 1) should be(false)
     set(2) = true
 
-    // Verification
+    // Verification 
     addedValues should equal((0 to 7).toBuffer)
   }
 
   it should "notify each remotion individually" in {
-    // Preparation
-    val set           = ObservableSet.from((0 to 15))
+    // Preparation 
+    val set = ObservableSet.from((0 to 15))
     val removedValues = Buffer.empty[Int]
-    set onChange { (sourceSet, change) =>
-      change match {
-        case Remove(value) => removedValues += value
-        case _             => fail("Unexpected change: " + change)
-      }
+    set onChange {
+      (sourceSet, change) =>
+        change match {
+          case Remove(value) => removedValues += value
+          case _             => fail("Unexpected change: " + change)
+        }
     }
 
     // Execution
     // Operations that change this set
     compareInstances(set -= 0, set, true)
-    compareInstances(set -= (1, 2), set, true)
+    compareInstances(set -=(1, 2), set, true)
     compareInstances(set --= List(3), set, true)
     compareInstances(set --= List(4, 5), set, true)
     (set remove 6) should be(true)
     set(7) = false
     // Operations that not change this set
     compareInstances(set - 100, set, false)
-    compareInstances(set - (101, 102), set, false)
+    compareInstances(set -(101, 102), set, false)
     compareInstances(set -- List(103), set, false)
     compareInstances(set -- List(104, 105), set, false)
     (set remove 1) should be(false)
@@ -211,21 +206,22 @@ class ObservableSetSpec[T]
 
   it should "keep his behavior with other types of sets beyond HashSet" in {
     // Preparation
-    val set           = ObservableSet.from(new LinkedHashSet[Int])
-    val addedValues   = Buffer.empty[Int]
+    val set = ObservableSet.from(new LinkedHashSet[Int])
+    val addedValues = Buffer.empty[Int]
     val removedValues = Buffer.empty[Int]
-    set onChange { (sourceSet, change) =>
-      change match {
-        case Add(value)    => addedValues += value
-        case Remove(value) => removedValues += value
-      }
+    set onChange {
+      (sourceSet, change) =>
+        change match {
+          case Add(value)    => addedValues += value
+          case Remove(value) => removedValues += value
+        }
     }
 
     // Execution
-    compareInstances(set += (1, 10, 3, 8, 5), set, true)
-    compareInstances(set -= (10, 9, 3), set, true)
+    compareInstances(set +=(1, 10, 3, 8, 5), set, true)
+    compareInstances(set -=(10, 9, 3), set, true)
     compareInstances(set += 11, set, true)
-    compareInstances(set += (-1, 15), set, true)
+    compareInstances(set +=(-1, 15), set, true)
 
     // Verification
     set.toList should equal(List(1, 8, 5, 11, -1, 15))

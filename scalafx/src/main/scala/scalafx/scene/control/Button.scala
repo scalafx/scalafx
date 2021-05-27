@@ -38,9 +38,7 @@ object Button {
   implicit def sfxButton2jfx(v: Button): jfxsc.Button = if (v != null) v.delegate else null
 }
 
-class Button(override val delegate: jfxsc.Button = new jfxsc.Button)
-    extends ButtonBase(delegate)
-    with SFXDelegate[jfxsc.Button] {
+class Button(override val delegate: jfxsc.Button = new jfxsc.Button) extends ButtonBase(delegate) with SFXDelegate[jfxsc.Button] {
 
   /**
    * Creates a button with the specified text as its label.
@@ -53,7 +51,8 @@ class Button(override val delegate: jfxsc.Button = new jfxsc.Button)
   def this(text: String, graphic: Node) = this(new jfxsc.Button(text, graphic))
 
   /**
-   * A Cancel Button is the button that receives a keyboard VK_ESC press, if no other node in the scene consumes it.
+   * A Cancel Button is the button that receives a keyboard VK_ESC press, if no other node in the
+   * scene consumes it.
    */
   def cancelButton: BooleanProperty = delegate.cancelButtonProperty
 
@@ -62,7 +61,8 @@ class Button(override val delegate: jfxsc.Button = new jfxsc.Button)
   }
 
   /**
-   * A default Button is the button that receives a keyboard VK_ENTER press, if no other node in the scene consumes it.
+   * A default Button is the button that receives a keyboard VK_ENTER press, if no other node in the
+   * scene consumes it.
    */
   def defaultButton: BooleanProperty = delegate.defaultButtonProperty
 

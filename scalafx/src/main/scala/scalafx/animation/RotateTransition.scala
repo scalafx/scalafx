@@ -39,62 +39,50 @@ import scala.language.implicitConversions
 /**
  * Companion Object for [[scalafx.animation.RotateTransition]].
  *
- * @define
- *   RT `RotateTransition`
+ * @define RT `RotateTransition`
  */
 object RotateTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $RT to a JavaFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/RotateTransition.html$RT]], extracting its delegate.
+   * Converts a ScalaFX $RT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/RotateTransition.html $RT]],
+   * extracting its delegate.
    *
-   * @param v
-   *   ScalaFX $RT
-   * @return
-   *   JavaFX $RT extracted from `v`.
+   * @param v ScalaFX $RT
+   * @return JavaFX $RT extracted from `v`.
    */
   implicit def sfxRotateTransition2jfx(v: RotateTransition): jfxa.RotateTransition = if (v != null) v.delegate else null
 
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/RotateTransition.html$RT]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/RotateTransition.html $RT]].
  *
- * @constructor
- *   Creates a new ScalaFX $RT from a JavaFX $RT.
- * @param delegate
- *   JavaFX $RT to be delegated.
+ * @constructor Creates a new ScalaFX $RT from a JavaFX $RT.
+ * @param delegate JavaFX $RT to be delegated.
  *
- * @define
- *   RT `RotateTransition`
- * @define
- *   CONST The constructor of $RT
- * @define
- *   DUR The duration of the $RT
- * @define
- *   DV Default value:
+ * @define RT `RotateTransition`
+ * @define CONST The constructor of $RT
+ * @define DUR The duration of the $RT
+ * @define DV Default value:
  */
 class RotateTransition(override val delegate: jfxa.RotateTransition = new jfxa.RotateTransition)
-    extends Transition(delegate)
-    with SFXDelegate[jfxa.RotateTransition] {
+  extends Transition(delegate)
+  with SFXDelegate[jfxa.RotateTransition] {
 
   // CONSTRUCTOR
 
   /**
    * $CONST
    *
-   * @param duration
-   *   $DUR
+   * @param duration $DUR
    */
   def this(duration: Duration) = this(new jfxa.RotateTransition(duration))
 
   /**
    * $CONST
    *
-   * @param duration
-   *   $DUR
-   * @param node
-   *   The node which will be rotated
+   * @param duration $DUR
+   * @param node The node which will be rotated
    */
   def this(duration: Duration, node: Node) =
     this(new jfxa.RotateTransition(duration, node))

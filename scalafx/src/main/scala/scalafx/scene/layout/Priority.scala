@@ -33,10 +33,7 @@ import scalafx.scene.layout.LayoutIncludes.jfxPriority2sfx
 
 import scala.language.implicitConversions
 
-/**
- * Wrapper for
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Priority.htmljavafx.scene.layout.Priority]]
- */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/layout/Priority.html javafx.scene.layout.Priority]] */
 object Priority extends SFXEnumDelegateCompanion[jfxsl.Priority, Priority] {
 
   case object Always extends Priority(jfxsl.Priority.ALWAYS)
@@ -63,4 +60,6 @@ object Priority extends SFXEnumDelegateCompanion[jfxsl.Priority, Priority] {
   def min(a: jfxsl.Priority, b: jfxsl.Priority): Priority = jfxsl.Priority.min(a, b)
 }
 
-sealed abstract class Priority(override val delegate: jfxsl.Priority) extends SFXEnumDelegate[jfxsl.Priority]
+
+sealed abstract class Priority(override val delegate: jfxsl.Priority)
+  extends SFXEnumDelegate[jfxsl.Priority]

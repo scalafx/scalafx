@@ -34,180 +34,146 @@ import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
 
-object BufferProperty {
 
+object BufferProperty {
   /**
-   * Converts a ScalaFX BufferProperty to its JavaFX counterpart ListProperty.
-   *
-   * @param v
-   *   ScalaFX BufferProperty
-   * @return
-   *   JavaFX ListProperty
-   */
+    * Converts a ScalaFX BufferProperty to its JavaFX counterpart ListProperty.
+    *
+    * @param v ScalaFX BufferProperty
+    * @return JavaFX ListProperty
+    */
   implicit def sfxBufferProperty2jfx[E <: Any](v: BufferProperty[E]): jfxbp.ListProperty[E] =
     if (v != null) v.delegate else null
 
   /**
-   * Creates a new BufferProperty instance using the ObservableBuffer as the value.
-   *
-   * @param value
-   *   the initial value
-   */
+    * Creates a new BufferProperty instance using the ObservableBuffer as the value.
+    *
+    * @param value the initial value
+    */
   def apply[E <: Any](value: ObservableBuffer[E]): BufferProperty[E] =
     new BufferProperty(new jfxbp.SimpleListProperty(value.delegate))
 
   /**
-   * Creates a new BufferProperty instance.
-   *
-   * @param bean
-   *   the bean of this BufferProperty
-   * @param name
-   *   the name of this BufferProperty
-   */
+    * Creates a new BufferProperty instance.
+    *
+    * @param bean the bean of this BufferProperty
+    * @param name the name of this BufferProperty
+    */
   def apply[E <: Any](bean: Any, name: String): BufferProperty[E] =
     new BufferProperty(new jfxbp.SimpleListProperty[E](bean, name))
 
   /**
-   * Creates a new BufferProperty instance.
-   *
-   * @param bean
-   *   the bean of this BufferProperty
-   * @param name
-   *   the name of this BufferProperty
-   * @param value
-   *   the initial value
-   */
+    * Creates a new BufferProperty instance.
+    *
+    * @param bean  the bean of this BufferProperty
+    * @param name  the name of this BufferProperty
+    * @param value the initial value
+    */
   def apply[E <: Any](bean: Any, name: String, value: ObservableBuffer[E]): BufferProperty[E] =
     new BufferProperty(new jfxbp.SimpleListProperty(bean, name, value.delegate))
 
   /**
-   * Creates a new BufferProperty and a its value from a sequence of elements.
-   *
-   * @param items
-   *   Sequence of elements to assign to BufferProperty value
-   * @return
-   *   new BufferProperty from items
-   */
+    * Creates a new BufferProperty and a its value from a sequence of elements.
+    *
+    * @param items Sequence of elements to assign to BufferProperty value
+    * @return new BufferProperty from items
+    */
   def apply[E <: Any](items: Seq[E]): BufferProperty[E] = {
     import scala.collection.JavaConverters._
-    new BufferProperty[E](new jfxbp.SimpleListProperty(jfxc.FXCollections.observableArrayList[E](items.asJava)))
+    new BufferProperty[E](
+      new jfxbp.SimpleListProperty(jfxc.FXCollections.observableArrayList[E](items.asJava)))
   }
 
   /**
-   * Creates a new BufferProperty and a its value from a sequence of elements.
-   *
-   * @param bean
-   *   the bean of this BufferProperty
-   * @param name
-   *   the name of this BufferProperty
-   * @param items
-   *   Sequence of elements to assign to BufferProperty value
-   * @return
-   *   new BufferProperty from items
-   */
+    * Creates a new BufferProperty and a its value from a sequence of elements.
+    *
+    * @param bean  the bean of this BufferProperty
+    * @param name  the name of this BufferProperty
+    * @param items Sequence of elements to assign to BufferProperty value
+    * @return new BufferProperty from items
+    */
   def apply[E <: Any](bean: Any, name: String, items: Seq[E]): BufferProperty[E] = {
     import scala.collection.JavaConverters.seqAsJavaListConverter
     new BufferProperty[E](
       new jfxbp.SimpleListProperty(
         bean,
         name,
-        jfxc.FXCollections.observableArrayList[E](seqAsJavaListConverter(items).asJava)
-      )
-    )
+        jfxc.FXCollections.observableArrayList[E](seqAsJavaListConverter(items).asJava)))
   }
 }
 
+
 /**
- * Wraps a $JFX [[$URL0ListProperty]].
- *
- * @define
- *   TC BufferProperty
- * @define
- *   URL0 https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ListProperty.html
- * @define
- *   JFX JavaFX
- */
+  * Wraps a $JFX [[ $URL0 ListProperty]].
+  *
+  * @define TC   BufferProperty
+  * @define URL0 https://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ListProperty.html
+  * @define JFX  JavaFX
+  */
 class BufferProperty[E <: Any](override val delegate: jfxbp.ListProperty[E] = new jfxbp.SimpleListProperty[E])
-    extends ReadOnlyBufferProperty[E](delegate)
+  extends ReadOnlyBufferProperty[E](delegate)
     with Property[ObservableBuffer[E], jfxc.ObservableList[E]]
     with SFXDelegate[jfxbp.ListProperty[E]] {
 
   /**
-   * The constructor of BufferProperty
-   *
-   * @param value
-   *   the initial value of the wrapped value
-   */
+    * The constructor of BufferProperty
+    *
+    * @param value the initial value of the wrapped value
+    */
   def this(value: ObservableBuffer[E]) =
     this(new jfxbp.SimpleListProperty(value.delegate))
 
   /**
-   * The constructor of BufferProperty
-   *
-   * @param bean
-   *   the bean of this BufferProperty
-   * @param name
-   *   the name of this BufferProperty
-   */
+    * The constructor of BufferProperty
+    *
+    * @param bean the bean of this BufferProperty
+    * @param name the name of this BufferProperty
+    */
   def this(bean: Any, name: String) =
     this(new jfxbp.SimpleListProperty[E](bean, name))
 
   /**
-   * The constructor of BufferProperty
-   *
-   * @param bean
-   *   the bean of this BufferProperty
-   * @param name
-   *   the name of this BufferProperty
-   * @param value
-   *   the initial value of the wrapped value
-   */
+    * The constructor of BufferProperty
+    *
+    * @param bean  the bean of this BufferProperty
+    * @param name  the name of this BufferProperty
+    * @param value the initial value of the wrapped value
+    */
   def this(bean: Any, name: String, value: ObservableBuffer[E]) =
     this(new jfxbp.SimpleListProperty(bean, name, value.delegate))
 
   /**
-   * Creates a new BufferProperty and a its value from a sequence of elements.
-   *
-   * @param items
-   *   Sequence of elements to assign to BufferProperty value
-   * @return
-   *   new BufferProperty from items
-   */
+    * Creates a new BufferProperty and a its value from a sequence of elements.
+    *
+    * @param items Sequence of elements to assign to BufferProperty value
+    * @return new BufferProperty from items
+    */
   def this(items: Seq[E]) = {
-    this(
-      new jfxbp.SimpleListProperty(
-        jfxc.FXCollections.observableArrayList[E](scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava)
-      )
-    )
+    this(new jfxbp.SimpleListProperty(
+      jfxc.FXCollections.observableArrayList[E](
+        scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava)))
   }
 
   /**
-   * Creates a new BufferProperty and a its value from a sequence of elements.
-   *
-   * @param bean
-   *   the bean of this BufferProperty
-   * @param name
-   *   the name of this BufferProperty
-   * @param items
-   *   Sequence of elements to assign to BufferProperty value
-   * @return
-   *   new BufferProperty from items
-   */
+    * Creates a new BufferProperty and a its value from a sequence of elements.
+    *
+    * @param bean  the bean of this BufferProperty
+    * @param name  the name of this BufferProperty
+    * @param items Sequence of elements to assign to BufferProperty value
+    * @return new BufferProperty from items
+    */
   def this(bean: Any, name: String, items: Seq[E]) = {
-    this(
-      new jfxbp.SimpleListProperty(
-        bean,
-        name,
-        jfxc.FXCollections.observableArrayList[E](scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava)
-      )
-    )
+    this(new jfxbp.SimpleListProperty(
+      bean,
+      name,
+      jfxc.FXCollections.observableArrayList[E](
+        scala.collection.JavaConverters.seqAsJavaListConverter(items).asJava)))
   }
 
   /**
-   * Set the wrapped value.
-   *
-   * @param v
-   *   The new value
-   */
+    * Set the wrapped value.
+    *
+    * @param v The new value
+    */
   override def value_=(v: ObservableBuffer[E]): Unit = delegate.setValue(v)
 }

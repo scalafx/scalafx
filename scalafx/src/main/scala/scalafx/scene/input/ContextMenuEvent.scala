@@ -26,19 +26,17 @@
  */
 package scalafx.scene.input
 
+
 import javafx.scene.{input => jfxsi}
 
 import scala.language.implicitConversions
 import scalafx.delegate.SFXDelegate
 
 object ContextMenuEvent {
-  implicit def sfxContextMenuEvent2jfx(c: ContextMenuEvent): jfxsi.ContextMenuEvent =
-    if (c != null) c.delegate else null
+  implicit def sfxContextMenuEvent2jfx(c: ContextMenuEvent): jfxsi.ContextMenuEvent = if (c != null) c.delegate else null
 }
 
-class ContextMenuEvent(override val delegate: jfxsi.ContextMenuEvent)
-    extends InputEvent(delegate)
-    with SFXDelegate[jfxsi.ContextMenuEvent] {
+class ContextMenuEvent(override val delegate: jfxsi.ContextMenuEvent) extends InputEvent(delegate) with SFXDelegate[jfxsi.ContextMenuEvent] {
 
   def sceneX: Double = delegate.getSceneX
 

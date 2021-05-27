@@ -32,10 +32,10 @@ import javafx.scene.{shape => jfxss}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Test for [[scalafx.scene.shape.StrokeLineCap]] */
-class StrokeLineCapSpec
-    extends SFXEnumDelegateSpec[jfxss.StrokeLineCap, StrokeLineCap](
-      javaClass = classOf[jfxss.StrokeLineCap],
-      scalaClass = classOf[StrokeLineCap],
-      companion = StrokeLineCap
-    )
+class StrokeLineCapSpec extends SFXEnumDelegateSpec[jfxss.StrokeLineCap, StrokeLineCap](
+  javaClass = classOf[jfxss.StrokeLineCap],
+  scalaClass = classOf[StrokeLineCap],
+  companion = StrokeLineCap)
+

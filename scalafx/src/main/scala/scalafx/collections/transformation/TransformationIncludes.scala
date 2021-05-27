@@ -33,8 +33,8 @@ import scala.language.implicitConversions
 object TransformationIncludes extends TransformationIncludes
 
 /**
- * Contains implicit methods to convert from
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/transformation/package-summary.htmljavafx.collections.transformation]]
+ * Contains implicit methods to convert from 
+ * [[http://docs.oracle.com/javase/8/javafx/api/javafx/collections/transformation/package-summary.html javafx.collections.transformation]]
  * Classes to their ScalaFX counterparts.
  */
 trait TransformationIncludes {

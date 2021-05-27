@@ -47,105 +47,84 @@ object Scene {
 /**
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Scene.html]].
  *
- * @constructor
- *   Create a new ScalaFX Scene with JavaFX Scene as delegate.
- * @param delegate
- *   JavaFX Scene delegated. Its default value is a JavaFX Scene with a
- *   [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.htmlGroup]] as root Node.
+ * @constructor Create a new ScalaFX Scene with JavaFX Scene as delegate.
+ * @param delegate JavaFX Scene delegated. Its default value is a JavaFX Scene with a
+ *                 [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.html Group]] as root Node.
  */
-class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())) extends SFXDelegate[jfxs.Scene] {
+class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group()))
+  extends SFXDelegate[jfxs.Scene] {
 
   /**
-   * Creates a Scene with a [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.htmlGroup]] as root Node
-   * with a specific size.
+   * Creates a Scene with a [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/Group.html Group]] as root Node with a
+   * specific size.
    *
-   * @param width
-   *   The width of the scene
-   * @param height
-   *   The height of the scene
+   * @param width  The width of the scene
+   * @param height The height of the scene
    */
   def this(width: Double, height: Double) = this(new jfxs.Scene(new jfxs.Group(), width, height))
 
   /**
    * Creates a Scene for a specific root Node.
    *
-   * @param parent
-   *   The root node of the scene graph
+   * @param parent The root node of the scene graph
    */
   def this(parent: Parent) = this(new jfxs.Scene(parent))
 
   /**
    * Creates a Scene for a specific root Node with a specific size.
    *
-   * @param parent
-   *   The root node of the scene graph
-   * @param width
-   *   The width of the scene
-   * @param height
-   *   The height of the scene
+   * @param parent The root node of the scene graph
+   * @param width  The width of the scene
+   * @param height The height of the scene
    */
   def this(parent: Parent, width: Double, height: Double) = this(new jfxs.Scene(parent, width, height))
 
   /**
-   * Constructs a scene consisting of a root, with a dimension of width and height, and specifies whether a depth buffer
-   * is created for this scene.
+   * Constructs a scene consisting of a root, with a dimension of width and height,
+   * and specifies whether a depth buffer is created for this scene.
    *
-   * @param parent
-   *   The root node of the scene graph
-   * @param width
-   *   The width of the scene
-   * @param height
-   *   The height of the scene
-   * @param depthBuffer
-   *   The depth buffer flag
+   * @param parent      The root node of the scene graph
+   * @param width       The width of the scene
+   * @param height      The height of the scene
+   * @param depthBuffer The depth buffer flag
    */
   def this(parent: Parent, width: Double, height: Double, depthBuffer: Boolean) =
     this(new jfxs.Scene(parent, width, height, depthBuffer))
 
   /**
-   * Creates a Scene with a `Group` as parent, with a dimension of width and height, and specifies whether a depth
-   * buffer is created for this scene.
+   * Creates a Scene with a `Group` as parent, with a dimension of width and height,
+   * and specifies whether a depth buffer is created for this scene.
    *
-   * @param width
-   *   The width of the scene
-   * @param height
-   *   The height of the scene
-   * @param depthBuffer
-   *   The depth buffer flag
+   * @param width       The width of the scene
+   * @param height      The height of the scene
+   * @param depthBuffer The depth buffer flag
    */
   def this(width: Double, height: Double, depthBuffer: Boolean) =
     this(new jfxs.Scene(new jfxs.Group(), width, height, depthBuffer))
 
   /**
-   * Constructs a scene consisting of a root, with a dimension of width and height, specifies whether a depth buffer is
-   * created for this scene and specifies the required scene anti-aliasing.
+   * Constructs a scene consisting of a root, with a dimension of width and height,
+   * specifies whether a depth buffer is created for this scene and specifies
+   * the required scene anti-aliasing.
    *
-   * @param parent
-   *   The root node of the scene graph
-   * @param width
-   *   The width of the scene
-   * @param height
-   *   The height of the scene
-   * @param depthBuffer
-   *   The depth buffer flag
-   * @param antiAliasing
-   *   The required scene anti-aliasing.
+   * @param parent       The root node of the scene graph
+   * @param width        The width of the scene
+   * @param height       The height of the scene
+   * @param depthBuffer  The depth buffer flag
+   * @param antiAliasing The required scene anti-aliasing.
    */
   def this(parent: Parent, width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing) =
     this(new jfxs.Scene(parent, width, height, depthBuffer, antiAliasing))
 
   /**
-   * Creates a Scene with a `Group` as parent, with a dimension of width and height, specifies whether a depth buffer is
-   * created for this scene and specifies the required scene anti-aliasing.
+   * Creates a Scene with a `Group` as parent, with a dimension of width and height,
+   * specifies whether a depth buffer is created for this scene and specifies
+   * the required scene anti-aliasing.
    *
-   * @param width
-   *   The width of the scene
-   * @param height
-   *   The height of the scene
-   * @param depthBuffer
-   *   The depth buffer flag
-   * @param antiAliasing
-   *   The required scene anti-aliasing.
+   * @param width        The width of the scene
+   * @param height       The height of the scene
+   * @param depthBuffer  The depth buffer flag
+   * @param antiAliasing The required scene anti-aliasing.
    */
   def this(width: Double, height: Double, depthBuffer: Boolean, antiAliasing: SceneAntialiasing) =
     this(new jfxs.Scene(new jfxs.Group(), width, height, depthBuffer, antiAliasing))
@@ -153,14 +132,10 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Creates a Scene for a specific root Node with a specific size and fill.
    *
-   * @param parent
-   *   The root node of the scene graph
-   * @param width
-   *   The width of the scene
-   * @param height
-   *   The height of the scene
-   * @param fill
-   *   The fill
+   * @param parent The root node of the scene graph
+   * @param width  The width of the scene
+   * @param height The height of the scene
+   * @param fill   The fill
    */
   def this(parent: Parent, width: Double, height: Double, fill: Paint) =
     this(new jfxs.Scene(parent, width, height, fill))
@@ -168,10 +143,8 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Creates a Scene for a specific root Node with a fill.
    *
-   * @param parent
-   *   The root node of the scene graph
-   * @param fill
-   *   The fill
+   * @param parent The root node of the scene graph
+   * @param fill   The fill
    */
   def this(parent: Parent, fill: Paint) = this(new jfxs.Scene(parent, fill))
 
@@ -192,12 +165,9 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    */
   def getChildren: ObservableBuffer[jfxs.Node] = root.value match {
     case group: jfxs.Group => group.getChildren
-    case pane: jfxsl.Pane  => pane.getChildren
-    case _ =>
-      throw new IllegalStateException(
-        "Cannot access children of root: " + root + "\n" +
-          "Use a class that extends Group or Pane, or override the getChildren method."
-      )
+    case pane: jfxsl.Pane => pane.getChildren
+    case _ => throw new IllegalStateException("Cannot access children of root: " + root + "\n" +
+      "Use a class that extends Group or Pane, or override the getChildren method.")
   }
 
   /**
@@ -214,8 +184,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * Sets the list of Nodes children from this Scene's `root`, replacing the prior content. If you want append to
    * current content, use `add` or similar.
    *
-   * @param c
-   *   list of Nodes children from this Scene's `root` to replace prior content.
+   * @param c list of Nodes children from this Scene's `root` to replace prior content.
    */
   def content_=(c: Iterable[Node]): Unit = {
     fillSFXCollection(this.content, c)
@@ -224,8 +193,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Sets a Node child, replacing the prior content. If you want append to current content, use `add` or similar.
    *
-   * @param n
-   *   Node child to replace prior content.
+   * @param n Node child to replace prior content.
    */
   def content_=(n: Node): Unit = {
     fillSFXCollectionWithOne(this.content, n)
@@ -249,10 +217,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
     cursor() = v
   }
 
-  /**
-   * The effective node orientation of a scene resolves the inheritance of node orientation, returning either
-   * left-to-right or right-to-left.
-   */
+  /** The effective node orientation of a scene resolves the inheritance of node orientation, returning either left-to-right or right-to-left.  */
   def effectiveNodeOrientation: ReadOnlyObjectProperty[jfxg.NodeOrientation] = delegate.effectiveNodeOrientationProperty
 
   /**
@@ -292,8 +257,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when a mouse button has been clicked (pressed and released) on this `Scene`.
    */
-  def onContextMenuRequested: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]] =
-    delegate.onContextMenuRequestedProperty
+  def onContextMenuRequested: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]] = delegate.onContextMenuRequestedProperty
 
   def onContextMenuRequested_=(v: jfxe.EventHandler[_ >: jfxsi.ContextMenuEvent]): Unit = {
     onContextMenuRequested() = v
@@ -309,8 +273,8 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   }
 
   /**
-   * Defines a function to be called when this `Scene` is a drag and drop gesture source after its data has been dropped
-   * on a drop target.
+   * Defines a function to be called when this `Scene` is a drag and drop gesture source after its data has been
+   * dropped on a drop target.
    */
   def onDragDone: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.DragEvent]] = delegate.onDragDoneProperty
 
@@ -357,8 +321,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when this `Node` has input focus and the input method text has changed.
    */
-  def onInputMethodTextChanged: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]] =
-    delegate.onInputMethodTextChangedProperty
+  def onInputMethodTextChanged: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]] = delegate.onInputMethodTextChangedProperty
 
   def onInputMethodTextChanged_=(v: jfxe.EventHandler[_ >: jfxsi.InputMethodEvent]): Unit = {
     onInputMethodTextChanged() = v
@@ -412,8 +375,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when a full press-drag-release gesture enters this `Scene`.
    */
-  def onMouseDragEntered: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] =
-    delegate.onMouseDragEnteredProperty
+  def onMouseDragEntered: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] = delegate.onMouseDragEnteredProperty
 
   def onMouseDragEntered_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragEntered() = v
@@ -422,8 +384,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when a full press-drag-release gesture exits this `Scene`.
    */
-  def onMouseDragExited: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] =
-    delegate.onMouseDragExitedProperty
+  def onMouseDragExited: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] = delegate.onMouseDragExitedProperty
 
   def onMouseDragExited_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragExited() = v
@@ -441,8 +402,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when a full press-drag-release gesture ends within this `Scene`.
    */
-  def onMouseDragReleased: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] =
-    delegate.onMouseDragReleasedProperty
+  def onMouseDragReleased: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]] = delegate.onMouseDragReleasedProperty
 
   def onMouseDragReleased_=(v: jfxe.EventHandler[_ >: jfxsi.MouseDragEvent]): Unit = {
     onMouseDragReleased() = v
@@ -504,29 +464,28 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
 
   /**
    * The URL of the user-agent stylesheet that will be used by this Scene in place of the the platform-default
-   * user-agent stylesheet. If the URL does not resolve to a valid location, the platform-default user-agent stylesheet
-   * will be used.
+   * user-agent stylesheet. If the URL does not resolve to a valid location, the platform-default user-agent
+   * stylesheet will be used.
    *
    * For additional information about using CSS with the scene graph, see the
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.htmlCSSReference Guide]].
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html CSS Reference Guide]].
    *
-   * @return
-   *   The URL of the user-agent stylesheet that will be used by this SubScene, or null if has not been set.
+   * @return The URL of the user-agent stylesheet that will be used by this SubScene, or null if has not been set.
    */
   def userAgentStylesheet: ObjectProperty[String] = delegate.userAgentStylesheetProperty
 
   /**
    * Set the URL of the user-agent stylesheet that will be used by this Scene in place of the the platform-default
-   * user-agent stylesheet. If the URL does not resolve to a valid location, the platform-default user-agent stylesheet
-   * will be used.
+   * user-agent stylesheet. If the URL does not resolve to a valid location, the platform-default user-agent
+   * stylesheet will be used.
    *
    * For additional information about using CSS with the scene graph, see the
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.htmlCSSReference Guide]].
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html CSS Reference Guide]].
    *
-   * @param url
-   *   The URL is a hierarchical URI of the form `[scheme:][//authority][path]`. If the URL does not have a `[scheme:]`
-   *   component, the URL is considered to be the `[path]` component only. Any leading '/' character of the `[path]` is
-   *   ignored and the `[path]` is treated as a path relative to the root of the application's classpath.
+   * @param url The URL is a hierarchical URI of the form `[scheme:][//authority][path]`.
+   *            If the URL does not have a `[scheme:]` component, the URL is considered to be the `[path]`
+   *            component only. Any leading '/' character of the `[path]` is ignored and the `[path]` is
+   *            treated as a path relative to the root of the application's classpath.
    */
   def userAgentStylesheet_=(url: String): Unit = {
     ObjectProperty.fillProperty[String](userAgentStylesheet, url)
@@ -561,8 +520,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
    * Sets the list of stylesheets URLs, replacing the prior content. If you want append to current content, use `add` or
    * similar.
    *
-   * @param c
-   *   list of stylesheets URLs to replace prior content.
+   * @param c list of stylesheets URLs to replace prior content.
    */
   def stylesheets_=(c: Iterable[String]): Unit = {
     fillCollection(stylesheets, c)
@@ -571,19 +529,16 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Looks for any node within the scene graph based on the specified CSS selector.
    *
-   * @param selector
-   *   The css selector to look up
-   * @return
-   *   A [[scala.Some]] containing the Node in the scene which matches the CSS selector, or [[scala.None]] if none is
-   *   found.
+   * @param selector The css selector to look up
+   * @return A [[scala.Some]] containing the Node in the scene which matches the CSS selector, or [[scala.None]]
+   *         if none is found.
    */
   def lookup(selector: String): Option[Node] = Option(delegate.lookup(selector))
 
   /**
    * Registers the specified mnemonic.
    *
-   * @param m
-   *   The Mnemonic
+   * @param m The Mnemonic
    */
   def addMnemonic(m: Mnemonic): Unit = {
     delegate.addMnemonic(m)
@@ -592,8 +547,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Unregisters the specified mnemonic.
    *
-   * @param m
-   *   The Mnemonic to be removed.
+   * @param m The Mnemonic to be removed.
    */
   def removeMnemonic(m: Mnemonic): Unit = {
     delegate.removeMnemonic(m)
@@ -602,8 +556,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Gets the list of mnemonics for this `Scene`.
    */
-  def getMnemonics: jfxc.ObservableMap[jfxsi.KeyCombination, jfxc.ObservableList[jfxsi.Mnemonic]] =
-    delegate.getMnemonics
+  def getMnemonics: jfxc.ObservableMap[jfxsi.KeyCombination, jfxc.ObservableList[jfxsi.Mnemonic]] = delegate.getMnemonics
 
   /**
    * Gets the list of accelerators for this Scene.
@@ -613,10 +566,8 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Confirms a potential drag and drop gesture that is recognized over this `Scene`.
    *
-   * @param transferModes
-   *   The supported `TransferMode`(s) of this `Node`
-   * @return
-   *   A `Dragboard` to place this `Scene`'s data on
+   * @param  transferModes The supported `TransferMode`(s) of this `Node`
+   * @return A `Dragboard` to place this `Scene`'s data on
    */
   def startDragAndDrop(transferModes: TransferMode*): Dragboard =
     delegate.startDragAndDrop(transferModes.map(_.delegate): _*)
@@ -629,19 +580,17 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   }
 
   /**
-   * The scene's current focus owner node. This node's "focused" variable might be false if this scene has no window, or
-   * if the window is inactive (window.focused == false).
+   * The scene's current focus owner node. This node's "focused" variable might be false if this scene has no window,
+   * or if the window is inactive (window.focused == false).
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def focusOwner: ReadOnlyObjectProperty[jfxs.Node] = delegate.focusOwnerProperty()
 
   /**
    * Defines a function to be called when user performs a rotation action.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onRotate: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] = delegate.onRotateProperty
 
@@ -652,11 +601,9 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when a rotation gesture ends.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
-  def onRotationFinished: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] =
-    delegate.onRotationFinishedProperty()
+  def onRotationFinished: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] = delegate.onRotationFinishedProperty()
 
   def onRotationFinished_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]): Unit = {
     onRotationFinished() = v
@@ -665,11 +612,9 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when a rotation gesture starts.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
-  def onRotationStarted: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] =
-    delegate.onRotationFinishedProperty()
+  def onRotationStarted: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.RotateEvent]] = delegate.onRotationFinishedProperty()
 
   def onRotationStarted_=(v: jfxe.EventHandler[_ >: jfxsi.RotateEvent]): Unit = {
     onRotationStarted() = v
@@ -678,8 +623,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when a Scroll gesture ends.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onScrollFinished: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ScrollEvent]] = delegate.onScrollFinishedProperty()
 
@@ -690,8 +634,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when a Scroll gesture starts.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onScrollStarted: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ScrollEvent]] = delegate.onScrollStartedProperty()
 
@@ -702,8 +645,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when a Swipe Down gesture starts.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onSwipeDown: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.SwipeEvent]] = delegate.onSwipeDownProperty()
 
@@ -714,8 +656,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when a Swipe Down gesture starts.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onSwipeLeft: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.SwipeEvent]] = delegate.onSwipeLeftProperty()
 
@@ -726,8 +667,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when a Swipe Up gesture starts.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onSwipeUp: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.SwipeEvent]] = delegate.onSwipeUpProperty()
 
@@ -738,8 +678,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when a Swipe Right gesture starts.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onSwipeRight: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.SwipeEvent]] = delegate.onSwipeRightProperty()
 
@@ -750,8 +689,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when user performs a Touch action.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onZoom: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ZoomEvent]] = delegate.onZoomProperty()
 
@@ -762,8 +700,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when a Zoom gesture ends.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onZoomFinished: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ZoomEvent]] = delegate.onZoomFinishedProperty()
 
@@ -774,8 +711,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when a Zoom gesture starts.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onZoomStarted: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.ZoomEvent]] = delegate.onZoomStartedProperty()
 
@@ -786,8 +722,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when user performs a Touch Moved action.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onTouchMoved: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.TouchEvent]] = delegate.onTouchMovedProperty()
 
@@ -798,8 +733,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when user performs a Touch Pressed action.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onTouchPressed: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.TouchEvent]] = delegate.onTouchPressedProperty()
 
@@ -810,8 +744,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when user performs a Touch Released action.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onTouchReleased: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.TouchEvent]] = delegate.onTouchReleasedProperty()
 
@@ -822,8 +755,7 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Defines a function to be called when user performs a Touch Stationary action.
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def onTouchStationary: ObjectProperty[jfxe.EventHandler[_ >: jfxsi.TouchEvent]] = delegate.onTouchStationaryProperty()
 
@@ -834,24 +766,18 @@ class Scene(override val delegate: jfxs.Scene = new jfxs.Scene(new jfxs.Group())
   /**
    * Takes a snapshot of this scene and returns the rendered image when it is ready.
    *
-   * @param image
-   *   The writable image that will be used to hold the rendered scene.
-   * @return
-   *   the rendered image
-   * @since
-   *   2.2
+   * @param image The writable image that will be used to hold the rendered scene.
+   * @return the rendered image
+   * @since 2.2
    */
   def snapshot(image: WritableImage): WritableImage = delegate.snapshot(image)
 
   /**
    * Takes a snapshot of this scene at the next frame and calls the specified callback method when the image is ready.
    *
-   * @param callback
-   *   A function to be called when the image is ready.
-   * @param image
-   *   The writable image that will be used to hold the rendered scene.
-   * @since
-   *   2.2
+   * @param callback A function to be called  when the image is ready.
+   * @param image    The writable image that will be used to hold the rendered scene.
+   * @since 2.2
    */
   def snapshot(callback: SnapshotResult => Unit, image: WritableImage): Unit = {
     val javaCallback = new jfxu.Callback[jfxs.SnapshotResult, java.lang.Void] {

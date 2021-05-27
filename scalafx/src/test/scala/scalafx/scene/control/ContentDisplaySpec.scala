@@ -32,10 +32,9 @@ import javafx.scene.{control => jfxsc}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Tests for [[scalafx.scene.control.ContentDisplay]]. */
-class ContentDisplaySpec
-    extends SFXEnumDelegateSpec[jfxsc.ContentDisplay, ContentDisplay](
-      javaClass = classOf[jfxsc.ContentDisplay],
-      scalaClass = classOf[ContentDisplay],
-      companion = ContentDisplay
-    )
+class ContentDisplaySpec extends SFXEnumDelegateSpec[jfxsc.ContentDisplay, ContentDisplay](
+  javaClass = classOf[jfxsc.ContentDisplay],
+  scalaClass = classOf[ContentDisplay],
+  companion = ContentDisplay)

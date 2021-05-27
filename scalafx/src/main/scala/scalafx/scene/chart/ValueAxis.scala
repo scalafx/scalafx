@@ -40,8 +40,8 @@ object ValueAxis {
 }
 
 abstract class ValueAxis[T <: Number](override val delegate: jfxsc.ValueAxis[T])
-    extends Axis[T](delegate)
-    with SFXDelegate[jfxsc.ValueAxis[T]] {
+  extends Axis[T](delegate)
+  with SFXDelegate[jfxsc.ValueAxis[T]] {
 
   def lowerBound: DoubleProperty = delegate.lowerBoundProperty
 

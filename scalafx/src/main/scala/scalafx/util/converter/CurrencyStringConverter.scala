@@ -33,12 +33,11 @@ import javafx.util.{converter => jfxuc}
 import scala.language.implicitConversions
 
 object CurrencyStringConverter {
-  implicit def sfxCurrencyStringConverter2jfx(c: CurrencyStringConverter): jfxuc.CurrencyStringConverter =
-    if (c != null) c.delegate else null
+  implicit def sfxCurrencyStringConverter2jfx(c: CurrencyStringConverter): jfxuc.CurrencyStringConverter = if (c != null) c.delegate else null
 }
 
 class CurrencyStringConverter(override val delegate: jfxuc.CurrencyStringConverter = new jfxuc.CurrencyStringConverter)
-    extends NumberStringConverterDelegate[jfxuc.CurrencyStringConverter](delegate) {
+  extends NumberStringConverterDelegate[jfxuc.CurrencyStringConverter](delegate) {
 
   def this(locale: Locale) = this(new jfxuc.CurrencyStringConverter(locale))
 

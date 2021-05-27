@@ -41,10 +41,10 @@ object BoxBlur {
  * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/effect/BoxBlur.html]]
  */
 class BoxBlur(override val delegate: jfxse.BoxBlur = new jfxse.BoxBlur)
-    extends Effect(delegate)
-    with DimensionDelegate[jfxse.BoxBlur]
-    with InputDelegate[jfxse.BoxBlur]
-    with SFXDelegate[jfxse.BoxBlur] {
+  extends Effect(delegate)
+  with DimensionDelegate[jfxse.BoxBlur]
+  with InputDelegate[jfxse.BoxBlur]
+  with SFXDelegate[jfxse.BoxBlur] {
 
   /**
    * Creates a new instance of BoxBlur with specified width, height and iterations.

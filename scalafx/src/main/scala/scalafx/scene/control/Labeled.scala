@@ -44,9 +44,9 @@ object Labeled {
 }
 
 abstract class Labeled(override val delegate: jfxsc.Labeled)
-    extends Control(delegate)
-    with AlignmentDelegate[jfxsc.Labeled]
-    with SFXDelegate[jfxsc.Labeled] {
+  extends Control(delegate)
+  with AlignmentDelegate[jfxsc.Labeled]
+  with SFXDelegate[jfxsc.Labeled] {
 
   /**
    * Specifies the positioning of the graphic relative to the text.
@@ -117,8 +117,8 @@ abstract class Labeled(override val delegate: jfxsc.Labeled)
   }
 
   /**
-   * Specifies the behavior for lines of text 'when text is multiline' Unlike `Labeled.contentDisplay` which affects the
-   * graphic and text, this setting only affects multiple lines of text relative to the text bounds.
+   * Specifies the behavior for lines of text 'when text is multiline' Unlike `Labeled.contentDisplay` which affects
+   * the graphic and text, this setting only affects multiple lines of text relative to the text bounds.
    */
   def textAlignment: ObjectProperty[jfxst.TextAlignment] = delegate.textAlignmentProperty
 
@@ -164,10 +164,10 @@ abstract class Labeled(override val delegate: jfxsc.Labeled)
   }
 
   /**
-   * Specifies the string to display for the ellipsis when text is truncated. For example it might be "..."
+   * Specifies the string to display for the ellipsis when text is truncated.
+   * For example it might be "..."
    *
-   * @since
-   *   2.2
+   * @since 2.2
    */
   def ellipsisString: StringProperty = delegate.ellipsisStringProperty()
 

@@ -30,10 +30,7 @@ package scalafx.scene.shape
 import javafx.scene.{shape => jfxss}
 import scalafx.delegate.{SFXEnumDelegate, SFXEnumDelegateCompanion}
 
-/**
- * Wrapper for
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/FillRule.htmljavafx.scene.shape.FillRule]]
- */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/FillRule.html javafx.scene.shape.FillRule]] */
 object FillRule extends SFXEnumDelegateCompanion[jfxss.FillRule, FillRule] {
 
   case object EvenOdd extends FillRule(jfxss.FillRule.EVEN_ODD)
@@ -48,4 +45,6 @@ object FillRule extends SFXEnumDelegateCompanion[jfxss.FillRule, FillRule] {
   protected override def unsortedValues: Array[FillRule] = Array(EvenOdd, NonZero)
 }
 
-sealed abstract class FillRule(override val delegate: jfxss.FillRule) extends SFXEnumDelegate[jfxss.FillRule]
+
+sealed abstract class FillRule(override val delegate: jfxss.FillRule)
+  extends SFXEnumDelegate[jfxss.FillRule]

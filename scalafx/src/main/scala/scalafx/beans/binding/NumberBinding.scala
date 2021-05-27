@@ -35,8 +35,6 @@ object NumberBinding {
   implicit def sfxNumberBinding2jfx(nb: NumberBinding): jfxbb.NumberBinding = if (nb != null) nb.delegate else null
 }
 
-class NumberBinding(override val delegate: jfxbb.NumberBinding)
-    extends NumberExpression(delegate)
-    with ObservableValue[Number, Number] {
+class NumberBinding(override val delegate: jfxbb.NumberBinding) extends NumberExpression(delegate) with ObservableValue[Number, Number] {
   def value: Number = delegate.getValue
 }

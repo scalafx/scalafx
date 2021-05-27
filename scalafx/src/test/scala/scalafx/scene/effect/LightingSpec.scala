@@ -33,5 +33,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * Lighting Spec tests.
+ *
+ *
  */
-class LightingSpec extends SimpleSFXDelegateSpec[jfxse.Lighting, Lighting](classOf[jfxse.Lighting], classOf[Lighting])
+class LightingSpec
+  extends SimpleSFXDelegateSpec[jfxse.Lighting, Lighting](classOf[jfxse.Lighting], classOf[Lighting])

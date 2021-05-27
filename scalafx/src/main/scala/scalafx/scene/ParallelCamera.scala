@@ -36,5 +36,4 @@ object ParallelCamera {
 }
 
 class ParallelCamera(override val delegate: jfxs.ParallelCamera = new jfxs.ParallelCamera)
-    extends Camera(delegate)
-    with SFXDelegate[jfxs.ParallelCamera]
+  extends Camera(delegate) with SFXDelegate[jfxs.ParallelCamera]

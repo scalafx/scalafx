@@ -32,10 +32,9 @@ import javafx.scene.{input => jfxsi}
 import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
+
 /** Tests for [[scalafx.scene.input.InputMethodHighlight]]. */
-class InputMethodHighlightSpec
-    extends SFXEnumDelegateSpec[jfxsi.InputMethodHighlight, InputMethodHighlight](
-      javaClass = classOf[jfxsi.InputMethodHighlight],
-      scalaClass = classOf[InputMethodHighlight],
-      companion = InputMethodHighlight
-    )
+class InputMethodHighlightSpec extends SFXEnumDelegateSpec[jfxsi.InputMethodHighlight, InputMethodHighlight](
+  javaClass = classOf[jfxsi.InputMethodHighlight],
+  scalaClass = classOf[InputMethodHighlight],
+  companion = InputMethodHighlight)

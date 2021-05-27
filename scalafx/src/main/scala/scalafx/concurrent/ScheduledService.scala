@@ -35,49 +35,47 @@ import scalafx.delegate.SFXDelegate
 import scala.language.{existentials, implicitConversions}
 
 object ScheduledService {
-  implicit def sfxScheduledService2jfx[T](s: ScheduledService[T]): jfxc.ScheduledService[T] =
-    if (s != null) s.delegate else null
+  implicit def sfxScheduledService2jfx[T](s: ScheduledService[T]): jfxc.ScheduledService[T] = if (s != null) s.delegate else null
 
   /**
-   * A Callback implementation for the <code>backoffStrategy</code> property which will exponentially backoff the period
-   * between re-executions in the case of a failure. This computation takes the original period and the number of
+   * A Callback implementation for the <code>backoffStrategy</code> property which
+   * will exponentially backoff the period between re-executions in the case of
+   * a failure. This computation takes the original period and the number of
    * consecutive failures and computes the backoff amount from that information.
    *
    * It delegates to JavaFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.html#EXPONENTIAL_BACKOFF_STRATEGYEXPONENTIAL_BACKOFF_STRATEGY]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.html#EXPONENTIAL_BACKOFF_STRATEGY EXPONENTIAL_BACKOFF_STRATEGY]]
    */
-  val ExponentialBackoffStrategy: (Callback[jfxc.ScheduledService[_], Duration]) =
-    jfxc.ScheduledService.EXPONENTIAL_BACKOFF_STRATEGY
+  val ExponentialBackoffStrategy: (Callback[jfxc.ScheduledService[_], Duration]) = jfxc.ScheduledService.EXPONENTIAL_BACKOFF_STRATEGY
 
   /**
-   * A Callback implementation for the <code>backoffStrategy</code> property which will logarithmically backoff the
-   * period between re-executions in the case of a failure. This computation takes the original period and the number of
+   * A Callback implementation for the <code>backoffStrategy</code> property which
+   * will logarithmically backoff the period between re-executions in the case of
+   * a failure. This computation takes the original period and the number of
    * consecutive failures and computes the backoff amount from that information.
    *
    * It delegates to JavaFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.html#LOGARITHMIC_BACKOFF_STRATEGYLOGARITHMIC_BACKOFF_STRATEGY]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.html#LOGARITHMIC_BACKOFF_STRATEGY LOGARITHMIC_BACKOFF_STRATEGY]]
    */
-  val LogarithmicBackoffStrategy: (Callback[jfxc.ScheduledService[_], Duration]) =
-    jfxc.ScheduledService.LOGARITHMIC_BACKOFF_STRATEGY
+  val LogarithmicBackoffStrategy: (Callback[jfxc.ScheduledService[_], Duration]) = jfxc.ScheduledService.LOGARITHMIC_BACKOFF_STRATEGY
 
   /**
-   * A Callback implementation for the <code>backoffStrategy</code> property which will linearly backoff the period
-   * between re-executions in the case of a failure. This computation takes the original period and the number of
+   * A Callback implementation for the <code>backoffStrategy</code> property which
+   * will linearly backoff the period between re-executions in the case of
+   * a failure. This computation takes the original period and the number of
    * consecutive failures and computes the backoff amount from that information.
    *
    * It delegates to JavaFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.html#LINEAR_BACKOFF_STRATEGYLINEAR_BACKOFF_STRATEGY]]
+   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.html#LINEAR_BACKOFF_STRATEGY LINEAR_BACKOFF_STRATEGY]]
    */
-  val LinearBackoffStrategy: (Callback[jfxc.ScheduledService[_], Duration]) =
-    jfxc.ScheduledService.LINEAR_BACKOFF_STRATEGY
+  val LinearBackoffStrategy: (Callback[jfxc.ScheduledService[_], Duration]) = jfxc.ScheduledService.LINEAR_BACKOFF_STRATEGY
 
   /**
-   * Create a new [[scalafx.concurrent.ScheduledService]] with a operation to be invoked after this was started on the
-   * JavaFX Application Thread.
+   * Create a new [[scalafx.concurrent.ScheduledService]] with a operation to be invoked after this was started on the JavaFX
+   * Application Thread.
    *
-   * @param op
-   *   [[scala.Function]] that returns a [[scalafx.concurrent.Task]] to be invoked after this was started on the JavaFX
-   *   Application Thread.
+   * @param op [[scala.Function]] that returns a [[scalafx.concurrent.Task]] to be invoked after this was started on
+   *           the JavaFX Application Thread.
    */
   def apply[T](op: => Task[T]): ScheduledService[T] = new ScheduledService[T](new jfxc.ScheduledService[T] {
     protected def createTask: jfxc.Task[T] = op
@@ -85,15 +83,16 @@ object ScheduledService {
 }
 
 /**
- * Wrapper class for
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.htmlScheduledService]] Class.
+ * Wrapper class for [[http://docs.oracle.com/javase/8/javafx/api/javafx/concurrent/ScheduledService.html ScheduledService]]
+ * Class.
  */
 abstract class ScheduledService[T](override val delegate: jfxc.ScheduledService[T])
-    extends Service[T](delegate)
-    with SFXDelegate[jfxc.ScheduledService[T]] {
+  extends Service[T](delegate)
+  with SFXDelegate[jfxc.ScheduledService[T]] {
 
   /**
-   * The initial delay between when the ScheduledService is first started, and when it will begin operation.
+   * The initial delay between when the ScheduledService is first started, and when it will begin
+   * operation.
    */
   def delay: ObjectProperty[jfxu.Duration] = delegate.delayProperty
 
@@ -135,7 +134,8 @@ abstract class ScheduledService[T](override val delegate: jfxc.ScheduledService[
   def currentFailureCount: ReadOnlyIntegerProperty = delegate.currentFailureCountProperty
 
   /**
-   * The maximum number of times the ScheduledService can fail before it simply ends in the FAILED state.
+   * The maximum number of times the ScheduledService can fail before it simply ends in the FAILED
+   * state.
    */
   def maximumFailureCount: IntegerProperty = delegate.maximumFailureCountProperty
 
@@ -155,8 +155,7 @@ abstract class ScheduledService[T](override val delegate: jfxc.ScheduledService[
   /**
    * Computes the amount of time to add to the period on each failure.
    */
-  def backoffStrategy: ObjectProperty[jfxu.Callback[jfxc.ScheduledService[_], jfxu.Duration]] =
-    delegate.backoffStrategyProperty
+  def backoffStrategy: ObjectProperty[jfxu.Callback[jfxc.ScheduledService[_], jfxu.Duration]] = delegate.backoffStrategyProperty
 
   def backoffStrategy_=(v: jfxu.Callback[jfxc.ScheduledService[_], jfxu.Duration]): Unit = {
     backoffStrategy() = v

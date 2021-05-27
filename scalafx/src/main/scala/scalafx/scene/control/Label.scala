@@ -35,6 +35,7 @@ import scalafx.scene.Node
 
 import scala.language.implicitConversions
 
+
 object Label {
   implicit def sfxLabel2jfx(v: Label): jfxsc.Label = if (v != null) v.delegate else null
 
@@ -45,9 +46,7 @@ object Label {
   def apply(text: String, graphic: Node) = new Label(text, graphic)
 }
 
-class Label(override val delegate: jfxsc.Label = new jfxsc.Label)
-    extends Labeled(delegate)
-    with SFXDelegate[jfxsc.Label] {
+class Label(override val delegate: jfxsc.Label = new jfxsc.Label) extends Labeled(delegate) with SFXDelegate[jfxsc.Label] {
 
   /** Creates Label with supplied text. */
   def this(text: String) = {

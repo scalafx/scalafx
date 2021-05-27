@@ -33,44 +33,33 @@ import scala.language.implicitConversions
 import scalafx.Includes._
 import scalafx.delegate.SFXDelegate
 
-object ReadOnlyLongWrapper {
-  implicit def sfxReadOnlyLongWrapper2jfx(w: ReadOnlyLongWrapper): jfxbp.ReadOnlyLongWrapper =
-    if (w != null) w.delegate else null
 
-  /**
-   * Creates a new ReadOnlyLongWrapper instance.
-   * @param value
-   *   the initial value of the wrapped value
-   */
+object ReadOnlyLongWrapper {
+  implicit def sfxReadOnlyLongWrapper2jfx(w: ReadOnlyLongWrapper): jfxbp.ReadOnlyLongWrapper = if (w != null) w.delegate else null
+
+  /** Creates a new ReadOnlyLongWrapper instance.
+    * @param value the initial value of the wrapped value
+    */
   def apply(value: Long) = new ReadOnlyLongWrapper(new jfxbp.ReadOnlyLongWrapper(value))
 }
 
-/**
- * Wrapper for
- * [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyLongWrapper.htmljavafx.beans.property.ReadOnlyLongWrapper]]
- */
-class ReadOnlyLongWrapper(override val delegate: jfxbp.ReadOnlyLongWrapper = new jfxbp.ReadOnlyLongWrapper())
-    extends LongProperty(delegate)
-    with SFXDelegate[jfxbp.ReadOnlyLongWrapper] {
 
-  /**
-   * Creates a new ReadOnlyLongWrapper instance.
-   * @param bean
-   *   the bean of this ReadOnlyLongWrapper
-   * @param name
-   *   the name of this ReadOnlyLongWrapper
-   */
+/** Wrapper for [[http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/ReadOnlyLongWrapper.html javafx.beans.property.ReadOnlyLongWrapper]] */
+class ReadOnlyLongWrapper(override val delegate: jfxbp.ReadOnlyLongWrapper = new jfxbp.ReadOnlyLongWrapper())
+  extends LongProperty(delegate)
+  with SFXDelegate[jfxbp.ReadOnlyLongWrapper] {
+
+  /** Creates a new ReadOnlyLongWrapper instance.
+    * @param bean the bean of this ReadOnlyLongWrapper
+    * @param name the name of this ReadOnlyLongWrapper
+    */
   def this(bean: Object, name: String) = this(new jfxbp.ReadOnlyLongWrapper(bean, name))
 
-  /**
-   * Creates a new ReadOnlyLongWrapper instance.
-   * @param value
-   *   the initial value of the wrapped value
-   * @param bean
-   *   the bean of this ReadOnlyLongWrapper
-   * @param name
-   *   the name of this ReadOnlyLongWrapper
-   */
+  /** Creates a new ReadOnlyLongWrapper instance.
+    * @param value the initial value of the wrapped value
+    * @param bean the bean of this ReadOnlyLongWrapper
+    * @param name the name of this ReadOnlyLongWrapper
+    */
   def this(bean: Object, name: String, value: Long) = this(new jfxbp.ReadOnlyLongWrapper(bean, name, value))
 
   /** The read-only property, that is synchronized with this ReadOnlyLongWrapper. */

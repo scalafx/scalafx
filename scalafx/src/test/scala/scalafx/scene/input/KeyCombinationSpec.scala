@@ -33,12 +33,11 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * KeyCombination Spec tests.
+ *
+ *
  */
 class KeyCombinationSpec
-    extends SimpleSFXDelegateSpec[jfxsi.KeyCombination, KeyCombination](
-      classOf[jfxsi.KeyCombination],
-      classOf[KeyCombination]
-    ) {
+  extends SimpleSFXDelegateSpec[jfxsi.KeyCombination, KeyCombination](classOf[jfxsi.KeyCombination], classOf[KeyCombination]) {
 
   override protected def getScalaClassInstance = KeyCombination.keyCombination("A")
 

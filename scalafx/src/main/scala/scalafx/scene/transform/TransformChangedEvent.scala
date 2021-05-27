@@ -34,9 +34,9 @@ import scalafx.event.{Event, EventType}
 
 import scala.language.implicitConversions
 
+
 object TransformChangedEvent {
-  implicit def sfxTransformChangedEvent2jfx(v: TransformChangedEvent): jfxst.TransformChangedEvent =
-    if (v != null) v.delegate else null
+  implicit def sfxTransformChangedEvent2jfx(v: TransformChangedEvent): jfxst.TransformChangedEvent = if (v != null) v.delegate else null
 
   val Any: EventType[jfxst.TransformChangedEvent] = jfxst.TransformChangedEvent.ANY
   @deprecated("Use Any; ANY will be removed in a future release", "8.0.60-R10")
@@ -50,8 +50,7 @@ object TransformChangedEvent {
 
 /** Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/scene/transform/TransformChangedEvent.html]] */
 class TransformChangedEvent(override val delegate: jfxst.TransformChangedEvent = new jfxst.TransformChangedEvent())
-    extends Event(delegate)
-    with SFXDelegate[jfxst.TransformChangedEvent] {
+  extends Event(delegate) with SFXDelegate[jfxst.TransformChangedEvent] {
 
   def this(source: Any, target: jfxe.EventTarget) = {
     this(new jfxst.TransformChangedEvent(source, target))

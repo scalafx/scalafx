@@ -33,19 +33,19 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object ReadOnlyProperty {
-  implicit def sfxReadOnlyProperty2jfx[T, J](rop: ReadOnlyProperty[T, J]): jfxbp.ReadOnlyProperty[J] =
-    if (rop != null) rop.delegate else null
+  implicit def sfxReadOnlyProperty2jfx[T, J](rop: ReadOnlyProperty[T, J]): jfxbp.ReadOnlyProperty[J] = if (rop != null) rop.delegate else null
 }
 
 /**
- * Generic trait that defines the methods common to all readable properties independent of their type.
+ * Generic trait that defines the methods common to all readable properties independent of their
+ * type.
  *
- * @tparam T
- *   Indicates Scala type that will be returned for this property.
- * @tparam J
- *   Indicates Java type to be wrapped by T. Eventually T and J could be the same.
+ * @tparam T Indicates Scala type that will be returned for this property.
+ * @tparam J Indicates Java type to be wrapped by T. Eventually T and J could be the same.
  */
-trait ReadOnlyProperty[T, J] extends ObservableValue[T, J] with SFXDelegate[jfxbp.ReadOnlyProperty[J]] {
+trait ReadOnlyProperty[T, J]
+  extends ObservableValue[T, J]
+  with SFXDelegate[jfxbp.ReadOnlyProperty[J]] {
 
   /**
    * Returns the name of this property.

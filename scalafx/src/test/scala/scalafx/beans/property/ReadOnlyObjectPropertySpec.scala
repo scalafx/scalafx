@@ -36,14 +36,16 @@ import scalafx.Includes._
 
 /**
  * ReadOnlyObjectProperty Spec tests.
+ *
+ *
  */
 class ReadOnlyObjectPropertySpec extends AnyFlatSpec with BeforeAndAfterEach {
-  val bean                                                              = new Object()
+  val bean = new Object()
   var readOnlyObjectProperty: jfxbp.ReadOnlyObjectProperty[jfxsp.Paint] = null
-  var objectProperty1: jfxbp.ObjectProperty[jfxsp.Paint]                = null
-  var objectProperty2: jfxbp.ObjectProperty[jfxsp.Paint]                = null
-  var sfxObjectProperty: ObjectProperty[jfxsp.Paint]                    = null
-  var booleanProperty: jfxbp.BooleanProperty                            = null
+  var objectProperty1: jfxbp.ObjectProperty[jfxsp.Paint] = null
+  var objectProperty2: jfxbp.ObjectProperty[jfxsp.Paint] = null
+  var sfxObjectProperty: ObjectProperty[jfxsp.Paint] = null
+  var booleanProperty: jfxbp.BooleanProperty = null
 
   override def beforeEach(): Unit = {
     readOnlyObjectProperty = new ReadOnlyObjectProperty[jfxsp.Paint](bean, "Test Read-only Object", jfxsp.Color.BLACK)

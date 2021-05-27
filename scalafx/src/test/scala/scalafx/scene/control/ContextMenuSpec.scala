@@ -33,10 +33,13 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * ContextMenu Spec tests.
+ *
+ *
  */
 class ContextMenuSpec
-    extends SimpleSFXDelegateSpec[jfxsc.ContextMenu, ContextMenu](classOf[jfxsc.ContextMenu], classOf[ContextMenu])
-    with RunOnApplicationThread {
+  extends SimpleSFXDelegateSpec[jfxsc.ContextMenu, ContextMenu](
+    classOf[jfxsc.ContextMenu], classOf[ContextMenu])
+  with RunOnApplicationThread {
 
   it should "not drop assigned items - Issue 42" in {
     val menuItemA = new MenuItem("MenuItemA")
@@ -45,7 +48,7 @@ class ContextMenuSpec
     val contextMenu = new ContextMenu()
     contextMenu.items.size should (equal(0))
 
-    contextMenu.items += (menuItemA, menuItemB)
+    contextMenu.items +=(menuItemA, menuItemB)
     contextMenu.items.size should (equal(2))
   }
 }

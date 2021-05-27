@@ -40,28 +40,25 @@ import scala.language.implicitConversions
 /**
  * Companion Object for [[scalafx.animation.PathTransition]].
  *
- * @define
- *   PT `PathTransition`
- * @define
- *   OT `OrientationType`
+ * @define PT `PathTransition`
+ * @define OT `OrientationType`
  */
 object PathTransition extends AnimationStatics {
 
   /**
-   * Converts a ScalaFX $PT to a JavaFX
-   * [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.html$PT]], extracting its delegate.
+   * Converts a ScalaFX $PT to a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.html $PT]],
+   * extracting its delegate.
    *
-   * @param v
-   *   ScalaFX $PT
-   * @return
-   *   JavaFX $PT extracted from `v`.
+   * @param v ScalaFX $PT
+   * @return JavaFX $PT extracted from `v`.
    */
   implicit def sfxPathTransition2jfx(v: PathTransition): jfxa.PathTransition = if (v != null) v.delegate else null
 
   /**
    * Companion Object for $OT, where its values are defined.
    */
-  object OrientationType extends SFXEnumDelegateCompanion[jfxa.PathTransition.OrientationType, OrientationType] {
+  object OrientationType
+    extends SFXEnumDelegateCompanion[jfxa.PathTransition.OrientationType, OrientationType] {
 
     /**
      * The targeted node's rotation matrix stays unchanged along the geometric path.
@@ -84,44 +81,35 @@ object PathTransition extends AnimationStatics {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.OrientationType.html$OT]].
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.OrientationType.html $OT]].
    *
-   * @constructor
-   *   Creates a new ScalaFX $OT from a JavaFX $OT.
-   * @param delegate
-   *   JavaFX $OT to be delegated.
+   * @constructor Creates a new ScalaFX $OT from a JavaFX $OT.
+   * @param delegate JavaFX $OT to be delegated.
    */
   sealed abstract class OrientationType(override val delegate: jfxa.PathTransition.OrientationType)
-      extends SFXEnumDelegate[jfxa.PathTransition.OrientationType]
+    extends SFXEnumDelegate[jfxa.PathTransition.OrientationType]
 
 }
 
 /**
- * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.htmlPathTransition]].
+ * Wraps a [[http://docs.oracle.com/javase/8/javafx/api/javafx/animation/PathTransition.html PathTransition]].
  *
- * @constructor
- *   Creates a new ScalaFX $PT from a JavaFX $PT.
- * @param delegate
- *   JavaFX $PT to be delegated.
+ * @constructor Creates a new ScalaFX $PT from a JavaFX $PT.
+ * @param delegate JavaFX $PT to be delegated.
  *
- * @define
- *   PT `PathTransition`
- * @define
- *   CONSTR The constructor of $PT.
+ * @define PT `PathTransition`
+ * @define CONSTR The constructor of $PT.
  */
 class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathTransition)
-    extends Transition(delegate)
-    with SFXDelegate[jfxa.PathTransition] {
+  extends Transition(delegate)
+  with SFXDelegate[jfxa.PathTransition] {
 
   /**
    * $CONSTR
    *
-   * @param duration
-   *   The duration of this $PT.
-   * @param path
-   *   The path of this $PT.
-   * @param node
-   *   The node of this $PT.
+   * @param duration The duration of this $PT.
+   * @param path The path of this $PT.
+   * @param node The node of this $PT.
    */
   def this(duration: Duration, path: Shape, node: Node) =
     this(new jfxa.PathTransition(duration, path, node))
@@ -129,10 +117,8 @@ class PathTransition(override val delegate: jfxa.PathTransition = new jfxa.PathT
   /**
    * $CONSTR
    *
-   * @param duration
-   *   The duration of this $PT.
-   * @param path
-   *   The path of this $PT.
+   * @param duration The duration of this $PT.
+   * @param path The path of this $PT.
    */
   def this(duration: Duration, path: Shape) =
     this(new jfxa.PathTransition(duration, path))

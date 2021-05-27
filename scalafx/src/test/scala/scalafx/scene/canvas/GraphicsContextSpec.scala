@@ -33,12 +33,10 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * GraphicsContext Spec tests.
+ *
  */
 class GraphicsContextSpec
-    extends SimpleSFXDelegateSpec[jfxsc.GraphicsContext, GraphicsContext](
-      classOf[jfxsc.GraphicsContext],
-      classOf[GraphicsContext]
-    ) {
+  extends SimpleSFXDelegateSpec[jfxsc.GraphicsContext, GraphicsContext](classOf[jfxsc.GraphicsContext], classOf[GraphicsContext]) {
 
   override def getScalaClassInstance = (new Canvas).graphicsContext2D
 

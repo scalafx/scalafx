@@ -67,15 +67,8 @@ object OverrunStyle extends SFXEnumDelegateCompanion[jfxsc.OverrunStyle, Overrun
   val WORD_ELLIPSIS: OverrunStyle = WordEllipsis
 
   protected override def unsortedValues: Array[OverrunStyle] = Array(
-    Clip,
-    Ellipsis,
-    WordEllipsis,
-    CenterEllipsis,
-    CenterWordEllipsis,
-    LeadingEllipsis,
-    LeadingWordEllipsis
+    Clip, Ellipsis, WordEllipsis, CenterEllipsis, CenterWordEllipsis, LeadingEllipsis, LeadingWordEllipsis
   )
 }
 
-sealed abstract class OverrunStyle(override val delegate: jfxsc.OverrunStyle)
-    extends SFXEnumDelegate[jfxsc.OverrunStyle]
+sealed abstract class OverrunStyle(override val delegate: jfxsc.OverrunStyle) extends SFXEnumDelegate[jfxsc.OverrunStyle]

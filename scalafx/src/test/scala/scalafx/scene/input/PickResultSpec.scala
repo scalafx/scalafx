@@ -33,7 +33,7 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /** PickResult Spec tests. */
 class PickResultSpec
-    extends SimpleSFXDelegateSpec[jfxsi.PickResult, PickResult](classOf[jfxsi.PickResult], classOf[PickResult]) {
+  extends SimpleSFXDelegateSpec[jfxsi.PickResult, PickResult](classOf[jfxsi.PickResult], classOf[PickResult]) {
 
   override protected def getJavaClassInstance = new jfxsi.PickResult(null, 0, 0)
 }

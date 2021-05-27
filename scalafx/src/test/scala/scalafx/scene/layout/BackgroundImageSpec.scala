@@ -36,10 +36,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
  * BackgroundImage Spec tests.
  */
 class BackgroundImageSpec
-    extends SimpleSFXDelegateSpec[jfxsl.BackgroundImage, BackgroundImage](
-      classOf[jfxsl.BackgroundImage],
-      classOf[BackgroundImage]
-    ) {
+  extends SimpleSFXDelegateSpec[jfxsl.BackgroundImage, BackgroundImage](
+    classOf[jfxsl.BackgroundImage], classOf[BackgroundImage]) {
 
   override protected def getScalaClassInstance = new BackgroundImage(getJavaClassInstance) {}
 
@@ -48,7 +46,6 @@ class BackgroundImageSpec
     BackgroundRepeat.NoRepeat,
     BackgroundRepeat.NoRepeat,
     BackgroundPosition.Center,
-    BackgroundSize.Default
-  )
+    BackgroundSize.Default)
 
 }

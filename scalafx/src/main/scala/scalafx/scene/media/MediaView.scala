@@ -41,9 +41,9 @@ object MediaView {
 }
 
 class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
-    extends Node(delegate)
-    with PositionDelegate[jfxsm.MediaView]
-    with SFXDelegate[jfxsm.MediaView] {
+  extends Node(delegate)
+  with PositionDelegate[jfxsm.MediaView]
+  with SFXDelegate[jfxsm.MediaView] {
 
   /**
    * Creates a MediaView instance associated with the specified MediaPlayer.
@@ -51,7 +51,8 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
   def this(mediaPlayer: MediaPlayer) = this(new jfxsm.MediaView(mediaPlayer))
 
   /**
-   * Determines the height of the bounding box within which the source media is resized as necessary to fit.
+   * Determines the height of the bounding box within which the source media is resized as
+   * necessary to fit.
    */
   def fitHeight: DoubleProperty = delegate.fitHeightProperty
 
@@ -60,7 +61,8 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
   }
 
   /**
-   * Determines the width of the bounding box within which the source media is resized as necessary to fit.
+   * Determines the width of the bounding box within which the source media is resized as
+   * necessary to fit.
    */
   def fitWidth: DoubleProperty = delegate.fitWidthProperty
 
@@ -87,7 +89,8 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
   }
 
   /**
-   * Whether to preserve the aspect ratio (width / height) of the media when scaling it to fit the node.
+   * Whether to preserve the aspect ratio (width / height) of the media when scaling it to fit the
+   * node.
    */
   def preserveRatio: BooleanProperty = delegate.preserveRatioProperty
 
@@ -96,8 +99,8 @@ class MediaView(override val delegate: jfxsm.MediaView = new jfxsm.MediaView)
   }
 
   /**
-   * If set to true a better quality filtering algorithm will be used when scaling this video to fit within the bounding
-   * box provided by fitWidth and fitHeight or when transforming.
+   * If set to true a better quality filtering algorithm will be used when scaling this video to
+   * fit within the bounding box provided by fitWidth and fitHeight or when transforming.
    */
   def smooth: BooleanProperty = delegate.smoothProperty
 

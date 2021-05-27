@@ -46,13 +46,16 @@ object BindingsSpec {
     def setWidth(v: Double): Unit = widthProperty.setValue(v)
   }
 
-  class DoublePropertySFX(val delegate: DoubleHolderJFX = new DoubleHolderJFX()) extends SFXDelegate[DoubleHolderJFX] {
+  class DoublePropertySFX(val delegate: DoubleHolderJFX = new DoubleHolderJFX())
+    extends SFXDelegate[DoubleHolderJFX] {
     val width: DoubleProperty = delegate.widthProperty
   }
 }
 
 /**
  * Bindings Spec tests.
+ *
+ *
  */
 class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
@@ -60,18 +63,18 @@ class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   def bean = new Object()
 
-  var booleanProperty1: jfxbp.BooleanProperty       = null
-  var booleanProperty2: jfxbp.BooleanProperty       = null
-  var booleanProperty3: jfxbp.BooleanProperty       = null
-  var integerProperty1: jfxbp.IntegerProperty       = null
-  var longProperty1: jfxbp.LongProperty             = null
-  var floatProperty1: jfxbp.FloatProperty           = null
-  var doubleProperty1: jfxbp.DoubleProperty         = null
-  var doubleProperty2: jfxbp.DoubleProperty         = null
-  var doubleProperty3: jfxbp.DoubleProperty         = null
-  var stringProperty1: jfxbp.StringProperty         = null
-  var stringProperty2: jfxbp.StringProperty         = null
-  var stringProperty3: jfxbp.StringProperty         = null
+  var booleanProperty1: jfxbp.BooleanProperty = null
+  var booleanProperty2: jfxbp.BooleanProperty = null
+  var booleanProperty3: jfxbp.BooleanProperty = null
+  var integerProperty1: jfxbp.IntegerProperty = null
+  var longProperty1: jfxbp.LongProperty = null
+  var floatProperty1: jfxbp.FloatProperty = null
+  var doubleProperty1: jfxbp.DoubleProperty = null
+  var doubleProperty2: jfxbp.DoubleProperty = null
+  var doubleProperty3: jfxbp.DoubleProperty = null
+  var stringProperty1: jfxbp.StringProperty = null
+  var stringProperty2: jfxbp.StringProperty = null
+  var stringProperty3: jfxbp.StringProperty = null
   var objectProperty1: jfxbp.ObjectProperty[Object] = null
   var objectProperty2: jfxbp.ObjectProperty[Object] = null
   var objectProperty3: jfxbp.ObjectProperty[Object] = null
@@ -95,7 +98,7 @@ class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   "BindingIncludes" should "support min" in {
-    doubleProperty1 <== min(doubleProperty2, doubleProperty3, 25, 26L, 27f, 28d)
+    doubleProperty1 <== min(doubleProperty2, doubleProperty3, 25, 26l, 27f, 28d)
     doubleProperty1() should equal(0)
     doubleProperty2() = 50
     doubleProperty3() = 43
@@ -103,7 +106,7 @@ class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   "BindingIncludes" should "support max" in {
-    doubleProperty1 <== max(doubleProperty2, doubleProperty3, 25, 26L, 27f, 28d)
+    doubleProperty1 <== max(doubleProperty2, doubleProperty3, 25, 26l, 27f, 28d)
     doubleProperty1() should equal(28)
     doubleProperty2() = 50
     doubleProperty3() = 43
@@ -141,7 +144,7 @@ class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
     doubleProperty1() should equal(15)
     doubleProperty1 <== when(booleanProperty1) choose 25 otherwise 16
     doubleProperty1() should equal(16)
-    doubleProperty1 <== when(booleanProperty1) choose 25L otherwise 17L
+    doubleProperty1 <== when(booleanProperty1) choose 25l otherwise 17l
     doubleProperty1() should equal(17)
     doubleProperty1 <== when(booleanProperty1) choose 25f otherwise 18f
     doubleProperty1() should equal(18)
@@ -185,7 +188,7 @@ class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support selectDouble" in {
     // Test for other select* variants should be similar
-    val dp1   = new ObjectProperty[DoubleHolderJFX](this, "level 2 property", new DoubleHolderJFX())
+    val dp1 = new ObjectProperty[DoubleHolderJFX](this, "level 2 property", new DoubleHolderJFX())
     val prop2 = new DoubleProperty(this, "prop2", 0.0)
     prop2() should equal(0.0)
 
@@ -197,8 +200,8 @@ class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support createBooleanBinding" in {
-    val a   = new BooleanProperty()
-    val b   = new BooleanProperty()
+    val a = new BooleanProperty()
+    val b = new BooleanProperty()
     val xor = Bindings.createBooleanBinding(() => (a() || b()) && !(a() && b()), a, b)
 
     a() = true

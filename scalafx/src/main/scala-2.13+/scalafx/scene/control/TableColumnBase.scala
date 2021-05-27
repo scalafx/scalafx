@@ -43,8 +43,7 @@ import scala.language.implicitConversions
 import scala.math.Ordering
 
 object TableColumnBase {
-  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]): jfxsc.TableColumnBase[S, T] =
-    if (tc != null) tc.delegate else null
+  implicit def sfxTableColumn2jfx[S, T](tc: TableColumnBase[S, T]): jfxsc.TableColumnBase[S, T] = if (tc != null) tc.delegate else null
 
   /**
    * By default all columns will use this comparator to perform sorting.
@@ -57,8 +56,8 @@ object TableColumnBase {
 /**
  * Wraps [[http://docs.oracle.com/javafx/8/api/javafx/scene/control/TableColumnBase.html]].
  */
-abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.TableColumnBase[S, T])
-    extends EventHandlerDelegate1
+abstract class TableColumnBase[S, T] protected(override val delegate: jfxsc.TableColumnBase[S, T])
+  extends EventHandlerDelegate1
     with Styleable
     with SFXDelegate[jfxsc.TableColumnBase[S, T]] {
 
@@ -131,8 +130,7 @@ abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.Tab
   }
 
   /**
-   * This read-only property will always refer to the parent of this column, in the situation where nested columns are
-   * being used.
+   * This read-only property will always refer to the parent of this column, in the situation where nested columns are being used.
    */
   def parentColumn: ReadOnlyObjectProperty[jfxsc.TableColumnBase[S, _]] = delegate.parentColumnProperty
 
@@ -192,8 +190,8 @@ abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.Tab
   }
 
   /**
-   * Returns a previously set Object property, or null if no such property has been set using the setUserData(Any)
-   * method.
+   * Returns a previously set Object property, or null if no such property has been set using the
+   * setUserData(Any) method.
    */
   def userData: AnyRef = delegate.getUserData
 
@@ -227,16 +225,20 @@ abstract class TableColumnBase[S, T] protected (override val delegate: jfxsc.Tab
   def hasProperties: Boolean = delegate.hasProperties
 
   override def eventHandlerDelegate: EventHandled = new EventHandled {
-    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]): Unit =
+    def addEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                         eventHandler: jfxe.EventHandler[E]): Unit =
       delegate.addEventHandler(eventType, eventHandler)
 
-    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E], eventHandler: jfxe.EventHandler[E]): Unit =
+    def removeEventHandler[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                            eventHandler: jfxe.EventHandler[E]): Unit =
       delegate.removeEventHandler(eventType, eventHandler)
 
-    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[E]): Unit =
+    def addEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                        eventFilter: jfxe.EventHandler[E]): Unit =
       delegate.addEventFilter(eventType, eventFilter)
 
-    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E], eventFilter: jfxe.EventHandler[E]): Unit =
+    def removeEventFilter[E <: jfxe.Event](eventType: jfxe.EventType[E],
+                                           eventFilter: jfxe.EventHandler[E]): Unit =
       delegate.removeEventFilter(eventType, eventFilter)
 
     def buildEventDispatchChain(chain: jfxe.EventDispatchChain): jfxe.EventDispatchChain =

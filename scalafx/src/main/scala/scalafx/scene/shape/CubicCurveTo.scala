@@ -41,9 +41,9 @@ object CubicCurveTo {
 }
 
 class CubicCurveTo(override val delegate: jfxss.CubicCurveTo = new jfxss.CubicCurveTo)
-    extends PathElement(delegate)
-    with PositionDelegate[jfxss.CubicCurveTo]
-    with SFXDelegate[jfxss.CubicCurveTo] {
+  extends PathElement(delegate)
+  with PositionDelegate[jfxss.CubicCurveTo]
+  with SFXDelegate[jfxss.CubicCurveTo] {
 
   def controlX1: DoubleProperty = delegate.controlX1Property
 

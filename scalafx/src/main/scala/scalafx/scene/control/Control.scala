@@ -39,9 +39,9 @@ object Control {
 }
 
 abstract class Control(override val delegate: jfxsc.Control)
-    extends Region(delegate)
-    with Skinnable
-    with SFXDelegate[jfxsc.Control] {
+  extends Region(delegate)
+  with Skinnable
+  with SFXDelegate[jfxsc.Control] {
 
   /**
    * The ContextMenu to show for this control.
@@ -60,5 +60,6 @@ abstract class Control(override val delegate: jfxsc.Control)
   def tooltip_=(v: Tooltip): Unit = {
     tooltip() = v
   }
+
 
 }

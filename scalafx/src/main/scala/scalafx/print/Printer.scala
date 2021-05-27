@@ -42,10 +42,8 @@ object Printer {
   /**
    * Converts a ScalaFX Printer to its JavaFX counterpart.
    *
-   * @param p
-   *   ScalaFX Printer
-   * @return
-   *   JavaFX Printer
+   * @param p ScalaFX Printer
+   * @return JavaFX Printer
    */
   implicit def sfxPrinter2jfx(p: Printer): jfxp.Printer = if (p != null) p.delegate else null
 
@@ -54,7 +52,8 @@ object Printer {
   /**
    * Companion Object for [[scalafx.print.Printer.MarginType]].
    */
-  object MarginType extends SFXEnumDelegateCompanion[jfxp.Printer.MarginType, Printer.MarginType] {
+  object MarginType
+    extends SFXEnumDelegateCompanion[jfxp.Printer.MarginType, Printer.MarginType] {
 
     /**
      * This requests a default 0.75 inch margin on all sides.
@@ -62,14 +61,15 @@ object Printer {
     case object Default extends MarginType(jfxp.Printer.MarginType.DEFAULT)
 
     /**
-     * Choose the largest of the four hardware margins, and use that for all for margins, so that the margins are equal
-     * on all sides.
+     * Choose the largest of the four hardware margins, and use that for all for margins,
+     * so that the margins are equal on all sides.
      */
     case object Equal extends MarginType(jfxp.Printer.MarginType.EQUAL)
 
     /**
-     * Similar to EQUAL, but it chooses the larger of the left/right hardware margins and top/bottom hardware margins
-     * separately, so that the top and bottom margins are equal, and the left and right margins are equal.
+     * Similar to EQUAL, but it chooses the larger of the left/right hardware margins and
+     * top/bottom hardware margins separately, so that the top and bottom margins are equal,
+     * and the left and right margins are equal.
      */
     case object EqualOpposites extends MarginType(jfxp.Printer.MarginType.EQUAL_OPPOSITES)
 
@@ -84,13 +84,12 @@ object Printer {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.MarginType.htmlJavaFXMarginType]].
+   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.MarginType.html JavaFX MarginType]].
    *
-   * @since
-   *   8.0
+   * @since 8.0
    */
   sealed abstract class MarginType(override val delegate: jfxp.Printer.MarginType)
-      extends SFXEnumDelegate[jfxp.Printer.MarginType]
+    extends SFXEnumDelegate[jfxp.Printer.MarginType]
 
   // MarginType - end
 
@@ -113,17 +112,15 @@ object Printer {
 }
 
 /**
- * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.htmlJavaFXPrinter]].
+ * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/print/Printer.html JavaFX Printer]].
  *
- * @constructor
- *   Creates a new ScalaFX Printer from its JavaFX counterpart.
- * @param delegate
- *   JavaFX Printer. Since there is no public constructor for it, there is not a default value.
+ * @constructor Creates a new ScalaFX Printer from its JavaFX counterpart.
+ * @param delegate JavaFX Printer. Since there is no public constructor for it, there is not a default value.
  *
- * @since
- *   8.0
+ * @since 8.0
  */
-final class Printer(override val delegate: jfxp.Printer) extends SFXDelegate[jfxp.Printer] {
+final class Printer(override val delegate: jfxp.Printer)
+  extends SFXDelegate[jfxp.Printer] {
 
   /**
    * the default page layout for this printer.
@@ -143,42 +140,24 @@ final class Printer(override val delegate: jfxp.Printer) extends SFXDelegate[jfx
   /**
    * Obtain a new PageLayout for this printer using the specified parameters.
    *
-   * @param paper
-   *   The paper to use
-   * @param orient
-   *   The orientation to use
-   * @param lMargin
-   *   the left margin to use in pts.
-   * @param rMargin
-   *   the right margin to use in pts.
-   * @param tMargin
-   *   the top margin to use in pts.
-   * @param bMargin
-   *   the bottom margin to use in pts.
-   * @return
-   *   PageLayout based on the specified parameters.
+   * @param paper  The paper to use
+   * @param orient  The orientation to use
+   * @param lMargin the left margin to use in pts.
+   * @param rMargin the right margin to use in pts.
+   * @param tMargin the top margin to use in pts.
+   * @param bMargin the bottom margin to use in pts.
+   * @return PageLayout based on the specified parameters.
    */
-  def createPageLayout(
-      paper: Paper,
-      orient: PageOrientation,
-      lMargin: Double,
-      rMargin: Double,
-      tMargin: Double,
-      bMargin: Double
-  ): PageLayout =
+  def createPageLayout(paper: Paper, orient: PageOrientation, lMargin: Double, rMargin: Double, tMargin: Double, bMargin: Double): PageLayout =
     delegate.createPageLayout(paper, orient, lMargin, rMargin, tMargin, bMargin)
 
   /**
    * Obtain a new PageLayout instance for this printer using the specified parameters.
    *
-   * @param paper
-   *   - The paper to use
-   * @param orient
-   *   - The orientation to use
-   * @param mType
-   *   - the margin type to use
-   * @return
-   *   PageLayout based on the specified parameters.
+   * @param paper - The paper to use
+   * @param orient - The orientation to use
+   * @param mType - the margin type to use
+   * @return PageLayout based on the specified parameters.
    */
   def createPageLayout(paper: Paper, orient: PageOrientation, mType: jfxp.Printer.MarginType): PageLayout =
     delegate.createPageLayout(paper, orient, mType)

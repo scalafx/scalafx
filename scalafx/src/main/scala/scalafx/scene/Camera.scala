@@ -37,7 +37,9 @@ object Camera {
   implicit def sfxCamera2jfx(c: Camera): jfxs.Camera = if (c != null) c.delegate else null
 }
 
-abstract class Camera(override val delegate: jfxs.Camera) extends Node(delegate) with SFXDelegate[jfxs.Camera] {
+abstract class Camera(override val delegate: jfxs.Camera)
+  extends Node(delegate)
+  with SFXDelegate[jfxs.Camera] {
 
   /**
    * Specifies the far clipping plane of this `Camera` in the eye coordinate system of this node.

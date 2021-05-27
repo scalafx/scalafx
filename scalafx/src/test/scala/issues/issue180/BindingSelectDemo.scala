@@ -32,8 +32,9 @@ import javafx.beans.{binding => jfxbb}
 import scalafx.scene.Group
 
 /**
- * Illustration for Issue 180: In ScalaFX 8 use of Bindings.select* leads to IllegalArgumentException: "... property ...
- * doesn't exist" exceptions. The same code works fine in ScalaFX 2.
+ * Illustration for Issue 180:
+ * In ScalaFX 8 use of Bindings.select* leads to IllegalArgumentException: "... property ... doesn't exist" exceptions.
+ * The same code works fine in ScalaFX 2.
  */
 object BindingSelectDemo extends App {
 

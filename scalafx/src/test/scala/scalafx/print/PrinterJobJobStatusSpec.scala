@@ -31,9 +31,7 @@ import scalafx.Includes._
 import scalafx.testutil.SFXEnumDelegateSpec
 
 /** Tests for [[scalafx.print.PrinterJob.JobStatus]]. */
-class PrinterJobJobStatusSpec
-    extends SFXEnumDelegateSpec[jfxp.PrinterJob.JobStatus, PrinterJob.JobStatus](
-      javaClass = classOf[jfxp.PrinterJob.JobStatus],
-      scalaClass = classOf[PrinterJob.JobStatus],
-      companion = PrinterJob.JobStatus
-    )
+class PrinterJobJobStatusSpec extends SFXEnumDelegateSpec[jfxp.PrinterJob.JobStatus, PrinterJob.JobStatus](
+  javaClass = classOf[jfxp.PrinterJob.JobStatus],
+  scalaClass = classOf[PrinterJob.JobStatus],
+  companion = PrinterJob.JobStatus)

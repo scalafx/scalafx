@@ -42,14 +42,14 @@ object IndexRange {
   val VALUE_DELIMITER: String = ValueDelimiter
 
   /**
-   * Convenience method to create an IndexRange instance that has the smaller value as the start index, and the larger
-   * value as the end index.
+   * Convenience method to create an IndexRange instance that has the smaller value as the start
+   * index, and the larger value as the end index.
    */
   def normalize(v1: Int, v2: Int): IndexRange = new IndexRange(jfxsc.IndexRange.normalize(v1, v2))
 
   /**
-   * Convenience method to parse in a String of the form '2,6', which will create an IndexRange instance with a start
-   * value of 2, and an end value of 6.
+   * Convenience method to parse in a String of the form '2,6', which will create an IndexRange
+   * instance with a start value of 2, and an end value of 6.
    */
   def valueOf(value: String): IndexRange = new IndexRange(jfxsc.IndexRange.valueOf(value))
 

@@ -33,9 +33,8 @@ import scalafx.testutil.SimpleSFXDelegateSpec
 
 /**
  * EqualizerBand Spec tests.
+ *
+ *
  */
 class EqualizerBandSpec
-    extends SimpleSFXDelegateSpec[jfxsm.EqualizerBand, EqualizerBand](
-      classOf[jfxsm.EqualizerBand],
-      classOf[EqualizerBand]
-    )
+  extends SimpleSFXDelegateSpec[jfxsm.EqualizerBand, EqualizerBand](classOf[jfxsm.EqualizerBand], classOf[EqualizerBand])

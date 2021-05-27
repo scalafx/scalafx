@@ -34,20 +34,18 @@ import scalafx.delegate.SFXDelegate
 import scala.language.implicitConversions
 
 object PerspectiveTransform {
-  implicit def sfxPerspectiveTransform2jfx(pt: PerspectiveTransform): jfxse.PerspectiveTransform =
-    if (pt != null) pt.delegate else null
+  implicit def sfxPerspectiveTransform2jfx(pt: PerspectiveTransform): jfxse.PerspectiveTransform = if (pt != null) pt.delegate else null
 }
 
 class PerspectiveTransform(override val delegate: jfxse.PerspectiveTransform = new jfxse.PerspectiveTransform)
-    extends Effect(delegate)
-    with InputDelegate[jfxse.PerspectiveTransform]
-    with SFXDelegate[jfxse.PerspectiveTransform] {
+  extends Effect(delegate)
+  with InputDelegate[jfxse.PerspectiveTransform]
+  with SFXDelegate[jfxse.PerspectiveTransform] {
 
   /**
    * Creates a new instance of PerspectiveTransform with the specified ulx, uly, urx, ury, lrx, lry, llx, and lly.
    */
-  def this(ulx: Double, uly: Double, urx: Double, ury: Double, lrx: Double, lry: Double, llx: Double, lly: Double) =
-    this(new jfxse.PerspectiveTransform(ulx, uly, urx, ury, lrx, lry, llx, lly))
+  def this(ulx: Double, uly: Double, urx: Double, ury: Double, lrx: Double, lry: Double, llx: Double, lly: Double) = this(new jfxse.PerspectiveTransform(ulx, uly, urx, ury, lrx, lry, llx, lly))
 
   /**
    * The x coordinate of the output location onto which the lower left corner of the source is mapped.

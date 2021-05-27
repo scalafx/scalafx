@@ -59,14 +59,11 @@ object DConvert {
  * Object companion for [[scalafx.scene.control.Dialog]].
  */
 object Dialog {
-
   /**
    * Converts a ScalaFX Dialog to its JavaFX counterpart.
    *
-   * @param v
-   *   ScalaFX Dialog
-   * @return
-   *   JavaFX Dialog
+   * @param v ScalaFX Dialog
+   * @return JavaFX Dialog
    */
   implicit def sfxDialog2jfx[R](v: Dialog[R]): jfxsc.Dialog[R] = if (v != null) v.delegate else null
 }
@@ -76,21 +73,19 @@ object Dialog {
  *
  * Wraps a $JFX $URL0 $TC]].
  *
- * @tparam R
- *   The default return type of the dialog, via the result property or `showAndWait` method.
- * @define
- *   TC Dialog
- * @define
- *   URL0
- *   [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Dialog.html@defineJFX JavaFX @define ORIGINALDOC Original Documentation]].
+ * @tparam R The default return type of the dialog, via the result property or `showAndWait` method.
+ * @define TC          Dialog
+ * @define URL0        [[https://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/Dialog.html
+ * @define JFX JavaFX
+ * @define ORIGINALDOC Original Documentation]].
  */
 class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
-    extends EventTarget(delegate)
+  extends EventTarget(delegate)
     with SFXDelegate[jfxsc.Dialog[R]] {
 
   /**
-   * Shows the dialog and waits for the user response (in other words, brings up a blocking dialog, with the returned
-   * value the users input).
+   * Shows the dialog and waits for the user response (in other words, brings
+   * up a blocking dialog, with the returned value the users input).
    *
    * The intended use when return value is ignored:
    * {{{
@@ -105,10 +100,8 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    *   }
    * }}}
    *
-   * @return
-   *   An `Option` that contains the `result`.
-   * @see
-   *   $URL0#showAndWait showAndWait $ORIGINALDOC
+   * @return An `Option` that contains the `result`.
+   * @see $URL0#showAndWait showAndWait $ORIGINALDOC
    */
   def showAndWait[F](j2s: F = (x: R) => x)(implicit convert: DConvert[R, F]): Option[convert.S] = {
     val v = delegate.showAndWait()
@@ -116,26 +109,28 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   }
 
   /**
-   * Specifies the style for this dialog. This must be done prior to making the dialog visible. The style is one of:
-   * StageStyle.DECORATED, StageStyle.UNDECORATED, StageStyle.TRANSPARENT, StageStyle.UTILITY, or StageStyle.UNIFIED.
+   * Specifies the style for this dialog. This must be done prior to making
+   * the dialog visible. The style is one of: StageStyle.DECORATED,
+   * StageStyle.UNDECORATED, StageStyle.TRANSPARENT, StageStyle.UTILITY,
+   * or StageStyle.UNIFIED.
    *
-   * @param style
-   *   the style for this dialog.
-   * @throws
-   *   IllegalStateException if this property is set after the dialog has ever been made visible.
+   * @param style the style for this dialog.
+   * @throws IllegalStateException if this property is set after the dialog
+   *                               has ever been made visible.
+   *
    */
   def initStyle(style: StageStyle): Unit = {
     delegate.initStyle(style)
   }
 
   /**
-   * Specifies the modality for this dialog. This must be done prior to making the dialog visible. The modality is one
-   * of: Modality.NONE, Modality.WINDOW_MODAL, or Modality.APPLICATION_MODAL.
+   * Specifies the modality for this dialog. This must be done prior to making
+   * the dialog visible. The modality is one of: Modality.NONE,
+   * Modality.WINDOW_MODAL, or Modality.APPLICATION_MODAL.
    *
-   * @param modality
-   *   the modality for this dialog.
-   * @throws
-   *   IllegalStateException if this property is set after the dialog has ever been made visible.
+   * @param modality the modality for this dialog.
+   * @throws IllegalStateException if this property is set after the dialog
+   *                               has ever been made visible.
    */
   def initModality(modality: Modality): Unit = {
     delegate.initModality(modality)
@@ -144,21 +139,18 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   /**
    * Retrieves the modality attribute for this dialog.
    *
-   * @return
-   *   the modality.
-   * @see
-   *   $URL0#getModality getModality $ORIGINALDOC
+   * @return the modality.
+   * @see $URL0#getModality getModality $ORIGINALDOC
    */
   def modality: Modality = delegate.getModality
 
   /**
-   * Specifies the owner [[Window]] for this dialog, or null for a top-level, unowned dialog. This must be done prior to
-   * making the dialog visible.
+   * Specifies the owner [[Window]] for this dialog, or null for a top-level,
+   * unowned dialog. This must be done prior to making the dialog visible.
    *
-   * @param window
-   *   the owner [[Window]] for this dialog.
-   * @throws
-   *   IllegalStateException if this property is set after the dialog has ever been made visible.
+   * @param window the owner [[Window]] for this dialog.
+   * @throws IllegalStateException if this property is set after the dialog
+   *                               has ever been made visible.
    */
   def initOwner(window: Window): Unit = {
     delegate.initOwner(window)
@@ -167,10 +159,8 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   /**
    * Retrieves the owner Window for this dialog, or null for an unowned dialog.
    *
-   * @return
-   *   the owner Window.
-   * @see
-   *   $URL0#getOwner $ORIGINALDOC
+   * @return the owner Window.
+   * @see $URL0#getOwner  $ORIGINALDOC
    */
   def owner: Window = delegate.getOwner
 
@@ -181,12 +171,12 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   }
 
   /**
-   * A property representing the content text for the dialog pane. The content text is lower precedence than the
-   * [[scalafx.scene.control.DialogPane.content]] node, meaning that if both the content node and the contentText
-   * properties are set, the content text will not be displayed in a default DialogPane instance.
+   * A property representing the content text for the dialog pane. The content text
+   * is lower precedence than the [[scalafx.scene.control.DialogPane.content]] node, meaning
+   * that if both the content node and the contentText properties are set, the
+   * content text will not be displayed in a default DialogPane instance.
    *
-   * @see
-   *   $URL0#contentTextProperty $ORIGINALDOC
+   * @see $URL0#contentTextProperty  $ORIGINALDOC
    */
   def contentText: StringProperty = delegate.contentTextProperty
 
@@ -195,12 +185,12 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   }
 
   /**
-   * A property representing the header text for the dialog pane. The header text is lower precedence than the
-   * [[scalafx.scene.control.DialogPane.header]] node, meaning that if both the header node and the headerText
-   * properties are set, the header text will not be displayed in a default DialogPane instance.
+   * A property representing the header text for the dialog pane. The header text
+   * is lower precedence than the [[scalafx.scene.control.DialogPane.header]] node, meaning
+   * that if both the header node and the headerText properties are set, the
+   * header text will not be displayed in a default DialogPane instance.
    *
-   * @see
-   *   $URL0#headerTextProperty $ORIGINALDOC
+   * @see $URL0#headerTextProperty  $ORIGINALDOC
    */
   def headerText: StringProperty = delegate.headerTextProperty
 
@@ -213,10 +203,10 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   }
 
   /**
-   * The dialog graphic, presented either in the header, if one is showing, or to the left of the `content`.
+   * The dialog graphic, presented either in the header, if one is showing, or
+   * to the left of the `content`.
    *
-   * @see
-   *   $URL0#headerTextProperty $ORIGINALDOC
+   * @see $URL0#headerTextProperty  $ORIGINALDOC
    */
   def graphic: ObjectProperty[jfxs.Node] = delegate.graphicProperty
 
@@ -225,12 +215,12 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   }
 
   /**
-   * A property representing what has been returned from the dialog. A result is generated through the
-   * `resultConverter`, which is intended to convert from the `ButtonType` that the user clicked on into a value of type
-   * R.
+   * A property representing what has been returned from the dialog. A result
+   * is generated through the `resultConverter`,
+   * which is intended to convert from the `ButtonType` that the user
+   * clicked on into a value of type R.
    *
-   * @see
-   *   $URL0#resultProperty $ORIGINALDOC
+   * @see $URL0#resultProperty  $ORIGINALDOC
    */
   def result: ObjectProperty[R] = delegate.resultProperty
 
@@ -243,12 +233,15 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   }
 
   /**
-   * API to convert the [[scalafx.scene.control.ButtonType]] that the user clicked on into a result that can be returned
-   * via the [[scalafx.scene.control.Dialog.result]] property. This is necessary as [[scalafx.scene.control.ButtonType]]
-   * represents the visual button within the dialog, and do not know how to map themselves to a valid result - that is a
-   * requirement of the dialog implementation by making use of the result converter. In some cases, the result type of a
-   * Dialog subclass is ButtonType (which means that the result converter can be null), but in some cases (where the
-   * result type, R, is not ButtonType or Void), this callback must be specified.
+   * API to convert the [[scalafx.scene.control.ButtonType]] that the user clicked on into a
+   * result that can be returned via the [[scalafx.scene.control.Dialog.result]]
+   * property. This is necessary as [[scalafx.scene.control.ButtonType]] represents the visual
+   * button within the dialog, and do not know how to map themselves to a valid
+   * result - that is a requirement of the dialog implementation by making use
+   * of the result converter. In some cases, the result type of a Dialog
+   * subclass is ButtonType (which means that the result converter can be null),
+   * but in some cases (where the result type, R, is not ButtonType or Void),
+   * this callback must be specified.
    */
   def resultConverter: ObjectProperty[ButtonType => R] =
     ObjectProperty((bt: ButtonType) => delegate.resultConverterProperty.getValue.call(bt))
@@ -301,8 +294,8 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   }
 
   /**
-   * The horizontal location of this [[scalafx.scene.control.Dialog]]. Changing this attribute will move the
-   * [[scalafx.scene.control.Dialog]] horizontally.
+   * The horizontal location of this [[scalafx.scene.control.Dialog]]. Changing this attribute
+   * will move the [[scalafx.scene.control.Dialog]] horizontally.
    */
   def x: ReadOnlyDoubleProperty = delegate.xProperty()
 
@@ -311,14 +304,15 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   }
 
   /**
-   * The vertical location of this [[scalafx.scene.control.Dialog]]. Changing this attribute will move the
-   * [[scalafx.scene.control.Dialog]] vertically.
+   * The vertical location of this [[scalafx.scene.control.Dialog]]. Changing this attribute
+   * will move the [[scalafx.scene.control.Dialog]] vertically.
    */
   def y: ReadOnlyDoubleProperty = delegate.yProperty()
 
   def y_=(v: Double): Unit = {
     delegate.setY(v)
   }
+
 
   /**
    * Called just prior to the Dialog being shown.
@@ -348,8 +342,9 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
   }
 
   /**
-   * Called just after the Dialog has been hidden. When the [[scalafx.scene.control.Dialog]] is hidden, this event
-   * handler is invoked allowing the developer to clean up resources or perform other tasks when the
+   * Called just after the Dialog has been hidden.
+   * When the [[scalafx.scene.control.Dialog]] is hidden, this event handler is invoked allowing
+   * the developer to clean up resources or perform other tasks when the
    * [[scalafx.scene.control.Dialog]] is closed.
    */
   def onHidden: ObjectProperty[jfxe.EventHandler[jfxsc.DialogEvent]] = delegate.onHiddenProperty

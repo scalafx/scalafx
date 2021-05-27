@@ -33,26 +33,28 @@ import scalafx.testutil.{RunOnApplicationThread, SimpleSFXDelegateSpec}
 
 /**
  * Axis Spec tests.
+ *
+ *
  */
 class AxisSpec[T]
-    extends SimpleSFXDelegateSpec[jfxsc.Axis[T], Axis[T]](classOf[jfxsc.Axis[T]], classOf[Axis[T]])
-    with RunOnApplicationThread {
+  extends SimpleSFXDelegateSpec[jfxsc.Axis[T], Axis[T]](classOf[jfxsc.Axis[T]], classOf[Axis[T]])
+  with RunOnApplicationThread {
 
   override def getScalaClassInstance = new Axis[T](getJavaClassInstance) {}
 
   override def getJavaClassInstance = new jfxsc.Axis[T] {
-    protected def autoRange(length: Double)                       = null
+    protected def autoRange(length: Double) = null
     protected def calculateTickValues(length: Double, range: Any) = new java.util.ArrayList[T]
-    def getDisplayPosition(value: T)                              = 0.0
-    protected def getRange                                        = null
-    protected def getTickMarkLabel(value: T)                      = ""
-    def getValueForDisplay(displayPosition: Double)               = null.asInstanceOf[T]
-    def getZeroPosition                                           = 0.0
-    def isValueOnAxis(value: T)                                   = false
+    def getDisplayPosition(value: T) = 0.0
+    protected def getRange = null
+    protected def getTickMarkLabel(value: T) = ""
+    def getValueForDisplay(displayPosition: Double) = null.asInstanceOf[T]
+    def getZeroPosition = 0.0
+    def isValueOnAxis(value: T) = false
 
     protected def setRange(range: Any, animate: Boolean): Unit = {}
 
-    def toNumericValue(value: T)   = 0.0
+    def toNumericValue(value: T) = 0.0
     def toRealValue(value: Double) = null.asInstanceOf[T]
   }
 
