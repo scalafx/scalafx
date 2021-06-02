@@ -180,16 +180,18 @@ object WebColor {
     WebColor("WHITESMOKE", WhiteSmoke),
     WebColor("YELLOW", Yellow),
     WebColor("YELLOWGREEN", YellowGreen)
-
   )
 }
 
 /**
  * Represents pre-defined colors defined in [[scalafx.scene.paint.Color]] Object.
  *
- * @constructor Creates a new WebColor
- * @param name Color Name
- * @param color Color
+ * @constructor
+ *   Creates a new WebColor
+ * @param name
+ *   Color Name
+ * @param color
+ *   Color
  */
 sealed case class WebColor(name: String, color: Color) {
 

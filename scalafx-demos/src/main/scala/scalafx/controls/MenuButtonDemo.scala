@@ -28,47 +28,45 @@
 package scalafx.controls
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.event.ActionEvent
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.{MenuButton, MenuItem}
 import scalafx.scene.layout.VBox
 
-object MenuButtonDemo extends JFXApp {
-
-  stage = new PrimaryStage {
-    scene = new Scene(200, 200) {
-      content = new VBox {
-        padding = Insets(10)
-        spacing = 10
-        children = List(
-          new MenuButton("MenuButton 1") {
-            items = List(
-              new MenuItem("MenuItem A") {
-                onAction = { (ae: ActionEvent) => {
-                  println(s"${ae.eventType} occurred on Menu Item A")
-                }
-                }
-              },
-              new MenuItem("MenuItem B")
-            )
-          },
-          new MenuButton {
-            text = "MenuButton 2"
-            items = List(
-              new MenuItem("MenuItem C") {
-                onAction = { (ae: ActionEvent) => {
-                  println(s"${ae.eventType} occurred on Menu Item C")
-                }
-                }
-              },
-              new MenuItem("MenuItem D")
-            )
-          }
-
-        )
+object MenuButtonDemo extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      scene = new Scene(200, 200) {
+        content = new VBox {
+          padding = Insets(10)
+          spacing = 10
+          children = List(
+            new MenuButton("MenuButton 1") {
+              items = List(
+                new MenuItem("MenuItem A") {
+                  onAction = { (ae: ActionEvent) =>
+                    println(s"${ae.eventType} occurred on Menu Item A")
+                  }
+                },
+                new MenuItem("MenuItem B")
+              )
+            },
+            new MenuButton {
+              text = "MenuButton 2"
+              items = List(
+                new MenuItem("MenuItem C") {
+                  onAction = { (ae: ActionEvent) =>
+                    println(s"${ae.eventType} occurred on Menu Item C")
+                  }
+                },
+                new MenuItem("MenuItem D")
+              )
+            }
+          )
+        }
       }
     }
   }

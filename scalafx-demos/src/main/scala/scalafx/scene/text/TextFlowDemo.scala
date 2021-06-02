@@ -28,33 +28,35 @@
 package scalafx.scene.text
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
+import scalafx.application.JFXApp3
 import scalafx.scene.Scene
 import scalafx.scene.paint.Color
 
-object TextFlowDemo extends JFXApp {
-  stage = new JFXApp.PrimaryStage {
-    title = "TextFlow Demo"
-    scene = new Scene(500, 200) {
-      fill = Color.White
-      root = new TextFlow {
-        val family = "Helvetica"
-        val size = 20d
-        val text1 = new Text {
-          text = "Hello "
-          font = Font(family, size)
+object TextFlowDemo extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new JFXApp3.PrimaryStage {
+      title = "TextFlow Demo"
+      scene = new Scene(500, 200) {
+        fill = Color.White
+        root = new TextFlow {
+          val family = "Helvetica"
+          val size   = 20d
+          val text1 = new Text {
+            text = "Hello "
+            font = Font(family, size)
+          }
+          val text2 = new Text {
+            text = "Bold"
+            font = Font(family, FontWeight.Bold, size)
+          }
+          val text3 = new Text {
+            text = " World"
+            font = Font(family, FontPosture.Italic, size)
+          }
+          children ++= Seq(text1, text2, text3)
+          layoutX = 40
+          layoutY = 40
         }
-        val text2 = new Text {
-          text = "Bold"
-          font = Font(family, FontWeight.Bold, size)
-        }
-        val text3 = new Text {
-          text = " World"
-          font = Font(family, FontPosture.Italic, size)
-        }
-        children ++= Seq(text1, text2, text3)
-        layoutX = 40
-        layoutY = 40
       }
     }
   }

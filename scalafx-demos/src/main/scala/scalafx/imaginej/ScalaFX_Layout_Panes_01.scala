@@ -39,54 +39,55 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+ * @author
+ *   Luc Duponcheel <luc.duponcheel@gmail.com>
  *
  * based upon: Example 1-1 Create a Border Pane
  *
  * http://docs.oracle.com/javafx/2.0/layout/builtin_layouts.htm
- *
  */
 
-object ScalaFX_Layout_Panes_01 extends JFXApp {
-  stage = new PrimaryStage {
-    title = "ScalaFX Layout Panes 01"
-    scene = new Scene {
-      content = new BorderPane {
-        top = new Rectangle {
-          fill = Color.DarkCyan
-          width = 200
-          height = 50
-        }
-        bottom = new Rectangle {
-          fill = Color.DarkCyan
-          width = 200
-          height = 50
-        }
-        left = new Rectangle {
-          fill = Color.DarkTurquoise
-          width = 50
-          height = 100
-        }
-        right = new Rectangle {
-          fill = Color.DarkTurquoise
-          width = 50
-          height = 100
-        }
-        center = new Rectangle {
-          fill = Color.MediumAquamarine
-          width = 100
-          height = 100
+object ScalaFX_Layout_Panes_01 extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      title = "ScalaFX Layout Panes 01"
+      scene = new Scene {
+        content = new BorderPane {
+          top = new Rectangle {
+            fill = Color.DarkCyan
+            width = 200
+            height = 50
+          }
+          bottom = new Rectangle {
+            fill = Color.DarkCyan
+            width = 200
+            height = 50
+          }
+          left = new Rectangle {
+            fill = Color.DarkTurquoise
+            width = 50
+            height = 100
+          }
+          right = new Rectangle {
+            fill = Color.DarkTurquoise
+            width = 50
+            height = 100
+          }
+          center = new Rectangle {
+            fill = Color.MediumAquamarine
+            width = 100
+            height = 100
+          }
         }
       }
     }
   }
 }
-

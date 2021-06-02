@@ -27,39 +27,34 @@
 
 package scalafx.controls
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.controls.controls._
 import scalafx.scene.Scene
 import scalafx.scene.control.ComboBox
 import scalafx.scene.layout.{BorderPane, Priority, VBox}
 import scalafx.scene.paint.Color
 
-
-object ComboBoxDemo extends JFXApp {
-
-  val comboBox = new ComboBox[String]
-
-  val comboBoxControls = new ComboBoxControls(comboBox)
-
-  val mainPane = new BorderPane {
-    top = comboBox
-    center = new VBox {
-      children = List(comboBoxControls, new ComboBoxBaseControls[String](comboBox), new ControlControls(comboBox))
+object ComboBoxDemo extends JFXApp3 {
+  override def start(): Unit = {
+    val comboBox         = new ComboBox[String]
+    val comboBoxControls = new ComboBoxControls(comboBox)
+    val mainPane = new BorderPane {
+      top = comboBox
+      center = new VBox {
+        children = List(comboBoxControls, new ComboBoxBaseControls[String](comboBox), new ControlControls(comboBox))
+      }
+      vgrow = Priority.Always
+      hgrow = Priority.Always
     }
-    vgrow = Priority.Always
-    hgrow = Priority.Always
-  }
-
-  stage = new PrimaryStage {
-    title = "ComboBox Test"
-    width = 300
-    height = 450
-    scene = new Scene {
-      fill = Color.LightGray
-      content = mainPane
+    stage = new PrimaryStage {
+      title = "ComboBox Test"
+      width = 300
+      height = 450
+      scene = new Scene {
+        fill = Color.LightGray
+        content = mainPane
+      }
     }
   }
-
-
 }

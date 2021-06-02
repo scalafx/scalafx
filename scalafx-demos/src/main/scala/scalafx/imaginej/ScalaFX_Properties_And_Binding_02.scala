@@ -43,18 +43,18 @@ import scalafx.beans.binding.NumberBinding
 import scalafx.beans.property.IntegerProperty
 
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+ * @author
+ *   Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- *         based upon: Example 3 Using the Fluent API
+ * based upon: Example 3 Using the Fluent API
  *
- *         http://docs.oracle.com/javafx/2.0/binding/jfxpub-binding.htm
- *
+ * http://docs.oracle.com/javafx/2.0/binding/jfxpub-binding.htm
  */
 
 object ScalaFX_Properties_And_Binding_02 {
   def main(args: Array[String]): Unit = {
-    val num1 = new IntegerProperty(null, "num1")
-    val num2 = new IntegerProperty(null, "num2")
+    val num1               = new IntegerProperty(null, "num1")
+    val num2               = new IntegerProperty(null, "num2")
     val sum: NumberBinding = num1 + num2
     println("before property changes: sum = " + sum())
     num1() = 1

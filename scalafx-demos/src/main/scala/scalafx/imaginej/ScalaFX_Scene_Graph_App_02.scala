@@ -39,36 +39,35 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
-
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+ * @author
+ *   Luc Duponcheel <luc.duponcheel@gmail.com>
  *
  * based upon: Example 2 Adding a Leaf Node
  *
  * http://docs.oracle.com/javafx/2.0/scenegraph/jfxpub-scenegraph.htm
- *
  */
 
-object ScalaFX_Scene_Graph_App_02 extends JFXApp {
-  stage = new PrimaryStage {
-    title = "ScalaFX Scene Graph App 02"
-    scene = new Scene(500, 500) {
-      fill = Color.Black
-      content = List(
-        new Rectangle {
+object ScalaFX_Scene_Graph_App_02 extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      title = "ScalaFX Scene Graph App 02"
+      scene = new Scene(500, 500) {
+        fill = Color.Black
+        content = List(new Rectangle {
           x = 25
           y = 25
           width = 250
           height = 250
           fill = Color.Blue
-        }
-      )
+        })
+      }
     }
   }
 }

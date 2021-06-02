@@ -28,8 +28,8 @@
 package scalafx.controls
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.controls.controls.{PropertiesNodes, _}
 import scalafx.geometry.{Orientation, Pos}
 import scalafx.scene.Scene
@@ -38,39 +38,32 @@ import scalafx.scene.layout.{BorderPane, FlowPane, Priority, VBox}
 import scalafx.scene.paint.Color
 import scalafx.util.converter.DoubleStringConverter
 
-object SliderTest extends JFXApp {
-
-  val slider = new Slider {
-    alignmentInParent = Pos.Center
-  }
-
-  val controlsPane = new VBox {
-    spacing = 5
-    fillWidth = true
-    alignment = Pos.Center
-    hgrow = Priority.Never
-    children = List(new SliderControls(slider), new ControlControls(slider))
-  }
-
-  val mainPane = new BorderPane {
-    top = new FlowPane {
-      children = List(slider)
+object SliderTest extends JFXApp3 {
+  override def start(): Unit = {
+    val slider = new Slider { alignmentInParent = Pos.Center }
+    val controlsPane = new VBox {
+      spacing = 5
+      fillWidth = true
+      alignment = Pos.Center
+      hgrow = Priority.Never
+      children = List(new SliderControls(slider), new ControlControls(slider))
     }
-    center = controlsPane
-    vgrow = Priority.Always
-    hgrow = Priority.Always
-  }
-
-  stage = new PrimaryStage {
-    title = "Slider Test"
-    width = 300
-    height = 380
-    scene = new Scene {
-      fill = Color.LightGray
-      content = mainPane
+    val mainPane = new BorderPane {
+      top = new FlowPane { children = List(slider) }
+      center = controlsPane
+      vgrow = Priority.Always
+      hgrow = Priority.Always
+    }
+    stage = new PrimaryStage {
+      title = "Slider Test"
+      width = 300
+      height = 380
+      scene = new Scene {
+        fill = Color.LightGray
+        content = mainPane
+      }
     }
   }
-
 }
 
 class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Slider Properties") {
@@ -91,7 +84,7 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   }
 
   val originalValue = target.value.get
-  val txfValue = new TextField
+  val txfValue      = new TextField
   target.value.onChange(txfValue.text = target.value.get.toString)
   txfValue.onAction = _ => super.fillDoublePropertyFromText(target.value, txfValue, false)
 
@@ -103,12 +96,11 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   txfBlockIncrement.onAction = _ => fillDoublePropertyFromText(target.blockIncrement, txfBlockIncrement, false)
 
   val txfLabelFormatter = new TextField
-  txfLabelFormatter.text.onChange(
-    if (txfLabelFormatter.text.get.isEmpty) {
-      target.labelFormatter = null
-    } else {
-      target.labelFormatter = new DoubleStringConverter
-    })
+  txfLabelFormatter.text.onChange(if (txfLabelFormatter.text.get.isEmpty) {
+    target.labelFormatter = null
+  } else {
+    target.labelFormatter = new DoubleStringConverter
+  })
 
   val originalMajorTickUnit = target.majorTickUnit.get()
   val txfMajorTickUnit = new TextField {
@@ -159,7 +151,7 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   }
 
   val originalOrientation = target.orientation.get()
-  val tggOrientation = new ToggleGroup
+  val tggOrientation      = new ToggleGroup
   val rdbHorizontal = new RadioButton {
     text = Orientation.Horizontal.toString
     toggleGroup = tggOrientation
@@ -185,9 +177,12 @@ class SliderControls(target: Slider) extends PropertiesNodes[Slider](target, "Sl
   super.addNode("Show Tick Marks", chbShowTickMarks)
   super.addNode("Snap To Ticks", chbSnapToTicks)
   super.addNode("Value Changing", chbValueChanging)
-  super.addNode("Orientation", new VBox {
-    children = List(rdbHorizontal, rdbVertical)
-  })
+  super.addNode(
+    "Orientation",
+    new VBox {
+      children = List(rdbHorizontal, rdbVertical)
+    }
+  )
 
   super.addNode(btnReset)
 

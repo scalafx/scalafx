@@ -28,8 +28,8 @@
 package scalafx.graphics3d
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.beans.property.DoubleProperty
 import scalafx.scene._
 import scalafx.scene.input.MouseEvent
@@ -37,73 +37,60 @@ import scalafx.scene.paint.{Color, PhongMaterial}
 import scalafx.scene.shape.{Box, Sphere}
 import scalafx.scene.transform.Rotate
 
-
 /** ScalaFX version of the demo from projavafx8-scratchpad */
-object SphereAndBoxDemo extends JFXApp {
-
-  stage = new PrimaryStage {
-    title = "Sphere and Box Demo"
-    scene = new Scene(500, 500, true, SceneAntialiasing.Balanced) {
-
-      val box = new Box(400, 400, 400) {
-        material = new PhongMaterial {
-          diffuseColor = Color.Red
-          specularColor = Color.Pink
+object SphereAndBoxDemo extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      title = "Sphere and Box Demo"
+      scene = new Scene(500, 500, true, SceneAntialiasing.Balanced) {
+        val box = new Box(400, 400, 400) {
+          material = new PhongMaterial {
+            diffuseColor = Color.Red
+            specularColor = Color.Pink
+          }
+          translateZ = 225
         }
-        translateZ = 225
-      }
-
-      val sphere = new Sphere(200) {
-        material = new PhongMaterial {
-          diffuseColor = Color.Blue
-          specularColor = Color.LightBlue
+        val sphere = new Sphere(200) {
+          material = new PhongMaterial {
+            diffuseColor = Color.Blue
+            specularColor = Color.LightBlue
+          }
+          translateZ = -225
         }
-        translateZ = -225
+        val shapes = new Group(box, sphere)
+        val light = new PointLight {
+          color = Color.AntiqueWhite
+          translateX = -265
+          translateY = -260
+          translateZ = -625
+        }
+        root = new Group {
+          children = new Group(shapes, light)
+          translateX = 250
+          translateY = 250
+          translateZ = 725
+          rotationAxis = Rotate.YAxis
+        }
+        camera = new PerspectiveCamera(false)
+        addMouseInteraction(this, shapes)
       }
-
-      // Put shapes in a groups so they can be rotated together
-      val shapes = new Group(box, sphere)
-
-      val light = new PointLight {
-        color = Color.AntiqueWhite
-        translateX = -265
-        translateY = -260
-        translateZ = -625
+    }
+    def addMouseInteraction(scene: Scene, node: Node): Unit = {
+      val angleY = DoubleProperty(-50)
+      val yRotate = new Rotate {
+        angle <== angleY
+        axis = Rotate.YAxis
       }
-
-      root = new Group {
-        // Put light outside of `shapes` group so it does not rotate
-        children = new Group(shapes, light)
-        translateX = 250
-        translateY = 250
-        translateZ = 725
-        rotationAxis = Rotate.YAxis
+      var anchorX: Double      = 0
+      var anchorAngleY: Double = 0
+      node.transforms = Seq(yRotate)
+      scene.onMousePressed = (event: MouseEvent) => {
+        anchorX = event.sceneX
+        anchorAngleY = angleY()
       }
-
-      camera = new PerspectiveCamera(false)
-
-      addMouseInteraction(this, shapes)
-    }
-  }
-
-  /** Add mouse interaction to a scene, rotating given node. */
-  private def addMouseInteraction(scene: Scene, node: Node): Unit = {
-    val angleY = DoubleProperty(-50)
-    val yRotate = new Rotate {
-      angle <== angleY
-      axis = Rotate.YAxis
-    }
-    var anchorX: Double = 0
-    var anchorAngleY: Double = 0
-
-    node.transforms = Seq(yRotate)
-
-    scene.onMousePressed = (event: MouseEvent) => {
-      anchorX = event.sceneX
-      anchorAngleY = angleY()
-    }
-    scene.onMouseDragged = (event: MouseEvent) => {
-      angleY() = anchorAngleY + anchorX - event.sceneX
+      scene.onMouseDragged = (event: MouseEvent) => {
+        angleY() = anchorAngleY + anchorX - event.sceneX
+      }
     }
   }
 }

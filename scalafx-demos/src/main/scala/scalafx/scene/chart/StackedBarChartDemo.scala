@@ -27,43 +27,37 @@
 
 package scalafx.scene.chart
 
-import scalafx.application.JFXApp
+import scalafx.application.JFXApp3
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
 
-object StackedBarChartDemo extends JFXApp {
-
-  val years = Seq("2007", "2008", "2009")
-
-  val xAxis = CategoryAxis(years)
-  val yAxis = NumberAxis(
-    axisLabel = "Units Sold",
-    lowerBound = 0,
-    upperBound = 8000,
-    tickUnit = 1000
-  )
-
-  stage = new JFXApp.PrimaryStage {
-    title = "StackedBarChartDemo"
-    scene = new Scene {
-      root = new StackedBarChart(xAxis, yAxis) {
-        title = "Stacked Bar Chart"
-        categoryGap = 25
-        data = ObservableBuffer(
-          xySeries("Region 1", Seq(567, 1292, 1290)),
-          xySeries("Region 2", Seq(956, 1665, 2559)),
-          xySeries("Region 3", Seq(1154, 1927, 2774))
-        )
+object StackedBarChartDemo extends JFXApp3 {
+  override def start(): Unit = {
+    val years = Seq("2007", "2008", "2009")
+    val xAxis = CategoryAxis(years)
+    val yAxis = NumberAxis(axisLabel = "Units Sold", lowerBound = 0, upperBound = 8000, tickUnit = 1000)
+    stage = new JFXApp3.PrimaryStage {
+      title = "StackedBarChartDemo"
+      scene = new Scene {
+        root = new StackedBarChart(xAxis, yAxis) {
+          title = "Stacked Bar Chart"
+          categoryGap = 25
+          data = ObservableBuffer(
+            xySeries("Region 1", Seq(567, 1292, 1290)),
+            xySeries("Region 2", Seq(956, 1665, 2559)),
+            xySeries("Region 3", Seq(1154, 1927, 2774))
+          )
+        }
       }
     }
-  }
-
-  /** Create XYChart.Series from a sequence of numbers matching year strings. */
-  def xySeries(name: String, data: Seq[Int]) = {
-    val series = years zip data
-    XYChart.Series[String, Number](
-      name,
-      ObservableBuffer.from(series.map { case (x, y) => XYChart.Data[String, Number](x, y) })
-    )
+    def xySeries(name: String, data: Seq[Int]) = {
+      val series = years zip data
+      XYChart.Series[String, Number](
+        name,
+        ObservableBuffer.from(series.map({ case (x, y) =>
+          XYChart.Data[String, Number](x, y)
+        }))
+      )
+    }
   }
 }

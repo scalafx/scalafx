@@ -28,86 +28,56 @@
 package scalafx.controls.treeview
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
 import scalafx.scene.control._
 
 /**
-  * Improper implementation of cellFactory may lead to rendering artifacts.
-  * The JavaFX recommended way is to overwrite `TreeCell`'s `updateItem` method.
-  * This requires implementing JavaFX rather ScalaFX version of
-  */
-object TreeViewCellFactoryDemo extends JFXApp {
-
-  case class Person(firstName: String, lastName: String, children: List[Person] = Nil)
-
-  val children1 = List(
-    Person("Bungalow", "Bill"),
-    Person("Dennis", "O’Dell"),
-    Person("Peggy", "Sue"),
-    Person("Molly", "Jones")
-  )
-
-  val children2 = List(
-    Person("Maxwell", "Edison"),
-    Person("Desmond", "Jones"),
-    Person("Loretta", "Martin")
-  )
-
-
-  val parents = ObservableBuffer[Person](
-    Person("Eleanor", "Rigby", children1),
-    Person("Rocky", "Raccoon", children2)
-  )
-
-  def toTreeItem(p: Person): TreeItem[Person] = {
-    if (p.children.isEmpty) new TreeItem(p)
-    else new TreeItem(p) {
-      children = p.children map toTreeItem
+ * Improper implementation of cellFactory may lead to rendering artifacts. The JavaFX recommended way is to overwrite
+ * `TreeCell`'s `updateItem` method. This requires implementing JavaFX rather ScalaFX version of
+ */
+object TreeViewCellFactoryDemo extends JFXApp3 {
+  override def start(): Unit = {
+    case class Person(firstName: String, lastName: String, children: List[Person] = Nil)
+    val children1 = List(
+      Person("Bungalow", "Bill"),
+      Person("Dennis", "O\u2019Dell"),
+      Person("Peggy", "Sue"),
+      Person("Molly", "Jones")
+    )
+    val children2 = List(Person("Maxwell", "Edison"), Person("Desmond", "Jones"), Person("Loretta", "Martin"))
+    val parents = ObservableBuffer[Person](Person("Eleanor", "Rigby", children1), Person("Rocky", "Raccoon", children2))
+    def toTreeItem(p: Person): TreeItem[Person] = {
+      if (p.children.isEmpty) new TreeItem(p) else new TreeItem(p) { children = p.children map toTreeItem }
     }
-  }
-
-  stage = new PrimaryStage {
-    title = "TreeView CellFactory Demo"
-    scene = new Scene {
-      content = new TreeView[Person] {
-        prefWidth = 250
-        prefHeight = 250
-        showRoot = false
-        root = new TreeItem[Person] {
-          expanded = true
-          children = parents.map(toTreeItem).toSeq
-        }
-        //        // Do not implement CellFactory through `treeItem.onChange` it results in rendering artifacts
-        //        cellFactory = (v: TreeView[Person]) => new TreeCell[Person] {
-        //          treeItem.onChange { (_, _, p) =>
-        //            text = if (p != null) p.value().firstName + " " + p.value().lastName else null
-        //            graphic = null
-        //          }
-        //        }
-
-        // Use CellFactory to do custom rendering of a TreeCell,
-        // deriving from JavaFX `TreeCell` let us use custom `updateItem`.
-        // There can be some ghost artifact if `updateItem` is not properly uses
-        // and handled situations when item is marked `empty`
-        cellFactory = _ =>
-          new javafx.scene.control.TreeCell[Person] {
-
-            // We are deriving from JavaFX, for easier use add ScalaFX wrapper for  `this`
-            val self: TreeCell[Person] = this
-
-            override def updateItem(item: Person, empty: Boolean): Unit = {
-              super.updateItem(item, empty)
-              self.graphic = null
-              self.text = item match {
-                case p: Person => p.firstName + " " + p.lastName
-                case null => null
+    stage = new PrimaryStage {
+      title = "TreeView CellFactory Demo"
+      scene = new Scene {
+        content = new TreeView[Person] {
+          prefWidth = 250
+          prefHeight = 250
+          showRoot = false
+          root = new TreeItem[Person] {
+            expanded = true
+            children = parents.map(toTreeItem).toSeq
+          }
+          cellFactory = _ =>
+            new javafx.scene.control.TreeCell[Person] {
+              val self: TreeCell[Person] = this
+              override def updateItem(item: Person, empty: Boolean): Unit = {
+                super.updateItem(item, empty)
+                self.graphic = null
+                self.text = item match {
+                  case p: Person =>
+                    p.firstName + " " + p.lastName
+                  case null =>
+                    null
+                }
               }
             }
-          }
-
+        }
       }
     }
   }

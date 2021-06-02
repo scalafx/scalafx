@@ -32,8 +32,8 @@ import scala.math.random
 import scalafx.Includes._
 import scalafx.animation.Timeline
 import scalafx.animation.Timeline.Indefinite
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.effect.BlendMode.Overlay
 import scalafx.scene.effect.BoxBlur
@@ -43,45 +43,49 @@ import scalafx.scene.paint.{LinearGradient, Stops}
 import scalafx.scene.shape.StrokeType.Outside
 import scalafx.scene.shape.{Circle, Rectangle}
 
-
 /**
  * SimpleColorfulCircles
  */
-object SimpleColorfulCircles extends JFXApp {
-  var circles: Seq[Circle] = null
-  stage = new PrimaryStage {
-    width = 800
-    height = 600
-    scene = new Scene {
-      _scene =>
-      fill = Black
-      circles = for (i <- 0 until 30) yield new Circle {
-        centerX = random * 800
-        centerY = random * 600
-        radius = 150
-        fill = White opacity 0.05
-        stroke = White opacity 0.16
-        strokeWidth = 4
-        strokeType = Outside
-        effect = new BoxBlur(10, 10, 3)
-      }
-      content = circles :+ new Rectangle {
-        width <== _scene.width
-        height <== _scene.height
-        fill = new LinearGradient(0, 1, 1, 0, true, NoCycle,
-          Stops(0xf8bd55, 0xc0fe56, 0x5dfbc1, 0x64c2f8, 0xbe4af7, 0xed5fc2, 0xef504c, 0xf2660f))
-        blendMode = Overlay
+object SimpleColorfulCircles extends JFXApp3 {
+  override def start(): Unit = {
+    var circles: Seq[Circle] = null
+    stage = new PrimaryStage {
+      width = 800
+      height = 600
+      scene = new Scene { _scene =>
+        fill = Black
+        circles = for (i <- 0 until 30) yield new Circle {
+          centerX = random * 800
+          centerY = random * 600
+          radius = 150
+          fill = White opacity 0.05d
+          stroke = White opacity 0.16d
+          strokeWidth = 4
+          strokeType = Outside
+          effect = new BoxBlur(10, 10, 3)
+        }
+        content = circles :+ (new Rectangle {
+          width <== _scene.width
+          height <== _scene.height
+          fill = new LinearGradient(
+            0,
+            1,
+            1,
+            0,
+            true,
+            NoCycle,
+            Stops(16301397, 12648022, 6159297, 6603512, 12471031, 15556546, 15683660, 15885839)
+          )
+          blendMode = Overlay
+        })
       }
     }
+    new Timeline {
+      cycleCount = Indefinite
+      autoReverse = true
+      keyFrames = for (circle <- circles) yield at(40.s) {
+        Set(circle.centerX -> random * 800, circle.centerY -> random * 600)
+      }
+    }.play()
   }
-  new Timeline {
-    cycleCount = Indefinite
-    autoReverse = true
-    keyFrames = for (circle <- circles) yield at(40 s) {
-      Set(
-        circle.centerX -> random * 800,
-        circle.centerY -> random * 600
-      )
-    }
-  }.play()
 }

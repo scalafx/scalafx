@@ -28,8 +28,8 @@
 package scalafx.event
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.event.subscriptions.Subscription
 import scalafx.geometry.Point2D
 import scalafx.scene.Scene
@@ -39,173 +39,141 @@ import scalafx.scene.layout.{BorderPane, Pane}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.{Circle, Ellipse, Line, Rectangle}
 
-/** Demo illustrating use of event handler subscription.
-  *
-  * User can draw rectangles, ellipses, or lines. Shape type is selected by pressing corresponding
-  * toggle button. For the sake of simplicity of the demo code, only one instance of shape of each
-  * type is used. User draws a shape by pressing and dragging a mouse.
-  *
-  * Each shape type has its own mouse event handler. Only one handler is used at a time.
-  * Handlers are implemented using a simple method `MouseEvent => Unit`. When switching handlers,
-  * previous handler, if any, is cancelled using a `Subscription` pattern.
-  */
-object MultipleShapeDrawingDemo extends JFXApp {
-
-  /** Handles drawing of rectangles */
-  object RectangleInteractor extends ShapeDrawInteractor {
-    val rectangle = new Rectangle {
-      fill = Color.web("RED", 0.5)
+/**
+ * Demo illustrating use of event handler subscription.
+ *
+ * User can draw rectangles, ellipses, or lines. Shape type is selected by pressing corresponding toggle button. For the
+ * sake of simplicity of the demo code, only one instance of shape of each type is used. User draws a shape by pressing
+ * and dragging a mouse.
+ *
+ * Each shape type has its own mouse event handler. Only one handler is used at a time. Handlers are implemented using a
+ * simple method `MouseEvent => Unit`. When switching handlers, previous handler, if any, is cancelled using a
+ * `Subscription` pattern.
+ */
+object MultipleShapeDrawingDemo extends JFXApp3 {
+  override def start(): Unit = {
+    object RectangleInteractor extends ShapeDrawInteractor {
+      val rectangle = new Rectangle { fill = Color.web("RED", 0.5d) }
+      override def update(): Unit = {
+        rectangle.x = math.min(start.x, end.x)
+        rectangle.y = math.min(start.y, end.y)
+        rectangle.width = math.abs(start.x - end.x)
+        rectangle.height = math.abs(start.y - end.y)
+      }
     }
-    /** Update the shape using current `start` and `end` points. */
-    override def update(): Unit = {
-      rectangle.x = math.min(start.x, end.x)
-      rectangle.y = math.min(start.y, end.y)
-      rectangle.width = math.abs(start.x - end.x)
-      rectangle.height = math.abs(start.y - end.y)
+    object EllipseInteractor extends ShapeDrawInteractor {
+      val ellipse = new Ellipse { fill = Color.web("GREEN", 0.5d) }
+      override def update(): Unit = {
+        ellipse.centerX = start.x
+        ellipse.centerY = start.y
+        ellipse.radiusX = math.abs(start.x - end.x)
+        ellipse.radiusY = math.abs(start.y - end.y)
+      }
     }
-  }
-
-  /** Handles drawing of ellipses */
-  object EllipseInteractor extends ShapeDrawInteractor {
-    val ellipse = new Ellipse {
-      fill = Color.web("GREEN", 0.5)
+    object LineInteractor extends ShapeDrawInteractor {
+      val line = new Line {
+        stroke = Color.web("BLUE", 0.5d)
+        strokeWidth = 3
+      }
+      override def update(): Unit = {
+        line.startX = start.x
+        line.startY = start.y
+        line.endX = end.x
+        line.endY = end.y
+      }
     }
-    /** Update the shape using current `start` and `end` points. */
-    override def update(): Unit = {
-      ellipse.centerX = start.x
-      ellipse.centerY = start.y
-      ellipse.radiusX = math.abs(start.x - end.x)
-      ellipse.radiusY = math.abs(start.y - end.y)
+    val drawingPane = new Pane {
+      children ++= Seq(RectangleInteractor.rectangle, EllipseInteractor.ellipse, LineInteractor.line)
     }
-  }
-
-  /** Handles drawing of lines */
-  object LineInteractor extends ShapeDrawInteractor {
-    val line = new Line {
-      stroke = Color.web("BLUE", 0.5)
-      strokeWidth = 3
-    }
-    /** Update the shape using current `start` and `end` points. */
-    override def update(): Unit = {
-      line.startX = start.x
-      line.startY = start.y
-      line.endX = end.x
-      line.endY = end.y
-    }
-  }
-
-  val drawingPane = new Pane {
-    // For simplicity of the demo, just add all shapes to canvas, single instance of each type.
-    // Initially, they have zero area so they will not be visible.
-    children ++= Seq(RectangleInteractor.rectangle, EllipseInteractor.ellipse, LineInteractor.line)
-  }
-
-  stage = new PrimaryStage {
-    title = "Multiple Shape Drawing Demo"
-    scene = new Scene(600, 400) {
-      root = new BorderPane {
-        top = new ToolBar {
-          val alignToggleGroup = new ToggleGroup()
-          content = List(
-            new ToggleButton {
-              id = "rectangle"
-              graphic = new Rectangle {
-                fill = Color.web("RED", 0.5)
-                width = 32
-                height = 32
+    stage = new PrimaryStage {
+      title = "Multiple Shape Drawing Demo"
+      scene = new Scene(600, 400) {
+        root = new BorderPane {
+          top = new ToolBar {
+            val alignToggleGroup = new ToggleGroup()
+            content = List(
+              new ToggleButton {
+                id = "rectangle"
+                graphic = new Rectangle {
+                  fill = Color.web("RED", 0.5d)
+                  width = 32
+                  height = 32
+                }
+                toggleGroup = alignToggleGroup
+              },
+              new ToggleButton {
+                id = "ellipse"
+                graphic = new Circle {
+                  fill = Color.web("GREEN", 0.5d)
+                  radius = 16
+                }
+                toggleGroup = alignToggleGroup
+              },
+              new ToggleButton {
+                id = "line"
+                graphic = new Line {
+                  stroke = Color.web("BLUE", 0.5d)
+                  startX = 0
+                  startY = 0
+                  endX = 28
+                  endY = 28
+                  strokeWidth = 3
+                }
+                toggleGroup = alignToggleGroup
               }
-              toggleGroup = alignToggleGroup
-            },
-            new ToggleButton {
-              id = "ellipse"
-              graphic = new Circle {
-                fill = Color.web("GREEN", 0.5)
-                radius = 16
+            )
+            var mouseHandlerSubscription: Option[Subscription] = None
+            alignToggleGroup.selectedToggle.onChange {
+              mouseHandlerSubscription.foreach(_.cancel())
+              val handlerId = alignToggleGroup.selectedToggle().asInstanceOf[javafx.scene.control.ToggleButton].id()
+              val selectedHandler = handlerId match {
+                case "rectangle" =>
+                  Some(RectangleInteractor.handler)
+                case "ellipse" =>
+                  Some(EllipseInteractor.handler)
+                case "line" =>
+                  Some(LineInteractor.handler)
+                case _ =>
+                  None
               }
-              toggleGroup = alignToggleGroup
-            },
-            new ToggleButton {
-              id = "line"
-              graphic = new Line {
-                stroke = Color.web("BLUE", 0.5)
-                startX = 0
-                startY = 0
-                endX = 28
-                endY = 28
-                strokeWidth = 3
+              mouseHandlerSubscription = selectedHandler match {
+                case Some(h) =>
+                  Some(drawingPane.handleEvent(MouseEvent.Any)(h))
+                case None =>
+                  None
               }
-              toggleGroup = alignToggleGroup
             }
-          )
-
-          // Subscription to the current mouse event handler
-          var mouseHandlerSubscription: Option[Subscription] = None
-
-          // Handle pressing to toggle buttons.
-          alignToggleGroup.selectedToggle.onChange {
-            // Cancel current mouse event handler
-            mouseHandlerSubscription.foreach(_.cancel())
-            // Determine which shape is selected
-            val handlerId = alignToggleGroup.selectedToggle().asInstanceOf[javafx.scene.control.ToggleButton].id()
-            val selectedHandler = handlerId match {
-              case "rectangle" => Some(RectangleInteractor.handler)
-              case "ellipse"   => Some(EllipseInteractor.handler)
-              case "line"      => Some(LineInteractor.handler)
-              case _           => None
-            }
-            // Selected corresponding handler
-            mouseHandlerSubscription = selectedHandler match {
-              case Some(h) => Some(drawingPane.handleEvent(MouseEvent.Any)(h))
-              case None    => None
-            }
+            alignToggleGroup.selectToggle(alignToggleGroup.toggles(0))
           }
-
-          // Select first button. We do selection here, after the handling of button selection was defined,
-          // so this initial selection can be handled the same way as any other selection.
-          alignToggleGroup.selectToggle(alignToggleGroup.toggles(0))
+          center = drawingPane
         }
-        center = drawingPane
       }
     }
-  }
-
-  trait MouseHandler {
-    /** Return event handling method */
-    def handler: MouseEvent => Unit
-  }
-
-  /** Encapsulates common behaviour of interaction when drawing a shape based on two points. */
-  trait ShapeDrawInteractor extends MouseHandler {
-    private var _start = new Point2D(0, 0)
-    private var _end = new Point2D(0, 0)
-
-    def start: Point2D = _start
-
-    def start_=(p: Point2D): Unit = {
-      _start = p
-      _end = p
-      update()
-    }
-
-    def end: Point2D = _end
-
-    def end_=(p: Point2D): Unit = {
-      _end = p
-      update()
-    }
-
-    /** Update the shape using current `start` and `end` points. */
-    def update(): Unit
-
-    override def handler: MouseEvent => Unit = {
-      (me: MouseEvent) => {
+    trait MouseHandler { def handler: MouseEvent => Unit }
+    trait ShapeDrawInteractor extends MouseHandler {
+      private var _start = new Point2D(0, 0)
+      private var _end   = new Point2D(0, 0)
+      def start: Point2D = _start
+      def start_=(p: Point2D): Unit = {
+        _start = p
+        _end = p
+        update()
+      }
+      def end: Point2D = _end
+      def end_=(p: Point2D): Unit = {
+        _end = p
+        update()
+      }
+      def update(): Unit
+      override def handler: MouseEvent => Unit = { (me: MouseEvent) =>
         me.eventType match {
-          case MouseEvent.MousePressed => start = new Point2D(me.x, me.y)
-          case MouseEvent.MouseDragged => end = new Point2D(me.x, me.y)
-          case _ => {}
+          case MouseEvent.MousePressed =>
+            start = new Point2D(me.x, me.y)
+          case MouseEvent.MouseDragged =>
+            end = new Point2D(me.x, me.y)
+          case _ =>
         }
       }
     }
   }
-
 }

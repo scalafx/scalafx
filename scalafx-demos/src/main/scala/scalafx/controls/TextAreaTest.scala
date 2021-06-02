@@ -29,7 +29,7 @@ package scalafx.controls
 
 import javafx.beans.value.{ChangeListener, ObservableValue}
 import scalafx.Includes.{observableList2ObservableBuffer, _}
-import scalafx.application.JFXApp
+import scalafx.application.JFXApp3
 import scalafx.collections.ObservableBuffer
 import scalafx.controls.controls.{ControlControls, PropertiesNodes, TextInputControlControls}
 import scalafx.geometry.Pos
@@ -38,40 +38,32 @@ import scalafx.scene.control.{CheckBox, ChoiceBox, Label, TextArea}
 import scalafx.scene.layout.{BorderPane, Priority, VBox}
 import scalafx.scene.paint.Color
 
-object TextAreaTest extends JFXApp {
-
-  stage = new JFXApp.PrimaryStage {
-    title = "TextArea Test"
-    width = 450
-    height = 380
-    scene = new Scene {
-      fill = Color.LightGray
-      content = mainPane
+object TextAreaTest extends JFXApp3 {
+  override def start(): Unit = {
+    lazy val textArea = new TextArea { prefColumnCount = 20 }
+    val controlsPane = new VBox {
+      spacing = 5
+      fillWidth = true
+      alignment = Pos.Center
+      prefHeight <== stage.scene().height
+      hgrow = Priority.Never
+      children =
+        List(new TextAreaControls(textArea), new TextInputControlControls(textArea), new ControlControls(textArea))
+    }
+    val mainPane = new BorderPane {
+      top = textArea
+      center = controlsPane
+    }
+    stage = new JFXApp3.PrimaryStage {
+      title = "TextArea Test"
+      width = 450
+      height = 380
+      scene = new Scene {
+        fill = Color.LightGray
+        content = mainPane
+      }
     }
   }
-
-  lazy val textArea = new TextArea {
-    prefColumnCount = 20
-    //    prefHeight <== scene.height
-    //    hgrow = Priority.Always
-  }
-
-  val controlsPane = new VBox {
-    spacing = 5
-    fillWidth = true
-    alignment = Pos.Center
-    prefHeight <== stage.scene().height
-    hgrow = Priority.Never
-    children = List(new TextAreaControls(textArea), new TextInputControlControls(textArea), new ControlControls(textArea))
-  }
-
-  lazy val mainPane = new BorderPane {
-    top = textArea
-    center = controlsPane
-    //    vgrow = Priority.Always
-    //    hgrow = Priority.Always
-  }
-
 }
 
 class TextAreaControls(target: TextArea) extends PropertiesNodes[TextArea](target, "TextArea Properties") {

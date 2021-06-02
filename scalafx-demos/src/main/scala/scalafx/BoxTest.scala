@@ -27,46 +27,52 @@
 
 package scalafx
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.layout.{HBox, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.{Arc, Circle, Rectangle}
 
-object BoxTest extends JFXApp {
-  stage = new PrimaryStage {
-    width = 600
-    height = 450
-    scene = new Scene {
-      fill = Color.LightGreen
-      content = new HBox {
-        spacing = 10
-        children = List(new Rectangle {
-          width = 100
-          height = 50
-          fill = Color.Red
-          stroke = Color.Blue
-          strokeWidth = 5
-          margin = Insets(10)
-        }, new VBox {
+object BoxTest extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      width = 600
+      height = 450
+      scene = new Scene {
+        fill = Color.LightGreen
+        content = new HBox {
           spacing = 10
-          children = for (i <- 0 until 3) yield new Circle {
-            radius = 25
-            fill = Color.Blue
-            stroke = Color.Blue.brighter
-            strokeWidth = 3
-          }
-        }, new Arc {
-          radiusX = 25
-          radiusY = 50
-          startAngle = 135
-          length = 45
-          fill = Color.Black
-          stroke = Color.Yellow
-          strokeWidth = 3
-        })
+          children = List(
+            new Rectangle {
+              width = 100
+              height = 50
+              fill = Color.Red
+              stroke = Color.Blue
+              strokeWidth = 5
+              margin = Insets(10)
+            },
+            new VBox {
+              spacing = 10
+              children = for (i <- 0 until 3) yield new Circle {
+                radius = 25
+                fill = Color.Blue
+                stroke = Color.Blue.brighter
+                strokeWidth = 3
+              }
+            },
+            new Arc {
+              radiusX = 25
+              radiusY = 50
+              startAngle = 135
+              length = 45
+              fill = Color.Black
+              stroke = Color.Yellow
+              strokeWidth = 3
+            }
+          )
+        }
       }
     }
   }
