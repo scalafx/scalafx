@@ -42,14 +42,16 @@ import scala.language.implicitConversions
  * Example of using `CheckBoxListCell` in `ListView`.
  */
 object CheckBoxListCellDemo extends JFXApp3 {
+
+  class Item(initialSelection: Boolean, val name: String) {
+    val selected: BooleanProperty = BooleanProperty(initialSelection)
+    override def toString: String = name
+  }
+
+  private val data = ObservableBuffer.from[Item]((1 to 10).map(i => new Item(i % 2 == 0, s"Item $i")))
+
   override def start(): Unit = {
-    class Item(initialSelection: Boolean, val name: String) {
-      val selected          = BooleanProperty(initialSelection)
-      override def toString = name
-    }
-    val data = ObservableBuffer.from[Item]((1 to 10).map { i =>
-      new Item(i % 2 == 0, s"Item $i")
-    })
+
     stage = new PrimaryStage {
       scene = new Scene {
         title = "CheckBoxListCell Demo"
@@ -66,8 +68,7 @@ object CheckBoxListCellDemo extends JFXApp3 {
                 println(
                   data
                     .map(d => d.name + ": " + d.selected())
-                    .mkString("""
-""")
+                    .mkString("\n")
                 )
               }
             }
