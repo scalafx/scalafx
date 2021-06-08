@@ -25,55 +25,79 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-//noinspection TypeAnnotation
-
 package scalafx.controls.treetableview
 
 import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
-import scalafx.beans.property.StringProperty
+import scalafx.beans.property.{ObjectProperty, StringProperty}
 import scalafx.scene.Scene
-import scalafx.scene.control.{TreeItem, TreeTableColumn, TreeTableView}
+import scalafx.scene.control.{TreeItem, TreeTableCell, TreeTableColumn, TreeTableView}
 import scalafx.scene.image.Image
+import scalafx.scene.paint.Color
+import scalafx.scene.shape.Circle
 
 /**
  * ScalaFX version of the example from http://tutorials.jenkov.com/javafx/treetableview.html
  */
+//noinspection TypeAnnotation
 object TreeTableViewDemo extends JFXApp3 {
+
+  val translucentColor = Color(0, 0, 0, 0)
+
+  class Car(brandName: String, modelName: String, sampleColor: Color) {
+    val brand = StringProperty(brandName)
+    val model = StringProperty(modelName)
+    val color = ObjectProperty[Color](sampleColor)
+  }
+
+  val mercedes = new TreeItem(new Car("Mercedes", "", translucentColor)) {
+    children = Seq(
+      new TreeItem(new Car("Mercedes", "SL500", Color.Aqua)),
+      new TreeItem(new Car("Mercedes", "SL500 AMG", Color.Aquamarine)),
+      new TreeItem(new Car("Mercedes", "CLA 200", Color.Silver))
+    )
+  }
+
+  val audi = new TreeItem(new Car("Audi", "", translucentColor)) {
+    children = Seq(
+      new TreeItem(new Car("Audi", "A1", Color.Crimson)),
+      new TreeItem(new Car("Audi", "A5", Color.Chocolate)),
+      new TreeItem(new Car("Audi", "A7", Color.Coral))
+    )
+  }
+
   override def start(): Unit = {
-    class Car(brandName: String, modelName: String) {
-      val brand = StringProperty(brandName)
-      val model = StringProperty(modelName)
-    }
-    val brandColumn = new TreeTableColumn[Car, String]("Brand") {
-      cellValueFactory = p => p.value.value.value.brand
-      prefWidth = 150
-    }
-    val modelColumn = new TreeTableColumn[Car, String]("Model") {
-      cellValueFactory = p => p.value.value.value.model
-      prefWidth = 120
-    }
-    val mercedes = new TreeItem(new Car("Mercedes", "...")) {
-      children = Seq(
-        new TreeItem(new Car("Mercedes", "SL500")),
-        new TreeItem(new Car("Mercedes", "SL500 AMG")),
-        new TreeItem(new Car("Mercedes", "CLA 200"))
-      )
-    }
-    val audi = new TreeItem(new Car("Audi", "...")) {
-      children = Seq(
-        new TreeItem(new Car("Audi", "A1")),
-        new TreeItem(new Car("Audi", "A5")),
-        new TreeItem(new Car("Audi", "A7"))
-      )
-    }
     stage = new PrimaryStage {
       title = "TreeTableView CellFactory Demo"
       icons += (new Image("/scalafx/sfx.png"))
       scene = new Scene {
         root = new TreeTableView[Car] {
-          columns ++= Seq(brandColumn, modelColumn)
-          root = new TreeItem(new Car("Cars", "...")) { children = Seq(audi, mercedes) }
+          columns ++= Seq(
+            new TreeTableColumn[Car, String]("Brand") {
+              cellValueFactory = _.value.value.value.brand
+              prefWidth = 150
+            },
+            new TreeTableColumn[Car, String]("Model") {
+              cellValueFactory = _.value.value.value.model
+              prefWidth = 120
+            },
+            new TreeTableColumn[Car, Color]("Color") {
+              cellValueFactory = _.value.value.value.color
+              cellFactory = (cell: TreeTableCell[Car, Color], value: Color) => {
+                cell.graphic = new Circle {
+                  fill = value
+                  radius = 8
+                }
+              }
+              prefWidth = 120
+            }
+          )
+          root = new TreeItem(new Car("Cars", "", translucentColor)) {
+            children = Seq(
+              audi,
+              mercedes
+            )
+          }
         }
       }
     }

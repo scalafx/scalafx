@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -67,15 +67,11 @@ object TreeTableViewWithTwoColumns extends JFXApp3 {
           columns ++= Seq(
             new TreeTableColumn[Employee, String]("Employee") {
               prefWidth = 150
-              cellValueFactory = { p =>
-                ReadOnlyStringWrapper(p.value.value.value.name())
-              }
+              cellValueFactory = p => ReadOnlyStringWrapper(p.value.value.value.name())
             },
             new TreeTableColumn[Employee, String]("Email") {
               prefWidth = 190
-              cellValueFactory = { p =>
-                ReadOnlyStringWrapper(p.value.value.value.email())
-              }
+              cellValueFactory = p => ReadOnlyStringWrapper(p.value.value.value.email())
             }
           )
           tableMenuButtonVisible = true

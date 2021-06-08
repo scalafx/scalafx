@@ -58,7 +58,8 @@ object TreeTableColumn {
    * Object companion for [[scalafx.scene.control.TreeTableColumn.CellDataFeatures]]
    */
   object CellDataFeatures {
-    implicit def sfxCellDataFeatures2jfx[S, T](v: CellDataFeatures[S, T]): jfxsc.TreeTableColumn.CellDataFeatures[S, T] =
+    implicit def sfxCellDataFeatures2jfx[S, T](v: CellDataFeatures[S, T])
+    : jfxsc.TreeTableColumn.CellDataFeatures[S, T] =
       if (v != null) v.delegate else null
   }
 
@@ -70,7 +71,6 @@ object TreeTableColumn {
    * @tparam S The TreeTableView type
    * @tparam T The TreeTableColumn type
    * @since 8.0
-   *
    */
   class CellDataFeatures[S, T](override val delegate: jfxsc.TreeTableColumn.CellDataFeatures[S, T])
     extends SFXDelegate[jfxsc.TreeTableColumn.CellDataFeatures[S, T]] {
@@ -102,8 +102,8 @@ object TreeTableColumn {
     def value: TreeItem[S] = delegate.getValue
   }
 
-
   object CellEditEvent {
+
     /**
      * Converts a ScalaFX CellEditEvent instance to its JavaFX counterpart.
      *
@@ -123,7 +123,6 @@ object TreeTableColumn {
    * @tparam S The TreeTableView type
    * @tparam T The TreeTableColumn type
    * @since 8.0
-   *
    */
   class CellEditEvent[S, T](override val delegate: jfxsc.TreeTableColumn.CellEditEvent[S, T])
     extends Event(delegate)
@@ -137,10 +136,12 @@ object TreeTableColumn {
      * @param eventType The type of event that occurred.
      * @param newValue  The value input by the end user.
      */
-    def this(table: TreeTableView[S],
-             pos: TreeTablePosition[S, T],
-             eventType: jfxe.EventType[jfxsc.TreeTableColumn.CellEditEvent[S, T]],
-             newValue: T) =
+    def this(
+              table: TreeTableView[S],
+              pos: TreeTablePosition[S, T],
+              eventType: jfxe.EventType[jfxsc.TreeTableColumn.CellEditEvent[S, T]],
+              newValue: T
+            ) =
       this(new jfxsc.TreeTableColumn.CellEditEvent(table, pos, eventType, newValue))
 
     /**
@@ -176,9 +177,7 @@ object TreeTableColumn {
 
   }
 
-
-  object SortType
-    extends SFXEnumDelegateCompanion[jfxsc.TreeTableColumn.SortType, SortType] {
+  object SortType extends SFXEnumDelegateCompanion[jfxsc.TreeTableColumn.SortType, SortType] {
 
     /** Column will be sorted in an ascending order. */
     case object Ascending extends SortType(jfxsc.TreeTableColumn.SortType.ASCENDING)
@@ -194,7 +193,6 @@ object TreeTableColumn {
   sealed abstract class SortType(override val delegate: jfxsc.TreeTableColumn.SortType)
     extends SFXEnumDelegate[jfxsc.TreeTableColumn.SortType]
 
-
   /**
    * If no cellFactory is specified on a TreeTableColumn instance, then this one will be used by default.
    */
@@ -204,24 +202,28 @@ object TreeTableColumn {
   /**
    * Parent event for any TreeTableColumn edit event.
    */
-  def editAnyEvent: EventType[jfxsc.TreeTableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TreeTableColumn.editAnyEvent)
+  def editAnyEvent: EventType[jfxsc.TreeTableColumn.CellEditEvent[Nothing, Nothing]] =
+    new EventType(jfxsc.TreeTableColumn.editAnyEvent)
 
   /**
    * Indicates that the editing has been canceled, meaning that no change should be made to the backing data source.
    */
-  def editCancelEvent: EventType[jfxsc.TreeTableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TreeTableColumn.editCancelEvent)
+  def editCancelEvent: EventType[jfxsc.TreeTableColumn.CellEditEvent[Nothing, Nothing]] =
+    new EventType(jfxsc.TreeTableColumn.editCancelEvent)
 
   /**
    * Indicates that the editing has been committed by the user, meaning that a change should be made to the backing
    * data source to reflect the new data.
    */
-  def editCommitEvent: EventType[jfxsc.TreeTableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TreeTableColumn.editCommitEvent)
+  def editCommitEvent: EventType[jfxsc.TreeTableColumn.CellEditEvent[Nothing, Nothing]] =
+    new EventType(jfxsc.TreeTableColumn.editCommitEvent)
 
   /**
    * Indicates that the user has performed some interaction to start an edit event, or alternatively the
    * TableView.edit(Int, TableColumn) method has been called.
    */
-  def editStartEvent: EventType[jfxsc.TreeTableColumn.CellEditEvent[Nothing, Nothing]] = new EventType(jfxsc.TreeTableColumn.editStartEvent)
+  def editStartEvent: EventType[jfxsc.TreeTableColumn.CellEditEvent[Nothing, Nothing]] =
+    new EventType(jfxsc.TreeTableColumn.editStartEvent)
 
   /**
    * The CssMetaData of this Styleable. This may be returned as an unmodifiable list.
@@ -231,16 +233,17 @@ object TreeTableColumn {
 
 }
 
-
 /**
- * Wraps a JavaFX [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TreeTableColumn.html]]
+ * A `TreeTableView` is made up of a number of `TreeTableColumn` instances.
+ * Each `TreeTableColumn` in a `TreeTableView` is responsible for displaying (and editing) the contents of that column.
  *
- * @constructor Creates a new TreeTableColumn from a JavaFX one.
+ * Wraps a JavaFX [[https://openjfx.io/javadoc/16/javafx.controls/javafx/scene/control/TreeTableColumn.html TreeTableColumn]]
+ *
+ * @constructor Creates a new `TreeTableColumn` from a JavaFX one.
  * @param delegate A JavaFX TreeTableColumn to be wrapped. Its default value is a new JavaFX TreeTableColumn.
  * @tparam S The type of the TreeTableView generic type (i.e. S == TreeTableView<S>)
  * @tparam T The type of the content in all cells in this TreeTableColumn.
  * @since 8.0
- *
  */
 class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] = new jfxsc.TreeTableColumn[S, T]())
   extends TableColumnBase[jfxsc.TreeItem[S], T](delegate)
@@ -264,19 +267,86 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
    *
    * Finally, there are a number of pre-built cell factories available in the javafx.scene.control.cell package.
    */
-  def cellFactory: ObjectProperty[TreeTableColumn[S, T] => TreeTableCell[S, T]] =
-    ObjectProperty((column: TreeTableColumn[S, T]) => new TreeTableCell(delegate.cellFactoryProperty.getValue.call(column)))
+  def cellFactory: ObjectProperty[jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]]] =
+    delegate.cellFactoryProperty
+  def cellFactory_=(callback: jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]]): Unit = {
+    delegate.cellFactoryProperty.setValue(callback)
+  }
 
+  @deprecated(
+    message = "" +
+      "This method does not allow for correct handling of empty cells leading to possible rendering artifacts. " +
+      "See explanation in [[https://github.com/scalafx/scalafx/issues/256 ScalaFX Issue #256]]. " +
+      "Use the new `cellFactory` assignment method: `cellFactory = (cell, value) => {...}` that automatically " +
+      "handles empty cells.",
+    since = "16.0.*-R25"
+  )
   def cellFactory_=(f: TreeTableColumn[S, T] => TreeTableCell[S, T]): Unit = {
     delegate.cellFactoryProperty.setValue(
       new jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] {
         def call(v: jfxsc.TreeTableColumn[S, T]): jfxsc.TreeTableCell[S, T] = {
           f(v)
         }
-      })
+      }
+    )
   }
 
-  def cellFactory_=(callback: jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]]): Unit = {
+  /**
+   * This is a helper method for easy creation of custom cell factories.
+   * The custom cell is automatically created, and it handles rendering of empty cells.
+   * The user is only responsible for providing an operation `op` that renders non-empty cells.
+   *
+   * The operation `op` provides as input the already created custom `cell` and `value` of that cell.
+   * The `value` is provided by the `cellValueFactory`. The `value` is guaranteed to be non `null`.
+   * The `null` values are automatically rendered as empty cells by the provided `cell` object.
+   *
+   * Here is an example where value's type is a case class `Person` that contains two text fields: `firstName` and `lastName`.
+   * {{{
+   *   case class Person(firstName:String, lastName:String)
+   *   ...
+   *
+   *   cellFactory = (cell, value) => {
+   *     cell.text = value.firstName + " " + value.lastName
+   *   }
+   * }}}
+   *
+   * Another example where 'value' is of type 'Color' and the cell factory creates a circle representing that color:
+   * {{{
+   *   cellFactory = (cell, value) => {
+   *     cell.graphic = new Circle {
+   *        fill = value
+   *        radius = 8
+   *     }
+   *   }
+   * }}}
+   *
+   * @param op a method that will create content for a given `cell`.
+   *           It gets as an input automatically created custom `cell` and a non-null `value` of that cell.
+   *           `op` is called in the cell's `updateItem` method.
+   */
+  def cellFactory_=(op: (TreeTableCell[S, T], T) => Unit): Unit = {
+    val callback =
+      Option(op)
+        .map { op =>
+          new jfxu.Callback[jfxsc.TreeTableColumn[S, T], jfxsc.TreeTableCell[S, T]] {
+            def call(tv: jfxsc.TreeTableColumn[S, T]): jfxsc.TreeTableCell[S, T] = {
+              new jfxsc.TreeTableCell[S, T] {
+                val sfxThis = new TreeTableCell(this)
+                override def updateItem(item: T, empty: Boolean): Unit = {
+                  super.updateItem(item, empty)
+                  if (empty || item == null) {
+                    setText(null)
+                    setGraphic(null)
+                  } else {
+                    op(sfxThis, item)
+                  }
+                }
+              }
+            }
+          }
+        }
+        .orNull
+
     delegate.cellFactoryProperty.setValue(callback)
   }
 
@@ -284,7 +354,6 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
    * The TreeTableView that this TreeTableColumn belongs to.
    */
   def treeTableView: ReadOnlyObjectProperty[jfxsc.TreeTableView[S]] = delegate.treeTableViewProperty
-
 
   /**
    * The cell value factory needs to be set to specify how to populate all cells within a single TreeTableColumn. A cell
@@ -311,7 +380,6 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
    *
    *     val treeRoot = new TreeItem[Person](new Person("Peggy", "Sue", "555-6798"))
    *     treeRoot.children.add(new TreeItem[Person](new Person("Rocky", "Raccoon", "555-6798")))
-   *
    *
    *     stage = new PrimaryStage {
    *       title = "Simple Table View"
@@ -343,9 +411,9 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
    * firstNameCol.cellValueFactory = new TreeItemPropertyValueFactory[Person,String]("firstName"))
    */
   def cellValueFactory: ObjectProperty[TreeTableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]] =
-    ObjectProperty(
-      (features: TreeTableColumn.CellDataFeatures[S, T]) =>
-        jfxObservableValue2sfx[T](delegate.cellValueFactoryProperty.getValue.call(features)))
+    ObjectProperty((features: TreeTableColumn.CellDataFeatures[S, T]) =>
+      jfxObservableValue2sfx[T](delegate.cellValueFactoryProperty.getValue.call(features))
+    )
 
   def cellValueFactory_=(f: TreeTableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]): Unit = {
     delegate.cellValueFactoryProperty.setValue(
@@ -353,7 +421,8 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
         def call(v: jfxsc.TreeTableColumn.CellDataFeatures[S, T]): jfxbv.ObservableValue[T] = {
           f(v).delegate
         }
-      })
+      }
+    )
   }
 
   /**
@@ -369,7 +438,8 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
   /**
    * This event handler will be fired when the user successfully initiates editing.
    */
-  def onEditStart: ObjectProperty[jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]] = delegate.onEditCommitProperty
+  def onEditStart: ObjectProperty[jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]] =
+    delegate.onEditCommitProperty
 
   def onEditStart_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]): Unit = {
     onEditStart() = v
@@ -378,7 +448,8 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
   /**
    * This event handler will be fired when the user successfully commits their editing.
    */
-  def onEditCommit: ObjectProperty[jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]] = delegate.onEditCommitProperty
+  def onEditCommit: ObjectProperty[jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]] =
+    delegate.onEditCommitProperty
 
   def onEditCommit_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]): Unit = {
     onEditCommit() = v
@@ -387,12 +458,12 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
   /**
    * This event handler will be fired when the user cancels editing a cell.
    */
-  def onEditCancel: ObjectProperty[jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]] = delegate.onEditCancelProperty
+  def onEditCancel: ObjectProperty[jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]] =
+    delegate.onEditCancelProperty
 
   def onEditCancel_=(v: jfxe.EventHandler[jfxsc.TreeTableColumn.CellEditEvent[S, T]]): Unit = {
     onEditCancel() = v
   }
-
 
   /**
    * This enables support for nested columns, which can be useful to group together related data. For example, we may
