@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 
 package scalafx.controls
 
-import scalafx.Includes._
 import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.collections.ObservableBuffer
@@ -36,34 +35,52 @@ import scalafx.scene.control._
 
 /** Illustrates use of TreeView CellFactory to do custom rendering of a TreeCell. */
 object TreeViewCellFactoryDemo extends JFXApp3 {
-  override def start(): Unit = {
-    case class Person(firstName: String, lastName: String)
-    val characters = ObservableBuffer[Person](
-      Person("Bungalow ", "Bill"),
-      Person("Dennis", "O\u2019Dell"),
-      Person("Eleanor", "Rigby"),
-      Person("Rocky", "Raccoon"),
-      Person("Peggy", "Sue")
+
+  case class Person(firstName: String, lastName: String, children: Seq[Person] = Nil)
+
+  private val parents = ObservableBuffer[Person](
+    Person(
+      "Eleanor",
+      "Rigby",
+      children = Seq(
+        Person("Bungalow", "Bill"),
+        Person("Dennis", "O\u2019Dell"),
+        Person("Peggy", "Sue"),
+        Person("Molly", "Jones")
+      )
+    ),
+    Person(
+      "Rocky",
+      "Raccoon",
+      children = Seq(
+        Person("Maxwell", "Edison"),
+        Person("Desmond", "Jones"),
+        Person("Loretta", "Martin")
+      )
     )
+  )
+
+  def toTreeItem(p: Person): TreeItem[Person] = {
+    if (p.children.isEmpty) new TreeItem(p) else new TreeItem(p) {
+      children = p.children.map(toTreeItem)
+    }
+  }
+
+  override def start(): Unit = {
     stage = new PrimaryStage {
       title = "TreeView CellFactory Demo"
       scene = new Scene {
-        root = new TreeView[Person] {
-          prefWidth = 200
-          prefHeight = 150
+        content = new TreeView[Person] {
+          prefWidth = 250
+          prefHeight = 250
           showRoot = false
           root = new TreeItem[Person] {
             expanded = true
-            children = characters.map { p =>
-              new TreeItem(p)
-            }.toSeq
+            children = parents.map(toTreeItem).toSeq
           }
-          cellFactory = (v: TreeView[Person]) =>
-            new TreeCell[Person] {
-              treeItem.onChange((_, _, p) =>
-                text = if (p != null) p.value().firstName + " " + p.value().lastName else null
-              )
-            }
+          cellFactory = (cell, person) => {
+            cell.text = person.firstName + " " + person.lastName
+          }
         }
       }
     }
