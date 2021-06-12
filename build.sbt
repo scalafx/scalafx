@@ -14,13 +14,13 @@ val scalafxVersion = "16.0.0-R25-SNAPSHOT"
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v." + scalafxVersion
 
 // Root project
-lazy val scalafxProject = (project in file("."))
-  .settings(
-    name := "scalafx-project",
-    publishArtifact := false,
-    publish / skip  := true
-  )
-  .aggregate(scalafx, scalafxDemos)
+//lazy val scalafxProject = (project in file("."))
+//  .settings(
+name := "scalafx-project"
+publishArtifact := false
+publish / skip := true
+//  )
+//  .aggregate(scalafx, scalafxDemos)
 
 
 // ScalaFX project

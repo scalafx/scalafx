@@ -43,14 +43,17 @@ import scala.language.implicitConversions
  * Example of using `CheckBoxTableCell` in `TableView`.
  */
 object CheckBoxTableCellDemo extends JFXApp3 {
+
+  class Item(selected_ : Boolean, name_ : String) {
+    val selected = new BooleanProperty(this, "selected", selected_)
+    val name = new StringProperty(this, "name", name_)
+  }
+
+  private val data = ObservableBuffer.from[Item](
+    (1 to 10).map { i => new Item(i % 2 == 0, s"Item $i") }
+  )
+
   override def start(): Unit = {
-    class Item(selected_ : Boolean, name_ : String) {
-      val selected = new BooleanProperty(this, "selected", selected_)
-      val name     = new StringProperty(this, "name", name_)
-    }
-    val data = ObservableBuffer.from[Item]((1 to 10).map { i =>
-      new Item(i % 2 == 0, s"Item $i")
-    })
     stage = new PrimaryStage {
       title = "Example of a Table View with Check Boxes"
       scene = new Scene {
@@ -65,9 +68,7 @@ object CheckBoxTableCellDemo extends JFXApp3 {
             },
             new TableColumn[Item, String] {
               text = "Name"
-              cellValueFactory = {
-                _.value.name
-              }
+              cellValueFactory = _.value.name
               prefWidth = 180
             }
           )

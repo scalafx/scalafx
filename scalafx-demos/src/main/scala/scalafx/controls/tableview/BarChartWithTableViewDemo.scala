@@ -42,13 +42,24 @@ import scalafx.stage.{Modality, Stage}
 
 /** This demo shows two bar charts, when you click on a chart its data is shown as a table. */
 object BarChartWithTableViewDemo extends JFXApp3 {
+
+  class Position(name_ : String, value_ : Int) {
+    val name = new StringProperty(this, "name", name_)
+    val value = new ObjectProperty[Int](this, "value", value_)
+  }
+
+  private val data1 = ObservableBuffer[Position](
+    new Position("A", 26),
+    new Position("B", 35),
+    new Position("C", 18)
+  )
+  private val data2 = ObservableBuffer[Position](
+    new Position("P", 61),
+    new Position("Q", 56),
+    new Position("R", 78)
+  )
+
   override def start(): Unit = {
-    class Position(name_ : String, value_ : Int) {
-      val name  = new StringProperty(this, "name", name_)
-      val value = new ObjectProperty[Int](this, "value", value_)
-    }
-    val data1 = ObservableBuffer[Position](new Position("A", 26), new Position("B", 35), new Position("C", 18))
-    val data2 = ObservableBuffer[Position](new Position("P", 61), new Position("Q", 56), new Position("R", 78))
     stage = new PrimaryStage {
       title = "BarChart with TableView"
       scene = new Scene(600, 350) {
@@ -64,38 +75,40 @@ object BarChartWithTableViewDemo extends JFXApp3 {
         }
       }
     }
-    def createBarChart(chartTitle: String, chartData: ObservableBuffer[Position]): BarChart[String, Number] =
-      new BarChart(CategoryAxis(), NumberAxis()) {
-        title = chartTitle
-        data = XYChart.Series(chartData.map(d => XYChart.Data[String, Number](d.name(), d.value())))
-        legendVisible = false
-        onMouseClicked = _ => showAsTable(title(), chartData)
-      }
-    def showAsTable(name: String, data: ObservableBuffer[Position]): Unit = {
-      val tableView = new TableView[Position](data) {
-        columns ++= List(
-          new TableColumn[Position, String] {
-            text = "Position"
-            cellValueFactory = {
-              _.value.name
-            }
-            prefWidth = 180
-          },
-          new TableColumn[Position, Int] {
-            text = "Value"
-            cellValueFactory = {
-              _.value.value
-            }
-            prefWidth = 180
-          }
-        )
-      }
-      new Stage {
-        title = name
-        initModality(Modality.WindowModal)
-        initOwner(BarChartWithTableViewDemo.stage)
-        scene = new Scene { root = new BorderPane { center = tableView } }
-      }.showAndWait()
+  }
+
+  def createBarChart(chartTitle: String, chartData: ObservableBuffer[Position]): BarChart[String, Number] =
+    new BarChart(CategoryAxis(), NumberAxis()) {
+      title = chartTitle
+      data = XYChart.Series(chartData.map(d => XYChart.Data[String, Number](d.name(), d.value())))
+      legendVisible = false
+      onMouseClicked = _ => showAsTable(title(), chartData)
     }
+
+  def showAsTable(name: String, data: ObservableBuffer[Position]): Unit = {
+    val tableView = new TableView[Position](data) {
+      columns ++= List(
+        new TableColumn[Position, String] {
+          text = "Position"
+          cellValueFactory = _.value.name
+          prefWidth = 180
+        },
+        new TableColumn[Position, Int] {
+          text = "Value"
+          cellValueFactory = _.value.value
+          prefWidth = 180
+        }
+      )
+    }
+    new Stage {
+      title = name
+      initModality(Modality.WindowModal)
+      initOwner(BarChartWithTableViewDemo.stage)
+      scene = new Scene {
+        root = new BorderPane {
+          center = tableView
+        }
+      }
+    }.showAndWait()
   }
 }

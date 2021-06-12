@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -39,20 +39,24 @@ import scalafx.scene.control.{TreeItem, TreeTableColumn, TreeTableView}
  */
 object TreeTableViewWithOneColumn extends JFXApp3 {
   override def start(): Unit = {
+
     val rootNode = new TreeItem("Root node") {
       expanded = true
-      children = Seq(new TreeItem("Child Node 1"), new TreeItem("Child Node 2"), new TreeItem("Child Node 3"))
+      children = Seq(
+        new TreeItem("Child Node 1"),
+        new TreeItem("Child Node 2"),
+        new TreeItem("Child Node 3")
+      )
     }
+
     stage = new PrimaryStage {
       scene = new Scene {
         title = "TreeTableView with One Column"
         root = new TreeTableView(rootNode) {
-          columns += (new TreeTableColumn[String, String]("Column") {
+          columns += new TreeTableColumn[String, String]("Column") {
             prefWidth = 150
-            cellValueFactory = { p =>
-              p.value.value
-            }
-          })
+            cellValueFactory = _.value.value
+          }
           prefWidth = 152
           showRoot = true
         }

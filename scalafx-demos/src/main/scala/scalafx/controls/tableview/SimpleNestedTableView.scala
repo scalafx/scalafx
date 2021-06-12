@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,42 +33,43 @@ import scalafx.scene.Scene
 import scalafx.scene.control.{TableColumn, TableView}
 
 object SimpleNestedTableView extends JFXApp3 {
+  private val characters = ObservableBuffer[Person](
+    new Person("Peggy", "Sue", "555-6798"),
+    new Person("Desmond", "Sue", "555-6798"),
+    new Person("Rocky", "Raccoon", "555-8036"),
+    new Person("Molly", "Raccoon", "555-0789")
+  )
+
   override def start(): Unit = {
-    val characters = ObservableBuffer[Person](
-      new Person("Peggy", "Sue", "555-6798"),
-      new Person("Desmond", "Sue", "555-6798"),
-      new Person("Rocky", "Raccoon", "555-8036"),
-      new Person("Molly", "Raccoon", "555-0789")
-    )
+    val firstNameColumn = new TableColumn[Person, String] {
+      text = "First"
+      cellValueFactory = _.value.firstName
+      prefWidth = 180
+    }
+
+    val lastNameColumn = new TableColumn[Person, String] {
+      text = "Last"
+      cellValueFactory = _.value.lastName
+      prefWidth = 180
+    }
+
+    val nameColumn = new TableColumn[Person, String] {
+      text = "Name"
+      columns ++= Seq(firstNameColumn, lastNameColumn)
+    }
+
+    val phoneColumn = new TableColumn[Person, String] {
+      text = "Phone"
+      cellValueFactory = _.value.phone
+      prefWidth = 180
+    }
+
     stage = new PrimaryStage {
       title = "Simple Table View Sorted"
       scene = new Scene {
-        val firstNameColumn = new TableColumn[Person, String] {
-          text = "First"
-          cellValueFactory = {
-            _.value.firstName
-          }
-          prefWidth = 180
+        content = new TableView[Person](characters) {
+          columns ++= Seq(nameColumn, phoneColumn)
         }
-        val lastNameColumn = new TableColumn[Person, String] {
-          text = "Last"
-          cellValueFactory = {
-            _.value.lastName
-          }
-          prefWidth = 180
-        }
-        val nameColumn = new TableColumn[Person, String] {
-          text = "Name"
-          columns += (firstNameColumn, lastNameColumn)
-        }
-        val phoneColumn = new TableColumn[Person, String] {
-          text = "Phone"
-          cellValueFactory = {
-            _.value.phone
-          }
-          prefWidth = 180
-        }
-        content = new TableView[Person](characters) { columns += (nameColumn, phoneColumn) }
       }
     }
   }

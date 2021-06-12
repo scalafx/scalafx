@@ -41,10 +41,13 @@ import scalafx.scene.paint.Color
  * [[https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/tree-table-view.htmTreeTable View tutorial]].
  */
 object TreeTableViewWithTwoColumns extends JFXApp3 {
+
+  case class Employee(name: StringProperty, email: StringProperty) {
+    def this(_name: String, _email: String) = this(StringProperty(_name), StringProperty(_email))
+  }
+
   override def start(): Unit = {
-    case class Employee(name: StringProperty, email: StringProperty) {
-      def this(_name: String, _email: String) = this(StringProperty(_name), StringProperty(_email))
-    }
+
     val employees = Seq(
       new Employee("Ethan Williams", "ethan.williams@example.com"),
       new Employee("Emma Jones", "emma.jones@example.com"),
@@ -53,12 +56,14 @@ object TreeTableViewWithTwoColumns extends JFXApp3 {
       new Employee("Rodger York", "roger.york@example.com"),
       new Employee("Susan Collins", "susan.collins@example.com")
     )
+
     val depIcon = new ImageView(getClass.getResource("department.png").toExternalForm)
-    assert(depIcon != null)
+
     val rootNode = new TreeItem(new Employee("Sales Department", ""), depIcon) {
       expanded = true
       children = employees.map(new TreeItem(_))
     }
+
     stage = new PrimaryStage {
       title = "TreeTableView with Two Columns"
       scene = new Scene(400, 400) {

@@ -57,15 +57,13 @@ object CheckBoxTreeTableCellDemo extends JFXApp3 {
           columns ++= List(
             new TreeTableColumn[Item, String] {
               text = "Name"
-              cellValueFactory = {
-                _.value.getValue.name
-              }
+              cellValueFactory = _.value.getValue.name
               prefWidth = 180
             },
             new TreeTableColumn[Item, java.lang.Boolean] {
               text = "Selected"
               cellValueFactory =
-                _.value.getValue.selected.asInstanceOf[ObservableValue[java.lang.Boolean, java.lang.Boolean]]
+                _.value.value.value.selected.asInstanceOf[ObservableValue[java.lang.Boolean, java.lang.Boolean]]
               cellFactory = CheckBoxTreeTableCell.forTreeTableColumn(this)
               editable = true
               prefWidth = 180
