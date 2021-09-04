@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,8 +50,8 @@ trait ApplicationIncludes {
    * @param p JavaFX Parameters
    * @return ScalaFX Parameters
    */
-  implicit def jfxParameters2sfx(p: jfxa.Application.Parameters): JFXApp.Parameters =
-    if (p != null) new JFXApp.Parameters {
+  implicit def jfxParameters2sfx(p: jfxa.Application.Parameters): JFXApp3.Parameters =
+    if (p != null) new JFXApp3.Parameters {
       def raw: mutable.Buffer[String] = p.getRaw.asScala
 
       def named: mutable.Map[String, String] = p.getNamed.asScala

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,25 +26,24 @@
  */
 package scalafx.application
 
-import java.util
-
 import javafx.{application => jfxa}
 import org.scalatest.matchers.should.Matchers._
 import scalafx.Includes.jfxParameters2sfx
-import scalafx.application.JFXApp.Parameters.sfxParameters2jfx
+import scalafx.application.JFXApp3.Parameters.sfxParameters2jfx
 import scalafx.testutil.SimpleSFXDelegateSpec
 
+import java.util
 import scala.collection.JavaConverters._
 
 /**
- * JFXApp.Parameters Spec tests.
+ * JFXApp3.Parameters Spec tests.
  *
  *
  */
-class JFXAppParametersSpec
-  extends SimpleSFXDelegateSpec[jfxa.Application.Parameters, JFXApp.Parameters](classOf[jfxa.Application.Parameters], classOf[JFXApp.Parameters]) {
+class JFXApp3ParametersSpec
+  extends SimpleSFXDelegateSpec[jfxa.Application.Parameters, JFXApp3.Parameters](classOf[jfxa.Application.Parameters], classOf[JFXApp3.Parameters]) {
 
-  override protected def getScalaClassInstance = new JFXApp.ParametersImpl(Seq.empty[String])
+  override protected def getScalaClassInstance = new JFXApp3.ParametersImpl(Seq.empty[String])
 
   override protected def getJavaClassInstance: jfxa.Application.Parameters = new jfxa.Application.Parameters {
     def getRaw: util.List[String] = Seq.empty[String].asJava
@@ -54,7 +53,7 @@ class JFXAppParametersSpec
     def getUnnamed: util.List[String] = Seq.empty[String].asJava
   }
 
-  private def getParameters(args: Seq[String]): JFXApp.Parameters = JFXApp.Parameters(args)
+  private def getParameters(args: Seq[String]): JFXApp3.Parameters = JFXApp3.Parameters(args)
 
   it should "returns a empty list of parameters from empty arguments" in {
     getParameters(Array[String]()).raw shouldBe empty
