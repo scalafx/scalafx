@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,13 +28,11 @@
 package scalafx.scene.input
 
 import java.{util => ju}
-
 import scala.collection.{Iterator, mutable}
 
-private[input] trait JMapWrapperLike[A, B, +Repr <: mutable.MapLike[A, B, Repr]
-  with mutable.Map[A, B]]
+private[input] trait JMapWrapperLike[A, B, +Repr <: mutable.MapLike[A, B, Repr] with mutable.Map[A, B]]
   extends mutable.Map[A, B]
-  with mutable.MapLike[A, B, Repr] {
+    with mutable.MapLike[A, B, Repr] {
 
   def underlying: ju.Map[A, B]
 
@@ -54,8 +52,7 @@ private[input] trait JMapWrapperLike[A, B, +Repr <: mutable.MapLike[A, B, Repr]
   def -=(key: A): this.type = { underlying remove key; this }
 
   override def put(k: A, v: B): Option[B] = {
-    val r = underlying.put(k, v)
-    if (r != null) Some(r) else None
+    Option(underlying.put(k, v))
   }
 
   override def update(k: A, v: B): Unit = {
@@ -63,8 +60,7 @@ private[input] trait JMapWrapperLike[A, B, +Repr <: mutable.MapLike[A, B, Repr]
   }
 
   override def remove(k: A): Option[B] = {
-    val r = underlying remove k
-    if (r != null) Some(r) else None
+    Option(underlying.remove(k))
   }
 
   //  def iterator: Iterator[(A, B)] = new AbstractIterator[(A, B)] {

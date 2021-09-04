@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -128,17 +128,17 @@ object MultipleShapeDrawingDemo extends JFXApp3 {
               val handlerId = alignToggleGroup.selectedToggle().asInstanceOf[javafx.scene.control.ToggleButton].id()
               val selectedHandler = handlerId match {
                 case "rectangle" =>
-                  Some(RectangleInteractor.handler)
+                  Option(RectangleInteractor.handler)
                 case "ellipse" =>
-                  Some(EllipseInteractor.handler)
+                  Option(EllipseInteractor.handler)
                 case "line" =>
-                  Some(LineInteractor.handler)
+                  Option(LineInteractor.handler)
                 case _ =>
                   None
               }
               mouseHandlerSubscription = selectedHandler match {
                 case Some(h) =>
-                  Some(drawingPane.handleEvent(MouseEvent.Any)(h))
+                  Option(drawingPane.handleEvent(MouseEvent.Any)(h))
                 case None =>
                   None
               }

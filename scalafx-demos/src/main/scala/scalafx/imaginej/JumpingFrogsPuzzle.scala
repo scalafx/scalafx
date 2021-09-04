@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -166,11 +166,11 @@ object theModelValues {
       i <- STONE_NUMBER_LIST
     } yield {
       if (i < NUMBER_OF_FROGS) {
-        i -> Some(new LeftFrog())
+        i -> Option(new LeftFrog())
       } else if (i == NUMBER_OF_FROGS) {
         i -> None
       } else {
-        i -> Some(new RightFrog())
+        i -> Option(new RightFrog())
       }
     }
 
@@ -220,7 +220,7 @@ class Model(var optionalFrogMap: Map[Int, Option[Frog]]) {
       if (i == j) {
         i -> None
       } else if (i == next(j)) {
-        i -> Some(frog)
+        i -> Option(frog)
       } else {
         entry
       }

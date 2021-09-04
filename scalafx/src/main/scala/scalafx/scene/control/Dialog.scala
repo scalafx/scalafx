@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -105,7 +105,7 @@ class Dialog[R](override val delegate: jfxsc.Dialog[R] = new jfxsc.Dialog[R]())
    */
   def showAndWait[F](j2s: F = (x: R) => x)(implicit convert: DConvert[R, F]): Option[convert.S] = {
     val v = delegate.showAndWait()
-    if (v.isPresent) Some(convert(v.get, j2s)) else None
+    if (v.isPresent) Option(convert(v.get, j2s)) else None
   }
 
   /**

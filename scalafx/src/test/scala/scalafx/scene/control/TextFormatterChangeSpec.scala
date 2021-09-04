@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@ class TextFormatterChangeSpec
       val converter = new FormatStringConverter[Number](NumberFormat.getCurrencyInstance)
       val filter: (TextFormatter.Change) => TextFormatter.Change = { (c: TextFormatter.Change) =>
         // Capture `change` object created by JavaFX
-        changeOption = Some(c)
+        changeOption = Option(c)
         c
       }
 
