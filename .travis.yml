@@ -3,8 +3,8 @@ sudo: false
 language: scala
 scala:
   - 2.13.6
-  - 2.12.13
-  - 3.0.0
+  - 2.12.14
+  - 3.0.1
 
 dist: xenial
 services:
