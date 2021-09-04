@@ -27,8 +27,8 @@
 
 package issues.issue137
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
 import scalafx.scene.control.{TableColumn, TableView}
@@ -39,7 +39,7 @@ import scalafx.scene.paint.Color
  * In issue 137 code compilation fails on line with TableColumn
  * The issue is only reproducible in Scala 2.12, not in 2.13 and newer
  */
-object TableTester extends JFXApp {
+object TableTester extends JFXApp3 {
 
   val characters = ObservableBuffer[Person](
     new Person("Peggy", "Sue", "123", Color.Violet),
@@ -47,26 +47,28 @@ object TableTester extends JFXApp {
     new Person("Bungalow ", "Bill", "789", Color.DarkSalmon)
   )
 
-  stage = new PrimaryStage {
-    title = "Simple Table View"
-    scene = new Scene {
-      content = new TableView[Person](characters) {
-        columns ++= List(
-          new TableColumn[Person, String] {
-            text = "First Name"
-            cellValueFactory = {
-              _.value.firstName
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      title = "Simple Table View"
+      scene = new Scene {
+        content = new TableView[Person](characters) {
+          columns ++= List(
+            new TableColumn[Person, String] {
+              text = "First Name"
+              cellValueFactory = {
+                _.value.firstName
+              }
+              prefWidth = 180
+            },
+            new TableColumn[Person, String]() {
+              text = "Last Name"
+              cellValueFactory = {
+                _.value.lastName
+              }
+              prefWidth = 180
             }
-            prefWidth = 180
-          },
-          new TableColumn[Person, String]() {
-            text = "Last Name"
-            cellValueFactory = {
-              _.value.lastName
-            }
-            prefWidth = 180
-          }
-        )
+          )
+        }
       }
     }
   }

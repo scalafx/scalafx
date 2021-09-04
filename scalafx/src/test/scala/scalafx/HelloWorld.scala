@@ -24,48 +24,24 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package issues.issue16
 
-import scalafx.Includes._
+package scalafx
+
 import scalafx.application.JFXApp3
-import scalafx.application.JFXApp3.PrimaryStage
+import scalafx.geometry.Insets
 import scalafx.scene.Scene
-import scalafx.scene.paint.Color
-import scalafx.scene.shape.Rectangle
+import scalafx.scene.control.Label
+import scalafx.scene.layout.BorderPane
 
+object HelloWorld extends JFXApp3 {
 
-/**
- * Example for [[https://github.com/scalafx/scalafx/issues/16 Issue 16]] provided by "Alain.Fa...@gmail.com".
- *
- * When replacing the javafx.scene.paint.Color import by its ScalaFX counterpart, the rectangle would be Blue forever.
- * The rectangle should normally be RED, but when mouse hovers above it it should change color to GREEN.
- */
-object World extends JFXApp3 {
   override def start(): Unit = {
-    stage = new PrimaryStage {
-      title = "Hello World"
-      width = 600
-      height = 450
+    stage = new JFXApp3.PrimaryStage {
+      title = "Hello"
       scene = new Scene {
-        fill = Color.LightGreen
-        content = new Rectangle {
-          x = 25
-          y = 40
-          width = 100
-          height = 100
-          fill = Color.Blue
-          // Problem with incorrect behaviour of the binding was here.
-
-          // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2
-          // fill <== when (hover) choose Color.Green otherwise Color.Red
-          // NOTE Scala 3: variable `helper` was added to force type (and implicint conversions) on right side of `<==`
-          //               This is not needed in Scala 2
-
-          import javafx.scene.{paint => jfxsp}
-          import scalafx.beans.binding.ObjectBinding
-
-          val helper: ObjectBinding[jfxsp.Color] = when(hover) choose Color.Green otherwise Color.Red
-          fill <== helper
+        root = new BorderPane {
+          padding = Insets(75)
+          center = new Label("Hello World")
         }
       }
     }

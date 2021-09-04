@@ -27,8 +27,8 @@
 
 package issues.issue236
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.beans.property.StringProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
@@ -40,24 +40,27 @@ class Person(name_ : String) {
   val name = new StringProperty(this, "firstName", name_)
 }
 
-object SimpleTableView extends JFXApp {
+object SimpleTableView extends JFXApp3 {
 
-  val characters = ObservableBuffer[Person](
-    new Person("Peggy"),
-    new Person("Rocky")
-  )
+  override def start(): Unit = {
 
-  stage = new PrimaryStage {
-    title = "Simple Table View"
-    scene = new Scene {
-      content = new TableView[Person](characters) {
-        columns ++= List(
-          new TableColumn[Person, String] {
-            text = "First Name"
-            cellValueFactory = _.value.name
-            prefWidth = 180
-          }
-        )
+    val characters = ObservableBuffer[Person](
+      new Person("Peggy"),
+      new Person("Rocky")
+    )
+
+    stage = new PrimaryStage {
+      title = "Simple Table View"
+      scene = new Scene {
+        content = new TableView[Person](characters) {
+          columns ++= List(
+            new TableColumn[Person, String] {
+              text = "First Name"
+              cellValueFactory = _.value.name
+              prefWidth = 180
+            }
+          )
+        }
       }
     }
   }

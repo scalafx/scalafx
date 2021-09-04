@@ -34,6 +34,7 @@ import scalafx.scene.control.TreeTableColumn._
 import scalafx.scene.control.{TreeItem, TreeTableColumn, TreeTableView}
 
 object SimpleTreeTableView extends JFXApp3 {
+
   override def start(): Unit = {
 
     val treeRoot = new TreeItem[Person](new Person("Peggy", "Sue", "555-6798"))

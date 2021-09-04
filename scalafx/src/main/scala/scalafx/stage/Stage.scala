@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,9 +43,9 @@ object Stage {
 }
 
 /**
- * The primary stage for your application has to be created by wrapping the `JFXApp.STAGE` object.
+ * The primary stage for your application has to be created by wrapping the `JFXApp3.stage` object.
  * <pre>
- * stage = new JFXApp.PrimaryStage {
+ * stage = new JFXApp3.PrimaryStage {
  * // your definitions
  * }
  * </pre>

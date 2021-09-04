@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,8 @@
 
 package issues.issue23
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.layout.StackPane
@@ -45,17 +45,19 @@ import scalafx.scene.shape.Rectangle
  *   root = new StackPane {
  * }}}
  */
-object SceneRootAssignmentDemo extends JFXApp {
+object SceneRootAssignmentDemo extends JFXApp3 {
 
-  stage = new PrimaryStage {
-    title = "Scene.root Assignment Demo"
-    scene = new Scene {
-      root = new StackPane {
-        padding = Insets(20)
-        children = new Rectangle {
-          width = 200
-          height = 200
-          fill = Color.DeepSkyBlue
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      title = "Scene.root Assignment Demo"
+      scene = new Scene {
+        root = new StackPane {
+          padding = Insets(20)
+          children = new Rectangle {
+            width = 200
+            height = 200
+            fill = Color.DeepSkyBlue
+          }
         }
       }
     }

@@ -369,38 +369,42 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
    * }}}
    * A simple complete example (from `scalafx-demos` `SimpleTreeTableView`):
    * {{{
-   *   import scalafx.application.JFXApp
-   *   import scalafx.application.JFXApp.PrimaryStage
-   *   import scalafx.controls.tableview.Person
-   *   import scalafx.scene.Scene
-   *   import scalafx.scene.control.{TreeTableColumn, TreeTableView, TreeItem}
-   *   import scalafx.scene.control.TreeTableColumn._
+   * import scalafx.application.JFXApp3
+   * import scalafx.application.JFXApp3.PrimaryStage
+   * import scalafx.controls.tableview.Person
+   * import scalafx.scene.Scene
+   * import scalafx.scene.control.TreeTableColumn._
+   * import scalafx.scene.control.{TreeItem, TreeTableColumn, TreeTableView}
    *
-   *   object SimpleTreeTableView extends JFXApp {
+   * object SimpleTreeTableView extends JFXApp3 {
    *
-   *     val treeRoot = new TreeItem[Person](new Person("Peggy", "Sue", "555-6798"))
-   *     treeRoot.children.add(new TreeItem[Person](new Person("Rocky", "Raccoon", "555-6798")))
+   *  override def start(): Unit = {
    *
-   *     stage = new PrimaryStage {
-   *       title = "Simple Table View"
-   *       scene = new Scene {
-   *         content = new TreeTableView[Person](treeRoot) {
-   *           columns ++= List(
-   *             new TreeTableColumn[Person, String] {
-   *               text = "First Name"
-   *               cellValueFactory = {_.value.getValue.firstName}
-   *               prefWidth = 180
-   *             },
-   *             new TreeTableColumn[Person, String]() {
-   *               text = "Last Name"
-   *               cellValueFactory = {_.value.getValue.lastName}
-   *               prefWidth = 180
-   *             }
-   *           )
-   *         }
-   *       }
-   *     }
-   *   }
+   *    val treeRoot = new TreeItem[Person](new Person("Peggy", "Sue", "555-6798"))
+   *
+   *    treeRoot.children += new TreeItem[Person](new Person("Rocky", "Raccoon", "555-6798"))
+   *
+   *    stage = new PrimaryStage {
+   *      title = "Simple Table View"
+   *      scene = new Scene {
+   *        content = new TreeTableView[Person](treeRoot) {
+   *          columns ++= Seq(
+   *            new TreeTableColumn[Person, String] {
+   *              text = "First Name"
+   *              cellValueFactory = _.value.getValue.firstName
+   *              prefWidth = 180
+   *            },
+   *            new TreeTableColumn[Person, String]() {
+   *              text = "Last Name"
+   *              cellValueFactory = _.value.getValue.lastName
+   *              prefWidth = 180
+   *            }
+   *          )
+   *        }
+   *      }
+   *    }
+   *  }
+   * }
    * }}}
    *
    * A common approach is to want to populate cells in a TreeTableColumn using a single value from a Java bean. To

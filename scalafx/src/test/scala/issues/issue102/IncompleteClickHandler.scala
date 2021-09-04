@@ -28,108 +28,113 @@
 package issues.issue102
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
+import scalafx.application.JFXApp3
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.{Button, Label}
 import scalafx.scene.layout.{StackPane, VBox}
 
+/**
+ * Illustrated [[https://github.com/scalafx/scalafx/issues/102 Issue 102]]
+ *
+ * When event handler is created from a code block (rather than a function),
+ * only it's last instruction is used when event handler is invoked.
+ * Everything else is invoked only once when event handler is created.
+ *
+ * When we run this application, with bug 102 in effect, and click three tomes on the
+ * button, we will have following printout
+ * {{{
+ *   Creating primary stage ...
+ *   Button 1 - Message 1
+ *   Creating primary stage - done
+ *   Button 1 - Message 2
+ *   Button 1 - Message 2
+ *   Button 1 - Message 2
+ * }}}
+ * Notice that first `println` in the handler is executed during construction,
+ * before it is shown on the screen. Clicking on Button 1 produces only the second message.
+ * If the event handler was working correctly we should have:
+ * {{{
+ *   Creating primary stage ...
+ *   Creating primary stage - done
+ *   Button 1 - Message 1
+ *   Button 1 - Message 2
+ *   Button 1 - Message 1
+ *   Button 1 - Message 2
+ *   Button 1 - Message 1
+ *   Button 1 - Message 2
+ * }}}
+ *
+ * In certain situations we can have a
+ */
+object IncompleteClickHandler extends JFXApp3 {
 
-/** Illustrated [[https://github.com/scalafx/scalafx/issues/102 Issue 102]]
-  *
-  * When event handler is created from a code block (rather than a function),
-  * only it's last instruction is used when event handler is invoked.
-  * Everything else is invoked only once when event handler is created.
-  *
-  * When we run this application, with bug 102 in effect, and click three tomes on the
-  * button, we will have following printout
-  * {{{
-  *   Creating primary stage ...
-  *   Button 1 - Message 1
-  *   Creating primary stage - done
-  *   Button 1 - Message 2
-  *   Button 1 - Message 2
-  *   Button 1 - Message 2
-  * }}}
-  * Notice that first `println` in the handler is executed during construction,
-  * before it is shown on the screen. Clicking on Button 1 produces only the second message.
-  * If the event handler was working correctly we should have:
-  * {{{
-  *   Creating primary stage ...
-  *   Creating primary stage - done
-  *   Button 1 - Message 1
-  *   Button 1 - Message 2
-  *   Button 1 - Message 1
-  *   Button 1 - Message 2
-  *   Button 1 - Message 1
-  *   Button 1 - Message 2
-  * }}}
-  *
-  * In certain situations we can have a
-  */
-object IncompleteClickHandler extends JFXApp {
-  println("Creating primary stage ...")
-  stage = new JFXApp.PrimaryStage {
-    title = "Illustration of Issue 102"
-    scene = new Scene {
-      content = new StackPane {
-        padding = Insets(20)
-        children = new VBox {
-          spacing = 10
-          children = Seq(
-            new Label("If Issue 102 is not fixed, some buttons below may not respond correctly."),
-            new Button {
-              text = "Button 1: Buggy event handler: should print two messages, but prints one."
-              // Disable as old buggy handler no longer compiles
-              disable = true
-              //              onAction = {
-              //                println("Button 1 - Message 1")
-              //                println("Button 1 - Message 2")
-              //              }
-            },
-            new Button {
-              text = "Button 2: Buggy event handler: should print two messages, but prints none."
-              // Disable as old buggy handler no longer compiles
-              disable = true
-              //              onAction = (ae: java.awt.event.ActionEvent) => {
-              //                println("Button 2 - Message 1")
-              //                println("Button 2 - Message 2")
-              //              }
-            },
-            new Button {
-              text = "Button 3: Former buggy event handler: should print two messages, used to print none."
-              onAction = () => {
-                println("Button 3 - Message 1")
-                println("Button 3 - Message 2")
+  override def start(): Unit = {
+
+    println("Creating primary stage ...")
+
+    stage = new JFXApp3.PrimaryStage {
+      title = "Illustration of Issue 102"
+      scene = new Scene {
+        content = new StackPane {
+          padding = Insets(20)
+          children = new VBox {
+            spacing = 10
+            children = Seq(
+              new Label("If Issue 102 is not fixed, some buttons below may not respond correctly."),
+              new Button {
+                text = "Button 1: Buggy event handler: should print two messages, but prints one."
+                // Disable as old buggy handler no longer compiles
+                disable = true
+                //              onAction = {
+                //                println("Button 1 - Message 1")
+                //                println("Button 1 - Message 2")
+                //              }
+              },
+              new Button {
+                text = "Button 2: Buggy event handler: should print two messages, but prints none."
+                // Disable as old buggy handler no longer compiles
+                disable = true
+                //              onAction = (ae: java.awt.event.ActionEvent) => {
+                //                println("Button 2 - Message 1")
+                //                println("Button 2 - Message 2")
+                //              }
+              },
+              new Button {
+                text = "Button 3: Former buggy event handler: should print two messages, used to print none."
+                onAction = () => {
+                  println("Button 3 - Message 1")
+                  println("Button 3 - Message 2")
+                }
+              },
+              new Button {
+                text = "Button 4: Buggy event handler: should print two messages, but prints none."
+                // Disable as old buggy handler no longer compiles
+                disable = true
+                //              onAction = (ae: javafx.event.ActionEvent) => {
+                //                println("Button 4 - Message 1")
+                //                println("Button 4 - Message 2")
+                //              }
+              },
+              new Button {
+                text = "Button 5: Fine event handler: prints two messages."
+                onAction = (ae: scalafx.event.ActionEvent) => {
+                  println("Button 5 - Message 1")
+                  println("Button 5 - Message 2")
+                }
+              },
+              new Button {
+                text = "Button 6: New fine approach using `handle {}`"
+                onAction = _ => {
+                  println("Button 6 - Message 1")
+                  println("Button 6 - Message 2")
+                }
               }
-            },
-            new Button {
-              text = "Button 4: Buggy event handler: should print two messages, but prints none."
-              // Disable as old buggy handler no longer compiles
-              disable = true
-              //              onAction = (ae: javafx.event.ActionEvent) => {
-              //                println("Button 4 - Message 1")
-              //                println("Button 4 - Message 2")
-              //              }
-            },
-            new Button {
-              text = "Button 5: Fine event handler: prints two messages."
-              onAction = (ae: scalafx.event.ActionEvent) => {
-                println("Button 5 - Message 1")
-                println("Button 5 - Message 2")
-              }
-            },
-            new Button {
-              text = "Button 6: New fine approach using `handle {}`"
-              onAction = _ => {
-                println("Button 6 - Message 1")
-                println("Button 6 - Message 2")
-              }
-            }
-          )
+            )
+          }
         }
       }
     }
+    println("Creating primary stage - done")
   }
-  println("Creating primary stage - done")
 }

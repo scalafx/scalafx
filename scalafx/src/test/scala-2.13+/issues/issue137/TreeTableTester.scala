@@ -28,22 +28,21 @@
 package issues.issue137
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
 import scalafx.scene.control.TreeTableColumn._
-import scalafx.scene.control.{Button, TreeTableView, _}
+import scalafx.scene.control._
 import scalafx.scene.layout._
 import scalafx.scene.paint.Color
-
 
 /**
  * Sample code from https://github.com/scalafx/scalafx/issues/137#issuecomment-345154588
  * This not likely related to actual issue 137, but included for completeness of issue 137 discussion.
  * The compilation is supposed to fail in line with `foo`
  */
-object TreeTableTester extends JFXApp {
+object TreeTableTester extends JFXApp3 {
 
   val characters: ObservableBuffer[Person] = ObservableBuffer[Person](
     new Person("Peggy", "Sue", "123", Color.Violet),
@@ -51,46 +50,49 @@ object TreeTableTester extends JFXApp {
     new Person("Bungalow ", "Bill", "789", Color.DarkSalmon)
   )
 
-  val table = new TreeTableView[Person](
-    new TreeItem[Person](new Person("", "", "", Color.Red)) {
-      expanded = true
-      children = characters.map(new TreeItem[Person](_)).toSeq
-    }) {
-    columns ++= List(
-      new TreeTableColumn[Person, String] {
-        text = "First Name"
-        cellValueFactory = {
-          _.value.value.value.firstName
-        }
-        prefWidth = 180
-      },
-      new TreeTableColumn[Person, String]() {
-        text = "Last Name"
-        cellValueFactory = {
-          _.value.value.value.lastName
-        }
-        prefWidth = 180
+  override def start(): Unit = {
+    val table = new TreeTableView[Person](
+      new TreeItem[Person](new Person("", "", "", Color.Red)) {
+        expanded = true
+        children = characters.map(new TreeItem[Person](_)).toSeq
       }
-    )
-  }
+    ) {
+      columns ++= List(
+        new TreeTableColumn[Person, String] {
+          text = "First Name"
+          cellValueFactory = {
+            _.value.value.value.firstName
+          }
+          prefWidth = 180
+        },
+        new TreeTableColumn[Person, String]() {
+          text = "Last Name"
+          cellValueFactory = {
+            _.value.value.value.lastName
+          }
+          prefWidth = 180
+        }
+      )
+    }
 
-  stage = new PrimaryStage {
-    title = "Simple Table View"
-    scene = new Scene {
-      content = new VBox() {
-        children = List(
-          new Button("Test it") {
-            onAction = p => {
-              val foo: ObservableBuffer[TreeItem[Person]] = table.root.value.children.map(p => {
-                val bar: TreeItem[Person] = p
-                p
-              })
-              table.root.value.children = foo.toSeq
-            }
-          },
-          table)
+    stage = new PrimaryStage {
+      title = "Simple Table View"
+      scene = new Scene {
+        content = new VBox() {
+          children = List(
+            new Button("Test it") {
+              onAction = p => {
+                val foo: ObservableBuffer[TreeItem[Person]] = table.root.value.children.map(p => {
+                  val bar: TreeItem[Person] = p
+                  p
+                })
+                table.root.value.children = foo.toSeq
+              }
+            },
+            table
+          )
+        }
       }
     }
   }
 }
-

@@ -27,8 +27,8 @@
 
 package issues.issue181
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.geometry.Pos
 import scalafx.scene.Scene
 import scalafx.scene.control.{Label, TextField}
@@ -44,22 +44,24 @@ import scalafx.scene.layout.{HBox, VBox}
  * }}}
  * The issue is only reproducible in Scala 2.12, not in 2.13 and newer
  */
-object Issue181Tester extends JFXApp {
-  stage = new PrimaryStage {
-    title = "Issue181Tester"
-    scene = new Scene {
-      content = new VBox(5) {
-        autosize()
-
-        children += new HBox(5) {
-          alignment = Pos.CenterLeft
+object Issue181Tester extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      title = "Issue181Tester"
+      scene = new Scene {
+        content = new VBox(5) {
           autosize()
 
-          children += new Label("Node name:")
-          children += new TextField()
+          children += new HBox(5) {
+            alignment = Pos.CenterLeft
+            autosize()
+
+            children += new Label("Node name:")
+            children += new TextField()
+          }
+          children += new Label("Node Content")
+          //    children += textEditor
         }
-        children += new Label("Node Content")
-        //    children += textEditor
       }
     }
   }
