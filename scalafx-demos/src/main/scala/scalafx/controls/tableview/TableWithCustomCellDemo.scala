@@ -50,27 +50,23 @@ object TableWithCustomCellDemo extends JFXApp3 {
       title = "TableView with custom color cell"
       scene = new Scene {
         root = new TableView[Person](characters) {
-          columns ++= List(
+          columns ++= Seq(
             new TableColumn[Person, String] {
               text = "First Name"
               cellValueFactory = _.value.firstName
-              prefWidth = 100
             },
             new TableColumn[Person, String]() {
               text = "Last Name"
               cellValueFactory = _.value.lastName
-              prefWidth = 100
             },
             new TableColumn[Person, Color] {
               text = "Favorite Color"
+              // What should be used as the value of the cell
               cellValueFactory = _.value.favoriteColor
-              cellFactory = (tc, color) => {
-                tc.graphic = new Circle {
-                  fill = color
-                  radius = 8
-                }
+              // How the value should be displayed in the cell
+              cellFactory = (cell, color) => {
+                cell.graphic = Circle(fill = color, radius = 8)
               }
-              prefWidth = 100
             }
           )
         }
