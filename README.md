@@ -32,7 +32,7 @@ JavaFX's binaries depend on operating system used.
 Add following to SBT configuration:
 ```scala
 // Add dependency on ScalaFX library
-libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R24"
+libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R25"
 
 // Determine OS version of JavaFX binaries
 lazy val osName = System.getProperty("os.name") match {
@@ -65,7 +65,7 @@ object yourProject extends ScalaModule {
 
   // Add dependency on JavaFX libraries
   val javaFXVersion = "16"
-  val scalaFXVersion = "16.0.0-R24"
+  val scalaFXVersion = "16.0.0-R25"
   val javaFXModules = List("base", "controls", "fxml", "graphics", "media", "swing", "web")
     .map(m => ivy"org.openjfx:javafx-$m:$javaFXVersion")
 
