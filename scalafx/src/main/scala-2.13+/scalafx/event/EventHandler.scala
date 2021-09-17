@@ -51,8 +51,8 @@ object EventHandler {
 trait EventHandlerDelegate1 {
   // NOTE: This trait is almost identical trait EventHandlerDelegate2, only difference are type bounds in
   // jfxe.EventHandler[E]. In EventHandlerDelegate1 it is jfxe.EventHandler[_ >: E]
-  // This was expanded srom a single type class EventHandled to support restrictions introduced in Scala 3
-  // There should be a beter, more compact way of impement this...
+  // This was expanded from a single type class EventHandled to support restrictions introduced in Scala 3
+  // There should be a better, more compact way of implement this...
 
   /**
    * Trait used for handle events manipulation. JavaFX class wrapped must have methods defined in

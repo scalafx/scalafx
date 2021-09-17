@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2019, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,8 +26,7 @@
  */
 package scalafx.beans.property
 
-import javafx.beans.value.{ObservableValue => JFXObservableValue}
-import javafx.beans.{property => jfxbp}
+import javafx.beans.{property => jfxbp, value => jfxbv}
 import scalafx.animation.Tweenable
 import scalafx.beans.value.ObservableValue
 import scalafx.delegate.SFXDelegate
@@ -70,7 +69,7 @@ trait Property[@specialized(Int, Long, Float, Double, Boolean) T, J <: Any]
    *
    * @param v JavaFX ObservableValue this Property should be bound to.
    */
-  def <==(v: JFXObservableValue[_ <: J]): Unit = {
+  def <==(v: jfxbv.ObservableValue[_ <: J]): Unit = {
     delegate.bind(v)
   }
 
