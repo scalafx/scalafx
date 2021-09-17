@@ -60,16 +60,12 @@ object TreeTableTester extends JFXApp3 {
       columns ++= List(
         new TreeTableColumn[Person, String] {
           text = "First Name"
-          cellValueFactory = {
-            _.value.value.value.firstName
-          }
+          cellValueFactory = _.value.value.value.firstName
           prefWidth = 180
         },
         new TreeTableColumn[Person, String]() {
           text = "Last Name"
-          cellValueFactory = {
-            _.value.value.value.lastName
-          }
+          cellValueFactory = _.value.value.value.lastName
           prefWidth = 180
         }
       )

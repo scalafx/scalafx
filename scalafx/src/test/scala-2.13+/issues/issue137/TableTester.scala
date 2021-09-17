@@ -55,16 +55,12 @@ object TableTester extends JFXApp3 {
           columns ++= List(
             new TableColumn[Person, String] {
               text = "First Name"
-              cellValueFactory = {
-                _.value.firstName
-              }
+              cellValueFactory = _.value.firstName
               prefWidth = 180
             },
             new TableColumn[Person, String]() {
               text = "Last Name"
-              cellValueFactory = {
-                _.value.lastName
-              }
+              cellValueFactory = _.value.lastName
               prefWidth = 180
             }
           )
