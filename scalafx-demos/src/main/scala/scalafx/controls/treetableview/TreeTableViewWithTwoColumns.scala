@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,8 @@
 
 package scalafx.controls.treetableview
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.beans.property.{ReadOnlyStringWrapper, StringProperty}
 import scalafx.scene.Scene
 import scalafx.scene.control.TreeTableColumn.sfxTreeTableColumn2jfx
@@ -37,51 +37,51 @@ import scalafx.scene.image.ImageView
 import scalafx.scene.paint.Color
 
 /**
-  * TreeTableView with One Column.
-  * ScalaFX version of example 15-2 in JavaFX
-  * [[https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/tree-table-view.htm Tree Table View tutorial]].
-  */
-object TreeTableViewWithTwoColumns extends JFXApp {
+ * TreeTableView with One Column. ScalaFX version of example 15-2 in JavaFX
+ * [[https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/tree-table-view.htmTreeTable View tutorial]].
+ */
+object TreeTableViewWithTwoColumns extends JFXApp3 {
 
   case class Employee(name: StringProperty, email: StringProperty) {
     def this(_name: String, _email: String) = this(StringProperty(_name), StringProperty(_email))
   }
 
-  val employees = Seq(
-    new Employee("Ethan Williams", "ethan.williams@example.com"),
-    new Employee("Emma Jones", "emma.jones@example.com"),
-    new Employee("Michael Brown", "michael.brown@example.com"),
-    new Employee("Anna Black", "anna.black@example.com"),
-    new Employee("Rodger York", "roger.york@example.com"),
-    new Employee("Susan Collins", "susan.collins@example.com"))
+  override def start(): Unit = {
 
-  val depIcon = new ImageView(getClass.getResource("department.png").toExternalForm)
+    val employees = Seq(
+      new Employee("Ethan Williams", "ethan.williams@example.com"),
+      new Employee("Emma Jones", "emma.jones@example.com"),
+      new Employee("Michael Brown", "michael.brown@example.com"),
+      new Employee("Anna Black", "anna.black@example.com"),
+      new Employee("Rodger York", "roger.york@example.com"),
+      new Employee("Susan Collins", "susan.collins@example.com")
+    )
 
-  assert(depIcon != null)
+    val depIcon = new ImageView(getClass.getResource("department.png").toExternalForm)
 
-  val rootNode = new TreeItem(new Employee("Sales Department", ""), depIcon) {
-    expanded = true
-    children = employees.map(new TreeItem(_))
-  }
+    val rootNode = new TreeItem(new Employee("Sales Department", ""), depIcon) {
+      expanded = true
+      children = employees.map(new TreeItem(_))
+    }
 
-  stage = new PrimaryStage {
-    title = "TreeTableView with Two Columns"
-    scene = new Scene(400, 400) {
-      fill = Color.LightGray
-      root = new TreeTableView[Employee](rootNode) {
-        columns ++= Seq(
-          new TreeTableColumn[Employee, String]("Employee") {
-            prefWidth = 150
-            cellValueFactory = { p => ReadOnlyStringWrapper(p.value.value.value.name()) }
-          },
-          new TreeTableColumn[Employee, String]("Email") {
-            prefWidth = 190
-            cellValueFactory = { p => ReadOnlyStringWrapper(p.value.value.value.email()) }
-          }
-        )
-        tableMenuButtonVisible = true
+    stage = new PrimaryStage {
+      title = "TreeTableView with Two Columns"
+      scene = new Scene(400, 400) {
+        fill = Color.LightGray
+        root = new TreeTableView[Employee](rootNode) {
+          columns ++= Seq(
+            new TreeTableColumn[Employee, String]("Employee") {
+              prefWidth = 150
+              cellValueFactory = p => ReadOnlyStringWrapper(p.value.value.value.name())
+            },
+            new TreeTableColumn[Employee, String]("Email") {
+              prefWidth = 190
+              cellValueFactory = p => ReadOnlyStringWrapper(p.value.value.value.email())
+            }
+          )
+          tableMenuButtonVisible = true
+        }
       }
     }
   }
-
 }

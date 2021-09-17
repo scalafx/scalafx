@@ -31,9 +31,9 @@ import scalafx.Includes._
 import scalafx.scene.control._
 
 /**
- *
  */
-class ComboBoxControls(target: ComboBox[String]) extends PropertiesNodes[ComboBox[String]](target, "ComboBox Properties") {
+class ComboBoxControls(target: ComboBox[String])
+    extends PropertiesNodes[ComboBox[String]](target, "ComboBox Properties") {
 
   var itemIndex = 0
 

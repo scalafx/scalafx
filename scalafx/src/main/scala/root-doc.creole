@@ -11,7 +11,7 @@
 
  == Example Usage ==
 
-A basic ScalaFX application is created creating an object that is an instance of [[scalafx.application.JFXApp `JFXApp`]].
+A basic ScalaFX application is created creating an object that is an instance of [[scalafx.application.JFXApp3 `JFXApp3`]].
 Following Java FX theatre metaphor, it contains a `stage` that contains a `scene`.
 A `stage` roughly corresponds to a window in a typical UI environment.
 The `scene` holds UI content presented to the user.
@@ -21,20 +21,22 @@ In the example below, the content is a pane with a single `label` component.
 {{{
 package hello
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.Label
 import scalafx.scene.layout.BorderPane
 
-object HelloWorld extends JFXApp {
-  stage = new PrimaryStage {
-    title = "Hello"
-    scene = new Scene {
-      root = new BorderPane {
-        padding = Insets(25)
-        center = new Label("Hello World")
+object HelloWorld extends JFXApp3 {
+
+  override def start(): Unit = {
+    stage = new JFXApp3.PrimaryStage {
+      title = "Hello"
+      scene = new Scene {
+        root = new BorderPane {
+          padding = Insets(75)
+          center = new Label("Hello World")
+        }
       }
     }
   }

@@ -28,45 +28,42 @@
 package scalafx.controls
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.event.ActionEvent
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.{MenuItem, SplitMenuButton}
 import scalafx.scene.layout.VBox
 
-
-object SplitMenuButtonDemo extends JFXApp {
-
-  stage = new PrimaryStage {
-    scene = new Scene(200, 200) {
-      content = new VBox {
-        padding = Insets(10)
-        spacing = 10
-        children = List(
-          new SplitMenuButton {
-            text = "SplitMenuButton 1"
-            onAction = (e: ActionEvent) => println(s"${e.eventType} occurred on SplitMenuButton")
-            items = List(
-              new MenuItem("MenuItem A") {
-                onAction = (e: ActionEvent) => println(s"${e.eventType} occurred on Menu Item A")
-              },
-              new MenuItem("MenuItem B")
-            )
-          },
-          // Use varargs constructor
-          new SplitMenuButton(
-            new MenuItem("MenuItem C") {
-              onAction = (ae: ActionEvent) => println(s"${ae.eventType}  occurred on Menu Item C")
+object SplitMenuButtonDemo extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      scene = new Scene(200, 200) {
+        content = new VBox {
+          padding = Insets(10)
+          spacing = 10
+          children = List(
+            new SplitMenuButton {
+              text = "SplitMenuButton 1"
+              onAction = (e: ActionEvent) => println(s"${e.eventType} occurred on SplitMenuButton")
+              items = List(
+                new MenuItem("MenuItem A") {
+                  onAction = (e: ActionEvent) => println(s"${e.eventType} occurred on Menu Item A")
+                },
+                new MenuItem("MenuItem B")
+              )
             },
-            new MenuItem("MenuItem D"),
-            new MenuItem("MenuItem E")
+            new SplitMenuButton(
+              new MenuItem("MenuItem C") {
+                onAction = (ae: ActionEvent) => println(s"${ae.eventType}  occurred on Menu Item C")
+              },
+              new MenuItem("MenuItem D"),
+              new MenuItem("MenuItem E")
+            )
           )
-        )
+        }
       }
     }
   }
-
-
 }

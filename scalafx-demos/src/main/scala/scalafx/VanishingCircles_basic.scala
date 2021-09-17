@@ -28,30 +28,31 @@
 package scalafx
 
 import scala.math.random
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.effect.BoxBlur
 import scalafx.scene.paint.Color._
 import scalafx.scene.shape.Circle
 
-
 /**
  * Vanishing Circles Basic
  */
-object VanishingCircles_basic extends JFXApp {
-  stage = new PrimaryStage {
-    title = "Vanishing Circles"
-    width = 800
-    height = 600
-    scene = new Scene {
-      fill = Black
-      content = for (i <- 0 until 50) yield new Circle {
-        centerX = random * 800
-        centerY = random * 600
-        radius = 150
-        fill = color(random, random, random, .2)
-        effect = new BoxBlur(10, 10, 3)
+object VanishingCircles_basic extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      title = "Vanishing Circles"
+      width = 800
+      height = 600
+      scene = new Scene {
+        fill = Black
+        content = for (i <- 0 until 50) yield new Circle {
+          centerX = random * 800
+          centerY = random * 600
+          radius = 150
+          fill = color(random, random, random, 0.2d)
+          effect = new BoxBlur(10, 10, 3)
+        }
       }
     }
   }

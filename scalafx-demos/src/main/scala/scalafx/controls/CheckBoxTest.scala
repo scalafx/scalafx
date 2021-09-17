@@ -28,8 +28,8 @@
 package scalafx.controls
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.controls.controls.{ControlControls, PropertiesNodes}
 import scalafx.event.ActionEvent
 import scalafx.geometry.Pos
@@ -38,37 +38,32 @@ import scalafx.scene.control._
 import scalafx.scene.layout.{BorderPane, Priority, VBox}
 import scalafx.scene.paint.Color
 
-object CheckBoxTest extends JFXApp {
-
-  val check = new CheckBox {
-    text = "CheckBox"
-  }
-
-  val controlsPane = new VBox {
-    spacing = 5
-    fillWidth = true
-    alignment = Pos.Center
-    hgrow = Priority.Never
-    children = List(new CheckBoxControls(check), new ControlControls(check))
-  }
-
-  val mainPane = new BorderPane {
-    top = check
-    center = controlsPane
-    vgrow = Priority.Always
-    hgrow = Priority.Always
-  }
-
-  stage = new PrimaryStage {
-    title = "CheckBox Test"
-    width = 300
-    height = 500
-    scene = new Scene {
-      fill = Color.LightGray
-      content = mainPane
+object CheckBoxTest extends JFXApp3 {
+  override def start(): Unit = {
+    val check = new CheckBox { text = "CheckBox" }
+    val controlsPane = new VBox {
+      spacing = 5
+      fillWidth = true
+      alignment = Pos.Center
+      hgrow = Priority.Never
+      children = List(new CheckBoxControls(check), new ControlControls(check))
+    }
+    val mainPane = new BorderPane {
+      top = check
+      center = controlsPane
+      vgrow = Priority.Always
+      hgrow = Priority.Always
+    }
+    stage = new PrimaryStage {
+      title = "CheckBox Test"
+      width = 300
+      height = 500
+      scene = new Scene {
+        fill = Color.LightGray
+        content = mainPane
+      }
     }
   }
-
 }
 
 class CheckBoxControls(check: CheckBox) extends PropertiesNodes[CheckBox](check, "CheckBox Properties") {
@@ -79,7 +74,6 @@ class CheckBoxControls(check: CheckBox) extends PropertiesNodes[CheckBox](check,
   check.onAction = (event: ActionEvent) => {
     lblSelected.text = if (check.indeterminate()) "Indeterminate" else check.selected().toString
   }
-
 
   val btnAllowIndeterminate = new ToggleButton {
     text = "Allow Indeterminate"

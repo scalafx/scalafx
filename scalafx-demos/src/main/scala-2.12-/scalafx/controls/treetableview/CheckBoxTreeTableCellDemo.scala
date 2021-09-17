@@ -27,8 +27,7 @@
 
 package scalafx.controls.treetableview
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
 import scalafx.beans.property.{BooleanProperty, StringProperty}
 import scalafx.beans.value.ObservableValue
 import scalafx.scene.Scene
@@ -40,43 +39,44 @@ import scala.language.implicitConversions
 /**
  * Example of using `CheckBoxTableCell` in `TableView`.
  */
-object CheckBoxTreeTableCellDemo extends JFXApp {
+object CheckBoxTreeTableCellDemo extends JFXApp3 {
 
   class Item(selected_ : Boolean, name_ : String) {
     val selected = new BooleanProperty(this, "selected", selected_)
     val name = new StringProperty(this, "name", name_)
   }
 
+  override def start(): Unit = {
 
-  val data = new TreeItem[Item](new Item(false, ""))
-  for (i <- 1 to 10) {
-    data.children.add(new TreeItem[Item](new Item(i % 2 == 0, s"Item $i")))
-  }
+    val data = new TreeItem[Item](new Item(false, ""))
+    for (i <- 1 to 10) {
+      data.children.add(new TreeItem[Item](new Item(i % 2 == 0, s"Item $i")))
+    }
 
-  stage = new PrimaryStage {
-    title = "Example of a TreeTableView with Check Boxes"
-    scene = new Scene {
-      root = new TreeTableView[Item](data) {
-        columns ++= List(
-          new TreeTableColumn[Item, String] {
-            text = "Name"
-            cellValueFactory = {
-              _.value.getValue.name
-            }
-            prefWidth = 180
-          }.delegate,
-          new TreeTableColumn[Item, java.lang.Boolean] {
-            text = "Selected"
-            // We need to explicitly cast `_.value.selected` to modify boolean type parameters.
-            // `scala.Boolean` type is different from `java.lang.Boolean`, but eventually represented the same way
-            // by the compiler.
-            cellValueFactory = _.value.getValue.selected.asInstanceOf[ObservableValue[java.lang.Boolean, java.lang.Boolean]]
-            cellFactory = CheckBoxTreeTableCell.forTreeTableColumn(this.delegate)
-            editable = true
-            prefWidth = 180
-          }.delegate
-        )
-        editable = true
+    stage = new JFXApp3.PrimaryStage {
+      title = "Example of a TreeTableView with Check Boxes"
+      scene = new Scene {
+        root = new TreeTableView[Item](data) {
+          columns ++= List(
+            new TreeTableColumn[Item, String] {
+              text = "Name"
+              cellValueFactory = _.value.getValue.name
+              prefWidth = 180
+            }.delegate,
+            new TreeTableColumn[Item, java.lang.Boolean] {
+              text = "Selected"
+              // We need to explicitly cast `_.value.selected` to modify boolean type parameters.
+              // `scala.Boolean` type is different from `java.lang.Boolean`, but eventually represented the same way
+              // by the compiler.
+              cellValueFactory =
+                _.value.getValue.selected.asInstanceOf[ObservableValue[java.lang.Boolean, java.lang.Boolean]]
+              cellFactory = CheckBoxTreeTableCell.forTreeTableColumn(this.delegate)
+              editable = true
+              prefWidth = 180
+            }.delegate
+          )
+          editable = true
+        }
       }
     }
   }

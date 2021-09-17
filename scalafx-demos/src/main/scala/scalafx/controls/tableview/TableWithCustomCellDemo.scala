@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2016, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,61 +27,49 @@
 
 package scalafx.controls.tableview
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
 import scalafx.scene.control.TableColumn._
-import scalafx.scene.control.{TableCell, TableColumn, TableView}
+import scalafx.scene.control.{TableColumn, TableView}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Circle
 
 /** Illustrates use of TableColumn CellFactory to do custom rendering of a TableCell. */
-object TableWithCustomCellDemo extends JFXApp {
+object TableWithCustomCellDemo extends JFXApp3 {
 
-  val characters = ObservableBuffer[Person](
+  private val characters = ObservableBuffer[Person](
     new Person("Peggy", "Sue", "555-6798", Color.Violet),
     new Person("Rocky", "Raccoon", "555-6798", Color.GreenYellow),
     new Person("Bungalow ", "Bill", "555-9275", Color.DarkSalmon)
   )
 
-  stage = new PrimaryStage {
-    title = "TableView with custom color cell"
-    scene = new Scene {
-      root = new TableView[Person](characters) {
-        columns ++= List(
-          new TableColumn[Person, String] {
-            text = "First Name"
-            cellValueFactory = {_.value.firstName}
-            prefWidth = 100
-          },
-          new TableColumn[Person, String]() {
-            text = "Last Name"
-            cellValueFactory = {_.value.lastName}
-            prefWidth = 100
-          },
-          new TableColumn[Person, Color] {
-            text = "Favorite Color"
-            cellValueFactory = {_.value.favoriteColor}
-            // Render the property value when it changes, including initial assignment
-            cellFactory = {
-              (_: TableColumn[Person, Color]) =>
-                new TableCell[Person, Color] {
-                  item.onChange { (_, _, newColor) =>
-                    graphic =
-                      if (newColor != null)
-                        new Circle {
-                          fill = newColor
-                          radius = 8
-                        }
-                      else
-                        null
-                  }
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      title = "TableView with custom color cell"
+      scene = new Scene {
+        root = new TableView[Person](characters) {
+          columns ++= Seq(
+            new TableColumn[Person, String] {
+              text = "First Name"
+              cellValueFactory = _.value.firstName
+            },
+            new TableColumn[Person, String]() {
+              text = "Last Name"
+              cellValueFactory = _.value.lastName
+            },
+            new TableColumn[Person, Color] {
+              text = "Favorite Color"
+              // What should be used as the value of the cell
+              cellValueFactory = _.value.favoriteColor
+              // How the value should be displayed in the cell
+              cellFactory = (cell, color) => {
+                cell.graphic = Circle(fill = color, radius = 8)
               }
             }
-            prefWidth = 100
-          }
-        )
+          )
+        }
       }
     }
   }

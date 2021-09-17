@@ -47,7 +47,7 @@ object ListView {
 
   class EditEvent[T](override val delegate: jfxsc.ListView.EditEvent[T])
     extends Event(delegate)
-    with SFXDelegate[jfxsc.ListView.EditEvent[T]] {
+      with SFXDelegate[jfxsc.ListView.EditEvent[T]] {
 
     /**
      * Creates a new EditEvent instance to represent an edit event. This event is used for
@@ -98,11 +98,13 @@ object ListView {
 }
 
 /**
+ * A ListView displays a horizontal or vertical list of items from which the user may select, or with which the user may interact. A ListView is able to have its generic type set to represent the type of data in the backing model.
+ *
  * @constructor Creates a default ListView which will display contents stacked vertically.
  */
 class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[T])
   extends Control(delegate)
-  with SFXDelegate[jfxsc.ListView[T]] {
+    with SFXDelegate[jfxsc.ListView[T]] {
 
   /**
    * Creates a default ListView which will stack the contents retrieved from the provided
@@ -122,13 +124,82 @@ class ListView[T](override val delegate: jfxsc.ListView[T] = new jfxsc.ListView[
    * total customization of the cell.
    */
   def cellFactory: ObjectProperty[jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]]] = delegate.cellFactoryProperty
+  def cellFactory_=(callback: javafx.util.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]]): Unit = {
+    cellFactory() = callback
+  }
 
+  @deprecated(message = "" +
+    "This method does not allow for correct handling of empty cells leading to possible rendering artifacts. " +
+    "See explanation in [[https://github.com/scalafx/scalafx/issues/256 ScalaFX Issue #256]]. " +
+    "Use the new `cellFactory` assignment method: `cellFactory_=(op: (ListCell[T], T) => Unit)` that automatically " +
+    "handles empty cells.",
+    since = "16.0.0-R25")
   def cellFactory_=(v: (ListView[T] => ListCell[T])): Unit = {
     cellFactory() = new jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] {
       def call(lv: jfxsc.ListView[T]): jfxsc.ListCell[T] = {
         v(lv)
       }
     }
+  }
+
+  /**
+   * A convenience method for creation of custom cell factory.
+   * The caller is responsible for providing an operation `op` that renders a non-empty cells from a non-null value.
+   *
+   * Implementation provides logic for handling empty cells and `null` values.
+   *
+   * The `op` provides two arguments: a pre-created `cell` and `value` for that cell.
+   * Caller can customize content of the `cell` based on the `value`.
+   *
+   * The `value` is guaranteed to be non `null`.
+   * The `null` values are automatically rendered as empty cells by the implementation.
+   *
+   * Here is an example where `value`'s type is a class `Person` that contains two text fields: `firstName` and `lastName`.
+   * {{{
+   *   case class Person(firstName:String, lastName:String)
+   *   ...
+   *   cellFactory = (cell, value) => {
+   *     cell.text = value.firstName + " " + value.lastName
+   *   }
+   * }}}
+   *
+   * Another example where 'value' is of type 'Color' and the cell factory creates a circle representing that color:
+   * {{{
+   *   cellFactory = (cell, value) => {
+   *     cell.graphic = new Circle {
+   *        fill = value
+   *        radius = 8
+   *     }
+   *   }
+   * }}}
+   *
+   * @param op a method that will create content for a given `cell`.
+   *           It gets as an input automatically created custom `cell` and a non-null `value` of that cell.
+   *           `op` is called in the cell's `updateItem` method.
+   */
+  def cellFactory_=(op: (ListCell[T], T) => Unit): Unit = {
+    val callback =
+      Option(op)
+        .map { op =>
+          new jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] {
+            def call(tv: jfxsc.ListView[T]): jfxsc.ListCell[T] = {
+              new jfxsc.ListCell[T] {
+                val sfxThis = new ListCell(this)
+                override def updateItem(item: T, empty: Boolean): Unit = {
+                  super.updateItem(item, empty)
+                  if (empty || item == null) {
+                    setText(null)
+                    setGraphic(null)
+                  } else {
+                    op(sfxThis, item)
+                  }
+                }
+              }
+            }
+          }
+        }
+        .orNull
+    delegate.cellFactoryProperty.setValue(callback)
   }
 
   /**

@@ -39,27 +39,25 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.paint.Color
 
-
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+ * @author
+ *   Luc Duponcheel <luc.duponcheel@gmail.com>
  *
  * based upon: Example 1 Creating the Application Frame
  *
  * http://docs.oracle.com/javafx/2.0/scenegraph/jfxpub-scenegraph.htm
- *
  */
 
-object ScalaFX_Scene_Graph_App_01 extends JFXApp {
-  stage = new PrimaryStage {
-    title = "ScalaFX Scene Graph App 01"
-    scene = new Scene(500, 500) {
-      fill = Color.Black
+object ScalaFX_Scene_Graph_App_01 extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      title = "ScalaFX Scene Graph App 01"
+      scene = new Scene(500, 500) { fill = Color.Black }
     }
   }
 }
-

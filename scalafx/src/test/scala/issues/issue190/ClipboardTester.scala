@@ -27,8 +27,8 @@
 
 package issues.issue190
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.control.Button
 import scalafx.scene.input.{Clipboard, ClipboardContent, DataFormat}
@@ -39,82 +39,80 @@ import scala.collection.JavaConverters._
 import scala.language.implicitConversions
 
 /**
- * @author Jarek Sacha 
+ * @author Jarek Sacha
  */
-object ClipboardTester extends JFXApp {
+object ClipboardTester extends JFXApp3 {
 
-
-  stage = new PrimaryStage {
-    scene = new Scene {
-      title = "Clipboard Tester"
-      root = new VBox {
-        children = Seq(
-          new Button {
-            text = "Print clipboard"
-            onAction = _ => {
-              val systemClipboard = Clipboard.systemClipboard
-              val contentTypes = systemClipboard.contentTypes
-              println(s"\nClipboard contains " + contentTypes.size + " type(s).")
-              contentTypes.foreach { ct =>
-                println("Checking content type: " + ct)
-                val ctContent = systemClipboard.getContent(ct)
-                println("  " + ctContent)
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      scene = new Scene {
+        title = "Clipboard Tester"
+        root = new VBox {
+          children = Seq(
+            new Button {
+              text = "Print clipboard"
+              onAction = _ => {
+                val systemClipboard = Clipboard.systemClipboard
+                val contentTypes = systemClipboard.contentTypes
+                println(s"\nClipboard contains " + contentTypes.size + " type(s).")
+                contentTypes.foreach { ct =>
+                  println("Checking content type: " + ct)
+                  val ctContent = systemClipboard.getContent(ct)
+                  println("  " + ctContent)
+                }
+              }
+            },
+            new Button {
+              text = "Clear clipboard"
+              onAction = _ => Clipboard.systemClipboard.clear()
+            },
+            new Button {
+              text = "Add file content (1)"
+              onAction = _ => {
+                val cc = new ClipboardContent()
+                cc.putFiles(Seq(new File("one"), new File("two")))
+                Clipboard.systemClipboard.content = cc
+              }
+            },
+            new Button {
+              text = "Add file content (2)"
+              onAction = _ => {
+                val cc = new ClipboardContent()
+                cc.put(DataFormat.Files, Seq(new File("c:/tmp")).asJava)
+                Clipboard.systemClipboard.content = cc
+              }
+            },
+            new Button {
+              text = "Add file content (3)"
+              onAction = _ => {
+                Clipboard.systemClipboard.content = ClipboardContent(
+                  DataFormat.Files -> Seq(new File("c:/tmp")).asJava,
+                  DataFormat.PlainText -> "Hello Clipboard!"
+                )
+              }
+            },
+            new Button {
+              text = "Add text/HTML content (1)"
+              onAction = _ => {
+                val clipboard = Clipboard.systemClipboard
+                val content = new ClipboardContent()
+                content.putString("Some text")
+                content.putHtml("<b>Some</b> text")
+                clipboard.content = content
+              }
+            },
+            new Button {
+              text = "Add text/HTML content (2)"
+              onAction = _ => {
+                Clipboard.systemClipboard.content = ClipboardContent(
+                  DataFormat.PlainText -> "Some text",
+                  DataFormat.Html -> "<b>Some</b> text"
+                )
               }
             }
-          },
-          new Button {
-            text = "Clear clipboard"
-            onAction = _ => Clipboard.systemClipboard.clear()
-          },
-          new Button {
-            text = "Add file content (1)"
-            onAction = _ => {
-              val cc = new ClipboardContent()
-              cc.putFiles(Seq(new File("one"), new File("two")))
-              Clipboard.systemClipboard.content = cc
-            }
-          },
-          new Button {
-            text = "Add file content (2)"
-            onAction = _ => {
-              val cc = new ClipboardContent()
-              cc.put(DataFormat.Files, Seq(new File("c:/tmp")).asJava)
-              Clipboard.systemClipboard.content = cc
-            }
-          },
-          new Button {
-            text = "Add file content (3)"
-            onAction = _ => {
-              Clipboard.systemClipboard.content = ClipboardContent(
-                DataFormat.Files -> Seq(new File("c:/tmp")).asJava,
-                DataFormat.PlainText -> "Hello Clipboard!"
-              )
-            }
-          },
-          new Button {
-            text = "Add text/HTML content (1)"
-            onAction = _ => {
-              val clipboard = Clipboard.systemClipboard
-              val content = new ClipboardContent()
-              content.putString("Some text")
-              content.putHtml("<b>Some</b> text")
-              clipboard.content = content
-            }
-          },
-          new Button {
-            text = "Add text/HTML content (2)"
-            onAction = _ => {
-              Clipboard.systemClipboard.content = ClipboardContent(
-                DataFormat.PlainText -> "Some text",
-                DataFormat.Html -> "<b>Some</b> text"
-              )
-            }
-          }
-
-
-        )
+          )
+        }
       }
     }
   }
-
 }

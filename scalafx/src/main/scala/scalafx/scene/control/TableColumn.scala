@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -81,11 +81,14 @@ object TableColumn {
   }
 
   /**
-   * Wraps [[http://docs.oracle.com/javase/8/javafx/api/javafx/scene/control/TableColumn.CellEditEvent.html]].
+   * A TableView is made up of a number of TableColumn instances.
+   * Each TableColumn in a table is responsible for displaying (and editing) the contents of that column.
+   *
+   * Wraps [[https://openjfx.io/javadoc/16/javafx.controls/javafx/scene/control/TableColumn.html]].
    */
   class CellEditEvent[S, T](override val delegate: jfxsc.TableColumn.CellEditEvent[S, T])
     extends Event(delegate)
-    with SFXDelegate[jfxsc.TableColumn.CellEditEvent[S, T]] {
+      with SFXDelegate[jfxsc.TableColumn.CellEditEvent[S, T]] {
 
     /**
      * Creates a new event that can be subsequently fired to the relevant listeners.
@@ -187,7 +190,7 @@ object TableColumn {
  */
 class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfxsc.TableColumn[S, T]())
   extends TableColumnBase[S, T](delegate)
-  with SFXDelegate[jfxsc.TableColumn[S, T]] {
+    with SFXDelegate[jfxsc.TableColumn[S, T]] {
 
   /**
    * Creates a TableColumn with the text set to the provided string, with default cell factory, comparator, and
@@ -198,9 +201,18 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   /**
    * The cell factory for all cells in this column.
    */
-  def cellFactory: ObjectProperty[TableColumn[S, T] => TableCell[S, T]] =
-    ObjectProperty((column: TableColumn[S, T]) => new TableCell(delegate.cellFactoryProperty.getValue.call(column)))
+  def cellFactory: ObjectProperty[jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]]] =
+    delegate.cellFactoryProperty
+  def cellFactory_=(callback: jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]]): Unit = {
+    delegate.cellFactoryProperty.setValue(callback)
+  }
 
+  @deprecated(message = "" +
+    "This method does not allow for correct handling of empty cells leading to possible rendering artifacts. " +
+    "See explanation in [[https://github.com/scalafx/scalafx/issues/256 ScalaFX Issue #256]]. " +
+    "Use the new `cellFactory` assignment method: `cellFactory_=(op: (TableCell[S, T], T) => Unit)` that automatically " +
+    "handles empty cells.",
+    since = "16.0.0-R25")
   def cellFactory_=(f: TableColumn[S, T] => TableCell[S, T]): Unit = {
     delegate.cellFactoryProperty.setValue(new jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] {
       def call(v: jfxsc.TableColumn[S, T]): jfxsc.TableCell[S, T] = {
@@ -209,7 +221,63 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
     })
   }
 
-  def cellFactory_=(callback: jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]]): Unit = {
+  /**
+   * This is a helper method for easy creation of custom cell factories.
+   * The custom cell is automatically created, and it handles rendering of empty cells.
+   * The user is only responsible for providing an operation `op` that renders non-empty cells.
+   *
+   * The operation `op` provides as input the already created custom `cell` and `value` of that cell.
+   * The `value` is provided by the `cellValueFactory`. The `value` is guaranteed to be non `null`.
+   * The `null` values are automatically rendered as empty cells by the provided `cell` object.
+   *
+   * Here is an example where value's type is a case class `Person` that contains two text fields: `firstName` and `lastName`.
+   * {{{
+   *   case class Person(firstName:String, lastName:String)
+   *   ...
+   *
+   *   cellFactory = (cell, value) => {
+   *     cell.text = value.firstName + " " + value.lastName
+   *   }
+   * }}}
+   *
+   * Another example where 'value' is of type 'Color' and the cell factory creates a circle representing that color:
+   * {{{
+   *   cellFactory = (cell, value) => {
+   *     cell.graphic = new Circle {
+   *        fill = value
+   *        radius = 8
+   *     }
+   *   }
+   * }}}
+   *
+   * @param op a method that will create content for a given `cell`.
+   *           It gets as an input automatically created custom `cell` and a non-null `value` of that cell.
+   *           `op` is called in the cell's `updateItem` method.
+   */
+  def cellFactory_=(op: (TableCell[S, T], T) => Unit): Unit = {
+    val callback = {
+      Option(op)
+        .map { op =>
+          new jfxu.Callback[jfxsc.TableColumn[S, T], jfxsc.TableCell[S, T]] {
+            def call(tv: jfxsc.TableColumn[S, T]): jfxsc.TableCell[S, T] = {
+              new jfxsc.TableCell[S, T] {
+                val sfxThis = new TableCell(this)
+                override def updateItem(item: T, empty: Boolean): Unit = {
+                  super.updateItem(item, empty)
+                  if (empty || item == null) {
+                    setText(null)
+                    setGraphic(null)
+                  } else {
+                    op(sfxThis, item)
+                  }
+                }
+              }
+            }
+          }
+        }
+        .orNull
+    }
+
     delegate.cellFactoryProperty.setValue(callback)
   }
 

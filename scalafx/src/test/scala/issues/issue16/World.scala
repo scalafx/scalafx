@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2015, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,8 @@
 package issues.issue16
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
@@ -40,31 +40,33 @@ import scalafx.scene.shape.Rectangle
  * When replacing the javafx.scene.paint.Color import by its ScalaFX counterpart, the rectangle would be Blue forever.
  * The rectangle should normally be RED, but when mouse hovers above it it should change color to GREEN.
  */
-object World extends JFXApp {
-  stage = new PrimaryStage {
-    title = "Hello World"
-    width = 600
-    height = 450
-    scene = new Scene {
-      fill = Color.LightGreen
-      content = new Rectangle {
-        x = 25
-        y = 40
-        width = 100
-        height = 100
-        fill = Color.Blue
-        // Problem with incorrect behaviour of the binding was here.
+object World extends JFXApp3 {
+  override def start(): Unit = {
+    stage = new PrimaryStage {
+      title = "Hello World"
+      width = 600
+      height = 450
+      scene = new Scene {
+        fill = Color.LightGreen
+        content = new Rectangle {
+          x = 25
+          y = 40
+          width = 100
+          height = 100
+          fill = Color.Blue
+          // Problem with incorrect behaviour of the binding was here.
 
-        // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2
-        // fill <== when (hover) choose Color.Green otherwise Color.Red
-        // NOTE Scala 3: variable `helper` was added to force type (and implicint conversions) on right side of `<==`
-        //               This is not needed in Scala 2
+          // TODO Scala 3: Original line of code does not compile with Scala 3.0.0-RC2
+          // fill <== when (hover) choose Color.Green otherwise Color.Red
+          // NOTE Scala 3: variable `helper` was added to force type (and implicint conversions) on right side of `<==`
+          //               This is not needed in Scala 2
 
-        import javafx.scene.{paint => jfxsp}
-        import scalafx.beans.binding.ObjectBinding
+          import javafx.scene.{paint => jfxsp}
+          import scalafx.beans.binding.ObjectBinding
 
-        val helper: ObjectBinding[jfxsp.Color] = when(hover) choose Color.Green otherwise Color.Red
-        fill <== helper
+          val helper: ObjectBinding[jfxsp.Color] = when(hover) choose Color.Green otherwise Color.Red
+          fill <== helper
+        }
       }
     }
   }

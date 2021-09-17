@@ -39,18 +39,16 @@ import scalafx.scene.text.Text
 /**
  * `JFXApp3` is intended to be a replacement for `JFXApp` but is implemented without `scala.DelayedInit`.
  *
- * `JFXApp3` can be used with Scala 3 where `DelayedInit` is no longer supported at runtime.
- * It can also be used with Scala 2, where `DelayedInit` is deprecated but works at runtime.
+ * `JFXApp3` can be used with Scala 3 where `DelayedInit` is no longer supported at runtime. It can also be used with
+ * Scala 2, where `DelayedInit` is deprecated but works at runtime.
  *
  * In `JFXApp`, due to `DelayedInit` magic, UI construction and startup code can be put directly in the constructor.
- * That code is executed on JavaFX Application Thread.
- * Without `DelayedInit` it is not possible to use that constructor "magic".
- * `JFXApp3` adds method `start()` that is intended simulate that constructor "magic" and perform UI construction
- * and startup on JavaFX Application Thread.
+ * That code is executed on JavaFX Application Thread. Without `DelayedInit` it is not possible to use that constructor
+ * "magic". `JFXApp3` adds method `start()` that is intended simulate that constructor "magic" and perform UI
+ * construction and startup on JavaFX Application Thread.
  *
  * A simple way of porting from from `JFXApp` to `JFXApp3` is to wrap constructors UI building code into `start()`
  * method, see details by comparing `JFXAppDemo` and `JFXApp3Demo`.
- *
  */
 object JFXApp3Demo extends JFXApp3 {
   override def start(): Unit = {
@@ -64,9 +62,7 @@ object JFXApp3Demo extends JFXApp3 {
             new Text {
               text = "Hello World!"
               style = "-fx-font: normal bold 100pt sans-serif"
-              fill = new LinearGradient(
-                endX = 0,
-                stops = Stops(Red, DarkRed))
+              fill = new LinearGradient(endX = 0, stops = Stops(Red, DarkRed))
             }
           )
         }

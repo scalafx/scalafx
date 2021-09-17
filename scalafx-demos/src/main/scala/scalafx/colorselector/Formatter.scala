@@ -60,7 +60,7 @@ object HexFormatter extends Formatter("Hexadecimal") {
 }
 
 object RgbFormatter extends Formatter("RGB") {
-  val RGB_FORMAT = "rgb(%3d, %3d, %3d)"
+  val RGB_FORMAT  = "rgb(%3d, %3d, %3d)"
   val RGBA_FORMAT = "rgba(%3d, %3d, %3d, %.2f)"
 
   def formatWithAlpha(c: Color): String = {
@@ -76,7 +76,7 @@ object RgbFormatter extends Formatter("RGB") {
 }
 
 object PercentFormatter extends Formatter("Percent") {
-  val RGB_FORMAT = "rgb(%3d%%, %3d%%, %3d%%)"
+  val RGB_FORMAT  = "rgb(%3d%%, %3d%%, %3d%%)"
   val RGBA_FORMAT = "rgba(%3d%%, %3d%%, %3d%%, %.2f)"
 
   private def doubleToInt(d: Double) = (100 * d).toInt
@@ -89,7 +89,7 @@ object PercentFormatter extends Formatter("Percent") {
 }
 
 object HsbFormatter extends Formatter("HSB") {
-  val HSB_FORMAT = "hsb(%3.0f, %3.0f%%, %3.0f%%)"
+  val HSB_FORMAT  = "hsb(%3.0f, %3.0f%%, %3.0f%%)"
   val HSBA_FORMAT = "hsba(%3.0f, %3.0f%%, %3.0f%%, %.2f)"
 
   private def colorToHsb(c: Color): (Double, Double, Double) =

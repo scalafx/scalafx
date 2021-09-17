@@ -27,34 +27,34 @@
 
 package scalafx.scene.chart
 
-import scalafx.application.JFXApp
+import scalafx.application.JFXApp3
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
 
-object BarChartDemo extends JFXApp {
-
-  val years = Seq("2007", "2008", "2009")
-
-  stage = new JFXApp.PrimaryStage {
-    title = "BarChartDemo"
-    scene = new Scene {
-      root = new BarChart(CategoryAxis(), NumberAxis("Y Values")) {
-        title = "Bar Chart"
-        data = ObservableBuffer(
-          xySeries("Apples", Seq(567, 1292, 1290)),
-          xySeries("Lemons", Seq(956, 1665, 2559)),
-          xySeries("Oranges", Seq(1154, 1927, 2774))
-        )
+object BarChartDemo extends JFXApp3 {
+  override def start(): Unit = {
+    val years = Seq("2007", "2008", "2009")
+    stage = new JFXApp3.PrimaryStage {
+      title = "BarChartDemo"
+      scene = new Scene {
+        root = new BarChart(CategoryAxis(), NumberAxis("Y Values")) {
+          title = "Bar Chart"
+          data = ObservableBuffer(
+            xySeries("Apples", Seq(567, 1292, 1290)),
+            xySeries("Lemons", Seq(956, 1665, 2559)),
+            xySeries("Oranges", Seq(1154, 1927, 2774))
+          )
+        }
       }
     }
-  }
-
-  /** Create XYChart.Series from a sequence of numbers matching year strings. */
-  def xySeries(name: String, data: Seq[Int]) = {
-    val series = years zip data
-    XYChart.Series[String, Number](
-      name,
-      ObservableBuffer.from(series.map { case (x, y) => XYChart.Data[String, Number](x, y) })
-    )
+    def xySeries(name: String, data: Seq[Int]) = {
+      val series = years zip data
+      XYChart.Series[String, Number](
+        name,
+        ObservableBuffer.from(series.map({ case (x, y) =>
+          XYChart.Data[String, Number](x, y)
+        }))
+      )
+    }
   }
 }

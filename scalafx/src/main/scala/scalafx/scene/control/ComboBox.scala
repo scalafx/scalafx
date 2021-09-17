@@ -43,9 +43,37 @@ object ComboBox {
   implicit def sfxComboBox2jfx[T](cb: ComboBox[T]): jfxsc.ComboBox[T] = if (cb != null) cb.delegate else null
 }
 
+/**
+ * Wraps [[https://openjfx.io/javadoc/16/javafx.controls/javafx/scene/control/ComboBox.html JavaFX ComboBox]],
+ * an implementation of the ComboBoxBase abstract class for the most common form of ComboBox,
+ * where a popup list is shown to users providing them with a choice that they may select from.
+ *
+ * On top of ComboBoxBase, the ComboBox class introduces additional API.
+ * Most importantly, it adds an items property that works in much the same way as the ListView items property.
+ * In other words, it is the content of the items list that is displayed to users when they click on the ComboBox button.
+ *
+ * It is not recommended to add `Node`s as ComboBox items.
+ * ScalaFX provides for a convenient customization of a ComboBox content.
+ * Required `Node` or other customization is add ed through cell factory.
+ * Following code will show colored `Rectangle` representing item's `Color`
+ * {{{
+ *   val comboBox = new ComboBox[Color] {
+ *     items = Seq(Color.Red, Color.Green, Color.Blue)
+ *     // Custom factory displaying list items are colored rectangles
+ *     // `color` is the value of the item displayed
+ *     cellFactory = (cell, color) => {
+ *       cell.contentDisplay = ContentDisplay.GraphicOnly
+ *       cell.graphic = Rectangle(10, 10, color)
+ *     }
+ *   }
+ * }}}
+ *
+ * @param delegate the wrapped JavaFX class.
+ * @tparam T The type of the value that has been selected or otherwise entered in to this ComboBox
+ */
 class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[T])
   extends ComboBoxBase(delegate)
-  with SFXDelegate[jfxsc.ComboBox[T]] {
+    with SFXDelegate[jfxsc.ComboBox[T]] {
 
   /**
    * Creates a default ComboBox instance from a [[scalafx.collections.ObservableBuffer]]
@@ -62,15 +90,83 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
   /**
    * Providing a custom cell factory allows for complete customization of the rendering of items in the ComboBox.
    */
-  def cellFactory: ObjectProperty[ListView[T] => ListCell[T]] =
-    ObjectProperty((view: ListView[T]) => new ListCell(delegate.cellFactoryProperty.getValue.call(view)))
+  def cellFactory: ObjectProperty[jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]]] = delegate.cellFactoryProperty
+  def cellFactory_=(callback: javafx.util.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]]): Unit = {
+    cellFactory() = callback
+  }
 
+  @deprecated(message = "" +
+    "This method does not allow for correct handling of empty cells leading to possible rendering artifacts. " +
+    "See explanation in [[https://github.com/scalafx/scalafx/issues/256 ScalaFX Issue #256]]. " +
+    "Use the new `cellFactory` assignment method: `cellFactory_=(op: (ListCell[T], T) => Unit)` that automatically " +
+    "handles empty cells.",
+    since = "16.0.0-R25")
   def cellFactory_=(f: ListView[T] => ListCell[T]): Unit = {
     delegate.cellFactoryProperty.setValue(new jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] {
       def call(v: jfxsc.ListView[T]): jfxsc.ListCell[T] = {
         f(v)
       }
     })
+  }
+
+  /**
+   * A convenience method for creation of custom cell factory.
+   * The caller is responsible for providing an operation `op` that renders a non-empty cells from a non-null value.
+   *
+   * Implementation provides logic for handling empty cells and `null` values.
+   *
+   * The `op` provides two arguments: a pre-created `cell` and `value` for that cell.
+   * Caller can customize content of the `cell` based on the `value`.
+   *
+   * The `value` is guaranteed to be non `null`.
+   * The `null` values are automatically rendered as empty cells by the implementation.
+   *
+   * Here is an example where `value`'s type is a class `Person` that contains two text fields: `firstName` and `lastName`.
+   * {{{
+   *   case class Person(firstName:String, lastName:String)
+   *   ...
+   *   cellFactory = (cell, value) => {
+   *     cell.text = value.firstName + " " + value.lastName
+   *   }
+   * }}}
+   *
+   * Another example where `value` is of type `Color` and the cell factory creates a circle representing that color:
+   * {{{
+   *   cellFactory = (cell, value) => {
+   *     cell.graphic = new Circle {
+   *        fill = value
+   *        radius = 8
+   *     }
+   *   }
+   * }}}
+   *
+   * @param op a method that will create content for a given `cell`.
+   *           It gets as an input automatically created custom `cell` and a non-null `value` of that cell.
+   *           `op` is called in the cell's `updateItem` method.
+   */
+  def cellFactory_=(op: (ListCell[T], T) => Unit): Unit = {
+    val callback =
+      Option(op)
+        .map { op =>
+          new jfxu.Callback[jfxsc.ListView[T], jfxsc.ListCell[T]] {
+            def call(tv: jfxsc.ListView[T]): jfxsc.ListCell[T] = {
+              new jfxsc.ListCell[T] {
+                val sfxThis = new ListCell(this)
+                override def updateItem(item: T, empty: Boolean): Unit = {
+                  super.updateItem(item, empty)
+                  if (empty || item == null) {
+                    setText(null)
+                    setGraphic(null)
+                  } else {
+                    op(sfxThis, item)
+                  }
+                }
+              }
+            }
+          }
+        }
+        .orNull
+    delegate.cellFactoryProperty.setValue(callback)
   }
 
   /**
@@ -146,7 +242,7 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    * @return Combobox itself
    */
   def +=(item: T): Unit = {
-    this.items.get += item
+    this.items.value += item
   }
 
   /**
@@ -156,7 +252,7 @@ class ComboBox[T](override val delegate: jfxsc.ComboBox[T] = new jfxsc.ComboBox[
    * @return Combobox itself
    */
   def -=(item: T): Unit = {
-    this.items.get -= item
+    this.items.value -= item
   }
 
 }

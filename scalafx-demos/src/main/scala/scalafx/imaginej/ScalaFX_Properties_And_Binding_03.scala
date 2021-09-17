@@ -44,19 +44,19 @@ import scalafx.beans.binding.Bindings
 import scalafx.beans.property.IntegerProperty
 
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+ * @author
+ *   Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- *         based upon: Example 4 Using the Bindings Class
+ * based upon: Example 4 Using the Bindings Class
  *
- *         http://docs.oracle.com/javafx/2.0/binding/jfxpub-binding.htm
- *
+ * http://docs.oracle.com/javafx/2.0/binding/jfxpub-binding.htm
  */
 
 object ScalaFX_Properties_And_Binding_03 {
   def main(args: Array[String]): Unit = {
     val num1 = new IntegerProperty(null, "num1")
     val num2 = new IntegerProperty(null, "num2")
-    val max = Bindings.max(num1, num2)
+    val max  = Bindings.max(num1, num2)
     println("before property changes: max = " + max())
     num1() = 1
     num2() = 2

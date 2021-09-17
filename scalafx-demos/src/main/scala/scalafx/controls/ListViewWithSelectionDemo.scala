@@ -28,34 +28,31 @@
 package scalafx.controls
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.Scene
 import scalafx.scene.control.ListView
 
 /** Illustrates simple monitoring of selection in a ListView using `onChange`. */
-object ListViewWithSelectionDemo extends JFXApp {
-
-  case class Person(firstName: String, lastName: String) {
-    override def toString = firstName + " " + lastName
-  }
-
-  val characters = ObservableBuffer[Person](
-    Person("Bungalow ", "Bill"),
-    Person("Dennis", "O’Dell"),
-    Person("Eleanor", "Rigby"),
-    Person("Rocky", "Raccoon"),
-    Person("Peggy", "Sue")
-  )
-
-  stage = new PrimaryStage {
-    title = "ListView with Selection Demo"
-    scene = new Scene {
-      content = new ListView[Person] {
-        items = characters
-        selectionModel().selectedItem.onChange {
-          (_, _, newValue) => println("Selection Changed: " + newValue)
+object ListViewWithSelectionDemo extends JFXApp3 {
+  override def start(): Unit = {
+    case class Person(firstName: String, lastName: String) { override def toString = firstName + " " + lastName }
+    val characters = ObservableBuffer[Person](
+      Person("Bungalow ", "Bill"),
+      Person("Dennis", "O\u2019Dell"),
+      Person("Eleanor", "Rigby"),
+      Person("Rocky", "Raccoon"),
+      Person("Peggy", "Sue")
+    )
+    stage = new PrimaryStage {
+      title = "ListView with Selection Demo"
+      scene = new Scene {
+        content = new ListView[Person] {
+          items = characters
+          selectionModel().selectedItem.onChange { (_, _, newValue) =>
+            println("Selection Changed: " + newValue)
+          }
         }
       }
     }

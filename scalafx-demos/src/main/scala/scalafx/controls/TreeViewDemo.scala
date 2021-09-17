@@ -25,61 +25,31 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-//noinspection TypeAnnotation
+package scalafx.controls
 
-package scalafx.controls.treetableview
-
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
-import scalafx.beans.property.StringProperty
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
-import scalafx.scene.control.{TreeItem, TreeTableColumn, TreeTableView}
-import scalafx.scene.image.Image
+import scalafx.scene.control._
 
-/**
- * ScalaFX version of the example from http://tutorials.jenkov.com/javafx/treetableview.html
- */
-object TreeTableViewDemo extends JFXApp {
+/** Simple TreeView example. */
+object TreeViewDemo extends JFXApp3 {
 
-  class Car(brandName: String, modelName: String) {
-    val brand = StringProperty(brandName)
-    val model = StringProperty(modelName)
-  }
+  override def start(): Unit = {
 
-  val brandColumn = new TreeTableColumn[Car, String]("Brand") {
-    cellValueFactory = p => p.value.value.value.brand
-    prefWidth = 150
-  }
+    val rootItem = new TreeItem("Root Node") {
+      expanded = true
+      children ++= Seq(new TreeItem("Item 1"), new TreeItem("Item 2"), new TreeItem("Item 3"))
+    }
 
-  val modelColumn = new TreeTableColumn[Car, String]("Model") {
-    cellValueFactory = p => p.value.value.value.model
-    prefWidth = 120
-  }
-
-  val mercedes = new TreeItem(new Car("Mercedes", "...")) {
-    children = Seq(
-      new TreeItem(new Car("Mercedes", "SL500")),
-      new TreeItem(new Car("Mercedes", "SL500 AMG")),
-      new TreeItem(new Car("Mercedes", "CLA 200"))
-    )
-  }
-
-  val audi = new TreeItem(new Car("Audi", "...")) {
-    children = Seq(
-      new TreeItem(new Car("Audi", "A1")),
-      new TreeItem(new Car("Audi", "A5")),
-      new TreeItem(new Car("Audi", "A7"))
-    )
-  }
-
-  stage = new PrimaryStage {
-    title = "TreeTableView CellFactory Demo"
-    icons += new Image("/scalafx/sfx.png")
-    scene = new Scene {
-      root = new TreeTableView[Car] {
-        columns ++= Seq(brandColumn, modelColumn)
-        root = new TreeItem(new Car("Cars", "...")) {
-          children = Seq(audi, mercedes)
+    stage = new PrimaryStage {
+      title = "TreeView CellFactory Demo"
+      scene = new Scene {
+        root = new TreeView[String] {
+          prefWidth = 200
+          prefHeight = 150
+          showRoot = false
+          root = rootItem
         }
       }
     }

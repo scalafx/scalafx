@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,17 +40,24 @@ object TreeView {
   implicit def sfxTreeView2jfx[T](v: TreeView[T]): jfxsc.TreeView[T] = if (v != null) v.delegate else null
 
   object EditEvent {
-    implicit def sfxTreeViewEditEvent2jfx[T](v: EditEvent[T]): jfxsc.TreeView.EditEvent[T] = if (v != null) v.delegate else null
+    implicit def sfxTreeViewEditEvent2jfx[T](v: EditEvent[T]): jfxsc.TreeView.EditEvent[T] =
+      if (v != null) v.delegate else null
   }
 
   class EditEvent[T](override val delegate: jfxsc.TreeView.EditEvent[T])
     extends Event(delegate)
-    with SFXDelegate[jfxsc.TreeView.EditEvent[T]] {
+      with SFXDelegate[jfxsc.TreeView.EditEvent[T]] {
 
     /**
      * Creates a new EditEvent instance to represent an edit event.
      */
-    def this(source: TreeView[T], eventType: jfxe.EventType[_ <: jfxsc.TreeView.EditEvent[T]], treeItem: TreeItem[T], oldValue: T, newValue: T) =
+    def this(
+              source: TreeView[T],
+              eventType: jfxe.EventType[_ <: jfxsc.TreeView.EditEvent[T]],
+              treeItem: TreeItem[T],
+              oldValue: T,
+              newValue: T
+            ) =
       this(new jfxsc.TreeView.EditEvent[T](source, eventType, treeItem, oldValue, newValue))
 
     /**
@@ -104,7 +111,9 @@ object TreeView {
    */
   @deprecated(
     "This method does not correctly calculate the distance from the given TreeItem to the root of the TreeView. " +
-      "As of JavaFX 8.0_20, the proper way to do this is via getTreeItemLevel(TreeItem)", since = "8.0_20")
+      "As of JavaFX 8.0_20, the proper way to do this is via getTreeItemLevel(TreeItem)",
+    since = "8.0_20"
+  )
   def nodeLevel(node: TreeItem[_]): Int = jfxsc.TreeView.getNodeLevel(node)
 
   /**
@@ -119,23 +128,123 @@ object TreeView {
 
 }
 
+/**
+ * The `TreeView` control provides a view on to a tree root (of type `TreeItem`).
+ * By using a `TreeView`, it is possible to drill down into the children of a `TreeItem`,
+ * recursively until a `TreeItem` has no children (that is, it is a leaf node in the tree).
+ * To facilitate this, unlike controls like `ListView`, in `TreeView` it is necessary to only specify the root node.
+ *
+ * For more information on building up a tree using this approach, refer to the `TreeItem` class documentation.
+ * Briefly, to create a `TreeView`, you should do something along the lines of the following:
+ *
+ * {{{
+ *   val rootItem = new TreeItem("Root Node") {
+ *     expanded = true
+ *     children ++= Seq(
+ *       new TreeItem("Item 1"),
+ *       new TreeItem("Item 2"),
+ *       new TreeItem("Item 3")
+ *     )
+ *   }
+ *
+ *   val treeView = new TreeView[String] {
+ *     root = rootItem
+ *   }
+ * }}}
+ *
+ * @param delegate underlying JavaFX class
+ * @tparam T The type of the item contained within the `TreeItem` value property for all tree items in this `TreeView`.
+ */
 class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[T])
   extends Control(delegate)
-  with SFXDelegate[jfxsc.TreeView[T]] {
+    with SFXDelegate[jfxsc.TreeView[T]] {
 
   /**
    * Creates a TreeView with the provided root node.
    */
   def this(rootItem: TreeItem[T]) = this(new jfxsc.TreeView[T](rootItem))
 
+  /**
+   * Represents the cell factory that will be used for creating TreeCells, which are used to represent items in the TreeView.
+   */
   def cellFactory: ObjectProperty[jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]]] = delegate.cellFactoryProperty
+  def cellFactory_=(v: jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]]): Unit = {
+    cellFactory.value = v
+  }
 
+  @deprecated(
+    message = "" +
+      "This method does not allow for correct handling of empty cells leading to possible rendering artifacts. " +
+      "See explanation in [[https://github.com/scalafx/scalafx/issues/256 ScalaFX Issue #256]]. " +
+      "Use the new `cellFactory` assignment method: `cellFactory_=(op: (TreeCell[T], T) => Unit)` that automatically " +
+      "handles empty cells.",
+    since = "16.0.0-R25"
+  )
   def cellFactory_=(v: (TreeView[T] => TreeCell[T])): Unit = {
     cellFactory() = new jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] {
       def call(tv: jfxsc.TreeView[T]): jfxsc.TreeCell[T] = {
         v(tv)
       }
     }
+  }
+
+  /**
+   * This is a helper method for easy creation of custom cell factories.
+   * The custom cell is automatically created, and it handles rendering of empty cells.
+   * The user is only responsible for providing an operation `op` that renders non-empty cells.
+   *
+   * The operation `op` provides as input the already created custom `cell` and `value` of that cell.
+   * The `value` is provided by the `cellValueFactory`. The `value` is guaranteed to be non `null`.
+   * The `null` values are automatically rendered as empty cells by the provided `cell` object.
+   *
+   * Here is an example where value's type is a case class `Person` that contains two text fields: `firstName` and `lastName`.
+   * {{{
+   *   case class Person(firstName:String, lastName:String)
+   *   ...
+   *
+   *   cellFactory = (cell, value) => {
+   *     cell.text = value.firstName + " " + value.lastName
+   *   }
+   * }}}
+   *
+   * Another example where 'value' is of type 'Color' and the cell factory creates a circle representing that color:
+   * {{{
+   *   cellFactory = (cell, value) => {
+   *     cell.graphic = new Circle {
+   *        fill = value
+   *        radius = 8
+   *     }
+   *   }
+   * }}}
+   *
+   * @param op a method that will create content for a given `cell`.
+   *           It gets as an input automatically created custom `cell` and a non-null `value` of that cell.
+   *           `op` is called in the cell's `updateItem` method.
+   */
+  def cellFactory_=(op: (TreeCell[T], T) => Unit): Unit = {
+    val callback =
+      Option(op)
+        .map { op =>
+          new jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] {
+            def call(tv: jfxsc.TreeView[T]): jfxsc.TreeCell[T] = {
+              new jfxsc.TreeCell[T] {
+                val sfxThis = new TreeCell(this)
+                override def updateItem(item: T, empty: Boolean): Unit = {
+                  super.updateItem(item, empty)
+                  if (empty || item == null) {
+                    setText(null)
+                    setGraphic(null)
+                  } else {
+                    op(sfxThis, item)
+                  }
+                }
+              }
+            }
+          }
+        }
+        .orNull
+
+    delegate.cellFactoryProperty.setValue(callback)
   }
 
   /**
@@ -228,7 +337,6 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   }
 
   /**
-   *
    */
   def selectionModel: ObjectProperty[jfxsc.MultipleSelectionModel[jfxsc.TreeItem[T]]] = delegate.selectionModelProperty
 

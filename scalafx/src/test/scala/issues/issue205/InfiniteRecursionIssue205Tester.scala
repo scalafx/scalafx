@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2014, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,8 @@
 package issues.issue205
 
 import scalafx.Includes._
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.beans.property.StringProperty
 import scalafx.collections.ObservableBuffer
 import scalafx.event.ActionEvent
@@ -40,91 +40,88 @@ import scalafx.scene.{Scene, SnapshotResult}
 /**
  * Helper app used to reproduce and then test fixes for issue #205 and related infinite recursions.
  */
-object InfiniteRecursionIssue205Tester extends JFXApp {
+object InfiniteRecursionIssue205Tester extends JFXApp3 {
 
   class Person(firstName_ : String, lastName_ : String) {
-
     val firstName = new StringProperty(this, "firstName", firstName_)
     val lastName = new StringProperty(this, "lastName", lastName_)
   }
 
-  val characters = ObservableBuffer[Person](
-    new Person("Peggy", "Sue"),
-    new Person("Rocky", "Raccoon")
-  )
+  override def start(): Unit = {
 
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-  characters += new Person("Rocky", "Raccoon")
-
-  val extraRow = new Person("Desmond", "Jones")
-  characters += extraRow
-
-  val tableView = new TableView[Person](characters) {
-    columns ++= List(
-      new TableColumn[Person, String] {
-        text = "First Name"
-        cellValueFactory = {
-          _.value.firstName
-        }
-        prefWidth = 180
-      },
-      new TableColumn[Person, String]() {
-        text = "Last Name"
-        cellValueFactory = {
-          _.value.lastName
-        }
-        prefWidth = 180
-      }
+    val characters = ObservableBuffer[Person](
+      new Person("Peggy", "Sue"),
+      new Person("Rocky", "Raccoon")
     )
-  }
 
-  val scrollToButton = new Button {
-    text = "scrollTo(item) - #205"
-    onAction = (ae: ActionEvent) => {
-      // This line would cause infinite recursion before fix
-      tableView.scrollTo(extraRow)
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+    characters += new Person("Rocky", "Raccoon")
+
+    val extraRow = new Person("Desmond", "Jones")
+    characters += extraRow
+
+    val tableView = new TableView[Person](characters) {
+      columns ++= List(
+        new TableColumn[Person, String] {
+          text = "First Name"
+          cellValueFactory = _.value.firstName
+          prefWidth = 180
+        },
+        new TableColumn[Person, String]() {
+          text = "Last Name"
+          cellValueFactory = _.value.lastName
+          prefWidth = 180
+        }
+      )
     }
 
-  }
-
-  val snapshotButton = new Button {
-    text = "snapshot  - #214"
-    onAction = (ae: ActionEvent) => {
-      def callback(result: SnapshotResult): Unit = {
-        println("callback(" + result + ")")
+    val scrollToButton = new Button {
+      text = "scrollTo(item) - #205"
+      onAction = (ae: ActionEvent) => {
+        // This line would cause infinite recursion before fix
+        tableView.scrollTo(extraRow)
       }
-      // This line would cause infinite recursion before fix (also issue #214)
-      tableView.snapshot(callback, null, null)
+
     }
 
-  }
+    val snapshotButton = new Button {
+      text = "snapshot  - #214"
+      onAction = (ae: ActionEvent) => {
+        def callback(result: SnapshotResult): Unit = {
+          println("callback(" + result + ")")
+        }
+        // This line would cause infinite recursion before fix (also issue #214)
+        tableView.snapshot(callback, null, null)
+      }
 
+    }
 
-  stage = new PrimaryStage {
-    title = "Simple Table View"
-    scene = new Scene {
-      root = new VBox {
-        children = Seq(
-          tableView,
-          scrollToButton,
-          snapshotButton
-        )
+    stage = new PrimaryStage {
+      title = "Simple Table View"
+      scene = new Scene {
+        root = new VBox {
+          children = Seq(
+            tableView,
+            scrollToButton,
+            snapshotButton
+          )
+        }
       }
     }
   }

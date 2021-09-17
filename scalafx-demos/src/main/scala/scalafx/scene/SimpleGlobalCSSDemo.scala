@@ -27,32 +27,28 @@
 
 package scalafx.scene
 
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.control.Button
 import scalafx.scene.layout.BorderPane
 
 /**
-  * An example of replacing global CSS stylesheet.
-  */
-object SimpleGlobalCSSDemo extends JFXApp {
-
-  // Replace global stylesheet.
-  JFXApp.userAgentStylesheet = getClass.getResource("simple2.css").toExternalForm
-
-  stage = new PrimaryStage {
-    title = "Simple Global CSS Demo"
-
-    scene = new Scene {
-      root = new BorderPane {
-        id = "my-pane"
-
-        center = new Button {
-          id = "my-button"
-          text = "Large Rounded Button"
+ * An example of replacing global CSS stylesheet.
+ */
+object SimpleGlobalCSSDemo extends JFXApp3 {
+  override def start(): Unit = {
+    JFXApp3.userAgentStylesheet = getClass.getResource("simple2.css").toExternalForm
+    stage = new PrimaryStage {
+      title = "Simple Global CSS Demo"
+      scene = new Scene {
+        root = new BorderPane {
+          id = "my-pane"
+          center = new Button {
+            id = "my-button"
+            text = "Large Rounded Button"
+          }
         }
       }
     }
   }
-
 }

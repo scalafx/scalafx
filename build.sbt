@@ -9,18 +9,18 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 //
 
 val javaFXVersion = "16"
-val scalafxVersion = "16.0.0-R24"
+val scalafxVersion = "16.0.0-R25-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v." + scalafxVersion
 
 // Root project
-lazy val scalafxProject = (project in file("."))
-  .settings(
-    name := "scalafx-project",
-    publishArtifact := false,
-    publish / skip  := true
-  )
-  .aggregate(scalafx, scalafxDemos)
+//lazy val scalafxProject = (project in file("."))
+//  .settings(
+name := "scalafx-project"
+publishArtifact := false
+publish / skip := true
+//  )
+//  .aggregate(scalafx, scalafxDemos)
 
 
 // ScalaFX project
@@ -52,9 +52,9 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   publish / skip  := true
   ).dependsOn(scalafx % "compile;test->test")
 
-val Scala2_12 = "2.12.13"
-val Scala2_13 = "2.13.5"
-val Scala3_00 = "3.0.0"
+val Scala2_12 = "2.12.15"
+val Scala2_13 = "2.13.6"
+val Scala3_00 = "3.0.2"
 
 // Dependencies
 lazy val osName        = System.getProperty("os.name") match {
@@ -64,7 +64,7 @@ lazy val osName        = System.getProperty("os.name") match {
   case _ => throw new Exception("Unknown platform!")
 }
 lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.9"
+lazy val scalaTestLib = "org.scalatest" %% "scalatest" % "3.2.10"
 def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((2, _)) => Seq("org.scala-lang" % "scala-reflect" % scalaVersion)

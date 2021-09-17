@@ -39,10 +39,13 @@ import scalafx.scene.text.{FontWeight, TextAlignment}
 /**
  * Basic class to control a control properties
  *
- * @tparam T scalafx.scene.Node subclass
+ * @tparam T
+ *   scalafx.scene.Node subclass
  *
- * @param target Node to be manipulated
- * @param title TitledPane titled
+ * @param target
+ *   Node to be manipulated
+ * @param title
+ *   TitledPane titled
  */
 abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
 
@@ -65,16 +68,22 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
   /**
    * Add a Control Node with its respective title
    *
-   * @param title Control Node title
-   * @param control Control Node
+   * @param title
+   *   Control Node title
+   * @param control
+   *   Control Node
    */
   protected def addNode(title: String, control: Node): Unit = {
-    controlsPane.add(new Label {
-      font = PropertiesNodes.TitleFont
-      labelFor = control
-      text = title
-      textAlignment = TextAlignment.Right
-    }.asInstanceOf[Node], 0, index)
+    controlsPane.add(
+      new Label {
+        font = PropertiesNodes.TitleFont
+        labelFor = control
+        text = title
+        textAlignment = TextAlignment.Right
+      }.asInstanceOf[Node],
+      0,
+      index
+    )
     controlsPane.add(control, 1, index)
     index += 1
   }
@@ -82,7 +91,8 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
   /**
    * Add a Control Node occupying 2 columns
    *
-   * @param control Control Node
+   * @param control
+   *   Control Node
    */
   protected def addNode(control: Node): Unit = {
     controlsPane.add(control, 0, index, 2, 1)
@@ -92,8 +102,10 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
   /**
    * Add 2 Controls Nodes to occupy a row.
    *
-   * @param control1 Control Node 1
-   * @param control2 Control Node 2
+   * @param control1
+   *   Control Node 1
+   * @param control2
+   *   Control Node 2
    */
   protected def addNodes(control1: Node, control2: Node): Unit = {
     controlsPane.add(control1, 0, index)
@@ -101,7 +113,12 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
     index += 1
   }
 
-  protected def fillDoublePropertyFromText(property: DoubleProperty, field: TextField, cleanAfterAction: Boolean = true, onError: () => Unit = () => ()): Unit = {
+  protected def fillDoublePropertyFromText(
+      property: DoubleProperty,
+      field: TextField,
+      cleanAfterAction: Boolean = true,
+      onError: () => Unit = () => ()
+  ): Unit = {
     try {
       val txt = field.text.get
       property.value = txt.toDouble
@@ -115,7 +132,12 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
 
   }
 
-  protected def fillIntPropertyFromText(property: IntegerProperty, field: TextField, cleanAfterAction: Boolean = true, onError: () => Unit = () => ()): Unit = {
+  protected def fillIntPropertyFromText(
+      property: IntegerProperty,
+      field: TextField,
+      cleanAfterAction: Boolean = true,
+      onError: () => Unit = () => ()
+  ): Unit = {
     try {
       val txt = field.text.get
       property.value = txt.toInt
@@ -150,7 +172,7 @@ abstract class PropertiesNodes[T](target: T, title: String) extends TitledPane {
 
 object PropertiesNodes {
 
-  private val lblBase = new Label
+  private val lblBase  = new Label
   private val fontBase = lblBase.font.get()
 
   val TitleFont = font(fontBase.getFamily, FontWeight.Bold, fontBase.getSize)

@@ -29,7 +29,8 @@ package scalafx.controls.controls
 
 import scalafx.scene.control.{CheckBox, Label, TextInputControl}
 
-class TextInputControlControls(target: TextInputControl) extends PropertiesNodes[TextInputControl](target, "TextInputControl Properties") {
+class TextInputControlControls(target: TextInputControl)
+    extends PropertiesNodes[TextInputControl](target, "TextInputControl Properties") {
 
   val chbEditable = new CheckBox {
     selected <==> target.editable

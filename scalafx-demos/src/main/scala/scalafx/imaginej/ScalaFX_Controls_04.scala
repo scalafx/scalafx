@@ -40,9 +40,8 @@ package scalafx.imaginej
 //                                  ScalaFX Programming Library Examples
 //
 
-
-import scalafx.application.JFXApp
-import scalafx.application.JFXApp.PrimaryStage
+import scalafx.application.JFXApp3
+import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control.{Label, ToggleButton, ToggleGroup}
@@ -51,95 +50,67 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
 /**
- * @author Luc Duponcheel <luc.duponcheel@gmail.com>
+ * @author
+ *   Luc Duponcheel <luc.duponcheel@gmail.com>
  *
- *         based upon:
+ * based upon:
  *
- *         http://docs.oracle.com/javafx/2.0/ui_controls/toggle-button.htm
- *
+ * http://docs.oracle.com/javafx/2.0/ui_controls/toggle-button.htm
  */
 
-object ScalaFX_Controls_04 extends JFXApp {
-
-  val priorityLabel = new Label {
-    text = "Priority:"
-  }
-
-  val theToggleGroup = new ToggleGroup {
-
-  }
-
-  val minorToggleButton = new ToggleButton {
-    text = "Minor"
-    toggleGroup = theToggleGroup
-    userData = Color.LightGreen
-    selected = true
-    style = "-fx-base: lightgreen;"
-  }
-
-  val majorToggleButton = new ToggleButton {
-    text = "Major"
-    toggleGroup = theToggleGroup
-    userData = Color.LightBlue
-    selected = true
-    style = "-fx-base: lightblue;"
-  }
-
-  val criticalToggleButton = new ToggleButton {
-    text = "Critical"
-    toggleGroup = theToggleGroup
-    userData = Color.Salmon
-    selected = true
-    style = "-fx-base: salmon;"
-  }
-
-  val hBox = new HBox {
-    children = List(
-      minorToggleButton,
-      majorToggleButton,
-      criticalToggleButton
-    )
-  }
-
-  val rectangle = new Rectangle {
-    width = 158
-    height = 50
-    fill = Color.White
-    stroke = Color.DarkGray
-    strokeWidth = 2
-    arcHeight = 10
-    arcWidth = 10
-  }
-
-  val vBox = new VBox {
-    padding = Insets(20, 10, 10, 20)
-    children = List(
-      priorityLabel,
-      hBox,
-      rectangle
-    )
-  }
-
-  theToggleGroup.selectedToggle onChange {
-    (_, _, newToggle) =>
+object ScalaFX_Controls_04 extends JFXApp3 {
+  override def start(): Unit = {
+    val priorityLabel  = new Label { text = "Priority:" }
+    val theToggleGroup = new ToggleGroup {}
+    val minorToggleButton = new ToggleButton {
+      text = "Minor"
+      toggleGroup = theToggleGroup
+      userData = Color.LightGreen
+      selected = true
+      style = "-fx-base: lightgreen;"
+    }
+    val majorToggleButton = new ToggleButton {
+      text = "Major"
+      toggleGroup = theToggleGroup
+      userData = Color.LightBlue
+      selected = true
+      style = "-fx-base: lightblue;"
+    }
+    val criticalToggleButton = new ToggleButton {
+      text = "Critical"
+      toggleGroup = theToggleGroup
+      userData = Color.Salmon
+      selected = true
+      style = "-fx-base: salmon;"
+    }
+    val hBox = new HBox { children = List(minorToggleButton, majorToggleButton, criticalToggleButton) }
+    val rectangle = new Rectangle {
+      width = 158
+      height = 50
+      fill = Color.White
+      stroke = Color.DarkGray
+      strokeWidth = 2
+      arcHeight = 10
+      arcWidth = 10
+    }
+    val vBox = new VBox {
+      padding = Insets(20, 10, 10, 20)
+      children = List(priorityLabel, hBox, rectangle)
+    }
+    theToggleGroup.selectedToggle onChange ({ (_, _, newToggle) =>
       if (newToggle != null) {
         val selectedToggle = theToggleGroup.getSelectedToggle
-        val userDataColor = selectedToggle.getUserData.asInstanceOf[Color]
+        val userDataColor  = selectedToggle.getUserData.asInstanceOf[Color]
         rectangle.fill = userDataColor
       } else {
         rectangle.fill = Color.White
       }
-  }
-
-  stage = new PrimaryStage {
-    title = "ScalaFX Controls 04"
-    width = 250
-    height = 180
-    scene = new Scene {
-      content = vBox
+    })
+    stage = new PrimaryStage {
+      title = "ScalaFX Controls 04"
+      width = 250
+      height = 180
+      scene = new Scene { content = vBox }
     }
   }
 }
-
-
-

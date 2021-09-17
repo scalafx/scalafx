@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -97,7 +97,7 @@ class PickResult(override val delegate: jfxsi.PickResult)
   /** Returns the intersected node. Returns `None` if there was no intersection with any node and the scene was picked. */
   def intersectedNode: Option[Node] = delegate.getIntersectedNode match {
     case null => None
-    case v    => Some[Node](v)
+    case v => Option[Node](v)
   }
 
   /** Returns the intersected point in local coordinate of the picked Node. */
@@ -108,6 +108,6 @@ class PickResult(override val delegate: jfxsi.PickResult)
     */
   def intersectedTexCoord: Option[Point2D] = delegate.getIntersectedTexCoord match {
     case null => None
-    case v    => Some[Point2D](v)
+    case v => Option[Point2D](v)
   }
 }
