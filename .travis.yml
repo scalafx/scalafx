@@ -3,7 +3,7 @@ sudo: false
 language: scala
 scala:
   - 2.13.6
-  - 2.12.14
+  - 2.12.15
   - 3.0.2
 
 dist: xenial
