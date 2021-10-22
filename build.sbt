@@ -55,6 +55,7 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
 val Scala2_12 = "2.12.15"
 val Scala2_13 = "2.13.6"
 val Scala3_00 = "3.0.2"
+val Scala3_10 = "3.1.0"
 
 // Dependencies
 lazy val osName        = System.getProperty("os.name") match {
@@ -83,7 +84,7 @@ def versionSubDir(scalaVersion: String): String =
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version := scalafxVersion,
-  crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_00),
+  crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_00, Scala3_10),
   //  scalaVersion := crossScalaVersions.value.head,
   scalaVersion := Scala2_13,
   Compile / unmanagedSourceDirectories += (Compile / sourceDirectory).value / versionSubDir(scalaVersion.value),

@@ -55,19 +55,19 @@ object MultipleShapeDrawingDemo extends JFXApp3 {
     object RectangleInteractor extends ShapeDrawInteractor {
       val rectangle = new Rectangle { fill = Color.web("RED", 0.5d) }
       override def update(): Unit = {
-        rectangle.x = math.min(start.x, end.x)
-        rectangle.y = math.min(start.y, end.y)
-        rectangle.width = math.abs(start.x - end.x)
-        rectangle.height = math.abs(start.y - end.y)
+        rectangle.x = math.min(startPt.x, endPt.x)
+        rectangle.y = math.min(startPt.y, endPt.y)
+        rectangle.width = math.abs(startPt.x - endPt.x)
+        rectangle.height = math.abs(startPt.y - endPt.y)
       }
     }
     object EllipseInteractor extends ShapeDrawInteractor {
       val ellipse = new Ellipse { fill = Color.web("GREEN", 0.5d) }
       override def update(): Unit = {
-        ellipse.centerX = start.x
-        ellipse.centerY = start.y
-        ellipse.radiusX = math.abs(start.x - end.x)
-        ellipse.radiusY = math.abs(start.y - end.y)
+        ellipse.centerX = startPt.x
+        ellipse.centerY = startPt.y
+        ellipse.radiusX = math.abs(startPt.x - endPt.x)
+        ellipse.radiusY = math.abs(startPt.y - endPt.y)
       }
     }
     object LineInteractor extends ShapeDrawInteractor {
@@ -76,10 +76,10 @@ object MultipleShapeDrawingDemo extends JFXApp3 {
         strokeWidth = 3
       }
       override def update(): Unit = {
-        line.startX = start.x
-        line.startY = start.y
-        line.endX = end.x
-        line.endY = end.y
+        line.startX = startPt.x
+        line.startY = startPt.y
+        line.endX = endPt.x
+        line.endY = endPt.y
       }
     }
     val drawingPane = new Pane {
@@ -153,14 +153,14 @@ object MultipleShapeDrawingDemo extends JFXApp3 {
     trait ShapeDrawInteractor extends MouseHandler {
       private var _start = new Point2D(0, 0)
       private var _end   = new Point2D(0, 0)
-      def start: Point2D = _start
-      def start_=(p: Point2D): Unit = {
+      def startPt: Point2D = _start
+      def startPt_=(p: Point2D): Unit = {
         _start = p
         _end = p
         update()
       }
-      def end: Point2D = _end
-      def end_=(p: Point2D): Unit = {
+      def endPt: Point2D = _end
+      def endPt_=(p: Point2D): Unit = {
         _end = p
         update()
       }
@@ -168,9 +168,9 @@ object MultipleShapeDrawingDemo extends JFXApp3 {
       override def handler: MouseEvent => Unit = { (me: MouseEvent) =>
         me.eventType match {
           case MouseEvent.MousePressed =>
-            start = new Point2D(me.x, me.y)
+            startPt = new Point2D(me.x, me.y)
           case MouseEvent.MouseDragged =>
-            end = new Point2D(me.x, me.y)
+            endPt = new Point2D(me.x, me.y)
           case _ =>
         }
       }
