@@ -11,7 +11,7 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 val javaFXVersion = "16"
 val scalafxVersion = "16.0.0-R26-SNAPSHOT"
 
-val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else "v." + scalafxVersion
+val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
 // Root project
 //lazy val scalafxProject = (project in file("."))
@@ -104,11 +104,11 @@ lazy val scalafxSettings = Seq(
           Opts.doc.version(scalafxVersion) ++
           Seq(
             "-sourcepath", baseDirectory.value.toString,
-            "-doc-root-content", baseDirectory.value + "/src/main/scala/root-doc.creole",
-            "-doc-source-url", "https://github.com/scalafx/scalafx/tree/" + versionTagDir + "/scalafx/€{FILE_PATH}.scala",
+            "-doc-root-content", s"${baseDirectory.value}/src/main/scala/root-doc.creole",
+            "-doc-source-url", s"https://github.com/scalafx/scalafx/tree/$versionTagDir/scalafx/€{FILE_PATH}.scala",
             s"-doc-external-doc:${scalaInstance.value.libraryJar}#http://www.scala-lang.org/api/${scalaVersion.value}/",
             "-doc-footer", s"ScalaFX API v.$scalafxVersion"
-            ) ++
+          ) ++
           (
             Option(System.getenv("GRAPHVIZ_DOT_PATH")) match {
               case Some(path) => Seq(
