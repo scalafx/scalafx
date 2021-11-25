@@ -53,7 +53,7 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
   ).dependsOn(scalafx % "compile;test->test")
 
 val Scala2_12 = "2.12.15"
-val Scala2_13 = "2.13.6"
+val Scala2_13 = "2.13.7"
 val Scala3_00 = "3.0.2"
 val Scala3_10 = "3.1.0"
 
