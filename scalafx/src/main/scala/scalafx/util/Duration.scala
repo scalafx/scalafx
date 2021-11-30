@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,7 +26,7 @@
  */
 package scalafx.util
 
-import javafx.{util => jfxu}
+import javafx.util as jfxu
 import scalafx.delegate.SFXDelegate
 
 import scala.language.implicitConversions
@@ -118,6 +118,6 @@ class Duration(override val delegate: jfxu.Duration) extends SFXDelegate[jfxu.Du
 
   def =!=(d: jfxu.Duration): Boolean = !delegate.equals(d)
 
-  def unary_-() = new Duration(delegate.negate())
+  def unary_- = new Duration(delegate.negate())
 
 }
