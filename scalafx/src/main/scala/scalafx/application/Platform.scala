@@ -30,6 +30,7 @@ package scalafx.application
 import javafx.{application => jfxa}
 import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyBooleanProperty
+import scalafx.scene.input.KeyCode
 
 import scala.language.implicitConversions
 
@@ -203,6 +204,29 @@ object Platform {
    * @since 9
    */
   def exitNestedEventLoop(key: Any, rval: Any): Unit = jfxa.Platform.exitNestedEventLoop(key, rval)
+
+  /**
+   * Returns a flag indicating whether the key corresponding to {{{keyCode}}}
+   * is in the locked (or "on") state.
+   * {{{keyCode}}} must be one of: [[KeyCode.CAPS]] or [[KeyCode.NUM_LOCK]].
+   * If the underlying system is not able to determine the state of the
+   * specified {{{keyCode}}}, {{{None}}} is returned.
+   * If the keyboard attached to the system doesn't have the specified key,
+   * an {{{Some[False]}}} is returned.
+   * This method must be called on the JavaFX Application thread.
+   *
+   * @param keyCode the {{{keyCode}}} of the lock state to query
+   * @return the lock state of the key corresponding to {{{keyCode}}},
+   *         or None if the system cannot determine its state
+   * @throws IllegalArgumentException if {{{keyCode}}} is not one of the
+   *                                  valid{{{keyCode}}} values
+   * @throws IllegalStateException    if this method is called on a thread
+   *                                  other than the JavaFX Application Thread
+   * @since 17
+   */
+  def isKeyLocked(keyCode: KeyCode): Option[Boolean] = if (jfxa.Platform.isKeyLocked(keyCode).isPresent) {
+    Some(jfxa.Platform.isKeyLocked(keyCode).get)
+  } else None
 
   /**
    * Checks whether a nested event loop is running, returning true to indicate
