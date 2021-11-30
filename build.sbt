@@ -54,7 +54,7 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
 val Scala2_12 = "2.12.15"
 val Scala2_13 = "2.13.7"
 val Scala3_00 = "3.0.2"
-val Scala3_10 = "3.1.0"
+//val Scala3_10 = "3.1.0"
 
 // Dependencies
 lazy val osName = System.getProperty("os.name") match {
@@ -81,11 +81,12 @@ def versionSubDir(scalaVersion: String): String =
 
 // Common settings
 lazy val scalafxSettings = Seq(
-  organization       := "org.scalafx",
-  version            := scalafxVersion,
-  crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_00, Scala3_10),
-  //  scalaVersion := crossScalaVersions.value.head,
-  scalaVersion := Scala2_13,
+  organization := "org.scalafx",
+  version      := scalafxVersion,
+  // Publishing with Scala 3.1 overwrites Scala 3.0 artifacts. 3.0 cannot read 3.1 binaries
+  //  crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_00, Scala3_10),
+  crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_00),
+  scalaVersion := crossScalaVersions.value.head,
   Compile / unmanagedSourceDirectories += (Compile / sourceDirectory).value / versionSubDir(scalaVersion.value),
   Test / unmanagedSourceDirectories += (Test / sourceDirectory).value / versionSubDir(scalaVersion.value),
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature"),
