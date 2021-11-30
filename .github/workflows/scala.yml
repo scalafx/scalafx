@@ -23,4 +23,4 @@ jobs:
       - name: Run headless test
         uses: GabrielBB/xvfb-action@v1.6
         with:
-          run: sbt +test
+          run: sbt +test ++3.1.0 test
