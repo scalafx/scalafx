@@ -102,8 +102,23 @@ class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new
    *
    * @see $URL0#updateTreeTableRow-javafx.scene.control.TreeTableRow- $ORIGINALDOC
    */
+  @deprecated("Use updateTableRow instead", since = "17")
   def updateTreeTableRow(treeTableRow: TreeTableRow[S]): Unit = {
-    delegate.updateTreeTableRow(treeTableRow)
+    updateTableRow(treeTableRow)
+  }
+
+  /**
+   * Updates the {{{TreeTableRow}}} associated with this {{{TreeTableCell}}}.
+   * <p>
+   * Note: This function is intended to be used by experts, primarily
+   * by those implementing new Skins. It is not common
+   * for developers or designers to access this function directly.
+   *
+   * @param row the {{{TreeTableRow}}} associated with this {{{TreeTableCell}}}
+   * @since 17
+   */
+  def updateTableRow(row: TreeTableRow[S]): Unit = {
+    delegate.updateTableRow(row)
   }
 
   /**
@@ -111,8 +126,23 @@ class TreeTableCell[S, T](override val delegate: jfxsc.TreeTableCell[S, T] = new
    *
    * @see $URL0#updateTreeTableColumn-javafx.scene.control.TreeTableColumn- $ORIGINALDOC
    */
+  @deprecated("Use updateTableColumn instead", since = "17")
   def updateTreeTableColumn(col: TreeTableColumn[S, T]): Unit = {
-    delegate.updateTreeTableColumn(col)
+    updateTableColumn(col)
+  }
+
+  /**
+   * Updates the {{{TreeTableColumn}}} associated with this {{{TreeTableCell}}}.
+   * <p>
+   * Note: This function is intended to be used by experts, primarily
+   * by those implementing new Skins. It is not common
+   * for developers or designers to access this function directly.
+   *
+   * @param column the {{{TreeTableColumn}}} associated with this {{{TreeTableCell}}}
+   * @since 17
+   */
+  def updateTableColumn(column: TreeTableColumn[S, T]): Unit = {
+    delegate.updateTableColumn(column)
   }
 
 }
