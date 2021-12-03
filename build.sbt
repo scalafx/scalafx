@@ -9,7 +9,7 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 //
 
 val javaFXVersion  = "17.0.1"
-val scalafxVersion = "17.0.1-R26-SNAPSHOT"
+val scalafxVersion = "17.0.1-R26"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
@@ -86,7 +86,7 @@ lazy val scalafxSettings = Seq(
   // Publishing with Scala 3.1 overwrites Scala 3.0 artifacts. 3.0 cannot read 3.1 binaries
   //  crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_00, Scala3_10),
   crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_00),
-  scalaVersion := crossScalaVersions.value.head,
+  scalaVersion       := crossScalaVersions.value.head,
   Compile / unmanagedSourceDirectories += (Compile / sourceDirectory).value / versionSubDir(scalaVersion.value),
   Test / unmanagedSourceDirectories += (Test / sourceDirectory).value / versionSubDir(scalaVersion.value),
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature"),
