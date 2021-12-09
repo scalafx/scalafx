@@ -31,8 +31,14 @@ lazy val scalafx = (project in file("scalafx")).settings(
   libraryDependencies ++= javafxModules.map(m =>
     "org.openjfx" % s"javafx-$m" % javaFXVersion % "provided" classifier osName
   ),
-  run / fork             := true,
-  publishArtifact        := true,
+  run / fork      := true,
+  publishArtifact := true,
+  // Don't publish for Scala 3.1 or later, only from 3.0
+  //  see https://users.scala-lang.org/t/cross-publishing-scala-3-0-and-3-1/7969
+  publish / skip := (CrossVersion.partialVersion(scalaVersion.value) match {
+    case Some((3, x)) if x > 0 => true
+    case _                     => false
+  }),
   Test / publishArtifact := false
 )
 
@@ -53,8 +59,8 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
 
 val Scala2_12 = "2.12.15"
 val Scala2_13 = "2.13.7"
-val Scala3_00 = "3.0.2"
-//val Scala3_10 = "3.1.0"
+val Scala3_0  = "3.0.2"
+val Scala3_1  = "3.1.1-RC1"
 
 // Dependencies
 lazy val osName = System.getProperty("os.name") match {
@@ -83,9 +89,9 @@ def versionSubDir(scalaVersion: String): String =
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version      := scalafxVersion,
-  // Publishing with Scala 3.1 overwrites Scala 3.0 artifacts. 3.0 cannot read 3.1 binaries
-  //  crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_00, Scala3_10),
-  crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_00),
+  // Publishing with Scala 3.1 overwrites Scala 3.0 artifacts. 3.0 cannot read 3.1 binaries,
+  //   but use it for forward testing
+  crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_0, Scala3_1),
   scalaVersion       := crossScalaVersions.value.head,
   Compile / unmanagedSourceDirectories += (Compile / sourceDirectory).value / versionSubDir(scalaVersion.value),
   Test / unmanagedSourceDirectories += (Test / sourceDirectory).value / versionSubDir(scalaVersion.value),
