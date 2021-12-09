@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,13 +27,13 @@
 
 package scalafx.beans.binding
 
-import javafx.beans.{property => jfxbp}
+import javafx.beans.property as jfxbp
 import org.scalactic.TripleEqualsSupport.Spread
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.flatspec.AnyFlatSpec
-import org.scalatest.matchers.should.Matchers._
-import scalafx.Includes._
-import scalafx.beans.property._
+import org.scalatest.matchers.should.Matchers.*
+import scalafx.Includes.*
+import scalafx.beans.property.*
 import scalafx.delegate.SFXDelegate
 
 object BindingsSpec {
@@ -47,37 +47,35 @@ object BindingsSpec {
   }
 
   class DoublePropertySFX(val delegate: DoubleHolderJFX = new DoubleHolderJFX())
-    extends SFXDelegate[DoubleHolderJFX] {
+      extends SFXDelegate[DoubleHolderJFX] {
     val width: DoubleProperty = delegate.widthProperty
   }
 }
 
 /**
  * Bindings Spec tests.
- *
- *
  */
 class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
-  import BindingsSpec._
+  import BindingsSpec.*
 
   def bean = new Object()
 
-  var booleanProperty1: jfxbp.BooleanProperty = null
-  var booleanProperty2: jfxbp.BooleanProperty = null
-  var booleanProperty3: jfxbp.BooleanProperty = null
-  var integerProperty1: jfxbp.IntegerProperty = null
-  var longProperty1: jfxbp.LongProperty = null
-  var floatProperty1: jfxbp.FloatProperty = null
-  var doubleProperty1: jfxbp.DoubleProperty = null
-  var doubleProperty2: jfxbp.DoubleProperty = null
-  var doubleProperty3: jfxbp.DoubleProperty = null
-  var stringProperty1: jfxbp.StringProperty = null
-  var stringProperty2: jfxbp.StringProperty = null
-  var stringProperty3: jfxbp.StringProperty = null
-  var objectProperty1: jfxbp.ObjectProperty[Object] = null
-  var objectProperty2: jfxbp.ObjectProperty[Object] = null
-  var objectProperty3: jfxbp.ObjectProperty[Object] = null
+  var booleanProperty1: jfxbp.BooleanProperty       = _
+  var booleanProperty2: jfxbp.BooleanProperty       = _
+  var booleanProperty3: jfxbp.BooleanProperty       = _
+  var integerProperty1: jfxbp.IntegerProperty       = _
+  var longProperty1: jfxbp.LongProperty             = _
+  var floatProperty1: jfxbp.FloatProperty           = _
+  var doubleProperty1: jfxbp.DoubleProperty         = _
+  var doubleProperty2: jfxbp.DoubleProperty         = _
+  var doubleProperty3: jfxbp.DoubleProperty         = _
+  var stringProperty1: jfxbp.StringProperty         = _
+  var stringProperty2: jfxbp.StringProperty         = _
+  var stringProperty3: jfxbp.StringProperty         = _
+  var objectProperty1: jfxbp.ObjectProperty[Object] = _
+  var objectProperty2: jfxbp.ObjectProperty[Object] = _
+  var objectProperty3: jfxbp.ObjectProperty[Object] = _
 
   override protected def beforeEach(): Unit = {
     booleanProperty1 = new BooleanProperty(null, "Boolean Property 1")
@@ -98,7 +96,7 @@ class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   "BindingIncludes" should "support min" in {
-    doubleProperty1 <== min(doubleProperty2, doubleProperty3, 25, 26l, 27f, 28d)
+    doubleProperty1 <== min(doubleProperty2, doubleProperty3, 25, 26L, 27f, 28d)
     doubleProperty1() should equal(0)
     doubleProperty2() = 50
     doubleProperty3() = 43
@@ -106,7 +104,7 @@ class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   "BindingIncludes" should "support max" in {
-    doubleProperty1 <== max(doubleProperty2, doubleProperty3, 25, 26l, 27f, 28d)
+    doubleProperty1 <== max(doubleProperty2, doubleProperty3, 25, 26L, 27f, 28d)
     doubleProperty1() should equal(28)
     doubleProperty2() = 50
     doubleProperty3() = 43
@@ -144,7 +142,7 @@ class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
     doubleProperty1() should equal(15)
     doubleProperty1 <== when(booleanProperty1) choose 25 otherwise 16
     doubleProperty1() should equal(16)
-    doubleProperty1 <== when(booleanProperty1) choose 25l otherwise 17l
+    doubleProperty1 <== when(booleanProperty1) choose 25L otherwise 17L
     doubleProperty1() should equal(17)
     doubleProperty1 <== when(booleanProperty1) choose 25f otherwise 18f
     doubleProperty1() should equal(18)
@@ -188,7 +186,7 @@ class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
 
   it should "support selectDouble" in {
     // Test for other select* variants should be similar
-    val dp1 = new ObjectProperty[DoubleHolderJFX](this, "level 2 property", new DoubleHolderJFX())
+    val dp1   = new ObjectProperty[DoubleHolderJFX](this, "level 2 property", new DoubleHolderJFX())
     val prop2 = new DoubleProperty(this, "prop2", 0.0)
     prop2() should equal(0.0)
 
@@ -200,8 +198,8 @@ class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
   }
 
   it should "support createBooleanBinding" in {
-    val a = new BooleanProperty()
-    val b = new BooleanProperty()
+    val a   = new BooleanProperty()
+    val b   = new BooleanProperty()
     val xor = Bindings.createBooleanBinding(() => (a() || b()) && !(a() && b()), a, b)
 
     a() = true
@@ -283,13 +281,13 @@ class BindingsSpec extends AnyFlatSpec with BeforeAndAfterEach {
     b() should be("hello")
   }
 
-  it should "support that select* funk..." is (pending)
+  it should "support that select* funk..." is pending
 
-  it should "support string conversions from everything..." is (pending)
+  it should "support string conversions from everything..." is pending
 
-  it should "support implicit upconversions to expressions..." is (pending)
+  it should "support implicit upconversions to expressions..." is pending
 
-  it should "support raw javafx mixing (make sure all the implicits are in place)" is (pending)
+  it should "support raw javafx mixing (make sure all the implicits are in place)" is pending
 
-  it should "test the SFX 'any' special cases" is (pending)
+  it should "test the SFX 'any' special cases" is pending
 }
