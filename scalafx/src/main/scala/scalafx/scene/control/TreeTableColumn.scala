@@ -423,7 +423,7 @@ class TreeTableColumn[S, T](override val delegate: jfxsc.TreeTableColumn[S, T] =
     delegate.cellValueFactoryProperty.setValue(
       new jfxu.Callback[jfxsc.TreeTableColumn.CellDataFeatures[S, T], jfxbv.ObservableValue[T]] {
         def call(v: jfxsc.TreeTableColumn.CellDataFeatures[S, T]): jfxbv.ObservableValue[T] = {
-          f(v).delegate
+          Option(f(v)).map(_.delegate).orNull
         }
       }
     )
