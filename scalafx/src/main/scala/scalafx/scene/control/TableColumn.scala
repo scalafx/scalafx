@@ -317,7 +317,7 @@ class TableColumn[S, T](override val delegate: jfxsc.TableColumn[S, T] = new jfx
   def cellValueFactory_=(f: TableColumn.CellDataFeatures[S, T] => ObservableValue[T, T]): Unit = {
     delegate.cellValueFactoryProperty.setValue(new jfxu.Callback[jfxsc.TableColumn.CellDataFeatures[S, T], jfxbv.ObservableValue[T]] {
       def call(v: jfxsc.TableColumn.CellDataFeatures[S, T]): jfxbv.ObservableValue[T] = {
-        f(v).delegate
+        Option(f(v)).map(_.delegate).orNull
       }
     })
   }

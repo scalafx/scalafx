@@ -142,7 +142,7 @@ class Stage(override val delegate: jfxs.Stage = new jfxs.Stage)
    * Specify the scene to be used on this stage.
    */
   def scene_=(s: Scene): Unit = {
-    delegate.setScene(s.delegate)
+    delegate.setScene(Option(s).map(_.delegate).orNull)
   }
 
   /**
