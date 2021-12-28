@@ -53,10 +53,17 @@ class TableColumnSpec[S, T]
     val nameTC = new TableColumn[String, String]("Name")
     nameTC.columns.size should (equal(0))
 
-    nameTC.columns +=(firstTC, lastTC)
+    nameTC.columns.addAll(firstTC, lastTC)
     nameTC.columns.size should (equal(2))
 
     nameTC.columns.clear()
     nameTC.columns.size should (equal(0))
+  }
+
+  it should "allow a cellValueFactory to return null" in {
+    val tc = new TableColumn[String, String]("col") {
+      cellValueFactory = { _cdf => null }
+    }
+    tc.cellValueFactory()(null)
   }
 }
