@@ -58,9 +58,9 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
 ).dependsOn(scalafx % "compile;test->test")
 
 val Scala2_12 = "2.12.15"
-val Scala2_13 = "2.13.7"
+val Scala2_13 = "2.13.8"
 val Scala3_0  = "3.0.2"
-val Scala3_1  = "3.1.1-RC1"
+val Scala3_1  = "3.1.1-RC2"
 
 // Dependencies
 lazy val osName = System.getProperty("os.name") match {
