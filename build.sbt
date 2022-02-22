@@ -95,7 +95,7 @@ lazy val scalafxSettings = Seq(
   scalaVersion       := crossScalaVersions.value.head,
   Compile / unmanagedSourceDirectories += (Compile / sourceDirectory).value / versionSubDir(scalaVersion.value),
   Test / unmanagedSourceDirectories += (Test / sourceDirectory).value / versionSubDir(scalaVersion.value),
-  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature"),
+  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "8"),
   scalacOptions ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((2, _)) => Seq("-Xcheckinit", "-Xsource:3")
@@ -133,13 +133,6 @@ lazy val scalafxSettings = Seq(
       case _ => Seq.empty[String]
     }
   },
-  javacOptions ++= Seq(
-    "-target",
-    "1.8",
-    "-source",
-    "1.8",
-    "-Xlint:deprecation"
-  ),
   // Add other dependencies
   libraryDependencies ++= scalaReflectLibs(scalaVersion.value),
   libraryDependencies += scalaTestLib % "test",
