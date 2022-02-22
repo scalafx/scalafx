@@ -8,8 +8,8 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion  = "17.0.1"
-val scalafxVersion = "17.0.1-R27-SNAPSHOT"
+val javaFXVersion  = "17.0.2"
+val scalafxVersion = "17.0.2-R27-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
@@ -70,7 +70,7 @@ lazy val osName = System.getProperty("os.name") match {
   case _                            => throw new Exception("Unknown platform!")
 }
 lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-lazy val scalaTestLib  = "org.scalatest" %% "scalatest" % "3.2.10"
+lazy val scalaTestLib  = "org.scalatest" %% "scalatest" % "3.2.11"
 def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((2, _)) => Seq("org.scala-lang" % "scala-reflect" % scalaVersion)
@@ -95,7 +95,7 @@ lazy val scalafxSettings = Seq(
   scalaVersion       := crossScalaVersions.value.head,
   Compile / unmanagedSourceDirectories += (Compile / sourceDirectory).value / versionSubDir(scalaVersion.value),
   Test / unmanagedSourceDirectories += (Test / sourceDirectory).value / versionSubDir(scalaVersion.value),
-  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature"),
+  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "8"),
   scalacOptions ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((2, _)) => Seq("-Xcheckinit", "-Xsource:3")
@@ -133,13 +133,6 @@ lazy val scalafxSettings = Seq(
       case _ => Seq.empty[String]
     }
   },
-  javacOptions ++= Seq(
-    "-target",
-    "1.8",
-    "-source",
-    "1.8",
-    "-Xlint:deprecation"
-  ),
   // Add other dependencies
   libraryDependencies ++= scalaReflectLibs(scalaVersion.value),
   libraryDependencies += scalaTestLib % "test",
