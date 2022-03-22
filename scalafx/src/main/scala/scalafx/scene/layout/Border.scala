@@ -26,11 +26,11 @@
  */
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
+import javafx.scene.layout as jfxsl
 import scalafx.delegate.SFXDelegate
 import scalafx.scene.layout.LayoutIncludes.jfxBorder2sfx
 
-import scala.collection.JavaConverters._
+import scala.collection.JavaConverters.*
 import scala.language.implicitConversions
 
 object Border {
@@ -40,14 +40,25 @@ object Border {
   val Empty: Border = jfxsl.Border.EMPTY
   @deprecated("Use Empty; EMPTY will be removed in a future release", "8.0.60-R10")
   val EMPTY: Border = Empty
+
+  /**
+   * A convenience factory method for creating a solid `Border` with a single `Paint`.
+   *
+   * This call is equivalent to `new Border(new BorderStroke(stroke, BorderStrokeStyle.Solid, null, null))`.
+   * @param s the stroke of the border (for all sides). If `null`, `Color.Black` will be used.
+   * @return a new border of the given stroke
+   * @since 18.0.0
+   */
+  def stroke(s: javafx.scene.paint.Paint): Border = jfxsl.Border.stroke(s)
+
 }
 
 class Border(override val delegate: jfxsl.Border)
-  extends SFXDelegate[jfxsl.Border] {
+    extends SFXDelegate[jfxsl.Border] {
 
   /** Creates a new Border by supplying an array of BorderImages. */
   def this(images: BorderImage*) = {
-    this(new jfxsl.Border(images.map(_.delegate): _*))
+    this(new jfxsl.Border(images.map(_.delegate)*))
   }
 
   /** Creates a new Border by supplying an array of BorderStroke. */
@@ -57,7 +68,7 @@ class Border(override val delegate: jfxsl.Border)
 
   /** Creates a new Border by supplying an array of BorderStrokes. */
   def this(stroke: BorderStroke, strokes: BorderStroke*) = {
-    this(new jfxsl.Border((Seq(stroke) ++ strokes).map(_.delegate): _*))
+    this(new jfxsl.Border((Seq(stroke) ++ strokes).map(_.delegate)*))
   }
 
   /** Creates a new Border by supplying an array of BorderStrokes and BorderImages. */
