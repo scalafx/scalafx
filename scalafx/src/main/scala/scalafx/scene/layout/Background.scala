@@ -26,8 +26,8 @@
  */
 package scalafx.scene.layout
 
-import javafx.scene.{layout => jfxsl}
-import scalafx.Includes._
+import javafx.scene.layout as jfxsl
+import scalafx.Includes.*
 import scalafx.delegate.SFXDelegate
 import scalafx.geometry.Insets
 
@@ -39,25 +39,35 @@ object Background {
 
   /** An empty Background, useful to use instead of null. */
   val Empty: Background = jfxsl.Background.EMPTY
-  @deprecated ("Use Empty; EMPTY will be removed in a future release", "8.0.60-R10")
+  @deprecated("Use Empty; EMPTY will be removed in a future release", "8.0.60-R10")
   val EMPTY: Background = Empty
 
-  def classCssMetaData: Seq[javafx.css.CssMetaData[_ <: javafx.css.Styleable, _]] =
+  def classCssMetaData: Seq[javafx.css.CssMetaData[? <: javafx.css.Styleable, ?]] =
     jfxsl.Background.getClassCssMetaData.asScala.toSeq
+
+  /**
+   * A convenience factory method for creating a `Background` with a single `Paint`.
+   *
+   * This call is equivalent to `new Background(new BackgroundFill(fill, null, null))`.
+   * @param f the fill of the background. If `null`, `Color.Transparent` will be used.
+   * @return a new background of the given fill
+   * @since 18.0.0
+   */
+  def fill(f: javafx.scene.paint.Paint): Background = jfxsl.Background.fill(f)
 }
 
 class Background(override val delegate: jfxsl.Background)
-  extends SFXDelegate[jfxsl.Background] {
+    extends SFXDelegate[jfxsl.Background] {
 
   /** Create a new Background by supplying an array of BackgroundFills. */
-  def this(fills: Array[BackgroundFill]) = this(new jfxsl.Background(fills.map(_.delegate): _*))
+  def this(fills: Array[BackgroundFill]) = this(new jfxsl.Background(fills.map(_.delegate)*))
 
   /** Create a new Background by supplying two arrays, one for background fills, and one for background images. */
   def this(fills: Array[BackgroundFill], images: Array[BackgroundImage]) =
     this(new jfxsl.Background(fills.map(_.delegate), images.map(_.delegate)))
 
   /** Create a new Background by supplying an array of BackgroundImages. */
-  def this(images: Array[BackgroundImage]) = this(new jfxsl.Background(images.map(_.delegate): _*))
+  def this(images: Array[BackgroundImage]) = this(new jfxsl.Background(images.map(_.delegate)*))
 
   /** Create a new Background supply two Lists, one for background fills and one for background images. */
   def this(fills: Seq[BackgroundFill], images: Seq[BackgroundImage]) =
@@ -67,6 +77,7 @@ class Background(override val delegate: jfxsl.Background)
    * * The list of BackgroundFills which together define the filled portion of this Background.
    */
   def fills: Seq[jfxsl.BackgroundFill] = delegate.getFills.asScala.toSeq
+
   /**
    * The list of BackgroundImages which together define the image portion of this Background.
    */

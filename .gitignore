@@ -28,3 +28,4 @@ project/target
 *.sc
 .externalToolBuilders/
 /null/
+.DS_Store

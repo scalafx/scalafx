@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2021, ScalaFX Project
+ * Copyright (c) 2011-2022, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,10 @@
 
 package scalafx.scene.control
 
-import javafx.scene.{control => jfxsc}
-import javafx.{event => jfxe, util => jfxu}
-import scalafx.Includes._
-import scalafx.beans.property.{BooleanProperty, ObjectProperty, ReadOnlyObjectProperty, _}
+import javafx.scene.control as jfxsc
+import javafx.{event as jfxe, util as jfxu}
+import scalafx.Includes.*
+import scalafx.beans.property.*
 import scalafx.delegate.SFXDelegate
 import scalafx.event.{Event, EventType}
 
@@ -45,19 +45,19 @@ object TreeView {
   }
 
   class EditEvent[T](override val delegate: jfxsc.TreeView.EditEvent[T])
-    extends Event(delegate)
+      extends Event(delegate)
       with SFXDelegate[jfxsc.TreeView.EditEvent[T]] {
 
     /**
      * Creates a new EditEvent instance to represent an edit event.
      */
     def this(
-              source: TreeView[T],
-              eventType: jfxe.EventType[_ <: jfxsc.TreeView.EditEvent[T]],
-              treeItem: TreeItem[T],
-              oldValue: T,
-              newValue: T
-            ) =
+      source: TreeView[T],
+      eventType: jfxe.EventType[? <: jfxsc.TreeView.EditEvent[T]],
+      treeItem: TreeItem[T],
+      oldValue: T,
+      newValue: T
+    ) =
       this(new jfxsc.TreeView.EditEvent[T](source, eventType, treeItem, oldValue, newValue))
 
     /**
@@ -114,7 +114,7 @@ object TreeView {
       "As of JavaFX 8.0_20, the proper way to do this is via getTreeItemLevel(TreeItem)",
     since = "8.0_20"
   )
-  def nodeLevel(node: TreeItem[_]): Int = jfxsc.TreeView.getNodeLevel(node)
+  def nodeLevel(node: TreeItem[?]): Int = jfxsc.TreeView.getNodeLevel(node)
 
   /**
    * Creates a new TreeView overriding layoutChildren method from JavaFX's
@@ -156,7 +156,7 @@ object TreeView {
  * @tparam T The type of the item contained within the `TreeItem` value property for all tree items in this `TreeView`.
  */
 class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[T])
-  extends Control(delegate)
+    extends Control(delegate)
     with SFXDelegate[jfxsc.TreeView[T]] {
 
   /**
@@ -171,16 +171,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
   def cellFactory_=(v: jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]]): Unit = {
     cellFactory.value = v
   }
-
-  @deprecated(
-    message = "" +
-      "This method does not allow for correct handling of empty cells leading to possible rendering artifacts. " +
-      "See explanation in [[https://github.com/scalafx/scalafx/issues/256 ScalaFX Issue #256]]. " +
-      "Use the new `cellFactory` assignment method: `cellFactory_=(op: (TreeCell[T], T) => Unit)` that automatically " +
-      "handles empty cells.",
-    since = "16.0.0-R25"
-  )
-  def cellFactory_=(v: (TreeView[T] => TreeCell[T])): Unit = {
+  def cellFactory_=(v: TreeView[T] => TreeCell[T]): Unit = {
     cellFactory() = new jfxu.Callback[jfxsc.TreeView[T], jfxsc.TreeCell[T]] {
       def call(tv: jfxsc.TreeView[T]): jfxsc.TreeCell[T] = {
         v(tv)
@@ -363,7 +354,7 @@ class TreeView[T](override val delegate: jfxsc.TreeView[T] = new jfxsc.TreeView[
    * @param node  The `TreeItem` for which the level is needed.
    * @return An integer representing the number of parents above the given node, or -1 if the given `TreeItem` is `null`.
    */
-  def treeItemLevel(node: TreeItem[_]): Int = delegate.getTreeItemLevel(node)
+  def treeItemLevel(node: TreeItem[?]): Int = delegate.getTreeItemLevel(node)
 
   /**
    * Instructs the TreeView to begin editing the given TreeItem, if the

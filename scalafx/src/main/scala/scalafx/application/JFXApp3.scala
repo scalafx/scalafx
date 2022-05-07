@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2020, ScalaFX Project
+ * Copyright (c) 2011-2022, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,12 +28,12 @@
 package scalafx.application
 
 import javafx.application.Application
-import javafx.{application => jfxa, stage => jfxs}
+import javafx.{application as jfxa, stage as jfxs}
 import scalafx.application.JFXApp3.{Parameters, PrimaryStage}
 import scalafx.delegate.SFXDelegate
 import scalafx.stage.Stage
 
-import scala.collection.JavaConverters._
+import scala.collection.JavaConverters.*
 import scala.collection.mutable.ListBuffer
 import scala.collection.{Map, Seq, mutable}
 import scala.language.implicitConversions
@@ -94,8 +94,8 @@ object JFXApp3 {
    */
   private[application] class ParametersImpl(arguments: Seq[String]) extends Parameters {
 
-    private var namedArguments: mutable.Map[String, String] = mutable.Map.empty[String, String]
-    private var unnamedArguments = mutable.Buffer.empty[String]
+    private val namedArguments: mutable.Map[String, String] = mutable.Map.empty[String, String]
+    private val unnamedArguments = mutable.Buffer.empty[String]
     private var filled = false
 
     private def parseArguments(): Unit = {
@@ -138,9 +138,21 @@ object JFXApp3 {
    *
    * NOTE: This method must be called on the JavaFX Application Thread.
    *
-   * @return The URL to the stylesheet as a String.
+   * @return The URL to the stylesheet as a String. May return `null`.
+   * @see userAgentStylesheetOption
    */
   def userAgentStylesheet: String = jfxa.Application.getUserAgentStylesheet
+
+  /**
+   * Optionally return the user agent stylesheet used by the whole application.
+   * This is used to provide default styling for all ui controls and other nodes.
+   * A value of `None` means the platform default stylesheet is being used.
+   *
+   * NOTE: This method must be called on the JavaFX Application Thread.
+   *
+   * @return The URL to the stylesheet as a String.
+   */
+  def userAgentStylesheetOption: Option[String] = Option(userAgentStylesheet)
 
   /**
    * Set the user agent stylesheet used by the whole application.
@@ -156,6 +168,8 @@ object JFXApp3 {
    * @param url The URL to the stylesheet as a String.
    */
   def userAgentStylesheet_=(url: String): Unit = jfxa.Application.setUserAgentStylesheet(url)
+
+  def userAgentStylesheet_=(url: Option[String]): Unit = userAgentStylesheet_=(url.orNull)
 
 
   /**
@@ -291,7 +305,7 @@ trait JFXApp3 {
     // Put any further non-essential initialization here.
     /* Launch the JFX application.
     */
-    jfxa.Application.launch(classOf[AppHelper3], args: _*)
+    jfxa.Application.launch(classOf[AppHelper3], args*)
   }
 
   /** Perform sub-class initialization when directed to duing application startup.

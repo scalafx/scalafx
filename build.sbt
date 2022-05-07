@@ -8,8 +8,8 @@ import scala.xml.{Node => XmlNode, NodeSeq => XmlNodeSeq, _}
 // JAR_BUILT_BY      - Name to be added to Jar metadata field "Built-By" (defaults to System.getProperty("user.name")
 //
 
-val javaFXVersion  = "17.0.1"
-val scalafxVersion = "17.0.1-R26"
+val javaFXVersion  = "18.0.1"
+val scalafxVersion = "18.0.1-R27-SNAPSHOT"
 
 val versionTagDir = if (scalafxVersion.endsWith("SNAPSHOT")) "master" else s"v.$scalafxVersion"
 
@@ -31,8 +31,14 @@ lazy val scalafx = (project in file("scalafx")).settings(
   libraryDependencies ++= javafxModules.map(m =>
     "org.openjfx" % s"javafx-$m" % javaFXVersion % "provided" classifier osName
   ),
-  run / fork             := true,
-  publishArtifact        := true,
+  run / fork      := true,
+  publishArtifact := true,
+  // Don't publish for Scala 3.1 or later, only from 3.0
+  //  see https://users.scala-lang.org/t/cross-publishing-scala-3-0-and-3-1/7969
+  publish / skip := (CrossVersion.partialVersion(scalaVersion.value) match {
+    case Some((3, x)) if x > 0 => true
+    case _                     => false
+  }),
   Test / publishArtifact := false
 )
 
@@ -52,9 +58,9 @@ lazy val scalafxDemos = (project in file("scalafx-demos")).settings(
 ).dependsOn(scalafx % "compile;test->test")
 
 val Scala2_12 = "2.12.15"
-val Scala2_13 = "2.13.7"
-val Scala3_00 = "3.0.2"
-//val Scala3_10 = "3.1.0"
+val Scala2_13 = "2.13.8"
+val Scala3_0  = "3.0.2"
+val Scala3_1  = "3.1.2"
 
 // Dependencies
 lazy val osName = System.getProperty("os.name") match {
@@ -64,7 +70,7 @@ lazy val osName = System.getProperty("os.name") match {
   case _                            => throw new Exception("Unknown platform!")
 }
 lazy val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-lazy val scalaTestLib  = "org.scalatest" %% "scalatest" % "3.2.10"
+lazy val scalaTestLib  = "org.scalatest" %% "scalatest" % "3.2.11"
 def scalaReflectLibs(scalaVersion: String): Seq[ModuleID] =
   CrossVersion.partialVersion(scalaVersion) match {
     case Some((2, _)) => Seq("org.scala-lang" % "scala-reflect" % scalaVersion)
@@ -83,13 +89,13 @@ def versionSubDir(scalaVersion: String): String =
 lazy val scalafxSettings = Seq(
   organization := "org.scalafx",
   version      := scalafxVersion,
-  // Publishing with Scala 3.1 overwrites Scala 3.0 artifacts. 3.0 cannot read 3.1 binaries
-  //  crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_00, Scala3_10),
-  crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_00),
+  // Publishing with Scala 3.1 overwrites Scala 3.0 artifacts. 3.0 cannot read 3.1 binaries,
+  //   but use it for forward testing
+  crossScalaVersions := Seq(Scala2_13, Scala2_12, Scala3_0, Scala3_1),
   scalaVersion       := crossScalaVersions.value.head,
   Compile / unmanagedSourceDirectories += (Compile / sourceDirectory).value / versionSubDir(scalaVersion.value),
   Test / unmanagedSourceDirectories += (Test / sourceDirectory).value / versionSubDir(scalaVersion.value),
-  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature"),
+  scalacOptions ++= Seq("-unchecked", "-deprecation", "-encoding", "utf8", "-feature", "-release", "8"),
   scalacOptions ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((2, _)) => Seq("-Xcheckinit", "-Xsource:3")
@@ -127,13 +133,6 @@ lazy val scalafxSettings = Seq(
       case _ => Seq.empty[String]
     }
   },
-  javacOptions ++= Seq(
-    "-target",
-    "1.8",
-    "-source",
-    "1.8",
-    "-Xlint:deprecation"
-  ),
   // Add other dependencies
   libraryDependencies ++= scalaReflectLibs(scalaVersion.value),
   libraryDependencies += scalaTestLib % "test",
